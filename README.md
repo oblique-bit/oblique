@@ -1,0 +1,120 @@
+# [ObliqueReactive](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/)
+
+Reactive web template powered by ObliqueUI and AngularJS.
+
+This template follows the following guidelines:
+https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/mobilebasic?pli=1
+
+## Quick start
+
+- [Download the latest release](https://stash.eap.bit.admin.ch/plugins/servlet/archive/projects/OUI/repos/oblique-reactive).
+- Install with [Bower](http://bower.io): `https://stash.eap.bit.admin.ch/scm/oui/oblique-reactive.git#master`.
+- Clone the repo: `http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive.git`.
+
+## Building the project
+
+ObliqueUI uses [Grunt](http://gruntjs.com/), [Bower](http://bower.io/), [Less](http://lesscss.org/) and [Assemble](http://assemble.io/) to fetch dependencies, compile & build assets and compose the pages.
+
+### Prerequisites
+
+* Git: <http://git-scm.com/downloads>
+
+> If you are running Windows, select following options during installation:
+> - _Run Git from the Windows Command Prompt_
+> - _Checkout Windows-style, commit Unix-style endings_
+
+* NPM via Node.js: <http://nodejs.org/download/>
+
+> NPM, the Node Package Manager, is installed during the Node.js installation process.
+
+### Environment setup
+
+#### GIT configuration
+
+If you are using Git for the first time, configure your user information as well:
+
+	git config --global user.name "<firstname> <lastname>"
+	git config --global user.email "<email>"
+
+#### Proxy configuration (if applicable)
+
+> *Note*: this proxy configuration only applies to local environments (VM environments are currently not supported).
+
+##### Windows Environment Variables
+
+> *Note*: proxy URL must start with `http[s]://`!
+
+	HTTP_PROXY <http-proxy-url>
+	HTTPS_PROXY <https-proxy-url>
+
+##### GIT Config (.gitconfig)
+
+	git config --global url."https://".insteadOf git://
+	git config --global http."https://stash.eap.bit.admin.ch/".proxy ""
+	git config --global http.postBuffer 524288000
+	git config --global http.proxy <http-proxy-url>
+
+##### NPM Config
+
+> *Note*: proxy URL must start with `http[s]://`!
+
+	npm config set proxy <http-proxy-url>
+	npm config set https-proxy <https-proxy-url>
+
+> *Warning*: if you receive a `Error: ENOENT, stat 'C:\Users\<user>\AppData\Roaming\npm'` exception, you will have to manually create the `npm` folder under the `Roaming` folder.
+
+##### Bower Config (Windows only)
+
+> *Important: users experiencing proxy errors*
+>
+> Since version 1.3.8, Bower requires that your `.gitconfig` file is located under the `%USERPROFILE%` directory.
+>
+> If your `HOME` environment variable is **not** pointing to your `%USERPROFILE%` directory, then you will need to create a symbolic link inside `%USERPROFILE%` pointing to your `.gitconfig` on `%HOME%`.
+
+Open an **elevated** command prompt and run the following command:
+
+	mklink %USERPROFILE%\.gitconfig %HOME%\.gitconfig
+
+### First-time setup
+
+1. Install required `npm` libraries:
+
+	npm install -g grunt-cli bower
+
+2. Install *development* dependencies (`npm` will look at [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/package.json) and automatically install the necessary build dependencies listed there):
+
+	npm install
+
+3. Install *frontend* dependencies (`bower` will look at [bower.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/bower.json) and automatically install the necessary frontend dependencies listed there):
+
+	bower install
+
+4 . Configure you custom project:
+
+> Open `project.json` and adapt this configuration to fit your requirements.
+
+### Build commands
+
+#### Default
+
+	grunt
+
+_This is the `default` task that builds & runs the application by starting a local server._
+
+### Troubleshooting dependencies
+
+Should you encounter problems with installing dependencies or running Grunt commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
+
+## Checking for updates
+
+### `dev` dependencies updates
+
+	npm install -g npm-check-updates
+
+You can now check for updates and bump `package.json` dependencies accordingly:
+
+	npm-check-updates
+
+### `frontend` (Bower) dependencies updates
+
+	bower list

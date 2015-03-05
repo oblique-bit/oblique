@@ -1,0 +1,127 @@
+{
+	"application": {
+		"shortName": "OR",
+		"longName": "ObliqueReactive",
+		"description": "Reactive web template powered by ObliqueUI and AngularJS"
+	},
+	"common": {
+		"yes": "Yes",
+		"no": "No",
+		"save": "Save",
+		"cancel": "Cancel",
+		"delete": "Delete",
+		"actions": "Actions",
+		"action": "Action",
+		"pager": {
+			"pagesLengthBefore": "Displaying",
+			"pagesLengthAfter": "Results per page",
+			"page": "Page",
+			"of": "from",
+			"hits": "Hits"
+		}
+	},
+	"labels": {
+		"email": "Email",
+		"password": "Mot de passe"
+	},
+	"error": {
+		"general": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
+		"http": {
+			"status": {
+				"0": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
+				"400": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
+				"404": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
+				"500": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support"
+			}
+		},
+		"other": {
+			"timeout": "Server hat nicht zu lange reagiert. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
+			"upload": "Es ist ein Fehler bei hochladen aufgetrten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support"
+		},
+		"business": {
+			"ObjectOptimisticLockingFailureException": "Daten können nicht gespeichert werden, da sie auf dem Server geändert werden. Form wurde mit aktuellen Daten neu geladen."
+		}
+	},
+	"notification": {
+		"type": {
+			"default": "",
+			"info": "Info",
+			"success": "Success",
+			"warning": "Warning",
+			"error": "Error"
+		},
+		"common": {
+			"form": {
+				"success": "Speichern erfolgreich",
+				"pristine": "Ihre Eingaben haben sich nicht geändert",
+				"invalid": "Bitte korrigieren Sie die Fehler im Formular"
+			}
+		},
+		"custom": {
+		}
+	},
+	"dialog": {
+		"doAction": {
+			"header": "Aktion zu bestätigen",
+			"message": "Wollen Sie wirklich diese Aktion durchführen"
+		},
+		"doDelete": {
+			"header": "Löschvorgang zu bestätigen",
+			"message": "Wollen Sie wirklich diesen Datensatz löschen"
+		},
+		"doDeleteFile": {
+			"header": "Löschvorgang zu bestätigen",
+			"message": "Wollen Sie wirklich diese Datei löschen"
+		},
+		"action": {
+			"yes": "Yes",
+			"no": "No"
+		}
+	},
+	"validation": {
+		"basic": {
+			"required": "Pflichtfeld, bitte machen Sie eine Angabe",
+			"email": "Ungültiges Format, bitte geben Sie eine gültige E-Mail Adresse an",
+			"url": "Ungültige Format, bitte geben Sie eine gültige URL Adresse an",
+			"minlength": "Bitte geben Sie mindestens {{limit}} Zeichen ein (Sie haben nur {{actual}} Zeichen eingegeben)",
+			"maxlength": "Bitte geben Sie höchstens {{limit}} Zeichen ein (Sie haben nur {{actual}} Zeichen eingegeben)",
+			"min": "Bitte geben Sie eine Zahl grösser oder gleich {{limit}} ein",
+			"max": "Bitte geben Sie eine Zahl kleiner oder gleich {{limit}} ein",
+			"integer": "Ungültiges Format, bitte geben Sie eine Zahl ohne Dezimalstellen ein",
+			"float": "Ungültiges Format, bitte geben Sie eine Zahl mit Dezimalstellen ein",
+			"date": "Ungültiges Format, bitte geben Sie eine korrekte Datum"
+		},
+		"custom": {
+			"date": {
+				"day": {
+					"min": "Ungültiger Tag, geben Sie eine Zahl zwischen 1 und 31 ein",
+					"max": "Ungültiger Tag, geben Sie eine Zahl zwischen 1 und 31 ein"
+				},
+				"month": {
+					"min": "Ungültiger Monat, geben Sie eine Zahl zwischen 1 und 12 ein",
+					"max": "Ungültiger Monat, geben Sie eine Zahl zwischen 1 und 12 ein"
+				}
+			}
+		}
+	},
+	"form": {
+		"action": {
+			"add": "Ajouter",
+			"apply": "Appliquer",
+			"applyAndContinue": "Appliquer & continuer",
+			"save": "Sauvegarder",
+			"delete": "Supprimer",
+			"cancel": "Annuler",
+			"next": "Suivant",
+			"back": "Retour"
+		}
+	},
+	"states": {
+		"home": {
+			"title": "Accueil"
+		},
+		"movies": {
+			"title": "Films"
+		}
+	}
+}

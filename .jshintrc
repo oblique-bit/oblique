@@ -1,0 +1,28 @@
+{
+	"curly": true,
+	"eqnull": true,
+	"eqeqeq": true,
+	"undef": true,
+	"expr": true,
+	"sub": true,
+	"forin": true,
+	"-W032": true,
+	"globals": {
+		"window": true,
+		"console": true,
+		"document": true,
+		"oblique": true,
+		"module": true,
+		"require": true,
+		"_": true,
+		"jQuery": true,
+		"$": true,
+		"angular": true,
+		"moment": true,
+		"describe": true,
+		"beforeEach": true,
+		"it": true,
+		"inject": true,
+		"expect": true
+	}
+}

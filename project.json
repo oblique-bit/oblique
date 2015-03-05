@@ -1,0 +1,84 @@
+{
+	"common": {
+		"name": "common",
+		"build": {
+			"target": "target/"
+		},
+		"app": {
+			"module": "oblique",
+			"home": "index.html",
+			"api": {
+				"url": "http://localhost:3000",
+				"path": "/api",
+				"sendCredentials": false
+			},
+			"defaults": {
+				"locale": "en",
+				"state": "home"
+			}
+		},
+		"resources": {
+			"app": [
+				"app/app-config.js",
+				"app/app-module.js",
+				"app/app-templates.js",
+
+				"app/core/core-module.js",
+
+				"app/core/controllers/state-controller.js",
+				"app/core/controllers/navigation-controller.js",
+				"app/core/controllers/controls-controller.js",
+				"app/core/controllers/table-controller.js",
+
+				"app/core/directives/table-navigable-directive.js",
+				"app/core/directives/dropdown-closable-directive.js",
+				"app/core/directives/enter-directive.js",
+				
+				"app/core/infrastructure/log-decorator.js",
+				"app/core/infrastructure/http-decorator.js",
+				"app/core/infrastructure/http-interceptor.js",
+				"app/core/infrastructure/exception-handler-decorator.js",
+
+				"app/core/notification/notification-directive.js",
+				"app/core/notification/notification-service.js",
+
+				"app/core/services/loading-service.js",
+
+				"app/states/home/home-module.js",
+				"app/states/home/home-controller.js",
+
+				"app/states/movies/movies-module.js",
+				"app/states/movies/movie-resource.js",
+				"app/states/movies/movie-service.js",
+				"app/states/movies/movies-controller.js"
+			],
+			"vendor": {
+				"js": [
+					"moment/moment.js",
+					"lodash/dist/lodash.min.js",
+					"angular/angular.js",
+					"angular-animate/angular-animate.js",
+					"angular-bootstrap/ui-bootstrap-tpls.js",
+					"angular-sanitize/angular-sanitize.js",
+					"angular-translate/angular-translate.js",
+					"angular-translate-loader-static-files/angular-translate-loader-static-files.js",
+					"angular-translate-storage-local/angular-translate-storage-local.js",
+					"angular-translate-storage-cookie/angular-translate-storage-cookie.js",
+					"angular-ui-router/release/angular-ui-router.js"
+				],
+				"css": []
+			}
+		}
+	},
+	"dev": {
+		"name": "dev"
+	},
+	"prod": {
+		"name": "prod",
+		"app": {
+			"api": {
+				"url": "http://localhost:8080"
+			}
+		}
+	}
+}

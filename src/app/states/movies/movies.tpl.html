@@ -1,0 +1,30 @@
+<h1 class="page-header">
+	<span>{{'states.movies.title' | translate}}</span>
+	<div class="btn-group pull-right" data-toggle="buttons">
+		<label class="btn btn-primary active">
+			<input type="radio" name="source" value="local" autocomplete="off" checked> Local
+		</label>
+		<label class="btn btn-primary">
+			<input type="radio" name="source" value="remote" autocomplete="off"> Remote
+		</label>
+	</div>
+</h1>
+
+<div class="callout callout-info" ng-repeat="movie in movies">
+	<div class="row">
+		<div class="col-xs-8">
+			<h2>{{movie.title}}</h2>
+			<p class="lead">
+				<span class="fa fa-calendar-o"></span>
+				<span>{{movie.release_date}}</span>
+				<span class="fa fa-heart-o"></span>
+				<span>{{movie.vote_average}}</span>
+				<span class="fa fa-star-o"></span>
+				<span>{{movie.vote_count}}</span>
+			</p>
+		</div>
+		<div class="col-xs-4" ng-if="movie.poster_path">
+			<img src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" title="{{movie.original_title}}" class="img-responsive" />
+		</div>
+	</div>
+</div>

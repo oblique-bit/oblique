@@ -1,0 +1,7 @@
+{{#each env.resources.vendor.js}}
+	<script src="{{../assets}}{{../paths.vendor}}{{this}}"></script>
+{{~/each}}
+
+{{#each env.resources.app}}
+	<script src="{{../assets}}{{this}}"></script>
+{{~/each}}

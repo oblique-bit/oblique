@@ -1,0 +1,7 @@
+<!-- build:css css/main.css -->
+<link rel="stylesheet" href="{{assets}}css/main.css" />
+<!-- endbuild -->
+
+{{#each env.resources.vendor.css}}
+	<link rel="stylesheet" href="{{../assets}}{{../paths.vendor}}{{this}}" />
+{{~/each}}

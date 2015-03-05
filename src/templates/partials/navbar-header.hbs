@@ -1,0 +1,9 @@
+<ul class="nav navbar-nav navbar-right navbar-controls" role="menu" data-provides="inner-navigation" ng-controller="ControlsController">
+	{{#each locales}}
+		<li role="menuitem" ng-click="changeLocale('{{this.code}}')" ng-class="{active: currentLocale === '{{this.code}}'}">
+			<a href="">
+				<span class="control-widget">{{upperCase this.code}}</span>
+			</a>
+		</li>
+	{{/each}}
+</ul>
