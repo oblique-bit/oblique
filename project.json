@@ -25,6 +25,7 @@
 
 				"app/core/core-module.js",
 
+				"app/core/controllers/app-controller.js",
 				"app/core/controllers/state-controller.js",
 				"app/core/controllers/navigation-controller.js",
 				"app/core/controllers/controls-controller.js",
@@ -33,7 +34,7 @@
 				"app/core/directives/table-navigable-directive.js",
 				"app/core/directives/dropdown-closable-directive.js",
 				"app/core/directives/enter-directive.js",
-				
+
 				"app/core/infrastructure/log-decorator.js",
 				"app/core/infrastructure/http-decorator.js",
 				"app/core/infrastructure/http-interceptor.js",
@@ -46,6 +47,9 @@
 
 				"app/states/home/home-module.js",
 				"app/states/home/home-controller.js",
+
+				"app/states/login/login-module.js",
+				"app/states/login/login-controller.js",
 
 				"app/states/movies/movies-module.js",
 				"app/states/movies/movie-resource.js",

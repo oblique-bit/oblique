@@ -9,6 +9,7 @@
 			'__MODULE__.app-templates',
 			'__MODULE__.core',
 			'__MODULE__.home',
+			'__MODULE__.login',
 			'__MODULE__.movies'
 		])
 		.constant('CONFIG', window['__MODULE__'].CONFIG)
@@ -39,6 +40,7 @@
 				// Esure current state metadata is available globally:
 				$rootScope.state.name = current.name;
 				$rootScope.state.title = current.title;
+				$rootScope.state.layout = current.layout;
 
 				// Ensure start of injected content is visible:
 				document.documentElement.scrollTop = 0;

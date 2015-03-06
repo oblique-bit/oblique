@@ -92,6 +92,10 @@ module.exports = function (grunt) {
 					'<%= paths.helpers %>**/*.js'
 				],
 
+				// Layout placeholders override:
+				'html-attrs': 'ng-controller="AppController as appController"',
+				'ui-layout': "{{appController.layout}}",
+
 				// Site-specific configuration used by ObliqueUI layouts:
 				site: {
 					title: '<%= pkg.title %>',

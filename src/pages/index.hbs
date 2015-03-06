@@ -1,4 +1,4 @@
-{{#compose "default-layout" description=site.description}}
+{{#compose "default-layout" ui-layout="{{appController.layout}}"}}
 	{{#content "default"}}
 		<div ui-view></div>
 	{{/content}}

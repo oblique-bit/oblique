@@ -120,6 +120,9 @@
 		"home": {
 			"title": "Startseite"
 		},
+		"login": {
+			"title": "Sign in"
+		},
 		"movies": {
 			"title": "Movies"
 		}
