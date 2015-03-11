@@ -582,14 +582,14 @@ module.exports = function (grunt) {
 		'usemin'
 	]);
 
-	// Server:
-	grunt.registerTask('start-server-dev', [
+	// Serve:
+	grunt.registerTask('serve-dev', [
 		'config:dev',
 		'connect:local',
 		'watch'
 	]);
 
-	grunt.registerTask('start-server-prod', [
+	grunt.registerTask('serve-prod', [
 		'config:prod',
 		'connect:local:keepalive',
 		'watch::prod'
@@ -599,13 +599,13 @@ module.exports = function (grunt) {
 	grunt.registerTask('run-dev', [
 		'config:dev',
 		'build-dev',
-		'start-server-dev'
+		'serve-dev'
 	]);
 
 	grunt.registerTask('run-prod', [
 		'config:prod',
 		'build-prod',
-		'start-server-prod'
+		'serve-prod'
 	]);
 
 	// Default:

@@ -1,19 +1,16 @@
 # [ObliqueReactive](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/)
 
-Reactive web template powered by ObliqueUI and AngularJS.
+Reactive web template powered by ObliqueUI and AngularJS. ObliqueReactive uses [Grunt](http://gruntjs.com/), [Bower](http://bower.io/), [Less](http://lesscss.org/) and [Assemble](http://assemble.io/) to fetch dependencies, compile & build assets and compose the pages.
 
-This template follows the following guidelines:
+This template has been inspired by the following guidelines:
 https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/mobilebasic?pli=1
 
 ## Quick start
 
 - [Download the latest release](https://stash.eap.bit.admin.ch/plugins/servlet/archive/projects/OUI/repos/oblique-reactive).
-- Install with [Bower](http://bower.io): `https://stash.eap.bit.admin.ch/scm/oui/oblique-reactive.git#master`.
 - Clone the repo: `http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive.git`.
 
-## Building the project
-
-ObliqueUI uses [Grunt](http://gruntjs.com/), [Bower](http://bower.io/), [Less](http://lesscss.org/) and [Assemble](http://assemble.io/) to fetch dependencies, compile & build assets and compose the pages.
+## Install
 
 ### Prerequisites
 
@@ -79,35 +76,68 @@ Open an **elevated** command prompt and run the following command:
 
 1. Install required `npm` libraries:
 
-	npm install -g grunt-cli bower
+		npm install -g grunt-cli bower
 
 2. Install *development* dependencies (`npm` will look at [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/package.json) and automatically install the necessary build dependencies listed there):
 
-	npm install
+		npm install
 
 3. Install *frontend* dependencies (`bower` will look at [bower.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/bower.json) and automatically install the necessary frontend dependencies listed there):
 
-	bower install
+		bower install
 
-4 . Configure you custom project:
+4. Customize:
 
-> Open `project.json` and adapt this configuration to fit your requirements.
-
-### Build commands
-
-#### Default
-
-	grunt
-
-_This is the `default` task that builds & runs the application by starting a local server._
+> Open `project.json` and adapt this configuration to fit your project requirements.
 
 ### Troubleshooting dependencies
 
 Should you encounter problems with installing dependencies or running Grunt commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
 
+## Build & Run
+
+ObliqueReactive supports software environments by launching specific [Grunt](http://gruntjs.com/) tasks.
+Environment-specific variables can be configured, created or overrided by customizing the `project.json` file.
+
+The project template has been configured to trigger the following 2 environments:
+* **dev**: default *development* environment which provides full debugging support through minimal packaging (resources are not minificated neither concatenated).
+* **prod**: custom *production* environment which provides partial debugging support but an optimized & release-ready packaging (resources are minificated and concatenated).
+
+### Development tasks
+
+	grunt
+
+*or*
+
+	grunt default
+
+*or*
+
+	grunt run-dev
+
+_This task loads the `dev` environment configuration, builds the project, runs the client application by starting a local server and watches for file changes._
+
+#### [Optional] Start the *dummy* API server
+
+Should you backend not be ready to consume, you can test the client application by starting a local *dummy* API server:
+
+	node server/server.js
+
+> Note that you should remove this local server as soon as your backend is ready to consume!
+
+### Production tasks
+
+	grunt serve-prod
+
+_This task loads the `prod` environment configuration, builds the project for release and runs the client application by starting a local server._
+
+	grunt run-prod
+
+_Same as `serve-prod`, except that it starts watching for file changes._
+
 ## Checking for updates
 
-### `dev` dependencies updates
+### Build dependencies updates
 
 	npm install -g npm-check-updates
 
@@ -115,6 +145,6 @@ You can now check for updates and bump `package.json` dependencies accordingly:
 
 	npm-check-updates
 
-### `frontend` (Bower) dependencies updates
+### Frontend (Bower) dependencies updates
 
 	bower list
