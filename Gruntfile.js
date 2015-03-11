@@ -164,6 +164,29 @@ module.exports = function (grunt) {
 		},
 
 		/*
+		 * grunt-bump
+		 *
+		 * https://github.com/vojtajina/grunt-bump
+		 *
+		 * Bump package version, create tag, commit, push & more.
+		 */
+		bump: {
+			options: {
+				files: ["package.json", "bower.json"],
+				updateConfigs: ["pkg"],
+				commit: true,
+				commitMessage: "Release v%VERSION%",
+				commitFiles: ["."],
+				createTag: true,
+				tagName: "v%VERSION%",
+				tagMessage: "Version v%VERSION%",
+				push: true,
+				pushTo: "origin",
+				gitDescribeOptions: "--tags --always --abbrev=1 --dirty=-d"
+			}
+		},
+
+		/*
 		 * grunt-contrib-clean
 		 *
 		 * https://github.com/gruntjs/grunt-contrib-clean
@@ -610,4 +633,16 @@ module.exports = function (grunt) {
 
 	// Default:
 	grunt.registerTask('default', ['run-dev']);
+
+	// Deployment tasks
+	// ----------------------------------
+
+	// Release (see https://github.com/vojtajina/grunt-bump#usage-examples):
+	grunt.registerTask("release", function(target) {
+		grunt.task.run([
+			"bump-only:" + (target || "patch"),
+			"build-prod",
+			"bump-commit"
+		]);
+	});
 };
