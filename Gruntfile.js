@@ -560,7 +560,8 @@ module.exports = function (grunt) {
 	require('load-grunt-tasks')(grunt, {scope: "devDependencies"});
 	grunt.loadNpmTasks('assemble');
 
-	// Tasks alias --------------------------------------------------------------
+	// Project tasks
+	// ----------------------------------
 
 	// Build:
 	grunt.registerTask('build-dev', [
@@ -634,7 +635,7 @@ module.exports = function (grunt) {
 	// Default:
 	grunt.registerTask('default', ['run-dev']);
 
-	// Deployment tasks
+	// Template-only tasks
 	// ----------------------------------
 
 	// Release (see https://github.com/vojtajina/grunt-bump#usage-examples):

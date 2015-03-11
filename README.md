@@ -100,6 +100,7 @@ ObliqueReactive supports software environments by launching specific [Grunt](htt
 Environment-specific variables can be configured, created or overrided by customizing the `project.json` file.
 
 The project template has been configured to trigger the following 2 environments:
+
 * **dev**: default *development* environment which provides full debugging support through minimal packaging (resources are not minificated neither concatenated).
 * **prod**: custom *production* environment which provides partial debugging support but an optimized & release-ready packaging (resources are minificated and concatenated).
 
