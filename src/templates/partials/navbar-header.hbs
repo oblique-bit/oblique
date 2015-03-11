@@ -1,7 +1,7 @@
-<ul class="nav navbar-nav navbar-right navbar-controls" role="menu" ng-controller="ControlsController">
+<ul class="nav navbar-nav navbar-right navbar-controls" role="menu">
 	{{#each locales}}
-		<li role="menuitem" ng-class="{active: currentLocale === '{{this.code}}'}">
-			<a href="" role="button" ng-click="changeLocale('{{this.code}}')">
+		<li role="menuitem" ng-class="{active: appController.locale.current === '{{this.code}}'}">
+			<a href="" role="button" ng-click="appController.locale.use('{{this.code}}')">
 				<span class="control-widget">{{upperCase this.code}}</span>
 			</a>
 		</li>

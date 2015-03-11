@@ -3,6 +3,7 @@
 
 	angular
 		.module('__MODULE__', [
+			'ngCookies',
 			'ui.router',
 			'pascalprecht.translate',
 
@@ -31,21 +32,9 @@
 				suffix: '.json'
 			});
 			$translateProvider.preferredLanguage(CONFIG.defaults.locale);
+			$translateProvider.useLocalStorage();
 		})
-		.run(function ($rootScope, $httpDecorator) {
-
-			$rootScope.state = $rootScope.state || {};
-
-			$rootScope.$on('$stateChangeSuccess', function (event, current/*, previous*/) {
-				// Esure current state metadata is available globally:
-				$rootScope.state.name = current.name;
-				$rootScope.state.title = current.title;
-				$rootScope.state.layout = current.layout;
-
-				// Ensure start of injected content is visible:
-				document.documentElement.scrollTop = 0;
-			});
-
+		.run(function ($httpDecorator) {
 			// Decorate $http with prebuilt API methods:
 			$httpDecorator.decorate();
 		});

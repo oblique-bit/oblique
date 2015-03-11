@@ -4,14 +4,13 @@
 
 	angular
 		.module('__MODULE__.core')
-
 		.provider('LoadingService', function () {
 
-			var timeoutValue = 10000;
+			var timeout = 10000;
 
 			return {
 				setTimeout: function (value) {
-					timeoutValue = value;
+					timeout = value;
 				},
 				$get: function ($log, $timeout, NotificationService) {
 
@@ -41,7 +40,7 @@
 								NotificationService.add('error', 'error.other.timeout');
 							}
 
-						}, timeoutValue);
+						}, timeout);
 
 						loadings.push({id: loadingId, timeout: timeout});
 						loadingId++;

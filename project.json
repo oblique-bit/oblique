@@ -26,9 +26,6 @@
 				"app/core/core-module.js",
 
 				"app/core/controllers/app-controller.js",
-				"app/core/controllers/state-controller.js",
-				"app/core/controllers/navigation-controller.js",
-				"app/core/controllers/controls-controller.js",
 				"app/core/controllers/table-controller.js",
 
 				"app/core/directives/table-navigable-directive.js",
@@ -63,11 +60,12 @@
 					"angular/angular.js",
 					"angular-animate/angular-animate.js",
 					"angular-bootstrap/ui-bootstrap-tpls.js",
+					"angular-cookies/angular-cookies.js",
 					"angular-sanitize/angular-sanitize.js",
 					"angular-translate/angular-translate.js",
 					"angular-translate-loader-static-files/angular-translate-loader-static-files.js",
-					"angular-translate-storage-local/angular-translate-storage-local.js",
 					"angular-translate-storage-cookie/angular-translate-storage-cookie.js",
+					"angular-translate-storage-local/angular-translate-storage-local.js",
 					"angular-ui-router/release/angular-ui-router.js"
 				],
 				"css": []

@@ -3,20 +3,25 @@
 	"use strict";
 
 	angular.module('__MODULE__.core')
-		.controller('AppController', function ($scope, $rootScope, $location, $state, $log, $translate, LoadingService) {
+		.controller('AppController', function (CONFIG, $scope, $rootScope, $location, $state, $log, $translate, LoadingService) {
 			var ctrl = this;
 			var LOG = $log.getInstance('AppController - $stateChangeError');
 
+			// Global properties:
 			ctrl.spinner = LoadingService.loading;
-			ctrl.datepickers = {};
-			ctrl.toggleDatepicker = function ($event, datepickerName) {
-				$event.preventDefault();
-				$event.stopPropagation();
-				ctrl.datepickers[datepickerName] = ctrl.datepickers[datepickerName] ? false : true;
+			ctrl.page = {
+				title: '',
+				layout: 'default'
+			};
+			ctrl.locale = {
+				current : CONFIG.defaults.locale,
+				use: function (locale) {
+					$translate.use(locale);
+				}
 			};
 
-			$scope.$state = $state;
 
+			// Global events handling:
 			$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 				if (toState.resolve) {
 					ctrl.spinner.active = true;
@@ -27,8 +32,8 @@
 				// Scroll to top of page on state change:
 				$("html, body").animate({scrollTop: 0}, 0);
 
-				ctrl.layout = toState.data && toState.data.layout ? toState.data.layout : 'default';
-				ctrl.pageTitle = toState.data && toState.data.title ? toState.data.title : 'states.' + toState.name + '.title';
+				ctrl.page.title = toState.data && toState.data.title ? toState.data.title : 'states.' + toState.name + '.title';
+				ctrl.page.layout = toState.data && toState.data.layout ? toState.data.layout : 'default';
 				ctrl.spinner.active = false;
 			});
 
@@ -36,6 +41,10 @@
 				LOG.error(error);
 				ctrl.spinner.active = false;
 				$state.reload(fromState);
+			});
+
+			$rootScope.$on('$translateChangeSuccess', function (event, data) {
+				ctrl.locale.current = data.language;
 			});
 		});
 }());
