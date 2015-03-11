@@ -641,7 +641,6 @@ module.exports = function (grunt) {
 	grunt.registerTask("release", function(target) {
 		grunt.task.run([
 			"bump-only:" + (target || "patch"),
-			"build-prod",
 			"bump-commit"
 		]);
 	});
