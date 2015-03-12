@@ -96,27 +96,28 @@ module.exports = function (grunt) {
 				'html-attrs': 'ng-controller="AppController as appController"',
 				'ui-layout': "{{appController.layout}}",
 
-				// Site-specific configuration used by ObliqueUI layouts:
-				site: {
-					title: '<%= pkg.title %>',
-					name: '<%= pkg.title %>',
-					description: '<%= pkg.description %>',
-					lang: 'en',
-					home: 'index.html',
+				// App-specific configuration used by ObliqueUI layouts:
+				app: {
+					name: '<%= env.app.module %>',
+					title: '<%= env.app.title %>',
+					description: '<%= env.app.description %>',
+					lang: '<%= env.app.defaults.locale %>',
+					home: '<%= env.app.home %>',
 					pages: '',
 					vendor: {
 						path: '<%= paths.vendor %>',
 						obliqueui: {
-							name: 'oblique-ui',
-							path: 'oblique-ui/'
+							name:   'oblique-ui',
+							title:  'ObliqueUI',
+							path:   'oblique-ui/'
 						}
 					},
 
 					// Theming:
 					theme: {
-						'has-transitions': true,
-						'has-tooltips': true,
-						'has-sticky-footer': false
+						'has-transitions':      true,
+						'has-tooltips':         true,
+						'has-sticky-footer':    false
 					},
 					offsets: {
 						intermediary: 160,
@@ -455,6 +456,9 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+
+
+
 		usemin: {
 			html: '<%= env.build.target %>index.html',
 			options: {
@@ -469,6 +473,8 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+
+
 		filerev: {
 			options: {
 				encoding: 'utf8',
@@ -476,7 +482,7 @@ module.exports = function (grunt) {
 				length: 8
 			},
 			js: {
-				src: '<%= env.build.target %>js/*.*'
+				src: '<%= env.build.target %>js/<%= env.app.module %>.min.js'
 			},
 			styles: {
 				src: '<%= env.build.target %>css/*.*'

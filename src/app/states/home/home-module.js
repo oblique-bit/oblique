@@ -9,7 +9,7 @@
 				templateUrl: 'home/home.tpl.html',
 				controller: 'HomeController',
 				data: {
-					title: 'states.home.title'
+					description: 'states.home.description'
 				}
 			});
 		});

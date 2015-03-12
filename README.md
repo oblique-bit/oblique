@@ -3,7 +3,7 @@
 Reactive web template powered by ObliqueUI and AngularJS. ObliqueReactive uses [Grunt](http://gruntjs.com/), [Bower](http://bower.io/), [Less](http://lesscss.org/) and [Assemble](http://assemble.io/) to fetch dependencies, compile & build assets and compose the pages.
 
 This template has been inspired by the following guidelines:
-https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/mobilebasic?pli=1
+<https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/mobilebasic?pli=1>
 
 ## Quick start
 
@@ -88,7 +88,7 @@ Open an **elevated** command prompt and run the following command:
 
 4. Customize:
 
-> Open `project.json` and adapt this configuration to fit your project requirements.
+> Open [project.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/project.json) and adapt this configuration to fit your project requirements.
 
 ### Troubleshooting dependencies
 
@@ -97,7 +97,7 @@ Should you encounter problems with installing dependencies or running Grunt comm
 ## Build & Run
 
 ObliqueReactive supports software environments by launching specific [Grunt](http://gruntjs.com/) tasks.
-Environment-specific variables can be configured, created or overrided by customizing the `project.json` file.
+Environment-specific variables can be configured, created or overrided by customizing the [project.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/project.json) file.
 
 The project template has been configured to trigger the following 2 environments:
 

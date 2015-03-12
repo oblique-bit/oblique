@@ -1,6 +1,7 @@
 {
   "name": "oblique-reactive",
-  "title": "Oblique - Reactive template",
+  "title": "ObliqueReactive",
+  "description": "Reactive web template powered by ObliqueUI and AngularJS",
   "version": "0.0.2",
   "private": true,
   "authors": [

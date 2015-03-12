@@ -5,21 +5,21 @@
 	angular.module('__MODULE__.core')
 		.controller('AppController', function (CONFIG, $scope, $rootScope, $location, $state, $log, $translate, LoadingService) {
 			var ctrl = this;
-			var LOG = $log.getInstance('AppController - $stateChangeError');
+			var LOG = $log.getInstance('AppController');
 
 			// Global properties:
 			ctrl.spinner = LoadingService.loading;
 			ctrl.page = {
 				title: '',
-				layout: 'default'
+				description: CONFIG.description || '',
+				layout: CONFIG.defaults.layout || 'default'
 			};
 			ctrl.locale = {
-				current : CONFIG.defaults.locale,
+				current : CONFIG.defaults.locale || 'en',
 				use: function (locale) {
 					$translate.use(locale);
 				}
 			};
-
 
 			// Global events handling:
 			$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
@@ -33,6 +33,7 @@
 				$("html, body").animate({scrollTop: 0}, 0);
 
 				ctrl.page.title = toState.data && toState.data.title ? toState.data.title : 'states.' + toState.name + '.title';
+				ctrl.page.description = toState.data && toState.data.description ? toState.data.description : (CONFIG.description || '');
 				ctrl.page.layout = toState.data && toState.data.layout ? toState.data.layout : 'default';
 				ctrl.spinner.active = false;
 			});

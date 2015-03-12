@@ -118,7 +118,8 @@
 	},
 	"states": {
 		"home": {
-			"title": "Accueil"
+			"title": "Accueil",
+			"description": "Description for the Home state page."
 		},
 		"login": {
 			"title": "Connexion"

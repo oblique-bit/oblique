@@ -6,6 +6,8 @@
 		},
 		"app": {
 			"module": "oblique",
+			"title": "ObliqueReactive",
+			"description": "Reactive web template powered by ObliqueUI and AngularJS",
 			"home": "index.html",
 			"api": {
 				"url": "http://localhost:3000",
@@ -14,7 +16,8 @@
 			},
 			"defaults": {
 				"locale": "en",
-				"state": "home"
+				"state": "home",
+				"layout": "default"
 			}
 		},
 		"resources": {
