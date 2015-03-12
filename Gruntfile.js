@@ -554,6 +554,9 @@ module.exports = function (grunt) {
 					'config:<%= currentEnv() %>',
 					'html2js:views'
 				]
+			},
+			options: {
+				livereload: true
 			}
 		},
 
