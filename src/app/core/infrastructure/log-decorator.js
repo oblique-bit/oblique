@@ -20,7 +20,7 @@
 				function enhanceLogging(level, context) {
 					return function () {
 						var args = [].slice.call(arguments);
-						var timestampContext = moment().format() + ' - [ ' + context + ' ]';
+						var timestampContext = moment().format() + ' - [' + context + ']';
 
 						if (args[0] && args[0] instanceof Error) {
 							$delegate.error(timestampContext + ' - ' + args[0].message);
@@ -37,7 +37,7 @@
 					if (isFailedBackendLogRequest(args)) {
 						return;
 					}
-					var backendLogMessage = '[ ' + context + ' ] - ';
+					var backendLogMessage = '[' + context + '] - ';
 					if (args[0]) {
 						if (args[0].hasOwnProperty('status')) {
 							backendLogMessage += args[0].status + ', ' + args[0].config.url;
@@ -51,11 +51,11 @@
 						backendLogMessage = args;
 					}
 					var $http = $injector.get('$http');
-					$http.apiPost('/log/', {level: level, message: backendLogMessage});
+					$http.api.post('/log', {level: level, message: backendLogMessage, silent: true});
 				}
 
 				function isFailedBackendLogRequest(args) {
-					return args && args[0] && args[0].config && args[0].config.url && args[0].config.url.indexOf('log') > -1;
+					return args && args[0] && args[0].config && args[0].config.url && args[0].config.url.indexOf('/log') > -1;
 				}
 
 				return $delegate;

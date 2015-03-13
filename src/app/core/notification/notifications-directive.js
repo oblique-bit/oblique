@@ -4,17 +4,17 @@
 
 	angular
 		.module('__MODULE__.core')
-		.directive('notification', function (NotificationService) {
+		.directive('notifications', function (NotificationService) {
 			return {
-				restrict: 'A',
+				restrict: 'AE',
 				replace: true,
-				scope: {},
-				controller: function () {
+				scope: false,
+				controller: function ($scope, $element, $attrs) {
 
 					var ctrl = this;
 
 					ctrl.alertType = {
-						'default': 'alert animationFadeIn animationFadeOut',
+						default: 'alert animationFadeIn animationFadeOut',
 						info: 'alert alert-info animationFadeIn animationFadeOut',
 						success: 'alert alert-success animationFadeIn animationFadeOut',
 						warning: 'alert alert-warning animationFadeIn animationFadeOut',
@@ -32,16 +32,17 @@
 					};
 				},
 				controllerAs: 'notificationCtrl',
+				bindToController: true,
 
-				// TODO: remove from here!
-				template: '<div class="animationFadeIn" ng-repeat="notification in notificationCtrl.notifications">' +
-				'<div ng-class="notificationCtrl.alertType[notification.type]">' +
-				'<button ng-click="notificationCtrl.remove(notification)" ' +
-				'ng-show="notificationCtrl.isClosable(notification)" type="button" class="close">' +
-				'&times;' +
-				'</button>' +
-				'<p><strong>{{"notification.notification-" + notification.type | translate}}</strong> {{notification.messageKey | translate}}</p>' +
-				'</div>' +
+				template:
+				'<div class="animationFadeIn" ng-repeat="notification in notificationCtrl.notifications">' +
+					'<div class="{{notificationCtrl.alertType[notification.type]}}">' +
+						'<button ng-click="notificationCtrl.remove(notification)" ' +
+							'ng-show="notificationCtrl.isClosable(notification)" type="button" class="close">' +
+							'&times;' +
+						'</button>' +
+						'<p><strong>{{("notification.type." + notification.type) | translate}}</strong> {{notification.messageKey | translate}}</p>' +
+					'</div>' +
 				'</div>',
 				link: function (scope, element, attrs) {
 				}

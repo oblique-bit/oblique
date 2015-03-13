@@ -2,10 +2,14 @@
 	<span class="fa fa-spinner fa-spin fa-4x"></span>
 </div>
 
-{{#each env.resources.vendor.js}}
-	<script src="{{../assets}}{{../paths.vendor}}{{this}}"></script>
-{{~/each}}
+{{#is env.name "prod"}}
+	<script src="{{../assets}}js/{{env.app.module}}.min.js"></script>
+{{else}}
+	{{#each env.resources.vendor.js}}
+		<script src="{{../assets}}{{../paths.vendor}}{{this}}"></script>
+	{{~/each}}
 
-{{#each env.resources.app}}
-	<script src="{{../assets}}{{this}}"></script>
-{{~/each}}
+	{{#each env.resources.app}}
+		<script src="{{../assets}}{{this}}"></script>
+	{{~/each}}
+{{/is}}

@@ -28,10 +28,13 @@
 		"general": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
 		"http": {
 			"status": {
-				"0": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
-				"400": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
-				"404": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
-				"500": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support"
+				"0": "Service Unavailable",
+				"400": "Bad Request",
+				"404": "The requested resource could not be found",
+				"500": "Internal Server Error",
+				"501": "Not Implemented",
+				"502": "Bad Gateway",
+				"503": "Service Unavailable"
 			}
 		},
 		"other": {
@@ -43,7 +46,7 @@
 		}
 	},
 	"notification": {
-		"": {
+		"type": {
 			"default": "",
 			"info": "Info",
 			"success": "Erfolgreich",

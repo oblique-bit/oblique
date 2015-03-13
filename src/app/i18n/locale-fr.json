@@ -28,10 +28,13 @@
 		"general": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
 		"http": {
 			"status": {
-				"0": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
-				"400": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
-				"404": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
-				"500": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support"
+				"0": "Service temporairement indisponible ou en maintenance",
+				"400": "La syntaxe de la requête est erronée",
+				"404": "Ressource non trouvée",
+				"500": "Erreur interne du serveur",
+				"501": "Fonctionnalité réclamée non supportée par le serveur",
+				"502": "Mauvaise réponse envoyée à un serveur intermédiaire par un autre serveur.",
+				"503": "Service temporairement indisponible ou en maintenance"
 			}
 		},
 		"other": {

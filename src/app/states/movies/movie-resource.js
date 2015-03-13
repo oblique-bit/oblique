@@ -18,15 +18,15 @@
 			// Implementation ----------------------------------------------------------------------------------------------
 
 			function findAll() {
-				return $http.apiGet('/movies');
+				return $http.api.get('/movies');
 			}
 
 			function find(movieId) {
-				return $http.apiGet('/movies/' + movieId);
+				return $http.api.get('/movies/' + movieId);
 			}
 
 			function add(name, description, price) {
-				return $http.apiPost('/movies', {
+				return $http.api.post('/movies', {
 					name: name,
 					description: description,
 					price: price
@@ -34,7 +34,7 @@
 			}
 
 			function save(movieId, name, description, price) {
-				return $http.apiPut('/movies/' + movieId, {
+				return $http.api.put('/movies/' + movieId, {
 					name: name,
 					description: description,
 					price: price
@@ -42,7 +42,7 @@
 			}
 
 			function remove(movieId) {
-				return $http.apiDelete('/movies/' + movieId);
+				return $http.api.delete('/movies/' + movieId);
 			}
 		});
 }());

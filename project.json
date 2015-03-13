@@ -40,7 +40,7 @@
 				"app/core/infrastructure/http-interceptor.js",
 				"app/core/infrastructure/exception-handler-decorator.js",
 
-				"app/core/notification/notification-directive.js",
+				"app/core/notification/notifications-directive.js",
 				"app/core/notification/notification-service.js",
 
 				"app/core/services/loading-service.js",

@@ -26,21 +26,14 @@ app.use(function (req, res, next) {
 
 // RESTFul API definition
 // ------------------------------------
-app.get('/movies', function (request, response) {
-	console.log('[Server]: /movies');
+app.get('/api/movies', function (request, response) {
+	console.log('[API]: /movies');
 	response.send(movies.results);
-	/*http.get("http://private-022ee-themoviedb.apiary-mock.com/3/search/movie", function(result) {
-		console.log("Got response: " + result.statusCode);
-		response.send({foo: "bar"});
-	}).on('error', function(e) {
-		console.log("Got error: " + e.message);
-	});*/
 });
 
 // Debug only:
-app.options('/log', function (req, res) {
-	console.log('[Server]: /log - %s', req);
-	//console.log(req);
+app.post('/api/log', function (req, res) {
+	console.log('[API]: /log - %s', JSON.stringify(req.body));
 });
 
 // Start server

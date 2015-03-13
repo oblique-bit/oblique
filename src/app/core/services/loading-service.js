@@ -27,10 +27,10 @@
 					};
 
 					function start() {
-						// store id in start()'s closure
+						// Store id for later comparison:
 						var id = loadingId;
-						// create timeout and fail in case request takes too long to execute
-						var timeout = $timeout(function () {
+						// Create timeout and fail in case request takes too long to execute:
+						loadings.push({id: loadingId, timeout: $timeout(function () {
 							// when timeout, search if timeout is still active, when yes show error
 							var loading = _.filter(loadings, function (loading) { // FIXME: remove lodash?
 								return loading.id === id;
@@ -39,10 +39,7 @@
 								stop();
 								NotificationService.add('error', 'error.other.timeout');
 							}
-
-						}, timeout);
-
-						loadings.push({id: loadingId, timeout: timeout});
+						}, timeout)});
 						loadingId++;
 						loading.active = loadings.length > 0;
 					}

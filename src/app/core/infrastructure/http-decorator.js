@@ -3,7 +3,7 @@
 	"use strict";
 
 	/**
-	 * Decorates the `$http` service with shortcut methods for including contextual API url.
+	 * Decorates the `$http` service with shortcut for including contextual API methods.
 	 *
 	 * Reworked from standard decorator which uses $delegate to service which is called during application
 	 * initialization in app-module.js (run method) to prevent circular dependency (3rd party upload service)
@@ -14,21 +14,30 @@
 
 			return {
 				decorate: function () {
-					$http.apiHead = withApiUrl($http.head);
-					$http.apiGet = withApiUrl($http.get);
-					$http.apiPost = withApiUrl($http.post);
-					$http.apiPut = withApiUrl($http.put);
-					$http.apiDelete = withApiUrl($http['delete']);
-					$http.apiPatch = withApiUrl($http.patch);
+					$http.api = $http.api || {};
+					$http.api.url = apiUrl;
+					$http.api.head = withApiUrl($http.head);
+					$http.api.get = withApiUrl($http.get);
+					$http.api.post = withApiUrl($http.post);
+					$http.api.put = withApiUrl($http.put);
+					$http.api.delete = withApiUrl($http['delete']);
+					$http.api.patch = withApiUrl($http.patch);
+					$http.api.isApiCall= function(url) {
+						return url.indexOf(apiUrl()) > -1;
+					};
 				}
 			};
 
 			function withApiUrl(httpFunction) {
 				return function () {
 					var args = [].slice.call(arguments);
-					args[0] = CONFIG.api.url + args[0];
+					args[0] = apiUrl() + args[0];
 					return httpFunction.apply(null, args);
 				};
+			}
+
+			function apiUrl() {
+				return CONFIG.api.url + CONFIG.api.path;
 			}
 		});
 }());
