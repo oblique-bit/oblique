@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://stash.eap.bit.admin.ch/scm/../TODO.git"
+    "url": "http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive.git"
   },
   "devDependencies": {
     "assemble": "^0.4.42",
@@ -36,6 +36,7 @@
     "grunt-jscs": "^1.5.0",
     "grunt-karma": "^0.10.1",
     "grunt-ng-annotate": "^0.10.0",
+    "grunt-nodemon": "^0.4.0",
     "grunt-text-replace": "^0.4.0",
     "grunt-usemin": "^3.0.0",
     "handlebars-helper-prettify": "^0.2.1",
