@@ -560,6 +560,23 @@ module.exports = function (grunt) {
 			}
 		},
 
+		/*
+		 * grunt-nodemon
+		 *
+		 * https://github.com/ChrisWren/grunt-nodemon
+		 *
+		 * Monitor for any changes in your node.js application and automatically restart the server - perfect for development
+		 * http://nodemon.io/
+		 */
+		nodemon: {
+			dummy: {
+				script: 'server/server.js',
+				options:{
+					watch: ['server/']
+				}
+			}
+		},
+
 		currentEnv: function() {
 			return grunt.task.current.args[0] || "dev";
 		}
@@ -644,6 +661,10 @@ module.exports = function (grunt) {
 	// Default:
 	grunt.registerTask('default', ['run-dev']);
 
+	// Test-only tasks
+	// ----------------------------------
+	grunt.registerTask('dummy-server', ['nodemon']);
+
 	// Template-only tasks
 	// ----------------------------------
 
@@ -654,4 +675,5 @@ module.exports = function (grunt) {
 			"bump-commit"
 		]);
 	});
+
 };

@@ -7,8 +7,7 @@ var express = require('express'),
 // ------------------------------------
 var app = express(),
 	corsUrl = 'http://localhost:9000',
-	port = 3000,
-	server;
+	port = 3000;
 
 // Use JSON body-parser to get POST data:
 app.use(bodyParser.json());
@@ -40,18 +39,18 @@ app.get('/movies', function (request, response) {
 
 // Debug only:
 app.options('/log', function (req, res) {
-	console.log('[Server]: /log - ' + req);
+	console.log('[Server]: /log - %s', req);
 	//console.log(req);
 });
 
 // Start server
 // ------------------------------------
-server = app.listen(port, function () {
-	console.log('Simple server listening at http://localhost:%s', server.address().port);
+module.exports = app.listen(port, function () {
+	console.log('Server listening at http://localhost:%s', port);
 });
 
 
-// Dummy data:
+// Dummy data
 // ------------------------------------
 var movies = {
 	"page": 1,

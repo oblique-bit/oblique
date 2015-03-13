@@ -120,9 +120,9 @@ _This task loads the `dev` environment configuration, builds the project, runs t
 
 #### [Optional] Start the *dummy* API server
 
-Should you backend not be ready to consume, you can test the client application by starting a local *dummy* API server:
+Should your backend API not be ready to consume, you can test the client application by starting a local *dummy* API server:
 
-	node server/server.js
+	grunt dummy-server
 
 > Note that you should remove this local server as soon as your backend is ready to consume!
 
