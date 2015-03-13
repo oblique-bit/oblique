@@ -14,17 +14,29 @@
 	<div class="row">
 		<div class="col-xs-8">
 			<h2>{{movie.title}}</h2>
-			<p class="lead">
-				<span class="fa fa-calendar-o"></span>
-				<span>{{movie.release_date}}</span>
-				<span class="fa fa-heart-o"></span>
-				<span>{{movie.vote_average}}</span>
-				<span class="fa fa-star-o"></span>
-				<span>{{movie.vote_count}}</span>
-			</p>
+			<dl class="lead">
+				<dt>
+					<span class="fa fa-calendar-o"></span>
+				</dt>
+				<dd>
+					<span>{{movie.release_date}}</span>
+				</dd>
+				<dt>
+					<span class="fa fa-heart-o"></span>
+				</dt>
+				<dd>
+					<span>{{movie.vote_average}}</span>
+				</dd>
+				<dt>
+					<span class="fa fa-star-o"></span>
+				</dt>
+				<dd>
+					<span>{{movie.vote_count}}</span>
+				</dd>
+			</dl>
 		</div>
 		<div class="col-xs-4" ng-if="movie.poster_path">
-			<img src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" title="{{movie.original_title}}" class="img-responsive" />
+			<img ng-src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" title="{{movie.original_title}}" class="img-responsive" />
 		</div>
 	</div>
 </div>
