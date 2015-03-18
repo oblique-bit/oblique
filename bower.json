@@ -2,7 +2,7 @@
   "name": "oblique-reactive",
   "title": "ObliqueReactive",
   "description": "Reactive web template powered by ObliqueUI and AngularJS",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "authors": [
     "Dario Poggiali <Dario.Poggiali@bit.admin.ch>",
