@@ -31,7 +31,7 @@
 				if ($http.api.isApiCall(response.config.url)) {
 					LoadingService.stop();
 				}
-				// Unwrap api responses
+				// Unwrap api responses:
 				if (response.data && $http.api.isApiCall(response.config.url)) {
 					return response.data;
 				} else {
@@ -47,21 +47,12 @@
 				if (rejection.data && rejection.data.error && rejection.data.error.errors) {
 					rejection.data.error.errors.forEach(function (error, index) {
 						NotificationService.add(error.messageSeverity, 'error.business.' + error.messageKey);
-						handleOptimisticLockingException(error);
 					});
-				} else if(!isSilent(rejection.config)) {
+				} else if(rejection.status >= 500 && !isSilent(rejection.config)) {
 					NotificationService.add('error', 'error.http.status.' + rejection.status);
 				}
 				LOG.error(rejection);
 				return $q.reject(rejection);
-			}
-
-			function handleOptimisticLockingException(error) {
-				if (error.messageKey === 'ObjectOptimisticLockingFailureException') {
-					// Reload state:
-					var $state = state();
-					$state.go($state.current.name, {}, {reload: true});
-				}
 			}
 
 			function isSilent(config) {
@@ -71,9 +62,6 @@
 			// Others services are injected on demand in order to prevent circular dependency during factory creation:
 			function http(){
 				return $injector.get('$http');
-			}
-			function state(){
-				return $injector.get('$state');
 			}
 		});
 }());

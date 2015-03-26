@@ -43,13 +43,15 @@
 				"app/core/notification/notifications-directive.js",
 				"app/core/notification/notification-service.js",
 
+				"app/core/services/session-service.js",
+				"app/core/services/auth-service.js",
 				"app/core/services/loading-service.js",
+
+				"app/states/auth/auth-module.js",
+				"app/states/auth/auth-controller.js",
 
 				"app/states/home/home-module.js",
 				"app/states/home/home-controller.js",
-
-				"app/states/login/login-module.js",
-				"app/states/login/login-controller.js",
 
 				"app/states/movies/movies-module.js",
 				"app/states/movies/movie-resource.js",

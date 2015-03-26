@@ -3,28 +3,32 @@
 	"use strict";
 
 	angular.module('__MODULE__.core')
-		.controller('AppController', function (CONFIG, $scope, $rootScope, $location, $state, $log, $translate, LoadingService) {
-			var ctrl = this;
+		.controller('AppController', function (CONFIG, SessionService, AuthService, $scope, $rootScope, $state, $log, $translate, LoadingService) {
+			var $this = this;
 			var LOG = $log.getInstance('AppController');
 
 			// Global properties:
-			ctrl.spinner = LoadingService.loading;
-			ctrl.page = {
+			$this.context = SessionService.context;
+			$this.spinner = LoadingService.loading;
+			$this.page = {
 				title: '',
 				description: CONFIG.description || '',
 				layout: CONFIG.defaults.layout || 'default'
 			};
-			ctrl.locale = {
+			$this.locale = {
 				current : CONFIG.defaults.locale || 'en',
 				use: function (locale) {
 					$translate.use(locale);
 				}
 			};
 
+			// Global actions:
+			$this.logout = AuthService.logout;
+
 			// Global events handling:
 			$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 				if (toState.resolve) {
-					ctrl.spinner.active = true;
+					$this.spinner.active = true;
 				}
 			});
 
@@ -32,20 +36,24 @@
 				// Scroll to top of page on state change:
 				$("html, body").animate({scrollTop: 0}, 0);
 
-				ctrl.page.title = toState.data && toState.data.title ? toState.data.title : 'states.' + toState.name + '.title';
-				ctrl.page.description = toState.data && toState.data.description ? toState.data.description : (CONFIG.description || '');
-				ctrl.page.layout = toState.data && toState.data.layout ? toState.data.layout : 'default';
-				ctrl.spinner.active = false;
+				$this.page.title = toState.data && toState.data.title ? toState.data.title : 'states.' + toState.name + '.title';
+				$this.page.description = toState.data && toState.data.description ? toState.data.description : (CONFIG.description || '');
+				$this.page.layout = toState.data && toState.data.layout ? toState.data.layout : 'default';
+				$this.spinner.active = false;
 			});
 
 			$rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
 				LOG.error(error);
-				ctrl.spinner.active = false;
+				$this.spinner.active = false;
 				$state.reload(fromState);
 			});
 
 			$rootScope.$on('$translateChangeSuccess', function (event, data) {
-				ctrl.locale.current = data.language;
+				$this.locale.current = data.language;
 			});
+
+			// Try to resolve & authenticate user, if any:
+			// FIXME: this should be resolved in another way, cf: https://github.com/angular/angular.js/issues/5854
+			AuthService.resolve();
 		});
 }());

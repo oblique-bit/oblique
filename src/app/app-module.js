@@ -9,8 +9,8 @@
 
 			'__MODULE__.app-templates',
 			'__MODULE__.core',
+			'__MODULE__.auth',
 			'__MODULE__.home',
-			'__MODULE__.login',
 			'__MODULE__.movies'
 		])
 		.constant('CONFIG', window['__MODULE__'].CONFIG)

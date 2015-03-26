@@ -5,57 +5,44 @@
 	angular
 		.module('__MODULE__.core')
 		.config(function ($provide) {
-			$provide.decorator("$log", function ($delegate, $injector) {
+			$provide.decorator("$log", function (CONFIG, $delegate, $injector) {
 
 				$delegate.getInstance = function (context) {
 					return {
-						log: enhanceLogging('log', context),
-						info: enhanceLogging('info', context),
-						warn: enhanceLogging('warn', context),
-						error: enhanceLogging('error', context),
-						debug: enhanceLogging('debug', context)
+						log: decorate('log', context),
+						info: decorate('info', context),
+						warn: decorate('warn', context),
+						error: decorate('error', context),
+						debug: decorate('debug', context)
 					};
 				};
 
-				function enhanceLogging(level, context) {
+				var apiLogPath = CONFIG.api && CONFIG.api.log;
+
+				function decorate(level, context) {
 					return function () {
 						var args = [].slice.call(arguments);
-						var timestampContext = moment().format() + ' - [' + context + ']';
+						var message = moment().format() + ' - [' + context + ']';
 
 						if (args[0] && args[0] instanceof Error) {
-							$delegate.error(timestampContext + ' - ' + args[0].message);
-							$delegate.error(args[0]);
+							message += args[0].message;
 						} else {
-							$delegate[level](timestampContext + ' - ' + args);
+							message += JSON.stringify(args);
 						}
-						logToBackend(level, context, args);
+
+						// Use $delegate as logger interface:
+						$delegate[level](message);
+
+						// Log to backend, if required:
+						if(apiLogPath && !isFailedBackendLogRequest(args)){
+							var $http = $injector.get('$http');
+							$http.api.post(apiLogPath, {level: level, message: message, silent: true});
+						}
 					};
 				}
 
-				function logToBackend(level, context, args) {
-					// Prevent backend error logging when backend is inaccessible
-					if (isFailedBackendLogRequest(args)) {
-						return;
-					}
-					var backendLogMessage = '[' + context + '] - ';
-					if (args[0]) {
-						if (args[0].hasOwnProperty('status')) {
-							backendLogMessage += args[0].status + ', ' + args[0].config.url;
-						}
-						if (args[0].hasOwnProperty('message')) {
-							backendLogMessage += args[0].message;
-						} else {
-							backendLogMessage += args[0];
-						}
-					} else {
-						backendLogMessage = args;
-					}
-					var $http = $injector.get('$http');
-					$http.api.post('/log', {level: level, message: backendLogMessage, silent: true});
-				}
-
 				function isFailedBackendLogRequest(args) {
-					return args && args[0] && args[0].config && args[0].config.url && args[0].config.url.indexOf('/log') > -1;
+					return args && args[0] && args[0].config && args[0].config.url && args[0].config.url.indexOf(apiLogPath) > -1;
 				}
 
 				return $delegate;

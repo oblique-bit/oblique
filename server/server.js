@@ -15,6 +15,11 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 
+app.use(function (req, res, next) {
+	console.log('[API]: %s', req.url);
+	next();
+});
+
 // Enable CORS from corsUrl:
 app.use(function (req, res, next) {
 	res.header('Access-Control-Allow-Origin', corsUrl);
@@ -26,8 +31,24 @@ app.use(function (req, res, next) {
 
 // RESTFul API definition
 // ------------------------------------
+
+var users = {
+	'info@bit.admin.ch' : {
+		email: 'info@bit.admin.ch'
+	}
+};
+
+app.post('/api/auth/login', function (request, response) {
+	var user = users[request.body.email];
+	if(user) {
+		response.send(user);
+	} else {
+		response.status(401).send();
+	}
+});
+
+
 app.get('/api/movies', function (request, response) {
-	console.log('[API]: /movies');
 	response.send(movies.results);
 });
 

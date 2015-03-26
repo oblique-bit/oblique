@@ -612,13 +612,13 @@ module.exports = function (grunt) {
 	grunt.registerTask('serve-dev', [
 		'config:dev',
 		'connect:local',
-		'watch'
+		'watch-dev'
 	]);
 
 	grunt.registerTask('serve-prod', [
 		'config:prod',
 		'connect:local:keepalive',
-		'watch::prod'
+		'watch-prod'
 	]);
 
 	// Run (build & serve):

@@ -35,7 +35,7 @@
 						notifications.unshift(notification);
 						notifications.sort(sortNotifications);
 						if (!sticky) {
-							$timeout(removeWithTimeout(notificationId), timeout);
+							$timeout(removeWithTimeout(notificationId), timeout*2);
 						}
 						notificationId++;
 					}

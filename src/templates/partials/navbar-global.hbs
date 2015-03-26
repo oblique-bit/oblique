@@ -2,7 +2,10 @@
 	<li role="menuitem" ui-sref-active="active">
 		<a href="" ui-sref="home">\{{'states.home.title' | translate}}</a>
 	</li>
-	<li role="menuitem" ui-sref-active="active">
+	<li role="menuitem" ui-sref-active="active" ng-if="appController.user">
 		<a href="" ui-sref="movies">\{{'states.movies.title' | translate}}</a>
+	</li>
+	<li role="menuitem" ui-sref-active="active" ng-if="!appController.user">
+		<a href="" ui-sref="auth.login">\{{'states.login.title' | translate}}</a>
 	</li>
 </ul>
