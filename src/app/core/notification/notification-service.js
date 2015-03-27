@@ -8,18 +8,36 @@
 
 			var timeout = 1500;
 			var notifications = [];
+			var types = {
+				'default' : {
+					priority: 0
+				},
+				info : {
+					priority: 1
+				},
+				success : {
+					priority: 2
+				},
+				warning : {
+					priority: 3
+				},
+				error : {
+					priority: 4
+				}
+			};
 
 			return {
 				setTimeout: function (value) {
 					timeout = value;
 				},
 				$get: function ($timeout) {
-					var notificationId = 0;
+					var currentId = 0;
 
 					return {
 						notifications: notifications,
 						add: add,
-						remove: remove
+						remove: remove,
+						clear: clear
 					};
 
 					function add(type, messageKey, sticky) {
@@ -27,7 +45,7 @@
 							sticky = true;
 						}
 						var notification = {
-							notificationId: notificationId,
+							id: currentId,
 							type: type,
 							messageKey: messageKey,
 							sticky: sticky
@@ -35,50 +53,27 @@
 						notifications.unshift(notification);
 						notifications.sort(sortNotifications);
 						if (!sticky) {
-							$timeout(removeWithTimeout(notificationId), timeout*2);
+							$timeout(function(){
+								remove(notification.id);
+							}, timeout*2);
 						}
-						notificationId++;
+						currentId++;
 					}
 
-					function remove(notificationId) {
-						notifications.forEach(function (displayedNotification, index) {
-							if (notificationId === displayedNotification.notificationId) {
+					function remove(id) {
+						notifications.forEach(function (notification, index) {
+							if (id === notification.id) {
 								notifications.splice(index, 1);
 							}
 						});
 					}
 
-					function removeWithTimeout(notificationId) {
-						var id = notificationId;
-						return function () {
-							notifications.forEach(function (displayedNotification, index) {
-								if (id === displayedNotification.notificationId) {
-									notifications.splice(index, 1);
-								}
-							});
-						};
+					function clear() {
+						notifications.length = 0; // ;)
 					}
 
 					function sortNotifications(a, b) {
-						function getTypeValue(type) {
-							if (type === 'default') {
-								return 0;
-							}
-							if (type === 'info') {
-								return 1;
-							}
-							if (type === 'success') {
-								return 2;
-							}
-							if (type === 'warning') {
-								return 3;
-							}
-							if (type === 'error') {
-								return 4;
-							}
-						}
-
-						return getTypeValue(a.type) < getTypeValue(b.type);
+						return types[a.type].priority < types[b.type].priority;
 					}
 				}
 			};

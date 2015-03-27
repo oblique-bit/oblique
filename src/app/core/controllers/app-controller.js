@@ -10,6 +10,7 @@
 			// Global properties:
 			$this.context = SessionService.context;
 			$this.spinner = LoadingService.loading;
+			$this.title = CONFIG.title;
 			$this.page = {
 				title: '',
 				description: CONFIG.description || '',
@@ -23,6 +24,7 @@
 			};
 
 			// Global actions:
+			$this.isAuthenticated = AuthService.isAuthenticated;
 			$this.logout = AuthService.logout;
 
 			// Global events handling:

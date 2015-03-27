@@ -6,6 +6,7 @@
 			'ngCookies',
 			'ui.router',
 			'pascalprecht.translate',
+			'satellizer',
 
 			'__MODULE__.app-templates',
 			'__MODULE__.core',
@@ -17,9 +18,17 @@
 		.config(function ($logProvider) {
 			$logProvider.debugEnabled(true);
 		})
+		.config(function (CONFIG, $authProvider) {
+			$authProvider.signupUrl = CONFIG.api.url + '/auth/register';
+			$authProvider.signupRedirect = '/';
+			$authProvider.loginUrl = CONFIG.api.url + '/auth/login';
+			$authProvider.loginRedirect = '/';
+			$authProvider.logoutRedirect = '/';
+			$authProvider.tokenPrefix = CONFIG.module; // Local Storage name prefix
+		})
 		.config(function ($httpProvider, CONFIG) {
 			if (CONFIG.dev && CONFIG.dev.sendCredentials) {
-				$httpProvider.defaults.withCredentials = CONFIG.dev.sendCredentials;
+				//$httpProvider.defaults.withCredentials = CONFIG.dev.sendCredentials;
 			}
 			$httpProvider.interceptors.push('HttpInterceptor');
 		})

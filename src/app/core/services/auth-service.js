@@ -4,7 +4,7 @@
 
 	angular
 		.module('__MODULE__.core')
-		.factory('AuthService', function ($http, SessionService) {
+		.factory('AuthService', function ($http, $auth, SessionService) {
 			var service = {};
 
 			service.init = function(user) {
@@ -21,28 +21,28 @@
 
 			service.login = function (credentials) {
 				// TODO: replace with your own login implementation here!
-				return $http.api.post('/auth/login', credentials).then(function(user) {
+				return $auth.login(credentials).then(function(user, status){
 					return service.init(user);
 				});
 			};
 
 			service.logout = function () {
 				// TODO: replace with your own logout implementation here!
-				return $http.api.post('/auth/logout').then(function(user) {
+				return $auth.logout().then(function () {
 					return SessionService.destroy();
 				});
 			};
 
 			service.register = function (user) {
 				// TODO: replace with your own registration implementation here, if any!
-				return $http.api.post('/auth/register').then(function(user) {
+				return $auth.signup(user).then(function () {
 					return service.init(user);
 				});
 			};
 
 			service.isAuthenticated = function () {
 				// TODO: replace with your own authentication implementation here!
-				return !!SessionService.context.user;
+				return $auth.isAuthenticated();
 			};
 
 			service.isAuthorized = function (authorizedRoles) {

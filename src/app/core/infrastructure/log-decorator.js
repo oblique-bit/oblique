@@ -17,7 +17,7 @@
 					};
 				};
 
-				var apiLogPath = CONFIG.api && CONFIG.api.log;
+				var apiLogPath = CONFIG.api && CONFIG.api.logs;
 
 				function decorate(level, context) {
 					return function () {

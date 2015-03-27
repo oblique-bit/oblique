@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "assemble": "^0.4.42",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.12.0",
     "express": "^4.12.2",
     "fs-utils": "~0.6.0",
@@ -41,6 +42,7 @@
     "grunt-text-replace": "^0.4.0",
     "grunt-usemin": "^3.0.0",
     "handlebars-helper-prettify": "^0.2.1",
+    "jwt-simple": "^0.2.0",
     "karma": "^0.12.31",
     "karma-chrome-launcher": "^0.1.7",
     "karma-firefox-launcher": "^0.1.4",
@@ -50,7 +52,11 @@
     "karma-spec-reporter": "0.0.16",
     "karma-story-reporter": "^0.3.1",
     "load-grunt-tasks": "~3.1.0",
-    "lodash": "^3.5.0"
+    "lodash": "^3.5.0",
+    "mockgoose": "^1.10.7",
+    "mongoose": "^3.8.25",
+    "moment": "^2.8.3",
+    "request": "^2.42.0"
   },
   "scripts": {
     "postinstall": "bower install"

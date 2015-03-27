@@ -31,12 +31,7 @@
 				if ($http.api.isApiCall(response.config.url)) {
 					LoadingService.stop();
 				}
-				// Unwrap api responses:
-				if (response.data && $http.api.isApiCall(response.config.url)) {
-					return response.data;
-				} else {
-					return response;
-				}
+				return response;
 			}
 
 			function handleResponseError(rejection) {

@@ -8,10 +8,10 @@
 			"module": "oblique",
 			"title": "ObliqueReactive",
 			"description": "Reactive web template powered by ObliqueUI and AngularJS",
-			"home": "index.html",
+			"home": "#/home",
 			"api": {
-				"url": "http://localhost:3000",
-				"path": "/api",
+				"url": "http://localhost:3000/api",
+				"logs": "/logs",
 				"sendCredentials": false
 			},
 			"defaults": {
@@ -71,9 +71,12 @@
 					"angular-translate-loader-static-files/angular-translate-loader-static-files.js",
 					"angular-translate-storage-cookie/angular-translate-storage-cookie.js",
 					"angular-translate-storage-local/angular-translate-storage-local.js",
-					"angular-ui-router/release/angular-ui-router.js"
+					"angular-ui-router/release/angular-ui-router.js",
+					"satellizer/satellizer.js"
 				],
-				"css": []
+				"css": [
+					"angular/angular-csp.css"
+				]
 			}
 		}
 	},

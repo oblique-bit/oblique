@@ -15,15 +15,17 @@
 			return {
 				decorate: function () {
 					$http.api = $http.api || {};
-					$http.api.url = apiUrl;
+					$http.api.url = CONFIG.api.url;
+
 					$http.api.head = withApiUrl($http.head);
 					$http.api.get = withApiUrl($http.get);
 					$http.api.post = withApiUrl($http.post);
 					$http.api.put = withApiUrl($http.put);
 					$http.api.delete = withApiUrl($http['delete']);
 					$http.api.patch = withApiUrl($http.patch);
+
 					$http.api.isApiCall= function(url) {
-						return url.indexOf(apiUrl()) > -1;
+						return url.indexOf($http.api.url) > -1;
 					};
 				}
 			};
@@ -31,13 +33,12 @@
 			function withApiUrl(httpFunction) {
 				return function () {
 					var args = [].slice.call(arguments);
-					args[0] = apiUrl() + args[0];
-					return httpFunction.apply(null, args);
+					args[0] = $http.api.url + args[0];
+					return httpFunction.apply(null, args).then(function(response) {
+						// Unwrap API responses:
+						return response.data;
+					});
 				};
-			}
-
-			function apiUrl() {
-				return CONFIG.api.url + CONFIG.api.path;
 			}
 		});
 }());

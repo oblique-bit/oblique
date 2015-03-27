@@ -4,6 +4,27 @@
 		"longName": "ObliqueReactive",
 		"description": "Reactive web template powered by ObliqueUI and AngularJS"
 	},
+	"states": {
+		"home": {
+			"title": "Home",
+			"description": "Description for the Home state page."
+		},
+		"auth": {
+			"title": "Sign in",
+			"login": {
+				"title": "Login",
+				"submit": "Log in",
+				"password-lost": "Forgot password?"
+			},
+			"register": {
+				"title": "New to {{title}}? Sign up!",
+				"submit": "Register"
+			}
+		},
+		"movies": {
+			"title": "Movies"
+		}
+	},
 	"common": {
 		"yes": "Yes",
 		"no": "No",
@@ -117,18 +138,6 @@
 			"cancel": "Cancel",
 			"next": "Next",
 			"back": "Back"
-		}
-	},
-	"states": {
-		"home": {
-			"title": "Home",
-			"description": "Description for the Home state page."
-		},
-		"login": {
-			"title": "Sign in"
-		},
-		"movies": {
-			"title": "Movies"
 		}
 	}
 }
