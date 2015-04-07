@@ -37,6 +37,7 @@
 				"app/core/directives/table-navigable-directive.js",
 				"app/core/directives/dropdown-closable-directive.js",
 				"app/core/directives/enter-directive.js",
+                "app/core/directives/delayed-change-directive.js",
 
 				"app/core/infrastructure/log-decorator.js",
 				"app/core/infrastructure/http-decorator.js",
