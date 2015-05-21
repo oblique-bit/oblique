@@ -43,6 +43,9 @@
 			$translateProvider.preferredLanguage(CONFIG.defaults.locale);
 			$translateProvider.useLocalStorage();
 		})
+        .config(function (CONFIG, LoadingServiceProvider) {
+            LoadingServiceProvider.setTimeout(CONFIG.defaults.http.timeout);
+        })
 		.run(function ($httpDecorator) {
 			// Decorate $http with prebuilt API methods:
 			$httpDecorator.decorate();

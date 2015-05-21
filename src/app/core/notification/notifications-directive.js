@@ -28,7 +28,7 @@
 					};
 
 					ctrl.remove = function (notification) {
-						NotificationService.remove(notification.notificationId);
+						NotificationService.remove(notification.id);
 					};
 				},
 				controllerAs: 'notificationCtrl',
