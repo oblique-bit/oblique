@@ -1,0 +1,19 @@
+﻿<div class="input-group datepicker" ng-class="{'input-group-sm' : controlSize == 'sm'}">
+	<span ng-if="label" for="{{controlId}}" class="input-group-addon">{{label}}</span>
+	<input name="{{name}}" type="text" class="form-control" placeholder="{{('common.date.format.' + config.datepickerPopup) | translate}}"
+	       ng-attr-id="{{controlId}}"
+	       ng-model="ngModel" ng-class="{'form-control-activable' : !disabled && !editable}"
+	       ng-disabled="disabled" ng-required="required" ng-readonly="disabled || !editable"
+	       datepicker-popup
+	       is-open="opened" enter="close()"
+	       ng-model-options="{ debounce: { 'default': 650, 'blur': 0 } }"
+	       date-picker-parser schema-validate />
+	<span class="input-group-btn">
+		<button class="btn btn-default" type="button" ng-click="clear($event)" ng-if="!required && showClearControl" ng-disabled="disabled">
+			<span class="fa fa-times"></span>
+		</button>
+		<button class="btn btn-default" type="button" ng-click="toggle($event)" ng-disabled="disabled">
+			<span class="fa fa-calendar"></span>
+		</button>
+	</span>
+</div>

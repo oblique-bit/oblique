@@ -1,0 +1,49 @@
+// <patch>: fixes angular-bootstrap 0.12 issues with bootstrap 3.3.x modals
+// TODO: remove when https://github.com/angular-ui/bootstrap/pull/3117 has been merged and released
+.modal-backdrop {
+	bottom: 0;
+	position: fixed;
+}
+// </patch>
+
+.datepicker {
+	ul {
+		button {
+			background-color: #fff;
+			border: none;
+		}
+
+		li, div, table {
+			&:focus {
+				outline: none;
+			}
+		}
+	}
+}
+
+.timepicker {
+
+	td.form-group + td {
+		padding: 5px;
+	}
+
+	&.timepicker-condensed{
+		display: inline-block;
+		vertical-align: middle;
+
+		tr.text-center {
+			display: none;
+		}
+
+		+ .form-control-static {
+			display: inline-block;
+			vertical-align: bottom;
+		}
+	}
+}
+
+[msd-elastic] {
+	resize: none;
+	max-height: 100px;
+	min-height: 34px; // IE9+ fix
+}

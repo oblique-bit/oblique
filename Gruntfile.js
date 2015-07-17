@@ -189,6 +189,7 @@ module.exports = function (grunt) {
 				// Layout placeholders override:
 				'html-attrs': 'ng-controller="AppController as appController"',
 				'ui-layout': "{{appController.layout}}",
+				'application-fixed': true,
 
 				// App-specific configuration used by ObliqueUI layouts:
 				app: {

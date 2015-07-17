@@ -2,13 +2,13 @@
 	<div class="cover-header">
 		<h1>{{'states.auth.title' | translate}}</h1>
 	</div>
-	<div class="form-group">
+	<div class="form-group" has-error>
 		<label class="col-sm-3 control-label">Email</label>
 		<div class="col-sm-9">
 			<input ng-model="user.email" type="email" class="form-control" placeholder="Email" required />
 		</div>
 	</div>
-	<div class="form-group">
+	<div class="form-group" has-error>
 		<label class="col-sm-3 control-label">Password</label>
 		<div class="col-sm-9">
 			<input ng-model="user.password" type="password" class="form-control" placeholder="Password" required />
@@ -17,9 +17,8 @@
 	<div class="form-group">
 		<div class="col-sm-offset-3 col-sm-9">
 			<div class="checkbox">
-				<label>
-					<input type="checkbox">Remember me
-				</label>
+				<input id="rememberme" type="checkbox">
+				<label for="rememberme">Remember me</label>
 			</div>
 		</div>
 	</div>

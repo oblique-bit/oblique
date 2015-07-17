@@ -17,7 +17,7 @@ module.exports = function (config) {
 			}
 
 			// Store user on request:
-			req.user = payload.sub;
+			req.user = payload.user;
 
 			// Continue:
 			next();
@@ -26,7 +26,7 @@ module.exports = function (config) {
 		// Generates a JSON Web Token:
 		createToken: function (user) {
 			var payload = {
-				sub: user._id,
+				user: user._id,
 				iat: moment().unix(),
 				exp: moment().add(14, 'days').unix()
 			};

@@ -23,6 +23,15 @@
 		},
 		"movies": {
 			"title": "Movies"
+		},
+		"samples": {
+			"title" : "Samples",
+			"navigable":{
+				"title": "Navigable"
+			},
+			"schema-validation" : {
+				"title": "Schema Validation"
+			}
 		}
 	},
 	"common": {
@@ -31,6 +40,7 @@
 		"save": "Speichern",
 		"cancel": "Abbrechen",
 		"delete": "Löschen",
+		"select": "Wählen bitte.",
 		"actions": "Aktionen",
 		"action": "Aktion",
 		"pager": {
@@ -39,6 +49,11 @@
 			"page": "Seite",
 			"of": "von",
 			"hits": "Suchtreffen"
+		},
+		"date": {
+			"format": {
+				"dd.MM.yyyy": "TT.MM.JJJJ"
+			}
 		}
 	},
 	"labels": {

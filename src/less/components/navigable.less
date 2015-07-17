@@ -1,0 +1,54 @@
+@navigable-height: 56px;
+
+.navigable {
+    min-height: @navigable-height;
+
+    .navigable-actions {
+        min-width: 140px;
+
+        &:not(.text-left){
+            text-align: right;
+        }
+
+        .navigable-reveal {
+            display: none;
+        }
+
+        .navigable-collapse {
+            display: inline-block;
+        }
+    }
+
+    &:hover,
+    &.navigable-active,
+    &.navigable-selected {
+        &, > td {
+            background-color: @brand-lighter;
+        }
+    }
+
+    &:hover,
+    &.navigable-active {
+        .navigable-actions {
+            .navigable-reveal {
+                display: inline-block;
+            }
+
+            .navigable-collapse {
+                display: none;
+            }
+        }
+    }
+
+    &.navigable-active {
+        z-index: 1;
+    }
+
+    > td {
+        height: @navigable-height;
+
+        .table-condensed & {
+            height: 42px;
+        }
+    }
+}

@@ -7,7 +7,7 @@
 
 			// Properties --------------------------------------------------------------------------------------------------
 			$scope.user = {
-				email: 'info@bit.admin.ch',
+				email: 'eui@bit.admin.ch',
 				password: '12345678'
 			};
 

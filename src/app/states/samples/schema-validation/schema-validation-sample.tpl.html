@@ -1,0 +1,165 @@
+<form class="form-horizontal has-validation" name="validationForm" role="form" novalidate validation-schema="sampleSchema">
+	<h2 class="page-header">
+		<span>Schema validation</span>
+		<div class="pull-right">
+			<span class="fa fa-check text-success" tooltip="Form is valid" ng-if="validationForm.$valid"></span>
+			<span class="fa fa-warning text-danger" tooltip="Form is not valid" ng-if="!validationForm.$valid"></span>
+		</div>
+	</h2>
+	<div class="form-group" has-error>
+		<label class="col-sm-4 control-label">
+			<span>String</span>
+			<a role="button" ng-init="textCollapsed = true" ng-click="textCollapsed = !textCollapsed" ng-class="{'open': !textCollapsed}">
+				<span class="toggle"></span>
+			</a>
+			<div collapse="textCollapsed">
+				<pre class="small">{{sampleSchema.properties.text | json}}</pre>
+			</div>
+		</label>
+		<div class="col-sm-8">
+			<input name="text" type="text" class="form-control" ng-model="data.text" schema-validate />
+			<span class="help-block" ng-show="validationForm.text.$invalid">{{validationForm.text.$errorMessage}}</span>
+		</div>
+	</div>
+	<!--div class="form-group" has-error>
+		<label class="col-sm-4 control-label">
+			<span>Number</span>
+			<a role="button" ng-init="numberStringCollapsed = true" ng-click="numberStringCollapsed = !numberStringCollapsed" ng-class="{'open': !numberStringCollapsed}">
+				<span class="toggle"></span>
+			</a>
+			<br />
+			<small>(as <code>type=[text]</code> with <code>number-format</code> directive)</small>
+			<div collapse="numberStringCollapsed">
+				<pre class="small">{{sampleSchema.properties.numberString | json}}</pre>
+			</div>
+		</label>
+		<div class="col-sm-8">
+			<input name="numberString" type="text" class="form-control" ng-model="data.numberString" number-format schema-validate />
+			<span class="help-block" ng-show="validationForm.numberString.$invalid">{{validationForm.numberString.$errorMessage}}</span>
+		</div>
+	</div-->
+	<div class="form-group" has-error>
+		<label class="col-sm-4 control-label">
+			<span>Number</span>
+			<a role="button" ng-init="numberCollapsed = true" ng-click="numberCollapsed = !numberCollapsed" ng-class="{'open': !numberCollapsed}">
+				<span class="toggle"></span>
+			</a>
+			<div collapse="numberCollapsed">
+				<pre class="small">{{sampleSchema.properties.number | json}}</pre>
+			</div>
+		</label>
+		<div class="col-sm-8">
+			<input name="number" type="number" class="form-control"
+			       ng-model="data.number" schema-validate />
+			<span class="help-block" ng-show="validationForm.number.$invalid">{{validationForm.number.$errorMessage}}</span>
+		</div>
+	</div>
+	<div class="form-group" has-error="date">
+		<label class="col-sm-4 control-label">
+			<span>Date</span>
+			<a role="button" ng-init="dateCollapsed = true" ng-click="dateCollapsed = !dateCollapsed" ng-class="{'open': !dateCollapsed}">
+				<span class="toggle"></span>
+			</a>
+			<div collapse="dateCollapsed">
+				<pre class="small">{{sampleSchema.properties.date | json}}</pre>
+			</div>
+		</label>
+		<div class="col-sm-8">
+			<div class="row">
+				<div class="col-sm-6">
+					<date-picker name="date" ng-model="data.date"></date-picker>
+				</div>
+				<div class="col-sm-6">
+					<!--date-picker name="date" ng-model="data.date" editable="false" schema-validate></date-picker-->
+				</div>
+			</div>
+			<span class="help-block" ng-show="validationForm.date.$invalid">{{validationForm.date.$errorMessage}}</span>
+		</div>
+	</div>
+	<div class="form-group" has-error>
+		<label class="col-sm-4 control-label">
+			<span>Time</span>
+			<a role="button" ng-init="timeCollapsed = true" ng-click="timeCollapsed = !timeCollapsed" ng-class="{'open': !timeCollapsed}">
+				<span class="toggle"></span>
+			</a>
+			<div collapse="timeCollapsed">
+				<pre class="small">{{sampleSchema.properties.time | json}}</pre>
+			</div>
+		</label>
+		<div class="col-sm-8">
+			<timepicker name="time" class="timepicker timepicker-condensed"
+			            ng-model="data.time" show-meridian="false" minute-step="15"></timepicker>
+			<span class="help-block" ng-show="validationForm.time.$invalid">{{validationForm.time.$errorMessage}}</span>
+		</div>
+	</div>
+	<div class="form-group" has-error>
+		<label class="col-sm-4 control-label">
+			<span>Select</span>
+			<a role="button" ng-init="selectCollapsed = true" ng-click="selectCollapsed = !selectCollapsed" ng-class="{'open': !selectCollapsed}">
+				<span class="toggle"></span>
+			</a>
+			<div collapse="selectCollapsed">
+				<pre class="small">{{sampleSchema.properties.select | json}}</pre>
+			</div>
+		</label>
+		<div class="col-sm-8">
+			<select name="select" class="form-control"
+			        ng-model="data.select" schema-validate
+			        ng-options="option.value as option.label for option in sampleSchema.properties.select.options">
+				<option value="" selected>{{'common.select' | translate}}</option>
+			</select>
+			<span class="help-block" ng-show="validationForm.select.$invalid">{{validationForm.select.$errorMessage}}</span>
+		</div>
+	</div>
+	<div class="form-group" has-error>
+		<label class="col-sm-4 control-label">
+			<span>Multiselect</span>
+			<a role="button" ng-init="multiselectCollapsed = true" ng-click="multiselectCollapsed = !multiselectCollapsed" ng-class="{'open': !multiselectCollapsed}">
+				<span class="toggle"></span>
+			</a>
+			<div collapse="multiselectCollapsed">
+				<pre class="small">{{sampleSchema.properties.multiselect | json}}</pre>
+			</div>
+		</label>
+		<div class="col-sm-8">
+			<multiselect name="multiselect" ng-model="data.multiselect" options="sampleSchema.properties.multiselect.options" schema-validate></multiselect>
+			<span class="help-block" ng-show="validationForm.multiselect.$invalid">{{validationForm.multiselect.$errorMessage}}</span>
+		</div>
+	</div>
+	<div class="form-group" has-error>
+		<label class="col-sm-4 control-label">
+			<span>Textarea</span>
+			<a role="button" ng-init="textareaCollapsed = true" ng-click="textareaCollapsed = !textareaCollapsed" ng-class="{'open': !textareaCollapsed}">
+				<span class="toggle"></span>
+			</a>
+			<br />
+			<small>(with <code>msd-elastic</code> directive)</small>
+			<div collapse="textareaCollapsed">
+				<pre class="small">{{sampleSchema.properties.textarea | json}}</pre>
+			</div>
+		</label>
+		<div class="col-sm-8">
+			<textarea name="textarea" type="text" class="form-control"
+			       ng-model="data.textarea" msd-elastic rows="1" schema-validate></textarea>
+			<span class="help-block" ng-show="validationForm.textarea.$invalid">{{validationForm.textarea.$errorMessage}}</span>
+		</div>
+	</div>
+	<div class="form-actions">
+		<button type="button" class="btn btn-secondary" ng-click="cancel()">{{'common.cancel' | translate}}</button>
+		<button type="submit" class="btn btn-primary"
+		        ng-click="save(validationForm)" ng-disabled="!validationForm.$valid">
+			{{'common.save' | translate}}
+		</button>
+	</div>
+</form>
+<div class="row spacer-top">
+	<div class="col-md-6">
+		<pre>{{data | json}}</pre>
+	</div>
+	<div class="col-md-6">
+		<pre>{{sampleSchema | json}}</pre>
+	</div>
+</div>
+
+
+

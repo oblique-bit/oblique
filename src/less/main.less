@@ -2,49 +2,11 @@
 @import '@{vendor-path}oblique-ui/less/variables.less';
 @import '@{vendor-path}oblique-ui/less/mixins.less';
 
-// <patch>: fixes angular-bootstrap 0.12 issues with bootstrap 3.3.x modals
-// TODO: remove when https://github.com/angular-ui/bootstrap/pull/3117 has been merged and released
-.modal-backdrop {
-	bottom: 0;
-	position: fixed;
-}
-// </patch>
+// Vendor overrides:
+@import 'vendor/oblique-ui';
+@import 'vendor/angular-ui';
 
-/* Cover background image */
-.cover-layout {
-	background-image: url('../images/cover-background.jpg');
-}
-
-.navbar-controls {
-	.user-picture {
-		border: none;
-		margin-top: -6px;
-		height: 42px;
-		width: 42px;
-		vertical-align: middle;
-		.border-radius(50%);
-
-		&.control-icon {
-			padding: 5px;
-			text-align: center;
-			background-color: @gray-lighter;
-		}
-	}
-}
-
-.spinner {
-	position: fixed;
-	top: 0px;
-	width: 100%;
-	height: 100%;
-	color: @gray-light;
-	background-color: @white;
-	z-index: 100;
-	opacity: 0.9;
-
-	span {
-		position:relative;
-		top: 50%;
-		margin-top: -25px;
-	}
-}
+// UI Components:
+@import 'components/animations';
+@import 'components/list-group';
+@import 'components/navigable';
