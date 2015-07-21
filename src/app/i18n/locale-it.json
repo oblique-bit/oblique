@@ -29,7 +29,7 @@
 			"navigable":{
 				"title": "Navigable"
 			},
-			"schema-validation" : {
+			"schemaValidation" : {
 				"title": "Schema Validation"
 			}
 		}
