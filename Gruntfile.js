@@ -533,13 +533,11 @@ module.exports = function (grunt) {
                         nodeArgs: ['--debug'],
                         env: {
                             //PORT: '9001'
-                        }
-                        ,
+                        },
                         watch: ['server/']
                     }
                 }
-            }
-            ,
+            },
 
             /*
              * grunt-bump
@@ -562,8 +560,7 @@ module.exports = function (grunt) {
                     pushTo: "origin",
                     gitDescribeOptions: "--tags --always --abbrev=1 --dirty=-d"
                 }
-            }
-            ,
+            },
 
             /*
              * Retrieves the current environment name.
@@ -592,8 +589,8 @@ module.exports = function (grunt) {
         'assemble',
         'less',
         'replace',
-        'html2js',
-        'karma:unit'
+        'html2js'
+        //'karma:unit'
     ]);
 
     grunt.registerTask('build-dev', [
