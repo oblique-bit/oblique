@@ -579,8 +579,7 @@ module.exports = function (grunt) {
 	// ----------------------------------
 
 	// Build:
-	grunt.registerTask('build-dev', [
-		'config:dev',
+	grunt.registerTask('build', [
 		'clean',
 		'jshint',
 		'jscs',
@@ -588,53 +587,47 @@ module.exports = function (grunt) {
 		'assemble',
 		'less',
 		'replace',
-		'html2js'
+		'html2js',
+		'karma:unit'
+	]);
+
+	grunt.registerTask('build-dev', [
+		'config:dev',
+		'build'
 	]);
 
 	grunt.registerTask('build-prod', [
-		'build-dev',
+		'config:prod',
+		'build',
 		'ngAnnotate',
 		'optimize',
 		'clean:staging'
-		//'karma:unit',
-	]);
-
-	grunt.registerTask('watch-dev', [
-		'config:dev',
-		'focus:dev:dev'
-	]);
-
-	grunt.registerTask('watch-prod', [
-		'config:prod',
-		'focus:prod:prod'
-	]);
-
-	// Serve:
-	grunt.registerTask('serve-dev', [
-		'config:dev',
-		'connect:local',
-		'watch-dev'
-	]);
-
-	grunt.registerTask('serve-prod', [
-		'config:prod',
-		'connect:local:keepalive',
-		'watch-prod'
 	]);
 
 	// Run (build & serve):
 	grunt.registerTask('run-dev', [
-		'config:dev',
 		'build-dev',
-		'serve-dev'
-		//'karma:unit'
+		'configureProxies:local',
+		'connect:local',
+		'focus:dev:dev'
+	]);
+
+	grunt.registerTask('run-prod-local', [
+		'config:dev', // workaround for proxy because of cors
+		'build',
+		'ngAnnotate',
+		'optimize',
+		'clean:staging',
+		'configureProxies:local',
+		'connect:local:keepalive',
+		'focus:prod:prod'
 	]);
 
 	grunt.registerTask('run-prod', [
-		'config:prod',
 		'build-prod',
-		'serve-prod'
-		//'karma:unit'
+		'configureProxies:local',
+		'connect:local:keepalive',
+		'focus:prod:prod'
 	]);
 
 	/**
