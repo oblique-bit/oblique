@@ -1,116 +1,116 @@
 {
-	"common": {
-		"name": "common",
-		"build": {
-			"target": "target/"
-		},
-		"app": {
-			"module": "oblique",
-			"title": "ObliqueReactive",
-			"description": "Reactive web template powered by ObliqueUI and AngularJS",
-			"home": "#/home",
-			"api": {
-				"url": "http://localhost:3000/api",
-				"logs": "/logs",
-				"sendCredentials": false
-			},
-			"defaults": {
-				"locale": "en",
-				"state": "home",
-				"layout": "default",
-				"http": {
-					"timeout": 10000
-				}
-			}
-		},
-		"resources": {
-			"app": [
-				"app/app-config.js",
-				"app/app-module.js",
-				"app/app-templates.js",
-				"app/core/core-module.js",
-
-				"app/core/controllers/app-controller.js",
-
-				"app/core/formatters/date-directive.js",
-				"app/core/formatters/number-format-directive.js",
-
-				"app/core/infrastructure/log-decorator.js",
-				"app/core/infrastructure/http-decorator.js",
-				"app/core/infrastructure/http-interceptor.js",
-				"app/core/infrastructure/exception-handler-decorator.js",
-				"app/core/infrastructure/state-decorator.js",
-
-				"app/core/services/session-service.js",
-				"app/core/services/auth-service.js",
-				"app/core/services/loading-service.js",
-
-				"app/core/ui/date-picker/date-picker-directive.js",
-				"app/core/ui/notifications/notifications-directive.js",
-				"app/core/ui/notifications/notification-service.js",
-				"app/core/ui/delayed-change-directive.js",
-				"app/core/ui/dropdown-closable-directive.js",
-				"app/core/ui/enter-directive.js",
-				"app/core/ui/give-me-focus-directive.js",
-				"app/core/ui/multiselect-directive.js",
-				"app/core/ui/navigable-directive.js",
-
-				"app/core/validation/has-error-directive.js",
-				"app/core/validation/schema-validate-directive.js",
-				"app/core/validation/schema-validator-service.js",
-
-				"app/states/auth/auth-module.js",
-				"app/states/auth/auth-controller.js",
-				"app/states/home/home-module.js",
-				"app/states/home/home-controller.js",
-				"app/states/movies/movies-module.js",
-				"app/states/movies/movie-resource.js",
-				"app/states/movies/movie-service.js",
-				"app/states/movies/movies-controller.js",
-				"app/states/samples/samples-module.js",
-				"app/states/samples/schema-validation/schema-validation-sample-module.js",
-				"app/states/samples/schema-validation/schema-validation-sample-controller.js",
-				"app/states/samples/navigable/navigable-sample-module.js",
-				"app/states/samples/navigable/navigable-sample-controller.js"
-			],
-			"vendor": {
-				"js": [
-					"moment/moment.js",
-					"lodash/lodash.js",
-					"angular/angular.js",
-					"angular-animate/angular-animate.js",
-					"angular-bootstrap/ui-bootstrap-tpls.js",
-					"angular-confirm/angular-confirm.js",
-					"angular-cookies/angular-cookies.js",
-					"angular-dateParser/dist/angular-dateParser.js",
-					"angular-elastic/elastic.js",
-					"angular-sanitize/angular-sanitize.js",
-					"angular-translate/angular-translate.js",
-					"angular-translate-loader-static-files/angular-translate-loader-static-files.js",
-					"angular-translate-storage-cookie/angular-translate-storage-cookie.js",
-					"angular-translate-storage-local/angular-translate-storage-local.js",
-					"angular-ui-router/release/angular-ui-router.js",
-					"angularjs-dropdown-multiselect/src/angularjs-dropdown-multiselect.js",
-					"checklist-model/checklist-model.js",
-					"satellizer/satellizer.js",
-					"tv4/tv4.js"
-				],
-				"css": [
-					"angular/angular-csp.css",
-					"animate.css/animate.css"
-				]
-			}
-		}
-	},
-	"dev": {
-		"name": "dev"
-	},
-	"prod": {
-		"name": "prod",
-		"app": {
-			"api": {
-				"url": "http://localhost:8080"
-			}
-		}
-	}
+  "common": {
+    "name": "common",
+    "build": {
+      "target": "target/"
+    },
+    "app": {
+      "module": "oblique",
+      "title": "ObliqueReactive",
+      "description": "Reactive web template powered by ObliqueUI and AngularJS",
+      "home": "#/home",
+      "api": {
+        "schema": "http",
+        "hostname": "localhost",
+        "port": 9000,
+        "context": "/api",
+        "logs": "/logs",
+        "sendCredentials": false
+      },
+      "defaults": {
+        "locale": "en",
+        "state": "home",
+        "layout": "default",
+        "http": {
+          "timeout": 10000
+        }
+      }
+    },
+    "resources": {
+      "app": [
+        "app/app-config.js",
+        "app/app-module.js",
+        "app/app-templates.js",
+        "app/core/core-module.js",
+        "app/core/controllers/app-controller.js",
+        "app/core/formatters/date-directive.js",
+        "app/core/formatters/number-format-directive.js",
+        "app/core/infrastructure/log-decorator.js",
+        "app/core/infrastructure/http-decorator.js",
+        "app/core/infrastructure/http-interceptor.js",
+        "app/core/infrastructure/exception-handler-decorator.js",
+        "app/core/infrastructure/state-decorator.js",
+        "app/core/services/session-service.js",
+        "app/core/services/auth-service.js",
+        "app/core/services/loading-service.js",
+        "app/core/ui/date-picker/date-picker-directive.js",
+        "app/core/ui/notifications/notifications-directive.js",
+        "app/core/ui/notifications/notification-service.js",
+        "app/core/ui/delayed-change-directive.js",
+        "app/core/ui/dropdown-closable-directive.js",
+        "app/core/ui/enter-directive.js",
+        "app/core/ui/give-me-focus-directive.js",
+        "app/core/ui/multiselect-directive.js",
+        "app/core/ui/navigable-directive.js",
+        "app/core/validation/has-error-directive.js",
+        "app/core/validation/schema-validate-directive.js",
+        "app/core/validation/schema-validator-service.js",
+        "app/states/auth/auth-module.js",
+        "app/states/auth/auth-controller.js",
+        "app/states/home/home-module.js",
+        "app/states/home/home-controller.js",
+        "app/states/movies/movies-module.js",
+        "app/states/movies/movie-resource.js",
+        "app/states/movies/movie-service.js",
+        "app/states/movies/movies-controller.js",
+        "app/states/samples/samples-module.js",
+        "app/states/samples/schema-validation/schema-validation-sample-module.js",
+        "app/states/samples/schema-validation/schema-validation-sample-controller.js",
+        "app/states/samples/navigable/navigable-sample-module.js",
+        "app/states/samples/navigable/navigable-sample-controller.js"
+      ],
+      "vendor": {
+        "js": [
+          "moment/moment.js",
+          "lodash/lodash.js",
+          "angular/angular.js",
+          "angular-animate/angular-animate.js",
+          "angular-bootstrap/ui-bootstrap-tpls.js",
+          "angular-confirm/angular-confirm.js",
+          "angular-cookies/angular-cookies.js",
+          "angular-dateParser/dist/angular-dateparser.js",
+          "angular-elastic/elastic.js",
+          "angular-sanitize/angular-sanitize.js",
+          "angular-translate/angular-translate.js",
+          "angular-translate-loader-static-files/angular-translate-loader-static-files.js",
+          "angular-translate-storage-cookie/angular-translate-storage-cookie.js",
+          "angular-translate-storage-local/angular-translate-storage-local.js",
+          "angular-dynamic-locale/src/tmhDynamicLocale.js",
+          "angular-ui-router/release/angular-ui-router.js",
+          "angularjs-dropdown-multiselect/src/angularjs-dropdown-multiselect.js",
+          "checklist-model/checklist-model.js",
+          "satellizer/satellizer.js",
+          "tv4/tv4.js"
+        ],
+        "css": [
+          "angular/angular-csp.css",
+          "animate.css/animate.css"
+        ]
+      }
+    }
+  },
+  "dev": {
+    "name": "dev"
+  },
+  "prod": {
+    "name": "prod",
+    "app": {
+      "api": {
+        "schema": "http",
+        "hostname": "localhost",
+        "port": 8080,
+        "context": "/oblique-reactive/api"
+      }
+    }
+  }
 }
