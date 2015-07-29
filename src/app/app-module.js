@@ -8,6 +8,7 @@
 			'ngCookies',
 			'ui.router',
 			'ui.bootstrap',
+			'tmh.dynamicLocale',
 			'pascalprecht.translate',
 			'satellizer',
 			'angular-confirm',
@@ -59,6 +60,9 @@
 			});
 			$translateProvider.preferredLanguage(CONFIG.defaults.locale);
 			$translateProvider.useLocalStorage();
+		})
+		.config(function (CONFIG, tmhDynamicLocaleProvider) {
+			tmhDynamicLocaleProvider.localeLocationPattern('vendor/angular-i18n' + '/angular-locale_{{locale}}.js');
 		})
 		.config(function (CONFIG, LoadingServiceProvider) {
 			LoadingServiceProvider.setTimeout(CONFIG.defaults.http.timeout);

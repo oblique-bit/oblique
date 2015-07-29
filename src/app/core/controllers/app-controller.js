@@ -3,7 +3,7 @@
 	"use strict";
 
 	angular.module('__MODULE__.core')
-	.controller('AppController', function (CONFIG, $scope, $rootScope, $state, $translate, $sce, $log, SessionService, AuthService, LoadingService, NotificationService) {
+        .controller('AppController', function (CONFIG, $scope, $rootScope, $state, $translate, $sce, $log, SessionService, AuthService, LoadingService, NotificationService, tmhDynamicLocale) {
 		var $this = this;
 		var LOG = $log.getInstance('AppController');
 
@@ -52,6 +52,7 @@
 		});
 
 		$rootScope.$on('$translateChangeSuccess', function (event, data) {
+            tmhDynamicLocale.set(data.language);
 			$this.locale.current = data.language;
 		});
 
