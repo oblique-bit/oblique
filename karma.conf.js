@@ -10,14 +10,14 @@ module.exports = function (config) {
     var karmaResources = [];
 
     _.forEach(project.common.resources.vendor.js, function (v) {
-        karmaResources.push('vendor/' + v);
+        karmaResources.push(project.common.build.target + '/vendor/' + v);
     });
     _.forEach(project.common.resources.app, function (v) {
-        karmaResources.push('src/' + v);
+        karmaResources.push(project.common.build.target + '/' + v);
     });
 
     karmaResources.push('vendor/angular-mocks/angular-mocks.js');
-    karmaResources.push('src/**/*.spec.js');
+    karmaResources.push(project.common.build.target + '/app/**/*.spec.js');
 
     config.set({
 
@@ -37,19 +37,6 @@ module.exports = function (config) {
         // test results reporter to use
         // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
         reporters: ['progress'],
-
-        junitReporter: {
-            outputFile: 'target/surefire-reports/TEST-karma-results.xml'
-        },
-
-        coverageReporter: {
-            type: 'lcovonly',
-            dir: 'target/coverage-reports/'
-        },
-
-        preprocessors: {
-            'src/app/**/*.js': ['coverage']
-        },
 
         // web server port
         port: 9877,

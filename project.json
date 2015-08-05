@@ -30,6 +30,7 @@
       "app": [
         "app/app-config.js",
         "app/app-module.js",
+        "app/app-templates.js",
         "app/core/core-module.js",
         "app/core/controllers/app-controller.js",
         "app/core/formatters/date-directive.js",
