@@ -18,15 +18,15 @@
   ],
   "dependencies": {
     "oblique-ui": "https://stash.eap.bit.admin.ch/scm/oui/oblique-ui.git#1.2.0",
-    "animate.css": "3.3.0",
-    "angular": "1.4.2",
-    "angular-animate": "1.4.2",
+    "animate.css": "~3.3.1",
+    "angular": "1.4.3",
+    "angular-animate": "1.4.3",
     "angular-bootstrap": "https://github.com/almeidap/angular-ui-bootstrap.git#master",
     "angular-confirm": "https://github.com/almeidap/angular-confirm.git#angular-1.4-fix",
     "angular-dateParser": "1.0.12",
     "angular-elastic": "https://github.com/jlebit/angular-elastic.git#master",
-    "angular-i18n": "1.4.2",
-    "angular-sanitize": "1.4.2",
+    "angular-i18n": "1.4.3",
+    "angular-sanitize": "1.4.3",
     "angular-translate": "2.7.2",
     "angular-translate-loader-static-files": "2.7.2",
     "angular-translate-storage-local": "2.7.2",
@@ -37,16 +37,17 @@
     "angularjs-dropdown-multiselect": "https://github.com/punix81/angularjs-dropdown-multiselect.git#master",
     "grunt-config": "git+https://github.com/almeidap/grunt-config.git",
     "checklist-model": "0.2.4",
-    "moment": "2.10.3",
-    "lodash": "3.10.0",
-    "satellizer": "0.11.2",
+    "moment": "~2.10.6",
+    "lodash": "~3.10.1",
+    "satellizer": "~0.11.3",
     "tv4": "1.1.12",
     "zeroclipboard": "2.2.0"
   },
+  "devDependencies": {
+    "angular-mocks": "~1.4.3"
+  },
   "resolutions": {
-    "jquery": "1.11.1",
-    "angular": "1.4.2",
-    "lodash": "3.10.0",
-    "angular-translate": "2.7.2"
+    "angular": "1.4.3",
+    "lodash": "~3.10.1"
   }
 }

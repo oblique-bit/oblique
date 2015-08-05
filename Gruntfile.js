@@ -510,7 +510,7 @@ module.exports = function (grunt) {
             connect: {
                 local: {
                     options: {
-                        port: '<%= env.app.api.port %>', // Port used to deploy the client
+                        port: 9000, // Port used to deploy the client
                         base: '<%= env.build.target %>',
                         hostname: '<%= env.app.api.hostname %>',
                         index: '<%= env.app.home %>'
@@ -589,8 +589,8 @@ module.exports = function (grunt) {
         'assemble',
         'less',
         'replace',
-        'html2js'
-        //'karma:unit'
+        'html2js',
+        'karma:unit'
     ]);
 
     grunt.registerTask('build-dev', [
