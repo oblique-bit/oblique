@@ -589,8 +589,8 @@ module.exports = function (grunt) {
         'assemble',
         'less',
         'replace',
-        'html2js'
-        //'karma:unit'
+        'html2js',
+        'karma:unit'
     ]);
 
     grunt.registerTask('build-dev', [

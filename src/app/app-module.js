@@ -17,7 +17,6 @@
 			'checklist-model',
 			'monospaced.elastic',
 
-			'__MODULE__.app-templates',
 			'__MODULE__.core',
 			'__MODULE__.auth',
 			'__MODULE__.home',
@@ -85,6 +84,6 @@
 
 	// Bootstrap angular:
 	angular.element(document).ready(function () {
-		angular.bootstrap(document, ['__MODULE__']);
+		//angular.bootstrap(document, ['__MODULE__']);
 	});
 }());
