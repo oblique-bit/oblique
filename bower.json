@@ -31,6 +31,7 @@
     "angular-translate-loader-static-files": "2.7.2",
     "angular-translate-storage-local": "2.7.2",
     "angular-translate-storage-cookie": "2.7.2",
+    "angular-dynamic-locale": "0.1.27",
     "angular-ui-router": "0.2.15",
     "angular-zeroclipboard": "0.4.3",
     "angularjs-dropdown-multiselect": "https://github.com/punix81/angularjs-dropdown-multiselect.git#master",

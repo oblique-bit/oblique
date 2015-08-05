@@ -15,7 +15,7 @@
 			return {
 				decorate: function () {
 					$http.api = $http.api || {};
-					$http.api.url = CONFIG.api.url;
+					$http.api.url = CONFIG.api.schema + "://" + CONFIG.api.hostname + ':' + CONFIG.api.port + CONFIG.api.context;
 
 					$http.api.head = withApiUrl($http.head);
 					$http.api.get = withApiUrl($http.get);
