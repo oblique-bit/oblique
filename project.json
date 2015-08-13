@@ -27,10 +27,10 @@
 			"app": [
 				"app/app-config.js",
 				"app/app-module.js",
+				"app/app-controller.js",
 				"app/app-templates.js",
-				"app/core/core-module.js",
 
-				"app/core/controllers/app-controller.js",
+				"app/core/core-module.js",
 
 				"app/core/formatters/date-directive.js",
 				"app/core/formatters/number-format-directive.js",
@@ -83,7 +83,12 @@
 					"angular-confirm/angular-confirm.js",
 					"angular-cookies/angular-cookies.js",
 					"angular-dateParser/dist/angular-dateParser.js",
+					"angular-dynamic-locale/dist/tmhDynamicLocale.js",
 					"angular-elastic/elastic.js",
+					"angular-i18n/angular-locale_de.js",
+					"angular-i18n/angular-locale_fr.js",
+					"angular-i18n/angular-locale_it.js",
+					"angular-i18n/angular-locale_en.js",
 					"angular-sanitize/angular-sanitize.js",
 					"angular-translate/angular-translate.js",
 					"angular-translate-loader-static-files/angular-translate-loader-static-files.js",

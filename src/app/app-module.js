@@ -9,6 +9,7 @@
 		'ui.router',
 		'ui.bootstrap',
 		'pascalprecht.translate',
+		'tmh.dynamicLocale',
 		'satellizer',
 		'angular-confirm',
 		'angularjs-dropdown-multiselect',
@@ -33,6 +34,9 @@
 		}
 		$httpProvider.interceptors.push('HttpInterceptor');
 	})
+	.config(function (tmhDynamicLocaleProvider) {
+		tmhDynamicLocaleProvider.localeLocationPattern('vendor/angular-i18n/angular-locale_{{locale}}.js');
+	})
 	.config(function (CONFIG, $translateProvider) {
 		$translateProvider.useSanitizeValueStrategy('escaped');
 		$translateProvider.useStaticFilesLoader({
@@ -40,6 +44,7 @@
 			suffix: '.json'
 		});
 		$translateProvider.preferredLanguage(CONFIG.defaults.locale);
+		$translateProvider.determinePreferredLanguage();
 		$translateProvider.useLocalStorage();
 	})
 	.config(function (CONFIG, $authProvider) {
