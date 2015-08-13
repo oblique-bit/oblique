@@ -154,5 +154,10 @@
 			"next": "Next",
 			"back": "Back"
 		}
+	},
+	"multiselect": {
+		"checkAll": "Select all",
+		"uncheckAll": "Unselect all",
+		"buttonDefaultText": "Select please."
 	}
 }

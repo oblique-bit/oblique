@@ -15,10 +15,10 @@
 					data : function() {
 						return {
 							"id": 0,
-							"text": null, //"Hello, World!",
-							"number": 1,
-							"numberString": "42",
-							"date": null, //"2015-05-27T11:21:05+02:00",
+							"text": null,
+							"number": "42",
+							"integer": 1,
+							"date": null,
 							"time": "2015-05-21T09:00:00+02:00",
 							"select": "ccc",
 							"multiselect": ["aaa", "ccc"]
@@ -54,9 +54,9 @@
 									"maximum": 10000000,
 									"exclusiveMinimum": true
 								},
-								"number": {
+								"integer": {
 									"$id": "3",
-									"type": "number",
+									"type": "integer",
 									"minimum": 0,
 									"maximum": 100,
 									"exclusiveMaximum": true

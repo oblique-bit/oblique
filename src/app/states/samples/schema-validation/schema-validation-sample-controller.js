@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular.module('__MODULE__.samples')
-	.controller('SchemaValidationSampleController', function ($scope, $state, schema, data, NotificationService) {
+	.controller('SchemaValidationSampleController', function ($scope, $state, $filter, schema, data, NotificationService) {
 		$scope.sampleSchema = schema;
 		$scope.data = data;
 
@@ -11,6 +11,10 @@
 			if(form.$valid) {
 				NotificationService.success('Congratulations, form is valid!');
 			}
+		};
+
+		$scope.jsonSource = function(data) {
+			return '<pre>' + $filter('json')(data) + '</pre>';
 		};
 	});
 }());

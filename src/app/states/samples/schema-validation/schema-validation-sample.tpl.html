@@ -1,70 +1,60 @@
 <form class="form-horizontal has-validation" name="validationForm" role="form" novalidate validation-schema="sampleSchema">
 	<h2 class="page-header">
 		<span>Schema validation</span>
-		<div class="pull-right">
-			<span class="fa fa-check text-success" tooltip="Form is valid" ng-if="validationForm.$valid"></span>
-			<span class="fa fa-warning text-danger" tooltip="Form is not valid" ng-if="!validationForm.$valid"></span>
-		</div>
+		<span class="pull-right">
+			<div class="fa fa-check text-success" tooltip="Form is valid" tooltip-placement="bottom" ng-if="validationForm.$valid"></div>
+			<span class="fa fa-warning text-danger" tooltip="Form is not valid" tooltip-placement="bottom" ng-if="!validationForm.$valid"></span>
+		</span>
 	</h2>
 	<div class="form-group" has-error>
-		<label class="col-sm-4 control-label">
-			<span>String</span>
-			<a role="button" ng-init="textCollapsed = true" ng-click="textCollapsed = !textCollapsed" ng-class="{'open': !textCollapsed}">
-				<span class="toggle"></span>
-			</a>
-			<div collapse="textCollapsed">
-				<pre class="small">{{sampleSchema.properties.text | json}}</pre>
-			</div>
-		</label>
-		<div class="col-sm-8">
+		<label class="col-sm-4 control-label">Text</label>
+		<div class="col-sm-6">
 			<input name="text" type="text" class="form-control" ng-model="data.text" schema-validate />
 			<span class="help-block" ng-show="validationForm.text.$invalid">{{validationForm.text.$errorMessage}}</span>
 		</div>
-	</div>
-	<!--div class="form-group" has-error>
-		<label class="col-sm-4 control-label">
-			<span>Number</span>
-			<a role="button" ng-init="numberStringCollapsed = true" ng-click="numberStringCollapsed = !numberStringCollapsed" ng-class="{'open': !numberStringCollapsed}">
-				<span class="toggle"></span>
+		<div class="col-sm-2">
+			<a class="form-control-static" role="button"
+			   popover-html="jsonSource(sampleSchema.properties.text)" popover-title="Schema" popover-placement="bottom">
+				<span class="fa fa-sitemap"></span>
 			</a>
-			<br />
-			<small>(as <code>type=[text]</code> with <code>number-format</code> directive)</small>
-			<div collapse="numberStringCollapsed">
-				<pre class="small">{{sampleSchema.properties.numberString | json}}</pre>
-			</div>
-		</label>
-		<div class="col-sm-8">
-			<input name="numberString" type="text" class="form-control" ng-model="data.numberString" number-format schema-validate />
-			<span class="help-block" ng-show="validationForm.numberString.$invalid">{{validationForm.numberString.$errorMessage}}</span>
 		</div>
-	</div-->
+	</div>
 	<div class="form-group" has-error>
-		<label class="col-sm-4 control-label">
-			<span>Number</span>
-			<a role="button" ng-init="numberCollapsed = true" ng-click="numberCollapsed = !numberCollapsed" ng-class="{'open': !numberCollapsed}">
-				<span class="toggle"></span>
-			</a>
-			<div collapse="numberCollapsed">
-				<pre class="small">{{sampleSchema.properties.number | json}}</pre>
-			</div>
-		</label>
-		<div class="col-sm-8">
-			<input name="number" type="number" class="form-control"
-			       ng-model="data.number" schema-validate />
+		<label class="col-sm-4 control-label">Number</label>
+		<div class="col-sm-6">
+			<input name="number" type="text" class="form-control" ng-model="data.number" number-format schema-validate />
 			<span class="help-block" ng-show="validationForm.number.$invalid">{{validationForm.number.$errorMessage}}</span>
+		</div>
+		<div class="col-sm-1">
+			<a class="form-control-static" role="button"
+			   popover-html="jsonSource(sampleSchema.properties.number)" popover-title="Schema" popover-placement="bottom">
+				<span class="fa fa-sitemap"></span>
+			</a>
+		</div>
+		<div class="col-sm-1">
+			<a class="form-control-static" role="button"
+			   popover-html="'<ul class=list-unstyled><li><code>input[type=\'text\']</code></li><li><code>[number-format]</code></li></ul>'" popover-title="Usage" popover-placement="bottom">
+				<span class="fa fa-info-circle"></span>
+			</a>
+		</div>
+	</div>
+	<div class="form-group" has-error>
+		<label class="col-sm-4 control-label">Integer</label>
+		<div class="col-sm-6">
+			<input name="integer" type="number" class="form-control"
+			       ng-model="data.integer" schema-validate />
+			<span class="help-block" ng-show="validationForm.integer.$invalid">{{validationForm.integer.$errorMessage}}</span>
+		</div>
+		<div class="col-sm-2">
+			<a class="form-control-static" role="button"
+			   popover-html="jsonSource(sampleSchema.properties.integer)" popover-title="Schema" popover-placement="bottom">
+				<span class="fa fa-sitemap"></span>
+			</a>
 		</div>
 	</div>
 	<div class="form-group" has-error="date">
-		<label class="col-sm-4 control-label">
-			<span>Date</span>
-			<a role="button" ng-init="dateCollapsed = true" ng-click="dateCollapsed = !dateCollapsed" ng-class="{'open': !dateCollapsed}">
-				<span class="toggle"></span>
-			</a>
-			<div collapse="dateCollapsed">
-				<pre class="small">{{sampleSchema.properties.date | json}}</pre>
-			</div>
-		</label>
-		<div class="col-sm-8">
+		<label class="col-sm-4 control-label">Date</label>
+		<div class="col-sm-6">
 			<div class="row">
 				<div class="col-sm-6">
 					<date-picker name="date" ng-model="data.date"></date-picker>
@@ -75,34 +65,30 @@
 			</div>
 			<span class="help-block" ng-show="validationForm.date.$invalid">{{validationForm.date.$errorMessage}}</span>
 		</div>
+		<div class="col-sm-2">
+			<a class="form-control-static" role="button"
+			   popover-html="jsonSource(sampleSchema.properties.date)" popover-title="Schema" popover-placement="bottom">
+				<span class="fa fa-sitemap"></span>
+			</a>
+		</div>
 	</div>
 	<div class="form-group" has-error>
-		<label class="col-sm-4 control-label">
-			<span>Time</span>
-			<a role="button" ng-init="timeCollapsed = true" ng-click="timeCollapsed = !timeCollapsed" ng-class="{'open': !timeCollapsed}">
-				<span class="toggle"></span>
-			</a>
-			<div collapse="timeCollapsed">
-				<pre class="small">{{sampleSchema.properties.time | json}}</pre>
-			</div>
-		</label>
-		<div class="col-sm-8">
+		<label class="col-sm-4 control-label">Time</label>
+		<div class="col-sm-6">
 			<timepicker name="time" class="timepicker timepicker-condensed"
 			            ng-model="data.time" show-meridian="false" minute-step="15"></timepicker>
 			<span class="help-block" ng-show="validationForm.time.$invalid">{{validationForm.time.$errorMessage}}</span>
 		</div>
+		<div class="col-sm-2">
+			<a class="form-control-static" role="button"
+			   popover-html="jsonSource(sampleSchema.properties.time)" popover-title="Schema" popover-placement="bottom">
+				<span class="fa fa-sitemap"></span>
+			</a>
+		</div>
 	</div>
 	<div class="form-group" has-error>
-		<label class="col-sm-4 control-label">
-			<span>Select</span>
-			<a role="button" ng-init="selectCollapsed = true" ng-click="selectCollapsed = !selectCollapsed" ng-class="{'open': !selectCollapsed}">
-				<span class="toggle"></span>
-			</a>
-			<div collapse="selectCollapsed">
-				<pre class="small">{{sampleSchema.properties.select | json}}</pre>
-			</div>
-		</label>
-		<div class="col-sm-8">
+		<label class="col-sm-4 control-label">Select</label>
+		<div class="col-sm-6">
 			<select name="select" class="form-control"
 			        ng-model="data.select" schema-validate
 			        ng-options="option.value as option.label for option in sampleSchema.properties.select.options">
@@ -110,38 +96,46 @@
 			</select>
 			<span class="help-block" ng-show="validationForm.select.$invalid">{{validationForm.select.$errorMessage}}</span>
 		</div>
-	</div>
-	<div class="form-group" has-error>
-		<label class="col-sm-4 control-label">
-			<span>Multiselect</span>
-			<a role="button" ng-init="multiselectCollapsed = true" ng-click="multiselectCollapsed = !multiselectCollapsed" ng-class="{'open': !multiselectCollapsed}">
-				<span class="toggle"></span>
+		<div class="col-sm-2">
+			<a class="form-control-static" role="button"
+			   popover-html="jsonSource(sampleSchema.properties.select)" popover-title="Schema" popover-placement="bottom">
+				<span class="fa fa-sitemap"></span>
 			</a>
-			<div collapse="multiselectCollapsed">
-				<pre class="small">{{sampleSchema.properties.multiselect | json}}</pre>
-			</div>
-		</label>
-		<div class="col-sm-8">
-			<multiselect name="multiselect" ng-model="data.multiselect" options="sampleSchema.properties.multiselect.options" schema-validate></multiselect>
-			<span class="help-block" ng-show="validationForm.multiselect.$invalid">{{validationForm.multiselect.$errorMessage}}</span>
 		</div>
 	</div>
 	<div class="form-group" has-error>
-		<label class="col-sm-4 control-label">
-			<span>Textarea</span>
-			<a role="button" ng-init="textareaCollapsed = true" ng-click="textareaCollapsed = !textareaCollapsed" ng-class="{'open': !textareaCollapsed}">
-				<span class="toggle"></span>
+		<label class="col-sm-4 control-label">Multiselect</label>
+		<div class="col-sm-6">
+			<multiselect name="multiselect" ng-model="data.multiselect" schema-validate
+			             options="sampleSchema.properties.multiselect.options"
+			             extra-settings="{showCheckAll: true, showUncheckAll: true}"></multiselect>
+			<span class="help-block" ng-show="validationForm.multiselect.$invalid">{{validationForm.multiselect.$errorMessage}}</span>
+		</div>
+		<div class="col-sm-2">
+			<a class="form-control-static" role="button"
+			   popover-html="jsonSource(sampleSchema.properties.multiselect)" popover-title="Schema" popover-placement="bottom">
+				<span class="fa fa-sitemap"></span>
 			</a>
-			<br />
-			<small>(with <code>msd-elastic</code> directive)</small>
-			<div collapse="textareaCollapsed">
-				<pre class="small">{{sampleSchema.properties.textarea | json}}</pre>
-			</div>
-		</label>
-		<div class="col-sm-8">
+		</div>
+	</div>
+	<div class="form-group" has-error>
+		<label class="col-sm-4 control-label">Textarea</label>
+		<div class="col-sm-6">
 			<textarea name="textarea" type="text" class="form-control"
 			       ng-model="data.textarea" msd-elastic rows="1" schema-validate></textarea>
 			<span class="help-block" ng-show="validationForm.textarea.$invalid">{{validationForm.textarea.$errorMessage}}</span>
+		</div>
+		<div class="col-sm-1">
+			<a class="form-control-static" role="button"
+			   popover-html="jsonSource(sampleSchema.properties.textarea)" popover-title="Schema" popover-placement="bottom">
+				<span class="fa fa-sitemap"></span>
+			</a>
+		</div>
+		<div class="col-sm-1">
+			<a class="form-control-static" role="button"
+			   popover-html="'<ul class=list-unstyled><li><code>textarea[msd-elastic]</code></li></ul>'" popover-title="Usage" popover-placement="bottom">
+				<span class="fa fa-info-circle"></span>
+			</a>
 		</div>
 	</div>
 	<div class="form-actions">
@@ -152,11 +146,14 @@
 		</button>
 	</div>
 </form>
+<hr />
 <div class="row spacer-top">
 	<div class="col-md-6">
+		<h4>Model data</h4>
 		<pre>{{data | json}}</pre>
 	</div>
 	<div class="col-md-6">
+		<h4>Json schema</h4>
 		<pre>{{sampleSchema | json}}</pre>
 	</div>
 </div>

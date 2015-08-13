@@ -29,7 +29,7 @@
 				// when empty, this is a valid value in a schema and does not count as something
 				// that breaks validation of 'required'. But for our own sanity an empty field should
 				// not validate if it's required.
-				if (value === '') {
+				if (value === '' || value === null) {
 					value = undefined;
 				}
 
@@ -41,6 +41,13 @@
 				wrap.properties[propName] = schema.properties[propName];
 				if (angular.isArray(schema.required) && schema.required.indexOf(propName) !== -1) {
 					wrap.required = [propName];
+				} else {
+					// Normalize empty values for optional properties:
+					/*if(wrap.properties[propName].format === "date-time" && value === null) {
+						value = '';
+					} else if (wrap.properties[propName].type === "integer" && value === null) {
+						value = undefined;
+					}*/
 				}
 
 				var valueWrap = {};

@@ -154,5 +154,10 @@
 			"next": "Suivant",
 			"back": "Retour"
 		}
+	},
+	"multiselect": {
+		"checkAll": "Tout sélectionner",
+		"uncheckAll": "Tout désélectionner",
+		"buttonDefaultText": "Sélectionner svp."
 	}
 }
