@@ -57,6 +57,7 @@
 		}
 	},
 	"labels": {
+		"language": "Langue",
 		"email": "Email",
 		"password": "Mot de passe"
 	},

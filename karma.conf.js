@@ -1,10 +1,23 @@
 // Karma configuration
-var extend = require('util')._extend;
+var _ = require('lodash');
+var grunt = require('grunt');
+
+// Require project configuration:
+var project = grunt.file.readJSON('project.json');
 
 module.exports = function (config) {
 
-    // Required project configuration:
-    var project = grunt.file.readJSON('project.json');
+    var karmaResources = [];
+
+    _.forEach(project.common.resources.vendor.js, function (v) {
+        karmaResources.push(project.common.build.target + '/vendor/' + v);
+    });
+    _.forEach(project.common.resources.app, function (v) {
+        karmaResources.push(project.common.build.target + '/' + v);
+    });
+
+    karmaResources.push('vendor/angular-mocks/angular-mocks.js');
+    karmaResources.push(project.common.build.target + '/app/**/*.spec.js');
 
     config.set({
 
@@ -15,7 +28,7 @@ module.exports = function (config) {
         frameworks: ['jasmine'],
 
         // list of files / patterns to load in the browser
-        files: extend(project.common.resources.vendor.js, ['src/app/{,*/}{,*/}{,*/}*.js']),
+        files: karmaResources,
 
         // list of files to exclude
         exclude: [

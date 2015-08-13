@@ -10,7 +10,10 @@
 			"description": "Reactive web template powered by ObliqueUI and AngularJS",
 			"home": "#/home",
 			"api": {
-				"url": "http://localhost:3000/api",
+				"schema": "http",
+				"hostname": "localhost",
+				"port": 3000,
+				"context": "/api",
 				"logs": "/logs",
 				"sendCredentials": false
 			},
@@ -82,7 +85,7 @@
 					"angular-bootstrap/ui-bootstrap-tpls.js",
 					"angular-confirm/angular-confirm.js",
 					"angular-cookies/angular-cookies.js",
-					"angular-dateParser/dist/angular-dateParser.js",
+					"angular-dateParser/dist/angular-dateparser.js",
 					"angular-dynamic-locale/dist/tmhDynamicLocale.js",
 					"angular-elastic/elastic.js",
 					"angular-i18n/angular-locale_de.js",
@@ -114,7 +117,10 @@
 		"name": "prod",
 		"app": {
 			"api": {
-				"url": "http://localhost:8080"
+				"schema": "http",
+				"hostname": "localhost",
+				"port": 8080,
+				"context": "/oblique-reactive/api"
 			}
 		}
 	}
