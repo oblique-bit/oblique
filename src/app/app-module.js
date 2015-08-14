@@ -38,14 +38,13 @@
 			tmhDynamicLocaleProvider.localeLocationPattern('vendor/angular-i18n/angular-locale_{{locale}}.js');
 		})
 		.config(function (CONFIG, $translateProvider) {
+			$translateProvider.preferredLanguage(CONFIG.defaults.locale);
+			$translateProvider.useLocalStorage();
 			$translateProvider.useSanitizeValueStrategy('escaped');
 			$translateProvider.useStaticFilesLoader({
 				prefix: 'app/i18n/locale-',
 				suffix: '.json'
 			});
-			$translateProvider.preferredLanguage(CONFIG.defaults.locale);
-			$translateProvider.determinePreferredLanguage();
-			$translateProvider.useLocalStorage();
 		})
 		.config(function (CONFIG, $authProvider) {
 			$authProvider.baseUrl = CONFIG.api.url || CONFIG.api.schema + "://" + CONFIG.api.hostname + ':' + CONFIG.api.port + CONFIG.api.context;
