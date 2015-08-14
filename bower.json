@@ -32,16 +32,13 @@
     "angular-translate-loader-static-files": "2.7.2",
     "angular-translate-storage-local": "2.7.2",
     "angular-translate-storage-cookie": "2.7.2",
-    "angular-dynamic-locale": "0.1.27",
     "angular-ui-router": "0.2.15",
-    "angular-zeroclipboard": "0.4.3",
     "angularjs-dropdown-multiselect": "https://github.com/punix81/angularjs-dropdown-multiselect.git#master",
     "checklist-model": "0.4.0",
-    "moment": "2.10.6",
     "lodash": "3.10.1",
+    "moment": "2.10.6",
     "satellizer": "0.11.3",
-    "tv4": "1.2.3",
-    "zeroclipboard": "2.2.0"
+    "tv4": "1.2.3"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.3"
