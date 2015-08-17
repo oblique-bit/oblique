@@ -72,7 +72,8 @@ module.exports = app.listen(port, function () {
 		email: "eui@bit.admin.ch",
 		password: auth.createHash("12345678"),
 		firstname: "Oblique",
-		lastname: "Reactive"
+		lastname: "Reactive",
+		roles: ["member", "admin"]
 	};
 	var User = require('./models/user');
 	User.create(data, function(err, user) {

@@ -25,6 +25,7 @@ module.exports = function(auth) {
 				model.password = auth.createHash(req.body.password);
 				model.firstname = req.body.firstname;
 				model.lastname = req.body.lastname;
+				model.roles = ['member'];
 
 				// save the user
 				model.save(function (err) {

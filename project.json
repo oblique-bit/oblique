@@ -44,7 +44,6 @@
 				"app/core/infrastructure/exception-handler-decorator.js",
 				"app/core/infrastructure/state-decorator.js",
 
-				"app/core/services/session-service.js",
 				"app/core/services/auth-service.js",
 				"app/core/services/loading-service.js",
 

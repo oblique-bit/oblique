@@ -3,12 +3,12 @@
 	"use strict";
 
 	angular.module('__MODULE__')
-		.controller('AppController', function (CONFIG, $scope, $rootScope, $state, $translate, $sce, $log, tmhDynamicLocale, SessionService, AuthService, LoadingService, NotificationService) {
+		.controller('AppController', function (CONFIG, $scope, $rootScope, $state, $translate, $sce, $log, tmhDynamicLocale, AuthService, LoadingService, NotificationService) {
 			var $this = this;
 			var LOG = $log.getInstance('AppController');
 
 			// Global properties:
-			$this.context = SessionService.context;
+			$this.context = AuthService.context;
 			$this.spinner = LoadingService.loading;
 			$this.title = CONFIG.title;
 			$this.page = {
@@ -25,6 +25,7 @@
 
 			// Global actions:
 			$this.isAuthenticated = AuthService.isAuthenticated;
+			$this.isAuthorized = AuthService.isAuthorized;
 			$this.logout = AuthService.logout;
 
 			// Global events handling:
