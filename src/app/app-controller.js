@@ -17,7 +17,7 @@
 				layout: CONFIG.defaults.layout || 'default'
 			};
 			$this.locale = {
-				current : CONFIG.defaults.locale || 'en',
+				current: CONFIG.defaults.locale || 'en',
 				use: function (locale) {
 					$translate.use(locale);
 				}
@@ -29,6 +29,15 @@
 			$this.logout = AuthService.logout;
 
 			// Global events handling:
+			$rootScope.$on('$httpInterceptorError', function (event, response) {
+				if (response.data && response.data.errors) {
+					event.preventDefault();
+					response.data.errors.forEach(function (error, index) {
+						NotificationService.add(error.severity, 'error.business.' + error.messageKey);
+					});
+				}
+			});
+
 			$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 				NotificationService.clear();
 				if (toState.resolve) {

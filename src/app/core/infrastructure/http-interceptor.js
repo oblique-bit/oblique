@@ -4,7 +4,7 @@
 
 	angular
 		.module('__MODULE__.core')
-		.factory('HttpInterceptor', function (CONFIG, $q, $log, $injector, NotificationService, LoadingService) {
+		.factory('HttpInterceptor', function (CONFIG, $q, $log, $injector, $rootScope, NotificationService, LoadingService) {
 
 			var LOG = $log.getInstance('HttpInterceptor');
 
@@ -39,12 +39,10 @@
 				if ($http.api.isApiCall(rejection.config.url)) {
 					LoadingService.stop();
 				}
-				if (rejection.data && rejection.data.error && rejection.data.error.errors) {
-					rejection.data.error.errors.forEach(function (error, index) {
-						NotificationService.add(error.messageSeverity, 'error.business.' + error.messageKey);
-					});
-				} else if(rejection.status >= 500 && !isSilent(rejection.config)) {
-					NotificationService.add('error', 'error.http.status.' + rejection.status);
+				if (!$rootScope.$broadcast('$httpInterceptorError', rejection).defaultPrevented) {
+					if(rejection.status >= 500 && !isSilent(rejection.config)) {
+						NotificationService.add('error', 'error.http.status.' + rejection.status);
+					}
 				}
 				LOG.error(rejection);
 				return $q.reject(rejection);
