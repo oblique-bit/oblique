@@ -58,7 +58,7 @@
     "karma-story-reporter": "^0.3.1",
     "load-grunt-tasks": "~3.2.0",
     "lodash": "^3.10.1",
-    "mockgoose": "2.0.3",
+    "mockgoose": "2.0.1",
     "mongoose": "4.1.2",
     "moment": "^2.10.6",
     "phantomjs": "^1.9.18",
