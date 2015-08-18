@@ -1,6 +1,6 @@
 (function () {
 	'use strict';
 
-	angular.module('__MODULE__.core', []);
+	angular.module('__MODULE__.core', ['pascalprecht.translate']);
 
 }());
