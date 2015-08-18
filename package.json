@@ -15,9 +15,6 @@
   },
   "devDependencies": {
     "assemble": "^0.4.42",
-    "bcrypt-nodejs": "0.0.3",
-    "body-parser": "^1.13.3",
-    "express": "^4.13.3",
     "fs-utils": "~0.6.0",
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "^3.0.3",
@@ -58,10 +55,14 @@
     "karma-story-reporter": "^0.3.1",
     "load-grunt-tasks": "~3.2.0",
     "lodash": "^3.10.1",
-    "mockgoose": "2.0.1",
-    "mongoose": "4.1.2",
     "moment": "^2.10.6",
     "phantomjs": "^1.9.18",
+
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "mockgoose": "2.0.1",
+    "mongoose": "4.1.2",
     "request": "^2.60.0"
   },
   "scripts": {
