@@ -152,6 +152,15 @@ module.exports = function (grunt) {
 						dest: '<%= env.build.target %><%= paths.vendor %>',
 						expand: true
 					}]
+				},
+				'vendor-assets': {
+					files: [{
+						cwd: '<%= paths.vendor %>',
+						src: '<%= env.resources.vendor.assets %>',
+						dest: '<%= env.build.target %><%= paths.vendor %>',
+						expand: true,
+						flatten: false
+					}]
 				}
 			},
 

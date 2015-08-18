@@ -105,7 +105,8 @@
 				"css": [
 					"angular/angular-csp.css",
 					"animate.css/animate.css"
-				]
+				],
+				"assets": []
 			}
 		}
 	},
