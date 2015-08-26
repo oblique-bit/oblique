@@ -33,6 +33,9 @@
 				"app/app-controller.js",
 				"app/app-templates.js",
 
+				"app/common/common-module.js",
+				"app/common/auth/auth-service.js",
+
 				"app/oblique/oblique-module.js",
 
 				"app/oblique/formatters/date-directive.js",
@@ -47,9 +50,6 @@
 				"app/oblique/navigator/navigator-directive.js",
 				"app/oblique/navigator/navigator-service.js",
 
-				"app/oblique/services/auth-service.js",
-				"app/oblique/services/loading-service.js",
-
 				"app/oblique/ui/date-picker/date-picker-directive.js",
 				"app/oblique/ui/notifications/notifications-directive.js",
 				"app/oblique/ui/notifications/notification-service.js",
@@ -59,6 +59,8 @@
 				"app/oblique/ui/give-me-focus-directive.js",
 				"app/oblique/ui/multiselect-directive.js",
 				"app/oblique/ui/navigable-directive.js",
+
+				"app/oblique/status/loading-service.js",
 
 				"app/oblique/validation/has-error-directive.js",
 				"app/oblique/validation/schema-validate-directive.js",

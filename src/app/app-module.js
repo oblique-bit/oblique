@@ -19,6 +19,7 @@
 
 			'__MODULE__.app-templates',
 			'__MODULE__.oblique',
+			'__MODULE__.common',
 			'__MODULE__.auth',
 			'__MODULE__.home',
 			'__MODULE__.movies',

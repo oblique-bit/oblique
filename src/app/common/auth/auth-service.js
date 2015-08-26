@@ -2,7 +2,7 @@
 (function () {
 	"use strict";
 
-	angular.module('__MODULE__.oblique')
+	angular.module('__MODULE__.common')
 		.factory('AuthService', function ($http, $auth) {
 			var service = {};
 

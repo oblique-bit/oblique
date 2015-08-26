@@ -10,8 +10,6 @@
 							'<span class="fa fa-chevron-left"></span>' +
 						'</a>',
 			link: function (scope, element, attrs) {
-				console.log(arguments);
-
 				var eventName = 'keyup.navigator';
 
 				scope.up = function() {
@@ -19,7 +17,6 @@
 				};
 
 				$document.on(eventName, function (event) {
-					console.log(event);
 					if (event.which === 27) { // ESC key
 						event.preventDefault();
 						return scope.up();
@@ -27,9 +24,7 @@
 				});
 
 				element.on('$destroy', function() {
-					console.log('destroy');
 					$document.off(eventName);
-					//$interval.cancel(timeoutId);
 				});
 			}
 		};
