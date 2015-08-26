@@ -44,6 +44,9 @@
 				"app/core/infrastructure/exception-handler-decorator.js",
 				"app/core/infrastructure/state-decorator.js",
 
+				"app/core/navigator/navigator-directive.js",
+				"app/core/navigator/navigator-service.js",
+
 				"app/core/services/auth-service.js",
 				"app/core/services/loading-service.js",
 
@@ -73,7 +76,9 @@
 				"app/states/samples/schema-validation/schema-validation-sample-module.js",
 				"app/states/samples/schema-validation/schema-validation-sample-controller.js",
 				"app/states/samples/navigable/navigable-sample-module.js",
-				"app/states/samples/navigable/navigable-sample-controller.js"
+				"app/states/samples/navigable/navigable-sample-controller.js",
+				"app/states/samples/navigator/navigator-sample-module.js",
+				"app/states/samples/navigator/navigator-sample-controller.js"
 			],
 			"vendor": {
 				"js": [

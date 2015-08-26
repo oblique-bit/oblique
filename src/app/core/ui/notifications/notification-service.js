@@ -69,7 +69,8 @@
 				service.default = function(messageKey, title, sticky) { return service.add('default', messageKey, title, sticky);};
 				service.info = function(messageKey, title, sticky) { return service.add('info', messageKey, title, sticky);};
 				service.success = function(messageKey, title, sticky) { return service.add('success', messageKey, title, sticky);};
-				service.warning = function(messageKey, title, sticky) { return service.add('warning', messageKey, title, sticky);};
+				service.warn = function(messageKey, title, sticky) { return service.add('warning', messageKey, title, sticky);};
+				service.warning = service.warn; // Alias only
 				service.error = function(messageKey, title, sticky) { return service.add('error', messageKey, title, sticky);};
 
 				return service;

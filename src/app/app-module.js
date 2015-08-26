@@ -4,8 +4,8 @@
 	angular
 		.module('__MODULE__', [
 			'ngAnimate',
-			'ngSanitize',
 			'ngCookies',
+			'ngSanitize',
 			'ui.router',
 			'ui.bootstrap',
 			'tmh.dynamicLocale',

@@ -25,12 +25,15 @@
 			"title": "Films"
 		},
 		"samples": {
-			"title": "Samples",
+			"title": "Examples",
 			"navigable":{
 				"title": "Navigable"
 			},
 			"schemaValidation": {
 				"title": "Schema Validation"
+			},
+			"navigator": {
+				"title": "States Navigator"
 			}
 		},
 		"admin": {

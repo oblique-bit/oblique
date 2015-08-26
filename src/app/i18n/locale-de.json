@@ -13,8 +13,10 @@
 			"title": "Sign in",
 			"login": {
 				"title": "Login",
-				"submit": "Log in",
-				"password-lost": "Forgot password?"
+				"rememberme": "Benutzer speichern",
+				"submit": "Login",
+				"password-lost": "Passwort vergessen?",
+				"error": "Anmeldung nicht möglich!"
 			},
 			"register": {
 				"title": "New to {{title}}? Sign up!",
@@ -31,6 +33,9 @@
 			},
 			"schemaValidation": {
 				"title": "Schema Validation"
+			},
+			"navigator": {
+				"title": "States Navigator"
 			}
 		},
 		"admin": {
@@ -62,7 +67,7 @@
 	"labels": {
 		"language": "Sprache",
 		"email": "Email",
-		"password": "Password"
+		"password": "Passwort"
 	},
 	"error": {
 		"general": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
