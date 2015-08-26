@@ -41,7 +41,7 @@
 				}
 				if (!$rootScope.$broadcast('$httpInterceptorError', rejection).defaultPrevented) {
 					if(rejection.status >= 500 && !isSilent(rejection.config)) {
-						NotificationService.add('error', 'error.http.status.' + rejection.status);
+						NotificationService.error('error.http.status.' + rejection.status);
 					}
 				}
 				LOG.error(rejection);

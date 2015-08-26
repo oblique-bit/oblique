@@ -1,22 +1,24 @@
-<div class="headline headline-lg">
-	<h1>
-		<img src="./images/oblique-small.png" alt="{{'application.longName' | translate}}">
-		<span>{{'application.longName' | translate}}</span>
-	</h1>
-	<p class="lead">{{'application.description' | translate}}</p>
-</div>
-<div class="row">
-	<div class="col-md-8 col-md-push-2">
-		<form class="form-horizontal" ng-submit="search()">
-			<div class="form-group form-group-lg">
-				<div class="input-group">
-					<input ng-model="query" type="text" class="form-control input-lg" placeholder="Search for movies">
-					<span class="input-group-btn">
-						<button class="btn btn-default btn-lg btn-primary" type="submit">Go!</button>
-					</span>
+<div class="default-layout">
+	<div class="headline headline-lg">
+		<h1>
+			<img src="./images/oblique-small.png" alt="{{'application.longName' | translate}}">
+			<span>{{'application.longName' | translate}}</span>
+		</h1>
+		<p class="lead">{{'application.description' | translate}}</p>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-push-2">
+			<form class="form-horizontal" ng-submit="search()">
+				<div class="form-group form-group-lg">
+					<div class="input-group">
+						<input ng-model="query" type="text" class="form-control input-lg" placeholder="Search for movies">
+						<span class="input-group-btn">
+							<button class="btn btn-default btn-lg btn-primary" type="submit">Go!</button>
+						</span>
+					</div>
 				</div>
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
 </div>
 

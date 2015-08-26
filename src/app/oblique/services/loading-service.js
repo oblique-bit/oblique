@@ -37,7 +37,7 @@
 							});
 							if (typeof loading !== 'undefined') {
 								stop();
-								NotificationService.add('error', 'error.other.timeout');
+								NotificationService.error('error.other.timeout');
 							}
 						}, timeout)});
 						loadingId++;
