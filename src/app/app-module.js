@@ -18,7 +18,7 @@
 			'monospaced.elastic',
 
 			'__MODULE__.app-templates',
-			'__MODULE__.core',
+			'__MODULE__.oblique',
 			'__MODULE__.auth',
 			'__MODULE__.home',
 			'__MODULE__.movies',
