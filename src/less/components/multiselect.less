@@ -25,6 +25,12 @@
 			.fa;
 			.icon-content('chevron-down');
 		}
+
+		&.dropdown-toggle-up {
+			.caret {
+				.icon-content('chevron-up');
+			}
+		}
 	}
 
 	.dropdown-menu {
@@ -42,6 +48,22 @@
 		.checkbox {
 			padding-top: 2px;
 		}
+	}
+
+	.multiselect-parent {
+		&:not(.dropup) .dropdown-menu {
+			margin-top: 0 !important;
+			border-top-right-radius: 0;
+			border-top-left-radius: 0;
+			border-top: none;
+		}
+		&.dropup .dropdown-menu {
+			margin-bottom: 0 !important;
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: 0;
+			border-bottom: none;
+		}
+
 	}
 
 	label {

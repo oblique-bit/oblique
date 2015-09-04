@@ -4,7 +4,7 @@
 	angular.module('__MODULE__.oblique')
 	.provider('NotificationService', function () {
 
-		var timeout = 1500;
+		var timeout = 5000;
 		var notifications = [];
 		var types = {
 			'default': {
@@ -50,7 +50,7 @@
 					if (!notification.sticky) {
 						$timeout(function () {
 							service.remove(notification.id);
-						}, timeout * 2);
+						}, timeout);
 					}
 					currentId++;
 				};

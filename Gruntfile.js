@@ -197,16 +197,38 @@ module.exports = function (grunt) {
 
 					// Layout placeholders override:
 					'html-attrs': 'ng-controller="AppController as appController"',
-					'ui-layout': "{{appController.layout}}",
 					'application-fixed': true,
 
 					// App-specific configuration used by ObliqueUI layouts:
 					app: {
-						name: '<%= env.app.module %>',
-						title: '<%= env.app.title %>',
-						description: '<%= env.app.description %>',
-						lang: '<%= env.app.defaults.locale %>',
-						home: '<%= env.app.home %>',
+						name:               '<%= env.app.module %>',
+						title:              '<%= env.app.title %>',
+						description:        '<%= env.app.description %>',
+						home:               '<%= env.app.home %>',
+						lang:               '<%= env.app.defaults.locale %>',
+						organization: {
+							name:           'Federal Office of Information Technology, Systems and Telecommunication FOITT',
+							url:            'http://www.bit.admin.ch',
+							email:          'info@bit.admin.ch',
+							contact:        false
+						},
+
+						// Available locales:
+						locales: ["de", "fr", "it", "en"],
+
+						// Theming:
+						theme: {
+							tooltips:       true,
+							application: {
+								fixed:      true
+							},
+							header: {
+								transitions:true
+								//variant:  "application-header-sm"
+							}
+						},
+
+						// References:
 						pages: '',
 						vendor: {
 							path: '<%= paths.vendor %>',
@@ -215,17 +237,6 @@ module.exports = function (grunt) {
 								title: 'ObliqueUI',
 								path: 'oblique-ui/'
 							}
-						},
-
-						// Theming:
-						theme: {
-							'has-transitions': true,
-							'has-tooltips': true,
-							'has-sticky-footer': false
-						},
-						offsets: {
-							intermediary: 160,
-							final: 320
 						}
 					},
 

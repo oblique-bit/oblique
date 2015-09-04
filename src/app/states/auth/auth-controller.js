@@ -13,12 +13,15 @@
 
 			$scope.login = function () {
 				NotificationService.clear();
-				AuthService.login($scope.user).then(function (data, status) {
-					NotificationService.success(data.message || 'states.auth.login.success');
-					$state.go('home');
-				}, function (error) {
-					NotificationService.error(error.data && error.data.message ? error.data.message  : 'states.auth.login.error');
-				});
+				AuthService.login($scope.user).then(
+					function (user) {
+						$state.go('home').then(function() {
+							NotificationService.success('states.auth.login.success', 'Welcome, ' + user.firstname + '!');
+						});
+					}, function (error) {
+						NotificationService.error(error.data && error.data.message ? error.data.message  : 'states.auth.login.error');
+					}
+				);
 			};
 
 			$scope.logout = function () {

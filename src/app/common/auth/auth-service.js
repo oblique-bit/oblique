@@ -24,15 +24,17 @@
 
 			service.resolve = function() {
 				// TODO: replace with your own user resolution implementation here!
-				return $http.api.get('/me').then(function(user) {
+				return $http.api.get('/me', {silent: true}).then(function(user) {
 					return service.init(user, user.roles);
 				});
 			};
 
 			service.login = function (credentials) {
 				// TODO: replace with your own login implementation here!
-				return $auth.login(credentials).then(function(user, status){
-					return service.init(user);
+				// Make this request silent:
+				credentials.silent = true;
+				return $auth.login(credentials).then(function(response){
+					return service.resolve();
 				});
 			};
 

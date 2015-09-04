@@ -1,8 +1,8 @@
 <ul class="nav navbar-nav navbar-right navbar-controls" role="menu" ng-if="!appController.isAuthenticated()" ng-cloak>
-	{{#each locales}}
-		<li role="menuitem" ng-class="{active: appController.locale.current === '{{this.code}}'}">
-			<a href="" role="button" ng-click="appController.locale.use('{{this.code}}')">
-				<span class="control-widget">{{this.code}}</span>
+	{{#each app.locales}}
+		<li role="menuitem" ng-class="{active: appController.locale.current === '{{this}}'}">
+			<a href="" role="button" ng-click="appController.locale.use('{{this}}')">
+				<span class="control-widget">{{this}}</span>
 			</a>
 		</li>
 	{{/each}}
@@ -54,10 +54,10 @@
 				<span class="fa fa-flag"></span>
 				<span>\{{'labels.language' | translate}}</span>
 			</li>
-			{{#each locales}}
-				<li role="menuitem" ng-class="{active: appController.locale.current === '{{this.code}}'}">
-					<a href="" role="button" ng-click="appController.locale.use('{{this.code}}')">
-						<span>{{this.title}}</span>
+			{{#each app.locales}}
+				<li role="menuitem" ng-class="{active: appController.locale.current === '{{this}}'}">
+					<a href="" role="button" ng-click="appController.locale.use('{{this}}')">
+						<span>\{{'application.locales.{{this}}' | translate}}</span>
 					</a>
 				</li>
 			{{/each}}

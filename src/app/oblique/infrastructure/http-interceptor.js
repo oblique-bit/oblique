@@ -49,7 +49,7 @@
 			}
 
 			function isSilent(config) {
-				return config && config.data && config.data.silent;
+				return config && (config.silent || (config.data && config.data.silent));
 			}
 
 			// Others services are injected on demand in order to prevent circular dependency during factory creation:

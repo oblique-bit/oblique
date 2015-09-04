@@ -2,7 +2,13 @@
 	"application": {
 		"shortName": "OR",
 		"longName": "ObliqueReactive",
-		"description": "Reactive web template powered by ObliqueUI and AngularJS"
+		"description": "Reactive web template powered by ObliqueUI and AngularJS",
+		"locales": {
+			"de": "Deutsch",
+			"fr": "Français",
+			"it": "Italiano",
+			"en": "English"
+		}
 	},
 	"states": {
 		"home": {
@@ -12,9 +18,12 @@
 		"auth": {
 			"title": "Sign in",
 			"login": {
-				"title": "Login",
-				"submit": "Log in",
-				"password-lost": "Forgot password?"
+				"title": "Connexion",
+				"rememberme": "Se souvenir de moi?",
+				"submit": "Se connecter",
+				"password-lost": "Mot de passe oublié?",
+				"error": "We have been unable to authenticate you, please check your credentials!",
+				"success": "You have been successfully authenticated."
 			},
 			"register": {
 				"title": "New to {{title}}? Sign up!",

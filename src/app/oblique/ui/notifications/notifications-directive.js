@@ -9,10 +9,8 @@
 				replace: true,
 				scope: false,
 				controller: function ($scope, $element, $attrs) {
-
-					var ctrl = this;
-
-					ctrl.alertType = {
+					$scope.notifications = NotificationService.notifications;
+					$scope.alertType = {
 						default: 'alert',
 						info: 'alert alert-info',
 						success: 'alert alert-success',
@@ -20,30 +18,25 @@
 						error: 'alert alert-danger'
 					};
 
-					ctrl.notifications = NotificationService.notifications;
-
-					ctrl.isClosable = function (notification) {
+					$scope.isClosable = function (notification) {
 						return notification.sticky;
 					};
 
-					ctrl.remove = function (notification) {
+					$scope.remove = function (notification) {
 						NotificationService.remove(notification.id);
 					};
 				},
-				controllerAs: 'notificationCtrl',
-				bindToController: true,
-
 				template:
-				'<div class="notifications">' +
-					'<div class="{{notificationCtrl.alertType[notification.type]}} animated slide-down" ng-repeat="notification in notificationCtrl.notifications">' +
-						'<button ng-click="notificationCtrl.remove(notification)" ' +
-							'ng-show="notificationCtrl.isClosable(notification)" type="button" class="close">' +
-							'&times;' +
-						'</button>' +
-						'<h4 ng-if="notification.title">{{notification.title}}</h4>' +
-						'<p><strong>{{("notification.type." + notification.type) | translate}}</strong> {{notification.messageKey | translate}}</p>' +
-					'</div>' +
-				'</div>',
+					'<div class="notifications">' +
+						'<div class="{{alertType[notification.type]}} animated slide-down" ng-repeat="notification in notifications">' +
+							'<button ng-click="remove(notification)" ' +
+								'ng-show="isClosable(notification)" type="button" class="close">' +
+								'&times;' +
+							'</button>' +
+							'<h4><span  ng-if="!notification.title">{{("notification.type." + notification.type) | translate}} </span>{{notification.title}}</h4>' +
+							'<p class="lead">{{notification.messageKey | translate}}</p>' +
+						'</div>' +
+					'</div>',
 				link: function (scope, element, attrs) {
 				}
 			};

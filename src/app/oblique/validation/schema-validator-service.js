@@ -6,7 +6,7 @@
 	'use strict';
 	/*  Common code for validating a value against its form and schema definition */
 	angular.module('__MODULE__.oblique')
-		.factory('schemaValidator', function ($filter) {
+		.factory('schemaValidator', function ($translate) {
 
 			var validator = {};
 
@@ -54,6 +54,7 @@
 				if (angular.isDefined(value)) {
 					valueWrap[propName] = value;
 				}
+				tv4.language($translate.use());
 				return tv4.validateResult(valueWrap, wrap);
 			};
 

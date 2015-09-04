@@ -1,6 +1,0 @@
-[
-	{ "title": "Deutsch", "code": "de", "url": "#de"},
-	{ "title": "Français", "code": "fr", "url": "#fr"},
-	{ "title": "Italiano", "code": "it", "url": "#it"},
-	{ "title": "English", "code": "en", "url": "#en", "active": "true"}
-]

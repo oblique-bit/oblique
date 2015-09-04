@@ -13,8 +13,8 @@
 			$this.title = CONFIG.title;
 			$this.page = {
 				title: '',
-				description: CONFIG.description || '',
-				layout: CONFIG.defaults.layout || 'default'
+				layout: 'default',
+				description: CONFIG.description || ''
 			};
 			$this.locale = {
 				current: CONFIG.defaults.locale || 'en',
@@ -46,12 +46,9 @@
 			});
 
 			$rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-				// Scroll to top of page on state change:
-				$('html, body').animate({scrollTop: 0}, 0);
-
+				$this.page.layout = toState.data && toState.data.layout ? toState.data.layout : 'default';
 				$this.page.title = toState.data && toState.data.title ? toState.data.title : 'states.' + toState.name + '.title';
 				$this.page.description = toState.data && toState.data.description ? toState.data.description : (CONFIG.description || '');
-				$this.page.layout = toState.data && toState.data.layout ? toState.data.layout : 'default';
 				$this.spinner.active = false;
 			});
 

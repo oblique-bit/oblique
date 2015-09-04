@@ -50,6 +50,8 @@
 				"app/oblique/navigator/navigator-directive.js",
 				"app/oblique/navigator/navigator-service.js",
 
+				"app/oblique/status/loading-service.js",
+
 				"app/oblique/ui/date-picker/date-picker-directive.js",
 				"app/oblique/ui/notifications/notifications-directive.js",
 				"app/oblique/ui/notifications/notification-service.js",
@@ -59,8 +61,6 @@
 				"app/oblique/ui/give-me-focus-directive.js",
 				"app/oblique/ui/multiselect-directive.js",
 				"app/oblique/ui/navigable-directive.js",
-
-				"app/oblique/status/loading-service.js",
 
 				"app/oblique/validation/has-error-directive.js",
 				"app/oblique/validation/schema-validate-directive.js",

@@ -8,6 +8,7 @@
 	angular.module('__MODULE__.oblique')
 	.constant('multiselectConfig', {
 		extraSettings : {
+			buttonClasses: "btn btn-default",
 			idProp: 'value',
 			//displayProp: 'text',
 			externalIdProp: 'value',
@@ -26,11 +27,14 @@
 	.directive('multiselect', function (multiselectConfig, $filter) {
 		return {
 			restrict: 'E',
+			template: '<div ng-dropdown-multiselect options="options" selected-model="selectedModel" checkboxes="true" extra-settings="settings" translation-texts="translations"></div>',
+			require: 'ngModel',
 			scope: {
 				ngModel:            '=',    // The object the will contain the model for the selected items in the dropdown.
 				options:            '=',    // The options for the dropdown.
 				extraSettings:      '&?',   // See 'Settings' section on http://dotansimha.github.io/angularjs-dropdown-multiselect/
-				translationTexts:   '&?'    // See 'Translation Texts' section on http://dotansimha.github.io/angularjs-dropdown-multiselect/
+				translationTexts:   '&?',   // See 'Translation Texts' section on http://dotansimha.github.io/angularjs-dropdown-multiselect/
+				dropup:             '='     // Defines if a dropup menu should be used instead on a dropdown
 			},
 			controller: function ($rootScope, $scope, $attrs) {
 				// Configuration:
@@ -41,6 +45,7 @@
 				);
 
 				// Binding:
+				$scope.ngModel = $scope.ngModel || [];
 				$scope.wrap = function () {
 					$scope.selectedModel = $scope.ngModel.map(function (item) {
 						return {
@@ -66,10 +71,9 @@
 				// Initialization
 				$scope.wrap();
 			},
-			template: '<div ng-dropdown-multiselect options="options" selected-model="selectedModel" checkboxes="true" extra-settings="settings" translation-texts="translations"></div>',
-			require: 'ngModel',
 			link: function (scope, element, attrs, ngModelCtrl) {
-				var dropdownMultiselect = angular.element(element.find('.multiselect-parent')).scope();
+				var container = element.find('.multiselect-parent');
+				var dropdownMultiselect = angular.element(container).scope();
 				if (dropdownMultiselect) {
 					// Close on ESC keypress:
 					element.bind('keydown', function (evt) {
@@ -81,6 +85,12 @@
 							scope.$apply();
 						}
 					});
+
+					// Dropup?
+					if(scope.dropup){
+						container.addClass('dropup');
+						element.find('.dropdown-toggle').addClass('dropdown-toggle-up');
+					}
 
 					// Enable labels translation:
 					// FIXME: remove when https://github.com/dotansimha/angularjs-dropdown-multiselect/issues/54

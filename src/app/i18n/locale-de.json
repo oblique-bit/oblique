@@ -2,7 +2,13 @@
 	"application": {
 		"shortName": "OR",
 		"longName": "ObliqueReactive",
-		"description": "Reactive web template powered by ObliqueUI and AngularJS"
+		"description": "Reactive web template powered by ObliqueUI and AngularJS",
+		"locales": {
+			"de": "Deutsch",
+			"fr": "Français",
+			"it": "Italiano",
+			"en": "English"
+		}
 	},
 	"states": {
 		"home": {
@@ -16,7 +22,8 @@
 				"rememberme": "Benutzer speichern",
 				"submit": "Login",
 				"password-lost": "Passwort vergessen?",
-				"error": "Anmeldung nicht möglich!"
+				"error": "Anmeldung nicht möglich!",
+				"success": "Erfolgreiche Anmeldung."
 			},
 			"register": {
 				"title": "New to {{title}}? Sign up!",

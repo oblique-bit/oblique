@@ -1,18 +1,19 @@
 <div class="row">
-	<div class="col-xs-4 col-sm-3 col-md-1">
+	<div class="col-xs-4 col-sm-2 col-md-1">
 		<p>&copy;&nbsp;2015</p>
 	</div>
-	<div class="col-xs-8 col-sm-6 col-md-5">
-		<p>Built with <span class="fa fa-heart-o" title="Love"></span>, <a href="http://vmjeap10i04.bfi.admin.ch/eui/oblique-ui/" title="The front-end framework for the EAP stack.">ObliqueUI</a> <span class="version">(v1.2.0)</span> and <a href="https://angularjs.org/" title="Superheroic JavaScript MVW Framework">AngularJS</a> <span class="version">(v1.3.8)</span>.</p>
-		<p>{{package.organization.name}}</p>
+	<div class="col-xs-8 col-sm-7 col-md-6">
+		<p>Built with <span class="fa fa-heart-o" title="Love"></span>, <a href="http://vmjeap10i04.bfi.admin.ch/eui/oblique-ui/" title="The front-end framework for the EAP stack.">ObliqueUI</a> <span class="version">(v1.2.0)</span> and <a href="https://angularjs.org/" title="Superheroic JavaScript MVW Framework">AngularJS</a> <span class="version">(v1.4.3)</span>.</p>
+		<p>{{#if app.organization.url}}<a href="{{app.organization.url}}" target="_blank" class="link">{{/if}}{{app.organization.name}}{{#if app.organization.url}}</a>{{/if}}</p>
 	</div>
-	<div class="col-xs-8 col-xs-push-4 col-sm-3 col-sm-push-0 col-md-6">
+	<div class="col-xs-8 col-xs-push-4 col-sm-3 col-sm-push-0 col-md-5">
 		<ul class="list-inline">
 			<li>
 				<a href="http://www.disclaimer.admin.ch" title="Terms and conditions" target="_blank" class="link">Legal</a>
 			</li>
 			<li>
-				<a href="mailto:info@bit.admin.ch" title="This link will open your email client in order to send an email to info@bit.admin.ch" class="link">Contact</a>
+				{{#if app.organization.email}}<a href="mailto:{{app.organization.email}}" title="This link will open your email client in order to send an email to {{app.organization.email}}" class="link">Contact</a>{{/if}}
+				{{#if app.organization.contact}}<a href="{{app.organization.contact}}" title="This link will open a new tab in order to contact {{app.organization.name}}" target="_blank" class="link">Contact</a>{{/if}}
 			</li>
 		</ul>
 	</div>
