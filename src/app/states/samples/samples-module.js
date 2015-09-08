@@ -7,7 +7,7 @@
 			$stateProvider.state('samples', {
 				url: '/samples',
 				abstract: true,
-				template: '<div ui-view class="default-layout" />'
+				templateUrl: 'samples/samples.tpl.html'
 			});
 		});
 }());

@@ -2,15 +2,26 @@
 <p class="lead">Navigate to the parent state by clicking on the navigation button below or pressing the ESC key.</p>
 <div class="row">
 	<div class="col-md-6">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3 class="panel-title">View</h3>
+			</div>
+			<div class="panel-body">
+				<label>This is the nested content from state(s):</label>
+				<p class="lead"><a href="samples.navigator">Navigator Sample</a> <span ui-view></span></p>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
 		<ul class="nav nav-tree">
 			<li class="nav-header" role="presentation">
 				<h3>
 					<navigator class="btn btn-secondary btn-sm"></navigator>
-					<span>Navigation</span>
+					<span>Sample Navigator Tree</span>
 				</h3>
 			</li>
 			<li role="menuitem" class="open" ui-sref-active="active">
-				<a href="" ui-sref="samples.navigator">Navigator Sample state</a>
+				<a href="" ui-sref="samples.navigator">Parent state</a>
 				<ul id="nav-tree-level-1" class="nav in">
 					<li role="menuitem" ui-sref-active="active">
 						<a href="" ui-sref="samples.navigator.1">Child state 1</a>
@@ -21,7 +32,7 @@
 							<li role="menuitem" ui-sref-active="active">
 								<a href="" ui-sref="samples.navigator.2.1">Child state 2.1</a>
 							</li>
-							<li role="menuitem" class="open">
+							<li role="menuitem" class="open" ui-sref-active="active">
 								<a href="" ui-sref="samples.navigator.2.2">Child state 2.2</a>
 								<ul class="nav in">
 									<li role="menuitem" ui-sref-active="active">
@@ -57,16 +68,5 @@
 				</ul>
 			</li>
 		</ul>
-	</div>
-	<div class="col-md-6">
-		<div class="panel panel-info">
-			<div class="panel-heading">
-				<h3 class="panel-title">View</h3>
-			</div>
-			<div class="panel-body">
-				<label>This is the nested content from state(s):</label>
-				<p class="lead"><a href="samples.navigator">Navigator Sample</a> <span ui-view></span></p>
-			</div>
-		</div>
 	</div>
 </div>

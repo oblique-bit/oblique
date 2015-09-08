@@ -8,17 +8,20 @@
 			<span class="toggle"></span>
 		</a>
 		<div class="dropdown-menu">
-			<ul id="nav-global-samples" class="nav nav-stacked" role="menu" data-provides="activable">
-				<li class="nav-header" role="presentation">
+			<ul id="nav-global-samples" class="nav nav-stacked" role="menu">
+				<li class="nav-header" role="presentation" ui-sref-active="active">
 					<h3>\{{'states.samples.title' | translate}}</h3>
 				</li>
-				<li role="menuitem" class="nav-section">
+				<li role="menuitem" class="nav-section" ui-sref-active="active">
 					<a href="" ui-sref="samples.navigable" data-toggle="dropdown">\{{'states.samples.navigable.title' | translate}}</a>
 				</li>
-				<li role="menuitem" class="nav-section">
-					<a href="" ui-sref="samples.schemaValidation" data-toggle="dropdown">\{{'states.samples.schemaValidation.title' | translate}}</a>
+				<li role="menuitem" class="nav-section" ui-sref-active="active">
+					<a href="" ui-sref="samples.schemaValidation" data-toggle="dropdown">
+						<span>\{{'states.samples.schemaValidation.title' | translate}}</span>
+						<sup class="text-warning">Experimental</sup>
+					</a>
 				</li>
-				<li role="menuitem" class="nav-section">
+				<li role="menuitem" class="nav-section" ui-sref-active="active">
 					<a href="" ui-sref="samples.navigator" data-toggle="dropdown">\{{'states.samples.navigator.title' | translate}}</a>
 				</li>
 			</ul>
