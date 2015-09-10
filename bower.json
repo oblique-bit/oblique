@@ -19,32 +19,32 @@
   "dependencies": {
     "oblique-ui": "https://stash.eap.bit.admin.ch/scm/oui/oblique-ui.git#1.2.2",
     "animate.css": "3.4.0",
-    "angular": "1.4.3",
-    "angular-animate": "1.4.3",
+    "angular": "1.4.5",
+    "angular-animate": "1.4.5",
     "angular-bootstrap": "https://github.com/almeidap/angular-ui-bootstrap.git#master",
     "angular-confirm": "https://github.com/almeidap/angular-confirm.git#angular-1.4-fix",
     "angular-dateParser": "1.0.12",
     "angular-dynamic-locale": "0.1.27",
     "angular-elastic": "https://github.com/jlebit/angular-elastic.git#master",
-    "angular-i18n": "1.4.3",
-    "angular-sanitize": "1.4.3",
+    "angular-i18n": "1.4.5",
+    "angular-sanitize": "1.4.5",
     "angular-translate": "2.7.2",
     "angular-translate-loader-static-files": "2.7.2",
     "angular-translate-storage-local": "2.7.2",
     "angular-translate-storage-cookie": "2.7.2",
     "angular-ui-router": "0.2.15",
     "angularjs-dropdown-multiselect": "https://github.com/punix81/angularjs-dropdown-multiselect.git#master",
-    "checklist-model": "0.4.0",
+    "checklist-model": "0.5.0",
     "lodash": "3.10.1",
     "moment": "2.10.6",
     "satellizer": "0.11.3",
-    "tv4": "1.2.3"
+    "tv4": "1.2.5"
   },
   "devDependencies": {
-    "angular-mocks": "~1.4.3"
+    "angular-mocks": "~1.4.5"
   },
   "resolutions": {
-    "angular": "1.4.3",
+    "angular": "1.4.5",
     "lodash": "~3.10.1"
   }
 }
