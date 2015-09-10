@@ -16,7 +16,8 @@
 			};
 
 			function handleRequest(config) {
-				if (http().api.isApiCall(config.url) && !isSilent(config)) {
+				// TODO: redesign blocking/silent/background operations
+				if (!isSilent(config) && !isBackground(config) && http().api.isApiCall(config.url)) {
 					LoadingService.start();
 				}
 				return config;
@@ -40,7 +41,11 @@
 					LoadingService.stop();
 				}
 				if (!$rootScope.$broadcast('$httpInterceptorError', rejection).defaultPrevented) {
-					if(rejection.status >= 500 && !isSilent(rejection.config)) {
+					if(!isSilent(rejection.config) && (rejection.status >= 500 || rejection.status === 0)) {
+						// Mark this rejection as already handled:
+						rejection.defaultPrevented = true;
+
+						// Notify user:
 						NotificationService.error('error.http.status.' + rejection.status);
 					}
 				}
@@ -50,6 +55,10 @@
 
 			function isSilent(config) {
 				return config && (config.silent || (config.data && config.data.silent));
+			}
+
+			function isBackground(config) {
+				return config && (config.background || (config.data && config.data.background));
 			}
 
 			// Others services are injected on demand in order to prevent circular dependency during factory creation:

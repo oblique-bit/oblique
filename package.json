@@ -20,7 +20,7 @@
     "grunt-autoprefixer": "^3.0.3",
     "grunt-bump": "0.3.1",
     "grunt-cli": "^0.1.13",
-    "grunt-config": "https://github.com/almeidap/grunt-config.git",
+    "grunt-config": "git+https://github.com/almeidap/grunt-config.git",
     "grunt-connect-proxy": "0.2.0",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-concat": "^0.5.1",

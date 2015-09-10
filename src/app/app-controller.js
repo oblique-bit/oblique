@@ -12,8 +12,8 @@
 			$this.spinner = LoadingService.loading;
 			$this.title = CONFIG.title;
 			$this.page = {
+				layout: {},
 				title: '',
-				layout: 'default',
 				description: CONFIG.description || ''
 			};
 			$this.locale = {
@@ -46,7 +46,7 @@
 			});
 
 			$rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-				$this.page.layout = toState.data && toState.data.layout ? toState.data.layout : 'default';
+				$this.page.layout = toState.data && toState.data.layout ? toState.data.layout : {};
 				$this.page.title = toState.data && toState.data.title ? toState.data.title : 'states.' + toState.name + '.title';
 				$this.page.description = toState.data && toState.data.description ? toState.data.description : (CONFIG.description || '');
 				$this.spinner.active = false;

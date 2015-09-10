@@ -31,8 +31,8 @@
 
 			service.login = function (credentials) {
 				// TODO: replace with your own login implementation here!
-				// Make this request silent:
-				credentials.silent = true;
+				// Make this a background request (TODO: redesign blocking/silent/background operations):
+				credentials.background = true;
 				return $auth.login(credentials).then(function(response){
 					return service.resolve();
 				});

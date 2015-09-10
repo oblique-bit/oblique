@@ -17,7 +17,7 @@
     "tests"
   ],
   "dependencies": {
-    "oblique-ui": "https://stash.eap.bit.admin.ch/scm/oui/oblique-ui.git#1.2.1",
+    "oblique-ui": "https://stash.eap.bit.admin.ch/scm/oui/oblique-ui.git#1.2.2",
     "animate.css": "3.4.0",
     "angular": "1.4.3",
     "angular-animate": "1.4.3",

@@ -6,6 +6,7 @@
 		.directive('notifications', function (NotificationService) {
 			return {
 				restrict: 'AE',
+				templateUrl: '../oblique/ui/notifications/notifications.tpl.html',
 				replace: true,
 				scope: false,
 				controller: function ($scope, $element, $attrs) {
@@ -26,17 +27,6 @@
 						NotificationService.remove(notification.id);
 					};
 				},
-				template:
-					'<div class="notifications">' +
-						'<div class="{{alertType[notification.type]}} animated slide-down" ng-repeat="notification in notifications">' +
-							'<button ng-click="remove(notification)" ' +
-								'ng-show="isClosable(notification)" type="button" class="close">' +
-								'&times;' +
-							'</button>' +
-							'<h4><span  ng-if="!notification.title">{{("notification.type." + notification.type) | translate}} </span>{{notification.title}}</h4>' +
-							'<p class="lead">{{notification.messageKey | translate}}</p>' +
-						'</div>' +
-					'</div>',
 				link: function (scope, element, attrs) {
 				}
 			};
