@@ -39,7 +39,7 @@
 		</div>
 	</div>
 	<div class="form-group" has-error>
-		<label class="col-sm-4 control-label">Integer</label>
+		<label class="col-sm-4 control-label">object_subproperty</label>
 		<div class="col-sm-6">
 			<input name="integer" type="number" class="form-control"
 			       ng-model="data.integer" schema-validate />
@@ -135,6 +135,20 @@
 			<a class="form-control-static" role="button"
 			   popover-html="'<ul class=list-unstyled><li><code>textarea[msd-elastic]</code></li></ul>'" popover-title="Usage" popover-placement="bottom">
 				<span class="fa fa-info-circle"></span>
+			</a>
+		</div>
+	</div>
+	<div class="form-group" has-error>
+		<label class="col-sm-4 control-label">Subproperty</label>
+		<div class="col-sm-6">
+			<input name="object_subproperty" type="number" class="form-control"
+			       ng-model="data.object.subproperty" schema-validate />
+			<span class="help-block" ng-show="validationForm.object_subproperty.$invalid">{{validationForm.object_subproperty.$errorMessage}}</span>
+		</div>
+		<div class="col-sm-2">
+			<a class="form-control-static" role="button"
+			   popover-html="jsonSource(sampleSchema.properties.object.properties.subproperty)" popover-title="Schema" popover-placement="bottom">
+				<span class="fa fa-sitemap"></span>
 			</a>
 		</div>
 	</div>

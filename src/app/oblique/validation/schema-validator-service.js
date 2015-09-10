@@ -38,7 +38,7 @@
 				// only this property we wrap it in a fake object.
 				var wrap = {type: 'object', 'properties': {}};
 
-				wrap.properties[propName] = schema.properties[propName];
+				wrap.properties[propName] = _.result(schema.properties, propName);
 				if (angular.isArray(schema.required) && schema.required.indexOf(propName) !== -1) {
 					wrap.required = [propName];
 				} else {
