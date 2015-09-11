@@ -2,7 +2,7 @@
 	"application": {
 		"shortName": "OR",
 		"longName": "ObliqueReactive",
-		"description": "Reactive web template powered by ObliqueUI and AngularJS",
+		"description": "Reactive front-end template for your business web application.",
 		"locales": {
 			"de": "Deutsch",
 			"fr": "Français",
