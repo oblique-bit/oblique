@@ -5,8 +5,8 @@
 (function () {
 	'use strict';
 	/*  Common code for validating a value against its form and schema definition */
-	angular.module('__MODULE__.oblique')
-		.factory('schemaValidator', function ($translate) {
+	angular.module('__MODULE__.core')
+		.factory('schemaValidator', function ($filter, $translate) {
 
 			var validator = {};
 
