@@ -107,7 +107,9 @@
 					"angularjs-dropdown-multiselect/src/angularjs-dropdown-multiselect.js",
 					"checklist-model/checklist-model.js",
 					"satellizer/satellizer.js",
-					"tv4/tv4.js"
+					"tv4/tv4.js",
+					"tv4/lang/de.js",
+					"tv4/lang/fr.js"
 				],
 				"css": [
 					"angular/angular-csp.css",
