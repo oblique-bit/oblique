@@ -9,5 +9,12 @@ module.exports = function(config, auth) {
 		response.send(movies);
 	});
 
+	router.get('/:id', function (request, response) {
+		var results = movies.filter(function(item) {
+			return item.id == request.params.id;
+		});
+		response.send(results && results.length ? results[0] : null);
+	});
+
 	return router;
-}
+};
