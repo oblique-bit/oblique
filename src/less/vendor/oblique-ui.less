@@ -1,3 +1,10 @@
+@media (min-width: @grid-float-breakpoint) {
+	// Ensure tooltips do not trigger unwanted horizontal scrollbars:
+	body {
+		overflow-y: hidden;
+	}
+}
+
 .application {
 	// Cover background image:
 	&.has-cover {

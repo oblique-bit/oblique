@@ -59,27 +59,32 @@
 	})
 
 	/**
-	 * Date parsing fix to enforce parsing against the complete date pattern, when date is manually entered.
+	 * Date validation extension for accepting ISO-formatted date strings,
+	 * as they are not more accepted by AngularUI v0.13.3.
 	 *
 	 * See:
-	 *  - https://github.com/angular-ui/bootstrap/issues/1235
-	 *  - http://stackoverflow.com/questions/18675280/angular-bootstrap-datepicker-and-manual-date-input
-	 *  - https://github.com/angular-ui/bootstrap/issues/956
+	 *  - https://github.com/angular-ui/bootstrap/issues/4233
 	 */
-	.directive("datePickerParser", function(dateFilter, $dateParser, datepickerPopupConfig) {
+	.directive("datepickerPopup", function(dateFilter, $dateParser, datepickerPopupConfig) {
 		return {
 			restrict: "A",
+			priority: 1000,
 			require: ["ngModel", "^datePicker"],
 			link: function(scope, element, attrs, params) {
 				var ngModel = params[0];
 				var datePicker = params[1];
 				var dateFormat = datePicker.format || datepickerPopupConfig.datepickerPopup;
-				ngModel.$parsers.unshift(function(viewValue) {
-					var date = $dateParser(viewValue, dateFormat);
-					var isValid = viewValue === null || viewValue === '' || angular.isDate(date);
-					ngModel.$setValidity("date", isValid);
-					return date ? date : (isValid ? null : undefined);
-				});
+				var originalValidator = ngModel.$validators.date;
+
+				ngModel.$validators.date = function(modelValue, viewValue) {
+					var valid = originalValidator(modelValue, viewValue);
+					if(!valid) {
+						// Try to validate again as date may originate from an ISO-formatted date:
+						var date = $dateParser(viewValue, dateFormat);
+						valid = viewValue === null || viewValue === '' || angular.isDate(date);
+					}
+					return valid;
+				};
 			}
 		};
 	});

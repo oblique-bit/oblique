@@ -6,6 +6,18 @@
 		$scope.sampleSchema = schema;
 		$scope.data = data;
 
+		$scope.today = function() {
+			$scope.data.date = new Date();
+		};
+
+		$scope.toISO = function() {
+			$scope.data.date = (new Date()).toISOString();
+		};
+
+		$scope.toTimestamp = function() {
+			$scope.data.date = Date.now();
+		};
+
 		$scope.save = function(form) {
 			$scope.$broadcast('validationSchemaEvent');
 			if(form.$valid) {

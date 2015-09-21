@@ -60,10 +60,18 @@
 					<date-picker name="date" ng-model="data.date"></date-picker>
 				</div>
 				<div class="col-sm-6">
-					<!--date-picker name="date" ng-model="data.date" editable="false" schema-validate></date-picker-->
+					<div class="btn-group">
+						<button type="button" class="btn btn-info" ng-click="today()" tooltip-append-to-body="true"
+						        tooltip="Sets model to today's date using the standar JavaScript Date object">Today</button>
+						<button type="button" class="btn btn-info" ng-click="toISO()" tooltip-append-to-body="true"
+						        tooltip="Sets model to today's date using the ISO 8601 format">ISO</button>
+						<button type="button" class="btn btn-info" ng-click="toTimestamp()" tooltip-append-to-body="true"
+						        tooltip="Sets model to today's date using a timestamp">Timestamp</button>
+					</div>
 				</div>
 			</div>
 			<span class="help-block" ng-show="validationForm.date.$invalid">{{validationForm.date.$errorMessage}}</span>
+			<span class="help-block" ng-show="validationForm.date.$error.date && !validationForm.date.$errorMessage">{{'common.date.format.invalid' | translate}}</span>
 		</div>
 		<div class="col-sm-2">
 			<a class="form-control-static" role="button"

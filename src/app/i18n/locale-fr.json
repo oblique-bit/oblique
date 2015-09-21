@@ -67,7 +67,8 @@
 		},
 		"date" : {
 			"format" : {
-				"dd.MM.yyyy" : "jj.mm.aaaa"
+				"dd.MM.yyyy" : "jj.mm.aaaa",
+				"invalid": "Incorrect date or format, please enter a valid date in the dd.mm.yyyy format."
 			}
 		}
 	},

@@ -139,7 +139,7 @@
 					};
 
 					// Get in last of the parses so the parsed value has the correct type.
-					// We don't use $validators since we like to set different errors depeding tv4 error codes
+					// We don't use $validators since we like to set different errors depending tv4 error codes
 					ngModel.$parsers.push(validate);
 
 					// Listen to an event so we can validate the form control on request:
