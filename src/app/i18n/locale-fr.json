@@ -43,6 +43,9 @@
 			},
 			"navigator": {
 				"title": "States Navigator"
+			},
+			"typeahead": {
+				"title": "Typeahead"
 			}
 		},
 		"admin": {

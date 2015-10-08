@@ -445,7 +445,7 @@ module.exports = function (grunt) {
 				},
 				'vendor-js': {
 					options: {
-						cwd: '<%= env.build.target %><%= paths.vendor %>'
+						cwd: '<%= paths.vendor %>'
 					},
 					files: '{<%= env.resources.vendor.js %>}',
 					tasks: [
@@ -455,7 +455,7 @@ module.exports = function (grunt) {
 				},
 				'vendor-css': {
 					options: {
-						cwd: '<%= env.build.target %><%= paths.vendor %>'
+						cwd: '<%= paths.vendor %>'
 					},
 					files: '{<%= env.resources.vendor.css %>}',
 					tasks: [

@@ -56,6 +56,7 @@ var auth = require('./security/auth')(context.config);
 app.use('/api/auth',    require('./resources/auth-resource')(auth));
 app.use('/api/me',      require('./resources/me-resource')(auth));
 app.use('/api/movies',  require('./resources/movies-resource')(auth));
+app.use('/api/countries',  require('./resources/countries-resource')(auth));
 
 // Debug only:
 app.post('/api/logs', function (req, res) {
