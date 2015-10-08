@@ -3,7 +3,10 @@
 	<div class="control-action">
 		<input name="{{name}}" type="text" class="form-control" placeholder="{{('common.date.format.' + config.datepickerPopup) | translate}}"
 		       ng-attr-id="{{controlId}}"
-		       ng-model="ngModel" ng-class="{'form-control-activable' : !disabled && !editable}"
+		       ng-model="ngModel" 
+		       min-date="minDate"
+		       max-date="maxDate"
+			   ng-class="{'form-control-activable' : !disabled && !editable}"
 		       ng-disabled="disabled" ng-required="required" ng-readonly="disabled || !editable"
 		       datepicker-popup
 		       is-open="opened" enter="close()"

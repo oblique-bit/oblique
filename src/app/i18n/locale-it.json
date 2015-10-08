@@ -69,7 +69,9 @@
 			"format" : {
 				"dd.MM.yyyy" : "gg.mm.aaaa",
 				"invalid": "Incorrect date or format, please enter a valid date in the dd.mm.yyyy format."
-			}
+			},
+		  "min.invalid": "it: Das Datum unterschreitet das min. zulässige Datum {{p0}}",
+		  "max.invalid": "it: Das Datum überschreitet das max. zulässige Datum {{p0}}"
 		}
 	},
 	"labels": {
