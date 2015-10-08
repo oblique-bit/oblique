@@ -70,6 +70,8 @@
 			datepickerConfig.startingDay = 1;
 			datepickerPopupConfig.datepickerPopup = CONFIG.defaults.format && CONFIG.defaults.format.date ? CONFIG.defaults.format.date : 'dd.MM.yyyy';
 			datepickerPopupConfig.showButtonBar = false;
+			// if, true, write the value as iso-based string into the model
+			datepickerPopupConfig.useIsoModel = false;
 		})
 		.config(function (CONFIG, LoadingServiceProvider) {
 			LoadingServiceProvider.setTimeout(CONFIG.defaults.http.timeout);
