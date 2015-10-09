@@ -46,6 +46,9 @@
 			},
 			"typeahead": {
 				"title": "Typeahead"
+			},
+			"uiScroll": {
+				"title": "UI Scroll"
 			}
 		},
 		"admin": {

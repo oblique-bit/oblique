@@ -83,7 +83,9 @@
 				"app/states/samples/navigator/navigator-sample-module.js",
 				"app/states/samples/navigator/navigator-sample-controller.js",
 				"app/states/samples/typeahead/typeahead-sample-module.js",
-				"app/states/samples/typeahead/typeahead-sample-controller.js"
+				"app/states/samples/typeahead/typeahead-sample-controller.js",
+				"app/states/samples/ui-scroll/ui-scroll-sample-module.js",
+				"app/states/samples/ui-scroll/ui-scroll-sample-controller.js"
 			],
 			"vendor": {
 				"js": [
@@ -107,6 +109,7 @@
 					"angular-translate-storage-cookie/angular-translate-storage-cookie.js",
 					"angular-translate-storage-local/angular-translate-storage-local.js",
 					"angular-ui-router/release/angular-ui-router.js",
+					"angular-ui-scroll/dist/ui-scroll.js",
 					"angularjs-dropdown-multiselect/src/angularjs-dropdown-multiselect.js",
 					"checklist-model/checklist-model.js",
 					"satellizer/satellizer.js",
