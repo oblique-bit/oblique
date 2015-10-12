@@ -85,6 +85,15 @@
 					}
 					return valid;
 				};
+				
+				if (datepickerPopupConfig.useIsoModel) {
+					ngModel.$parsers.push(function (value) {
+						if (angular.isDate(value)) {
+							return dateFilter(value, 'yyyy-MM-dd');
+						}
+						return value;
+					});
+				}
 			}
 		};
 	});
