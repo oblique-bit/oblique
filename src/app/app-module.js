@@ -67,9 +67,10 @@
 		})
 		.config(function (CONFIG, datepickerConfig, datepickerPopupConfig) {
 			datepickerConfig.showWeeks = false;
-			datepickerConfig.startingDay = 1;
+			datepickerConfig.startingDay = 1; // Weeks start on Monday
 			datepickerPopupConfig.datepickerPopup = CONFIG.defaults.format && CONFIG.defaults.format.date ? CONFIG.defaults.format.date : 'dd.MM.yyyy';
 			datepickerPopupConfig.showButtonBar = false;
+			datepickerPopupConfig.useIsoModel = false; // Specifies if model values should be written as ISO-based string
 		})
 		.config(function (CONFIG, LoadingServiceProvider) {
 			LoadingServiceProvider.setTimeout(CONFIG.defaults.http.timeout);

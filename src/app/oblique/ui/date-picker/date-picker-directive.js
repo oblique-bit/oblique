@@ -65,6 +65,7 @@
 	 *  - validation of ISO-formatted date strings (no more accepted by AngularUI v0.13.3)
 	 *  - validation of limit dates (minDate/maxDate)
 	 *  - activation of ranges (by watching minDate/maxDate properties)
+	 *  - ISO model values only
 	 *
 	 * See:
 	 *  - https://github.com/angular-ui/bootstrap/issues/4233
@@ -108,6 +109,16 @@
 							ngModel.$validate();
 						}
 					});
+
+					// Check for ISO model values:
+					if (datepickerPopupConfig.useIsoModel) {
+						ngModel.$parsers.push(function (value) {
+							if (angular.isDate(value)) {
+								return dateFilter(value, 'yyyy-MM-dd');
+							}
+							return value;
+						});
+					}
 
 					function isDateValid(modelValue, viewValue) {
 						var valid = originalValidator(modelValue, viewValue);
