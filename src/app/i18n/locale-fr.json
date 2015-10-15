@@ -35,6 +35,9 @@
 		},
 		"samples": {
 			"title": "Examples",
+			"datepicker":{
+				"title": "Datepicker"
+			},
 			"navigable":{
 				"title": "Navigable"
 			},

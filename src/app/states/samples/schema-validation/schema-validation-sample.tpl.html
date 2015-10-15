@@ -57,12 +57,12 @@
 		<div class="col-sm-6">
 			<div class="row">
 				<div class="col-sm-6">
-					<date-picker name="date" ng-model="data.date" min-date="data.minDate" max-date="data.maxDate">  </date-picker>
+					<date-picker name="date" ng-model="data.date"></date-picker>
 				</div>
 				<div class="col-sm-6">
 					<div class="btn-group">
 						<button type="button" class="btn btn-info" ng-click="today()" tooltip-append-to-body="true"
-						        tooltip="Sets model to today's date using the standar JavaScript Date object">Today</button>
+						        tooltip="Sets model to today's date using the standard JavaScript Date object">Today</button>
 						<button type="button" class="btn btn-info" ng-click="toISO()" tooltip-append-to-body="true"
 						        tooltip="Sets model to today's date using the ISO 8601 format">ISO</button>
 						<button type="button" class="btn btn-info" ng-click="toTimestamp()" tooltip-append-to-body="true"
@@ -72,8 +72,6 @@
 			</div>
 			<span class="help-block" ng-show="validationForm.date.$invalid">{{validationForm.date.$errorMessage}}</span>
 			<span class="help-block" ng-show="validationForm.date.$error.date && !validationForm.date.$errorMessage">{{'common.date.format.invalid' | translate}}</span>
-			<span class="help-block" ng-show="validationForm.date.$error.minDate && !validationForm.date.$errorMessage">{{'common.date.min.invalid' | translate:'{ p0: data.minDate }' }}</span>
-			<span class="help-block" ng-show="validationForm.date.$error.maxDate && !validationForm.date.$errorMessage">{{'common.date.max.invalid' | translate:'{ p0: data.maxDate }' }}</span>
 		</div>
 		<div class="col-sm-2">
 			<a class="form-control-static" role="button"
@@ -163,11 +161,7 @@
 		</div>
 	</div>
 	<div class="form-actions">
-		<button type="button" class="btn btn-secondary" ng-click="cancel()">{{'common.cancel' | translate}}</button>
-		<button type="submit" class="btn btn-primary"
-		        ng-click="save(validationForm)" ng-disabled="!validationForm.$valid">
-			{{'common.save' | translate}}
-		</button>
+		<button type="submit" class="btn btn-primary" ng-click="check(validationForm)" ng-disabled="!validationForm.$valid">Check</button>
 	</div>
 </form>
 <hr />

@@ -63,7 +63,8 @@
 								"date": {
 									"type": [
 										"object",
-										"string"
+										"string",
+										"number"
 									],
 									"format": "date-time"
 								},

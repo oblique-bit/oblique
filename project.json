@@ -75,6 +75,8 @@
 				"app/states/movies/movie-service.js",
 				"app/states/movies/movies-controller.js",
 				"app/states/samples/samples-module.js",
+				"app/states/samples/datepicker/datepicker-sample-module.js",
+				"app/states/samples/datepicker/datepicker-sample-controller.js",
 				"app/states/samples/schema-validation/schema-validation-sample-module.js",
 				"app/states/samples/schema-validation/schema-validation-sample-controller.js",
 				"app/states/samples/navigable/navigable-sample-module.js",
