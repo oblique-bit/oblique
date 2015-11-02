@@ -46,7 +46,11 @@
 			},
 			"navigator": {
 				"title": "States Navigator"
+			},
+			"multiselect": {
+				"title": "Multiselect"
 			}
+
 		},
 		"admin": {
 			"title": "Administration"
@@ -180,6 +184,7 @@
 	"multiselect": {
 		"checkAll": "Tout sélectionner",
 		"uncheckAll": "Tout désélectionner",
-		"buttonDefaultText": "Sélectionner svp."
+		"buttonDefaultText": "Sélectionner svp.",
+	  	"allSelected": "[FR] Alle Elemente selektiert"
 	}
 }

@@ -46,7 +46,10 @@
 			},
 			"navigator": {
 				"title": "States Navigator"
-			}
+			},
+			"multiselect": {
+				"title": "Multiselect"
+		  	}
 		},
 		"admin": {
 			"title": "Amministrazione"
@@ -180,6 +183,7 @@
 	"multiselect": {
 		"checkAll": "Alle auswählen",
 		"uncheckAll": "Alle abwählen",
-		"buttonDefaultText": "Wählen bitte."
+		"buttonDefaultText": "Wählen bitte.",
+	 	"allSelected": "[IT] Alle Elemente selektiert"
 	}
 }
