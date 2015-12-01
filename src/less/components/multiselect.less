@@ -35,10 +35,6 @@
 
 	.dropdown-menu {
 		overflow: auto !important;
-		margin-top: 0 !important;
-		border-top-right-radius: 0;
-		border-top-left-radius: 0;
-		border-top: none;
 
 		.glyphicon-ok, .glyphicon-remove {
 			margin-left: 4px;
@@ -47,6 +43,10 @@
 
 		.checkbox {
 			padding-top: 2px;
+		}
+
+		[data-ng-click] {
+			cursor: pointer;
 		}
 	}
 
@@ -63,7 +63,6 @@
 			border-bottom-left-radius: 0;
 			border-bottom: none;
 		}
-
 	}
 
 	label {

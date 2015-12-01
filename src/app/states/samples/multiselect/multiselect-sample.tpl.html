@@ -1,22 +1,47 @@
 <h2 class="page-header">{{'states.samples.multiselect.title' | translate}}</h2>
-<p class="lead">Multiselect Dropdown or Up Demo</p>
+<p class="lead">Multiselectable options based on <a href="http://dotansimha.github.io/angularjs-dropdown-multiselect/">angularjs-dropdown-multiselect</a>.</p>
+
+<h3>Dropdown</h3>
 <div class="row">
-    <label class="col-lg-1">Date</label>
-    <div class="col-lg-2">
-        <multiselect
-                dropup="false"
-                options="exampleData"
-                ng-model="exampleModel"
-                extra-settings="exampleSettings"
-                translation-texts="exampleTranslate"
-                checkboxes="true">
-        </multiselect>
+    <div class="col-md-6">
+        <div class="row">
+            <label class="col-md-4">Items</label>
+            <div class="col-md-8">
+                <multiselect
+                        ng-model="dropdown.model"
+                        options="dropdown.options"
+                        dropup="false"
+                        checkboxes="true"
+                        extra-settings="dropdown.settings"
+                        translation-texts="dropdown.translations">
+                </multiselect>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <pre tooltip="Dropdown model data">{{dropdown.model | json}}</pre>
     </div>
 </div>
-<hr/>
-<div class="spacer-top">
-    <h4>Model data</h4>
-    <pre>{{exampleModel | json}}</pre>
+
+<h3>Dropdup</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <label class="col-md-4">Items</label>
+            <div class="col-md-8">
+                <multiselect
+                    ng-model="dropup.model"
+                    options="dropup.options"
+                    dropup="true"
+                    checkboxes="true"
+                    extra-settings="dropup.settings">
+                </multiselect>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <pre tooltip="Dropdup model data">{{dropup.model | json}}</pre>
+    </div>
 </div>
 
 

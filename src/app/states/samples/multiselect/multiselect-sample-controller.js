@@ -2,28 +2,41 @@
 	'use strict';
 
 	angular.module('__MODULE__.samples')
-		.controller('MultiselectSampleController', function ($scope, NotificationService) {
-
-			$scope.exampledModel = [];
-
-			$scope.exampleTranslate = {
-				allSelectedText:  "multiselect.allSelected"
+		.controller('MultiselectSampleController', function ($scope) {
+			$scope.dropdown = {
+				model: [],
+				translations: {
+					allSelectedText:  "multiselect.allSelected"
+				},
+				settings: {
+					scrollableHeight: 'auto',
+					showCheckAll: true,
+					showUncheckAll: true
+				},
+				options: [
+					{"id":1, "label":"Dropdown item 1"},
+					{"id":2, "label":"Dropdown item 2"},
+					{"id":3, "label":"Dropdown item 3"},
+					{"id":4, "label":"Dropdown item 4"},
+					{"id":5, "label":"Dropdown item 5"}
+				]
 			};
 
-			$scope.exampleSettings = {
-				buttonClasses: "btn btn-default btn-block text-left",
-				scrollableHeight: '500px',
-				scrollable: true,
-				showCheckAll: true,
-				showUncheckAll: true
+			$scope.dropup = {
+				model: [],
+				settings: {
+					scrollableHeight: '150px',
+					scrollable: true,
+					showCheckAll: false,
+					showUncheckAll: false
+				},
+				options: [
+					{"id":1, "label":"Dropup item 1"},
+					{"id":2, "label":"Dropup item 2"},
+					{"id":3, "label":"Dropup item 3"},
+					{"id":4, "label":"Dropup item 4"},
+					{"id":5, "label":"Dropup item 5"}
+				]
 			};
-
-			$scope.exampleData = [
-				{"id":1, "label":"Label 1"},
-				{"id":2, "label":"Label 2"},
-				{"id":3, "label":"Label 3"},
-				{"id":4, "label":"Label 4"},
-				{"id":5, "label":"Label 5"}
-			];
 		});
 }());
