@@ -4,7 +4,7 @@
     var module = angular.module('__MODULE__.oblique');
 
     module.directive('navigable', function () {
-        var container = $('body');
+
         var arrows = {
             up: 38,
             down: 40
@@ -29,7 +29,7 @@
                 // Initialize elements:
                 element.addClass('navigable');
                 element.attr('tabindex', element.attr('tabindex') || 0); // Enables focus on current element.
-                container = element.closest('.navigable-group, body');
+                var container = element.closest('.navigable-group, body');
 
                 /* Selection ************************ */
                 var selection = {
