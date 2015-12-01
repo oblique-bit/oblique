@@ -42,6 +42,20 @@
 	}
 }
 
+.typeahead {
+	.dropdown-menu {
+		width: 100%;
+	}
+
+	&.typeahead-scrollable {
+		.dropdown-menu {
+			max-height: 200px;
+			overflow-x: hidden;
+			overflow-y: auto;
+		}
+	}
+}
+
 [msd-elastic] {
 	resize: none;
 	max-height: 100px;

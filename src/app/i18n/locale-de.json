@@ -44,11 +44,14 @@
 			"schemaValidation": {
 				"title": "Schema Validation"
 			},
+			"multiselect": {
+				"title": "Multiselect"
+			},
 			"navigator": {
 				"title": "States Navigator"
 			},
-		  	"multiselect": {
-			  "title": "Multiselect"
+			"typeahead": {
+				"title": "Typeahead"
 			}
 		},
 		"admin": {

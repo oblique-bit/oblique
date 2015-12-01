@@ -38,6 +38,9 @@
 			"datepicker":{
 				"title": "Datepicker"
 			},
+			"multiselect": {
+				"title": "Multiselect"
+			},
 			"navigable":{
 				"title": "Navigable"
 			},
@@ -47,10 +50,9 @@
 			"navigator": {
 				"title": "States Navigator"
 			},
-			"multiselect": {
-				"title": "Multiselect"
+			"typeahead": {
+				"title": "Typeahead"
 			}
-
 		},
 		"admin": {
 			"title": "Administration"
