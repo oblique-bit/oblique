@@ -1,0 +1,23 @@
+<h2 class="page-header">{{'states.samples.multiselect.title' | translate}}</h2>
+<p class="lead">Multiselect Dropdown or Up Demo</p>
+<div class="row">
+    <label class="col-lg-1">Date</label>
+    <div class="col-lg-2">
+        <multiselect
+                dropup="false"
+                options="exampleData"
+                ng-model="exampleModel"
+                extra-settings="exampleSettings"
+                translation-texts="exampleTranslate"
+                checkboxes="true">
+        </multiselect>
+    </div>
+</div>
+<hr/>
+<div class="spacer-top">
+    <h4>Model data</h4>
+    <pre>{{exampleModel | json}}</pre>
+</div>
+
+
+

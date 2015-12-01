@@ -82,7 +82,10 @@
 				"app/states/samples/navigable/navigable-sample-module.js",
 				"app/states/samples/navigable/navigable-sample-controller.js",
 				"app/states/samples/navigator/navigator-sample-module.js",
-				"app/states/samples/navigator/navigator-sample-controller.js"
+				"app/states/samples/navigator/navigator-sample-controller.js",
+			  	"app/states/samples/multiselect/multiselect-sample-module.js",
+			  	"app/states/samples/multiselect/multiselect-sample-controller.js"
+
 			],
 			"vendor": {
 				"js": [
