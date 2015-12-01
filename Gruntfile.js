@@ -11,9 +11,7 @@ module.exports = function (grunt) {
 		states: 'src/app/states/',
 		less: 'src/less/',
 		pages: 'src/pages/',
-		data: 'src/templates/data/',
-		partials: 'src/templates/partials/',
-		helpers: 'src/templates/helpers/',
+		partials: 'src/partials/',
 		vendor: 'vendor/',
 		staging: '.tmp'
 	};
@@ -177,11 +175,10 @@ module.exports = function (grunt) {
 
 					assets: '<%= env.build.target %>',
 					env: '<%= env %>',
-					paths: '<%= paths%>',
+					paths: '<%= paths %>',
 
 					data: [
-						'package.json',
-						'<%= paths.data %>**/*.json'
+						'package.json'
 					],
 					layout: false, // Using `composable` layouts, see why here: https://github.com/assemble/assemble/issues/555
 					layoutdir: '<%= paths.vendor %>oblique-ui/templates/layouts/',
@@ -190,22 +187,19 @@ module.exports = function (grunt) {
 						'<%= paths.partials %>**/*.hbs'
 					],
 					helpers: [
-						'handlebars-helper-prettify',
-						'<%= paths.vendor %>oblique-ui/templates/helpers/**/*.js',
-						'<%= paths.helpers %>**/*.js'
+						'<%= paths.vendor %>oblique-ui/templates/helpers/**/*.js'
 					],
 
 					// Layout placeholders override:
 					'html-attrs': 'ng-controller="AppController as appController"',
-					'application-fixed': true,
 
 					// App-specific configuration used by ObliqueUI layouts:
 					app: {
 						name:               '<%= env.app.module %>',
 						title:              '<%= env.app.title %>',
 						description:        '<%= env.app.description %>',
-						home:               '<%= env.app.home %>',
 						lang:               '<%= env.app.defaults.locale %>',
+						home:               '<%= env.app.home %>',
 						organization: {
 							name:           'Federal Office of Information Technology, Systems and Telecommunication FOITT',
 							url:            'http://www.bit.admin.ch',
@@ -214,7 +208,7 @@ module.exports = function (grunt) {
 						},
 
 						// Available locales:
-						locales: ["de", "fr", "it", "en"],
+						locales: '<%= env.app.locales %>',
 
 						// Theming:
 						theme: {
@@ -238,16 +232,6 @@ module.exports = function (grunt) {
 								path: 'oblique-ui/'
 							}
 						}
-					},
-
-					// Prettify (https://github.com/jonschlinkert/grunt-prettify, https://github.com/helpers/handlebars-helper-prettify)
-					prettify: {
-						condense: true,
-						indent: 1,
-						"indent_char": "	",  // Required for Markdown
-						padcomments: false,
-						"indent_handlebars": true,   // Format and indent {{#foo}}...{{/foo}}
-						"indent_inner_html": true    // Indent <head> and <body> sections
 					}
 				},
 				pages: {
@@ -412,6 +396,10 @@ module.exports = function (grunt) {
 			 * Run predefined tasks whenever watched file patterns are added, changed or deleted
 			 */
 			watch: {
+				options: {
+					livereload: true,
+					spawn: false
+				},
 				project: {
 					files: [
 						'project.json',
@@ -423,7 +411,10 @@ module.exports = function (grunt) {
 					]
 				},
 				app: {
-					files: ['<%= paths.app %>**/*.js', '<%= paths.app %>**/*.json'],
+					files: [
+						'<%= paths.app %>**/*.js',
+						'<%= paths.app %>**/*.json'
+					],
 					tasks: [
 						'config:<%= _currentEnv() %>',
 						'jshint',
@@ -437,7 +428,11 @@ module.exports = function (grunt) {
 					options: {
 						cwd: '<%= paths.src %>'
 					},
-					files: ['images/**/*', 'js/**/*', 'fonts/**/*'],
+					files: [
+						'images/**/*',
+						'js/**/*',
+						'fonts/**/*'
+					],
 					tasks: [
 						'config:<%= _currentEnv() %>',
 						'copy:assets'
@@ -473,8 +468,7 @@ module.exports = function (grunt) {
 				pages: {
 					files: [
 						'<%= paths.pages %>**/*.hbs',
-						'<%= paths.partials %>**/*.hbs',
-						'<%= paths.helpers %>**/*.js'
+						'<%= paths.partials %>**/*.hbs'
 					],
 					tasks: [
 						'config:<%= _currentEnv() %>',
@@ -500,9 +494,6 @@ module.exports = function (grunt) {
 						'assemble',
 						'optimize'
 					]
-				},
-				options: {
-					livereload: true
 				}
 			},
 
@@ -511,7 +502,7 @@ module.exports = function (grunt) {
 			 *
 			 * https://github.com/joeytrapp/grunt-focus
 			 *
-			 * Configure subsets of watch configs and focus your Grunt processes.
+			 * Configure subsets of `watch` configs and focus your Grunt processes.
 			 */
 			focus: {
 				dev: {
@@ -621,9 +612,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('build-prod', [
 		'config:prod',
 		'build',
-		'ngAnnotate',
-		'optimize',
-		'clean:staging'
+		'optimize'
 	]);
 
 	// Run (build & serve):
@@ -637,9 +626,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('run-prod-local', [
 		'config:dev', // workaround for proxy because of cors
 		'build',
-		'ngAnnotate',
 		'optimize',
-		'clean:staging',
 		'configureProxies:local',
 		'connect:local:keepalive',
 		'focus:prod:prod'
@@ -656,12 +643,14 @@ module.exports = function (grunt) {
 	 * Optimizes resources for deployment.
 	 */
 	grunt.registerTask("optimize", [
+		'ngAnnotate',
 		'useminPrepare',
 		'concat',
 		'cssmin',
 		'uglify',
 		'filerev',
-		'usemin'
+		'usemin',
+		'clean:staging'
 	]);
 
 	// Template-only tasks (remove if necessary)
