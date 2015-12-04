@@ -2,8 +2,8 @@
 	<li role="menuitem" ui-sref-active="active">
 		<a href="" ui-sref="home">\{{'states.home.title' | translate}}</a>
 	</li>
-	<li role="menuitem" ui-sref-active="active" class="dropdown">
-		<a role="button" ui-sref="samples" data-toggle="dropdown">
+	<li role="menuitem" class="dropdown" ng-class="{active: ('samples' | includedByState)}">
+		<a href="" role="button" data-toggle="dropdown">
 			<span>\{{'states.samples.title' | translate}}</span>
 			<span class="toggle"></span>
 		</a>
