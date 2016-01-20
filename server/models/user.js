@@ -6,5 +6,6 @@ module.exports = db.model('User', {
 	password: String,
 	firstname: String,
 	lastname: String,
-	picture: String
+	picture: String,
+	roles: Array
 });

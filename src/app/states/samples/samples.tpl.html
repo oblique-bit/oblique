@@ -1,0 +1,41 @@
+<div class="column-layout column-layout-2" data-provides="column-layout">
+	<div class="column-left hidden-print" data-column="left" role="complementary">
+		<button type="button" class="toggle-left" data-column-toggle="left">
+			<span class="sr-only">Toggle left column</span>
+		</button>
+		<div class="column-content">
+			<ul class="nav nav-stacked" role="menu">
+				<li class="nav-header" role="presentation">
+					<h3>{{'states.samples.title' | translate}}</h3>
+				</li>
+				<li role="menuitem" class="nav-section" ui-sref-active="active">
+					<a href="" ui-sref="samples.datepicker">{{'states.samples.datepicker.title' | translate}}</a>
+				</li>
+				<li role="menuitem" class="nav-section" ui-sref-active="active">
+					<a href="" ui-sref="samples.multiselect">{{'states.samples.multiselect.title' | translate}}</a>
+				</li>
+				<li role="menuitem" class="nav-section" ui-sref-active="active">
+					<a href="" ui-sref="samples.navigable" data-toggle="dropdown">{{'states.samples.navigable.title' | translate}}</a>
+				</li>
+				<li role="menuitem" class="nav-section" ui-sref-active="active">
+					<a href="" ui-sref="samples.schemaValidation">
+						<span class="smaller badge badge-warning">Experimental</span>
+						<span>{{'states.samples.schemaValidation.title' | translate}}</span>
+					</a>
+				</li>
+				<li role="menuitem" class="nav-section" ui-sref-active="active">
+					<a href="" ui-sref="samples.navigator">{{'states.samples.navigator.title' | translate}}</a>
+				</li>
+				<li role="menuitem" class="nav-section" ui-sref-active="active">
+					<a href="" ui-sref="samples.typeahead">{{'states.samples.typeahead.title' | translate}}</a>
+				</li>
+				<li role="menuitem" class="nav-section" ui-sref-active="active">
+					<a href="" ui-sref="samples.uiScroll" tooltip="Aka infinite scrolling">{{'states.samples.uiScroll.title' | translate}}</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="column-main">
+		<div ui-view class="default-layout"></div>
+	</div>
+</div>

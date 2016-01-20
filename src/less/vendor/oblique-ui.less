@@ -1,6 +1,20 @@
-/* Cover background image */
-.cover-layout {
-	background-image: url('../images/cover-background.jpg');
+@media (min-width: @grid-float-breakpoint) {
+	// Ensure tooltips do not trigger unwanted horizontal scrollbars:
+	body {
+		overflow-y: hidden;
+	}
+}
+
+.application {
+	// Cover background image:
+	&.has-cover {
+		background-image: url('../images/cover-background.jpg');
+	}
+
+	// Ensure notifications stay within content viewport:
+	.application-content {
+		position: relative;
+	}
 }
 
 .navbar-controls {
@@ -20,40 +34,43 @@
 	}
 }
 
-.spinner {
-	position: fixed;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	color: @gray-light;
-	background-color: @white;
-	z-index: 100;
-	opacity: 0.9;
-
-	span {
-		position:relative;
-		top: 50%;
-		margin-top: -25px;
-	}
-}
-
 .form-control-activable, .form-control-activable:hover {
 	cursor: pointer !important;
 }
 
-// FIXME: remove & replace with .notification-container
-.application-content {
-	position: relative;
-}
-.notifications {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 380px;
-	z-index: 99999;
+// This can safely be removed:
+.oblique {
+	font-style: oblique; // ;)
 
-	.alert {
-		margin: 5px 5px 0 5px;
-		box-shadow: 0 0 6px gray;
+	> img.small {
+		width: 44px;
+	}
+
+	> span {
+		word-spacing: -16px;
+		vertical-align: middle;
+		> span {
+			font-style: normal;
+			font-weight: bold;
+		}
 	}
 }
+.bootstrap {
+	span {
+		vertical-align: middle;
+	}
+
+	.bootstrap-icon {
+		display: inline-block;
+		font-weight: 500;
+		color: #fff;
+		text-align: center;
+		cursor: default;
+		background-color: #563d7c;
+		border-radius: 15%;
+		line-height: 44px;
+		font-size: 30px;
+		padding: 2px 14px;
+	}
+}
+

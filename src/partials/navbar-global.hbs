@@ -1,0 +1,51 @@
+<ul id="nav-global" class="nav navbar-nav navbar-primary navbar-fw" role="menu">
+	<li role="menuitem" ui-sref-active="active">
+		<a href="" ui-sref="home">\{{'states.home.title' | translate}}</a>
+	</li>
+	<li role="menuitem" class="dropdown" ng-class="{active: ('samples' | includedByState)}">
+		<a href="" role="button" data-toggle="dropdown">
+			<span>\{{'states.samples.title' | translate}}</span>
+			<span class="toggle"></span>
+		</a>
+		<div class="dropdown-menu">
+			<ul id="nav-global-samples" class="nav nav-stacked" role="menu">
+				<li class="nav-header" role="presentation" ui-sref-active="active">
+					<h3>\{{'states.samples.title' | translate}}</h3>
+				</li>
+				<li role="menuitem" class="nav-section" ui-sref-active="active">
+					<a href="" ui-sref="samples.datepicker">\{{'states.samples.datepicker.title' | translate}}</a>
+				</li>
+				<li role="menuitem" class="nav-section" ui-sref-active="active">
+					<a href="" ui-sref="samples.multiselect">\{{'states.samples.multiselect.title' | translate}}</a>
+				</li>
+				<li role="menuitem" class="nav-section" ui-sref-active="active">
+					<a href="" ui-sref="samples.navigable" data-toggle="dropdown">\{{'states.samples.navigable.title' | translate}}</a>
+				</li>
+				<li role="menuitem" class="nav-section" ui-sref-active="active">
+					<a href="" ui-sref="samples.schemaValidation" data-toggle="dropdown">
+						<span>\{{'states.samples.schemaValidation.title' | translate}}</span>
+						<sup class="text-warning">Experimental</sup>
+					</a>
+				</li>
+				<li role="menuitem" class="nav-section" ui-sref-active="active">
+					<a href="" ui-sref="samples.navigator">\{{'states.samples.navigator.title' | translate}}</a>
+				</li>
+				<li role="menuitem" class="nav-section" ui-sref-active="active">
+					<a href="" ui-sref="samples.typeahead">\{{'states.samples.typeahead.title' | translate}}</a>
+				</li>
+				<li role="menuitem" class="nav-section" ui-sref-active="active">
+					<a href="" ui-sref="samples.uiScroll" tooltip="Aka infinite scrolling">\{{'states.samples.uiScroll.title' | translate}}</a>
+				</li>
+			</ul>
+		</div>
+	</li>
+	<li role="menuitem" ui-sref-active="active" ng-if="appController.isAuthenticated()">
+		<a href="" ui-sref="movies">\{{'states.movies.title' | translate}}</a>
+	</li>
+	<li role="menuitem" ui-sref-active="active" ng-if="appController.isAuthorized('admin')">
+		<a href="">\{{'states.admin.title' | translate}}</a>
+	</li>
+	<li role="menuitem" ui-sref-active="active" ng-if="!appController.isAuthenticated()">
+		<a href="" ui-sref="auth">\{{'states.auth.title' | translate}}</a>
+	</li>
+</ul>

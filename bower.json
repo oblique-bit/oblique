@@ -2,7 +2,7 @@
   "name": "oblique-reactive",
   "title": "ObliqueReactive",
   "description": "Reactive web template powered by ObliqueUI and AngularJS",
-  "version": "0.0.3",
+  "version": "1.2.2",
   "private": true,
   "authors": [
     "Dario Poggiali <Dario.Poggiali@bit.admin.ch>",
@@ -17,37 +17,35 @@
     "tests"
   ],
   "dependencies": {
-    "oblique-ui": "https://stash.eap.bit.admin.ch/scm/oui/oblique-ui.git#1.2.0",
-    "animate.css": "~3.3.1",
-    "angular": "1.4.3",
-    "angular-animate": "1.4.3",
-    "angular-bootstrap": "https://github.com/almeidap/angular-ui-bootstrap.git#master",
-    "angular-confirm": "https://github.com/almeidap/angular-confirm.git#angular-1.4-fix",
+    "angular": "1.4.5",
+    "angular-animate": "1.4.5",
+    "angular-bootstrap": "https://github.com/angular-ui/bootstrap-bower.git#0.13.4",
+    "angular-confirm": "https://github.com/Schlogen/angular-confirm.git#1.1.0",
     "angular-dateParser": "1.0.12",
+    "angular-dynamic-locale": "0.1.27",
     "angular-elastic": "https://github.com/jlebit/angular-elastic.git#master",
-    "angular-i18n": "1.4.3",
-    "angular-sanitize": "1.4.3",
+    "angular-i18n": "1.4.5",
+    "angular-sanitize": "1.4.5",
     "angular-translate": "2.7.2",
     "angular-translate-loader-static-files": "2.7.2",
-    "angular-translate-storage-local": "2.7.2",
     "angular-translate-storage-cookie": "2.7.2",
-    "angular-dynamic-locale": "0.1.27",
+    "angular-translate-storage-local": "2.7.2",
     "angular-ui-router": "0.2.15",
-    "angular-zeroclipboard": "0.4.3",
-    "angularjs-dropdown-multiselect": "https://github.com/punix81/angularjs-dropdown-multiselect.git#master",
-    "grunt-config": "git+https://github.com/almeidap/grunt-config.git",
-    "checklist-model": "0.2.4",
-    "moment": "~2.10.6",
-    "lodash": "~3.10.1",
-    "satellizer": "~0.11.3",
-    "tv4": "1.1.12",
-    "zeroclipboard": "2.2.0"
+    "angular-ui-scroll": "https://github.com/angular-ui/ui-scroll.git#1.3.2",
+    "angularjs-dropdown-multiselect": "https://github.com/admin-ch/angularjs-dropdown-multiselect.git#1.5.2-watch-fix",
+    "animate.css": "3.4.0",
+    "checklist-model": "0.5.0",
+    "lodash": "3.10.1",
+    "moment": "2.10.6",
+    "oblique-ui": "https://stash.eap.bit.admin.ch/scm/oui/oblique-ui.git#1.2.2",
+    "satellizer": "0.11.3",
+    "tv4": "1.2.5"
   },
   "devDependencies": {
-    "angular-mocks": "~1.4.3"
+    "angular-mocks": "~1.4.5"
   },
   "resolutions": {
-    "angular": "1.4.3",
+    "angular": "1.4.5",
     "lodash": "~3.10.1"
   }
 }

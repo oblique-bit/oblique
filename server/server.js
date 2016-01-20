@@ -56,6 +56,7 @@ var auth = require('./security/auth')(context.config);
 app.use('/api/auth',    require('./resources/auth-resource')(auth));
 app.use('/api/me',      require('./resources/me-resource')(auth));
 app.use('/api/movies',  require('./resources/movies-resource')(auth));
+app.use('/api/countries',  require('./resources/countries-resource')(auth));
 
 // Debug only:
 app.post('/api/logs', function (req, res) {
@@ -72,7 +73,8 @@ module.exports = app.listen(port, function () {
 		email: "eui@bit.admin.ch",
 		password: auth.createHash("12345678"),
 		firstname: "Oblique",
-		lastname: "Reactive"
+		lastname: "Reactive",
+		roles: ["member", "admin"]
 	};
 	var User = require('./models/user');
 	User.create(data, function(err, user) {

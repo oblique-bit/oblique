@@ -9,7 +9,9 @@
 				templateUrl: 'auth/auth.tpl.html',
 				controller: 'AuthController',
 				data: {
-					layout: 'cover'
+					layout: {
+						variant: 'no-navigation has-cover'
+					}
 				}
 			});
 		});

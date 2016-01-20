@@ -2,7 +2,13 @@
 	"application": {
 		"shortName": "OR",
 		"longName": "ObliqueReactive",
-		"description": "Reactive web template powered by ObliqueUI and AngularJS"
+		"description": "Reactive front-end template for your business web application.",
+		"locales": {
+			"de": "Deutsch",
+			"fr": "Français",
+			"it": "Italiano",
+			"en": "English"
+		}
 	},
 	"states": {
 		"home": {
@@ -13,8 +19,11 @@
 			"title": "Sign in",
 			"login": {
 				"title": "Login",
-				"submit": "Log in",
-				"password-lost": "Forgot password?"
+				"rememberme": "Benutzer speichern",
+				"submit": "Login",
+				"password-lost": "Passwort vergessen?",
+				"error": "Anmeldung nicht möglich!",
+				"success": "Erfolgreiche Anmeldung."
 			},
 			"register": {
 				"title": "New to {{title}}? Sign up!",
@@ -25,13 +34,31 @@
 			"title": "Movies"
 		},
 		"samples": {
-			"title" : "Samples",
+			"title": "Samples",
+			"datepicker":{
+				"title": "Datepicker"
+			},
 			"navigable":{
 				"title": "Navigable"
 			},
-			"schemaValidation" : {
+			"schemaValidation": {
 				"title": "Schema Validation"
+			},
+			"multiselect": {
+				"title": "Multiselect"
+			},
+			"navigator": {
+				"title": "States Navigator"
+			},
+			"typeahead": {
+				"title": "Typeahead"
+			},
+			"uiScroll": {
+				"title": "UI Scroll"
 			}
+		},
+		"admin": {
+			"title": "Verwaltung"
 		}
 	},
 	"common": {
@@ -52,13 +79,17 @@
 		},
 		"date": {
 			"format": {
-				"dd.MM.yyyy": "TT.MM.JJJJ"
-			}
+				"dd.MM.yyyy": "TT.MM.JJJJ",
+				"invalid": "Incorrect date or format, please enter a valid date in the dd.mm.yyyy format."
+			},
+		  "min.invalid": "Das Datum unterschreitet das min. zulässige Datum {{p0}}",
+		  "max.invalid": "Das Datum überschreitet das max. zulässige Datum {{p0}}"
 		}
 	},
 	"labels": {
+		"language": "Sprache",
 		"email": "Email",
-		"password": "Password"
+		"password": "Passwort"
 	},
 	"error": {
 		"general": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
@@ -154,5 +185,11 @@
 			"next": "Weiter",
 			"back": "Zurück"
 		}
+	},
+	"multiselect": {
+		"checkAll": "Alle auswählen",
+		"uncheckAll": "Alle abwählen",
+		"buttonDefaultText": "Wählen bitte.",
+	  	"allSelected": "Alle Elemente selektiert"
 	}
 }

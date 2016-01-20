@@ -1,6 +1,12 @@
-{{#compose "default-layout" ui-layout="{{appController.page.layout}}" description="{{appController.page.description | translate}}"}}
+{{#compose "default-layout"
+	description="{{appController.page.description | translate}}"
+	body-class="has-overlay"
+	application-class="{{appController.page.layout.variant}}"
+	application-fixed=app.theme.application.fixed
+	header-transitions=app.theme.header.transitions
+	header-variant=app.theme.header.variant}}
 	{{#content "default"}}
 		<div notifications></div>
-		<div ui-view class="default-layout"></div>
+		<div ui-view class="application-content-viewport"></div>
 	{{/content}}
 {{/compose}}

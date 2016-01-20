@@ -2,7 +2,13 @@
 	"application": {
 		"shortName": "OR",
 		"longName": "ObliqueReactive",
-		"description": "Reactive web template powered by ObliqueUI and AngularJS"
+		"description": "Reactive front-end template for your business web application.",
+		"locales": {
+			"de": "Deutsch",
+			"fr": "Français",
+			"it": "Italiano",
+			"en": "English"
+		}
 	},
 	"states": {
 		"home": {
@@ -13,8 +19,11 @@
 			"title": "Sign in",
 			"login": {
 				"title": "Login",
+				"rememberme": "Remember me?",
 				"submit": "Log in",
-				"password-lost": "Forgot password?"
+				"password-lost": "Forgot password?",
+				"error": "We have been unable to authenticate you, please check your credentials!",
+				"success": "You have been successfully authenticated."
 			},
 			"register": {
 				"title": "New to {{title}}? Sign up!",
@@ -25,13 +34,31 @@
 			"title": "Movies"
 		},
 		"samples": {
-			"title" : "Samples",
+			"title": "Samples",
+			"datepicker":{
+				"title": "Datepicker"
+			},
+			"multiselect": {
+				"title": "Multiselect"
+			},
 			"navigable":{
 				"title": "Navigable"
 			},
-			"schemaValidation" : {
+			"schemaValidation": {
 				"title": "Schema Validation"
+			},
+			"navigator": {
+				"title": "States Navigator"
+			},
+			"typeahead": {
+				"title": "Typeahead"
+			},
+			"uiScroll": {
+				"title": "UI Scroll"
 			}
+		},
+		"admin": {
+			"title": "Administration"
 		}
 	},
 	"common": {
@@ -52,11 +79,15 @@
 		},
 		"date" : {
 			"format" : {
-				"dd.MM.yyyy" : "dd.mm.yyyy"
-			}
+				"dd.MM.yyyy" : "dd.mm.yyyy",
+				"invalid": "Incorrect date or format, please enter a valid date in the dd.mm.yyyy format."
+			},
+		  "min.invalid": "en: Das Datum unterschreitet das min. zulässige Datum {{p0}}",
+		  "max.invalid": "en: Das Datum überschreitet das max. zulässige Datum {{p0}}"
 		}
 	},
 	"labels": {
+		"language": "Language",
 		"email": "Email",
 		"password": "Password"
 	},
@@ -154,5 +185,11 @@
 			"next": "Next",
 			"back": "Back"
 		}
+	},
+	"multiselect": {
+		"checkAll": "Select all",
+		"uncheckAll": "Unselect all",
+		"buttonDefaultText": "Select please.",
+	  	"allSelected": "All elements selected"
 	}
 }

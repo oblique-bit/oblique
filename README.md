@@ -8,7 +8,7 @@ This template has been inspired by the following guidelines:
 ## Quick start
 
 - [Download the latest release](https://stash.eap.bit.admin.ch/plugins/servlet/archive/projects/OUI/repos/oblique-reactive).
-- Clone the repo: `http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive.git`.
+- Clone the repo: `git clone https://stash.eap.bit.admin.ch/scm/oui/oblique-reactive.git`.
 
 ## Install
 

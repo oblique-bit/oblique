@@ -15,18 +15,20 @@
 					data : function() {
 						return {
 							"id": 0,
-							"text": null, //"Hello, World!",
-							"number": 1,
-							"numberString": "42",
-							"date": null, //"2015-05-27T11:21:05+02:00",
+							"text": null,
+							"number": "42",
+							"integer": 1,
+							"date": null,
 							"time": "2015-05-21T09:00:00+02:00",
 							"select": "ccc",
-							"multiselect": ["aaa", "ccc"]
+							"multiselect": ["aaa", "ccc"],
+							"object": {
+								"subproperty": 33
+							}
 						};
 					},
 					schema: function() {
 						return {
-							"$id": "1",
 							"$schema": "http://json-schema.org/draft-04/schema#",
 							"title": "SampleValidationSchema",
 							"type": "object",
@@ -39,7 +41,6 @@
 							],
 							"properties": {
 								"id": {
-									"$id": "2",
 									"type": "integer"
 								},
 								"text": {
@@ -48,29 +49,26 @@
 									"maxLength": 64
 								},
 								"numberString": {
-									"$id": "3",
 									"type": "number",
 									"minimum": 1,
 									"maximum": 10000000,
 									"exclusiveMinimum": true
 								},
-								"number": {
-									"$id": "3",
-									"type": "number",
+								"integer": {
+									"type": "integer",
 									"minimum": 0,
 									"maximum": 100,
 									"exclusiveMaximum": true
 								},
 								"date": {
-									"$id": "4",
 									"type": [
 										"object",
-										"string"
+										"string",
+										"number"
 									],
 									"format": "date-time"
 								},
 								"time": {
-									"$id": "5",
 									"format": "date-time",
 									"type": [
 										"object",
@@ -78,7 +76,6 @@
 									]
 								},
 								"select": {
-									"$id": "8",
 									"type": "string",
 									"options": [
 										{ "label" : "Aaa", "value": "aaa"},
@@ -89,7 +86,6 @@
 									]
 								},
 								"multiselect": {
-									"$id": "8",
 									"type": "array",
 									"items": {
 										"type": "string"
@@ -108,6 +104,16 @@
 									"type": "string",
 									"minLength": 5,
 									"maxLength": 140
+								},
+								"object": {
+									"type": "object",
+									"properties": {
+										"subproperty": {
+											"type": "integer",
+											"minimum": 20,
+											"maximum": 42
+										}
+									}
 								}
 							}
 						};
