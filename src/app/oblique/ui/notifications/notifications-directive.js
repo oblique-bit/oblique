@@ -6,7 +6,7 @@
 		.directive('notifications', function (NotificationService) {
 			return {
 				restrict: 'AE',
-				templateUrl: '../oblique/ui/notifications/notifications.tpl.html',
+				templateUrl: 'app/oblique/ui/notifications/notifications.tpl.html',
 				replace: true,
 				scope: false,
 				controller: function ($scope, $element, $attrs) {

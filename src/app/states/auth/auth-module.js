@@ -6,7 +6,7 @@
 		.config(function ($stateProvider) {
 			$stateProvider.state('auth', {
 				url: '/auth',
-				templateUrl: 'auth/auth.tpl.html',
+				templateUrl: 'app/states/auth/auth.tpl.html',
 				controller: 'AuthController',
 				data: {
 					layout: {

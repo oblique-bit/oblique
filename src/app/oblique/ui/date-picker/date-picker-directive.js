@@ -8,7 +8,7 @@
 	angular.module('__MODULE__.oblique')
 		.directive('datePicker', function (datepickerPopupConfig) {
 			return {
-				templateUrl: '../oblique/ui/date-picker/date-picker.tpl.html',
+				templateUrl: 'app/oblique/ui/date-picker/date-picker.tpl.html',
 				restrict: 'E',
 				replace: true,
 				scope: {

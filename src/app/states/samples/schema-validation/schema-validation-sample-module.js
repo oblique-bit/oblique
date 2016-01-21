@@ -6,7 +6,7 @@
 		.config(function ($stateProvider) {
 			$stateProvider.state('samples.schemaValidation', {
 				url: '/schema-validation',
-				templateUrl: 'samples/schema-validation/schema-validation-sample.tpl.html',
+				templateUrl: 'app/states/samples/schema-validation/schema-validation-sample.tpl.html',
 				controller: 'SchemaValidationSampleController',
 				data: {
 					description: 'states.samples.schema-validation.description'

@@ -6,7 +6,7 @@
 		.config(function ($stateProvider) {
 			$stateProvider.state('samples.datepicker', {
 				url: '/datepicker',
-				templateUrl: 'samples/datepicker/datepicker-sample.tpl.html',
+				templateUrl: 'app/states/samples/datepicker/datepicker-sample.tpl.html',
 				controller: 'DatepickerSampleController'
 			});
 		});

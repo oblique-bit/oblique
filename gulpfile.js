@@ -1,291 +1,355 @@
-var gulp = require('gulp'),
-    debug = require('gulp-debug'),
-    plumber = require('gulp-plumber'),
-    addsrc = require('gulp-add-src'),
-    fs = require('fs'),
-    assemble = require('assemble'),
-    push = require('assemble-push'),
-    ngHtml2Js = require("gulp-ng-html2js"),
-    html2js = require('gulp-html2js'),
-    runSequence = require('run-sequence'),
-    gulpAssemble = require('gulp-assemble'),
-    clean = require('gulp-clean'),
-    replace = require('gulp-replace'),
-    jshint = require('gulp-jshint'),
-    stylish = require('gulp-jscs-stylish'),
-    jscs = require('gulp-jscs'),
-    uglify = require('gulp-uglify'),
-    minifyCss = require('gulp-minify-css'),
-    concat = require('gulp-concat'),
-    less = require('gulp-less'),
-    hb = require('gulp-hb'),
-    handlebars = require('gulp-handlebars'),
-    wrap = require('gulp-wrap'),
-    rev = require('gulp-rev'),
-    declare = require('gulp-declare'),
-    autoprefixer = require('gulp-autoprefixer'),
-    Server = require('karma').Server,
-    annotate = require('gulp-ng-annotate'),
-    changed = require('gulp-changed'),
-    watch = require('gulp-watch'),
-    connect = require('gulp-connect'),
-    ngAnnotate = require('gulp-ng-annotate'),
-    batch = require('gulp-batch'),
-    project = JSON.parse(fs.readFileSync('./project.json')),
-    env = project.common,
-    paths = {
-        src: 'src/',
-        app: 'src/app/',
-        states: 'src/app/states/',
-        core: 'src/app/core/',
-        controllers: 'src/app/core/controllers/',
-        less: 'src/less/',
-        pages: 'src/pages/',
-        data: 'src/templates/data/',
-        partials: 'src/templates/partials/',
-        helpers: 'src/templates/helpers/',
-        vendor: 'vendor/'
-    };
+//<editor-fold desc="Dependencies">
+var del = require('del'),
+	fs = require('fs'),
 
+	// Gulp & plugins:
+	gulp = require('gulp'),
+	addsrc = require('gulp-add-src'),
+	autoprefixer = require('gulp-autoprefixer'),
+	batch = require('gulp-batch'),
+	changed = require('gulp-changed'),
+	concat = require('gulp-concat'),
+	connect = require('gulp-connect'),
+	debug = require('gulp-debug'),
+	declare = require('gulp-declare'),
+	jscs = require('gulp-jscs'),
+	jshint = require('gulp-jshint'),
+	insert = require('gulp-insert'),
+	less = require('gulp-less'),
+	minifyCss = require('gulp-minify-css'),
+	minifyHtml = require('gulp-minify-html'),
+	ngAnnotate = require('gulp-ng-annotate'),
+	ngHtml2js = require('gulp-ng-html2js'),
+	plumber = require('gulp-plumber'),
+	replace = require('gulp-replace'),
+	rev = require('gulp-rev'),
+	stylish = require('gulp-jscs-stylish'),
+	uglify = require('gulp-uglify'),
+	watch = require('gulp-watch'),
+	wrap = require('gulp-wrap'),
+
+	// Test:
+	Server = require('karma').Server,
+
+	// FIXME: remove when https://github.com/gulpjs/gulp/tree/4.0
+	runSequence = require('run-sequence');
+//</editor-fold>
+
+//<editor-fold desc="Project configuration">
+var project = require('./project.conf.js'),
+	paths = {
+		src: 'src/',
+		app: 'src/app/',
+		states: 'src/app/states/',
+		less: 'src/less/',
+		pages: 'src/pages/',
+		partials: 'src/partials/',
+		vendor: 'vendor/',
+		staging: '.tmp/' // TODO
+	};
+//</editor-fold>
+
+//<editor-fold desc="Main tasks">
 gulp.task('default', ['run-dev']);
 
-gulp.task('build-all', function () {
-    runSequence('clean', ['copy-all-static', 'build-scripts', 'html2js', 'build-styles', 'assemble']);
+gulp.task('run-dev', function (done) {
+	return runSequence(
+		'build-dev',
+		'serve-dev'
+	);
 });
 
-gulp.task('build-dev', ['build-all', 'test']);
+gulp.task('build-dev', [
+		'build-all'
+		//'test', // TODO
+	]
+);
 
-gulp.task('build-prod',['build-all', 'test', 'optimize']);
+gulp.task('build-prod', [
+	'build-all',
+	'test',
+	'optimize'
+]);
 
+gulp.task('build-all', function (done) {
+	return runSequence(
+		'clean',
+		[
+			'copy',
+			'build-styles',
+			'build-scripts',
+			'build-templates',
+			'build-html'
+		],
+		done
+	);
+});
+
+//</editor-fold>
+
+
+/* ////  ************************************************************
+
+
+/*
+ * clean
+ *
+ * Deletes generate files and folders.
+ *
+ * Plugins:
+ *  - `del`: https://github.com/sindresorhus/del
+ *
+ */
 gulp.task('clean', function () {
-    return gulp.src(env.build.target, {read: false}).pipe(clean({force: false}));
+	return del(
+		[project.build.target + '/**', paths.staging + '/**'],
+		{force: false}
+	);
 });
 
-gulp.task('build-styles', function () {
-    gulp.src(paths.less + 'main.less')
-        .pipe(less({paths: paths.less}))
-        .pipe(gulp.dest(env.build.target + 'css/'))
-});
-
-gulp.task('build-scripts', function () {
-    gulp.src(env.resources.app, {cwd: paths.src, base: paths.app})
-        .pipe(addsrc(paths.app + '**/*.spec.js'))
-        //.pipe(debug())
-        .pipe(jshint())
-        .pipe(jscs())
-        .pipe(stylish.combineWithHintResults())
-        .pipe(jshint.reporter('jshint-stylish'))
-        //.pipe(jshint.reporter('fail')).on('error', errorHandler)
-        .pipe(replace("__MODULE__", env.app.module))
-        .pipe(replace("'__CONFIG__'", JSON.stringify(env.app)))
-        .pipe(gulp.dest(env.build.target + 'app/'));
-});
-
-gulp.task('optimize', ['optimize-vendor-css', 'optimize-vendor-js', 'optimize-app']);
-
-gulp.task('optimize-vendor-css', function () {
-    gulp.src(env.resources.vendor.css, {cwd: env.build.target + 'vendor/'})
-        .pipe(addsrc(env.build.target + 'css/*.css'))
-        .pipe(concat('vendors.min.css'))
-        .pipe(minifyCss({
-            // TODO: disable `zeroUnits` optimization once clean-css 3.2 is released
-            //    and then simplify the fix for https://github.com/twbs/bootstrap/issues/14837 accordingly
-            compatibility: 'ie8',
-            keepSpecialComments: '*',
-            advanced: false
-        }))
-        .pipe(rev())
-        //'usemin'
-        .pipe(gulp.dest(env.build.target + 'min/'));
-});
-
-gulp.task('optimize-app', function () {
-    gulp.src(env.resources.app, {cwd: env.build.target})
-        .pipe(ngAnnotate())
-        .pipe(concat(env.app.module + '.min.js'))
-        .pipe(uglify())
-        .pipe(rev())
-        //'usemin'
-        .pipe(gulp.dest(env.build.target + 'min/'));
-});
-
-gulp.task('optimize-vendor-js', function () {
-    gulp.src('vendor/**/*.js', {cwd: env.build.target})
-        .pipe(concat('vendors.min.js'))
-        .pipe(uglify())
-        .pipe(rev())
-        //'usemin'
-        .pipe(gulp.dest(env.build.target + 'min/'));
-});
-
-gulp.task('test', ['build-all'], function (done) {
-    new Server({
-        configFile: __dirname + '/karma.conf.js',
-        logLevel: 'info',
-        singleRun: true
-    }).start(), function () {
-        done();
-    };
-});
-
-gulp.task('html2js', function (done) {
-    gulp.src(paths.app + '**/*.tpl.html')
-        .pipe(ngHtml2Js({
-            moduleName: env.app.module + '.app-templates',
-            base: paths.states
-        }))
-        .pipe(concat("app-templates.js"))
-        .pipe(gulp.dest(env.build.target + 'app'));
-});
-
-gulp.task('copy-all-static', ['copy-vendor-js', 'copy-vendor-css', 'copy-assets', 'copy-app-json', 'copy-oblique']);
-
+//<editor-fold desc="Copy">
+gulp.task('copy', [
+	'copy-assets',
+	'copy-vendor-js',
+	'copy-vendor-css',
+	'copy-app-json',
+	'copy-oblique'
+]);
 
 gulp.task('copy-vendor-js', function () {
-    gulp.src(env.resources.vendor.js, {cwd: paths.vendor, base: paths.vendor})
-        .pipe(gulp.dest(env.build.target + paths.vendor));
+	return gulp.src(
+		project.resources.vendor.js,
+		{cwd: paths.vendor, base: paths.vendor}
+	).pipe(gulp.dest(project.build.target + paths.vendor));
 });
 
 gulp.task('copy-vendor-css', function () {
-    gulp.src(env.resources.vendor.css, {cwd: paths.vendor, base: paths.vendor})
-        .pipe(gulp.dest(env.build.target + paths.vendor));
+	return gulp.src(
+		project.resources.vendor.css,
+		{
+			cwd: paths.vendor,
+			base: paths.vendor
+		}
+	).pipe(gulp.dest(project.build.target + paths.vendor));
 });
 
 gulp.task('copy-assets', function () {
-    gulp.src(['images/**/*', 'js/**/*', 'fonts/**/*'], {cwd: paths.src, base: paths.src})
-        .pipe(gulp.dest(env.build.target));
+	return gulp.src(
+		[
+			'images/**/*',
+			'js/**/*',
+			'fonts/**/*'
+		],
+		{
+			cwd: paths.src,
+			base: paths.src
+		}
+	).pipe(gulp.dest(project.build.target));
 });
 
 gulp.task('copy-app-json', function () {
-    gulp.src(['**/*.json'], {cwd: paths.app, base: paths.app})
-        .pipe(gulp.dest(env.build.target + 'app/'));
+	return gulp.src(
+		['**/*.json'],
+		{
+			cwd: paths.app,
+			base: paths.app
+		}
+	).pipe(gulp.dest(project.build.target + 'app/'));
 });
 
 gulp.task('copy-oblique', function () {
-    gulp.src(['**/*'], {cwd: paths.vendor + 'oblique-ui/dist/', base: paths.vendor + 'oblique-ui/dist/'})
-        .pipe(gulp.dest(env.build.target + 'vendor/oblique-ui/'));
+	return gulp.src(
+		['**/*'],
+		{
+			cwd: paths.vendor + 'oblique-ui/dist/',
+			base: paths.vendor + 'oblique-ui/dist/'
+		}
+	).pipe(gulp.dest(project.build.target + 'vendor/oblique-ui/'));
+});
+//</editor-fold>
+
+//<editor-fold desc="Build">
+/*
+ * build-styles
+ *
+ * Generates CSS files.
+ *
+ * Plugins:
+ *  - `less`: https://github.com/plus3network/gulp-less
+ *
+ */
+gulp.task('build-styles', function () {
+	return gulp.src(paths.less + 'main.less')
+		.pipe(less({paths: paths.less}))
+		.pipe(gulp.dest(project.build.target + 'css/'))
 });
 
-gulp.task('assemble', function () {
-    gulp.src(paths.partials + '**/*.hbs')
-        .pipe(debug({title: 'debug:'}))
-        //.pipe(gulpAssemble(assemble))
-        .pipe(concat('index.html'))
-        .pipe(gulp.dest(env.build.target));
+/*
+ * build-scripts
+ *
+ * Generates JS resources.
+ *
+ * Plugins:
+ *  - `gulp-jshint`: https://github.com/spalger/gulp-jshint
+ *  - `jshint-stylish`: https://github.com/sindresorhus/jshint-stylish
+ *  - `gulp-jscs`: https://github.com/jscs-dev/gulp-jscs
+ *  - `gulp-replace`: https://github.com/lazd/gulp-replace
+ *
+ */
+gulp.task('build-scripts', function () {
+	return gulp.src(
+			project.resources.app,
+			{cwd: paths.src, base: paths.app}
+		)
+		.pipe(addsrc(paths.app + '**/*.spec.js'))
+		//.pipe(debug())
+		.pipe(jshint())
+		.pipe(jscs())
+		.pipe(stylish.combineWithHintResults())
+		.pipe(jshint.reporter('jshint-stylish'))
+		//.pipe(jshint.reporter('fail')).on('error', errorHandler)
+		.pipe(replace("__MODULE__", project.app.module))
+		.pipe(replace("'__CONFIG__'", JSON.stringify(project.app)))
+		.pipe(gulp.dest(project.build.target + 'app/'));
 });
 
-gulp.task('handlebars1', function () {
-    gulp.src(paths.partials + '**/*.hbs')
-        .pipe(handlebars())
-        .pipe(wrap('Handlebars.template(<%= contents %>)'))
-        .pipe(declare({
-            namespace: 'MyApp.templates',
-            noRedeclare: true, // Avoid duplicate declarations
-        }))
-        .pipe(concat('app-templates.js'))
-        .pipe(env.build.target);
+/*
+ * build-templates
+ *
+ * Converts AngularJS templates to JavaScript and concatenates them in a single file.
+ *
+ * Plugins:
+ *  - `gulp-ng-html2js`: https://github.com/marklagendijk/gulp-ng-html2js
+ *  - `concat`: https://github.com/wearefractal/gulp-concat
+ */
+gulp.task('build-templates', function () {
+	var moduleName = project.app.module + '.app-templates';
+	var sources = paths.src + '**/*.tpl.html';
+	return gulp.src(sources)
+		//.pipe(watch(sources))
+		.pipe(minifyHtml({
+			empty: true,
+			spare: true,
+			quotes: true
+		}))
+		.pipe(ngHtml2js({
+			moduleName: moduleName,
+			declareModule: false,
+			prefix: ''
+		}))
+		.pipe(concat("app-templates.js"))
+		.pipe(insert.prepend("angular.module('" + moduleName + "', []);"))
+		.pipe(gulp.dest(project.build.target + 'app'));
 });
 
-gulp.task('handlebars2', function () {
-    gulp.src(paths.app + '**/*.html')
-        //.pipe(plumber())
-        .pipe(hb({
-            data: [
-                paths.app + 'i18n/**/*.json'
-            ],
-            helpers: [
-                paths.helpers + '**/*.js',
-                paths.vendor + 'oblique-ui/templates/helpers/**/*.js'
-            ],
-            partials: [
-                paths.partials + '**/*.hbs',
-                paths.vendor + 'oblique-ui/templates/**/*.hbs'
-            ]
-        }))
-        .pipe(env.build.target + 'index.html');
+/*
+ * build-html
+ *
+ * Generates HTML pages.
+ *
+ * NOTE: legacy Assemble support through Grunt!
+ * TODO: refactor when HTML composition has been migrated to new technology [TBD]
+ *
+ * Plugins:
+ *  - `grunt-assemble`: https://github.com/assemble/grunt-assemble
+ */
+gulp.task('build-html', function (done) {
+	require('gulp-grunt')(gulp, {verbose: false});
+	// NOTE: Grunt tasks are prefixed with 'grunt-'!
+	gulp.start('grunt-assemble'); // DO NOT return here as it breaks the stream!
+	done();
+});
+//</editor-fold>
+
+//<editor-fold desc="Optimize">
+gulp.task('optimize', [
+	'optimize-vendor-css',
+	'optimize-vendor-js',
+	'optimize-app'
+]);
+
+gulp.task('optimize-vendor-css', function () {
+	return gulp.src(project.resources.vendor.css, {cwd: project.build.target + 'vendor/'})
+		.pipe(addsrc(project.build.target + 'css/*.css'))
+		.pipe(concat('vendors.min.css'))
+		.pipe(minifyCss({
+			// TODO: disable `zeroUnits` optimization once clean-css 3.2 is released
+			//    and then simplify the fix for https://github.com/twbs/bootstrap/issues/14837 accordingly
+			compatibility: 'ie8',
+			keepSpecialComments: '*',
+			advanced: false
+		}))
+		.pipe(rev())
+		//'usemin'
+		.pipe(gulp.dest(project.build.target + 'min/'));
+});
+
+gulp.task('optimize-app', function () {
+	return gulp.src(project.resources.app, {cwd: project.build.target})
+		.pipe(ngAnnotate())
+		.pipe(concat(project.app.module + '.min.js'))
+		.pipe(uglify())
+		.pipe(rev())
+		//'usemin'
+		.pipe(gulp.dest(project.build.target + 'min/'));
+});
+
+gulp.task('optimize-vendor-js', function () {
+	return gulp.src('vendor/**/*.js', {cwd: project.build.target})
+		.pipe(concat('vendors.min.js'))
+		.pipe(uglify())
+		.pipe(rev())
+		//'usemin'
+		.pipe(gulp.dest(project.build.target + 'min/'));
+});
+//</editor-fold>
+
+//<editor-fold desc="Test">
+gulp.task('test', ['build-all'], function (done) {
+	new Server({
+		configFile: __dirname + '/karma.conf.js',
+		logLevel: 'info',
+		singleRun: true
+	}).start(), function () {
+		done();
+	};
+});
+//</editor-fold>
+
+//<editor-fold desc="Serve">
+gulp.task('serve-dev', [
+	'connect-web',
+	'watch'
+]);
+
+gulp.task('connect-web', function () {
+	return connect.server({
+		port: project.app.web.port, // Port used to deploy the client
+		host: project.app.web.hostname,
+		root: project.build.target,
+		livereload: true
+	});
 });
 
 gulp.task('watch', function () {
-    watch('**/*.js', batch(function (events, done) {
-        gulp.start('build-all', done);
-    }));
+	gulp.watch(project.resources.assets, {cwd: paths.src}, ['copy-assets']);
+	gulp.watch(project.resources.vendor.js, {cwd: paths.vendor}, ['copy-vendor-js']);
+	gulp.watch(project.resources.vendor.css, {cwd: paths.vendor}, ['copy-vendor-css']);
+	gulp.watch('**/*.json', {cwd: paths.src}, ['copy-app-json']);
+	gulp.watch('**/*', {cwd: paths.vendor + 'oblique-ui/dist/'}, ['copy-oblique']);
+	gulp.watch('**/*.less', {cwd: paths.less}, ['build-styles']);
+	gulp.watch('**/*.js', {cwd: paths.src}, ['build-scripts']);
+	gulp.watch('**/*.tpl.html', {cwd: paths.src}, ['build-templates']);
+	gulp.watch([paths.pages + '**/*.hbs', paths.partials + '**/*.hbs'], ['build-html']);
+
+	// FIXME: LiveReload may be executed twice (https://github.com/AveVlad/gulp-connect/issues/123)
+	return gulp.src(project.build.target + '**/*')
+		.pipe(watch(project.build.target + '**/*'))
+		.pipe(connect.reload());
 });
-
-gulp.task('connect', function () {
-    connect.server({
-        port: env.app.api.port, // Port used to deploy the client
-        host: 'localhost',
-        //base: '<%= env.build.target %>',
-        //hostname: '<%= env.app.api.hostname %>',
-        //index: '<%= env.app.home %>',
-
-        root: env.build.target,
-        livereload: true
-    });
-});
-
-gulp.task('watch', function () {
-    gulp.watch([paths.src + '*.*']);
-});
-
-gulp.task('run-dev', ['connect', 'watch']);
+//</editor-fold>
 
 function errorHandler(error) {
-    console.log(error.toString());
-    this.emit('end');
+	console.log(error.toString());
+	this.emit('end');
 }
-
-var glob = require('glob');
-gulp.task('generate-html', function (done) {
-    assemble.create('product', {isRenderable: true}, function (pattern) {
-        var files = glob.sync(pattern);
-        if (files.length === 0) {
-            console.log('Warning: No input files for pattern: ' + pattern);
-            return {};
-        }
-
-        var templates = _.reduce(files, function (acc, file) {
-            console.log('Reading', log.format(file));
-
-            var json;
-            try {
-                var content = fs.readFileSync(file, 'utf8');
-                json = JSON.parse(content);
-            }
-            catch (err) {
-                console.log('Warning:', 'Could not parse JSON of: ' + file);
-                return acc; // TODO: throw err;
-            }
-
-            var template = {
-                path: file,
-                data: json,
-                content: 'dummy content to have the template pass validation'
-            };
-
-            acc[file] = template;
-
-            return acc;
-        }, {});
-
-        return templates;
-    });
-
-    assemble.layouts('src/**/*.hbs');
-    assemble.option('layout', 'product');
-    assemble.products('src/**/*.json');
-
-    assemble.task('default', function () {
-        return push('products')
-            .pipe(rename({
-                extname: '.html'
-            }))
-            .pipe(tap(function (file) {
-                console.log(log.format(file));
-            }))
-            .pipe(assemble.dest('dist'))
-            .pipe(count('Generated ## product HTML pages'));
-    });
-
-    assemble.run(['default'], done);
-});

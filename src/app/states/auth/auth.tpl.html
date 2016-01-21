@@ -1,11 +1,11 @@
 <div class="cover-layout">
 	<div class="cover-viewport">
 		<div class="cover-header">
-			<h1>{{'states.auth.title' | translate}}</h1>
+			<h1 translate="states.auth.title"></h1>
 		</div>
 		<div class="cover-content">
 			<form novalidate class="form-horizontal" role="form" name="loginForm" ng-submit="login()">
-				<h3 class="page-header">{{'states.auth.login.title' | translate}}</h3>
+				<h3 class="page-header" translate="states.auth.login.title"></h3>
 				<div class="form-group" has-error>
 					<label class="col-sm-3 control-label">Email</label>
 					<div class="col-sm-9">
@@ -53,7 +53,7 @@
 				<div class="form-group">
 					<button type="submit" class="btn btn-lg btn-primary btn-block">
 						<span ng-if="status.registering" class="fa fa-spinner fa-spin"></span>
-						<span>{{'states.auth.register.submit' | translate}}</span>
+						<span translate="states.auth.register.submit"></span>
 					</button>
 				</div>
 			</form>

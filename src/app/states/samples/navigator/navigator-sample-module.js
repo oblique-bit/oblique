@@ -7,7 +7,7 @@
 
 			$stateProvider.state('samples.navigator', {
 				url: '/navigator',
-				templateUrl: 'samples/navigator/navigator-sample.tpl.html',
+				templateUrl: 'app/states/samples/navigator/navigator-sample.tpl.html',
 				controller: 'NavigatorSampleController'
 			}).state('samples.navigator.1', {
 				url: '/1',
