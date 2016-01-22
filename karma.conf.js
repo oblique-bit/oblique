@@ -1,23 +1,22 @@
 // Karma configuration
 var _ = require('lodash');
-var grunt = require('grunt');
 
-// Require project configuration:
-var project = grunt.file.readJSON('project.json');
+// Project configuration:
+var project = require('./project.conf.js');
 
 module.exports = function (config) {
 
     var karmaResources = [];
 
-    _.forEach(project.common.resources.vendor.js, function (v) {
-        karmaResources.push(project.common.build.target + '/vendor/' + v);
+    _.forEach(project.resources.vendor.js, function (v) {
+        karmaResources.push(project.build.target + '/vendor/' + v);
     });
-    _.forEach(project.common.resources.app, function (v) {
-        karmaResources.push(project.common.build.target + '/' + v);
+    _.forEach(project.resources.app, function (v) {
+        karmaResources.push(project.build.target + '/' + v);
     });
 
     karmaResources.push('vendor/angular-mocks/angular-mocks.js');
-    karmaResources.push(project.common.build.target + '/app/**/*.spec.js');
+    karmaResources.push(project.build.target + '/app/**/*.spec.js');
 
     config.set({
 
