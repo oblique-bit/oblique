@@ -165,6 +165,11 @@
                         } else {
                             scope.navigable.activate(element);
                         }
+                    } else {
+                        // Focus is on a child element of current item but let's ensure it gets activated:
+                        if (!element.hasClass('navigable-selected')) {
+                            scope.navigable.activate(element, event.ctrlKey);
+                        }
                     }
                 });
 
