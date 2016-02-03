@@ -6,7 +6,7 @@
 
 <!-- build:js {{../assets}}min/vendors.min.js -->
 {{#each env.resources.vendor.js}}
-	<script src="{{../assets}}{{../paths.vendor}}{{this}}"></script>
+	<script src="{{../assets}}{{../app.vendor.path}}{{this}}"></script>
 {{~/each}}
 <!-- endbuild -->
 
