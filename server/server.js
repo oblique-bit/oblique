@@ -21,8 +21,8 @@ var context = {
 // Application server configuration
 // ------------------------------------
 var app = express(),
-	corsUrl = 'http://localhost:9000',
-	port = 3000;
+	corsUrl = 'http://localhost:' + process.env.PORT_CLIENT || 9000,
+	port = process.env.PORT || 3000;
 
 // Use JSON body-parser to get POST data:
 app.use(bodyParser.json());

@@ -117,7 +117,7 @@ _This task builds the project, runs the client application by starting a local s
 
 Should your backend API not be ready to consume, you can test the client application by starting a local *dummy* API server:
 
-	gulp dummy-server
+	gulp connect-dummy
 
 > Note that you should remove this local server as soon as your backend is ready to consume!
 

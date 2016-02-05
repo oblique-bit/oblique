@@ -19,6 +19,7 @@ var del = require('del'),
 	less = require('gulp-less'),
 	ngAnnotate = require('gulp-ng-annotate'),
 	ngHtml2js = require('gulp-ng-html2js'),
+	nodemon = require('gulp-nodemon'),
 	plumber = require('gulp-plumber'),
 	replace = require('gulp-replace'),
 	rev = require('gulp-rev'),
@@ -29,9 +30,9 @@ var del = require('del'),
 	wrap = require('gulp-wrap'),
 
 	// Test:
-	Server = require('karma').Server,
+	karmaServer = require('karma').Server,
 
-	// FIXME: remove when https://github.com/gulpjs/gulp/tree/4.0
+	// FIXME: remove when https://github.com/gulpjs/gulp/tree/4.0 is out!
 	runSequence = require('run-sequence');
 //</editor-fold>
 
@@ -238,12 +239,10 @@ gulp.task('build-scripts', function () {
 			{cwd: paths.src, base: paths.app}
 		)
 		.pipe(addsrc(paths.app + '**/*.spec.js'))
-		//.pipe(debug())
 		.pipe(jshint())
 		.pipe(jscs())
 		.pipe(stylish.combineWithHintResults())
 		.pipe(jshint.reporter('jshint-stylish'))
-		//.pipe(jshint.reporter('fail')).on('error', errorHandler)
 		.pipe(replace("__MODULE__", project.app.module))
 		.pipe(replace("'__CONFIG__'", JSON.stringify(project.app)))
 		.pipe(gulp.dest(project.build.target + 'app/'));
@@ -309,8 +308,14 @@ gulp.task('optimize', ['clean-min'], function (done) {
 //</editor-fold>
 
 //<editor-fold desc="Test">
+/*
+ * test: launches Karma tests
+ *
+ * Plugins:
+ *  - `karma`: https://github.com/karma-runner/karma
+ */
 gulp.task('test', function (done) {
-	new Server({
+	new karmaServer({
 		configFile: __dirname + '/karma.conf.js',
 		logLevel: 'info',
 		singleRun: true
@@ -319,11 +324,22 @@ gulp.task('test', function (done) {
 //</editor-fold>
 
 //<editor-fold desc="Serve">
+/*
+ * serve: launches a local web server for serving resources and starts listening for file changes
+ *
+ * Plugins: [NONE]
+ */
 gulp.task('serve', [
 	'connect-web',
 	'watch'
 ]);
 
+/*
+ * connect-web: launches a local web server for serving app resources
+ *
+ * Plugins:
+ *  - `connect`: https://github.com/avevlad/gulp-connect
+ */
 gulp.task('connect-web', function () {
 	return connect.server({
 		port: project.app.web.port, // Port used to deploy the client
@@ -333,6 +349,30 @@ gulp.task('connect-web', function () {
 	});
 });
 
+/*
+ * connect-web: launches a local web server for serving a *dummy* API
+ *
+ * Plugins:
+ *  - `nodemon`: https://github.com/JacksonGariety/gulp-nodemon
+ */
+gulp.task('connect-dummy', function () {
+	return nodemon({
+		script: 'server/server.js',
+		ext: 'js json',
+		env: {
+			PORT: project.app.api.port,
+			PORT_CLIENT: project.app.web.port
+		}
+	});
+});
+
+/*
+ * watch: starts listening for file changes and reloads running web server
+ *
+ * Plugins:
+ * - `watch`: https://github.com/floatdrop/gulp-watch
+ * - `connect`: https://github.com/avevlad/gulp-connect
+ */
 gulp.task('watch', function () {
 	gulp.watch(project.resources.assets, {cwd: paths.src}, ['copy-assets']);
 	gulp.watch(project.resources.vendor.js, {cwd: paths.vendor}, ['copy-vendor-js']);
@@ -349,8 +389,3 @@ gulp.task('watch', function () {
 		.pipe(connect.reload())
 });
 //</editor-fold>
-
-function errorHandler(error) {
-	console.log(error.toString());
-	this.emit('end');
-}
