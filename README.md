@@ -1,6 +1,6 @@
 # [ObliqueReactive](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/)
 
-Reactive web template powered by ObliqueUI and AngularJS. ObliqueReactive uses [Grunt](http://gruntjs.com/), [Bower](http://bower.io/), [Less](http://lesscss.org/) and [Assemble](http://assemble.io/) to fetch dependencies, compile & build assets and compose the pages.
+Reactive web template powered by ObliqueUI and AngularJS. ObliqueReactive uses [Gulp](https://github.com/gulpjs/gulp/), [Bower](http://bower.io/), [Less](http://lesscss.org/) and [Assemble](http://assemble.io/) to fetch dependencies, compile & build assets and compose the pages.
 
 This template has been inspired by the following guidelines:
 <https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/mobilebasic?pli=1>
@@ -76,28 +76,23 @@ Open an **elevated** command prompt and run the following command:
 
 1. Install required `npm` libraries:
 
-		npm install -g grunt-cli bower
+		npm install -g bower
 
-2. Install *development* dependencies (`npm` will look at [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/package.json) and automatically install the necessary build dependencies listed there):
+2. Install *development* & *frontend* dependencies:
 
-		npm install
+		npm prestart
 
-3. Install *frontend* dependencies (`bower` will look at [bower.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/bower.json) and automatically install the necessary frontend dependencies listed there):
+3. Customize:
 
-		bower install
-
-4. Customize:
-
-> Open [project.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/project.json) and adapt this configuration to fit your project requirements.
+> Open [project.conf.js](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/project.conf.js) and adapt this configuration to fit your project requirements.
 
 ### Troubleshooting dependencies
 
-Should you encounter problems with installing dependencies or running Grunt commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
+Should you encounter problems with installing dependencies or running Gulp commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
 
 ## Build & Run
 
-ObliqueReactive supports software environments by launching specific [Grunt](http://gruntjs.com/) tasks.
-Environment-specific variables can be configured, created or overrided by customizing the [project.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/project.json) file.
+ObliqueReactive supports software environments by launching specific [Gulp](https://github.com/gulpjs/gulp/) tasks.
 
 The project template has been configured to trigger the following 2 environments:
 
@@ -106,35 +101,31 @@ The project template has been configured to trigger the following 2 environments
 
 ### Development tasks
 
-	grunt
+	gulp
 
 *or*
 
-	grunt default
+	gulp default
 
 *or*
 
-	grunt run-dev
+	gulp run-dev
 
-_This task loads the `dev` environment configuration, builds the project, runs the client application by starting a local server and watches for file changes._
+_This task builds the project, runs the client application by starting a local server and watches for file changes._
 
 #### [Optional] Start the *dummy* API server
 
 Should your backend API not be ready to consume, you can test the client application by starting a local *dummy* API server:
 
-	grunt dummy-server
+	gulp dummy-server
 
 > Note that you should remove this local server as soon as your backend is ready to consume!
 
 ### Production tasks
 
-	grunt serve-prod
+	gulp run-prod
 
-_This task loads the `prod` environment configuration, builds the project for release and runs the client application by starting a local server._
-
-	grunt run-prod
-
-_Same as `serve-prod`, except that it starts watching for file changes._
+_Same as `run-dev`, except that it will serve optimized resources._
 
 ## Checking for updates
 

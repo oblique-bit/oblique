@@ -1,12 +1,10 @@
 //<editor-fold desc="Dependencies">
 var del = require('del'),
-	fs = require('fs')
-	vinylPaths = require('vinyl-paths'),
+	fs = require('fs'),
 
 	// Gulp & plugins:
 	gulp = require('gulp'),
 	addsrc = require('gulp-add-src'),
-	autoprefixer = require('gulp-autoprefixer'),
 	batch = require('gulp-batch'),
 	changed = require('gulp-changed'),
 	concat = require('gulp-concat'),
@@ -14,18 +12,16 @@ var del = require('del'),
 	cssnano = require('gulp-cssnano'),
 	debug = require('gulp-debug'),
 	declare = require('gulp-declare'),
+	htmlmin = require('gulp-htmlmin'),
+	insert = require('gulp-insert'),
 	jscs = require('gulp-jscs'),
 	jshint = require('gulp-jshint'),
-	insert = require('gulp-insert'),
 	less = require('gulp-less'),
-	minifyHtml = require('gulp-minify-html'),
 	ngAnnotate = require('gulp-ng-annotate'),
 	ngHtml2js = require('gulp-ng-html2js'),
 	plumber = require('gulp-plumber'),
 	replace = require('gulp-replace'),
 	rev = require('gulp-rev'),
-	revDel = require('rev-del'),
-	revReplace = require("gulp-rev-replace"),
 	stylish = require('gulp-jscs-stylish'),
 	uglify = require('gulp-uglify'),
 	usemin = require('gulp-usemin'),
@@ -56,10 +52,11 @@ var project = require('./project.conf.js'),
 //<editor-fold desc="Main tasks">
 gulp.task('default', ['run-dev']);
 
+//<editor-fold desc="Dev tasks">
 gulp.task('run-dev', function (done) {
 	return runSequence(
 		'build-dev',
-		'serve-dev'
+		'serve'
 	);
 });
 
@@ -70,6 +67,15 @@ gulp.task('build-dev', function (done) {
 		done
 	);
 });
+//</editor-fold>
+
+//<editor-fold desc="Prod tasks">
+gulp.task('run-prod', function (done) {
+	return runSequence(
+		'build-prod',
+		'serve'
+	);
+});
 
 gulp.task('build-prod', function (done) {
 	return runSequence(
@@ -78,21 +84,7 @@ gulp.task('build-prod', function (done) {
 		done
 	);
 });
-
-gulp.task('build-all', function (done) {
-	return runSequence(
-		'clean',
-		[
-			'copy',
-			'build-styles',
-			'build-scripts',
-			'build-templates',
-			'build-html'
-		],
-		done
-	);
-});
-
+//</editor-fold>
 //</editor-fold>
 
 
@@ -149,7 +141,7 @@ gulp.task('copy-assets', function () {
 			'js/**/*',
 			'fonts/**/*'
 		],
-		{cwd: paths.src}
+		{cwd: paths.src, base: paths.src}
 	).pipe(gulp.dest(project.build.target));
 });
 
@@ -161,7 +153,7 @@ gulp.task('copy-assets', function () {
 gulp.task('copy-vendor-js', function () {
 	return gulp.src(
 		project.resources.vendor.js,
-		{cwd: paths.vendor}
+		{cwd: paths.vendor, base: paths.vendor}
 	).pipe(gulp.dest(project.build.target + paths.vendor));
 });
 
@@ -173,7 +165,7 @@ gulp.task('copy-vendor-js', function () {
 gulp.task('copy-vendor-css', function () {
 	return gulp.src(
 		project.resources.vendor.css,
-		{cwd: paths.vendor}
+		{cwd: paths.vendor, base: paths.vendor}
 	).pipe(gulp.dest(project.build.target + paths.vendor));
 });
 
@@ -185,7 +177,7 @@ gulp.task('copy-vendor-css', function () {
 gulp.task('copy-app-json', function () {
 	return gulp.src(
 		['**/*.json'],
-		{cwd: paths.app}
+		{cwd: paths.app, base: paths.app}
 	).pipe(gulp.dest(project.build.target + 'app/'));
 });
 
@@ -195,14 +187,29 @@ gulp.task('copy-app-json', function () {
  * Plugins: [NONE]
  */
 gulp.task('copy-oblique', function () {
+	var path = paths.vendor + 'oblique-ui/dist/'
 	return gulp.src(
 		['**/*'],
-		{cwd: paths.vendor + 'oblique-ui/dist/'}
+		{cwd: path, base: path}
 	).pipe(gulp.dest(project.build.target + 'vendor/oblique-ui/'));
 });
 //</editor-fold>
 
 //<editor-fold desc="Build">
+gulp.task('build-all', function (done) {
+	return runSequence(
+		'clean',
+		[
+			'copy',
+			'build-styles',
+			'build-scripts',
+			'build-templates',
+			'build-html'
+		],
+		done
+	);
+});
+
 /*
  * build-styles: generates CSS files from Less resources
  *
@@ -228,7 +235,7 @@ gulp.task('build-styles', function () {
 gulp.task('build-scripts', function () {
 	return gulp.src(
 			project.resources.app,
-			{cwd: paths.src}
+			{cwd: paths.src, base: paths.app}
 		)
 		.pipe(addsrc(paths.app + '**/*.spec.js'))
 		//.pipe(debug())
@@ -254,12 +261,7 @@ gulp.task('build-templates', function () {
 	var moduleName = project.app.module + '.app-templates';
 	var sources = paths.src + '**/*.tpl.html';
 	return gulp.src(sources)
-		//.pipe(watch(sources))
-		.pipe(minifyHtml({
-			empty: true,
-			spare: true,
-			quotes: true
-		}))
+		.pipe(htmlmin({collapseWhitespace: true}))
 		.pipe(ngHtml2js({
 			moduleName: moduleName,
 			declareModule: false,
@@ -287,130 +289,23 @@ gulp.task('build-html', ['grunt-assemble']);
 
 //<editor-fold desc="Optimize">
 /*
- * optimize: optimizes generated resources for release packaging
- *
- * Plugins: [NONE]
- */
-gulp.task('optimize', function (done) {
-	return runSequence(
-		'clean-min',
-		[
-			'optimize-vendor-css',
-			'optimize-vendor-js',
-			'optimize-app-css',
-			'optimize-app-js'
-		],
-		'optimize-revision'
-	);
-});
-
-/*
- * optimize-vendor-css: concatenates, minifies and revisions vendor CSS resources
+ * optimize: minifies, uglifies and revisions generated resources for release packaging
  *
  * Plugins:
- *  - `gulp-concat`: https://github.com/contra/gulp-concat
+ *  - `gulp-usemin`: https://github.com/zont/gulp-usemin
  *  - `gulp-cssnano`: https://github.com/ben-eb/gulp-cssnano
- *  - `gulp-rev`: https://github.com/sindresorhus/gulp-rev
- */
-gulp.task('optimize-vendor-css', function () {
-	return gulp.src(
-			project.resources.vendor.css,
-			{cwd: project.build.target + 'vendor/'}
-		)
-		.pipe(concat('vendors.min.css'))
-		.pipe(cssnano())
-		//.pipe(rev())
-		.pipe(gulp.dest(project.build.target + 'min/'));
-});
-
-/*
- * optimize-vendor-js: concatenates, minifies & uglifies and revisions vendor JS resources
- *
- * Plugins:
- *  - `gulp-concat`: https://github.com/contra/gulp-concat
  *  - `gulp-uglify`: https://github.com/terinjokes/gulp-uglify
  *  - `gulp-rev`: https://github.com/sindresorhus/gulp-rev
  */
-gulp.task('optimize-vendor-js', function () {
-	return gulp.src(
-			'vendor/**/*.js',
-			{cwd: project.build.target}
-		)
-		.pipe(concat('vendors.min.js'))
-		.pipe(uglify())
-		//.pipe(rev())
-		.pipe(gulp.dest(project.build.target + 'min/'));
-});
-
-/*
- * optimize-app-css: concatenates, minifies and revisions app CSS resources
- *
- * Plugins:
- *  - `gulp-concat`: https://github.com/contra/gulp-concat
- *  - `gulp-cssnano`: https://github.com/ben-eb/gulp-cssnano
- *  - `gulp-rev`: https://github.com/sindresorhus/gulp-rev
- */
-gulp.task('optimize-app-css', function () {
-	return gulp.src(project.build.target + 'css/main.css')
-		.pipe(concat('main.min.css'))
-		.pipe(cssnano())
-		//.pipe(rev())
-		.pipe(gulp.dest(project.build.target + 'min/'));
-});
-
-/*
- * optimize-app-js: concatenates, minifies & uglifies and revisions app JS resources
- *
- * Plugins:
- *  - `gulp-concat`: https://github.com/contra/gulp-concat
- *  - `gulp-uglify`: https://github.com/terinjokes/gulp-uglify
- *  - `gulp-rev`: https://github.com/sindresorhus/gulp-rev
- */
-gulp.task('optimize-app-js', function () {
-	return gulp.src(
-			project.resources.app,
-			{cwd: project.build.target}
-		)
-		.pipe(ngAnnotate())
-		.pipe(concat(project.app.module + '.min.js'))
-		.pipe(uglify())
-		//.pipe(rev())
-		.pipe(gulp.dest(project.build.target + 'min/'));
-});
-
-/*
- * optimize-revision: revisions CSS & JS resources and creates a replacement manifest
- *
- * Plugins:
- *  - `gulp-rev`: https://github.com/sindresorhus/gulp-rev
- */
-gulp.task("optimize-revision", function(){
-	var sources = gulp.src(paths.min + '**');
-	return sources.pipe(rev())
-		.pipe(gulp.dest(paths.min))
-		.pipe(rev.manifest())
-		.pipe(revDel({ dest: paths.min }))
-		.pipe(gulp.dest(paths.min))
-		.pipe(gulp.dest(project.build.target))/*.on('end', function() {
-			console.log('end');
-
-			return gulp.src(project.build.target + "index.html")
-			.pipe(revReplace({
-				manifest: gulp.src(paths.min + "rev-manifest.json")
-			}));
-		})*/;
-});
-
-gulp.task('usemin', function() {
+gulp.task('optimize', ['clean-min'], function (done) {
 	return gulp.src(project.build.target + "index.html")
 		.pipe(usemin({
-			css: [ cssnano(), 'concat', rev() ],
-			js: [ uglify(), rev() ]
-			//html: [ minifyHtml({ empty: true }) ],
+			css: [cssnano(), rev()],
+			jsvendors: [ngAnnotate(), uglify(), rev()],
+			jsapp: [ngAnnotate(), uglify(), rev()]
 		}))
 		.pipe(gulp.dest(project.build.target));
 });
-
 //</editor-fold>
 
 //<editor-fold desc="Test">
@@ -424,7 +319,7 @@ gulp.task('test', function (done) {
 //</editor-fold>
 
 //<editor-fold desc="Serve">
-gulp.task('serve-dev', [
+gulp.task('serve', [
 	'connect-web',
 	'watch'
 ]);
@@ -449,10 +344,9 @@ gulp.task('watch', function () {
 	gulp.watch('**/*.tpl.html', {cwd: paths.src}, ['build-templates']);
 	gulp.watch([paths.pages + '**/*.hbs', paths.partials + '**/*.hbs'], ['build-html']);
 
-	// FIXME: LiveReload may be executed twice (https://github.com/AveVlad/gulp-connect/issues/123)
-	return gulp.src(project.build.target + '**/*')
-		.pipe(watch(project.build.target + '**/*'))
-		.pipe(connect.reload());
+	// FIXME: LiveReload may be trigered multiple times (https://github.com/AveVlad/gulp-connect/issues/123)
+	return watch(project.build.target + '**/*')
+		.pipe(connect.reload())
 });
 //</editor-fold>
 
