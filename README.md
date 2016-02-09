@@ -43,6 +43,7 @@ If you are using Git for the first time, configure your user information as well
 
 	HTTP_PROXY <http-proxy-url>
 	HTTPS_PROXY <https-proxy-url>
+	NO_PROXY follow [these instructions](https://confluence.eap.bit.admin.ch/display/JEAP/Projekt+Setup#ProjektSetup-Umgebungsvariablen)
 
 ##### GIT Config (.gitconfig)
 
@@ -50,15 +51,6 @@ If you are using Git for the first time, configure your user information as well
 	git config --global http."https://stash.eap.bit.admin.ch/".proxy ""
 	git config --global http.postBuffer 524288000
 	git config --global http.proxy <http-proxy-url>
-
-##### NPM Config
-
-> *Note*: proxy URL must start with `http[s]://`!
-
-	npm config set proxy <http-proxy-url>
-	npm config set https-proxy <https-proxy-url>
-
-> *Warning*: if you receive a `Error: ENOENT, stat 'C:\Users\<user>\AppData\Roaming\npm'` exception, you will have to manually create the `npm` folder under the `Roaming` folder.
 
 ##### Bower Config (Windows only)
 
