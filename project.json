@@ -98,7 +98,7 @@
 					"lodash/index.js",
 					"angular/angular.js",
 					"angular-animate/angular-animate.js",
-					"angular-ui-bootstrap/ui-bootstrap-tpls.js",
+					"angular-ui-bootstrap/dist/ui-bootstrap-tpls.js",
 					"angular-confirm/angular-confirm.js",
 					"angular-cookies/angular-cookies.js",
 					"angular-dateParser/dist/angular-dateparser.js",

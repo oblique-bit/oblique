@@ -9,7 +9,7 @@
 	 *
 	 * See: http://stackoverflow.com/questions/27705490/up-down-arrow-key-issue-with-typeahead-control-angular-bootstrap-ui
 	 */
-	.directive('typeahead', function () {
+	.directive('uib-typeahead', function () {
 		return {
 			restrict: 'A',
 			priority: 1000, // Let's ensure AngularUI Typeahead directive gets initialized first!
@@ -26,7 +26,7 @@
 				});
 			}
 		};
-	}).directive('typeaheadPopup', function () {
+	}).directive('uibTypeaheadPopup', function () {
 		return {
 			restrict: 'EA',
 			link: function (scope, element, attrs) {

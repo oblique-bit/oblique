@@ -6,7 +6,7 @@
 	 * https://angular-ui.github.io/bootstrap/#/datepicker
 	 */
 	angular.module('__MODULE__.oblique')
-		.directive('datePicker', function (datepickerPopupConfig) {
+		.directive('datePicker', function (uibDatepickerPopupConfig) {
 			return {
 				templateUrl: '../oblique/ui/date-picker/date-picker.tpl.html',
 				restrict: 'E',
@@ -26,7 +26,7 @@
 					showClearControl: '=?'
 				},
 				controller: function ($scope) {
-					$scope.config = angular.extend({}, datepickerPopupConfig, $scope.options || {});
+					$scope.config = angular.extend({}, uibDatepickerPopupConfig, $scope.options || {});
 					$scope.editable = angular.isDefined($scope.editable) ? $scope.editable : true;
 					$scope.showClearControl = angular.isDefined($scope.showClearControl) ? $scope.showClearControl : true;
 					$scope.opened = false;
@@ -70,7 +70,7 @@
 	 * See:
 	 *  - https://github.com/angular-ui/bootstrap/issues/4233
 	 */
-		.directive("datepickerPopup", function (dateFilter, $dateParser, datepickerPopupConfig) {
+		.directive("datepickerPopup", function (dateFilter, $dateParser, uibDatepickerPopupConfig) {
 			return {
 				restrict: "A",
 				priority: 1000,
@@ -78,7 +78,7 @@
 				link: function (scope, element, attrs, params) {
 					var ngModel = params[0];
 					var datePicker = params[1];
-					var dateFormat = datePicker.format || datepickerPopupConfig.datepickerPopup;
+					var dateFormat = datePicker.format || uibDatepickerPopupConfig.datepickerPopup;
 					var originalValidator = ngModel.$validators.date;
 
 					ngModel.$validators.date = function (modelValue, viewValue) {
@@ -111,7 +111,7 @@
 					});
 
 					// Check for ISO model values:
-					if (datepickerPopupConfig.useIsoModel) {
+					if (uibDatepickerPopupConfig.useIsoModel) {
 						ngModel.$parsers.push(function (value) {
 							if (angular.isDate(value)) {
 								return dateFilter(value, 'yyyy-MM-dd');

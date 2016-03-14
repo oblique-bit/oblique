@@ -5,7 +5,7 @@
 	<div class="form-group form-group-lg">
 		<div class="input-group typeahead typeahead-scrollable">
 			<input ng-model="selection" type="text" class="form-control input-lg" placeholder="Search for countries"
-			       typeahead="country as country.name for country in countries | filter:$viewValue | limitTo:20"
+			       uib-typeahead="country as country.name for country in countries | filter:$viewValue | limitTo:20"
 			       typeahead-on-select="onSelect($item, $model, $label)"
 			       typeahead-focus-on-select="false"
 			       typeahead-fix />
