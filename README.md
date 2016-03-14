@@ -137,7 +137,3 @@ _Same as `serve-prod`, except that it starts watching for file changes._
 You can now check for updates and bump `package.json` dependencies accordingly:
 
 	npm-check-updates
-
-### Frontend (Bower) dependencies updates
-
-	bower list
