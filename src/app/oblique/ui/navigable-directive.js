@@ -3,7 +3,7 @@
 
     var module = angular.module('__MODULE__.oblique');
 
-    module.directive('navigable', function ($parse) {
+    module.directive('navigable', function ($parse, $timeout) {
         var arrows = {
             up: 38,
             down: 40
@@ -15,6 +15,7 @@
             //scope : {
             //    navigable: '=',
             //    navigableSelection: '=',
+            //    navigableActivate: '?&' // Should the current element be activated by default?
             //    navigableOnActivation: '?&' // Triggered when an element is activated
             //    navigableOnMove: '?&' // Triggered by holding CTRL + SHIFT + [UP, DOWN]
             //},
@@ -50,7 +51,7 @@
                     }
                 };
 
-                /* Public API binding ************************ */
+                /* Public API binding *************** */
                 scope.navigable = {
                     activate : function(target, combine, focus) {
                         scope.navigable.deactivate(scope.navigable.active());
@@ -127,8 +128,7 @@
                     }
                 };
 
-                /* Event binding ************************ */
-
+                /* Event binding ******************** */
                 element.keydown(function(event) {
                     var keyCode = event.keyCode;
                     if(keyCode === arrows.up || keyCode === arrows.down) {
@@ -189,6 +189,15 @@
                 element.on('select.navigable', function (event, combine) {
                     scope.navigable.select(element, combine);
                 });
+
+                /* Initialization ******************* */
+                if(attrs.navigableActivate && scope.$eval(attrs.navigableActivate)) {
+                    $timeout(function() {
+                        // Manually perform focus in order to activate the element and ensure it scrolls
+                        // into view (if contained within a scrollable parent):
+                        element.focus();
+                    });
+                }
             }
         };
 
