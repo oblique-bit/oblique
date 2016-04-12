@@ -23,6 +23,7 @@
     &.navigable-active,
     &.navigable-selected {
         &, > td {
+            .animatable(background-color);
             background-color: @brand-lighter;
         }
     }
@@ -42,6 +43,10 @@
 
     &.navigable-active {
         z-index: 1;
+    }
+
+    &.navigable-highlight {
+        .transition-duration(10.0s);
     }
 
     > td {

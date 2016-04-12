@@ -13,11 +13,12 @@
             restrict: 'A',
             // Do not request an isolated scope to avoid collisions with other directives!
             //scope : {
-            //    navigable: '=',
-            //    navigableSelection: '=',
-            //    navigableActivate: '?&' // Should the current element be activated by default?
-            //    navigableOnActivation: '?&' // Triggered when an element is activated
-            //    navigableOnMove: '?&' // Triggered by holding CTRL + SHIFT + [UP, DOWN]
+            //    navigable: '=', // Model
+            //    navigableSelection: '=', // Array containing selected elements
+            //    navigableActivate: '&?' // Should the current element be activated (focused) by default?
+            //    navigableHighlight: '&?' // Should the current element be visually highlighted by default?
+            //    navigableOnActivation: '&?' // Triggered when an element is activated
+            //    navigableOnMove: '&?' // Triggered by holding CTRL + SHIFT + [UP, DOWN]
             //},
             link: function (scope, element, attrs) {
 
@@ -81,7 +82,7 @@
                         selection.add();
                     },
                     unselect: function(target) {
-                        (target || element).removeClass('navigable-selected');
+                        (target || element).removeClass('navigable-selected navigable-highlight');
                         selection.remove();
                     },
                     move: function(direction, combine) {
@@ -191,6 +192,14 @@
                 });
 
                 /* Initialization ******************* */
+                if(attrs.navigableHighlight && scope.$eval(attrs.navigableHighlight)) {
+                    $timeout(function() {
+                        // Highlight element by selecting (with combination) it:
+                        scope.navigable.select(element, true);
+                        element.addClass('navigable-highlight');
+                    });
+                }
+
                 if(attrs.navigableActivate && scope.$eval(attrs.navigableActivate)) {
                     $timeout(function() {
                         // Manually perform focus in order to activate the element and ensure it scrolls
