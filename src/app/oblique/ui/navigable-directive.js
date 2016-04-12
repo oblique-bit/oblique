@@ -3,8 +3,7 @@
 
     var module = angular.module('__MODULE__.oblique');
 
-    module.directive('navigable', function () {
-
+    module.directive('navigable', function ($parse) {
         var arrows = {
             up: 38,
             down: 40
@@ -12,10 +11,11 @@
 
         return {
             restrict: 'A',
-            // TODO: refactor HTML markup (particularly <tr affair-report>) to avoid multiple isolated scopes
+            // Do not request an isolated scope to avoid collisions with other directives!
             //scope : {
             //    navigable: '=',
             //    navigableSelection: '=',
+            //    navigableOnActivation: '?&' // Triggered when an element is activated
             //    navigableOnMove: '?&' // Triggered by holding CTRL + SHIFT + [UP, DOWN]
             //},
             link: function (scope, element, attrs) {
@@ -24,12 +24,12 @@
                 var model = scope.$eval(attrs.navigable);
                 var navigableSelection = scope.$eval(attrs.navigableSelection);
                 scope.navigableSelection = angular.isArray(navigableSelection) ? navigableSelection : [];
+                var navigableOnActivation = $parse(attrs.navigableOnActivation) || angular.noop;
                 var navigableOnMove = scope.$eval(attrs.navigableOnMove) || angular.noop;
 
                 // Initialize elements:
                 element.addClass('navigable');
                 element.attr('tabindex', element.attr('tabindex') || 0); // Enables focus on current element.
-                var container = element.closest('.navigable-group, body');
 
                 /* Selection ************************ */
                 var selection = {
@@ -50,10 +50,6 @@
                     }
                 };
 
-                //scope.$parent.$watchCollection(attrs.navigableSelection, function() {
-                //    console.log(selection.contains(model));
-                //});
-
                 /* Public API binding ************************ */
                 scope.navigable = {
                     activate : function(target, combine, focus) {
@@ -65,6 +61,10 @@
                             //next.trigger('focus', [{navigable-focus: true}]); FIXME: uncomment and refactor when https://github.com/jquery/jquery/issues/2342
                             (target || element).data('navigable-focus', true).focus();
                         }
+
+                        scope.$apply(function() {
+                            navigableOnActivation(scope, model);
+                        });
                     },
                     deactivate: function(target) {
                         (target || element).removeClass('navigable-active');
@@ -113,13 +113,17 @@
                         slice.trigger('select.navigable', true);
                     },
                     active: function() {
-                        return container.find('.navigable-active');
+                        return scope.navigable.container().find('.navigable-active');
                     },
                     selected: function() {
-                        return container.find('.navigable-selected');
+                        return scope.navigable.container().find('.navigable-selected');
                     },
                     items: function() {
-                        return container.find('.navigable');
+                        return scope.navigable.container().find('.navigable');
+                    },
+                    container: function() {
+                        // Container is retrieved on-demand to ensure `element` has been already attached to DOM:
+                        return element.closest('.navigable-group, body');
                     }
                 };
 
@@ -165,6 +169,11 @@
                         } else {
                             scope.navigable.activate(element);
                         }
+                    } else {
+                        // Focus is on a child element of current item but let's ensure it gets activated:
+                        if (!element.hasClass('navigable-selected')) {
+                            scope.navigable.activate(element, event.ctrlKey);
+                        }
                     }
                 });
 
@@ -209,7 +218,7 @@
                 nodeName === "a" ?
                 element.href || isTabIndexNotNaN :
                     isTabIndexNotNaN) &&
-                // the element and all of its ancestors must be visible
+            // the element and all of its ancestors must be visible
             visible( element );
     }
 
