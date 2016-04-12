@@ -3,7 +3,7 @@
 	"use strict";
 
 	angular.module('__MODULE__.common')
-		.factory('AuthService', function ($http, $auth) {
+		.factory('AuthService', function ($http, $q, $auth) {
 			var service = {};
 
 			service.context = {
@@ -47,8 +47,13 @@
 
 			service.register = function (user) {
 				// TODO: replace with your own registration implementation here, if any!
-				return $auth.signup(user).then(function () {
-					return service.resolve(user);
+				return $auth.signup(user).then(function(response) {
+					if(response.data && response.data.token) {
+						$auth.setToken(response.data.token);
+						return service.resolve(user);
+					} else {
+						return $q.reject('No authentication token returned!');
+					}
 				});
 			};
 

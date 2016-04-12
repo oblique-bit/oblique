@@ -51,7 +51,7 @@
 		.config(function (CONFIG, $authProvider) {
 			$authProvider.baseUrl = CONFIG.api.url || CONFIG.api.schema + "://" + CONFIG.api.hostname + ':' + CONFIG.api.port + CONFIG.api.context;
 			$authProvider.signupUrl = '/auth/register';
-			$authProvider.signupRedirect = '/';
+			//$authProvider.signupRedirect = '/';
 			$authProvider.loginUrl = '/auth/login';
 			$authProvider.loginRedirect = '/';
 			$authProvider.logoutRedirect = '/';
