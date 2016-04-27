@@ -2,7 +2,7 @@
   "name": "oblique-reactive",
   "title": "ObliqueReactive",
   "description": "Reactive web template powered by ObliqueUI and AngularJS",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "private": true,
   "authors": [
     "Dario Poggiali <Dario.Poggiali@bit.admin.ch>",
@@ -17,15 +17,15 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "1.5.3",
-    "angular-animate": "1.5.3",
+    "angular": "1.5.5",
+    "angular-animate": "1.5.5",
     "angular-bootstrap": "https://github.com/angular-ui/bootstrap-bower.git#0.13.4",
-    "angular-confirm": "https://github.com/Schlogen/angular-confirm.git#1.1.0",
-    "angular-dateParser": "1.0.12",
-    "angular-dynamic-locale": "0.1.27",
+    "angular-confirm": "https://github.com/Schlogen/angular-confirm.git#1.2.3",
+    "angular-dateParser": "1.1.0",
+    "angular-dynamic-locale": "0.1.32",
     "angular-elastic": "https://github.com/jlebit/angular-elastic.git#master",
-    "angular-i18n": "1.5.3",
-    "angular-sanitize": "1.5.3",
+    "angular-i18n": "1.5.5",
+    "angular-sanitize": "1.5.5",
     "angular-translate": "2.11.0",
     "angular-translate-loader-static-files": "2.11.0",
     "angular-translate-storage-cookie": "2.11.0",
@@ -37,15 +37,15 @@
     "checklist-model": "0.9.0",
     "lodash": "3.10.1",
     "moment": "2.12.0",
-    "oblique-ui": "https://stash.eap.bit.admin.ch/scm/oui/oblique-ui.git#1.2.6",
+    "oblique-ui": "https://stash.eap.bit.admin.ch/scm/oui/oblique-ui.git#1.2.7",
     "satellizer": "0.14.0",
     "tv4": "1.2.7"
   },
   "devDependencies": {
-    "angular-mocks": "~1.5.3"
+    "angular-mocks": "~1.5.5"
   },
   "resolutions": {
-    "angular": "1.5.3",
+    "angular": "1.5.5",
     "lodash": "~3.10.1"
   }
 }
