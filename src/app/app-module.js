@@ -60,6 +60,10 @@
 		.config(function (CONFIG, $urlRouterProvider) {
 			$urlRouterProvider.otherwise('/' + CONFIG.defaults.state);
 		})
+		.config(function ($animateProvider) {
+			// Let ngAnimate know which elements to *not* handle (see https://github.com/angular/angular.js/issues/3613):
+			$animateProvider.classNameFilter(/^((?!(navigable)).)*$/);
+		})
 
 		// Optional configuration
 		// --------------------------------------------------------
