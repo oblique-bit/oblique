@@ -42,9 +42,9 @@
 	<li role="menuitem" ui-sref-active="active" ng-if="appController.isAuthenticated()">
 		<a href="" ui-sref="movies">\{{'states.movies.title' | translate}}</a>
 	</li>
-	<li role="menuitem" ui-sref-active="active" ng-if="appController.isAuthorized('admin')">
-		<a href="">\{{'states.admin.title' | translate}}</a>
-	</li>
+	<!--<li role="menuitem" ui-sref-active="active" ng-if="appController.isAuthorized('admin')">-->
+		<!--<a href="">\{{'states.admin.title' | translate}}</a>-->
+	<!--</li>-->
 	<li role="menuitem" ui-sref-active="active" ng-if="!appController.isAuthenticated()">
 		<a href="" ui-sref="auth">\{{'states.auth.title' | translate}}</a>
 	</li>
