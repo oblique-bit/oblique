@@ -13,7 +13,7 @@
 			};
 
 			$scope.onSelect = function ($item, $model, $label) {
-				console.log(arguments);
+				console.log("Country selected:", $label);
 			};
 		});
 }());
