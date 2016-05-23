@@ -138,8 +138,8 @@
 		"app": {
 			"api": {
 				"schema": "http",
-				"hostname": "localhost",
-				"port": 8080,
+				"hostname": "eui.bit.admin.ch",
+				"port": 3000,
 				"context": "/oblique-reactive/api"
 			}
 		}
