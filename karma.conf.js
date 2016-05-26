@@ -3,7 +3,7 @@ var _ = require('lodash');
 var grunt = require('grunt');
 
 // Require project configuration:
-var project = grunt.file.readJSON('project.json');
+var project = require('./project.conf.js');
 
 module.exports = function (config) {
 

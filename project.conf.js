@@ -1,4 +1,4 @@
-{
+module.exports = {
 	"common": {
 		"name": "common",
 		"build": {
@@ -9,7 +9,7 @@
 			"title": "ObliqueReactive",
 			"description": "Reactive front-end template for your business web application. Powered by ObliqueUI and AngularJS.",
 			"home": "#/home",
-			"locales": ["de", "fr", "it", "en"],
+			"locales": ["de", "fr", "it", "en"], // List of available locales
 			"defaults": {
 				"locale": "en",
 				"state": "home",
@@ -19,11 +19,16 @@
 				}
 			},
 			"api": {
-				"schema": "http",
-				"hostname": "localhost",
-				"port": 3000,
+				// Relative path prefix for API calls:
 				"context": "/api",
+
+				// For absolute API URL, comment or provide an empty string to disable:
+				"url": "http://localhost:3000",
+
+				// API endpoint for UI logging:
 				"logs": "/logs",
+
+				// Should credential be transmitted with requests:
 				"sendCredentials": false
 			}
 		},
@@ -81,8 +86,8 @@
 				"app/states/samples/datepicker/datepicker-sample-controller.js",
 				"app/states/samples/schema-validation/schema-validation-sample-module.js",
 				"app/states/samples/schema-validation/schema-validation-sample-controller.js",
-			  	"app/states/samples/multiselect/multiselect-sample-module.js",
-			  	"app/states/samples/multiselect/multiselect-sample-controller.js",
+				"app/states/samples/multiselect/multiselect-sample-module.js",
+				"app/states/samples/multiselect/multiselect-sample-controller.js",
 				"app/states/samples/navigable/navigable-sample-module.js",
 				"app/states/samples/navigable/navigable-sample-controller.js",
 				"app/states/samples/navigator/navigator-sample-module.js",
@@ -137,11 +142,12 @@
 		"name": "prod",
 		"app": {
 			"api": {
-				"schema": "http",
-				"hostname": "eui.bit.admin.ch",
-				"port": 3000,
-				"context": "/oblique-reactive/api"
+				// Relative path prefix for API calls:
+				"context": "/oblique-reactive/api",
+
+				// Disable absolute API URL:
+				"url": "" // "http://eui.bit.admin.ch:3000"
 			}
 		}
 	}
-}
+};

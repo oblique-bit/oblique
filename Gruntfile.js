@@ -2,7 +2,7 @@ module.exports = function (grunt) {
 	'use strict';
 
 	// Required project configuration:
-	var project = grunt.file.readJSON('project.json');
+	var project = require('./project.conf.js');
 
 	// Optional build configuration:
 	var paths = {
