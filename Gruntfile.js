@@ -2,7 +2,6 @@ module.exports = function (grunt) {
 	'use strict';
 
 	// Required project configuration:
-	//var project = grunt.file.readJSON('project.json');
 	var project = require('./project.conf.js');
 
 	// Optional build configuration:
@@ -20,232 +19,232 @@ module.exports = function (grunt) {
 	// Grunt init
 	grunt.initConfig({
 
-			// Metadata -----------------------------------------------------------------
+		// Metadata -----------------------------------------------------------------
 
-			// Package configuration
-			pkg: grunt.file.readJSON('package.json'),
+		// Package configuration
+		pkg: grunt.file.readJSON('package.json'),
 
-			// Make project paths available to grunt:
-			paths: paths,
+		// Make project paths available to grunt:
+		paths: paths,
 
-			// Tasks --------------------------------------------------------------------
+		// Tasks --------------------------------------------------------------------
 
-			///*
-			// * grunt-config
-			// *
-			// * https://github.com/almeidap/grunt-config
-			// *
-			// * Environment configuration
-			// */
-			//config: {
-			//
-			//	// Default & shared environment variables (may be overrided by other jobs through `options.variables`)
-			//	options: {
-			//		variables: {
-			//			env: project.common
-			//		}
-			//	},
-			//	dev: {
-			//		options: {
-			//			variables: {
-			//				env: project.dev
-			//			}
-			//		}
-			//	},
-			//	prod: {
-			//		options: {
-			//			variables: {
-			//				env: project.prod
-			//			}
-			//		}
-			//	}
-			//},
-			//
-			///*
-			// * grunt-contrib-clean
-			// *
-			// * https://github.com/gruntjs/grunt-contrib-clean
-			// *
-			// * Clean files and folders.
-			// */
-			//clean: {
-			//	options: {
-			//		force: true
-			//	},
-			//	build: ['<%= env.build.target %>'],
-			//	staging: ['<%= paths.staging %>']
-			//},
-			//
-			///*
-			// * grunt-contrib-jshint
-			// *
-			// * https://github.com/gruntjs/grunt-contrib-jshint
-			// *
-			// * Validate files with JSHint, a tool that helps to detect errors and potential problems in your JavaScript code.
-			// */
-			//jshint: {
-			//	src: ['Gruntfile.js', '<%= paths.src %>**/*.js'],
-			//	options: {
-			//		jshintrc: '.jshintrc'
-			//	}
-			//},
-			//
-			///*
-			// * grunt-jscs
-			// *
-			// * https://github.com/jscs-dev/grunt-jscs
-			// *
-			// * Grunt task for JSCS, a *code style* linter for programmatically enforcing your style guide.
-			// */
-			//jscs: {
-			//	src: ['Gruntfile.js', '<%= paths.src %>**/*.js'],
-			//	options: {
-			//		config: '.jscsrc'
-			//	}
-			//},
-			//
-			///*
-			// * grunt-contrib-copy
-			// *
-			// * https://github.com/gruntjs/grunt-contrib-copy
-			// *
-			// * Copy files and folders
-			// */
-			//copy: {
-			//	oblique: {
-			//		files: [{
-			//			expand: true,
-			//			cwd: 'vendor/oblique-ui/dist/',
-			//			src: '**/*',
-			//			dest: '<%= env.build.target %>vendor/oblique-ui/'
-			//		}]
-			//	},
-			//	app: {
-			//		files: [{
-			//			cwd: '<%= paths.app %>',
-			//			src: ['**/*.js', '**/*.json'],
-			//			dest: '<%= env.build.target %>app/',
-			//			expand: true
-			//		}]
-			//	},
-			//	assets: {
-			//		files: [{
-			//			cwd: '<%= paths.src %>',
-			//			src: ['images/**/*', 'js/**/*', 'fonts/**/*'],
-			//			dest: '<%= env.build.target %>',
-			//			expand: true
-			//		}]
-			//	},
-			//	'vendor-js': {
-			//		files: [{
-			//			cwd: '<%= paths.vendor %>',
-			//			src: '<%= env.resources.vendor.js %>',
-			//			dest: '<%= env.build.target %><%= paths.vendor %>',
-			//			expand: true
-			//		}]
-			//	},
-			//	'vendor-css': {
-			//		files: [{
-			//			cwd: '<%= paths.vendor %>',
-			//			src: '<%= env.resources.vendor.css %>',
-			//			dest: '<%= env.build.target %><%= paths.vendor %>',
-			//			expand: true
-			//		}]
-			//	},
-			//	'vendor-assets': {
-			//		files: [{
-			//			cwd: '<%= paths.vendor %>',
-			//			src: '<%= env.resources.vendor.assets %>',
-			//			dest: '<%= env.build.target %><%= paths.vendor %>',
-			//			expand: true,
-			//			flatten: false
-			//		}]
-			//	}
-			//},
+		///*
+		// * grunt-config
+		// *
+		// * https://github.com/almeidap/grunt-config
+		// *
+		// * Environment configuration
+		// */
+		//config: {
+		//
+		//	// Default & shared environment variables (may be overrided by other jobs through `options.variables`)
+		//	options: {
+		//		variables: {
+		//			env: project.common
+		//		}
+		//	},
+		//	dev: {
+		//		options: {
+		//			variables: {
+		//				env: project.dev
+		//			}
+		//		}
+		//	},
+		//	prod: {
+		//		options: {
+		//			variables: {
+		//				env: project.prod
+		//			}
+		//		}
+		//	}
+		//},
+		//
+		///*
+		// * grunt-contrib-clean
+		// *
+		// * https://github.com/gruntjs/grunt-contrib-clean
+		// *
+		// * Clean files and folders.
+		// */
+		//clean: {
+		//	options: {
+		//		force: true
+		//	},
+		//	build: ['<%= env.build.target %>'],
+		//	staging: ['<%= paths.staging %>']
+		//},
+		//
+		///*
+		// * grunt-contrib-jshint
+		// *
+		// * https://github.com/gruntjs/grunt-contrib-jshint
+		// *
+		// * Validate files with JSHint, a tool that helps to detect errors and potential problems in your JavaScript code.
+		// */
+		//jshint: {
+		//	src: ['Gruntfile.js', '<%= paths.src %>**/*.js'],
+		//	options: {
+		//		jshintrc: '.jshintrc'
+		//	}
+		//},
+		//
+		///*
+		// * grunt-jscs
+		// *
+		// * https://github.com/jscs-dev/grunt-jscs
+		// *
+		// * Grunt task for JSCS, a *code style* linter for programmatically enforcing your style guide.
+		// */
+		//jscs: {
+		//	src: ['Gruntfile.js', '<%= paths.src %>**/*.js'],
+		//	options: {
+		//		config: '.jscsrc'
+		//	}
+		//},
+		//
+		///*
+		// * grunt-contrib-copy
+		// *
+		// * https://github.com/gruntjs/grunt-contrib-copy
+		// *
+		// * Copy files and folders
+		// */
+		//copy: {
+		//	oblique: {
+		//		files: [{
+		//			expand: true,
+		//			cwd: 'vendor/oblique-ui/dist/',
+		//			src: '**/*',
+		//			dest: '<%= env.build.target %>vendor/oblique-ui/'
+		//		}]
+		//	},
+		//	app: {
+		//		files: [{
+		//			cwd: '<%= paths.app %>',
+		//			src: ['**/*.js', '**/*.json'],
+		//			dest: '<%= env.build.target %>app/',
+		//			expand: true
+		//		}]
+		//	},
+		//	assets: {
+		//		files: [{
+		//			cwd: '<%= paths.src %>',
+		//			src: ['images/**/*', 'js/**/*', 'fonts/**/*'],
+		//			dest: '<%= env.build.target %>',
+		//			expand: true
+		//		}]
+		//	},
+		//	'vendor-js': {
+		//		files: [{
+		//			cwd: '<%= paths.vendor %>',
+		//			src: '<%= env.resources.vendor.js %>',
+		//			dest: '<%= env.build.target %><%= paths.vendor %>',
+		//			expand: true
+		//		}]
+		//	},
+		//	'vendor-css': {
+		//		files: [{
+		//			cwd: '<%= paths.vendor %>',
+		//			src: '<%= env.resources.vendor.css %>',
+		//			dest: '<%= env.build.target %><%= paths.vendor %>',
+		//			expand: true
+		//		}]
+		//	},
+		//	'vendor-assets': {
+		//		files: [{
+		//			cwd: '<%= paths.vendor %>',
+		//			src: '<%= env.resources.vendor.assets %>',
+		//			dest: '<%= env.build.target %><%= paths.vendor %>',
+		//			expand: true,
+		//			flatten: false
+		//		}]
+		//	}
+		//},
 
-			/*
-			 * assemble
-			 *
-			 * https://github.com/assemble/assemble
-			 *
-			 * Static site generator
-			 */
-			assemble: {
-				options: {
-					flatten: false,
+		/*
+		 * assemble
+		 *
+		 * https://github.com/assemble/assemble
+		 *
+		 * Static site generator
+		 */
+		assemble: {
+			options: {
+				flatten: false,
 
-					assets: project.build.target,
-					env: project,
-					paths: paths,
+				assets: project.build.target,
+				env: project,
+				paths: paths,
 
-					data: [
-						'package.json'
-					],
-					layout: false, // Using `composable` layouts, see why here: https://github.com/assemble/assemble/issues/555
-					layoutdir: paths.vendor + 'oblique-ui/templates/layouts/',
-					partials: [
-						paths.vendor + 'oblique-ui/templates/**/*.hbs',
-						paths.partials + '**/*.hbs'
-					],
-					helpers: [
-						paths.vendor + 'oblique-ui/templates/helpers/**/*.js'
-					],
+				data: [
+					'package.json'
+				],
+				layout: false, // Using `composable` layouts, see why here: https://github.com/assemble/assemble/issues/555
+				layoutdir: paths.vendor + 'oblique-ui/templates/layouts/',
+				partials: [
+					paths.vendor + 'oblique-ui/templates/**/*.hbs',
+					paths.partials + '**/*.hbs'
+				],
+				helpers: [
+					paths.vendor + 'oblique-ui/templates/helpers/**/*.js'
+				],
 
-					// Layout placeholders override:
-					'html-attrs': 'ng-controller="AppController as appController"',
+				// Layout placeholders override:
+				'html-attrs': 'ng-controller="AppController as appController"',
 
-					// App-specific configuration used by ObliqueUI layouts:
-					app: {
-						name:               project.app.module,
-						title:              project.app.title,
-						description:        project.app.description,
-						lang:               project.app.defaults.locale,
-						home:               project.app.home,
-						organization: {
-							name:           'Federal Office of Information Technology, Systems and Telecommunication FOITT',
-							url:            'http://www.bit.admin.ch',
-							email:          'info@bit.admin.ch',
-							contact:        false
+				// App-specific configuration used by ObliqueUI layouts:
+				app: {
+					name:               project.app.module,
+					title:              project.app.title,
+					description:        project.app.description,
+					lang:               project.app.defaults.locale,
+					home:               project.app.home,
+					organization: {
+						name:           'Federal Office of Information Technology, Systems and Telecommunication FOITT',
+						url:            'http://www.bit.admin.ch',
+						email:          'info@bit.admin.ch',
+						contact:        false
+					},
+
+					// Available locales:
+					locales: project.app.locales,
+
+					// Theming:
+					theme: {
+						tooltips:       true,
+						application: {
+							fixed:      true
 						},
+						header: {
+							transitions:true
+							//variant:  "application-header-sm"
+						}
+					},
 
-						// Available locales:
-						locales: project.app.locales,
-
-						// Theming:
-						theme: {
-							tooltips:       true,
-							application: {
-								fixed:      true
-							},
-							header: {
-								transitions:true
-								//variant:  "application-header-sm"
-							}
-						},
-
-						// References:
-						pages: '',
-						vendor: {
-							path: paths.vendor,
-							obliqueui: {
-								name: 'oblique-ui',
-								title: 'ObliqueUI',
-								path: 'oblique-ui/'
-							}
+					// References:
+					pages: '',
+					vendor: {
+						path: paths.vendor,
+						obliqueui: {
+							name: 'oblique-ui',
+							title: 'ObliqueUI',
+							path: 'oblique-ui/'
 						}
 					}
-				},
-				pages: {
-					files: [
-						{
-							expand: true,
-							cwd: paths.pages,
-							src: '**/*.hbs',
-							dest: project.build.target
-						}
-					]
 				}
+			},
+			pages: {
+				files: [
+					{
+						expand: true,
+						cwd: paths.pages,
+						src: '**/*.hbs',
+						dest: project.build.target
+					}
+				]
 			}
+		}
 		//,
 
 		//	/*
@@ -582,8 +581,7 @@ module.exports = function (grunt) {
 		//		var args = grunt.task.current.args || [];
 		//		return args.length > 1 ? args[1] : "dev"; // Args extracted as <task>[:<target>[:<param>]*]
 		//	}
-		}
-	);
+	});
 
 	// Build dependencies -------------------------------------------------------
 	require('load-grunt-tasks')(grunt, {scope: "devDependencies"});
