@@ -119,7 +119,7 @@ gulp.task('clean-min', function () {
 
 //<editor-fold desc="Copy">
 /*
- * copy: copies required resources to ouput folder.
+ * copy: copies required resources to output folder.
  */
 gulp.task('copy', [
 	'copy-assets',
@@ -131,7 +131,7 @@ gulp.task('copy', [
 
 
 /*
- * copy-assets: copies application assets to ouput folder.
+ * copy-assets: copies application assets to output folder.
  *
  * Plugins: [NONE]
  */
@@ -147,7 +147,7 @@ gulp.task('copy-assets', function () {
 });
 
 /*
- * copy-vendor-js: copies required vendor scripts to ouput folder.
+ * copy-vendor-js: copies required vendor scripts to output folder.
  *
  * Plugins: [NONE]
  */
@@ -159,7 +159,7 @@ gulp.task('copy-vendor-js', function () {
 });
 
 /*
- * copy-vendor-css: copies required vendor styles to ouput folder.
+ * copy-vendor-css: copies required vendor styles to output folder.
  *
  * Plugins: [NONE]
  */
@@ -171,7 +171,7 @@ gulp.task('copy-vendor-css', function () {
 });
 
 /*
- * copy-app-json: copies application JSON resources to ouput folder.
+ * copy-app-json: copies application JSON resources to output folder.
  *
  * Plugins: [NONE]
  */
@@ -183,12 +183,12 @@ gulp.task('copy-app-json', function () {
 });
 
 /*
- * copy-oblique: copies ObliqueUI distribution to ouput folder.
+ * copy-oblique: copies ObliqueUI distribution to output folder.
  *
  * Plugins: [NONE]
  */
 gulp.task('copy-oblique', function () {
-	var path = paths.vendor + 'oblique-ui/dist/'
+	var path = paths.vendor + 'oblique-ui/dist/';
 	return gulp.src(
 		['**/*'],
 		{cwd: path, base: path}
@@ -384,7 +384,7 @@ gulp.task('watch', function () {
 	gulp.watch('**/*.tpl.html', {cwd: paths.src}, ['build-templates']);
 	gulp.watch([paths.pages + '**/*.hbs', paths.partials + '**/*.hbs'], ['build-html']);
 
-	// FIXME: LiveReload may be trigered multiple times (https://github.com/AveVlad/gulp-connect/issues/123)
+	// FIXME: LiveReload may be triggered multiple times (https://github.com/AveVlad/gulp-connect/issues/123)
 	return watch(project.build.target + '**/*')
 		.pipe(connect.reload())
 });
