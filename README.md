@@ -84,7 +84,7 @@ Open an **elevated** command prompt and run the following command:
 
 3. Customize:
 
-> Open [project.conf.js](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/project.conf.js) and adapt this configuration to fit your project requirements.
+> Open [project.conf.ts](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/project.conf.ts) and adapt this configuration to fit your project requirements.
 
 ### Troubleshooting dependencies
 
@@ -126,6 +126,41 @@ Should your backend API not be ready to consume, you can test the client applica
 	gulp run-prod
 
 _Same as `run-dev`, except that it will serve optimized resources._
+
+## <a name="managing-dependencies"></a> Managing dependencies
+
+If you ever need to add your own dependencies, here's how to do it.
+
+### npm (Build) dependencies
+
+To install a new npm dependency, you can simply type
+
+	npm i <dependency> -D
+
+into your command line. But before you do so, make sure you're in your project's root folder, where [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-reactive/browse/package.json) is.
+After everything is done, you should see your new dependency in [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-ui/browse/package.json).
+
+If you need to install a global dependency, such as bower, switch the *-D* to a *-g* in your command. This would look something like this:
+
+	npm i <dependency> -g
+
+Installing a global npm dependency makes it accessible from every command line, independent of your console's location. Local dependencies are only accessible inside a project. Most of the time it isn't neccessary for you to install global npm packages.
+
+You can search through npm packages over at [npmjs.com](https://www.npmjs.com/).
+
+### Transpiling (TypeScript) dependencies
+
+If you want to use a framework that adds new syntax to regular JavaScript, you'll probably need to give TypeScript, our JavaScript transpiler, hints as to what to do with the new expressions. This is what *typings* is for.
+
+First, you'll need to search for your soon-to-be-integrated framework in the typings repository. We'll do it directly in the console via:
+
+	typings search <dependency>
+
+Most of the time, this will give you more than one result. So keep the exact name of your desired dependency in mind and type:
+
+	typings i dt~<dependency> -SG
+
+Doing this, typings will download all the needed typing files into your project and reference them in [typings.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-ui/browse/typings.json) so that the next developer can simply run *typings install* (as we do) and doesn't need to bother. Quite neat, huh?
 
 ## Checking for updates
 

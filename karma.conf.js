@@ -2,7 +2,7 @@
 var _ = require('lodash');
 
 // Project configuration:
-var project = require('./project.conf.js');
+var project = require('./project.conf.ts');
 
 module.exports = function (config) {
 

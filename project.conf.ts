@@ -1,43 +1,73 @@
 module.exports = {
-	"build": {
-		"target": "target/"
+	build: {
+		target: "target/"
 	},
-	"app": {
-		"module": "oblique",
-		"title": "ObliqueReactive",
-		"description": "Reactive front-end template for your business web application. Powered by ObliqueUI and AngularJS.",
-		"home": "#/home",
-		"locales": ["de", "fr", "it", "en"], // List of available locales
-		"defaults": {
-			"locale": "en",
-			"state": "home",
-			"layout": "default",
-			"http": {
-				"timeout": 10000
+	app: {
+		version:        "TODO",
+		name:           "oblique",
+		title:          "ObliqueReactive",
+		description:    "Reactive front-end template for your business web application. Powered by ObliqueUI and AngularJS.",
+		organization: {
+			name:       'Federal Office of Information Technology, Systems and Telecommunication FOITT',
+			url:        'http://www.bit.admin.ch',
+			email:      'info@bit.admin.ch',
+			contact:    false
+		},
+		home:           "#/home",
+		locales:        ["de", "fr", "it", "en"], // List of available locales
+		defaults: {
+			locale:     "en",
+			state:      "home",
+			layout:     "default",
+			http: {
+				timeout:10000
 			}
 		},
-		"api": {
+		api: {
 			// Relative path prefix for API calls:
-			"context": "/api",
+			context: "/api",
 
 			// For absolute API URL, comment or provide an empty string to disable:
-			"url": "http://localhost:3000",
+			url: "http://localhost:3000",
 
 			// API endpoint for UI logging:
-			"logs": "/logs",
+			logs: "/logs",
 
 			// Should credential be transmitted with requests:
-			"sendCredentials": false
+			sendCredentials: false
 		},
 
-		"web": {
-			"hostname": "localhost",
-			"port": 9000
+		web: {
+			hostname: "localhost",
+			port: 9000
+		},
+
+		// Theming:
+		theme: {
+			tooltips:        true,
+			application: {
+				fixed:       false
+			},
+			header: {
+				transitions: true
+				//variant:   'application-header-sm'
+			}
+		},
+
+		// References:
+		pages: '',
+		vendor: {
+			path: 'vendor/',
+			obliqueui: {
+				name: 'oblique-ui',
+				title: 'ObliqueUI',
+				path: 'oblique-ui/'
+			}
 		}
 	},
-	"resources": {
-		"assets": ['images/**/*', 'js/**/*', 'fonts/**/*'],
-		"app": [
+	resources: {
+		assets: ['images/**/*', 'js/**/*', 'fonts/**/*'],
+		app: [
 			"app/app-config.js",
 			"app/app-module.js",
 			"app/app-controller.js",
@@ -101,8 +131,8 @@ module.exports = {
 			"app/states/samples/ui-scroll/ui-scroll-sample-module.js",
 			"app/states/samples/ui-scroll/ui-scroll-sample-controller.js"
 		],
-		"vendor": {
-			"js": [
+		vendor: {
+			js: [
 				"moment/moment.js",
 				"lodash/lodash.js",
 				"angular/angular.js",
@@ -131,11 +161,11 @@ module.exports = {
 				"tv4/lang/de.js",
 				"tv4/lang/fr.js"
 			],
-			"css": [
+			css: [
 				"angular/angular-csp.css",
 				"animate.css/animate.css"
 			],
-			"assets": []
+			assets: []
 		}
 	}
 };

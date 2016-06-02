@@ -4,14 +4,14 @@
 	</div>
 </div>
 
-<!-- build:jsvendors {{../assets}}min/vendors.min.js -->
+<!-- build:jsvendors min/vendors.min.js -->
 {{#each env.resources.vendor.js}}
-	<script src="{{../assets}}{{../paths.vendor}}{{this}}"></script>
+	<script src="{{../paths.vendor}}{{this}}"></script>
 {{/each}}
 <!-- endbuild -->
 
-<!-- build:jsapp {{../assets}}min/app.min.js -->
+<!-- build:jsapp min/app.min.js -->
 {{#each env.resources.app}}
-	<script src="{{../assets}}{{this}}"></script>
+	<script src="{{this}}"></script>
 {{/each}}
 <!-- endbuild -->

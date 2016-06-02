@@ -9,6 +9,12 @@
     "name": "Federal Office of Information Technology, Systems and Telecommunication FOITT",
     "url": "http://www.bit.admin.ch/"
   },
+  "homepage": "http://eui.bit.admin.ch/oblique-reactive/",
+  "author": {
+    "name": "Pedro De Almeida",
+    "email": "Pedro.DeAlmeida@bit.admin.ch"
+  },
+  "bugs": "https://jira.eap.bit.admin.ch/browse/OUI/",
   "repository": {
     "type": "git",
     "url": "http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive.git"
@@ -24,6 +30,7 @@
     "gulp-cssnano": "2.1.2",
     "gulp-debug": "2.1.2",
     "gulp-declare": "0.3.0",
+    "gulp-hb": "^5.1.0",
     "gulp-htmlmin": "2.0.0",
     "gulp-jscs": "3.0.2",
     "gulp-jscs-stylish": "1.4.0",
@@ -59,9 +66,14 @@
     "karma-story-reporter": "0.3.1",
     "phantomjs-prebuilt": "2.1.7",
 
-    "lodash": "3.10.1",
+    "handlebars-helpers": "^0.6.1",
+    "lodash": "4.13.1",
     "moment": "2.13.0",
     "del": "2.2.0",
+    "ts-node": "^0.7.3",
+    "typedoc": "^0.3.12",
+    "typescript": "~1.8.0",
+    "typings": "^1.0.4",
 
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "1.15.1",
@@ -73,15 +85,12 @@
     "mongoose": "4.4.19",
     "request": "2.72.0",
 
-    "run-sequence": "1.2.1",
-
-    "load-grunt-tasks": "3.5.0",
-    "gulp-grunt": "0.5.3",
-    "grunt": "1.0.1",
-    "grunt-assemble": "0.4.0"
+    "run-sequence": "1.2.1"
   },
   "scripts": {
-    "prestart": "npm install && bower install",
-    "start": "gulp"
+    "postinstall": "typings install && bower install && gulp",
+    "start": "gulp dev",
+    "gulp": "gulp",
+    "release": "gulp release"
   }
 }

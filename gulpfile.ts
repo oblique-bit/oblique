@@ -21,6 +21,7 @@ var del = require('del'),
 	ngHtml2js = require('gulp-ng-html2js'),
 	nodemon = require('gulp-nodemon'),
 	plumber = require('gulp-plumber'),
+	rename = require('gulp-rename'),
 	replace = require('gulp-replace'),
 	rev = require('gulp-rev'),
 	stylish = require('gulp-jscs-stylish'),
@@ -28,6 +29,9 @@ var del = require('del'),
 	usemin = require('gulp-usemin'),
 	watch = require('gulp-watch'),
 	wrap = require('gulp-wrap'),
+
+	// ObliqueUI custom tasks:
+	obliqueHtml = require('./vendor/oblique-ui/tasks/oblique-html'),
 
 	// Test:
 	karmaServer = require('karma').Server,
@@ -37,7 +41,7 @@ var del = require('del'),
 //</editor-fold>
 
 //<editor-fold desc="Project configuration">
-var project = require('./project.conf.js'),
+var project = require('./project.conf.ts'),
 	paths = {
 		src: 'src/',
 		app: 'src/app/',
@@ -98,7 +102,7 @@ gulp.task('build-prod', function (done) {
  */
 gulp.task('clean', function () {
 	return del(
-		[project.build.target + '/**', paths.staging + '/**'],
+		[project.build.target + '/**'],
 		{force: false}
 	);
 });
@@ -243,7 +247,7 @@ gulp.task('build-scripts', function () {
 		.pipe(jscs())
 		.pipe(stylish.combineWithHintResults())
 		.pipe(jshint.reporter('jshint-stylish'))
-		.pipe(replace("__MODULE__", project.app.module))
+		.pipe(replace("__MODULE__", project.app.name))
 		.pipe(replace("'__CONFIG__'", JSON.stringify(project.app)))
 		.pipe(gulp.dest(project.build.target + 'app/'));
 });
@@ -257,7 +261,7 @@ gulp.task('build-scripts', function () {
  *  - `concat`: https://github.com/wearefractal/gulp-concat
  */
 gulp.task('build-templates', function () {
-	var moduleName = project.app.module + '.app-templates';
+	var moduleName = project.app.name + '.app-templates';
 	var sources = paths.src + '**/*.tpl.html';
 	return gulp.src(sources)
 		.pipe(htmlmin({collapseWhitespace: true}))
@@ -274,16 +278,30 @@ gulp.task('build-templates', function () {
 /*
  * build-html: composes HTML pages from Handlebars resources
  *
- * NOTE: legacy Assemble support through Grunt via `gulp-grunt`!
- * NOTE: imported Grunt tasks are prefixed with 'grunt-'!
- * TODO: refactor when HTML composition has been migrated to new technology [TBD]
- *
  * Plugins:
- *  - `gulp-grunt`: https://github.com/gratimax/gulp-grunt
- *  - `grunt-assemble`: https://github.com/assemble/grunt-assemble
+ *  - `oblique-html`: oblique-ui/tasks/oblique-html
  */
-require('gulp-grunt')(gulp, {verbose: false});
-gulp.task('build-html', ['grunt-assemble']);
+gulp.task('build-html', () => {
+	return gulp
+		.src(paths.pages + 'index.hbs')
+		.pipe(obliqueHtml({
+			data: {
+				paths: paths,
+
+				// ObliqueUI-specific:
+				app: project.app,
+				env: project, // TODO refactor this
+
+				// Layout placeholders override:
+				'html-attrs': 'ng-controller="AppController as appController"'
+			},
+			partials: [
+				paths.partials + '**/*.hbs',
+			]
+		}))
+		.pipe(rename({extname: '.html'}))
+		.pipe(gulp.dest(project.build.target));
+});
 //</editor-fold>
 
 //<editor-fold desc="Optimize">
