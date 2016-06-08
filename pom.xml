@@ -1,0 +1,126 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ch.admin.bit.oblique</groupId>
+	<artifactId>obliquereactive</artifactId>
+	<version>1.2.8-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>ObliqueReactive</name>
+	<description>Reactive front-end template for your business web application.</description>
+	<organization>
+		<name>Federal Office of Information Technology, Systems and Telecommunication FOITT</name>
+		<url>www.bit.admin.ch</url>
+	</organization>
+	<inceptionYear>2016</inceptionYear>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<build-number>${BUILD_NUMBER}</build-number>
+		<timestamp>${maven.build.timestamp}</timestamp>
+		<maven.build.timestamp.format>dd.MM.yyyy HH:mm</maven.build.timestamp.format>
+	</properties>
+
+	<scm>
+		<connection>scm:git:https://stash.eap.bit.admin.ch/scm/oui/oblique-reactive.git</connection>
+		<developerConnection>scm:git:https://stash.eap.bit.admin.ch/scm/oui/oblique-reactive.git</developerConnection>
+		<url>http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive.git</url>
+		<tag>HEAD</tag>
+	</scm>
+
+	<!-- The Developers -->
+	<developers>
+		<developer>
+			<name>Pedro De Almeida</name>
+			<email>pedro.dealmeida@bit.admin.ch</email>
+			<organization>Federal Office of Information Technology, Systems and Telecommunication FOITT</organization>
+			<organizationUrl>www.bit.admin.ch</organizationUrl>
+			<roles>
+				<role>Architect</role>
+				<role>Developer</role>
+			</roles>
+		</developer>
+		<developer>
+			<name>Dario Poggiali</name>
+			<email>dario.poggiali@bit.admin.ch</email>
+			<organization>Federal Office of Information Technology, Systems and Telecommunication FOITT</organization>
+			<organizationUrl>www.bit.admin.ch</organizationUrl>
+			<roles>
+				<role>Developer</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<!-- Contributors -->
+	<contributors>
+		<contributor>
+			<name>Graciela Schütz</name>
+			<email>graciela.schuetz@bit.admin.ch</email>
+			<organization>Federal Office of Information Technology, Systems and Telecommunication FOITT</organization>
+			<organizationUrl>www.bit.admin.ch</organizationUrl>
+			<roles>
+				<role>Product Owner</role>
+			</roles>
+		</contributor>
+	</contributors>
+
+	<dependencies>
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>npm</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>npm</executable>
+                            <arguments>
+                                <argument>install</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>build-prod</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>grunt</executable>
+                            <arguments>
+                                <argument>build-prod</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+	<distributionManagement>
+		<repository>
+			<id>${releaseRepositoryId}</id>
+			<name>${releaseRepositoryName}</name>
+			<url>${releaseRepositoryUrl}</url>
+		</repository>
+		<snapshotRepository>
+			<id>${snapshotRepositoryId}</id>
+			<name>${snapshotRepositoryName}</name>
+			<url>${snapshotRepositoryUrl}</url>
+		</snapshotRepository>
+     </distributionManagement>
+</project>
