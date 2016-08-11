@@ -6,7 +6,7 @@
 			</div>
 			<div class="col-md-6">
 				<div class="input-group">
-					<input ng-model="query" type="text" class="form-control" placeholder="Search for movies">
+					<input ng-model="ctrl.query" type="text" class="form-control" placeholder="Search for movies">
 					<span class="input-group-btn">
 						<button class="btn btn-default btn-primary" type="submit">
 							<span class="fa fa-search"></span>
@@ -25,7 +25,7 @@
 		</div>
 	</header>
 
-	<div class="callout callout-info" ng-repeat="movie in movies | filter:query">
+	<div class="callout callout-info" ng-repeat="movie in ctrl.movies | filter:ctrl.query">
 		<div class="row">
 			<div class="col-xs-8 col-md-10">
 				<h2>{{movie.title}}</h2>

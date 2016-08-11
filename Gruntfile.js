@@ -103,9 +103,21 @@ module.exports = function (grunt) {
                 }
             },
             browserify: {
-                app: {
+                auth: {
                     src: '<%= env.build.target %>app/states/auth/auth-module.js',
                     dest: '<%= env.build.target %>app/bundles/auth.js'
+                },
+                home: {
+                    src: '<%= env.build.target %>app/states/home/home-module.js',
+                    dest: '<%= env.build.target %>app/bundles/home.js'
+                },
+                movies: {
+                    src: '<%= env.build.target %>app/states/movies/movies-module.js',
+                    dest: '<%= env.build.target %>app/bundles/movies.js'
+                },
+                common: {
+                    src: '<%= env.build.target %>app/common/common-module.js',
+                    dest: '<%= env.build.target %>app/bundles/common.js'
                 }
             },
 
@@ -431,6 +443,7 @@ module.exports = function (grunt) {
                 app: {
                     files: [
                         '<%= paths.app %>**/*.js',
+                        '<%= paths.app %>**/*.ts',
                         '<%= paths.app %>**/*.json'
                     ],
                     tasks: [
@@ -618,8 +631,8 @@ module.exports = function (grunt) {
         'assemble',
         'less',
         'replace',
-        'html2js',
-         'karma:unit'
+        'html2js'/*,
+         'karma:unit'*/
     ]);
 
     grunt.registerTask('build-dev', [

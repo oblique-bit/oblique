@@ -1,3 +1,5 @@
+import {AuthService} from '../../common/auth/auth-service';
+
 export class AuthController {
 
     status = {
@@ -10,8 +12,9 @@ export class AuthController {
         password: '12345678'
     };
 
-    constructor(private $state,
-                private AuthService,
+    /*@ngInject*/
+    constructor(private $state: ng.ui.IStateService,
+                private authService: AuthService,
                 private NotificationService) {
         //
     }
@@ -21,7 +24,7 @@ export class AuthController {
     login() {
         this.status.authenticating = true;
         this.NotificationService.clear();
-        this.AuthService.login(this.user).then(
+        this.authService.login(this.user).then(
             (user) => {
                 this.$state.go('home').then(() => {
                     this.NotificationService.success('states.auth.login.success', `Welcome, ${user.firstname}!`);
@@ -38,7 +41,7 @@ export class AuthController {
 
     logout() {
         this.NotificationService.clear();
-        this.AuthService.logout().then(() => {
+        this.authService.logout().then(() => {
             this.NotificationService.success('states.auth.logout.success');
             this.$state.go('home');
         }, (error) => {
@@ -51,7 +54,7 @@ export class AuthController {
     register() {
         this.status.registering = true;
         this.NotificationService.clear();
-        this.AuthService.register(this.user).then(() => {
+        this.authService.register(this.user).then(() => {
             this.NotificationService.success('states.auth.register.success');
             this.$state.go('home');
         }, (error) => {

@@ -3,12 +3,12 @@
 	"use strict";
 
 	angular.module('__MODULE__')
-		.controller('AppController', function (CONFIG, $scope, $rootScope, $state, $translate, $sce, $log, tmhDynamicLocale, AuthService, LoadingService, NotificationService) {
+		.controller('AppController', function (CONFIG, $scope, $rootScope, $state, $translate, $sce, $log, tmhDynamicLocale, authService, LoadingService, NotificationService) {
 			var $this = this;
 			var LOG = $log.getInstance('AppController');
 
 			// Global properties:
-			$this.context = AuthService.context;
+			$this.context = authService.context;
 			$this.spinner = LoadingService.loading;
 			$this.title = CONFIG.title;
 			$this.page = {
@@ -24,9 +24,9 @@
 			};
 
 			// Global actions:
-			$this.isAuthenticated = AuthService.isAuthenticated;
-			$this.isAuthorized = AuthService.isAuthorized;
-			$this.logout = AuthService.logout;
+			$this.isAuthenticated = function () { return authService.isAuthenticated()};
+			$this.isAuthorized = function () { return authService.isAuthorized()};
+			$this.logout = function () { return authService.logout()};
 
 			// Global events handling:
 			$rootScope.$on('$httpInterceptorError', function (event, response) {
@@ -73,6 +73,6 @@
 
 			// Try to resolve & authenticate user, if any:
 			// FIXME: this should be resolved in another way, cf: https://github.com/angular/angular.js/issues/5854
-			AuthService.resolve();
+			authService.resolve();
 		});
 }());

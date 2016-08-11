@@ -34,16 +34,16 @@ module.exports = {
 		},
 		"resources": {
 			"bundles": [
-				"app/bundles/auth.js"
+				"app/bundles/auth.js",
+				"app/bundles/home.js",
+				"app/bundles/movies.js",
+				"app/bundles/common.js"
 			],
 			"app": [
 				"app/app-config.js",
 				"app/app-module.js",
 				"app/app-controller.js",
 				"app/app-templates.js",
-
-				"app/common/common-module.js",
-				"app/common/auth/auth-service.js",
 
 				"app/oblique/oblique-module.js",
 
@@ -76,12 +76,6 @@ module.exports = {
 				"app/oblique/validation/schema-validate-directive.js",
 				"app/oblique/validation/schema-validator-service.js",
 
-				"app/states/home/home-module.js",
-				"app/states/home/home-controller.js",
-				"app/states/movies/movies-module.js",
-				"app/states/movies/movie-resource.js",
-				"app/states/movies/movie-service.js",
-				"app/states/movies/movies-controller.js",
 				"app/states/samples/samples-module.js",
 				"app/states/samples/datepicker/datepicker-sample-module.js",
 				"app/states/samples/datepicker/datepicker-sample-controller.js",

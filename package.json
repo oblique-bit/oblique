@@ -51,6 +51,7 @@
     "fs-utils": "0.7.0",
     "grunt": "1.0.1",
     "grunt-autoprefixer": "3.0.4",
+    "grunt-browserify": "^5.0.0",
     "grunt-bump": "0.8.0",
     "grunt-cli": "1.2.0",
     "grunt-config": "git+https://github.com/almeidap/grunt-config.git",

@@ -4,11 +4,11 @@ export const auth = 'auth';
 
 angular
     .module('__MODULE__.auth', ['ui.router'])
-    .config(($stateProvider) => {
+    .config(($stateProvider: ng.ui.IStateProvider) => {
         $stateProvider.state('auth', {
             url: '/auth',
             templateUrl: 'auth/auth.tpl.html',
-            controller: 'AuthController',
+            controller: 'authController',
             controllerAs: 'ctrl',
             data: {
                 layout: {
@@ -17,5 +17,5 @@ angular
             }
         });
     })
-    .controller('AuthController',AuthController);
+    .controller('authController',AuthController);
 

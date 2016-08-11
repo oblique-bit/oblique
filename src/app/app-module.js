@@ -99,13 +99,16 @@
 			angular.bootstrap(document, ['__MODULE__']);
 		});
 	} else {
-		System.config({
+		SystemJS.config({
 			baseURL: './',
 			defaultJSExtensions: true
 		});
 
 		Promise.all([
-			System.import('app/states/auth/auth-module'),
+			SystemJS.import('app/states/auth/auth-module'),
+			SystemJS.import('app/states/home/home-module'),
+			SystemJS.import('app/states/movies/movies-module'),
+			SystemJS.import('app/common/common-module')
 		]).then(function () {
 			angular.bootstrap(document, ['__MODULE__']);
 		});
