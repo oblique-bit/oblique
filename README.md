@@ -1,6 +1,6 @@
 # [ObliqueReactive](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/)
 
-Reactive web template powered by ObliqueUI and AngularJS. ObliqueReactive uses [Grunt](http://gruntjs.com/), [Bower](http://bower.io/), [Less](http://lesscss.org/) and [Assemble](http://assemble.io/) to fetch dependencies, compile & build assets and compose the pages.
+Reactive web template powered by ObliqueUI and AngularJS. ObliqueReactive uses [Grunt](http://gruntjs.com/), [npm](https://www.npmjs.com/), [Less](http://lesscss.org/) and [Assemble](http://assemble.io/) to fetch dependencies, compile & build assets and compose the pages.
 
 This template has been inspired by the following guidelines:
 <https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/mobilebasic?pli=1>
@@ -43,6 +43,7 @@ If you are using Git for the first time, configure your user information as well
 
 	HTTP_PROXY <http-proxy-url>
 	HTTPS_PROXY <https-proxy-url>
+	NO_PROXY follow [these instructions](https://confluence.eap.bit.admin.ch/display/JEAP/Projekt+Setup#ProjektSetup-Umgebungsvariablen)
 
 ##### GIT Config (.gitconfig)
 
@@ -50,43 +51,22 @@ If you are using Git for the first time, configure your user information as well
 	git config --global http."https://stash.eap.bit.admin.ch/".proxy ""
 	git config --global http.postBuffer 524288000
 	git config --global http.proxy <http-proxy-url>
-
-##### NPM Config
-
-> *Note*: proxy URL must start with `http[s]://`!
-
-	npm config set proxy <http-proxy-url>
-	npm config set https-proxy <https-proxy-url>
-
-> *Warning*: if you receive a `Error: ENOENT, stat 'C:\Users\<user>\AppData\Roaming\npm'` exception, you will have to manually create the `npm` folder under the `Roaming` folder.
-
-##### Bower Config (Windows only)
-
-> *Important: users experiencing proxy errors*
->
-> Since version 1.3.8, Bower requires that your `.gitconfig` file is located under the `%USERPROFILE%` directory.
->
-> If your `HOME` environment variable is **not** pointing to your `%USERPROFILE%` directory, then you will need to create a symbolic link inside `%USERPROFILE%` pointing to your `.gitconfig` on `%HOME%`.
-
-Open an **elevated** command prompt and run the following command:
-
-	mklink %USERPROFILE%\.gitconfig %HOME%\.gitconfig
+	
+##### <a name="npm-config"></a> NPM config
+    
+    Follow the instructions described in the [JEAP Project Setup page](https://confluence.eap.bit.admin.ch/display/JEAP/Projekt+Setup#ProjektSetup-InstallationundKonfigurationvonNodeJsundNPM)
 
 ### First-time setup
 
 1. Install required `npm` libraries:
 
-		npm install -g grunt-cli bower
+		npm install -g grunt-cli
 
-2. Install *development* dependencies (`npm` will look at [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/package.json) and automatically install the necessary build dependencies listed there):
+2. Install *development* and *frontend* dependencies (`npm` will look at [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/package.json) and automatically install the necessary dependencies listed there):
 
 		npm install
 
-3. Install *frontend* dependencies (`bower` will look at [bower.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/bower.json) and automatically install the necessary frontend dependencies listed there):
-
-		bower install
-
-4. Customize:
+3. Customize:
 
 > Open [project.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/project.json) and adapt this configuration to fit your project requirements.
 
@@ -145,7 +125,3 @@ _Same as `serve-prod`, except that it starts watching for file changes._
 You can now check for updates and bump `package.json` dependencies accordingly:
 
 	npm-check-updates
-
-### Frontend (Bower) dependencies updates
-
-	bower list

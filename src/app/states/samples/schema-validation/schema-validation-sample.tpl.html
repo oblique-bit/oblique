@@ -83,8 +83,8 @@
 	<div class="form-group" has-error>
 		<label class="col-sm-4 control-label">Time</label>
 		<div class="col-sm-6">
-			<timepicker name="time" class="timepicker timepicker-condensed"
-			            ng-model="data.time" show-meridian="false" minute-step="15"></timepicker>
+			<uib-timepicker name="time" class="timepicker timepicker-condensed"
+			            ng-model="data.time" show-meridian="false" minute-step="15"></uib-timepicker>
 			<span class="help-block" ng-show="validationForm.time.$invalid">{{validationForm.time.$errorMessage}}</span>
 		</div>
 		<div class="col-sm-2">
