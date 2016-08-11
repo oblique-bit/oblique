@@ -94,7 +94,20 @@
 		});
 
 	// Bootstrap angular:
-	angular.element(document).ready(function () {
-		angular.bootstrap(document, ['__MODULE__']);
-	});
+	if (!window['__MODULE__'].CONFIG.systemjs) {
+		angular.element(document).ready(function () {
+			angular.bootstrap(document, ['__MODULE__']);
+		});
+	} else {
+		System.config({
+			baseURL: './',
+			defaultJSExtensions: true
+		});
+
+		Promise.all([
+			System.import('app/states/auth/auth-module'),
+		]).then(function () {
+			angular.bootstrap(document, ['__MODULE__']);
+		});
+	}
 }());

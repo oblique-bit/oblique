@@ -33,6 +33,9 @@ module.exports = {
 			}
 		},
 		"resources": {
+			"bundles": [
+				"app/bundles/auth.js"
+			],
 			"app": [
 				"app/app-config.js",
 				"app/app-module.js",
@@ -73,8 +76,6 @@ module.exports = {
 				"app/oblique/validation/schema-validate-directive.js",
 				"app/oblique/validation/schema-validator-service.js",
 
-				"app/states/auth/auth-module.js",
-				"app/states/auth/auth-controller.js",
 				"app/states/home/home-module.js",
 				"app/states/home/home-controller.js",
 				"app/states/movies/movies-module.js",
@@ -136,11 +137,21 @@ module.exports = {
 		}
 	},
 	"dev": {
-		"name": "dev"
+		"name": "dev",
+		"app": {
+			"systemjs": true
+		}
+	},
+	"prod-local": {
+		"name": "dev",
+		"app": {
+			"systemjs": true
+		}
 	},
 	"prod": {
 		"name": "prod",
 		"app": {
+			"systemjs": false,
 			"api": {
 				// Relative path prefix for API calls:
 				"context": "/oblique-reactive/api",

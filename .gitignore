@@ -28,3 +28,4 @@ nbproject
 node_modules
 target
 /vendor
+typings

@@ -1,7 +1,7 @@
-@vendor-path: '../node_modules/';
-
-@import '../@{vendor-path}oblique-ui/less/variables.less';
-@import '../@{vendor-path}oblique-ui/less/mixins.less';
+// Flat design (no node_modules in a node_module)
+@vendor-path: '../../';
+@import '@{vendor-path}node_modules/oblique-ui/less/variables.less';
+@import '@{vendor-path}node_modules/oblique-ui/less/mixins.less';
 
 // Vendor overrides:
 @import 'vendor/oblique-ui';
