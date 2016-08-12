@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular.module('__MODULE__.samples')
-		.controller('SchemaValidationSampleController', function ($scope, $state, $filter, schema, data, NotificationService) {
+		.controller('SchemaValidationSampleController', function ($scope, $state, $filter, schema, data, notificationService) {
 			$scope.sampleSchema = schema;
 			$scope.data = data;
 
@@ -25,7 +25,7 @@
 			$scope.check = function (form) {
 				$scope.$broadcast('validationSchemaEvent');
 				if (form.$valid) {
-					NotificationService.success('Congratulations, form is valid!');
+					notificationService.success('Congratulations, form is valid!');
 				}
 			};
 

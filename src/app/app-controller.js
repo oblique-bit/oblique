@@ -3,7 +3,7 @@
 	"use strict";
 
 	angular.module('__MODULE__')
-		.controller('AppController', function (CONFIG, $scope, $rootScope, $state, $translate, $sce, $log, tmhDynamicLocale, authService, LoadingService, NotificationService) {
+		.controller('AppController', function (CONFIG, $scope, $rootScope, $state, $translate, $sce, $log, tmhDynamicLocale, authService, LoadingService, notificationService) {
 			var $this = this;
 			var LOG = $log.getInstance('AppController');
 
@@ -33,13 +33,13 @@
 				if (response.data && response.data.errors) {
 					event.preventDefault();
 					response.data.errors.forEach(function (error, index) {
-						NotificationService.add(error.severity, 'error.business.' + error.messageKey);
+						notificationService.add(error.severity, 'error.business.' + error.messageKey);
 					});
 				}
 			});
 
 			$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-				NotificationService.clear();
+				notificationService.clear();
 				if (toState.resolve) {
 					$this.spinner.active = true;
 				}

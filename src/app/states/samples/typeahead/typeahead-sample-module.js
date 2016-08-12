@@ -9,9 +9,9 @@
 				templateUrl: 'samples/typeahead/typeahead-sample.tpl.html',
 				controller: 'TypeaheadSampleController',
 				resolve: {
-					countries: function($http, NotificationService) {
+					countries: function($http, notificationService) {
 						return $http.api.get('/countries').catch(function() {
-							NotificationService.error('Unable to load countries from server!');
+							notificationService.error('Unable to load countries from server!');
 						});
 					}
 				}

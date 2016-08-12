@@ -1,4 +1,5 @@
 import {AuthService} from '../../common/auth/auth-service';
+import {NotificationService} from '../../oblique/ui/notifications/notification-service';
 
 export class AuthController {
 
@@ -15,7 +16,7 @@ export class AuthController {
     /*@ngInject*/
     constructor(private $state: ng.ui.IStateService,
                 private authService: AuthService,
-                private NotificationService) {
+                private notificationService: NotificationService) {
         //
     }
 
@@ -23,15 +24,15 @@ export class AuthController {
 
     login() {
         this.status.authenticating = true;
-        this.NotificationService.clear();
+        this.notificationService.clear();
         this.authService.login(this.user).then(
             (user) => {
                 this.$state.go('home').then(() => {
-                    this.NotificationService.success('states.auth.login.success', `Welcome, ${user.firstname}!`);
+                    this.notificationService.success('states.auth.login.success', `Welcome, ${user.firstname}!`);
                 });
             }, (error) => {
                 if (!error.defaultPrevented) {
-                    this.NotificationService.error(error.data && error.data.message ? error.data.message : 'states.auth.login.error');
+                    this.notificationService.error(error.data && error.data.message ? error.data.message : 'states.auth.login.error');
                 }
             }
         ).finally(() => {
@@ -40,26 +41,26 @@ export class AuthController {
     };
 
     logout() {
-        this.NotificationService.clear();
+        this.notificationService.clear();
         this.authService.logout().then(() => {
-            this.NotificationService.success('states.auth.logout.success');
+            this.notificationService.success('states.auth.logout.success');
             this.$state.go('home');
         }, (error) => {
             if (!error.defaultPrevented) {
-                this.NotificationService.error(error.data && error.data.message || 'states.auth.logout.error');
+                this.notificationService.error(error.data && error.data.message || 'states.auth.logout.error');
             }
         });
     };
 
     register() {
         this.status.registering = true;
-        this.NotificationService.clear();
+        this.notificationService.clear();
         this.authService.register(this.user).then(() => {
-            this.NotificationService.success('states.auth.register.success');
+            this.notificationService.success('states.auth.register.success');
             this.$state.go('home');
         }, (error) => {
             if (!error.defaultPrevented) {
-                this.NotificationService.error(error.data && error.data.message || 'states.auth.register.error');
+                this.notificationService.error(error.data && error.data.message || 'states.auth.register.error');
             }
         }).finally(() => {
             this.status.registering = false;

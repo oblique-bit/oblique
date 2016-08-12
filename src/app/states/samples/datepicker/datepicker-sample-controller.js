@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular.module('__MODULE__.samples')
-		.controller('DatepickerSampleController', function ($scope, NotificationService) {
+		.controller('DatepickerSampleController', function ($scope, notificationService) {
 			$scope.data = {
 				date: null,
 				minMax: {
@@ -49,7 +49,7 @@
 
 			$scope.check = function (form) {
 				if (form.$valid) {
-					NotificationService.success('Congratulations, form is valid!');
+					notificationService.success('Congratulations, form is valid!');
 				}
 			};
 		});

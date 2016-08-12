@@ -37,44 +37,14 @@ module.exports = {
 				"app/bundles/auth.js",
 				"app/bundles/home.js",
 				"app/bundles/movies.js",
-				"app/bundles/common.js"
+				"app/bundles/common.js",
+				"app/bundles/oblique.js"
 			],
 			"app": [
 				"app/app-config.js",
 				"app/app-module.js",
 				"app/app-controller.js",
 				"app/app-templates.js",
-
-				"app/oblique/oblique-module.js",
-
-				"app/oblique/formatters/date-directive.js",
-				"app/oblique/formatters/number-format-directive.js",
-
-				"app/oblique/infrastructure/log-decorator.js",
-				"app/oblique/infrastructure/http-decorator.js",
-				"app/oblique/infrastructure/http-interceptor.js",
-				"app/oblique/infrastructure/exception-handler-decorator.js",
-				"app/oblique/infrastructure/state-decorator.js",
-
-				"app/oblique/navigator/navigator-directive.js",
-				"app/oblique/navigator/navigator-service.js",
-
-				"app/oblique/status/loading-service.js",
-
-				"app/oblique/ui/date-picker/date-picker-directive.js",
-				"app/oblique/ui/notifications/notifications-directive.js",
-				"app/oblique/ui/notifications/notification-service.js",
-				"app/oblique/ui/delayed-change-directive.js",
-				"app/oblique/ui/dropdown-closable-directive.js",
-				"app/oblique/ui/enter-directive.js",
-				"app/oblique/ui/give-me-focus-directive.js",
-				"app/oblique/ui/multiselect-directive.js",
-				"app/oblique/ui/navigable-directive.js",
-				"app/oblique/ui/typeahead-extensions-directive.js",
-
-				"app/oblique/validation/has-error-directive.js",
-				"app/oblique/validation/schema-validate-directive.js",
-				"app/oblique/validation/schema-validator-service.js",
 
 				"app/states/samples/samples-module.js",
 				"app/states/samples/datepicker/datepicker-sample-module.js",

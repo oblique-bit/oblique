@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular.module('__MODULE__.samples')
-		.controller('UiScrollSampleController', function ($scope, $timeout, $rootScope, $location, $http, NotificationService, countries) {
+		.controller('UiScrollSampleController', function ($scope, $timeout, $rootScope, $location, $http, notificationService, countries) {
 			$scope.countries = countries;
 			$scope.selection = [];
 			$scope.datasource = {
@@ -25,7 +25,7 @@
 						return [];
 					}
 				});
-				NotificationService.success('Country removed: ' + country.name);
+				notificationService.success('Country removed: ' + country.name);
 			};
 		});
 }());

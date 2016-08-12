@@ -118,6 +118,10 @@ module.exports = function (grunt) {
                 common: {
                     src: '<%= env.build.target %>app/common/common-module.js',
                     dest: '<%= env.build.target %>app/bundles/common.js'
+                },
+                oblique: {
+                    src: '<%= env.build.target %>app/oblique/oblique-module.js',
+                    dest: '<%= env.build.target %>app/bundles/oblique.js'
                 }
             },
 

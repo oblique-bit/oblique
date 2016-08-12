@@ -88,10 +88,11 @@
 
 		// Run application
 		// --------------------------------------------------------
-		.run(function ($httpDecorator) {
+		//TODO: this shouldn't be necessary
+		/*.run(function ($httpDecorator) {
 			// Decorate $http with prebuilt API methods:
 			$httpDecorator.decorate();
-		});
+		})*/;
 
 	// Bootstrap angular:
 	if (!window['__MODULE__'].CONFIG.systemjs) {
@@ -108,7 +109,8 @@
 			SystemJS.import('app/states/auth/auth-module'),
 			SystemJS.import('app/states/home/home-module'),
 			SystemJS.import('app/states/movies/movies-module'),
-			SystemJS.import('app/common/common-module')
+			SystemJS.import('app/common/common-module'),
+			SystemJS.import('app/oblique/oblique-module')
 		]).then(function () {
 			angular.bootstrap(document, ['__MODULE__']);
 		});

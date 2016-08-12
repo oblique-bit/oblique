@@ -9,9 +9,9 @@
 				templateUrl: 'samples/ui-scroll/ui-scroll-sample.tpl.html',
 				controller: 'UiScrollSampleController',
 				resolve: {
-					countries: function($http, NotificationService) {
+					countries: function($http, notificationService) {
 						return $http.api.get('/countries').catch(function() {
-							NotificationService.error('Unable to load countries from server!');
+							notificationService.error('Unable to load countries from server!');
 						});
 					}
 				}
