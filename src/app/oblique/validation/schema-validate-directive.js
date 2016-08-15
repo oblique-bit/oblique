@@ -69,7 +69,7 @@
 				var form = params[1];
 				var schema = params[2].schema;
 				var name = attrs.name;
-
+				var isValid = true;
 				if (!name) {
 					$log.warn("Schema validation cannot be attached to a form control without a 'name' attribute. Ignoring...");
 				} else if (!schema) {
@@ -123,6 +123,7 @@
 							});
 
 						if (!result.valid) {
+							isValid = false;
 							ngModel.$setValidity('schema-' + result.error.code, false);
 
 							// Build error messages through external parsers, if any:
@@ -153,6 +154,16 @@
 							ngModel.$setViewValue(ngModel.$viewValue);
 						}
 					});
+					scope.$root.$on('$translateChangeSuccess', function() {
+						if (!isValid) {
+							if (ngModel.$setDirty) {
+								// Angular 1.3+
+								ngModel.$setDirty();
+								validate(ngModel.$modelValue);
+							}
+						}
+					});
+
 				}
 			}
 		};
