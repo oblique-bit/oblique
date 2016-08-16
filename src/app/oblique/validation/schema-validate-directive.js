@@ -69,7 +69,6 @@
 				var form = params[1];
 				var schema = params[2].schema;
 				var name = attrs.name;
-
 				if (!name) {
 					$log.warn("Schema validation cannot be attached to a form control without a 'name' attribute. Ignoring...");
 				} else if (!schema) {
@@ -137,20 +136,29 @@
 						}
 						return viewValue;
 					};
-
+					var revalidate = function () {
+						if (ngModel.$setDirty) {
+							// Angular 1.3+
+							ngModel.$setDirty();
+							validate(ngModel.$viewValue);
+						} else {
+							// Angular 1.2
+							ngModel.$setViewValue(ngModel.$viewValue);
+						}
+					};
 					// Get in last of the parses so the parsed value has the correct type.
 					// We don't use $validators since we like to set different errors depending tv4 error codes
 					ngModel.$parsers.push(validate);
 
 					// Listen to an event so we can validate the form control on request:
 					scope.$on('validationSchemaEvent', function () {
-						if (ngModel.$setDirty) {
-							// Angular 1.3+
-							ngModel.$setDirty();
-							validate(ngModel.$modelValue);
-						} else {
-							// Angular 1.2
-							ngModel.$setViewValue(ngModel.$viewValue);
+						revalidate();
+					});
+					// Listen to the translation change event and revalidate to force the language specific validation messages
+					scope.$root.$on('$translateChangeSuccess', function() {
+						// revalidate only in case of previous failure
+						if (ngModel.$invalid) {
+							revalidate();
 						}
 					});
 				}
