@@ -140,7 +140,7 @@
 						if (ngModel.$setDirty) {
 							// Angular 1.3+
 							ngModel.$setDirty();
-							validate(ngModel.$modelValue);
+							validate(ngModel.$viewValue);
 						} else {
 							// Angular 1.2
 							ngModel.$setViewValue(ngModel.$viewValue);
