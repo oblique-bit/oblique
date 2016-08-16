@@ -116,7 +116,7 @@
 		<div class="col-sm-6">
 			<multiselect name="multiselect" ng-model="data.multiselect" schema-validate
 			             options="sampleSchema.properties.multiselect.options"
-			             extra-settings="{showCheckAll: true, showUncheckAll: true}"></multiselect>
+			             extra-settings="{showCheckAll: true, showUncheckAll: true, idProp: 'value'}"></multiselect>
 			<span class="help-block" ng-show="validationForm.multiselect.$invalid">{{validationForm.multiselect.$errorMessage}}</span>
 		</div>
 		<div class="col-sm-2">

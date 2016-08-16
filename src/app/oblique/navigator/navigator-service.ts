@@ -31,13 +31,9 @@ export class NavigatorService {
                 this.$rootScope.$broadcast('$navigatorStateError',
                     {
                         direction: 'up',
-                        message: `Unable to retrieve a valid state to navigate UP. 
-                                  Either ensure that parent state is not abstract 
-                                  or ensure that current state configuration specifies 
-                                  a 'navigator.up' property pointing to a valid state.`,
+                        message: 'Unable to retrieve a valid state to navigate UP. Either ensure that parent state is not abstract or ensure that current state configuration specifies a "navigator.up" property pointing to a valid state.',
                         config: config,
-                        //TODO: type fail:
-                        //current: this.$state.$current.self,
+                        current: this.$state.current,
                         parent: parent
                     }
                 );

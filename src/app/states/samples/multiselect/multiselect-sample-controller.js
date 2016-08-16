@@ -4,7 +4,9 @@
 	angular.module('__MODULE__.samples')
 		.controller('MultiselectSampleController', function ($scope) {
 			$scope.dropdown = {
-				model: [],
+				model: [
+					{"id":1, "label":"Dropdown item 1"}
+				],
 				translations: {
 					allSelectedText:  "multiselect.allSelected"
 				},

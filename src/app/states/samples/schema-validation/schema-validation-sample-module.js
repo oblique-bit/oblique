@@ -21,7 +21,10 @@
 							"date": null,
 							"time": "2015-05-21T09:00:00+02:00",
 							"select": "ccc",
-							"multiselect": ["aaa", "ccc"],
+							"multiselect": [
+								{ "label" : "Aaa", "value": "aaa"},
+								{ "label" : "Bbb", "value": "bbb"}
+							],
 							"object": {
 								"subproperty": 33
 							}

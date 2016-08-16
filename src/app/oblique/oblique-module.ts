@@ -17,16 +17,13 @@ import {MULTISELECT_CONFIG, MultiselectDirective} from './ui/multiselect-directi
 import {NavigableDirective} from './ui/navigable-directive';
 import {UibTypeaheadDirective} from './ui/typeahead-directive';
 import {HasErrorDirective} from './validation/has-error-directive';
-import {
-    SCHEMA_VALIDATE_CONFIG,
-    ValidationSchemaDirective,
-    ValidationBusinessDirective,
-    SchemaValidateDirective
-} from './validation/schema-validate-directive';
+import {ValidationSchemaDirective} from './validation/validate-schema-directive';
 import {SchemaValidatorService} from './validation/schema-validator-service';
 import {NotificationServiceProvider} from './ui/notifications/notification-service-provider';
 import {DatePickerPopupDirective} from './ui/date-picker/date-picker-popup-directive';
 import {UibTypeaheadPopupDirective} from './ui/typeahead-popup-directive';
+import {ValidationBusinessDirective} from './validation/validation-business-directive';
+import {SchemaValidateDirective, SCHEMA_VALIDATE_CONFIG} from './validation/schema-validate-directive';
 
 export const oblique = '__MODULE__.oblique';
 

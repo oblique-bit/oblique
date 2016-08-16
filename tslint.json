@@ -7,7 +7,7 @@
       "spaces"
     ],
     "max-line-length": [
-      true,
+      false,
       140
     ],
     "member-ordering": [

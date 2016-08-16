@@ -20,7 +20,7 @@ export const MULTISELECT_CONFIG = {
     }
 };
 
-
+//TODO: Problems with tv4 validation, only triggers validaton on check, not on blur. (Perhaps multiple ngModelController instances)
 /**
  * Wrapper for AngularJS Dropdown Multiselect:
  * http://dotansimha.github.io/angularjs-dropdown-multiselect/

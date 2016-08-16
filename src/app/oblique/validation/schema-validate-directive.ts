@@ -1,58 +1,9 @@
-﻿import {LogDecorator} from '../infrastructure/log-decorator';
+import {LogDecorator} from '../infrastructure/log-decorator';
 import {SchemaValidatorService} from './schema-validator-service';
-/**
- * Adapted from: https://github.com/Textalk/angular-schema-form/blob/development/src/directives/schema-validate.js
- */
+
 export const SCHEMA_VALIDATE_CONFIG = {
     messageParsers: [] // [function(name, value, error, message) {/* ...*/ return message;}]
 };
-
-export class ValidationSchemaDirective implements ng.IDirective {
-    restrict = 'A';
-    require = ['^form'];
-    scope = {};
-    bindToController = {
-        schema:'=validationSchema'
-    };
-    controller = ValidationSchemaDirectiveController;
-    controllerAs = 'ctrl';
-}
-
-export class ValidationSchemaDirectiveController {
-    schema;
-
-    /*@ngInject*/
-    constructor($log:LogDecorator) {
-        if (!this.schema || !angular.isObject(this.schema)) {
-            $log.error('Provided schema could not be found or is invalid!');
-        }
-    }
-}
-
-export class ValidationBusinessDirective implements ng.IDirective {
-    restrict = 'A';
-    require = '^form';
-
-    constructor(private $log:LogDecorator) {
-
-    }
-
-    link = (scope, element, attrs, form:ng.IFormController) => {
-        scope.$on('validationBusinessEvent', (event, errors) => {
-            _.forEach(errors || [], (error) => {
-                let formKey = error.parent ? error.parent + (error.index ? '_' + error.index : '') : null;
-                let targetForm = formKey ? form[formKey] : form;
-                let formControl = targetForm[error.property || error.name];
-                if (formControl) {
-                    formControl.$setValidity('business', false);
-                    formControl.$errorMessage = error.message;
-                } else {
-                    this.$log.warn('Unable to map business error with form control. Ignoring...', error);
-                }
-            });
-        });
-    }
-}
 
 export class SchemaValidateDirective implements ng.IDirective {
 
@@ -69,10 +20,10 @@ export class SchemaValidateDirective implements ng.IDirective {
     }
 
     link = (scope, element, attrs, params) => {
-        let ngModel = params[0];
-        let form = params[1];
+        let ngModel:ng.INgModelController = params[0];
+        let form:ng.IFormController = params[1];
         let schema = params[2].schema;
-        let name = attrs.name;
+        let name:string = attrs.name;
 
         if (!name) {
             this.$log.warn(`Schema validation cannot be attached to a form control without a 'name' attribute. Ignoring...`);
@@ -136,6 +87,7 @@ export class SchemaValidateDirective implements ng.IDirective {
                             message = parser(schemaPath, viewValue, result.error, schema);
                         }
                     });
+                    //TODO monkey patch
                     formControl.$errorMessage = message;
 
                     // It is invalid, return undefined (no model update):
@@ -144,20 +96,22 @@ export class SchemaValidateDirective implements ng.IDirective {
                 return viewValue;
             };
 
+            let revalidate = () => {
+                ngModel.$setDirty();
+                validate(ngModel.$viewValue);
+            };
+
             // Get in last of the parses so the parsed value has the correct type.
             // We don't use $validators since we like to set different errors depending tv4 error codes
             ngModel.$parsers.push(validate);
 
             // Listen to an event so we can validate the form control on request:
-            scope.$on('validationSchemaEvent', () => {
-                if (ngModel.$setDirty) {
-                    // Angular 1.3+
-                    ngModel.$setDirty();
-                    validate(ngModel.$modelValue);
-                } else {
-                    // Angular 1.2
-                    ngModel.$setViewValue(ngModel.$viewValue);
-                }
+            scope.$on('validationSchemaEvent', revalidate);
+
+            scope.$root.$on('$translateChangeSuccess', () => {
+               if (ngModel.$invalid) {
+                   revalidate();
+               }
             });
         }
     };
@@ -174,7 +128,5 @@ export class SchemaValidateDirective implements ng.IDirective {
     private isModelEmpty(viewValue) {
         return angular.isUndefined(viewValue) || viewValue === null || viewValue === '';
     }
-
-
 }
 
