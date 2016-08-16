@@ -17,9 +17,9 @@ export class NavigatorService {
     }
 
     up() {
-        //TODO: type fail:
-        let config = /*this.$state.current.navigator ||*/ {};
-        let parent = /*config ? this.$state.get(config.up) :*/ null;
+        //TODO: There is no navigator on $state.current
+        let config : any = /*this.$state.current.navigator ||*/ {};
+        let parent = config ? this.$state.get(config.up) : null;
         if (parent) {
             this.$state.go(parent, this.$state.params);
         } else {

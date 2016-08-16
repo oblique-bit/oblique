@@ -1,4 +1,4 @@
-import {NotificationService} from './notification-service';
+import {NotificationsDirectiveController} from './notifications-directive-controller';
 
 export class NotificationsDirective {
     restrict = 'AE';
@@ -7,30 +7,5 @@ export class NotificationsDirective {
     scope = false;
     controller = NotificationsDirectiveController;
     controllerAs = 'ctrl';
-}
-
-export class NotificationsDirectiveController {
-    notifications:any [];
-
-    alertType = {
-        default: 'alert',
-        info: 'alert alert-info',
-        success: 'alert alert-success',
-        warning: 'alert alert-warning',
-        error: 'alert alert-danger'
-    };
-
-    /*@ngInject*/
-    constructor(private notificationService:NotificationService) {
-        this.notifications = notificationService.notifications;
-    }
-
-    isClosable(notification) {
-        return notification.sticky;
-    }
-
-    remove(notification) {
-        this.notificationService.remove(notification.id);
-    }
 }
 

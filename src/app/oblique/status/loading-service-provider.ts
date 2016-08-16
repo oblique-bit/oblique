@@ -3,7 +3,7 @@ import {NotificationService} from '../ui/notifications/notification-service';
 
 export class LoadingServiceProvider implements ng.IServiceProvider {
 
-    public context= {
+    public context = {
         timeout: 10000
     };
 

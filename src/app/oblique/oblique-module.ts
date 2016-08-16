@@ -7,7 +7,7 @@ import {logDecorator, LogDecorator} from './infrastructure/log-decorator';
 import {NavigatorDirective} from './navigator/navigator-directive';
 import {NavigatorService} from './navigator/navigator-service';
 import {LoadingServiceProvider} from './status/loading-service-provider';
-import {DatePickerDirective, DatePickerPopupDirective} from './ui/date-picker/date-picker-directive';
+import {DatePickerDirective} from './ui/date-picker/date-picker-directive';
 import {NotificationsDirective} from './ui/notifications/notifications-directive';
 import {DelayedChangeDirective} from './ui/delayed-change-directive';
 import {DropdownClosableDirective} from './ui/dropdown-closable-directive';
@@ -15,7 +15,7 @@ import {EnterDirective} from './ui/enter-directive';
 import {GiveMeFocusDirective} from './ui/give-me-focus-directive';
 import {MULTISELECT_CONFIG, MultiselectDirective} from './ui/multiselect-directive';
 import {NavigableDirective} from './ui/navigable-directive';
-import {UibTypeaheadDirective, UibTypeaheadPopupDirective} from './ui/typeahead-extensions-directive';
+import {UibTypeaheadDirective} from './ui/typeahead-directive';
 import {HasErrorDirective} from './validation/has-error-directive';
 import {
     SCHEMA_VALIDATE_CONFIG,
@@ -25,6 +25,8 @@ import {
 } from './validation/schema-validate-directive';
 import {SchemaValidatorService} from './validation/schema-validator-service';
 import {NotificationServiceProvider} from './ui/notifications/notification-service-provider';
+import {DatePickerPopupDirective} from './ui/date-picker/date-picker-popup-directive';
+import {UibTypeaheadPopupDirective} from './ui/typeahead-popup-directive';
 
 export const oblique = '__MODULE__.oblique';
 

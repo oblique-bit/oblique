@@ -243,9 +243,9 @@ export class NavigableDirective implements ng.IDirective {
     }
 
     private visible(element) {
-        return $.expr.filters.visible(element) && !$(element).parents().addBack().filter(() => {
-                //Typings fail
-                return (<any>$).css(this, 'visibility') === 'hidden';
+        return $.expr.filters.visible(element) && !$(element).parents().addBack().filter(function() {
+                //Typings are failing
+                return (<any>$).css(this,'visibility') === 'hidden';
             }).length;
     }
 }

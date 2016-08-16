@@ -1,4 +1,5 @@
-import {LogDecorator, ObliqueLog} from './log-decorator';
+import {LogDecorator} from './log-decorator';
+import {ObliqueLog} from './oblique-log';
 
 /*@ngInject*/
 export function exceptionHandlerDecorator($delegate, $log : LogDecorator) {
@@ -7,13 +8,3 @@ export function exceptionHandlerDecorator($delegate, $log : LogDecorator) {
         LOG.error(exception, cause);
     };
 }
-
-/*export function exceptionHandlerDecorator($provide) {
- // TODO: ngInject needed?
- $provide.decorator('$exceptionHandler', ($delegate, $injector) => {
- let LOG = $injector.get('$log').getInstance('$exceptionHandler');
- return (exception, cause) => {
- LOG.error(exception, cause);
- };
- });
- }*/

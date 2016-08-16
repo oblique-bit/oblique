@@ -6,7 +6,7 @@ export class LoadingService {
     };
 
     private loadings = [];
-    private loadingId = 0;
+    private loadingId : number = 0;
     
     constructor(private $timeout:ng.ITimeoutService,
                 private notificationService: NotificationService,
@@ -20,9 +20,9 @@ export class LoadingService {
         let id = this.loadingId;
         // Create timeout and fail in case request takes too long to execute:
         this.loadings.push({
-            id: this.loadingId, timeout: this.$timeout(() => {
+            id: this.loadingId,
+            timeout: this.$timeout(() => {
                 // when timeout, search if timeout is still active, when yes show error
-                //TODO: untested
                 let loading = this.loadings.filter((loading) => {
                     return loading.id === id;
                 });
@@ -40,11 +40,10 @@ export class LoadingService {
 
     stop() {
         // do nothing when no loadings are active
-        if (this.loadings.length <= 0) {
-            return;
+        if (this.loadings.length > 0) {
+            this.$timeout.cancel(this.loadings.shift().timeout);
+            this.loading.active = this.loadings.length > 0;
         }
-        this.$timeout.cancel(this.loadings.shift().timeout);
-        this.loading.active = this.loadings.length > 0;
     }
 
 

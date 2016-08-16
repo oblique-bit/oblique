@@ -22,13 +22,14 @@ export class NotificationService {
             priority: 4
         }
     };
-    private currentId = 0;
+
+    private currentId:number = 0;
     
     constructor(private $timeout:ng.ITimeoutService,
                 private providerContext) {
     }
 
-    add(type, messageKey, title?, sticky?) {
+    add(type:string, messageKey:string, title?:string, sticky?:boolean) {
         let notification = {
             id: this.currentId,
             type: type,
@@ -46,7 +47,7 @@ export class NotificationService {
         this.currentId++;
     }
 
-    remove(id) {
+    remove(id:number) {
         this.notifications.forEach((notification, index) => {
             if (id === notification.id) {
                 this.notifications.splice(index, 1);
@@ -59,23 +60,23 @@ export class NotificationService {
     }
 
     // Shortcuts:
-    default(messageKey, title?, sticky?) {
+    default(messageKey:string, title?:string, sticky?:boolean) {
         return this.add('default', messageKey, title, sticky);
     }
 
-    info(messageKey, title?, sticky?) {
+    info(messageKey:string, title?:string, sticky?:boolean) {
         return this.add('info', messageKey, title, sticky);
     }
 
-    success(messageKey, title?, sticky?) {
+    success(messageKey:string, title?:string, sticky?:boolean) {
         return this.add('success', messageKey, title, sticky);
     }
 
-    warn(messageKey, title?, sticky?) {
+    warn(messageKey:string, title?:string, sticky?:boolean) {
         return this.add('warning', messageKey, title, sticky);
     }
 
-    error(messageKey, title?, sticky?) {
+    error(messageKey:string, title?:string, sticky?:boolean) {
         return this.add('error', messageKey, title, sticky);
     }
 

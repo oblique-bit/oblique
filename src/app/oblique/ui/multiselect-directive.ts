@@ -1,4 +1,6 @@
-﻿//TODO: refactoring
+﻿import {MultiselectDirectiveController} from './multiselect-directive-controller';
+
+//TODO: refactoring
 export const MULTISELECT_CONFIG = {
     extraSettings: {
         buttonClasses: 'btn btn-default',
@@ -25,11 +27,12 @@ export const MULTISELECT_CONFIG = {
  */
 export class MultiselectDirective implements ng.IDirective {
     restrict = 'E';
-    template = `<div ng-dropdown-multiselect options='options' 
-												selected-model='ngModel' 
-												checkboxes='true' 
-												extra-settings='settings' 
-												translation-texts='translations'></div>`;
+    template = `<div    ng-dropdown-multiselect 
+                        options='options' 
+						selected-model='ngModel' 
+						checkboxes='true' 
+						extra-settings='settings' 
+						translation-texts='translations'></div>`;
     require = 'ngModel';
     scope = {
         ngModel: '=',    // The object the will contain the model for the selected items in the dropdown.
@@ -87,21 +90,6 @@ export class MultiselectDirective implements ng.IDirective {
         angular.forEach(scope.translations, (value, key) => {
             dropdownMultiselect.texts[key] = this.$filter('translate')(value);
         });
-    }
-}
-
-export class MultiselectDirectiveController {
-    /*@ngInject*/
-    constructor($scope, multiselectConfig) {
-        // Configuration:
-        $scope.settings = angular.extend(multiselectConfig.extraSettings, $scope.extraSettings ? $scope.extraSettings() : {});
-        $scope.translations = angular.extend(
-            multiselectConfig.translationTexts,
-            $scope.translationTexts ? $scope.translationTexts() : {}
-        );
-
-        // Binding:
-        $scope.ngModel = $scope.ngModel || [];
     }
 }
 

@@ -11,10 +11,11 @@ export class ValidationSchemaDirective implements ng.IDirective {
     restrict = 'A';
     require = ['^form'];
     scope = {};
-    bindToController:{
+    bindToController = {
         schema:'=validationSchema'
     };
     controller = ValidationSchemaDirectiveController;
+    controllerAs = 'ctrl';
 }
 
 export class ValidationSchemaDirectiveController {

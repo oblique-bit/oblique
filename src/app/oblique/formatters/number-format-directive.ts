@@ -14,7 +14,7 @@
 
         let decimals: number = this.$parse(attrs.decimals)(scope) || 2;
 
-        ngModelController.$parsers.push((data) => {
+        ngModelController.$parsers.push((data:string) : number => {
             // Attempt to convert user input into a numeric type to store
             // as the model value (otherwise it will be stored as a string)
             // NOTE: Return undefined to indicate that a parse error has occurred
@@ -40,6 +40,7 @@
         });
     }
 }
+
 interface NumberFormatDirectiveAttributes extends ng.IAttributes {
     decimals:string;
 }

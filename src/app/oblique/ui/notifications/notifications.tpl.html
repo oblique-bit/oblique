@@ -1,6 +1,6 @@
 ﻿<div class="notification-container">
 	<div class="notification show">
-		<div class="{{alertType[notification.type]}} animated slide-in-right" ng-repeat="notification in ctrl.notifications">
+		<div class="{{ctrl.alertType[notification.type]}} animated slide-in-right" ng-repeat="notification in ctrl.notifications">
 			<button ng-click="ctrl.remove(notification)" ng-show="ctrl.isClosable(notification)" type="button" class="close">&times;</button>
 			<h4>
 				<span ng-if="!notification.title">{{("notification.type." + notification.type) | translate}}</span>

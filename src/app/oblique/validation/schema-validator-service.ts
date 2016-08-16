@@ -1,4 +1,4 @@
-﻿//fixme Workaround
+﻿// fixme Workaround
 declare var tv4 : any;
 
 /**
@@ -40,7 +40,7 @@ export class SchemaValidatorService {
         let wrap = {
             type: 'object',
             'properties': {},
-            required: null
+            required: undefined
         };
 
         wrap.properties[propName] = _.result(schema.properties, propName);
