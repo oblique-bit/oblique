@@ -1,5 +1,6 @@
 import {HttpDecorator, IRequestConfig} from './http-decorator';
 import {NotificationService} from '../ui/notifications/notification-service';
+import {LoadingService} from '../status/loading-service';
 
 export class HttpInterceptor implements ng.IHttpInterceptor {
     private log;
@@ -8,8 +9,8 @@ export class HttpInterceptor implements ng.IHttpInterceptor {
     constructor(private $q:ng.IQService,
                 private $injector:ng.auto.IInjectorService,
                 private $rootScope:ng.IRootScopeService,
-                private notificationService: NotificationService,
-                private LoadingService,
+                private notificationService:NotificationService,
+                private loadingService:LoadingService,
                 $log) {
         this.log = $log.getInstance('HttpInterceptor');
     }
@@ -18,7 +19,7 @@ export class HttpInterceptor implements ng.IHttpInterceptor {
     request = (config:IRequestConfig) => {
         // TODO: redesign blocking/silent/background operations
         if (!this.isSilent(config) && !this.isBackground(config) && this.http().api.isApiCall(config.url)) {
-            this.LoadingService.start();
+            this.loadingService.start();
         }
         return config;
     };
@@ -32,7 +33,7 @@ export class HttpInterceptor implements ng.IHttpInterceptor {
     response = <T>(response:ng.IHttpPromiseCallbackArg<T>) => {
         let $http = this.http();
         if ($http.api.isApiCall(response.config.url)) {
-            this.LoadingService.stop();
+            this.loadingService.stop();
         }
         return response;
     };
@@ -40,7 +41,7 @@ export class HttpInterceptor implements ng.IHttpInterceptor {
     responseError = (rejection) => {
         let $http = this.http();
         if ($http.api.isApiCall(rejection.config.url)) {
-            this.LoadingService.stop();
+            this.loadingService.stop();
         }
         if (!this.$rootScope.$broadcast('$httpInterceptorError', rejection).defaultPrevented) {
             if (!this.isSilent(rejection.config) && (rejection.status >= 500 || rejection.status === 0)) {
@@ -67,7 +68,7 @@ export class HttpInterceptor implements ng.IHttpInterceptor {
 
 // Others services are injected on demand in order to prevent circular dependency during factory creation:
 
-    private http() : HttpDecorator {
+    private http():HttpDecorator {
         return this.$injector.get<HttpDecorator>('$http');
     }
 

@@ -36,7 +36,7 @@ angular.module('__MODULE__.oblique', [])
     .decorator('$log', logDecorator)
     .directive('navigator', ($navigator:NavigatorService, $document:ng.IDocumentService) => new NavigatorDirective($navigator, $document))
     .service('$navigator', NavigatorService)
-    .provider('LoadingService', () => new LoadingServiceProvider())
+    .provider('loadingService', () => new LoadingServiceProvider())
     .directive('datePicker', () => new DatePickerDirective())
     //TODO: naming?
     .directive('datepickerPopup', (dateFilter, $dateParser, uibDatepickerPopupConfig) => new DatePickerPopupDirective(

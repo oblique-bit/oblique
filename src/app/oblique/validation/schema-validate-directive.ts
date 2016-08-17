@@ -1,6 +1,7 @@
 import {LogDecorator} from '../infrastructure/log-decorator';
 import {SchemaValidatorService} from './schema-validator-service';
 
+//TODO: refactor to something like this: ng.ui.bootstrap.IDatepickerConfig (export an instance of an object)
 export const SCHEMA_VALIDATE_CONFIG = {
     messageParsers: [] // [function(name, value, error, message) {/* ...*/ return message;}]
 };

@@ -8,18 +8,18 @@
             <label class="col-md-4">Items</label>
             <div class="col-md-8">
                 <multiselect
-                        ng-model="dropdown.model"
-                        options="dropdown.options"
+                        ng-model="ctrl.dropdown.model"
+                        options="ctrl.dropdown.options"
                         dropup="false"
                         checkboxes="true"
-                        extra-settings="dropdown.settings"
-                        translation-texts="dropdown.translations">
+                        extra-settings="ctrl.dropdown.settings"
+                        translation-texts="ctrl.dropdown.translations">
                 </multiselect>
             </div>
         </div>
     </div>
     <div class="col-md-6">
-        <pre tooltip="Dropdown model data">{{dropdown.model | json}}</pre>
+        <pre tooltip="Dropdown model data">{{ctrl.dropdown.model | json}}</pre>
     </div>
 </div>
 
@@ -30,17 +30,17 @@
             <label class="col-md-4">Items</label>
             <div class="col-md-8">
                 <multiselect
-                    ng-model="dropup.model"
-                    options="dropup.options"
+                    ng-model="ctrl.dropup.model"
+                    options="ctrl.dropup.options"
                     dropup="true"
                     checkboxes="true"
-                    extra-settings="dropup.settings">
+                    extra-settings="ctrl.dropup.settings">
                 </multiselect>
             </div>
         </div>
     </div>
     <div class="col-md-6">
-        <pre tooltip="Dropdup model data">{{dropup.model | json}}</pre>
+        <pre tooltip="Dropdup model data">{{ctrl.dropup.model | json}}</pre>
     </div>
 </div>
 

@@ -24,7 +24,8 @@ export class NotificationService {
     };
 
     private currentId:number = 0;
-    
+
+    /*@ngInject*/
     constructor(private $timeout:ng.ITimeoutService,
                 private providerContext) {
     }
@@ -80,7 +81,8 @@ export class NotificationService {
         return this.add('error', messageKey, title, sticky);
     }
 
-    private sortByType(a, b) {
+    //Otherwise it would lose the "this" context
+    private sortByType = (a, b) => {
         return this.types[a.type].priority - this.types[b.type].priority;
-    }
+    };
 }

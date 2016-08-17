@@ -103,28 +103,11 @@ module.exports = function (grunt) {
                 }
             },
             browserify: {
-                auth: {
-                    src: '<%= env.build.target %>app/states/auth/auth-module.js',
-                    dest: '<%= env.build.target %>app/bundles/auth.js'
-                },
-                home: {
-                    src: '<%= env.build.target %>app/states/home/home-module.js',
-                    dest: '<%= env.build.target %>app/bundles/home.js'
-                },
-                movies: {
-                    src: '<%= env.build.target %>app/states/movies/movies-module.js',
-                    dest: '<%= env.build.target %>app/bundles/movies.js'
-                },
-                common: {
-                    src: '<%= env.build.target %>app/common/common-module.js',
-                    dest: '<%= env.build.target %>app/bundles/common.js'
-                },
-                oblique: {
-                    src: '<%= env.build.target %>app/oblique/oblique-module.js',
-                    dest: '<%= env.build.target %>app/bundles/oblique.js'
+                app: {
+                    src: '<%= env.build.target %>app/app-module.js',
+                    dest: '<%= env.build.target %>app/bundles/app.js'
                 }
             },
-
 
             /*
              * grunt-contrib-copy
@@ -225,7 +208,7 @@ module.exports = function (grunt) {
                     ],
 
                     // Layout placeholders override:
-                    'html-attrs': 'ng-controller="AppController as appController"',
+                    'html-attrs': 'ng-controller="appController as appController"',
 
                     // App-specific configuration used by ObliqueUI layouts:
                     app: {

@@ -1,4 +1,5 @@
 export class MultiselectDirectiveController {
+    //todo: controllerAs
     /*@ngInject*/
     constructor($scope, multiselectConfig) {
         // Configuration:

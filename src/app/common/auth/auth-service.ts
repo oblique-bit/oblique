@@ -64,6 +64,9 @@ export class AuthService {
     }
     
     isAuthorized(roles) {
+        if (!angular.isArray(roles)) {
+            roles = [roles];
+        }
         // TODO: replace with your own authorization implementation here!
         return this.isAuthenticated() && this.hasRoles(roles);
     }

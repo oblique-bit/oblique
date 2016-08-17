@@ -1,9 +1,9 @@
 import {AuthController} from './auth-controller';
 
-export const auth = 'auth';
+export const auth = '__MODULE__.auth';
 
 angular
-    .module('__MODULE__.auth', ['ui.router'])
+    .module(auth, ['ui.router'])
     .config(($stateProvider: ng.ui.IStateProvider) => {
         $stateProvider.state('auth', {
             url: '/auth',

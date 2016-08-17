@@ -1,13 +1,13 @@
 import {NotificationService} from '../ui/notifications/notification-service';
+
 export class LoadingService {
 
-    public loading = {
-        active: false
-    };
+    public loading:boolean = false;
 
     private loadings = [];
     private loadingId : number = 0;
-    
+
+    /*@ngInject*/
     constructor(private $timeout:ng.ITimeoutService,
                 private notificationService: NotificationService,
                 private providerContext) {
@@ -35,14 +35,14 @@ export class LoadingService {
             }, this.providerContext.timeout)
         });
         this.loadingId++;
-        this.loading.active = this.loadings.length > 0;
+        this.loading = this.loadings.length > 0;
     }
 
     stop() {
         // do nothing when no loadings are active
         if (this.loadings.length > 0) {
             this.$timeout.cancel(this.loadings.shift().timeout);
-            this.loading.active = this.loadings.length > 0;
+            this.loading = this.loadings.length > 0;
         }
     }
 

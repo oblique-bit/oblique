@@ -1,27 +1,27 @@
 <h2 class="page-header">{{'states.samples.typeahead.title' | translate}} <small>(with scrollable suggestions)</small></h2>
 <p class="lead">Start typing for displaying typeahead suggestions. Use UP / DOWN arrows to navigate through suggestions and ENTER or TAB to select the active one.</p>
 
-<form class="form" ng-submit="search()">
+<form class="form" ng-submit="ctrl.search()">
 	<div class="form-group form-group-lg">
 		<div class="input-group typeahead typeahead-scrollable">
-			<input ng-model="selection" type="text" class="form-control input-lg" placeholder="Search for countries"
-			       uib-typeahead="country as country.name for country in countries | filter:$viewValue | limitTo:20"
-			       typeahead-on-select="onSelect($item, $model, $label)"
+			<input ng-model="ctrl.selection" type="text" class="form-control input-lg" placeholder="Search for countries"
+			       uib-typeahead="country as country.name for country in ctrl.countries | filter:$viewValue | limitTo:20"
+			       typeahead-on-select="ctrl.onSelect($item, $model, $label)"
 			       typeahead-focus-on-select="false"
 			       typeahead-fix />
 			<span class="input-group-btn">
 				<button class="btn btn-default btn-lg btn-primary" type="submit"
-					ng-disabled="!selection">Go!</button>
+					ng-disabled="!ctrl.selection">Go!</button>
 			</span>
 		</div>
 	</div>
 </form>
 
-<ul class="nav nav-stacked" ng-if="selection && selection.name">
+<ul class="nav nav-stacked" ng-if="ctrl.selection && ctrl.selection.name">
 	<li class="nav-header" role="presentation">
 		<h3>Selected country</h3>
 	</li>
 	<li role="menuitem">
-		<a role="button">{{selection.name}} ({{selection.code}})</a>
+		<a role="button">{{ctrl.selection.name}} ({{ctrl.selection.code}})</a>
 	</li>
 </ul>

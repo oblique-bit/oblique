@@ -34,33 +34,11 @@ module.exports = {
 		},
 		"resources": {
 			"bundles": [
-				"app/bundles/auth.js",
-				"app/bundles/home.js",
-				"app/bundles/movies.js",
-				"app/bundles/common.js",
-				"app/bundles/oblique.js"
+				"app/bundles/app.js"
 			],
 			"app": [
 				"app/app-config.js",
-				"app/app-module.js",
-				"app/app-controller.js",
-				"app/app-templates.js",
-
-				"app/states/samples/samples-module.js",
-				"app/states/samples/datepicker/datepicker-sample-module.js",
-				"app/states/samples/datepicker/datepicker-sample-controller.js",
-				"app/states/samples/schema-validation/schema-validation-sample-module.js",
-				"app/states/samples/schema-validation/schema-validation-sample-controller.js",
-				"app/states/samples/multiselect/multiselect-sample-module.js",
-				"app/states/samples/multiselect/multiselect-sample-controller.js",
-				"app/states/samples/navigable/navigable-sample-module.js",
-				"app/states/samples/navigable/navigable-sample-controller.js",
-				"app/states/samples/navigator/navigator-sample-module.js",
-				"app/states/samples/navigator/navigator-sample-controller.js",
-				"app/states/samples/typeahead/typeahead-sample-module.js",
-				"app/states/samples/typeahead/typeahead-sample-controller.js",
-				"app/states/samples/ui-scroll/ui-scroll-sample-module.js",
-				"app/states/samples/ui-scroll/ui-scroll-sample-controller.js"
+				"app/app-templates.js"
 			],
 			"vendor": {
 				"js": [
@@ -104,12 +82,17 @@ module.exports = {
 		"name": "dev",
 		"app": {
 			"systemjs": true
+		},
+		"resources": {
+			"app": [
+				"app/system.config.dev.js"
+			]
 		}
 	},
 	"prod-local": {
 		"name": "dev",
 		"app": {
-			"systemjs": true
+			"systemjs": false
 		}
 	},
 	"prod": {

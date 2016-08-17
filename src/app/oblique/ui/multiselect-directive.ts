@@ -1,6 +1,6 @@
 ﻿import {MultiselectDirectiveController} from './multiselect-directive-controller';
 
-//TODO: refactoring
+//TODO: refactor to something like this: ng.ui.bootstrap.IDatepickerConfig (export an instance of an object)
 export const MULTISELECT_CONFIG = {
     extraSettings: {
         buttonClasses: 'btn btn-default',
@@ -71,7 +71,7 @@ export class MultiselectDirective implements ng.IDirective {
             // Enable labels translation:
             // FIXME: remove when https://github.com/dotansimha/angularjs-dropdown-multiselect/issues/54
             this.translateLabels(dropdownMultiselect, scope);
-            scope.$root.$on('$translateChangeSuccess', (event, data) => {
+            scope.$root.$on('$translateChangeSuccess', () => {
                 this.translateLabels(dropdownMultiselect, scope);
             });
         }

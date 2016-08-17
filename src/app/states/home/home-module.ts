@@ -1,9 +1,9 @@
 import {HomeController} from './home-controller';
 
-export const auth = 'home';
+export const home = '__MODULE__.home';
 
 angular
-    .module('__MODULE__.home', ['ui.router'])
+    .module(home, ['ui.router'])
     .config(($stateProvider: ng.ui.IStateProvider) => {
         $stateProvider.state('home', {
             url: '/home',

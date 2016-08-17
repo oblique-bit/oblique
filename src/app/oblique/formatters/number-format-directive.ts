@@ -1,7 +1,6 @@
 ﻿export class NumberFormatDirective implements ng.IDirective {
     require = 'ngModel';
-
-    /*@ngInject*/
+    
     constructor(private $filter:ng.IFilterService,
                 private $parse:ng.IParseService) {
 

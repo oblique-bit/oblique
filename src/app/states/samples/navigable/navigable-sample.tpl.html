@@ -9,8 +9,8 @@
 			<div class="col-sm-3"></div>
 		</div>
 	</div>
-	<div class="list-group-item" ng-repeat="scientist in scientists"
-	     navigable="scientist" navigable-selection="scientistsSelection">
+	<div class="list-group-item" ng-repeat="scientist in ctrl.scientists"
+	     navigable="scientist" navigable-selection="ctrl.scientistsSelection">
 		<div class="row">
 			<div class="col-sm-3">{{scientist.firstname}}</div>
 			<div class="col-sm-3">{{scientist.lastname}}</div>
@@ -57,9 +57,9 @@
 
 <ul class="nav nav-stacked">
 	<li class="nav-header" role="presentation">
-		<h3>Selected scientist(s) <span class="badge">{{scientistsSelection.length}} / {{scientists.length}}</span> </h3>
+		<h3>Selected scientist(s) <span class="badge">{{ctrl.scientistsSelection.length}} / {{ctrl.scientists.length}}</span> </h3>
 	</li>
-	<li role="menuitem" ng-repeat="scientist in scientistsSelection">
+	<li role="menuitem" ng-repeat="scientist in ctrl.scientistsSelection">
 		<a role="button">{{scientist.firstname}} {{scientist.lastname}}</a>
 	</li>
 </ul>
