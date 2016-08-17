@@ -9,6 +9,10 @@ module.exports = function (config) {
 
     var karmaResources = [];
 
+    _.forEach(project.common.resources.vendor.testResources, function (v) {
+        karmaResources.push(project.common.build.target + "testResources/" + v);
+    });
+
     _.forEach(project.common.resources.vendor.js, function (v) {
         karmaResources.push(project.common.build.target + 'vendor/' + v);
     });
@@ -21,7 +25,7 @@ module.exports = function (config) {
     //Adds the TS modules to the karma files, but doesn't load them in the browser
     karmaResources.push({pattern: project.common.build.target + 'app/**/*.js', included: false, watched: false});
 
-    karmaResources.push('vendor/angular-mocks/angular-mocks.js');
+    karmaResources.push('node_modules/angular-mocks/angular-mocks.js');
     karmaResources.push('test.main.js');
 
     karmaConfig = {

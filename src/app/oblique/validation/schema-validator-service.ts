@@ -20,8 +20,7 @@ export class SchemaValidatorService {
      * @param {Any} value the value to validate.
      * @return {Object} a tv4js validation result object.
      */
-    //TODO: add typings
-    validate(schema, propName, value) {
+    validate(schema, propName:string, value:any) {
         if (!schema) {
             return {valid: true};
         }
@@ -60,6 +59,10 @@ export class SchemaValidatorService {
             valueWrap[propName] = value;
         }
         tv4.language(this.$translate.use());
-        return (tv4).validateResult(valueWrap, wrap);
+        //TODO: use this instead of the messageParsers? We can add custom messages
+        /*tv4.setErrorReporter((error, data, scema) => {
+            return 'Error code: ' + error.code;
+        });*/
+        return tv4.validateResult(valueWrap, wrap);
     }
 }

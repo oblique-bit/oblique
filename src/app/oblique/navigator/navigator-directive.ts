@@ -1,29 +1,27 @@
-import {NavigatorService} from './navigator-service';
+import {NavigationDirectiveController} from './navigator-directive-controller';
 
 export class NavigatorDirective implements ng.IDirective {
     restrict = 'E';
     replace = true;
-    template =   `<a href='' ng-click='up()'>
+    require = 'navigator';
+    template =   `<a href='' ng-click='ctrl.up()'>
 	                <span class='fa fa-chevron-left'></span>
 			    </a>`;
+    
+    controller = NavigationDirectiveController;
+    controllerAs = 'ctrl';
 
-    constructor (private $navigator: NavigatorService,
-                 private $document:ng.IDocumentService) {
+    constructor (private $document:ng.IDocumentService) {
 
     }
     
-    link = (scope, element, attrs) => {
+    link = (scope, element, attrs, ctrl:NavigationDirectiveController) => {
         let eventName = 'keyup.navigator';
-
-        //TODO: remove up() from scope and add to a controller?
-        scope.up = () => {
-            this.$navigator.up();
-        };
 
         this.$document.on(eventName, (event) => {
             if (event.which === 27) { // ESC key
                 event.preventDefault();
-                scope.up();
+                ctrl.up();
             }
         });
 

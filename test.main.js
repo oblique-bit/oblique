@@ -16,7 +16,7 @@ SystemJS.config({
 
 Promise.all([
     SystemJS.import('target/app/app-config'),
-    SystemJS.import('target/app/app-module') //TODO: fix this when the typescript rewritte is done
+    SystemJS.import('target/app/app-module') 
 ]).then(function () {
     return Promise.all(
         Object.keys(window.__karma__.files) // All files served by Karma.

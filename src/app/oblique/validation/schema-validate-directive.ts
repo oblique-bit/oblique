@@ -1,10 +1,6 @@
 import {LogDecorator} from '../infrastructure/log-decorator';
 import {SchemaValidatorService} from './schema-validator-service';
-
-//TODO: refactor to something like this: ng.ui.bootstrap.IDatepickerConfig (export an instance of an object)
-export const SCHEMA_VALIDATE_CONFIG = {
-    messageParsers: [] // [function(name, value, error, message) {/* ...*/ return message;}]
-};
+import {SchemaValidateConfig} from './schema-validate-config';
 
 export class SchemaValidateDirective implements ng.IDirective {
 
@@ -17,7 +13,7 @@ export class SchemaValidateDirective implements ng.IDirective {
     constructor(private $log:LogDecorator,
                 private $timeout:ng.ITimeoutService,
                 private schemaValidator:SchemaValidatorService,
-                private schemaValidateConfig) {
+                private schemaValidateConfig:SchemaValidateConfig) {
     }
 
     link = (scope, element, attrs, params) => {
@@ -31,7 +27,7 @@ export class SchemaValidateDirective implements ng.IDirective {
         } else if (!schema) {
             this.$log.warn(`Unable to retrieve validation schema for ${name}. Ignoring...`);
         } else {
-            let schemaPath = _.map(name.split('_'), (part: string) => {
+            let schemaPath:string = _.map(name.split('_'), (part:string) => {
                 return _.camelCase(part);
             }).join('.properties.');
 
@@ -49,7 +45,7 @@ export class SchemaValidateDirective implements ng.IDirective {
             }
 
             // Validate against the schema:
-            let validate = (viewValue) => {
+            let validate = (viewValue:any) => {
 
                 // Omit TV4 validation
                 if (scope.options && scope.options.tv4Validation === false) {
@@ -84,9 +80,8 @@ export class SchemaValidateDirective implements ng.IDirective {
                     // Build error messages through external parsers, if any:
                     let message = result.error.message;
                     _.forEach(this.schemaValidateConfig.messageParsers, (parser) => {
-                        if (angular.isFunction(parser)) {
-                            message = parser(schemaPath, viewValue, result.error, schema);
-                        }
+                        //TODO: why do we need multiple, if only the last one is used?
+                        message = parser(schemaPath, viewValue, result.error, schema);
                     });
                     //TODO monkey patch
                     formControl.$errorMessage = message;
@@ -110,9 +105,9 @@ export class SchemaValidateDirective implements ng.IDirective {
             scope.$on('validationSchemaEvent', revalidate);
 
             scope.$root.$on('$translateChangeSuccess', () => {
-               if (ngModel.$invalid) {
-                   revalidate();
-               }
+                if (ngModel.$invalid) {
+                    revalidate();
+                }
             });
         }
     };

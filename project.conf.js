@@ -74,7 +74,11 @@ module.exports = {
 					"angular/angular-csp.css",
 					"animate.css/animate.css"
 				],
-				"assets": []
+				"assets": [],
+				"testResources": [
+					"systemjs/dist/system.js",
+					"systemjs/dist/system-polyfills.js"
+				]
 			}
 		}
 	},

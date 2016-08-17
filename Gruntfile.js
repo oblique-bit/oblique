@@ -12,6 +12,7 @@ module.exports = function (grunt) {
         less: 'src/less/',
         pages: 'src/pages/',
         partials: 'src/partials/',
+        testResources: 'testResources/',
         vendor: 'node_modules/',
         targetVendor: 'vendor/',
         staging: '.tmp'
@@ -164,6 +165,14 @@ module.exports = function (grunt) {
                         dest: '<%= env.build.target %><%= paths.targetVendor %>',
                         expand: true,
                         flatten: false
+                    }]
+                },
+                'testResources': {
+                    files: [{
+                        cwd: '<%= paths.vendor %>',
+                        src: '<%= env.resources.vendor.testResources %>',
+                        dest: '<%= env.build.target %><%= paths.testResources %>',
+                        expand: true
                     }]
                 },
                 'system-js': {
@@ -618,8 +627,8 @@ module.exports = function (grunt) {
         'assemble',
         'less',
         'replace',
-        'html2js'/*,
-         'karma:unit'*/
+        'html2js',
+        'karma:unit'
     ]);
 
     grunt.registerTask('build-dev', [

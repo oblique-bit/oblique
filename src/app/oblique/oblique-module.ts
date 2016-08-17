@@ -13,7 +13,8 @@ import {DelayedChangeDirective} from './ui/delayed-change-directive';
 import {DropdownClosableDirective} from './ui/dropdown-closable-directive';
 import {EnterDirective} from './ui/enter-directive';
 import {GiveMeFocusDirective} from './ui/give-me-focus-directive';
-import {MULTISELECT_CONFIG, MultiselectDirective} from './ui/multiselect-directive';
+import {MultiselectDirective} from './ui/multiselect/multiselect-directive';
+import {MultiselectConfig} from './ui/multiselect/multiselect-config';
 import {NavigableDirective} from './ui/navigable-directive';
 import {UibTypeaheadDirective} from './ui/typeahead-directive';
 import {HasErrorDirective} from './validation/has-error-directive';
@@ -23,7 +24,8 @@ import {NotificationServiceProvider} from './ui/notifications/notification-servi
 import {DatePickerPopupDirective} from './ui/date-picker/date-picker-popup-directive';
 import {UibTypeaheadPopupDirective} from './ui/typeahead-popup-directive';
 import {ValidationBusinessDirective} from './validation/validation-business-directive';
-import {SchemaValidateDirective, SCHEMA_VALIDATE_CONFIG} from './validation/schema-validate-directive';
+import {SchemaValidateDirective} from './validation/schema-validate-directive';
+import {SchemaValidateConfig} from './validation/schema-validate-config';
 
 export const oblique = '__MODULE__.oblique';
 
@@ -34,7 +36,7 @@ angular.module('__MODULE__.oblique', [])
     .decorator('$http', httpDecorator)
     .service('HttpInterceptor', HttpInterceptor)
     .decorator('$log', logDecorator)
-    .directive('navigator', ($navigator:NavigatorService, $document:ng.IDocumentService) => new NavigatorDirective($navigator, $document))
+    .directive('navigator', ($document:ng.IDocumentService) => new NavigatorDirective($document))
     .service('$navigator', NavigatorService)
     .provider('loadingService', () => new LoadingServiceProvider())
     .directive('datePicker', () => new DatePickerDirective())
@@ -50,13 +52,13 @@ angular.module('__MODULE__.oblique', [])
     .directive('dropdownClosable', ($timeout:ng.ITimeoutService) => new DropdownClosableDirective($timeout))
     .directive('enter', () => new EnterDirective())
     .directive('giveMeFocus', () => new GiveMeFocusDirective())
-    .constant('multiselectConfig', MULTISELECT_CONFIG)
+    .constant('multiselectConfig', new MultiselectConfig())
     .directive('multiselect', ($filter:ng.IFilterService) => new MultiselectDirective($filter))
     .directive('navigable', ($parse:ng.IParseService,$timeout:ng.ITimeoutService) => new NavigableDirective($parse,$timeout))
     .directive('uibTypeahead', () => new UibTypeaheadDirective())
     .directive('uibTypeaheadPopup', () => new UibTypeaheadPopupDirective())
     .directive('hasError', () => new HasErrorDirective())
-    .constant('schemaValidateConfig', SCHEMA_VALIDATE_CONFIG)
+    .constant('schemaValidateConfig', new SchemaValidateConfig())
     .directive('validationSchema', ()=> new ValidationSchemaDirective())
     .directive('validationBusiness', ($log:LogDecorator) => new ValidationBusinessDirective($log))
     .directive('schemaValidate', ($log:LogDecorator,

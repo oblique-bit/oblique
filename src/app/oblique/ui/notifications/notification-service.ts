@@ -3,8 +3,7 @@ export class NotificationService {
     warning = this.warn; // Alias only
 
     public notifications = [];
-
-    //TODO: replace with enum?
+    
     private types = {
         'default': {
             priority: 0

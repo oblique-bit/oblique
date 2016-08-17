@@ -1,25 +1,5 @@
 ﻿import {MultiselectDirectiveController} from './multiselect-directive-controller';
 
-//TODO: refactor to something like this: ng.ui.bootstrap.IDatepickerConfig (export an instance of an object)
-export const MULTISELECT_CONFIG = {
-    extraSettings: {
-        buttonClasses: 'btn btn-default',
-        idProp: 'id',
-        displayProp: 'label',
-        externalIdProp: '', // Return the full item model when selected
-        scrollable: false,
-        showCheckAll: false,
-        showUncheckAll: false,
-        // TODO fixme that's a hack
-        smartButtonMaxItems: 1000
-    },
-    translationTexts: {
-        checkAll: 'multiselect.checkAll',
-        uncheckAll: 'multiselect.uncheckAll',
-        buttonDefaultText: 'multiselect.buttonDefaultText'
-    }
-};
-
 //TODO: Problems with tv4 validation, only triggers validaton on check, not on blur. (Perhaps multiple ngModelController instances)
 /**
  * Wrapper for AngularJS Dropdown Multiselect:

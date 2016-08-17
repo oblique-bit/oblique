@@ -12,8 +12,8 @@ describe('MoviesControllerSuite', () => {
     };
 
     createController = () => {
-        return $controller('MoviesController', {
-            MovieService: movieServiceMock,
+        return $controller('moviesController', {
+            movieService: movieServiceMock,
             $scope: $scope
         });
     };

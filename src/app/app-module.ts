@@ -6,6 +6,7 @@ import {auth} from './states/auth/auth-module';
 import {home} from './states/home/home-module';
 import {movies} from './states/movies/movies-module';
 import {samples} from './states/samples/samples-module';
+import {SchemaValidateConfig} from './oblique/validation/schema-validate-config';
 
 angular
     .module('__MODULE__', [
@@ -87,7 +88,7 @@ angular
     .config((CONFIG, loadingServiceProvider:LoadingServiceProvider) => {
         loadingServiceProvider.setTimeout(CONFIG.defaults.http.timeout);
     })
-    .config((schemaValidateConfig) => {
+    .config((schemaValidateConfig:SchemaValidateConfig) => {
         schemaValidateConfig.messageParsers.push((name, value, error, schema) => {
             return '* ' + error.message;
         });
