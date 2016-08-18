@@ -2,8 +2,8 @@
 	<h2 class="page-header">
 		<span>Schema validation</span>
 		<span class="pull-right">
-			<div class="fa fa-check text-success" tooltip="Form is valid" tooltip-placement="bottom" ng-if="validationForm.$valid"></div>
-			<span class="fa fa-warning text-danger" tooltip="Form is not valid" tooltip-placement="bottom" ng-if="!validationForm.$valid"></span>
+			<div class="fa fa-check text-success" uib-tooltip="Form is valid" tooltip-placement="bottom" ng-if="validationForm.$valid"></div>
+			<span class="fa fa-warning text-danger" uib-tooltip="Form is not valid" tooltip-placement="bottom" ng-if="!validationForm.$valid"></span>
 		</span>
 	</h2>
 	<div class="form-group" has-error>
@@ -62,11 +62,11 @@
 				<div class="col-sm-6">
 					<div class="btn-group">
 						<button type="button" class="btn btn-info" ng-click="ctrl.today()" tooltip-append-to-body="true"
-						        tooltip="Sets model to today's date using the standard JavaScript Date object">Today</button>
+						        uib-tooltip="Sets model to today's date using the standard JavaScript Date object">Today</button>
 						<button type="button" class="btn btn-info" ng-click="ctrl.toISO()" tooltip-append-to-body="true"
-						        tooltip="Sets model to today's date using the ISO 8601 format">ISO</button>
+						        uib-tooltip="Sets model to today's date using the ISO 8601 format">ISO</button>
 						<button type="button" class="btn btn-info" ng-click="ctrl.toTimestamp()" tooltip-append-to-body="true"
-						        tooltip="Sets model to today's date using a timestamp">Timestamp</button>
+						        uib-tooltip="Sets model to today's date using a timestamp">Timestamp</button>
 					</div>
 				</div>
 			</div>
@@ -83,8 +83,8 @@
 	<div class="form-group" has-error>
 		<label class="col-sm-4 control-label">Time</label>
 		<div class="col-sm-6">
-			<uib-timepicker name="time" class="timepicker timepicker-condensed"
-			            ng-model="ctrl.data.time" show-meridian="false" minute-step="15"></uib-timepicker>
+			<div uib-timepicker name="time" class="timepicker timepicker-condensed"
+			            ng-model="ctrl.data.time" show-meridian="false" minute-step="15"></div>
 			<span class="help-block" ng-show="validationForm.time.$invalid">{{validationForm.time.$errorMessage}}</span>
 		</div>
 		<div class="col-sm-2">

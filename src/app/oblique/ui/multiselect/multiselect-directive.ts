@@ -1,6 +1,6 @@
 ﻿import {MultiselectDirectiveController} from './multiselect-directive-controller';
 
-//TODO: Problems with tv4 validation, only triggers validaton on check, not on blur. (Perhaps multiple ngModelController instances)
+//TODO: Problems with tv4 validation, only triggers validaton on check, not on blur. ($parsers will never be triggered)
 /**
  * Wrapper for AngularJS Dropdown Multiselect:
  * http://dotansimha.github.io/angularjs-dropdown-multiselect/
@@ -13,8 +13,9 @@ export class MultiselectDirective implements ng.IDirective {
 						checkboxes='true' 
 						extra-settings='settings' 
 						translation-texts='translations'></div>`;
-    require = 'ngModel';
-    scope = {
+    require = ['ngModel', 'multiselect'];
+    scope = {};
+    bindToController = {
         ngModel: '=',    // The object the will contain the model for the selected items in the dropdown.
         options: '=',    // The options for the dropdown.
         extraSettings: '&?',   // See 'Settings' section on http://dotansimha.github.io/angularjs-dropdown-multiselect/
@@ -22,14 +23,16 @@ export class MultiselectDirective implements ng.IDirective {
         dropup: '='     // Defines if a dropup menu should be used instead on a dropdown
     };
     controller = MultiselectDirectiveController;
+    controllerAs = 'ctrl';
 
-    constructor(private $filter:ng.IFilterService) {
-
-    }
-
-    link = (scope, element, attrs, ngModelCtrl:ng.INgModelController) => {
+    //TODO: discuss splitting
+    link = (scope, element, attrs, controllers) => {
+        let ngModelCtrl:ng.INgModelController = controllers[0];
+        let multiselectCtrl:MultiselectDirectiveController = controllers[1];
+        
         let container = element.find('.multiselect-parent');
         let dropdownMultiselect:any = angular.element(container).scope();
+        
         if (dropdownMultiselect) {
             // Close on ESC keypress:
             element.bind('keydown', (evt) => {
@@ -43,16 +46,16 @@ export class MultiselectDirective implements ng.IDirective {
             });
 
             // Dropup?
-            if (scope.dropup) {
+            if (multiselectCtrl.dropup) {
                 container.addClass('dropup');
                 element.find('.dropdown-toggle').addClass('dropdown-toggle-up');
             }
 
             // Enable labels translation:
             // FIXME: remove when https://github.com/dotansimha/angularjs-dropdown-multiselect/issues/54
-            this.translateLabels(dropdownMultiselect, scope);
+            multiselectCtrl.translateLabels(dropdownMultiselect);
             scope.$root.$on('$translateChangeSuccess', () => {
-                this.translateLabels(dropdownMultiselect, scope);
+                multiselectCtrl.translateLabels(dropdownMultiselect);
             });
         }
 
@@ -61,15 +64,9 @@ export class MultiselectDirective implements ng.IDirective {
         scope.$watch('ngModel', (newValue, oldValue) => {
             if (!angular.equals(originalValue, newValue)) {
                 ngModelCtrl.$setDirty();
+                //Trigger parsers here
             }
         }, true);
     };
-
-    // FIXME: remove when https://github.com/dotansimha/angularjs-dropdown-multiselect/issues/54
-    private translateLabels(dropdownMultiselect, scope) {
-        angular.forEach(scope.translations, (value, key) => {
-            dropdownMultiselect.texts[key] = this.$filter('translate')(value);
-        });
-    }
 }
 

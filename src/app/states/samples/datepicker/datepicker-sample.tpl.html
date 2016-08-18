@@ -12,11 +12,11 @@
 				<div class="col-md-6">
 					<div class="btn-group">
 						<button type="button" class="btn btn-info" ng-click="ctrl.today()" tooltip-append-to-body="true"
-						        tooltip="Sets model to today's date using the standard JavaScript Date object">Today</button>
+						        uib-tooltip="Sets model to today's date using the standard JavaScript Date object">Today</button>
 						<button type="button" class="btn btn-info" ng-click="ctrl.toISO()" tooltip-append-to-body="true"
-						        tooltip="Sets model to today's date using the ISO 8601 format">ISO</button>
+						        uib-tooltip="Sets model to today's date using the ISO 8601 format">ISO</button>
 						<button type="button" class="btn btn-info" ng-click="ctrl.toTimestamp()" tooltip-append-to-body="true"
-						        tooltip="Sets model to today's date using a timestamp">Timestamp</button>
+						        uib-tooltip="Sets model to today's date using a timestamp">Timestamp</button>
 					</div>
 				</div>
 			</div>
@@ -29,16 +29,16 @@
 		<div class="col-sm-8 col-lg-9">
 			<div class="row">
 				<div class="col-md-6">
-					<date-picker name="minMax" ng-model="ctrl.data.minMax.date" min-date="ctrl.data.minMax.min" max-date="ctrl.data.minMax.max"></date-picker>
+					<date-picker name="minMax" ng-model="ctrl.data.minMax.date" options="{'minDate': ctrl.data.minMax.min, 'maxDate': ctrl.data.minMax.max}"></date-picker>
 				</div>
 				<div class="col-md-6">
 					<div class="btn-group">
 						<button type="button" class="btn btn-info" ng-click="ctrl.invalidMin()" tooltip-append-to-body="true"
-						        tooltip="Sets model to some invalid date after the minimum limit">
+						        uib-tooltip="Sets model to some invalid date after the minimum limit">
 							<span class="fa fa-chevron-left"></span> Min
 						</button>
 						<button type="button" class="btn btn-info" ng-click="ctrl.invalidMax()" tooltip-append-to-body="true"
-						        tooltip="Sets model to some invalid date after the maximum limit">
+						        uib-tooltip="Sets model to some invalid date after the maximum limit">
 							<span class="fa fa-chevron-right"></span> Max
 						</button>
 					</div>
@@ -78,7 +78,7 @@
 				<div class="col-md-6">
 					<div class="btn-group">
 						<button type="button" class="btn btn-info" ng-click="ctrl.toggleEditable()" tooltip-append-to-body="true"
-						        tooltip="Toggles manual edition of Datepicker input control.">Toggle edition</button>
+						        uib-tooltip="Toggles manual edition of Datepicker input control.">Toggle edition</button>
 					</div>
 				</div>
 			</div>

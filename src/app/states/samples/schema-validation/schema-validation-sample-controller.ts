@@ -18,7 +18,7 @@ export class SchemaValidationSampleController {
     }
 
     toISO() {
-        this.data.date = (new Date()).toISOString();
+        this.data.date = moment().format('YYYY-MM-DD');
         this.data.minDate = moment(this.data.date).subtract(1, 'd').format('YYYY-MM-DD');
         this.data.maxDate = moment(this.data.date).add(1, 'd').format('YYYY-MM-DD');
     }

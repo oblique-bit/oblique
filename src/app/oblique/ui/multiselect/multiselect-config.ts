@@ -7,7 +7,7 @@ export class MultiselectConfig {
         scrollable: false,
         showCheckAll: false,
         showUncheckAll: false,
-        // TODO fixme that's a hack
+        // TODO that's a hack
         smartButtonMaxItems: 1000
     };
     translationTexts = {

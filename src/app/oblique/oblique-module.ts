@@ -41,9 +41,9 @@ angular.module('__MODULE__.oblique', [])
     .provider('loadingService', () => new LoadingServiceProvider())
     .directive('datePicker', () => new DatePickerDirective())
     //TODO: naming?
-    .directive('datepickerPopup', (dateFilter, $dateParser, uibDatepickerPopupConfig) => new DatePickerPopupDirective(
+    .directive('uibDatepickerPopup', (dateFilter, uibDateParser, uibDatepickerPopupConfig) => new DatePickerPopupDirective(
         dateFilter,
-        $dateParser,
+        uibDateParser,
         uibDatepickerPopupConfig
     ))
     .provider('notificationService', () => new NotificationServiceProvider())
@@ -53,8 +53,8 @@ angular.module('__MODULE__.oblique', [])
     .directive('enter', () => new EnterDirective())
     .directive('giveMeFocus', () => new GiveMeFocusDirective())
     .constant('multiselectConfig', new MultiselectConfig())
-    .directive('multiselect', ($filter:ng.IFilterService) => new MultiselectDirective($filter))
-    .directive('navigable', ($parse:ng.IParseService,$timeout:ng.ITimeoutService) => new NavigableDirective($parse,$timeout))
+    .directive('multiselect', () => new MultiselectDirective())
+    .directive('navigable', ($timeout:ng.ITimeoutService) => new NavigableDirective($timeout))
     .directive('uibTypeahead', () => new UibTypeaheadDirective())
     .directive('uibTypeaheadPopup', () => new UibTypeaheadPopupDirective())
     .directive('hasError', () => new HasErrorDirective())

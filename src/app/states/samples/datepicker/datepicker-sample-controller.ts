@@ -28,7 +28,7 @@ export class DatepickerSampleController {
     }
 
     toISO() {
-        this.data.date = (new Date()).toISOString();
+        this.data.date = moment().format('YYYY-MM-DD');
     }
 
     toTimestamp() {

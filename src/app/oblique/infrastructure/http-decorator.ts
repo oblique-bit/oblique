@@ -1,6 +1,6 @@
 import {ObliqueHttp} from './oblique-http';
 
-//TODO: untested and needs more refactoring
+//TODO: needs more refactoring
 /*@ngInject*/
 export function httpDecorator($delegate, CONFIG) {
     $delegate.api = new ObliqueHttp($delegate, CONFIG);

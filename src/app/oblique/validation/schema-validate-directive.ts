@@ -22,6 +22,8 @@ export class SchemaValidateDirective implements ng.IDirective {
         let schema = params[2].schema;
         let name:string = attrs.name;
 
+        let previouslyParsedViewValue : any;
+
         if (!name) {
             this.$log.warn(`Schema validation cannot be attached to a form control without a 'name' attribute. Ignoring...`);
         } else if (!schema) {
@@ -46,6 +48,8 @@ export class SchemaValidateDirective implements ng.IDirective {
 
             // Validate against the schema:
             let validate = (viewValue:any) => {
+
+                previouslyParsedViewValue = viewValue;
 
                 // Omit TV4 validation
                 if (scope.options && scope.options.tv4Validation === false) {
@@ -94,7 +98,11 @@ export class SchemaValidateDirective implements ng.IDirective {
 
             let revalidate = () => {
                 ngModel.$setDirty();
-                validate(ngModel.$viewValue);
+
+                if(!previouslyParsedViewValue) {
+                    previouslyParsedViewValue = ngModel.$modelValue || ngModel.$viewValue;
+                }
+                validate(previouslyParsedViewValue);
             };
 
             // Get in last of the parses so the parsed value has the correct type.

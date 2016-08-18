@@ -7,6 +7,7 @@ import {home} from './states/home/home-module';
 import {movies} from './states/movies/movies-module';
 import {samples} from './states/samples/samples-module';
 import {SchemaValidateConfig} from './oblique/validation/schema-validate-config';
+import {DatepickerPopupConfig} from './oblique/ui/date-picker/datepicker-config';
 
 angular
     .module('__MODULE__', [
@@ -21,7 +22,6 @@ angular
         'satellizer',
         'angular-confirm',
         'angularjs-dropdown-multiselect',
-        'dateParser',
         'checklist-model',
         'monospaced.elastic',
 
@@ -77,13 +77,13 @@ angular
     .config(($logProvider:ng.ILogProvider) => {
         $logProvider.debugEnabled(true);
     })
-    .config((CONFIG, uibDatepickerConfig:ng.ui.bootstrap.IDatepickerConfig, uibDatepickerPopupConfig/*:ng.ui.bootstrap.IDatepickerPopupConfig*/) => {
+    .config((CONFIG, uibDatepickerConfig:ng.ui.bootstrap.IDatepickerConfig, uibDatepickerPopupConfig:DatepickerPopupConfig) => {
         uibDatepickerConfig.showWeeks = false;
         uibDatepickerConfig.startingDay = 1; // Weeks start on Monday
         uibDatepickerPopupConfig.datepickerPopup = CONFIG.defaults.format && CONFIG.defaults.format.date ? CONFIG.defaults.format.date : 'dd.MM.yyyy';
         uibDatepickerPopupConfig.showButtonBar = false;
-        //TODO: extend DatepickerPopupConfig
-        uibDatepickerPopupConfig.useIsoModel = false; // Specifies if model values should be written as ISO-based string
+        uibDatepickerPopupConfig.modelAsIsoFormat = 'yyyy-MM-dd';//false; // Specifies if model values should be written as ISO-based string
+        uibDatepickerPopupConfig.altInputFormats = ['d!.M!.yy'];
     })
     .config((CONFIG, loadingServiceProvider:LoadingServiceProvider) => {
         loadingServiceProvider.setTimeout(CONFIG.defaults.http.timeout);

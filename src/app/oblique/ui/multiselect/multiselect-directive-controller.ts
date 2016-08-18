@@ -1,17 +1,32 @@
 import {MultiselectConfig} from './multiselect-config';
 
 export class MultiselectDirectiveController {
-    //todo: controllerAs
+    ngModel;
+    options;
+    settings;
+    extraSettings;
+    translations;
+    translationTexts;
+    dropup:boolean;
+    
     /*@ngInject*/
-    constructor($scope, multiselectConfig:MultiselectConfig) {
+    constructor(private $filter:ng.IFilterService,
+                multiselectConfig:MultiselectConfig) {
         // Configuration:
-        $scope.settings = angular.extend(multiselectConfig.extraSettings, $scope.extraSettings ? $scope.extraSettings() : {});
-        $scope.translations = angular.extend(
+        this.settings = angular.extend(multiselectConfig.extraSettings, this.extraSettings ? this.extraSettings() : {});
+        this.translations = angular.extend(
             multiselectConfig.translationTexts,
-            $scope.translationTexts ? $scope.translationTexts() : {}
+            this.translationTexts ? this.translationTexts() : {}
         );
 
         // Binding:
-        $scope.ngModel = $scope.ngModel || [];
+        this.ngModel = this.ngModel || [];
+    }
+
+    // FIXME: remove when https://github.com/dotansimha/angularjs-dropdown-multiselect/issues/54
+    translateLabels(dropdownMultiselect) {
+        angular.forEach(this.translations, (value, key) => {
+            dropdownMultiselect.texts[key] = this.$filter('translate')(value);
+        });
     }
 }

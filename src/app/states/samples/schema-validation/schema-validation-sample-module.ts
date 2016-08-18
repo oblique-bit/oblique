@@ -93,7 +93,7 @@ angular
                             'multiselect': {
                                 'type': 'array',
                                 'items': {
-                                    'type': 'string'
+                                    'type': 'object'
                                 },
                                 'minItems': 1,
                                 'maxItems': 4,

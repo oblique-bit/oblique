@@ -49,7 +49,6 @@ module.exports = {
 					"angular-ui-bootstrap/dist/ui-bootstrap-tpls.js",
 					"angular-confirm/angular-confirm.js",
 					"angular-cookies/angular-cookies.js",
-					"angular-dateParser/dist/angular-dateparser.js",
 					"angular-dynamic-locale/dist/tmhDynamicLocale.js",
 					"angular-elastic/elastic.js",
 					"angular-i18n/angular-locale_de.js",
