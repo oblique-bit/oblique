@@ -1,6 +1,6 @@
 import {LogDecorator} from '../infrastructure/log-decorator';
 
-export class ValidationSchemaDirectiveController {
+export class ValidateSchemaDirectiveController {
     schema;
 
     /*@ngInject*/

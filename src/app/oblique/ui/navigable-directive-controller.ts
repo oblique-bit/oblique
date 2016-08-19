@@ -30,7 +30,7 @@ export class NavigableDirectiveController {
         }
 
         this.$scope.$apply(() => {
-            //todo: Api?
+            //todo: Api? What should the first param be? Was scope before
             this.navigableOnActivation(this, this.model);
         });
     }
@@ -71,7 +71,6 @@ export class NavigableDirectiveController {
             if (next.hasClass('navigable-selected')) {
                 this.unselect(active);
             }
-
 
             // Trigger focus on next item in order to ensure activation is performed within the right scope:
             next.data('navigable-combine', combine).focus();

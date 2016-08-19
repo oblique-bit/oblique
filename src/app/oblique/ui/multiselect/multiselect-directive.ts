@@ -60,8 +60,8 @@ export class MultiselectDirective implements ng.IDirective {
         }
 
         // Toggle dirty state:
-        let originalValue = angular.copy(scope.ngModel);
-        scope.$watch('ngModel', (newValue, oldValue) => {
+        let originalValue = angular.copy(multiselectCtrl.ngModel);
+        scope.$watch('ctrl.ngModel', (newValue, oldValue) => {
             if (!angular.equals(originalValue, newValue)) {
                 ngModelCtrl.$setDirty();
                 //Trigger parsers here

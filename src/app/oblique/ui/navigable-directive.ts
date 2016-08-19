@@ -1,6 +1,5 @@
 import {NavigableDirectiveController} from './navigable-directive-controller';
 
-//TODO: needs refactoring
 export class NavigableDirective implements ng.IDirective {
     require = 'navigable';
     restrict = 'A';
@@ -21,7 +20,7 @@ export class NavigableDirective implements ng.IDirective {
 
     }
 
-
+    //TODO: discuss splitting
     link = (scope, element, attrs, navigable:NavigableDirectiveController) => {
         
         let arrows = navigable.arrows;

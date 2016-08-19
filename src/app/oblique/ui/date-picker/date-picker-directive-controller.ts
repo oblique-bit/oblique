@@ -37,7 +37,7 @@ export class DatePickerDirectiveController {
             }
         });
 
-        $scope.$watchGroup(['options.minDate', 'options.maxDate'], function (newValues, oldValues) {
+        $scope.$watchGroup(['ctrl.options.minDate', 'ctrl.options.maxDate'], (newValues, oldValues) => {
             if (!angular.equals(newValues, oldValues)) {
                 // Ensure min/max dates get parsed correctly:
                 this.parseMinMax();

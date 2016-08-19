@@ -16,6 +16,7 @@ export class SchemaValidateDirective implements ng.IDirective {
                 private schemaValidateConfig:SchemaValidateConfig) {
     }
 
+    //TODO discuss splitting
     link = (scope, element, attrs, params) => {
         let ngModel:ng.INgModelController = params[0];
         let form:ng.IFormController = params[1];
@@ -87,7 +88,7 @@ export class SchemaValidateDirective implements ng.IDirective {
                         //TODO: why do we need multiple, if only the last one is used?
                         message = parser(schemaPath, viewValue, result.error, schema);
                     });
-                    //TODO monkey patch
+                    //TODO monkey patch (and why not directly on the ngModel?)
                     formControl.$errorMessage = message;
 
                     // It is invalid, return undefined (no model update):
