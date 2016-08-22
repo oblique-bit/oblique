@@ -13,9 +13,7 @@ export class UiScrollSampleController {
         }
     };
 
-    datasourceAdapter : ng.ui.IScrollAdapter = <ng.ui.IScrollAdapter>{
-        //remain: true TODO: doesn't exist on IScrollAdapter
-    };
+    datasourceAdapter : ng.ui.IScrollAdapter;
 
     /*@ngInject*/
     constructor(private notificationService:NotificationService,

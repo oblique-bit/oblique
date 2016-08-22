@@ -26,4 +26,13 @@ export class DatePickerDirective implements ng.IDirective {
     };
     controller = DatePickerDirectiveController;
     controllerAs = 'ctrl';
+
+    link = (scope, element, attrs, controller:DatePickerDirectiveController) => {
+        element.keydown((e) => {
+            let control = element.find('input[name=' + controller.name + ']');
+            if (angular.element(e.target).is(control) && e.keyCode === 40) { // 40: ArrowDown
+                controller.toggle(e);
+            }
+        });
+    }
 }

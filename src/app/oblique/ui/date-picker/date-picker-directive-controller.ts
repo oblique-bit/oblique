@@ -22,20 +22,12 @@ export class DatePickerDirectiveController {
     /*@ngInject*/
     constructor(private $scope,
                 private uibDatepickerPopupConfig:DatepickerPopupConfig,
-                private uibDateParser,
-                $element) {
+                private uibDateParser) {
         this.dpOptions = angular.extend({}, uibDatepickerPopupConfig, this.options || {});
         this.dpAltInputFormats = (uibDatepickerPopupConfig.altInputFormats || []).concat(this.altInputFormats || []);
         this.editable = angular.isDefined(this.editable) ? this.editable : true;
         this.showClearControl = angular.isDefined(this.showClearControl) ? this.showClearControl : true;
         this.opened = false;
-        
-        $element.keydown((e) => {
-            let control = $element.find('input[name=' + this.name + ']');
-            if (angular.element(e.target).is(control) && e.keyCode === 40) { // 40: ArrowDown
-                this.toggle(e);
-            }
-        });
 
         $scope.$watchGroup(['ctrl.options.minDate', 'ctrl.options.maxDate'], (newValues, oldValues) => {
             if (!angular.equals(newValues, oldValues)) {
