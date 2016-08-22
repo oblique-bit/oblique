@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": true,
+    "sourceMap": false,
+    "removeComments": false,
+    "outDir": "dist/",
+    "rootDir": "src/app/oblique"
+  },
+  "files": [
+    "src/app/oblique/oblique-module.ts",
+    "src/app/oblique/oblique-reactive.ts",
+    "typings/index.d.ts"
+  ]
+}

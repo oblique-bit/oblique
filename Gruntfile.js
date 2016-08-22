@@ -86,11 +86,11 @@ module.exports = function (grunt) {
 
 
             ts: {
-                options: {
-                    fast: 'never'//TODO: remove this when the ts migration is done
-                },
                 default: {
                     tsconfig: true
+                },
+                publish: {
+                    tsconfig: 'tsconfig.publish.json'
                 }
             },
             tslint: {
@@ -107,6 +107,10 @@ module.exports = function (grunt) {
                 app: {
                     src: '<%= env.build.target %>app/app-module.js',
                     dest: '<%= env.build.target %>app/bundles/app.js'
+                },
+                oblique: {
+                    src: 'dist/oblique-module.js',
+                    dest: 'dist/bundles/oblique-reactive.js'
                 }
             },
 
@@ -184,6 +188,16 @@ module.exports = function (grunt) {
                         ],
                         dest: '<%= env.build.target %><%= paths.targetVendor %>',
                         expand: true
+                    }]
+                },
+                'package.json': {
+                    files: [{
+                        expand: true,
+                        src: 'package.publish.json',
+                        dest: 'dist/',
+                        rename: function(dest, src) {
+                            return dest + '/package.json';
+                        }
                     }]
                 }
             },

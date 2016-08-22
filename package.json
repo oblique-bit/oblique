@@ -4,10 +4,12 @@
   "description": "Reactive web template powered by ObliqueUI and AngularJS",
   "version": "1.3.0",
   "license": "All Rights Reserved",
-  "private": true,
   "organization": {
     "name": "Federal Office of Information Technology, Systems and Telecommunication FOITT",
     "url": "http://www.bit.admin.ch/"
+  },
+  "publishConfig": {
+    "registry": "http://nexus.vmjeap10a04.bfi.admin.ch:8020/repository/npm-intern/"
   },
   "repository": {
     "type": "git",
@@ -61,6 +63,7 @@
     "grunt-contrib-copy": "1.0.0",
     "grunt-contrib-cssmin": "1.0.1",
     "grunt-contrib-less": "1.3.0",
+    "grunt-contrib-rename": "0.0.3",
     "grunt-contrib-uglify": "1.0.1",
     "grunt-contrib-watch": "1.0.0",
     "grunt-filerev": "2.3.1",

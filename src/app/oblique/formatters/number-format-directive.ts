@@ -40,6 +40,6 @@
     }
 }
 
-interface NumberFormatDirectiveAttributes extends ng.IAttributes {
+export interface NumberFormatDirectiveAttributes extends ng.IAttributes {
     decimals:string;
 }
