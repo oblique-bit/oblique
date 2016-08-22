@@ -63,7 +63,6 @@ angular.module('__MODULE__.oblique', [])
     .directive('validationBusiness', ($log:LogDecorator) => new ValidationBusinessDirective($log))
     .directive('schemaValidate', ($log:LogDecorator,
                                   $timeout:ng.ITimeoutService,
-                                  schemaValidator:SchemaValidatorService,
-                                  schemaValidateConfig) => new SchemaValidateDirective($log,$timeout,schemaValidator,schemaValidateConfig))
+                                  schemaValidator:SchemaValidatorService) => new SchemaValidateDirective($log,$timeout,schemaValidator))
     .service('schemaValidator', SchemaValidatorService);
 

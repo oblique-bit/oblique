@@ -1,4 +1,5 @@
 ﻿// fixme Workaround
+import {SchemaValidateConfig} from './schema-validate-config';
 declare var tv4 : any;
 
 /**
@@ -7,7 +8,11 @@ declare var tv4 : any;
 export class SchemaValidatorService {
 
     /*@ngInject*/
-    constructor (private $translate:ng.translate.ITranslateService) {
+    constructor (private $translate:ng.translate.ITranslateService,
+                 public schemaValidateConfig:SchemaValidateConfig) {
+        if(schemaValidateConfig.customErrorReporter) {
+            tv4.setErrorReporter(schemaValidateConfig.customErrorReporter);
+        }
     }
 
     /**

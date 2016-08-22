@@ -8,11 +8,11 @@
 export class MultiselectDirective implements ng.IDirective {
     restrict = 'E';
     template = `<div    ng-dropdown-multiselect 
-                        options='options' 
-						selected-model='ngModel' 
+                        options='ctrl.options' 
+						selected-model='ctrl.ngModel' 
 						checkboxes='true' 
-						extra-settings='settings' 
-						translation-texts='translations'></div>`;
+						extra-settings='ctrl.settings' 
+						translation-texts='ctrl.translations'></div>`;
     require = ['ngModel', 'multiselect'];
     scope = {};
     bindToController = {

@@ -1,6 +1,5 @@
 import {LogDecorator} from '../infrastructure/log-decorator';
 import {SchemaValidatorService} from './schema-validator-service';
-import {SchemaValidateConfig} from './schema-validate-config';
 
 export class SchemaValidateDirective implements ng.IDirective {
 
@@ -12,8 +11,7 @@ export class SchemaValidateDirective implements ng.IDirective {
 
     constructor(private $log:LogDecorator,
                 private $timeout:ng.ITimeoutService,
-                private schemaValidator:SchemaValidatorService,
-                private schemaValidateConfig:SchemaValidateConfig) {
+                private schemaValidator:SchemaValidatorService) {
     }
 
     //TODO discuss splitting
@@ -82,14 +80,8 @@ export class SchemaValidateDirective implements ng.IDirective {
                 if (!result.valid) {
                     ngModel.$setValidity('schema-' + result.error.code, false);
 
-                    // Build error messages through external parsers, if any:
-                    let message = result.error.message;
-                    _.forEach(this.schemaValidateConfig.messageParsers, (parser) => {
-                        //TODO: why do we need multiple, if only the last one is used?
-                        message = parser(schemaPath, viewValue, result.error, schema);
-                    });
                     //TODO monkey patch (and why not directly on the ngModel?)
-                    formControl.$errorMessage = message;
+                    formControl.$errorMessage = result.error.message;
 
                     // It is invalid, return undefined (no model update):
                     return undefined;

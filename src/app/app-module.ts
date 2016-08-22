@@ -89,9 +89,11 @@ angular
         loadingServiceProvider.setTimeout(CONFIG.defaults.http.timeout);
     })
     .config((schemaValidateConfig:SchemaValidateConfig) => {
-        schemaValidateConfig.messageParsers.push((name, value, error, schema) => {
-            return '* ' + error.message;
-        });
+        //todo Add custom error reporter here
+        /*schemaValidateConfig.customErrorReporter = (error, data, schema) => {
+
+            return 'error: ' + error.code;
+        };*/
     })
     .controller('appController', AppController);
 
