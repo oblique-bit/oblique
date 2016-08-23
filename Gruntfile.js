@@ -16,7 +16,7 @@ module.exports = function (grunt) {
         testResources: 'testResources/',
         vendor: 'node_modules/',
         targetVendor: 'vendor/',
-        staging: '.tmp'
+        staging: '.tmp/'
     };
 
     // Grunt init
@@ -113,11 +113,16 @@ module.exports = function (grunt) {
             browserify: {
                 app: {
                     src: '<%= env.build.target %>app/app-module.js',
-                    dest: '<%= env.build.target %>app/bundles/app.js'
+                    dest: '<%= env.build.target %>app/bundles/app.js',
+                    options: {
+                        alias: {
+                            'oblique-reactive/oblique-reactive': './<%= env.build.target %>oblique-reactive/oblique-reactive.js'
+                        }
+                    }
                 },
                 oblique: {
-                    src: 'dist/oblique-module.js',
-                    dest: 'dist/bundles/oblique-reactive.js'
+                    src: '<%= env.build.target %>/oblique-reactive/oblique-reactive.js',
+                    dest: '<%= env.build.target %>/oblique-reactive/bundles/oblique-reactive.js'
                 }
             },
 
@@ -129,6 +134,22 @@ module.exports = function (grunt) {
              * Copy files and folders
              */
             copy: {
+                'typescript': {
+                    files: [
+                        {
+                            expand: true,
+                            cwd: '<%= paths.staging %>src/',
+                            src: '**/*',
+                            dest: '<%= env.build.target %>oblique-reactive/'
+                        },
+                        {
+                            expand: true,
+                            cwd: '<%= paths.staging %>showcase/app/',
+                            src: '**/*',
+                            dest: '<%= env.build.target %>app/'
+                        }
+                    ]
+                },
                 oblique: {
                     files: [{
                         expand: true,
@@ -195,16 +216,6 @@ module.exports = function (grunt) {
                         ],
                         dest: '<%= env.build.target %><%= paths.targetVendor %>',
                         expand: true
-                    }]
-                },
-                'package.json': {
-                    files: [{
-                        expand: true,
-                        src: 'package.publish.json',
-                        dest: 'dist/',
-                        rename: function(dest, src) {
-                            return dest + '/package.json';
-                        }
                     }]
                 }
             },
@@ -666,7 +677,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean',
         'tslint',
-        'ts:oblique',
+        //'ts:oblique',
         'exec:tsc',
         'copy',
         'assemble',
@@ -715,7 +726,7 @@ module.exports = function (grunt) {
      * Optimizes resources for deployment.
      */
     grunt.registerTask("optimize", [
-        'browserify',
+        'browserify:app',
         'ngAnnotate',
         'useminPrepare',
         'concat',

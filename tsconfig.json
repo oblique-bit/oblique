@@ -5,16 +5,18 @@
     "declaration": false,
     "sourceMap": false,
     "removeComments": false,
-    "outDir": "target/",
-    "rootDir": "showcase",
+    "outDir": ".tmp/",
+    "rootDirs": [
+      "showcase",
+      "src"
+    ],
 
     "baseUrl": ".",
     "paths" : {
-      "oblique-reactive/*": ["target/oblique-reactive/*"]
+      "oblique-reactive/*": ["src/*"]
     }
   },
   "exclude": [
-    "node_modules",
-    "src"
+    "node_modules"
   ]
 }

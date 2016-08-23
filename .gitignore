@@ -28,4 +28,6 @@ nbproject
 node_modules
 target
 typings
-dist
+.tscache
+.tmp
+
