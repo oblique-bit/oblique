@@ -11,7 +11,10 @@ __karma__.loaded = function () {
 // Load our SystemJS configuration.
 SystemJS.config({
     baseURL: '/base/',
-    defaultJSExtensions: true
+    defaultJSExtensions: true,
+    map: {
+        'oblique-reactive': 'target/oblique-reactive'
+    }
 });
 
 Promise.all([

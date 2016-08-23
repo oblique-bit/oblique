@@ -6,9 +6,15 @@
     "sourceMap": false,
     "removeComments": false,
     "outDir": "target/",
-    "rootDir": "src/"
+    "rootDir": "showcase",
+
+    "baseUrl": ".",
+    "paths" : {
+      "oblique-reactive/*": ["target/oblique-reactive/*"]
+    }
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "src"
   ]
 }

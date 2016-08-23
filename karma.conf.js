@@ -24,6 +24,7 @@ module.exports = function (config) {
 
     //Adds the TS modules to the karma files, but doesn't load them in the browser
     karmaResources.push({pattern: project.common.build.target + 'app/**/*.js', included: false, watched: false});
+    karmaResources.push({pattern: project.common.build.target + 'oblique-reactive/**/*.js', included: false, watched: false});
 
     karmaResources.push('node_modules/angular-mocks/angular-mocks.js');
     karmaResources.push('test.main.js');

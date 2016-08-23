@@ -37,8 +37,7 @@ module.exports = {
 				"app/bundles/app.js"
 			],
 			"app": [
-				"app/app-config.js",
-				"app/app-templates.js"
+				"app/app-config.js"
 			],
 			"vendor": {
 				"js": [

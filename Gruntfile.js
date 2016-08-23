@@ -6,12 +6,13 @@ module.exports = function (grunt) {
 
     // Optional build configuration:
     var paths = {
-        src: 'src/',
-        app: 'src/app/',
-        states: 'src/app/states/',
-        less: 'src/less/',
-        pages: 'src/pages/',
-        partials: 'src/partials/',
+        oblique: 'src/',
+        src: 'showcase/',
+        app: 'showcase/app/',
+        states: 'showcase/app/states/',
+        less: 'showcase/less/',
+        pages: 'showcase/pages/',
+        partials: 'showcase/partials/',
         testResources: 'testResources/',
         vendor: 'node_modules/',
         targetVendor: 'vendor/',
@@ -84,13 +85,19 @@ module.exports = function (grunt) {
                 staging: ['<%= paths.staging %>']
             },
 
+            exec: {
+                tsc: 'tsc' //TODO: remove this as soon as this is fixed: https://github.com/TypeStrong/grunt-ts/issues/339
+            },
 
             ts: {
-                default: {
-                    tsconfig: true
+                options: {
+                    fast: 'never'
                 },
-                publish: {
+                oblique: {
                     tsconfig: 'tsconfig.publish.json'
+                },
+                showcase: {
+                    tsconfig: true
                 }
             },
             tslint: {
@@ -311,7 +318,7 @@ module.exports = function (grunt) {
              * https://github.com/yoniholmes/grunt-text-replace
              */
             replace: {
-                config: {
+                showcase: {
                     src: '<%= env.build.target%>/app/**/*.js',
                     overwrite: true,
                     replacements: [
@@ -322,6 +329,20 @@ module.exports = function (grunt) {
                         {
                             from: "'__CONFIG__'",
                             to: '<%= JSON.stringify(env.app) %>'
+                        },
+                        {
+                            from: "__TEMPLATE_MODULE__",
+                            to: '<%= env.app.module %>.app-templates'
+                        }
+                    ]
+                },
+                oblique: {
+                    src: '<%= env.build.target%>/oblique-reactive/**/*.js',
+                    overwrite: true,
+                    replacements: [
+                        {
+                            from: "__TEMPLATE_MODULE__",
+                            to: 'oblique-reactive.app-templates'
                         }
                     ]
                 }
@@ -336,12 +357,21 @@ module.exports = function (grunt) {
              */
             html2js: {
                 options: {
-                    module: '<%= env.app.module %>.app-templates',
-                    base: '<%= paths.states %>'
+                    amd: true,
+                    amdPrefixString: 'exports.templateModuleName = \'__TEMPLATE_MODULE__\';\n',
+                    amdSuffixString: ''
                 },
-                views: {
+                showcase: {
+                    module: '<%= env.app.module %>.app-templates',
+                    //base: '<%= paths.states %>', //This isn't working
                     src: '<%= paths.app %>**/*.tpl.html',
                     dest: '<%= env.build.target %>app/app-templates.js'
+                },
+                oblique: {
+                    module: 'oblique-reactive.app-templates',
+                    //base: '<%= paths.oblique %>',
+                    src: '<%= paths.oblique %>**/*.tpl.html',
+                    dest: '<%= env.build.target %>oblique-reactive/oblique-reactive-templates.js'
                 }
             },
 
@@ -459,7 +489,7 @@ module.exports = function (grunt) {
                     tasks: [
                         'config:<%= _currentEnv() %>',
                         'tslint',
-                        'ts',
+                        'exec:tsc',
                         'copy:app',
                         'html2js',
                         'replace'
@@ -636,12 +666,13 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean',
         'tslint',
-        'ts',
+        'ts:oblique',
+        'exec:tsc',
         'copy',
         'assemble',
         'less',
-        'replace',
         'html2js',
+        'replace',
         'karma:unit'
     ]);
 
