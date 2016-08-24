@@ -8,6 +8,7 @@
     "name": "Federal Office of Information Technology, Systems and Telecommunication FOITT",
     "url": "http://www.bit.admin.ch/"
   },
+  "private": true,
   "publishConfig": {
     "registry": "http://nexus.vmjeap10a04.bfi.admin.ch:8020/repository/npm-intern/"
   },
@@ -102,6 +103,7 @@
   },
   "scripts": {
     "prestart": "npm install",
+    "postinstall": "typings install",
     "start": "grunt"
   }
 }

@@ -7,7 +7,7 @@ angular
     .config(($stateProvider) => {
         $stateProvider.state('samples.navigator', {
             url: '/navigator',
-            templateUrl: '../showcase/app/states/samples/navigator/navigator-sample.tpl.html',
+            templateUrl: 'samples/navigator/navigator-sample.tpl.html',
             controller: 'navigatorSampleController',
             controllerAs: 'ctrl'
         }).state('samples.navigator.1', {

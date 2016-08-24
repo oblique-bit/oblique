@@ -86,7 +86,8 @@ module.exports = function (grunt) {
             },
 
             exec: {
-                tsc: 'tsc' //TODO: remove this as soon as this is fixed: https://github.com/TypeStrong/grunt-ts/issues/339
+                tsc: 'tsc', //TODO: remove this as soon as this is fixed: https://github.com/TypeStrong/grunt-ts/issues/339
+                publish: 'npm publish target/oblique-reactive'
             },
 
             ts: {
@@ -134,7 +135,7 @@ module.exports = function (grunt) {
              * Copy files and folders
              */
             copy: {
-                'typescript': {
+                typescript: {
                     files: [
                         {
                             expand: true,
@@ -374,13 +375,14 @@ module.exports = function (grunt) {
                 },
                 showcase: {
                     module: '<%= env.app.module %>.app-templates',
-                    //base: '<%= paths.states %>', //This isn't working
+                    options: {
+                        base: '<%= paths.states %>'
+                    },
                     src: '<%= paths.app %>**/*.tpl.html',
                     dest: '<%= env.build.target %>app/app-templates.js'
                 },
                 oblique: {
                     module: 'oblique-reactive.app-templates',
-                    //base: '<%= paths.oblique %>',
                     src: '<%= paths.oblique %>**/*.tpl.html',
                     dest: '<%= env.build.target %>oblique-reactive/oblique-reactive-templates.js'
                 }
@@ -495,12 +497,14 @@ module.exports = function (grunt) {
                     files: [
                         '<%= paths.app %>**/*.js',
                         '<%= paths.app %>**/*.ts',
+                        '<%= paths.oblique %>**/*.ts',
                         '<%= paths.app %>**/*.json'
                     ],
                     tasks: [
                         'config:<%= _currentEnv() %>',
                         'tslint',
                         'exec:tsc',
+                        'copy:typescript',
                         'copy:app',
                         'html2js',
                         'replace'
@@ -558,7 +562,10 @@ module.exports = function (grunt) {
                     ]
                 },
                 views: {
-                    files: ['<%= paths.app %>**/*.tpl.html'],
+                    files: [
+                        '<%= paths.app %>**/*.tpl.html',
+                        '<%= paths.oblique %>**/*.tpl.html'
+                    ],
                     tasks: [
                         'config:<%= _currentEnv() %>',
                         'html2js'
@@ -746,6 +753,33 @@ module.exports = function (grunt) {
             "bump-only:" + (target || "patch"),
             "bump-commit"
         ]);
+    });
+
+    grunt.registerTask('publish', [
+        'config:prod',
+        'clean:build',
+        'ts:oblique',
+        'html2js:oblique',
+        'replace:oblique',
+        'browserify:oblique',
+        'package.json',
+        'exec:publish'
+    ]);
+
+    grunt.registerTask('package.json', function (target) {
+        var pkgJson = require('./package.json');
+        var targetPkgJson = {};
+        var fieldsToCopy = ['version', 'description', 'keywords', 'author', 'repository', 'license', 'bugs', 'homepage', 'publishConfig'];
+
+        targetPkgJson['name'] = 'oblique-reactive';
+
+        fieldsToCopy.forEach(function(field) { targetPkgJson[field] = pkgJson[field]; });
+
+        targetPkgJson['main'] = 'oblique-reactive.js';
+
+        targetPkgJson.peerDependencies = pkgJson.dependencies;
+
+        grunt.file.write('target/oblique-reactive/package.json', JSON.stringify(targetPkgJson, null, 2));
     });
 
     // Main task aliases

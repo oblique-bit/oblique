@@ -12,6 +12,7 @@ export class NavigableDirectiveController {
         down: 40
     };
 
+    /*@ngInject*/
     constructor(private $element:ng.IRootElementService,
                 private $scope) {
         this.navigableOnActivation = this.navigableOnActivation || angular.noop;

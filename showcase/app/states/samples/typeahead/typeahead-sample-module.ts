@@ -8,7 +8,7 @@ angular
     .config(($stateProvider) => {
         $stateProvider.state('samples.typeahead', {
             url: '/typeahead',
-            templateUrl: '../showcase/app/states/samples/typeahead/typeahead-sample.tpl.html',
+            templateUrl: 'samples/typeahead/typeahead-sample.tpl.html',
             controller: 'typeaheadSampleController',
             controllerAs: 'ctrl',
             resolve: {

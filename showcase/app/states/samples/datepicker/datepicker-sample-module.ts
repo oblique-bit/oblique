@@ -7,7 +7,7 @@ angular
     .config(($stateProvider) => {
         $stateProvider.state('samples.datepicker', {
             url: '/datepicker',
-            templateUrl: '../showcase/app/states/samples/datepicker/datepicker-sample.tpl.html',
+            templateUrl: 'samples/datepicker/datepicker-sample.tpl.html',
             controller: 'datepickerSampleController',
             controllerAs: 'ctrl'
         });

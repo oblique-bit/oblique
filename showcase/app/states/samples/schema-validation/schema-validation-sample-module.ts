@@ -7,7 +7,7 @@ angular
     .config(($stateProvider) => {
         $stateProvider.state('samples.schemaValidation', {
             url: '/schema-validation',
-            templateUrl: '../showcase/app/states/samples/schema-validation/schema-validation-sample.tpl.html',
+            templateUrl: 'samples/schema-validation/schema-validation-sample.tpl.html',
             controller: 'schemaValidationSampleController',
             controllerAs: 'ctrl',
             data: {

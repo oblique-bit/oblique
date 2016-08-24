@@ -23,7 +23,7 @@ angular
         $stateProvider.state('samples', {
             url: '/samples',
             abstract: true,
-            templateUrl: '../showcase/app/states/samples/samples.tpl.html'
+            templateUrl: 'samples/samples.tpl.html'
         });
     });
 
