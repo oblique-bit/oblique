@@ -1,9 +1,9 @@
 import {DatepickerSampleController} from './datepicker-sample-controller';
 
-export const datepicker = '__MODULE__.samples.datepicker';
+export const DatepickerModule = '__MODULE__.samples.datepicker';
 
 angular
-    .module(datepicker, [])
+    .module(DatepickerModule, [])
     .config(($stateProvider) => {
         $stateProvider.state('samples.datepicker', {
             url: '/datepicker',

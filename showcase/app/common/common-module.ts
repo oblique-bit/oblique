@@ -1,8 +1,8 @@
 import {AuthService} from './auth/auth-service';
 
-export const common = '__MODULE__.common';
+export const CommonModule = '__MODULE__.common';
 
-angular.module('__MODULE__.common', [])
+angular.module(CommonModule, [])
     .filter('asDate', ['$filter', ($filter) => {
         return (input) => {
             return input ? $filter('date')(new Date(input), 'dd.MM.yyyy') : input;

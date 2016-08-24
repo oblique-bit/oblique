@@ -1,23 +1,23 @@
-import {datepicker} from './datepicker/datepicker-sample-module';
-import {multiselect} from './multiselect/multiselect-sample-module';
-import {navigable} from './navigable/navigable-sample-module';
-import {navigator} from './navigator/navigator-sample-module';
-import {schemaValidation} from './schema-validation/schema-validation-sample-module';
-import {typeahead} from './typeahead/typeahead-sample-module';
-import {uiScroll} from './ui-scroll/ui-scroll-sample-module';
+import {DatepickerModule} from './datepicker/datepicker-sample-module';
+import {MultiselectModule} from './multiselect/multiselect-sample-module';
+import {NavigableModule} from './navigable/navigable-sample-module';
+import {NavigatorModule} from './navigator/navigator-sample-module';
+import {SchemaValidationModule} from './schema-validation/schema-validation-sample-module';
+import {TypeaheadModule} from './typeahead/typeahead-sample-module';
+import {UiScrollModule} from './ui-scroll/ui-scroll-sample-module';
 
-export const samples = '__MODULE__.samples';
+export const SamplesModule = '__MODULE__.samples';
 
 angular
-    .module(samples, [
+    .module(SamplesModule, [
         'ui.router',
-        datepicker,
-        multiselect,
-        navigable,
-        navigator,
-        schemaValidation,
-        typeahead,
-        uiScroll
+        DatepickerModule,
+        MultiselectModule,
+        NavigableModule,
+        NavigatorModule,
+        SchemaValidationModule,
+        TypeaheadModule,
+        UiScrollModule
     ])
     .config(($stateProvider) => {
         $stateProvider.state('samples', {

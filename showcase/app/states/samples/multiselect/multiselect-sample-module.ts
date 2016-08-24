@@ -1,9 +1,9 @@
 import {MultiselectSampleController} from './multiselect-sample-controller';
 
-export const multiselect = '__MODULE__.samples.multiselect';
+export const MultiselectModule = '__MODULE__.samples.multiselect';
 
 angular
-    .module(multiselect, [])
+    .module(MultiselectModule, [])
     .config(($stateProvider) => {
         $stateProvider.state('samples.multiselect', {
             url: '/multiselect',

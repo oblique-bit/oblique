@@ -2,10 +2,10 @@ import {MoviesController} from './movies-controller';
 import {MovieResource} from './movie-resource';
 import {MovieService} from './movie-service';
 
-export const movies = '__MODULE__.movies';
+export const MoviesModule = '__MODULE__.movies';
 
 angular
-    .module(movies, ['ui.router'])
+    .module(MoviesModule, ['ui.router'])
     .config(($stateProvider: ng.ui.IStateProvider) => {
         $stateProvider.state('movies', {
             url: '/movies?query',

@@ -85,36 +85,66 @@ module.exports = function (grunt) {
                 staging: ['<%= paths.staging %>']
             },
 
+            /*
+             * grunt-exec
+             *
+             * https://github.com/jharding/grunt-exec
+             *
+             * Runs tsc and npm publish in the terminal
+             */
             exec: {
                 tsc: 'tsc', //TODO: remove this as soon as this is fixed: https://github.com/TypeStrong/grunt-ts/issues/339
                 publish: 'npm publish target/oblique-reactive'
             },
 
+            /*
+             * grunt-ts
+             *
+             * https://github.com/TypeStrong/grunt-ts
+             *
+             * Compiles our TypeScript sources to JS
+             */
             ts: {
-                options: {
-                    fast: 'never'
-                },
                 oblique: {
                     tsconfig: 'tsconfig.publish.json'
                 },
+                //Currently not used, see exec
                 showcase: {
                     tsconfig: true
                 }
             },
+
+            /*
+             * grunt-tslint
+             *
+             * https://github.com/palantir/grunt-tslint
+             *
+             * Validate files with TSLint, a tool that helps to detect errors and potential problems in your TypeScript code.
+             */
             tslint: {
                 options: {
                     configuration: "tslint.json"
                 },
                 files: {
                     src: [
-                        "<%= paths.app %>**/*.ts"
+                        "<%= paths.app %>**/*.ts",
+                        "<%= paths.oblique %>**/*.ts"
                     ]
                 }
             },
+
+            /*
+             * grunt-browserify
+             *
+             * https://github.com/jmreidy/grunt-browserify
+             *
+             * Bundle all the TypeScript files into one bundle file.
+             */
             browserify: {
                 app: {
                     src: '<%= env.build.target %>app/app-module.js',
                     dest: '<%= env.build.target %>app/bundles/app.js',
+                    //Alias to the components (bundles them together with the showcase)
                     options: {
                         alias: {
                             'oblique-reactive/oblique-reactive': './<%= env.build.target %>oblique-reactive/oblique-reactive.js'
@@ -135,6 +165,7 @@ module.exports = function (grunt) {
              * Copy files and folders
              */
             copy: {
+                //RootDirs will mess up the structure, so we copy the compiled files to the right place
                 typescript: {
                     files: [
                         {
@@ -331,7 +362,10 @@ module.exports = function (grunt) {
              */
             replace: {
                 showcase: {
-                    src: '<%= env.build.target%>/app/**/*.js',
+                    src: [
+                        '<%= env.build.target%>/app/**/*.js',
+                        '<%= env.build.target%>/oblique-reactive/**/*.js' //Used in tests
+                    ],
                     overwrite: true,
                     replacements: [
                         {
@@ -341,20 +375,6 @@ module.exports = function (grunt) {
                         {
                             from: "'__CONFIG__'",
                             to: '<%= JSON.stringify(env.app) %>'
-                        },
-                        {
-                            from: "__TEMPLATE_MODULE__",
-                            to: '<%= env.app.module %>.app-templates'
-                        }
-                    ]
-                },
-                oblique: {
-                    src: '<%= env.build.target%>/oblique-reactive/**/*.js',
-                    overwrite: true,
-                    replacements: [
-                        {
-                            from: "__TEMPLATE_MODULE__",
-                            to: 'oblique-reactive.app-templates'
                         }
                     ]
                 }
@@ -370,18 +390,21 @@ module.exports = function (grunt) {
             html2js: {
                 options: {
                     amd: true,
-                    amdPrefixString: 'exports.templateModuleName = \'__TEMPLATE_MODULE__\';\n',
                     amdSuffixString: ''
                 },
                 showcase: {
                     module: '<%= env.app.module %>.app-templates',
                     options: {
+                        amdPrefixString: 'exports.templateModuleName = \'__MODULE__.app-templates\';\n',
                         base: '<%= paths.states %>'
                     },
                     src: '<%= paths.app %>**/*.tpl.html',
                     dest: '<%= env.build.target %>app/app-templates.js'
                 },
                 oblique: {
+                    options: {
+                        amdPrefixString: 'exports.templateModuleName = \'oblique-reactive.app-templates\';\n',
+                    },
                     module: 'oblique-reactive.app-templates',
                     src: '<%= paths.oblique %>**/*.tpl.html',
                     dest: '<%= env.build.target %>oblique-reactive/oblique-reactive-templates.js'
@@ -755,17 +778,18 @@ module.exports = function (grunt) {
         ]);
     });
 
+    //Publishes the oblique module on the Nexus
     grunt.registerTask('publish', [
         'config:prod',
         'clean:build',
         'ts:oblique',
         'html2js:oblique',
-        'replace:oblique',
         'browserify:oblique',
         'package.json',
         'exec:publish'
     ]);
 
+    //This creates the package.json for publishing
     grunt.registerTask('package.json', function (target) {
         var pkgJson = require('./package.json');
         var targetPkgJson = {};
@@ -773,7 +797,9 @@ module.exports = function (grunt) {
 
         targetPkgJson['name'] = 'oblique-reactive';
 
-        fieldsToCopy.forEach(function(field) { targetPkgJson[field] = pkgJson[field]; });
+        fieldsToCopy.forEach(function (field) {
+            targetPkgJson[field] = pkgJson[field];
+        });
 
         targetPkgJson['main'] = 'oblique-reactive.js';
 

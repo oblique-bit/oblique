@@ -1,9 +1,9 @@
 import {SchemaValidationSampleController} from './schema-validation-sample-controller';
 
-export const schemaValidation = '__MODULE__.samples.schemaValidation';
+export const SchemaValidationModule = '__MODULE__.samples.schemaValidation';
 
 angular
-    .module(schemaValidation, [])
+    .module(SchemaValidationModule, [])
     .config(($stateProvider) => {
         $stateProvider.state('samples.schemaValidation', {
             url: '/schema-validation',

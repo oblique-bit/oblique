@@ -26,11 +26,14 @@ import {UibTypeaheadPopupDirective} from './ui/typeahead-popup-directive';
 import {ValidationBusinessDirective} from './validation/validation-business-directive';
 import {SchemaValidateDirective} from './validation/schema-validate-directive';
 import {SchemaValidateConfig} from './validation/schema-validate-config';
-import {templateModuleName} from '../oblique-reactive-templates';
 
-export const oblique = 'oblique-reactive';
+//Makes sure, that the oblique-reactive-templates will be loaded (and bundled)
+import '../oblique-reactive-templates';
 
-angular.module(oblique, [templateModuleName])
+//exports the name of the module, this needs to be imported in the app-module of the application
+export const ObliqueModule = 'oblique-reactive';
+
+angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
     .directive('date', () => new DateDirective())
     .directive('numberFormat', ($filter:ng.IFilterService, $parse:ng.IParseService) => new NumberFormatDirective($filter, $parse))
     .decorator('$exceptionHandler', exceptionHandlerDecorator)

@@ -1,3 +1,9 @@
+/*
+ * Loads all compiled TypeScript files for the tests.
+ * After that, it will load all .spec.ts files, to run the tests.
+ * Finally, it starts karma
+ */
+
 // Turn on full stack traces in errors to help debugging
 Error.stackTraceLimit = Infinity;
 

@@ -1,10 +1,10 @@
 import {HttpDecorator, NotificationService} from 'oblique-reactive/oblique-reactive';
 import {TypeaheadSampleController} from './typeahead-sample-controller';
 
-export const typeahead = '__MODULE__.samples.typeahead';
+export const TypeaheadModule = '__MODULE__.samples.typeahead';
 
 angular
-    .module(typeahead, [])
+    .module(TypeaheadModule, [])
     .config(($stateProvider) => {
         $stateProvider.state('samples.typeahead', {
             url: '/typeahead',

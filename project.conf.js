@@ -61,7 +61,7 @@ module.exports = {
 					"angular-translate-storage-local/angular-translate-storage-local.js",
 					"angular-ui-router/release/angular-ui-router.js",
 					"angular-ui-scroll/dist/ui-scroll.js",
-					"angularjs-dropdown-multiselect-demo/src/angularjs-dropdown-multiselect.js",
+					"angularjs-dropdown-multiselect/src/angularjs-dropdown-multiselect.js",
 					"checklist-model/checklist-model.js",
 					"satellizer/satellizer.js",
 					"tv4/tv4.js",

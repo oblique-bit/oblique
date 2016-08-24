@@ -1,10 +1,10 @@
 import {AuthController} from './auth-controller';
 
-export const auth = '__MODULE__.auth';
+export const AuthModule = '__MODULE__.auth';
 
 angular
-    .module(auth, ['ui.router'])
-    .config(($stateProvider: ng.ui.IStateProvider) => {
+    .module(AuthModule, ['ui.router'])
+    .config(($stateProvider:ng.ui.IStateProvider) => {
         $stateProvider.state('auth', {
             url: '/auth',
             templateUrl: 'auth/auth.tpl.html',
@@ -17,5 +17,5 @@ angular
             }
         });
     })
-    .controller('authController',AuthController);
+    .controller('authController', AuthController);
 

@@ -22,11 +22,13 @@ module.exports = function (config) {
 
     //System config addition for the karma urls
 
-    //Adds the TS modules to the karma files, but doesn't load them in the browser
+    //Adds the compiled TypeScript files to the karma files, but doesn't load them in the browser, it just makes them available for SystemJS
     karmaResources.push({pattern: project.common.build.target + 'app/**/*.js', included: false, watched: false});
     karmaResources.push({pattern: project.common.build.target + 'oblique-reactive/**/*.js', included: false, watched: false});
 
     karmaResources.push('node_modules/angular-mocks/angular-mocks.js');
+
+    //Loads the main file, that loads all TypeScript sources be itself
     karmaResources.push('test.main.js');
 
     karmaConfig = {
@@ -51,7 +53,6 @@ module.exports = function (config) {
             'karma-phantomjs-launcher',
             'karma-junit-reporter'
         ],
-
 
         // test results reporter to use
         // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'

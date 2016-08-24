@@ -1,12 +1,19 @@
-import {oblique, LoadingServiceProvider, SchemaValidateConfig, DatepickerPopupConfig} from 'oblique-reactive/oblique-reactive';
+//TODO: remove this, as soon as typescript 2 is supported by IntelliJ
+//Fixes the types
+/// <reference path="../../typings/index.d.ts" />
+
+//Loads the ObliqueReactive module
+import {ObliqueModule, LoadingServiceProvider, SchemaValidateConfig, DatepickerPopupConfig} from 'oblique-reactive/oblique-reactive';
 
 import {AppController} from './app-controller';
-import {common} from './common/common-module';
-import {auth} from './states/auth/auth-module';
-import {home} from './states/home/home-module';
-import {movies} from './states/movies/movies-module';
-import {samples} from './states/samples/samples-module';
-import {templateModuleName} from './app-templates';
+import {CommonModule} from './common/common-module';
+import {AuthModule} from './states/auth/auth-module';
+import {HomeModule} from './states/home/home-module';
+import {MoviesModule} from './states/movies/movies-module';
+import {SamplesModule} from './states/samples/samples-module';
+
+//Makes sure, that the app-templates will be loaded (and bundled)
+import './app-templates';
 
 angular
     .module('__MODULE__', [
@@ -24,13 +31,13 @@ angular
         'checklist-model',
         'monospaced.elastic',
 
-        templateModuleName,
-        oblique,
-        common,
-        auth,
-        home,
-        movies,
-        samples
+        '__MODULE__.app-templates',
+        ObliqueModule,
+        CommonModule,
+        AuthModule,
+        HomeModule,
+        MoviesModule,
+        SamplesModule
     ])
     .constant('CONFIG', window['__MODULE__'].CONFIG)
 

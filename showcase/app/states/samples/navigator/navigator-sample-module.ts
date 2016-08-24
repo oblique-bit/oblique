@@ -1,9 +1,9 @@
 import {NavigatorSampleController} from './navigator-sample-controller';
 
-export const navigator = '__MODULE__.samples.navigator';
+export const NavigatorModule = '__MODULE__.samples.navigator';
 
 angular
-    .module(navigator, [])
+    .module(NavigatorModule, [])
     .config(($stateProvider) => {
         $stateProvider.state('samples.navigator', {
             url: '/navigator',

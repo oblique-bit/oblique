@@ -2,10 +2,10 @@ import {NotificationService, HttpDecorator} from 'oblique-reactive/oblique-react
 
 import {UiScrollSampleController} from './ui-scroll-sample-controller';
 
-export const uiScroll = '__MODULE__.samples.uiScroll';
+export const UiScrollModule = '__MODULE__.samples.uiScroll';
 
 angular
-    .module(uiScroll, [])
+    .module(UiScrollModule, [])
     .config(($stateProvider) => {
         $stateProvider.state('samples.uiScroll', {
             url: '/ui-scroll',
