@@ -18,6 +18,7 @@ __karma__.loaded = function () {
 SystemJS.config({
     baseURL: '/base/',
     defaultJSExtensions: true,
+    //Has to map oblique-reactive to it's real path
     map: {
         'oblique-reactive': 'target/oblique-reactive'
     }

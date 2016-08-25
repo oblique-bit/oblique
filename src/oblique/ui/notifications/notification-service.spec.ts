@@ -4,18 +4,16 @@ import {NotificationService} from './notification-service';
 describe('NotificationService', () => {
     let service:NotificationService;
 
+    //Needs to import this, because otherwise it makes problems with decorators
     beforeEach(angular.mock.module('__MODULE__'));
 
     beforeEach(inject(($timeout) => {
         service = new NotificationService($timeout, {
             timeout: 100
         });
-        console.log(service);
     }));
 
-    it('should remove all Notifications on clear', () => {
-        console.log(service);
-
+    it('should remove all notifications on clear', () => {
         service.info('FUU');
         service.error('BAR');
         service.warn('BAZ');

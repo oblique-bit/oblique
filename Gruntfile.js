@@ -138,7 +138,7 @@ module.exports = function (grunt) {
              *
              * https://github.com/jmreidy/grunt-browserify
              *
-             * Bundle all the TypeScript files into one bundle file.
+             * Bundle all the TypeScript files into one.
              */
             browserify: {
                 app: {
@@ -714,7 +714,8 @@ module.exports = function (grunt) {
         'less',
         'html2js',
         'replace',
-        'karma:unit'
+        'karma:unit',
+        'clean:staging'
     ]);
 
     grunt.registerTask('build-dev', [
@@ -782,11 +783,14 @@ module.exports = function (grunt) {
     grunt.registerTask('publish', [
         'config:prod',
         'clean:build',
+        'build',        //Run test before we publish
+        'clean:build',
         'ts:oblique',
         'html2js:oblique',
         'browserify:oblique',
         'package.json',
-        'exec:publish'
+        'exec:publish',
+        'clean:staging'
     ]);
 
     //This creates the package.json for publishing
