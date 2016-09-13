@@ -10,7 +10,7 @@
   },
   "private": true,
   "publishConfig": {
-    "registry": "http://nexus.vmjeap10a04.bfi.admin.ch:8020/repository/npm-intern/"
+    "registry": "https://nexus.eap.bit.admin.ch/content/repositories/npm_bit_releases/"
   },
   "repository": {
     "type": "git",
