@@ -37,7 +37,7 @@
     "checklist-model": "0.9.0",
     "lodash": "3.10.1",
     "moment": "2.12.0",
-    "oblique-ui": "git+https://stash.eap.bit.admin.ch/scm/oui/oblique-ui.git#1.3.0-RC1",
+    "oblique-ui": "git+https://stash.eap.bit.admin.ch/scm/oui/oblique-ui.git#feature-usable-as-npm-dependency",
     "satellizer": "0.14.0",
     "systemjs": "^0.19.36",
     "tv4": "1.2.7"
