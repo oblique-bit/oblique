@@ -779,8 +779,7 @@ module.exports = function (grunt) {
         ]);
     });
 
-    //Publishes the oblique module on the Nexus
-    grunt.registerTask('publish', [
+    grunt.registerTask('build-publish', [
         'config:prod',
         'clean:build',
         'build',        //Run test before we publish
@@ -789,8 +788,13 @@ module.exports = function (grunt) {
         'html2js:oblique',
         'browserify:oblique',
         'package.json',
-        'exec:publish',
         'clean:staging'
+    ]);
+
+    //Publishes the oblique module on the Nexus
+    grunt.registerTask('publish', [
+        'build-publish',
+        'exec:publish'
     ]);
 
     //This creates the package.json for publishing
