@@ -62,7 +62,7 @@ angular
         });
     })
     .config((CONFIG, $authProvider) => {
-        $authProvider.baseUrl = (CONFIG.api.url || '') + CONFIG.api.context;
+        $authProvider.baseUrl = '/' + CONFIG.api.path;
         $authProvider.signupUrl = '/auth/register';
         //$authProvider.signupRedirect = '/';
         $authProvider.loginUrl = '/auth/login';

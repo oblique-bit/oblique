@@ -4,7 +4,12 @@ export class ObliqueHttp {
     url:string;
 
     constructor(private $http:ng.IHttpService, CONFIG) {
-        this.url = (CONFIG.api.url || '') + CONFIG.api.context;
+        var url = document.URL.split(/.*\.html|#/i)[0];
+        if(CONFIG.api.context) {
+            this.url = url.split(CONFIG.api.context)[0];
+        } else {
+            this.url = url + CONFIG.api.path;
+        }
     }
 
     get<T>(url:string, config?:IRequestShortcutConfig):ng.IPromise<T> {

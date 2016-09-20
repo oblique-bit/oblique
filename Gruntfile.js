@@ -636,8 +636,31 @@ module.exports = function (grunt) {
                         port: 9000, // Port used to deploy the client
                         base: '<%= env.build.target %>',
                         hostname: '<%= env.app.api.hostname %>',
-                        index: '<%= env.app.home %>'
-                    }
+                        index: '<%= env.app.home %>',
+                        middleware: function (connect, options) {
+                            if (!Array.isArray(options.base)) {
+                                options.base = [options.base];
+                            }
+                            // Setup the proxy
+                            var middlewares = [require('grunt-connect-proxy/lib/utils').proxyRequest];
+
+                            var serveStatic = require('serve-static');
+
+                            // Serve static files.
+                            options.base.forEach(function (base) {
+                                middlewares.push(serveStatic(base));
+                            });
+
+                            return middlewares;
+                        }
+                    },
+                    proxies: [
+                        {
+                            context: '/api',
+                            host: 'localhost',
+                            port: 3000
+                        }
+                    ]
                 }
             },
 

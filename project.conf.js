@@ -20,7 +20,7 @@ module.exports = {
 			},
 			"api": {
 				// Relative path prefix for API calls:
-				"context": "/api",
+				"path": "api",
 
 				// For absolute API URL, comment or provide an empty string to disable:
 				"url": "http://localhost:3000",
@@ -103,7 +103,7 @@ module.exports = {
 			"systemjs": false,
 			"api": {
 				// Relative path prefix for API calls:
-				"context": "/oblique-reactive/api",
+				"path": "/oblique-reactive/api",
 
 				// Disable absolute API URL:
 				"url": "" // "http://eui.bit.admin.ch:3000"
