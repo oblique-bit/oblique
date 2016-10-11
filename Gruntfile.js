@@ -12,8 +12,8 @@ module.exports = function (grunt) {
 		less: 'src/less/',
 		pages: 'src/pages/',
 		partials: 'src/partials/',
-		vendor: 'node_modules/',
-        targetVendor: 'vendor/',
+		modules: 'node_modules/',
+		vendor: 'vendor/',
 		staging: '.tmp'
 	};
 
@@ -115,9 +115,9 @@ module.exports = function (grunt) {
 				oblique: {
 					files: [{
 						expand: true,
-						cwd: '<%= paths.vendor %>oblique-ui/dist/',
+						cwd: '<%= paths.modules %>oblique-ui/dist/',
 						src: '**/*',
-						dest: '<%= env.build.target %><%= paths.targetVendor %>oblique-ui/'
+						dest: '<%= env.build.target %><%= paths.vendor %>oblique-ui/'
 					}]
 				},
 				app: {
@@ -138,25 +138,25 @@ module.exports = function (grunt) {
 				},
 				'vendor-js': {
 					files: [{
-						cwd: '<%= paths.vendor %>',
+						cwd: '<%= paths.modules %>',
 						src: '<%= env.resources.vendor.js %>',
-						dest: '<%= env.build.target %><%= paths.targetVendor %>',
+						dest: '<%= env.build.target %><%= paths.vendor %>',
 						expand: true
 					}]
 				},
 				'vendor-css': {
 					files: [{
-						cwd: '<%= paths.vendor %>',
+						cwd: '<%= paths.modules %>',
 						src: '<%= env.resources.vendor.css %>',
-						dest: '<%= env.build.target %><%= paths.targetVendor %>',
+						dest: '<%= env.build.target %><%= paths.vendor %>',
 						expand: true
 					}]
 				},
 				'vendor-assets': {
 					files: [{
-						cwd: '<%= paths.vendor %>',
+						cwd: '<%= paths.modules %>',
 						src: '<%= env.resources.vendor.assets %>',
-						dest: '<%= env.build.target %><%= paths.targetVendor %>',
+						dest: '<%= env.build.target %><%= paths.vendor %>',
 						expand: true,
 						flatten: false
 					}]
@@ -182,13 +182,13 @@ module.exports = function (grunt) {
 						'package.json'
 					],
 					layout: false, // Using `composable` layouts, see why here: https://github.com/assemble/assemble/issues/555
-					layoutdir: '<%= paths.vendor %>oblique-ui/templates/layouts/',
+					layoutdir: '<%= paths.modules %>oblique-ui/templates/layouts/',
 					partials: [
-						'<%= paths.vendor %>oblique-ui/templates/**/*.hbs',
+						'<%= paths.modules %>oblique-ui/templates/**/*.hbs',
 						'<%= paths.partials %>**/*.hbs'
 					],
 					helpers: [
-						'<%= paths.vendor %>oblique-ui/templates/helpers/**/*.js'
+						'<%= paths.modules %>oblique-ui/templates/helpers/**/*.js'
 					],
 
 					// Layout placeholders override:
@@ -226,7 +226,7 @@ module.exports = function (grunt) {
 						// References:
 						pages: '',
 						vendor: {
-							path: '<%= paths.targetVendor %>',
+							path: '<%= paths.vendor %>',
 							obliqueui: {
 								name: 'oblique-ui',
 								title: 'ObliqueUI',
@@ -403,7 +403,7 @@ module.exports = function (grunt) {
 				},
 				project: {
 					files: [
-						'project.json',
+						'project.conf.js',
 						'Gruntfile.js'
 					],
 					tasks: [
@@ -441,7 +441,7 @@ module.exports = function (grunt) {
 				},
 				'vendor-js': {
 					options: {
-						cwd: '<%= paths.vendor %>'
+						cwd: '<%= paths.modules %>'
 					},
 					files: '{<%= env.resources.vendor.js %>}',
 					tasks: [
@@ -451,7 +451,7 @@ module.exports = function (grunt) {
 				},
 				'vendor-css': {
 					options: {
-						cwd: '<%= paths.vendor %>'
+						cwd: '<%= paths.modules %>'
 					},
 					files: '{<%= env.resources.vendor.css %>}',
 					tasks: [
@@ -488,7 +488,7 @@ module.exports = function (grunt) {
 						'<%= env.build.target %>app/**/*',
 						'<%= env.build.target %>js/**/*',
 						'<%= env.build.target %>css/**/*',
-						'<%= env.build.target %><%= paths.targetVendor %>**/*'
+						'<%= env.build.target %><%= paths.vendor %>**/*'
 					],
 					tasks: [
 						'config:<%= _currentEnv() %>',
@@ -525,7 +525,8 @@ module.exports = function (grunt) {
 						port: 9000, // Port used to deploy the client
 						base: '<%= env.build.target %>',
 						hostname: '<%= env.app.api.hostname %>',
-						index: '<%= env.app.home %>'
+						index: '<%= env.app.home %>',
+						open: true
 					}
 				}
 			},

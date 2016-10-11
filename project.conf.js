@@ -16,6 +16,10 @@ module.exports = {
 				"layout": "default",
 				"http": {
 					"timeout": 10000
+				},
+				format: {
+					date: 'd!.M!.yyyy', // Default date format for parsing
+					dateAlt: ['d!.M!.yy'] // Alternative date formats for the datePicker
 				}
 			},
 			"api": {
@@ -100,13 +104,12 @@ module.exports = {
 			"vendor": {
 				"js": [
 					"moment/moment.js",
-					"lodash/index.js",
+					"lodash/lodash.js",
 					"angular/angular.js",
 					"angular-animate/angular-animate.js",
 					"angular-ui-bootstrap/dist/ui-bootstrap-tpls.js",
 					"angular-confirm/angular-confirm.js",
 					"angular-cookies/angular-cookies.js",
-					"angular-dateParser/dist/angular-dateparser.js",
 					"angular-dynamic-locale/dist/tmhDynamicLocale.js",
 					"angular-elastic/elastic.js",
 					"angular-i18n/angular-locale_de.js",
@@ -120,9 +123,9 @@ module.exports = {
 					"angular-translate-storage-local/angular-translate-storage-local.js",
 					"angular-ui-router/release/angular-ui-router.js",
 					"angular-ui-scroll/dist/ui-scroll.js",
-					"angularjs-dropdown-multiselect-demo/src/angularjs-dropdown-multiselect.js",
+					"angularjs-dropdown-multiselect/src/angularjs-dropdown-multiselect.js",
 					"checklist-model/checklist-model.js",
-					"satellizer/satellizer.js",
+					"satellizer/dist/satellizer.js",
 					"tv4/tv4.js",
 					"tv4/lang/de.js",
 					"tv4/lang/fr.js"

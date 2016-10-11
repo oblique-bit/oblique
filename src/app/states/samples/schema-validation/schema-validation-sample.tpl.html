@@ -2,8 +2,8 @@
 	<h2 class="page-header">
 		<span>Schema validation</span>
 		<span class="pull-right">
-			<div class="fa fa-check text-success" tooltip="Form is valid" tooltip-placement="bottom" ng-if="validationForm.$valid"></div>
-			<span class="fa fa-warning text-danger" tooltip="Form is not valid" tooltip-placement="bottom" ng-if="!validationForm.$valid"></span>
+			<div class="fa fa-check text-success" uib-tooltip="Form is valid" tooltip-placement="bottom" ng-if="validationForm.$valid"></div>
+			<span class="fa fa-warning text-danger" uib-tooltip="Form is not valid" tooltip-placement="bottom" ng-if="!validationForm.$valid"></span>
 		</span>
 	</h2>
 	<div class="form-group" has-error>
@@ -14,7 +14,7 @@
 		</div>
 		<div class="col-sm-2">
 			<a class="form-control-static" role="button"
-			   popover-html="jsonSource(sampleSchema.properties.text)" popover-title="Schema" popover-placement="bottom">
+			   uib-popover-html="jsonSource(sampleSchema.properties.text)" uib-popover-title="Schema" uib-popover-placement="bottom">
 				<span class="fa fa-sitemap"></span>
 			</a>
 		</div>
@@ -27,13 +27,13 @@
 		</div>
 		<div class="col-sm-1">
 			<a class="form-control-static" role="button"
-			   popover-html="jsonSource(sampleSchema.properties.number)" popover-title="Schema" popover-placement="bottom">
+			   uib-popover-html="jsonSource(sampleSchema.properties.number)" uib-popover-title="Schema" uib-popover-placement="bottom">
 				<span class="fa fa-sitemap"></span>
 			</a>
 		</div>
 		<div class="col-sm-1">
 			<a class="form-control-static" role="button"
-			   popover-html="'<ul class=list-unstyled><li><code>input[type=\'text\']</code></li><li><code>[number-format]</code></li></ul>'" popover-title="Usage" popover-placement="bottom">
+			   uib-popover-html="'<ul class=list-unstyled><li><code>input[type=\'text\']</code></li><li><code>[number-format]</code></li></ul>'" uib-popover-title="Usage" uib-popover-placement="bottom">
 				<span class="fa fa-info-circle"></span>
 			</a>
 		</div>
@@ -47,7 +47,7 @@
 		</div>
 		<div class="col-sm-2">
 			<a class="form-control-static" role="button"
-			   popover-html="jsonSource(sampleSchema.properties.integer)" popover-title="Schema" popover-placement="bottom">
+			   uib-popover-html="jsonSource(sampleSchema.properties.integer)" uib-popover-title="Schema" uib-popover-placement="bottom">
 				<span class="fa fa-sitemap"></span>
 			</a>
 		</div>
@@ -62,11 +62,11 @@
 				<div class="col-sm-6">
 					<div class="btn-group">
 						<button type="button" class="btn btn-info" ng-click="today()" tooltip-append-to-body="true"
-						        tooltip="Sets model to today's date using the standard JavaScript Date object">Today</button>
+						        uib-tooltip="Sets model to today's date using the standard JavaScript Date object">Today</button>
 						<button type="button" class="btn btn-info" ng-click="toISO()" tooltip-append-to-body="true"
-						        tooltip="Sets model to today's date using the ISO 8601 format">ISO</button>
+						        uib-tooltip="Sets model to today's date using the ISO 8601 format">ISO</button>
 						<button type="button" class="btn btn-info" ng-click="toTimestamp()" tooltip-append-to-body="true"
-						        tooltip="Sets model to today's date using a timestamp">Timestamp</button>
+						        uib-tooltip="Sets model to today's date using a timestamp">Timestamp</button>
 					</div>
 				</div>
 			</div>
@@ -75,7 +75,7 @@
 		</div>
 		<div class="col-sm-2">
 			<a class="form-control-static" role="button"
-			   popover-html="jsonSource(sampleSchema.properties.date)" popover-title="Schema" popover-placement="bottom">
+			   uib-popover-html="jsonSource(sampleSchema.properties.date)" uib-popover-title="Schema" uib-popover-placement="bottom">
 				<span class="fa fa-sitemap"></span>
 			</a>
 		</div>
@@ -89,7 +89,7 @@
 		</div>
 		<div class="col-sm-2">
 			<a class="form-control-static" role="button"
-			   popover-html="jsonSource(sampleSchema.properties.time)" popover-title="Schema" popover-placement="bottom">
+			   uib-popover-html="jsonSource(sampleSchema.properties.time)" uib-popover-title="Schema" uib-popover-placement="bottom">
 				<span class="fa fa-sitemap"></span>
 			</a>
 		</div>
@@ -106,7 +106,7 @@
 		</div>
 		<div class="col-sm-2">
 			<a class="form-control-static" role="button"
-			   popover-html="jsonSource(sampleSchema.properties.select)" popover-title="Schema" popover-placement="bottom">
+			   uib-popover-html="jsonSource(sampleSchema.properties.select)" uib-popover-title="Schema" uib-popover-placement="bottom">
 				<span class="fa fa-sitemap"></span>
 			</a>
 		</div>
@@ -121,7 +121,7 @@
 		</div>
 		<div class="col-sm-2">
 			<a class="form-control-static" role="button"
-			   popover-html="jsonSource(sampleSchema.properties.multiselect)" popover-title="Schema" popover-placement="bottom">
+			   uib-popover-html="jsonSource(sampleSchema.properties.multiselect)" uib-popover-title="Schema" uib-popover-placement="bottom">
 				<span class="fa fa-sitemap"></span>
 			</a>
 		</div>
@@ -135,13 +135,13 @@
 		</div>
 		<div class="col-sm-1">
 			<a class="form-control-static" role="button"
-			   popover-html="jsonSource(sampleSchema.properties.textarea)" popover-title="Schema" popover-placement="bottom">
+			   uib-popover-html="jsonSource(sampleSchema.properties.textarea)" uib-popover-title="Schema" uib-popover-placement="bottom">
 				<span class="fa fa-sitemap"></span>
 			</a>
 		</div>
 		<div class="col-sm-1">
 			<a class="form-control-static" role="button"
-			   popover-html="'<ul class=list-unstyled><li><code>textarea[msd-elastic]</code></li></ul>'" popover-title="Usage" popover-placement="bottom">
+			   uib-popover-html="'<ul class=list-unstyled><li><code>textarea[msd-elastic]</code></li></ul>'" uib-popover-title="Usage" uib-popover-placement="bottom">
 				<span class="fa fa-info-circle"></span>
 			</a>
 		</div>
@@ -155,7 +155,7 @@
 		</div>
 		<div class="col-sm-2">
 			<a class="form-control-static" role="button"
-			   popover-html="jsonSource(sampleSchema.properties.object.properties.subproperty)" popover-title="Schema" popover-placement="bottom">
+			   uib-popover-html="jsonSource(sampleSchema.properties.object.properties.subproperty)" uib-popover-title="Schema" uib-popover-placement="bottom">
 				<span class="fa fa-sitemap"></span>
 			</a>
 		</div>

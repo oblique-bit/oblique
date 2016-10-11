@@ -4,7 +4,7 @@
 	angular
 		.module('__MODULE__', [
 			'ngAnimate',
-			'ngCookies',
+			'ngCookies', // Required by $translateCookieStorage <- $translateLocalStorage <- $translate
 			'ngSanitize',
 			'ui.bootstrap',
 			'ui.router',
@@ -14,7 +14,6 @@
 			'satellizer',
 			'angular-confirm',
 			'angularjs-dropdown-multiselect',
-			'dateParser',
 			'checklist-model',
 			'monospaced.elastic',
 
@@ -58,7 +57,11 @@
 			$authProvider.tokenPrefix = CONFIG.module; // Local Storage name prefix
 		})
 		.config(function (CONFIG, $urlRouterProvider) {
-			$urlRouterProvider.otherwise('/' + CONFIG.defaults.state);
+			// NOTE: before any change below, see https://github.com/angular-ui/ui-router/issues/600
+			$urlRouterProvider.otherwise(function($injector) {
+				var $state = $injector.get("$state");
+				$state.go(CONFIG.defaults.state);
+			});
 		})
 		.config(function ($animateProvider) {
 			// Let ngAnimate know which elements to *not* handle (see https://github.com/angular/angular.js/issues/3613):
@@ -71,11 +74,14 @@
 			$logProvider.debugEnabled(true);
 		})
 		.config(function (CONFIG, uibDatepickerConfig, uibDatepickerPopupConfig) {
-            uibDatepickerConfig.showWeeks = false;
-            uibDatepickerConfig.startingDay = 1; // Weeks start on Monday
-            uibDatepickerPopupConfig.datepickerPopup = CONFIG.defaults.format && CONFIG.defaults.format.date ? CONFIG.defaults.format.date : 'dd.MM.yyyy';
-            uibDatepickerPopupConfig.showButtonBar = false;
-            uibDatepickerPopupConfig.useIsoModel = false; // Specifies if model values should be written as ISO-based string
+			uibDatepickerConfig.showWeeks = false;
+			uibDatepickerConfig.startingDay = 1; // Weeks start on Monday
+			uibDatepickerPopupConfig.datepickerPopup = CONFIG.defaults.format && CONFIG.defaults.format.date ? CONFIG.defaults.format.date : 'd!.M!.yyyy';
+			uibDatepickerPopupConfig.showButtonBar = false;
+
+			// DatepickerPopup config extension:
+			uibDatepickerPopupConfig.altInputFormats = CONFIG.defaults.format && CONFIG.defaults.format.dateAlt ? CONFIG.defaults.format.dateAlt : ['d!.M!.yy'];
+			uibDatepickerPopupConfig.modelAsIsoFormat = 'yyyy-MM-dd'; // Specifies that model values should be written as ISO-based string with the provided format
 		})
 		.config(function (CONFIG, LoadingServiceProvider) {
 			LoadingServiceProvider.setTimeout(CONFIG.defaults.http.timeout);

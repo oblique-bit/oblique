@@ -80,6 +80,7 @@
 		"date": {
 			"format": {
 				"dd.MM.yyyy": "TT.MM.JJJJ",
+				"d!.M!.yyyy": "TT.MM.JJJJ",
 				"invalid": "Incorrect date or format, please enter a valid date in the dd.mm.yyyy format."
 			},
 		  "min.invalid": "Das Datum unterschreitet das min. zulässige Datum {{p0}}",
@@ -187,9 +188,9 @@
 		}
 	},
 	"multiselect": {
-		"checkAll": "Alle auswählen",
-		"uncheckAll": "Alle abwählen",
-		"buttonDefaultText": "Wählen bitte.",
-	  	"allSelected": "Alle Elemente selektiert"
+		"checkAll": "<strong>alle</strong> auswählen",
+		"uncheckAll": "<strong>keine</strong> auswählen",
+		"buttonDefault": "Wählen bitte.",
+		"allSelected": "Alle Elemente wurden selektiert."
 	}
 }

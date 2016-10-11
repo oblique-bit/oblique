@@ -79,7 +79,8 @@
 		},
 		"date" : {
 			"format" : {
-				"dd.MM.yyyy" : "gg.mm.aaaa",
+				"dd.MM.yyyy": "gg.mm.aaaa",
+				"d!.M!.yyyy": "gg.mm.aaaa",
 				"invalid": "Incorrect date or format, please enter a valid date in the dd.mm.yyyy format."
 			},
 		  "min.invalid": "it: Das Datum unterschreitet das min. zulässige Datum {{p0}}",
@@ -187,9 +188,9 @@
 		}
 	},
 	"multiselect": {
-		"checkAll": "Alle auswählen",
-		"uncheckAll": "Alle abwählen",
-		"buttonDefaultText": "Wählen bitte.",
-	 	"allSelected": "[IT] Alle Elemente selektiert"
+		"checkAll": "Selezionare <strong>tutto</strong>",
+		"uncheckAll": "Selezionare <strong>zero</strong>",
+		"buttonDefault": "Selezionare",
+		"allSelected": "Tutti gli elementi sono stati selezionati."
 	}
 }

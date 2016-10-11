@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular.module('__MODULE__.samples')
-		.controller('SchemaValidationSampleController', function ($scope, $state, $filter, schema, data, NotificationService) {
+		.controller('SchemaValidationSampleController', function ($scope, $state, $filter, dateFilter, uibDatepickerPopupConfig, schema, data, NotificationService) {
 			$scope.sampleSchema = schema;
 			$scope.data = data;
 
@@ -13,7 +13,7 @@
 			};
 
 			$scope.toISO = function () {
-				$scope.data.date = (new Date()).toISOString();
+				$scope.data.date = dateFilter(new Date(), uibDatepickerPopupConfig.modelAsIsoFormat);
 				$scope.data.minDate = moment($scope.data.date).subtract(1, 'd').format('YYYY-MM-DD');
 				$scope.data.maxDate = moment($scope.data.date).add(1, 'd').format('YYYY-MM-DD');
 			};

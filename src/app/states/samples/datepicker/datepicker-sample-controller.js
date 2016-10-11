@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular.module('__MODULE__.samples')
-		.controller('DatepickerSampleController', function ($scope, NotificationService) {
+		.controller('DatepickerSampleController', function ($scope, dateFilter, uibDatepickerPopupConfig, NotificationService) {
 			$scope.data = {
 				date: null,
 				minMax: {
@@ -26,7 +26,7 @@
 						$scope.data.date = new Date();
 					},
 					toISO : function () {
-						$scope.data.date = (new Date()).toISOString();
+						$scope.data.date = dateFilter(new Date(), uibDatepickerPopupConfig.modelAsIsoFormat);
 					},
 					toTimestamp: function () {
 						$scope.data.date = Date.now();

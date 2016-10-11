@@ -12,16 +12,15 @@
 				<div class="col-md-6">
 					<div class="btn-group">
 						<button type="button" class="btn btn-info" ng-click="controls.date.today()" tooltip-append-to-body="true"
-						        tooltip="Sets model to today's date using the standard JavaScript Date object">Today</button>
+						        uib-tooltip="Sets model to today's date using the standard JavaScript Date object">Today</button>
 						<button type="button" class="btn btn-info" ng-click="controls.date.toISO()" tooltip-append-to-body="true"
-						        tooltip="Sets model to today's date using the ISO 8601 format">ISO</button>
+						        uib-tooltip="Sets model to today's date using the ISO 8601 format">ISO</button>
 						<button type="button" class="btn btn-info" ng-click="controls.date.toTimestamp()" tooltip-append-to-body="true"
-						        tooltip="Sets model to today's date using a timestamp">Timestamp</button>
+						        uib-tooltip="Sets model to today's date using a timestamp">Timestamp</button>
 					</div>
 				</div>
 			</div>
 			<span class="help-block" ng-show="datepickerForm.date.$invalid">{{datepickerForm.date.$errorMessage}}</span>
-			<span class="help-block" ng-show="datepickerForm.date.$error.date && !datepickerForm.date.$errorMessage">{{'common.date.format.invalid' | translate}}</span>
 		</div>
 	</div>
 	<div class="form-group" has-error>
@@ -29,23 +28,22 @@
 		<div class="col-sm-8 col-lg-9">
 			<div class="row">
 				<div class="col-md-6">
-					<date-picker name="minMax" ng-model="data.minMax.date" min-date="data.minMax.min" max-date="data.minMax.max"></date-picker>
+					<date-picker name="minMax" ng-model="data.minMax.date" options="{minDate: data.minMax.min, maxDate: data.minMax.max}"></date-picker>
 				</div>
 				<div class="col-md-6">
 					<div class="btn-group">
 						<button type="button" class="btn btn-info" ng-click="controls.minMax.invalidMin()" tooltip-append-to-body="true"
-						        tooltip="Sets model to some invalid date after the minimum limit">
+						        uib-tooltip="Sets model to some invalid date after the minimum limit">
 							<span class="fa fa-chevron-left"></span> Min
 						</button>
 						<button type="button" class="btn btn-info" ng-click="controls.minMax.invalidMax()" tooltip-append-to-body="true"
-						        tooltip="Sets model to some invalid date after the maximum limit">
+						        uib-tooltip="Sets model to some invalid date after the maximum limit">
 							<span class="fa fa-chevron-right"></span> Max
 						</button>
 					</div>
 				</div>
 			</div>
 			<span class="help-block" ng-show="datepickerForm.minMax.$invalid">{{datepickerForm.minMax.$errorMessage}}</span>
-			<span class="help-block" ng-show="datepickerForm.minMax.$error.date && !datepickerForm.minMax.$errorMessage">{{'common.date.format.invalid' | translate}}</span>
 			<span class="help-block" ng-show="datepickerForm.minMax.$error.minDate && !datepickerForm.minMax.$errorMessage">{{'common.date.min.invalid' | translate:'{ p0: data.minDate }' }}</span>
 			<span class="help-block" ng-show="datepickerForm.minMax.$error.maxDate && !datepickerForm.minMax.$errorMessage">{{'common.date.max.invalid' | translate:'{ p0: data.maxDate }' }}</span>
 		</div>
@@ -55,14 +53,12 @@
 		<div class="col-sm-8 col-lg-9">
 			<div class="row">
 				<div class="col-md-6">
-					<date-picker label="From" name="rangeFrom" ng-model="data.range.from"></date-picker>
+					<date-picker label="From" name="rangeFrom" ng-model="data.range.from" options="{maxDate: data.range.to}"></date-picker>
 					<span class="help-block" ng-show="datepickerForm.rangeFrom.$invalid">{{datepickerForm.rangeFrom.$errorMessage}}</span>
-					<span class="help-block" ng-show="datepickerForm.rangeFrom.$error.date && !datepickerForm.rangeFrom.$errorMessage">{{'common.date.format.invalid' | translate}}</span>
 				</div>
 				<div class="col-md-6" has-error="rangeTo">
-					<date-picker label="To" name="rangeTo" ng-model="data.range.to" min-date="data.range.from"></date-picker>
+					<date-picker label="To" name="rangeTo" ng-model="data.range.to" options="{minDate: data.range.from}"></date-picker>
 					<span class="help-block" ng-show="datepickerForm.rangeTo.$invalid">{{datepickerForm.rangeTo.$errorMessage}}</span>
-					<span class="help-block" ng-show="datepickerForm.rangeTo.$error.date && !datepickerForm.rangeTo.$errorMessage">{{'common.date.format.invalid' | translate}}</span>
 					<span class="help-block" ng-show="datepickerForm.rangeTo.$error.minDate && !datepickerForm.rangeTo.$errorMessage">{{'common.date.min.invalid' | translate:'{ p0: data.minDate }' }}</span>
 				</div>
 			</div>
@@ -78,7 +74,7 @@
 				<div class="col-md-6">
 					<div class="btn-group">
 						<button type="button" class="btn btn-info" ng-click="controls.editable.toggle()" tooltip-append-to-body="true"
-						        tooltip="Toggles manual edition of Datepicker input control.">Toggle edition</button>
+						        uib-tooltip="Toggles manual edition of Datepicker input control.">Toggle edition</button>
 					</div>
 				</div>
 			</div>

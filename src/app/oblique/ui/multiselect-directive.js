@@ -7,24 +7,23 @@
 	 */
 	angular.module('__MODULE__.oblique')
 		.constant('multiselectConfig', {
-			extraSettings : {
-				buttonClasses: "btn btn-default",
+			extraSettings: {
 				idProp: 'id',
 				displayProp: 'label',
 				externalIdProp: '', // Return the full item model when selected
 				scrollable: false,
-				showCheckAll: false,
-				showUncheckAll: false,
-				// TODO fixme that's a hack
-				smartButtonMaxItems: 1000
+				showCheckAll: true,
+				showUncheckAll: true,
+				smartButtonMaxItems: 1000 // FIXME: that's a hack...
 			},
-			translationTexts : {
+			translationTexts: {
 				checkAll: 'multiselect.checkAll',
 				uncheckAll: 'multiselect.uncheckAll',
-				buttonDefaultText: 'multiselect.buttonDefaultText'
+				buttonDefaultText: 'multiselect.buttonDefault',
+				allSelectedText: 'multiselect.allSelected'
 			}
 		})
-		.directive('multiselect', function (multiselectConfig, $filter) {
+		.directive('multiselect', function (multiselectConfig, $filter, $timeout) {
 			return {
 				restrict: 'E',
 				template: '<div ng-dropdown-multiselect options="options" selected-model="ngModel" checkboxes="true" extra-settings="settings" translation-texts="translations"></div>',
@@ -49,33 +48,28 @@
 
 				},
 				link: function (scope, element, attrs, ngModelCtrl) {
-					var container = element.find('.multiselect-parent');
-					var dropdownMultiselect = angular.element(container).scope();
-					if (dropdownMultiselect) {
-						// Close on ESC keypress:
-						element.bind('keydown', function (evt) {
-							if (evt.which === 27) { // ESC key
-								evt.preventDefault();
-								evt.stopPropagation();
-								dropdownMultiselect.open = false;
-								// Trigger $digest cycle:
-								scope.$apply();
-							}
-						});
+					$timeout(function () {
+						var dropdownMultiselect = angular.element(element.find('.multiselect-parent')).scope();
+						if (dropdownMultiselect) {
+							// Close on ESC keypress:
+							element.bind('keydown', function (evt) {
+								if (evt.which === 27) { // ESC key
+									evt.preventDefault();
+									evt.stopPropagation();
+									dropdownMultiselect.open = false;
+									// Trigger $digest cycle:
+									scope.$apply();
+								}
+							});
 
-						// Dropup?
-						if(scope.dropup){
-							container.addClass('dropup');
-							element.find('.dropdown-toggle').addClass('dropdown-toggle-up');
-						}
-
-						// Enable labels translation:
-						// FIXME: remove when https://github.com/dotansimha/angularjs-dropdown-multiselect/issues/54
-						translateLabels(dropdownMultiselect);
-						scope.$root.$on('$translateChangeSuccess', function (event, data) {
+							// Enable labels translation:
+							// FIXME: remove when https://github.com/dotansimha/angularjs-dropdown-multiselect/issues/54
 							translateLabels(dropdownMultiselect);
-						});
-					}
+							scope.$root.$on('$translateChangeSuccess', function (event, data) {
+								translateLabels(dropdownMultiselect);
+							});
+						}
+					});
 
 					// Toggle dirty state:
 					var originalValue = angular.copy(scope.ngModel);

@@ -6,16 +6,20 @@
 	 * https://angular-ui.github.io/bootstrap/#/datepicker
 	 */
 	angular.module('__MODULE__.oblique')
-		.directive('datePicker', function (uibDatepickerPopupConfig) {
+		.directive('datePicker', function (uibDatepickerPopupConfig, uibDateParser) {
 			return {
-				templateUrl: '../oblique/ui/date-picker/date-picker.tpl.html',
 				restrict: 'E',
 				replace: true,
+				require: ['^form'],
+				templateUrl: '../oblique/ui/date-picker/date-picker.tpl.html',
 				scope: {
 					ngModel: '=',
-					minDate: '=',
-					maxDate: '=',
-					options: '&?', // See UI Bootstrap `datepicker` 'Popup Settings'
+
+					// AngularUI - Datepicker & DatePicker Popup properties:
+					options: '=', // See UI Bootstrap `datepicker-options` docs under https://angular-ui.github.io/bootstrap/#/uib-datepicker-settings
+					altInputFormats: '=?', // See UI Bootstrap `alt-input-formats` docs under https://angular-ui.github.io/bootstrap/#/uib-datepicker-popup-settings
+
+					// Custom properties:
 					disabled: '=?ngDisabled',
 					required: '=?ngRequired',
 					editable: '=?', // Manual edition
@@ -26,15 +30,34 @@
 					showClearControl: '=?'
 				},
 				controller: function ($scope) {
-					$scope.config = angular.extend({}, uibDatepickerPopupConfig, $scope.options || {});
+					$scope.dpOptions = angular.extend({}, uibDatepickerPopupConfig, $scope.options);
+					$scope.dpAltInputFormats = (uibDatepickerPopupConfig.altInputFormats || []).concat($scope.altInputFormats || []);
 					$scope.editable = angular.isDefined($scope.editable) ? $scope.editable : true;
 					$scope.showClearControl = angular.isDefined($scope.showClearControl) ? $scope.showClearControl : true;
 					$scope.opened = false;
 
-					// Public API:
-					this.format = $scope.config.datepickerPopup;
+					$scope.$watchGroup(['options.minDate', 'options.maxDate'], function (newValues, oldValues) {
+						if (!angular.equals(newValues, oldValues)) {
+							// Ensure min/max dates get parsed correctly:
+							parseMinMax();
+						}
+					});
+
+					function parseMinMax() {
+						if ($scope.options) {
+							$scope.dpOptions.minDate = $scope.options.minDate && !angular.isDate($scope.options.minDate) ?
+								uibDateParser.parse($scope.options.minDate, uibDatepickerPopupConfig.modelAsIsoFormat || $scope.options.datepickerPopup) : $scope.options.minDate;
+							$scope.dpOptions.maxDate = $scope.options.maxDate && !angular.isDate($scope.options.maxDate) ?
+								uibDateParser.parse($scope.options.maxDate, uibDatepickerPopupConfig.modelAsIsoFormat || $scope.options.datepickerPopup) : $scope.options.maxDate;
+						}
+					}
+
+					// Init:
+					parseMinMax();
 				},
-				link: function (scope, element, attrs) {
+				link: function (scope, element, attrs, params) {
+					var form = params[0];
+					scope.form = form[attrs.name];
 
 					scope.toggle = function ($event) {
 						$event.preventDefault();
@@ -60,87 +83,38 @@
 			};
 		})
 
-	/**
-	 * DatepickerPopup extensions:
-	 *  - validation of ISO-formatted date strings (no more accepted by AngularUI v0.13.3)
-	 *  - validation of limit dates (minDate/maxDate)
-	 *  - activation of ranges (by watching minDate/maxDate properties)
-	 *  - ISO model values only
-	 *
-	 * See:
-	 *  - https://github.com/angular-ui/bootstrap/issues/4233
-	 */
-		.directive("datepickerPopup", function (dateFilter, $dateParser, uibDatepickerPopupConfig) {
+		/**
+		 * DatepickerPopup extensions:
+		 *  - validation of ISO-formatted date strings (no more accepted since AngularUI v0.13.3)
+		 *  - ISO model values only
+		 *
+		 * See:
+		 *  - https://github.com/angular-ui/bootstrap/issues/4233
+		 */
+		.directive("uibDatepickerPopup", function (dateFilter, uibDateParser, uibDatepickerPopupConfig) {
 			return {
 				restrict: "A",
-				priority: 1000,
-				require: ["ngModel", "^datePicker"],
+				priority: 9999,
+				require: ["ngModel"],
 				link: function (scope, element, attrs, params) {
 					var ngModel = params[0];
-					var datePicker = params[1];
-					var dateFormat = datePicker.format || uibDatepickerPopupConfig.datepickerPopup;
-					var originalValidator = ngModel.$validators.date;
-
-					ngModel.$validators.date = function (modelValue, viewValue) {
-						return isDateValid(modelValue, viewValue);
-					};
-
-					ngModel.$validators.minDate = function (modelValue, viewValue) {
-						// Validate only if view value is set and valid:
-						var minDate = parse(scope.minDate);
-						if (minDate && viewValue && isDateValid(modelValue, viewValue)) {
-							return compare(parse(viewValue), minDate) >= 0;
-						}
-						return true;
-					};
-
-					ngModel.$validators.maxDate = function (modelValue, viewValue) {
-						// Validate only if view value is set and valid:
-						var maxDate = parse(scope.maxDate);
-						if (maxDate && viewValue && isDateValid(modelValue, viewValue)) {
-							return compare(parse(viewValue), maxDate) <= 0;
-						}
-						return true;
-					};
-
-					scope.$watchGroup(['minDate', 'maxDate'], function (newValues, oldValues) {
-						if (!angular.equals(newValues, oldValues)) {
-							// Apply model validation as its value may be out of limits:
-							ngModel.$validate();
-						}
-					});
 
 					// Check for ISO model values:
-					if (uibDatepickerPopupConfig.useIsoModel) {
+					if (uibDatepickerPopupConfig.modelAsIsoFormat) {
+						ngModel.$formatters.push(function (value) {
+							return uibDateParser.parse(value, uibDatepickerPopupConfig.modelAsIsoFormat);
+						});
+
+						// FIXME: provide a way to store ISO-dates in the model (or any other helper scope variable)
+						// FIXME: as of Angular UI Bootstrap v2.x, Datepicker only supports Date objects (cf. http://angular-ui.github.io/bootstrap/#/datepicker)
+						/*
 						ngModel.$parsers.push(function (value) {
 							if (angular.isDate(value)) {
-								return dateFilter(value, 'yyyy-MM-dd');
+								return dateFilter(value, uibDatepickerPopupConfig.modelAsIsoFormat);
 							}
 							return value;
 						});
-					}
-
-					function isDateValid(modelValue, viewValue) {
-						var valid = originalValidator(modelValue, viewValue);
-						if (!valid) {
-							// Try to validate again as date may originate from an ISO-formatted date:
-							var date = parse(viewValue, dateFormat);
-							valid = viewValue === null || viewValue === '' || angular.isDate(date);
-						}
-						return valid;
-					}
-
-					function parse(viewValue) {
-						return $dateParser(viewValue, dateFormat);
-					}
-
-					//  <0 : if date1 < date2
-					//   0 : if date1 = date2
-					//  >0 : if date1 > date2
-					function compare(date1, date2) {
-						date1.setHours(0, 0, 0, 0);
-						date2.setHours(0, 0, 0, 0);
-						return date1.getTime() - date2.getTime();
+						*/
 					}
 				}
 			};
