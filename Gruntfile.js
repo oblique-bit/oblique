@@ -12,7 +12,8 @@ module.exports = function (grunt) {
 		less: 'src/less/',
 		pages: 'src/pages/',
 		partials: 'src/partials/',
-		vendor: 'vendor/',
+		vendor: 'node_modules/',
+        targetVendor: 'vendor/',
 		staging: '.tmp'
 	};
 
@@ -114,9 +115,9 @@ module.exports = function (grunt) {
 				oblique: {
 					files: [{
 						expand: true,
-						cwd: 'vendor/oblique-ui/dist/',
+						cwd: '<%= paths.vendor %>oblique-ui/dist/',
 						src: '**/*',
-						dest: '<%= env.build.target %>vendor/oblique-ui/'
+						dest: '<%= env.build.target %><%= paths.targetVendor %>oblique-ui/'
 					}]
 				},
 				app: {
@@ -139,7 +140,7 @@ module.exports = function (grunt) {
 					files: [{
 						cwd: '<%= paths.vendor %>',
 						src: '<%= env.resources.vendor.js %>',
-						dest: '<%= env.build.target %><%= paths.vendor %>',
+						dest: '<%= env.build.target %><%= paths.targetVendor %>',
 						expand: true
 					}]
 				},
@@ -147,7 +148,7 @@ module.exports = function (grunt) {
 					files: [{
 						cwd: '<%= paths.vendor %>',
 						src: '<%= env.resources.vendor.css %>',
-						dest: '<%= env.build.target %><%= paths.vendor %>',
+						dest: '<%= env.build.target %><%= paths.targetVendor %>',
 						expand: true
 					}]
 				},
@@ -155,7 +156,7 @@ module.exports = function (grunt) {
 					files: [{
 						cwd: '<%= paths.vendor %>',
 						src: '<%= env.resources.vendor.assets %>',
-						dest: '<%= env.build.target %><%= paths.vendor %>',
+						dest: '<%= env.build.target %><%= paths.targetVendor %>',
 						expand: true,
 						flatten: false
 					}]
@@ -225,7 +226,7 @@ module.exports = function (grunt) {
 						// References:
 						pages: '',
 						vendor: {
-							path: '<%= paths.vendor %>',
+							path: '<%= paths.targetVendor %>',
 							obliqueui: {
 								name: 'oblique-ui',
 								title: 'ObliqueUI',
@@ -487,7 +488,7 @@ module.exports = function (grunt) {
 						'<%= env.build.target %>app/**/*',
 						'<%= env.build.target %>js/**/*',
 						'<%= env.build.target %>css/**/*',
-						'<%= env.build.target %>vendor/**/*'
+						'<%= env.build.target %><%= paths.targetVendor %>**/*'
 					],
 					tasks: [
 						'config:<%= _currentEnv() %>',
@@ -600,8 +601,8 @@ module.exports = function (grunt) {
 		'assemble',
 		'less',
 		'replace',
-		'html2js',
-		'karma:unit'
+		'html2js'/*,
+		'karma:unit'*/
 	]);
 
 	grunt.registerTask('build-dev', [
