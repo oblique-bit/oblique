@@ -95,9 +95,11 @@
     "body-parser": "1.15.2",
     "cors": "2.8.1",
     "express": "4.14.0",
-    "mockgoose": "2.0.1",
-    "mongoose": "4.1.2",
     "jwt-simple": "0.5.0",
+    "mockgoose": "6.0.8",
+    "mongodb-prebuilt": "git+https://github.com/admin-ch/mongodb-prebuilt.git#fix-spawn-fork",
+    "mongoose": "4.6.3",
+    "q": "^1.4.1",
     "request": "2.75.0"
   },
   "scripts": {

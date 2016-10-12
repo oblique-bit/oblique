@@ -69,12 +69,14 @@ module.exports = app.listen(process.env.PORT || port, function () {
 		lastname: "Reactive",
 		roles: ["member", "admin"]
 	};
+
 	var User = require('./models/user');
-	User.create(data, function(err, user) {
-		if (err) {
-			console.log('[SEED]: Unable to seed user! [data=%s, error=%s]', data, err);
-		} else {
+	User.create(data).then(
+		function(user) {
 			console.log('[SEED]: Sample user created! [%s]', user);
+		},
+		function(err) {
+			console.log('[SEED]: Unable to seed user! [data=%s, error=%s]', data, err);
 		}
-	});
+	);
 });
