@@ -24,7 +24,7 @@ module.exports = {
 			},
 			"api": {
 				// Relative path prefix for API calls:
-				"context": "/api",
+				"path": "api",
 
 				// For absolute API URL, comment or provide an empty string to disable:
 				"url": "http://localhost:3000",
@@ -37,69 +37,11 @@ module.exports = {
 			}
 		},
 		"resources": {
+			"bundles": [
+				"app/bundles/app.js"
+			],
 			"app": [
-				"app/app-config.js",
-				"app/app-module.js",
-				"app/app-controller.js",
-				"app/app-templates.js",
-
-				"app/common/common-module.js",
-				"app/common/auth/auth-service.js",
-
-				"app/oblique/oblique-module.js",
-
-				"app/oblique/formatters/date-directive.js",
-				"app/oblique/formatters/number-format-directive.js",
-
-				"app/oblique/infrastructure/log-decorator.js",
-				"app/oblique/infrastructure/http-decorator.js",
-				"app/oblique/infrastructure/http-interceptor.js",
-				"app/oblique/infrastructure/exception-handler-decorator.js",
-				"app/oblique/infrastructure/state-decorator.js",
-
-				"app/oblique/navigator/navigator-directive.js",
-				"app/oblique/navigator/navigator-service.js",
-
-				"app/oblique/status/loading-service.js",
-
-				"app/oblique/ui/date-picker/date-picker-directive.js",
-				"app/oblique/ui/notifications/notifications-directive.js",
-				"app/oblique/ui/notifications/notification-service.js",
-				"app/oblique/ui/delayed-change-directive.js",
-				"app/oblique/ui/dropdown-closable-directive.js",
-				"app/oblique/ui/enter-directive.js",
-				"app/oblique/ui/give-me-focus-directive.js",
-				"app/oblique/ui/multiselect-directive.js",
-				"app/oblique/ui/navigable-directive.js",
-				"app/oblique/ui/typeahead-extensions-directive.js",
-
-				"app/oblique/validation/has-error-directive.js",
-				"app/oblique/validation/schema-validate-directive.js",
-				"app/oblique/validation/schema-validator-service.js",
-
-				"app/states/auth/auth-module.js",
-				"app/states/auth/auth-controller.js",
-				"app/states/home/home-module.js",
-				"app/states/home/home-controller.js",
-				"app/states/movies/movies-module.js",
-				"app/states/movies/movie-resource.js",
-				"app/states/movies/movie-service.js",
-				"app/states/movies/movies-controller.js",
-				"app/states/samples/samples-module.js",
-				"app/states/samples/datepicker/datepicker-sample-module.js",
-				"app/states/samples/datepicker/datepicker-sample-controller.js",
-				"app/states/samples/schema-validation/schema-validation-sample-module.js",
-				"app/states/samples/schema-validation/schema-validation-sample-controller.js",
-				"app/states/samples/multiselect/multiselect-sample-module.js",
-				"app/states/samples/multiselect/multiselect-sample-controller.js",
-				"app/states/samples/navigable/navigable-sample-module.js",
-				"app/states/samples/navigable/navigable-sample-controller.js",
-				"app/states/samples/navigator/navigator-sample-module.js",
-				"app/states/samples/navigator/navigator-sample-controller.js",
-				"app/states/samples/typeahead/typeahead-sample-module.js",
-				"app/states/samples/typeahead/typeahead-sample-controller.js",
-				"app/states/samples/ui-scroll/ui-scroll-sample-module.js",
-				"app/states/samples/ui-scroll/ui-scroll-sample-controller.js"
+				"app/app-config.js"
 			],
 			"vendor": {
 				"js": [
@@ -134,19 +76,38 @@ module.exports = {
 					"angular/angular-csp.css",
 					"animate.css/animate.css"
 				],
-				"assets": []
+				"assets": [],
+				"testResources": [
+					"systemjs/dist/system.js",
+					"systemjs/dist/system-polyfills.js"
+				]
 			}
 		}
 	},
 	"dev": {
-		"name": "dev"
+		"name": "dev",
+		"app": {
+			"systemjs": true
+		},
+		"resources": {
+			"app": [
+				"app/system.config.dev.js"
+			]
+		}
+	},
+	"prod-local": {
+		"name": "dev",
+		"app": {
+			"systemjs": false
+		}
 	},
 	"prod": {
 		"name": "prod",
 		"app": {
+			"systemjs": false,
 			"api": {
 				// Relative path prefix for API calls:
-				"context": "/oblique-reactive/api",
+				"path": "/oblique-reactive/api",
 
 				// Disable absolute API URL:
 				"url": "" // "http://eui.bit.admin.ch:3000"

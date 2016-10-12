@@ -1,0 +1,65 @@
+<h2 class="page-header">{{'states.samples.navigable.title' | translate}}</h2>
+<p class="lead">Navigate using arrow keys and select rows using CTRL or SHIFT combinations.</p>
+<div class="list-group">
+	<div class="list-group-item list-group-header">
+		<div class="row">
+			<div class="col-sm-3">First Name</div>
+			<div class="col-sm-3">Last Name</div>
+			<div class="col-sm-3">Date of birth</div>
+			<div class="col-sm-3"></div>
+		</div>
+	</div>
+	<div class="list-group-item" ng-repeat="scientist in ctrl.scientists"
+	     navigable="scientist" navigable-selection="ctrl.scientistsSelection">
+		<div class="row">
+			<div class="col-sm-3">{{scientist.firstname}}</div>
+			<div class="col-sm-3">{{scientist.lastname}}</div>
+			<div class="col-sm-3">{{scientist.birthdate}}</div>
+			<div class="col-sm-3 navigable-actions">
+				<div class="btn-group navigable-reveal" role="group" aria-label="actions">
+					<div class="btn-group dropdown" role="group">
+						<button type="button" class="btn btn-default dropdown-toggle dropdown-actions" id="samples-navigable-actions-dropdown"
+						        data-toggle="dropdown" aria-expanded="false"
+						        dropdown-closable>
+							<span class="toggle"></span>
+							<span class="sr-only">{{'common.actions' | translate}}</span>
+						</button>
+						<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="samples-navigable-actions-dropdown">
+							<li role="presentation" class="dropdown-header">Dropdown header</li>
+							<li role="presentation">
+								<a role="menuitem" tabindex="-1">Action</a>
+							</li>
+							<li role="presentation">
+								<a role="menuitem" tabindex="-1">Another action</a>
+							</li>
+							<li role="presentation" class="disabled">
+								<a role="menuitem" tabindex="-1">Disabled link</a>
+							</li>
+							<li role="presentation">
+								<a role="menuitem" tabindex="-1">Something else here</a>
+							</li>
+							<li role="presentation" class="divider"></li>
+							<li role="presentation" class="dropdown-header">Dropdown header</li>
+							<li role="presentation">
+								<a role="menuitem" tabindex="-1">Separated link</a>
+							</li>
+						</ul>
+					</div>
+					<button type="button" class="btn btn-primary">
+						<span class="fa fa-pencil"></span>
+						<span class="sr-only">Edit</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<ul class="nav nav-stacked">
+	<li class="nav-header" role="presentation">
+		<h3>Selected scientist(s) <span class="badge">{{ctrl.scientistsSelection.length}} / {{ctrl.scientists.length}}</span> </h3>
+	</li>
+	<li role="menuitem" ng-repeat="scientist in ctrl.scientistsSelection">
+		<a role="button">{{scientist.firstname}} {{scientist.lastname}}</a>
+	</li>
+</ul>

@@ -27,4 +27,7 @@ nbproject
 # Folders to ignore
 node_modules
 target
-/vendor
+typings
+.tscache
+.tmp
+

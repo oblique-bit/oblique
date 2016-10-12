@@ -1,0 +1,180 @@
+<form class="form-horizontal has-validation" name="validationForm" role="form" novalidate validation-schema="ctrl.schema">
+	<h2 class="page-header">
+		<span>Schema validation</span>
+		<span class="pull-right">
+			<div class="fa fa-check text-success" uib-tooltip="Form is valid" tooltip-placement="bottom" ng-if="validationForm.$valid"></div>
+			<span class="fa fa-warning text-danger" uib-tooltip="Form is not valid" tooltip-placement="bottom" ng-if="!validationForm.$valid"></span>
+		</span>
+	</h2>
+	<div class="form-group" has-error>
+		<label class="col-sm-4 control-label">Text</label>
+		<div class="col-sm-6">
+			<input name="text" type="text" class="form-control" ng-model="ctrl.data.text" schema-validate />
+			<span class="help-block" ng-show="validationForm.text.$invalid">{{validationForm.text.$errorMessage}}</span>
+		</div>
+		<div class="col-sm-2">
+			<a class="form-control-static" role="button"
+			   uib-popover-html="ctrl.jsonSource(ctrl.schema.properties.text)" popover-title="Schema" popover-placement="bottom">
+				<span class="fa fa-sitemap"></span>
+			</a>
+		</div>
+	</div>
+	<div class="form-group" has-error>
+		<label class="col-sm-4 control-label">Number</label>
+		<div class="col-sm-6">
+			<input name="number" type="text" class="form-control" ng-model="ctrl.data.number" number-format schema-validate />
+			<span class="help-block" ng-show="validationForm.number.$invalid">{{validationForm.number.$errorMessage}}</span>
+		</div>
+		<div class="col-sm-1">
+			<a class="form-control-static" role="button"
+			   uib-popover-html="ctrl.jsonSource(ctrl.schema.properties.number)" popover-title="Schema" popover-placement="bottom">
+				<span class="fa fa-sitemap"></span>
+			</a>
+		</div>
+		<div class="col-sm-1">
+			<a class="form-control-static" role="button"
+			   uib-popover-html="'<ul class=list-unstyled><li><code>input[type=\'text\']</code></li><li><code>[number-format]</code></li></ul>'" popover-title="Usage" popover-placement="bottom">
+				<span class="fa fa-info-circle"></span>
+			</a>
+		</div>
+	</div>
+	<div class="form-group" has-error>
+		<label class="col-sm-4 control-label">Integer</label>
+		<div class="col-sm-6">
+			<input name="integer" type="number" class="form-control"
+			       ng-model="ctrl.data.integer" schema-validate />
+			<span class="help-block" ng-show="validationForm.integer.$invalid">{{validationForm.integer.$errorMessage}}</span>
+		</div>
+		<div class="col-sm-2">
+			<a class="form-control-static" role="button"
+			   uib-popover-html="ctrl.jsonSource(ctrl.schema.properties.integer)" popover-title="Schema" popover-placement="bottom">
+				<span class="fa fa-sitemap"></span>
+			</a>
+		</div>
+	</div>
+	<div class="form-group" has-error="date">
+		<label class="col-sm-4 control-label">Date</label>
+		<div class="col-sm-6">
+			<div class="row">
+				<div class="col-sm-6">
+					<date-picker name="date" ng-model="ctrl.data.date"></date-picker>
+				</div>
+				<div class="col-sm-6">
+					<div class="btn-group">
+						<button type="button" class="btn btn-info" ng-click="ctrl.today()" tooltip-append-to-body="true"
+						        uib-tooltip="Sets model to today's date using the standard JavaScript Date object">Today</button>
+						<button type="button" class="btn btn-info" ng-click="ctrl.toISO()" tooltip-append-to-body="true"
+						        uib-tooltip="Sets model to today's date using the ISO 8601 format">ISO</button>
+						<button type="button" class="btn btn-info" ng-click="ctrl.toTimestamp()" tooltip-append-to-body="true"
+						        uib-tooltip="Sets model to today's date using a timestamp">Timestamp</button>
+					</div>
+				</div>
+			</div>
+			<span class="help-block" ng-show="validationForm.date.$invalid">{{validationForm.date.$errorMessage}}</span>
+			<span class="help-block" ng-show="validationForm.date.$error.date && !validationForm.date.$errorMessage">{{'common.date.format.invalid' | translate}}</span>
+		</div>
+		<div class="col-sm-2">
+			<a class="form-control-static" role="button"
+			   uib-popover-html="ctrl.jsonSource(ctrl.schema.properties.date)" popover-title="Schema" popover-placement="bottom">
+				<span class="fa fa-sitemap"></span>
+			</a>
+		</div>
+	</div>
+	<div class="form-group" has-error>
+		<label class="col-sm-4 control-label">Time</label>
+		<div class="col-sm-6">
+			<div uib-timepicker name="time" class="timepicker timepicker-condensed"
+			            ng-model="ctrl.data.time" show-meridian="false" minute-step="15"></div>
+			<span class="help-block" ng-show="validationForm.time.$invalid">{{validationForm.time.$errorMessage}}</span>
+		</div>
+		<div class="col-sm-2">
+			<a class="form-control-static" role="button"
+			   uib-popover-html="ctrl.jsonSource(ctrl.schema.properties.time)" popover-title="Schema" popover-placement="bottom">
+				<span class="fa fa-sitemap"></span>
+			</a>
+		</div>
+	</div>
+	<div class="form-group" has-error>
+		<label class="col-sm-4 control-label">Select</label>
+		<div class="col-sm-6">
+			<select name="select" class="form-control"
+			        ng-model="ctrl.data.select" schema-validate
+			        ng-options="option.value as option.label for option in ctrl.schema.properties.select.options">
+				<option value="" selected>{{'common.select' | translate}}</option>
+			</select>
+			<span class="help-block" ng-show="validationForm.select.$invalid">{{validationForm.select.$errorMessage}}</span>
+		</div>
+		<div class="col-sm-2">
+			<a class="form-control-static" role="button"
+			   uib-popover-html="ctrl.jsonSource(ctrl.schema.properties.select)" popover-title="Schema" popover-placement="bottom">
+				<span class="fa fa-sitemap"></span>
+			</a>
+		</div>
+	</div>
+	<div class="form-group" has-error>
+		<label class="col-sm-4 control-label">Multiselect</label>
+		<div class="col-sm-6">
+			<multiselect name="multiselect" ng-model="ctrl.data.multiselect" schema-validate
+			             options="ctrl.schema.properties.multiselect.options"
+			             extra-settings="{showCheckAll: true, showUncheckAll: true, idProp: 'value'}"></multiselect>
+			<span class="help-block" ng-show="validationForm.multiselect.$invalid">{{validationForm.multiselect.$errorMessage}}</span>
+		</div>
+		<div class="col-sm-2">
+			<a class="form-control-static" role="button"
+			   uib-popover-html="ctrl.jsonSource(ctrl.schema.properties.multiselect)" popover-title="Schema" popover-placement="bottom">
+				<span class="fa fa-sitemap"></span>
+			</a>
+		</div>
+	</div>
+	<div class="form-group" has-error>
+		<label class="col-sm-4 control-label">Textarea</label>
+		<div class="col-sm-6">
+			<textarea name="textarea" type="text" class="form-control"
+			       ng-model="ctrl.data.textarea" msd-elastic rows="1" schema-validate></textarea>
+			<span class="help-block" ng-show="validationForm.textarea.$invalid">{{validationForm.textarea.$errorMessage}}</span>
+		</div>
+		<div class="col-sm-1">
+			<a class="form-control-static" role="button"
+			   uib-popover-html="ctrl.jsonSource(ctrl.schema.properties.textarea)" popover-title="Schema" popover-placement="bottom">
+				<span class="fa fa-sitemap"></span>
+			</a>
+		</div>
+		<div class="col-sm-1">
+			<a class="form-control-static" role="button"
+			   uib-popover-html="'<ul class=list-unstyled><li><code>textarea[msd-elastic]</code></li></ul>'" popover-title="Usage" popover-placement="bottom">
+				<span class="fa fa-info-circle"></span>
+			</a>
+		</div>
+	</div>
+	<div class="form-group" has-error>
+		<label class="col-sm-4 control-label">Subproperty</label>
+		<div class="col-sm-6">
+			<input name="object_subproperty" type="number" class="form-control"
+			       ng-model="ctrl.data.object.subproperty" schema-validate />
+			<span class="help-block" ng-show="validationForm.object_subproperty.$invalid">{{validationForm.object_subproperty.$errorMessage}}</span>
+		</div>
+		<div class="col-sm-2">
+			<a class="form-control-static" role="button"
+			   uib-popover-html="ctrl.jsonSource(ctrl.schema.properties.object.properties.subproperty)" popover-title="Schema" popover-placement="bottom">
+				<span class="fa fa-sitemap"></span>
+			</a>
+		</div>
+	</div>
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary" ng-click="ctrl.check(validationForm)" ng-disabled="!validationForm.$valid">Check</button>
+	</div>
+</form>
+<hr />
+<div class="row spacer-top">
+	<div class="col-md-6">
+		<h4>Model data</h4>
+		<pre>{{ctrl.data | json}}</pre>
+	</div>
+	<div class="col-md-6">
+		<h4>Json schema</h4>
+		<pre>{{ctrl.schema | json}}</pre>
+	</div>
+</div>
+
+
+

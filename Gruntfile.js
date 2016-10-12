@@ -4,18 +4,20 @@ module.exports = function (grunt) {
 	// Required project configuration:
 	var project = require('./project.conf.js');
 
-	// Optional build configuration:
-	var paths = {
-		src: 'src/',
-		app: 'src/app/',
-		states: 'src/app/states/',
-		less: 'src/less/',
-		pages: 'src/pages/',
-		partials: 'src/partials/',
-		modules: 'node_modules/',
-		vendor: 'vendor/',
-		staging: '.tmp'
-	};
+    // Optional build configuration:
+    var paths = {
+        oblique: 'src/',
+        src: 'showcase/',
+        app: 'showcase/app/',
+        states: 'showcase/app/states/',
+        less: 'showcase/less/',
+        pages: 'showcase/pages/',
+        partials: 'showcase/partials/',
+        testResources: 'testResources/',
+	    modules: 'node_modules/',
+	    vendor: 'vendor/',
+        staging: '.tmp/'
+    };
 
 	// Grunt init
 	grunt.initConfig({
@@ -76,33 +78,77 @@ module.exports = function (grunt) {
 				staging: ['<%= paths.staging %>']
 			},
 
-			/*
-			 * grunt-contrib-jshint
-			 *
-			 * https://github.com/gruntjs/grunt-contrib-jshint
-			 *
-			 * Validate files with JSHint, a tool that helps to detect errors and potential problems in your JavaScript code.
-			 */
-			jshint: {
-				src: ['Gruntfile.js', '<%= paths.src %>**/*.js'],
-				options: {
-					jshintrc: '.jshintrc'
-				}
-			},
+            /*
+             * grunt-exec
+             *
+             * https://github.com/jharding/grunt-exec
+             *
+             * Runs tsc and npm publish in the terminal
+             */
+            exec: {
+                tsc: 'tsc', //TODO: remove this as soon as this is fixed: https://github.com/TypeStrong/grunt-ts/issues/339
+                publish: 'npm publish target/oblique-reactive'
+            },
 
-			/*
-			 * grunt-jscs
-			 *
-			 * https://github.com/jscs-dev/grunt-jscs
-			 *
-			 * Grunt task for JSCS, a *code style* linter for programmatically enforcing your style guide.
-			 */
-			jscs: {
-				src: ['Gruntfile.js', '<%= paths.src %>**/*.js'],
-				options: {
-					config: '.jscsrc'
-				}
-			},
+            /*
+             * grunt-ts
+             *
+             * https://github.com/TypeStrong/grunt-ts
+             *
+             * Compiles our TypeScript sources to JS
+             */
+            ts: {
+                oblique: {
+                    tsconfig: 'tsconfig.publish.json'
+                },
+                //Currently not used, see exec
+                showcase: {
+                    tsconfig: true
+                }
+            },
+
+            /*
+             * grunt-tslint
+             *
+             * https://github.com/palantir/grunt-tslint
+             *
+             * Validate files with TSLint, a tool that helps to detect errors and potential problems in your TypeScript code.
+             */
+            tslint: {
+                options: {
+                    configuration: "tslint.json"
+                },
+                files: {
+                    src: [
+                        "<%= paths.app %>**/*.ts",
+                        "<%= paths.oblique %>**/*.ts"
+                    ]
+                }
+            },
+
+            /*
+             * grunt-browserify
+             *
+             * https://github.com/jmreidy/grunt-browserify
+             *
+             * Bundle all TypeScript files into one.
+             */
+            browserify: {
+                app: {
+                    src: '<%= env.build.target %>app/app-module.js',
+                    dest: '<%= env.build.target %>app/bundles/app.js',
+                    //Alias to the components (bundles them together with the showcase)
+                    options: {
+                        alias: {
+                            'oblique-reactive/oblique-reactive': './<%= env.build.target %>oblique-reactive/oblique-reactive.js'
+                        }
+                    }
+                },
+                oblique: {
+                    src: '<%= env.build.target %>/oblique-reactive/oblique-reactive.js',
+                    dest: '<%= env.build.target %>/oblique-reactive/bundles/oblique-reactive.js'
+                }
+            },
 
 			/*
 			 * grunt-contrib-copy
@@ -112,6 +158,23 @@ module.exports = function (grunt) {
 			 * Copy files and folders
 			 */
 			copy: {
+				// RootDirs will mess up the structure, so we copy the compiled files to the right place
+				typescript: {
+					files: [
+						{
+							expand: true,
+							cwd: '<%= paths.staging %>src/',
+							src: '**/*',
+							dest: '<%= env.build.target %>oblique-reactive/'
+						},
+						{
+							expand: true,
+							cwd: '<%= paths.staging %>showcase/app/',
+							src: '**/*',
+							dest: '<%= env.build.target %>app/'
+						}
+					]
+				},
 				oblique: {
 					files: [{
 						expand: true,
@@ -160,6 +223,25 @@ module.exports = function (grunt) {
 						expand: true,
 						flatten: false
 					}]
+				},
+				'testResources': {
+					files: [{
+						cwd: '<%= paths.modules %>',
+						src: '<%= env.resources.vendor.testResources %>',
+						dest: '<%= env.build.target %><%= paths.testResources %>',
+						expand: true
+					}]
+				},
+				'system-js': {
+					files: [{
+						cwd: '<%= paths.modules %>',
+						src: [
+							'systemjs/dist/system.js',
+							'systemjs/dist/system-polyfills.js'
+						],
+						dest: '<%= env.build.target %><%= paths.vendor %>',
+						expand: true
+					}]
 				}
 			},
 
@@ -191,8 +273,8 @@ module.exports = function (grunt) {
 						'<%= paths.modules %>oblique-ui/templates/helpers/**/*.js'
 					],
 
-					// Layout placeholders override:
-					'html-attrs': 'ng-controller="AppController as appController"',
+                    // Layout placeholders override:
+                    'html-attrs': 'ng-controller="appController as appController"',
 
 					// App-specific configuration used by ObliqueUI layouts:
 					app: {
@@ -266,45 +348,61 @@ module.exports = function (grunt) {
 				}
 			},
 
-			/*
-			 * grunt-text-replace
-			 *
-			 * https://github.com/yoniholmes/grunt-text-replace
-			 */
-			replace: {
-				config: {
-					src: '<%= env.build.target%>/app/**/*.js',
-					overwrite: true,
-					replacements: [
-						{
-							from: "__MODULE__",
-							to: '<%= env.app.module %>'
-						},
-						{
-							from: "'__CONFIG__'",
-							to: '<%= JSON.stringify(env.app) %>'
-						}
-					]
-				}
-			},
+            /*
+             * grunt-text-replace
+             *
+             * https://github.com/yoniholmes/grunt-text-replace
+             */
+            replace: {
+                showcase: {
+                    src: [
+                        '<%= env.build.target%>/app/**/*.js',
+                        '<%= env.build.target%>/oblique-reactive/**/*.js' //Used in tests
+                    ],
+                    overwrite: true,
+                    replacements: [
+                        {
+                            from: "__MODULE__",
+                            to: '<%= env.app.module %>'
+                        },
+                        {
+                            from: "'__CONFIG__'",
+                            to: '<%= JSON.stringify(env.app) %>'
+                        }
+                    ]
+                }
+            },
 
-			/*
-			 * html2js
-			 *
-			 * https://github.com/karlgoldstein/grunt-html2js
-			 *
-			 * Converts AngularJS templates to JavaScript
-			 */
-			html2js: {
-				options: {
-					module: '<%= env.app.module %>.app-templates',
-					base: '<%= paths.states %>'
-				},
-				views: {
-					src: '<%= paths.app %>**/*.tpl.html',
-					dest: '<%= env.build.target %>app/app-templates.js'
-				}
-			},
+            /*
+             * html2js
+             *
+             * https://github.com/karlgoldstein/grunt-html2js
+             *
+             * Converts AngularJS templates to JavaScript
+             */
+            html2js: {
+                options: {
+                    amd: true,
+                    amdSuffixString: ''
+                },
+                showcase: {
+                    module: '<%= env.app.module %>.app-templates',
+                    options: {
+                        amdPrefixString: 'exports.templateModuleName = \'__MODULE__.app-templates\';\n',
+                        base: '<%= paths.states %>'
+                    },
+                    src: '<%= paths.app %>**/*.tpl.html',
+                    dest: '<%= env.build.target %>app/app-templates.js'
+                },
+                oblique: {
+                    options: {
+                        amdPrefixString: 'exports.templateModuleName = \'oblique-reactive.app-templates\';\n',
+                    },
+                    module: 'oblique-reactive.app-templates',
+                    src: '<%= paths.oblique %>**/*.tpl.html',
+                    dest: '<%= env.build.target %>oblique-reactive/oblique-reactive-templates.js'
+                }
+            },
 
 			/*
 			 * grunt-ng-annotate
@@ -389,114 +487,120 @@ module.exports = function (grunt) {
 				}
 			},
 
-			/*
-			 * grunt-contrib-watch
-			 *
-			 * https://github.com/gruntjs/grunt-contrib-watch
-			 *
-			 * Run predefined tasks whenever watched file patterns are added, changed or deleted
-			 */
-			watch: {
-				options: {
-					livereload: true,
-					spawn: false
-				},
-				project: {
-					files: [
-						'project.conf.js',
-						'Gruntfile.js'
-					],
-					tasks: [
-						'config:<%= _currentEnv() %>',
-						'build-<%= _currentEnv() %>'
-					]
-				},
-				app: {
-					files: [
-						'<%= paths.app %>**/*.js',
-						'<%= paths.app %>**/*.json'
-					],
-					tasks: [
-						'config:<%= _currentEnv() %>',
-						'jshint',
-						'jscs',
-						'copy:app',
-						'html2js',
-						'replace'
-					]
-				},
-				assets: {
-					options: {
-						cwd: '<%= paths.src %>'
-					},
-					files: [
-						'images/**/*',
-						'js/**/*',
-						'fonts/**/*'
-					],
-					tasks: [
-						'config:<%= _currentEnv() %>',
-						'copy:assets'
-					]
-				},
-				'vendor-js': {
-					options: {
-						cwd: '<%= paths.modules %>'
-					},
-					files: '{<%= env.resources.vendor.js %>}',
-					tasks: [
-						'config:<%= _currentEnv() %>',
-						'copy:vendor-js'
-					]
-				},
-				'vendor-css': {
-					options: {
-						cwd: '<%= paths.modules %>'
-					},
-					files: '{<%= env.resources.vendor.css %>}',
-					tasks: [
-						'config:<%= _currentEnv() %>',
-						'copy:vendor-css'
-					]
-				},
-				less: {
-					files: ['<%= paths.less %>**/*.less'],
-					tasks: [
-						'config:<%= _currentEnv() %>',
-						'less'
-					]
-				},
-				pages: {
-					files: [
-						'<%= paths.pages %>**/*.hbs',
-						'<%= paths.partials %>**/*.hbs'
-					],
-					tasks: [
-						'config:<%= _currentEnv() %>',
-						'assemble'
-					]
-				},
-				views: {
-					files: ['<%= paths.app %>**/*.tpl.html'],
-					tasks: [
-						'config:<%= _currentEnv() %>',
-						'html2js'
-					]
-				},
-				prod: {
-					files: [
-						'<%= env.build.target %>app/**/*',
-						'<%= env.build.target %>js/**/*',
-						'<%= env.build.target %>css/**/*',
-						'<%= env.build.target %><%= paths.vendor %>**/*'
-					],
-					tasks: [
-						'config:<%= _currentEnv() %>',
-						'assemble',
-						'optimize'
-					]
-				}
-			},
+            /*
+             * grunt-contrib-watch
+             *
+             * https://github.com/gruntjs/grunt-contrib-watch
+             *
+             * Run predefined tasks whenever watched file patterns are added, changed or deleted
+             */
+            watch: {
+                options: {
+                    livereload: true,
+                    spawn: false
+                },
+                project: {
+                    files: [
+                        'project.conf.js',
+                        'Gruntfile.js'
+                    ],
+                    tasks: [
+                        'config:<%= _currentEnv() %>',
+                        'build-<%= _currentEnv() %>'
+                    ]
+                },
+                app: {
+                    files: [
+                        '<%= paths.app %>**/*.js',
+                        '<%= paths.app %>**/*.ts',
+                        '<%= paths.oblique %>**/*.ts',
+                        '<%= paths.app %>**/*.json'
+                    ],
+                    tasks: [
+                        'config:<%= _currentEnv() %>',
+                        'tslint',
+                        'exec:tsc',
+                        'copy:typescript',
+                        'copy:app',
+                        'html2js',
+                        'replace'
+                    ]
+                },
+                assets: {
+                    options: {
+                        cwd: '<%= paths.src %>'
+                    },
+                    files: [
+                        'images/**/*',
+                        'js/**/*',
+                        'fonts/**/*'
+                    ],
+                    tasks: [
+                        'config:<%= _currentEnv() %>',
+                        'copy:assets'
+                    ]
+                },
+                'vendor-js': {
+                    options: {
+                        cwd: '<%= paths.modules %>'
+                    },
+                    files: '{<%= env.resources.vendor.js %>}',
+                    tasks: [
+                        'config:<%= _currentEnv() %>',
+                        'copy:vendor-js'
+                    ]
+                },
+                'vendor-css': {
+                    options: {
+                        cwd: '<%= paths.modules %>'
+                    },
+                    files: '{<%= env.resources.vendor.css %>}',
+                    tasks: [
+                        'config:<%= _currentEnv() %>',
+                        'copy:vendor-css'
+                    ]
+                },
+                less: {
+                    files: ['<%= paths.less %>**/*.less'],
+                    tasks: [
+                        'config:<%= _currentEnv() %>',
+                        'less'
+                    ]
+                },
+                pages: {
+                    files: [
+                        '<%= paths.pages %>**/*.hbs',
+                        '<%= paths.partials %>**/*.hbs'
+                    ],
+                    tasks: [
+                        'config:<%= _currentEnv() %>',
+                        'assemble'
+                    ]
+                },
+                views: {
+                    files: [
+                        '<%= paths.app %>**/*.tpl.html',
+                        '<%= paths.oblique %>**/*.tpl.html'
+                    ],
+                    tasks: [
+                        'config:<%= _currentEnv() %>',
+                        'html2js'
+                    ]
+                },
+                prod: {
+                    files: [
+                        '<%= env.build.target %>app/**/*',
+                        '<%= env.build.target %>js/**/*',
+                        '<%= env.build.target %>css/**/*',
+                        '<%= env.build.target %><%= paths.vendor %>**/*'
+                    ],
+                    tasks: [
+                        'config:<%= _currentEnv() %>',
+                        'assemble',
+                        'optimize'
+                    ]
+                }
+            },
 
 			/*
 			 * grunt-focus
@@ -512,24 +616,47 @@ module.exports = function (grunt) {
 				prod: {}
 			},
 
-			/*
-			 * grunt-contrib-connect
-			 *
-			 * https://github.com/gruntjs/grunt-contrib-connect
-			 *
-			 * Start a connect web server.
-			 */
-			connect: {
-				local: {
-					options: {
-						port: 9000, // Port used to deploy the client
-						base: '<%= env.build.target %>',
-						hostname: '<%= env.app.api.hostname %>',
-						index: '<%= env.app.home %>',
-						open: true
-					}
-				}
-			},
+            /*
+             * grunt-contrib-connect
+             *
+             * https://github.com/gruntjs/grunt-contrib-connect
+             *
+             * Start a connect web server.
+             */
+            connect: {
+                local: {
+                    options: {
+	                    open: true,
+                        port: 9000, // Port used to deploy the client
+                        base: '<%= env.build.target %>',
+                        hostname: '<%= env.app.api.hostname %>',
+                        index: '<%= env.app.home %>',
+                        middleware: function (connect, options) {
+                            if (!Array.isArray(options.base)) {
+                                options.base = [options.base];
+                            }
+                            // Setup the proxy
+                            var middlewares = [require('grunt-connect-proxy/lib/utils').proxyRequest];
+
+                            var serveStatic = require('serve-static');
+
+                            // Serve static files.
+                            options.base.forEach(function (base) {
+                                middlewares.push(serveStatic(base));
+                            });
+
+                            return middlewares;
+                        }
+                    },
+                    proxies: [
+                        {
+                            context: '/api',
+                            host: 'localhost',
+                            port: 3000
+                        }
+                    ]
+                }
+            },
 
 			/*
 			 * grunt-nodemon
@@ -593,18 +720,20 @@ module.exports = function (grunt) {
 	// Project tasks
 	// ----------------------------------
 
-	// Build:
-	grunt.registerTask('build', [
-		'clean',
-		'jshint',
-		'jscs',
-		'copy',
-		'assemble',
-		'less',
-		'replace',
-		'html2js'/*,
-		'karma:unit'*/
-	]);
+    // Build:
+    grunt.registerTask('build', [
+        'clean',
+        'tslint',
+        //'ts:oblique',
+        'exec:tsc',
+        'copy',
+        'assemble',
+        'less',
+        'html2js',
+        'replace',
+        'karma:unit',
+        'clean:staging'
+    ]);
 
 	grunt.registerTask('build-dev', [
 		'config:dev',
@@ -625,14 +754,14 @@ module.exports = function (grunt) {
 		'focus:dev:dev'
 	]);
 
-	grunt.registerTask('run-prod-local', [
-		'config:dev', // workaround for proxy because of cors
-		'build',
-		'optimize',
-		'configureProxies:local',
-		'connect:local:keepalive',
-		'focus:prod:prod'
-	]);
+    grunt.registerTask('run-prod-local', [
+        'config:prod-local', // workaround for proxy because of cors
+        'build',
+        'optimize',
+        'configureProxies:local',
+        'connect:local:keepalive',
+        'focus:prod:prod'
+    ]);
 
 	grunt.registerTask('run-prod', [
 		'build-prod',
@@ -641,19 +770,20 @@ module.exports = function (grunt) {
 		'focus:prod:prod'
 	]);
 
-	/**
-	 * Optimizes resources for deployment.
-	 */
-	grunt.registerTask("optimize", [
-		'ngAnnotate',
-		'useminPrepare',
-		'concat',
-		'cssmin',
-		'uglify',
-		'filerev',
-		'usemin',
-		'clean:staging'
-	]);
+    /**
+     * Optimizes resources for deployment.
+     */
+    grunt.registerTask("optimize", [
+        'browserify:app',
+        'ngAnnotate',
+        'useminPrepare',
+        'concat',
+        'cssmin',
+        'uglify',
+        'filerev',
+        'usemin',
+        'clean:staging'
+    ]);
 
 	// Template-only tasks (remove if necessary)
 	// ----------------------------------
@@ -666,8 +796,45 @@ module.exports = function (grunt) {
 		]);
 	});
 
-	// Main task aliases
-	// ----------------------------------
+    grunt.registerTask('build-publish', [
+        'config:prod',
+        'clean:build',
+        'build',        //Run test before we publish
+        'clean:build',
+        'ts:oblique',
+        'html2js:oblique',
+        'browserify:oblique',
+        'package.json',
+        'clean:staging'
+    ]);
+
+    //Publishes the oblique module on the Nexus
+    grunt.registerTask('publish', [
+        'build-publish',
+        'exec:publish'
+    ]);
+
+    //This creates the package.json for publishing
+    grunt.registerTask('package.json', function (target) {
+        var pkgJson = require('./package.json');
+        var targetPkgJson = {};
+        var fieldsToCopy = ['version', 'description', 'keywords', 'author', 'repository', 'license', 'bugs', 'homepage', 'publishConfig'];
+
+        targetPkgJson['name'] = 'oblique-reactive';
+
+        fieldsToCopy.forEach(function (field) {
+            targetPkgJson[field] = pkgJson[field];
+        });
+
+        targetPkgJson['main'] = 'oblique-reactive.js';
+
+        targetPkgJson.peerDependencies = pkgJson.dependencies;
+
+        grunt.file.write('target/oblique-reactive/package.json', JSON.stringify(targetPkgJson, null, 2));
+    });
+
+    // Main task aliases
+    // ----------------------------------
 
 	// Default:
 	grunt.registerTask('default', ['run-dev']);
