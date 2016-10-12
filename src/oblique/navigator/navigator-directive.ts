@@ -1,32 +1,31 @@
 import {NavigationDirectiveController} from './navigator-directive-controller';
 
 export class NavigatorDirective implements ng.IDirective {
-    restrict = 'E';
-    replace = true;
-    require = 'navigator';
-    template =   `<a href='' ng-click='ctrl.up()'>
-	                <span class='fa fa-chevron-left'></span>
-			    </a>`;
-    
-    controller = NavigationDirectiveController;
-    controllerAs = 'ctrl';
+	restrict = 'E';
+	replace = true;
+	require = 'navigator';
+	template = `<a href='' ng-click='ctrl.up()'>
+				    <span class='fa fa-chevron-left'></span>
+				</a>`;
 
-    constructor (private $document:ng.IDocumentService) {
+	controller = NavigationDirectiveController;
+	controllerAs = 'ctrl';
 
-    }
-    
-    link = (scope, element, attrs, ctrl:NavigationDirectiveController) => {
-        let eventName = 'keyup.navigator';
+	constructor(private $document:ng.IDocumentService) {
+	}
 
-        this.$document.on(eventName, (event) => {
-            if (event.which === 27) { // ESC key
-                event.preventDefault();
-                ctrl.up();
-            }
-        });
+	link = (scope, element, attrs, ctrl:NavigationDirectiveController) => {
+		let eventName = 'keyup.navigator';
 
-        element.on('$destroy', () => {
-            this.$document.off(eventName);
-        });
-    }
+		this.$document.on(eventName, (event) => {
+			if (event.which === 27) { // ESC key
+				event.preventDefault();
+				ctrl.up();
+			}
+		});
+
+		element.on('$destroy', () => {
+			this.$document.off(eventName);
+		});
+	}
 }

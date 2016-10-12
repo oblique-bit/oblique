@@ -34,39 +34,38 @@ import '../oblique-reactive-templates';
 export const ObliqueModule = 'oblique-reactive';
 
 angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
-    .directive('date', () => new DateDirective())
-    .directive('numberFormat', ($filter:ng.IFilterService, $parse:ng.IParseService) => new NumberFormatDirective($filter, $parse))
-    .decorator('$exceptionHandler', exceptionHandlerDecorator)
-    .decorator('$http', httpDecorator)
-    .service('HttpInterceptor', HttpInterceptor)
-    .decorator('$log', logDecorator)
-    .directive('navigator', ($document:ng.IDocumentService) => new NavigatorDirective($document))
-    .service('$navigator', NavigatorService)
-    .provider('loadingService', () => new LoadingServiceProvider())
-    .directive('datePicker', () => new DatePickerDirective())
-    //TODO: naming?
-    .directive('uibDatepickerPopup', (dateFilter, uibDateParser, uibDatepickerPopupConfig) => new DatePickerPopupDirective(
-        dateFilter,
-        uibDateParser,
-        uibDatepickerPopupConfig
-    ))
-    .provider('notificationService', () => new NotificationServiceProvider())
-    .directive('notifications', () => new NotificationsDirective())
-    .directive('delayedChange', () => new DelayedChangeDirective())
-    .directive('dropdownClosable', ($timeout:ng.ITimeoutService) => new DropdownClosableDirective($timeout))
-    .directive('enter', () => new EnterDirective())
-    .directive('giveMeFocus', () => new GiveMeFocusDirective())
-    .constant('multiselectConfig', new MultiselectConfig())
-    .directive('multiselect', () => new MultiselectDirective())
-    .directive('navigable', ($timeout:ng.ITimeoutService) => new NavigableDirective($timeout))
-    .directive('uibTypeahead', () => new UibTypeaheadDirective())
-    .directive('uibTypeaheadPopup', () => new UibTypeaheadPopupDirective())
-    .directive('hasError', () => new HasErrorDirective())
-    .constant('schemaValidateConfig', new SchemaValidateConfig())
-    .directive('validationSchema', ()=> new ValidationSchemaDirective())
-    .directive('validationBusiness', ($log:LogDecorator) => new ValidationBusinessDirective($log))
-    .directive('schemaValidate', ($log:LogDecorator,
-                                  $timeout:ng.ITimeoutService,
-                                  schemaValidator:SchemaValidatorService) => new SchemaValidateDirective($log,$timeout,schemaValidator))
-    .service('schemaValidator', SchemaValidatorService);
-
+	.directive('date', () => new DateDirective())
+	.directive('numberFormat', ($filter:ng.IFilterService, $parse:ng.IParseService) => new NumberFormatDirective($filter, $parse))
+	.decorator('$exceptionHandler', exceptionHandlerDecorator)
+	.decorator('$http', httpDecorator)
+	.service('HttpInterceptor', HttpInterceptor)
+	.decorator('$log', logDecorator)
+	.directive('navigator', ($document:ng.IDocumentService) => new NavigatorDirective($document))
+	.service('$navigator', NavigatorService)
+	.provider('loadingService', () => new LoadingServiceProvider())
+	.directive('datePicker', () => new DatePickerDirective())
+	//TODO: naming?
+	.directive('uibDatepickerPopup', (dateFilter, uibDateParser, uibDatepickerPopupConfig) => new DatePickerPopupDirective(
+		dateFilter,
+		uibDateParser,
+		uibDatepickerPopupConfig
+	))
+	.provider('notificationService', () => new NotificationServiceProvider())
+	.directive('notifications', () => new NotificationsDirective())
+	.directive('delayedChange', () => new DelayedChangeDirective())
+	.directive('dropdownClosable', ($timeout:ng.ITimeoutService) => new DropdownClosableDirective($timeout))
+	.directive('enter', () => new EnterDirective())
+	.directive('giveMeFocus', () => new GiveMeFocusDirective())
+	.constant('multiselectConfig', new MultiselectConfig())
+	.directive('multiselect', () => new MultiselectDirective())
+	.directive('navigable', ($timeout:ng.ITimeoutService) => new NavigableDirective($timeout))
+	.directive('uibTypeahead', () => new UibTypeaheadDirective())
+	.directive('uibTypeaheadPopup', () => new UibTypeaheadPopupDirective())
+	.directive('hasError', () => new HasErrorDirective())
+	.constant('schemaValidateConfig', new SchemaValidateConfig())
+	.directive('validationSchema', ()=> new ValidationSchemaDirective())
+	.directive('validationBusiness', ($log:LogDecorator) => new ValidationBusinessDirective($log))
+	.directive('schemaValidate', ($log:LogDecorator,
+	                              $timeout:ng.ITimeoutService,
+	                              schemaValidator:SchemaValidatorService) => new SchemaValidateDirective($log, $timeout, schemaValidator))
+	.service('schemaValidator', SchemaValidatorService);

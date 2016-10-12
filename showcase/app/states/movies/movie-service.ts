@@ -1,28 +1,34 @@
-import {MovieResource} from './movie-resource';
-
 export class MovieService {
 
-    public movies: any[] = [];
+	public movies:any[] = [];
 
-    /*@ngInject*/
-    constructor(private movieResource: MovieResource) {
-    }
-    
-    reload() {
-        return this.movieResource.findAll().then((movies) => {
-            angular.copy(movies, this.movies);
-        });
-    }
+	/*@ngInject*/
+	constructor(private $http) {
+	}
 
-    add(movie) {
-        return this.movieResource.add(movie.name, movie.description, movie.year);
-    }
+	reload() {
+		return this.findAll().then((movies) => {
+			angular.copy(movies, this.movies);
+		});
+	}
 
-    save(movie) {
-        return this.movieResource.save(movie.movieId, movie.name, movie.description, movie.year);
-    }
+	findAll() {
+		return this.$http.api.get('/movies');
+	}
 
-    remove(movieId) {
-        return this.movieResource.remove(movieId);
-    }
+	find(movieId) {
+		return this.$http.api.get('/movies/' + movieId);
+	}
+
+	add(movie) {
+		return this.$http.api.post('/movies', movie);
+	}
+
+	save(movie) {
+		return this.$http.api.put('/movies/' + movie.movieId, movie);
+	}
+
+	remove(movieId) {
+		return this.$http.api.delete('/movies/' + movieId);
+	}
 }

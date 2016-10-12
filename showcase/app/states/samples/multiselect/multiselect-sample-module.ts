@@ -3,14 +3,14 @@ import {MultiselectSampleController} from './multiselect-sample-controller';
 export const MultiselectModule = '__MODULE__.samples.multiselect';
 
 angular
-    .module(MultiselectModule, [])
-    .config(($stateProvider) => {
-        $stateProvider.state('samples.multiselect', {
-            url: '/multiselect',
-            templateUrl: 'samples/multiselect/multiselect-sample.tpl.html',
-            controller: 'multiselectSampleController',
-            controllerAs: 'ctrl'
-        });
-    })
-    .controller('multiselectSampleController', MultiselectSampleController);
+	.module(MultiselectModule, [])
+	.config(($stateProvider) => {
+		$stateProvider.state('samples.multiselect', {
+			url: '/multiselect',
+			templateUrl: 'samples/multiselect/multiselect-sample.tpl.html',
+			controller: 'multiselectSampleController',
+			controllerAs: 'ctrl'
+		});
+	})
+	.controller('multiselectSampleController', MultiselectSampleController);
 

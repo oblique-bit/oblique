@@ -1,24 +1,36 @@
-﻿<div class="input-group control-action datepicker" ng-class="{'input-group-sm' : controlSize == 'sm'}">
-	<span ng-if="label" for="{{ctrl.controlId}}" class="input-group-addon">{{ctrl.label}}</span>
-	<div class="control-action">
-		<input name="{{ctrl.name}}" type="text" class="form-control" placeholder="{{('common.date.format.' + ctrl.dpOptions.datepickerPopup) | translate}}"
-		       ng-attr-id="{{ctrl.controlId}}"
-		       ng-model="ctrl.ngModel"
-		       ng-class="{'form-control-activable' : !ctrl.disabled && !ctrl.editable}"
-		       ng-disabled="ctrl.disabled" ng-required="required" ng-readonly="ctrl.disabled || !ctrl.editable"
-		       uib-datepicker-popup
-			   datepicker-options="ctrl.dpOptions"
-			   alt-input-formats="ctrl.dpAltInputFormats"
-			   uib-date-parser
-		       is-open="ctrl.opened" enter="ctrl.close()"
-		       schema-validate />
-		<button class="control-action-trigger" type="button" ng-click="ctrl.clear($event)" ng-if="!ctrl.required && ctrl.showClearControl" ng-disabled="ctrl.disabled">
-			<span class="fa fa-times-circle"></span>
-		</button>
+﻿<div>
+	<div class="input-group control-action datepicker" data-ng-class="{'input-group-sm' : controlSize == 'sm'}">
+		<label data-ng-if="label" for="{{ctrl.controlId}}" class="input-group-addon">{{ctrl.label}}</label>
+		<div class="control-action" data-ng-class="{'control-mandatory' : !ngModel && required}">
+			<input name="{{ctrl.name}}" type="text" class="form-control"
+			       placeholder="{{('common.date.format.' + ctrl.dpOptions.datepickerPopup) | translate}}"
+			       data-ng-attr-id="{{ctrl.controlId}}"
+			       data-ng-model="ctrl.ngModel"
+			       data-ng-class="{'form-control-activable' : !ctrl.disabled && !ctrl.editable}"
+			       data-ng-disabled="ctrl.disabled"
+			       data-ng-required="required"
+			       data-ng-readonly="ctrl.disabled || !ctrl.editable"
+			       data-uib-datepicker-popup
+			       data-datepicker-options="ctrl.dpOptions"
+			       data-alt-input-formats="ctrl.dpAltInputFormats"
+			       data-is-open="ctrl.opened"
+			       data-enter="ctrl.close()"
+			       data-ng-model-options="{ debounce: { 'default': 250, 'blur': 0 } }"/>
+			<button class="control-action-trigger" type="button" data-ng-click="ctrl.clear($event)"
+			        data-ng-if="!ctrl.required && ctrl.showClearControl" data-ng-disabled="ctrl.disabled">
+				<span class="fa fa-times-circle"></span>
+			</button>
+		</div>
+		<span class="input-group-btn">
+			<button class="btn btn-default" type="button" data-ng-click="ctrl.toggle($event)" data-ng-disabled="ctrl.disabled">
+				<span class="fa fa-calendar"></span>
+			</button>
+		</span>
 	</div>
-	<span class="input-group-btn">
-		<button class="btn btn-default" type="button" ng-click="ctrl.toggle($event)" ng-disabled="ctrl.disabled">
-			<span class="fa fa-calendar"></span>
-		</button>
-	</span>
+	<div class="help-block" data-ng-show="form.$dirty && form.$error && form.$error.required">
+		* {{'tv4.OBJECT_REQUIRED'| translate}}
+	</div>
+	<div class="help-block" data-ng-show="form.$dirty && form.$error && form.$error.date">
+		* {{'common.date.format.invalid' | translate}}
+	</div>
 </div>

@@ -2,27 +2,27 @@ import {NotificationService} from './notification-service';
 
 //Sample test
 describe('NotificationService', () => {
-    let service:NotificationService;
+	let service:NotificationService;
 
-    //Needs to import this, because otherwise it makes problems with decorators
-    beforeEach(angular.mock.module('__MODULE__'));
+	//Needs to import this, because otherwise it makes problems with decorators
+	beforeEach(angular.mock.module('__MODULE__'));
 
-    beforeEach(inject(($timeout) => {
-        service = new NotificationService($timeout, {
-            timeout: 100
-        });
-    }));
+	beforeEach(inject(($timeout) => {
+		service = new NotificationService($timeout, {
+			timeout: 100
+		});
+	}));
 
-    it('should remove all notifications on clear', () => {
-        service.info('FUU');
-        service.error('BAR');
-        service.warn('BAZ');
+	it('should remove all notifications on clear', () => {
+		service.info('FUU');
+		service.error('BAR');
+		service.warn('BAZ');
 
-        expect(service.notifications.length).toBe(3);
+		expect(service.notifications.length).toBe(3);
 
-        service.clear();
+		service.clear();
 
-        expect(service.notifications.length).toBe(0);
-    });
+		expect(service.notifications.length).toBe(0);
+	});
 
 });

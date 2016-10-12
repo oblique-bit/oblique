@@ -1,10 +1,10 @@
 SystemJS.config({
-    baseURL: './',
-    defaultJSExtensions: true
+	baseURL: './',
+	defaultJSExtensions: true
 });
 
-//Imports the app-root
+// Import the app-root:
 Promise.all([
-    SystemJS.import('app/app-config'),
-    SystemJS.import('app/app-module'),
+	SystemJS.import('app/app-config'),
+	SystemJS.import('app/app-module'),
 ]);

@@ -16,44 +16,44 @@ __karma__.loaded = function () {
 
 // Load our SystemJS configuration.
 SystemJS.config({
-    baseURL: '/base/',
-    defaultJSExtensions: true,
-    //Has to map oblique-reactive to it's real path
-    map: {
-        'oblique-reactive': 'target/oblique-reactive'
-    }
+	baseURL: '/base/',
+	defaultJSExtensions: true,
+	//Has to map oblique-reactive to it's real path
+	map: {
+		'oblique-reactive': 'target/oblique-reactive'
+	}
 });
 
 Promise.all([
-    SystemJS.import('target/app/app-config'),
-    SystemJS.import('target/app/app-module') 
+	SystemJS.import('target/app/app-config'),
+	SystemJS.import('target/app/app-module')
 ]).then(function () {
-    return Promise.all(
-        Object.keys(window.__karma__.files) // All files served by Karma.
-            .filter(onlySpecFiles)
-            .map(file2moduleName)
-            .map(function (path) {
-                return SystemJS.import(path);
-            }));
+	return Promise.all(
+		Object.keys(window.__karma__.files) // All files served by Karma.
+			.filter(onlySpecFiles)
+			.map(file2moduleName)
+			.map(function (path) {
+				return SystemJS.import(path);
+			}));
 })
-    .then(function () {
-        __karma__.start();
-    }, function (error) {
-        console.error(error.stack || error);
-        __karma__.start();
-    });
+	.then(function () {
+		__karma__.start();
+	}, function (error) {
+		console.error(error.stack || error);
+		__karma__.start();
+	});
 
 function onlySpecFiles(path) {
-    // check for individual files, if not given, always matches to all
-    var patternMatched = __karma__.config.files ?
-        path.match(new RegExp(__karma__.config.files)) : true;
+	// check for individual files, if not given, always matches to all
+	var patternMatched = __karma__.config.files ?
+		path.match(new RegExp(__karma__.config.files)) : true;
 
-    return patternMatched && /[\.|_]spec\.js$/.test(path);
+	return patternMatched && /[\.|_]spec\.js$/.test(path);
 }
 
 // Normalize paths to module names.
 function file2moduleName(filePath) {
-    return filePath.replace(/\\/g, '/')
-        .replace(/^\/base\//, '')
-        .replace(/\.js$/, '');
+	return filePath.replace(/\\/g, '/')
+		.replace(/^\/base\//, '')
+		.replace(/\.js$/, '');
 }

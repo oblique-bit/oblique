@@ -1,47 +1,49 @@
 <h2 class="page-header">{{'states.samples.multiselect.title' | translate}}</h2>
-<p class="lead">Multiselectable options based on <a href="http://dotansimha.github.io/angularjs-dropdown-multiselect/">angularjs-dropdown-multiselect</a>.</p>
+<p class="lead">
+	Multiselectable options based on <a href="http://dotansimha.github.io/angularjs-dropdown-multiselect/">angularjs-dropdown-multiselect</a>.
+</p>
 
 <h3>Dropdown</h3>
 <div class="row">
-    <div class="col-md-6">
-        <div class="row">
-            <label class="col-md-4">Items</label>
-            <div class="col-md-8">
-                <multiselect
-                        ng-model="ctrl.dropdown.model"
-                        options="ctrl.dropdown.options"
-                        dropup="false"
-                        checkboxes="true"
-                        extra-settings="ctrl.dropdown.settings"
-                        translation-texts="ctrl.dropdown.translations">
-                </multiselect>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <pre uib-tooltip="Dropdown model data">{{ctrl.dropdown.model | json}}</pre>
-    </div>
+	<div class="col-md-6">
+		<div class="row">
+			<label class="col-md-4">Items</label>
+			<div class="col-md-8">
+				<multiselect
+						ng-model="ctrl.dropdown.model"
+						options="ctrl.dropdown.options"
+						dropup="false"
+						checkboxes="true"
+						extra-settings="ctrl.dropdown.settings"
+						translation-texts="ctrl.dropdown.translations">
+				</multiselect>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<pre uib-tooltip="Dropdown model data">{{ctrl.dropdown.model | json}}</pre>
+	</div>
 </div>
 
 <h3>Dropdup</h3>
 <div class="row">
-    <div class="col-md-6">
-        <div class="row">
-            <label class="col-md-4">Items</label>
-            <div class="col-md-8">
-                <multiselect
-                    ng-model="ctrl.dropup.model"
-                    options="ctrl.dropup.options"
-                    dropup="true"
-                    checkboxes="true"
-                    extra-settings="ctrl.dropup.settings">
-                </multiselect>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <pre uib-tooltip="Dropdup model data">{{ctrl.dropup.model | json}}</pre>
-    </div>
+	<div class="col-md-6">
+		<div class="row">
+			<label class="col-md-4">Items</label>
+			<div class="col-md-8">
+				<multiselect
+						ng-model="ctrl.dropup.model"
+						options="ctrl.dropup.options"
+						dropup="true"
+						checkboxes="true"
+						extra-settings="ctrl.dropup.settings">
+				</multiselect>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<pre uib-tooltip="Dropdup model data">{{ctrl.dropup.model | json}}</pre>
+	</div>
 </div>
 
 

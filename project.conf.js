@@ -26,9 +26,6 @@ module.exports = {
 				// Relative path prefix for API calls:
 				"path": "api",
 
-				// For absolute API URL, comment or provide an empty string to disable:
-				"url": "http://localhost:3000",
-
 				// API endpoint for UI logging:
 				"logs": "/logs",
 

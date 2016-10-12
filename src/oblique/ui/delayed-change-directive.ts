@@ -9,18 +9,16 @@
  * filter() is fired with a delay of 750 milliseconds.
  */
 export class DelayedChangeDirective implements ng.IDirective {
-    restrict = 'A';
-    require = 'ngModel';
-    scope = {};
+	restrict = 'A';
+	require = 'ngModel';
+	scope = {};
 
-    bindToController:{
-        ngModel:'=',
-        delayedChange:'&',
-        delay:'@'
-    };
+	bindToController:{
+		ngModel:'=',
+		delayedChange:'&',
+		delay:'@'
+	};
 
-    controller:DelayedChangeDirectiveController;
-    controllerAs:'ctrl';
+	controller:DelayedChangeDirectiveController;
+	controllerAs:'ctrl';
 }
-
-

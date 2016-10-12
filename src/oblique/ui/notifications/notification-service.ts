@@ -1,87 +1,87 @@
 export class NotificationService {
 
-    warning = this.warn; // Alias only
+	warning = this.warn; // Alias only
 
-    public notifications = [];
-    
-    private types = {
-        'default': {
-            priority: 0
-        },
-        info: {
-            priority: 1
-        },
-        success: {
-            priority: 2
-        },
-        warning: {
-            priority: 3
-        },
-        error: {
-            priority: 4
-        }
-    };
+	public notifications = [];
 
-    private currentId:number = 0;
+	private types = {
+		'default': {
+			priority: 0
+		},
+		info: {
+			priority: 1
+		},
+		success: {
+			priority: 2
+		},
+		warning: {
+			priority: 3
+		},
+		error: {
+			priority: 4
+		}
+	};
 
-    /*@ngInject*/
-    constructor(private $timeout:ng.ITimeoutService,
-                private providerContext) {
-    }
+	private currentId:number = 0;
 
-    add(type:string, messageKey:string, title?:string, sticky?:boolean) {
-        let notification = {
-            id: this.currentId,
-            type: type,
-            messageKey: messageKey,
-            title: title,
-            sticky: type === 'error' || sticky
-        };
-        this.notifications.unshift(notification);
-        this.notifications.sort(this.sortByType);
-        if (!notification.sticky) {
-            this.$timeout(() => {
-                this.remove(notification.id);
-            }, this.providerContext.timeout);
-        }
-        this.currentId++;
-    }
+	/*@ngInject*/
+	constructor(private $timeout:ng.ITimeoutService,
+	            private providerContext) {
+	}
 
-    remove(id:number) {
-        this.notifications.forEach((notification, index) => {
-            if (id === notification.id) {
-                this.notifications.splice(index, 1);
-            }
-        });
-    }
+	add(type:string, messageKey:string, title?:string, sticky?:boolean) {
+		let notification = {
+			id: this.currentId,
+			type: type,
+			messageKey: messageKey,
+			title: title,
+			sticky: type === 'error' || sticky
+		};
+		this.notifications.unshift(notification);
+		this.notifications.sort(this.sortByType);
+		if (!notification.sticky) {
+			this.$timeout(() => {
+				this.remove(notification.id);
+			}, this.providerContext.timeout);
+		}
+		this.currentId++;
+	}
 
-    clear() {
-        this.notifications.length = 0; // ;)
-    }
+	remove(id:number) {
+		this.notifications.forEach((notification, index) => {
+			if (id === notification.id) {
+				this.notifications.splice(index, 1);
+			}
+		});
+	}
 
-    // Shortcuts:
-    default(messageKey:string, title?:string, sticky?:boolean) {
-        return this.add('default', messageKey, title, sticky);
-    }
+	clear() {
+		this.notifications.length = 0; // ;)
+	}
 
-    info(messageKey:string, title?:string, sticky?:boolean) {
-        return this.add('info', messageKey, title, sticky);
-    }
+	// Shortcuts:
+	default(messageKey:string, title?:string, sticky?:boolean) {
+		return this.add('default', messageKey, title, sticky);
+	}
 
-    success(messageKey:string, title?:string, sticky?:boolean) {
-        return this.add('success', messageKey, title, sticky);
-    }
+	info(messageKey:string, title?:string, sticky?:boolean) {
+		return this.add('info', messageKey, title, sticky);
+	}
 
-    warn(messageKey:string, title?:string, sticky?:boolean) {
-        return this.add('warning', messageKey, title, sticky);
-    }
+	success(messageKey:string, title?:string, sticky?:boolean) {
+		return this.add('success', messageKey, title, sticky);
+	}
 
-    error(messageKey:string, title?:string, sticky?:boolean) {
-        return this.add('error', messageKey, title, sticky);
-    }
+	warn(messageKey:string, title?:string, sticky?:boolean) {
+		return this.add('warning', messageKey, title, sticky);
+	}
 
-    //Otherwise it would lose the "this" context
-    private sortByType = (a, b) => {
-        return this.types[a.type].priority - this.types[b.type].priority;
-    };
+	error(messageKey:string, title?:string, sticky?:boolean) {
+		return this.add('error', messageKey, title, sticky);
+	}
+
+	//Otherwise it would lose the "this" context
+	private sortByType = (a, b) => {
+		return this.types[a.type].priority - this.types[b.type].priority;
+	};
 }

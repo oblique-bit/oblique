@@ -89,7 +89,7 @@ And add the TypeScript specific libraries and configs described in the [Configur
 
 2. Customize:
 
-> Open [project.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/project.json) and adapt this configuration to fit your project requirements.
+> Open [project.conf.js](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/project.conf.js) and adapt this configuration to fit your project requirements.
 
 ### Troubleshooting dependencies
 

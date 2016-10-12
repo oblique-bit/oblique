@@ -4,7 +4,8 @@
 			<button ng-click="ctrl.remove(notification)" ng-show="ctrl.isClosable(notification)" type="button" class="close">&times;</button>
 			<h4>
 				<span ng-if="!notification.title">{{("notification.type." + notification.type) | translate}}</span>
-				<span>{{notification.title}}</span></h4>
+				<span>{{notification.title}}</span>
+			</h4>
 			<p>{{notification.messageKey | translate}}</p>
 		</div>
 	</div>

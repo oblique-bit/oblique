@@ -1,20 +1,19 @@
 import {ObliqueLog} from './oblique-log';
 
 /*@ngInject*/
-export function logDecorator(CONFIG, $delegate, $injector: ng.auto.IInjectorService) : LogDecorator {
+export function logDecorator(CONFIG, $delegate, $injector:ng.auto.IInjectorService):LogDecorator {
 
-    $delegate.getInstance = (context: string) => {
-        return new ObliqueLog(
-            context,
-            $delegate,
-            CONFIG,
-            $injector);
-    };
+	$delegate.getInstance = (context:string) => {
+		return new ObliqueLog(
+			context,
+			$delegate,
+			CONFIG,
+			$injector);
+	};
 
-    return $delegate;
+	return $delegate;
 }
 //TODO: move this?
 export interface LogDecorator extends ng.ILogService {
-    getInstance: (context:string) => ObliqueLog;
+	getInstance:(context:string) => ObliqueLog;
 }
-

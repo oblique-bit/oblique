@@ -1,3 +1,3 @@
 export class SchemaValidateConfig {
-    customErrorReporter: (error, data, schema) => string;
+	customErrorReporter:(error, data, schema) => string;
 }
