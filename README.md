@@ -1,21 +1,21 @@
 # [ObliqueReactive](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/)
 
-Reactive web template powered by ObliqueUI and AngularJS. ObliqueReactive uses [Grunt](http://gruntjs.com/), [npm](https://www.npmjs.com/), [Less](http://lesscss.org/), [Browserify](http://browserify.org/) and [Assemble](http://assemble.io/) to fetch dependencies, compile & build assets and compose the pages.
+Reactive web template powered by [ObliqueUI](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-ui/) and [AngularJS](https://angularjs.org/). ObliqueReactive uses [npm](https://www.npmjs.com/), [Grunt](http://gruntjs.com/), [Less](http://lesscss.org/), [Browserify](http://browserify.org/) and [Assemble](http://assemble.io/) to fetch dependencies, compile & build assets and compose the pages.
 
 This template has been inspired by the following guidelines:
 <https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/mobilebasic?pli=1>
 
 ## Using as dependency
 
-You can use oblique-reactive as an npm dependency.
+Install `oblique-reactive` as an npm dependency:
 
 	npm install oblique-reactive --save
 
-Once installed, you need to import the ObliqueModule:
+Once installed, you need to import the `ObliqueModule`:
 
 	import {ObliqueModule} from 'oblique-reactive/oblique-reactive';
 
-And add it in your app-module:
+And add it in your `app-module`:
 
 ```
 import {ObliqueModule} from 'oblique-reactive/oblique-reactive';
@@ -27,7 +27,7 @@ angular
 		[...]
 ```
 
-An example of usage can be found in the oblique-reactive-seed project: [ObliqueReactiveSeed](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive-seed/)
+An example of usage can be found in the `oblique-reactive-seed` project: [ObliqueReactiveSeed](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive-seed/)
 
 ## Working on ObliqueReactive
 
@@ -72,9 +72,9 @@ If you are using Git for the first time, configure your user information as well
 	git config --global http."https://stash.eap.bit.admin.ch/".proxy ""
 	git config --global http.postBuffer 524288000
 	git config --global http.proxy <http-proxy-url>
-	
+
 ##### <a name="npm-config"></a> NPM config
-    
+
 Follow the instructions described in the [JEAP Project Setup page](https://confluence.eap.bit.admin.ch/display/JEAP/Projekt+Setup#ProjektSetup-InstallationundKonfigurationvonNodeJsundNPM)
 
 And add the TypeScript specific libraries and configs described in the [Configuration for TypeScript page](https://confluence.eap.bit.admin.ch/display/FEDEV/Configuration+for+TypeScript)
