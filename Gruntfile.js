@@ -108,7 +108,7 @@ module.exports = function (grunt) {
 				oblique: {
 					tsconfig: 'tsconfig.publish.json'
 				},
-				//Currently not used, see exec
+				// Currently not used, see `exec` task.
 				showcase: {
 					tsconfig: true
 				}
@@ -805,7 +805,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('build-publish', [
 		'config:prod',
 		'clean:build',
-		'build',        //Run test before we publish
+		'build', // Build & run tests before publishing
 		'clean:build',
 		'ts:oblique',
 		'html2js:oblique',
@@ -814,29 +814,30 @@ module.exports = function (grunt) {
 		'clean:staging'
 	]);
 
-	//Publishes the oblique module on the Nexus
+	// Publishes the `oblique-reactive` module on the internal npm registry.
 	grunt.registerTask('publish', [
 		'build-publish',
 		'exec:publish'
 	]);
 
-	//This creates the package.json for publishing
+	// Generates custom `package.json` for publishing.
 	grunt.registerTask('package.json', function (target) {
-		var pkgJson = require('./package.json');
-		var targetPkgJson = {};
-		var fieldsToCopy = ['version', 'description', 'keywords', 'author', 'repository', 'license', 'bugs', 'homepage', 'publishConfig'];
+		var pkg = require('./package.json');
+		var output = {
+			name: 'oblique-reactive',
+			main: 'oblique-reactive.js',
+			peerDependencies: pkg.dependencies
+		};
 
-		targetPkgJson['name'] = 'oblique-reactive';
-
-		fieldsToCopy.forEach(function (field) {
-			targetPkgJson[field] = pkgJson[field];
+		[
+			'version', 'description', 'keywords', 'author',
+			'repository', 'license', 'bugs', 'homepage',
+			'publishConfig'
+		].forEach(function (field) {
+			output[field] = pkg[field];
 		});
 
-		targetPkgJson['main'] = 'oblique-reactive.js';
-
-		targetPkgJson.peerDependencies = pkgJson.dependencies;
-
-		grunt.file.write('target/oblique-reactive/package.json', JSON.stringify(targetPkgJson, null, 2));
+		grunt.file.write('target/oblique-reactive/package.json', JSON.stringify(output, null, 2));
 	});
 
 	// Main task aliases

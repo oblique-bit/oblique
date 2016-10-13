@@ -145,16 +145,15 @@ You can now check for updates and bump `package.json` dependencies accordingly:
 
 	npm-check-updates
 
-## Publish on Nexus
+## <a name="publish"></a> Publishing ObliqueReactive
 
-First of all, you need to authenticate yourself on the Nexus:
+1. Ensure you have an account with publishing privileges on the internal `npm` registry ([BIT Nexus](https://nexus.eap.bit.admin.ch))
+2. Authenticate on the internal npm registry (Nexus)
 
-	npm login --registry=http://nexus.vmjeap10a04.bfi.admin.ch:8020/repository/npm-intern/
+	npm login --registry=https://nexus.eap.bit.admin.ch/content/repositories/npm_bit_releases/
 
-> *Note*: Currently there is only the admin user. Ask Christian Ulmann or Oliver Santschi if you need a user.
+    > Follow the steps on the terminal as you may be asked for credentials.
 
-Now you can run the according grunt task:
+3. Publish the module using Grunt:
 
 	grunt publish
-
-> *Note*: This will run the test first, so you have to make sure, that the tests are working
