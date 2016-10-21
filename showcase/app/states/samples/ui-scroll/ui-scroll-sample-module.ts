@@ -9,7 +9,7 @@ angular
 	.config(($stateProvider) => {
 		$stateProvider.state('samples.uiScroll', {
 			url: '/ui-scroll',
-			templateUrl: 'samples/ui-scroll/ui-scroll-sample.tpl.html',
+			templateUrl: 'app/states/samples/ui-scroll/ui-scroll-sample.tpl.html',
 			controller: 'uiScrollSampleController',
 			controllerAs: 'ctrl',
 			resolve: {

@@ -85,7 +85,7 @@ And add the TypeScript specific libraries and configs described in the [Configur
 
 1. Install *globally* required `npm` libraries:
 
-		npm install -g gulp typescript
+	npm install -g typescript typings gulp
 
 2. Install *development* and *frontend* dependencies (`npm` will look at [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/package.json) and automatically install the necessary dependencies listed there):
 
@@ -181,13 +181,52 @@ You can now check for updates and bump `package.json` dependencies accordingly:
 
 ## <a name="publish"></a> Publishing ObliqueReactive
 
+Before publishing, execute the following steps:
+
+1. Run `gulp` to compile sources and rebuild the project distribution.
+2. Check project distribution and ensure it is running as expected.
+3. Commit and push any remaining changes.
+
+Prepare your workspace:
+
 1. Ensure you have an account with publishing privileges on the internal `npm` registry ([BIT Nexus](https://nexus.eap.bit.admin.ch))
-2. Authenticate on the internal npm registry (Nexus)
+2. Add the following properties to your `.npmrc`:
+
+	email=<YOUR_EMAIL_ADDRESS>
+	always-auth=true
+	_auth=<base64 encoded credentials, see [here](http://books.sonatype.com/nexus-book/reference/npm-deploying-packages.html)>
+
+### <a name="publish-patch"></a> Publishing a *patch* release
+
+1. [Ignore until Nexus v3 is deployed!] Authenticate on the internal npm registry (Nexus)
 
 	npm login --registry=https://nexus.eap.bit.admin.ch/content/repositories/npm_bit_releases/
 
     > Follow the steps on the terminal as you may be asked for credentials.
 
-3. Publish the module using Grunt:
+2. Build, release (defaults to *patch* version number increment) and finally publish using Gulp:
 
 	gulp publish
+
+    > Follow the steps on the terminal as you may be asked multiple times for credentials.
+
+### <a name="publish-types"></a> Publishing other release types
+
+Publishing a *prerelease*:
+
+	gulp publish --bump prerelease
+
+Publishing a *minor* release:
+
+	gulp publish --bump minor
+
+Publishing a *major* release:
+
+	gulp publish --bump major
+
+Publishing a *version-specific* release:
+
+	gulp publish --version <version>
+
+> For more release commands or options, see <https://github.com/stevelacy/gulp-bump>.
+

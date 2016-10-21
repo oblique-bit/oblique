@@ -1,6 +1,9 @@
 SystemJS.config({
 	baseURL: './',
-	defaultJSExtensions: true
+	defaultJSExtensions: true,
+	map: {
+		'oblique-reactive': 'vendor/oblique-reactive'
+	}
 });
 
 // Import the app-root:

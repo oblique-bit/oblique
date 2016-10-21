@@ -6,25 +6,26 @@ var project = require('./project.conf.ts');
 
 module.exports = function (config) {
 
-    var karmaResources = [];
+	var karmaResources = [];
 
-	_.forEach(project.common.resources.vendor.testResources, function (v) {
-		karmaResources.push(project.common.build.target + "testResources/" + v);
+	_.forEach(project.resources.vendor.js, function (v) {
+		karmaResources.push(project.build.target + 'vendor/' + v);
 	});
 
-    _.forEach(project.resources.vendor.js, function (v) {
-        karmaResources.push(project.build.target + '/vendor/' + v);
-    });
-    _.forEach(project.resources.app, function (v) {
-        karmaResources.push(project.build.target + '/' + v);
-    });
+	_.forEach(project.resources.vendor.dev, function (v) {
+		karmaResources.push(project.build.target + 'vendor/' + v);
+	});
+
+	_.forEach(project.resources.app, function (v) {
+		karmaResources.push(project.build.target + v);
+	});
 
 	// System config addition for the karma urls:
 
 	//Adds the compiled TypeScript files to the karma files, but doesn't load them in the browser, it just makes them available for SystemJS
-	karmaResources.push({pattern: project.common.build.target + 'app/**/*.js', included: false, watched: false});
+	karmaResources.push({pattern: project.build.target + 'app/**/*.js', included: false, watched: false});
 	karmaResources.push({
-		pattern: project.common.build.target + 'oblique-reactive/**/*.js',
+		pattern: project.build.target + 'oblique-reactive/**/*.js',
 		included: false,
 		watched: false
 	});
@@ -47,7 +48,7 @@ module.exports = function (config) {
 
 		// list of files to exclude
 		exclude: [
-			project.common.build.target + 'app/system.config.dev.js'
+			project.build.target + 'app/system.config.dev.js'
 		],
 
 		plugins: [
@@ -106,7 +107,7 @@ module.exports = function (config) {
 		// if true, it capture browsers, run tests and exit
 		singleRun: true
 	};
-	karmaConfig.preprocessors[project.common.build.target + 'app/**/*.js'] = 'coverage';
+	karmaConfig.preprocessors[project.build.target + 'app/**/*.js'] = 'coverage';
 
 	config.set(karmaConfig);
 };

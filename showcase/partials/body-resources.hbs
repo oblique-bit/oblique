@@ -1,25 +1,28 @@
-<div ng-show="appController.spinner" class="overlay overlay-inverse">
+<div ng-show="appController.spinner.active" class="overlay overlay-inverse">
 	<div class="spinner-viewport">
 		<span class="spinner fa fa-spinner fa-4x"></span>
 	</div>
 </div>
-<!-- build:js {{../assets}}min/vendors.min.js -->
-{{#each env.resources.vendor.js}}
-	<script src="{{../assets}}{{../app.vendor.path}}{{this}}"></script>
-{{~/each}}
-{{#if env.app.systemjs}}
-	<script src="{{../assets}}{{../app.vendor.path}}systemjs/dist/system.js"></script>
-	<script src="{{../assets}}{{../app.vendor.path}}systemjs/dist/system-polyfills.js"></script>
-{{/if}}
+
+<!-- build:jsvendors min/vendors.min.js -->
+{{#each project.resources.vendor.js}}
+	<script src="{{../project.app.vendor.path}}{{this}}"></script>
+{{/each}}
+{{#is project.build.env "DEV"}}
+	{{#each project.resources.vendor.dev}}
+		<script src="{{../project.app.vendor.path}}{{this}}"></script>
+	{{/each}}
+	<script src="app/system.config.dev.js"></script>
+{{/is}}
 <!-- endbuild -->
 
-<!-- build:js {{../assets}}min/{{env.app.module}}.min.js -->
-{{#each env.resources.app}}
-	<script src="{{../assets}}{{this}}"></script>
-{{~/each}}
-{{#unless env.app.systemjs}}
-	{{#each env.resources.bundles}}
-		<script src="{{../assets}}{{this}}"></script>
+<!-- build:jsapp min/app.min.js -->
+{{#each project.resources.app}}
+	<script src="{{this}}"></script>
+{{/each}}
+{{#isnt project.build.env "DEV"}}
+	{{#each project.resources.bundles}}
+		<script src="{{this}}"></script>
 	{{~/each}}
-{{/unless}}
+{{/isnt}}
 <!-- endbuild -->

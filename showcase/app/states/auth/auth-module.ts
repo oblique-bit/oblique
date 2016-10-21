@@ -7,7 +7,7 @@ angular
 	.config(($stateProvider:ng.ui.IStateProvider) => {
 		$stateProvider.state('auth', {
 			url: '/auth',
-			templateUrl: 'auth/auth.tpl.html',
+			templateUrl: 'app/states/auth/auth.tpl.html',
 			controller: 'authController',
 			controllerAs: 'ctrl',
 			data: {

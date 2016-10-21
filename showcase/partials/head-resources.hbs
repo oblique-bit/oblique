@@ -1,6 +1,6 @@
 <!-- build:css min/styles.min.css -->
-{{#each env.resources.vendor.css}}
-	<link rel="stylesheet" href="{{../paths.vendor}}{{this}}" />
+{{#each project.resources.vendor.css}}
+	<link rel="stylesheet" href="{{../project.app.vendor.path}}{{this}}" />
 {{/each}}
 <link rel="stylesheet" href="css/main.css" />
 <!-- endbuild -->

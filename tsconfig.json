@@ -5,7 +5,7 @@
     "declaration": false,
     "sourceMap": false,
     "removeComments": false,
-    "outDir": ".tmp/",
+    "outDir": "target/.tmp",
     "rootDirs": [
       "showcase",
       "src"

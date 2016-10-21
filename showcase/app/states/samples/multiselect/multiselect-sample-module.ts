@@ -7,7 +7,7 @@ angular
 	.config(($stateProvider) => {
 		$stateProvider.state('samples.multiselect', {
 			url: '/multiselect',
-			templateUrl: 'samples/multiselect/multiselect-sample.tpl.html',
+			templateUrl: 'app/states/samples/multiselect/multiselect-sample.tpl.html',
 			controller: 'multiselectSampleController',
 			controllerAs: 'ctrl'
 		});

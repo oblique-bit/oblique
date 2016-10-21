@@ -2,7 +2,7 @@
 // Fixes the types
 /// <reference path="../../typings/index.d.ts" />
 
-//Loads the ObliqueReactive module
+// Load the ObliqueReactive module:
 import {
 	ObliqueModule,
 	LoadingServiceProvider,
@@ -17,7 +17,7 @@ import {HomeModule} from './states/home/home-module';
 import {MoviesModule} from './states/movies/movies-module';
 import {SamplesModule} from './states/samples/samples-module';
 
-//Makes sure, that the app-templates will be loaded (and bundled)
+// Makes sure that the app-templates will be loaded (and bundled):
 import './app-templates';
 
 angular

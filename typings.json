@@ -17,6 +17,7 @@
     "lodash": "registry:dt/lodash#4.14.0+20160802150749",
     "moment": "registry:dt/moment#2.8.0+20160316155526",
     "moment-node": "registry:dt/moment-node#2.11.1+20160511043338",
+    "node": "registry:dt/node#6.0.0+20161019125345",
     "systemjs": "registry:dt/systemjs#0.19.29+20160702105636",
     "tv4": "registry:dt/tv4#1.2.5+20160317120654"
   }
