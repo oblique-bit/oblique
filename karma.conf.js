@@ -1,26 +1,25 @@
 // Karma configuration
 var _ = require('lodash');
-var grunt = require('grunt');
 
-// Require project configuration:
-var project = require('./project.conf.js');
+// Project configuration:
+var project = require('./project.conf.ts');
 
 module.exports = function (config) {
 
-	var karmaResources = [];
+    var karmaResources = [];
 
 	_.forEach(project.common.resources.vendor.testResources, function (v) {
 		karmaResources.push(project.common.build.target + "testResources/" + v);
 	});
 
-	_.forEach(project.common.resources.vendor.js, function (v) {
-		karmaResources.push(project.common.build.target + 'vendor/' + v);
-	});
-	_.forEach(project.common.resources.app, function (v) {
-		karmaResources.push(project.common.build.target + v);
-	});
+    _.forEach(project.resources.vendor.js, function (v) {
+        karmaResources.push(project.build.target + '/vendor/' + v);
+    });
+    _.forEach(project.resources.app, function (v) {
+        karmaResources.push(project.build.target + '/' + v);
+    });
 
-	//System config addition for the karma urls
+	// System config addition for the karma urls:
 
 	//Adds the compiled TypeScript files to the karma files, but doesn't load them in the browser, it just makes them available for SystemJS
 	karmaResources.push({pattern: project.common.build.target + 'app/**/*.js', included: false, watched: false});

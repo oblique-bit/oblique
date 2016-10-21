@@ -43,7 +43,6 @@ app.use(function (req, res, next) {
 // Auth
 var auth = require('./security/auth')(context.config);
 
-
 // RESTFul API definition
 // ------------------------------------
 app.use('/api/auth',    require('./resources/auth-resource')(auth));

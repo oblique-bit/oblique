@@ -1,6 +1,6 @@
 # [ObliqueReactive](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/)
 
-Reactive web template powered by [ObliqueUI](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-ui/) and [AngularJS](https://angularjs.org/). ObliqueReactive uses [npm](https://www.npmjs.com/), [Grunt](http://gruntjs.com/), [Less](http://lesscss.org/), [Browserify](http://browserify.org/) and [Assemble](http://assemble.io/) to fetch dependencies, compile & build assets and compose the pages.
+Reactive web template powered by [ObliqueUI](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-ui/) and [AngularJS](https://angularjs.org/). ObliqueReactive uses [npm](https://www.npmjs.com/), [Gulp](https://github.com/gulpjs/gulp/), [Less](http://lesscss.org/), [Browserify](http://browserify.org/) and [Assemble](http://assemble.io/) to fetch dependencies, compile & build assets and compose the pages.
 
 This template has been inspired by the following guidelines:
 <https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/mobilebasic?pli=1>
@@ -83,22 +83,25 @@ And add the TypeScript specific libraries and configs described in the [Configur
 
 ### First-time setup
 
-1. Install *development* and *frontend* dependencies (`npm` will look at [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/package.json) and automatically install the necessary dependencies listed there):
+1. Install *globally* required `npm` libraries:
+
+		npm install -g gulp typescript
+
+2. Install *development* and *frontend* dependencies (`npm` will look at [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/package.json) and automatically install the necessary dependencies listed there):
 
 		npm install
 
-2. Customize:
+3. Customize:
 
-> Open [project.conf.js](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/project.conf.js) and adapt this configuration to fit your project requirements.
+> Open [project.conf.ts](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/project.conf.ts) and adapt this configuration to fit your project requirements.
 
 ### Troubleshooting dependencies
 
-Should you encounter problems with installing dependencies or running Grunt commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
+Should you encounter problems with installing dependencies or running Gulp commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
 
 ## Build & Run the showcase
 
-ObliqueReactive supports software environments by launching specific [Grunt](http://gruntjs.com/) tasks.
-Environment-specific variables can be configured, created or overrided by customizing the [project.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/project.json) file.
+ObliqueReactive supports software environments by launching specific [Gulp](https://github.com/gulpjs/gulp/) tasks.
 
 The project template has been configured to trigger the following 2 environments:
 
@@ -107,33 +110,64 @@ The project template has been configured to trigger the following 2 environments
 
 ### Development tasks
 
-	grunt
+	gulp
 
 *or*
 
-	grunt default
+	gulp default
 
 *or*
 
-	grunt run-dev
+	gulp run-dev
 
-_This task loads the `dev` environment configuration, builds the project, runs the client application by starting a local server and watches for file changes._
+_This task builds the project, runs the client application by starting a local server and watches for file changes._
 
 #### Start the showcase API server
 
 The start the showcase API server, run:
 
-	grunt dummy-server
+	gulp connect-dummy
 
 ### Production tasks
 
-	grunt serve-prod
+	gulp run-prod
 
-_This task loads the `prod` environment configuration, builds the project for release and runs the client application by starting a local server._
+_Same as `run-dev`, except that it will serve optimized resources._
 
-	grunt run-prod
+## <a name="managing-dependencies"></a> Managing dependencies
 
-_Same as `serve-prod`, except that it starts watching for file changes._
+If you ever need to add your own dependencies, here's how to do it.
+
+### npm (Build) dependencies
+
+To install a new npm dependency, you can simply type
+
+	npm i <dependency> -D
+
+into your command line. But before you do so, make sure you're in your project's root folder, where [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-reactive/browse/package.json) is.
+After everything is done, you should see your new dependency in [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-ui/browse/package.json).
+
+If you need to install a global dependency, such as bower, switch the *-D* to a *-g* in your command. This would look something like this:
+
+	npm i <dependency> -g
+
+Installing a global npm dependency makes it accessible from every command line, independent of your console's location. Local dependencies are only accessible inside a project. Most of the time it isn't neccessary for you to install global npm packages.
+
+You can search through npm packages over at [npmjs.com](https://www.npmjs.com/).
+
+### Transpiling (TypeScript) dependencies
+
+If you want to use a framework that adds new syntax to regular JavaScript, you'll probably need to give TypeScript, our JavaScript transpiler, hints as to what to do with the new expressions. This is what *typings* is for.
+
+First, you'll need to search for your soon-to-be-integrated framework in the typings repository. We'll do it directly in the console via:
+
+	typings search <dependency>
+
+Most of the time, this will give you more than one result. So keep the exact name of your desired dependency in mind and type:
+
+	typings i dt~<dependency> -SG
+
+Doing this, typings will download all the needed typing files into your project and reference them in [typings.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-ui/browse/typings.json) so that the next developer can simply run *typings install* (as we do) and doesn't need to bother. Quite neat, huh?
 
 ## Checking for updates
 
@@ -156,4 +190,4 @@ You can now check for updates and bump `package.json` dependencies accordingly:
 
 3. Publish the module using Grunt:
 
-	grunt publish
+	gulp publish
