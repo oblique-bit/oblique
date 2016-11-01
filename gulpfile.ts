@@ -9,7 +9,7 @@
 		gulp = require('gulp'),
 		addsrc = require('gulp-add-src'),
 		batch = require('gulp-batch'),
-		browserify = require('gulp-browserify'),
+		browserify = require('browserify'),
 		bump = require('gulp-bump'),
 		changed = require('gulp-changed'),
 		concat = require('gulp-concat'),
@@ -29,6 +29,7 @@
 		rename = require('gulp-rename'),
 		replace = require('gulp-replace'),
 		rev = require('gulp-rev'),
+		source = require('vinyl-source-stream'),
 		ts = require('gulp-typescript'),
 		tslint = require("gulp-tslint"),
 		uglify = require('gulp-uglify'),
@@ -67,6 +68,8 @@
 		// Compilation:
 		tsProject = ts.createProject('tsconfig.json'),
 
+		production = false,
+
 		// FIXME: remove when https://github.com/gulpjs/gulp/tree/4.0 is out!
 		runSequence = require('run-sequence');
 	//</editor-fold>
@@ -101,6 +104,7 @@
 	});
 
 	gulp.task('build-prod', function (done) {
+		production = true;
 		return runSequence(
 			'build-dev',
 			'optimize',
@@ -376,6 +380,7 @@
 				data: {
 					project: project, // TODO refactor this
 
+					dev: !production,
 					// ObliqueUI-specific:
 					app: project.app,
 
@@ -411,7 +416,7 @@
 	 *  - `gulp-uglify`: https://github.com/terinjokes/gulp-uglify
 	 *  - `gulp-rev`: https://github.com/sindresorhus/gulp-rev
 	 */
-	gulp.task('optimize', ['browserify-app', 'clean-min'], function (done) {
+	gulp.task('optimize', ['browserify-app', 'clean-min'], function () {
 		return gulp.src(project.build.target + 'index.html')
 			.pipe(usemin({
 				css: [cssnano(), rev()],
@@ -487,8 +492,8 @@
 			script: 'server/server.js',
 			ext: 'js json',
 			env: {
-				PORT: project.app.api.port,
-				PORT_CLIENT: project.app.web.port
+				PORT: 3000, //TODO: move this to config
+				PORT_CLIENT: 9000
 			}
 		});
 	});
@@ -533,10 +538,10 @@
 		runSequence(
 			//'release',
 			'publish-clean',
-			'publish-build',
-			// 'browserify:oblique', TODO
+			'publish-ts',
+			'browserify-oblique',
 			'publish-package',
-			'publish-module',
+			//'publish-module',
 			callback
 		);
 	});
@@ -564,25 +569,29 @@
 	});
 
 	gulp.task('browserify-app', function() {
-		return gulp.src(paths.app + 'app-module.js')
-			.pipe(browserify({
+		return browserify(project.build.target + 'app/app-module.js', {
 				insertGlobals : true,
-				debug : !gulp.env.production, // TODO: check
+				debug : !production, // TODO: check
+				bundleExternal: false
 				// Alias to the components (bundles them together with the showcase):
-				alias: {
-					'oblique-reactive/oblique-reactive': project.build.target + 'oblique-reactive/oblique-reactive.js'
-				}
-			}))
-			.pipe(gulp.dest(project.build.target + 'bundles/app.js'))
+				/*alias: {
+					'oblique-reactive/oblique-reactive': paths.vendor + 'oblique-reactive/oblique-reactive.js'
+				}*/
+			})
+			//.require('./' + paths.vendor + 'oblique-reactive/oblique-reactive', {expose: 'oblique-reactive/oblique-reactive'})
+			//.external('oblique-reactive/oblique-reactive')
+			.bundle()
+			.pipe(source('app.js'))
+			.pipe(gulp.dest(project.build.target + 'app/bundles/'))
 	});
 
-	gulp.task('browserify-oblique', function() {
-		return gulp.src(project.vendor + 'oblique-reactive/oblique-reactive.js')
-			.pipe(browserify({
-				insertGlobals : true,
-				debug : !gulp.env.production, // TODO: check
-			}))
-			.pipe(gulp.dest(project.build.target + 'oblique-reactive/bundles/oblique-reactive.js'))
+	gulp.task('browserify-oblique', () => {
+		return browserify(paths.publish + 'oblique-reactive.js', {
+			standalone: 'ObliqueReactive'
+		})
+			.bundle()
+			.pipe(source('oblique-reactive.min.js'))
+			.pipe(gulp.dest(paths.publish + 'bundles/'));
 	});
 
 	gulp.task('publish-clean', () => {
@@ -590,8 +599,13 @@
 	});
 
 	gulp.task('publish-ts', () => {
-		var tsProject = ts.createProject('tsconfig.json');
-		return tsProject.src(paths.src + '**/*.ts', { base: './' })
+		/*return gulp.src(paths.src + '**!/!*.ts')
+			.pipe(ts())*/
+		let tsProject = ts.createProject('tsconfig.publish.json');
+		/*return tsProject.src(paths.src + '**!/!*.ts', { base: './' })
+			.pipe(tsProject())
+			.pipe(gulp.dest(paths.publish));*/
+		return tsProject.src()
 			.pipe(tsProject())
 			.pipe(gulp.dest(paths.publish));
 	});
@@ -600,8 +614,7 @@
 	gulp.task('publish-build', () => {
 		return gulp.src([
 			paths.src + '**/*',
-			paths.less + '**/*'
-		], { base: './' })
+		], { base: './src' })
 			.pipe(gulp.dest(paths.publish));
 	});
 

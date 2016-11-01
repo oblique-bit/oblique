@@ -36,7 +36,8 @@ module.exports = {
 			logs: '/logs',
 
 			// Should credential be transmitted with requests:
-			sendCredentials: false
+			sendCredentials: false,
+			port: 3000
 		},
 
 		// Theming:

@@ -8,8 +8,8 @@
     "outDir": "target/oblique-reactive",
     "rootDir": "src/"
   },
-  "files": [
-    "src/oblique-reactive.ts",
+  "include": [
+    "src/**/*",
     "typings/index.d.ts"
   ]
 }
