@@ -20,7 +20,7 @@ SystemJS.config({
 	defaultJSExtensions: true,
 	//Has to map oblique-reactive to it's real path
 	map: {
-		'oblique-reactive': 'target/oblique-reactive'
+		'oblique-reactive': 'target/vendor/oblique-reactive'
 	}
 });
 
