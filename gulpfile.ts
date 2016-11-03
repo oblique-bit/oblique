@@ -1,22 +1,17 @@
 (function () {
     //<editor-fold desc="Dependencies">
     let del = require('del'),
-        fs = require('fs'),
         merge = require('merge2'),
         spawn = require('cross-spawn'),
 
         // Gulp & plugins:
         gulp = require('gulp'),
         gutil = require('gulp-util'),
-        batch = require('gulp-batch'),
-        bump = require('gulp-bump'),
-        changed = require('gulp-changed'),
         concat = require('gulp-concat'),
         connect = require('gulp-connect'),
         cssnano = require('gulp-cssnano'),
         debug = require('gulp-debug'),
         declare = require('gulp-declare'),
-        header = require('gulp-header'),
         htmlmin = require('gulp-htmlmin'),
         insert = require('gulp-insert'),
         less = require('gulp-less'),
@@ -24,7 +19,6 @@
         ngHtml2js = require('gulp-ng-html2js'),
         nodemon = require('gulp-nodemon'),
         open = require('gulp-open'),
-        plumber = require('gulp-plumber'),
         rename = require('gulp-rename'),
         replace = require('gulp-replace'),
         rev = require('gulp-rev'),
@@ -35,7 +29,6 @@
         usemin = require('gulp-usemin'),
         watch = require('gulp-watch'),
         webpack = require('webpack'),
-        wrap = require('gulp-wrap'),
 
         // Project-specific:
         pkg = require('./package.json'),
@@ -304,7 +297,7 @@
     gulp.task('build-sources-compile', function () {
         let tsProject = ts.createProject('tsconfig.json');
 
-        return tsProject.src('tsconfig.json')
+        return tsProject.src()
             .pipe(tsProject())
             .pipe(replace("__MODULE__", project.app.module))
             .pipe(replace("'__CONFIG__'", JSON.stringify(project.app)))
@@ -427,6 +420,7 @@
             .pipe(gulp.dest(project.build.target));
     });
 
+    //TODO: check this (replace in templates)
     gulp.task('build-replace', function () {
         return gulp.src(
             project.build.target + 'app/**/*.js',
@@ -653,7 +647,7 @@
         webpack(
             {
                 entry: './target/.tmp/src/oblique-reactive.js',
-                output: {filename: paths.publish + 'bundles/oblique-reactive.js', library: 'or', libraryTarget: 'umd'},
+                output: {filename: paths.publish + 'bundles/oblique-reactive.js', library: 'obliqueReactive', libraryTarget: 'umd'},
                 devtool: 'source-map',
                 module: {
                     loaders: [
