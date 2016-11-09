@@ -12,6 +12,7 @@
         cssnano = require('gulp-cssnano'),
         debug = require('gulp-debug'),
         declare = require('gulp-declare'),
+        file = require('gulp-file'),
         htmlmin = require('gulp-htmlmin'),
         insert = require('gulp-insert'),
         less = require('gulp-less'),
@@ -338,7 +339,7 @@
      *  - `concat`: https://github.com/wearefractal/gulp-concat
      */
     gulp.task('build-templates', function () {
-        var moduleName = /*project.app.module +*/ 'oblique-reactive' + '.app-templates'; // FIXME 1.3.0
+        var moduleName = 'oblique-reactive' + '.app-templates'; // FIXME 1.3.0
         return gulp.src(paths.src + '**/*.tpl.html')
             .pipe(htmlmin({collapseWhitespace: true}))
             .pipe(ngHtml2js({
@@ -385,10 +386,8 @@
             }))
             .pipe(concat("app-templates.js"))
             .pipe(insert.prepend(
-                "exports.templateModuleName = '" + moduleName + "';\n\n" // FIXME 1.3.0
-                + "angular.module('" + moduleName + "', []);\n\n"
+                "angular.module('" + moduleName + "', []);\n\n"
             ))
-            .pipe(replace("__MODULE__", project.app.module))
             .pipe(gulp.dest(paths.staging + paths.showcase + 'app/'));
     });
 
@@ -420,7 +419,6 @@
             .pipe(gulp.dest(project.build.target));
     });
 
-    //TODO: check this (replace in templates)
     gulp.task('build-replace', function () {
         return gulp.src(
             project.build.target + 'app/**/*.js',
@@ -442,7 +440,7 @@
      *  - `gulp-uglify`: https://github.com/terinjokes/gulp-uglify
      *  - `gulp-rev`: https://github.com/sindresorhus/gulp-rev
      */
-    gulp.task('optimize', ['bundle-app', 'clean-min'], function () {
+    gulp.task('optimize', ['bundle-showcase', 'clean-min'], function () {
         return gulp.src(project.build.target + 'index.html')
             .pipe(usemin({
                 css: [cssnano(), rev()],
@@ -517,12 +515,13 @@
      * Plugins:
      *  - `nodemon`: https://github.com/JacksonGariety/gulp-nodemon
      */
+    //TODO: mongodb-prebuilt not installable -> not testable
     gulp.task('serve-dummy', function () {
         return nodemon({
             script: 'server/server.js',
             ext: 'js json',
             env: {
-                PORT: 3000, //TODO: move this to config
+                PORT: 3000,
                 PORT_CLIENT: 9000
             }
         });
@@ -536,6 +535,7 @@
      * - `connect`: https://github.com/avevlad/gulp-connect
      */
     gulp.task('watch', function () {
+        //TODO: check this
         gulp.watch(project.resources.vendor.js, {cwd: paths.vendor}, ['copy-vendor-js']);
         gulp.watch(project.resources.vendor.css, {cwd: paths.vendor}, ['copy-vendor-css']);
         gulp.watch('**/*', {cwd: paths.vendor + 'oblique-ui/dist/'}, ['copy-oblique-ui']);
@@ -622,8 +622,27 @@
 
     // Generates a custom `package.json` for publishing:
     gulp.task('publish-package', () => {
-        return gulp.src('package.json')
-            .pipe(obliqueModulePackage())
+        var pkgJson = require('./package.json');
+        var targetPkgJson = {
+            peerDependencies: {}
+        };
+
+        [
+            'name', 'title', 'version', 'description',
+            'keywords', 'author', 'contributors', 'organization',
+            'repository', 'license', 'bugs', 'homepage', 'publishConfig'
+        ].forEach(field => targetPkgJson[field] = pkgJson[field]);
+
+        targetPkgJson['main'] = 'bundles/oblique-reactive.js';
+        targetPkgJson['module'] = 'oblique-reactive.js';
+        targetPkgJson['typings'] = 'oblique-reactive.d.ts';
+
+        Object.keys(pkgJson.dependencies).forEach(function(dependency) {
+            targetPkgJson.peerDependencies[dependency] = pkgJson.dependencies[dependency];
+        });
+
+        return gulp.src('README.md')
+            .pipe(file('package.json', JSON.stringify(targetPkgJson, null, 2)))
             .pipe(gulp.dest(paths.publish));
     });
 
@@ -662,9 +681,9 @@
     });
 
     /**
-     * Bundles the showcase and oblique together into one bundle
+     * Bundles the showcase and oblique-reactive together into one bundle
      */
-    gulp.task('bundle-app', (cb) => {
+    gulp.task('bundle-showcase', (cb) => {
         webpack(
             {
                 resolve: {
@@ -676,7 +695,7 @@
                         'oblique-reactive/oblique-reactive': __dirname + '/target/.tmp/src/oblique-reactive.js'
                     }
                 },
-                entry: './target/.tmp/showcase/app/app-module.js',
+                entry: './target/app/app-module.js',
                 output: {filename: project.build.target + 'app/bundles/app.js'}
             },
             webpackCallBack('webpack', cb));

@@ -16,7 +16,7 @@
   "bugs": "https://jira.eap.bit.admin.ch/browse/OUI/",
   "private": true,
   "publishConfig": {
-    "registry": "https://nexus.eap.bit.admin.ch/content/repositories/npm_bit_releases/"
+    "registry": "http://nexus.vmjeap10a04.bfi.admin.ch:8020/repository/npm-intern/"
   },
   "repository": {
     "type": "git",
@@ -62,6 +62,7 @@
     "gulp-connect": "^5.0.0",
     "gulp-cssnano": "^2.1.2",
     "gulp-debug": "2.1.2",
+    "gulp-file": "^0.3.0",
     "gulp-hb": "^5.1.4",
     "gulp-htmlmin": "2.0.0",
     "gulp-insert": "0.5.0",
