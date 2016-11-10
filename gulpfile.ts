@@ -74,7 +74,7 @@
     gulp.task('run-dev', function () {
         return runSequence(
             'build-dev',
-            'serve'
+            'serve-dev'
         );
     });
 
@@ -92,7 +92,7 @@
     gulp.task('run-prod', function (done) {
         return runSequence(
             'build-prod',
-            'serve'
+            'serve-prod'
         );
     });
 
@@ -465,14 +465,16 @@
     /*
      * serve: launches a local web server for serving resources and starts listening for file changes
      *
-     * TODO: ReverseProxy
-     *
      * Plugins: [NONE]
      */
-    gulp.task('serve', [
-        'serve-connect',
-        'serve-open',
+    gulp.task('serve-dev', [
+        'serve-prod',
         'watch'
+    ]);
+
+    gulp.task('serve-prod', [
+        'serve-connect',
+        'serve-open'
     ]);
 
     /**
