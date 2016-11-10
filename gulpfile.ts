@@ -61,6 +61,7 @@
         karmaServer = require('karma').Server,
 
         production = false,
+        tsProject = ts.createProject('tsconfig.json'),
 
         // FIXME: remove when https://github.com/gulpjs/gulp/tree/4.0 is out!
         runSequence = require('run-sequence');
@@ -264,7 +265,6 @@
                 'showcase-build-styles',
                 'showcase-build-html'
             ],
-            'build-replace',
             done
         );
     });
@@ -297,8 +297,6 @@
     });
 
     gulp.task('build-sources-compile', function () {
-        let tsProject = ts.createProject('tsconfig.json');
-
         return tsProject.src()
             .pipe(tsProject())
             .pipe(replace("__MODULE__", project.app.module))
@@ -389,6 +387,8 @@
             .pipe(insert.prepend(
                 "angular.module('" + moduleName + "', []);\n\n"
             ))
+            .pipe(replace("__MODULE__", project.app.module))
+            .pipe(replace("'__CONFIG__'", JSON.stringify(project.app)))
             .pipe(gulp.dest(paths.staging + paths.showcase + 'app/'));
     });
 
@@ -420,15 +420,6 @@
             .pipe(gulp.dest(project.build.target));
     });
 
-    gulp.task('build-replace', function () {
-        return gulp.src(
-            project.build.target + 'app/**/*.js',
-            {base: project.build.target}
-        )
-            .pipe(replace("__MODULE__", project.app.module))
-            .pipe(replace("'__CONFIG__'", JSON.stringify(project.app)))
-            .pipe(gulp.dest(project.build.target));
-    });
     //</editor-fold>
 
     //<editor-fold desc="Optimize">
@@ -541,22 +532,24 @@
      */
     gulp.task('watch', function () {
         //TODO: check this
-        gulp.watch(project.resources.vendor.js, {cwd: paths.vendor}, ['copy-vendor-js']);
-        gulp.watch(project.resources.vendor.css, {cwd: paths.vendor}, ['copy-vendor-css']);
-        gulp.watch('**/*', {cwd: paths.vendor + 'oblique-ui/dist/'}, ['copy-oblique-ui']);
-        gulp.watch('**/*.ts', {cwd: paths.src}, ['build-sources', 'build-replace']);
+        gulp.watch(project.resources.vendor.js, {cwd: paths.vendor}, () => runSequence('copy-vendor-js', 'reload'));
+        gulp.watch(project.resources.vendor.css, {cwd: paths.vendor}, () => runSequence('copy-vendor-css', 'reload'));
+        gulp.watch('**/*', {cwd: paths.vendor + 'oblique-ui/dist/'}, () => runSequence('copy-oblique-ui', 'reload'));
+        gulp.watch('**/*.ts', {cwd: paths.src}, () => runSequence('build-sources', 'reload'));
 
         // Showcase:
-        gulp.watch(project.resources.assets, {cwd: paths.showcase}, ['showcase-copy-assets']);
-        gulp.watch('**/*.json', {cwd: paths.showcase}, ['showcase-copy-json']);
-        gulp.watch('**/*.ts', {cwd: paths.showcase}, ['build-sources', 'build-replace']);
-        gulp.watch('**/*.less', {cwd: paths.less}, ['showcase-build-styles']);
-        gulp.watch('**/*.tpl.html', {cwd: paths.showcase}, ['build-templates', 'showcase-build-templates', 'build-replace']);
-        gulp.watch([paths.pages + '**/*.hbs', paths.partials + '**/*.hbs'], ['showcase-build-html']);
+        gulp.watch(project.resources.assets, {cwd: paths.showcase}, () => runSequence('showcase-copy-assets', 'reload'));
+        gulp.watch('**/*.json', {cwd: paths.showcase}, () => runSequence('showcase-copy-json', 'reload'));
+        gulp.watch('**/*.ts', {cwd: paths.showcase}, () => runSequence('build-sources', 'reload'));
+        gulp.watch('**/*.less', {cwd: paths.less}, () => runSequence('showcase-build-styles', 'reload'));
+        gulp.watch('**/*.tpl.html', {cwd: paths.showcase}, () => runSequence(['build-templates', 'showcase-build-templates'], 'reload'));
+        gulp.watch([paths.pages + '**/*.hbs', paths.partials + '**/*.hbs'], () => runSequence('showcase-build-html', 'reload'));
+    });
 
-        // FIXME: LiveReload may be triggered multiple times (https://github.com/AveVlad/gulp-connect/issues/123)
-        return watch(project.build.target + '**/*')
-            .pipe(connect.reload())
+    // FIXME: LiveReload will reload every file
+    gulp.task('reload', () => {
+        gulp.src(project.build.target + '**/**')
+            .pipe(connect.reload());
     });
     //</editor-fold>
 
