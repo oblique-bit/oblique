@@ -9,6 +9,7 @@
         gutil = require('gulp-util'),
         concat = require('gulp-concat'),
         connect = require('gulp-connect'),
+        proxy = require('http-proxy-middleware'),
         cssnano = require('gulp-cssnano'),
         debug = require('gulp-debug'),
         declare = require('gulp-declare'),
@@ -494,7 +495,15 @@
             port: 9000, // Port used to deploy the client
             host: 'localhost',
             root: project.build.target,
-            livereload: true
+            livereload: true,
+            middleware: function(connect, opt) {
+                return [
+                    proxy('/' + project.app.api.path, {
+                        target: `http://localhost:${project.app.api.port}`,
+                        changeOrigin:true
+                    })
+                ]
+            }
         });
     });
 
@@ -519,11 +528,7 @@
     gulp.task('serve-dummy', function () {
         return nodemon({
             script: 'server/server.js',
-            ext: 'js json',
-            env: {
-                PORT: 3000,
-                PORT_CLIENT: 9000
-            }
+            ext: 'js json'
         });
     });
 
