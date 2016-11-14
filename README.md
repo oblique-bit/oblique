@@ -1,6 +1,6 @@
 # [ObliqueReactive](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/)
 
-Reactive web template powered by [ObliqueUI](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-ui/) and [AngularJS](https://angularjs.org/). ObliqueReactive uses [npm](https://www.npmjs.com/), [Gulp](https://github.com/gulpjs/gulp/), [Less](http://lesscss.org/), [Browserify](http://browserify.org/) and [Assemble](http://assemble.io/) to fetch dependencies, compile & build assets and compose the pages.
+Reactive web template powered by [ObliqueUI](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-ui/) and [AngularJS](https://angularjs.org/). ObliqueReactive uses [npm](https://www.npmjs.com/), [Gulp](https://github.com/gulpjs/gulp/), [Less](http://lesscss.org/), [Browserify](http://browserify.org/) and [Handlebars](http://handlebarsjs.com/) to fetch dependencies, compile & build assets and compose the pages.
 
 This template has been inspired by the following guidelines:
 <https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/mobilebasic?pli=1>
