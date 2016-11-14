@@ -25,7 +25,7 @@ module.exports = function (config) {
 	//Adds the compiled TypeScript files to the karma files, but doesn't load them in the browser, it just makes them available for SystemJS
 	karmaResources.push({pattern: project.build.target + 'app/**/*.js', included: false, watched: false});
 	karmaResources.push({
-		pattern: project.build.target + 'oblique-reactive/**/*.js',
+		pattern: project.build.target + 'vendor/oblique-reactive/**/*.js',
 		included: false,
 		watched: false
 	});

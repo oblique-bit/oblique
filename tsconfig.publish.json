@@ -5,11 +5,14 @@
     "declaration": true,
     "sourceMap": false,
     "removeComments": false,
-    "outDir": "target/oblique-reactive",
+    "outDir": "target/.tmp/src",
     "rootDir": "src/"
   },
-  "files": [
-    "src/oblique-reactive.ts",
+  "include": [
+    "src/**/*",
     "typings/index.d.ts"
+  ],
+  "exclude": [
+    "**/*.spec.ts"
   ]
 }

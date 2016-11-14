@@ -23,6 +23,7 @@ nbproject
 *.sublime-project
 *.sublime-workspace
 .idea
+*.iml
 
 # Folders to ignore
 node_modules
