@@ -403,9 +403,9 @@
             .src(paths.pages + 'index.hbs')
             .pipe(obliqueHtml({
                 data: {
+                    __ENV__: production ? "PROD" : "DEV",
                     project: project, // TODO refactor this
-
-                    dev: !production,
+                    
                     // ObliqueUI-specific:
                     app: project.app,
 

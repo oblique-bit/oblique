@@ -8,21 +8,21 @@
 {{#each project.resources.vendor.js}}
 	<script src="{{../project.app.vendor.path}}{{this}}"></script>
 {{/each}}
-{{#if dev}}
+{{#is __ENV__ "DEV"}}
 	{{#each project.resources.vendor.dev}}
 		<script src="{{../project.app.vendor.path}}{{this}}"></script>
 	{{/each}}
 	<script src="app/system.config.dev.js"></script>
-{{/if}}
+{{/is}}
 <!-- endbuild -->
 
 <!-- build:jsapp min/app.min.js -->
 {{#each project.resources.app}}
 	<script src="{{this}}"></script>
 {{/each}}
-{{#unless dev}}
+{{#is __ENV__ "PROD"}}
 	{{#each project.resources.bundles}}
 		<script src="{{this}}"></script>
 	{{~/each}}
-{{/unless}}
+{{/is}}
 <!-- endbuild -->
