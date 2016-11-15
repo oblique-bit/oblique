@@ -89,7 +89,7 @@ And add the TypeScript specific libraries and configs described in the [Configur
 
 2. Install *development* and *frontend* dependencies (`npm` will look at [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/package.json) and automatically install the necessary dependencies listed there):
 
-		npm install
+	npm install
 
 3. Customize:
 
@@ -171,8 +171,6 @@ Doing this, typings will download all the needed typing files into your project 
 
 ## Checking for updates
 
-### Build dependencies updates
-
 	npm install -g npm-check-updates
 
 You can now check for updates and bump `package.json` dependencies accordingly:
@@ -181,30 +179,27 @@ You can now check for updates and bump `package.json` dependencies accordingly:
 
 ## <a name="publish"></a> Publishing ObliqueReactive
 
+> Publishing should be performed with a continuous integration tool and not manually!
+
 Before publishing, execute the following steps:
 
-1. Run `gulp` to compile sources and rebuild the project distribution.
-2. Check project distribution and ensure it is running as expected.
-3. Commit and push any remaining changes.
+1. Switch to master branch and merge develop on it.
+2. Run `gulp` to compile sources and rebuild the project distribution.
+3. Check project distribution and ensure showcase is running as expected.
+4. Commit and push any remaining changes.
 
 Prepare your workspace:
 
-1. Ensure you have an account with publishing privileges on the internal `npm` registry ([BIT Nexus](https://nexus.eap.bit.admin.ch))
-2. Add the following properties to your `.npmrc`:
+1. Ensure you have an account with publishing privileges on the internal `npm` registry ([BIT Nexus v3](http://nexus.vmjeap10a04.bfi.admin.ch:8020))
+2. Authenticate on the internal npm registry (Nexus v3):
 
-	email=<YOUR_EMAIL_ADDRESS>
-	always-auth=true
-	_auth=<base64 encoded credentials, see [here](http://books.sonatype.com/nexus-book/reference/npm-deploying-packages.html)>
-
-### <a name="publish-patch"></a> Publishing a *patch* release
-
-1. [Ignore until Nexus v3 is deployed!] Authenticate on the internal npm registry (Nexus)
-
-	npm login --registry=https://nexus.eap.bit.admin.ch/content/repositories/npm_bit_releases/
+	npm login --registry=http://nexus.vmjeap10a04.bfi.admin.ch:8020/repository/npm-intern/
 
     > Follow the steps on the terminal as you may be asked for credentials.
 
-2. Build, release (defaults to *patch* version number increment) and finally publish using Gulp:
+### <a name="publish-patch"></a> Publishing a *patch* release
+
+Build, release (defaults to *patch* version number increment) and finally publish using Gulp:
 
 	gulp publish
 
@@ -229,4 +224,3 @@ Publishing a *version-specific* release:
 	gulp publish --version <version>
 
 > For more release commands or options, see <https://github.com/stevelacy/gulp-bump>.
-
