@@ -1,6 +1,6 @@
 // TODO: remove this, as soon as typescript 2 is supported by IntelliJ
 // Fixes the types
-/// <reference path="../../typings/index.d.ts" />
+/// <reference path="../../../typings/index.d.ts" />
 
 // Load the ObliqueReactive module:
 import {
@@ -84,7 +84,7 @@ angular
 	})
 	.config(($animateProvider:ng.animate.IAnimateProvider) => {
 		// Let ngAnimate know which elements to *not* handle (see https://github.com/angular/angular.js/issues/3613):
-		$animateProvider.classNameFilter(/^((?!(navigable)).)*$/);
+		$animateProvider.classNameFilter(/^((?!(navigable|animate-ignore)).)*$/);
 	})
 
 	// Optional configuration

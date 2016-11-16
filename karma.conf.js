@@ -1,4 +1,3 @@
-// Karma configuration
 var _ = require('lodash');
 
 // Project configuration:
@@ -6,39 +5,43 @@ var project = require('./project.conf.ts');
 
 module.exports = function (config) {
 
+	// Define base path as the UI directory on target:
+	var base = project.build.target + 'ui/';
+
+	// Prepare resources for karma:
 	var karmaResources = [];
 
 	_.forEach(project.resources.vendor.js, function (v) {
-		karmaResources.push(project.build.target + 'vendor/' + v);
+		karmaResources.push('vendor/' + v);
 	});
 
 	_.forEach(project.resources.vendor.dev, function (v) {
-		karmaResources.push(project.build.target + 'vendor/' + v);
+		karmaResources.push('vendor/' + v);
 	});
 
 	_.forEach(project.resources.app, function (v) {
-		karmaResources.push(project.build.target + v);
+		karmaResources.push(v);
 	});
 
-	// System config addition for the karma urls:
-
-	//Adds the compiled TypeScript files to the karma files, but doesn't load them in the browser, it just makes them available for SystemJS
-	karmaResources.push({pattern: project.build.target + 'app/**/*.js', included: false, watched: false});
+	// Add the compiled TypeScript files to the karma files, but doesn't load
+	// them in the browser, making them available for SystemJS:
+	karmaResources.push({pattern: 'app/**/*.js', included: false, watched: false});
 	karmaResources.push({
-		pattern: project.build.target + 'vendor/oblique-reactive/**/*.js',
+		pattern: 'vendor/oblique-reactive/**/*.js',
 		included: false,
 		watched: false
 	});
 
-	karmaResources.push('node_modules/angular-mocks/angular-mocks.js');
+	// Add Angular mocking framework:
+	karmaResources.push('../../node_modules/angular-mocks/angular-mocks.js');
 
-	//Loads the main file, that loads all TypeScript sources be itself
-	karmaResources.push('test.main.js');
+	// Add the main test file which import all TypeScript resources:
+	karmaResources.push('../../test.main.js');
 
 	karmaConfig = {
 
-		// base path, that will be used to resolve files and exclude
-		basePath: '',
+		// Base path used to resolve and exclude resources:
+		basePath: base,
 
 		// frameworks to use
 		frameworks: ['jasmine'],
@@ -48,7 +51,7 @@ module.exports = function (config) {
 
 		// list of files to exclude
 		exclude: [
-			project.build.target + 'app/system.config.dev.js'
+			'app/system.config.dev.js'
 		],
 
 		plugins: [
@@ -67,7 +70,7 @@ module.exports = function (config) {
 		},
 
 		coverageReporter: {
-			dir: 'target/',
+			dir: base,
 			type: 'lcovonly',
 			subdir: '.'
 		},
@@ -107,7 +110,7 @@ module.exports = function (config) {
 		// if true, it capture browsers, run tests and exit
 		singleRun: true
 	};
-	karmaConfig.preprocessors[project.build.target + 'app/**/*.js'] = 'coverage';
+	karmaConfig.preprocessors['app/**/*.js'] = 'coverage';
 
 	config.set(karmaConfig);
 };

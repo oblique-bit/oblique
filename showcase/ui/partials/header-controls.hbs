@@ -1,4 +1,4 @@
-<ul class="nav navbar-nav navbar-right navbar-controls" role="menu" ng-if="!appController.isAuthenticated()" ng-cloak>
+<ul class="nav navbar-nav navbar-right navbar-controls animate-ignore" role="menu" ng-if="!appController.isAuthenticated()" ng-cloak>
 	{{#each app.locales}}
 		<li role="menuitem" ng-class="{active: appController.locale.current === '{{this}}'}">
 			<a href="" role="button" ng-click="appController.locale.use('{{this}}')">
@@ -13,7 +13,7 @@
 		</a>
 	</li>
 </ul>
-<ul class="nav navbar-nav navbar-right navbar-controls" role="menu" ng-if="appController.isAuthenticated()" ng-cloak>
+<ul class="nav navbar-nav navbar-right navbar-controls animate-ignore" role="menu" ng-if="appController.isAuthenticated()" ng-cloak>
 	<li class="dropdown" role="menuitem">
 		<a role="button" data-toggle="dropdown" title="Notifications" tabindex="0">
 			<span class="control-icon fa fa-globe"></span>
