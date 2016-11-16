@@ -66,11 +66,11 @@ module.exports = function (config) {
 		reporters: ['progress', 'junit', 'coverage'],
 
 		junitReporter: {
-			outputFile: '../target/surefire-reports/TEST-karma-results.xml'
+			outputFile: '../../surefire-reports/TEST-karma-results.xml'
 		},
 
 		coverageReporter: {
-			dir: base,
+			dir: '../',
 			type: 'lcovonly',
 			subdir: '.'
 		},
