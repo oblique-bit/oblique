@@ -126,7 +126,7 @@ _This task builds the project, runs the client application by starting a local s
 
 The start the showcase API server, run:
 
-	gulp connect-dummy
+	gulp showcase-serve
 
 ### Production tasks
 

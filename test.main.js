@@ -1,7 +1,7 @@
 /*
  * Loads all compiled TypeScript files for the tests.
- * After that, it will load all .spec.ts files, to run the tests.
- * Finally, it starts karma
+ * After that, it will load all *.spec.ts files, to run the tests.
+ * Finally, it starts karma.
  */
 
 // Turn on full stack traces in errors to help debugging
@@ -14,19 +14,18 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000;
 __karma__.loaded = function () {
 };
 
-// Load our SystemJS configuration.
+// Load SystemJS configuration:
 SystemJS.config({
 	baseURL: '/base/',
 	defaultJSExtensions: true,
-	//Has to map oblique-reactive to it's real path
 	map: {
-		'oblique-reactive': 'target/vendor/oblique-reactive'
+		'oblique-reactive': 'vendor/oblique-reactive'
 	}
 });
 
 Promise.all([
-	SystemJS.import('target/app/app-config'),
-	SystemJS.import('target/app/app-module')
+	SystemJS.import('app/app-config'),
+	SystemJS.import('app/app-module')
 ]).then(function () {
 	return Promise.all(
 		Object.keys(window.__karma__.files) // All files served by Karma.
@@ -34,14 +33,14 @@ Promise.all([
 			.map(file2moduleName)
 			.map(function (path) {
 				return SystemJS.import(path);
-			}));
-})
-	.then(function () {
-		__karma__.start();
-	}, function (error) {
-		console.error(error.stack || error);
-		__karma__.start();
-	});
+			})
+	);
+}).then(function () {
+	__karma__.start();
+}, function (error) {
+	console.error(error.stack || error);
+	__karma__.start();
+});
 
 function onlySpecFiles(path) {
 	// check for individual files, if not given, always matches to all

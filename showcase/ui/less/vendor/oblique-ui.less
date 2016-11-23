@@ -5,7 +5,7 @@
 	}
 
 	// Ensure notifications stay within content viewport:
-	.application-content {
+	.application-content > .application-content-viewport {
 		position: relative;
 	}
 }
@@ -67,3 +67,7 @@
 	}
 }
 
+// TODO: report to ObliqueUI:
+.notification-container {
+	overflow-x: hidden;
+}

@@ -43,13 +43,20 @@
 			publish: project.build.target + '.publish/',
 
 			// Showcase paths:
-			showcase: 'showcase/',
-			app: 'showcase/app/',
-			states: 'showcase/app/states/',
-			less: 'showcase/less/',
-			pages: 'showcase/pages/',
-			partials: 'showcase/partials/',
-			vendor: project.build.target + 'vendor/'
+			showcase: 'showcase/ui/',
+			app: 'showcase/ui/app/',
+			states: 'showcase/ui/app/states/',
+			less: 'showcase/ui/less/',
+			pages: 'showcase/ui/pages/',
+			partials: 'showcase/ui/partials/',
+			server: 'showcase/server/',
+
+			// Target:
+			target: {
+				ui: project.build.target + 'ui/',
+				vendor: project.build.target + 'ui/vendor/',
+				server: project.build.target + 'server/',
+			}
 		},
 
 		// ObliqueUI custom tasks:
@@ -75,6 +82,13 @@
 		return runSequence(
 			'build-dev',
 			'serve-dev'
+		);
+	});
+
+	gulp.task('run-dev-showcase', function () {
+		return runSequence(
+			'build-dev',
+			['serve-dev', 'showcase-serve']
 		);
 	});
 
@@ -111,16 +125,15 @@
 		return del(
 			[
 				paths.staging,
-				project.build.target + 'app/*',
-				'!' + project.build.target + 'app/i18n',
-				'!' + project.build.target + 'app/i18n/*.json'
+				paths.target.ui + 'app/*',
+				'!' + paths.target.ui + 'app/i18n',
+				'!' + paths.target.ui + 'app/i18n/*.json'
 			],
 			{force: false}
 		);
 	});
 	//</editor-fold>
 	//</editor-fold>
-
 
 	//<editor-fold desc="Clean">
 	/*
@@ -157,27 +170,8 @@
 	gulp.task('copy', [
 		'copy-vendor-js',
 		'copy-vendor-css',
-		'copy-oblique-ui',
-
-		'showcase-copy-json',
-		'showcase-copy-assets',
+		'copy-oblique-ui'
 	]);
-
-	/*
-	 * copy-assets: copies showcase assets to output folder.
-	 *
-	 * Plugins: [NONE]
-	 */
-	gulp.task('showcase-copy-assets', function () {
-		return gulp.src(
-			[
-				'images/**/*',
-				'js/**/*',
-				'fonts/**/*'
-			],
-			{cwd: paths.showcase, base: paths.showcase}
-		).pipe(gulp.dest(project.build.target));
-	});
 
 	/*
 	 * copy-vendor-js: copies required vendor scripts to output folder.
@@ -188,10 +182,10 @@
 		return gulp.src(
 			project.resources.vendor.js,
 			{cwd: paths.modules, base: paths.modules}
-		).pipe(gulp.dest(paths.vendor));
+		).pipe(gulp.dest(paths.target.vendor));
 	});
 
-	/*
+	/**
 	 * copy-vendor-dev: copies required DEV vendor scripts to output folder.
 	 *
 	 * Plugins: [NONE]
@@ -200,10 +194,10 @@
 		return gulp.src(
 			project.resources.vendor.dev,
 			{cwd: paths.modules, base: paths.modules}
-		).pipe(gulp.dest(paths.vendor));
+		).pipe(gulp.dest(paths.target.vendor));
 	});
 
-	/*
+	/**
 	 * copy-vendor-css: copies required vendor styles to output folder.
 	 *
 	 * Plugins: [NONE]
@@ -212,22 +206,10 @@
 		return gulp.src(
 			project.resources.vendor.css,
 			{cwd: paths.modules, base: paths.modules}
-		).pipe(gulp.dest(paths.vendor));
+		).pipe(gulp.dest(paths.target.vendor));
 	});
 
-	/*
-	 * copy-app-json: copies showcase JSON resources to output folder.
-	 *
-	 * Plugins: [NONE]
-	 */
-	gulp.task('showcase-copy-json', function () {
-		return gulp.src(
-			['**/*.json'],
-			{cwd: paths.app, base: paths.app}
-		).pipe(gulp.dest(project.build.target + 'app/'));
-	});
-
-	/*
+	/**
 	 * copy-oblique-ui: copies ObliqueUI distribution to output folder.
 	 *
 	 * Plugins: [NONE]
@@ -237,10 +219,10 @@
 		return gulp.src(
 			['**/*'],
 			{cwd: path, base: path}
-		).pipe(gulp.dest(paths.vendor + 'oblique-ui/'));
+		).pipe(gulp.dest(paths.target.vendor + 'oblique-ui/'));
 	});
 
-	/*
+	/**
 	 * copy-ts-publish: copies compiled ts into publish folder.
 	 *
 	 * Plugins: [NONE]
@@ -259,12 +241,8 @@
 		return runSequence(
 			'clean',
 			'copy',
-			'tslint',
 			'build-sources', // Builds showcase sources as well!
-			[
-				'showcase-build-styles',
-				'showcase-build-html'
-			],
+			'showcase',
 			done
 		);
 	});
@@ -282,12 +260,14 @@
 		// which compiles *all* project sources!
 
 		return runSequence(
+			// 0. Lint sources:
+			'build-tslint',
+
 			// 1. Compile sources to staging folder:
 			'build-sources-compile',
 
 			// 2. Build the templates module
 			'build-templates',
-			'showcase-build-templates',
 
 			// 3. Copy compiled files to the correct output folders:
 			'build-sources-copy',
@@ -296,6 +276,17 @@
 		);
 	});
 
+	gulp.task('build-tslint', () => {
+		return gulp.src([
+			paths.src + '**.*.ts'
+		]).pipe(tslint(<any>{
+			formatter: "verbose"
+		}))
+			.pipe(tslint.report())
+	});
+
+	// NOTE: TS compilation relies on `tsconfig.json` used by TSC
+	// which compiles *all* project sources!
 	gulp.task('build-sources-compile', function () {
 		return tsProject.src()
 			.pipe(tsProject())
@@ -304,29 +295,11 @@
 			.pipe(gulp.dest(paths.staging));
 	});
 
-	gulp.task('tslint', () => {
-		return gulp.src([
-			paths.showcase + '**/*.ts',
-			paths.src + '**.*.ts'
-		]).pipe(tslint(<any>{
-				formatter: "verbose"
-			})
-		)
-			.pipe(tslint.report())
-	});
-
 	gulp.task('build-sources-copy', function () {
-		let copyCore = gulp.src(
+		return gulp.src(
 			paths.staging + paths.src + '**/*.js',
 			{base: paths.staging + paths.src}
-		).pipe(gulp.dest(paths.vendor + 'oblique-reactive'));
-
-		let copyShowcase = gulp.src(
-			paths.staging + paths.showcase + '**/*.js',
-			{base: paths.staging + paths.showcase}
-		).pipe(gulp.dest(project.build.target));
-
-		return merge([copyCore, copyShowcase]);
+		).pipe(gulp.dest(paths.target.vendor + 'oblique-reactive'));
 	});
 
 	/**
@@ -353,17 +326,186 @@
 			))
 			.pipe(gulp.dest(paths.staging + paths.src));
 	});
+	//</editor-fold>
 
-	/*
-	 * showcase-build-styles: generates CSS files from Less resources
+	//<editor-fold desc="Optimize">
+	/**
+	 * optimize: minifies, uglifies and revisions generated resources for release packaging
 	 *
 	 * Plugins:
-	 *  - `less`: https://github.com/plus3network/gulp-less
+	 *  - `gulp-usemin`: https://github.com/zont/gulp-usemin
+	 *  - `gulp-cssnano`: https://github.com/ben-eb/gulp-cssnano
+	 *  - `gulp-uglify`: https://github.com/terinjokes/gulp-uglify
+	 *  - `gulp-rev`: https://github.com/sindresorhus/gulp-rev
 	 */
-	gulp.task('showcase-build-styles', function () {
-		return gulp.src(paths.less + 'main.less')
-			.pipe(less({paths: paths.less}))
-			.pipe(gulp.dest(project.build.target + 'css/'))
+	gulp.task('optimize', ['bundle-showcase', 'clean-min'], function () {
+		return gulp.src(paths.target.ui + 'index.html')
+			.pipe(usemin({
+				css: [cssnano(), rev()],
+				jsvendors: [ngAnnotate(), uglify(), rev()],
+				jsapp: [ngAnnotate(), uglify(), rev()]
+			}))
+			.pipe(gulp.dest(paths.target.ui));
+	});
+	//</editor-fold>
+
+	//<editor-fold desc="Test">
+	/**
+	 * TODO: should this be runnable alone?
+	 *
+	 * test: launches Karma tests
+	 *
+	 * Plugins:
+	 *  - `karma`: https://github.com/karma-runner/karma
+	 */
+	gulp.task('test', function (done) {
+		new karmaServer({
+			configFile: __dirname + '/karma.conf.js',
+			logLevel: 'info',
+			singleRun: true
+		}, done).start();
+	});
+	//</editor-fold>
+
+	//<editor-fold desc="Serve">
+	/**
+	 * serve: launches a local web server for serving resources and starts listening for file changes
+	 *
+	 * Plugins: [NONE]
+	 */
+	gulp.task('serve-dev', [
+		'serve-prod',
+		'watch'
+	]);
+
+	gulp.task('serve-prod', [
+		'serve-connect',
+		'serve-open'
+	]);
+
+	/**
+	 * serve-connect: launches a local web server for serving app resources
+	 *
+	 * Plugins:
+	 *  - `connect`: https://github.com/avevlad/gulp-connect
+	 */
+	gulp.task('serve-connect', function () {
+		return connect.server({
+			port: 9000, // Port used to deploy the client
+			host: 'localhost',
+			root: paths.target.ui,
+			livereload: true,
+			middleware: function (connect, opt) {
+				return [
+					proxy('/' + project.app.api.path, {
+						target: `http://localhost:${project.app.api.port}`,
+						changeOrigin: true
+					})
+				]
+			}
+		});
+	});
+
+	/**
+	 * serve-open: opens the default Internet browser
+	 *
+	 * Plugins:
+	 *  - `open`: https://github.com/stevelacy/gulp-open
+	 */
+	gulp.task('serve-open', () => {
+		return gulp.src(paths.target.ui + 'index.html')
+			.pipe(open({uri: 'http://localhost:9000'}));
+	});
+
+	/**
+	 * watch: starts listening for file changes and reloads running web server
+	 *
+	 * Plugins:
+	 * - `watch`: https://github.com/floatdrop/gulp-watch
+	 * - `connect`: https://github.com/avevlad/gulp-connect
+	 */
+	gulp.task('watch', function () {
+		//TODO: check this
+		gulp.watch(project.resources.vendor.js, {cwd: paths.target.vendor}, () => runSequence('copy-vendor-js', 'reload'));
+		gulp.watch(project.resources.vendor.css, {cwd: paths.target.vendor}, () => runSequence('copy-vendor-css', 'reload'));
+		gulp.watch('**/*', {cwd: paths.target.vendor + 'oblique-ui/dist/'}, () => runSequence('copy-oblique-ui', 'reload'));
+		gulp.watch('**/*.ts', {cwd: paths.src}, () => runSequence('build-sources', 'reload'));
+		gulp.watch('**/*.tpl.html', {cwd: paths.src}, () => runSequence(['build-templates', 'build-sources-copy'], 'reload'));
+
+		// Showcase:
+		gulp.watch(project.resources.assets, {cwd: paths.showcase}, () => runSequence('showcase-copy-ui', 'reload'));
+		gulp.watch('**/*.json', {cwd: paths.showcase}, () => runSequence('showcase-copy-ui', 'reload'));
+		gulp.watch('**/*.ts', {cwd: paths.showcase}, () => runSequence('showcase-build-sources', 'reload'));
+		gulp.watch('**/*.less', {cwd: paths.less}, () => runSequence('showcase-build-styles', 'reload'));
+		gulp.watch('**/*.tpl.html', {cwd: paths.showcase}, () => runSequence('showcase-build-templates', 'reload'));
+		gulp.watch([paths.pages + '**/*.hbs', paths.partials + '**/*.hbs'], () => runSequence('showcase-build-html', 'reload'));
+
+		gulp.watch('**/*.json', {cwd: paths.server}, () => runSequence('showcase-copy-server', 'reload'));
+		gulp.watch('**/*.ts', {cwd: paths.server}, () => runSequence('showcase-build-sources', 'reload'));
+	});
+
+	// FIXME: LiveReload will reload every file
+	gulp.task('reload', () => {
+		gulp.src(paths.target.ui + '**/**')
+			.pipe(connect.reload());
+	});
+	//</editor-fold>
+
+	//<editor-fold desc="Showcase">
+	gulp.task('showcase', function (done) {
+		return runSequence(
+			'showcase-build',
+			'showcase-copy',
+			done
+		);
+	});
+
+	gulp.task('showcase-build', function (done) {
+		return runSequence(
+			'showcase-build-sources',
+			'showcase-build-styles',
+			'showcase-build-html',
+			done
+		);
+	});
+
+	/**
+	 * showcase-build-sources: compiles TypeScript sources from showcase to output folder.
+	 *
+	 * Plugins:
+	 * - `gulp-typescript`: https://github.com/ivogabe/gulp-typescript
+	 * - `gulp-tslint`: https://github.com/panuhorsmalahti/gulp-tslint
+	 * - `gulp-replace`: https://github.com/lazd/gulp-replace
+	 */
+	gulp.task('showcase-build-sources', function (done) {
+		// NOTE: TS compilation relies on `tsconfig.json` used by TSC
+		// which compiles *all* project sources!
+
+		return runSequence(
+			// 0. Lint sources:
+			'showcase-build-tslint',
+
+			// 1. Compile sources to staging folder:
+			'build-sources-compile', // TODO: own showcase sources build task
+
+			// 2. Copy compiled files to the correct output folders:
+			'showcase-build-sources-copy',
+
+			// 3. Build the templates module
+			'showcase-build-templates',
+
+			done
+		);
+	});
+
+	gulp.task('showcase-build-tslint', () => {
+		return gulp.src([
+			paths.server + '**/*.ts',
+			paths.showcase + '**/*.ts'
+		]).pipe(tslint(<any>{
+			formatter: "verbose"
+		}))
+		.pipe(tslint.report())
 	});
 
 	/**
@@ -389,7 +531,34 @@
 			))
 			.pipe(replace("__MODULE__", project.app.module))
 			.pipe(replace("'__CONFIG__'", JSON.stringify(project.app)))
-			.pipe(gulp.dest(paths.staging + paths.showcase + 'app/'));
+			.pipe(gulp.dest(paths.target.ui + 'app/'));
+	});
+
+
+	gulp.task('showcase-build-sources-copy', function () {
+		let showcaseSources = gulp.src(
+			paths.staging + paths.showcase + '**/*.js',
+			{base: paths.staging + paths.showcase}
+		).pipe(gulp.dest(paths.target.ui));
+
+		let serverSources = gulp.src(
+			paths.staging + paths.server + '**/*.js',
+			{base: paths.staging + paths.server}
+		).pipe(gulp.dest(paths.target.server));
+
+		return merge([showcaseSources, serverSources]);
+	});
+
+	/**
+	 * showcase-build-styles: generates CSS files from Less resources
+	 *
+	 * Plugins:
+	 *  - `less`: https://github.com/plus3network/gulp-less
+	 */
+	gulp.task('showcase-build-styles', function () {
+		return gulp.src(paths.less + 'main.less')
+			.pipe(less({paths: paths.less}))
+			.pipe(gulp.dest(paths.target.ui + 'css/'))
 	});
 
 	/**
@@ -417,141 +586,55 @@
 				]
 			}, paths))
 			.pipe(rename({extname: '.html'}))
-			.pipe(gulp.dest(project.build.target));
+			.pipe(gulp.dest(paths.target.ui));
 	});
 
-	//</editor-fold>
 
-	//<editor-fold desc="Optimize">
-	/*
-	 * optimize: minifies, uglifies and revisions generated resources for release packaging
-	 *
-	 * Plugins:
-	 *  - `gulp-usemin`: https://github.com/zont/gulp-usemin
-	 *  - `gulp-cssnano`: https://github.com/ben-eb/gulp-cssnano
-	 *  - `gulp-uglify`: https://github.com/terinjokes/gulp-uglify
-	 *  - `gulp-rev`: https://github.com/sindresorhus/gulp-rev
-	 */
-	gulp.task('optimize', ['bundle-showcase', 'clean-min'], function () {
-		return gulp.src(project.build.target + 'index.html')
-			.pipe(usemin({
-				css: [cssnano(), rev()],
-				jsvendors: [ngAnnotate(), uglify(), rev()],
-				jsapp: [ngAnnotate(), uglify(), rev()]
-			}))
-			.pipe(gulp.dest(project.build.target));
-	});
-	//</editor-fold>
+	gulp.task('showcase-copy', [
+		'showcase-copy-ui',
+		'showcase-copy-server'
+	]);
 
-	//<editor-fold desc="Test">
-	/*
-	 * TODO: should this be runnable alone?
-	 *
-	 * test: launches Karma tests
-	 *
-	 * Plugins:
-	 *  - `karma`: https://github.com/karma-runner/karma
-	 */
-	gulp.task('test', function (done) {
-		new karmaServer({
-			configFile: __dirname + '/karma.conf.js',
-			logLevel: 'info',
-			singleRun: true
-		}, done).start();
-	});
-	//</editor-fold>
-
-	//<editor-fold desc="Serve">
-	/*
-	 * serve: launches a local web server for serving resources and starts listening for file changes
+	/**
+	 * showcase-copy-ui: copies showcase UI resources to output folder.
 	 *
 	 * Plugins: [NONE]
 	 */
-	gulp.task('serve-dev', [
-		'serve-prod',
-		'watch'
-	]);
-
-	gulp.task('serve-prod', [
-		'serve-connect',
-		'serve-open'
-	]);
-
-	/**
-	 * serve-connect: launches a local web server for serving app resources
-	 *
-	 * Plugins:
-	 *  - `connect`: https://github.com/avevlad/gulp-connect
-	 */
-	gulp.task('serve-connect', function () {
-		return connect.server({
-			port: 9000, // Port used to deploy the client
-			host: 'localhost',
-			root: project.build.target,
-			livereload: true,
-			middleware: function (connect, opt) {
-				return [
-					proxy('/' + project.app.api.path, {
-						target: `http://localhost:${project.app.api.port}`,
-						changeOrigin: true
-					})
-				]
-			}
-		});
+	gulp.task('showcase-copy-ui', function () {
+		return gulp.src(
+			[
+				'app/**/*.json',
+				'images/**/*',
+				'js/**/*',
+				'fonts/**/*'
+			],
+			{cwd: paths.showcase, base: paths.showcase}
+		).pipe(gulp.dest(paths.target.ui));
 	});
 
 	/**
-	 * serve-open: opens the default Internet browser
+	 * showcase-copy-server: copies showcase server resources to output folder.
 	 *
-	 * Plugins:
-	 *  - `open`: https://github.com/stevelacy/gulp-open
+	 * Plugins: [NONE]
 	 */
-	gulp.task('serve-open', () => {
-		return gulp.src(project.build.target + 'index.html')
-			.pipe(open({uri: 'http://localhost:9000'}));
+	gulp.task('showcase-copy-server', function () {
+		return gulp.src(
+			paths.server + '**/*.json',
+			{base: paths.server}
+		).pipe(gulp.dest(paths.target.server));
 	});
 
-	/*
-	 * serve-dummy: launches a local web server for serving a *dummy* API
+	/**
+	 * showcase-serve: launches a local web server for serving a *dummy* API
 	 *
 	 * Plugins:
 	 *  - `nodemon`: https://github.com/JacksonGariety/gulp-nodemon
 	 */
-	//TODO: mongodb-prebuilt not installable -> not testable
-	gulp.task('serve-dummy', function () {
+	gulp.task('showcase-serve', function () {
 		return nodemon({
-			script: 'server/server.js',
+			script: paths.target.server + 'server.js',
 			ext: 'js json'
 		});
-	});
-
-	/*
-	 * watch: starts listening for file changes and reloads running web server
-	 *
-	 * Plugins:
-	 * - `watch`: https://github.com/floatdrop/gulp-watch
-	 * - `connect`: https://github.com/avevlad/gulp-connect
-	 */
-	gulp.task('watch', function () {
-		//TODO: check this
-		gulp.watch(project.resources.vendor.js, {cwd: paths.vendor}, () => runSequence('copy-vendor-js', 'reload'));
-		gulp.watch(project.resources.vendor.css, {cwd: paths.vendor}, () => runSequence('copy-vendor-css', 'reload'));
-		gulp.watch('**/*', {cwd: paths.vendor + 'oblique-ui/dist/'}, () => runSequence('copy-oblique-ui', 'reload'));
-		gulp.watch('**/*.ts', {cwd: paths.src}, () => runSequence('build-sources', 'reload'));
-
-		// Showcase:
-		gulp.watch(project.resources.assets, {cwd: paths.showcase}, () => runSequence('showcase-copy-assets', 'reload'));
-		gulp.watch('**/*.json', {cwd: paths.showcase}, () => runSequence('showcase-copy-json', 'reload'));
-		gulp.watch('**/*.ts', {cwd: paths.showcase}, () => runSequence('build-sources', 'reload'));
-		gulp.watch('**/*.less', {cwd: paths.less}, () => runSequence('showcase-build-styles', 'reload'));
-		gulp.watch('**/*.tpl.html', {cwd: paths.showcase}, () => runSequence(['build-templates', 'showcase-build-templates'], 'reload'));
-		gulp.watch([paths.pages + '**/*.hbs', paths.partials + '**/*.hbs'], () => runSequence('showcase-build-html', 'reload'));
-	});
-
-	// FIXME: LiveReload will reload every file
-	gulp.task('reload', () => {
-		gulp.src(project.build.target + '**/**')
-			.pipe(connect.reload());
 	});
 	//</editor-fold>
 
@@ -566,7 +649,7 @@
 		runSequence(
 			'release',
 			'publish-clean',
-			'tslint',
+			'build-tslint',
 			'publish-ts',
 			'build-templates',
 			'copy-ts-publish',
@@ -619,8 +702,8 @@
 
 	// Generates a custom `package.json` for publishing:
 	gulp.task('publish-package', () => {
-		var pkgJson = require('./package.json');
-		var targetPkgJson = {
+		var pkg = require('./package.json');
+		var output = {
 			peerDependencies: {}
 		};
 
@@ -628,18 +711,18 @@
 			'name', 'title', 'version', 'description',
 			'keywords', 'author', 'contributors', 'organization',
 			'repository', 'license', 'bugs', 'homepage', 'publishConfig'
-		].forEach(field => targetPkgJson[field] = pkgJson[field]);
+		].forEach(field => output[field] = pkg[field]);
 
-		targetPkgJson['main'] = 'bundles/oblique-reactive.js';
-		targetPkgJson['module'] = 'oblique-reactive.js';
-		targetPkgJson['typings'] = 'oblique-reactive.d.ts';
+		output['main'] = 'bundles/oblique-reactive.js';
+		output['module'] = 'oblique-reactive.js';
+		output['typings'] = 'oblique-reactive.d.ts';
 
-		Object.keys(pkgJson.dependencies).forEach(function (dependency) {
-			targetPkgJson.peerDependencies[dependency] = pkgJson.dependencies[dependency];
+		Object.keys(pkg.dependencies).forEach(function (dependency) {
+			output.peerDependencies[dependency] = pkg.dependencies[dependency];
 		});
 
 		return gulp.src('README.md')
-			.pipe(file('package.json', JSON.stringify(targetPkgJson, null, 2)))
+			.pipe(file('package.json', JSON.stringify(output, null, 2)))
 			.pipe(gulp.dest(paths.publish));
 	});
 
@@ -655,7 +738,6 @@
 	//</editor-fold>
 
 	//<editor-fold desc="Bundling tasks">
-
 	/**
 	 * Bundles oblique-reactive into an umd-bundle
 	 */
@@ -697,7 +779,7 @@
 					}
 				},
 				entry: './target/app/app-module.js',
-				output: {filename: project.build.target + 'app/bundles/app.js'}
+				output: {filename: paths.target.ui + 'app/bundles/app.js'}
 			},
 			webpackCallBack('webpack', cb));
 	});
