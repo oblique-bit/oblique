@@ -584,7 +584,7 @@
 				partials: [
 					paths.partials + '**/*.hbs',
 				]
-			}, paths))
+			}))
 			.pipe(rename({extname: '.html'}))
 			.pipe(gulp.dest(paths.target.ui));
 	});
