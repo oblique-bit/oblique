@@ -14,7 +14,6 @@ export class LoadingService {
 		//
 	}
 
-
 	start() {
 		// Store id for later comparison:
 		let id = this.loadingId;
@@ -45,6 +44,4 @@ export class LoadingService {
 			this.loading = this.loadings.length > 0;
 		}
 	}
-
-
 }

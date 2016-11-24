@@ -53,12 +53,12 @@
 			<li role="presentation" class="divider"></li>
 			<li class="nav-header" role="presentation">
 				<span class="fa fa-flag"></span>
-				<span>\{{'labels.language' | translate}}</span>
+				<span>\{{'i18n.labels.language' | translate}}</span>
 			</li>
 			{{#each app.locales}}
 				<li role="menuitem" ng-class="{active: appController.locale.current === '{{this}}'}">
 					<a href="" role="button" ng-click="appController.locale.use('{{this}}')">
-						<span>\{{'application.locales.{{this}}' | translate}}</span>
+						<span>\{{'i18n.application.locales.{{this}}' | translate}}</span>
 					</a>
 				</li>
 			{{/each}}
