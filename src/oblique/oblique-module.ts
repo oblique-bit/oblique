@@ -26,6 +26,7 @@ import {UibTypeaheadPopupDirective} from './ui/typeahead-popup-directive';
 import {ValidationBusinessDirective} from './validation/validation-business-directive';
 import {SchemaValidateDirective} from './validation/schema-validate-directive';
 import {SchemaValidateConfig} from './validation/schema-validate-config';
+import {BackToTopDirective} from './ui/back-to-top/back-to-top-directive';
 
 //Makes sure, that the oblique-reactive-templates will be loaded (and bundled)
 import '../oblique-reactive-templates';
@@ -44,7 +45,6 @@ angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
 	.service('$navigator', NavigatorService)
 	.provider('loadingService', () => new LoadingServiceProvider())
 	.directive('datePicker', () => new DatePickerDirective())
-	//TODO: naming?
 	.directive('uibDatepickerPopup', (dateFilter, uibDateParser, uibDatepickerPopupConfig) => new DatePickerPopupDirective(
 		dateFilter,
 		uibDateParser,
@@ -68,4 +68,5 @@ angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
 	.directive('schemaValidate', ($log:LogDecorator,
 	                              $timeout:ng.ITimeoutService,
 	                              schemaValidator:SchemaValidatorService) => new SchemaValidateDirective($log, $timeout, schemaValidator))
+	.directive('backToTop', () => new BackToTopDirective)
 	.service('schemaValidator', SchemaValidatorService);
