@@ -3,7 +3,7 @@
 		<label data-ng-if="label" for="{{ctrl.controlId}}" class="input-group-addon">{{ctrl.label}}</label>
 		<div class="control-action" data-ng-class="{'control-mandatory' : !ngModel && required}">
 			<input name="{{ctrl.name}}" type="text" class="form-control"
-			       placeholder="{{('common.date.format.' + ctrl.dpOptions.datepickerPopup) | translate}}"
+			       placeholder="{{('i18n.common.date.format.' + ctrl.dpOptions.datepickerPopup) | translate}}"
 			       data-ng-attr-id="{{ctrl.controlId}}"
 			       data-ng-model="ctrl.ngModel"
 			       data-ng-class="{'form-control-activable' : !ctrl.disabled && !ctrl.editable}"
@@ -31,6 +31,6 @@
 		* {{'tv4.OBJECT_REQUIRED'| translate}}
 	</div>
 	<div class="help-block" data-ng-show="form.$dirty && form.$error && form.$error.date">
-		* {{'common.date.format.invalid' | translate}}
+		* {{'i18n.common.date.format.invalid' | translate}}
 	</div>
 </div>

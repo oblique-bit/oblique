@@ -430,7 +430,7 @@
 		gulp.watch(project.resources.vendor.css, {cwd: paths.target.vendor}, () => runSequence('copy-vendor-css', 'reload'));
 		gulp.watch('**/*', {cwd: paths.target.vendor + 'oblique-ui/dist/'}, () => runSequence('copy-oblique-ui', 'reload'));
 		gulp.watch('**/*.ts', {cwd: paths.src}, () => runSequence('build-sources', 'reload'));
-		gulp.watch('**/*.tpl.html', {cwd: paths.src}, () => runSequence(['build-templates', 'build-sources-copy'], 'reload'));
+		gulp.watch('**/*.tpl.html', {cwd: paths.src}, () => runSequence('build-templates', 'build-sources-copy', 'reload'));
 
 		// Showcase:
 		gulp.watch(project.resources.assets, {cwd: paths.showcase}, () => runSequence('showcase-copy-ui', 'reload'));
@@ -584,7 +584,7 @@
 				partials: [
 					paths.partials + '**/*.hbs',
 				]
-			}, paths))
+			}))
 			.pipe(rename({extname: '.html'}))
 			.pipe(gulp.dest(paths.target.ui));
 	});

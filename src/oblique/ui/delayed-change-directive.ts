@@ -13,12 +13,12 @@ export class DelayedChangeDirective implements ng.IDirective {
 	require = 'ngModel';
 	scope = {};
 
-	bindToController:{
+	bindToController = {
 		ngModel:'=',
 		delayedChange:'&',
 		delay:'@'
 	};
 
-	controller:DelayedChangeDirectiveController;
+	controller = DelayedChangeDirectiveController;
 	controllerAs:'ctrl';
 }

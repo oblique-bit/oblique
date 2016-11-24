@@ -112,9 +112,9 @@
     "webpack": "^1.13.3"
   },
   "scripts": {
-    "postinstall": "typings install",
-    "start": "gulp",
-    "gulp": "gulp",
-    "release": "gulp release"
+    "postinstall": "node_modules/.bin/typings install",
+    "start": "node_modules/.bin/gulp",
+    "gulp": "node_modules/.bin/gulp",
+    "release": "node_modules/.bin/gulp release"
   }
 }

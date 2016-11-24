@@ -71,7 +71,7 @@
 				</div>
 			</div>
 			<span class="help-block" ng-show="validationForm.date.$invalid">{{validationForm.date.$errorMessage}}</span>
-			<span class="help-block" ng-show="validationForm.date.$error.date && !validationForm.date.$errorMessage">{{'common.date.format.invalid' | translate}}</span>
+			<span class="help-block" ng-show="validationForm.date.$error.date && !validationForm.date.$errorMessage">{{'i18n.common.date.format.invalid' | translate}}</span>
 		</div>
 		<div class="col-sm-2">
 			<a class="form-control-static" role="button"
@@ -100,7 +100,7 @@
 			<select name="select" class="form-control"
 			        ng-model="ctrl.data.select" schema-validate
 			        ng-options="option.value as option.label for option in ctrl.schema.properties.select.options">
-				<option value="" selected>{{'common.select' | translate}}</option>
+				<option value="" selected>{{'i18n.common.select' | translate}}</option>
 			</select>
 			<span class="help-block" ng-show="validationForm.select.$invalid">{{validationForm.select.$errorMessage}}</span>
 		</div>

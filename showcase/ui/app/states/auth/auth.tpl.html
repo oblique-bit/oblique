@@ -2,11 +2,11 @@
 	<div class="cover-viewport">
 		<div class="default-layout">
 			<div class="cover-header">
-				<h1 translate="states.auth.title"></h1>
+				<h1 translate="i18n.states.auth.title"></h1>
 			</div>
 			<div class="cover-content">
 				<form novalidate class="form-horizontal" role="form" name="loginForm" ng-submit="ctrl.login(loginForm)">
-					<h3 class="page-header">{{'states.auth.login.title' | translate}}</h3>
+					<h3 class="page-header">{{'i18n.states.auth.login.title' | translate}}</h3>
 					<div class="form-group" has-error>
 						<label class="col-sm-3 control-label">Email</label>
 						<div class="col-sm-9">
@@ -40,7 +40,7 @@
 					</div>
 				</form>
 				<form novalidate role="form" name="registerForm" ng-submit="ctrl.register(registerForm)">
-					<h3 class="page-header" translate translate-values="{'title': appController.title}">states.auth.register.title</h3>
+					<h3 class="page-header" translate translate-values="{'title': appController.title}">i18n.states.auth.register.title</h3>
 					<div class="form-group" has-error>
 						<input type="email" placeholder="Email" class="form-control"
 						       name="email" ng-model="ctrl.user.email" ng-required="registerForm.$submitted" />
@@ -60,7 +60,7 @@
 					<div class="form-group">
 						<button type="submit" class="btn btn-lg btn-primary btn-block" ng-disabled="!registerForm.$valid">
 							<span ng-if="ctrl.status.registering" class="fa fa-spinner fa-spin fade"></span>
-							<span translate="states.auth.register.submit"></span>
+							<span translate="i18n.states.auth.register.submit"></span>
 						</button>
 					</div>
 				</form>

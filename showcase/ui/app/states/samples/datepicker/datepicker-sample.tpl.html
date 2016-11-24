@@ -44,8 +44,8 @@
 				</div>
 			</div>
 			<span class="help-block" ng-show="datepickerForm.minMax.$invalid">{{datepickerForm.minMax.$errorMessage}}</span>
-			<span class="help-block" ng-show="datepickerForm.minMax.$error.minDate && !datepickerForm.minMax.$errorMessage">{{'common.date.min.invalid' | translate:'{ p0: ctrl.data.minDate }' }}</span>
-			<span class="help-block" ng-show="datepickerForm.minMax.$error.maxDate && !datepickerForm.minMax.$errorMessage">{{'common.date.max.invalid' | translate:'{ p0: ctrl.data.maxDate }' }}</span>
+			<span class="help-block" ng-show="datepickerForm.minMax.$error.minDate && !datepickerForm.minMax.$errorMessage">{{'i18n.common.date.min.invalid' | translate:'{ p0: ctrl.data.minDate }' }}</span>
+			<span class="help-block" ng-show="datepickerForm.minMax.$error.maxDate && !datepickerForm.minMax.$errorMessage">{{'i18n.common.date.max.invalid' | translate:'{ p0: ctrl.data.maxDate }' }}</span>
 		</div>
 	</div>
 	<div class="form-group" has-error>
@@ -59,7 +59,7 @@
 				<div class="col-md-6" has-error="rangeTo">
 					<date-picker label="To" name="rangeTo" ng-model="ctrl.data.range.to" min-date="ctrl.data.range.from"></date-picker>
 					<span class="help-block" ng-show="datepickerForm.rangeTo.$invalid">{{datepickerForm.rangeTo.$errorMessage}}</span>
-					<span class="help-block" ng-show="datepickerForm.rangeTo.$error.minDate && !datepickerForm.rangeTo.$errorMessage">{{'common.date.min.invalid' | translate:'{ p0: ctrl.data.minDate }' }}</span>
+					<span class="help-block" ng-show="datepickerForm.rangeTo.$error.minDate && !datepickerForm.rangeTo.$errorMessage">{{'i18n.common.date.min.invalid' | translate:'{ p0: ctrl.data.minDate }' }}</span>
 				</div>
 			</div>
 		</div>
@@ -79,7 +79,7 @@
 				</div>
 			</div>
 			<span class="help-block" ng-show="datepickerForm.date.$invalid">{{datepickerForm.date.$errorMessage}}</span>
-			<span class="help-block" ng-show="datepickerForm.date.$error.date && !datepickerForm.date.$errorMessage">{{'common.date.format.invalid' | translate}}</span>
+			<span class="help-block" ng-show="datepickerForm.date.$error.date && !datepickerForm.date.$errorMessage">{{'i18n.common.date.format.invalid' | translate}}</span>
 		</div>
 	</div>
 	<div class="form-actions">
