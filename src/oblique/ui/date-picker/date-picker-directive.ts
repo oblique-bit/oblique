@@ -9,7 +9,7 @@ export class DatePickerDirective implements ng.IDirective {
 	restrict = 'E';
 	replace = true;
 	scope = {};
-	require:['^form'];
+	require = ['datePicker', '^form'];
 	bindToController = {
 		ngModel: '=',
 
@@ -28,7 +28,9 @@ export class DatePickerDirective implements ng.IDirective {
 	controller = DatePickerDirectiveController;
 	controllerAs = 'ctrl';
 
-	link = (scope, element, attrs, controller:DatePickerDirectiveController) => {
+	link = (scope, element, attrs, controllers:any[]) => {
+		let controller:DatePickerDirectiveController = controllers[0];
+
 		element.keydown((e) => {
 			let control = element.find('input[name=' + controller.name + ']');
 			if (angular.element(e.target).is(control) && e.keyCode === 40) { // 40: ArrowDown
