@@ -8,11 +8,11 @@
  */
 export class MultiselectDirective implements ng.IDirective {
 	restrict = 'E';
-	template = `<div    ng-dropdown-multiselect 
-						options='ctrl.options' 
-						selected-model='ctrl.ngModel' 
-						checkboxes='true' 
-						extra-settings='ctrl.settings' 
+	template = `<div    ng-dropdown-multiselect
+						options='ctrl.options'
+						selected-model='ctrl.ngModel'
+						checkboxes='true'
+						extra-settings='ctrl.settings'
 						translation-texts='ctrl.translations'></div>`;
 	require = ['ngModel', 'multiselect'];
 	scope = {};
@@ -66,7 +66,7 @@ export class MultiselectDirective implements ng.IDirective {
 			if (!angular.equals(originalValue, newValue)) {
 				ngModelCtrl.$setDirty();
 
-				//Trigger parsers manually to start the tv4 validation (the tv4 validation is inside the parsers)
+				//Trigger parsers manually to start the schema validation
 				angular.forEach(ngModelCtrl.$parsers, function (parser) {
 					parser(ngModelCtrl.$viewValue);
 				});
