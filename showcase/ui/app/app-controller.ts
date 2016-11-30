@@ -63,7 +63,7 @@ export class AppController {
 
 		$rootScope.$on('$stateChangeSuccess', (event, toState:ng.ui.IState) => {
 			this.page.layout = toState.data && toState.data.layout ? toState.data.layout : {};
-			this.page.title = toState.data && toState.data.title ? toState.data.title : 'states.' + toState.name + '.title';
+			this.page.title = toState.data && toState.data.title ? toState.data.title : 'i18n.states.' + toState.name + '.title';
 			this.page.description = toState.data && toState.data.description ? toState.data.description : (CONFIG.description || '');
 			this.spinner = false;
 		});
