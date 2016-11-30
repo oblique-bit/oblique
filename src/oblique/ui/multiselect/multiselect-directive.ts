@@ -65,7 +65,11 @@ export class MultiselectDirective implements ng.IDirective {
 		scope.$watch('ctrl.ngModel', (newValue, oldValue) => {
 			if (!angular.equals(originalValue, newValue)) {
 				ngModelCtrl.$setDirty();
-				// TODO: trigger parsers here!
+
+				//Trigger parsers manually to start the tv4 validation (the tv4 validation is inside the parsers)
+				angular.forEach(ngModelCtrl.$parsers, function (parser) {
+					parser(ngModelCtrl.$viewValue);
+				});
 			}
 		}, true);
 	};
