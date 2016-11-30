@@ -1,4 +1,4 @@
-(function () {
+(() => {
 	//<editor-fold desc="Dependencies">
 	let del = require('del'),
 		merge = require('merge2'),
@@ -38,6 +38,7 @@
 		paths = {
 			src: 'src/',
 			modules: 'node_modules/',
+			typings: 'typings/',
 			min: project.build.target + 'min/',
 			staging: project.build.target + '.tmp/',
 			publish: project.build.target + '.publish/',
@@ -68,7 +69,6 @@
 		karmaServer = require('karma').Server,
 
 		production = false,
-		tsProject = ts.createProject('tsconfig.json'),
 
 		// FIXME: remove when https://github.com/gulpjs/gulp/tree/4.0 is out!
 		runSequence = require('run-sequence');
@@ -78,21 +78,21 @@
 	gulp.task('default', ['run-dev']);
 
 	//<editor-fold desc="Dev tasks">
-	gulp.task('run-dev', function () {
+	gulp.task('run-dev', () =>{
 		return runSequence(
 			'build-dev',
 			'serve-dev'
 		);
 	});
 
-	gulp.task('run-dev-showcase', function () {
+	gulp.task('run-dev-showcase', () => {
 		return runSequence(
 			'build-dev',
 			['serve-dev', 'showcase-serve']
 		);
 	});
 
-	gulp.task('build-dev', function (done) {
+	gulp.task('build-dev', (done) => {
 		return runSequence(
 			'build',
 			'copy-vendor-dev',
@@ -103,14 +103,14 @@
 	//</editor-fold>
 
 	//<editor-fold desc="Prod tasks">
-	gulp.task('run-prod', function (done) {
+	gulp.task('run-prod', () => {
 		return runSequence(
 			'build-prod',
 			'serve-prod'
 		);
 	});
 
-	gulp.task('build-prod', function (done) {
+	gulp.task('build-prod', (done) => {
 		production = true;
 		return runSequence(
 			'build-dev',
@@ -120,7 +120,7 @@
 		);
 	});
 
-	gulp.task('clean-prod', function (done) {
+	gulp.task('clean-prod', () => {
 		production = true;
 		return del(
 			[
@@ -142,7 +142,7 @@
 	 * Plugins:
 	 *  - `del`: https://github.com/sindresorhus/del
 	 */
-	gulp.task('clean', function () {
+	gulp.task('clean', () => {
 		return del(
 			[project.build.target + '/**'],
 			{force: false}
@@ -155,7 +155,7 @@
 	 * Plugins:
 	 *  - `del`: https://github.com/sindresorhus/del
 	 */
-	gulp.task('clean-min', function () {
+	gulp.task('clean-min', () => {
 		return del(
 			paths.min,
 			{force: false}
@@ -178,7 +178,7 @@
 	 *
 	 * Plugins: [NONE]
 	 */
-	gulp.task('copy-vendor-js', function () {
+	gulp.task('copy-vendor-js', () => {
 		return gulp.src(
 			project.resources.vendor.js,
 			{cwd: paths.modules, base: paths.modules}
@@ -190,7 +190,7 @@
 	 *
 	 * Plugins: [NONE]
 	 */
-	gulp.task('copy-vendor-dev', function () {
+	gulp.task('copy-vendor-dev', () => {
 		return gulp.src(
 			project.resources.vendor.dev,
 			{cwd: paths.modules, base: paths.modules}
@@ -202,7 +202,7 @@
 	 *
 	 * Plugins: [NONE]
 	 */
-	gulp.task('copy-vendor-css', function () {
+	gulp.task('copy-vendor-css', () => {
 		return gulp.src(
 			project.resources.vendor.css,
 			{cwd: paths.modules, base: paths.modules}
@@ -214,8 +214,8 @@
 	 *
 	 * Plugins: [NONE]
 	 */
-	gulp.task('copy-oblique-ui', function () {
-		var path = paths.modules + 'oblique-ui/dist/';
+	gulp.task('copy-oblique-ui', () => {
+		let path = paths.modules + 'oblique-ui/dist/';
 		return gulp.src(
 			['**/*'],
 			{cwd: path, base: path}
@@ -227,8 +227,8 @@
 	 *
 	 * Plugins: [NONE]
 	 */
-	gulp.task('copy-ts-publish', function () {
-		var path = paths.staging + 'src/';
+	gulp.task('copy-ts-publish', () => {
+		let path = paths.staging + 'src/';
 		return gulp.src(
 			['**/*'],
 			{cwd: path, base: path}
@@ -237,11 +237,11 @@
 	//</editor-fold>
 
 	//<editor-fold desc="Build">
-	gulp.task('build', function (done) {
+	gulp.task('build', (done) => {
 		return runSequence(
 			'clean',
 			'copy',
-			'build-sources', // Builds showcase sources as well!
+			'build-sources', 	// only ObliqueReactive (src/)
 			'showcase',
 			done
 		);
@@ -255,10 +255,7 @@
 	 * - `gulp-tslint`: https://github.com/panuhorsmalahti/gulp-tslint
 	 * - `gulp-replace`: https://github.com/lazd/gulp-replace
 	 */
-	gulp.task('build-sources', function (done) {
-		// NOTE: TS compilation relies on `tsconfig.json` used by TSC
-		// which compiles *all* project sources!
-
+	gulp.task('build-sources', (done) => {
 		return runSequence(
 			// 0. Lint sources:
 			'build-tslint',
@@ -285,17 +282,30 @@
 			.pipe(tslint.report())
 	});
 
-	// NOTE: TS compilation relies on `tsconfig.json` used by TSC
-	// which compiles *all* project sources!
-	gulp.task('build-sources-compile', function () {
-		return tsProject.src()
+	gulp.task('build-sources-compile', () => {
+		let tsProject = ts.createProject('tsconfig.json');
+		return gulp.src([
+			paths.src + '**/*.ts',
+			paths.typings + '**/*.d.ts'
+		])
 			.pipe(tsProject())
 			.pipe(replace("__MODULE__", project.app.module))
 			.pipe(replace("'__CONFIG__'", JSON.stringify(project.app)))
-			.pipe(gulp.dest(paths.staging));
+			.pipe(gulp.dest(paths.staging + paths.src));
 	});
 
-	gulp.task('build-sources-copy', function () {
+	gulp.task('showcase-build-sources-compile', () => {
+		let tsProject = ts.createProject('tsconfig.showcase.json');
+		return gulp.src([
+			paths.showcase + '**/*.ts'
+		])
+			.pipe(tsProject())
+			.pipe(replace("__MODULE__", project.app.module))
+			.pipe(replace("'__CONFIG__'", JSON.stringify(project.app)))
+			.pipe(gulp.dest(paths.staging + paths.showcase));
+	});
+
+	gulp.task('build-sources-copy', () => {
 		return gulp.src(
 			paths.staging + paths.src + '**/*.js',
 			{base: paths.staging + paths.src}
@@ -310,8 +320,8 @@
 	 *  - `gulp-ng-html2js`: https://github.com/marklagendijk/gulp-ng-html2js
 	 *  - `concat`: https://github.com/wearefractal/gulp-concat
 	 */
-	gulp.task('build-templates', function () {
-		var moduleName = 'oblique-reactive' + '.app-templates'; // FIXME 1.3.0
+	gulp.task('build-templates', () => {
+		let moduleName = 'oblique-reactive' + '.app-templates'; // FIXME 1.3.0
 		return gulp.src(paths.src + '**/*.tpl.html')
 			.pipe(htmlmin({collapseWhitespace: true}))
 			.pipe(ngHtml2js({
@@ -321,8 +331,7 @@
 			}))
 			.pipe(concat("oblique-reactive-templates.js"))
 			.pipe(insert.prepend(
-				"exports.templateModuleName = '" + moduleName + "';\n\n" // FIXME 1.3.0
-				+ "angular.module('" + moduleName + "', []);\n\n"
+				"angular.module('" + moduleName + "', []);\n\n"
 			))
 			.pipe(gulp.dest(paths.staging + paths.src));
 	});
@@ -338,7 +347,7 @@
 	 *  - `gulp-uglify`: https://github.com/terinjokes/gulp-uglify
 	 *  - `gulp-rev`: https://github.com/sindresorhus/gulp-rev
 	 */
-	gulp.task('optimize', ['bundle-showcase', 'clean-min'], function () {
+	gulp.task('optimize', ['bundle-showcase', 'clean-min'], () => {
 		return gulp.src(paths.target.ui + 'index.html')
 			.pipe(usemin({
 				css: [cssnano(), rev()],
@@ -358,7 +367,7 @@
 	 * Plugins:
 	 *  - `karma`: https://github.com/karma-runner/karma
 	 */
-	gulp.task('test', function (done) {
+	gulp.task('test', (done) => {
 		new karmaServer({
 			configFile: __dirname + '/karma.conf.js',
 			logLevel: 'info',
@@ -389,13 +398,13 @@
 	 * Plugins:
 	 *  - `connect`: https://github.com/avevlad/gulp-connect
 	 */
-	gulp.task('serve-connect', function () {
+	gulp.task('serve-connect', () => {
 		return connect.server({
 			port: 9000, // Port used to deploy the client
 			host: 'localhost',
 			root: paths.target.ui,
 			livereload: true,
-			middleware: function (connect, opt) {
+			middleware: (connect, opt) => {
 				return [
 					proxy('/' + project.app.api.path, {
 						target: `http://localhost:${project.app.api.port}`,
@@ -424,7 +433,7 @@
 	 * - `watch`: https://github.com/floatdrop/gulp-watch
 	 * - `connect`: https://github.com/avevlad/gulp-connect
 	 */
-	gulp.task('watch', function () {
+	gulp.task('watch', () => {
 		//TODO: check this
 		gulp.watch(project.resources.vendor.js, {cwd: paths.target.vendor}, () => runSequence('copy-vendor-js', 'reload'));
 		gulp.watch(project.resources.vendor.css, {cwd: paths.target.vendor}, () => runSequence('copy-vendor-css', 'reload'));
@@ -452,7 +461,7 @@
 	//</editor-fold>
 
 	//<editor-fold desc="Showcase">
-	gulp.task('showcase', function (done) {
+	gulp.task('showcase', (done) => {
 		return runSequence(
 			'showcase-build',
 			'showcase-copy',
@@ -460,7 +469,7 @@
 		);
 	});
 
-	gulp.task('showcase-build', function (done) {
+	gulp.task('showcase-build', (done) => {
 		return runSequence(
 			'showcase-build-sources',
 			'showcase-build-styles',
@@ -477,16 +486,13 @@
 	 * - `gulp-tslint`: https://github.com/panuhorsmalahti/gulp-tslint
 	 * - `gulp-replace`: https://github.com/lazd/gulp-replace
 	 */
-	gulp.task('showcase-build-sources', function (done) {
-		// NOTE: TS compilation relies on `tsconfig.json` used by TSC
-		// which compiles *all* project sources!
-
+	gulp.task('showcase-build-sources', (done) => {
 		return runSequence(
 			// 0. Lint sources:
 			'showcase-build-tslint',
 
 			// 1. Compile sources to staging folder:
-			'build-sources-compile', // TODO: own showcase sources build task
+			'showcase-build-sources-compile',
 
 			// 2. Copy compiled files to the correct output folders:
 			'showcase-build-sources-copy',
@@ -516,8 +522,8 @@
 	 *  - `gulp-ng-html2js`: https://github.com/marklagendijk/gulp-ng-html2js
 	 *  - `concat`: https://github.com/wearefractal/gulp-concat
 	 */
-	gulp.task('showcase-build-templates', function () {
-		var moduleName = '__MODULE__.app-templates';
+	gulp.task('showcase-build-templates', () => {
+		let moduleName = '__MODULE__.app-templates';
 		return gulp.src(paths.showcase + '**/*.tpl.html')
 			.pipe(htmlmin({collapseWhitespace: true}))
 			.pipe(ngHtml2js({
@@ -535,7 +541,7 @@
 	});
 
 
-	gulp.task('showcase-build-sources-copy', function () {
+	gulp.task('showcase-build-sources-copy', () => {
 		let showcaseSources = gulp.src(
 			paths.staging + paths.showcase + '**/*.js',
 			{base: paths.staging + paths.showcase}
@@ -555,7 +561,7 @@
 	 * Plugins:
 	 *  - `less`: https://github.com/plus3network/gulp-less
 	 */
-	gulp.task('showcase-build-styles', function () {
+	gulp.task('showcase-build-styles', () => {
 		return gulp.src(paths.less + 'main.less')
 			.pipe(less({paths: paths.less}))
 			.pipe(gulp.dest(paths.target.ui + 'css/'))
@@ -600,7 +606,7 @@
 	 *
 	 * Plugins: [NONE]
 	 */
-	gulp.task('showcase-copy-ui', function () {
+	gulp.task('showcase-copy-ui', () => {
 		return gulp.src(
 			[
 				'app/**/*.json',
@@ -617,7 +623,7 @@
 	 *
 	 * Plugins: [NONE]
 	 */
-	gulp.task('showcase-copy-server', function () {
+	gulp.task('showcase-copy-server', () => {
 		return gulp.src(
 			paths.server + '**/*.json',
 			{base: paths.server}
@@ -630,7 +636,7 @@
 	 * Plugins:
 	 *  - `nodemon`: https://github.com/JacksonGariety/gulp-nodemon
 	 */
-	gulp.task('showcase-serve', function () {
+	gulp.task('showcase-serve', () => {
 		return nodemon({
 			script: paths.target.server + 'server.js',
 			ext: 'js json'
@@ -702,8 +708,8 @@
 
 	// Generates a custom `package.json` for publishing:
 	gulp.task('publish-package', () => {
-		var pkg = require('./package.json');
-		var output = {
+		let pkg = require('./package.json');
+		let output = {
 			peerDependencies: {}
 		};
 
@@ -717,7 +723,7 @@
 		output['module'] = 'oblique-reactive.js';
 		output['typings'] = 'oblique-reactive.d.ts';
 
-		Object.keys(pkg.dependencies).forEach(function (dependency) {
+		Object.keys(pkg.dependencies).forEach((dependency) => {
 			output.peerDependencies[dependency] = pkg.dependencies[dependency];
 		});
 
@@ -730,7 +736,7 @@
 	gulp.task('publish-module', (callback) => {
 		return spawn('npm', ['publish', paths.publish], {stdio: 'inherit'})
 			.on('close', callback)
-			.on('error', function () {
+			.on('error', () => {
 				console.log('[SPAWN] Error: ', arguments);
 				callback('Unable to publish NPM module.')
 			});
@@ -744,7 +750,7 @@
 	gulp.task('bundle-oblique', (cb) => {
 		webpack(
 			{
-				entry: './target/.tmp/src/oblique-reactive.js',
+				entry: `./${paths.staging}src/oblique-reactive.js`,
 				output: {
 					filename: paths.publish + 'bundles/oblique-reactive.js',
 					library: 'obliqueReactive',
@@ -778,7 +784,7 @@
 						'oblique-reactive/oblique-reactive': __dirname + '/target/.tmp/src/oblique-reactive.js'
 					}
 				},
-				entry: './target/app/app-module.js',
+				entry: `./${paths.target.ui}app/app-module.js`,
 				output: {filename: paths.target.ui + 'app/bundles/app.js'}
 			},
 			webpackCallBack('webpack', cb));
@@ -794,7 +800,7 @@
 	}
 
 	function webpackCallBack(taskName, gulpDone) {
-		return function (err, stats) {
+		return (err, stats) => {
 			if (err) throw new gutil.PluginError(taskName, err);
 			gutil.log(`[${taskName}]`, stats.toString());
 			gulpDone();

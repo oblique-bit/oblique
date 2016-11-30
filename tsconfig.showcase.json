@@ -9,7 +9,7 @@
 
     "baseUrl": ".",
     "paths" : {
-      "oblique-reactive/*": ["src/*"]
+      "oblique-reactive/*": ["target/.tmp/src/*"]
     }
   },
   "exclude": [
