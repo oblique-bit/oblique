@@ -18,9 +18,18 @@ export class DatepickerSampleController {
 		}
 	};
 
-	/*@ngInject*/
-	constructor(private notificationService:NotificationService) {
-	}
+    translationData = {
+        min: {
+            p0: moment(this.data.minMax.min).format('YYYY-MM-DD')
+        },
+        max: {
+            p0: moment(this.data.minMax.max).format('YYYY-MM-DD')
+        }
+    };
+
+    /*@ngInject*/
+    constructor(private notificationService: NotificationService) {
+    }
 
 	today() {
 		this.data.date = new Date();
