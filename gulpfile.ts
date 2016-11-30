@@ -25,6 +25,7 @@
 		replace = require('gulp-replace'),
 		rev = require('gulp-rev'),
 		source = require('vinyl-source-stream'),
+		sourcemaps = require('gulp-sourcemaps'),
 		ts = require('gulp-typescript'),
 		tslint = require("gulp-tslint"),
 		uglify = require('gulp-uglify'),
@@ -288,9 +289,11 @@
 			paths.src + '**/*.ts',
 			paths.typings + '**/*.d.ts'
 		])
+			.pipe(sourcemaps.init())
 			.pipe(tsProject())
 			.pipe(replace("__MODULE__", project.app.module))
 			.pipe(replace("'__CONFIG__'", JSON.stringify(project.app)))
+			.pipe(sourcemaps.write())
 			.pipe(gulp.dest(paths.staging + paths.src));
 	});
 
@@ -299,9 +302,11 @@
 		return gulp.src([
 			paths.showcase + '**/*.ts'
 		])
+			.pipe(sourcemaps.init())
 			.pipe(tsProject())
 			.pipe(replace("__MODULE__", project.app.module))
 			.pipe(replace("'__CONFIG__'", JSON.stringify(project.app)))
+			.pipe(sourcemaps.write())
 			.pipe(gulp.dest(paths.staging + paths.showcase));
 	});
 
@@ -656,7 +661,7 @@
 			'release',
 			'publish-clean',
 			'build-tslint',
-			'publish-ts',
+			'build-sources-compile',
 			'build-templates',
 			'copy-ts-publish',
 			'bundle-oblique',
@@ -689,13 +694,6 @@
 
 	gulp.task('publish-clean', () => {
 		return del(paths.publish);
-	});
-
-	gulp.task('publish-ts', () => {
-		let tsProject = ts.createProject('tsconfig.publish.json');
-		return tsProject.src()
-			.pipe(tsProject())
-			.pipe(gulp.dest(paths.staging + 'src/'));
 	});
 
 	// Builds the module for publishing:
@@ -736,7 +734,7 @@
 	gulp.task('publish-module', (callback) => {
 		return spawn('npm', ['publish', paths.publish], {stdio: 'inherit'})
 			.on('close', callback)
-			.on('error', () => {
+			.on('error', function () {
 				console.log('[SPAWN] Error: ', arguments);
 				callback('Unable to publish NPM module.')
 			});
