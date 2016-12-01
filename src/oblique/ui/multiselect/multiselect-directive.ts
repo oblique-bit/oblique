@@ -9,11 +9,11 @@
 export class MultiselectDirective implements ng.IDirective {
 	restrict = 'E';
 	template = `<div    ng-dropdown-multiselect
-						options='ctrl.options'
-						selected-model='ctrl.ngModel'
+						options='orMultiselectCtrl.options'
+						selected-model='orMultiselectCtrl.ngModel'
 						checkboxes='true'
-						extra-settings='ctrl.settings'
-						translation-texts='ctrl.translations'></div>`;
+						extra-settings='orMultiselectCtrl.settings'
+						translation-texts='orMultiselectCtrl.translations'></div>`;
 	require = ['ngModel', 'multiselect'];
 	scope = {};
 	bindToController = {
@@ -24,9 +24,8 @@ export class MultiselectDirective implements ng.IDirective {
 		dropup: '='     // Defines if a dropup menu should be used instead on a dropdown
 	};
 	controller = MultiselectDirectiveController;
-	controllerAs = 'ctrl';
+	controllerAs = 'orMultiselectCtrl';
 
-	//TODO: discuss splitting
 	link = (scope, element, attrs, controllers) => {
 		let ngModelCtrl:ng.INgModelController = controllers[0];
 		let multiselectCtrl:MultiselectDirectiveController = controllers[1];
@@ -62,7 +61,7 @@ export class MultiselectDirective implements ng.IDirective {
 
 		// Toggle dirty state:
 		let originalValue = angular.copy(multiselectCtrl.ngModel);
-		scope.$watch('ctrl.ngModel', (newValue, oldValue) => {
+		scope.$watch('orMultiselectCtrl.ngModel', (newValue, oldValue) => {
 			if (!angular.equals(originalValue, newValue)) {
 				ngModelCtrl.$setDirty();
 

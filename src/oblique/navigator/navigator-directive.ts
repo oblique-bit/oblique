@@ -4,12 +4,12 @@ export class NavigatorDirective implements ng.IDirective {
 	restrict = 'E';
 	replace = true;
 	require = 'navigator';
-	template = `<a href='' ng-click='ctrl.up()'>
+	template = `<a href='' ng-click='orNavigationCtrl.up()'>
 				    <span class='fa fa-chevron-left'></span>
 				</a>`;
 
 	controller = NavigationDirectiveController;
-	controllerAs = 'ctrl';
+	controllerAs = 'orNavigationCtrl';
 
 	constructor(private $document:ng.IDocumentService) {
 	}

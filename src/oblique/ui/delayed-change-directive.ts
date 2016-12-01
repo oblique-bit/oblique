@@ -20,5 +20,5 @@ export class DelayedChangeDirective implements ng.IDirective {
 	};
 
 	controller = DelayedChangeDirectiveController;
-	controllerAs:'ctrl';
+	controllerAs = 'orDelayedChangeCtrl';
 }

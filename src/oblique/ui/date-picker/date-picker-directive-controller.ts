@@ -29,7 +29,7 @@ export class DatePickerDirectiveController {
 		this.showClearControl = angular.isDefined(this.showClearControl) ? this.showClearControl : true;
 		this.opened = false;
 
-		$scope.$watchGroup(['ctrl.options.minDate', 'ctrl.options.maxDate'], (newValues, oldValues) => {
+		$scope.$watchGroup(['orDatepickerCtrl.options.minDate', 'orDatepickerCtrl.options.maxDate'], (newValues, oldValues) => {
 			if (!angular.equals(newValues, oldValues)) {
 				// Ensure min/max dates get parsed correctly:
 				this.parseMinMax();
