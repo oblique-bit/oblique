@@ -2,7 +2,9 @@ import {NotificationService} from '../ui/notifications/notification-service';
 
 export class LoadingService {
 
-	public loading:boolean = false;
+	public loading = {
+		active: false
+	};
 
 	private loadings = [];
 	private loadingId:number = 0;
@@ -34,14 +36,14 @@ export class LoadingService {
 			}, this.providerContext.timeout)
 		});
 		this.loadingId++;
-		this.loading = this.loadings.length > 0;
+		this.loading.active = this.loadings.length > 0;
 	}
 
 	stop() {
 		// do nothing when no loadings are active
 		if (this.loadings.length > 0) {
 			this.$timeout.cancel(this.loadings.shift().timeout);
-			this.loading = this.loadings.length > 0;
+			this.loading.active = this.loadings.length > 0;
 		}
 	}
 }

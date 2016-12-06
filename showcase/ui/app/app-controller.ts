@@ -5,7 +5,7 @@ import {AuthService} from './common/auth/auth-service';
 export class AppController {
 	log:ObliqueLog;
 	context;
-	spinner:boolean;
+	spinner:any;
 	title:string;
 	page = {
 		layout: {},
@@ -57,7 +57,7 @@ export class AppController {
 		$rootScope.$on('$stateChangeStart', (event, toState:ng.ui.IState) => {
 			notificationService.clear();
 			if (toState.resolve) {
-				this.spinner = true;
+				this.spinner.active = true;
 			}
 		});
 
@@ -65,12 +65,12 @@ export class AppController {
 			this.page.layout = toState.data && toState.data.layout ? toState.data.layout : {};
 			this.page.title = toState.data && toState.data.title ? toState.data.title : 'i18n.states.' + toState.name + '.title';
 			this.page.description = toState.data && toState.data.description ? toState.data.description : (CONFIG.description || '');
-			this.spinner = false;
+			this.spinner.active = false;
 		});
 
 		$rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
 			this.log.error(error);
-			this.spinner = false;
+			this.spinner.active = false;
 			$state.reload();
 		});
 
