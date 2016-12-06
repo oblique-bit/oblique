@@ -100,8 +100,9 @@
                             <goal>exec</goal>
                         </goals>
                         <configuration>
-                            <executable>grunt</executable>
+                            <executable>npm</executable>
                             <arguments>
+								<argument>run</argument>
                                 <argument>build-prod</argument>
                             </arguments>
                         </configuration>

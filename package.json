@@ -115,7 +115,7 @@
   "scripts": {
     "postinstall": "node_modules/.bin/typings install",
     "start": "node_modules/.bin/gulp",
-    "gulp": "node_modules/.bin/gulp",
+    "build-prod": "node_modules/.bin/gulp build-prod",
     "release": "node_modules/.bin/gulp release"
   }
 }
