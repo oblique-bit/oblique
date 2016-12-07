@@ -45,13 +45,16 @@
 			publish: project.build.target + '.publish/',
 
 			// Showcase paths:
-			showcase: 'showcase/ui/',
-			app: 'showcase/ui/app/',
-			states: 'showcase/ui/app/states/',
-			less: 'showcase/ui/less/',
-			pages: 'showcase/ui/pages/',
-			partials: 'showcase/ui/partials/',
-			server: 'showcase/server/',
+			showcase: {
+				base: 'showcase/',
+				ui: 'showcase/ui/',
+				app: 'showcase/ui/app/',
+				states: 'showcase/ui/app/states/',
+				less: 'showcase/ui/less/',
+				pages: 'showcase/ui/pages/',
+				partials: 'showcase/ui/partials/',
+				server: 'showcase/server/',
+			},
 
 			// Target:
 			target: {
@@ -297,15 +300,15 @@
 	gulp.task('showcase-build-sources-compile', () => {
 		let tsProject = ts.createProject('tsconfig.showcase.json');
 		return gulp.src([
-			paths.showcase + '**/*.ts',
-			paths.server + '**/*.ts'
-		], {base: './showcase'})
+			paths.showcase.ui + '**/*.ts',
+			paths.showcase.server + '**/*.ts'
+		], {base: paths.showcase.base})
 		.pipe(sourcemaps.init())
 		.pipe(tsProject())
 		.pipe(replace("__MODULE__", project.app.module))
 		.pipe(replace("'__CONFIG__'", JSON.stringify(project.app)))
 		.pipe(sourcemaps.write())
-		.pipe(gulp.dest(paths.staging + 'showcase'));
+		.pipe(gulp.dest(paths.staging + paths.showcase.base));
 	});
 
 	gulp.task('build-sources-copy', () => {
@@ -324,7 +327,7 @@
 	 *  - `concat`: https://github.com/wearefractal/gulp-concat
 	 */
 	gulp.task('build-templates', () => {
-		let moduleName = 'oblique-reactive' + '.app-templates'; // FIXME 1.3.0
+		let moduleName = 'oblique-reactive.app-templates';
 		return gulp.src(paths.src + '**/*.tpl.html')
 			.pipe(htmlmin({collapseWhitespace: true}))
 			.pipe(ngHtml2js({
@@ -454,15 +457,15 @@
 		gulp.watch('**/*.tpl.html', {cwd: paths.src}, () => runSequence('build-templates', 'build-sources-copy', 'reload'));
 
 		// Showcase:
-		gulp.watch(project.resources.assets, {cwd: paths.showcase}, () => runSequence('showcase-copy-ui', 'reload'));
-		gulp.watch('**/*.json', {cwd: paths.showcase}, () => runSequence('showcase-copy-ui', 'reload'));
-		gulp.watch('**/*.ts', {cwd: paths.showcase}, () => runSequence('showcase-build-sources', 'reload'));
-		gulp.watch('**/*.less', {cwd: paths.less}, () => runSequence('showcase-build-styles', 'reload'));
-		gulp.watch('**/*.tpl.html', {cwd: paths.showcase}, () => runSequence('showcase-build-templates', 'reload'));
-		gulp.watch([paths.pages + '**/*.hbs', paths.partials + '**/*.hbs'], () => runSequence('showcase-build-html', 'reload'));
+		gulp.watch(project.resources.assets, {cwd: paths.showcase.ui}, () => runSequence('showcase-copy-ui', 'reload'));
+		gulp.watch('**/*.json', {cwd: paths.showcase.ui}, () => runSequence('showcase-copy-ui', 'reload'));
+		gulp.watch('**/*.ts', {cwd: paths.showcase.ui}, () => runSequence('showcase-build-sources', 'reload'));
+		gulp.watch('**/*.less', {cwd: paths.showcase.less}, () => runSequence('showcase-build-styles', 'reload'));
+		gulp.watch('**/*.tpl.html', {cwd: paths.showcase.ui}, () => runSequence('showcase-build-templates', 'reload'));
+		gulp.watch([paths.showcase.pages + '**/*.hbs', paths.showcase.partials + '**/*.hbs'], () => runSequence('showcase-build-html', 'reload'));
 
-		gulp.watch('**/*.json', {cwd: paths.server}, () => runSequence('showcase-copy-server', 'reload'));
-		gulp.watch('**/*.ts', {cwd: paths.server}, () => runSequence('showcase-build-sources', 'reload'));
+		gulp.watch('**/*.json', {cwd: paths.showcase.server}, () => runSequence('showcase-copy-server', 'reload'));
+		gulp.watch('**/*.ts', {cwd: paths.showcase.server}, () => runSequence('showcase-build-sources', 'reload'));
 	});
 
 	// FIXME: LiveReload will reload every file
@@ -518,8 +521,8 @@
 
 	gulp.task('showcase-build-tslint', () => {
 		return gulp.src([
-			paths.server + '**/*.ts',
-			paths.showcase + '**/*.ts'
+			paths.showcase.server + '**/*.ts',
+			paths.showcase.ui + '**/*.ts'
 		]).pipe(tslint(<any>{
 			formatter: "verbose"
 		}))
@@ -536,7 +539,7 @@
 	 */
 	gulp.task('showcase-build-templates', () => {
 		let moduleName = '__MODULE__.app-templates';
-		return gulp.src(paths.showcase + '**/*.tpl.html')
+		return gulp.src(paths.showcase.ui + '**/*.tpl.html')
 			.pipe(htmlmin({collapseWhitespace: true}))
 			.pipe(ngHtml2js({
 				moduleName: moduleName,
@@ -555,13 +558,13 @@
 
 	gulp.task('showcase-build-sources-copy', () => {
 		let showcaseSources = gulp.src(
-			paths.staging + paths.showcase + '**/*.js',
-			{base: paths.staging + paths.showcase}
+			paths.staging + paths.showcase.ui + '**/*.js',
+			{base: paths.staging + paths.showcase.ui}
 		).pipe(gulp.dest(paths.target.ui));
 
 		let serverSources = gulp.src(
-			paths.staging + paths.server + '**/*.js',
-			{base: paths.staging + paths.server}
+			paths.staging + paths.showcase.server + '**/*.js',
+			{base: paths.staging + paths.showcase.server}
 		).pipe(gulp.dest(paths.target.server));
 
 		return merge([showcaseSources, serverSources]);
@@ -574,8 +577,8 @@
 	 *  - `less`: https://github.com/plus3network/gulp-less
 	 */
 	gulp.task('showcase-build-styles', () => {
-		return gulp.src(paths.less + 'main.less')
-			.pipe(less({paths: paths.less}))
+		return gulp.src(paths.showcase.less + 'main.less')
+			.pipe(less({paths: paths.showcase.less}))
 			.pipe(gulp.dest(paths.target.ui + 'css/'))
 	});
 
@@ -587,7 +590,7 @@
 	 */
 	gulp.task('showcase-build-html', () => {
 		return gulp
-			.src(paths.pages + 'index.hbs')
+			.src(paths.showcase.pages + 'index.hbs')
 			.pipe(obliqueHtml({
 				data: {
 					__ENV__: production ? "PROD" : "DEV",
@@ -600,7 +603,7 @@
 					'html-attrs': 'ng-controller="appController as appController"'
 				},
 				partials: [
-					paths.partials + '**/*.hbs',
+					paths.showcase.partials + '**/*.hbs',
 				]
 			}))
 			.pipe(rename({extname: '.html'}))
@@ -626,7 +629,7 @@
 				'js/**/*',
 				'fonts/**/*'
 			],
-			{cwd: paths.showcase, base: paths.showcase}
+			{cwd: paths.showcase.ui, base: paths.showcase.ui}
 		).pipe(gulp.dest(paths.target.ui));
 	});
 
@@ -637,8 +640,8 @@
 	 */
 	gulp.task('showcase-copy-server', () => {
 		return gulp.src(
-			paths.server + '**/*.json',
-			{base: paths.server}
+			paths.showcase.server + '**/*.json',
+			{base: paths.showcase.server}
 		).pipe(gulp.dest(paths.target.server));
 	});
 
