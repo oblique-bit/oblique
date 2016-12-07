@@ -297,14 +297,15 @@
 	gulp.task('showcase-build-sources-compile', () => {
 		let tsProject = ts.createProject('tsconfig.showcase.json');
 		return gulp.src([
-			paths.showcase + '**/*.ts'
-		])
-			.pipe(sourcemaps.init())
-			.pipe(tsProject())
-			.pipe(replace("__MODULE__", project.app.module))
-			.pipe(replace("'__CONFIG__'", JSON.stringify(project.app)))
-			.pipe(sourcemaps.write())
-			.pipe(gulp.dest(paths.staging + paths.showcase));
+			paths.showcase + '**/*.ts',
+			paths.server + '**/*.ts'
+		], {base: './showcase'})
+		.pipe(sourcemaps.init())
+		.pipe(tsProject())
+		.pipe(replace("__MODULE__", project.app.module))
+		.pipe(replace("'__CONFIG__'", JSON.stringify(project.app)))
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest(paths.staging + 'showcase'));
 	});
 
 	gulp.task('build-sources-copy', () => {
@@ -375,10 +376,10 @@
 		 		https://github.com/karma-runner/karma/issues/1788
 		 */
 		var child_process = require('child_process');
-		child_process.exec(`node_modules/.bin/karma start ${__dirname}/karma.conf.js`, function (err, stdout){
+		child_process.exec(`"node_modules/.bin/karma" start ${__dirname}/karma.conf.js`, function (err, stdout){
 			gutil.log(stdout);
 			if (err) {
-				throw new Error('There are test failures');
+				throw new Error('There are test failures:' + err);
 			}
 			else {
 				done();
