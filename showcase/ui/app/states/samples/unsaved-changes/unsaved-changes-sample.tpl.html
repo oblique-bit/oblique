@@ -1,50 +1,145 @@
 <form class="form-horizontal has-validation" name="unsavedChangesForm" role="form" novalidate unsaved-changes>
 	<h2 class="page-header">
-		<span>Unsaved Changes</span>
-		<span class="pull-right">
-			<div class="fa fa-check text-success" uib-tooltip="Form is valid" tooltip-placement="bottom" ng-if="unsavedChangesForm.$valid"></div>
-			<span class="fa fa-warning text-danger" uib-tooltip="Form is not valid" tooltip-placement="bottom" ng-if="!unsavedChangesForm.$valid"></span>
-		</span>
+		<span translate="i18n.states.samples.unsavedChanges.title"></span>
+		<div class="pull-right">
+			<span class="fa fa-pencil-square-o text-success"
+			     uib-tooltip="Form does not contain unsaved changes" tooltip-placement="bottom"
+			     ng-if="!unsavedChangesForm.$dirty"></span>
+			<span class="fa fa-pencil-square-o text-warning"
+			      uib-tooltip="Form contains unsaved changes" tooltip-placement="bottom"
+			      ng-if="unsavedChangesForm.$dirty"></span>
+		</div>
 	</h2>
-	<div class="form-group" has-error>
-		<label class="col-sm-4 control-label">Text</label>
-		<div class="col-sm-8">
-			<input name="text" type="text" class="form-control" ng-model="ctrl.data.text" />
-			<span class="help-block" ng-show="unsavedChangesForm.text.$invalid">{{unsavedChangesForm.text.$errorMessage}}</span>
-		</div>
-	</div>
-	<div class="form-group" has-error>
-		<label class="col-sm-4 control-label">Number</label>
-		<div class="col-sm-8">
-			<input name="number" type="text" class="form-control" ng-model="ctrl.data.number" number-format />
-			<span class="help-block" ng-show="unsavedChangesForm.number.$invalid">{{unsavedChangesForm.number.$errorMessage}}</span>
-		</div>
-	</div>
-	<div class="form-group" has-error>
-		<label class="col-sm-4 control-label">Integer</label>
-		<div class="col-sm-8">
-			<input name="integer" type="number" class="form-control"
-			       ng-model="ctrl.data.integer" />
-			<span class="help-block" ng-show="unsavedChangesForm.integer.$invalid">{{unsavedChangesForm.integer.$errorMessage}}</span>
-		</div>
-	</div>
-	<div class="form-group" has-error="date">
-		<label class="col-sm-4 control-label">Date</label>
-		<div class="col-sm-4">
-			<date-picker name="date" ng-model="ctrl.data.date"></date-picker>
-			<span class="help-block" ng-show="unsavedChangesForm.date.$invalid">{{unsavedChangesForm.date.$errorMessage}}</span>
-			<span class="help-block" ng-show="unsavedChangesForm.date.$error.date && !unsavedChangesForm.date.$errorMessage">{{'i18n.common.date.format.invalid' | translate}}</span>
-		</div>
-	</div>
-	<div class="form-actions">
-		<button type="submit" class="btn btn-primary" ng-click="ctrl.check(unsavedChangesForm)" ng-disabled="!unsavedChangesForm.$valid">Check</button>
-	</div>
+	<uib-tabset>
+		<uib-tab index="0" heading="Form One (tab tracked)"
+		         deselect="orUnsavedChangesController.check($event, tabOneForm)">
+			<ng-form name="tabOneForm">
+				<div class="form-group" has-error>
+					<label class="col-sm-4 control-label">Text</label>
+					<div class="col-sm-8">
+						<input name="text" type="text" class="form-control" ng-model="ctrl.one.text" />
+						<span class="help-block" ng-show="tabOneForm.text.$invalid">{{tabOneForm.text.$errorMessage}}</span>
+					</div>
+				</div>
+				<div class="form-group" has-error>
+					<label class="col-sm-4 control-label">Number</label>
+					<div class="col-sm-8">
+						<input name="number" type="text" class="form-control" ng-model="ctrl.one.number" number-format />
+						<span class="help-block" ng-show="tabOneForm.number.$invalid">{{tabOneForm.number.$errorMessage}}</span>
+					</div>
+				</div>
+				<div class="form-group" has-error>
+					<label class="col-sm-4 control-label">Integer</label>
+					<div class="col-sm-8">
+						<input name="integer" type="number" class="form-control"
+						       ng-model="ctrl.one.integer" />
+						<span class="help-block" ng-show="tabOneForm.integer.$invalid">{{tabOneForm.integer.$errorMessage}}</span>
+					</div>
+				</div>
+				<div class="form-group" has-error="date">
+					<label class="col-sm-4 control-label">Date</label>
+					<div class="col-sm-4">
+						<date-picker name="date" ng-model="ctrl.one.date"></date-picker>
+						<span class="help-block" ng-show="tabOneForm.date.$invalid">{{tabOneForm.date.$errorMessage}}</span>
+						<span class="help-block" ng-show="tabOneForm.date.$error.date && !tabOneForm.date.$errorMessage">{{'i18n.common.date.format.invalid' | translate}}</span>
+					</div>
+				</div>
+				<hr />
+				<div class="row">
+					<label class="col-sm-4 control-label">Model data</label>
+					<div class="col-sm-8">
+						<pre>{{ctrl.one | json}}</pre>
+					</div>
+				</div>
+			</ng-form>
+		</uib-tab>
+		<uib-tab index="1" heading="Form Two">
+			<ng-form name="tabTwoForm">
+				<div class="form-group" has-error>
+					<label class="col-sm-4 control-label">Text</label>
+					<div class="col-sm-8">
+						<input name="text" type="text" class="form-control" ng-model="ctrl.two.text" />
+						<span class="help-block" ng-show="tabTwoForm.text.$invalid">{{tabTwoForm.text.$errorMessage}}</span>
+					</div>
+				</div>
+				<div class="form-group" has-error>
+					<label class="col-sm-4 control-label">Number</label>
+					<div class="col-sm-8">
+						<input name="number" type="text" class="form-control" ng-model="ctrl.two.number" number-format />
+						<span class="help-block" ng-show="tabTwoForm.number.$invalid">{{tabTwoForm.number.$errorMessage}}</span>
+					</div>
+				</div>
+				<div class="form-group" has-error>
+					<label class="col-sm-4 control-label">Integer</label>
+					<div class="col-sm-8">
+						<input name="integer" type="number" class="form-control"
+						       ng-model="ctrl.two.integer" />
+						<span class="help-block" ng-show="tabTwoForm.integer.$invalid">{{tabTwoForm.integer.$errorMessage}}</span>
+					</div>
+				</div>
+				<div class="form-group" has-error="date">
+					<label class="col-sm-4 control-label">Date</label>
+					<div class="col-sm-4">
+						<date-picker name="date" ng-model="ctrl.two.date"></date-picker>
+						<span class="help-block" ng-show="tabTwoForm.date.$invalid">{{tabTwoForm.date.$errorMessage}}</span>
+						<span class="help-block" ng-show="tabTwoForm.date.$error.date && !tabTwoForm.date.$errorMessage">{{'i18n.common.date.format.invalid' | translate}}</span>
+					</div>
+				</div>
+				<hr />
+				<div class="row">
+					<label class="col-sm-4 control-label">Model data</label>
+					<div class="col-sm-8">
+						<pre>{{ctrl.two | json}}</pre>
+					</div>
+				</div>
+			</ng-form>
+		</uib-tab>
+		<uib-tab index="2" heading="Tab Three (tab tracked)"
+		         deselect="orUnsavedChangesController.check($event, tabThreeForm)">
+			<ng-form name="tabThreeForm">
+				<div class="form-group" has-error>
+					<label class="col-sm-4 control-label">Text</label>
+					<div class="col-sm-8">
+						<input name="text" type="text" class="form-control" ng-model="ctrl.three.text" />
+						<span class="help-block" ng-show="tabThreeForm.text.$invalid">{{tabThreeForm.text.$errorMessage}}</span>
+					</div>
+				</div>
+				<div class="form-group" has-error>
+					<label class="col-sm-4 control-label">Number</label>
+					<div class="col-sm-8">
+						<input name="number" type="text" class="form-control" ng-model="ctrl.three.number" number-format />
+						<span class="help-block" ng-show="tabThreeForm.number.$invalid">{{tabThreeForm.number.$errorMessage}}</span>
+					</div>
+				</div>
+				<div class="form-group" has-error>
+					<label class="col-sm-4 control-label">Integer</label>
+					<div class="col-sm-8">
+						<input name="integer" type="number" class="form-control"
+						       ng-model="ctrl.three.integer" />
+						<span class="help-block" ng-show="tabThreeForm.integer.$invalid">{{tabThreeForm.integer.$errorMessage}}</span>
+					</div>
+				</div>
+				<div class="form-group" has-error="date">
+					<label class="col-sm-4 control-label">Date</label>
+					<div class="col-sm-4">
+						<date-picker name="date" ng-model="ctrl.three.date"></date-picker>
+						<span class="help-block" ng-show="tabThreeForm.date.$invalid">{{tabThreeForm.date.$errorMessage}}</span>
+						<span class="help-block" ng-show="tabThreeForm.date.$error.date && !tabThreeForm.date.$errorMessage">{{'i18n.common.date.format.invalid' | translate}}</span>
+					</div>
+				</div>
+				<hr />
+				<div class="row">
+					<label class="col-sm-4 control-label">Model data</label>
+					<div class="col-sm-8">
+						<pre>{{ctrl.three | json}}</pre>
+					</div>
+				</div>
+			</ng-form>
+		</uib-tab>
+	</uib-tabset>
 	<hr />
-	<div class="row spacer-top">
-		<label class="col-sm-4 control-label">Model data</label>
-		<div class="col-sm-8">
-			<pre>{{ctrl.data | json}}</pre>
-		</div>
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary" ng-click="ctrl.save(unsavedChangesForm)" ng-disabled="!unsavedChangesForm.$valid">Save</button>
 	</div>
 </form>
 

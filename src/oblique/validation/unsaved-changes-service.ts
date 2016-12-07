@@ -2,9 +2,10 @@
 
 export class UnsavedChangesService {
 
-	// The array of forms being tracked
-	watchedForms = [];
-	watchedFormsForTab = [];
+	/**
+	 * The collection of forms being watched.
+	 */
+	forms = [];
 
 	/*@ngInject*/
 	constructor(public $rootScope: ng.IRootScopeService,
@@ -14,18 +15,18 @@ export class UnsavedChangesService {
 	            private loadingService: LoadingService) {
 
 		// Event called each time that there is a state change
-		$rootScope.$on('$stateChangeStart', (event) => {
+		let deregister = $rootScope.$on('$stateChangeStart', (event) => {
 			// Check if there is any dirty form
 			if (this.isDirty()) {
-				// Show a warning message to the user
-				if (!$window.confirm(this.errorMessage())) {
+				// Show a warning message to the user:
+				if (!this.confirm()) {
 					// The user selected the "Cancel" option, so we stop the loading of the next state:
-					loadingService.loading = false;
+					loadingService.loading.active = false; // FIXME: use loadingService.stop() instead?
 					event.preventDefault();
 				} else {
-					$rootScope.$broadcast('discardChangesEvent');
+					$rootScope.$broadcast('discardUnsavedChangesEvent');
 					// The user wants to discard the changes, so we don't prevent the default behavior of the event
-					// We stop tracking the changes on the forms
+					// We stop tracking the changes on the forms:
 					this.clear();
 				}
 			} else {
@@ -35,64 +36,82 @@ export class UnsavedChangesService {
 		});
 
 		// Event called each time an external link is opened or the browser window is closed
-		$(window).bind('beforeunload.unsaved-changes', (e:JQueryEventObject) => {
-			// If any form is dirty, we display the warning message. The browser will propose the buttons OK/Cancel
+		$(window).bind('beforeunload.unsaved-changes', (e: JQueryEventObject) => {
 			if (this.isDirty()) {
-				let message = this.errorMessage();
-				//e.returnValue = message;
-				return message;
+				// If any form is dirty, we display the warning message.
+				// The browser will propose the buttons OK/Cancel
+				return this.message();
 			}
 		});
 
 		$rootScope.$on('$destroy', () => {
-			console.log('$destroy');
+			deregister();
 			$(window).off('beforeunload.unsaved-changes');
 		})
 	}
 
-	errorMessage() {
-		return this.$translate.instant('common.unsavedChangesMessage');
+	/**
+	 * Checks if any form from the watched collection is dirty.
+	 *
+	 * @returns {boolean}
+	 */
+	isDirty() {
+		let dirty = false;
+		angular.forEach(this.forms, (form) => {
+			dirty = dirty || form.$dirty;
+		});
+		return dirty;
 	}
 
-	// Check if any form from the list is dirty
-	isDirty(formArray: any = null) {
-		let forms = formArray ? formArray : this.watchedForms;
-		// TODO: improve this
-		for (let i = 0; i < forms.length; i++) {
-			if (forms[i].$dirty) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	// Watch the form for any pending changes
-	watchForm (form, activateForTabChange) {
-		this.watchedForms.push(form);
-		if (activateForTabChange) {
-			this.watchedFormsForTab.push(form);
-		}
+	/**
+	 * Registers the provided form in order to be watched for any pending changes.
+	 *
+	 * @param form
+	 */
+	watch(form) {
+		this.forms.push(form);
 	};
 
-	// Check if any unsaved changes are pending, if so, display the confirm message
-	// It returns true if there is no changes or the user has confirmed that he wants to lose the changes
-	check() {
-		return !this.isDirty() || this.$window.confirm(this.errorMessage());
+
+	/**
+	 * Checks if unsaved changes are pending on the whole collection of watched
+	 * or only on the nested form if `subForm` is specified.
+	 *
+	 * If unsaved changes are pending, let's display the *browser-native* confirmation dialog,
+	 * as this is the only way to prevent user from leaving the current browser tab.
+	 *
+	 * @see confirm()
+	 *
+	 * @param nestedForm
+	 * @returns {boolean} true if there is no changes or the user has confirmed that he wants to lose the changes
+	 */
+	check(nestedForm) {
+		return (nestedForm ? !nestedForm.$dirty : !this.isDirty()) || this.confirm();
 	};
 
-	// Check if any unsaved changes are pending during the tab switch, if so, display the confirm message
-	// It returns true if there is no changes or the user has confirmed that he wants to lose the changes
-	checkTab() { // TODO: still used?
-		if (!this.isDirty(this.watchedFormsForTab) || this.$window.confirm(this.errorMessage())) {
-			this.watchedFormsForTab = [];
-			return true;
-		}
-		return false;
+	/**
+	 * Displays the *browser-native* confirmation dialog,
+	 * as this is the only way to prevent user from leaving the current browser tab.
+	 *
+	 * @returns {boolean}
+	 */
+	confirm() {
+		return this.$window.confirm(this.message());
+	};
+
+	/**
+	 * Retrieves the default error message to display.
+	 *
+	 * @returns {string}
+	 */
+	message() {
+		return this.$translate.instant('i18n.common.unsavedChanges');
 	}
 
-	// Remove all forms being watched for modification
+	/**
+	 * Remove all forms being watched for modification.
+ 	 */
 	clear() {
-		this.watchedForms = [];
-		this.watchedFormsForTab = [];
+		this.forms.length = 0;
 	}
 }
