@@ -26,7 +26,7 @@ export class DatePickerDirective implements ng.IDirective {
 		showClearControl: '=?'
 	};
 	controller = DatePickerDirectiveController;
-	controllerAs = 'ctrl';
+	controllerAs = 'orDatepickerCtrl';
 
 	link = (scope, element, attrs, controllers:any[]) => {
 		let controller:DatePickerDirectiveController = controllers[0];

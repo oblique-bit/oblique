@@ -14,7 +14,7 @@ export class NavigableDirective implements ng.IDirective {
 		navigableOnMove: '&?'           // Triggered by holding CTRL + SHIFT + [UP, DOWN]
 	};
 	controller = NavigableDirectiveController;
-	controllerAs = 'navigableController';
+	controllerAs = 'orNavigableController';
 
 	constructor(private $timeout:ng.ITimeoutService) {
 

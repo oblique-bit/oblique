@@ -6,5 +6,5 @@ export class NotificationsDirective implements ng.IDirective {
 	replace = true;
 	scope = false;
 	controller = NotificationsDirectiveController;
-	controllerAs = 'ctrl';
+	controllerAs = 'orNotificationCtrl';
 }

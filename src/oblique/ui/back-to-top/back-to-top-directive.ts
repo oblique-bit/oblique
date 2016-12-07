@@ -6,5 +6,5 @@ export class BackToTopDirective implements ng.IDirective {
     replace = true;
     scope = false;
     controller = BackToTopDirectiveController;
-    controllerAs = 'ctrl';
+    controllerAs = 'orBackToTopCtrl';
 }

@@ -2,7 +2,7 @@
   "name": "oblique-reactive",
   "title": "ObliqueReactive",
   "description": "Reactive web template powered by ObliqueUI and AngularJS",
-  "version": "1.3.0-RC.4",
+  "version": "1.3.0-RC.6",
   "license": "All Rights Reserved",
   "organization": {
     "name": "Federal Office of Information Technology, Systems and Telecommunication FOITT",
@@ -43,7 +43,7 @@
     "checklist-model": "0.10.0",
     "lodash": "4.16.4",
     "moment": "2.15.1",
-    "oblique-ui": "1.3.0-RC.4",
+    "oblique-ui": "1.3.0-RC.6",
     "satellizer": "0.15.5",
     "systemjs": "^0.19.36",
     "tv4": "1.2.7"
@@ -115,7 +115,7 @@
   "scripts": {
     "postinstall": "node_modules/.bin/typings install",
     "start": "node_modules/.bin/gulp",
-    "gulp": "node_modules/.bin/gulp",
+    "build-prod": "node_modules/.bin/gulp build-prod",
     "release": "node_modules/.bin/gulp release"
   }
 }

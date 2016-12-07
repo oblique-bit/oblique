@@ -11,5 +11,5 @@ export class ValidationSchemaDirective implements ng.IDirective {
 		schema: '=validationSchema'
 	};
 	controller = ValidateSchemaDirectiveController;
-	controllerAs = 'ctrl';
+	controllerAs = 'orValidationSchemaCtrl';
 }

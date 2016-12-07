@@ -120,7 +120,6 @@
 	});
 
 	gulp.task('clean-prod', () => {
-		production = true;
 		return del(
 			[
 				paths.staging,
@@ -370,12 +369,21 @@
 	 * Plugins:
 	 *  - `karma`: https://github.com/karma-runner/karma
 	 */
-	gulp.task('test', (done) => {
-		new karmaServer({
-			configFile: __dirname + '/karma.conf.js',
-			logLevel: 'info',
-			singleRun: true
-		}, done).start();
+	gulp.task('test', function (done) {
+		/* Workaround:
+				https://github.com/karma-runner/gulp-karma/pull/23#issuecomment-232313832
+		 		https://github.com/karma-runner/karma/issues/1788
+		 */
+		var child_process = require('child_process');
+		child_process.exec(`node_modules/.bin/karma start ${__dirname}/karma.conf.js`, function (err, stdout){
+			gutil.log(stdout);
+			if (err) {
+				throw new Error('There are test failures');
+			}
+			else {
+				done();
+			}
+		});
 	});
 	//</editor-fold>
 
