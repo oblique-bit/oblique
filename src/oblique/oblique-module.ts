@@ -26,12 +26,14 @@ import {UibTypeaheadPopupDirective} from './ui/typeahead-popup-directive';
 import {ValidationBusinessDirective} from './validation/validation-business-directive';
 import {SchemaValidateDirective} from './validation/schema-validate-directive';
 import {SchemaValidateConfig} from './validation/schema-validate-config';
+import {UnsavedChangesService} from './validation/unsaved-changes-service';
+import {UnsavedChangesDirective} from './validation/unsaved-changes-directive';
 import {BackToTopDirective} from './ui/back-to-top/back-to-top-directive';
 
-//Makes sure, that the oblique-reactive-templates will be loaded (and bundled)
+// Makes sure that the oblique-reactive-templates will be loaded (and bundled):
 import '../oblique-reactive-templates';
 
-//exports the name of the module, this needs to be imported in the app-module of the application
+// Exports the name of the module, this needs to be imported in the app-module of the application
 export const ObliqueModule = 'oblique-reactive';
 
 angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
@@ -65,8 +67,10 @@ angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
 	.constant('schemaValidateConfig', new SchemaValidateConfig())
 	.directive('validationSchema', ()=> new ValidationSchemaDirective())
 	.directive('validationBusiness', ($log:LogDecorator) => new ValidationBusinessDirective($log))
+	.service('schemaValidator', SchemaValidatorService)
 	.directive('schemaValidate', ($log:LogDecorator,
 	                              $timeout:ng.ITimeoutService,
 	                              schemaValidator:SchemaValidatorService) => new SchemaValidateDirective($log, $timeout, schemaValidator))
 	.directive('backToTop', () => new BackToTopDirective)
-	.service('schemaValidator', SchemaValidatorService);
+	.service('unsavedChangesService', UnsavedChangesService)
+	.directive('unsavedChanges', (unsavedChangesService:UnsavedChangesService) => new UnsavedChangesDirective(unsavedChangesService));

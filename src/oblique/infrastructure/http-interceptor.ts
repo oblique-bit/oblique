@@ -66,10 +66,8 @@ export class HttpInterceptor implements ng.IHttpInterceptor {
 		return config && (config.background || (config.data && config.data.background));
 	}
 
-// Others services are injected on demand in order to prevent circular dependency during factory creation:
-
+	// Others services are injected on demand in order to prevent circular dependency during factory creation:
 	private http():HttpDecorator {
 		return this.$injector.get<HttpDecorator>('$http');
 	}
-
 }
