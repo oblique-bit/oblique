@@ -1,12 +1,15 @@
 ﻿<div class="notification-container">
 	<div class="notification show">
-		<div class="{{orNotificationCtrl.alertType[notification.type]}} animated slide-in-right" ng-repeat="notification in orNotificationCtrl.notifications">
-			<button ng-click="orNotificationCtrl.remove(notification)" ng-show="orNotificationCtrl.isClosable(notification)" type="button" class="close">&times;</button>
+		<div class="{{orNotificationCtrl.alertType[notification.type]}} animated slide-in-right"
+		     ng-repeat="notification in orNotificationCtrl.notifications">
+			<button type="button" class="close"
+			        ng-click="orNotificationCtrl.remove(notification)"
+			        ng-show="orNotificationCtrl.isClosable(notification)">&times;</button>
 			<h4>
 				<span ng-if="!notification.title">{{("i18n.notification.type." + notification.type) | translate}}</span>
 				<span>{{notification.title | translate}}</span>
 			</h4>
-			<p>{{i18n.notification.messageKey | translate}}</p>
+			<p>{{notification.messageKey | translate}}</p>
 		</div>
 	</div>
 </div>
