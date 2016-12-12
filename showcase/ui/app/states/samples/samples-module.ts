@@ -5,6 +5,7 @@ import {NavigatorModule} from './navigator/navigator-sample-module';
 import {SchemaValidationModule} from './schema-validation/schema-validation-sample-module';
 import {TypeaheadModule} from './typeahead/typeahead-sample-module';
 import {UiScrollModule} from './ui-scroll/ui-scroll-sample-module';
+import {UnsavedChangesModule} from './unsaved-changes/unsaved-changes-sample-module';
 
 export const SamplesModule = '__MODULE__.samples';
 
@@ -17,7 +18,8 @@ angular
 		NavigatorModule,
 		SchemaValidationModule,
 		TypeaheadModule,
-		UiScrollModule
+		UiScrollModule,
+		UnsavedChangesModule
 	])
 	.config(($stateProvider) => {
 		$stateProvider.state('samples', {
