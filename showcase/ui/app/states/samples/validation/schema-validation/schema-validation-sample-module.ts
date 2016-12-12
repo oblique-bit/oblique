@@ -1,17 +1,17 @@
 import {SchemaValidationSampleController} from './schema-validation-sample-controller';
 
-export const SchemaValidationModule = '__MODULE__.samples.schemaValidation';
+export const SchemaValidationModule = '__MODULE__.samples.validation.schemaValidation';
 
 angular
 	.module(SchemaValidationModule, [])
 	.config(($stateProvider) => {
-		$stateProvider.state('samples.schemaValidation', {
+		$stateProvider.state('samples.validation.schemaValidation', {
 			url: '/schema-validation',
-			templateUrl: 'app/states/samples/schema-validation/schema-validation-sample.tpl.html',
+			templateUrl: 'app/states/samples/validation/schema-validation/schema-validation-sample.tpl.html',
 			controller: 'schemaValidationSampleController',
 			controllerAs: 'ctrl',
 			data: {
-				description: 'states.samples.schema-validation.description'
+				description: 'states.samples.validation.schema-validation.description'
 			},
 			resolve: {
 				data: () => {
@@ -35,7 +35,7 @@ angular
 				schema: () => {
 					return {
 						'$schema': 'http://json-schema.org/draft-04/schema#',
-						'title': 'SampleValidationSchema',
+						'title': 'SampleSchemaValidation',
 						'type': 'object',
 						'required': [
 							'id',

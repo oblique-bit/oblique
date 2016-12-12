@@ -4,33 +4,46 @@
 			<span class="sr-only">Toggle left column</span>
 		</button>
 		<div class="column-content">
-			<ul class="nav nav-stacked" role="menu">
+			<ul class="nav nav-bordered" role="menu">
 				<li class="nav-header" role="presentation">
 					<h3>{{'i18n.states.samples.title' | translate}}</h3>
 				</li>
-				<li role="menuitem" class="nav-section" ui-sref-active="active">
-					<a href="" ui-sref="samples.datepicker">{{'i18n.states.samples.datepicker.title' | translate}}</a>
+				<li role="presentation" ui-sref-active="active">
+					<a href="" role="menuitem" ui-sref="samples.datepicker">{{'i18n.states.samples.datepicker.title' | translate}}</a>
 				</li>
-				<li role="menuitem" class="nav-section" ui-sref-active="active">
-					<a href="" ui-sref="samples.multiselect">{{'i18n.states.samples.multiselect.title' | translate}}</a>
+				<li role="presentation" ui-sref-active="active">
+					<a href="" role="menuitem" ui-sref="samples.multiselect">{{'i18n.states.samples.multiselect.title' | translate}}</a>
 				</li>
-				<li role="menuitem" class="nav-section" ui-sref-active="active">
-					<a href="" ui-sref="samples.navigable" data-toggle="dropdown">{{'i18n.states.samples.navigable.title' | translate}}</a>
+				<li role="presentation" ui-sref-active="active">
+					<a href="" role="menuitem" ui-sref="samples.navigable" data-toggle="dropdown">{{'i18n.states.samples.navigable.title' | translate}}</a>
 				</li>
-				<li role="menuitem" class="nav-section" ui-sref-active="active">
-					<a href="" ui-sref="samples.schemaValidation">
-						<span class="smaller badge badge-warning">Experimental</span>
-						<span>{{'i18n.states.samples.schemaValidation.title' | translate}}</span>
+				<li role="presentation" ui-sref-active="active">
+					<a href="" role="menuitem" ui-sref="samples.navigator">{{'i18n.states.samples.navigator.title' | translate}}</a>
+				</li>
+				<li role="presentation" ui-sref-active="active">
+					<a href="" role="menuitem" ui-sref="samples.typeahead">{{'i18n.states.samples.typeahead.title' | translate}}</a>
+				</li>
+				<li role="presentation" ui-sref-active="active">
+					<a href="" role="menuitem" ui-sref="samples.uiScroll" uib-tooltip="Aka infinite scrolling">{{'i18n.states.samples.uiScroll.title' | translate}}</a>
+				</li>
+				<li class="nav-header" role="presentation">
+					<a href="" role="menuitem" aria-expanded="true">
+						<span translate="i18n.states.samples.validation.title"></span>
 					</a>
-				</li>
-				<li role="menuitem" class="nav-section" ui-sref-active="active">
-					<a href="" ui-sref="samples.navigator">{{'i18n.states.samples.navigator.title' | translate}}</a>
-				</li>
-				<li role="menuitem" class="nav-section" ui-sref-active="active">
-					<a href="" ui-sref="samples.typeahead">{{'i18n.states.samples.typeahead.title' | translate}}</a>
-				</li>
-				<li role="menuitem" class="nav-section" ui-sref-active="active">
-					<a href="" ui-sref="samples.uiScroll" uib-tooltip="Aka infinite scrolling">{{'i18n.states.samples.uiScroll.title' | translate}}</a>
+					<ul class="nav nav-indented" role="menu">
+						<li role="presentation" ui-sref-active="active">
+							<a href="" role="menuitem" ui-sref="samples.validation.validationState"
+							   translate="i18n.states.samples.validation.validationState.title"></a>
+						</li>
+						<li role="presentation" ui-sref-active="active">
+							<a href="" role="menuitem" ui-sref="samples.validation.schemaValidation"
+							   translate="i18n.states.samples.validation.schemaValidation.title"></a>
+						</li>
+						<li role="presentation" ui-sref-active="active">
+							<a href="" role="menuitem" ui-sref="samples.validation.businessValidation"
+							   translate="i18n.states.samples.validation.businessValidation.title"></a>
+						</li>
+					</ul>
 				</li>
 			</ul>
 		</div>

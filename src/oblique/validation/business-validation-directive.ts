@@ -1,15 +1,14 @@
 import {LogDecorator} from '../infrastructure/log-decorator';
 
-export class ValidationBusinessDirective implements ng.IDirective {
+export class BusinessValidationDirective implements ng.IDirective {
 	restrict = 'A';
 	require = '^form';
 
 	constructor(private $log:LogDecorator) {
-
 	}
 
 	link = (scope:ng.IScope, element, attrs, form:ng.IFormController) => {
-		scope.$on('validationBusinessEvent', (event, errors) => {
+		scope.$on('businessValidationEvent', (event, errors) => {
 			_.forEach(errors || [], (error) => {
 				let formKey:string = error.parent ? error.parent + (error.index ? '_' + error.index : '') : null;
 				let targetForm:ng.IFormController = formKey ? form[formKey] : form;

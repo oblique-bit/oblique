@@ -2,9 +2,9 @@ import {DatepickerModule} from './datepicker/datepicker-sample-module';
 import {MultiselectModule} from './multiselect/multiselect-sample-module';
 import {NavigableModule} from './navigable/navigable-sample-module';
 import {NavigatorModule} from './navigator/navigator-sample-module';
-import {SchemaValidationModule} from './schema-validation/schema-validation-sample-module';
 import {TypeaheadModule} from './typeahead/typeahead-sample-module';
 import {UiScrollModule} from './ui-scroll/ui-scroll-sample-module';
+import {SamplesValidationModule} from './validation/samples-validation-module';
 
 export const SamplesModule = '__MODULE__.samples';
 
@@ -15,9 +15,9 @@ angular
 		MultiselectModule,
 		NavigableModule,
 		NavigatorModule,
-		SchemaValidationModule,
 		TypeaheadModule,
-		UiScrollModule
+		UiScrollModule,
+		SamplesValidationModule
 	])
 	.config(($stateProvider) => {
 		$stateProvider.state('samples', {

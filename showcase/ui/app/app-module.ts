@@ -6,7 +6,7 @@
 import {
 	ObliqueModule,
 	LoadingServiceProvider,
-	SchemaValidateConfig,
+	SchemaValidationConfig,
 	DatepickerPopupConfig
 } from 'oblique-reactive/oblique-reactive';
 
@@ -105,8 +105,8 @@ angular
 	.config((CONFIG, loadingServiceProvider:LoadingServiceProvider) => {
 		loadingServiceProvider.setTimeout(CONFIG.defaults.http.timeout);
 	})
-	.config((schemaValidateConfig:SchemaValidateConfig) => {
-		/*schemaValidateConfig.customErrorReporter = (error, data, schema) => {
+	.config((schemaValidationConfig:SchemaValidationConfig) => {
+		/*schemaValidationConfig.customErrorReporter = (error, data, schema) => {
 			return 'error: ' + error.code;
 		};*/
 	})
