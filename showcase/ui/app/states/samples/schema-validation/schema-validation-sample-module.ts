@@ -11,7 +11,7 @@ angular
 			controller: 'schemaValidationSampleController',
 			controllerAs: 'ctrl',
 			data: {
-				description: 'states.samples.schema-validation.description'
+				description: 'i18n.states.samples.schema-validation.description'
 			},
 			resolve: {
 				data: () => {

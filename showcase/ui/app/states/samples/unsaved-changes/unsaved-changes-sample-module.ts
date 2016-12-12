@@ -11,7 +11,7 @@ angular
 			controller: 'unsavedChangesSampleController',
 			controllerAs: 'ctrl',
 			data: {
-				description: 'states.samples.unsaved-changes.description'
+				description: 'i18n.states.samples.unsaved-changes.description'
 			}
 		});
 	})

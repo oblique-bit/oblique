@@ -136,24 +136,6 @@
       "custom": {
       }
     },
-    "dialog": {
-      "doAction": {
-        "header": "Aktion zu bestätigen",
-        "message": "Wollen Sie wirklich diese Aktion durchführen"
-      },
-      "doDelete": {
-        "header": "Löschvorgang zu bestätigen",
-        "message": "Wollen Sie wirklich diesen Datensatz löschen"
-      },
-      "doDeleteFile": {
-        "header": "Löschvorgang zu bestätigen",
-        "message": "Wollen Sie wirklich diese Datei löschen"
-      },
-      "action": {
-        "yes": "Ja",
-        "no": "Nein"
-      }
-    },
     "validation": {
       "basic": {
         "required": "Pflichtfeld, bitte machen Sie eine Angabe",

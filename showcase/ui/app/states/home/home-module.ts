@@ -11,7 +11,7 @@ angular
 			controller: 'homeController',
 			controllerAs: 'ctrl',
 			data: {
-				description: 'states.home.description'
+				description: 'i18n.states.home.description'
 			}
 		});
 	})

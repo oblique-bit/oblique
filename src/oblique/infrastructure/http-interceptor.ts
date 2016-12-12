@@ -49,7 +49,7 @@ export class HttpInterceptor implements ng.IHttpInterceptor {
 				rejection.defaultPrevented = true;
 
 				// Notify user:
-				this.notificationService.error('error.http.status.' + rejection.status);
+				this.notificationService.error('i18n.error.http.status.' + rejection.status);
 			}
 		}
 		this.log.error(rejection);

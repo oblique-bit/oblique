@@ -28,11 +28,11 @@ export class AuthController {
 			this.authService.login(this.user).then(
 				(user) => {
 					this.$state.go('home').then(() => {
-						this.notificationService.success('states.auth.login.success', `Welcome, ${user.firstname}!`);
+						this.notificationService.success('i18n.states.auth.login.success', `Welcome, ${user.firstname}!`);
 					});
 				}, (error) => {
 					if (!error.defaultPrevented) {
-						this.notificationService.error(error.data && error.data.message ? error.data.message : 'states.auth.login.error');
+						this.notificationService.error(error.data && error.data.message ? error.data.message : 'i18n.states.auth.login.error');
 					}
 				}
 			).finally(() => {
@@ -44,11 +44,11 @@ export class AuthController {
 	logout() {
 		this.notificationService.clear();
 		this.authService.logout().then(() => {
-			this.notificationService.success('states.auth.logout.success');
+			this.notificationService.success('i18n.states.auth.logout.success');
 			this.$state.go('home');
 		}, (error) => {
 			if (!error.defaultPrevented) {
-				this.notificationService.error(error.data && error.data.message || 'states.auth.logout.error');
+				this.notificationService.error(error.data && error.data.message || 'i18n.states.auth.logout.error');
 			}
 		});
 	};
@@ -58,11 +58,11 @@ export class AuthController {
 			this.status.registering = true;
 			this.notificationService.clear();
 			this.authService.register(this.user).then(() => {
-				this.notificationService.success('states.auth.register.success');
+				this.notificationService.success('i18n.states.auth.register.success');
 				this.$state.go('home');
 			}, (error) => {
 				if (!error.defaultPrevented) {
-					this.notificationService.error(error.data && error.data.message || 'states.auth.register.error');
+					this.notificationService.error(error.data && error.data.message || 'i18n.states.auth.register.error');
 				}
 			}).finally(() => {
 				this.status.registering = false;

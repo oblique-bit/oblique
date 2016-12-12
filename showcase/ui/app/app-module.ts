@@ -79,8 +79,7 @@ angular
 	.config((CONFIG, $urlRouterProvider:ng.ui.IUrlRouterProvider) => {
 		// NOTE: before any change below, see https://github.com/angular-ui/ui-router/issues/600
 		$urlRouterProvider.otherwise(function ($injector) {
-			var $state = $injector.get('$state');
-			$state.go(CONFIG.defaults.state);
+			$injector.get('$state').go(CONFIG.defaults.state);
 		});
 	})
 	.config(($animateProvider:ng.animate.IAnimateProvider) => {
