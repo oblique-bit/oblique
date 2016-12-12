@@ -1,9 +1,6 @@
 export class MultiselectSampleController {
 	dropdown = {
 		model: [],
-		translations: {
-			allSelectedText:  'multiselect.allSelected'
-		},
 		settings: {
 			scrollableHeight: 'auto',
 			showCheckAll: true,
