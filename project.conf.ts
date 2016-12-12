@@ -35,8 +35,7 @@ module.exports = {
 			// API endpoint for UI logging:
 			logs: '/logs',
 
-			// Should credential be transmitted with requests:
-			sendCredentials: false,
+			// API port:
 			port: 3000
 		},
 

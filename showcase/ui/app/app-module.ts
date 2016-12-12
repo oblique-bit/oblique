@@ -48,10 +48,7 @@ angular
 
 	// Mandatory configuration
 	// --------------------------------------------------------
-	.config(($httpProvider:ng.IHttpProvider, CONFIG) => {
-		if (CONFIG.dev && CONFIG.dev.sendCredentials) {
-			//$httpProvider.defaults.withCredentials = CONFIG.dev.sendCredentials;
-		}
+	.config(($httpProvider:ng.IHttpProvider) => {
 		$httpProvider.interceptors.push('HttpInterceptor');
 		$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 	})
@@ -66,15 +63,6 @@ angular
 			prefix: 'app/i18n/locale-',
 			suffix: '.json'
 		});
-	})
-	.config((CONFIG, $authProvider) => {
-		$authProvider.baseUrl = '/' + CONFIG.api.path;
-		$authProvider.signupUrl = '/auth/register';
-		//$authProvider.signupRedirect = '/';
-		$authProvider.loginUrl = '/auth/login';
-		$authProvider.loginRedirect = '/';
-		$authProvider.logoutRedirect = '/';
-		$authProvider.tokenPrefix = CONFIG.module; // Local Storage name prefix
 	})
 	.config((CONFIG, $urlRouterProvider:ng.ui.IUrlRouterProvider) => {
 		// NOTE: before any change below, see https://github.com/angular-ui/ui-router/issues/600
@@ -104,6 +92,15 @@ angular
 	})
 	.config((CONFIG, loadingServiceProvider:LoadingServiceProvider) => {
 		loadingServiceProvider.setTimeout(CONFIG.defaults.http.timeout);
+	})
+	.config((CONFIG, $authProvider) => {
+		$authProvider.baseUrl = '/' + CONFIG.api.path;
+		$authProvider.signupUrl = '/auth/register';
+		//$authProvider.signupRedirect = '/';
+		$authProvider.loginUrl = '/auth/login';
+		$authProvider.loginRedirect = '/';
+		$authProvider.logoutRedirect = '/';
+		$authProvider.tokenPrefix = CONFIG.module; // Local Storage name prefix
 	})
 	.config((schemaValidateConfig:SchemaValidateConfig) => {
 		/*schemaValidateConfig.customErrorReporter = (error, data, schema) => {
