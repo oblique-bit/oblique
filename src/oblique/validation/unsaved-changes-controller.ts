@@ -1,6 +1,6 @@
-﻿import {UnsavedChangesService} from 'oblique-reactive/oblique';
+﻿import {UnsavedChangesService} from './unsaved-changes-service';
 
-export class UnsavedChangesController implements ng.IDirective {
+export class UnsavedChangesController {
 
 	/*@ngInject*/
 	constructor(private unsavedChangesService:UnsavedChangesService) {

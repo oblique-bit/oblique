@@ -1,5 +1,5 @@
-﻿import {UnsavedChangesController} from 'oblique-reactive/oblique/validation/unsaved-changes-controller';
-import {UnsavedChangesService} from 'oblique-reactive/oblique';
+﻿import {UnsavedChangesController} from './unsaved-changes-controller';
+import {UnsavedChangesService} from './unsaved-changes-service';
 
 /**
  * Tracks unsaved form changes.
