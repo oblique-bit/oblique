@@ -53,6 +53,7 @@ angular
 			//$httpProvider.defaults.withCredentials = CONFIG.dev.sendCredentials;
 		}
 		$httpProvider.interceptors.push('HttpInterceptor');
+		$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 	})
 	.config((tmhDynamicLocaleProvider:ng.dynamicLocale.tmhDynamicLocaleProvider) => {
 		tmhDynamicLocaleProvider.localeLocationPattern('vendor/angular-i18n/angular-locale_{{locale}}.js');
