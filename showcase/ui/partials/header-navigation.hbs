@@ -88,11 +88,6 @@
 		   role="menuitem" data-toggle="header navigation"
 		   translate="i18n.states.movies.title"></a>
 	</li>
-	<li role="presentation" ui-sref-active="active" ng-if="appController.isAuthorized('admin')">
-		<a href=""
-		   role="menuitem" data-toggle="header navigation"
-		   translate="i18n.states.admin.title"></a>
-	</li>
 	<li role="presentation" ui-sref-active="active" ng-if="!appController.isAuthenticated()">
 		<a href="" ui-sref="auth"
 		   role="menuitem" data-toggle="header navigation"
