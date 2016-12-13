@@ -17,23 +17,22 @@ import {MultiselectDirective} from './ui/multiselect/multiselect-directive';
 import {MultiselectConfig} from './ui/multiselect/multiselect-config';
 import {NavigableDirective} from './ui/navigable-directive';
 import {UibTypeaheadDirective} from './ui/typeahead-directive';
-import {HasErrorDirective} from './validation/has-error-directive';
-import {ValidationSchemaDirective} from './validation/validate-schema-directive';
-import {SchemaValidatorService} from './validation/schema-validator-service';
 import {NotificationServiceProvider} from './ui/notifications/notification-service-provider';
 import {DatePickerPopupDirective} from './ui/date-picker/date-picker-popup-directive';
 import {UibTypeaheadPopupDirective} from './ui/typeahead-popup-directive';
-import {ValidationBusinessDirective} from './validation/validation-business-directive';
-import {SchemaValidateDirective} from './validation/schema-validate-directive';
-import {SchemaValidateConfig} from './validation/schema-validate-config';
+import {BackToTopDirective} from './ui/back-to-top/back-to-top-directive';
+import {HasErrorDirective} from './validation/has-error-directive';
+import {SchemaValidateDirective} from './validation/schema/schema-validate-directive';
+import {SchemaValidationConfig} from './validation/schema/schema-validation-config';
+import {SchemaValidationDirective} from './validation/schema/schema-validation-directive';
+import {SchemaValidatorService} from './validation/schema/schema-validator-service';
 import {UnsavedChangesService} from './validation/unsaved-changes-service';
 import {UnsavedChangesDirective} from './validation/unsaved-changes-directive';
-import {BackToTopDirective} from './ui/back-to-top/back-to-top-directive';
 
-// Makes sure that the oblique-reactive-templates will be loaded (and bundled):
+// Make sure that required templates for oblique-reactive will be loaded (and bundled):
 import '../oblique-reactive-templates';
 
-// Exports the name of the module, this needs to be imported in the app-module of the application
+// Export module's name so that it can be imported in the app-module of the business application:
 export const ObliqueModule = 'oblique-reactive';
 
 angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
@@ -64,13 +63,12 @@ angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
 	.directive('uibTypeahead', () => new UibTypeaheadDirective())
 	.directive('uibTypeaheadPopup', () => new UibTypeaheadPopupDirective())
 	.directive('hasError', () => new HasErrorDirective())
-	.constant('schemaValidateConfig', new SchemaValidateConfig())
-	.directive('validationSchema', ()=> new ValidationSchemaDirective())
-	.directive('validationBusiness', ($log:LogDecorator) => new ValidationBusinessDirective($log))
 	.service('schemaValidator', SchemaValidatorService)
+	.constant('schemaValidationConfig', new SchemaValidationConfig())
+	.directive('schemaValidation', ()=> new SchemaValidationDirective())
 	.directive('schemaValidate', ($log:LogDecorator,
 	                              $timeout:ng.ITimeoutService,
 	                              schemaValidator:SchemaValidatorService) => new SchemaValidateDirective($log, $timeout, schemaValidator))
-	.directive('backToTop', () => new BackToTopDirective)
 	.service('unsavedChangesService', UnsavedChangesService)
-	.directive('unsavedChanges', (unsavedChangesService:UnsavedChangesService) => new UnsavedChangesDirective(unsavedChangesService));
+	.directive('unsavedChanges', (unsavedChangesService:UnsavedChangesService) => new UnsavedChangesDirective(unsavedChangesService))
+	.directive('backToTop', () => new BackToTopDirective);

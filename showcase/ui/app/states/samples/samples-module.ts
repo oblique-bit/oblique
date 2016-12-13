@@ -2,11 +2,9 @@ import {DatepickerModule} from './datepicker/datepicker-sample-module';
 import {MultiselectModule} from './multiselect/multiselect-sample-module';
 import {NavigableModule} from './navigable/navigable-sample-module';
 import {NavigatorModule} from './navigator/navigator-sample-module';
-import {SchemaValidationModule} from './schema-validation/schema-validation-sample-module';
 import {TypeaheadModule} from './typeahead/typeahead-sample-module';
 import {UiScrollModule} from './ui-scroll/ui-scroll-sample-module';
-import {UnsavedChangesModule} from './unsaved-changes/unsaved-changes-sample-module';
-import {HasErrorModule} from './has-error/has-error-sample-module';
+import {SamplesValidationModule} from './validation/samples-validation-module';
 
 export const SamplesModule = '__MODULE__.samples';
 
@@ -14,14 +12,12 @@ angular
 	.module(SamplesModule, [
 		'ui.router',
 		DatepickerModule,
-		HasErrorModule,
 		MultiselectModule,
 		NavigableModule,
 		NavigatorModule,
-		SchemaValidationModule,
 		TypeaheadModule,
 		UiScrollModule,
-		UnsavedChangesModule
+		SamplesValidationModule
 	])
 	.config(($stateProvider) => {
 		$stateProvider.state('samples', {

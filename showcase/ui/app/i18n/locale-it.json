@@ -45,9 +45,6 @@
         "navigable": {
           "title": "Navigable"
         },
-        "schemaValidation": {
-          "title": "Schema Validation"
-        },
         "navigator": {
           "title": "States Navigator"
         },
@@ -57,11 +54,17 @@
         "uiScroll": {
           "title": "UI Scroll"
         },
-        "unsavedChanges": {
-          "title": "Unsaved Changes"
-        },
-        "hasError": {
-          "title": "Has Error"
+        "validation": {
+          "title": "Validation",
+          "validationState": {
+            "title": "Validation state (Has Error)  "
+          },
+          "schemaValidation": {
+            "title": "Schema Validation"
+          },
+          "unsavedChanges": {
+            "title": "Unsaved Changes"
+          }
         }
       },
       "admin": {
@@ -92,8 +95,7 @@
         },
         "min.invalid": "it: Das Datum unterschreitet das min. zulässige Datum {{p0}}",
         "max.invalid": "it: Das Datum überschreitet das max. zulässige Datum {{p0}}"
-      },
-      "unsavedChanges": "Alcuni cambiamenti non sono stati salvati, continuare?"
+      }
     },
     "labels": {
       "language": "Lingua",
@@ -163,7 +165,8 @@
             "max": "Ungültiger Monat, geben Sie eine Zahl zwischen 1 und 12 ein"
           }
         }
-      }
+      },
+      "unsavedChanges": "Alcuni cambiamenti non sono stati salvati, continuare?"
     },
     "form": {
       "action": {
