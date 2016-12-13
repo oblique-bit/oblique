@@ -1,20 +1,22 @@
-import {LogDecorator} from '../infrastructure/log-decorator';
+import {LogDecorator} from '../../infrastructure/log-decorator';
 import {SchemaValidatorService} from './schema-validator-service';
 
+/**
+ * Enables control validation as per JSON schema (needs to be provided by a parent).
+ */
 export class SchemaValidateDirective implements ng.IDirective {
 
 	restrict = 'A';
 	// We want the link function to be *after* the input directives link function so we get access
 	// the parsed value, ex. a number instead of a string
 	priority = 1000;
-	require = ['?ngModel', '^form', '^validationSchema'];
+	require = ['?ngModel', '^form', '^schemaValidation'];
 
 	constructor(private $log:LogDecorator,
 	            private $timeout:ng.ITimeoutService,
 	            private schemaValidator:SchemaValidatorService) {
 	}
 
-	// TODO: discuss splitting
 	link = (scope, element, attrs, params) => {
 		let ngModel:ng.INgModelController = params[0];
 		let form:ng.IFormController = params[1];
@@ -64,9 +66,6 @@ export class SchemaValidateDirective implements ng.IDirective {
 
 				let result:any = this.schemaValidator.validate(schema, schemaPath, viewValue);
 
-				// Clear business errors, if any:
-				ngModel.$setValidity('business', true);
-
 				// Since we might have different schema errors we must clear all
 				// errors that start with 'schema-':
 				Object.keys(ngModel.$error)
@@ -103,7 +102,7 @@ export class SchemaValidateDirective implements ng.IDirective {
 			ngModel.$parsers.push(validate);
 
 			// Listen to an event so we can validate the form control on request:
-			scope.$on('validationSchemaEvent', revalidate);
+			scope.$on('schemaValidationEvent', revalidate);
 
 			scope.$root.$on('$translateChangeSuccess', () => {
 				if (ngModel.$invalid) {

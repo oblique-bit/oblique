@@ -1,3 +1,8 @@
+/**
+ * Style wrapper for the `has-error` Bootstrap variant for form controls.
+ *
+ * TODO: rename into validation-state
+ */
 export class HasErrorDirective implements ng.IDirective {
 	restrict = 'A';
 	require = '^form';

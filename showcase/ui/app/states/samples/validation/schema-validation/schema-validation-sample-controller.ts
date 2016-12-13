@@ -28,9 +28,10 @@ export class SchemaValidationSampleController {
 	}
 
 	check(form) {
-		this.$scope.$broadcast('validationSchemaEvent');
-		if (form.$valid) {
-			this.notificationService.success('Congratulations, form is valid!');
+		if(!this.$scope.$broadcast('schemaValidationEvent').defaultPrevented) {
+			if (form.$valid) {
+				this.notificationService.success('Congratulations, form is valid!');
+			}
 		}
 	}
 
