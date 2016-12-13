@@ -1,72 +1,81 @@
 <h2 class="page-header">{{'i18n.states.samples.navigator.title' | translate}}</h2>
-<p class="lead">Navigate to the parent state by clicking on the navigation button below or pressing the ESC key.</p>
-<div class="row">
-	<div class="col-md-6">
-		<div class="panel panel-info">
-			<div class="panel-heading">
-				<h3 class="panel-title">View</h3>
-			</div>
-			<div class="panel-body">
-				<label>This is the nested content from state(s):</label>
-				<p class="lead"><a ui-sref="samples.navigator">Navigator Sample</a> <span ui-view></span></p>
-			</div>
+<p class="lead">Navigate to the parent state (<code>UP</code> navigation) by clicking on the navigation button below or pressing the <kbd>ESC</kbd> key.</p>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Preview</h3>
+	</div>
+	<div class="panel-body column-layout column-layout-2">
+		<div class="column-left default-layout">
+			<ul role="menu" class="nav nav-bordered nav-indented nav-tree">
+				<li class="nav-header" role="presentation">
+					<h3 class="nav-header-title">States Tree</h3>
+				</li>
+				<li role="presentation" class="open" ui-sref-active="active">
+					<a href="" ui-sref="samples.navigator" role="menuitem">Navigator Sample</a>
+					<ul id="nav-tree-level-1" class="nav">
+						<li role="presentation" ui-sref-active="active">
+							<a href="" ui-sref="samples.navigator.1" role="menuitem">Child state 1</a>
+						</li>
+						<li role="presentation" class="open" ui-sref-active="active">
+							<a href="" ui-sref="samples.navigator.2" role="menuitem">Child state 2</a>
+							<ul class="nav in">
+								<li role="presentation" ui-sref-active="active">
+									<a href="" ui-sref="samples.navigator.2.1" role="menuitem">Child state 2.1</a>
+								</li>
+								<li role="presentation" class="open" ui-sref-active="active">
+									<a href="" ui-sref="samples.navigator.2.2" role="menuitem">Child state 2.2</a>
+									<ul class="nav in">
+										<li role="presentation" ui-sref-active="active">
+											<a href="" ui-sref="samples.navigator.2.2.1" role="menuitem">Child state 2.2.1</a>
+										</li>
+										<li role="presentation" ui-sref-active="active">
+											<a href="" ui-sref="samples.navigator.2.2.2" role="menuitem">Child state 2.2.2 (navigates <em>UP</em> to Navigator Sample state)</a>
+										</li>
+										<li role="presentation" ui-sref-active="active">
+											<a href="" ui-sref="samples.navigator.2.2.3" role="menuitem">Child state 2.2.3</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li role="presentation" ui-sref-active="active">
+							<a href="" ui-sref="samples.navigator.3" role="menuitem">Child state 3</a>
+						</li>
+						<li role="presentation" ui-sref-active="active">
+							<a href="" ui-sref="samples.navigator.4" role="menuitem">Child state 4</a>
+							<ul class="nav open">
+								<li role="presentation" ui-sref-active="active">
+									<a href="" ui-sref="samples.navigator.4.1" role="menuitem">Child state 4.1</a>
+								</li>
+								<li role="presentation" ui-sref-active="active">
+									<a href="" ui-sref="samples.navigator.4.2" role="menuitem">Child state 4.2</a>
+								</li>
+								<li role="presentation" ui-sref-active="active">
+									<a href="" ui-sref="samples.navigator.4.3" role="menuitem">Child state 4.3</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="column-main default-layout">
+			<ul role="menu" class="nav nav-bordered nav-indented nav-tree">
+				<li class="nav-header" role="presentation">
+					<h3 class="nav-header-title">
+						<navigator class="btn btn-primary btn-xs">
+							<span class="fa fa-chevron-left"></span>
+							<span>Go UP!</span>
+						</navigator>
+						<span>&nbsp;State(s) Content</span>
+					</h3>
+				</li>
+				<li>
+					<p class="lead"><a ui-sref="samples.navigator">Navigator Sample</a> <span ui-view></span></p>
+				</li>
+			</ul>
 		</div>
 	</div>
-	<div class="col-md-6">
-		<ul class="nav nav-tree">
-			<li class="nav-header" role="presentation">
-				<h3>
-					<navigator class="btn btn-secondary btn-sm"></navigator>
-					<span>Sample Navigator Tree</span>
-				</h3>
-			</li>
-			<li role="menuitem" class="open" ui-sref-active="active">
-				<a href="" ui-sref="samples.navigator">Parent state</a>
-				<ul id="nav-tree-level-1" class="nav in">
-					<li role="menuitem" ui-sref-active="active">
-						<a href="" ui-sref="samples.navigator.1">Child state 1</a>
-					</li>
-					<li role="menuitem" class="open" ui-sref-active="active">
-						<a href="" ui-sref="samples.navigator.2">Child state 2</a>
-						<ul class="nav in">
-							<li role="menuitem" ui-sref-active="active">
-								<a href="" ui-sref="samples.navigator.2.1">Child state 2.1</a>
-							</li>
-							<li role="menuitem" class="open" ui-sref-active="active">
-								<a href="" ui-sref="samples.navigator.2.2">Child state 2.2</a>
-								<ul class="nav in">
-									<li role="menuitem" ui-sref-active="active">
-										<a href="" ui-sref="samples.navigator.2.2.1">Child state 2.2.1</a>
-									</li>
-									<li role="menuitem" ui-sref-active="active">
-										<a href="" ui-sref="samples.navigator.2.2.2">Child state 2.2.2 (navigates <em>UP</em> to Navigator Sample state)</a>
-									</li>
-									<li role="menuitem" ui-sref-active="active">
-										<a href="" ui-sref="samples.navigator.2.2.3">Child state 2.2.3</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-					<li role="menuitem" ui-sref-active="active">
-						<a href="" ui-sref="samples.navigator.3">Child state 3</a>
-					</li>
-					<li role="menuitem" ui-sref-active="active">
-						<a href="" ui-sref="samples.navigator.4">Child state 4</a>
-						<ul class="nav open">
-							<li role="menuitem" ui-sref-active="active">
-								<a href="" ui-sref="samples.navigator.4.1">Child state 4.1</a>
-							</li>
-							<li role="menuitem" ui-sref-active="active">
-								<a href="" ui-sref="samples.navigator.4.2">Child state 4.2</a>
-							</li>
-							<li role="menuitem" ui-sref-active="active">
-								<a href="" ui-sref="samples.navigator.4.3">Child state 4.3</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
 </div>
+

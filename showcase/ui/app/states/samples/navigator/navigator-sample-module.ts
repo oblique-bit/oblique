@@ -28,8 +28,10 @@ angular
 		}).state('samples.navigator.2.2.2', {
 			url: '/2',
 			template: '<span class="fa fa-chevron-right"></span> Child state 2.2.2',
-			navigator: {
-				up: 'samples.navigator'
+			data: {
+				navigator: {
+					up: 'samples.navigator'
+				}
 			}
 		}).state('samples.navigator.2.2.3', {
 			url: '/3',

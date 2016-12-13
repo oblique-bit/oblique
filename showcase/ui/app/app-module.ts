@@ -7,7 +7,8 @@ import {
 	ObliqueModule,
 	LoadingServiceProvider,
 	SchemaValidateConfig,
-	DatepickerPopupConfig
+	DatepickerPopupConfig,
+	NavigatorService
 } from 'oblique-reactive/oblique-reactive';
 
 import {AppController} from './app-controller';
@@ -107,7 +108,11 @@ angular
 			return 'error: ' + error.code;
 		};*/
 	})
-	.controller('appController', AppController);
+	.controller('appController', AppController)
+	.run(($navigator:NavigatorService) => {
+		// Initialize $navigator:
+		$navigator.init();
+	});
 
 // Bootstrap angular:
 angular.element(document).ready(() => {

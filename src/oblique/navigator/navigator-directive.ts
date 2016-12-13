@@ -1,11 +1,17 @@
 import {NavigationDirectiveController} from './navigator-directive-controller';
 
+/**
+ * Provides a link control for state navigation and binds ESC for UP navigation.
+ *
+ * @scope `direction` specifies navigation direction (`up` or `back`)
+ */
 export class NavigatorDirective implements ng.IDirective {
 	restrict = 'E';
 	replace = true;
 	require = 'navigator';
-	template = `<a href='' ng-click='orNavigationCtrl.up()'>
-				    <span class='fa fa-chevron-left'></span>
+	transclude = true;
+	template = `<a href="" ng-click="navigate()">
+				    <ng-transclude></ng-transclude>
 				</a>`;
 
 	controller = NavigationDirectiveController;
@@ -15,17 +21,25 @@ export class NavigatorDirective implements ng.IDirective {
 	}
 
 	link = (scope, element, attrs, ctrl:NavigationDirectiveController) => {
-		let eventName = 'keyup.navigator';
+		let events = {
+			up: 'keyup.navigator'
+		};
 
-		this.$document.on(eventName, (event) => {
+		scope.navigate = (direction: string = attrs.direction || 'up') => {
+			ctrl.navigate(direction);
+		};
+
+		this.$document.on(events.up, (event) => {
 			if (event.which === 27) { // ESC key
 				event.preventDefault();
-				ctrl.up();
+				scope.navigate('up');
 			}
 		});
 
 		element.on('$destroy', () => {
-			this.$document.off(eventName);
+			this.$document.off(events.up);
 		});
-	}
+	};
+
+
 }

@@ -2,11 +2,23 @@ import {NavigatorService} from './navigator-service';
 
 export class NavigationDirectiveController {
 	/*@ngInject*/
-	constructor(private $navigator:NavigatorService) {
+	constructor(public $navigator:NavigatorService) {
 
 	}
 
+	navigate (direction:string = 'up') {
+		if(direction === 'up'){
+			return this.up();
+		} else {
+			return this.back();
+		}
+	};
+
 	up() {
-		this.$navigator.up();
+		return this.$navigator.up();
+	}
+
+	back () {
+		return this.$navigator.back();
 	}
 }

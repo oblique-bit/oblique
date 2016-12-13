@@ -1,5 +1,23 @@
+/**
+ * State navigator.
+ *
+ * Inspired by: http://plnkr.co/edit/DJH6mQUCbTFfSbdCBYUo?p=preview
+ *
+ * USAGE: define a `navigator` config for required states providing a transition state name or callback function
+ *
+ * $stateProvider.state('users.user', { // 'users' could be an abstrat, unreacheable state
+	 *     [...],
+	 *     navigator: {
+	 *         up: 'users.search'
+	 *         // -- OR --
+	 *         up: function(navigator, $state, $rootScope) {
+	 *             $rootScope.comingFromHome ? $state.go('home') : $state.go('users.search');
+	 *         }
+	 *     }
+	 * });
+ */
 export class NavigatorService {
-	private states = [];
+	history = [];
 
 	/*@ngInject*/
 	constructor(private $state:ng.ui.IStateService,
@@ -8,49 +26,63 @@ export class NavigatorService {
 	}
 
 	push(state, params) {
-		this.states.push({state: state, params: params});
-	}
-
-	all() {
-		return this.states;
+		this.history.push({state: state, params: params});
 	}
 
 	up() {
-		//TODO: There is no navigator on $state.current
-		let config:any = /*this.$state.current.navigator ||*/ {};
-		let parent = config ? this.$state.get(config.up) : null;
-		if (parent) {
-			this.$state.go(parent, this.$state.params);
+		let config:any = (this.$state.current.data && this.$state.current.data.navigator) || {};
+		if(angular.isFunction(config.up)) {
+			return config.up(this, this.$state, this.$rootScope);
 		} else {
-			parent = this.$state.get('^');
-			if (parent && !parent.abstract) {
-				this.$state.go('^');
+			let parent = config ? this.$state.get(config.up) : null;
+			if (parent) {
+				return this.$state.go(parent);
 			} else {
-				// TODO: try to find a navigable grandparent state.
-				this.$rootScope.$broadcast('$navigatorStateError',
-					{
-						direction: 'up',
-						message: 'Unable to retrieve a valid state to navigate UP. Either ensure that parent state is not abstract or ensure that current state configuration specifies a "navigator.up" property pointing to a valid state.',
-						config: config,
-						current: this.$state.current,
-						parent: parent
-					}
-				);
+				parent = this.$state.get('^');
+				if (parent && !parent.abstract) {
+					return this.$state.go('^');
+				} else {
+					// TODO: try to find a navigable grandparent state.
+					return this.$rootScope.$broadcast('$navigatorStateError',
+						{
+							direction: 'up',
+							message: 'Unable to retrieve a valid state to navigate UP. Either ensure that parent state is not abstract or ensure that current state configuration specifies a "data.navigator.up" property pointing to a valid state.',
+							config: config,
+							current: this.$state.current,
+							parent: parent
+						}
+					);
+				}
 			}
 		}
-		return false;
-	}
-
-	previous(step) {
-		let prev = this.states[this.states.length - Math.abs(step || 1)];
-		return this.go(prev);
 	}
 
 	back() {
-		return this.previous(-1);
+		let previous = this.history.pop();
+		if(previous) {
+			return this.go(previous);
+		} else {
+			this.$rootScope.$broadcast('$navigatorStateError',
+				{
+					direction: 'back',
+					message: 'No state history in order to navigate BACK. If you want to override default behaviour, you can specify a "data.navigator.back" property pointing to a valid state in current state configuration.',
+					config: null,
+					current: this.$state.current,
+					parent: parent
+				}
+			);
+		}
 	}
 
 	go(state) {
 		return this.$state.go(state.state, state.params);
+	}
+
+	init() {
+		this.$rootScope.$on('$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) => {
+			if (!fromState.abstract && fromState.name !== toState.name) {
+				this.push(fromState, fromParams);
+			}
+		});
 	}
 }
