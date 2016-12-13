@@ -61,9 +61,6 @@
           },
           "schemaValidation": {
             "title": "Schema Validation"
-          },
-          "businessValidation": {
-            "title": "Business Validation"
           }
         }
       },

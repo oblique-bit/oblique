@@ -66,9 +66,6 @@ export class SchemaValidateDirective implements ng.IDirective {
 
 				let result:any = this.schemaValidator.validate(schema, schemaPath, viewValue);
 
-				// Clear business errors, if any:
-				ngModel.$setValidity('business', true); // FIXME: remove from here
-
 				// Since we might have different schema errors we must clear all
 				// errors that start with 'schema-':
 				Object.keys(ngModel.$error)

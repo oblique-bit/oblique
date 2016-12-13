@@ -20,7 +20,6 @@ import {UibTypeaheadDirective} from './ui/typeahead-directive';
 import {NotificationServiceProvider} from './ui/notifications/notification-service-provider';
 import {DatePickerPopupDirective} from './ui/date-picker/date-picker-popup-directive';
 import {UibTypeaheadPopupDirective} from './ui/typeahead-popup-directive';
-import {BusinessValidationDirective} from './validation/business-validation-directive';
 import {BackToTopDirective} from './ui/back-to-top/back-to-top-directive';
 import {HasErrorDirective} from './validation/has-error-directive';
 import {SchemaValidateDirective} from './validation/schema/schema-validate-directive';
@@ -68,5 +67,4 @@ angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
 	                              $timeout:ng.ITimeoutService,
 	                              schemaValidator:SchemaValidatorService) => new SchemaValidateDirective($log, $timeout, schemaValidator))
 	.service('schemaValidator', SchemaValidatorService)
-	.directive('validationBusiness', ($log:LogDecorator) => new BusinessValidationDirective($log))
 	.directive('backToTop', () => new BackToTopDirective);
