@@ -1,18 +1,21 @@
 <form class="form-horizontal has-validation" name="hasErrorForm" role="form" novalidate>
-    <h2 class="page-header">{{'i18n.states.samples.hasError.title' | translate}}</h2>
+    <h2 class="page-header">{{'i18n.states.samples.validation.validationState.title' | translate}}</h2>
     <p class="lead">
         Adds the bootstrap error state on an input event if it's invalid.
     </p>
 
     <div class="form-group" has-error>
         <label class="col-sm-4 control-label">Number</label>
-        <div class="col-sm-6">
+        <div class="col-sm-5">
             <input name="number" type="text" number-format class="form-control" ng-model="ctrl.number"/>
-            <span class="help-block" ng-show="hasErrorForm.number.$invalid">View value not parsable!</span>
+            <span class="help-block" ng-show="hasErrorForm.number.$invalid">View value is not parsable!</span>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <button type="button" class="btn btn-warning" ng-click="ctrl.setInvalid(hasErrorForm.number)" tooltip-append-to-body="true"
                     uib-tooltip="Sets model to an invalid value">Set invalid value
+            </button>
+            <button type="button" class="btn btn-info" ng-click="ctrl.setValid(hasErrorForm.number)" tooltip-append-to-body="true"
+                    uib-tooltip="Sets model to an valid value">Set valid value
             </button>
         </div>
     </div>
