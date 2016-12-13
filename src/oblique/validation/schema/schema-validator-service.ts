@@ -1,5 +1,6 @@
-﻿// FIXME: Workaround
-import {SchemaValidationConfig} from './schema-validation-config';
+﻿import {SchemaValidationConfig} from './schema-validation-config';
+
+// FIXME: workaround as tv4 is global
 declare var tv4:any;
 
 /**
@@ -21,11 +22,11 @@ export class SchemaValidatorService {
 	 * coercion is applied.
 	 *
 	 * @param {Object} schema the JSON schema definition.
-	 * @param {String} propName the property name to validate schema against.
+	 * @param {String} propertyPath the property path to validate schema against.
 	 * @param {Any} value the value to validate.
 	 * @return {Object} a tv4js validation result object.
 	 */
-	validate(schema, propName:string, value:any) {
+	validate(schema, propertyPath:string, value:any) {
 		if (!schema) {
 			return {valid: true};
 		}
@@ -47,27 +48,49 @@ export class SchemaValidatorService {
 			required: undefined
 		};
 
-		wrap.properties[propName] = _.result(schema.properties, propName);
-		if (angular.isArray(schema.required) && schema.required.indexOf(propName) !== -1) {
-			wrap.required = [propName];
-		} else {
-			// Normalize empty values for optional properties:
-			/*if(wrap.properties[propName].format === 'date-time' && value === null) {
-			 value = '';
-			 } else if (wrap.properties[propName].type === 'integer' && value === null) {
-			 value = undefined;
-			 }*/
+		wrap.properties[propertyPath] = this.propertySchema(propertyPath, schema);
+		if (this.isRequired(propertyPath, schema)) {
+			wrap.required = [propertyPath];
 		}
 
 		let valueWrap = {};
 		if (angular.isDefined(value)) {
-			valueWrap[propName] = value;
+			valueWrap[propertyPath] = value;
 		}
 		tv4.language(this.$translate.use());
-		//TODO: use this instead of the messageParsers? We can add custom messages
-		/*tv4.setErrorReporter((error, data, scema) => {
-		 return 'Error code: ' + error.code;
-		 });*/
 		return tv4.validateResult(valueWrap, wrap);
+	}
+
+	isRequired(propertyPath, schema) {
+		return this.isRequiredJSONSchema3(propertyPath, schema) || this.isRequiredJSONSchema4(propertyPath, schema);
+	};
+
+	propertySchema(propertyPath, schema) {
+		let properties = schema.properties || [];
+		return propertyPath.indexOf('.') ? _.result(properties, propertyPath) : properties[propertyPath];
+	};
+
+	/**
+	 * JSON schema v4 support for required properties.
+	 *
+	 * @param propertyPath
+	 * @param schema
+	 */
+	isRequiredJSONSchema4(propertyPath, schema) {
+		// propertyName: 'parent.properties.child' -> 'parent.child'
+		let propertyName = propertyPath.replace(/\.properties\./g, '.');
+		return angular.isArray(schema.required) && schema.required.indexOf(propertyName) !== -1;
+	}
+
+	/**
+	 * JSON schema v3 support for required properties.
+	 *
+	 * @param propertyPath
+	 * @param schema
+	 */
+	isRequiredJSONSchema3(propertyPath, schema) {
+		// Retrieve the reference schema for the current (sub-)property:
+		let propertySchema = this.propertySchema(propertyPath, schema);
+		return propertySchema && propertySchema.required;
 	}
 }

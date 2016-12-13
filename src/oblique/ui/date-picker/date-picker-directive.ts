@@ -8,7 +8,7 @@ export class DatePickerDirective implements ng.IDirective {
 	templateUrl = 'oblique/ui/date-picker/date-picker.tpl.html';
 	restrict = 'E';
 	replace = true;
-	scope = {};
+	scope = true;
 	require = ['datePicker', '^form'];
 	bindToController = {
 		ngModel: '=',
@@ -28,8 +28,12 @@ export class DatePickerDirective implements ng.IDirective {
 	controller = DatePickerDirectiveController;
 	controllerAs = 'orDatepickerCtrl';
 
+
 	link = (scope, element, attrs, controllers:any[]) => {
 		let controller:DatePickerDirectiveController = controllers[0];
+
+		// Expose form control to template:
+		scope.formControl = controllers[1][controller.name];
 
 		element.keydown((e) => {
 			let control = element.find('input[name=' + controller.name + ']');

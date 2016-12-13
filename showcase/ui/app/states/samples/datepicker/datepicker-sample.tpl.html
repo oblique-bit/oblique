@@ -1,4 +1,5 @@
-<form class="form-horizontal has-validation" name="datepickerForm" role="form" novalidate>
+<form class="form-horizontal has-validation" name="datepickerForm" role="form" novalidate
+	  ng-submit="ctrl.check(datepickerForm)">
 	<h2 class="page-header">
 		<span>Datepicker</span>
 	</h2>
@@ -7,7 +8,8 @@
 		<div class="col-sm-8 col-lg-9">
 			<div class="row">
 				<div class="col-md-6">
-					<date-picker name="date" ng-model="ctrl.data.date"></date-picker>
+					<date-picker name="date" ng-model="ctrl.data.date" ng-required="'true'"
+					             ng-class="{'control-mandatory': datepickerForm.date.$error.required}"></date-picker>
 				</div>
 				<div class="col-md-6">
 					<div class="btn-group">
@@ -20,7 +22,6 @@
 					</div>
 				</div>
 			</div>
-			<span class="help-block" ng-show="datepickerForm.date.$invalid">{{datepickerForm.date.$errorMessage}}</span>
 		</div>
 	</div>
 	<div class="form-group" has-error>
@@ -43,8 +44,6 @@
 					</div>
 				</div>
 			</div>
-			<span class="help-block" ng-if="datepickerForm.minMax.$error.minDate">{{'i18n.common.date.min.invalid' | translate:ctrl.translationData.min }}</span>
-			<span class="help-block" ng-if="datepickerForm.minMax.$error.maxDate">{{'i18n.common.date.max.invalid' | translate:ctrl.translationData.max }}</span>
 		</div>
 	</div>
 	<div class="form-group" has-error>
@@ -53,12 +52,9 @@
 			<div class="row">
 				<div class="col-md-6">
 					<date-picker label="From" name="rangeFrom" ng-model="ctrl.data.range.from" options="{maxDate: ctrl.data.range.to}"></date-picker>
-					<span class="help-block" ng-show="datepickerForm.rangeFrom.$invalid">{{datepickerForm.rangeFrom.$errorMessage}}</span>
 				</div>
 				<div class="col-md-6" has-error="rangeTo">
-					<date-picker label="To" name="rangeTo" ng-model="ctrl.data.range.to" min-date="ctrl.data.range.from"></date-picker>
-					<span class="help-block" ng-show="datepickerForm.rangeTo.$invalid">{{datepickerForm.rangeTo.$errorMessage}}</span>
-					<span class="help-block" ng-show="datepickerForm.rangeTo.$error.minDate && !datepickerForm.rangeTo.$errorMessage">{{'i18n.common.date.min.invalid' | translate:'{ p0: ctrl.data.minDate }' }}</span>
+					<date-picker label="To" name="rangeTo" ng-model="ctrl.data.range.to" options="{minDate: ctrl.data.range.from}"></date-picker>
 				</div>
 			</div>
 		</div>
@@ -68,21 +64,35 @@
 		<div class="col-sm-8 col-lg-9">
 			<div class="row">
 				<div class="col-md-6">
-					<date-picker name="date" ng-model="ctrl.data.editable.date" editable="ctrl.data.editable.enabled" ng-disabled="!ctrl.data.editable.enabled"></date-picker>
+					<date-picker name="editable" ng-model="ctrl.data.editable.date" editable="ctrl.data.editable.enabled"></date-picker>
 				</div>
 				<div class="col-md-6">
 					<div class="btn-group">
 						<button type="button" class="btn btn-info" ng-click="ctrl.toggleEditable()" tooltip-append-to-body="true"
-						        uib-tooltip="Toggles manual edition of Datepicker input control.">Toggle edition</button>
+						        uib-tooltip="Toggles manual edition of Datepicker input control. Date can still be selected usin Datepicker popup.">Toggle edition</button>
 					</div>
 				</div>
 			</div>
-			<span class="help-block" ng-show="datepickerForm.date.$invalid">{{datepickerForm.date.$errorMessage}}</span>
-			<span class="help-block" ng-show="datepickerForm.date.$error.date && !datepickerForm.date.$errorMessage">{{'i18n.common.date.format.invalid' | translate}}</span>
+		</div>
+	</div>
+	<div class="form-group" has-error>
+		<label class="col-sm-4 col-lg-3 control-label">Disabled</label>
+		<div class="col-sm-8 col-lg-9">
+			<div class="row">
+				<div class="col-md-6">
+					<date-picker name="disabled" ng-model="ctrl.data.disabled.date" ng-disabled="ctrl.data.disabled.enabled"></date-picker>
+				</div>
+				<div class="col-md-6">
+					<div class="btn-group">
+						<button type="button" class="btn btn-info" ng-click="ctrl.toggleDisabled()" tooltip-append-to-body="true"
+						        uib-tooltip="Enables/Disables Datepicker control. Date can not be updated until control gets enabled again.">Toggle disabled</button>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="form-actions">
-		<button type="submit" class="btn btn-primary" ng-click="ctrl.check(datepickerForm)" ng-disabled="!datepickerForm.$valid">Check</button>
+		<button type="submit" class="btn btn-primary" ng-disabled="!datepickerForm.$valid && datepickerForm.$submitted">Check</button>
 	</div>
 </form>
 <hr />

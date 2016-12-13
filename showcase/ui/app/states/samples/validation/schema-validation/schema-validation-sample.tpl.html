@@ -1,4 +1,6 @@
-<form class="form-horizontal has-validation" name="validationForm" role="form" novalidate schema-validation="ctrl.schema">
+<form class="form-horizontal has-validation" name="validationForm" role="form"
+      novalidate schema-validation="ctrl.schema"
+      ng-submit="ctrl.check(validationForm)">
 	<h2 class="page-header">
 		<span>Schema validation</span>
 		<span class="pull-right">
@@ -10,7 +12,6 @@
 		<label class="col-sm-4 control-label">Text</label>
 		<div class="col-sm-6">
 			<input name="text" type="text" class="form-control" ng-model="ctrl.data.text" schema-validate />
-			<span class="help-block" ng-show="validationForm.text.$invalid">{{validationForm.text.$errorMessage}}</span>
 		</div>
 		<div class="col-sm-2">
 			<a class="form-control-static" role="button"
@@ -23,7 +24,6 @@
 		<label class="col-sm-4 control-label">Number</label>
 		<div class="col-sm-6">
 			<input name="number" type="text" class="form-control" ng-model="ctrl.data.number" number-format schema-validate />
-			<span class="help-block" ng-show="validationForm.number.$invalid">{{validationForm.number.$errorMessage}}</span>
 		</div>
 		<div class="col-sm-1">
 			<a class="form-control-static" role="button"
@@ -43,7 +43,6 @@
 		<div class="col-sm-6">
 			<input name="integer" type="number" class="form-control"
 			       ng-model="ctrl.data.integer" schema-validate />
-			<span class="help-block" ng-show="validationForm.integer.$invalid">{{validationForm.integer.$errorMessage}}</span>
 		</div>
 		<div class="col-sm-2">
 			<a class="form-control-static" role="button"
@@ -70,8 +69,6 @@
 					</div>
 				</div>
 			</div>
-			<span class="help-block" ng-show="validationForm.date.$invalid">{{validationForm.date.$errorMessage}}</span>
-			<span class="help-block" ng-show="validationForm.date.$error.date && !validationForm.date.$errorMessage">{{'i18n.common.date.format.invalid' | translate}}</span>
 		</div>
 		<div class="col-sm-2">
 			<a class="form-control-static" role="button"
@@ -83,9 +80,9 @@
 	<div class="form-group" has-error>
 		<label class="col-sm-4 control-label">Time</label>
 		<div class="col-sm-6">
-			<div uib-timepicker name="time" class="timepicker timepicker-condensed"
-			            ng-model="ctrl.data.time" show-meridian="false" minute-step="15"></div>
-			<span class="help-block" ng-show="validationForm.time.$invalid">{{validationForm.time.$errorMessage}}</span>
+			<div name="time" class="timepicker timepicker-condensed"
+			     ng-model="ctrl.data.time" schema-validate
+			     uib-timepicker show-meridian="false" minute-step="15"></div>
 		</div>
 		<div class="col-sm-2">
 			<a class="form-control-static" role="button"
@@ -100,9 +97,8 @@
 			<select name="select" class="form-control"
 			        ng-model="ctrl.data.select" schema-validate
 			        ng-options="option.value as option.label for option in ctrl.schema.properties.select.options">
-				<option value="" selected>{{'i18n.common.select' | translate}}</option>
+				<option value="" class="text-muted" selected translate="i18n.common.select"></option>
 			</select>
-			<span class="help-block" ng-show="validationForm.select.$invalid">{{validationForm.select.$errorMessage}}</span>
 		</div>
 		<div class="col-sm-2">
 			<a class="form-control-static" role="button"
@@ -117,7 +113,6 @@
 			<multiselect name="multiselect" ng-model="ctrl.data.multiselect" schema-validate
 			             options="ctrl.schema.properties.multiselect.options"
 			             extra-settings="{showCheckAll: true, showUncheckAll: true, idProp: 'value'}"></multiselect>
-			<span class="help-block" ng-show="validationForm.multiselect.$invalid">{{validationForm.multiselect.$errorMessage}}</span>
 		</div>
 		<div class="col-sm-2">
 			<a class="form-control-static" role="button"
@@ -131,7 +126,6 @@
 		<div class="col-sm-6">
 			<textarea name="textarea" type="text" class="form-control"
 			       ng-model="ctrl.data.textarea" msd-elastic rows="1" schema-validate></textarea>
-			<span class="help-block" ng-show="validationForm.textarea.$invalid">{{validationForm.textarea.$errorMessage}}</span>
 		</div>
 		<div class="col-sm-1">
 			<a class="form-control-static" role="button"
@@ -151,7 +145,6 @@
 		<div class="col-sm-6">
 			<input name="object_subproperty" type="number" class="form-control"
 			       ng-model="ctrl.data.object.subproperty" schema-validate />
-			<span class="help-block" ng-show="validationForm.object_subproperty.$invalid">{{validationForm.object_subproperty.$errorMessage}}</span>
 		</div>
 		<div class="col-sm-2">
 			<a class="form-control-static" role="button"
@@ -161,7 +154,7 @@
 		</div>
 	</div>
 	<div class="form-actions">
-		<button type="submit" class="btn btn-primary" ng-click="ctrl.check(validationForm)" xxx-ng-disabled="!validationForm.$valid">Check</button>
+		<button type="submit" class="btn btn-primary" ng-disabled="!validationForm.$valid && validationForm.$submitted">Check</button>
 	</div>
 </form>
 <hr />

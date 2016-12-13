@@ -90,11 +90,8 @@
       "date": {
         "format": {
           "dd.MM.yyyy": "TT.MM.JJJJ",
-          "d!.M!.yyyy": "TT.MM.JJJJ",
-          "invalid": "Incorrect date or format, please enter a valid date in the dd.mm.yyyy format."
-        },
-        "min.invalid": "Das Datum unterschreitet das min. zulässige Datum {{p0}}",
-        "max.invalid": "Das Datum überschreitet das max. zulässige Datum {{p0}}"
+          "d!.M!.yyyy": "TT.MM.JJJJ"
+        }
       }
     },
     "labels": {
@@ -166,6 +163,9 @@
           }
         }
       },
+      "date.format": "de: Incorrect date or format, please enter a valid date in the dd.mm.yyyy format.",
+      "date.min": "Das Datum unterschreitet das min. zulässige Datum {{minDate}}",
+      "date.max": "Das Datum überschreitet das max. zulässige Datum {{maxDate}}",
       "unsavedChanges": "Es sind nicht gespeicherte Änderungen vorhanden, wollen Sie wirklich fortfahren?"
     },
     "form": {

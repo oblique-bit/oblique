@@ -28,7 +28,7 @@ export class SchemaValidateDirective implements ng.IDirective {
 		} else if (!schema) {
 			this.$log.warn(`Unable to retrieve validation schema for ${name}. Ignoring...`);
 		} else {
-			let schemaPath:string = _.map(name.split('_'), (part:string) => {
+			let propertyPath:string = _.map(name.split('_'), (part:string) => {
 				return _.camelCase(part);
 			}).join('.properties.');
 
@@ -60,7 +60,7 @@ export class SchemaValidateDirective implements ng.IDirective {
 					element.parent().addClass('control-mandatory');
 				}
 
-				let result:any = this.schemaValidator.validate(schema, schemaPath, viewValue);
+				let result:any = this.schemaValidator.validate(schema, propertyPath, viewValue);
 
 				// Since we might have different schema errors we must clear all
 				// errors that start with 'schema-':
@@ -72,14 +72,20 @@ export class SchemaValidateDirective implements ng.IDirective {
 						formControl.$setValidity(k, true);
 					});
 
+				let errorId = propertyPath + '-schema-validation-error';
+				let control = element.parent().find('[id="' + errorId + '"]');
+
 				if (!result.valid) {
 					formControl.$setValidity('schema-' + result.error.code, false);
 
-					//FIXME: monkey patch
-					formControl.$errorMessage = result.error.message;
+					if (!control.length) {
+						element.parent().append('<span id="' + errorId + '" class="help-block">' + result.error.message + '</span>');
+					}
 
 					// It is invalid, return undefined (no model update):
 					return undefined;
+				} else {
+					control.remove();
 				}
 				return viewValue;
 			};

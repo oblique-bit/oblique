@@ -15,21 +15,16 @@ export class DatepickerSampleController {
 		editable: {
 			date: new Date(),
 			enabled: false
+		},
+		disabled: {
+			date: new Date(),
+			enabled: true
 		}
 	};
 
-    translationData = {
-        min: {
-            p0: moment(this.data.minMax.min).format('YYYY-MM-DD')
-        },
-        max: {
-            p0: moment(this.data.minMax.max).format('YYYY-MM-DD')
-        }
-    };
-
-    /*@ngInject*/
-    constructor(private notificationService: NotificationService) {
-    }
+	/*@ngInject*/
+	constructor(private notificationService: NotificationService) {
+	}
 
 	today() {
 		this.data.date = new Date();
@@ -53,6 +48,10 @@ export class DatepickerSampleController {
 
 	toggleEditable() {
 		this.data.editable.enabled = !this.data.editable.enabled;
+	}
+
+	toggleDisabled() {
+		this.data.disabled.enabled = !this.data.disabled.enabled;
 	}
 
 	check(form) {

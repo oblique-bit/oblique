@@ -90,11 +90,8 @@
       "date": {
         "format": {
           "dd.MM.yyyy": "gg.mm.aaaa",
-          "d!.M!.yyyy": "gg.mm.aaaa",
-          "invalid": "Incorrect date or format, please enter a valid date in the dd.mm.yyyy format."
-        },
-        "min.invalid": "it: Das Datum unterschreitet das min. zulässige Datum {{p0}}",
-        "max.invalid": "it: Das Datum überschreitet das max. zulässige Datum {{p0}}"
+          "d!.M!.yyyy": "gg.mm.aaaa"
+        }
       }
     },
     "labels": {
@@ -103,7 +100,7 @@
       "password": "Password"
     },
     "error": {
-      "general": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
+      "general": "it: Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
       "http": {
         "status": {
           "0": "Service Unavailable",
@@ -166,6 +163,9 @@
           }
         }
       },
+      "date.format": "it: Incorrect date or format, please enter a valid date in the dd.mm.yyyy format.",
+      "date.min": "it: Das Datum unterschreitet das min. zulässige Datum {{minDate}}",
+      "date.max": "it: Das Datum überschreitet das max. zulässige Datum {{maxDate}}",
       "unsavedChanges": "Alcuni cambiamenti non sono stati salvati, continuare?"
     },
     "form": {
