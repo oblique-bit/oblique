@@ -14,7 +14,9 @@ export class HasErrorDirective implements ng.IDirective {
 		if (name) {
 			// Watch for control validity changes:
 			scope.$watch(form.$name + '.' + name + '.$invalid', (invalid) => {
-				element.toggleClass('has-error', invalid === true);
+				if(form[name].$dirty){
+					element.toggleClass('has-error', invalid === true);
+				}
 			});
 		}
 	};
