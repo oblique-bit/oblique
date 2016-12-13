@@ -77,9 +77,9 @@ export class SchemaValidateDirective implements ng.IDirective {
 					});
 
 				if (!result.valid) {
-					ngModel.$setValidity('schema-' + result.error.code, false);
+					formControl.$setValidity('schema-' + result.error.code, false);
 
-					// FIXME: monkey patch (and why not directly on the ngModel?)
+					//FIXME: monkey patch
 					formControl.$errorMessage = result.error.message;
 
 					// It is invalid, return undefined (no model update):
