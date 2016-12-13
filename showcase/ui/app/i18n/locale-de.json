@@ -1,207 +1,192 @@
 {
-  "i18n": {
-    "application": {
-      "shortName": "OR",
-      "longName": "ObliqueReactive",
-      "description": "Reactive front-end template for your business web application.",
-      "locales": {
-        "de": "Deutsch",
-        "fr": "Français",
-        "it": "Italiano",
-        "en": "English"
-      }
-    },
-    "states": {
-      "home": {
-        "title": "Startseite",
-        "description": "Description for the Home state page."
-      },
-      "auth": {
-        "title": "Sign in",
-        "login": {
-          "title": "Login",
-          "rememberme": "Benutzer speichern",
-          "submit": "Login",
-          "password-lost": "Passwort vergessen?",
-          "error": "Anmeldung nicht möglich!",
-          "success": "Erfolgreiche Anmeldung."
-        },
-        "register": {
-          "title": "New to {{title}}? Sign up!",
-          "submit": "Register"
-        }
-      },
-      "movies": {
-        "title": "Movies"
-      },
-      "samples": {
-        "title": "Samples",
-        "datepicker": {
-          "title": "Datepicker"
-        },
-        "navigable": {
-          "title": "Navigable"
-        },
-        "multiselect": {
-          "title": "Multiselect"
-        },
-        "navigator": {
-          "title": "States Navigator"
-        },
-        "typeahead": {
-          "title": "Typeahead"
-        },
-        "uiScroll": {
-          "title": "UI Scroll"
-        },
-        "validation": {
-          "title": "Validation",
-          "validationState": {
-            "title": "Validation state (Has Error)  "
-          },
-          "schemaValidation": {
-            "title": "Schema Validation"
-          }
-        }
-      },
-      "admin": {
-        "title": "Verwaltung"
-      }
-    },
-    "common": {
-      "yes": "Ja",
-      "no": "Nein",
-      "save": "Speichern",
-      "cancel": "Abbrechen",
-      "delete": "Löschen",
-      "select": "Wählen bitte.",
-      "actions": "Aktionen",
-      "action": "Aktion",
-      "pager": {
-        "pagesLengthBefore": "Anzeige von",
-        "pagesLengthAfter": "Treffen pro Seite",
-        "page": "Seite",
-        "of": "von",
-        "hits": "Suchtreffen"
-      },
-      "date": {
-        "format": {
-          "dd.MM.yyyy": "TT.MM.JJJJ",
-          "d!.M!.yyyy": "TT.MM.JJJJ",
-          "invalid": "Incorrect date or format, please enter a valid date in the dd.mm.yyyy format."
-        },
-        "min.invalid": "Das Datum unterschreitet das min. zulässige Datum {{p0}}",
-        "max.invalid": "Das Datum überschreitet das max. zulässige Datum {{p0}}"
-      }
-    },
-    "labels": {
-      "language": "Sprache",
-      "email": "Email",
-      "password": "Passwort"
-    },
-    "error": {
-      "general": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
-      "http": {
-        "status": {
-          "0": "Service Unavailable",
-          "400": "Bad Request",
-          "404": "The requested resource could not be found",
-          "500": "Internal Server Error",
-          "501": "Not Implemented",
-          "502": "Bad Gateway",
-          "503": "Service Unavailable"
-        }
-      },
-      "other": {
-        "timeout": "Server hat nicht zu lange reagiert. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
-        "upload": "Es ist ein Fehler bei hochladen aufgetrten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support"
-      },
-      "business": {
-        "ObjectOptimisticLockingFailureException": "Daten können nicht gespeichert werden, da sie auf dem Server geändert werden. Form wurde mit aktuellen Daten neu geladen."
-      }
-    },
-    "notification": {
-      "type": {
-        "default": "",
-        "info": "Info",
-        "success": "Erfolgreich",
-        "warning": "Warnung",
-        "error": "Fehler"
-      },
-      "common": {
-        "form": {
-          "success": "Speichern erfolgreich",
-          "pristine": "Ihre Eingaben haben sich nicht geändert",
-          "invalid": "Bitte korrigieren Sie die Fehler im Formular"
-        }
-      },
-      "custom": {
-      }
-    },
-    "dialog": {
-      "doAction": {
-        "header": "Aktion zu bestätigen",
-        "message": "Wollen Sie wirklich diese Aktion durchführen"
-      },
-      "doDelete": {
-        "header": "Löschvorgang zu bestätigen",
-        "message": "Wollen Sie wirklich diesen Datensatz löschen"
-      },
-      "doDeleteFile": {
-        "header": "Löschvorgang zu bestätigen",
-        "message": "Wollen Sie wirklich diese Datei löschen"
-      },
-      "action": {
-        "yes": "Ja",
-        "no": "Nein"
-      }
-    },
-    "validation": {
-      "basic": {
-        "required": "Pflichtfeld, bitte machen Sie eine Angabe",
-        "email": "Ungültiges Format, bitte geben Sie eine gültige E-Mail Adresse an",
-        "url": "Ungültige Format, bitte geben Sie eine gültige URL Adresse an",
-        "minlength": "Bitte geben Sie mindestens {{limit}} Zeichen ein (Sie haben nur {{actual}} Zeichen eingegeben)",
-        "maxlength": "Bitte geben Sie höchstens {{limit}} Zeichen ein (Sie haben nur {{actual}} Zeichen eingegeben)",
-        "min": "Bitte geben Sie eine Zahl grösser oder gleich {{limit}} ein",
-        "max": "Bitte geben Sie eine Zahl kleiner oder gleich {{limit}} ein",
-        "integer": "Ungültiges Format, bitte geben Sie eine Zahl ohne Dezimalstellen ein",
-        "float": "Ungültiges Format, bitte geben Sie eine Zahl mit Dezimalstellen ein",
-        "date": "Ungültiges Format, bitte geben Sie eine korrekte Datum"
-      },
-      "custom": {
-        "date": {
-          "day": {
-            "min": "Ungültiger Tag, geben Sie eine Zahl zwischen 1 und 31 ein",
-            "max": "Ungültiger Tag, geben Sie eine Zahl zwischen 1 und 31 ein"
-          },
-          "month": {
-            "min": "Ungültiger Monat, geben Sie eine Zahl zwischen 1 und 12 ein",
-            "max": "Ungültiger Monat, geben Sie eine Zahl zwischen 1 und 12 ein"
-          }
-        }
-      }
-    },
-    "form": {
-      "action": {
-        "add": "Hinzufügen",
-        "apply": "Übernehmen",
-        "applyAndContinue": "Übernehmen und weiteren erfassen",
-        "save": "Speichern",
-        "delete": "Löschen",
-        "cancel": "Abbrechen",
-        "next": "Weiter",
-        "back": "Zurück"
-      }
-    },
-    "multiselect": {
-      "checkAll": "<strong>alle</strong> auswählen",
-      "uncheckAll": "<strong>keine</strong> auswählen",
-      "buttonDefault": "Wählen bitte.",
-      "allSelected": "Alle Elemente wurden selektiert."
-    },
-    "backToTop": {
-      "backToTop": "Zum Seitenanfang"
-    }
-  }
+	"i18n": {
+		"application": {
+			"shortName": "OR",
+			"longName": "ObliqueReactive",
+			"description": "Reactive front-end template for your business web application.",
+			"locales": {
+				"de": "Deutsch",
+				"fr": "Français",
+				"it": "Italiano",
+				"en": "English"
+			}
+		},
+		"states": {
+			"home": {
+				"title": "Startseite",
+				"description": "Description for the Home state page."
+			},
+			"auth": {
+				"title": "Sign in",
+				"login": {
+					"title": "Login",
+					"rememberme": "Benutzer speichern",
+					"submit": "Login",
+					"password-lost": "Passwort vergessen?",
+					"error": "Anmeldung nicht möglich!",
+					"success": "Erfolgreiche Anmeldung."
+				},
+				"register": {
+					"title": "New to {{title}}? Sign up!",
+					"submit": "Register"
+				}
+			},
+			"movies": {
+				"title": "Movies"
+			},
+			"samples": {
+				"title": "Samples",
+				"datepicker":{
+					"title": "Datepicker"
+				},
+				"navigable":{
+					"title": "Navigable"
+				},
+				"multiselect": {
+					"title": "Multiselect"
+				},
+				"navigator": {
+					"title": "States Navigator"
+				},
+				"typeahead": {
+					"title": "Typeahead"
+				},
+				"uiScroll": {
+					"title": "UI Scroll"
+                },
+                "validation": {
+                  "title": "Validation",
+                  "validationState": {
+                    "title": "Validation state (Has Error)  "
+                  },
+                  "schemaValidation": {
+                    "title": "Schema Validation"
+                  }
+				},
+			"unsavedChanges": {
+          "title": "Unsaved Changes"
+        }},
+			"admin": {
+				"title": "Verwaltung"
+			}
+		},
+		"common": {
+			"yes": "Ja",
+			"no": "Nein",
+			"save": "Speichern",
+			"cancel": "Abbrechen",
+			"delete": "Löschen",
+			"select": "Wählen bitte.",
+			"actions": "Aktionen",
+			"action": "Aktion",
+			"pager": {
+				"pagesLengthBefore": "Anzeige von",
+				"pagesLengthAfter": "Treffen pro Seite",
+				"page": "Seite",
+				"of": "von",
+				"hits": "Suchtreffen"
+			},
+			"date": {
+				"format": {
+					"dd.MM.yyyy": "TT.MM.JJJJ",
+					"d!.M!.yyyy": "TT.MM.JJJJ",
+					"invalid": "Incorrect date or format, please enter a valid date in the dd.mm.yyyy format."
+				},
+			  "min.invalid": "Das Datum unterschreitet das min. zulässige Datum {{p0}}",
+			  "max.invalid": "Das Datum überschreitet das max. zulässige Datum {{p0}}"
+			},
+		"unsavedChanges": "Es sind nicht gespeicherte Änderungen vorhanden, wollen Sie wirklich fortfahren?"},
+		"labels": {
+			"language": "Sprache",
+			"email": "Email",
+			"password": "Passwort"
+		},
+		"error": {
+			"general": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
+			"http": {
+				"status": {
+					"0": "Service Unavailable",
+					"400": "Bad Request",
+					"404": "The requested resource could not be found",
+					"500": "Internal Server Error",
+					"501": "Not Implemented",
+					"502": "Bad Gateway",
+					"503": "Service Unavailable"
+				}
+			},
+			"other": {
+				"timeout": "Server hat nicht zu lange reagiert. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
+				"upload": "Es ist ein Fehler bei hochladen aufgetrten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support"
+			},
+			"business": {
+				"ObjectOptimisticLockingFailureException": "Daten können nicht gespeichert werden, da sie auf dem Server geändert werden. Form wurde mit aktuellen Daten neu geladen."
+			}
+		},
+		"notification": {
+			"type": {
+				"default": "",
+				"info": "Info",
+				"success": "Erfolgreich",
+				"warning": "Warnung",
+				"error": "Fehler"
+			},
+			"common": {
+				"form": {
+					"success": "Speichern erfolgreich",
+					"pristine": "Ihre Eingaben haben sich nicht geändert",
+					"invalid": "Bitte korrigieren Sie die Fehler im Formular"
+				}
+			},
+			"custom": {
+
+			}
+		},
+		"validation": {
+			"basic": {
+				"required": "Pflichtfeld, bitte machen Sie eine Angabe",
+				"email": "Ungültiges Format, bitte geben Sie eine gültige E-Mail Adresse an",
+				"url": "Ungültige Format, bitte geben Sie eine gültige URL Adresse an",
+				"minlength": "Bitte geben Sie mindestens {{limit}} Zeichen ein (Sie haben nur {{actual}} Zeichen eingegeben)",
+				"maxlength": "Bitte geben Sie höchstens {{limit}} Zeichen ein (Sie haben nur {{actual}} Zeichen eingegeben)",
+				"min": "Bitte geben Sie eine Zahl grösser oder gleich {{limit}} ein",
+				"max": "Bitte geben Sie eine Zahl kleiner oder gleich {{limit}} ein",
+				"integer": "Ungültiges Format, bitte geben Sie eine Zahl ohne Dezimalstellen ein",
+				"float": "Ungültiges Format, bitte geben Sie eine Zahl mit Dezimalstellen ein",
+				"date": "Ungültiges Format, bitte geben Sie eine korrekte Datum"
+			},
+			"custom": {
+				"date": {
+					"day": {
+						"min": "Ungültiger Tag, geben Sie eine Zahl zwischen 1 und 31 ein",
+						"max": "Ungültiger Tag, geben Sie eine Zahl zwischen 1 und 31 ein"
+					},
+					"month": {
+						"min": "Ungültiger Monat, geben Sie eine Zahl zwischen 1 und 12 ein",
+						"max": "Ungültiger Monat, geben Sie eine Zahl zwischen 1 und 12 ein"
+					}
+				}
+			}
+		},
+		"form": {
+			"action": {
+				"add": "Hinzufügen",
+				"apply": "Übernehmen",
+				"applyAndContinue": "Übernehmen und weiteren erfassen",
+				"save": "Speichern",
+				"delete": "Löschen",
+				"cancel": "Abbrechen",
+				"next": "Weiter",
+				"back": "Zurück"
+			}
+		},
+		"multiselect": {
+			"checkAll": "<strong>alle</strong> auswählen",
+			"uncheckAll": "<strong>keine</strong> auswählen",
+			"buttonDefault": "Wählen bitte.",
+			"allSelected": "Alle Elemente wurden selektiert."
+		},
+		"backToTop": {
+			"backToTop": "Zum Seitenanfang"
+		}
+	}
 }

@@ -48,11 +48,9 @@ angular
 
 	// Mandatory configuration
 	// --------------------------------------------------------
-	.config(($httpProvider:ng.IHttpProvider, CONFIG) => {
-		if (CONFIG.dev && CONFIG.dev.sendCredentials) {
-			//$httpProvider.defaults.withCredentials = CONFIG.dev.sendCredentials;
-		}
+	.config(($httpProvider:ng.IHttpProvider) => {
 		$httpProvider.interceptors.push('HttpInterceptor');
+		$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 	})
 	.config((tmhDynamicLocaleProvider:ng.dynamicLocale.tmhDynamicLocaleProvider) => {
 		tmhDynamicLocaleProvider.localeLocationPattern('vendor/angular-i18n/angular-locale_{{locale}}.js');
@@ -66,20 +64,10 @@ angular
 			suffix: '.json'
 		});
 	})
-	.config((CONFIG, $authProvider) => {
-		$authProvider.baseUrl = '/' + CONFIG.api.path;
-		$authProvider.signupUrl = '/auth/register';
-		//$authProvider.signupRedirect = '/';
-		$authProvider.loginUrl = '/auth/login';
-		$authProvider.loginRedirect = '/';
-		$authProvider.logoutRedirect = '/';
-		$authProvider.tokenPrefix = CONFIG.module; // Local Storage name prefix
-	})
 	.config((CONFIG, $urlRouterProvider:ng.ui.IUrlRouterProvider) => {
 		// NOTE: before any change below, see https://github.com/angular-ui/ui-router/issues/600
 		$urlRouterProvider.otherwise(function ($injector) {
-			var $state = $injector.get('$state');
-			$state.go(CONFIG.defaults.state);
+			$injector.get('$state').go(CONFIG.defaults.state);
 		});
 	})
 	.config(($animateProvider:ng.animate.IAnimateProvider) => {
@@ -105,7 +93,16 @@ angular
 	.config((CONFIG, loadingServiceProvider:LoadingServiceProvider) => {
 		loadingServiceProvider.setTimeout(CONFIG.defaults.http.timeout);
 	})
-	.config((schemaValidationConfig:SchemaValidationConfig) => {
+	.config((CONFIG, $authProvider) => {
+		$authProvider.baseUrl = '/' + CONFIG.api.path;
+		$authProvider.signupUrl = '/auth/register';
+		//$authProvider.signupRedirect = '/';
+		$authProvider.loginUrl = '/auth/login';
+		$authProvider.loginRedirect = '/';
+		$authProvider.logoutRedirect = '/';
+		$authProvider.tokenPrefix = CONFIG.module; // Local Storage name prefix
+	})
+	.config((schemaValidationConfig:SchemaValidateConfig) => {
 		/*schemaValidationConfig.customErrorReporter = (error, data, schema) => {
 			return 'error: ' + error.code;
 		};*/

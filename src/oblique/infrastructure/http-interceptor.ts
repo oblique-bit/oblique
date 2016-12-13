@@ -49,7 +49,7 @@ export class HttpInterceptor implements ng.IHttpInterceptor {
 				rejection.defaultPrevented = true;
 
 				// Notify user:
-				this.notificationService.error('error.http.status.' + rejection.status);
+				this.notificationService.error('i18n.error.http.status.' + rejection.status);
 			}
 		}
 		this.log.error(rejection);
@@ -66,10 +66,8 @@ export class HttpInterceptor implements ng.IHttpInterceptor {
 		return config && (config.background || (config.data && config.data.background));
 	}
 
-// Others services are injected on demand in order to prevent circular dependency during factory creation:
-
+	// Others services are injected on demand in order to prevent circular dependency during factory creation:
 	private http():HttpDecorator {
 		return this.$injector.get<HttpDecorator>('$http');
 	}
-
 }

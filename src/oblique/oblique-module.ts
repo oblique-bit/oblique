@@ -26,6 +26,8 @@ import {SchemaValidateDirective} from './validation/schema/schema-validate-direc
 import {SchemaValidationConfig} from './validation/schema/schema-validation-config';
 import {SchemaValidationDirective} from './validation/schema/schema-validation-directive';
 import {SchemaValidatorService} from './validation/schema/schema-validator-service';
+import {UnsavedChangesService} from './validation/unsaved-changes-service';
+import {UnsavedChangesDirective} from './validation/unsaved-changes-directive';
 
 // Make sure that required templates for oblique-reactive will be loaded (and bundled):
 import '../oblique-reactive-templates';
@@ -67,4 +69,5 @@ angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
 	                              $timeout:ng.ITimeoutService,
 	                              schemaValidator:SchemaValidatorService) => new SchemaValidateDirective($log, $timeout, schemaValidator))
 	.service('schemaValidator', SchemaValidatorService)
+	.service('unsavedChangesService', UnsavedChangesService)
 	.directive('backToTop', () => new BackToTopDirective);
