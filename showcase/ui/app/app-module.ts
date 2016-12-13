@@ -6,7 +6,7 @@
 import {
 	ObliqueModule,
 	LoadingServiceProvider,
-	SchemaValidateConfig,
+	SchemaValidationConfig,
 	DatepickerPopupConfig
 } from 'oblique-reactive/oblique-reactive';
 
@@ -102,8 +102,8 @@ angular
 		$authProvider.logoutRedirect = '/';
 		$authProvider.tokenPrefix = CONFIG.module; // Local Storage name prefix
 	})
-	.config((schemaValidateConfig:SchemaValidateConfig) => {
-		/*schemaValidateConfig.customErrorReporter = (error, data, schema) => {
+	.config((schemaValidationConfig:SchemaValidationConfig) => {
+		/*schemaValidationConfig.customErrorReporter = (error, data, schema) => {
 			return 'error: ' + error.code;
 		};*/
 	})

@@ -1,54 +1,96 @@
 <ul id="nav-global" class="nav navbar-nav navbar-primary navbar-fw" role="menu">
-	<li role="menuitem" ui-sref-active="active">
-		<a href="" ui-sref="home">\{{'i18n.states.home.title' | translate}}</a>
+	<li role="presentation" ui-sref-active="active">
+		<a href="" ui-sref="home"
+		   role="menuitem" data-toggle="header navigation"
+		   translate="i18n.states.home.title"></a>
 	</li>
-	<li role="menuitem" class="dropdown" ng-class="{active: ('samples' | includedByState)}">
-		<a href="" role="button" data-toggle="dropdown">
-			<span>\{{'i18n.states.samples.title' | translate}}</span>
+	<li role="presentation" ng-class="{active: ('samples' | includedByState)}">
+		<a href="" role="menuitem" aria-expanded="false" aria-haspopup="true"
+		   data-toggle="navigation">
 			<span class="toggle"></span>
+			<span translate="i18n.states.samples.title"></span>
 		</a>
-		<div class="dropdown-menu">
-			<ul id="nav-global-samples" class="nav nav-stacked" role="menu">
+		<div class="navigation-menu">
+			<ul class="nav" role="menu">
 				<li class="nav-header" role="presentation" ui-sref-active="active">
-					<h3>\{{'i18n.states.samples.title' | translate}}</h3>
-				</li>
-				<li role="menuitem" class="nav-section" ui-sref-active="active">
-					<a href="" ui-sref="samples.datepicker">\{{'i18n.states.samples.datepicker.title' | translate}}</a>
-				</li>
-				<li role="menuitem" class="nav-section" ui-sref-active="active">
-					<a href="" ui-sref="samples.multiselect">\{{'i18n.states.samples.multiselect.title' | translate}}</a>
-				</li>
-				<li role="menuitem" class="nav-section" ui-sref-active="active">
-					<a href="" ui-sref="samples.navigable" data-toggle="dropdown">\{{'i18n.states.samples.navigable.title' | translate}}</a>
-				</li>
-				<li role="menuitem" class="nav-section" ui-sref-active="active">
-					<a href="" ui-sref="samples.schemaValidation" data-toggle="dropdown">
-						<span>\{{'i18n.states.samples.schemaValidation.title' | translate}}</span>
-						<sup class="text-warning">Experimental</sup>
+					<a href="" class="nav-header-title navigation-back" data-toggle="navigation">
+						<span class="toggle"></span>
+						<span data-translate="i18n.states.samples.title"></span>
 					</a>
 				</li>
-				<li role="menuitem" class="nav-section" ui-sref-active="active">
-					<a href="" ui-sref="samples.navigator">\{{'i18n.states.samples.navigator.title' | translate}}</a>
+				<li role="presentation" ui-sref-active="active">
+					<a href="" ui-sref="samples.datepicker"
+					   role="menuitem" data-toggle="header navigation"
+					   translate="i18n.states.samples.datepicker.title"></a>
 				</li>
-				<li role="menuitem" class="nav-section" ui-sref-active="active">
-					<a href="" ui-sref="samples.typeahead">\{{'i18n.states.samples.typeahead.title' | translate}}</a>
+				<li role="presentation" class="nav-section" ui-sref-active="active">
+					<a href="" ui-sref="samples.multiselect"
+					   role="menuitem" data-toggle="header navigation"
+					   translate="i18n.states.samples.multiselect.title"></a>
 				</li>
-				<li role="menuitem" class="nav-section" ui-sref-active="active">
-					<a href="" ui-sref="samples.uiScroll" uib-tooltip="Aka infinite scrolling">\{{'i18n.states.samples.uiScroll.title' | translate}}</a>
+				<li role="presentation" ui-sref-active="active">
+					<a href="" ui-sref="samples.navigable"
+					   role="menuitem" data-toggle="header navigation"
+					   translate="i18n.states.samples.navigable.title"></a>
 				</li>
-				<li role="menuitem" class="nav-section" ui-sref-active="active">
-					<a href="" ui-sref="samples.unsavedChanges">\{{'i18n.states.samples.unsavedChanges.title' | translate}}</a>
+				<li role="presentation" ui-sref-active="active">
+					<a href="" ui-sref="samples.navigator"
+					   role="menuitem" data-toggle="header navigation"
+					   translate="i18n.states.samples.navigator.title"></a>
+				</li>
+				<li role="presentation" ui-sref-active="active">
+					<a href="" ui-sref="samples.typeahead"
+					   role="menuitem" data-toggle="header navigation"
+					   translate="i18n.states.samples.typeahead.title"></a>
+				</li>
+				<li role="presentation" ui-sref-active="active">
+					<a href="" ui-sref="samples.uiScroll" uib-tooltip="Aka infinite scrolling"
+					   role="menuitem" data-toggle="header navigation"
+					   translate="i18n.states.samples.uiScroll.title"></a>
+				</li>
+				<li role="presentation" ng-class="{active: ('validation' | includedByState)}">
+					<a href="" role="menuitem" aria-expanded="false" aria-haspopup="true"
+					   data-toggle="navigation">
+						<span class="toggle"></span>
+						<span translate="i18n.states.samples.validation.title"></span>
+					</a>
+					<div class="navigation-menu">
+						<ul class="nav nav-indented" role="menu">
+							<li class="nav-header visible-xs" role="presentation">
+								<a href="" class="nav-header-title navigation-back" data-toggle="navigation">
+									<span class="toggle"></span>
+									<span data-translate="i18n.states.samples.validation.title"></span>
+								</a>
+							</li>
+							<li role="presentation" ui-sref-active="active">
+								<a href="" ui-sref="samples.validation.validationState"
+								   role="menuitem" data-toggle="header navigation"
+								   translate="i18n.states.samples.validation.validationState.title"></a>
+							</li>
+							<li role="presentation" ui-sref-active="active">
+								<a href="" ui-sref="samples.validation.schemaValidation"
+								   role="menuitem" data-toggle="header navigation"
+								   translate="i18n.states.samples.validation.schemaValidation.title"></a>
+							</li>
+							<li role="presentation" ui-sref-active="active">
+								<a href="" ui-sref="samples.validation.unsavedChanges"
+								   role="menuitem" data-toggle="header navigation"
+								   translate="i18n.states.samples.validation.unsavedChanges.title"></a>
+							</li>
+						</ul>
+					</div>
 				</li>
 			</ul>
 		</div>
 	</li>
-	<li role="menuitem" ui-sref-active="active" ng-if="appController.isAuthenticated()">
-		<a href="" ui-sref="movies">\{{'i18n.states.movies.title' | translate}}</a>
+	<li role="presentation" ui-sref-active="active" ng-if="appController.isAuthenticated()">
+		<a href="" ui-sref="movies"
+		   role="menuitem" data-toggle="header navigation"
+		   translate="i18n.states.movies.title"></a>
 	</li>
-	<!--<li role="menuitem" ui-sref-active="active" ng-if="appController.isAuthorized('admin')">-->
-		<!--<a href="">\{{'i18n.states.admin.title' | translate}}</a>-->
-	<!--</li>-->
-	<li role="menuitem" ui-sref-active="active" ng-if="!appController.isAuthenticated()">
-		<a href="" ui-sref="auth">\{{'i18n.states.auth.title' | translate}}</a>
+	<li role="presentation" ui-sref-active="active" ng-if="!appController.isAuthenticated()">
+		<a href="" ui-sref="auth"
+		   role="menuitem" data-toggle="header navigation"
+		   translate="i18n.states.auth.title"></a>
 	</li>
 </ul>

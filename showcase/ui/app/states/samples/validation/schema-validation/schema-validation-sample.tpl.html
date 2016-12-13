@@ -1,4 +1,4 @@
-<form class="form-horizontal has-validation" name="validationForm" role="form" novalidate validation-schema="ctrl.schema">
+<form class="form-horizontal has-validation" name="validationForm" role="form" novalidate schema-validation="ctrl.schema">
 	<h2 class="page-header">
 		<span>Schema validation</span>
 		<span class="pull-right">
@@ -57,7 +57,7 @@
 		<div class="col-sm-6">
 			<div class="row">
 				<div class="col-sm-6">
-					<date-picker name="date" ng-model="ctrl.data.date"></date-picker>
+					<date-picker name="date" ng-model="ctrl.data.date" schema-validate></date-picker>
 				</div>
 				<div class="col-sm-6">
 					<div class="btn-group">
@@ -161,7 +161,7 @@
 		</div>
 	</div>
 	<div class="form-actions">
-		<button type="submit" class="btn btn-primary" ng-click="ctrl.check(validationForm)" ng-disabled="!validationForm.$valid">Check</button>
+		<button type="submit" class="btn btn-primary" ng-click="ctrl.check(validationForm)" xxx-ng-disabled="!validationForm.$valid">Check</button>
 	</div>
 </form>
 <hr />
