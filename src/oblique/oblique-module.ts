@@ -63,11 +63,12 @@ angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
 	.directive('uibTypeahead', () => new UibTypeaheadDirective())
 	.directive('uibTypeaheadPopup', () => new UibTypeaheadPopupDirective())
 	.directive('hasError', () => new HasErrorDirective())
+	.service('schemaValidator', SchemaValidatorService)
 	.constant('schemaValidationConfig', new SchemaValidationConfig())
 	.directive('schemaValidation', ()=> new SchemaValidationDirective())
 	.directive('schemaValidate', ($log:LogDecorator,
 	                              $timeout:ng.ITimeoutService,
 	                              schemaValidator:SchemaValidatorService) => new SchemaValidateDirective($log, $timeout, schemaValidator))
-	.service('schemaValidator', SchemaValidatorService)
 	.service('unsavedChangesService', UnsavedChangesService)
+	.directive('unsavedChanges', (unsavedChangesService:UnsavedChangesService) => new UnsavedChangesDirective(unsavedChangesService))
 	.directive('backToTop', () => new BackToTopDirective);

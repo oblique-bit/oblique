@@ -102,7 +102,7 @@ angular
 		$authProvider.logoutRedirect = '/';
 		$authProvider.tokenPrefix = CONFIG.module; // Local Storage name prefix
 	})
-	.config((schemaValidationConfig:SchemaValidateConfig) => {
+	.config((schemaValidationConfig:SchemaValidationConfig) => {
 		/*schemaValidationConfig.customErrorReporter = (error, data, schema) => {
 			return 'error: ' + error.code;
 		};*/
