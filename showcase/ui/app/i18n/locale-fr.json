@@ -59,6 +59,9 @@
         },
         "unsavedChanges": {
           "title": "Unsaved Changes"
+        },
+        "hasError": {
+          "title": "Has Error"
         }
       },
       "admin": {

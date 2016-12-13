@@ -6,6 +6,7 @@ import {SchemaValidationModule} from './schema-validation/schema-validation-samp
 import {TypeaheadModule} from './typeahead/typeahead-sample-module';
 import {UiScrollModule} from './ui-scroll/ui-scroll-sample-module';
 import {UnsavedChangesModule} from './unsaved-changes/unsaved-changes-sample-module';
+import {HasErrorModule} from './has-error/has-error-sample-module';
 
 export const SamplesModule = '__MODULE__.samples';
 
@@ -13,6 +14,7 @@ angular
 	.module(SamplesModule, [
 		'ui.router',
 		DatepickerModule,
+		HasErrorModule,
 		MultiselectModule,
 		NavigableModule,
 		NavigatorModule,
