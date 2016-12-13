@@ -23,8 +23,6 @@ export class SchemaValidateDirective implements ng.IDirective {
 		let schema = params[2].schema;
 		let name:string = attrs.name;
 
-		let previouslyParsedViewValue:any;
-
 		if (!name) {
 			this.$log.warn(`Schema validation cannot be attached to a form control without a 'name' attribute. Ignoring...`);
 		} else if (!schema) {
@@ -41,7 +39,7 @@ export class SchemaValidateDirective implements ng.IDirective {
 			if (mandatory) {
 				// Delay mandatory activation to another digest cycle in order to ensure that model has been assigned:
 				this.$timeout(() => {
-					if (this.isModelEmpty(ngModel.$viewValue)) {
+					if (this.isModelEmpty(formControl.$viewValue)) {
 						element.parent().addClass('control-mandatory');
 					}
 				}, 0);
@@ -49,8 +47,6 @@ export class SchemaValidateDirective implements ng.IDirective {
 
 			// Validate against the schema:
 			let validate = (viewValue:any) => {
-
-				previouslyParsedViewValue = viewValue;
 
 				// Omit TV4 validation
 				if (scope.options && scope.options.tv4Validation === false) {
@@ -68,12 +64,12 @@ export class SchemaValidateDirective implements ng.IDirective {
 
 				// Since we might have different schema errors we must clear all
 				// errors that start with 'schema-':
-				Object.keys(ngModel.$error)
+				Object.keys(formControl.$error)
 					.filter((k) => {
 						return k.indexOf('schema-') === 0;
 					})
 					.forEach((k) => {
-						ngModel.$setValidity(k, true);
+						formControl.$setValidity(k, true);
 					});
 
 				if (!result.valid) {
@@ -89,23 +85,19 @@ export class SchemaValidateDirective implements ng.IDirective {
 			};
 
 			let revalidate = () => {
-				ngModel.$setDirty();
-
-				if (!previouslyParsedViewValue) {
-					previouslyParsedViewValue = ngModel.$modelValue || ngModel.$viewValue;
-				}
-				validate(previouslyParsedViewValue);
+				formControl.$setDirty();
+				validate(ngModel.$modelValue || ngModel.$viewValue);
 			};
 
 			// Get in last of the parses so the parsed value has the correct type.
 			// We don't use $validators since we like to set different errors depending tv4 error codes
-			ngModel.$parsers.push(validate);
+			formControl.$parsers.push(validate);
 
 			// Listen to an event so we can validate the form control on request:
 			scope.$on('schemaValidationEvent', revalidate);
 
 			scope.$root.$on('$translateChangeSuccess', () => {
-				if (ngModel.$invalid) {
+				if (formControl.$invalid) {
 					revalidate();
 				}
 			});
