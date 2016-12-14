@@ -23,6 +23,9 @@ export class HasErrorDirective implements ng.IDirective {
 				],
 				() => {
 					element.toggleClass('has-error', form[name].$invalid === true && (form.$submitted || form.$dirty || angular.isDefined(attrs.hasErrorPristine)));
+
+					// ARIA:
+					element.find('[name="' + name + '"]').attr('aria-invalid', form[name].$invalid);
 				}
 			);
 		}
