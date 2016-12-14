@@ -57,7 +57,7 @@
         "validation": {
           "title": "Validation",
           "validationState": {
-            "title": "Validation state (Has Error)  "
+            "title": "Validation state (aka HasError)"
           },
           "schemaValidation": {
             "title": "Schema Validation"

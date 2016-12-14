@@ -27,16 +27,17 @@ export class SchemaValidationSampleController {
 		this.data.date = Date.now();
 	}
 
-	check(form) {
-		if(!this.$scope.$broadcast('schemaValidationEvent').defaultPrevented) {
-			if (form.$valid) {
-				this.notificationService.success('Congratulations, form is valid!');
-			}
-		}
-	}
-
 	jsonSource(data) {
 		return '<pre>' + this.$filter('json')(data) + '</pre>';
 	}
 
+	check(form) {
+		if(!this.$scope.$broadcast('schemaValidationEvent').defaultPrevented) {
+			if (form.$valid) {
+				this.notificationService.success('Congratulations, your data is valid!');
+			} else {
+				this.notificationService.warn('Oups, your data does not look to be valid!');
+			}
+		}
+	}
 }

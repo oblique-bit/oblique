@@ -13,4 +13,3 @@ angular
         });
     })
     .controller('validationStateSampleController', ValidationStateSampleController);
-

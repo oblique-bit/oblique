@@ -56,7 +56,9 @@ export class DatepickerSampleController {
 
 	check(form) {
 		if (form.$valid) {
-			this.notificationService.success('Congratulations, form is valid!');
+			this.notificationService.success('Congratulations, your data is valid!');
+		} else {
+			this.notificationService.warn('Oups, your data does not look to be valid!');
 		}
 	}
 }
