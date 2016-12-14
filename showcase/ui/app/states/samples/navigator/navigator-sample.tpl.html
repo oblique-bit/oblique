@@ -1,5 +1,5 @@
 <h2 class="page-header">{{'i18n.states.samples.navigator.title' | translate}}</h2>
-<p class="lead">Navigate to the parent state (<code>UP</code> navigation) by clicking on the navigation button below or pressing the <kbd>ESC</kbd> key.</p>
+<p class="lead">Navigate to parent state (<code>UP</code> navigation) by clicking on the navigation button below or pressing the <kbd>ESC</kbd> key.</p>
 
 <div class="panel panel-default">
 	<div class="panel-heading">
@@ -12,7 +12,7 @@
 					<h3 class="nav-header-title">States Tree</h3>
 				</li>
 				<li role="presentation" class="open" ui-sref-active="active">
-					<a href="" ui-sref="samples.navigator" role="menuitem">Navigator Sample</a>
+					<a href="" ui-sref="samples.navigator" role="menuitem">Root state</a>
 					<ul id="nav-tree-level-1" class="nav">
 						<li role="presentation" ui-sref-active="active">
 							<a href="" ui-sref="samples.navigator.1" role="menuitem">Child state 1</a>
@@ -30,7 +30,7 @@
 											<a href="" ui-sref="samples.navigator.2.2.1" role="menuitem">Child state 2.2.1</a>
 										</li>
 										<li role="presentation" ui-sref-active="active">
-											<a href="" ui-sref="samples.navigator.2.2.2" role="menuitem">Child state 2.2.2 (navigates <em>UP</em> to Navigator Sample state)</a>
+											<a href="" ui-sref="samples.navigator.2.2.2" role="menuitem">Child state 2.2.2 (navigates <em>UP</em> directly to Root state)</a>
 										</li>
 										<li role="presentation" ui-sref-active="active">
 											<a href="" ui-sref="samples.navigator.2.2.3" role="menuitem">Child state 2.2.3</a>
@@ -61,21 +61,33 @@
 			</ul>
 		</div>
 		<div class="column-main default-layout">
+			<navigator class="btn btn-primary btn-md pull-right pull-over">
+				<span class="fa fa-chevron-up"></span>
+				<span>Go UP!</span>
+			</navigator>
 			<ul role="menu" class="nav nav-bordered nav-indented nav-tree">
 				<li class="nav-header" role="presentation">
-					<h3 class="nav-header-title">
-						<navigator class="btn btn-primary btn-xs">
-							<span class="fa fa-chevron-left"></span>
-							<span>Go UP!</span>
-						</navigator>
-						<span>&nbsp;State(s) Content</span>
-					</h3>
+					<h3 class="nav-header-title">Nested State(s) Content</h3>
 				</li>
 				<li>
-					<p class="lead"><a ui-sref="samples.navigator">Navigator Sample</a> <span ui-view></span></p>
+					<p class="lead">
+						<a ui-sref="samples.navigator" class="thumbnail well pull-left">Root state</a>
+						<span ui-view></span>
+					</p>
 				</li>
 			</ul>
 		</div>
 	</div>
 </div>
-
+<style type="text/css">
+	.pull-over {
+		z-index: 1;
+		position: relative;
+	}
+	.thumbnail + [ui-view] > span.ng-scope:not([ui-view]) {
+		float: left;
+		line-height: 54px;
+		display: inline-block;
+		padding: 10px;
+	}
+</style>

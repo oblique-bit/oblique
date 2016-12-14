@@ -3,96 +3,105 @@
 	<h2 class="page-header">
 		<span>Datepicker</span>
 	</h2>
-	<div class="form-group" has-error="date">
-		<label class="col-sm-4 col-lg-3 control-label">Date</label>
-		<div class="col-sm-8 col-lg-9">
-			<div class="row">
-				<div class="col-md-6">
-					<date-picker name="date" ng-model="ctrl.data.date" ng-required="true"
-					             ng-class="{'control-mandatory': datepickerForm.date.$error.required}"></date-picker>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Preview</h3>
+		</div>
+		<div class="panel-body">
+			<div class="form-group" has-error="date">
+				<label class="col-sm-4 col-lg-3 control-label">Date</label>
+				<div class="col-sm-8 col-lg-9">
+					<div class="row">
+						<div class="col-md-6">
+							<date-picker name="date" ng-model="ctrl.data.date" ng-required="true"
+							             ng-class="{'control-mandatory': datepickerForm.date.$error.required}"></date-picker>
+						</div>
+						<div class="col-md-6">
+							<div class="btn-group">
+								<button type="button" class="btn btn-info" ng-click="ctrl.today()" tooltip-append-to-body="true"
+								        uib-tooltip="Sets model to today's date using the standard JavaScript Date object">Today</button>
+								<button type="button" class="btn btn-info" ng-click="ctrl.toISO()" tooltip-append-to-body="true"
+								        uib-tooltip="Sets model to today's date using the ISO 8601 format">ISO</button>
+								<button type="button" class="btn btn-info" ng-click="ctrl.toTimestamp()" tooltip-append-to-body="true"
+								        uib-tooltip="Sets model to today's date using a timestamp">Timestamp</button>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="col-md-6">
-					<div class="btn-group">
-						<button type="button" class="btn btn-info" ng-click="ctrl.today()" tooltip-append-to-body="true"
-						        uib-tooltip="Sets model to today's date using the standard JavaScript Date object">Today</button>
-						<button type="button" class="btn btn-info" ng-click="ctrl.toISO()" tooltip-append-to-body="true"
-						        uib-tooltip="Sets model to today's date using the ISO 8601 format">ISO</button>
-						<button type="button" class="btn btn-info" ng-click="ctrl.toTimestamp()" tooltip-append-to-body="true"
-						        uib-tooltip="Sets model to today's date using a timestamp">Timestamp</button>
+			</div>
+			<div class="form-group" has-error>
+				<label class="col-sm-4 col-lg-3 control-label">Min / Max</label>
+				<div class="col-sm-8 col-lg-9">
+					<div class="row">
+						<div class="col-md-6">
+							<date-picker name="minMax" ng-model="ctrl.data.minMax.date" options="{'minDate': ctrl.data.minMax.min, 'maxDate': ctrl.data.minMax.max}"></date-picker>
+						</div>
+						<div class="col-md-6">
+							<div class="btn-group">
+								<button type="button" class="btn btn-warning" ng-click="ctrl.invalidMin()" tooltip-append-to-body="true"
+								        uib-tooltip="Sets model to some invalid date after the minimum limit">
+									<span class="fa fa-chevron-left"></span> Min
+								</button>
+								<button type="button" class="btn btn-warning" ng-click="ctrl.invalidMax()" tooltip-append-to-body="true"
+								        uib-tooltip="Sets model to some invalid date after the maximum limit">
+									<span class="fa fa-chevron-right"></span> Max
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group" has-error>
+				<label class="col-sm-4 col-lg-3 control-label">Range</label>
+				<div class="col-sm-8 col-lg-9">
+					<div class="row">
+						<div class="col-md-6">
+							<date-picker label="From" name="rangeFrom" ng-model="ctrl.data.range.from" options="{maxDate: ctrl.data.range.to}"></date-picker>
+						</div>
+						<div class="col-md-6" has-error="rangeTo">
+							<date-picker label="To" name="rangeTo" ng-model="ctrl.data.range.to" options="{minDate: ctrl.data.range.from}"></date-picker>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group" has-error>
+				<label class="col-sm-4 col-lg-3 control-label">Editable</label>
+				<div class="col-sm-8 col-lg-9">
+					<div class="row">
+						<div class="col-md-6">
+							<date-picker name="editable" ng-model="ctrl.data.editable.date" editable="ctrl.data.editable.enabled"></date-picker>
+						</div>
+						<div class="col-md-6">
+							<div class="btn-group">
+								<button type="button" class="btn btn-info" ng-click="ctrl.toggleEditable()" tooltip-append-to-body="true"
+								        uib-tooltip="Toggles manual edition of Datepicker input control. Date can still be selected usin Datepicker popup.">Toggle edition</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group" has-error>
+				<label class="col-sm-4 col-lg-3 control-label">Disabled</label>
+				<div class="col-sm-8 col-lg-9">
+					<div class="row">
+						<div class="col-md-6">
+							<date-picker name="disabled" ng-model="ctrl.data.disabled.date" ng-disabled="ctrl.data.disabled.enabled"></date-picker>
+						</div>
+						<div class="col-md-6">
+							<div class="btn-group">
+								<button type="button" class="btn btn-info" ng-click="ctrl.toggleDisabled()" tooltip-append-to-body="true"
+								        uib-tooltip="Enables/Disables Datepicker control. Date can not be updated until control gets enabled again.">Toggle disabled</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="form-group" has-error>
-		<label class="col-sm-4 col-lg-3 control-label">Min / Max</label>
-		<div class="col-sm-8 col-lg-9">
-			<div class="row">
-				<div class="col-md-6">
-					<date-picker name="minMax" ng-model="ctrl.data.minMax.date" options="{'minDate': ctrl.data.minMax.min, 'maxDate': ctrl.data.minMax.max}"></date-picker>
-				</div>
-				<div class="col-md-6">
-					<div class="btn-group">
-						<button type="button" class="btn btn-warning" ng-click="ctrl.invalidMin()" tooltip-append-to-body="true"
-						        uib-tooltip="Sets model to some invalid date after the minimum limit">
-							<span class="fa fa-chevron-left"></span> Min
-						</button>
-						<button type="button" class="btn btn-warning" ng-click="ctrl.invalidMax()" tooltip-append-to-body="true"
-						        uib-tooltip="Sets model to some invalid date after the maximum limit">
-							<span class="fa fa-chevron-right"></span> Max
-						</button>
-					</div>
-				</div>
+		<div class="panel-footer">
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary" ng-disabled="!datepickerForm.$valid && datepickerForm.$submitted">Check</button>
 			</div>
 		</div>
-	</div>
-	<div class="form-group" has-error>
-		<label class="col-sm-4 col-lg-3 control-label">Range</label>
-		<div class="col-sm-8 col-lg-9">
-			<div class="row">
-				<div class="col-md-6">
-					<date-picker label="From" name="rangeFrom" ng-model="ctrl.data.range.from" options="{maxDate: ctrl.data.range.to}"></date-picker>
-				</div>
-				<div class="col-md-6" has-error="rangeTo">
-					<date-picker label="To" name="rangeTo" ng-model="ctrl.data.range.to" options="{minDate: ctrl.data.range.from}"></date-picker>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="form-group" has-error>
-		<label class="col-sm-4 col-lg-3 control-label">Editable</label>
-		<div class="col-sm-8 col-lg-9">
-			<div class="row">
-				<div class="col-md-6">
-					<date-picker name="editable" ng-model="ctrl.data.editable.date" editable="ctrl.data.editable.enabled"></date-picker>
-				</div>
-				<div class="col-md-6">
-					<div class="btn-group">
-						<button type="button" class="btn btn-info" ng-click="ctrl.toggleEditable()" tooltip-append-to-body="true"
-						        uib-tooltip="Toggles manual edition of Datepicker input control. Date can still be selected usin Datepicker popup.">Toggle edition</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="form-group" has-error>
-		<label class="col-sm-4 col-lg-3 control-label">Disabled</label>
-		<div class="col-sm-8 col-lg-9">
-			<div class="row">
-				<div class="col-md-6">
-					<date-picker name="disabled" ng-model="ctrl.data.disabled.date" ng-disabled="ctrl.data.disabled.enabled"></date-picker>
-				</div>
-				<div class="col-md-6">
-					<div class="btn-group">
-						<button type="button" class="btn btn-info" ng-click="ctrl.toggleDisabled()" tooltip-append-to-body="true"
-						        uib-tooltip="Enables/Disables Datepicker control. Date can not be updated until control gets enabled again.">Toggle disabled</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="form-actions">
-		<button type="submit" class="btn btn-primary" ng-disabled="!datepickerForm.$valid && datepickerForm.$submitted">Check</button>
 	</div>
 </form>
 <hr />
