@@ -17,10 +17,8 @@ export class NavigableDirective implements ng.IDirective {
 	controllerAs = 'orNavigableController';
 
 	constructor(private $timeout:ng.ITimeoutService) {
-
 	}
 
-	//TODO: discuss splitting
 	link = (scope, element, attrs, navigable:NavigableDirectiveController) => {
 
 		let arrows = navigable.arrows;
@@ -92,7 +90,7 @@ export class NavigableDirective implements ng.IDirective {
 		});
 
 		/* Initialization ******************* */
-		if (navigable.navigableHighlight) {
+		if (navigable.navigableHighlight && scope.$eval(navigable.navigableHighlight)) {
 			this.$timeout(() => {
 				// Highlight element by selecting (with combination) it:
 				navigable.select(element, true);
@@ -100,7 +98,7 @@ export class NavigableDirective implements ng.IDirective {
 			});
 		}
 
-		if (navigable.navigableActivate) {
+		if (navigable.navigableActivate && scope.$eval(navigable.navigableActivate)) {
 			// Manually perform focus in order to activate the element and ensure it scrolls
 			// into view (if contained within a scrollable parent):
 			this.$timeout(() => element.focus());
@@ -108,38 +106,56 @@ export class NavigableDirective implements ng.IDirective {
 	};
 
 	/**
-	 * From jQuery UI: https://github.com/jquery/jquery-ui/blob/master/ui/core.js#L183
+	 * From jQuery UI: https://github.com/jquery/jquery-ui/blob/master/ui/focusable.js#L28
 	 *
 	 * @param element
-	 * @param isTabIndexNotNaN
+	 * @param hasTabindex
 	 * @returns {*}
 	 */
-	private focusable(element, isTabIndexNotNaN?) {
-		let map, mapName, img,
+	private focusable(element) {
+		let map, mapName, img, focusableIfVisible, fieldset,
 			nodeName = element.nodeName.toLowerCase();
-		if (nodeName === 'area') {
+		if (nodeName === "area") {
 			map = element.parentNode;
 			mapName = map.name;
-			if (!element.href || !mapName || map.nodeName.toLowerCase() !== 'map') {
+			if (!element.href || !mapName || map.nodeName.toLowerCase() !== "map") {
 				return false;
 			}
-			img = $('img[usemap=#' + mapName + ']')[0];
-			return !!img && this.visible(img);
+			img = $("img[usemap='#" + mapName + "']");
+			return img.length > 0 && img.is(":visible");
 		}
-		return ( /input|select|textarea|button|object/.test(nodeName) ?
-				!element.disabled :
-				nodeName === 'a' ?
-				element.href || isTabIndexNotNaN :
-					isTabIndexNotNaN) &&
-			// the element and all of its ancestors must be visible
-			this.visible(element);
+
+		if(/^(input|select|textarea|button|object)$/.test(nodeName)) {
+			focusableIfVisible = !element.disabled;
+
+			if(focusableIfVisible) {
+				// Form controls within a disabled fieldset are disabled.
+				// However, controls within the fieldset's legend do not get disabled.
+				// Since controls generally aren't placed inside legends, we skip
+				// this portion of the check.
+				fieldset = $(element).closest("fieldset")[0];
+				if ( fieldset ) {
+					focusableIfVisible = !fieldset.disabled;
+				}
+			}
+		} else if ( "a" === nodeName ) {
+			focusableIfVisible = element.href || $(element).attr('tabindex');
+		} else {
+			focusableIfVisible = $(element).attr('tabindex');
+		}
+
+		return focusableIfVisible && $(element).is(":visible") && this.visible($(element));
 	}
 
+	// Support: IE 8 only
+	// IE 8 doesn't resolve inherit to visible/hidden for computed values
 	private visible(element) {
-		return $.expr.filters.visible(element) && !$(element).parents().addBack().filter(function () {
-				//Typings are failing
-				return (<any>$).css(this, 'visibility') === 'hidden';
-			}).length;
+		let visibility = element.css("visibility");
+		while (visibility === "inherit") {
+			element = element.parent();
+			visibility = element.css("visibility");
+		}
+		return visibility !== "hidden";
 	}
 }
 
