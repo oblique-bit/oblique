@@ -17,7 +17,6 @@
     "karma-jasmine": "registry:dt/karma-jasmine#0.0.0+20160510010627",
     "lodash": "registry:dt/lodash#4.14.0+20161202060825",
     "moment": "registry:dt/moment#2.11.1+20161010105546",
-    "moment-node": "registry:dt/moment-node#2.11.1+20160511043338",
     "node": "registry:dt/node#6.0.0+20161212163245",
     "orchestrator": "registry:dt/orchestrator#0.0.0+20160708004655",
     "q": "registry:dt/q#0.0.0+20161119044246",

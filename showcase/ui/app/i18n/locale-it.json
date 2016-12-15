@@ -56,8 +56,8 @@
         },
         "validation": {
           "title": "Validation",
-          "validationState": {
-            "title": "Validation state (Has Error)  "
+          "formControl": {
+            "title": "Form Control"
           },
           "schemaValidation": {
             "title": "Schema Validation"

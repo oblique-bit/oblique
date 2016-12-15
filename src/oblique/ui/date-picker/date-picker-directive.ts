@@ -19,7 +19,7 @@ export class DatePickerDirective implements ng.IDirective {
 		disabled: '=?ngDisabled',
 		required: '=?ngRequired',
 		editable: '=?', // Manual edition
-		label: '@label',
+		label: '@',
 		name: '@',
 		controlId: '@',
 		controlSize: '@', // 'sm'

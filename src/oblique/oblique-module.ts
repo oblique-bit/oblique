@@ -21,13 +21,14 @@ import {NotificationServiceProvider} from './ui/notifications/notification-servi
 import {DatePickerPopupDirective} from './ui/date-picker/date-picker-popup-directive';
 import {UibTypeaheadPopupDirective} from './ui/typeahead-popup-directive';
 import {BackToTopDirective} from './ui/back-to-top/back-to-top-directive';
-import {HasErrorDirective} from './validation/has-error-directive';
 import {SchemaValidateDirective} from './validation/schema/schema-validate-directive';
 import {SchemaValidationConfig} from './validation/schema/schema-validation-config';
 import {SchemaValidationDirective} from './validation/schema/schema-validation-directive';
 import {SchemaValidatorService} from './validation/schema/schema-validator-service';
 import {UnsavedChangesService} from './validation/unsaved-changes-service';
 import {UnsavedChangesDirective} from './validation/unsaved-changes-directive';
+
+import {FormControlComponent} from './validation/form-control/form-control-component';
 
 // Make sure that required templates for oblique-reactive will be loaded (and bundled):
 import '../oblique-reactive-templates';
@@ -71,4 +72,7 @@ angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
 	                              schemaValidator:SchemaValidatorService) => new SchemaValidateDirective($log, $timeout, schemaValidator))
 	.service('unsavedChangesService', UnsavedChangesService)
 	.directive('unsavedChanges', (unsavedChangesService:UnsavedChangesService) => new UnsavedChangesDirective(unsavedChangesService))
-	.directive('backToTop', () => new BackToTopDirective);
+	.directive('backToTop', () => new BackToTopDirective)
+
+	.component('formControl', new FormControlComponent())
+;

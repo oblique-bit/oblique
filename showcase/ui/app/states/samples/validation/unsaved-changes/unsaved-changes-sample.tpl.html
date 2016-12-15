@@ -28,31 +28,31 @@
 							      ng-if="tabOneForm.$invalid">&nbsp;</span>
 						</uib-tab-heading>
 						<ng-form name="tabOneForm">
-							<div class="form-group" has-error>
+							<form-control class="form-group">
 								<label class="col-sm-4 control-label">Text</label>
 								<div class="col-sm-8">
 									<input name="text" type="text" class="form-control" ng-model="ctrl.one.text" />
 								</div>
 							</div>
-							<div class="form-group" has-error>
+							<form-control class="form-group">
 								<label class="col-sm-4 control-label">Number</label>
 								<div class="col-sm-8">
 									<input name="number" type="text" class="form-control" ng-model="ctrl.one.number" number-format />
 								</div>
 							</div>
-							<div class="form-group" has-error>
+							<form-control class="form-group">
 								<label class="col-sm-4 control-label">Integer</label>
 								<div class="col-sm-8">
 									<input name="integer" type="number" class="form-control"
 									       ng-model="ctrl.one.integer" />
 								</div>
 							</div>
-							<div class="form-group" has-error="date">
+							<form-control class="form-group">
 								<label class="col-sm-4 control-label">Date</label>
 								<div class="col-sm-4">
 									<date-picker name="date" ng-model="ctrl.one.date"></date-picker>
 								</div>
-							</div>
+							</form-control>
 							<div class="row" ng-if="ctrl.one">
 								<hr />
 								<label class="col-sm-4 control-label">Model data</label>
@@ -64,31 +64,31 @@
 					</uib-tab>
 					<uib-tab index="1" heading="Form Two (untracked)">
 						<ng-form name="tabTwoForm">
-							<div class="form-group" has-error>
+							<form-control class="form-group">
 								<label class="col-sm-4 control-label">Text</label>
 								<div class="col-sm-8">
 									<input name="text" type="text" class="form-control" ng-model="ctrl.two.text" />
 								</div>
 							</div>
-							<div class="form-group" has-error>
+							<form-control class="form-group">
 								<label class="col-sm-4 control-label">Number</label>
 								<div class="col-sm-8">
 									<input name="number" type="text" class="form-control" ng-model="ctrl.two.number" number-format />
 								</div>
 							</div>
-							<div class="form-group" has-error>
+							<form-control class="form-group">
 								<label class="col-sm-4 control-label">Integer</label>
 								<div class="col-sm-8">
 									<input name="integer" type="number" class="form-control"
 									       ng-model="ctrl.two.integer" />
 								</div>
 							</div>
-							<div class="form-group" has-error="date">
+							<form-control class="form-group">
 								<label class="col-sm-4 control-label">Date</label>
 								<div class="col-sm-4">
 									<date-picker name="date" ng-model="ctrl.two.date"></date-picker>
 								</div>
-							</div>
+							</form-control>
 							<div class="row" ng-if="ctrl.two">
 								<hr />
 								<label class="col-sm-4 control-label">Model data</label>
@@ -109,31 +109,31 @@
 							      ng-if="tabThreeForm.$invalid">&nbsp;</span>
 						</uib-tab-heading>
 						<ng-form name="tabThreeForm">
-							<div class="form-group" has-error>
+							<form-control class="form-group">
 								<label class="col-sm-4 control-label">Text</label>
 								<div class="col-sm-8">
 									<input name="text" type="text" class="form-control" ng-model="ctrl.three.text" />
 								</div>
 							</div>
-							<div class="form-group" has-error>
+							<form-control class="form-group">
 								<label class="col-sm-4 control-label">Number</label>
 								<div class="col-sm-8">
 									<input name="number" type="text" class="form-control" ng-model="ctrl.three.number" number-format />
 								</div>
 							</div>
-							<div class="form-group" has-error>
+							<form-control class="form-group">
 								<label class="col-sm-4 control-label">Integer</label>
 								<div class="col-sm-8">
 									<input name="integer" type="number" class="form-control"
 									       ng-model="ctrl.three.integer" />
 								</div>
 							</div>
-							<div class="form-group" has-error="date">
+							<form-control class="form-group">
 								<label class="col-sm-4 control-label">Date</label>
 								<div class="col-sm-4">
 									<date-picker name="date" ng-model="ctrl.three.date"></date-picker>
 								</div>
-							</div>
+							</form-control>
 							<div class="row" ng-if="ctrl.three">
 								<hr />
 								<label class="col-sm-4 control-label">Model data</label>

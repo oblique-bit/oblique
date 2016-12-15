@@ -8,7 +8,7 @@
 			<h3 class="panel-title">Preview</h3>
 		</div>
 		<div class="panel-body">
-			<div class="form-group" has-error="date">
+			<form-control class="form-group">
 				<label class="col-sm-4 col-lg-3 control-label">Date</label>
 				<div class="col-sm-8 col-lg-9">
 					<div class="row">
@@ -28,8 +28,8 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="form-group" has-error>
+			</form-control>
+			<form-control class="form-group">
 				<label class="col-sm-4 col-lg-3 control-label">Min / Max</label>
 				<div class="col-sm-8 col-lg-9">
 					<div class="row">
@@ -50,21 +50,23 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="form-group" has-error>
+			</form-control>
+			<form-control class="form-group">
 				<label class="col-sm-4 col-lg-3 control-label">Range</label>
 				<div class="col-sm-8 col-lg-9">
 					<div class="row">
 						<div class="col-md-6">
 							<date-picker label="From" name="rangeFrom" ng-model="ctrl.data.range.from" options="{maxDate: ctrl.data.range.to}"></date-picker>
 						</div>
-						<div class="col-md-6" has-error="rangeTo">
-							<date-picker label="To" name="rangeTo" ng-model="ctrl.data.range.to" options="{minDate: ctrl.data.range.from}"></date-picker>
+						<div class="col-md-6">
+							<form-control name="rangeTo">
+								<date-picker label="To" name="rangeTo" ng-model="ctrl.data.range.to" options="{minDate: ctrl.data.range.from}"></date-picker>
+							</form-control>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="form-group" has-error>
+			</form-control>
+			<form-control class="form-group">
 				<label class="col-sm-4 col-lg-3 control-label">Editable</label>
 				<div class="col-sm-8 col-lg-9">
 					<div class="row">
@@ -79,8 +81,8 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="form-group" has-error>
+			</form-control>
+			<form-control class="form-group">
 				<label class="col-sm-4 col-lg-3 control-label">Disabled</label>
 				<div class="col-sm-8 col-lg-9">
 					<div class="row">
@@ -95,7 +97,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</form-control>
 		</div>
 		<div class="panel-footer">
 			<div class="form-actions">

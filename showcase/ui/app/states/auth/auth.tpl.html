@@ -7,20 +7,20 @@
 			<div class="cover-content">
 				<form novalidate class="form-horizontal" role="form" name="loginForm" ng-submit="ctrl.login(loginForm)">
 					<h3 class="page-header">{{'i18n.states.auth.login.title' | translate}}</h3>
-					<div class="form-group" has-error>
+					<form-control class="form-group" mandatory="true">
 						<label class="col-sm-3 control-label">Email</label>
 						<div class="col-sm-9">
 							<input type="email" class="form-control" placeholder="Email"
 							       name="email" ng-model="ctrl.user.email" ng-required="true"/>
 						</div>
-					</div>
-					<div class="form-group" has-error>
+					</form-control>
+					<form-control class="form-group" mandatory="true">
 						<label class="col-sm-3 control-label">Password</label>
 						<div class="col-sm-9">
 							<input type="password" class="form-control" placeholder="Password"
 							       name="password" ng-model="ctrl.user.password" ng-required="true" />
 						</div>
-					</div>
+					</form-control>
 					<div class="form-group">
 						<div class="col-sm-offset-3 col-sm-9">
 							<div class="checkbox">
@@ -41,28 +41,28 @@
 				</form>
 				<form novalidate role="form" name="registerForm" ng-submit="ctrl.register(registerForm)">
 					<h3 class="page-header" translate translate-values="{'title': appController.title}">i18n.states.auth.register.title</h3>
-					<div class="form-group" has-error>
+					<form-control class="form-group" mandatory="true">
 						<input type="email" placeholder="Email" class="form-control"
-						       name="email" ng-model="ctrl.user.email" ng-required="registerForm.$submitted" />
-					</div>
-					<div class="form-group" has-error>
+						       name="email" ng-model="ctrl.user.email" ng-required="true" />
+					</form-control>
+					<form-control class="form-group" mandatory="true">
 						<input type="password" placeholder="Password" class="form-control"
-						       name="password" ng-model="ctrl.user.password" ng-required="registerForm.$submitted"/>
-					</div>
-					<div class="form-group" has-error>
+						       name="password" ng-model="ctrl.user.password" ng-required="true"/>
+					</form-control>
+					<form-control class="form-group" mandatory="true">
 						<input type="text" placeholder="First Name" class="form-control"
-						       name="firstname" ng-required="registerForm.$submitted" ng-model="ctrl.user.firstname"/>
-					</div>
-					<div class="form-group" has-error>
+						       name="firstname" ng-model="ctrl.user.firstname" ng-required="true"/>
+					</form-control>
+					<form-control class="form-group" mandatory="true">
 						<input type="text" placeholder="Last Name" class="form-control"
-						       name="lastname" ng-required="registerForm.$submitted" ng-model="ctrl.user.lastname"/>
-					</div>
-					<div class="form-group">
+						       name="lastname" ng-model="ctrl.user.lastname" ng-required="true"/>
+					</form-control>
+					<form-control class="form-group">
 						<button type="submit" class="btn btn-lg btn-primary btn-block" ng-disabled="!registerForm.$valid">
 							<span ng-if="ctrl.status.registering" class="fa fa-spinner fa-spin fade"></span>
 							<span translate="i18n.states.auth.register.submit"></span>
 						</button>
-					</div>
+					</form-control>
 				</form>
 			</div>
 		</div>

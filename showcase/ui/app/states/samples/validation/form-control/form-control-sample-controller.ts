@@ -1,6 +1,8 @@
 import {NotificationService} from 'oblique-reactive/oblique-reactive';
 
-export class ValidationStateSampleController {
+export class FormControlSampleController {
+
+	comp:number;
 
 	/*@ngInject*/
 	constructor(private notificationService: NotificationService) {

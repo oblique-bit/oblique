@@ -1,7 +1,7 @@
 ﻿<div>
-	<div class="input-group control-action datepicker" data-ng-class="{'input-group-sm' : controlSize == 'sm'}">
-		<label data-ng-if="label" for="{{orDatepickerCtrl.controlId}}" class="input-group-addon">{{orDatepickerCtrl.label}}</label>
-		<div class="control-action" data-ng-class="{'control-mandatory' : !ngModel && required}">
+	<div class="input-group control-action datepicker" data-ng-class="{'input-group-sm' : orDatepickerCtrl.controlSize == 'sm'}">
+		<label data-ng-if="orDatepickerCtrl.label" for="{{orDatepickerCtrl.controlId}}" class="input-group-addon">{{orDatepickerCtrl.label}}</label>
+		<div class="control-action" data-ng-class="{'control-mandatory' : !ngModel && orDatepickerCtrl.required}">
 			<input name="{{orDatepickerCtrl.name}}" type="text" class="form-control"
 			       placeholder="{{('i18n.common.date.format.' + orDatepickerCtrl.dpOptions.datepickerPopup) | translate}}"
 			       data-ng-attr-id="{{orDatepickerCtrl.controlId}}"
