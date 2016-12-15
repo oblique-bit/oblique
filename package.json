@@ -106,7 +106,6 @@
     "serve-static": "^1.11.1",
     "ts-node": "^1.7.2",
     "tslint": "^4.0.2",
-    "typedoc": "^0.5.1",
     "typescript": "^2.1.4",
     "typings": "^2.0.0",
     "vinyl-source-stream": "^1.1.0",
