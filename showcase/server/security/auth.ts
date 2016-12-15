@@ -17,7 +17,6 @@ module.exports = (config) => {
 			}
 
 			// Store user on request:
-			console.log(payload);
 			req.email = payload.email;
 
 			// Continue:

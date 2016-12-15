@@ -4,7 +4,7 @@
     "curly": false,
     "eofline": false,
     "indent": [
-      "spaces"
+      "tabs"
     ],
     "max-line-length": [
       false,
@@ -18,13 +18,12 @@
     ],
     "no-arg": true,
     "no-construct": true,
-    "no-duplicate-key": true,
     "no-duplicate-variable": true,
     "no-empty": true,
     "no-eval": true,
     "no-unused-expression": true,
+    "no-unused-new": true,
     "no-unused-variable": true,
-    "no-unreachable": true,
     "no-use-before-declare": true,
     "one-line": [
       true,

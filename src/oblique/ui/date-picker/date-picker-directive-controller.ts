@@ -1,7 +1,8 @@
 import {DatepickerPopupConfig} from './datepicker-config';
 
-export class DatePickerDirectiveController {
+export class DatePickerDirectiveController implements ng.IComponentController {
 	ngModel;
+	formControl:ng.INgModelController;
 
 	options:DatepickerPopupConfig;
 	dpOptions:DatepickerPopupConfig;
@@ -23,13 +24,16 @@ export class DatePickerDirectiveController {
 	constructor(private $scope,
 	            private uibDatepickerPopupConfig:DatepickerPopupConfig,
 	            private uibDateParser) {
-		this.dpOptions = angular.extend({}, uibDatepickerPopupConfig, this.options || {});
-		this.dpAltInputFormats = (uibDatepickerPopupConfig.altInputFormats || []).concat(this.altInputFormats || []);
+	}
+
+	$onInit() {
+		this.dpOptions = angular.extend({}, this.uibDatepickerPopupConfig, this.options || {});
+		this.dpAltInputFormats = (this.uibDatepickerPopupConfig.altInputFormats || []).concat(this.altInputFormats || []);
 		this.editable = angular.isDefined(this.editable) ? this.editable : true;
 		this.showClearControl = angular.isDefined(this.showClearControl) ? this.showClearControl : true;
 		this.opened = false;
 
-		$scope.$watchGroup(['orDatepickerCtrl.options.minDate', 'orDatepickerCtrl.options.maxDate'], (newValues, oldValues) => {
+		this.$scope.$watchGroup(['orDatepickerCtrl.options.minDate', 'orDatepickerCtrl.options.maxDate'], (newValues, oldValues) => {
 			if (!angular.equals(newValues, oldValues)) {
 				// Ensure min/max dates get parsed correctly:
 				this.parseMinMax();

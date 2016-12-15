@@ -1,4 +1,4 @@
-export class DelayedChangeDirectiveController {
+export class DelayedChangeDirectiveController implements ng.IComponentController {
 	ngModel;
 	delayedChange;
 	delay;
@@ -6,11 +6,14 @@ export class DelayedChangeDirectiveController {
 	private defaultDelay = 500;
 
 	/*@ngInject*/
-	constructor($scope) {
+	constructor(private $scope) {
+	}
+
+	$onInit() {
 		let timeout = null;
 		let delay = (this.delay && parseInt(this.delay, 10)) || this.defaultDelay;
 
-		$scope.$watch('orDelayedChangeCtrl.ngModel', (newValue, oldValue) => {
+		this.$scope.$watch('orDelayedChangeCtrl.ngModel', (newValue, oldValue) => {
 			if (!angular.equals(newValue, oldValue)) {
 
 				if (timeout) {

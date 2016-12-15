@@ -1,6 +1,6 @@
 import {MultiselectConfig} from './multiselect-config';
 
-export class MultiselectDirectiveController {
+export class MultiselectDirectiveController implements ng.IComponentController {
 	ngModel;
 	options;
 	settings;
@@ -10,12 +10,14 @@ export class MultiselectDirectiveController {
 	dropup:boolean;
 
 	/*@ngInject*/
-	constructor(private $filter:ng.IFilterService,
-	            multiselectConfig:MultiselectConfig) {
+	constructor(private $filter:ng.IFilterService, private multiselectConfig:MultiselectConfig) {
+	}
+
+	$onInit() {
 		// Configuration:
-		this.settings = angular.extend(multiselectConfig.extraSettings, this.extraSettings ? this.extraSettings() : {});
+		this.settings = angular.extend(this.multiselectConfig.extraSettings, this.extraSettings ? this.extraSettings() : {});
 		this.translations = angular.extend(
-			multiselectConfig.translationTexts,
+			this.multiselectConfig.translationTexts,
 			this.translationTexts ? this.translationTexts() : {}
 		);
 
