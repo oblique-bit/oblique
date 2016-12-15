@@ -45,7 +45,8 @@ export class ObliqueLog {
 		// Log to backend, if required:
 		if (this.apiLogPath && !this.isFailedBackendLogRequest(args)) {
 			let $http:HttpDecorator = this.$injector.get<HttpDecorator>('$http');
-			$http.api.post(this.apiLogPath, {level: level, message: message, silent: true});
+			$http.api.post(this.apiLogPath, {level: level, message: message, silent: true})
+				.catch(() => {/* Do Nothing */});
 		}
 	}
 

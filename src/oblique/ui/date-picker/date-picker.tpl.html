@@ -27,12 +27,12 @@
 			</button>
 		</span>
 	</div>
-	<div class="help-block" data-ng-if="formControl.$dirty && formControl.$error.required"
+	<div class="help-block" data-ng-if="orDatepickerCtrl.formControl.$dirty && orDatepickerCtrl.formControl.$error.required"
 	     translate="i18n.validation.basic.required"></div>
-	<div class="help-block" data-ng-if="formControl.$dirty && formControl.$error.date"
+	<div class="help-block" data-ng-if="orDatepickerCtrl.formControl.$dirty && orDatepickerCtrl.formControl.$error.date"
 	     translate="i18n.validation.date.format"></div>
-	<div class="help-block" data-ng-if="formControl.$error.minDate"
+	<div class="help-block" data-ng-if="orDatepickerCtrl.formControl.$error.minDate"
 	     translate="i18n.validation.date.min" translate-values="{minDate: orDatepickerCtrl.dpOptions.minDate}"></div>
-	<div class="help-block" data-ng-if="formControl.$error.maxDate"
+	<div class="help-block" data-ng-if="orDatepickerCtrl.formControl.$error.maxDate"
 	     translate="i18n.validation.date.max" translate-values="{maxDate: orDatepickerCtrl.dpOptions.maxDate}"></div>
 </div>

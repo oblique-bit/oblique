@@ -8,20 +8,20 @@
  */
 export class MultiselectDirective implements ng.IDirective {
 	restrict = 'E';
-	template = `<div    ng-dropdown-multiselect
-						options='orMultiselectCtrl.options'
-						selected-model='orMultiselectCtrl.ngModel'
-						checkboxes='true'
-						extra-settings='orMultiselectCtrl.settings'
-						translation-texts='orMultiselectCtrl.translations'></div>`;
+	template = `<div ng-dropdown-multiselect
+					 options='orMultiselectCtrl.options'
+					 selected-model='orMultiselectCtrl.ngModel'
+					 checkboxes='true'
+					 extra-settings='orMultiselectCtrl.settings'
+					 translation-texts='orMultiselectCtrl.translations'></div>`;
 	require = ['ngModel', 'multiselect'];
 	scope = {};
 	bindToController = {
-		ngModel: '=',    // The object the will contain the model for the selected items in the dropdown.
-		options: '=',    // The options for the dropdown.
-		extraSettings: '&?',   // See 'Settings' section on http://dotansimha.github.io/angularjs-dropdown-multiselect/
-		translationTexts: '&?',   // See 'Translation Texts' section on http://dotansimha.github.io/angularjs-dropdown-multiselect/
-		dropup: '='     // Defines if a dropup menu should be used instead on a dropdown
+		ngModel: '=',           // The object the will contain the model for the selected items in the dropdown.
+		options: '=',           // The options for the dropdown.
+		extraSettings: '&?',    // See 'Settings' section on http://dotansimha.github.io/angularjs-dropdown-multiselect/
+		translationTexts: '&?', // See 'Translation Texts' section on http://dotansimha.github.io/angularjs-dropdown-multiselect/
+		dropup: '='             // Defines if a dropup menu should be used instead on a dropdown
 	};
 	controller = MultiselectDirectiveController;
 	controllerAs = 'orMultiselectCtrl';

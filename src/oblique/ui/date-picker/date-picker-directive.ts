@@ -28,12 +28,11 @@ export class DatePickerDirective implements ng.IDirective {
 	controller = DatePickerDirectiveController;
 	controllerAs = 'orDatepickerCtrl';
 
-
 	link = (scope, element, attrs, controllers:any[]) => {
 		let controller:DatePickerDirectiveController = controllers[0];
 
-		// Expose form control to template:
-		scope.formControl = controllers[1][controller.name];
+		// Expose form control to directive controller:
+		controller.formControl = controllers[1][controller.name];
 
 		element.keydown((e) => {
 			let control = element.find('input[name=' + controller.name + ']');

@@ -21,7 +21,7 @@ export class DatePickerPopupDirective implements ng.IDirective {
 
 		let ngModel:ng.INgModelController = ctrls[0];
 		let datePicker = ctrls[1];
-        let dateFilter = this.dateFilter;
+		let dateFilter = this.dateFilter;
 
 		// Check for ISO model values:
 		if (this.uibDatepickerPopupConfig.modelAsIsoFormat) {
@@ -77,8 +77,8 @@ export class DatePickerPopupDirective implements ng.IDirective {
 			};
 		}
 
-        function compare(date1, date2) {
-            return new Date(date1.getFullYear(), date1.getMonth(), date1.getDate()).valueOf() - new Date(date2.getFullYear(), date2.getMonth(), date2.getDate()).valueOf();
-        }
+		function compare(date1, date2) {
+			return new Date(date1.getFullYear(), date1.getMonth(), date1.getDate()).valueOf() - new Date(date2.getFullYear(), date2.getMonth(), date2.getDate()).valueOf();
+		}
 	};
 }

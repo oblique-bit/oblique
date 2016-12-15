@@ -1,6 +1,5 @@
 {
   "name": "oblique-reactive",
-  "dependencies": {},
   "globalDependencies": {
     "angular": "registry:dt/angular#1.5.0+20160802155123",
     "angular-animate": "registry:dt/angular-animate#1.5.0+20160709061515",

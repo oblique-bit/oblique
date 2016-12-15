@@ -38,12 +38,14 @@ export class DatepickerSampleController {
 		this.data.date = Date.now();
 	}
 
-	invalidMin() {
+	invalidMin(ngModelCtrl: ng.INgModelController) {
 		this.data.minMax.date = moment(this.data.minMax.min).subtract(1, 'd').toDate();
+		ngModelCtrl.$setDirty();
 	}
 
-	invalidMax() {
+	invalidMax(ngModelCtrl: ng.INgModelController) {
 		this.data.minMax.date = moment(this.data.minMax.max).add(1, 'd').toDate();
+		ngModelCtrl.$setDirty();
 	}
 
 	toggleEditable() {

@@ -1,4 +1,4 @@
-export class NavigableDirectiveController {
+export class NavigableDirectiveController implements ng.IComponentController {
 	model;
 	navigableSelection:any[] = [];
 	navigableHighlight:boolean;
@@ -14,6 +14,9 @@ export class NavigableDirectiveController {
 	/*@ngInject*/
 	constructor(private $element:ng.IRootElementService,
 	            private $scope) {
+	}
+
+	$onInit() {
 		this.navigableOnActivation = this.navigableOnActivation || angular.noop;
 		this.navigableOnMove = this.navigableOnMove || angular.noop;
 	}
