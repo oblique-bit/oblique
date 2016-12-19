@@ -38,6 +38,7 @@
 		project = require('./project.conf.ts'),
 		paths = {
 			src: 'src/',
+			less: 'src/less/',
 			modules: 'node_modules/',
 			typings: 'typings/',
 			min: project.build.target + 'min/',
@@ -224,11 +225,11 @@
 	});
 
 	/**
-	 * copy-ts-publish: copies compiled ts into publish folder.
+	 * copy-publish: copies compiled ts into publish folder.
 	 *
 	 * Plugins: [NONE]
 	 */
-	gulp.task('copy-ts-publish', () => {
+	gulp.task('copy-publish', () => {
 		let path = paths.staging + 'src/';
 		return gulp.src(
 			['**/*'],
@@ -267,7 +268,10 @@
 			// 2. Build the templates module
 			'build-templates',
 
-			// 3. Copy compiled files to the correct output folders:
+			// 3. Build CSS sources
+			'build-styles',
+
+			// 4. Copy compiled files to the correct output folders:
 			'build-sources-copy',
 
 			done
@@ -313,7 +317,7 @@
 
 	gulp.task('build-sources-copy', () => {
 		return gulp.src(
-			paths.staging + paths.src + '**/*.js',
+			paths.staging + paths.src + '**/*.*',
 			{base: paths.staging + paths.src}
 		).pipe(gulp.dest(paths.target.vendor + 'oblique-reactive'));
 	});
@@ -583,6 +587,18 @@
 	});
 
 	/**
+	 * build-styles: generates CSS files for oblique-reactive
+	 *
+	 * Plugins:
+	 *  - `less`: https://github.com/plus3network/gulp-less
+	 */
+	gulp.task('build-styles', () => {
+		return gulp.src(paths.less + 'oblique-reactive.less')
+			.pipe(less({paths: paths.less}))
+			.pipe(gulp.dest(paths.staging + paths.src + 'css/'));
+	});
+
+	/**
 	 * showcase-build-html: composes HTML pages from Handlebars resources
 	 *
 	 * Plugins:
@@ -673,7 +689,8 @@
 			'build-tslint',
 			'build-sources-compile',
 			'build-templates',
-			'copy-ts-publish',
+			'build-styles',
+			'copy-publish',
 			'bundle-oblique',
 			'publish-package',
 			'publish-module',
@@ -758,7 +775,8 @@
 			'build-tslint',
 			'build-sources-compile',
 			'build-templates',
-			'copy-ts-publish',
+			'build-styles',
+			'copy-publish',
 			'bundle-oblique',
 			'publish-package',
 			'npm-link',
