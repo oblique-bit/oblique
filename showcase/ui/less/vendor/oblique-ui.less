@@ -1,15 +1,15 @@
+@vendor-path: '../../';
+
+@import '@{vendor-path}../node_modules/oblique-ui/less/variables.less';
+
 .application {
 	// Cover background image:
 	&.has-cover {
 		background-image: url('../images/cover-background.jpg');
 	}
-
-	// Ensure notifications stay within content viewport:
-	.application-content > .application-content-viewport {
-		position: relative;
-	}
 }
 
+// This can safely be removed:
 .navbar-controls {
 	.user-picture {
 		border: none;
@@ -17,7 +17,7 @@
 		height: 42px;
 		width: 42px;
 		vertical-align: middle;
-		.border-radius(50%);
+		border-radius: 50%;
 
 		&.control-icon {
 			padding: 5px;
@@ -27,16 +27,12 @@
 	}
 }
 
-.form-control-activable, .form-control-activable:hover {
-	cursor: pointer !important;
-}
-
-// This can safely be removed:
 .oblique {
 	font-style: oblique; // ;)
 
 	> img.small {
 		width: 44px;
+
 	}
 
 	> span {
@@ -48,6 +44,7 @@
 		}
 	}
 }
+
 .bootstrap {
 	span {
 		vertical-align: middle;
@@ -64,24 +61,5 @@
 		line-height: 44px;
 		font-size: 30px;
 		padding: 2px 14px;
-	}
-}
-
-// TODO: report to ObliqueUI:
-.notification-container {
-	overflow-x: hidden;
-}
-
-@media (min-width: @grid-float-breakpoint) {
-
-	.column-layout {
-		padding: 0;
-	}
-
-	// .column-layout min-height only under .application-content-viewport
-	.panel-body.column-layout {
-		.column-main, .column-left, .column-right {
-			min-height: auto;
-		}
 	}
 }
