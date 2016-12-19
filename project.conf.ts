@@ -100,7 +100,8 @@ module.exports = {
 			],
 			css: [
 				'angular/angular-csp.css',
-				'animate.css/animate.css'
+				'animate.css/animate.css',
+				'oblique-reactive/css/oblique-reactive.css'
 			],
 			assets: [],
 			dev: [
