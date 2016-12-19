@@ -4,8 +4,6 @@ import {exceptionHandlerDecorator} from './infrastructure/exception-handler-deco
 import {httpDecorator} from './infrastructure/http-decorator';
 import {HttpInterceptor} from './infrastructure/http-interceptor';
 import {logDecorator, LogDecorator} from './infrastructure/log-decorator';
-import {NavigatorDirective} from './navigator/navigator-directive';
-import {NavigatorService} from './navigator/navigator-service';
 import {LoadingServiceProvider} from './status/loading-service-provider';
 import {DelayedChangeDirective} from './ui/delayed-change-directive';
 import {DropdownClosableDirective} from './ui/dropdown-closable-directive';
@@ -14,6 +12,7 @@ import {GiveMeFocusDirective} from './ui/give-me-focus-directive';
 import {MultiselectConfig} from './ui/multiselect/multiselect-config';
 import {NavigableDirective} from './ui/navigable-directive';
 import {UibTypeaheadDirective} from './ui/typeahead-directive';
+import {NavigatorService} from './navigator/navigator-service';
 import {NotificationServiceProvider} from './ui/notifications/notification-service-provider';
 import {DatePickerPopupDirective} from './ui/date-picker/date-picker-popup-directive';
 import {UibTypeaheadPopupDirective} from './ui/typeahead-popup-directive';
@@ -27,6 +26,7 @@ import {UnsavedChangesDirective} from './validation/unsaved-changes-directive';
 import {DatePickerComponent} from './ui/date-picker/date-picker-component';
 import {FormControlComponent} from './validation/form-control/form-control-component';
 import {MultiselectComponent} from './ui/multiselect/multiselect-component';
+import {NavigatorComponent} from './navigator/navigator-component';
 import {NotificationsComponent} from './ui/notifications/notifications-component';
 import {TopControlComponent} from './ui/top-control/top-control-component';
 
@@ -43,8 +43,6 @@ angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
 	.decorator('$http', httpDecorator)
 	.service('HttpInterceptor', HttpInterceptor)
 	.decorator('$log', logDecorator)
-	.directive('navigator', ($document:ng.IDocumentService) => new NavigatorDirective($document))
-	.service('$navigator', NavigatorService)
 	.provider('loadingService', () => new LoadingServiceProvider())
 	.directive('uibDatepickerPopup', (dateFilter, uibDateParser, uibDatepickerPopupConfig) => new DatePickerPopupDirective(
 		dateFilter,
@@ -74,5 +72,7 @@ angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
 	.component('formControl', new FormControlComponent())
 	.constant('multiselectConfig', new MultiselectConfig())
 	.component('multiselect', new MultiselectComponent())
+	.service('$navigator', NavigatorService)
+	.component('navigator', new NavigatorComponent())
 	.component('notifications', new NotificationsComponent())
 ;
