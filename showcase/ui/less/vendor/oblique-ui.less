@@ -70,6 +70,10 @@
 // TODO: report to ObliqueUI:
 .notification-container {
 	overflow-x: hidden;
+
+	.alert:last-child {
+		margin-bottom: 5px; // Reserve spacing for box shadow!
+	}
 }
 
 @media (min-width: @grid-float-breakpoint) {

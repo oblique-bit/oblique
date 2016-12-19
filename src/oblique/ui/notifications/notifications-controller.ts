@@ -1,6 +1,6 @@
 import {NotificationService} from './notification-service';
 
-export class NotificationsDirectiveController {
+export class NotificationsController implements ng.IComponentController {
 	notifications:any [];
 
 	alertType = {

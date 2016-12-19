@@ -7,19 +7,16 @@ import {logDecorator, LogDecorator} from './infrastructure/log-decorator';
 import {NavigatorDirective} from './navigator/navigator-directive';
 import {NavigatorService} from './navigator/navigator-service';
 import {LoadingServiceProvider} from './status/loading-service-provider';
-import {NotificationsDirective} from './ui/notifications/notifications-directive';
 import {DelayedChangeDirective} from './ui/delayed-change-directive';
 import {DropdownClosableDirective} from './ui/dropdown-closable-directive';
 import {EnterDirective} from './ui/enter-directive';
 import {GiveMeFocusDirective} from './ui/give-me-focus-directive';
-import {MultiselectComponent} from './ui/multiselect/multiselect-component';
 import {MultiselectConfig} from './ui/multiselect/multiselect-config';
 import {NavigableDirective} from './ui/navigable-directive';
 import {UibTypeaheadDirective} from './ui/typeahead-directive';
 import {NotificationServiceProvider} from './ui/notifications/notification-service-provider';
 import {DatePickerPopupDirective} from './ui/date-picker/date-picker-popup-directive';
 import {UibTypeaheadPopupDirective} from './ui/typeahead-popup-directive';
-import {TopControlComponent} from './ui/top-control/top-control-component';
 import {SchemaValidateDirective} from './validation/schema/schema-validate-directive';
 import {SchemaValidationConfig} from './validation/schema/schema-validation-config';
 import {SchemaValidationDirective} from './validation/schema/schema-validation-directive';
@@ -29,6 +26,9 @@ import {UnsavedChangesDirective} from './validation/unsaved-changes-directive';
 
 import {DatePickerComponent} from './ui/date-picker/date-picker-component';
 import {FormControlComponent} from './validation/form-control/form-control-component';
+import {MultiselectComponent} from './ui/multiselect/multiselect-component';
+import {NotificationsComponent} from './ui/notifications/notifications-component';
+import {TopControlComponent} from './ui/top-control/top-control-component';
 
 // Make sure that required templates for oblique-reactive will be loaded (and bundled):
 import '../oblique-reactive-templates';
@@ -52,7 +52,6 @@ angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
 		uibDatepickerPopupConfig
 	))
 	.provider('notificationService', () => new NotificationServiceProvider())
-	.directive('notifications', () => new NotificationsDirective())
 	.directive('delayedChange', () => new DelayedChangeDirective())
 	.directive('dropdownClosable', ($timeout:ng.ITimeoutService) => new DropdownClosableDirective($timeout))
 	.directive('enter', () => new EnterDirective())
@@ -75,4 +74,5 @@ angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
 	.component('formControl', new FormControlComponent())
 	.constant('multiselectConfig', new MultiselectConfig())
 	.component('multiselect', new MultiselectComponent())
+	.component('notifications', new NotificationsComponent())
 ;
