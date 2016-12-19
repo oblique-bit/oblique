@@ -26,7 +26,7 @@ export class FormControlController implements ng.IComponentController {
 			let name = this.name || this.$element.find('[name]').attr('name');
 
 			if (name && this.formCtrl[name]) {
-				var formControl:ng.INgModelController = this.formCtrl[name];
+				let formControl:ng.INgModelController = this.formCtrl[name];
 				this.$scope.$watchGroup(
 					[
 						() => {return formControl.$invalid;},

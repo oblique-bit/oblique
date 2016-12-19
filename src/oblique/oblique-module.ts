@@ -7,7 +7,6 @@ import {logDecorator, LogDecorator} from './infrastructure/log-decorator';
 import {NavigatorDirective} from './navigator/navigator-directive';
 import {NavigatorService} from './navigator/navigator-service';
 import {LoadingServiceProvider} from './status/loading-service-provider';
-import {DatePickerDirective} from './ui/date-picker/date-picker-directive';
 import {NotificationsDirective} from './ui/notifications/notifications-directive';
 import {DelayedChangeDirective} from './ui/delayed-change-directive';
 import {DropdownClosableDirective} from './ui/dropdown-closable-directive';
@@ -28,6 +27,7 @@ import {SchemaValidatorService} from './validation/schema/schema-validator-servi
 import {UnsavedChangesService} from './validation/unsaved-changes-service';
 import {UnsavedChangesDirective} from './validation/unsaved-changes-directive';
 
+import {DatePickerComponent} from './ui/date-picker/date-picker-component';
 import {FormControlComponent} from './validation/form-control/form-control-component';
 
 // Make sure that required templates for oblique-reactive will be loaded (and bundled):
@@ -46,7 +46,6 @@ angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
 	.directive('navigator', ($document:ng.IDocumentService) => new NavigatorDirective($document))
 	.service('$navigator', NavigatorService)
 	.provider('loadingService', () => new LoadingServiceProvider())
-	.directive('datePicker', () => new DatePickerDirective())
 	.directive('uibDatepickerPopup', (dateFilter, uibDateParser, uibDatepickerPopupConfig) => new DatePickerPopupDirective(
 		dateFilter,
 		uibDateParser,
@@ -63,7 +62,6 @@ angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
 	.directive('navigable', ($timeout:ng.ITimeoutService) => new NavigableDirective($timeout))
 	.directive('uibTypeahead', () => new UibTypeaheadDirective())
 	.directive('uibTypeaheadPopup', () => new UibTypeaheadPopupDirective())
-	.directive('hasError', () => new HasErrorDirective())
 	.service('schemaValidator', SchemaValidatorService)
 	.constant('schemaValidationConfig', new SchemaValidationConfig())
 	.directive('schemaValidation', ()=> new SchemaValidationDirective())
@@ -74,5 +72,7 @@ angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
 	.directive('unsavedChanges', (unsavedChangesService:UnsavedChangesService) => new UnsavedChangesDirective(unsavedChangesService))
 	.directive('backToTop', () => new BackToTopDirective)
 
+	// AngularJS component-based:
+	.component('datePicker', new DatePickerComponent())
 	.component('formControl', new FormControlComponent())
 ;

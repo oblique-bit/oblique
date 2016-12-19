@@ -1,4 +1,4 @@
-export * from './date-picker-directive';
-export * from './date-picker-directive-controller';
+export * from './date-picker-component';
+export * from './date-picker-controller';
 export * from './date-picker-popup-directive';
 export * from './datepicker-config';

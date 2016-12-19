@@ -1,8 +1,11 @@
 import {DatepickerPopupConfig} from './datepicker-config';
 
-export class DatePickerDirectiveController implements ng.IComponentController {
+export class DatePickerController implements ng.IComponentController {
+	// Requires:
+	formCtrl:ng.INgModelController;
+
+	// Bindings:
 	ngModel;
-	formControl:ng.INgModelController;
 
 	options:DatepickerPopupConfig;
 	dpOptions:DatepickerPopupConfig;
@@ -20,23 +23,43 @@ export class DatePickerDirectiveController implements ng.IComponentController {
 
 	opened:boolean;
 
+	// Scope:
+	formControl:ng.INgModelController;
+
 	/*@ngInject*/
 	constructor(private $scope,
+	            private $element,
+	            private $timeout:ng.ITimeoutService,
 	            private uibDatepickerPopupConfig:DatepickerPopupConfig,
 	            private uibDateParser) {
+		console.log(this);
 	}
 
 	$onInit() {
+		// Expose form control to component view:
+		this.$timeout(() => {
+			this.formControl = this.formCtrl[this.name];
+		});
+
+		// Bind options & configuration:
 		this.dpOptions = angular.extend({}, this.uibDatepickerPopupConfig, this.options || {});
 		this.dpAltInputFormats = (this.uibDatepickerPopupConfig.altInputFormats || []).concat(this.altInputFormats || []);
 		this.editable = angular.isDefined(this.editable) ? this.editable : true;
 		this.showClearControl = angular.isDefined(this.showClearControl) ? this.showClearControl : true;
 		this.opened = false;
 
+		// Events:
 		this.$scope.$watchGroup(['orDatepickerCtrl.options.minDate', 'orDatepickerCtrl.options.maxDate'], (newValues, oldValues) => {
 			if (!angular.equals(newValues, oldValues)) {
 				// Ensure min/max dates get parsed correctly:
 				this.parseMinMax();
+			}
+		});
+
+		this.$element.keydown((e) => {
+			let control = this.$element.find('input[name=' + this.name + ']');
+			if (angular.element(e.target).is(control) && e.keyCode === 40) { // 40: ArrowDown
+				this.toggle(e);
 			}
 		});
 
