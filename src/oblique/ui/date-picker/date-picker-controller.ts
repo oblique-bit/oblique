@@ -32,7 +32,6 @@ export class DatePickerController implements ng.IComponentController {
 	            private $timeout:ng.ITimeoutService,
 	            private uibDatepickerPopupConfig:DatepickerPopupConfig,
 	            private uibDateParser) {
-		console.log(this);
 	}
 
 	$onInit() {

@@ -12,7 +12,7 @@ import {DelayedChangeDirective} from './ui/delayed-change-directive';
 import {DropdownClosableDirective} from './ui/dropdown-closable-directive';
 import {EnterDirective} from './ui/enter-directive';
 import {GiveMeFocusDirective} from './ui/give-me-focus-directive';
-import {MultiselectDirective} from './ui/multiselect/multiselect-directive';
+import {MultiselectComponent} from './ui/multiselect/multiselect-component';
 import {MultiselectConfig} from './ui/multiselect/multiselect-config';
 import {NavigableDirective} from './ui/navigable-directive';
 import {UibTypeaheadDirective} from './ui/typeahead-directive';
@@ -57,8 +57,6 @@ angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
 	.directive('dropdownClosable', ($timeout:ng.ITimeoutService) => new DropdownClosableDirective($timeout))
 	.directive('enter', () => new EnterDirective())
 	.directive('giveMeFocus', () => new GiveMeFocusDirective())
-	.constant('multiselectConfig', new MultiselectConfig())
-	.directive('multiselect', () => new MultiselectDirective())
 	.directive('navigable', ($timeout:ng.ITimeoutService) => new NavigableDirective($timeout))
 	.directive('uibTypeahead', () => new UibTypeaheadDirective())
 	.directive('uibTypeaheadPopup', () => new UibTypeaheadPopupDirective())
@@ -75,4 +73,6 @@ angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
 	// AngularJS component-based:
 	.component('datePicker', new DatePickerComponent())
 	.component('formControl', new FormControlComponent())
+	.constant('multiselectConfig', new MultiselectConfig())
+	.component('multiselect', new MultiselectComponent())
 ;
