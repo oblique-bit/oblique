@@ -186,7 +186,7 @@
       "buttonDefault": "Wählen bitte.",
       "allSelected": "Alle Elemente wurden selektiert."
     },
-    "backToTop": {
+    "topControl": {
       "backToTop": "Zum Seitenanfang"
     }
   }

@@ -1,7 +1,7 @@
 export * from './date-picker/index';
 export * from './multiselect/index';
 export * from './notifications/index';
-export * from './back-to-top/index';
+export * from './top-control/index';
 
 export * from './delayed-change-directive';
 export * from './delayed-change-directive-controller';

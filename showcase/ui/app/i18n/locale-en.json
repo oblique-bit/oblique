@@ -186,7 +186,7 @@
       "buttonDefault": "Select please.",
       "allSelected": "All elements have been selected."
     },
-    "backToTop": {
+    "topControl": {
       "backToTop": "Back to top"
     }
   }

@@ -19,7 +19,7 @@ import {UibTypeaheadDirective} from './ui/typeahead-directive';
 import {NotificationServiceProvider} from './ui/notifications/notification-service-provider';
 import {DatePickerPopupDirective} from './ui/date-picker/date-picker-popup-directive';
 import {UibTypeaheadPopupDirective} from './ui/typeahead-popup-directive';
-import {BackToTopDirective} from './ui/back-to-top/back-to-top-directive';
+import {TopControlComponent} from './ui/top-control/top-control-component';
 import {SchemaValidateDirective} from './validation/schema/schema-validate-directive';
 import {SchemaValidationConfig} from './validation/schema/schema-validation-config';
 import {SchemaValidationDirective} from './validation/schema/schema-validation-directive';
@@ -68,9 +68,9 @@ angular.module(ObliqueModule, ['oblique-reactive.app-templates'])
 	                              schemaValidator:SchemaValidatorService) => new SchemaValidateDirective($log, $timeout, schemaValidator))
 	.service('unsavedChangesService', UnsavedChangesService)
 	.directive('unsavedChanges', (unsavedChangesService:UnsavedChangesService) => new UnsavedChangesDirective(unsavedChangesService))
-	.directive('backToTop', () => new BackToTopDirective)
 
 	// AngularJS component-based:
+	.component('topControl', new TopControlComponent())
 	.component('datePicker', new DatePickerComponent())
 	.component('formControl', new FormControlComponent())
 	.constant('multiselectConfig', new MultiselectConfig())
