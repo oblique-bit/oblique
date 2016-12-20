@@ -676,7 +676,9 @@
 	//</editor-fold>
 
 	//<editor-fold desc="Deployment tasks">
-	require('gulp-release-flows')(gulp); // Imports 'build:release-*' tasks
+	require('gulp-release-flows')({
+		branch: 'HEAD:master'
+	}); // Imports 'build:release-*' tasks
 
 	/*
 	 * Releases & publishes the `oblique-ui` module in the internal npm registry.
