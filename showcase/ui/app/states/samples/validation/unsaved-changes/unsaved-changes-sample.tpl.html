@@ -16,141 +16,139 @@
 			<h3 class="panel-title">Preview</h3>
 		</div>
 		<div class="panel-body">
-				<uib-tabset>
-					<uib-tab index="0" deselect="orUnsavedChangesController.check($event, tabOneForm)">
-						<uib-tab-heading>
-							<span>Form One</span>
-							<span class="fa fa-check text-success"
-							      ng-if="!tabOneForm.$dirty">&nbsp;</span>
-							<span class="fa fa-save text-warning" uib-tooltip="Form tab contains unsaved changes" tooltip-placement="bottom"
-							      ng-if="tabOneForm.$dirty">&nbsp;</span>
-							<span class="fa fa-warning text-danger" uib-tooltip="Form tab contains invalid fields" tooltip-placement="bottom"
-							      ng-if="tabOneForm.$invalid">&nbsp;</span>
-						</uib-tab-heading>
-						<ng-form name="tabOneForm">
-							<form-control class="form-group">
-								<label class="col-sm-4 control-label">Text</label>
-								<div class="col-sm-8">
-									<input name="text" type="text" class="form-control" ng-model="ctrl.one.text" />
-								</div>
+			<uib-tabset>
+				<uib-tab index="0" deselect="orUnsavedChangesController.check($event, tabOneForm)">
+					<uib-tab-heading>
+						<span>Form One</span>
+						<span class="fa fa-check text-success"
+						      ng-if="!tabOneForm.$dirty">&nbsp;</span>
+						<span class="fa fa-save text-warning" uib-tooltip="Form tab contains unsaved changes" tooltip-placement="bottom"
+						      ng-if="tabOneForm.$dirty">&nbsp;</span>
+						<span class="fa fa-warning text-danger" uib-tooltip="Form tab contains invalid fields" tooltip-placement="bottom"
+						      ng-if="tabOneForm.$invalid">&nbsp;</span>
+					</uib-tab-heading>
+					<ng-form name="tabOneForm">
+						<form-control class="form-group">
+							<label class="col-sm-4 control-label">Text</label>
+							<div class="col-sm-8">
+								<input name="text" type="text" class="form-control" ng-model="ctrl.one.text" />
 							</div>
-							<form-control class="form-group">
-								<label class="col-sm-4 control-label">Number</label>
-								<div class="col-sm-8">
-									<input name="number" type="text" class="form-control" ng-model="ctrl.one.number" number-format />
-								</div>
+						</form-control>
+						<form-control class="form-group">
+							<label class="col-sm-4 control-label">Number</label>
+							<div class="col-sm-8">
+								<input name="number" type="text" class="form-control" ng-model="ctrl.one.number" number-format />
 							</div>
-							<form-control class="form-group">
-								<label class="col-sm-4 control-label">Integer</label>
-								<div class="col-sm-8">
-									<input name="integer" type="number" class="form-control"
-									       ng-model="ctrl.one.integer" />
-								</div>
+						</form-control>
+						<form-control class="form-group">
+							<label class="col-sm-4 control-label">Integer</label>
+							<div class="col-sm-8">
+								<input name="integer" type="number" class="form-control"
+								       ng-model="ctrl.one.integer" />
 							</div>
-							<form-control class="form-group">
-								<label class="col-sm-4 control-label">Date</label>
-								<div class="col-sm-4">
-									<date-picker name="date" ng-model="ctrl.one.date"></date-picker>
-								</div>
-							</form-control>
-							<div class="row" ng-if="ctrl.one">
-								<hr />
-								<label class="col-sm-4 control-label">Model data</label>
-								<div class="col-sm-8">
-									<pre>{{ctrl.one | json}}</pre>
-								</div>
+						</form-control>
+						<form-control class="form-group">
+							<label class="col-sm-4 control-label">Date</label>
+							<div class="col-sm-4">
+								<date-picker name="date" ng-model="ctrl.one.date"></date-picker>
 							</div>
-						</ng-form>
-					</uib-tab>
-					<uib-tab index="1" heading="Form Two (untracked)">
-						<ng-form name="tabTwoForm">
-							<form-control class="form-group">
-								<label class="col-sm-4 control-label">Text</label>
-								<div class="col-sm-8">
-									<input name="text" type="text" class="form-control" ng-model="ctrl.two.text" />
-								</div>
+						</form-control>
+						<div class="row" ng-if="ctrl.one">
+							<hr />
+							<label class="col-sm-4 control-label">Model data</label>
+							<div class="col-sm-8">
+								<pre>{{ctrl.one | json}}</pre>
 							</div>
-							<form-control class="form-group">
-								<label class="col-sm-4 control-label">Number</label>
-								<div class="col-sm-8">
-									<input name="number" type="text" class="form-control" ng-model="ctrl.two.number" number-format />
-								</div>
+						</div>
+					</ng-form>
+				</uib-tab>
+				<uib-tab index="1" heading="Form Two (untracked)">
+					<ng-form name="tabTwoForm">
+						<form-control class="form-group">
+							<label class="col-sm-4 control-label">Text</label>
+							<div class="col-sm-8">
+								<input name="text" type="text" class="form-control" ng-model="ctrl.two.text" />
 							</div>
-							<form-control class="form-group">
-								<label class="col-sm-4 control-label">Integer</label>
-								<div class="col-sm-8">
-									<input name="integer" type="number" class="form-control"
-									       ng-model="ctrl.two.integer" />
-								</div>
+						</form-control>
+						<form-control class="form-group">
+							<label class="col-sm-4 control-label">Number</label>
+							<div class="col-sm-8">
+								<input name="number" type="text" class="form-control" ng-model="ctrl.two.number" number-format />
 							</div>
-							<form-control class="form-group">
-								<label class="col-sm-4 control-label">Date</label>
-								<div class="col-sm-4">
-									<date-picker name="date" ng-model="ctrl.two.date"></date-picker>
-								</div>
-							</form-control>
-							<div class="row" ng-if="ctrl.two">
-								<hr />
-								<label class="col-sm-4 control-label">Model data</label>
-								<div class="col-sm-8">
-									<pre>{{ctrl.two | json}}</pre>
-								</div>
+						</form-control>
+						<form-control class="form-group">
+							<label class="col-sm-4 control-label">Integer</label>
+							<div class="col-sm-8">
+								<input name="integer" type="number" class="form-control"
+								       ng-model="ctrl.two.integer" />
 							</div>
-						</ng-form>
-					</uib-tab>
-					<uib-tab index="2" deselect="orUnsavedChangesController.check($event, tabThreeForm)">
-						<uib-tab-heading>
-							<span>Form Three</span>
-							<span class="fa fa-check text-success"
-							      ng-if="!tabThreeForm.$dirty">&nbsp;</span>
-							<span class="fa fa-save text-warning" uib-tooltip="Form tab contains unsaved changes" tooltip-placement="bottom"
-							      ng-if="tabThreeForm.$dirty">&nbsp;</span>
-							<span class="fa fa-warning text-danger" uib-tooltip="Form tab contains invalid fields" tooltip-placement="bottom"
-							      ng-if="tabThreeForm.$invalid">&nbsp;</span>
-						</uib-tab-heading>
-						<ng-form name="tabThreeForm">
-							<form-control class="form-group">
-								<label class="col-sm-4 control-label">Text</label>
-								<div class="col-sm-8">
-									<input name="text" type="text" class="form-control" ng-model="ctrl.three.text" />
-								</div>
+						</form-control>
+						<form-control class="form-group">
+							<label class="col-sm-4 control-label">Date</label>
+							<div class="col-sm-4">
+								<date-picker name="date" ng-model="ctrl.two.date"></date-picker>
 							</div>
-							<form-control class="form-group">
-								<label class="col-sm-4 control-label">Number</label>
-								<div class="col-sm-8">
-									<input name="number" type="text" class="form-control" ng-model="ctrl.three.number" number-format />
-								</div>
+						</form-control>
+						<div class="row" ng-if="ctrl.two">
+							<hr />
+							<label class="col-sm-4 control-label">Model data</label>
+							<div class="col-sm-8">
+								<pre>{{ctrl.two | json}}</pre>
 							</div>
-							<form-control class="form-group">
-								<label class="col-sm-4 control-label">Integer</label>
-								<div class="col-sm-8">
-									<input name="integer" type="number" class="form-control"
-									       ng-model="ctrl.three.integer" />
-								</div>
+						</div>
+					</ng-form>
+				</uib-tab>
+				<uib-tab index="2" deselect="orUnsavedChangesController.check($event, tabThreeForm)">
+					<uib-tab-heading>
+						<span>Form Three</span>
+						<span class="fa fa-check text-success"
+						      ng-if="!tabThreeForm.$dirty">&nbsp;</span>
+						<span class="fa fa-save text-warning" uib-tooltip="Form tab contains unsaved changes" tooltip-placement="bottom"
+						      ng-if="tabThreeForm.$dirty">&nbsp;</span>
+						<span class="fa fa-warning text-danger" uib-tooltip="Form tab contains invalid fields" tooltip-placement="bottom"
+						      ng-if="tabThreeForm.$invalid">&nbsp;</span>
+					</uib-tab-heading>
+					<ng-form name="tabThreeForm">
+						<form-control class="form-group">
+							<label class="col-sm-4 control-label">Text</label>
+							<div class="col-sm-8">
+								<input name="text" type="text" class="form-control" ng-model="ctrl.three.text" />
 							</div>
-							<form-control class="form-group">
-								<label class="col-sm-4 control-label">Date</label>
-								<div class="col-sm-4">
-									<date-picker name="date" ng-model="ctrl.three.date"></date-picker>
-								</div>
-							</form-control>
-							<div class="row" ng-if="ctrl.three">
-								<hr />
-								<label class="col-sm-4 control-label">Model data</label>
-								<div class="col-sm-8">
-									<pre>{{ctrl.three | json}}</pre>
-								</div>
+						</form-control>
+						<form-control class="form-group">
+							<label class="col-sm-4 control-label">Number</label>
+							<div class="col-sm-8">
+								<input name="number" type="text" class="form-control" ng-model="ctrl.three.number" number-format />
 							</div>
-						</ng-form>
-					</uib-tab>
-				</uib-tabset>
+						</form-control>
+						<form-control class="form-group">
+							<label class="col-sm-4 control-label">Integer</label>
+							<div class="col-sm-8">
+								<input name="integer" type="number" class="form-control"
+								       ng-model="ctrl.three.integer" />
+							</div>
+						</form-control>
+						<form-control class="form-group">
+							<label class="col-sm-4 control-label">Date</label>
+							<div class="col-sm-4">
+								<date-picker name="date" ng-model="ctrl.three.date"></date-picker>
+							</div>
+						</form-control>
+						<div class="row" ng-if="ctrl.three">
+							<hr />
+							<label class="col-sm-4 control-label">Model data</label>
+							<div class="col-sm-8">
+								<pre>{{ctrl.three | json}}</pre>
+							</div>
+						</div>
+					</ng-form>
+				</uib-tab>
+			</uib-tabset>
 		</div>
 		<div class="panel-footer">
 			<div class="form-actions">
 				<button type="submit" class="btn btn-primary" ng-click="ctrl.save(unsavedChangesForm)" ng-disabled="!unsavedChangesForm.$valid">Save</button>
 			</div>
 		</div>
+	</div>
 </form>
-
-
-
