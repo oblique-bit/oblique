@@ -1,4 +1,4 @@
-import {LogDecorator} from 'oblique-reactive/oblique';
+import {LogDecorator} from '../../infrastructure/log-decorator';
 
 /**
  * Controller for the FormControl component.
@@ -29,9 +29,9 @@ export class FormControlController implements ng.IComponentController {
 				let formControl:ng.INgModelController = this.formCtrl[name];
 				this.$scope.$watchGroup(
 					[
-						() => {return formControl.$invalid;},
-						() => {return formControl.$dirty;},
-						() => {return this.formCtrl.$submitted;}
+						() => formControl.$invalid,
+						() => formControl.$dirty,
+						() => this.formCtrl.$submitted
 					],
 					() => {
 						// Invalidity:

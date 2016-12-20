@@ -703,7 +703,7 @@
 			'build:bump-version',
 			'release-replace',
 			'build:changelog',
-			'build',
+			'build-prod',
 			'build:commit-changes',
 			'build:push-changes',
 			'build:create-new-tag',
