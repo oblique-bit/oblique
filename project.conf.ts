@@ -1,6 +1,5 @@
 module.exports = {
 	build: {
-		env: 'DEV', //TODO: why?
 		target: 'target/'
 	},
 	app: {
