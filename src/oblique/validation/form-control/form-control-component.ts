@@ -1,4 +1,4 @@
-import {FormControlController} from "oblique-reactive/oblique/validation/form-control/form-control-controller";
+import {FormControlController} from './form-control-controller';
 /**
  * Style wrapper for the Bootstrap `has-error` and ObliqueUI `control-mandatory` validation states for form controls.
  *

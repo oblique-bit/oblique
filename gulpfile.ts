@@ -442,7 +442,7 @@
 			livereload: true,
 			middleware: (connect, opt) => {
 				return [
-					proxy('/' + project.app.api.path, {
+					proxy('/' + project.app.api.context, {
 						target: `http://localhost:${project.app.api.port}`,
 						changeOrigin: true
 					})
@@ -685,7 +685,9 @@
 	//</editor-fold>
 
 	//<editor-fold desc="Deployment tasks">
-	require('gulp-release-flows')(gulp); // Imports 'build:release-*' tasks
+	require('gulp-release-flows')({
+		branch: 'HEAD:master'
+	}); // Imports 'build:release-*' tasks
 
 	/*
 	 * Releases & publishes the `oblique-ui` module in the internal npm registry.
@@ -712,7 +714,7 @@
 			'build:bump-version',
 			'release-replace',
 			'build:changelog',
-			'build',
+			'build-prod',
 			'build:commit-changes',
 			'build:push-changes',
 			'build:create-new-tag',

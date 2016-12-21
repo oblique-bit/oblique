@@ -1,4 +1,4 @@
-﻿import {LoadingService} from 'oblique-reactive/oblique';
+﻿import {LoadingService} from '../status/loading-service';
 
 export class UnsavedChangesService {
 
