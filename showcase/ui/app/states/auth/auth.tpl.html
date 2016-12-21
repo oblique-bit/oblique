@@ -31,11 +31,13 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-3 col-sm-9">
-							<button type="submit" class="btn btn-primary" ng-disabled="!loginForm.$valid">
+							<button type="submit" class="btn btn-primary btn-lg" ng-disabled="!loginForm.$valid">
 								<span ng-if="ctrl.status.authenticating" class="fa fa-spinner fa-spin fade"></span>
 								<span>Sign in</span>
 							</button>
-							<button type="button" class="btn btn-link" uib-tooltip="4This is a decoration button, we can't recover your password, sorry! ;)">Forgot password?</button>
+							<button type="button" class="btn btn-link btn-lg" uib-tooltip="This is a decoration button, we can't recover your password, sorry! ;)">
+								<small>Forgot password?</small>
+							</button>
 						</div>
 					</div>
 				</form>
@@ -57,12 +59,12 @@
 						<input type="text" placeholder="Last Name" class="form-control"
 						       name="lastname" ng-model="ctrl.user.lastname" ng-required="true"/>
 					</form-control>
-					<form-control class="form-group">
-						<button type="submit" class="btn btn-lg btn-primary btn-block" ng-disabled="!registerForm.$valid">
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary btn-block" ng-disabled="!registerForm.$valid">
 							<span ng-if="ctrl.status.registering" class="fa fa-spinner fa-spin fade"></span>
 							<span translate="i18n.states.auth.register.submit"></span>
 						</button>
-					</form-control>
+					</div>
 				</form>
 			</div>
 		</div>
