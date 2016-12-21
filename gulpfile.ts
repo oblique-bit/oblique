@@ -425,7 +425,7 @@
 			livereload: true,
 			middleware: (connect, opt) => {
 				return [
-					proxy('/' + project.app.api.path, {
+					proxy('/' + project.app.api.context, {
 						target: `http://localhost:${project.app.api.port}`,
 						changeOrigin: true
 					})

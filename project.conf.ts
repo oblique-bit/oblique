@@ -29,7 +29,7 @@ module.exports = {
 		},
 		api: {
 			// Relative path prefix for API calls:
-			path: 'api',
+			context: 'api',
 
 			// API endpoint for UI logging:
 			logs: '/logs',
