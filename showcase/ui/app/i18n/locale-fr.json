@@ -3,7 +3,7 @@
     "application": {
       "shortName": "OR",
       "longName": "ObliqueReactive",
-      "description": "Reactive front-end template for your business web application.",
+      "description": "Reactive front-end framework for your business web application.",
       "locales": {
         "de": "Deutsch",
         "fr": "Français",

@@ -6,7 +6,7 @@ module.exports = {
 		version:        'TODO',
 		module:         'oblique',
 		title:          'ObliqueReactive',
-		description:    'Reactive front-end template for your business web application. Powered by ObliqueUI and AngularJS.',
+		description:    'Reactive front-end framework for your business web application. Powered by ObliqueUI and AngularJS.',
 		organization: {
 			name:       'Federal Office of Information Technology, Systems and Telecommunication FOITT',
 			url:        'http://www.bit.admin.ch',
