@@ -1,14 +1,17 @@
 (() => {
 	//<editor-fold desc="Dependencies">
 	let del = require('del'),
+		join = require('path').join,
 		merge = require('merge2'),
 		spawn = require('cross-spawn'),
+		readFileSync = require('fs').readFileSync,
 
 		// Gulp & plugins:
 		gulp = require('gulp'),
 		gutil = require('gulp-util'),
 		concat = require('gulp-concat'),
 		connect = require('gulp-connect'),
+		conventionalChangelog = require('gulp-conventional-changelog'),
 		proxy = require('http-proxy-middleware'),
 		cssnano = require('gulp-cssnano'),
 		debug = require('gulp-debug'),
@@ -54,6 +57,7 @@
 				less: 'showcase/ui/less/',
 				pages: 'showcase/ui/pages/',
 				partials: 'showcase/ui/partials/',
+				helpers: 'showcase/ui/helpers/',
 				server: 'showcase/server/',
 			},
 
@@ -265,10 +269,10 @@
 			// 1. Compile sources to staging folder:
 			'build-sources-compile',
 
-			// 2. Build the templates module
+			// 2. Build the templates module:
 			'build-templates',
 
-			// 3. Build CSS sources
+			// 3. Build CSS sources:
 			'build-styles',
 
 			// 4. Copy compiled files to the correct output folders:
@@ -320,6 +324,19 @@
 			paths.staging + paths.src + '**/*.*',
 			{base: paths.staging + paths.src}
 		).pipe(gulp.dest(paths.target.vendor + 'oblique-reactive'));
+	});
+
+
+	/**
+	 * build-styles: generates CSS files for oblique-reactive
+	 *
+	 * Plugins:
+	 *  - `less`: https://github.com/plus3network/gulp-less
+	 */
+	gulp.task('build-styles', () => {
+		return gulp.src(paths.less + 'oblique-reactive.less')
+			.pipe(less({paths: paths.less}))
+			.pipe(gulp.dest(paths.staging + paths.src + 'css/'));
 	});
 
 	/**
@@ -587,18 +604,6 @@
 	});
 
 	/**
-	 * build-styles: generates CSS files for oblique-reactive
-	 *
-	 * Plugins:
-	 *  - `less`: https://github.com/plus3network/gulp-less
-	 */
-	gulp.task('build-styles', () => {
-		return gulp.src(paths.less + 'oblique-reactive.less')
-			.pipe(less({paths: paths.less}))
-			.pipe(gulp.dest(paths.staging + paths.src + 'css/'));
-	});
-
-	/**
 	 * showcase-build-html: composes HTML pages from Handlebars resources
 	 *
 	 * Plugins:
@@ -606,11 +611,12 @@
 	 */
 	gulp.task('showcase-build-html', () => {
 		return gulp
-			.src(paths.showcase.pages + 'index.hbs')
+			.src(paths.showcase.pages + '*.hbs')
 			.pipe(obliqueHtml({
 				data: {
 					__ENV__: production ? "PROD" : "DEV",
 					project: project, // TODO refactor this
+					module: pkg,
 
 					// ObliqueUI-specific:
 					app: project.app,
@@ -620,6 +626,9 @@
 				},
 				partials: [
 					paths.showcase.partials + '**/*.hbs',
+				],
+				helpers: [
+					paths.showcase.helpers + '**/*.ts',
 				]
 			}))
 			.pipe(rename({extname: '.html'}))
@@ -765,6 +774,32 @@
 				console.log('[SPAWN] Error: ', arguments);
 				callback('Unable to publish NPM module.')
 			});
+	});
+
+	gulp.task('changelog', function () {
+		return gulp.src('CHANGELOG.md')
+			.pipe(conventionalChangelog({
+				// conventional-changelog options:
+				preset: 'angular',
+				releaseCount: 0
+			}, {
+				// context options:
+				linkCompare: false,
+				repository: pkg.repository.path // Atlassian Stash-specific
+			}, {
+				// git-raw-commits options:
+				//from: '1.0.0'
+			}, {
+				// conventional-commits-parser options
+			}, {
+				// conventional-changelog-writer options
+				// transform: function (commit) {
+				// 	console.log(commit);
+				// 	return commit;
+				// },
+				headerPartial: readFileSync(join(__dirname, 'changelog-header.hbs'), 'utf-8')
+			}))
+			.pipe(gulp.dest('./'));
 	});
 	//</editor-fold>
 

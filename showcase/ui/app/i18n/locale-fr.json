@@ -67,6 +67,9 @@
           }
         }
       },
+      "support": {
+        "title": "Support"
+      },
       "admin": {
         "title": "Administration"
       }

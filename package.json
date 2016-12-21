@@ -13,14 +13,17 @@
     "name": "Pedro De Almeida",
     "email": "Pedro.DeAlmeida@bit.admin.ch"
   },
-  "bugs": "https://jira.eap.bit.admin.ch/browse/OUI/",
+  "bugs": {
+    "url": "https://jira.eap.bit.admin.ch/browse/OUI/"
+  },
   "private": true,
   "publishConfig": {
     "registry": "http://nexus.vmjeap10a04.bfi.admin.ch:8020/repository/npm-intern/"
   },
   "repository": {
     "type": "git",
-    "url": "http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive.git"
+    "url": "http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive.git",
+    "path": "projects/OUI/repos/oblique-reactive"
   },
   "dependencies": {
     "angular": "1.6.0",
@@ -60,6 +63,7 @@
     "gulp-clean-css": "^2.3.2",
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.0.0",
+    "gulp-conventional-changelog": "^1.1.0",
     "gulp-cssnano": "^2.1.2",
     "gulp-debug": "^3.0.0",
     "gulp-declare": "^0.3.0",
@@ -84,6 +88,7 @@
     "gulp-util": "^3.0.7",
     "gulp-watch": "4.3.11",
     "handlebars-helpers": "^0.7.5",
+    "helper-md": "^0.2.1",
     "http-proxy-middleware": "^0.17.3",
     "jasmine-core": "2.5.2",
     "jwt-simple": "0.5.1",

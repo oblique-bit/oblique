@@ -17,6 +17,7 @@ import {AuthModule} from './states/auth/auth-module';
 import {HomeModule} from './states/home/home-module';
 import {MoviesModule} from './states/movies/movies-module';
 import {SamplesModule} from './states/samples/samples-module';
+import {SupportModule} from './states/support/support-module';
 
 // Makes sure that the app-templates will be loaded (and bundled):
 import './app-templates';
@@ -43,7 +44,8 @@ angular
 		AuthModule,
 		HomeModule,
 		MoviesModule,
-		SamplesModule
+		SamplesModule,
+		SupportModule
 	])
 	.constant('CONFIG', window['__MODULE__'].CONFIG)
 
