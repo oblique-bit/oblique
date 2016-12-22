@@ -97,7 +97,7 @@ angular
 		loadingServiceProvider.setTimeout(CONFIG.defaults.http.timeout);
 	})
 	.config((CONFIG, $authProvider) => {
-		$authProvider.baseUrl = '/' + CONFIG.api.path;
+		$authProvider.baseUrl = (CONFIG.api.url || '') + (CONFIG.api.context ? CONFIG.api.context : '');
 		$authProvider.signupUrl = '/auth/register';
 		//$authProvider.signupRedirect = '/';
 		$authProvider.loginUrl = '/auth/login';

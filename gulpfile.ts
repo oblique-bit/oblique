@@ -3,6 +3,7 @@
 	let del = require('del'),
 		join = require('path').join,
 		merge = require('merge2'),
+		minimist = require('minimist'),
 		spawn = require('cross-spawn'),
 		readFileSync = require('fs').readFileSync,
 
@@ -79,6 +80,14 @@
 
 		// FIXME: remove when https://github.com/gulpjs/gulp/tree/4.0 is out!
 		runSequence = require('run-sequence');
+
+	// CLI arguments:
+	let knownOptions = {
+		string: 'apiUrl',
+		default: { apiUrl: false }
+	};
+	let options = minimist(process.argv.slice(2), knownOptions);
+	project.app.api.url = options.apiUrl; // For internal deployment only!
 	//</editor-fold>
 
 	//<editor-fold desc="Main tasks">
@@ -292,17 +301,18 @@
 	});
 
 	gulp.task('build-sources-compile', () => {
+		project.app.version = pkg.version;
 		let tsProject = ts.createProject('tsconfig.json');
 		return gulp.src([
 			paths.src + '**/*.ts',
 			paths.typings + '**/*.d.ts'
 		])
-			.pipe(sourcemaps.init())
-			.pipe(tsProject())
-			.pipe(replace("__MODULE__", project.app.module))
-			.pipe(replace("'__CONFIG__'", JSON.stringify(project.app)))
-			.pipe(sourcemaps.write())
-			.pipe(gulp.dest(paths.staging + paths.src));
+		.pipe(sourcemaps.init())
+		.pipe(tsProject())
+		.pipe(replace("__MODULE__", project.app.module))
+		.pipe(replace("'__CONFIG__'", JSON.stringify(project.app)))
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest(paths.staging + paths.src));
 	});
 
 	gulp.task('showcase-build-sources-compile', () => {
@@ -713,7 +723,6 @@
 		runSequence(
 			'build:bump-version',
 			'release-replace',
-			'build:changelog',
 			'build-prod',
 			'build:commit-changes',
 			'build:push-changes',

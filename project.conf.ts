@@ -3,7 +3,7 @@ module.exports = {
 		target: 'target/'
 	},
 	app: {
-		version:        'TODO',
+		version:        '',
 		module:         'oblique',
 		title:          'ObliqueReactive',
 		description:    'Reactive front-end framework for your business web application. Powered by ObliqueUI and AngularJS.',
@@ -30,6 +30,9 @@ module.exports = {
 		api: {
 			// Relative path prefix for API calls:
 			context: 'api',
+
+			// Absolute API URL, if required:
+			url: undefined,
 
 			// API endpoint for UI logging:
 			logs: '/logs',

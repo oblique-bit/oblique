@@ -4,6 +4,7 @@ import {AuthService} from './common/auth/auth-service';
 
 export class AppController {
 	log:ObliqueLog;
+	version:string;
 	context;
 	spinner:any;
 	title:string;
@@ -33,6 +34,7 @@ export class AppController {
 		this.log = $log.getInstance('AppController');
 
 		// Global properties:
+		this.version = CONFIG.version;
 		this.context = authService.context;
 		this.spinner = loadingService.loading;
 		this.title = CONFIG.title;
