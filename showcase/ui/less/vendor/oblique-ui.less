@@ -27,15 +27,27 @@
 	}
 }
 
+// This can safely be removed:
 .oblique {
 	font-style: oblique; // ;)
 
-	> img.small {
-		width: 44px;
+	.oblique-logo {
+		position: relative;
+		.oblique-addon {
+			position: absolute;
+			bottom: 0;
+			right: 32%;
+			font-weight: bold;
+			color: white;
+			font-size: 60%;
+		}
 
+		> img.small {
+			width: 44px;
+		}
 	}
 
-	> span {
+	> span:not(.oblique-logo) {
 		word-spacing: -16px;
 		vertical-align: middle;
 		> span {

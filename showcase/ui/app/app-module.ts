@@ -19,7 +19,7 @@ import {MoviesModule} from './states/movies/movies-module';
 import {SamplesModule} from './states/samples/samples-module';
 import {SupportModule} from './states/support/support-module';
 
-// Makes sure that the app-templates will be loaded (and bundled):
+// Make sure that the app-templates will be loaded (and bundled):
 import './app-templates';
 
 angular
