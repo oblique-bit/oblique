@@ -23,6 +23,20 @@
     "member-access": false,
     "member-ordering": [
       true,
+  "rules": {
+    "class-name": true,
+    "curly": false,
+    "eofline": false,
+    "indent": [
+      "tabs"
+    ],
+    "max-line-length": [
+      false,
+      140
+    ],
+    "member-ordering": [
+      true,
+      "public-before-private",
       "static-before-instance",
       "variables-before-functions"
     ],
@@ -50,6 +64,14 @@
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "object-literal-sort-keys": false,
+    "no-construct": true,
+    "no-duplicate-variable": true,
+    "no-empty": true,
+    "no-eval": true,
+    "no-unused-expression": true,
+    "no-unused-new": true,
+    "no-unused-variable": true,
+    "no-use-before-declare": true,
     "one-line": [
       true,
       "check-open-brace",

@@ -14,6 +14,9 @@
 .c9/
 *.launch
 .settings/
+*.iml
+*.sublime-project
+*.sublime-workspace
 
 # IDE - VSCode
 .vscode/*

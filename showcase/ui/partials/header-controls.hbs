@@ -1,0 +1,74 @@
+<ul class="nav navbar-nav navbar-right navbar-controls animate-ignore" role="menu" ng-if="!appController.isAuthenticated()" ng-cloak>
+	{{#each app.locales}}
+		<li role="menuitem" ng-class="{active: appController.locale.current === '{{this}}'}">
+			<a href="" role="button" ng-click="appController.locale.use('{{this}}')">
+				<span class="control-widget">{{this}}</span>
+			</a>
+		</li>
+	{{/each}}
+	<li role="menuitem">
+		<a href="" role="button" ui-sref="auth">
+			<span class="control-icon fa fa-sign-in"></span>
+			<span class="control-label">Sign in</span>
+		</a>
+	</li>
+</ul>
+<ul class="nav navbar-nav navbar-right navbar-controls animate-ignore" role="menu" ng-if="appController.isAuthenticated()" ng-cloak>
+	<li class="dropdown" role="menuitem">
+		<a role="button" data-toggle="dropdown" title="Notifications" tabindex="0">
+			<span class="control-icon fa fa-globe"></span>
+			<span class="control-label">Notifications</span>
+		</a>
+		<h3 id="header-controls-notifications" class="sr-only">Notifications menu</h3>
+		<ul class="dropdown-menu nav nav-stacked control-body" role="menu" aria-labelledby="header-controls-notifications">
+			<li class="nav-header" role="presentation">
+				<span class="fa fa-globe"></span>
+				<span>Notifications</span>
+			</li>
+			<li role="presentation">
+				<a role="menuitem">TODO</a>
+			</li>
+		</ul>
+	</li>
+	<li class="dropdown" role="menuitem">
+		<a role="button" data-toggle="dropdown" tabindex="0" title="\{{appController.context.user.firstname}} \{{appController.context.user.lastname}}">
+			<span ng-if="!appController.context.user.picture" class="control-icon fa fa-user user-picture"></span>
+			<span class="control-label">Profile &amp; Settings</span>
+			<img ng-if="appController.context.user.picture" ng-src="\{{appController.context.user.picture}}" class="user-picture" />
+		</a>
+		<h3 id="header-controls-settings" class="sr-only">Profile &amp; Settings menu</h3>
+		<ul class="dropdown-menu nav nav-stacked control-body" role="menu" aria-labelledby="header-controls-settings">
+			<li role="presentation" class="nav-header">
+				<span class="fa fa-user"></span>
+				<h3>\{{appController.context.user.firstname}} \{{appController.context.user.lastname}}</h3>
+				<p class="lead small">\{{appController.context.user.email}}</p>
+			</li>
+			<li class="nav-header" role="presentation">
+				<span class="fa fa-magic"></span>
+				<span>Profile</span>
+			</li>
+			<li role="presentation">
+				<a role="menuitem" tabindex="-1" href="">Account</a>
+			</li>
+			<li role="presentation" class="divider"></li>
+			<li class="nav-header" role="presentation">
+				<span class="fa fa-flag"></span>
+				<span>\{{'i18n.labels.language' | translate}}</span>
+			</li>
+			{{#each app.locales}}
+				<li role="menuitem" ng-class="{active: appController.locale.current === '{{this}}'}">
+					<a href="" role="button" ng-click="appController.locale.use('{{this}}')">
+						<span>\{{'i18n.application.locales.{{this}}' | translate}}</span>
+					</a>
+				</li>
+			{{/each}}
+			<li role="presentation" class="divider"></li>
+			<li role="menuitem">
+				<a href="" role="button" ng-click="appController.logout()">
+					<span>Logout</span>
+				</a>
+			</li>
+		</ul>
+	</li>
+</ul>
+

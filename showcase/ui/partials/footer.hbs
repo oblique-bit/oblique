@@ -1,0 +1,21 @@
+<div class="footer-item footer-item-logo">
+	<a href="{{@root.app.organization.url}}" target="_blank" class="application-brand-logo">
+		<img src="{{assets}}{{#block "vendor"}}{{@root.app.vendor.path}}{{/block}}{{@root.app.vendor.obliqueui.path}}images/logo.svg" alt="{{@root.app.organization.name}}">
+	</a>
+</div>
+<div class="footer-item footer-item-info">
+	<p>&copy; 2016 {{@root.app.organization.name}}</p>
+	<p class="smaller">Built with <span class="fa fa-heart-o" title="Love"></span><span class="sr-only">love</span>, <a href="https://eui.bit.admin.ch/oblique-ui/" title="The front-end framework for the EAP stack.">ObliqueUI</a> <span class="version">(v1.3.0)</span> and <a href="https://angularjs.org/" title="Superheroic JavaScript MVW Framework">AngularJS</a> <span class="version">(v1.6.0)</span>.</p>
+</div>
+<div class="footer-item footer-item-links">
+	<ul class="list-inline">
+		<li>
+			<a href="http://www.disclaimer.admin.ch" title="Terms and conditions" target="_blank" class="link">Legal</a>
+		</li>
+		<li>
+			{{#if @root.app.organization.email}}<a href="mailto:{{@root.app.organization.email}}" title="This link will open your email client in order to send an email to {{@root.app.organization.email}}" class="link">Contact</a>{{/if}}
+			{{#if @root.app.organization.contact}}<a href="{{@root.app.organization.contact}}" title="This link will open a new tab in order to contact {{@root.app.organization.name}}" target="_blank" class="link">Contact</a>{{/if}}
+		</li>
+	</ul>
+</div>
+

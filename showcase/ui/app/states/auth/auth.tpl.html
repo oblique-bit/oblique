@@ -1,0 +1,72 @@
+<div class="cover-layout">
+	<div class="cover-viewport">
+		<div class="default-layout">
+			<div class="cover-header">
+				<h1 translate="i18n.states.auth.title"></h1>
+			</div>
+			<div class="cover-content">
+				<form novalidate class="form-horizontal" role="form" name="loginForm" ng-submit="ctrl.login(loginForm)">
+					<h3 class="page-header">{{'i18n.states.auth.login.title' | translate}}</h3>
+					<form-control class="form-group" mandatory="true">
+						<label class="col-sm-3 control-label">Email</label>
+						<div class="col-sm-9">
+							<input type="email" class="form-control" placeholder="Email"
+							       name="email" ng-model="ctrl.user.email" ng-required="true"/>
+						</div>
+					</form-control>
+					<form-control class="form-group" mandatory="true">
+						<label class="col-sm-3 control-label">Password</label>
+						<div class="col-sm-9">
+							<input type="password" class="form-control" placeholder="Password"
+							       name="password" ng-model="ctrl.user.password" ng-required="true" />
+						</div>
+					</form-control>
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<div class="checkbox">
+								<input id="rememberme" type="checkbox">
+								<label for="rememberme">Remember me</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<button type="submit" class="btn btn-primary btn-lg" ng-disabled="!loginForm.$valid">
+								<span ng-if="ctrl.status.authenticating" class="fa fa-spinner fa-spin fade"></span>
+								<span>Sign in</span>
+							</button>
+							<button type="button" class="btn btn-link btn-lg" uib-tooltip="This is a decoration button, we can't recover your password, sorry! ;)">
+								<small>Forgot password?</small>
+							</button>
+						</div>
+					</div>
+				</form>
+				<form novalidate role="form" name="registerForm" ng-submit="ctrl.register(registerForm)">
+					<h3 class="page-header" translate translate-values="{'title': appController.title}">i18n.states.auth.register.title</h3>
+					<form-control class="form-group" mandatory="true">
+						<input type="email" placeholder="Email" class="form-control"
+						       name="email" ng-model="ctrl.user.email" ng-required="true" />
+					</form-control>
+					<form-control class="form-group" mandatory="true">
+						<input type="password" placeholder="Password" class="form-control"
+						       name="password" ng-model="ctrl.user.password" ng-required="true"/>
+					</form-control>
+					<form-control class="form-group" mandatory="true">
+						<input type="text" placeholder="First Name" class="form-control"
+						       name="firstname" ng-model="ctrl.user.firstname" ng-required="true"/>
+					</form-control>
+					<form-control class="form-group" mandatory="true">
+						<input type="text" placeholder="Last Name" class="form-control"
+						       name="lastname" ng-model="ctrl.user.lastname" ng-required="true"/>
+					</form-control>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary btn-block" ng-disabled="!registerForm.$valid">
+							<span ng-if="ctrl.status.registering" class="fa fa-spinner fa-spin fade"></span>
+							<span translate="i18n.states.auth.register.submit"></span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

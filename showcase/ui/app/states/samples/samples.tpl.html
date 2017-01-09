@@ -1,0 +1,60 @@
+<div class="column-layout column-layout-2" data-provides="column-layout">
+	<div class="column-left hidden-print" data-column="left" role="complementary">
+		<button type="button" class="toggle-left" data-column-toggle="left">
+			<span class="sr-only">Toggle left column</span>
+		</button>
+		<div class="column-content">
+			<ul class="nav nav-bordered" role="menu">
+				<li class="nav-header" role="presentation">
+					<h3 translate="i18n.states.samples.title"></h3>
+				</li>
+				<li role="presentation" ui-sref-active="active">
+					<a href="" role="menuitem" ui-sref="samples.datepicker"
+					   translate="i18n.states.samples.datepicker.title"></a>
+				</li>
+				<li role="presentation" ui-sref-active="active">
+					<a href="" role="menuitem" ui-sref="samples.multiselect"
+					   translate="i18n.states.samples.multiselect.title"></a>
+				</li>
+				<li role="presentation" ui-sref-active="active">
+					<a href="" role="menuitem" ui-sref="samples.navigable" data-toggle="dropdown"
+					   translate="i18n.states.samples.navigable.title"></a>
+				</li>
+				<li role="presentation" ui-sref-active="active">
+					<a href="" role="menuitem" ui-sref="samples.navigator.2.2.1"
+					translate="i18n.states.samples.navigator.title"></a>
+				</li>
+				<li role="presentation" ui-sref-active="active">
+					<a href="" role="menuitem" ui-sref="samples.typeahead"
+					   translate="i18n.states.samples.typeahead.title"></a>
+				</li>
+				<li role="presentation" ui-sref-active="active">
+					<a href="" role="menuitem" ui-sref="samples.uiScroll" uib-tooltip="Aka infinite scrolling"
+					   translate="i18n.states.samples.uiScroll.title"></a>
+				</li>
+				<li class="nav-header" role="presentation">
+					<a href="" role="menuitem" aria-expanded="true">
+						<span translate="i18n.states.samples.validation.title"></span>
+					</a>
+					<ul class="nav nav-indented" role="menu">
+						<li role="presentation" ui-sref-active="active">
+							<a href="" role="menuitem" ui-sref="samples.validation.formControl"
+							   translate="i18n.states.samples.validation.formControl.title"></a>
+						</li>
+						<li role="presentation" ui-sref-active="active">
+							<a href="" role="menuitem" ui-sref="samples.validation.schemaValidation"
+							   translate="i18n.states.samples.validation.schemaValidation.title"></a>
+						</li>
+						<li role="presentation" ui-sref-active="active">
+							<a href="" role="menuitem" ui-sref="samples.validation.unsavedChanges"
+							   translate="i18n.states.samples.validation.unsavedChanges.title"></a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="column-main">
+		<div ui-view class="default-layout"></div>
+	</div>
+</div>

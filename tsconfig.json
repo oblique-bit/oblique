@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": true,
+    "sourceMap": true,
+    "removeComments": false,
+    "outDir": "target/.tmp",
+
+    "baseUrl": ".",
+    "paths" : {
+      "oblique-reactive/*": ["src/*"]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
