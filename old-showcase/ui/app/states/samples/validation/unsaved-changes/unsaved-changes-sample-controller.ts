@@ -1,4 +1,4 @@
-import {NotificationService} from 'oblique-reactive/oblique';
+import {NotificationService} from 'oblique-reactive/../../../../../../.';
 
 export class UnsavedChangesSampleController {
 

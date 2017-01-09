@@ -9,7 +9,7 @@ import {
 	SchemaValidationConfig,
 	DatepickerPopupConfig,
 	NavigatorService
-} from 'oblique-reactive/oblique-reactive';
+} from 'oblique-reactive/../../../old-lib/oblique-reactive';
 
 import {AppController} from './app-controller';
 import {CommonModule} from './common/common-module';

@@ -1,4 +1,4 @@
-import {HttpDecorator, NotificationService} from 'oblique-reactive/oblique-reactive';
+import {HttpDecorator, NotificationService} from 'oblique-reactive/../../../../../../old-lib/oblique-reactive';
 import {TypeaheadSampleController} from './typeahead-sample-controller';
 
 export const TypeaheadModule = '__MODULE__.samples.typeahead';

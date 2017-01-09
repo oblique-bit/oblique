@@ -1,4 +1,4 @@
-import {NotificationService} from 'oblique-reactive/oblique-reactive';
+import {NotificationService} from 'oblique-reactive/../../../../../../old-lib/oblique-reactive';
 
 export class DatepickerSampleController {
 	data = {

@@ -1,4 +1,4 @@
-import {LoadingService, ObliqueLog, LogDecorator, NotificationService} from 'oblique-reactive/oblique-reactive';
+import {LoadingService, ObliqueLog, LogDecorator, NotificationService} from 'oblique-reactive/../../../old-lib/oblique-reactive';
 
 import {AuthService} from './common/auth/auth-service';
 

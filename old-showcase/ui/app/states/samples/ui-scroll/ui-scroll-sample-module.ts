@@ -1,4 +1,4 @@
-import {NotificationService, HttpDecorator} from 'oblique-reactive/oblique-reactive';
+import {NotificationService, HttpDecorator} from 'oblique-reactive/../../../../../../old-lib/oblique-reactive';
 
 import {UiScrollSampleController} from './ui-scroll-sample-controller';
 

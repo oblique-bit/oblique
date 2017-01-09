@@ -1,4 +1,4 @@
-import {NotificationService} from 'oblique-reactive/oblique-reactive';
+import {NotificationService} from 'oblique-reactive/../../../../../../old-lib/oblique-reactive';
 import {Country} from '../../../custom-typings/country';
 
 export class UiScrollSampleController {
