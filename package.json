@@ -1,8 +1,25 @@
 {
   "name": "oblique2-reactive",
   "version": "0.0.0",
-  "license": "MIT",
+  "license": "All Rights Reserved",
   "angular-cli": {},
+  "homepage": "http://eui.bit.admin.ch/oblique-reactive/",
+  "author": {
+    "name": "Christian Ulmann",
+    "email": "christian.ulmann@bit.admin.ch"
+  },
+  "bugs": {
+    "url": "https://jira.eap.bit.admin.ch/browse/OUI/"
+  },
+  "private": true,
+  "publishConfig": {
+    "registry": "http://nexus.vmjeap10a04.bfi.admin.ch:8020/repository/npm-intern/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive.git",
+    "path": "projects/OUI/repos/oblique-reactive"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,7 +28,6 @@
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "e2e": "protractor"
   },
-  "private": true,
   "dependencies": {
     "@angular/common": "^2.3.1",
     "@angular/compiler": "^2.3.1",

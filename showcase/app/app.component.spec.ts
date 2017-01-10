@@ -2,13 +2,22 @@
 
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NotificationService } from '../../src/main';
 
 describe('AppComponent', () => {
   beforeEach(() => {
+    let mockNotificationService = jasmine.createSpyObj('NotificationService', ['success']);
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ],
+      providers: [
+        {provide: NotificationService, useValue: mockNotificationService}
+      ]
     });
     TestBed.compileComponents();
   });
