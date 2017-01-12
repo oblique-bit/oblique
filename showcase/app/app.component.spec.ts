@@ -3,7 +3,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { NotificationService } from '../../src/main';
+import { NotificationService } from '../../src';
 
 describe('AppComponent', () => {
   beforeEach(() => {

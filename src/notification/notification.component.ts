@@ -5,8 +5,21 @@ import { NotificationService } from './notification.service';
 @Component({
   //TODO: discuss prefix
   selector: 'oblique-notification',
-  templateUrl: './notification.component.html',
-  styleUrls: ['./notification.component.css']
+  template: `
+      <div class="notification-container">
+          <div class="notification show">
+              <div class="animated slide-in-right" *ngFor="let notification of notifications" [ngClass]="alertType[notification.type] ">
+                  <button (click)="remove(notification)" [hidden]="!notification.sticky" type="button" class="close">&times;</button>
+                  <h4>
+                      <span *ngIf="!notification.title">{{("notification.type." + notification.type)}}</span>
+                      <span>{{notification.title}}</span>
+                  </h4>
+                  <p class="lead">{{notification.messageKey}}</p>
+              </div>
+          </div>
+      </div>
+      <!-- TODO: Add translation -->
+    `
 })
 export class NotificationComponent {
 
