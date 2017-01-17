@@ -8,8 +8,7 @@
       "root": "showcase",
       "outDir": "dist",
       "assets": [
-        "assets",
-        "favicon.ico"
+        "assets"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -18,7 +17,9 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "styles.css"
+        "styles.css",
+        "../node_modules/oblique-ui/dist/css/oblique-ui-core.css",
+        "../node_modules/oblique-ui/dist/css/oblique-ui-extensions.css"
       ],
       "scripts": [],
       "environments": {
