@@ -148,7 +148,7 @@
                     </a>
                     <span class="application-brand-app-title" data-version="">
 									<a href="#/home">
-										ObliqueReactiveSeed
+										ObliqueReactive
 									</a>
 								</span>
                 </div>
@@ -159,8 +159,99 @@
                  role="navigation">
                 <h2 class="sr-only">Global navigation menu</h2>
                 <ul id="nav-global" class="nav navbar-nav navbar-primary navbar-fw" role="menu">
-                    <li role="menuitem" ui-sref-active="active">
-                        <a href="" ui-sref="home">{{'i18n.states.home.title'<!-- | translate-->}}</a>
+                    <li role="presentation" ui-sref-active="active">
+                        <a href="" ui-sref="home"
+                           role="menuitem" data-toggle="header navigation"
+                           translate="i18n.states.home.title"></a>
+                    </li>
+                    <li role="presentation" ng-class="{active: ('samples' | includedByState)}" ngbDropdown>
+                        <a href="" role="menuitem" aria-expanded="false" aria-haspopup="true"
+                           ngbDropdownToggle>
+                            <span class="toggle"></span>
+                            <span translate="i18n.states.samples.title"></span>
+                        </a>
+                        <div class="navigation-menu">
+                            <ul class="nav" role="menu">
+                                <li class="nav-header" role="presentation" ui-sref-active="active">
+                                    <a href="" class="nav-header-title navigation-back" data-toggle="navigation">
+                                        <span class="toggle"></span>
+                                        <span data-translate="i18n.states.samples.title"></span>
+                                    </a>
+                                </li>
+                                <li role="presentation" ui-sref-active="active">
+                                    <a href="" ui-sref="samples.datepicker"
+                                       role="menuitem" data-toggle="header navigation"
+                                       translate="i18n.states.samples.datepicker.title"></a>
+                                </li>
+                                <li role="presentation" class="nav-section" ui-sref-active="active">
+                                    <a href="" ui-sref="samples.multiselect"
+                                       role="menuitem" data-toggle="header navigation"
+                                       translate="i18n.states.samples.multiselect.title"></a>
+                                </li>
+                                <li role="presentation" ui-sref-active="active">
+                                    <a href="" ui-sref="samples.navigable"
+                                       role="menuitem" data-toggle="header navigation"
+                                       translate="i18n.states.samples.navigable.title"></a>
+                                </li>
+                                <li role="presentation" ui-sref-active="active">
+                                    <a href="" ui-sref="samples.navigator.2.2.1"
+                                       role="menuitem" data-toggle="header navigation"
+                                       translate="i18n.states.samples.navigator.title"></a>
+                                </li>
+                                <li role="presentation" ui-sref-active="active">
+                                    <a href="" ui-sref="samples.typeahead"
+                                       role="menuitem" data-toggle="header navigation"
+                                       translate="i18n.states.samples.typeahead.title"></a>
+                                </li>
+                                <li role="presentation" ui-sref-active="active">
+                                    <a href="" ui-sref="samples.uiScroll" uib-tooltip="Aka infinite scrolling"
+                                       role="menuitem" data-toggle="header navigation"
+                                       translate="i18n.states.samples.uiScroll.title"></a>
+                                </li>
+                                <li role="presentation" ng-class="{active: ('validation' | includedByState)}">
+                                    <a href="" role="menuitem" aria-expanded="false" aria-haspopup="true"
+                                       data-toggle="navigation">
+                                        <span class="toggle"></span>
+                                        <span translate="i18n.states.samples.validation.title"></span>
+                                    </a>
+                                    <div class="navigation-menu">
+                                        <ul class="nav nav-indented" role="menu">
+                                            <li class="nav-header visible-xs" role="presentation">
+                                                <a href="" class="nav-header-title navigation-back" data-toggle="navigation">
+                                                    <span class="toggle"></span>
+                                                    <span data-translate="i18n.states.samples.validation.title"></span>
+                                                </a>
+                                            </li>
+                                            <li role="presentation" ui-sref-active="active">
+                                                <a href="" ui-sref="samples.validation.formControl"
+                                                   role="menuitem" data-toggle="header navigation"
+                                                   translate="i18n.states.samples.validation.formControl.title"></a>
+                                            </li>
+                                            <li role="presentation" ui-sref-active="active">
+                                                <a href="" ui-sref="samples.validation.schemaValidation"
+                                                   role="menuitem" data-toggle="header navigation"
+                                                   translate="i18n.states.samples.validation.schemaValidation.title"></a>
+                                            </li>
+                                            <li role="presentation" ui-sref-active="active">
+                                                <a href="" ui-sref="samples.validation.unsavedChanges"
+                                                   role="menuitem" data-toggle="header navigation"
+                                                   translate="i18n.states.samples.validation.unsavedChanges.title"></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li role="presentation" ui-sref-active="active" ng-if="appController.isAuthenticated()">
+                        <a href="" ui-sref="movies"
+                           role="menuitem" data-toggle="header navigation"
+                           translate="i18n.states.movies.title"></a>
+                    </li>
+                    <li role="presentation" ui-sref-active="active" ng-if="!appController.isAuthenticated()">
+                        <a href="" ui-sref="auth"
+                           role="menuitem" data-toggle="header navigation"
+                           translate="i18n.states.auth.title"></a>
                     </li>
                 </ul>
             </div>
@@ -188,7 +279,7 @@
             </div>
         </div>
         <div class="application-content-viewport">
-            <div notifications></div>
+            <oblique-notification></oblique-notification>
             <router-outlet ui-view class="application-content-viewport"></router-outlet>
 
         </div>
@@ -226,5 +317,5 @@
 
     </footer>
 </div>
-<oblique-notification></oblique-notification>
+
 <oblique-spinner></oblique-spinner>
