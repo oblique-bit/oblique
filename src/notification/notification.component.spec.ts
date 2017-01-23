@@ -34,8 +34,8 @@ describe('NotificationComponent', () => {
 
   describe('should show messages', () => {
 
-    let message:string = 'message';
-    let title:string = 'title';
+    let message = 'message';
+    let title = 'title';
     let mockNotificationService;
     let htmlNotifications;
 

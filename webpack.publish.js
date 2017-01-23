@@ -1,9 +1,9 @@
 //TODO: start this with gulp and probably move to root of project
 
 module.exports = {
-    entry: './index.ts',
+    entry: './src/index.ts',
     output: {
-        filename: '../dist//bundles/oblique2-reactive.js',
+        filename: './dist/bundles/oblique2-reactive.js',
         library: 'oblique2-reactive',
         libraryTarget: 'umd'
     },
