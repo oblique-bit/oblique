@@ -297,7 +297,7 @@
 		]).pipe(tslint(<any>{
 			formatter: "verbose"
 		}))
-			.pipe(tslint.report())
+		.pipe(tslint.report())
 	});
 
 	gulp.task('build-sources-compile', () => {
@@ -409,7 +409,7 @@
 				https://github.com/karma-runner/gulp-karma/pull/23#issuecomment-232313832
 		 		https://github.com/karma-runner/karma/issues/1788
 		 */
-		var child_process = require('child_process');
+		let child_process = require('child_process');
 		child_process.exec(`"node_modules/.bin/karma" start ${__dirname}/karma.conf.js`, function (err, stdout){
 			gutil.log(stdout);
 			if (err) {
@@ -480,11 +480,12 @@
 	 * - `connect`: https://github.com/avevlad/gulp-connect
 	 */
 	gulp.task('watch', () => {
-		//TODO: check this
+		// Core:
 		gulp.watch(project.resources.vendor.js, {cwd: paths.target.vendor}, () => runSequence('copy-vendor-js', 'reload'));
 		gulp.watch(project.resources.vendor.css, {cwd: paths.target.vendor}, () => runSequence('copy-vendor-css', 'reload'));
 		gulp.watch('**/*', {cwd: paths.target.vendor + 'oblique-ui/dist/'}, () => runSequence('copy-oblique-ui', 'reload'));
 		gulp.watch('**/*.ts', {cwd: paths.src}, () => runSequence('build-sources', 'reload'));
+		gulp.watch('**/*.less', {cwd: paths.less}, () => runSequence('build-styles', 'build-sources-copy', 'reload'));
 		gulp.watch('**/*.tpl.html', {cwd: paths.src}, () => runSequence('build-templates', 'build-sources-copy', 'reload'));
 
 		// Showcase:
@@ -791,8 +792,7 @@
 		return gulp.src('CHANGELOG.md')
 			.pipe(conventionalChangelog({
 				// conventional-changelog options:
-				preset: 'angular',
-				releaseCount: 0
+				preset: 'angular'
 			}, {
 				// context options:
 				linkCompare: false,
