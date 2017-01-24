@@ -12,9 +12,10 @@ module.exports = {
         {
             '@angular/core': ngExternal('core'),
             '@angular/common': ngExternal('common'),
-            '@angular/forms': ngExternal('forms')
+            '@angular/forms': ngExternal('forms'),
         },
-        rxjsExternal
+        rxjsExternal,
+        'ng2-translate'
     ],
     resolve: {
         extensions: ['.ts']
