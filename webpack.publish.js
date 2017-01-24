@@ -1,4 +1,3 @@
-//TODO: start this with gulp and probably move to root of project
 
 module.exports = {
     entry: './src/index.ts',

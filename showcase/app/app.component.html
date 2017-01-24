@@ -20,23 +20,23 @@
                 <h2 class="sr-only">Header controls menu</h2>
                 <ul class="nav navbar-nav navbar-right navbar-controls" role="menu"
                     ng-if="!appController.isAuthenticated()" ng-cloak>
-                    <li role="menuitem" ng-class="{active: appController.locale.current === 'de'}">
-                        <a href="" role="button" ng-click="appController.locale.use('de')">
+                    <li role="menuitem" [ngClass]="{active: isLangActive('de')}">
+                        <a role="button" (click)="changeLang('de')">
                             <span class="control-widget">de</span>
                         </a>
                     </li>
-                    <li role="menuitem" ng-class="{active: appController.locale.current === 'fr'}">
-                        <a href="" role="button" ng-click="appController.locale.use('fr')">
+                    <li role="menuitem" [ngClass]="{active: isLangActive('fr')}">
+                        <a role="button" (click)="changeLang('fr')">
                             <span class="control-widget">fr</span>
                         </a>
                     </li>
-                    <li role="menuitem" ng-class="{active: appController.locale.current === 'it'}">
-                        <a href="" role="button" ng-click="appController.locale.use('it')">
+                    <li role="menuitem" [ngClass]="{active: isLangActive('it')}">
+                        <a role="button" (click)="changeLang('it')">
                             <span class="control-widget">it</span>
                         </a>
                     </li>
-                    <li role="menuitem" ng-class="{active: appController.locale.current === 'en'}">
-                        <a href="" role="button" ng-click="appController.locale.use('en')">
+                    <li role="menuitem" [ngClass]="{active: isLangActive('en')}">
+                        <a role="button" (click)="changeLang('en')">
                             <span class="control-widget">en</span>
                         </a>
                     </li>
@@ -94,26 +94,26 @@
                             <li role="presentation" class="divider"></li>
                             <li class="nav-header" role="presentation">
                                 <span class="fa fa-flag"></span>
-                                <span>{{'i18n.labels.language'<!-- | translate-->}}</span>
+                                <span>{{'i18n.labels.language' | translate}}</span>
                             </li>
                             <li role="menuitem" ng-class="{active: appController.locale.current === 'de'}">
                                 <a href="" role="button" ng-click="appController.locale.use('de')">
-                                    <span>{{'i18n.application.locales.de'<!-- | translate-->}}</span>
+                                    <span>{{'i18n.application.locales.de' | translate }}</span>
                                 </a>
                             </li>
                             <li role="menuitem" ng-class="{active: appController.locale.current === 'fr'}">
                                 <a href="" role="button" ng-click="appController.locale.use('fr')">
-                                    <span>{{'i18n.application.locales.fr'<!-- | translate-->}}</span>
+                                    <span>{{'i18n.application.locales.fr' | translate}}</span>
                                 </a>
                             </li>
                             <li role="menuitem" ng-class="{active: appController.locale.current === 'it'}">
                                 <a href="" role="button" ng-click="appController.locale.use('it')">
-                                    <span>{{'i18n.application.locales.it'<!-- | translate-->}}</span>
+                                    <span>{{'i18n.application.locales.it' | translate}}</span>
                                 </a>
                             </li>
                             <li role="menuitem" ng-class="{active: appController.locale.current === 'en'}">
                                 <a href="" role="button" ng-click="appController.locale.use('en')">
-                                    <span>{{'i18n.application.locales.en'<!-- | translate-->}}</span>
+                                    <span>{{'i18n.application.locales.en' | translate }}</span>
                                 </a>
                             </li>
                             <li role="presentation" class="divider"></li>
@@ -162,80 +162,80 @@
                     <li role="presentation" ui-sref-active="active">
                         <a href="" ui-sref="home"
                            role="menuitem" data-toggle="header navigation"
-                           translate="i18n.states.home.title"></a>
+                           [translate]="'i18n.states.home.title'"></a>
                     </li>
                     <li role="presentation" ng-class="{active: ('samples' | includedByState)}" ngbDropdown>
                         <a href="" role="menuitem" aria-expanded="false" aria-haspopup="true"
                            ngbDropdownToggle>
                             <span class="toggle"></span>
-                            <span translate="i18n.states.samples.title"></span>
+                            <span [translate]="'i18n.states.samples.title'"></span>
                         </a>
                         <div class="navigation-menu">
                             <ul class="nav" role="menu">
                                 <li class="nav-header" role="presentation" ui-sref-active="active">
                                     <a href="" class="nav-header-title navigation-back" data-toggle="navigation">
                                         <span class="toggle"></span>
-                                        <span data-translate="i18n.states.samples.title"></span>
+                                        <span [translate]="'i18n.states.samples.title'"></span>
                                     </a>
                                 </li>
                                 <li role="presentation" ui-sref-active="active">
                                     <a href="" ui-sref="samples.datepicker"
                                        role="menuitem" data-toggle="header navigation"
-                                       translate="i18n.states.samples.datepicker.title"></a>
+                                       [translate]="'i18n.states.samples.datepicker.title'"></a>
                                 </li>
                                 <li role="presentation" class="nav-section" ui-sref-active="active">
                                     <a href="" ui-sref="samples.multiselect"
                                        role="menuitem" data-toggle="header navigation"
-                                       translate="i18n.states.samples.multiselect.title"></a>
+                                       [translate]="'i18n.states.samples.multiselect.title'"></a>
                                 </li>
                                 <li role="presentation" ui-sref-active="active">
                                     <a href="" ui-sref="samples.navigable"
                                        role="menuitem" data-toggle="header navigation"
-                                       translate="i18n.states.samples.navigable.title"></a>
+                                       [translate]="'i18n.states.samples.navigable.title'"></a>
                                 </li>
                                 <li role="presentation" ui-sref-active="active">
                                     <a href="" ui-sref="samples.navigator.2.2.1"
                                        role="menuitem" data-toggle="header navigation"
-                                       translate="i18n.states.samples.navigator.title"></a>
+                                       [translate]="'i18n.states.samples.navigator.title'"></a>
                                 </li>
                                 <li role="presentation" ui-sref-active="active">
                                     <a href="" ui-sref="samples.typeahead"
                                        role="menuitem" data-toggle="header navigation"
-                                       translate="i18n.states.samples.typeahead.title"></a>
+                                       [translate]="'i18n.states.samples.typeahead.title'"></a>
                                 </li>
                                 <li role="presentation" ui-sref-active="active">
                                     <a href="" ui-sref="samples.uiScroll" uib-tooltip="Aka infinite scrolling"
                                        role="menuitem" data-toggle="header navigation"
-                                       translate="i18n.states.samples.uiScroll.title"></a>
+                                       [translate]="'i18n.states.samples.uiScroll.title'"></a>
                                 </li>
                                 <li role="presentation" ng-class="{active: ('validation' | includedByState)}">
                                     <a href="" role="menuitem" aria-expanded="false" aria-haspopup="true"
                                        data-toggle="navigation">
                                         <span class="toggle"></span>
-                                        <span translate="i18n.states.samples.validation.title"></span>
+                                        <span [translate]="'i18n.states.samples.validation.title'"></span>
                                     </a>
                                     <div class="navigation-menu">
                                         <ul class="nav nav-indented" role="menu">
                                             <li class="nav-header visible-xs" role="presentation">
                                                 <a href="" class="nav-header-title navigation-back" data-toggle="navigation">
                                                     <span class="toggle"></span>
-                                                    <span data-translate="i18n.states.samples.validation.title"></span>
+                                                    <span [translate]="'i18n.states.samples.validation.title'"></span>
                                                 </a>
                                             </li>
                                             <li role="presentation" ui-sref-active="active">
                                                 <a href="" ui-sref="samples.validation.formControl"
                                                    role="menuitem" data-toggle="header navigation"
-                                                   translate="i18n.states.samples.validation.formControl.title"></a>
+                                                   [translate]="'i18n.states.samples.validation.formControl.title'"></a>
                                             </li>
                                             <li role="presentation" ui-sref-active="active">
                                                 <a href="" ui-sref="samples.validation.schemaValidation"
                                                    role="menuitem" data-toggle="header navigation"
-                                                   translate="i18n.states.samples.validation.schemaValidation.title"></a>
+                                                   [translate]="'i18n.states.samples.validation.schemaValidation.title'"></a>
                                             </li>
                                             <li role="presentation" ui-sref-active="active">
                                                 <a href="" ui-sref="samples.validation.unsavedChanges"
                                                    role="menuitem" data-toggle="header navigation"
-                                                   translate="i18n.states.samples.validation.unsavedChanges.title"></a>
+                                                   [translate]="'i18n.states.samples.validation.unsavedChanges.title'"></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -246,12 +246,12 @@
                     <li role="presentation" ui-sref-active="active" ng-if="appController.isAuthenticated()">
                         <a href="" ui-sref="movies"
                            role="menuitem" data-toggle="header navigation"
-                           translate="i18n.states.movies.title"></a>
+                           [translate]="'i18n.states.movies.title'"></a>
                     </li>
                     <li role="presentation" ui-sref-active="active" ng-if="!appController.isAuthenticated()">
                         <a href="" ui-sref="auth"
                            role="menuitem" data-toggle="header navigation"
-                           translate="i18n.states.auth.title"></a>
+                           [translate]="'i18n.states.auth.title'"></a>
                     </li>
                 </ul>
             </div>

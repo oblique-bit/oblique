@@ -11,14 +11,13 @@ import {NotificationService} from './notification.service';
               <div class="animated slide-in-right" *ngFor="let notification of notifications" [ngClass]="alertType[notification.type] ">
                   <button (click)="remove(notification)" [hidden]="!notification.sticky" type="button" class="close">&times;</button>
                   <h4>
-                      <span *ngIf="!notification.title">{{("notification.type." + notification.type)}}</span>
-                      <span>{{notification.title}}</span>
+                      <span *ngIf="!notification.title">{{("i18n.notification.type." + notification.type) | translate}}</span>
+                      <span>{{notification.title | translate}}</span>
                   </h4>
-                  <p class="lead">{{notification.messageKey}}</p>
+                  <p class="lead">{{notification.messageKey | translate}}</p>
               </div>
           </div>
       </div>
-      <!-- TODO: Add translation -->
     `
 })
 export class NotificationComponent {
