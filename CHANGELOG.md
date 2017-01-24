@@ -1,3 +1,12 @@
+<a name="1.3.1"></a>
+### [1.3.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.3.1) (2017-01-24)
+
+#### Dependencies updates
+* **ObliqueUI:** 1.3.1
+* **Angular:** 1.6.1
+* **angular-ui-bootstrap:** 2.4.0
+* **angular-ui-router:** 0.4.2
+
 <a name="1.3.0"></a>
 ### [1.3.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.3.0) (2016-12-12)
 
