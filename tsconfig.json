@@ -5,6 +5,7 @@
     "declaration": true,
     "sourceMap": true,
     "removeComments": false,
+    "experimentalDecorators": true,
     "outDir": "target/.tmp",
 
     "baseUrl": ".",

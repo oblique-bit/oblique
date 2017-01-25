@@ -3,7 +3,7 @@ import {NotificationModule} from './notification/notification.module';
 import {SpinnerModule} from './spinner/spinner.module';
 import {TranslateModule} from 'ng2-translate';
 
-//TODO: barels
+//TODO: barrels
 export {NotificationService} from './notification/notification.service';
 export {NotificationModule} from './notification/notification.module';
 
@@ -12,14 +12,14 @@ export {SpinnerService} from './spinner/spinner.service';
 
 const OBLIQUE_MODULES = [
     NotificationModule,
-    SpinnerModule,
-    TranslateModule
+    SpinnerModule
 ];
 
 @NgModule({
     imports: [
         NotificationModule.forRoot(),
-        SpinnerModule.forRoot()
+        SpinnerModule.forRoot(),
+        TranslateModule
     ],
     exports: OBLIQUE_MODULES
 })
@@ -28,5 +28,9 @@ export class ObliqueRootModule {
 
 @NgModule({imports: OBLIQUE_MODULES, exports: OBLIQUE_MODULES})
 export class ObliqueModule {
-    static forRoot(): ModuleWithProviders { return {ngModule: ObliqueRootModule}; }
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: ObliqueRootModule
+        };
+    }
 }
