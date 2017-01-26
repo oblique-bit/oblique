@@ -62,8 +62,8 @@
 	- `validationSchemaEvent` event has been renamed into `schemaValidationEvent`
 	- `validationBusinessEvent` event has been renamed into `businessValidationEvent`
 * **has-error**: `has-error` directive is removed in favor of `form-control` component ([9aac98d](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/9aac98d))
-	- `has-error="controlName"` becomes `<form-control name="controlName">`
-	- `has-error-pristine` becomes `<form-control pristine-validation>`
+	- `has-error="controlName"` becomes `&lt;form-control name="controlName" /&gt;`
+	- `has-error-pristine` becomes `&lt;form-control pristine-validation /&gt;`
 
 <a name="v1.2.7"></a>
 ### [v1.2.7](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=v1.2.7) (2016-05-31)
