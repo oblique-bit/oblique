@@ -360,7 +360,10 @@
 	gulp.task('build-templates', () => {
 		let moduleName = 'oblique-reactive.app-templates';
 		return gulp.src(paths.src + '**/*.tpl.html')
-			.pipe(htmlmin({collapseWhitespace: true}))
+			.pipe(htmlmin({
+				collapseWhitespace: true,
+				conservativeCollapse: true
+			}))
 			.pipe(ngHtml2js({
 				moduleName: moduleName,
 				declareModule: false,
@@ -494,7 +497,11 @@
 		gulp.watch('**/*.ts', {cwd: paths.showcase.ui}, () => runSequence('showcase-build-sources', 'reload'));
 		gulp.watch('**/*.less', {cwd: paths.showcase.less}, () => runSequence('showcase-build-styles', 'reload'));
 		gulp.watch('**/*.tpl.html', {cwd: paths.showcase.ui}, () => runSequence('showcase-build-templates', 'reload'));
-		gulp.watch([paths.showcase.pages + '**/*.hbs', paths.showcase.partials + '**/*.hbs'], () => runSequence('showcase-build-html', 'reload'));
+		gulp.watch([
+			paths.showcase.pages + '**/*.hbs',
+			paths.showcase.partials + '**/*.hbs',
+			'CHANGELOG.md'
+		], () => runSequence('showcase-build-html', 'reload'));
 
 		gulp.watch('**/*.json', {cwd: paths.showcase.server}, () => runSequence('showcase-copy-server', 'reload'));
 		gulp.watch('**/*.ts', {cwd: paths.showcase.server}, () => runSequence('showcase-build-sources', 'reload'));
@@ -799,7 +806,7 @@
 				repository: pkg.repository.path // Atlassian Stash-specific
 			}, {
 				// git-raw-commits options:
-				//from: '1.0.0'
+				//from: 'v1.2.7'
 			}, {
 				// conventional-commits-parser options
 			}, {
