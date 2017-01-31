@@ -297,7 +297,7 @@
 		]).pipe(tslint(<any>{
 			formatter: "verbose"
 		}))
-			.pipe(tslint.report())
+		.pipe(tslint.report())
 	});
 
 	gulp.task('build-sources-compile', () => {
@@ -360,7 +360,10 @@
 	gulp.task('build-templates', () => {
 		let moduleName = 'oblique-reactive.app-templates';
 		return gulp.src(paths.src + '**/*.tpl.html')
-			.pipe(htmlmin({collapseWhitespace: true}))
+			.pipe(htmlmin({
+				collapseWhitespace: true,
+				conservativeCollapse: true
+			}))
 			.pipe(ngHtml2js({
 				moduleName: moduleName,
 				declareModule: false,
@@ -409,7 +412,7 @@
 				https://github.com/karma-runner/gulp-karma/pull/23#issuecomment-232313832
 		 		https://github.com/karma-runner/karma/issues/1788
 		 */
-		var child_process = require('child_process');
+		let child_process = require('child_process');
 		child_process.exec(`"node_modules/.bin/karma" start ${__dirname}/karma.conf.js`, function (err, stdout){
 			gutil.log(stdout);
 			if (err) {
@@ -480,11 +483,12 @@
 	 * - `connect`: https://github.com/avevlad/gulp-connect
 	 */
 	gulp.task('watch', () => {
-		//TODO: check this
+		// Core:
 		gulp.watch(project.resources.vendor.js, {cwd: paths.target.vendor}, () => runSequence('copy-vendor-js', 'reload'));
 		gulp.watch(project.resources.vendor.css, {cwd: paths.target.vendor}, () => runSequence('copy-vendor-css', 'reload'));
 		gulp.watch('**/*', {cwd: paths.target.vendor + 'oblique-ui/dist/'}, () => runSequence('copy-oblique-ui', 'reload'));
 		gulp.watch('**/*.ts', {cwd: paths.src}, () => runSequence('build-sources', 'reload'));
+		gulp.watch('**/*.less', {cwd: paths.less}, () => runSequence('build-styles', 'build-sources-copy', 'reload'));
 		gulp.watch('**/*.tpl.html', {cwd: paths.src}, () => runSequence('build-templates', 'build-sources-copy', 'reload'));
 
 		// Showcase:
@@ -493,7 +497,11 @@
 		gulp.watch('**/*.ts', {cwd: paths.showcase.ui}, () => runSequence('showcase-build-sources', 'reload'));
 		gulp.watch('**/*.less', {cwd: paths.showcase.less}, () => runSequence('showcase-build-styles', 'reload'));
 		gulp.watch('**/*.tpl.html', {cwd: paths.showcase.ui}, () => runSequence('showcase-build-templates', 'reload'));
-		gulp.watch([paths.showcase.pages + '**/*.hbs', paths.showcase.partials + '**/*.hbs'], () => runSequence('showcase-build-html', 'reload'));
+		gulp.watch([
+			paths.showcase.pages + '**/*.hbs',
+			paths.showcase.partials + '**/*.hbs',
+			'CHANGELOG.md'
+		], () => runSequence('showcase-build-html', 'reload'));
 
 		gulp.watch('**/*.json', {cwd: paths.showcase.server}, () => runSequence('showcase-copy-server', 'reload'));
 		gulp.watch('**/*.ts', {cwd: paths.showcase.server}, () => runSequence('showcase-build-sources', 'reload'));
@@ -791,15 +799,14 @@
 		return gulp.src('CHANGELOG.md')
 			.pipe(conventionalChangelog({
 				// conventional-changelog options:
-				preset: 'angular',
-				releaseCount: 0
+				preset: 'angular'
 			}, {
 				// context options:
 				linkCompare: false,
 				repository: pkg.repository.path // Atlassian Stash-specific
 			}, {
 				// git-raw-commits options:
-				//from: '1.0.0'
+				//from: 'v1.2.7'
 			}, {
 				// conventional-commits-parser options
 			}, {
