@@ -1,13 +1,13 @@
-{{#compose "default-layout"
-	app-home=app.home
+{{#extend "default-layout"
+	appHome=app.home
 	description="{{appController.page.description | translate}}"
-	body-class="has-overlay"
-	application-class="{{appController.page.layout.variant}}"
-	application-fixed=app.theme.application.fixed
-	header-transitions=app.theme.header.transitions
-	header-variant=app.theme.header.variant}}
+	bodyClass="has-overlay"
+	applicationClass="{{appController.page.layout.variant}}"
+	applicationFixed=app.theme.application.fixed
+	headerTransitions=app.theme.header.transitions
+	headerVariant=app.theme.header.variant}}
 	{{#content "default"}}
 		<notifications></notifications>
 		<div ui-view class="application-content-viewport"></div>
 	{{/content}}
-{{/compose}}
+{{/extend}}
