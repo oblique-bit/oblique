@@ -17,9 +17,9 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "styles.css",
         "../node_modules/oblique-ui/dist/css/oblique-ui-core.css",
-        "../node_modules/oblique-ui/dist/css/oblique-ui-extensions.css"
+        "../node_modules/oblique-ui/dist/css/oblique-ui-extensions.css",
+        "styles.less"
       ],
       "scripts": [],
       "environments": {

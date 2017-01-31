@@ -9,6 +9,8 @@ import {TranslateModule, TranslateLoader, TranslateStaticLoader} from 'ng2-trans
 import {AppComponent} from './app.component';
 import {ObliqueModule} from '../../src';
 import {HomeComponent} from './home/home.component';
+import {SamplesModule} from './samples/samples.module';
+import {NavigableComponent} from './samples/navigable/navigable.component';
 
 export function createTranslateLoader(http: Http) {
     return new TranslateStaticLoader(http, './assets/i18n', '.json');
@@ -27,14 +29,16 @@ export function createTranslateLoader(http: Http) {
         RouterModule.forRoot([
             //TODO: Routing config and links in master layout
             {path: 'home', component: HomeComponent},
-            {path: '', redirectTo: '/home', pathMatch: 'full'},
+            {path: 'navigable', component: NavigableComponent},
+            {path: '', redirectTo: '/navigable', pathMatch: 'full'},
         ]),
         NgbModule.forRoot(),
         TranslateModule.forRoot({
             provide: TranslateLoader,
             useFactory: createTranslateLoader,
             deps: [Http]
-        })
+        }),
+        SamplesModule
     ],
     providers: [
         {provide: 'notificationTimeout', useValue: 2000},
