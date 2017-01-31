@@ -880,8 +880,8 @@
 		webpack(
 			{
 				resolve: {
-					extensions: ['', '.webpack.js', '.ts', '.js'],
-					modulesDirectories: [
+					extensions: ['.webpack.js', '.ts', '.js'],
+					modules: [
 						'./node_modules'
 					],
 					alias: {
@@ -891,7 +891,8 @@
 				entry: `./${paths.target.ui}app/app-module.js`,
 				output: {filename: paths.target.ui + 'app/bundles/app.js'}
 			},
-			webpackCallBack('webpack', cb));
+			webpackCallBack('webpack', cb)
+		);
 	});
 	//</editor-fold>
 
