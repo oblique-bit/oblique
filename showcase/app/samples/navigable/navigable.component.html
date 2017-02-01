@@ -5,7 +5,7 @@
     <h3 class="panel-title">Preview</h3>
   </div>
   <div class="panel-body">
-    <div class="list-group" [navigableGroup]="scientistsSelection">
+    <div class="list-group" [(navigableGroup)]="scientistsSelection">
       <div class="list-group-item list-group-header">
         <div class="row">
           <div class="col-sm-3">First Name</div>
@@ -15,8 +15,8 @@
         </div>
       </div>
       <div class="list-group-item" *ngFor="let scientist of scientists; let i = index"
-           [navigable]="scientist" [navigableSelection]="scientistsSelection"
-           [navigableActivate]="i === 0">
+           [navigable]="scientist"
+           [initialActivated]="i === 0">
         <div class="row">
           <div class="col-sm-3">{{scientist.firstname}}</div>
           <div class="col-sm-3">{{scientist.lastname}}</div>

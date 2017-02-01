@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-navigable',
   templateUrl: './navigable.component.html',
   styleUrls: ['./navigable.component.css']
 })
-export class NavigableComponent implements OnInit {
+export class NavigableComponent {
 
   scientistsSelection = [];
   scientists = [
@@ -25,10 +25,4 @@ export class NavigableComponent implements OnInit {
       birthdate : '15.02.1564'
     }
   ];
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

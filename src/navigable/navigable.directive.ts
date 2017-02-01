@@ -1,35 +1,62 @@
 import {
-    Directive, Input, OnInit, ElementRef, HostBinding, AfterViewInit, Output, EventEmitter,
-    HostListener
+    Directive, Input, ElementRef, HostBinding, Output, EventEmitter,
+    HostListener, AfterViewInit
 } from '@angular/core';
 
 /**
  * NavigableDirective
  *
+ * api:
+ *      [navigable]:any                         The data, that should be selected
+ *      [initialActivated]:boolean              Should this item be activated initially?
+ *      (navigableOnMove):NavigableOnMoveEvent  Emits if up or down key is pressed
+ *      (navigableOnMouseDown):MouseEvent       Emits if item is clicked
+ *      (navigableOnFocus):FocusEvent           Emits if item is focused
+ *      (navigableOnActivation):void            Emits if item is activated
  *
  */
 @Directive({
     selector: '[navigable]'
 })
-export class NavigableDirective implements OnInit, AfterViewInit {
+export class NavigableDirective implements AfterViewInit {
 
     @Input('navigable') model: any;
 
-    @Input() navigableActivate: boolean;
-
-    @Output() navigableOnActivation = new EventEmitter();
+    @Input() initialActivated: boolean;
 
     @Output() navigableOnMove = new EventEmitter();
 
+    @Output() navigableOnMouseDown = new EventEmitter();
+
+    @Output() navigableOnFocus = new EventEmitter();
+
     @HostBinding('class.navigable') navigableClass: boolean = true;
 
-    @HostBinding('class.navigable-highlight') highlighted: boolean = true;
+    //TODO: needed? If yes, how to implement? (implementation in 1.3.0 seems to be broken)
+    @HostBinding('class.navigable-highlight') highlighted: boolean = false;
 
     @HostBinding('class.navigable-selected') selected: boolean = false;
 
+
+    activatedValue: boolean = false;
+
+    @Output() navigableOnActivation = new EventEmitter();
+
+    @HostBinding('class.navigable-active')
+    get activated() {
+        return this.activatedValue;
+    }
+
+    set activated(val: boolean) {
+        this.activatedValue = val;
+        if (val) {
+            this.navigableOnActivation.emit();
+        }
+    }
+
+    //TODO: do we need this?
     @HostBinding('tabindex') tabindex;
 
-    navigableSelectionValue = [];
 
     private arrows = {
         up: 38,
@@ -40,68 +67,52 @@ export class NavigableDirective implements OnInit, AfterViewInit {
 
     }
 
-    @Input()
-    get navigableSelection() {
-        return this.navigableSelectionValue;
-    }
-
-    set navigableSelection(val: any[]) {
-        this.navigableSelectionValue = val;
-        console.log('bar');
-    }
-
-    ngOnInit(): void {
-        console.log(this.navigableSelection);
-        console.log('tabindex: ', this.tabindex);
-
-        this.navigableSelection.push(this.model);
-    }
-
     ngAfterViewInit(): void {
-        console.log('this.navigableActivate: ', this.navigableActivate);
-        if (this.navigableActivate) {
-            this.el.nativeElement.focus();
-        }
+        //This makes sure, that parent components are able to subscribe to the navigableOnFocus before onFocus is triggered
+        setTimeout(() => {
+            if (this.initialActivated) {
+                this.focus();
+            }
+        }, 0);
     }
 
-    @HostListener('keydown',['$event']) onKeyDown($event:KeyboardEvent) {
-        console.log($event);
+    //TODO: discuss if this should completely moved to parent
+    @HostListener('keydown', ['$event']) onKeyDown($event: KeyboardEvent) {
         let keyCode = $event.keyCode;
         if (keyCode === this.arrows.up || keyCode === this.arrows.down) {
             let focused = this.el.nativeElement.querySelector(':focus');
-            //TODO: Implement parent check, if ng-bootstrap is integrated
+            //TODO: Implement parent check, if ng-bootstrap is integrated!
             if (!focused || !focused.classList.contains('dropdown-toggle') /*&& (focused.parents('.dropdown-menu').length === 0)*/) {
                 $event.preventDefault();
                 if ($event.ctrlKey && $event.shiftKey) {
+                    //TODO: what do we do here?
                     /*scope.$apply(() => {
-                        navigable.navigableOnMove(event, navigable.model, keyCode === arrows.up);
-                    });*/
+                     navigable.navigableOnMove(event, navigable.model, keyCode === arrows.up);
+                     });*/
                 } else {
-                    /*navigable.move(keyCode, event.ctrlKey || event.shiftKey);*/
+                    this.navigableOnMove.emit(new NavigableOnMoveEvent(keyCode, $event.ctrlKey || $event.shiftKey));
+                    /*navigable.handleChildMove(keyCode, event.ctrlKey || event.shiftKey);*/
                 }
             }
         }
     }
 
-    move(direction, combine) {
-        /*let items = this.items();
-        let active = this.active();
-        let index = items.index(active);
-        let next = null;
+    @HostListener('mousedown', ['$event']) onMouseDown($event: MouseEvent) {
+        this.navigableOnMouseDown.emit($event);
+        //TODO: handle the canFocus case -> see 1.3.0
+    }
 
-        if (direction === this.arrows.up) {
-            next = items.eq(Math.max(index - 1, 0));
-        } else if (direction === this.arrows.down) {
-            next = items.eq(Math.min(index + 1, items.length));
-        }
+    @HostListener('focus', ['$event']) onFocus($event: FocusEvent) {
+        this.navigableOnFocus.emit($event);
+    }
 
-        if (next && next.length) {
-            if (next.hasClass('navigable-selected')) {
-                this.unselect(active);
-            }
+    public focus() {
+        this.el.nativeElement.focus();
+    }
+}
 
-            // Trigger focus on next item in order to ensure activation is performed within the right scope:
-            next.data('navigable-combine', combine).focus();
-        }*/
+export class NavigableOnMoveEvent {
+    constructor(public keyCode: number, public combine: boolean) {
+
     }
 }

@@ -3,7 +3,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
-import {NavigableDirective} from "./navigable.directive";
+import {NavigableDirective} from './navigable.directive';
 
 
 //TODO: needs more tests
