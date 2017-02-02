@@ -30,15 +30,15 @@ export class NavigableDirective implements AfterViewInit {
 
     @Output() navigableOnFocus = new EventEmitter();
 
-    @HostBinding('class.navigable') navigableClass: boolean = true;
+    @HostBinding('class.navigable') navigableClass = true;
 
     //TODO: needed? If yes, how to implement? (implementation in 1.3.0 seems to be broken)
-    @HostBinding('class.navigable-highlight') highlighted: boolean = false;
+    @HostBinding('class.navigable-highlight') highlighted = false;
 
-    @HostBinding('class.navigable-selected') selected: boolean = false;
+    @HostBinding('class.navigable-selected') selected = false;
 
 
-    activatedValue: boolean = false;
+    activatedValue = false;
 
     @Output() navigableOnActivation = new EventEmitter();
 

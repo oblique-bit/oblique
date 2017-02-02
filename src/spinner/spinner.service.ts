@@ -13,9 +13,9 @@ import {Loading} from './loading';
 export class SpinnerService {
 
     public onSpinnerStatusChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-    public spinnerActive: boolean = false;
+    public spinnerActive = false;
 
-    private loadingId: number = 0;
+    private loadingId = 0;
     private loadings: Loading[] = [];
 
     constructor(private notificationService: NotificationService, @Optional() @Inject('spinnerMaxTimeout') private maxTimeout: number) {

@@ -13,7 +13,7 @@ export class NotificationService {
 
     public warning = this.warn; //Alias
 
-    private currentId: number = 0;
+    private currentId = 0;
 
 
     constructor(@Optional() @Inject('notificationTimeout') private timeout?: number) {

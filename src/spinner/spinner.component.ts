@@ -11,7 +11,7 @@ import {SpinnerService} from './spinner.service';
                 </div>`
 })
 export class SpinnerComponent {
-    public spinnerActive: boolean = false;
+    public spinnerActive = false;
 
     constructor(private spinnerService: SpinnerService) {
         spinnerService.onSpinnerStatusChange.subscribe((status: boolean) => {
