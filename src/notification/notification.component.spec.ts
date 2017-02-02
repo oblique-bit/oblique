@@ -13,6 +13,9 @@ import {MockTranslatePipe} from '../testhelpers/mock-translate.pipe';
 describe('NotificationComponent', () => {
     let component: NotificationComponent;
     let fixture: ComponentFixture<NotificationComponent>;
+    let mockNotificationService;
+    let message = 'message';
+    let title = 'title';
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -26,6 +29,7 @@ describe('NotificationComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(NotificationComponent);
         component = fixture.componentInstance;
+        mockNotificationService = fixture.debugElement.injector.get(NotificationService);
         fixture.detectChanges();
     });
 
@@ -34,14 +38,9 @@ describe('NotificationComponent', () => {
     });
 
     describe('should show messages', () => {
-
-        let message = 'message';
-        let title = 'title';
-        let mockNotificationService;
         let htmlNotifications;
 
         beforeEach(() => {
-            mockNotificationService = fixture.debugElement.injector.get(NotificationService);
             mockNotificationService.notifications.push(new Notification(1, NotificationTypes.DEFAULT, message, title, false));
             mockNotificationService.notifications.push(new Notification(2, NotificationTypes.INFO, message, title, false));
             fixture.detectChanges();
@@ -58,5 +57,14 @@ describe('NotificationComponent', () => {
             expect(htmlNotifications[0].classes).toEqual(jasmine.objectContaining({alert: true}));
             expect(htmlNotifications[0].classes).not.toEqual(jasmine.objectContaining({'alert-info': true}));
         });
+    });
+
+    it('should call NotificationService.remove() on button click', () => {
+        mockNotificationService.notifications.push(new Notification(1, NotificationTypes.DEFAULT, message, title, true));
+        fixture.detectChanges();
+
+        let button = fixture.debugElement.queryAll(By.css('button'));
+        button.tr
+        console.log(button);
     });
 });

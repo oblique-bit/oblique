@@ -27,6 +27,7 @@ gulp.task('lint', () => {
 });
 
 gulp.task('test', (done) => {
+    //TODO: start PhantomJS on Jenkins and Chrome locally
     exec(`"node_modules/.bin/karma" start ${__dirname}/karma.conf.js --single-run`, (err, stdout) => {
         gutil.log(stdout);
         if (err) {

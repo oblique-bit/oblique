@@ -11,8 +11,6 @@ import {Notification, NotificationTypes} from './notification';
 export class NotificationService {
     public notifications: Notification[] = [];
 
-    public warning = this.warn; //Alias
-
     private currentId = 0;
 
 
@@ -41,7 +39,7 @@ export class NotificationService {
         });
     }
 
-    public setTimeout(timeout: number) {
+    public setNotificationTimeout(timeout: number) {
         this.timeout = timeout;
     }
 
@@ -64,6 +62,11 @@ export class NotificationService {
 
     public warn(messageKey: string, title = '', sticky = false): number {
         return this.add(NotificationTypes.WARNING, messageKey, title, sticky);
+    }
+
+    //alias
+    public warning() {
+        return this.warn.call(arguments);
     }
 
     public error(messageKey: string, title = '', sticky = true): number {

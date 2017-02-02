@@ -94,7 +94,7 @@ angular
 		uibDatepickerPopupConfig.modelAsIsoFormat = 'yyyy-MM-dd';
 	})
 	.config((CONFIG, loadingServiceProvider:LoadingServiceProvider) => {
-		loadingServiceProvider.setTimeout(CONFIG.defaults.http.timeout);
+		loadingServiceProvider.setNotificationTimeout(CONFIG.defaults.http.timeout);
 	})
 	.config((CONFIG, $authProvider) => {
 		$authProvider.baseUrl = (CONFIG.api.url || '') + (CONFIG.api.context ? CONFIG.api.context : '');
