@@ -25,7 +25,15 @@ module.exports = {
             {
                 test: /\.ts$/,
                 //exclude: /node_modules/,
-                loader: ['ts-loader', 'angular2-template-loader?keepUrl=true'],
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            configFileName: 'tsconfig.publish.json'
+                        }
+                    },
+                    'angular2-template-loader?keepUrl=true'
+                ],
                 exclude: [/\.(spec|e2e)\.ts$/]
             },
             {

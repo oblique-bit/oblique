@@ -54,8 +54,7 @@ export class NavigableDirective implements AfterViewInit {
         }
     }
 
-    //TODO: do we need this?
-    @HostBinding('tabindex') tabindex;
+    @HostBinding('tabindex') tabindex = 0;
 
 
     private arrows = {
@@ -64,7 +63,7 @@ export class NavigableDirective implements AfterViewInit {
     };
 
     constructor(private el: ElementRef) {
-
+        //TODO: use renderer?
     }
 
     ngAfterViewInit(): void {

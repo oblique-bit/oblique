@@ -1,10 +1,11 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import {DebugElement, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 import { NavigableComponent } from './navigable.component';
 import {MockTranslatePipe} from '../../../../src/testhelpers/mock-translate.pipe';
+import {NavigableModule} from '../../../../src/navigable/navigable.module';
 
 describe('NavigableComponent', () => {
   let component: NavigableComponent;
@@ -12,7 +13,11 @@ describe('NavigableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavigableComponent, MockTranslatePipe ]
+      declarations: [ NavigableComponent, MockTranslatePipe ],
+      imports: [NavigableModule],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ]
     })
     .compileComponents();
   }));

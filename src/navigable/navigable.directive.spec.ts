@@ -2,30 +2,64 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
-import {DebugElement} from '@angular/core';
+import {DebugElement, Component} from '@angular/core';
 import {NavigableDirective} from './navigable.directive';
 
 
 //TODO: needs more tests
 describe('NavigableDirective', () => {
+    //let component: TestComponent;
     let directive: NavigableDirective;
-    let fixture: ComponentFixture<NavigableDirective>;
+    let element: DebugElement;
+    let fixture: ComponentFixture<TestComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [NavigableDirective],
+            declarations: [TestComponent, NavigableDirective],
             imports: [CommonModule]
-        })
-            .compileComponents();
+        }).compileComponents();
     }));
 
-    /*beforeEach(() => {
-        fixture = TestBed.createComponent(NavigableDirective);
-        directive = fixture.componentInstance;
+    beforeEach(() => {
+        fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();
+        element = fixture.debugElement.query(By.directive(NavigableDirective));
+        directive = element.injector.get(NavigableDirective);
     });
 
-    it('should create', () => {
+    it('should be created', () => {
         expect(directive).toBeTruthy();
-    });*/
+    });
+
+    it('should add class navigable on element', () => {
+        expect(element.classes[['navigable']]).toBeTruthy();
+    });
+
+    it('should add class navigable-selected if it\'s selected', () => {
+        directive.selected = true;
+        fixture.detectChanges();
+
+        expect(element.classes[['navigable-selected']]).toBeTruthy();
+    });
+
+    it('should add class navigable-active if it\'s active', () => {
+        directive.activated = true;
+        fixture.detectChanges();
+
+        expect(element.classes[['navigable-active']]).toBeTruthy();
+    });
+
 });
+
+@Component({
+    template: `
+        <div [navigable]="model" [initialActivated]="true">
+            
+        </div>
+    `
+})
+class TestComponent {
+    model = {
+
+    };
+}
