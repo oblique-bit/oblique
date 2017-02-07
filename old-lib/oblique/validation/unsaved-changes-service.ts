@@ -75,7 +75,7 @@ export class UnsavedChangesService {
 
 	/**
 	 * Checks if unsaved changes are pending on the whole collection of watched
-	 * or only on the nested form if `subForm` is specified.
+	 * or only on the nested form if `nestedForm` is specified.
 	 *
 	 * If unsaved changes are pending, let's display the *browser-native* confirmation dialog,
 	 * as this is the only way to prevent user from leaving the current browser tab.
@@ -85,7 +85,7 @@ export class UnsavedChangesService {
 	 * @param nestedForm
 	 * @returns {boolean} true if there is no changes or the user has confirmed that he wants to lose the changes
 	 */
-	check(nestedForm) {
+	check(nestedForm?) {
 		return (nestedForm ? !nestedForm.$dirty : !this.isDirty()) || this.confirm();
 	};
 
