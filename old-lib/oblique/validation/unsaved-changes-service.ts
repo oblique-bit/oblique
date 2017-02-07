@@ -114,4 +114,22 @@ export class UnsavedChangesService {
 	clear() {
 		this.forms.length = 0;
 	}
+
+	/**
+	 * Checks if unsaved changes are pending on the whole collection of watched forms.
+	 *
+	 * If unsaved changes are pending, let's display the *browser-native* confirmation dialog,
+	 * as this is the only way to prevent user from leaving the current browser tab.
+	 *
+	 * @see check() and confirm()
+	 *
+	 * @param event
+	 */
+	modalClosing(event): void {
+		if (!this.check()) {
+			event.preventDefault();
+		} else {
+			this.clear();
+		}
+	}
 }

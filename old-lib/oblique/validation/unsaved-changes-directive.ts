@@ -18,5 +18,7 @@ export class UnsavedChangesDirective implements ng.IDirective {
 
 	link = (scope, element, attrs, formCtrl) => {
 		this.unsavedChangesService.watch(formCtrl);
+
+		scope.$on('modal.closing', this.unsavedChangesService.modalClosing.bind(this.unsavedChangesService));
 	}
 }
