@@ -40,7 +40,6 @@ describe('NotificationService', () => {
             expect(notificationService.remove).toHaveBeenCalled();
             expect(notificationService.remove).toHaveBeenCalledWith(id);
             expect(notificationService.notifications.length).toBe(0);
-            console.log(notificationService.notifications);
         }));
 
         it('shouldn\'t call remove() after notificationTimeout is reached, if the notification isn\'t sticky', fakeAsync(() => {

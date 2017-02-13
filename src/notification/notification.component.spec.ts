@@ -21,7 +21,7 @@ describe('NotificationComponent', () => {
         TestBed.configureTestingModule({
             declarations: [NotificationComponent, MockTranslatePipe],
             imports: [CommonModule],
-            providers: [{provide: NotificationService, useValue: {notifications: []}}]
+            providers: [{provide: NotificationService, useValue: {notifications: [], remove: jasmine.createSpy('remove')}}]
         })
             .compileComponents();
     }));
@@ -63,8 +63,9 @@ describe('NotificationComponent', () => {
         mockNotificationService.notifications.push(new Notification(1, NotificationTypes.DEFAULT, message, title, true));
         fixture.detectChanges();
 
-        let button = fixture.debugElement.queryAll(By.css('button'));
-        button.tr
-        console.log(button);
+        let button = fixture.debugElement.query(By.css('button'));
+        button.triggerEventHandler('click', null);
+
+        expect(mockNotificationService.remove).toHaveBeenCalledWith(1);
     });
 });
