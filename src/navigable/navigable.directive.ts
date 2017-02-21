@@ -20,6 +20,11 @@ import {
 })
 export class NavigableDirective implements AfterViewInit {
 
+    private static ARROWS = {
+        UP: 38,
+        DOWN: 40
+    };
+
     @Input('navigable') model: any;
 
     @Input() initialActivated: boolean;
@@ -37,6 +42,7 @@ export class NavigableDirective implements AfterViewInit {
 
     @HostBinding('class.navigable-selected') selected = false;
 
+    @HostBinding('tabindex') tabindex = 0;
 
     @Output() navigableOnActivation = new EventEmitter();
 
@@ -53,14 +59,6 @@ export class NavigableDirective implements AfterViewInit {
     }
 
     private activatedValue = false;
-
-    @HostBinding('tabindex') tabindex = 0;
-
-
-    private static ARROWS = {
-        UP: 38,
-        DOWN: 40
-    };
 
     constructor(private el: ElementRef) {
         //TODO: use renderer?
