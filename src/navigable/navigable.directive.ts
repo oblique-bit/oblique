@@ -38,8 +38,6 @@ export class NavigableDirective implements AfterViewInit {
     @HostBinding('class.navigable-selected') selected = false;
 
 
-    activatedValue = false;
-
     @Output() navigableOnActivation = new EventEmitter();
 
     @HostBinding('class.navigable-active')
@@ -54,12 +52,14 @@ export class NavigableDirective implements AfterViewInit {
         }
     }
 
+    private activatedValue = false;
+
     @HostBinding('tabindex') tabindex = 0;
 
 
-    private arrows = {
-        up: 38,
-        down: 40
+    private static ARROWS = {
+        UP: 38,
+        DOWN: 40
     };
 
     constructor(private el: ElementRef) {
@@ -78,7 +78,7 @@ export class NavigableDirective implements AfterViewInit {
     //TODO: discuss if this should completely moved to parent
     @HostListener('keydown', ['$event']) onKeyDown($event: KeyboardEvent) {
         let keyCode = $event.keyCode;
-        if (keyCode === this.arrows.up || keyCode === this.arrows.down) {
+        if (keyCode === NavigableDirective.ARROWS.UP || keyCode === NavigableDirective.ARROWS.DOWN) {
             let focused = this.el.nativeElement.querySelector(':focus');
             //TODO: Implement parent check, if ng-bootstrap is integrated!
             if (!focused || !focused.classList.contains('dropdown-toggle') /*&& (focused.parents('.dropdown-menu').length === 0)*/) {
