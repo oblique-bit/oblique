@@ -4,19 +4,19 @@
 module.exports = function (config) {
   config.set({
     basePath: '',
-    frameworks: ['jasmine', 'angular-cli'],
+    frameworks: ['jasmine', '@angular/cli'],
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-coverage-istanbul-reporter'),
-      require('angular-cli/plugins/karma'),
+      require('@angular/cli/plugins/karma'),
       require('karma-phantomjs-launcher')
     ],
     files: [
       { pattern: './showcase/test.ts', watched: false }
     ],
     preprocessors: {
-      './showcase/test.ts': ['angular-cli']
+      './showcase/test.ts': ['@angular/cli']
     },
     mime: {
       'text/x-typescript': ['ts','tsx']
