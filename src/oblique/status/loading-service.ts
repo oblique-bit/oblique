@@ -30,7 +30,7 @@ export class LoadingService {
 
 				if (typeof loading !== 'undefined') {
 					this.stop();
-					this.notificationService.error('i18n.error.other.timeout');
+					this.notificationService.error('i18n.oblique.error.other.timeout');
 				}
 
 			}, this.providerContext.timeout)

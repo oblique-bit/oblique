@@ -51,7 +51,7 @@ export class AppController {
 			if (response.data && response.data.errors) {
 				event.preventDefault();
 				response.data.errors.forEach((error, index) => {
-					notificationService.add(error.severity, 'i18n.error.business.' + error.messageKey);
+					notificationService.add(error.severity, 'i18n.oblique.error.business.' + error.messageKey);
 				});
 			}
 		});

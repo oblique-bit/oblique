@@ -9,9 +9,9 @@ export class MultiselectConfig {
 		smartButtonMaxItems: 1000 // FIXME: that's a hack...
 	};
 	translationTexts = {
-		checkAll: 'i18n.multiselect.checkAll',
-		uncheckAll: 'i18n.multiselect.uncheckAll',
-		buttonDefaultText: 'i18n.multiselect.buttonDefault',
-		allSelectedText: 'i18n.multiselect.allSelected'
+		checkAll: 'i18n.oblique.multiselect.checkAll',
+		uncheckAll: 'i18n.oblique.multiselect.uncheckAll',
+		buttonDefaultText: 'i18n.oblique.multiselect.buttonDefault',
+		allSelectedText: 'i18n.oblique.multiselect.allSelected'
 	};
 }

@@ -2,7 +2,8 @@
 	//<editor-fold desc="Dependencies">
 	let del = require('del'),
 		join = require('path').join,
-		merge = require('merge2'),
+		mergeStream = require('merge2'),
+		merge = require('merge'),
 		minimist = require('minimist'),
 		spawn = require('cross-spawn'),
 		readFileSync = require('fs').readFileSync,
@@ -43,6 +44,7 @@
 		paths = {
 			src: 'src/',
 			less: 'src/less/',
+			i18n: 'src/i18n/',
 			modules: 'node_modules/',
 			typings: 'typings/',
 			min: project.build.target + 'min/',
@@ -60,6 +62,7 @@
 				partials: 'showcase/ui/partials/',
 				helpers: 'showcase/ui/helpers/',
 				server: 'showcase/server/',
+				i18n: 'showcase/ui/app/i18n/'
 			},
 
 			// Target:
@@ -287,6 +290,8 @@
 			// 3. Build CSS sources:
 			'build-styles',
 
+			'build-sources-copy-i18n',
+
 			// 4. Copy compiled files to the correct output folders:
 			'build-sources-copy',
 
@@ -332,11 +337,40 @@
 		.pipe(gulp.dest(paths.staging + paths.showcase.base));
 	});
 
+	gulp.task('build-sources-copy-i18n', () => {
+		return gulp.src(
+			paths.i18n + '**/*.*',
+			{base: paths.src}
+		).pipe(gulp.dest(paths.staging + paths.src));
+	});
+
 	gulp.task('build-sources-copy', () => {
 		return gulp.src(
 			paths.staging + paths.src + '**/*.*',
 			{base: paths.staging + paths.src}
 		).pipe(gulp.dest(paths.target.vendor + 'oblique-reactive'));
+	});
+
+	gulp.task('showcase-merge-i18n', () => {
+		//TODO: move this to project.json
+		let localesPaths = [
+			`./${paths.showcase.i18n}`,
+			`./${paths.target.vendor}oblique-reactive/i18n/`
+		];
+
+		let locales = project.app.locales;
+
+		locales.forEach((locale) => {
+			let merged = {};
+
+			localesPaths.forEach((localePath) => {
+				let loc = require(`${localePath}locale-${locale}.json`);
+				merged = merge.recursive(merged, loc);
+			});
+
+			file(`locale-${locale}.json`, JSON.stringify(merged))
+				.pipe(gulp.dest(paths.target.ui + 'app/i18n/'));
+		});
 	});
 
 
@@ -531,6 +565,7 @@
 			'showcase-build-sources',
 			'showcase-build-styles',
 			'showcase-build-html',
+			'showcase-merge-i18n',
 			done
 		);
 	});
@@ -609,7 +644,7 @@
 			{base: paths.staging + paths.showcase.server}
 		).pipe(gulp.dest(paths.target.server));
 
-		return merge([showcaseSources, serverSources]);
+		return mergeStream([showcaseSources, serverSources]);
 	});
 
 	/**
@@ -670,7 +705,6 @@
 	gulp.task('showcase-copy-ui', () => {
 		return gulp.src(
 			[
-				'app/**/*.json',
 				'images/**/*',
 				'js/**/*',
 				'fonts/**/*'
@@ -717,6 +751,7 @@
 			'build-sources-compile',
 			'build-templates',
 			'build-styles',
+			'build-sources-copy-i18n',
 			'copy-publish',
 			'bundle-oblique',
 			'publish-package',

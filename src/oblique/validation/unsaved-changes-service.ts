@@ -105,7 +105,7 @@ export class UnsavedChangesService {
 	 * @returns {string}
 	 */
 	message() {
-		return this.$translate.instant('i18n.validation.unsavedChanges');
+		return this.$translate.instant('i18n.oblique.validation.unsavedChanges');
 	}
 
 	/**
