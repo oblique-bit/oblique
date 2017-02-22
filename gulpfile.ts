@@ -242,10 +242,13 @@
 	 *
 	 * Plugins: [NONE]
 	 */
-	gulp.task('copy-publish', () => {
+	gulp.task('copy-publish',() => {
 		let path = paths.staging + 'src/';
 		return gulp.src(
-			['**/*'],
+			[
+				'**/*',
+				'!**/*.spec.ts'
+			],
 			{cwd: path, base: path}
 		).pipe(gulp.dest(paths.publish + ''));
 	});
@@ -707,13 +710,8 @@
 		branch: 'HEAD:master'
 	}); // Imports 'build:release-*' tasks
 
-	/*
-	 * Releases & publishes the `oblique-ui` module in the internal npm registry.
-	 */
-	gulp.task('publish', (callback) => {
-		production = true;
+	gulp.task('build-publish', (callback) => {
 		runSequence(
-			'release',
 			'publish-clean',
 			'build-tslint',
 			'build-sources-compile',
@@ -722,6 +720,18 @@
 			'copy-publish',
 			'bundle-oblique',
 			'publish-package',
+			callback
+		);
+	});
+
+	/*
+	 * Releases & publishes the `oblique-ui` module in the internal npm registry.
+	 */
+	gulp.task('publish', (callback) => {
+		production = true;
+		runSequence(
+			'release',
+			'build-publish',
 			'publish-module',
 			callback
 		);
@@ -824,14 +834,7 @@
 	//<editor-fold desc="Linking task">
 	gulp.task('link-publish', (callback) => {
 		return runSequence(
-			'publish-clean',
-			'build-tslint',
-			'build-sources-compile',
-			'build-templates',
-			'build-styles',
-			'copy-publish',
-			'bundle-oblique',
-			'publish-package',
+			'build-publish',
 			'npm-link',
 			callback
 		);
