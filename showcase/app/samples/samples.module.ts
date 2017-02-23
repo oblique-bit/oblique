@@ -5,13 +5,15 @@ import {NavigableComponent} from './navigable/navigable.component';
 import {TranslateModule} from 'ng2-translate';
 import {ObliqueModule} from '../../../src/index';
 import { SchemaValidationComponent } from './schema-validation/schema-validation.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
     imports: [
         CommonModule,
         ObliqueModule,
         TranslateModule,
-        FormsModule
+        FormsModule,
+        RouterModule
     ],
     declarations: [NavigableComponent, SchemaValidationComponent]
 })

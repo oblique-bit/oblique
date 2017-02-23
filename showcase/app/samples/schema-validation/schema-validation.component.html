@@ -1,5 +1,6 @@
 <form class="form-horizontal has-validation" name="validationForm" role="form" [schemaValidation]="schema"
-      ng-submit="ctrl.check(validationForm)" #form="ngForm">
+      ng-submit="ctrl.check(validationForm)" #form="ngForm" unsavedChanges>
+    <a routerLink="/navigable" routerLinkActive="active">Crisis Center</a>
     <h2 class="page-header">
         <span>Schema validation</span>
         <span class="pull-right">
