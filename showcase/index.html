@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oblique2Reactive</title>
+
+  <!-- TODO: meta and oblique-ui/support -->
+  <meta name="description" content="" />
+
+  <!-- Internet Explorer 10 in Windows 8 and Windows Phone 8 viewport fix. -->
+  <!-- See: http://getbootstrap.com/getting-started/#support-ie10-width -->
+  <style type="text/css">
+    @-webkit-viewport   { width: device-width; }
+    @-moz-viewport      { width: device-width; }
+    @-ms-viewport       { width: device-width; }
+    @-o-viewport        { width: device-width; }
+    @viewport           { width: device-width; }
+  </style>
+  <script type="text/javascript">
+    if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+      var msViewportStyle = document.createElement('style');
+      msViewportStyle.appendChild(
+              document.createTextNode('@-ms-viewport{width:auto!important}')
+      );
+      document.querySelector('head').appendChild(msViewportStyle);
+    }
+  </script>
+  <base href="/">
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<!-- TODO: data-tooltips needed?-->
+<body class="has-overlay" data-tooltips data-header-transitions>
+  <app-root>Loading...</app-root>
+</body>
+</html>
