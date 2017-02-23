@@ -1,21 +1,5 @@
-.application {
-	// Ensure notifications stay within content viewport:
-	.application-content > .application-content-viewport {
-		position: relative;
-	}
-}
-
 .form-control-activable, .form-control-activable:hover {
 	cursor: pointer !important;
-}
-
-// TODO: report to ObliqueUI:
-.notification-container {
-	overflow-x: hidden;
-
-	.alert:last-child {
-		margin-bottom: 5px; // Reserve spacing for box shadow!
-	}
 }
 
 @media (min-width: @grid-float-breakpoint) {

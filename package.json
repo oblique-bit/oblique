@@ -3,6 +3,10 @@
   "version": "0.0.1-alpha",
   "license": "All Rights Reserved",
   "angular-cli": {},
+  "organization": {
+    "name": "Federal Office of Information Technology, Systems and Telecommunication FOITT",
+    "url": "http://www.bit.admin.ch/"
+  },
   "homepage": "http://eui.bit.admin.ch/oblique-reactive/",
   "author": {
     "name": "Christian Ulmann",

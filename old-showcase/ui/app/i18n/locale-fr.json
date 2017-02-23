@@ -110,9 +110,10 @@
           "400": "La syntaxe de la requête est erronée",
           "404": "Ressource non trouvée",
           "500": "Erreur interne du serveur",
-          "501": "Fonctionnalité réclamée non supportée par le serveur",
+          "501": "Fonctionnalité réclamée non supportée par le serveur.",
           "502": "Mauvaise réponse envoyée à un serveur intermédiaire par un autre serveur.",
-          "503": "Service temporairement indisponible ou en maintenance"
+          "503": "Service temporairement indisponible ou en maintenance.",
+          "504": "Temps d’attente d’une réponse d’un serveur à un serveur intermédiaire écoulé."
         }
       },
       "other": {

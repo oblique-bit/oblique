@@ -92,6 +92,7 @@ angular
 		// DatepickerPopup config extension:
 		uibDatepickerPopupConfig.altInputFormats = CONFIG.defaults.format && CONFIG.defaults.format.dateAlt ? CONFIG.defaults.format.dateAlt : ['d!.M!.yy'];
 		uibDatepickerPopupConfig.modelAsIsoFormat = 'yyyy-MM-dd';
+		//uibDatepickerPopupConfig.appendToBody = true;
 	})
 	.config((CONFIG, loadingServiceProvider:LoadingServiceProvider) => {
 		loadingServiceProvider.setNotificationTimeout(CONFIG.defaults.http.timeout);

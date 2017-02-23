@@ -1,9 +1,20 @@
+<a name="1.3.1"></a>
+### [1.3.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.3.1) (2017-01-24)
+
+#### Dependencies updates
+* **ObliqueUI:** 1.3.1
+* **AngularJS:** 1.6.1
+* **angular-ui-bootstrap:** 2.4.0
+* **angular-ui-router:** 0.4.2
+
+(see [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/package.json?at=1.3.1) for the full list of dependencies)
+
 <a name="1.3.0"></a>
 ### [1.3.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.3.0) (2016-12-12)
 
 #### Dependencies updates
 * **ObliqueUI:** 1.3.0
-* **Angular:** 1.6.0
+* **AngularJS:** 1.6.0
 * **angular-translate:** 2.13.1
 * **angular-ui-bootstrap:** 2.3.1
 * **angular-ui-router:** 0.3.2
@@ -13,11 +24,13 @@
 (see [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/package.json?at=1.3.0) for the full list of dependencies)
 
 #### Features
+* **form-control:** rewrite `has-error` directive in order to provide better handling on form controls (validation and mandatory states), see breaking changes as well ([9aac98d](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/9aac98d))
 * **unsaved-changes:** integrate `UnsavedChangesDirective` and provide an usage sample ([1b91cf4](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/1b91cf4))
-* **control-top:** add a wrapper for the ObliqueUI [TopControl](https://eui.bit.admin.ch/oblique-ui/1.3.0/components.html#components-feedback-top-control) component ([d423315](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/d423315))
+* **top-control:** add a wrapper for the ObliqueUI [TopControl](https://eui.bit.admin.ch/oblique-ui/1.3.0/components.html#components-feedback-top-control) component ([d423315](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/d423315))
 * **webpack:** bundle UI with Webpack and separate `showcase` and `src` builds ([526e803](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/526e803))
 * **typescript:** rewrite ObliqueReactive into TypeScript ([3db0ca7](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/3db0ca7), [1e702e4](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/1e702e4), [9503d46](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/9503d46))
 * **sourcemaps:** sourcemap integration in dev and publish build ([9e2504c](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/9e2504c))
+* **css:** ObliqueReactive Less resources are now bundled ([dc84849](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/dc84849))
 
 #### Bug Fixes
 * **notifications:**
@@ -26,23 +39,34 @@
 * **spinner:**
 	- callable from other controllers than `app-controller` ([b9d527d](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/b9d527d))
 	- overlay uses the fixed variant ([e343224](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/e343224))
-* **datepicker:** min/max date validation ([9cea457](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/9cea457))
+* **datepicker:** fix min/max date validation ([9cea457](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/9cea457))
 * **multiselect:** add support for schema validation ([506d8ec](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/506d8ec))
+* **navigable:** ensure `navigable-activate` and `navigable-highlight` are properly evaluated ([ba992b7](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/ba992b7))
+* **navigator:** ensure UP & BACK navigation is performed as expected ([53113d5](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/53113d5))
+* **validation:**
+	- datepicker + schema-validate ([5e40bca](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/5e40bca), [487126d](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/487126d))
+	- ensure `date-picker`, `schema-validation` and `has-error` directives work nicely together, add support for JSON schema v3 & update live examples ([d4ae8dc](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/d4ae8dc))
 
 #### Code Refactoring
-* **validation:** normalize namings of validation components (directives & events) ([817a9a0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/817a9a0))
+* **validation:** normalize namings of validation components (directives & events), see breaking changes as well ([817a9a0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/817a9a0))
 
 #### BREAKING CHANGES
+* **navigator:** `navigator` implementation is now based on AngularJS component design and needs to be referenced using the element tag (i.e. `&lt;navigator&gt;&lt;/navigator&gt;`) ([927d7e3](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/927d7e3))
+* **notifications:** `notifications` implementation is now based on AngularJS component design and needs to be referenced using the element tag (i.e. `&lt;notifications&gt;&lt;/notifications&gt;`) ([ea2044d](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/ea2044d))
+* **multiselect:** `multiselect` implementation is now based on AngularJS component design and needs to be referenced using the element tag (i.e. `&lt;multiselect&gt;&lt;/multiselect&gt;`) ([3ea1b53](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/3ea1b53))
+* **date-picker:** `date-picker` implementation is now based on AngularJS component design and needs to be referenced using the element tag (i.e. `&lt;date-picker&gt;&lt;/date-picker&gt;`) ([d6e22eb](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/d6e22eb))
 * **header-navigation:** partial needs to be updated to support ObliqueUI 1.3.0 (see [primary navigation](https://eui.bit.admin.ch/oblique-ui/1.3.0/components.html#components-navs-navbars-primary))
 * **footer:** partial needs to be updated to support ObliqueUI 1.3.0 (see [footer](https://eui.bit.admin.ch/oblique-ui/1.3.0/components.html#components-branding-footer))
 * **validation**:
 	- `validation-schema` directive has been renamed into `schema-validation`
 	- `validationSchemaEvent` event has been renamed into `schemaValidationEvent`
 	- `validationBusinessEvent` event has been renamed into `businessValidationEvent`
+* **has-error**: `has-error` directive is removed in favor of `form-control` component ([9aac98d](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/9aac98d))
+	- `has-error="controlName"` becomes `&lt;form-control name="controlName" /&gt;`
+	- `has-error-pristine` becomes `&lt;form-control pristine-validation /&gt;`
 
-
-<a name="1.2.7"></a>
-### [1.2.7](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=v1.2.7) (2016-05-31)
+<a name="v1.2.7"></a>
+### [v1.2.7](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=v1.2.7) (2016-05-31)
 
 #### Features
 * **navigable:**
@@ -55,9 +79,8 @@
 * **ngAnimate:** ensure `ngRepeat` does not show stale items due to ngAnimate transitions ([51cbfdc](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/51cbfdc))
 * **typeahead:** provide a workaround for scrollable AngularUI Typeahead suggestions and create a sample state to showcase it. ([cca3282](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/cca3282))
 
-
-<a name="1.2.2"></a>
-### [1.2.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=v1.2.2) (2015-09-11)
+<a name="v1.2.2"></a>
+### [v1.2.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=v1.2.2) (2015-09-11)
 
 #### Features
 * **delayed-change:** Added delayed-change directive for firing delayed callback when inputs value changes ([f84d177](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/f84d177))
@@ -73,9 +96,8 @@
 * **notifications:** notification can now be dismissed with the close button ([a24bf28](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/a24bf28))
 * **schema-validation:** fix nested properties validation and showcase with a sample usage ([6ff2932](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/6ff2932))
 
-
-<a name="0.0.3"></a>
-### [0.0.3](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=v0.0.3) (2015-03-18)
+<a name="v0.0.3"></a>
+### [v0.0.3](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=v0.0.3) (2015-03-18)
 
 #### Bug Fixes
 * **notifications:** ensure notifications are correctly displayed for API exceptions ([527807e](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/527807e))
@@ -83,9 +105,8 @@
 #### BREAKING CHANGES
 * notifications: API-specific methods are now scoped under `$http.api` (i.e. `$http.api.get()`, `$http.api.post()`, etc.)
 
-
-<a name="0.0.2"></a>
-### [0.0.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=v0.0.2) (2015-03-11)
+<a name="v0.0.2"></a>
+### [v0.0.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=v0.0.2) (2015-03-11)
 
 #### Features
 * **AppController:** enable global control for core UI components (layout, page title & spinner) ([58a25c8](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/58a25c8))
