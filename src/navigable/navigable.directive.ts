@@ -8,7 +8,7 @@ import {
  *
  * api:
  *      [navigable]:any                         The data, that should be selected
- *      [initialActivated]:boolean              Should this item be activated initially?
+ *      [navigableInitialActivated]:boolean              Should this item be activated initially?
  *      (navigableOnMove):NavigableOnMoveEvent  Emits if up or down key is pressed
  *      (navigableOnMouseDown):MouseEvent       Emits if item is clicked
  *      (navigableOnFocus):FocusEvent           Emits if item is focused
@@ -20,9 +20,14 @@ import {
 })
 export class NavigableDirective implements AfterViewInit {
 
+    private static ARROWS = {
+        UP: 38,
+        DOWN: 40
+    };
+
     @Input('navigable') model: any;
 
-    @Input() initialActivated: boolean;
+    @Input() navigableInitialActivated: boolean;
 
     @Output() navigableOnMove = new EventEmitter();
 
@@ -37,8 +42,7 @@ export class NavigableDirective implements AfterViewInit {
 
     @HostBinding('class.navigable-selected') selected = false;
 
-
-    activatedValue = false;
+    @HostBinding('tabindex') tabindex = 0;
 
     @Output() navigableOnActivation = new EventEmitter();
 
@@ -54,13 +58,7 @@ export class NavigableDirective implements AfterViewInit {
         }
     }
 
-    @HostBinding('tabindex') tabindex = 0;
-
-
-    private arrows = {
-        up: 38,
-        down: 40
-    };
+    private activatedValue = false;
 
     constructor(private el: ElementRef) {
         //TODO: use renderer?
@@ -69,7 +67,7 @@ export class NavigableDirective implements AfterViewInit {
     ngAfterViewInit(): void {
         //This makes sure, that parent components are able to subscribe to the navigableOnFocus before onFocus is triggered
         setTimeout(() => {
-            if (this.initialActivated) {
+            if (this.navigableInitialActivated) {
                 this.focus();
             }
         }, 0);
@@ -78,7 +76,7 @@ export class NavigableDirective implements AfterViewInit {
     //TODO: discuss if this should completely moved to parent
     @HostListener('keydown', ['$event']) onKeyDown($event: KeyboardEvent) {
         let keyCode = $event.keyCode;
-        if (keyCode === this.arrows.up || keyCode === this.arrows.down) {
+        if (keyCode === NavigableDirective.ARROWS.UP || keyCode === NavigableDirective.ARROWS.DOWN) {
             let focused = this.el.nativeElement.querySelector(':focus');
             //TODO: Implement parent check, if ng-bootstrap is integrated!
             if (!focused || !focused.classList.contains('dropdown-toggle') /*&& (focused.parents('.dropdown-menu').length === 0)*/) {

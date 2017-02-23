@@ -2,12 +2,11 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
-import {DebugElement} from '@angular/core';
 
 import {NotificationComponent} from './notification.component';
 import {NotificationService} from './notification.service';
 import {Notification, NotificationTypes} from './notification';
-import {MockTranslatePipe} from '../testhelpers/mock-translate.pipe';
+import {MockTranslatePipe} from '../../testhelpers';
 
 //TODO: needs more tests
 describe('NotificationComponent', () => {

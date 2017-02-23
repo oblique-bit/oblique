@@ -15,7 +15,8 @@ module.exports = {
             '@angular/forms': ngExternal('forms'),
         },
         rxjsExternal,
-        'ng2-translate'
+        'ng2-translate',
+        'ajv'
     ],
     resolve: {
         extensions: ['.ts']

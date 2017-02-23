@@ -6,6 +6,24 @@ import {DebugElement, Component} from '@angular/core';
 import {NavigableGroupDirective} from './navigable-group.directive';
 import {NavigableDirective} from './navigable.directive';
 
+@Component({
+    template: `
+        <div [navigableGroup]='selectedModel'>
+            <div [navigable]='model'></div>
+            <div [navigable]='model2'></div>
+            <div [navigable]='model3'></div>
+            <div [navigable]='model4'></div>
+        </div>
+    `
+})
+class TestComponent {
+    selectedModel = [];
+    model = {fuu: 'bar'};
+    model2 = {fuu: 'bar2'};
+    model3 = {fuu: 'bar3'};
+    model4 = {fuu: 'bar4'};
+}
+
 //TODO: Add more tests, if specifications are clear
 
 /**
@@ -196,20 +214,4 @@ describe('Navigable', () => {
     });
 });
 
-@Component({
-    template: `
-        <div [navigableGroup]='selectedModel'>
-            <div [navigable]='model'></div>
-            <div [navigable]='model2'></div>
-            <div [navigable]='model3'></div>
-            <div [navigable]='model4'></div>
-        </div>
-    `
-})
-class TestComponent {
-    selectedModel = [];
-    model = {fuu: 'bar'};
-    model2 = {fuu: 'bar2'};
-    model3 = {fuu: 'bar3'};
-    model4 = {fuu: 'bar4'};
-}
+

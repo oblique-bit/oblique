@@ -6,6 +6,19 @@ import {DebugElement, Component} from '@angular/core';
 import {NavigableDirective} from './navigable.directive';
 
 
+@Component({
+    template: `
+        <div [navigable]="model" [navigableInitialActivated]="true">
+            
+        </div>
+    `
+})
+class TestComponent {
+    model = {
+
+    };
+}
+
 //TODO: needs more tests
 describe('NavigableDirective', () => {
     //let component: TestComponent;
@@ -50,16 +63,3 @@ describe('NavigableDirective', () => {
     });
 
 });
-
-@Component({
-    template: `
-        <div [navigable]="model" [initialActivated]="true">
-            
-        </div>
-    `
-})
-class TestComponent {
-    model = {
-
-    };
-}

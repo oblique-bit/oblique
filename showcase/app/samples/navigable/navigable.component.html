@@ -16,7 +16,7 @@
       </div>
       <div class="list-group-item" *ngFor="let scientist of scientists; let i = index"
            [navigable]="scientist"
-           [initialActivated]="i === 0">
+           [navigableInitialActivated]="i === 0">
         <div class="row">
           <div class="col-sm-3">{{scientist.firstname}}</div>
           <div class="col-sm-3">{{scientist.lastname}}</div>

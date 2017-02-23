@@ -1,15 +1,15 @@
-# [ObliqueReactive](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/)
+# [Oblique2Reactive](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/)
 
-Reactive web template powered by [ObliqueUI](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-ui/) and [AngularJS](https://angularjs.org/). ObliqueReactive uses [npm](https://www.npmjs.com/), [Gulp](https://github.com/gulpjs/gulp/), [Less](http://lesscss.org/), [Browserify](http://browserify.org/) and [Handlebars](http://handlebarsjs.com/) to fetch dependencies, compile & build assets and compose the pages.
+Reactive web template powered by [Oblique2UI](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-ui/) and [Angular2](https://github.com/angular/angular). Oblique2Reactive uses [npm](https://www.npmjs.com/), [Gulp](https://github.com/gulpjs/gulp/), [Less](http://lesscss.org/), [Browserify](http://browserify.org/) and [Handlebars](http://handlebarsjs.com/) to fetch dependencies, compile & build assets and compose the pages.
 
-This template has been inspired by the following guidelines:
-<https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/mobilebasic?pli=1>
 
 ## Using as dependency
 
-Install `oblique-reactive` as an npm dependency:
+TODO: Update this, if we integrated the newest version in O2R-Seed
 
-	npm install oblique-reactive --save
+Install `oblique2-reactive` as an npm dependency:
+
+	npm install oblique2-reactive --save
 
 Once installed, you need to import the `ObliqueModule`:
 
