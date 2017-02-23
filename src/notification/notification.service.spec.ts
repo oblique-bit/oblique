@@ -4,7 +4,6 @@ import {TestBed, async, inject, tick, fakeAsync} from '@angular/core/testing';
 import {NotificationService} from './notification.service';
 import {NotificationTypes} from './notification';
 
-//TODO: implement tests for NotificationService
 describe('NotificationService', () => {
     let notificationService: NotificationService;
 

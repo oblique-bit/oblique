@@ -1,10 +1,9 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import {DebugElement, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 import { NavigableComponent } from './navigable.component';
-import {MockTranslatePipe} from '../../../../src/testhelpers/mock-translate.pipe';
+import {MockTranslatePipe} from '../../../../testhelpers';
 import {NavigableModule} from '../../../../src/navigable/navigable.module';
 
 describe('NavigableComponent', () => {

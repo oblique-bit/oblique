@@ -3,6 +3,7 @@ import {ControlContainer} from '@angular/forms';
 import {TranslateService} from 'ng2-translate';
 import 'rxjs/add/operator/filter';
 
+//TODO: Handle modals
 @Injectable()
 export class UnsavedChangesService {
     private forms: ControlContainer[] = [];

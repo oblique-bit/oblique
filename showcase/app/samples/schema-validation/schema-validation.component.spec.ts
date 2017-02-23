@@ -2,7 +2,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SchemaValidationComponent } from './schema-validation.component';
-import {MockTranslatePipe} from '../../../../src/testhelpers/mock-translate.pipe';
+import {MockTranslatePipe} from '../../../../testhelpers';
 import {SchemaValidationModule} from '../../../../src/schema-validation/schema-validation.module';
 import {FormsModule} from '@angular/forms';
 

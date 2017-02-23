@@ -4,7 +4,7 @@ import {TestBed, async} from '@angular/core/testing';
 import {AppComponent} from './app.component';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {NotificationService, SpinnerService} from '../../src';
-import {MockTranslatePipe} from '../../src/testhelpers/mock-translate.pipe';
+import {MockTranslatePipe} from '../../testhelpers';
 import {TranslateService} from 'ng2-translate';
 
 describe('AppComponent', () => {

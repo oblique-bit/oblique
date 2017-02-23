@@ -8,7 +8,7 @@ import {
  *
  * api:
  *      [navigable]:any                         The data, that should be selected
- *      [initialActivated]:boolean              Should this item be activated initially?
+ *      [navigableInitialActivated]:boolean              Should this item be activated initially?
  *      (navigableOnMove):NavigableOnMoveEvent  Emits if up or down key is pressed
  *      (navigableOnMouseDown):MouseEvent       Emits if item is clicked
  *      (navigableOnFocus):FocusEvent           Emits if item is focused
@@ -27,7 +27,7 @@ export class NavigableDirective implements AfterViewInit {
 
     @Input('navigable') model: any;
 
-    @Input() initialActivated: boolean;
+    @Input() navigableInitialActivated: boolean;
 
     @Output() navigableOnMove = new EventEmitter();
 
@@ -67,7 +67,7 @@ export class NavigableDirective implements AfterViewInit {
     ngAfterViewInit(): void {
         //This makes sure, that parent components are able to subscribe to the navigableOnFocus before onFocus is triggered
         setTimeout(() => {
-            if (this.initialActivated) {
+            if (this.navigableInitialActivated) {
                 this.focus();
             }
         }, 0);

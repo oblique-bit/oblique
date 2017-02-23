@@ -1,18 +1,16 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
-import {NotificationModule} from './notification/notification.module';
-import {SpinnerModule} from './spinner/spinner.module';
-import {NavigableModule} from './navigable/navigable.module';
-import {SchemaValidationModule} from './schema-validation/schema-validation.module';
-import {UnsavedChangesModule} from './unsaved-changes/unsaved-changes.module';
 
-//TODO: barrels
-export {NotificationService} from './notification/notification.service';
-export {NotificationModule} from './notification/notification.module';
+import {NotificationModule} from './notification';
+import {SpinnerModule} from './spinner';
+import {NavigableModule} from './navigable';
+import {SchemaValidationModule} from './schema-validation';
+import {UnsavedChangesModule} from './unsaved-changes';
 
-export {SpinnerModule} from './spinner/spinner.module';
-export {SpinnerService} from './spinner/spinner.service';
-export {SchemaValidationService} from './schema-validation/schema-validation.service';
-export {UnsavedChangesGuard} from './unsaved-changes/unsaved-changes.guard';
+export * from './navigable';
+export * from './notification';
+export * from './schema-validation';
+export * from './spinner';
+export * from './unsaved-changes';
 
 const OBLIQUE_MODULES = [
     NotificationModule,
