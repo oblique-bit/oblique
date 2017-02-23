@@ -3,7 +3,7 @@
 		<label data-ng-if="orDatepickerCtrl.label" for="{{orDatepickerCtrl.controlId}}" class="input-group-addon">{{orDatepickerCtrl.label}}</label>
 		<div class="control-action" data-ng-class="{'control-mandatory' : !ngModel && orDatepickerCtrl.required}">
 			<input name="{{orDatepickerCtrl.name}}" type="text" class="form-control"
-			       placeholder="{{('i18n.oblique.common.date.format.' + orDatepickerCtrl.dpOptions.datepickerPopup) | translate}}"
+			       placeholder="{{orDatepickerCtrl.placeholder | translate}}"
 			       data-ng-attr-id="{{orDatepickerCtrl.controlId}}"
 			       data-ng-model="orDatepickerCtrl.ngModel"
 			       data-ng-class="{'form-control-activable' : !orDatepickerCtrl.disabled && !orDatepickerCtrl.editable}"

@@ -20,6 +20,7 @@ export class DatePickerController implements ng.IComponentController {
 	controlId:string;
 	controlSize:string;
 	showClearControl:boolean;
+	placeholder:string;
 
 	opened:boolean;
 
@@ -46,6 +47,7 @@ export class DatePickerController implements ng.IComponentController {
 		this.editable = angular.isDefined(this.editable) ? this.editable : true;
 		this.showClearControl = angular.isDefined(this.showClearControl) ? this.showClearControl : true;
 		this.opened = false;
+		this.placeholder = angular.isDefined(this.placeholder) ? this.placeholder : 'i18n.oblique.common.date.format.' + this.dpOptions.datepickerPopup;
 
 		// Events:
 		this.$scope.$watchGroup(['orDatepickerCtrl.options.minDate', 'orDatepickerCtrl.options.maxDate'], (newValues, oldValues) => {

@@ -23,7 +23,8 @@ export class DatePickerComponent implements ng.IComponentOptions {
 		name: '@',
 		controlId: '@',
 		controlSize: '@', // 'sm'
-		showClearControl: '=?'
+		showClearControl: '=?',
+		placeholder: '@'
 	};
 	controller = DatePickerController;
 	controllerAs = 'orDatepickerCtrl';
