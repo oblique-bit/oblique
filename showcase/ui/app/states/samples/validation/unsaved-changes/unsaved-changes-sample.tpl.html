@@ -13,7 +13,7 @@
 	<p class="lead">Tracks and notifies about unsaved form changes when switching to another tab, navigating to another state, closing a modal or when closing the current browser tab (or the browser itself).</p>
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">Preview</h3>
+			<h3 class="panel-title">Preview for Tabs</h3>
 		</div>
 		<div class="panel-body">
 			<uib-tabset>
@@ -147,10 +147,17 @@
 		</div>
 		<div class="panel-footer">
 			<div class="form-actions">
-				<a href="" ui-sref="samples.validation.unsavedChanges.modal" class="btn btn-default">Open a modal in a new state</a>
-				<button type="button" class="btn btn-default" ng-click="ctrl.open()">Open a modal in current state</button>
 				<button type="submit" class="btn btn-primary" ng-click="ctrl.save(unsavedChangesForm)" ng-disabled="!unsavedChangesForm.$valid">Save</button>
 			</div>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Preview for Modals</h3>
+		</div>
+		<div class="panel-body">
+			<a href="" ui-sref="samples.validation.unsavedChanges.modal" class="btn btn-default">Open a modal in a new state</a>
+			<button type="button" class="btn btn-default" ng-click="ctrl.open()">Open a modal in current state</button>
 		</div>
 	</div>
 </form>
