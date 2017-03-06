@@ -115,8 +115,7 @@ export class SchemaValidateDirective implements ng.IDirective {
 		if (dotIdx !== -1) {
 			return this.isMandatory(name.slice(dotIdx + 1), schema.properties[name.slice(0, dotIdx)]);
 		}
-		// FIXME: '_selectedCode' is business specific, remove from here!
-		return this.schemaValidator.isRequired(name.replace('_selectedCode', ''), schema);
+		return this.schemaValidator.isRequired(name, schema);
 	}
 
 
