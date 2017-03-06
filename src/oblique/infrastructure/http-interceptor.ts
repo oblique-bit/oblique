@@ -1,6 +1,6 @@
 import {HttpDecorator, IRequestConfig} from './http-decorator';
-import {NotificationService} from '../ui/notifications/notification-service';
-import {LoadingService} from '../status/loading-service';
+import {NotificationService} from '../notification/notification-service';
+import {LoadingService} from '../loading/loading-service';
 
 export class HttpInterceptor implements ng.IHttpInterceptor {
 	private log;
