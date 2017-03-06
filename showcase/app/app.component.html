@@ -1,0 +1,321 @@
+<div class="application" aria-hidden="false"><!-- TODO: class:  {{appController.page.layout.variant}}-->
+    <div class="accesskeys" role="navigation">
+        <a href="#content" class="accessible">Skip to main content</a>
+        <span class="sr-only">Accesskeys:</span>
+        <ul class="list-unstyled">
+            <li>
+                <a class="accessible" accesskey="0" href="">Homepage [Alt + 0]</a>
+            </li>
+            <li>
+                <a class="accessible" accesskey="1" href="#navigation">Navigation [Alt + 1]</a>
+            </li>
+            <li>
+                <a class="accessible" accesskey="2" href="#content">Content [Alt + 2]</a>
+            </li>
+        </ul>
+    </div>
+    <header class="application-header">
+        <div class="navbar">
+            <div class="application-header-controls navigation-collapse">
+                <h2 class="sr-only">Header controls menu</h2>
+                <ul class="nav navbar-nav navbar-right navbar-controls" role="menu"
+                    ng-if="!appController.isAuthenticated()" ng-cloak>
+                    <li role="menuitem" [ngClass]="{active: isLangActive('de')}">
+                        <a role="button" (click)="changeLang('de')">
+                            <span class="control-widget">de</span>
+                        </a>
+                    </li>
+                    <li role="menuitem" [ngClass]="{active: isLangActive('fr')}">
+                        <a role="button" (click)="changeLang('fr')">
+                            <span class="control-widget">fr</span>
+                        </a>
+                    </li>
+                    <li role="menuitem" [ngClass]="{active: isLangActive('it')}">
+                        <a role="button" (click)="changeLang('it')">
+                            <span class="control-widget">it</span>
+                        </a>
+                    </li>
+                    <li role="menuitem" [ngClass]="{active: isLangActive('en')}">
+                        <a role="button" (click)="changeLang('en')">
+                            <span class="control-widget">en</span>
+                        </a>
+                    </li>
+                    <!--<li role="menuitem">
+                        <a href="" role="button" ui-sref="auth">
+                            <span class="control-icon fa fa-sign-in"></span>
+                            <span class="control-label">Sign in</span>
+                        </a>
+                    </li>-->
+                </ul>
+                <ul class="nav navbar-nav navbar-right navbar-controls" role="menu"
+                    ng-if="appController.isAuthenticated()" ng-cloak>
+                    <li class="dropdown" role="menuitem">
+                        <a role="button" data-toggle="dropdown" title="Notifications" tabindex="0">
+                            <span class="control-icon fa fa-globe"></span>
+                            <span class="control-label">Notifications</span>
+                        </a>
+                        <h3 id="header-controls-notifications" class="sr-only">Notifications menu</h3>
+                        <ul class="dropdown-menu nav nav-stacked control-body" role="menu"
+                            aria-labelledby="header-controls-notifications">
+                            <li class="nav-header" role="presentation">
+                                <span class="fa fa-globe"></span>
+                                <span>Notifications</span>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem">TODO</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" role="menuitem">
+                        <a role="button" data-toggle="dropdown" tabindex="0"
+                           > <!-- TODO: Title : title="{{appController.context.user.firstname}} {{appController.context.user.lastname}}"-->
+                            <!--<span ng-if="!appController.context.user.picture"
+                                  class="control-icon fa fa-user user-picture"></span>-->
+                            <span class="control-label">Profile &amp; Settings</span>
+                            <!--<img ng-if="appController.context.user.picture"
+                                 ng-src="{{appController.context.user.picture}}" class="user-picture"/>-->
+                        </a>
+                        <h3 id="header-controls-settings" class="sr-only">Profile &amp; Settings menu</h3>
+                        <ul class="dropdown-menu nav nav-stacked control-body" role="menu"
+                            aria-labelledby="header-controls-settings">
+                            <li role="presentation" class="nav-header">
+                                <span class="fa fa-user"></span>
+                                <h3><!--{{appController.context.user.firstname}}
+                                    {{appController.context.user.lastname}}--></h3>
+                                <p class="lead small"><!--{{appController.context.user.email}}--></p>
+                            </li>
+                            <li class="nav-header" role="presentation">
+                                <span class="fa fa-magic"></span>
+                                <span>Profile</span>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="">Account</a>
+                            </li>
+                            <li role="presentation" class="divider"></li>
+                            <li class="nav-header" role="presentation">
+                                <span class="fa fa-flag"></span>
+                                <span>{{'i18n.labels.language' | translate}}</span>
+                            </li>
+                            <li role="menuitem" ng-class="{active: appController.locale.current === 'de'}">
+                                <a href="" role="button" ng-click="appController.locale.use('de')">
+                                    <span>{{'i18n.application.locales.de' | translate }}</span>
+                                </a>
+                            </li>
+                            <li role="menuitem" ng-class="{active: appController.locale.current === 'fr'}">
+                                <a href="" role="button" ng-click="appController.locale.use('fr')">
+                                    <span>{{'i18n.application.locales.fr' | translate}}</span>
+                                </a>
+                            </li>
+                            <li role="menuitem" ng-class="{active: appController.locale.current === 'it'}">
+                                <a href="" role="button" ng-click="appController.locale.use('it')">
+                                    <span>{{'i18n.application.locales.it' | translate}}</span>
+                                </a>
+                            </li>
+                            <li role="menuitem" ng-class="{active: appController.locale.current === 'en'}">
+                                <a href="" role="button" ng-click="appController.locale.use('en')">
+                                    <span>{{'i18n.application.locales.en' | translate }}</span>
+                                </a>
+                            </li>
+                            <li role="presentation" class="divider"></li>
+                            <li role="menuitem">
+                                <a href="" role="button" ng-click="appController.logout()">
+                                    <span>Logout</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="navbar-header">
+                <ul class="nav navbar-nav navbar-toggle navbar-controls">
+                    <li>
+                        <a role="button" tabindex="0"
+                           data-toggle="header">
+                            <div class="application-header-toggle">
+                                <span class="first-line"></span>
+                                <span class="second-line"></span>
+                                <span class="third-line"></span>
+                            </div>
+                            <span class="sr-only">Toggle header & navigation</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="application-brand">
+                    <a class="application-brand-logo" href="#/home" tabindex="-1">
+                        <img alt="Back to home"
+                             src="assets/logo.svg"/>
+                    </a>
+                    <span class="application-brand-app-title" data-version="">
+									<a href="#/home">
+										ObliqueReactive
+									</a>
+								</span>
+                </div>
+            </div>
+        </div>
+        <div class="application-navigation">
+            <div class="navigation-collapse"
+                 role="navigation">
+                <h2 class="sr-only">Global navigation menu</h2>
+                <ul id="nav-global" class="nav navbar-nav navbar-primary navbar-fw" role="menu">
+                    <li role="presentation" ui-sref-active="active">
+                        <a href="" ui-sref="home"
+                           role="menuitem" data-toggle="header navigation"
+                           [translate]="'i18n.states.home.title'"></a>
+                    </li>
+                    <li role="presentation" ng-class="{active: ('samples' | includedByState)}" ngbDropdown>
+                        <a href="" role="menuitem" aria-expanded="false" aria-haspopup="true"
+                           ngbDropdownToggle>
+                            <span class="toggle"></span>
+                            <span [translate]="'i18n.states.samples.title'"></span>
+                        </a>
+                        <div class="navigation-menu">
+                            <ul class="nav" role="menu">
+                                <li class="nav-header" role="presentation" ui-sref-active="active">
+                                    <a href="" class="nav-header-title navigation-back" data-toggle="navigation">
+                                        <span class="toggle"></span>
+                                        <span [translate]="'i18n.states.samples.title'"></span>
+                                    </a>
+                                </li>
+                                <li role="presentation" ui-sref-active="active">
+                                    <a href="" ui-sref="samples.datepicker"
+                                       role="menuitem" data-toggle="header navigation"
+                                       [translate]="'i18n.states.samples.datepicker.title'"></a>
+                                </li>
+                                <li role="presentation" class="nav-section" ui-sref-active="active">
+                                    <a href="" ui-sref="samples.multiselect"
+                                       role="menuitem" data-toggle="header navigation"
+                                       [translate]="'i18n.states.samples.multiselect.title'"></a>
+                                </li>
+                                <li role="presentation" ui-sref-active="active">
+                                    <a href="" ui-sref="samples.navigable"
+                                       role="menuitem" data-toggle="header navigation"
+                                       [translate]="'i18n.states.samples.navigable.title'"></a>
+                                </li>
+                                <li role="presentation" ui-sref-active="active">
+                                    <a href="" ui-sref="samples.navigator.2.2.1"
+                                       role="menuitem" data-toggle="header navigation"
+                                       [translate]="'i18n.states.samples.navigator.title'"></a>
+                                </li>
+                                <li role="presentation" ui-sref-active="active">
+                                    <a href="" ui-sref="samples.typeahead"
+                                       role="menuitem" data-toggle="header navigation"
+                                       [translate]="'i18n.states.samples.typeahead.title'"></a>
+                                </li>
+                                <li role="presentation" ui-sref-active="active">
+                                    <a href="" ui-sref="samples.uiScroll" uib-tooltip="Aka infinite scrolling"
+                                       role="menuitem" data-toggle="header navigation"
+                                       [translate]="'i18n.states.samples.uiScroll.title'"></a>
+                                </li>
+                                <li role="presentation" ng-class="{active: ('validation' | includedByState)}">
+                                    <a href="" role="menuitem" aria-expanded="false" aria-haspopup="true"
+                                       data-toggle="navigation">
+                                        <span class="toggle"></span>
+                                        <span [translate]="'i18n.states.samples.validation.title'"></span>
+                                    </a>
+                                    <div class="navigation-menu">
+                                        <ul class="nav nav-indented" role="menu">
+                                            <li class="nav-header visible-xs" role="presentation">
+                                                <a href="" class="nav-header-title navigation-back" data-toggle="navigation">
+                                                    <span class="toggle"></span>
+                                                    <span [translate]="'i18n.states.samples.validation.title'"></span>
+                                                </a>
+                                            </li>
+                                            <li role="presentation" ui-sref-active="active">
+                                                <a href="" ui-sref="samples.validation.formControl"
+                                                   role="menuitem" data-toggle="header navigation"
+                                                   [translate]="'i18n.states.samples.validation.formControl.title'"></a>
+                                            </li>
+                                            <li role="presentation" ui-sref-active="active">
+                                                <a href="" ui-sref="samples.validation.schemaValidation"
+                                                   role="menuitem" data-toggle="header navigation"
+                                                   [translate]="'i18n.states.samples.validation.schemaValidation.title'"></a>
+                                            </li>
+                                            <li role="presentation" ui-sref-active="active">
+                                                <a href="" ui-sref="samples.validation.unsavedChanges"
+                                                   role="menuitem" data-toggle="header navigation"
+                                                   [translate]="'i18n.states.samples.validation.unsavedChanges.title'"></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li role="presentation" ui-sref-active="active" ng-if="appController.isAuthenticated()">
+                        <a href="" ui-sref="movies"
+                           role="menuitem" data-toggle="header navigation"
+                           [translate]="'i18n.states.movies.title'"></a>
+                    </li>
+                    <li role="presentation" ui-sref-active="active" ng-if="!appController.isAuthenticated()">
+                        <a href="" ui-sref="auth"
+                           role="menuitem" data-toggle="header navigation"
+                           [translate]="'i18n.states.auth.title'"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div id="content" class="application-content" role="main">
+        <noscript>
+            <div class="callout callout-danger">
+                <span class="sr-only">Error</span>
+                <h4>Javascript required!</h4>
+                <p class="lead">JavaScript must be enabled to use this app.</p>
+                <p>Please enable JavaScript in your browser and refresh the page.</p>
+            </div>
+        </noscript>
+        <div class="alert-compatibility default-layout">
+            <div class="callout callout-danger">
+                <span class="sr-only">Error</span>
+                <h4>Unsupported browser!</h4>
+                <p class="lead">Please note that your browser, Internet Explorer 8 or earlier, is deprecated.</p>
+                <p>We recommend upgrading to the <a href="http://ie.microsoft.com" target="_blank">latest version</a>.
+                </p>
+                <p>If you are using IE 9 or above, make sure you <a
+                        href="http://windows.microsoft.com/en-us/internet-explorer/use-compatibility-view"
+                        target="_blank">turn off "Compatibility View".</a></p>
+            </div>
+        </div>
+        <div class="application-content-viewport">
+            <oblique-notification></oblique-notification>
+            <router-outlet ui-view class="application-content-viewport"></router-outlet>
+
+        </div>
+    </div>
+    <!-- TODO: reimplement this-->
+    <!--<back-to-top></back-to-top>-->
+    <footer class="application-footer">
+        <div class="footer-item footer-item-logo">
+            <a href="http://www.bit.admin.ch" target="_blank" class="application-brand-logo">
+                <img src="assets/logo.svg"
+                     alt="Federal Office of Information Technology, Systems and Telecommunication FOITT">
+            </a>
+        </div>
+        <div class="footer-item footer-item-info">
+            <p>&copy; 2016 Federal Office of Information Technology, Systems and Telecommunication FOITT</p>
+            <p class="smaller">Built with <span class="fa fa-heart-o" title="Love"></span><span
+                    class="sr-only">love</span>, <a href="https://eui.bit.admin.ch/oblique-ui/"
+                                                    title="The front-end framework for the EAP stack.">ObliqueUI</a>
+                <span class="version">(v1.3.0-RC.4)</span> and <a href="https://angularjs.org/"
+                                                                  title="Superheroic JavaScript MVW Framework">AngularJS</a>
+                <span class="version">(v1.5.8)</span>.</p>
+        </div>
+        <div class="footer-item footer-item-links">
+            <ul class="list-inline">
+                <li>
+                    <a href="http://www.disclaimer.admin.ch" title="Terms and conditions" target="_blank" class="link">Legal</a>
+                </li>
+                <li>
+                    <a href="mailto:info@bit.admin.ch"
+                       title="This link will open your email client in order to send an email to info@bit.admin.ch"
+                       class="link">Contact</a>
+                </li>
+            </ul>
+        </div>
+
+    </footer>
+</div>
+
+<oblique-spinner></oblique-spinner>
