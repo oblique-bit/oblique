@@ -55,6 +55,11 @@
 	.dropdown-menu {
 		overflow: auto !important;
 
+		.check-all,
+		.uncheck-all {
+			font-size: small;
+		}
+
 		.glyphicon-ok, .glyphicon-remove {
 			margin-left: 4px;
 			margin-right: 14px;
@@ -64,7 +69,8 @@
 			padding-top: 2px;
 		}
 
-		[data-ng-click] {
+		[data-ng-click],
+		[role="menuitem"] {
 			cursor: pointer;
 		}
 	}
