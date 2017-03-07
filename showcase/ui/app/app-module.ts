@@ -25,6 +25,7 @@ import './app-templates';
 angular
 	.module('__MODULE__', [
 		'ngAnimate',
+		'ngMessages',
 		'ngCookies', // Required by $translateCookieStorage <- $translateLocalStorage <- $translate
 		'ngSanitize',
 		'ui.bootstrap',

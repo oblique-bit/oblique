@@ -1,4 +1,5 @@
 import {ORDatepickerModule} from './date-picker/index';
+import {ORErrorMessageModule} from './error-message/index';
 import {ORFormControlModule} from './form-control/index';
 import {ORInfrastructureModule} from './infrastructure/index';
 import {ORLoadingModule} from './loading/index';
@@ -22,6 +23,7 @@ export const ObliqueModule = 'oblique-reactive';
 angular.module(ObliqueModule, [
     'oblique-reactive.app-templates',
     ORDatepickerModule,
+    ORErrorMessageModule,
     ORFormControlModule,
     ORInfrastructureModule,
     ORLoadingModule,

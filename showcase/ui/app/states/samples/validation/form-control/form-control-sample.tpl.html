@@ -13,7 +13,9 @@
 					<input name="number" type="text" class="form-control"
 					       placeholder="This field is optional..."
 					       ng-model="ctrl.number" number-format />
-					<span class="help-block" ng-show="formControlForm.number.$invalid">Please, enter a valid number!</span>
+					<error-message field-name="number">
+						<ng-message when="parse" class="help-block">Please, enter a valid number!</ng-message>
+					</error-message>
 				</div>
 				<div class="col-sm-4">
 					<div class="btn-group">
@@ -42,7 +44,9 @@
 					       placeholder="This field is mandatory..."
 					       ng-model="ctrl.numberRequired" number-format
 					       ng-required="true" />
-					<span class="help-block" ng-if="formControlForm.numberRequired.$invalid && (formControlForm.numberRequired.$dirty || formControlForm.$submitted)">Please, enter a valid number!</span>
+					<error-message field-name="numberRequired">
+						<ng-message when="parse" class="help-block">Please, enter a valid number!</ng-message>
+					</error-message>
 				</div>
 				<div class="col-sm-4">
 					<div class="btn-group">
@@ -71,7 +75,9 @@
 					       placeholder="This field is already in error on load..."
 					       ng-model="ctrl.numberRequiredPristine" number-format
 					       ng-required="true" />
-					<span class="help-block" ng-if="formControlForm.numberRequiredPristine.$invalid">Please, enter a valid number!</span>
+					<error-message field-name="numberRequiredPristine">
+						<ng-message when="parse" class="help-block">Please, enter a valid number!</ng-message>
+					</error-message>
 				</div>
 				<div class="col-sm-4">
 					<div class="btn-group">
@@ -113,7 +119,9 @@
 								       ng-model="ctrl.addressNumber" number-format
 								       ng-required="true" />
 							</div>
-							<span class="help-block" ng-if="formControlForm.addressNumber.$invalid && (formControlForm.addressNumber.$dirty || formControlForm.$submitted)">Please, enter a valid number!</span>
+							<error-message field-name="addressNumber">
+								<ng-message when="parse" class="help-block">Please, enter a valid number!</ng-message>
+							</error-message>
 						</form-control>
 					</div>
 				</div>

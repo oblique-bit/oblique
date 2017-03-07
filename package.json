@@ -33,6 +33,7 @@
     "angular-dynamic-locale": "0.1.32",
     "angular-elastic": "git+https://github.com/admin-ch/angular-elastic.git#master",
     "angular-i18n": "1.6.1",
+    "angular-messages": "^1.6.2",
     "angular-sanitize": "1.6.1",
     "angular-translate": "2.13.1",
     "angular-translate-loader-static-files": "2.13.1",

@@ -76,6 +76,7 @@ module.exports = {
 				'moment/moment.js',
 				'lodash/lodash.js',
 				'angular/angular.js',
+				'angular-messages/angular-messages.js',
 				'angular-animate/angular-animate.js',
 				'angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
 				'angular-confirm/angular-confirm.js',
