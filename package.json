@@ -60,7 +60,7 @@
     "del": "2.2.2",
     "express": "4.15.2",
     "gulp": "^3.9.1",
-    "gulp-clean-css": "^2.3.2",
+    "gulp-clean-css": "^3.0.3",
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.0.0",
     "gulp-conventional-changelog": "^1.1.0",
