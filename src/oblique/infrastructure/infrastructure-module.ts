@@ -1,5 +1,5 @@
 import {httpDecorator} from './http-decorator';
-import {HttpInterceptor} from './http-interceptor';
+import {ObliqueHttpInterceptor} from './http-interceptor';
 import {logDecorator} from './log-decorator';
 import {ORLoadingModule} from '../loading/index';
 
@@ -8,5 +8,5 @@ export const ORInfrastructureModule = 'oblique-reactive.infrastructure';
 
 angular.module(ORInfrastructureModule, [ORLoadingModule])
     .decorator('$http', httpDecorator)
-    .service('HttpInterceptor', HttpInterceptor)
+    .service('ObliqueHttpInterceptor', ObliqueHttpInterceptor)
     .decorator('$log', logDecorator);

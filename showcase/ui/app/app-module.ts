@@ -53,7 +53,7 @@ angular
 	// Mandatory configuration
 	// --------------------------------------------------------
 	.config(($httpProvider:ng.IHttpProvider) => {
-		$httpProvider.interceptors.push('HttpInterceptor');
+		$httpProvider.interceptors.push('ObliqueHttpInterceptor');
 		$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 	})
 	.config((tmhDynamicLocaleProvider:ng.dynamicLocale.tmhDynamicLocaleProvider) => {

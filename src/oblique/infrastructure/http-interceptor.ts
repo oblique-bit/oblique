@@ -2,7 +2,7 @@ import {HttpDecorator, IRequestConfig} from './http-decorator';
 import {NotificationService} from '../notification/notification-service';
 import {LoadingService} from '../loading/loading-service';
 
-export class HttpInterceptor implements ng.IHttpInterceptor {
+export class ObliqueHttpInterceptor implements ng.IHttpInterceptor {
 	private log;
 
 	/*@ngInject*/
@@ -12,7 +12,7 @@ export class HttpInterceptor implements ng.IHttpInterceptor {
 	            private notificationService:NotificationService,
 	            private loadingService:LoadingService,
 	            $log) {
-		this.log = $log.getInstance('HttpInterceptor');
+		this.log = $log.getInstance('ObliqueHttpInterceptor');
 	}
 
 
