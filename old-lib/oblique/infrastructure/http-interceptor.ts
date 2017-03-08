@@ -32,7 +32,7 @@ export class HttpInterceptor implements ng.IHttpInterceptor {
 
 	response = <T>(response:ng.IHttpPromiseCallbackArg<T>) => {
 		let $http = this.http();
-		if ($http.api.isApiCall(response.config.url)) {
+		if (!this.isSilent(config) && !this.isBackground(config) && $http.api.isApiCall(response.config.url)) {
 			this.loadingService.stop();
 		}
 		return response;
