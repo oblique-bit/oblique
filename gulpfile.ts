@@ -311,16 +311,22 @@
 	gulp.task('build-sources-compile', () => {
 		project.app.version = pkg.version;
 		let tsProject = ts.createProject('tsconfig.json');
-		return gulp.src([
+
+		let tsResult = gulp.src([
 			paths.src + '**/*.ts',
 			paths.typings + '**/*.d.ts'
 		])
 		.pipe(sourcemaps.init())
-		.pipe(tsProject())
-		.pipe(replace("__MODULE__", project.app.module))
-		.pipe(replace("'__CONFIG__'", JSON.stringify(project.app)))
-		.pipe(sourcemaps.write())
-		.pipe(gulp.dest(paths.staging + paths.src));
+		.pipe(tsProject());
+
+		return mergeStream([
+				tsResult.dts,
+				tsResult.js.pipe(ngAnnotate())
+			])
+			.pipe(replace("__MODULE__", project.app.module))
+			.pipe(replace("'__CONFIG__'", JSON.stringify(project.app)))
+			.pipe(sourcemaps.write())
+			.pipe(gulp.dest(paths.staging + paths.src));
 	});
 
 	gulp.task('showcase-build-sources-compile', () => {
