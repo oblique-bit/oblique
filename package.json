@@ -28,7 +28,6 @@
   "dependencies": {
     "angular": "1.6.1",
     "angular-animate": "1.6.1",
-    "angular-confirm": "git+https://github.com/Schlogen/angular-confirm.git#1.2.3",
     "angular-cookies": "1.6.1",
     "angular-dynamic-locale": "0.1.32",
     "angular-elastic": "git+https://github.com/admin-ch/angular-elastic.git#master",
