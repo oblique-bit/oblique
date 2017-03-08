@@ -156,8 +156,9 @@
 			<h3 class="panel-title">Preview for Modals</h3>
 		</div>
 		<div class="panel-body">
-			<a href="" ui-sref="samples.validation.unsavedChanges.modal" class="btn btn-default">Open a modal in a new state</a>
-			<button type="button" class="btn btn-default" ng-click="ctrl.open()">Open a modal in current state</button>
+			<a href="" ui-sref="samples.validation.unsavedChanges.modal" class="btn btn-default"
+			   ng-click="orUnsavedChangesController.modalCheck($event)">Open a modal in a new state</a>
+			<button type="button" class="btn btn-default" ng-click="orUnsavedChangesController.modalCheck($event) ? ctrl.open() : null">Open a modal in current state</button>
 		</div>
 	</div>
 </form>
