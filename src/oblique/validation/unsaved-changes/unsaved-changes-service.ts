@@ -1,4 +1,4 @@
-﻿import {LoadingService} from '../status/loading-service';
+﻿import {LoadingService} from '../../status/loading-service';
 
 export class UnsavedChangesService {
 

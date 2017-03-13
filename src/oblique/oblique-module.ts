@@ -20,8 +20,8 @@ import {SchemaValidateDirective} from './validation/schema/schema-validate-direc
 import {SchemaValidationConfig} from './validation/schema/schema-validation-config';
 import {SchemaValidationDirective} from './validation/schema/schema-validation-directive';
 import {SchemaValidatorService} from './validation/schema/schema-validator-service';
-import {UnsavedChangesService} from './validation/unsaved-changes-service';
-import {UnsavedChangesDirective} from './validation/unsaved-changes-directive';
+import {UnsavedChangesService} from './validation/unsaved-changes/unsaved-changes-service';
+import {UnsavedChangesDirective} from './validation/unsaved-changes/unsaved-changes-directive';
 
 import {DatePickerComponent} from './ui/date-picker/date-picker-component';
 import {FormControlComponent} from './validation/form-control/form-control-component';
