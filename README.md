@@ -79,13 +79,13 @@ Follow the instructions described in the [JEAP Project Setup page](https://confl
 
 And add the TypeScript specific libraries and configs described in the [Configuration for TypeScript page](https://confluence.eap.bit.admin.ch/display/FEDEV/Configuration+for+TypeScript)
 
-> *Note*: ObliqueReactive needs **TypeScript 2**, use `npm install typescript@next` to get the beta version
+> Oblique Reative uses **TypeScript 2.2.\***, use `npm install --save-dev typescript@2.2` to get the required version
 
 ### First-time setup
 
 1. Install *globally* required `npm` libraries:
 
-	npm install -g typescript typings gulp
+	npm install -g typescript@2.2 typings gulp
 
 2. Install *development* and *frontend* dependencies (`npm` will look at [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/package.json) and automatically install the necessary dependencies listed there):
 
