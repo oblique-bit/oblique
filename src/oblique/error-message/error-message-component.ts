@@ -1,6 +1,7 @@
 export class ErrorMessageComponent implements ng.IComponentOptions {
     require = {
-        form: "^form"
+        form: "^form",
+        formControl: "?^formControl"
     };
     transclude = true;
 
@@ -10,9 +11,8 @@ export class ErrorMessageComponent implements ng.IComponentOptions {
 
     controllerAs = "ctrl";
     template = `<div ng-messages="ctrl.form[ctrl.fieldName].$error"
-                 ng-show="ctrl.form.$submitted || ctrl.form[ctrl.fieldName].$invalid"
-                 >
-                 <div ng-transclude></div>
+                 ng-show="((ctrl.form.$submitted || ctrl.form[ctrl.fieldName].$dirty) && ctrl.form[ctrl.fieldName].$invalid) || ctrl.formControl.pristineValidation"
+                 ng-transclude>
                 </div>`;
 
 }

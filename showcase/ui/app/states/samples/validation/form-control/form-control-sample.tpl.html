@@ -46,6 +46,7 @@
 					       ng-required="true" />
 					<error-message field-name="numberRequired">
 						<ng-message when="parse" class="help-block">Please, enter a valid number!</ng-message>
+						<ng-message when="required" class="help-block">This field is required!</ng-message>
 					</error-message>
 				</div>
 				<div class="col-sm-4">
@@ -77,6 +78,7 @@
 					       ng-required="true" />
 					<error-message field-name="numberRequiredPristine">
 						<ng-message when="parse" class="help-block">Please, enter a valid number!</ng-message>
+						<ng-message when="required" class="help-block">This field is required!</ng-message>
 					</error-message>
 				</div>
 				<div class="col-sm-4">
@@ -121,6 +123,7 @@
 							</div>
 							<error-message field-name="addressNumber">
 								<ng-message when="parse" class="help-block">Please, enter a valid number!</ng-message>
+								<ng-message when="required" class="help-block">This field is required!</ng-message>
 							</error-message>
 						</form-control>
 					</div>
