@@ -5,5 +5,5 @@ import {ORLoadingModule} from '../loading/index';
 export const ORUnsavedChangesModule = 'oblique-reactive.unsavedChanges';
 
 angular.module(ORUnsavedChangesModule, [ORLoadingModule])
-    .service('unsavedChangesService', UnsavedChangesService)
-    .directive('unsavedChanges', (unsavedChangesService: UnsavedChangesService) => new UnsavedChangesDirective(unsavedChangesService));
+	.service('unsavedChangesService', UnsavedChangesService)
+	.directive('unsavedChanges', (unsavedChangesService: UnsavedChangesService) => new UnsavedChangesDirective(unsavedChangesService));
