@@ -79,7 +79,6 @@ module.exports = {
 				'angular-messages/angular-messages.js',
 				'angular-animate/angular-animate.js',
 				'angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
-				'angular-confirm/angular-confirm.js',
 				'angular-cookies/angular-cookies.js',
 				'angular-dynamic-locale/dist/tmhDynamicLocale.js',
 				'angular-elastic/elastic.js',
