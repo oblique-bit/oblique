@@ -79,7 +79,7 @@ Follow the instructions described in the [JEAP Project Setup page](https://confl
 
 And add the TypeScript specific libraries and configs described in the [Configuration for TypeScript page](https://confluence.eap.bit.admin.ch/display/FEDEV/Configuration+for+TypeScript)
 
-> Oblique Reative uses **TypeScript 2.2.\***, use `npm install --save-dev typescript@2.2` to get the required version
+> Oblique Reative uses **TypeScript 2.2.\***, use `npm install --save-dev typescript@2.2` to get the required version.
 
 ### First-time setup
 
