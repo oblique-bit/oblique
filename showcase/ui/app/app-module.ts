@@ -34,7 +34,6 @@ angular
 		'tmh.dynamicLocale',
 		'pascalprecht.translate',
 		'satellizer',
-		'angular-confirm',
 		'angularjs-dropdown-multiselect',
 		'checklist-model',
 		'monospaced.elastic',

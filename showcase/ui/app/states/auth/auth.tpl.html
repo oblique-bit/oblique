@@ -32,7 +32,7 @@
 					<div class="form-group">
 						<div class="col-sm-offset-3 col-sm-9">
 							<button type="submit" class="btn btn-primary btn-lg" ng-disabled="!loginForm.$valid">
-								<span ng-if="ctrl.status.authenticating" class="fa fa-spinner fa-spin fade"></span>
+								<span ng-if="ctrl.status.authenticating" class="fa fa-spinner fa-spin anim-fade"></span>
 								<span>Sign in</span>
 							</button>
 							<button type="button" class="btn btn-link btn-lg" uib-tooltip="This is a decoration button, we can't recover your password, sorry! ;)">
@@ -61,7 +61,7 @@
 					</form-control>
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary btn-block" ng-disabled="!registerForm.$valid">
-							<span ng-if="ctrl.status.registering" class="fa fa-spinner fa-spin fade"></span>
+							<span ng-if="ctrl.status.registering" class="fa fa-spinner fa-spin anim-fade"></span>
 							<span translate="i18n.states.auth.register.submit"></span>
 						</button>
 					</div>

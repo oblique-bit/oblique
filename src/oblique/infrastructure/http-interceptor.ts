@@ -18,7 +18,7 @@ export class ObliqueHttpInterceptor implements ng.IHttpInterceptor {
 
 	request = (config:IRequestConfig) => {
 		// TODO: redesign blocking/silent/background operations
-		if (!this.isSilent(config) && !this.isBackground(config) && this.http().api.isApiCall(config.url)) {
+		if (!ObliqueHttpInterceptor.isSilent(config) && !ObliqueHttpInterceptor.isBackground(config) && this.http().api.isApiCall(config.url)) {
 			this.loadingService.start();
 		}
 		return config;
@@ -32,7 +32,7 @@ export class ObliqueHttpInterceptor implements ng.IHttpInterceptor {
 
 	response = <T>(response:ng.IHttpPromiseCallbackArg<T>) => {
 		let $http = this.http();
-		if ($http.api.isApiCall(response.config.url)) {
+		if (!ObliqueHttpInterceptor.isSilent(response.config) && !ObliqueHttpInterceptor.isBackground(response.config) && $http.api.isApiCall(response.config.url)) {
 			this.loadingService.stop();
 		}
 		return response;
@@ -44,7 +44,7 @@ export class ObliqueHttpInterceptor implements ng.IHttpInterceptor {
 			this.loadingService.stop();
 		}
 		if (!this.$rootScope.$broadcast('$httpInterceptorError', rejection).defaultPrevented) {
-			if (!this.isSilent(rejection.config) && (rejection.status >= 500 || rejection.status === 0)) {
+			if (!ObliqueHttpInterceptor.isSilent(rejection.config) && (rejection.status >= 500 || rejection.status === 0)) {
 				// Mark this rejection as already handled:
 				rejection.defaultPrevented = true;
 
@@ -57,12 +57,12 @@ export class ObliqueHttpInterceptor implements ng.IHttpInterceptor {
 	};
 
 
-	private isSilent(config:IRequestConfig) {
+	private static isSilent(config:IRequestConfig) {
 		return config && (config.silent || (config.data && config.data.silent));
 	}
 
 
-	private isBackground(config:IRequestConfig) {
+	private static isBackground(config:IRequestConfig) {
 		return config && (config.background || (config.data && config.data.background));
 	}
 
