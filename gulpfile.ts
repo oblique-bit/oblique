@@ -857,7 +857,8 @@
 				repository: pkg.repository.path // Atlassian Stash-specific
 			}, {
 				// git-raw-commits options:
-				//from: 'v1.2.7'
+				from: '1.3.0',
+				//to: 'HEAD'
 			}, {
 				// conventional-commits-parser options
 			}, {
@@ -866,7 +867,7 @@
 				// 	console.log(commit);
 				// 	return commit;
 				// },
-				headerPartial: readFileSync(join(__dirname, 'changelog-header.hbs'), 'utf-8')
+				//headerPartial: readFileSync(join(__dirname, 'changelog-header.hbs'), 'utf-8')
 			}))
 			.pipe(gulp.dest('./'));
 	});

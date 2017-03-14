@@ -1,3 +1,51 @@
+<a name="1.3.2"></a>
+## [1.3.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.3.2) (2017-03.14)
+
+#### Dependencies updates
+* **ObliqueUI:** 1.3.2
+* **AngularJS:** 1.6.2
+* **angular-translate:** 2.15.1
+* **angular-ui-bootstrap:** 2.5.0
+
+(see [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/package.json?at=1.3.1) for the full list of dependencies)
+
+### Bug Fixes
+* **datepicker:** `appendToBody` option does not change the style of the popup ([ea189b7](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/ea189b7))
+* **form-inline:** ensure custom components are displayed correctly under `.form-inline` ([e9662c4](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/e9662c4))
+* **ObliqueHttpInterceptor:** do not stop `loadingService` for silent or back-end calls ([c906532](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/c906532))
+* **publish:** execute ngAnnotate during `publish` build task ([8b78254](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/8b78254))
+
+### Features
+* **error-messages:** implementation of an `error-message-component` for displaying validation errors ([d2796f0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/d2796f0))
+* **date-picker:**
+	- the new `error-message-component` is now used to render `date-picker` validation messages ([f70a818](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/f70a818))
+	- add placeholder option, which accepts a text or a translation key ([a0d88da](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/a0d88da)), [#OUI-395](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/issues/OUI-395))
+* **i18n:** locales are now added to the lib and use a `oblique` prefix ([cdb20da](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/cdb20da)), [#OUI-389](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/issues/OUI-389), [#OUI-394](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/issues/OUI-394)). See breaking changes below as well.
+* **SchemaValidation:** use `schema-validator` to determine if an input is mandatory ([26f13ad](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/26f13ad))
+* **unsaved-hanges:** unsaved changes within modals are now tracked as well ([7355e69](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/7355e69))
+* **modules:** add modules for most components ([a9bd573](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/a9bd573))
+	- **ORDatepickerModule**
+	- **ORErrorMessageModule**
+	- **ORFormControlModule**
+	- **ORInfrastructureModule**
+	- **ORLoadingModule**
+	- **ORMultiselectModule**
+	- **ORNavigableModule**
+	- **ORNavigatorModule**
+	- **ORNotificationModule**
+	- **ORSchemaValidationModule**
+	- **ORTopControlModule**
+	- **ORTypeaheadModule**
+	- **ORUnsavedChangesModule**
+	- **ORUtilModule**
+	
+### BREAKING CHANGES
+
+* **i18n:** ObliqueReactive locales have a new prefix (`i18n.oblique`) and get published:
+	- you have to remove the ObliqueReactive specific translation codes from your locales and merge them together with a gulp task. See merge-i18n task in ObliqueReactiveSeed
+	- if you use texts that are now published with ObliqueReactive you have to change the prefix from `i18n` to `i18n.oblique` everywhere you use them
+* `HttpInterceptor` has been renamed to `ObliqueHttpInterceptor` ([c727ac7](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/c727ac7)). If you use `ObliqueHttpInterceptor`, you will have to update the interceptor config in your `app.module` from `$httpProvider.interceptors.push('ObliqueHttpInterceptor');` to `$httpProvider.interceptors.push('HttpInterceptor');`.
+
 <a name="1.3.1"></a>
 ### [1.3.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.3.1) (2017-01-24)
 

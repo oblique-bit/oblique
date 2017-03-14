@@ -1,4 +1,4 @@
-import {IRequestShortcutConfig} from './http-decorator';
+import {IRequestShortcutConfig} from './oblique-http-decorator';
 
 export class ObliqueHttp {
 	url:string;

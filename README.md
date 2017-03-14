@@ -2,9 +2,6 @@
 
 Reactive web template powered by [ObliqueUI](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-ui/) and [AngularJS](https://angularjs.org/). ObliqueReactive uses [npm](https://www.npmjs.com/), [Gulp](https://github.com/gulpjs/gulp/), [Less](http://lesscss.org/), [Browserify](http://browserify.org/) and [Handlebars](http://handlebarsjs.com/) to fetch dependencies, compile & build assets and compose the pages.
 
-This template has been inspired by the following guidelines:
-<https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/mobilebasic?pli=1>
-
 ## Using as dependency
 
 Install `oblique-reactive` as an npm dependency:
@@ -31,9 +28,9 @@ An example of usage can be found in the `oblique-reactive-seed` project: [Obliqu
 
 ### Only using parts of ObliqueReactive
  
-Since version 1.3.2 you can import only parts of ObliqueReactive, if you only want to use specific functionality.
+Since version 1.3.2 you can selectively import ObliqueReactive modules, if you only want to use specific functionality.
  
-There are following modules available:
+The following modules are available:
 
 - **ORDatepickerModule**
 - **ORErrorMessageModule**
@@ -50,7 +47,7 @@ There are following modules available:
 - **ORUnsavedChangesModule**
 - **ORUtilModule**
 
-You can import them like the *ObliqueModule*:
+You can import them in the same way as the *ObliqueModule*:
 ```
 import {ORDatepickerModule} from 'oblique-reactive/oblique-reactive';
 
@@ -111,7 +108,7 @@ Follow the instructions described in the [JEAP Project Setup page](https://confl
 
 And add the TypeScript specific libraries and configs described in the [Configuration for TypeScript page](https://confluence.eap.bit.admin.ch/display/FEDEV/Configuration+for+TypeScript)
 
-> Oblique Reative uses **TypeScript 2.1.\***, use `npm install --save-dev typescript@2.1` to get the required version.
+> ObliqueReactive uses **TypeScript 2.1.\***, use `npm install --save-dev typescript@2.1` to get the required version.
 
 ### First-time setup
 

@@ -1,4 +1,4 @@
-import {HttpDecorator} from './http-decorator';
+import {HttpDecorator} from './oblique-http-decorator';
 
 export class ObliqueLog {
 	private apiLogPath:string;

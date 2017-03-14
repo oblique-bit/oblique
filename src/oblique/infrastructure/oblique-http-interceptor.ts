@@ -1,4 +1,4 @@
-import {HttpDecorator, IRequestConfig} from './http-decorator';
+import {HttpDecorator, IRequestConfig} from './oblique-http-decorator';
 import {NotificationService} from '../notification/notification-service';
 import {LoadingService} from '../loading/loading-service';
 

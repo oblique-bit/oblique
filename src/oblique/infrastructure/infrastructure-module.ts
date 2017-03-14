@@ -1,5 +1,5 @@
-import {httpDecorator} from './http-decorator';
-import {ObliqueHttpInterceptor} from './http-interceptor';
+import {httpDecorator} from './oblique-http-decorator';
+import {ObliqueHttpInterceptor} from './oblique-http-interceptor';
 import {logDecorator} from './log-decorator';
 import {ORLoadingModule} from '../loading/index';
 
