@@ -3,7 +3,7 @@
 	margin-bottom: 10px;
 
 	.page-title,
-	.navbar-controls > li > a {
+	.navbar-controls .nav-link {
 		margin: 0;
 		padding: 0;
 		line-height: 42px;
@@ -13,7 +13,7 @@
 
 	.page-title {
 		.subtitle {
-			color: @gray;
+			color: $gray;
 		}
 	}
 

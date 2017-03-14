@@ -1,36 +1,40 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 
-import {NotificationModule} from './notification';
-import {SpinnerModule} from './spinner';
-import {NavigableModule} from './navigable';
-import {SchemaValidationModule} from './schema-validation';
-import {UnsavedChangesModule} from './unsaved-changes';
 import {DatepickerModule} from "./datepicker/datepicker.module";
+import {NavigableModule} from './navigable';
+import {NotificationModule} from './notification';
+import {SchemaValidationModule} from './schema-validation';
+import {SpinnerModule} from './spinner';
+import {TopControlModule} from './top-control';
+import {UnsavedChangesModule} from './unsaved-changes';
 
 export * from './datepicker';
 export * from './navigable';
 export * from './notification';
 export * from './schema-validation';
 export * from './spinner';
+export * from './top-control';
 export * from './unsaved-changes';
 
 const OBLIQUE_MODULES = [
+    DatepickerModule,
+    NavigableModule,
     NotificationModule,
     SpinnerModule,
-    NavigableModule,
     SchemaValidationModule,
-    UnsavedChangesModule,
-    DatepickerModule
+    TopControlModule,
+    UnsavedChangesModule
 ];
 
 @NgModule({
     imports: [
-        NotificationModule.forRoot(),
-        SpinnerModule.forRoot(),
+        DatepickerModule.forRoot(),
         NavigableModule.forRoot(),
+        NotificationModule.forRoot(),
         SchemaValidationModule.forRoot(),
-        UnsavedChangesModule.forRoot(),
-        DatepickerModule.forRoot()
+        SpinnerModule.forRoot(),
+        TopControlModule.forRoot(),
+        UnsavedChangesModule.forRoot()
     ],
     exports: OBLIQUE_MODULES
 })

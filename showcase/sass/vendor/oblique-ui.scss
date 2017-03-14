@@ -1,0 +1,88 @@
+@import '../../../node_modules/oblique-ui/sass/variables';
+
+.application {
+	// Cover background image:
+	&.has-cover {
+		background-image: url('../assets/images/cover-background.jpg');
+	}
+}
+
+// This can safely be removed:
+.navbar-controls {
+	.user-picture {
+		border: none;
+		margin-top: -6px;
+		height: 42px;
+		width: 42px;
+		vertical-align: middle;
+		border-radius: 50%;
+
+		&.control-icon {
+			padding: 5px;
+			text-align: center;
+			background-color: $gray-lighter;
+		}
+	}
+}
+
+// This can safely be removed:
+.oblique {
+	font-style: oblique; // ;)
+
+	.oblique-logo {
+		position: relative;
+		.oblique-addon {
+			position: absolute;
+			bottom: 0;
+			right: 32%;
+			font-weight: bold;
+			color: white;
+			font-size: 60%;
+		}
+
+		> img.small {
+			width: 44px;
+		}
+	}
+
+	> span:not(.oblique-logo) {
+		word-spacing: -16px;
+		vertical-align: middle;
+		> span {
+			font-style: normal;
+			font-weight: bold;
+		}
+	}
+}
+
+.bootstrap {
+	span {
+		vertical-align: middle;
+	}
+
+	.bootstrap-icon {
+		display: inline-block;
+		font-weight: 500;
+		color: #fff;
+		text-align: center;
+		cursor: default;
+		background-color: #563d7c;
+		border-radius: 15%;
+		line-height: 42px;
+		font-size: 30px;
+		padding: 2px 14px;
+	}
+}
+
+.angular {
+	span {
+		vertical-align: middle;
+	}
+
+	.angular-icon {
+		display: inline-block;
+		width: 64px;
+		margin-top: -10px;
+		margin-bottom: -7px;
+	}
+}
