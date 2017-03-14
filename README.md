@@ -29,6 +29,38 @@ angular
 
 An example of usage can be found in the `oblique-reactive-seed` project: [ObliqueReactiveSeed](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive-seed/)
 
+### Only using parts of ObliqueReactive
+ 
+Since version 1.3.2 you can import only parts of ObliqueReactive, if you only want to use specific functionality.
+ 
+There are following modules available:
+
+- **ORDatepickerModule**
+- **ORErrorMessageModule**
+- **ORFormControlModule**
+- **ORInfrastructureModule**
+- **ORLoadingModule**
+- **ORMultiselectModule**
+- **ORNavigableModule**
+- **ORNavigatorModule**
+- **ORNotificationModule**
+- **ORSchemaValidationModule**
+- **ORTopControlModule**
+- **ORTypeaheadModule**
+- **ORUnsavedChangesModule**
+- **ORUtilModule**
+
+You can import them like the *ObliqueModule*:
+```
+import {ORDatepickerModule} from 'oblique-reactive/oblique-reactive';
+
+angular
+	.module('__MODULE__', [
+		[...]
+		ORDatepickerModule,
+		[...]
+```
+
 ## Working on ObliqueReactive
 
 - Clone the repo: `git clone https://stash.eap.bit.admin.ch/scm/oui/oblique-reactive.git`.
@@ -79,13 +111,13 @@ Follow the instructions described in the [JEAP Project Setup page](https://confl
 
 And add the TypeScript specific libraries and configs described in the [Configuration for TypeScript page](https://confluence.eap.bit.admin.ch/display/FEDEV/Configuration+for+TypeScript)
 
-> Oblique Reative uses **TypeScript 2.2.\***, use `npm install --save-dev typescript@2.2` to get the required version.
+> Oblique Reative uses **TypeScript 2.1.\***, use `npm install --save-dev typescript@2.1` to get the required version.
 
 ### First-time setup
 
 1. Install *globally* required `npm` libraries:
 
-	npm install -g typescript@2.2 typings gulp
+	npm install -g typescript@2.1 typings gulp
 
 2. Install *development* and *frontend* dependencies (`npm` will look at [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/package.json) and automatically install the necessary dependencies listed there):
 

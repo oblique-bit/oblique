@@ -8,6 +8,7 @@ export * from './navigator/index';
 export * from './notification/index';
 export * from './schema-validation/index';
 export * from './top-control/index';
+export * from './typeahead/index';
 export * from './unsaved-changes/index';
 export * from './util/index';
 

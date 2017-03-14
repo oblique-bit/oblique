@@ -9,6 +9,7 @@ import {ORNavigatorModule} from './navigator/index';
 import {ORNotificationModule} from './notification/index';
 import {ORSchemaValidationModule} from './schema-validation/index';
 import {ORTopControlModule} from './top-control/index';
+import {ORTypeaheadModule} from './typeahead/index';
 import {ORUnsavedChangesModule} from './unsaved-changes/index';
 import {ORUtilModule} from './util/index';
 
@@ -33,6 +34,7 @@ angular.module(ObliqueModule, [
     ORNotificationModule,
     ORSchemaValidationModule,
     ORTopControlModule,
+    ORTypeaheadModule,
     ORUnsavedChangesModule,
     ORUtilModule
 ]);
