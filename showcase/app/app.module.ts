@@ -13,6 +13,7 @@ import {SamplesModule} from './samples/samples.module';
 import {NavigableComponent} from './samples/navigable/navigable.component';
 import {SchemaValidationComponent} from './samples/schema-validation/schema-validation.component';
 import {UnsavedChangesGuard} from '../../src/unsaved-changes/unsaved-changes.guard';
+import {BootstrapTestComponent} from "./samples/bootstrap-test/bootstrap-test.component";
 
 export function createTranslateLoader(http: Http) {
     return new TranslateStaticLoader(http, './assets/i18n', '.json');
@@ -32,8 +33,9 @@ export function createTranslateLoader(http: Http) {
             //TODO: Routing config and links in master layout
             {path: 'home', component: HomeComponent},
             {path: 'navigable', component: NavigableComponent},
+            {path: 'bootstrap', component: BootstrapTestComponent},
             {path: 'schema-validation', component: SchemaValidationComponent, canDeactivate: [UnsavedChangesGuard]},
-            {path: '', redirectTo: '/schema-validation', pathMatch: 'full'},
+            {path: '', redirectTo: '/bootstrap', pathMatch: 'full'},
         ]),
         NgbModule.forRoot(),
         TranslateModule.forRoot({

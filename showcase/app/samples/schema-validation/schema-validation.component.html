@@ -68,6 +68,21 @@
                     </a>
                 </div>
             </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Integer</label>
+                <div class="col-sm-6">
+                    <date-picker name="date" type="number" class="form-control"
+                           ngModel schemaValidate #m="ngModel"></date-picker>
+                </div>
+                <div class="col-sm-2">
+                    <a href="" class="form-control-static" role="button"
+                       uib-popover-html="ctrl.jsonSource(ctrl.schema.properties.integer)"
+                       popover-title="Schema" popover-placement="bottom" popover-trigger="'focus'">
+                        <span class="fa fa-sitemap"></span>
+                    </a>
+                </div>
+                <span class="help-block">ERRORS: {{m.control.errors | json }}</span>
+            </div>
             <!--<form-control class="form-group">
               <label class="col-sm-4 control-label">Date</label>
               <div class="col-sm-6">

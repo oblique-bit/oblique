@@ -5,7 +5,9 @@ import {SpinnerModule} from './spinner';
 import {NavigableModule} from './navigable';
 import {SchemaValidationModule} from './schema-validation';
 import {UnsavedChangesModule} from './unsaved-changes';
+import {DatepickerModule} from "./datepicker/datepicker.module";
 
+export * from './datepicker';
 export * from './navigable';
 export * from './notification';
 export * from './schema-validation';
@@ -17,7 +19,8 @@ const OBLIQUE_MODULES = [
     SpinnerModule,
     NavigableModule,
     SchemaValidationModule,
-    UnsavedChangesModule
+    UnsavedChangesModule,
+    DatepickerModule
 ];
 
 @NgModule({
@@ -26,7 +29,8 @@ const OBLIQUE_MODULES = [
         SpinnerModule.forRoot(),
         NavigableModule.forRoot(),
         SchemaValidationModule.forRoot(),
-        UnsavedChangesModule.forRoot()
+        UnsavedChangesModule.forRoot(),
+        DatepickerModule.forRoot()
     ],
     exports: OBLIQUE_MODULES
 })
