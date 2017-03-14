@@ -1,0 +1,82 @@
+<ul class="navbar-nav navbar-controls animate-ignore" role="menu" *ngIf="!isAuthenticated">
+	<li class="nav-item" role="menuitem"
+	    *ngFor="let locale of locales">
+		<a class="nav-link" href="" role="button"
+		   (click)="appController.locale.use(locale)"
+		   [ngClass]="{'active': appController.locale.current === locale}">
+			<span class="control-widget">{{locale}}</span>
+		</a>
+	</li>
+	<li class="nav-item" role="menuitem">
+		<a class="nav-link" href="" role="button" ui-sref="auth">
+			<span class="control-icon fa fa-sign-in"></span>
+			<span class="control-label">Sign in</span>
+		</a>
+	</li>
+</ul>
+<ul class="navbar-nav navbar-controls animate-ignore" role="menu"
+    *ngIf="isAuthenticated">
+	<li class="nav-item dropdown" role="menuitem">
+		<a class="nav-link" role="button" data-toggle="dropdown" title="Notifications" tabindex="0">
+			<span class="control-icon fa fa-globe"></span>
+			<span class="control-label">Notifications</span>
+		</a>
+		<h3 id="header-controls-notifications" class="sr-only">Notifications menu</h3>
+		<div class="dropdown-menu control-body">
+			<ul class="nav nav-vertical nav-hover" role="menu" aria-labelledby="header-controls-notifications">
+				<li class="nav-item nav-header" role="presentation">
+					<span class="fa fa-globe"></span>
+					<span>Notifications</span>
+				</li>
+				<li class="nav-item" role="presentation">
+					<a class="nav-link" role="menuitem">Some notification</a>
+				</li>
+			</ul>
+		</div>
+	</li>
+	<li class="nav-item dropdown" role="menuitem">
+		<a class="nav-link" role="button" data-toggle="dropdown" tabindex="0"
+		   title="{{appController.context.user.firstname}} {{appController.context.user.lastname}}">
+			<span *ngIf="!appController.context.user.picture" class="control-icon fa fa-user user-picture"></span>
+			<span class="control-label">Profile &amp; Settings</span>
+			<img *ngIf="appController.context.user.picture" [attr.src]="appController.context.user.picture"
+			     class="user-picture" />
+		</a>
+		<h3 id="header-controls-settings" class="sr-only">Profile &amp; Settings menu</h3>
+		<div class="dropdown-menu control-body">
+			<ul class="nav nav-vertical nav-hover" role="menu" aria-labelledby="header-controls-settings">
+				<li class="nav-item nav-header" role="presentation">
+					<span class="fa fa-user"></span>
+					<h3>{{appController.context.user.firstname}} {{appController.context.user.lastname}}</h3>
+					<p class="lead small">{{appController.context.user.email}}</p>
+				</li>
+				<li class="nav-item nav-header" role="presentation">
+					<span class="fa fa-magic"></span>
+					<span>Profile</span>
+				</li>
+				<li class="nav-item" role="presentation">
+					<a class="nav-link" role="menuitem" tabindex="-1" href="">Account</a>
+				</li>
+				<li role="presentation" class="divider"></li>
+				<li class="nav-item nav-header" role="presentation">
+					<span class="fa fa-flag"></span>
+					<span>{{'i18n.labels.language' | translate}}</span>
+				</li>
+				<li class="nav-item" role="menuitem"
+				    *ngFor="let locale of locales">
+					<a class="nav-link" href="" role="button"
+					   (click)="appController.locale.use(locale)"
+					   [ngClass]="{'active': appController.locale.current === locale}">
+						<span>{{'i18n.application.locales.' + locale | translate}}</span>
+					</a>
+				</li>
+				<li role="presentation" class="divider"></li>
+				<li class="nav-item" role="menuitem">
+					<a class="nav-link" href="" role="button" (click)="appController.logout()">
+						<span>Logout</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</li>
+</ul>

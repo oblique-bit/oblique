@@ -8,7 +8,7 @@ import {
  *
  * api:
  *      [navigable]:any                         The data, that should be selected
- *      [navigableInitialActivated]:boolean              Should this item be activated initially?
+ *      [navigableInitialActivated]:boolean     Should this item be activated initially?
  *      (navigableOnMove):NavigableOnMoveEvent  Emits if up or down key is pressed
  *      (navigableOnMouseDown):MouseEvent       Emits if item is clicked
  *      (navigableOnFocus):FocusEvent           Emits if item is focused

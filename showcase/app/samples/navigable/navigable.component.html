@@ -1,79 +1,69 @@
-<h2 class="page-header">{{'i18n.states.samples.navigable.title' | translate}}</h2>
-<p class="lead">Navigate using arrow keys and select rows using CTRL or SHIFT combinations.</p>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Preview</h3>
-  </div>
-  <div class="panel-body">
-    <div class="list-group" [(navigableGroup)]="scientistsSelection">
-      <div class="list-group-item list-group-header">
-        <div class="row">
-          <div class="col-sm-3">First Name</div>
-          <div class="col-sm-3">Last Name</div>
-          <div class="col-sm-3">Date of birth</div>
-          <div class="col-sm-3"></div>
-        </div>
-      </div>
-      <div class="list-group-item" *ngFor="let scientist of scientists; let i = index"
-           [navigable]="scientist"
-           [navigableInitialActivated]="i === 0">
-        <div class="row">
-          <div class="col-sm-3">{{scientist.firstname}}</div>
-          <div class="col-sm-3">{{scientist.lastname}}</div>
-          <div class="col-sm-3">{{scientist.birthdate}}</div>
-          <div class="col-sm-3 navigable-actions">
-            <button type="button" class="btn btn-primary navigable-reveal"
-                    ng-if="ctrl.scientistsSelection.length > 1 && ctrl.scientistsSelection.indexOf(scientist) > 0">
-              <span class="fa fa-link"></span>
-              <span>Group</span>
-            </button>
-            <div class="btn-group navigable-reveal" role="group" aria-label="actions"
-                 ng-if="ctrl.scientistsSelection.length <= 1">
-              <div class="btn-group dropdown" role="group">
-                <button type="button" class="btn btn-default dropdown-toggle dropdown-actions" id="samples-navigable-actions-dropdown"
-                        data-toggle="dropdown" aria-expanded="false"
-                        dropdown-closable>
-                  <span class="toggle"></span>
-                  <span class="sr-only">{{'i18n.common.actions' | translate}}</span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="samples-navigable-actions-dropdown">
-                  <li role="presentation" class="dropdown-header">Dropdown header</li>
-                  <li role="presentation">
-                    <a role="menuitem" tabindex="-1">Action</a>
-                  </li>
-                  <li role="presentation">
-                    <a role="menuitem" tabindex="-1">Another action</a>
-                  </li>
-                  <li role="presentation" class="disabled">
-                    <a role="menuitem" tabindex="-1">Disabled link</a>
-                  </li>
-                  <li role="presentation">
-                    <a role="menuitem" tabindex="-1">Something else here</a>
-                  </li>
-                  <li role="presentation" class="divider"></li>
-                  <li role="presentation" class="dropdown-header">Dropdown header</li>
-                  <li role="presentation">
-                    <a role="menuitem" tabindex="-1">Separated link</a>
-                  </li>
-                </ul>
-              </div>
-              <button type="button" class="btn btn-primary">
-                <span class="fa fa-pencil"></span>
-                <span class="sr-only">Edit</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="default-layout">
+	<h2 class="page-header">{{'i18n.states.samples.navigable.title' | translate}}</h2>
+	<p class="lead">Navigate using arrow keys and select rows using CTRL or SHIFT combinations.</p>
+	<div class="card">
+		<div class="card-header">
+			<h3 class="card-title">Preview</h3>
+		</div>
+		<div class="card-block">
+			<div class="list-group" [(navigableGroup)]="scientistsSelection">
+				<div class="list-group-item list-group-header row">
+					<div class="col-3">First Name</div>
+					<div class="col-3">Last Name</div>
+					<div class="col-3">Date of birth</div>
+					<div class="col-3"></div>
+				</div>
+				<div class="list-group-item row" *ngFor="let scientist of scientists; let i = index"
+				     [navigable]="scientist"
+				     [navigableInitialActivated]="i === 0">
+					<div class="col-3">{{scientist.firstname}}</div>
+					<div class="col-3">{{scientist.lastname}}</div>
+					<div class="col-3">{{scientist.birthdate}}</div>
+					<div class="col-3 navigable-actions">
+						<button type="button" class="btn btn-primary navigable-reveal"
+						        *ngIf="scientistsSelection.length > 1 && scientistsSelection.indexOf(scientist) > 0">
+							<span class="fa fa-link"></span>
+							<span>Group</span>
+						</button>
+						<div class="btn-group navigable-reveal" role="group" aria-label="actions"
+						     *ngIf="scientistsSelection.length <= 1">
+							<div class="btn-group dropdown" role="group">
+								<button type="button" class="btn btn-default dropdown-toggle dropdown-actions"
+								        id="samples-navigable-actions-dropdown"
+								        data-toggle="dropdown" aria-expanded="false"
+								        dropdown-closable>
+									<span class="toggle"></span>
+									<span class="sr-only" id="navigable-actions-title">{{'i18n.common.actions' | translate}}</span>
+								</button>
+								<div class="dropdown-menu dropdown-menu-right" role="menu" aria-hidden="true" aria-labelledby="navigable-actions-title">
+									<a class="dropdown-item dropdown-header" role="presentation">Dropdown header</a>
+									<a class="dropdown-item" role="menuitem" tabindex="-1">Action</a>
+									<a class="dropdown-item" role="menuitem" tabindex="-1">Another action</a>
+									<a class="dropdown-item" role="menuitem" tabindex="-1">Disabled link</a>
+									<a class="dropdown-item" role="menuitem" tabindex="-1">Something else here</a>
+									<a class="dropdown-item divider" role="presentation" class=""></a>
+									<div class="dropdown-divider" role="presentation">Dropdown header</div>
+									<a class="dropdown-item" role="menuitem" tabindex="-1">Separated link</a>
+								</div>
+							</div>
+							<button type="button" class="btn btn-primary">
+								<span class="fa fa-pencil"></span>
+								<span class="sr-only">Edit</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
 
-    <ul class="nav nav-stacked nav-bordered">
-      <li class="nav-header" role="presentation">
-        <h3 class="nav-header-title">Selected scientist(s) <span class="badge">{{scientistsSelection.length}} / {{scientists.length}}</span> </h3>
-      </li>
-      <li role="menuitem" *ngFor="let scientist of scientistsSelection">
-        <a role="button">{{scientist.firstname}} {{scientist.lastname}}</a>
-      </li>
-    </ul>
-  </div>
+			<ul class="nav nav-vertical nav-bordered">
+				<li class="nav-item nav-header" role="presentation">
+					<h3 class="nav-header-title">Selected scientist(s) <span class="badge">{{scientistsSelection.length}} / {{scientists.length}}</span>
+					</h3>
+				</li>
+				<li class="nav-item" role="menuitem" *ngFor="let scientist of scientistsSelection">
+					<span class="nav-link">{{scientist.firstname}} {{scientist.lastname}}</span>
+				</li>
+			</ul>
+		</div>
+	</div>
 </div>

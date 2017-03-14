@@ -1,4 +1,6 @@
-﻿multiselect {
+﻿//@import "#{$modules_path}}/font-awesome/scss/mixins"; // TODO Uncomment when https://github.com/sass/sass/issues/739
+
+multiselect {
 	display: block;
 
 	&[readonly],
@@ -37,17 +39,18 @@
 		.caret {
 			position: absolute;
 			right: 20px;
-			top: calc(~"50% - 8px");
+			top: calc(50% - 8px);
 			border: none;
 
 			// Change caret icon to chevron:
-			.fa;
-			.icon-content('chevron-down');
+			//@include fa-icon();// TODO Uncomment & remove next line when https://github.com/sass/sass/issues/739
+			@include icon-base();
+			@include icon-content('chevron-down');
 		}
 
 		&.dropdown-toggle-up {
 			.caret {
-				.icon-content('chevron-up');
+				@include icon-content('chevron-up');
 			}
 		}
 	}

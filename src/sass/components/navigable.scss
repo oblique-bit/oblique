@@ -1,12 +1,12 @@
-@navigable-height: 36px;
+$navigable-height: 36px;
 
 .navigable {
-	.animatable(background-color, @duration-fast);
+	@include animatable(background-color, $duration-fast);
 
 	.navigable-actions {
 
 		&:not(.navigable-actions-fluid) {
-			min-height: @navigable-height;
+			min-height: $navigable-height;
 			min-width: 113px;
 
 			&.navigable-actions-md {
@@ -40,8 +40,8 @@
 	&.navigable-active,
 	&.navigable-selected {
 		&, > td, &.list-group-item {
-			.animatable(background-color);
-			background-color: @brand-lighter;
+			@include animatable(background-color);
+			background-color: $brand-lighter;
 		}
 	}
 
@@ -67,12 +67,12 @@
 	}
 
 	&.navigable-highlight {
-		.transition-duration(10.0s);
+		transition-duration: 10s;
 	}
 
 	@media screen {
 		> td {
-			height: @navigable-height + 16;
+			height: $navigable-height + 16;
 		}
 	}
 }

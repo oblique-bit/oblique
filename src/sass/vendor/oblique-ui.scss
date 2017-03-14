@@ -2,7 +2,8 @@
 	cursor: pointer !important;
 }
 
-@media (min-width: @grid-float-breakpoint) {
+/* TODO: still needed?
+@media (min-width: $grid-float-breakpoint) {
 
 	.column-layout {
 		padding: 0;
@@ -15,3 +16,4 @@
 		}
 	}
 }
+*/
