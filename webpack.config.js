@@ -1,6 +1,7 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const TransferWebpackPlugin = require('transfer-webpack-plugin');
@@ -16,6 +17,7 @@ const nodeModules = path.join(process.cwd(), 'node_modules');
 const entryPoints = ["inline", "polyfills", "sw-register", "styles", "vendor", "main"];
 const baseHref = "";
 const deployUrl = "";
+const PORT = 9000;
 
 module.exports = {
     "devtool": "source-map",
@@ -305,14 +307,16 @@ module.exports = {
             "skipCodeGeneration": true
         }),
         new ProvidePlugin({
-            //TODO: this could, I think, be solved with the external config
+            // TODO: this could, I think, be solved with the external config
             $: "jquery",
             jQuery: "jquery",
             Tether: "tether"
         }),
-        new TransferWebpackPlugin([
-            {from: 'node_modules/oblique-ui/dist/images/', to: 'assets/oblique-ui/images'}
-        ], __dirname)
+        new TransferWebpackPlugin([{
+            from: 'node_modules/oblique-ui/dist/images/',
+            to:    'assets/oblique-ui/images'
+        }], __dirname),
+        new OpenBrowserPlugin({ url: 'http://localhost:' + PORT })
     ],
     "node": {
         "fs": "empty",
@@ -326,7 +330,7 @@ module.exports = {
         "setImmediate": false
     },
     devServer: {
-        port: 9000,
+        port: PORT,
         historyApiFallback: true
     }
 };
