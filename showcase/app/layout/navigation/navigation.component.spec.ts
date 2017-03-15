@@ -3,13 +3,16 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {LayoutNavigationComponent} from './navigation.component';
 import {MockTranslatePipe} from '../../../../testhelpers';
+import {RouterTestingModule} from "@angular/router/testing";
 
-describe('LayoutNavigation', () => {
+//TODO: naming
+describe('LayoutNavigationComponent', () => {
     let component: LayoutNavigationComponent;
-    let fixture: ComponentFixture<LayoutNavigation>;
+    let fixture: ComponentFixture<LayoutNavigationComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
+            imports: [RouterTestingModule],
             declarations: [LayoutNavigationComponent, MockTranslatePipe]
         })
             .compileComponents();

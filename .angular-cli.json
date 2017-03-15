@@ -15,12 +15,12 @@
       "main": "main.ts",
       "polyfills": "polyfills.ts",
       "test": "test.ts",
-      "tsconfig": "tsconfig.json",
-      "testTsconfig": "tsconfig.json",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
         "../node_modules/oblique-ui/dist/css/oblique-ui.css",
-        "styles.scss"
+        "sass/styles.scss"
       ],
       "scripts": [
       ],
@@ -38,12 +38,13 @@
   },
   "lint": [
     {
-      "files": "src/**/*.ts",
-      "project": "src/tsconfig.json"
+      "project": "src/tsconfig.app.json"
     },
     {
-      "files": "e2e/**/*.ts",
-      "project": "e2e/tsconfig.json"
+      "project": "src/tsconfig.spec.json"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json"
     }
   ],
   "test": {
@@ -52,13 +53,9 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
-    "class": {
-      "spec": false
-    },
+    "styleExt": "scss",
     "component": {
       "spec": true,
-      "inlineStyle": false,
       "inlineTemplate": false
     }
   }
