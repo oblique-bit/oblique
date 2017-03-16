@@ -9,7 +9,7 @@ export class SchemaValidationService {
 
     compileSchema(schema: any, parentPropertyName?) {
         Object.keys(schema.properties).forEach((propertyName) => {
-            let propertyPath = parentPropertyName ? `${parentPropertyName}.${propertyName}` : propertyName;
+            const propertyPath = parentPropertyName ? `${parentPropertyName}.${propertyName}` : propertyName;
             if (schema.properties[propertyName].properties) {
                 this.compileSchema(schema.properties[propertyName], propertyPath);
             } else {

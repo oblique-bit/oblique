@@ -59,7 +59,7 @@ export class NavigableGroupDirective implements AfterViewInit {
     }
 
     private handleChildMove(child: NavigableDirective, event: NavigableOnMoveEvent) {
-        let index = this.getIndexOfChild(child);
+        const index = this.getIndexOfChild(child);
         let next: NavigableDirective = null;
 
         if (event.keyCode === this.arrows.up) {
@@ -126,9 +126,9 @@ export class NavigableGroupDirective implements AfterViewInit {
     }
 
     private selectChildRange(targetChild: NavigableDirective) {
-        let from = this.getIndexOfChild(this.getActivatedChild());
-        let to = this.getIndexOfChild(targetChild);
-        let slice = this.navigableDirectiveChildren.toArray().slice(Math.min(from, to), Math.max(from, to) + 1);
+        const from = this.getIndexOfChild(this.getActivatedChild());
+        const to = this.getIndexOfChild(targetChild);
+        const slice = this.navigableDirectiveChildren.toArray().slice(Math.min(from, to), Math.max(from, to) + 1);
 
         this.activateChild(targetChild);
 

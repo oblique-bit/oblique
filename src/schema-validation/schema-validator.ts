@@ -25,7 +25,7 @@ export class SchemaValidateDirective implements AfterViewInit {
 
     ngAfterViewInit(): void {
         //TODO: this is a workaround: if NgControl is required in the constructor, we have cyclic dependencies
-        let ngControl: NgControl = this.injector.get(NgControl);
+        const ngControl: NgControl = this.injector.get(NgControl);
 
         this.propertyName = this.extractPropertyName(ngControl);
 

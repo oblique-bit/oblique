@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {TranslateModule} from 'ng2-translate';
 import {LayoutControlsComponent} from './controls/controls.component';
 import {LayoutNavigationComponent} from './navigation/navigation.component';
-import {RouterModule} from "@angular/router";
+import {RouterModule} from '@angular/router';
 
 @NgModule({
 	imports: [

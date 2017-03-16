@@ -3,6 +3,7 @@
 import {TestBed, async, inject, fakeAsync, tick} from '@angular/core/testing';
 import {SpinnerService} from './spinner.service';
 import {NotificationService} from '../notification/notification.service';
+import {Subscription} from 'rxjs/Subscription';
 
 //TODO: implement tests for NotificationService
 describe('SpinnerService', () => {
@@ -19,8 +20,10 @@ describe('SpinnerService', () => {
     });
 
     it('should emit statusChangeEvent on spinnerStart', inject([SpinnerService], (service: SpinnerService) => {
-        service.onSpinnerStatusChange.subscribe((spinnerActive) => {
+        const subscription: Subscription = service.onSpinnerStatusChange.subscribe((spinnerActive) => {
             expect(spinnerActive).toBeTruthy();
+            //Unsubscribe after first test
+            subscription.unsubscribe();
         });
         service.activateSpinner();
     }));

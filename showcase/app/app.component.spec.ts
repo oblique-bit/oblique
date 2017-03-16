@@ -9,8 +9,8 @@ import {TranslateService} from 'ng2-translate';
 
 describe('AppComponent', () => {
     beforeEach(() => {
-        let mockNotificationService = jasmine.createSpyObj('NotificationService', ['success']);
-        let mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use']);
+        const mockNotificationService = jasmine.createSpyObj('NotificationService', ['success']);
+        const mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use']);
         TestBed.configureTestingModule({
             declarations: [
                 AppComponent,
@@ -29,8 +29,8 @@ describe('AppComponent', () => {
     });
 
     it('should create the app', async(() => {
-        let fixture = TestBed.createComponent(AppComponent);
-        let app = fixture.debugElement.componentInstance;
+        const fixture = TestBed.createComponent(AppComponent);
+        const app = fixture.debugElement.componentInstance;
         expect(app).toBeTruthy();
     }));
 });

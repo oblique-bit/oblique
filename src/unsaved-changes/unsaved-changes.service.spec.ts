@@ -45,7 +45,7 @@ describe('UnsavedChangesService', () => {
         });
 
         it('should open confirmation dialog, if form is dirty', () => {
-            let form: ControlContainer = {dirty: true} as ControlContainer;
+            const form: ControlContainer = {dirty: true} as ControlContainer;
 
             unsavedChangesService.canDeactivate(form);
 
@@ -53,7 +53,7 @@ describe('UnsavedChangesService', () => {
         });
 
         it('shouldn\'t open confirmation dialog, if form isn\'t dirty', () => {
-            let form: ControlContainer = {dirty: false} as ControlContainer;
+            const form: ControlContainer = {dirty: false} as ControlContainer;
 
             unsavedChangesService.canDeactivate(form);
 
@@ -61,7 +61,7 @@ describe('UnsavedChangesService', () => {
         });
 
         it('should open confirmation dialog, if watched form is dirty', () => {
-            let form: ControlContainer = {dirty: true} as ControlContainer;
+            const form: ControlContainer = {dirty: true} as ControlContainer;
 
             unsavedChangesService.watch(form);
             unsavedChangesService.canDeactivate();
@@ -70,7 +70,7 @@ describe('UnsavedChangesService', () => {
         });
 
         it('shouldn\'t open confirmation dialog, if watched form isn\'t dirty', () => {
-            let form: ControlContainer = {dirty: false} as ControlContainer;
+            const form: ControlContainer = {dirty: false} as ControlContainer;
 
             unsavedChangesService.watch(form);
             unsavedChangesService.canDeactivate();

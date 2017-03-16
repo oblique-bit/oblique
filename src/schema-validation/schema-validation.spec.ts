@@ -12,7 +12,7 @@ import {SchemaValidationService} from './schema-validation.service';
 
 describe('SchemaValidation', () => {
 
-    let schema = {
+    const schema = {
         'title': 'SampleSchemaValidation',
         'type': 'object',
         'properties': {
@@ -81,8 +81,7 @@ describe('SchemaValidation', () => {
         {
             formType: 'template', testComponent: TemplateFormTestComponent, formModule: FormsModule,
             getControls: (fixture) => {
-                let form: NgForm = fixture.debugElement.query(By.directive(NgForm)).injector.get(NgForm);
-                return form.controls;
+                return fixture.debugElement.query(By.directive(NgForm)).injector.get(NgForm).controls;
             }
         },
         {

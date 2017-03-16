@@ -1,6 +1,6 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 
-import {DatepickerModule} from "./datepicker/datepicker.module";
+import {DatepickerModule} from './datepicker/datepicker.module';
 import {NavigableModule} from './navigable';
 import {NotificationModule} from './notification';
 import {SchemaValidationModule} from './schema-validation';

@@ -32,7 +32,7 @@ describe('NotificationService', () => {
         });
 
         it('should call remove() after notificationTimeout is reached, if the notification isn\'t sticky', fakeAsync(() => {
-            let id = notificationService.add(NotificationTypes.DEFAULT, 'message', 'title', false);
+            const id = notificationService.add(NotificationTypes.DEFAULT, 'message', 'title', false);
 
             tick(150);
 
@@ -42,7 +42,7 @@ describe('NotificationService', () => {
         }));
 
         it('shouldn\'t call remove() after notificationTimeout is reached, if the notification isn\'t sticky', fakeAsync(() => {
-            let id = notificationService.add(NotificationTypes.DEFAULT, 'message', 'title', true);
+            const id = notificationService.add(NotificationTypes.DEFAULT, 'message', 'title', true);
 
             tick(150);
 
@@ -64,7 +64,7 @@ describe('NotificationService', () => {
 
     describe('remove()', () => {
         it('should remove item with matching id', () => {
-            let id: number = notificationService.add(NotificationTypes.DEFAULT, 'message', 'title', true);
+            const id: number = notificationService.add(NotificationTypes.DEFAULT, 'message', 'title', true);
 
             notificationService.remove(id);
 
@@ -80,8 +80,8 @@ describe('NotificationService', () => {
         });
 
         it('should only remove item with matching id', () => {
-            let idToRemove: number = notificationService.add(NotificationTypes.DEFAULT, 'message', 'title', true);
-            let idToKeep: number = notificationService.add(NotificationTypes.ERROR, 'message', 'title', true);
+            const idToRemove: number = notificationService.add(NotificationTypes.DEFAULT, 'message', 'title', true);
+            const idToKeep: number = notificationService.add(NotificationTypes.ERROR, 'message', 'title', true);
 
             notificationService.remove(idToRemove);
 

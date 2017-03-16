@@ -31,7 +31,7 @@ export class UnsavedChangesService {
 
     onUnload(event: BeforeUnloadEvent) {
         if (this.hasUnsavedChanges()) {
-            let confirmationMessage = this.message();
+            const confirmationMessage = this.message();
 
             event.returnValue = confirmationMessage;
             return confirmationMessage;
@@ -41,7 +41,7 @@ export class UnsavedChangesService {
     }
 
     private hasUnsavedChanges() {
-        for (let form of this.forms) {
+        for (const form of this.forms) {
             if (form.dirty) {
                 return true;
             }

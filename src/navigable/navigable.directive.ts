@@ -75,9 +75,9 @@ export class NavigableDirective implements AfterViewInit {
 
     //TODO: discuss if this should completely moved to parent
     @HostListener('keydown', ['$event']) onKeyDown($event: KeyboardEvent) {
-        let keyCode = $event.keyCode;
+        const keyCode = $event.keyCode;
         if (keyCode === NavigableDirective.ARROWS.UP || keyCode === NavigableDirective.ARROWS.DOWN) {
-            let focused = this.el.nativeElement.querySelector(':focus');
+            const focused = this.el.nativeElement.querySelector(':focus');
             //TODO: Implement parent check, if ng-bootstrap is integrated!
             if (!focused || !focused.classList.contains('dropdown-toggle') /*&& (focused.parents('.dropdown-menu').length === 0)*/) {
                 $event.preventDefault();

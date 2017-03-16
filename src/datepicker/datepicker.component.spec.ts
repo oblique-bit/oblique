@@ -1,7 +1,7 @@
 import {TestBed, async, ComponentFixture} from '@angular/core/testing';
 import {DatepickerComponent} from './datepicker.component';
 import {FormsModule} from '@angular/forms';
-import {Component} from "@angular/core";
+import {Component} from '@angular/core';
 
 @Component({
     template: `

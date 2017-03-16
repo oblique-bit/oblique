@@ -28,13 +28,13 @@ export class SpinnerService {
         this.spinnerActive = true;
         this.onSpinnerStatusChange.emit(true);
 
-        let id = this.loadingId;
+        const id = this.loadingId;
         // Create timeout and fail in case request takes too long to execute:
         this.loadings.push(new Loading(
             this.loadingId,
             setTimeout(() => {
                 // when timeout, search if timeout is still active, when yes show error
-                let loading = this.loadings.filter((loading) => {
+                const loading = this.loadings.filter((loading) => {
                     return loading.id === id;
                 });
 

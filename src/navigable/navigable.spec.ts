@@ -194,7 +194,7 @@ describe('Navigable', () => {
             });
 
             it('should unselect every child that is not between the active and the clicked', () => {
-                let secondChild = children[1];
+                const secondChild = children[1];
                 firstChild.selected = true;
 
                 secondChild.activated = true;

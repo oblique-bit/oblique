@@ -25,12 +25,12 @@
     "path": "projects/OUI/repos/oblique-reactive"
   },
   "scripts": {
-    "build": "webpack",
-    "start": "webpack-dev-server",
-    "test": "karma start ./karma.conf.js",
+    "build": "./node_modules/.bin/webpack",
+    "start": "./node_modules/.bin/webpack-dev-server",
+    "test": "./node_modules/.bin/karma start ./karma.conf.js",
     "prepree2e": "npm start",
-    "pree2e": "webdriver-manager update --standalone false --gecko false --quiet",
-    "e2e": "protractor ./protractor.conf.js"
+    "pree2e": "./node_modules/.bin/webdriver-manager update --standalone false --gecko false --quiet",
+    "e2e": "./node_modules/.bin/protractor ./protractor.conf.js"
   },
   "dependencies": {
     "@angular/common": "^2.4.0",
