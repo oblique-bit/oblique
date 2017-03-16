@@ -4,4 +4,6 @@ export interface DatepickerPopupConfig extends ng.ui.bootstrap.IDatepickerPopupC
 	// TODO: remove this when https://github.com/DefinitelyTyped/DefinitelyTyped/issues/9342
 	minDate;
 	maxDate;
+
+	showErrorMessages: boolean;
 }
