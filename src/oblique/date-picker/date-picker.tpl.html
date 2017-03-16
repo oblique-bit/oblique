@@ -27,7 +27,7 @@
 			</button>
 		</span>
 	</div>
-	<error-messages field-name="{{orDatepickerCtrl.name}}">
+	<error-messages field-name="{{orDatepickerCtrl.name}}" ng-if="orDatepickerCtrl.dpOptions.showErrorMessages">
 		<ng-message when="required" translate="i18n.oblique.validation.basic.required"></ng-message>
 		<ng-message when="date" translate="i18n.oblique.validation.date.format"></ng-message>
 		<ng-message when="minDate" translate="i18n.oblique.validation.date.min"></ng-message>
