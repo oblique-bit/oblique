@@ -1,3 +1,26 @@
+<a name="1.3.3"></a>
+## [1.3.3](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.3.3) (2017-03.16)
+
+### Bug Fixes
+
+* **error-messages:** `ORErrorMessagesModule` is now exported
+
+### Features
+
+* **error-messages:** add option `showErrorMessages` on the `DatepickerPopupConfig`, if set to `true` the `date-picker` will show the `error-messages` by itself (default: true) 
+
+Can be globally configured like this:
+
+```
+   angular.module('appModule').config((uibDatepickerPopupConfig:DatepickerPopupConfig) => {
+        uibDatepickerPopupConfig.showErrorMessages = false;
+    });
+```
+
+### BREAKING CHANGES
+
+* **error-messages:**: `error-message` was renamed to `error-messages`
+
 <a name="1.3.2"></a>
 ## [1.3.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.3.2) (2017-03.14)
 
