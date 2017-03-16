@@ -31,17 +31,21 @@
 
 	.oblique-logo {
 		position: relative;
+		width: 3rem;
+		font-size: 1rem;
+		display: inline-block;
+		vertical-align: middle;
+
 		.oblique-addon {
 			position: absolute;
-			bottom: 0;
-			right: 32%;
+			top: 34%;
+			right: 20%;
 			font-weight: bold;
 			color: white;
-			font-size: 60%;
 		}
 
-		> img.small {
-			width: 44px;
+		img {
+			width: 100%;
 		}
 	}
 
@@ -51,6 +55,13 @@
 		> span {
 			font-style: normal;
 			font-weight: bold;
+		}
+	}
+
+	.headline & {
+		.oblique-logo {
+			font-size: 2.25rem;
+			width: 5rem;
 		}
 	}
 }

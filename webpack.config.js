@@ -1,6 +1,7 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const TransferWebpackPlugin = require('transfer-webpack-plugin');
@@ -16,6 +17,7 @@ const nodeModules = path.join(process.cwd(), 'node_modules');
 const entryPoints = ["inline", "polyfills", "sw-register", "styles", "vendor", "main"];
 const baseHref = "";
 const deployUrl = "";
+const PORT = 9000;
 
 module.exports = {
     "devtool": "source-map",
@@ -28,8 +30,7 @@ module.exports = {
             "./node_modules"
         ],
         "alias": {
-            "jquery": "jquery/src/jquery",
-            "tether": "tether/dist/js/tether" // For Bootstrap tooltips
+            "jquery": "jquery/src/jquery"
         }
     },
     "resolveLoader": {
@@ -47,9 +48,12 @@ module.exports = {
         "styles": [
             "./node_modules/oblique-ui/dist/css/oblique-ui.css",
             "./showcase/sass/styles.scss"
-        ], //TODO: Perhaps remove this
+        ],
         "vendor": [
-            "./node_modules/oblique-ui/dist/js/oblique-ui.bundle.js"
+            "./node_modules/bootstrap/dist/js/bootstrap.js",
+            "./node_modules/waypoints/lib/jquery.waypoints.js", // FIXME: decouple ObliqueUI from Waypoints
+            "./node_modules/oblique-ui/dist/js/oblique-ui.js"
+            //"./node_modules/oblique-ui/dist/js/oblique-ui.bundle.js" // FIXME: using ObliqueUI JS bundle will import jQuery twice
         ]
     },
     "output": {
@@ -305,14 +309,15 @@ module.exports = {
             "skipCodeGeneration": true
         }),
         new ProvidePlugin({
-            //TODO: this could, I think, be solved with the external config
             $: "jquery",
             jQuery: "jquery",
-            Tether: "tether"
+            Tether: "tether" // For Bootstrap tooltips
         }),
-        new TransferWebpackPlugin([
-            {from: 'node_modules/oblique-ui/dist/images/', to: 'assets/oblique-ui/images'}
-        ], __dirname)
+        new TransferWebpackPlugin([{
+            from: 'node_modules/oblique-ui/dist/images/',
+            to:    'assets/oblique-ui/images'
+        }], __dirname),
+        new OpenBrowserPlugin({ url: 'http://localhost:' + PORT })
     ],
     "node": {
         "fs": "empty",
@@ -326,7 +331,7 @@ module.exports = {
         "setImmediate": false
     },
     devServer: {
-        port: 9000,
+        port: PORT,
         historyApiFallback: true
     }
 };
