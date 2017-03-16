@@ -1,4 +1,5 @@
 export * from './date-picker/index';
+export * from './error-messages/index';
 export * from './form-control/index';
 export * from './infrastructure/index';
 export * from './loading/index';

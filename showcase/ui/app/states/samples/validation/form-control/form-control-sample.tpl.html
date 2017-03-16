@@ -13,9 +13,9 @@
 					<input name="number" type="text" class="form-control"
 					       placeholder="This field is optional..."
 					       ng-model="ctrl.number" number-format />
-					<error-message field-name="number">
-						<ng-message when="parse" class="help-block">Please, enter a valid number!</ng-message>
-					</error-message>
+					<error-messages field-name="number">
+						<ng-message when="parse">Please, enter a valid number!</ng-message>
+					</error-messages>
 				</div>
 				<div class="col-sm-4">
 					<div class="btn-group">
@@ -44,10 +44,10 @@
 					       placeholder="This field is mandatory..."
 					       ng-model="ctrl.numberRequired" number-format
 					       ng-required="true" />
-					<error-message field-name="numberRequired">
-						<ng-message when="parse" class="help-block">Please, enter a valid number!</ng-message>
-						<ng-message when="required" class="help-block">This field is required!</ng-message>
-					</error-message>
+					<error-messages field-name="numberRequired">
+						<ng-message when="parse">Please, enter a valid number!</ng-message>
+						<ng-message when="required">This field is required!</ng-message>
+					</error-messages>
 				</div>
 				<div class="col-sm-4">
 					<div class="btn-group">
@@ -76,10 +76,10 @@
 					       placeholder="This field is already in error on load..."
 					       ng-model="ctrl.numberRequiredPristine" number-format
 					       ng-required="true" />
-					<error-message field-name="numberRequiredPristine">
-						<ng-message when="parse" class="help-block">Please, enter a valid number!</ng-message>
-						<ng-message when="required" class="help-block">This field is required!</ng-message>
-					</error-message>
+					<error-messages field-name="numberRequiredPristine">
+						<ng-message when="parse">Please, enter a valid number!</ng-message>
+						<ng-message when="required">This field is required!</ng-message>
+					</error-messages>
 				</div>
 				<div class="col-sm-4">
 					<div class="btn-group">
@@ -121,10 +121,10 @@
 								       ng-model="ctrl.addressNumber" number-format
 								       ng-required="true" />
 							</div>
-							<error-message field-name="addressNumber">
-								<ng-message when="parse" class="help-block">Please, enter a valid number!</ng-message>
-								<ng-message when="required" class="help-block">This field is required!</ng-message>
-							</error-message>
+							<error-messages field-name="addressNumber">
+								<ng-message when="parse">Please, enter a valid number!</ng-message>
+								<ng-message when="required">This field is required!</ng-message>
+							</error-messages>
 						</form-control>
 					</div>
 				</div>

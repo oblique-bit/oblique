@@ -33,7 +33,7 @@ Since version 1.3.2 you can selectively import ObliqueReactive modules, if you o
 The following modules are available:
 
 - **ORDatepickerModule**
-- **ORErrorMessageModule**
+- **ORErrorMessagesModule**
 - **ORFormControlModule**
 - **ORInfrastructureModule**
 - **ORLoadingModule**

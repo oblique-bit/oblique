@@ -27,10 +27,10 @@
 			</button>
 		</span>
 	</div>
-	<error-message field-name="{{orDatepickerCtrl.name}}">
-		<ng-message class="help-block" when="required" translate="i18n.oblique.validation.basic.required"></ng-message>
-		<ng-message class="help-block" when="date" translate="i18n.oblique.validation.date.format"></ng-message>
-		<ng-message class="help-block" when="minDate" translate="i18n.oblique.validation.date.min"></ng-message>
-		<ng-message class="help-block" when="maxDate" translate="i18n.oblique.validation.date.max"></ng-message>
-	</error-message>
+	<error-messages field-name="{{orDatepickerCtrl.name}}">
+		<ng-message when="required" translate="i18n.oblique.validation.basic.required"></ng-message>
+		<ng-message when="date" translate="i18n.oblique.validation.date.format"></ng-message>
+		<ng-message when="minDate" translate="i18n.oblique.validation.date.min"></ng-message>
+		<ng-message when="maxDate" translate="i18n.oblique.validation.date.max"></ng-message>
+	</error-messages>
 </div>
