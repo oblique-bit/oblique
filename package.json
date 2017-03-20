@@ -25,6 +25,7 @@
     "path": "projects/OUI/repos/oblique-reactive"
   },
   "scripts": {
+    "ci-build": "./node_modules/.bin/gulp build",
     "build": "./node_modules/.bin/webpack",
     "start": "./node_modules/.bin/webpack-dev-server",
     "test": "./node_modules/.bin/karma start ./karma.conf.js",
