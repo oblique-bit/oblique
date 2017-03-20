@@ -32,7 +32,7 @@ export class SpinnerService {
         // Create timeout and fail in case request takes too long to execute:
         this.loadings.push(new Loading(
             this.loadingId,
-            setTimeout(() => {
+            (setTimeout(() => {
                 // when timeout, search if timeout is still active, when yes show error
                 const loading = this.loadings.filter((loading) => {
                     return loading.id === id;
@@ -43,7 +43,7 @@ export class SpinnerService {
                     this.notificationService.error('i18n.error.other.timeout');
                 }
 
-            }, this.maxTimeout)
+            }) as number, this.maxTimeout)
         ));
         this.loadingId++;
         this.spinnerActive = this.loadings.length > 0;
