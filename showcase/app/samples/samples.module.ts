@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {NavigableComponent} from './navigable/navigable.component';
+import {NavigableSampleComponent} from './navigable/navigable.sample.component';
 import {TranslateModule} from 'ng2-translate';
 import {ObliqueModule} from '../../../src/index';
 import {SchemaValidationComponent} from './schema-validation/schema-validation.component';
@@ -18,7 +18,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
         RouterModule,
         NgbModule
     ],
-    declarations: [NavigableComponent, SchemaValidationComponent, BootstrapTestComponent]
+    declarations: [NavigableSampleComponent, SchemaValidationComponent, BootstrapTestComponent]
 })
 export class SamplesModule {
 }

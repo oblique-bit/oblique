@@ -18,7 +18,7 @@ import {LayoutNavigationComponent} from './layout/navigation/navigation.componen
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {SamplesModule} from './samples/samples.module';
-import {NavigableComponent} from './samples/navigable/navigable.component';
+import {NavigableSampleComponent} from './samples/navigable/navigable.sample.component';
 import {SchemaValidationComponent} from './samples/schema-validation/schema-validation.component';
 import {UnsavedChangesGuard} from '../../src/unsaved-changes/unsaved-changes.guard';
 
@@ -44,7 +44,7 @@ export function createTranslateLoader(http: Http) {
 		RouterModule.forRoot([
 			//TODO: Routing config and links in master layout
 			{path: 'home', component: HomeComponent},
-			{path: 'navigable', component: NavigableComponent},
+			{path: 'navigable', component: NavigableSampleComponent},
 			{path: 'schema-validation', component: SchemaValidationComponent, canDeactivate: [UnsavedChangesGuard]},
 			{path: '', redirectTo: '/home', pathMatch: 'full'},
 		]),

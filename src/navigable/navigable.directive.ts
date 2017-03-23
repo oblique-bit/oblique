@@ -1,115 +1,194 @@
 import {
-    Directive, Input, ElementRef, HostBinding, Output, EventEmitter,
-    HostListener, AfterViewInit
+	Directive, Input, ElementRef, HostBinding, Output, EventEmitter,
+	HostListener, AfterViewInit
 } from '@angular/core';
+declare let $:any; // TODO: find a better way to access DOM elements
 
 /**
  * NavigableDirective
  *
- * api:
- *      [navigable]:any                         The data, that should be selected
- *      [navigableInitialActivated]:boolean     Should this item be activated initially?
- *      (navigableOnMove):NavigableOnMoveEvent  Emits if up or down key is pressed
- *      (navigableOnMouseDown):MouseEvent       Emits if item is clicked
- *      (navigableOnFocus):FocusEvent           Emits if item is focused
- *      (navigableOnActivation):void            Emits if item is activated
- *
+ * API:
+ * - [navigable]:any                             The data model, that should be selected.
+ * - [navigableActivate]:boolean                 Activates current item if `true`.
+ * - [navigableFocusOnInit]:boolean              Focused current item if `true`, on directive initialisation only.
+ * - [navigableHighlight]:boolean                Highlights current item if `true`.
+ * - (navigableOnChange):NavigableOnChangeEvent  Emits if UP or DOWN key is pressed, while item is focused.
+ * - (navigableOnMouseDown):MouseEvent           Emits if item is clicked/tapped.
+ * - (navigableOnFocus):FocusEvent               Emits if item is focused.
+ * - (navigableOnActivation):void                Emits if item is activated.
+ * - (navigableOnFocus):FocusEvent               Emits if item is moved (with SHIFT+CTRL+[UP|DOWN]).
  */
 @Directive({
-    selector: '[navigable]'
+	selector: '[navigable]',
+	exportAs: 'navigable'
 })
 export class NavigableDirective implements AfterViewInit {
 
-    private static ARROWS = {
-        UP: 38,
-        DOWN: 40
-    };
+	public static KEYS = {
+		UP: 38,
+		DOWN: 40
+	};
 
-    @Input('navigable') model: any;
+	@Input('navigable') model:any;
 
-    @Input() navigableInitialActivated: boolean;
+	@Output() navigableOnChange = new EventEmitter();
+	@Output() navigableOnMouseDown = new EventEmitter();
+	@Output() navigableOnFocus = new EventEmitter();
+	@Output() navigableOnMove = new EventEmitter();
+	@Output() navigableOnActivation = new EventEmitter();
 
-    @Output() navigableOnMove = new EventEmitter();
+	@HostBinding('tabindex')
+	tabindex = 0;
 
-    @Output() navigableOnMouseDown = new EventEmitter();
+	@HostBinding('class.navigable')
+	navigableClass = true;
 
-    @Output() navigableOnFocus = new EventEmitter();
+	@HostBinding('class.navigable-selected')
+	selected = false;
 
-    @HostBinding('class.navigable') navigableClass = true;
+	@Input()
+	@HostBinding('class.navigable-highlight')
+	navigableHighlight:boolean = false;
 
-    //TODO: needed? If yes, how to implement? (implementation in 1.3.0 seems to be broken)
-    @HostBinding('class.navigable-highlight') highlighted = false;
+	@HostBinding('class.navigable-active')
+	@Input('navigableActivate')
+	get activate() {
+		return this.activated;
+	}
+	set activate(val:boolean) {
+		this.activated = val;
+		if (val) {
+			this.navigableOnActivation.emit();
+		}
+	}
+	private activated = false;
 
-    @HostBinding('class.navigable-selected') selected = false;
+	@Input('navigableFocusOnInit') focusOnInit:boolean;
 
-    @HostBinding('tabindex') tabindex = 0;
+	constructor(private element: ElementRef) {
+	}
 
-    @Output() navigableOnActivation = new EventEmitter();
+	ngAfterViewInit(): void {
+		// This makes sure, that parent components are able to subscribe to the navigableOnFocus before onFocus is triggered
+		setTimeout(() => {
+			if (this.focusOnInit) {
+				this.focus();
+			}
+		}, 0);
+	}
 
-    @HostBinding('class.navigable-active')
-    get activated() {
-        return this.activatedValue;
-    }
+	//TODO: discuss if this should completely moved to parent
+	@HostListener('keydown', ['$event']) onKeyDown($event: KeyboardEvent) {
+		let keyCode = $event.keyCode;
+		if (keyCode === NavigableDirective.KEYS.UP || keyCode === NavigableDirective.KEYS.DOWN) {
+			let focused = $(this.element.nativeElement).find(':focus');
 
-    set activated(val: boolean) {
-        this.activatedValue = val;
-        if (val) {
-            this.navigableOnActivation.emit();
-        }
-    }
+			if (!focused || !focused.is('.dropdown-toggle') && focused.parents('.dropdown-menu').length === 0) {
+				$event.preventDefault();
 
-    private activatedValue = false;
+				if ($event.ctrlKey && $event.shiftKey) {
+					this.navigableOnMove.emit(new NavigableOnMoveEvent(keyCode));
 
-    constructor(private el: ElementRef) {
-        //TODO: use renderer?
-    }
+					// Try to restore focus:
+					setTimeout(() => {
+						if(focused.length) {
+							focused.focus();
+						} else {
+							this.focus();
+						}
+					}, 0);
+				} else {
+					this.navigableOnChange.emit(new NavigableOnChangeEvent(keyCode, $event.ctrlKey || $event.shiftKey));
+				}
+			}
+		}
+	}
 
-    ngAfterViewInit(): void {
-        //This makes sure, that parent components are able to subscribe to the navigableOnFocus before onFocus is triggered
-        setTimeout(() => {
-            if (this.navigableInitialActivated) {
-                this.focus();
-            }
-        }, 0);
-    }
+	@HostListener('mousedown', ['$event']) onMouseDown($event: MouseEvent) {
+		if (!this.focusable(event.target)) {
+			this.navigableOnMouseDown.emit($event);
+		} else {
+			// Focus is on a child element of current item but let's ensure it gets activated:
+			this.activate = true;
+		}
+	}
 
-    //TODO: discuss if this should completely moved to parent
-    @HostListener('keydown', ['$event']) onKeyDown($event: KeyboardEvent) {
-        let keyCode = $event.keyCode;
-        if (keyCode === NavigableDirective.ARROWS.UP || keyCode === NavigableDirective.ARROWS.DOWN) {
-            let focused = this.el.nativeElement.querySelector(':focus');
-            //TODO: Implement parent check, if ng-bootstrap is integrated!
-            if (!focused || !focused.classList.contains('dropdown-toggle') /*&& (focused.parents('.dropdown-menu').length === 0)*/) {
-                $event.preventDefault();
-                if ($event.ctrlKey && $event.shiftKey) {
-                    //TODO: what do we do here?
-                    /*scope.$apply(() => {
-                     navigable.navigableOnMove(event, navigable.model, keyCode === arrows.up);
-                     });*/
-                } else {
-                    this.navigableOnMove.emit(new NavigableOnMoveEvent(keyCode, $event.ctrlKey || $event.shiftKey));
-                    /*navigable.handleChildMove(keyCode, event.ctrlKey || event.shiftKey);*/
-                }
-            }
-        }
-    }
+	@HostListener('focus', ['$event']) onFocus($event: FocusEvent) {
+		this.navigableOnFocus.emit($event);
+	}
 
-    @HostListener('mousedown', ['$event']) onMouseDown($event: MouseEvent) {
-        this.navigableOnMouseDown.emit($event);
-        //TODO: handle the canFocus case -> see 1.3.0
-    }
+	public focus() {
+		this.element.nativeElement.focus();
+	}
 
-    @HostListener('focus', ['$event']) onFocus($event: FocusEvent) {
-        this.navigableOnFocus.emit($event);
-    }
+	public moveUp() {
+		this.navigableOnMove.emit(new NavigableOnMoveEvent(NavigableDirective.KEYS.UP));
+	}
 
-    public focus() {
-        this.el.nativeElement.focus();
-    }
+	public moveDown() {
+		this.navigableOnMove.emit(new NavigableOnMoveEvent(NavigableDirective.KEYS.DOWN));
+	}
+
+	/**
+	 * From jQuery UI: https://github.com/jquery/jquery-ui/blob/master/ui/focusable.js#L28
+	 *
+	 * @param element
+	 * @returns {*}
+	 */
+	private focusable(element) {
+		let map, mapName, img, focusableIfVisible, fieldset,
+			nodeName = element.nodeName.toLowerCase();
+		if (nodeName === "area") {
+			map = element.parentNode;
+			mapName = map.name;
+			if (!element.href || !mapName || map.nodeName.toLowerCase() !== "map") {
+				return false;
+			}
+			img = $("img[usemap='#" + mapName + "']");
+			return img.length > 0 && img.is(":visible");
+		}
+
+		if(/^(input|select|textarea|button|object)$/.test(nodeName)) {
+			focusableIfVisible = !element.disabled;
+
+			if(focusableIfVisible) {
+				// Form controls within a disabled fieldset are disabled.
+				// However, controls within the fieldset's legend do not get disabled.
+				// Since controls generally aren't placed inside legends, we skip
+				// this portion of the check.
+				fieldset = $(element).closest("fieldset")[0];
+				if ( fieldset ) {
+					focusableIfVisible = !fieldset.disabled;
+				}
+			}
+		} else if ( "a" === nodeName ) {
+			focusableIfVisible = element.href || $(element).attr('tabindex');
+		} else {
+			focusableIfVisible = $(element).attr('tabindex');
+		}
+
+		return focusableIfVisible && $(element).is(":visible") && this.visible($(element));
+	}
+
+	// Support: IE 8 only
+	// IE 8 doesn't resolve inherit to visible/hidden for computed values
+	private visible(element) {
+		let visibility = element.css("visibility");
+		while (visibility === "inherit") {
+			element = element.parent();
+			visibility = element.css("visibility");
+		}
+		return visibility !== "hidden";
+	}
+}
+
+export class NavigableOnChangeEvent {
+	constructor(public keyCode: number, public combine: boolean) {
+	}
 }
 
 export class NavigableOnMoveEvent {
-    constructor(public keyCode: number, public combine: boolean) {
-
-    }
+	public prevented:boolean = false;
+	constructor(public keyCode: number) {
+	}
 }
