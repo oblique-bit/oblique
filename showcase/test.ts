@@ -17,7 +17,7 @@ declare var __karma__: any;
 declare var require: any;
 
 // Prevent Karma from running prematurely.
-__karma__.loaded = function () {};
+__karma__.loaded = function () {/**/};
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
@@ -26,11 +26,13 @@ getTestBed().initTestEnvironment(
 );
 // Then we find all the tests.
 //TODO: Refactor this
-let showcaseContext = require.context('./', true, /\.spec\.ts$/);
-let srcContext = require.context('../src/', true, /\.spec\.ts$/);
+const srcContext = require.context('../src', true, /\.spec\.ts$/);
 
 // And load the modules.
-showcaseContext.keys().map(showcaseContext);
 srcContext.keys().map(srcContext);
+
+const showcaseContext = require.context('./', true, /\.spec\.ts$/);
+showcaseContext.keys().map(showcaseContext);
+
 // Finally, start Karma to run the tests.
 __karma__.start();

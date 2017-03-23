@@ -13,8 +13,8 @@ describe('NotificationComponent', () => {
     let component: NotificationComponent;
     let fixture: ComponentFixture<NotificationComponent>;
     let mockNotificationService;
-    let message = 'message';
-    let title = 'title';
+    const message = 'message';
+    const title = 'title';
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -62,7 +62,7 @@ describe('NotificationComponent', () => {
         mockNotificationService.notifications.push(new Notification(1, NotificationTypes.DEFAULT, message, title, true));
         fixture.detectChanges();
 
-        let button = fixture.debugElement.query(By.css('button'));
+        const button = fixture.debugElement.query(By.css('button'));
         button.triggerEventHandler('click', null);
 
         expect(mockNotificationService.remove).toHaveBeenCalledWith(1);

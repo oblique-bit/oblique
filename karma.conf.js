@@ -1,6 +1,8 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/0.13/config/configuration-file.html
 
+//FIXME: In the first run, only the files from ./showcase are loaded
+
 module.exports = function (config) {
   config.set({
     basePath: '',
@@ -17,7 +19,7 @@ module.exports = function (config) {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     files: [
-      { pattern: './showcase/test.ts', watched: false }
+      { pattern: './showcase/test.ts', watched: false },
     ],
     preprocessors: {
       './showcase/test.ts': ['@angular/cli']

@@ -63,9 +63,9 @@ export class NavigableGroupDirective implements AfterViewInit {
 		});
 	}
 
-	private handleChildChange(child: NavigableDirective, event: NavigableOnChangeEvent) {
-		let index = this.getIndexOfChild(child);
-		let next: NavigableDirective = null;
+    private handleChildChange(child: NavigableDirective, event: NavigableOnChangeEvent) {
+        const index = this.getIndexOfChild(child);
+        let next: NavigableDirective = null;
 
 		if (event.keyCode === NavigableDirective.KEYS.UP) {
 			next = this.getChildAtIndex(Math.max(index - 1, 0));
@@ -145,10 +145,10 @@ export class NavigableGroupDirective implements AfterViewInit {
 		this.selectionRemoveChild(child);
 	}
 
-	private selectChildRange(targetChild: NavigableDirective) {
-		let from = this.getIndexOfChild(this.getActivatedChild());
-		let to = this.getIndexOfChild(targetChild);
-		let slice = this.navigableDirectiveChildren.toArray().slice(Math.min(from, to), Math.max(from, to) + 1);
+    private selectChildRange(targetChild: NavigableDirective) {
+        const from = this.getIndexOfChild(this.getActivatedChild());
+        const to = this.getIndexOfChild(targetChild);
+        const slice = this.navigableDirectiveChildren.toArray().slice(Math.min(from, to), Math.max(from, to) + 1);
 
 		this.activateChild(targetChild);
 

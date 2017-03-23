@@ -21,7 +21,7 @@ export class NotificationService {
     }
 
     public add(type: NotificationTypes, messageKey: string, title: string, sticky: boolean): number {
-        let notification = new Notification(this.currentId, type, messageKey, title, sticky);
+        const notification = new Notification(this.currentId, type, messageKey, title, sticky);
         this.notifications.unshift(notification);
         this.notifications.sort((a: Notification, b: Notification) => b.type.priority - a.type.priority);
         if (!notification.sticky) {

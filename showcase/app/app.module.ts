@@ -16,6 +16,7 @@ import {LayoutNavigationComponent} from './layout/navigation/navigation.componen
 
 // App:
 import {AppComponent} from './app.component';
+import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './home/home.component';
 import {SamplesModule} from './samples/samples.module';
 import {NavigableSampleComponent} from './samples/navigable/navigable.sample.component';
@@ -41,13 +42,6 @@ export function createTranslateLoader(http: Http) {
 		FormsModule,
 		HttpModule,
 		ObliqueModule.forRoot(),
-		RouterModule.forRoot([
-			//TODO: Routing config and links in master layout
-			{path: 'home', component: HomeComponent},
-			{path: 'navigable', component: NavigableSampleComponent},
-			{path: 'schema-validation', component: SchemaValidationComponent, canDeactivate: [UnsavedChangesGuard]},
-			{path: '', redirectTo: '/home', pathMatch: 'full'},
-		]),
 		NgbModule.forRoot(),
 		TranslateModule.forRoot({
 			provide: TranslateLoader,
@@ -55,7 +49,8 @@ export function createTranslateLoader(http: Http) {
 			deps: [Http]
 		}),
 		LayoutModule,
-		SamplesModule
+		SamplesModule,
+		AppRoutingModule
 	],
 	providers: [
 		{provide: 'notificationTimeout', useValue: 2000},
