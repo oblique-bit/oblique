@@ -19,7 +19,7 @@ module.exports = function (config) {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     files: [
-      { pattern: './showcase/test.ts', watched: false }
+      { pattern: './showcase/test.ts', watched: false },
     ],
     preprocessors: {
       './showcase/test.ts': ['@angular/cli']
@@ -41,7 +41,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
     singleRun: false
   });
 };

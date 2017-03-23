@@ -72,8 +72,10 @@
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Integer</label>
                     <div class="col-sm-6">
-                        <date-picker name="date" type="number" class="form-control"
-                                     ngModel schemaValidate #m="ngModel"></date-picker>
+                        <date-picker>
+							<input class="form-control" placeholder="yyyy-mm-dd"
+								   name="date" ngModel ngbDatepicker required #m="ngModel" navigation="arrows">
+						</date-picker>
                     </div>
                     <div class="col-sm-2">
                         <a href="" class="form-control-static" role="button"

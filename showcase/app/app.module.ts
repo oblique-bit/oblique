@@ -18,9 +18,7 @@ import {LayoutNavigationComponent} from './layout/navigation/navigation.componen
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {SamplesModule} from './samples/samples.module';
-import {NavigableComponent} from './samples/navigable/navigable.component';
-import {SchemaValidationComponent} from './samples/schema-validation/schema-validation.component';
-import {UnsavedChangesGuard} from '../../src/unsaved-changes/unsaved-changes.guard';
+import {AppRoutingModule} from './app-routing.module';
 
 // TODO: refactor when https://github.com/angular/angular/issues/7136
 import {ApplicationRef, ComponentFactoryResolver, Type, OpaqueToken} from '@angular/core';
@@ -41,13 +39,6 @@ export function createTranslateLoader(http: Http) {
 		FormsModule,
 		HttpModule,
 		ObliqueModule.forRoot(),
-		RouterModule.forRoot([
-			//TODO: Routing config and links in master layout
-			{path: 'home', component: HomeComponent},
-			{path: 'navigable', component: NavigableComponent},
-			{path: 'schema-validation', component: SchemaValidationComponent, canDeactivate: [UnsavedChangesGuard]},
-			{path: '', redirectTo: '/home', pathMatch: 'full'},
-		]),
 		NgbModule.forRoot(),
 		TranslateModule.forRoot({
 			provide: TranslateLoader,
@@ -55,7 +46,8 @@ export function createTranslateLoader(http: Http) {
 			deps: [Http]
 		}),
 		LayoutModule,
-		SamplesModule
+		SamplesModule,
+		AppRoutingModule
 	],
 	providers: [
 		{provide: 'notificationTimeout', useValue: 2000},
