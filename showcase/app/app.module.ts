@@ -19,14 +19,10 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './home/home.component';
 import {SamplesModule} from './samples/samples.module';
-import {NavigableSampleComponent} from './samples/navigable/navigable.sample.component';
-import {SchemaValidationComponent} from './samples/schema-validation/schema-validation.component';
-import {UnsavedChangesGuard} from '../../src/unsaved-changes/unsaved-changes.guard';
 
 // TODO: refactor when https://github.com/angular/angular/issues/7136
 import {ApplicationRef, ComponentFactoryResolver, Type, OpaqueToken} from '@angular/core';
 export const BOOTSTRAP_COMPONENTS_TOKEN = new OpaqueToken('bootstrap_components');
-
 
 export function createTranslateLoader(http: Http) {
 	return new TranslateStaticLoader(http, './assets/i18n', '.json');
