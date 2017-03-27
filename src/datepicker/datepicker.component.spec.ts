@@ -2,19 +2,18 @@ import {TestBed, async, ComponentFixture} from '@angular/core/testing';
 import {DatepickerComponent} from './datepicker.component';
 import {FormsModule} from '@angular/forms';
 import {Component} from '@angular/core';
-import {NgbInputDatepicker, NgbDatepickerModule} from "@ng-bootstrap/ng-bootstrap";
-import {By} from "@angular/platform-browser";
+import {NgbInputDatepicker, NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
+import {By} from '@angular/platform-browser';
 
 @Component({
     template: `
         <date-picker>
-            <input name="date" [(ngModel)]="model.date" ngbDatepicker>
+            <input name="date" [(ngModel)]="model" ngbDatepicker>
         </date-picker>
             `
 })
 class TestComponent {
-    model = {}
-
+    model = null;
 }
 
 describe('DatepickerComponent', () => {
