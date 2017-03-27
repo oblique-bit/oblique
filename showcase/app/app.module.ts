@@ -2,7 +2,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule, Inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule, Http} from '@angular/http';
-import {RouterModule} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule, TranslateLoader, TranslateStaticLoader} from 'ng2-translate';
 
