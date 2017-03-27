@@ -105,7 +105,7 @@ export class NavigableDirective implements AfterViewInit {
 	}
 
 	@HostListener('mousedown', ['$event']) onMouseDown($event: MouseEvent) {
-		if (!this.focusable(event.target)) {
+		if (!this.focusable($event.target)) {
 			this.navigableOnMouseDown.emit($event);
 		} else {
 			// Focus is on a child element of current item but let's ensure it gets activated:
