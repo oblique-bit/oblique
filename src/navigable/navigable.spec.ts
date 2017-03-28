@@ -7,7 +7,7 @@ import {NavigableGroupDirective} from './navigable-group.directive';
 import {NavigableDirective} from './navigable.directive';
 
 @Component({
-    template: `<div [navigableGroup]='selectedModel'>
+    template: `<div [navigableGroup]="models" [navigableSelection]='selectedModel'>
 					<div [navigable]='model'></div>
 					<div [navigable]='model2'></div>
 					<div [navigable]='model3'></div>
@@ -16,10 +16,12 @@ import {NavigableDirective} from './navigable.directive';
 })
 class TestComponent {
     selectedModel = [];
-    model = {fuu: 'bar'};
-    model2 = {fuu: 'bar2'};
-    model3 = {fuu: 'bar3'};
-    model4 = {fuu: 'bar4'};
+    models = [
+        {fuu: 'bar'},
+        {fuu: 'bar2'},
+        {fuu: 'bar3'},
+        {fuu: 'bar4'}
+    ]
 }
 
 //TODO: Add more tests, if specifications are clear
@@ -32,6 +34,7 @@ describe('Navigable', () => {
     let directive: NavigableGroupDirective;
     let children: NavigableDirective[];
     let fixture: ComponentFixture<TestComponent>;
+    let childrenDirectives: DebugElement[];
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -53,6 +56,7 @@ describe('Navigable', () => {
         children = fixture.debugElement.queryAll(By.directive(NavigableDirective)).map(child => {
             return child.injector.get(NavigableDirective);
         });
+        childrenDirectives = fixture.debugElement.queryAll(By.directive(NavigableDirective));
     });
 
     it('should be created', () => {
@@ -67,55 +71,42 @@ describe('Navigable', () => {
         beforeEach(() => {
             firstChild = children[0];
 
-            mouseEvent = {
-                ctrlKey: false,
-                shiftKey: false,
-                preventDefault: jasmine.createSpy('preventDefault')
-            } as MouseEvent;
+            mouseEvent = new MouseEvent("mousedown");
+            ctrlMouseEvent = new MouseEvent("mousedown", {ctrlKey: true});
+            shiftMouseEvent = new MouseEvent("mousedown",{shiftKey: true});
 
-            ctrlMouseEvent = {
-                ctrlKey: true,
-                shiftKey: false,
-                preventDefault: jasmine.createSpy('preventDefault')
-            } as MouseEvent;
-
-            shiftMouseEvent = {
-                ctrlKey: false,
-                shiftKey: true,
-                preventDefault: jasmine.createSpy('preventDefault')
-            } as MouseEvent;
         });
         it('should activate child', () => {
-            firstChild.onMouseDown(mouseEvent);
+            childrenDirectives[0].nativeElement.dispatchEvent(mouseEvent);
             expect(firstChild.activate).toBe(true);
         });
 
         it('should select child', () => {
-            firstChild.onMouseDown(mouseEvent);
+            childrenDirectives[0].nativeElement.dispatchEvent(mouseEvent);
             expect(firstChild.selected).toBe(true);
         });
 
         it('should add child to selection', () => {
-            firstChild.onMouseDown(mouseEvent);
+            childrenDirectives[0].nativeElement.dispatchEvent(mouseEvent);
             expect(directive.navigableSelection.length).toBe(1);
-            expect(directive.navigableSelection).toContain(component.model);
+            expect(directive.navigableSelection).toContain(component.models[0]);
         });
 
         describe('with ctrlKey pressed', () => {
             it('should still activate child', () => {
-                firstChild.onMouseDown(ctrlMouseEvent);
+                childrenDirectives[0].nativeElement.dispatchEvent(ctrlMouseEvent);
                 expect(firstChild.activate).toBe(true);
             });
 
             it('should still select child', () => {
-                firstChild.onMouseDown(ctrlMouseEvent);
+                childrenDirectives[0].nativeElement.dispatchEvent(ctrlMouseEvent);
                 expect(firstChild.selected).toBe(true);
             });
 
             it('should still add child to selection', () => {
-                firstChild.onMouseDown(ctrlMouseEvent);
+                childrenDirectives[0].nativeElement.dispatchEvent(ctrlMouseEvent);
                 expect(directive.navigableSelection.length).toBe(1);
-                expect(directive.navigableSelection).toContain(component.model);
+                expect(directive.navigableSelection).toContain(component.models[0]);
             });
 
             it('should keep other selected children in selection', () => {
@@ -123,15 +114,15 @@ describe('Navigable', () => {
                 firstChild.activate = true;
                 directive.navigableSelection.push(firstChild.model);
 
-                children[1].onMouseDown(ctrlMouseEvent);
+                childrenDirectives[1].nativeElement.dispatchEvent(ctrlMouseEvent);
 
                 expect(directive.navigableSelection.length).toBe(2);
-                expect(directive.navigableSelection).toContain(component.model2);
+                expect(directive.navigableSelection).toContain(component.models[1]);
 
-                children[2].onMouseDown(ctrlMouseEvent);
+                childrenDirectives[2].nativeElement.dispatchEvent(ctrlMouseEvent);
 
                 expect(directive.navigableSelection.length).toBe(3);
-                expect(directive.navigableSelection).toContain(component.model3);
+                expect(directive.navigableSelection).toContain(component.models[2]);
             });
 
             it('should remove child if it\'s already in the selection', () => {
@@ -139,7 +130,7 @@ describe('Navigable', () => {
                 firstChild.activate = true;
                 directive.navigableSelection.push(firstChild.model);
 
-                firstChild.onMouseDown(ctrlMouseEvent);
+                childrenDirectives[0].nativeElement.dispatchEvent(ctrlMouseEvent);
 
                 expect(directive.navigableSelection.length).toBe(0);
                 expect(firstChild.activate).toBeFalsy();
@@ -151,7 +142,7 @@ describe('Navigable', () => {
                 firstChild.activate = true;
                 directive.navigableSelection.push(firstChild.model);
 
-                children[3].onMouseDown(ctrlMouseEvent);
+                childrenDirectives[3].nativeElement.dispatchEvent(ctrlMouseEvent);
 
                 expect(directive.navigableSelection.length).toBe(2);
                 expect(firstChild.activate).toBeFalsy();
@@ -163,19 +154,19 @@ describe('Navigable', () => {
         });
         describe('with shiftKey pressed', () => {
             it('should still activate child', () => {
-                firstChild.onMouseDown(shiftMouseEvent);
+                childrenDirectives[0].nativeElement.dispatchEvent(shiftMouseEvent);
                 expect(firstChild.activate).toBe(true);
             });
 
             it('should still select child', () => {
-                firstChild.onMouseDown(shiftMouseEvent);
+                childrenDirectives[0].nativeElement.dispatchEvent(shiftMouseEvent);
                 expect(firstChild.selected).toBe(true);
             });
 
             it('should still add child to selection', () => {
-                firstChild.onMouseDown(shiftMouseEvent);
+                childrenDirectives[0].nativeElement.dispatchEvent(shiftMouseEvent);
                 expect(directive.navigableSelection.length).toBe(1);
-                expect(directive.navigableSelection).toContain(component.model);
+                expect(directive.navigableSelection).toContain(component.models[0]);
             });
 
             it('should select every child between the active and the clicked', () => {
@@ -183,7 +174,7 @@ describe('Navigable', () => {
                 firstChild.activate = true;
                 directive.navigableSelection.push(firstChild.model);
 
-                children[3].onMouseDown(shiftMouseEvent);
+                childrenDirectives[3].nativeElement.dispatchEvent(shiftMouseEvent);
                 expect(directive.navigableSelection.length).toBe(4);
 
                 children.forEach(child => {
@@ -201,7 +192,7 @@ describe('Navigable', () => {
                 directive.navigableSelection.push(firstChild.model);
                 directive.navigableSelection.push(secondChild.model);
 
-                children[2].onMouseDown(shiftMouseEvent);
+                childrenDirectives[2].nativeElement.dispatchEvent(shiftMouseEvent);
                 expect(directive.navigableSelection.length).toBe(2);
 
                 expect(children[2].selected).toBeTruthy();

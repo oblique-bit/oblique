@@ -2,7 +2,8 @@ import {
 	Directive, Input, ElementRef, HostBinding, Output, EventEmitter,
 	HostListener, AfterViewInit
 } from '@angular/core';
-declare let $:any; // TODO: find a better way to access DOM elements
+
+import * as $ from 'jquery'
 
 /**
  * NavigableDirective
