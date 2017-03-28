@@ -60,6 +60,7 @@
     "@angular/compiler-cli": "^2.4.0",
     "@ngtools/json-schema": "^1.0.3",
     "@types/jasmine": "2.5.38",
+    "@types/jquery": "^2.0.41",
     "@types/karma": "^0.13.33",
     "@types/node": "~6.0.60",
     "angular2-template-loader": "^0.6.0",

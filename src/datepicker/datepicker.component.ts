@@ -1,6 +1,5 @@
-import {Component, ViewChild, AfterViewInit, forwardRef, ContentChild} from '@angular/core';
-import {ControlValueAccessor, NgModel, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {NgbInputDatepicker} from "@ng-bootstrap/ng-bootstrap";
+import {Component, ContentChild} from '@angular/core';
+import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'date-picker',
