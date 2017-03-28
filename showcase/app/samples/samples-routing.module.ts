@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
 import {DatepickerComponent} from './datepicker/datepicker.component';
-import {NavigableSampleComponent} from './navigable/navigable.sample.component';
+import {NavigableSampleComponent} from './navigable/navigable-sample.component';
 import {SchemaValidationComponent} from './schema-validation/schema-validation.component';
 
 const samplesRoutes: Routes = [

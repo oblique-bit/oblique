@@ -63,9 +63,9 @@ export class NavigableGroupDirective implements AfterViewInit {
 		});
 	}
 
-    private handleChildChange(child: NavigableDirective, event: NavigableOnChangeEvent) {
-        const index = this.getIndexOfChild(child);
-        let next: NavigableDirective = null;
+	private handleChildChange(child: NavigableDirective, event: NavigableOnChangeEvent) {
+		const index = this.getIndexOfChild(child);
+		let next: NavigableDirective = null;
 
 		if (event.keyCode === NavigableDirective.KEYS.UP) {
 			next = this.getChildAtIndex(Math.max(index - 1, 0));
@@ -101,7 +101,7 @@ export class NavigableGroupDirective implements AfterViewInit {
 	}
 
 	private handleChildFocus(child: NavigableDirective) {
-		if (!child.activate) {
+		if (!child.activated) {
 			this.activateChild(child);
 		}
 	}
@@ -124,12 +124,12 @@ export class NavigableGroupDirective implements AfterViewInit {
 
 	private activateChild(child: NavigableDirective, combine?: boolean) {
 		this.navigableDirectiveChildren.forEach(child => this.deactivateChild(child)); //TODO: take a look at this
-		child.activate = true;
+		child.activated = true;
 		this.selectChild(child, combine);
 	}
 
 	private deactivateChild(child: NavigableDirective) {
-		child.activate = false;
+		child.activated = false;
 	}
 
 	private selectChild(child: NavigableDirective, combine?: boolean) {
@@ -145,10 +145,10 @@ export class NavigableGroupDirective implements AfterViewInit {
 		this.selectionRemoveChild(child);
 	}
 
-    private selectChildRange(targetChild: NavigableDirective) {
-        const from = this.getIndexOfChild(this.getActivatedChild());
-        const to = this.getIndexOfChild(targetChild);
-        const slice = this.navigableDirectiveChildren.toArray().slice(Math.min(from, to), Math.max(from, to) + 1);
+	private selectChildRange(targetChild: NavigableDirective) {
+		const from = this.getIndexOfChild(this.getActivatedChild());
+		const to = this.getIndexOfChild(targetChild);
+		const slice = this.navigableDirectiveChildren.toArray().slice(Math.min(from, to), Math.max(from, to) + 1);
 
 		this.activateChild(targetChild);
 
@@ -171,7 +171,7 @@ export class NavigableGroupDirective implements AfterViewInit {
 	}
 
 	private getActivatedChild() {
-		return this.navigableDirectiveChildren.toArray().filter(child => child.activate)[0];
+		return this.navigableDirectiveChildren.toArray().filter(child => child.activated)[0];
 	}
 
 	private getChildAtIndex(index: number): NavigableDirective {

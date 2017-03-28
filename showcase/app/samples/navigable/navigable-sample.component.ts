@@ -3,8 +3,8 @@ import {NavigableOnMoveEvent} from "../../../../src/navigable/navigable.directiv
 
 @Component({
 	selector: 'navigable-sample',
-	templateUrl: './navigable.sample.component.html',
-	styleUrls: ['./navigable.sample.component.css']
+	templateUrl: './navigable-sample.component.html',
+	styleUrls: ['./navigable-sample.component.css']
 })
 export class NavigableSampleComponent {
 

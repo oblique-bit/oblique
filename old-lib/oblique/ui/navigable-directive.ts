@@ -158,6 +158,3 @@ export class NavigableDirective implements ng.IDirective {
 		return visibility !== "hidden";
 	}
 }
-
-
-

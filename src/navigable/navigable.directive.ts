@@ -12,11 +12,11 @@ declare let $:any; // TODO: find a better way to access DOM elements
  * - [navigableActivate]:boolean                 Activates current item if `true`.
  * - [navigableFocusOnInit]:boolean              Focused current item if `true`, on directive initialisation only.
  * - [navigableHighlight]:boolean                Highlights current item if `true`.
+ * - (navigableOnActivation):void                Emits if item is activated.
  * - (navigableOnChange):NavigableOnChangeEvent  Emits if UP or DOWN key is pressed, while item is focused.
  * - (navigableOnMouseDown):MouseEvent           Emits if item is clicked/tapped.
  * - (navigableOnFocus):FocusEvent               Emits if item is focused.
- * - (navigableOnActivation):void                Emits if item is activated.
- * - (navigableOnFocus):FocusEvent               Emits if item is moved (with SHIFT+CTRL+[UP|DOWN]).
+ * - (navigableOnMove):FocusEvent                Emits if item is moved (with SHIFT+CTRL+[UP|DOWN]).
  */
 @Directive({
 	selector: '[navigable]',
@@ -31,11 +31,11 @@ export class NavigableDirective implements AfterViewInit {
 
 	@Input('navigable') model:any;
 
-	@Output() navigableOnChange = new EventEmitter();
+	@Output() navigableOnActivation = new EventEmitter();
+	@Output() navigableOnChange = new EventEmitter<NavigableOnChangeEvent>();
 	@Output() navigableOnMouseDown = new EventEmitter();
 	@Output() navigableOnFocus = new EventEmitter();
 	@Output() navigableOnMove = new EventEmitter();
-	@Output() navigableOnActivation = new EventEmitter();
 
 	@HostBinding('tabindex')
 	tabindex = 0;
@@ -52,18 +52,19 @@ export class NavigableDirective implements AfterViewInit {
 
 	@HostBinding('class.navigable-active')
 	@Input('navigableActivate')
-	get activate() {
-		return this.activated;
+	get activated() {
+		return this.activatedValue;
 	}
-	set activate(val:boolean) {
-		this.activated = val;
+	set activated(val:boolean) {
+		this.activatedValue = val;
 		if (val) {
 			this.navigableOnActivation.emit();
 		}
 	}
-	private activated = false;
+	private activatedValue = false;
 
-	@Input('navigableFocusOnInit') focusOnInit:boolean;
+	@Input('navigableFocusOnInit')
+	focusOnInit:boolean;
 
 	constructor(private element: ElementRef) {
 	}
@@ -104,12 +105,13 @@ export class NavigableDirective implements AfterViewInit {
 		}
 	}
 
-	@HostListener('mousedown', ['$event']) onMouseDown($event: MouseEvent) {
-		if (!this.focusable(event.target)) {
+	@HostListener('mousedown', ['$event']) // Using `mousedown` instead of `click` event to ensure it is triggered before focus event!
+	onMouseDown($event: MouseEvent) {
+		if (!this.focusable($event.target)) {
 			this.navigableOnMouseDown.emit($event);
 		} else {
 			// Focus is on a child element of current item but let's ensure it gets activated:
-			this.activate = true;
+			this.activated = true;
 		}
 	}
 

@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {NavigableSampleComponent} from './navigable/navigable.sample.component';
+import {NavigableSampleComponent} from './navigable/navigable-sample.component';
 import {TranslateModule} from 'ng2-translate';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 

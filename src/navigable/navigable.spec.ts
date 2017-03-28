@@ -87,7 +87,7 @@ describe('Navigable', () => {
 		});
 		it('should activate child', () => {
 			firstChild.onMouseDown(mouseEvent);
-			expect(firstChild.activate).toBe(true);
+			expect(firstChild.activated).toBe(true);
 		});
 
 		it('should select child', () => {
@@ -104,7 +104,7 @@ describe('Navigable', () => {
 		describe('with ctrlKey pressed', () => {
 			it('should still activate child', () => {
 				firstChild.onMouseDown(ctrlMouseEvent);
-				expect(firstChild.activate).toBe(true);
+				expect(firstChild.activated).toBe(true);
 			});
 
 			it('should still select child', () => {
@@ -120,7 +120,7 @@ describe('Navigable', () => {
 
 			it('should keep other selected children in selection', () => {
 				firstChild.selected = true;
-				firstChild.activate = true;
+				firstChild.activated = true;
 				directive.navigableSelection.push(firstChild.model);
 
 				children[1].onMouseDown(ctrlMouseEvent);
@@ -136,35 +136,35 @@ describe('Navigable', () => {
 
 			it('should remove child if it\'s already in the selection', () => {
 				firstChild.selected = true;
-				firstChild.activate = true;
+				firstChild.activated = true;
 				directive.navigableSelection.push(firstChild.model);
 
 				firstChild.onMouseDown(ctrlMouseEvent);
 
 				expect(directive.navigableSelection.length).toBe(0);
-				expect(firstChild.activate).toBeFalsy();
+				expect(firstChild.activated).toBeFalsy();
 				expect(firstChild.selected).toBeFalsy();
 			});
 
 			it('should not select children between the active and the clicked', () => {
 				firstChild.selected = true;
-				firstChild.activate = true;
+				firstChild.activated = true;
 				directive.navigableSelection.push(firstChild.model);
 
 				children[3].onMouseDown(ctrlMouseEvent);
 
 				expect(directive.navigableSelection.length).toBe(2);
-				expect(firstChild.activate).toBeFalsy();
+				expect(firstChild.activated).toBeFalsy();
 				expect(firstChild.selected).toBeTruthy();
 
-				expect(children[3].activate).toBeTruthy();
+				expect(children[3].activated).toBeTruthy();
 				expect(children[3].selected).toBeTruthy();
 			});
 		});
 		describe('with shiftKey pressed', () => {
 			it('should still activate child', () => {
 				firstChild.onMouseDown(shiftMouseEvent);
-				expect(firstChild.activate).toBe(true);
+				expect(firstChild.activated).toBe(true);
 			});
 
 			it('should still select child', () => {
@@ -180,7 +180,7 @@ describe('Navigable', () => {
 
 			it('should select every child between the active and the clicked', () => {
 				firstChild.selected = true;
-				firstChild.activate = true;
+				firstChild.activated = true;
 				directive.navigableSelection.push(firstChild.model);
 
 				children[3].onMouseDown(shiftMouseEvent);
@@ -195,7 +195,7 @@ describe('Navigable', () => {
 				let secondChild = children[1];
 				firstChild.selected = true;
 
-				secondChild.activate = true;
+				secondChild.activated = true;
 				secondChild.selected = true;
 
 				directive.navigableSelection.push(firstChild.model);
@@ -205,7 +205,7 @@ describe('Navigable', () => {
 				expect(directive.navigableSelection.length).toBe(2);
 
 				expect(children[2].selected).toBeTruthy();
-				expect(children[2].activate).toBeTruthy();
+				expect(children[2].activated).toBeTruthy();
 			});
 		});
 	});
