@@ -3,7 +3,8 @@ import {NgModule, Inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule, Http} from '@angular/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {TranslateModule, TranslateLoader, TranslateStaticLoader} from 'ng2-translate';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 // ObliqueReactive:
 import {ObliqueModule, SpinnerComponent, TopControlComponent} from '../../src';
@@ -25,7 +26,7 @@ export const BOOTSTRAP_COMPONENTS_TOKEN = new OpaqueToken('bootstrap_components'
 
 
 export function createTranslateLoader(http: Http) {
-	return new TranslateStaticLoader(http, './assets/i18n', '.json');
+	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
@@ -40,9 +41,11 @@ export function createTranslateLoader(http: Http) {
 		ObliqueModule.forRoot(),
 		NgbModule.forRoot(),
 		TranslateModule.forRoot({
-			provide: TranslateLoader,
-			useFactory: createTranslateLoader,
-			deps: [Http]
+			loader: {
+				provide: TranslateLoader,
+				useFactory: createTranslateLoader,
+				deps: [Http]
+			}
 		}),
 		LayoutModule,
 		SamplesModule,
@@ -69,7 +72,6 @@ export class AppModule {
 	ngDoBootstrap(appRef: ApplicationRef) {
 		this.components.forEach((componentDef: {type: Type<any>, selector: string}) => {
 			const factory = this.resolver.resolveComponentFactory(componentDef.type);
-			factory.selector = componentDef.selector;
 			appRef.bootstrap(factory);
 		});
 	}

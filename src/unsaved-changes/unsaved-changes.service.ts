@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
-import {TranslateService} from 'ng2-translate';
+import {TranslateService} from '@ngx-translate/core';
 import 'rxjs/add/operator/filter';
 
 //TODO: Handle modals

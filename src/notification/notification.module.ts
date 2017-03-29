@@ -2,7 +2,7 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 import {NotificationComponent} from './notification.component';
 import {CommonModule} from '@angular/common';
 import {NotificationService} from './notification.service';
-import {TranslateModule} from 'ng2-translate';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
     imports: [
