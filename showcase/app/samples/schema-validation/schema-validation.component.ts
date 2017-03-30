@@ -38,6 +38,7 @@ export class SchemaValidationComponent {
                 'maximum': 100,
                 'exclusiveMaximum': true
             },
+            //TODO: not implemented yet
             'date': {
                 'type': [
                     'object',

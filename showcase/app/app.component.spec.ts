@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {NotificationService, SpinnerService} from '../../src';
 import {MockTranslatePipe} from '../../testhelpers';
-import {TranslateService} from 'ng2-translate';
+import {TranslateService} from '@ngx-translate/core';
 
 describe('AppComponent', () => {
     beforeEach(() => {

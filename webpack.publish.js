@@ -15,7 +15,7 @@ module.exports = {
             '@angular/forms': ngExternal('forms'),
         },
         rxjsExternal,
-        'ng2-translate',
+        '@ngx-translate/core', //TODO: Modification needed?
         'ajv'
     ],
     resolve: {

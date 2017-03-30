@@ -1,6 +1,6 @@
 import {TestBed, inject} from '@angular/core/testing';
 import {UnsavedChangesService} from './unsaved-changes.service';
-import {TranslateService} from 'ng2-translate';
+import {TranslateService} from '@ngx-translate/core';
 import {ControlContainer} from '@angular/forms';
 
 

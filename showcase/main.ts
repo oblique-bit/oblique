@@ -16,11 +16,11 @@ if (environment.production) {
 }
 
 const components = [
-	{type: AppComponent, selector: 'app-root#view'},
-	{type: SpinnerComponent, selector: 'app-root#spinner'},
-	{type: TopControlComponent, selector: 'app-root#top-control'},
-	{type: LayoutControlsComponent, selector: 'app-root#controls'},
-	{type: LayoutNavigationComponent, selector: 'app-root#navigation'}
+	{type: AppComponent},
+	{type: SpinnerComponent},
+	{type: TopControlComponent},
+	{type: LayoutControlsComponent},
+	{type: LayoutNavigationComponent}
 ];
 
 platformBrowserDynamic([
