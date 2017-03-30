@@ -108,7 +108,6 @@
     "interface-over-type-literal": true,
     "no-empty-interface": true,
     "no-string-throw": true,
-    "prefer-const": true,
     "typeof-compare": true,
     "unified-signatures": true
   }
