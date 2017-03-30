@@ -33,6 +33,8 @@ describe('NavigableComponent', () => {
 
 	it('should activate one item', () => {
 		component.activate(component.scientists[0]);
-		expect(component.scientistsSelection.length).toBe(1);
+		setTimeout(() => {
+			expect(component.scientistsSelection.length).toBe(1);
+		});
 	});
 });

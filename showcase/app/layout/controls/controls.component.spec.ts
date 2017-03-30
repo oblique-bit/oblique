@@ -6,7 +6,7 @@ import {MockTranslatePipe} from '../../../../testhelpers';
 
 describe('LayoutControls', () => {
     let component: LayoutControlsComponent;
-    let fixture: ComponentFixture<LayoutControls>;
+    let fixture: ComponentFixture<LayoutControlsComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({

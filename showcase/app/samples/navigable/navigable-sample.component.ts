@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavigableOnMoveEvent} from "../../../../src/navigable/navigable.directive";
+import {NavigableOnMoveEvent} from '../../../../src/navigable/navigable.directive';
 
 @Component({
 	selector: 'navigable-sample',
@@ -8,8 +8,10 @@ import {NavigableOnMoveEvent} from "../../../../src/navigable/navigable.directiv
 })
 export class NavigableSampleComponent {
 
-	scientistsSelection:any[] = [];
-	scientists:any[] = [
+	scientistsSelection: any[] = [];
+	lockedScientists: any[] = [];
+	highlightedScientist: any = null;
+	scientists: any[] = [
 		{
 			firstname: 'Albert',
 			lastname: 'Einstein',
@@ -36,74 +38,76 @@ export class NavigableSampleComponent {
 			birthdate: '15.02.1564'
 		}
 	];
+	currentScientist: any = null;
+	logs = [];
 
 	// Activation:
-	onActivation(scientist:any) {
-		this.log(`${this.logs.length} - Activated: ${scientist.firstname}`);
+	onActivation(scientist: any) {
+		this.log(`Activated: ${scientist.firstname}`);
 	}
 
-	isActivated(scientist:any) {
+	isActivated(scientist: any) {
+		return this.currentScientist === scientist
+	}
+
+	activate(scientist: any) {
+		this.currentScientist = scientist
+	}
+
+	// Selection:
+	isSelected(scientist: any) {
 		return this.scientistsSelection.indexOf(scientist) !== -1;
 	}
 
-	activate(scientist:any) {
-		if(this.isActivated(scientist)) {
-			this.scientistsSelection.splice(this.scientistsSelection.indexOf(scientist), 1);
-		} else {
-			this.scientistsSelection.push(scientist);
-		}
-	}
-
 	// Move:
-	onMove(event: NavigableOnMoveEvent, scientist:any) {
-		if(this.isLocked(scientist)){
+	onMove(event: NavigableOnMoveEvent, scientist: any) {
+		if (this.isLocked(scientist)) {
 			// Prevent item to be moved:
 			event.prevented = true;
-			this.log(`${this.logs.length} - Move: ${scientist.firstname} [PREVENTED]`);
+			this.log(`Move: ${scientist.firstname} [PREVENTED]`);
+		} else {
+			/* Discard event, let item be moved! */
+			this.log(`Move: ${scientist.firstname}`);
 		}
 	}
 
 	// Highlight:
-	highlightedScientist: any = null;
-
-	isHighlighted(scientist:any) {
+	isHighlighted(scientist: any) {
 		return this.highlightedScientist === scientist;
 	}
 
-	highlight(scientist:any) {
+	highlight(scientist: any) {
 		this.highlightedScientist = this.isHighlighted(scientist) ? null : scientist;
 
-		if(this.highlightedScientist) {
-			this.log(`${this.logs.length} - Highlighted: ${scientist.firstname}`);
+		if (this.highlightedScientist) {
+			this.log(`Highlighted: ${scientist.firstname}`);
 		}
 	}
 
 	// Lock:
-	lockedScientists:any[] = [];
-
-	isLocked(scientist:any) {
+	isLocked(scientist: any) {
 		return this.lockedScientists.indexOf(scientist) !== -1;
 	}
 
-	lock(scientist:any) {
-		if(this.isLocked(scientist)) {
+	lock(scientist: any) {
+		if (this.isLocked(scientist)) {
 			this.lockedScientists.splice(this.lockedScientists.indexOf(scientist), 1);
+			this.log(`Unlocked: ${scientist.firstname}`);
 		} else {
 			this.lockedScientists.push(scientist);
+			this.log(`Locked: ${scientist.firstname}`);
 		}
 	}
 
 	// Remove:
-	remove(scientist:any) {
+	remove(scientist: any) {
 		this.scientistsSelection.splice(this.scientistsSelection.indexOf(scientist), 1);
 		this.scientists.splice(this.scientists.indexOf(scientist), 1);
+		this.log(`Removed: ${scientist.firstname}`);
 	}
 
 	// Debug:
-	logs = [];
-	log(message:string) {
-		setTimeout(() => {
-			this.logs.unshift(message);
-		}, 0);
+	log(message: string) {
+		this.logs.unshift(`${this.logs.length} - ${message}`);
 	}
 }

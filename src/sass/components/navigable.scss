@@ -64,13 +64,14 @@ $navigable-height: 38px;
 		}
 	}
 
-	&.navigable-active {
+	&.navigable-active,
+	&:focus {
 		z-index: 1;
 	}
 
 	&.navigable-highlight {
 		background-color: $brand-warning-light !important;
-		transition-duration: 5s;
+		transition-duration: 3.5s;
 	}
 
 	// Context-specific:

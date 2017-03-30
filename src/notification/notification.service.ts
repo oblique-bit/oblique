@@ -65,8 +65,8 @@ export class NotificationService {
     }
 
     //alias
-    public warning() {
-        return this.warn.call(arguments);
+    public warning(...args) {
+        return this.warn.call(args);
     }
 
     public error(messageKey: string, title = '', sticky = true): number {
