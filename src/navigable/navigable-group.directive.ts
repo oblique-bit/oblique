@@ -1,4 +1,6 @@
-import {Directive, Input, EventEmitter, Output, AfterViewInit, ContentChildren, QueryList} from '@angular/core';
+import {
+	Directive, Input, EventEmitter, Output, AfterViewInit, ContentChildren, QueryList
+} from '@angular/core';
 import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from './navigable.directive';
 
 /**
@@ -10,7 +12,8 @@ import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from '
  *
  */
 @Directive({
-	selector: '[navigableGroup]'
+	selector: '[navigableGroup]',
+	exportAs: 'navigableGroup'
 })
 export class NavigableGroupDirective implements AfterViewInit {
 
@@ -113,6 +116,28 @@ export class NavigableGroupDirective implements AfterViewInit {
 		});
 	}
 
+	// Public API ---------------------
+	public add(model: any) {
+		let navigable = this.navigables.find((navigable: NavigableDirective) => {
+			return navigable.model === model;
+		});
+
+		if (navigable) {
+			this.select(navigable, true);
+		}
+	}
+
+	public remove(model: any) {
+		let navigable = this.navigables.find((navigable: NavigableDirective) => {
+			return navigable.model === model;
+		});
+
+		if (navigable) {
+			this.deactivate(navigable, true);
+		}
+	}
+
+	// Private API ---------------------
 
 	private activate(navigable: NavigableDirective, combine?: boolean) {
 		this.navigables.forEach(child => child !== navigable && this.deactivate(child)); //TODO: take a look at this

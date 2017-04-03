@@ -56,11 +56,9 @@ export class NavigableDirective implements AfterViewInit {
 
 	@Input('navigableActivate')
 	set activate(value: boolean) {
-		if (value) {
-			setTimeout(() => {
-				this.active = true;
-			});
-		}
+		setTimeout(() => {
+			this.active = value;
+		});
 	}
 
 	@HostBinding('class.navigable-active')

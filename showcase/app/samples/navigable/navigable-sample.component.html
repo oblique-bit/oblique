@@ -10,7 +10,8 @@
 				<div class="col-9">
 					<div class="list-group"
 					     [(navigableGroup)]="scientists"
-					     [(navigableSelection)]="scientistsSelection">
+					     [(navigableSelection)]="scientistsSelection"
+					     #navigableGroup="navigableGroup">
 						<div class="list-group-item list-group-header">
 							<div class="col-3">First Name</div>
 							<div class="col-3">Last Name</div>
@@ -21,7 +22,6 @@
 						     *ngFor="let scientist of scientists; let i = index"
 						     [navigable]="scientist"
 						     [navigableFocusOnInit]="i === 0"
-						     [navigableActivate]="isActivated(scientist)"
 						     [navigableHighlight]="isHighlighted(scientist)"
 						     (navigableOnActivation)="onActivation(scientist)"
 						     (navigableOnMove)="onMove($event, scientist)"
@@ -60,7 +60,7 @@
 										<div class="dropdown-menu dropdown-menu-right" role="menu" aria-hidden="true" aria-labelledby="navigable-actions-title">
 											<div class="dropdown-item dropdown-header" role="presentation">Actions</div>
 											<a class="dropdown-item" role="button" tabindex="0"
-											   (click)="highlight(scientist)">
+											   (click)="toggleHighlighting(scientist)">
 												<span class="fa fa-lightbulb-o"
 												      [ngClass]="{'text-warning': isHighlighted(scientist)}"></span>
 												<span class="small">Highlight</span>
@@ -99,14 +99,14 @@
 						<div class="list-group-item" *ngFor="let scientist of scientists">
 							<div class="btn-group">
 								<button type="button" class="btn btn-default"
-								        (click)="activate(scientist)"
+								        (click)="toggleActivation(scientist, navigableGroup)"
 								        ngbTooltip="Toggle item activation" container="body">
 									<span class="fa fa-toggle-off"
 									      [ngClass]="{'text-success fa-toggle-on': isSelected(scientist)}"></span>
 									<span class="sr-only">Activate</span>
 								</button>
 								<button type="button" class="btn btn-default"
-									    (click)="highlight(scientist)"
+									    (click)="toggleHighlighting(scientist)"
 									    ngbTooltip="Toggle item highlighting" container="body">
 									<span class="fa fa-lightbulb-o"
 										[ngClass]="{'text-warning': isHighlighted(scientist)}"></span>

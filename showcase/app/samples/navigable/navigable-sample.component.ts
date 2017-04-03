@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {NavigableOnMoveEvent} from '../../../../src/navigable/navigable.directive';
+import {NavigableGroupDirective} from '../../../../src/navigable/navigable-group.directive';
 
 @Component({
 	selector: 'navigable-sample',
@@ -38,7 +39,6 @@ export class NavigableSampleComponent {
 			birthdate: '15.02.1564'
 		}
 	];
-	currentScientist: any = null;
 	logs = [];
 
 	// Activation:
@@ -46,12 +46,12 @@ export class NavigableSampleComponent {
 		this.log(`Activated: ${scientist.firstname}`);
 	}
 
-	isActivated(scientist: any) {
-		return this.currentScientist === scientist;
-	}
-
-	activate(scientist: any) {
-		this.currentScientist = scientist;
+	toggleActivation(scientist: any, navigableGroup: NavigableGroupDirective) {
+		if (this.scientistsSelection.indexOf(scientist) !== -1) {
+			navigableGroup.remove(scientist);
+		} else {
+			navigableGroup.add(scientist);
+		}
 	}
 
 	// Selection:
@@ -76,7 +76,7 @@ export class NavigableSampleComponent {
 		return this.highlightedScientist === scientist;
 	}
 
-	highlight(scientist: any) {
+	toggleHighlighting(scientist: any) {
 		this.highlightedScientist = this.isHighlighted(scientist) ? null : scientist;
 
 		if (this.highlightedScientist) {
@@ -101,9 +101,13 @@ export class NavigableSampleComponent {
 
 	// Remove:
 	remove(scientist: any) {
-		this.scientistsSelection.splice(this.scientistsSelection.indexOf(scientist), 1);
+		this.removeFromSelection(scientist);
 		this.scientists.splice(this.scientists.indexOf(scientist), 1);
 		this.log(`Removed: ${scientist.firstname}`);
+	}
+
+	removeFromSelection(scientist: any) {
+		this.scientistsSelection.splice(this.scientistsSelection.indexOf(scientist), 1);
 	}
 
 	// Debug:

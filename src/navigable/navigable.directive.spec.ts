@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {DebugElement, Component} from '@angular/core';
@@ -8,7 +8,7 @@ import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from '
 @Component({
 	template: `
 		<div [navigable]="model"
-		     [navigableActivate]="activated"
+		     [navigableActivate]="activate"
 		     [navigableHighlight]="highlighted"
 		     [navigableFocusOnInit]="focusOnInit"
 		     (navigableOnActivation)="onActivation()"
@@ -21,28 +21,28 @@ import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from '
 })
 class TestComponent {
 	model = {};
-	activated = false;
+	activate = false;
 	highlighted = false;
 	focusOnInit = false;
 
 	onActivation() {
-		//
+		/* Do nothing */
 	}
 
 	onChange($event: NavigableOnChangeEvent) {
-		//
+		/* Do nothing */
 	}
 
 	onMouseDown() {
-		//
+		/* Do nothing */
 	}
 
 	onMove($event: NavigableOnMoveEvent) {
-		//
+		/* Do nothing */
 	}
 
 	onFocus($event: FocusEvent) {
-		//
+		/* Do nothing */
 	}
 }
 
@@ -53,12 +53,12 @@ describe('NavigableDirective', () => {
 	let element: DebugElement;
 	let button: DebugElement;
 
-	beforeEach(async(() => {
+	beforeEach(() => {
 		TestBed.configureTestingModule({
 			declarations: [TestComponent, NavigableDirective],
 			imports: [CommonModule]
 		}).compileComponents();
-	}));
+	});
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(TestComponent);
@@ -97,31 +97,34 @@ describe('NavigableDirective', () => {
 
 	describe('toggling activation from test component', () => {
 		beforeEach(() => {
-			testComponent.activated = true;
-			spyOn(testComponent, 'onActivation').and.callThrough();
-			fixture.detectChanges();
+			testComponent.activate = true;
 		});
 
-		// it('should *select* directive', async(() => {
-		// 	setTimeout(() => {
-		// 		console.log(element.classes);
-		// 		expect(element.classes['navigable-selected']).toBeTruthy();
-		// 		expect(directive.selected).toBeTruthy();
-		// 	});
-		// }));
-		//
-		// it('should *activate* directive', async(() => {
-		// 	setTimeout(() => {
-		// 		expect(element.classes['navigable-active']).toBeTruthy();
-		// 		expect(directive.active).toBeTruthy();
-		// 	});
-		// }));
-
-		it('should call `onActivation` callback', async(() => {
+		it('should *select* directive', () => {
 			setTimeout(() => {
+				fixture.detectChanges();
+				expect(directive.selected).toBeTruthy();
+				expect(element.classes['navigable-selected']).toBeTruthy();
+			});
+		});
+
+		it('should *activate* directive', () => {
+			setTimeout(() => {
+				fixture.detectChanges();
+				expect(directive.active).toBeTruthy();
+				expect(element.classes['navigable-active']).toBeTruthy();
+			});
+		});
+
+		it('should call `onActivation` callback', () => {
+			setTimeout(() => {
+				spyOn(testComponent, 'onActivation').and.callThrough();
+				//testComponent.activate = false;
+				fixture.detectChanges();
+				testComponent.activate = true;
 				expect(testComponent.onActivation).toHaveBeenCalled();
 			});
-		}));
+		});
 	});
 
 	describe('focusing on element', () => {
@@ -151,13 +154,13 @@ describe('NavigableDirective', () => {
 			fixture.detectChanges();
 		});
 
-		it('should select the directive', async(() => {
+		it('should select the directive', () => {
 			expect(directive.selected).toBeTruthy();
-		}));
+		});
 
-		it('should activate the directive', async(() => {
+		it('should activate the directive', () => {
 			expect(directive.active).toBeTruthy();
-		}));
+		});
 
 		it('should call `onMouseDown` callback', () => {
 			expect(testComponent.onMouseDown).toHaveBeenCalled();

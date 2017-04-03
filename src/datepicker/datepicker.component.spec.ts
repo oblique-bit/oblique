@@ -1,4 +1,4 @@
-import {TestBed, async, ComponentFixture} from '@angular/core/testing';
+import {async, TestBed, ComponentFixture} from '@angular/core/testing';
 import {DatepickerComponent} from './datepicker.component';
 import {FormsModule} from '@angular/forms';
 import {Component} from '@angular/core';
@@ -6,47 +6,45 @@ import {NgbInputDatepicker, NgbDatepickerModule} from '@ng-bootstrap/ng-bootstra
 import {By} from '@angular/platform-browser';
 
 @Component({
-    template: `
-        <date-picker>
-            <input name="date" [(ngModel)]="model" ngbDatepicker>
-        </date-picker>
-            `
+	template:  `<date-picker>
+					<input name="date" [(ngModel)]="model" ngbDatepicker>
+				</date-picker>`
 })
 class TestComponent {
-    model = null;
+	model = null;
 }
 
 describe('DatepickerComponent', () => {
-    let fixture: ComponentFixture<TestComponent>;
-    let component: TestComponent;
-    let datepicker: DatepickerComponent;
-    let ngbDatepicker: NgbInputDatepicker;
+	let fixture: ComponentFixture<TestComponent>;
+	let component: TestComponent;
+	let datepicker: DatepickerComponent;
+	let ngbDatepicker: NgbInputDatepicker;
 
-    beforeEach(async(() => {
-        TestBed.configureTestingModule({
-            declarations: [TestComponent, DatepickerComponent],
-            imports: [FormsModule, NgbDatepickerModule.forRoot()]
-        }).compileComponents();
-    }));
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			declarations: [TestComponent, DatepickerComponent],
+			imports: [FormsModule, NgbDatepickerModule.forRoot()]
+		}).compileComponents();
+	}));
 
-    beforeEach(async(() => {
-        fixture = TestBed.createComponent(TestComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-        fixture.whenStable().then(() => {
-            datepicker = fixture.debugElement.query(By.directive(DatepickerComponent)).injector.get(DatepickerComponent);
-            ngbDatepicker = fixture.debugElement.query(By.directive(NgbInputDatepicker)).injector.get(NgbInputDatepicker);
-        });
-    }));
+	beforeEach(async(() => {
+		fixture = TestBed.createComponent(TestComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+		fixture.whenStable().then(() => {
+			datepicker = fixture.debugElement.query(By.directive(DatepickerComponent)).injector.get(DatepickerComponent);
+			ngbDatepicker = fixture.debugElement.query(By.directive(NgbInputDatepicker)).injector.get(NgbInputDatepicker);
+		});
+	}));
 
-    it('should toggle the NgbDatepicker on button click', () => {
-        spyOn(ngbDatepicker, 'toggle').and.callThrough();
+	it('should toggle the NgbDatepicker on button click', () => {
+		spyOn(ngbDatepicker, 'toggle').and.callThrough();
 
-        fixture.debugElement.query(By.css('button')).nativeElement.click();
+		fixture.debugElement.query(By.css('button')).nativeElement.click();
 
-        expect(ngbDatepicker.toggle).toHaveBeenCalled();
-    });
+		expect(ngbDatepicker.toggle).toHaveBeenCalled();
+	});
 
-    //TODO: what to test here?
+	//TODO: what to test here?
 
 });
