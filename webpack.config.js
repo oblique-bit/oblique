@@ -27,7 +27,8 @@ module.exports = {
             ".js"
         ],
         "modules": [
-            "./node_modules"
+           // "./node_modules",
+	    nodeModules
         ],
         "alias": {
             "jquery": "jquery/src/jquery"
@@ -256,7 +257,7 @@ module.exports = {
         }),
         new CommonsChunkPlugin({
             "name": "vendor",
-            "minChunks": (module) => module.resource && module.resource.startsWith(nodeModules),
+            "minChunks": (module) => module.resource && (module.resource.startsWith(nodeModules) || !module.resource.startsWith(process.cwd())),
             "chunks": [
                 "main"
             ]
