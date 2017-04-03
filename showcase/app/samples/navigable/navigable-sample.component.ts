@@ -47,11 +47,11 @@ export class NavigableSampleComponent {
 	}
 
 	isActivated(scientist: any) {
-		return this.currentScientist === scientist
+		return this.currentScientist === scientist;
 	}
 
 	activate(scientist: any) {
-		this.currentScientist = scientist
+		this.currentScientist = scientist;
 	}
 
 	// Selection:

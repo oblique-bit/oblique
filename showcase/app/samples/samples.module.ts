@@ -11,15 +11,15 @@ import {DatepickerComponent} from './datepicker/datepicker.component';
 import {SamplesRoutingModule} from './samples-routing.module';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        ObliqueModule,
-        TranslateModule,
-        FormsModule,
-        SamplesRoutingModule,
-        NgbModule
-    ],
-    declarations: [NavigableSampleComponent, SchemaValidationComponent, DatepickerComponent]
+	imports: [
+		CommonModule,
+		ObliqueModule,
+		TranslateModule,
+		FormsModule,
+		SamplesRoutingModule,
+		NgbModule
+	],
+	declarations: [NavigableSampleComponent, SchemaValidationComponent, DatepickerComponent]
 })
 export class SamplesModule {
 }
