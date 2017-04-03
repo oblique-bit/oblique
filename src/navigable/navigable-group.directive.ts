@@ -73,7 +73,7 @@ export class NavigableGroupDirective implements AfterViewInit {
 					}
 				} else {
 					this.navigables.forEach(child => {
-						child !== navigable && this.deactivate(child, true)
+						child !== navigable && this.deactivate(child, true);
 					});
 
 					this.addToSelection(navigable);

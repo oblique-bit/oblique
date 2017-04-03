@@ -26,23 +26,23 @@ class TestComponent {
 	focusOnInit = false;
 
 	onActivation() {
-		console.log('onActivation');
+		//
 	}
 
 	onChange($event: NavigableOnChangeEvent) {
-		console.log(`onChange: ${$event.keyCode}`);
+		//
 	}
 
 	onMouseDown() {
-		console.log('onMouseDown');
+		//
 	}
 
 	onMove($event: NavigableOnMoveEvent) {
-		console.log(`onMove: ${$event.keyCode}`);
+		//
 	}
 
 	onFocus($event: FocusEvent) {
-		console.log(`onFocus: ${$event.currentTarget}`);
+		//
 	}
 }
 
