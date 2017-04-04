@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {DebugElement, Component} from '@angular/core';
@@ -32,7 +32,7 @@ describe('NavigableGroup', () => {
 	let navigables: NavigableDirective[];
 	let navigableElements: DebugElement[];
 
-	beforeEach(() => {
+	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [
 				TestComponent,
@@ -42,7 +42,7 @@ describe('NavigableGroup', () => {
 			imports: [CommonModule]
 		})
 		.compileComponents();
-	});
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(TestComponent);

@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 
@@ -16,7 +16,7 @@ describe('NotificationComponent', () => {
 	const message = 'message';
 	const title = 'title';
 
-	beforeEach(() => {
+	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [NotificationComponent, MockTranslatePipe],
 			imports: [CommonModule],
@@ -26,7 +26,7 @@ describe('NotificationComponent', () => {
 			}]
 		})
 			.compileComponents();
-	});
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(NotificationComponent);

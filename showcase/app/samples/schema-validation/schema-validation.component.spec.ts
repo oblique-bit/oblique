@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 
 import {SchemaValidationComponent} from './schema-validation.component';
@@ -11,14 +11,14 @@ describe('SchemaValidationComponent', () => {
 	let component: SchemaValidationComponent;
 	let fixture: ComponentFixture<SchemaValidationComponent>;
 
-	beforeEach(() => {
+	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [SchemaValidationModule, FormsModule],
 			declarations: [SchemaValidationComponent, MockTranslatePipe],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		})
 		.compileComponents();
-	});
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(SchemaValidationComponent);

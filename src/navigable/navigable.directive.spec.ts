@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {DebugElement, Component} from '@angular/core';
@@ -53,12 +53,13 @@ describe('NavigableDirective', () => {
 	let element: DebugElement;
 	let button: DebugElement;
 
-	beforeEach(() => {
+	//TODO: async not working
+	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [TestComponent, NavigableDirective],
 			imports: [CommonModule]
 		}).compileComponents();
-	});
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(TestComponent);
@@ -96,34 +97,26 @@ describe('NavigableDirective', () => {
 	});
 
 	describe('toggling activation from test component', () => {
-		beforeEach(() => {
+		beforeEach(async(() => {
+			spyOn(testComponent, 'onActivation').and.callThrough();
 			testComponent.activate = true;
-		});
+			fixture.detectChanges();
+		}));
 
 		it('should *select* directive', () => {
-			setTimeout(() => {
-				fixture.detectChanges();
-				expect(directive.selected).toBeTruthy();
-				expect(element.classes['navigable-selected']).toBeTruthy();
-			});
+			fixture.detectChanges();
+			expect(directive.selected).toBeTruthy();
+			expect(element.classes['navigable-selected']).toBeTruthy();
 		});
 
 		it('should *activate* directive', () => {
-			setTimeout(() => {
-				fixture.detectChanges();
-				expect(directive.active).toBeTruthy();
-				expect(element.classes['navigable-active']).toBeTruthy();
-			});
+			fixture.detectChanges();
+			expect(directive.active).toBeTruthy();
+			expect(element.classes['navigable-active']).toBeTruthy();
 		});
 
 		it('should call `onActivation` callback', () => {
-			setTimeout(() => {
-				spyOn(testComponent, 'onActivation').and.callThrough();
-				//testComponent.activate = false;
-				fixture.detectChanges();
-				testComponent.activate = true;
-				expect(testComponent.onActivation).toHaveBeenCalled();
-			});
+			expect(testComponent.onActivation).toHaveBeenCalled();
 		});
 	});
 

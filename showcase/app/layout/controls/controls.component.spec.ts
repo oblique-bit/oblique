@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 
 import {LayoutControlsComponent} from './controls.component';
 import {MockTranslatePipe} from '../../../../testhelpers';
@@ -8,12 +8,12 @@ describe('LayoutControls', () => {
 	let component: LayoutControlsComponent;
 	let fixture: ComponentFixture<LayoutControlsComponent>;
 
-	beforeEach(() => {
+	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [LayoutControlsComponent, MockTranslatePipe]
 		})
 			.compileComponents();
-	});
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(LayoutControlsComponent);

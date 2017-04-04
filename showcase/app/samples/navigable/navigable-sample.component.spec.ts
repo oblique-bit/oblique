@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
 
@@ -14,7 +14,7 @@ describe('NavigableSampleComponent', () => {
 	let navigables: NavigableDirective[];
 	let fixture: ComponentFixture<NavigableSampleComponent>;
 
-	beforeEach(() => {
+	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [
 				MockTranslatePipe,
@@ -27,9 +27,10 @@ describe('NavigableSampleComponent', () => {
 			]
 		})
 			.compileComponents();
-	});
+	}));
 
-	beforeEach(() => {
+	//The async ensures that the bindings are completely done (waits till fixture is stable)
+	beforeEach(async(() => {
 		fixture = TestBed.createComponent(NavigableSampleComponent);
 		fixture.detectChanges();
 		component = fixture.componentInstance;
@@ -37,36 +38,30 @@ describe('NavigableSampleComponent', () => {
 		navigables = fixture.debugElement.queryAll(By.directive(NavigableDirective)).map(child => {
 			return child.injector.get(NavigableDirective);
 		});
-	});
+	}));
 
 	it('should create', () => {
 		expect(component).toBeTruthy();
 	});
 
 	it('first navigable item should be active by default', () => {
-		setTimeout(() => { // Ensure first navigable item has been activated on init!
-			expect(navigables[0].active).toBeTruthy();
-			expect(component.scientistsSelection.length).toBe(1);
-		});
+		expect(navigables[0].active).toBeTruthy();
+		expect(component.scientistsSelection.length).toBe(1);
 	});
 
 	it('should add another item to selection when using activation toggle', () => {
-		setTimeout(() => { // Ensure first navigable item has been activated on init!
-			fixture.detectChanges();
-			component.toggleActivation(component.scientists[1], navigableGroup);
-			expect(navigables[1].selected).toBeTruthy();
-			expect(component.scientistsSelection.length).toBe(2);
-		});
+		fixture.detectChanges();
+		component.toggleActivation(component.scientists[1], navigableGroup);
+		expect(navigables[1].selected).toBeTruthy();
+		expect(component.scientistsSelection.length).toBe(2);
 	});
 
 	it('should highlight navigable item when using highlight toggle', () => {
-		setTimeout(() => { // Ensure first navigable item has been activated on init!
-			component.toggleHighlighting(component.scientists[1]);
-			fixture.detectChanges();
-			expect(navigables[0].active).toBeTruthy();
-			expect(component.scientistsSelection.length).toBe(1);
-			expect(navigables[1].active).toBeFalsy();
-			expect(navigables[1].highlight).toBeTruthy();
-		});
+		component.toggleHighlighting(component.scientists[1]);
+		fixture.detectChanges();
+		expect(navigables[0].active).toBeTruthy();
+		expect(component.scientistsSelection.length).toBe(1);
+		expect(navigables[1].active).toBeFalsy();
+		expect(navigables[1].highlight).toBeTruthy();
 	});
 });
