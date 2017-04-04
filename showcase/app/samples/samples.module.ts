@@ -4,11 +4,13 @@ import {FormsModule} from '@angular/forms';
 import {NavigableComponent} from './navigable/navigable.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {MultiselectDropdownModule} from 'ngx-multiselect-dropdown';
 
 import {ObliqueModule} from '../../../src/index';
 import {SchemaValidationComponent} from './schema-validation/schema-validation.component';
 import {DatepickerComponent} from './datepicker/datepicker.component';
 import {SamplesRoutingModule} from './samples-routing.module';
+import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
 
 @NgModule({
     imports: [
@@ -17,9 +19,10 @@ import {SamplesRoutingModule} from './samples-routing.module';
         TranslateModule,
         FormsModule,
         SamplesRoutingModule,
+        MultiselectDropdownModule,
         NgbModule
     ],
-    declarations: [NavigableComponent, SchemaValidationComponent, DatepickerComponent]
+    declarations: [NavigableComponent, SchemaValidationComponent, DatepickerComponent, MultiselectSampleComponent]
 })
 export class SamplesModule {
 }

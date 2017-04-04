@@ -318,7 +318,7 @@ module.exports = {
             from: 'node_modules/oblique-ui/dist/images/',
             to:    'assets/oblique-ui/images'
         }], __dirname),
-        new OpenBrowserPlugin({ url: 'http://localhost:' + PORT })
+        /*new OpenBrowserPlugin({ url: 'http://localhost:' + PORT })*/
     ],
     "node": {
         "fs": "empty",
