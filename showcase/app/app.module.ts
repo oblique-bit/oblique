@@ -17,14 +17,13 @@ import {LayoutNavigationComponent} from './layout/navigation/navigation.componen
 
 // App:
 import {AppComponent} from './app.component';
+import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './home/home.component';
 import {SamplesModule} from './samples/samples.module';
-import {AppRoutingModule} from './app-routing.module';
 
 // TODO: refactor when https://github.com/angular/angular/issues/7136
 import {ApplicationRef, ComponentFactoryResolver, Type, OpaqueToken} from '@angular/core';
 export const BOOTSTRAP_COMPONENTS_TOKEN = new OpaqueToken('bootstrap_components');
-
 
 export function createTranslateLoader(http: Http) {
 	return new TranslateHttpLoader(http, './assets/i18n/', '.json');

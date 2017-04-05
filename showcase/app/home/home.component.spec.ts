@@ -1,27 +1,27 @@
 /* tslint:disable:no-unused-variable */
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 
 import {HomeComponent} from './home.component';
 import {MockTranslatePipe} from '../../../testhelpers';
 
 describe('HomeComponent', () => {
-    let component: HomeComponent;
-    let fixture: ComponentFixture<HomeComponent>;
+	let component: HomeComponent;
+	let fixture: ComponentFixture<HomeComponent>;
 
-    beforeEach(async(() => {
-        TestBed.configureTestingModule({
-            declarations: [HomeComponent, MockTranslatePipe]
-        })
-            .compileComponents();
-    }));
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			declarations: [HomeComponent, MockTranslatePipe]
+		})
+		.compileComponents();
+	}));
 
-    beforeEach(() => {
-        fixture = TestBed.createComponent(HomeComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(HomeComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-    it('should create', () => {
-        expect(component).toBeTruthy();
-    });
+	it('should create', () => {
+		expect(component).toBeTruthy();
+	});
 });

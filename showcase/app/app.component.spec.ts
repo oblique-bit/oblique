@@ -8,30 +8,30 @@ import {MockTranslatePipe} from '../../testhelpers';
 import {TranslateService} from '@ngx-translate/core';
 
 describe('AppComponent', () => {
-    beforeEach(() => {
-        const mockNotificationService = jasmine.createSpyObj('NotificationService', ['success']);
-        const mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use']);
-        TestBed.configureTestingModule({
-            declarations: [
-                AppComponent,
-                MockTranslatePipe
-            ],
-            schemas: [
-                CUSTOM_ELEMENTS_SCHEMA
-            ],
-            providers: [
-                {provide: NotificationService, useValue: mockNotificationService},
-                {provide: TranslateService, useValue: mockTranslateService},
-                SpinnerService
-            ]
-        });
-        TestBed.compileComponents();
-    });
+	beforeEach(async(() => {
+		const mockNotificationService = jasmine.createSpyObj('NotificationService', ['success']);
+		const mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use']);
+		TestBed.configureTestingModule({
+			declarations: [
+				AppComponent,
+				MockTranslatePipe
+			],
+			schemas: [
+				CUSTOM_ELEMENTS_SCHEMA
+			],
+			providers: [
+				{provide: NotificationService, useValue: mockNotificationService},
+				{provide: TranslateService, useValue: mockTranslateService},
+				SpinnerService
+			]
+		});
+		TestBed.compileComponents();
+	}));
 
-    it('should create the app', async(() => {
-        const fixture = TestBed.createComponent(AppComponent);
-        const app = fixture.debugElement.componentInstance;
-        expect(app).toBeTruthy();
-    }));
+	it('should create the app', () => {
+		const fixture = TestBed.createComponent(AppComponent);
+		const app = fixture.debugElement.componentInstance;
+		expect(app).toBeTruthy();
+	});
 });
 

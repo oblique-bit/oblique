@@ -1,9 +1,11 @@
-$navigable-height: 36px;
+$navigable-height: 38px;
 
 .navigable {
 	@include animatable(background-color, $duration-fast);
 
 	.navigable-actions {
+		display: flex;
+		justify-content: flex-end;
 
 		&:not(.navigable-actions-fluid) {
 			min-height: $navigable-height;
@@ -27,7 +29,7 @@ $navigable-height: 36px;
 		}
 
 		.navigable-collapse {
-			display: inline-block;
+			display: inline-flex;
 		}
 
 		&.navigable-actions-center {
@@ -49,7 +51,7 @@ $navigable-height: 36px;
 	&.navigable-active {
 		.navigable-actions {
 			.navigable-reveal {
-				display: inline-block;
+				display: inline-flex;
 			}
 
 			.navigable-show {
@@ -62,12 +64,21 @@ $navigable-height: 36px;
 		}
 	}
 
-	&.navigable-active {
+	&.navigable-active,
+	&:focus {
 		z-index: 1;
 	}
 
 	&.navigable-highlight {
-		transition-duration: 10s;
+		background-color: $brand-warning-light !important;
+		transition-duration: 3.5s;
+	}
+
+	// Context-specific:
+	&.list-group-item {
+		.navigable-actions {
+			white-space: nowrap;
+		}
 	}
 
 	@media screen {

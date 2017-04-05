@@ -1,164 +1,207 @@
-import {Directive, Input, EventEmitter, Output, AfterViewInit, ContentChildren, QueryList} from '@angular/core';
-import {NavigableDirective, NavigableOnMoveEvent} from './navigable.directive';
-
+import {
+	Directive, Input, EventEmitter, Output, AfterViewInit, ContentChildren, QueryList
+} from '@angular/core';
+import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from './navigable.directive';
 
 /**
  * NavigableGroupDirective
  *
- * api:
- *      [(navigableGroup)]:any[]    An array which will contain the selected models
+ * API:
+ * - [(navigableGroup)]:any[]       The array containing all group items
+ * - [(navigableSelection)]:any[]            The array which will contain the selected models
  *
  */
 @Directive({
-    selector: '[navigableGroup]'
+	selector: '[navigableGroup]',
+	exportAs: 'navigableGroup'
 })
 export class NavigableGroupDirective implements AfterViewInit {
 
-    @ContentChildren(NavigableDirective) navigableDirectiveChildren: QueryList<NavigableDirective>;
+	@Input('navigableGroup')
+	items: any[];
 
-    set navigableSelection(val: any[]) {
-        this.navigableSelectionValue = val;
-        this.navigableSelectionChange.emit(this.navigableSelectionValue);
-    }
+	@ContentChildren(NavigableDirective)
+	navigables: QueryList<NavigableDirective>;
 
-    //TODO: consider this:
-    //Note: this would probably not be required, because we do not change the reference
-    //      but it can help for future two-way databindings
-    @Output('navigableGroupChange') navigableSelectionChange = new EventEmitter();
+	@Input('navigableSelection')
+	get selection() {
+		return this.selectionValue;
+	}
 
-    @Input('navigableGroup')
-    get navigableSelection() {
-        return this.navigableSelectionValue;
-    }
+	set selection(val: any[]) {
+		this.selectionValue = val;
+		this.selectionOnChange.emit(this.selectionValue);
+	}
 
-    /**
-     * Used for Two-Way databinding:
-     *      https://blog.thoughtram.io/angular/2016/10/13/two-way-data-binding-in-angular-2.html
-     */
-    private navigableSelectionValue: any[];
+	@Output()
+	selectionOnChange = new EventEmitter();
 
-    private arrows = {
-        up: 38,
-        down: 40
-    };
+	private selectionValue: any[];
 
-    ngAfterViewInit(): void {
-        this.navigableDirectiveChildren.forEach(child => {
-            child.navigableOnMove.subscribe((event: NavigableOnMoveEvent) => {
-                this.handleChildMove(child, event);
-            });
+	ngAfterViewInit(): void {
+		this.navigables.forEach(navigable => {
 
-            child.navigableOnMouseDown.subscribe((event: MouseEvent) => {
-                this.handleChildMouseDown(child, event);
-            });
+			navigable.navigableOnActivation.subscribe(() => {
+				this.addToSelection(navigable);
+			});
 
-            child.navigableOnFocus.subscribe(() => {
-                this.handleChildFocus(child);
-            });
-        });
-    }
+			navigable.navigableOnChange.subscribe(($event: NavigableOnChangeEvent) => {
+				const index = this.indexOf(navigable);
+				let next: NavigableDirective = null;
 
-    private handleChildMove(child: NavigableDirective, event: NavigableOnMoveEvent) {
-        const index = this.getIndexOfChild(child);
-        let next: NavigableDirective = null;
+				if ($event.keyCode === NavigableDirective.KEYS.UP) {
+					next = this.fromIndex(Math.max(index - 1, 0));
+				} else if ($event.keyCode === NavigableDirective.KEYS.DOWN) {
+					next = this.fromIndex(Math.min(index + 1, this.navigables.length));
+				}
 
-        if (event.keyCode === this.arrows.up) {
-            next = this.getChildAtIndex(Math.max(index - 1, 0));
-        } else if (event.keyCode === this.arrows.down) {
-            next = this.getChildAtIndex(Math.min(index + 1, this.navigableDirectiveChildren.length));
-        }
+				if (next) {
+					if (next.selected) {
+						this.deselect(navigable);
+					}
 
-        if (next) {
-            if (next.selected) {
-                this.unselectChild(child);
-            }
+					this.activate(next, $event.combine);
+					next.focus();
+				}
+			});
 
-            this.activateChild(next, event.combine);
+			navigable.navigableOnMouseDown.subscribe(($event: MouseEvent) => {
+				if ($event && $event.shiftKey) {
+					this.selectChildRange(navigable);
+				} else if ($event && $event.ctrlKey) {
+					if (navigable.selected) {
+						this.removeFromSelection(navigable);
+					} else {
+						this.addToSelection(navigable);
+					}
+				} else {
+					this.navigables.forEach(child => {
+						if (child !== navigable) {
+							this.deactivate(child, true);
+						}
+					});
 
-            next.focus();
-        }
-    }
+					this.addToSelection(navigable);
+				}
 
-    private handleChildMouseDown(child, event: MouseEvent) {
-        if (event && event.ctrlKey) {
-            if (!child.selected) {
-                this.activateChild(child, true);
-            } else {
-                this.deactivateChild(child);
-                this.unselectChild(child);
-                event.preventDefault();
-            }
-        } else if (event && event.shiftKey) {
-            event.preventDefault();
-            this.selectChildRange(child);
-        } else {
-            this.activateChild(child);
-        }
-    }
+				// In any case, deactivate current active navigable item:
+				this.deactivate(this.getActive());
+			});
 
-    private handleChildFocus(child: NavigableDirective) {
-        if (!child.activated) {
-            this.activateChild(child);
-        }
-    }
+			navigable.navigableOnFocus.subscribe(() => {
+				if (!navigable.active) {
+					// When a child is about to receive focus, deactivate the other items:
+					this.navigables.forEach(child => child !== navigable && this.deactivate(child, true)); //TODO: take a look at this
+					this.addToSelection(navigable);
+				}
+			});
 
-    private activateChild(child: NavigableDirective, combine?: boolean) {
-        this.navigableDirectiveChildren.forEach(child => this.deactivateChild(child)); //TODO: take a look at this
-        child.activated = true;
-        this.selectChild(child, combine);
-    }
+			navigable.navigableOnMove.subscribe(($event: NavigableOnMoveEvent) => {
+				if (!$event.prevented) {
+					let from = this.indexOf(navigable);
 
-    private deactivateChild(child: NavigableDirective) {
-        child.activated = false;
-    }
+					if ($event.keyCode === NavigableDirective.KEYS.UP) {
+						let to = from - 1;
+						if (to >= 0) {
+							this.items.splice(to, 0, this.items.splice(from, 1)[0]);
+						}
+					} else if ($event.keyCode === NavigableDirective.KEYS.DOWN) {
+						let to = from + 1;
+						if (to < this.items.length) {
+							this.items.splice(to, 0, this.items.splice(from, 1)[0]);
+						}
+					}
+				}
+			});
+		});
+	}
 
-    private selectChild(child: NavigableDirective, combine?: boolean) {
-        if (!combine) {
-            this.navigableDirectiveChildren.forEach(child => this.unselectChild(child));
-        }
-        child.selected = true;
-        this.selectionAddChild(child);
-    }
+	// Public API ---------------------
+	public add(model: any) {
+		let navigable = this.navigables.find((navigable: NavigableDirective) => {
+			return navigable.model === model;
+		});
 
-    private unselectChild(child: NavigableDirective) {
-        child.selected = false;
-        this.selectionRemoveChild(child);
-    }
+		if (navigable) {
+			this.select(navigable, true);
+		}
+	}
 
-    private selectChildRange(targetChild: NavigableDirective) {
-        const from = this.getIndexOfChild(this.getActivatedChild());
-        const to = this.getIndexOfChild(targetChild);
-        const slice = this.navigableDirectiveChildren.toArray().slice(Math.min(from, to), Math.max(from, to) + 1);
+	public remove(model: any) {
+		let navigable = this.navigables.find((navigable: NavigableDirective) => {
+			return navigable.model === model;
+		});
 
-        this.activateChild(targetChild);
+		if (navigable) {
+			this.deactivate(navigable, true);
+		}
+	}
 
-        slice.forEach(child => this.selectChild(child, true));
-        targetChild.focus();
-    }
+	// Private API ---------------------
 
-    private selectionAddChild(child) {
-        if (!this.selectionContainsChild(child)) {
-            this.navigableSelection.push(child.model);
-        }
-    }
+	private activate(navigable: NavigableDirective, combine?: boolean) {
+		this.navigables.forEach(child => child !== navigable && this.deactivate(child)); //TODO: take a look at this
 
-    private selectionRemoveChild(child) {
-        this.navigableSelection.splice(this.navigableSelection.indexOf(child.model), 1);
-    }
+		navigable.active = true;
+		this.select(navigable, combine);
+	}
 
-    private selectionContainsChild(child) {
-        return this.navigableSelection.indexOf(child.model) > -1;
-    }
+	private deactivate(navigable: NavigableDirective, unselect?: boolean) {
+		if (navigable) {
+			navigable.active = false;
 
-    private getActivatedChild() {
-        return this.navigableDirectiveChildren.toArray().filter(child => child.activated)[0];
-    }
+			if (unselect) {
+				this.deselect(navigable);
+			}
+		}
+	}
 
-    private getChildAtIndex(index: number): NavigableDirective {
-        return this.navigableDirectiveChildren.toArray()[index];
-    }
+	private select(navigable: NavigableDirective, combine?: boolean) {
+		if (!combine) {
+			this.navigables.forEach(child => this.deselect(child));
+		}
+		navigable.selected = true;
+		this.addToSelection(navigable);
+	}
 
-    private getIndexOfChild(child: NavigableDirective): number {
-        return this.navigableDirectiveChildren.toArray().indexOf(child);
-    }
+	private deselect(navigable: NavigableDirective) {
+		navigable.selected = false;
+		this.removeFromSelection(navigable);
+	}
+
+	private selectChildRange(target: NavigableDirective, combine?: boolean) {
+		const from = this.indexOf(this.getActive());
+		if (!combine) {
+			this.navigables.forEach(child => this.deselect(child));
+		}
+		const to = this.indexOf(target);
+		const selection = this.navigables.toArray().slice(Math.min(from, to), Math.max(from, to) + 1);
+		selection.forEach(child => child !== target && this.select(child, true));
+	}
+
+	private addToSelection(navigable) {
+		if (!this.inSelection(navigable)) {
+			this.selection.push(navigable.model);
+		}
+	}
+
+	private removeFromSelection(navigable) {
+		this.selection.splice(this.selection.indexOf(navigable.model), 1);
+	}
+
+	private inSelection(navigable) {
+		return this.selection.indexOf(navigable.model) > -1;
+	}
+
+	private getActive() {
+		return this.navigables.toArray().filter(child => child.active)[0];
+	}
+
+	private fromIndex(index: number): NavigableDirective {
+		return this.navigables.toArray()[index];
+	}
+
+	private indexOf(child: NavigableDirective): number {
+		return this.navigables.toArray().indexOf(child);
+	}
 }

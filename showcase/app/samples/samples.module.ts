@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {NavigableComponent} from './navigable/navigable.component';
+import {NavigableSampleComponent} from './navigable/navigable-sample.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MultiselectDropdownModule} from 'ngx-multiselect-dropdown';
@@ -22,7 +22,7 @@ import {MultiselectSampleComponent} from './multiselect/multiselect-sample.compo
         MultiselectDropdownModule,
         NgbModule
     ],
-    declarations: [NavigableComponent, SchemaValidationComponent, DatepickerComponent, MultiselectSampleComponent]
+    declarations: [NavigableSampleComponent, SchemaValidationComponent, DatepickerComponent, MultiselectSampleComponent]
 })
 export class SamplesModule {
 }

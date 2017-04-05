@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-declare const jQuery: any; // TODO: find a better way to access DOM elements
+import * as $ from 'jquery';
 
 @Component({
     //TODO: discuss prefix
@@ -12,7 +12,7 @@ declare const jQuery: any; // TODO: find a better way to access DOM elements
 export class TopControlComponent {
     public scrollTop(event) {
         event.preventDefault();
-        const $body = jQuery('html, body');
+        const $body = $('html, body');
         $body.animate({
             scrollTop: $body.offset().top
         }, 300);

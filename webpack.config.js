@@ -29,10 +29,7 @@ module.exports = {
         "modules": [
            // "./node_modules",
 	    nodeModules
-        ],
-        "alias": {
-            "jquery": "jquery/src/jquery"
-        }
+        ]
     },
     "resolveLoader": {
         "modules": [
@@ -51,10 +48,10 @@ module.exports = {
             "./showcase/sass/styles.scss"
         ],
         "vendor": [
+            "./node_modules/oblique-ui/dist/js/oblique-ui.js",
             "./node_modules/bootstrap/dist/js/bootstrap.js",
-            "./node_modules/waypoints/lib/jquery.waypoints.js", // FIXME: decouple ObliqueUI from Waypoints
-            "./node_modules/oblique-ui/dist/js/oblique-ui.js"
-            //"./node_modules/oblique-ui/dist/js/oblique-ui.bundle.js" // FIXME: using ObliqueUI JS bundle will import jQuery twice
+            //"./node_modules/waypoints/lib/jquery.waypoints.js", // FIXME: decouple ObliqueUI from Waypoints
+            //"./node_modules/oblique-ui/dist/js/oblique-ui.bundle.js", // JQuery is already loaded with the ProvidePlugin, no need for the bundle
         ]
     },
     "output": {

@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 
@@ -10,61 +10,64 @@ import {MockTranslatePipe} from '../../testhelpers';
 
 //TODO: needs more tests
 describe('NotificationComponent', () => {
-    let component: NotificationComponent;
-    let fixture: ComponentFixture<NotificationComponent>;
-    let mockNotificationService;
-    const message = 'message';
-    const title = 'title';
+	let component: NotificationComponent;
+	let fixture: ComponentFixture<NotificationComponent>;
+	let mockNotificationService;
+	const message = 'message';
+	const title = 'title';
 
-    beforeEach(async(() => {
-        TestBed.configureTestingModule({
-            declarations: [NotificationComponent, MockTranslatePipe],
-            imports: [CommonModule],
-            providers: [{provide: NotificationService, useValue: {notifications: [], remove: jasmine.createSpy('remove')}}]
-        })
-            .compileComponents();
-    }));
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			declarations: [NotificationComponent, MockTranslatePipe],
+			imports: [CommonModule],
+			providers: [{
+				provide: NotificationService,
+				useValue: {notifications: [], remove: jasmine.createSpy('remove')}
+			}]
+		})
+			.compileComponents();
+	}));
 
-    beforeEach(() => {
-        fixture = TestBed.createComponent(NotificationComponent);
-        component = fixture.componentInstance;
-        mockNotificationService = fixture.debugElement.injector.get(NotificationService);
-        fixture.detectChanges();
-    });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(NotificationComponent);
+		component = fixture.componentInstance;
+		mockNotificationService = fixture.debugElement.injector.get(NotificationService);
+		fixture.detectChanges();
+	});
 
-    it('should create', () => {
-        expect(component).toBeTruthy();
-    });
+	it('should create', () => {
+		expect(component).toBeTruthy();
+	});
 
-    describe('should show messages', () => {
-        let htmlNotifications;
+	describe('should show messages', () => {
+		let htmlNotifications;
 
-        beforeEach(() => {
-            mockNotificationService.notifications.push(new Notification(1, NotificationTypes.DEFAULT, message, title, false));
-            mockNotificationService.notifications.push(new Notification(2, NotificationTypes.INFO, message, title, false));
-            fixture.detectChanges();
+		beforeEach(() => {
+			mockNotificationService.notifications.push(new Notification(1, NotificationTypes.DEFAULT, message, title, false));
+			mockNotificationService.notifications.push(new Notification(2, NotificationTypes.INFO, message, title, false));
+			fixture.detectChanges();
 
-            //grabs all alerts of the components template
-            htmlNotifications = fixture.debugElement.queryAll(By.css('.alert'));
-        });
+			//grabs all alerts of the components template
+			htmlNotifications = fixture.debugElement.queryAll(By.css('.alert'));
+		});
 
-        it('', () => {
-            expect(htmlNotifications.length).toBe(2);
-        });
+		it('', () => {
+			expect(htmlNotifications.length).toBe(2);
+		});
 
-        it('with matching css classes', () => {
-            expect(htmlNotifications[0].classes).toEqual(jasmine.objectContaining({alert: true}));
-            expect(htmlNotifications[0].classes).not.toEqual(jasmine.objectContaining({'alert-info': true}));
-        });
-    });
+		it('with matching css classes', () => {
+			expect(htmlNotifications[0].classes).toEqual(jasmine.objectContaining({alert: true}));
+			expect(htmlNotifications[0].classes).not.toEqual(jasmine.objectContaining({'alert-info': true}));
+		});
+	});
 
-    it('should call NotificationService.remove() on button click', () => {
-        mockNotificationService.notifications.push(new Notification(1, NotificationTypes.DEFAULT, message, title, true));
-        fixture.detectChanges();
+	it('should call NotificationService.remove() on button click', () => {
+		mockNotificationService.notifications.push(new Notification(1, NotificationTypes.DEFAULT, message, title, true));
+		fixture.detectChanges();
 
-        const button = fixture.debugElement.query(By.css('button'));
-        button.triggerEventHandler('click', null);
+		const button = fixture.debugElement.query(By.css('button'));
+		button.triggerEventHandler('click', null);
 
-        expect(mockNotificationService.remove).toHaveBeenCalledWith(1);
-    });
+		expect(mockNotificationService.remove).toHaveBeenCalledWith(1);
+	});
 });
