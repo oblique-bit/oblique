@@ -7,7 +7,7 @@ angular
 	.config(($stateProvider) => {
 		$stateProvider.state('samples.validation.unsavedChanges', {
 			url: '/unsaved-changes',
-			templateUrl: 'app/states/samples/validation/unsaved-changes/unsaved-changes-sample.tpl.html',
+			templateUrl: 'app/states/samples/validation/unsaved-changes/unsaved-changes-sample.component.html',
 			controller: 'unsavedChangesSampleController',
 			controllerAs: 'ctrl',
 			data: {
