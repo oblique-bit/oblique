@@ -3,21 +3,22 @@
     "application": {
       "shortName": "OR",
       "longName": "ObliqueReactive",
-      "description": "Reactive front-end framework for your business web application.",
+      "description": "[de] Reactive front-end framework for your business web application.",
       "locales": {
         "de": "Deutsch",
         "fr": "Français",
         "it": "Italiano",
         "en": "English"
-      }
+      },
+      "loading" : "[de] Loading..."
     },
-    "states": {
+    "routes": {
       "home": {
         "title": "Startseite",
-        "description": "Description for the Home state page."
+        "description": "[de] Description for the Home state page."
       },
       "auth": {
-        "title": "Sign in",
+        "title": "[de] Sign in",
         "login": {
           "title": "Login",
           "rememberme": "Benutzer speichern",

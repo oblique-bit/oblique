@@ -3,6 +3,7 @@
 }
 
 .list-group-item {
+	display: flex;
 	margin-bottom: -2px;
 
 	&.disabled {

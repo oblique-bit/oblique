@@ -7,7 +7,10 @@ import {SchemaValidationComponent} from './schema-validation/schema-validation.c
 
 const samplesRoutes: Routes = [
 	{path: 'datepicker', component: DatepickerComponent},
-	{path: 'navigable', component: NavigableSampleComponent},
+	{path: 'navigable', component: NavigableSampleComponent, data: {
+		title: 'Navigable Sample',
+		description: 'Description for the Navigable Sample'
+	}},
 	{path: 'schema-validation', component: SchemaValidationComponent}
 ];
 
