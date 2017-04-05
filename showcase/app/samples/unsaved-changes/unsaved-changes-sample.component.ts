@@ -6,8 +6,15 @@ import {Component} from '@angular/core';
 	// styleUrls: ['./unsaved-changes.component.css']
 })
 export class UnsavedChangesComponent {
+	tabs = {
+		one: {},
+		two: {},
+		three: {}
+	};
 
-
+	save(form) {
+		console.log(form);
+	}
 }
 
 
