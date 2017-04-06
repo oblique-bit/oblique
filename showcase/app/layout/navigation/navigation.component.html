@@ -1,80 +1,80 @@
 <ul id="nav-global" class="nav navbar-nav navbar-primary navbar-fw navigation-scrollable-content" role="menu">
 	<li class="nav-item" role="presentation">
 		<a class="nav-link" href="" [routerLink]="['/home']" routerLinkActive="active"
-		   role="menuitem" data-toggle="header navigation">{{'i18n.states.home.title' | translate}}</a>
+		   role="menuitem" data-toggle="header navigation">{{'i18n.routes.home.title' | translate}}</a>
 	</li>
 	<li class="nav-item" role="presentation">
 		<a class="nav-link" href="" role="menuitem" aria-expanded="false" aria-haspopup="true"
 		   data-toggle="navigation" ng-class="{active: ('samples' | includedByState)}">
 			<span class="toggle"></span>
-			<span id="navigation-samples-title">{{'i18n.states.samples.title' | translate}}</span>
+			<span id="navigation-samples-title">{{'i18n.routes.samples.title' | translate}}</span>
 		</a>
 		<div class="navigation-menu" role="menu" aria-hidden="true" aria-labelledby="navigation-samples-title">
 			<ul class="nav nav-hover">
 				<li class="nav-item nav-header" role="presentation">
 					<a href="" class="nav-link nav-header-title navigation-back" data-toggle="navigation">
 						<span class="toggle"></span>
-						<span>{{'i18n.states.samples.title' | translate}}</span>
+						<span>{{'i18n.routes.samples.title' | translate}}</span>
 					</a>
 				</li>
 				<li class="nav-item" role="presentation">
 					<a class="nav-link" href=""
 					   [routerLink]="['/datepicker']" routerLinkActive="active"
-					   role="menuitem" data-toggle="header navigation">{{'i18n.states.samples.datepicker.title' | translate}}</a>
+					   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.datepicker.title' | translate}}</a>
 				</li>
 				<li class="nav-item" role="presentation">
 					<a class="nav-link" href=""
 					   [routerLink]="['/samples.multiselect']" routerLinkActive="active"
-					   role="menuitem" data-toggle="header navigation">{{'i18n.states.samples.multiselect.title' | translate}}</a>
+					   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.multiselect.title' | translate}}</a>
 				</li>
 				<li class="nav-item" role="presentation">
 					<a class="nav-link" href=""
 					   [routerLink]="['/navigable']" routerLinkActive="active"
-					   role="menuitem" data-toggle="header navigation">{{'i18n.states.samples.navigable.title' | translate}}</a>
+					   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.navigable.title' | translate}}</a>
 				</li>
 				<li class="nav-item" role="presentation">
 					<a class="nav-link" href=""
 					   [routerLink]="['/samples.navigator.2.2.1']" routerLinkActive="active"
-					   role="menuitem" data-toggle="header navigation">{{'i18n.states.samples.navigator.title' | translate}}</a>
+					   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.navigator.title' | translate}}</a>
 				</li>
 				<li class="nav-item" role="presentation">
 					<a class="nav-link" href=""
 					   [routerLink]="['/samples.typeahead']" routerLinkActive="active"
-					   role="menuitem" data-toggle="header navigation">{{'i18n.states.samples.typeahead.title' | translate}}</a>
+					   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.typeahead.title' | translate}}</a>
 				</li>
 				<li class="nav-item" role="presentation">
 					<a class="nav-link" href="" uib-tooltip="Aka infinite scrolling"
 					   [routerLink]="['/samples.uiScroll']" routerLinkActive="active"
-					   role="menuitem" data-toggle="header navigation">{{'i18n.states.samples.uiScroll.title' | translate}}</a>
+					   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.uiScroll.title' | translate}}</a>
 				</li>
 				<li class="nav-item navigation-section" role="presentation">
 					<a class="nav-link" href="" role="menuitem" aria-expanded="false" aria-haspopup="true"
 					   data-toggle="navigation" ng-class="{active: ('validation' | includedByState)}">
 						<span class="toggle"></span>
-						<span id="navigation-validation-title">{{'i18n.states.samples.validation.title' | translate}}</span>
+						<span id="navigation-validation-title">{{'i18n.routes.samples.validation.title' | translate}}</span>
 					</a>
 					<div class="nav navigation-menu" role="menu" aria-hidden="true" aria-labelledby="navigation-validation-title">
 						<ul class="nav nav-hover">
 							<li class="nav-item nav-header hidden-lg-up" role="presentation">
 								<a href="" class="nav-link nav-header-title navigation-back" data-toggle="navigation">
 									<span class="toggle"></span>
-									<span>{{'i18n.states.samples.validation.title' | translate}}</span>
+									<span>{{'i18n.routes.samples.validation.title' | translate}}</span>
 								</a>
 							</li>
 							<li class="nav-item" role="presentation">
 								<a class="nav-link" href=""
 								   [routerLink]="['/samples.validation.formControl']" routerLinkActive="active"
-								   role="menuitem" data-toggle="header navigation">{{'i18n.states.samples.validation.formControl.title' | translate}}</a>
+								   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.validation.formControl.title' | translate}}</a>
 							</li>
 							<li class="nav-item" role="presentation">
 								<a class="nav-link" href=""
 								   [routerLink]="['/schema-validation']" routerLinkActive="active"
-								   role="menuitem" data-toggle="header navigation">{{'i18n.states.samples.validation.schemaValidation.title' | translate}}</a>
+								   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.validation.schemaValidation.title' | translate}}</a>
 							</li>
 							<li class="nav-item" role="presentation">
 								<a class="nav-link" href=""
 								   [routerLink]="['/samples.validation.unsavedChanges']" routerLinkActive="active"
-								   role="menuitem" data-toggle="header navigation">{{'i18n.states.samples.validation.unsavedChanges.title' | translate}}</a>
+								   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.validation.unsavedChanges.title' | translate}}</a>
 							</li>
 						</ul>
 					</div>
@@ -85,16 +85,16 @@
 	<li class="nav-item" role="presentation" ng-if="appController.isAuthenticated()">
 		<a class="nav-link" href=""
 		   [routerLink]="['/movies']" routerLinkActive="active"
-		   role="menuitem" data-toggle="header navigation">{{'i18n.states.movies.title' | translate}}</a>
+		   role="menuitem" data-toggle="header navigation">{{'i18n.routes.movies.title' | translate}}</a>
 	</li>
 	<li class="nav-item" role="presentation">
 		<a class="nav-link" href=""
 		   [routerLink]="['/support']" routerLinkActive="active"
-		   role="menuitem" data-toggle="header navigation">{{'i18n.states.support.title' | translate}}</a>
+		   role="menuitem" data-toggle="header navigation">{{'i18n.routes.support.title' | translate}}</a>
 	</li>
 	<li class="nav-item" role="presentation" ng-if="!appController.isAuthenticated()">
 		<a class="nav-link" href=""
 		   [routerLink]="['/auth']" routerLinkActive="active"
-		   role="menuitem" data-toggle="header navigation">{{'i18n.states.auth.title' | translate}}</a>
+		   role="menuitem" data-toggle="header navigation">{{'i18n.routes.auth.title' | translate}}</a>
 	</li>
 </ul>

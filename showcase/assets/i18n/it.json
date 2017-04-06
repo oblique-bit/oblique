@@ -3,39 +3,40 @@
     "application": {
       "shortName": "OR",
       "longName": "ObliqueReactive",
-      "description": "Reactive front-end framework for your business web application.",
+      "description": "[it] Reactive front-end framework for your business web application.",
       "locales": {
         "de": "Deutsch",
         "fr": "Français",
         "it": "Italiano",
         "en": "English"
-      }
+      },
+      "loading" : "Loading..."
     },
-    "states": {
+    "routes": {
       "home": {
-        "title": "Home",
-        "description": "Description for the Home state page."
+        "title": "[it] Home",
+        "description": "[it] Description for the Home state page."
       },
       "auth": {
-        "title": "Sign in",
+        "title": "[it] Sign in",
         "login": {
-          "title": "Login",
-          "rememberme": "Remember me?",
-          "submit": "Log in",
-          "password-lost": "Forgot password?",
-          "error": "We have been unable to authenticate you, please check your credentials!",
-          "success": "You have been successfully authenticated."
+          "title": "[it] Login",
+          "rememberme": "[it] Remember me?",
+          "submit": "[it] Log in",
+          "password-lost": "[it] Forgot password?",
+          "error": "[it] We have been unable to authenticate you, please check your credentials!",
+          "success": "[it] You have been successfully authenticated."
         },
         "register": {
-          "title": "New to {{title}}? Sign up!",
-          "submit": "Register"
+          "title": "[it] New to {{title}}? Sign up!",
+          "submit": "[it] Register"
         }
       },
       "movies": {
-        "title": "Movies"
+        "title": "[it] Movies"
       },
       "samples": {
-        "title": "Samples",
+        "title": "[it] Samples",
         "datepicker": {
           "title": "Datepicker"
         },
@@ -68,27 +69,27 @@
         }
       },
       "support": {
-        "title": "Support"
+        "title": "[it] Support"
       },
       "admin": {
-        "title": "Amministrazione"
+        "title": "Administrazione"
       }
     },
     "common": {
-      "yes": "Yes",
-      "no": "No",
-      "save": "Save",
-      "cancel": "Cancel",
-      "delete": "Delete",
-      "select": "Select please.",
-      "actions": "Actions",
-      "action": "Action",
+      "yes": "[it] Yes",
+      "no": "[it] No",
+      "save": "[it] Save",
+      "cancel": "[it] Cancel",
+      "delete": "[it] Delete",
+      "select": "[it] Select please.",
+      "actions": "[it] Actions",
+      "action": "[it] Action",
       "pager": {
-        "pagesLengthBefore": "Displaying",
-        "pagesLengthAfter": "Results per page",
-        "page": "Page",
-        "of": "from",
-        "hits": "Hits"
+        "pagesLengthBefore": "[it] Displaying",
+        "pagesLengthAfter": "[it] Results per page",
+        "page": "[it] Page",
+        "of": "[it] from",
+        "hits": "[it] Hits"
       },
       "date": {
         "format": {
@@ -103,7 +104,7 @@
       "password": "Password"
     },
     "error": {
-      "general": "it: Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
+      "general": "[it] Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
       "http": {
         "status": {
           "0": "Service Unavailable",
@@ -116,11 +117,11 @@
         }
       },
       "other": {
-        "timeout": "Server hat nicht zu lange reagiert. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
-        "upload": "Es ist ein Fehler bei hochladen aufgetrten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support"
+        "timeout": "[it] Server hat nicht zu lange reagiert. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
+        "upload": "[it] Es ist ein Fehler bei hochladen aufgetrten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support"
       },
       "business": {
-        "ObjectOptimisticLockingFailureException": "Daten können nicht gespeichert werden, da sie auf dem Server geändert werden. Form wurde mit aktuellen Daten neu geladen."
+        "ObjectOptimisticLockingFailureException": "[it] Daten können nicht gespeichert werden, da sie auf dem Server geändert werden. Form wurde mit aktuellen Daten neu geladen."
       }
     },
     "notification": {
