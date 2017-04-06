@@ -5,7 +5,6 @@ import {HttpModule, Http} from '@angular/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {MultiselectDropdownModule} from 'ngx-multiselect-dropdown';
 
 // ObliqueReactive:
 import {ObliqueModule, SpinnerComponent, TopControlComponent} from '../../src';
@@ -39,7 +38,6 @@ export function createTranslateLoader(http: Http) {
 		FormsModule,
 		HttpModule,
 		ObliqueModule.forRoot(),
-		MultiselectDropdownModule.forRoot(),
 		NgbModule.forRoot(),
 		TranslateModule.forRoot({
 			loader: {

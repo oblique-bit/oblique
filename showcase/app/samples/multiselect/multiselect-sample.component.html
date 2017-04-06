@@ -1,45 +1,49 @@
 <h2 class="page-header">{{'i18n.states.samples.multiselect.title' | translate}}</h2>
 <p class="lead">
-  Multiselectable options based on <a href="http://dotansimha.github.io/angularjs-dropdown-multiselect/">angularjs-dropdown-multiselect</a>.
+	Multiselectable options based on <a href="http://dotansimha.github.io/angularjs-dropdown-multiselect/">angularjs-dropdown-multiselect</a>.
 </p>
 <div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Preview</h3>
-  </div>
-  <div class="panel-body">
-    <h3>Dropdown</h3>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="row">
-          <label class="col-md-4">Items</label>
-          <div class="col-md-8">
-            <multiselect-dropdown [options]="states">
-            </multiselect-dropdown>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <!--<pre uib-tooltip="Dropdown model data">{{ctrl.dropdown.model | json}}</pre>-->
-      </div>
-    </div>
+	<div class="panel-heading">
+		<h3 class="panel-title">Preview</h3>
+	</div>
+	<div class="panel-body">
+		<h3>Dropdown</h3>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="row">
+					<label class="col-md-4">Items</label>
+					<div class="col-md-8">
+						<multiselect [options]="states"
+									 [(ngModel)]="model"
+									 [settings]="multiselectSettings">
+						</multiselect>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<pre>{{model | json}}</pre>
+			</div>
+		</div>
 
-    <!--<h3>Dropdup</h3>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="row">
-          <label class="col-md-4">Items</label>
-          <div class="col-md-8">
-            <multiselect-dropdown>
-            </multiselect-dropdown>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        &lt;!&ndash;<pre uib-tooltip="Dropdup model data">{{ctrl.dropup.model | json}}</pre>&ndash;&gt;
+		<div class="row">
+			<div class="col-md-6">
+				<div class="row">
+					<label class="col-md-4">Items</label>
+					<div class="col-md-8">
+						<multiselect [options]="statesComplex"
+									 [(ngModel)]="complexModel"
+									 [settings]="multiselectSettings"
+									 [labelFormatter]="complexStateLabelFormatter">
+						</multiselect>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<pre>{{complexModel | json}}</pre>
 
-      </div>
-    </div>-->
-  </div>
+			</div>
+		</div>
+	</div>
 </div>
 
 

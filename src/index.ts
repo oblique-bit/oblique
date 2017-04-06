@@ -1,6 +1,7 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 
 import {DatepickerModule} from './datepicker/datepicker.module';
+import {MultiselectModule} from './multiselect';
 import {NavigableModule} from './navigable';
 import {NotificationModule} from './notification';
 import {SchemaValidationModule} from './schema-validation';
@@ -9,6 +10,7 @@ import {TopControlModule} from './top-control';
 import {UnsavedChangesModule} from './unsaved-changes';
 
 export * from './datepicker';
+export * from './multiselect';
 export * from './navigable';
 export * from './notification';
 export * from './schema-validation';
@@ -23,7 +25,8 @@ const OBLIQUE_MODULES = [
     SpinnerModule,
     SchemaValidationModule,
     TopControlModule,
-    UnsavedChangesModule
+    UnsavedChangesModule,
+	MultiselectModule
 ];
 
 @NgModule({
@@ -34,7 +37,8 @@ const OBLIQUE_MODULES = [
         SchemaValidationModule.forRoot(),
         SpinnerModule.forRoot(),
         TopControlModule.forRoot(),
-        UnsavedChangesModule.forRoot()
+        UnsavedChangesModule.forRoot(),
+		MultiselectModule.forRoot()
     ],
     exports: OBLIQUE_MODULES
 })

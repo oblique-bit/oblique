@@ -4,7 +4,6 @@ import {FormsModule} from '@angular/forms';
 import {NavigableSampleComponent} from './navigable/navigable-sample.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {MultiselectDropdownModule} from 'ngx-multiselect-dropdown';
 
 import {ObliqueModule} from '../../../src/index';
 import {SchemaValidationComponent} from './schema-validation/schema-validation.component';
@@ -19,7 +18,6 @@ import {MultiselectSampleComponent} from './multiselect/multiselect-sample.compo
         TranslateModule,
         FormsModule,
         SamplesRoutingModule,
-        MultiselectDropdownModule,
         NgbModule
     ],
     declarations: [NavigableSampleComponent, SchemaValidationComponent, DatepickerComponent, MultiselectSampleComponent]
