@@ -6,7 +6,7 @@ module.exports = {
 		version:        '',
 		module:         'oblique',
 		title:          'ObliqueReactive',
-		description:    'Reactive front-end framework for your business web application. Powered by ObliqueUI and AngularJS.',
+		description:    'Reactive front-end framework for your business web application. Powered by ObliqueUI and Angular.',
 		organization: {
 			name:       'Federal Office of Information Technology, Systems and Telecommunication FOITT',
 			url:        'http://www.bit.admin.ch',
@@ -23,7 +23,7 @@ module.exports = {
 				timeout: 10000
 			},
 			format: {
-				date: 'd!.M!.yyyy', // Default date format for parsing
+				date:   'd!.M!.yyyy', // Default date format for parsing
 				dateAlt: ['d!.M!.yy'] // Alternative date formats for the datePicker
 			}
 		},

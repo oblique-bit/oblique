@@ -1,8 +1,8 @@
 module.exports = {
 	entry: './src/index.ts',
 	output: {
-		filename: './dist/bundles/oblique2-reactive.js',
-		library: 'oblique2-reactive',
+		filename: './dist/bundles/oblique-reactive.js',
+		library: 'oblique-reactive',
 		libraryTarget: 'umd'
 	},
 	devtool: 'source-map',

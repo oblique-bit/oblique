@@ -10,6 +10,6 @@ import {NotificationService} from '../../src';
 export class AppComponent {
 
 	constructor(notificationService: NotificationService) {
-		notificationService.success('Welcome to Oblique2-Reactive'); // TODO: remove this
+		notificationService.success('Welcome to ObliqueReactive'); // TODO: remove this
 	}
 }

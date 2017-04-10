@@ -236,19 +236,19 @@ module.exports = {
 				"postcss": [
 					autoprefixer(),
 					postcssUrl({
-						"url": (URL) => {
+						"url": (config) => {
 							// Only convert root relative URLs, which CSS-Loader won't process into require().
-							if (!URL.startsWith('/') || URL.startsWith('//')) {
-								return URL;
+							if (!config.url.startsWith('/') || config.url.startsWith('//')) {
+								return config;
 							}
 							if (deployUrl.match(/:\/\//)) {
 								// If deployUrl contains a scheme, ignore baseHref use deployUrl as is.
-								return `${deployUrl.replace(/\/$/, '')}${URL}`;
+								return `${deployUrl.replace(/\/$/, '')}${config.url}`;
 							}
 							else {
 								// Join together base-href, deploy-url and the original URL.
 								// Also dedupe multiple slashes into single ones.
-								return `/${baseHref}/${deployUrl}/${URL}`.replace(/\/\/+/g, '/');
+								return `/${baseHref}/${deployUrl}/${config.url}`.replace(/\/\/+/g, '/');
 							}
 						}
 					})

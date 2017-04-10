@@ -122,7 +122,7 @@
 			'license', 'bugs', 'publishConfig'
 		].forEach(field => output[field] = meta[field]);
 
-		output['main'] = 'bundles/oblique2-reactive.js';
+		output['main'] = 'bundles/oblique-reactive.js';
 		output['module'] = 'index.js';
 		output['typings'] = 'index.d.ts';
 
