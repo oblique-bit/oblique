@@ -30,4 +30,7 @@ export class LayoutControlsComponent {
 		event.preventDefault();
 		this.translate.use(lang);
 	}
+
+	public logout() {
+	}
 }
