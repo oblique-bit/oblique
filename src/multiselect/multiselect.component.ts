@@ -168,6 +168,15 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 		}
 	}
 
+	@HostListener('keyup', ['$event'])
+	onKeyup($event:KeyboardEvent) {
+		if($event.keyCode === 27) {
+			if (this.isVisible) {
+				this.toggleDropdown();
+			}
+		}
+	}
+
 	ngOnInit() {
 		this.settings = Object.assign({}, this.multiselectDropdownConfig, this.settings);
 		this.texts = Object.assign({}, this.defaultTexts, this.texts);
