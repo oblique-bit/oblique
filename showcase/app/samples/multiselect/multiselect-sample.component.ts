@@ -8,7 +8,8 @@ import {Component} from '@angular/core';
 export class MultiselectSampleComponent {
 
 	model = [];
-	complexModel = [];
+	labelModel = [];
+	formatterModel = [];
 
 	states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado',
 		'Connecticut', 'Delaware', 'District Of Columbia', 'Federated States Of Micronesia', 'Florida', 'Georgia',
@@ -18,11 +19,6 @@ export class MultiselectSampleComponent {
 		'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island',
 		'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Islands', 'Virginia',
 		'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
-
-	multiselectSettings = {
-		showCheckAll: true,
-		showUncheckAll: true
-	};
 
 	statesComplex = [
 		{id: 1, name: 'Alabama', region: 'South'}, {id: 2, name: 'Alaska', region: 'West'}, {id: 3, name: 'Arizona', region: 'West'},

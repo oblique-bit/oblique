@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class MultiselectConfig {
-    autoUnselect = false;
     displayAllSelectedText = true;
     dynamicTitleMaxItems = 3;
     enableSearch = false;

@@ -169,8 +169,8 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	}
 
 	ngOnInit() {
-		this.settings = Object.assign(this.multiselectDropdownConfig, this.settings);
-		this.texts = Object.assign(this.defaultTexts, this.texts);
+		this.settings = Object.assign({}, this.multiselectDropdownConfig, this.settings);
+		this.texts = Object.assign({}, this.defaultTexts, this.texts);
 		this.title = this.texts.defaultTitle || '';
 	}
 

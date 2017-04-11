@@ -1,49 +1,47 @@
-<h2 class="page-header">{{'i18n.states.samples.multiselect.title' | translate}}</h2>
-<p class="lead">
-	Multiselectable options based on <a href="http://dotansimha.github.io/angularjs-dropdown-multiselect/">angularjs-dropdown-multiselect</a>.
-</p>
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">Preview</h3>
-	</div>
-	<div class="panel-body">
-		<h3>Dropdown</h3>
+<div class="default-layout">
+	<h2 class="page-header">{{'i18n.routes.samples.multiselect.title' | translate}}</h2>
+	<section>
+		<h3>Default multiselect</h3>
+
 		<div class="row">
 			<div class="col-md-6">
-				<div class="row">
-					<label class="col-md-4">Items</label>
-					<div class="col-md-8">
-						<multiselect [options]="states"
-									 [(ngModel)]="model"
-									 [settings]="multiselectSettings">
-						</multiselect>
-					</div>
-				</div>
+				<multiselect [options]="states"
+							 [(ngModel)]="model">
+				</multiselect>
 			</div>
 			<div class="col-md-6">
 				<pre>{{model | json}}</pre>
 			</div>
 		</div>
+		<h3>Multiselect with complex options and labelProperty</h3>
 
 		<div class="row">
 			<div class="col-md-6">
-				<div class="row">
-					<label class="col-md-4">Items</label>
-					<div class="col-md-8">
-						<multiselect [options]="statesComplex"
-									 [(ngModel)]="complexModel"
-									 [settings]="multiselectSettings"
-									 [labelFormatter]="complexStateLabelFormatter">
-						</multiselect>
-					</div>
-				</div>
+				<multiselect [options]="statesComplex"
+							 [(ngModel)]="labelModel"
+							 [settings]="{showCheckAll: true, showUncheckAll: true}"
+							 labelProperty="name">
+				</multiselect>
 			</div>
 			<div class="col-md-6">
-				<pre>{{complexModel | json}}</pre>
-
+				<pre>{{labelModel | json}}</pre>
 			</div>
 		</div>
-	</div>
+
+		<h3>Multiselect with complex options, search, labelFormatter ...</h3>
+
+		<div class="row">
+			<div class="col-md-6">
+				<multiselect [options]="statesComplex"
+							 [(ngModel)]="formatterModel"
+							 [settings]="{showCheckAll: true, showUncheckAll: true, enableSearch: true}"
+							 [texts]="{defaultTitle: '... and a custom title'}"
+							 [labelFormatter]="complexStateLabelFormatter">
+				</multiselect>
+			</div>
+			<div class="col-md-6">
+				<pre>{{formatterModel | json}}</pre>
+			</div>
+		</div>
+	</section>
 </div>
-
-
