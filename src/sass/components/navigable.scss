@@ -1,6 +1,8 @@
 $navigable-height: 38px;
 
 .navigable {
+	line-height: $navigable-height;
+
 	@include animatable(background-color, $duration-fast);
 
 	.navigable-actions {

@@ -9,9 +9,10 @@
 				"fr": "Français",
 				"it": "Italiano",
 				"en": "English"
-			}
+			},
+			"loading" : "Chargement..."
 		},
-		"states": {
+		"routes": {
 			"home": {
 				"title": "Accueil",
 				"description": "Description for the Home state page."

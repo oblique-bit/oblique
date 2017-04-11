@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class Oblique2ReactivePage {
+export class ObliqueReactivePage {
   navigateTo() {
     return browser.get('/');
   }

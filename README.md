@@ -1,15 +1,15 @@
-# [Oblique2Reactive](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/)
+# [ObliqueReactive](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/)
 
-Reactive web template powered by [Oblique2UI](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-ui/) and [Angular2](https://github.com/angular/angular). Oblique2Reactive uses [npm](https://www.npmjs.com/), [Gulp](https://github.com/gulpjs/gulp/), [Less](http://lesscss.org/), [Browserify](http://browserify.org/) and [Handlebars](http://handlebarsjs.com/) to fetch dependencies, compile & build assets and compose the pages.
+Reactive web template powered by [ObliqueUI](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-ui/) and [Angular](https://github.com/angular/angular). ObliqueReactive uses [npm](https://www.npmjs.com/), [Gulp](https://github.com/gulpjs/gulp/), [Less](http://lesscss.org/), [Browserify](http://browserify.org/) and [Handlebars](http://handlebarsjs.com/) to fetch dependencies, compile & build assets and compose the pages.
 
 
 ## Using as dependency
 
 TODO: Update this, if we integrated the newest version in O2R-Seed
 
-Install `oblique2-reactive` as an npm dependency:
+Install `oblique-reactive` as an npm dependency:
 
-	npm install oblique2-reactive --save
+	npm install oblique-reactive --save
 
 Once installed, you need to import the `ObliqueModule`:
 
@@ -144,7 +144,7 @@ To install a new npm dependency, you can simply type
 
 	npm i <dependency> -D
 
-into your command line. But before you do so, make sure you're in your project's root folder, where [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-reactive/browse/package.json) is.
+into your command line. But before you do so, make sure you're in your project's root folder, where [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique-reactive/browse/package.json) is.
 After everything is done, you should see your new dependency in [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-ui/browse/package.json).
 
 If you need to install a global dependency, such as bower, switch the *-D* to a *-g* in your command. This would look something like this:
@@ -190,10 +190,10 @@ Before publishing, execute the following steps:
 
 Prepare your workspace:
 
-1. Ensure you have an account with publishing privileges on the internal `npm` registry ([BIT Nexus v3](http://nexus.vmjeap10a04.bfi.admin.ch:8020))
+1. Ensure you have an account with publishing privileges on the internal `npm` registry ([BIT Nexus v3](https://nexus3.eap.bit.admin.ch/))
 2. Authenticate on the internal npm registry (Nexus v3):
 
-	npm login --registry=http://nexus.vmjeap10a04.bfi.admin.ch:8020/repository/npm-intern/
+	npm login --registry=https://nexus3.eap.bit.admin.ch/repository/npm-intern/
 
     > Follow the steps on the terminal as you may be asked for credentials.
 

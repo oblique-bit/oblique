@@ -37,7 +37,7 @@ export interface IMultiSelectTexts {
 }
 
 //https://github.com/angular/angular/issues/5145
-var nextId = 0;
+let nextId = 0;
 
 @Component({
 	selector: 'multiselect',
@@ -272,9 +272,9 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	}
 
 	formatOptionForLabel(item: any): string {
-		if(this.labelFormatter) {
+		if (this.labelFormatter) {
 			return this.labelFormatter(item);
-		} else if(this.labelProperty) {
+		} else if (this.labelProperty) {
 			return item[this.labelProperty];
 		}
 		return item;

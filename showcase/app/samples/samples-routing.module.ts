@@ -7,9 +7,12 @@ import {SchemaValidationComponent} from './schema-validation/schema-validation.c
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
 
 const samplesRoutes: Routes = [
-    { path: 'datepicker', component: DatepickerComponent },
-	{path: 'navigable', component: NavigableSampleComponent},
-    { path: 'multiselect', component: MultiselectSampleComponent },
+	{path: 'datepicker', component: DatepickerComponent},
+	{path: 'navigable', component: NavigableSampleComponent, data: {
+		title: 'Navigable Sample',
+		description: 'Description for the Navigable Sample'
+	}},
+	{path: 'multiselect', component: MultiselectSampleComponent},
 	{path: 'schema-validation', component: SchemaValidationComponent}
 ];
 

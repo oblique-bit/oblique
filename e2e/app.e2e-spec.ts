@@ -1,10 +1,10 @@
-import { Oblique2ReactivePage } from './app.po';
+import { ObliqueReactivePage } from './app.po';
 
-describe('oblique2-reactive App', function() {
-  let page: Oblique2ReactivePage;
+describe('ObliqueReactive App', function() {
+  let page: ObliqueReactivePage;
 
   beforeEach(() => {
-    page = new Oblique2ReactivePage();
+    page = new ObliqueReactivePage();
   });
 
   it('should display message saying app works', () => {
