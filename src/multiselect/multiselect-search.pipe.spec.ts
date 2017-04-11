@@ -1,5 +1,4 @@
 import {MultiselectSearchPipe} from './multiselect-search.pipe';
-import {MultiselectComponent} from './multiselect.component';
 
 describe('MultiselectSearchPipe', () => {
 	let pipe: MultiselectSearchPipe;

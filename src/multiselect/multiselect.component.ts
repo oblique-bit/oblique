@@ -36,6 +36,8 @@ export interface IMultiSelectTexts {
 	allSelected?: string;
 }
 
+//https://github.com/angular/angular/issues/5145
+var nextId = 0;
 
 @Component({
 	selector: 'multiselect',
@@ -57,6 +59,11 @@ export interface IMultiSelectTexts {
     				right: 10px;
     		}
     		
+    		.dropdown-item:active {
+    			color: #171717;
+    			background-color:#f7f7f9;
+    		}
+    		
     		.checkbox label {
     			margin-bottom: 0;
     		}
@@ -70,14 +77,14 @@ export interface IMultiSelectTexts {
     <div class="dropdown">
         <button type="button" class="dropdown-toggle btn btn-default" 
                 (click)="toggleDropdown()" [disabled]="disabled">
-                {{ title }}
+                {{ title | translate:titleTranslateParams }}
 		</button>
 		<div *ngIf="isVisible" class="dropdown-menu" [class.pull-right]="settings.pullRight" [class.dropdown-menu-right]="settings.pullRight"
 			[style.max-height]="settings.maxHeight" style="display: block; height: auto; overflow-y: auto;">
 			<div class="dropdown-item" *ngIf="settings.enableSearch">
 				<div class="input-group input-group-sm control-action" >
 					<span class="input-group-addon" id="sizing-addon3"><i class="fa fa-search"></i></span>
-					<input type="text" class="form-control" placeholder="{{ texts.searchPlaceholder }}"
+					<input type="text" class="form-control" placeholder="{{ texts.searchPlaceholder | translate}}"
 							aria-describedby="sizing-addon3" [(ngModel)]="searchFilterText" [ngModelOptions]="{standalone: true}">
 					<button class="control-action-trigger" (click)="clearSearch($event)">
 						<span class="fa fa-times-circle"></span>
@@ -88,27 +95,20 @@ export interface IMultiSelectTexts {
 			<button class="dropdown-item check-control check-control-check" *ngIf="settings.showCheckAll" (click)="checkAll()">
 				<span style="width: 16px;" class="fa fa-check">
 				</span>
-				{{ texts.checkAll }}
+				{{ texts.checkAll | translate }}
 			</button>
 			<button class="dropdown-item check-control check-control-uncheck" *ngIf="settings.showUncheckAll" (click)="uncheckAll()">
 				<span style="width: 16px;" class="fa fa-times">
 				</span>
-				{{ texts.uncheckAll }}
+				{{ texts.uncheckAll | translate }}
 			</button>
 			<div *ngIf="settings.showCheckAll || settings.showUncheckAll" class="dropdown-divider divider"></div>
-			<button class="dropdown-item" *ngFor="let option of options | searchFilter:searchFilterText"
-				(click)="toggleSelection($event, option)">
-				<div *ngIf="settings.checkedStyle === 'checkboxes'" class="checkbox">
-					<!-- TODO how should the id's be generated?-->
-					<input tabindex="-1" type="checkbox" id="dropdown-multiselect-{{formatOptionForLabel(option)}}" [checked]="isSelected(option)" (click)="preventCheckboxCheck($event)"> 
-					<label for="dropdown-multiselect-{{formatOptionForLabel(option)}}">{{formatOptionForLabel(option)}}</label>
+			<button class="dropdown-item" *ngFor="let option of options | searchFilter:searchFilterText; let i = index"
+				(click)="toggleSelection(option)">
+				<div class="checkbox">
+					<input tabindex="-1" type="checkbox" id="{{id}}-{{i}}" [checked]="isSelected(option)" (click)="preventCheckboxCheck($event)"> 
+					<label for="{{id}}-{{i}}">{{formatOptionForLabel(option)}}</label>
 				</div>
-				<span *ngIf="settings.checkedStyle === 'fontawesome'" style="width: 16px;display: inline-block;">
-					<i *ngIf="isSelected(option)" class="fa fa-check" aria-hidden="true"></i>
-				</span>
-				<span *ngIf="settings.checkedStyle === 'fontawesome'" [ngClass]="settings.itemClasses">
-					{{ formatOptionForLabel(option)}}
-				</span>
 			</button>
 		</div>
     </div>
@@ -118,28 +118,31 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	@Input() options: any[];
 	@Input() settings: MultiselectConfig;
 	@Input() texts: IMultiSelectTexts;
-	@Input() disabled: boolean = false;
+	@Input() disabled = false;
+	@Input() labelProperty: string;
 	@Input() labelFormatter: (option: any) => string;
 	@Output() selectionLimitReached = new EventEmitter();
 	@Output() dropdownClosed = new EventEmitter();
 	@Output() onAdded = new EventEmitter();
 	@Output() onRemoved = new EventEmitter();
 
+	id = `ms-${nextId++}`;
+
 	model: any[] = [];
 	title: string;
+	titleTranslateParams: any = {};
 	differ: any;
-	isVisible: boolean = false;
-	searchFilterText: string = '';
+	isVisible = false;
+	searchFilterText = '';
 
-	//TODO: extract this!
 	defaultTexts: IMultiSelectTexts = {
-		checkAll: 'Check all',
-		uncheckAll: 'Uncheck all',
-		checked: 'checked',
-		checkedPlural: 'checked',
-		searchPlaceholder: 'Search...',
-		defaultTitle: 'Select',
-		allSelected: 'All selected',
+		checkAll: 'i18n.oblique.multiselect.checkAll',
+		uncheckAll: 'i18n.oblique.multiselect.uncheckAll',
+		checked: 'i18n.oblique.multiselect.checked',
+		checkedPlural: 'i18n.oblique.multiselect.checkedPlural',
+		searchPlaceholder: 'i18n.oblique.multiselect.searchPlaceholder',
+		defaultTitle: 'i18n.oblique.multiselect.defaultTitle',
+		allSelected: 'i18n.oblique.multiselect.allSelected',
 	};
 
 	constructor(private element: ElementRef,
@@ -172,9 +175,11 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	}
 
 	onModelChange: (_: any) => void = (_: any) => {
-	};
+		//
+	}
 	onModelTouched: () => void = () => {
-	};
+		//
+	}
 
 	writeValue(value: any): void {
 		if (value) {
@@ -188,10 +193,6 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 
 	registerOnTouched(fn: () => void): void {
 		this.onModelTouched = fn;
-	}
-
-	setDisabledState(isDisabled: boolean) {
-		this.disabled = isDisabled;
 	}
 
 	ngDoCheck() {
@@ -214,48 +215,37 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	}
 
 	isSelected(option): boolean {
-		return this.model && this.model.indexOf(option) > -1;
+		return this.model.indexOf(option) > -1;
 	}
 
-	toggleSelection(event: Event, option) {
-		if (!this.model) {
-			this.model = [];
-		}
+	toggleSelection(option) {
 		const index = this.model.indexOf(option);
 
 		if (index > -1) {
 			this.model.splice(index, 1);
 			this.onRemoved.emit(option);
-			this.emitModelChange()
+			this.emitModelChange();
 		} else if (!this.settings.selectionLimit || (this.model.length < this.settings.selectionLimit)) {
 			this.model.push(option);
 			this.onAdded.emit(option);
-			this.emitModelChange()
+			this.emitModelChange();
 		} else {
-			//TODO: what to do here?
 			this.selectionLimitReached.emit(this.model.length);
-			return;
 		}
 	}
 
 	updateTitle() {
 		if (this.model.length === 0) {
 			this.title = this.texts.defaultTitle || '';
-
-			//TODO
-			/*} else if (this.settings.dynamicTitleMaxItems && this.settings.dynamicTitleMaxItems >= this.numSelected) {
-			 this.title = this.options
-			 .filter((option) =>
-			 this.model && this.model.indexOf(option.id) > -1
-			 )
-			 .map((option) => option.name)
-			 .join(', ');*/
+		} else if (this.settings.dynamicTitleMaxItems && this.settings.dynamicTitleMaxItems >= this.model.length) {
+			this.title = this.model
+				.map((option) => this.formatOptionForLabel(option))
+				.join(', ');
 		} else if (this.settings.displayAllSelectedText && this.model.length === this.options.length) {
 			this.title = this.texts.allSelected || '';
 		} else {
-			this.title = this.model.length
-				+ ' '
-				+ (this.model.length === 1 ? this.texts.checked : this.texts.checkedPlural);
+			this.title = this.texts.checked;
+			this.titleTranslateParams = {amount: this.model.length};
 		}
 	}
 
@@ -267,11 +257,11 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 				}
 				return option;
 			});
-		this.emitModelChange()
+		this.emitModelChange();
 	}
 
 	uncheckAll() {
-		this.model.forEach((id: number) => this.onRemoved.emit(id));
+		this.model.forEach((option) => this.onRemoved.emit(option));
 		this.model = [];
 		this.emitModelChange();
 	}
@@ -282,7 +272,12 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	}
 
 	formatOptionForLabel(item: any): string {
-		return item && this.labelFormatter ? this.labelFormatter(item) : item;
+		if(this.labelFormatter) {
+			return this.labelFormatter(item);
+		} else if(this.labelProperty) {
+			return item[this.labelProperty];
+		}
+		return item;
 	}
 
 	private emitModelChange() {

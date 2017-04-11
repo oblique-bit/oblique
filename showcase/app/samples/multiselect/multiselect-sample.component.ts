@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
 	selector: 'app-multiselect',
 	templateUrl: './multiselect-sample.component.html',
 	styleUrls: ['./multiselect-sample.component.scss']
 })
-export class MultiselectSampleComponent implements OnInit {
+export class MultiselectSampleComponent {
 
 	model = [];
 	complexModel = [];
@@ -21,8 +21,7 @@ export class MultiselectSampleComponent implements OnInit {
 
 	multiselectSettings = {
 		showCheckAll: true,
-		showUncheckAll: true,
-		enableSearch: true
+		showUncheckAll: true
 	};
 
 	statesComplex = [
@@ -53,14 +52,8 @@ export class MultiselectSampleComponent implements OnInit {
 		{id: 51, name: 'Wyoming', region: 'West'}
 	];
 
-	constructor() {
-	}
-
 	complexStateLabelFormatter(complexState) {
 		return `${complexState.id}: ${complexState.name}`;
-	}
-
-	ngOnInit() {
 	}
 
 }

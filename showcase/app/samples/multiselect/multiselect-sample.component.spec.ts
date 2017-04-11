@@ -3,7 +3,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {MultiselectSampleComponent} from './multiselect-sample.component';
 import {MultiselectModule} from '../../../../src';
 import {FormsModule} from '@angular/forms';
-import {MockTranslatePipe} from '../../../../testhelpers';
+import {TranslateModule} from '@ngx-translate/core';
 
 describe('MultiselectSampleComponent', () => {
 	let component: MultiselectSampleComponent;
@@ -12,11 +12,11 @@ describe('MultiselectSampleComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [
-				MultiselectSampleComponent,
-				MockTranslatePipe
+				MultiselectSampleComponent
 			],
 			imports: [
 				FormsModule,
+				TranslateModule.forRoot(),
 				MultiselectModule.forRoot()
 			]
 		})

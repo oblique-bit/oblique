@@ -3,8 +3,7 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class MultiselectConfig {
     autoUnselect = false;
-    checkedStyle: CheckedStyle = 'checkboxes';
-    displayAllSelectedText = false;
+    displayAllSelectedText = true;
     dynamicTitleMaxItems = 3;
     enableSearch = false;
     maxHeight = '300px';
@@ -14,4 +13,3 @@ export class MultiselectConfig {
     showUncheckAll = false;
 }
 
-export type CheckedStyle =  'checkboxes' | 'fontawesome';
