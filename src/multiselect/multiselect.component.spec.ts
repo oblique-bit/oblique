@@ -5,7 +5,6 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {MultiselectConfig} from './multiselect.config';
 import {MockTranslatePipe} from '../../testhelpers';
 import {By} from '@angular/platform-browser';
-import drop = require("lodash/drop");
 
 describe('MultiselectComponent', () => {
 	let fixture: ComponentFixture<MultiselectComponent>;
