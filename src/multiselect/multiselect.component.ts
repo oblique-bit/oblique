@@ -151,7 +151,7 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 		this.differ = differs.find([]).create(null);
 	}
 
-	@HostListener('document: click', ['$event.target'])
+	@HostListener('document:click', ['$event.target'])
 	onClick(target: HTMLElement) {
 		if (this.isVisible) {
 			let parentFound = false;
@@ -169,8 +169,8 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	}
 
 	@HostListener('keyup', ['$event'])
-	onKeyup($event:KeyboardEvent) {
-		if($event.keyCode === 27) {
+	onKeyup($event: KeyboardEvent) {
+		if ($event.keyCode === 27) {
 			if (this.isVisible) {
 				this.toggleDropdown();
 			}

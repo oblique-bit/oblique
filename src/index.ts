@@ -9,6 +9,7 @@ import {SchemaValidationModule} from './schema-validation';
 import {SpinnerModule} from './spinner';
 import {TopControlModule} from './top-control';
 import {UnsavedChangesModule} from './unsaved-changes';
+import {NavigatorModule} from './navigator/navigator.module';
 
 export * from './datepicker';
 export * from './document-meta';
@@ -25,6 +26,7 @@ const OBLIQUE_MODULES = [
 	DocumentMetaModule,
 	MultiselectModule,
 	NavigableModule,
+	NavigatorModule,
 	NotificationModule,
 	SpinnerModule,
 	SchemaValidationModule,
@@ -38,6 +40,7 @@ const OBLIQUE_MODULES = [
 		DocumentMetaModule.forRoot(),
 		MultiselectModule.forRoot(),
 		NavigableModule.forRoot(),
+		NavigatorModule.forRoot(),
 		NotificationModule.forRoot(),
 		SchemaValidationModule.forRoot(),
 		SpinnerModule.forRoot(),

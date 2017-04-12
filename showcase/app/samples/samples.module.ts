@@ -10,6 +10,8 @@ import {SchemaValidationComponent} from './schema-validation/schema-validation.c
 import {DatepickerComponent} from './datepicker/datepicker.component';
 import {SamplesRoutingModule} from './samples-routing.module';
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
+import {NavigatorSampleModule} from './navigator-sample/navigator-sample.module';
+import {NavigatorSampleRoutingModule} from './navigator-sample/navigator-sample-routing.module';
 
 @NgModule({
     imports: [
@@ -18,7 +20,9 @@ import {MultiselectSampleComponent} from './multiselect/multiselect-sample.compo
         TranslateModule,
         FormsModule,
         SamplesRoutingModule,
-        NgbModule
+        NgbModule,
+		NavigatorSampleModule,
+		NavigatorSampleRoutingModule
     ],
     declarations: [NavigableSampleComponent, SchemaValidationComponent, DatepickerComponent, MultiselectSampleComponent]
 })
