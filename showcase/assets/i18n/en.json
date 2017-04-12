@@ -1,197 +1,201 @@
 {
-  "i18n": {
-    "application": {
-      "shortName": "OR",
-      "longName": "ObliqueReactive",
-      "description": "Reactive front-end framework for your business web application.",
-      "locales": {
-        "de": "Deutsch",
-        "fr": "Français",
-        "it": "Italiano",
-        "en": "English"
-      },
-      "loading" : "Loading..."
-    },
-    "routes": {
-      "home": {
-        "title": "Home",
-        "description": "Description for the Home state page."
-      },
-      "auth": {
-        "title": "Sign in",
-        "login": {
-          "title": "Login",
-          "rememberme": "Remember me?",
-          "submit": "Log in",
-          "password-lost": "Forgot password?",
-          "error": "We have been unable to authenticate you, please check your credentials!",
-          "success": "You have been successfully authenticated."
-        },
-        "register": {
-          "title": "New to {{title}}? Sign up!",
-          "submit": "Register"
-        }
-      },
-      "movies": {
-        "title": "Movies"
-      },
-      "samples": {
-        "title": "Samples",
-        "datepicker": {
-          "title": "Datepicker"
-        },
-        "multiselect": {
-          "title": "Multiselect"
-        },
-        "navigable": {
-          "title": "Navigable"
-        },
-        "navigator": {
-          "title": "States Navigator"
-        },
-        "typeahead": {
-          "title": "Typeahead"
-        },
-        "uiScroll": {
-          "title": "UI Scroll"
-        },
-        "validation": {
-          "title": "Validation",
-          "formControl": {
-            "title": "Form Control"
-          },
-          "schemaValidation": {
-            "title": "Schema Validation"
-          },
-          "unsavedChanges": {
-            "title": "Unsaved Changes"
-          }
-        }
-      },
-      "support": {
-        "title": "Support"
-      },
-      "admin": {
-        "title": "Administration"
-      }
-    },
-    "common": {
-      "yes": "Yes",
-      "no": "No",
-      "save": "Save",
-      "cancel": "Cancel",
-      "delete": "Delete",
-      "select": "Select please.",
-      "actions": "Actions",
-      "action": "Action",
-      "pager": {
-        "pagesLengthBefore": "Displaying",
-        "pagesLengthAfter": "Results per page",
-        "page": "Page",
-        "of": "from",
-        "hits": "Hits"
-      },
-      "date": {
-        "format": {
-          "dd.MM.yyyy": "dd.mm.yyyy",
-          "d!.M!.yyyy": "dd.mm.yyyy"
-        }
-      }
-    },
-    "labels": {
-      "language": "Language",
-      "email": "Email",
-      "password": "Password"
-    },
-    "error": {
-      "general": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
-      "http": {
-        "status": {
-          "0": "Service Unavailable",
-          "400": "Bad Request",
-          "404": "The requested resource could not be found",
-          "500": "Internal Server Error",
-          "501": "Not Implemented",
-          "502": "Bad Gateway",
-          "503": "Service Unavailable"
-        }
-      },
-      "other": {
-        "timeout": "Server hat nicht zu lange reagiert. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
-        "upload": "Es ist ein Fehler bei hochladen aufgetrten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support"
-      },
-      "business": {
-        "ObjectOptimisticLockingFailureException": "Daten können nicht gespeichert werden, da sie auf dem Server geändert werden. Form wurde mit aktuellen Daten neu geladen."
-      }
-    },
-    "notification": {
-      "type": {
-        "default": "",
-        "info": "Info",
-        "success": "Success",
-        "warning": "Warning",
-        "error": "Error"
-      },
-      "common": {
-        "form": {
-          "success": "Speichern erfolgreich",
-          "pristine": "Ihre Eingaben haben sich nicht geändert",
-          "invalid": "Bitte korrigieren Sie die Fehler im Formular"
-        }
-      },
-      "custom": {
-      }
-    },
-    "validation": {
-      "basic": {
-        "required": "Pflichtfeld, bitte machen Sie eine Angabe",
-        "email": "Ungültiges Format, bitte geben Sie eine gültige E-Mail Adresse an",
-        "url": "Ungültige Format, bitte geben Sie eine gültige URL Adresse an",
-        "minlength": "Bitte geben Sie mindestens {{limit}} Zeichen ein (Sie haben nur {{actual}} Zeichen eingegeben)",
-        "maxlength": "Bitte geben Sie höchstens {{limit}} Zeichen ein (Sie haben nur {{actual}} Zeichen eingegeben)",
-        "min": "Bitte geben Sie eine Zahl grösser oder gleich {{limit}} ein",
-        "max": "Bitte geben Sie eine Zahl kleiner oder gleich {{limit}} ein",
-        "integer": "Ungültiges Format, bitte geben Sie eine Zahl ohne Dezimalstellen ein",
-        "float": "Ungültiges Format, bitte geben Sie eine Zahl mit Dezimalstellen ein",
-        "date": "Ungültiges Format, bitte geben Sie eine korrekte Datum"
-      },
-      "custom": {
-        "date": {
-          "day": {
-            "min": "Ungültiger Tag, geben Sie eine Zahl zwischen 1 und 31 ein",
-            "max": "Ungültiger Tag, geben Sie eine Zahl zwischen 1 und 31 ein"
-          },
-          "month": {
-            "min": "Ungültiger Monat, geben Sie eine Zahl zwischen 1 und 12 ein",
-            "max": "Ungültiger Monat, geben Sie eine Zahl zwischen 1 und 12 ein"
-          }
-        }
-      },
-      "date.format": "Incorrect date or format, please enter a valid date in the dd.mm.yyyy format.",
-      "date.min": "en: Das Datum unterschreitet das min. zulässige Datum {{minDate}}",
-      "date.max": "en: Das Datum überschreitet das max. zulässige Datum {{maxDate}}",
-      "unsavedChanges": "Pending changes have been detected, do you really want to continue?"
-    },
-    "form": {
-      "action": {
-        "add": "Add",
-        "apply": "Apply",
-        "applyAndContinue": "Apply and continue",
-        "save": "Save",
-        "delete": "Delete",
-        "cancel": "Cancel",
-        "next": "Next",
-        "back": "Back"
-      }
-    },
-    "multiselect": {
-      "checkAll": "<strong>select</strong> all",
-      "uncheckAll": "<strong>unselect</strong> all",
-      "buttonDefault": "Select please.",
-      "allSelected": "All elements have been selected."
-    },
-    "topControl": {
-      "backToTop": "Back to top"
-    }
-  }
+	"i18n": {
+		"application": {
+			"shortName": "OR",
+			"longName": "ObliqueReactive",
+			"description": "Reactive front-end framework for your business web application.",
+			"locales": {
+				"de": "Deutsch",
+				"fr": "Français",
+				"it": "Italiano",
+				"en": "English"
+			},
+			"loading" : "Loading..."
+		},
+		"routes": {
+			"home": {
+				"title": "Home",
+				"description": "Description for the Home state page."
+			},
+			"auth": {
+				"title": "Sign in",
+				"login": {
+					"title": "Login",
+					"rememberme": "Remember me?",
+					"submit": "Log in",
+					"password-lost": "Forgot password?",
+					"error": "We have been unable to authenticate you, please check your credentials!",
+					"success": "You have been successfully authenticated."
+				},
+				"register": {
+					"title": "New to {{title}}? Sign up!",
+					"submit": "Register"
+				}
+			},
+			"movies": {
+				"title": "Movies"
+			},
+			"samples": {
+				"title": "Samples",
+				"datepicker": {
+					"title": "Datepicker"
+				},
+				"multiselect": {
+					"title": "Multiselect"
+				},
+				"navigable": {
+					"title": "Navigable"
+				},
+				"navigator": {
+					"title": "States Navigator"
+				},
+				"typeahead": {
+					"title": "Typeahead"
+				},
+				"uiScroll": {
+					"title": "UI Scroll"
+				},
+				"validation": {
+					"title": "Validation",
+					"formControl": {
+						"title": "Form Control"
+					},
+					"schemaValidation": {
+						"title": "Schema Validation"
+					},
+					"unsavedChanges": {
+						"title": "Unsaved Changes"
+					}
+				}
+			},
+			"support": {
+				"title": "Support"
+			},
+			"admin": {
+				"title": "Administration"
+			}
+		},
+		"common": {
+			"yes": "Yes",
+			"no": "No",
+			"save": "Save",
+			"cancel": "Cancel",
+			"delete": "Delete",
+			"select": "Select please.",
+			"actions": "Actions",
+			"action": "Action",
+			"pager": {
+				"pagesLengthBefore": "Displaying",
+				"pagesLengthAfter": "Results per page",
+				"page": "Page",
+				"of": "from",
+				"hits": "Hits"
+			},
+			"date": {
+				"format": {
+					"dd.MM.yyyy": "dd.mm.yyyy",
+					"d!.M!.yyyy": "dd.mm.yyyy"
+				}
+			}
+		},
+		"labels": {
+			"language": "Language",
+			"email": "Email",
+			"password": "Password"
+		},
+		"error": {
+			"general": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
+			"http": {
+				"status": {
+					"0": "Service Unavailable",
+					"400": "Bad Request",
+					"404": "The requested resource could not be found",
+					"500": "Internal Server Error",
+					"501": "Not Implemented",
+					"502": "Bad Gateway",
+					"503": "Service Unavailable"
+				}
+			},
+			"other": {
+				"timeout": "Server hat nicht zu lange reagiert. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
+				"upload": "Es ist ein Fehler bei hochladen aufgetrten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support"
+			},
+			"business": {
+				"ObjectOptimisticLockingFailureException": "Daten können nicht gespeichert werden, da sie auf dem Server geändert werden. Form wurde mit aktuellen Daten neu geladen."
+			}
+		},
+		"notification": {
+			"type": {
+				"default": "",
+				"info": "Info",
+				"success": "Success",
+				"warning": "Warning",
+				"error": "Error"
+			},
+			"common": {
+				"form": {
+					"success": "Speichern erfolgreich",
+					"pristine": "Ihre Eingaben haben sich nicht geändert",
+					"invalid": "Bitte korrigieren Sie die Fehler im Formular"
+				}
+			},
+			"custom": {
+			}
+		},
+		"validation": {
+			"basic": {
+				"required": "Pflichtfeld, bitte machen Sie eine Angabe",
+				"email": "Ungültiges Format, bitte geben Sie eine gültige E-Mail Adresse an",
+				"url": "Ungültige Format, bitte geben Sie eine gültige URL Adresse an",
+				"minlength": "Bitte geben Sie mindestens {{limit}} Zeichen ein (Sie haben nur {{actual}} Zeichen eingegeben)",
+				"maxlength": "Bitte geben Sie höchstens {{limit}} Zeichen ein (Sie haben nur {{actual}} Zeichen eingegeben)",
+				"min": "Bitte geben Sie eine Zahl grösser oder gleich {{limit}} ein",
+				"max": "Bitte geben Sie eine Zahl kleiner oder gleich {{limit}} ein",
+				"integer": "Ungültiges Format, bitte geben Sie eine Zahl ohne Dezimalstellen ein",
+				"float": "Ungültiges Format, bitte geben Sie eine Zahl mit Dezimalstellen ein",
+				"date": "Ungültiges Format, bitte geben Sie eine korrekte Datum"
+			},
+			"custom": {
+				"date": {
+					"day": {
+						"min": "Ungültiger Tag, geben Sie eine Zahl zwischen 1 und 31 ein",
+						"max": "Ungültiger Tag, geben Sie eine Zahl zwischen 1 und 31 ein"
+					},
+					"month": {
+						"min": "Ungültiger Monat, geben Sie eine Zahl zwischen 1 und 12 ein",
+						"max": "Ungültiger Monat, geben Sie eine Zahl zwischen 1 und 12 ein"
+					}
+				}
+			},
+			"date.format": "Incorrect date or format, please enter a valid date in the dd.mm.yyyy format.",
+			"date.min": "en: Das Datum unterschreitet das min. zulässige Datum {{minDate}}",
+			"date.max": "en: Das Datum überschreitet das max. zulässige Datum {{maxDate}}",
+			"unsavedChanges": "Pending changes have been detected, do you really want to continue?"
+		},
+		"form": {
+			"action": {
+				"add": "Add",
+				"apply": "Apply",
+				"applyAndContinue": "Apply and continue",
+				"save": "Save",
+				"delete": "Delete",
+				"cancel": "Cancel",
+				"next": "Next",
+				"back": "Back"
+			}
+		},
+		"topControl": {
+			"backToTop": "Back to top"
+		},
+		"oblique": {
+			"multiselect": {
+				"checkAll": "Check all",
+				"uncheckAll": "Uncheck all",
+				"checked": "{{amount}} checked",
+				"searchPlaceholder": "Search...",
+				"defaultTitle": "Select please.",
+				"allSelected": "All elements have been selected."
+			}
+		}
+	}
 }

@@ -232,14 +232,13 @@ module.exports = {
 		new LoaderOptionsPlugin({
 			"sourceMap": false,
 			"options": {
-				//TODO: We can probably remove this, we do not use postcss
 				"postcss": [
 					autoprefixer(),
 					postcssUrl({
 						"url": (config) => {
 							// Only convert root relative URLs, which CSS-Loader won't process into require().
 							if (!config.url.startsWith('/') || config.url.startsWith('//')) {
-								return config;
+								return config.url;
 							}
 							if (deployUrl.match(/:\/\//)) {
 								// If deployUrl contains a scheme, ignore baseHref use deployUrl as is.
