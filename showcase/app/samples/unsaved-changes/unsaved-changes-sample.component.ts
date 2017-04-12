@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {NotificationService} from '../../../../src/notification/notification.service';
 
 @Component({
 	selector: 'app-unsaved-changes',
@@ -6,22 +7,25 @@ import {Component} from '@angular/core';
 	// styleUrls: ['./unsaved-changes.component.css']
 })
 export class UnsavedChangesComponent {
-	tabs = {
-		one: {},
-		two: {},
-		three: {}
-	};
+	private tabs: {one: {}; two: {}; three: {}};
+
+	constructor(private notificationService: NotificationService) {}
+
+	ngOnInit() {
+		this.tabs = {
+			one: {},
+			two: {},
+			three: {}
+		};
+	}
 
 	save(form) {
 		console.log(form);
+		if (form.valid) {
+			this.ngOnInit();
+			this.notificationService.success('Form has been successfully saved!');
+		}
+		return false;
 	}
 }
-
-
-// save(form) {
-	// 	if (form.$valid) {
-	// 		form.$setPristine();
-	// 		this.notificationService.success('Form has been successfully saved!');
-	// 	}
-	// }
 
