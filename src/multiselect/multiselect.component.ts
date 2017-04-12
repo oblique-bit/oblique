@@ -1,10 +1,9 @@
 /*
  * Angular 2 Dropdown Multiselect for Bootstrap
  *
- * Simon Lindh
+ * Inspired from Simon Lindh:
  * https://github.com/softsimon/angular-2-dropdown-multiselect
  */
-
 import {
 	Component,
 	OnInit,
@@ -36,7 +35,7 @@ export interface IMultiSelectTexts {
 	allSelected?: string;
 }
 
-//https://github.com/angular/angular/issues/5145
+// See: https://github.com/angular/angular/issues/5145
 let nextId = 0;
 
 @Component({
@@ -44,60 +43,104 @@ let nextId = 0;
 	providers: [MULTISELECT_VALUE_ACCESSOR],
 	styles: [
 		`
-			.dropdown-toggle {
-			    position: relative;
-    			background-color: #fff;
-    			padding-right: 30px;
-    			border-radius: 0;
-    			text-align: left;
-    			white-space: normal;
-    			min-width: 100%;
-    		}
-    		
-    		.dropdown-toggle::after {
-    			    position: absolute;
-    				right: 10px;
-    		}
-    		
-    		.dropdown-item:active {
-    			color: #171717;
-    			background-color:#f7f7f9;
-    		}
-    		
-    		.checkbox label {
-    			margin-bottom: 0;
-    		}
-    		
-    		button.dropdown-item {
-    			cursor: pointer; 
-    		}
+			:host[readonly],
+			:host.readonly {
+				 border: none;
+			}
+
+			.multiselect-toggle {
+				display: flex;
+				background-color: #fff;
+				border-radius: 0;
+				text-align: left;
+				white-space: normal;
+				min-width: 100%;
+			}
+
+			.multiselect-toggle:disabled {
+				color: black;
+				opacity: 1;
+				border: 1px solid #f4f4f4;
+			}
+
+			.multiselect-toggle .toggle {
+				margin-left: auto;
+			}
+
+			.multiselect-toggle .toggle::before {
+				min-width: 0;
+				margin-left: 5px;
+			}
+			
+			.dropdown-menu {
+				overflow: auto !important;
+				width: 100%;
+			}
+
+			.dropdown .dropdown-menu {
+				 margin-top: 0;
+				 border-top-right-radius: 0;
+				 border-top-left-radius: 0;
+				 border-top: none;
+			 }
+
+			.dropup .dropdown-menu {
+				 margin-bottom: 0;
+				 border-bottom-right-radius: 0;
+				 border-bottom-left-radius: 0;
+				 border-bottom: none;
+			 }
+
+			.multiselect-control {
+				font-size: small;
+			}
+			
+
+			.dropdown-item:active {
+				color: #171717;
+				background-color: #f7f7f9;
+			}
+
+			.checkbox label {
+				margin-bottom: 0;
+				white-space: normal;
+			}
+
+			button.dropdown-item {
+				cursor: pointer;
+			}
 		`
 	],
 	template: `
-    <div class="dropdown">
-        <button type="button" class="dropdown-toggle btn btn-default" 
-                (click)="toggleDropdown()" [disabled]="disabled">
-                {{ title | translate:titleTranslateParams }}
-		</button>
+	<div [ngClass]="{'dropdown': !dropup, 'dropup': dropup}">
+		<button type="button" class="multiselect-toggle btn btn-default"
+		        (click)="toggleDropdown()" [disabled]="disabled"
+		        [ngClass]="{open: isVisible}">
+			<span class="multiselect-label">{{ title | translate:titleTranslateParams }}</span>
+		    <span class="toggle" [ngClass]="{'toggle-down-up': !dropup, 'toggle-up-down': dropup}"></span>
+	    </button>
 		<div *ngIf="isVisible" class="dropdown-menu" [class.pull-right]="settings.pullRight" [class.dropdown-menu-right]="settings.pullRight"
-			[style.max-height]="settings.maxHeight" style="display: block; height: auto; overflow-y: auto;">
+			[style.max-height]="settings.maxHeight" style="display: block; height: auto; overflow-y: auto;"
+			[attr.aria-hidden]="!isVisible">
 			<div class="dropdown-item" *ngIf="settings.enableSearch">
 				<div class="input-group input-group-sm control-action" >
-					<span class="input-group-addon" id="sizing-addon3"><i class="fa fa-search"></i></span>
+					<span class="input-group-addon" [attr.id]="id + '-search'" [attr.aria-label]="texts.searchPlaceholder | translate">
+						<span class="fa fa-search"></span>
+					</span>
 					<input type="text" class="form-control" placeholder="{{ texts.searchPlaceholder | translate}}"
-							aria-describedby="sizing-addon3" [(ngModel)]="searchFilterText" [ngModelOptions]="{standalone: true}">
+					       [attr.aria-describedby]="id + '-search'" [(ngModel)]="searchFilterText" [ngModelOptions]="{standalone: true}">
 					<button class="control-action-trigger" (click)="clearSearch($event)">
 						<span class="fa fa-times-circle"></span>
 					</button>
 				</div>
 			</div>
 			<div class="dropdown-divider divider" *ngIf="settings.enableSearch"></div>
-			<button class="dropdown-item check-control check-control-check" *ngIf="settings.showCheckAll" (click)="checkAll()">
+			<button class="dropdown-item multiselect-control multiselect-control-check" *ngIf="settings.showCheckAll" (click)="checkAll()">
 				<span style="width: 16px;" class="fa fa-check">
 				</span>
 				{{ texts.checkAll | translate }}
 			</button>
-			<button class="dropdown-item check-control check-control-uncheck" *ngIf="settings.showUncheckAll" (click)="uncheckAll()">
+			<button class="dropdown-item multiselect-control multiselect-control-uncheck" *ngIf="settings.showUncheckAll" (click)="uncheckAll()">
 				<span style="width: 16px;" class="fa fa-times">
 				</span>
 				{{ texts.uncheckAll | translate }}
@@ -118,6 +161,7 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	@Input() options: any[];
 	@Input() settings: MultiselectConfig;
 	@Input() texts: IMultiSelectTexts;
+	@Input() dropup = false;
 	@Input() disabled = false;
 	@Input() labelProperty: string;
 	@Input() labelFormatter: (option: any) => string;

@@ -5,6 +5,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {MultiselectConfig} from './multiselect.config';
 import {MockTranslatePipe} from '../../testhelpers';
 import {By} from '@angular/platform-browser';
+import drop = require("lodash/drop");
 
 describe('MultiselectComponent', () => {
 	let fixture: ComponentFixture<MultiselectComponent>;
@@ -41,9 +42,9 @@ describe('MultiselectComponent', () => {
 	});
 
 	describe('toggleDropdown', () => {
-		it('should be triggered by a click on the .dropdown-toggle button', () => {
+		it('should be triggered by a click on the .multiselect-toggle button', () => {
 			spyOn(component, 'toggleDropdown').and.callThrough();
-			let button = fixture.debugElement.query(By.css('.dropdown-toggle'));
+			let button = fixture.debugElement.query(By.css('.multiselect-toggle'));
 
 			button.nativeElement.click();
 
@@ -241,12 +242,12 @@ describe('MultiselectComponent', () => {
 			component.options = stringOptions;
 		});
 
-		it('should be triggered by a click on .check-control-check button', () => {
+		it('should be triggered by a click on .multiselect-control-check button', () => {
 			spyOn(component, 'checkAll').and.callThrough();
 			component.isVisible = true;
 			fixture.detectChanges();
 
-			let button = fixture.debugElement.query(By.css('button.check-control-check'));
+			let button = fixture.debugElement.query(By.css('button.multiselect-control-check'));
 
 			button.nativeElement.click();
 
@@ -281,12 +282,12 @@ describe('MultiselectComponent', () => {
 			component.options = stringOptions;
 		});
 
-		it('should be triggered by a click on .check-control-uncheck button', () => {
+		it('should be triggered by a click on .multiselect-control-uncheck button', () => {
 			spyOn(component, 'uncheckAll').and.callThrough();
 			component.isVisible = true;
 			fixture.detectChanges();
 
-			let button = fixture.debugElement.query(By.css('button.check-control-uncheck'));
+			let button = fixture.debugElement.query(By.css('button.multiselect-control-uncheck'));
 
 			button.nativeElement.click();
 
@@ -312,6 +313,17 @@ describe('MultiselectComponent', () => {
 		});
 	});
 
+	describe('with `dropup` variation', () => {
+		beforeEach(() => {
+			component.dropup = true;
+			fixture.detectChanges();
+		});
+
+		it('should enable the `.dropup` class', () => {
+			let dropup = fixture.debugElement.query(By.css('.dropup'));
+			expect(dropup).toBeDefined();
+		});
+	});
 });
 
 @Pipe({
