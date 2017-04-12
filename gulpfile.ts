@@ -165,7 +165,7 @@
 	});
 
 	gulp.task('publish-meta', () => {
-		let meta = require('./package.json');
+		let meta = reload('./package.json');
 		let output = {};
 
 		[
@@ -198,4 +198,12 @@
 			});
 	});
 	//</editor-fold>
+
+	function reload(module) {
+		// Uncache module:
+		delete require.cache[require.resolve(module)];
+
+		// Require module again:
+		return require(module);
+	}
 })();
