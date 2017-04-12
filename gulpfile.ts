@@ -7,15 +7,30 @@
 
 		// Gulp & plugins:
 		gulp = require('gulp'),
+		autoprefixer = require('gulp-autoprefixer'),
+		cleanCss = require('gulp-clean-css'),
 		gutil = require('gulp-util'),
+		header = require('gulp-header'),
+		rename = require('gulp-rename'),
 		tslint = require('gulp-tslint'),
 		gulpFile = require('gulp-file'),
+		sass = require('gulp-sass'),
+		sassImportOnce = require('node-sass-import-once'),
 
 		// Project-specific:
-		//pkg = require('./package.json'),
+		pkg = require('./package.json'),
+		banner = function () { // Lazy evaluation as interpolated values may have been updated between tasks!
+			let lb = '\r';
+			return `/*!${
+				lb} * ${pkg.title} - v${pkg.version}${
+				lb} * ${pkg.homepage}${
+				lb} * Copyright (c) 2017 ${pkg.organization.name} (${pkg.organization.url})${
+				lb} */${lb}${lb}`;
+		},
 		paths = {
-			src: 'src/**/*.ts',
-			showcase: 'showcase/**/*.ts',
+			src: 'src/',
+			sass: 'src/sass/',
+			showcase: 'showcase/',
 			publish: 'dist/'
 		},
 
@@ -40,7 +55,7 @@
 	});
 
 	gulp.task('lint', () => {
-		return gulp.src([paths.src, paths.showcase])
+		return gulp.src([paths.src + '**/*.ts', paths.showcase + '**/*.ts'])
 			.pipe(tslint(<any>{configuration: require('./tslint.json'), formatter: 'prose'}))
 			.pipe(tslint.report({summarizeFailureOutput: true}));
 	});
@@ -73,6 +88,8 @@
 		return runSequence(
 			'release',
 			'publish-clean',
+			'publish-copy',
+			'publish-css',
 			'publish-compile',
 			'publish-bundle',
 			'publish-meta',
@@ -95,6 +112,41 @@
 
 	gulp.task('publish-clean', () => {
 		return del(paths.publish);
+	});
+
+	gulp.task('publish-copy', () => {
+		return gulp.src([
+			paths.sass + '**/*'
+		], {base: paths.src})
+		.pipe(gulp.dest(paths.publish));
+	});
+
+	gulp.task('publish-css', () => {
+		return gulp.src([
+			paths.sass + 'oblique-reactive.scss'
+		])
+		//.pipe(sourcemaps.init())
+		.pipe(sass({
+			importer: sassImportOnce,
+			importOnce: {
+				index: false,
+				css: false
+			}
+		}).on('error', sass.logError))
+		.pipe(autoprefixer({
+			browsers: ['last 2 versions', 'ie >= 11'],
+		}))
+		.pipe(header(banner()))
+		//.pipe(sourcemaps.write(paths.dist.css + 'maps'))
+		.pipe(gulp.dest(paths.publish + 'css/'))
+		.pipe(cleanCss({
+			keepSpecialComments: 0
+		}))
+		.pipe(rename({
+			suffix: '.min',
+		}))
+		.pipe(header(banner()))
+		.pipe(gulp.dest(paths.publish + 'css/'));
 	});
 
 	gulp.task('publish-compile', (done) => {
