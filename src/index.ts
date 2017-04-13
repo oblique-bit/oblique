@@ -9,7 +9,9 @@ import {SchemaValidationModule} from './schema-validation';
 import {SpinnerModule} from './spinner';
 import {TopControlModule} from './top-control';
 import {UnsavedChangesModule} from './unsaved-changes';
-import {NavigatorModule} from './navigator/navigator.module';
+import {NavigatorModule} from './navigator';
+import {ObliqueFormGroupModule} from './form-group';
+import {ErrorMessagesModule} from './error-messages/error-messages.module';
 
 export * from './datepicker';
 export * from './document-meta';
@@ -24,10 +26,12 @@ export * from './unsaved-changes';
 const OBLIQUE_MODULES = [
 	DatepickerModule,
 	DocumentMetaModule,
+	ErrorMessagesModule,
 	MultiselectModule,
 	NavigableModule,
 	NavigatorModule,
 	NotificationModule,
+	ObliqueFormGroupModule,
 	SpinnerModule,
 	SchemaValidationModule,
 	TopControlModule,
@@ -38,10 +42,12 @@ const OBLIQUE_MODULES = [
 	imports: [
 		DatepickerModule.forRoot(),
 		DocumentMetaModule.forRoot(),
+		ErrorMessagesModule.forRoot(),
 		MultiselectModule.forRoot(),
 		NavigableModule.forRoot(),
 		NavigatorModule.forRoot(),
 		NotificationModule.forRoot(),
+		ObliqueFormGroupModule.forRoot(),
 		SchemaValidationModule.forRoot(),
 		SpinnerModule.forRoot(),
 		TopControlModule.forRoot(),

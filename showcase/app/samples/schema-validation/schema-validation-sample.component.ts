@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 
 @Component({
     selector: 'app-schema-validation',
-    templateUrl: './schema-validation.component.html',
-    styleUrls: ['./schema-validation.component.css']
+    templateUrl: './schema-validation-sample.component.html',
+    styleUrls: ['./schema-validation-sample.component.css']
 })
 export class SchemaValidationComponent {
 
@@ -23,7 +23,7 @@ export class SchemaValidationComponent {
             },
             'text': {
                 'type': 'string',
-                'minLength': 1,
+                'minLength': 3,
                 'maxLength': 64
             },
             'number': {

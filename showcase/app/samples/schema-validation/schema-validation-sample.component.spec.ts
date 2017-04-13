@@ -3,7 +3,7 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 
-import {SchemaValidationComponent} from './schema-validation.component';
+import {SchemaValidationComponent} from './schema-validation-sample.component';
 import {MockTranslatePipe} from '../../../../testhelpers';
 import {SchemaValidationModule} from '../../../../src/schema-validation/schema-validation.module';
 

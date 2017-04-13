@@ -3,7 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 
 import {DatepickerComponent} from './datepicker/datepicker.component';
 import {NavigableSampleComponent} from './navigable/navigable-sample.component';
-import {SchemaValidationComponent} from './schema-validation/schema-validation.component';
+import {SchemaValidationComponent} from './schema-validation/schema-validation-sample.component';
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
 
 const samplesRoutes: Routes = [

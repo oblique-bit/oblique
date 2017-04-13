@@ -143,6 +143,7 @@
 			}
 		},
 		"validation": {
+			"minLength": "Please enter at least {{limit}} characters",
 			"basic": {
 				"required": "Pflichtfeld, bitte machen Sie eine Angabe",
 				"email": "Ungültiges Format, bitte geben Sie eine gültige E-Mail Adresse an",

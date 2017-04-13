@@ -6,7 +6,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {ObliqueModule} from '../../../src/index';
-import {SchemaValidationComponent} from './schema-validation/schema-validation.component';
+import {SchemaValidationComponent} from './schema-validation/schema-validation-sample.component';
 import {DatepickerComponent} from './datepicker/datepicker.component';
 import {SamplesRoutingModule} from './samples-routing.module';
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
