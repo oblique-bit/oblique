@@ -2,7 +2,6 @@
 
 Reactive web template powered by [ObliqueUI](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-ui/) and [Angular](https://github.com/angular/angular). ObliqueReactive uses [npm](https://www.npmjs.com/), [Gulp](https://github.com/gulpjs/gulp/), [Less](http://lesscss.org/), [Browserify](http://browserify.org/) and [Handlebars](http://handlebarsjs.com/) to fetch dependencies, compile & build assets and compose the pages.
 
-
 ## Using as dependency
 
 TODO: Update this, if we integrated the newest version in O2R-Seed
@@ -93,7 +92,7 @@ And add the TypeScript specific libraries and configs described in the [Configur
 
 3. Customize:
 
-> Open [project.conf.ts](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/project.conf.ts) and adapt this configuration to fit your project requirements.
+> Open [project.conf.js](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/project.conf.js) and adapt this configuration to fit your project requirements.
 
 ### Troubleshooting dependencies
 
@@ -101,24 +100,9 @@ Should you encounter problems with installing dependencies or running Gulp comma
 
 ## Build & Run the showcase
 
-ObliqueReactive supports software environments by launching specific [Gulp](https://github.com/gulpjs/gulp/) tasks.
-
-The project template has been configured to trigger the following 2 environments:
-
-* **dev**: default *development* environment which provides full debugging support through minimal packaging (resources are not minificated neither concatenated).
-* **prod**: custom *production* environment which provides partial debugging support but an optimized & release-ready packaging (resources are minificated and concatenated).
-
 ### Development tasks
 
-	gulp
-
-*or*
-
-	gulp default
-
-*or*
-
-	gulp run-dev
+	npm start
 
 _This task builds the project, runs the client application by starting a local server and watches for file changes._
 
@@ -138,7 +122,7 @@ _Same as `run-dev`, except that it will serve optimized resources._
 
 If you ever need to add your own dependencies, here's how to do it.
 
-### npm (Build) dependencies
+### npm (build) dependencies
 
 To install a new npm dependency, you can simply type
 
