@@ -10,7 +10,7 @@ import {NgbTabChangeEvent} from '@ng-bootstrap/ng-bootstrap';
 	// styleUrls: ['./unsaved-changes.component.css']
 })
 export class UnsavedChangesComponent {
-	public tabs: {one: {}; two: {}; three: {}};
+	public tabs: {one: {}; two: {}; three: {}, four: {}, five: {}, six: {}};
 
 	constructor(private notificationService: NotificationService, private unsavedChangesService: UnsavedChangesService) {}
 
@@ -18,12 +18,19 @@ export class UnsavedChangesComponent {
 		this.tabs = {
 			one: {},
 			two: {},
-			three: {}
+			three: {},
+			four: {},
+			five: {},
+			six: {}
 		};
 	}
 
 	tabChange(event: NgbTabChangeEvent) {
 		this.unsavedChangesService.checkForTabChanges(event);
+	}
+
+	nestedFormTabChange(event: NgbTabChangeEvent) {
+		this.unsavedChangesService.canDeactivate();
 	}
 
 	save(form: NgForm) {
