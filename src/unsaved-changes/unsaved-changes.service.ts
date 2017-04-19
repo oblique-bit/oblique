@@ -1,7 +1,8 @@
-import {Injectable, HostListener} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import 'rxjs/add/operator/filter';
+import {NgbTabChangeEvent} from '@ng-bootstrap/ng-bootstrap';
 
 //TODO: Handle modals
 @Injectable()
@@ -13,34 +14,29 @@ export class UnsavedChangesService {
 		window.addEventListener('beforeunload', (e) => this.onUnload(e));
 	}
 
-	watch(form: ControlContainer, tab) {
-		console.log(form);
-		console.log(tab);
+	watch(form: ControlContainer, tab?: string): void {
 		this.forms.push(form);
-		// if (tab)
-		// 	this.tabs
+		if (tab) {
+			this.tabs[tab] = form;
+		}
 	}
 
 
-	checkForChanges(event) {
-		if (this.hasPendingChanges() && !confirm(this.message()))
-			event.preventDefault();
+	checkForTabChanges(event: NgbTabChangeEvent): void {
+		if (this.hasPendingChanges()) {
+			if (!confirm(this.message()))
+				event.preventDefault();
+			else if (this.tabs[event.activeId]) {
+				this.tabs[event.activeId].resetForm();
+			}
+		}
 	}
 
-	hasUnsavedChanges() {
-		return this.hasPendingChanges() || confirm(this.message());
-	}
-
-	watchTab(tab) {
-		console.log(tab);
-		// this.tabs[];
-	}
-
-	unWatch(form: ControlContainer) {
+	unWatch(form: ControlContainer): void {
 		this.forms.splice(this.forms.indexOf(form));
 	}
 
-	canDeactivate(nestedForm?: ControlContainer) {
+	canDeactivate(nestedForm?: ControlContainer): boolean {
 		if ((nestedForm && nestedForm.dirty) || this.hasPendingChanges()) {
 			return window.confirm(this.message());
 		}
@@ -58,7 +54,7 @@ export class UnsavedChangesService {
 		return null;
 	}
 
-	private hasPendingChanges() {
+	private hasPendingChanges(): boolean {
 		for (const form of this.forms) {
 			if (form.dirty) {
 				return true;
@@ -67,7 +63,7 @@ export class UnsavedChangesService {
 		return false;
 	}
 
-	private message() {
+	private message(): string {
 		return this.translateService.instant('i18n.validation.unsavedChanges');
 	}
 }
