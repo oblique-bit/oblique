@@ -1,8 +1,6 @@
 import {Component} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {NotificationService} from '../../../../src/notification/notification.service';
-import {UnsavedChangesService} from '../../../../src/unsaved-changes/unsaved-changes.service';
-import {NgbTabChangeEvent} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
 	selector: 'app-unsaved-changes',
@@ -12,7 +10,7 @@ import {NgbTabChangeEvent} from '@ng-bootstrap/ng-bootstrap';
 export class UnsavedChangesComponent {
 	public tabs: {one: {}; two: {}; three: {}, four: {}, five: {}, six: {}};
 
-	constructor(private notificationService: NotificationService, private unsavedChangesService: UnsavedChangesService) {}
+	constructor(private notificationService: NotificationService) {}
 
 	ngOnInit() {
 		this.tabs = {
@@ -23,14 +21,6 @@ export class UnsavedChangesComponent {
 			five: {},
 			six: {}
 		};
-	}
-
-	tabChange(event: NgbTabChangeEvent) {
-		this.unsavedChangesService.checkForTabChanges(event);
-	}
-
-	nestedFormTabChange(event: NgbTabChangeEvent) {
-		this.unsavedChangesService.canDeactivate();
 	}
 
 	save(form: NgForm) {

@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import 'rxjs/add/operator/filter';
-import {NgbTabChangeEvent} from '@ng-bootstrap/ng-bootstrap';
 
 //TODO: Handle modals
 @Injectable()
@@ -14,6 +13,8 @@ export class UnsavedChangesService {
 		window.addEventListener('beforeunload', (e) => this.onUnload(e));
 	}
 
+
+
 	watch(form: ControlContainer, tab?: string): void {
 		this.forms.push(form);
 		if (tab) {
@@ -21,9 +22,9 @@ export class UnsavedChangesService {
 		}
 	}
 
-	checkForTabChanges(event: NgbTabChangeEvent): void {
-		if (this.tabs[event.activeId] && this.tabs[event.activeId].dirty && !confirm(this.message()))
-			event.preventDefault();
+	checkForTabChanges(): boolean {
+		return true;
+		// return (this.tabs[event.activeId] && this.tabs[event.activeId].dirty && !confirm(this.message()));
 	}
 
 	unWatch(form: ControlContainer): void {
