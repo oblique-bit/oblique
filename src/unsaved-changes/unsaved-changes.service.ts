@@ -21,9 +21,8 @@ export class UnsavedChangesService {
 		}
 	}
 
-
 	checkForTabChanges(event: NgbTabChangeEvent): void {
-		if (this.hasPendingChanges()) {
+		if (this.hasPendingChangesInTabs()) {
 			if (!confirm(this.message()))
 				event.preventDefault();
 			else if (this.tabs[event.activeId]) {
@@ -57,6 +56,15 @@ export class UnsavedChangesService {
 	private hasPendingChanges(): boolean {
 		for (const form of this.forms) {
 			if (form.dirty) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private hasPendingChangesInTabs(): boolean {
+		for (const form in this.tabs) {
+			if (this.tabs[form].dirty) {
 				return true;
 			}
 		}
