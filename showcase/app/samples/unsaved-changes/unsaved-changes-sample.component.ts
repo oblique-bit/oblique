@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {NgForm} from '@angular/forms';
 import {NotificationService} from '../../../../src/notification/notification.service';
 
 @Component({
@@ -7,7 +8,7 @@ import {NotificationService} from '../../../../src/notification/notification.ser
 	// styleUrls: ['./unsaved-changes.component.css']
 })
 export class UnsavedChangesComponent {
-	private tabs: {one: {}; two: {}; three: {}};
+	public tabs: {one: {}; two: {}; three: {}};
 
 	constructor(private notificationService: NotificationService) {}
 
@@ -19,10 +20,9 @@ export class UnsavedChangesComponent {
 		};
 	}
 
-	save(form) {
-		console.log(form);
+	save(form: NgForm) {
 		if (form.valid) {
-			this.ngOnInit();
+			form.resetForm();
 			this.notificationService.success('Form has been successfully saved!');
 		}
 		return false;
