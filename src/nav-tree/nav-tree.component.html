@@ -1,0 +1,27 @@
+<ul class="nav nav-tree nav-bordered nav-indented nav-hover" role="tree">
+	<li class="nav-item nav-header" role="presentation" *ngIf="header">
+		<h3 class="nav-header-title">{{header}}</h3>
+	</li>
+	<li>{{matchCount2}}</li>
+	<ng-template ngFor [ngForOf]="items" let-item>
+		<li class="nav-item open" role="presentation"
+		    *ngIf="visible(item)">
+			<a class="nav-link" role="treeitem" aria-selected="false"
+			   [routerLink]="item.id" routerLinkActive="active"
+			   (click)="item.collapsed = !item.collapsed"
+			   [class.collapsed]="item.collapsed"
+			   [attr.data-toggle]="item.items ? 'collapse' : null"
+			   [attr.disabled]="item.disabled === true || null"
+			   [attr.aria-controls]="item.items ? itemKey(item) : null">
+				<span [innerHTML]="labelFormatter(item.label)"></span>
+			</a>
+			<div id="#{{itemKey(item)}}" class="collapse show"
+			     *ngIf="item.items" [ngbCollapse]="item.collapsed">
+				<nav-tree [items]="item.items"
+				          [prefix]="itemKey(item)"
+				          [filterPattern]="filterPattern"
+				          [labelFormatter]="labelFormatter"></nav-tree>
+			</div>
+		</li>
+	</ng-template>
+</ul>

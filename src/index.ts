@@ -4,17 +4,20 @@ import {DatepickerModule} from './datepicker/datepicker.module';
 import {DocumentMetaModule} from './document-meta/document-meta.module';
 import {MultiselectModule} from './multiselect';
 import {NavigableModule} from './navigable';
+import {NavigatorModule} from './navigator/navigator.module';
+import {NavTreeModule} from './nav-tree';
 import {NotificationModule} from './notification';
 import {SchemaValidationModule} from './schema-validation';
 import {SpinnerModule} from './spinner';
 import {TopControlModule} from './top-control';
 import {UnsavedChangesModule} from './unsaved-changes';
-import {NavigatorModule} from './navigator/navigator.module';
 
 export * from './datepicker';
 export * from './document-meta';
 export * from './multiselect';
 export * from './navigable';
+export * from './navigator';
+export * from './nav-tree';
 export * from './notification';
 export * from './schema-validation';
 export * from './spinner';
@@ -27,6 +30,7 @@ const OBLIQUE_MODULES = [
 	MultiselectModule,
 	NavigableModule,
 	NavigatorModule,
+	NavTreeModule,
 	NotificationModule,
 	SpinnerModule,
 	SchemaValidationModule,
@@ -35,18 +39,7 @@ const OBLIQUE_MODULES = [
 ];
 
 @NgModule({
-	imports: [
-		DatepickerModule.forRoot(),
-		DocumentMetaModule.forRoot(),
-		MultiselectModule.forRoot(),
-		NavigableModule.forRoot(),
-		NavigatorModule.forRoot(),
-		NotificationModule.forRoot(),
-		SchemaValidationModule.forRoot(),
-		SpinnerModule.forRoot(),
-		TopControlModule.forRoot(),
-		UnsavedChangesModule.forRoot()
-	],
+	imports: OBLIQUE_MODULES.map((module) => module.forRoot()),
 	exports: OBLIQUE_MODULES
 })
 export class ObliqueRootModule {

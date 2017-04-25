@@ -1,0 +1,47 @@
+{
+  "navTree": {
+    "label": "Navigation Tree",
+    "items": [
+      {
+        "id": "icons",
+        "label": "Icons (Font Awesome & Glyphicons)"
+      },
+      {
+        "id": "navs",
+        "label": "Navigation",
+        "items": [
+          {
+            "id": "usage",
+            "label": "Usage"
+          },
+          {
+            "id": "navs-variants",
+            "label": "Variants",
+            "items": [
+              {
+                "id": "vertical",
+                "label": "Vertical navigation"
+              },
+              {
+                "id": "hover",
+                "label": "Hoverable navigation items"
+              },
+              {
+                "id": "indented",
+                "label": "Indented navigation"
+              },
+              {
+                "id": "bordered",
+                "label": "Bordered navigation"
+              },
+              {
+                "id": "tree",
+                "label": "Tree navigation"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
