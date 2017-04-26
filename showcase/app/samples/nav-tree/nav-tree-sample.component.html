@@ -1,6 +1,6 @@
 <div class="default-layout">
 	<h2 class="page-header">{{'i18n.routes.samples.nav-tree.title' | translate}}</h2>
-	<p class="lead">Recursive navigation trees with for label formatting, submenu collapsing and item counting (TODO).</p>
+	<p class="lead">Recursive navigation trees with label formatting, item link building & submenu collapsing.</p>
 	<div class="row">
 		<div class="col-6">
 			<div class="card">
@@ -8,22 +8,46 @@
 					<h3 class="card-title">Preview</h3>
 				</div>
 				<div class="card-block">
-					<nav-tree [items]="items"
+					<nav-tree #navTreeControl="navTree"
+					          [items]="items"
 					          [prefix]="'nav-tree-sample'"
-					          [header]="search.pattern ? ('i18n.common.search.results' | translate) : null"
-					          [filterPattern]="search.pattern"></nav-tree>
+					          [filterPattern]="filter.pattern"
+					          [linkBuilder]="linkBuilder">
+						<li class="nav-item nav-header" role="presentation">
+							<h3 class="nav-header-title" *ngIf="!filter.pattern">Menu Sample</h3>
+							<h3 class="nav-header-title" *ngIf="filter.pattern">{{'i18n.common.search.results' | translate}}</h3>
+						</li>
+					</nav-tree>
 				</div>
 			</div>
 		</div>
 		<div class="col-6">
-			<div class="card">
+			<div class="card mb-3">
 				<div class="card-header">
-					<h3 class="card-title">Selected navigation</h3>
+					<h3 class="card-title">Tools</h3>
 				</div>
 				<div class="card-block">
-					<span class="fa fa-link"></span> <router-outlet></router-outlet>
+					<h4>Filter</h4>
+					<div class="control-action">
+						<input class="form-control" type="text"
+						       placeholder="{{'i18n.common.search.placeholder' | translate}}"
+						       [(ngModel)]="filter.pattern" name="filter" #filterControl>
+						<button class="control-action-trigger" type="button"
+						        (click)="filter.clear(); filterControl.focus();">
+							<span class="fa fa-times-circle"></span>
+							<span class="sr-only">{{'i18n.common.clear' | translate}}</span>
+						</button>
+					</div>
+					<h4>Toggle</h4>
+					<button class="btn btn-default" role="button" (click)="navTreeControl.collapseAll()">
+						<span class="fa fa-compress"></span> {{'i18n.common.collapseAll' | translate}}
+					</button>
+					<button class="btn btn-default" role="button" (click)="navTreeControl.expandAll()">
+						<span class="fa fa-expand"></span> {{'i18n.common.expandAll' | translate}}
+					</button>
 				</div>
 			</div>
+			<router-outlet></router-outlet>
 		</div>
 	</div>
 </div>

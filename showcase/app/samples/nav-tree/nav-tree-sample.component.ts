@@ -8,34 +8,44 @@ import {NavTreeItemModel} from '../../../../src/nav-tree/nav-tree-item.model';
 })
 export class NavTreeSampleComponent implements OnInit {
 
-	public search = {
+	public items: Array<NavTreeItemModel>;
+
+	public filter = {
 		pattern: null,
-		results: [],
-		count: 0,
 		clear: () => {
-			this.search.pattern = null;
+			this.filter.pattern = null;
 		}
 	};
 
-	public items: Array<NavTreeItemModel>;
+	public linkBuilder(item: NavTreeItemModel) {
+		return `item-${item.id}`;
+	}
 
 	constructor(private route: ActivatedRoute) {
 	}
 
 	ngOnInit() {
-		this.route.data
-			.subscribe((data: {sample: any}) => {
-				this.items = data.sample.navTree.items.map((item: any) => {
-					return new NavTreeItemModel(item);
-				});
+		this.route.data.subscribe((data: {sample: any}) => {
+			this.items = data.sample.navTree.items.map((item: any) => {
+				return new NavTreeItemModel(item);
 			});
+		});
 	}
 }
 
 @Component({
 	selector: 'nav-tree-detail-sample',
 	template: `
-		<code>{{id}}</code>
+		<div *ngIf="id" class="card">
+			<div class="card-header">
+				<h3 class="card-title">Output</h3>
+			</div>
+			<div class="card-block">
+				<h4>RouterOutlet</h4>
+				<span class="fa fa-link"></span>
+				<code>{{id}}</code>
+			</div>
+		</div> 
 	`
 })
 export class NavTreeDetailSampleComponent implements OnInit {

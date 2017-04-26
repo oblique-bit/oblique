@@ -87,6 +87,8 @@
       "select": "Select please.",
       "actions": "Actions",
       "action": "Action",
+      "collapseAll": "Collapse all",
+      "expandAll": "Expand all",
       "pager": {
         "pagesLengthBefore": "Displaying",
         "pagesLengthAfter": "Results per page",
@@ -99,6 +101,11 @@
           "dd.MM.yyyy": "dd.mm.yyyy",
           "d!.M!.yyyy": "dd.mm.yyyy"
         }
+      },
+      "search": {
+        "noResults": "No results...",
+        "placeholder": "Search by term",
+        "results": "Result(s)"
       }
     },
     "labels": {

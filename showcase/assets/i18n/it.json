@@ -87,6 +87,8 @@
       "select": "[it] Select please.",
       "actions": "[it] Actions",
       "action": "[it] Action",
+      "collapseAll": "Ridurre tutto",
+      "expandAll": "Espandere tutto",
       "pager": {
         "pagesLengthBefore": "[it] Displaying",
         "pagesLengthAfter": "[it] Results per page",
@@ -99,6 +101,11 @@
           "dd.MM.yyyy": "gg.mm.aaaa",
           "d!.M!.yyyy": "gg.mm.aaaa"
         }
+      },
+      "search": {
+        "noResults": "Nessun risultato",
+        "placeholder": "Ricerca per temi",
+        "results": "Risultato"
       }
     },
     "labels": {

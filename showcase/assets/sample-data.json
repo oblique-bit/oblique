@@ -3,40 +3,56 @@
     "label": "Navigation Tree",
     "items": [
       {
-        "id": "icons",
-        "label": "Icons (Font Awesome & Glyphicons)"
+        "id": "tree-item-1",
+        "label": "Tree item 1"
       },
       {
-        "id": "navs",
-        "label": "Navigation",
+        "id": "tree-item-2",
+        "label": "Tree item 2",
         "items": [
           {
-            "id": "usage",
-            "label": "Usage"
+            "id": "tree-item-2-1",
+            "label": "Tree item 2.1"
           },
           {
-            "id": "navs-variants",
-            "label": "Variants",
+            "id": "tree-item-2-2",
+            "label": "Tree item 2.2",
             "items": [
               {
-                "id": "vertical",
-                "label": "Vertical navigation"
+                "id": "tree-item-2-2-1",
+                "label": "Tree item 2.2.1"
               },
               {
-                "id": "hover",
-                "label": "Hoverable navigation items"
+                "id": "tree-item-2-2-2",
+                "label": "Tree item 2.2.2"
               },
               {
-                "id": "indented",
-                "label": "Indented navigation"
+                "id": "tree-item-2-2-3",
+                "label": "Tree item 2.2.3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "tree-item-3",
+        "label": "Tree item 3",
+        "items": [
+          {
+            "id": "tree-item-3-1",
+            "label": "Tree item 3.1"
+          },
+          {
+            "id": "tree-item-3-2",
+            "label": "Tree item 3.2",
+            "items": [
+              {
+                "id": "tree-item-3-2-1",
+                "label": "Tree item 3.2.1"
               },
               {
-                "id": "bordered",
-                "label": "Bordered navigation"
-              },
-              {
-                "id": "tree",
-                "label": "Tree navigation"
+                "id": "tree-item-3-2-2",
+                "label": "Tree item 3.2.2"
               }
             ]
           }

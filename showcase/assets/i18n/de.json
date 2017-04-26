@@ -87,6 +87,8 @@
       "select": "Wählen bitte.",
       "actions": "Aktionen",
       "action": "Aktion",
+      "collapseAll": "Alles zu",
+      "expandAll": "Alles auf",
       "pager": {
         "pagesLengthBefore": "Anzeige von",
         "pagesLengthAfter": "Treffen pro Seite",
@@ -99,6 +101,11 @@
           "dd.MM.yyyy": "TT.MM.JJJJ",
           "d!.M!.yyyy": "TT.MM.JJJJ"
         }
+      },
+      "search": {
+        "noResults": "Keine Treffer",
+        "placeholder": "Suche nach Begriff",
+        "results": "Suchtreffen"
       }
     },
     "labels": {

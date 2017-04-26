@@ -1,8 +1,18 @@
-
-export class NavTreeItemModel {
+/**
+ * Model for the `NavTreeComponent` items.
+ *
+ * @see NavTreeComponent
+ */
+export interface NavTreeItemModel {
 	label: string;
 	items?: NavTreeItemModel[];
 	id?: string;
+	disabled?: boolean;
+	collapsed?: boolean;
+}
+
+export class NavTreeItemModel implements NavTreeItemModel {
+
 	disabled? = false;
 	collapsed? = false;
 
