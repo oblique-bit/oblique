@@ -131,7 +131,7 @@ describe('NavTreeComponent', () => {
 
 	it('should highlight patterns on filtered navigation items', () => {
 		// Restore default label formatter:
-		component.labelFormatter = NavTreeComponent.DEFAULTS.LABEL_FORMATTER;
+		component.labelFormatter = NavTreeComponent.DEFAULTS.LABEL_FORMATTER();
 		component.filterPattern = 'C'; // Filter on 'C' pattern
 		fixture.detectChanges();
 

@@ -1,10 +1,49 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
-import {NavTreeItemModel} from './nav-tree-item.model';
+import {INavTreeItemModel} from './nav-tree-item.model';
+
+// FIXME: refactor useless factory when https://github.com/angular/angular/issues/14485
+export function defaultLabelFormatterFactory() {
+	const formatter = (item: INavTreeItemModel, filterPattern: string) => {
+		return !filterPattern ? item.label : item.label.replace(
+			new RegExp(filterPattern, 'ig'),
+			(text) => {
+				return `<span class="${NavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`;
+			}
+		);
+	};
+	return formatter;
+}
 
 @Component({
 	selector: 'nav-tree',
-	templateUrl: './nav-tree.component.html',
 	exportAs: 'navTree',
+	template: `
+		<ul class="nav nav-tree nav-bordered nav-indented nav-hover" role="tree">
+			<ng-content></ng-content>
+			<ng-template ngFor [ngForOf]="items" let-item>
+				<li class="nav-item open" role="presentation"
+				    *ngIf="visible(item)">
+					<a class="nav-link" role="treeitem" aria-selected="false"
+					   [routerLink]="linkBuilder(item)" routerLinkActive="active"
+					   (click)="item.collapsed = !item.collapsed"
+					   [class.collapsed]="item.collapsed"
+					   [attr.data-toggle]="item.items ? 'collapse' : null"
+					   [attr.disabled]="item.disabled === true || null"
+					   [attr.aria-controls]="item.items ? itemKey(item) : null">
+						<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
+					</a>
+					<div id="#{{itemKey(item)}}" class="collapse show"
+					     *ngIf="item.items" [ngbCollapse]="item.collapsed">
+						<nav-tree [items]="item.items"
+						          [prefix]="itemKey(item)"
+						          [filterPattern]="filterPattern"
+						          [labelFormatter]="labelFormatter"
+						          [linkBuilder]="linkBuilder"></nav-tree>
+					</div>
+				</li>
+			</ng-template>
+		</ul>
+	`,
 	// Ensure CSS styles are added to global styles as search pattern highlighting is done at runtime:
 	// (see also: https://angular.io/docs/ts/latest/guide/component-styles.html#!#view-encapsulation)
 	encapsulation: ViewEncapsulation.None,
@@ -19,18 +58,11 @@ export class NavTreeComponent {
 
 	public static DEFAULTS = {
 		HIGHLIGHT: 'nav-tree-pattern-highlight',
-		LABEL_FORMATTER: (item: NavTreeItemModel, filterPattern: string) => {
-			return !filterPattern ? item.label : item.label.replace(
-				new RegExp(filterPattern, 'ig'),
-				function (text) {
-					return `<span class="${NavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`;
-				}
-			);
-		}
+		LABEL_FORMATTER: defaultLabelFormatterFactory
 	};
 
 	@Input()
-	items: Array<NavTreeItemModel>;
+	items: Array<INavTreeItemModel>;
 
 	@Input()
 	prefix = 'nav-tree';
@@ -39,33 +71,33 @@ export class NavTreeComponent {
 	filterPattern: string;
 
 	@Input()
-	labelFormatter: (item: NavTreeItemModel, filterPattern) => string = NavTreeComponent.DEFAULTS.LABEL_FORMATTER;
+	labelFormatter: (item: INavTreeItemModel, filterPattern) => string = NavTreeComponent.DEFAULTS.LABEL_FORMATTER();
 
 	@Input()
-	linkBuilder(item: NavTreeItemModel): string {
+	linkBuilder(item: INavTreeItemModel): string {
 		return item.id;
 	};
 
 	@Input()
-	patternMatcher(item: NavTreeItemModel, pattern: string): boolean {
+	patternMatcher(item: INavTreeItemModel, pattern: string): boolean {
 		let match = new RegExp(pattern, 'gi').test(item.label);
 		return match || (item.items || []).some((subItem) => {
 				return this.patternMatcher(subItem, pattern);
 			});
 	}
 
-	visible(item: NavTreeItemModel) {
+	visible(item: INavTreeItemModel) {
 		return !this.filterPattern || this.patternMatcher(item, this.filterPattern);
 	}
 
-	itemKey(item: NavTreeItemModel) {
+	itemKey(item: INavTreeItemModel) {
 		return this.prefix + '-' + item.id;
 	}
 
-	collapse(items: NavTreeItemModel[], all: boolean = false) {
+	collapse(items: INavTreeItemModel[], all: boolean = false) {
 		items
 			.filter((item) => item.items)
-			.forEach((item: NavTreeItemModel) => {
+			.forEach((item: INavTreeItemModel) => {
 				item.collapsed = true;
 				if (all) {
 					this.collapse(item.items, all);
@@ -73,10 +105,10 @@ export class NavTreeComponent {
 			});
 	};
 
-	expand(items: NavTreeItemModel[], all: boolean = false) {
+	expand(items: INavTreeItemModel[], all: boolean = false) {
 		items
 			.filter((item) => item.items)
-			.forEach((item: NavTreeItemModel) => {
+			.forEach((item: INavTreeItemModel) => {
 				item.collapsed = false;
 				if (all) {
 					this.expand(item.items, all);

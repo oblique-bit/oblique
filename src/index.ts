@@ -39,7 +39,19 @@ const OBLIQUE_MODULES = [
 ];
 
 @NgModule({
-	imports: OBLIQUE_MODULES.map((module) => module.forRoot()),
+	imports: [
+		DatepickerModule.forRoot(),
+		DocumentMetaModule.forRoot(),
+		MultiselectModule.forRoot(),
+		NavigableModule.forRoot(),
+		NavigatorModule.forRoot(),
+		NavTreeModule.forRoot(),
+		NotificationModule.forRoot(),
+		SpinnerModule.forRoot(),
+		SchemaValidationModule.forRoot(),
+		TopControlModule.forRoot(),
+		UnsavedChangesModule.forRoot()
+	],
 	exports: OBLIQUE_MODULES
 })
 export class ObliqueRootModule {
