@@ -87,13 +87,20 @@
 	gulp.task('publish', (callback) => {
 		return runSequence(
 			'release',
+			'publish-dist',
+			'publish-module',
+			callback
+		);
+	});
+
+	gulp.task('publish-dist', (callback) => {
+		return runSequence(
 			'publish-clean',
 			'publish-copy',
 			'publish-css',
 			'publish-compile',
 			'publish-bundle',
 			'publish-meta',
-			'publish-module',
 			callback
 		);
 	});

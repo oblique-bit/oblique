@@ -38,7 +38,8 @@
     "test": "./node_modules/.bin/karma start ./karma.conf.js",
     "prepree2e": "npm start",
     "pree2e": "./node_modules/.bin/webdriver-manager update --standalone false --gecko false --quiet",
-    "e2e": "./node_modules/.bin/protractor ./protractor.conf.js"
+    "e2e": "./node_modules/.bin/protractor ./protractor.conf.js",
+    "link-dist": "./node_modules/.bin/gulp publish-dist && npm link ./dist"
   },
   "dependencies": {
     "@angular/animations": "^4.0.1",
