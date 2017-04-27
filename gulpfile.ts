@@ -59,9 +59,12 @@
 	});
 
 	gulp.task('lint', () => {
-		return gulp.src([paths.src + '**/*.ts', paths.showcase + '**/*.ts'])
-			.pipe(tslint(<any>{configuration: require('./tslint.json'), formatter: 'prose'}))
-			.pipe(tslint.report({summarizeFailureOutput: true}));
+		return gulp.src([
+			paths.src + '**/*.ts',
+			paths.showcase + '**/*.ts'
+		])
+		.pipe(tslint(<any>{configuration: require('./tslint.json'), formatter: 'prose'}))
+		.pipe(tslint.report({summarizeFailureOutput: true}));
 	});
 
 	gulp.task('test', (done) => {
