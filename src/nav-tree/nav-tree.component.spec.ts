@@ -10,19 +10,22 @@ import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
 	template: `
-		<nav-tree [items]="items"
-		          [prefix]="prefix"
-		          [filterPattern]="filterPattern"
-		          [labelFormatter]="labelFormatter"
-		          [linkBuilder]="linkBuilder"></nav-tree>`
+		<or-nav-tree [items]="items"
+		             [prefix]="prefix"
+		             [variant]="variant"
+		             [filterPattern]="filterPattern"
+		             [labelFormatter]="labelFormatter"
+		             [linkBuilder]="linkBuilder"></or-nav-tree>`
 })
 class TestComponent {
 	items = [
 		new NavTreeItemModel({id: 'A', label: 'A - Label'}),
-		new NavTreeItemModel({id: 'B', label: 'B - Label',
+		new NavTreeItemModel({
+			id: 'B', label: 'B - Label',
 			items: [
 				new NavTreeItemModel({id: 'B-1', label: 'B.1 - Label'}),
-				new NavTreeItemModel({id: 'B-2', label: 'B.2 - Label',
+				new NavTreeItemModel({
+					id: 'B-2', label: 'B.2 - Label',
 					items: [
 						new NavTreeItemModel({id: 'B2-1', label: 'B.2.1 - Label'}),
 						new NavTreeItemModel({id: 'B2-2', label: 'B.2.2 - Label'}),
@@ -32,7 +35,8 @@ class TestComponent {
 				new NavTreeItemModel({id: 'B-3', label: 'B.3 - Label'})
 			]
 		}),
-		new NavTreeItemModel({id: 'C', label: 'C - Label',
+		new NavTreeItemModel({
+			id: 'C', label: 'C - Label',
 			items: [
 				new NavTreeItemModel({id: 'C-1', label: 'C.1 - Label'}),
 				new NavTreeItemModel({id: 'C-2', label: 'C.2 - Label'}),
@@ -41,8 +45,8 @@ class TestComponent {
 		})
 	];
 
-	prefix= 'nav-tree-test';
-
+	prefix = 'nav-tree-test';
+	variant = NavTreeComponent.DEFAULTS.VARIANT;
 	filterPattern: string;
 
 	labelFormatter(label: string): string {
@@ -63,7 +67,7 @@ describe('NavTreeComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [TestComponent, NavTreeComponent],
-			imports: [CommonModule, RouterTestingModule, NgbCollapseModule]
+			imports: [CommonModule, RouterTestingModule, NgbCollapseModule.forRoot()]
 		}).compileComponents();
 	}));
 
@@ -90,11 +94,19 @@ describe('NavTreeComponent', () => {
 	});
 
 	it('should detects changes if another `NavTreeItemModel is added`', () => {
-		component.items.push(new NavTreeItemModel({id: 'X', label: 'X - Label'}));
+		testComponent.items.push(new NavTreeItemModel({id: 'X', label: 'X - Label'}));
 		fixture.detectChanges();
 
 		let navItems = fixture.debugElement.queryAll(By.css('li.nav-item'));
 		expect(navItems.length).toBe(13);
+	});
+
+	it('should add a variant CSS class to the navigation trees', () => {
+		testComponent.variant = 'nav-custom';
+		fixture.detectChanges();
+
+		let navTrees = fixture.debugElement.queryAll(By.css('.nav-tree.nav-custom'));
+		expect(navTrees.length).toBe(4);
 	});
 
 	it('should custom format item labels', () => {

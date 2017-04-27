@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {NavTreeItemModel} from '../../../../src/nav-tree/nav-tree-item.model';
+import {NavTreeComponent} from '../../../../src/nav-tree/nav-tree.component';
 
 @Component({
 	selector: 'nav-tree-sample',
@@ -9,6 +10,7 @@ import {NavTreeItemModel} from '../../../../src/nav-tree/nav-tree-item.model';
 export class NavTreeSampleComponent implements OnInit {
 
 	public items: Array<NavTreeItemModel>;
+	public variant = NavTreeComponent.DEFAULTS.VARIANT;
 
 	public filter = {
 		pattern: null,

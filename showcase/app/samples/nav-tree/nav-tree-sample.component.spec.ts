@@ -4,7 +4,7 @@ import {CommonModule} from '@angular/common';
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import {RouterTestingModule} from '@angular/router/testing';
-import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbButtonsModule, NgbCollapseModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {MockTranslatePipe} from '../../../../testhelpers/mock-translate.pipe';
 import {NavTreeSampleComponent} from './nav-tree-sample.component';
@@ -12,7 +12,7 @@ import {NavTreeComponent} from '../../../../src/nav-tree/nav-tree.component';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 
-fdescribe('NavTreeSampleComponent', () => {
+describe('NavTreeSampleComponent', () => {
 	let component: NavTreeSampleComponent;
 	let fixture: ComponentFixture<NavTreeSampleComponent>;
 
@@ -27,7 +27,9 @@ fdescribe('NavTreeSampleComponent', () => {
 				CommonModule,
 				FormsModule,
 				RouterTestingModule,
-				NgbCollapseModule
+				NgbCollapseModule,
+				NgbButtonsModule,
+				NgbTooltipModule.forRoot()
 			],
 			providers: [
 				{

@@ -8,16 +8,17 @@
 					<h3 class="card-title">Preview</h3>
 				</div>
 				<div class="card-block">
-					<nav-tree #navTreeControl="navTree"
+					<or-nav-tree #navTreeControl="orNavTree"
 					          [items]="items"
 					          [prefix]="'nav-tree-sample'"
 					          [filterPattern]="filter.pattern"
-					          [linkBuilder]="linkBuilder">
+					          [linkBuilder]="linkBuilder"
+					          [variant]="variant">
 						<li class="nav-item nav-header" role="presentation">
 							<h3 class="nav-header-title" *ngIf="!filter.pattern">Menu Sample</h3>
 							<h3 class="nav-header-title" *ngIf="filter.pattern">{{'i18n.common.search.results' | translate}}</h3>
 						</li>
-					</nav-tree>
+					</or-nav-tree>
 				</div>
 			</div>
 		</div>
@@ -39,12 +40,30 @@
 						</button>
 					</div>
 					<h4>Toggle</h4>
-					<button class="btn btn-default" role="button" (click)="navTreeControl.collapseAll()">
-						<span class="fa fa-compress"></span> {{'i18n.common.collapseAll' | translate}}
-					</button>
-					<button class="btn btn-default" role="button" (click)="navTreeControl.expandAll()">
-						<span class="fa fa-expand"></span> {{'i18n.common.expandAll' | translate}}
-					</button>
+					<div class="btn-group">
+						<button class="btn btn-default" role="button" (click)="navTreeControl.collapseAll()">
+							<span class="fa fa-compress"></span> {{'i18n.common.collapseAll' | translate}}
+						</button>
+						<button class="btn btn-default" role="button" (click)="navTreeControl.expandAll()">
+							<span class="fa fa-expand"></span> {{'i18n.common.expandAll' | translate}}
+						</button>
+					</div>
+					<h4>Variant</h4>
+					<div [(ngModel)]="variant" ngbRadioGroup name="variant">
+						<!-- TODO: remove `(click)` when https://github.com/ng-bootstrap/ng-bootstrap/issues/1125 -->
+						<label class="btn btn-default" ngbTooltip=".nav-bordered.nav-hover" (click)="variant = 'nav-bordered nav-hover'">
+							<input type="radio" value="nav-bordered nav-hover"> Default
+						</label>
+						<label class="btn btn-default" ngbTooltip=".nav-hover" (click)="variant = 'nav-hover'">
+							<input type="radio" value="nav-hover"> Hover Only
+						</label>
+						<label class="btn btn-default" ngbTooltip=".nav-bordered" (click)="variant = 'nav-bordered'">
+							<input type="radio" value="nav-bordered"> Bordered Only
+						</label>
+						<label class="btn btn-default" (click)="variant = ''">
+							<input type="radio" value=""> None
+						</label>
+					</div>
 				</div>
 			</div>
 			<router-outlet></router-outlet>

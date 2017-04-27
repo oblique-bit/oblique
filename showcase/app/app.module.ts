@@ -19,7 +19,6 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './home/home.component';
 import {SamplesModule} from './samples/samples.module';
-import {SampleDataResolver} from './resolvers/sample-data.resolver';
 
 // TODO: refactor when https://github.com/angular/angular/issues/7136
 import {ApplicationRef, ComponentFactoryResolver, Type, InjectionToken} from '@angular/core';
@@ -55,8 +54,7 @@ export function createTranslateLoader(http: Http) {
 	providers: [
 		DocumentMetaService,
 		{provide: 'notificationTimeout', useValue: 2000},
-		{provide: 'spinnerMaxTimeout', useValue: 3000},
-		SampleDataResolver
+		{provide: 'spinnerMaxTimeout', useValue: 3000}
 	],
 	entryComponents: [
 		AppComponent,

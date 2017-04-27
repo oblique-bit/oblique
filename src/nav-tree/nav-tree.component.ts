@@ -1,7 +1,7 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {INavTreeItemModel} from './nav-tree-item.model';
 
-// FIXME: refactor useless factory when https://github.com/angular/angular/issues/14485
+// FIXME: refactor this when https://github.com/angular/angular/issues/14485
 export function defaultLabelFormatterFactory() {
 	const formatter = (item: INavTreeItemModel, filterPattern: string) => {
 		return !filterPattern ? item.label : item.label.replace(
@@ -15,10 +15,10 @@ export function defaultLabelFormatterFactory() {
 }
 
 @Component({
-	selector: 'nav-tree',
-	exportAs: 'navTree',
+	selector: 'or-nav-tree',
+	exportAs: 'orNavTree',
 	template: `
-		<ul class="nav nav-tree nav-bordered nav-indented nav-hover" role="tree">
+		<ul class="nav nav-tree" role="tree" [ngClass]="variant">
 			<ng-content></ng-content>
 			<ng-template ngFor [ngForOf]="items" let-item>
 				<li class="nav-item open" role="presentation"
@@ -34,11 +34,12 @@ export function defaultLabelFormatterFactory() {
 					</a>
 					<div id="#{{itemKey(item)}}" class="collapse show"
 					     *ngIf="item.items" [ngbCollapse]="item.collapsed">
-						<nav-tree [items]="item.items"
-						          [prefix]="itemKey(item)"
-						          [filterPattern]="filterPattern"
-						          [labelFormatter]="labelFormatter"
-						          [linkBuilder]="linkBuilder"></nav-tree>
+						<or-nav-tree [items]="item.items"
+						             [prefix]="itemKey(item)"
+						             [filterPattern]="filterPattern"
+						             [labelFormatter]="labelFormatter"
+						             [linkBuilder]="linkBuilder"
+						             [variant]="variant"></or-nav-tree>
 					</div>
 				</li>
 			</ng-template>
@@ -57,8 +58,9 @@ export function defaultLabelFormatterFactory() {
 export class NavTreeComponent {
 
 	public static DEFAULTS = {
+		VARIANT: 'nav-bordered nav-hover',
 		HIGHLIGHT: 'nav-tree-pattern-highlight',
-		LABEL_FORMATTER: defaultLabelFormatterFactory
+		LABEL_FORMATTER: defaultLabelFormatterFactory,
 	};
 
 	@Input()
@@ -85,6 +87,9 @@ export class NavTreeComponent {
 				return this.patternMatcher(subItem, pattern);
 			});
 	}
+
+	@Input()
+	variant = NavTreeComponent.DEFAULTS.VARIANT;
 
 	visible(item: INavTreeItemModel) {
 		return !this.filterPattern || this.patternMatcher(item, this.filterPattern);

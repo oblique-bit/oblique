@@ -14,6 +14,7 @@ import {MultiselectSampleComponent} from './multiselect/multiselect-sample.compo
 import {NavigatorSampleModule} from './navigator-sample/navigator-sample.module';
 import {NavigatorSampleRoutingModule} from './navigator-sample/navigator-sample-routing.module';
 import {NavTreeSampleComponent, NavTreeDetailSampleComponent} from './nav-tree/nav-tree-sample.component';
+import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 
 @NgModule({
 	imports: [
@@ -37,7 +38,10 @@ import {NavTreeSampleComponent, NavTreeDetailSampleComponent} from './nav-tree/n
 	],
 	exports: [
 		RouterModule
-	]
+	],
+	providers: [
+		SampleDataResolver
+	],
 })
 export class SamplesModule {
 }
