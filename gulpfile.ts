@@ -31,7 +31,7 @@
 			src: 'src/',
 			sass: 'src/sass/',
 			showcase: 'showcase/',
-			publish: 'dist/'
+			dist: 'dist/'
 		},
 
 		// ObliqueUI custom tasks:
@@ -54,6 +54,10 @@
 		runSequence('clean', 'lint', 'test', done);
 	});
 
+	gulp.task('clean', () => {
+		return del(paths.dist);
+	});
+
 	gulp.task('lint', () => {
 		return gulp.src([paths.src + '**/*.ts', paths.showcase + '**/*.ts'])
 			.pipe(tslint(<any>{configuration: require('./tslint.json'), formatter: 'prose'}))
@@ -61,7 +65,7 @@
 	});
 
 	gulp.task('test', (done) => {
-		//TODO: start PhantomJS on Jenkins and Chrome locally
+		// TODO: start PhantomJS on Jenkins and Chrome locally
 		exec(`"node_modules/.bin/karma" start ${__dirname}/karma.conf.js --single-run`, {maxBuffer: 1024 * 20000}, (err, stdout) => {
 			gutil.log(stdout);
 			if (err) {
@@ -70,10 +74,6 @@
 				done();
 			}
 		});
-	});
-
-	gulp.task('clean', () => {
-		return del('dist/');
 	});
 
 	//<editor-fold desc="Deployment tasks">
@@ -87,20 +87,8 @@
 	gulp.task('publish', (callback) => {
 		return runSequence(
 			'release',
-			'publish-dist',
+			'dist',
 			'publish-module',
-			callback
-		);
-	});
-
-	gulp.task('publish-dist', (callback) => {
-		return runSequence(
-			'publish-clean',
-			'publish-copy',
-			'publish-css',
-			'publish-compile',
-			'publish-bundle',
-			'publish-meta',
 			callback
 		);
 	});
@@ -117,18 +105,31 @@
 		);
 	});
 
-	gulp.task('publish-clean', () => {
-		return del(paths.publish);
+	//<editor-fold desc="Distribution tasks">
+	gulp.task('dist', (callback) => {
+		return runSequence(
+			'dist-clean',
+			'dist-copy',
+			'dist-css',
+			'dist-compile',
+			'dist-bundle',
+			'dist-meta',
+			callback
+		);
 	});
 
-	gulp.task('publish-copy', () => {
+	gulp.task('dist-clean', () => {
+		return del(paths.dist);
+	});
+
+	gulp.task('dist-copy', () => {
 		return gulp.src([
 			paths.sass + '**/*'
 		], {base: paths.src})
-		.pipe(gulp.dest(paths.publish));
+		.pipe(gulp.dest(paths.dist));
 	});
 
-	gulp.task('publish-css', () => {
+	gulp.task('dist-css', () => {
 		return gulp.src([
 			paths.sass + 'oblique-reactive.scss'
 		])
@@ -145,7 +146,7 @@
 		}))
 		.pipe(header(banner()))
 		//.pipe(sourcemaps.write(paths.dist.css + 'maps'))
-		.pipe(gulp.dest(paths.publish + 'css/'))
+		.pipe(gulp.dest(paths.dist + 'css/'))
 		.pipe(cleanCss({
 			keepSpecialComments: 0
 		}))
@@ -153,10 +154,10 @@
 			suffix: '.min',
 		}))
 		.pipe(header(banner()))
-		.pipe(gulp.dest(paths.publish + 'css/'));
+		.pipe(gulp.dest(paths.dist + 'css/'));
 	});
 
-	gulp.task('publish-compile', (done) => {
+	gulp.task('dist-compile', (done) => {
 		exec(`"./node_modules/.bin/ngc" -p "tsconfig.publish.json"`, (e) => {
 			if (e) console.log(e);
 			del('./dist/waste');
@@ -166,12 +167,12 @@
 		});
 	});
 
-	gulp.task('publish-bundle', (done) => {
+	gulp.task('dist-bundle', (done) => {
 		webpack(require('./webpack.publish.js'),
 			webpackCallBack('webpack', done));
 	});
 
-	gulp.task('publish-meta', () => {
+	gulp.task('dist-meta', () => {
 		let meta = reload('./package.json');
 		let output = {};
 
@@ -192,12 +193,13 @@
 
 		return gulp.src('README.md')
 			.pipe(gulpFile('package.json', JSON.stringify(output, null, 2)))
-			.pipe(gulp.dest(paths.publish));
+			.pipe(gulp.dest(paths.dist));
 	});
+	//</editor-fold>
 
 	// Publishes the module in the internal npm registry:
 	gulp.task('publish-module', (callback) => {
-		return spawn('npm', ['publish', paths.publish], {stdio: 'inherit'})
+		return spawn('npm', ['publish', paths.dist], {stdio: 'inherit'})
 			.on('close', callback)
 			.on('error', function () {
 				console.log('[SPAWN] Error: ', arguments);
