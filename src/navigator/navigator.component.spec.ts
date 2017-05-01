@@ -2,7 +2,7 @@ import {NavigatorComponent} from './navigator.component';
 import {TestBed, ComponentFixture, async} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 
-describe('NavigableComponent', () => {
+describe('NavigatorComponent', () => {
 	let fixture: ComponentFixture<NavigatorComponent>;
 	let component: NavigatorComponent;
 

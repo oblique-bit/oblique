@@ -2,21 +2,26 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 
 import {DatepickerModule} from './datepicker/datepicker.module';
 import {DocumentMetaModule} from './document-meta/document-meta.module';
+import {ErrorMessagesModule} from './error-messages/error-messages.module';
+import {FormControlStateModule} from './form-control-state';
 import {MultiselectModule} from './multiselect';
 import {NavigableModule} from './navigable';
+import {NavigatorModule} from './navigator';
+import {NavTreeModule} from './nav-tree';
 import {NotificationModule} from './notification';
 import {SchemaValidationModule} from './schema-validation';
 import {SpinnerModule} from './spinner';
 import {TopControlModule} from './top-control';
 import {UnsavedChangesModule} from './unsaved-changes';
-import {NavigatorModule} from './navigator';
-import {FormControlStateModule} from './form-control-state';
-import {ErrorMessagesModule} from './error-messages/error-messages.module';
 
 export * from './datepicker';
 export * from './document-meta';
+export * from './error-messages';
+export * from './form-control-state';
 export * from './multiselect';
 export * from './navigable';
+export * from './navigator';
+export * from './nav-tree';
 export * from './notification';
 export * from './schema-validation';
 export * from './spinner';
@@ -27,11 +32,12 @@ const OBLIQUE_MODULES = [
 	DatepickerModule,
 	DocumentMetaModule,
 	ErrorMessagesModule,
+	FormControlStateModule,
 	MultiselectModule,
 	NavigableModule,
 	NavigatorModule,
+	NavTreeModule,
 	NotificationModule,
-	FormControlStateModule,
 	SpinnerModule,
 	SchemaValidationModule,
 	TopControlModule,
@@ -43,13 +49,14 @@ const OBLIQUE_MODULES = [
 		DatepickerModule.forRoot(),
 		DocumentMetaModule.forRoot(),
 		ErrorMessagesModule.forRoot(),
+		FormControlStateModule.forRoot(),
 		MultiselectModule.forRoot(),
 		NavigableModule.forRoot(),
 		NavigatorModule.forRoot(),
+		NavTreeModule.forRoot(),
 		NotificationModule.forRoot(),
-		FormControlStateModule.forRoot(),
-		SchemaValidationModule.forRoot(),
 		SpinnerModule.forRoot(),
+		SchemaValidationModule.forRoot(),
 		TopControlModule.forRoot(),
 		UnsavedChangesModule.forRoot()
 	],

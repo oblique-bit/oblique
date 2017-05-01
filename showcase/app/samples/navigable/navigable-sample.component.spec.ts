@@ -25,8 +25,7 @@ describe('NavigableSampleComponent', () => {
 			schemas: [
 				CUSTOM_ELEMENTS_SCHEMA
 			]
-		})
-			.compileComponents();
+		}).compileComponents();
 	}));
 
 	//The async ensures that the bindings are completely done (waits till fixture is stable)

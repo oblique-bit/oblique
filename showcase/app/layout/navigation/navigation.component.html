@@ -39,6 +39,11 @@
 				</li>
 				<li class="nav-item" role="presentation">
 					<a class="nav-link" href=""
+					   [routerLink]="['/nav-tree']" routerLinkActive="active"
+					   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.nav-tree.title' | translate}}</a>
+				</li>
+				<li class="nav-item" role="presentation">
+					<a class="nav-link" href=""
 					   [routerLink]="['/samples.typeahead']" routerLinkActive="active"
 					   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.typeahead.title' | translate}}</a>
 				</li>

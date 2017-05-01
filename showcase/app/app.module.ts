@@ -7,7 +7,7 @@ import {TranslateModule, TranslateLoader, TranslateService} from '@ngx-translate
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 // ObliqueReactive:
-import {ObliqueModule, SpinnerComponent, TopControlComponent} from '../../src';
+import {ObliqueModule, DocumentMetaService, SpinnerComponent, TopControlComponent} from '../../src';
 
 // Layout:
 import {LayoutModule} from './layout/layout.module';
@@ -22,7 +22,6 @@ import {SamplesModule} from './samples/samples.module';
 
 // TODO: refactor when https://github.com/angular/angular/issues/7136
 import {ApplicationRef, ComponentFactoryResolver, Type, InjectionToken} from '@angular/core';
-import {DocumentMetaService} from '../../src/document-meta/document-meta.service';
 
 export const BOOTSTRAP_COMPONENTS_TOKEN = new InjectionToken('bootstrap_components');
 
