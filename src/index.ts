@@ -10,7 +10,7 @@ import {SpinnerModule} from './spinner';
 import {TopControlModule} from './top-control';
 import {UnsavedChangesModule} from './unsaved-changes';
 import {NavigatorModule} from './navigator';
-import {ObliqueFormGroupModule} from './form-group';
+import {FormControlStateModule} from './form-control-state';
 import {ErrorMessagesModule} from './error-messages/error-messages.module';
 
 export * from './datepicker';
@@ -31,7 +31,7 @@ const OBLIQUE_MODULES = [
 	NavigableModule,
 	NavigatorModule,
 	NotificationModule,
-	ObliqueFormGroupModule,
+	FormControlStateModule,
 	SpinnerModule,
 	SchemaValidationModule,
 	TopControlModule,
@@ -47,7 +47,7 @@ const OBLIQUE_MODULES = [
 		NavigableModule.forRoot(),
 		NavigatorModule.forRoot(),
 		NotificationModule.forRoot(),
-		ObliqueFormGroupModule.forRoot(),
+		FormControlStateModule.forRoot(),
 		SchemaValidationModule.forRoot(),
 		SpinnerModule.forRoot(),
 		TopControlModule.forRoot(),

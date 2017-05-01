@@ -1,0 +1,63 @@
+{
+  "navTree": {
+    "label": "Navigation Tree",
+    "items": [
+      {
+        "id": "tree-item-1",
+        "label": "Tree item 1"
+      },
+      {
+        "id": "tree-item-2",
+        "label": "Tree item 2",
+        "items": [
+          {
+            "id": "tree-item-2-1",
+            "label": "Tree item 2.1"
+          },
+          {
+            "id": "tree-item-2-2",
+            "label": "Tree item 2.2",
+            "items": [
+              {
+                "id": "tree-item-2-2-1",
+                "label": "Tree item 2.2.1"
+              },
+              {
+                "id": "tree-item-2-2-2",
+                "label": "Tree item 2.2.2"
+              },
+              {
+                "id": "tree-item-2-2-3",
+                "label": "Tree item 2.2.3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "tree-item-3",
+        "label": "Tree item 3",
+        "items": [
+          {
+            "id": "tree-item-3-1",
+            "label": "Tree item 3.1"
+          },
+          {
+            "id": "tree-item-3-2",
+            "label": "Tree item 3.2",
+            "items": [
+              {
+                "id": "tree-item-3-2-1",
+                "label": "Tree item 3.2.1"
+              },
+              {
+                "id": "tree-item-3-2-2",
+                "label": "Tree item 3.2.2"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

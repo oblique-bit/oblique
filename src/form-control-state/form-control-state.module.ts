@@ -1,20 +1,20 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {ObliqueFormGroupDirective} from './form-group.directive';
+import {FormControlStateDirective} from './form-control-state.directive';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule
 	],
-	declarations: [ObliqueFormGroupDirective],
-	exports: [ObliqueFormGroupDirective]
+	declarations: [FormControlStateDirective],
+	exports: [FormControlStateDirective]
 })
-export class ObliqueFormGroupModule {
+export class FormControlStateModule {
 	static forRoot(): ModuleWithProviders {
 		return {
-			ngModule: ObliqueFormGroupModule
+			ngModule: FormControlStateModule
 		};
 	}
 }

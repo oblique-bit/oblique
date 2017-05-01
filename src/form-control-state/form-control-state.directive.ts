@@ -4,13 +4,14 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/merge';
 
 @Directive({
-	selector: '[obliqueFormGroup]'
+	selector: '[orFormControlState]'
 })
-export class ObliqueFormGroupDirective implements AfterViewInit {
+export class FormControlStateDirective implements AfterViewInit {
 
-	@Input() obliqueFormGroupPristineValidation = false;
+	@Input() pristineValidation = false;
 
-	@HostBinding('class.form-group') formGroupClass = true;
+	//TODO: where to add mandatroy, we have no access to the rigth DOM element
+
 	@HostBinding('class.has-error') hasErrorClass = false;
 
 	@ContentChild(NgControl) ngControl: NgControl;
@@ -22,7 +23,7 @@ export class ObliqueFormGroupDirective implements AfterViewInit {
 		this.form = ngForm || formGroupDirective;
 
 		if (!this.form) {
-			console.error('You need ether a NgForm or a FormGroupDirective for the ObliqueFormGroupDirective');
+			throw new Error('You need ether a NgForm or a FormGroupDirective for the FormControlStateDirective');
 		}
 
 	}
@@ -31,11 +32,11 @@ export class ObliqueFormGroupDirective implements AfterViewInit {
 		Observable.merge(
 			this.form.ngSubmit,
 			this.ngControl.statusChanges
-		).subscribe(() => this.setErrorClass());
+		).subscribe(() => this.generateState());
 	}
 
-	private setErrorClass() {
-		if (this.form.submitted || !this.ngControl.pristine || this.obliqueFormGroupPristineValidation) {
+	private generateState() {
+		if (this.form.submitted || !this.ngControl.pristine || this.pristineValidation) {
 			this.hasErrorClass = this.ngControl.invalid;
 		}
 	}
