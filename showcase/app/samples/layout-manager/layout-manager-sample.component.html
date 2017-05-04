@@ -1,0 +1,38 @@
+<div [class.cover-layout]="cover">
+	<div [class.cover-viewport]="cover">
+		<div class="default-layout">
+			<div [class.cover-header]="cover">
+				<h1 translate="i18n.routes.samples.layout-manager.title"></h1>
+			</div>
+			<div [class.cover-content]="cover">
+				<div class="card">
+					<div class="card-header">
+						<h3 class="card-title">Tools</h3>
+					</div>
+					<div class="card-block">
+						<h4>Layout</h4>
+						<div [(ngModel)]="appLayout" ngbRadioGroup name="appLayout">
+							<!-- TODO: remove `(click)` when https://github.com/ng-bootstrap/ng-bootstrap/issues/1125 -->
+							<label class="btn btn-default" (click)="cover = false">
+								<input type="radio" value="nav-bordered nav-hover"> Default
+							</label>
+							<label class="btn btn-default" (click)="cover = true">
+								<input type="radio" value="nav-hover"> Cover
+							</label>
+						</div>
+						<h4>Navigation</h4>
+						<div [(ngModel)]="appNavigation" ngbRadioGroup name="appNavigation">
+							<!-- TODO: remove `(click)` when https://github.com/ng-bootstrap/ng-bootstrap/issues/1125 -->
+							<label class="btn btn-default" (click)="navigation = true">
+								<input type="radio" value="yes"> Yes
+							</label>
+							<label class="btn btn-default" (click)="navigation = false">
+								<input type="radio" value="no"> No
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

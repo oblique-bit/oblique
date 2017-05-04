@@ -4,9 +4,10 @@ import {Routes, RouterModule} from '@angular/router';
 import {DatepickerComponent} from './datepicker/datepicker.component';
 import {NavigableSampleComponent} from './navigable/navigable-sample.component';
 import {NavTreeSampleComponent, NavTreeDetailSampleComponent} from './nav-tree/nav-tree-sample.component';
-import {SchemaValidationComponent} from './schema-validation/schema-validation.component';
+import {LayoutManagerSampleComponent} from './layout-manager/layout-manager-sample.component';
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
+import {SchemaValidationComponent} from './schema-validation/schema-validation.component';
 
 const samplesRoutes: Routes = [
 	{path: 'datepicker', component: DatepickerComponent},
@@ -25,7 +26,12 @@ const samplesRoutes: Routes = [
 			component: NavTreeDetailSampleComponent,
 		}]},
 	{path: 'multiselect', component: MultiselectSampleComponent},
-	{path: 'schema-validation', component: SchemaValidationComponent}
+	{path: 'schema-validation', component: SchemaValidationComponent},
+	{path: 'layout-manager', component: LayoutManagerSampleComponent, data: {
+		uiLayout: {
+			application: 'has-cover'
+		}
+	}}
 ];
 
 @NgModule({

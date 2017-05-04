@@ -9,12 +9,13 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ObliqueModule} from '../../../src/index';
 import {SchemaValidationComponent} from './schema-validation/schema-validation.component';
 import {DatepickerComponent} from './datepicker/datepicker.component';
-import {SamplesRoutingModule} from './samples-routing.module';
+import {LayoutManagerSampleComponent} from './layout-manager/layout-manager-sample.component';
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
 import {NavigatorSampleModule} from './navigator-sample/navigator-sample.module';
 import {NavigatorSampleRoutingModule} from './navigator-sample/navigator-sample-routing.module';
 import {NavTreeSampleComponent, NavTreeDetailSampleComponent} from './nav-tree/nav-tree-sample.component';
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
+import {SamplesRoutingModule} from './samples-routing.module';
 
 @NgModule({
 	imports: [
@@ -34,7 +35,8 @@ import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 		NavigableSampleComponent,
 		NavTreeSampleComponent,
 		NavTreeDetailSampleComponent,
-		SchemaValidationComponent
+		SchemaValidationComponent,
+		LayoutManagerSampleComponent
 	],
 	exports: [
 		RouterModule

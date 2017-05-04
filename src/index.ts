@@ -1,5 +1,6 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 
+import {BrandingModule} from './branding/branding.module';
 import {DatepickerModule} from './datepicker/datepicker.module';
 import {DocumentMetaModule} from './document-meta/document-meta.module';
 import {MultiselectModule} from './multiselect';
@@ -11,11 +12,12 @@ import {SchemaValidationModule} from './schema-validation';
 import {SpinnerModule} from './spinner';
 import {TopControlModule} from './top-control';
 import {UnsavedChangesModule} from './unsaved-changes';
-import {BrandingModule} from './branding/branding.module';
+import {LayoutManagerModule} from './layout-manager/layout-manager.module';
 
 export * from './branding';
 export * from './datepicker';
 export * from './document-meta';
+export * from './layout-manager';
 export * from './multiselect';
 export * from './navigable';
 export * from './navigator';
@@ -33,6 +35,7 @@ const OBLIQUE_MODULES = [
 	// UIComponents
 	DatepickerModule,
 	DocumentMetaModule,
+	LayoutManagerModule,
 	MultiselectModule,
 	NavigableModule,
 	NavigatorModule,
@@ -48,6 +51,7 @@ const OBLIQUE_MODULES = [
 	imports: [
 		DatepickerModule.forRoot(),
 		DocumentMetaModule.forRoot(),
+		LayoutManagerModule.forRoot(),
 		MultiselectModule.forRoot(),
 		NavigableModule.forRoot(),
 		NavigatorModule.forRoot(),
