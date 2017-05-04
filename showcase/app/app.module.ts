@@ -22,6 +22,7 @@ import {SamplesModule} from './samples/samples.module';
 
 // TODO: refactor when https://github.com/angular/angular/issues/7136
 import {ApplicationRef, ComponentFactoryResolver, Type, InjectionToken} from '@angular/core';
+import {BrandingAppTitleComponent} from '../../src/branding/app-title/app-title.component';
 
 export const BOOTSTRAP_COMPONENTS_TOKEN = new InjectionToken('bootstrap_components');
 
@@ -58,6 +59,7 @@ export function createTranslateLoader(http: Http) {
 	],
 	entryComponents: [
 		AppComponent,
+		BrandingAppTitleComponent,
 		SpinnerComponent,
 		TopControlComponent,
 		LayoutControlsComponent,

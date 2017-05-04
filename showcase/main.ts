@@ -6,7 +6,7 @@ import {environment} from './environments/environment';
 import * as ProjectConfig from '../project.conf.js';
 
 // Oblique resources:
-import {SpinnerComponent, TopControlComponent} from '../src';
+import {SpinnerComponent, TopControlComponent, BrandingAppTitleComponent} from '../src';
 
 // Application resources:
 import {AppModule, BOOTSTRAP_COMPONENTS_TOKEN} from './app/app.module';
@@ -20,6 +20,7 @@ if (environment.production) {
 
 const components = [
 	{type: AppComponent},
+	{type: BrandingAppTitleComponent},
 	{type: SpinnerComponent},
 	{type: TopControlComponent},
 	{type: LayoutControlsComponent},

@@ -11,7 +11,9 @@ import {SchemaValidationModule} from './schema-validation';
 import {SpinnerModule} from './spinner';
 import {TopControlModule} from './top-control';
 import {UnsavedChangesModule} from './unsaved-changes';
+import {BrandingModule} from './branding/branding.module';
 
+export * from './branding';
 export * from './datepicker';
 export * from './document-meta';
 export * from './multiselect';
@@ -25,6 +27,10 @@ export * from './top-control';
 export * from './unsaved-changes';
 
 const OBLIQUE_MODULES = [
+	// Branding:
+	BrandingModule,
+
+	// UIComponents
 	DatepickerModule,
 	DocumentMetaModule,
 	MultiselectModule,
