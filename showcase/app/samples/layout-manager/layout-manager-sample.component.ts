@@ -7,20 +7,20 @@ import {LayoutManagerService} from '../../../../src/layout-manager/layout-manage
 })
 export class LayoutManagerSampleComponent implements OnDestroy {
 
-	constructor(private uiLayoutService: LayoutManagerService) {
+	constructor(private layoutManager: LayoutManagerService) {
 
 	}
 
 	get cover(): boolean {
-		return this.uiLayoutService.cover;
+		return this.layoutManager.cover;
 	}
 
 	set cover(value: boolean) {
-		this.uiLayoutService.cover = value;
+		this.layoutManager.cover = value;
 	}
 
 	set navigation(value: boolean) {
-		this.uiLayoutService.navigation = value;
+		this.layoutManager.navigation = value;
 	}
 
 	ngOnDestroy() {

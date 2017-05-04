@@ -1,18 +1,21 @@
 import {Injectable, Inject} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {DOCUMENT, ɵDomAdapter, ɵgetDOM} from '@angular/platform-browser';
+import {LocalStorage} from 'ngx-webstorage';
+import {TranslateService} from '@ngx-translate/core';
 
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/withLatestFrom';
 
 /**
- * LayoutManagerService - Service for controlling ObliqueUI layout features.
- *
- * Inspired & adapted from: https://gist.github.com/LA1CH3/718588765d56a8932de52c64c3561dcf
+ * LayoutManagerService - Service for controlling ObliqueUI master layout features.
  */
 @Injectable()
 export class LayoutManagerService {
+
+	@LocalStorage()
+	public userLocale: string;
 
 	private DOM: ɵDomAdapter;
 	private applicationElement: HTMLElement;
@@ -21,8 +24,18 @@ export class LayoutManagerService {
 
 	constructor(private router: Router,
 	            private activatedRoute: ActivatedRoute,
-	            @Inject(DOCUMENT) private document: any) {
+	            private translate: TranslateService,
+	            @Inject(DOCUMENT) private document: any,
+	            @Inject('ObliqueReactive.CONFIG') private config: any) {
 
+		// User locale:
+		if (this.userLocale) {
+			this.translate.use(this.userLocale);
+		} else if (config.defaults) {
+			this.translate.use(config.defaults.locale);
+		}
+
+		// Application layout:
 		this.DOM = ɵgetDOM();
 		this.applicationElement = this.DOM.querySelector(document, 'body > .application');
 
