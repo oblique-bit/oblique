@@ -15,7 +15,7 @@ const {GlobCopyWebpackPlugin, BaseHrefWebpackPlugin} = require('@angular/cli/plu
 const {CommonsChunkPlugin} = require('webpack').optimize;
 const {AotPlugin} = require('@ngtools/webpack');
 
-const nodeModules = path.join(process.cwd(), 'node_modules');
+const nodeModules = path.join(__dirname, 'node_modules');
 const entryPoints = ["inline", "polyfills", "sw-register", "styles", "vendor", "main"];
 const baseHref = "";
 const deployUrl = "";
@@ -30,7 +30,8 @@ module.exports = {
 		],
 		"modules": [
 			nodeModules
-		]
+		],
+		symlinks: false // Ensure that resources from npm linked modules can be retrieved!
 	},
 	"resolveLoader": {
 		"modules": [
