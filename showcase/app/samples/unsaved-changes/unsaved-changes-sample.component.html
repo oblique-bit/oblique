@@ -13,7 +13,7 @@
 				<ngb-tab id="tab1">
 					<form class="form-horizontal has-validation" #form1="ngForm" role="form"
 						  unsavedChanges novalidate>
-						<template ngbTabTitle>
+						<ng-template ngbTabTitle>
 							<span>Form One</span>
 							<span class="fa fa-check text-success"
 								  *ngIf="!form1.form.dirty">&nbsp;</span>
@@ -23,8 +23,8 @@
 							<span class="fa fa-warning text-danger" uib-tooltip="Form tab contains invalid fields"
 								  tooltip-placement="bottom"
 								  *ngIf="form1.form.invalid">&nbsp;</span>
-						</template>
-						<template ngbTabContent>
+						</ng-template>
+						<ng-template ngbTabContent>
 							<div class="form-group row">
 								<label class="col-sm-4 control-label">Text</label>
 								<div class="col-sm-8">
@@ -64,13 +64,13 @@
 										[disabled]="form1.form.pristine">Save
 								</button>
 							</div>
-						</template>
+						</ng-template>
 					</form>
 				</ngb-tab>
 				<ngb-tab id="tab2" title="Form Two (untracked)">
 					<form class="form-horizontal has-validation" #form2="ngForm" role="form"
 						  novalidate>
-						<template ngbTabContent>
+						<ng-template ngbTabContent>
 							<div class="form-group row">
 								<label class="col-sm-4 control-label">Text</label>
 								<div class="col-sm-8">
@@ -110,13 +110,13 @@
 										[disabled]="form2.form.pristine">Save
 								</button>
 							</div>
-						</template>
+						</ng-template>
 					</form>
 				</ngb-tab>
 				<ngb-tab id="tab3">
 					<form class="form-horizontal has-validation" #form3="ngForm" role="form"
 						  unsavedChanges="tab3" novalidate>
-						<template ngbTabTitle>
+						<ng-template ngbTabTitle>
 							<span>Form Three</span>
 							<span class="fa fa-check text-success"
 								  *ngIf="!form3.form.dirty">&nbsp;</span>
@@ -126,8 +126,8 @@
 							<span class="fa fa-warning text-danger" uib-tooltip="Form tab contains invalid fields"
 								  tooltip-placement="bottom"
 								  *ngIf="form3.form.invalid">&nbsp;</span>
-						</template>
-						<template ngbTabContent>
+						</ng-template>
+						<ng-template ngbTabContent>
 							<div class="form-group row">
 								<label class="col-sm-4 control-label">Text</label>
 								<div class="col-sm-8">
@@ -166,7 +166,7 @@
 										[disabled]="form3.form.pristine">Save
 								</button>
 							</div>
-						</template>
+						</ng-template>
 					</form>
 				</ngb-tab>
 			</ngb-tabset>
