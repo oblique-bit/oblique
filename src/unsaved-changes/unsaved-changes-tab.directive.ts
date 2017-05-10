@@ -8,7 +8,7 @@ import {NgbTabset, NgbTabChangeEvent, NgbTab} from '@ng-bootstrap/ng-bootstrap';
 	selector: '[unsavedChangesTab]'
 })
 export class UnsavedChangesTabDirective implements AfterContentInit {
-	@ContentChildren(NgbTab) tabList: QueryList<any>;
+	@ContentChildren(NgbTab) tabList: QueryList<NgbTab>;
 
 
 	constructor(private unsavedChangesService: UnsavedChangesService, private tabSet: NgbTabset) {
