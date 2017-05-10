@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Optional} from '@angular/core';
+import {Component, Input, Optional, AfterViewInit} from '@angular/core';
 import {NgControl, NgForm, FormGroupDirective} from '@angular/forms';
 import {FormControlStateDirective} from '../form-control-state/form-control-state.directive';
 import {ErrorMessagesService} from './error-messages.service';
@@ -9,7 +9,7 @@ import 'rxjs/add/observable/merge';
 	selector: 'or-error-messages',
 	template: `<span class="help-block" *ngFor="let error of errors">{{error.key | translate:error.params}}</span>`
 })
-export class ErrorMessagesComponent implements OnInit {
+export class ErrorMessagesComponent implements AfterViewInit {
 	@Input() control: NgControl;
 
 	errors: {key: string, params: {[param: string]: any}}[] = [];
@@ -25,10 +25,12 @@ export class ErrorMessagesComponent implements OnInit {
 		if (!this.form) {
 			throw Error('You need ether a NgForm or a FormGroupDirective for the ErrorMessagesComponent');
 		}
-
 	}
 
-	ngOnInit() {
+	ngAfterViewInit() {
+		//TODO: discuss this!
+		this.control = this.control ? this.control : this.formGroup.ngControl;
+
 		Observable.merge(
 			this.control.statusChanges,
 			this.form.ngSubmit

@@ -140,9 +140,7 @@ describe('SchemaValidation', () => {
 					expect(controls['string'].errors).not.toBeNull();
 					expect(controls['string'].errors).toEqual({
 						maxLength: {
-							params: {
-								limit: 10
-							}
+							limit: 10
 						}
 					});
 				});
@@ -165,9 +163,7 @@ describe('SchemaValidation', () => {
 					expect(subproperties['subproperty'].errors).not.toBeNull();
 					expect(subproperties['subproperty'].errors).toEqual({
 						type: {
-							params: {
-								type: 'number'
-							}
+							type: 'number'
 						}
 					});
 				});

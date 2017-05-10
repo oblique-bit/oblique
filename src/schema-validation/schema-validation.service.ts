@@ -18,13 +18,11 @@ export class SchemaValidationService {
         });
     }
 
-    validate(propertyPath: string, value: any): null|{[errorKey: string]: {params: any}} {
+    validate(propertyPath: string, value: any): null|{[errorKey: string]: {[params:string]: any}} {
         this.ajv.validate(propertyPath, value);
 
         return this.ajv.errors === null ? null : {
-            [this.ajv.errors[0].keyword]: {
-                params: this.ajv.errors[0].params
-            }
+            [this.ajv.errors[0].keyword]: this.ajv.errors[0].params
         };
 
     }

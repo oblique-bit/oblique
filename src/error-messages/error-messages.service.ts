@@ -7,7 +7,7 @@ export class ErrorMessagesService {
 		return Object.keys(control.errors).map((key) => {
 			return {
 				key: `i18n.validation.${key}`,
-				params: control.errors[key].params
+				params: control.errors[key]
 			};
 		});
 	}

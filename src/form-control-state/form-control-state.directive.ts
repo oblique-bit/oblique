@@ -10,7 +10,7 @@ export class FormControlStateDirective implements AfterViewInit {
 
 	@Input() pristineValidation = false;
 
-	//TODO: where to add mandatroy, we have no access to the rigth DOM element
+	//TODO: where to add mandatory, we have no access to the right DOM element
 
 	@HostBinding('class.has-error') hasErrorClass = false;
 
