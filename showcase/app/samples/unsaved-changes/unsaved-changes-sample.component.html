@@ -9,10 +9,10 @@
 			<h3 class="card-title pull-left">Preview with 1 form per tab</h3>
 			<div class="pull-right">
 				<span class="fa fa-check text-success"
-					  uib-tooltip="Form does not contain unsaved changes" tooltip-placement="bottom"
+					  ngbTooltip="Form does not contain unsaved changes" placement="bottom"
 					  *ngIf="!form1.form.dirty && !form2.form.dirty && !form3.form.dirty"></span>
 				<span class="fa fa-warning text-warning"
-					  uib-tooltip="Form contains unsaved changes" tooltip-placement="bottom"
+					  ngbTooltip="Form contains unsaved changes" placement="bottom"
 					  *ngIf="form1.form.dirty || form2.form.dirty || form3.form.dirty"></span>
 			</div>
 			<div class="clearfix"></div>
@@ -26,11 +26,11 @@
 							<span>Form One</span>
 							<span class="fa fa-check text-success"
 								  *ngIf="!form1.form.dirty">&nbsp;</span>
-							<span class="fa fa-save text-warning" uib-tooltip="Form tab contains unsaved changes"
-								  tooltip-placement="bottom"
+							<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"
+								  placement="bottom"
 								  *ngIf="form1.form.dirty">&nbsp;</span>
-							<span class="fa fa-warning text-danger" uib-tooltip="Form tab contains invalid fields"
-								  tooltip-placement="bottom"
+							<span class="fa fa-warning text-danger" ngbTooltip="Form tab contains invalid fields"
+								  placement="bottom"
 								  *ngIf="form1.form.invalid">&nbsp;</span>
 						</ng-template>
 						<ng-template ngbTabContent>
@@ -129,11 +129,11 @@
 							<span>Form Three</span>
 							<span class="fa fa-check text-success"
 								  *ngIf="!form3.form.dirty">&nbsp;</span>
-							<span class="fa fa-save text-warning" uib-tooltip="Form tab contains unsaved changes"
-								  tooltip-placement="bottom"
+							<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"
+								  placement="bottom"
 								  *ngIf="form3.form.dirty">&nbsp;</span>
-							<span class="fa fa-warning text-danger" uib-tooltip="Form tab contains invalid fields"
-								  tooltip-placement="bottom"
+							<span class="fa fa-warning text-danger" ngbTooltip="Form tab contains invalid fields"
+								  placement="bottom"
 								  *ngIf="form3.form.invalid">&nbsp;</span>
 						</ng-template>
 						<ng-template ngbTabContent>
@@ -190,10 +190,10 @@
 					<h3 class="card-title pull-left">Preview with nested forms</h3>
 					<div class="pull-right">
 					<span class="fa fa-check text-success"
-						  uib-tooltip="Form does not contain unsaved changes" tooltip-placement="bottom"
+						  ngbTooltip="Form does not contain unsaved changes" placement="bottom"
 						  *ngIf="!parentForm.form.dirty"></span>
 						<span class="fa fa-warning text-warning"
-							  uib-tooltip="Form contains unsaved changes" tooltip-placement="bottom"
+							  ngbTooltip="Form contains unsaved changes" placement="bottom"
 							  *ngIf="parentForm.form.dirty"></span>
 					</div>
 					<div class="clearfix"></div>
@@ -205,11 +205,11 @@
 								<span>Form Four</span>
 								<span class="fa fa-check text-success"
 									  *ngIf="!form4.dirty">&nbsp;</span>
-								<span class="fa fa-save text-warning" uib-tooltip="Form tab contains unsaved changes"
-									  tooltip-placement="bottom"
+								<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"
+									  placement="bottom"
 									  *ngIf="form4.dirty">&nbsp;</span>
-								<span class="fa fa-warning text-danger" uib-tooltip="Form tab contains invalid fields"
-									  tooltip-placement="bottom"
+								<span class="fa fa-warning text-danger" ngbTooltip="Form tab contains invalid fields"
+									  placement="bottom"
 									  *ngIf="form4.invalid">&nbsp;</span>
 							</ng-template>
 							<ng-template ngbTabContent>
@@ -292,11 +292,11 @@
 								<span>Form Six</span>
 								<span class="fa fa-check text-success"
 									  *ngIf="!form6.dirty">&nbsp;</span>
-								<span class="fa fa-save text-warning" uib-tooltip="Form tab contains unsaved changes"
-									  tooltip-placement="bottom"
+								<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"
+									  placement="bottom"
 									  *ngIf="form6.dirty">&nbsp;</span>
-								<span class="fa fa-warning text-danger" uib-tooltip="Form tab contains invalid fields"
-									  tooltip-placement="bottom"
+								<span class="fa fa-warning text-danger" ngbTooltip="Form tab contains invalid fields"
+									  placement="bottom"
 									  *ngIf="form6.invalid">&nbsp;</span>
 							</ng-template>
 							<ng-template ngbTabContent>
