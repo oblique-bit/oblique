@@ -1,5 +1,6 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 
+import {BrandingModule} from './branding/branding.module';
 import {DatepickerModule} from './datepicker/datepicker.module';
 import {DocumentMetaModule} from './document-meta/document-meta.module';
 import {ErrorMessagesModule} from './error-messages/error-messages.module';
@@ -13,11 +14,14 @@ import {SchemaValidationModule} from './schema-validation';
 import {SpinnerModule} from './spinner';
 import {TopControlModule} from './top-control';
 import {UnsavedChangesModule} from './unsaved-changes';
+import {LayoutManagerModule} from './layout-manager/layout-manager.module';
 
+export * from './branding';
 export * from './datepicker';
 export * from './document-meta';
 export * from './error-messages';
 export * from './form-control-state';
+export * from './layout-manager';
 export * from './multiselect';
 export * from './navigable';
 export * from './navigator';
@@ -29,10 +33,15 @@ export * from './top-control';
 export * from './unsaved-changes';
 
 const OBLIQUE_MODULES = [
+	// Branding:
+	BrandingModule,
+
+	// UIComponents
 	DatepickerModule,
 	DocumentMetaModule,
 	ErrorMessagesModule,
 	FormControlStateModule,
+	LayoutManagerModule,
 	MultiselectModule,
 	NavigableModule,
 	NavigatorModule,
@@ -50,6 +59,7 @@ const OBLIQUE_MODULES = [
 		DocumentMetaModule.forRoot(),
 		ErrorMessagesModule.forRoot(),
 		FormControlStateModule.forRoot(),
+		LayoutManagerModule.forRoot(),
 		MultiselectModule.forRoot(),
 		NavigableModule.forRoot(),
 		NavigatorModule.forRoot(),

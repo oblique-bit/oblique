@@ -32,13 +32,13 @@
           "submit": "Register"
         }
       },
-      "movies": {
-        "title": "Films"
-      },
       "samples": {
         "title": "Examples",
         "datepicker": {
           "title": "Datepicker"
+        },
+        "layout-manager": {
+          "title": "Layout Manager"
         },
         "multiselect": {
           "title": "Multiselect"
@@ -55,7 +55,7 @@
         "typeahead": {
           "title": "Typeahead"
         },
-        "uiScroll": {
+        "ui-scroll": {
           "title": "UI Scroll"
         },
         "formControlState": {
@@ -66,16 +66,10 @@
           "schemaValidation": {
             "title": "Schema Validation"
           },
-          "unsavedChanges": {
+          "unsaved-changes": {
             "title": "Unsaved Changes"
           }
         }
-      },
-      "support": {
-        "title": "Support"
-      },
-      "admin": {
-        "title": "Administration"
       }
     },
     "common": {

@@ -124,11 +124,11 @@ If you ever need to add your own dependencies, here's how to do it.
 
 ### npm (build) dependencies
 
-To install a new npm dependency, you can simply type
+Run the following command to install a new npm dependency:
 
 	npm i <dependency> -D
 
-into your command line. But before you do so, make sure you're in your project's root folder, where [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique-reactive/browse/package.json) is.
+Before you do so, make sure you're in your project's root folder, where [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique-reactive/browse/package.json) is.
 After everything is done, you should see your new dependency in [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-ui/browse/package.json).
 
 If you need to install a global dependency, such as bower, switch the *-D* to a *-g* in your command. This would look something like this:

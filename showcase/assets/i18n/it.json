@@ -32,9 +32,6 @@
           "submit": "[it] Register"
         }
       },
-      "movies": {
-        "title": "[it] Movies"
-      },
       "samples": {
         "title": "[it] Samples",
         "datepicker": {
@@ -42,6 +39,9 @@
         },
         "multiselect": {
           "title": "Multiselect"
+        },
+        "layout-manager": {
+          "title": "Layout Manager"
         },
         "navigable": {
           "title": "Navigable"
@@ -55,7 +55,7 @@
         "typeahead": {
           "title": "Typeahead"
         },
-        "uiScroll": {
+        "ui-scroll": {
           "title": "UI Scroll"
         },
         "formControlState": {
@@ -66,16 +66,10 @@
           "schemaValidation": {
             "title": "Schema Validation"
           },
-          "unsavedChanges": {
+          "unsaved-changes": {
             "title": "Unsaved Changes"
           }
         }
-      },
-      "support": {
-        "title": "[it] Support"
-      },
-      "admin": {
-        "title": "Amministrazione"
       }
     },
     "common": {

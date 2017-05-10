@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule, Inject} from '@angular/core';
+import {NgModule, Inject, ApplicationRef, ComponentFactoryResolver} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule, Http} from '@angular/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -7,7 +7,10 @@ import {TranslateModule, TranslateLoader, TranslateService} from '@ngx-translate
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 // ObliqueReactive:
-import {ObliqueModule, DocumentMetaService, SpinnerComponent, TopControlComponent} from '../../src';
+import {
+	ObliqueModule, DocumentMetaService, LayoutManagerService,
+	BrandingAppTitleComponent, SpinnerComponent, TopControlComponent
+} from '../../src';
 
 // Layout:
 import {LayoutModule} from './layout/layout.module';
@@ -20,11 +23,17 @@ import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './home/home.component';
 import {SamplesModule} from './samples/samples.module';
 
-// TODO: refactor when https://github.com/angular/angular/issues/7136
-import {ApplicationRef, ComponentFactoryResolver, Type, InjectionToken} from '@angular/core';
+// Root components:
+export const ENTRY_COMPONENTS = [
+	AppComponent,
+	BrandingAppTitleComponent,
+	SpinnerComponent,
+	TopControlComponent,
+	LayoutControlsComponent,
+	LayoutNavigationComponent
+];
 
-export const BOOTSTRAP_COMPONENTS_TOKEN = new InjectionToken('bootstrap_components');
-
+// AoT requires an exported function for factories:
 export function createTranslateLoader(http: Http) {
 	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -53,34 +62,25 @@ export function createTranslateLoader(http: Http) {
 	],
 	providers: [
 		DocumentMetaService,
+		LayoutManagerService,
 		{provide: 'notificationTimeout', useValue: 2000},
 		{provide: 'spinnerMaxTimeout', useValue: 3000}
 	],
-	entryComponents: [
-		AppComponent,
-		SpinnerComponent,
-		TopControlComponent,
-		LayoutControlsComponent,
-		LayoutNavigationComponent
-	]
+	entryComponents: ENTRY_COMPONENTS
 	// bootstrap: [AppComponent]
 })
 export class AppModule {
 	constructor(private resolver: ComponentFactoryResolver,
-	            private translate: TranslateService,
 	            private documentMetaService: DocumentMetaService,
-	            @Inject(BOOTSTRAP_COMPONENTS_TOKEN) private components,
+	            private layoutManagerService: LayoutManagerService, // Service instantiation only!
 	            @Inject('ObliqueReactive.CONFIG') private config: any) {
-
-		translate.setDefaultLang('en');
-		translate.use('en');
 		documentMetaService.titleSuffix = config.title;
 		documentMetaService.description = config.description;
 	}
 
 	ngDoBootstrap(appRef: ApplicationRef) {
-		this.components.forEach((componentDef: {type: Type<any>, selector: string}) => {
-			const factory = this.resolver.resolveComponentFactory(componentDef.type);
+		ENTRY_COMPONENTS.forEach((component) => {
+			const factory = this.resolver.resolveComponentFactory(component);
 			appRef.bootstrap(factory);
 		});
 	}

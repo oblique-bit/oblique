@@ -24,6 +24,11 @@
 				</li>
 				<li class="nav-item" role="presentation">
 					<a class="nav-link" href=""
+					   [routerLink]="['/layout-manager']" routerLinkActive="active"
+					   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.layout-manager.title' | translate}}</a>
+				</li>
+				<li class="nav-item" role="presentation">
+					<a class="nav-link" href=""
 					   [routerLink]="['/multiselect']" routerLinkActive="active"
 					   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.multiselect.title' | translate}}</a>
 				</li>
@@ -49,8 +54,8 @@
 				</li>
 				<li class="nav-item" role="presentation">
 					<a class="nav-link" href="" uib-tooltip="Aka infinite scrolling"
-					   [routerLink]="['/samples.uiScroll']" routerLinkActive="active"
-					   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.uiScroll.title' | translate}}</a>
+					   [routerLink]="['/ui-scroll']" routerLinkActive="active"
+					   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.ui-scroll.title' | translate}}</a>
 				</li>
 				<li class="nav-item" role="presentation">
 					<a class="nav-link" href=""
@@ -78,28 +83,13 @@
 							</li>
 							<li class="nav-item" role="presentation">
 								<a class="nav-link" href=""
-								   [routerLink]="['/samples.validation.unsavedChanges']" routerLinkActive="active"
-								   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.validation.unsavedChanges.title' | translate}}</a>
+								   [routerLink]="['/unsaved-changes']" routerLinkActive="active"
+								   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.validation.unsaved-changes.title' | translate}}</a>
 							</li>
 						</ul>
 					</div>
 				</li>
 			</ul>
 		</div>
-	</li>
-	<li class="nav-item" role="presentation" ng-if="context.isAuthenticated">
-		<a class="nav-link" href=""
-		   [routerLink]="['/movies']" routerLinkActive="active"
-		   role="menuitem" data-toggle="header navigation">{{'i18n.routes.movies.title' | translate}}</a>
-	</li>
-	<li class="nav-item" role="presentation">
-		<a class="nav-link" href=""
-		   [routerLink]="['/support']" routerLinkActive="active"
-		   role="menuitem" data-toggle="header navigation">{{'i18n.routes.support.title' | translate}}</a>
-	</li>
-	<li class="nav-item" role="presentation" ng-if="!context.isAuthenticated">
-		<a class="nav-link" href=""
-		   [routerLink]="['/auth']" routerLinkActive="active"
-		   role="menuitem" data-toggle="header navigation">{{'i18n.routes.auth.title' | translate}}</a>
 	</li>
 </ul>
