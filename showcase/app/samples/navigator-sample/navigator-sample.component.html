@@ -1,0 +1,73 @@
+<div class="default-layout">
+	<h2 class="page-header">{{'i18n.routes.samples.navigator.title' | translate}}</h2>
+	<p class="lead">Navigate to parent state (<code>UP</code> navigation) by clicking on the navigation button below or
+		pressing the <kbd>ESC</kbd> key.</p>
+
+	<div class="card">
+		<div class="card-header">
+			<h3 class="card-title">Preview</h3>
+		</div>
+		<div class="card-block column-layout column-layout-2">
+			<div class="column-left default-layout">
+				<ul id="nav-components" class="nav nav-hover nav-indented nav-bordered nav-vertical nav-activable" role="menu">
+					<li class="nav-item" role="presentation">
+						<a [routerLink]="['/navigator']"class="nav-link" role="menuitem" routerLinkActive="active">
+							<span>Root</span>
+						</a>
+
+						<ul class="nav nav-hover nav-indented nav-bordered nav-vertical nav-indented" role="menu">
+							<li class="nav-item" role="presentation">
+								<a [routerLink]="['/navigator/1']" class="nav-link" role="menuitem" routerLinkActive="active">
+									<span>Child state 1</span>
+								</a>
+
+								<ul class="nav nav-hover nav-indented nav-bordered nav-vertical nav-indented" data-provides="inner-navigation" role="menu">
+									<li class="nav-item" role="presentation">
+										<a [routerLink]="['/navigator/1/1']" class="nav-link" role="menuitem" routerLinkActive="active">
+											<span>Child state 1.1</span>
+										</a>
+
+										<ul class="nav nav-hover nav-indented nav-bordered nav-vertical nav-indented" role="menu">
+											<li class="nav-item" role="presentation">
+												<a [routerLink]="['/navigator/1/1/1']" class="nav-link" role="menuitem" routerLinkActive="active">
+													<span>Child state 1.1.1</span>
+												</a>
+											</li>
+											<li class="nav-item" role="presentation">
+												<a [routerLink]="['/navigator/1/1/2']" class="nav-link" role="menuitem" routerLinkActive="active">
+													<span>Child state 1.1.2 (navigates <em>UP</em> directly to Root state)</span>
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="nav-item" role="presentation">
+										<a [routerLink]="['/navigator/1/2']" class="nav-link" role="menuitem" routerLinkActive="active">
+											<span>Child state 1.2</span>
+										</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div class="column-main default-layout">
+				<navigator class="btn btn-primary btn-md pull-right pull-over">
+					<span class="fa fa-chevron-up"></span>
+					<span>Go UP!</span>
+				</navigator>
+				<ul role="menu" class="nav nav-bordered nav-indented nav-tree">
+					<li class="nav-header" role="presentation">
+						<h3 class="nav-header-title">Nested State(s) Content</h3>
+					</li>
+					<li>
+						<p class="lead">
+							<a ui-sref="samples.navigator" class="thumbnail well pull-left">Root state</a>
+							<router-outlet></router-outlet>
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

@@ -9,9 +9,10 @@
         "fr": "Français",
         "it": "Italiano",
         "en": "English"
-      }
+      },
+      "loading": "Loading..."
     },
-    "states": {
+    "routes": {
       "home": {
         "title": "Home",
         "description": "Description for the Home state page."
@@ -48,6 +49,9 @@
         "navigator": {
           "title": "States Navigator"
         },
+        "nav-tree": {
+          "title": "Navigation Tree"
+        },
         "typeahead": {
           "title": "Typeahead"
         },
@@ -83,6 +87,8 @@
       "select": "Select please.",
       "actions": "Actions",
       "action": "Action",
+      "collapseAll": "Collapse all",
+      "expandAll": "Expand all",
       "pager": {
         "pagesLengthBefore": "Displaying",
         "pagesLengthAfter": "Results per page",
@@ -95,6 +101,11 @@
           "dd.MM.yyyy": "dd.mm.yyyy",
           "d!.M!.yyyy": "dd.mm.yyyy"
         }
+      },
+      "search": {
+        "noResults": "No results...",
+        "placeholder": "Search by term",
+        "results": "Result(s)"
       }
     },
     "labels": {
@@ -183,14 +194,18 @@
         "back": "Back"
       }
     },
-    "multiselect": {
-      "checkAll": "<strong>select</strong> all",
-      "uncheckAll": "<strong>unselect</strong> all",
-      "buttonDefault": "Select please.",
-      "allSelected": "All elements have been selected."
-    },
     "topControl": {
       "backToTop": "Back to top"
+    },
+    "oblique": {
+      "multiselect": {
+        "checkAll": "Check all",
+        "uncheckAll": "Uncheck all",
+        "checked": "{{amount}} checked",
+        "searchPlaceholder": "Search...",
+        "defaultTitle": "Select please.",
+        "allSelected": "All elements have been selected."
+      }
     }
   }
 }

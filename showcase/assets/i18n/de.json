@@ -9,9 +9,10 @@
         "fr": "Français",
         "it": "Italiano",
         "en": "English"
-      }
+      },
+      "loading": "[de] Loading..."
     },
-    "states": {
+    "routes": {
       "home": {
         "title": "Startseite",
         "description": "Description for the Home state page."
@@ -39,14 +40,17 @@
         "datepicker": {
           "title": "Datepicker"
         },
-        "navigable": {
-          "title": "Navigable"
-        },
         "multiselect": {
           "title": "Multiselect"
         },
+        "navigable": {
+          "title": "Navigable"
+        },
         "navigator": {
           "title": "States Navigator"
+        },
+        "nav-tree": {
+          "title": "Navigation Tree"
         },
         "typeahead": {
           "title": "Typeahead"
@@ -83,6 +87,8 @@
       "select": "Wählen bitte.",
       "actions": "Aktionen",
       "action": "Aktion",
+      "collapseAll": "Alles zu",
+      "expandAll": "Alles auf",
       "pager": {
         "pagesLengthBefore": "Anzeige von",
         "pagesLengthAfter": "Treffen pro Seite",
@@ -95,6 +101,11 @@
           "dd.MM.yyyy": "TT.MM.JJJJ",
           "d!.M!.yyyy": "TT.MM.JJJJ"
         }
+      },
+      "search": {
+        "noResults": "Keine Treffer",
+        "placeholder": "Suche nach Begriff",
+        "results": "Suchtreffen"
       }
     },
     "labels": {
@@ -183,14 +194,18 @@
         "back": "Zurück"
       }
     },
-    "multiselect": {
-      "checkAll": "<strong>alle</strong> auswählen",
-      "uncheckAll": "<strong>keine</strong> auswählen",
-      "buttonDefault": "Wählen bitte.",
-      "allSelected": "Alle Elemente wurden selektiert."
-    },
     "topControl": {
       "backToTop": "Zum Seitenanfang"
+    },
+    "oblique": {
+      "multiselect": {
+        "checkAll": "Alle auswählen",
+        "uncheckAll": "Keine auswählen ",
+        "checked": "{{amount}} ausgewählt",
+        "searchPlaceholder": "Suchen...",
+        "defaultTitle": "Wählen bitte.",
+        "allSelected": "Alle Elemente wurden selektiert."
+      }
     }
   }
 }

@@ -1,0 +1,66 @@
+<div class="default-layout">
+	<h2 class="page-header">{{'i18n.routes.samples.multiselect.title' | translate}}</h2>
+	<div class="card">
+		<div class="card-header">
+			<h3 class="card-title">Preview</h3>
+		</div>
+		<div class="card-block">
+			<section>
+				<h3>Default multiselect</h3>
+
+				<div class="row">
+					<div class="col-md-6">
+						<multiselect [options]="states"
+									 [(ngModel)]="model">
+						</multiselect>
+					</div>
+					<div class="col-md-6">
+						<pre>{{model | json}}</pre>
+					</div>
+				</div>
+				<h3>Multiselect with complex options and <code>labelProperty</code></h3>
+
+				<div class="row">
+					<div class="col-md-6">
+						<multiselect [options]="statesComplex"
+									 [(ngModel)]="labelModel"
+									 [settings]="{showCheckAll: true, showUncheckAll: true}"
+									 labelProperty="name">
+						</multiselect>
+					</div>
+					<div class="col-md-6">
+						<pre>{{labelModel | json}}</pre>
+					</div>
+				</div>
+
+				<h3>Multiselect with complex options, search filter, <code>labelFormatter</code>...</h3>
+
+				<div class="row">
+					<div class="col-md-6">
+						<multiselect [options]="statesComplex"
+									 [(ngModel)]="formatterModel"
+									 [settings]="{showCheckAll: true, showUncheckAll: true, enableSearch: true}"
+									 [texts]="{defaultTitle: '... and a custom title'}"
+									 [labelFormatter]="complexStateLabelFormatter">
+						</multiselect>
+					</div>
+					<div class="col-md-6">
+						<pre>{{formatterModel | json}}</pre>
+					</div>
+				</div>
+				<h3>Dropup variation</h3>
+
+				<div class="row">
+					<div class="col-md-6">
+						<multiselect [options]="states" [(ngModel)]="model"
+									 [dropup]="true">
+						</multiselect>
+					</div>
+					<div class="col-md-6">
+						<pre>{{model | json}}</pre>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>

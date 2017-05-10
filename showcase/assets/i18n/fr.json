@@ -9,9 +9,10 @@
         "fr": "Français",
         "it": "Italiano",
         "en": "English"
-      }
+      },
+      "loading": "Chargement..."
     },
-    "states": {
+    "routes": {
       "home": {
         "title": "Accueil",
         "description": "Description for the Home state page."
@@ -48,6 +49,9 @@
         "navigator": {
           "title": "States Navigator"
         },
+        "nav-tree": {
+          "title": "Navigation Tree"
+        },
         "typeahead": {
           "title": "Typeahead"
         },
@@ -83,6 +87,8 @@
       "select": "Sélectionner svp.",
       "actions": "Actions",
       "action": "Action",
+      "collapseAll": "Tout fermer",
+      "expandAll": "Tout afficher",
       "pager": {
         "pagesLengthBefore": "Displaying",
         "pagesLengthAfter": "Results per page",
@@ -95,6 +101,11 @@
           "dd.MM.yyyy": "jj.mm.aaaa",
           "d!.M!.yyyy": "jj.mm.aaaa"
         }
+      },
+      "search": {
+        "noResults": "Aucun résultat",
+        "placeholder": "Recherche par terme",
+        "results": "Résultat(s)"
       }
     },
     "labels": {
@@ -191,6 +202,16 @@
     },
     "topControl": {
       "backToTop": "Haut de page"
+    },
+    "oblique": {
+      "multiselect": {
+        "checkAll": "Sélectionner tous",
+        "uncheckAll": "Sélectionner aucun",
+        "checked": "{{amount}} sélectionnés",
+        "searchPlaceholder": "Recherche...",
+        "defaultTitle": "Sélectionner svp.",
+        "allSelected": "Tous les éléments ont été sélectionnés."
+      }
     }
   }
 }

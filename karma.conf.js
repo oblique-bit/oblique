@@ -1,8 +1,6 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/0.13/config/configuration-file.html
 
-//FIXME: In the first run, only the files from ./showcase are loaded
-
 module.exports = function (config) {
 	config.set({
 		basePath: '',
@@ -39,7 +37,11 @@ module.exports = function (config) {
 			: ['progress', 'kjhtml'],
 		port: 9876,
 		colors: true,
-		logLevel: config.LOG_INFO,
+		browserConsoleLogOptions: {
+			level: 'log',
+			format: '%b %T: %m',
+			terminal: true
+		},
 		autoWatch: true,
 		browsers: ['PhantomJS'],
 		singleRun: false

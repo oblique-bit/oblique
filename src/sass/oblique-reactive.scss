@@ -1,6 +1,5 @@
-// Flat design (no node_modules in a node_module)
-@import '../../node_modules/oblique-ui/sass/variables.scss';
-@import '../../node_modules/oblique-ui/sass/mixins.scss';
+@import '../../node_modules/oblique-ui/sass/variables';
+@import '../../node_modules/oblique-ui/sass/mixins';
 
 // Vendor overrides:
 @import 'vendor/oblique-ui';
@@ -9,7 +8,6 @@
 // UI Components:
 @import 'components/animations';
 @import 'components/list-group';
-@import 'components/multiselect';
 @import 'components/page-header';
 @import 'components/navigable';
 

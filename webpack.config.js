@@ -1,4 +1,6 @@
 const path = require('path');
+const ProjectConfig = require('./project.conf');
+
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
@@ -52,7 +54,7 @@ module.exports = {
 		]
 	},
 	"output": {
-		"path": path.join(process.cwd(), "target"),
+		"path": path.join(process.cwd(), ProjectConfig.build.target),
 		"filename": "[name].bundle.js",
 		"chunkFilename": "[id].chunk.js"
 	},
@@ -160,40 +162,7 @@ module.exports = {
 							'node_modules/oblique-ui/templates/helpers/**/*.ts'
 						],
 						data: {
-							app: {
-								version: 'vTODO',
-								name: 'oblique-ui',
-								title: 'ObliqueReactive',
-								description: 'Reactive front-end framework for your business web application.',
-								home: 'index.html',
-								lang: 'en',
-								organization: {
-									name: 'Federal Office of Information Technology, Systems and Telecommunication FOITT',
-									url: 'http://www.bit.admin.ch',
-									email: 'info@bit.admin.ch',
-									contact: false
-								},
-								theme: {
-									tooltips: true,
-									application: {
-										fixed: false
-									},
-									header: {
-										transitions: true
-									},
-									navigation: {
-										scrollable: true
-									}
-								},
-								vendor: {
-									path: 'assets/',
-									obliqueui: {
-										name: 'oblique-ui',
-										title: 'ObliqueUI',
-										path: 'oblique-ui/'
-									}
-								}
-							}
+							app: ProjectConfig.app
 						},
 						parsePartialName: function (options, file) {
 							return file.path.split(path.sep).pop().replace('.hbs', '');
@@ -263,23 +232,22 @@ module.exports = {
 		new LoaderOptionsPlugin({
 			"sourceMap": false,
 			"options": {
-				//TODO: We can probably remove this, we do not use postcss
 				"postcss": [
 					autoprefixer(),
 					postcssUrl({
-						"url": (URL) => {
+						"url": (config) => {
 							// Only convert root relative URLs, which CSS-Loader won't process into require().
-							if (!URL.startsWith('/') || URL.startsWith('//')) {
-								return URL;
+							if (!config.url.startsWith('/') || config.url.startsWith('//')) {
+								return config.url;
 							}
 							if (deployUrl.match(/:\/\//)) {
 								// If deployUrl contains a scheme, ignore baseHref use deployUrl as is.
-								return `${deployUrl.replace(/\/$/, '')}${URL}`;
+								return `${deployUrl.replace(/\/$/, '')}${config.url}`;
 							}
 							else {
 								// Join together base-href, deploy-url and the original URL.
 								// Also dedupe multiple slashes into single ones.
-								return `/${baseHref}/${deployUrl}/${URL}`.replace(/\/\/+/g, '/');
+								return `/${baseHref}/${deployUrl}/${config.url}`.replace(/\/\/+/g, '/');
 							}
 						}
 					})

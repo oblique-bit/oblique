@@ -2,6 +2,9 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {enableProdMode} from '@angular/core';
 import {environment} from './environments/environment';
 
+// Project resources:
+import * as ProjectConfig from '../project.conf.js';
+
 // Oblique resources:
 import {SpinnerComponent, TopControlComponent} from '../src';
 
@@ -24,5 +27,6 @@ const components = [
 ];
 
 platformBrowserDynamic([
-	{provide: BOOTSTRAP_COMPONENTS_TOKEN, useValue: components}
+	{provide: BOOTSTRAP_COMPONENTS_TOKEN, useValue: components},
+	{provide: 'ObliqueReactive.CONFIG', useValue: ProjectConfig.app}
 ]).bootstrapModule(AppModule);
