@@ -6,36 +6,23 @@ import 'rxjs/add/operator/filter';
 //TODO: Handle modals
 @Injectable()
 export class UnsavedChangesService {
-	private forms: ControlContainer[] = [];
-	private tabs = {};
+	private formList = {string: ControlContainer};
 
 	constructor(private translateService: TranslateService) {
 		window.addEventListener('beforeunload', (e) => this.onUnload(e));
 	}
 
-
-
-	watch(form: ControlContainer, tab?: string): void {
-		this.forms.push(form);
-		if (tab) {
-			this.tabs[tab] = form;
-		}
+	watch(formId:string, form: ControlContainer): void {
+		this.formList[formId] = form;
 	}
 
-	checkForTabChanges(): boolean {
-		return true;
-		// return (this.tabs[event.activeId] && this.tabs[event.activeId].dirty && !confirm(this.message()));
+	unWatch(formId: string): void {
+		 delete this.formList[formId];
 	}
 
-	unWatch(form: ControlContainer): void {
-		this.forms.splice(this.forms.indexOf(form));
-	}
-
-	canDeactivate(nestedForm?: ControlContainer): boolean {
-		if ((nestedForm && nestedForm.dirty) || this.hasPendingChanges()) {
-			return window.confirm(this.message());
-		}
-		return true;
+	canDeactivateTab(formId: string): boolean {
+		let form = this.formList[formId];
+		return form && form.dirty ? window.confirm(this.message()) : true;
 	}
 
 	onUnload(event: BeforeUnloadEvent) {
@@ -50,8 +37,8 @@ export class UnsavedChangesService {
 	}
 
 	private hasPendingChanges(): boolean {
-		for (const form of this.forms) {
-			if (form.dirty) {
+		for (const formId in this.formList) {
+			if (this.formList.hasOwnProperty(formId) && this.formList[formId].dirty) {
 				return true;
 			}
 		}

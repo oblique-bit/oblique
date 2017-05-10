@@ -1,20 +1,26 @@
-import {Directive, OnDestroy} from '@angular/core';
+import {
+	AfterContentInit, ContentChildren, Directive, QueryList
+} from '@angular/core';
 import {UnsavedChangesService} from './unsaved-changes.service';
-import {NgbTabset, NgbTabChangeEvent} from '@ng-bootstrap/ng-bootstrap';
+import {NgbTabset, NgbTabChangeEvent, NgbTab} from '@ng-bootstrap/ng-bootstrap';
 
 @Directive({
 	selector: '[unsavedChangesTab]'
 })
-export class UnsavedChangesTabDirective implements OnDestroy {
+export class UnsavedChangesTabDirective implements AfterContentInit {
+	@ContentChildren(NgbTab) tabList: QueryList<any>;
 
-	constructor(private unsavedChangesService: UnsavedChangesService, private tabset: NgbTabset) {
-		tabset.tabChange.subscribe((event: NgbTabChangeEvent) => {
-			if (this.unsavedChangesService.checkForTabChanges())
-				event.preventDefault();
-		});
+
+	constructor(private unsavedChangesService: UnsavedChangesService, private tabSet: NgbTabset) {
 	}
 
-	ngOnDestroy() {
-		// this.unsavedChangesService.unWatch(this.form);
+	ngAfterContentInit() {
+		this.tabSet.tabChange.subscribe((event: NgbTabChangeEvent) => {
+			let tab = this.tabList.filter((tab: NgbTab): boolean => tab.id === event.activeId);
+			let form = $(tab[0].contentTpl.templateRef.elementRef.nativeElement).parents('form');
+
+			if (!this.unsavedChangesService.canDeactivateTab(form.attr('id')))
+				event.preventDefault();
+		});
 	}
 }

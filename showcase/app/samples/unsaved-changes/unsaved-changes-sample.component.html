@@ -11,7 +11,7 @@
 		<div class="card-block">
 			<ngb-tabset unsavedChangesTab>
 				<ngb-tab id="tab1">
-					<form class="form-horizontal has-validation" #form1="ngForm" role="form"
+					<form class="form-horizontal has-validation" id="form1" #form1="ngForm" role="form"
 						  unsavedChanges novalidate>
 						<ng-template ngbTabTitle>
 							<span>Form One</span>
@@ -68,7 +68,7 @@
 					</form>
 				</ngb-tab>
 				<ngb-tab id="tab2" title="Form Two (untracked)">
-					<form class="form-horizontal has-validation" #form2="ngForm" role="form"
+					<form class="form-horizontal has-validation" id="form2" #form2="ngForm" role="form"
 						  novalidate>
 						<ng-template ngbTabContent>
 							<div class="form-group row">
@@ -114,7 +114,7 @@
 					</form>
 				</ngb-tab>
 				<ngb-tab id="tab3">
-					<form class="form-horizontal has-validation" #form3="ngForm" role="form"
+					<form class="form-horizontal has-validation" id="form3" #form3="ngForm" role="form"
 						  unsavedChanges="tab3" novalidate>
 						<ng-template ngbTabTitle>
 							<span>Form Three</span>

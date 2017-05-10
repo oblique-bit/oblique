@@ -1,17 +1,19 @@
-import {Directive, OnDestroy} from '@angular/core';
+import {Directive, ElementRef, OnDestroy} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {UnsavedChangesService} from './unsaved-changes.service';
 
 @Directive({
-	selector: 'unsavedChanges'
+	selector: '[unsavedChanges]'
 })
 export class UnsavedChangesDirective implements OnDestroy {
+	private formId;
 
-	constructor(private unsavedChangesService: UnsavedChangesService, private form: ControlContainer) {
-		this.unsavedChangesService.watch(this.form);
+	constructor(el: ElementRef, private unsavedChangesService: UnsavedChangesService, private form: ControlContainer) {
+		this.formId = $(el.nativeElement).attr('id') || $(el.nativeElement).attr('name');
+		this.unsavedChangesService.watch(this.formId, this.form);
 	}
 
 	ngOnDestroy() {
-		this.unsavedChangesService.unWatch(this.form);
+		this.unsavedChangesService.unWatch(this.formId);
 	}
 }
