@@ -17,9 +17,10 @@ export class UnsavedChangesTabDirective implements AfterContentInit {
 	ngAfterContentInit() {
 		this.tabSet.tabChange.subscribe((event: NgbTabChangeEvent) => {
 			let tab = this.tabList.filter((tab: NgbTab): boolean => tab.id === event.activeId);
-			let form = $(tab[0].contentTpl.templateRef.elementRef.nativeElement).parents('form');
+			let form = $(tab[0].contentTpl.templateRef.elementRef.nativeElement).parents('[unsavedChanges]');
+			console.log(form);
 
-			if (!this.unsavedChangesService.canDeactivateTab(form.attr('id')))
+			if (form.length && !this.unsavedChangesService.canDeactivateTab(form.attr('id')))
 				event.preventDefault();
 		});
 	}

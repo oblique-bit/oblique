@@ -6,7 +6,16 @@
 		another state or when closing the current browser tab (or the browser itself).</p>
 	<div class="card">
 		<div class="card-header">
-			<h3 class="card-title">Preview with 1 form per tab</h3>
+			<h3 class="card-title pull-left">Preview with 1 form per tab</h3>
+			<div class="pull-right">
+				<span class="fa fa-check text-success"
+					  uib-tooltip="Form does not contain unsaved changes" tooltip-placement="bottom"
+					  *ngIf="!form1.form.dirty && !form2.form.dirty && !form3.form.dirty"></span>
+				<span class="fa fa-warning text-warning"
+					  uib-tooltip="Form contains unsaved changes" tooltip-placement="bottom"
+					  *ngIf="form1.form.dirty || form2.form.dirty || form3.form.dirty"></span>
+			</div>
+			<div class="clearfix"></div>
 		</div>
 		<div class="card-block">
 			<ngb-tabset unsavedChangesTab>
@@ -115,7 +124,7 @@
 				</ngb-tab>
 				<ngb-tab id="tab3">
 					<form class="form-horizontal has-validation" id="form3" #form3="ngForm" role="form"
-						  unsavedChanges="tab3" novalidate>
+						  unsavedChanges novalidate>
 						<ng-template ngbTabTitle>
 							<span>Form Three</span>
 							<span class="fa fa-check text-success"
@@ -174,7 +183,7 @@
 	</div>
 
 	<form class="form-horizontal has-validation row" id="parentForm" #parentForm="ngForm" role="form"
-		  unsavedChanges novalidate>
+		  novalidate>
 		<div class="col-md-8">
 			<div class="card">
 				<div class="card-header">
@@ -190,8 +199,8 @@
 					<div class="clearfix"></div>
 				</div>
 				<div class="card-block">
-					<ngb-tabset>
-						<ngb-tab id="tab4" ngModelGroup="form4" #form4="ngModelGroup">
+					<ngb-tabset unsavedChangesTab>
+						<ngb-tab id="tab4" ngModelGroup="form4" #form4="ngModelGroup" unsavedChanges>
 							<ng-template ngbTabTitle>
 								<span>Form Four</span>
 								<span class="fa fa-check text-success"
@@ -278,7 +287,7 @@
 								</div>
 							</ng-template>
 						</ngb-tab>
-						<ngb-tab id="tab6" ngModelGroup="form6" #form6="ngModelGroup">
+						<ngb-tab id="tab6" ngModelGroup="form6" #form6="ngModelGroup" unsavedChanges>
 							<ng-template ngbTabTitle>
 								<span>Form Six</span>
 								<span class="fa fa-check text-success"
@@ -316,7 +325,7 @@
 								<!--<label class="col-sm-4 control-label">Date</label>-->
 								<!--<div class="col-sm-4">-->
 								<!--<date-picker name="date" [(ngModel)]="tabs.three.date"></date-picker>-->
-									<!--</div>-->
+								<!--</div>-->
 								<!--</div>-->
 								<div class="row">
 									<label class="col-sm-4 control-label">Model data</label>

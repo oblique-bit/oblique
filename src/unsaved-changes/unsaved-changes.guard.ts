@@ -13,6 +13,7 @@ export class UnsavedChangesGuard implements CanDeactivate<any> {
     }
 
     canDeactivate() {
-        return this.unsavedChangesService.canDeactivate();
+    	return true;
+        // return this.unsavedChangesService.canDeactivate();
     }
 }

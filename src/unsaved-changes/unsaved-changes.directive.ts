@@ -9,7 +9,7 @@ export class UnsavedChangesDirective implements OnDestroy {
 	private formId;
 
 	constructor(el: ElementRef, private unsavedChangesService: UnsavedChangesService, private form: ControlContainer) {
-		this.formId = $(el.nativeElement).attr('id') || $(el.nativeElement).attr('name');
+		this.formId = $(el.nativeElement).attr('id');
 		this.unsavedChangesService.watch(this.formId, this.form);
 	}
 
