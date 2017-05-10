@@ -35,24 +35,26 @@
 						</ng-template>
 						<ng-template ngbTabContent>
 							<div class="form-group row">
-								<label class="col-sm-4 control-label">Text</label>
+								<label for="form1.text" class="col-sm-4 control-label">Text</label>
 								<div class="col-sm-8">
-									<input name="text" #text="ngModel" type="text" class="form-control"
+									<input name="text" #text="ngModel" type="text" class="form-control" id="form1.text"
 										   [(ngModel)]="tabs.one.text"/>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-4 control-label">Number</label>
+								<label for="form1.number" class="col-sm-4 control-label">Number</label>
 								<div class="col-sm-8">
 									<input name="number" #number="ngModel" type="number" class="form-control"
+										   id="form1.number"
 										   [(ngModel)]="tabs.one.number"
 										   number-format/>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-4 control-label">Integer</label>
+								<label for="form1.integer" class="col-sm-4 control-label">Integer</label>
 								<div class="col-sm-8">
 									<input name="integer" #integer="ngModel" type="number" class="form-control"
+										   id="form1.integer"
 										   [(ngModel)]="tabs.one.integer"/>
 								</div>
 							</div>
@@ -81,24 +83,24 @@
 						  novalidate>
 						<ng-template ngbTabContent>
 							<div class="form-group row">
-								<label class="col-sm-4 control-label">Text</label>
+								<label for="form2.text" class="col-sm-4 control-label">Text</label>
 								<div class="col-sm-8">
-									<input name="text" type="text" class="form-control"
+									<input name="text" type="text" class="form-control" id="form2.text"
 										   [(ngModel)]="tabs.two.text"/>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-4 control-label">Number</label>
+								<label for="form2.number" class="col-sm-4 control-label">Number</label>
 								<div class="col-sm-8">
-									<input name="number" type="text" class="form-control"
+									<input name="number" type="text" class="form-control" id="form2.number"
 										   [(ngModel)]="tabs.two.number"
 										   number-format/>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-4 control-label">Integer</label>
+								<label for="form2.integer" class="col-sm-4 control-label">Integer</label>
 								<div class="col-sm-8">
-									<input name="integer" type="number" class="form-control"
+									<input name="integer" type="number" class="form-control" id="form2.integer"
 										   [(ngModel)]="tabs.two.integer"/>
 								</div>
 							</div>
@@ -138,23 +140,23 @@
 						</ng-template>
 						<ng-template ngbTabContent>
 							<div class="form-group row">
-								<label class="col-sm-4 control-label">Text</label>
+								<label for="form3.text" class="col-sm-4 control-label">Text</label>
 								<div class="col-sm-8">
-									<input name="text" type="text" class="form-control"
+									<input name="text" type="text" class="form-control" id="form3.text"
 										   [(ngModel)]="tabs.three.text"/>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-4 control-label">Number</label>
+								<label for="form3.number" class="col-sm-4 control-label">Number</label>
 								<div class="col-sm-8">
-									<input name="number" type="text" class="form-control"
+									<input name="number" type="text" class="form-control" id="form3.number"
 										   [(ngModel)]="tabs.three.number" number-format/>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-4 control-label">Integer</label>
+								<label for="form3.integer" class="col-sm-4 control-label">Integer</label>
 								<div class="col-sm-8">
-									<input name="integer" type="number" class="form-control"
+									<input name="integer" type="number" class="form-control" id="form3.integer"
 										   [(ngModel)]="tabs.three.integer"/>
 								</div>
 							</div>
@@ -214,24 +216,27 @@
 							</ng-template>
 							<ng-template ngbTabContent>
 								<div class="form-group row">
-									<label class="col-sm-4 control-label">Text</label>
+									<label for="form4.text" class="col-sm-4 control-label">Text</label>
 									<div class="col-sm-8">
 										<input name="text" #text="ngModel" type="text" class="form-control"
+											   id="form4.text"
 											   [(ngModel)]="tabs.four.text"/>
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-sm-4 control-label">Number</label>
+									<label for="form4.number" class="col-sm-4 control-label">Number</label>
 									<div class="col-sm-8">
 										<input name="number" #number="ngModel" type="number" class="form-control"
+											   id="form4.number"
 											   [(ngModel)]="tabs.four.number"
 											   number-format/>
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-sm-4 control-label">Integer</label>
+									<label for="form4.integer" class="col-sm-4 control-label">Integer</label>
 									<div class="col-sm-8">
 										<input name="integer" #integer="ngModel" type="number" class="form-control"
+											   id="form4.integer"
 											   [(ngModel)]="tabs.four.integer"/>
 									</div>
 								</div>
@@ -252,25 +257,25 @@
 						<ngb-tab id="tab5" title="Form Five (untracked)" ngModelGroup="form5" #form5="ngModelGroup">
 							<ng-template ngbTabContent>
 								<div class="form-group row">
-									<label class="col-sm-4 control-label">Text</label>
+									<label for="form5.text" class="col-sm-4 control-label">Text</label>
 									<div class="col-sm-8">
-										<input name="text" type="text" class="form-control"
+										<input name="text" type="text" class="form-control" id="form5.text"
 											   [(ngModel)]="tabs.five.text"/>
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-sm-4 control-label">Number</label>
+									<label for="form5.number" class="col-sm-4 control-label">Number</label>
 									<div class="col-sm-8">
-										<input name="number" type="text" class="form-control"
+										<input name="number" type="text" class="form-control" id="form5.number"
 											   [(ngModel)]="tabs.five.number"
 											   number-format/>
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-sm-4 control-label">Integer</label>
+									<label for="form5.integer" class="col-sm-4 control-label">Integer</label>
 									<div class="col-sm-8">
-										<input name="integer" type="number" class="form-control"
-											   [(ngModel)]="tabs.five.integer"/>
+									<input name="integer" type="number" class="form-control" id="form5.integer"
+										   [(ngModel)]="tabs.five.integer"/>
 									</div>
 								</div>
 								<!--<div class="form-group row">-->
@@ -301,23 +306,23 @@
 							</ng-template>
 							<ng-template ngbTabContent>
 								<div class="form-group row">
-									<label class="col-sm-4 control-label">Text</label>
+									<label for="form6.text" class="col-sm-4 control-label">Text</label>
 									<div class="col-sm-8">
-										<input name="text" type="text" class="form-control"
+										<input name="text" type="text" class="form-control" id="form6.text"
 											   [(ngModel)]="tabs.six.text"/>
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-sm-4 control-label">Number</label>
+									<label for="form6.number" class="col-sm-4 control-label">Number</label>
 									<div class="col-sm-8">
-										<input name="number" type="text" class="form-control"
+										<input name="number" type="text" class="form-control" id="form6.number"
 											   [(ngModel)]="tabs.six.number"/>
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-sm-4 control-label">Integer</label>
+									<label for="form6.integer" class="col-sm-4 control-label">Integer</label>
 									<div class="col-sm-8">
-										<input name="integer" type="number" class="form-control"
+										<input name="integer" type="number" class="form-control" id="form6.integer"
 											   [(ngModel)]="tabs.six.integer"/>
 									</div>
 								</div>
