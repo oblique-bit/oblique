@@ -1,0 +1,76 @@
+<div class="default-layout">
+	<h2 class="page-header">{{'i18n.routes.samples.multiselect.title' | translate}}</h2>
+	<form class="form-horizontal has-validation" #formControlForm="ngForm"
+		  (submit)="check(formControlForm)">
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title">Preview</h3>
+			</div>
+			<div class="card-block">
+				<h2 class="page-header">{{'i18n.routes.samples.formControlState.title' | translate}}</h2>
+				<p class="lead">Enables validation styling using Bootstrap <a
+					href="http://getbootstrap.com/css/#forms-control-validation">validation states</a> and ObliqueUI <a
+					href="https://eui.bit.admin.ch/oblique-ui/1.2.7/css.html#css-forms-feedback-mandatory">mandatory
+					state</a> on form controls.</p>
+				<div class="form-group row" orFormControlState>
+					<label class="col-sm-3 control-label">Number</label>
+					<div class="col-sm-9">
+						<input name="number" type="number" class="form-control"
+							   placeholder="This field is optional..."
+							   ngModel/>
+					</div>
+				</div>
+				<div class="form-group row" orFormControlState mandatory="true">
+					<label class="col-sm-3 control-label">Number</label>
+					<div class="col-sm-9">
+						<input name="numberRequired" type="number" class="form-control"
+							   placeholder="This field is mandatory..."
+							   ngModel number-format
+							   required/>
+						<or-error-messages></or-error-messages>
+					</div>
+				</div>
+				<div class="form-group row" orFormControlState [pristineValidation]="true" mandatory="true">
+					<label class="col-sm-3 control-label">Number</label>
+					<div class="col-sm-9">
+						<input name="numberRequiredPristine" type="number" class="form-control"
+							   placeholder="This field is already in error on load..."
+							   ngModel required/>
+						<or-error-messages></or-error-messages>
+					</div>
+				</div>
+				<div class="form-group row" mandatory="true">
+					<label class="col-sm-3 control-label">Address</label>
+					<div class="col-sm-9">
+						<div class="row">
+							<div class="col-sm-7" orFormControlState>
+								<div class="input-group" >
+									<label class="input-group-addon">Street</label>
+									<input name="addressStreet" type="number" class="form-control"
+										   placeholder="Street address..."
+										   ngModel/>
+								</div>
+								<or-error-messages></or-error-messages>
+							</div>
+							<div class="col-sm-5" orFormControlState mandatory="true">
+								<div class="input-group">
+									<label class="input-group-addon">Number</label>
+									<input name="addressNumber" type="number" class="form-control"
+										   placeholder="Street number..."
+										   ngModel required/>
+								</div>
+								<or-error-messages></or-error-messages>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card-footer">
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary">Check</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+

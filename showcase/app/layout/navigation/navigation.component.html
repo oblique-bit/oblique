@@ -52,6 +52,11 @@
 					   [routerLink]="['/samples.uiScroll']" routerLinkActive="active"
 					   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.uiScroll.title' | translate}}</a>
 				</li>
+				<li class="nav-item" role="presentation">
+					<a class="nav-link" href=""
+					   [routerLink]="['/form-control-state']" routerLinkActive="active"
+					   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.formControlState.title' | translate}}</a>
+				</li>
 				<li class="nav-item navigation-section" role="presentation">
 					<a class="nav-link" href="" role="menuitem" aria-expanded="false" aria-haspopup="true"
 					   data-toggle="navigation" ng-class="{active: ('validation' | includedByState)}">
@@ -65,11 +70,6 @@
 									<span class="toggle"></span>
 									<span>{{'i18n.routes.samples.validation.title' | translate}}</span>
 								</a>
-							</li>
-							<li class="nav-item" role="presentation">
-								<a class="nav-link" href=""
-								   [routerLink]="['/samples.validation.formControl']" routerLinkActive="active"
-								   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.validation.formControl.title' | translate}}</a>
 							</li>
 							<li class="nav-item" role="presentation">
 								<a class="nav-link" href=""

@@ -58,11 +58,11 @@
         "uiScroll": {
           "title": "UI Scroll"
         },
+        "formControlState": {
+          "title": "Form Control State"
+        },
         "validation": {
           "title": "Validation",
-          "formControl": {
-            "title": "Form Control"
-          },
           "schemaValidation": {
             "title": "Schema Validation"
           },
@@ -153,6 +153,7 @@
       }
     },
     "validation": {
+      "required": "[it] This field is required!",
       "basic": {
         "required": "Pflichtfeld, bitte machen Sie eine Angabe",
         "email": "Ungültiges Format, bitte geben Sie eine gültige E-Mail Adresse an",

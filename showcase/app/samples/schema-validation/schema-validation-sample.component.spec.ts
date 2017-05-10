@@ -5,7 +5,9 @@ import {FormsModule} from '@angular/forms';
 
 import {SchemaValidationComponent} from './schema-validation-sample.component';
 import {MockTranslatePipe} from '../../../../testhelpers';
-import {SchemaValidationModule} from '../../../../src/schema-validation/schema-validation.module';
+import {SchemaValidationModule} from '../../../../src/schema-validation';
+import {ErrorMessagesModule} from '../../../../src/error-messages';
+import {FormControlStateModule} from '../../../../src/form-control-state';
 
 describe('SchemaValidationComponent', () => {
 	let component: SchemaValidationComponent;
@@ -13,8 +15,16 @@ describe('SchemaValidationComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			imports: [SchemaValidationModule, FormsModule],
-			declarations: [SchemaValidationComponent, MockTranslatePipe],
+			imports: [
+				SchemaValidationModule,
+				FormsModule,
+				ErrorMessagesModule.forRoot(),
+				FormControlStateModule.forRoot()
+			],
+			declarations: [
+				SchemaValidationComponent,
+				MockTranslatePipe
+			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		})
 		.compileComponents();

@@ -15,6 +15,7 @@ import {NavigatorSampleModule} from './navigator-sample/navigator-sample.module'
 import {NavigatorSampleRoutingModule} from './navigator-sample/navigator-sample-routing.module';
 import {NavTreeSampleComponent, NavTreeDetailSampleComponent} from './nav-tree/nav-tree-sample.component';
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
+import { FormControlStateSampleComponent } from './form-control-state-sample/form-control-state-sample.component';
 
 @NgModule({
 	imports: [
@@ -34,7 +35,8 @@ import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 		NavigableSampleComponent,
 		NavTreeSampleComponent,
 		NavTreeDetailSampleComponent,
-		SchemaValidationComponent
+		SchemaValidationComponent,
+		FormControlStateSampleComponent
 	],
 	exports: [
 		RouterModule
