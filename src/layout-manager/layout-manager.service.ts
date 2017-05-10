@@ -2,7 +2,7 @@ import {Injectable, Inject} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {DOCUMENT, ɵDomAdapter, ɵgetDOM} from '@angular/platform-browser';
 import {LocalStorage} from 'ngx-webstorage';
-import {TranslateService} from '@ngx-translate/core';
+import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/mergeMap';
@@ -15,7 +15,7 @@ import 'rxjs/add/operator/withLatestFrom';
 export class LayoutManagerService {
 
 	@LocalStorage()
-	public userLocale: string;
+	public userLang: string;
 
 	private DOM: ɵDomAdapter;
 	private applicationElement: HTMLElement;
@@ -28,14 +28,21 @@ export class LayoutManagerService {
 	            @Inject(DOCUMENT) private document: any,
 	            @Inject('ObliqueReactive.CONFIG') private config: any) {
 
-		// User locale:
-		if (this.userLocale) {
-			this.translate.use(this.userLocale);
-		} else if (config.defaults) {
-			this.translate.use(config.defaults.locale);
-		}
+		// User lang handling:
+		// --------------------
+		this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+			// Ensure local value remains in sync:
+			this.userLang = event.lang;
+		});
+
+		// Define default/fallback lang:
+		translate.setDefaultLang((this.config.defaults && this.config.defaults.locale) || 'en');
+
+		// Apply user or default lang:
+		this.translate.use(this.userLang || translate.getDefaultLang());
 
 		// Application layout:
+		// -------------------
 		this.DOM = ɵgetDOM();
 		this.applicationElement = this.DOM.querySelector(document, 'body > .application');
 
@@ -56,9 +63,8 @@ export class LayoutManagerService {
 			});
 	}
 
-	toggleClass(target: HTMLElement, className, previous = null) {
-		this.DOM.removeClass(target, previous);
-		this.DOM.addClass(target, className || null); // Avoid `undefined`s and empty strings '' as it silently breaks the observable
+	useLang(locale: string) {
+		this.translate.use(locale);
 	}
 
 	get cover(): boolean {
@@ -79,5 +85,10 @@ export class LayoutManagerService {
 		} else {
 			this.toggleClass(this.applicationElement, 'no-navigation');
 		}
+	}
+
+	private toggleClass(target: HTMLElement, className, previous = null) {
+		this.DOM.removeClass(target, previous);
+		this.DOM.addClass(target, className || null); // Avoid `undefined`s and empty strings '' as it silently breaks the observable
 	}
 }

@@ -22,7 +22,6 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './home/home.component';
 import {SamplesModule} from './samples/samples.module';
-import {Ng2Webstorage} from 'ngx-webstorage';
 
 // Root components:
 export const ENTRY_COMPONENTS = [
@@ -49,7 +48,6 @@ export function createTranslateLoader(http: Http) {
 		FormsModule,
 		HttpModule,
 		ObliqueModule.forRoot(),
-		Ng2Webstorage.forRoot({prefix: 'oblique'}),
 		NgbModule.forRoot(),
 		TranslateModule.forRoot({
 			loader: {
@@ -73,11 +71,9 @@ export function createTranslateLoader(http: Http) {
 })
 export class AppModule {
 	constructor(private resolver: ComponentFactoryResolver,
-	            private translate: TranslateService,
 	            private documentMetaService: DocumentMetaService,
-	            private uiLayoutService: LayoutManagerService, // Service instantiation only!
+	            private layoutManagerService: LayoutManagerService, // Service instantiation only!
 	            @Inject('ObliqueReactive.CONFIG') private config: any) {
-		translate.setDefaultLang((this.config.defaults && this.config.defaults.locale) || 'en');
 		documentMetaService.titleSuffix = config.title;
 		documentMetaService.description = config.description;
 	}

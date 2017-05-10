@@ -1,7 +1,7 @@
-import {Component, ElementRef, Input} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 
 /**
- * TODO: refactor this with a better approach.
+ * TODO: refactor this with a better approach (single root component & @Input).
  */
 @Component({
 	selector: 'branding-app-title',
@@ -12,18 +12,15 @@ export class BrandingAppTitleComponent {
 	/**
 	 * The router link for the default home state.
 	 */
-	@Input()
 	home: string;
 
 	/**
 	 * The application title.
 	 */
-	@Input()
 	title: string;
 
-	constructor(elm: ElementRef) {
-		// As properties of root components are not binded, let's do it manually:
-		this.home = elm.nativeElement.attributes['[home]'].value;
-		this.title = elm.nativeElement.attributes['[title]'].value;
+	constructor(@Inject('ObliqueReactive.CONFIG') private config: any) {
+		this.home = config.home;
+		this.title = config.title;
 	}
 }
