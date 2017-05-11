@@ -46,8 +46,8 @@
 							<div class="col-sm-7" orFormControlState>
 								<div class="input-group" >
 									<label class="input-group-addon">Street</label>
-									<input name="addressStreet" type="number" class="form-control"
-										   placeholder="Street address..."
+									<input name="addressStreet" type="text" class="form-control"
+										   placeholder="Street address..." minlength="5"
 										   ngModel/>
 								</div>
 								<or-error-messages></or-error-messages>
@@ -62,6 +62,16 @@
 								<or-error-messages></or-error-messages>
 							</div>
 						</div>
+					</div>
+				</div>
+				<div class="form-group row" orFormControlState>
+					<label class="col-sm-3 control-label">Email</label>
+					<div class="col-sm-9">
+						<input name="email" type="text" class="form-control" #email="ngModel"
+						       placeholder="This field is optional..."
+						       pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+						       ngModel/>
+						<or-error-messages></or-error-messages>
 					</div>
 				</div>
 			</div>

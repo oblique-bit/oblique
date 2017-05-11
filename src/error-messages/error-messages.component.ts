@@ -28,7 +28,6 @@ export class ErrorMessagesComponent implements AfterViewInit {
 	}
 
 	ngAfterViewInit() {
-		//TODO: discuss this!
 		this.control = this.control ? this.control : this.formGroup.ngControl;
 
 		Observable.merge(
