@@ -1,26 +1,24 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
-/**
- * TODO: refactor this with a better approach (single root component & @Input).
- */
 @Component({
 	selector: 'branding-app-title',
-	templateUrl: './app-title.component.html'
+	template: `
+		<a [routerLink]="[home]" class="application-brand-link">
+			{{title}}
+		</a>
+	`
 })
 export class BrandingAppTitleComponent {
 
 	/**
 	 * The router link for the default home state.
 	 */
+	@Input()
 	home: string;
 
 	/**
 	 * The application title.
 	 */
+	@Input()
 	title: string;
-
-	constructor(@Inject('ObliqueReactive.CONFIG') private config: any) {
-		this.home = config.home;
-		this.title = config.title;
-	}
 }

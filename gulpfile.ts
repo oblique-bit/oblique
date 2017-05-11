@@ -81,6 +81,7 @@
 				partials: [
 					'node_modules/oblique-ui/templates/layouts/**/*.hbs',
 					'node_modules/oblique-ui/templates/partials/**/*.hbs',
+					'src/partials/*.hbs',
 					paths.showcase + 'partials/*.hbs'
 				],
 				helpers: [

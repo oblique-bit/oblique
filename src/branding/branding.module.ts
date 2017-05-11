@@ -10,6 +10,9 @@ import {RouterModule} from '@angular/router';
 	],
 	declarations: [
 		BrandingAppTitleComponent
+	],
+	exports: [
+		BrandingAppTitleComponent
 	]
 })
 export class BrandingModule {
