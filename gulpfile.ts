@@ -33,6 +33,7 @@
 		paths = {
 			src: 'src/',
 			sass: 'src/sass/',
+			partials: 'src/partials/',
 			showcase: 'showcase/',
 			dist: 'dist/'
 		},
@@ -161,7 +162,8 @@
 
 	gulp.task('dist-copy', () => {
 		return gulp.src([
-			paths.sass + '**/*'
+			paths.sass + '**/*',
+			paths.partials + '**/*'
 		], {base: paths.src})
 		.pipe(gulp.dest(paths.dist));
 	});
