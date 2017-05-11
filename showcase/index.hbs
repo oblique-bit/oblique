@@ -1,14 +1,15 @@
-{{#extend "default-layout"
-	appHome=app.home
-	description=app.description
-	bodyClass="has-overlay"
-	applicationClass=app.theme.header.variant
-	applicationFixed=app.theme.application.fixed
-	headerTransitions=app.theme.header.transitions
-	headerVariant=app.theme.header.variant}}
+{{#extend "base-layout"
+          appHome=app.home
+          description=app.description
+          bodyClass="has-overlay"
+          applicationClass=app.theme.header.variant
+          applicationFixed=app.theme.application.fixed
+          headerTransitions=app.theme.header.transitions
+          headerVariant=app.theme.header.variant}}
 	{{#content "head-oblique"}}{{/content}}
 	{{#content "body-oblique"}}{{/content}}
-	{{#content "default"}}
-		<app-root>Loading view...</app-root>
+	{{#content "base"}}
+		<app-root></app-root>
 	{{/content}}
+	{{#content "body-resources"}}{{/content}}
 {{/extend}}

@@ -144,33 +144,6 @@ module.exports = {
 			{
 				"test": /\.ts$/,
 				"loader": "@ngtools/webpack"
-			},
-			// Custom loaders:
-			{
-				"test": /\.hbs$/,
-				"loader": {
-					"loader": "handlebars-compile-loader",
-					"options": {
-						partials: [
-							'node_modules/oblique-ui/templates/layouts/**/*.hbs',
-							'node_modules/oblique-ui/templates/partials/**/*.hbs',
-							'src/partials/*.hbs',
-							'showcase/partials/*.hbs'
-						],
-						helpers: [
-							'node_modules/handlebars-helpers/lib/**/*.js',
-							'node_modules/handlebars-layouts/dist/handlebars-layouts.js',
-							'node_modules/oblique-ui/templates/helpers/**/*.js',
-							'node_modules/oblique-ui/templates/helpers/**/*.ts'
-						],
-						data: {
-							app: ProjectConfig.app
-						},
-						parsePartialName: function (options, file) {
-							return file.path.split(path.sep).pop().replace('.hbs', '');
-						}
-					}
-				}
 			}
 		]
 	},
@@ -188,8 +161,7 @@ module.exports = {
 		}),
 		new ProgressPlugin(),
 		new HtmlWebpackPlugin({
-			"template": "./showcase/index.hbs",
-			//"filename": "./index.html",
+			"template": "./showcase/index.html",
 			"hash": false,
 			"inject": true,
 			"compile": true,

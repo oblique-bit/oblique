@@ -1,9 +1,9 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule, Inject, ApplicationRef, ComponentFactoryResolver} from '@angular/core';
+import {NgModule, Inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule, Http} from '@angular/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {TranslateModule, TranslateLoader, TranslateService} from '@ngx-translate/core';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 // ObliqueReactive:
@@ -56,9 +56,9 @@ export function createTranslateLoader(http: Http) {
 				deps: [Http]
 			}
 		}),
+		AppRoutingModule,
 		LayoutModule,
-		SamplesModule,
-		AppRoutingModule
+		SamplesModule
 	],
 	providers: [
 		DocumentMetaService,
@@ -66,22 +66,14 @@ export function createTranslateLoader(http: Http) {
 		{provide: 'notificationTimeout', useValue: 2000},
 		{provide: 'spinnerMaxTimeout', useValue: 3000}
 	],
-	entryComponents: ENTRY_COMPONENTS
-	// bootstrap: [AppComponent]
+	entryComponents: ENTRY_COMPONENTS,
+	bootstrap: [AppComponent]
 })
 export class AppModule {
-	constructor(private resolver: ComponentFactoryResolver,
-	            private documentMetaService: DocumentMetaService,
+	constructor(private documentMetaService: DocumentMetaService,
 	            private layoutManagerService: LayoutManagerService, // Service instantiation only!
 	            @Inject('ObliqueReactive.CONFIG') private config: any) {
 		documentMetaService.titleSuffix = config.title;
 		documentMetaService.description = config.description;
-	}
-
-	ngDoBootstrap(appRef: ApplicationRef) {
-		ENTRY_COMPONENTS.forEach((component) => {
-			const factory = this.resolver.resolveComponentFactory(component);
-			appRef.bootstrap(factory);
-		});
 	}
 }

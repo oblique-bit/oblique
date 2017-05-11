@@ -1,2 +1,107 @@
-<oblique-notification></oblique-notification>
-<router-outlet ui-view class="application-content-viewport"></router-outlet>
+<div class="application" aria-hidden="false">
+		<div class="accesskeys" role="navigation">
+			<a href="#content" class="accessible">Skip to main content</a>
+			<span class="sr-only">Accesskeys:</span>
+			<ul class="list-unstyled">
+				<li>
+					<a class="accessible" accesskey="0" href="">Homepage [Alt + 0]</a>
+				</li>
+				<li>
+					<a class="accessible" accesskey="1" href="#navigation">Navigation [Alt + 1]</a>
+				</li>
+				<li>
+					<a class="accessible" accesskey="2" href="#content">Content [Alt + 2]</a>
+				</li>
+			</ul>
+		</div>
+		<header class="application-header">
+			<div class="navbar">
+				<div class="navbar-header">
+					<div class="application-brand">
+						<a class="application-brand-logo" href="/home" tabindex="-1">
+							<img alt="Back to home"
+							     src="assets/oblique-ui/images/logo.svg" />
+						</a>
+						<span class="application-brand-app-title" data-version="">
+							<a href="/home" class="application-brand-link">
+								ObliqueReactive
+							</a>
+						</span>
+					</div>
+					<ul class="nav navbar-nav navbar-toggle navbar-controls">
+						<li>
+							<a role="button" tabindex="0"
+							   class="nav-link" data-toggle="header">
+								<div class="application-header-toggle">
+									<span class="first-line"></span>
+									<span class="second-line"></span>
+									<span class="third-line"></span>
+								</div>
+								<span class="sr-only">Toggle header & navigation</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="application-header-controls navigation-collapse">
+					<h2 class="sr-only">Header controls menu</h2>
+		<layout-controls></layout-controls>
+				</div>
+			</div>
+			<div class="application-navigation">
+				<div class="navigation-collapse">
+					<h2 class="sr-only">Global navigation menu</h2>
+		<layout-navigation></layout-navigation>
+				</div>
+			</div>
+		</header>
+	<div id="content" class="application-content" role="main">
+			<noscript>
+				<div class="callout callout-danger">
+					<span class="sr-only">Error</span>
+					<h4>Javascript required!</h4>
+					<p class="lead">JavaScript must be enabled to use this app.</p>
+					<p>Please enable JavaScript in your browser and refresh the page.</p>
+				</div>
+			</noscript>
+			<div class="alert-compatibility default-layout">
+				<div class="callout callout-danger">
+					<span class="sr-only">Error</span>
+					<h4>Unsupported browser!</h4>
+					<p class="lead">Please note that your browser, Internet Explorer 9 or earlier, is deprecated.</p>
+					<p>We recommend upgrading to the <a href="https://www.microsoft.com/en-us/windows/microsoft-edge" target="_blank">latest version</a>.</p>
+					<p>If you are using IE 10 or above, make sure you <a href="https://support.microsoft.com/en-us/help/17471" target="_blank">turn off "Compatibility View".</a></p>
+				</div>
+			</div>
+		<div class="application-content-viewport">
+					<oblique-notification></oblique-notification>
+		<router-outlet ui-view class="application-content-viewport"></router-outlet>
+		<oblique-spinner></oblique-spinner>
+
+		</div>
+	</div>
+		<oblique-top-control></oblique-top-control>
+		<footer class="application-footer">
+		<div class="footer-item footer-item-logo">
+			<a href="http://www.bit.admin.ch" target="_blank" class="application-brand-logo">
+				<img src="assets/oblique-ui/images/logo.svg" alt="Federal Office of Information Technology, Systems and Telecommunication FOITT">
+			</a>
+		</div>
+		<div class="footer-item footer-item-info">
+			<p>&copy; 2016 Federal Office of Information Technology, Systems and Telecommunication FOITT</p>
+			<p class="smaller">Built with <span class="fa fa-heart-o" title="Love"></span><span class="sr-only">love</span>, <a href="https://eui.bit.admin.ch/oblique-ui/" title="The front-end framework for your Swiss branded UI.">ObliqueUI</a> <span class="version">(2.0.0-alpha.7)</span> and <a href="https://angular.io/" title="One framework. Mobile & desktop.">Angular</a> <span class="version">(4.0.1)</span>.</p>
+		</div>
+		<div class="footer-item footer-item-links">
+			<ul class="list-unstyled d-flex flex-row float-lg-right small" role="menu">
+				<li role="presentation">
+					<a href="http://www.disclaimer.admin.ch" title="Terms and conditions" target="_blank" class="link">Legal</a>
+				</li>
+				<li role="presentation">
+					<a href="mailto:info@bit.admin.ch" title="This link will open your email client in order to send an email to info@bit.admin.ch" class="link">Contact</a>
+					
+				</li>
+			</ul>
+		</div>
+		
+		</footer>
+</div>
+

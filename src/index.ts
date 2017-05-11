@@ -1,10 +1,11 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 
-import {BrandingModule} from './branding/branding.module';
-import {DatepickerModule} from './datepicker/datepicker.module';
-import {DocumentMetaModule} from './document-meta/document-meta.module';
-import {ErrorMessagesModule} from './error-messages/error-messages.module';
+import {BrandingModule} from './branding';
+import {DatepickerModule} from './datepicker';
+import {DocumentMetaModule} from './document-meta';
+import {ErrorMessagesModule} from './error-messages';
 import {FormControlStateModule} from './form-control-state';
+import {LayoutManagerModule} from './layout-manager';
 import {MultiselectModule} from './multiselect';
 import {NavigableModule} from './navigable';
 import {NavigatorModule} from './navigator';
@@ -14,7 +15,6 @@ import {SchemaValidationModule} from './schema-validation';
 import {SpinnerModule} from './spinner';
 import {TopControlModule} from './top-control';
 import {UnsavedChangesModule} from './unsaved-changes';
-import {LayoutManagerModule} from './layout-manager/layout-manager.module';
 
 export * from './branding';
 export * from './datepicker';
@@ -55,6 +55,7 @@ const OBLIQUE_MODULES = [
 
 @NgModule({
 	imports: [
+		BrandingModule.forRoot(),
 		DatepickerModule.forRoot(),
 		DocumentMetaModule.forRoot(),
 		ErrorMessagesModule.forRoot(),

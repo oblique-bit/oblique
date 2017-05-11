@@ -2,6 +2,7 @@
 	//<editor-fold desc="Dependencies">
 	let del = require('del'),
 		exec = require('child_process').exec,
+		path = require('path'),
 		spawn = require('cross-spawn'),
 		webpack = require('webpack'),
 
@@ -10,6 +11,7 @@
 		autoprefixer = require('gulp-autoprefixer'),
 		cleanCss = require('gulp-clean-css'),
 		gutil = require('gulp-util'),
+		hb = require('gulp-hb'),
 		header = require('gulp-header'),
 		rename = require('gulp-rename'),
 		tslint = require('gulp-tslint'),
@@ -18,6 +20,7 @@
 		sassImportOnce = require('node-sass-import-once'),
 
 		// Project-specific:
+		project = require('./project.conf'),
 		pkg = require('./package.json'),
 		banner = function () { // Lazy evaluation as interpolated values may have been updated between tasks!
 			let lb = '\r';
@@ -65,6 +68,36 @@
 		])
 		.pipe(tslint(<any>{configuration: require('./tslint.json'), formatter: 'prose'}))
 		.pipe(tslint.report({summarizeFailureOutput: true}));
+	});
+
+	// Remove as soon as the CLI addon API has landed.
+	gulp.task('templates', () => {
+		return gulp
+			.src([
+				paths.showcase + '**/*.hbs',
+				'!' + paths.showcase + 'partials/**/*.hbs'
+			])
+			.pipe(hb({
+				partials: [
+					'node_modules/oblique-ui/templates/layouts/**/*.hbs',
+					'node_modules/oblique-ui/templates/partials/**/*.hbs',
+					paths.showcase + 'partials/*.hbs'
+				],
+				helpers: [
+					'node_modules/handlebars-helpers/lib/**/*.js',
+					'node_modules/handlebars-layouts/dist/handlebars-layouts.js',
+					'node_modules/oblique-ui/templates/helpers/**/*.js',
+					'node_modules/oblique-ui/templates/helpers/**/*.ts'
+				],
+				data: {
+					app: project.app
+				},
+				parsePartialName: function (options, file) {
+					return file.path.split(path.sep).pop().replace('.hbs', '');
+				}
+			}))
+			.pipe(rename({extname: '.html'}))
+			.pipe(gulp.dest(paths.showcase));
 	});
 
 	gulp.task('test', (done) => {
