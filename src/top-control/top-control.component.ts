@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import * as $ from 'jquery';
+//import * as $ from 'jquery';
 
 @Component({
 	//TODO: discuss prefix
@@ -10,6 +10,7 @@ import * as $ from 'jquery';
 				</a>`
 })
 export class TopControlComponent {
+	//TODO: Remove JQuery
 	public scrollTop(event) {
 		event.preventDefault();
 		const $body = $('html, body');

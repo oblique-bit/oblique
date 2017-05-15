@@ -10,7 +10,4 @@ export class LayoutNavigationComponent {
 	public context = { // TODO: mock only, remove this
 		isAuthenticated: false
 	};
-
-	constructor() {
-	}
 }

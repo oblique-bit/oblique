@@ -3,7 +3,7 @@ import {enableProdMode} from '@angular/core';
 import {environment} from './environments/environment';
 
 // Project resources:
-import * as ProjectConfig from '../project.conf.js';
+import {ProjectConfig} from '../project.conf';
 
 // Application resources:
 import {AppModule} from './app/app.module';

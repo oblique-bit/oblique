@@ -3,7 +3,7 @@ import {
 	HostListener, AfterViewInit
 } from '@angular/core';
 
-import * as $ from 'jquery';
+//import * as $ from 'jquery';
 
 /**
  * NavigableDirective
@@ -93,6 +93,7 @@ export class NavigableDirective implements AfterViewInit {
 	onKeyDown($event: KeyboardEvent) {
 		let keyCode = $event.keyCode;
 
+		//TODO: Remove JQuery
 		if (keyCode === NavigableDirective.KEYS.UP || keyCode === NavigableDirective.KEYS.DOWN) {
 			let focused = $(this.element.nativeElement).find(':focus');
 

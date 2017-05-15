@@ -33,12 +33,13 @@
   },
   "scripts": {
     "ci-build": "./node_modules/.bin/gulp build",
-    "build": "./node_modules/.bin/webpack",
-    "start": "./node_modules/.bin/webpack-dev-server",
-    "test": "./node_modules/.bin/karma start ./karma.conf.js",
-    "prepree2e": "npm start",
-    "pree2e": "./node_modules/.bin/webdriver-manager update --standalone false --gecko false --quiet",
-    "e2e": "./node_modules/.bin/protractor ./protractor.conf.js",
+    "prestart": "npm run prebuild",
+    "start": "./node_modules/.bin/ng serve --port 9000 --open",
+    "build": "./node_modules/.bin/ng build",
+    "prebuild": "./node_modules/.bin/gulp build-templates",
+    "test": "./node_modules/.bin/ng test",
+    "pretest": "npm run prebuild",
+    "e2e": "npm run prebuild && ./node_modules/.bin/ng e2e",
     "link-dist": "./node_modules/.bin/gulp dist && npm link ./dist"
   },
   "dependencies": {

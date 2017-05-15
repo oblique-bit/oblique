@@ -5,7 +5,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {LayoutManagerService} from './layout-manager.service';
 import {TranslateService} from '@ngx-translate/core';
 import {EventEmitter} from '@angular/core';
-const project = require('../../project.conf.js');
+import {ProjectConfig} from '../../project.conf';
 
 describe('LayoutManagerService', () => {
 	let mockTranslateService;
@@ -21,7 +21,7 @@ describe('LayoutManagerService', () => {
 			providers: [
 				LayoutManagerService,
 				{provide: TranslateService, useValue: mockTranslateService},
-				{provide: 'ObliqueReactive.CONFIG', useValue: project.app}
+				{provide: 'ObliqueReactive.CONFIG', useValue: ProjectConfig.app}
 			]
 		});
 	});

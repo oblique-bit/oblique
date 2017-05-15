@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import {LayoutManagerService} from '../../../../src';
-const project = require('../../../../project.conf.js');
+import {ProjectConfig} from  '../../../../project.conf';
 
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 
@@ -23,7 +23,7 @@ describe('LayoutControls', () => {
 			providers: [
 				{provide: TranslateService, useValue: mockTranslateService},
 				{provide: LayoutManagerService, useValue: mockLayoutManagerService},
-				{provide: 'ObliqueReactive.CONFIG', useValue: project.app}
+				{provide: 'ObliqueReactive.CONFIG', useValue: ProjectConfig.app}
 			],
 			declarations: [LayoutControlsComponent, MockTranslatePipe]
 		})
