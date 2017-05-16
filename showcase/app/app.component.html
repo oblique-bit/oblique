@@ -23,7 +23,7 @@
 							     src="assets/oblique-ui/images/logo.svg" />
 						</a>
 						<span class="application-brand-app-title" data-version="">
-							<branding-app-title [title]="'ObliqueReactive'" [home]="'/home'"></branding-app-title>
+							<or-branding-app-title [title]="'ObliqueReactive'" [home]="'/home'"></or-branding-app-title>
 						</span>
 					</div>
 					<ul class="nav navbar-nav navbar-toggle navbar-controls">
@@ -71,13 +71,13 @@
 				</div>
 			</div>
 		<div class="application-content-viewport">
-					<oblique-notification></oblique-notification>
+					<or-notification></or-notification>
 		<router-outlet ui-view class="application-content-viewport"></router-outlet>
-		<oblique-spinner></oblique-spinner>
+		<or-spinner></or-spinner>
 
 		</div>
 	</div>
-		<oblique-top-control></oblique-top-control>
+		<or-top-control></or-top-control>
 		<footer class="application-footer">
 		<div class="footer-item footer-item-logo">
 			<a href="http://www.bit.admin.ch" target="_blank" class="application-brand-logo">

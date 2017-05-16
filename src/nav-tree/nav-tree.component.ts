@@ -1,9 +1,9 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
-import {INavTreeItemModel} from './nav-tree-item.model';
+import {NavTreeItemModel} from './nav-tree-item.model';
 
 // FIXME: refactor this when https://github.com/angular/angular/issues/14485
 export function defaultLabelFormatterFactory() {
-	const formatter = (item: INavTreeItemModel, filterPattern: string) => {
+	const formatter = (item: NavTreeItemModel, filterPattern: string) => {
 		return !filterPattern ? item.label : item.label.replace(
 			new RegExp(filterPattern, 'ig'),
 			(text) => {
@@ -64,7 +64,7 @@ export class NavTreeComponent {
 	};
 
 	@Input()
-	items: Array<INavTreeItemModel>;
+	items: Array<NavTreeItemModel>;
 
 	@Input()
 	prefix = 'nav-tree';
@@ -73,36 +73,36 @@ export class NavTreeComponent {
 	filterPattern: string;
 
 	@Input()
-	labelFormatter: (item: INavTreeItemModel, filterPattern) => string = NavTreeComponent.DEFAULTS.LABEL_FORMATTER();
+	labelFormatter: (item: NavTreeItemModel, filterPattern) => string = NavTreeComponent.DEFAULTS.LABEL_FORMATTER();
 
 	@Input()
-	linkBuilder(item: INavTreeItemModel): string {
+	variant = NavTreeComponent.DEFAULTS.VARIANT;
+
+	@Input()
+	linkBuilder(item: NavTreeItemModel): string {
 		return item.id;
 	};
 
 	@Input()
-	patternMatcher(item: INavTreeItemModel, pattern: string): boolean {
+	patternMatcher(item: NavTreeItemModel, pattern: string): boolean {
 		let match = new RegExp(pattern, 'gi').test(item.label);
 		return match || (item.items || []).some((subItem) => {
 				return this.patternMatcher(subItem, pattern);
 			});
 	}
 
-	@Input()
-	variant = NavTreeComponent.DEFAULTS.VARIANT;
-
-	visible(item: INavTreeItemModel) {
+	visible(item: NavTreeItemModel) {
 		return !this.filterPattern || this.patternMatcher(item, this.filterPattern);
 	}
 
-	itemKey(item: INavTreeItemModel) {
+	itemKey(item: NavTreeItemModel) {
 		return this.prefix + '-' + item.id;
 	}
 
-	collapse(items: INavTreeItemModel[], all: boolean = false) {
+	collapse(items: NavTreeItemModel[], all: boolean = false) {
 		items
 			.filter((item) => item.items)
-			.forEach((item: INavTreeItemModel) => {
+			.forEach((item: NavTreeItemModel) => {
 				item.collapsed = true;
 				if (all) {
 					this.collapse(item.items, all);
@@ -110,10 +110,10 @@ export class NavTreeComponent {
 			});
 	};
 
-	expand(items: INavTreeItemModel[], all: boolean = false) {
+	expand(items: NavTreeItemModel[], all: boolean = false) {
 		items
 			.filter((item) => item.items)
-			.forEach((item: INavTreeItemModel) => {
+			.forEach((item: NavTreeItemModel) => {
 				item.collapsed = false;
 				if (all) {
 					this.expand(item.items, all);

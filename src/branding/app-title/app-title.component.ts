@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 
 @Component({
-	selector: 'branding-app-title',
+	selector: 'or-branding-app-title',
 	template: `
 		<a [routerLink]="[home]" class="application-brand-link">
 			{{title}}

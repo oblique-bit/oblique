@@ -15,7 +15,7 @@ import {By} from '@angular/platform-browser';
 		</form>
 	`
 })
-class TestComponentWithPristineValidation {
+class TestWithPristineValidationComponent {
 	pristineValidation = true;
 	model;
 
@@ -42,15 +42,15 @@ class TestComponent {
 }
 
 describe('FormControlStateDirective', () => {
-	let fixture: ComponentFixture<TestComponent> | ComponentFixture<TestComponentWithPristineValidation>;
-	let component: TestComponent | TestComponentWithPristineValidation;
+	let fixture: ComponentFixture<TestComponent> | ComponentFixture<TestWithPristineValidationComponent>;
+	let component: TestComponent | TestWithPristineValidationComponent;
 	let submitButton;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [
 				FormControlStateDirective,
-				TestComponentWithPristineValidation,
+				TestWithPristineValidationComponent,
 				TestComponent
 			],
 			imports: [
@@ -81,7 +81,7 @@ describe('FormControlStateDirective', () => {
 			component.ngModel.control.markAsDirty();
 
 			fixture.detectChanges();
-			component.model= '1';
+			component.model = '1';
 
 			//Triggers statusChange
 			fixture.detectChanges();
@@ -97,7 +97,7 @@ describe('FormControlStateDirective', () => {
 
 	describe('with pristineValidation = true', () => {
 		beforeEach(async(() => {
-			fixture = TestBed.createComponent(TestComponentWithPristineValidation);
+			fixture = TestBed.createComponent(TestWithPristineValidationComponent);
 			component = fixture.componentInstance;
 			fixture.detectChanges();
 

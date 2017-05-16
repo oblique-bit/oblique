@@ -5,18 +5,18 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        NgbModule,
-        FormsModule
-    ],
-    declarations: [DatepickerComponent],
-    exports: [DatepickerComponent]
+	imports: [
+		CommonModule,
+		NgbModule,
+		FormsModule
+	],
+	declarations: [DatepickerComponent],
+	exports: [DatepickerComponent]
 })
 export class DatepickerModule {
-    static forRoot(): ModuleWithProviders {
-        return {
-            ngModule: DatepickerModule
-        };
-    }
+	static forRoot(): ModuleWithProviders {
+		return {
+			ngModule: DatepickerModule
+		};
+	}
 }

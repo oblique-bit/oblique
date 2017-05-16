@@ -2,8 +2,8 @@ import {Component, ContentChild} from '@angular/core';
 import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-    selector: 'date-picker',
-    template: `
+	selector: 'or-date-picker',
+	template: `
         <div class="input-group">
             <ng-content></ng-content>
             <button role="button" class="input-group-addon" (click)="ngbDatePicker.toggle()" >
@@ -13,5 +13,5 @@ import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 
 })
 export class DatepickerComponent {
-    @ContentChild(NgbInputDatepicker) ngbDatePicker;
+	@ContentChild(NgbInputDatepicker) ngbDatePicker;
 }

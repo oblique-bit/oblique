@@ -28,7 +28,7 @@ export class FormControlStateDirective implements AfterViewInit {
 	}
 
 	ngAfterViewInit() {
-		if(this.mandatory) {
+		if (this.mandatory) {
 			this.elementRef.nativeElement.querySelector('[name]').parentElement.classList.add('control-mandatory');
 		}
 		Observable.merge(

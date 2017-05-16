@@ -20,7 +20,7 @@ import {
  * - (navigableOnMove):FocusEvent                Emits if item is moved (with SHIFT+CTRL+[UP|DOWN]).
  */
 @Directive({
-	selector: '[navigable]',
+	selector: '[orNavigable]',
 	exportAs: 'navigable'
 })
 export class NavigableDirective implements AfterViewInit {
@@ -30,7 +30,7 @@ export class NavigableDirective implements AfterViewInit {
 		DOWN: 40
 	};
 
-	@Input('navigable') model: any;
+	@Input('orNavigable') model: any;
 
 	@Input('navigableFocusOnInit')
 	focusOnInit: boolean;

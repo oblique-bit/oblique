@@ -6,9 +6,9 @@ import {NgbInputDatepicker, NgbDatepickerModule} from '@ng-bootstrap/ng-bootstra
 import {By} from '@angular/platform-browser';
 
 @Component({
-	template:  `<date-picker>
+	template: `<or-date-picker>
 					<input name="date" [(ngModel)]="model" ngbDatepicker>
-				</date-picker>`
+				</or-date-picker>`
 })
 class TestComponent {
 	model = null;

@@ -6,50 +6,50 @@ import 'rxjs/add/operator/filter';
 //TODO: Handle modals
 @Injectable()
 export class UnsavedChangesService {
-    private forms: ControlContainer[] = [];
+	private forms: ControlContainer[] = [];
 
-    constructor(private translateService: TranslateService) {
-        window.addEventListener('beforeunload', (e) => {
-            return this.onUnload(e);
-        });
-    }
+	constructor(private translateService: TranslateService) {
+		window.addEventListener('beforeunload', (e) => {
+			return this.onUnload(e);
+		});
+	}
 
-    watch(form: ControlContainer) {
-        this.forms.push(form);
-    }
+	watch(form: ControlContainer) {
+		this.forms.push(form);
+	}
 
-    unWatch(form: ControlContainer) {
-        this.forms.splice(this.forms.indexOf(form));
-    }
+	unWatch(form: ControlContainer) {
+		this.forms.splice(this.forms.indexOf(form));
+	}
 
-    canDeactivate(nestedForm?: ControlContainer) {
-        if ((nestedForm && nestedForm.dirty) || this.hasUnsavedChanges()) {
-            return window.confirm(this.message());
-        }
-        return true;
-    }
+	canDeactivate(nestedForm?: ControlContainer) {
+		if ((nestedForm && nestedForm.dirty) || this.hasUnsavedChanges()) {
+			return window.confirm(this.message());
+		}
+		return true;
+	}
 
-    onUnload(event: BeforeUnloadEvent) {
-        if (this.hasUnsavedChanges()) {
-            const confirmationMessage = this.message();
+	onUnload(event: BeforeUnloadEvent) {
+		if (this.hasUnsavedChanges()) {
+			const confirmationMessage = this.message();
 
-            event.returnValue = confirmationMessage;
-            return confirmationMessage;
-        }
+			event.returnValue = confirmationMessage;
+			return confirmationMessage;
+		}
 
-        return null;
-    }
+		return null;
+	}
 
-    private hasUnsavedChanges() {
-        for (const form of this.forms) {
-            if (form.dirty) {
-                return true;
-            }
-        }
-        return false;
-    }
+	private hasUnsavedChanges() {
+		for (const form of this.forms) {
+			if (form.dirty) {
+				return true;
+			}
+		}
+		return false;
+	}
 
-    private message() {
-        return this.translateService.instant('i18n.validation.unsavedChanges');
-    }
+	private message() {
+		return this.translateService.instant('i18n.validation.unsavedChanges');
+	}
 }

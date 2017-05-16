@@ -8,11 +8,11 @@ import {NavigableDirective} from './navigable.directive';
 
 @Component({
 	template: `
-		<div [navigableGroup]="models" [navigableSelection]="selectedModels">
-			<div [navigable]="models[0]"></div>
-			<div [navigable]="models[1]"></div>
-			<div [navigable]="models[2]"></div>
-			<div [navigable]="models[3]"></div>
+		<div [orNavigableGroup]="models" [navigableSelection]="selectedModels">
+			<div [orNavigable]="models[0]"></div>
+			<div [orNavigable]="models[1]"></div>
+			<div [orNavigable]="models[2]"></div>
+			<div [orNavigable]="models[3]"></div>
 		</div>`
 })
 class TestComponent {
@@ -41,7 +41,7 @@ describe('NavigableGroup', () => {
 			],
 			imports: [CommonModule]
 		})
-		.compileComponents();
+			.compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -198,7 +198,8 @@ describe('NavigableGroup', () => {
 			// FIXME: refactor below when https://github.com/ariya/phantomjs/issues/11289
 			navigables[0].onKeyDown({
 				keyCode: NavigableDirective.KEYS.DOWN,
-				preventDefault: () => {} // tslint:disable-line
+				preventDefault: () => {
+				} // tslint:disable-line
 			} as KeyboardEvent);
 			// navigableElements[0].nativeElement.dispatchEvent(new KeyboardEvent('keydown', {
 			// 	key: NavigableDirective.KEYS.DOWN
@@ -218,7 +219,8 @@ describe('NavigableGroup', () => {
 				navigables[0].onKeyDown({
 					keyCode: NavigableDirective.KEYS.DOWN,
 					ctrlKey: true,
-					preventDefault: () => {} // tslint:disable-line
+					preventDefault: () => {
+					} // tslint:disable-line
 				} as KeyboardEvent);
 				// navigableElements[0].nativeElement.dispatchEvent(new KeyboardEvent('keydown', {
 				// 	key: NavigableDirective.KEYS.DOWN
@@ -242,7 +244,8 @@ describe('NavigableGroup', () => {
 				navigables[0].onKeyDown({
 					keyCode: NavigableDirective.KEYS.DOWN,
 					shiftKey: true,
-					preventDefault: () => {} // tslint:disable-line
+					preventDefault: () => {
+					} // tslint:disable-line
 				} as KeyboardEvent);
 				// navigableElements[0].nativeElement.dispatchEvent(new KeyboardEvent('keydown', {
 				// 	key: NavigableDirective.KEYS.DOWN
@@ -268,7 +271,8 @@ describe('NavigableGroup', () => {
 					keyCode: NavigableDirective.KEYS.DOWN,
 					ctrlKey: true,
 					shiftKey: true,
-					preventDefault: () => {} // tslint:disable-line
+					preventDefault: () => {
+					} // tslint:disable-line
 				} as KeyboardEvent);
 				// navigableElements[0].nativeElement.dispatchEvent(new KeyboardEvent('keydown', {
 				// 	key: NavigableDirective.KEYS.DOWN
@@ -293,7 +297,8 @@ describe('NavigableGroup', () => {
 			// FIXME: refactor below when https://github.com/ariya/phantomjs/issues/11289
 			navigables[1].onKeyDown({
 				keyCode: NavigableDirective.KEYS.UP,
-				preventDefault: () => {} // tslint:disable-line
+				preventDefault: () => {
+				} // tslint:disable-line
 			} as KeyboardEvent);
 			// navigableElements[1].nativeElement.dispatchEvent(new KeyboardEvent('keydown', {
 			// 	key: NavigableDirective.KEYS.UP
@@ -313,7 +318,8 @@ describe('NavigableGroup', () => {
 				navigables[1].onKeyDown({
 					keyCode: NavigableDirective.KEYS.UP,
 					ctrlKey: true,
-					preventDefault: () => {} // tslint:disable-line
+					preventDefault: () => {
+					} // tslint:disable-line
 				} as KeyboardEvent);
 				// navigableElements[1].nativeElement.dispatchEvent(new KeyboardEvent('keydown', {
 				// 	key: NavigableDirective.KEYS.UP
@@ -337,7 +343,8 @@ describe('NavigableGroup', () => {
 				navigables[1].onKeyDown({
 					keyCode: NavigableDirective.KEYS.UP,
 					shiftKey: true,
-					preventDefault: () => {} // tslint:disable-line
+					preventDefault: () => {
+					} // tslint:disable-line
 				} as KeyboardEvent);
 				// navigableElements[1].nativeElement.dispatchEvent(new KeyboardEvent('keydown', {
 				// 	key: NavigableDirective.KEYS.UP
@@ -364,7 +371,8 @@ describe('NavigableGroup', () => {
 					keyCode: NavigableDirective.KEYS.UP,
 					ctrlKey: true,
 					shiftKey: true,
-					preventDefault: () => {} // tslint:disable-line
+					preventDefault: () => {
+					} // tslint:disable-line
 				} as KeyboardEvent);
 				// navigableElements[1].nativeElement.dispatchEvent(new KeyboardEvent('keydown', {
 				// 	key: NavigableDirective.KEYS.UP

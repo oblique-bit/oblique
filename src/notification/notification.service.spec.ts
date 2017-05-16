@@ -94,7 +94,13 @@ describe('NotificationService', () => {
 		it('should call add with NotificationTypes.DEFAULT', () => {
 			notificationService.default('message', 'title');
 
-			expect(notificationService.add).toHaveBeenCalledWith(NotificationTypes.DEFAULT, jasmine.any(String), jasmine.any(String), jasmine.any(Boolean));
+			expect(notificationService.add)
+				.toHaveBeenCalledWith(
+					NotificationTypes.DEFAULT,
+					jasmine.any(String),
+					jasmine.any(String),
+					jasmine.any(Boolean)
+				);
 		});
 	});
 
@@ -102,7 +108,13 @@ describe('NotificationService', () => {
 		it('should call add with NotificationTypes.INFO', () => {
 			notificationService.info('message', 'title');
 
-			expect(notificationService.add).toHaveBeenCalledWith(NotificationTypes.INFO, jasmine.any(String), jasmine.any(String), jasmine.any(Boolean));
+			expect(notificationService.add)
+				.toHaveBeenCalledWith(
+					NotificationTypes.INFO,
+					jasmine.any(String),
+					jasmine.any(String),
+					jasmine.any(Boolean)
+				);
 		});
 	});
 
@@ -110,7 +122,13 @@ describe('NotificationService', () => {
 		it('should call add with NotificationTypes.SUCCESS', () => {
 			notificationService.success('message', 'title');
 
-			expect(notificationService.add).toHaveBeenCalledWith(NotificationTypes.SUCCESS, jasmine.any(String), jasmine.any(String), jasmine.any(Boolean));
+			expect(notificationService.add)
+				.toHaveBeenCalledWith(
+					NotificationTypes.SUCCESS,
+					jasmine.any(String),
+					jasmine.any(String),
+					jasmine.any(Boolean)
+				);
 		});
 	});
 
@@ -118,7 +136,13 @@ describe('NotificationService', () => {
 		it('should call add with NotificationTypes.WARNING', () => {
 			notificationService.warn('message', 'title');
 
-			expect(notificationService.add).toHaveBeenCalledWith(NotificationTypes.WARNING, jasmine.any(String), jasmine.any(String), jasmine.any(Boolean));
+			expect(notificationService.add)
+				.toHaveBeenCalledWith(
+					NotificationTypes.WARNING,
+					jasmine.any(String),
+					jasmine.any(String),
+					jasmine.any(Boolean)
+				);
 		});
 
 		it('should be called from warning()', () => {
@@ -133,13 +157,25 @@ describe('NotificationService', () => {
 		it('should call add with NotificationTypes.ERROR', () => {
 			notificationService.error('message', 'title');
 
-			expect(notificationService.add).toHaveBeenCalledWith(NotificationTypes.ERROR, jasmine.any(String), jasmine.any(String), jasmine.any(Boolean));
+			expect(notificationService.add)
+				.toHaveBeenCalledWith(
+					NotificationTypes.ERROR,
+					jasmine.any(String),
+					jasmine.any(String),
+					jasmine.any(Boolean)
+				);
 		});
 
 		it('should call add with sticky', () => {
 			notificationService.error('message', 'title');
 
-			expect(notificationService.add).toHaveBeenCalledWith(jasmine.any(Object), jasmine.any(String), jasmine.any(String), true);
+			expect(notificationService.add)
+				.toHaveBeenCalledWith(
+					jasmine.any(Object),
+					jasmine.any(String),
+					jasmine.any(String),
+					true
+				);
 		});
 
 	});

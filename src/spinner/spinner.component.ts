@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 import {SpinnerService} from './spinner.service';
 
 @Component({
-	//TODO: discuss prefix
-	selector: 'oblique-spinner',
+	selector: 'or-spinner',
 	template: `<div [hidden]="!spinnerActive" class="overlay overlay-inverse overlay-fixed">
                     <div class="spinner-viewport">
                         <span class="spinner fa fa-spinner fa-4x"></span>

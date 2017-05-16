@@ -3,8 +3,8 @@ import {Component} from '@angular/core';
 
 @Component({
 	//TODO: discuss prefix
-	selector: 'oblique-top-control',
-	template:   `<a href="" role="button" class="top-control" (click)="scrollTop($event)">
+	selector: 'or-top-control',
+	template: `<a href="" role="button" class="top-control" (click)="scrollTop($event)">
 					<span class="control-icon fa fa-angle-up"></span>
 					<span class="control-label">{{'i18n.topControl.backToTop' | translate}}</span>
 				</a>`

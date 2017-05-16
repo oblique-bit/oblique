@@ -39,7 +39,7 @@ export interface IMultiSelectTexts {
 let nextId = 0;
 
 @Component({
-	selector: 'multiselect',
+	selector: 'or-multiselect',
 	providers: [MULTISELECT_VALUE_ACCESSOR],
 	styles: [
 		`
@@ -71,7 +71,7 @@ let nextId = 0;
 				min-width: 0;
 				margin-left: 5px;
 			}
-			
+
 			.dropdown-menu {
 				overflow: auto !important;
 				width: 100%;
@@ -94,7 +94,6 @@ let nextId = 0;
 			.multiselect-control {
 				font-size: small;
 			}
-			
 
 			.dropdown-item:active {
 				color: #171717;
@@ -149,7 +148,7 @@ let nextId = 0;
 			<button class="dropdown-item" *ngFor="let option of options | searchFilter:searchFilterText; let i = index"
 				(click)="toggleSelection(option)">
 				<div class="checkbox">
-					<input tabindex="-1" type="checkbox" id="{{id}}-{{i}}" [checked]="isSelected(option)" (click)="preventCheckboxCheck($event)"> 
+					<input tabindex="-1" type="checkbox" id="{{id}}-{{i}}" [checked]="isSelected(option)" (click)="preventCheckboxCheck($event)">
 					<label for="{{id}}-{{i}}">{{formatOptionForLabel(option)}}</label>
 				</div>
 			</button>

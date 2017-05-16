@@ -2,7 +2,7 @@ import {Component, HostListener} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
-	selector: 'navigator',
+	selector: 'orNavigator',
 	template: `<ng-content></ng-content>`
 })
 export class NavigatorComponent {

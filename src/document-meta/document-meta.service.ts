@@ -24,10 +24,10 @@ export class DocumentMetaService {
 	private DOM: ɵDomAdapter;
 
 	constructor(private router: Router,
-	            private activatedRoute: ActivatedRoute,
-	            private titleService: Title,
-	            private translate: TranslateService,
-	            @Inject(DOCUMENT) private document: any) {
+				private activatedRoute: ActivatedRoute,
+				private titleService: Title,
+				private translate: TranslateService,
+				@Inject(DOCUMENT) private document: any) {
 
 		this.DOM = ɵgetDOM();
 		this.headElement = this.DOM.querySelector(document, 'head');
@@ -38,7 +38,9 @@ export class DocumentMetaService {
 			.filter(event => event instanceof NavigationEnd)
 			.map(() => this.activatedRoute)
 			.map(route => {
-				while (route.firstChild) route = route.firstChild;
+				while (route.firstChild) {
+					route = route.firstChild;
+				}
 				return route;
 			})
 			.filter(route => route.outlet === 'primary');
@@ -46,10 +48,10 @@ export class DocumentMetaService {
 		routing.mergeMap(route => route.url)
 			.withLatestFrom(routing.mergeMap(route => route.data))
 			.subscribe(([urlSegments, data]) => {
-					let title = data.title || (function() {
-						let segments = urlSegments.map(urlSegment => urlSegment.path);
-						return `i18n.routes.${segments.join('.')}.title`;
-					})();
+					let title = data.title || (function () {
+							let segments = urlSegments.map(urlSegment => urlSegment.path);
+							return `i18n.routes.${segments.join('.')}.title`;
+						})();
 					this.setTitle(title);
 					this.setDescription(data.description || this.description);
 				}

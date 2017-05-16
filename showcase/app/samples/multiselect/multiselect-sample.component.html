@@ -10,9 +10,9 @@
 
 				<div class="row">
 					<div class="col-md-6">
-						<multiselect [options]="states"
+						<or-multiselect [options]="states"
 									 [(ngModel)]="model">
-						</multiselect>
+						</or-multiselect>
 					</div>
 					<div class="col-md-6">
 						<pre>{{model | json}}</pre>
@@ -22,11 +22,11 @@
 
 				<div class="row">
 					<div class="col-md-6">
-						<multiselect [options]="statesComplex"
+						<or-multiselect [options]="statesComplex"
 									 [(ngModel)]="labelModel"
 									 [settings]="{showCheckAll: true, showUncheckAll: true}"
 									 labelProperty="name">
-						</multiselect>
+						</or-multiselect>
 					</div>
 					<div class="col-md-6">
 						<pre>{{labelModel | json}}</pre>
@@ -37,12 +37,12 @@
 
 				<div class="row">
 					<div class="col-md-6">
-						<multiselect [options]="statesComplex"
+						<or-multiselect [options]="statesComplex"
 									 [(ngModel)]="formatterModel"
 									 [settings]="{showCheckAll: true, showUncheckAll: true, enableSearch: true}"
 									 [texts]="{defaultTitle: '... and a custom title'}"
 									 [labelFormatter]="complexStateLabelFormatter">
-						</multiselect>
+						</or-multiselect>
 					</div>
 					<div class="col-md-6">
 						<pre>{{formatterModel | json}}</pre>
@@ -52,9 +52,9 @@
 
 				<div class="row">
 					<div class="col-md-6">
-						<multiselect [options]="states" [(ngModel)]="model"
+						<or-multiselect [options]="states" [(ngModel)]="model"
 									 [dropup]="true">
-						</multiselect>
+						</or-multiselect>
 					</div>
 					<div class="col-md-6">
 						<pre>{{model | json}}</pre>

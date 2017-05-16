@@ -34,10 +34,10 @@ describe('SchemaValidation', () => {
 
 	@Component({
 		template: `
-			<form [schemaValidation]='schema'>
-				<input type='text' name='string' ngModel schemaValidate>
+			<form [orSchemaValidation]='schema'>
+				<input type='text' name='string' ngModel orSchemaValidate>
 				<div ngModelGroup='object'>
-					<input type='number' name='subproperty' ngModel schemaValidate>
+					<input type='number' name='subproperty' ngModel orSchemaValidate>
 				</div>
 			</form>
 		`

@@ -1,6 +1,5 @@
 <div class="default-layout">
-	<form class="form-horizontal has-validation" name="validationForm" role="form" [schemaValidation]="schema"
-		  ng-submit="ctrl.check(validationForm)" #form="ngForm" unsavedChanges>
+	<form class="form-horizontal has-validation" name="validationForm" role="form" [orSchemaValidation]="schema" #form="ngForm" orUnsavedChanges>
 		<h2 class="page-header">
 			<span>Schema validation</span>
 			<span class="pull-right">
@@ -21,7 +20,7 @@
 				<div orFormControlState class="row form-group" [pristineValidation]="true">
 					<label class="col-2 col-form-label">Text</label>
 					<div class="col-8">
-						<input name="text" type="text" class="form-control" ngModel schemaValidate/>
+						<input name="text" type="text" class="form-control" ngModel orSchemaValidate/>
 						<or-error-messages></or-error-messages>
 						<!--<span *ngFor="let error of text.errors" id="text-schema-validation-error" class="help-block">{{error | json}}</span>-->
 					</div>
@@ -36,8 +35,8 @@
 				<div orFormControlState class="row form-group">
 					<label class="col-2 col-form-label">Number</label>
 					<div class="col-8">
-						<input name="number" type="number" class="form-control" ngModel number-format
-							   schemaValidate/>
+						<input name="number" type="number" class="form-control" ngModel
+							   orSchemaValidate/>
 						<or-error-messages></or-error-messages>
 					</div>
 					<div class="col-1">
@@ -59,7 +58,7 @@
 					<label class="col-2 col-form-label">Integer</label>
 					<div class="col-8">
 						<input name="integer" type="number" class="form-control"
-							   ngModel schemaValidate/>
+							   ngModel orSchemaValidate/>
 						<or-error-messages></or-error-messages>
 					</div>
 					<div class="col-2">
@@ -73,10 +72,10 @@
 				<div orFormControlState class="row form-group">
 					<label class="col-2 col-form-label">Date</label>
 					<div class="col-8">
-						<date-picker>
+						<or-date-picker>
 							<input class="form-control" placeholder="yyyy-mm-dd"
 								   name="date" ngModel ngbDatepicker required navigation="arrows">
-						</date-picker>
+						</or-date-picker>
 						<or-error-messages></or-error-messages>
 					</div>
 					<div class="col-2">
@@ -92,7 +91,7 @@
 					<label class="col-2 col-form-label">Textarea</label>
 					<div class="col-8">
 					<textarea name="textarea" type="text" class="form-control"
-							  ngModel msd-elastic rows="1" schemaValidate></textarea>
+							  ngModel msd-elastic rows="1" orSchemaValidate></textarea>
 						<or-error-messages></or-error-messages>
 					</div>
 					<div class="col-1">
@@ -116,14 +115,14 @@
 						<div orFormControlState class="row form-group">
 							<label class="col-2 col-form-label">Firstname</label>
 							<div class="col-10">
-								<input type="text" name="firstname" class="form-control" ngModel schemaValidate>
+								<input type="text" name="firstname" class="form-control" ngModel orSchemaValidate>
 								<or-error-messages ></or-error-messages>
 							</div>
 						</div>
 						<div orFormControlState class="row form-group">
 							<label class="col-2 col-form-label">Lastname</label>
 							<div class="col-10">
-								<input type="text" name="lastname" class="form-control" ngModel schemaValidate>
+								<input type="text" name="lastname" class="form-control" ngModel orSchemaValidate>
 								<or-error-messages></or-error-messages>
 							</div>
 						</div>

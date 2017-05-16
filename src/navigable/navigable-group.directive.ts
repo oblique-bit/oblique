@@ -12,12 +12,12 @@ import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from '
  *
  */
 @Directive({
-	selector: '[navigableGroup]',
+	selector: '[orNavigableGroup]',
 	exportAs: 'navigableGroup'
 })
 export class NavigableGroupDirective implements AfterViewInit {
 
-	@Input('navigableGroup')
+	@Input('orNavigableGroup')
 	items: any[];
 
 	@ContentChildren(NavigableDirective)
@@ -118,22 +118,22 @@ export class NavigableGroupDirective implements AfterViewInit {
 
 	// Public API ---------------------
 	public add(model: any) {
-		let navigable = this.navigables.find((navigable: NavigableDirective) => {
+		let navigableToSelect = this.navigables.find((navigable: NavigableDirective) => {
 			return navigable.model === model;
 		});
 
-		if (navigable) {
-			this.select(navigable, true);
+		if (navigableToSelect) {
+			this.select(navigableToSelect, true);
 		}
 	}
 
 	public remove(model: any) {
-		let navigable = this.navigables.find((navigable: NavigableDirective) => {
+		let navigableToRemove = this.navigables.find((navigable: NavigableDirective) => {
 			return navigable.model === model;
 		});
 
-		if (navigable) {
-			this.deactivate(navigable, true);
+		if (navigableToRemove) {
+			this.deactivate(navigableToRemove, true);
 		}
 	}
 

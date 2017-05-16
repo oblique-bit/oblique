@@ -8,27 +8,26 @@ import {MultiselectSearchPipe} from './multiselect-search.pipe';
 import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
-    imports: [
-    	CommonModule,
+	imports: [
+		CommonModule,
 		FormsModule,
 		TranslateModule
 	],
-    exports: [
-    	MultiselectComponent,
-		MultiselectSearchPipe
+	exports: [
+		MultiselectComponent
 	],
-    declarations: [
-    	MultiselectComponent,
+	declarations: [
+		MultiselectComponent,
 		MultiselectSearchPipe
 	]
 })
 export class MultiselectModule {
-    static forRoot(): ModuleWithProviders {
-        return {
-            ngModule: MultiselectModule,
-            providers: [
-                MultiselectConfig
-            ]
-        };
-    }
+	static forRoot(): ModuleWithProviders {
+		return {
+			ngModule: MultiselectModule,
+			providers: [
+				MultiselectConfig
+			]
+		};
+	}
 }

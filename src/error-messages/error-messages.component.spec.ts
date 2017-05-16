@@ -76,7 +76,7 @@ describe('ErrorMessagesComponent', () => {
 		expect(component).toBeDefined();
 	});
 
-	it('should render messages on submit', ()=> {
+	it('should render messages on submit', () => {
 		submitButton.click();
 
 		expect(component.errorMessages.errors.length).not.toBe(0);

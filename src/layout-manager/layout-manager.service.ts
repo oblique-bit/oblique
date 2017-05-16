@@ -23,10 +23,10 @@ export class LayoutManagerService {
 	private previousData: any = {};
 
 	constructor(private router: Router,
-	            private activatedRoute: ActivatedRoute,
-	            private translate: TranslateService,
-	            @Inject(DOCUMENT) private document: any,
-	            @Inject('ObliqueReactive.CONFIG') private config: any) {
+				private activatedRoute: ActivatedRoute,
+				private translate: TranslateService,
+				@Inject(DOCUMENT) private document: any,
+				@Inject('ObliqueReactive.CONFIG') private config: any) {
 
 		// User lang handling:
 		// --------------------
@@ -51,7 +51,9 @@ export class LayoutManagerService {
 			.filter(event => event instanceof NavigationEnd)
 			.map(() => this.activatedRoute)
 			.map(route => {
-				while (route.firstChild) route = route.firstChild;
+				while (route.firstChild) {
+					route = route.firstChild;
+				}
 				return route;
 			})
 			.filter(route => route.outlet === 'primary')

@@ -12,8 +12,7 @@ describe('NavigatorComponent', () => {
 				NavigatorComponent
 			],
 			imports: [RouterTestingModule],
-			providers: [
-			]
+			providers: []
 		}).compileComponents();
 	}));
 
