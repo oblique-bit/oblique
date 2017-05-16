@@ -9,14 +9,15 @@
 				</div>
 				<div class="card-block">
 					<or-nav-tree #navTreeControl="orNavTree"
-					          [items]="items"
-					          [prefix]="'nav-tree-sample'"
-					          [filterPattern]="filter.pattern"
-					          [linkBuilder]="linkBuilder"
-					          [variant]="variant">
+								 [items]="items"
+								 [prefix]="'nav-tree-sample'"
+								 [filterPattern]="filter.pattern"
+								 [linkBuilder]="linkBuilder"
+								 [variant]="variant">
 						<li class="nav-item nav-header" role="presentation">
 							<h3 class="nav-header-title" *ngIf="!filter.pattern">Menu Sample</h3>
-							<h3 class="nav-header-title" *ngIf="filter.pattern">{{'i18n.common.search.results' | translate}}</h3>
+							<h3 class="nav-header-title" *ngIf="filter.pattern">{{'i18n.common.search.results' |
+								translate}}</h3>
 						</li>
 					</or-nav-tree>
 				</div>
@@ -31,10 +32,10 @@
 					<h4>Filter</h4>
 					<div class="control-action">
 						<input class="form-control" type="text"
-						       placeholder="{{'i18n.common.search.placeholder' | translate}}"
-						       [(ngModel)]="filter.pattern" name="filter" #filterControl>
+							   placeholder="{{'i18n.common.search.placeholder' | translate}}"
+							   [(ngModel)]="filter.pattern" name="filter" #filterControl>
 						<button class="control-action-trigger" type="button"
-						        (click)="filter.clear(); filterControl.focus();">
+								(click)="filter.clear(); filterControl.focus();">
 							<span class="fa fa-times-circle"></span>
 							<span class="sr-only">{{'i18n.common.clear' | translate}}</span>
 						</button>
@@ -51,7 +52,8 @@
 					<h4>Variant</h4>
 					<div [(ngModel)]="variant" ngbRadioGroup name="variant">
 						<!-- TODO: remove `(click)` when https://github.com/ng-bootstrap/ng-bootstrap/issues/1125 -->
-						<label class="btn btn-default" ngbTooltip=".nav-bordered.nav-hover" (click)="variant = 'nav-bordered nav-hover'">
+						<label class="btn btn-default" ngbTooltip=".nav-bordered.nav-hover"
+							   (click)="variant = 'nav-bordered nav-hover'">
 							<input type="radio" value="nav-bordered nav-hover"> Default
 						</label>
 						<label class="btn btn-default" ngbTooltip=".nav-hover" (click)="variant = 'nav-hover'">

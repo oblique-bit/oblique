@@ -1,40 +1,48 @@
 <div class="default-layout">
-    <h2 class="page-header">{{'i18n.routes.samples.datepicker.title' | translate}}</h2>
-    <p class="lead">Navigate using arrow keys and select rows using CTRL or SHIFT combinations.</p>
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Preview</h3>
-        </div>
-        <div class="card-block">
-            <form #f="ngForm" novalidate>
-                <div class="form-group row">
-                    <label class="col-sm-4 col-lg-3 col-control-label">Date</label>
-                    <div class="col-sm-8 col-lg-9">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <or-date-picker>
-                                    <input class="form-control" placeholder="yyyy-mm-dd"
-                                           name="date" [(ngModel)]="model.date" ngbDatepicker required #m="ngModel" navigation="arrows">
-                                </or-date-picker>
-                            </div>
-                            <div class="col-md-6">
-                                Not implemented yet
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-info" ng-click="ctrl.today()" tooltip-append-to-body="true"
-                                            uib-tooltip="Sets model to today's date using the standard JavaScript Date object">Today</button>
-                                    <button type="button" class="btn btn-info" ng-click="ctrl.toISO()" tooltip-append-to-body="true"
-                                            uib-tooltip="Sets model to today's date using the ISO 8601 format">ISO</button>
-                                    <button type="button" class="btn btn-info" ng-click="ctrl.toTimestamp()" tooltip-append-to-body="true"
-                                            uib-tooltip="Sets model to today's date using a timestamp">Timestamp</button>
-                                </div>
-                            </div>
-                            <pre>ERRORS: {{m.errors | json}}</pre>
-                            <pre>VALIDITY: {{m.valid | json}}</pre>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <pre>{{f.value | json }}</pre>
-        </div>
-    </div>
+	<h2 class="page-header">{{'i18n.routes.samples.datepicker.title' | translate}}</h2>
+	<p class="lead">Navigate using arrow keys and select rows using CTRL or SHIFT combinations.</p>
+	<div class="card">
+		<div class="card-header">
+			<h3 class="card-title">Preview</h3>
+		</div>
+		<div class="card-block">
+			<form #f="ngForm" novalidate>
+				<div class="form-group row">
+					<label class="col-sm-4 col-lg-3 col-control-label">Date</label>
+					<div class="col-sm-8 col-lg-9">
+						<div class="row">
+							<div class="col-md-6">
+								<or-date-picker>
+									<input class="form-control" placeholder="yyyy-mm-dd"
+										   name="date" [(ngModel)]="model.date" ngbDatepicker required #m="ngModel"
+										   navigation="arrows">
+								</or-date-picker>
+							</div>
+							<div class="col-md-6">
+								Not implemented yet
+								<div class="btn-group">
+									<button type="button" class="btn btn-info" ng-click="ctrl.today()"
+											tooltip-append-to-body="true"
+											uib-tooltip="Sets model to today's date using the standard JavaScript Date object">
+										Today
+									</button>
+									<button type="button" class="btn btn-info" ng-click="ctrl.toISO()"
+											tooltip-append-to-body="true"
+											uib-tooltip="Sets model to today's date using the ISO 8601 format">ISO
+									</button>
+									<button type="button" class="btn btn-info" ng-click="ctrl.toTimestamp()"
+											tooltip-append-to-body="true"
+											uib-tooltip="Sets model to today's date using a timestamp">Timestamp
+									</button>
+								</div>
+							</div>
+							<pre>ERRORS: {{m.errors | json}}</pre>
+							<pre>VALIDITY: {{m.valid | json}}</pre>
+						</div>
+					</div>
+				</div>
+			</form>
+			<pre>{{f.value | json }}</pre>
+		</div>
+	</div>
 </div>

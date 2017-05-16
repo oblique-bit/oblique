@@ -12,7 +12,7 @@ export class LayoutControlsComponent {
 	public locales = ['en'];
 
 	constructor(private layoutManager: LayoutManagerService,
-	            @Inject('ObliqueReactive.CONFIG') private config: any) {
+				@Inject('ObliqueReactive.CONFIG') private config: any) {
 		this.locales = config.locales || this.locales;
 	}
 

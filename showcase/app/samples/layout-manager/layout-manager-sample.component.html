@@ -11,7 +11,7 @@
 					</div>
 					<div class="card-block">
 						<h4>Layout</h4>
-						<div [(ngModel)]="appLayout" ngbRadioGroup name="appLayout">
+						<div ngbRadioGroup name="appLayout">
 							<!-- TODO: remove `(click)` when https://github.com/ng-bootstrap/ng-bootstrap/issues/1125 -->
 							<label class="btn btn-default" (click)="cover = false">
 								<input type="radio" value="nav-bordered nav-hover"> Default
@@ -21,7 +21,7 @@
 							</label>
 						</div>
 						<h4>Navigation</h4>
-						<div [(ngModel)]="appNavigation" ngbRadioGroup name="appNavigation">
+						<div ngbRadioGroup name="appNavigation">
 							<!-- TODO: remove `(click)` when https://github.com/ng-bootstrap/ng-bootstrap/issues/1125 -->
 							<label class="btn btn-default" (click)="navigation = true">
 								<input type="radio" value="yes"> Yes

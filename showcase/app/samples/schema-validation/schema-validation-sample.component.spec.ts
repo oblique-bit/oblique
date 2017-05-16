@@ -27,7 +27,7 @@ describe('SchemaValidationComponent', () => {
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		})
-		.compileComponents();
+			.compileComponents();
 	}));
 
 	beforeEach(() => {

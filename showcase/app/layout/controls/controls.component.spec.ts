@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import {LayoutManagerService} from '../../../../src';
-import {ProjectConfig} from  '../../../../project.conf';
+import {ProjectConfig} from '../../../../project.conf';
 
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 
@@ -27,7 +27,7 @@ describe('LayoutControls', () => {
 			],
 			declarations: [LayoutControlsComponent, MockTranslatePipe]
 		})
-		.compileComponents();
+			.compileComponents();
 	}));
 
 	beforeEach(() => {

@@ -1,5 +1,6 @@
 <div class="default-layout">
-	<form class="form-horizontal has-validation" name="validationForm" role="form" [orSchemaValidation]="schema" #form="ngForm" orUnsavedChanges>
+	<form class="form-horizontal has-validation" name="validationForm" role="form" [orSchemaValidation]="schema"
+		  #form="ngForm" orUnsavedChanges>
 		<h2 class="page-header">
 			<span>Schema validation</span>
 			<span class="pull-right">
@@ -116,7 +117,7 @@
 							<label class="col-2 col-form-label">Firstname</label>
 							<div class="col-10">
 								<input type="text" name="firstname" class="form-control" ngModel orSchemaValidate>
-								<or-error-messages ></or-error-messages>
+								<or-error-messages></or-error-messages>
 							</div>
 						</div>
 						<div orFormControlState class="row form-group">

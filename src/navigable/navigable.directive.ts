@@ -3,7 +3,8 @@ import {
 	HostListener, AfterViewInit
 } from '@angular/core';
 
-//import * as $ from 'jquery';
+//TODO: Remove JQuery
+declare var $: any;
 
 /**
  * NavigableDirective

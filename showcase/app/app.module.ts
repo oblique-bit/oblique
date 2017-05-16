@@ -71,8 +71,9 @@ export function createTranslateLoader(http: Http) {
 })
 export class AppModule {
 	constructor(private documentMetaService: DocumentMetaService,
-	            private layoutManagerService: LayoutManagerService, // Service instantiation only!
-	            @Inject('ObliqueReactive.CONFIG') private config: any) {
+				//TODO: check this
+				private layoutManagerService: LayoutManagerService, // Service instantiation only!
+				@Inject('ObliqueReactive.CONFIG') private config: any) {
 		documentMetaService.titleSuffix = config.title;
 		documentMetaService.description = config.description;
 	}

@@ -68,7 +68,7 @@ gulp.task('lint', () => {
 		paths.src + '**/*.ts',
 		paths.showcase + '**/*.ts'
 	])
-		.pipe(tslint(<any>{configuration: require('./tslint.json'), formatter: 'prose'}))
+		.pipe(tslint(<any>{formatter: 'prose'}))
 		.pipe(tslint.report({summarizeFailureOutput: true}));
 });
 

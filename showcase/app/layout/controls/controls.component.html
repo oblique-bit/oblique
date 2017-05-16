@@ -1,6 +1,6 @@
 <ul class="navbar-nav navbar-controls animate-ignore" role="menu">
 	<li class="nav-item" role="menuitem"
-	    *ngFor="let locale of locales">
+		*ngFor="let locale of locales">
 		<a class="nav-link" href="" role="button"
 		   (click)="changeLang($event, locale)"
 		   [ngClass]="{'active': isLangActive(locale)}">

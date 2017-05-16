@@ -1,3 +1,5 @@
+//TODO: remove if codelyzer 4 is out
+/* tslint:disable no-access-missing-member */
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {NavTreeItemModel} from '../../../../src/nav-tree/nav-tree-item.model';
@@ -47,8 +49,7 @@ export class NavTreeSampleComponent implements OnInit {
 				<span class="fa fa-link"></span>
 				<code>{{id}}</code>
 			</div>
-		</div> 
-	`
+		</div>`
 })
 export class NavTreeDetailSampleComponent implements OnInit {
 

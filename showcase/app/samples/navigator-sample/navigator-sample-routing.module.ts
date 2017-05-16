@@ -57,4 +57,5 @@ const navigatorSampleRoutes: Routes = [
 		RouterModule
 	]
 })
-export class NavigatorSampleRoutingModule {}
+export class NavigatorSampleRoutingModule {
+}

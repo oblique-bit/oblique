@@ -23,12 +23,12 @@ import {
 	// Polyfills DOM4 CustomEvent
 	function MouseEvent(eventType, params) {
 		params = Object.assign({
-				bubbles: true,
-				cancelable: false,
-				ctrlKey: false,
-				altKey: false,
-				shiftKey: false
-			}, params);
+			bubbles: true,
+			cancelable: false,
+			ctrlKey: false,
+			altKey: false,
+			shiftKey: false
+		}, params);
 		const mouseEvent = document.createEvent('MouseEvent');
 		mouseEvent.initMouseEvent(
 			eventType,

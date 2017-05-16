@@ -9,39 +9,47 @@
 		</div>
 		<div class="card-block column-layout column-layout-2">
 			<div class="column-left default-layout">
-				<ul id="nav-components" class="nav nav-hover nav-indented nav-bordered nav-vertical nav-activable" role="menu">
+				<ul id="nav-components" class="nav nav-hover nav-indented nav-bordered nav-vertical nav-activable"
+					role="menu">
 					<li class="nav-item" role="presentation">
-						<a [routerLink]="['/navigator']"class="nav-link" role="menuitem" routerLinkActive="active">
+						<a [routerLink]="['/navigator']" class="nav-link" role="menuitem" routerLinkActive="active">
 							<span>Root</span>
 						</a>
 
 						<ul class="nav nav-hover nav-indented nav-bordered nav-vertical nav-indented" role="menu">
 							<li class="nav-item" role="presentation">
-								<a [routerLink]="['/navigator/1']" class="nav-link" role="menuitem" routerLinkActive="active">
+								<a [routerLink]="['/navigator/1']" class="nav-link" role="menuitem"
+								   routerLinkActive="active">
 									<span>Child state 1</span>
 								</a>
 
-								<ul class="nav nav-hover nav-indented nav-bordered nav-vertical nav-indented" data-provides="inner-navigation" role="menu">
+								<ul class="nav nav-hover nav-indented nav-bordered nav-vertical nav-indented"
+									data-provides="inner-navigation" role="menu">
 									<li class="nav-item" role="presentation">
-										<a [routerLink]="['/navigator/1/1']" class="nav-link" role="menuitem" routerLinkActive="active">
+										<a [routerLink]="['/navigator/1/1']" class="nav-link" role="menuitem"
+										   routerLinkActive="active">
 											<span>Child state 1.1</span>
 										</a>
 
-										<ul class="nav nav-hover nav-indented nav-bordered nav-vertical nav-indented" role="menu">
+										<ul class="nav nav-hover nav-indented nav-bordered nav-vertical nav-indented"
+											role="menu">
 											<li class="nav-item" role="presentation">
-												<a [routerLink]="['/navigator/1/1/1']" class="nav-link" role="menuitem" routerLinkActive="active">
+												<a [routerLink]="['/navigator/1/1/1']" class="nav-link" role="menuitem"
+												   routerLinkActive="active">
 													<span>Child state 1.1.1</span>
 												</a>
 											</li>
 											<li class="nav-item" role="presentation">
-												<a [routerLink]="['/navigator/1/1/2']" class="nav-link" role="menuitem" routerLinkActive="active">
+												<a [routerLink]="['/navigator/1/1/2']" class="nav-link" role="menuitem"
+												   routerLinkActive="active">
 													<span>Child state 1.1.2 (navigates <em>UP</em> directly to Root state)</span>
 												</a>
 											</li>
 										</ul>
 									</li>
 									<li class="nav-item" role="presentation">
-										<a [routerLink]="['/navigator/1/2']" class="nav-link" role="menuitem" routerLinkActive="active">
+										<a [routerLink]="['/navigator/1/2']" class="nav-link" role="menuitem"
+										   routerLinkActive="active">
 											<span>Child state 1.2</span>
 										</a>
 									</li>

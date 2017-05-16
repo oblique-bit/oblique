@@ -13,10 +13,12 @@ import {SchemaValidationComponent} from './schema-validation/schema-validation-s
 const samplesRoutes: Routes = [
 	{path: 'datepicker', component: DatepickerComponent},
 	{path: 'form-control-state', component: FormControlStateSampleComponent},
-	{path: 'navigable', component: NavigableSampleComponent, data: {
+	{
+		path: 'navigable', component: NavigableSampleComponent, data: {
 		title: 'Navigable Sample',
 		description: 'Description for the Navigable Sample'
-	}},
+	}
+	},
 	{
 		path: 'nav-tree',
 		component: NavTreeSampleComponent,
@@ -24,16 +26,19 @@ const samplesRoutes: Routes = [
 			sample: SampleDataResolver
 		},
 		children: [{
-		path: ':id',
+			path: ':id',
 			component: NavTreeDetailSampleComponent,
-		}]},
+		}]
+	},
 	{path: 'multiselect', component: MultiselectSampleComponent},
 	{path: 'schema-validation', component: SchemaValidationComponent},
-	{path: 'layout-manager', component: LayoutManagerSampleComponent, data: {
+	{
+		path: 'layout-manager', component: LayoutManagerSampleComponent, data: {
 		uiLayout: {
 			application: 'has-cover'
 		}
-	}}
+	}
+	}
 ];
 
 @NgModule({

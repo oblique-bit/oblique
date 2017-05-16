@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
-//import * as $ from 'jquery';
+
+//TODO: Remove JQuery
+declare var $: any;
 
 @Component({
 	//TODO: discuss prefix
