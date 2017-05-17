@@ -1,8 +1,9 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {DatepickerComponent} from './datepicker.component';
 import {CommonModule} from '@angular/common';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule, NgbDatepickerI18n} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
+import {DatepickerI18nService} from './datepicker-i18n.service';
 
 @NgModule({
 	imports: [
@@ -16,7 +17,10 @@ import {FormsModule} from '@angular/forms';
 export class DatepickerModule {
 	static forRoot(): ModuleWithProviders {
 		return {
-			ngModule: DatepickerModule
+			ngModule: DatepickerModule,
+			providers: [
+				{provide: NgbDatepickerI18n, useClass: DatepickerI18nService}
+			]
 		};
 	}
 }

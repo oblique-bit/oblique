@@ -194,6 +194,7 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 		this.differ = differs.find([]).create(null);
 	}
 
+	//TODO: only apply this listener if the popup is open and remove it as soon as it's closed
 	@HostListener('document:click', ['$event.target'])
 	onClick(target: HTMLElement) {
 		if (this.isVisible) {

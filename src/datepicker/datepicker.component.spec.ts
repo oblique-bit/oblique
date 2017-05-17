@@ -14,7 +14,7 @@ class TestComponent {
 	model = null;
 }
 
-describe('DatepickerComponent', () => {
+describe('DatepickerSampleComponent', () => {
 	let fixture: ComponentFixture<TestComponent>;
 	let component: TestComponent;
 	let datepicker: DatepickerComponent;

@@ -1,5 +1,4 @@
 import {Component, Inject} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
 import {LayoutManagerService} from '../../../../src/layout-manager/layout-manager.service';
 
 @Component({

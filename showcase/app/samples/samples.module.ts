@@ -7,7 +7,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {ObliqueModule} from '../../../src/index';
-import {DatepickerComponent} from './datepicker/datepicker.component';
+import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {FormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
 import {LayoutManagerSampleComponent} from './layout-manager/layout-manager-sample.component';
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
@@ -31,7 +31,7 @@ import {SchemaValidationComponent} from './schema-validation/schema-validation-s
 		NavigatorSampleRoutingModule
 	],
 	declarations: [
-		DatepickerComponent,
+		DatepickerSampleComponent,
 		MultiselectSampleComponent,
 		NavigableSampleComponent,
 		NavTreeSampleComponent,

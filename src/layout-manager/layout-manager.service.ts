@@ -44,6 +44,7 @@ export class LayoutManagerService {
 		// Application layout:
 		// -------------------
 		this.DOM = ɵgetDOM();
+		//TODO: doesn't work anymore, because of changed rootcomponent
 		this.applicationElement = this.DOM.querySelector(document, 'body > .application');
 
 		// Subscribe to NavigationEnd events and handle current activated route:

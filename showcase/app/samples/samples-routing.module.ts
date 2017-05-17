@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-import {DatepickerComponent} from './datepicker/datepicker.component';
+import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {FormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
 import {NavigableSampleComponent} from './navigable/navigable-sample.component';
 import {NavTreeSampleComponent, NavTreeDetailSampleComponent} from './nav-tree/nav-tree-sample.component';
@@ -11,7 +11,7 @@ import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 import {SchemaValidationComponent} from './schema-validation/schema-validation-sample.component';
 
 const samplesRoutes: Routes = [
-	{path: 'datepicker', component: DatepickerComponent},
+	{path: 'datepicker', component: DatepickerSampleComponent},
 	{path: 'form-control-state', component: FormControlStateSampleComponent},
 	{
 		path: 'navigable', component: NavigableSampleComponent, data: {

@@ -8,30 +8,17 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 // ObliqueReactive:
 import {
-	ObliqueModule, DocumentMetaService, LayoutManagerService,
-	BrandingAppTitleComponent, SpinnerComponent, TopControlComponent
+	ObliqueModule, DocumentMetaService, LayoutManagerService
 } from '../../src';
 
 // Layout:
 import {LayoutModule} from './layout/layout.module';
-import {LayoutControlsComponent} from './layout/controls/controls.component';
-import {LayoutNavigationComponent} from './layout/navigation/navigation.component';
 
 // App:
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './home/home.component';
 import {SamplesModule} from './samples/samples.module';
-
-// Root components:
-export const ENTRY_COMPONENTS = [
-	AppComponent,
-	BrandingAppTitleComponent,
-	SpinnerComponent,
-	TopControlComponent,
-	LayoutControlsComponent,
-	LayoutNavigationComponent
-];
 
 // AoT requires an exported function for factories:
 export function createTranslateLoader(http: Http) {
@@ -47,8 +34,8 @@ export function createTranslateLoader(http: Http) {
 		BrowserModule,
 		FormsModule,
 		HttpModule,
-		ObliqueModule.forRoot(),
 		NgbModule.forRoot(),
+		ObliqueModule.forRoot(), // Keep this order!
 		TranslateModule.forRoot({
 			loader: {
 				provide: TranslateLoader,
@@ -66,13 +53,12 @@ export function createTranslateLoader(http: Http) {
 		{provide: 'notificationTimeout', useValue: 2000},
 		{provide: 'spinnerMaxTimeout', useValue: 3000}
 	],
-	entryComponents: ENTRY_COMPONENTS,
+	entryComponents: [AppComponent],
 	bootstrap: [AppComponent]
 })
 export class AppModule {
 	constructor(private documentMetaService: DocumentMetaService,
-				//TODO: check this
-				private layoutManagerService: LayoutManagerService, // Service instantiation only!
+				layoutManagerService: LayoutManagerService, // Service instantiation only!
 				@Inject('ObliqueReactive.CONFIG') private config: any) {
 		documentMetaService.titleSuffix = config.title;
 		documentMetaService.description = config.description;

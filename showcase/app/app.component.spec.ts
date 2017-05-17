@@ -6,6 +6,7 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {NotificationService, SpinnerService} from '../../src';
 import {MockTranslatePipe} from '../../testhelpers';
 import {TranslateService} from '@ngx-translate/core';
+import {NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 
 describe('AppComponent', () => {
 	beforeEach(async(() => {
@@ -15,6 +16,9 @@ describe('AppComponent', () => {
 			declarations: [
 				AppComponent,
 				MockTranslatePipe
+			],
+			imports: [
+				NgbTooltipModule.forRoot()
 			],
 			schemas: [
 				CUSTOM_ELEMENTS_SCHEMA
