@@ -172,9 +172,9 @@
           }
         }
       },
-      "date.format": "de: Incorrect date or format, please enter a valid date in the dd.mm.yyyy format.",
-      "date.min": "Das Datum unterschreitet das min. zulässige Datum {{minDate}}",
-      "date.max": "Das Datum überschreitet das max. zulässige Datum {{maxDate}}",
+      "ngbDate": "Falsches Format, bitte geben sie ein valides Datum im TT.MM.JJJJ Format ein",
+      "ngbDate.requiredBefore": "Das Datum unterschreitet das min. zulässige Datum {{day}}.{{month}}.{{year}}",
+      "ngbDate.requiredAfter": "Das Datum überschreitet das max. zulässige Datum {{day}}.{{month}}.{{year}}",
       "unsavedChanges": "Es sind nicht gespeicherte Änderungen vorhanden, wollen Sie wirklich fortfahren?"
     },
     "form": {

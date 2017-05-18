@@ -5,6 +5,8 @@ import {ObliqueModule} from '../../../../src/index';
 import {FormsModule} from '@angular/forms';
 import {MockTranslatePipe} from '../../../../testhelpers';
 import {NgbDatepickerModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
+import {DatepickerPlaceholderDirective} from '../../../../src/datepicker/datepicker-placeholder.directive';
+import {DatepickerModule} from '../../../../src/datepicker/datepicker.module';
 
 describe('DatepickerSampleComponent', () => {
 	let component: DatepickerSampleComponent;
@@ -18,7 +20,17 @@ describe('DatepickerSampleComponent', () => {
 				NgbDatepickerModule.forRoot(),
 				NgbTooltipModule.forRoot(),
 				FormsModule
-			]
+			],
+		}).overrideModule(DatepickerModule, {
+			//We don't need this directive in this test
+			remove: {
+				declarations: [
+					DatepickerPlaceholderDirective
+				],
+				exports: [
+					DatepickerPlaceholderDirective
+				]
+			}
 		})
 			.compileComponents();
 	}));

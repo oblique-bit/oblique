@@ -172,9 +172,9 @@
           }
         }
       },
-      "date.format": "fr: Incorrect date or format, please enter a valid date in the dd.mm.yyyy format.",
-      "date.min": "fr: Das Datum unterschreitet das min. zulässige Datum {{minDate}}",
-      "date.max": "fr: Das Datum überschreitet das max. zulässige Datum {{maxDate}}",
+      "ngbDate": "[fr] Incorrect date or format, please enter a valid date in the dd.mm.yyyy format.",
+      "ngbDate.requiredBefore": "[fr] The date is under the min datum {{day}}.{{month}}.{{year}}",
+      "ngbDate.requiredAfter": "[fr] The date is above the max date {{day}}.{{month}}.{{year}}",
       "unsavedChanges": "Des changements non sauvegardés ont été détectés, êtes-vous sûr de vouloir continuer?"
     },
     "form": {

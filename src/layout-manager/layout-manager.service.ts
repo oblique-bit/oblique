@@ -45,6 +45,8 @@ export class LayoutManagerService {
 		// -------------------
 		this.DOM = ɵgetDOM();
 		//TODO: doesn't work anymore, because of changed rootcomponent
+		// We could perhaps create a component, that has the according selector
+		// -> with this, we could use the native ng way to apply classes on the element
 		this.applicationElement = this.DOM.querySelector(document, 'body > .application');
 
 		// Subscribe to NavigationEnd events and handle current activated route:

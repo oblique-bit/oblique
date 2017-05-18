@@ -172,9 +172,9 @@
           }
         }
       },
-      "date.format": "it: Incorrect date or format, please enter a valid date in the dd.mm.yyyy format.",
-      "date.min": "it: Das Datum unterschreitet das min. zulässige Datum {{minDate}}",
-      "date.max": "it: Das Datum überschreitet das max. zulässige Datum {{maxDate}}",
+      "ngbDate": "[it] Incorrect date or format, please enter a valid date in the dd.mm.yyyy format.",
+      "ngbDate.requiredBefore": "[it] The date is under the min datum {{day}}.{{month}}.{{year}}",
+      "ngbDate.requiredAfter": "[it] The date is above the max date {{day}}.{{month}}.{{year}}",
       "unsavedChanges": "Alcuni cambiamenti non sono stati salvati, continuare?"
     },
     "form": {
