@@ -34,8 +34,8 @@ const samplesRoutes: Routes = [
 	{path: 'schema-validation', component: SchemaValidationComponent},
 	{
 		path: 'layout-manager', component: LayoutManagerSampleComponent, data: {
-		uiLayout: {
-			application: ['has-cover']
+		layoutManager: {
+			hasCover: true
 		}
 	}
 	}

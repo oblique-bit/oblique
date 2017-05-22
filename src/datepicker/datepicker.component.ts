@@ -28,7 +28,7 @@ import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 		.ngb-dp-header {
 			padding-top: 0 !important;
 		}
-		
+
 		.ngb-dp-header .btn-link {
 			color: #b4b4b4; /* ObliqueUI: $gray */
 			height: 2.25rem;
@@ -43,11 +43,11 @@ import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 		.ngb-dp-header .btn-link:not([disabled]):hover {
 			color: #171717; /* ObliqueUI: $brand-default */
 		}
-		
+
 		.ngb-dp-months {
 			padding: 0 !important;
 		}
-		
+
 		.ngb-dp-weekday {
 			color: #333333 !important; /* ObliqueUI: $gray-darker */
 			font-style: normal;
@@ -58,7 +58,7 @@ import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 			width: 2.5rem !important;
 			height: 2.5rem !important;
 		}
-		
+
 		.ngb-dp-day .btn-secondary {
 			border-radius: 0;
 			width: 2.5rem;
@@ -103,10 +103,10 @@ export class DatepickerComponent implements AfterViewInit {
 
 	@HostListener('keydown', ['$event'])
 	onKeydown($event) {
-		if($event.target.attributes['ngbdatepicker']) {
-			if($event.keyCode === 40) { // 40: ArrowDown
+		if ($event.target.attributes['ngbdatepicker']) {
+			if ($event.keyCode === 40) { // 40: ArrowDown
 				this.ngbDatePicker.open();
-			} else if($event.keyCode === 38 || $event.keyCode === 9) { // 38: ArrowUp, 40: Tab
+			} else if ($event.keyCode === 38 || $event.keyCode === 9) { // 38: ArrowUp, 40: Tab
 				this.ngbDatePicker.close();
 			}
 		}

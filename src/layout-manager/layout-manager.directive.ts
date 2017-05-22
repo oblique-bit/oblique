@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Renderer2} from '@angular/core';
+import {Directive, ElementRef, HostBinding} from '@angular/core';
 import {LayoutManagerService} from './layout-manager.service';
 import {Router, NavigationEnd, ActivatedRoute} from '@angular/router';
 
@@ -9,14 +9,21 @@ import 'rxjs/add/operator/mergeMap';
 	selector: '.application'
 })
 export class LayoutManagerDirective {
-	private previousData: any = {};
+
+	@HostBinding('class.has-cover') hasCover;
+	@HostBinding('class.no-navigation') noNavigation;
+
+	private defaultHasCover;
+	private defaultNoNavigation;
 
 	constructor(private layoutManagerService: LayoutManagerService,
 				private elementRef: ElementRef,
-				private renderer: Renderer2,
 				private router: Router,
 				private activatedRoute: ActivatedRoute) {
 		layoutManagerService.layoutManagerDirective = this;
+
+		this.hasCover = this.defaultHasCover = this.elementRef.nativeElement.classList.contains('has-cover');
+		this.noNavigation = this.defaultNoNavigation = this.elementRef.nativeElement.classList.contains('no-navigation');
 
 		this.router.events
 			.filter(event => event instanceof NavigationEnd)
@@ -30,44 +37,10 @@ export class LayoutManagerDirective {
 			.filter(route => route.outlet === 'primary')
 			.mergeMap(route => route.data)
 			.subscribe((data) => {
-				let uiLayout = data.uiLayout || {};
+				let layoutManager = data.layoutManager || {};
 
-				this.toggleClass(uiLayout.application, this.previousData.application);
-				this.previousData = uiLayout;
+				this.hasCover = layoutManager.hasCover !== undefined ? layoutManager.hasCover : this.defaultHasCover;
+				this.noNavigation = layoutManager.noNavigation !== undefined ? layoutManager.noNavigation : this.defaultNoNavigation;
 			});
-	}
-
-	private toggleClass(newClasses = [], classesToRemove = []) {
-		classesToRemove.forEach(clazz => {
-			this.renderer.removeClass(this.elementRef.nativeElement, clazz);
-		});
-
-		newClasses.forEach(clazz => {
-			this.renderer.addClass(this.elementRef.nativeElement, clazz);
-		});
-	}
-
-	set hasCover(value) {
-		if (value) {
-			this.renderer.addClass(this.elementRef.nativeElement, 'has-cover');
-		} else {
-			this.renderer.removeClass(this.elementRef.nativeElement, 'has-cover');
-		}
-	}
-
-	get hasCover() {
-		return this.elementRef.nativeElement.classList.contains('has-cover');
-	}
-
-	set noNavigation(value) {
-		if (value) {
-			this.renderer.addClass(this.elementRef.nativeElement, 'no-navigation');
-		} else {
-			this.renderer.removeClass(this.elementRef.nativeElement, 'no-navigation');
-		}
-	}
-
-	get noNavigation() {
-		return this.elementRef.nativeElement.classList.contains('no-navigation');
 	}
 }
