@@ -2,6 +2,17 @@
 // Vendor overrides:
 @import 'vendor/oblique-ui';
 
+// Samples:
+.card-footer pre {
+	border: 0;
+	padding: 0;
+	margin: 0;
+
+	code {
+		color: #bd4147;
+	}
+}
+
 // This can safely be removed:
 .oblique {
 	font-style: oblique; // ;)
