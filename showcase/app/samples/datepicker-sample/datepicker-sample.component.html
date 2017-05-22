@@ -1,6 +1,6 @@
 <div class="default-layout">
 	<h2 class="page-header">{{'i18n.routes.samples.datepicker.title' | translate}}</h2>
-	<p class="lead">Navigate using arrow keys and select rows using CTRL or SHIFT combinations.</p>
+	<p class="lead">Wrapper for the <a href="https://ng-bootstrap.github.io/#/components/datepicker">ng-bootstrap Datepicker</a> component with validation and controls (clear, open & close).</p>
 	<div class="card">
 		<div class="card-header">
 			<h3 class="card-title">Preview</h3>
@@ -14,14 +14,14 @@
 							<div class="col-md-6" >
 								<or-date-picker>
 									<input class="form-control"
-										   name="date" [(ngModel)]="model.date" ngbDatepicker required>
+									       name="date" [(ngModel)]="model.date" ngbDatepicker required>
 								</or-date-picker>
 								<or-error-messages></or-error-messages>
 							</div>
 							<div class="col-md-6">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info" (click)="setToday()"
-											ngbTooltip="Sets model to today's date using the standard JavaScript Date object">
+									        ngbTooltip="Sets model to today's date using the standard JavaScript Date object">
 										Today
 									</button>
 									<!-- Not implemented yet -->
@@ -44,20 +44,20 @@
 						<div class="row">
 							<div class="col-md-6">
 								<or-date-picker>
-									<input class="form-control" placeholder="with a custom placeholder"
-										   name="minMax" ngbDatepicker [(ngModel)]="model.minMax"
-										   [minDate]="minDate" [maxDate]="maxDate">
+									<input class="form-control" placeholder="Enter a valid date..."
+									       name="minMax" ngbDatepicker [(ngModel)]="model.minMax"
+									       [minDate]="minDate" [maxDate]="maxDate">
 								</or-date-picker>
 								<or-error-messages></or-error-messages>
 							</div>
 							<div class="col-md-6">
 								<div class="btn-group">
 									<button type="button" class="btn btn-warning" (click)="min()" tooltip-append-to-body="true"
-											ngbTooltip="Sets model to some invalid date after the minimum limit">
+									        ngbTooltip="Sets model to some invalid date after the minimum limit">
 										<span class="fa fa-chevron-left"></span> Min
 									</button>
 									<button type="button" class="btn btn-warning" (click)="max()" tooltip-append-to-body="true"
-											ngbTooltip="Sets model to some invalid date after the maximum limit">
+									        ngbTooltip="Sets model to some invalid date after the maximum limit">
 										<span class="fa fa-chevron-right"></span> Max
 									</button>
 								</div>
@@ -72,7 +72,7 @@
 							<div orFormControlState class="col-md-6">
 								<or-date-picker>
 									<input class="form-control"
-										   name="from" ngbDatepicker [(ngModel)]="model.range.from" [maxDate]="model.range.to">
+									       name="from" ngbDatepicker [(ngModel)]="model.range.from" [maxDate]="model.range.to">
 								</or-date-picker>
 								<or-error-messages></or-error-messages>
 							</div>
@@ -80,7 +80,7 @@
 								<div name="rangeTo">
 									<or-date-picker>
 										<input class="form-control"
-											   name="to" ngbDatepicker [(ngModel)]="model.range.to" [minDate]="model.range.from">
+										       name="to" ngbDatepicker [(ngModel)]="model.range.to" [minDate]="model.range.from">
 									</or-date-picker>
 									<or-error-messages></or-error-messages>
 								</div>
@@ -93,23 +93,26 @@
 					<div class="col-sm-8 col-lg-9">
 						<div class="row">
 							<div class="col-md-6">
-								<or-date-picker [disabled]="idDatepickerDisabled">
+								<or-date-picker [disabled]="isDatepickerDisabled">
 									<input class="form-control"
-										   name="disabled" ngbDatepicker ngModel>
+									       name="disabled" ngbDatepicker ngModel>
 								</or-date-picker>
 								<or-error-messages></or-error-messages>
 							</div>
 							<div class="col-md-6">
 								<div class="btn-group">
-									<button type="button" class="btn btn-info" (click)="idDatepickerDisabled = !idDatepickerDisabled" tooltip-append-to-body="true"
-											ngbTooltip="Enables/Disables Datepicker control. Date can not be updated until control gets enabled again.">Toggle disabled</button>
+									<button type="button" class="btn btn-info" (click)="isDatepickerDisabled = !isDatepickerDisabled" tooltip-append-to-body="true"
+									        ngbTooltip="Enables/Disables Datepicker control. Date can not be updated until control gets enabled again.">Toggle disabled</button>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</form>
-			<pre>{{model| json }}</pre>
+		</div>
+		<div class="card-footer">
+			<h4 class="sr-only">Model</h4>
+			<pre><code>{{model | json }}</code></pre>
 		</div>
 	</div>
 </div>

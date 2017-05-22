@@ -4,12 +4,11 @@ import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
 	selector: 'app-datepicker',
-	templateUrl: './datepicker-sample.component.html',
-	styleUrls: ['./datepicker-sample.component.scss']
+	templateUrl: './datepicker-sample.component.html'
 })
 export class DatepickerSampleComponent {
 
-	idDatepickerDisabled = true;
+	isDatepickerDisabled = true;
 	minDate: NgbDateStruct;
 	maxDate: NgbDateStruct;
 
