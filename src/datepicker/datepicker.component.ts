@@ -13,7 +13,7 @@ import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 				<span class="fa fa-calendar"></span>
 			</button>
 		</div>`,
-	// Ensure CSS styles are added to global styles as search pattern highlighting is done at runtime:
+	// Ensure CSS styles are added to global styles to ensure `ngb-datepicker` styles can be overrided:
 	// (see also: https://angular.io/docs/ts/latest/guide/component-styles.html#!#view-encapsulation)
 	encapsulation: ViewEncapsulation.None,
 	styles: [`
