@@ -1,11 +1,11 @@
-import {Component, OnDestroy} from '@angular/core';
-import {LayoutManagerService} from '../../../../src/layout-manager/layout-manager.service';
+import {Component} from '@angular/core';
+import {LayoutManagerService} from '../../../../src';
 
 @Component({
 	selector: 'layout-manager-sample',
 	templateUrl: './layout-manager-sample.component.html'
 })
-export class LayoutManagerSampleComponent implements OnDestroy {
+export class LayoutManagerSampleComponent {
 
 	constructor(private layoutManager: LayoutManagerService) {
 
@@ -21,10 +21,5 @@ export class LayoutManagerSampleComponent implements OnDestroy {
 
 	set navigation(value: boolean) {
 		this.layoutManager.navigation = value;
-	}
-
-	ngOnDestroy() {
-		// Ensure navigation is restored:
-		this.navigation = true;
 	}
 }
