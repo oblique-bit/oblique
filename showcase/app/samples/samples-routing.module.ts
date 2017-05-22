@@ -35,7 +35,7 @@ const samplesRoutes: Routes = [
 	{
 		path: 'layout-manager', component: LayoutManagerSampleComponent, data: {
 		uiLayout: {
-			application: 'has-cover'
+			application: ['has-cover']
 		}
 	}
 	}

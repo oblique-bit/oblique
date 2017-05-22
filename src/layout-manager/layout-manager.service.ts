@@ -1,12 +1,8 @@
 import {Injectable, Inject} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {DOCUMENT, ɵDomAdapter, ɵgetDOM} from '@angular/platform-browser';
 import {LocalStorage} from 'ngx-webstorage';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/operator/withLatestFrom';
+import {LayoutManagerDirective} from './layout-manager.directive';
 
 /**
  * LayoutManagerService - Service for controlling ObliqueUI master layout features.
@@ -17,15 +13,9 @@ export class LayoutManagerService {
 	@LocalStorage()
 	public userLang: string;
 
-	private DOM: ɵDomAdapter;
-	private applicationElement: HTMLElement;
+	public layoutManagerDirective: LayoutManagerDirective;
 
-	private previousData: any = {};
-
-	constructor(private router: Router,
-				private activatedRoute: ActivatedRoute,
-				private translate: TranslateService,
-				@Inject(DOCUMENT) private document: any,
+	constructor(private translate: TranslateService,
 				@Inject('ObliqueReactive.CONFIG') private config: any) {
 
 		// User lang handling:
@@ -40,60 +30,25 @@ export class LayoutManagerService {
 
 		// Apply user or default lang:
 		this.translate.use(this.userLang || translate.getDefaultLang());
-
-		// Application layout:
-		// -------------------
-		this.DOM = ɵgetDOM();
-		//TODO: doesn't work anymore, because of changed rootcomponent
-		// We could perhaps create a component, that has the according selector
-		// -> with this, we could use the native ng way to apply classes on the element
-		this.applicationElement = this.DOM.querySelector(document, 'body > .application');
-
-		// Subscribe to NavigationEnd events and handle current activated route:
-		this.router.events
-			.filter(event => event instanceof NavigationEnd)
-			.map(() => this.activatedRoute)
-			.map(route => {
-				while (route.firstChild) {
-					route = route.firstChild;
-				}
-				return route;
-			})
-			.filter(route => route.outlet === 'primary')
-			.mergeMap(route => route.data)
-			.subscribe((data) => {
-				let uiLayout = data.uiLayout || {};
-				this.toggleClass(this.applicationElement, uiLayout.application, this.previousData.application);
-				this.previousData = uiLayout;
-			});
 	}
 
 	useLang(locale: string) {
 		this.translate.use(locale);
 	}
 
-	get cover(): boolean {
-		return this.DOM.hasClass(this.applicationElement, 'has-cover');
+	set cover(value) {
+		this.layoutManagerDirective.hasCover = value;
 	}
 
-	set cover(value: boolean) {
-		if (value) {
-			this.toggleClass(this.applicationElement, 'has-cover');
-		} else {
-			this.toggleClass(this.applicationElement, null, 'has-cover');
-		}
+	get cover() {
+		return this.layoutManagerDirective.hasCover;
 	}
 
-	set navigation(value: boolean) {
-		if (value) {
-			this.toggleClass(this.applicationElement, null, 'no-navigation');
-		} else {
-			this.toggleClass(this.applicationElement, 'no-navigation');
-		}
+	set navigation(value) {
+		this.layoutManagerDirective.noNavigation = !value;
 	}
 
-	private toggleClass(target: HTMLElement, className, previous = null) {
-		this.DOM.removeClass(target, previous);
-		this.DOM.addClass(target, className || null); // Avoid `undefined`s and empty strings '' as it silently breaks the observable
+	get navigation() {
+		return !this.layoutManagerDirective.noNavigation;
 	}
 }

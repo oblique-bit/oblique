@@ -1,5 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
-import {LayoutManagerService} from '../../../../src/layout-manager/layout-manager.service';
+import {LayoutManagerService} from '../../../../src';
 
 @Component({
 	selector: 'layout-manager-sample',
