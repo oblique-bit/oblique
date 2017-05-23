@@ -1,3 +1,4 @@
+export * from './date-formatter.pipe';
 export * from './date-parser-formatter';
 export * from './datepicker.component';
 export * from './datepicker.module';

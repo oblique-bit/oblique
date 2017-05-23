@@ -7,6 +7,7 @@ import {DatepickerI18nService} from './datepicker-i18n.service';
 import {DateDMYParserFormatter} from './date-parser-formatter';
 import {DatepickerPlaceholderDirective} from './datepicker-placeholder.directive';
 import {TranslateModule} from '@ngx-translate/core';
+import {DateFormatterPipe} from './date-formatter.pipe';
 
 @NgModule({
 	imports: [
@@ -17,11 +18,13 @@ import {TranslateModule} from '@ngx-translate/core';
 	],
 	declarations: [
 		DatepickerComponent,
-		DatepickerPlaceholderDirective
+		DatepickerPlaceholderDirective,
+		DateFormatterPipe
 	],
 	exports: [
 		DatepickerComponent,
-		DatepickerPlaceholderDirective
+		DatepickerPlaceholderDirective,
+		DateFormatterPipe
 	]
 })
 export class DatepickerModule {
