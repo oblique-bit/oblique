@@ -1,4 +1,4 @@
-import {Directive, HostBinding, OnInit, ElementRef, OnDestroy} from '@angular/core';
+import {Directive, HostBinding, OnInit, OnDestroy, Input} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject} from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
@@ -14,19 +14,18 @@ const I18N_PLACEHOLDERS = {
 	selector: 'input[ngbDatepicker]'
 })
 export class DatepickerPlaceholderDirective implements OnInit, OnDestroy {
-	@HostBinding('placeholder') placeholder;
+	@Input()
+	@HostBinding()
+	placeholder;
 
-	private customPlaceholder: string;
-
-	//http://stackoverflow.com/questions/38008334/angular-rxjs-when-should-i-unsubscribe-from-subscription
+	// http://stackoverflow.com/questions/38008334/angular-rxjs-when-should-i-unsubscribe-from-subscription
 	private ngUnsubscribe: Subject<void> = new Subject<void>();
 
-	constructor(private translateService: TranslateService, elementRef: ElementRef) {
-		this.customPlaceholder = elementRef.nativeElement.getAttribute('placeholder') ;
+	constructor(private translateService: TranslateService) {
 	}
 
 	ngOnInit() {
-		if (!this.customPlaceholder) {
+		if (!this.placeholder) {
 			this.setPlaceholder(this.translateService.currentLang);
 
 			this.translateService.onLangChange
@@ -34,8 +33,6 @@ export class DatepickerPlaceholderDirective implements OnInit, OnDestroy {
 				.subscribe(({lang}) => {
 					this.setPlaceholder(lang);
 			});
-		} else {
-			this.placeholder = this.customPlaceholder;
 		}
 	}
 
