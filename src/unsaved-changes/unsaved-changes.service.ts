@@ -6,18 +6,18 @@ import 'rxjs/add/operator/filter';
 //TODO: Handle modals
 @Injectable()
 export class UnsavedChangesService {
-	private formList = {string: ControlContainer};
+	private formList : {[key:string]: ControlContainer} = {};
 
 	constructor(private translateService: TranslateService) {
 		window.addEventListener('beforeunload', (e) => this.onUnload(e));
 	}
 
-	watch(formId:string, form: ControlContainer): void {
+	watch(formId: string, form: ControlContainer): void {
 		this.formList[formId] = form;
 	}
 
 	unWatch(formId: string): void {
-		 delete this.formList[formId];
+		delete this.formList[formId];
 	}
 
 	canDeactivateTab(formId: string): boolean {
