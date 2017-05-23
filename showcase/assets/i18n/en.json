@@ -32,9 +32,6 @@
           "submit": "Register"
         }
       },
-      "movies": {
-        "title": "Movies"
-      },
       "samples": {
         "title": "Samples",
         "datepicker": {
@@ -42,6 +39,9 @@
         },
         "multiselect": {
           "title": "Multiselect"
+        },
+        "layout-manager": {
+          "title": "Layout Manager"
         },
         "navigable": {
           "title": "Navigable"
@@ -55,27 +55,21 @@
         "typeahead": {
           "title": "Typeahead"
         },
-        "uiScroll": {
+        "ui-scroll": {
           "title": "UI Scroll"
+        },
+        "formControlState": {
+          "title": "Form Control State"
         },
         "validation": {
           "title": "Validation",
-          "formControl": {
-            "title": "Form Control"
-          },
           "schemaValidation": {
             "title": "Schema Validation"
           },
-          "unsavedChanges": {
+          "unsaved-changes": {
             "title": "Unsaved Changes"
           }
         }
-      },
-      "support": {
-        "title": "Support"
-      },
-      "admin": {
-        "title": "Administration"
       }
     },
     "common": {
@@ -153,6 +147,8 @@
       }
     },
     "validation": {
+      "minLength": "Please enter at least {{limit}} characters",
+      "required": "This field is required!",
       "basic": {
         "required": "Pflichtfeld, bitte machen Sie eine Angabe",
         "email": "Ungültiges Format, bitte geben Sie eine gültige E-Mail Adresse an",
@@ -177,9 +173,9 @@
           }
         }
       },
-      "date.format": "Incorrect date or format, please enter a valid date in the dd.mm.yyyy format.",
-      "date.min": "en: Das Datum unterschreitet das min. zulässige Datum {{minDate}}",
-      "date.max": "en: Das Datum überschreitet das max. zulässige Datum {{maxDate}}",
+      "ngbDate": "Incorrect date or format, please enter a valid date in the dd.mm.yyyy format.",
+      "ngbDate.requiredBefore": "The date is under the min datum {{day}}.{{month}}.{{year}}",
+      "ngbDate.requiredAfter": "The date is above the max date {{day}}.{{month}}.{{year}}",
       "unsavedChanges": "Pending changes have been detected, do you really want to continue?"
     },
     "form": {

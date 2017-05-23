@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
+import {LayoutManagerService} from '../../../../src/layout-manager/layout-manager.service';
 
 @Component({
 	selector: 'layout-controls',
@@ -9,28 +9,18 @@ import {TranslateService} from '@ngx-translate/core';
 export class LayoutControlsComponent {
 
 	public locales = ['en'];
-	public context = { // TODO: mock only, remove this
-		user: {
-			firstname: 'Oblique',
-			lastname: 'Reactive'
-		},
-		isAuthenticated: false
-	};
 
-	constructor(private translate: TranslateService,
-	            @Inject('ObliqueReactive.CONFIG') private config: any) {
+	constructor(private layoutManager: LayoutManagerService,
+				@Inject('ObliqueReactive.CONFIG') private config: any) {
 		this.locales = config.locales || this.locales;
 	}
 
 	public isLangActive(lang: string): boolean {
-		return this.translate.currentLang === lang;
+		return this.layoutManager.userLang === lang;
 	}
 
 	public changeLang($event: Event, lang: string) {
-		event.preventDefault();
-		this.translate.use(lang);
-	}
-
-	public logout() {
+		$event.preventDefault();
+		this.layoutManager.useLang(lang);
 	}
 }

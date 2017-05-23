@@ -1,10 +1,14 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 
-import {DatepickerModule} from './datepicker/datepicker.module';
-import {DocumentMetaModule} from './document-meta/document-meta.module';
+import {BrandingModule} from './branding';
+import {DatepickerModule} from './datepicker';
+import {DocumentMetaModule} from './document-meta';
+import {ErrorMessagesModule} from './error-messages';
+import {FormControlStateModule} from './form-control-state';
+import {LayoutManagerModule} from './layout-manager';
 import {MultiselectModule} from './multiselect';
 import {NavigableModule} from './navigable';
-import {NavigatorModule} from './navigator/navigator.module';
+import {NavigatorModule} from './navigator';
 import {NavTreeModule} from './nav-tree';
 import {NotificationModule} from './notification';
 import {SchemaValidationModule} from './schema-validation';
@@ -12,8 +16,12 @@ import {SpinnerModule} from './spinner';
 import {TopControlModule} from './top-control';
 import {UnsavedChangesModule} from './unsaved-changes';
 
+export * from './branding';
 export * from './datepicker';
 export * from './document-meta';
+export * from './error-messages';
+export * from './form-control-state';
+export * from './layout-manager';
 export * from './multiselect';
 export * from './navigable';
 export * from './navigator';
@@ -25,8 +33,15 @@ export * from './top-control';
 export * from './unsaved-changes';
 
 const OBLIQUE_MODULES = [
+	// Branding:
+	BrandingModule,
+
+	// UIComponents
 	DatepickerModule,
 	DocumentMetaModule,
+	ErrorMessagesModule,
+	FormControlStateModule,
+	LayoutManagerModule,
 	MultiselectModule,
 	NavigableModule,
 	NavigatorModule,
@@ -40,8 +55,12 @@ const OBLIQUE_MODULES = [
 
 @NgModule({
 	imports: [
+		BrandingModule.forRoot(),
 		DatepickerModule.forRoot(),
 		DocumentMetaModule.forRoot(),
+		ErrorMessagesModule.forRoot(),
+		FormControlStateModule.forRoot(),
+		LayoutManagerModule.forRoot(),
 		MultiselectModule.forRoot(),
 		NavigableModule.forRoot(),
 		NavigatorModule.forRoot(),

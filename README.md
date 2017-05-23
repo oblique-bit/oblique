@@ -1,40 +1,51 @@
-# [ObliqueReactive](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/)
+# [ObliqueReactive](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/)
 
-Reactive web template powered by [ObliqueUI](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-ui/) and [Angular](https://github.com/angular/angular). ObliqueReactive uses [npm](https://www.npmjs.com/), [Gulp](https://github.com/gulpjs/gulp/), [Less](http://lesscss.org/), [Browserify](http://browserify.org/) and [Handlebars](http://handlebarsjs.com/) to fetch dependencies, compile & build assets and compose the pages.
+Reactive web framework powered by [ObliqueUI](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-ui/) and [Angular](https://github.com/angular/angular).
 
-## Using as dependency
+ObliqueReactive uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.angular.io/), [Gulp](https://github.com/gulpjs/gulp/), [Sass](http://sass-lang.com/) and [Handlebars](http://handlebarsjs.com/) to fetch dependencies, compile & build assets, compose HTML and serve & watch web content.
 
-TODO: Update this, if we integrated the newest version in O2R-Seed
+> **Starting a new business web project?**
+>
+> If you are starting a new business web project, please clone directly [ObliqueReactiveSeed](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive-seed/), an ObliqueReactive-enabled project template. 
 
-Install `oblique-reactive` as an npm dependency:
+## Using ObliqueReactive as a dependency
+
+1. Register our npm repository manager (Nexus 3):
+
+	npm config set registry https://nexus3.eap.bit.admin.ch/repository/npm-all/
+
+2. Install `oblique-reactive` as an npm dependency:
 
 	npm install oblique-reactive --save
 
-Once installed, you need to import the `ObliqueModule`:
-
-	import {ObliqueModule} from 'oblique-reactive/oblique-reactive';
-
-And add it in your `app-module`:
+3. Import `ObliqueModule` in your root `NgModule`:
 
 ```
-import {ObliqueModule} from 'oblique-reactive/oblique-reactive';
-
-angular
-	.module('__MODULE__', [
-		[...]
-		ObliqueModule,
-		[...]
+	import {ObliqueModule} from 'oblique-reactive';
+	
+	@NgModule({
+	    declarations: [...],
+	    imports: [
+	        ...,
+	        ObliqueModule.forRoot(),
+	        ...
+	    ],
+	    ...,
+	})
+	export class AppModule {}
 ```
 
-An example of usage can be found in the `oblique-reactive-seed` project: [ObliqueReactiveSeed](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive-seed/)
+4. You can now import & use any ObliqueReactive components within you app.
 
-## Working on ObliqueReactive
+An usage example can be found in [ObliqueReactiveSeed](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive-seed/)
 
-- Clone the repo: `git clone https://stash.eap.bit.admin.ch/scm/oui/oblique-reactive.git`.
+## Working on ObliqueReactive (Oblique *core* developers only)
 
-## Install
+- Clone the repo: `git clone https://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive.git`.
 
-### Prerequisites
+### Install
+
+#### Prerequisites
 
 * Git: <http://git-scm.com/downloads>
 
@@ -46,18 +57,18 @@ An example of usage can be found in the `oblique-reactive-seed` project: [Obliqu
 
 > NPM, the Node Package Manager, is installed during the Node.js installation process.
 
-### Environment setup
+#### Environment setup
 
-#### GIT configuration
+##### GIT configuration
 
 If you are using Git for the first time, configure your user information as well:
 
 	git config --global user.name "<firstname> <lastname>"
 	git config --global user.email "<email>"
 
-#### Proxy configuration (if applicable)
+##### Proxy configuration (if applicable)
 
-##### Environment Variables
+###### Environment Variables
 
 > *Note*: proxy URL must start with `http[s]://`!
 
@@ -65,73 +76,65 @@ If you are using Git for the first time, configure your user information as well
 	HTTPS_PROXY <https-proxy-url>
 	NO_PROXY follow [these instructions](https://confluence.eap.bit.admin.ch/display/JEAP/Projekt+Setup#ProjektSetup-Umgebungsvariablen)
 
-##### GIT Config (.gitconfig)
+###### GIT Config (.gitconfig)
 
 	git config --global url."https://".insteadOf git://
 	git config --global http."https://stash.eap.bit.admin.ch/".proxy ""
 	git config --global http.postBuffer 524288000
 	git config --global http.proxy <http-proxy-url>
 
-##### <a name="npm-config"></a> NPM config
+###### <a name="npm-config"></a> NPM config
 
 Follow the instructions described in the [JEAP Project Setup page](https://confluence.eap.bit.admin.ch/display/JEAP/Projekt+Setup#ProjektSetup-InstallationundKonfigurationvonNodeJsundNPM)
 
 And add the TypeScript specific libraries and configs described in the [Configuration for TypeScript page](https://confluence.eap.bit.admin.ch/display/FEDEV/Configuration+for+TypeScript)
 
-> *Note*: ObliqueReactive needs **TypeScript 2**, use `npm install typescript@next` to get the beta version
+> *Note*: ObliqueReactive needs **TypeScript 2** as minimum version.
 
-### First-time setup
+#### First-time setup
 
 1. Install *globally* required `npm` libraries:
 
-	npm install -g typescript typings gulp
+	npm install -g typescript
 
-2. Install *development* and *frontend* dependencies (`npm` will look at [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/package.json) and automatically install the necessary dependencies listed there):
+2. Install *development* and *frontend* dependencies (`npm` will look at [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/package.json) and automatically install the necessary dependencies listed there):
 
 	npm install
 
 3. Customize:
 
-> Open [project.conf.js](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/project.conf.js) and adapt this configuration to fit your project requirements.
+> Open [project.conf.ts](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/project.conf.ts) and adapt this configuration to fit your project requirements.
 
-### Troubleshooting dependencies
+#### Troubleshooting dependencies
 
-Should you encounter problems with installing dependencies or running Gulp commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
+Should you encounter problems with installing dependencies or running AngularCLI / Gulp commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
 
-## Build & Run the showcase
+### Build & Run the showcase
 
-### Development tasks
+#### Development tasks
 
 	npm start
 
 _This task builds the project, runs the client application by starting a local server and watches for file changes._
 
-#### Start the showcase API server
+#### TODO: Production tasks
 
-The start the showcase API server, run:
+	npm start-prod
 
-	gulp showcase-serve
+_Same as `npm start`, except that it will serve optimized resources._
 
-### Production tasks
+### <a name="managing-dependencies"></a> Managing dependencies
 
-	gulp run-prod
-
-_Same as `run-dev`, except that it will serve optimized resources._
-
-## <a name="managing-dependencies"></a> Managing dependencies
-
-If you ever need to add your own dependencies, here's how to do it.
-
-### npm (build) dependencies
+#### npm dependencies
 
 Run the following command to install a new npm dependency:
 
 	npm i <dependency> -D
 
-Before you do so, make sure you're in your project's root folder, where [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique-reactive/browse/package.json) is.
-After everything is done, you should see your new dependency in [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-ui/browse/package.json).
+Before you do so, make sure you're in your project's root folder, where [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-reactive/browse/package.json) is.
+After everything is done, you should see your new dependency listed in [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-ui/browse/package.json).
 
-If you need to install a global dependency, such as bower, switch the *-D* to a *-g* in your command. This would look something like this:
+If you need to install a global dependency, such as Gulp, switch the *-D* to a *-g* in your command. This would look something like this:
 
 	npm i <dependency> -g
 
@@ -139,7 +142,7 @@ Installing a global npm dependency makes it accessible from every command line, 
 
 You can search through npm packages over at [npmjs.com](https://www.npmjs.com/).
 
-### Transpiling (TypeScript) dependencies
+#### Transpiling (TypeScript) dependencies
 
 If you want to use a framework that adds new syntax to regular JavaScript, you'll probably need to give TypeScript, our JavaScript transpiler, hints as to what to do with the new expressions. This is what *typings* is for.
 
@@ -153,7 +156,7 @@ Most of the time, this will give you more than one result. So keep the exact nam
 
 Doing this, typings will download all the needed typing files into your project and reference them in [typings.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-ui/browse/typings.json) so that the next developer can simply run *typings install* (as we do) and doesn't need to bother. Quite neat, huh?
 
-## Checking for updates
+### Checking for updates
 
 	npm install -g npm-check-updates
 
@@ -161,14 +164,14 @@ You can now check for updates and bump `package.json` dependencies accordingly:
 
 	npm-check-updates
 
-## <a name="publish"></a> Publishing ObliqueReactive
+### <a name="publish"></a> Publishing ObliqueReactive
 
 > Publishing should be performed with a continuous integration tool and not manually!
 
 Before publishing, execute the following steps:
 
 1. Switch to master branch and merge develop on it.
-2. Run `gulp` to compile sources and rebuild the project distribution.
+2. Run `npm run build` to compile sources and rebuild the project distribution.
 3. Check project distribution and ensure showcase is running as expected.
 4. Commit and push any remaining changes.
 
@@ -181,7 +184,7 @@ Prepare your workspace:
 
     > Follow the steps on the terminal as you may be asked for credentials.
 
-### <a name="publish-patch"></a> Publishing a *patch* release
+#### <a name="publish-patch"></a> Publishing a *patch* release
 
 Build, release (defaults to *patch* version number increment) and finally publish using Gulp:
 
@@ -189,7 +192,7 @@ Build, release (defaults to *patch* version number increment) and finally publis
 
     > Follow the steps on the terminal as you may be asked multiple times for credentials.
 
-### <a name="publish-types"></a> Publishing other release types
+#### <a name="publish-types"></a> Publishing other release types
 
 Publishing a *prerelease*:
 

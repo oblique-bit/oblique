@@ -3,7 +3,8 @@ import {
 	HostListener, AfterViewInit
 } from '@angular/core';
 
-import * as $ from 'jquery';
+//TODO: Remove JQuery
+declare var $: any;
 
 /**
  * NavigableDirective
@@ -20,7 +21,7 @@ import * as $ from 'jquery';
  * - (navigableOnMove):FocusEvent                Emits if item is moved (with SHIFT+CTRL+[UP|DOWN]).
  */
 @Directive({
-	selector: '[navigable]',
+	selector: '[orNavigable]',
 	exportAs: 'navigable'
 })
 export class NavigableDirective implements AfterViewInit {
@@ -30,7 +31,7 @@ export class NavigableDirective implements AfterViewInit {
 		DOWN: 40
 	};
 
-	@Input('navigable') model: any;
+	@Input('orNavigable') model: any;
 
 	@Input('navigableFocusOnInit')
 	focusOnInit: boolean;
@@ -93,6 +94,7 @@ export class NavigableDirective implements AfterViewInit {
 	onKeyDown($event: KeyboardEvent) {
 		let keyCode = $event.keyCode;
 
+		//TODO: Remove JQuery
 		if (keyCode === NavigableDirective.KEYS.UP || keyCode === NavigableDirective.KEYS.DOWN) {
 			let focused = $(this.element.nativeElement).find(':focus');
 

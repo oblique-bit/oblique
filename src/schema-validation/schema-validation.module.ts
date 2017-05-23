@@ -4,16 +4,16 @@ import {SchemaValidationDirective} from './schema-validation.directive';
 import {SchemaValidateDirective} from './schema-validator';
 
 @NgModule({
-    imports: [
-        CommonModule
-    ],
-    declarations: [SchemaValidateDirective, SchemaValidationDirective],
-    exports: [SchemaValidateDirective, SchemaValidationDirective]
+	imports: [
+		CommonModule
+	],
+	declarations: [SchemaValidateDirective, SchemaValidationDirective],
+	exports: [SchemaValidateDirective, SchemaValidationDirective]
 })
 export class SchemaValidationModule {
-    static forRoot(): ModuleWithProviders {
-        return {
-            ngModule: SchemaValidationModule
-        };
-    }
+	static forRoot(): ModuleWithProviders {
+		return {
+			ngModule: SchemaValidationModule
+		};
+	}
 }

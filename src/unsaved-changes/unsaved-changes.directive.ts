@@ -3,7 +3,7 @@ import {ControlContainer} from '@angular/forms';
 import {UnsavedChangesService} from './unsaved-changes.service';
 
 @Directive({
-	selector: '[unsavedChanges]'
+	selector: '[orUnsavedChanges]'
 })
 export class UnsavedChangesDirective implements OnDestroy {
 	private formId;

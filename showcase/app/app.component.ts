@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
-
-import {NotificationService} from '../../src';
+import {NgbTooltipConfig, NgbDatepickerConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
 	selector: 'app-root',
@@ -8,8 +7,8 @@ import {NotificationService} from '../../src';
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-	constructor(notificationService: NotificationService) {
-		notificationService.success('Welcome to ObliqueReactive'); // TODO: remove this
+	constructor(tooltipConfig: NgbTooltipConfig, datepickerConfig: NgbDatepickerConfig) {
+		tooltipConfig.container = 'body';
+		datepickerConfig.navigation = 'arrows';
 	}
 }

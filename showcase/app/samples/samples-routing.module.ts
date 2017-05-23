@@ -1,20 +1,25 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-import {DatepickerComponent} from './datepicker/datepicker.component';
+import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
+import {FormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
 import {NavigableSampleComponent} from './navigable/navigable-sample.component';
 import {NavTreeSampleComponent, NavTreeDetailSampleComponent} from './nav-tree/nav-tree-sample.component';
-import {SchemaValidationComponent} from './schema-validation/schema-validation.component';
+import {LayoutManagerSampleComponent} from './layout-manager/layout-manager-sample.component';
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
+import {SchemaValidationComponent} from './schema-validation/schema-validation-sample.component';
 import {UnsavedChangesComponent} from './unsaved-changes/unsaved-changes-sample.component';
 
 const samplesRoutes: Routes = [
-	{path: 'datepicker', component: DatepickerComponent},
-	{path: 'navigable', component: NavigableSampleComponent, data: {
+	{path: 'datepicker', component: DatepickerSampleComponent},
+	{path: 'form-control-state', component: FormControlStateSampleComponent},
+	{
+		path: 'navigable', component: NavigableSampleComponent, data: {
 		title: 'Navigable Sample',
 		description: 'Description for the Navigable Sample'
-	}},
+	}
+	},
 	{
 		path: 'nav-tree',
 		component: NavTreeSampleComponent,
@@ -22,11 +27,19 @@ const samplesRoutes: Routes = [
 			sample: SampleDataResolver
 		},
 		children: [{
-		path: ':id',
+			path: ':id',
 			component: NavTreeDetailSampleComponent,
-		}]},
+		}]
+	},
 	{path: 'multiselect', component: MultiselectSampleComponent},
 	{path: 'schema-validation', component: SchemaValidationComponent},
+	{
+		path: 'layout-manager', component: LayoutManagerSampleComponent, data: {
+		layoutManager: {
+			hasCover: true
+		}
+	}
+	},
 	{path: 'unsaved-changes', component: UnsavedChangesComponent}
 ];
 

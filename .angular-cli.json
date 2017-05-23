@@ -1,15 +1,20 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "oblique-reactive",
-    "ejected": true
+    "name": "oblique-reactive"
   },
   "apps": [
     {
       "root": "showcase",
-      "outDir": "dist",
+      "outDir": "target",
       "assets": [
-        "assets"
+        "assets",
+        "favicon.ico",
+        {
+          "glob": "**/*",
+          "input": "../node_modules/oblique-ui/dist/images",
+          "output": "./assets/oblique-ui/images"
+        }
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -23,6 +28,10 @@
         "sass/styles.scss"
       ],
       "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/tether/dist/js/tether.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "../node_modules/oblique-ui/dist/js/oblique-ui.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
@@ -38,10 +47,10 @@
   },
   "lint": [
     {
-      "project": "src/tsconfig.app.json"
+      "project": "showcase/tsconfig.app.json"
     },
     {
-      "project": "src/tsconfig.spec.json"
+      "project": "showcase/tsconfig.spec.json"
     },
     {
       "project": "e2e/tsconfig.e2e.json"

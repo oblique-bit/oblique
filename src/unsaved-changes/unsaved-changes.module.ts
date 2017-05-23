@@ -13,13 +13,13 @@ import {UnsavedChangesTabDirective} from './unsaved-changes-tab.directive';
     exports: [UnsavedChangesDirective, UnsavedChangesTabDirective]
 })
 export class UnsavedChangesModule {
-    static forRoot(): ModuleWithProviders {
-        return {
-            ngModule: UnsavedChangesModule,
-            providers: [
-                UnsavedChangesService,
-                UnsavedChangesGuard
-            ]
-        };
-    }
+	static forRoot(): ModuleWithProviders {
+		return {
+			ngModule: UnsavedChangesModule,
+			providers: [
+				UnsavedChangesService,
+				UnsavedChangesGuard
+			]
+		};
+	}
 }

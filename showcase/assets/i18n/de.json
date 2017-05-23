@@ -32,13 +32,13 @@
           "submit": "Register"
         }
       },
-      "movies": {
-        "title": "Movies"
-      },
       "samples": {
         "title": "Samples",
         "datepicker": {
           "title": "Datepicker"
+        },
+        "layout-manager": {
+          "title": "Layout Manager"
         },
         "multiselect": {
           "title": "Multiselect"
@@ -55,27 +55,21 @@
         "typeahead": {
           "title": "Typeahead"
         },
-        "uiScroll": {
+        "ui-scroll": {
           "title": "UI Scroll"
+        },
+        "formControlState": {
+          "title": "Form Control State"
         },
         "validation": {
           "title": "Validation",
-          "formControl": {
-            "title": "Form Control"
-          },
           "schemaValidation": {
             "title": "Schema Validation"
           },
-          "unsavedChanges": {
+          "unsaved-changes": {
             "title": "Unsaved Changes"
           }
         }
-      },
-      "support": {
-        "title": "Support"
-      },
-      "admin": {
-        "title": "Verwaltung"
       }
     },
     "common": {
@@ -153,6 +147,7 @@
       }
     },
     "validation": {
+      "required": "Diese Feld wird benötigt!",
       "basic": {
         "required": "Pflichtfeld, bitte machen Sie eine Angabe",
         "email": "Ungültiges Format, bitte geben Sie eine gültige E-Mail Adresse an",
@@ -177,9 +172,9 @@
           }
         }
       },
-      "date.format": "de: Incorrect date or format, please enter a valid date in the dd.mm.yyyy format.",
-      "date.min": "Das Datum unterschreitet das min. zulässige Datum {{minDate}}",
-      "date.max": "Das Datum überschreitet das max. zulässige Datum {{maxDate}}",
+      "ngbDate": "Falsches Format, bitte geben sie ein valides Datum im TT.MM.JJJJ Format ein",
+      "ngbDate.requiredBefore": "Das Datum unterschreitet das min. zulässige Datum {{day}}.{{month}}.{{year}}",
+      "ngbDate.requiredAfter": "Das Datum überschreitet das max. zulässige Datum {{day}}.{{month}}.{{year}}",
       "unsavedChanges": "Es sind nicht gespeicherte Änderungen vorhanden, wollen Sie wirklich fortfahren?"
     },
     "form": {

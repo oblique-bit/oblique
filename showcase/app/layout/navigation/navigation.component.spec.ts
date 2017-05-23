@@ -15,7 +15,7 @@ describe('LayoutNavigationComponent', () => {
 			imports: [RouterTestingModule],
 			declarations: [LayoutNavigationComponent, MockTranslatePipe]
 		})
-		.compileComponents();
+			.compileComponents();
 	}));
 
 	beforeEach(() => {

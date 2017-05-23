@@ -1,4 +1,4 @@
-module.exports = {
+export const ProjectConfig = {
 	build: {
 		target: 'target/'
 	},
@@ -13,7 +13,7 @@ module.exports = {
 			email:      'info@bit.admin.ch',
 			contact:    false
 		},
-		home:           '#!/home',
+		home:           '/home',
 		locales:        ['de', 'fr', 'it', 'en'], // List of available locales
 		defaults: {
 			locale:     'en',

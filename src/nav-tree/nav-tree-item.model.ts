@@ -3,15 +3,7 @@
  *
  * @see NavTreeComponent
  */
-export interface INavTreeItemModel {
-	label: string;
-	items?: INavTreeItemModel[];
-	id?: string;
-	disabled?: boolean;
-	collapsed?: boolean;
-}
-
-export class NavTreeItemModel implements INavTreeItemModel {
+export class NavTreeItemModel {
 	label: string;
 	items?: NavTreeItemModel[];
 	id?: string;

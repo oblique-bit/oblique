@@ -12,7 +12,7 @@ describe('HomeComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [HomeComponent, MockTranslatePipe]
 		})
-		.compileComponents();
+			.compileComponents();
 	}));
 
 	beforeEach(() => {

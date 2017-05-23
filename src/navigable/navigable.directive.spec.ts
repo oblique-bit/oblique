@@ -7,7 +7,7 @@ import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from '
 
 @Component({
 	template: `
-		<div [navigable]="model"
+		<div [orNavigable]="model"
 		     [navigableActivate]="activate"
 		     [navigableHighlight]="highlighted"
 		     [navigableFocusOnInit]="focusOnInit"

@@ -2,18 +2,18 @@ import {Directive, Input, AfterViewInit} from '@angular/core';
 import {SchemaValidationService} from './schema-validation.service';
 
 @Directive({
-    selector: '[schemaValidation]',
-    providers: [SchemaValidationService]
+	selector: '[orSchemaValidation]',
+	providers: [SchemaValidationService]
 })
 export class SchemaValidationDirective implements AfterViewInit {
-    @Input('schemaValidation') schema: any;
+	@Input('orSchemaValidation') schema: any;
 
-    constructor(private schemaValidationService: SchemaValidationService) {
+	constructor(private schemaValidationService: SchemaValidationService) {
 
-    }
+	}
 
-    ngAfterViewInit(): void {
-        this.schemaValidationService.compileSchema(this.schema);
-    }
+	ngAfterViewInit(): void {
+		this.schemaValidationService.compileSchema(this.schema);
+	}
 
 }

@@ -1,5 +1,6 @@
 /* tslint:disable:no-unused-variable */
-const project = require('../../../../project.conf.js');
+import {LayoutManagerService} from '../../../../src';
+import {ProjectConfig} from '../../../../project.conf';
 
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 
@@ -9,6 +10,10 @@ import {TranslateService} from '@ngx-translate/core';
 
 describe('LayoutControls', () => {
 	const mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use']);
+	let mockLayoutManagerService = {
+		userLang: 'en',
+		useLang: jasmine.createSpy('useLang')
+	};
 
 	let component: LayoutControlsComponent;
 	let fixture: ComponentFixture<LayoutControlsComponent>;
@@ -17,11 +22,12 @@ describe('LayoutControls', () => {
 		TestBed.configureTestingModule({
 			providers: [
 				{provide: TranslateService, useValue: mockTranslateService},
-				{provide: 'ObliqueReactive.CONFIG', useValue: project.app},
+				{provide: LayoutManagerService, useValue: mockLayoutManagerService},
+				{provide: 'ObliqueReactive.CONFIG', useValue: ProjectConfig.app}
 			],
 			declarations: [LayoutControlsComponent, MockTranslatePipe]
 		})
-		.compileComponents();
+			.compileComponents();
 	}));
 
 	beforeEach(() => {
