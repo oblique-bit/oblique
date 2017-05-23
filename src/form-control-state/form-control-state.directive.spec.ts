@@ -56,7 +56,7 @@ describe('FormControlStateDirective', () => {
 			imports: [
 				CommonModule,
 				FormsModule
-			],
+			]
 		}).compileComponents();
 	}));
 

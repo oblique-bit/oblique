@@ -185,7 +185,7 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 		checkedPlural: 'i18n.oblique.multiselect.checkedPlural',
 		searchPlaceholder: 'i18n.oblique.multiselect.searchPlaceholder',
 		defaultTitle: 'i18n.oblique.multiselect.defaultTitle',
-		allSelected: 'i18n.oblique.multiselect.allSelected',
+		allSelected: 'i18n.oblique.multiselect.allSelected'
 	};
 
 	constructor(private element: ElementRef,

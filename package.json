@@ -34,7 +34,7 @@
   "scripts": {
     "ci-build": "./node_modules/.bin/gulp build",
     "prestart": "npm run prebuild",
-    "start": "./node_modules/.bin/ng serve --port 9000 --open",
+    "start": "./node_modules/.bin/ng serve --port 9000",
     "build": "./node_modules/.bin/ng build",
     "prebuild": "./node_modules/.bin/gulp build-templates",
     "test": "./node_modules/.bin/ng test",

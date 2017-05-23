@@ -39,10 +39,14 @@ describe('DateDMYParserFormatter', () => {
 			expect(pf.format(undefined)).toBe('');
 		});
 
-		it('should format a valid date', () => { expect(pf.format({year: 2016, month: 10, day: 15})).toBe('15.10.2016'); });
+		it('should format a valid date', () => {
+			expect(pf.format({year: 2016, month: 10, day: 15})).toBe('15.10.2016');
+		});
 
 		it('should format a valid date with padding',
-			() => { expect(pf.format({year: 2016, month: 10, day: 5})).toBe('05.10.2016'); });
+			() => {
+				expect(pf.format({year: 2016, month: 10, day: 5})).toBe('05.10.2016');
+			});
 
 		it('should try its best with invalid dates', () => {
 			expect(pf.format({year: 2016, month: NaN, day: undefined})).toBe('..2016');

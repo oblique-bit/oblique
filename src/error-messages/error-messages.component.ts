@@ -12,7 +12,7 @@ import 'rxjs/add/observable/merge';
 export class ErrorMessagesComponent implements AfterViewInit {
 	@Input() control: NgControl;
 
-	errors: {key: string, params: {[param: string]: any}}[] = [];
+	errors: { key: string, params: { [param: string]: any } }[] = [];
 
 	private form: NgForm | FormGroupDirective;
 

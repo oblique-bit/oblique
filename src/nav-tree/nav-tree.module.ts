@@ -11,7 +11,7 @@ import {NavTreeComponent} from './nav-tree.component';
 		CommonModule,
 		NgbModule,
 		RouterModule,
-		TranslateModule,
+		TranslateModule
 	],
 	declarations: [NavTreeComponent],
 	exports: [NavTreeComponent]

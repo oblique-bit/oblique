@@ -11,7 +11,7 @@ describe('LayoutManagerService', () => {
 	let mockTranslateService;
 	let uiLayoutService: LayoutManagerService;
 
-	beforeEach(async() => {
+	beforeEach(async () => {
 		mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use', 'getDefaultLang']);
 		mockTranslateService.onLangChange = new EventEmitter();
 		mockTranslateService.userLang = 'en';

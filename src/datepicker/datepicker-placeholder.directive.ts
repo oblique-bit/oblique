@@ -22,7 +22,7 @@ export class DatepickerPlaceholderDirective implements OnInit, OnDestroy {
 	private ngUnsubscribe: Subject<void> = new Subject<void>();
 
 	constructor(private translateService: TranslateService, elementRef: ElementRef) {
-		this.customPlaceholder = elementRef.nativeElement.getAttribute('placeholder') ;
+		this.customPlaceholder = elementRef.nativeElement.getAttribute('placeholder');
 	}
 
 	ngOnInit() {
@@ -33,7 +33,7 @@ export class DatepickerPlaceholderDirective implements OnInit, OnDestroy {
 				.takeUntil(this.ngUnsubscribe)
 				.subscribe(({lang}) => {
 					this.setPlaceholder(lang);
-			});
+				});
 		} else {
 			this.placeholder = this.customPlaceholder;
 		}

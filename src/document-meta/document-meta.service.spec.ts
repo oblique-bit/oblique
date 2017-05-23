@@ -8,14 +8,14 @@ import {TranslateService} from '@ngx-translate/core';
 describe('DocumentMetaService', () => {
 	let documentMetaService: DocumentMetaService;
 
-	beforeEach(async() => {
+	beforeEach(async () => {
 		const mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use']);
 
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
 			providers: [
 				{provide: TranslateService, useValue: mockTranslateService},
-				DocumentMetaService,
+				DocumentMetaService
 			]
 		});
 	});
