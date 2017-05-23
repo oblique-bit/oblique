@@ -6,11 +6,11 @@ import {UnsavedChangesGuard} from './unsaved-changes.guard';
 import {UnsavedChangesTabDirective} from './unsaved-changes-tab.directive';
 
 @NgModule({
-    imports: [
-        CommonModule
-    ],
-    declarations: [UnsavedChangesDirective, UnsavedChangesTabDirective],
-    exports: [UnsavedChangesDirective, UnsavedChangesTabDirective]
+	imports: [
+		CommonModule
+	],
+	declarations: [UnsavedChangesDirective, UnsavedChangesTabDirective],
+	exports: [UnsavedChangesDirective, UnsavedChangesTabDirective]
 })
 export class UnsavedChangesModule {
 	static forRoot(): ModuleWithProviders {
