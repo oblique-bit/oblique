@@ -23,10 +23,10 @@
 					<ng-template ngbTabTitle>
 						<span>Form One</span>
 						<span class="fa fa-check text-success"
-                              *ngIf="!unsavedChangesService.isFormDirty('tab1')">&nbsp;</span>
-                        <span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"
-                              placement="bottom"
-                              *ngIf="unsavedChangesService.isFormDirty('tab1')">&nbsp;</span>
+							  *ngIf="!unsavedChangesService.isFormDirty('tab1')">&nbsp;</span>
+						<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"
+							  placement="bottom"
+							  *ngIf="unsavedChangesService.isFormDirty('tab1')">&nbsp;</span>
 					</ng-template>
 					<ng-template ngbTabContent>
 						<form class="form-horizontal has-validation" #form1="ngForm" role="form"
