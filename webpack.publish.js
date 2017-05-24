@@ -1,5 +1,5 @@
 module.exports = {
-	entry: './src/index.ts',
+	entry: './src/lib/index.ts',
 	output: {
 		filename: './dist/bundles/oblique-reactive.js',
 		library: 'oblique-reactive',
