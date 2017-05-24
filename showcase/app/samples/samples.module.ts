@@ -50,6 +50,9 @@ import {SchemaValidationComponent} from './schema-validation/schema-validation-s
 	providers: [
 		SampleDataResolver
 	],
+	entryComponents: [
+		UnsavedChangesSampleModalComponent
+	]
 })
 export class SamplesModule {
 }
