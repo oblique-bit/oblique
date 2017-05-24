@@ -9,7 +9,7 @@ import {LayoutManagerSampleComponent} from './layout-manager/layout-manager-samp
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 import {SchemaValidationComponent} from './schema-validation/schema-validation-sample.component';
-import {UnsavedChangesComponent} from './unsaved-changes/unsaved-changes-sample.component';
+import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 
 const samplesRoutes: Routes = [
 	{path: 'datepicker', component: DatepickerSampleComponent},
@@ -40,7 +40,7 @@ const samplesRoutes: Routes = [
 		}
 	}
 	},
-	{path: 'unsaved-changes', component: UnsavedChangesComponent}
+	{path: 'unsaved-changes', component: UnsavedChangesSampleComponent}
 ];
 
 @NgModule({

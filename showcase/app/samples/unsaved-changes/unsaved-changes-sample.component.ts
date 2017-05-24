@@ -8,7 +8,7 @@ import {UnsavedChangesService} from '../../../../src/unsaved-changes/unsaved-cha
 	templateUrl: 'unsaved-changes-sample.component.html',
 	// styleUrls: ['./unsaved-changes.component.css']
 })
-export class UnsavedChangesComponent {
+export class UnsavedChangesSampleComponent {
 	public tabs: {zero: {}, one: {}; two: {}; three: {}, four: {}, five: {}, six: {}};
 
 	constructor(private notificationService: NotificationService, public unsavedChangesService:UnsavedChangesService) {}
