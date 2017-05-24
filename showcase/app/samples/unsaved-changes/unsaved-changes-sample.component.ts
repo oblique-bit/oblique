@@ -9,12 +9,13 @@ import {UnsavedChangesService} from '../../../../src/unsaved-changes/unsaved-cha
 	// styleUrls: ['./unsaved-changes.component.css']
 })
 export class UnsavedChangesComponent {
-	public tabs: {one: {}; two: {}; three: {}, four: {}, five: {}, six: {}};
+	public tabs: {zero: {}, one: {}; two: {}; three: {}, four: {}, five: {}, six: {}};
 
 	constructor(private notificationService: NotificationService, public unsavedChangesService:UnsavedChangesService) {}
 
 	ngOnInit() {
 		this.tabs = {
+			zero: {},
 			one: {},
 			two: {},
 			three: {},
