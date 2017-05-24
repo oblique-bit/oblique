@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {NavigationEnd, Router} from '@angular/router';
 import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {NgbTabChangeEvent, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
@@ -11,8 +12,13 @@ export class UnsavedChangesService {
 	private formList: {[key:string]: ControlContainer} = {};
 	private listener: {[key:string]: Subscriber<NgbTabChangeEvent>} = {};
 
-	constructor(private translateService: TranslateService) {
+	constructor(private translateService: TranslateService, private router: Router) {
 		window.addEventListener('beforeunload', e => this.onUnload(e));
+
+		this.router.events.filter(event => event instanceof NavigationEnd).subscribe(() => {
+			Object.keys(this.listener).forEach(key => this.listener[key].unsubscribe());
+			this.listener = {};
+		});
 	}
 
 	watch(formId: string, form: ControlContainer): void {
@@ -49,8 +55,7 @@ export class UnsavedChangesService {
 	}
 
 	private canDeactivateTab(formId: string): boolean {
-		let form = this.formList[formId];
-		return form && form.dirty ? window.confirm(this.message()) : true;
+		return this.isFormDirty(formId) ? window.confirm(this.message()) : true;
 	}
 
 	private hasPendingChanges(): boolean {
