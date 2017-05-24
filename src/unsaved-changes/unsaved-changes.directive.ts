@@ -17,6 +17,9 @@ export class UnsavedChangesDirective implements OnDestroy, OnInit, AfterContentI
 
 	ngOnInit() {
 		let id = this.ngbTab ? this.ngbTab.id : this.id;
+		if (!id) {
+			throw new Error('orUnsavedChanges directive needs either to be within a NgbTab directive or to have an "id" attribute.');
+		}
 		this.unsavedChangesService.watch(id, this.form);
 	}
 
