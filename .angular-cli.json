@@ -5,27 +5,31 @@
   },
   "apps": [
     {
-      "root": "showcase",
+      "root": "src",
       "outDir": "target",
       "assets": [
-        "assets",
         "favicon.ico",
+        {
+          "glob": "**/*",
+          "input": "./showcase/assets",
+          "output": "./assets"
+        },
         {
           "glob": "**/*",
           "input": "../node_modules/oblique-ui/dist/images",
           "output": "./assets/oblique-ui/images"
         }
       ],
-      "index": "index.html",
-      "main": "main.ts",
-      "polyfills": "polyfills.ts",
+      "index": "showcase/index.html",
+      "main": "showcase/main.ts",
+      "polyfills": "showcase/polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
         "../node_modules/oblique-ui/dist/css/oblique-ui.css",
-        "sass/styles.scss"
+        "showcase/sass/styles.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
@@ -47,10 +51,10 @@
   },
   "lint": [
     {
-      "project": "showcase/tsconfig.app.json"
+      "project": "src/tsconfig.app.json"
     },
     {
-      "project": "showcase/tsconfig.spec.json"
+      "project": "src/tsconfig.spec.json"
     },
     {
       "project": "e2e/tsconfig.e2e.json"

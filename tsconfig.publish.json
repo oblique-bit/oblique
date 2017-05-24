@@ -9,13 +9,13 @@
     "baseUrl": ".",
     "stripInternal": true,
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "./src/lib/",
     "sourceMap": true,
     "inlineSources": true,
     "skipLibCheck": true
   },
   "files": [
-    "src/index.ts"
+    "src/lib/index.ts"
   ],
   "angularCompilerOptions": {
     "strictMetadataEmit": true,
