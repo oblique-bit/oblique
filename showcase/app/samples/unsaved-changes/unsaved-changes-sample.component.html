@@ -58,12 +58,15 @@
 												   [(ngModel)]="tabs.one.integer"/>
 										</div>
 									</div>
-									<!--<div class="form-group row">-->
-									<!--<label class="col-sm-4 control-label">Date</label>-->
-									<!--<div class="col-sm-4">-->
-									<!--<date-picker name="date" [(ngModel)]="tabs.one.date"></date-picker>-->
-									<!--</div>-->
-									<!--</div>-->
+									<div class="form-group row">
+										<label class="col-sm-4 control-label">Date</label>
+										<div class="col-sm-8">
+											<or-date-picker>
+												<input class="form-control"
+													   name="date" [(ngModel)]="tabs.one.date" ngbDatepicker>
+											</or-date-picker>
+										</div>
+									</div>
 									<div class="row">
 										<label class="col-sm-4 control-label">Model data</label>
 										<div class="col-sm-8">
@@ -104,12 +107,15 @@
 												   [(ngModel)]="tabs.two.integer"/>
 										</div>
 									</div>
-									<!--<div class="form-group row">-->
-									<!--<label class="col-sm-4 control-label">Date</label>-->
-									<!--<div class="col-sm-4">-->
-									<!--<date-picker name="date" [(ngModel)]="tabs.two.date"></date-picker>-->
-									<!--</div>-->
-									<!--</div>-->
+									<div class="form-group row">
+										<label class="col-sm-4 control-label">Date</label>
+										<div class="col-sm-8">
+											<or-date-picker>
+												<input class="form-control"
+													   name="date" [(ngModel)]="tabs.two.date" ngbDatepicker>
+											</or-date-picker>
+										</div>
+									</div>
 									<div class="row">
 										<label class="col-sm-4 control-label">Model data</label>
 										<div class="col-sm-8">
@@ -157,12 +163,15 @@
 												   [(ngModel)]="tabs.three.integer"/>
 										</div>
 									</div>
-									<!--<div class="form-group row">-->
-									<!--<label class="col-sm-4 control-label">Date</label>-->
-									<!--<div class="col-sm-4">-->
-									<!--<date-picker name="date" [(ngModel)]="tabs.three.date"></date-picker>-->
-									<!--</div>-->
-									<!--</div>-->
+									<div class="form-group row">
+										<label class="col-sm-4 control-label">Date</label>
+										<div class="col-sm-8">
+											<or-date-picker>
+												<input class="form-control"
+													   name="date" [(ngModel)]="tabs.three.date" ngbDatepicker>
+											</or-date-picker>
+										</div>
+									</div>
 									<div class="row">
 										<label class="col-sm-4 control-label">Model data</label>
 										<div class="col-sm-8">
@@ -196,7 +205,7 @@
 					<div class="clearfix"></div>
 				</div>
 				<div class="card-block">
-					<form class="form-horizontal has-validation" #form0="ngForm" role="form" orUnsavedChanges>
+					<form class="form-horizontal has-validation" id="formZero" #form0="ngForm" role="form" orUnsavedChanges>
 						<div class="form-group row">
 							<label for="form0.text" class="col-sm-4 control-label">Text</label>
 							<div class="col-sm-8">
@@ -222,12 +231,15 @@
 									   [(ngModel)]="tabs.zero.integer"/>
 							</div>
 						</div>
-						<!--<div class="form-group row">-->
-						<!--<label class="col-sm-4 control-label">Date</label>-->
-						<!--<div class="col-sm-4">-->
-						<!--<date-picker name="date" [(ngModel)]="tabs.zero.date"></date-picker>-->
-						<!--</div>-->
-						<!--</div>-->
+						<div class="form-group row">
+							<label class="col-sm-4 control-label">Date</label>
+							<div class="col-sm-8">
+								<or-date-picker>
+									<input class="form-control"
+										   name="date" [(ngModel)]="tabs.zero.date" ngbDatepicker>
+								</or-date-picker>
+							</div>
+						</div>
 						<div class="row">
 							<label class="col-sm-4 control-label">Model data</label>
 							<div class="col-sm-8">
@@ -292,12 +304,15 @@
 												   [(ngModel)]="tabs.four.integer"/>
 										</div>
 									</div>
-									<!--<div class="form-group row">-->
-									<!--<label class="col-sm-4 control-label">Date</label>-->
-									<!--<div class="col-sm-4">-->
-									<!--<date-picker name="date" [(ngModel)]="tabs.one.date"></date-picker>-->
-									<!--</div>-->
-									<!--</div>-->
+									<div class="form-group row">
+										<label class="col-sm-4 control-label">Date</label>
+										<div class="col-sm-8">
+											<or-date-picker>
+												<input class="form-control"
+													   name="date" [(ngModel)]="tabs.four.date" ngbDatepicker>
+											</or-date-picker>
+										</div>
+									</div>
 									<div class="row">
 										<label class="col-sm-4 control-label">Model data</label>
 										<div class="col-sm-8">
@@ -332,12 +347,15 @@
 												   [(ngModel)]="tabs.five.integer"/>
 										</div>
 									</div>
-									<!--<div class="form-group row">-->
-									<!--<label class="col-sm-4 control-label">Date</label>-->
-									<!--<div class="col-sm-4">-->
-									<!--<date-picker name="date" [(ngModel)]="tabs.two.date"></date-picker>-->
-									<!--</div>-->
-									<!--</div>-->
+									<div class="form-group row">
+										<label class="col-sm-4 control-label">Date</label>
+										<div class="col-sm-8">
+											<or-date-picker>
+												<input class="form-control"
+													   name="date" [(ngModel)]="tabs.five.date" ngbDatepicker>
+											</or-date-picker>
+										</div>
+									</div>
 									<div class="row">
 										<label class="col-sm-4 control-label">Model data</label>
 										<div class="col-sm-8">
@@ -379,12 +397,15 @@
 												   [(ngModel)]="tabs.six.integer"/>
 										</div>
 									</div>
-									<!--<div class="form-group row">-->
-									<!--<label class="col-sm-4 control-label">Date</label>-->
-									<!--<div class="col-sm-4">-->
-									<!--<date-picker name="date" [(ngModel)]="tabs.three.date"></date-picker>-->
-									<!--</div>-->
-									<!--</div>-->
+									<div class="form-group row">
+										<label class="col-sm-4 control-label">Date</label>
+										<div class="col-sm-8">
+											<or-date-picker>
+												<input class="form-control"
+													   name="date" [(ngModel)]="tabs.six.date" ngbDatepicker>
+											</or-date-picker>
+										</div>
+									</div>
 									<div class="row">
 										<label class="col-sm-4 control-label">Model data</label>
 										<div class="col-sm-8">
@@ -395,6 +416,12 @@
 							</ng-template>
 						</ngb-tab>
 					</ngb-tabset>
+					<div class="row">
+						<label class="col-sm-4 control-label">Complete form model data</label>
+						<div class="col-sm-8">
+							<pre>{{parentForm.value | json}}</pre>
+						</div>
+					</div>
 				</div>
 				<div class="card-footer">
 					<div class="form-actions">
@@ -412,6 +439,10 @@
 					<h3 class="card-title">Preview with modals</h3>
 				</div>
 				<div class="card-block">
+					<div class="callout callout-danger">
+						<span class="sr-only">Error</span>
+						<h4>Not implemented yet</h4>
+					</div>
 					<button class="btn btn-default">Open a modal in a new state</button>
 					<button class="btn btn-default" (click)="modal()">Open a modal in current state</button>
 				</div>
