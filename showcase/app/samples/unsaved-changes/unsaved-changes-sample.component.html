@@ -8,28 +8,25 @@
 		<div class="card-header">
 			<h3 class="card-title pull-left">Preview with 1 form per tab</h3>
 			<div class="pull-right">
-				<!--<span class="fa fa-check text-success"
+				<span class="fa fa-check text-success"
 					  ngbTooltip="Form does not contain unsaved changes" placement="bottom"
-					  *ngIf="!form1.form.dirty && !form2.form.dirty && !form3.form.dirty"></span>
+					  *ngIf="!unsavedChangesService.isFormDirty('tab1') && !unsavedChangesService.isFormDirty('tab2') && !unsavedChangesService.isFormDirty('tab3')"></span>
 				<span class="fa fa-warning text-warning"
 					  ngbTooltip="Form contains unsaved changes" placement="bottom"
-					  *ngIf="form1.form.dirty || form2.form.dirty || form3.form.dirty"></span>-->
+					  *ngIf="unsavedChangesService.isFormDirty('tab1') || unsavedChangesService.isFormDirty('tab2') || unsavedChangesService.isFormDirty('tab3')"></span>
 			</div>
 			<div class="clearfix"></div>
 		</div>
 		<div class="card-block">
 			<ngb-tabset>
-				<ngb-tab>
+				<ngb-tab id="tab1">
 					<ng-template ngbTabTitle>
 						<span>Form One</span>
-						<!--<span class="fa fa-check text-success"
-                              *ngIf="!form1.form.dirty">&nbsp;</span>
+						<span class="fa fa-check text-success"
+                              *ngIf="!unsavedChangesService.isFormDirty('tab1')">&nbsp;</span>
                         <span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"
                               placement="bottom"
-                              *ngIf="form1.form.dirty">&nbsp;</span>
-                        <span class="fa fa-warning text-danger" ngbTooltip="Form tab contains invalid fields"
-                              placement="bottom"
-                              *ngIf="form1.form.invalid">&nbsp;</span>-->
+                              *ngIf="unsavedChangesService.isFormDirty('tab1')">&nbsp;</span>
 					</ng-template>
 					<ng-template ngbTabContent>
 						<form class="form-horizontal has-validation" #form1="ngForm" role="form"
@@ -124,17 +121,14 @@
 						</form>
 					</ng-template>
 				</ngb-tab>
-				<ngb-tab>
+				<ngb-tab id="tab3">
 					<ng-template ngbTabTitle>
 						<span>Form Three</span>
-						<!--<span class="fa fa-check text-success"-->
-						<!--*ngIf="!form3.form.dirty">&nbsp;</span>-->
-						<!--<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"-->
-						<!--placement="bottom"-->
-						<!--*ngIf="form3.form.dirty">&nbsp;</span>-->
-						<!--<span class="fa fa-warning text-danger" ngbTooltip="Form tab contains invalid fields"-->
-						<!--placement="bottom"-->
-						<!--*ngIf="form3.form.invalid">&nbsp;</span>-->
+						<span class="fa fa-check text-success"
+							  *ngIf="!unsavedChangesService.isFormDirty('tab3')">&nbsp;</span>
+						<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"
+							  placement="bottom"
+							  *ngIf="unsavedChangesService.isFormDirty('tab3')">&nbsp;</span>
 					</ng-template>
 					<ng-template ngbTabContent>
 						<form class="form-horizontal has-validation" #form3="ngForm" role="form"
@@ -201,17 +195,14 @@
 				</div>
 				<div class="card-block">
 					<ngb-tabset>
-						<ngb-tab>
+						<ngb-tab id="tab4">
 							<ng-template ngbTabTitle>
 								<span>Form Four</span>
-								<!--<span class="fa fa-check text-success"-->
-								<!--*ngIf="!form4.dirty">&nbsp;</span>-->
-								<!--<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"-->
-								<!--placement="bottom"-->
-								<!--*ngIf="form4.dirty">&nbsp;</span>-->
-								<!--<span class="fa fa-warning text-danger" ngbTooltip="Form tab contains invalid fields"-->
-								<!--placement="bottom"-->
-								<!--*ngIf="form4.invalid">&nbsp;</span>-->
+								<span class="fa fa-check text-success"
+									  *ngIf="!unsavedChangesService.isFormDirty('tab4')">&nbsp;</span>
+								<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"
+									  placement="bottom"
+									  *ngIf="unsavedChangesService.isFormDirty('tab4')">&nbsp;</span>
 							</ng-template>
 							<ng-template ngbTabContent>
 								<fieldset ngModelGroup="form4" #form4="ngModelGroup" orUnsavedChanges>
@@ -295,17 +286,14 @@
 								</fieldset>
 							</ng-template>
 						</ngb-tab>
-						<ngb-tab>
+						<ngb-tab id="tab6">
 							<ng-template ngbTabTitle>
 								<span>Form Six</span>
-								<!--<span class="fa fa-check text-success"-->
-								<!--*ngIf="!form6.dirty">&nbsp;</span>-->
-								<!--<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"-->
-								<!--placement="bottom"-->
-								<!--*ngIf="form6.dirty">&nbsp;</span>-->
-								<!--<span class="fa fa-warning text-danger" ngbTooltip="Form tab contains invalid fields"-->
-								<!--placement="bottom"-->
-								<!--*ngIf="form6.invalid">&nbsp;</span>-->
+								<span class="fa fa-check text-success"
+									  *ngIf="!unsavedChangesService.isFormDirty('tab6')">&nbsp;</span>
+								<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"
+									  placement="bottom"
+									  *ngIf="unsavedChangesService.isFormDirty('tab6')">&nbsp;</span>
 							</ng-template>
 							<ng-template ngbTabContent>
 								<fieldset ngModelGroup="form6" #form6="ngModelGroup" orUnsavedChanges>

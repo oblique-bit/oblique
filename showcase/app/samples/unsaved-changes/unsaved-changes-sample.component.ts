@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {NotificationService} from '../../../../src/notification/notification.service';
+import {UnsavedChangesService} from '../../../../src/unsaved-changes/unsaved-changes.service';
 
 @Component({
 	selector: 'app-unsaved-changes',
@@ -10,7 +11,7 @@ import {NotificationService} from '../../../../src/notification/notification.ser
 export class UnsavedChangesComponent {
 	public tabs: {one: {}; two: {}; three: {}, four: {}, five: {}, six: {}};
 
-	constructor(private notificationService: NotificationService) {}
+	constructor(private notificationService: NotificationService, public unsavedChangesService:UnsavedChangesService) {}
 
 	ngOnInit() {
 		this.tabs = {

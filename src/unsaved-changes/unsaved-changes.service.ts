@@ -32,6 +32,11 @@ export class UnsavedChangesService {
 			});
 	}
 
+	isFormDirty(formId: string): boolean {
+		let form = this.formList[formId];
+		return form && form.dirty;
+	}
+
 	private onUnload(event: BeforeUnloadEvent) {
 		if (this.hasPendingChanges()) {
 			const confirmationMessage = this.message();
