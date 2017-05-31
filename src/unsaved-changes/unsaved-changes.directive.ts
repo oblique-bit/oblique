@@ -33,5 +33,6 @@ export class UnsavedChangesDirective implements OnDestroy, OnInit, AfterContentI
 	ngOnDestroy() {
 		let id = this.ngbTab ? this.ngbTab.id : this.id;
 		this.unsavedChangesService.unWatch(id);
+		this.unsavedChangesService.unListenTo(this.ngbTabset);
 	}
 }

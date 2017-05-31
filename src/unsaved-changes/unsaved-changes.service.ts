@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
-import {NavigationEnd, Router} from '@angular/router';
 import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {NgbTabChangeEvent, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
 import {Subscriber} from 'rxjs/Subscriber';
-import 'rxjs/add/operator/filter';
 
 //TODO: Handle modals
 @Injectable()
@@ -12,13 +10,8 @@ export class UnsavedChangesService {
 	private formList: {[key:string]: ControlContainer} = {};
 	private listener: {[key:string]: Subscriber<NgbTabChangeEvent>} = {};
 
-	constructor(private translateService: TranslateService, private router: Router) {
+	constructor(private translateService: TranslateService) {
 		window.addEventListener('beforeunload', e => this.onUnload(e));
-
-		this.router.events.filter(event => event instanceof NavigationEnd).subscribe(() => {
-			Object.keys(this.listener).forEach(key => this.listener[key].unsubscribe());
-			this.listener = {};
-		});
 	}
 
 	watch(formId: string, form: ControlContainer): void {
@@ -29,13 +22,22 @@ export class UnsavedChangesService {
 		delete this.formList[formId];
 	}
 
-	listenTo(ngbTabset: NgbTabset) {
+	listenTo(ngbTabset: NgbTabset): void {
 		let id = ngbTabset.tabs.first.id;
-		if (!this.listener[id])
+		if (!this.listener[id]) {
 			this.listener[id] = ngbTabset.tabChange.subscribe((event: NgbTabChangeEvent): void => {
-				if (!this.canDeactivateTab(event.activeId))
+				if (!this.canDeactivateTab(event.activeId)) {
 					event.preventDefault();
+				}
 			});
+		}
+	}
+
+	unListenTo(ngbTabset: NgbTabset): void {
+		let id = ngbTabset.tabs.first.id;
+		if (this.listener[id]) {
+			this.listener[id].unsubscribe();
+		}
 	}
 
 	isFormDirty(formId: string): boolean {
