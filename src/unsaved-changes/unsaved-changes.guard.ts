@@ -9,11 +9,9 @@ export class UnsavedChangesGuard implements CanDeactivate<any> {
 	//      If this Issue: https://github.com/angular/angular/issues/11836  is resolved, we can rewrite it
 
 	constructor(private unsavedChangesService: UnsavedChangesService) {
-
 	}
 
-	canDeactivate() {
-		return true;
-		// return this.unsavedChangesService.canDeactivate();
+	canDeactivate(): boolean {
+		return this.unsavedChangesService.canDeactivate();
 	}
 }

@@ -45,6 +45,10 @@ export class UnsavedChangesService {
 		return form && form.dirty;
 	}
 
+	canDeactivate(): boolean {
+		return this.hasPendingChanges();
+	}
+
 	private onUnload(event: BeforeUnloadEvent) {
 		if (this.hasPendingChanges()) {
 			const confirmationMessage = this.message();
