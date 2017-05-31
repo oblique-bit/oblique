@@ -33,15 +33,12 @@ let del = require('del'),
 	},
 	paths = {
 		src: 'src/',
-		sass: 'src/sass/',
-		partials: 'src/partials/',
-		showcase: 'showcase/',
+		lib: 'src/lib/',
+		sass: 'src/lib/sass/',
+		partials: 'src/lib/partials/',
+		showcase: 'src/showcase/',
 		dist: 'dist/'
 	},
-
-	// ObliqueUI custom tasks:
-	//obliqueTasks = require('./index').tasks,
-	//obliqueHtml = obliqueTasks.html,
 
 	// TODO: remove run-sequence when gulp 4 is out
 	runSequence = require('run-sequence');
@@ -55,18 +52,9 @@ function webpackCallBack(taskName, gulpDone) {
 	};
 }
 
-gulp.task('build', (done) => {
-	runSequence('clean', 'lint', 'test', done);
-});
-
-gulp.task('clean', () => {
-	return del(paths.dist);
-});
-
 gulp.task('lint', () => {
 	return gulp.src([
-		paths.src + '**/*.ts',
-		paths.showcase + '**/*.ts'
+		paths.src + '**/*.ts'
 	])
 		.pipe(tslint(<any>{formatter: 'prose'}))
 		.pipe(tslint.report({summarizeFailureOutput: true}));
@@ -83,7 +71,7 @@ gulp.task('build-templates', () => {
 			partials: [
 				'node_modules/oblique-ui/templates/layouts/**/*.hbs',
 				'node_modules/oblique-ui/templates/partials/**/*.hbs',
-				'src/partials/*.hbs',
+				'src/lib/partials/*.hbs',
 				paths.showcase + 'partials/*.hbs'
 			],
 			helpers: [
@@ -101,18 +89,6 @@ gulp.task('build-templates', () => {
 		}))
 		.pipe(rename({extname: '.html'}))
 		.pipe(gulp.dest(paths.showcase));
-});
-
-gulp.task('test', (done) => {
-	// TODO: start PhantomJS on Jenkins and Chrome locally
-	exec(`"node_modules/.bin/karma" start ${__dirname}/karma.conf.js --single-run`, {maxBuffer: 1024 * 20000}, (err, stdout) => {
-		gutil.log(stdout);
-		if (err) {
-			throw new Error('There are test failures:' + err);
-		} else {
-			done();
-		}
-	});
 });
 
 //<editor-fold desc="Deployment tasks">
@@ -165,7 +141,7 @@ gulp.task('dist-copy', () => {
 	return gulp.src([
 		paths.sass + '**/*',
 		paths.partials + '**/*'
-	], {base: paths.src})
+	], {base: paths.lib})
 		.pipe(gulp.dest(paths.dist));
 });
 
