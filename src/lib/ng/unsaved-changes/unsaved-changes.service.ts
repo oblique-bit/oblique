@@ -46,7 +46,7 @@ export class UnsavedChangesService {
 	}
 
 	canDeactivate(): boolean {
-		return this.hasPendingChanges();
+		return !this.hasPendingChanges();
 	}
 
 	private onUnload(event: BeforeUnloadEvent) {

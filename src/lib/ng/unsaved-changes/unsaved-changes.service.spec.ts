@@ -2,12 +2,15 @@ import {TestBed, inject} from '@angular/core/testing';
 import {UnsavedChangesService} from './unsaved-changes.service';
 import {TranslateService} from '@ngx-translate/core';
 import {ControlContainer} from '@angular/forms';
+import {NgbTabChangeEvent, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
+import {EventEmitter} from '@angular/core';
+import {RouterTestingModule} from '@angular/router/testing';
 
-
-describe('UnsavedChangesService', () => {
+fdescribe('UnsavedChangesService', () => {
 	let unsavedChangesService: UnsavedChangesService;
 	beforeEach(() => {
 		TestBed.configureTestingModule({
+			imports: [RouterTestingModule],
 			providers: [
 				UnsavedChangesService,
 				{
@@ -32,102 +35,100 @@ describe('UnsavedChangesService', () => {
 		expect(window.addEventListener).toHaveBeenCalled();
 		//TODO: does not work
 		//expect(window.addEventListener).toHaveBeenCalledWith('beforeUnload', jasmine.any(Function));
+	});
 
+	describe('isFormDirty()', () => {
+		it('should return true, if the form is dirty', () => {
+			const form: ControlContainer = {dirty: true} as ControlContainer;
+			unsavedChangesService.watch('test', form);
+			expect(unsavedChangesService.isFormDirty('test')).toBeTruthy();
+		});
+
+		it('should return false, if the form is not dirty', () => {
+			const form: ControlContainer = {dirty: false} as ControlContainer;
+			unsavedChangesService.watch('test', form);
+			expect(unsavedChangesService.isFormDirty('test')).toBeFalsy();
+		});
+	});
+
+	describe('listenTo()', () => {
+		let evtEmitter: EventEmitter<NgbTabChangeEvent>;
+		let evt: NgbTabChangeEvent;
+		let tabSet: NgbTabset;
+
+		beforeEach(() => {
+			evtEmitter = new EventEmitter<NgbTabChangeEvent>();
+			evt = {
+				activeId: 'tab_1',
+				nextId: '',
+				preventDefault: jasmine.createSpy('preventDefault')
+			};
+			tabSet = {
+				tabs: {first: {id: 'tab_1'}, last: {id: 'tab_2'}, length: 2},
+				select: (id) => {
+					evt.nextId = id;
+					evtEmitter.emit(evt);
+				},
+				tabChange: evtEmitter
+			} as NgbTabset;
+		});
+
+		it('should neither ask for confirmation nor prevent default, if no form is watched', () => {
+			spyOn(window, 'confirm');
+			unsavedChangesService.listenTo(tabSet);
+			tabSet.select('tab_2');
+			expect(window.confirm).not.toHaveBeenCalled();
+			expect(evt.preventDefault).not.toHaveBeenCalled();
+		});
+
+		it('should neither ask for confirmation nor prevent default, if the form is not dirty', () => {
+			spyOn(window, 'confirm');
+			const form: ControlContainer = {dirty: false} as ControlContainer;
+			unsavedChangesService.watch('tab_1', form);
+			unsavedChangesService.listenTo(tabSet);
+			tabSet.select('tab_2');
+			expect(window.confirm).not.toHaveBeenCalled();
+			expect(evt.preventDefault).not.toHaveBeenCalled();
+		});
+
+		describe('with dirty form', () => {
+			beforeEach(() => {
+				const form: ControlContainer = {dirty: true} as ControlContainer;
+				unsavedChangesService.watch('tab_1', form);
+				unsavedChangesService.listenTo(tabSet);
+			});
+
+			it('should ask for confirmation, if the form is dirty', () => {
+				spyOn(window, 'confirm');
+				tabSet.select('tab_2');
+				expect(window.confirm).toHaveBeenCalled();
+			});
+
+			it('should not prevent default, if confirmed', () => {
+				spyOn(window, 'confirm').and.callFake(() => true);
+				tabSet.select('tab_2');
+				expect(evt.preventDefault).not.toHaveBeenCalled();
+			});
+
+			it('should prevent default, if not confirmed', () => {
+				spyOn(window, 'confirm').and.callFake(() => false);
+				tabSet.select('tab_2');
+				expect(evt.preventDefault).toHaveBeenCalled();
+			});
+		});
 	});
 
 	describe('canDeactivate()', () => {
-		beforeEach(() => {
-			spyOn(window, 'confirm').and.callFake(() => true);
-		});
-
-		it('should return true, if no form is watched', () => {
-			expect(unsavedChangesService.canDeactivate()).toBeTruthy();
-		});
-
-		it('should open confirmation dialog, if form is dirty', () => {
-			const form: ControlContainer = {dirty: true} as ControlContainer;
-
-			unsavedChangesService.canDeactivate(form);
-
-			expect(window.confirm).toHaveBeenCalled();
-		});
-
-		it('shouldn\'t open confirmation dialog, if form isn\'t dirty', () => {
+		it('should return true, if no form is dirty', () => {
 			const form: ControlContainer = {dirty: false} as ControlContainer;
-
-			unsavedChangesService.canDeactivate(form);
-
-			expect(window.confirm).not.toHaveBeenCalled();
+			unsavedChangesService.watch('tab_1', form);
+			expect(unsavedChangesService.canDeactivate()).toBe(true);
 		});
 
-		it('should open confirmation dialog, if watched form is dirty', () => {
+		it('should return false, if a form is dirty', () => {
 			const form: ControlContainer = {dirty: true} as ControlContainer;
-
-			unsavedChangesService.watch(form);
-			unsavedChangesService.canDeactivate();
-
-			expect(window.confirm).toHaveBeenCalled();
-		});
-
-		it('shouldn\'t open confirmation dialog, if watched form isn\'t dirty', () => {
-			const form: ControlContainer = {dirty: false} as ControlContainer;
-
-			unsavedChangesService.watch(form);
-			unsavedChangesService.canDeactivate();
-
-			expect(window.confirm).not.toHaveBeenCalled();
-		});
-
-		it('should open confirmation dialog, if one watched form is dirty', () => {
-			unsavedChangesService.watch({dirty: false} as ControlContainer);
-			unsavedChangesService.watch({dirty: false} as ControlContainer);
-			unsavedChangesService.watch({dirty: true} as ControlContainer);
-
-			unsavedChangesService.canDeactivate();
-
-			expect(window.confirm).toHaveBeenCalled();
-		});
-
-		it('shouldn\'t open confirmation dialog, if none of the watched forms is dirty', () => {
-			unsavedChangesService.watch({dirty: false} as ControlContainer);
-			unsavedChangesService.watch({dirty: false} as ControlContainer);
-			unsavedChangesService.watch({dirty: false} as ControlContainer);
-
-			unsavedChangesService.canDeactivate();
-
-			expect(window.confirm).not.toHaveBeenCalled();
-		});
-	});
-
-	describe('onUnload()', () => {
-		let event: BeforeUnloadEvent;
-
-		beforeEach(() => {
-			event = {} as BeforeUnloadEvent;
-		});
-
-		it('should return null, if no form is watched', () => {
-			expect(unsavedChangesService.onUnload(event)).toBeNull();
-		});
-
-		it('should return string, if one watched form is dirty', () => {
-			unsavedChangesService.watch({dirty: true} as ControlContainer);
-
-			expect(unsavedChangesService.onUnload(event)).toEqual(jasmine.any(String));
-		});
-
-		it('should set a string to event.returnValue, if one watched form is dirty', () => {
-			unsavedChangesService.watch({dirty: true} as ControlContainer);
-
-			unsavedChangesService.onUnload(event);
-
-			expect(event.returnValue).toEqual(jasmine.any(String));
-		});
-
-		it('should return null, if watched form isn\'t dirty', () => {
-			unsavedChangesService.watch({dirty: false} as ControlContainer);
-
-			expect(unsavedChangesService.onUnload(event)).toBeNull();
+			unsavedChangesService.watch('tab_1', form);
+			expect(unsavedChangesService.canDeactivate()).toBe(false);
 		});
 	});
 });
