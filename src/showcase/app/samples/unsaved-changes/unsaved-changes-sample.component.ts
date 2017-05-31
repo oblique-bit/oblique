@@ -11,14 +11,14 @@ import {UnsavedChangesSampleModalComponent} from './unsaved-changes-sample-modal
 	// styleUrls: ['./unsaved-changes.component.css']
 })
 export class UnsavedChangesSampleComponent implements OnInit {
-	public tabs: {zero: {}, one: {}; two: {}; three: {}, four: {}, five: {}, six: {}};
+	public tabModels: {zero: {}, one: {}; two: {}; three: {}, four: {}, five: {}, six: {}};
 
 	constructor(private notificationService: NotificationService,
 				private modalService: NgbModal,
 				public unsavedChangesService:UnsavedChangesService) {}
 
 	ngOnInit() {
-		this.tabs = {
+		this.tabModels = {
 			zero: {},
 			one: {},
 			two: {},

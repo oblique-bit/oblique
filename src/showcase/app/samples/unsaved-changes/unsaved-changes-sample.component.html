@@ -46,7 +46,7 @@
 										<div class="col-sm-8">
 											<input name="number" #number="ngModel" type="number" class="form-control"
 												   id="form1.number"
-												   [(ngModel)]="tabs.one.number"
+												   [(ngModel)]="tabModels.one.number"
 												   number-format/>
 										</div>
 									</div>
@@ -55,7 +55,7 @@
 										<div class="col-sm-8">
 											<input name="integer" #integer="ngModel" type="number" class="form-control"
 												   id="form1.integer"
-												   [(ngModel)]="tabs.one.integer"/>
+												   [(ngModel)]="tabModels.one.integer"/>
 										</div>
 									</div>
 									<div class="form-group row">
@@ -63,14 +63,14 @@
 										<div class="col-sm-8">
 											<or-date-picker>
 												<input class="form-control"
-													   name="date" [(ngModel)]="tabs.one.date" ngbDatepicker>
+													   name="date" [(ngModel)]="tabModels.one.date" ngbDatepicker>
 											</or-date-picker>
 										</div>
 									</div>
 									<div class="row">
 										<label class="col-sm-4 control-label">Model data</label>
 										<div class="col-sm-8">
-											<pre>{{tabs.one | json}}</pre>
+											<pre>{{tabModels.one | json}}</pre>
 										</div>
 									</div>
 									<div class="form-actions">
@@ -89,14 +89,14 @@
 										<label for="form2.text" class="col-sm-4 control-label">Text</label>
 										<div class="col-sm-8">
 											<input name="text" type="text" class="form-control" id="form2.text"
-												   [(ngModel)]="tabs.two.text"/>
+												   [(ngModel)]="tabModels.two.text"/>
 										</div>
 									</div>
 									<div class="form-group row">
 										<label for="form2.number" class="col-sm-4 control-label">Number</label>
 										<div class="col-sm-8">
 											<input name="number" type="text" class="form-control" id="form2.number"
-												   [(ngModel)]="tabs.two.number"
+												   [(ngModel)]="tabModels.two.number"
 												   number-format/>
 										</div>
 									</div>
@@ -104,7 +104,7 @@
 										<label for="form2.integer" class="col-sm-4 control-label">Integer</label>
 										<div class="col-sm-8">
 											<input name="integer" type="number" class="form-control" id="form2.integer"
-												   [(ngModel)]="tabs.two.integer"/>
+												   [(ngModel)]="tabModels.two.integer"/>
 										</div>
 									</div>
 									<div class="form-group row">
@@ -112,14 +112,14 @@
 										<div class="col-sm-8">
 											<or-date-picker>
 												<input class="form-control"
-													   name="date" [(ngModel)]="tabs.two.date" ngbDatepicker>
+													   name="date" [(ngModel)]="tabModels.two.date" ngbDatepicker>
 											</or-date-picker>
 										</div>
 									</div>
 									<div class="row">
 										<label class="col-sm-4 control-label">Model data</label>
 										<div class="col-sm-8">
-											<pre>{{tabs.two | json}}</pre>
+											<pre>{{tabModels.two | json}}</pre>
 										</div>
 									</div>
 									<div class="form-actions">
@@ -146,21 +146,21 @@
 										<label for="form3.text" class="col-sm-4 control-label">Text</label>
 										<div class="col-sm-8">
 											<input name="text" type="text" class="form-control" id="form3.text"
-												   [(ngModel)]="tabs.three.text"/>
+												   [(ngModel)]="tabModels.three.text"/>
 										</div>
 									</div>
 									<div class="form-group row">
 										<label for="form3.number" class="col-sm-4 control-label">Number</label>
 										<div class="col-sm-8">
 											<input name="number" type="text" class="form-control" id="form3.number"
-												   [(ngModel)]="tabs.three.number" number-format/>
+												   [(ngModel)]="tabModels.three.number" number-format/>
 										</div>
 									</div>
 									<div class="form-group row">
 										<label for="form3.integer" class="col-sm-4 control-label">Integer</label>
 										<div class="col-sm-8">
 											<input name="integer" type="number" class="form-control" id="form3.integer"
-												   [(ngModel)]="tabs.three.integer"/>
+												   [(ngModel)]="tabModels.three.integer"/>
 										</div>
 									</div>
 									<div class="form-group row">
@@ -168,14 +168,14 @@
 										<div class="col-sm-8">
 											<or-date-picker>
 												<input class="form-control"
-													   name="date" [(ngModel)]="tabs.three.date" ngbDatepicker>
+													   name="date" [(ngModel)]="tabModels.three.date" ngbDatepicker>
 											</or-date-picker>
 										</div>
 									</div>
 									<div class="row">
 										<label class="col-sm-4 control-label">Model data</label>
 										<div class="col-sm-8">
-											<pre>{{tabs.three | json}}</pre>
+											<pre>{{tabModels.three | json}}</pre>
 										</div>
 									</div>
 									<div class="form-actions">
@@ -211,7 +211,7 @@
 							<div class="col-sm-8">
 								<input name="text" #text="ngModel" type="text" class="form-control"
 									   id="form0.text"
-									   [(ngModel)]="tabs.zero.text"/>
+									   [(ngModel)]="tabModels.zero.text"/>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -219,7 +219,7 @@
 							<div class="col-sm-8">
 								<input name="number" #number="ngModel" type="number" class="form-control"
 									   id="form0.number"
-									   [(ngModel)]="tabs.zero.number"
+									   [(ngModel)]="tabModels.zero.number"
 									   number-format/>
 							</div>
 						</div>
@@ -228,7 +228,7 @@
 							<div class="col-sm-8">
 								<input name="integer" #integer="ngModel" type="number" class="form-control"
 									   id="form0.integer"
-									   [(ngModel)]="tabs.zero.integer"/>
+									   [(ngModel)]="tabModels.zero.integer"/>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -236,7 +236,7 @@
 							<div class="col-sm-8">
 								<or-date-picker>
 									<input class="form-control"
-										   name="date" [(ngModel)]="tabs.zero.date" ngbDatepicker>
+										   name="date" [(ngModel)]="tabModels.zero.date" ngbDatepicker>
 								</or-date-picker>
 							</div>
 						</div>
@@ -284,7 +284,7 @@
 										<div class="col-sm-8">
 											<input name="text" #text="ngModel" type="text" class="form-control"
 												   id="form4.text"
-												   [(ngModel)]="tabs.four.text"/>
+												   [(ngModel)]="tabModels.four.text"/>
 										</div>
 									</div>
 									<div class="form-group row">
@@ -292,7 +292,7 @@
 										<div class="col-sm-8">
 											<input name="number" #number="ngModel" type="number" class="form-control"
 												   id="form4.number"
-												   [(ngModel)]="tabs.four.number"
+												   [(ngModel)]="tabModels.four.number"
 												   number-format/>
 										</div>
 									</div>
@@ -301,7 +301,7 @@
 										<div class="col-sm-8">
 											<input name="integer" #integer="ngModel" type="number" class="form-control"
 												   id="form4.integer"
-												   [(ngModel)]="tabs.four.integer"/>
+												   [(ngModel)]="tabModels.four.integer"/>
 										</div>
 									</div>
 									<div class="form-group row">
@@ -309,7 +309,7 @@
 										<div class="col-sm-8">
 											<or-date-picker>
 												<input class="form-control"
-													   name="date" [(ngModel)]="tabs.four.date" ngbDatepicker>
+													   name="date" [(ngModel)]="tabModels.four.date" ngbDatepicker>
 											</or-date-picker>
 										</div>
 									</div>
@@ -329,14 +329,14 @@
 										<label for="form5.text" class="col-sm-4 control-label">Text</label>
 										<div class="col-sm-8">
 											<input name="text" type="text" class="form-control" id="form5.text"
-												   [(ngModel)]="tabs.five.text"/>
+												   [(ngModel)]="tabModels.five.text"/>
 										</div>
 									</div>
 									<div class="form-group row">
 										<label for="form5.number" class="col-sm-4 control-label">Number</label>
 										<div class="col-sm-8">
 											<input name="number" type="text" class="form-control" id="form5.number"
-												   [(ngModel)]="tabs.five.number"
+												   [(ngModel)]="tabModels.five.number"
 												   number-format/>
 										</div>
 									</div>
@@ -344,7 +344,7 @@
 										<label for="form5.integer" class="col-sm-4 control-label">Integer</label>
 										<div class="col-sm-8">
 											<input name="integer" type="number" class="form-control" id="form5.integer"
-												   [(ngModel)]="tabs.five.integer"/>
+												   [(ngModel)]="tabModels.five.integer"/>
 										</div>
 									</div>
 									<div class="form-group row">
@@ -352,7 +352,7 @@
 										<div class="col-sm-8">
 											<or-date-picker>
 												<input class="form-control"
-													   name="date" [(ngModel)]="tabs.five.date" ngbDatepicker>
+													   name="date" [(ngModel)]="tabModels.five.date" ngbDatepicker>
 											</or-date-picker>
 										</div>
 									</div>
@@ -380,21 +380,21 @@
 										<label for="form6.text" class="col-sm-4 control-label">Text</label>
 										<div class="col-sm-8">
 											<input name="text" type="text" class="form-control" id="form6.text"
-												   [(ngModel)]="tabs.six.text"/>
+												   [(ngModel)]="tabModels.six.text"/>
 										</div>
 									</div>
 									<div class="form-group row">
 										<label for="form6.number" class="col-sm-4 control-label">Number</label>
 										<div class="col-sm-8">
 											<input name="number" type="text" class="form-control" id="form6.number"
-												   [(ngModel)]="tabs.six.number"/>
+												   [(ngModel)]="tabModels.six.number"/>
 										</div>
 									</div>
 									<div class="form-group row">
 										<label for="form6.integer" class="col-sm-4 control-label">Integer</label>
 										<div class="col-sm-8">
 											<input name="integer" type="number" class="form-control" id="form6.integer"
-												   [(ngModel)]="tabs.six.integer"/>
+												   [(ngModel)]="tabModels.six.integer"/>
 										</div>
 									</div>
 									<div class="form-group row">
@@ -402,7 +402,7 @@
 										<div class="col-sm-8">
 											<or-date-picker>
 												<input class="form-control"
-													   name="date" [(ngModel)]="tabs.six.date" ngbDatepicker>
+													   name="date" [(ngModel)]="tabModels.six.date" ngbDatepicker>
 											</or-date-picker>
 										</div>
 									</div>
