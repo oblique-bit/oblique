@@ -34,7 +34,7 @@ export class UnsavedChangesService {
 	}
 
 	unListenTo(ngbTabset: NgbTabset): void {
-		let id = ngbTabset.tabs.first.id;
+		let id = ngbTabset && ngbTabset.tabs.first.id;
 		if (this.listener[id]) {
 			this.listener[id].unsubscribe();
 		}
