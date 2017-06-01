@@ -112,7 +112,6 @@ gulp.task('release', (callback) => {
 	return runSequence(
 		'build:bump-version',
 		//'changelog',
-		'build',
 		'build:commit-changes',
 		'build:push-changes',
 		'build:create-new-tag',
