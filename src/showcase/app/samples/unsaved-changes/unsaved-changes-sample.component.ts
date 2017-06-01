@@ -7,15 +7,15 @@ import {UnsavedChangesSampleModalComponent} from './unsaved-changes-sample-modal
 
 @Component({
 	selector: 'app-unsaved-changes',
-	templateUrl: 'unsaved-changes-sample.component.html',
-	// styleUrls: ['./unsaved-changes.component.css']
+	templateUrl: 'unsaved-changes-sample.component.html'
 })
 export class UnsavedChangesSampleComponent implements OnInit {
-	public tabModels: {zero: {}, one: {}; two: {}; three: {}, four: {}, five: {}, six: {}};
+	public tabModels: {zero: any, one: any; two: any; three: any, four: any, five: any, six: any};
 
 	constructor(private notificationService: NotificationService,
 				private modalService: NgbModal,
-				public unsavedChangesService:UnsavedChangesService) {}
+				public unsavedChangesService: UnsavedChangesService) {
+	}
 
 	ngOnInit() {
 		this.tabModels = {

@@ -7,8 +7,8 @@ import {Subscriber} from 'rxjs/Subscriber';
 //TODO: Handle modals
 @Injectable()
 export class UnsavedChangesService {
-	private formList: {[key:string]: ControlContainer} = {};
-	private listener: {[key:string]: Subscriber<NgbTabChangeEvent>} = {};
+	private formList: { [key: string]: ControlContainer} = {};
+	private listener: { [key: string]: Subscriber<NgbTabChangeEvent>} = {};
 
 	constructor(private translateService: TranslateService) {
 		window.addEventListener('beforeunload', e => this.onUnload(e));
@@ -37,6 +37,7 @@ export class UnsavedChangesService {
 		let id = ngbTabset && ngbTabset.tabs.first.id;
 		if (this.listener[id]) {
 			this.listener[id].unsubscribe();
+			delete this.listener[id];
 		}
 	}
 
@@ -46,7 +47,7 @@ export class UnsavedChangesService {
 	}
 
 	canDeactivate(): boolean {
-		return !this.hasPendingChanges();
+		return this.hasPendingChanges() ? window.confirm(this.message()) : true;
 	}
 
 	private onUnload(event: BeforeUnloadEvent) {

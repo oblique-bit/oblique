@@ -6,7 +6,7 @@ import {NgbTabChangeEvent, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
 import {EventEmitter} from '@angular/core';
 import {RouterTestingModule} from '@angular/router/testing';
 
-fdescribe('UnsavedChangesService', () => {
+describe('UnsavedChangesService', () => {
 	let unsavedChangesService: UnsavedChangesService;
 	beforeEach(() => {
 		TestBed.configureTestingModule({
@@ -119,16 +119,33 @@ fdescribe('UnsavedChangesService', () => {
 	});
 
 	describe('canDeactivate()', () => {
+		beforeEach(() => {
+			spyOn(window, 'confirm');
+		});
+
+		it('shouldn\'t call window.confirm, if no form is dirty', () => {
+			const form: ControlContainer = {dirty: false} as ControlContainer;
+			unsavedChangesService.watch('tab_1', form);
+
+			unsavedChangesService.canDeactivate();
+
+			expect(window.confirm).not.toHaveBeenCalled();
+		});
+
 		it('should return true, if no form is dirty', () => {
 			const form: ControlContainer = {dirty: false} as ControlContainer;
 			unsavedChangesService.watch('tab_1', form);
-			expect(unsavedChangesService.canDeactivate()).toBe(true);
+
+			expect(unsavedChangesService.canDeactivate()).toBeTruthy();
 		});
 
-		it('should return false, if a form is dirty', () => {
+		it('should call window.confirm, if a form is dirty', () => {
 			const form: ControlContainer = {dirty: true} as ControlContainer;
 			unsavedChangesService.watch('tab_1', form);
-			expect(unsavedChangesService.canDeactivate()).toBe(false);
+
+			unsavedChangesService.canDeactivate();
+
+			expect(window.confirm).toHaveBeenCalled();
 		});
 	});
 });

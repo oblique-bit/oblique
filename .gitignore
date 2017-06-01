@@ -5,6 +5,10 @@
 /target
 /tmp
 
+# products of hbs:
+/src/showcase/app/app.component.html
+/src/showcase/index.html
+
 # dependencies
 /node_modules
 
