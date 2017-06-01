@@ -1,55 +1,80 @@
 import {Injectable} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
-import 'rxjs/add/operator/filter';
+import {NgbTabChangeEvent, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
+import {Subscriber} from 'rxjs/Subscriber';
 
 //TODO: Handle modals
 @Injectable()
 export class UnsavedChangesService {
-	private forms: ControlContainer[] = [];
+	private formList: { [key: string]: ControlContainer} = {};
+	private listener: { [key: string]: Subscriber<NgbTabChangeEvent>} = {};
 
 	constructor(private translateService: TranslateService) {
-		window.addEventListener('beforeunload', (e) => {
-			return this.onUnload(e);
-		});
+		window.addEventListener('beforeunload', e => this.onUnload(e));
 	}
 
-	watch(form: ControlContainer) {
-		this.forms.push(form);
+	watch(formId: string, form: ControlContainer): void {
+		this.formList[formId] = form;
 	}
 
-	unWatch(form: ControlContainer) {
-		this.forms.splice(this.forms.indexOf(form));
+	unWatch(formId: string): void {
+		delete this.formList[formId];
 	}
 
-	canDeactivate(nestedForm?: ControlContainer) {
-		if ((nestedForm && nestedForm.dirty) || this.hasUnsavedChanges()) {
-			return window.confirm(this.message());
+	listenTo(ngbTabset: NgbTabset): void {
+		let id = ngbTabset.tabs.first.id;
+		if (!this.listener[id]) {
+			this.listener[id] = ngbTabset.tabChange.subscribe((event: NgbTabChangeEvent): void => {
+				if (!this.canDeactivateTab(event.activeId)) {
+					event.preventDefault();
+				}
+			});
 		}
-		return true;
 	}
 
-	onUnload(event: BeforeUnloadEvent) {
-		if (this.hasUnsavedChanges()) {
-			const confirmationMessage = this.message();
+	unListenTo(ngbTabset: NgbTabset): void {
+		let id = ngbTabset && ngbTabset.tabs.first.id;
+		if (this.listener[id]) {
+			this.listener[id].unsubscribe();
+			delete this.listener[id];
+		}
+	}
 
+	isFormDirty(formId: string): boolean {
+		let form = this.formList[formId];
+		return form && form.dirty;
+	}
+
+	canDeactivate(): boolean {
+		return this.hasPendingChanges() ? window.confirm(this.message()) : true;
+	}
+
+	private onUnload(event: BeforeUnloadEvent) {
+		if (this.hasPendingChanges()) {
+			const confirmationMessage = this.message();
 			event.returnValue = confirmationMessage;
+
 			return confirmationMessage;
 		}
 
 		return null;
 	}
 
-	private hasUnsavedChanges() {
-		for (const form of this.forms) {
-			if (form.dirty) {
+	private canDeactivateTab(formId: string): boolean {
+		return this.isFormDirty(formId) ? window.confirm(this.message()) : true;
+	}
+
+	private hasPendingChanges(): boolean {
+		for (const formId in this.formList) {
+			if (this.formList.hasOwnProperty(formId) && this.formList[formId].dirty) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	private message() {
+	private message(): string {
 		return this.translateService.instant('i18n.validation.unsavedChanges');
 	}
 }

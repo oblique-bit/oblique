@@ -24,7 +24,7 @@ export class NotificationComponent {
 
 	public notifications: Notification[];
 
-	public alertType: {[type: string]: string} = {};
+	public alertType: { [type: string]: string } = {};
 
 	constructor(private notificationService: NotificationService) {
 		this.alertType[NotificationTypes.DEFAULT.name] = 'alert';

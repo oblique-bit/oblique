@@ -10,6 +10,8 @@ import {ObliqueModule} from '../../../lib/ng/index';
 import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {FormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
 import {LayoutManagerSampleComponent} from './layout-manager/layout-manager-sample.component';
+import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
+import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
 import {NavigatorSampleModule} from './navigator-sample/navigator-sample.module';
 import {NavigatorSampleRoutingModule} from './navigator-sample/navigator-sample-routing.module';
@@ -38,7 +40,9 @@ import {SchemaValidationComponent} from './schema-validation/schema-validation-s
 		NavTreeDetailSampleComponent,
 		SchemaValidationComponent,
 		FormControlStateSampleComponent,
-		LayoutManagerSampleComponent
+		LayoutManagerSampleComponent,
+		UnsavedChangesSampleComponent,
+		UnsavedChangesSampleModalComponent
 	],
 	exports: [
 		RouterModule
@@ -46,6 +50,9 @@ import {SchemaValidationComponent} from './schema-validation/schema-validation-s
 	providers: [
 		SampleDataResolver
 	],
+	entryComponents: [
+		UnsavedChangesSampleModalComponent
+	]
 })
 export class SamplesModule {
 }

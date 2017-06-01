@@ -18,7 +18,7 @@ export class SchemaValidationService {
 		});
 	}
 
-	validate(propertyPath: string, value: any): null|{[errorKey: string]: {[params: string]: any}} {
+	validate(propertyPath: string, value: any): null | { [errorKey: string]: { [params: string]: any } } {
 		this.ajv.validate(propertyPath, value);
 
 		return this.ajv.errors === null ? null : {

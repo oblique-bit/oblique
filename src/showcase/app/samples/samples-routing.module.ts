@@ -9,6 +9,8 @@ import {LayoutManagerSampleComponent} from './layout-manager/layout-manager-samp
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 import {SchemaValidationComponent} from './schema-validation/schema-validation-sample.component';
+import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
+import {UnsavedChangesGuard} from '../../../lib/ng/unsaved-changes/unsaved-changes.guard';
 
 const samplesRoutes: Routes = [
 	{path: 'datepicker', component: DatepickerSampleComponent},
@@ -38,7 +40,8 @@ const samplesRoutes: Routes = [
 			hasCover: true
 		}
 	}
-	}
+	},
+	{path: 'unsaved-changes', component: UnsavedChangesSampleComponent, canDeactivate: [UnsavedChangesGuard]}
 ];
 
 @NgModule({

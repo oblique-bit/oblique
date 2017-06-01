@@ -26,7 +26,7 @@ describe('SchemaValidation', () => {
 				'properties': {
 					'subproperty': {
 						'type': 'number'
-					},
+					}
 				}
 			}
 		}

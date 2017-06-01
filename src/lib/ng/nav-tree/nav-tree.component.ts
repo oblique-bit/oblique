@@ -60,7 +60,7 @@ export class NavTreeComponent {
 	public static DEFAULTS = {
 		VARIANT: 'nav-bordered nav-hover',
 		HIGHLIGHT: 'nav-tree-pattern-highlight',
-		LABEL_FORMATTER: defaultLabelFormatterFactory,
+		LABEL_FORMATTER: defaultLabelFormatterFactory
 	};
 
 	@Input()
