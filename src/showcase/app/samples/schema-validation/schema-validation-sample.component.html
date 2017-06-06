@@ -1,5 +1,5 @@
 <div class="default-layout">
-	<form class="form-horizontal has-validation" name="validationForm" role="form" [orSchemaValidation]="schema"
+	<form id="schemaValidationForm" class="form-horizontal has-validation" name="validationForm" role="form" [orSchemaValidation]="schema"
 		  #form="ngForm" orUnsavedChanges>
 		<h2 class="page-header">
 			<span>Schema validation</span>
@@ -74,8 +74,8 @@
 					<label class="col-2 col-form-label">Date</label>
 					<div class="col-8">
 						<or-date-picker>
-							<input class="form-control" placeholder="yyyy-mm-dd"
-								   name="date" ngModel ngbDatepicker required navigation="arrows">
+							<input class="form-control"
+								   name="date" ngModel ngbDatepicker required>
 						</or-date-picker>
 						<or-error-messages></or-error-messages>
 					</div>

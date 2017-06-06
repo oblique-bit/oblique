@@ -48,8 +48,8 @@ export const ProjectConfig = {
 				fixed:       false
 			},
 			header: {
-				transitions: true
-				//variant:   'application-header-sm'
+				transitions: true,
+				variant: 'has-overlay'
 			}
 		},
 

@@ -7,7 +7,7 @@ import 'rxjs/add/observable/merge';
 
 @Component({
 	selector: 'or-error-messages',
-	template: `<span class="help-block" *ngFor="let error of errors">{{error.key | translate:error.params}}</span>`
+	template: `<div class="form-control-feedback" *ngFor="let error of errors">{{error.key | translate:error.params}}</div>`
 })
 export class ErrorMessagesComponent implements AfterViewInit {
 	@Input() control: NgControl;
