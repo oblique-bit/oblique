@@ -1,23 +1,27 @@
-import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {TestBed, async} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
-import {By} from '@angular/platform-browser';
-import {DebugElement, Component, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {UnsavedChangesDirective} from './unsaved-changes.directive';
 import {UnsavedChangesService} from './unsaved-changes.service';
 import {ControlContainer} from '@angular/forms';
-import {NgbTabContent, NgbTabset, NgbTabsetModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbTabsetModule} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-	template: `<form orUnsavedChanges></form>`,
+	template: `
+		<form orUnsavedChanges></form>`
 })
-class TestComponent {
+class FaultyTestComponent {
+	@ViewChild(UnsavedChangesDirective) unsavedChangesDirective;
 }
 
 @Component({
-	template: `<form id="test" orUnsavedChanges></form>`,
+	template: `
+		<form id="test" orUnsavedChanges></form>`
 
 })
-class TestComponentWithId {
+class TestComponent {
+	//noinspection JSUnusedGlobalSymbols
+	@ViewChild(UnsavedChangesDirective) unsavedChangesDirective;
 }
 
 @Component({
@@ -30,29 +34,29 @@ class TestComponentWithId {
 			</ngb-tab>
 		</ngb-tabset>`
 })
-class TestComponentWithTabs {
+class TabsTestComponent {
+	//noinspection JSUnusedGlobalSymbols
+	@ViewChild(UnsavedChangesDirective) unsavedChangesDirective;
 }
 
-fdescribe('UnsavedChangesDirective', () => {
-	let fixture: ComponentFixture<TestComponent | TestComponentWithId | TestComponentWithTabs>;
-	let testComponent: TestComponent | TestComponentWithId | TestComponentWithTabs;
-	let element: DebugElement;
+describe('UnsavedChangesDirective', () => {
+	let fixture;
+	let testComponent: FaultyTestComponent | TestComponent | TabsTestComponent;
 	let directive: UnsavedChangesDirective;
 	let unsavedChangesServiceMock;
-	let initFixture = (component): void => {
+	let initFixture = (component: any): void => {
 		fixture = TestBed.createComponent(component);
-		testComponent = fixture.componentInstance;
-		element = fixture.debugElement.query(By.directive(UnsavedChangesDirective));
-		directive = element.injector.get(UnsavedChangesDirective);
-
 		fixture.detectChanges();
+		testComponent = fixture.componentInstance;
+		directive = testComponent.unsavedChangesDirective;
 	};
 
 	beforeEach(async(() => {
 		unsavedChangesServiceMock = jasmine.createSpyObj('UnsavedChangesService', ['watch', 'listenTo', 'unWatch', 'unListenTo']);
 
+		//noinspection JSIgnoredPromiseFromCall
 		TestBed.configureTestingModule({
-			declarations: [TestComponent, TestComponentWithId, TestComponentWithTabs, UnsavedChangesDirective],
+			declarations: [FaultyTestComponent, TestComponent, TabsTestComponent, UnsavedChangesDirective],
 			providers: [
 				ControlContainer,
 				{provide: UnsavedChangesService, useValue: unsavedChangesServiceMock}
@@ -61,31 +65,13 @@ fdescribe('UnsavedChangesDirective', () => {
 		}).compileComponents();
 	}));
 
-	describe('with neither id nor ngbTab', () => {
-		beforeEach(() => {
-			initFixture(TestComponent);
-		});
-
-		it('should throw an error', () => {
-			expect(() => directive.ngOnInit()).toThrow(new Error('orUnsavedChanges directive needs either to be within a NgbTab directive or to have an "id" attribute.'));
-		});
-
-		it('should not call watch on init', () => {
-			try {
-				directive.ngOnInit();
-			} catch (e) {}
-			expect(unsavedChangesServiceMock.watch).not.toHaveBeenCalled();
-		});
-
-		it('should not call listenTo after content init', () => {
-			directive.ngAfterContentInit();
-			expect(unsavedChangesServiceMock.listenTo).not.toHaveBeenCalled();
-		});
+	it('with neither id nor ngbTab should throw an error', () => {
+		expect(() => initFixture(FaultyTestComponent)).toThrow();
 	});
 
 	describe('with id', () => {
 		beforeEach(() => {
-			initFixture(TestComponentWithId);
+			initFixture(TestComponent);
 		});
 
 		it('should be created', () => {
@@ -111,12 +97,7 @@ fdescribe('UnsavedChangesDirective', () => {
 
 	describe('with nbg-tabs', () => {
 		beforeEach(() => {
-			//initFixture(TestComponentWithTabs);
-			fixture = TestBed.createComponent(TestComponentWithTabs);
-			testComponent = fixture.componentInstance;
-			element = fixture.debugElement.query(By.directive(UnsavedChangesDirective));
-			console.log(fixture.debugElement.query(By.directive(NgbTabContent)));
-			directive = element.injector.get(UnsavedChangesDirective);
+			initFixture(TabsTestComponent);
 		});
 
 		it('should be created', () => {
@@ -124,7 +105,6 @@ fdescribe('UnsavedChangesDirective', () => {
 		});
 
 		it('should call watch on init', () => {
-			// TODO
 			directive.ngOnInit();
 			expect(unsavedChangesServiceMock.watch).toHaveBeenCalled();
 		});
