@@ -4,19 +4,17 @@ import {TranslateService} from '@ngx-translate/core';
 import {ControlContainer} from '@angular/forms';
 import {NgbTabChangeEvent, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
 import {EventEmitter} from '@angular/core';
-import {RouterTestingModule} from '@angular/router/testing';
 
 describe('UnsavedChangesService', () => {
 	let unsavedChangesService: UnsavedChangesService;
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [RouterTestingModule],
 			providers: [
 				UnsavedChangesService,
 				{
 					provide: TranslateService, useValue: {
-					instant: jasmine.createSpy('instant').and.callFake((val) => val)
-				}
+						instant: jasmine.createSpy('instant').and.callFake((val) => val)
+					}
 				}
 			]
 		});
@@ -38,6 +36,10 @@ describe('UnsavedChangesService', () => {
 	});
 
 	describe('isFormDirty()', () => {
+		it('should return false, if the form is not watched', () => {
+			expect(unsavedChangesService.isFormDirty('test')).toBeFalsy();
+		});
+
 		it('should return true, if the form is dirty', () => {
 			const form: ControlContainer = {dirty: true} as ControlContainer;
 			unsavedChangesService.watch('test', form);
@@ -73,22 +75,38 @@ describe('UnsavedChangesService', () => {
 			} as NgbTabset;
 		});
 
-		it('should neither ask for confirmation nor prevent default, if no form is watched', () => {
-			spyOn(window, 'confirm');
-			unsavedChangesService.listenTo(tabSet);
-			tabSet.select('tab_2');
-			expect(window.confirm).not.toHaveBeenCalled();
-			expect(evt.preventDefault).not.toHaveBeenCalled();
+		describe('with no watched form', () => {
+			beforeEach(() => {
+				spyOn(window, 'confirm');
+				unsavedChangesService.listenTo(tabSet);
+				tabSet.select('tab_2');
+			});
+
+			it('shouldn\'t call window.confirm', () => {
+				expect(window.confirm).not.toHaveBeenCalled();
+			});
+
+			it('should\'t prevent default', () => {
+				expect(evt.preventDefault).not.toHaveBeenCalled();
+			});
 		});
 
-		it('should neither ask for confirmation nor prevent default, if the form is not dirty', () => {
-			spyOn(window, 'confirm');
-			const form: ControlContainer = {dirty: false} as ControlContainer;
-			unsavedChangesService.watch('tab_1', form);
-			unsavedChangesService.listenTo(tabSet);
-			tabSet.select('tab_2');
-			expect(window.confirm).not.toHaveBeenCalled();
-			expect(evt.preventDefault).not.toHaveBeenCalled();
+		describe('with no dirty form', () => {
+			beforeEach(() => {
+				spyOn(window, 'confirm');
+				const form: ControlContainer = {dirty: false} as ControlContainer;
+				unsavedChangesService.watch('tab_1', form);
+				unsavedChangesService.listenTo(tabSet);
+				tabSet.select('tab_2');
+			});
+
+			it('shouldn\'t call window.confirm', () => {
+				expect(window.confirm).not.toHaveBeenCalled();
+			});
+
+			it('shouldn\'t prevent default', () => {
+				expect(evt.preventDefault).not.toHaveBeenCalled();
+			});
 		});
 
 		describe('with dirty form', () => {
@@ -98,7 +116,7 @@ describe('UnsavedChangesService', () => {
 				unsavedChangesService.listenTo(tabSet);
 			});
 
-			it('should ask for confirmation, if the form is dirty', () => {
+			it('should ask for confirmation', () => {
 				spyOn(window, 'confirm');
 				tabSet.select('tab_2');
 				expect(window.confirm).toHaveBeenCalled();
@@ -119,33 +137,56 @@ describe('UnsavedChangesService', () => {
 	});
 
 	describe('canDeactivate()', () => {
-		beforeEach(() => {
-			spyOn(window, 'confirm');
+		describe('with no watched form', () => {
+			it('shouldn\'t call window.confirm', () => {
+				spyOn(window, 'confirm');
+				unsavedChangesService.canDeactivate();
+				expect(window.confirm).not.toHaveBeenCalled();
+			});
+
+			it('should return true', () => {
+				expect(unsavedChangesService.canDeactivate()).toBeTruthy();
+			});
 		});
 
-		it('shouldn\'t call window.confirm, if no form is dirty', () => {
-			const form: ControlContainer = {dirty: false} as ControlContainer;
-			unsavedChangesService.watch('tab_1', form);
+		describe('with no dirty form', () => {
+			beforeEach(() => {
+				const form: ControlContainer = {dirty: false} as ControlContainer;
+				unsavedChangesService.watch('tab_1', form);
+			});
 
-			unsavedChangesService.canDeactivate();
+			it('shouldn\'t call window.confirm', () => {
+				spyOn(window, 'confirm');
+				unsavedChangesService.canDeactivate();
+				expect(window.confirm).not.toHaveBeenCalled();
+			});
 
-			expect(window.confirm).not.toHaveBeenCalled();
+			it('should return true', () => {
+				expect(unsavedChangesService.canDeactivate()).toBeTruthy();
+			});
 		});
 
-		it('should return true, if no form is dirty', () => {
-			const form: ControlContainer = {dirty: false} as ControlContainer;
-			unsavedChangesService.watch('tab_1', form);
+		describe('with dirty form', () => {
+			beforeEach(() => {
+				const form: ControlContainer = {dirty: true} as ControlContainer;
+				unsavedChangesService.watch('tab_1', form);
+			});
 
-			expect(unsavedChangesService.canDeactivate()).toBeTruthy();
-		});
+			it('should call window.confirm', () => {
+				spyOn(window, 'confirm');
+				unsavedChangesService.canDeactivate();
+				expect(window.confirm).toHaveBeenCalled();
+			});
 
-		it('should call window.confirm, if a form is dirty', () => {
-			const form: ControlContainer = {dirty: true} as ControlContainer;
-			unsavedChangesService.watch('tab_1', form);
+			it('should return false, if not confirmed', () => {
+				spyOn(window, 'confirm').and.callFake(() => false);
+				expect(unsavedChangesService.canDeactivate()).toBeFalsy();
+			});
 
-			unsavedChangesService.canDeactivate();
-
-			expect(window.confirm).toHaveBeenCalled();
+			it('should return true, if confirmed', () => {
+				spyOn(window, 'confirm').and.callFake(() => true);
+				expect(unsavedChangesService.canDeactivate()).toBeTruthy();
+			});
 		});
 	});
 });
