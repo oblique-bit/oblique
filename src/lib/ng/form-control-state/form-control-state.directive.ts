@@ -23,11 +23,16 @@ export class FormControlStateDirective implements AfterViewInit {
 		this.form = ngForm || formGroupDirective;
 
 		if (!this.form) {
-			throw new Error('You need ether a NgForm or a FormGroupDirective for the FormControlStateDirective');
+			throw new Error('You need either a NgForm or a FormGroupDirective for the FormControlStateDirective!');
 		}
 	}
 
 	ngAfterViewInit() {
+
+		if (!this.ngControl) {
+			throw new Error('You need to provide an NgControl for the FormControlStateDirective!');
+		}
+
 		if (this.mandatory) {
 			this.elementRef.nativeElement.querySelector('[name]').parentElement.classList.add('control-mandatory');
 		}
