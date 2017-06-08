@@ -1,30 +1,39 @@
 <div class="footer-item footer-item-logo">
-    <a href="{{@root.app.organization.url}}" target="_blank" class="application-brand-logo">
-        <img src="{{assets}}{{#block "vendor"}}{{@root.app.vendor.path}}{{/block}}{{@root.app.vendor.obliqueui.path}}images/logo.svg"
-             alt="{{@root.app.organization.name}}">
-    </a>
+	<a href="{{@root.app.organization.url}}" target="_blank" class="application-brand-logo">
+		<img src="{{assets}}{{#block "vendor"}}{{@root.app.vendor.path}}{{/block}}{{@root.app.vendor.obliqueui.path}}images/logo.svg"
+		     alt="{{@root.app.organization.name}}" />
+	</a>
 </div>
 <div class="footer-item footer-item-info">
-    <p>&copy; 2016 {{@root.app.organization.name}}</p>
-    <p class="smaller">Built with <span class="fa fa-heart-o" title="Love"></span><span class="sr-only">love</span>, <a
-            href="https://eui.bit.admin.ch/oblique-ui/" title="The front-end framework for your Swiss branded UI.">ObliqueUI</a>
-        <span class="version">(2.0.0-alpha.7)</span> and <a href="https://angular.io/"
-                                                            title="One framework. Mobile & desktop.">Angular</a> <span
-                class="version">(4.0.1)</span>.</p>
+	<p>&copy; 2016 {{@root.app.organization.name}}</p>
+	<p class="smaller">
+		<span>Built with </span>
+		<span class="fa fa-heart-o" title="Love"><span class="sr-only">love</span></span>
+		<span>, </span>
+		<a href="https://eui.bit.admin.ch/oblique-ui/" title="The front-end framework for your Swiss branded UI.">ObliqueUI</a>
+		<span class="version">(2.0.0-alpha.7)</span>
+		<span> and </span>
+		<a href="https://angular.io/" title="One framework. Mobile & desktop.">Angular</a>
+		<span class="version">(4.0.1)</span>
+		<span>.</span>
+	</p>
 </div>
 <div class="footer-item footer-item-links">
-    <ul class="list-unstyled d-flex flex-row float-lg-right small" role="menu">
-        <li role="presentation">
-            <a href="http://www.disclaimer.admin.ch" title="Terms and conditions" target="_blank" class="link">Legal</a>
-        </li>
-        <li role="presentation">
-			{{#if @root.app.organization.email}}<a href="mailto:{{@root.app.organization.email}}"
-                                                   title="This link will open your email client in order to send an email to {{@root.app.organization.email}}"
-                                                   class="link">Contact</a>{{/if}}
-			{{#if @root.app.organization.contact}}<a href="{{@root.app.organization.contact}}"
-                                                     title="This link will open a new tab in order to contact {{@root.app.organization.name}}"
-                                                     target="_blank" class="link">Contact</a>{{/if}}
-        </li>
-    </ul>
+	<ul class="list-unstyled d-flex flex-row float-lg-right small" role="menu">
+		<li role="presentation">
+			<a href="http://www.disclaimer.admin.ch" title="Terms and conditions" target="_blank" class="link">Legal</a>
+		</li>
+		<li role="presentation">
+			{{#if @root.app.organization.email}}
+				<a href="mailto:{{@root.app.organization.email}}"
+				   title="This link will open your email client in order to send an email to {{@root.app.organization.email}}"
+				   class="link">Contact</a>
+			{{/if}}
+			{{#if @root.app.organization.contact}}
+				<a href="{{@root.app.organization.contact}}"
+				   title="This link will open a new tab in order to contact {{@root.app.organization.name}}"
+				   target="_blank" class="link">Contact</a>
+			{{/if}}
+		</li>
+	</ul>
 </div>
-
