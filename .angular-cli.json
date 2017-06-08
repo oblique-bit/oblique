@@ -8,7 +8,6 @@
       "root": "src",
       "outDir": "target",
       "assets": [
-        "favicon.ico",
         {
           "glob": "**/*",
           "input": "./showcase/assets",
