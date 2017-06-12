@@ -34,7 +34,7 @@ export class DocumentMetaService {
 		this.metaDescription = this.getOrCreateMetaElement('description');
 
 		// Subscribe to NavigationEnd events and handle current activated route:
-		let routing = router.events
+		router.events
 			.filter(event => event instanceof NavigationEnd)
 			.map(() => this.activatedRoute)
 			.map(route => {
@@ -43,19 +43,12 @@ export class DocumentMetaService {
 				}
 				return route;
 			})
-			.filter(route => route.outlet === 'primary');
-
-		routing.mergeMap(route => route.url)
-			.withLatestFrom(routing.mergeMap(route => route.data))
-			.subscribe(([urlSegments, data]) => {
-					let title = data.title || (function () {
-							let segments = urlSegments.map(urlSegment => urlSegment.path);
-							return `i18n.routes.${segments.join('.')}.title`;
-						})();
-					this.setTitle(title);
-					this.setDescription(data.description || this.description);
-				}
-			);
+			.filter(route => route.outlet === 'primary')
+			.mergeMap(route => route.data)
+			.subscribe((data) => {
+				this.setTitle(data.title);
+				this.setDescription(data.description || this.description);
+			});
 	}
 
 	/**
@@ -67,9 +60,13 @@ export class DocumentMetaService {
 	 * @param suffix the string to be appended at the end
 	 */
 	public setTitle(title: string, separator: string = this.titleSeparator, suffix: string = this.titleSuffix) {
-		this.translate.get(title).subscribe(translation => {
-			this.titleService.setTitle(`${translation}${separator}${suffix}`);
-		});
+		if (title) {
+			this.translate.get(title).subscribe(translation => {
+				this.titleService.setTitle(`${translation}${separator}${suffix}`);
+			});
+		} else {
+			this.titleService.setTitle(`${suffix}`);
+		}
 	}
 
 	/**
