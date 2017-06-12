@@ -51,4 +51,12 @@ export class LayoutManagerService {
 	get navigation() {
 		return !this.layoutManagerDirective.noNavigation;
 	}
+
+	set applicationFixed(value) {
+		this.layoutManagerDirective.applicationFixed = value;
+	}
+
+	get applicationFixed() {
+		return this.layoutManagerDirective.applicationFixed;
+	}
 }

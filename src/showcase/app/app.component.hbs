@@ -1,12 +1,16 @@
 {{#extend "application"
-applicationClass=app.theme.header.variant
-applicationFixed=app.theme.application.fixed
-headerTransitions=app.theme.header.transitions
-headerVariant=app.theme.header.variant}}
+	applicationClass=app.theme.header.variant
+	applicationFixed=app.theme.application.fixed
+	headerTransitions=app.theme.header.transitions
+	headerVariant=app.theme.header.variant}}
 	{{#content "content"}}
-        <or-notification></or-notification>
-        <router-outlet class="application-content-viewport"></router-outlet>
-        <or-spinner></or-spinner>
+		<div class="application-content-viewport">
+			<or-notification></or-notification>
+			<div class="empty-layout">
+				<router-outlet></router-outlet>
+			</div>
+			<or-spinner></or-spinner>
+		</div>
 	{{/content}}
 {{/extend}}
 

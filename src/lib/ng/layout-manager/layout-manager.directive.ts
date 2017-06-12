@@ -12,9 +12,11 @@ export class LayoutManagerDirective {
 
 	@HostBinding('class.has-cover') hasCover;
 	@HostBinding('class.no-navigation') noNavigation;
+	@HostBinding('class.application-fixed') applicationFixed;
 
 	private defaultHasCover;
 	private defaultNoNavigation;
+	private defaultApplicationFixed;
 
 	constructor(private layoutManagerService: LayoutManagerService,
 				private elementRef: ElementRef,
@@ -24,6 +26,7 @@ export class LayoutManagerDirective {
 
 		this.hasCover = this.defaultHasCover = this.elementRef.nativeElement.classList.contains('has-cover');
 		this.noNavigation = this.defaultNoNavigation = this.elementRef.nativeElement.classList.contains('no-navigation');
+		this.applicationFixed = this.defaultApplicationFixed = this.elementRef.nativeElement.classList.contains('application-fixed');
 
 		this.router.events
 			.filter(event => event instanceof NavigationEnd)
@@ -41,6 +44,7 @@ export class LayoutManagerDirective {
 
 				this.hasCover = layoutManager.hasCover !== undefined ? layoutManager.hasCover : this.defaultHasCover;
 				this.noNavigation = layoutManager.noNavigation !== undefined ? layoutManager.noNavigation : this.defaultNoNavigation;
+				this.applicationFixed = layoutManager.applicationFixed !== undefined ? layoutManager.applicationFixed : this.defaultApplicationFixed;
 			});
 	}
 }

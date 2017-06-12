@@ -22,4 +22,9 @@ export class LayoutManagerSampleComponent {
 	set navigation(value: boolean) {
 		this.layoutManager.navigation = value;
 	}
+
+	set applicationFixed(value: boolean) {
+		this.layoutManager.applicationFixed = value;
+		console.log(this.layoutManager.applicationFixed);
+	}
 }

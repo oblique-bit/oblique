@@ -30,6 +30,16 @@
 								<input type="radio" value="no"> No
 							</label>
 						</div>
+						<h4>Page Behavior</h4>
+						<div ngbRadioGroup name="pageBehavior">
+							<!-- TODO: remove `(click)` when https://github.com/ng-bootstrap/ng-bootstrap/issues/1125 -->
+							<label class="btn btn-default" (click)="applicationFixed = false">
+								<input type="radio" value="continuous"> Continuous
+							</label>
+							<label class="btn btn-default" (click)="applicationFixed = true">
+								<input type="radio" value="fixed"> Fixed
+							</label>
+						</div>
 					</div>
 				</div>
 			</div>
