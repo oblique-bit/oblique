@@ -14,17 +14,17 @@
 						<div ngbRadioGroup name="appLayout">
 							<!-- TODO: remove `(click)` when https://github.com/ng-bootstrap/ng-bootstrap/issues/1125 -->
 							<label class="btn btn-default" (click)="cover = false">
-								<input type="radio" value="nav-bordered nav-hover"> Default
+								<input type="radio" value="default"> Default
 							</label>
-							<label class="btn btn-default" (click)="cover = true">
-								<input type="radio" value="nav-hover"> Cover
+							<label class="btn btn-default active" (click)="cover = true">
+								<input type="radio" value="cover" checked> Cover
 							</label>
 						</div>
 						<h4>Navigation</h4>
 						<div ngbRadioGroup name="appNavigation">
 							<!-- TODO: remove `(click)` when https://github.com/ng-bootstrap/ng-bootstrap/issues/1125 -->
-							<label class="btn btn-default" (click)="navigation = true">
-								<input type="radio" value="yes"> Yes
+							<label class="btn btn-default active" (click)="navigation = true">
+								<input type="radio" value="yes" checked> Yes
 							</label>
 							<label class="btn btn-default" (click)="navigation = false">
 								<input type="radio" value="no"> No
@@ -41,6 +41,25 @@
 							</label>
 						</div>
 					</div>
+				</div>
+				<h2 class="text-muted">For demo purposes only</h2>
+				<div class="callout">
+					<p>Nulla consectetur nulla reprehenderit dolore cillum ea.</p>
+				</div>
+				<div class="callout">
+					<p>Eiusmod do est non velit velit.</p>
+				</div>
+				<div class="callout">
+					<p>Dolore sint excepteur magna occaecat officia cillum cillum laboris fugiat.</p>
+				</div>
+				<div class="callout">
+					<p>Consequat anim labore reprehenderit officia duis.</p>
+				</div>
+				<div class="callout">
+					<p>Consectetur exercitation commodo eiusmod veniam aliqua.</p>
+				</div>
+				<div class="callout">
+					<p>Eu nulla eu esse magna do exercitation.</p>
 				</div>
 			</div>
 		</div>
