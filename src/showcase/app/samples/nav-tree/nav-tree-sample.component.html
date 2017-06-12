@@ -12,12 +12,11 @@
 								 [items]="items"
 								 [prefix]="'nav-tree-sample'"
 								 [filterPattern]="filter.pattern"
-								 [linkBuilder]="linkBuilder"
+								 [linkPrefix]="nav-tree"
 								 [variant]="variant">
 						<li class="nav-item nav-header" role="presentation">
 							<h3 class="nav-header-title" *ngIf="!filter.pattern">Menu Sample</h3>
-							<h3 class="nav-header-title" *ngIf="filter.pattern">{{'i18n.common.search.results' |
-								translate}}</h3>
+							<h3 class="nav-header-title" *ngIf="filter.pattern">{{'i18n.common.search.results' | translate}}</h3>
 						</li>
 					</or-nav-tree>
 				</div>

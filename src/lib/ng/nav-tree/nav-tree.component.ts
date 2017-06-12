@@ -24,7 +24,7 @@ export function defaultLabelFormatterFactory() {
 				<li class="nav-item open" role="presentation"
 				    *ngIf="visible(item)">
 					<a class="nav-link" role="treeitem" aria-selected="false"
-					   [routerLink]="linkBuilder(item)" routerLinkActive="active"
+					   [routerLink]="linkBuilder(item, linkPrefix)" routerLinkActive="active"
 					   (click)="item.collapsed = !item.collapsed"
 					   [class.collapsed]="item.collapsed"
 					   [attr.data-toggle]="item.items ? 'collapse' : null"
@@ -38,6 +38,7 @@ export function defaultLabelFormatterFactory() {
 						             [prefix]="itemKey(item)"
 						             [filterPattern]="filterPattern"
 						             [labelFormatter]="labelFormatter"
+						             [linkPrefix]="linkBuilder(item, linkPrefix)"
 						             [linkBuilder]="linkBuilder"
 						             [variant]="variant"></or-nav-tree>
 					</div>
@@ -79,8 +80,11 @@ export class NavTreeComponent {
 	variant = NavTreeComponent.DEFAULTS.VARIANT;
 
 	@Input()
-	linkBuilder(item: NavTreeItemModel): string {
-		return item.id;
+	linkPrefix: string;
+
+	@Input()
+	linkBuilder(item: NavTreeItemModel, linkPrefix?: string): string {
+		return (linkPrefix ? `${linkPrefix}/` : '') + item.id;
 	};
 
 	@Input()

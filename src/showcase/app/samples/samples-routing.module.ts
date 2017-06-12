@@ -27,10 +27,11 @@ const samplesRoutes: Routes = [
 		resolve: {
 			sample: SampleDataResolver
 		},
-		children: [{
-			path: ':id',
-			component: NavTreeDetailSampleComponent,
-		}]
+		children: [
+			{ path: ':section', component: NavTreeDetailSampleComponent},
+			{ path: ':section/:subsection', component: NavTreeDetailSampleComponent},
+			{ path: ':section/:subsection/:subsubsection', component: NavTreeDetailSampleComponent}
+		]
 	},
 	{path: 'multiselect', component: MultiselectSampleComponent},
 	{path: 'schema-validation', component: SchemaValidationComponent},

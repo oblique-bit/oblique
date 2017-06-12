@@ -21,10 +21,6 @@ export class NavTreeSampleComponent implements OnInit {
 		}
 	};
 
-	public linkBuilder(item: NavTreeItemModel) {
-		return `item-${item.id}`;
-	}
-
 	constructor(private route: ActivatedRoute) {
 	}
 
@@ -40,27 +36,30 @@ export class NavTreeSampleComponent implements OnInit {
 @Component({
 	selector: 'nav-tree-detail-sample',
 	template: `
-		<div *ngIf="id" class="card">
+		<div *ngIf="routing" class="card">
 			<div class="card-header">
 				<h3 class="card-title">Output</h3>
 			</div>
 			<div class="card-block">
 				<h4>RouterOutlet</h4>
 				<span class="fa fa-link"></span>
-				<code>{{id}}</code>
+				<code>{{routing}}</code>
 			</div>
 		</div>`
 })
 export class NavTreeDetailSampleComponent implements OnInit {
 
-	public id: string;
+	public routing: string;
 
 	constructor(private route: ActivatedRoute) {
 	}
 
 	ngOnInit() {
 		this.route.params
-			.map((params: Params) => params['id'])
-			.subscribe((id: string) => this.id = id);
+			.subscribe((params: Params) => {
+				this.routing = params['section'] +
+					(params['subsection'] ? '/' + params['subsection'] : '') +
+					(params['subsubsection'] ? '/' + params['subsubsection'] : '')
+			});
 	}
 }
