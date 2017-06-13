@@ -14,12 +14,11 @@ import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
 		             [prefix]="prefix"
 		             [variant]="variant"
 		             [filterPattern]="filterPattern"
-		             [labelFormatter]="labelFormatter"
-		             [linkBuilder]="linkBuilder"></or-nav-tree>`
+		             [labelFormatter]="labelFormatter"></or-nav-tree>`
 })
 class TestComponent {
 	items = [
-		new NavTreeItemModel({id: 'A', label: 'A - Label'}),
+		new NavTreeItemModel({id: 'A', label: 'A - Label', fragment: 'fragment', queryParams: {foo: 'bar'}}),
 		new NavTreeItemModel({
 			id: 'B', label: 'B - Label',
 			items: [
@@ -52,13 +51,9 @@ class TestComponent {
 	labelFormatter(label: string): string {
 		return `${label} - ${this.prefix}`;
 	};
-
-	linkBuilder(item: NavTreeItemModel): string {
-		return item.id;
-	};
 }
 
-describe('NavTreeComponent', () => {
+fdescribe('NavTreeComponent', () => {
 	let testComponent: TestComponent;
 	let component: NavTreeComponent;
 	let fixture: ComponentFixture<TestComponent>;
@@ -119,17 +114,22 @@ describe('NavTreeComponent', () => {
 		expect(firstNavItem.nativeElement.innerHTML).toContain(suffix);
 	});
 
-	it('should build custom item links', () => {
-		let suffix = '/custom';
-		component.linkBuilder = (item: NavTreeItemModel) => {
-			return `${item.id}${suffix}`;
-		};
-		fixture.detectChanges();
+	it('should add URL fragment to `href` attribute', () => {
+		let fragment = '#' + testComponent.items[0].fragment;
 
 		// [routerLink] directive adds `[href]` attribute to nav item links:
 		let firstNavItem = fixture.debugElement.query(By.css('a.nav-link'));
 		expect(firstNavItem.nativeElement.attributes.getNamedItem('href')).toBeDefined();
-		expect(firstNavItem.nativeElement.attributes.getNamedItem('href').value).toContain(`${suffix}`);
+		expect(firstNavItem.nativeElement.attributes.getNamedItem('href').value).toContain(fragment);
+	});
+
+	it('should add URL query params to `href` attribute', () => {
+		let urlQueryParams = 'foo=' + testComponent.items[0].queryParams.foo;
+
+		// [routerLink] directive adds `[href]` attribute to nav item links:
+		let firstNavItem = fixture.debugElement.query(By.css('a.nav-link'));
+		expect(firstNavItem.nativeElement.attributes.getNamedItem('href')).toBeDefined();
+		expect(firstNavItem.nativeElement.attributes.getNamedItem('href').value).toContain(urlQueryParams);
 	});
 
 	it('should filter navigation items', () => {

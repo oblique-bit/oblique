@@ -24,7 +24,8 @@ export function defaultLabelFormatterFactory() {
 				<li class="nav-item open" role="presentation"
 				    *ngIf="visible(item)">
 					<a class="nav-link" role="treeitem" aria-selected="false"
-					   [routerLink]="linkBuilder(item, linkPrefix)" routerLinkActive="active"
+					   [routerLink]="item.routes" routerLinkActive="active"
+					   [queryParams]="item.queryParams" [fragment]="item.fragment"
 					   (click)="item.collapsed = !item.collapsed"
 					   [class.collapsed]="item.collapsed"
 					   [attr.data-toggle]="item.items ? 'collapse' : null"
@@ -38,8 +39,7 @@ export function defaultLabelFormatterFactory() {
 						             [prefix]="itemKey(item)"
 						             [filterPattern]="filterPattern"
 						             [labelFormatter]="labelFormatter"
-						             [linkPrefix]="linkBuilder(item, linkPrefix)"
-						             [linkBuilder]="linkBuilder"
+						             [pathPrefix]="pathPrefix"
 						             [variant]="variant"></or-nav-tree>
 					</div>
 				</li>
@@ -80,19 +80,14 @@ export class NavTreeComponent {
 	variant = NavTreeComponent.DEFAULTS.VARIANT;
 
 	@Input()
-	linkPrefix: string;
-
-	@Input()
-	linkBuilder(item: NavTreeItemModel, linkPrefix?: string): string {
-		return (linkPrefix ? `${linkPrefix}/` : '') + item.id;
-	};
+	pathPrefix: string;
 
 	@Input()
 	patternMatcher(item: NavTreeItemModel, pattern: string): boolean {
 		let match = new RegExp(pattern, 'gi').test(item.label);
 		return match || (item.items || []).some((subItem) => {
-				return this.patternMatcher(subItem, pattern);
-			});
+			return this.patternMatcher(subItem, pattern);
+		});
 	}
 
 	visible(item: NavTreeItemModel) {

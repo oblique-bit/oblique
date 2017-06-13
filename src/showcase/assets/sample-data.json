@@ -8,7 +8,8 @@
       },
       {
         "id": "tree-item-2",
-        "label": "Tree item 2",
+        "label": "Tree item 2 (with Router fragment)",
+        "fragment": "foo",
         "items": [
           {
             "id": "tree-item-2-1",
@@ -36,7 +37,10 @@
       },
       {
         "id": "tree-item-3",
-        "label": "Tree item 3",
+        "label": "Tree item 3  (with Router query params)",
+        "queryParams": {
+          "foo": "bar"
+        },
         "items": [
           {
             "id": "tree-item-3-1",
