@@ -45,7 +45,7 @@ export const ProjectConfig = {
 		theme: {
 			tooltips:        true,
 			application: {
-				fixed:       false
+				fixed:       true
 			},
 			header: {
 				transitions: true,
