@@ -24,7 +24,7 @@ export function defaultLabelFormatterFactory() {
 				<li class="nav-item open" role="presentation"
 				    *ngIf="visible(item)">
 					<a class="nav-link" role="treeitem" aria-selected="false"
-					   [routerLink]="item.routes" routerLinkActive="active"
+					   [routerLink]="item.routes" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
 					   [queryParams]="item.queryParams" [fragment]="item.fragment"
 					   (click)="item.collapsed = !item.collapsed"
 					   [class.collapsed]="item.collapsed"
