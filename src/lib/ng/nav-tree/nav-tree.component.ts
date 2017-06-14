@@ -28,7 +28,7 @@ export function defaultLabelFormatterFactory() {
 					   [queryParams]="item.queryParams" [fragment]="item.fragment"
 					   (click)="item.collapsed = !item.collapsed"
 					   [class.collapsed]="item.collapsed"
-					   [attr.data-toggle]="item.items ? 'collapse' : null"
+					   [attr.data-toggle]="item.items && !filterPattern ? 'collapse' : null"
 					   [attr.disabled]="item.disabled === true || null"
 					   [attr.aria-controls]="item.items ? itemKey(item) : null">
 						<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
@@ -85,9 +85,16 @@ export class NavTreeComponent {
 	@Input()
 	patternMatcher(item: NavTreeItemModel, pattern: string): boolean {
 		let match = new RegExp(pattern, 'gi').test(item.label);
-		return match || (item.items || []).some((subItem) => {
-			return this.patternMatcher(subItem, pattern);
+		let childMatch = (item.items || []).some((subItem) => {
+			let subMatch = this.patternMatcher(subItem, pattern);
+			if (subMatch) {
+				console.log('item.collapsed');
+				// Ensure parent item is not collapsed:
+				item.collapsed = false;
+			}
+			return subMatch;
 		});
+		return match || childMatch;
 	}
 
 	visible(item: NavTreeItemModel) {
