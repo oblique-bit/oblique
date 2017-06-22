@@ -1,5 +1,6 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {NavTreeItemModel} from './nav-tree-item.model';
+import {ActivatedRoute, RouterLinkActive} from '@angular/router';
 
 // FIXME: refactor this when https://github.com/angular/angular/issues/14485
 export function defaultLabelFormatterFactory() {
@@ -24,10 +25,12 @@ export function defaultLabelFormatterFactory() {
 				<li class="nav-item open" role="presentation"
 				    *ngIf="visible(item)">
 					<a class="nav-link" role="treeitem" aria-selected="false"
-					   [routerLink]="item.routes" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+					   [routerLink]="item.routes"
+					   #rla="routerLinkActive" routerLinkActive [routerLinkActiveOptions]="{exact: true}"
 					   [queryParams]="item.queryParams" [fragment]="item.fragment"
 					   (click)="item.collapsed = !item.collapsed"
 					   [class.collapsed]="item.collapsed"
+					   [class.active]="isLinkActive(rla, item)"
 					   [attr.data-toggle]="item.items && !filterPattern ? 'collapse' : null"
 					   [attr.disabled]="item.disabled === true || null"
 					   [attr.aria-controls]="item.items ? itemKey(item) : null">
@@ -64,6 +67,8 @@ export class NavTreeComponent {
 		LABEL_FORMATTER: defaultLabelFormatterFactory
 	};
 
+	activeFragment: string; // TODO: remove when https://github.com/angular/angular/issues/13205
+
 	@Input()
 	items: Array<NavTreeItemModel>;
 
@@ -88,13 +93,19 @@ export class NavTreeComponent {
 		let childMatch = (item.items || []).some((subItem) => {
 			let subMatch = this.patternMatcher(subItem, pattern);
 			if (subMatch) {
-				console.log('item.collapsed');
 				// Ensure parent item is not collapsed:
 				item.collapsed = false;
 			}
 			return subMatch;
 		});
 		return match || childMatch;
+	}
+
+	// TODO: remove when https://github.com/angular/angular/issues/13205
+	constructor(private route: ActivatedRoute) {
+		this.route.fragment.subscribe((fragment) => {
+			this.activeFragment = fragment;
+		});
 	}
 
 	visible(item: NavTreeItemModel) {
@@ -126,6 +137,11 @@ export class NavTreeComponent {
 				}
 			});
 	};
+
+	// TODO: remove when https://github.com/angular/angular/issues/13205
+	isLinkActive(rla: RouterLinkActive, item: NavTreeItemModel) {
+		return rla.isActive && (this.activeFragment === item.fragment);
+	}
 
 	// Public API:
 	public collapseAll() {

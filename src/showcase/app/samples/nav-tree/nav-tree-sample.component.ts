@@ -1,9 +1,11 @@
 //TODO: remove if codelyzer 4 is out
 /* tslint:disable no-access-missing-member */
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router, UrlSerializer} from '@angular/router';
 import {NavTreeItemModel} from '../../../../lib/ng/nav-tree/nav-tree-item.model';
 import {NavTreeComponent} from '../../../../lib/ng/nav-tree/nav-tree.component';
+
+import 'rxjs/operator/merge';
 
 @Component({
 	selector: 'nav-tree-sample',
@@ -51,15 +53,13 @@ export class NavTreeDetailSampleComponent implements OnInit {
 
 	public routing: string;
 
-	constructor(private route: ActivatedRoute) {
+	constructor(private route: ActivatedRoute, private router: Router) {
 	}
 
 	ngOnInit() {
-		this.route.params
-			.subscribe((params: Params) => {
-				this.routing = params['section'] +
-					(params['subsection'] ? '/' + params['subsection'] : '') +
-					(params['subsubsection'] ? '/' + params['subsubsection'] : '')
+		this.route.params.merge(this.route.fragment)
+			.subscribe(() => {
+				this.routing = this.router.routerState.snapshot.url;
 			});
 	}
 }
