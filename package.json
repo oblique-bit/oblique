@@ -32,7 +32,8 @@
     "path": "projects/OUI/repos/oblique-reactive"
   },
   "scripts": {
-    "ci-build": "npm run test -- --single-run --progress false  && ./node_modules/.bin/gulp dist",
+    "dev": "npm run start -- --open",
+    "ci-build": "npm run test -- --single-run --progress false && ./node_modules/.bin/gulp dist",
     "prestart": "npm run prebuild",
     "start": "./node_modules/.bin/ng serve --port 9000",
     "build": "./node_modules/.bin/ng build",
