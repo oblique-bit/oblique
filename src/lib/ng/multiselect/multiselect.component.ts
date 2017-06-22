@@ -18,22 +18,13 @@ import {
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 import {MultiselectConfig} from './multiselect.config';
+import {MultiselectTexts} from './multiselect.texts';
 
 const MULTISELECT_VALUE_ACCESSOR: any = {
 	provide: NG_VALUE_ACCESSOR,
 	useExisting: forwardRef(() => MultiselectComponent),
 	multi: true
 };
-
-export interface IMultiSelectTexts {
-	checkAll?: string;
-	uncheckAll?: string;
-	checked?: string;
-	checkedPlural?: string;
-	searchPlaceholder?: string;
-	defaultTitle?: string;
-	allSelected?: string;
-}
 
 // See: https://github.com/angular/angular/issues/5145
 let nextId = 0;
@@ -159,15 +150,15 @@ let nextId = 0;
 export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccessor {
 	@Input() options: any[];
 	@Input() settings: MultiselectConfig;
-	@Input() texts: IMultiSelectTexts;
+	@Input() texts: MultiselectTexts;
 	@Input() dropup = false;
 	@Input() disabled = false;
 	@Input() labelProperty: string;
 	@Input() labelFormatter: (option: any) => string;
-	@Output() selectionLimitReached = new EventEmitter();
+	@Output() selectionLimitReached = new EventEmitter<number>();
 	@Output() dropdownClosed = new EventEmitter();
-	@Output() onAdded = new EventEmitter();
-	@Output() onRemoved = new EventEmitter();
+	@Output() onAdded = new EventEmitter<any>();
+	@Output() onRemoved = new EventEmitter<any>();
 
 	id = `ms-${nextId++}`;
 
@@ -178,18 +169,9 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	isVisible = false;
 	searchFilterText = '';
 
-	defaultTexts: IMultiSelectTexts = {
-		checkAll: 'i18n.oblique.multiselect.checkAll',
-		uncheckAll: 'i18n.oblique.multiselect.uncheckAll',
-		checked: 'i18n.oblique.multiselect.checked',
-		checkedPlural: 'i18n.oblique.multiselect.checkedPlural',
-		searchPlaceholder: 'i18n.oblique.multiselect.searchPlaceholder',
-		defaultTitle: 'i18n.oblique.multiselect.defaultTitle',
-		allSelected: 'i18n.oblique.multiselect.allSelected'
-	};
-
 	constructor(private element: ElementRef,
-				private multiselectDropdownConfig: MultiselectConfig,
+				private multiselectConfig: MultiselectConfig,
+				private multiselectTexts: MultiselectTexts,
 				differs: IterableDiffers) {
 		this.differ = differs.find([]).create(null);
 	}
@@ -222,17 +204,18 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	}
 
 	ngOnInit() {
-		this.settings = Object.assign({}, this.multiselectDropdownConfig, this.settings);
-		this.texts = Object.assign({}, this.defaultTexts, this.texts);
+		this.settings = Object.assign({}, this.multiselectConfig, this.settings);
+		this.texts = Object.assign({}, this.multiselectTexts, this.texts);
 		this.title = this.texts.defaultTitle || '';
 	}
 
 	onModelChange: (_: any) => void = (_: any) => {
 		//
-	}
+	};
+
 	onModelTouched: () => void = () => {
 		//
-	}
+	};
 
 	writeValue(value: any): void {
 		if (value) {

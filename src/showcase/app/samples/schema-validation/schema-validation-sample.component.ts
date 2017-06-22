@@ -30,13 +30,13 @@ export class SchemaValidationComponent {
 				'type': 'number',
 				'minimum': 1,
 				'maximum': 10000000,
-				'exclusiveMinimum': true
+				'exclusiveMinimum': 1
 			},
 			'integer': {
 				'type': 'integer',
 				'minimum': 0,
 				'maximum': 100,
-				'exclusiveMaximum': true
+				'exclusiveMaximum': 100
 			},
 			//TODO: not implemented yet
 			'date': {

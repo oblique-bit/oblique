@@ -53,7 +53,7 @@ class TestComponent {
 	};
 }
 
-fdescribe('NavTreeComponent', () => {
+describe('NavTreeComponent', () => {
 	let testComponent: TestComponent;
 	let component: NavTreeComponent;
 	let fixture: ComponentFixture<TestComponent>;

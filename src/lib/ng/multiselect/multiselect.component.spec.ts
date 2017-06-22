@@ -5,6 +5,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {MultiselectConfig} from './multiselect.config';
 import {MockTranslatePipe} from '../../../../testhelpers';
 import {By} from '@angular/platform-browser';
+import {MultiselectTexts} from './multiselect.texts';
 
 describe('MultiselectComponent', () => {
 	let fixture: ComponentFixture<MultiselectComponent>;
@@ -29,7 +30,8 @@ describe('MultiselectComponent', () => {
 			],
 			imports: [FormsModule],
 			providers: [
-				MultiselectConfig
+				MultiselectConfig,
+				MultiselectTexts
 			]
 		}).compileComponents();
 	}));
