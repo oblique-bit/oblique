@@ -6,6 +6,7 @@ import {MultiselectComponent} from './multiselect.component';
 import {MultiselectConfig} from './multiselect.config';
 import {MultiselectSearchPipe} from './multiselect-search.pipe';
 import {TranslateModule} from '@ngx-translate/core';
+import {MultiselectTexts} from './multiselect.texts';
 
 @NgModule({
 	imports: [
@@ -26,7 +27,8 @@ export class MultiselectModule {
 		return {
 			ngModule: MultiselectModule,
 			providers: [
-				MultiselectConfig
+				MultiselectConfig,
+				MultiselectTexts
 			]
 		};
 	}
