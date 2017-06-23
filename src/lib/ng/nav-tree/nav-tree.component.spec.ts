@@ -7,6 +7,8 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {NavTreeComponent} from './nav-tree.component';
 import {NavTreeItemModel} from './nav-tree-item.model';
 import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
+import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
 	template: `
@@ -53,7 +55,7 @@ class TestComponent {
 	};
 }
 
-describe('NavTreeComponent', () => {
+fdescribe('NavTreeComponent', () => {
 	let testComponent: TestComponent;
 	let component: NavTreeComponent;
 	let fixture: ComponentFixture<TestComponent>;
@@ -62,7 +64,15 @@ describe('NavTreeComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [TestComponent, NavTreeComponent],
-			imports: [CommonModule, RouterTestingModule, NgbCollapseModule.forRoot()]
+			imports: [CommonModule, RouterTestingModule, NgbCollapseModule.forRoot()],
+			providers: [
+				{
+					provide: ActivatedRoute,
+					useValue: {
+						fragment: Observable.of('fragment')
+					}
+				}
+			],
 		}).compileComponents();
 	}));
 
