@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async, inject} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import {RouterTestingModule} from '@angular/router/testing';
 import {NgbButtonsModule, NgbCollapseModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
@@ -31,25 +31,18 @@ describe('NavTreeSampleComponent', () => {
 				NgbButtonsModule,
 				NgbTooltipModule.forRoot()
 			],
-			providers: [
-				{
-					provide: ActivatedRoute,
-					useValue: {
-						data: Observable.of({sample: {navTree: {items: []}}})
-					}
-				}
-			],
 			schemas: [
 				CUSTOM_ELEMENTS_SCHEMA
 			]
 		}).compileComponents();
 	}));
 
-	beforeEach(() => {
+	beforeEach(inject([ActivatedRoute],(activatedRoute: ActivatedRoute) => {
+		activatedRoute.data = Observable.of({sample: {navTree: {items: []}}});
 		fixture = TestBed.createComponent(NavTreeSampleComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
-	});
+	}));
 
 	it('should create', () => {
 		expect(component).toBeTruthy();
