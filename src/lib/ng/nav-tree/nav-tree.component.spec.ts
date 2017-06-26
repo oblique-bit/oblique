@@ -14,7 +14,8 @@ import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
 		             [prefix]="prefix"
 		             [variant]="variant"
 		             [filterPattern]="filterPattern"
-		             [labelFormatter]="labelFormatter"></or-nav-tree>`
+		             [labelFormatter]="labelFormatter"
+		             [rlaOptions]="rlaOptions"></or-nav-tree>`
 })
 class TestComponent {
 	items = [
@@ -47,6 +48,9 @@ class TestComponent {
 	prefix = 'nav-tree-test';
 	variant = NavTreeComponent.DEFAULTS.VARIANT;
 	filterPattern: string;
+	public rlaOptions: any = {
+		exact: true
+	};
 
 	labelFormatter(label: string): string {
 		return `${label} - ${this.prefix}`;
@@ -88,7 +92,7 @@ describe('NavTreeComponent', () => {
 		expect(navItems.length).toBe(12);
 	});
 
-	it('should detects changes if another `NavTreeItemModel is added`', () => {
+	it('should detect changes if another `NavTreeItemModel is added`', () => {
 		testComponent.items.push(new NavTreeItemModel({id: 'X', label: 'X - Label'}));
 		fixture.detectChanges();
 
@@ -103,6 +107,13 @@ describe('NavTreeComponent', () => {
 		let navTrees = fixture.debugElement.queryAll(By.css('.nav-tree.nav-custom'));
 		expect(navTrees.length).toBe(4);
 	});
+
+	// fit('should activate one navigation item on click', () => {
+	// 	let firstNavItem = fixture.debugElement.query(By.css('a.nav-link'));
+	// 	firstNavItem.nativeElement.click();
+	//
+	// 	expect(firstNavItem.classes['active']).toBeDefined();
+	// });
 
 	it('should custom format item labels', () => {
 		let suffix = '[custom]';

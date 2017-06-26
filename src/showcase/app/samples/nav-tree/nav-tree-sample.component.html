@@ -13,6 +13,7 @@
 								 [prefix]="'nav-tree-sample'"
 								 [filterPattern]="filter.pattern"
 								 [pathPrefix]="'nav-tree'"
+								 [rlaOptions]="rlaOptions"
 								 [variant]="variant">
 						<li class="nav-item nav-header" role="presentation">
 							<h3 class="nav-header-title" *ngIf="!filter.pattern">Menu Sample</h3>
@@ -28,42 +29,64 @@
 					<h3 class="card-title">Tools</h3>
 				</div>
 				<div class="card-block">
-					<h4>Filter</h4>
-					<div class="control-action">
-						<input class="form-control" type="text"
-							   placeholder="{{'i18n.common.search.placeholder' | translate}}"
-							   [(ngModel)]="filter.pattern" name="filter" #filterControl>
-						<button class="control-action-trigger" type="button"
-								(click)="filter.clear(); filterControl.focus();">
-							<span class="fa fa-times-circle"></span>
-							<span class="sr-only">{{'i18n.common.clear' | translate}}</span>
-						</button>
+					<div class="form-group row">
+						<label class="col-3 col-form-label">Filter</label>
+						<div class="col-9">
+							<div class="control-action">
+								<input class="form-control" type="text"
+									   placeholder="{{'i18n.common.search.placeholder' | translate}}"
+									   [(ngModel)]="filter.pattern" name="filter" #filterControl>
+								<button class="control-action-trigger" type="button"
+										(click)="filter.clear(); filterControl.focus();">
+									<span class="fa fa-times-circle"></span>
+									<span class="sr-only">{{'i18n.common.clear' | translate}}</span>
+								</button>
+							</div>
+						</div>
 					</div>
-					<h4>Toggle</h4>
-					<div class="btn-group">
-						<button class="btn btn-default" role="button" (click)="navTreeControl.collapseAll()">
-							<span class="fa fa-compress"></span> {{'i18n.common.collapseAll' | translate}}
-						</button>
-						<button class="btn btn-default" role="button" (click)="navTreeControl.expandAll()">
-							<span class="fa fa-expand"></span> {{'i18n.common.expandAll' | translate}}
-						</button>
+					<div class="form-group row">
+						<label class="col-3 col-form-label">Toggle</label>
+						<div class="col-9">
+							<div class="btn-group">
+								<button class="btn btn-default" role="button" (click)="navTreeControl.collapseAll()">
+									<span class="fa fa-compress"></span> {{'i18n.common.collapseAll' | translate}}
+								</button>
+								<button class="btn btn-default" role="button" (click)="navTreeControl.expandAll()">
+									<span class="fa fa-expand"></span> {{'i18n.common.expandAll' | translate}}
+								</button>
+							</div>
+						</div>
 					</div>
-					<h4>Variant</h4>
-					<div [(ngModel)]="variant" ngbRadioGroup name="variant">
-						<!-- TODO: remove `(click)` when https://github.com/ng-bootstrap/ng-bootstrap/issues/1125 -->
-						<label class="btn btn-default" ngbTooltip=".nav-bordered.nav-hover"
-							   (click)="variant = 'nav-bordered nav-hover'">
-							<input type="radio" value="nav-bordered nav-hover"> Default
-						</label>
-						<label class="btn btn-default" ngbTooltip=".nav-hover" (click)="variant = 'nav-hover'">
-							<input type="radio" value="nav-hover"> Hover Only
-						</label>
-						<label class="btn btn-default" ngbTooltip=".nav-bordered" (click)="variant = 'nav-bordered'">
-							<input type="radio" value="nav-bordered"> Bordered Only
-						</label>
-						<label class="btn btn-default" (click)="variant = ''">
-							<input type="radio" value=""> None
-						</label>
+					<div class="form-group row">
+						<label class="col-3 col-form-label">Variant</label>
+						<div class="col-9">
+							<div [(ngModel)]="variant" ngbRadioGroup name="variant">
+								<!-- TODO: remove `(click)` when https://github.com/ng-bootstrap/ng-bootstrap/issues/1125 -->
+								<label class="btn btn-default" ngbTooltip=".nav-bordered.nav-hover"
+									   (click)="variant = 'nav-bordered nav-hover'">
+									<input type="radio" value="nav-bordered nav-hover"> Default
+								</label>
+								<label class="btn btn-default" ngbTooltip=".nav-hover" (click)="variant = 'nav-hover'">
+									<input type="radio" value="nav-hover"> Hover Only
+								</label>
+								<label class="btn btn-default" ngbTooltip=".nav-bordered" (click)="variant = 'nav-bordered'">
+									<input type="radio" value="nav-bordered"> Bordered Only
+								</label>
+								<label class="btn btn-default" (click)="variant = ''">
+									<input type="radio" value=""> None
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-3 col-form-label">Route options</label>
+						<div class="col-9">
+							<div class="checkbox">
+								<input type="checkbox" id="nav-tree-sample-router-rla-exact"
+										[(ngModel)]="rlaOptions.exact">
+								<label for="nav-tree-sample-router-rla-exact">Exact router link for active menu?</label>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
