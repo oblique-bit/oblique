@@ -146,7 +146,7 @@ describe('MultiselectComponent', () => {
 		describe('with selectionLimit set', () => {
 
 			beforeEach(() => {
-				component.settings.selectionLimit = 2;
+				component.selectionLimit = 2;
 				component.model.push(stringOption1);
 				component.model.push(stringOption2);
 			});
@@ -171,7 +171,7 @@ describe('MultiselectComponent', () => {
 
 	describe('updateTitle()', () => {
 		beforeEach(() => {
-			component.settings.dynamicTitleMaxItems = 0;
+			component.dynamicTitleMaxItems = 0;
 			component.options = stringOptions;
 		});
 
@@ -209,7 +209,7 @@ describe('MultiselectComponent', () => {
 
 		describe('with dynamicTitleMaxItems', () => {
 			beforeEach(() => {
-				component.settings.dynamicTitleMaxItems = 2;
+				component.dynamicTitleMaxItems = 2;
 				component.options = stringOptions;
 			});
 
@@ -239,7 +239,7 @@ describe('MultiselectComponent', () => {
 		beforeEach(() => {
 			spyOn(component.onAdded, 'emit').and.callThrough();
 
-			component.settings.showCheckAll = true;
+			component.showCheckAll = true;
 			component.options = stringOptions;
 		});
 
@@ -279,7 +279,7 @@ describe('MultiselectComponent', () => {
 		beforeEach(() => {
 			spyOn(component.onRemoved, 'emit').and.callThrough();
 
-			component.settings.showUncheckAll = true;
+			component.showUncheckAll = true;
 			component.options = stringOptions;
 		});
 

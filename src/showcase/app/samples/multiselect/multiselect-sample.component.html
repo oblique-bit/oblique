@@ -24,7 +24,8 @@
 					<div class="col-md-6">
 						<or-multiselect [options]="statesComplex"
 										[(ngModel)]="labelModel"
-										[settings]="{showCheckAll: true, showUncheckAll: true}"
+										[showCheckAll]="true"
+										[showUncheckAll]="true"
 										labelProperty="name">
 						</or-multiselect>
 					</div>
@@ -39,7 +40,9 @@
 					<div class="col-md-6">
 						<or-multiselect [options]="statesComplex"
 										[(ngModel)]="formatterModel"
-										[settings]="{showCheckAll: true, showUncheckAll: true, enableSearch: true}"
+										[showCheckAll]="true"
+										[showUncheckAll]="true"
+										[enableSearch]="true"
 										[texts]="{defaultTitle: '... and a custom title'}"
 										[labelFormatter]="complexStateLabelFormatter">
 						</or-multiselect>

@@ -37,7 +37,7 @@ describe('NavTreeSampleComponent', () => {
 		}).compileComponents();
 	}));
 
-	beforeEach(inject([ActivatedRoute],(activatedRoute: ActivatedRoute) => {
+	beforeEach(inject([ActivatedRoute], (activatedRoute: ActivatedRoute) => {
 		activatedRoute.data = Observable.of({sample: {navTree: {items: []}}});
 		fixture = TestBed.createComponent(NavTreeSampleComponent);
 		component = fixture.componentInstance;
