@@ -109,7 +109,7 @@ let nextId = 0;
 			<span class="multiselect-label">{{ title | translate:titleTranslateParams }}</span>
 		    <span class="toggle" [ngClass]="{'toggle-down-up': !dropup, 'toggle-up-down': dropup}"></span>
 	    </button>
-		<div *ngIf="isVisible" class="dropdown-menu" [class.pull-right]="pullRight" [class.dropdown-menu-right]="pullRight"
+		<div *ngIf="isVisible" class="dropdown-menu"
 			[style.max-height]="maxHeight" style="display: block; height: auto; overflow-y: auto;"
 			[attr.aria-hidden]="!isVisible">
 			<div class="dropdown-item" *ngIf="enableSearch">
@@ -160,7 +160,6 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	@Input() dynamicTitleMaxItems;
 	@Input() enableSearch;
 	@Input() maxHeight;
-	@Input() pullRight;
 	@Input() selectionLimit;
 	@Input() showCheckAll;
 	@Input() showUncheckAll;
@@ -189,7 +188,6 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 		this.dynamicTitleMaxItems = multiselectConfig.dynamicTitleMaxItems;
 		this.enableSearch = multiselectConfig.enableSearch;
 		this.maxHeight = multiselectConfig.maxHeight;
-		this.pullRight = multiselectConfig.pullRight;
 		this.selectionLimit = multiselectConfig.selectionLimit;
 		this.showCheckAll = multiselectConfig.showCheckAll;
 		this.showUncheckAll = multiselectConfig.showUncheckAll;
