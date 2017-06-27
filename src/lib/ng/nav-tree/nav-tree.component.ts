@@ -26,7 +26,7 @@ export function defaultLabelFormatterFactory() {
 				    *ngIf="visible(item)">
 					<a class="nav-link" role="treeitem" aria-selected="false"
 					   [routerLink]="item.routes"
-					   #rla="routerLinkActive" routerLinkActive [routerLinkActiveOptions]="{exact: true}"
+					   #rla="routerLinkActive" routerLinkActive [routerLinkActiveOptions]="rlaOptions"
 					   [queryParams]="item.queryParams" [fragment]="item.fragment"
 					   (click)="item.collapsed = !item.collapsed"
 					   [class.collapsed]="item.collapsed"
@@ -43,6 +43,7 @@ export function defaultLabelFormatterFactory() {
 						             [filterPattern]="filterPattern"
 						             [labelFormatter]="labelFormatter"
 						             [pathPrefix]="pathPrefix"
+						             [rlaOptions]="rlaOptions"
 						             [variant]="variant"></or-nav-tree>
 					</div>
 				</li>
@@ -86,6 +87,11 @@ export class NavTreeComponent {
 
 	@Input()
 	pathPrefix: string;
+
+	@Input()
+	rlaOptions: any = {
+		exact: true
+	};
 
 	@Input()
 	patternMatcher(item: NavTreeItemModel, pattern: string): boolean {
@@ -140,7 +146,9 @@ export class NavTreeComponent {
 
 	// TODO: remove when https://github.com/angular/angular/issues/13205
 	isLinkActive(rla: RouterLinkActive, item: NavTreeItemModel) {
-		return rla.isActive && (this.activeFragment === item.fragment);
+		return rla.isActive && (
+			!item.fragment && !this.rlaOptions.exact || this.activeFragment === item.fragment
+		);
 	}
 
 	// Public API:

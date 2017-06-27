@@ -15,6 +15,9 @@ export class NavTreeSampleComponent implements OnInit {
 
 	public items: Array<NavTreeItemModel>;
 	public variant = NavTreeComponent.DEFAULTS.VARIANT;
+	public rlaOptions: any = {
+		exact: true
+	};
 
 	public filter = {
 		pattern: null,
