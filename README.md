@@ -93,11 +93,11 @@ And add the TypeScript specific libraries and configs described in the [Configur
 
 1. Install *globally* required `npm` libraries:
 
-	npm install -g typescript gulp @angular/cli
+		npm install -g typescript gulp @angular/cli
 
 2. Install *development* and *frontend* dependencies (`npm` will look at [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/package.json) and automatically install the necessary dependencies listed there):
 
-	npm install
+		npm install
 
 
 #### Troubleshooting dependencies
@@ -175,7 +175,7 @@ Prepare your workspace:
 1. Ensure you have an account with publishing privileges on the internal `npm` registry ([BIT Nexus v3](https://nexus3.eap.bit.admin.ch/))
 2. Authenticate on the internal npm registry (Nexus v3):
 
-	npm login --registry=https://nexus3.eap.bit.admin.ch/repository/npm-intern/
+		npm login --registry=https://nexus3.eap.bit.admin.ch/repository/npm-intern/
 
     > Follow the steps on the terminal as you may be asked for credentials.
 
