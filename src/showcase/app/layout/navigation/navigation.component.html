@@ -83,6 +83,12 @@
 					   role="menuitem" data-toggle="header navigation">
 						{{'i18n.routes.samples.formControlState.title' | translate}}</a>
 				</li>
+				<li class="nav-item" role="presentation">
+					<a class="nav-link" href=""
+					   [routerLink]="['/filter-box']" routerLinkActive="active"
+					   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.filterBox.title'
+						| translate}}</a>
+				</li>
 				<li class="nav-item navigation-section" role="presentation">
 					<a class="nav-link" href="" role="menuitem" aria-expanded="false" aria-haspopup="true"
 					   data-toggle="navigation" ng-class="{active: ('validation' | includedByState)}">

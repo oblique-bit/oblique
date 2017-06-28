@@ -72,9 +72,7 @@ If you are using Git for the first time, configure your user information as well
 
 > *Note*: proxy URL must start with `http[s]://`!
 
-	HTTP_PROXY <http-proxy-url>
-	HTTPS_PROXY <https-proxy-url>
-	NO_PROXY follow [these instructions](https://confluence.eap.bit.admin.ch/display/JEAP/Projekt+Setup#ProjektSetup-Umgebungsvariablen)
+Follow [these instructions](https://confluence.eap.bit.admin.ch/display/JEAP/Projekt+Setup#ProjektSetup-Umgebungsvariablen)
 
 ###### GIT Config (.gitconfig)
 
@@ -95,15 +93,12 @@ And add the TypeScript specific libraries and configs described in the [Configur
 
 1. Install *globally* required `npm` libraries:
 
-	npm install -g typescript
+		npm install -g typescript gulp @angular/cli
 
 2. Install *development* and *frontend* dependencies (`npm` will look at [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/package.json) and automatically install the necessary dependencies listed there):
 
-	npm install
+		npm install
 
-3. Customize:
-
-> Open [project.conf.ts](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/project.conf.ts) and adapt this configuration to fit your project requirements.
 
 #### Troubleshooting dependencies
 
@@ -129,12 +124,12 @@ _Same as `npm start`, except that it will serve optimized resources._
 
 Run the following command to install a new npm dependency:
 
-	npm i <dependency> -D
+	npm i <dependency> -S
 
 Before you do so, make sure you're in your project's root folder, where [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-reactive/browse/package.json) is.
 After everything is done, you should see your new dependency listed in [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-ui/browse/package.json).
 
-If you need to install a global dependency, such as Gulp, switch the *-D* to a *-g* in your command. This would look something like this:
+If you need to install a global dependency, such as Gulp, switch the *-S* to a *-g* in your command. This would look something like this:
 
 	npm i <dependency> -g
 
@@ -142,19 +137,19 @@ Installing a global npm dependency makes it accessible from every command line, 
 
 You can search through npm packages over at [npmjs.com](https://www.npmjs.com/).
 
-#### Transpiling (TypeScript) dependencies
+#### Adding definition files for a non TypeScript dependency
 
-If you want to use a framework that adds new syntax to regular JavaScript, you'll probably need to give TypeScript, our JavaScript transpiler, hints as to what to do with the new expressions. This is what *typings* is for.
+If you want to use a library that isn't written in TypeScript, like lodash or jQuery, you'll probably need to give TypeScript hints as to what to do with the new expressions.
 
-First, you'll need to search for your soon-to-be-integrated framework in the typings repository. We'll do it directly in the console via:
+First, you'll need to search for your soon-to-be-integrated library here:
 
-	typings search <dependency>
+https://microsoft.github.io/TypeSearch/
 
-Most of the time, this will give you more than one result. So keep the exact name of your desired dependency in mind and type:
+Now you can install the definition files with npm, like it should be shown to you on the result page
 
-	typings i dt~<dependency> -SG
-
-Doing this, typings will download all the needed typing files into your project and reference them in [typings.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-ui/browse/typings.json) so that the next developer can simply run *typings install* (as we do) and doesn't need to bother. Quite neat, huh?
+	npm install --save @types/[libName]
+	
+The TypeCompiler will automatically look for packages in `@types/` and use them as definition files.
 
 ### Checking for updates
 
@@ -180,7 +175,7 @@ Prepare your workspace:
 1. Ensure you have an account with publishing privileges on the internal `npm` registry ([BIT Nexus v3](https://nexus3.eap.bit.admin.ch/))
 2. Authenticate on the internal npm registry (Nexus v3):
 
-	npm login --registry=https://nexus3.eap.bit.admin.ch/repository/npm-intern/
+		npm login --registry=https://nexus3.eap.bit.admin.ch/repository/npm-intern/
 
     > Follow the steps on the terminal as you may be asked for credentials.
 

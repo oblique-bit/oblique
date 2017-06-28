@@ -13,6 +13,7 @@ import {NotificationSampleComponent} from './notification/notification-sample.co
 import {SchemaValidationComponent} from './schema-validation/schema-validation-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {UnsavedChangesGuard} from '../../../lib/ng/unsaved-changes/unsaved-changes.guard';
+import {FilterBoxSampleComponent} from './filter-box-sample/filter-box-sample.component';
 
 const samplesRoutes: Routes = [
 	{path: 'datepicker', component: DatepickerSampleComponent},
@@ -45,7 +46,8 @@ const samplesRoutes: Routes = [
 		}
 	}
 	},
-	{path: 'unsaved-changes', component: UnsavedChangesSampleComponent, canDeactivate: [UnsavedChangesGuard]}
+	{path: 'unsaved-changes', component: UnsavedChangesSampleComponent, canDeactivate: [UnsavedChangesGuard]},
+	{path: 'filter-box', component: FilterBoxSampleComponent}
 ];
 
 @NgModule({

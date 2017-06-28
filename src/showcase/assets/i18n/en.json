@@ -61,6 +61,9 @@
         "ui-scroll": {
           "title": "UI Scroll"
         },
+        "filterBox": {
+          "title": "Filter Box"
+        },
         "formControlState": {
           "title": "Form Control State"
         },
