@@ -15,11 +15,13 @@ import {SchemaValidationModule} from './schema-validation';
 import {SpinnerModule} from './spinner';
 import {TopControlModule} from './top-control';
 import {UnsavedChangesModule} from './unsaved-changes';
+import {FilterBoxModule} from './filter-box/filter-box.module';
 
 export * from './branding';
 export * from './datepicker';
 export * from './document-meta';
 export * from './error-messages';
+export * from './filter-box';
 export * from './form-control-state';
 export * from './layout-manager';
 export * from './multiselect';
@@ -40,6 +42,7 @@ const OBLIQUE_MODULES = [
 	DatepickerModule,
 	DocumentMetaModule,
 	ErrorMessagesModule,
+	FilterBoxModule,
 	FormControlStateModule,
 	LayoutManagerModule,
 	MultiselectModule,
@@ -59,6 +62,7 @@ const OBLIQUE_MODULES = [
 		DatepickerModule.forRoot(),
 		DocumentMetaModule.forRoot(),
 		ErrorMessagesModule.forRoot(),
+		FilterBoxModule.forRoot(),
 		FormControlStateModule.forRoot(),
 		LayoutManagerModule.forRoot(),
 		MultiselectModule.forRoot(),

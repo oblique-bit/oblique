@@ -19,6 +19,7 @@ import {NavTreeSampleComponent, NavTreeDetailSampleComponent} from './nav-tree/n
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 import {SamplesRoutingModule} from './samples-routing.module';
 import {SchemaValidationComponent} from './schema-validation/schema-validation-sample.component';
+import {FilterBoxSampleComponent} from './filter-box-sample/filter-box-sample.component';
 
 @NgModule({
 	imports: [
@@ -42,7 +43,8 @@ import {SchemaValidationComponent} from './schema-validation/schema-validation-s
 		FormControlStateSampleComponent,
 		LayoutManagerSampleComponent,
 		UnsavedChangesSampleComponent,
-		UnsavedChangesSampleModalComponent
+		UnsavedChangesSampleModalComponent,
+		FilterBoxSampleComponent
 	],
 	exports: [
 		RouterModule
