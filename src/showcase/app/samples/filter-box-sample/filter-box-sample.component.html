@@ -73,8 +73,8 @@
 		<div class="card">
 			<div class="card-header">With "cleared" feedback</div>
 			<div class="card-block">
-				<p>The <code>patternCleared</code> event is used to count the number of times the search pattern has been cleared: <span class="badge badge-default">{{cleared}}</span>.</p>
-				<or-filter-box [(pattern)]="patterns[4]" (patternCleared)="incrementCleared()"></or-filter-box>
+				<p>The <code>patternClear</code> event is used to count the number of times the search pattern has been cleared: <span class="badge badge-default">{{cleared}}</span>.</p>
+				<or-filter-box [(pattern)]="patterns[4]" (patternClear)="incrementCleared()"></or-filter-box>
 				<ul>
 					<li *ngFor="let item of items | patternFilter:patterns[4]">{{item}}</li>
 				</ul>
@@ -83,8 +83,8 @@
 		<div class="card">
 			<div class="card-header">With "changed" feedback</div>
 			<div class="card-block">
-				<p>The <code>patternChanged</code> event is used to count the number of times the search pattern has been changed: <span class="badge badge-default">{{changed}}</span>.</p>
-				<or-filter-box [(pattern)]="patterns[5]" (patternChanged)="incrementChanged()"></or-filter-box>
+				<p>The <code>patternChange</code> event is used to count the number of times the search pattern has been changed: <span class="badge badge-default">{{changed}}</span>.</p>
+				<or-filter-box [(pattern)]="patterns[5]" (patternChange)="incrementChanged()"></or-filter-box>
 				<ul>
 					<li *ngFor="let item of items | patternFilter:patterns[5]">{{item}}</li>
 				</ul>
