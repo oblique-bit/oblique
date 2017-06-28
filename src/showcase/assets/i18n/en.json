@@ -52,6 +52,9 @@
         "nav-tree": {
           "title": "Navigation Tree"
         },
+        "notification": {
+          "title": "Notification"
+        },
         "typeahead": {
           "title": "Typeahead"
         },

@@ -17,7 +17,7 @@ export class FormControlStateSampleComponent {
 		if (form.valid) {
 			this.notificationService.success('Congratulations, your data is valid!');
 		} else {
-			this.notificationService.warn('Oups, your data does not look to be valid!');
+			this.notificationService.warning('Oups, your data does not look to be valid!');
 		}
 	}
 }

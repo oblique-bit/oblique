@@ -5,7 +5,7 @@ import {By} from '@angular/platform-browser';
 
 import {NotificationComponent} from './notification.component';
 import {NotificationService} from './notification.service';
-import {Notification, NotificationTypes} from './notification';
+import {Notification, NotificationType} from './notification';
 import {MockTranslatePipe} from '../../../../testhelpers';
 
 //TODO: needs more tests
@@ -43,8 +43,8 @@ describe('NotificationComponent', () => {
 		let htmlNotifications;
 
 		beforeEach(() => {
-			mockNotificationService.notifications.push(new Notification(1, NotificationTypes.DEFAULT, message, title, false));
-			mockNotificationService.notifications.push(new Notification(2, NotificationTypes.INFO, message, title, false));
+			mockNotificationService.notifications.push(new Notification(1, NotificationType.DEFAULT, message, title, false));
+			mockNotificationService.notifications.push(new Notification(2, NotificationType.INFO, message, title, false));
 			fixture.detectChanges();
 
 			//grabs all alerts of the components template
@@ -62,7 +62,7 @@ describe('NotificationComponent', () => {
 	});
 
 	it('should call NotificationService.remove() on button click', () => {
-		mockNotificationService.notifications.push(new Notification(1, NotificationTypes.DEFAULT, message, title, true));
+		mockNotificationService.notifications.push(new Notification(1, NotificationType.DEFAULT, message, title, true));
 		fixture.detectChanges();
 
 		const button = fixture.debugElement.query(By.css('button'));

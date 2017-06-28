@@ -7,18 +7,20 @@ import {TranslateModule} from '@ngx-translate/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {ObliqueModule} from '../../../lib/ng/index';
+import {SampleDataResolver} from '../resolvers/sample-data.resolver';
+import {SamplesRoutingModule} from './samples-routing.module';
+
 import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {FormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
 import {LayoutManagerSampleComponent} from './layout-manager/layout-manager-sample.component';
-import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
-import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
 import {NavigatorSampleModule} from './navigator-sample/navigator-sample.module';
 import {NavigatorSampleRoutingModule} from './navigator-sample/navigator-sample-routing.module';
 import {NavTreeSampleComponent, NavTreeDetailSampleComponent} from './nav-tree/nav-tree-sample.component';
-import {SampleDataResolver} from '../resolvers/sample-data.resolver';
-import {SamplesRoutingModule} from './samples-routing.module';
+import {NotificationSampleComponent} from './notification/notification-sample.component';
 import {SchemaValidationComponent} from './schema-validation/schema-validation-sample.component';
+import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
+import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
 
 @NgModule({
 	imports: [
@@ -34,13 +36,14 @@ import {SchemaValidationComponent} from './schema-validation/schema-validation-s
 	],
 	declarations: [
 		DatepickerSampleComponent,
+		FormControlStateSampleComponent,
+		LayoutManagerSampleComponent,
 		MultiselectSampleComponent,
 		NavigableSampleComponent,
 		NavTreeSampleComponent,
 		NavTreeDetailSampleComponent,
+		NotificationSampleComponent,
 		SchemaValidationComponent,
-		FormControlStateSampleComponent,
-		LayoutManagerSampleComponent,
 		UnsavedChangesSampleComponent,
 		UnsavedChangesSampleModalComponent
 	],

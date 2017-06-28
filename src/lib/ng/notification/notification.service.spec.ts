@@ -2,7 +2,7 @@
 
 import {TestBed, inject, tick, fakeAsync} from '@angular/core/testing';
 import {NotificationService} from './notification.service';
-import {NotificationTypes} from './notification';
+import {NotificationType} from './notification';
 
 describe('NotificationService', () => {
 	let notificationService: NotificationService;
@@ -27,12 +27,12 @@ describe('NotificationService', () => {
 		});
 
 		it('should save notification in array', () => {
-			notificationService.add(NotificationTypes.DEFAULT, 'message', 'title', true);
+			notificationService.add(NotificationType.DEFAULT, 'message', 'title', true);
 			expect(notificationService.notifications.length).toBe(1);
 		});
 
 		it('should call remove() after notificationTimeout is reached, if the notification isn\'t sticky', fakeAsync(() => {
-			const id = notificationService.add(NotificationTypes.DEFAULT, 'message', 'title', false);
+			const id = notificationService.add(NotificationType.DEFAULT, 'message', 'title', false);
 
 			tick(150);
 
@@ -42,7 +42,7 @@ describe('NotificationService', () => {
 		}));
 
 		it('shouldn\'t call remove() after notificationTimeout is reached, if the notification isn\'t sticky', fakeAsync(() => {
-			const id = notificationService.add(NotificationTypes.DEFAULT, 'message', 'title', true);
+			const id = notificationService.add(NotificationType.DEFAULT, 'message', 'title', true);
 
 			tick(150);
 
@@ -53,8 +53,8 @@ describe('NotificationService', () => {
 
 	describe('clear()', () => {
 		it('should remove all notification', () => {
-			notificationService.add(NotificationTypes.DEFAULT, 'message', 'title', true);
-			notificationService.add(NotificationTypes.ERROR, 'message', 'title', false);
+			notificationService.add(NotificationType.DEFAULT, 'message', 'title', true);
+			notificationService.add(NotificationType.ERROR, 'message', 'title', false);
 
 			notificationService.clear();
 
@@ -64,7 +64,7 @@ describe('NotificationService', () => {
 
 	describe('remove()', () => {
 		it('should remove item with matching id', () => {
-			const id: number = notificationService.add(NotificationTypes.DEFAULT, 'message', 'title', true);
+			const id: number = notificationService.add(NotificationType.DEFAULT, 'message', 'title', true);
 
 			notificationService.remove(id);
 
@@ -72,7 +72,7 @@ describe('NotificationService', () => {
 		});
 
 		it('shouldn\'t remove item with other id', () => {
-			let id: number = notificationService.add(NotificationTypes.DEFAULT, 'message', 'title', true);
+			let id: number = notificationService.add(NotificationType.DEFAULT, 'message', 'title', true);
 
 			notificationService.remove(++id);
 
@@ -80,8 +80,8 @@ describe('NotificationService', () => {
 		});
 
 		it('should only remove item with matching id', () => {
-			const idToRemove: number = notificationService.add(NotificationTypes.DEFAULT, 'message', 'title', true);
-			const idToKeep: number = notificationService.add(NotificationTypes.ERROR, 'message', 'title', true);
+			const idToRemove: number = notificationService.add(NotificationType.DEFAULT, 'message', 'title', true);
+			const idToKeep: number = notificationService.add(NotificationType.ERROR, 'message', 'title', true);
 
 			notificationService.remove(idToRemove);
 
@@ -96,7 +96,7 @@ describe('NotificationService', () => {
 
 			expect(notificationService.add)
 				.toHaveBeenCalledWith(
-					NotificationTypes.DEFAULT,
+					NotificationType.DEFAULT,
 					jasmine.any(String),
 					jasmine.any(String),
 					jasmine.any(Boolean)
@@ -110,7 +110,7 @@ describe('NotificationService', () => {
 
 			expect(notificationService.add)
 				.toHaveBeenCalledWith(
-					NotificationTypes.INFO,
+					NotificationType.INFO,
 					jasmine.any(String),
 					jasmine.any(String),
 					jasmine.any(Boolean)
@@ -124,7 +124,7 @@ describe('NotificationService', () => {
 
 			expect(notificationService.add)
 				.toHaveBeenCalledWith(
-					NotificationTypes.SUCCESS,
+					NotificationType.SUCCESS,
 					jasmine.any(String),
 					jasmine.any(String),
 					jasmine.any(Boolean)
@@ -138,7 +138,7 @@ describe('NotificationService', () => {
 
 			expect(notificationService.add)
 				.toHaveBeenCalledWith(
-					NotificationTypes.WARNING,
+					NotificationType.WARNING,
 					jasmine.any(String),
 					jasmine.any(String),
 					jasmine.any(Boolean)
@@ -159,7 +159,7 @@ describe('NotificationService', () => {
 
 			expect(notificationService.add)
 				.toHaveBeenCalledWith(
-					NotificationTypes.ERROR,
+					NotificationType.ERROR,
 					jasmine.any(String),
 					jasmine.any(String),
 					jasmine.any(Boolean)

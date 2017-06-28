@@ -1,5 +1,5 @@
 import {Injectable, Inject, Optional} from '@angular/core';
-import {Notification, NotificationTypes} from './notification';
+import {Notification, NotificationType} from './notification';
 
 /**
  * NotificationService
@@ -13,14 +13,13 @@ export class NotificationService {
 
 	private currentId = 0;
 
-
 	constructor(@Optional() @Inject('notificationTimeout') private timeout?: number) {
 		if (!timeout) {
 			this.timeout = 5000;
 		}
 	}
 
-	public add(type: NotificationTypes, messageKey: string, title: string, sticky: boolean): number {
+	public add(type: NotificationType, messageKey: string, title: string, sticky: boolean): number {
 		const notification = new Notification(this.currentId, type, messageKey, title, sticky);
 		this.notifications.unshift(notification);
 		this.notifications.sort((a: Notification, b: Notification) => b.type.priority - a.type.priority);
@@ -31,6 +30,26 @@ export class NotificationService {
 		return notification.id;
 	}
 
+	public default(messageKey: string, title = '', sticky = false): number {
+		return this.add(NotificationType.DEFAULT, messageKey, title, sticky);
+	}
+
+	public info(messageKey: string, title = '', sticky = false): number {
+		return this.add(NotificationType.INFO, messageKey, title, sticky);
+	}
+
+	public success(messageKey: string, title = '', sticky = false): number {
+		return this.add(NotificationType.SUCCESS, messageKey, title, sticky);
+	}
+
+	public warning(messageKey: string, title = '', sticky = false): number {
+		return this.add(NotificationType.WARNING, messageKey, title, sticky);
+	}
+
+	public error(messageKey: string, title = '', sticky = true): number {
+		return this.add(NotificationType.ERROR, messageKey, title, sticky);
+	}
+
 	public remove(id: number) {
 		this.notifications.forEach((notification: Notification, index: number) => {
 			if (id === notification.id) {
@@ -39,38 +58,9 @@ export class NotificationService {
 		});
 	}
 
-	public setNotificationTimeout(timeout: number) {
-		this.timeout = timeout;
-	}
-
 	public clear() {
-		//clears the array, but does not change the reference
+		// Clear the array without changing its reference:
 		this.notifications.length = 0;
-	}
-
-	public default(messageKey: string, title = '', sticky = false): number {
-		return this.add(NotificationTypes.DEFAULT, messageKey, title, sticky);
-	}
-
-	public info(messageKey: string, title = '', sticky = false): number {
-		return this.add(NotificationTypes.INFO, messageKey, title, sticky);
-	}
-
-	public success(messageKey: string, title = '', sticky = false): number {
-		return this.add(NotificationTypes.SUCCESS, messageKey, title, sticky);
-	}
-
-	public warn(messageKey: string, title = '', sticky = false): number {
-		return this.add(NotificationTypes.WARNING, messageKey, title, sticky);
-	}
-
-	//alias
-	public warning(...args) {
-		return this.warn.call(args);
-	}
-
-	public error(messageKey: string, title = '', sticky = true): number {
-		return this.add(NotificationTypes.ERROR, messageKey, title, sticky);
 	}
 
 }

@@ -19,6 +19,7 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './home/home.component';
 import {SamplesModule} from './samples/samples.module';
+import {NotificationService} from '../../lib/ng/notification/notification.service';
 
 // AoT requires an exported function for factories:
 export function createTranslateLoader(http: Http) {
@@ -49,6 +50,7 @@ export function createTranslateLoader(http: Http) {
 	],
 	providers: [
 		DocumentMetaService,
+		NotificationService,
 		LayoutManagerService,
 		{provide: 'notificationTimeout', useValue: 2000},
 		{provide: 'spinnerMaxTimeout', useValue: 3000}
