@@ -1,5 +1,5 @@
-<a name="2.0.0-RC.1-2"></a>
-## [2.0.0-RC.1-2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.1-2) (2017-06.27)
+<a name="2.0.0-RC.1-3"></a>
+## [2.0.0-RC.1-3](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.1-3) (2017-06.28)
 
 ### Bug Fixes
 
@@ -12,6 +12,11 @@
 ###BREAKING CHANGES
 
 If you used `[settings]` of `MultiselectComponent` you now have to bind every config value separately.
+
+<a name="2.0.0-RC.1-2"></a>
+## 2.0.0-RC.1-2
+
+This version was removed, because it was broken. 
 
 <a name="2.0.0-beta.3"></a>
 ## [2.0.0-beta.3](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-beta.3) (2017-06.22)
