@@ -1,5 +1,6 @@
 import {Injectable, Inject, Optional} from '@angular/core';
-import {Notification, NotificationType} from './notification';
+import {Notification, NotificationEvent, NotificationType} from './notification';
+import {Subject} from 'rxjs/Subject';
 
 /**
  * NotificationService
@@ -9,58 +10,75 @@ import {Notification, NotificationType} from './notification';
  */
 @Injectable()
 export class NotificationService {
-	public notifications: Notification[] = [];
+	public static DEFAULT_CHANNEL = 'default';
+	public static DEFAULT_TIMEOUT = 3500;
 
+	private emitter: Subject<NotificationEvent> = new Subject<NotificationEvent>();
 	private currentId = 0;
 
-	constructor(@Optional() @Inject('notificationTimeout') private timeout?: number) {
-		if (!timeout) {
-			this.timeout = 5000;
+	constructor(
+		@Optional() @Inject('notificationChannel') public channel = NotificationService.DEFAULT_CHANNEL,
+		@Optional() @Inject('notificationTimeout') public timeout = NotificationService.DEFAULT_TIMEOUT
+	) {
+		this.channel = this.channel || NotificationService.DEFAULT_CHANNEL;
+		this.timeout = this.timeout || NotificationService.DEFAULT_TIMEOUT;
+	}
+
+	public subscribe(next: (value: NotificationEvent) => void, error?: (error: any) => void, complete?: () => void) {
+		return this.emitter.subscribe(next, error, complete);
+	}
+
+	public broadcast(channel = NotificationService.DEFAULT_CHANNEL, notification: Notification): Notification {
+		if (!notification.id) {
+			notification.id = this.currentId++;
 		}
+
+		this.emitter.next({
+			channel: channel,
+			notification: notification
+		});
+
+		return notification;
 	}
 
-	public add(type: NotificationType, messageKey: string, title: string, sticky: boolean): number {
-		const notification = new Notification(this.currentId, type, messageKey, title, sticky);
-		this.notifications.unshift(notification);
-		this.notifications.sort((a: Notification, b: Notification) => b.type.priority - a.type.priority);
-		if (!notification.sticky) {
-			setTimeout(() => this.remove(notification.id), this.timeout);
-		}
-		this.currentId++;
-		return notification.id;
-	}
-
-	public default(messageKey: string, title = '', sticky = false): number {
-		return this.add(NotificationType.DEFAULT, messageKey, title, sticky);
-	}
-
-	public info(messageKey: string, title = '', sticky = false): number {
-		return this.add(NotificationType.INFO, messageKey, title, sticky);
-	}
-
-	public success(messageKey: string, title = '', sticky = false): number {
-		return this.add(NotificationType.SUCCESS, messageKey, title, sticky);
-	}
-
-	public warning(messageKey: string, title = '', sticky = false): number {
-		return this.add(NotificationType.WARNING, messageKey, title, sticky);
-	}
-
-	public error(messageKey: string, title = '', sticky = true): number {
-		return this.add(NotificationType.ERROR, messageKey, title, sticky);
-	}
-
-	public remove(id: number) {
-		this.notifications.forEach((notification: Notification, index: number) => {
-			if (id === notification.id) {
-				this.notifications.splice(index, 1);
-			}
+	public send(messageKey: string, title: string, sticky: boolean,
+	            type: NotificationType = NotificationType.DEFAULT,
+	            channel = this.channel): Notification {
+		return this.broadcast(channel, {
+			messageKey: messageKey,
+			title: title,
+			sticky: sticky,
+			type: type
 		});
 	}
 
-	public clear() {
-		// Clear the array without changing its reference:
-		this.notifications.length = 0;
+	public default(messageKey: string, title = '', sticky = false, channel = this.channel): Notification {
+		return this.send(messageKey, title, sticky, NotificationType.DEFAULT, channel);
 	}
 
+	public info(messageKey: string, title = '', sticky = false, channel = this.channel): Notification {
+		return this.send(messageKey, title, sticky, NotificationType.INFO, channel);
+	}
+
+	public success(messageKey: string, title = '', sticky = false, channel = this.channel): Notification {
+		return this.send(messageKey, title, sticky, NotificationType.SUCCESS, channel);
+	}
+
+	public warning(messageKey: string, title = '', sticky = false, channel = this.channel): Notification {
+		return this.send(messageKey, title, sticky, NotificationType.WARNING, channel);
+	}
+
+	public error(messageKey: string, title = '', sticky = true, channel = this.channel): Notification {
+		return this.send(messageKey, title, sticky, NotificationType.ERROR, channel);
+	}
+
+	public clear(channel = this.channel) {
+		this.emitter.next({
+			channel: channel
+		});
+	}
+
+	public clearAll() {
+		this.emitter.next(null);
+	}
 }

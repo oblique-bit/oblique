@@ -9,7 +9,7 @@ import {NotificationService} from './notification.service';
 		<div class="notification-container">
 			<div class="notification show">
 				<div class="animated slide-in-right" *ngFor="let notification of notifications"
-				     [ngClass]="alertType[notification.type] ">
+				     [ngClass]="variant[notification.type] ">
 					<button (click)="remove(notification)" [hidden]="!notification.sticky" type="button" class="close">
 						&times;
 					</button>
@@ -26,23 +26,54 @@ import {NotificationService} from './notification.service';
 export class NotificationComponent {
 
 	@Input()
-	channel: string = null;
+	channel: string;
 
-	public notifications: Notification[];
+	@Input()
+	timeout: number;
 
-	public alertType: { [type: string]: string } = {};
+	public notifications: Notification[] = [];
+
+	public variant: { [type: string]: string } = {};
 
 	constructor(private notificationService: NotificationService) {
-		this.alertType[NotificationType.DEFAULT.name] = 'alert';
-		this.alertType[NotificationType.INFO.name] = 'alert alert-info';
-		this.alertType[NotificationType.SUCCESS.name] = 'alert alert-success';
-		this.alertType[NotificationType.WARNING.name] = 'alert alert-warning';
-		this.alertType[NotificationType.ERROR.name] = 'alert alert-danger';
+		this.channel = this.channel || notificationService.channel;
+		this.timeout = this.timeout || notificationService.timeout;
 
-		this.notifications = notificationService.notifications;
+		this.variant[NotificationType.DEFAULT.name] = 'alert';
+		this.variant[NotificationType.INFO.name] = 'alert alert-info';
+		this.variant[NotificationType.SUCCESS.name] = 'alert alert-success';
+		this.variant[NotificationType.WARNING.name] = 'alert alert-warning';
+		this.variant[NotificationType.ERROR.name] = 'alert alert-danger';
+
+		this.notificationService.subscribe(
+			(event) => {
+				console.log(event);
+				if (!event || (!event.notification && event.channel === this.channel)) {
+					this.clear();
+				} else if (event.channel === this.channel) {
+					let notification = event.notification;
+
+					this.notifications.unshift(notification);
+					this.notifications.sort((a: Notification, b: Notification) => b.type.priority - a.type.priority);
+
+					if (!notification.sticky) {
+						setTimeout(() => this.remove(notification), notification.timeout || this.timeout);
+					}
+				}
+			}
+		);
 	}
 
 	remove(notification: Notification) {
-		this.notificationService.remove(notification.id);
+		this.notifications.forEach((item: Notification, index: number) => {
+			if (notification.id === item.id) {
+				this.notifications.splice(index, 1);
+			}
+		});
+	}
+
+	public clear() {
+		// Clear the array without changing its reference:
+		this.notifications.length = 0;
 	}
 }

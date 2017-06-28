@@ -1,11 +1,15 @@
-export class Notification {
-	constructor(public id: number,
-				public type: NotificationType,
-				public messageKey: string,
-				public title: string,
-				public sticky: boolean) {
+export interface Notification {
+	messageKey: string
+	title?: string
+	id?: number
+	type?: NotificationType
+	sticky?: boolean
+	timeout?: number
+}
 
-	}
+export interface NotificationEvent {
+	channel: string
+	notification?: Notification
 }
 
 export class NotificationType {

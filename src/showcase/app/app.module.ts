@@ -1,4 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule, Inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule, Http} from '@angular/http';
@@ -8,7 +9,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 // ObliqueReactive:
 import {
-	ObliqueModule, DocumentMetaService, LayoutManagerService
+	ObliqueModule, DocumentMetaService, LayoutManagerService, NotificationService
 } from '../../lib';
 
 // Layout:
@@ -19,7 +20,6 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './home/home.component';
 import {SamplesModule} from './samples/samples.module';
-import {NotificationService} from '../../lib/ng/notification/notification.service';
 
 // AoT requires an exported function for factories:
 export function createTranslateLoader(http: Http) {
@@ -33,6 +33,7 @@ export function createTranslateLoader(http: Http) {
 	],
 	imports: [
 		BrowserModule,
+		BrowserAnimationsModule,
 		FormsModule,
 		HttpModule,
 		NgbModule.forRoot(),
