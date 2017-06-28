@@ -15,7 +15,7 @@ import {SchemaValidationModule} from './schema-validation';
 import {SpinnerModule} from './spinner';
 import {TopControlModule} from './top-control';
 import {UnsavedChangesModule} from './unsaved-changes';
-import {FilterBoxModule} from './filter-box/filter-box.module';
+import {FilterBoxModule} from './filter-box';
 
 export * from './branding';
 export * from './datepicker';
