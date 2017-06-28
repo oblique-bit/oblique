@@ -109,10 +109,10 @@ let nextId = 0;
 			<span class="multiselect-label">{{ title | translate:titleTranslateParams }}</span>
 		    <span class="toggle" [ngClass]="{'toggle-down-up': !dropup, 'toggle-up-down': dropup}"></span>
 	    </button>
-		<div *ngIf="isVisible" class="dropdown-menu" [class.pull-right]="settings.pullRight" [class.dropdown-menu-right]="settings.pullRight"
-			[style.max-height]="settings.maxHeight" style="display: block; height: auto; overflow-y: auto;"
+		<div *ngIf="isVisible" class="dropdown-menu"
+			[style.max-height]="maxHeight" style="display: block; height: auto; overflow-y: auto;"
 			[attr.aria-hidden]="!isVisible">
-			<div class="dropdown-item" *ngIf="settings.enableSearch">
+			<div class="dropdown-item" *ngIf="enableSearch">
 				<div class="input-group input-group-sm control-action" >
 					<span class="input-group-addon" [attr.id]="id + '-search'" [attr.aria-label]="texts.searchPlaceholder | translate">
 						<span class="fa fa-search"></span>
@@ -124,18 +124,18 @@ let nextId = 0;
 					</button>
 				</div>
 			</div>
-			<div class="dropdown-divider divider" *ngIf="settings.enableSearch"></div>
-			<button class="dropdown-item multiselect-control multiselect-control-check" *ngIf="settings.showCheckAll" (click)="checkAll()">
+			<div class="dropdown-divider divider" *ngIf="enableSearch"></div>
+			<button class="dropdown-item multiselect-control multiselect-control-check" *ngIf="showCheckAll" (click)="checkAll()">
 				<span style="width: 16px;" class="fa fa-check">
 				</span>
 				{{ texts.checkAll | translate }}
 			</button>
-			<button class="dropdown-item multiselect-control multiselect-control-uncheck" *ngIf="settings.showUncheckAll" (click)="uncheckAll()">
+			<button class="dropdown-item multiselect-control multiselect-control-uncheck" *ngIf="showUncheckAll" (click)="uncheckAll()">
 				<span style="width: 16px;" class="fa fa-times">
 				</span>
 				{{ texts.uncheckAll | translate }}
 			</button>
-			<div *ngIf="settings.showCheckAll || settings.showUncheckAll" class="dropdown-divider divider"></div>
+			<div *ngIf="showCheckAll || showUncheckAll" class="dropdown-divider divider"></div>
 			<button class="dropdown-item" *ngFor="let option of options | searchFilter:searchFilterText; let i = index"
 				(click)="toggleSelection(option)">
 				<div class="checkbox">
@@ -149,12 +149,21 @@ let nextId = 0;
 })
 export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccessor {
 	@Input() options: any[];
-	@Input() settings: MultiselectConfig;
 	@Input() texts: MultiselectTexts;
 	@Input() dropup = false;
 	@Input() disabled = false;
 	@Input() labelProperty: string;
 	@Input() labelFormatter: (option: any) => string;
+
+	//Inputs that are initialized by the config
+	@Input() enableAllSelectedText;
+	@Input() dynamicTitleMaxItems;
+	@Input() enableSearch;
+	@Input() maxHeight;
+	@Input() selectionLimit;
+	@Input() showCheckAll;
+	@Input() showUncheckAll;
+
 	@Output() selectionLimitReached = new EventEmitter<number>();
 	@Output() dropdownClosed = new EventEmitter();
 	@Output() onAdded = new EventEmitter<any>();
@@ -170,10 +179,18 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	searchFilterText = '';
 
 	constructor(private element: ElementRef,
-				private multiselectConfig: MultiselectConfig,
 				private multiselectTexts: MultiselectTexts,
+				multiselectConfig: MultiselectConfig,
 				differs: IterableDiffers) {
 		this.differ = differs.find([]).create(null);
+
+		this.enableAllSelectedText = multiselectConfig.enableAllSelectedText;
+		this.dynamicTitleMaxItems = multiselectConfig.dynamicTitleMaxItems;
+		this.enableSearch = multiselectConfig.enableSearch;
+		this.maxHeight = multiselectConfig.maxHeight;
+		this.selectionLimit = multiselectConfig.selectionLimit;
+		this.showCheckAll = multiselectConfig.showCheckAll;
+		this.showUncheckAll = multiselectConfig.showUncheckAll;
 	}
 
 	//TODO: only apply this listener if the popup is open and remove it as soon as it's closed
@@ -204,7 +221,6 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	}
 
 	ngOnInit() {
-		this.settings = Object.assign({}, this.multiselectConfig, this.settings);
 		this.texts = Object.assign({}, this.multiselectTexts, this.texts);
 		this.title = this.texts.defaultTitle || '';
 	}
@@ -261,7 +277,7 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 			this.model.splice(index, 1);
 			this.onRemoved.emit(option);
 			this.emitModelChange();
-		} else if (!this.settings.selectionLimit || (this.model.length < this.settings.selectionLimit)) {
+		} else if (!this.selectionLimit || (this.model.length < this.selectionLimit)) {
 			this.model.push(option);
 			this.onAdded.emit(option);
 			this.emitModelChange();
@@ -273,11 +289,11 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	updateTitle() {
 		if (this.model.length === 0) {
 			this.title = this.texts.defaultTitle || '';
-		} else if (this.settings.dynamicTitleMaxItems && this.settings.dynamicTitleMaxItems >= this.model.length) {
+		} else if (this.dynamicTitleMaxItems && this.dynamicTitleMaxItems >= this.model.length) {
 			this.title = this.model
 				.map((option) => this.formatOptionForLabel(option))
 				.join(', ');
-		} else if (this.settings.displayAllSelectedText && this.model.length === this.options.length) {
+		} else if (this.enableAllSelectedText && this.model.length === this.options.length) {
 			this.title = this.texts.allSelected || '';
 		} else {
 			this.title = this.texts.checked;
