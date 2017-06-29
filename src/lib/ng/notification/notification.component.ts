@@ -36,8 +36,8 @@ export class NotificationComponent {
 	public variant: { [type: string]: string } = {};
 
 	constructor(private notificationService: NotificationService) {
-		this.channel = this.channel || notificationService.channel;
-		this.timeout = this.timeout || notificationService.timeout;
+		this.channel = this.channel || notificationService.config.channel;
+		this.timeout = this.timeout || notificationService.config.timeout;
 
 		this.variant[NotificationType.DEFAULT.name] = 'alert';
 		this.variant[NotificationType.INFO.name] = 'alert alert-info';
@@ -45,9 +45,8 @@ export class NotificationComponent {
 		this.variant[NotificationType.WARNING.name] = 'alert alert-warning';
 		this.variant[NotificationType.ERROR.name] = 'alert alert-danger';
 
-		this.notificationService.subscribe(
+		this.notificationService.events.subscribe(
 			(event) => {
-				console.log(event);
 				if (!event || (!event.notification && event.channel === this.channel)) {
 					this.clear();
 				} else if (event.channel === this.channel) {

@@ -1,39 +1,29 @@
-import {Injectable, Inject, Optional} from '@angular/core';
+import {Injectable, EventEmitter} from '@angular/core';
 import {Notification, NotificationEvent, NotificationType} from './notification';
-import {Subject} from 'rxjs/Subject';
+import {NotificationConfig} from './notification-config';
 
 /**
- * NotificationService
+ * Service for the `NotificationComponent`. Can be configured using `NotificationConfig`.
  *
- * providers:
- *    notificationTimeout: after this timeout (in ms) non sticky notifications get removed
+ * @see NotificationComponent
+ * @see NotificationConfig
  */
 @Injectable()
 export class NotificationService {
-	public static DEFAULT_CHANNEL = 'default';
-	public static DEFAULT_TIMEOUT = 3500;
 
-	private emitter: Subject<NotificationEvent> = new Subject<NotificationEvent>();
+	public events: EventEmitter<NotificationEvent> = new EventEmitter<NotificationEvent>();
+
 	private currentId = 0;
 
-	constructor(
-		@Optional() @Inject('notificationChannel') public channel = NotificationService.DEFAULT_CHANNEL,
-		@Optional() @Inject('notificationTimeout') public timeout = NotificationService.DEFAULT_TIMEOUT
-	) {
-		this.channel = this.channel || NotificationService.DEFAULT_CHANNEL;
-		this.timeout = this.timeout || NotificationService.DEFAULT_TIMEOUT;
+	constructor(public config: NotificationConfig) {
 	}
 
-	public subscribe(next: (value: NotificationEvent) => void, error?: (error: any) => void, complete?: () => void) {
-		return this.emitter.subscribe(next, error, complete);
-	}
-
-	public broadcast(channel = NotificationService.DEFAULT_CHANNEL, notification: Notification): Notification {
+	public broadcast(channel = this.config.channel, notification: Notification): Notification {
 		if (!notification.id) {
 			notification.id = this.currentId++;
 		}
 
-		this.emitter.next({
+		this.events.emit({
 			channel: channel,
 			notification: notification
 		});
@@ -41,44 +31,43 @@ export class NotificationService {
 		return notification;
 	}
 
-	public send(messageKey: string, title: string, sticky: boolean,
-	            type: NotificationType = NotificationType.DEFAULT,
-	            channel = this.channel): Notification {
-		return this.broadcast(channel, {
+	public send(messageKey: string, title: string, type = NotificationType.DEFAULT, config = this.config): Notification {
+		return this.broadcast(config.channel, {
 			messageKey: messageKey,
+			sticky: config.sticky,
+			timeout: config.timeout,
 			title: title,
-			sticky: sticky,
 			type: type
 		});
 	}
 
-	public default(messageKey: string, title = '', sticky = false, channel = this.channel): Notification {
-		return this.send(messageKey, title, sticky, NotificationType.DEFAULT, channel);
+	public default(messageKey: string, title = '', config = this.config): Notification {
+		return this.send(messageKey, title, NotificationType.DEFAULT, config);
 	}
 
-	public info(messageKey: string, title = '', sticky = false, channel = this.channel): Notification {
-		return this.send(messageKey, title, sticky, NotificationType.INFO, channel);
+	public info(messageKey: string, title = '', config = this.config): Notification {
+		return this.send(messageKey, title, NotificationType.INFO, config);
 	}
 
-	public success(messageKey: string, title = '', sticky = false, channel = this.channel): Notification {
-		return this.send(messageKey, title, sticky, NotificationType.SUCCESS, channel);
+	public success(messageKey: string, title = '', config = this.config): Notification {
+		return this.send(messageKey, title, NotificationType.SUCCESS, config);
 	}
 
-	public warning(messageKey: string, title = '', sticky = false, channel = this.channel): Notification {
-		return this.send(messageKey, title, sticky, NotificationType.WARNING, channel);
+	public warning(messageKey: string, title = '', config = this.config): Notification {
+		return this.send(messageKey, title, NotificationType.WARNING, config);
 	}
 
-	public error(messageKey: string, title = '', sticky = true, channel = this.channel): Notification {
-		return this.send(messageKey, title, sticky, NotificationType.ERROR, channel);
+	public error(messageKey: string, title = '', config = this.config): Notification {
+		return this.send(messageKey, title, NotificationType.ERROR, config);
 	}
 
-	public clear(channel = this.channel) {
-		this.emitter.next({
+	public clear(channel = this.config.channel) {
+		this.events.emit({
 			channel: channel
 		});
 	}
 
 	public clearAll() {
-		this.emitter.next(null);
+		this.events.emit(null);
 	}
 }

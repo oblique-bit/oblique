@@ -20,6 +20,7 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './home/home.component';
 import {SamplesModule} from './samples/samples.module';
+import {NotificationConfig} from '../../lib/ng/notification/notification-config';
 
 // AoT requires an exported function for factories:
 export function createTranslateLoader(http: Http) {
@@ -37,7 +38,7 @@ export function createTranslateLoader(http: Http) {
 		FormsModule,
 		HttpModule,
 		NgbModule.forRoot(),
-		ObliqueModule.forRoot(), // Keep this order!
+		ObliqueModule.forRoot(), // [Note] Keep this order!
 		TranslateModule.forRoot({
 			loader: {
 				provide: TranslateLoader,
@@ -53,8 +54,14 @@ export function createTranslateLoader(http: Http) {
 		DocumentMetaService,
 		NotificationService,
 		LayoutManagerService,
-		{provide: 'notificationTimeout', useValue: 2000},
-		{provide: 'spinnerMaxTimeout', useValue: 3000}
+		{
+			provide: NotificationConfig,
+			useValue: {
+				channel: 'app',
+				timeout: 5000
+			}
+		},
+		{provide: 'spinnerMaxTimeout', useValue: 3000} // TODO: export this to config service
 	],
 	entryComponents: [AppComponent],
 	bootstrap: [AppComponent]

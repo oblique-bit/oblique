@@ -2,58 +2,79 @@
 	<h2 class="page-header">{{'i18n.routes.samples.notification.title' | translate}}</h2>
 	<p class="lead">Notifications provide short, timely, and relevant information for your application users.</p>
 	<div class="row">
-		<div class="col-6">
-			<div class="card">
-				<div class="card-header">
-					<h3 class="card-title">Preview</h3>
-				</div>
+		<div class="col-md-6 mb-3">
+			<div class="card h-100">
+				<h3 class="card-header">Preview</h3>
 				<div class="card-block notification-sample-preview">
 					<or-notification [channel]="sampleChannel" [timeout]="timeout"></or-notification>
 				</div>
 			</div>
 		</div>
-		<div class="col-6">
-			<div class="card mb-3">
-				<div class="card-header">
-					<h3 class="card-title">Controls</h3>
-				</div>
+		<div class="col-md-6">
+			<div class="card h-100">
+				<h3 class="card-header">Controls</h3>
 				<div class="card-block">
-					<div class="form-group">
-						<label for="or-notification-channel" class="form-control-label">Channel</label>
-						<select [(ngModel)]="channel" class="form-control" id="or-notification-channel">
-							<option value="demo">demo</option>
-							<option value="default">default</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<label for="or-notification-title" class="form-control-label">Title</label>
-						<input [(ngModel)]="title"  type="text"
-						       id="or-notification-title" class="form-control"
-						       placeholder="Notification title...">
-					</div>
-					<div class="form-group">
-						<label for="or-notification-message" class="form-control-label">Message</label>
-						<textarea [(ngModel)]="message" rows="3"
-						          id="or-notification-message" class="form-control"
-						          placeholder="Notification message..."></textarea>
-					</div>
-					<div class="form-group">
-						<div class="checkbox">
-							<input type="checkbox" id="or-notification-sticky"
-							       [(ngModel)]="sticky">
-							<label for="or-notification-sticky">Sticky?</label>
+					<fieldset>
+						<legend>Mandatory parameters</legend>
+						<div class="form-group">
+							<label for="or-notification-title" class="form-control-label">Title</label>
+							<input [(ngModel)]="title" type="text"
+							       id="or-notification-title" class="form-control"
+							       placeholder="Notification title...">
 						</div>
-					</div>
+						<div class="form-group">
+							<label for="or-notification-message" class="form-control-label">Message</label>
+							<textarea [(ngModel)]="message" rows="3"
+							          id="or-notification-message" class="form-control"
+							          placeholder="Notification message..."></textarea>
+						</div>
+					</fieldset>
+					<fieldset>
+						<legend>Optional parameters</legend>
+						<div class="form-group">
+							<label for="or-notification-channel" class="form-control-label">Channel</label>
+							<select [(ngModel)]="channel" class="form-control" id="or-notification-channel">
+								<option value="{{sampleChannel}}">{{sampleChannel}}</option>
+								<option value="{{appChannel}}">{{appChannel}} (from NotificationConfig)</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="or-notification-variant" class="form-control-label">Variant</label>
+							<select [(ngModel)]="variant" class="form-control" id="or-notification-variant">
+								<option *ngFor="let variant of variants" [ngValue]="variant">{{variant.name}}</option>
+							</select>
+						</div>
+						<div class="form-group row">
+							<div class="col-4">
+								<div class="checkbox">
+									<input type="checkbox" id="or-notification-sticky"
+									       [(ngModel)]="sticky">
+									<label for="or-notification-sticky">Sticky?</label>
+								</div>
+							</div>
+							<div class="col-8" *ngIf="!sticky">
+								<div class="form-group form-inline">
+									<label for="or-notification-timeout" class="mr-sm-2">Timeout</label>
+									<input [(ngModel)]="timeout" type="number"
+									       id="or-notification-timeout" class="form-control"
+									       placeholder="Notification timeout..."
+									       ngbTooltip="The duration delay to wait before closing non-sticky notifications.">
+								</div>
+							</div>
+						</div>
+					</fieldset>
 					<div class="form-group form-actions">
 						<button (click)="send()" class="btn btn-default">
 							<span class="fa fa-send mr-2"></span>
 							<span>Send notification</span>
 						</button>
-						<button (click)="clear()" class="btn btn-secondary">
+						<button (click)="clear()" class="btn btn-secondary"
+						        ngbTooltip="Clears notifications from current selected channel.">
 							<span class="fa fa-trash mr-2"></span>
 							<span>Clear</span>
 						</button>
-						<button (click)="clearAllChannels()" class="btn btn-secondary">
+						<button (click)="clearAllChannels()" class="btn btn-secondary"
+						        ngbTooltip="Clears notifications from all channels.">
 							<span class="fa fa-trash mr-2"></span>
 							<span>Clear all</span>
 						</button>
