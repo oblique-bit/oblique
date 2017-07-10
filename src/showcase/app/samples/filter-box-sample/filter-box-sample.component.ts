@@ -19,9 +19,9 @@ export class PatternFilterPipe implements PipeTransform {
 	`]
 })
 export class FilterBoxSampleComponent  {
-	color: string = 'black';
-	cleared: number = 0;
-	changed: number = 0;
+	color = 'black';
+	cleared = 0;
+	changed = 0;
 	patterns: string[] = [undefined, undefined, undefined, undefined, undefined, undefined];
 	items: string[] = [
 		'Jani',

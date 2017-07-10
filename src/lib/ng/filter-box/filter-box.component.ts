@@ -38,7 +38,7 @@ export class FilterBoxComponent {
 	pattern: string;
 
 	@Input()
-	placeholder: string = 'i18n.common.search.placeholder';
+	placeholder = 'i18n.common.search.placeholder';
 
 	@Output()
 	patternChange = new EventEmitter<string>();
