@@ -31,7 +31,7 @@ export class NotificationService {
 		return notification;
 	}
 
-	public send(messageKey: string, title: string, type = NotificationType.DEFAULT, config = this.config): Notification {
+	public send(messageKey: string, title: string = '', type = NotificationType.DEFAULT, config = this.config): Notification {
 		return this.broadcast(config.channel, {
 			messageKey: messageKey,
 			sticky: config.sticky,

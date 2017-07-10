@@ -2,183 +2,212 @@
 
 import {TestBed, inject, tick, fakeAsync} from '@angular/core/testing';
 import {NotificationService} from './notification.service';
-import {NotificationType} from './notification';
+import {NotificationEvent, NotificationType} from './notification';
+import {NotificationConfig} from './notification-config';
 
 describe('NotificationService', () => {
+	let notificationConfig: NotificationConfig;
 	let notificationService: NotificationService;
+
+	const message = 'myMessage';
+	const title = 'myTitle';
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			providers: [
-				NotificationService,
-				{provide: 'notificationTimeout', useValue: 100}
+				NotificationConfig,
+				NotificationService
 			]
 		});
 	});
 
-	beforeEach(inject([NotificationService], (service: NotificationService) => {
-		notificationService = service;
-		spyOn(notificationService, 'add').and.callThrough();
-	}));
+	beforeEach(
+		inject(
+			[NotificationConfig, NotificationService],
+			(config: NotificationConfig, service: NotificationService) => {
+				notificationService = service;
+				notificationConfig = config;
+				spyOn(notificationService, 'broadcast').and.callThrough();
+			}
+		)
+	);
 
-	describe('add()', () => {
+	describe('send()', () => {
+		let notificationEvent: NotificationEvent;
 		beforeEach(() => {
-			spyOn(notificationService, 'remove').and.callThrough();
+			notificationService.events.subscribe(event => {
+				notificationEvent = event;
+			})
 		});
 
-		it('should save notification in array', () => {
-			notificationService.add(NotificationType.DEFAULT, 'message', 'title', true);
-			expect(notificationService.notifications.length).toBe(1);
+		it('should broadcast a notification event', () => {
+			notificationService.send(message, title);
+
+			expect(notificationService.broadcast).toHaveBeenCalled();
+			expect(notificationEvent.channel).toBe(notificationConfig.channel);
+			expect(notificationEvent.notification.messageKey).toBe(message);
+			expect(notificationEvent.notification.title).toBe(title);
 		});
 
-		it('should call remove() after notificationTimeout is reached, if the notification isn\'t sticky', fakeAsync(() => {
-			const id = notificationService.add(NotificationType.DEFAULT, 'message', 'title', false);
+		it('should broadcast a notification with a custom NotificationConfig', () => {
+			notificationConfig.channel = 'test';
+			notificationConfig.timeout = 42;
+			notificationConfig.sticky = true;
+			notificationService.send(message, title, NotificationType.SUCCESS, notificationConfig);
 
-			tick(150);
+			expect(notificationService.broadcast).toHaveBeenCalled();
+			expect(notificationEvent.channel).toBe('test');
+			expect(notificationEvent.notification.type).toBe(NotificationType.SUCCESS);
+			expect(notificationEvent.notification.messageKey).toBe(message);
+			expect(notificationEvent.notification.title).toBe(title);
+			expect(notificationEvent.notification.timeout).toBe(42);
+			expect(notificationEvent.notification.sticky).toBe(true);
+		});
+	});
 
-			expect(notificationService.remove).toHaveBeenCalled();
-			expect(notificationService.remove).toHaveBeenCalledWith(id);
-			expect(notificationService.notifications.length).toBe(0);
-		}));
+	describe('send()', () => {
+		let notificationEvents: NotificationEvent[] = [];
+		beforeEach(() => {
+			notificationService.events.subscribe(event => {
+				notificationEvents.push(event);
+			})
+		});
 
-		it('shouldn\'t call remove() after notificationTimeout is reached, if the notification isn\'t sticky', fakeAsync(() => {
-			const id = notificationService.add(NotificationType.DEFAULT, 'message', 'title', true);
+		it('should broadcast multiple notification events', () => {
+			let count = 5;
+			for (let i = 0; i < count; i++) {
+				notificationService.send(message, title);
+			}
 
-			tick(150);
-
-			expect(notificationService.remove).not.toHaveBeenCalled();
-			expect(notificationService.notifications.length).toBe(1);
-		}));
+			expect(notificationService.broadcast).toHaveBeenCalledTimes(count);
+			expect(notificationEvents.length).toBe(count);
+		});
 	});
 
 	describe('clear()', () => {
-		it('should remove all notification', () => {
-			notificationService.add(NotificationType.DEFAULT, 'message', 'title', true);
-			notificationService.add(NotificationType.ERROR, 'message', 'title', false);
+		let notificationEvent: NotificationEvent;
+		beforeEach(() => {
+			notificationService.events.subscribe(event => {
+				notificationEvent = event;
+			})
+		});
 
+		it('should emit a `clear` NotificationEvent', () => {
 			notificationService.clear();
-
-			expect(notificationService.notifications.length).toBe(0);
+			expect(notificationEvent).toBeDefined();
+			expect(notificationEvent.notification).toBeUndefined();
 		});
 	});
 
-	describe('remove()', () => {
-		it('should remove item with matching id', () => {
-			const id: number = notificationService.add(NotificationType.DEFAULT, 'message', 'title', true);
-
-			notificationService.remove(id);
-
-			expect(notificationService.notifications.length).toBe(0);
+	describe('clearAll()', () => {
+		let notificationEmitted = false;
+		let notificationEvent: NotificationEvent;
+		beforeEach(() => {
+			notificationService.events.subscribe(event => {
+				notificationEmitted = true;
+				notificationEvent = event;
+			})
 		});
 
-		it('shouldn\'t remove item with other id', () => {
-			let id: number = notificationService.add(NotificationType.DEFAULT, 'message', 'title', true);
-
-			notificationService.remove(++id);
-
-			expect(notificationService.notifications.length).toBe(1);
-		});
-
-		it('should only remove item with matching id', () => {
-			const idToRemove: number = notificationService.add(NotificationType.DEFAULT, 'message', 'title', true);
-			const idToKeep: number = notificationService.add(NotificationType.ERROR, 'message', 'title', true);
-
-			notificationService.remove(idToRemove);
-
-			expect(notificationService.notifications.length).toBe(1);
-			expect(notificationService.notifications[0].id).toBe(idToKeep);
+		it('should emit a `clear all` NotificationEvent', () => {
+			notificationService.clearAll();
+			expect(notificationEmitted).toBeTruthy();
+			expect(notificationEvent).toBeNull();
 		});
 	});
 
 	describe('default()', () => {
-		it('should call add with NotificationTypes.DEFAULT', () => {
-			notificationService.default('message', 'title');
+		let notificationEvent: NotificationEvent;
+		beforeEach(() => {
+			notificationService.events.subscribe(event => {
+				notificationEvent = event;
+			})
+		});
 
-			expect(notificationService.add)
-				.toHaveBeenCalledWith(
-					NotificationType.DEFAULT,
-					jasmine.any(String),
-					jasmine.any(String),
-					jasmine.any(Boolean)
-				);
+		it('should broadcast a NotificationType.DEFAULT notification event', () => {
+			notificationService.default(message, title);
+
+			expect(notificationService.broadcast).toHaveBeenCalled();
+
+			expect(notificationEvent).toBeDefined();
+			expect(notificationEvent.notification).toBeDefined();
+			expect(notificationEvent.notification.type).toBe(NotificationType.DEFAULT);
 		});
 	});
 
 	describe('info()', () => {
-		it('should call add with NotificationTypes.INFO', () => {
-			notificationService.info('message', 'title');
+		let notificationEvent: NotificationEvent;
+		beforeEach(() => {
+			notificationService.events.subscribe(event => {
+				notificationEvent = event;
+			})
+		});
 
-			expect(notificationService.add)
-				.toHaveBeenCalledWith(
-					NotificationType.INFO,
-					jasmine.any(String),
-					jasmine.any(String),
-					jasmine.any(Boolean)
-				);
+		it('should broadcast a NotificationType.INFO notification event', () => {
+			notificationService.info(message, title);
+
+			expect(notificationService.broadcast).toHaveBeenCalled();
+
+			expect(notificationEvent).toBeDefined();
+			expect(notificationEvent.notification).toBeDefined();
+			expect(notificationEvent.notification.type).toBe(NotificationType.INFO);
 		});
 	});
 
 	describe('success()', () => {
-		it('should call add with NotificationTypes.SUCCESS', () => {
-			notificationService.success('message', 'title');
+		let notificationEvent: NotificationEvent;
+		beforeEach(() => {
+			notificationService.events.subscribe(event => {
+				notificationEvent = event;
+			})
+		});
 
-			expect(notificationService.add)
-				.toHaveBeenCalledWith(
-					NotificationType.SUCCESS,
-					jasmine.any(String),
-					jasmine.any(String),
-					jasmine.any(Boolean)
-				);
+		it('should broadcast a NotificationType.SUCCESS notification event', () => {
+			notificationService.success(message, title);
+
+			expect(notificationService.broadcast).toHaveBeenCalled();
+
+			expect(notificationEvent).toBeDefined();
+			expect(notificationEvent.notification).toBeDefined();
+			expect(notificationEvent.notification.type).toBe(NotificationType.SUCCESS);
 		});
 	});
 
-	describe('warn()', () => {
-		it('should call add with NotificationTypes.WARNING', () => {
-			notificationService.warn('message', 'title');
-
-			expect(notificationService.add)
-				.toHaveBeenCalledWith(
-					NotificationType.WARNING,
-					jasmine.any(String),
-					jasmine.any(String),
-					jasmine.any(Boolean)
-				);
+	describe('warning()', () => {
+		let notificationEvent: NotificationEvent;
+		beforeEach(() => {
+			notificationService.events.subscribe(event => {
+				notificationEvent = event;
+			})
 		});
 
-		it('should be called from warning()', () => {
-			spyOn(notificationService, 'warn');
-			notificationService.warning('message', 'title');
+		it('should broadcast a NotificationType.WARNING notification event', () => {
+			notificationService.warning(message, title);
 
-			expect(notificationService.warn).toHaveBeenCalled();
+			expect(notificationService.broadcast).toHaveBeenCalled();
+
+			expect(notificationEvent).toBeDefined();
+			expect(notificationEvent.notification).toBeDefined();
+			expect(notificationEvent.notification.type).toBe(NotificationType.WARNING);
 		});
 	});
 
 	describe('error()', () => {
-		it('should call add with NotificationTypes.ERROR', () => {
-			notificationService.error('message', 'title');
-
-			expect(notificationService.add)
-				.toHaveBeenCalledWith(
-					NotificationType.ERROR,
-					jasmine.any(String),
-					jasmine.any(String),
-					jasmine.any(Boolean)
-				);
+		let notificationEvent: NotificationEvent;
+		beforeEach(() => {
+			notificationService.events.subscribe(event => {
+				notificationEvent = event;
+			})
 		});
 
-		it('should call add with sticky', () => {
-			notificationService.error('message', 'title');
+		it('should broadcast a NotificationType.ERROR notification event', () => {
+			notificationService.error(message, title);
 
-			expect(notificationService.add)
-				.toHaveBeenCalledWith(
-					jasmine.any(Object),
-					jasmine.any(String),
-					jasmine.any(String),
-					true
-				);
+			expect(notificationService.broadcast).toHaveBeenCalled();
+
+			expect(notificationEvent).toBeDefined();
+			expect(notificationEvent.notification).toBeDefined();
+			expect(notificationEvent.notification.type).toBe(NotificationType.ERROR);
 		});
-
 	});
-
-	//TODO: more tests
 });

@@ -2,9 +2,27 @@ export interface Notification {
 	messageKey: string
 	title?: string
 	id?: number
-	type?: NotificationType
+	type?: NotificationType;
 	sticky?: boolean
 	timeout?: number
+}
+
+export class Notification implements Notification {
+	messageKey: string;
+	title? = '';
+	id?: number;
+	type? = NotificationType.DEFAULT;
+	sticky? = false;
+	timeout?: number;
+
+	constructor(
+		messageKey: string,
+		type = NotificationType.DEFAULT,
+		sticky = false) {
+		this.messageKey = messageKey;
+		this.type = type;
+		this.sticky = sticky;
+	}
 }
 
 export interface NotificationEvent {

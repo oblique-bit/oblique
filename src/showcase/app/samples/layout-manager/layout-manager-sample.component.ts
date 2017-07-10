@@ -25,6 +25,5 @@ export class LayoutManagerSampleComponent {
 
 	set applicationFixed(value: boolean) {
 		this.layoutManager.applicationFixed = value;
-		console.log(this.layoutManager.applicationFixed);
 	}
 }

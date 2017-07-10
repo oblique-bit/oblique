@@ -7,9 +7,9 @@ import {NotificationService} from './notification.service';
 	exportAs: 'orNotification',
 	template: `
 		<div class="notification-container">
-			<div class="notification show">
-				<div class="animated slide-in-right" *ngFor="let notification of notifications"
-				     [ngClass]="variant[notification.type] ">
+			<div class="notification show" *ngFor="let notification of notifications">
+				<div class="animated slide-in-right"
+				     [ngClass]="variant[notification.type]">
 					<button (click)="remove(notification)" [hidden]="!notification.sticky" type="button" class="close">
 						&times;
 					</button>
