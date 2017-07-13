@@ -15,13 +15,7 @@
 				<h3 class="card-header">Controls</h3>
 				<div class="card-block">
 					<fieldset>
-						<legend>Mandatory parameters</legend>
-						<div class="form-group">
-							<label for="or-notification-title" class="form-control-label">Title</label>
-							<input [(ngModel)]="title" type="text"
-							       id="or-notification-title" class="form-control"
-							       placeholder="Notification title...">
-						</div>
+						<legend>Mandatory parameter</legend>
 						<div class="form-group">
 							<label for="or-notification-message" class="form-control-label">Message</label>
 							<textarea [(ngModel)]="message" rows="3"
@@ -31,6 +25,12 @@
 					</fieldset>
 					<fieldset>
 						<legend>Optional parameters</legend>
+						<div class="form-group">
+							<label for="or-notification-title" class="form-control-label">Title</label>
+							<input [(ngModel)]="title" type="text"
+							       id="or-notification-title" class="form-control"
+							       placeholder="Notification title...">
+						</div>
 						<div class="form-group">
 							<label for="or-notification-channel" class="form-control-label">Channel</label>
 							<select [(ngModel)]="channel" class="form-control" id="or-notification-channel">
@@ -44,7 +44,7 @@
 								<option *ngFor="let variant of variants" [ngValue]="variant">{{variant.name}}</option>
 							</select>
 						</div>
-						<div class="form-group row">
+						<div class="form-group row" *ngIf="variant.toString() !== 'error'">
 							<div class="col-4">
 								<div class="checkbox">
 									<input type="checkbox" id="or-notification-sticky"
@@ -64,19 +64,19 @@
 						</div>
 					</fieldset>
 					<div class="form-group form-actions">
-						<button (click)="send()" class="btn btn-default">
-							<span class="fa fa-send mr-2"></span>
-							<span>Send notification</span>
-						</button>
-						<button (click)="clear()" class="btn btn-secondary"
+						<button (click)="clear()" class="btn btn-link"
 						        ngbTooltip="Clears notifications from current selected channel.">
 							<span class="fa fa-trash mr-2"></span>
 							<span>Clear</span>
 						</button>
-						<button (click)="clearAllChannels()" class="btn btn-secondary"
+						<button (click)="clearAllChannels()" class="btn btn-link"
 						        ngbTooltip="Clears notifications from all channels.">
 							<span class="fa fa-trash mr-2"></span>
 							<span>Clear all</span>
+						</button>
+						<button (click)="send()" class="btn btn-default">
+							<span class="fa fa-send mr-2"></span>
+							<span>Send notification</span>
 						</button>
 					</div>
 				</div>

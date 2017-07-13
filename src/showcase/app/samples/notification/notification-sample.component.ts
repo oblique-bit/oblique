@@ -23,14 +23,13 @@ export class NotificationSampleComponent {
 
 	constructor(private notificationService: NotificationService) {
 		this.appChannel = notificationService.config.channel;
-		this.timeout = notificationService.config.timeout;
 	}
 
 	send() {
 		// NotificationConfig is optional:
 		let config = {
 			channel: this.channel,
-			sticky: this.sticky,
+			sticky: this.variant === NotificationType.ERROR || this.sticky,
 			timeout: this.timeout
 		} as NotificationConfig;
 

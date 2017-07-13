@@ -35,7 +35,7 @@
     "dev": "npm run start -- --open",
     "ci-build": "npm run test -- --single-run --progress false && ./node_modules/.bin/gulp dist",
     "prestart": "npm run prebuild",
-    "start": "./node_modules/.bin/ng serve --port 9000",
+    "start": "./node_modules/.bin/ng serve --port 9000 --preserve-symlinks",
     "build": "./node_modules/.bin/ng build",
     "prebuild": "./node_modules/.bin/gulp build-templates",
     "gulp-publish": "./node_modules/.bin/gulp publish",
@@ -64,7 +64,7 @@
     "font-awesome": "4.7.0",
     "jquery": "^3.2.1",
     "ngx-webstorage": "^1.8.0",
-    "oblique-ui": "^2.0.0-RC.1-1",
+    "oblique-ui": "2.0.0-RC.1-2",
     "rxjs": "^5.4.2",
     "tether": "^1.4.0",
     "zone.js": "^0.8.12"

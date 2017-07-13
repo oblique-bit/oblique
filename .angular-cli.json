@@ -15,7 +15,7 @@
         },
         {
           "glob": "**/*",
-          "input": "../node_modules/oblique-ui/dist/images",
+          "input": "../node_modules/oblique-ui/images",
           "output": "./assets/oblique-ui/images"
         }
       ],
@@ -27,14 +27,14 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "../node_modules/oblique-ui/dist/css/oblique-ui.css",
+        "../node_modules/oblique-ui/css/oblique-ui.css",
         "showcase/sass/styles.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/tether/dist/js/tether.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.js",
-        "../node_modules/oblique-ui/dist/js/oblique-ui.js"
+        "../node_modules/oblique-ui/js/oblique-ui.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

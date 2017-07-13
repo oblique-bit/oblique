@@ -15,6 +15,13 @@ export class Notification implements Notification {
 	sticky? = false;
 	timeout?: number;
 
+	/**
+	 * Animation state.
+	 *
+	 * @see https://angular.io/guide/animations
+	 */
+	$state: string = null;
+
 	constructor(
 		messageKey: string,
 		type = NotificationType.DEFAULT,

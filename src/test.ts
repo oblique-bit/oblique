@@ -6,11 +6,12 @@ import 'zone.js/dist/sync-test';
 import 'zone.js/dist/jasmine-patch';
 import 'zone.js/dist/async-test';
 import 'zone.js/dist/fake-async-test';
-import {getTestBed} from '@angular/core/testing';
+import {getTestBed, TestBed} from '@angular/core/testing';
 import {
 	BrowserDynamicTestingModule,
 	platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 //TODO: Polyfill for PhantomJS, remove if https://github.com/ariya/phantomjs/issues/11289 is fixed
 (function (window) {
@@ -58,8 +59,11 @@ __karma__.loaded = function () {/**/
 };
 
 // First, initialize the Angular testing environment.
-getTestBed().initTestEnvironment(
-	BrowserDynamicTestingModule,
+TestBed.initTestEnvironment(
+	[
+		BrowserDynamicTestingModule,
+		NoopAnimationsModule
+	],
 	platformBrowserDynamicTesting()
 );
 // Then we find all the tests.
