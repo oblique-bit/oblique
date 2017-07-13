@@ -23,7 +23,7 @@ export class NotificationConfig {
 	sticky = false;
 
 	/**
-	 * The duration delay to wait before closing non-sticky notifications. Applies only if `NotificationConfig#sticky` is set to `true`.
+	 * The duration delay to wait before closing non-sticky notifications. Applies only for _non-stikcy_ notifications.
 	 *
 	 * @see NotificationConfig#sticky
 	 * @type {number}

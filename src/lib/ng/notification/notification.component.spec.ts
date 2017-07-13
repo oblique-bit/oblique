@@ -9,7 +9,6 @@ import {Notification, NotificationType} from './notification';
 import {MockTranslatePipe} from '../../../../testhelpers';
 import {NotificationConfig} from './notification-config';
 
-// TODO: needs more tests
 describe('NotificationComponent', () => {
 	let component: NotificationComponent;
 	let fixture: ComponentFixture<NotificationComponent>;
@@ -36,7 +35,7 @@ describe('NotificationComponent', () => {
 		component = fixture.componentInstance;
 		notificationConfig = fixture.debugElement.injector.get(NotificationConfig);
 		notificationService = fixture.debugElement.injector.get(NotificationService);
-		spyOn(component, 'remove').and.callThrough();
+		spyOn(component, 'close').and.callThrough();
 		fixture.detectChanges();
 	});
 
@@ -65,16 +64,20 @@ describe('NotificationComponent', () => {
 		});
 	});
 
-	it('should close a notification when clicking on `.close` button', () => {
-		notificationService.send('Notification 1');
+	it('should close a notification when clicking on `.close` button', fakeAsync(() => {
+		notificationConfig.sticky = true;
+		notificationService.error(message, title, notificationConfig);
 		fixture.detectChanges();
 
 		let button = fixture.debugElement.query(By.css('button.close'));
 		button.triggerEventHandler('click', null);
 
-		expect(component.remove).toHaveBeenCalled();
+		// Wait for animation completion:
+		tick(NotificationComponent.ANIMATION_OUT_DURATION);
+
+		expect(component.close).toHaveBeenCalled();
 		expect(component.notifications.length).toBe(0);
-	});
+	}));
 
 	it('should clear all notification', () => {
 		// Send multiple notifications:
@@ -103,13 +106,13 @@ describe('NotificationComponent', () => {
 				messageKey: message,
 				title: title,
 				sticky: false
-			}
+			} as Notification
 		);
-		tick(component.timeout);
+		tick(component.timeout + NotificationComponent.ANIMATION_OUT_DURATION);
 		fixture.detectChanges();
 
-		expect(component.remove).toHaveBeenCalled();
-		expect(component.remove).toHaveBeenCalledWith(notification);
+		expect(component.close).toHaveBeenCalled();
+		expect(component.close).toHaveBeenCalledWith(notification);
 		expect(component.notifications.length).toBe(0);
 
 		let htmlNotifications = fixture.debugElement.queryAll(By.css('.notification'));
@@ -124,12 +127,12 @@ describe('NotificationComponent', () => {
 				messageKey: message,
 				title: title,
 				sticky: true
-			}
+			} as Notification
 		);
+		tick(component.timeout + NotificationComponent.ANIMATION_OUT_DURATION);
 		fixture.detectChanges();
-		tick(component.timeout);
 
-		expect(component.remove).not.toHaveBeenCalled();
+		expect(component.close).not.toHaveBeenCalled();
 		expect(component.notifications.length).toBe(1);
 
 		let htmlNotifications = fixture.debugElement.queryAll(By.css('.notification'));
