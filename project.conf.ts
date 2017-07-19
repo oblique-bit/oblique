@@ -44,12 +44,16 @@ export const ProjectConfig = {
 		// Theming:
 		theme: {
 			tooltips:        true,
+			variant: 'has-overlay',
 			application: {
 				fixed:       true
 			},
 			header: {
-				transitions: true,
-				variant: 'has-overlay'
+				transitions: true
+				// variant: 'application-header-md'
+			},
+			navigation: {
+				scrollable:  true
 			}
 		},
 
