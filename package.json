@@ -35,7 +35,7 @@
     "dev": "npm run start -- --open",
     "ci-build": "npm run test -- --single-run --progress false && ./node_modules/.bin/gulp dist",
     "prestart": "npm run prebuild",
-    "start": "./node_modules/.bin/ng serve --port 9000 --preserve-symlinks",
+    "start": "./node_modules/.bin/ng serve --port 3001 --preserve-symlinks",
     "build": "./node_modules/.bin/ng build",
     "prebuild": "./node_modules/.bin/gulp build-templates",
     "gulp-publish": "./node_modules/.bin/gulp publish",
