@@ -23,7 +23,7 @@ export class ErrorMessagesComponent implements AfterViewInit {
 		this.form = ngForm || formGroupDirective;
 
 		if (!this.form) {
-			throw Error('You need ether a NgForm or a FormGroupDirective for the ErrorMessagesComponent');
+			throw Error('You need either a NgForm or a FormGroupDirective for the ErrorMessagesComponent');
 		}
 	}
 
