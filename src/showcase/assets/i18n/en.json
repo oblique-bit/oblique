@@ -102,9 +102,9 @@
           "d!.M!.yyyy": "dd.mm.yyyy"
         }
       },
-      "search": {
+      "filter": {
         "noResults": "No results...",
-        "placeholder": "Search by term",
+        "placeholder": "Filter by term",
         "results": "Result(s)"
       }
     },

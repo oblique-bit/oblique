@@ -10,7 +10,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 					<div class="control-action">
 						<input class="form-control" type="text"
 							   placeholder="{{placeholder | translate}}"
-							   [ngModel]="pattern" (ngModelChange)="onPatternChanged($event)" name="search"
+							   [ngModel]="pattern" (ngModelChange)="onPatternChanged($event)" name="filter"
 							   #filterControl>
 						<button class="control-action-trigger" type="button" role="button"
 								(click)="onPatternCleared(); filterControl.focus();">
@@ -27,10 +27,6 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 		:host {
 			display: block;
 		}
-
-		input[name="search"] {
-			width: 100%;
-		}
 	`]
 })
 export class FilterBoxComponent {
@@ -38,7 +34,7 @@ export class FilterBoxComponent {
 	pattern: string;
 
 	@Input()
-	placeholder = 'i18n.common.search.placeholder';
+	placeholder = 'i18n.common.filter.placeholder';
 
 	@Output()
 	patternChange = new EventEmitter<string>();
