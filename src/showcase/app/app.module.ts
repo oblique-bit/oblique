@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule, Inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpModule, Http} from '@angular/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
@@ -23,7 +23,7 @@ import {SamplesModule} from './samples/samples.module';
 import {NotificationConfig} from '../../lib/ng/notification/notification-config';
 
 // AoT requires an exported function for factories:
-export function createTranslateLoader(http: Http) {
+export function createTranslateLoader(http: HttpClient) {
 	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
@@ -36,14 +36,14 @@ export function createTranslateLoader(http: Http) {
 		BrowserModule,
 		BrowserAnimationsModule,
 		FormsModule,
-		HttpModule,
+		HttpClientModule,
 		NgbModule.forRoot(),
 		ObliqueModule.forRoot(), // [Note] Keep this order!
 		TranslateModule.forRoot({
 			loader: {
 				provide: TranslateLoader,
 				useFactory: createTranslateLoader,
-				deps: [Http]
+				deps: [HttpClient]
 			}
 		}),
 		AppRoutingModule,

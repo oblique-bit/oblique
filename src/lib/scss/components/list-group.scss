@@ -36,14 +36,14 @@
 }
 
 .list-group-header {
-	background-color: $gray-darkest;
-	border-color: $gray-darkest;
+	background-color: $gray-darker;
+	border-color: $gray-darker;
 	color: $white;
 }
 
 .list-group-item-before {
 	padding: 10px 15px;
-	background-color: lighten($brand-warning-bg, 8%);
+	background-color: lighten($state-warning-bg, 8%);
 }
 
 .list-group {

@@ -45,7 +45,7 @@ $navigable-height: 38px;
 	&.navigable-selected {
 		&, > td, &.list-group-item {
 			@include animatable(background-color);
-			background-color: $brand-lighter;
+			background-color: $brand-light;
 		}
 	}
 

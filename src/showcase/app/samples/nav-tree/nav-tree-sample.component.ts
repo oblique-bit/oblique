@@ -45,7 +45,7 @@ export class NavTreeSampleComponent implements OnInit {
 			<div class="card-header">
 				<h3 class="card-title">Output</h3>
 			</div>
-			<div class="card-block">
+			<div class="card-body">
 				<h4>RouterOutlet</h4>
 				<span class="fa fa-link"></span>
 				<code>{{routing}}</code>
