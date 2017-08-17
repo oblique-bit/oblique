@@ -1,6 +1,5 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 
-import {BrandingModule} from './branding';
 import {DatepickerModule} from './datepicker';
 import {DocumentMetaModule} from './document-meta';
 import {ErrorMessagesModule} from './error-messages';
@@ -17,7 +16,6 @@ import {TopControlModule} from './top-control';
 import {UnsavedChangesModule} from './unsaved-changes';
 import {FilterBoxModule} from './filter-box';
 
-export * from './branding';
 export * from './datepicker';
 export * from './document-meta';
 export * from './error-messages';
@@ -35,9 +33,6 @@ export * from './top-control';
 export * from './unsaved-changes';
 
 const OBLIQUE_MODULES = [
-	// Branding:
-	BrandingModule,
-
 	// UIComponents
 	DatepickerModule,
 	DocumentMetaModule,
@@ -58,7 +53,6 @@ const OBLIQUE_MODULES = [
 
 @NgModule({
 	imports: [
-		BrandingModule.forRoot(),
 		DatepickerModule.forRoot(),
 		DocumentMetaModule.forRoot(),
 		ErrorMessagesModule.forRoot(),
