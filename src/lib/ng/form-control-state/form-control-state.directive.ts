@@ -28,14 +28,10 @@ export class FormControlStateDirective implements AfterViewInit {
 	}
 
 	ngAfterViewInit() {
-
 		if (!this.ngControl) {
 			throw new Error('You need to provide an NgControl for the FormControlStateDirective!');
 		}
 
-		if (this.mandatory) {
-			this.elementRef.nativeElement.querySelector('[name]').parentElement.classList.add('control-mandatory');
-		}
 		Observable.merge(
 			this.form.ngSubmit,
 			this.ngControl.statusChanges
@@ -45,6 +41,15 @@ export class FormControlStateDirective implements AfterViewInit {
 	private generateState() {
 		if (this.form.submitted || !this.ngControl.pristine || this.pristineValidation) {
 			this.hasErrorClass = this.ngControl.invalid;
+		}
+
+		if (this.mandatory) {
+			const element = this.elementRef.nativeElement.querySelector('[name]');
+			if (element.value) {
+				element.parentElement.classList.remove('control-mandatory');
+			} else {
+				element.parentElement.classList.add('control-mandatory');
+			}
 		}
 	}
 }
