@@ -1,7 +1,8 @@
 import {Injectable, Inject} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {DOCUMENT, Title, ɵDomAdapter, ɵgetDOM} from '@angular/platform-browser';
+import {Title, ɵDomAdapter, ɵgetDOM} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
+import {DOCUMENT} from '@angular/common';
 
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/mergeMap';
