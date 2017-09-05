@@ -12,7 +12,7 @@ import 'rxjs/add/observable/merge';
 export class FormControlStateDirective implements AfterViewInit {
 
 	@Input() pristineValidation = false;
-	@Input() mandatory = false;
+	@Input() mandatory;
 
 	@HostBinding('class.has-error') hasErrorClass = false;
 
@@ -47,12 +47,12 @@ export class FormControlStateDirective implements AfterViewInit {
 			this.hasErrorClass = this.ngControl.invalid;
 		}
 
-		if (this.mandatory) {
-			const element = this.elementRef.nativeElement.querySelector('[name]').parentElement;
+		const element = this.elementRef.nativeElement.querySelector('[name]');
+		if (element.hasAttribute('required') || this.mandatory) {
 			if (this.ngControl.value) {
-				this.renderer.removeClass(element, 'control-mandatory');
+				this.renderer.removeClass(element.parentElement, 'control-mandatory');
 			} else {
-				this.renderer.addClass(element, 'control-mandatory');
+				this.renderer.addClass(element.parentElement, 'control-mandatory');
 			}
 		}
 	}
