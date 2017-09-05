@@ -1,4 +1,7 @@
-import {Directive, HostBinding, ContentChild, AfterViewInit, Input, Optional, ElementRef} from '@angular/core';
+import {
+	Directive, HostBinding, ContentChild, AfterViewInit, Input, Optional, ElementRef,
+	Renderer2
+} from '@angular/core';
 import {NgControl, NgForm, FormGroupDirective} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/merge';
@@ -19,7 +22,8 @@ export class FormControlStateDirective implements AfterViewInit {
 
 	constructor(@Optional() ngForm: NgForm,
 				@Optional() formGroupDirective: FormGroupDirective,
-				private elementRef: ElementRef) {
+				private elementRef: ElementRef,
+				private renderer: Renderer2) {
 		this.form = ngForm || formGroupDirective;
 
 		if (!this.form) {
@@ -44,11 +48,11 @@ export class FormControlStateDirective implements AfterViewInit {
 		}
 
 		if (this.mandatory) {
-			const element = this.elementRef.nativeElement.querySelector('[name]');
-			if (element.value) {
-				element.parentElement.classList.remove('control-mandatory');
+			const element = this.elementRef.nativeElement.querySelector('[name]').parentElement;
+			if (this.ngControl.value) {
+				this.renderer.removeClass(element, 'control-mandatory');
 			} else {
-				element.parentElement.classList.add('control-mandatory');
+				this.renderer.addClass(element, 'control-mandatory');
 			}
 		}
 	}
