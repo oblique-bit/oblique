@@ -23,6 +23,10 @@ export class DocumentMetaService {
 	private headElement: HTMLElement;
 	private metaDescription: HTMLElement;
 	private DOM: ɵDomAdapter;
+	private currentMetaInformation = {
+		title: '',
+		description: ''
+	};
 
 	constructor(private router: Router,
 				private activatedRoute: ActivatedRoute,
@@ -33,6 +37,7 @@ export class DocumentMetaService {
 		this.DOM = ɵgetDOM();
 		this.headElement = this.DOM.querySelector(document, 'head');
 		this.metaDescription = this.getOrCreateMetaElement('description');
+		this.translate.onLangChange.subscribe(this.updateMetaInformation.bind(this));
 
 		// Subscribe to NavigationEnd events and handle current activated route:
 		router.events
@@ -47,8 +52,9 @@ export class DocumentMetaService {
 			.filter(route => route.outlet === 'primary')
 			.mergeMap(route => route.data)
 			.subscribe((data) => {
-				this.setTitle(data.title);
-				this.setDescription(data.description || this.description);
+				this.currentMetaInformation.title = data.title;
+				this.currentMetaInformation.description = data.description || this.description;
+				this.updateMetaInformation();
 			});
 	}
 
@@ -103,5 +109,13 @@ export class DocumentMetaService {
 			this.headElement.appendChild(el);
 		}
 		return el;
+	}
+
+	/**
+	 * Updates the document page title and description
+	 */
+	private updateMetaInformation() {
+		this.setTitle(this.currentMetaInformation.title);
+		this.setDescription(this.currentMetaInformation.description);
 	}
 }
