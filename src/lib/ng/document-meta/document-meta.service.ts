@@ -61,11 +61,11 @@ export class DocumentMetaService {
 	 */
 	public setTitle(title: string, separator: string = this.titleSeparator, suffix: string = this.titleSuffix) {
 		if (title) {
-			this.translate.get(title).subscribe(translation => {
-				this.titleService.setTitle(`${translation}${separator}${suffix}`);
+			this.translate.get([title, suffix]).subscribe(translation => {
+				this.titleService.setTitle(`${translation[title]}${separator}${translation[suffix]}`);
 			});
 		} else {
-			this.titleService.setTitle(`${suffix}`);
+			this.titleService.setTitle(this.translate.instant(suffix));
 		}
 	}
 
