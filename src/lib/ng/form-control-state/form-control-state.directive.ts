@@ -19,7 +19,6 @@ export class FormControlStateDirective implements AfterViewInit {
 	@ContentChild(NgControl) ngControl: NgControl;
 
 	private form: NgForm | FormGroupDirective;
-	private inputElement;
 	private inputContainer;
 
 	constructor(@Optional() ngForm: NgForm,
@@ -38,9 +37,11 @@ export class FormControlStateDirective implements AfterViewInit {
 			throw new Error('You need to provide an NgControl for the FormControlStateDirective!');
 		}
 
-		this.inputElement = this.elementRef.nativeElement.querySelector('[name]');
-		this.inputContainer = this.inputElement.parentElement;
-		this.mandatory = this.mandatory || this.inputElement.hasAttribute('required');
+		let inputElement = this.elementRef.nativeElement.querySelector('[name]');
+		this.inputContainer = inputElement.parentElement;
+		this.mandatory = this.mandatory
+			|| (this.ngControl.errors && this.ngControl.errors.required)	// model driven forms
+			|| inputElement.hasAttribute('required');					// template driven forms
 
 		Observable.merge(
 			this.form.ngSubmit,
