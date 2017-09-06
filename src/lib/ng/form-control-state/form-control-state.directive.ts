@@ -42,13 +42,9 @@ export class FormControlStateDirective implements AfterViewInit {
 		let inputElement = this.elementRef.nativeElement.querySelector('[name]');
 		this.inputContainer = inputElement.parentElement;
 		this.mandatory = this.mandatory
-			|| (this.ngControl.errors && this.ngControl.errors.required)	// model driven forms
-			|| inputElement.hasAttribute('required')					// template driven forms
-			|| (this.schemaValidation										// schema validation
-				&& this.schemaValidation.schema.required
-				&& Array.isArray(this.schemaValidation.schema.required)
-				&& this.schemaValidation.schema.required.indexOf(this.ngControl.name) > -1
-			);
+			|| this.hasRequiredValidator()
+			|| this.hasRequiredAttribute(inputElement)
+			|| this.isJsonSchemaFieldRequired();
 
 		Observable.merge(
 			this.form.ngSubmit,
@@ -68,5 +64,23 @@ export class FormControlStateDirective implements AfterViewInit {
 				this.renderer.addClass(this.inputContainer, 'control-mandatory');
 			}
 		}
+	}
+
+	private hasRequiredValidator(): boolean {
+		// used by model driven forms
+		return this.ngControl.errors && this.ngControl.errors.required;
+	}
+
+	// noinspection JSMethodCanBeStatic
+	private hasRequiredAttribute(inputElement: Element): boolean {
+		// used by template driven forms
+		return inputElement.hasAttribute('required')
+	}
+
+	private isJsonSchemaFieldRequired(): boolean {
+		return this.schemaValidation
+			&& this.schemaValidation.schema.required
+			&& Array.isArray(this.schemaValidation.schema.required)
+			&& this.schemaValidation.schema.required.includes(this.ngControl.name);
 	}
 }
