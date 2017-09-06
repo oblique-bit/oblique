@@ -5,6 +5,7 @@ import {
 import {NgControl, NgForm, FormGroupDirective} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/merge';
+import {SchemaValidationDirective} from '../schema-validation/schema-validation.directive';
 
 @Directive({
 	selector: '[orFormControlState]'
@@ -23,6 +24,7 @@ export class FormControlStateDirective implements AfterViewInit {
 
 	constructor(@Optional() ngForm: NgForm,
 				@Optional() formGroupDirective: FormGroupDirective,
+				@Optional() private schemaValidation: SchemaValidationDirective,
 				private elementRef: ElementRef,
 				private renderer: Renderer2) {
 		this.form = ngForm || formGroupDirective;
@@ -41,7 +43,12 @@ export class FormControlStateDirective implements AfterViewInit {
 		this.inputContainer = inputElement.parentElement;
 		this.mandatory = this.mandatory
 			|| (this.ngControl.errors && this.ngControl.errors.required)	// model driven forms
-			|| inputElement.hasAttribute('required');					// template driven forms
+			|| inputElement.hasAttribute('required')					// template driven forms
+			|| (this.schemaValidation										// schema validation
+				&& this.schemaValidation.schema.required
+				&& Array.isArray(this.schemaValidation.schema.required)
+				&& this.schemaValidation.schema.required.indexOf(this.ngControl.name) > -1
+			);
 
 		Observable.merge(
 			this.form.ngSubmit,
