@@ -7,7 +7,7 @@ import {NavigableGroupDirective} from '../../../../lib/ng/navigable/navigable-gr
 @Component({
 	selector: 'navigable-sample',
 	templateUrl: './navigable-sample.component.html',
-	styleUrls: ['./navigable-sample.component.css']
+	styleUrls: ['./navigable-sample.component.scss']
 })
 export class NavigableSampleComponent {
 

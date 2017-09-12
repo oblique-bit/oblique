@@ -1,4 +1,7 @@
-﻿.list-group {
+@import '../../../../../node_modules/oblique-ui/scss/variables';
+@import '../../../../../node_modules/oblique-ui/scss/mixins';
+
+.list-group {
 	margin-bottom: 30px;
 }
 
@@ -74,3 +77,4 @@
 	.list-group-item {
 	}
 }
+
