@@ -89,6 +89,7 @@ export class NavigableDirective implements AfterViewInit {
 
 	@HostListener('keydown', ['$event'])
 	onKeyDown($event: KeyboardEvent) {
+		console.log('asfd');
 		let keyCode = $event.keyCode;
 		if (keyCode === NavigableDirective.KEYS.UP || keyCode === NavigableDirective.KEYS.DOWN) {
 			let focused = this.element.nativeElement.querySelector(':focus');

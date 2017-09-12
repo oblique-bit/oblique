@@ -1,5 +1,5 @@
 import {
-	Directive, Input, EventEmitter, Output, AfterViewInit, ContentChildren, QueryList
+	Input, EventEmitter, Output, AfterViewInit, ContentChildren, QueryList, Component
 } from '@angular/core';
 import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from './navigable.directive';
 
@@ -11,19 +11,20 @@ import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from '
  * - [(navigableSelection)]:any[]            The array which will contain the selected models
  *
  */
-@Directive({
-	selector: '[orNavigableGroup]',
+@Component({
+	selector: 'or-navigable-group',
+	template: `<ng-content></ng-content>`,
 	exportAs: 'navigableGroup'
 })
 export class NavigableGroupDirective implements AfterViewInit {
 
-	@Input('orNavigableGroup')
+	@Input('items')
 	items: any[];
 
 	@ContentChildren(NavigableDirective)
 	navigables: QueryList<NavigableDirective>;
 
-	@Input('navigableSelection')
+	@Input('selection')
 	get selection() {
 		return this.selectionValue;
 	}

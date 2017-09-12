@@ -3,17 +3,17 @@ import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {DebugElement, Component} from '@angular/core';
-import {NavigableGroupDirective} from './navigable-group.directive';
+import {NavigableGroupDirective} from './navigable-group.component';
 import {NavigableDirective} from './navigable.directive';
 
 @Component({
 	template: `
-		<div [orNavigableGroup]="models" [navigableSelection]="selectedModels">
+		<or-navigable-group [selection]="selectedModels">
 			<div [orNavigable]="models[0]"></div>
 			<div [orNavigable]="models[1]"></div>
 			<div [orNavigable]="models[2]"></div>
 			<div [orNavigable]="models[3]"></div>
-		</div>`
+		</or-navigable-group>`
 })
 class TestComponent {
 	selectedModels = [];
@@ -25,7 +25,7 @@ class TestComponent {
 	];
 }
 
-describe('NavigableGroup', () => {
+fdescribe('NavigableGroup', () => {
 	let testComponent: TestComponent;
 	let fixture: ComponentFixture<TestComponent>;
 	let navigableGroup: NavigableGroupDirective;
@@ -261,7 +261,7 @@ describe('NavigableGroup', () => {
 			});
 		});
 
-		describe('while holding CTRL & SHIFT key', () => {
+		fdescribe('while holding CTRL & SHIFT key', () => {
 			it('should *move* navigable item DOWN', () => {
 				navigables[0].active = true;
 				let model = testComponent.models[0];

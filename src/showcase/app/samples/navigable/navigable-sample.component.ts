@@ -2,7 +2,7 @@
 /* tslint:disable no-access-missing-member */
 import {Component} from '@angular/core';
 import {NavigableOnMoveEvent} from '../../../../lib/ng/navigable/navigable.directive';
-import {NavigableGroupDirective} from '../../../../lib/ng/navigable/navigable-group.directive';
+import {NavigableGroupDirective} from '../../../../lib/ng/navigable/navigable-group.component';
 
 @Component({
 	selector: 'navigable-sample',

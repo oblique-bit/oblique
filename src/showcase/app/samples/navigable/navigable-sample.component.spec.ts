@@ -5,7 +5,7 @@ import {By} from '@angular/platform-browser';
 
 import {NavigableSampleComponent} from './navigable-sample.component';
 import {MockTranslatePipe} from '../../../../../testhelpers';
-import {NavigableGroupDirective} from '../../../../lib/ng/navigable/navigable-group.directive';
+import {NavigableGroupDirective} from '../../../../lib/ng/navigable/navigable-group.component';
 import {NavigableDirective} from '../../../../lib/ng/navigable/navigable.directive';
 
 describe('NavigableSampleComponent', () => {
