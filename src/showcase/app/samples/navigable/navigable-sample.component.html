@@ -62,20 +62,20 @@
 											 aria-labelledby="navigable-actions-title">
 											<div class="dropdown-item dropdown-header" role="presentation">Actions</div>
 											<a class="dropdown-item" role="button" tabindex="0"
-											   (click)="toggleHighlighting(scientist)">
+											   (click)="toggleHighlighting(scientist)" (keyup.enter)="toggleHighlighting(scientist)">
 												<span class="fa fa-lightbulb-o"
 													  [ngClass]="{'text-warning': isHighlighted(scientist)}"></span>
 												<span class="small">Highlight</span>
 											</a>
 											<a class="dropdown-item" role="button" tabindex="0"
-											   (click)="lock(scientist)">
+											   (click)="lock(scientist)" (keyup.enter)="lock(scientist)">
 												<span class="fa fa-lock"
 													  [ngClass]="{'text-danger': isLocked(scientist)}"></span>
 												<span class="small">Lock</span>
 											</a>
 											<div class="dropdown-divider" role="presentation"></div>
 											<a class="dropdown-item" role="button" tabindex="0"
-											   (click)="remove(scientist)">
+											   (click)="remove(scientist)" (keyup.enter)="remove(scientist)">
 												<span class="fa fa-trash"></span>
 												<span class="small">Remove</span>
 											</a>
