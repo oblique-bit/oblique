@@ -3,9 +3,6 @@ import {
 	HostListener, AfterViewInit
 } from '@angular/core';
 
-//TODO: Remove JQuery
-declare var $: any;
-
 /**
  * NavigableDirective
  *
@@ -130,7 +127,7 @@ export class NavigableDirective implements AfterViewInit {
 
 		// Check that event does not originate from a focusable child element:
 		const target = $event.target || $event.currentTarget;
-		if (target === this.element.nativeElement || !this.focusable(target)) {
+		if (target === this.element.nativeElement || !NavigableDirective.isFocusable(target)) {
 			if (!$event.defaultPrevented) {
 				if ($event && $event.shiftKey) {
 					this.active = true;
@@ -181,47 +178,37 @@ export class NavigableDirective implements AfterViewInit {
 		return false;
 	}
 
+	private static getAncestorElement(element: Element, nodeName: string): Element {
+		while (element && element.parentElement) {
+			element = element.parentElement;
+			if (element.nodeName.toLowerCase() === nodeName) {
+				return element;
+			}
+		}
+		return undefined;
+	}
+
 	/**
-	 * From jQuery UI: https://github.com/jquery/jquery-ui/blob/master/ui/focusable.js#L28
-	 *
-	 * FIXME: cleanup & remove this!
-	 *
 	 * @param element
 	 * @returns {*}
 	 */
-	private focusable(element) {
-		let map, mapName, img, focusableIfVisible, fieldset,
-			nodeName = element.nodeName.toLowerCase();
-		if (nodeName === 'area') {
-			map = element.parentNode;
-			mapName = map.name;
-			if (!element.href || !mapName || map.nodeName.toLowerCase() !== 'map') {
-				return false;
-			}
-			img = $('img[usemap=\'#' + mapName + '\']');
-			return img.length > 0 && img.is(':visible');
+	private static isFocusable(element): boolean {
+		let nodeName = element.nodeName.toLowerCase();
+		if (!element.offsetHeight || !element.offsetWidth || element.hasAttribute('disabled')
+			|| NavigableDirective.isWithinDisabledFieldset(element, nodeName)) {
+			return false;
 		}
 
-		if (/^(input|select|textarea|button|object)$/.test(nodeName)) {
-			focusableIfVisible = !element.disabled;
+		return (nodeName === 'a' && element.href) || element.hasAttribute('tabindex');
+	}
 
-			if (focusableIfVisible) {
-				// Form controls within a disabled fieldset are disabled.
-				// However, controls within the fieldset's legend do not get disabled.
-				// Since controls generally aren't placed inside legends, we skip
-				// this portion of the check.
-				fieldset = $(element).closest('fieldset')[0];
-				if (fieldset) {
-					focusableIfVisible = !fieldset.disabled;
-				}
-			}
-		} else if ('a' === nodeName) {
-			focusableIfVisible = element.href || $(element).attr('tabindex');
-		} else {
-			focusableIfVisible = $(element).attr('tabindex');
+	private static isWithinDisabledFieldset(element: Element, nodeName: string): boolean {
+		if (!/^(input|select|textarea|button|object)$/.test(nodeName)) {
+			return false;
 		}
 
-		return focusableIfVisible && $(element).is(':visible');
+		let fieldset = NavigableDirective.getAncestorElement(element, 'fieldset');
+		return fieldset && fieldset.hasAttribute('disabled');
 	}
 }
 
