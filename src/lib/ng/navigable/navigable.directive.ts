@@ -221,18 +221,7 @@ export class NavigableDirective implements AfterViewInit {
 			focusableIfVisible = $(element).attr('tabindex');
 		}
 
-		return focusableIfVisible && $(element).is(':visible') && this.visible($(element));
-	}
-
-	// Support: IE 8 only
-	// IE 8 doesn't resolve inherit to visible/hidden for computed values
-	private visible(element) {
-		let visibility = element.css('visibility');
-		while (visibility === 'inherit') {
-			element = element.parent();
-			visibility = element.css('visibility');
-		}
-		return visibility !== 'hidden';
+		return focusableIfVisible && $(element).is(':visible');
 	}
 }
 
