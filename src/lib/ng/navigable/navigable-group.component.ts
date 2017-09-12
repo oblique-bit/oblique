@@ -14,7 +14,8 @@ import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from '
 @Component({
 	selector: 'or-navigable-group',
 	template: `<ng-content></ng-content>`,
-	exportAs: 'navigableGroup'
+	exportAs: 'navigableGroup',
+	styleUrls: ['./navigable.scss']
 })
 export class NavigableGroupDirective implements AfterViewInit {
 
