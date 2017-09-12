@@ -93,12 +93,10 @@ export class NavigableDirective implements AfterViewInit {
 	@HostListener('keydown', ['$event'])
 	onKeyDown($event: KeyboardEvent) {
 		let keyCode = $event.keyCode;
-
-		//TODO: Remove JQuery
 		if (keyCode === NavigableDirective.KEYS.UP || keyCode === NavigableDirective.KEYS.DOWN) {
-			let focused = $(this.element.nativeElement).find(':focus');
-
-			if (!focused || !focused.is('.dropdown-toggle') && focused.parents('.dropdown-menu').length === 0) {
+			let focused = this.element.nativeElement.querySelector(':focus');
+			if (!focused || !focused.classList.contains('dropdown-toggle')
+				&& !NavigableDirective.hasAncestorClass(focused, 'dropdown-menu')) {
 				$event.preventDefault();
 
 				if ($event.ctrlKey && $event.shiftKey) {
@@ -106,7 +104,7 @@ export class NavigableDirective implements AfterViewInit {
 
 					// Try to restore focus:
 					setTimeout(() => {
-						if (focused.length) {
+						if (focused) {
 							focused.focus();
 						} else {
 							this.focus();
@@ -171,6 +169,16 @@ export class NavigableDirective implements AfterViewInit {
 
 	public moveDown() {
 		this.navigableOnMove.emit(new NavigableOnMoveEvent(NavigableDirective.KEYS.DOWN));
+	}
+
+	private static hasAncestorClass(element: Element, className: string): boolean {
+		while (element && element.parentElement) {
+			element = element.parentElement;
+			if (element.classList.contains(className)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
