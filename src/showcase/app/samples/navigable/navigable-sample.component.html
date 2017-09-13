@@ -49,16 +49,16 @@
 											<span class="fa fa-arrow-down"></span>
 											<span class="sr-only">Move DOWN</span>
 										</button>
-										<div class="btn-group dropdown" role="group">
+										<div class="btn-group dropdown" role="group" ngbDropdown>
 											<button type="button"
 													class="btn btn-default dropdown-toggle dropdown-actions"
 													id="samples-navigable-actions-dropdown"
-													data-toggle="dropdown" aria-expanded="false"
+													ngbDropdownToggle
 													dropdown-closable>
 												<span class="sr-only" id="navigable-actions-title">{{'i18n.common.actions' | translate}}</span>
 											</button>
 											<div class="dropdown-menu dropdown-menu-right" role="menu"
-												 aria-hidden="true"
+												 ngbDropdownMenu
 												 aria-labelledby="navigable-actions-title">
 												<div class="dropdown-item dropdown-header" role="presentation">Actions
 												</div>

@@ -3,19 +3,17 @@
 		<a class="nav-link" href="" [routerLink]="['/home']" routerLinkActive="active"
 		   role="menuitem" data-toggle="header navigation">{{'i18n.routes.home.title' | translate}}</a>
 	</li>
-	<li class="nav-item" role="presentation">
-		<a class="nav-link" href="" role="menuitem" aria-expanded="false" aria-haspopup="true"
-		   data-toggle="navigation" ng-class="{active: ('samples' | includedByState)}">
-			<span class="toggle"></span>
+	<li class="nav-item" role="presentation" ngbDropdown>
+		<a class="nav-link" role="menuitem" ngbDropdownToggle
+		   ng-class="{active: ('samples' | includedByState)}">
 			<span id="navigation-samples-title">{{'i18n.routes.samples.title' | translate}}</span>
 		</a>
-		<div class="navigation-menu" role="menu" aria-hidden="true" aria-labelledby="navigation-samples-title">
+		<div class="navigation-menu" role="menu" ngbDropdownMenu aria-labelledby="navigation-samples-title">
 			<ul class="nav nav-hover">
 				<li class="nav-item nav-header" role="presentation">
-					<a href="" class="nav-link nav-header-title navigation-back" data-toggle="navigation">
-						<span class="toggle"></span>
-						<span>{{'i18n.routes.samples.title' | translate}}</span>
-					</a>
+					<span class="nav-link nav-header-title navigation-back">
+						{{'i18n.routes.samples.title' | translate}}
+					</span>
 				</li>
 				<li class="nav-item" role="presentation">
 					<a class="nav-link" href=""
@@ -72,7 +70,7 @@
 					</a>
 				</li>
 				<li class="nav-item" role="presentation">
-					<a class="nav-link" href="" uib-tooltip="Aka infinite scrolling"
+					<a class="nav-link" href="" ngbTooltip="Aka infinite scrolling"
 					   [routerLink]="['/ui-scroll']" routerLinkActive="active"
 					   role="menuitem" data-toggle="header navigation">
 						{{'i18n.routes.samples.ui-scroll.title' | translate}}</a>
@@ -90,21 +88,14 @@
 						| translate}}</a>
 				</li>
 				<li class="nav-item navigation-section" role="presentation">
-					<a class="nav-link" href="" role="menuitem" aria-expanded="false" aria-haspopup="true"
-					   data-toggle="navigation" ng-class="{active: ('validation' | includedByState)}">
-						<span class="toggle"></span>
+					<a class="nav-link" role="menuitem" aria-haspopup="true"
+					   ng-class="{active: ('validation' | includedByState)}">
 						<span
 							id="navigation-validation-title">{{'i18n.routes.samples.validation.title' | translate}}</span>
 					</a>
-					<div class="nav navigation-menu" role="menu" aria-hidden="true"
+					<div class="nav navigation-menu" role="menu"
 					     aria-labelledby="navigation-validation-title">
 						<ul class="nav nav-hover">
-							<li class="nav-item nav-header hidden-lg-up" role="presentation">
-								<a href="" class="nav-link nav-header-title navigation-back" data-toggle="navigation">
-									<span class="toggle"></span>
-									<span>{{'i18n.routes.samples.validation.title' | translate}}</span>
-								</a>
-							</li>
 							<li class="nav-item" role="presentation">
 								<a class="nav-link" href=""
 								   [routerLink]="['/schema-validation']" routerLinkActive="active"

@@ -31,17 +31,17 @@
 			<div class="card-body">
 				<p>A following custom input add-on has been used with <code>filter-box-after</code>.</p>
 				<or-filter-box [(pattern)]="patterns[3]">
-					<span class="input-group-btn" filter-box-after>
+					<span class="input-group-btn" filter-box-after ngbDropdown>
 						<button id="search-actions-dropdown" class="btn btn-default dropdown-toggle"
-								type="button" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false"
+								type="button"
+								ngbDropdownToggle
 								ngbTooltip="{{'i18n.common.actions' | translate}}"
 								placement="left">
 							<span class="sr-only">{{'i18n.common.actions' | translate}}</span>
 						</button>
 						<span class="dropdown-menu dropdown-menu-right" role="menu"
 							  aria-labelledby="search-actions-dropdown"
-							  aria-hidden="true">
+							  ngbDropdownMenu>
 							<a class="dropdown-item" role="button" tabindex="0"
 							   (click)="toggleColor('red')">
 								Toggle red color
