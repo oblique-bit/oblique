@@ -12,9 +12,9 @@ import {NavTreeModule} from './nav-tree';
 import {NotificationModule} from './notification';
 import {SchemaValidationModule} from './schema-validation';
 import {SpinnerModule} from './spinner';
-import {TopControlModule} from './top-control';
 import {UnsavedChangesModule} from './unsaved-changes';
 import {FilterBoxModule} from './filter-box';
+import {ScrollingModule} from './scrolling/scrolling.module';
 
 export * from './datepicker';
 export * from './document-meta';
@@ -29,7 +29,7 @@ export * from './nav-tree';
 export * from './notification';
 export * from './schema-validation';
 export * from './spinner';
-export * from './top-control';
+export * from './scrolling';
 export * from './unsaved-changes';
 
 const OBLIQUE_MODULES = [
@@ -47,7 +47,7 @@ const OBLIQUE_MODULES = [
 	NotificationModule,
 	SpinnerModule,
 	SchemaValidationModule,
-	TopControlModule,
+	ScrollingModule,
 	UnsavedChangesModule
 ];
 
@@ -66,7 +66,7 @@ const OBLIQUE_MODULES = [
 		NotificationModule.forRoot(),
 		SpinnerModule.forRoot(),
 		SchemaValidationModule.forRoot(),
-		TopControlModule.forRoot(),
+		ScrollingModule.forRoot(),
 		UnsavedChangesModule.forRoot()
 	],
 	exports: OBLIQUE_MODULES

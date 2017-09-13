@@ -46,10 +46,12 @@ export const ProjectConfig = {
 			tooltips:        true,
 			variant: 'has-overlay',
 			application: {
-				fixed:       true
+				fixed:       false,
+				attributes: 'scroll-detection'
 			},
 			header: {
-				transitions: true
+				transitions: true,
+				attributes: 'header-transition'
 				// variant: 'application-header-md'
 			},
 			navigation: {

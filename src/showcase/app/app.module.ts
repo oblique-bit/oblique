@@ -21,6 +21,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './home/home.component';
 import {SamplesModule} from './samples/samples.module';
 import {NotificationConfig} from '../../lib/ng/notification/notification-config';
+import {ScrollingConfig} from '../../lib/ng/scrolling/scrolling-config';
 
 // AoT requires an exported function for factories:
 export function createTranslateLoader(http: HttpClient) {
@@ -67,9 +68,11 @@ export function createTranslateLoader(http: HttpClient) {
 	bootstrap: [AppComponent]
 })
 export class AppModule {
-	constructor(private documentMetaService: DocumentMetaService,
+	constructor(documentMetaService: DocumentMetaService,
+				scrollingConfig: ScrollingConfig,
 				@Inject('ObliqueReactive.CONFIG') private config: any) {
 		documentMetaService.titleSuffix = config.title;
 		documentMetaService.description = config.description;
+		scrollingConfig.transitionEnabled = config.theme.header.transitions;
 	}
 }
