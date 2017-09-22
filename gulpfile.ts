@@ -56,8 +56,8 @@ gulp.task('lint', () => {
 	return gulp.src([
 		paths.src + '**/*.ts'
 	])
-		.pipe(tslint(<any>{formatter: 'prose'}))
-		.pipe(tslint.report({summarizeFailureOutput: true}));
+	.pipe(tslint(<any>{formatter: 'prose'}))
+	.pipe(tslint.report({summarizeFailureOutput: true}));
 });
 
 // Remove as soon as the CLI addon API has landed.

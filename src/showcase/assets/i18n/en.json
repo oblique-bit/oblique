@@ -40,8 +40,8 @@
         "multiselect": {
           "title": "Multiselect"
         },
-        "layout-manager": {
-          "title": "Layout Manager"
+        "master-layout": {
+          "title": "Master Layout"
         },
         "navigable": {
           "title": "Navigable"

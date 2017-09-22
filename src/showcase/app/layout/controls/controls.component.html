@@ -1,10 +1,21 @@
-<ul class="navbar-nav navbar-controls animate-ignore" role="menu">
+<ul class="navbar-nav navbar-controls navbar-locale" role="menu">
 	<li class="nav-item" role="menuitem"
 		*ngFor="let locale of locales">
-		<a class="nav-link" href="" role="button"
-		   (click)="changeLang($event, locale)"
-		   [ngClass]="{'active': isLangActive(locale)}">
-			<span class="control-widget">{{locale}}</span>
+		<a class="nav-link control-link" tabindex="0" role="button"
+		   (click)="changeLang(locale)"
+		   [class.active]="isLangActive(locale)">
+			<span class="control-label">{{locale}}</span>
 		</a>
 	</li>
 </ul>
+<ul class="navbar-nav navbar-controls" role="menu">
+	<li class="nav-item" role="menuitem">
+		<a href="https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/"
+		   class="nav-link control-link"
+		   ngbTooltip="Go to ObliqueReactive GIT repository" placement="left">
+			<span class="control-icon fa fa-bitbucket"></span>
+			<span class="control-label d-layout-collapsed">GIT</span>
+		</a>
+	</li>
+</ul>
+

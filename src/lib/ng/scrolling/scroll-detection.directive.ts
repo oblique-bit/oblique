@@ -12,11 +12,13 @@ export class ScrollDetectionDirective {
 	@HostListener('window:scroll')
 	private onScroll() {
 		const scrollTop = window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
-		this.isScrolling = scrollTop > 0;
-		this.config.onScrolling.emit(this.isScrolling);
+		if (this.isScrolling !== scrollTop > 0) {
+			this.isScrolling = scrollTop > 0;
+			this.config.onScroll.emit(this.isScrolling);
+		}
 	}
 
-	constructor(@Inject(DOCUMENT) private document: Document, private config: ScrollingConfig) {
+	constructor(@Inject(DOCUMENT) private document: any, private config: ScrollingConfig) {
 
 	}
 }

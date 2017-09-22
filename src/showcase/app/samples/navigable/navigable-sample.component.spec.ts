@@ -5,12 +5,12 @@ import {By} from '@angular/platform-browser';
 
 import {NavigableSampleComponent} from './navigable-sample.component';
 import {MockTranslatePipe} from '../../../../../testhelpers';
-import {NavigableGroupDirective} from '../../../../lib/ng/navigable/navigable-group.component';
+import {NavigableGroupComponent} from '../../../../lib/ng/navigable/navigable-group.component';
 import {NavigableDirective} from '../../../../lib/ng/navigable/navigable.directive';
 
 describe('NavigableSampleComponent', () => {
 	let component: NavigableSampleComponent;
-	let navigableGroup: NavigableGroupDirective;
+	let navigableGroup: NavigableGroupComponent;
 	let navigables: NavigableDirective[];
 	let fixture: ComponentFixture<NavigableSampleComponent>;
 
@@ -20,7 +20,7 @@ describe('NavigableSampleComponent', () => {
 				MockTranslatePipe,
 				NavigableSampleComponent,
 				NavigableDirective,
-				NavigableGroupDirective
+				NavigableGroupComponent
 			],
 			schemas: [
 				CUSTOM_ELEMENTS_SCHEMA
@@ -33,7 +33,7 @@ describe('NavigableSampleComponent', () => {
 		fixture = TestBed.createComponent(NavigableSampleComponent);
 		fixture.detectChanges();
 		component = fixture.componentInstance;
-		navigableGroup = fixture.debugElement.query(By.directive(NavigableGroupDirective)).injector.get(NavigableGroupDirective);
+		navigableGroup = fixture.debugElement.query(By.directive(NavigableGroupComponent)).injector.get(NavigableGroupComponent);
 		navigables = fixture.debugElement.queryAll(By.directive(NavigableDirective)).map(child => {
 			return child.injector.get(NavigableDirective);
 		});

@@ -30,6 +30,7 @@
         "../node_modules/oblique-ui/css/oblique-ui.css",
         "showcase/scss/styles.scss"
       ],
+      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

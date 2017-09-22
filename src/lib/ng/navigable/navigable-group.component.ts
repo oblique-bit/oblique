@@ -23,7 +23,7 @@ import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from '
 			transition-duration: .25s;
 			animation-timing-function: ease-in-out;
 		}
-		
+
 		.navigable .navigable-actions {
 			display: flex;
 			justify-content: flex-end;
@@ -110,10 +110,9 @@ import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from '
 			> td {
 				height: 54px;
 			}
-		}
-	`]
+		}`]
 })
-export class NavigableGroupDirective implements AfterViewInit {
+export class NavigableGroupComponent implements AfterViewInit {
 
 	@Input('items')
 	items: any[];

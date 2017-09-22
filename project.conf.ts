@@ -43,24 +43,30 @@ export const ProjectConfig = {
 
 		// Theming:
 		theme: {
-			tooltips:        true,
-			variant: 'has-overlay',
+			tooltips:        false, // Handled by ngbTooltip.
+			html: {
+				attributes: null,
+			},
+			body: {
+				'class': 'has-overlay',
+				attributes: null,
+			},
 			application: {
 				fixed:       false,
-				attributes: 'scroll-detection'
+				attributes: 'orMasterLayoutApplication scroll-detection'
 			},
 			header: {
-				transitions: true,
-				attributes: 'header-transition'
-				// variant: 'application-header-md'
+				animate:    true,
+				attributes: 'orMasterLayoutHeader',
+				sticky:     true,
+				variant:    null // 'application-header-md'
 			},
 			navigation: {
-				scrollable:  true
+				scrollable: true
 			}
 		},
 
 		// References:
-		pages: '',
 		vendor: {
 			path: 'assets/',
 			obliqueui: {

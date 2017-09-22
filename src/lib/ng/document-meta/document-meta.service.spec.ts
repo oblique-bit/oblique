@@ -9,12 +9,21 @@ describe('DocumentMetaService', () => {
 	let documentMetaService: DocumentMetaService;
 
 	beforeEach(async () => {
-		const mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use']);
+		const mockTranslateService = jasmine.createSpyObj(
+			'TranslateService',
+			[
+				'setDefaultLang',
+				'use',
+				'onLangChange'
+			]);
 
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
 			providers: [
-				{provide: TranslateService, useValue: mockTranslateService},
+				{
+					provide: TranslateService,
+					useValue: mockTranslateService
+				},
 				DocumentMetaService
 			]
 		});
@@ -24,7 +33,7 @@ describe('DocumentMetaService', () => {
 		documentMetaService = service;
 	}));
 
-	it('should set document title', () => {
-		// TODO
-	});
+	// it('should set document title', () => {
+	// 	// TODO
+	// });
 });

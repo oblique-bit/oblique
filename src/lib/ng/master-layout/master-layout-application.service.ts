@@ -2,18 +2,18 @@ import {Injectable, Inject} from '@angular/core';
 import {LocalStorage} from 'ngx-webstorage';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 
-import {LayoutManagerDirective} from './layout-manager.directive';
+import {MasterLayoutApplicationDirective} from './master-layout-application.directive';
 
 /**
- * LayoutManagerService - Service for controlling ObliqueUI master layout features.
+ * Service for controlling ObliqueUI application composite features.
  */
 @Injectable()
-export class LayoutManagerService {
+export class MasterLayoutApplicationService {
 
 	@LocalStorage()
 	public userLang: string;
 
-	public layoutManagerDirective: LayoutManagerDirective;
+	public applicationDirective: MasterLayoutApplicationDirective;
 
 	constructor(private translate: TranslateService,
 				@Inject('ObliqueReactive.CONFIG') private config: any) {
@@ -37,26 +37,26 @@ export class LayoutManagerService {
 	}
 
 	set cover(value) {
-		this.layoutManagerDirective.hasCover = value;
+		this.applicationDirective.hasCover = value;
 	}
 
 	get cover() {
-		return this.layoutManagerDirective.hasCover;
+		return this.applicationDirective.hasCover;
 	}
 
 	set navigation(value) {
-		this.layoutManagerDirective.noNavigation = !value;
+		this.applicationDirective.noNavigation = !value;
 	}
 
 	get navigation() {
-		return !this.layoutManagerDirective.noNavigation;
+		return !this.applicationDirective.noNavigation;
 	}
 
 	set applicationFixed(value) {
-		this.layoutManagerDirective.applicationFixed = value;
+		this.applicationDirective.applicationFixed = value;
 	}
 
 	get applicationFixed() {
-		return this.layoutManagerDirective.applicationFixed;
+		return this.applicationDirective.applicationFixed;
 	}
 }

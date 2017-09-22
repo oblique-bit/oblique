@@ -12,13 +12,13 @@ import {SamplesRoutingModule} from './samples-routing.module';
 
 import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {FormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
-import {LayoutManagerSampleComponent} from './layout-manager/layout-manager-sample.component';
+import {MasterLayoutSampleComponent} from './master-layout/master-layout-sample.component';
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
 import {NavigatorSampleModule} from './navigator-sample/navigator-sample.module';
 import {NavigatorSampleRoutingModule} from './navigator-sample/navigator-sample-routing.module';
 import {NavTreeSampleComponent, NavTreeDetailSampleComponent} from './nav-tree/nav-tree-sample.component';
 import {NotificationSampleComponent} from './notification/notification-sample.component';
-import {SchemaValidationComponent} from './schema-validation/schema-validation-sample.component';
+import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
 import {FilterBoxSampleComponent, PatternFilterPipe} from './filter-box-sample/filter-box-sample.component';
@@ -40,13 +40,13 @@ import {FilterBoxSampleComponent, PatternFilterPipe} from './filter-box-sample/f
 		FormControlStateSampleComponent,
 		FilterBoxSampleComponent,
 		PatternFilterPipe,
-		LayoutManagerSampleComponent,
+		MasterLayoutSampleComponent,
 		MultiselectSampleComponent,
 		NavigableSampleComponent,
 		NavTreeSampleComponent,
 		NavTreeDetailSampleComponent,
 		NotificationSampleComponent,
-		SchemaValidationComponent,
+		SchemaValidationSampleComponent,
 		UnsavedChangesSampleComponent,
 		UnsavedChangesSampleModalComponent
 	],

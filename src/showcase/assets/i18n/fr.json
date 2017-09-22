@@ -37,8 +37,8 @@
         "datepicker": {
           "title": "Datepicker"
         },
-        "layout-manager": {
-          "title": "Layout Manager"
+        "master-layout": {
+          "title": "Master Layout"
         },
         "multiselect": {
           "title": "Multiselect"

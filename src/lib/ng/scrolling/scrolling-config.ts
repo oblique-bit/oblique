@@ -8,7 +8,7 @@ import {EventEmitter, Injectable} from '@angular/core';
  */
 @Injectable()
 export class ScrollingConfig {
-	onScrolling: EventEmitter<boolean> = new EventEmitter<boolean>();
-	transitionEnabled = true;
+	onScroll: EventEmitter<boolean> = new EventEmitter<boolean>();
+	transitions = true;
 	scrollDuration = 200;
 }

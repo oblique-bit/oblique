@@ -1,14 +1,15 @@
 import {Directive, ElementRef, HostBinding} from '@angular/core';
-import {LayoutManagerService} from './layout-manager.service';
+import {MasterLayoutApplicationService} from './master-layout-application.service';
 import {Router, NavigationEnd, ActivatedRoute} from '@angular/router';
 
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/mergeMap';
 
 @Directive({
-	selector: '.application'
+	selector: '[orMasterLayoutApplication]',
+	exportAs: 'orMasterLayoutApplication'
 })
-export class LayoutManagerDirective {
+export class MasterLayoutApplicationDirective {
 
 	@HostBinding('class.has-cover') hasCover;
 	@HostBinding('class.no-navigation') noNavigation;
@@ -18,11 +19,11 @@ export class LayoutManagerDirective {
 	private defaultNoNavigation;
 	private defaultApplicationFixed;
 
-	constructor(private layoutManagerService: LayoutManagerService,
+	constructor(private layoutApplicationService: MasterLayoutApplicationService,
 				private elementRef: ElementRef,
 				private router: Router,
 				private activatedRoute: ActivatedRoute) {
-		layoutManagerService.layoutManagerDirective = this;
+		layoutApplicationService.applicationDirective = this; // FIXME: refactor this to avoid circular coupling
 
 		this.hasCover = this.defaultHasCover = this.elementRef.nativeElement.classList.contains('has-cover');
 		this.noNavigation = this.defaultNoNavigation = this.elementRef.nativeElement.classList.contains('no-navigation');
@@ -40,11 +41,11 @@ export class LayoutManagerDirective {
 			.filter(route => route.outlet === 'primary')
 			.mergeMap(route => route.data)
 			.subscribe((data) => {
-				let layoutManager = data.layoutManager || {};
+				let masterLayout = data.masterLayout || {};
 
-				this.hasCover = layoutManager.hasCover !== undefined ? layoutManager.hasCover : this.defaultHasCover;
-				this.noNavigation = layoutManager.noNavigation !== undefined ? layoutManager.noNavigation : this.defaultNoNavigation;
-				this.applicationFixed = layoutManager.applicationFixed !== undefined ? layoutManager.applicationFixed : this.defaultApplicationFixed;
+				this.hasCover = masterLayout.hasCover !== undefined ? masterLayout.hasCover : this.defaultHasCover;
+				this.noNavigation = masterLayout.noNavigation !== undefined ? masterLayout.noNavigation : this.defaultNoNavigation;
+				this.applicationFixed = masterLayout.applicationFixed !== undefined ? masterLayout.applicationFixed : this.defaultApplicationFixed;
 			});
 	}
 }

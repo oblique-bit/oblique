@@ -5,16 +5,24 @@ import {LayoutControlsComponent} from './controls/controls.component';
 import {LayoutNavigationComponent} from './navigation/navigation.component';
 import {RouterModule} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {MasterLayoutModule} from '../../../lib/ng/master-layout/master-layout.module';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		RouterModule,
 		TranslateModule,
-		NgbModule
+		NgbModule,
+		MasterLayoutModule
 	],
-	declarations: [LayoutControlsComponent, LayoutNavigationComponent],
-	exports: [LayoutControlsComponent, LayoutNavigationComponent]
+	declarations: [
+		LayoutControlsComponent,
+		LayoutNavigationComponent
+	],
+	exports: [
+		LayoutControlsComponent,
+		LayoutNavigationComponent
+	]
 })
 export class LayoutModule {
 }

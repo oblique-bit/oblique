@@ -1,6 +1,6 @@
 import {Injectable, Inject} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {Title, ɵDomAdapter, ɵgetDOM} from '@angular/platform-browser';
+import {Title} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
 import {DOCUMENT} from '@angular/common';
 
@@ -22,7 +22,6 @@ export class DocumentMetaService {
 
 	private headElement: HTMLElement;
 	private metaDescription: HTMLElement;
-	private DOM: ɵDomAdapter;
 	private currentMetaInformation = {
 		title: '',
 		description: ''
@@ -34,10 +33,9 @@ export class DocumentMetaService {
 				private translate: TranslateService,
 				@Inject(DOCUMENT) private document: any) {
 
-		this.DOM = ɵgetDOM();
-		this.headElement = this.DOM.querySelector(document, 'head');
+		this.headElement = this.document.querySelector('head');
 		this.metaDescription = this.getOrCreateMetaElement('description');
-		this.translate.onLangChange.subscribe(this.updateMetaInformation.bind(this));
+		//this.translate.onLangChange.subscribe(this.updateMetaInformation.bind(this));
 
 		// Subscribe to NavigationEnd events and handle current activated route:
 		router.events
@@ -67,7 +65,7 @@ export class DocumentMetaService {
 	 * @param suffix the string to be appended at the end
 	 */
 	public setTitle(title: string, separator: string = this.titleSeparator, suffix: string = this.titleSuffix) {
-		if (title) {
+		if (title && title !== '') {
 			this.translate.get([title, suffix]).subscribe(translation => {
 				this.titleService.setTitle(`${translation[title]}${separator}${translation[suffix]}`);
 			});
@@ -89,26 +87,29 @@ export class DocumentMetaService {
 	 * @param description the description key, which may be translated
 	 */
 	public setDescription(description: string) {
-		this.translate.get(description).subscribe(translation => {
-			this.metaDescription.setAttribute('content', translation);
-		});
+		if (description && description !== '') {
+			this.translate.get(description).subscribe(translation => {
+				this.metaDescription.setAttribute('content', translation);
+			});
+		} else {
+			this.metaDescription.setAttribute('content', '');
+		}
 	}
 
 	/**
 	 * Gets the meta HTML Element when it is in the markup, or creates it.
 	 *
 	 * @param name
-	 * @returns {HTMLElement}
+	 * @returns {HTMLMetaElement}
 	 */
-	private getOrCreateMetaElement(name: string): HTMLElement {
-		let el: HTMLElement;
-		el = this.DOM.querySelector(this.headElement, 'meta[name=' + name + ']');
-		if (el === null) {
-			el = this.DOM.createElement('meta');
-			el.setAttribute('name', name);
-			this.headElement.appendChild(el);
+	private getOrCreateMetaElement(name: string): HTMLMetaElement {
+		let meta: HTMLMetaElement = this.headElement.querySelector('meta[name=' + name + ']') as HTMLMetaElement;
+		if (meta === null) {
+			meta = this.document.createElement('meta');
+			meta.setAttribute('name', name);
+			this.headElement.appendChild(meta);
 		}
-		return el;
+		return meta;
 	}
 
 	/**

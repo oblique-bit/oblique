@@ -1,8 +1,10 @@
 {{#extend "application"
 		  applicationFixed=app.theme.application.fixed
-		  headerVariant=app.theme.header.variant
+		  applicationAttrs=app.theme.application.attributes
 		  headerAttrs=app.theme.header.attributes
-		  applicationAttrs=app.theme.application.attributes}}
+		  headerVariant=app.theme.header.variant
+		  headerSticky=app.theme.header.sticky
+		  headerAnimate=app.theme.header.animate}}
 	{{#content "content"}}
 		<div class="application-content-viewport">
 			<or-notification></or-notification>
@@ -13,4 +15,3 @@
 		</div>
 	{{/content}}
 {{/extend}}
-

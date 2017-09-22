@@ -9,7 +9,12 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 // ObliqueReactive:
 import {
-	ObliqueModule, DocumentMetaService, LayoutManagerService, NotificationService
+	ObliqueModule,
+	DocumentMetaService,
+	MasterLayoutModule,
+	MasterLayoutApplicationService,
+	NotificationService,
+	NotificationConfig
 } from '../../lib';
 
 // Layout:
@@ -20,8 +25,6 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './home/home.component';
 import {SamplesModule} from './samples/samples.module';
-import {NotificationConfig} from '../../lib/ng/notification/notification-config';
-import {ScrollingConfig} from '../../lib/ng/scrolling/scrolling-config';
 
 // AoT requires an exported function for factories:
 export function createTranslateLoader(http: HttpClient) {
@@ -48,31 +51,29 @@ export function createTranslateLoader(http: HttpClient) {
 			}
 		}),
 		AppRoutingModule,
+		MasterLayoutModule,
 		LayoutModule,
 		SamplesModule
 	],
 	providers: [
 		DocumentMetaService,
 		NotificationService,
-		LayoutManagerService,
+		MasterLayoutApplicationService,
 		{
 			provide: NotificationConfig,
 			useValue: {
 				channel: 'app',
 				timeout: 5000
 			}
-		},
-		{provide: 'spinnerMaxTimeout', useValue: 3000} // TODO: export this to config service
+		}
 	],
 	entryComponents: [AppComponent],
 	bootstrap: [AppComponent]
 })
 export class AppModule {
 	constructor(documentMetaService: DocumentMetaService,
-				scrollingConfig: ScrollingConfig,
 				@Inject('ObliqueReactive.CONFIG') private config: any) {
 		documentMetaService.titleSuffix = config.title;
 		documentMetaService.description = config.description;
-		scrollingConfig.transitionEnabled = config.theme.header.transitions;
 	}
 }

@@ -4,7 +4,7 @@ import {DatepickerModule} from './datepicker';
 import {DocumentMetaModule} from './document-meta';
 import {ErrorMessagesModule} from './error-messages';
 import {FormControlStateModule} from './form-control-state';
-import {LayoutManagerModule} from './layout-manager';
+import {MasterLayoutModule} from './master-layout';
 import {MultiselectModule} from './multiselect';
 import {NavigableModule} from './navigable';
 import {NavigatorModule} from './navigator';
@@ -21,7 +21,7 @@ export * from './document-meta';
 export * from './error-messages';
 export * from './filter-box';
 export * from './form-control-state';
-export * from './layout-manager';
+export * from './master-layout';
 export * from './multiselect';
 export * from './navigable';
 export * from './navigator';
@@ -33,13 +33,12 @@ export * from './scrolling';
 export * from './unsaved-changes';
 
 const OBLIQUE_MODULES = [
-	// UIComponents
 	DatepickerModule,
 	DocumentMetaModule,
 	ErrorMessagesModule,
 	FilterBoxModule,
 	FormControlStateModule,
-	LayoutManagerModule,
+	MasterLayoutModule,
 	MultiselectModule,
 	NavigableModule,
 	NavigatorModule,
@@ -58,7 +57,7 @@ const OBLIQUE_MODULES = [
 		ErrorMessagesModule.forRoot(),
 		FilterBoxModule.forRoot(),
 		FormControlStateModule.forRoot(),
-		LayoutManagerModule.forRoot(),
+		MasterLayoutModule.forRoot(),
 		MultiselectModule.forRoot(),
 		NavigableModule.forRoot(),
 		NavigatorModule.forRoot(),
@@ -74,7 +73,10 @@ const OBLIQUE_MODULES = [
 export class ObliqueRootModule {
 }
 
-@NgModule({imports: OBLIQUE_MODULES, exports: OBLIQUE_MODULES})
+@NgModule({
+	imports: OBLIQUE_MODULES,
+	exports: OBLIQUE_MODULES
+})
 export class ObliqueModule {
 	static forRoot(): ModuleWithProviders {
 		return {

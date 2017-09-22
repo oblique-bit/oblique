@@ -1,13 +1,8 @@
-import {EventEmitter, Injectable, Optional, Inject} from '@angular/core';
-import {NotificationService} from '../notification/notification.service';
-import {Loading} from './loading';
+import {EventEmitter, Injectable} from '@angular/core';
 
-//TODO: Rethink this concept
 /**
- * SpinnerService
+ * SpinnerService (TODO: Rethink this concept)
  *
- * providers:
- *    spinnerMaxTimeout: max time (in ms) a loading should take
  */
 @Injectable()
 export class SpinnerService {
@@ -27,11 +22,9 @@ export class SpinnerService {
 		this.setSpinnerActive(false);
 	}
 
-	//Workaround to have a private setter
+	// Workaround to have a private setter:
 	private setSpinnerActive(val: boolean) {
 		this._spinnerActive = val;
 		this.onSpinnerStatusChange.emit(val);
 	}
 }
-
-

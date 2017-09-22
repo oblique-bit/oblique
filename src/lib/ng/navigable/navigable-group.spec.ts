@@ -3,12 +3,12 @@ import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {DebugElement, Component} from '@angular/core';
-import {NavigableGroupDirective} from './navigable-group.component';
+import {NavigableGroupComponent} from './navigable-group.component';
 import {NavigableDirective} from './navigable.directive';
 
 @Component({
 	template: `
-		<or-navigable-group [selection]="selectedModels">
+		<or-navigable-group [items]="models" [selection]="selectedModels">
 			<div [orNavigable]="models[0]"></div>
 			<div [orNavigable]="models[1]"></div>
 			<div [orNavigable]="models[2]"></div>
@@ -25,10 +25,10 @@ class TestComponent {
 	];
 }
 
-fdescribe('NavigableGroup', () => {
+describe('NavigableGroup', () => {
 	let testComponent: TestComponent;
 	let fixture: ComponentFixture<TestComponent>;
-	let navigableGroup: NavigableGroupDirective;
+	let navigableGroup: NavigableGroupComponent;
 	let navigables: NavigableDirective[];
 	let navigableElements: DebugElement[];
 
@@ -37,7 +37,7 @@ fdescribe('NavigableGroup', () => {
 			declarations: [
 				TestComponent,
 				NavigableDirective,
-				NavigableGroupDirective
+				NavigableGroupComponent
 			],
 			imports: [CommonModule]
 		})
@@ -48,7 +48,7 @@ fdescribe('NavigableGroup', () => {
 		fixture = TestBed.createComponent(TestComponent);
 		fixture.detectChanges();
 		testComponent = fixture.componentInstance;
-		navigableGroup = fixture.debugElement.query(By.directive(NavigableGroupDirective)).injector.get(NavigableGroupDirective);
+		navigableGroup = fixture.debugElement.query(By.directive(NavigableGroupComponent)).injector.get(NavigableGroupComponent);
 		navigables = fixture.debugElement.queryAll(By.directive(NavigableDirective)).map(child => {
 			return child.injector.get(NavigableDirective);
 		});
@@ -261,7 +261,7 @@ fdescribe('NavigableGroup', () => {
 			});
 		});
 
-		fdescribe('while holding CTRL & SHIFT key', () => {
+		describe('while holding CTRL & SHIFT key', () => {
 			it('should *move* navigable item DOWN', () => {
 				navigables[0].active = true;
 				let model = testComponent.models[0];

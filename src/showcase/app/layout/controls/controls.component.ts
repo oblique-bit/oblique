@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {LayoutManagerService} from '../../../../lib';
+import {MasterLayoutApplicationService} from '../../../../lib';
 
 @Component({
 	selector: 'layout-controls',
@@ -10,17 +10,16 @@ export class LayoutControlsComponent {
 
 	public locales = ['en'];
 
-	constructor(private layoutManager: LayoutManagerService,
+	constructor(private layoutApplicationService: MasterLayoutApplicationService,
 				@Inject('ObliqueReactive.CONFIG') private config: any) {
 		this.locales = config.locales || this.locales;
 	}
 
 	public isLangActive(lang: string): boolean {
-		return this.layoutManager.userLang === lang;
+		return this.layoutApplicationService.userLang === lang;
 	}
 
-	public changeLang($event: Event, lang: string) {
-		$event.preventDefault();
-		this.layoutManager.useLang(lang);
+	public changeLang(lang: string) {
+		this.layoutApplicationService.useLang(lang);
 	}
 }

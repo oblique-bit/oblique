@@ -1,112 +1,165 @@
-<ul id="nav-global" class="nav navbar-nav navbar-primary navbar-fw navigation-scrollable-content" role="menu">
-	<li class="nav-item" role="presentation">
-		<a class="nav-link" href="" [routerLink]="['/home']" routerLinkActive="active"
-		   role="menuitem" data-toggle="header navigation">{{'i18n.routes.home.title' | translate}}</a>
-	</li>
-	<li class="nav-item" role="presentation" ngbDropdown>
-		<a class="nav-link" role="menuitem" ngbDropdownToggle
-		   ng-class="{active: ('samples' | includedByState)}">
-			<span id="navigation-samples-title">{{'i18n.routes.samples.title' | translate}}</span>
+<ul id="navigation" role="menubar"
+    class="nav navbar-nav navbar-primary navbar-fw navigation-scrollable-content"
+    orMasterLayoutNavigation>
+	<li class="nav-item" role="presentation"
+	    orMasterLayoutNavigationItem>
+		<a class="nav-link" href="" role="menuitem"
+		   [routerLink]="['/home']" routerLinkActive="active"
+		   orMasterLayoutNavigationToggle>
+			{{'i18n.routes.home.title' | translate}}
 		</a>
-		<div class="navigation-menu" role="menu" ngbDropdownMenu aria-labelledby="navigation-samples-title">
-			<ul class="nav nav-hover">
+	</li>
+	<li class="nav-item" role="presentation"
+	    orMasterLayoutNavigationItem>
+		<a class="nav-link" href="" role="button"
+		   [ngClass]="{'active': isActive('/samples')}"
+		   orMasterLayoutNavigationToggle>
+			<span id="navbar-primary-samples-title">
+				{{'i18n.routes.samples.title' | translate}}
+			</span>
+			<span class="toggle"></span>
+		</a>
+		<div class="navbar-primary-menu"
+		     role="menu" aria-labelledby="navbar-primary-samples-title"
+		     orMasterLayoutNavigationMenu>
+			<ul class="nav nav-hover navbar-primary-row">
 				<li class="nav-item nav-header" role="presentation">
-					<span class="nav-link nav-header-title navigation-back">
-						{{'i18n.routes.samples.title' | translate}}
-					</span>
-				</li>
-				<li class="nav-item" role="presentation">
-					<a class="nav-link" href=""
-					   [routerLink]="['/datepicker']" routerLinkActive="active"
-					   role="menuitem" data-toggle="header navigation">
-						{{'i18n.routes.samples.datepicker.title' | translate}}</a>
-				</li>
-				<li class="nav-item" role="presentation">
-					<a class="nav-link" href=""
-					   [routerLink]="['/layout-manager']" routerLinkActive="active"
-					   role="menuitem" data-toggle="header navigation">
-						{{'i18n.routes.samples.layout-manager.title' | translate}}</a>
-				</li>
-				<li class="nav-item" role="presentation">
-					<a class="nav-link" href=""
-					   [routerLink]="['/multiselect']" routerLinkActive="active"
-					   role="menuitem" data-toggle="header navigation">
-						{{'i18n.routes.samples.multiselect.title' | translate}}
+					<a class="nav-header-title navbar-primary-back" role="button"
+					    orMasterLayoutNavigationToggle>
+						<span class="toggle d-layout-collapsed"></span>
+						<span>{{'i18n.routes.samples.title' | translate}}</span>
 					</a>
 				</li>
-				<li class="nav-item" role="presentation">
-					<a class="nav-link" href=""
-					   [routerLink]="['/navigable']" routerLinkActive="active"
-					   role="menuitem" data-toggle="header navigation">
-						{{'i18n.routes.samples.navigable.title' | translate}}
+				<li class="nav-item navbar-primary-col">
+					<ul class="nav nav-hover">
+						<li class="nav-item" role="presentation"
+						    orMasterLayoutNavigationItem>
+							<a class="nav-link" href="" role="menuitem"
+							   [routerLink]="['/samples/datepicker']" routerLinkActive="active"
+							   orMasterLayoutNavigationToggle>
+								{{'i18n.routes.samples.datepicker.title' | translate}}
+							</a>
+						</li>
+						<li class="nav-item" role="presentation"
+						    orMasterLayoutNavigationItem>
+							<a class="nav-link" href="" role="menuitem"
+							   [routerLink]="['/samples/master-layout']" routerLinkActive="active"
+							   orMasterLayoutNavigationToggle>
+								{{'i18n.routes.samples.master-layout.title' | translate}}
+							</a>
+						</li>
+						<li class="nav-item" role="presentation"
+						    orMasterLayoutNavigationItem>
+							<a class="nav-link" href="" role="menuitem"
+							   [routerLink]="['/samples/multiselect']" routerLinkActive="active"
+							   orMasterLayoutNavigationToggle>
+								{{'i18n.routes.samples.multiselect.title' | translate}}
+							</a>
+						</li>
+						<li class="nav-item" role="presentation"
+						    orMasterLayoutNavigationItem>
+							<a class="nav-link" href="" role="menuitem"
+							   [routerLink]="['/samples/navigable']" routerLinkActive="active"
+							   orMasterLayoutNavigationToggle>
+								{{'i18n.routes.samples.navigable.title' | translate}}
+							</a>
+						</li>
+						<li class="nav-item" role="presentation"
+						    orMasterLayoutNavigationItem>
+							<a class="nav-link" href="" role="menuitem"
+							   [routerLink]="['/samples/navigator/1/1']" routerLinkActive="active"
+							   orMasterLayoutNavigationToggle>
+								{{'i18n.routes.samples.navigator.title' | translate}}
+							</a>
+						</li>
+						<li class="nav-item" role="presentation"
+						    orMasterLayoutNavigationItem>
+							<a class="nav-link" href="" role="menuitem"
+							   [routerLink]="['/samples/nav-tree']" routerLinkActive="active"
+							   orMasterLayoutNavigationToggle>
+								{{'i18n.routes.samples.nav-tree.title' | translate}}
+							</a>
+						</li>
+						<li class="nav-item" role="presentation"
+						    orMasterLayoutNavigationItem>
+							<a class="nav-link" href="" role="menuitem"
+							   [routerLink]="['/samples/notification']" routerLinkActive="active"
+							   orMasterLayoutNavigationToggle>
+								{{'i18n.routes.samples.notification.title' | translate}}
+							</a>
+						</li>
+						<li class="nav-item" role="presentation"
+						    orMasterLayoutNavigationItem>
+							<a class="nav-link" href="" role="menuitem"
+							   [routerLink]="['/samples/samples.typeahead']" routerLinkActive="active"
+							   orMasterLayoutNavigationToggle>
+								{{'i18n.routes.samples.typeahead.title' | translate}}
+							</a>
+						</li>
+						<li class="nav-item" role="presentation"
+						    orMasterLayoutNavigationItem>
+							<a class="nav-link" href="" ngbTooltip="Aka infinite scrolling" role="menuitem"
+							   [routerLink]="['/samples/ui-scroll']" routerLinkActive="active"
+							   orMasterLayoutNavigationToggle>
+								{{'i18n.routes.samples.ui-scroll.title' | translate}}
+							</a>
+						</li>
+						<li class="nav-item" role="presentation"
+						    orMasterLayoutNavigationItem>
+							<a class="nav-link" href="" role="menuitem"
+							   [routerLink]="['/samples/filter-box']" routerLinkActive="active"
+							   orMasterLayoutNavigationToggle>
+								{{'i18n.routes.samples.filterBox.title' | translate}}
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item navbar-primary-col navbar-primary-section"
+				    orMasterLayoutNavigationItem>
+					<a class="nav-link navbar-primary-section-title"
+					   href="" role="button" aria-haspopup="true"
+					   orMasterLayoutNavigationToggle
+					   [ngClass]="{'active': isActive('/samples/validation')}">
+						<span id="navbar-primary-validation-title">
+							{{'i18n.routes.samples.validation.title' | translate}}
+						</span>
+						<span class="toggle d-layout-collapsed"></span>
 					</a>
-				</li>
-				<li class="nav-item" role="presentation">
-					<a class="nav-link" href=""
-					   [routerLink]="['/navigator/1/1']" routerLinkActive="active"
-					   role="menuitem" data-toggle="header navigation">
-						{{'i18n.routes.samples.navigator.title' | translate}}
-					</a>
-				</li>
-				<li class="nav-item" role="presentation">
-					<a class="nav-link" href=""
-					   [routerLink]="['/nav-tree']" routerLinkActive="active"
-					   role="menuitem" data-toggle="header navigation">
-						{{'i18n.routes.samples.nav-tree.title' | translate}}
-					</a>
-				</li>
-				<li class="nav-item" role="presentation">
-					<a class="nav-link" href=""
-					   [routerLink]="['/notification']" routerLinkActive="active"
-					   role="menuitem" data-toggle="header navigation">
-						{{'i18n.routes.samples.notification.title' | translate}}
-					</a>
-				</li>
-				<li class="nav-item" role="presentation">
-					<a class="nav-link" href=""
-					   [routerLink]="['/samples.typeahead']" routerLinkActive="active"
-					   role="menuitem" data-toggle="header navigation">
-						{{'i18n.routes.samples.typeahead.title' | translate}}
-					</a>
-				</li>
-				<li class="nav-item" role="presentation">
-					<a class="nav-link" href="" ngbTooltip="Aka infinite scrolling"
-					   [routerLink]="['/ui-scroll']" routerLinkActive="active"
-					   role="menuitem" data-toggle="header navigation">
-						{{'i18n.routes.samples.ui-scroll.title' | translate}}</a>
-				</li>
-				<li class="nav-item" role="presentation">
-					<a class="nav-link" href=""
-					   [routerLink]="['/form-control-state']" routerLinkActive="active"
-					   role="menuitem" data-toggle="header navigation">
-						{{'i18n.routes.samples.formControlState.title' | translate}}</a>
-				</li>
-				<li class="nav-item" role="presentation">
-					<a class="nav-link" href=""
-					   [routerLink]="['/filter-box']" routerLinkActive="active"
-					   role="menuitem" data-toggle="header navigation">{{'i18n.routes.samples.filterBox.title'
-						| translate}}</a>
-				</li>
-				<li class="nav-item navigation-section" role="presentation">
-					<a class="nav-link" role="menuitem" aria-haspopup="true"
-					   ng-class="{active: ('validation' | includedByState)}">
-						<span
-							id="navigation-validation-title">{{'i18n.routes.samples.validation.title' | translate}}</span>
-					</a>
-					<div class="nav navigation-menu" role="menu"
-					     aria-labelledby="navigation-validation-title">
+					<div class="nav navbar-primary-menu" role="menu"
+					     aria-labelledby="navbar-primary-validation-title"
+					     orMasterLayoutNavigationMenu>
 						<ul class="nav nav-hover">
-							<li class="nav-item" role="presentation">
-								<a class="nav-link" href=""
-								   [routerLink]="['/schema-validation']" routerLinkActive="active"
-								   role="menuitem" data-toggle="header navigation">
-									{{'i18n.routes.samples.validation.schemaValidation.title' | translate}}</a>
+							<li class="nav-item nav-header d-layout-collapsed" role="presentation">
+								<a class="nav-header-title navbar-primary-back"
+								   href="" role="button"
+								   orMasterLayoutNavigationToggle>
+									<span class="toggle"></span>
+									<span>{{'i18n.routes.samples.validation.title' | translate}}</span>
+								</a>
 							</li>
-							<li class="nav-item" role="presentation">
-								<a class="nav-link" href=""
-								   [routerLink]="['/unsaved-changes']" routerLinkActive="active"
-								   role="menuitem" data-toggle="header navigation">
-									{{'i18n.routes.samples.validation.unsavedChanges.title' | translate}}</a>
+							<li class="nav-item" role="presentation"
+							    orMasterLayoutNavigationItem>
+								<a class="nav-link" href="" role="menuitem"
+								   [routerLink]="['/samples/validation/form-control-state']" routerLinkActive="active"
+								   orMasterLayoutNavigationToggle>
+									{{'i18n.routes.samples.formControlState.title' | translate}}
+								</a>
+							</li>
+							<li class="nav-item" role="presentation"
+							    orMasterLayoutNavigationItem>
+								<a class="nav-link" href="" role="menuitem"
+								   [routerLink]="['/samples/validation/schema-validation']" routerLinkActive="active"
+								   orMasterLayoutNavigationToggle>
+									{{'i18n.routes.samples.validation.schemaValidation.title' | translate}}
+								</a>
+							</li>
+							<li class="nav-item" role="presentation"
+							    orMasterLayoutNavigationItem>
+								<a class="nav-link" href="" role="menuitem"
+								   [routerLink]="['/samples/validation/unsaved-changes']" routerLinkActive="active"
+								   orMasterLayoutNavigationToggle>
+									{{'i18n.routes.samples.validation.unsavedChanges.title' | translate}}
+								</a>
 							</li>
 						</ul>
 					</div>

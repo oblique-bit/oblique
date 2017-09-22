@@ -5,10 +5,10 @@ import {Component} from '@angular/core';
 	templateUrl: './schema-validation-sample.component.html',
 	styleUrls: ['./schema-validation-sample.component.css']
 })
-export class SchemaValidationComponent {
+export class SchemaValidationSampleComponent {
 
 	schema = {
-		'title': 'SampleSchemaValidation',
+		'title': 'SampleSchemaSampleValidation',
 		'type': 'object',
 		/*'required': [
 		 'id',

@@ -2,7 +2,7 @@
 /* tslint:disable no-access-missing-member */
 import {Component} from '@angular/core';
 import {NavigableOnMoveEvent} from '../../../../lib/ng/navigable/navigable.directive';
-import {NavigableGroupDirective} from '../../../../lib/ng/navigable/navigable-group.component';
+import {NavigableGroupComponent} from '../../../../lib/ng/navigable/navigable-group.component';
 
 @Component({
 	selector: 'navigable-sample',
@@ -48,7 +48,7 @@ export class NavigableSampleComponent {
 		this.log(`Activated: ${scientist.firstname}`);
 	}
 
-	toggleActivation(scientist: any, navigableGroup: NavigableGroupDirective) {
+	toggleActivation(scientist: any, navigableGroup: NavigableGroupComponent) {
 		if (this.scientistsSelection.indexOf(scientist) !== -1) {
 			navigableGroup.remove(scientist);
 		} else {

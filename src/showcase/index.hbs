@@ -1,10 +1,9 @@
 {{#extend "base-layout"
 		  appHome=app.home
 		  description=app.description
-		  themeVariant=app.theme.variant
-		  applicationFixed=app.theme.application.fixed
-		  headerTransitions=app.theme.header.transitions
-		  headerVariant=app.theme.header.variant}}
+		  htmlAttrs=app.theme.html.attributes
+		  bodyAttrs=app.theme.body.attributes
+		  bodyClass=app.theme.body.class}}
 	{{#content "head-oblique"}}{{/content}}
 	{{#content "body-oblique"}}{{/content}}
 	{{#content "base"}}

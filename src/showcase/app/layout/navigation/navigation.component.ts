@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
 	selector: 'layout-navigation',
@@ -7,7 +8,10 @@ import {Component} from '@angular/core';
 })
 export class LayoutNavigationComponent {
 
-	public context = { // TODO: mock only, remove this
-		isAuthenticated: false
-	};
+	constructor(private router: Router) {
+	}
+
+	isActive(url) {
+		return this.router.isActive(url, false);
+	}
 }

@@ -1,15 +1,15 @@
 /* tslint:disable:no-unused-variable */
 import {TestBed, inject} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
-
-import {LayoutManagerService} from './layout-manager.service';
 import {TranslateService} from '@ngx-translate/core';
 import {EventEmitter} from '@angular/core';
-import {ProjectConfig} from '../../../../project.conf';
 
-describe('LayoutManagerService', () => {
+import {ProjectConfig} from '../../../../project.conf';
+import {MasterLayoutApplicationService} from './master-layout-application.service';
+
+describe('MasterLayoutApplicationService', () => {
 	let mockTranslateService;
-	let uiLayoutService: LayoutManagerService;
+	let applicationService: MasterLayoutApplicationService;
 
 	beforeEach(async () => {
 		mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use', 'getDefaultLang']);
@@ -19,15 +19,15 @@ describe('LayoutManagerService', () => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
 			providers: [
-				LayoutManagerService,
+				MasterLayoutApplicationService,
 				{provide: TranslateService, useValue: mockTranslateService},
 				{provide: 'ObliqueReactive.CONFIG', useValue: ProjectConfig.app}
 			]
 		});
 	});
 
-	beforeEach(inject([LayoutManagerService], (service: LayoutManagerService) => {
-		uiLayoutService = service;
+	beforeEach(inject([MasterLayoutApplicationService], (service: MasterLayoutApplicationService) => {
+		applicationService = service;
 	}));
 
 	it('update layout variant', () => {
