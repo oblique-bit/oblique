@@ -4,12 +4,7 @@ import {
 import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from './navigable.directive';
 
 /**
- * NavigableGroupDirective
- *
- * API:
- * - [(navigableGroup)]:any[]       The array containing all group items
- * - [(navigableSelection)]:any[]            The array which will contain the selected models
- *
+ * NavigableGroup component.
  */
 @Component({
 	selector: 'or-navigable-group',
@@ -114,12 +109,18 @@ import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from '
 })
 export class NavigableGroupComponent implements AfterViewInit {
 
+	/**
+	 * The array containing all group items
+	 */
 	@Input('items')
 	items: any[];
 
 	@ContentChildren(NavigableDirective)
 	navigables: QueryList<NavigableDirective>;
 
+	/**
+	 * The array which will contain the selected models.
+	 */
 	@Input('selection')
 	get selection() {
 		return this.selectionValue;
