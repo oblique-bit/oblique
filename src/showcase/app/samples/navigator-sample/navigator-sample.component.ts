@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 
 @Component({
 	selector: 'app-navigator-sample',
-	templateUrl: './navigator-sample.component.html',
-	styleUrls: ['./navigator-sample.component.scss']
+	templateUrl: './navigator-sample.component.html'
 })
 export class NavigatorSampleComponent {
 

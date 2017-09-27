@@ -133,7 +133,6 @@ gulp.task('dist', (callback) => {
 gulp.task('dist-build', (callback) => {
 	return runSequence(
 		'dist-copy',
-		'dist-css',
 		'dist-compile',
 		'dist-bundle',
 		'dist-meta',
@@ -151,34 +150,6 @@ gulp.task('dist-copy', () => {
 		paths.partials + '**/*'
 	], {base: paths.lib})
 		.pipe(gulp.dest(paths.dist));
-});
-
-gulp.task('dist-css', () => {
-	return gulp.src([
-		paths.sass + 'oblique-reactive.scss'
-	])
-	//.pipe(sourcemaps.init())
-		.pipe(sass({
-			importer: sassImportOnce,
-			importOnce: {
-				index: false,
-				css: false
-			}
-		}).on('error', sass.logError))
-		.pipe(autoprefixer({
-			browsers: ['last 2 versions', 'ie >= 11'],
-		}))
-		.pipe(header(banner()))
-		//.pipe(sourcemaps.write(paths.dist.css + 'maps'))
-		.pipe(gulp.dest(paths.dist + 'css/'))
-		.pipe(cleanCss({
-			keepSpecialComments: 0
-		}))
-		.pipe(rename({
-			suffix: '.min',
-		}))
-		.pipe(header(banner()))
-		.pipe(gulp.dest(paths.dist + 'css/'));
 });
 
 gulp.task('dist-compile', (done) => {

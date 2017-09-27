@@ -4,8 +4,7 @@ import {NotificationService} from '../../../../lib';
 
 @Component({
 	selector: 'app-form-control-state-sample',
-	templateUrl: './form-control-state-sample.component.html',
-	styleUrls: ['./form-control-state-sample.component.scss']
+	templateUrl: './form-control-state-sample.component.html'
 })
 export class FormControlStateSampleComponent {
 

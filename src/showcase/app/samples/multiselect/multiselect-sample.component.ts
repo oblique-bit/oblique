@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 
 @Component({
 	selector: 'app-multiselect',
-	templateUrl: './multiselect-sample.component.html',
-	styleUrls: ['./multiselect-sample.component.scss']
+	templateUrl: './multiselect-sample.component.html'
 })
 export class MultiselectSampleComponent {
 

@@ -1,7 +1,7 @@
 @import '../../../../node_modules/oblique-ui/scss/variables';
 
 .application {
-	// Cover background image:
+	// Specify your own cover background image:
 	&.has-cover {
 		background-image: url('../assets/images/cover-background.jpg');
 	}
