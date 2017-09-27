@@ -46,7 +46,9 @@ let del = require('del'),
 
 function webpackCallBack(taskName, gulpDone) {
 	return function (err, stats) {
-		if (err) throw new gutil.PluginError(taskName, err);
+		if (err) {
+			throw new gutil.PluginError(taskName, err);
+		}
 		gutil.log(`[${taskName}]`, stats.toString());
 		gulpDone();
 	};
@@ -123,6 +125,13 @@ gulp.task('release', (callback) => {
 gulp.task('dist', (callback) => {
 	return runSequence(
 		'dist-clean',
+		'dist-build',
+		callback
+	);
+});
+
+gulp.task('dist-build', (callback) => {
+	return runSequence(
 		'dist-copy',
 		'dist-css',
 		'dist-compile',
@@ -174,7 +183,9 @@ gulp.task('dist-css', () => {
 
 gulp.task('dist-compile', (done) => {
 	exec(`"./node_modules/.bin/ngc" -p "tsconfig.publish.json"`, (e) => {
-		if (e) console.log(e);
+		if (e) {
+			console.log(e);
+		}
 		del('./dist/waste');
 		done();
 	}).stdout.on('data', (data) => {
@@ -220,6 +231,30 @@ gulp.task('publish-module', (callback) => {
 			console.log('[SPAWN] Error: ', arguments);
 			callback('Unable to publish NPM module.');
 		});
+});
+//</editor-fold>
+
+//<editor-fold desc="NPM link for dev only">
+gulp.task('dev-link', (callback) => {
+	return runSequence(
+		'dist-build',
+		'npm-link',
+		'watch-link',
+		callback
+	);
+});
+
+gulp.task('npm-link', (callback) => {
+	return spawn('npm', ['link', paths.dist], {stdio: 'inherit'})
+		.on('close', callback)
+		.on('error', function () {
+			console.log('[SPAWN] Error: ', arguments);
+			callback('Unable to execute NPM link')
+		});
+});
+
+gulp.task('watch-link', () => {
+	gulp.watch(paths.src + '**/*', ['dist-build']);
 });
 //</editor-fold>
 

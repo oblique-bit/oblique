@@ -32,17 +32,17 @@
     "path": "projects/OUI/repos/oblique-reactive"
   },
   "scripts": {
+    "start": "./node_modules/.bin/ng serve --port 3001 --preserve-symlinks",
     "dev": "npm run start -- --open",
+    "dev-link": "./node_modules/.bin/gulp dev-link",
     "ci-build": "npm run test -- --single-run --progress false && ./node_modules/.bin/gulp dist",
     "prestart": "npm run prebuild",
-    "start": "./node_modules/.bin/ng serve --port 3001 --preserve-symlinks",
     "build": "./node_modules/.bin/ng build",
     "prebuild": "./node_modules/.bin/gulp build-templates",
     "gulp-publish": "./node_modules/.bin/gulp publish",
     "test": "./node_modules/.bin/ng test",
     "pretest": "npm run prebuild",
-    "e2e": "npm run prebuild && ./node_modules/.bin/ng e2e",
-    "link-dist": "./node_modules/.bin/gulp dist && npm link ./dist"
+    "e2e": "npm run prebuild && ./node_modules/.bin/ng e2e"
   },
   "dependencies": {
     "@angular/animations": "^4.4.3",
