@@ -1,4 +1,6 @@
-<a name="2.0.0-RC.2"></a>
+### ObliqueReactive
+
+<a name="oblique-reactive-2.0.0-RC.2"></a>
 #### [2.0.0-RC.2](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.2) (2017-08-04)
 
 ##### Dependencies updates
@@ -36,15 +38,17 @@
 
 ##### BREAKING CHANGES
 * **Webpack**:
-	- ObliqueUI CSS & images folder are now located directly on the root of the dependency module instead of the `dist/` folder. These references should be adapted on your [Angular CLI](./.angular-cli.json) configuration.
-	- ObliqueUI JavaScript resources are no more required to run Angular-based application. These references should be removed from the [Angular CLI](./.angular-cli.json) configuration.
+	- ObliqueUI CSS & images folders are now located directly on the root of the dependency module instead of the `dist/` folder. These references should be adapted on your [Angular CLI](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/.angular-cli.json?at=2.0.0-RC.2) configuration.
+	- ObliqueUI JavaScript resources are no more required to run ObliqueReactive-based applications. These references should be removed from the [Angular CLI](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/.angular-cli.json?at=2.0.0-RC.2) configuration.
 * **master-layout**:
 	* ObliqueUI master layout has been completely refactored. Refer to ObliqueUI changelog for potential breaking changes.
 	* `LayoutManagerService` has been renamed to `MasterLayoutApplicationService`
+* **animations:**
+	* You need to include an animation strategy module in your app as some ObliqueReactive components are using Angular animations. Simply import `BrowserAnimationsModule` (or alternatively `NoopAnimationsModule` if you prefer to disable animations) in your `app-module.ts`.
 * **multiselect:**
 	- If you used `[settings]` of `MultiselectComponent` you now have to bind every config value separately.
 
-<a name="2.0.0-RC.1"></a>
+<a name="oblique-reactive-2.0.0-RC.1"></a>
 #### [2.0.0-RC.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.1) (2017-06-23)
 
 ##### Dependencies updates
@@ -57,7 +61,5 @@
 * **rxjs:** 5.4.1
 
 ##### BREAKING CHANGES
-* **ObliqueUI:**
-	- Migration to Bootstrap 4 & SCSS. This of course breaks all compatibility to any previous release of ObliqueUI.
-* **ObliqueReactive:**
-	- Migration to Angular 4. This of course breaks all compatibility to any previous release of ObliqueReactive. 
+ObliqueReactive has been migrated to Angular 4. This of course breaks all compatibility to any previous release of ObliqueReactive. 
+
