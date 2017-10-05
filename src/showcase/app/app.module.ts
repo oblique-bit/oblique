@@ -3,7 +3,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule, Inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDatepickerConfig, NgbModule, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
@@ -72,8 +72,13 @@ export function createTranslateLoader(http: HttpClient) {
 })
 export class AppModule {
 	constructor(documentMetaService: DocumentMetaService,
+				tooltipConfig: NgbTooltipConfig,
+				datepickerConfig: NgbDatepickerConfig,
 				@Inject('ObliqueReactive.CONFIG') private config: any) {
 		documentMetaService.titleSuffix = config.title;
 		documentMetaService.description = config.description;
+
+		tooltipConfig.container = 'body';
+		datepickerConfig.navigation = 'arrows';
 	}
 }
