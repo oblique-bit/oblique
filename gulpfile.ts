@@ -1,4 +1,6 @@
 import {ProjectConfig} from './project.conf';
+import {readFileSync} from 'fs';
+import {join} from 'path';
 
 //<editor-fold desc="Dependencies">
 let del = require('del'),
@@ -9,16 +11,12 @@ let del = require('del'),
 
 	// Gulp & plugins:
 	gulp = require('gulp'),
-	autoprefixer = require('gulp-autoprefixer'),
-	cleanCss = require('gulp-clean-css'),
+	conventionalChangelog = require('gulp-conventional-changelog'),
 	gutil = require('gulp-util'),
 	hb = require('gulp-hb'),
-	header = require('gulp-header'),
 	rename = require('gulp-rename'),
 	tslint = require('gulp-tslint'),
 	gulpFile = require('gulp-file'),
-	sass = require('gulp-sass'),
-	sassImportOnce = require('node-sass-import-once'),
 
 	// Project-specific:
 	project = require('./project.conf'),
@@ -119,6 +117,33 @@ gulp.task('release', (callback) => {
 		'build:create-new-tag',
 		callback
 	);
+});
+
+gulp.task('changelog', function () {
+	return gulp.src('CHANGELOG.md')
+		.pipe(conventionalChangelog({
+			// conventional-changelog options:
+			preset: 'angular',
+			releaseCount: 0
+		}, {
+			// context options:
+			linkCompare: false,
+			repository: pkg.repository.path // Atlassian Stash-specific
+		}, {
+			// git-raw-commits options:
+			//from: '0.0.0'
+			//to: 'HEAD'
+		}, {
+			// conventional-commits-parser options
+		}, {
+			// conventional-changelog-writer options
+			// transform: function (commit) {
+			// 	console.log(commit);
+			// 	return commit;
+			// },
+			headerPartial: readFileSync(join(__dirname, 'changelog-header.hbs'), 'utf-8')
+		}))
+		.pipe(gulp.dest('./'));
 });
 
 //<editor-fold desc="Distribution tasks">
