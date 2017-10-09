@@ -1,15 +1,16 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
 	selector: 'or-filter-box',
 	template: `
 		<form novalidate>
 			<div class="form-group">
-				<div class="input-group">
+				<div class="input-group" [ngClass]="getSizeClass('input-group-')">
 					<ng-content select="[filter-box-before]"></ng-content>
 					<div class="control-action">
-						<input class="form-control" type="text"
-							   placeholder="{{placeholder | translate}}"
+						<input class="form-control" [ngClass]="getSizeClass('form-control-')" type="text"
+							   placeholder="{{placeholder | translate}}" 
+							   [attr.readonly]="readonly" [attr.disabled]="disabled"
 							   [ngModel]="pattern" (ngModelChange)="onPatternChanged($event)" name="filter"
 							   #filterControl>
 						<button class="control-action-trigger" type="button" role="button"
@@ -29,18 +30,36 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 		}
 	`]
 })
-export class FilterBoxComponent {
+export class FilterBoxComponent implements OnInit {
+
 	@Input()
 	pattern: string;
 
 	@Input()
 	placeholder = 'i18n.common.filter.placeholder';
 
+	@Input()
+	size;
+
+	@Input()
+	disabled: boolean;
+
+	@Input()
+	readonly: boolean;
+
 	@Output()
 	patternChange = new EventEmitter<string>();
 
 	@Output()
 	patternClear = new EventEmitter<void>();
+
+	private acceptedSizes = ['sm', 'lg'];
+
+	ngOnInit(): void {
+		if (this.size && this.acceptedSizes.indexOf(this.size) === -1) {
+			throw new Error(`"${this.size}" is not a valid size. Only "lg" and "sm" are acceptable alternatives.`);
+		}
+	}
 
 	onPatternCleared() {
 		this.pattern = undefined;
@@ -51,5 +70,11 @@ export class FilterBoxComponent {
 	onPatternChanged(pattern) {
 		this.pattern = pattern;
 		this.patternChange.emit(this.pattern);
+	}
+
+	getSizeClass(classPattern: string): string {
+		return this.size
+			? classPattern + this.size
+			: '';
 	}
 }
