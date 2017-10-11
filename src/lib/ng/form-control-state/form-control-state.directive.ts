@@ -66,9 +66,9 @@ export class FormControlStateDirective implements AfterViewInit {
 	}
 
 	private generateState() {
-		if (this.form.submitted || !this.ngControl.pristine || this.pristineValidation) {
-			this.hasErrorClass = this.ngControl.invalid;
-		}
+		this.hasErrorClass = (this.form.submitted || !this.ngControl.pristine || this.pristineValidation)
+			? this.ngControl.invalid
+			: false;
 
 		if (this.mandatory) {
 			if (this.ngControl.value) {
