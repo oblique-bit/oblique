@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NavigableSampleComponent} from './navigable/navigable-sample.component';
 import {RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
@@ -33,7 +33,8 @@ import {FilterBoxSampleComponent, PatternFilterPipe} from './filter-box-sample/f
 		RouterModule,
 		SamplesRoutingModule,
 		NavigatorSampleModule,
-		NavigatorSampleRoutingModule
+		NavigatorSampleRoutingModule,
+		ReactiveFormsModule
 	],
 	declarations: [
 		DatepickerSampleComponent,
