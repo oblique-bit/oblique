@@ -53,6 +53,16 @@ export class FormControlStateDirective implements AfterViewInit {
 			this.form.ngSubmit,
 			this.ngControl.statusChanges
 		).subscribe(() => this.generateState());
+
+		this.delayStateGenerationForReactiveForms();
+	}
+
+	private delayStateGenerationForReactiveForms() {
+		// Reactive forms instantiate the view only after the model is ready. Thus modifying this.errors in the same
+		// tick as ngAfterViewInit will trigger an ExpressionChangedAfterItHasBeenCheckedError
+		if (this.form instanceof FormGroupDirective) {
+			setTimeout(() => this.generateState(), 0);
+		}
 	}
 
 	private generateState() {

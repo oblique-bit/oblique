@@ -34,6 +34,8 @@ export class ErrorMessagesComponent implements AfterViewInit {
 			this.control.statusChanges,
 			this.form.ngSubmit
 		).subscribe(() => this.generateErrorMessages());
+
+		this.delayMessageGenerationForReactiveForms();
 	}
 
 	private generateErrorMessages() {
@@ -42,6 +44,14 @@ export class ErrorMessagesComponent implements AfterViewInit {
 			this.errors = this.errorMessagesService.createMessages(this.control);
 		} else {
 			this.errors = [];
+		}
+	}
+
+	private delayMessageGenerationForReactiveForms() {
+		// Reactive forms instantiate the view only after the model is ready. Thus modifying this.errors in the same
+		// tick as ngAfterViewInit will trigger an ExpressionChangedAfterItHasBeenCheckedError
+		if (this.form instanceof FormGroupDirective) {
+			setTimeout(() => this.generateErrorMessages(), 0);
 		}
 	}
 }
