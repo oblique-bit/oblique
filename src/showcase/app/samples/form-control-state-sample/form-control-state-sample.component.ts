@@ -6,6 +6,10 @@ import {NotificationService} from '../../../../lib';
 	selector: 'app-form-control-state-sample',
 	templateUrl: './form-control-state-sample.component.html',
 	styles: [`
+		.form-horizontal label {
+			text-align: right;
+		}
+		
 		.card + .card {
 			margin-top: 2rem;
 		}

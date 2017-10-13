@@ -3,7 +3,15 @@ import {Component} from '@angular/core';
 @Component({
 	selector: 'app-schema-validation',
 	templateUrl: './schema-validation-sample.component.html',
-	styleUrls: ['./schema-validation-sample.component.css']
+	styles: [`
+		.form-horizontal label {
+			text-align: right;
+		}
+		
+		form + .row {
+			margin-top: 2rem;
+		}
+	`]
 })
 export class SchemaValidationSampleComponent {
 
