@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {AbstractControl} from '@angular/forms';
 import * as Ajv from 'ajv';
 
 @Injectable()
@@ -26,6 +27,10 @@ export class SchemaValidationService {
 		}
 
 		return null;
+	}
+
+	getValidator(propertyPath: string): (AbstractControl) => { [errorKey: string]: { [params: string]: any } } | {required: boolean} {
+		return (control: AbstractControl) => this.validate(propertyPath, control.value);
 	}
 
 	private addSchema(schema: any, parentPropertyName?): void {
