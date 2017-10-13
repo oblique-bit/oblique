@@ -4,13 +4,17 @@ import * as Ajv from 'ajv';
 
 @Injectable()
 export class SchemaValidationService {
-
 	private ajv = new Ajv({allErrors: true});
+	private currentSchema: string;
 	private required: string[];
 
-	compileSchema(schema: any) {
-		this.required = schema.required || [];
-		this.addSchema(schema);
+	compileSchema(schema: any): void {
+		const newSchema = JSON.stringify(schema);
+		if (this.currentSchema !== newSchema) {
+			this.required = schema.required || [];
+			this.addSchema(schema);
+			this.currentSchema = newSchema;
+		}
 	}
 
 	validate(propertyPath: string, value: any): { [errorKey: string]: { [params: string]: any } } | {required: boolean} {
