@@ -2,26 +2,47 @@ export function draft06(target, propertyKey: string, descriptor: PropertyDescrip
 	const oldValue = descriptor.value;
 
 	descriptor.value = function() {
-		let schema = arguments[0];
+		let schema = JSON.parse(JSON.stringify(arguments[0]));	// deep clone
+		convert(schema);
+		oldValue.call(this, schema);
+	};
+
+	return descriptor;
+
+
+	function convert(schema) {
+		convertId(schema);
+		schema.required = schema.required || [];
+
+		if (schema.properties) {
+			Object.keys(schema.properties).forEach((propertyName: string) => {
+				let property = schema.properties[propertyName];
+				arrayifyRequired(property, propertyName, schema);
+				convertAnyIntoObject(property);
+				if (property.items || property.properties) {
+					convert(property.items || property);
+				}
+			});
+		}
+	}
+
+	function convertId(schema) {
 		if (schema.id) {
 			schema.$id = schema.id;
 			delete schema.id;
 		}
+	}
 
-		if (!schema.required) {
-			schema.required = [];
-			Object.keys(schema.properties).forEach((property) => {
-				if (schema.properties[property].required) {
-					schema.required.push(property);
-					delete schema.properties[property].required;
-				}
-			});
+	function arrayifyRequired(property, propertyName, schema) {
+		if (property.required) {
+			schema.required.push(propertyName);
+			delete property.required;
 		}
-		oldValue.apply(this, arguments);
-	};
+	}
 
-	return descriptor;
+	function convertAnyIntoObject(property) {
+		if (property.type === 'any') {
+			property.type = 'object';
+		}
+	}
 }
-
-
-
