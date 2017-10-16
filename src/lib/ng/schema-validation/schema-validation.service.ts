@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AbstractControl} from '@angular/forms';
 import * as Ajv from 'ajv';
+import {draft06} from './draft06.decorator';
 
 @Injectable()
 export class SchemaValidationService {
@@ -8,6 +9,7 @@ export class SchemaValidationService {
 	private currentSchema: string;
 	private required: string[];
 
+	@draft06
 	compileSchema(schema: any): void {
 		const newSchema = JSON.stringify(schema);
 		if (this.currentSchema !== newSchema) {
