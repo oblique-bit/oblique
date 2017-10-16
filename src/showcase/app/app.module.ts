@@ -14,7 +14,8 @@ import {
 	MasterLayoutModule,
 	MasterLayoutApplicationService,
 	NotificationService,
-	NotificationConfig
+	NotificationConfig,
+	SchemaValidationService
 } from '../../lib';
 
 // Layout:
@@ -58,6 +59,7 @@ export function createTranslateLoader(http: HttpClient) {
 	providers: [
 		DocumentMetaService,
 		NotificationService,
+		SchemaValidationService,
 		MasterLayoutApplicationService,
 		{
 			provide: NotificationConfig,

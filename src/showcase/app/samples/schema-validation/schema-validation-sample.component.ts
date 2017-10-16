@@ -1,4 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, NgForm} from '@angular/forms';
+import {SchemaValidationService} from '../../../../lib';
+import {NotificationService} from '../../../../lib/ng/notification/notification.service';
 
 @Component({
 	selector: 'app-schema-validation',
@@ -7,24 +10,36 @@ import {Component} from '@angular/core';
 		.form-horizontal label {
 			text-align: right;
 		}
-		
-		form + .row {
+
+		.row + .row {
 			margin-top: 2rem;
+		}
+
+		option[value=''],
+		select.ng-pristine {
+			color: #8e8e8e;
+		}
+
+		select.ng-pristine option:not([value='']) {
+			color: #171717;
 		}
 	`]
 })
-export class SchemaValidationSampleComponent {
+export class SchemaValidationSampleComponent implements OnInit {
+
+	formData: FormGroup;
 
 	schema = {
 		'title': 'SampleSchemaSampleValidation',
 		'type': 'object',
-		/*'required': [
-		 'id',
-		 'text',
-		 'number',
-		 'date',
-		 'time'
-		 ],*/
+		'required': [
+			'id',
+			'text',
+			'number',
+			'date',
+			'select',
+			'time'
+		],
 		'properties': {
 			'id': {
 				'type': 'integer'
@@ -95,11 +110,11 @@ export class SchemaValidationSampleComponent {
 			'name': {
 				'type': 'object',
 				'properties': {
-					'firstname': {
+					'firstName': {
 						'type': 'string',
 						'minLength': 2
 					},
-					'lastname': {
+					'lastName': {
 						'type': 'string',
 						'minLength': 2
 					}
@@ -107,4 +122,41 @@ export class SchemaValidationSampleComponent {
 			}
 		}
 	};
+
+	constructor(private schemaValidation: SchemaValidationService,
+				private notification: NotificationService,
+				private formBuilder: FormBuilder) {
+	}
+
+	ngOnInit(): void {
+		this.schemaValidation.compileSchema(this.schema);
+		this.formData = this.formBuilder.group({
+			text: ['', this.schemaValidation.getValidator('text')],
+			number: ['', this.schemaValidation.getValidator('number')],
+			integer: ['', this.schemaValidation.getValidator('integer')],
+			date: ['', this.schemaValidation.getValidator('date')],
+			select: ['', this.schemaValidation.getValidator('select')],
+			textarea: ['', this.schemaValidation.getValidator('textarea')],
+			name: this.formBuilder.group({
+				firstName: ['', this.schemaValidation.getValidator('name.firstName')],
+				lastName: ['', this.schemaValidation.getValidator('name.lastName')],
+			}),
+		});
+	}
+
+	checkWithTemplate(form: NgForm): void {
+		this.notify(form.valid);
+	}
+
+	checkReactive(): void {
+		this.notify(this.formData.valid);
+	}
+
+	private notify(valid: boolean): void {
+		if (valid) {
+			this.notification.success('Congratulations, your data is valid!');
+		} else {
+			this.notification.warning('Oops, your data does not look to be valid!');
+		}
+	}
 }
