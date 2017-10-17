@@ -32,19 +32,15 @@ export class FormControlStateSampleComponent {
 
 	}
 
-	checkWithTemplate(form: NgForm): void {
-		this.notify(form.valid);
-	}
-
-	checkReactive(): void {
-		this.notify(this.formData.valid);
-	}
-
-	private notify(valid: boolean): void {
-		if (valid) {
+	check(form?: NgForm): void {
+		if ((form || this.formData).valid) {
 			this.notificationService.success('Congratulations, your data is valid!');
 		} else {
 			this.notificationService.warning('Oops, your data does not look to be valid!');
 		}
+	}
+
+	reset(form?: NgForm): void {
+		(form || this.formData).reset();
 	}
 }

@@ -6,7 +6,7 @@
 		<div class="col">
 			<form id="schemaValidationForm" class="form-horizontal has-validation card" name="validationForm"
 				  role="form" [orSchemaValidation]="schema" #templateForm="ngForm"
-				  (submit)="checkWithTemplate(templateForm)">
+				  (submit)="check(templateForm)" (reset)="reset(templateForm)">
 				<div class="card-header">
 					<h3 class="card-title d-flex justify-content-between">
 						Preview with template driven form
@@ -231,7 +231,7 @@
 		</div>
 		<div class="col">
 			<form class="form-horizontal has-validation card" role="form"
-				  [formGroup]="formData" (submit)="checkReactive()">
+				  [formGroup]="formData" (submit)="check()" (reset)="reset()">
 				<div class="card-header">
 					<h3 class="card-title d-flex justify-content-between">
 						Preview with reactive form

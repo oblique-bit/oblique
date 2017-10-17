@@ -61,7 +61,7 @@ export class FormControlStateDirective implements AfterViewInit {
 		this.delayStateGenerationForReactiveForms();
 	}
 
-	private delayStateGenerationForReactiveForms() {
+	private delayStateGenerationForReactiveForms(): void {
 		// Reactive forms instantiate the view only after the model is ready. Thus modifying this.errors in the same
 		// tick as ngAfterViewInit will trigger an ExpressionChangedAfterItHasBeenCheckedError
 		if (this.form instanceof FormGroupDirective) {
@@ -69,7 +69,7 @@ export class FormControlStateDirective implements AfterViewInit {
 		}
 	}
 
-	private generateState() {
+	private generateState(): void {
 		this.hasErrorClass = (this.form.submitted || !this.ngControl.pristine || this.pristineValidation)
 			? this.ngControl.invalid
 			: false;

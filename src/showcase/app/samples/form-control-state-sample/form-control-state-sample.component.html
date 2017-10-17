@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col">
 			<form class="form-horizontal has-validation card" #formControlForm="ngForm"
-				  (submit)="checkWithTemplate(formControlForm)">
+				  (submit)="check(formControlForm)" (reset)="reset(formControlForm)">
 				<div class="card-header">
 					<h3 class="card-title">Preview with template driven form</h3>
 				</div>
@@ -79,7 +79,7 @@
 		</div>
 		<div class="col">
 			<form class="form-horizontal has-validation card" [formGroup]="formData"
-				  (submit)="checkReactive()">
+				  (submit)="check()" (reset)="reset()">
 				<div class="card-header">
 					<h3 class="card-title">Preview with reactive form</h3>
 				</div>
