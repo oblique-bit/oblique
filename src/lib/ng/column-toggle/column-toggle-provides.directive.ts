@@ -12,8 +12,6 @@ export class ColumnToggleProvidesDirective {
 	private left = false;
 
 	toggle(panel: string): void {
-		if (this[panel]) {
-			this[panel] = !this[panel];
-		}
+		this[panel] = !this[panel];
 	}
 }
