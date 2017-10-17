@@ -35,6 +35,9 @@ export class SchemaValidationService {
 	}
 
 	isRequired(property: string, path: string[]): boolean {
+		if (!this.currentSchema) {
+			return false;
+		}
 		let schema = JSON.parse(JSON.stringify(this.currentSchema));
 		path.forEach((name) => {
 			if (schema.properties && schema.properties[name]) {
