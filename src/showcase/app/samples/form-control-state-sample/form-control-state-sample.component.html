@@ -4,155 +4,149 @@
 		href="http://getbootstrap.com/css/#forms-control-validation">validation states</a> and ObliqueUI <a
 		href="https://eui.bit.admin.ch/oblique-ui/1.3.2/css.html#css-forms-feedback-mandatory">mandatory
 		state</a> on form controls.</p>
-	<form class="form-horizontal has-validation card" #formControlForm="ngForm"
-		  (submit)="checkWithTemplate(formControlForm)">
-		<div class="card-header">
-			<h3 class="card-title">Preview with template driven form</h3>
-		</div>
-		<div class="card-body">
-			<div class="form-group row" orFormControlState>
-				<label class="col-sm-3 control-label">Number</label>
-				<div class="col-sm-9">
-					<input name="number" type="number" class="form-control"
-						   placeholder="This field is optional..."
-						   ngModel/>
+	<div class="row">
+		<div class="col">
+			<form class="form-horizontal has-validation card" #formControlForm="ngForm"
+				  (submit)="check(formControlForm)" (reset)="reset(formControlForm)">
+				<div class="card-header">
+					<h3 class="card-title">Preview with template driven form</h3>
 				</div>
-			</div>
-			<div class="form-group row" orFormControlState>
-				<label class="col-sm-3 control-label">Number</label>
-				<div class="col-sm-9">
-					<input name="numberRequired" type="number" class="form-control"
-						   placeholder="This field is mandatory..."
-						   ngModel number-format
-						   required/>
-					<or-error-messages></or-error-messages>
-				</div>
-			</div>
-			<div class="form-group row" orFormControlState [pristineValidation]="true" mandatory="true">
-				<label class="col-sm-3 control-label">Number</label>
-				<div class="col-sm-9">
-					<input name="numberRequiredPristine" type="number" class="form-control"
-						   placeholder="This field is already in error on load..."
-						   ngModel required/>
-					<or-error-messages></or-error-messages>
-				</div>
-			</div>
-			<div class="form-group row" mandatory="true">
-				<label class="col-sm-3 control-label">Address</label>
-				<div class="col-sm-9">
-					<div class="row">
-						<div class="col-sm-7" orFormControlState>
-							<div class="input-group">
-								<label class="input-group-addon">Street</label>
-								<input name="addressStreet" type="text" class="form-control"
-									   placeholder="Street address..." minlength="5"
-									   ngModel/>
-							</div>
+				<div class="card-body">
+					<div class="form-group row" orFormControlState>
+						<label class="col-sm-3 col-form-label">Number</label>
+						<div class="col-sm-9">
+							<input name="number" type="number" class="form-control"
+								   placeholder="This field is optional..."
+								   ngModel/>
+						</div>
+					</div>
+					<div class="form-group row" orFormControlState>
+						<label class="col-sm-3 col-form-label">Number</label>
+						<div class="col-sm-9">
+							<input name="numberRequired" type="number" class="form-control"
+								   placeholder="This field is mandatory..." ngModel required/>
 							<or-error-messages></or-error-messages>
 						</div>
-						<div class="col-sm-5" orFormControlState mandatory="true">
-							<div class="input-group">
-								<label class="input-group-addon">Number</label>
-								<input name="addressNumber" type="number" class="form-control"
-									   placeholder="Street number..."
-									   ngModel required/>
+					</div>
+					<div class="form-group row" orFormControlState [pristineValidation]="true" mandatory="true">
+						<label class="col-sm-3 col-form-label">Number</label>
+						<div class="col-sm-9">
+							<input name="numberRequiredPristine" type="number" class="form-control"
+								   placeholder="This field is already in error on load..." ngModel required/>
+							<or-error-messages></or-error-messages>
+						</div>
+					</div>
+					<div class="form-group row" mandatory="true">
+						<label class="col-sm-3 col-form-label">Address</label>
+						<div class="col-sm-9">
+							<div class="form-row">
+								<div class="col-sm-7" orFormControlState>
+									<div class="input-group">
+										<label class="input-group-addon">Street</label>
+										<input name="addressStreet" type="text" class="form-control"
+											   placeholder="Street address..." minlength="5" ngModel/>
+									</div>
+									<or-error-messages></or-error-messages>
+								</div>
+								<div class="col-sm-5" orFormControlState mandatory="true">
+									<div class="input-group">
+										<label class="input-group-addon">Number</label>
+										<input name="addressNumber" type="number" class="form-control"
+											   placeholder="Street number..." ngModel required/>
+									</div>
+									<or-error-messages></or-error-messages>
+								</div>
 							</div>
+						</div>
+					</div>
+					<div class="form-group row" orFormControlState>
+						<label class="col-sm-3 col-form-label">Email</label>
+						<div class="col-sm-9">
+							<input name="email" type="text" class="form-control" #email="ngModel"
+								   placeholder="This field is optional..."
+								   pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" ngModel/>
 							<or-error-messages></or-error-messages>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="form-group row" orFormControlState>
-				<label class="col-sm-3 control-label">Email</label>
-				<div class="col-sm-9">
-					<input name="email" type="text" class="form-control" #email="ngModel"
-						   placeholder="This field is optional..."
-						   pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-						   ngModel/>
-					<or-error-messages></or-error-messages>
+				<div class="card-footer">
+					<div class="form-actions">
+						<button type="reset" class="btn btn-default">Reset</button>
+						<button type="submit" class="btn btn-primary">Check</button>
+					</div>
 				</div>
-			</div>
+			</form>
 		</div>
-		<div class="card-footer">
-			<div class="form-actions">
-				<button type="reset" class="btn btn-default">Reset</button>
-				<button type="submit" class="btn btn-primary">Check</button>
-			</div>
-		</div>
-	</form>
-	<form class="form-horizontal has-validation card" [formGroup]="formData"
-		  (submit)="checkReactive()">
-		<div class="card-header">
-			<h3 class="card-title">Preview with reactive form</h3>
-		</div>
-		<div class="card-body">
-			<div class="form-group row" orFormControlState>
-				<label class="col-sm-3 control-label">Number</label>
-				<div class="col-sm-9">
-					<input type="number" class="form-control"
-						   placeholder="This field is optional..."
-						   formControlName="numberOptional"/>
+		<div class="col">
+			<form class="form-horizontal has-validation card" [formGroup]="formData"
+				  (submit)="check()" (reset)="reset()">
+				<div class="card-header">
+					<h3 class="card-title">Preview with reactive form</h3>
 				</div>
-			</div>
-			<div class="form-group row" orFormControlState>
-				<label class="col-sm-3 control-label">Number</label>
-				<div class="col-sm-9">
-					<input type="number" class="form-control"
-						   placeholder="This field is mandatory..."
-						   formControlName="numberMandatory"
-						   number-format/>
-					<or-error-messages></or-error-messages>
-				</div>
-			</div>
-			<div class="form-group row" orFormControlState [pristineValidation]="true">
-				<label class="col-sm-3 control-label">Number</label>
-				<div class="col-sm-9">
-					<input type="number" class="form-control"
-						   placeholder="This field is already in error on load..."
-						   formControlName="numberMandatoryPristine"/>
-					<or-error-messages></or-error-messages>
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="col-sm-3 control-label">Address</label>
-				<div class="col-sm-9" formGroupName="address">
-					<div class="row">
-						<div class="col-sm-7" orFormControlState>
-							<div class="input-group">
-								<label class="input-group-addon">Street</label>
-								<input type="text" class="form-control"
-									   placeholder="Street address..."
-									   formControlName="street"/>
-							</div>
+				<div class="card-body">
+					<div class="form-group row" orFormControlState>
+						<label class="col-sm-3 col-form-label">Number</label>
+						<div class="col-sm-9">
+							<input type="number" class="form-control" placeholder="This field is optional..."
+								   formControlName="numberOptional"/>
+						</div>
+					</div>
+					<div class="form-group row" orFormControlState>
+						<label class="col-sm-3 col-form-label">Number</label>
+						<div class="col-sm-9">
+							<input type="number" class="form-control" placeholder="This field is mandatory..."
+								   formControlName="numberMandatory"/>
 							<or-error-messages></or-error-messages>
 						</div>
-						<div class="col-sm-5" orFormControlState>
-							<div class="input-group">
-								<label class="input-group-addon">Number</label>
-								<input type="number" class="form-control"
-									   placeholder="Street number..."
-									   formControlName="number"/>
+					</div>
+					<div class="form-group row" orFormControlState [pristineValidation]="true">
+						<label class="col-sm-3 col-form-label">Number</label>
+						<div class="col-sm-9">
+							<input type="number" class="form-control"
+								   placeholder="This field is already in error on load..."
+								   formControlName="numberMandatoryPristine"/>
+							<or-error-messages></or-error-messages>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-3 col-form-label">Address</label>
+						<div class="col-sm-9" formGroupName="address">
+							<div class="form-row">
+								<div class="col-sm-7" orFormControlState>
+									<div class="input-group">
+										<label class="input-group-addon">Street</label>
+										<input type="text" class="form-control" placeholder="Street address..."
+											   formControlName="street"/>
+									</div>
+									<or-error-messages></or-error-messages>
+								</div>
+								<div class="col-sm-5" orFormControlState>
+									<div class="input-group">
+										<label class="input-group-addon">Number</label>
+										<input type="number" class="form-control" placeholder="Street number..."
+											   formControlName="number"/>
+									</div>
+									<or-error-messages></or-error-messages>
+								</div>
 							</div>
+						</div>
+					</div>
+					<div class="form-group row" orFormControlState>
+						<label class="col-sm-3 col-form-label">Email</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" placeholder="This field is optional..."
+								   formControlName="email"/>
 							<or-error-messages></or-error-messages>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="form-group row" orFormControlState>
-				<label class="col-sm-3 control-label">Email</label>
-				<div class="col-sm-9">
-					<input type="text" class="form-control"
-						   placeholder="This field is optional..."
-						   formControlName="email"/>
-					<or-error-messages></or-error-messages>
+				<div class="card-footer">
+					<div class="form-actions">
+						<button type="reset" class="btn btn-default">Reset</button>
+						<button type="submit" class="btn btn-primary">Check</button>
+					</div>
 				</div>
-			</div>
+			</form>
 		</div>
-		<div class="card-footer">
-			<div class="form-actions">
-				<button type="reset" class="btn btn-default">Reset</button>
-				<button type="submit" class="btn btn-primary">Check</button>
-			</div>
-		</div>
-	</form>
+	</div>
 </div>

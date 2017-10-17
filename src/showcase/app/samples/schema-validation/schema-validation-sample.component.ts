@@ -1,22 +1,50 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, NgForm} from '@angular/forms';
+import {SchemaValidationService} from '../../../../lib';
+import {NotificationService} from '../../../../lib/ng/notification/notification.service';
 
 @Component({
 	selector: 'app-schema-validation',
 	templateUrl: './schema-validation-sample.component.html',
-	styleUrls: ['./schema-validation-sample.component.css']
+	styles: [`
+		.form-horizontal label {
+			text-align: right;
+		}
+
+		.row + .row {
+			margin-top: 2rem;
+		}
+
+		option[value=''],
+		select.ng-pristine {
+			color: #8e8e8e;
+		}
+
+		select.ng-pristine option:not([value='']) {
+			color: #171717;
+		}
+		
+		fieldset fieldset legend {
+			width: calc(100% - 1rem);
+			margin-left: 1rem;
+		}
+	`]
 })
-export class SchemaValidationSampleComponent {
+export class SchemaValidationSampleComponent implements OnInit {
+
+	formData: FormGroup;
 
 	schema = {
 		'title': 'SampleSchemaSampleValidation',
 		'type': 'object',
-		/*'required': [
-		 'id',
-		 'text',
-		 'number',
-		 'date',
-		 'time'
-		 ],*/
+		'required': [
+			'id',
+			'text',
+			'number',
+			'date',
+			'select',
+			'time'
+		],
 		'properties': {
 			'id': {
 				'type': 'integer'
@@ -86,17 +114,63 @@ export class SchemaValidationSampleComponent {
 			},
 			'name': {
 				'type': 'object',
+				'required': ['firstName', 'lastName'],
 				'properties': {
-					'firstname': {
+					'firstName': {
 						'type': 'string',
 						'minLength': 2
 					},
-					'lastname': {
+					'lastName': {
 						'type': 'string',
 						'minLength': 2
+					},
+					'address': {
+						'type': 'object',
+						'required': ['street', 'number'],
+						'properties': {
+							'street': {'type': 'string'},
+							'number': {'type': 'integer'}
+						}
 					}
 				}
 			}
 		}
 	};
+
+	constructor(private schemaValidation: SchemaValidationService,
+				private notification: NotificationService,
+				private formBuilder: FormBuilder) {
+	}
+
+	ngOnInit(): void {
+		this.schemaValidation.compileSchema(this.schema);
+		this.formData = this.formBuilder.group({
+			text: ['', this.schemaValidation.getValidator('text')],
+			number: ['', this.schemaValidation.getValidator('number')],
+			integer: ['', this.schemaValidation.getValidator('integer')],
+			date: ['', this.schemaValidation.getValidator('date')],
+			select: ['', this.schemaValidation.getValidator('select')],
+			textarea: ['', this.schemaValidation.getValidator('textarea')],
+			name: this.formBuilder.group({
+				firstName: ['', this.schemaValidation.getValidator('name.firstName')],
+				lastName: ['', this.schemaValidation.getValidator('name.lastName')],
+				address: this.formBuilder.group({
+					street: ['', this.schemaValidation.getValidator('name.address.street')],
+					number: ['', this.schemaValidation.getValidator('name.address.number')],
+				}),
+			}),
+		});
+	}
+
+	check(form?: NgForm): void {
+		if ((form || this.formData).valid) {
+			this.notification.success('Congratulations, your data is valid!');
+		} else {
+			this.notification.warning('Oops, your data does not look to be valid!');
+		}
+	}
+
+	reset(form?: NgForm): void {
+		(form || this.formData).reset();
+	}
 }

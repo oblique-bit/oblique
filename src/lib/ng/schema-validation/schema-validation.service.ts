@@ -1,18 +1,22 @@
 import {Injectable} from '@angular/core';
+import {AbstractControl} from '@angular/forms';
 import * as Ajv from 'ajv';
+import {draft06} from './draft06.decorator';
 
 @Injectable()
 export class SchemaValidationService {
-
 	private ajv = new Ajv({allErrors: true});
-	private required: string[];
+	private currentSchema;
 
-	compileSchema(schema: any) {
-		this.required = schema.required || [];
-		this.addSchema(schema);
+	@draft06
+	compileSchema(schema: any): void {
+		if (JSON.stringify(this.currentSchema) !== JSON.stringify(schema)) {
+			this.addSchema(schema);
+			this.currentSchema = schema;
+		}
 	}
 
-	validate(propertyPath: string, value: any): { [errorKey: string]: { [params: string]: any } } | {required: boolean} {
+	validate(propertyPath: string, value: any): { [errorKey: string]: { [params: string]: any } } | { required: boolean } {
 		this.ajv.validate(propertyPath, value);
 
 		if (this.ajv.errors) {
@@ -21,11 +25,26 @@ export class SchemaValidationService {
 			};
 		}
 
-		if (!value && this.required.indexOf(propertyPath) > -1) {
-			return {required: true};
-		}
+		return !value
+			? this.requiredError(propertyPath.split('.'))
+			: null;
+	}
 
-		return null;
+	getValidator(propertyPath: string): (AbstractControl) => { [errorKey: string]: { [params: string]: any } } | { required: boolean } {
+		return (control: AbstractControl) => this.validate(propertyPath, control.value);
+	}
+
+	isRequired(property: string, path: string[]): boolean {
+		if (!this.currentSchema) {
+			return false;
+		}
+		let schema = JSON.parse(JSON.stringify(this.currentSchema));
+		path.forEach((name) => {
+			if (schema.properties && schema.properties[name]) {
+				schema = schema.properties[name];
+			}
+		});
+		return (schema.required || []).indexOf(property) > -1;
 	}
 
 	private addSchema(schema: any, parentPropertyName?): void {
@@ -37,5 +56,12 @@ export class SchemaValidationService {
 				this.ajv.addSchema(schema.properties[propertyName], propertyPath);
 			}
 		});
+	}
+
+	private requiredError(path: string[]): { required: boolean } {
+		const propertyName = path.pop();
+		return this.isRequired(propertyName, path)
+			? {required: true}
+			: null;
 	}
 }

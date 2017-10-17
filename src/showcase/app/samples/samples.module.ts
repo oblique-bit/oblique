@@ -22,6 +22,7 @@ import {SchemaValidationSampleComponent} from './schema-validation/schema-valida
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
 import {FilterBoxSampleComponent, PatternFilterPipe} from './filter-box-sample/filter-box-sample.component';
+import {ColumnToggleSampleComponent} from './column-toggle/column-toggle-sample.component';
 
 @NgModule({
 	imports: [
@@ -49,7 +50,8 @@ import {FilterBoxSampleComponent, PatternFilterPipe} from './filter-box-sample/f
 		NotificationSampleComponent,
 		SchemaValidationSampleComponent,
 		UnsavedChangesSampleComponent,
-		UnsavedChangesSampleModalComponent
+		UnsavedChangesSampleModalComponent,
+		ColumnToggleSampleComponent
 	],
 	exports: [
 		RouterModule

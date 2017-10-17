@@ -2,10 +2,10 @@ import {
 	Directive, HostBinding, ContentChild, AfterViewInit, Input, Optional, ElementRef,
 	Renderer2
 } from '@angular/core';
-import {NgControl, NgForm, FormGroupDirective} from '@angular/forms';
+import {NgControl, NgForm, FormGroupDirective, FormGroupName, NgModelGroup} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/merge';
-import {SchemaValidationDirective} from '../schema-validation/schema-validation.directive';
+import {SchemaValidationService} from '../schema-validation/schema-validation.service';
 
 @Directive({
 	selector: '[orFormControlState]'
@@ -20,14 +20,18 @@ export class FormControlStateDirective implements AfterViewInit {
 	@ContentChild(NgControl) ngControl: NgControl;
 
 	private form: NgForm | FormGroupDirective;
+	private group: NgModelGroup | FormGroupName;
 	private inputContainer;
 
 	constructor(@Optional() ngForm: NgForm,
 				@Optional() formGroupDirective: FormGroupDirective,
-				@Optional() private schemaValidation: SchemaValidationDirective,
+				@Optional() private formGroupName: FormGroupName,
+				@Optional() private modelGroup: NgModelGroup,
+				@Optional() private schemaValidation: SchemaValidationService,
 				private elementRef: ElementRef,
 				private renderer: Renderer2) {
 		this.form = ngForm || formGroupDirective;
+		this.group = this.modelGroup || this.formGroupName;
 
 		if (!this.form) {
 			throw new Error('You need either a NgForm or a FormGroupDirective for the FormControlStateDirective!');
@@ -47,7 +51,7 @@ export class FormControlStateDirective implements AfterViewInit {
 		this.mandatory = this.mandatory
 			|| this.hasRequiredValidator()
 			|| this.hasRequiredAttribute(inputElement)
-			|| this.isJsonSchemaFieldRequired();
+			|| this.schemaValidation.isRequired(this.ngControl.name, this.group ? this.group.path : []);
 
 		Observable.merge(
 			this.form.ngSubmit,
@@ -57,7 +61,7 @@ export class FormControlStateDirective implements AfterViewInit {
 		this.delayStateGenerationForReactiveForms();
 	}
 
-	private delayStateGenerationForReactiveForms() {
+	private delayStateGenerationForReactiveForms(): void {
 		// Reactive forms instantiate the view only after the model is ready. Thus modifying this.errors in the same
 		// tick as ngAfterViewInit will trigger an ExpressionChangedAfterItHasBeenCheckedError
 		if (this.form instanceof FormGroupDirective) {
@@ -65,7 +69,7 @@ export class FormControlStateDirective implements AfterViewInit {
 		}
 	}
 
-	private generateState() {
+	private generateState(): void {
 		this.hasErrorClass = (this.form.submitted || !this.ngControl.pristine || this.pristineValidation)
 			? this.ngControl.invalid
 			: false;
@@ -88,12 +92,5 @@ export class FormControlStateDirective implements AfterViewInit {
 	private hasRequiredAttribute(inputElement: Element): boolean {
 		// used by template driven forms
 		return inputElement.hasAttribute('required')
-	}
-
-	private isJsonSchemaFieldRequired(): boolean {
-		return this.schemaValidation
-			&& this.schemaValidation.schema.required
-			&& Array.isArray(this.schemaValidation.schema.required)
-			&& this.schemaValidation.schema.required.includes(this.ngControl.name);
 	}
 }
