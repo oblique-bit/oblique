@@ -29,7 +29,7 @@
 								<pre>{{schema.properties.text | json}}</pre>
 							</ng-template>
 							<a class="form-control-static" role="button"
-							   [ngbPopover]="textSchema" popoverTitle="Schema" placement="bottom">
+							   [ngbPopover]="textSchema" popoverTitle="Schema" placement="left">
 								<span class="fa fa-sitemap"></span>
 							</a>
 						</div>
@@ -46,7 +46,7 @@
 								<pre>{{schema.properties.number | json}}</pre>
 							</ng-template>
 							<a class="form-control-static" role="button"
-							   [ngbPopover]="numberSchema" popoverTitle="Schema" placement="bottom">
+							   [ngbPopover]="numberSchema" popoverTitle="Schema" placement="left">
 								<span class="fa fa-sitemap"></span>
 							</a>
 						</div>
@@ -63,7 +63,7 @@
 								<pre>{{schema.properties.integer | json}}</pre>
 							</ng-template>
 							<a class="form-control-static" role="button"
-							   [ngbPopover]="integerSchema" popoverTitle="Schema" placement="bottom">
+							   [ngbPopover]="integerSchema" popoverTitle="Schema" placement="left">
 								<span class="fa fa-sitemap"></span>
 							</a>
 						</div>
@@ -81,7 +81,7 @@
 								<pre>{{schema.properties.date | json}}</pre>
 							</ng-template>
 							<a class="form-control-static" role="button"
-							   [ngbPopover]="dateSchema" popoverTitle="Schema" placement="bottom">
+							   [ngbPopover]="dateSchema" popoverTitle="Schema" placement="left">
 								<span class="fa fa-sitemap"></span>
 							</a>
 						</div>
@@ -100,7 +100,7 @@
 								<pre>{{schema.properties.select | json}}</pre>
 							</ng-template>
 							<a class="form-control-static" role="button"
-							   [ngbPopover]="selectSchema" popoverTitle="Schema" placement="bottom">
+							   [ngbPopover]="selectSchema" popoverTitle="Schema" placement="left">
 								<span class="fa fa-sitemap"></span>
 							</a>
 						</div>
@@ -117,7 +117,7 @@
 								<pre>{{schema.properties.textarea | json}}</pre>
 							</ng-template>
 							<a class="form-control-static" role="button"
-							   [ngbPopover]="numberSchema" popoverTitle="Schema" placement="bottom">
+							   [ngbPopover]="numberSchema" popoverTitle="Schema" placement="left">
 								<span class="fa fa-sitemap"></span>
 							</a>
 						</div>
@@ -126,14 +126,14 @@
 						<legend>
 							<span>Name</span>
 							<span class="pull-right">
-							<ng-template #nameSchema>
-								<pre>{{schema.properties.name | json}}</pre>
-							</ng-template>
-							<a class="form-control-static" role="button"
-							   [ngbPopover]="nameSchema" popoverTitle="Schema" placement="bottom-right">
-								<span class="fa fa-sitemap"></span>
-							</a>
-						</span>
+								<ng-template #nameSchema>
+									<pre>{{schema.properties.name | json}}</pre>
+								</ng-template>
+								<a class="form-control-static" role="button"
+								   [ngbPopover]="nameSchema" popoverTitle="Schema" placement="left">
+									<span class="fa fa-sitemap"></span>
+								</a>
+							</span>
 						</legend>
 						<div orFormControlState class="row form-group">
 							<label class="col-3 col-form-label">First name</label>
@@ -147,7 +147,7 @@
 									<pre>{{schema.properties.name.properties.firstName | json}}</pre>
 								</ng-template>
 								<a class="form-control-static" role="button"
-								   [ngbPopover]="firstNameSchema" popoverTitle="Schema" placement="bottom">
+								   [ngbPopover]="firstNameSchema" popoverTitle="Schema" placement="left">
 									<span class="fa fa-sitemap"></span>
 								</a>
 							</div>
@@ -164,11 +164,59 @@
 									<pre>{{schema.properties.name.properties.lastName | json}}</pre>
 								</ng-template>
 								<a class="form-control-static" role="button"
-								   [ngbPopover]="lastNameSchema" popoverTitle="Schema" placement="bottom">
+								   [ngbPopover]="lastNameSchema" popoverTitle="Schema" placement="left">
 									<span class="fa fa-sitemap"></span>
 								</a>
 							</div>
 						</div>
+						<fieldset ngModelGroup="address">
+							<legend>
+								<span>Address</span>
+								<span class="pull-right">
+								<ng-template #addressSchema>
+									<pre>{{schema.properties.name.properties.address | json}}</pre>
+								</ng-template>
+								<a class="form-control-static" role="button"
+								   [ngbPopover]="addressSchema" popoverTitle="Schema" placement="left">
+									<span class="fa fa-sitemap"></span>
+								</a>
+							</span>
+							</legend>
+							<div orFormControlState class="row form-group">
+								<label class="col-3 col-form-label">Street</label>
+								<div class="col-8">
+									<input type="text" name="street" class="form-control" placeholder="Street"
+										   ngModel orSchemaValidate>
+									<or-error-messages></or-error-messages>
+								</div>
+								<div class="col-1">
+									<ng-template #streetSchema>
+										<pre>{{schema.properties.name.properties.address.properties.street | json}}</pre>
+									</ng-template>
+									<a class="form-control-static" role="button"
+									   [ngbPopover]="streetSchema" popoverTitle="Schema" placement="left">
+										<span class="fa fa-sitemap"></span>
+									</a>
+								</div>
+							</div>
+							<div orFormControlState class="row form-group">
+								<label class="col-3 col-form-label">Number</label>
+								<div class="col-8">
+									<input type="number" name="number" class="form-control" placeholder="Number"
+										   ngModel orSchemaValidate>
+									<or-error-messages></or-error-messages>
+								</div>
+								<div class="col-1">
+									<ng-template #streetNumberSchema>
+										<pre>{{schema.properties.name.properties.address.properties.number | json}}</pre>
+									</ng-template>
+									<a class="form-control-static" role="button"
+									   [ngbPopover]="streetNumberSchema" popoverTitle="Schema" placement="left">
+										<span class="fa fa-sitemap"></span>
+									</a>
+								</div>
+							</div>
+						</fieldset>
 					</fieldset>
 				</div>
 				<div class="card-footer">
@@ -314,6 +362,46 @@
 								</a>
 							</div>
 						</div>
+						<fieldset formGroupName="address">
+							<legend>
+								<span>Address</span>
+								<span class="pull-right">
+									<a class="form-control-static" role="button"
+									   [ngbPopover]="addressSchema" popoverTitle="Schema" placement="left">
+										<span class="fa fa-sitemap"></span>
+									</a>
+								</span>
+							</legend>
+							<div orFormControlState class="row form-group">
+								<label class="col-3 col-form-label">Street</label>
+								<div class="col-8">
+									<input type="text" formControlName="street" class="form-control" placeholder="Street">
+									<or-error-messages></or-error-messages>
+								</div>
+								<div class="col-1">
+									<ng-template #streetSchema>
+										<pre>{{schema.properties.name.properties.address.properties.street | json}}</pre>
+									</ng-template>
+									<a class="form-control-static" role="button"
+									   [ngbPopover]="streetSchema" popoverTitle="Schema" placement="left">
+										<span class="fa fa-sitemap"></span>
+									</a>
+								</div>
+							</div>
+							<div orFormControlState class="row form-group">
+								<label class="col-3 col-form-label">Number</label>
+								<div class="col-8">
+									<input type="number" formControlName="number" class="form-control" placeholder="Number">
+									<or-error-messages></or-error-messages>
+								</div>
+								<div class="col-1">
+									<a class="form-control-static" role="button"
+									   [ngbPopover]="streetNumberSchema" popoverTitle="Schema" placement="left">
+										<span class="fa fa-sitemap"></span>
+									</a>
+								</div>
+							</div>
+						</fieldset>
 					</fieldset>
 				</div>
 				<div class="card-footer">

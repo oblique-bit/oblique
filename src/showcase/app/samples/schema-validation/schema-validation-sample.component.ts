@@ -23,6 +23,11 @@ import {NotificationService} from '../../../../lib/ng/notification/notification.
 		select.ng-pristine option:not([value='']) {
 			color: #171717;
 		}
+		
+		fieldset fieldset legend {
+			width: calc(100% - 1rem);
+			margin-left: 1rem;
+		}
 	`]
 })
 export class SchemaValidationSampleComponent implements OnInit {
@@ -109,6 +114,7 @@ export class SchemaValidationSampleComponent implements OnInit {
 			},
 			'name': {
 				'type': 'object',
+				'required': ['firstName', 'lastName'],
 				'properties': {
 					'firstName': {
 						'type': 'string',
@@ -117,6 +123,14 @@ export class SchemaValidationSampleComponent implements OnInit {
 					'lastName': {
 						'type': 'string',
 						'minLength': 2
+					},
+					'address': {
+						'type': 'object',
+						'required': ['street', 'number'],
+						'properties': {
+							'street': {'type': 'string'},
+							'number': {'type': 'integer'}
+						}
 					}
 				}
 			}
@@ -140,6 +154,10 @@ export class SchemaValidationSampleComponent implements OnInit {
 			name: this.formBuilder.group({
 				firstName: ['', this.schemaValidation.getValidator('name.firstName')],
 				lastName: ['', this.schemaValidation.getValidator('name.lastName')],
+				address: this.formBuilder.group({
+					street: ['', this.schemaValidation.getValidator('name.address.street')],
+					number: ['', this.schemaValidation.getValidator('name.address.number')],
+				}),
 			}),
 		});
 	}

@@ -6,20 +6,17 @@ import {draft06} from './draft06.decorator';
 @Injectable()
 export class SchemaValidationService {
 	private ajv = new Ajv({allErrors: true});
-	private currentSchema: string;
-	private required: string[];
+	private currentSchema;
 
 	@draft06
 	compileSchema(schema: any): void {
-		const newSchema = JSON.stringify(schema);
-		if (this.currentSchema !== newSchema) {
-			this.required = schema.required || [];
+		if (JSON.stringify(this.currentSchema) !== JSON.stringify(schema)) {
 			this.addSchema(schema);
-			this.currentSchema = newSchema;
+			this.currentSchema = schema;
 		}
 	}
 
-	validate(propertyPath: string, value: any): { [errorKey: string]: { [params: string]: any } } | {required: boolean} {
+	validate(propertyPath: string, value: any): { [errorKey: string]: { [params: string]: any } } | { required: boolean } {
 		this.ajv.validate(propertyPath, value);
 
 		if (this.ajv.errors) {
@@ -28,15 +25,23 @@ export class SchemaValidationService {
 			};
 		}
 
-		if (!value && this.required.indexOf(propertyPath) > -1) {
-			return {required: true};
-		}
-
-		return null;
+		return !value
+			? this.requiredError(propertyPath.split('.'))
+			: null;
 	}
 
-	getValidator(propertyPath: string): (AbstractControl) => { [errorKey: string]: { [params: string]: any } } | {required: boolean} {
+	getValidator(propertyPath: string): (AbstractControl) => { [errorKey: string]: { [params: string]: any } } | { required: boolean } {
 		return (control: AbstractControl) => this.validate(propertyPath, control.value);
+	}
+
+	isRequired(property: string, path: string[]): boolean {
+		let schema = JSON.parse(JSON.stringify(this.currentSchema));
+		path.forEach((name) => {
+			if (schema.properties && schema.properties[name]) {
+				schema = schema.properties[name];
+			}
+		});
+		return (schema.required || []).indexOf(property) > -1;
 	}
 
 	private addSchema(schema: any, parentPropertyName?): void {
@@ -48,5 +53,12 @@ export class SchemaValidationService {
 				this.ajv.addSchema(schema.properties[propertyName], propertyPath);
 			}
 		});
+	}
+
+	private requiredError(path: string[]): { required: boolean } {
+		const propertyName = path.pop();
+		return this.isRequired(propertyName, path)
+			? {required: true}
+			: null;
 	}
 }

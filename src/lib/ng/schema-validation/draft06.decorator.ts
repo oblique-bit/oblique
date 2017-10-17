@@ -34,7 +34,7 @@ export function draft06(target, propertyKey: string, descriptor: PropertyDescrip
 	}
 
 	function arrayifyRequired(property, propertyName, schema) {
-		if (property.required) {
+		if (property.required && !property.required.length) {
 			schema.required.push(propertyName);
 			delete property.required;
 		}
