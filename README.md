@@ -72,33 +72,28 @@ If you are using Git for the first time, configure your user information as well
 
 > *Note*: proxy URL must start with `http[s]://`!
 
-Follow [these instructions](https://confluence.eap.bit.admin.ch/display/JEAP/Projekt+Setup#ProjektSetup-Umgebungsvariablen)
+	HTTP_PROXY <http-proxy-url>
+	HTTPS_PROXY <http-or-https-proxy-url>
+	NO_PROXY localhost,127.0.0.1,admin.ch
+
+> *Note*: `HTTP_PROXY` & `HTTPS_PROXY` values for the BIT proxy are identical (i.e. there is no dedicated HTTPS proxy)
 
 ###### GIT Config (.gitconfig)
 
 	git config --global url."https://".insteadOf git://
 	git config --global http."https://stash.eap.bit.admin.ch/".proxy ""
-	git config --global http.postBuffer 524288000
 	git config --global http.proxy <http-proxy-url>
 
 ###### <a name="npm-config"></a> NPM config
 
-Follow the instructions described in the [JEAP Project Setup page](https://confluence.eap.bit.admin.ch/display/JEAP/Projekt+Setup#ProjektSetup-InstallationundKonfigurationvonNodeJsundNPM)
-
-And add the TypeScript specific libraries and configs described in the [Configuration for TypeScript page](https://confluence.eap.bit.admin.ch/display/FEDEV/Configuration+for+TypeScript)
-
-> *Note*: ObliqueReactive needs **TypeScript 2** as minimum version.
+	npm config set registry https://nexus3.eap.bit.admin.ch/repository/npm-all/
+	npm config set strict-ssl false
 
 #### First-time setup
 
-1. Install *globally* required `npm` libraries:
-
-		npm install -g typescript gulp @angular/cli
-
-2. Install *development* and *frontend* dependencies (`npm` will look at [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/package.json) and automatically install the necessary dependencies listed there):
+Install *project* dependencies (`npm` will look at [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/package.json) and automatically install the necessary dependencies listed there):
 
 		npm install
-
 
 #### Troubleshooting dependencies
 
@@ -111,6 +106,10 @@ Should you encounter problems with installing dependencies or running AngularCLI
 	npm start
 
 _This task builds the project, runs the client application by starting a local server and watches for file changes._
+
+> If task fails with privilege reasons, consider installing these `npm` libraries *globally*:
+
+	npm install -g typescript gulp @angular/cli
 
 #### TODO: Production tasks
 
@@ -127,7 +126,7 @@ Run the following command to install a new npm dependency:
 	npm i <dependency> -S
 
 Before you do so, make sure you're in your project's root folder, where [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-reactive/browse/package.json) is.
-After everything is done, you should see your new dependency listed in [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-ui/browse/package.json).
+After everything is done, you should see your new dependency listed in [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-reactive/browse/package.json).
 
 If you need to install a global dependency, such as Gulp, switch the *-S* to a *-g* in your command. This would look something like this:
 
@@ -137,21 +136,7 @@ Installing a global npm dependency makes it accessible from every command line, 
 
 You can search through npm packages over at [npmjs.com](https://www.npmjs.com/).
 
-#### Adding definition files for a non TypeScript dependency
-
-If you want to use a library that isn't written in TypeScript, like lodash or jQuery, you'll probably need to give TypeScript hints as to what to do with the new expressions.
-
-First, you'll need to search for your soon-to-be-integrated library here:
-
-https://microsoft.github.io/TypeSearch/
-
-Now you can install the definition files with npm, like it should be shown to you on the result page
-
-	npm install --save @types/[libName]
-	
-The TypeCompiler will automatically look for packages in `@types/` and use them as definition files.
-
-### Checking for updates
+#### Checking for updates
 
 	npm install -g npm-check-updates
 
