@@ -29,7 +29,7 @@ module.exports = {
 					{
 						loader: 'ts-loader',
 						options: {
-							configFileName: 'tsconfig.publish.json'
+							configFile: 'tsconfig.publish.json'
 						}
 					},
 					'angular2-template-loader?keepUrl=true'
