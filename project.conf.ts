@@ -53,7 +53,7 @@ export const ProjectConfig = {
 			},
 			application: {
 				fixed:       false,
-				attributes: 'orMasterLayoutApplication scroll-detection'
+				attributes: 'orMasterLayoutApplication orScrollDetection'
 			},
 			header: {
 				animate:    true,

@@ -3,7 +3,7 @@ import {DOCUMENT} from '@angular/common';
 import {ScrollingConfig} from './scrolling-config';
 
 @Directive({
-	selector: '[scroll-detection]'
+	selector: '[orScrollDetection]'
 })
 export class ScrollDetectionDirective {
 	@HostBinding('class.application-scrolling')
@@ -19,6 +19,5 @@ export class ScrollDetectionDirective {
 	}
 
 	constructor(@Inject(DOCUMENT) private document: any, private config: ScrollingConfig) {
-
 	}
 }
