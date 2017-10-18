@@ -35,9 +35,6 @@ export class FilterBoxSampleComponent  {
 		'Kai'
 	];
 
-	constructor() {
-	}
-
 	toggleColor(color: string): void {
 		this.color = this.color === color ? this.color = 'black' : color;
 	}
