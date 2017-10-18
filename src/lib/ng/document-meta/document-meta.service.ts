@@ -35,7 +35,7 @@ export class DocumentMetaService {
 
 		this.headElement = this.document.querySelector('head');
 		this.metaDescription = this.getOrCreateMetaElement('description');
-		//this.translate.onLangChange.subscribe(this.updateMetaInformation.bind(this));
+		this.translate.onLangChange.subscribe(this.updateMetaInformation.bind(this));
 
 		// Subscribe to NavigationEnd events and handle current activated route:
 		router.events

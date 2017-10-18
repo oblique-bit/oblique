@@ -1,6 +1,6 @@
 <div class="modal-header">
-	<h4 class="modal-title pull-left">Form within modal</h4>
-	<div class="pull-right">
+	<h4 class="modal-title">Form within modal</h4>
+	<div>
 		<span class="fa fa-check text-success"
 			  ngbTooltip="Form does not contain unsaved changes" placement="bottom"
 			  *ngIf="!formModal.form.dirty"></span>
@@ -14,7 +14,7 @@
 	</button>
 </div>
 <div class="modal-body">
-	<form class="form-horizontal has-validation" #formModal="ngForm" role="form" orUnsavedChanges>
+	<form class="form-horizontal has-validation" #formModal="ngForm" id="template" role="form" orUnsavedChanges>
 		<div class="form-group row">
 			<label for="formModal.text" class="col-sm-4 control-label">Text</label>
 			<div class="col-sm-8">
@@ -36,20 +36,25 @@
 					   id="formModal.integer" [(ngModel)]="data.integer"/>
 			</div>
 		</div>
-		<!--<div class="form-group row">-->
-		<!--<label class="col-sm-4 control-label">Date</label>-->
-		<!--<div class="col-sm-4">-->
-		<!--<date-picker name="date" [(ngModel)]="tabs.zero.date"></date-picker>-->
-		<!--</div>-->
-		<!--</div>-->
+		<div class="form-group row">
+			<label class="col-sm-4 col-form-label" for="formModal.date">Date</label>
+			<div class="col-sm-8">
+				<or-date-picker>
+					<input name="date" id="formModal.date" class="form-control" ngbDatepicker>
+				</or-date-picker>
+			</div>
+		</div>
 		<div class="row">
 			<label class="col-sm-4 control-label">Model data</label>
 			<div class="col-sm-8">
 				<pre>{{formModal.value | json}}</pre>
 			</div>
 		</div>
+		<div class="form-actions">
+			<button type="reset" class="btn btn-default">Reset</button>
+		</div>
 	</form>
 </div>
 <div class="modal-footer">
-	<button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+	<button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('Close click')">Close</button>
 </div>

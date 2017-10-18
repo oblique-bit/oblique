@@ -26,7 +26,7 @@ export class UnsavedChangesService {
 		let id = ngbTabset.tabs.first.id;
 		if (!this.listener[id]) {
 			this.listener[id] = ngbTabset.tabChange.subscribe((event: NgbTabChangeEvent): void => {
-				if (!this.canDeactivateTab(event.activeId)) {
+				if (!this.discardChanges(event.activeId)) {
 					event.preventDefault();
 				}
 			});
@@ -50,6 +50,10 @@ export class UnsavedChangesService {
 		return this.hasPendingChanges() ? window.confirm(this.message()) : true;
 	}
 
+	discardChanges(formId: string): boolean {
+		return this.isFormDirty(formId) ? window.confirm(this.message()) : true;
+	}
+
 	private onUnload(event: BeforeUnloadEvent) {
 		if (this.hasPendingChanges()) {
 			const confirmationMessage = this.message();
@@ -59,10 +63,6 @@ export class UnsavedChangesService {
 		}
 
 		return null;
-	}
-
-	private canDeactivateTab(formId: string): boolean {
-		return this.isFormDirty(formId) ? window.confirm(this.message()) : true;
 	}
 
 	private hasPendingChanges(): boolean {
