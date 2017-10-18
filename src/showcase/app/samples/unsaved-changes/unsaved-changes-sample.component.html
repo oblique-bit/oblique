@@ -5,237 +5,126 @@
 	<p class="lead">Tracks and notifies about unsaved form changes when switching to another tab, navigating to
 		another state or when closing the current browser tab (or the browser itself).</p>
 	<div class="row">
-		<div class="col-md-6">
-			<div class="card">
+		<div class="col">
+			<form class="card form-horizontal has-validation" id="templateForm" #standAloneTemplate="ngForm" role="form"
+				  orUnsavedChanges>
 				<div class="card-header d-flex justify-content-between">
-					<h3 class="card-title">Preview with 1 form per tab</h3>
+					<h3 class="card-title">Preview with standalone template driven form</h3>
 					<span class="fa fa-check text-success"
 						  ngbTooltip="Form does not contain unsaved changes" placement="bottom"
-						  *ngIf="!unsavedChangesService.isFormDirty('tab1') && !unsavedChangesService.isFormDirty('tab3')"></span>
+						  *ngIf="!standAloneTemplate.form.dirty"></span>
 					<span class="fa fa-warning text-warning"
 						  ngbTooltip="Form contains unsaved changes" placement="bottom"
-						  *ngIf="unsavedChangesService.isFormDirty('tab1') || unsavedChangesService.isFormDirty('tab3')"></span>
+						  *ngIf="standAloneTemplate.form.dirty"></span>
 				</div>
-				<ngb-tabset class="card-body">
-					<ngb-tab id="tab1">
-						<ng-template ngbTabTitle>
-							<span>Form One</span>
-							<span class="fa fa-check text-success"
-								  *ngIf="form1">&nbsp;</span>
-							<span class="fa fa-save text-warning"
-								  ngbTooltip="Form tab contains unsaved changes" placement="bottom"
-								  *ngIf="unsavedChangesService.isFormDirty('tab1')">&nbsp;</span>
-						</ng-template>
-						<ng-template ngbTabContent #tab1>
-							<form class="form-horizontal has-validation" #form1="ngForm" role="form" orUnsavedChanges>
-								<div class="form-group row">
-									<label for="form1.text" class="col-sm-4 col-form-label">Text</label>
-									<div class="col-sm-8">
-										<input name="text" #text="ngModel" type="text" class="form-control"
-											   id="form1.text" ngModel/>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label for="form1.number" class="col-sm-4 col-form-label">Number</label>
-									<div class="col-sm-8">
-										<input name="number" #number="ngModel" type="number" class="form-control"
-											   id="form1.number" [(ngModel)]="tabModels.one.number"/>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label for="form1.integer" class="col-sm-4 col-form-label">Integer</label>
-									<div class="col-sm-8">
-										<input name="integer" #integer="ngModel" type="number" class="form-control"
-											   id="form1.integer" [(ngModel)]="tabModels.one.integer"/>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-sm-4 col-form-label">Date</label>
-									<div class="col-sm-8">
-										<or-date-picker>
-											<input class="form-control"
-												   name="date" [(ngModel)]="tabModels.one.date" ngbDatepicker>
-										</or-date-picker>
-									</div>
-								</div>
-								<div class="row">
-									<label class="col-sm-4 col-form-label">Model data</label>
-									<div class="col-sm-8">
-										<pre>{{tabModels.one | json}}</pre>
-									</div>
-								</div>
-								<div class="form-actions">
-									<button type="button" class="btn btn-primary" (click)="save(form1)"
-											[disabled]="form1.form.pristine">Save
-									</button>
-								</div>
-							</form>
-						</ng-template>
-					</ngb-tab>
-					<ngb-tab title="Form Two (untracked)">
-						<ng-template ngbTabContent>
-							<form class="form-horizontal has-validation" #form2="ngForm" role="form">
-								<div class="form-group row">
-									<label for="form2.text" class="col-sm-4 col-form-label">Text</label>
-									<div class="col-sm-8">
-										<input name="text" type="text" class="form-control" id="form2.text"
-											   [(ngModel)]="tabModels.two.text"/>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label for="form2.number" class="col-sm-4 col-form-label">Number</label>
-									<div class="col-sm-8">
-										<input name="number" type="text" class="form-control" id="form2.number"
-											   [(ngModel)]="tabModels.two.number"/>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label for="form2.integer" class="col-sm-4 col-form-label">Integer</label>
-									<div class="col-sm-8">
-										<input name="integer" type="number" class="form-control" id="form2.integer"
-											   [(ngModel)]="tabModels.two.integer"/>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-sm-4 col-form-label">Date</label>
-									<div class="col-sm-8">
-										<or-date-picker>
-											<input class="form-control"
-												   name="date" [(ngModel)]="tabModels.two.date" ngbDatepicker>
-										</or-date-picker>
-									</div>
-								</div>
-								<div class="row">
-									<label class="col-sm-4 col-form-label">Model data</label>
-									<div class="col-sm-8">
-										<pre>{{tabModels.two | json}}</pre>
-									</div>
-								</div>
-								<div class="form-actions">
-									<button type="button" class="btn btn-primary" (click)="save(form2)"
-											[disabled]="form2.form.pristine">Save
-									</button>
-								</div>
-							</form>
-						</ng-template>
-					</ngb-tab>
-					<ngb-tab id="tab3">
-						<ng-template ngbTabTitle>
-							<span>Form Three</span>
-							<span class="fa fa-check text-success"
-								  *ngIf="!unsavedChangesService.isFormDirty('tab3')">&nbsp;</span>
-							<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"
-								  placement="bottom"
-								  *ngIf="unsavedChangesService.isFormDirty('tab3')">&nbsp;</span>
-						</ng-template>
-						<ng-template ngbTabContent>
-							<form class="form-horizontal has-validation" #form3="ngForm" role="form"
-								  orUnsavedChanges>
-								<div class="form-group row">
-									<label for="form3.text" class="col-sm-4 col-form-label">Text</label>
-									<div class="col-sm-8">
-										<input name="text" type="text" class="form-control" id="form3.text"
-											   [(ngModel)]="tabModels.three.text"/>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label for="form3.number" class="col-sm-4 col-form-label">Number</label>
-									<div class="col-sm-8">
-										<input name="number" type="text" class="form-control" id="form3.number"
-											   [(ngModel)]="tabModels.three.number"/>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label for="form3.integer" class="col-sm-4 col-form-label">Integer</label>
-									<div class="col-sm-8">
-										<input name="integer" type="number" class="form-control" id="form3.integer"
-											   [(ngModel)]="tabModels.three.integer"/>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-sm-4 col-form-label">Date</label>
-									<div class="col-sm-8">
-										<or-date-picker>
-											<input class="form-control"
-												   name="date" [(ngModel)]="tabModels.three.date" ngbDatepicker>
-										</or-date-picker>
-									</div>
-								</div>
-								<div class="row">
-									<label class="col-sm-4 col-form-label">Model data</label>
-									<div class="col-sm-8">
-										<pre>{{tabModels.three | json}}</pre>
-									</div>
-								</div>
-								<div class="form-actions">
-									<button type="button" class="btn btn-primary" (click)="save(form3)"
-											[disabled]="form3.form.pristine">Save
-									</button>
-								</div>
-							</form>
-						</ng-template>
-					</ngb-tab>
-				</ngb-tabset>
-			</div>
-		</div>
-		<div class="col-md-6">
-			<div class="card">
-				<div class="card-header d-flex justify-content-between">
-					<h3 class="card-title">Preview with standalone form</h3>
-					<span class="fa fa-check text-success"
-						  ngbTooltip="Form does not contain unsaved changes" placement="bottom"
-						  *ngIf="!form0.form.dirty"></span>
-					<span class="fa fa-warning text-warning"
-						  ngbTooltip="Form contains unsaved changes" placement="bottom"
-						  *ngIf="form0.form.dirty"></span>
-				</div>
-				<form class="card-body form-horizontal has-validation" id="formZero" #form0="ngForm" role="form"
-					  orUnsavedChanges>
+				<div class="card-body">
 					<div class="form-group row">
-						<label for="form0.text" class="col-sm-4 col-form-label">Text</label>
+						<label for="standAloneTemplate.text" class="col-sm-4 col-form-label">Text</label>
 						<div class="col-sm-8">
 							<input name="text" #text="ngModel" type="text" class="form-control"
-								   id="form0.text" [(ngModel)]="tabModels.zero.text"/>
+								   id="standAloneTemplate.text" [(ngModel)]="tabModels.standAloneTemplate.text"/>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="form0.number" class="col-sm-4 col-form-label">Number</label>
+						<label for="standAloneTemplate.number" class="col-sm-4 col-form-label">Number</label>
 						<div class="col-sm-8">
 							<input name="number" #number="ngModel" type="number" class="form-control"
-								   id="form0.number" [(ngModel)]="tabModels.zero.number"/>
+								   id="standAloneTemplate.number" [(ngModel)]="tabModels.standAloneTemplate.number"/>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="form0.integer" class="col-sm-4 col-form-label">Integer</label>
+						<label for="standAloneTemplate.integer" class="col-sm-4 col-form-label">Integer</label>
 						<div class="col-sm-8">
 							<input name="integer" #integer="ngModel" type="number" class="form-control"
-								   id="form0.integer" [(ngModel)]="tabModels.zero.integer"/>
+								   id="standAloneTemplate.integer" [(ngModel)]="tabModels.standAloneTemplate.integer"/>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-sm-4 col-form-label">Date</label>
+						<label class="col-sm-4 col-form-label" for="standAloneTemplate.date">Date</label>
 						<div class="col-sm-8">
 							<or-date-picker>
-								<input class="form-control"
-									   name="date" [(ngModel)]="tabModels.zero.date" ngbDatepicker>
+								<input class="form-control" id="standAloneTemplate.date"
+									   name="date" [(ngModel)]="tabModels.standAloneTemplate.date" ngbDatepicker>
 							</or-date-picker>
 						</div>
 					</div>
 					<div class="row">
 						<label class="col-sm-4 col-form-label">Model data</label>
 						<div class="col-sm-8">
-							<pre>{{form0.value | json}}</pre>
+							<pre>{{standAloneTemplate.value | json}}</pre>
 						</div>
 					</div>
-				</form>
-			</div>
+				</div>
+				<div class="card-footer">
+					<div class="form-actions">
+						<button type="reset" class="btn btn-default">Reset</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="col">
+			<form class="card form-horizontal has-validation" id="standAloneReactive" role="form"
+				  [formGroup]="standAloneReactive" orUnsavedChanges (reset)="reset()">
+				<div class="card-header d-flex justify-content-between">
+					<h3 class="card-title">Preview with standalone reactive form</h3>
+					<span class="fa fa-check text-success"
+						  ngbTooltip="Form does not contain unsaved changes" placement="bottom"
+						  *ngIf="!standAloneReactive.dirty"></span>
+					<span class="fa fa-warning text-warning"
+						  ngbTooltip="Form contains unsaved changes" placement="bottom"
+						  *ngIf="standAloneReactive.dirty"></span>
+				</div>
+				<div class="card-body">
+					<div class="form-group row">
+						<label for="standAloneReactive.text" class="col-sm-4 col-form-label">Text</label>
+						<div class="col-sm-8">
+							<input formControlName="text" type="text" class="form-control"
+								   id="standAloneReactive.text"/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="standAloneReactive.number" class="col-sm-4 col-form-label">Number</label>
+						<div class="col-sm-8">
+							<input formControlName="number" type="number" class="form-control"
+								   id="standAloneReactive.number"/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="standAloneReactive.integer" class="col-sm-4 col-form-label">Integer</label>
+						<div class="col-sm-8">
+							<input formControlName="integer" type="number" class="form-control"
+								   id="standAloneReactive.integer"/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-4 col-form-label" for="standAloneReactive.date">Date</label>
+						<div class="col-sm-8">
+							<or-date-picker>
+								<input id="standAloneReactive.date" class="form-control" formControlName="date"
+									   ngbDatepicker>
+							</or-date-picker>
+						</div>
+					</div>
+					<div class="row">
+						<label class="col-sm-4 col-form-label">Model data</label>
+						<div class="col-sm-8">
+							<pre>{{standAloneReactive.value | json}}</pre>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer">
+					<div class="form-actions">
+						<button type="reset" class="btn btn-default">Reset</button>
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
-	<form class="form-horizontal has-validation row" #parentForm="ngForm" role="form">
-		<div class="col-md-8">
-			<div class="card">
+	<div class="row">
+		<div class="col">
+			<form class="card form-horizontal has-validation" #parentForm="ngForm" role="form">
 				<div class="card-header d-flex justify-content-between">
-					<h3 class="card-title">Preview with nested forms</h3>
+					<h3 class="card-title">Preview with nested template driven forms</h3>
 					<span class="fa fa-check text-success"
 						  ngbTooltip="Form does not contain unsaved changes" placement="bottom"
 						  *ngIf="!parentForm.form.dirty"></span>
@@ -245,150 +134,151 @@
 				</div>
 				<div class="card-body">
 					<ngb-tabset>
-						<ngb-tab id="tab4">
+						<ngb-tab id="tab1">
 							<ng-template ngbTabTitle>
-								<span>Form Four</span>
-								<!--<span class="fa fa-check text-success"-->
-									  <!--*ngIf="!unsavedChangesService.isFormDirty('tab4')">&nbsp;</span>-->
-								<!--<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"-->
-									  <!--placement="bottom"-->
-									  <!--*ngIf="unsavedChangesService.isFormDirty('tab4')">&nbsp;</span>-->
+								<span>Form 1</span>
+								<span class="fa fa-check text-success"
+									  *ngIf="!unsavedChangesService.isFormDirty('tab1')">&nbsp;</span>
+								<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"
+									  placement="bottom" *ngIf="unsavedChangesService.isFormDirty('tab1')">&nbsp;</span>
 							</ng-template>
 							<ng-template ngbTabContent>
-								<fieldset ngModelGroup="form4" #form4="ngModelGroup" orUnsavedChanges>
+								<fieldset ngModelGroup="form1" #form1="ngModelGroup" orUnsavedChanges>
 									<div class="form-group row">
-										<label for="form4.text" class="col-sm-4 col-form-label">Text</label>
+										<label for="form1.text" class="col-sm-4 col-form-label">Text</label>
 										<div class="col-sm-8">
 											<input name="text" #text="ngModel" type="text" class="form-control"
-												   id="form4.text" [(ngModel)]="tabModels.four.text"/>
+												   id="form1.text" [(ngModel)]="tabModels.nestedForm1.text"/>
 										</div>
 									</div>
 									<div class="form-group row">
-										<label for="form4.number" class="col-sm-4 col-form-label">Number</label>
+										<label for="form1.number" class="col-sm-4 col-form-label">Number</label>
 										<div class="col-sm-8">
 											<input name="number" #number="ngModel" type="number" class="form-control"
-												   id="form4.number" [(ngModel)]="tabModels.four.number"/>
+												   id="form1.number" [(ngModel)]="tabModels.nestedForm1.number"/>
 										</div>
 									</div>
 									<div class="form-group row">
-										<label for="form4.integer" class="col-sm-4 col-form-label">Integer</label>
+										<label for="form1.integer" class="col-sm-4 col-form-label">Integer</label>
 										<div class="col-sm-8">
 											<input name="integer" #integer="ngModel" type="number" class="form-control"
-												   id="form4.integer" [(ngModel)]="tabModels.four.integer"/>
+												   id="form1.integer" [(ngModel)]="tabModels.nestedForm1.integer"/>
 										</div>
 									</div>
 									<div class="form-group row">
-										<label class="col-sm-4 col-form-label">Date</label>
+										<label class="col-sm-4 col-form-label" for="form1.date">Date</label>
 										<div class="col-sm-8">
 											<or-date-picker>
-												<input class="form-control"
-													   name="date" [(ngModel)]="tabModels.four.date" ngbDatepicker>
+												<input id="form1.date" class="form-control"
+													   name="date" [(ngModel)]="tabModels.nestedForm1.date"
+													   ngbDatepicker>
 											</or-date-picker>
 										</div>
 									</div>
 									<div class="row">
 										<label class="col-sm-4 col-form-label">Model data</label>
 										<div class="col-sm-8">
-											<pre>{{parentForm.value.form4 | json}}</pre>
+											<pre>{{parentForm.value.nestedForm1 | json}}</pre>
 										</div>
 									</div>
 								</fieldset>
 							</ng-template>
 						</ngb-tab>
-						<ngb-tab title="Form Five (untracked)">
+						<ngb-tab title="Form 2 (untracked)">
 							<ng-template ngbTabContent>
-								<fieldset ngModelGroup="form5" #form5="ngModelGroup">
+								<fieldset ngModelGroup="form2" #form2="ngModelGroup">
 									<div class="form-group row">
-										<label for="form5.text" class="col-sm-4 col-form-label">Text</label>
+										<label for="form2.text" class="col-sm-4 col-form-label">Text</label>
 										<div class="col-sm-8">
-											<input name="text" type="text" class="form-control" id="form5.text"
-												   [(ngModel)]="tabModels.five.text"/>
+											<input name="text" type="text" class="form-control" id="form2.text"
+												   [(ngModel)]="tabModels.nestedForm2.text"/>
 										</div>
 									</div>
 									<div class="form-group row">
-										<label for="form5.number" class="col-sm-4 col-form-label">Number</label>
+										<label for="form2.number" class="col-sm-4 col-form-label">Number</label>
 										<div class="col-sm-8">
-											<input name="number" type="text" class="form-control" id="form5.number"
-												   [(ngModel)]="tabModels.five.number"/>
+											<input name="number" type="text" class="form-control" id="form2.number"
+												   [(ngModel)]="tabModels.nestedForm2.number"/>
 										</div>
 									</div>
 									<div class="form-group row">
-										<label for="form5.integer" class="col-sm-4 col-form-label">Integer</label>
+										<label for="form2.integer" class="col-sm-4 col-form-label">Integer</label>
 										<div class="col-sm-8">
-											<input name="integer" type="number" class="form-control" id="form5.integer"
-												   [(ngModel)]="tabModels.five.integer"/>
+											<input name="integer" type="number" class="form-control" id="form2.integer"
+												   [(ngModel)]="tabModels.nestedForm2.integer"/>
 										</div>
 									</div>
 									<div class="form-group row">
-										<label class="col-sm-4 col-form-label">Date</label>
+										<label class="col-sm-4 col-form-label" for="form2.date">Date</label>
 										<div class="col-sm-8">
 											<or-date-picker>
-												<input class="form-control"
-													   name="date" [(ngModel)]="tabModels.five.date" ngbDatepicker>
+												<input id="form2.date" class="form-control" name="date"
+													   [(ngModel)]="tabModels.nestedForm2.date" ngbDatepicker>
 											</or-date-picker>
 										</div>
 									</div>
 									<div class="row">
 										<label class="col-sm-4 col-form-label">Model data</label>
 										<div class="col-sm-8">
-											<pre>{{parentForm.value.form5 | json}}</pre>
+											<pre>{{parentForm.value.nestedForm2 | json}}</pre>
 										</div>
 									</div>
 								</fieldset>
 							</ng-template>
 						</ngb-tab>
-						<ngb-tab id="tab6">
+						<ngb-tab id="tab3">
 							<ng-template ngbTabTitle>
-								<span>Form Six</span>
-								<!--<span class="fa fa-check text-success"-->
-									  <!--*ngIf="!unsavedChangesService.isFormDirty('tab6')">&nbsp;</span>-->
-								<!--<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"-->
-									  <!--placement="bottom"-->
-									  <!--*ngIf="unsavedChangesService.isFormDirty('tab6')">&nbsp;</span>-->
+								<span>Form 3</span>
+								<span class="fa fa-check text-success"
+									  *ngIf="!unsavedChangesService.isFormDirty('tab3')">&nbsp;</span>
+								<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"
+									  placement="bottom"
+									  *ngIf="unsavedChangesService.isFormDirty('tab3')">&nbsp;</span>
 							</ng-template>
 							<ng-template ngbTabContent>
-								<fieldset ngModelGroup="form6" #form6="ngModelGroup" orUnsavedChanges>
+								<fieldset ngModelGroup="form3" #form3="ngModelGroup" orUnsavedChanges>
 									<div class="form-group row">
-										<label for="form6.text" class="col-sm-4 col-form-label">Text</label>
+										<label for="form3.text" class="col-sm-4 col-form-label">Text</label>
 										<div class="col-sm-8">
-											<input name="text" type="text" class="form-control" id="form6.text"
-												   [(ngModel)]="tabModels.six.text"/>
+											<input name="text" type="text" class="form-control" id="form3.text"
+												   [(ngModel)]="tabModels.nestedForm3.text"/>
 										</div>
 									</div>
 									<div class="form-group row">
-										<label for="form6.number" class="col-sm-4 col-form-label">Number</label>
+										<label for="form3.number" class="col-sm-4 col-form-label">Number</label>
 										<div class="col-sm-8">
-											<input name="number" type="text" class="form-control" id="form6.number"
-												   [(ngModel)]="tabModels.six.number"/>
+											<input name="number" type="text" class="form-control" id="form3.number"
+												   [(ngModel)]="tabModels.nestedForm3.number"/>
 										</div>
 									</div>
 									<div class="form-group row">
-										<label for="form6.integer" class="col-sm-4 col-form-label">Integer</label>
+										<label for="form3.integer" class="col-sm-4 col-form-label">Integer</label>
 										<div class="col-sm-8">
-											<input name="integer" type="number" class="form-control" id="form6.integer"
-												   [(ngModel)]="tabModels.six.integer"/>
+											<input name="integer" type="number" class="form-control" id="form3.integer"
+												   [(ngModel)]="tabModels.nestedForm3.integer"/>
 										</div>
 									</div>
 									<div class="form-group row">
-										<label class="col-sm-4 col-form-label">Date</label>
+										<label class="col-sm-4 col-form-label" for="form3.date">Date</label>
 										<div class="col-sm-8">
 											<or-date-picker>
-												<input class="form-control"
-													   name="date" [(ngModel)]="tabModels.six.date" ngbDatepicker>
+												<input id="form3.date" class="form-control"
+													   name="date" [(ngModel)]="tabModels.nestedForm3.date"
+													   ngbDatepicker>
 											</or-date-picker>
 										</div>
 									</div>
 									<div class="row">
 										<label class="col-sm-4 col-form-label">Model data</label>
 										<div class="col-sm-8">
-											<pre>{{parentForm.value.form6 | json}}</pre>
+											<pre>{{parentForm.value.nestedForm3 | json}}</pre>
 										</div>
 									</div>
 								</fieldset>
 							</ng-template>
 						</ngb-tab>
 					</ngb-tabset>
-					<div class="row">
+					<div class="row mt-5">
 						<label class="col-sm-4 col-form-label">Complete form model data</label>
 						<div class="col-sm-8">
 							<pre>{{parentForm.value | json}}</pre>
@@ -397,28 +287,361 @@
 				</div>
 				<div class="card-footer">
 					<div class="form-actions">
-						<button type="button" class="btn btn-primary" (click)="save(parentForm)"
-								[disabled]="parentForm.form.pristine">Save
-						</button>
+						<button type="reset" class="btn btn-default">Reset</button>
 					</div>
 				</div>
+			</form>
+		</div>
+		<div class="col">
+			<form class="card form-horizontal has-validation" role="form" [formGroup]="nestedReactive"
+				  (submit)="submit()">
+				<div class="card-header d-flex justify-content-between">
+					<h3 class="card-title">Preview with nested reactive forms</h3>
+					<span class="fa fa-check text-success"
+						  ngbTooltip="Form does not contain unsaved changes" placement="bottom"
+						  *ngIf="!nestedReactive.dirty"></span>
+					<span class="fa fa-warning text-warning"
+						  ngbTooltip="Form contains unsaved changes" placement="bottom"
+						  *ngIf="nestedReactive.dirty"></span>
+				</div>
+				<div class="card-body">
+					<ngb-tabset>
+						<ngb-tab id="tab4">
+							<ng-template ngbTabTitle>
+								<span>Form 4</span>
+								<span class="fa fa-check text-success"
+									  *ngIf="!nestedReactive.value.form4.dirty">&nbsp;</span>
+								<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"
+									  placement="bottom" *ngIf="nestedReactive.value.form4.dirty">&nbsp;</span>
+							</ng-template>
+							<ng-template ngbTabContent>
+								<fieldset formGroupName="form4" orUnsavedChanges>
+									<div class="form-group row">
+										<label for="form4.text" class="col-sm-4 col-form-label">Text</label>
+										<div class="col-sm-8">
+											<input formControlName="text" type="text" class="form-control"
+												   id="form4.text"/>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="form4.number" class="col-sm-4 col-form-label">Number</label>
+										<div class="col-sm-8">
+											<input formControlName="number" type="number" class="form-control"
+												   id="form4.number"/>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="form4.integer" class="col-sm-4 col-form-label">Integer</label>
+										<div class="col-sm-8">
+											<input formControlName="integer" type="number" class="form-control"
+												   id="form4.integer"/>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-4 col-form-label" for="form4.date">Date</label>
+										<div class="col-sm-8">
+											<or-date-picker>
+												<input id="form4.date" class="form-control" formControlName="date"
+													   ngbDatepicker>
+											</or-date-picker>
+										</div>
+									</div>
+									<div class="row">
+										<label class="col-sm-4 col-form-label">Model data</label>
+										<div class="col-sm-8">
+											<pre>{{nestedReactive.value.form4 | json}}</pre>
+										</div>
+									</div>
+								</fieldset>
+							</ng-template>
+						</ngb-tab>
+						<ngb-tab title="Form 5 (untracked)">
+							<ng-template ngbTabContent>
+								<fieldset formGroupName="form5">
+									<div class="form-group row">
+										<label for="form5.text" class="col-sm-4 col-form-label">Text</label>
+										<div class="col-sm-8">
+											<input formControlName="text" type="text" class="form-control"
+												   id="form5.text"/>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="form5.number" class="col-sm-4 col-form-label">Number</label>
+										<div class="col-sm-8">
+											<input formControlName="number" type="text" class="form-control"
+												   id="form5.number"/>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="form5.integer" class="col-sm-4 col-form-label">Integer</label>
+										<div class="col-sm-8">
+											<input formControlName="integer" type="number" class="form-control"
+												   id="form5.integer"/>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-4 col-form-label" for="form5.date">Date</label>
+										<div class="col-sm-8">
+											<or-date-picker>
+												<input id="form5.date" class="form-control" formControlName="date"
+													   ngbDatepicker>
+											</or-date-picker>
+										</div>
+									</div>
+									<div class="row">
+										<label class="col-sm-4 col-form-label">Model data</label>
+										<div class="col-sm-8">
+											<pre>{{nestedReactive.value.form5 | json}}</pre>
+										</div>
+									</div>
+								</fieldset>
+							</ng-template>
+						</ngb-tab>
+						<ngb-tab id="form6">
+							<ng-template ngbTabTitle>
+								<span>Form 6</span>
+								<span class="fa fa-check text-success"
+									  *ngIf="!nestedReactive.value.form6.dirty">&nbsp;</span>
+								<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"
+									  placement="bottom"
+									  *ngIf="nestedReactive.value.form6.dirty">&nbsp;</span>
+							</ng-template>
+							<ng-template ngbTabContent>
+								<fieldset formGroupName="form6" orUnsavedChanges>
+									<div class="form-group row">
+										<label for="form6.text" class="col-sm-4 col-form-label">Text</label>
+										<div class="col-sm-8">
+											<input formControlName="text" type="text" class="form-control"
+												   id="form6.text"/>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="form6.number" class="col-sm-4 col-form-label">Number</label>
+										<div class="col-sm-8">
+											<input formControlName="number" type="text" class="form-control"
+												   id="form6.number"/>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="form6.integer" class="col-sm-4 col-form-label">Integer</label>
+										<div class="col-sm-8">
+											<input formControlName="integer" type="number" class="form-control"
+												   id="form6.integer"/>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-4 col-form-label" for="form6.date">Date</label>
+										<div class="col-sm-8">
+											<or-date-picker>
+												<input id="form6.date" class="form-control" formControlName="date"
+													   ngbDatepicker>
+											</or-date-picker>
+										</div>
+									</div>
+									<div class="row">
+										<label class="col-sm-4 col-form-label">Model data</label>
+										<div class="col-sm-8">
+											<pre>{{nestedReactive.value.form6 | json}}</pre>
+										</div>
+									</div>
+								</fieldset>
+							</ng-template>
+						</ngb-tab>
+					</ngb-tabset>
+					<div class="row mt-5">
+						<label class="col-sm-4 col-form-label">Complete form model data</label>
+						<div class="col-sm-8">
+							<pre>{{nestedReactive.value | json}}</pre>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer">
+					<div class="form-actions">
+						<button type="reset" class="btn btn-default">Reset</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div class="card-header d-flex justify-content-between">
+					<h3 class="card-title">Preview with 1 form per tab</h3>
+					<span class="fa fa-check text-success"
+						  ngbTooltip="Form does not contain unsaved changes" placement="bottom"
+						  *ngIf="!unsavedChangesService.isFormDirty('tab7') && !unsavedChangesService.isFormDirty('tab9')"></span>
+					<span class="fa fa-warning text-warning"
+						  ngbTooltip="Form contains unsaved changes" placement="bottom"
+						  *ngIf="unsavedChangesService.isFormDirty('tab7') || unsavedChangesService.isFormDirty('tab9')"></span>
+				</div>
+				<ngb-tabset class="card-body">
+					<ngb-tab id="tab7">
+						<ng-template ngbTabTitle>
+							<span>Form 1 (template)</span>
+							<span class="fa fa-check text-success"
+								  *ngIf="!unsavedChangesService.isFormDirty('tab7')">&nbsp;</span>
+							<span class="fa fa-save text-warning"
+								  ngbTooltip="Form tab contains unsaved changes" placement="bottom"
+								  *ngIf="unsavedChangesService.isFormDirty('tab7')">&nbsp;</span>
+						</ng-template>
+						<ng-template ngbTabContent #tab1>
+							<form class="form-horizontal has-validation" #tabForm1="ngForm" role="form"
+								  orUnsavedChanges>
+								<div class="form-group row">
+									<label for="tabForm1.text" class="col-sm-4 col-form-label">Text</label>
+									<div class="col-sm-8">
+										<input name="text" #text="ngModel" type="text" class="form-control"
+											   id="tabForm1.text" ngModel/>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="tabForm1.number" class="col-sm-4 col-form-label">Number</label>
+									<div class="col-sm-8">
+										<input name="number" #number="ngModel" type="number" class="form-control"
+											   id="tabForm1.number" [(ngModel)]="tabModels.tabForm1.number"/>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="tabForm1.integer" class="col-sm-4 col-form-label">Integer</label>
+									<div class="col-sm-8">
+										<input name="integer" #integer="ngModel" type="number" class="form-control"
+											   id="tabForm1.integer"
+											   [(ngModel)]="tabModels.tabForm1.integer"/>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-4 col-form-label" for="tabForm1.date">Date</label>
+									<div class="col-sm-8">
+										<or-date-picker>
+											<input id="tabForm1.date" class="form-control" name="date"
+												   [(ngModel)]="tabModels.tabForm1.date" ngbDatepicker>
+										</or-date-picker>
+									</div>
+								</div>
+								<div class="row">
+									<label class="col-sm-4 col-form-label">Model data</label>
+									<div class="col-sm-8">
+										<pre>{{tabModels.tabForm1 | json}}</pre>
+									</div>
+								</div>
+								<div class="form-actions">
+									<button type="reset" class="btn btn-default">Reset</button>
+								</div>
+							</form>
+						</ng-template>
+					</ngb-tab>
+					<ngb-tab title="Form 2 (untracked, reactive)">
+						<ng-template ngbTabContent>
+							<form class="form-horizontal has-validation" role="form" [formGroup]="tabForm8Reactive">
+								<div class="form-group row">
+									<label for="tabForm2.text" class="col-sm-4 col-form-label">Text</label>
+									<div class="col-sm-8">
+										<input formControlName="text" type="text" class="form-control"
+											   id="tabForm2.text"/>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="tabForm2.number" class="col-sm-4 col-form-label">Number</label>
+									<div class="col-sm-8">
+										<input formControlName="number" type="text" class="form-control"
+											   id="tabForm2.number"/>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="tabForm2.integer" class="col-sm-4 col-form-label">Integer</label>
+									<div class="col-sm-8">
+										<input formControlName="integer" type="number" class="form-control"
+											   id="tabForm2.integer"/>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-4 col-form-label" for="tabForm2.date">Date</label>
+									<div class="col-sm-8">
+										<or-date-picker>
+											<input formControlName="date" id="tabForm2.date" class="form-control"
+												   ngbDatepicker>
+										</or-date-picker>
+									</div>
+								</div>
+								<div class="row">
+									<label class="col-sm-4 col-form-label">Model data</label>
+									<div class="col-sm-8">
+										<pre>{{tabForm8Reactive.value | json}}</pre>
+									</div>
+								</div>
+								<div class="form-actions">
+									<button type="reset" class="btn btn-default">Reset</button>
+								</div>
+							</form>
+						</ng-template>
+					</ngb-tab>
+					<ngb-tab id="tab9">
+						<ng-template ngbTabTitle>
+							<span>Form 3 (reactive)</span>
+							<span class="fa fa-check text-success"
+								  *ngIf="!tabForm9Reactive.dirty">&nbsp;</span>
+							<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes"
+								  placement="bottom"
+								  *ngIf="tabForm9Reactive.dirty">&nbsp;</span>
+						</ng-template>
+						<ng-template ngbTabContent>
+							<form class="form-horizontal has-validation" role="form" [formGroup]="tabForm9Reactive"
+								  orUnsavedChanges>
+								<div class="form-group row">
+									<label for="templateForm3.text" class="col-sm-4 col-form-label">Text</label>
+									<div class="col-sm-8">
+										<input formControlName="text" type="text" class="form-control"
+											   id="templateForm3.text"/>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="templateForm3.number" class="col-sm-4 col-form-label">Number</label>
+									<div class="col-sm-8">
+										<input formControlName="number" type="text" class="form-control"
+											   id="templateForm3.number"/>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="templateForm3.integer" class="col-sm-4 col-form-label">Integer</label>
+									<div class="col-sm-8">
+										<input formControlName="integer" type="number" class="form-control"
+											   id="templateForm3.integer"/>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-4 col-form-label" for="templateForm3.date">Date</label>
+									<div class="col-sm-8">
+										<or-date-picker>
+											<input id="templateForm3.date" class="form-control" formControlName="date"
+												   ngbDatepicker>
+										</or-date-picker>
+									</div>
+								</div>
+								<div class="row">
+									<label class="col-sm-4 col-form-label">Model data</label>
+									<div class="col-sm-8">
+										<pre>{{tabForm9Reactive.value | json}}</pre>
+									</div>
+								</div>
+								<div class="form-actions">
+									<button type="reset" class="btn btn-default">Reset</button>
+								</div>
+							</form>
+						</ng-template>
+					</ngb-tab>
+				</ngb-tabset>
 			</div>
 		</div>
-
-		<div class="col-md-4">
+		<div class="col">
 			<div class="card">
 				<div class="card-header">
 					<h3 class="card-title">Preview with modals</h3>
 				</div>
 				<div class="card-body">
-					<div class="callout callout-danger">
-						<span class="sr-only">Error</span>
-						<h4>Not implemented yet</h4>
-					</div>
-					<button class="btn btn-default">Open a modal in a new state</button>
 					<button class="btn btn-default" (click)="modal()">Open a modal in current state</button>
 				</div>
 			</div>
 		</div>
-	</form>
+	</div>
 </div>
