@@ -1,9 +1,9 @@
 import {Directive, HostBinding} from '@angular/core';
 
 @Directive({
-	selector: '[data-provides="column-layout"], [provides="column-layout"]'
+	selector: '[orColumn]'
 })
-export class ColumnToggleProvidesDirective {
+export class ColumnDirective {
 
 	@HostBinding('class.column-expanded-right')
 	private right = false;
