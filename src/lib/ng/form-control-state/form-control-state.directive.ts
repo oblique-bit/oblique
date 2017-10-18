@@ -43,9 +43,9 @@ export class FormControlStateDirective implements AfterViewInit {
 			throw new Error('You need to provide an NgControl for the FormControlStateDirective!');
 		}
 
-		let inputElement = this.elementRef.nativeElement.querySelector('[ngModel], [ngModelChange], [formControlName]');
+		let inputElement = this.elementRef.nativeElement.querySelector('[name], [ngModel], [ngModelChange], [formControlName]');
 		if (!inputElement) {
-			throw new Error('you need to provide either a ngModel, ngModelChange or formControlName for the FormControlStateDirective!');
+			throw new Error('you need to provide either a name, ngModel, ngModelChange or formControlName for the FormControlStateDirective!');
 		}
 		this.inputContainer = inputElement.parentElement;
 		this.mandatory = this.mandatory

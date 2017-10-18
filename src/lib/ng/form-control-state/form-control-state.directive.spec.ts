@@ -1,8 +1,8 @@
-import {TestBed, async, ComponentFixture, fakeAsync, tick, flushMicrotasks} from '@angular/core/testing';
+import {TestBed, async, ComponentFixture, fakeAsync, tick} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
-import {FormsModule, NgModel} from '@angular/forms';
+import {FormBuilder, FormControlName, FormsModule, NgModel, ReactiveFormsModule, Validators} from '@angular/forms';
 import {FormControlStateDirective} from './form-control-state.directive';
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {By} from '@angular/platform-browser';
 
 @Component({
@@ -25,16 +25,38 @@ class TestWithPristineValidationComponent {
 
 @Component({
 	template: `
+		<form [formGroup]="model">
+			<div orFormControlState>
+				<input formControlName="name" type="text">
+			</div>
+			<input id="submit" type="submit" value="Click Me">
+		</form>
+	`
+})
+class ReactiveTestComponent implements OnInit {
+	model;
+	constructor(private formBuilder: FormBuilder) {
+	}
+
+	ngOnInit() {
+		this.model = this.formBuilder.group({name: ['', Validators.required]});
+	}
+
+	@ViewChild(NgModel) ngModel: FormControlName;
+	@ViewChild(FormControlStateDirective) formControlState: FormControlStateDirective;
+}
+
+@Component({
+	template: `
 		<form name="testForm">
 			<div orFormControlState>
-				<input name="name" type="text" [(ngModel)]="model" #name="ngModel" required minlength="3">
+				<input name="name" type="text" [(ngModel)]="model" #name="ngModel" required minlength="4">
 			</div>
 			<input id="submit" type="submit" value="Click Me">
 		</form>
 	`
 })
 class TestComponent {
-
 	model;
 
 	@ViewChild(NgModel) ngModel: NgModel;
@@ -42,8 +64,8 @@ class TestComponent {
 }
 
 describe('FormControlStateDirective', () => {
-	let fixture: ComponentFixture<TestComponent> | ComponentFixture<TestWithPristineValidationComponent>;
-	let component: TestComponent | TestWithPristineValidationComponent;
+	let fixture: ComponentFixture<TestComponent> | ComponentFixture<TestWithPristineValidationComponent> | ComponentFixture<ReactiveTestComponent>;
+	let component: TestComponent | TestWithPristineValidationComponent | ReactiveTestComponent;
 	let submitButton;
 
 	beforeEach(async(() => {
@@ -51,11 +73,13 @@ describe('FormControlStateDirective', () => {
 			declarations: [
 				FormControlStateDirective,
 				TestWithPristineValidationComponent,
-				TestComponent
+				TestComponent,
+				ReactiveTestComponent
 			],
 			imports: [
 				CommonModule,
-				FormsModule
+				FormsModule,
+				ReactiveFormsModule
 			]
 		}).compileComponents();
 	}));
@@ -111,6 +135,36 @@ describe('FormControlStateDirective', () => {
 
 		it('should remove has-error on statusChange', fakeAsync(() => {
 			component.model = 'A valid Value';
+
+			//Triggers statusChange
+			fixture.detectChanges();
+			//Executes the subscribes
+			tick();
+			//Ensures the binding
+			fixture.detectChanges();
+
+			expect(fixture.debugElement.query(By.css('.has-error'))).toBeFalsy();
+		}));
+	});
+
+	describe('with reactive form', () => {
+		beforeEach(async(() => {
+			fixture = TestBed.createComponent(ReactiveTestComponent);
+			component = fixture.componentInstance;
+			fixture.detectChanges();
+
+			submitButton = fixture.debugElement.query(By.css('#submit')).nativeElement;
+		}));
+
+		it('should add has-error class on form submit', () => {
+			submitButton.click();
+			fixture.detectChanges();
+
+			expect(fixture.debugElement.query(By.css('.has-error'))).toBeTruthy();
+		});
+
+		it('should remove has-error on statusChange', fakeAsync(() => {
+			component.model.value.name = 'A valid Value';
 
 			//Triggers statusChange
 			fixture.detectChanges();

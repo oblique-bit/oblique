@@ -7,14 +7,20 @@ import {MockTranslatePipe} from '../../../../../testhelpers';
 import {NgbDatepickerModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {DatepickerPlaceholderDirective} from '../../../../lib/ng/datepicker/datepicker-placeholder.directive';
 import {DatepickerModule} from '../../../../lib/ng/datepicker/datepicker.module';
+import {SchemaValidationService} from '../../../../lib/ng/schema-validation/schema-validation.service';
 
 describe('DatepickerSampleComponent', () => {
 	let component: DatepickerSampleComponent;
 	let fixture: ComponentFixture<DatepickerSampleComponent>;
+	let schemaValidationService;
 
 	beforeEach(async(() => {
+		schemaValidationService = jasmine.createSpyObj('SchemaValidationService', ['isRequired']);
 		TestBed.configureTestingModule({
 			declarations: [DatepickerSampleComponent, MockTranslatePipe],
+			providers: [
+				{provide: SchemaValidationService, useValue: schemaValidationService}
+			],
 			imports: [
 				ObliqueModule.forRoot(),
 				NgbDatepickerModule.forRoot(),
