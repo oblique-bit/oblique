@@ -5,7 +5,7 @@ import {
 	AbstractControl
 } from '@angular/forms';
 import {SchemaValidationDirective} from './schema-validation.directive';
-import {SchemaValidateDirective, schemaValidatorFactory} from './schema-validator';
+import {SchemaValidateDirective} from './schema-validator';
 import {By} from '@angular/platform-browser';
 import {SchemaValidationService} from './schema-validation.service';
 
@@ -59,16 +59,17 @@ describe('SchemaValidation', () => {
 	})
 	class ModelFormTestComponent implements OnInit {
 		sampleForm: FormGroup;
+		validator;
 
 		constructor(private formBuilder: FormBuilder, private schemaValidationService: SchemaValidationService) {
-			schemaValidationService.compileSchema(schema);
+			this.validator = schemaValidationService.compileSchema(schema);
 		}
 
 		ngOnInit() {
 			this.sampleForm = this.formBuilder.group({
-				'string': ['', schemaValidatorFactory(this.schemaValidationService, 'string')],
+				'string': ['', this.validator.getValidator('string')],
 				object: this.formBuilder.group({
-					subproperty: [null, schemaValidatorFactory(this.schemaValidationService, 'object.subproperty')]
+					subproperty: [null, this.validator.getValidator('object.subproperty')]
 				})
 			});
 		}
