@@ -63,7 +63,7 @@ export class UnsavedChangesService {
 
 	private hasPendingChanges(ids: string[] = Object.keys(this.formList)): boolean {
 		return Object.keys(this.formList).filter(
-			(formId) => ids.includes(formId) && this.formList[formId].dirty
+			(formId) => ids.indexOf(formId) > -1 && this.formList[formId].dirty
 		).length > 0;
 	}
 
