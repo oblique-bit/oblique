@@ -1,11 +1,11 @@
 import {Directive, HostListener, Input} from '@angular/core';
-import {ColumnToggleProvidesDirective} from './column-toggle-provides.directive';
+import {ColumnDirective} from './column.directive';
 
 @Directive({
-	selector: '[column-toggle], [data-column-toggle]'
+	selector: '[orColumnToggle]'
 })
 export class ColumnToggleDirective   {
-	@Input('column-toggle')
+	@Input('orColumnToggle')
 	direction: string;
 
 	@HostListener('click')
@@ -13,6 +13,6 @@ export class ColumnToggleDirective   {
 		this.parent.toggle(this.direction);
 	}
 
-	constructor(private parent: ColumnToggleProvidesDirective) {
+	constructor(private parent: ColumnDirective) {
 	}
 }

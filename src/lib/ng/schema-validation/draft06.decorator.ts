@@ -1,16 +1,17 @@
+// noinspection JSUnusedLocalSymbols
 export function draft06(target, propertyKey: string, descriptor: PropertyDescriptor): any {
 	const oldValue = descriptor.value;
 
 	descriptor.value = function() {
 		let schema = JSON.parse(JSON.stringify(arguments[0]));	// deep clone
 		convert(schema);
-		oldValue.call(this, schema);
+		return oldValue.call(this, schema);
 	};
 
 	return descriptor;
 
 
-	function convert(schema) {
+	function convert(schema): void {
 		convertId(schema);
 		schema.required = schema.required || [];
 
@@ -26,21 +27,21 @@ export function draft06(target, propertyKey: string, descriptor: PropertyDescrip
 		}
 	}
 
-	function convertId(schema) {
+	function convertId(schema): void {
 		if (schema.id) {
 			schema.$id = schema.id;
 			delete schema.id;
 		}
 	}
 
-	function arrayifyRequired(property, propertyName, schema) {
+	function arrayifyRequired(property, propertyName, schema): void {
 		if (property.required && !property.required.length) {
 			schema.required.push(propertyName);
 			delete property.required;
 		}
 	}
 
-	function convertAnyIntoObject(property) {
+	function convertAnyIntoObject(property): void {
 		if (property.type === 'any') {
 			property.type = 'object';
 		}

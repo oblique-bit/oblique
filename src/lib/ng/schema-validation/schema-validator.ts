@@ -1,12 +1,6 @@
 import {Directive, AfterViewInit, forwardRef, Injector} from '@angular/core';
-import {NG_VALIDATORS, FormControl, NgControl} from '@angular/forms';
-import {SchemaValidationService} from './schema-validation.service';
-
-export function schemaValidatorFactory(schemaValidationService: SchemaValidationService, propertyName: string) {
-	return (c: FormControl) => {
-		return schemaValidationService.validate(propertyName, c.value);
-	};
-}
+import {NG_VALIDATORS, FormControl, NgControl, Validator, ValidationErrors} from '@angular/forms';
+import {SchemaValidationDirective} from './schema-validation.directive';
 
 @Directive({
 	selector: '[orSchemaValidate][ngModel],[orSchemaValidate][formControl]',
@@ -14,33 +8,20 @@ export function schemaValidatorFactory(schemaValidationService: SchemaValidation
 		{provide: NG_VALIDATORS, useExisting: forwardRef(() => SchemaValidateDirective), multi: true}
 	]
 })
-export class SchemaValidateDirective implements AfterViewInit {
+export class SchemaValidateDirective implements AfterViewInit, Validator {
 
 	private propertyName: string;
-	private validator: Function;
 
-	constructor(private schemaValidationService: SchemaValidationService,
+	constructor(private schemaDirective: SchemaValidationDirective,
 				private injector: Injector) {
 	}
 
 	ngAfterViewInit(): void {
 		//TODO: this is a workaround: if NgControl is required in the constructor, we have cyclic dependencies
-		const ngControl: NgControl = this.injector.get(NgControl);
-
-		this.propertyName = this.extractPropertyName(ngControl);
-
-		this.validator = schemaValidatorFactory(this.schemaValidationService, this.propertyName);
+		this.propertyName = this.injector.get(NgControl).path.join('.');
 	}
 
-	validate(c: FormControl) {
-		return this.validator(c);
-	}
-
-	private extractPropertyName(ngControl: NgControl): string {
-		//TODO: this is a workaround to access an internal attribute
-		if (ngControl['_parent'].name) {
-			return `${this.extractPropertyName(ngControl['_parent'])}.${ngControl.name}`;
-		}
-		return ngControl.name;
+	validate(formControl: FormControl): ValidationErrors {
+		return this.schemaDirective.validate(this.propertyName, formControl.value);
 	}
 }

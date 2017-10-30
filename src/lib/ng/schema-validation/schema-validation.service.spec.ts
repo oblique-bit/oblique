@@ -4,6 +4,7 @@ import {SchemaValidationService} from './schema-validation.service';
 
 describe('SchemaValidationService', () => {
 	let schemaValidationService: SchemaValidationService;
+	let validator;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
@@ -19,7 +20,7 @@ describe('SchemaValidationService', () => {
 
 	describe('validate()', () => {
 		beforeEach(() => {
-			schemaValidationService.compileSchema({
+			validator = schemaValidationService.compileSchema({
 				'type': 'object',
 				'properties': {
 					'someProperty': {
@@ -40,17 +41,17 @@ describe('SchemaValidationService', () => {
 		});
 
 		it('should return null, if data is valid', () => {
-			expect(schemaValidationService.validate('someProperty', 'valid')).toBeNull();
+			expect(validator.validate('someProperty', 'valid')).toBeNull();
 		});
 
 		it('should return angular2 conform error objects', () => {
-			expect(schemaValidationService.validate('someProperty', 4)).toEqual({
+			expect(validator.validate('someProperty', 4)).toEqual({
 				type: { //error type (in this case a type Issue)
 					type: 'string' //The required type
 				}
 			});
 
-			expect(schemaValidationService.validate('someProperty', 'fuu')).toEqual({
+			expect(validator.validate('someProperty', 'fuu')).toEqual({
 				minLength: { //error type (in this case a type Issue)
 					limit: 4 //The required type
 				}
@@ -58,15 +59,15 @@ describe('SchemaValidationService', () => {
 		});
 
 		it('should throw, if property doesn\'t exist', () => {
-			expect(() => schemaValidationService.validate('nonexistentProperty', 1337)).toThrowError();
+			expect(() => validator.validate('nonexistentProperty', 1337)).toThrowError();
 		});
 
 		it('should return null, if subproperty is valid', () => {
-			expect(schemaValidationService.validate('object.subproperty', 1337)).toBeNull();
+			expect(validator.validate('object.subproperty', 1337)).toBeNull();
 		});
 
 		it('should return angular2 conform error objects if subproperties are validated', () => {
-			expect(schemaValidationService.validate('object.subproperty', 'string')).toEqual({
+			expect(validator.validate('object.subproperty', 'string')).toEqual({
 				type: {
 					type: 'number'
 				}
@@ -74,7 +75,7 @@ describe('SchemaValidationService', () => {
 		});
 
 		it('should throw, if subproperty doesn\'t exist', () => {
-			expect(() => schemaValidationService.validate('object.nonexistentProperty', 1337)).toThrowError();
+			expect(() => validator.validate('object.nonexistentProperty', 1337)).toThrowError();
 		});
 	});
 });

@@ -1,11 +1,9 @@
 import {
-	Directive, HostBinding, ContentChild, AfterViewInit, Input, Optional, ElementRef,
-	Renderer2
+	Directive, HostBinding, ContentChild, AfterViewInit, Input, Optional, ElementRef, Renderer2
 } from '@angular/core';
 import {NgControl, NgForm, FormGroupDirective, FormGroupName, NgModelGroup} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/merge';
-import {SchemaValidationService} from '../schema-validation/schema-validation.service';
 
 @Directive({
 	selector: '[orFormControlState]'
@@ -25,13 +23,12 @@ export class FormControlStateDirective implements AfterViewInit {
 
 	constructor(@Optional() ngForm: NgForm,
 				@Optional() formGroupDirective: FormGroupDirective,
-				@Optional() private formGroupName: FormGroupName,
-				@Optional() private modelGroup: NgModelGroup,
-				@Optional() private schemaValidation: SchemaValidationService,
+				@Optional() formGroupName: FormGroupName,
+				@Optional() modelGroup: NgModelGroup,
 				private elementRef: ElementRef,
 				private renderer: Renderer2) {
 		this.form = ngForm || formGroupDirective;
-		this.group = this.modelGroup || this.formGroupName;
+		this.group = modelGroup || formGroupName;
 
 		if (!this.form) {
 			throw new Error('You need either a NgForm or a FormGroupDirective for the FormControlStateDirective!');
@@ -43,15 +40,14 @@ export class FormControlStateDirective implements AfterViewInit {
 			throw new Error('You need to provide an NgControl for the FormControlStateDirective!');
 		}
 
-		let inputElement = this.elementRef.nativeElement.querySelector('[name], [ngModel], [ngModelChange], [formControlName]');
+		let inputElement = this.elementRef.nativeElement.querySelector('[ngModel], [formControlName], [name]');
 		if (!inputElement) {
-			throw new Error('you need to provide either a name, ngModel, ngModelChange or formControlName for the FormControlStateDirective!');
+			throw new Error('you need to provide either a ngModel or a formControlName for the FormControlStateDirective!');
 		}
 		this.inputContainer = inputElement.parentElement;
 		this.mandatory = this.mandatory
 			|| this.hasRequiredValidator()
-			|| this.hasRequiredAttribute(inputElement)
-			|| this.schemaValidation.isRequired(this.ngControl.name, this.group ? this.group.path : []);
+			|| this.hasRequiredAttribute(inputElement);
 
 		Observable.merge(
 			this.form.ngSubmit,

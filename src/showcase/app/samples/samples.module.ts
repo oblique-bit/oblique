@@ -10,6 +10,7 @@ import {ObliqueModule} from '../../../lib/ng/index';
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 import {SamplesRoutingModule} from './samples-routing.module';
 
+import {ColumnSampleComponent} from './column/column-sample.component';
 import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {FormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
 import {MasterLayoutSampleComponent} from './master-layout/master-layout-sample.component';
@@ -22,7 +23,7 @@ import {SchemaValidationSampleComponent} from './schema-validation/schema-valida
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
 import {FilterBoxSampleComponent, PatternFilterPipe} from './filter-box-sample/filter-box-sample.component';
-import {ColumnToggleSampleComponent} from './column-toggle/column-toggle-sample.component';
+
 
 @NgModule({
 	imports: [
@@ -38,6 +39,7 @@ import {ColumnToggleSampleComponent} from './column-toggle/column-toggle-sample.
 		ReactiveFormsModule
 	],
 	declarations: [
+		ColumnSampleComponent,
 		DatepickerSampleComponent,
 		FormControlStateSampleComponent,
 		FilterBoxSampleComponent,
@@ -50,8 +52,7 @@ import {ColumnToggleSampleComponent} from './column-toggle/column-toggle-sample.
 		NotificationSampleComponent,
 		SchemaValidationSampleComponent,
 		UnsavedChangesSampleComponent,
-		UnsavedChangesSampleModalComponent,
-		ColumnToggleSampleComponent
+		UnsavedChangesSampleModalComponent
 	],
 	exports: [
 		RouterModule

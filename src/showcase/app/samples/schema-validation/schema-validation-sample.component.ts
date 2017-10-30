@@ -10,30 +10,11 @@ import {NotificationService} from '../../../../lib/ng/notification/notification.
 		.form-horizontal label {
 			text-align: right;
 		}
-
-		.row + .row {
-			margin-top: 2rem;
-		}
-
-		option[value=''],
-		select.ng-pristine {
-			color: #8e8e8e;
-		}
-
-		select.ng-pristine option:not([value='']) {
-			color: #171717;
-		}
-		
-		fieldset fieldset legend {
-			width: calc(100% - 1rem);
-			margin-left: 1rem;
-		}
 	`]
 })
 export class SchemaValidationSampleComponent implements OnInit {
 
 	formData: FormGroup;
-
 	schema = {
 		'title': 'SampleSchemaSampleValidation',
 		'type': 'object',
@@ -66,7 +47,6 @@ export class SchemaValidationSampleComponent implements OnInit {
 				'maximum': 100,
 				'exclusiveMaximum': 100
 			},
-			//TODO: not implemented yet
 			'date': {
 				'type': [
 					'object',
@@ -143,20 +123,20 @@ export class SchemaValidationSampleComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.schemaValidation.compileSchema(this.schema);
+		const validator = this.schemaValidation.compileSchema(this.schema);
 		this.formData = this.formBuilder.group({
-			text: ['', this.schemaValidation.getValidator('text')],
-			number: ['', this.schemaValidation.getValidator('number')],
-			integer: ['', this.schemaValidation.getValidator('integer')],
-			date: ['', this.schemaValidation.getValidator('date')],
-			select: ['', this.schemaValidation.getValidator('select')],
-			textarea: ['', this.schemaValidation.getValidator('textarea')],
+			text: ['', validator.getValidator('text')],
+			number: ['', validator.getValidator('number')],
+			integer: ['', validator.getValidator('integer')],
+			date: ['', validator.getValidator('date')],
+			select: ['', validator.getValidator('select')],
+			textarea: ['', validator.getValidator('textarea')],
 			name: this.formBuilder.group({
-				firstName: ['', this.schemaValidation.getValidator('name.firstName')],
-				lastName: ['', this.schemaValidation.getValidator('name.lastName')],
+				firstName: ['', validator.getValidator('name.firstName')],
+				lastName: ['', validator.getValidator('name.lastName')],
 				address: this.formBuilder.group({
-					street: ['', this.schemaValidation.getValidator('name.address.street')],
-					number: ['', this.schemaValidation.getValidator('name.address.number')],
+					street: ['', validator.getValidator('name.address.street')],
+					number: ['', validator.getValidator('name.address.number')],
 				}),
 			}),
 		});

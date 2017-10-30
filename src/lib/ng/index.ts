@@ -15,7 +15,7 @@ import {SpinnerModule} from './spinner';
 import {UnsavedChangesModule} from './unsaved-changes';
 import {FilterBoxModule} from './filter-box';
 import {ScrollingModule} from './scrolling/scrolling.module';
-import {ColumnToggleModule} from './column-toggle/column-toggle.module';
+import {ColumnModule} from './column/column.module';
 
 export * from './datepicker';
 export * from './document-meta';
@@ -32,10 +32,10 @@ export * from './schema-validation';
 export * from './spinner';
 export * from './scrolling';
 export * from './unsaved-changes';
-export * from './column-toggle';
+export * from './column';
 
 const OBLIQUE_MODULES = [
-	ColumnToggleModule,
+	ColumnModule,
 	DatepickerModule,
 	DocumentMetaModule,
 	ErrorMessagesModule,
@@ -55,7 +55,7 @@ const OBLIQUE_MODULES = [
 
 @NgModule({
 	imports: [
-		ColumnToggleModule.forRoot(),
+		ColumnModule.forRoot(),
 		DatepickerModule.forRoot(),
 		DocumentMetaModule.forRoot(),
 		ErrorMessagesModule.forRoot(),

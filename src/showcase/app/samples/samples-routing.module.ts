@@ -14,7 +14,7 @@ import {SchemaValidationSampleComponent} from './schema-validation/schema-valida
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {UnsavedChangesGuard} from '../../../lib/ng/unsaved-changes/unsaved-changes.guard';
 import {FilterBoxSampleComponent} from './filter-box-sample/filter-box-sample.component';
-import {ColumnToggleSampleComponent} from './column-toggle/column-toggle-sample.component';
+import {ColumnSampleComponent} from './column/column-sample.component';
 
 const samplesRoutes: Routes = [
 	{
@@ -52,7 +52,7 @@ const samplesRoutes: Routes = [
 			{path: 'validation/form-control-state', component: FormControlStateSampleComponent},
 			{path: 'validation/schema-validation', component: SchemaValidationSampleComponent},
 			{path: 'validation/unsaved-changes', component: UnsavedChangesSampleComponent, canDeactivate: [UnsavedChangesGuard]},
-			{path: 'column-toggle', component: ColumnToggleSampleComponent},
+			{path: 'column', component: ColumnSampleComponent},
 		]
 	}
 ];
