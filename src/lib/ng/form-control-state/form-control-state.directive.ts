@@ -40,14 +40,17 @@ export class FormControlStateDirective implements AfterViewInit {
 			throw new Error('You need to provide an NgControl for the FormControlStateDirective!');
 		}
 
+		// NOTE: [ngModel] is for template-driven forms, [formControlName] is for reactive forms and [name] is for
+		// template-driven forms with 2 ways binding because querySelector cannot match "[(ngModel)]"
 		let inputElement = this.elementRef.nativeElement.querySelector('[ngModel], [formControlName], [name]');
 		if (!inputElement) {
 			throw new Error('you need to provide either a ngModel or a formControlName for the FormControlStateDirective!');
 		}
+
 		this.inputContainer = inputElement.parentElement;
 		this.mandatory = this.mandatory
-			|| this.hasRequiredValidator()
-			|| this.hasRequiredAttribute(inputElement);
+			|| inputElement.hasAttribute('required')
+			|| (this.ngControl.errors && this.ngControl.errors.required);
 
 		Observable.merge(
 			this.form.ngSubmit,
@@ -77,16 +80,5 @@ export class FormControlStateDirective implements AfterViewInit {
 				this.renderer.addClass(this.inputContainer, 'control-mandatory');
 			}
 		}
-	}
-
-	private hasRequiredValidator(): boolean {
-		// used by model driven forms
-		return this.ngControl.errors && this.ngControl.errors.required;
-	}
-
-	// noinspection JSMethodCanBeStatic
-	private hasRequiredAttribute(inputElement: Element): boolean {
-		// used by template driven forms
-		return inputElement.hasAttribute('required')
 	}
 }
