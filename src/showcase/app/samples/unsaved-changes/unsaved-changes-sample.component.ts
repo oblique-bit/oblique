@@ -57,7 +57,7 @@ export class UnsavedChangesSampleComponent implements OnInit {
 
 	modal() {
 		this.modalService.open(UnsavedChangesSampleModalComponent, {
-			beforeDismiss: () => this.unsavedChangesService.discardChanges('template')
-		})
+			beforeDismiss: () => this.unsavedChangesService.ignoreChanges(['template'])
+		});
 	}
 }
