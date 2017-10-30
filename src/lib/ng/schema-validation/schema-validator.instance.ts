@@ -24,7 +24,8 @@ export class SchemaValidatorInstance {
 	}
 
 	getValidator(propertyPath: string): (AbstractControl) => ValidationErrors {
-		return (control: AbstractControl) => this.validate(propertyPath, control.value);
+		// NOTE: ajv cannot validate null or undefined => provide an empty string in those cases
+		return (control: AbstractControl) => this.validate(propertyPath, control.value || '');
 	}
 
 	isRequired(property: string, path: string[]): boolean {
