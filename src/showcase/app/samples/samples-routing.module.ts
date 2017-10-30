@@ -13,6 +13,7 @@ import {NotificationSampleComponent} from './notification/notification-sample.co
 import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {UnsavedChangesGuard} from '../../../lib/ng/unsaved-changes/unsaved-changes.guard';
+import {ToggleSampleComponent} from "./toggle/toggle-sample.component";
 import {FilterBoxSampleComponent} from './filter-box-sample/filter-box-sample.component';
 import {ColumnSampleComponent} from './column/column-sample.component';
 
@@ -53,6 +54,7 @@ const samplesRoutes: Routes = [
 			{path: 'validation/schema-validation', component: SchemaValidationSampleComponent},
 			{path: 'validation/unsaved-changes', component: UnsavedChangesSampleComponent, canDeactivate: [UnsavedChangesGuard]},
 			{path: 'column', component: ColumnSampleComponent},
+			{path: 'toggle', component: ToggleSampleComponent},
 		]
 	}
 ];

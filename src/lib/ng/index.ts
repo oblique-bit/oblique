@@ -16,6 +16,7 @@ import {UnsavedChangesModule} from './unsaved-changes';
 import {FilterBoxModule} from './filter-box';
 import {ScrollingModule} from './scrolling/scrolling.module';
 import {ColumnModule} from './column/column.module';
+import {ToggleModule} from "./toggle/toggle.module";
 
 export * from './datepicker';
 export * from './document-meta';
@@ -31,6 +32,7 @@ export * from './notification';
 export * from './schema-validation';
 export * from './spinner';
 export * from './scrolling';
+export * from './toggle';
 export * from './unsaved-changes';
 export * from './column';
 
@@ -50,6 +52,7 @@ const OBLIQUE_MODULES = [
 	SpinnerModule,
 	SchemaValidationModule,
 	ScrollingModule,
+	ToggleModule,
 	UnsavedChangesModule
 ];
 
@@ -70,6 +73,7 @@ const OBLIQUE_MODULES = [
 		SpinnerModule.forRoot(),
 		SchemaValidationModule.forRoot(),
 		ScrollingModule.forRoot(),
+		ToggleModule.forRoot(),
 		UnsavedChangesModule.forRoot()
 	],
 	exports: OBLIQUE_MODULES
