@@ -33,6 +33,14 @@
 				<li class="nav-item navbar-primary-col">
 					<ul class="nav nav-hover">
 						<li class="nav-item" role="presentation"
+							orMasterLayoutNavigationItem>
+							<a class="nav-link" href="" role="menuitem"
+							   [routerLink]="['/samples/column-layout']" routerLinkActive="active"
+							   orMasterLayoutNavigationToggle>
+								{{'i18n.routes.samples.column-layout.title' | translate}}
+							</a>
+						</li>
+						<li class="nav-item" role="presentation"
 						    orMasterLayoutNavigationItem>
 							<a class="nav-link" href="" role="menuitem"
 							   [routerLink]="['/samples/datepicker']" routerLinkActive="active"
@@ -110,14 +118,6 @@
 							   [routerLink]="['/samples/filter-box']" routerLinkActive="active"
 							   orMasterLayoutNavigationToggle>
 								{{'i18n.routes.samples.filterBox.title' | translate}}
-							</a>
-						</li>
-						<li class="nav-item" role="presentation"
-						    orMasterLayoutNavigationItem>
-							<a class="nav-link" href="" role="menuitem"
-							   [routerLink]="['/samples/column']" routerLinkActive="active"
-							   orMasterLayoutNavigationToggle>
-								{{'i18n.routes.samples.column.title' | translate}}
 							</a>
 						</li>
 					</ul>

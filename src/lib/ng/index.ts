@@ -1,8 +1,10 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 
+import {ColumnLayoutModule} from './column-layout/column-layout.module';
 import {DatepickerModule} from './datepicker';
 import {DocumentMetaModule} from './document-meta';
 import {ErrorMessagesModule} from './error-messages';
+import {FilterBoxModule} from './filter-box';
 import {FormControlStateModule} from './form-control-state';
 import {MasterLayoutModule} from './master-layout';
 import {MultiselectModule} from './multiselect';
@@ -11,12 +13,11 @@ import {NavigatorModule} from './navigator';
 import {NavTreeModule} from './nav-tree';
 import {NotificationModule} from './notification';
 import {SchemaValidationModule} from './schema-validation';
+import {ScrollingModule} from './scrolling/scrolling.module';
 import {SpinnerModule} from './spinner';
 import {UnsavedChangesModule} from './unsaved-changes';
-import {FilterBoxModule} from './filter-box';
-import {ScrollingModule} from './scrolling/scrolling.module';
-import {ColumnModule} from './column/column.module';
 
+export * from './column-layout';
 export * from './datepicker';
 export * from './document-meta';
 export * from './error-messages';
@@ -29,13 +30,12 @@ export * from './navigator';
 export * from './nav-tree';
 export * from './notification';
 export * from './schema-validation';
-export * from './spinner';
 export * from './scrolling';
+export * from './spinner';
 export * from './unsaved-changes';
-export * from './column';
 
 const OBLIQUE_MODULES = [
-	ColumnModule,
+	ColumnLayoutModule,
 	DatepickerModule,
 	DocumentMetaModule,
 	ErrorMessagesModule,
@@ -47,15 +47,15 @@ const OBLIQUE_MODULES = [
 	NavigatorModule,
 	NavTreeModule,
 	NotificationModule,
-	SpinnerModule,
 	SchemaValidationModule,
 	ScrollingModule,
+	SpinnerModule,
 	UnsavedChangesModule
 ];
 
 @NgModule({
 	imports: [
-		ColumnModule.forRoot(),
+		ColumnLayoutModule.forRoot(),
 		DatepickerModule.forRoot(),
 		DocumentMetaModule.forRoot(),
 		ErrorMessagesModule.forRoot(),
@@ -67,9 +67,9 @@ const OBLIQUE_MODULES = [
 		NavigatorModule.forRoot(),
 		NavTreeModule.forRoot(),
 		NotificationModule.forRoot(),
-		SpinnerModule.forRoot(),
 		SchemaValidationModule.forRoot(),
 		ScrollingModule.forRoot(),
+		SpinnerModule.forRoot(),
 		UnsavedChangesModule.forRoot()
 	],
 	exports: OBLIQUE_MODULES

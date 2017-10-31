@@ -10,9 +10,10 @@ import {ObliqueModule} from '../../../lib/ng/index';
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 import {SamplesRoutingModule} from './samples-routing.module';
 
-import {ColumnSampleComponent} from './column/column-sample.component';
+import {ColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
 import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {FormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
+import {FilterBoxSampleComponent, PatternFilterPipe} from './filter-box-sample/filter-box-sample.component';
 import {MasterLayoutSampleComponent} from './master-layout/master-layout-sample.component';
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
 import {NavigatorSampleModule} from './navigator-sample/navigator-sample.module';
@@ -22,8 +23,6 @@ import {NotificationSampleComponent} from './notification/notification-sample.co
 import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
-import {FilterBoxSampleComponent, PatternFilterPipe} from './filter-box-sample/filter-box-sample.component';
-
 
 @NgModule({
 	imports: [
@@ -39,7 +38,7 @@ import {FilterBoxSampleComponent, PatternFilterPipe} from './filter-box-sample/f
 		ReactiveFormsModule
 	],
 	declarations: [
-		ColumnSampleComponent,
+		ColumnLayoutSampleComponent,
 		DatepickerSampleComponent,
 		FormControlStateSampleComponent,
 		FilterBoxSampleComponent,

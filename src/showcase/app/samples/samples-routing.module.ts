@@ -3,7 +3,9 @@ import {Routes, RouterModule} from '@angular/router';
 
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 
+import {ColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
 import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
+import {FilterBoxSampleComponent} from './filter-box-sample/filter-box-sample.component';
 import {FormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
 import {MasterLayoutSampleComponent} from './master-layout/master-layout-sample.component';
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
@@ -13,13 +15,12 @@ import {NotificationSampleComponent} from './notification/notification-sample.co
 import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {UnsavedChangesGuard} from '../../../lib/ng/unsaved-changes/unsaved-changes.guard';
-import {FilterBoxSampleComponent} from './filter-box-sample/filter-box-sample.component';
-import {ColumnSampleComponent} from './column/column-sample.component';
 
 const samplesRoutes: Routes = [
 	{
 		path: 'samples',
 		children: [
+			{path: 'column-layout', component: ColumnLayoutSampleComponent},
 			{path: 'datepicker', component: DatepickerSampleComponent},
 			{path: 'filter-box', component: FilterBoxSampleComponent},
 			{
@@ -51,8 +52,7 @@ const samplesRoutes: Routes = [
 			},
 			{path: 'validation/form-control-state', component: FormControlStateSampleComponent},
 			{path: 'validation/schema-validation', component: SchemaValidationSampleComponent},
-			{path: 'validation/unsaved-changes', component: UnsavedChangesSampleComponent, canDeactivate: [UnsavedChangesGuard]},
-			{path: 'column', component: ColumnSampleComponent},
+			{path: 'validation/unsaved-changes', component: UnsavedChangesSampleComponent, canDeactivate: [UnsavedChangesGuard]}
 		]
 	}
 ];

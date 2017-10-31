@@ -34,6 +34,9 @@
       },
       "samples": {
         "title": "[it] Samples",
+        "column-layout": {
+          "title": "Column Layout"
+        },
         "datepicker": {
           "title": "Datepicker"
         },
@@ -212,6 +215,14 @@
         "searchPlaceholder": "Ricerca...",
         "defaultTitle": "Selezionare",
         "allSelected": "Tutti gli elementi sono stati selezionati."
+      },
+      "column": {
+        "left": {
+          "toggle": "[it] Toggle left column."
+        },
+        "right": {
+          "toggle": "[it] Toggle right column."
+        }
       }
     }
   }
