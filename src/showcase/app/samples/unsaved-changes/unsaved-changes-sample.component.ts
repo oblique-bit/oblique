@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {ChangeDetectionStrategy, Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {FormBuilder, FormGroup, NgModelGroup} from '@angular/forms';
 import {UnsavedChangesService} from '../../../../lib/ng/unsaved-changes/unsaved-changes.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes-sample-modal.component';
@@ -11,26 +11,22 @@ import {UnsavedChangesSampleModalComponent} from './unsaved-changes-sample-modal
 		.unsaved-changes .form-horizontal label {
 			text-align: right;
 		}
+
 		.unsaved-changes .tab-content {
 			padding: 15px;
 			border: 1px solid #ddd;
 			border-top-width: 0;
-		}
-		
-		.unsaved-changes > .row + .row,
-		 nbg-tabset + .row {
-			margin-top: 2rem;
 		}
 	`],
 	encapsulation: ViewEncapsulation.None,
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UnsavedChangesSampleComponent implements OnInit {
-	public standAloneReactive: FormGroup;
-	public nestedReactive: FormGroup;
-	public tabForm8Reactive: FormGroup;
-	public tabForm9Reactive: FormGroup;
-	public tabModels = {
+	standAloneReactive: FormGroup;
+	nestedReactive: FormGroup;
+	tabForm8Reactive: FormGroup;
+	tabForm9Reactive: FormGroup;
+	tabModels = {
 		standAloneTemplate: {},
 		nestedForm1: {},
 		nestedForm2: {},
@@ -38,11 +34,14 @@ export class UnsavedChangesSampleComponent implements OnInit {
 		tabForm1: {}
 	};
 
+	@ViewChild('form1') form1 = <NgModelGroup>{};
+	@ViewChild('form3') form3 = <NgModelGroup>{};
+	@ViewChild('form7') form7 = <NgModelGroup>{};
 
 
 	constructor(private modalService: NgbModal,
 				private formBuilder: FormBuilder,
-				public unsavedChangesService: UnsavedChangesService) {
+				private unsavedChangesService: UnsavedChangesService) {
 	}
 
 	ngOnInit() {
@@ -56,15 +55,9 @@ export class UnsavedChangesSampleComponent implements OnInit {
 		this.tabForm9Reactive = this.formBuilder.group({text: '', number: '', integer: '', date: ''});
 	}
 
-	reset() {
-		this.standAloneReactive.reset();
-	}
-
 	modal() {
 		this.modalService.open(UnsavedChangesSampleModalComponent, {
-			beforeDismiss: () => {
-				return this.unsavedChangesService.discardChanges('template');
-			}
-		})
+			beforeDismiss: () => this.unsavedChangesService.ignoreChanges(['template'])
+		});
 	}
 }

@@ -21,6 +21,7 @@ import {NavigatorSampleRoutingModule} from './navigator-sample/navigator-sample-
 import {NavTreeSampleComponent, NavTreeDetailSampleComponent} from './nav-tree/nav-tree-sample.component';
 import {NotificationSampleComponent} from './notification/notification-sample.component';
 import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
+import {ToggleSampleComponent} from "./toggle/toggle-sample.component";
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
 
@@ -50,6 +51,7 @@ import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-chan
 		NavTreeDetailSampleComponent,
 		NotificationSampleComponent,
 		SchemaValidationSampleComponent,
+		ToggleSampleComponent,
 		UnsavedChangesSampleComponent,
 		UnsavedChangesSampleModalComponent
 	],

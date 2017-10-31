@@ -35,24 +35,6 @@ describe('UnsavedChangesService', () => {
 		//expect(window.addEventListener).toHaveBeenCalledWith('beforeUnload', jasmine.any(Function));
 	});
 
-	describe('isFormDirty()', () => {
-		it('should return false, if the form is not watched', () => {
-			expect(unsavedChangesService.isFormDirty('test')).toBeFalsy();
-		});
-
-		it('should return true, if the form is dirty', () => {
-			const form: ControlContainer = {dirty: true} as ControlContainer;
-			unsavedChangesService.watch('test', form);
-			expect(unsavedChangesService.isFormDirty('test')).toBeTruthy();
-		});
-
-		it('should return false, if the form is not dirty', () => {
-			const form: ControlContainer = {dirty: false} as ControlContainer;
-			unsavedChangesService.watch('test', form);
-			expect(unsavedChangesService.isFormDirty('test')).toBeFalsy();
-		});
-	});
-
 	describe('listenTo()', () => {
 		let evtEmitter: EventEmitter<NgbTabChangeEvent>;
 		let evt: NgbTabChangeEvent;

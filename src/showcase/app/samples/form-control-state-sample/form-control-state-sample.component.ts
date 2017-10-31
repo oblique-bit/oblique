@@ -29,7 +29,6 @@ export class FormControlStateSampleComponent {
 			}),
 			email: ['', Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)],
 		});
-
 	}
 
 	check(form?: NgForm): void {

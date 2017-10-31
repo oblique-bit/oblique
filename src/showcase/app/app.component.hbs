@@ -6,12 +6,10 @@
 		  headerSticky=app.theme.header.sticky
 		  headerAnimate=app.theme.header.animate}}
 	{{#content "content"}}
-		<div class="application-content-viewport">
-			<or-notification></or-notification>
-			<div class="empty-layout">
-				<router-outlet></router-outlet>
-			</div>
-			<or-spinner></or-spinner>
+		<or-notification></or-notification>
+		<div class="empty-layout">
+			<router-outlet></router-outlet>
 		</div>
+		<or-spinner></or-spinner>
 	{{/content}}
 {{/extend}}

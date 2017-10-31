@@ -15,6 +15,7 @@ import {NotificationSampleComponent} from './notification/notification-sample.co
 import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {UnsavedChangesGuard} from '../../../lib/ng/unsaved-changes/unsaved-changes.guard';
+import {ToggleSampleComponent} from "./toggle/toggle-sample.component";
 
 const samplesRoutes: Routes = [
 	{
@@ -52,7 +53,8 @@ const samplesRoutes: Routes = [
 			},
 			{path: 'validation/form-control-state', component: FormControlStateSampleComponent},
 			{path: 'validation/schema-validation', component: SchemaValidationSampleComponent},
-			{path: 'validation/unsaved-changes', component: UnsavedChangesSampleComponent, canDeactivate: [UnsavedChangesGuard]}
+			{path: 'validation/unsaved-changes', component: UnsavedChangesSampleComponent, canDeactivate: [UnsavedChangesGuard]},
+			{path: 'toggle', component: ToggleSampleComponent}
 		]
 	}
 ];

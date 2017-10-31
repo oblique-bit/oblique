@@ -15,6 +15,7 @@ import {NotificationModule} from './notification';
 import {SchemaValidationModule} from './schema-validation';
 import {ScrollingModule} from './scrolling/scrolling.module';
 import {SpinnerModule} from './spinner';
+import {ToggleModule} from "./toggle/toggle.module";
 import {UnsavedChangesModule} from './unsaved-changes';
 
 export * from './column-layout';
@@ -32,6 +33,7 @@ export * from './notification';
 export * from './schema-validation';
 export * from './scrolling';
 export * from './spinner';
+export * from './toggle';
 export * from './unsaved-changes';
 
 const OBLIQUE_MODULES = [
@@ -50,6 +52,7 @@ const OBLIQUE_MODULES = [
 	SchemaValidationModule,
 	ScrollingModule,
 	SpinnerModule,
+	ToggleModule,
 	UnsavedChangesModule
 ];
 
@@ -70,6 +73,7 @@ const OBLIQUE_MODULES = [
 		SchemaValidationModule.forRoot(),
 		ScrollingModule.forRoot(),
 		SpinnerModule.forRoot(),
+		ToggleModule.forRoot(),
 		UnsavedChangesModule.forRoot()
 	],
 	exports: OBLIQUE_MODULES

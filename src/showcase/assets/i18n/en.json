@@ -70,6 +70,9 @@
         "formControlState": {
           "title": "Form Control State"
         },
+        "toggle": {
+          "title": "Toggles"
+        },
         "validation": {
           "title": "Validation",
           "schemaValidation": {

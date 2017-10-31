@@ -12,6 +12,7 @@ export class UnsavedChangesService {
 
 	constructor(private translateService: TranslateService) {
 		window.addEventListener('beforeunload', e => this.onUnload(e));
+		window.addEventListener('unload', e => this.onUnload(e));
 	}
 
 	watch(formId: string, form: ControlContainer): void {
@@ -26,7 +27,7 @@ export class UnsavedChangesService {
 		let id = ngbTabset.tabs.first.id;
 		if (!this.listener[id]) {
 			this.listener[id] = ngbTabset.tabChange.subscribe((event: NgbTabChangeEvent): void => {
-				if (!this.discardChanges(event.activeId)) {
+				if (!this.ignoreChanges([event.activeId])) {
 					event.preventDefault();
 				}
 			});
@@ -41,17 +42,12 @@ export class UnsavedChangesService {
 		}
 	}
 
-	isFormDirty(formId: string): boolean {
-		let form = this.formList[formId];
-		return form && form.dirty;
-	}
-
 	canDeactivate(): boolean {
 		return this.hasPendingChanges() ? window.confirm(this.message()) : true;
 	}
 
-	discardChanges(formId: string): boolean {
-		return this.isFormDirty(formId) ? window.confirm(this.message()) : true;
+	ignoreChanges(formIds: string[]): boolean {
+		return this.hasPendingChanges(formIds) ? window.confirm(this.message()) : true;
 	}
 
 	private onUnload(event: BeforeUnloadEvent) {
@@ -65,13 +61,10 @@ export class UnsavedChangesService {
 		return null;
 	}
 
-	private hasPendingChanges(): boolean {
-		for (const formId in this.formList) {
-			if (this.formList.hasOwnProperty(formId) && this.formList[formId].dirty) {
-				return true;
-			}
-		}
-		return false;
+	private hasPendingChanges(ids: string[] = Object.keys(this.formList)): boolean {
+		return Object.keys(this.formList).filter(
+			(formId) => ids.indexOf(formId) > -1 && this.formList[formId].dirty
+		).length > 0;
 	}
 
 	private message(): string {
