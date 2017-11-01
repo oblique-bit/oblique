@@ -64,7 +64,7 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "ngx-webstorage": "^1.8.0",
-    "oblique-ui": "^2.0.0-RC.2-1",
+    "oblique-ui": "2.0.0-RC.2-1",
     "popper.js": "^1.12.6",
     "rxjs": "^5.5.1",
     "zone.js": "^0.8.18"
