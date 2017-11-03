@@ -6,7 +6,7 @@ import {ColumnPanelDirective} from "./column-panel.directive";
 	exportAs: 'orColumnLayout',
 	template: `
 		<div class="column-layout">
-			<div class="column-left hidden-print" role="complementary"
+			<div class="column-left d-print-none" role="complementary"
 				 #columnLeft="orColumnPanel" orColumnPanel *ngIf="left">
 				<button type="button" class="column-toggle-left" orColumnToggle>
 					<span class="sr-only">{{'i18n.oblique.column.left.toggle' | translate}}</span>

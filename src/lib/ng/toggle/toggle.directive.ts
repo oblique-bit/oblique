@@ -1,7 +1,8 @@
 import {Directive, HostBinding, HostListener} from '@angular/core';
 
 @Directive({
-	selector: '.toggle',
+	selector: '[orToggle]',
+	exportAs: 'orToggle'
 })
 export class ToggleDirective {
 	@HostBinding('class.show') active = false;
