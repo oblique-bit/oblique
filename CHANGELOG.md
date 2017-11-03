@@ -1,5 +1,37 @@
 ### ObliqueReactive
 
+<a name="2.0.0-RC.2-1"></a>
+#### [2.0.0-RC.2-1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.2-1) (2017-11-01)
+
+##### Bug Fixes
+* **formControlState:**
+	- `name` attribute is not mandatory. Either `ngModel`, `ngModelChange` or `formControlName` is ([7abce66](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7abce66))
+	- for reactive forms, allow `pristineValidation` and set `control-mandatory` on page initialisation ([19d5f5c](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/19d5f5c))
+	- remove `has-error` class on form reset ([d1c605f](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d1c605f))
+* **schemaValidation:**
+	- never pass null to ajv ([afc7468](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/afc7468), [4353179](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/4353179))
+	- prevent multiple compile with same schema ([84c9dac](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/84c9dac))
+
+##### Code Refactoring
+* **navigator:** rename `orNavigator` into `or-navigator` ([0cb9f47](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0cb9f47))
+* **scss:** remove module SCSS resources and cleanup showcase ones ([d2f3383](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d2f3383))
+
+##### Features
+* **column-layout:** dispose content within collapsible/expansible columns using `ColumnLayoutComponent` (or `ColumnPanelDirective` & `ColumnPanelDirective`) ([4348d51](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/4348d51))
+* **filterBox:** add `size`, `disabled` and `readonly` attributes ([847d3a7](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/847d3a7))
+* **formControlState:** add reactive form sample ([226d0d5](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/226d0d5))
+* **schemaValidation:**
+	- add `getValidator` function for reactive forms ([d3ff5f3](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d3ff5f3))
+	- add reactive form to the showcase ([1e4afde](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/1e4afde))
+	- move Draft06 transformation into a decorator ([75a8b8b](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/75a8b8b))
+* **toggle:** add `ToggleDirective` for icon toggle ([dc6f8e8](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/dc6f8e8))
+* **toolchain:** add npm script & Gulp task for npm linking and watching distribution files ([8ed5c89](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/8ed5c89))
+* **unsavedChangesService:** expose `discardChanges` function ([3e84226](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/3e84226))
+
+##### BREAKING CHANGES
+* **navigator:** rename `orNavigator` into `or-navigator`
+* **scss:** remove any import of ObliqueReactive CSS styles (mainly in your Angular CLI configuration) as they are now bundled with components.
+
 <a name="oblique-reactive-2.0.0-RC.2"></a>
 #### [2.0.0-RC.2](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.2) (2017-08-04)
 
