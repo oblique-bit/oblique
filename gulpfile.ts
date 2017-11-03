@@ -182,7 +182,6 @@ gulp.task('dist-compile', (done) => {
 		if (e) {
 			console.log(e);
 		}
-		del('./dist/waste');
 		done();
 	}).stdout.on('data', (data) => {
 		console.log(data);

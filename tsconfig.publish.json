@@ -18,8 +18,7 @@
     "src/lib/index.ts"
   ],
   "angularCompilerOptions": {
-    "strictMetadataEmit": true,
-    "genDir": "./dist/waste"
+    "strictMetadataEmit": true
   }
 }
 
