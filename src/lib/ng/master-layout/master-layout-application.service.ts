@@ -1,5 +1,4 @@
 import {Injectable, Inject} from '@angular/core';
-import {LocalStorage} from 'ngx-webstorage';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 
 import {MasterLayoutApplicationDirective} from './master-layout-application.directive';
@@ -10,8 +9,7 @@ import {MasterLayoutApplicationDirective} from './master-layout-application.dire
 @Injectable()
 export class MasterLayoutApplicationService {
 
-	@LocalStorage()
-	public userLang: string;
+	public userLang: string = localStorage.getItem('oblique:lang');
 
 	public applicationDirective: MasterLayoutApplicationDirective;
 
@@ -23,6 +21,7 @@ export class MasterLayoutApplicationService {
 		this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
 			// Ensure local value remains in sync:
 			this.userLang = event.lang;
+			localStorage.setItem('oblique:lang', this.userLang);
 		});
 
 		// Define default/fallback lang:

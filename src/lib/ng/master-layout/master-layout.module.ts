@@ -2,7 +2,6 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TranslateModule} from '@ngx-translate/core';
 import {MasterLayoutApplicationService} from './master-layout-application.service';
-import {Ng2Webstorage} from 'ngx-webstorage';
 import {MasterLayoutApplicationDirective} from './master-layout-application.directive';
 import {MasterLayoutHeaderDirective} from './master-layout-header.directive';
 import {MasterLayoutHeaderService} from './master-layout-header.service';
@@ -15,7 +14,6 @@ import {MasterLayoutNavigationDirective} from './master-layout-navigation.direct
 	imports: [
 		CommonModule,
 		TranslateModule,
-		Ng2Webstorage.forRoot({prefix: 'oblique'})
 	],
 	declarations: [
 		MasterLayoutApplicationDirective,
