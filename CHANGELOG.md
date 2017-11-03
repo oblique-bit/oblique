@@ -3,6 +3,15 @@
 <a name="2.0.0-RC.2-1"></a>
 #### [2.0.0-RC.2-1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.2-1) (2017-11-01)
 
+##### Dependencies updates
+* **ObliqueUI:** 2.0.0-RC.2-1
+* **Bootstrap:** 4.0.0-beta.2
+* **Angular:** 4.4.6
+* **rxjs:** 5.5.1
+* **ajv:** 5.3.0
+
+(see [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/package.json?at=2.0.0-RC.2-1) for the full list of dependencies)
+
 ##### Bug Fixes
 * **formControlState:**
 	- `name` attribute is not mandatory. Either `ngModel`, `ngModelChange` or `formControlName` is ([7abce66](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7abce66))
