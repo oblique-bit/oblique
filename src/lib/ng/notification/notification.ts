@@ -1,15 +1,24 @@
 export interface Notification {
 	messageKey: string
-	title?: string
+	messageParams?: {[key: string]: any}
+	titleKey?: string
+	titleParams?: {[key: string]: any}
 	id?: number
 	type?: NotificationType;
 	sticky?: boolean
 	timeout?: number
 }
 
+export interface KeyWithParams {
+	key: string;
+	params: {[key: string]: any}
+}
+
 export class Notification implements Notification {
 	messageKey: string;
-	title? = '';
+	messageParams?: {[key: string]: any};
+	titleKey? = '';
+	titleParams?: {[key: string]: any};
 	id?: number;
 	type? = NotificationType.DEFAULT;
 	sticky? = false;
@@ -23,10 +32,10 @@ export class Notification implements Notification {
 	$state: string = null;
 
 	constructor(
-		messageKey: string,
+		message: string | KeyWithParams,
 		type = NotificationType.DEFAULT,
 		sticky = false) {
-		this.messageKey = messageKey;
+		this.messageKey = (<KeyWithParams>message).key || <string>message;
 		this.type = type;
 		this.sticky = sticky;
 	}

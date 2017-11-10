@@ -17,9 +17,9 @@ import {animate, keyframes, state, style, transition, trigger} from '@angular/an
 					</button>
 					<h4>
 						<span *ngIf="!notification.title">{{("i18n.notification.type." + notification.type) | translate}}</span>
-						<span>{{notification.title | translate}}</span>
+						<span>{{notification.titleKey | translate:notification.titleParams}}</span>
 					</h4>
-					<p>{{notification.messageKey | translate}}</p>
+					<p>{{notification.messageKey | translate:notification.messageParams}}</p>
 				</div>
 			</div>
 		</div>

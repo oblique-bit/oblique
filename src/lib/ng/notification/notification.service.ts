@@ -1,5 +1,5 @@
 import {Injectable, EventEmitter} from '@angular/core';
-import {Notification, NotificationEvent, NotificationType} from './notification';
+import {Notification, NotificationEvent, KeyWithParams, NotificationType} from './notification';
 import {NotificationConfig} from './notification-config';
 
 /**
@@ -43,18 +43,20 @@ export class NotificationService {
 	 * An additional `NotificationConfig` can also be provided.
 	 *
 	 * @see broadcast
-	 * @param {string} messageKey
-	 * @param {string} title
+	 * @param {string | KeyWithParams} message
+	 * @param {string | KeyWithParams} title
 	 * @param {NotificationType} type
 	 * @param {NotificationConfig} config
 	 * @returns {Notification}
 	 */
-	public send(messageKey: string, title: string = '', type = NotificationType.DEFAULT, config = this.config): Notification {
+	public send(message: string | KeyWithParams, title: string | KeyWithParams = '', type = NotificationType.DEFAULT, config = this.config): Notification {
 		return this.broadcast(config.channel, {
-			messageKey: messageKey,
+			messageKey: (<KeyWithParams>message).key || <string>message,
+			messageParams: (<KeyWithParams>message).params,
 			sticky: config.sticky,
 			timeout: config.timeout,
-			title: title,
+			titleKey: (<KeyWithParams>title).key || title,
+			titleParams: (<KeyWithParams>title).params,
 			type: type
 		} as Notification);
 	}
@@ -63,65 +65,65 @@ export class NotificationService {
 	 * Sends a _default_ notification.
 	 *
 	 * @see send
-	 * @param {string} messageKey
-	 * @param {string} title
+	 * @param {string | KeyWithParams} message
+	 * @param {string | KeyWithParams} title
 	 * @param {NotificationConfig} config
 	 * @returns {Notification}
 	 */
-	public default(messageKey: string, title = '', config = this.config): Notification {
-		return this.send(messageKey, title, NotificationType.DEFAULT, config);
+	public default(message: string | KeyWithParams, title: string | KeyWithParams = '', config = this.config): Notification {
+		return this.send(message, title, NotificationType.DEFAULT, config);
 	}
 
 	/**
 	 * Sends an _info_ notification.
 	 *
 	 * @see send
-	 * @param {string} messageKey
-	 * @param {string} title
+	 * @param {string | KeyWithParams} message
+	 * @param {string | KeyWithParams} title
 	 * @param {NotificationConfig} config
 	 * @returns {Notification}
 	 */
-	public info(messageKey: string, title = '', config = this.config): Notification {
-		return this.send(messageKey, title, NotificationType.INFO, config);
+	public info(message: string | KeyWithParams, title: string | KeyWithParams = '', config = this.config): Notification {
+		return this.send(message, title, NotificationType.INFO, config);
 	}
 
 	/**
 	 * Sends a _success_ notification.
 	 *
 	 * @see send
-	 * @param {string} messageKey
-	 * @param {string} title
+	 * @param {string | KeyWithParams} message
+	 * @param {string | KeyWithParams} title
 	 * @param {NotificationConfig} config
 	 * @returns {Notification}
 	 */
-	public success(messageKey: string, title = '', config = this.config): Notification {
-		return this.send(messageKey, title, NotificationType.SUCCESS, config);
+	public success(message: string | KeyWithParams, title: string | KeyWithParams = '', config = this.config): Notification {
+		return this.send(message, title, NotificationType.SUCCESS, config);
 	}
 
 	/**
 	 * Sends a _warning_ notification.
 	 *
 	 * @see send
-	 * @param {string} messageKey
-	 * @param {string} title
+	 * @param {string | KeyWithParams} message
+	 * @param {string | KeyWithParams} title
 	 * @param {NotificationConfig} config
 	 * @returns {Notification}
 	 */
-	public warning(messageKey: string, title = '', config = this.config): Notification {
-		return this.send(messageKey, title, NotificationType.WARNING, config);
+	public warning(message: string | KeyWithParams, title: string | KeyWithParams = '', config = this.config): Notification {
+		return this.send(message, title, NotificationType.WARNING, config);
 	}
 
 	/**
 	 * Sends an _error_ notification.
 	 *
 	 * @see send
-	 * @param {string} messageKey
-	 * @param {string} title
+	 * @param {string | KeyWithParams} message
+	 * @param {string | KeyWithParams} title
 	 * @param {NotificationConfig} config
 	 * @returns {Notification}
 	 */
-	public error(messageKey: string, title = '', config = this.config): Notification {
-		return this.send(messageKey, title, NotificationType.ERROR, config);
+	public error(message: string | KeyWithParams, title: string | KeyWithParams = '', config = this.config): Notification {
+		return this.send(message, title, NotificationType.ERROR, config);
 	}
 
 	/**
@@ -137,12 +139,6 @@ export class NotificationService {
 
 	/**
 	 * Broadcasts an event to clear all notifications from any available.
-	 *
-	 * @see send
-	 * @param {string} messageKey
-	 * @param {string} title
-	 * @param {NotificationConfig} config
-	 * @returns {Notification}
 	 */
 	public clearAll() {
 		this.events.emit(null);
