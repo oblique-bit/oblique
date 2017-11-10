@@ -104,7 +104,7 @@ describe('NotificationComponent', () => {
 			notificationConfig.channel,
 			{
 				messageKey: message,
-				title: title,
+				titleKey: title,
 				sticky: false
 			} as Notification
 		);
@@ -121,11 +121,11 @@ describe('NotificationComponent', () => {
 
 
 	it('should *not* close a _sticky_ notification after `timeout` is reached', fakeAsync(() => {
-		let notification = notificationService.broadcast(
+		notificationService.broadcast(
 			notificationConfig.channel,
 			{
 				messageKey: message,
-				title: title,
+				titleKey: title,
 				sticky: true
 			} as Notification
 		);

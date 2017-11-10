@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 
-import {TestBed, inject, tick, fakeAsync} from '@angular/core/testing';
+import {TestBed, inject} from '@angular/core/testing';
 import {NotificationService} from './notification.service';
 import {NotificationEvent, NotificationType} from './notification';
 import {NotificationConfig} from './notification-config';
@@ -46,7 +46,7 @@ describe('NotificationService', () => {
 			expect(notificationService.broadcast).toHaveBeenCalled();
 			expect(notificationEvent.channel).toBe(notificationConfig.channel);
 			expect(notificationEvent.notification.messageKey).toBe(message);
-			expect(notificationEvent.notification.title).toBe(title);
+			expect(notificationEvent.notification.titleKey).toBe(title);
 		});
 
 		it('should broadcast a notification with a custom NotificationConfig', () => {
@@ -59,7 +59,7 @@ describe('NotificationService', () => {
 			expect(notificationEvent.channel).toBe('test');
 			expect(notificationEvent.notification.type).toBe(NotificationType.SUCCESS);
 			expect(notificationEvent.notification.messageKey).toBe(message);
-			expect(notificationEvent.notification.title).toBe(title);
+			expect(notificationEvent.notification.titleKey).toBe(title);
 			expect(notificationEvent.notification.timeout).toBe(42);
 			expect(notificationEvent.notification.sticky).toBe(true);
 		});
