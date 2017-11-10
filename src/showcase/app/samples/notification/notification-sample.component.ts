@@ -8,7 +8,8 @@ import {NotificationConfig} from '../../../../lib/ng/notification/notification-c
 	templateUrl: './notification-sample.component.html'
 })
 export class NotificationSampleComponent {
-
+	messageWithParams = false;
+	titleWithParams = false;
 	appChannel: string;
 	sampleChannel = 'demo';
 	variants = NotificationType.VALUES;
@@ -16,8 +17,22 @@ export class NotificationSampleComponent {
 	// Selection:
 	channel = this.sampleChannel;
 	variant = NotificationType.DEFAULT;
-	title = 'Well done!';
-	message = 'You successfully sent your first notification with ObliqueReactive :)';
+	title = {
+		text: 'Well done!',
+		key: 'i18n.notification.sampleTitle',
+		params: {
+			title: 'title',
+			parameters: 'parameters'
+		}
+	};
+	message = {
+		text: 'You successfully sent your first notification with ObliqueReactive :)',
+		key: 'i18n.notification.sampleMessage',
+		params: {
+			message: 'message',
+			parameters: 'parameters'
+		}
+	};
 	sticky = false;
 	timeout = 2500;
 
@@ -33,21 +48,23 @@ export class NotificationSampleComponent {
 			timeout: this.timeout
 		} as NotificationConfig;
 
+		const message = this.messageWithParams ? {key: this.message.key, params: this.message.params} : this.message.text;
+		const title = this.titleWithParams ? {key: this.title.key, params: this.title.params} : this.title.text;
 		switch (this.variant) {
 			case NotificationType.INFO:
-				this.notificationService.info(this.message, this.title, config);
+				this.notificationService.info(message, title, config);
 				break;
 			case NotificationType.SUCCESS:
-				this.notificationService.success(this.message, this.title, config);
+				this.notificationService.success(message, title, config);
 				break;
 			case NotificationType.WARNING:
-				this.notificationService.warning(this.message, this.title, config);
+				this.notificationService.warning(message, title, config);
 				break;
 			case NotificationType.ERROR:
-				this.notificationService.error(this.message, this.title, config);
+				this.notificationService.error(message, title, config);
 				break;
 			default:
-				this.notificationService.default(this.message, this.title, config);
+				this.notificationService.default(message, title, config);
 				break;
 		}
 	}

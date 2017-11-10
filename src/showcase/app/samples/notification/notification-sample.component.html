@@ -16,20 +16,78 @@
 				<div class="card-body">
 					<fieldset>
 						<legend>Mandatory parameter</legend>
-						<div class="form-group">
+						<div class="btn-group btn-group-sm" ngbRadioGroup name="messageWithParams" [(ngModel)]="messageWithParams">
+							<label ngbButtonLabel class="btn-primary">
+								<input ngbButton type="radio" [value]="false"> Simple text
+							</label>
+							<label ngbButtonLabel class="btn-primary">
+								<input ngbButton type="radio" [value]="true"> Translation key with parameters
+							</label>
+						</div>
+						<div class="form-group" *ngIf="!messageWithParams">
 							<label for="or-notification-message" class="form-control-label">Message</label>
-							<textarea [(ngModel)]="message" rows="3"
-							          id="or-notification-message" class="form-control"
-							          placeholder="Notification message..."></textarea>
+							<textarea [(ngModel)]="message.text" rows="3"
+									  id="or-notification-message" class="form-control"
+									  placeholder="Notification message..."></textarea>
+						</div>
+						<div *ngIf="messageWithParams" class="row">
+							<div class="form-group col-12">
+								<label for="or-notification-translation-key" class="form-control-label">Message key</label>
+								<input [(ngModel)]="message.key" type="text" disabled
+									   id="or-notification-translation-key" class="form-control"
+									   placeholder="Notification title...">
+								<p class="help-block" ngNonBindable>This {{message}} do accepts 2 {{parameters}}.</p>
+							</div>
+							<div class="form-group col">
+								<label for="or-notification-translation-params-message" class="form-control-label">"message" parameter</label>
+								<input [(ngModel)]="message.params.message" type="text"
+									   id="or-notification-translation-params-message" class="form-control"
+									   placeholder="Notification title...">
+							</div>
+							<div class="form-group col">
+								<label for="or-notification-translation-params-parameters" class="form-control-label">"parameters" parameter</label>
+								<input [(ngModel)]="message.params.parameters" type="text"
+									   id="or-notification-translation-params-parameters" class="form-control"
+									   placeholder="Notification title...">
+							</div>
 						</div>
 					</fieldset>
 					<fieldset>
 						<legend>Optional parameters</legend>
-						<div class="form-group">
+						<div class="btn-group btn-group-sm" ngbRadioGroup name="titleWithParams" [(ngModel)]="titleWithParams">
+							<label ngbButtonLabel class="btn-primary">
+								<input ngbButton type="radio" [value]="false"> Simple key
+							</label>
+							<label ngbButtonLabel class="btn-primary">
+								<input ngbButton type="radio" [value]="true"> Translation key with parameters
+							</label>
+						</div>
+						<div class="form-group" *ngIf="!titleWithParams">
 							<label for="or-notification-title" class="form-control-label">Title</label>
-							<input [(ngModel)]="title" type="text"
+							<input [(ngModel)]="title.text" type="text"
 							       id="or-notification-title" class="form-control"
 							       placeholder="Notification title...">
+						</div>
+						<div *ngIf="titleWithParams" class="row">
+							<div class="form-group col-12">
+								<label for="or-notification-title-translation-key" class="form-control-label">Message key</label>
+								<input [(ngModel)]="title.key" type="text" disabled
+									   id="or-notification-title-translation-key" class="form-control"
+									   placeholder="Notification title...">
+								<p class="help-block" ngNonBindable>This {{title}} do accepts 2 {{parameters}}.</p>
+							</div>
+							<div class="form-group col">
+								<label for="or-notification-title-translation-params-message" class="form-control-label">"title" parameter</label>
+								<input [(ngModel)]="title.params.title" type="text"
+									   id="or-notification-title-translation-params-message" class="form-control"
+									   placeholder="Notification title...">
+							</div>
+							<div class="form-group col">
+								<label for="or-notification-title-translation-params-parameters" class="form-control-label">"parameters" parameter</label>
+								<input [(ngModel)]="title.params.parameters" type="text"
+									   id="or-notification-title-translation-params-parameters" class="form-control"
+									   placeholder="Notification title...">
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="or-notification-channel" class="form-control-label">Channel</label>

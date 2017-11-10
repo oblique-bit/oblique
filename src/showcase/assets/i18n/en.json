@@ -141,6 +141,8 @@
       }
     },
     "notification": {
+      "sampleMessage": "This {{message}} do accepts 2 {{parameters}}.",
+      "sampleTitle": "This {{title}} do accepts 2 {{parameters}}.",
       "type": {
         "default": "",
         "info": "Info",
