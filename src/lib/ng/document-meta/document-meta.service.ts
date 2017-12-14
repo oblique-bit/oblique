@@ -4,9 +4,9 @@ import {Title} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
 import {DOCUMENT} from '@angular/common';
 
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/operator/withLatestFrom';
+import {filter} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
+import {mergeMap} from 'rxjs/operators';
 
 /**
  * DocumentMetaService - Service for updating document metadata
@@ -38,22 +38,22 @@ export class DocumentMetaService {
 		this.translate.onLangChange.subscribe(this.updateMetaInformation.bind(this));
 
 		// Subscribe to NavigationEnd events and handle current activated route:
-		router.events
-			.filter(event => event instanceof NavigationEnd)
-			.map(() => this.activatedRoute)
-			.map(route => {
+		router.events.pipe(
+			filter(event => event instanceof NavigationEnd),
+			map(() => this.activatedRoute),
+			map(route => {
 				while (route.firstChild) {
 					route = route.firstChild;
 				}
 				return route;
-			})
-			.filter(route => route.outlet === 'primary')
-			.mergeMap(route => route.data)
-			.subscribe((data) => {
-				this.currentMetaInformation.title = data.title;
-				this.currentMetaInformation.description = data.description || this.description;
-				this.updateMetaInformation();
-			});
+			}),
+			filter(route => route.outlet === 'primary'),
+			mergeMap(route => route.data)
+		).subscribe((data) => {
+			this.currentMetaInformation.title = data.title;
+			this.currentMetaInformation.description = data.description || this.description;
+			this.updateMetaInformation();
+		});
 	}
 
 	/**

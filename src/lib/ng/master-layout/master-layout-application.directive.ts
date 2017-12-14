@@ -2,8 +2,9 @@ import {Directive, ElementRef, HostBinding} from '@angular/core';
 import {MasterLayoutApplicationService} from './master-layout-application.service';
 import {Router, NavigationEnd, ActivatedRoute} from '@angular/router';
 
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/mergeMap';
+import {filter} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
+import {mergeMap} from 'rxjs/operators';
 
 @Directive({
 	selector: '[orMasterLayoutApplication]',
@@ -29,23 +30,23 @@ export class MasterLayoutApplicationDirective {
 		this.noNavigation = this.defaultNoNavigation = this.elementRef.nativeElement.classList.contains('no-navigation');
 		this.applicationFixed = this.defaultApplicationFixed = this.elementRef.nativeElement.classList.contains('application-fixed');
 
-		this.router.events
-			.filter(event => event instanceof NavigationEnd)
-			.map(() => this.activatedRoute)
-			.map(route => {
+		this.router.events.pipe(
+			filter(event => event instanceof NavigationEnd),
+			map(() => this.activatedRoute),
+			map(route => {
 				while (route.firstChild) {
 					route = route.firstChild;
 				}
 				return route;
-			})
-			.filter(route => route.outlet === 'primary')
-			.mergeMap(route => route.data)
-			.subscribe((data) => {
-				let masterLayout = data.masterLayout || {};
+			}),
+			filter(route => route.outlet === 'primary'),
+			mergeMap(route => route.data)
+		).subscribe((data) => {
+			let masterLayout = data.masterLayout || {};
 
-				this.hasCover = masterLayout.hasCover !== undefined ? masterLayout.hasCover : this.defaultHasCover;
-				this.noNavigation = masterLayout.noNavigation !== undefined ? masterLayout.noNavigation : this.defaultNoNavigation;
-				this.applicationFixed = masterLayout.applicationFixed !== undefined ? masterLayout.applicationFixed : this.defaultApplicationFixed;
-			});
+			this.hasCover = masterLayout.hasCover !== undefined ? masterLayout.hasCover : this.defaultHasCover;
+			this.noNavigation = masterLayout.noNavigation !== undefined ? masterLayout.noNavigation : this.defaultNoNavigation;
+			this.applicationFixed = masterLayout.applicationFixed !== undefined ? masterLayout.applicationFixed : this.defaultApplicationFixed;
+		});
 	}
 }

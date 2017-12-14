@@ -5,7 +5,7 @@ import {ActivatedRoute, Params, Router, UrlSerializer} from '@angular/router';
 import {NavTreeItemModel} from '../../../../lib/ng/nav-tree/nav-tree-item.model';
 import {NavTreeComponent} from '../../../../lib/ng/nav-tree/nav-tree.component';
 
-import 'rxjs/operator/merge';
+import {merge} from 'rxjs/operators';
 
 @Component({
 	selector: 'nav-tree-sample',
@@ -60,9 +60,10 @@ export class NavTreeDetailSampleComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.route.params.merge(this.route.fragment)
-			.subscribe(() => {
-				this.routing = this.router.routerState.snapshot.url;
-			});
+		this.route.params.pipe(
+			merge(this.route.fragment)
+		).subscribe(() => {
+			this.routing = this.router.routerState.snapshot.url;
+		});
 	}
 }

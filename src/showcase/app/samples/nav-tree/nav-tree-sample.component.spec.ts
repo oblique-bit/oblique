@@ -12,6 +12,8 @@ import {NavTreeComponent} from '../../../../lib/ng/nav-tree/nav-tree.component';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 
+import 'rxjs/add/observable/of';
+
 describe('NavTreeSampleComponent', () => {
 	let component: NavTreeSampleComponent;
 	let fixture: ComponentFixture<NavTreeSampleComponent>;
