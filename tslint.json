@@ -27,7 +27,7 @@
     "member-access": false,
     "member-ordering": [
       true,
-      {"order": "fields-first"}
+      {"order": "instance-sandwich"}
     ],
     "no-arg": true,
     "no-bitwise": true,
