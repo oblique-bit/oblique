@@ -8,7 +8,7 @@ import {
 
 const navigatorSampleRoutes: Routes = [
 	{
-		path: 'navigator',
+		path: 'samples/navigator',
 		component: NavigatorSampleComponent,
 		children: [
 			{

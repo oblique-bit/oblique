@@ -10,7 +10,7 @@ export class NavigatorSampleComponent {
 
 @Component({
 	template: `	<span class="sample-node fa fa-chevron-right"></span>
-				<a class="thumbnail well" [routerLink]="['/navigator/1']">Child state 1</a>
+				<a class="thumbnail well" [routerLink]="['/samples/navigator/1']">Child state 1</a>
 				<router-outlet></router-outlet>`
 })
 export class ChildState1Component {
@@ -19,7 +19,7 @@ export class ChildState1Component {
 
 @Component({
 	template: `<span class="sample-node fa fa-chevron-right"></span>
-				<a class="thumbnail well" [routerLink]="['/navigator/1/1']">Child state 1.1</a>
+				<a class="thumbnail well" [routerLink]="['/samples/navigator/1/1']">Child state 1.1</a>
 				<router-outlet></router-outlet>`,
 })
 export class ChildState11Component {
