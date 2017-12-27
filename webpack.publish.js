@@ -1,3 +1,12 @@
+var webpack = require('webpack'),
+	pkg = require('./package.json'),
+	banner = function () { // Lazy evaluation as interpolated values may have been updated between tasks!
+		return "\r * " + pkg.title + " - v" + pkg.version
+			+ "\r * " + pkg.homepage
+			+ "\r * Copyright (c) " + new Date().getFullYear() + " " + pkg.organization.name +" ("+ pkg.organization.url + ")"
+			+ "\r";
+	};
+
 module.exports = {
 	entry: './src/lib/index.ts',
 	output: {
@@ -5,13 +14,14 @@ module.exports = {
 		library: 'oblique-reactive',
 		libraryTarget: 'umd'
 	},
+	plugins: [new webpack.optimize.UglifyJsPlugin(), new webpack.BannerPlugin(banner())],
 	devtool: 'source-map',
 
 	externals: [
 		{
 			'@angular/core': ngExternal('core'),
 			'@angular/common': ngExternal('common'),
-			'@angular/forms': ngExternal('forms'),
+			'@angular/forms': ngExternal('forms')
 		},
 		rxjsExternal,
 		'@ngx-translate/core', //TODO: Modification needed?
@@ -40,7 +50,7 @@ module.exports = {
 				test: /\.(html|css)$/,
 				loader: 'raw-loader',
 				exclude: /\.async\.(html|css)$/
-			},
+			}
 		]
 	}
 };
