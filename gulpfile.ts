@@ -19,16 +19,7 @@ let del = require('del'),
 	gulpFile = require('gulp-file'),
 
 	// Project-specific:
-	project = require('./project.conf'),
 	pkg = require('./package.json'),
-	banner = function () { // Lazy evaluation as interpolated values may have been updated between tasks!
-		let lb = '\r';
-		return `/*!${
-			lb} * ${pkg.title} - v${pkg.version}${
-			lb} * ${pkg.homepage}${
-			lb} * Copyright (c) 2017 ${pkg.organization.name} (${pkg.organization.url})${
-			lb} */${lb}${lb}`;
-	},
 	paths = {
 		src: 'src/',
 		lib: 'src/lib/',
