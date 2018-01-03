@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {SchemaValidationDirective} from './schema-validation.directive';
 import {SchemaValidateDirective} from './schema-validator';
 import {SchemaRequiredDirective} from './schema-required.directive';
+import {SchemaValidationService} from './schema-validation.service';
 
 @NgModule({
 	imports: [
@@ -14,7 +15,8 @@ import {SchemaRequiredDirective} from './schema-required.directive';
 export class SchemaValidationModule {
 	static forRoot(): ModuleWithProviders {
 		return {
-			ngModule: SchemaValidationModule
+			ngModule: SchemaValidationModule,
+			providers: [SchemaValidationService]
 		};
 	}
 }
