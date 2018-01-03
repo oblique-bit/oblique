@@ -9,9 +9,11 @@ import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 	template: `
 		<div class="input-group">
 			<ng-content></ng-content>
-			<button type="button" class="input-group-addon" [disabled]="disabled" (click)="ngbDatePicker.toggle()">
-				<span class="fa fa-calendar"></span>
-			</button>
+			<div class="input-group-append">
+				<button type="button" class="btn btn-default" [disabled]="disabled" (click)="ngbDatePicker.toggle()">
+					<span class="fa fa-calendar"></span>
+				</button>
+			</div>
 		</div>`,
 	// Ensure CSS styles are added to global styles to ensure `ngb-datepicker` styles can be overrided:
 	// (see also: https://angular.io/docs/ts/latest/guide/component-styles.html#!#view-encapsulation)
@@ -73,6 +75,7 @@ import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 		.ngb-dp-day .btn-secondary:not(.bg-primary):hover {
 			font-weight: bold;
 		}
+
 		.ngb-dp-day .btn-secondary.bg-primary {
 			box-shadow: inset 0 0 7px -1px #171717; /* ObliqueUI: $brand-default */
 		}

@@ -6,7 +6,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 		<form novalidate>
 			<div class="form-group">
 				<div class="input-group" [ngClass]="getSizeClass('input-group-')">
-					<ng-content select="[filter-box-before]"></ng-content>
+					<ng-content class="input-group-prepend" select=".input-group-prepend"></ng-content>
 					<div class="control-action">
 						<input class="form-control" [ngClass]="getSizeClass('form-control-')" type="text"
 							   placeholder="{{placeholder | translate}}" 
@@ -19,7 +19,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 							<span class="sr-only">{{'i18n.common.clear' | translate}}</span>
 						</button>
 					</div>
-					<ng-content select="[filter-box-after]"></ng-content>
+					<ng-content select=".input-group-append"></ng-content>
 				</div>
 			</div>
 		</form>

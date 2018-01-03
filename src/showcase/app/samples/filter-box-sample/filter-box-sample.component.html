@@ -19,7 +19,7 @@
 			<div class="card-body">
 				<p>A preceding custom input add-on has been used with <code>filter-box-before</code>.</p>
 				<or-filter-box [(pattern)]="patterns[2]">
-					<span class="input-group-addon" filter-box-before><i class="fa fa-search"></i></span>
+					<span class="input-group-prepend"><i class="input-group-text fa fa-search"></i></span>
 				</or-filter-box>
 				<ul>
 					<li *ngFor="let item of items | patternFilter:patterns[2]">{{item}}</li>
@@ -31,7 +31,7 @@
 			<div class="card-body">
 				<p>A following custom input add-on has been used with <code>filter-box-after</code>.</p>
 				<or-filter-box [(pattern)]="patterns[3]">
-					<span class="input-group-btn" filter-box-after ngbDropdown>
+					<span class="input-group-append" ngbDropdown>
 						<button id="search-actions-dropdown" class="btn btn-default dropdown-toggle"
 								type="button"
 								ngbDropdownToggle

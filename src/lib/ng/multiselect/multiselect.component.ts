@@ -91,11 +91,6 @@ let nextId = 0;
 				background-color: #f7f7f9;
 			}
 
-			.checkbox label {
-				margin-bottom: 0;
-				white-space: normal;
-			}
-
 			button.dropdown-item {
 				cursor: pointer;
 			}
@@ -114,8 +109,8 @@ let nextId = 0;
 			[attr.aria-hidden]="!isVisible">
 			<div class="dropdown-item" *ngIf="enableSearch">
 				<div class="input-group input-group-sm control-action" >
-					<span class="input-group-addon" [attr.id]="id + '-search'" [attr.aria-label]="texts.searchPlaceholder | translate">
-						<span class="fa fa-search"></span>
+					<span class="input-group-prepend" [attr.id]="id + '-search'" [attr.aria-label]="texts.searchPlaceholder | translate">
+						<span class="input-group-text fa fa-search"></span>
 					</span>
 					<input type="text" class="form-control" placeholder="{{ texts.searchPlaceholder | translate}}"
 					       [attr.aria-describedby]="id + '-search'" [(ngModel)]="searchFilterText" [ngModelOptions]="{standalone: true}">
@@ -138,9 +133,9 @@ let nextId = 0;
 			<div *ngIf="showCheckAll || showUncheckAll" class="dropdown-divider divider"></div>
 			<button class="dropdown-item" *ngFor="let option of options | searchFilter:searchFilterText; let i = index"
 				(click)="toggleSelection(option)">
-				<div class="checkbox">
-					<input tabindex="-1" type="checkbox" id="{{id}}-{{i}}" [checked]="isSelected(option)" (click)="preventCheckboxCheck($event)">
-					<label for="{{id}}-{{i}}">{{formatOptionForLabel(option)}}</label>
+				<div class="form-check">
+					<input tabindex="-1" type="checkbox" id="{{id}}-{{i}}" [checked]="isSelected(option)" (click)="preventCheckboxCheck($event)" class="form-check-input">
+					<label class="form-check-label" for="{{id}}-{{i}}">{{formatOptionForLabel(option)}}</label>
 				</div>
 			</button>
 		</div>

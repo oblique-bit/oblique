@@ -14,8 +14,8 @@ class MockTranslatePipe implements PipeTransform {
 @Component({
 	template: `
 		<or-filter-box pattern="test">
-			<span class="input-group-addon" filter-box-before><i class="fa fa-search"></i></span>
-			<span class="input-group-addon" filter-box-after><i class="fa fa-search"></i></span>
+			<span class="input-group-prepend"><i class="fa fa-search"></i></span>
+			<span class="input-group-append"><i class="fa fa-search"></i></span>
 		</or-filter-box>
 	`
 })
@@ -43,9 +43,15 @@ describe('FilterBox', () => {
 		expect(component).toBeTruthy();
 	});
 
-	it('should have an .input-group-addon before and after .control-action', () => {
+	it('should have an .input-group-prepend before .control-action', () => {
 		expect(fixture.debugElement.queryAll(
-			By.css('.input-group-addon + .control-action, .control-action + .input-group-addon')
-		).length).toBe(2);
+			By.css('.input-group-prepend + .control-action')
+		).length).toBe(1);
+	});
+
+	it('should have an .input-group-append after .control-action', () => {
+		expect(fixture.debugElement.queryAll(
+			By.css('.control-action + .input-group-append')
+		).length).toBe(1);
 	});
 });
