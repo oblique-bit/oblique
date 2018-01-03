@@ -1,16 +1,14 @@
-/* tslint:disable:no-unused-variable */
 import {ComponentFixture, TestBed, async, fakeAsync, tick} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
-
+import {MockTranslatePipe} from '../../../../testhelpers';
 import {NotificationComponent} from './notification.component';
 import {NotificationService} from './notification.service';
 import {Notification, NotificationType} from './notification';
-import {MockTranslatePipe} from '../../../../testhelpers';
 import {NotificationConfig} from './notification.config';
 
 // TODO: reenable once https://github.com/angular/angular/pull/19055 is merged
-xdescribe('NotificationComponent', () => {
+describe('NotificationComponent', () => {
 	let component: NotificationComponent;
 	let fixture: ComponentFixture<NotificationComponent>;
 	let notificationConfig: NotificationConfig;

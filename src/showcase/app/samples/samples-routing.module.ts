@@ -15,7 +15,7 @@ import {NavTreeSampleComponent, NavTreeDetailSampleComponent} from './nav-tree/n
 import {NotificationSampleComponent} from './notification/notification-sample.component';
 import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
-import {ToggleSampleComponent} from "./toggle/toggle-sample.component";
+import {ToggleSampleComponent} from './toggle/toggle-sample.component';
 
 const samplesRoutes: Routes = [
 	{

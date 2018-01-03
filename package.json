@@ -42,6 +42,7 @@
     "gulp-publish": "./node_modules/.bin/gulp publish",
     "test": "./node_modules/.bin/ng test",
     "pretest": "npm run prebuild",
+    "lint": "./node_modules/.bin/ng lint --type-check",
     "e2e": "npm run prebuild && ./node_modules/.bin/ng e2e"
   },
   "dependencies": {
@@ -88,7 +89,6 @@
     "gulp-release-flows": "git+https://github.com/admin-ch/gulp-release-flows.git#0.3.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
-    "gulp-tslint": "^8.1.2",
     "gulp-util": "^3.0.8",
     "handlebars-helpers": "^0.10.0",
     "jasmine-core": "^2.8.0",

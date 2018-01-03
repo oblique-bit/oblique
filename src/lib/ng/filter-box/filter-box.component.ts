@@ -9,7 +9,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 					<ng-content class="input-group-prepend" select=".input-group-prepend"></ng-content>
 					<div class="control-action">
 						<input class="form-control" [ngClass]="getSizeClass('form-control-')" type="text"
-							   placeholder="{{placeholder | translate}}" 
+							   placeholder="{{placeholder | translate}}"
 							   [attr.readonly]="readonly" [attr.disabled]="disabled"
 							   [ngModel]="pattern" (ngModelChange)="onPatternChanged($event)" name="filter"
 							   #filterControl>

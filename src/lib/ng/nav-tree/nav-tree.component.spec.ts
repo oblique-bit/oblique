@@ -53,7 +53,7 @@ class TestComponent {
 
 	labelFormatter(label: string): string {
 		return `${label} - ${this.prefix}`;
-	};
+	}
 }
 
 describe('NavTreeComponent', () => {
@@ -116,9 +116,7 @@ describe('NavTreeComponent', () => {
 
 	it('should custom format item labels', () => {
 		let suffix = '[custom]';
-		component.labelFormatter = (item: NavTreeItemModel, filterPattern: string) => {
-			return `${item.label} - ${suffix}`;
-		};
+		component.labelFormatter = (item: NavTreeItemModel) => `${item.label} - ${suffix}`;
 		fixture.detectChanges();
 		let firstNavItem = fixture.debugElement.query(By.css('li.nav-item'));
 		expect(firstNavItem.nativeElement.innerHTML).toContain(suffix);

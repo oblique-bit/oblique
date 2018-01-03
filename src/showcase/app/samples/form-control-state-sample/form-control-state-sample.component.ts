@@ -9,7 +9,7 @@ import {NotificationService} from '../../../../lib';
 		.form-horizontal label {
 			text-align: right;
 		}
-		
+
 		.card + .card {
 			margin-top: 2rem;
 		}

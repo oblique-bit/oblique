@@ -20,29 +20,29 @@ export class DatepickerSampleComponent {
 
 	constructor() {
 		let today = new Date();
-		this.minDate = this.dateToNgbDateStruct(new Date(new Date().setDate(today.getDate() - 7)));
-		this.maxDate = this.dateToNgbDateStruct(new Date(new Date().setDate(today.getDate() + 7)));
+		this.minDate = DatepickerSampleComponent.dateToNgbDateStruct(new Date(new Date().setDate(today.getDate() - 7)));
+		this.maxDate = DatepickerSampleComponent.dateToNgbDateStruct(new Date(new Date().setDate(today.getDate() + 7)));
 	}
 
 	setToday() {
-		this.model.date = this.dateToNgbDateStruct(new Date())
+		this.model.date = DatepickerSampleComponent.dateToNgbDateStruct(new Date());
 	}
 
 	min() {
 		//TODO should we set the control dirty?
-		let underMinDate = this.ngbDateStructToDate(this.minDate);
+		let underMinDate = DatepickerSampleComponent.ngbDateStructToDate(this.minDate);
 		underMinDate.setDate(underMinDate.getDate() - 1);
-		this.model.minMax = this.dateToNgbDateStruct(underMinDate);
+		this.model.minMax = DatepickerSampleComponent.dateToNgbDateStruct(underMinDate);
 	}
 
 	max() {
-		let overMaxDate = this.ngbDateStructToDate(this.maxDate);
+		let overMaxDate = DatepickerSampleComponent.ngbDateStructToDate(this.maxDate);
 		overMaxDate.setDate(overMaxDate.getDate() + 1);
 		console.log(this.maxDate);
-		this.model.minMax = this.dateToNgbDateStruct(overMaxDate);
+		this.model.minMax = DatepickerSampleComponent.dateToNgbDateStruct(overMaxDate);
 	}
 
-	private dateToNgbDateStruct(date: Date) {
+	private static dateToNgbDateStruct(date: Date) {
 		return {
 			year: date.getFullYear(),
 			month: date.getMonth() + 1,
@@ -50,7 +50,7 @@ export class DatepickerSampleComponent {
 		};
 	}
 
-	private ngbDateStructToDate(dateStruct: NgbDateStruct) {
+	private static ngbDateStructToDate(dateStruct: NgbDateStruct) {
 		return new Date(dateStruct.year, dateStruct.month - 1, dateStruct.day);
 	}
 }

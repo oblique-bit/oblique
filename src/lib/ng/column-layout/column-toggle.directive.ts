@@ -1,5 +1,5 @@
 import {Directive, HostListener} from '@angular/core';
-import {ColumnPanelDirective} from "./column-panel.directive";
+import {ColumnPanelDirective} from './column-panel.directive';
 
 @Directive({
 	selector: '[orColumnToggle]',
@@ -7,11 +7,11 @@ import {ColumnPanelDirective} from "./column-panel.directive";
 })
 export class ColumnToggleDirective {
 
+	constructor(private parent: ColumnPanelDirective) {
+	}
+
 	@HostListener('click')
 	onclick() {
 		this.parent.toggle();
-	}
-
-	constructor(private parent: ColumnPanelDirective) {
 	}
 }

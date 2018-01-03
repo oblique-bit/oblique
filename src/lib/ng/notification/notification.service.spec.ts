@@ -35,7 +35,7 @@ describe('NotificationService', () => {
 		beforeEach(() => {
 			notificationService.events.subscribe(event => {
 				notificationEvent = event;
-			})
+			});
 		});
 
 		it('should broadcast a notification event', () => {
@@ -68,7 +68,7 @@ describe('NotificationService', () => {
 		beforeEach(() => {
 			notificationService.events.subscribe(event => {
 				notificationEvents.push(event);
-			})
+			});
 		});
 
 		it('should broadcast multiple notification events', () => {
@@ -87,7 +87,7 @@ describe('NotificationService', () => {
 		beforeEach(() => {
 			notificationService.events.subscribe(event => {
 				notificationEvent = event;
-			})
+			});
 		});
 
 		it('should emit a `clear` NotificationEvent', () => {
@@ -104,7 +104,7 @@ describe('NotificationService', () => {
 			notificationService.events.subscribe(event => {
 				notificationEmitted = true;
 				notificationEvent = event;
-			})
+			});
 		});
 
 		it('should emit a `clear all` NotificationEvent', () => {
@@ -119,7 +119,7 @@ describe('NotificationService', () => {
 		beforeEach(() => {
 			notificationService.events.subscribe(event => {
 				notificationEvent = event;
-			})
+			});
 		});
 
 		it('should broadcast a NotificationType.DEFAULT notification event', () => {
@@ -138,7 +138,7 @@ describe('NotificationService', () => {
 		beforeEach(() => {
 			notificationService.events.subscribe(event => {
 				notificationEvent = event;
-			})
+			});
 		});
 
 		it('should broadcast a NotificationType.INFO notification event', () => {
@@ -157,7 +157,7 @@ describe('NotificationService', () => {
 		beforeEach(() => {
 			notificationService.events.subscribe(event => {
 				notificationEvent = event;
-			})
+			});
 		});
 
 		it('should broadcast a NotificationType.SUCCESS notification event', () => {
@@ -176,7 +176,7 @@ describe('NotificationService', () => {
 		beforeEach(() => {
 			notificationService.events.subscribe(event => {
 				notificationEvent = event;
-			})
+			});
 		});
 
 		it('should broadcast a NotificationType.WARNING notification event', () => {
@@ -195,7 +195,7 @@ describe('NotificationService', () => {
 		beforeEach(() => {
 			notificationService.events.subscribe(event => {
 				notificationEvent = event;
-			})
+			});
 		});
 
 		it('should broadcast a NotificationType.ERROR notification event', () => {

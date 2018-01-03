@@ -7,11 +7,11 @@ import {ScrollingConfig} from '../scrolling';
 @Injectable()
 export class MasterLayoutHeaderService {
 
-	private openValue = false;
-	private mediumValue = false;
-
 	public openChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 	public variantChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+	private openValue = false;
+	private mediumValue = false;
 
 	constructor(private config: ScrollingConfig) {
 

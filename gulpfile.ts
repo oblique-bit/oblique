@@ -15,7 +15,6 @@ let del = require('del'),
 	gutil = require('gulp-util'),
 	hb = require('gulp-hb'),
 	rename = require('gulp-rename'),
-	tslint = require('gulp-tslint'),
 	gulpFile = require('gulp-file'),
 
 	// Project-specific:
@@ -42,14 +41,6 @@ function webpackCallBack(taskName, gulpDone) {
 		gulpDone();
 	};
 }
-
-gulp.task('lint', () => {
-	return gulp.src([
-		paths.src + '**/*.ts'
-	])
-	.pipe(tslint(<any>{formatter: 'prose'}))
-	.pipe(tslint.report({summarizeFailureOutput: true}));
-});
 
 // Remove as soon as the CLI addon API has landed.
 gulp.task('build-templates', () => {

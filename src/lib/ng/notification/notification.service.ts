@@ -49,7 +49,10 @@ export class NotificationService {
 	 * @param {NotificationConfig} config
 	 * @returns {Notification}
 	 */
-	public send(message: string | KeyWithParams, title: string | KeyWithParams = '', type = NotificationType.DEFAULT, config = this.config): Notification {
+	public send(message: string | KeyWithParams,
+				title: string | KeyWithParams = '',
+				type = NotificationType.DEFAULT,
+				config = this.config): Notification {
 		return this.broadcast(config.channel, {
 			messageKey: (<KeyWithParams>message).key || <string>message,
 			messageParams: (<KeyWithParams>message).params,

@@ -35,15 +35,19 @@ class TestWithPristineValidationComponent {
 })
 class ReactiveTestComponent implements OnInit {
 	model;
+
+	@ViewChild(NgModel)
+	ngModel: FormControlName;
+
+	@ViewChild(FormControlStateDirective)
+	formControlState: FormControlStateDirective;
+
 	constructor(private formBuilder: FormBuilder) {
 	}
 
 	ngOnInit() {
 		this.model = this.formBuilder.group({name: ['', Validators.required]});
 	}
-
-	@ViewChild(NgModel) ngModel: FormControlName;
-	@ViewChild(FormControlStateDirective) formControlState: FormControlStateDirective;
 }
 
 @Component({
@@ -64,7 +68,9 @@ class TestComponent {
 }
 
 describe('FormControlStateDirective', () => {
-	let fixture: ComponentFixture<TestComponent> | ComponentFixture<TestWithPristineValidationComponent> | ComponentFixture<ReactiveTestComponent>;
+	let fixture: ComponentFixture<TestComponent>
+		| ComponentFixture<TestWithPristineValidationComponent>
+		| ComponentFixture<ReactiveTestComponent>;
 	let component: TestComponent | TestWithPristineValidationComponent | ReactiveTestComponent;
 	let submitButton;
 

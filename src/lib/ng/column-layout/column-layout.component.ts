@@ -1,5 +1,5 @@
 import {Component, Input, ViewChild} from '@angular/core';
-import {ColumnPanelDirective} from "./column-panel.directive";
+import {ColumnPanelDirective} from './column-panel.directive';
 
 @Component({
 	selector: 'or-column-layout',
@@ -32,17 +32,17 @@ import {ColumnPanelDirective} from "./column-panel.directive";
 })
 export class ColumnLayoutComponent {
 
-	@ViewChild('columnLeft')
-	private columnLeft: ColumnPanelDirective;
-
-	@ViewChild('columnRight')
-	private columnRight: ColumnPanelDirective;
-
 	@Input()
 	left = true;
 
 	@Input()
 	right = true;
+
+	@ViewChild('columnLeft')
+	private columnLeft: ColumnPanelDirective;
+
+	@ViewChild('columnRight')
+	private columnRight: ColumnPanelDirective;
 
 	toggleLeft() {
 		if (this.columnLeft) {
@@ -51,7 +51,7 @@ export class ColumnLayoutComponent {
 	}
 
 	toggleRight() {
-		if(this.columnRight) {
+		if (this.columnRight) {
 			this.columnRight.toggle();
 		}
 	}

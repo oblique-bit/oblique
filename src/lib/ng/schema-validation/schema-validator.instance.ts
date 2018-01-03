@@ -11,7 +11,7 @@ export class SchemaValidatorInstance {
 	}
 
 	validate(propertyPath: string, value: any): ValidationErrors {
-		if(this.hasRequiredError(propertyPath.split('.'), value)) {
+		if (this.hasRequiredError(propertyPath.split('.'), value)) {
 			return {required: true};
 		}
 

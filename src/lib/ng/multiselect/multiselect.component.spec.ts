@@ -7,6 +7,15 @@ import {MultiselectConfig} from './multiselect.config';
 import {MultiselectTexts} from './multiselect.texts';
 import {MultiselectComponent} from './multiselect.component';
 
+@Pipe({
+	name: 'searchFilter'
+})
+class MockSearchPipe implements PipeTransform {
+	transform(value: any, args: any): any {
+		return value;
+	}
+}
+
 describe('MultiselectComponent', () => {
 	let fixture: ComponentFixture<MultiselectComponent>;
 	let component: MultiselectComponent;
@@ -81,9 +90,7 @@ describe('MultiselectComponent', () => {
 		it('should use labelFormatter if it\'s set', () => {
 			const formatterReturnValue = 'FuuBar';
 
-			component.labelFormatter = jasmine.createSpy('formatter').and.callFake((val) => {
-				return formatterReturnValue;
-			});
+			component.labelFormatter = jasmine.createSpy('formatter').and.callFake(() => formatterReturnValue);
 
 			const result = component.formatOptionForLabel(modelOption);
 
@@ -326,12 +333,3 @@ describe('MultiselectComponent', () => {
 		});
 	});
 });
-
-@Pipe({
-	name: 'searchFilter'
-})
-class MockSearchPipe implements PipeTransform {
-	transform(value: any, args: any): any {
-		return value;
-	}
-}

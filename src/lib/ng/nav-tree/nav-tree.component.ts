@@ -2,18 +2,7 @@ import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, RouterLinkActive} from '@angular/router';
 import {NavTreeItemModel} from './nav-tree-item.model';
 
-// FIXME: refactor this when https://github.com/angular/angular/issues/14485
-export function defaultLabelFormatterFactory() {
-	const formatter = (item: NavTreeItemModel, filterPattern: string) => {
-		return !filterPattern ? item.label : item.label.replace(
-			new RegExp(filterPattern, 'ig'),
-			(text) => {
-				return `<span class="${NavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`;
-			}
-		);
-	};
-	return formatter;
-}
+
 
 @Component({
 	selector: 'or-nav-tree',
@@ -60,6 +49,7 @@ export function defaultLabelFormatterFactory() {
 		}
 	`]
 })
+
 export class NavTreeComponent {
 
 	public static DEFAULTS = {
@@ -93,6 +83,13 @@ export class NavTreeComponent {
 		exact: true
 	};
 
+	// TODO: remove when https://github.com/angular/angular/issues/13205
+	constructor(private route: ActivatedRoute) {
+		this.route.fragment.subscribe((fragment) => {
+			this.activeFragment = fragment;
+		});
+	}
+
 	@Input()
 	patternMatcher(item: NavTreeItemModel, pattern: string): boolean {
 		let match = new RegExp(pattern, 'gi').test(item.label);
@@ -105,13 +102,6 @@ export class NavTreeComponent {
 			return subMatch;
 		});
 		return match || childMatch;
-	}
-
-	// TODO: remove when https://github.com/angular/angular/issues/13205
-	constructor(private route: ActivatedRoute) {
-		this.route.fragment.subscribe((fragment) => {
-			this.activeFragment = fragment;
-		});
 	}
 
 	visible(item: NavTreeItemModel) {
@@ -131,7 +121,7 @@ export class NavTreeComponent {
 					this.collapse(item.items, all);
 				}
 			});
-	};
+	}
 
 	expand(items: NavTreeItemModel[], all: boolean = false) {
 		items
@@ -142,7 +132,7 @@ export class NavTreeComponent {
 					this.expand(item.items, all);
 				}
 			});
-	};
+	}
 
 	// TODO: remove when https://github.com/angular/angular/issues/13205
 	isLinkActive(rla: RouterLinkActive, item: NavTreeItemModel) {
@@ -154,9 +144,19 @@ export class NavTreeComponent {
 	// Public API:
 	public collapseAll() {
 		this.collapse(this.items, true);
-	};
+	}
 
 	public expandAll() {
 		this.expand(this.items, true);
 	}
+}
+
+// FIXME: refactor this when https://github.com/angular/angular/issues/14485
+export function defaultLabelFormatterFactory() {
+	return (item: NavTreeItemModel, filterPattern: string) => {
+		return !filterPattern ? item.label : item.label.replace(
+			new RegExp(filterPattern, 'ig'),
+			(text) => `<span class="${NavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`
+		);
+	};
 }

@@ -11,18 +11,16 @@ import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 import {MultiselectConfig} from './multiselect.config';
 import {MultiselectTexts} from './multiselect.texts';
 
-const MULTISELECT_VALUE_ACCESSOR: any = {
-	provide: NG_VALUE_ACCESSOR,
-	useExisting: forwardRef(() => MultiselectComponent),
-	multi: true
-};
-
 // See: https://github.com/angular/angular/issues/5145
 let nextId = 0;
 
 @Component({
 	selector: 'or-multiselect',
-	providers: [MULTISELECT_VALUE_ACCESSOR],
+	providers: [{
+		provide: NG_VALUE_ACCESSOR,
+		useExisting: forwardRef(() => MultiselectComponent),
+		multi: true
+	}],
 	styles: [
 		`
 			:host[readonly],
@@ -125,7 +123,8 @@ let nextId = 0;
 			<button class="dropdown-item" *ngFor="let option of options | searchFilter:searchFilterText; let i = index"
 				(click)="toggleSelection(option)">
 				<div class="form-check">
-					<input tabindex="-1" type="checkbox" id="{{id}}-{{i}}" [checked]="isSelected(option)" (click)="preventCheckboxCheck($event)" class="form-check-input">
+					<input tabindex="-1" type="checkbox" id="{{id}}-{{i}}" [checked]="isSelected(option)" class="form-check-input"
+						   (click)="preventCheckboxCheck($event)">
 					<label class="form-check-label" for="{{id}}-{{i}}">{{formatOptionForLabel(option)}}</label>
 				</div>
 			</button>
@@ -213,11 +212,11 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 
 	onModelChange: (_: any) => void = (_: any) => {
 		//
-	};
+	}
 
 	onModelTouched: () => void = () => {
 		//
-	};
+	}
 
 	writeValue(value: any): void {
 		if (value) {

@@ -1,17 +1,41 @@
 export interface Notification {
-	messageKey: string
-	messageParams?: {[key: string]: any}
-	titleKey?: string
-	titleParams?: {[key: string]: any}
-	id?: number
+	messageKey: string;
+	messageParams?: {[key: string]: any};
+	titleKey?: string;
+	titleParams?: {[key: string]: any};
+	id?: number;
 	type?: NotificationType;
-	sticky?: boolean
-	timeout?: number
+	sticky?: boolean;
+	timeout?: number;
 }
 
 export interface KeyWithParams {
 	key: string;
-	params: {[key: string]: any}
+	params: {[key: string]: any};
+}
+
+export class NotificationType {
+	// Variants:
+	static DEFAULT = new NotificationType('default', 0);
+	static INFO = new NotificationType('info', 1);
+	static SUCCESS = new NotificationType('success', 2);
+	static WARNING = new NotificationType('warning', 3);
+	static ERROR = new NotificationType('error', 4);
+
+	static VALUES = [
+		NotificationType.DEFAULT,
+		NotificationType.INFO,
+		NotificationType.SUCCESS,
+		NotificationType.WARNING,
+		NotificationType.ERROR,
+	];
+
+	constructor(public name: string, public priority: number) {
+	}
+
+	toString() {
+		return this.name;
+	}
 }
 
 export class Notification implements Notification {
@@ -42,30 +66,6 @@ export class Notification implements Notification {
 }
 
 export interface NotificationEvent {
-	channel: string
-	notification?: Notification
-}
-
-export class NotificationType {
-	// Variants:
-	static DEFAULT = new NotificationType('default', 0);
-	static INFO = new NotificationType('info', 1);
-	static SUCCESS = new NotificationType('success', 2);
-	static WARNING = new NotificationType('warning', 3);
-	static ERROR = new NotificationType('error', 4);
-
-	static VALUES = [
-		NotificationType.DEFAULT,
-		NotificationType.INFO,
-		NotificationType.SUCCESS,
-		NotificationType.WARNING,
-		NotificationType.ERROR,
-	];
-
-	constructor(public name: string, public priority: number) {
-	}
-
-	toString() {
-		return this.name;
-	}
+	channel: string;
+	notification?: Notification;
 }
