@@ -153,10 +153,14 @@ export class NavTreeComponent {
 
 // FIXME: refactor this when https://github.com/angular/angular/issues/14485
 export function defaultLabelFormatterFactory() {
-	return (item: NavTreeItemModel, filterPattern: string) => {
+	// noinspection UnnecessaryLocalVariableJS because this will result in a runtime error
+	const formatter = (item: NavTreeItemModel, filterPattern: string) => {
 		return !filterPattern ? item.label : item.label.replace(
 			new RegExp(filterPattern, 'ig'),
-			(text) => `<span class="${NavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`
+			(text) => {
+				return `<span class="${NavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`;
+			}
 		);
 	};
+	return formatter;
 }
