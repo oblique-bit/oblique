@@ -6,7 +6,7 @@ import {RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-import {ObliqueModule} from '../../../lib/ng/index';
+import {ObliqueModule} from '../../../lib/ng';
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 import {SamplesRoutingModule} from './samples-routing.module';
 

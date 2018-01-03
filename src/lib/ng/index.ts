@@ -1,6 +1,6 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 
-import {ColumnLayoutModule} from './column-layout/column-layout.module';
+import {ColumnLayoutModule} from './column-layout';
 import {DatepickerModule} from './datepicker';
 import {DocumentMetaModule} from './document-meta';
 import {ErrorMessagesModule} from './error-messages';
@@ -13,9 +13,9 @@ import {NavigatorModule} from './navigator';
 import {NavTreeModule} from './nav-tree';
 import {NotificationModule} from './notification';
 import {SchemaValidationModule} from './schema-validation';
-import {ScrollingModule} from './scrolling/scrolling.module';
+import {ScrollingModule} from './scrolling';
 import {SpinnerModule} from './spinner';
-import {ToggleModule} from "./toggle/toggle.module";
+import {ToggleModule} from './toggle';
 import {UnsavedChangesModule} from './unsaved-changes';
 
 export * from './column-layout';

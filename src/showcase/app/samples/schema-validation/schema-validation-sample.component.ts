@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, NgForm} from '@angular/forms';
 import {SchemaValidationService} from '../../../../lib';
-import {NotificationService} from '../../../../lib/ng/notification/notification.service';
+import {NotificationService} from '../../../../lib/ng/notification';
 
 @Component({
 	selector: 'app-schema-validation',
