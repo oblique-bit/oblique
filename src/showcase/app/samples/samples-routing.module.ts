@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
+import {UnsavedChangesGuard} from '../../../lib';
 
 import {ColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
 import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
@@ -14,7 +15,6 @@ import {NavTreeSampleComponent, NavTreeDetailSampleComponent} from './nav-tree/n
 import {NotificationSampleComponent} from './notification/notification-sample.component';
 import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
-import {UnsavedChangesGuard} from '../../../lib/ng/unsaved-changes/unsaved-changes.guard';
 import {ToggleSampleComponent} from "./toggle/toggle-sample.component";
 
 const samplesRoutes: Routes = [

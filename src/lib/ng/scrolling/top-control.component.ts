@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ScrollingConfig} from './scrolling-config';
+import {ScrollingConfig} from './scrolling.config';
 
 @Component({
 	selector: 'or-top-control',

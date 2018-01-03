@@ -1,9 +1,7 @@
-/* tslint:disable:no-unused-variable */
 import {TestBed, inject} from '@angular/core/testing';
+import {EventEmitter} from '@angular/core';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TranslateService} from '@ngx-translate/core';
-import {EventEmitter} from '@angular/core';
-
 import {ProjectConfig} from '../../../../project.conf';
 import {MasterLayoutApplicationService} from './master-layout-application.service';
 

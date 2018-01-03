@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Resolve} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import 'rxjs/add/operator/toPromise';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()

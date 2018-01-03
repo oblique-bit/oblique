@@ -1,9 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
-import {MultiselectSampleComponent} from './multiselect-sample.component';
-import {MultiselectModule} from '../../../../lib';
 import {FormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
+import {MultiselectModule} from '../../../../lib';
+import {MultiselectSampleComponent} from './multiselect-sample.component';
 
 describe('MultiselectSampleComponent', () => {
 	let component: MultiselectSampleComponent;

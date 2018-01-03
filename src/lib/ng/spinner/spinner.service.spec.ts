@@ -1,9 +1,7 @@
-/* tslint:disable:no-unused-variable */
-
-import {TestBed, inject, fakeAsync, tick} from '@angular/core/testing';
-import {SpinnerService} from './spinner.service';
-import {NotificationService} from '../notification/notification.service';
+import {TestBed, inject} from '@angular/core/testing';
 import {Subscription} from 'rxjs/Subscription';
+import {SpinnerService} from './spinner.service';
+import {NotificationService} from '../notification';
 
 describe('SpinnerService', () => {
 	let mockNotificationService;

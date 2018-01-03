@@ -1,6 +1,6 @@
 import {Directive, Input, OnInit} from '@angular/core';
-import {SchemaValidationService} from './schema-validation.service';
 import {ValidationErrors} from '@angular/forms';
+import {SchemaValidationService} from './schema-validation.service';
 
 @Directive({
 	selector: '[orSchemaValidation]',

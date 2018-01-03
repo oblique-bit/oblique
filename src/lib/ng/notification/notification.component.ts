@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
+import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 import {Notification, NotificationType} from './notification';
 import {NotificationService} from './notification.service';
-import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
 	selector: 'or-notification',

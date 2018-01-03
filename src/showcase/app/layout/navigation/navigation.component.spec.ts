@@ -1,9 +1,7 @@
-/* tslint:disable:no-unused-variable */
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
-
-import {LayoutNavigationComponent} from './navigation.component';
-import {MockTranslatePipe} from '../../../../../testhelpers';
 import {RouterTestingModule} from '@angular/router/testing';
+import {MockTranslatePipe} from '../../../../../testhelpers';
+import {LayoutNavigationComponent} from './navigation.component';
 
 //TODO: naming
 describe('LayoutNavigationComponent', () => {

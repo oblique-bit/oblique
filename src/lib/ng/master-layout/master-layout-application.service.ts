@@ -1,6 +1,5 @@
 import {Injectable, Inject} from '@angular/core';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
-
 import {MasterLayoutApplicationDirective} from './master-layout-application.directive';
 
 /**

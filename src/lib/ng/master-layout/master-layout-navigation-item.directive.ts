@@ -1,6 +1,5 @@
 import {
-	AfterViewInit, ContentChild, ContentChildren, Directive,
-	ElementRef, EventEmitter, HostBinding, Inject, Output, QueryList
+	AfterViewInit, ContentChild, ContentChildren, Directive, ElementRef, EventEmitter, HostBinding, Output, QueryList
 } from '@angular/core';
 import {MasterLayoutNavigationToggleDirective} from './master-layout-navigation-toggle.directive';
 import {MasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';

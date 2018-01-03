@@ -1,10 +1,9 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
-import {FormControlStateSampleComponent} from './form-control-state-sample.component';
-import {ObliqueModule} from '../../../../lib';
+import {ObliqueModule, SchemaValidationService} from '../../../../lib';
 import {MockTranslatePipe} from '../../../../../testhelpers';
-import {SchemaValidationService} from '../../../../lib/ng/schema-validation/schema-validation.service';
+import {FormControlStateSampleComponent} from './form-control-state-sample.component';
+
 
 describe('FormControlStateSampleComponent', () => {
 	let component: FormControlStateSampleComponent;

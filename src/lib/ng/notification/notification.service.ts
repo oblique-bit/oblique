@@ -1,6 +1,6 @@
 import {Injectable, EventEmitter} from '@angular/core';
 import {Notification, NotificationEvent, KeyWithParams, NotificationType} from './notification';
-import {NotificationConfig} from './notification-config';
+import {NotificationConfig} from './notification.config';
 
 /**
  * Service for the `NotificationComponent`. Can be configured using `NotificationConfig`.

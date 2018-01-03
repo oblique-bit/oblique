@@ -1,9 +1,7 @@
-/* tslint:disable:no-unused-variable */
-
 import {TestBed, inject} from '@angular/core/testing';
 import {NotificationService} from './notification.service';
 import {NotificationEvent, NotificationType} from './notification';
-import {NotificationConfig} from './notification-config';
+import {NotificationConfig} from './notification.config';
 
 describe('NotificationService', () => {
 	let notificationConfig: NotificationConfig;

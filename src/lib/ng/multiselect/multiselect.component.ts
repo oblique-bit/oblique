@@ -5,16 +5,7 @@
  * https://github.com/softsimon/angular-2-dropdown-multiselect
  */
 import {
-	Component,
-	OnInit,
-	DoCheck,
-	HostListener,
-	Input,
-	ElementRef,
-	Output,
-	EventEmitter,
-	forwardRef,
-	IterableDiffers
+	Component, OnInit, DoCheck, HostListener, Input, ElementRef, Output, EventEmitter, forwardRef, IterableDiffers
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 import {MultiselectConfig} from './multiselect.config';

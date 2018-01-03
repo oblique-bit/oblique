@@ -1,9 +1,9 @@
 import {async, TestBed, ComponentFixture} from '@angular/core/testing';
-import {DatepickerComponent} from './datepicker.component';
-import {FormsModule} from '@angular/forms';
 import {Component, DebugElement} from '@angular/core';
-import {NgbInputDatepicker, NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
+import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
+import {NgbInputDatepicker, NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
+import {DatepickerComponent} from './datepicker.component';
 
 @Component({
 	template: `<or-date-picker>

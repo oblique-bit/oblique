@@ -1,9 +1,9 @@
 import {TestBed, inject} from '@angular/core/testing';
-import {UnsavedChangesService} from './unsaved-changes.service';
-import {TranslateService} from '@ngx-translate/core';
+import {EventEmitter} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {NgbTabChangeEvent, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
-import {EventEmitter} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
+import {UnsavedChangesService} from './unsaved-changes.service';
 
 describe('UnsavedChangesService', () => {
 	let unsavedChangesService: UnsavedChangesService;

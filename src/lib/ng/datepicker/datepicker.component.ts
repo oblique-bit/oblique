@@ -1,6 +1,5 @@
 import {
-	Component, ContentChild, Input, AfterViewInit, HostListener, ElementRef,
-	ViewEncapsulation
+	Component, ContentChild, Input, AfterViewInit, HostListener, ElementRef, ViewEncapsulation
 } from '@angular/core';
 import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 

@@ -7,7 +7,7 @@ import {NotificationComponent} from './notification.component';
 import {NotificationService} from './notification.service';
 import {Notification, NotificationType} from './notification';
 import {MockTranslatePipe} from '../../../../testhelpers';
-import {NotificationConfig} from './notification-config';
+import {NotificationConfig} from './notification.config';
 
 // TODO: reenable once https://github.com/angular/angular/pull/19055 is merged
 xdescribe('NotificationComponent', () => {

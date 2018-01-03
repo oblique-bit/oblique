@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NavigableSampleComponent} from './navigable/navigable-sample.component';
 import {RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -16,6 +15,7 @@ import {FormControlStateSampleComponent} from './form-control-state-sample/form-
 import {FilterBoxSampleComponent, PatternFilterPipe} from './filter-box-sample/filter-box-sample.component';
 import {MasterLayoutSampleComponent} from './master-layout/master-layout-sample.component';
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
+import {NavigableSampleComponent} from './navigable/navigable-sample.component';
 import {NavigatorSampleModule} from './navigator-sample/navigator-sample.module';
 import {NavigatorSampleRoutingModule} from './navigator-sample/navigator-sample-routing.module';
 import {NavTreeSampleComponent, NavTreeDetailSampleComponent} from './nav-tree/nav-tree-sample.component';
@@ -24,6 +24,7 @@ import {SchemaValidationSampleComponent} from './schema-validation/schema-valida
 import {ToggleSampleComponent} from "./toggle/toggle-sample.component";
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
+
 
 @NgModule({
 	imports: [

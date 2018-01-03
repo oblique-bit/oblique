@@ -1,6 +1,6 @@
 import {Directive, HostBinding, HostListener, Inject} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
-import {ScrollingConfig} from './scrolling-config';
+import {ScrollingConfig} from './scrolling.config';
 
 @Directive({
 	selector: '[orScrollDetection]'

@@ -1,9 +1,9 @@
 import {TestBed, async, ComponentFixture, fakeAsync, tick} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {FormBuilder, FormControlName, FormsModule, NgModel, ReactiveFormsModule, Validators} from '@angular/forms';
-import {FormControlStateDirective} from './form-control-state.directive';
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {By} from '@angular/platform-browser';
+import {FormControlStateDirective} from './form-control-state.directive';
 
 @Component({
 	template: `

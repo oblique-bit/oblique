@@ -1,13 +1,11 @@
-/* tslint:disable:no-unused-variable */
-
 import {TestBed, async} from '@angular/core/testing';
-import {AppComponent} from './app.component';
+import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {NgbTooltipModule, NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
+import {TranslateService} from '@ngx-translate/core';
 import {NotificationService, SpinnerService} from '../../lib';
 import {MockTranslatePipe} from '../../../testhelpers';
-import {RouterTestingModule} from '@angular/router/testing';
-import {TranslateService} from '@ngx-translate/core';
+import {AppComponent} from './app.component';
 
 describe('AppComponent', () => {
 	beforeEach(async(() => {

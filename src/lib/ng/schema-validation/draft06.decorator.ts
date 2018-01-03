@@ -1,4 +1,3 @@
-// noinspection JSUnusedLocalSymbols
 export function draft06(target, propertyKey: string, descriptor: PropertyDescriptor): any {
 	const oldValue = descriptor.value;
 

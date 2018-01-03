@@ -1,7 +1,5 @@
 import {Component} from '@angular/core';
-import {NotificationService} from '../../../../lib/ng/notification/notification.service';
-import {NotificationType} from '../../../../lib/ng/notification/notification';
-import {NotificationConfig} from '../../../../lib/ng/notification/notification-config';
+import {NotificationService, NotificationConfig, NotificationType} from '../../../../lib';
 
 @Component({
 	selector: 'notification-sample',

@@ -1,8 +1,6 @@
-import {
-	Directive, HostBinding, Input, OnInit, Optional
-} from '@angular/core';
-import {SchemaValidationDirective} from './schema-validation.directive';
+import {Directive, HostBinding, Input, OnInit, Optional} from '@angular/core';
 import {NgModelGroup} from '@angular/forms';
+import {SchemaValidationDirective} from './schema-validation.directive';
 
 @Directive({
 	selector: '[ngModel]',

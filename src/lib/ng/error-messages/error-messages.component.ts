@@ -1,9 +1,9 @@
 import {Component, Input, Optional, AfterViewInit} from '@angular/core';
 import {NgControl, NgForm, FormGroupDirective} from '@angular/forms';
-import {FormControlStateDirective} from '../form-control-state/form-control-state.directive';
-import {ErrorMessagesService} from './error-messages.service';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/merge';
+import {FormControlStateDirective} from '../form-control-state';
+import {ErrorMessagesService} from './error-messages.service';
 
 @Component({
 	selector: 'or-error-messages',

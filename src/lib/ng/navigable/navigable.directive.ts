@@ -1,6 +1,5 @@
 import {
-	Directive, Input, ElementRef, HostBinding, Output, EventEmitter,
-	HostListener, AfterViewInit
+	Directive, Input, ElementRef, HostBinding, Output, EventEmitter, HostListener, AfterViewInit
 } from '@angular/core';
 
 /**

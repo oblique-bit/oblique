@@ -1,8 +1,8 @@
 import {TestBed, ComponentFixture, async, inject} from '@angular/core/testing';
-import {DatepickerPlaceholderDirective} from './datepicker-placeholder.directive';
 import {Component, EventEmitter, DebugElement} from '@angular/core';
-import {TranslateService, LangChangeEvent} from '@ngx-translate/core';
 import {By} from '@angular/platform-browser';
+import {TranslateService, LangChangeEvent} from '@ngx-translate/core';
+import {DatepickerPlaceholderDirective} from './datepicker-placeholder.directive';
 
 @Component({
 	template: `<input ngbDatepicker />`

@@ -1,6 +1,6 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
-import {NavigatorComponent} from './navigator.component';
 import {RouterModule} from '@angular/router';
+import {NavigatorComponent} from './navigator.component';
 
 @NgModule({
 	imports: [

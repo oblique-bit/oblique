@@ -1,9 +1,7 @@
 //TODO: remove if codelyzer 4 is out
-/* tslint:disable no-access-missing-member */
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params, Router, UrlSerializer} from '@angular/router';
-import {NavTreeItemModel} from '../../../../lib/ng/nav-tree/nav-tree-item.model';
-import {NavTreeComponent} from '../../../../lib/ng/nav-tree/nav-tree.component';
+import {ActivatedRoute, Router} from '@angular/router';
+import {NavTreeItemModel, NavTreeComponent} from '../../../../lib';
 
 import {merge} from 'rxjs/operators';
 

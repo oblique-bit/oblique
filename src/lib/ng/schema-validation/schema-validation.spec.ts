@@ -1,12 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {TestBed, async} from '@angular/core/testing';
-import {
-	FormsModule, NgForm, FormBuilder, FormGroup, ReactiveFormsModule,
-	AbstractControl
-} from '@angular/forms';
+import {By} from '@angular/platform-browser';
+import {FormsModule, NgForm, FormBuilder, FormGroup, ReactiveFormsModule, AbstractControl} from '@angular/forms';
 import {SchemaValidationDirective} from './schema-validation.directive';
 import {SchemaValidateDirective} from './schema-validator';
-import {By} from '@angular/platform-browser';
 import {SchemaValidationService} from './schema-validation.service';
 
 

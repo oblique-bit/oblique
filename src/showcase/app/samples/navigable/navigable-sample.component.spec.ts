@@ -1,12 +1,9 @@
-/* tslint:disable:no-unused-variable */
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
-
-import {NavigableSampleComponent} from './navigable-sample.component';
+import {NavigableGroupComponent, NavigableDirective} from '../../../../lib';
 import {MockTranslatePipe} from '../../../../../testhelpers';
-import {NavigableGroupComponent} from '../../../../lib/ng/navigable/navigable-group.component';
-import {NavigableDirective} from '../../../../lib/ng/navigable/navigable.directive';
+import {NavigableSampleComponent} from './navigable-sample.component';
 
 describe('NavigableSampleComponent', () => {
 	let component: NavigableSampleComponent;

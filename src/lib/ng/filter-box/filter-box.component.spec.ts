@@ -1,8 +1,8 @@
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {Component, Pipe, PipeTransform} from '@angular/core';
-import {FilterBoxComponent} from './filter-box.component';
 import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
+import {FilterBoxComponent} from './filter-box.component';
 
 @Pipe({name: 'translate'})
 class MockTranslatePipe implements PipeTransform {

@@ -1,8 +1,7 @@
-/* tslint:disable:no-unused-variable */
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {DebugElement, Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
-import {DebugElement, Component} from '@angular/core';
 import {NavigableGroupComponent} from './navigable-group.component';
 import {NavigableDirective} from './navigable.directive';
 

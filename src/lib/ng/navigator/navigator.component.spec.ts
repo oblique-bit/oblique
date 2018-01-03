@@ -1,6 +1,6 @@
-import {NavigatorComponent} from './navigator.component';
 import {TestBed, ComponentFixture, async} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
+import {NavigatorComponent} from './navigator.component';
 
 describe('NavigatorComponent', () => {
 	let fixture: ComponentFixture<NavigatorComponent>;

@@ -1,11 +1,10 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-
+import {TranslateModule} from '@ngx-translate/core';
 import {MultiselectComponent} from './multiselect.component';
 import {MultiselectConfig} from './multiselect.config';
 import {MultiselectSearchPipe} from './multiselect-search.pipe';
-import {TranslateModule} from '@ngx-translate/core';
 import {MultiselectTexts} from './multiselect.texts';
 
 @NgModule({

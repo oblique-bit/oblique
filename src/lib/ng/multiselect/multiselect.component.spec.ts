@@ -1,11 +1,11 @@
 import {TestBed, ComponentFixture, async} from '@angular/core/testing';
-import {MultiselectComponent} from './multiselect.component';
-import {FormsModule} from '@angular/forms';
 import {Pipe, PipeTransform} from '@angular/core';
-import {MultiselectConfig} from './multiselect.config';
-import {MockTranslatePipe} from '../../../../testhelpers';
+import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
+import {MockTranslatePipe} from '../../../../testhelpers';
+import {MultiselectConfig} from './multiselect.config';
 import {MultiselectTexts} from './multiselect.texts';
+import {MultiselectComponent} from './multiselect.component';
 
 describe('MultiselectComponent', () => {
 	let fixture: ComponentFixture<MultiselectComponent>;

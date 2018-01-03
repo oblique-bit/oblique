@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup, NgModelGroup} from '@angular/forms';
-import {UnsavedChangesService} from '../../../../lib/ng/unsaved-changes/unsaved-changes.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {UnsavedChangesService} from '../../../../lib';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes-sample-modal.component';
 
 @Component({

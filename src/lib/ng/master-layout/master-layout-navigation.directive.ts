@@ -1,6 +1,6 @@
-import {MasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
 import {ContentChildren, Directive, HostListener, QueryList} from '@angular/core';
 import {MasterLayoutHeaderService} from './master-layout-header.service';
+import {MasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
 
 /**
  * FIXME: MasterLayoutNavigation* directives need more design thinking.

@@ -1,9 +1,9 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
-import {NotificationComponent} from './notification.component';
 import {CommonModule} from '@angular/common';
-import {NotificationService} from './notification.service';
 import {TranslateModule} from '@ngx-translate/core';
-import {NotificationConfig} from './notification-config';
+import {NotificationComponent} from './notification.component';
+import {NotificationService} from './notification.service';
+import {NotificationConfig} from './notification.config';
 
 @NgModule({
 	imports: [

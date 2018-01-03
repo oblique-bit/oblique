@@ -1,12 +1,11 @@
-/* tslint:disable:no-unused-variable */
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {RouterTestingModule} from '@angular/router/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {DebugElement, Component} from '@angular/core';
-import {RouterTestingModule} from '@angular/router/testing';
+import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
 import {NavTreeComponent} from './nav-tree.component';
 import {NavTreeItemModel} from './nav-tree-item.model';
-import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
 	template: `

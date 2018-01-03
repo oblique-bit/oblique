@@ -1,17 +1,14 @@
-/* tslint:disable:no-unused-variable */
+import {ComponentFixture, TestBed, async, inject} from '@angular/core/testing';
+import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ComponentFixture, TestBed, async, inject} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
-import {RouterTestingModule} from '@angular/router/testing';
-import {NgbButtonsModule, NgbCollapseModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
-
-import {MockTranslatePipe} from '../../../../../testhelpers/mock-translate.pipe';
-import {NavTreeSampleComponent} from './nav-tree-sample.component';
-import {NavTreeComponent} from '../../../../lib/ng/nav-tree/nav-tree.component';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
-
+import {NgbButtonsModule, NgbCollapseModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
+import {NavTreeComponent} from '../../../../lib';
+import {MockTranslatePipe} from '../../../../../testhelpers';
+import {NavTreeSampleComponent} from './nav-tree-sample.component';
 import 'rxjs/add/observable/of';
 
 describe('NavTreeSampleComponent', () => {

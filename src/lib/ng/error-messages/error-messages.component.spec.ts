@@ -1,14 +1,12 @@
-/* tslint:disable:no-unused-variable */
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {FormsModule, NgForm} from '@angular/forms';
 import {Component, ViewChild} from '@angular/core';
-
-import {ErrorMessagesComponent} from './error-messages.component';
-import {MockTranslatePipe} from '../../../../testhelpers';
-import {ErrorMessagesService} from './error-messages.service';
 import {By} from '@angular/platform-browser';
-import {FormControlStateDirective} from '../form-control-state/form-control-state.directive';
+import {MockTranslatePipe} from '../../../../testhelpers';
+import {ErrorMessagesComponent} from './error-messages.component';
+import {ErrorMessagesService} from './error-messages.service';
+import {FormControlStateDirective} from '../form-control-state';
 
 @Component({
 	template: `

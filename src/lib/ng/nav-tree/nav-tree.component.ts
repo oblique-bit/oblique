@@ -1,6 +1,6 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
-import {NavTreeItemModel} from './nav-tree-item.model';
 import {ActivatedRoute, RouterLinkActive} from '@angular/router';
+import {NavTreeItemModel} from './nav-tree-item.model';
 
 // FIXME: refactor this when https://github.com/angular/angular/issues/14485
 export function defaultLabelFormatterFactory() {

@@ -1,5 +1,5 @@
-import * as Ajv from 'ajv';
 import {AbstractControl, ValidationErrors} from '@angular/forms';
+import * as Ajv from 'ajv';
 
 export class SchemaValidatorInstance {
 	private ajv = new Ajv({allErrors: true});

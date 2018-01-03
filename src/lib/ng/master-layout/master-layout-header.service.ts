@@ -1,6 +1,5 @@
 import {Injectable, EventEmitter} from '@angular/core';
-
-import {ScrollingConfig} from '../scrolling/scrolling-config';
+import {ScrollingConfig} from '../scrolling';
 
 /**
  * Service for controlling ObliqueUI header composite features.

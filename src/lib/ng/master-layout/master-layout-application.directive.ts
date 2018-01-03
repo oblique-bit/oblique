@@ -1,10 +1,7 @@
 import {Directive, ElementRef, HostBinding} from '@angular/core';
-import {MasterLayoutApplicationService} from './master-layout-application.service';
 import {Router, NavigationEnd, ActivatedRoute} from '@angular/router';
-
-import {filter} from 'rxjs/operators';
-import {map} from 'rxjs/operators';
-import {mergeMap} from 'rxjs/operators';
+import {MasterLayoutApplicationService} from './master-layout-application.service';
+import {filter, map, mergeMap} from 'rxjs/operators';
 
 @Directive({
 	selector: '[orMasterLayoutApplication]',

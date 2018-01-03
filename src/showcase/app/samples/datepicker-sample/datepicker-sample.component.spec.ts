@@ -1,13 +1,9 @@
-import {ComponentFixture, TestBed, async} from '@angular/core/testing';
-
-import {DatepickerSampleComponent} from './datepicker-sample.component';
-import {ObliqueModule} from '../../../../lib/ng/index';
 import {FormsModule} from '@angular/forms';
-import {MockTranslatePipe} from '../../../../../testhelpers';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {NgbDatepickerModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
-import {DatepickerPlaceholderDirective} from '../../../../lib/ng/datepicker/datepicker-placeholder.directive';
-import {DatepickerModule} from '../../../../lib/ng/datepicker/datepicker.module';
-import {SchemaValidationService} from '../../../../lib/ng/schema-validation/schema-validation.service';
+import {ObliqueModule, SchemaValidationService, DatepickerModule, DatepickerPlaceholderDirective} from '../../../../lib/ng';
+import {MockTranslatePipe} from '../../../../../testhelpers';
+import {DatepickerSampleComponent} from './datepicker-sample.component';
 
 describe('DatepickerSampleComponent', () => {
 	let component: DatepickerSampleComponent;

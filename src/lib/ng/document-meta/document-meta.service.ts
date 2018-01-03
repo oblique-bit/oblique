@@ -1,12 +1,9 @@
 import {Injectable, Inject} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
-import {TranslateService} from '@ngx-translate/core';
 import {DOCUMENT} from '@angular/common';
-
-import {filter} from 'rxjs/operators';
-import {map} from 'rxjs/operators';
-import {mergeMap} from 'rxjs/operators';
+import {TranslateService} from '@ngx-translate/core';
+import {filter, map, mergeMap} from 'rxjs/operators';
 
 /**
  * DocumentMetaService - Service for updating document metadata

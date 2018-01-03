@@ -1,9 +1,7 @@
-/* tslint:disable:no-unused-variable */
 import {TestBed, inject} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
-
-import {DocumentMetaService} from './document-meta.service';
 import {TranslateService} from '@ngx-translate/core';
+import {DocumentMetaService} from './document-meta.service';
 
 describe('DocumentMetaService', () => {
 	let documentMetaService: DocumentMetaService;

@@ -1,10 +1,10 @@
 import {TestBed, async} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {Component, ViewChild} from '@angular/core';
-import {UnsavedChangesDirective} from './unsaved-changes.directive';
-import {UnsavedChangesService} from './unsaved-changes.service';
 import {ControlContainer} from '@angular/forms';
 import {NgbTabsetModule} from '@ng-bootstrap/ng-bootstrap';
+import {UnsavedChangesDirective} from './unsaved-changes.directive';
+import {UnsavedChangesService} from './unsaved-changes.service';
 
 @Component({
 	template: `

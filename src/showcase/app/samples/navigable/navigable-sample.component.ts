@@ -1,8 +1,6 @@
 //TODO: remove if codelyzer 4 is out
-/* tslint:disable no-access-missing-member */
 import {Component} from '@angular/core';
-import {NavigableOnMoveEvent} from '../../../../lib/ng/navigable/navigable.directive';
-import {NavigableGroupComponent} from '../../../../lib/ng/navigable/navigable-group.component';
+import {NavigableOnMoveEvent, NavigableGroupComponent} from '../../../../lib/ng/navigable';
 
 @Component({
 	selector: 'navigable-sample',
