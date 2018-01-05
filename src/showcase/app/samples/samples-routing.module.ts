@@ -18,45 +18,44 @@ import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-s
 import {ToggleSampleComponent} from './toggle/toggle-sample.component';
 
 const samplesRoutes: Routes = [
+	{path: 'column-layout', component: ColumnLayoutSampleComponent},
+	{path: 'datepicker', component: DatepickerSampleComponent},
+	{path: 'filter-box', component: FilterBoxSampleComponent},
 	{
-		path: 'samples',
+		path: 'navigable', component: NavigableSampleComponent, data: {
+			title: 'Navigable Sample',
+			description: 'Description for the Navigable Sample'
+		}
+	},
+	{
+		path: 'nav-tree',
+		component: NavTreeSampleComponent,
+		resolve: {
+			sample: SampleDataResolver
+		},
 		children: [
-			{path: 'column-layout', component: ColumnLayoutSampleComponent},
-			{path: 'datepicker', component: DatepickerSampleComponent},
-			{path: 'filter-box', component: FilterBoxSampleComponent},
-			{
-				path: 'navigable', component: NavigableSampleComponent, data: {
-					title: 'Navigable Sample',
-					description: 'Description for the Navigable Sample'
-				}
-			},
-			{
-				path: 'nav-tree',
-				component: NavTreeSampleComponent,
-				resolve: {
-					sample: SampleDataResolver
-				},
-				children: [
-					{path: ':section', component: NavTreeDetailSampleComponent},
-					{path: ':section/:subsection', component: NavTreeDetailSampleComponent},
-					{path: ':section/:subsection/:subsubsection', component: NavTreeDetailSampleComponent}
-				]
-			},
-			{path: 'notification', component: NotificationSampleComponent},
-			{path: 'multiselect', component: MultiselectSampleComponent},
-			{
-				path: 'master-layout', component: MasterLayoutSampleComponent, data: {
-				masterLayout: {
-					hasCover: true
-				}
-			}
-			},
-			{path: 'validation/form-control-state', component: FormControlStateSampleComponent},
-			{path: 'validation/schema-validation', component: SchemaValidationSampleComponent},
-			{path: 'validation/unsaved-changes', component: UnsavedChangesSampleComponent, canDeactivate: [UnsavedChangesGuard]},
-			{path: 'toggle', component: ToggleSampleComponent}
+			{path: ':section', component: NavTreeDetailSampleComponent},
+			{path: ':section/:subsection', component: NavTreeDetailSampleComponent},
+			{path: ':section/:subsection/:subsubsection', component: NavTreeDetailSampleComponent}
 		]
-	}
+	},
+	{path: 'notification', component: NotificationSampleComponent},
+	{path: 'multiselect', component: MultiselectSampleComponent},
+	{
+		path: 'master-layout', component: MasterLayoutSampleComponent, data: {
+			masterLayout: {
+				hasCover: true
+			}
+		}
+	},
+	{path: 'validation/form-control-state', component: FormControlStateSampleComponent},
+	{path: 'validation/schema-validation', component: SchemaValidationSampleComponent},
+	{
+		path: 'validation/unsaved-changes',
+		component: UnsavedChangesSampleComponent,
+		canDeactivate: [UnsavedChangesGuard]
+	},
+	{path: 'toggle', component: ToggleSampleComponent}
 ];
 
 @NgModule({
