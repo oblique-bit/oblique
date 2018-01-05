@@ -4,6 +4,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {UnsavedChangesService} from '../../../../lib';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes-sample-modal.component';
 
+
 @Component({
 	selector: 'app-unsaved-changes',
 	templateUrl: 'unsaved-changes-sample.component.html',
@@ -12,6 +13,7 @@ import {UnsavedChangesSampleModalComponent} from './unsaved-changes-sample-modal
 			text-align: right;
 		}
 
+		/*noinspection CssUnusedSymbol*/
 		.unsaved-changes .tab-content {
 			padding: 15px;
 			border: 1px solid #ddd;
@@ -27,11 +29,11 @@ export class UnsavedChangesSampleComponent implements OnInit {
 	tabForm8Reactive: FormGroup;
 	tabForm9Reactive: FormGroup;
 	tabModels = {
-		standAloneTemplate: {},
-		nestedForm1: {},
-		nestedForm2: {},
-		nestedForm3: {},
-		tabForm1: {}
+		standAloneTemplate: {number: null, text: null, integer: null, date: null},
+		nestedForm1: {number: null, text: null, integer: null, date: null},
+		nestedForm2: {number: null, text: null, integer: null, date: null},
+		nestedForm3: {number: null, text: null, integer: null, date: null},
+		tabForm1: {number: null, text: null, integer: null, date: null}
 	};
 
 	@ViewChild('form1') form1 = <NgModelGroup>{};
