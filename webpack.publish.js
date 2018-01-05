@@ -42,7 +42,8 @@ module.exports = {
 							configFile: 'tsconfig.publish.json'
 						}
 					},
-					'angular2-template-loader?keepUrl=true'
+					// 'angular2-template-loader?keepUrl=true', // not needed as templates and styles are already inline
+					'angular-router-loader'
 				],
 				exclude: [/\.(spec|e2e)\.ts$/]
 			},
