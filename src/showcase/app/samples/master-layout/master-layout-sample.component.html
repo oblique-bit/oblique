@@ -11,29 +11,29 @@
 					</div>
 					<div class="card-body">
 						<h4>Master Layout</h4>
-						<div [(ngModel)]="applicationFixed" ngbRadioGroup class="btn-group">
-							<label ngbButtonLabel class="btn btn-default">
+						<div [(ngModel)]="applicationFixed" ngbRadioGroup class="btn-group btn-group-toggle">
+							<label ngbButtonLabel class="btn-default">
 								<input ngbButton type="radio" [value]="false"> Continuous
 							</label>
-							<label ngbButtonLabel class="btn btn-default">
+							<label ngbButtonLabel class="btn-default">
 								<input ngbButton type="radio" [value]="true"> Fixed
 							</label>
 						</div>
 						<h4>Content Disposition</h4>
-						<div [(ngModel)]="cover" ngbRadioGroup class="btn-group">
-							<label ngbButtonLabel class="btn btn-default">
+						<div [(ngModel)]="cover" ngbRadioGroup class="btn-group btn-group-toggle">
+							<label ngbButtonLabel class="btn-default">
 								<input ngbButton type="radio" [value]="false"> Default
 							</label>
-							<label ngbButtonLabel class="btn btn-default active">
+							<label ngbButtonLabel class="btn-default active">
 								<input ngbButton type="radio"  [value]="true"> Cover
 							</label>
 						</div>
 						<h4>Primary Navigation</h4>
-						<div [(ngModel)]="navigation" ngbRadioGroup class="btn-group">
-							<label ngbButtonLabel class="btn btn-default active">
+						<div [(ngModel)]="navigation" ngbRadioGroup class="btn-group btn-group-toggle">
+							<label ngbButtonLabel class="btn-default active">
 								<input ngbButton type="radio" [value]="true"> Yes
 							</label>
-							<label ngbButtonLabel class="btn btn-default">
+							<label ngbButtonLabel class="btn-default">
 								<input ngbButton type="radio"  [value]="false"> No
 							</label>
 						</div>

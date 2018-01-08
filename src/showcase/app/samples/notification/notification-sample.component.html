@@ -16,7 +16,7 @@
 				<div class="card-body">
 					<fieldset>
 						<legend>Mandatory parameter</legend>
-						<div class="btn-group btn-group-sm" ngbRadioGroup name="messageWithParams" [(ngModel)]="messageWithParams">
+						<div class="btn-group btn-group-sm btn-group-toggle" ngbRadioGroup name="messageWithParams" [(ngModel)]="messageWithParams">
 							<label ngbButtonLabel class="btn-primary">
 								<input ngbButton type="radio" [value]="false"> Simple text
 							</label>
@@ -54,7 +54,7 @@
 					</fieldset>
 					<fieldset>
 						<legend>Optional parameters</legend>
-						<div class="btn-group btn-group-sm" ngbRadioGroup name="titleWithParams" [(ngModel)]="titleWithParams">
+						<div class="btn-group btn-group-sm btn-group-toggle" ngbRadioGroup name="titleWithParams" [(ngModel)]="titleWithParams">
 							<label ngbButtonLabel class="btn-primary">
 								<input ngbButton type="radio" [value]="false"> Simple key
 							</label>
