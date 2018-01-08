@@ -31,7 +31,7 @@ const navigatorSampleRoutes: Routes = [
 										component: ChildState112Component,
 										data: {
 											navigator: {
-												up: ['/navigator']
+												up: ['samples/navigator']
 											}
 										}
 									}
