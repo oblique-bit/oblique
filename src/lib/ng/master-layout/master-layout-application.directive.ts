@@ -1,13 +1,15 @@
 import {Directive, ElementRef, HostBinding} from '@angular/core';
 import {Router, NavigationEnd, ActivatedRoute} from '@angular/router';
-import {MasterLayoutApplicationService} from './master-layout-application.service';
 import {filter, map, mergeMap} from 'rxjs/operators';
+import 'rxjs/add/operator/takeUntil';
+import {Unsubscribable} from '../unsubscribe';
+import {MasterLayoutApplicationService} from './master-layout-application.service';
 
 @Directive({
 	selector: '[orMasterLayoutApplication]',
 	exportAs: 'orMasterLayoutApplication'
 })
-export class MasterLayoutApplicationDirective {
+export class MasterLayoutApplicationDirective extends Unsubscribable {
 
 	@HostBinding('class.has-cover') hasCover;
 	@HostBinding('class.no-navigation') noNavigation;
@@ -21,6 +23,7 @@ export class MasterLayoutApplicationDirective {
 				private elementRef: ElementRef,
 				private router: Router,
 				private activatedRoute: ActivatedRoute) {
+		super();
 		layoutApplicationService.applicationDirective = this; // FIXME: refactor this to avoid circular coupling
 
 		this.hasCover = this.defaultHasCover = this.elementRef.nativeElement.classList.contains('has-cover');
@@ -38,7 +41,8 @@ export class MasterLayoutApplicationDirective {
 			}),
 			filter(route => route.outlet === 'primary'),
 			mergeMap(route => route.data)
-		).subscribe((data) => {
+		).takeUntil(this.unsubscribe)
+			.subscribe((data) => {
 			let masterLayout = data.masterLayout || {};
 
 			this.hasCover = masterLayout.hasCover !== undefined ? masterLayout.hasCover : this.defaultHasCover;

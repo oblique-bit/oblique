@@ -25,7 +25,6 @@ import {ToggleSampleComponent} from './toggle/toggle-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
 
-
 @NgModule({
 	imports: [
 		CommonModule,
@@ -37,7 +36,7 @@ import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-chan
 		SamplesRoutingModule,
 		NavigatorSampleModule,
 		NavigatorSampleRoutingModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
 	],
 	declarations: [
 		ColumnLayoutSampleComponent,

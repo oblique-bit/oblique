@@ -1,6 +1,8 @@
 import {
 	Input, EventEmitter, Output, AfterViewInit, ContentChildren, QueryList, Component, ViewEncapsulation
 } from '@angular/core';
+import 'rxjs/add/operator/takeUntil';
+import {Unsubscribable} from '../unsubscribe';
 import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from './navigable.directive';
 
 /**
@@ -107,7 +109,7 @@ import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from '
 			}
 		}`]
 })
-export class NavigableGroupComponent implements AfterViewInit {
+export class NavigableGroupComponent extends Unsubscribable implements AfterViewInit {
 
 	/**
 	 * The array containing all group items
@@ -139,11 +141,11 @@ export class NavigableGroupComponent implements AfterViewInit {
 	ngAfterViewInit(): void {
 		this.navigables.forEach(navigable => {
 
-			navigable.navigableOnActivation.subscribe(() => {
+			navigable.navigableOnActivation.takeUntil(this.unsubscribe).subscribe(() => {
 				this.addToSelection(navigable);
 			});
 
-			navigable.navigableOnChange.subscribe(($event: NavigableOnChangeEvent) => {
+			navigable.navigableOnChange.takeUntil(this.unsubscribe).subscribe(($event: NavigableOnChangeEvent) => {
 				const index = this.indexOf(navigable);
 				let next: NavigableDirective = null;
 
@@ -163,7 +165,7 @@ export class NavigableGroupComponent implements AfterViewInit {
 				}
 			});
 
-			navigable.navigableOnMouseDown.subscribe(($event: MouseEvent) => {
+			navigable.navigableOnMouseDown.takeUntil(this.unsubscribe).subscribe(($event: MouseEvent) => {
 				if ($event && $event.shiftKey) {
 					this.selectChildRange(navigable);
 				} else if ($event && $event.ctrlKey) {
@@ -186,7 +188,7 @@ export class NavigableGroupComponent implements AfterViewInit {
 				this.deactivate(this.getActive());
 			});
 
-			navigable.navigableOnFocus.subscribe(() => {
+			navigable.navigableOnFocus.takeUntil(this.unsubscribe).subscribe(() => {
 				if (!navigable.active) {
 					// When a child is about to receive focus, deactivate the other items:
 					this.navigables.forEach(child => child !== navigable && this.deactivate(child, true)); //TODO: take a look at this
@@ -194,7 +196,7 @@ export class NavigableGroupComponent implements AfterViewInit {
 				}
 			});
 
-			navigable.navigableOnMove.subscribe(($event: NavigableOnMoveEvent) => {
+			navigable.navigableOnMove.takeUntil(this.unsubscribe).subscribe(($event: NavigableOnMoveEvent) => {
 				if (!$event.prevented) {
 					let from = this.indexOf(navigable);
 

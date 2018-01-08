@@ -1,7 +1,9 @@
 import {Component, Input} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
+import {Unsubscribable} from '../unsubscribe';
 import {Notification, NotificationType} from './notification';
 import {NotificationService} from './notification.service';
+
 
 @Component({
 	selector: 'or-notification',
@@ -59,7 +61,7 @@ import {NotificationService} from './notification.service';
 		])
 	]
 })
-export class NotificationComponent {
+export class NotificationComponent extends Unsubscribable {
 
 	public static ANIMATION_OUT_DURATION = 350;
 
@@ -74,6 +76,7 @@ export class NotificationComponent {
 	public variant: { [type: string]: string } = {};
 
 	constructor(private notificationService: NotificationService) {
+		super();
 		this.channel = this.channel || notificationService.config.channel;
 		this.timeout = this.timeout || notificationService.config.timeout;
 
@@ -83,7 +86,7 @@ export class NotificationComponent {
 		this.variant[NotificationType.WARNING.name] = 'alert alert-warning';
 		this.variant[NotificationType.ERROR.name] = 'alert alert-danger';
 
-		this.notificationService.events.subscribe(
+		this.notificationService.events.takeUntil(this.unsubscribe).subscribe(
 			(event) => {
 				if (!event || (!event.notification && event.channel === this.channel)) {
 					this.clear();

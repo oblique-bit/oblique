@@ -1,6 +1,8 @@
 import {
 	AfterViewInit, ContentChild, ContentChildren, Directive, ElementRef, EventEmitter, HostBinding, Output, QueryList
 } from '@angular/core';
+import 'rxjs/add/operator/takeUntil';
+import {Unsubscribable} from '../unsubscribe';
 import {MasterLayoutNavigationToggleDirective} from './master-layout-navigation-toggle.directive';
 import {MasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
 import {MasterLayoutHeaderService} from './master-layout-header.service';
@@ -9,7 +11,7 @@ import {MasterLayoutHeaderService} from './master-layout-header.service';
 	selector: '[orMasterLayoutNavigationItem]',
 	exportAs: 'orMasterLayoutNavigationItem'
 })
-export class MasterLayoutNavigationItemDirective implements AfterViewInit {
+export class MasterLayoutNavigationItemDirective extends Unsubscribable implements AfterViewInit {
 
 	@HostBinding('class.show')
 	public show = false;
@@ -29,6 +31,7 @@ export class MasterLayoutNavigationItemDirective implements AfterViewInit {
 	constructor(
 		public elementRef: ElementRef,
 		private headerService: MasterLayoutHeaderService) {
+		super();
 
 		// Subscribe to header changes:
 		// this.headerService.openChange.subscribe((open) => {
@@ -41,7 +44,7 @@ export class MasterLayoutNavigationItemDirective implements AfterViewInit {
 
 	ngAfterViewInit() {
 		this.$toggles.forEach(($toggle) => {
-			$toggle.onToggle.subscribe(($event) => {
+			$toggle.onToggle.takeUntil(this.unsubscribe).subscribe(($event: any) => {
 				if (!$event.prevented) {
 					if (this.$menu) {
 						if (this.show) {
@@ -62,7 +65,7 @@ export class MasterLayoutNavigationItemDirective implements AfterViewInit {
 		});
 
 		this.$items.forEach(($item) => {
-			$item.onClose.subscribe(() => {
+			$item.onClose.takeUntil(this.unsubscribe).subscribe(() => {
 				this.close();
 			});
 		});

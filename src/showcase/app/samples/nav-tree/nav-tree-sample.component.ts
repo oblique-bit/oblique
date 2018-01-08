@@ -1,15 +1,15 @@
 //TODO: remove if codelyzer 4 is out
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {NavTreeItemModel, NavTreeComponent} from '../../../../lib';
-
+import {NavTreeItemModel, NavTreeComponent, Unsubscribable} from '../../../../lib';
 import {merge} from 'rxjs/operators';
+import 'rxjs/add/operator/takeUntil';
 
 @Component({
 	selector: 'nav-tree-sample',
 	templateUrl: './nav-tree-sample.component.html'
 })
-export class NavTreeSampleComponent implements OnInit {
+export class NavTreeSampleComponent extends Unsubscribable implements OnInit {
 
 	public items: Array<NavTreeItemModel>;
 	public variant = NavTreeComponent.DEFAULTS.VARIANT;
@@ -25,10 +25,11 @@ export class NavTreeSampleComponent implements OnInit {
 	};
 
 	constructor(private route: ActivatedRoute) {
+		super();
 	}
 
 	ngOnInit() {
-		this.route.data.subscribe((data: {sample: any}) => {
+		this.route.data.takeUntil(this.unsubscribe).subscribe((data: { sample: any }) => {
 			this.items = data.sample.navTree.items.map((item: any) => {
 				return new NavTreeItemModel(item);
 			});
@@ -50,18 +51,20 @@ export class NavTreeSampleComponent implements OnInit {
 			</div>
 		</div>`
 })
-export class NavTreeDetailSampleComponent implements OnInit {
-
-	public routing: string;
+export class NavTreeDetailSampleComponent extends Unsubscribable implements OnInit {
+	routing: string;
 
 	constructor(private route: ActivatedRoute, private router: Router) {
+		super();
 	}
 
 	ngOnInit() {
-		this.route.params.pipe(
-			merge(this.route.fragment)
-		).subscribe(() => {
-			this.routing = this.router.routerState.snapshot.url;
-		});
+		this.route.params
+			.pipe(merge(this.route.fragment))
+			.takeUntil(this.unsubscribe)
+			.subscribe(() => {
+				this.routing = this.router.routerState.snapshot.url;
+			});
 	}
 }
+

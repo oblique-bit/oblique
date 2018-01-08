@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {Unsubscribable} from '../unsubscribe';
+import 'rxjs/add/operator/takeUntil';
 import {SpinnerService} from './spinner.service';
 
 @Component({
@@ -9,11 +11,12 @@ import {SpinnerService} from './spinner.service';
                     </div>
                 </div>`
 })
-export class SpinnerComponent {
+export class SpinnerComponent extends Unsubscribable {
 	public spinnerActive = false;
 
 	constructor(private spinnerService: SpinnerService) {
-		spinnerService.onSpinnerStatusChange.subscribe((status: boolean) => {
+		super();
+		spinnerService.onSpinnerStatusChange.takeUntil(this.unsubscribe).subscribe((status: boolean) => {
 			this.spinnerActive = status;
 		});
 	}

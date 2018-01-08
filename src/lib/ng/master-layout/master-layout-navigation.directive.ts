@@ -1,4 +1,6 @@
 import {ContentChildren, Directive, HostListener, QueryList} from '@angular/core';
+import 'rxjs/add/operator/takeUntil';
+import {Unsubscribable} from '../unsubscribe';
 import {MasterLayoutHeaderService} from './master-layout-header.service';
 import {MasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
 
@@ -9,14 +11,15 @@ import {MasterLayoutNavigationItemDirective} from './master-layout-navigation-it
 	selector: '[orMasterLayoutNavigation]',
 	exportAs: 'orMasterLayoutNavigation'
 })
-export class MasterLayoutNavigationDirective {
+export class MasterLayoutNavigationDirective extends Unsubscribable {
 
 	@ContentChildren(MasterLayoutNavigationItemDirective, {descendants: true})
 	$items: QueryList<MasterLayoutNavigationItemDirective>;
 
 	constructor(private headerService: MasterLayoutHeaderService) {
+		super();
 		// Subscribe to header changes:
-		this.headerService.openChange.subscribe((open) => {
+		this.headerService.openChange.takeUntil(this.unsubscribe).subscribe((open) => {
 			if (!open) {
 				// Ensure we close all open navigation items:
 				this.$items.forEach(($item) => {

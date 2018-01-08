@@ -2,6 +2,8 @@ import {Component, Input, Optional, AfterViewInit} from '@angular/core';
 import {NgControl, NgForm, FormGroupDirective} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/merge';
+import 'rxjs/add/operator/takeUntil';
+import {Unsubscribable} from '../unsubscribe';
 import {FormControlStateDirective} from '../form-control-state';
 import {ErrorMessagesService} from './error-messages.service';
 
@@ -9,7 +11,7 @@ import {ErrorMessagesService} from './error-messages.service';
 	selector: 'or-error-messages',
 	template: `<div class="form-control-feedback" *ngFor="let error of errors">{{error.key | translate:error.params}}</div>`
 })
-export class ErrorMessagesComponent implements AfterViewInit {
+export class ErrorMessagesComponent extends Unsubscribable implements AfterViewInit {
 	@Input() control: NgControl;
 
 	errors: { key: string, params: { [param: string]: any } }[] = [];
@@ -20,6 +22,7 @@ export class ErrorMessagesComponent implements AfterViewInit {
 				@Optional() private formGroup: FormControlStateDirective,
 				@Optional() ngForm: NgForm,
 				@Optional() formGroupDirective: FormGroupDirective) {
+		super();
 		this.form = ngForm || formGroupDirective;
 
 		if (!this.form) {
@@ -33,7 +36,7 @@ export class ErrorMessagesComponent implements AfterViewInit {
 		Observable.merge(
 			this.control.statusChanges,
 			this.form.ngSubmit
-		).subscribe(() => this.generateErrorMessages());
+		).takeUntil(this.unsubscribe).subscribe(() => this.generateErrorMessages());
 
 		this.delayMessageGenerationForReactiveForms();
 	}

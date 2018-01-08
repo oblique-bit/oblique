@@ -1,8 +1,8 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, RouterLinkActive} from '@angular/router';
+import 'rxjs/add/operator/takeUntil';
+import {Unsubscribable} from '../unsubscribe';
 import {NavTreeItemModel} from './nav-tree-item.model';
-
-
 
 @Component({
 	selector: 'or-nav-tree',
@@ -50,7 +50,7 @@ import {NavTreeItemModel} from './nav-tree-item.model';
 	`]
 })
 
-export class NavTreeComponent {
+export class NavTreeComponent extends Unsubscribable {
 
 	public static DEFAULTS = {
 		VARIANT: 'nav-bordered nav-hover',
@@ -85,7 +85,8 @@ export class NavTreeComponent {
 
 	// TODO: remove when https://github.com/angular/angular/issues/13205
 	constructor(private route: ActivatedRoute) {
-		this.route.fragment.subscribe((fragment) => {
+		super();
+		this.route.fragment.takeUntil(this.unsubscribe).subscribe((fragment) => {
 			this.activeFragment = fragment;
 		});
 	}

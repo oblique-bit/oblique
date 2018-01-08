@@ -1,14 +1,16 @@
 import {Component, HostListener} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
+import 'rxjs/add/operator/takeUntil';
+import {Unsubscribable} from '../unsubscribe';
 
 @Component({
 	selector: 'or-navigator',
 	template: `<ng-content></ng-content>`
 })
-export class NavigatorComponent {
+export class NavigatorComponent extends Unsubscribable {
 
 	constructor(private router: Router, private route: ActivatedRoute) {
-
+		super();
 	}
 
 	@HostListener('document:keyup', ['$event'])
@@ -28,7 +30,7 @@ export class NavigatorComponent {
 		while (activeRoute.firstChild) {
 			activeRoute = activeRoute.firstChild;
 		}
-		activeRoute.data.subscribe((data) => {
+		activeRoute.data.takeUntil(this.unsubscribe).subscribe((data) => {
 			if (data['navigator'] && data['navigator'].up) {
 				this.router.navigate(data['navigator'].up);
 			} else {

@@ -1,11 +1,13 @@
 import {AfterViewInit, ContentChildren, Directive, EventEmitter, HostBinding, Output, QueryList} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
+import 'rxjs/add/operator/takeUntil';
+import {Unsubscribable} from '../unsubscribe';
 
 @Directive({
 	selector: '[orMasterLayoutNavigationMenu]',
 	exportAs: 'orMasterLayoutNavigationMenu'
 })
-export class MasterLayoutNavigationMenuDirective implements AfterViewInit {
+export class MasterLayoutNavigationMenuDirective extends Unsubscribable implements AfterViewInit {
 
 	@HostBinding('style')
 	public style: any;
@@ -17,12 +19,13 @@ export class MasterLayoutNavigationMenuDirective implements AfterViewInit {
 	$menus: QueryList<MasterLayoutNavigationMenuDirective>;
 
 	constructor(private sanitizer: DomSanitizer) {
+		super();
 	}
 
 	ngAfterViewInit() {
 		this.$menus.forEach(($menu) => {
 			if ($menu !== this) {
-				$menu.onShow.subscribe((show) => {
+				$menu.onShow.takeUntil(this.unsubscribe).subscribe((show) => {
 					// <FIX> - for presentation only:
 					// (cf. https://www.w3.org/Bugs/Public/show_bug.cgi?id=16328, https://bugs.chromium.org/p/chromium/issues/detail?id=20574):
 					if (show) {

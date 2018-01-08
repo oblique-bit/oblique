@@ -1,12 +1,14 @@
 import {AfterViewInit, Directive, ElementRef, HostBinding, Inject} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
+import 'rxjs/add/operator/takeUntil';
+import {Unsubscribable} from '../unsubscribe';
 import {MasterLayoutHeaderService} from './master-layout-header.service';
 
 @Directive({
 	selector: '[orMasterLayoutHeader]',
 	exportAs: 'orMasterLayoutHeader'
 })
-export class MasterLayoutHeaderDirective implements AfterViewInit {
+export class MasterLayoutHeaderDirective extends Unsubscribable implements AfterViewInit {
 
 	static OPEN_CLASS = 'header-open';
 
@@ -19,19 +21,20 @@ export class MasterLayoutHeaderDirective implements AfterViewInit {
 		private headerService: MasterLayoutHeaderService,
 		private elementRef: ElementRef,
 		@Inject(DOCUMENT) private document: any) {
+		super();
 
 		this.body = this.document.querySelector('body');
 		this.headerService.medium = this.elementRef.nativeElement.classList.contains('application-header-md');
 
 		// Subscribe to header changes:
-		this.headerService.openChange.subscribe((open) => {
+		this.headerService.openChange.takeUntil(this.unsubscribe).subscribe((open) => {
 			if (open) {
 				this.body.classList.add(MasterLayoutHeaderDirective.OPEN_CLASS);
 			} else {
 				this.body.classList.remove(MasterLayoutHeaderDirective.OPEN_CLASS);
 			}
 		});
-		this.headerService.variantChange.subscribe((headerMD) => {
+		this.headerService.variantChange.takeUntil(this.unsubscribe).subscribe((headerMD) => {
 			this.headerMD = headerMD;
 		});
 	}

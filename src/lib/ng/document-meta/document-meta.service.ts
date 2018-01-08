@@ -4,6 +4,8 @@ import {Title} from '@angular/platform-browser';
 import {DOCUMENT} from '@angular/common';
 import {TranslateService} from '@ngx-translate/core';
 import {filter, map, mergeMap} from 'rxjs/operators';
+import 'rxjs/add/operator/takeUntil';
+import {Unsubscribable} from '../unsubscribe';
 
 /**
  * DocumentMetaService - Service for updating document metadata
@@ -11,7 +13,7 @@ import {filter, map, mergeMap} from 'rxjs/operators';
  * Inspired & adapted from: https://gist.github.com/LA1CH3/718588765d56a8932de52c64c3561dcf
  */
 @Injectable()
-export class DocumentMetaService {
+export class DocumentMetaService extends Unsubscribable {
 
 	public titleSeparator = ' · ';
 	public titleSuffix = '';
@@ -29,10 +31,11 @@ export class DocumentMetaService {
 				private titleService: Title,
 				private translate: TranslateService,
 				@Inject(DOCUMENT) private document: any) {
+		super();
 
 		this.headElement = this.document.querySelector('head');
 		this.metaDescription = this.getOrCreateMetaElement('description');
-		this.translate.onLangChange.subscribe(this.updateMetaInformation.bind(this));
+		this.translate.onLangChange.takeUntil(this.unsubscribe).subscribe(this.updateMetaInformation.bind(this));
 
 		// Subscribe to NavigationEnd events and handle current activated route:
 		router.events.pipe(
@@ -46,7 +49,7 @@ export class DocumentMetaService {
 			}),
 			filter(route => route.outlet === 'primary'),
 			mergeMap(route => route.data)
-		).subscribe((data) => {
+		).takeUntil(this.unsubscribe).subscribe((data) => {
 			this.currentMetaInformation.title = data.title;
 			this.currentMetaInformation.description = data.description || this.description;
 			this.updateMetaInformation();
@@ -63,7 +66,7 @@ export class DocumentMetaService {
 	 */
 	public setTitle(title: string, separator: string = this.titleSeparator, suffix: string = this.titleSuffix) {
 		if (title && title !== '') {
-			this.translate.get([title, suffix]).subscribe(translation => {
+			this.translate.get([title, suffix]).takeUntil(this.unsubscribe).subscribe(translation => {
 				this.titleService.setTitle(`${translation[title]}${separator}${translation[suffix]}`);
 			});
 		} else {
@@ -85,7 +88,7 @@ export class DocumentMetaService {
 	 */
 	public setDescription(description: string) {
 		if (description && description !== '') {
-			this.translate.get(description).subscribe(translation => {
+			this.translate.get(description).takeUntil(this.unsubscribe).subscribe(translation => {
 				this.metaDescription.setAttribute('content', translation);
 			});
 		} else {

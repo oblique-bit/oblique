@@ -1,12 +1,14 @@
 import {Injectable, Inject} from '@angular/core';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
+import 'rxjs/add/operator/takeUntil';
+import {Unsubscribable} from '../unsubscribe';
 import {MasterLayoutApplicationDirective} from './master-layout-application.directive';
 
 /**
  * Service for controlling ObliqueUI application composite features.
  */
 @Injectable()
-export class MasterLayoutApplicationService {
+export class MasterLayoutApplicationService extends Unsubscribable {
 
 	public userLang: string = localStorage.getItem('oblique:lang');
 
@@ -14,10 +16,11 @@ export class MasterLayoutApplicationService {
 
 	constructor(private translate: TranslateService,
 				@Inject('ObliqueReactive.CONFIG') private config: any) {
+		super();
 
 		// User lang handling:
 		// --------------------
-		this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+		this.translate.onLangChange.takeUntil(this.unsubscribe).subscribe((event: LangChangeEvent) => {
 			// Ensure local value remains in sync:
 			this.userLang = event.lang;
 			localStorage.setItem('oblique:lang', this.userLang);

@@ -4,11 +4,13 @@ import {
 import {NgControl, NgForm, FormGroupDirective, FormGroupName, NgModelGroup} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/merge';
+import 'rxjs/add/operator/takeUntil';
+import {Unsubscribable} from '../unsubscribe';
 
 @Directive({
 	selector: '[orFormControlState]'
 })
-export class FormControlStateDirective implements AfterViewInit {
+export class FormControlStateDirective extends Unsubscribable implements AfterViewInit {
 
 	@Input() pristineValidation = false;
 	@Input() mandatory;
@@ -27,6 +29,7 @@ export class FormControlStateDirective implements AfterViewInit {
 				@Optional() modelGroup: NgModelGroup,
 				private elementRef: ElementRef,
 				private renderer: Renderer2) {
+		super();
 		this.form = ngForm || formGroupDirective;
 		this.group = modelGroup || formGroupName;
 
@@ -55,7 +58,7 @@ export class FormControlStateDirective implements AfterViewInit {
 		Observable.merge(
 			this.form.ngSubmit,
 			this.ngControl.statusChanges
-		).subscribe(() => this.generateState());
+		).takeUntil(this.unsubscribe).subscribe(() => this.generateState());
 
 		this.delayStateGenerationForReactiveForms();
 	}
