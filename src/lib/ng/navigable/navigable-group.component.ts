@@ -1,7 +1,7 @@
 import {
 	Input, EventEmitter, Output, AfterViewInit, ContentChildren, QueryList, Component, ViewEncapsulation
 } from '@angular/core';
-import 'rxjs/add/operator/takeUntil';
+import {takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe';
 import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from './navigable.directive';
 
@@ -10,7 +10,8 @@ import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from '
  */
 @Component({
 	selector: 'or-navigable-group',
-	template: `<ng-content></ng-content>`,
+	template: `
+		<ng-content></ng-content>`,
 	exportAs: 'navigableGroup',
 	encapsulation: ViewEncapsulation.None,
 	styles: [`
@@ -141,78 +142,88 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterView
 	ngAfterViewInit(): void {
 		this.navigables.forEach(navigable => {
 
-			navigable.navigableOnActivation.takeUntil(this.unsubscribe).subscribe(() => {
-				this.addToSelection(navigable);
-			});
-
-			navigable.navigableOnChange.takeUntil(this.unsubscribe).subscribe(($event: NavigableOnChangeEvent) => {
-				const index = this.indexOf(navigable);
-				let next: NavigableDirective = null;
-
-				if ($event.keyCode === NavigableDirective.KEYS.UP) {
-					next = this.fromIndex(Math.max(index - 1, 0));
-				} else if ($event.keyCode === NavigableDirective.KEYS.DOWN) {
-					next = this.fromIndex(Math.min(index + 1, this.navigables.length));
-				}
-
-				if (next) {
-					if (next.selected) {
-						this.deselect(navigable);
-					}
-
-					this.activate(next, $event.combine);
-					next.focus();
-				}
-			});
-
-			navigable.navigableOnMouseDown.takeUntil(this.unsubscribe).subscribe(($event: MouseEvent) => {
-				if ($event && $event.shiftKey) {
-					this.selectChildRange(navigable);
-				} else if ($event && $event.ctrlKey) {
-					if (navigable.selected) {
-						this.removeFromSelection(navigable);
-					} else {
-						this.addToSelection(navigable);
-					}
-				} else {
-					this.navigables.forEach(child => {
-						if (child !== navigable) {
-							this.deactivate(child, true);
-						}
-					});
-
+			navigable.navigableOnActivation
+				.pipe(takeUntil(this.unsubscribe))
+				.subscribe(() => {
 					this.addToSelection(navigable);
-				}
+				});
 
-				// In any case, deactivate current active navigable item:
-				this.deactivate(this.getActive());
-			});
-
-			navigable.navigableOnFocus.takeUntil(this.unsubscribe).subscribe(() => {
-				if (!navigable.active) {
-					// When a child is about to receive focus, deactivate the other items:
-					this.navigables.forEach(child => child !== navigable && this.deactivate(child, true)); //TODO: take a look at this
-					this.addToSelection(navigable);
-				}
-			});
-
-			navigable.navigableOnMove.takeUntil(this.unsubscribe).subscribe(($event: NavigableOnMoveEvent) => {
-				if (!$event.prevented) {
-					let from = this.indexOf(navigable);
+			navigable.navigableOnChange
+				.pipe(takeUntil(this.unsubscribe))
+				.subscribe(($event: NavigableOnChangeEvent) => {
+					const index = this.indexOf(navigable);
+					let next: NavigableDirective = null;
 
 					if ($event.keyCode === NavigableDirective.KEYS.UP) {
-						let to = from - 1;
-						if (to >= 0) {
-							this.items.splice(to, 0, this.items.splice(from, 1)[0]);
-						}
+						next = this.fromIndex(Math.max(index - 1, 0));
 					} else if ($event.keyCode === NavigableDirective.KEYS.DOWN) {
-						let to = from + 1;
-						if (to < this.items.length) {
-							this.items.splice(to, 0, this.items.splice(from, 1)[0]);
+						next = this.fromIndex(Math.min(index + 1, this.navigables.length));
+					}
+
+					if (next) {
+						if (next.selected) {
+							this.deselect(navigable);
+						}
+
+						this.activate(next, $event.combine);
+						next.focus();
+					}
+				});
+
+			navigable.navigableOnMouseDown
+				.pipe(takeUntil(this.unsubscribe))
+				.subscribe(($event: MouseEvent) => {
+					if ($event && $event.shiftKey) {
+						this.selectChildRange(navigable);
+					} else if ($event && $event.ctrlKey) {
+						if (navigable.selected) {
+							this.removeFromSelection(navigable);
+						} else {
+							this.addToSelection(navigable);
+						}
+					} else {
+						this.navigables.forEach(child => {
+							if (child !== navigable) {
+								this.deactivate(child, true);
+							}
+						});
+
+						this.addToSelection(navigable);
+					}
+
+					// In any case, deactivate current active navigable item:
+					this.deactivate(this.getActive());
+				});
+
+			navigable.navigableOnFocus
+				.pipe(takeUntil(this.unsubscribe))
+				.subscribe(() => {
+					if (!navigable.active) {
+						// When a child is about to receive focus, deactivate the other items:
+						this.navigables.forEach(child => child !== navigable && this.deactivate(child, true)); //TODO: take a look at this
+						this.addToSelection(navigable);
+					}
+				});
+
+			navigable.navigableOnMove
+				.pipe(takeUntil(this.unsubscribe))
+				.subscribe(($event: NavigableOnMoveEvent) => {
+					if (!$event.prevented) {
+						let from = this.indexOf(navigable);
+
+						if ($event.keyCode === NavigableDirective.KEYS.UP) {
+							let to = from - 1;
+							if (to >= 0) {
+								this.items.splice(to, 0, this.items.splice(from, 1)[0]);
+							}
+						} else if ($event.keyCode === NavigableDirective.KEYS.DOWN) {
+							let to = from + 1;
+							if (to < this.items.length) {
+								this.items.splice(to, 0, this.items.splice(from, 1)[0]);
+							}
 						}
 					}
-				}
-			});
+				});
 		});
 	}
 

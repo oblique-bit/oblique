@@ -1,5 +1,5 @@
 import {ContentChildren, Directive, HostListener, QueryList} from '@angular/core';
-import 'rxjs/add/operator/takeUntil';
+import {takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe';
 import {MasterLayoutHeaderService} from './master-layout-header.service';
 import {MasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
@@ -19,14 +19,16 @@ export class MasterLayoutNavigationDirective extends Unsubscribable {
 	constructor(private headerService: MasterLayoutHeaderService) {
 		super();
 		// Subscribe to header changes:
-		this.headerService.openChange.takeUntil(this.unsubscribe).subscribe((open) => {
-			if (!open) {
-				// Ensure we close all open navigation items:
-				this.$items.forEach(($item) => {
-					$item.close();
-				});
-			}
-		});
+		this.headerService.openChange
+			.pipe(takeUntil(this.unsubscribe))
+			.subscribe((open) => {
+				if (!open) {
+					// Ensure we close all open navigation items:
+					this.$items.forEach(($item) => {
+						$item.close();
+					});
+				}
+			});
 	}
 
 	@HostListener('window:click', ['$event.target'])

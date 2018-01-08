@@ -1,5 +1,5 @@
 import {Injectable, EventEmitter} from '@angular/core';
-import 'rxjs/add/operator/takeUntil';
+import {takeUntil} from 'rxjs/operators';
 import {ScrollingConfig} from '../scrolling';
 import {Unsubscribable} from '../unsubscribe';
 
@@ -19,9 +19,10 @@ export class MasterLayoutHeaderService extends Unsubscribable {
 		super();
 
 		if (config.transitions) {
-			config.onScroll.takeUntil(this.unsubscribe).subscribe((isScrolling) => {
-				this.medium = isScrolling;
-			});
+			config.onScroll.pipe(takeUntil(this.unsubscribe))
+				.subscribe((isScrolling) => {
+					this.medium = isScrolling;
+				});
 		}
 	}
 

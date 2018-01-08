@@ -1,7 +1,7 @@
 import {TestBed, inject} from '@angular/core/testing';
-import 'rxjs/add/operator/first';
-import {SpinnerService} from './spinner.service';
+import {first} from 'rxjs/operators';
 import {NotificationService} from '../notification';
+import {SpinnerService} from './spinner.service';
 
 describe('SpinnerService', () => {
 	let mockNotificationService;
@@ -16,14 +16,14 @@ describe('SpinnerService', () => {
 	});
 
 	it('should emit statusChangeEvent on activateSpinner', inject([SpinnerService], (service: SpinnerService) => {
-		service.onSpinnerStatusChange.first().subscribe((spinnerActive) => {
+		service.onSpinnerStatusChange.pipe(first()).subscribe((spinnerActive) => {
 			expect(spinnerActive).toBeTruthy();
 		});
 		service.activateSpinner();
 	}));
 
 	it('should emit statusChangeEvent on deactivateSpinner', inject([SpinnerService], (service: SpinnerService) => {
-		service.onSpinnerStatusChange.first().subscribe((spinnerActive) => {
+		service.onSpinnerStatusChange.pipe(first()).subscribe((spinnerActive) => {
 			expect(spinnerActive).toBeFalsy();
 		});
 		service.deactivateSpinner();

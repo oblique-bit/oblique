@@ -2,7 +2,7 @@ import {Component, Input, Optional, AfterViewInit} from '@angular/core';
 import {NgControl, NgForm, FormGroupDirective} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/merge';
-import 'rxjs/add/operator/takeUntil';
+import {takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe';
 import {FormControlStateDirective} from '../form-control-state';
 import {ErrorMessagesService} from './error-messages.service';
@@ -36,7 +36,9 @@ export class ErrorMessagesComponent extends Unsubscribable implements AfterViewI
 		Observable.merge(
 			this.control.statusChanges,
 			this.form.ngSubmit
-		).takeUntil(this.unsubscribe).subscribe(() => this.generateErrorMessages());
+		)
+			.pipe(takeUntil(this.unsubscribe))
+			.subscribe(() => this.generateErrorMessages());
 
 		this.delayMessageGenerationForReactiveForms();
 	}

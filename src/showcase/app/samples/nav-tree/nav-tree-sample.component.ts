@@ -2,8 +2,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NavTreeItemModel, NavTreeComponent, Unsubscribable} from '../../../../lib';
-import {merge} from 'rxjs/operators';
-import 'rxjs/add/operator/takeUntil';
+import {merge, takeUntil} from 'rxjs/operators';
 
 @Component({
 	selector: 'nav-tree-sample',
@@ -29,11 +28,12 @@ export class NavTreeSampleComponent extends Unsubscribable implements OnInit {
 	}
 
 	ngOnInit() {
-		this.route.data.takeUntil(this.unsubscribe).subscribe((data: { sample: any }) => {
-			this.items = data.sample.navTree.items.map((item: any) => {
-				return new NavTreeItemModel(item);
+		this.route.data.pipe(takeUntil(this.unsubscribe))
+			.subscribe((data: { sample: any }) => {
+				this.items = data.sample.navTree.items.map((item: any) => {
+					return new NavTreeItemModel(item);
+				});
 			});
-		});
 	}
 }
 
@@ -60,8 +60,7 @@ export class NavTreeDetailSampleComponent extends Unsubscribable implements OnIn
 
 	ngOnInit() {
 		this.route.params
-			.pipe(merge(this.route.fragment))
-			.takeUntil(this.unsubscribe)
+			.pipe(merge(this.route.fragment), takeUntil(this.unsubscribe))
 			.subscribe(() => {
 				this.routing = this.router.routerState.snapshot.url;
 			});

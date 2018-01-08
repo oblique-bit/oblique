@@ -1,7 +1,6 @@
 import {Directive, ElementRef, HostBinding} from '@angular/core';
 import {Router, NavigationEnd, ActivatedRoute} from '@angular/router';
-import {filter, map, mergeMap} from 'rxjs/operators';
-import 'rxjs/add/operator/takeUntil';
+import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe';
 import {MasterLayoutApplicationService} from './master-layout-application.service';
 
@@ -40,9 +39,9 @@ export class MasterLayoutApplicationDirective extends Unsubscribable {
 				return route;
 			}),
 			filter(route => route.outlet === 'primary'),
-			mergeMap(route => route.data)
-		).takeUntil(this.unsubscribe)
-			.subscribe((data) => {
+			mergeMap(route => route.data),
+			takeUntil(this.unsubscribe)
+		).subscribe((data) => {
 			let masterLayout = data.masterLayout || {};
 
 			this.hasCover = masterLayout.hasCover !== undefined ? masterLayout.hasCover : this.defaultHasCover;

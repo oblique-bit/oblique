@@ -4,7 +4,7 @@ import {
 import {NgControl, NgForm, FormGroupDirective, FormGroupName, NgModelGroup} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/merge';
-import 'rxjs/add/operator/takeUntil';
+import {takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe';
 
 @Directive({
@@ -58,7 +58,9 @@ export class FormControlStateDirective extends Unsubscribable implements AfterVi
 		Observable.merge(
 			this.form.ngSubmit,
 			this.ngControl.statusChanges
-		).takeUntil(this.unsubscribe).subscribe(() => this.generateState());
+		)
+			.pipe(takeUntil(this.unsubscribe))
+			.subscribe(() => this.generateState());
 
 		this.delayStateGenerationForReactiveForms();
 	}

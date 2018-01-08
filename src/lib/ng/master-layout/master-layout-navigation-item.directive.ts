@@ -1,7 +1,7 @@
 import {
 	AfterViewInit, ContentChild, ContentChildren, Directive, ElementRef, EventEmitter, HostBinding, Output, QueryList
 } from '@angular/core';
-import 'rxjs/add/operator/takeUntil';
+import {takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe';
 import {MasterLayoutNavigationToggleDirective} from './master-layout-navigation-toggle.directive';
 import {MasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
@@ -28,9 +28,8 @@ export class MasterLayoutNavigationItemDirective extends Unsubscribable implemen
 	@ContentChildren(MasterLayoutNavigationItemDirective, {descendants: true})
 	$items: QueryList<MasterLayoutNavigationItemDirective>;
 
-	constructor(
-		public elementRef: ElementRef,
-		private headerService: MasterLayoutHeaderService) {
+	constructor(public elementRef: ElementRef,
+				private headerService: MasterLayoutHeaderService) {
 		super();
 
 		// Subscribe to header changes:
@@ -44,30 +43,34 @@ export class MasterLayoutNavigationItemDirective extends Unsubscribable implemen
 
 	ngAfterViewInit() {
 		this.$toggles.forEach(($toggle) => {
-			$toggle.onToggle.takeUntil(this.unsubscribe).subscribe(($event: any) => {
-				if (!$event.prevented) {
-					if (this.$menu) {
-						if (this.show) {
-							this.close();
+			$toggle.onToggle
+				.pipe(takeUntil(this.unsubscribe))
+				.subscribe(($event: any) => {
+					if (!$event.prevented) {
+						if (this.$menu) {
+							if (this.show) {
+								this.close();
+							} else {
+								this.open();
+							}
 						} else {
-							this.open();
-						}
-					} else {
-						// Final toggle, let's close all parent menus:
-						this.onClose.emit();
+							// Final toggle, let's close all parent menus:
+							this.onClose.emit();
 
-						// Ensure we close the application header (when master layout is collapsed):
-						this.headerService.open = false;
+							// Ensure we close the application header (when master layout is collapsed):
+							this.headerService.open = false;
+						}
+						$event.prevented = true;
 					}
-					$event.prevented = true;
-				}
-			});
+				});
 		});
 
 		this.$items.forEach(($item) => {
-			$item.onClose.takeUntil(this.unsubscribe).subscribe(() => {
-				this.close();
-			});
+			$item.onClose
+				.pipe(takeUntil(this.unsubscribe))
+				.subscribe(() => {
+					this.close();
+				});
 		});
 	}
 

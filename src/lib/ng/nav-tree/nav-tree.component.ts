@@ -1,6 +1,6 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, RouterLinkActive} from '@angular/router';
-import 'rxjs/add/operator/takeUntil';
+import {takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe';
 import {NavTreeItemModel} from './nav-tree-item.model';
 
@@ -12,7 +12,7 @@ import {NavTreeItemModel} from './nav-tree-item.model';
 			<ng-content></ng-content>
 			<ng-template ngFor [ngForOf]="items" let-item>
 				<li class="nav-item open" role="presentation"
-				    *ngIf="visible(item)">
+					*ngIf="visible(item)">
 					<a class="nav-link" role="treeitem" aria-selected="false"
 					   [routerLink]="item.routes"
 					   #rla="routerLinkActive" routerLinkActive [routerLinkActiveOptions]="rlaOptions"
@@ -26,14 +26,14 @@ import {NavTreeItemModel} from './nav-tree-item.model';
 						<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
 					</a>
 					<div id="#{{itemKey(item)}}" class="collapse show"
-					     *ngIf="item.items" [ngbCollapse]="item.collapsed">
+						 *ngIf="item.items" [ngbCollapse]="item.collapsed">
 						<or-nav-tree [items]="item.items"
-						             [prefix]="itemKey(item)"
-						             [filterPattern]="filterPattern"
-						             [labelFormatter]="labelFormatter"
-						             [pathPrefix]="pathPrefix"
-						             [rlaOptions]="rlaOptions"
-						             [variant]="variant"></or-nav-tree>
+									 [prefix]="itemKey(item)"
+									 [filterPattern]="filterPattern"
+									 [labelFormatter]="labelFormatter"
+									 [pathPrefix]="pathPrefix"
+									 [rlaOptions]="rlaOptions"
+									 [variant]="variant"></or-nav-tree>
 					</div>
 				</li>
 			</ng-template>
@@ -86,9 +86,11 @@ export class NavTreeComponent extends Unsubscribable {
 	// TODO: remove when https://github.com/angular/angular/issues/13205
 	constructor(private route: ActivatedRoute) {
 		super();
-		this.route.fragment.takeUntil(this.unsubscribe).subscribe((fragment) => {
-			this.activeFragment = fragment;
-		});
+		this.route.fragment
+			.pipe(takeUntil(this.unsubscribe))
+			.subscribe((fragment) => {
+				this.activeFragment = fragment;
+			});
 	}
 
 	@Input()

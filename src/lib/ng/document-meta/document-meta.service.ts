@@ -3,8 +3,7 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {DOCUMENT} from '@angular/common';
 import {TranslateService} from '@ngx-translate/core';
-import {filter, map, mergeMap} from 'rxjs/operators';
-import 'rxjs/add/operator/takeUntil';
+import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe';
 
 /**
@@ -35,7 +34,7 @@ export class DocumentMetaService extends Unsubscribable {
 
 		this.headElement = this.document.querySelector('head');
 		this.metaDescription = this.getOrCreateMetaElement('description');
-		this.translate.onLangChange.takeUntil(this.unsubscribe).subscribe(this.updateMetaInformation.bind(this));
+		this.translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe(this.updateMetaInformation.bind(this));
 
 		// Subscribe to NavigationEnd events and handle current activated route:
 		router.events.pipe(
@@ -48,8 +47,9 @@ export class DocumentMetaService extends Unsubscribable {
 				return route;
 			}),
 			filter(route => route.outlet === 'primary'),
-			mergeMap(route => route.data)
-		).takeUntil(this.unsubscribe).subscribe((data) => {
+			mergeMap(route => route.data),
+			takeUntil(this.unsubscribe)
+		).subscribe((data) => {
 			this.currentMetaInformation.title = data.title;
 			this.currentMetaInformation.description = data.description || this.description;
 			this.updateMetaInformation();
@@ -66,7 +66,7 @@ export class DocumentMetaService extends Unsubscribable {
 	 */
 	public setTitle(title: string, separator: string = this.titleSeparator, suffix: string = this.titleSuffix) {
 		if (title && title !== '') {
-			this.translate.get([title, suffix]).takeUntil(this.unsubscribe).subscribe(translation => {
+			this.translate.get([title, suffix]).pipe(takeUntil(this.unsubscribe)).subscribe(translation => {
 				this.titleService.setTitle(`${translation[title]}${separator}${translation[suffix]}`);
 			});
 		} else {
@@ -88,7 +88,7 @@ export class DocumentMetaService extends Unsubscribable {
 	 */
 	public setDescription(description: string) {
 		if (description && description !== '') {
-			this.translate.get(description).takeUntil(this.unsubscribe).subscribe(translation => {
+			this.translate.get(description).pipe(takeUntil(this.unsubscribe)).subscribe(translation => {
 				this.metaDescription.setAttribute('content', translation);
 			});
 		} else {

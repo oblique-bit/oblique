@@ -1,6 +1,5 @@
 import {TestBed, inject} from '@angular/core/testing';
-import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/take';
+import {first, take} from 'rxjs/operators';
 import {NotificationService} from './notification.service';
 import {NotificationEvent, NotificationType} from './notification';
 import {NotificationConfig} from './notification.config';
@@ -36,7 +35,7 @@ describe('NotificationService', () => {
 	describe('send()', () => {
 		let notificationEvent: NotificationEvent;
 		beforeEach(() => {
-			notificationService.events.first().subscribe(event => {
+			notificationService.events.pipe(first()).subscribe(event => {
 				notificationEvent = event;
 			});
 		});
@@ -70,7 +69,7 @@ describe('NotificationService', () => {
 		let notificationEvents: NotificationEvent[] = [];
 		const count = 5;
 		beforeEach(() => {
-			notificationService.events.take(count).subscribe(event => {
+			notificationService.events.pipe(take(count)).subscribe(event => {
 				notificationEvents.push(event);
 			});
 		});
@@ -88,7 +87,7 @@ describe('NotificationService', () => {
 	describe('clear()', () => {
 		let notificationEvent: NotificationEvent;
 		beforeEach(() => {
-			notificationService.events.first().subscribe(event => {
+			notificationService.events.pipe(first()).subscribe(event => {
 				notificationEvent = event;
 			});
 		});
@@ -104,7 +103,7 @@ describe('NotificationService', () => {
 		let notificationEmitted = false;
 		let notificationEvent: NotificationEvent;
 		beforeEach(() => {
-			notificationService.events.first().subscribe(event => {
+			notificationService.events.pipe(first()).subscribe(event => {
 				notificationEmitted = true;
 				notificationEvent = event;
 			});
@@ -120,7 +119,7 @@ describe('NotificationService', () => {
 	describe('default()', () => {
 		let notificationEvent: NotificationEvent;
 		beforeEach(() => {
-			notificationService.events.first().subscribe(event => {
+			notificationService.events.pipe(first()).subscribe(event => {
 				notificationEvent = event;
 			});
 		});
@@ -139,7 +138,7 @@ describe('NotificationService', () => {
 	describe('info()', () => {
 		let notificationEvent: NotificationEvent;
 		beforeEach(() => {
-			notificationService.events.first().subscribe(event => {
+			notificationService.events.pipe(first()).subscribe(event => {
 				notificationEvent = event;
 			});
 		});
@@ -158,7 +157,7 @@ describe('NotificationService', () => {
 	describe('success()', () => {
 		let notificationEvent: NotificationEvent;
 		beforeEach(() => {
-			notificationService.events.first().subscribe(event => {
+			notificationService.events.pipe(first()).subscribe(event => {
 				notificationEvent = event;
 			});
 		});
@@ -177,7 +176,7 @@ describe('NotificationService', () => {
 	describe('warning()', () => {
 		let notificationEvent: NotificationEvent;
 		beforeEach(() => {
-			notificationService.events.first().subscribe(event => {
+			notificationService.events.pipe(first()).subscribe(event => {
 				notificationEvent = event;
 			});
 		});
@@ -196,7 +195,7 @@ describe('NotificationService', () => {
 	describe('error()', () => {
 		let notificationEvent: NotificationEvent;
 		beforeEach(() => {
-			notificationService.events.first().subscribe(event => {
+			notificationService.events.pipe(first()).subscribe(event => {
 				notificationEvent = event;
 			});
 		});

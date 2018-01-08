@@ -1,6 +1,6 @@
 import {Injectable, Inject} from '@angular/core';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
-import 'rxjs/add/operator/takeUntil';
+import {takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe';
 import {MasterLayoutApplicationDirective} from './master-layout-application.directive';
 
@@ -20,11 +20,13 @@ export class MasterLayoutApplicationService extends Unsubscribable {
 
 		// User lang handling:
 		// --------------------
-		this.translate.onLangChange.takeUntil(this.unsubscribe).subscribe((event: LangChangeEvent) => {
-			// Ensure local value remains in sync:
-			this.userLang = event.lang;
-			localStorage.setItem('oblique:lang', this.userLang);
-		});
+		this.translate.onLangChange
+			.pipe(takeUntil(this.unsubscribe))
+			.subscribe((event: LangChangeEvent) => {
+				// Ensure local value remains in sync:
+				this.userLang = event.lang;
+				localStorage.setItem('oblique:lang', this.userLang);
+			});
 
 		// Define default/fallback lang:
 		translate.setDefaultLang((this.config.defaults && this.config.defaults.locale) || 'en');

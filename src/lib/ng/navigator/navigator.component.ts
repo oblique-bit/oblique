@@ -1,6 +1,6 @@
 import {Component, HostListener} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import 'rxjs/add/operator/takeUntil';
+import {takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe';
 
 @Component({
@@ -30,7 +30,7 @@ export class NavigatorComponent extends Unsubscribable {
 		while (activeRoute.firstChild) {
 			activeRoute = activeRoute.firstChild;
 		}
-		activeRoute.data.takeUntil(this.unsubscribe).subscribe((data) => {
+		activeRoute.data.pipe(takeUntil(this.unsubscribe)).subscribe((data) => {
 			if (data['navigator'] && data['navigator'].up) {
 				this.router.navigate(data['navigator'].up);
 			} else {

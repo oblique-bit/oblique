@@ -1,7 +1,6 @@
 import {Directive, HostBinding, OnInit, OnDestroy, Input} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import 'rxjs/add/operator/takeUntil';
-import 'rxjs/add/operator/takeUntil';
+import {takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe';
 
 const I18N_PLACEHOLDERS = {
@@ -28,7 +27,7 @@ export class DatepickerPlaceholderDirective extends Unsubscribable implements On
 			this.setPlaceholder(this.translateService.currentLang);
 
 			this.translateService.onLangChange
-				.takeUntil(this.unsubscribe)
+				.pipe(takeUntil(this.unsubscribe))
 				.subscribe(({lang}) => {
 					this.setPlaceholder(lang);
 			});
