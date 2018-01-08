@@ -35,6 +35,7 @@ export * from './scrolling';
 export * from './spinner';
 export * from './toggle';
 export * from './unsaved-changes';
+export * from './unsubscribe';
 
 const OBLIQUE_MODULES = [
 	ColumnLayoutModule,
