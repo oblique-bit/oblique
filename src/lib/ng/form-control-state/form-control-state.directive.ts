@@ -1,5 +1,5 @@
 import {
-	Directive, HostBinding, ContentChild, AfterViewInit, Input, Optional, ElementRef, Renderer2
+	Directive, HostBinding, ContentChild, AfterViewInit, Input, Optional, ElementRef, Renderer2, ViewChild
 } from '@angular/core';
 import {NgControl, NgForm, FormGroupDirective, FormGroupName, NgModelGroup} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';

@@ -87,7 +87,7 @@ let nextId = 0;
 	],
 	template: `
 	<div [ngClass]="{'dropdown': !dropup, 'dropup': dropup}">
-		<button type="button" class="multiselect-toggle btn btn-default"
+		<button type="button" class="multiselect-toggle btn btn-secondary"
 		        (click)="toggleDropdown()" [disabled]="disabled"
 		        [ngClass]="{open: isVisible}">
 			<span class="multiselect-label">{{ title | translate:titleTranslateParams }}</span>

@@ -9,7 +9,7 @@ import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 		<div class="input-group">
 			<ng-content></ng-content>
 			<div class="input-group-append">
-				<button type="button" class="btn btn-default" [disabled]="disabled" (click)="ngbDatePicker.toggle()">
+				<button type="button" class="btn btn-secondary" [disabled]="disabled" (click)="ngbDatePicker.toggle()">
 					<span class="fa fa-calendar"></span>
 				</button>
 			</div>

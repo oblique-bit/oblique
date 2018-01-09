@@ -51,7 +51,7 @@
 										</button>
 										<div class="btn-group dropdown" role="group" ngbDropdown>
 											<button type="button"
-													class="btn btn-default dropdown-toggle dropdown-actions"
+													class="btn btn-secondary dropdown-toggle dropdown-actions"
 													id="samples-navigable-actions-dropdown"
 													ngbDropdownToggle
 													dropdown-closable>
@@ -103,21 +103,21 @@
 						<div class="list-group-item">Actions</div>
 						<div class="list-group-item" *ngFor="let scientist of scientists">
 							<div class="btn-group">
-								<button type="button" class="btn btn-default"
+								<button type="button" class="btn btn-secondary"
 										(click)="toggleActivation(scientist, navigableGroup)"
 										ngbTooltip="Toggle item activation" container="body">
 									<span class="fa fa-toggle-off"
 										  [ngClass]="{'text-success fa-toggle-on': isSelected(scientist)}"></span>
 									<span class="sr-only">Activate</span>
 								</button>
-								<button type="button" class="btn btn-default"
+								<button type="button" class="btn btn-secondary"
 										(click)="toggleHighlighting(scientist)"
 										ngbTooltip="Toggle item highlighting" container="body">
 									<span class="fa fa-lightbulb-o"
 										  [ngClass]="{'text-warning': isHighlighted(scientist)}"></span>
 									<span class="sr-only">Highlight</span>
 								</button>
-								<button type="button" class="btn btn-default"
+								<button type="button" class="btn btn-secondary"
 										(click)="lock(scientist)"
 										ngbTooltip="Toggle item lock (disables moving)" container="body">
 									<span class="fa fa-lock"
