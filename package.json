@@ -24,7 +24,7 @@
   },
   "private": true,
   "publishConfig": {
-    "registry": "https://nexus.eap.bit.admin.ch/repository/npm-intern/"
+    "registry": "https://repo.bit.admin.ch/repository/npm-private/"
   },
   "repository": {
     "type": "git",
