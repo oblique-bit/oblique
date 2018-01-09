@@ -105,8 +105,8 @@ gulp.task('changelog', function () {
 	return gulp.src('CHANGELOG.md')
 		.pipe(conventionalChangelog({
 			// conventional-changelog options:
-			preset: 'angular',
-			releaseCount: 0
+			preset: 'angular'
+			//releaseCount: 0
 		}, {
 			// context options:
 			linkCompare: false,

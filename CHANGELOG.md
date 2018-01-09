@@ -1,5 +1,29 @@
 ### ObliqueReactive
 
+<a name="2.0.0-RC.3"></a>
+#### [2.0.0-RC.3](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.3) (2018-01-09)
+
+##### Dependencies updates
+* **ObliqueUI:** 2.0.0-RC.3
+* **Bootstrap:** 4.0.0-beta.3
+* **Angular:** 5.1.3
+* **ng-bootstrap:** 1.0.0-beta.9
+* **ngx-translate:** 9.0.2
+* **rxjs:** 5.5.6
+* **ajv:** 6.0.0
+
+##### Features
+* **notification:** can pass parameters to title and message translations ([d781e19](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d781e19))
+* **unsubscribe:** add `Unsubscribable` class to unsubscribe form `Observable` ([d20d4bd](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d20d4bd))
+
+##### Bug Fixes
+* **schema-validation:** `SchemaValidationModule` now provides `schemaValidationService` ([acbc7f9](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/acbc7f9))
+* **AoT:** avoid lambda function on providers ([8a90825](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/8a90825))
+* **navigator:** fix routing to module ([74e2778](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/74e2778))
+* **notification:** add `alert-default` class to default alerts ([dac70b1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/dac70b1))
+* **observable:** unsubscribe from all observables ([95b4b7a](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/95b4b7a))
+
+
 <a name="2.0.0-RC.2-1"></a>
 #### [2.0.0-RC.2-1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.2-1) (2017-11-01)
 

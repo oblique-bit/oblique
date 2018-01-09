@@ -12,7 +12,7 @@ ObliqueReactive uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.ang
 
 1. Register our npm repository manager (Nexus 3):
 
-	npm config set registry https://nexus3.eap.bit.admin.ch/repository/npm-all/
+	npm config set registry https://nexus.eap.bit.admin.ch/repository/npm-all/
 
 2. Install `oblique-reactive` as an npm dependency:
 
@@ -86,7 +86,7 @@ If you are using Git for the first time, configure your user information as well
 
 ###### <a name="npm-config"></a> NPM config
 
-	npm config set registry https://nexus3.eap.bit.admin.ch/repository/npm-all/
+	npm config set registry https://nexus.eap.bit.admin.ch/repository/npm-all/
 	npm config set strict-ssl false
 
 #### First-time setup
@@ -157,10 +157,10 @@ Before publishing, execute the following steps:
 
 Prepare your workspace:
 
-1. Ensure you have an account with publishing privileges on the internal `npm` registry ([BIT Nexus v3](https://nexus3.eap.bit.admin.ch/))
+1. Ensure you have an account with publishing privileges on the internal `npm` registry ([BIT Nexus](https://nexus.eap.bit.admin.ch/))
 2. Authenticate on the internal npm registry (Nexus v3):
 
-		npm login --registry=https://nexus3.eap.bit.admin.ch/repository/npm-intern/
+		npm login --registry=https://nexus.eap.bit.admin.ch/repository/npm-intern/
 
     > Follow the steps on the terminal as you may be asked for credentials.
 
