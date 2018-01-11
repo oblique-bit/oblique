@@ -15,6 +15,7 @@ let del = require('del'),
 	gutil = require('gulp-util'),
 	hb = require('gulp-hb'),
 	rename = require('gulp-rename'),
+	replace = require('gulp-replace'),
 	gulpFile = require('gulp-file'),
 
 	// Project-specific:
@@ -197,6 +198,15 @@ gulp.task('dist-meta', () => {
 	return gulp.src('README.md')
 		.pipe(gulpFile('package.json', JSON.stringify(output, null, 2)))
 		.pipe(gulp.dest(paths.dist));
+});
+//</editor-fold>
+
+//<editor-fold desc="Showcase tasks">
+gulp.task('showcase-build-cleanup', (callback) => {
+	// Move `index.html` to target root folder and update resources paths accordingly:
+	return gulp.src('./target/showcase/index.html')
+		.pipe(replace(/\.\.\//g, './'))
+		.pipe(gulp.dest('./target/'));
 });
 //</editor-fold>
 
