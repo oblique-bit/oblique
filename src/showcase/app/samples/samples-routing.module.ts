@@ -18,6 +18,7 @@ import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-s
 import {ToggleSampleComponent} from './toggle/toggle-sample.component';
 
 const samplesRoutes: Routes = [
+
 	{path: 'column-layout', component: ColumnLayoutSampleComponent},
 	{path: 'datepicker', component: DatepickerSampleComponent},
 	{path: 'filter-box', component: FilterBoxSampleComponent},
