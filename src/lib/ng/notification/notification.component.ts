@@ -18,7 +18,7 @@ import {NotificationService} from './notification.service';
 						&times;
 					</button>
 					<h4>
-						<span *ngIf="!notification.title">{{("i18n.notification.type." + notification.type) | translate}}</span>
+						<span *ngIf="!notification.titleKey">{{("i18n.notification.type." + notification.type) | translate}}</span>
 						<span>{{notification.titleKey | translate:notification.titleParams}}</span>
 					</h4>
 					<p>{{notification.messageKey | translate:notification.messageParams}}</p>
