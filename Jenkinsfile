@@ -60,7 +60,7 @@ pipeline {
 			}
 		}
 
-		stage('Push to UCD') {
+		stage('Push Showcase to UCD') {
 			when {
 				branch 'master'
 			}
@@ -77,7 +77,8 @@ pipeline {
 						def node = docker.image('bit/openjdk:8-jdk-node')
 						node.pull()
 						node.inside('-u root') {
-							sh 'npm run build -- --base-href=/oblique-reactive/${VERSION_RELEASE}/ --prod'
+							sh 'npm run showcase-build -- --base-href=/oblique-reactive/${VERSION_RELEASE}/ --prod'
+							sh 'npm run showcase-build-cleanup'
 
 							sh 'echo "Pushing to UCD ${DS_WEB_URL} @ $(date)..."'
 							withCredentials([string(credentialsId: 'ucdCredentials', variable: 'ucdToken')]) {
