@@ -6,6 +6,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MasterLayoutModule} from '../../../lib/ng';
 import {LayoutControlsComponent} from './controls/controls.component';
 import {LayoutNavigationComponent} from './navigation/navigation.component';
+import {LayoutFooterComponent} from './footer/footer.component';
 
 
 @NgModule({
@@ -13,15 +14,16 @@ import {LayoutNavigationComponent} from './navigation/navigation.component';
 		CommonModule,
 		RouterModule,
 		TranslateModule,
-		NgbModule,
 		MasterLayoutModule
 	],
 	declarations: [
 		LayoutControlsComponent,
+		LayoutFooterComponent,
 		LayoutNavigationComponent
 	],
 	exports: [
 		LayoutControlsComponent,
+		LayoutFooterComponent,
 		LayoutNavigationComponent
 	]
 })

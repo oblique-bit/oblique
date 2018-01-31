@@ -4,7 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {NgbDatepickerConfig, NgbModule, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateModule, TranslateLoader, TranslateService} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 // ObliqueReactive:
@@ -73,13 +73,21 @@ export function createTranslateLoader(http: HttpClient) {
 	bootstrap: [AppComponent]
 })
 export class AppModule {
-	constructor(documentMetaService: DocumentMetaService,
-				tooltipConfig: NgbTooltipConfig,
-				datepickerConfig: NgbDatepickerConfig,
+	constructor(private translate: TranslateService,
+				private tooltipConfig: NgbTooltipConfig,
+				private datepickerConfig: NgbDatepickerConfig,
+				private documentMetaService: DocumentMetaService,
 				@Inject('ObliqueReactive.CONFIG') private config: any) {
-		documentMetaService.titleSuffix = config.title;
-		documentMetaService.description = config.description;
+		// As the HEAD `title` element and the `description` meta element are outside any
+		// Angular entry component, we use a service to update these element values:
+		documentMetaService.titleSuffix = 'i18n.application.title';
+		documentMetaService.description = 'i18n.application.description';
 
+		// Default i18n configuration:
+		translate.setDefaultLang(config.defaults.locale || 'en');
+		translate.use(config.defaults.locale || 'en');
+
+		// NgBootstrap configuration:
 		tooltipConfig.container = 'body';
 		datepickerConfig.navigation = 'arrows';
 	}

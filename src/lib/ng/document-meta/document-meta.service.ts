@@ -113,7 +113,7 @@ export class DocumentMetaService extends Unsubscribable {
 	}
 
 	/**
-	 * Updates the document page title and description
+	 * Updates the document page title and description.
 	 */
 	private updateMetaInformation() {
 		this.setTitle(this.currentMetaInformation.title);

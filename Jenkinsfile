@@ -96,7 +96,7 @@ pipeline {
 			}
 		}
 
-		stage('Deploy') {
+		stage('Deploy?') {
 			when {
 				branch 'master'
 			}
@@ -104,7 +104,6 @@ pipeline {
 				timeout(time: 1, unit: 'DAYS') {
 					input "Deploy on REF?"
 				}
-
 			}
 		}
 

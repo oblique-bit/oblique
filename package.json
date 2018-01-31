@@ -32,8 +32,8 @@
     "path": "projects/OUI/repos/oblique2-reactive"
   },
   "scripts": {
-    "start": "./node_modules/.bin/ng serve --port 3001 --preserve-symlinks",
     "dev": "npm run start -- --open",
+    "start": "./node_modules/.bin/ng serve --port 3001 --preserve-symlinks",
     "dev-link": "./node_modules/.bin/gulp dev-link",
     "dist": "./node_modules/.bin/gulp dist",
     "ci-build": "npm run lint && npm run test -- --single-run --progress false && npm run dist",

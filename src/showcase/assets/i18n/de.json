@@ -1,9 +1,14 @@
 {
   "i18n": {
     "application": {
-      "shortName": "OR",
-      "longName": "ObliqueReactive",
-      "description": "Reactive front-end framework for your business web application.",
+      "code": "ORS",
+      "title": "ObliqueReactiveSeed",
+      "description": "[de] Reactive project template for your business web application. Powered by ObliqueUI, ObliqueReactive and Angular.",
+      "organization": {
+        "name": "Bundesamt für Informatik und Telekommunikation",
+        "url": "https://www.bit.admin.ch/bit/de/home.html",
+        "email": "info@bit.admin.ch"
+      },
       "locales": {
         "de": "Deutsch",
         "fr": "Français",
@@ -106,6 +111,8 @@
         }
       },
       "search": {
+        "label": "Suche",
+        "action": "Suchen",
         "noResults": "Keine Treffer",
         "placeholder": "Suche nach Begriff",
         "results": "Suchtreffen"
