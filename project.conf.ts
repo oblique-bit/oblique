@@ -23,6 +23,9 @@ export const ProjectConfig = {
 				sticky:     true,
 				variant:    null // Possible value(s): 'application-header-md'
 			},
+			footer: {
+				variant:    null // Possible value(s): 'application-footer-sm'
+			},
 			navigation: {
 				scrollable:  true // Enable if your primary navigation has a lot of first-level menu entries.
 			}
