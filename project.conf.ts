@@ -1,5 +1,13 @@
 export const ProjectConfig = {
 	app: {
+		/**
+		 * Title is used for displaying the application name
+		 * and for setting the content of the `<title />` HEAD element.
+		 *
+		 * Should you require internationalization for the app title,
+		 * use an Angular expression instead:
+		 * {{"i18n.application.title" | translate}}
+		 */
 		title: 'ObliqueReactive',
 		home: '/home',
 		locales: ['de', 'fr', 'it', 'en'], // List of available locales
@@ -9,6 +17,7 @@ export const ProjectConfig = {
 
 		// Theming:
 		theme: {
+			offcanvas:      false, // Enables offcanvas sidebar.
 			body: {
 				'class': 'has-overlay',
 				attributes: null

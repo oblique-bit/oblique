@@ -225,6 +225,11 @@
           "toggle": "[de] Toggle right column."
         }
       }
+    },
+    "a11y": {
+      "controls": {
+        "title": "Header controls menu"
+      }
     }
   }
 }

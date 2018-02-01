@@ -24,7 +24,6 @@ let del = require('del'),
 		src: 'src/',
 		lib: 'src/lib/',
 		sass: 'src/lib/sass/',
-		partials: 'src/lib/partials/',
 		showcase: 'src/showcase/',
 		dist: 'dist/'
 	},
@@ -47,15 +46,12 @@ function webpackCallBack(taskName, gulpDone) {
 gulp.task('build-templates', () => {
 	return gulp
 		.src([
-			paths.showcase + '**/*.hbs',
-			'!' + paths.showcase + 'partials/**/*.hbs'
+			paths.showcase + '**/*.hbs'
 		])
 		.pipe(hb({
 			partials: [
 				'node_modules/oblique-ui/templates/layouts/**/*.hbs',
-				'node_modules/oblique-ui/templates/partials/**/*.hbs',
-				'src/lib/partials/*.hbs',
-				paths.showcase + 'partials/*.hbs'
+				'node_modules/oblique-ui/templates/partials/**/*.hbs'
 			],
 			helpers: [
 				'node_modules/handlebars-helpers/lib/**/*.js',
@@ -154,8 +150,7 @@ gulp.task('dist-clean', () => {
 
 gulp.task('dist-copy', () => {
 	return gulp.src([
-		paths.sass + '**/*',
-		paths.partials + '**/*'
+		paths.sass + '**/*'
 	], {base: paths.lib})
 		.pipe(gulp.dest(paths.dist));
 });
