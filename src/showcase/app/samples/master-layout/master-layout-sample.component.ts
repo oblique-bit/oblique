@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {MasterLayoutApplicationService} from '../../../../lib';
+import {MasterLayoutFooterService} from '../../../../lib/ng/master-layout/master-layout-footer.service';
 
 @Component({
 	selector: 'master-layout-sample',
@@ -7,7 +8,8 @@ import {MasterLayoutApplicationService} from '../../../../lib';
 })
 export class MasterLayoutSampleComponent {
 
-	constructor(private applicationService: MasterLayoutApplicationService) {
+	constructor(private applicationService: MasterLayoutApplicationService,
+				private footerService: MasterLayoutFooterService) {
 	}
 
 	get cover(): boolean {
@@ -32,5 +34,13 @@ export class MasterLayoutSampleComponent {
 
 	set applicationFixed(value: boolean) {
 		this.applicationService.applicationFixed = value;
+	}
+
+	get footerSM() {
+		return this.footerService.small;
+	}
+
+	set footerSM(value: boolean) {
+		this.footerService.small = value;
 	}
 }

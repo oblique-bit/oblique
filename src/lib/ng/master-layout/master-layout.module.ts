@@ -9,6 +9,8 @@ import {MasterLayoutNavigationItemDirective} from './master-layout-navigation-it
 import {MasterLayoutNavigationToggleDirective} from './master-layout-navigation-toggle.directive';
 import {MasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
 import {MasterLayoutNavigationDirective} from './master-layout-navigation.directive';
+import {MasterLayoutFooterDirective} from './master-layout-footer.directive';
+import {MasterLayoutFooterService} from './master-layout-footer.service';
 
 @NgModule({
 	imports: [
@@ -18,6 +20,7 @@ import {MasterLayoutNavigationDirective} from './master-layout-navigation.direct
 	declarations: [
 		MasterLayoutApplicationDirective,
 		MasterLayoutHeaderDirective,
+		MasterLayoutFooterDirective,
 		MasterLayoutNavigationDirective,
 		MasterLayoutNavigationItemDirective,
 		MasterLayoutNavigationToggleDirective,
@@ -26,6 +29,7 @@ import {MasterLayoutNavigationDirective} from './master-layout-navigation.direct
 	exports: [
 		MasterLayoutApplicationDirective,
 		MasterLayoutHeaderDirective,
+		MasterLayoutFooterDirective,
 		MasterLayoutNavigationDirective,
 		MasterLayoutNavigationItemDirective,
 		MasterLayoutNavigationToggleDirective,
@@ -38,7 +42,8 @@ export class MasterLayoutModule {
 			ngModule: MasterLayoutModule,
 			providers: [
 				MasterLayoutApplicationService,
-				MasterLayoutHeaderService
+				MasterLayoutHeaderService,
+				MasterLayoutFooterService
 			]
 		};
 	}
