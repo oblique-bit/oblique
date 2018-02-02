@@ -1,15 +1,37 @@
 {{#extend "application"
+		  offcanvas=app.theme.offcanvas
+		  title=app.title
 		  applicationFixed=app.theme.application.fixed
 		  applicationAttrs=app.theme.application.attributes
+		  headerAnimate=app.theme.header.animate
 		  headerAttrs=app.theme.header.attributes
 		  headerVariant=app.theme.header.variant
 		  headerSticky=app.theme.header.sticky
-		  headerAnimate=app.theme.header.animate}}
+		  footerVariant=app.theme.footer.variant
+		  navigationScrollable=app.theme.navigation.scrollable}}
+	{{#content "application-title"}}
+		<a [routerLink]="'{{app.home}}'" class="application-brand-link">
+			{{app.title}}
+		</a>
+	{{/content}}
+	{{#content "controls"}}
+		<layout-controls></layout-controls>
+	{{/content}}
+	{{#content "navigation"}}
+		<layout-navigation></layout-navigation>
+	{{/content}}
 	{{#content "content"}}
 		<or-notification></or-notification>
 		<div class="empty-layout">
 			<router-outlet></router-outlet>
 		</div>
 		<or-spinner></or-spinner>
+	{{/content}}
+	{{#content "footer"}}
+		<layout-footer class="application-footer{{#if footerVariant}} {{footerVariant}}{{/if}}{{#if offcanvas}} offcanvas-main{{/if}}"
+					   orMasterLayoutFooter></layout-footer>
+	{{/content}}
+	{{#content "page-controls"}}
+		<or-top-control></or-top-control>
 	{{/content}}
 {{/extend}}

@@ -1,10 +1,20 @@
 {{#extend "base-layout"
 		  appHome=app.home
+		  title=app.title
 		  description=app.description
+		  offcanvas=app.theme.offcanvas
 		  htmlAttrs=app.theme.html.attributes
 		  bodyAttrs=app.theme.body.attributes
 		  bodyClass=app.theme.body.class}}
+	{{#content "head-meta"}}
+		<base href="/">
+		<title>{{title}}</title>
+		{{#if description}}<meta name="description" content="{{description}}"/>{{/if}}
+	{{/content}}
 	{{#content "head-oblique"}}{{/content}}
+	{{#content "head-resources"}}
+		<link href="./assets/oblique-ui/images/favicon.png" rel="shortcut icon" />
+	{{/content}}
 	{{#content "body-oblique"}}{{/content}}
 	{{#content "base"}}
 		<app-root></app-root>

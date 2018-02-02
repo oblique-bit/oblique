@@ -1,55 +1,26 @@
 export const ProjectConfig = {
-	build: {
-		target: 'target/'
-	},
 	app: {
-		version:        '',
-		module:         'oblique',
-		title:          'ObliqueReactive',
-		description:    'Reactive front-end framework for your business web application. Powered by ObliqueUI and Angular.',
-		organization: {
-			name:       'Federal Office of Information Technology, Systems and Telecommunication FOITT',
-			url:        'http://www.bit.admin.ch',
-			email:      'info@bit.admin.ch',
-			contact:    false
-		},
-		home:           '/home',
-		locales:        ['de', 'fr', 'it', 'en'], // List of available locales
+		/**
+		 * Title is used for displaying the application name
+		 * and for setting the content of the `<title />` HEAD element.
+		 *
+		 * Should you require internationalization for the app title,
+		 * use an Angular expression instead:
+		 * {{"i18n.application.title" | translate}}
+		 */
+		title: 'ObliqueReactive',
+		home: '/home',
+		locales: ['de', 'fr', 'it', 'en'], // List of available locales
 		defaults: {
-			locale:     'en',
-			state:      'home',
-			layout:     'default',
-			http: {
-				timeout: 10000
-			},
-			format: {
-				date:   'd!.M!.yyyy', // Default date format for parsing
-				dateAlt: ['d!.M!.yy'] // Alternative date formats for the datePicker
-			}
-		},
-		api: {
-			// Relative path prefix for API calls:
-			context: 'api',
-
-			// Absolute API URL, if required:
-			url: undefined,
-
-			// API endpoint for UI logging:
-			logs: '/logs',
-
-			// API port:
-			port: 3000
+			locale: 'en'
 		},
 
 		// Theming:
 		theme: {
-			tooltips:        false, // Handled by ngbTooltip.
-			html: {
-				attributes: null,
-			},
+			offcanvas:      false, // Enables offcanvas sidebar.
 			body: {
 				'class': 'has-overlay',
-				attributes: null,
+				attributes: null
 			},
 			application: {
 				fixed:       false,
@@ -59,10 +30,13 @@ export const ProjectConfig = {
 				animate:    true,
 				attributes: 'orMasterLayoutHeader',
 				sticky:     true,
-				variant:    null // 'application-header-md'
+				variant:    null // Possible value(s): 'application-header-md'
+			},
+			footer: {
+				variant:    null // Possible value(s): 'application-footer-sm'
 			},
 			navigation: {
-				scrollable: true
+				scrollable:  true // Enable if your primary navigation has a lot of first-level menu entries.
 			}
 		},
 
@@ -70,8 +44,6 @@ export const ProjectConfig = {
 		vendor: {
 			path: 'assets/',
 			obliqueui: {
-				name: 'oblique-ui',
-				title: 'ObliqueUI',
 				path: 'oblique-ui/'
 			}
 		}

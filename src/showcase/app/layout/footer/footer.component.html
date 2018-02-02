@@ -1,12 +1,12 @@
-<div class="footer-item footer-item-logo">
-	<a href="{{@root.app.organization.url}}" target="_blank" class="application-brand-logo">
-		<img src="{{assets}}{{#block "vendor"}}{{@root.app.vendor.path}}{{/block}}{{@root.app.vendor.obliqueui.path}}images/logo.svg"
-		     alt="{{@root.app.organization.name}}" />
+<div class="footer-item footer-item-logo footer-sm-collapse">
+	<a href="{{'i18n.application.organization.url' | translate}}" target="_blank" class="application-brand-logo">
+		<img src="./assets/oblique-ui/images/logo.svg"
+		alt="{{'i18n.application.organization.name' | translate}}" />
 	</a>
 </div>
 <div class="footer-item footer-item-info">
-	<p class="small">&copy; 2018 {{@root.app.organization.name}}</p>
-	<p class="smaller">
+	<p class="small">&copy; 2018 {{'i18n.application.organization.name' | translate}}</p>
+	<p class="smaller footer-sm-collapse">
 		<span>Built with </span>
 		<span class="fa fa-heart-o" title="Love"><span class="sr-only">love</span></span>
 		<span>, </span>
@@ -22,21 +22,14 @@
 	</p>
 </div>
 <div class="footer-item footer-item-links">
-	<ul class="list-unstyled d-flex flex-row float-lg-right small" role="menu">
+	<ul class="list-unstyled small d-flex flex-row justify-content-lg-end" role="menu">
 		<li role="presentation">
 			<a href="http://www.disclaimer.admin.ch" title="Terms and conditions" target="_blank" class="link">Legal</a>
 		</li>
 		<li role="presentation">
-			{{#if @root.app.organization.email}}
-				<a href="mailto:{{@root.app.organization.email}}"
-				   title="This link will open your email client in order to send an email to {{@root.app.organization.email}}"
-				   class="link">Contact</a>
-			{{/if}}
-			{{#if @root.app.organization.contact}}
-				<a href="{{@root.app.organization.contact}}"
-				   title="This link will open a new tab in order to contact {{@root.app.organization.name}}"
-				   target="_blank" class="link">Contact</a>
-			{{/if}}
+			<a href="mailto:{{'i18n.application.organization.email' | translate}}"
+			   title="This link will open your email client in order to send an email to {{'i18n.application.organization.email' | translate}}"
+			   class="link">Contact</a>
 		</li>
 	</ul>
 </div>

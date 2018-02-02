@@ -25,7 +25,7 @@
 								<input ngbButton type="radio" [value]="false"> Default
 							</label>
 							<label ngbButtonLabel class="btn-secondary active">
-								<input ngbButton type="radio"  [value]="true"> Cover
+								<input ngbButton type="radio" [value]="true"> Cover
 							</label>
 						</div>
 						<h4>Primary Navigation</h4>
@@ -34,7 +34,16 @@
 								<input ngbButton type="radio" [value]="true"> Yes
 							</label>
 							<label ngbButtonLabel class="btn-secondary">
-								<input ngbButton type="radio"  [value]="false"> No
+								<input ngbButton type="radio" [value]="false"> No
+							</label>
+						</div>
+						<h4>Footer</h4>
+						<div [(ngModel)]="footerSM" ngbRadioGroup class="btn-group btn-group-toggle">
+							<label ngbButtonLabel class="btn-secondary active">
+								<input ngbButton type="radio" [value]="false"> Default
+							</label>
+							<label ngbButtonLabel class="btn-secondary">
+								<input ngbButton type="radio" [value]="true"> Small
 							</label>
 						</div>
 					</div>
