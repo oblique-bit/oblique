@@ -19,7 +19,6 @@ import {FormControlStateDirective} from '../form-control-state';
 })
 class TestComponent {
 	@ViewChild(NgForm) form: NgForm;
-
 	@ViewChild(ErrorMessagesComponent) errorMessages: ErrorMessagesComponent;
 }
 
