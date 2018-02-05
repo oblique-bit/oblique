@@ -17,6 +17,7 @@ import {ScrollingModule} from './scrolling';
 import {SpinnerModule} from './spinner';
 import {ToggleModule} from './toggle';
 import {UnsavedChangesModule} from './unsaved-changes';
+import {NumberFormatModule} from './number-format';
 
 export * from './column-layout';
 export * from './datepicker';
@@ -36,6 +37,7 @@ export * from './spinner';
 export * from './toggle';
 export * from './unsaved-changes';
 export * from './unsubscribe';
+export * from './number-format';
 
 const OBLIQUE_MODULES = [
 	ColumnLayoutModule,
@@ -54,7 +56,8 @@ const OBLIQUE_MODULES = [
 	ScrollingModule,
 	SpinnerModule,
 	ToggleModule,
-	UnsavedChangesModule
+	UnsavedChangesModule,
+	NumberFormatModule
 ];
 
 @NgModule({
@@ -75,7 +78,8 @@ const OBLIQUE_MODULES = [
 		ScrollingModule.forRoot(),
 		SpinnerModule.forRoot(),
 		ToggleModule.forRoot(),
-		UnsavedChangesModule.forRoot()
+		UnsavedChangesModule.forRoot(),
+		NumberFormatModule.forRoot()
 	],
 	exports: OBLIQUE_MODULES
 })
