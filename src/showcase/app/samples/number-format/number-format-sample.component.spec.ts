@@ -4,7 +4,7 @@ import {NumberFormatSampleComponent} from './number-format-sample.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NumberFormatDirective} from '../../../../lib/ng/number-format';
 
-fdescribe('NumberFormatSampleComponent', () => {
+describe('NumberFormatSampleComponent', () => {
 	let component: NumberFormatSampleComponent;
 	let fixture: ComponentFixture<NumberFormatSampleComponent>;
 
