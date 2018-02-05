@@ -1,4 +1,4 @@
-export interface Notification {
+export interface INotification {
 	messageKey: string;
 	messageParams?: {[key: string]: any};
 	titleKey?: string;
@@ -38,14 +38,14 @@ export class NotificationType {
 	}
 }
 
-export class Notification implements Notification {
+export class Notification implements INotification {
 	messageKey: string;
 	messageParams?: {[key: string]: any};
-	titleKey? = '';
+	titleKey = '';
 	titleParams?: {[key: string]: any};
 	id?: number;
-	type? = NotificationType.DEFAULT;
-	sticky? = false;
+	type = NotificationType.DEFAULT;
+	sticky = false;
 	timeout?: number;
 
 	/**
