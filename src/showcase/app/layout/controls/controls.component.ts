@@ -4,7 +4,6 @@ import {MasterLayoutApplicationService} from '../../../../lib';
 @Component({
 	selector: 'layout-controls',
 	templateUrl: './controls.component.html',
-	styleUrls: ['./controls.component.css'],
 	styles: [`
 		:host {
 			display: flex;

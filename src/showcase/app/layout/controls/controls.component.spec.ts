@@ -1,4 +1,3 @@
-/* tslint:disable:no-unused-variable */
 import {MasterLayoutApplicationService} from '../../../../lib';
 import {ProjectConfig} from '../../../../../project.conf';
 
