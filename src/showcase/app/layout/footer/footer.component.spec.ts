@@ -4,7 +4,7 @@ import {RouterModule} from '@angular/router';
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 
 import {LayoutFooterComponent} from './footer.component';
-import {MockTranslatePipe} from '../../../../testhelpers';
+import {MockTranslatePipe} from '../../../../../testhelpers';
 
 describe('LayoutFooter', () => {
 
