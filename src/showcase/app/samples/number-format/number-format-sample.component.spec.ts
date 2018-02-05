@@ -1,14 +1,17 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
+import {MockTranslatePipe} from '../../../../../testhelpers';
 import {NumberFormatSampleComponent} from './number-format-sample.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NumberFormatDirective} from '../../../../lib/ng/number-format';
 
-describe('NumberFormatSampleComponent', () => {
+fdescribe('NumberFormatSampleComponent', () => {
 	let component: NumberFormatSampleComponent;
 	let fixture: ComponentFixture<NumberFormatSampleComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [NumberFormatSampleComponent]
+			imports: [FormsModule, ReactiveFormsModule],
+			declarations: [NumberFormatSampleComponent, MockTranslatePipe, NumberFormatDirective]
 		})
 			.compileComponents();
 	}));
