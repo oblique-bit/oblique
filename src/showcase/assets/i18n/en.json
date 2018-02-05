@@ -63,6 +63,9 @@
         "notification": {
           "title": "Notification"
         },
+        "number-format": {
+          "title": "Number format"
+        },
         "typeahead": {
           "title": "Typeahead"
         },

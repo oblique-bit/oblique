@@ -16,6 +16,7 @@ import {NotificationSampleComponent} from './notification/notification-sample.co
 import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {ToggleSampleComponent} from './toggle/toggle-sample.component';
+import {NumberFormatSampleComponent} from './number-format/number-format-sample.component';
 
 const samplesRoutes: Routes = [
 
@@ -56,7 +57,8 @@ const samplesRoutes: Routes = [
 		component: UnsavedChangesSampleComponent,
 		canDeactivate: [UnsavedChangesGuard]
 	},
-	{path: 'toggle', component: ToggleSampleComponent}
+	{path: 'toggle', component: ToggleSampleComponent},
+	{path: 'number-format', component: NumberFormatSampleComponent}
 ];
 
 @NgModule({

@@ -20,6 +20,7 @@ import {NavigatorSampleModule} from './navigator-sample/navigator-sample.module'
 import {NavigatorSampleRoutingModule} from './navigator-sample/navigator-sample-routing.module';
 import {NavTreeSampleComponent, NavTreeDetailSampleComponent} from './nav-tree/nav-tree-sample.component';
 import {NotificationSampleComponent} from './notification/notification-sample.component';
+import {NumberFormatSampleComponent} from './number-format/number-format-sample.component';
 import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
 import {ToggleSampleComponent} from './toggle/toggle-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
@@ -50,6 +51,7 @@ import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-chan
 		NavTreeSampleComponent,
 		NavTreeDetailSampleComponent,
 		NotificationSampleComponent,
+		NumberFormatSampleComponent,
 		SchemaValidationSampleComponent,
 		ToggleSampleComponent,
 		UnsavedChangesSampleComponent,
