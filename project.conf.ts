@@ -40,12 +40,7 @@ export const ProjectConfig = {
 			}
 		},
 
-		// References:
-		vendor: {
-			path: 'assets/',
-			obliqueui: {
-				path: 'oblique-ui/'
-			}
-		}
+		// Assets location:
+		assets:  'assets/'
 	}
 };
