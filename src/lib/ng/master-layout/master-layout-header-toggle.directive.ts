@@ -7,7 +7,7 @@ import {MasterLayoutHeaderService} from './master-layout-header.service';
 })
 export class MasterLayoutHeaderToggleDirective {
 
-	@Input('orMasterLayoutHeaderToggle')
+	@Input()
 	closeOnly = true;
 
 	@Output()
@@ -21,7 +21,6 @@ export class MasterLayoutHeaderToggleDirective {
 		// As ENTER keypress delegates to click events, let's ensure
 		// browser does not try to follow any empty link (ie `href=""`):
 		$event.preventDefault();
-
 
 		if(this.closeOnly) {
 			this.headerService.open = false;
