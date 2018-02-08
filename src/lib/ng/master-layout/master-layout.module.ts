@@ -11,6 +11,7 @@ import {MasterLayoutNavigationMenuDirective} from './master-layout-navigation-me
 import {MasterLayoutNavigationDirective} from './master-layout-navigation.directive';
 import {MasterLayoutFooterDirective} from './master-layout-footer.directive';
 import {MasterLayoutFooterService} from './master-layout-footer.service';
+import {MasterLayoutHeaderToggleDirective} from './master-layout-header-toggle.directive';
 
 @NgModule({
 	imports: [
@@ -20,6 +21,7 @@ import {MasterLayoutFooterService} from './master-layout-footer.service';
 	declarations: [
 		MasterLayoutApplicationDirective,
 		MasterLayoutHeaderDirective,
+		MasterLayoutHeaderToggleDirective,
 		MasterLayoutFooterDirective,
 		MasterLayoutNavigationDirective,
 		MasterLayoutNavigationItemDirective,
@@ -29,6 +31,7 @@ import {MasterLayoutFooterService} from './master-layout-footer.service';
 	exports: [
 		MasterLayoutApplicationDirective,
 		MasterLayoutHeaderDirective,
+		MasterLayoutHeaderToggleDirective,
 		MasterLayoutFooterDirective,
 		MasterLayoutNavigationDirective,
 		MasterLayoutNavigationItemDirective,

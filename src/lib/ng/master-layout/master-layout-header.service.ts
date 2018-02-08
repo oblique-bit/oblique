@@ -26,6 +26,10 @@ export class MasterLayoutHeaderService extends Unsubscribable {
 		}
 	}
 
+	public toggle() {
+		this.open = !this.open;
+	}
+
 	set open(value) {
 		if (this.openValue !== value) {
 			this.openChange.next(value);
