@@ -1,3 +1,7 @@
+/**
+ * TODO: remove this file as soon as the Angular CLI addon API has landed:
+ * https://github.com/angular/angular-cli/issues/1656#issuecomment-239366723
+ */
 import {ProjectConfig} from './project.conf';
 import {readFileSync} from 'fs';
 import {join} from 'path';
@@ -26,29 +30,88 @@ let del = require('del'),
 		sass: 'src/lib/sass/',
 		showcase: 'src/showcase/',
 		dist: 'dist/'
-	},
-
-	// TODO: remove run-sequence when gulp 4 is out
-	runSequence = require('run-sequence');
+	};
 //</editor-fold>
 
-function webpackCallBack(taskName, gulpDone) {
-	return function (err, stats) {
-		if (err) {
-			throw new gutil.PluginError(taskName, err);
-		}
-		gutil.log(`[${taskName}]`, stats.toString());
-		gulpDone();
-	};
-}
+//<editor-fold desc="Distribution tasks">
+let distClean = () => {
+	return del(paths.dist);
+};
 
-// Remove as soon as the CLI addon API has landed.
-gulp.task('build-templates', () => {
-	return gulp
-		.src([
-			paths.showcase + '**/*.hbs'
-		])
-		.pipe(hb({
+let distSources = () => {
+	return gulp.src([
+		paths.sass + '**/*'
+	], {base: paths.lib}
+	).pipe(
+		gulp.dest(paths.dist)
+	);
+};
+
+let distCompile = (callback) => {
+	exec(`"./node_modules/.bin/ngc" -p "tsconfig.publish.json"`, (e) => {
+		if (e) {
+			console.log(e);
+		}
+		callback();
+	}).stdout.on('data', (data) => {
+		console.log(data);
+	});
+};
+let distBundle = (callback) => {
+	webpack(require('./webpack.publish.js'),
+		webpackCallBack('webpack', callback)
+	);
+};
+
+let distMeta = () => {
+	let meta = reload('./package.json');
+	let output = {};
+
+	[
+		'name', 'version', 'description', 'keywords',
+		'author', 'contributors', 'homepage', 'repository',
+		'license', 'bugs', 'publishConfig'
+	].forEach(field => output[field] = meta[field]);
+
+	output['main'] = 'bundles/oblique-reactive.js';
+	output['module'] = 'index.js';
+	output['typings'] = 'index.d.ts';
+
+	output['peerDependencies'] = {};
+	Object.keys(meta.dependencies).forEach((dependency) => {
+		output['peerDependencies'][dependency] = meta.dependencies[dependency];
+	});
+
+	return gulp.src(
+		'README.md'
+	).pipe(
+		gulpFile('package.json', JSON.stringify(output, null, 2))
+	).pipe(
+		gulp.dest(paths.dist)
+	);
+};
+
+let distBuild = gulp.parallel(
+	distSources,
+	gulp.series(
+		distCompile,
+		distBundle
+	),
+	distMeta
+);
+
+let dist = gulp.series(
+	distClean,
+	distBuild
+);
+//</editor-fold>
+
+//<editor-fold desc="Showcase tasks">
+let showcaseHTML = () => {
+	return gulp.src([
+		paths.showcase + '**/*.hbs'
+	]).pipe(
+		hb({
 			partials: [
 				'node_modules/oblique-ui/templates/layouts/**/*.hbs',
 				'node_modules/oblique-ui/templates/partials/**/*.hbs'
@@ -65,42 +128,36 @@ gulp.task('build-templates', () => {
 			parsePartialName: function (options, file) {
 				return file.path.split(path.sep).pop().replace('.hbs', '');
 			}
-		}))
-		.pipe(rename({extname: '.html'}))
-		.pipe(gulp.dest(paths.showcase));
-});
+		})
+	).pipe(
+		rename({extname: '.html'})
+	).pipe(
+		gulp.dest(paths.showcase)
+	);
+};
+
+let showcaseHtmlCleanup = () => {
+	// Move `index.html` to target root folder and update resources paths accordingly:
+	return gulp.src(
+		'./target/showcase/index.html'
+	).pipe(
+		replace(/\.\.\//g, './')
+	).pipe(
+		gulp.dest('./target/')
+	);
+};
+//</editor-fold>
 
 //<editor-fold desc="Deployment tasks">
 require('gulp-release-flows')({
 	branch: 'HEAD:master'
 }); // Imports 'build:release-*' tasks
 
-/*
- * Releases & publishes the `oblique-ui` module in the internal npm registry.
- */
-gulp.task('publish', (callback) => {
-	return runSequence(
-		'release',
-		'dist',
-		'publish-module',
-		callback
-	);
-});
-
-gulp.task('release', (callback) => {
-	return runSequence(
-		'build:bump-version',
-		//'changelog',
-		'build:commit-changes',
-		'build:push-changes',
-		'build:create-new-tag',
-		callback
-	);
-});
-
-gulp.task('changelog', function () {
-	return gulp.src('CHANGELOG.md')
-		.pipe(conventionalChangelog({
+let changelog = () => {
+	return gulp.src(
+		'CHANGELOG.md'
+	).pipe(
+		conventionalChangelog({
 			// conventional-changelog options:
 			preset: 'angular'
 			//releaseCount: 0
@@ -121,124 +178,125 @@ gulp.task('changelog', function () {
 			// 	return commit;
 			// },
 			headerPartial: readFileSync(join(__dirname, 'changelog-header.hbs'), 'utf-8')
-		}))
-		.pipe(gulp.dest('./'));
-});
-
-//<editor-fold desc="Distribution tasks">
-gulp.task('dist', (callback) => {
-	return runSequence(
-		'dist-clean',
-		'dist-build',
-		callback
+		})
+	).pipe(
+		gulp.dest('./')
 	);
-});
+};
 
-gulp.task('dist-build', (callback) => {
-	return runSequence(
-		'dist-copy',
-		'dist-compile',
-		'dist-bundle',
-		'dist-meta',
-		callback
-	);
-});
+let release = gulp.series(
+	'build:bump-version',
+	//'changelog',
+	'build:commit-changes',
+	'build:push-changes',
+	'build:create-new-tag'
+);
 
-gulp.task('dist-clean', () => {
-	return del(paths.dist);
-});
-
-gulp.task('dist-copy', () => {
-	return gulp.src([
-		paths.sass + '**/*'
-	], {base: paths.lib})
-		.pipe(gulp.dest(paths.dist));
-});
-
-gulp.task('dist-compile', (done) => {
-	exec(`"./node_modules/.bin/ngc" -p "tsconfig.publish.json"`, (e) => {
-		if (e) {
-			console.log(e);
-		}
-		done();
-	}).stdout.on('data', (data) => {
-		console.log(data);
+/**
+ * Publishes the module in the specified npm registry.
+ * @see package.json > publishConfig
+ */
+let npmPublish = (callback) => {
+	return spawn(
+		'npm',
+		['publish', paths.dist],
+		{stdio: 'inherit'}
+	).on('close', callback)
+	.on('error', function () {
+		console.log('[SPAWN] Error: ', arguments);
+		callback('Unable to publish NPM module.');
 	});
-});
-
-gulp.task('dist-bundle', (done) => {
-	webpack(require('./webpack.publish.js'),
-		webpackCallBack('webpack', done));
-});
-
-gulp.task('dist-meta', () => {
-	let meta = reload('./package.json');
-	let output = {};
-
-	[
-		'name', 'version', 'description', 'keywords',
-		'author', 'contributors', 'homepage', 'repository',
-		'license', 'bugs', 'publishConfig'
-	].forEach(field => output[field] = meta[field]);
-
-	output['main'] = 'bundles/oblique-reactive.js';
-	output['module'] = 'index.js';
-	output['typings'] = 'index.d.ts';
-
-	output['peerDependencies'] = {};
-	Object.keys(meta.dependencies).forEach((dependency) => {
-		output['peerDependencies'][dependency] = meta.dependencies[dependency];
-	});
-
-	return gulp.src('README.md')
-		.pipe(gulpFile('package.json', JSON.stringify(output, null, 2)))
-		.pipe(gulp.dest(paths.dist));
-});
-//</editor-fold>
-
-//<editor-fold desc="Showcase tasks">
-gulp.task('showcase-build-cleanup', (callback) => {
-	// Move `index.html` to target root folder and update resources paths accordingly:
-	return gulp.src('./target/showcase/index.html')
-		.pipe(replace(/\.\.\//g, './'))
-		.pipe(gulp.dest('./target/'));
-});
-//</editor-fold>
-
-// Publishes the module in the internal npm registry:
-gulp.task('publish-module', (callback) => {
-	return spawn('npm', ['publish', paths.dist], {stdio: 'inherit'})
-		.on('close', callback)
-		.on('error', function () {
-			console.log('[SPAWN] Error: ', arguments);
-			callback('Unable to publish NPM module.');
-		});
-});
+};
 //</editor-fold>
 
 //<editor-fold desc="NPM link for dev only">
-gulp.task('dev-link', (callback) => {
-	return runSequence(
-		'dist-build',
-		'npm-link',
-		'watch-link',
-		callback
-	);
-});
+let npmLink = (callback) => {
+	return spawn(
+		'npm',
+		['link', paths.dist],
+		{stdio: 'inherit'}
+	).on('close', callback)
+	.on('error', function () {
+		console.log('[SPAWN] Error: ', arguments);
+		callback('Unable to execute NPM link')
+	});
+};
 
-gulp.task('npm-link', (callback) => {
-	return spawn('npm', ['link', paths.dist], {stdio: 'inherit'})
-		.on('close', callback)
-		.on('error', function () {
-			console.log('[SPAWN] Error: ', arguments);
-			callback('Unable to execute NPM link')
-		});
-});
+let watchLink = () => {
+	gulp.watch(paths.src + '**/*', distBuild);
+};
 
-gulp.task('watch-link', () => {
-	gulp.watch(paths.src + '**/*', ['dist-build']);
-});
+let devLink = gulp.series(
+	distBuild,
+	npmLink,
+	watchLink
+);
 //</editor-fold>
+
+//<editor-fold desc="Main tasks">
+gulp.task(
+	'dist',
+	gulp.series(
+		distClean,
+		distBuild
+	)
+);
+
+gulp.task(
+	'default',
+	gulp.series(
+		dist
+	)
+);
+
+/**
+ * Releases & publishes the `oblique-reactive` module in the internal npm registry.
+ */
+gulp.task(
+	'publish',
+	gulp.series(
+		release, // Note: this increments version number!
+		dist,
+		npmPublish
+	)
+);
+//</editor-fold>
+
+//<editor-fold desc="Secondary tasks">
+gulp.task(
+	'showcase-build',
+	gulp.series(
+		showcaseHTML
+	)
+);
+
+gulp.task(
+	'showcase-build-cleanup',
+	gulp.series(
+		showcaseHtmlCleanup
+	)
+);
+
+gulp.task(
+	'changelog',
+	changelog
+);
+
+gulp.task(
+	'dev-link',
+	devLink
+);
+//</editor-fold>
+
+function webpackCallBack(taskName, gulpDone) {
+	return function (err, stats) {
+		if (err) {
+			throw new gutil.PluginError(taskName, err);
+		}
+		gutil.log(`[${taskName}]`, stats.toString());
+		gulpDone();
+	};
+}
 
 function reload(module) {
 	// Uncache module:

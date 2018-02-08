@@ -10,7 +10,7 @@ ObliqueReactive uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.ang
 
 ## Using ObliqueReactive as a dependency
 
-1. Register our npm repository manager (Nexus 3):
+1. Register our npm repository manager:
 
 	npm config set registry https://repo.bit.admin.ch/repository/npm-group/
 
@@ -158,7 +158,7 @@ Before publishing, execute the following steps:
 Prepare your workspace:
 
 1. Ensure you have an account with publishing privileges on the internal `npm` registry ([BIT Nexus](https://repo.bit.admin.ch/))
-2. Authenticate on the internal npm registry (Nexus v3):
+2. Authenticate on the internal npm registry:
 
 		npm login --registry=https://repo.bit.admin.ch/repository/npm-private/
 
@@ -188,6 +188,6 @@ Publishing a *major* release:
 
 Publishing a *version-specific* release:
 
-	gulp publish --version <version>
+	gulp publish --tag <version>
 
 > For more release commands or options, see <https://github.com/stevelacy/gulp-bump>.
