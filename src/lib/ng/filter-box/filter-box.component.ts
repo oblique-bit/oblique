@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 
 @Component({
 	selector: 'or-filter-box',
@@ -52,6 +52,9 @@ export class FilterBoxComponent implements OnInit {
 
 	@Output()
 	patternClear = new EventEmitter<void>();
+
+	@ViewChild('filterControl')
+	public inputElement: ElementRef;
 
 	private acceptedSizes = ['sm', 'lg'];
 

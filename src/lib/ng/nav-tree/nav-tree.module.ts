@@ -4,6 +4,7 @@ import {RouterModule} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule} from '@ngx-translate/core';
 import {NavTreeComponent} from './nav-tree.component';
+import {NavTreeFakeFocusDirective} from './nav-tree-fake-focus.directive';
 
 @NgModule({
 	imports: [
@@ -12,8 +13,8 @@ import {NavTreeComponent} from './nav-tree.component';
 		RouterModule,
 		TranslateModule
 	],
-	declarations: [NavTreeComponent],
-	exports: [NavTreeComponent]
+	declarations: [NavTreeComponent, NavTreeFakeFocusDirective],
+	exports: [NavTreeComponent, NavTreeFakeFocusDirective]
 })
 export class NavTreeModule {
 	static forRoot(): ModuleWithProviders {
