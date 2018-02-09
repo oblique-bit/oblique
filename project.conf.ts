@@ -18,6 +18,7 @@ export const ProjectConfig = {
 		// Theming:
 		theme: {
 			offcanvas:      false, // Enables offcanvas sidebar.
+			noNavigation:   false,  // Collapses application navigation.
 			body: {
 				'class': 'has-overlay',
 				attributes: null
