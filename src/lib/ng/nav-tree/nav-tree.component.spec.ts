@@ -82,7 +82,7 @@ describe('NavTreeComponent', () => {
 	});
 
 	it('should create 4 navigation trees after recursive rendering', () => {
-		let navTrees = fixture.debugElement.queryAll(By.directive(NavTreeComponent));
+		let navTrees = fixture.debugElement.queryAll(By.css('ul'));
 		expect(navTrees.length).toBe(4);
 	});
 

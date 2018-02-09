@@ -8,11 +8,12 @@ import {NavTreeItemModel} from './nav-tree-item.model';
 	selector: 'or-nav-tree',
 	exportAs: 'orNavTree',
 	template: `
-		<ul class="nav nav-tree" role="tree" [ngClass]="variant">
-			<ng-content></ng-content>
+		<ng-template #itemList let-items>
 			<ng-template ngFor [ngForOf]="items" let-item>
-				<li class="nav-item open" role="presentation"
-					*ngIf="visible(item)">
+				<li *ngIf="visible(item)"
+					class="nav-item open"
+					role="presentation"
+				>
 					<a class="nav-link" role="treeitem" aria-selected="false"
 					   [routerLink]="item.routes"
 					   #rla="routerLinkActive" routerLinkActive [routerLinkActiveOptions]="rlaOptions"
@@ -27,16 +28,17 @@ import {NavTreeItemModel} from './nav-tree-item.model';
 					</a>
 					<div id="#{{itemKey(item)}}" class="collapse show"
 						 *ngIf="item.items" [ngbCollapse]="item.collapsed">
-						<or-nav-tree [items]="item.items"
-									 [prefix]="itemKey(item)"
-									 [filterPattern]="filterPattern"
-									 [labelFormatter]="labelFormatter"
-									 [pathPrefix]="pathPrefix"
-									 [rlaOptions]="rlaOptions"
-									 [variant]="variant"></or-nav-tree>
+						<ul class="nav nav-tree" role="tree" [ngClass]="variant">
+							<ng-container *ngTemplateOutlet="itemList; context:{ $implicit: item.items }">
+							</ng-container>
+						</ul>
 					</div>
 				</li>
 			</ng-template>
+		</ng-template>
+		<ul class="nav nav-tree" role="tree" [ngClass]="variant">
+			<ng-content></ng-content>
+			<ng-container *ngTemplateOutlet="itemList; context:{ $implicit: items }"></ng-container>
 		</ul>
 	`,
 	// Ensure CSS styles are added to global styles as search pattern highlighting is done at runtime:
