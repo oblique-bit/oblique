@@ -151,5 +151,5 @@
 * **rxjs:** 5.4.1
 
 ##### BREAKING CHANGES
-ObliqueReactive has been migrated to Angular 4. This of course breaks all compatibility to any previous release of ObliqueReactive. 
-
+ObliqueReactive has been migrated to Angular 4.
+This of course breaks all compatibility to any previous release of ObliqueReactive. 
