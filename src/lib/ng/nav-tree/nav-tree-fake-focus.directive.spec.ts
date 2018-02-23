@@ -1,8 +1,8 @@
-import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async, inject} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
-import {DebugElement, Component} from '@angular/core';
+import {DebugElement, Component, Predicate, Renderer2} from '@angular/core';
 import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
 import {NavTreeComponent} from './nav-tree.component';
 import {NavTreeItemModel} from './nav-tree-item.model';
@@ -44,6 +44,10 @@ class TestComponent {
 	];
 }
 
+const FAKE_FOCUS_QUERY: Predicate<DebugElement> = By.css('.fake-focus');
+
+const ITEM_QUERY: (string) => Predicate<DebugElement> = (id: string) => By.css(`#nav-tree-${id}`);
+
 describe('NavTreeFakeFocusDirective', () => {
 	let testComponent: TestComponent;
 	let fixture: ComponentFixture<TestComponent>;
@@ -54,7 +58,8 @@ describe('NavTreeFakeFocusDirective', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [TestComponent, NavTreeComponent, NavTreeFakeFocusDirective],
-			imports: [CommonModule, RouterTestingModule, NgbCollapseModule.forRoot()]
+			imports: [CommonModule, RouterTestingModule, NgbCollapseModule.forRoot()],
+			providers: [Renderer2]
 		}).compileComponents();
 	}));
 
@@ -67,34 +72,162 @@ describe('NavTreeFakeFocusDirective', () => {
 		inputElement = fixture.debugElement.query(By.css('input'));
 	});
 
+
 	it('should be created', () => {
 		expect(directive).toBeTruthy();
-		expect(element.query(By.css('.fake-focus'))).toBeNull();
+		expect(element.query(FAKE_FOCUS_QUERY)).toBeNull();
 	});
 
 	it ('should disable autocompletion', () => {
 		expect(inputElement.nativeElement.getAttribute('autocomplete')).toBe('off');
 	});
 
-	it ('should fake focus the first element on initial ArrowDown', () => {
+	it ('should expand a collapsed item', () => {
+		let item = testComponent.items[1];
+		item.collapsed = false;
+		directive.fakeFocus(element.query(ITEM_QUERY('B')));
+
+		expect(item.collapsed).toBeFalsy();
+
+		inputElement.triggerEventHandler('keydown.ArrowRight', {});
+		expect(item.collapsed).toBeTruthy();
+	});
+
+	it ('should collapse an expanded item', () => {
+		let item = testComponent.items[1];
+		item.collapsed = true;
+		directive.fakeFocus(element.query(ITEM_QUERY('B')));
+
+		expect(item.collapsed).toBeTruthy();
+
+		inputElement.triggerEventHandler('keydown.ArrowRight', {});
+		expect(item.collapsed).toBeFalsy();
+	});
+
+	it ('should click the link of the fake focused item', () => {
+		let targetElement = element.query(ITEM_QUERY('B-1'));
+		let targetLink = targetElement.query(By.css('a')).nativeElement;
+		spyOn(targetElement.nativeElement, 'querySelector').and.returnValue(targetLink);
+		spyOn(targetLink, 'click').and.returnValue(false);
+
+		directive.fakeFocus(targetElement);
+		expect(targetLink.click).toHaveBeenCalledTimes(0);
+		inputElement.triggerEventHandler('keydown.Enter', {});
+		expect(targetLink.click).toHaveBeenCalledTimes(1);
+	});
+
+	it ('should loose fake focus when input focus is lost', () => {
+		directive.fakeFocus(element.query(ITEM_QUERY('A')));
+
+		expect(element.query(FAKE_FOCUS_QUERY)).toBeDefined();
+		inputElement.triggerEventHandler('blur', {});
+		fixture.detectChanges();
+		expect(element.query(FAKE_FOCUS_QUERY)).toBeNull();
+	});
+
+	it ('should keep the fake focus context on refocus the input element', () => {
+		directive.fakeFocus(element.query(ITEM_QUERY('B-1')));
+		inputElement.triggerEventHandler('blur', {});
+		inputElement.nativeElement.focus();
 		inputElement.triggerEventHandler('keydown.ArrowDown', {});
-		expect(element.query(By.css('.fake-focus')).nativeElement.textContent.trim()).toBe('A - Label');
+		expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('B.2 - Label');
 	});
 
-	it ('should fake focus the last element on initial ArrowUp', () => {
-		inputElement.triggerEventHandler('keydown.ArrowUp', {});
-		expect(element.query(By.css('.fake-focus')).nativeElement.textContent.trim()).toBe('C.3 - Label');
-	});
+	describe ('on InitialFocus', () => {
 
-	describe ('InitialFocus', () => {
+		it ('should fake focus the first element on initial ArrowDown', () => {
+			inputElement.triggerEventHandler('keydown.ArrowDown', {});
+			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('A - Label');
+		});
+
+
+		it ('should fake focus the last element on initial ArrowUp', () => {
+			inputElement.triggerEventHandler('keydown.ArrowUp', {});
+			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('C.3 - Label');
+		});
 
 		it ('should skip children of collapsed elements on initial ArrowUp', () => {
 			testComponent.items[2].collapsed = true;
 			fixture.detectChanges();
 
 			inputElement.triggerEventHandler('keydown.ArrowUp', {});
-			expect(element.query(By.css('.fake-focus')).nativeElement.textContent.trim()).toBe('C - Label');
+			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('C - Label');
+		});
+	});
+
+	describe ('on FakeFocusNext', () => {
+
+		it ('should fake focus the next descendant', () => {
+			directive.fakeFocus(element.query(ITEM_QUERY('B')));
+			inputElement.triggerEventHandler('keydown.ArrowDown', {});
+			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('B.1 - Label');
 		});
 
+		it ('should fake focus the next sibling', () => {
+			directive.fakeFocus(element.query(ITEM_QUERY('B-1')));
+			inputElement.triggerEventHandler('keydown.ArrowDown', {});
+			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('B.2 - Label');
+		});
+
+		it ('should fake focus the next parent sibling', () => {
+			directive.fakeFocus(element.query(ITEM_QUERY('B-3')));
+			inputElement.triggerEventHandler('keydown.ArrowDown', {});
+			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('C - Label');
+		});
+
+		it ('should fake focus the first element if the end of the list is reached', () => {
+			directive.fakeFocus(element.query(ITEM_QUERY('C-3')));
+			inputElement.triggerEventHandler('keydown.ArrowDown', {});
+			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('A - Label');
+		});
+
+		it ('should ignore disabled items', () => {
+			testComponent.items[1].items[1].disabled = true;
+			fixture.detectChanges();
+			directive.fakeFocus(element.query(ITEM_QUERY('B-1')));
+
+			inputElement.triggerEventHandler('keydown.ArrowDown', {});
+			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('B.3 - Label');
+		});
 	});
+
+	describe ('on FakeFocusPrevious', () => {
+
+		it ('should fake focus the previous sibling\'s last child', () => {
+			directive.fakeFocus(element.query(ITEM_QUERY('C')));
+			inputElement.triggerEventHandler('keydown.ArrowUp', {});
+			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('B.3 - Label');
+		});
+
+		it ('should fake focus the previous sibling\'s last child but skip collapsed items', () => {
+			testComponent.items[1].collapsed = true;
+			fixture.detectChanges();
+
+			directive.fakeFocus(element.query(ITEM_QUERY('C')));
+			inputElement.triggerEventHandler('keydown.ArrowUp', {});
+			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('B - Label');
+		});
+
+		it ('should fake focus the parent', () => {
+			directive.fakeFocus(element.query(ITEM_QUERY('B-1')));
+			inputElement.triggerEventHandler('keydown.ArrowUp', {});
+			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('B - Label');
+		});
+
+		it ('should fake focus the last element if the beginning of the list is reached', () => {
+			directive.fakeFocus(element.query(ITEM_QUERY('A')));
+			inputElement.triggerEventHandler('keydown.ArrowUp', {});
+			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('C.3 - Label');
+		});
+
+		it ('should ignore disabled items', () => {
+			testComponent.items[1].items[1].disabled = true;
+			fixture.detectChanges();
+			directive.fakeFocus(element.query(ITEM_QUERY('B-3')));
+
+			inputElement.triggerEventHandler('keydown.ArrowUp', {});
+			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('B.1 - Label');
+		});
+	});
+
 });
