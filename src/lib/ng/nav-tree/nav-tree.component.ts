@@ -14,6 +14,8 @@ import {takeUntil} from 'rxjs/operators';
 					class="nav-item open"
 					role="presentation"
 					(or.navTree.item.toggleCollapsed)="item.collapsed = !item.collapsed"
+					[attr.id]="item.id ? (prefix ? prefix + '-' : '') + item.id : null"
+					[class.disabled]="item.disabled === true || null"
 				>
 					<a class="nav-link" role="treeitem" aria-selected="false"
 					   [routerLink]="item.routes"
@@ -59,8 +61,6 @@ export class NavTreeComponent extends Unsubscribable {
 		HIGHLIGHT: 'nav-tree-pattern-highlight',
 		LABEL_FORMATTER: defaultLabelFormatterFactory
 	};
-
-	public static EVENT_TOGGLE_COLLAPSED = 'or.navTree.item.toggleCollapsed';
 
 	activeFragment: string; // TODO: remove when https://github.com/angular/angular/issues/13205
 

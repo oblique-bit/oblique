@@ -3,8 +3,8 @@ import {
 } from '@angular/core';
 import 'rxjs/add/operator/throttleTime';
 import {Subject} from 'rxjs/Subject';
-import {NavTreeComponent} from './nav-tree.component';
 import {DOCUMENT} from '@angular/common';
+import {NavTreeDomUtil} from './nav-tree-dom.util';
 
 export class RootDocument extends Document {
 	public fakeFocusCssInitialized: boolean;
@@ -52,11 +52,7 @@ export class NavTreeFakeFocusDirective implements AfterViewInit {
 
 	private static readonly FocusStyleSelectorReplacement: string = '$1.fake-$2';
 
-	private static readonly ItemWrapperSelector = 'ul.nav.nav-tree.expanded > li.nav-item:not(.nav-header)';
-
-	private static readonly ItemContentSelector = 'a';
-
-	@Input()
+	@Input('orNavTreeFakeFocusOptions')
 	options: FakeFocusOptions;
 
 	private inputElement: ElementRef;
@@ -68,7 +64,7 @@ export class NavTreeFakeFocusDirective implements AfterViewInit {
 			focusNext: [new FakeFocusOptionsTrigger('keydown.ArrowDown')],
 			focusPrevious: [new FakeFocusOptionsTrigger('keydown.ArrowUp')],
 			accept: [new FakeFocusOptionsTrigger('keydown.Enter', 0)],
-			blur: [new FakeFocusOptionsTrigger('focusout')],
+			blur: [new FakeFocusOptionsTrigger('blur')],
 			toggleCollapsed: [
 				new FakeFocusOptionsTrigger('keydown.ArrowLeft'),
 				new FakeFocusOptionsTrigger('keydown.ArrowRight'),
@@ -114,6 +110,12 @@ export class NavTreeFakeFocusDirective implements AfterViewInit {
 		this.setupFakeFocus();
 	}
 
+	public fakeFocus(element: ElementRef) {
+		if (!this.tryFocus(element)) {
+			throw new Error(`Unable to fake focus element '${element}'. No valid DOM element or no valid child.`);
+		}
+	}
+
 	private setupFakeFocus() {
 		this.inputElement.nativeElement.setAttribute('autocomplete', 'off');
 		if (this.document.fakeFocusCssInitialized) {
@@ -145,12 +147,18 @@ export class NavTreeFakeFocusDirective implements AfterViewInit {
 		});
 	}
 
+	private accept() {
+		NavTreeDomUtil.triggerClick(this.focusedElement);
+	}
+
 	private toggleCollapsed() {
-		if (this.focusedElement) {
-			// @todo: try new CustomEvent(bla)
-			let event = this.document.createEvent('Event'); // Some browsers (IE) don't support new Event()
-			event.initEvent(NavTreeComponent.EVENT_TOGGLE_COLLAPSED, false, true);
-			this.focusedElement.nativeElement.dispatchEvent(event);
+		NavTreeDomUtil.triggerToggleCollapsed(this.focusedElement);
+	}
+
+	private blur() {
+		let link = NavTreeDomUtil.findLink(this.focusedElement);
+		if (link && link.nativeElement) {
+			this.renderer.removeClass(link.nativeElement, NavTreeFakeFocusDirective.FakeFocusClass);
 		}
 	}
 
@@ -164,9 +172,31 @@ export class NavTreeFakeFocusDirective implements AfterViewInit {
 		}
 	}
 
+	private tryFocusFirstDescendant(element: ElementRef = null): boolean {
+		let descendant = NavTreeDomUtil.findFirstDescendant(element || this.focusedElement);
+		return descendant ? this.tryFocus(descendant) : false;
+	}
+
+	private tryFocusNextSibling(element: ElementRef = null): boolean {
+		let sibling = NavTreeDomUtil.findNextSibling(element || this.focusedElement);
+		return sibling ? this.tryFocus(sibling) : false;
+	}
+
+	private tryFocusParentSibling(element: ElementRef = null): boolean {
+		let parent = NavTreeDomUtil.findClosest(element || this.focusedElement);
+		while (parent && !this.tryFocusNextSibling(parent)) {
+			parent = NavTreeDomUtil.findClosest(parent);
+		}
+		return !!parent;
+	}
+
+	private focusFirst() {
+		this.tryFocusFirstDescendant(this.element);
+	}
+
 	private focusPrevious() {
 		if (
-			!this.tryFocusPreviousSiblingChild()
+			!this.tryFocusPreviousSiblingLastDescendant()
 			&& !this.tryFocusPreviousSibling()
 			&& !this.tryFocusParent()
 		) {
@@ -174,141 +204,39 @@ export class NavTreeFakeFocusDirective implements AfterViewInit {
 		}
 	}
 
-	private focusFirst() {
-		let nativeElement = this.element.nativeElement.querySelector(NavTreeFakeFocusDirective.ItemWrapperSelector);
-		if (nativeElement) {
-			this.tryFocus(new ElementRef(nativeElement));
-		}
+	private tryFocusPreviousSiblingLastDescendant(element: ElementRef = null): boolean {
+		let sibling = NavTreeDomUtil.findPreviousSibling(element || this.focusedElement);
+		return sibling ? this.tryFocusLastDescendant(sibling) : false;
+	}
+
+	private tryFocusLastDescendant(element: ElementRef): boolean {
+		let siblingDescendant = NavTreeDomUtil.findLastDescendant(element || this.focusedElement);
+		return siblingDescendant ? this.tryFocus(siblingDescendant) : false;
+	}
+
+	private tryFocusPreviousSibling(element: ElementRef = null): boolean {
+		let sibling = NavTreeDomUtil.findPreviousSibling(element || this.focusedElement);
+		return sibling ? this.tryFocus(sibling) : false;
+	}
+
+	private tryFocusParent(element: ElementRef = null): boolean {
+		let parent = NavTreeDomUtil.findClosest(element || this.focusedElement);
+		return parent ? this.tryFocus(parent) : false;
 	}
 
 	private focusLast() {
-		let context = this.element.nativeElement;
-		while (context && context.lastElementChild ) {
-			context = context.lastElementChild;
-		}
-		this.tryFocus(this.findClosest(new ElementRef(context)));
-	}
-
-	private accept() {
-		if (this.focusedElement) {
-			this.focusedElement.nativeElement.querySelector(NavTreeFakeFocusDirective.ItemContentSelector).click();
-		}
-	}
-
-	private blur() {
-		if (this.focusedElement) {
-			this.renderer.removeClass(
-				this.focusedElement.nativeElement.querySelector(NavTreeFakeFocusDirective.ItemContentSelector),
-				NavTreeFakeFocusDirective.FakeFocusClass
-			);
-		}
-	}
-
-	private tryFocusFirstDescendant(): boolean {
-		if (!this.focusedElement) {
-			return false;
-		}
-		let nativeElement = this.focusedElement.nativeElement.querySelector(NavTreeFakeFocusDirective.ItemWrapperSelector);
-		if (nativeElement) {
-			return this.tryFocus(new ElementRef(nativeElement));
-		}
-		return false;
-	}
-
-	private tryFocusNextSibling(parent: ElementRef = null): boolean {
-		parent = parent || this.focusedElement;
-		if (!parent) {
-			return false;
-		}
-		let sibling = parent.nativeElement.nextElementSibling;
-		while (sibling && !this.matches(sibling)) {
-			sibling = sibling.nextElementSibling;
-		}
-		if (!sibling) {
-			return false;
-		}
-		return this.tryFocus(new ElementRef(sibling));
-	}
-
-	private tryFocusParentSibling(): boolean {
-		if (!this.focusedElement) {
-			return false;
-		}
-		let context = this.focusedElement.nativeElement.parentElement;
-		while (context && !this.tryFocusNextSibling(new ElementRef(context))) {
-			context = context.parentElement;
-		}
-		return !!context;
+		this.tryFocusLastDescendant(this.element);
 	}
 
 	private tryFocus(element: ElementRef): boolean {
-		if (!element || !this.element.nativeElement.contains(element.nativeElement)) {
+		let link = NavTreeDomUtil.findLink(element);
+		if (!NavTreeDomUtil.contains(this.element, link)) {
 			return false;
 		}
 		this.blur();
-		this.renderer.addClass(
-			element.nativeElement.querySelector(NavTreeFakeFocusDirective.ItemContentSelector),
-			NavTreeFakeFocusDirective.FakeFocusClass
-		);
+		this.renderer.addClass(link.nativeElement, NavTreeFakeFocusDirective.FakeFocusClass);
 		this.focusedElement = element;
-		this.scrollIntoView();
+		NavTreeDomUtil.ensureInView(this.focusedElement);
 		return true;
-	}
-
-	private tryFocusPreviousSibling(parent: ElementRef = null): boolean {
-		parent = parent || this.focusedElement;
-		if (!parent) {
-			return false;
-		}
-		let sibling = parent.nativeElement.previousElementSibling;
-		while (sibling && !this.matches(sibling)) {
-			sibling = sibling.previousElementSibling;
-		}
-		if (!sibling) {
-			return false;
-		}
-		return this.tryFocus(new ElementRef(sibling));
-	}
-
-	private tryFocusParent(): boolean {
-		if (!this.focusedElement || !this.focusedElement.nativeElement.parentElement) {
-			return false;
-		}
-		return this.tryFocus(this.findClosest(new ElementRef(this.focusedElement.nativeElement.parentElement)));
-	}
-
-	private tryFocusPreviousSiblingChild(): boolean {
-		if (!this.focusedElement) {
-			return false;
-		}
-		let context = this.focusedElement.nativeElement.previousElementSibling;
-		while (context && context.lastElementChild ) {
-			context = context.lastElementChild;
-		}
-		return this.tryFocus(this.findClosest(new ElementRef(context)));
-	}
-
-	private findClosest(element: ElementRef): ElementRef {
-		if (!element || !element.nativeElement) {
-			return null;
-		}
-		let parent = element.nativeElement.parentElement;
-		while (parent && !this.matches(parent)) {
-			parent = parent.parentElement;
-		}
-		return new ElementRef(parent);
-	}
-
-	private matches(element): boolean {
-		return element.msMatchesSelector ?
-			element.msMatchesSelector(NavTreeFakeFocusDirective.ItemWrapperSelector)
-			: element.matches(NavTreeFakeFocusDirective.ItemWrapperSelector);
-	}
-
-	private scrollIntoView() {
-		let element = this.focusedElement.nativeElement.querySelector(NavTreeFakeFocusDirective.ItemContentSelector);
-		if (element) {
-			element.scrollIntoView({behavior: 'auto', inline: 'center'});
-		}
 	}
 }
