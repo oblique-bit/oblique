@@ -31,7 +31,12 @@ import {takeUntil} from 'rxjs/operators';
 					</a>
 					<div id="#{{itemKey(item)}}" class="collapse show"
 						 *ngIf="item.items" [ngbCollapse]="item.collapsed">
-						<ul class="nav nav-tree" role="tree" [ngClass]="variant" [class.expanded]="parentExpanded && !item.collapsed">
+						<ul class="nav nav-tree"
+							[ngClass]="variant"
+							[class.expanded]="parentExpanded && !item.collapsed"
+							[class.disabled]="item.disabled === true || null"
+							role="tree"
+						>
 							<ng-container *ngTemplateOutlet="itemList; context:{ $implicit: item.items, parentExpanded: parentExpanded && !item.collapsed}">
 							</ng-container>
 						</ul>

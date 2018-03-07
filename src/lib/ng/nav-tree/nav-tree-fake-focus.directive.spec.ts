@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, async, inject} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
@@ -229,5 +229,4 @@ describe('NavTreeFakeFocusDirective', () => {
 			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('B.1 - Label');
 		});
 	});
-
 });
