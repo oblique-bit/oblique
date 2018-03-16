@@ -9,22 +9,6 @@ export class RootDocument extends Document {
 	public fakeFocusCssInitialized: boolean;
 }
 
-export class FakeFocusTrigger {
-	constructor(
-		public name: string,
-		public customDebounceTime: number = -1,
-	) {}
-}
-
-interface FakeFocusTriggers {
-	focusNext: FakeFocusTrigger[];
-	focusPrevious: FakeFocusTrigger[];
-	accept: FakeFocusTrigger[];
-	blur: FakeFocusTrigger[];
-	toggleCollapsed: FakeFocusTrigger[];
-	defaultDebounceTime: number;
-}
-
 /**
  * Directive to be used on the or-nav-tree component in order to get a "fake focus" keyboard navigation.
  * Usage:
@@ -39,31 +23,37 @@ interface FakeFocusTriggers {
 })
 export class NavTreeFakeFocusDirective implements AfterViewInit, OnDestroy {
 
-	public static EVENT_TOGGLE_COLLAPSED = 'or.navTree.item.toggleCollapsed';
+	public static readonly EVENT_TOGGLE_COLLAPSED = 'or.navTree.item.toggleCollapsed';
 
-	private static readonly ItemWrapperSelector = 'ul.nav.nav-tree.expanded:not(.disabled) > li.nav-item:not(.nav-header):not(.disabled)';
-
-	private static readonly ItemContentSelector = 'a';
-
-	private static readonly FakeFocusClass = 'fake-focus';
-
-	private static readonly FocusStyleSelectorPattern: RegExp = new RegExp('(\\.nav-link[\\.\\w]*):(focus)', 'g');
-
-	private static readonly FocusStyleSelectorReplacement: string = '$1.fake-$2';
-
-	private static readonly Triggers: FakeFocusTriggers = {
-		focusNext: [new FakeFocusTrigger('keydown.ArrowDown')],
-		focusPrevious: [new FakeFocusTrigger('keydown.ArrowUp')],
-		accept: [new FakeFocusTrigger('keydown.Enter', 0)],
-		blur: [new FakeFocusTrigger('blur')],
-		toggleCollapsed: [
-			new FakeFocusTrigger('keydown.ArrowLeft'),
-			new FakeFocusTrigger('keydown.ArrowRight'),
-		],
-		defaultDebounceTime: 10,
+	public static readonly KEYS = {
+		UP: 38,
+		DOWN: 40,
+		LEFT: 37,
+		RIGHT: 39,
+		ENTER: 13,
 	};
 
-	private static readonly ScrollOptions: ScrollIntoViewOptions = {behavior: 'auto', inline: 'center'};
+	private static readonly INPUT_EVENTS = {
+		KEY_DOWN: 'keydown',
+		BLUR: 'blur',
+	};
+
+	private static readonly ITEM_WRAPPER_SELECTOR = 'ul.nav.nav-tree.expanded:not(.disabled) > li.nav-item:not(.nav-header):not(.disabled)';
+
+	private static readonly ITEM_LINK_SELECTOR = '.nav-link';
+
+	private static readonly FAKE_FOCUS_CLASS = 'fake-focus';
+
+	private static readonly FOCUS_STYLE = {
+		SELECTOR_PATTERN: new RegExp('(\\.nav-link[\\.\\w]*):(focus)', 'g'),
+		SELECTOR_REPLACEMENT: '$1.fake-$2',
+	};
+
+	private static readonly KEY_DOWN_DEBOUNCE_MILLIS = 10;
+
+	private static readonly SCROLL_OPTIONS: ScrollIntoViewOptions = {behavior: 'auto', inline: 'center'};
+
+	private readonly keyHandlers: object = {};
 
 	private inputElement: ElementRef;
 
@@ -82,6 +72,11 @@ export class NavTreeFakeFocusDirective implements AfterViewInit, OnDestroy {
 				+ `Current element is: '${this.element.nativeElement.localName}'`
 			);
 		}
+		this.keyHandlers[NavTreeFakeFocusDirective.KEYS.DOWN] = () => this.focusNext();
+		this.keyHandlers[NavTreeFakeFocusDirective.KEYS.UP] = () => this.focusPrevious();
+		this.keyHandlers[NavTreeFakeFocusDirective.KEYS.ENTER] = () => this.accept();
+		this.keyHandlers[NavTreeFakeFocusDirective.KEYS.LEFT] = () => this.toggleCollapsed();
+		this.keyHandlers[NavTreeFakeFocusDirective.KEYS.RIGHT] = () => this.toggleCollapsed();
 	}
 
 	@Input('orNavTreeFakeFocus')
@@ -106,8 +101,8 @@ export class NavTreeFakeFocusDirective implements AfterViewInit, OnDestroy {
 		if (!link || !this.element.nativeElement.contains(link.nativeElement)) {
 			throw new Error(`Unable to fake focus element '${element}'. No valid DOM element or no valid child.`);
 		}
-		this.blur();
-		this.renderer.addClass(link.nativeElement, NavTreeFakeFocusDirective.FakeFocusClass);
+		this.onBlur();
+		this.renderer.addClass(link.nativeElement, NavTreeFakeFocusDirective.FAKE_FOCUS_CLASS);
 		this.focusedElement = element;
 		this.ensureInView();
 	}
@@ -121,10 +116,10 @@ export class NavTreeFakeFocusDirective implements AfterViewInit, OnDestroy {
 			let styleSheet: any = this.document.styleSheets[styleSheetIndex];
 			for (let ruleIndex = 0; styleSheet.cssRules && ruleIndex < styleSheet.cssRules.length; ruleIndex++) {
 				let rule = styleSheet.cssRules[ruleIndex];
-				if (NavTreeFakeFocusDirective.FocusStyleSelectorPattern.exec(rule.selectorText)) {
+				if (NavTreeFakeFocusDirective.FOCUS_STYLE.SELECTOR_PATTERN.exec(rule.selectorText)) {
 					let changedSelector = rule.selectorText.replace(
-						NavTreeFakeFocusDirective.FocusStyleSelectorPattern,
-						NavTreeFakeFocusDirective.FocusStyleSelectorReplacement
+						NavTreeFakeFocusDirective.FOCUS_STYLE.SELECTOR_PATTERN,
+						NavTreeFakeFocusDirective.FOCUS_STYLE.SELECTOR_REPLACEMENT
 					);
 					styleSheet.insertRule(`${changedSelector}{${rule.style.cssText}}`, styleSheet.cssRules.length);
 				}
@@ -150,28 +145,33 @@ export class NavTreeFakeFocusDirective implements AfterViewInit, OnDestroy {
 	}
 
 	private initEventListeners() {
-		this.eventSubscriptions = [];
-		this.setupEventListeners(NavTreeFakeFocusDirective.Triggers.focusNext, () => this.focusNext());
-		this.setupEventListeners(NavTreeFakeFocusDirective.Triggers.focusPrevious, () => this.focusPrevious());
-		this.setupEventListeners(NavTreeFakeFocusDirective.Triggers.toggleCollapsed, () => this.toggleCollapsed());
-		this.setupEventListeners(NavTreeFakeFocusDirective.Triggers.accept, () => this.accept());
-		this.setupEventListeners(NavTreeFakeFocusDirective.Triggers.blur, () => this.blur());
+		let debouncer: Subject<any> = new Subject<any>();
+		debouncer.throttleTime(NavTreeFakeFocusDirective.KEY_DOWN_DEBOUNCE_MILLIS).subscribe(
+			(event) => this.onKeyDown(event)
+		);
+		this.eventSubscriptions.push(this.renderer.listen(
+			this.inputElement.nativeElement,
+			NavTreeFakeFocusDirective.INPUT_EVENTS.KEY_DOWN,
+			(event) => debouncer.next(event)
+		));
+		this.eventSubscriptions.push(this.renderer.listen(
+			this.inputElement.nativeElement,
+			NavTreeFakeFocusDirective.INPUT_EVENTS.BLUR,
+			() => this.onBlur()
+		));
 	}
 
-	private setupEventListeners(triggers: FakeFocusTrigger[], callback: () => void) {
-		if (!triggers) {
-			return;
+	private onKeyDown(event: KeyboardEvent) {
+		if (this.keyHandlers.hasOwnProperty(event.keyCode)) {
+			this.keyHandlers[event.keyCode]();
 		}
-		triggers.forEach((trigger) => {
-			let debouncer: Subject<any> = new Subject<any>();
-			debouncer.throttleTime(trigger.customDebounceTime || NavTreeFakeFocusDirective.Triggers.defaultDebounceTime)
-				.subscribe(callback);
-			this.eventSubscriptions.push(this.renderer.listen(
-				this.inputElement.nativeElement,
-				trigger.name,
-				() => debouncer.next()
-			));
-		});
+	}
+
+	private onBlur() {
+		let link = this.findLink();
+		if (link && link.nativeElement) {
+			this.renderer.removeClass(link.nativeElement, NavTreeFakeFocusDirective.FAKE_FOCUS_CLASS);
+		}
 	}
 
 	private unsubsribeInputListeners() {
@@ -200,13 +200,6 @@ export class NavTreeFakeFocusDirective implements AfterViewInit, OnDestroy {
 		this.focusedElement.nativeElement.dispatchEvent(event);
 	}
 
-	private blur() {
-		let link = this.findLink();
-		if (link && link.nativeElement) {
-			this.renderer.removeClass(link.nativeElement, NavTreeFakeFocusDirective.FakeFocusClass);
-		}
-	}
-
 	private focusNext() {
 		let elements = this.extractAllListElements();
 		let nextIndex = 0;
@@ -230,18 +223,18 @@ export class NavTreeFakeFocusDirective implements AfterViewInit, OnDestroy {
 		if (!element || !element.nativeElement) {
 			return null;
 		}
-		let link = element.nativeElement.querySelector(NavTreeFakeFocusDirective.ItemContentSelector);
+		let link = element.nativeElement.querySelector(NavTreeFakeFocusDirective.ITEM_LINK_SELECTOR);
 		return link ? new ElementRef(link) : null;
 	}
 
 	private extractAllListElements(): any[] {
-		return [].slice.call(this.element.nativeElement.querySelectorAll(NavTreeFakeFocusDirective.ItemWrapperSelector));
+		return [].slice.call(this.element.nativeElement.querySelectorAll(NavTreeFakeFocusDirective.ITEM_WRAPPER_SELECTOR));
 	}
 
 	private ensureInView(): void {
 		let link = this.findLink();
 		if (link && link.nativeElement) {
-			link.nativeElement.scrollIntoView(NavTreeFakeFocusDirective.ScrollOptions);
+			link.nativeElement.scrollIntoView(NavTreeFakeFocusDirective.SCROLL_OPTIONS);
 		}
 	}
 }

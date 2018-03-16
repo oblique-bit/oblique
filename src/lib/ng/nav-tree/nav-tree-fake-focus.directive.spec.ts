@@ -48,12 +48,16 @@ const FAKE_FOCUS_QUERY: Predicate<DebugElement> = By.css('.fake-focus');
 
 const ITEM_QUERY: (string) => Predicate<DebugElement> = (id: string) => By.css(`#nav-tree-${id}`);
 
+
+
 describe('NavTreeFakeFocusDirective', () => {
 	let testComponent: TestComponent;
 	let fixture: ComponentFixture<TestComponent>;
 	let element: DebugElement;
 	let directive: NavTreeFakeFocusDirective;
 	let inputElement: DebugElement;
+
+	const keydown = (key) => inputElement.triggerEventHandler('keydown', {keyCode: key});
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
@@ -88,8 +92,7 @@ describe('NavTreeFakeFocusDirective', () => {
 		directive.fakeFocus(element.query(ITEM_QUERY('B')));
 
 		expect(item.collapsed).toBeFalsy();
-
-		inputElement.triggerEventHandler('keydown.ArrowRight', {});
+		keydown(NavTreeFakeFocusDirective.KEYS.RIGHT);
 		expect(item.collapsed).toBeTruthy();
 	});
 
@@ -99,8 +102,7 @@ describe('NavTreeFakeFocusDirective', () => {
 		directive.fakeFocus(element.query(ITEM_QUERY('B')));
 
 		expect(item.collapsed).toBeTruthy();
-
-		inputElement.triggerEventHandler('keydown.ArrowRight', {});
+		keydown(NavTreeFakeFocusDirective.KEYS.RIGHT);
 		expect(item.collapsed).toBeFalsy();
 	});
 
@@ -112,7 +114,7 @@ describe('NavTreeFakeFocusDirective', () => {
 
 		directive.fakeFocus(targetElement);
 		expect(targetLink.click).toHaveBeenCalledTimes(0);
-		inputElement.triggerEventHandler('keydown.Enter', {});
+		keydown(NavTreeFakeFocusDirective.KEYS.ENTER);
 		expect(targetLink.click).toHaveBeenCalledTimes(1);
 	});
 
@@ -129,20 +131,20 @@ describe('NavTreeFakeFocusDirective', () => {
 		directive.fakeFocus(element.query(ITEM_QUERY('B-1')));
 		inputElement.triggerEventHandler('blur', {});
 		inputElement.nativeElement.focus();
-		inputElement.triggerEventHandler('keydown.ArrowDown', {});
+		keydown(NavTreeFakeFocusDirective.KEYS.DOWN);
 		expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('B.2 - Label');
 	});
 
 	describe ('on InitialFocus', () => {
 
 		it ('should fake focus the first element on initial ArrowDown', () => {
-			inputElement.triggerEventHandler('keydown.ArrowDown', {});
+			keydown(NavTreeFakeFocusDirective.KEYS.DOWN);
 			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('A - Label');
 		});
 
 
 		it ('should fake focus the last element on initial ArrowUp', () => {
-			inputElement.triggerEventHandler('keydown.ArrowUp', {});
+			keydown(NavTreeFakeFocusDirective.KEYS.UP);
 			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('C.3 - Label');
 		});
 
@@ -150,7 +152,7 @@ describe('NavTreeFakeFocusDirective', () => {
 			testComponent.items[2].collapsed = true;
 			fixture.detectChanges();
 
-			inputElement.triggerEventHandler('keydown.ArrowUp', {});
+			keydown(NavTreeFakeFocusDirective.KEYS.UP);
 			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('C - Label');
 		});
 	});
@@ -159,25 +161,25 @@ describe('NavTreeFakeFocusDirective', () => {
 
 		it ('should fake focus the next descendant', () => {
 			directive.fakeFocus(element.query(ITEM_QUERY('B')));
-			inputElement.triggerEventHandler('keydown.ArrowDown', {});
+			keydown(NavTreeFakeFocusDirective.KEYS.DOWN);
 			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('B.1 - Label');
 		});
 
 		it ('should fake focus the next sibling', () => {
 			directive.fakeFocus(element.query(ITEM_QUERY('B-1')));
-			inputElement.triggerEventHandler('keydown.ArrowDown', {});
+			keydown(NavTreeFakeFocusDirective.KEYS.DOWN);
 			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('B.2 - Label');
 		});
 
 		it ('should fake focus the next parent sibling', () => {
 			directive.fakeFocus(element.query(ITEM_QUERY('B-3')));
-			inputElement.triggerEventHandler('keydown.ArrowDown', {});
+			keydown(NavTreeFakeFocusDirective.KEYS.DOWN);
 			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('C - Label');
 		});
 
 		it ('should fake focus the first element if the end of the list is reached', () => {
 			directive.fakeFocus(element.query(ITEM_QUERY('C-3')));
-			inputElement.triggerEventHandler('keydown.ArrowDown', {});
+			keydown(NavTreeFakeFocusDirective.KEYS.DOWN);
 			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('A - Label');
 		});
 
@@ -186,7 +188,7 @@ describe('NavTreeFakeFocusDirective', () => {
 			fixture.detectChanges();
 			directive.fakeFocus(element.query(ITEM_QUERY('B-1')));
 
-			inputElement.triggerEventHandler('keydown.ArrowDown', {});
+			keydown(NavTreeFakeFocusDirective.KEYS.DOWN);
 			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('B.3 - Label');
 		});
 	});
@@ -195,7 +197,7 @@ describe('NavTreeFakeFocusDirective', () => {
 
 		it ('should fake focus the previous sibling\'s last child', () => {
 			directive.fakeFocus(element.query(ITEM_QUERY('C')));
-			inputElement.triggerEventHandler('keydown.ArrowUp', {});
+			keydown(NavTreeFakeFocusDirective.KEYS.UP);
 			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('B.3 - Label');
 		});
 
@@ -204,19 +206,19 @@ describe('NavTreeFakeFocusDirective', () => {
 			fixture.detectChanges();
 
 			directive.fakeFocus(element.query(ITEM_QUERY('C')));
-			inputElement.triggerEventHandler('keydown.ArrowUp', {});
+			keydown(NavTreeFakeFocusDirective.KEYS.UP);
 			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('B - Label');
 		});
 
 		it ('should fake focus the parent', () => {
 			directive.fakeFocus(element.query(ITEM_QUERY('B-1')));
-			inputElement.triggerEventHandler('keydown.ArrowUp', {});
+			keydown(NavTreeFakeFocusDirective.KEYS.UP);
 			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('B - Label');
 		});
 
 		it ('should fake focus the last element if the beginning of the list is reached', () => {
 			directive.fakeFocus(element.query(ITEM_QUERY('A')));
-			inputElement.triggerEventHandler('keydown.ArrowUp', {});
+			keydown(NavTreeFakeFocusDirective.KEYS.UP);
 			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('C.3 - Label');
 		});
 
@@ -225,7 +227,7 @@ describe('NavTreeFakeFocusDirective', () => {
 			fixture.detectChanges();
 			directive.fakeFocus(element.query(ITEM_QUERY('B-3')));
 
-			inputElement.triggerEventHandler('keydown.ArrowUp', {});
+			keydown(NavTreeFakeFocusDirective.KEYS.UP);
 			expect(element.query(FAKE_FOCUS_QUERY).nativeElement.textContent.trim()).toBe('B.1 - Label');
 		});
 	});
