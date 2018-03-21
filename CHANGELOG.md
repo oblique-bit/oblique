@@ -1,5 +1,30 @@
 ### ObliqueReactive
 
+<a name="2.0.0-RC.3-1"></a>
+#### [2.0.0-RC.3-1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.3-1) (2018-02-08)
+
+##### Dependencies updates
+* **ObliqueUI:** 2.0.0-RC.3-1
+* **Bootstrap:** 4.0.0
+* **Angular:** 5.2.3
+* **ng-bootstrap:** 1.0.0
+* **ngx-translate:** 9.1.1
+* **zone.js:** 0.8.20
+
+##### Bug Fixes
+* **notification:** do not show default title if a title is provided ([3e6810a](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/3e6810a))
+
+##### Features
+* **footer:**
+	- add configuration parameter for enabling small footer variant ([b399e26](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b399e26))
+	- add Footer component for layout customization ([1bcb191](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/1bcb191))
+* **master-layout:** add a `MasterLayoutHeaderToggleDirective` for toggling the application header ([299a55b](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/299a55b))
+* **number-format:** add directive ([9a364c5](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/9a364c5))
+
+##### Code Refactoring
+* **toolchain:** migrate to Gulp 4 ([788c987](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/788c987))
+
+
 <a name="2.0.0-RC.3"></a>
 #### [2.0.0-RC.3](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.3) (2018-01-09)
 
@@ -126,5 +151,5 @@
 * **rxjs:** 5.4.1
 
 ##### BREAKING CHANGES
-ObliqueReactive has been migrated to Angular 4. This of course breaks all compatibility to any previous release of ObliqueReactive. 
-
+ObliqueReactive has been migrated to Angular 4.
+This of course breaks all compatibility to any previous release of ObliqueReactive. 
