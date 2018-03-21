@@ -1,33 +1,12 @@
 import {
-	AfterViewInit, Directive, ElementRef, Inject, Input, Renderer2
+	AfterViewInit, Directive, ElementRef, Inject, Input, OnDestroy, Renderer2
 } from '@angular/core';
 import 'rxjs/add/operator/throttleTime';
 import {Subject} from 'rxjs/Subject';
-import {NavTreeComponent} from './nav-tree.component';
 import {DOCUMENT} from '@angular/common';
 
 export class RootDocument extends Document {
 	public fakeFocusCssInitialized: boolean;
-}
-
-export class FakeFocusOptionsTrigger {
-	constructor(
-		public name: string,
-		public customDebounceTime: number = -1,
-	) {}
-}
-
-export class FakeFocusOptionsTriggers {
-	public focusNext: FakeFocusOptionsTrigger[];
-	public focusPrevious: FakeFocusOptionsTrigger[];
-	public accept: FakeFocusOptionsTrigger[];
-	public blur: FakeFocusOptionsTrigger[];
-	public toggleCollapsed: FakeFocusOptionsTrigger[];
-	public defaultDebounceTime: number;
-}
-
-export class FakeFocusOptions {
-	public triggers: FakeFocusOptionsTriggers;
 }
 
 /**
@@ -36,46 +15,51 @@ export class FakeFocusOptions {
  * <or-nav-tree
  * 		...
  * 		[orNavTreeFakeFocus]="inputElement"
- * 		[orNavTreeFakeFocusOptions]="{}"
  * 		...
- * ></or-nav-treee>
- *
+ * ></or-nav-tree>
  */
 @Directive({
 	selector: '[orNavTreeFakeFocus]',
 })
-export class NavTreeFakeFocusDirective implements AfterViewInit {
+export class NavTreeFakeFocusDirective implements AfterViewInit, OnDestroy {
 
-	private static readonly FakeFocusClass = 'fake-focus';
+	public static readonly EVENT_TOGGLE_COLLAPSED = 'or.navTree.item.toggleCollapsed';
 
-	private static readonly FocusStyleSelectorPattern: RegExp = new RegExp('(\\.nav-link[\\.\\w]*):(focus)', 'g');
+	public static readonly KEYS = {
+		UP: 38,
+		DOWN: 40,
+		LEFT: 37,
+		RIGHT: 39,
+		ENTER: 13,
+	};
 
-	private static readonly FocusStyleSelectorReplacement: string = '$1.fake-$2';
+	private static readonly INPUT_EVENTS = {
+		KEY_DOWN: 'keydown',
+		BLUR: 'blur',
+	};
 
-	private static readonly ItemWrapperSelector = 'ul.nav.nav-tree.expanded > li.nav-item:not(.nav-header)';
+	private static readonly ITEM_WRAPPER_SELECTOR = 'ul.nav.nav-tree.expanded:not(.disabled) > li.nav-item:not(.nav-header):not(.disabled)';
 
-	private static readonly ItemContentSelector = 'a';
+	private static readonly ITEM_LINK_SELECTOR = '.nav-link';
 
-	@Input()
-	options: FakeFocusOptions;
+	private static readonly FAKE_FOCUS_CLASS = 'fake-focus';
+
+	private static readonly FOCUS_STYLE = {
+		SELECTOR_PATTERN: new RegExp('(\\.nav-link[\\.\\w]*):(focus)', 'g'),
+		SELECTOR_REPLACEMENT: '$1.fake-$2',
+	};
+
+	private static readonly KEY_DOWN_DEBOUNCE_MILLIS = 10;
+
+	private static readonly SCROLL_OPTIONS: ScrollIntoViewOptions = {behavior: 'auto', inline: 'center'};
+
+	private readonly keyHandlers: object = {};
 
 	private inputElement: ElementRef;
 
 	private focusedElement: ElementRef;
 
-	private defaultOptions: FakeFocusOptions = <FakeFocusOptions> {
-		triggers: {
-			focusNext: [new FakeFocusOptionsTrigger('keydown.ArrowDown')],
-			focusPrevious: [new FakeFocusOptionsTrigger('keydown.ArrowUp')],
-			accept: [new FakeFocusOptionsTrigger('keydown.Enter', 0)],
-			blur: [new FakeFocusOptionsTrigger('focusout')],
-			toggleCollapsed: [
-				new FakeFocusOptionsTrigger('keydown.ArrowLeft'),
-				new FakeFocusOptionsTrigger('keydown.ArrowRight'),
-			],
-			defaultDebounceTime: 10,
-		},
-	};
+	private eventSubscriptions: (() => void)[] = [];
 
 	public constructor(
 		private readonly element: ElementRef,
@@ -88,34 +72,42 @@ export class NavTreeFakeFocusDirective implements AfterViewInit {
 				+ `Current element is: '${this.element.nativeElement.localName}'`
 			);
 		}
+		this.keyHandlers[NavTreeFakeFocusDirective.KEYS.DOWN] = () => this.focusNext();
+		this.keyHandlers[NavTreeFakeFocusDirective.KEYS.UP] = () => this.focusPrevious();
+		this.keyHandlers[NavTreeFakeFocusDirective.KEYS.ENTER] = () => this.accept();
+		this.keyHandlers[NavTreeFakeFocusDirective.KEYS.LEFT] = () => this.toggleCollapsed();
+		this.keyHandlers[NavTreeFakeFocusDirective.KEYS.RIGHT] = () => this.toggleCollapsed();
 	}
 
 	@Input('orNavTreeFakeFocus')
 	public set focusInputElement(element: any) {
-		if (element instanceof ElementRef) {
-			element = element.nativeElement;
+		if (element && !(element instanceof ElementRef)) {
+			element = new ElementRef(element);
 		}
-		if (!element || !element.tagName) {
-			throw new Error(
-				'The given value for [orNavTreeFakeFocus] is invalid. ' +
-				'It must be a valid native DOM element or ElementRef.'
-			);
-		}
-		this.inputElement = new ElementRef(element);
+		this.inputElement = element;
+		this.initInputElement();
 	}
 
 	public ngAfterViewInit() {
-		this.options = Object.assign(this.defaultOptions, this.options || {});
-		this.setupEventListeners(this.options.triggers.focusNext, () => this.focusNext());
-		this.setupEventListeners(this.options.triggers.focusPrevious, () => this.focusPrevious());
-		this.setupEventListeners(this.options.triggers.toggleCollapsed, () => this.toggleCollapsed());
-		this.setupEventListeners(this.options.triggers.accept, () => this.accept());
-		this.setupEventListeners(this.options.triggers.blur, () => this.blur());
 		this.setupFakeFocus();
 	}
 
+	public ngOnDestroy() {
+		this.unsubsribeInputListeners();
+	}
+
+	public fakeFocus(element: ElementRef): void {
+		let link = this.findLink(element);
+		if (!link || !this.element.nativeElement.contains(link.nativeElement)) {
+			throw new Error(`Unable to fake focus element '${element}'. No valid DOM element or no valid child.`);
+		}
+		this.onBlur();
+		this.renderer.addClass(link.nativeElement, NavTreeFakeFocusDirective.FAKE_FOCUS_CLASS);
+		this.focusedElement = element;
+		this.ensureInView();
+	}
+
 	private setupFakeFocus() {
-		this.inputElement.nativeElement.setAttribute('autocomplete', 'off');
 		if (this.document.fakeFocusCssInitialized) {
 			return;
 		}
@@ -124,10 +116,10 @@ export class NavTreeFakeFocusDirective implements AfterViewInit {
 			let styleSheet: any = this.document.styleSheets[styleSheetIndex];
 			for (let ruleIndex = 0; styleSheet.cssRules && ruleIndex < styleSheet.cssRules.length; ruleIndex++) {
 				let rule = styleSheet.cssRules[ruleIndex];
-				if (NavTreeFakeFocusDirective.FocusStyleSelectorPattern.exec(rule.selectorText)) {
+				if (NavTreeFakeFocusDirective.FOCUS_STYLE.SELECTOR_PATTERN.exec(rule.selectorText)) {
 					let changedSelector = rule.selectorText.replace(
-						NavTreeFakeFocusDirective.FocusStyleSelectorPattern,
-						NavTreeFakeFocusDirective.FocusStyleSelectorReplacement
+						NavTreeFakeFocusDirective.FOCUS_STYLE.SELECTOR_PATTERN,
+						NavTreeFakeFocusDirective.FOCUS_STYLE.SELECTOR_REPLACEMENT
 					);
 					styleSheet.insertRule(`${changedSelector}{${rule.style.cssText}}`, styleSheet.cssRules.length);
 				}
@@ -136,179 +128,113 @@ export class NavTreeFakeFocusDirective implements AfterViewInit {
 		this.document.fakeFocusCssInitialized = true;
 	}
 
-	private setupEventListeners(triggers: FakeFocusOptionsTrigger[], callback: () => void) {
-		triggers.forEach((trigger) => {
-			let debouncer: Subject<any> = new Subject<any>();
-			debouncer.throttleTime(trigger.customDebounceTime || this.options.triggers.defaultDebounceTime)
-				.subscribe(callback);
-			this.renderer.listen(this.inputElement.nativeElement, trigger.name, () => debouncer.next());
-		});
+	private initInputElement() {
+		this.unsubsribeInputListeners();
+		if (!this.inputElement) {
+			return;
+		}
+		if (!this.inputElement.nativeElement || !this.inputElement.nativeElement.tagName) {
+			throw new Error(
+				'The given value for [orNavTreeFakeFocus] is invalid. ' +
+				'It must be a valid native DOM element or ElementRef.'
+			);
+		}
+		this.unsubsribeInputListeners();
+		this.inputElement.nativeElement.setAttribute('autocomplete', 'off');
+		this.initEventListeners();
 	}
 
-	private toggleCollapsed() {
-		if (this.focusedElement) {
-			// @todo: try new CustomEvent(bla)
-			let event = this.document.createEvent('Event'); // Some browsers (IE) don't support new Event()
-			event.initEvent(NavTreeComponent.EVENT_TOGGLE_COLLAPSED, false, true);
-			this.focusedElement.nativeElement.dispatchEvent(event);
+	private initEventListeners() {
+		let debouncer: Subject<any> = new Subject<any>();
+		debouncer.throttleTime(NavTreeFakeFocusDirective.KEY_DOWN_DEBOUNCE_MILLIS).subscribe(
+			(event) => this.onKeyDown(event)
+		);
+		this.eventSubscriptions.push(this.renderer.listen(
+			this.inputElement.nativeElement,
+			NavTreeFakeFocusDirective.INPUT_EVENTS.KEY_DOWN,
+			(event) => debouncer.next(event)
+		));
+		this.eventSubscriptions.push(this.renderer.listen(
+			this.inputElement.nativeElement,
+			NavTreeFakeFocusDirective.INPUT_EVENTS.BLUR,
+			() => this.onBlur()
+		));
+	}
+
+	private onKeyDown(event: KeyboardEvent) {
+		if (this.keyHandlers.hasOwnProperty(event.keyCode)) {
+			this.keyHandlers[event.keyCode]();
 		}
 	}
 
-	private focusNext() {
-		if (
-			!this.tryFocusFirstDescendant()
-			&& !this.tryFocusNextSibling()
-			&& !this.tryFocusParentSibling()
-		) {
-			this.focusFirst();
+	private onBlur() {
+		let link = this.findLink();
+		if (link && link.nativeElement) {
+			this.renderer.removeClass(link.nativeElement, NavTreeFakeFocusDirective.FAKE_FOCUS_CLASS);
 		}
 	}
 
-	private focusPrevious() {
-		if (
-			!this.tryFocusPreviousSiblingChild()
-			&& !this.tryFocusPreviousSibling()
-			&& !this.tryFocusParent()
-		) {
-			this.focusLast();
-		}
-	}
-
-	private focusFirst() {
-		let nativeElement = this.element.nativeElement.querySelector(NavTreeFakeFocusDirective.ItemWrapperSelector);
-		if (nativeElement) {
-			this.tryFocus(new ElementRef(nativeElement));
-		}
-	}
-
-	private focusLast() {
-		let context = this.element.nativeElement;
-		while (context && context.lastElementChild ) {
-			context = context.lastElementChild;
-		}
-		this.tryFocus(this.findClosest(new ElementRef(context)));
+	private unsubsribeInputListeners() {
+		this.eventSubscriptions.forEach((unsubscribe: () => void) => unsubscribe());
+		this.eventSubscriptions = [];
 	}
 
 	private accept() {
+		let link = this.findLink();
+		if (link && link.nativeElement) {
+			link.nativeElement.click();
+		}
+	}
+
+	private toggleCollapsed(): void {
+		if (!this.focusedElement || !this.focusedElement.nativeElement) {
+			return;
+		}
+		let event;
+		if (CustomEvent && typeof CustomEvent === 'function') {
+			event = new CustomEvent(NavTreeFakeFocusDirective.EVENT_TOGGLE_COLLAPSED);
+		} else { // Some browsers (IE) don't support Event constructors
+			event = document.createEvent('Event');
+			event.initEvent(NavTreeFakeFocusDirective.EVENT_TOGGLE_COLLAPSED, false, true);
+		}
+		this.focusedElement.nativeElement.dispatchEvent(event);
+	}
+
+	private focusNext() {
+		let elements = this.extractAllListElements();
+		let nextIndex = 0;
 		if (this.focusedElement) {
-			this.focusedElement.nativeElement.querySelector(NavTreeFakeFocusDirective.ItemContentSelector).click();
+			nextIndex = elements.indexOf(this.focusedElement.nativeElement) + 1;
 		}
+		this.fakeFocus(new ElementRef(elements[nextIndex < elements.length ? nextIndex : 0]));
 	}
 
-	private blur() {
+	private focusPrevious() {
+		let elements = this.extractAllListElements();
+		let previousIndex = -1;
 		if (this.focusedElement) {
-			this.renderer.removeClass(
-				this.focusedElement.nativeElement.querySelector(NavTreeFakeFocusDirective.ItemContentSelector),
-				NavTreeFakeFocusDirective.FakeFocusClass
-			);
+			previousIndex = elements.indexOf(this.focusedElement.nativeElement) - 1;
 		}
+		this.fakeFocus(new ElementRef(elements[previousIndex >= 0 ? previousIndex : elements.length - 1]));
 	}
 
-	private tryFocusFirstDescendant(): boolean {
-		if (!this.focusedElement) {
-			return false;
-		}
-		let nativeElement = this.focusedElement.nativeElement.querySelector(NavTreeFakeFocusDirective.ItemWrapperSelector);
-		if (nativeElement) {
-			return this.tryFocus(new ElementRef(nativeElement));
-		}
-		return false;
-	}
-
-	private tryFocusNextSibling(parent: ElementRef = null): boolean {
-		parent = parent || this.focusedElement;
-		if (!parent) {
-			return false;
-		}
-		let sibling = parent.nativeElement.nextElementSibling;
-		while (sibling && !this.matches(sibling)) {
-			sibling = sibling.nextElementSibling;
-		}
-		if (!sibling) {
-			return false;
-		}
-		return this.tryFocus(new ElementRef(sibling));
-	}
-
-	private tryFocusParentSibling(): boolean {
-		if (!this.focusedElement) {
-			return false;
-		}
-		let context = this.focusedElement.nativeElement.parentElement;
-		while (context && !this.tryFocusNextSibling(new ElementRef(context))) {
-			context = context.parentElement;
-		}
-		return !!context;
-	}
-
-	private tryFocus(element: ElementRef): boolean {
-		if (!element || !this.element.nativeElement.contains(element.nativeElement)) {
-			return false;
-		}
-		this.blur();
-		this.renderer.addClass(
-			element.nativeElement.querySelector(NavTreeFakeFocusDirective.ItemContentSelector),
-			NavTreeFakeFocusDirective.FakeFocusClass
-		);
-		this.focusedElement = element;
-		this.scrollIntoView();
-		return true;
-	}
-
-	private tryFocusPreviousSibling(parent: ElementRef = null): boolean {
-		parent = parent || this.focusedElement;
-		if (!parent) {
-			return false;
-		}
-		let sibling = parent.nativeElement.previousElementSibling;
-		while (sibling && !this.matches(sibling)) {
-			sibling = sibling.previousElementSibling;
-		}
-		if (!sibling) {
-			return false;
-		}
-		return this.tryFocus(new ElementRef(sibling));
-	}
-
-	private tryFocusParent(): boolean {
-		if (!this.focusedElement || !this.focusedElement.nativeElement.parentElement) {
-			return false;
-		}
-		return this.tryFocus(this.findClosest(new ElementRef(this.focusedElement.nativeElement.parentElement)));
-	}
-
-	private tryFocusPreviousSiblingChild(): boolean {
-		if (!this.focusedElement) {
-			return false;
-		}
-		let context = this.focusedElement.nativeElement.previousElementSibling;
-		while (context && context.lastElementChild ) {
-			context = context.lastElementChild;
-		}
-		return this.tryFocus(this.findClosest(new ElementRef(context)));
-	}
-
-	private findClosest(element: ElementRef): ElementRef {
+	private findLink(element: ElementRef = null): ElementRef {
+		element = element || this.focusedElement;
 		if (!element || !element.nativeElement) {
 			return null;
 		}
-		let parent = element.nativeElement.parentElement;
-		while (parent && !this.matches(parent)) {
-			parent = parent.parentElement;
-		}
-		return new ElementRef(parent);
+		let link = element.nativeElement.querySelector(NavTreeFakeFocusDirective.ITEM_LINK_SELECTOR);
+		return link ? new ElementRef(link) : null;
 	}
 
-	private matches(element): boolean {
-		return element.msMatchesSelector ?
-			element.msMatchesSelector(NavTreeFakeFocusDirective.ItemWrapperSelector)
-			: element.matches(NavTreeFakeFocusDirective.ItemWrapperSelector);
+	private extractAllListElements(): any[] {
+		return [].slice.call(this.element.nativeElement.querySelectorAll(NavTreeFakeFocusDirective.ITEM_WRAPPER_SELECTOR));
 	}
 
-	private scrollIntoView() {
-		let element = this.focusedElement.nativeElement.querySelector(NavTreeFakeFocusDirective.ItemContentSelector);
-		if (element) {
-			element.scrollIntoView({behavior: 'auto', inline: 'center'});
+	private ensureInView(): void {
+		let link = this.findLink();
+		if (link && link.nativeElement) {
+			link.nativeElement.scrollIntoView(NavTreeFakeFocusDirective.SCROLL_OPTIONS);
 		}
 	}
 }
