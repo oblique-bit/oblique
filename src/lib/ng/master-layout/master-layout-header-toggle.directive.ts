@@ -22,7 +22,7 @@ export class MasterLayoutHeaderToggleDirective {
 		// browser does not try to follow any empty link (ie `href=""`):
 		$event.preventDefault();
 
-		if(this.closeOnly) {
+		if (this.closeOnly) {
 			this.headerService.open = false;
 		} else {
 			this.headerService.toggle();

@@ -1,5 +1,4 @@
-import {AfterViewInit, ContentChildren, Directive, EventEmitter, HostBinding, Output, QueryList} from '@angular/core';
-import {DomSanitizer} from '@angular/platform-browser';
+import {AfterViewInit, ContentChildren, Directive, ElementRef, EventEmitter, Output, QueryList} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe';
 
@@ -9,16 +8,13 @@ import {Unsubscribable} from '../unsubscribe';
 })
 export class MasterLayoutNavigationMenuDirective extends Unsubscribable implements AfterViewInit {
 
-	@HostBinding('style')
-	public style: any;
-
 	@Output()
 	onShow = new EventEmitter<boolean>();
 
 	@ContentChildren(MasterLayoutNavigationMenuDirective, {descendants: true})
 	$menus: QueryList<MasterLayoutNavigationMenuDirective>;
 
-	constructor(private sanitizer: DomSanitizer) {
+	constructor(private element: ElementRef) {
 		super();
 	}
 
@@ -31,13 +27,11 @@ export class MasterLayoutNavigationMenuDirective extends Unsubscribable implemen
 						// <FIX> - for presentation only:
 						// (cf. https://www.w3.org/Bugs/Public/show_bug.cgi?id=16328, https://bugs.chromium.org/p/chromium/issues/detail?id=20574):
 						if (show) {
-							$menu.style = null;
-							this.style = this.sanitizer.bypassSecurityTrustStyle(
-								'overflow: hidden; transform: initial; transition-duration: initial;'
-							);
+							$menu.element.nativeElement.style.cssText = null;
+							this.element.nativeElement.style.cssText = 'overflow: hidden; transform: initial; transition-duration: initial;';
 						} else {
-							this.style = null;
-							$menu.style = this.sanitizer.bypassSecurityTrustStyle('top: 0;');
+							this.element.nativeElement.style.cssText = null;
+							$menu.element.nativeElement.style.cssText = 'top: 0;';
 						}
 						// </FIX>
 					});

@@ -8,12 +8,12 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {SchemaValidationService} from '../../../../lib/ng/schema-validation';
 import {NotificationService} from '../../../../lib/ng/notification';
 
-describe('SchemaValidationComponent', () => {
+describe('SchemaValidationSampleComponent', () => {
 	let component: SchemaValidationSampleComponent;
 	let fixture: ComponentFixture<SchemaValidationSampleComponent>;
 	let mockNotificationService;
 
-	beforeEach(async(() => {
+	beforeEach(() => {
 		mockNotificationService = jasmine.createSpyObj('NotificationService', ['']);
 		TestBed.configureTestingModule({
 			imports: [
@@ -28,17 +28,22 @@ describe('SchemaValidationComponent', () => {
 				SchemaValidationSampleComponent,
 				MockTranslatePipe
 			],
-			providers: [SchemaValidationService,
-				{provide: NotificationService, useValue: mockNotificationService}
+			providers: [
+				SchemaValidationService,
+				{
+					provide: NotificationService,
+					useValue: mockNotificationService
+				}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
-		})
-			.compileComponents();
-	}));
+		}).compileComponents();
+	});
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(SchemaValidationSampleComponent);
 		component = fixture.componentInstance;
+		// Initialize the component to avoid async failure:
+		component.ngOnInit();
 		fixture.detectChanges();
 	});
 

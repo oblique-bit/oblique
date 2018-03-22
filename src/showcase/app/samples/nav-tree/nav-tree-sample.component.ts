@@ -15,6 +15,7 @@ export class NavTreeSampleComponent extends Unsubscribable implements OnInit {
 	public rlaOptions: any = {
 		exact: true
 	};
+	public useFakeFocus = true;
 
 	public filter = {
 		pattern: null,

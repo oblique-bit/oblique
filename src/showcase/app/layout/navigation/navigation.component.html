@@ -12,7 +12,7 @@
 	<li class="nav-item" role="presentation"
 	    orMasterLayoutNavigationItem>
 		<a class="nav-link" href="" role="button"
-		   [ngClass]="{'active': isActive('/samples')}"
+		   [class.active]="isActive('/samples')"
 		   orMasterLayoutNavigationToggle>
 			<span id="navbar-primary-samples-title">
 				{{'i18n.routes.samples.title' | translate}}
@@ -96,22 +96,6 @@
 								{{'i18n.routes.samples.notification.title' | translate}}
 							</a>
 						</li>
-						<!--<li class="nav-item" role="presentation"-->
-						    <!--orMasterLayoutNavigationItem>-->
-							<!--<a class="nav-link" href="" role="menuitem"-->
-							   <!--[routerLink]="['/samples/samples.typeahead']" routerLinkActive="active"-->
-							   <!--orMasterLayoutNavigationToggle>-->
-								<!--{{'i18n.routes.samples.typeahead.title' | translate}}-->
-							<!--</a>-->
-						<!--</li>-->
-						<!--<li class="nav-item" role="presentation"-->
-						    <!--orMasterLayoutNavigationItem>-->
-							<!--<a class="nav-link" href="" ngbTooltip="Aka infinite scrolling" role="menuitem"-->
-							   <!--[routerLink]="['/samples/ui-scroll']" routerLinkActive="active"-->
-							   <!--orMasterLayoutNavigationToggle>-->
-								<!--{{'i18n.routes.samples.ui-scroll.title' | translate}}-->
-							<!--</a>-->
-						<!--</li>-->
 						<li class="nav-item" role="presentation"
 						    orMasterLayoutNavigationItem>
 							<a class="nav-link" href="" role="menuitem"
@@ -142,8 +126,8 @@
 				    orMasterLayoutNavigationItem>
 					<a class="nav-link navbar-primary-section-title"
 					   href="" role="button" aria-haspopup="true"
-					   orMasterLayoutNavigationToggle
-					   [ngClass]="{'active': isActive('/samples/validation')}">
+					   [class.active]="isActive('/samples/validation')"
+					   orMasterLayoutNavigationToggle>
 						<span id="navbar-primary-validation-title">
 							{{'i18n.routes.samples.validation.title' | translate}}
 						</span>

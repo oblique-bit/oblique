@@ -1,18 +1,22 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, RouterLinkActive} from '@angular/router';
-import {takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe';
 import {NavTreeItemModel} from './nav-tree-item.model';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
 	selector: 'or-nav-tree',
 	exportAs: 'orNavTree',
 	template: `
-		<ul class="nav nav-tree" role="tree" [ngClass]="variant">
-			<ng-content></ng-content>
+		<ng-template #itemList let-items let-parentExpanded="parentExpanded">
 			<ng-template ngFor [ngForOf]="items" let-item>
-				<li class="nav-item open" role="presentation"
-					*ngIf="visible(item)">
+				<li *ngIf="visible(item)"
+					class="nav-item open"
+					role="presentation"
+					(or.navTree.item.toggleCollapsed)="item.collapsed = !item.collapsed"
+					[attr.id]="item.id ? (prefix ? prefix + '-' : '') + item.id : null"
+					[class.disabled]="item.disabled === true || null"
+				>
 					<a class="nav-link" role="treeitem" aria-selected="false"
 					   [routerLink]="item.routes"
 					   #rla="routerLinkActive" routerLinkActive [routerLinkActiveOptions]="rlaOptions"
@@ -27,16 +31,22 @@ import {NavTreeItemModel} from './nav-tree-item.model';
 					</a>
 					<div id="#{{itemKey(item)}}" class="collapse show"
 						 *ngIf="item.items" [ngbCollapse]="item.collapsed">
-						<or-nav-tree [items]="item.items"
-									 [prefix]="itemKey(item)"
-									 [filterPattern]="filterPattern"
-									 [labelFormatter]="labelFormatter"
-									 [pathPrefix]="pathPrefix"
-									 [rlaOptions]="rlaOptions"
-									 [variant]="variant"></or-nav-tree>
+						<ul class="nav nav-tree"
+							[ngClass]="variant"
+							[class.expanded]="parentExpanded && !item.collapsed"
+							[class.disabled]="item.disabled === true || null"
+							role="tree"
+						>
+							<ng-container *ngTemplateOutlet="itemList; context:{ $implicit: item.items, parentExpanded: parentExpanded && !item.collapsed}">
+							</ng-container>
+						</ul>
 					</div>
 				</li>
 			</ng-template>
+		</ng-template>
+		<ul #root class="nav nav-tree expanded" role="tree" [ngClass]="variant">
+			<ng-content></ng-content>
+			<ng-container *ngTemplateOutlet="itemList; context:{ $implicit: items, parentExpanded: true }"></ng-container>
 		</ul>
 	`,
 	// Ensure CSS styles are added to global styles as search pattern highlighting is done at runtime:
@@ -49,7 +59,6 @@ import {NavTreeItemModel} from './nav-tree-item.model';
 		}
 	`]
 })
-
 export class NavTreeComponent extends Unsubscribable {
 
 	public static DEFAULTS = {
@@ -115,28 +124,6 @@ export class NavTreeComponent extends Unsubscribable {
 		return this.prefix + '-' + item.id;
 	}
 
-	collapse(items: NavTreeItemModel[], all: boolean = false) {
-		items
-			.filter((item) => item.items)
-			.forEach((item: NavTreeItemModel) => {
-				item.collapsed = true;
-				if (all) {
-					this.collapse(item.items, all);
-				}
-			});
-	}
-
-	expand(items: NavTreeItemModel[], all: boolean = false) {
-		items
-			.filter((item) => item.items)
-			.forEach((item: NavTreeItemModel) => {
-				item.collapsed = false;
-				if (all) {
-					this.expand(item.items, all);
-				}
-			});
-	}
-
 	// TODO: remove when https://github.com/angular/angular/issues/13205
 	isLinkActive(rla: RouterLinkActive, item: NavTreeItemModel) {
 		return rla.isActive && (
@@ -144,13 +131,24 @@ export class NavTreeComponent extends Unsubscribable {
 		);
 	}
 
+	changeCollapsed(items: NavTreeItemModel[], collapsed: boolean, all: boolean = false): void {
+		items
+			.filter((item) => item.items)
+			.forEach((item: NavTreeItemModel) => {
+				item.collapsed = collapsed;
+				if (all) {
+					this.changeCollapsed(item.items, collapsed, all);
+				}
+			});
+	}
+
 	// Public API:
 	public collapseAll() {
-		this.collapse(this.items, true);
+		this.changeCollapsed(this.items, true, true);
 	}
 
 	public expandAll() {
-		this.expand(this.items, true);
+		this.changeCollapsed(this.items, false, true);
 	}
 }
 

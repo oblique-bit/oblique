@@ -25,7 +25,6 @@ import {LayoutModule} from './layout/layout.module';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './home/home.component';
-import {SamplesModule} from './samples/samples.module';
 
 // AoT requires an exported function for factories:
 export function createTranslateLoader(http: HttpClient) {
@@ -53,8 +52,7 @@ export function createTranslateLoader(http: HttpClient) {
 		}),
 		AppRoutingModule,
 		MasterLayoutModule,
-		LayoutModule,
-		SamplesModule
+		LayoutModule
 	],
 	providers: [
 		DocumentMetaService,

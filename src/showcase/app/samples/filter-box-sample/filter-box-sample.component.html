@@ -7,7 +7,7 @@
 		<div class="card">
 			<div class="card-header">Simple filter</div>
 			<div class="card-body">
-				<p>The pattern is linked to a variable from the controller using <code>[(pattern)]</code>.</p>
+				<p class="small">The pattern is linked to a variable from the controller using <code>[(pattern)]</code>.</p>
 				<or-filter-box [(pattern)]="patterns[0]"></or-filter-box>
 				<ul>
 					<li *ngFor="let item of items | patternFilter:patterns[0]">{{item}}</li>
@@ -15,10 +15,10 @@
 			</div>
 		</div>
 		<div class="card">
-			<div class="card-header">With preceding input add-on</div>
+			<div class="card-header">SM variant with a preceding input add-on</div>
 			<div class="card-body">
-				<p>A preceding custom input add-on has been used with <code>filter-box-before</code>.</p>
-				<or-filter-box [(pattern)]="patterns[2]">
+				<p class="small">You can prepend a custom input add-on by providing content matching the <code>.input-group-prepend</code> CSS selector.</p>
+				<or-filter-box [(pattern)]="patterns[2]" size="sm">
 					<span class="input-group-prepend"><i class="input-group-text fa fa-search"></i></span>
 				</or-filter-box>
 				<ul>
@@ -27,10 +27,10 @@
 			</div>
 		</div>
 		<div class="card">
-			<div class="card-header">With following input add-on</div>
+			<div class="card-header">LG variant with a following input add-on</div>
 			<div class="card-body">
-				<p>A following custom input add-on has been used with <code>filter-box-after</code>.</p>
-				<or-filter-box [(pattern)]="patterns[3]">
+				<p class="small">You can prepend a custom input add-on by providing content matching the <code>.input-group-append</code> CSS selector.</p>
+				<or-filter-box [(pattern)]="patterns[3]" size="lg">
 					<span class="input-group-append" ngbDropdown>
 						<button id="search-actions-dropdown" class="btn btn-secondary dropdown-toggle"
 								type="button"
@@ -63,7 +63,7 @@
 		<div class="card">
 			<div class="card-header">With custom placeholder</div>
 			<div class="card-body">
-				<p>A custom <code>placeholder</code> has been used instead of the default one.</p>
+				<p class="small">A custom <code>placeholder</code> has been used instead of the default one.</p>
 				<or-filter-box [(pattern)]="patterns[1]" placeholder="My custom placeholder"></or-filter-box>
 				<ul>
 					<li *ngFor="let item of items | patternFilter:patterns[1]">{{item}}</li>
@@ -73,7 +73,7 @@
 		<div class="card">
 			<div class="card-header">With "cleared" feedback</div>
 			<div class="card-body">
-				<p>The <code>patternClear</code> event is used to count the number of times the search pattern has been cleared: <span class="badge badge-default">{{cleared}}</span>.</p>
+				<p class="small">The <code>patternClear</code> event is used to count the number of times the search pattern has been cleared: <span class="badge badge-default">{{cleared}}</span>.</p>
 				<or-filter-box [(pattern)]="patterns[4]" (patternClear)="incrementCleared()"></or-filter-box>
 				<ul>
 					<li *ngFor="let item of items | patternFilter:patterns[4]">{{item}}</li>
@@ -83,7 +83,7 @@
 		<div class="card">
 			<div class="card-header">With "changed" feedback</div>
 			<div class="card-body">
-				<p>The <code>patternChange</code> event is used to count the number of times the search pattern has been changed: <span class="badge badge-default">{{changed}}</span>.</p>
+				<p class="small">The <code>patternChange</code> event is used to count the number of times the search pattern has been changed: <span class="badge badge-default">{{changed}}</span>.</p>
 				<or-filter-box [(pattern)]="patterns[5]" (patternChange)="incrementChanged()"></or-filter-box>
 				<ul>
 					<li *ngFor="let item of items | patternFilter:patterns[5]">{{item}}</li>
