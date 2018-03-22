@@ -49,35 +49,6 @@ import {NavigableDirective} from './lib/ng/navigable/navigable.directive';
 
 	MouseEvent.prototype = Event.prototype;
 	window['MouseEvent'] = MouseEvent;
-
-	// function KeyboardEvent(eventType, params) {
-	// 	params = Object.assign({
-	// 		bubbles: true,
-	// 		cancelable: false,
-	// 		key: ''
-	// 	}, params);
-	// 	console.log(eventType, params);
-	// 	const keyboardEvent = document.createEvent('KeyboardEvent');
-	// 	keyboardEvent.initKeyboardEvent(
-	// 		eventType,
-	// 		params.bubbles,
-	// 		params.cancelable,
-	// 		window,
-	// 		'38', 0, null, false, null);
-	// 	console.log('keyboardEvent', keyboardEvent);
-	// 	// let keyboardEvent = {
-	// 	// 		type: 'keydown',
-	// 	// 		keyCode: eventType,
-	// 	// 		preventDefault: () => {
-	// 	// 	} // tslint:disable-line
-	// 	// } as KeyboardEvent;
-	// 	console.log(eventType, keyboardEvent);
-	// 	return keyboardEvent;
-	// }
-    //
-	// KeyboardEvent.prototype = Event.prototype;
-	// window['KeyboardEvent'] = KeyboardEvent;
-
 })(window);
 
 // Unfortunately there's no typing for the `__karma__` variable. Just declare it as any.
