@@ -12,8 +12,7 @@ describe('NumberFormatSampleComponent', () => {
 		TestBed.configureTestingModule({
 			imports: [FormsModule, ReactiveFormsModule],
 			declarations: [NumberFormatSampleComponent, MockTranslatePipe, NumberFormatDirective]
-		})
-			.compileComponents();
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {

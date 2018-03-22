@@ -13,8 +13,14 @@ import {NavTreeFakeFocusDirective} from './nav-tree-fake-focus.directive';
 		RouterModule,
 		TranslateModule
 	],
-	declarations: [NavTreeComponent, NavTreeFakeFocusDirective],
-	exports: [NavTreeComponent, NavTreeFakeFocusDirective]
+	declarations: [
+		NavTreeComponent,
+		NavTreeFakeFocusDirective
+	],
+	exports: [
+		NavTreeComponent,
+		NavTreeFakeFocusDirective
+	]
 })
 export class NavTreeModule {
 	static forRoot(): ModuleWithProviders {

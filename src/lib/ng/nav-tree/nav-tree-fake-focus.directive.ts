@@ -1,55 +1,52 @@
 import {
-	AfterViewInit, Directive, ElementRef, Inject, Input, OnDestroy, Renderer2
+	Directive, ElementRef, Input, OnDestroy, Renderer2
 } from '@angular/core';
 import 'rxjs/add/operator/throttleTime';
 import {Subject} from 'rxjs/Subject';
-import {DOCUMENT} from '@angular/common';
-
-export class RootDocument extends Document {
-	public fakeFocusCssInitialized: boolean;
-}
 
 /**
- * Directive to be used on the or-nav-tree component in order to get a "fake focus" keyboard navigation.
+ * Directive to be used on the `or-nav-tree` component in order to get a "fake focus" keyboard navigation.
+ *
  * Usage:
  * <or-nav-tree
  * 		...
- * 		[orNavTreeFakeFocus]="inputElement"
+ * 		[orNavTreeFakeFocus]="elementRef"
  * 		...
  * ></or-nav-tree>
  */
 @Directive({
 	selector: '[orNavTreeFakeFocus]',
 })
-export class NavTreeFakeFocusDirective implements AfterViewInit, OnDestroy {
+export class NavTreeFakeFocusDirective implements OnDestroy {
 
 	public static readonly EVENT_TOGGLE_COLLAPSED = 'or.navTree.item.toggleCollapsed';
 
+	public static readonly KEY_DOWN_DEBOUNCE_MILLIS = 10;
+
 	public static readonly KEYS = {
-		UP: 38,
-		DOWN: 40,
-		LEFT: 37,
-		RIGHT: 39,
-		ENTER: 13,
+		UP: 'ArrowUp',
+		DOWN: 'ArrowDown',
+		LEFT: 'ArrowLeft',
+		RIGHT: 'ArrowRight',
+		ENTER: 'Enter',
 	};
 
-	private static readonly INPUT_EVENTS = {
+	public static readonly INPUT_EVENTS = {
 		KEY_DOWN: 'keydown',
 		BLUR: 'blur',
 	};
 
-	private static readonly ITEM_WRAPPER_SELECTOR = 'ul.nav.nav-tree.expanded:not(.disabled) > li.nav-item:not(.nav-header):not(.disabled)';
-
-	private static readonly ITEM_LINK_SELECTOR = '.nav-link';
-
-	private static readonly FAKE_FOCUS_CLASS = 'fake-focus';
-
-	private static readonly FOCUS_STYLE = {
-		SELECTOR_PATTERN: new RegExp('(\\.nav-link[\\.\\w]*):(focus)', 'g'),
-		SELECTOR_REPLACEMENT: '$1.fake-$2',
+	public static readonly CSS_CLASSES = {
+		LINK_ACTIVE: 'active',
+		FAKE_FOCUS: 'nav-tree-fake-focus',
 	};
 
-	private static readonly KEY_DOWN_DEBOUNCE_MILLIS = 10;
+	public static readonly CSS_SELECTORS = {
+		LINK_ACTIVE: `.${NavTreeFakeFocusDirective.CSS_CLASSES.LINK_ACTIVE}`,
+		FAKE_FOCUS: `.${NavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS}`,
+		ITEM_LINK: '.nav-link',
+		ITEM_WRAPPER: '.nav-tree.expanded:not(.disabled) > .nav-item:not(.nav-header):not(.disabled)'
+	};
 
 	private static readonly SCROLL_OPTIONS: ScrollIntoViewOptions = {behavior: 'auto', inline: 'center'};
 
@@ -63,8 +60,7 @@ export class NavTreeFakeFocusDirective implements AfterViewInit, OnDestroy {
 
 	public constructor(
 		private readonly element: ElementRef,
-		private readonly renderer: Renderer2,
-		@Inject(DOCUMENT) private readonly document: RootDocument,
+		private readonly renderer: Renderer2
 	) {
 		if (this.element.nativeElement.localName !== 'or-nav-tree') {
 			throw new Error(
@@ -73,7 +69,7 @@ export class NavTreeFakeFocusDirective implements AfterViewInit, OnDestroy {
 			);
 		}
 		this.keyHandlers[NavTreeFakeFocusDirective.KEYS.DOWN] = () => this.focusNext();
-		this.keyHandlers[NavTreeFakeFocusDirective.KEYS.UP] = () => this.focusPrevious();
+		this.keyHandlers[NavTreeFakeFocusDirective.KEYS.UP] = (event) => this.focusPrevious(event);
 		this.keyHandlers[NavTreeFakeFocusDirective.KEYS.ENTER] = () => this.accept();
 		this.keyHandlers[NavTreeFakeFocusDirective.KEYS.LEFT] = () => this.toggleCollapsed();
 		this.keyHandlers[NavTreeFakeFocusDirective.KEYS.RIGHT] = () => this.toggleCollapsed();
@@ -88,48 +84,30 @@ export class NavTreeFakeFocusDirective implements AfterViewInit, OnDestroy {
 		this.initInputElement();
 	}
 
-	public ngAfterViewInit() {
-		this.setupFakeFocus();
-	}
-
 	public ngOnDestroy() {
-		this.unsubsribeInputListeners();
+		this.unsubscribeInputListeners();
 	}
 
 	public fakeFocus(element: ElementRef): void {
+		console.log(element);
 		let link = this.findLink(element);
 		if (!link || !this.element.nativeElement.contains(link.nativeElement)) {
 			throw new Error(`Unable to fake focus element '${element}'. No valid DOM element or no valid child.`);
 		}
 		this.onBlur();
-		this.renderer.addClass(link.nativeElement, NavTreeFakeFocusDirective.FAKE_FOCUS_CLASS);
+
+		// Ensure we don't apply the fake focus on a pre-activated link:
+		if(!link.nativeElement.classList.contains(NavTreeFakeFocusDirective.CSS_CLASSES.LINK_ACTIVE)) {
+			this.renderer.addClass(link.nativeElement, NavTreeFakeFocusDirective.CSS_CLASSES.LINK_ACTIVE);
+			this.renderer.addClass(link.nativeElement, NavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS);
+		}
+
 		this.focusedElement = element;
 		this.ensureInView();
 	}
 
-	private setupFakeFocus() {
-		if (this.document.fakeFocusCssInitialized) {
-			return;
-		}
-		// see also: https://github.com/justb81/jsFakePseudoClasses/blob/master/src/fake-pseudo-classes.js
-		for (let styleSheetIndex = 0; styleSheetIndex < this.document.styleSheets.length; styleSheetIndex++) {
-			let styleSheet: any = this.document.styleSheets[styleSheetIndex];
-			for (let ruleIndex = 0; styleSheet.cssRules && ruleIndex < styleSheet.cssRules.length; ruleIndex++) {
-				let rule = styleSheet.cssRules[ruleIndex];
-				if (NavTreeFakeFocusDirective.FOCUS_STYLE.SELECTOR_PATTERN.exec(rule.selectorText)) {
-					let changedSelector = rule.selectorText.replace(
-						NavTreeFakeFocusDirective.FOCUS_STYLE.SELECTOR_PATTERN,
-						NavTreeFakeFocusDirective.FOCUS_STYLE.SELECTOR_REPLACEMENT
-					);
-					styleSheet.insertRule(`${changedSelector}{${rule.style.cssText}}`, styleSheet.cssRules.length);
-				}
-			}
-		}
-		this.document.fakeFocusCssInitialized = true;
-	}
-
 	private initInputElement() {
-		this.unsubsribeInputListeners();
+		this.unsubscribeInputListeners();
 		if (!this.inputElement) {
 			return;
 		}
@@ -139,7 +117,7 @@ export class NavTreeFakeFocusDirective implements AfterViewInit, OnDestroy {
 				'It must be a valid native DOM element or ElementRef.'
 			);
 		}
-		this.unsubsribeInputListeners();
+		this.unsubscribeInputListeners();
 		this.inputElement.nativeElement.setAttribute('autocomplete', 'off');
 		this.initEventListeners();
 	}
@@ -157,24 +135,33 @@ export class NavTreeFakeFocusDirective implements AfterViewInit, OnDestroy {
 		this.eventSubscriptions.push(this.renderer.listen(
 			this.inputElement.nativeElement,
 			NavTreeFakeFocusDirective.INPUT_EVENTS.BLUR,
-			() => this.onBlur()
+			() => this.onBlur(true)
 		));
 	}
 
 	private onKeyDown(event: KeyboardEvent) {
-		if (this.keyHandlers.hasOwnProperty(event.keyCode)) {
-			this.keyHandlers[event.keyCode]();
+		if (this.keyHandlers.hasOwnProperty(event.key)) {
+			this.keyHandlers[event.key](event);
 		}
 	}
 
-	private onBlur() {
-		let link = this.findLink();
-		if (link && link.nativeElement) {
-			this.renderer.removeClass(link.nativeElement, NavTreeFakeFocusDirective.FAKE_FOCUS_CLASS);
+	private onBlur(reset = false) {
+		if (this.focusedElement) {
+			let link = this.findLink(this.focusedElement);
+
+			// Ensure we don't remove the active state from non-"fake-focus" links:
+			if(link.nativeElement.classList.contains(NavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS)) {
+				this.renderer.removeClass(link.nativeElement, NavTreeFakeFocusDirective.CSS_CLASSES.LINK_ACTIVE);
+				this.renderer.removeClass(link.nativeElement, NavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS);
+			}
+
+			if(reset) {
+				this.focusedElement = null;
+			}
 		}
 	}
 
-	private unsubsribeInputListeners() {
+	private unsubscribeInputListeners() {
 		this.eventSubscriptions.forEach((unsubscribe: () => void) => unsubscribe());
 		this.eventSubscriptions = [];
 	}
@@ -209,7 +196,10 @@ export class NavTreeFakeFocusDirective implements AfterViewInit, OnDestroy {
 		this.fakeFocus(new ElementRef(elements[nextIndex < elements.length ? nextIndex : 0]));
 	}
 
-	private focusPrevious() {
+	private focusPrevious(event: Event) {
+		// Ensure cursor does not move back in the text field:
+		event.preventDefault();
+
 		let elements = this.extractAllListElements();
 		let previousIndex = -1;
 		if (this.focusedElement) {
@@ -223,12 +213,12 @@ export class NavTreeFakeFocusDirective implements AfterViewInit, OnDestroy {
 		if (!element || !element.nativeElement) {
 			return null;
 		}
-		let link = element.nativeElement.querySelector(NavTreeFakeFocusDirective.ITEM_LINK_SELECTOR);
+		let link = element.nativeElement.querySelector(NavTreeFakeFocusDirective.CSS_SELECTORS.ITEM_LINK);
 		return link ? new ElementRef(link) : null;
 	}
 
 	private extractAllListElements(): any[] {
-		return [].slice.call(this.element.nativeElement.querySelectorAll(NavTreeFakeFocusDirective.ITEM_WRAPPER_SELECTOR));
+		return [].slice.call(this.element.nativeElement.querySelectorAll(NavTreeFakeFocusDirective.CSS_SELECTORS.ITEM_WRAPPER));
 	}
 
 	private ensureInView(): void {

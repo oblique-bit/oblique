@@ -2,6 +2,7 @@ import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} f
 
 @Component({
 	selector: 'or-filter-box',
+	exportAs: 'orFilterBox',
 	template: `
 		<form novalidate>
 			<div class="form-group">
@@ -39,7 +40,7 @@ export class FilterBoxComponent implements OnInit {
 	placeholder = 'i18n.common.filter.placeholder';
 
 	@Input()
-	size;
+	size: string;
 
 	@Input()
 	disabled: boolean;
@@ -54,7 +55,7 @@ export class FilterBoxComponent implements OnInit {
 	patternClear = new EventEmitter<void>();
 
 	@ViewChild('filterControl')
-	public inputElement: ElementRef;
+	public filterControl: ElementRef;
 
 	private acceptedSizes = ['sm', 'lg'];
 

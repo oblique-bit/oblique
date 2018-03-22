@@ -6,14 +6,15 @@ import 'zone.js/dist/sync-test';
 import 'zone.js/dist/jasmine-patch';
 import 'zone.js/dist/async-test';
 import 'zone.js/dist/fake-async-test';
-import {getTestBed, TestBed} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {
 	BrowserDynamicTestingModule,
 	platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {NavigableDirective} from './lib/ng/navigable/navigable.directive';
 
-//TODO: Polyfill for PhantomJS, remove if https://github.com/ariya/phantomjs/issues/11289 is fixed
+// TODO: Polyfill for PhantomJS, remove when https://github.com/ariya/phantomjs/issues/11289
 (function (window) {
 	try {
 		new CustomEvent('test'); // tslint:disable-line
@@ -40,14 +41,43 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 			params.ctrlKey,
 			params.altKey,
 			params.shiftKey,
-			false, 0, null);
+			false, 0, null
+		);
 
 		return mouseEvent;
 	}
 
 	MouseEvent.prototype = Event.prototype;
-
 	window['MouseEvent'] = MouseEvent;
+
+	// function KeyboardEvent(eventType, params) {
+	// 	params = Object.assign({
+	// 		bubbles: true,
+	// 		cancelable: false,
+	// 		key: ''
+	// 	}, params);
+	// 	console.log(eventType, params);
+	// 	const keyboardEvent = document.createEvent('KeyboardEvent');
+	// 	keyboardEvent.initKeyboardEvent(
+	// 		eventType,
+	// 		params.bubbles,
+	// 		params.cancelable,
+	// 		window,
+	// 		'38', 0, null, false, null);
+	// 	console.log('keyboardEvent', keyboardEvent);
+	// 	// let keyboardEvent = {
+	// 	// 		type: 'keydown',
+	// 	// 		keyCode: eventType,
+	// 	// 		preventDefault: () => {
+	// 	// 	} // tslint:disable-line
+	// 	// } as KeyboardEvent;
+	// 	console.log(eventType, keyboardEvent);
+	// 	return keyboardEvent;
+	// }
+    //
+	// KeyboardEvent.prototype = Event.prototype;
+	// window['KeyboardEvent'] = KeyboardEvent;
+
 })(window);
 
 // Unfortunately there's no typing for the `__karma__` variable. Just declare it as any.
