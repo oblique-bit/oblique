@@ -6,6 +6,7 @@ import {MockTranslatePipe} from '../../../../testhelpers';
 import {MultiselectConfig} from './multiselect.config';
 import {MultiselectTexts} from './multiselect.texts';
 import {MultiselectComponent} from './multiselect.component';
+import {FilterBoxComponent} from '../filter-box';
 
 @Pipe({
 	name: 'searchFilter'
@@ -34,6 +35,7 @@ describe('MultiselectComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [
 				MultiselectComponent,
+				FilterBoxComponent,
 				MockSearchPipe,
 				MockTranslatePipe
 			],

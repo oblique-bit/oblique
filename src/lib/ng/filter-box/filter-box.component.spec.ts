@@ -43,15 +43,15 @@ describe('FilterBox', () => {
 		expect(component).toBeTruthy();
 	});
 
-	it('should have an .input-group-prepend before .control-action', () => {
+	it('should have an `.input-group-prepend` content projected', () => {
 		expect(fixture.debugElement.queryAll(
-			By.css('.input-group-prepend + .control-action')
+			By.css('.input-group .input-group-prepend')
 		).length).toBe(1);
 	});
 
-	it('should have an .input-group-append after .control-action', () => {
+	it('should have an `.input-group-append` content projected', () => {
 		expect(fixture.debugElement.queryAll(
-			By.css('.control-action + .input-group-append')
+			By.css('.input-group .input-group-append')
 		).length).toBe(1);
 	});
 });

@@ -4,26 +4,20 @@ import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} f
 	selector: 'or-filter-box',
 	exportAs: 'orFilterBox',
 	template: `
-		<form novalidate>
-			<div class="form-group">
-				<div class="input-group" [ngClass]="getSizeClass('input-group-')">
-					<ng-content class="input-group-prepend" select=".input-group-prepend"></ng-content>
-					<div class="control-action">
-						<input class="form-control" [ngClass]="getSizeClass('form-control-')" type="text"
-							   placeholder="{{placeholder | translate}}"
-							   [attr.readonly]="readonly" [attr.disabled]="disabled"
-							   [ngModel]="pattern" (ngModelChange)="onPatternChanged($event)" name="filter"
-							   #filterControl>
-						<button class="control-action-trigger" type="button" role="button"
-								(click)="onPatternCleared(); filterControl.focus();">
-							<span class="fa fa-times-circle"></span>
-							<span class="sr-only">{{'i18n.common.clear' | translate}}</span>
-						</button>
-					</div>
-					<ng-content select=".input-group-append"></ng-content>
-				</div>
-			</div>
-		</form>
+		<div class="input-group text-control" [ngClass]="getSizeClass('input-group-')">
+			<ng-content select=".input-group-prepend"></ng-content>
+			<input class="form-control" [ngClass]="getSizeClass('form-control-')" type="text"
+				   name="filterPattern" placeholder="{{placeholder | translate}}"
+				   [attr.readonly]="readonly" [attr.disabled]="disabled"
+				   [ngModel]="pattern" (ngModelChange)="onPatternChanged($event)" [ngModelOptions]="modelOptions"
+				   #filterControl>
+			<button class="text-control-clear" type="button" role="button"
+					(click)="onPatternCleared(); filterControl.focus();">
+				<span class="fa fa-times-circle"></span>
+				<span class="sr-only">{{'i18n.common.clear' | translate}}</span>
+			</button>
+			<ng-content select=".input-group-append"></ng-content>
+		</div>
 	`,
 	styles: [`
 		:host {
@@ -47,6 +41,9 @@ export class FilterBoxComponent implements OnInit {
 
 	@Input()
 	readonly: boolean;
+
+	@Input()
+	modelOptions: any; // See https://angular.io/api/forms/NgModel#options
 
 	@Output()
 	patternChange = new EventEmitter<string>();

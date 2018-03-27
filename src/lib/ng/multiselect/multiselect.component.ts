@@ -5,11 +5,12 @@
  * https://github.com/softsimon/angular-2-dropdown-multiselect
  */
 import {
-	Component, OnInit, DoCheck, HostListener, Input, ElementRef, Output, EventEmitter, forwardRef, IterableDiffers
+	Component, OnInit, DoCheck, HostListener, Input, ElementRef, Output, EventEmitter, forwardRef, IterableDiffers, ViewChild
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 import {MultiselectConfig} from './multiselect.config';
 import {MultiselectTexts} from './multiselect.texts';
+import {FilterBoxComponent} from '../filter-box';
 
 // See: https://github.com/angular/angular/issues/5145
 let nextId = 0;
@@ -97,16 +98,15 @@ let nextId = 0;
 			[style.max-height]="maxHeight" style="display: block; height: auto; overflow-y: auto;"
 			[attr.aria-hidden]="!isVisible">
 			<div class="dropdown-item" *ngIf="enableSearch">
-				<div class="input-group input-group-sm control-action" >
+				<or-filter-box [(pattern)]="searchFilterText"
+							   [modelOptions]="{standalone: true}"
+							   placeholder="{{ texts.searchPlaceholder | translate}}"
+							   size="sm"
+							   #orFilterBox>
 					<span class="input-group-prepend" [attr.id]="id + '-search'" [attr.aria-label]="texts.searchPlaceholder | translate">
 						<span class="input-group-text fa fa-search"></span>
 					</span>
-					<input type="text" class="form-control" placeholder="{{ texts.searchPlaceholder | translate}}"
-					       [attr.aria-describedby]="id + '-search'" [(ngModel)]="searchFilterText" [ngModelOptions]="{standalone: true}">
-					<button class="control-action-trigger" (click)="clearSearch($event)">
-						<span class="fa fa-times-circle"></span>
-					</button>
-				</div>
+				</or-filter-box>
 			</div>
 			<div class="dropdown-divider divider" *ngIf="enableSearch"></div>
 			<button class="dropdown-item multiselect-control multiselect-control-check" *ngIf="showCheckAll" (click)="checkAll()">
@@ -154,7 +154,10 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	@Output() onAdded = new EventEmitter<any>();
 	@Output() onRemoved = new EventEmitter<any>();
 
-	id = `ms-${nextId++}`;
+	@ViewChild('orFilterBox')
+	filterBox: FilterBoxComponent;
+
+	id = `or-multiselect-${nextId++}`;
 
 	model: any[] = [];
 	title: string;
@@ -212,11 +215,11 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 
 	onModelChange: (_: any) => void = (_: any) => {
 		//
-	}
+	};
 
 	onModelTouched: () => void = () => {
 		//
-	}
+	};
 
 	writeValue(value: any): void {
 		if (value) {
@@ -239,15 +242,17 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 		}
 	}
 
-	clearSearch(event: Event) {
-		event.stopPropagation();
-		this.searchFilterText = '';
-	}
-
 	toggleDropdown() {
 		this.isVisible = !this.isVisible;
 		if (!this.isVisible) {
 			this.dropdownClosed.emit();
+		} else if(this.enableSearch) {
+			setTimeout(() => {
+				// WAI-ARIA: describe inner filter box input:
+				// TODO: create a ngAria-like directive
+				console.log(this.id, this.filterBox);
+				this.filterBox.filterControl.nativeElement.setAttribute('aria-describedby', `${this.id}-search`);
+			}, 0);
 		}
 	}
 

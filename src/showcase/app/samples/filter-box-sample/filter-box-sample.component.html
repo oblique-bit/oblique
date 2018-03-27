@@ -8,7 +8,7 @@
 			<div class="card-header">Simple filter</div>
 			<div class="card-body">
 				<p class="small">The pattern is linked to a variable from the controller using <code>[(pattern)]</code>.</p>
-				<or-filter-box [(pattern)]="patterns[0]"></or-filter-box>
+				<or-filter-box [(pattern)]="patterns[0]" class="form-group"></or-filter-box>
 				<ul>
 					<li *ngFor="let item of items | patternFilter:patterns[0]">{{item}}</li>
 				</ul>
@@ -18,7 +18,7 @@
 			<div class="card-header">SM variant with a preceding input add-on</div>
 			<div class="card-body">
 				<p class="small">You can prepend a custom input add-on by providing content matching the <code>.input-group-prepend</code> CSS selector.</p>
-				<or-filter-box [(pattern)]="patterns[2]" size="sm">
+				<or-filter-box [(pattern)]="patterns[2]" size="sm" class="form-group">
 					<span class="input-group-prepend"><i class="input-group-text fa fa-search"></i></span>
 				</or-filter-box>
 				<ul>
@@ -30,7 +30,7 @@
 			<div class="card-header">LG variant with a following input add-on</div>
 			<div class="card-body">
 				<p class="small">You can prepend a custom input add-on by providing content matching the <code>.input-group-append</code> CSS selector.</p>
-				<or-filter-box [(pattern)]="patterns[3]" size="lg">
+				<or-filter-box [(pattern)]="patterns[3]" size="lg" class="form-group">
 					<span class="input-group-append" ngbDropdown>
 						<button id="search-actions-dropdown" class="btn btn-secondary dropdown-toggle"
 								type="button"
@@ -74,7 +74,7 @@
 			<div class="card-header">With "cleared" feedback</div>
 			<div class="card-body">
 				<p class="small">The <code>patternClear</code> event is used to count the number of times the search pattern has been cleared: <span class="badge badge-default">{{cleared}}</span>.</p>
-				<or-filter-box [(pattern)]="patterns[4]" (patternClear)="incrementCleared()"></or-filter-box>
+				<or-filter-box [(pattern)]="patterns[4]" (patternClear)="incrementCleared()" class="form-group"></or-filter-box>
 				<ul>
 					<li *ngFor="let item of items | patternFilter:patterns[4]">{{item}}</li>
 				</ul>
@@ -84,7 +84,7 @@
 			<div class="card-header">With "changed" feedback</div>
 			<div class="card-body">
 				<p class="small">The <code>patternChange</code> event is used to count the number of times the search pattern has been changed: <span class="badge badge-default">{{changed}}</span>.</p>
-				<or-filter-box [(pattern)]="patterns[5]" (patternChange)="incrementChanged()"></or-filter-box>
+				<or-filter-box [(pattern)]="patterns[5]" (patternChange)="incrementChanged()" class="form-group"></or-filter-box>
 				<ul>
 					<li *ngFor="let item of items | patternFilter:patterns[5]">{{item}}</li>
 				</ul>

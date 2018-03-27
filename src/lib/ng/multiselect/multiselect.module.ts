@@ -6,12 +6,14 @@ import {MultiselectComponent} from './multiselect.component';
 import {MultiselectConfig} from './multiselect.config';
 import {MultiselectSearchPipe} from './multiselect-search.pipe';
 import {MultiselectTexts} from './multiselect.texts';
+import {FilterBoxModule} from '../filter-box';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule,
-		TranslateModule
+		TranslateModule,
+		FilterBoxModule
 	],
 	exports: [
 		MultiselectComponent
