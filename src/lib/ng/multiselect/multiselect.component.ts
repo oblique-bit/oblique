@@ -1,13 +1,11 @@
 /*
- * Angular 2 Dropdown Multiselect for Bootstrap
+ * Angular Dropdown Multiselect for Bootstrap
  *
  * Inspired from Simon Lindh:
  * https://github.com/softsimon/angular-2-dropdown-multiselect
  */
-import {
-	Component, OnInit, DoCheck, HostListener, Input, ElementRef, Output, EventEmitter, forwardRef, IterableDiffers, ViewChild
-} from '@angular/core';
-import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
+import {Component, DoCheck, ElementRef, EventEmitter, forwardRef, HostListener, Input, IterableDiffers, OnInit, Output, ViewChild} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {MultiselectConfig} from './multiselect.config';
 import {MultiselectTexts} from './multiselect.texts';
 import {FilterBoxComponent} from '../filter-box';
@@ -23,10 +21,10 @@ let nextId = 0;
 		multi: true
 	}],
 	styles: [
-		`
+			`
 			:host[readonly],
 			:host.readonly {
-				 border: none;
+				border: none;
 			}
 
 			.multiselect-toggle {
@@ -59,18 +57,18 @@ let nextId = 0;
 			}
 
 			.dropdown .dropdown-menu {
-				 margin-top: 0;
-				 border-top-right-radius: 0;
-				 border-top-left-radius: 0;
-				 border-top: none;
-			 }
+				margin-top: 0;
+				border-top-right-radius: 0;
+				border-top-left-radius: 0;
+				border-top: none;
+			}
 
 			.dropup .dropdown-menu {
-				 margin-bottom: 0;
-				 border-bottom-right-radius: 0;
-				 border-bottom-left-radius: 0;
-				 border-bottom: none;
-			 }
+				margin-bottom: 0;
+				border-bottom-right-radius: 0;
+				border-bottom-left-radius: 0;
+				border-bottom: none;
+			}
 
 			.multiselect-control {
 				font-size: small;
@@ -87,50 +85,50 @@ let nextId = 0;
 		`
 	],
 	template: `
-	<div [ngClass]="{'dropdown': !dropup, 'dropup': dropup}">
-		<button type="button" class="multiselect-toggle btn btn-secondary"
-		        (click)="toggleDropdown()" [disabled]="disabled"
-		        [ngClass]="{open: isVisible}">
-			<span class="multiselect-label">{{ title | translate:titleTranslateParams }}</span>
-		    <span class="toggle" [ngClass]="{'toggle-down-up': !dropup, 'toggle-up-down': dropup}"></span>
-	    </button>
-		<div *ngIf="isVisible" class="dropdown-menu"
-			[style.max-height]="maxHeight" style="display: block; height: auto; overflow-y: auto;"
-			[attr.aria-hidden]="!isVisible">
-			<div class="dropdown-item" *ngIf="enableSearch">
-				<or-filter-box [(pattern)]="searchFilterText"
-							   [modelOptions]="{standalone: true}"
-							   placeholder="{{ texts.searchPlaceholder | translate}}"
-							   size="sm"
-							   #orFilterBox>
+		<div [ngClass]="{'dropdown': !dropup, 'dropup': dropup}">
+			<button type="button" class="multiselect-toggle btn btn-secondary"
+					(click)="toggleDropdown()" [disabled]="disabled"
+					[ngClass]="{open: isVisible}">
+				<span class="multiselect-label">{{ title | translate:titleTranslateParams }}</span>
+				<span class="toggle" [ngClass]="{'toggle-down-up': !dropup, 'toggle-up-down': dropup}"></span>
+			</button>
+			<div *ngIf="isVisible" class="dropdown-menu"
+				 [style.max-height]="maxHeight" style="display: block; height: auto; overflow-y: auto;"
+				 [attr.aria-hidden]="!isVisible">
+				<div class="dropdown-item" *ngIf="enableSearch">
+					<or-filter-box [(pattern)]="searchFilterText"
+								   [modelOptions]="{standalone: true}"
+								   placeholder="{{ texts.searchPlaceholder | translate}}"
+								   size="sm"
+								   #orFilterBox>
 					<span class="input-group-prepend" [attr.id]="id + '-search'" [attr.aria-label]="texts.searchPlaceholder | translate">
 						<span class="input-group-text fa fa-search"></span>
 					</span>
-				</or-filter-box>
-			</div>
-			<div class="dropdown-divider divider" *ngIf="enableSearch"></div>
-			<button class="dropdown-item multiselect-control multiselect-control-check" *ngIf="showCheckAll" (click)="checkAll()">
+					</or-filter-box>
+				</div>
+				<div class="dropdown-divider divider" *ngIf="enableSearch"></div>
+				<button class="dropdown-item multiselect-control multiselect-control-check" *ngIf="showCheckAll" (click)="checkAll()">
 				<span style="width: 16px;" class="fa fa-check">
 				</span>
-				{{ texts.checkAll | translate }}
-			</button>
-			<button class="dropdown-item multiselect-control multiselect-control-uncheck" *ngIf="showUncheckAll" (click)="uncheckAll()">
+					{{ texts.checkAll | translate }}
+				</button>
+				<button class="dropdown-item multiselect-control multiselect-control-uncheck" *ngIf="showUncheckAll" (click)="uncheckAll()">
 				<span style="width: 16px;" class="fa fa-times">
 				</span>
-				{{ texts.uncheckAll | translate }}
-			</button>
-			<div *ngIf="showCheckAll || showUncheckAll" class="dropdown-divider divider"></div>
-			<button class="dropdown-item" *ngFor="let option of options | searchFilter:searchFilterText; let i = index"
-				(click)="toggleSelection(option)">
-				<div class="form-check">
-					<input tabindex="-1" type="checkbox" id="{{id}}-{{i}}" [checked]="isSelected(option)" class="form-check-input"
-						   (click)="preventCheckboxCheck($event)">
-					<label class="form-check-label" for="{{id}}-{{i}}">{{formatOptionForLabel(option)}}</label>
-				</div>
-			</button>
+					{{ texts.uncheckAll | translate }}
+				</button>
+				<div *ngIf="showCheckAll || showUncheckAll" class="dropdown-divider divider"></div>
+				<button class="dropdown-item" *ngFor="let option of options | searchFilter:searchFilterText; let i = index"
+						(click)="toggleSelection(option)">
+					<div class="form-check">
+						<input tabindex="-1" type="checkbox" id="{{id}}-{{i}}" [checked]="isSelected(option)" class="form-check-input"
+							   (click)="preventCheckboxCheck($event)">
+						<label class="form-check-label" for="{{id}}-{{i}}">{{formatOptionForLabel(option)}}</label>
+					</div>
+				</button>
+			</div>
 		</div>
-    </div>
-  `
+	`
 })
 export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccessor {
 	@Input() options: any[];
@@ -208,18 +206,17 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 		}
 	}
 
+	onModelChange: (_: any) => void = (_: any) => {
+		//
+	}
+	onModelTouched: () => void = () => {
+		//
+	}
+
 	ngOnInit() {
 		this.texts = Object.assign({}, this.multiselectTexts, this.texts);
 		this.title = this.texts.defaultTitle || '';
 	}
-
-	onModelChange: (_: any) => void = (_: any) => {
-		//
-	};
-
-	onModelTouched: () => void = () => {
-		//
-	};
 
 	writeValue(value: any): void {
 		if (value) {
@@ -246,7 +243,7 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 		this.isVisible = !this.isVisible;
 		if (!this.isVisible) {
 			this.dropdownClosed.emit();
-		} else if(this.enableSearch) {
+		} else if (this.enableSearch) {
 			setTimeout(() => {
 				// WAI-ARIA: describe inner filter box input:
 				// TODO: create a ngAria-like directive
