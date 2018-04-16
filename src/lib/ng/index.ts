@@ -18,6 +18,7 @@ import {SpinnerModule} from './spinner';
 import {ToggleModule} from './toggle';
 import {UnsavedChangesModule} from './unsaved-changes';
 import {NumberFormatModule} from './number-format';
+import {TextControlClearModule} from './text-control-clear/text-control-clear.module';
 
 export * from './column-layout';
 export * from './datepicker';
@@ -35,6 +36,7 @@ export * from './schema-validation';
 export * from './scrolling';
 export * from './spinner';
 export * from './toggle';
+export * from './text-control-clear';
 export * from './unsaved-changes';
 export * from './unsubscribe';
 export * from './number-format';
@@ -55,6 +57,7 @@ const OBLIQUE_MODULES = [
 	SchemaValidationModule,
 	ScrollingModule,
 	SpinnerModule,
+	TextControlClearModule,
 	ToggleModule,
 	UnsavedChangesModule,
 	NumberFormatModule
@@ -77,6 +80,7 @@ const OBLIQUE_MODULES = [
 		SchemaValidationModule.forRoot(),
 		ScrollingModule.forRoot(),
 		SpinnerModule.forRoot(),
+		TextControlClearModule.forRoot(),
 		ToggleModule.forRoot(),
 		UnsavedChangesModule.forRoot(),
 		NumberFormatModule.forRoot()
