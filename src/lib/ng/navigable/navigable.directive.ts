@@ -43,16 +43,26 @@ export class NavigableDirective implements AfterViewInit {
 		DOWN: 40
 	};
 
-	@Input('orNavigable') model: any;
+	@Input('orNavigable')
+	model: any;
 
 	@Input('navigableFocusOnInit')
 	focusOnInit: boolean;
 
-	@Output() navigableOnActivation = new EventEmitter();
-	@Output() navigableOnChange = new EventEmitter<NavigableOnChangeEvent>();
-	@Output() navigableOnFocus = new EventEmitter();
-	@Output() navigableOnMouseDown = new EventEmitter();
-	@Output() navigableOnMove = new EventEmitter();
+	@Output()
+	navigableOnActivation = new EventEmitter();
+
+	@Output()
+	navigableOnChange = new EventEmitter<NavigableOnChangeEvent>();
+
+	@Output()
+	navigableOnFocus = new EventEmitter();
+
+	@Output()
+	navigableOnMouseDown = new EventEmitter();
+
+	@Output()
+	navigableOnMove = new EventEmitter();
 
 	@HostBinding('tabindex')
 	tabindex = 0;
