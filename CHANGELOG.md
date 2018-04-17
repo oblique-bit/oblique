@@ -1,5 +1,35 @@
 ### ObliqueReactive
 
+<a name="2.0.0-RC.4"></a>
+#### [2.0.0-RC.4](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.4) (2018-04-17)
+
+##### Dependencies updates
+* **ObliqueUI:** 2.0.0-RC.4
+* **Bootstrap:** 4.1.0
+* **Angular:** 5.2.10
+* **ng-bootstrap:** 1.1.2
+* **ajv:** 6.3.0
+* **rxjs:** 5.5.10
+* **zone.js:** 0.8.26
+
+(see [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/package.json?at=2.0.0-RC.2-1) for the full list of dependencies)
+
+
+##### Features
+* **orNavTreeFakeFocus:** add fake focus for `orNavTree` ([ea12cfb](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/ea12cfb))
+* **master-layout:** provide a `noNavigation` parameter for collapsing the application navigation ([7ed28e5](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7ed28e5))
+* **text-control-clear:** add a `TextControlClearDirective` based on ObliqueUI `.text-control-clear` for clearing input controls ([c090f6e](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c090f6e))
+
+##### Bug Fixes
+* **MasterLayoutNavigationMenuDirective:** (MS Edge) access `HTMLElement.style.cssText` instead of `HTMLElement.style` to avoid *Assignment to read-only properties is not allowed in strict mode* runtime errors ([eb689de](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/eb689de))
+* **NavTreeFakeFocusDirective:** (MS Edge | IE) use `KeyboardEvent.keyCode` instead of `KeyboardEvent.key` for browser compatibility ([f41daa7](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f41daa7))
+* **orMasterLayoutHeaderToggle:** Fix lint error ([f465266](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f465266))
+
+##### Code Refactoring
+* **filter-box:** use the new `text-control` ObliqueUI component for clearing filter box control (& refactor other component to use `OrFilterBox`) ([ea3d02e](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/ea3d02e))
+* **orNavTree:** use `ngTemplate` instead of recursive component ([b8e9e59](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b8e9e59))
+* **orNavTreeFakeFocus:** do not change CSS resources at runtime, reorganize source code and fix some minor issues ([f8882c7](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f8882c7))
+
 <a name="2.0.0-RC.3-1"></a>
 #### [2.0.0-RC.3-1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.3-1) (2018-02-08)
 
