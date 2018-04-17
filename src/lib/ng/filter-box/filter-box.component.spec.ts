@@ -3,6 +3,7 @@ import {Component, Pipe, PipeTransform} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {FilterBoxComponent} from './filter-box.component';
+import {TextControlClearDirective} from '../text-control-clear';
 
 @Pipe({name: 'translate'})
 class MockTranslatePipe implements PipeTransform {
@@ -28,7 +29,12 @@ describe('FilterBox', () => {
 
 	beforeEach(async(() =>
 		TestBed.configureTestingModule({
-			declarations: [TestComponent, FilterBoxComponent, MockTranslatePipe],
+			declarations: [
+				TestComponent,
+				FilterBoxComponent,
+				TextControlClearDirective,
+				MockTranslatePipe
+			],
 			imports: [FormsModule]
 		}).compileComponents()
 	));

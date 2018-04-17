@@ -7,6 +7,7 @@ import {MultiselectConfig} from './multiselect.config';
 import {MultiselectTexts} from './multiselect.texts';
 import {MultiselectComponent} from './multiselect.component';
 import {FilterBoxComponent} from '../filter-box';
+import {TextControlClearDirective} from '../text-control-clear';
 
 @Pipe({
 	name: 'searchFilter'
@@ -36,6 +37,7 @@ describe('MultiselectComponent', () => {
 			declarations: [
 				MultiselectComponent,
 				FilterBoxComponent,
+				TextControlClearDirective,
 				MockSearchPipe,
 				MockTranslatePipe
 			],

@@ -21,7 +21,7 @@ export class TextControlClearDirective {
 	constructor(private element: ElementRef) {
 		// Ensure parent gets ready to render the text clear control:
 		let parent = this.element.nativeElement.parentElement;
-		if(parent) {
+		if (parent) {
 			parent.classList.add('text-control');
 		}
 	}
@@ -29,7 +29,7 @@ export class TextControlClearDirective {
 	@HostListener('click', ['$event'])
 	onClick($event: MouseEvent) {
 		this.control.value = '';
-		if(this.focusOnClear) {
+		if (this.focusOnClear) {
 			this.control.focus();
 		}
 		this.onClear.next($event);

@@ -101,9 +101,9 @@ let nextId = 0;
 								   placeholder="{{ texts.searchPlaceholder | translate}}"
 								   size="sm"
 								   #orFilterBox>
-					<span class="input-group-prepend" [attr.id]="id + '-search'" [attr.aria-label]="texts.searchPlaceholder | translate">
-						<span class="input-group-text fa fa-search"></span>
-					</span>
+						<span class="input-group-prepend" [attr.id]="id + '-search'" [attr.aria-label]="texts.searchPlaceholder | translate">
+							<span class="input-group-text fa fa-search"></span>
+						</span>
 					</or-filter-box>
 				</div>
 				<div class="dropdown-divider divider" *ngIf="enableSearch"></div>

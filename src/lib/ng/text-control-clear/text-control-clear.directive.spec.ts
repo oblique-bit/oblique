@@ -1,8 +1,6 @@
-import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, Pipe, PipeTransform} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {By} from '@angular/platform-browser';
-import {FilterBoxComponent} from './filter-box.component';
 
 @Pipe({name: 'translate'})
 class MockTranslatePipe implements PipeTransform {
@@ -19,13 +17,13 @@ class MockTranslatePipe implements PipeTransform {
 class TestComponent {
 }
 
-describe('FilterBox', () => {
+describe('TextControlClear', () => {
 	let component: TestComponent;
 	let fixture: ComponentFixture<TestComponent>;
 
 	beforeEach(async(() =>
 		TestBed.configureTestingModule({
-			declarations: [TestComponent, FilterBoxComponent, MockTranslatePipe],
+			declarations: [TestComponent, MockTranslatePipe],
 			imports: [FormsModule]
 		}).compileComponents()
 	));
