@@ -24,7 +24,7 @@ import {LayoutModule} from './layout/layout.module';
 // App:
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
-import {HomeComponent} from './home/home.component';
+import {HomePageComponent} from './home/home.page';
 
 // AoT requires an exported function for factories:
 export function createTranslateLoader(http: HttpClient) {
@@ -34,7 +34,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
 	declarations: [
 		AppComponent,
-		HomeComponent
+		HomePageComponent
 	],
 	imports: [
 		BrowserModule,

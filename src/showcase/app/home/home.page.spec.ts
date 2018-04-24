@@ -1,22 +1,22 @@
 /* tslint:disable:no-unused-variable */
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 
-import {HomeComponent} from './home.component';
+import {HomePageComponent} from './home.component';
 import {MockTranslatePipe} from '../../../../testhelpers';
 
-describe('HomeComponent', () => {
-	let component: HomeComponent;
-	let fixture: ComponentFixture<HomeComponent>;
+describe('HomePageComponent', () => {
+	let component: HomePageComponent;
+	let fixture: ComponentFixture<HomePageComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [HomeComponent, MockTranslatePipe]
+			declarations: [HomePageComponent, MockTranslatePipe]
 		})
 			.compileComponents();
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(HomeComponent);
+		fixture = TestBed.createComponent(HomePageComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

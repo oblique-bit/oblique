@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {HomeComponent} from './home/home.component';
+import {HomePageComponent} from './home/home.page';
 
 const appRoutes: Routes = [
-	{path: 'home', component: HomeComponent, data: {title: 'i18n.routes.home.title'}},
+	{path: 'home', component: HomePageComponent, data: {title: 'i18n.routes.home.title'}},
 	{path: 'samples', loadChildren: './samples/samples.module#SamplesModule'},
 	{path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
