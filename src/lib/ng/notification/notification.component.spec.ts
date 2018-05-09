@@ -1,6 +1,7 @@
 import {ComponentFixture, TestBed, async, fakeAsync, tick} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MockTranslatePipe} from '../../../../testhelpers';
 import {NotificationComponent} from './notification.component';
 import {NotificationService} from './notification.service';
@@ -20,7 +21,7 @@ describe('NotificationComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [NotificationComponent, MockTranslatePipe],
-			imports: [CommonModule],
+			imports: [CommonModule, NoopAnimationsModule],
 			providers: [
 				NotificationConfig,
 				NotificationService
