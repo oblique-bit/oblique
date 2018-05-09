@@ -1,21 +1,19 @@
-import {
-	Directive, ElementRef, Input, OnDestroy, Renderer2
-} from '@angular/core';
-import 'rxjs/add/operator/throttleTime';
-import {Subject} from 'rxjs/Subject';
+import {Directive, ElementRef, Input, OnDestroy, Renderer2} from '@angular/core';
+import {throttleTime} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
 /**
  * Directive to be used on the `or-nav-tree` component in order to get a "fake focus" keyboard navigation.
  *
  * Usage:
  * <or-nav-tree
- * 		...
- * 		[orNavTreeFakeFocus]="elementRef"
- * 		...
+ *        ...
+ *        [orNavTreeFakeFocus]="elementRef"
+ *        ...
  * ></or-nav-tree>
  */
 @Directive({
-	selector: '[orNavTreeFakeFocus]',
+	selector: '[orNavTreeFakeFocus]'
 })
 export class NavTreeFakeFocusDirective implements OnDestroy {
 
@@ -28,17 +26,17 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 		DOWN: 40,
 		LEFT: 37,
 		RIGHT: 39,
-		ENTER: 13,
+		ENTER: 13
 	};
 
 	public static readonly INPUT_EVENTS = {
 		KEY_DOWN: 'keydown',
-		BLUR: 'blur',
+		BLUR: 'blur'
 	};
 
 	public static readonly CSS_CLASSES = {
 		LINK_ACTIVE: 'active',
-		FAKE_FOCUS: 'nav-tree-fake-focus',
+		FAKE_FOCUS: 'nav-tree-fake-focus'
 	};
 
 	public static readonly CSS_SELECTORS = {
@@ -48,14 +46,19 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 		ITEM_WRAPPER: '.nav-tree.expanded:not(.disabled) > .nav-item:not(.nav-header):not(.disabled)'
 	};
 
+	@Input('orNavTreeFakeFocus')
+	public set focusInputElement(element: any) {
+		if (element && !(element instanceof ElementRef)) {
+			element = new ElementRef(element);
+		}
+		this.inputElement = element;
+		this.initInputElement();
+	}
+
 	private static readonly SCROLL_OPTIONS: ScrollIntoViewOptions = {behavior: 'auto', inline: 'center'};
-
 	private readonly keyHandlers: object = {};
-
 	private inputElement: ElementRef;
-
 	private focusedElement: ElementRef;
-
 	private eventSubscriptions: (() => void)[] = [];
 
 	public constructor(
@@ -73,15 +76,6 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 		this.keyHandlers[NavTreeFakeFocusDirective.KEY_CODES.ENTER] = () => this.accept();
 		this.keyHandlers[NavTreeFakeFocusDirective.KEY_CODES.LEFT] = () => this.toggleCollapsed();
 		this.keyHandlers[NavTreeFakeFocusDirective.KEY_CODES.RIGHT] = () => this.toggleCollapsed();
-	}
-
-	@Input('orNavTreeFakeFocus')
-	public set focusInputElement(element: any) {
-		if (element && !(element instanceof ElementRef)) {
-			element = new ElementRef(element);
-		}
-		this.inputElement = element;
-		this.initInputElement();
 	}
 
 	public ngOnDestroy() {
@@ -123,7 +117,7 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 
 	private initEventListeners() {
 		let debouncer: Subject<any> = new Subject<any>();
-		debouncer.throttleTime(NavTreeFakeFocusDirective.KEY_DOWN_DEBOUNCE_MILLIS).subscribe(
+		debouncer.pipe(throttleTime(NavTreeFakeFocusDirective.KEY_DOWN_DEBOUNCE_MILLIS)).subscribe(
 			(event) => this.onKeyDown(event)
 		);
 		this.eventSubscriptions.push(this.renderer.listen(

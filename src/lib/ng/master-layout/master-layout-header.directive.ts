@@ -1,9 +1,9 @@
 import {AfterViewInit, Directive, ElementRef, HostBinding, Inject} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
-import 'rxjs/add/operator/takeUntil';
+import {takeUntil} from 'rxjs/operators';
+
 import {Unsubscribable} from '../unsubscribe';
 import {MasterLayoutHeaderService} from './master-layout-header.service';
-import {takeUntil} from 'rxjs/operators';
 
 @Directive({
 	selector: '[orMasterLayoutHeader]',

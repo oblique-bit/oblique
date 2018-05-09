@@ -1,8 +1,8 @@
 /* tslint:disable:no-unused-variable */
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 
-import {HomePageComponent} from './home.component';
 import {MockTranslatePipe} from '../../../../testhelpers';
+import {HomePageComponent} from './home.page';
 
 describe('HomePageComponent', () => {
 	let component: HomePageComponent;

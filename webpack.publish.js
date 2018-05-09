@@ -1,4 +1,4 @@
-var webpack = require('webpack'),
+var webpack = require('webpack'),	// not in package.json as it will conflict with the version in @angular-devkit
 	pkg = require('./package.json'),
 	banner = function () { // Lazy evaluation as interpolated values may have been updated between tasks!
 		return "\r * " + pkg.title + " - v" + pkg.version
@@ -6,17 +6,23 @@ var webpack = require('webpack'),
 			+ "\r * Copyright (c) " + new Date().getFullYear() + " " + pkg.organization.name +" ("+ pkg.organization.url + ")"
 			+ "\r";
 	};
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
+	mode: 'production',
 	entry: './src/lib/index.ts',
 	output: {
 		filename: './dist/bundles/oblique-reactive.js',
 		library: 'oblique-reactive',
 		libraryTarget: 'umd'
 	},
-	plugins: [new webpack.optimize.UglifyJsPlugin(), new webpack.BannerPlugin(banner())],
+	plugins: [new webpack.BannerPlugin(banner())],
+	optimization: {
+		minimizer: [
+			new UglifyJsPlugin()
+		]
+	},
 	devtool: 'source-map',
-
 	externals: [
 		{
 			'@angular/core': ngExternal('core'),
@@ -31,7 +37,7 @@ module.exports = {
 		extensions: ['.ts', '.js']
 	},
 	module: {
-		loaders: [
+		rules: [
 			{
 				test: /\.ts$/,
 				//exclude: /node_modules/,

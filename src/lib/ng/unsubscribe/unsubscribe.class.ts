@@ -1,5 +1,5 @@
 import {OnDestroy} from '@angular/core';
-import {Subject} from 'rxjs/Subject';
+import {Subject} from 'rxjs';
 
 // http://stackoverflow.com/questions/38008334/angular-rxjs-when-should-i-unsubscribe-from-subscription
 export class Unsubscribable implements OnDestroy {
