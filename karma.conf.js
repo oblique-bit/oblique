@@ -2,6 +2,7 @@
 // https://karma-runner.github.io/0.13/config/configuration-file.html
 
 module.exports = function (config) {
+	var options = config.buildWebpack.options;
 	config.set({
 		basePath: '',
 		frameworks: ['jasmine', '@angular-devkit/build-angular'],
@@ -20,7 +21,9 @@ module.exports = function (config) {
 			reports: ['html', 'lcovonly'],
 			fixWebpackSourcePaths: true
 		},
-		reporters: ['progress', 'kjhtml'],
+		reporters: options.codeCoverage
+			? ['progress', 'coverage-istanbul']
+			: ['progress', 'kjhtml'],
 		port: 9876,
 		colors: true,
 		browserConsoleLogOptions: {
@@ -29,7 +32,7 @@ module.exports = function (config) {
 			terminal: true
 		},
 		autoWatch: true,
-		browsers: ['ChromeHeadless'],
+		browsers: options.watch ? ['Chrome'] : ['ChromeHeadless'],
 		singleRun: false
 	});
 };
