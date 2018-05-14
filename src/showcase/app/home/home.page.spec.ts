@@ -1,8 +1,8 @@
 /* tslint:disable:no-unused-variable */
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 
-import {MockTranslatePipe} from '../../../../testhelpers';
 import {HomePageComponent} from './home.page';
+import {MockTranslatePipe} from '../../../../testhelpers';
 
 describe('HomePageComponent', () => {
 	let component: HomePageComponent;
@@ -10,7 +10,10 @@ describe('HomePageComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [HomePageComponent, MockTranslatePipe]
+			declarations: [
+				HomePageComponent,
+				MockTranslatePipe
+			]
 		})
 			.compileComponents();
 	}));
