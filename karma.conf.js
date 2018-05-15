@@ -9,6 +9,7 @@ module.exports = function (config) {
 		plugins: [
 			require('karma-jasmine'),
 			require('karma-chrome-launcher'),
+			require('karma-firefox-launcher'),
 			require('karma-jasmine-html-reporter'),
 			require('karma-coverage-istanbul-reporter'),
 			require('@angular-devkit/build-angular/plugins/karma')
@@ -26,13 +27,24 @@ module.exports = function (config) {
 			: ['progress', 'kjhtml'],
 		port: 9876,
 		colors: true,
+		logLevel: config.LOG_DEBUG,
 		browserConsoleLogOptions: {
 			level: 'log',
 			format: '%b %T: %m',
 			terminal: true
 		},
 		autoWatch: true,
-		browsers: options.watch ? ['Chrome'] : ['ChromeHeadless'],
+		browsers: options.watch ? ['Firefox'] : ['ChromeHeadlessCustom'],
+		customLaunchers:{
+			ChromeHeadlessCustom:{
+				base: 'ChromeHeadless',
+				flags: [
+					'--no-sandbox', // required to run without privileges in Docker
+					'--disable-web-security',
+					'--enable-gpu'
+				]
+			}
+		},
 		singleRun: false
 	});
 };
