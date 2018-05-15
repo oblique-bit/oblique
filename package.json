@@ -38,18 +38,18 @@
   "scripts": {
     "dev": "npm run start -- --open",
     "dev-link": "./node_modules/.bin/gulp dev-link",
-    "start": "./node_modules/.bin/ng serve --port 3001",
+    "start": "ng serve",
     "dist": "./node_modules/.bin/gulp dist",
-    "ci-build": "npm run lint && npm run dist && ng test --code-coverage",
+    "ci-build": "npm run lint && ng test --prod && npm run dist",
     "prestart": "npm run prebuild",
-    "build": "./node_modules/.bin/ng build",
+    "build": "ng build",
     "prebuild": "./node_modules/.bin/gulp showcase-build",
     "gulp-publish": "./node_modules/.bin/gulp publish",
-    "test": "./node_modules/.bin/ng test --watch",
+    "test": "ng test",
     "pretest": "npm run prebuild",
-    "lint": "./node_modules/.bin/ng lint",
-    "e2e": "npm run prebuild && ./node_modules/.bin/ng e2e",
-    "showcase-prod": "npm run build -- --base-href=. --prod"
+    "lint": "ng lint",
+    "e2e": "npm run prebuild && ng e2e",
+    "showcase-prod": "npm run build -- --prod"
   },
   "dependencies": {
     "@angular/animations": "^6.0.1",
