@@ -1,10 +1,8 @@
-import {
-	Directive, HostBinding, ContentChild, AfterViewInit, Input, Optional, ElementRef, Renderer2, ViewChild
-} from '@angular/core';
-import {NgControl, NgForm, FormGroupDirective, FormGroupName, NgModelGroup} from '@angular/forms';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/merge';
+import {AfterViewInit, ContentChild, Directive, ElementRef, HostBinding, Input, Optional, Renderer2} from '@angular/core';
+import {FormGroupDirective, FormGroupName, NgControl, NgForm, NgModelGroup} from '@angular/forms';
+import {merge} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+
 import {Unsubscribable} from '../unsubscribe';
 
 @Directive({
@@ -53,7 +51,7 @@ export class FormControlStateDirective extends Unsubscribable implements AfterVi
 
 		this.inputContainer = this.inputElement.parentElement;
 
-		Observable.merge(
+		merge(
 			this.form.ngSubmit,
 			this.ngControl.statusChanges
 		)

@@ -15,7 +15,7 @@
 								 [pathPrefix]="'nav-tree'"
 								 [rlaOptions]="rlaOptions"
 								 [variant]="variant"
-								 [orNavTreeFakeFocus]="useFakeFocus ? filterControl : null"
+								 [orNavTreeFakeFocus]="useFakeFocus ? orFilterBox.filterControl : null"
 					>
 						<li class="nav-item nav-header" role="presentation">
 							<h3 class="nav-header-title" *ngIf="!filter.pattern">Menu Sample</h3>
@@ -34,7 +34,7 @@
 					<div class="form-group row">
 						<label class="col-3 col-form-label">Filter</label>
 						<div class="col-9">
-							<or-filter-box [(pattern)]="filter.pattern"></or-filter-box>
+							<or-filter-box [(pattern)]="filter.pattern" #orFilterBox></or-filter-box>
 						</div>
 					</div>
 					<div class="form-group row">

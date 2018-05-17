@@ -19,7 +19,6 @@ let del = require('del'),
 	gutil = require('gulp-util'),
 	hb = require('gulp-hb'),
 	rename = require('gulp-rename'),
-	replace = require('gulp-replace'),
 	gulpFile = require('gulp-file'),
 
 	// Project-specific:
@@ -136,16 +135,7 @@ let showcaseHTML = () => {
 	);
 };
 
-let showcaseHtmlCleanup = () => {
-	// Move `index.html` to target root folder and update resources paths accordingly:
-	return gulp.src(
-		'./target/showcase/index.html'
-	).pipe(
-		replace(/\.\.\//g, './')
-	).pipe(
-		gulp.dest('./target/')
-	);
-};
+
 //</editor-fold>
 
 //<editor-fold desc="Deployment tasks">
@@ -267,13 +257,6 @@ gulp.task(
 	'showcase-build',
 	gulp.series(
 		showcaseHTML
-	)
-);
-
-gulp.task(
-	'showcase-build-cleanup',
-	gulp.series(
-		showcaseHtmlCleanup
 	)
 );
 

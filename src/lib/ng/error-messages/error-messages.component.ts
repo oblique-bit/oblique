@@ -1,20 +1,21 @@
-import {Component, Input, Optional, AfterViewInit} from '@angular/core';
-import {NgControl, NgForm, FormGroupDirective} from '@angular/forms';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/merge';
+import {AfterViewInit, Component, Input, Optional} from '@angular/core';
+import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
+import {merge as observableMerge} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+
 import {Unsubscribable} from '../unsubscribe';
 import {FormControlStateDirective} from '../form-control-state';
 import {ErrorMessagesService} from './error-messages.service';
 
 @Component({
 	selector: 'or-error-messages',
-	template: `<div class="form-control-feedback" *ngFor="let error of errors">{{error.key | translate:error.params}}</div>`
+	template: `
+		<div class="form-control-feedback" *ngFor="let error of errors">{{error.key | translate:error.params}}</div>`
 })
 export class ErrorMessagesComponent extends Unsubscribable implements AfterViewInit {
 	@Input() control: NgControl;
 
-	errors: { key: string, params: { [param: string]: any } }[] = [];
+	errors: {key: string, params: {[param: string]: any}}[] = [];
 
 	private form: NgForm | FormGroupDirective;
 
@@ -33,7 +34,7 @@ export class ErrorMessagesComponent extends Unsubscribable implements AfterViewI
 	ngAfterViewInit() {
 		this.control = this.control ? this.control : this.formGroup.ngControl;
 
-		Observable.merge(
+		observableMerge(
 			this.control.statusChanges,
 			this.form.ngSubmit
 		)

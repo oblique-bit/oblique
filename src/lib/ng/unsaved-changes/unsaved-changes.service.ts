@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {NgbTabChangeEvent, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
-import {Subscriber} from 'rxjs/Subscriber';
+import {Subscriber} from 'rxjs';
 
 //TODO: Handle modals
 @Injectable()

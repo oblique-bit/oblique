@@ -1,0 +1,162 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "oblique-reactive": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "target",
+            "index": "src/showcase/index.html",
+            "main": "src/showcase/main.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "polyfills": "src/showcase/polyfills.ts",
+            "preserveSymlinks": true,
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "src/showcase/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/oblique-ui/images",
+                "output": "/assets/oblique-ui/images"
+              }
+            ],
+            "styles": [
+              "node_modules/oblique-ui/css/oblique-ui.css",
+              "src/showcase/scss/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/showcase/environments/environment.ts",
+                  "with": "src/showcase/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "progress": false,
+              "baseHref": "."
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "oblique-reactive:build",
+            "port": 3001,
+            "sourceMap": true
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "oblique-reactive:build:prod",
+              "aot": true,
+              "optimization": true,
+              "sourceMap": true
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "karmaConfig": "./karma.conf.js",
+            "polyfills": "src/showcase/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "watch": true,
+            "preserveSymlinks": true,
+            "scripts": [],
+            "styles": [
+              "node_modules/oblique-ui/css/oblique-ui.css",
+              "src/showcase/scss/styles.scss"
+            ],
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "src/showcase/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/oblique-ui/images",
+                "output": "/assets/oblique-ui/images"
+              }
+            ]
+          },
+          "configurations": {
+            "production": {
+              "preserveSymlinks": false,
+              "watch": false,
+              "codeCoverage": true,
+              "progress": false
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "oblique-reactive-e2e": {
+      "root": "",
+      "sourceRoot": "",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "./protractor.conf.js",
+            "devServerTarget": "oblique-reactive:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "e2e/tsconfig.e2e.json"
+            ],
+            "exclude": []
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "oblique-reactive",
+  "schematics": {
+    "@schematics/angular:component": {
+      "spec": true,
+      "inlineTemplate": false,
+      "prefix": "or",
+      "styleext": "scss"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "or"
+    }
+  }
+}

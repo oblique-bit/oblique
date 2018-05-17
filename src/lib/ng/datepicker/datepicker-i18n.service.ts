@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {NgbDatepickerI18n} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDatepickerI18n, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateService} from '@ngx-translate/core';
 
 const I18N_VALUES = {
@@ -66,5 +66,9 @@ export class DatepickerI18nService extends NgbDatepickerI18n {
 
 	getMonthFullName(month: number): string {
 		return I18N_VALUES[this.translateService.currentLang].monthFull[month - 1];
+	}
+
+	getDayAriaLabel(date: NgbDateStruct): string {
+		return `${date.day}-${date.month}-${date.year}`;
 	}
 }
