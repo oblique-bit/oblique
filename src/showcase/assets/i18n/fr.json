@@ -45,6 +45,15 @@
         "datepicker": {
           "title": "Datepicker"
         },
+        "filter-box": {
+          "title": "Filter Box"
+        },
+        "form-control-state": {
+          "title": "Form Control State"
+        },
+        "http-interceptor": {
+          "title": "HTTP Interceptor"
+        },
         "master-layout": {
           "title": "Master Layout"
         },
@@ -63,26 +72,20 @@
         "notification": {
           "title": "Notification"
         },
-        "typeahead": {
-          "title": "Typeahead"
+        "number-format": {
+          "title": "Number format"
+        },
+        "schema-validation": {
+          "title": "Schema Validation"
+        },
+        "toggle": {
+          "title": "Toggles"
         },
         "ui-scroll": {
           "title": "UI Scroll"
         },
-        "filterBox": {
-          "title": "Filter Box"
-        },
-        "formControlState": {
-          "title": "Form Control State"
-        },
-        "validation": {
-          "title": "Validation",
-          "schemaValidation": {
-            "title": "Schema Validation"
-          },
-          "unsavedChanges": {
-            "title": "Unsaved Changes"
-          }
+        "unsaved-changes": {
+          "title": "Unsaved Changes"
         }
       }
     },

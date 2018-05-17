@@ -17,6 +17,7 @@ import {SchemaValidationSampleComponent} from './schema-validation/schema-valida
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {ToggleSampleComponent} from './toggle/toggle-sample.component';
 import {NumberFormatSampleComponent} from './number-format/number-format-sample.component';
+import {HttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
 
 const samplesRoutes: Routes = [
 
@@ -29,6 +30,7 @@ const samplesRoutes: Routes = [
 			description: 'Description for the Navigable Sample'
 		}
 	},
+	{path: 'http-interceptor', component: HttpInterceptorSampleComponent},
 	{
 		path: 'nav-tree',
 		component: NavTreeSampleComponent,

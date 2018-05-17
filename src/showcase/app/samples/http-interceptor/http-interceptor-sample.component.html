@@ -1,0 +1,33 @@
+<div class="default-layout notification-sample">
+	<h2 class="page-header">{{'i18n.routes.samples.http-interceptor.title' | translate}}</h2>
+	<p class="lead">Custom HTTP interception for Oblique.</p>
+	<div class="row">
+		<div class="col-md-6 mb-3">
+			<div class="card h-100">
+				<h3 class="card-header">Logs</h3>
+				<div class="card-body notification-sample-preview">
+					<div class="smaller" *ngFor="let log of logs">{{log}}</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="card h-100">
+				<h3 class="card-header">Controls</h3>
+				<div class="card-body">
+					<div class="form-group">
+						<label>Request</label>
+						<div class="btn-group btn-group-toggle w-100" ngbRadioGroup name="messageWithParams" [(ngModel)]="messageWithParams">
+							<label ngbButtonLabel class="btn-success">
+								<input ngbButton type="radio" (click)="request200()"> 200 OK
+							</label>
+							<label ngbButtonLabel class="btn-danger">
+								<input ngbButton type="radio" (click)="request404()"> 404 NOT FOUND
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+</div>

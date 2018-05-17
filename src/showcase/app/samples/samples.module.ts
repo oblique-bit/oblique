@@ -25,6 +25,7 @@ import {SchemaValidationSampleComponent} from './schema-validation/schema-valida
 import {ToggleSampleComponent} from './toggle/toggle-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
+import {HttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
 
 @NgModule({
 	imports: [
@@ -44,6 +45,7 @@ import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-chan
 		DatepickerSampleComponent,
 		FormControlStateSampleComponent,
 		FilterBoxSampleComponent,
+		HttpInterceptorSampleComponent,
 		PatternFilterPipe,
 		MasterLayoutSampleComponent,
 		MultiselectSampleComponent,

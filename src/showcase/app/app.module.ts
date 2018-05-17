@@ -2,7 +2,7 @@ import {NgModule, Inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {NgbDatepickerConfig, NgbModule, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule, TranslateLoader, TranslateService} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
@@ -25,6 +25,7 @@ import {LayoutModule} from './layout/layout.module';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HomePageComponent} from './home/home.page';
+import {ObliqueHttpInterceptorProviders} from '../../lib/ng/http';
 
 // AoT requires an exported function for factories:
 export function createTranslateLoader(http: HttpClient) {
@@ -65,7 +66,8 @@ export function createTranslateLoader(http: HttpClient) {
 				channel: 'app',
 				timeout: 5000
 			}
-		}
+		},
+		ObliqueHttpInterceptorProviders
 	],
 	entryComponents: [AppComponent],
 	bootstrap: [AppComponent]

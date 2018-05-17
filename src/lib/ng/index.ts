@@ -12,13 +12,14 @@ import {NavigableModule} from './navigable';
 import {NavigatorModule} from './navigator';
 import {NavTreeModule} from './nav-tree';
 import {NotificationModule} from './notification';
+import {ObliqueHttpModule} from './http';
 import {SchemaValidationModule} from './schema-validation';
 import {ScrollingModule} from './scrolling';
 import {SpinnerModule} from './spinner';
 import {ToggleModule} from './toggle';
 import {UnsavedChangesModule} from './unsaved-changes';
 import {NumberFormatModule} from './number-format';
-import {TextControlClearModule} from './text-control-clear/text-control-clear.module';
+import {TextControlClearModule} from './text-control-clear';
 
 export * from './column-layout';
 export * from './datepicker';
@@ -26,6 +27,7 @@ export * from './document-meta';
 export * from './error-messages';
 export * from './filter-box';
 export * from './form-control-state';
+export * from './http';
 export * from './master-layout';
 export * from './multiselect';
 export * from './navigable';
@@ -54,6 +56,7 @@ const OBLIQUE_MODULES = [
 	NavigatorModule,
 	NavTreeModule,
 	NotificationModule,
+	ObliqueHttpModule,
 	SchemaValidationModule,
 	ScrollingModule,
 	SpinnerModule,
@@ -77,6 +80,7 @@ const OBLIQUE_MODULES = [
 		NavigatorModule.forRoot(),
 		NavTreeModule.forRoot(),
 		NotificationModule.forRoot(),
+		ObliqueHttpModule.forRoot(),
 		SchemaValidationModule.forRoot(),
 		ScrollingModule.forRoot(),
 		SpinnerModule.forRoot(),
