@@ -1,9 +1,9 @@
 import {
 	Input, EventEmitter, Output, AfterViewInit, ContentChildren, QueryList, Component, ViewEncapsulation
 } from '@angular/core';
-import {takeUntil} from 'rxjs/operators';
-import {Unsubscribable} from '../unsubscribe';
-import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from './navigable.directive';
+import { takeUntil } from 'rxjs/operators';
+import { Unsubscribable } from '../unsubscribe';
+import { NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent } from './navigable.directive';
 
 /**
  * NavigableGroup component.
@@ -140,6 +140,38 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterView
 	private selectionValue: any[];
 
 	ngAfterViewInit(): void {
+		this.registerNavigableEvents();
+		this.navigables.changes
+			.pipe(takeUntil(this.unsubscribe))
+			.subscribe(() => {
+				this.registerNavigableEvents();
+			});
+	}
+
+	// Public API ---------------------
+	public add(model: any) {
+		let navigableToSelect = this.navigables.find((navigable: NavigableDirective) => {
+			return navigable.model === model;
+		});
+
+		if (navigableToSelect) {
+			this.select(navigableToSelect, true);
+		}
+	}
+
+	public remove(model: any) {
+		let navigableToRemove = this.navigables.find((navigable: NavigableDirective) => {
+			return navigable.model === model;
+		});
+
+		if (navigableToRemove) {
+			this.deactivate(navigableToRemove, true);
+		}
+	}
+
+	// Private API ---------------------
+	private registerNavigableEvents(): void {
+
 		this.navigables.forEach(navigable => {
 
 			navigable.navigableOnActivation
@@ -226,29 +258,6 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterView
 				});
 		});
 	}
-
-	// Public API ---------------------
-	public add(model: any) {
-		let navigableToSelect = this.navigables.find((navigable: NavigableDirective) => {
-			return navigable.model === model;
-		});
-
-		if (navigableToSelect) {
-			this.select(navigableToSelect, true);
-		}
-	}
-
-	public remove(model: any) {
-		let navigableToRemove = this.navigables.find((navigable: NavigableDirective) => {
-			return navigable.model === model;
-		});
-
-		if (navigableToRemove) {
-			this.deactivate(navigableToRemove, true);
-		}
-	}
-
-	// Private API ---------------------
 
 	private activate(navigable: NavigableDirective, combine?: boolean) {
 		this.navigables.forEach(child => child !== navigable && this.deactivate(child)); //TODO: take a look at this
