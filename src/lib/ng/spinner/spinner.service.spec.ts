@@ -16,16 +16,16 @@ describe('SpinnerService', () => {
 	});
 
 	it('should emit statusChangeEvent on activateSpinner', inject([SpinnerService], (service: SpinnerService) => {
-		service.onSpinnerStatusChange.pipe(first()).subscribe((spinnerActive) => {
+		service.events.pipe(first()).subscribe((spinnerActive) => {
 			expect(spinnerActive).toBeTruthy();
 		});
 		service.activateSpinner();
 	}));
 
-	it('should emit statusChangeEvent on deactivateSpinner', inject([SpinnerService], (service: SpinnerService) => {
-		service.onSpinnerStatusChange.pipe(first()).subscribe((spinnerActive) => {
+	it('should emit statusChangeEvent on deactivate', inject([SpinnerService], (service: SpinnerService) => {
+		service.events.pipe(first()).subscribe((spinnerActive) => {
 			expect(spinnerActive).toBeFalsy();
 		});
-		service.deactivateSpinner();
+		service.deactivate();
 	}));
 });
