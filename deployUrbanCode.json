@@ -1,0 +1,12 @@
+{
+  "application": "bit-oblique",
+  "applicationProcess": "deploy",
+  "environment": "@UCD_ENVIRONMENT@",
+  "onlyChanged": "false",
+  "versions": [
+    {
+      "version": "latest",
+      "component": "bit-oblique2-reactive"
+    }
+  ]
+}
