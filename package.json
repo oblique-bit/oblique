@@ -40,7 +40,7 @@
     "dev-link": "./node_modules/.bin/gulp dev-link",
     "start": "ng serve",
     "dist": "./node_modules/.bin/gulp dist",
-    "ci-build": "npm run lint && ng test --prod && npm run dist",
+    "ci-build": "npm run lint && ng test --prod --watch=false && npm run dist",
     "prestart": "npm run prebuild",
     "build": "ng build",
     "prebuild": "./node_modules/.bin/gulp showcase-build",
