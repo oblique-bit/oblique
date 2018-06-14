@@ -31,7 +31,6 @@ export class SpinnerService {
 		});
 	}
 
-	// Workaround to have a private setter:
 	private broadcast(event: SpinnerEvent) {
 		this.events.emit(event);
 	}

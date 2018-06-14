@@ -3,7 +3,7 @@ import {Subject} from 'rxjs';
 
 // http://stackoverflow.com/questions/38008334/angular-rxjs-when-should-i-unsubscribe-from-subscription
 export class Unsubscribable implements OnDestroy {
-	protected unsubscribe: Subject<void> = new Subject();
+	protected unsubscribe: Subject<any> = new Subject();
 
 	ngOnDestroy(): void {
 		this.unsubscribe.next();

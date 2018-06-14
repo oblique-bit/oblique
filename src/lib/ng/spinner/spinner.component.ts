@@ -9,18 +9,19 @@ import {animate, keyframes, state, style, transition, trigger} from '@angular/an
 	selector: 'or-spinner',
 	exportAs: 'orSpinner',
 	template: `
-		<div class="overlay overlay-inverse show" [class.overlay-fixed]="fixed" [@inOut]="$state">
+		<div class="overlay overlay-inverse" [class.overlay-fixed]="fixed" [@inOut]="$state">
 			<div class="spinner-viewport">
 				<span class="spinner fa fa-spinner fa-4x"></span>
 			</div>
 		</div>`,
 	animations: [
 		trigger('inOut', [
-			state('in', style({opacity: 1})),
+			state('in', style({opacity: 1, display: 'block'})),
 			transition('* => in', [
+				style({ display: 'block' }), // As we can not animate the `display` property, we modify it before starting the next animation.
 				animate('250ms ease-in-out', keyframes([
-					style({offset: 0, opacity: 0}),
-					style({offset: 1, opacity: 1})
+					style({offset: 0, opacity: 0, display: 'block'}),
+					style({offset: 1, opacity: 1, display: 'block'})
 				]))
 			]),
 			state('out',
@@ -28,8 +29,8 @@ import {animate, keyframes, state, style, transition, trigger} from '@angular/an
 			),
 			transition('* => out', [
 				animate('250ms ease-in-out', keyframes([
-					style({offset: 0, opacity: 1}),
-					style({offset: 1, opacity: 0}),
+					style({offset: 0, opacity: 1, display:'block'}),
+					style({offset: 1, opacity: 0, display:'block'}),
 				]))
 			])
 		])
@@ -56,7 +57,7 @@ export class SpinnerComponent extends Unsubscribable implements OnInit {
 	}
 
 	ngOnInit() {
-		if (this.fixed) {
+		if (!this.fixed) {
 			this.element.nativeElement.parentElement.classList.add('has-overlay');
 		}
 	}
