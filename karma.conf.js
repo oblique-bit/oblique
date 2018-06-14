@@ -22,9 +22,7 @@ module.exports = function (config) {
 			reports: ['html', 'lcovonly'],
 			fixWebpackSourcePaths: true
 		},
-		reporters: options.codeCoverage
-			? ['progress', 'coverage-istanbul']
-			: ['progress', 'kjhtml'],
+		reporters: ['progress', 'coverage-istanbul'],
 		port: 9876,
 		colors: true,
 		logLevel: config.LOG_DEBUG,
