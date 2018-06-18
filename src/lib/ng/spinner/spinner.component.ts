@@ -29,8 +29,8 @@ import {animate, keyframes, state, style, transition, trigger} from '@angular/an
 			),
 			transition('* => out', [
 				animate('250ms ease-in-out', keyframes([
-					style({offset: 0, opacity: 1, display:'block'}),
-					style({offset: 1, opacity: 0, display:'block'}),
+					style({offset: 0, opacity: 1, display: 'block'}),
+					style({offset: 1, opacity: 0, display: 'block'}),
 				]))
 			])
 		])
