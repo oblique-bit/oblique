@@ -44,7 +44,8 @@ export class SpinnerComponent extends Unsubscribable implements OnInit {
 	@Input()
 	fixed = false;
 
-	private $state = 'out';
+	// Animation state:
+	$state = 'out';
 
 	constructor(private spinnerService: SpinnerService, private element: ElementRef) {
 		super();

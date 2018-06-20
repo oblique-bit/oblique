@@ -2,6 +2,7 @@ import {TestBed, inject} from '@angular/core/testing';
 import {first} from 'rxjs/operators';
 import {NotificationService} from '../notification';
 import {SpinnerService} from './spinner.service';
+import {SpinnerEvent} from './spinner-event';
 
 describe('SpinnerService', () => {
 	let mockNotificationService;
@@ -15,17 +16,41 @@ describe('SpinnerService', () => {
 		});
 	});
 
-	it('should emit statusChangeEvent on activateSpinner', inject([SpinnerService], (service: SpinnerService) => {
-		service.events.pipe(first()).subscribe((spinnerActive) => {
-			expect(spinnerActive).toBeTruthy();
+	it('should emit a SpinnerEvent if activated', inject([SpinnerService], (service: SpinnerService) => {
+		service.events.pipe(first()).subscribe((event: SpinnerEvent) => {
+			expect(event).toBeDefined();
+			expect(event.active).toBeTruthy();
+			expect(event.channel).toBe(SpinnerService.CHANNEL);
 		});
-		service.activateSpinner();
+		service.activate();
 	}));
 
-	it('should emit statusChangeEvent on deactivate', inject([SpinnerService], (service: SpinnerService) => {
-		service.events.pipe(first()).subscribe((spinnerActive) => {
-			expect(spinnerActive).toBeFalsy();
+	it('should emit a SpinnerEvent on a custom channel if activated', inject([SpinnerService], (service: SpinnerService) => {
+		const channel = 'CUSTOM';
+		service.events.pipe(first()).subscribe((event: SpinnerEvent) => {
+			expect(event).toBeDefined();
+			expect(event.active).toBeTruthy();
+			expect(event.channel).toBe(channel);
+		});
+		service.activate(channel);
+	}));
+
+	it('should emit a SpinnerEvent if deactivated', inject([SpinnerService], (service: SpinnerService) => {
+		service.events.pipe(first()).subscribe((event: SpinnerEvent) => {
+			expect(event).toBeDefined();
+			expect(event.active).toBeFalsy();
+			expect(event.channel).toBe(SpinnerService.CHANNEL);
 		});
 		service.deactivate();
+	}));
+
+	it('should emit a SpinnerEvent on a custom channel if deactivated', inject([SpinnerService], (service: SpinnerService) => {
+		const channel = 'CUSTOM';
+		service.events.pipe(first()).subscribe((event: SpinnerEvent) => {
+			expect(event).toBeDefined();
+			expect(event.active).toBeFalsy();
+			expect(event.channel).toBe(channel);
+		});
+		service.deactivate(channel);
 	}));
 });
