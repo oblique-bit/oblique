@@ -36,6 +36,9 @@ module.exports = function (config) {
 		customLaunchers:{
 			ChromeHeadlessCustom:{
 				base: 'ChromeHeadless',
+				browserDisconnectTimeout: 10000,
+				browserDisconnectTolerance: 3,
+				browserNoActivityTimeout: 60000,
 				flags: [
 					'--no-sandbox', // required to run without privileges in Docker
 					'--disable-web-security',
