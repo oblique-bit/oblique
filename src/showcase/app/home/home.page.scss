@@ -11,14 +11,20 @@
 
 .oblique {
 	> span:not(.vendor-logo) {
+		font-weight: bold;
 		> span {
-			font-weight: bold;
+			font-weight: normal;
 		}
 	}
 
+	.oblique-logo {
+		width: 10rem;
+		max-width: 80%;
+	}
+
 	.headline & {
-		.vendor-logo {
-			width: 14rem;
+		.oblique-logo {
+			width: 32rem;
 		}
 	}
 }
