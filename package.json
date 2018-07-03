@@ -44,11 +44,12 @@
     "prestart": "npm run prebuild",
     "build": "ng build",
     "prebuild": "./node_modules/.bin/gulp showcase-build",
-    "gulp-publish": "./node_modules/.bin/gulp publish",
     "test": "ng test",
     "pretest": "npm run prebuild",
     "lint": "ng lint",
-    "e2e": "npm run prebuild && ng e2e"
+    "e2e": "npm run prebuild && ng e2e",
+    "changelog": "npm run gulp -- changelog",
+    "release": "./node_modules/.bin/gulp publish"
   },
   "dependencies": {
     "@angular/animations": "^6.0.7",
