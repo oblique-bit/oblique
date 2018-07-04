@@ -1,5 +1,5 @@
 import {
-	Input, EventEmitter, Output, AfterViewInit, ContentChildren, QueryList, Component, ViewEncapsulation
+	Input, EventEmitter, Output, AfterViewInit, ContentChildren, QueryList, Component, ViewEncapsulation, IterableDiffers, IterableChangeRecord, AfterContentInit, IterableDiffer
 } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 import { Unsubscribable } from '../unsubscribe';
@@ -10,9 +10,9 @@ import { NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent } from
  */
 @Component({
 	selector: 'or-navigable-group',
+	exportAs: 'orNavigableGroup',
 	template: `
 		<ng-content></ng-content>`,
-	exportAs: 'navigableGroup',
 	encapsulation: ViewEncapsulation.None,
 	styles: [`
 		.navigable {
@@ -110,10 +110,10 @@ import { NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent } from
 			}
 		}`]
 })
-export class NavigableGroupComponent extends Unsubscribable implements AfterViewInit {
+export class NavigableGroupComponent extends Unsubscribable implements AfterContentInit {
 
 	/**
-	 * The array containing all group items
+	 * A collection containing all data models of the current group.
 	 */
 	@Input('items')
 	items: any[];
@@ -122,7 +122,7 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterView
 	navigables: QueryList<NavigableDirective>;
 
 	/**
-	 * The array which will contain the selected models.
+	 * A collection which will contain the selected data models.
 	 */
 	@Input('selection')
 	get selection() {
@@ -138,13 +138,31 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterView
 	selectionOnChange = new EventEmitter();
 
 	private selectionValue: any[];
+	private differ: IterableDiffer<NavigableDirective> = null;
 
-	ngAfterViewInit(): void {
-		this.registerNavigableEvents();
+	constructor(private differs: IterableDiffers) {
+		super();
+		this.differ = this.differs.find([]).create(null);
+	}
+
+	ngAfterContentInit(): void {
+		// Initialize events for navigable directives:
+		this.navigables.forEach(navigable => {
+			this.registerNavigableEvents(navigable);
+		});
+
+		// Create initial difference to track navigable list changes:
+		this.differ.diff(this.navigables.toArray());
+
+		// Listen to navigable list changes:
 		this.navigables.changes
 			.pipe(takeUntil(this.unsubscribe))
-			.subscribe(() => {
-				this.registerNavigableEvents();
+			.subscribe((changes: QueryList<NavigableDirective>) => {
+				let diff = this.differ.diff(changes.toArray());
+				diff.forEachAddedItem((record: IterableChangeRecord<NavigableDirective>) => {
+					console.log(record.item);
+					this.registerNavigableEvents(record.item);
+				});
 			});
 	}
 
@@ -170,93 +188,90 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterView
 	}
 
 	// Private API ---------------------
-	private registerNavigableEvents(): void {
+	private registerNavigableEvents(navigable: NavigableDirective) {
 
-		this.navigables.forEach(navigable => {
+		navigable.navigableOnActivation
+			.pipe(takeUntil(this.unsubscribe))
+			.subscribe(() => {
+				this.addToSelection(navigable);
+			});
 
-			navigable.navigableOnActivation
-				.pipe(takeUntil(this.unsubscribe))
-				.subscribe(() => {
+		navigable.navigableOnChange
+			.pipe(takeUntil(this.unsubscribe))
+			.subscribe(($event: NavigableOnChangeEvent) => {
+				const index = this.indexOf(navigable);
+				let next: NavigableDirective = null;
+
+				if ($event.keyCode === NavigableDirective.KEYS.UP) {
+					next = this.fromIndex(Math.max(index - 1, 0));
+				} else if ($event.keyCode === NavigableDirective.KEYS.DOWN) {
+					next = this.fromIndex(Math.min(index + 1, this.navigables.length));
+				}
+
+				if (next) {
+					if (next.selected) {
+						this.deselect(navigable);
+					}
+
+					this.activate(next, $event.combine);
+					next.focus();
+				}
+			});
+
+		navigable.navigableOnMouseDown
+			.pipe(takeUntil(this.unsubscribe))
+			.subscribe(($event: MouseEvent) => {
+				if ($event && $event.shiftKey) {
+					this.selectChildRange(navigable);
+				} else if ($event && $event.ctrlKey) {
+					if (navigable.selected) {
+						this.removeFromSelection(navigable);
+					} else {
+						this.addToSelection(navigable);
+					}
+				} else {
+					this.navigables.forEach(child => {
+						if (child !== navigable) {
+							this.deactivate(child, true);
+						}
+					});
+
 					this.addToSelection(navigable);
-				});
+				}
 
-			navigable.navigableOnChange
-				.pipe(takeUntil(this.unsubscribe))
-				.subscribe(($event: NavigableOnChangeEvent) => {
-					const index = this.indexOf(navigable);
-					let next: NavigableDirective = null;
+				// In any case, deactivate current active navigable item:
+				this.deactivate(this.getActive());
+			});
+
+		navigable.navigableOnFocus
+			.pipe(takeUntil(this.unsubscribe))
+			.subscribe(() => {
+				if (!navigable.active) {
+					// When a child is about to receive focus, deactivate the other items:
+					this.navigables.forEach(child => child !== navigable && this.deactivate(child, true)); //TODO: take a look at this
+					this.addToSelection(navigable);
+				}
+			});
+
+		navigable.navigableOnMove
+			.pipe(takeUntil(this.unsubscribe))
+			.subscribe(($event: NavigableOnMoveEvent) => {
+				if (!$event.prevented) {
+					let from = this.indexOf(navigable);
 
 					if ($event.keyCode === NavigableDirective.KEYS.UP) {
-						next = this.fromIndex(Math.max(index - 1, 0));
+						let to = from - 1;
+						if (to >= 0) {
+							this.items.splice(to, 0, this.items.splice(from, 1)[0]);
+						}
 					} else if ($event.keyCode === NavigableDirective.KEYS.DOWN) {
-						next = this.fromIndex(Math.min(index + 1, this.navigables.length));
-					}
-
-					if (next) {
-						if (next.selected) {
-							this.deselect(navigable);
-						}
-
-						this.activate(next, $event.combine);
-						next.focus();
-					}
-				});
-
-			navigable.navigableOnMouseDown
-				.pipe(takeUntil(this.unsubscribe))
-				.subscribe(($event: MouseEvent) => {
-					if ($event && $event.shiftKey) {
-						this.selectChildRange(navigable);
-					} else if ($event && $event.ctrlKey) {
-						if (navigable.selected) {
-							this.removeFromSelection(navigable);
-						} else {
-							this.addToSelection(navigable);
-						}
-					} else {
-						this.navigables.forEach(child => {
-							if (child !== navigable) {
-								this.deactivate(child, true);
-							}
-						});
-
-						this.addToSelection(navigable);
-					}
-
-					// In any case, deactivate current active navigable item:
-					this.deactivate(this.getActive());
-				});
-
-			navigable.navigableOnFocus
-				.pipe(takeUntil(this.unsubscribe))
-				.subscribe(() => {
-					if (!navigable.active) {
-						// When a child is about to receive focus, deactivate the other items:
-						this.navigables.forEach(child => child !== navigable && this.deactivate(child, true)); //TODO: take a look at this
-						this.addToSelection(navigable);
-					}
-				});
-
-			navigable.navigableOnMove
-				.pipe(takeUntil(this.unsubscribe))
-				.subscribe(($event: NavigableOnMoveEvent) => {
-					if (!$event.prevented) {
-						let from = this.indexOf(navigable);
-
-						if ($event.keyCode === NavigableDirective.KEYS.UP) {
-							let to = from - 1;
-							if (to >= 0) {
-								this.items.splice(to, 0, this.items.splice(from, 1)[0]);
-							}
-						} else if ($event.keyCode === NavigableDirective.KEYS.DOWN) {
-							let to = from + 1;
-							if (to < this.items.length) {
-								this.items.splice(to, 0, this.items.splice(from, 1)[0]);
-							}
+						let to = from + 1;
+						if (to < this.items.length) {
+							this.items.splice(to, 0, this.items.splice(from, 1)[0]);
 						}
 					}
-				});
-		});
+				}
+			});
 	}
 
 	private activate(navigable: NavigableDirective, combine?: boolean) {

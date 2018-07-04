@@ -9,79 +9,80 @@
 		<div class="card-body">
 			<div class="row">
 				<div class="col-9">
-					<or-navigable-group [(items)]="scientists" [(selection)]="scientistsSelection" #navigableGroup="navigableGroup">
-						<div class="list-group mb-4">
-							<div class="list-group-item list-group-header">
-								<div class="col-3">First Name</div>
-								<div class="col-3">Last Name</div>
-								<div class="col-3">Date of birth</div>
-								<div class="col-3"></div>
-							</div>
-							<div class="list-group-item"
-								 *ngFor="let scientist of scientists; let i = index"
-								 [orNavigable]="scientist"
-								 [navigableFocusOnInit]="i === 0"
-								 [navigableHighlight]="isHighlighted(scientist)"
-								 (navigableOnActivation)="onActivation(scientist)"
-								 (navigableOnMove)="onMove($event, scientist)"
-								 #navigable="navigable">
-								<div class="col-3">{{scientist.firstname}}</div>
-								<div class="col-3">{{scientist.lastname}}</div>
-								<div class="col-3">{{scientist.birthdate}}</div>
-								<div class="col-3 navigable-actions">
-									<button type="button" class="btn btn-primary navigable-reveal"
-											*ngIf="scientistsSelection.length > 1 && scientistsSelection.indexOf(scientist) > 0"
-											ngbTooltip="For demonstration purposes only, no grouping implementation.">
-										<span class="fa fa-link fa-fw"></span>
-										<span>Group ({{scientistsSelection.length}})</span>
+					<or-navigable-group [(items)]="scientists"
+					                    [(selection)]="scientistsSelection"
+					                    #orNavigableGroup
+					                    class="list-group mb-4">
+						<div class="list-group-item list-group-header">
+							<div class="col-3">First Name</div>
+							<div class="col-3">Last Name</div>
+							<div class="col-3">Date of birth</div>
+							<div class="col-3"></div>
+						</div>
+						<div class="list-group-item"
+							 *ngFor="let scientist of scientists; let i = index"
+							 [orNavigable]="scientist"
+							 [navigableFocusOnInit]="i === 0"
+							 [navigableHighlight]="isHighlighted(scientist)"
+							 (navigableOnActivation)="onActivation(scientist)"
+							 (navigableOnMove)="onMove($event, scientist)"
+							 #orNavigable>
+							<div class="col-3">{{scientist.firstname}}</div>
+							<div class="col-3">{{scientist.lastname}}</div>
+							<div class="col-3">{{scientist.birthdate}}</div>
+							<div class="col-3 navigable-actions">
+								<button type="button" class="btn btn-primary navigable-reveal"
+										*ngIf="scientistsSelection.length > 1 && scientistsSelection.indexOf(scientist) > 0"
+										ngbTooltip="For demonstration purposes only, no grouping implementation.">
+									<span class="fa fa-link fa-fw"></span>
+									<span>Group ({{scientistsSelection.length}})</span>
+								</button>
+								<div class="btn-group navigable-reveal" role="group" aria-label="actions"
+									 *ngIf="scientistsSelection.length <= 1">
+									<button type="button" class="btn btn-primary"
+											(click)="orNavigable.moveUp(scientist)"
+											*ngIf="i > 0" [disabled]="isLocked(scientist)">
+										<span class="fa fa-arrow-up"></span>
+										<span class="sr-only">Move UP</span>
 									</button>
-									<div class="btn-group navigable-reveal" role="group" aria-label="actions"
-										 *ngIf="scientistsSelection.length <= 1">
-										<button type="button" class="btn btn-primary"
-												(click)="navigable.moveUp(scientist)"
-												*ngIf="i > 0" [disabled]="isLocked(scientist)">
-											<span class="fa fa-arrow-up"></span>
-											<span class="sr-only">Move UP</span>
+									<button type="button" class="btn btn-primary"
+											(click)="orNavigable.moveDown(scientist)"
+											*ngIf="i < scientists.length - 1" [disabled]="isLocked(scientist)">
+										<span class="fa fa-arrow-down"></span>
+										<span class="sr-only">Move DOWN</span>
+									</button>
+									<div class="btn-group dropdown" role="group" ngbDropdown>
+										<button type="button"
+												class="btn btn-secondary dropdown-toggle dropdown-actions"
+												id="samples-navigable-actions-dropdown"
+												ngbDropdownToggle
+												dropdown-closable>
+											<span class="sr-only" id="navigable-actions-title">{{'i18n.common.actions' | translate}}</span>
 										</button>
-										<button type="button" class="btn btn-primary"
-												(click)="navigable.moveDown(scientist)"
-												*ngIf="i < scientists.length - 1" [disabled]="isLocked(scientist)">
-											<span class="fa fa-arrow-down"></span>
-											<span class="sr-only">Move DOWN</span>
-										</button>
-										<div class="btn-group dropdown" role="group" ngbDropdown>
-											<button type="button"
-													class="btn btn-secondary dropdown-toggle dropdown-actions"
-													id="samples-navigable-actions-dropdown"
-													ngbDropdownToggle
-													dropdown-closable>
-												<span class="sr-only" id="navigable-actions-title">{{'i18n.common.actions' | translate}}</span>
-											</button>
-											<div class="dropdown-menu dropdown-menu-right" role="menu"
-												 ngbDropdownMenu
-												 aria-labelledby="navigable-actions-title">
-												<div class="dropdown-item dropdown-header" role="presentation">Actions
-												</div>
-												<a class="dropdown-item" role="button" tabindex="0"
-												   (click)="toggleHighlighting(scientist)"
-												   (keyup.enter)="toggleHighlighting(scientist)">
-												<span class="fa fa-lightbulb-o"
-													  [ngClass]="{'text-warning': isHighlighted(scientist)}"></span>
-													<span class="small">Highlight</span>
-												</a>
-												<a class="dropdown-item" role="button" tabindex="0"
-												   (click)="lock(scientist)" (keyup.enter)="lock(scientist)">
-												<span class="fa fa-lock"
-													  [ngClass]="{'text-danger': isLocked(scientist)}"></span>
-													<span class="small">Lock</span>
-												</a>
-												<div class="dropdown-divider" role="presentation"></div>
-												<a class="dropdown-item" role="button" tabindex="0"
-												   (click)="remove(scientist)" (keyup.enter)="remove(scientist)">
-													<span class="fa fa-trash"></span>
-													<span class="small">Remove</span>
-												</a>
+										<div class="dropdown-menu dropdown-menu-right" role="menu"
+											 ngbDropdownMenu
+											 aria-labelledby="navigable-actions-title">
+											<div class="dropdown-item dropdown-header" role="presentation">Actions
 											</div>
+											<a class="dropdown-item" role="button" tabindex="0"
+											   (click)="toggleHighlighting(scientist)"
+											   (keyup.enter)="toggleHighlighting(scientist)">
+											<span class="fa fa-lightbulb-o"
+												  [ngClass]="{'text-warning': isHighlighted(scientist)}"></span>
+												<span class="small">Highlight</span>
+											</a>
+											<a class="dropdown-item" role="button" tabindex="0"
+											   (click)="lock(scientist)" (keyup.enter)="lock(scientist)">
+											<span class="fa fa-lock"
+												  [ngClass]="{'text-danger': isLocked(scientist)}"></span>
+												<span class="small">Lock</span>
+											</a>
+											<div class="dropdown-divider" role="presentation"></div>
+											<a class="dropdown-item" role="button" tabindex="0"
+											   (click)="remove(scientist)" (keyup.enter)="remove(scientist)">
+												<span class="fa fa-trash"></span>
+												<span class="small">Remove</span>
+											</a>
 										</div>
 									</div>
 								</div>
@@ -100,11 +101,19 @@
 				</div>
 				<div class="col-3">
 					<div class="list-group">
-						<div class="list-group-item">Actions</div>
+						<div class="list-group-item">
+							<span>Actions</span>
+							<a role="button" class="ml-auto"
+							        (click)="addScientist()"
+							        ngbTooltip="Add new scientist" container="body">
+									<span class="fa fa-plus-circle"></span>
+								<span class="sr-only">Add scientist</span>
+							</a>
+						</div>
 						<div class="list-group-item" *ngFor="let scientist of scientists">
 							<div class="btn-group">
 								<button type="button" class="btn btn-secondary"
-										(click)="toggleActivation(scientist, navigableGroup)"
+										(click)="toggleActivation(scientist, orNavigableGroup)"
 										ngbTooltip="Toggle item activation" container="body">
 									<span class="fa fa-toggle-off"
 										  [ngClass]="{'text-success fa-toggle-on': isSelected(scientist)}"></span>
