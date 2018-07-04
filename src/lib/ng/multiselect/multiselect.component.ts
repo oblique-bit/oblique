@@ -15,6 +15,7 @@ let nextId = 0;
 
 @Component({
 	selector: 'or-multiselect',
+	exportAs: 'orMultiselect',
 	providers: [{
 		provide: NG_VALUE_ACCESSOR,
 		useExisting: forwardRef(() => MultiselectComponent),
