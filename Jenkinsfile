@@ -5,5 +5,5 @@ nodejsPipelineTemplate {
 	npmBuildArguments = '--base-href=/oblique/${ARTIFACT_VERSION}/'
 	pushVersionWithBuildNumber = true
 	pushUrbanCode = ['bit-oblique2-reactive': './target']
-	deployUrbanCode = ['master': 'REF']
+	deployUrbanCode = ['master': ['REF']]
 }
