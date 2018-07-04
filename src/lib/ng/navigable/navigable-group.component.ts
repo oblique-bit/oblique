@@ -1,5 +1,6 @@
 import {
-	Input, EventEmitter, Output, AfterViewInit, ContentChildren, QueryList, Component, ViewEncapsulation, IterableDiffers, IterableChangeRecord, AfterContentInit, IterableDiffer
+	Input, EventEmitter, Output, ContentChildren, QueryList, Component,
+	ViewEncapsulation, IterableDiffers, IterableChangeRecord, AfterContentInit, IterableDiffer
 } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 import { Unsubscribable } from '../unsubscribe';
