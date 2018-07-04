@@ -48,7 +48,7 @@
     "pretest": "npm run prebuild",
     "lint": "ng lint",
     "e2e": "npm run prebuild && ng e2e",
-    "changelog": "npm run gulp -- changelog",
+    "changelog": "./node_modules/.bin/gulp -- changelog",
     "release": "./node_modules/.bin/gulp publish"
   },
   "dependencies": {
@@ -81,7 +81,7 @@
     "@ngtools/json-schema": "^1.1.0",
     "@types/jasmine": "^2.8.8",
     "@types/jquery": "^3.3.4",
-    "@types/karma": "^1.7.3",
+    "@types/karma": "^1.7.4",
     "@types/node": "10.5.1",
     "angular-router-loader": "^0.8.5",
     "angular2-template-loader": "^0.6.2",
@@ -115,7 +115,7 @@
     "ts-loader": "^4.4.2",
     "ts-node": "^7.0.0",
     "tslint": "^5.10.0",
-    "typescript": "~2.7.2",
-    "webpack": "4.8.3"
+    "typescript": "~2.9.2",
+    "webpack": "4.14.0"
   }
 }

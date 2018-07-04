@@ -157,7 +157,7 @@ let changelog = () => {
 			repository: pkg.repository.path // Atlassian Stash-specific
 		}, {
 			// git-raw-commits options:
-			//from: '0.0.0'
+			from: '2.0.0-RC.4'
 			//to: 'HEAD'
 		}, {
 			// conventional-commits-parser options
