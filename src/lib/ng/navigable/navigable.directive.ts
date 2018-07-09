@@ -22,19 +22,19 @@ export class NavigableOnMoveEvent extends PreventableEvent {
  * NavigableDirective
  *
  * API:
- * - [navigable]:any                             The data model, that should be selected.
+ * - [orNavigable]:any                           The data model of the current navigable item.
  * - [navigableActivate]:boolean                 Activates current item if `true`.
+ * - [navigableFocusOnInit]:boolean              Defines if the current item should be focused on directive initialisation.
  * - [navigableHighlight]:boolean                Highlights current item if `true`.
- * - [navigableFocusOnInit]:boolean              Focused current item if `true`, on directive initialisation only.
- * - (navigableOnActivation):void                Emits if item is activated.
- * - (navigableOnChange):NavigableOnChangeEvent  Emits if UP or DOWN key is pressed, while item is focused.
- * - (navigableOnFocus):FocusEvent               Emits if item is focused.
- * - (navigableOnMouseDown):MouseEvent           Emits if item is clicked/tapped.
- * - (navigableOnMove):FocusEvent                Emits if item is moved (with SHIFT+CTRL+[UP|DOWN]).
+ * - (navigableOnActivation):void                Emits if the navigable item is activated.
+ * - (navigableOnChange):NavigableOnChangeEvent  Emits if UP or DOWN key is pressed, while the navigable item is focused.
+ * - (navigableOnFocus):FocusEvent               Emits if the navigable item is focused.
+ * - (navigableOnMouseDown):MouseEvent           Emits if the navigable item is clicked/tapped.
+ * - (navigableOnMove):FocusEvent                Emits if the navigable item is moved (with SHIFT+CTRL+[UP|DOWN]).
  */
 @Directive({
 	selector: '[orNavigable]',
-	exportAs: 'navigable'
+	exportAs: 'orNavigable'
 })
 export class NavigableDirective implements AfterViewInit {
 

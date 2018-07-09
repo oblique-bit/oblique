@@ -1,5 +1,31 @@
 ### ObliqueReactive
 
+<a name="2.0.0-RC.5"></a>
+#### [2.0.0-RC.5](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.5) (2018-07-04)
+
+##### Dependencies updates
+* **Angular:** 6.0.7
+* **ObliqueUI:** 2.0.0-RC.5
+* **Bootstrap:** 4.1.1
+* **ng-bootstrap:** 2.2.0
+* **ajv:** 6.5.2
+* **rxjs:** 6.2.1
+
+##### Features
+* **spinner:** SpinnerComponent now supports channels in order to handle multiple spinners within the same page ([506e263](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/506e263))
+* **multiselect:** MultiselectComponent is now exported as `orMultiselect` ([7d6cc9a](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7d6cc9a))
+* **tests:** PhantomJS has been removed in favor of ChromeHeadless (FirefoxHeadless under Windows as per privileges issues) ([0c34dce](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0c34dce))
+
+##### Bug Fixes
+* **datepicker-i18n:** fix german translation for short months labels ([f259a5d](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f259a5d)), closes [#579](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/issues/579)
+* **navigable:** events are now successfully registered on new added navigables (which may be created by adding new data models) ([14c7121](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/14c7121))
+* **tests:** workaround for resolving Karma timeout issues on Windows (cf. https://github.com/karma-runner/karma-chrome-launcher/issues/154, https://github.com/karma-runner/karma/issues/2652) ([5526c37](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/5526c37))
+
+##### BREAKING CHANGES
+* **navigable:**
+	- `NavigableGroupComponent` is now exported as `orNavigableGroup`
+	- `NavigableDirective` is now exported as `orNavigable`
+
 <a name="2.0.0-RC.4"></a>
 #### [2.0.0-RC.4](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.4) (2018-04-17)
 
@@ -13,7 +39,6 @@
 * **zone.js:** 0.8.26
 
 (see [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/package.json?at=2.0.0-RC.2-1) for the full list of dependencies)
-
 
 ##### Features
 * **orNavTreeFakeFocus:** add fake focus for `orNavTree` ([ea12cfb](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/ea12cfb))

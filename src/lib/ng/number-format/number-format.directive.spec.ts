@@ -49,30 +49,30 @@ describe('NumberFormatDirective', () => {
 		beforeEach(() => {
 			createFixture(TestDefaultComponent);
 		});
-		it('should have both model and display value rounded to 2 digits', () => {
+		it('should have both model and display value rounded to 2 digits', async(() => {
 			fixture.whenStable().then(() => {
 				expect(testComponent.number).toEqual(5.24);
 				expect(element.nativeElement.value).toEqual('5.24');
 			});
-		});
+		}));
 	});
 
 	describe('with non persistent flag', () => {
 		beforeEach(() => {
 			createFixture(TestNonPersistentComponent);
 		});
-		it('should have rounded model value and full display value', () => {
+		it('should have rounded model value and full display value', async(() => {
 			fixture.whenStable().then(() => {
 				expect(testComponent.number).toEqual(5.235689);
 				expect(element.nativeElement.value).toEqual('5.236');
 			});
-		});
-		it('should display full value on focus', () => {
+		}));
+		it('should display full value on focus', async(() => {
 			fixture.whenStable().then(() => {
 				element.nativeElement.focus();
 				expect(testComponent.number).toEqual(5.235689);
 				expect(element.nativeElement.value).toEqual('5.235689');
 			});
-		});
+		}));
 	});
 });

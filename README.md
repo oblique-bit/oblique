@@ -144,50 +144,72 @@ You can now check for updates and bump `package.json` dependencies accordingly:
 
 	npm-check-updates
 
-### <a name="publish"></a> Publishing ObliqueReactive
+## <a name="release"></a> Releasing ObliqueReactive
 
-> Publishing should be performed with a continuous integration tool and not manually!
+> TODO: Releasing & publishing should be performed with a continuous integration tool and not manually!
 
-Before publishing, execute the following steps:
+Before releasing, execute the following steps:
 
 1. Switch to master branch and merge develop on it.
-2. Run `npm run build` to compile sources and rebuild the project distribution.
-3. Check project distribution and ensure showcase is running as expected.
-4. Commit and push any remaining changes.
+2. Ensure project builds and runs properly:
 
-Prepare your workspace:
+	npm run dev
 
-1. Ensure you have an account with publishing privileges on the internal `npm` registry ([BIT Nexus](https://repo.bit.admin.ch/))
+3. Check project distribution (`./dist/` folder).
+4. Ensure ObliqueUI docs (<http://localhost:3001/>) are running as expected.
+5. Run the tests (if any):
+
+	npm run test
+
+6. Check source code quality:
+
+	npm run lint
+
+7. Commit and push any remaining changes.
+
+Prepare your workspace (first-time setup only):
+
+1. Ensure you have an account with publishing privileges on the internal `npm` registry ([BIT Nexus](https://repo.bit.admin.ch))
 2. Authenticate on the internal npm registry:
 
-		npm login --registry=https://repo.bit.admin.ch/repository/npm-private/
+	npm login --registry=https://repo.bit.admin.ch/repository/npm-private/
 
-    > Follow the steps on the terminal as you may be asked for credentials.
+    > Follow the steps on the terminal as you may be asked for credentials. Login success is confirmed by a console message.
 
-#### <a name="publish-patch"></a> Publishing a *patch* release
+### <a name="release-changelog"></a> Update changelog
 
-Build, release (defaults to *patch* version number increment) and finally publish using Gulp:
+For every new release, changelog needs to be updated. Changelog for the next release can be automatically generated if Git commit messages follow the conventional guidelines (see [Git Commit Guidelines](#git-commit-guidelines)).
 
-	gulp publish
+1. Generate the changelog since the previous release:
+
+	npm run changelog
+
+2. Open the `CHANGELOG` file and make any required change to ensure business developers will understand the new changelog.
+
+### <a name="release-patch"></a> Releasing a *patch* version
+
+Build, release (defaults to *patch* version number increment) and finally publish using the following command:
+
+	npm run release
 
     > Follow the steps on the terminal as you may be asked multiple times for credentials.
 
-#### <a name="publish-types"></a> Publishing other release types
+### <a name="release-types"></a> Releasing other version types
 
 Publishing a *prerelease*:
 
-	gulp publish --bump prerelease
+	npm run release -- --bump prerelease
 
 Publishing a *minor* release:
 
-	gulp publish --bump minor
+	npm run release -- --bump minor
 
 Publishing a *major* release:
 
-	gulp publish --bump major
+	npm run release -- --bump major
 
 Publishing a *version-specific* release:
 
-	gulp publish --tag <version>
+	npm run release -- --tag <version>
 
 > For more release commands or options, see <https://github.com/stevelacy/gulp-bump>.

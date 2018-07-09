@@ -41,6 +41,19 @@ export class NavigableSampleComponent {
 	];
 	logs = [];
 
+	addScientist() {
+		let count = this.scientists.length + 1;
+		this.scientists.push({
+			firstname: count,
+			lastname: count,
+			birthdate: 'dd.mm.YYY'
+		});
+	}
+
+	navigablesOnChange(event) {
+		console.log(event);
+	}
+
 	// Activation:
 	onActivation(scientist: any) {
 		this.log(`Activated: ${scientist.firstname}`);

@@ -1,9 +1,8 @@
 {
   "i18n": {
     "application": {
-      "code": "ORS",
-      "title": "ObliqueReactiveSeed",
-      "description": "Reactive project template for your business web application. Powered by ObliqueUI, ObliqueReactive and Angular.",
+      "title": "ObliqueReactive",
+      "description": "Reactive front-end framework for your business web application.",
       "organization": {
         "name": "Federal Office of Information Technology, Systems and Telecommunication FOITT",
         "url": "https://www.bit.admin.ch/bit/en/home.html",

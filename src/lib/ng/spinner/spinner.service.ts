@@ -1,4 +1,5 @@
 import {EventEmitter, Injectable} from '@angular/core';
+import {SpinnerEvent} from './spinner-event';
 
 /**
  * SpinnerService (TODO: Rethink this concept)
@@ -7,24 +8,30 @@ import {EventEmitter, Injectable} from '@angular/core';
 @Injectable()
 export class SpinnerService {
 
-	public onSpinnerStatusChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-	private _spinnerActive = false;
+	/**
+	 * The channel name where spinner events will be broadcasted to.
+	 *
+	 * @type {string}
+	 */
+	public static CHANNEL = 'default';
 
-	get isSpinnerActive(): boolean {
-		return this._spinnerActive;
+	public events: EventEmitter<SpinnerEvent> = new EventEmitter<SpinnerEvent>();
+
+	public activate(channel: string = SpinnerService.CHANNEL) {
+		this.broadcast({
+			active: true,
+			channel: channel
+		});
 	}
 
-	public activateSpinner() {
-		this.setSpinnerActive(true);
+	public deactivate(channel: string = SpinnerService.CHANNEL) {
+		this.broadcast({
+			active: false,
+			channel: channel
+		});
 	}
 
-	public deactivateSpinner() {
-		this.setSpinnerActive(false);
-	}
-
-	// Workaround to have a private setter:
-	private setSpinnerActive(val: boolean) {
-		this._spinnerActive = val;
-		this.onSpinnerStatusChange.emit(val);
+	private broadcast(event: SpinnerEvent) {
+		this.events.emit(event);
 	}
 }
