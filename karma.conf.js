@@ -25,11 +25,13 @@ module.exports = function (config) {
 			fixWebpackSourcePaths: true
 		},
 		sonarQubeUnitReporter: {
-		   sonarQubeVersion: 'LATEST',
-		   outputFile: './target/sonarQube/sqr.xml',
-		   overrideTestDescription: true,
-		   useBrowserName: false
-		 },
+			sonarQubeVersion: 'LATEST',
+			outputFile: './target/sonarQube/sqr.xml',
+			testPaths: ['src/lib', 'src/showcase'],
+			testFilePattern: '.spec.ts',
+			overrideTestDescription: true,
+			useBrowserName: false
+		},
 		port: 9876,
 		colors: true,
 		logLevel: config.LOG_DEBUG,
