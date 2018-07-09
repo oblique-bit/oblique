@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 
+// TODO: make sure that app.module.ts provides an instance of ObliqueHttpInterceptorConfig filled with data from environment[.prod].ts
+
 /**
  * Configuration service for the Oblique HTTP interceptor.
  *

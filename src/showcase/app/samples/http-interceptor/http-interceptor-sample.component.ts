@@ -16,7 +16,7 @@ export class HttpInterceptorSampleComponent {
 	constructor(private notificationService: NotificationService,
 				private http: HttpClient,
 				private config: ObliqueHttpInterceptorConfig) {
-		// Redefine default API URL:
+		// Redefine default API URL for showcase sample only:
 		this.config.api.url = this.API_URL;
 	}
 
