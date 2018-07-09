@@ -40,7 +40,7 @@ module.exports = function (config) {
 			format: '%b %T: %m',
 			terminal: true
 		},
-		autoWatch: true,
+		autoWatch: options.watch,
 		browsers: options.watch ? ['Firefox'] : ['ChromeHeadlessCustom'],
 		customLaunchers: {
 			ChromeHeadlessCustom: {
@@ -55,6 +55,6 @@ module.exports = function (config) {
 				]
 			}
 		},
-		singleRun: false
+		singleRun: !options.watch
 	});
 };
