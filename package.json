@@ -109,6 +109,7 @@
     "karma-firefox-launcher": "^1.1.0",
     "karma-jasmine": "^1.1.2",
     "karma-jasmine-html-reporter": "^1.2.0",
+    "karma-sonarqube-unit-reporter": "0.0.17",
     "node-sass-import-once": "^1.2.0",
     "protractor": "^5.3.2",
     "run-sequence": "^2.2.1",
