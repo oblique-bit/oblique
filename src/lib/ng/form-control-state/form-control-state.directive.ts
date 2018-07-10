@@ -90,10 +90,10 @@ export class FormControlStateDirective extends Unsubscribable implements AfterVi
 			: false;
 
 		const mandatory = 'control-mandatory';
-		if (this.isMandatory() && this.ngControl.value) {
-			this.renderer.removeClass(this.inputContainer, mandatory);
-		} else {
+		if (this.isMandatory() && !this.ngControl.value) {
 			this.renderer.addClass(this.inputContainer, mandatory);
+		} else {
+			this.renderer.removeClass(this.inputContainer, mandatory);
 		}
 	}
 }
