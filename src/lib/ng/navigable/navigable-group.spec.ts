@@ -263,7 +263,7 @@ describe('NavigableGroup', () => {
 		describe('while holding CTRL & SHIFT key', () => {
 			it('should *move* navigable item DOWN', () => {
 				navigables[0].active = true;
-				let model = testComponent.models[0];
+				const model = testComponent.models[0];
 
 				// FIXME: refactor below when https://github.com/ariya/phantomjs/issues/11289
 				navigables[0].onKeyDown({
@@ -363,7 +363,7 @@ describe('NavigableGroup', () => {
 		describe('while holding CTRL & SHIFT key', () => {
 			it('should *move* navigable item UP', () => {
 				navigables[1].active = true;
-				let model = testComponent.models[1];
+				const model = testComponent.models[1];
 
 				// FIXME: refactor below when https://github.com/ariya/phantomjs/issues/11289
 				navigables[1].onKeyDown({

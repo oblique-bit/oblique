@@ -82,12 +82,12 @@ describe('NavTreeComponent', () => {
 	});
 
 	it('should create 4 navigation trees after recursive rendering', () => {
-		let navTrees = fixture.debugElement.queryAll(By.css('ul'));
+		const navTrees = fixture.debugElement.queryAll(By.css('ul'));
 		expect(navTrees.length).toBe(4);
 	});
 
 	it('should create 12 navigation items after recursive rendering', () => {
-		let navItems = fixture.debugElement.queryAll(By.css('li.nav-item'));
+		const navItems = fixture.debugElement.queryAll(By.css('li.nav-item'));
 		expect(navItems.length).toBe(12);
 	});
 
@@ -95,7 +95,7 @@ describe('NavTreeComponent', () => {
 		testComponent.items.push(new NavTreeItemModel({id: 'X', label: 'X - Label'}));
 		fixture.detectChanges();
 
-		let navItems = fixture.debugElement.queryAll(By.css('li.nav-item'));
+		const navItems = fixture.debugElement.queryAll(By.css('li.nav-item'));
 		expect(navItems.length).toBe(13);
 	});
 
@@ -103,7 +103,7 @@ describe('NavTreeComponent', () => {
 		testComponent.variant = 'nav-custom';
 		fixture.detectChanges();
 
-		let navTrees = fixture.debugElement.queryAll(By.css('.nav-tree.nav-custom'));
+		const navTrees = fixture.debugElement.queryAll(By.css('.nav-tree.nav-custom'));
 		expect(navTrees.length).toBe(4);
 	});
 
@@ -115,27 +115,27 @@ describe('NavTreeComponent', () => {
 	// });
 
 	it('should custom format item labels', () => {
-		let suffix = '[custom]';
+		const suffix = '[custom]';
 		component.labelFormatter = (item: NavTreeItemModel) => `${item.label} - ${suffix}`;
 		fixture.detectChanges();
-		let firstNavItem = fixture.debugElement.query(By.css('li.nav-item'));
+		const firstNavItem = fixture.debugElement.query(By.css('li.nav-item'));
 		expect(firstNavItem.nativeElement.innerHTML).toContain(suffix);
 	});
 
 	it('should add URL fragment to `href` attribute', () => {
-		let fragment = '#' + testComponent.items[0].fragment;
+		const fragment = '#' + testComponent.items[0].fragment;
 
 		// [routerLink] directive adds `[href]` attribute to nav item links:
-		let firstNavItem = fixture.debugElement.query(By.css('a.nav-link'));
+		const firstNavItem = fixture.debugElement.query(By.css('a.nav-link'));
 		expect(firstNavItem.nativeElement.attributes.getNamedItem('href')).toBeDefined();
 		expect(firstNavItem.nativeElement.attributes.getNamedItem('href').value).toContain(fragment);
 	});
 
 	it('should add URL query params to `href` attribute', () => {
-		let urlQueryParams = 'foo=' + testComponent.items[0].queryParams.foo;
+		const urlQueryParams = 'foo=' + testComponent.items[0].queryParams.foo;
 
 		// [routerLink] directive adds `[href]` attribute to nav item links:
-		let firstNavItem = fixture.debugElement.query(By.css('a.nav-link'));
+		const firstNavItem = fixture.debugElement.query(By.css('a.nav-link'));
 		expect(firstNavItem.nativeElement.attributes.getNamedItem('href')).toBeDefined();
 		expect(firstNavItem.nativeElement.attributes.getNamedItem('href').value).toContain(urlQueryParams);
 	});
@@ -145,7 +145,7 @@ describe('NavTreeComponent', () => {
 		fixture.detectChanges();
 
 		// All items containing the string '2' and their respective parents should be visible:
-		let navItems = fixture.debugElement.queryAll(By.css('li.nav-item'));
+		const navItems = fixture.debugElement.queryAll(By.css('li.nav-item'));
 		expect(navItems.length).toBe(7);
 	});
 
@@ -156,7 +156,7 @@ describe('NavTreeComponent', () => {
 		fixture.detectChanges();
 
 		// All items containing the string 'C' and their respective parents should be visible:
-		let navItems = fixture.debugElement.queryAll(By.css('li.nav-item'));
+		const navItems = fixture.debugElement.queryAll(By.css('li.nav-item'));
 		expect(navItems.length).toBe(4);
 
 		// ...and filter patterns highlighted:
@@ -169,7 +169,7 @@ describe('NavTreeComponent', () => {
 		component.collapseAll();
 		fixture.detectChanges();
 
-		let collapsed = fixture.debugElement.queryAll(By.css('.collapsed'));
+		const collapsed = fixture.debugElement.queryAll(By.css('.collapsed'));
 		expect(collapsed.length).toBe(3);
 	});
 
@@ -179,7 +179,7 @@ describe('NavTreeComponent', () => {
 		component.expandAll();
 		fixture.detectChanges();
 
-		let collapsed = fixture.debugElement.queryAll(By.css('.collapsed'));
+		const collapsed = fixture.debugElement.queryAll(By.css('.collapsed'));
 		expect(collapsed.length).toBe(0);
 	});
 });

@@ -9,7 +9,7 @@ import {TranslateService} from '@ngx-translate/core';
 
 describe('LayoutControls', () => {
 	const mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use']);
-	let mockLayoutApplicationService = {
+	const mockLayoutApplicationService = {
 		userLang: 'en',
 		useLang: jasmine.createSpy('useLang')
 	};

@@ -17,21 +17,21 @@ describe('MultiselectSearchPipe', () => {
 		});
 
 		it('should keep option if it\'s equal to the searchString ', () => {
-			let filteredOptions = pipe.transform(stringOptions, 'Bar');
+			const filteredOptions = pipe.transform(stringOptions, 'Bar');
 
 			expect(filteredOptions.length).toBe(1);
 			expect(filteredOptions).toContain('Bar');
 		});
 
 		it('should filter case insensitive', () => {
-			let filteredOptions = pipe.transform(stringOptions, 'bAr');
+			const filteredOptions = pipe.transform(stringOptions, 'bAr');
 
 			expect(filteredOptions.length).toBe(1);
 			expect(filteredOptions).toContain('Bar');
 		});
 
 		it('should filter every matched option', () => {
-			let filteredOptions = pipe.transform(stringOptions, 'ba');
+			const filteredOptions = pipe.transform(stringOptions, 'ba');
 
 			expect(filteredOptions.length).toBe(2);
 			expect(filteredOptions).toContain('Bar');
@@ -51,21 +51,21 @@ describe('MultiselectSearchPipe', () => {
 		});
 
 		it('should keep option if it\'s equal to the searchString ', () => {
-			let filteredOptions = pipe.transform(objectOptions, 'Bar');
+			const filteredOptions = pipe.transform(objectOptions, 'Bar');
 
 			expect(filteredOptions.length).toBe(1);
 			expect(filteredOptions).toContain(objectOptions[1]);
 		});
 
 		it('should filter case insensitive', () => {
-			let filteredOptions = pipe.transform(objectOptions, 'bAr');
+			const filteredOptions = pipe.transform(objectOptions, 'bAr');
 
 			expect(filteredOptions.length).toBe(1);
 			expect(filteredOptions).toContain(objectOptions[1]);
 		});
 
 		it('should filter every matched option', () => {
-			let filteredOptions = pipe.transform(objectOptions, 'Ba');
+			const filteredOptions = pipe.transform(objectOptions, 'Ba');
 
 			expect(filteredOptions.length).toBe(2);
 			expect(filteredOptions).toContain(objectOptions[1]);

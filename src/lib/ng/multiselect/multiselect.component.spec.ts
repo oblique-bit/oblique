@@ -58,7 +58,7 @@ describe('MultiselectComponent', () => {
 	describe('toggleDropdown', () => {
 		it('should be triggered by a click on the .multiselect-toggle button', () => {
 			spyOn(component, 'toggleDropdown').and.callThrough();
-			let button = fixture.debugElement.query(By.css('.multiselect-toggle'));
+			const button = fixture.debugElement.query(By.css('.multiselect-toggle'));
 
 			button.nativeElement.click();
 
@@ -113,7 +113,7 @@ describe('MultiselectComponent', () => {
 			component.isVisible = true;
 			fixture.detectChanges();
 
-			let buttons = fixture.debugElement.queryAll(By.css('.dropdown-item'));
+			const buttons = fixture.debugElement.queryAll(By.css('.dropdown-item'));
 
 			buttons[0].nativeElement.click();
 
@@ -259,7 +259,7 @@ describe('MultiselectComponent', () => {
 			component.isVisible = true;
 			fixture.detectChanges();
 
-			let button = fixture.debugElement.query(By.css('button.multiselect-control-check'));
+			const button = fixture.debugElement.query(By.css('button.multiselect-control-check'));
 
 			button.nativeElement.click();
 
@@ -299,7 +299,7 @@ describe('MultiselectComponent', () => {
 			component.isVisible = true;
 			fixture.detectChanges();
 
-			let button = fixture.debugElement.query(By.css('button.multiselect-control-uncheck'));
+			const button = fixture.debugElement.query(By.css('button.multiselect-control-uncheck'));
 
 			button.nativeElement.click();
 
@@ -332,7 +332,7 @@ describe('MultiselectComponent', () => {
 		});
 
 		it('should enable the `.dropup` class', () => {
-			let dropup = fixture.debugElement.query(By.css('.dropup'));
+			const dropup = fixture.debugElement.query(By.css('.dropup'));
 			expect(dropup).toBeDefined();
 		});
 	});
