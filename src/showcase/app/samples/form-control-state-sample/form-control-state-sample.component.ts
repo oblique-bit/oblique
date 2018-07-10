@@ -18,7 +18,7 @@ import {NotificationService} from '../../../../lib';
 export class FormControlStateSampleComponent {
 	formData: FormGroup;
 
-	constructor(private notificationService: NotificationService, formBuilder: FormBuilder) {
+	constructor(private readonly notificationService: NotificationService, formBuilder: FormBuilder) {
 		this.formData = formBuilder.group({
 			numberOptional: '',
 			numberMandatory: ['', Validators.required],

@@ -24,7 +24,7 @@ export class NavTreeSampleComponent extends Unsubscribable implements OnInit {
 		}
 	};
 
-	constructor(private route: ActivatedRoute) {
+	constructor(private readonly route: ActivatedRoute) {
 		super();
 	}
 
@@ -55,7 +55,7 @@ export class NavTreeSampleComponent extends Unsubscribable implements OnInit {
 export class NavTreeDetailSampleComponent extends Unsubscribable implements OnInit {
 	routing: string;
 
-	constructor(private route: ActivatedRoute, private router: Router) {
+	constructor(private readonly route: ActivatedRoute, private readonly router: Router) {
 		super();
 	}
 

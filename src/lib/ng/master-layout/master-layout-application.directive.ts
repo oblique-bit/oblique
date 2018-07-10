@@ -14,14 +14,14 @@ export class MasterLayoutApplicationDirective extends Unsubscribable {
 	@HostBinding('class.no-navigation') noNavigation;
 	@HostBinding('class.application-fixed') applicationFixed;
 
-	private defaultHasCover;
-	private defaultNoNavigation;
-	private defaultApplicationFixed;
+	private readonly defaultHasCover;
+	private readonly defaultNoNavigation;
+	private readonly defaultApplicationFixed;
 
-	constructor(private layoutApplicationService: MasterLayoutApplicationService,
-				private elementRef: ElementRef,
-				private router: Router,
-				private activatedRoute: ActivatedRoute) {
+	constructor(private readonly layoutApplicationService: MasterLayoutApplicationService,
+				private readonly elementRef: ElementRef,
+				private readonly router: Router,
+				private readonly activatedRoute: ActivatedRoute) {
 		super();
 		layoutApplicationService.applicationDirective = this; // FIXME: refactor this to avoid circular coupling
 

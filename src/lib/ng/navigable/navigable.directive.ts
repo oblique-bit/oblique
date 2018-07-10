@@ -99,7 +99,7 @@ export class NavigableDirective implements AfterViewInit {
 
 	private activatedValue = false;
 
-	constructor(private element: ElementRef) {
+	constructor(private readonly element: ElementRef) {
 	}
 
 	ngAfterViewInit(): void {

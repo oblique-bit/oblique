@@ -17,10 +17,10 @@ export class ErrorMessagesComponent extends Unsubscribable implements AfterViewI
 
 	errors: {key: string, params: {[param: string]: any}}[] = [];
 
-	private form: NgForm | FormGroupDirective;
+	private readonly form: NgForm | FormGroupDirective;
 
-	constructor(private errorMessagesService: ErrorMessagesService,
-				@Optional() private formGroup: FormControlStateDirective,
+	constructor(private readonly errorMessagesService: ErrorMessagesService,
+				@Optional() private readonly formGroup: FormControlStateDirective,
 				@Optional() ngForm: NgForm,
 				@Optional() formGroupDirective: FormGroupDirective) {
 		super();

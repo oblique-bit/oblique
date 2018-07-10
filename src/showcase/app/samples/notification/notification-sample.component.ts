@@ -34,7 +34,7 @@ export class NotificationSampleComponent {
 	sticky = false;
 	timeout = 2500;
 
-	constructor(private notificationService: NotificationService) {
+	constructor(private readonly notificationService: NotificationService) {
 		this.appChannel = notificationService.config.channel;
 	}
 

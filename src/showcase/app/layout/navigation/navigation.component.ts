@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
 })
 export class LayoutNavigationComponent {
 
-	constructor(private router: Router) {
+	constructor(private readonly router: Router) {
 	}
 
 	isActive(url) {

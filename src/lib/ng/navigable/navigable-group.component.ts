@@ -139,9 +139,9 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 	selectionOnChange = new EventEmitter();
 
 	private selectionValue: any[];
-	private differ: IterableDiffer<NavigableDirective> = null;
+	private readonly differ: IterableDiffer<NavigableDirective> = null;
 
-	constructor(private differs: IterableDiffers) {
+	constructor(private readonly differs: IterableDiffers) {
 		super();
 		this.differ = this.differs.find([]).create(null);
 	}

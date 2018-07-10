@@ -10,8 +10,8 @@ export class SchemaRequiredDirective implements OnInit {
 	@HostBinding('attr.required') required: boolean;
 	@Input('name') name: string;
 
-	constructor(@Optional() private schemaValidation: SchemaValidationDirective,
-				@Optional() private modelGroup: NgModelGroup) {
+	constructor(@Optional() private readonly schemaValidation: SchemaValidationDirective,
+				@Optional() private readonly modelGroup: NgModelGroup) {
 	}
 
 	ngOnInit() {

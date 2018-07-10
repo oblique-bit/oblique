@@ -47,7 +47,7 @@ export class SpinnerComponent extends Unsubscribable implements OnInit {
 	// Animation state:
 	$state = 'out';
 
-	constructor(private spinnerService: SpinnerService, private element: ElementRef) {
+	constructor(private readonly spinnerService: SpinnerService, private readonly element: ElementRef) {
 		super();
 		spinnerService.events.pipe(takeUntil(this.unsubscribe))
 			.subscribe((event: SpinnerEvent) => {

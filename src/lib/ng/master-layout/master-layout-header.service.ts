@@ -15,7 +15,7 @@ export class MasterLayoutHeaderService extends Unsubscribable {
 	private openValue = false;
 	private mediumValue = false;
 
-	constructor(private config: ScrollingConfig) {
+	constructor(private readonly config: ScrollingConfig) {
 		super();
 
 		if (config.transitions) {

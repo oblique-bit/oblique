@@ -9,7 +9,7 @@ import {Unsubscribable} from '../unsubscribe';
 })
 export class NavigatorComponent extends Unsubscribable {
 
-	constructor(private router: Router, private route: ActivatedRoute) {
+	constructor(private readonly router: Router, private readonly route: ActivatedRoute) {
 		super();
 	}
 

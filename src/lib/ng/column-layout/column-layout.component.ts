@@ -39,10 +39,10 @@ export class ColumnLayoutComponent {
 	right = true;
 
 	@ViewChild('columnLeft')
-	private columnLeft: ColumnPanelDirective;
+	private readonly columnLeft: ColumnPanelDirective;
 
 	@ViewChild('columnRight')
-	private columnRight: ColumnPanelDirective;
+	private readonly columnRight: ColumnPanelDirective;
 
 	toggleLeft() {
 		if (this.columnLeft) {

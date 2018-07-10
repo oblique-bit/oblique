@@ -13,9 +13,9 @@ export class MasterLayoutFooterDirective extends Unsubscribable {
 	@HostBinding('class.application-footer-sm')
 	public footerSM = false;
 
-	constructor(private footerService: MasterLayoutFooterService,
-				private elementRef: ElementRef,
-				@Inject(DOCUMENT) private document: any) {
+	constructor(private readonly footerService: MasterLayoutFooterService,
+				private readonly elementRef: ElementRef,
+				@Inject(DOCUMENT) private readonly document: any) {
 		super();
 
 		this.footerService.small = this.elementRef.nativeElement.classList.contains('application-footer-sm');

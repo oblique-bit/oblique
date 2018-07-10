@@ -16,7 +16,7 @@ export class MasterLayoutNavigationDirective extends Unsubscribable {
 	@ContentChildren(MasterLayoutNavigationItemDirective, {descendants: true})
 	$items: QueryList<MasterLayoutNavigationItemDirective>;
 
-	constructor(private headerService: MasterLayoutHeaderService) {
+	constructor(private readonly headerService: MasterLayoutHeaderService) {
 		super();
 		// Subscribe to header changes:
 		this.headerService.openChange

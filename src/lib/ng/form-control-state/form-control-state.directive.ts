@@ -26,8 +26,8 @@ export class FormControlStateDirective extends Unsubscribable implements AfterVi
 
 	@ContentChild(NgControl) ngControl: NgControl;
 
-	private form: NgForm | FormGroupDirective;
-	private group: NgModelGroup | FormGroupName;
+	private readonly form: NgForm | FormGroupDirective;
+	private readonly group: NgModelGroup | FormGroupName;
 	private inputContainer;
 	private inputElement;
 
@@ -35,8 +35,8 @@ export class FormControlStateDirective extends Unsubscribable implements AfterVi
 				@Optional() formGroupDirective: FormGroupDirective,
 				@Optional() formGroupName: FormGroupName,
 				@Optional() modelGroup: NgModelGroup,
-				private elementRef: ElementRef,
-				private renderer: Renderer2) {
+				private readonly elementRef: ElementRef,
+				private readonly renderer: Renderer2) {
 		super();
 		this.form = ngForm || formGroupDirective;
 		this.group = modelGroup || formGroupName;

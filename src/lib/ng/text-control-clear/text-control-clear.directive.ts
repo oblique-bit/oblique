@@ -18,7 +18,7 @@ export class TextControlClearDirective {
 	@HostBinding('class.text-control-clear')
 	cssClass = true;
 
-	constructor(private element: ElementRef) {
+	constructor(private readonly element: ElementRef) {
 		// Ensure parent gets ready to render the text clear control:
 		const parent = this.element.nativeElement.parentElement;
 		if (parent) {

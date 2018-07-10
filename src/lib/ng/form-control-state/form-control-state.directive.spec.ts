@@ -42,7 +42,7 @@ class ReactiveTestComponent implements OnInit {
 	@ViewChild(FormControlStateDirective)
 	formControlState: FormControlStateDirective;
 
-	constructor(private formBuilder: FormBuilder) {
+	constructor(private readonly formBuilder: FormBuilder) {
 	}
 
 	ngOnInit() {

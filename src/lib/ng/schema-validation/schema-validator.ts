@@ -12,8 +12,8 @@ export class SchemaValidateDirective implements AfterViewInit, Validator {
 
 	private propertyName: string;
 
-	constructor(private schemaDirective: SchemaValidationDirective,
-				private injector: Injector) {
+	constructor(private readonly schemaDirective: SchemaValidationDirective,
+				private readonly injector: Injector) {
 	}
 
 	ngAfterViewInit(): void {

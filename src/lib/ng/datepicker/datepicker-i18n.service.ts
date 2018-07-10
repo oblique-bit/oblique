@@ -52,7 +52,7 @@ const I18N_VALUES = {
 
 @Injectable()
 export class DatepickerI18nService extends NgbDatepickerI18n {
-	constructor(private translateService: TranslateService) {
+	constructor(private readonly translateService: TranslateService) {
 		super();
 	}
 

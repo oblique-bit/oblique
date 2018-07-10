@@ -11,7 +11,7 @@ export class NumberFormatDirective implements OnInit {
 	private changed = false;
 	private focused = false;
 
-	constructor(private ngControl: NgControl, private el: ElementRef) {
+	constructor(private readonly ngControl: NgControl, private readonly el: ElementRef) {
 	}
 
 	@HostListener('blur')

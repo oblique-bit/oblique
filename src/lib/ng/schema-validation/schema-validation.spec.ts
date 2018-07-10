@@ -58,7 +58,7 @@ describe('SchemaValidation', () => {
 		sampleForm: FormGroup;
 		validator;
 
-		constructor(private formBuilder: FormBuilder, private schemaValidationService: SchemaValidationService) {
+		constructor(private readonly formBuilder: FormBuilder, private readonly schemaValidationService: SchemaValidationService) {
 			this.validator = schemaValidationService.compileSchema(schema);
 		}
 

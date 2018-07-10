@@ -29,7 +29,7 @@ export class MasterLayoutNavigationItemDirective extends Unsubscribable implemen
 	$items: QueryList<MasterLayoutNavigationItemDirective>;
 
 	constructor(public elementRef: ElementRef,
-				private headerService: MasterLayoutHeaderService) {
+				private readonly headerService: MasterLayoutHeaderService) {
 		super();
 
 		// Subscribe to header changes:

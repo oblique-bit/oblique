@@ -14,7 +14,7 @@ export class MasterLayoutNavigationMenuDirective extends Unsubscribable implemen
 	@ContentChildren(MasterLayoutNavigationMenuDirective, {descendants: true})
 	$menus: QueryList<MasterLayoutNavigationMenuDirective>;
 
-	constructor(private element: ElementRef) {
+	constructor(private readonly element: ElementRef) {
 		super();
 	}
 

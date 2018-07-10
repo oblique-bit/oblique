@@ -16,11 +16,11 @@ export class MasterLayoutHeaderDirective extends Unsubscribable implements After
 	@HostBinding('class.application-header-md')
 	private headerMD = false;
 
-	private body: HTMLBodyElement;
+	private readonly body: HTMLBodyElement;
 
-	constructor(private headerService: MasterLayoutHeaderService,
-				private elementRef: ElementRef,
-				@Inject(DOCUMENT) private document: any) {
+	constructor(private readonly headerService: MasterLayoutHeaderService,
+				private readonly elementRef: ElementRef,
+				@Inject(DOCUMENT) private readonly document: any) {
 		super();
 
 		this.body = this.document.querySelector('body');

@@ -6,7 +6,7 @@ import {NgbDateParserFormatter, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap'
 })
 export class DateFormatterPipe implements PipeTransform {
 
-	constructor(private parserFormatter: NgbDateParserFormatter) {
+	constructor(private readonly parserFormatter: NgbDateParserFormatter) {
 	}
 
 	transform(value: NgbDateStruct): string {
