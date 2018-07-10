@@ -40,7 +40,7 @@ export class NotificationSampleComponent {
 
 	send() {
 		// NotificationConfig is optional:
-		let config = {
+		const config = {
 			channel: this.channel,
 			sticky: this.variant === NotificationType.ERROR || this.sticky,
 			timeout: this.timeout

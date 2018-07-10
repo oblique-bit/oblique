@@ -1,4 +1,13 @@
-import {AfterViewInit, ContentChild, Directive, ElementRef, HostBinding, Input, Optional, Renderer2} from '@angular/core';
+import {
+	AfterViewInit,
+	ContentChild,
+	Directive,
+	ElementRef,
+	HostBinding,
+	Input,
+	Optional,
+	Renderer2
+} from '@angular/core';
 import {FormGroupDirective, FormGroupName, NgControl, NgForm, NgModelGroup} from '@angular/forms';
 import {merge} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -80,14 +89,11 @@ export class FormControlStateDirective extends Unsubscribable implements AfterVi
 			? this.ngControl.invalid
 			: false;
 
-		if (this.isMandatory()) {
-			if (this.ngControl.value) {
-				this.renderer.removeClass(this.inputContainer, 'control-mandatory');
-			} else {
-				this.renderer.addClass(this.inputContainer, 'control-mandatory');
-			}
+		const mandatory = 'control-mandatory';
+		if (this.isMandatory() && this.ngControl.value) {
+			this.renderer.removeClass(this.inputContainer, mandatory);
 		} else {
-			this.renderer.removeClass(this.inputContainer, 'control-mandatory');
+			this.renderer.addClass(this.inputContainer, mandatory);
 		}
 	}
 }

@@ -20,7 +20,7 @@ export class TextControlClearDirective {
 
 	constructor(private element: ElementRef) {
 		// Ensure parent gets ready to render the text clear control:
-		let parent = this.element.nativeElement.parentElement;
+		const parent = this.element.nativeElement.parentElement;
 		if (parent) {
 			parent.classList.add('text-control');
 		}

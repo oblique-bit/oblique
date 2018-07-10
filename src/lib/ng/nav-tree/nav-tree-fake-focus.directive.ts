@@ -83,7 +83,7 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 	}
 
 	public fakeFocus(element: ElementRef): void {
-		let link = this.findLink(element);
+		const link = this.findLink(element);
 		if (!link || !this.element.nativeElement.contains(link.nativeElement)) {
 			throw new Error(`Unable to fake focus element '${element}'. No valid DOM element or no valid child.`);
 		}
@@ -116,7 +116,7 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 	}
 
 	private initEventListeners() {
-		let debouncer: Subject<any> = new Subject<any>();
+		const debouncer: Subject<any> = new Subject<any>();
 		debouncer.pipe(throttleTime(NavTreeFakeFocusDirective.KEY_DOWN_DEBOUNCE_MILLIS)).subscribe(
 			(event) => this.onKeyDown(event)
 		);
@@ -140,7 +140,7 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 
 	private onBlur(reset = false) {
 		if (this.focusedElement) {
-			let link = this.findLink(this.focusedElement);
+			const link = this.findLink(this.focusedElement);
 
 			// Ensure we don't remove the active state from non-"fake-focus" links:
 			if (link.nativeElement.classList.contains(NavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS)) {
@@ -160,7 +160,7 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 	}
 
 	private accept() {
-		let link = this.findLink();
+		const link = this.findLink();
 		if (link && link.nativeElement) {
 			this.renderer.removeClass(link.nativeElement, NavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS);
 			this.focusedElement = null;
@@ -183,7 +183,7 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 	}
 
 	private focusNext() {
-		let elements = this.extractAllListElements();
+		const elements = this.extractAllListElements();
 		let nextIndex = 0;
 		if (this.focusedElement) {
 			nextIndex = elements.indexOf(this.focusedElement.nativeElement) + 1;
@@ -195,7 +195,7 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 		// Ensure cursor does not move back in the text field:
 		event.preventDefault();
 
-		let elements = this.extractAllListElements();
+		const elements = this.extractAllListElements();
 		let previousIndex = -1;
 		if (this.focusedElement) {
 			previousIndex = elements.indexOf(this.focusedElement.nativeElement) - 1;
@@ -208,7 +208,7 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 		if (!element || !element.nativeElement) {
 			return null;
 		}
-		let link = element.nativeElement.querySelector(NavTreeFakeFocusDirective.CSS_SELECTORS.ITEM_LINK);
+		const link = element.nativeElement.querySelector(NavTreeFakeFocusDirective.CSS_SELECTORS.ITEM_LINK);
 		return link ? new ElementRef(link) : null;
 	}
 
@@ -217,7 +217,7 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 	}
 
 	private ensureInView(): void {
-		let link = this.findLink();
+		const link = this.findLink();
 		if (link && link.nativeElement) {
 			link.nativeElement.scrollIntoView(NavTreeFakeFocusDirective.SCROLL_OPTIONS);
 		}

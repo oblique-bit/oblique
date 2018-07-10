@@ -2,7 +2,7 @@ export function draft06(target, propertyKey: string, descriptor: PropertyDescrip
 	const oldValue = descriptor.value;
 
 	descriptor.value = function() {
-		let schema = JSON.parse(JSON.stringify(arguments[0]));	// deep clone
+		const schema = JSON.parse(JSON.stringify(arguments[0]));	// deep clone
 		convert(schema);
 		return oldValue.call(this, schema);
 	};
@@ -16,7 +16,7 @@ export function draft06(target, propertyKey: string, descriptor: PropertyDescrip
 
 		if (schema.properties) {
 			Object.keys(schema.properties).forEach((propertyName: string) => {
-				let property = schema.properties[propertyName];
+				const property = schema.properties[propertyName];
 				arrayifyRequired(property, propertyName, schema);
 				convertAnyIntoObject(property);
 				if (property.items || property.properties) {

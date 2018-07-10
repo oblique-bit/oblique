@@ -159,7 +159,7 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 		this.navigables.changes
 			.pipe(takeUntil(this.unsubscribe))
 			.subscribe((changes: QueryList<NavigableDirective>) => {
-				let diff = this.differ.diff(changes.toArray());
+				const diff = this.differ.diff(changes.toArray());
 				diff.forEachAddedItem((record: IterableChangeRecord<NavigableDirective>) => {
 					console.log(record.item);
 					this.registerNavigableEvents(record.item);
@@ -169,7 +169,7 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 
 	// Public API ---------------------
 	public add(model: any) {
-		let navigableToSelect = this.navigables.find((navigable: NavigableDirective) => {
+		const navigableToSelect = this.navigables.find((navigable: NavigableDirective) => {
 			return navigable.model === model;
 		});
 
@@ -179,7 +179,7 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 	}
 
 	public remove(model: any) {
-		let navigableToRemove = this.navigables.find((navigable: NavigableDirective) => {
+		const navigableToRemove = this.navigables.find((navigable: NavigableDirective) => {
 			return navigable.model === model;
 		});
 
@@ -258,15 +258,15 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 			.pipe(takeUntil(this.unsubscribe))
 			.subscribe(($event: NavigableOnMoveEvent) => {
 				if (!$event.prevented) {
-					let from = this.indexOf(navigable);
+					const from = this.indexOf(navigable);
 
 					if ($event.keyCode === NavigableDirective.KEYS.UP) {
-						let to = from - 1;
+						const to = from - 1;
 						if (to >= 0) {
 							this.items.splice(to, 0, this.items.splice(from, 1)[0]);
 						}
 					} else if ($event.keyCode === NavigableDirective.KEYS.DOWN) {
-						let to = from + 1;
+						const to = from + 1;
 						if (to < this.items.length) {
 							this.items.splice(to, 0, this.items.splice(from, 1)[0]);
 						}

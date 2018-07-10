@@ -104,9 +104,9 @@ export class NavTreeComponent extends Unsubscribable {
 
 	@Input()
 	patternMatcher(item: NavTreeItemModel, pattern: string): boolean {
-		let match = new RegExp(pattern, 'gi').test(item.label);
-		let childMatch = (item.items || []).some((subItem) => {
-			let subMatch = this.patternMatcher(subItem, pattern);
+		const match = new RegExp(pattern, 'gi').test(item.label);
+		const childMatch = (item.items || []).some((subItem) => {
+			const subMatch = this.patternMatcher(subItem, pattern);
 			if (subMatch) {
 				// Ensure parent item is not collapsed:
 				item.collapsed = false;

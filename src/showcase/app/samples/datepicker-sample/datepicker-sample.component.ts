@@ -19,7 +19,7 @@ export class DatepickerSampleComponent {
 	@ViewChild(NgForm) form: NgForm;
 
 	constructor() {
-		let today = new Date();
+		const today = new Date();
 		this.minDate = DatepickerSampleComponent.dateToNgbDateStruct(new Date(new Date().setDate(today.getDate() - 7)));
 		this.maxDate = DatepickerSampleComponent.dateToNgbDateStruct(new Date(new Date().setDate(today.getDate() + 7)));
 	}
@@ -30,13 +30,13 @@ export class DatepickerSampleComponent {
 
 	min() {
 		//TODO should we set the control dirty?
-		let underMinDate = DatepickerSampleComponent.ngbDateStructToDate(this.minDate);
+		const underMinDate = DatepickerSampleComponent.ngbDateStructToDate(this.minDate);
 		underMinDate.setDate(underMinDate.getDate() - 1);
 		this.model.minMax = DatepickerSampleComponent.dateToNgbDateStruct(underMinDate);
 	}
 
 	max() {
-		let overMaxDate = DatepickerSampleComponent.ngbDateStructToDate(this.maxDate);
+		const overMaxDate = DatepickerSampleComponent.ngbDateStructToDate(this.maxDate);
 		overMaxDate.setDate(overMaxDate.getDate() + 1);
 		console.log(this.maxDate);
 		this.model.minMax = DatepickerSampleComponent.dateToNgbDateStruct(overMaxDate);
