@@ -10,8 +10,7 @@ import {first} from 'rxjs/operators';
 })
 export class HttpInterceptorSampleComponent {
 
-	public API_URL = 'https://jsonplaceholder.typicode.com';
-
+	static readonly API_URL = 'https://jsonplaceholder.typicode.com';
 	logs = [];
 	notification = {
 		active: true,
@@ -28,18 +27,18 @@ export class HttpInterceptorSampleComponent {
 				private http: HttpClient,
 				private config: ObliqueHttpInterceptorConfig) {
 		// Redefine default API URL for showcase sample only:
-		this.config.api.url = this.API_URL;
+		this.config.api.url = HttpInterceptorSampleComponent.API_URL;
 	}
 
-	request200():void {
-		const url = this.API_URL + '/users';
+	request200(): void {
+		const url = HttpInterceptorSampleComponent.API_URL + '/users';
 		this.log(`GET ${url}, expecting: 200 OK...`);
 		this.configInterceptor();
 		this.sendRequest(url);
 	}
 
 	request404(): void {
-		const url = this.API_URL + 'unknown';
+		const url = HttpInterceptorSampleComponent.API_URL + '/unknown';
 		this.log(`GET ${url}, expecting: 404 NOT FOUND...`);
 		this.configInterceptor();
 		this.sendRequest(url);

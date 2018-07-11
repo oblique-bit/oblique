@@ -1,15 +1,7 @@
 import {Injectable} from '@angular/core';
-import {
-	HttpErrorResponse,
-	HttpEvent,
-	HttpHandler,
-	HttpInterceptor,
-	HttpRequest,
-	HttpResponse
-} from '@angular/common/http';
-
+import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {finalize, tap} from 'rxjs/internal/operators';
+import {finalize, tap} from 'rxjs/operators';
 import {NotificationConfig, NotificationService, NotificationType} from '../notification';
 import {SpinnerService} from '../spinner';
 import {ObliqueHttpInterceptorConfig} from './oblique-http-interceptor.config';
@@ -34,20 +26,16 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 	}
 
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-		let requestStatus: string;
 		const obliqueRequest = this.broadcast();
 		this.activateSpinner(obliqueRequest.spinner, request.url);
 		return next.handle(request).pipe(
 			tap(
-				(event: HttpEvent<any>) => {
-					requestStatus = event instanceof HttpResponse ? 'succeeded' : 'Unknown response event?';
-				},
+				undefined,
 				error => {
 					if (error instanceof HttpErrorResponse) {
-						requestStatus = 'failed';
 						this.notify(obliqueRequest.notification, error);
 					} else {
-						requestStatus = 'Unknown response error?';
+						this.notificationService.error('i18n.error.general');
 					}
 				}
 			),
