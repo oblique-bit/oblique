@@ -10,28 +10,19 @@ import {
 
 import {Observable} from 'rxjs';
 import {finalize, tap} from 'rxjs/internal/operators';
-import {NotificationService} from '../notification';
-import {ObliqueHttpInterceptorConfig} from './oblique-http-interceptor.config';
+import {NotificationConfig, NotificationService, NotificationType} from '../notification';
 import {SpinnerService} from '../spinner';
+import {ObliqueHttpInterceptorConfig} from './oblique-http-interceptor.config';
 
-/**
- * @param {isSilent} boolean
- * Checks if the current request should be silenced in case of response error, i.e. no notification will be shown
- * For example, an application may try to authenticate user during application startup
- * but no error should be notified if we can't authenticate the user.
- *
- * @param {isBackground} boolean
- * Checks if the current request should run in the background, i.e. no spinner will be shown.
- * For example, a change on a form control may trigger an asynchronous request to fetch data for another dependent form control.
- * @returns {boolean}
- */
 export interface ObliqueRequest {
-	isSilent: boolean;
-	isBackground: boolean;
-}
-
-export interface ObliqueResponse {
-	defaultPrevented: boolean;
+	notification: {
+		active: boolean;
+		severity: NotificationType;
+		title: string;
+		text: string;
+		config: NotificationConfig;
+	};
+	spinner: boolean;
 }
 
 @Injectable()
@@ -45,8 +36,8 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		const started = Date.now();
 		let requestStatus: string;
-
-		const obliqueRequest = this.activateSpinner(request.url);
+		const obliqueRequest = this.broadcast();
+		this.activateSpinner(obliqueRequest.spinner, request.url);
 		return next.handle(request).pipe(
 			tap(
 				(event: HttpEvent<any>) => {
@@ -55,7 +46,7 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 				error => {
 					if (error instanceof HttpErrorResponse) {
 						requestStatus = 'failed';
-						this.notify(obliqueRequest, error);
+						this.notify(obliqueRequest.notification, error);
 					} else {
 						requestStatus = 'Unknown response error?';
 					}
@@ -63,7 +54,7 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 			),
 			// Log when response observable either completes or errors
 			finalize(() => {
-				this.deactivateSpinner(obliqueRequest, request.url);
+				this.deactivateSpinner(obliqueRequest.spinner, request.url);
 				const elapsed = Date.now() - started;
 				const msg = `${request.method} "${request.urlWithParams}" ${requestStatus} in ${elapsed} ms.`;
 				this.notificationService.info(msg);
@@ -71,28 +62,38 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 		);
 	}
 
-	private activateSpinner(url: string): ObliqueRequest {
-		const evt: ObliqueRequest = {isSilent: false, isBackground: false};
+	private broadcast(): ObliqueRequest {
+		const evt: ObliqueRequest = {
+			notification: this.config.api.notification,
+			spinner: this.config.api.spinner
+		};
 		this.config.requested.emit(evt);
-		if (!evt.isSilent && !evt.isBackground && this.isApiCall(url)) {
-			console.log('activate spinner');
-			this.spinner.activate();
-		}
+
 		return evt;
 	}
 
-	private deactivateSpinner(evt: ObliqueRequest, url: string): void {
-		if (!evt.isSilent && !evt.isBackground && this.isApiCall(url)) {
+	private activateSpinner(isSpinnerActive: boolean, url: string): void {
+		if (isSpinnerActive && this.isApiCall(url)) {
+			console.log('activate spinner');
+			this.spinner.activate();
+		}
+	}
+
+	private deactivateSpinner(isSpinnerActive: boolean, url: string): void {
+		if (isSpinnerActive && this.isApiCall(url)) {
 			console.log('deactivate spinner');
 			this.spinner.deactivate();
 		}
 	}
 
-	private notify(obliqueRequest: ObliqueRequest, error: HttpErrorResponse): void {
-		const evt: ObliqueResponse = {defaultPrevented: false};
-		this.config.responded.emit(evt);
-		if (!evt.defaultPrevented && (!obliqueRequest.isSilent || error.status >= 500 || error.status === 0)) {
-			this.notificationService.error('i18n.error.http.status.' + error.status, error.statusText);
+	private notify(notification: ObliqueRequest['notification'], error: HttpErrorResponse): void {
+		if (notification.active || error.status >= 500 || error.status === 0) {
+			this.notificationService.send(
+				notification.text || 'i18n.error.http.status.' + error.status,
+				notification.title || error.statusText,
+				notification.severity,
+				notification.config
+			);
 		}
 	}
 

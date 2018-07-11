@@ -1,6 +1,7 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {Observable} from 'rxjs/internal/Observable';
-import {ObliqueRequest, ObliqueResponse} from './oblique-http-interceptor';
+import {ObliqueRequest} from './oblique-http-interceptor';
+import {NotificationConfig, NotificationType} from '../notification';
 
 // TODO: make sure that app.module.ts provides an instance of ObliqueHttpInterceptorConfig filled with data from environment[.prod].ts
 
@@ -15,18 +16,15 @@ import {ObliqueRequest, ObliqueResponse} from './oblique-http-interceptor';
 @Injectable()
 export class ObliqueHttpInterceptorConfig {
 	/**
-	 * This event is emitted *before* the request is sent
+	 * Emitted *before* the request is sent
 	 * @type {EventEmitter<ObliqueRequest>}
 	 */
 	requested = new EventEmitter<ObliqueRequest>();
 	/**
-	 * This is the observable that are feed with the `requested` events
+	 * This will be feed with `requested` events
 	 * @type {Observable<ObliqueRequest>}
 	 */
 	requestIntercepted: Observable<ObliqueRequest> = this.requested.asObservable();
-
-	responded = new EventEmitter<ObliqueResponse>();
-	responseIntercepted: Observable<ObliqueResponse> = this.responded.asObservable();
 
 	/**
 	 * Configuration for application API.
@@ -40,14 +38,48 @@ export class ObliqueHttpInterceptorConfig {
 		 *
 		 * @type {string}
 		 */
-		url: null,
+		url: '',
 
 		/**
 		 * Defines if spinner should be activated whenever an API request starts.
 		 *
 		 * @type {boolean}
 		 */
-		spinner: true
+		spinner: true,
+
+		/**
+		 * Configuration of notification on error
+		 * @type {object}
+		 */
+		notification: {
+			/**
+			 * Defines if notification are displayed at all
+			 * @type {boolean}
+			 */
+			active: true,
+			/**
+			 * Defines the severity (type) of the notification
+			 * @type {string}
+			 */
+			severity: NotificationType.ERROR,
+			/**
+			 * Defines the title of the notification
+			 * @default 'error.statusText
+			 * @type {string}
+			 */
+			title: undefined,
+			/**
+			 * Defines the text of the notification
+			 * @default 'i18n.error.http.status.' + error.status
+			 * @type {string}
+			 */
+			text: undefined,
+			/**
+			 * Configuration of notification
+			 * @type {NotificationConfig}
+			 */
+			config: new NotificationConfig()
+		}
 	};
 
 	/**
