@@ -1,4 +1,6 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
+import {Observable} from 'rxjs/internal/Observable';
+import {ObliqueRequest} from './oblique-http-interceptor';
 
 // TODO: make sure that app.module.ts provides an instance of ObliqueHttpInterceptorConfig filled with data from environment[.prod].ts
 
@@ -12,6 +14,16 @@ import {Injectable} from '@angular/core';
  */
 @Injectable()
 export class ObliqueHttpInterceptorConfig {
+	/**
+	 * This event is emitted *before* the request is sent
+	 * @type {EventEmitter<ObliqueRequest>}
+	 */
+	requested = new EventEmitter<ObliqueRequest>();
+	/**
+	 * This is the observable that are feed with the `requested` events
+	 * @type {Observable<ObliqueRequest>}
+	 */
+	requestIntercepted: Observable<ObliqueRequest> = this.requested.asObservable();
 
 	/**
 	 * Configuration for application API.
