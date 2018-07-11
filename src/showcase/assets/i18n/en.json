@@ -139,7 +139,7 @@
         }
       },
       "other": {
-        "timeout": "Server hat nicht zu lange reagiert. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
+        "timeout": "Server hat zu lange nicht reagiert. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
         "upload": "Es ist ein Fehler bei hochladen aufgetrten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support"
       },
       "business": {
