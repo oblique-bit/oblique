@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NotificationService, NotificationType, ObliqueRequest} from '../../../../lib';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {ObliqueHttpInterceptorConfig} from '../../../../lib/ng/http';
 import {first} from 'rxjs/operators';
 
@@ -31,16 +31,16 @@ export class HttpInterceptorSampleComponent {
 		this.config.api.url = this.API_URL;
 	}
 
-	request200() {
+	request200():void {
 		const url = this.API_URL + '/users';
-		this.log(`GET ${url}, expecting 200 OK...`);
+		this.log(`GET ${url}, expecting: 200 OK...`);
 		this.configInterceptor();
 		this.sendRequest(url);
 	}
 
-	request404() {
-		const url = 'https://jsonplaceholder.typicode.com/unknown';
-		this.log(`GET ${url}, expecting 404 NOT FOUND...`);
+	request404(): void {
+		const url = this.API_URL + 'unknown';
+		this.log(`GET ${url}, expecting: 404 NOT FOUND...`);
 		this.configInterceptor();
 		this.sendRequest(url);
 	}
@@ -63,11 +63,15 @@ export class HttpInterceptorSampleComponent {
 	}
 
 	private sendRequest(url: string) {
+		const started = Date.now();
 		this.http.get(url).subscribe(
-			data => {
-				this.log(`Received: ${data}`);
-			},
 			() => {
+				const elapsed = Date.now() - started;
+				this.log(`Received: 200 OK in ${elapsed} ms.`);
+			},
+			(error: HttpErrorResponse) => {
+				const elapsed = Date.now() - started;
+				this.log(`Received: ${error.status} ${error.statusText} in ${elapsed} ms.`);
 				if (!this.notification.active) {
 					this.notificationService.info('Oblique error handling is disabled. The component itself is responsible for error handling.');
 				}

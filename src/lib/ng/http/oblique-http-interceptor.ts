@@ -34,7 +34,6 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 	}
 
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-		const started = Date.now();
 		let requestStatus: string;
 		const obliqueRequest = this.broadcast();
 		this.activateSpinner(obliqueRequest.spinner, request.url);
@@ -52,13 +51,7 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 					}
 				}
 			),
-			// Log when response observable either completes or errors
-			finalize(() => {
-				this.deactivateSpinner(obliqueRequest.spinner, request.url);
-				const elapsed = Date.now() - started;
-				const msg = `${request.method} "${request.urlWithParams}" ${requestStatus} in ${elapsed} ms.`;
-				this.notificationService.info(msg);
-			})
+			finalize(() => this.deactivateSpinner(obliqueRequest.spinner, request.url))
 		);
 	}
 
