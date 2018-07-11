@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {NotificationService, ObliqueRequest} from '../../../../lib';
+import {NotificationService, ObliqueRequest, ObliqueResponse} from '../../../../lib';
 import {HttpClient} from '@angular/common/http';
 import {ObliqueHttpInterceptorConfig} from '../../../../lib/ng/http';
-import {finalize, first} from 'rxjs/operators';
+import {first} from 'rxjs/operators';
 
 @Component({
 	selector: 'oblique-http-interceptor-sample',
@@ -15,6 +15,7 @@ export class HttpInterceptorSampleComponent {
 	logs = [];
 	isSilent = false;
 	isBackground = false;
+	customError = false;
 
 	constructor(private notificationService: NotificationService,
 				private http: HttpClient,
@@ -47,12 +48,20 @@ export class HttpInterceptorSampleComponent {
 			evt.isSilent = this.isSilent;
 			evt.isBackground = this.isBackground;
 		});
+		this.config.responseIntercepted.pipe(first()).subscribe((evt: ObliqueResponse) => {
+			evt.defaultPrevented = this.customError;
+		});
 	}
 
 	private sendRequest(url: string) {
 		this.http.get(url).subscribe(
 			data => {
 				this.log(`Received: ${data}`);
+			},
+			(error) => {
+				if (this.customError) {
+					this.notificationService.error('This is a custom error message');
+				}
 			}
 		);
 	}
