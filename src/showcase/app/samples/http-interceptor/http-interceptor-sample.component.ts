@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {NotificationService, ObliqueRequest} from '../../../../lib';
 import {HttpClient} from '@angular/common/http';
 import {ObliqueHttpInterceptorConfig} from '../../../../lib/ng/http';
-import {first} from 'rxjs/operators';
+import {finalize, first} from 'rxjs/operators';
 
 @Component({
 	selector: 'oblique-http-interceptor-sample',
@@ -27,22 +27,14 @@ export class HttpInterceptorSampleComponent {
 		const url = this.API_URL + '/users';
 		this.log(`GET ${url}, expecting 200 OK...`);
 		this.configInterceptor();
-		this.http.get(url).subscribe(
-			data => {
-				this.log(`Received: ${data}`);
-			}
-		);
+		this.sendRequest(url);
 	}
 
 	request404() {
 		const url = 'https://jsonplaceholder.typicode.com/unknown';
 		this.log(`GET ${url}, expecting 404 NOT FOUND...`);
 		this.configInterceptor();
-		this.http.get(url).subscribe(
-			data => {
-				this.log(`Received: ${data}`);
-			}
-		);
+		this.sendRequest(url);
 	}
 
 	// Debug:
@@ -55,5 +47,13 @@ export class HttpInterceptorSampleComponent {
 			evt.isSilent = this.isSilent;
 			evt.isBackground = this.isBackground;
 		});
+	}
+
+	private sendRequest(url: string) {
+		this.http.get(url).subscribe(
+			data => {
+				this.log(`Received: ${data}`);
+			}
+		);
 	}
 }

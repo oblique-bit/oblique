@@ -42,21 +42,17 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		const started = Date.now();
-		let ok: string;
+		let requestStatus: string;
 
 		const obliqueRequest = this.activateSpinner(request.url);
 		return next.handle(request).pipe(
 			tap(
 				(event: HttpEvent<any>) => {
-					if (event instanceof HttpResponse) {
-						ok = 'succeeded';
-					} else {
-						ok = 'Unknown response event?';
-					}
+					requestStatus = event instanceof HttpResponse ? 'succeeded' : 'Unknown response event?';
 				},
 				error => {
 					if (error instanceof HttpErrorResponse) {
-						ok = 'failed';
+						requestStatus = 'failed';
 
 						if (!obliqueRequest.isSilent || error.status >= 500 || error.status === 0) {
 							console.log(error);
@@ -72,7 +68,7 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 						// }
 
 					} else {
-						ok = 'Unknown response error?';
+						requestStatus = 'Unknown response error?';
 					}
 				}
 			),
@@ -80,7 +76,7 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 			finalize(() => {
 				this.deactivateSpinner(obliqueRequest, request.url);
 				const elapsed = Date.now() - started;
-				const msg = `${request.method} "${request.urlWithParams}" ${ok} in ${elapsed} ms.`;
+				const msg = `${request.method} "${request.urlWithParams}" ${requestStatus} in ${elapsed} ms.`;
 				this.notificationService.info(msg);
 			})
 		);
