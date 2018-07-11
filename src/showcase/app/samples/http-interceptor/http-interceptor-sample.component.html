@@ -25,6 +25,32 @@
 							</label>
 						</div>
 					</div>
+					<div class="form-group row">
+						<label class="col-4 col-form-label">is silent</label>
+						<div class="col-8">
+							<div [(ngModel)]="isSilent" ngbRadioGroup name="isSilent" class="btn-group-toggle">
+								<label ngbButtonLabel class="btn btn-secondary" ngbTooltip="The next request should be silenced in case of response error.">
+									<input ngbButton type="radio" [value]="true"> Yes
+								</label>
+								<label ngbButtonLabel class="btn btn-secondary" ngbTooltip="The next request should display notification in case of response error.">
+									<input ngbButton type="radio" [value]="false"> No
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-4 col-form-label">is background</label>
+						<div class="col-8">
+							<div [(ngModel)]="isBackground" ngbRadioGroup name="isBackground" class="btn-group-toggle">
+								<label ngbButtonLabel class="btn btn-secondary" ngbTooltip="The next request should run in the background and thus no spinner will be displayed">
+									<input ngbButton type="radio" [value]="true"> Yes
+								</label>
+								<label ngbButtonLabel class="btn btn-secondary" ngbTooltip="The next request will trigger a spinner as normal">
+									<input ngbButton type="radio" [value]="false"> No
+								</label>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<router-outlet></router-outlet>
