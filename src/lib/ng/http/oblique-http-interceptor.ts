@@ -30,10 +30,12 @@ export interface ObliqueRequest {
 	isBackground: boolean;
 }
 
+export interface ObliqueResponse {
+	defaultPrevented: boolean;
+}
+
 @Injectable()
 export class ObliqueHttpInterceptor implements HttpInterceptor {
-
-	// TODO: event emitter here
 
 	constructor(private config: ObliqueHttpInterceptorConfig,
 				private spinner: SpinnerService,
@@ -53,20 +55,7 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 				error => {
 					if (error instanceof HttpErrorResponse) {
 						requestStatus = 'failed';
-
-						if (!obliqueRequest.isSilent || error.status >= 500 || error.status === 0) {
-							console.log(error);
-							this.notificationService.error('i18n.error.http.status.' + error.status, error.statusText);
-						}
-						// TODO
-						// Emit event for a possible business handling:
-						// let e = ...;
-						// eventEmitter.emit(e);
-
-						// if(!e.prevented) {
-						// 	// Handle response error here:
-						// }
-
+						this.notify(obliqueRequest, error);
 					} else {
 						requestStatus = 'Unknown response error?';
 					}
@@ -96,6 +85,14 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 		if (!evt.isSilent && !evt.isBackground && this.isApiCall(url)) {
 			console.log('deactivate spinner');
 			this.spinner.deactivate();
+		}
+	}
+
+	private notify(obliqueRequest: ObliqueRequest, error: HttpErrorResponse): void {
+		const evt: ObliqueResponse = {defaultPrevented: false};
+		this.config.responded.emit(evt);
+		if (!evt.defaultPrevented && (!obliqueRequest.isSilent || error.status >= 500 || error.status === 0)) {
+			this.notificationService.error('i18n.error.http.status.' + error.status, error.statusText);
 		}
 	}
 
