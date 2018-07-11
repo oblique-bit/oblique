@@ -5,6 +5,7 @@ import {finalize, tap} from 'rxjs/operators';
 import {NotificationConfig, NotificationService, NotificationType} from '../notification';
 import {SpinnerService} from '../spinner';
 import {ObliqueHttpInterceptorConfig} from './oblique-http-interceptor.config';
+import Timer = NodeJS.Timer;
 
 export interface ObliqueRequest {
 	notification: {
@@ -27,6 +28,7 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		const obliqueRequest = this.broadcast();
+		const timer = this.setTimer();
 		this.activateSpinner(obliqueRequest.spinner, request.url);
 		return next.handle(request).pipe(
 			tap(
@@ -39,8 +41,19 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 					}
 				}
 			),
-			finalize(() => this.deactivateSpinner(obliqueRequest.spinner, request.url))
+			finalize(() => {
+				clearTimeout(timer);
+				this.deactivateSpinner(obliqueRequest.spinner, request.url);
+			})
 		);
+	}
+
+	private setTimer(): Timer {
+		return !this.config.timeout
+			? undefined
+			: setTimeout(() => {
+				this.notificationService.warning('i18n.error.other.timeout');
+			}, this.config.timeout);
 	}
 
 	private broadcast(): ObliqueRequest {

@@ -84,7 +84,8 @@ export class ObliqueHttpInterceptorConfig {
 
 	/**
 	 * The timeout delay to wait before a request will be considered as failed.
-	 * A notification will be issued to warn the user about request timeout.
+	 * A notification will be issued to warn the user about request timeout, but the request itself won't be cancelled.
+	 * If the timeout is zero, null or undefined, no warning will be issued
 	 *
 	 * @type {number}
 	 */
