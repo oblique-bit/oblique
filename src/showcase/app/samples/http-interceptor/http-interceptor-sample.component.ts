@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NotificationService, ObliqueRequest, ObliqueResponse} from '../../../../lib';
+import {NotificationService, NotificationType, ObliqueRequest} from '../../../../lib';
 import {HttpClient} from '@angular/common/http';
 import {ObliqueHttpInterceptorConfig} from '../../../../lib/ng/http';
 import {first} from 'rxjs/operators';
@@ -13,9 +13,16 @@ export class HttpInterceptorSampleComponent {
 	public API_URL = 'https://jsonplaceholder.typicode.com';
 
 	logs = [];
-	isSilent = false;
-	isBackground = false;
-	customError = false;
+	notification = {
+		active: true,
+		severity: NotificationType.ERROR,
+		title: undefined,
+		text: undefined,
+		sticky: false,
+		timeout: 3500
+	};
+	spinner = true;
+	variants = NotificationType.VALUES;
 
 	constructor(private notificationService: NotificationService,
 				private http: HttpClient,
@@ -45,11 +52,13 @@ export class HttpInterceptorSampleComponent {
 
 	private configInterceptor() {
 		this.config.requestIntercepted.pipe(first()).subscribe((evt: ObliqueRequest) => {
-			evt.isSilent = this.isSilent;
-			evt.isBackground = this.isBackground;
-		});
-		this.config.responseIntercepted.pipe(first()).subscribe((evt: ObliqueResponse) => {
-			evt.defaultPrevented = this.customError;
+			evt.notification.active = this.notification.active;
+			evt.notification.severity = this.notification.severity;
+			evt.notification.title = this.notification.title;
+			evt.notification.text = this.notification.text;
+			evt.notification.config.timeout = this.notification.timeout;
+			evt.notification.config.sticky = this.notification.sticky;
+			evt.spinner = this.spinner;
 		});
 	}
 
@@ -58,9 +67,9 @@ export class HttpInterceptorSampleComponent {
 			data => {
 				this.log(`Received: ${data}`);
 			},
-			(error) => {
-				if (this.customError) {
-					this.notificationService.error('This is a custom error message');
+			() => {
+				if (!this.notification.active) {
+					this.notificationService.info('Oblique error handling is disabled. The component itself is responsible for error handling.');
 				}
 			}
 		);

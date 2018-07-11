@@ -26,44 +26,71 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-4 col-form-label">is silent</label>
+						<label class="col-4 col-form-label">show spinner</label>
 						<div class="col-8">
-							<div [(ngModel)]="isSilent" ngbRadioGroup name="isSilent" class="btn-group-toggle">
-								<label ngbButtonLabel class="btn btn-secondary" ngbTooltip="The next request should be silenced in case of response error.">
+							<div [(ngModel)]="spinner" ngbRadioGroup name="spinner" class="btn-group-toggle">
+								<label ngbButtonLabel class="btn btn-secondary">
 									<input ngbButton type="radio" [value]="true"> Yes
 								</label>
-								<label ngbButtonLabel class="btn btn-secondary" ngbTooltip="The next request should display notification in case of response error.">
+								<label ngbButtonLabel class="btn btn-secondary">
 									<input ngbButton type="radio" [value]="false"> No
 								</label>
 							</div>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-4 col-form-label">is background</label>
+						<label class="col-4 col-form-label">show notification on error</label>
 						<div class="col-8">
-							<div [(ngModel)]="isBackground" ngbRadioGroup name="isBackground" class="btn-group-toggle">
-								<label ngbButtonLabel class="btn btn-secondary" ngbTooltip="The next request should run in the background and thus no spinner will be displayed">
+							<div [(ngModel)]="notification.active" ngbRadioGroup name="notification" class="btn-group-toggle">
+								<label ngbButtonLabel class="btn btn-secondary">
 									<input ngbButton type="radio" [value]="true"> Yes
 								</label>
-								<label ngbButtonLabel class="btn btn-secondary" ngbTooltip="The next request will trigger a spinner as normal">
+								<label ngbButtonLabel class="btn btn-secondary">
 									<input ngbButton type="radio" [value]="false"> No
 								</label>
 							</div>
 						</div>
 					</div>
-					<div class="form-group row">
-						<label class="col-4 col-form-label">custom Error handling</label>
-						<div class="col-8">
-							<div [(ngModel)]="customError" ngbRadioGroup name="customError" class="btn-group-toggle">
-								<label ngbButtonLabel class="btn btn-secondary" ngbTooltip="The next request will use custom error handling">
-									<input ngbButton type="radio" [value]="true"> Yes
-								</label>
-								<label ngbButtonLabel class="btn btn-secondary" ngbTooltip="The next request will use default error handling">
-									<input ngbButton type="radio" [value]="false"> No
-								</label>
+					<fieldset>
+						<legend>Customize default notification</legend>
+						<div class="form-group row">
+							<label class="col-4 col-form-label">Severity</label>
+							<select [(ngModel)]="notification.severity" class="col-8 form-control">
+								<option *ngFor="let variant of variants" [ngValue]="variant">{{variant.name}}</option>
+							</select>
+						</div>
+						<div class="form-group row">
+							<label class="col-4 form-control-label">Title</label>
+							<input [(ngModel)]="notification.title" type="text"
+								   class="col-4 col-form-label"
+								   placeholder="Notification title...">
+						</div>
+						<div class="form-group row">
+							<label class="col-4 col-form-label">Message</label>
+							<input [(ngModel)]="notification.text" type="text"
+								   class="col-8 form-control"
+								   placeholder="Notification text...">
+						</div>
+						<div class="form-group row">
+							<label class="col-4 col-form-label">timeout</label>
+							<input [(ngModel)]="notification.timeout" type="text"
+								   class="col-8 form-control"
+								   placeholder="Notification timeout...">
+						</div>
+						<div class="form-group row">
+							<label class="col-4 col-form-label">Sticky</label>
+							<div class="col-8">
+								<div [(ngModel)]="notification.sticky" ngbRadioGroup name="notificationSticky" class="btn-group-toggle">
+									<label ngbButtonLabel class="btn btn-secondary">
+										<input ngbButton type="radio" [value]="true"> Yes
+									</label>
+									<label ngbButtonLabel class="btn btn-secondary">
+										<input ngbButton type="radio" [value]="false"> No
+									</label>
+								</div>
 							</div>
 						</div>
-					</div>
+					</fieldset>
 				</div>
 			</div>
 			<router-outlet></router-outlet>

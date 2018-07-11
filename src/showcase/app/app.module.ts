@@ -15,7 +15,7 @@ import {
 	MasterLayoutApplicationService,
 	NotificationService,
 	NotificationConfig,
-	SchemaValidationService
+	SchemaValidationService, ObliqueHttpInterceptorConfig
 } from '../../lib';
 
 // Layout:
@@ -77,6 +77,7 @@ export class AppModule {
 				private tooltipConfig: NgbTooltipConfig,
 				private datepickerConfig: NgbDatepickerConfig,
 				private documentMetaService: DocumentMetaService,
+				interceptorConfig: ObliqueHttpInterceptorConfig,
 				@Inject('ObliqueReactive.CONFIG') private config: any) {
 		// As the HEAD `title` element and the `description` meta element are outside any
 		// Angular entry component, we use a service to update these element values:
@@ -90,5 +91,7 @@ export class AppModule {
 		// NgBootstrap configuration:
 		tooltipConfig.container = 'body';
 		datepickerConfig.navigation = 'arrows';
+
+		interceptorConfig.api.notification.config.channel = 'app';
 	}
 }
