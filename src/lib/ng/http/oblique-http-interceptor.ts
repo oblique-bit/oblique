@@ -32,7 +32,9 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 		const timer = this.setTimer();
 		this.activateSpinner(obliqueRequest.spinner, request.url);
 
-		return next.handle(request).pipe(
+		return next.handle(request.clone({
+			headers: request.headers.set('X-Requested-With', 'XMLHttpRequest')
+		})).pipe(
 			tap(
 				undefined,
 				error => {
