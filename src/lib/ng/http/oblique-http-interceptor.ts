@@ -20,6 +20,7 @@ export interface ObliqueRequest {
 
 @Injectable()
 export class ObliqueHttpInterceptor implements HttpInterceptor {
+	private requestCount = 0;
 
 	constructor(private config: ObliqueHttpInterceptorConfig,
 				private spinner: SpinnerService,
@@ -30,6 +31,7 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 		const obliqueRequest = this.broadcast();
 		const timer = this.setTimer();
 		this.activateSpinner(obliqueRequest.spinner, request.url);
+
 		return next.handle(request).pipe(
 			tap(
 				undefined,
@@ -68,15 +70,17 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 
 	private activateSpinner(isSpinnerActive: boolean, url: string): void {
 		if (isSpinnerActive && this.isApiCall(url)) {
-			console.log('activate spinner');
+			this.requestCount++;
 			this.spinner.activate();
 		}
 	}
 
 	private deactivateSpinner(isSpinnerActive: boolean, url: string): void {
 		if (isSpinnerActive && this.isApiCall(url)) {
-			console.log('deactivate spinner');
-			this.spinner.deactivate();
+			this.requestCount = Math.max(0, this.requestCount - 1);
+			if (!this.requestCount) {
+				this.spinner.deactivate();
+			}
 		}
 	}
 
