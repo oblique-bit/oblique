@@ -18,10 +18,13 @@
 						<label>Request</label>
 						<div class="btn-group btn-group-toggle w-100" ngbRadioGroup name="messageWithParams" [(ngModel)]="messageWithParams">
 							<label ngbButtonLabel class="btn-success">
-								<input ngbButton type="radio" (click)="request200()"> 200 OK
+								<input ngbButton type="radio" (click)="request(200)"> 200 OK
 							</label>
 							<label ngbButtonLabel class="btn-danger">
-								<input ngbButton type="radio" (click)="request404()"> 404 NOT FOUND
+								<input ngbButton type="radio" (click)="request(404)"> 404 NOT FOUND
+							</label>
+							<label ngbButtonLabel class="btn-danger">
+								<input ngbButton type="radio" (click)="request(401)"> 401 UNAUTHORIZED
 							</label>
 						</div>
 					</div>

@@ -3,6 +3,7 @@ import {NotificationService, NotificationType, ObliqueRequest} from '../../../..
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {ObliqueHttpInterceptorConfig} from '../../../../lib/ng/http';
 import {first} from 'rxjs/operators';
+import {MockHttpErrorInterceptor} from './mock-http-error-interceptor.service';
 
 @Component({
 	selector: 'oblique-http-interceptor-sample',
@@ -28,18 +29,15 @@ export class HttpInterceptorSampleComponent {
 				private config: ObliqueHttpInterceptorConfig) {
 		// Redefine default API URL for showcase sample only:
 		this.config.api.url = HttpInterceptorSampleComponent.API_URL;
+
+		this.config.sessionExpired.subscribe(() => {
+			this.notificationService.warning('The session has expired');
+		});
 	}
 
-	request200(): void {
-		const url = HttpInterceptorSampleComponent.API_URL + '/users';
-		this.log(`GET ${url}, expecting: 200 OK...`);
-		this.configInterceptor();
-		this.sendRequest(url);
-	}
-
-	request404(): void {
-		const url = HttpInterceptorSampleComponent.API_URL + '/unknown';
-		this.log(`GET ${url}, expecting: 404 NOT FOUND...`);
+	request(code: number): void {
+		const url = HttpInterceptorSampleComponent.getUrl(code);
+		this.log(`GET ${url}, expecting: ${code} ${MockHttpErrorInterceptor.getStatusText(code)}...`);
 		this.configInterceptor();
 		this.sendRequest(url);
 	}
@@ -49,7 +47,7 @@ export class HttpInterceptorSampleComponent {
 		this.logs.unshift(`${this.logs.length} - ${message}`);
 	}
 
-	private configInterceptor() {
+	private configInterceptor(): void {
 		this.config.requestIntercepted.pipe(first()).subscribe((evt: ObliqueRequest) => {
 			evt.notification.active = this.notification.active;
 			evt.notification.severity = this.notification.severity;
@@ -61,7 +59,7 @@ export class HttpInterceptorSampleComponent {
 		});
 	}
 
-	private sendRequest(url: string) {
+	private sendRequest(url: string): void {
 		const started = Date.now();
 		this.http.get(url).subscribe(
 			() => {
@@ -76,5 +74,14 @@ export class HttpInterceptorSampleComponent {
 				}
 			}
 		);
+	}
+
+	private static getUrl(code: number): string {
+		switch (code) {
+			case 200:
+				return HttpInterceptorSampleComponent.API_URL + '/users';
+			default:
+				return HttpInterceptorSampleComponent.API_URL + '/' + code;
+		}
 	}
 }
