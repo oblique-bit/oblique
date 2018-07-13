@@ -20,8 +20,6 @@ export interface ObliqueRequest {
 
 @Injectable()
 export class ObliqueHttpInterceptor implements HttpInterceptor {
-	private requestCount = 0;
-
 	constructor(private config: ObliqueHttpInterceptorConfig,
 				private spinner: SpinnerService,
 				private notificationService: NotificationService) {
@@ -39,7 +37,11 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 				undefined,
 				error => {
 					if (error instanceof HttpErrorResponse) {
-						this.notify(obliqueRequest.notification, error);
+						if (error.status === 401) {
+							this.config.expired.emit();
+						} else {
+							this.notify(obliqueRequest.notification, error);
+						}
 					} else {
 						this.notificationService.error('i18n.error.general');
 					}
@@ -72,17 +74,13 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 
 	private activateSpinner(isSpinnerActive: boolean, url: string): void {
 		if (isSpinnerActive && this.isApiCall(url)) {
-			this.requestCount++;
 			this.spinner.activate();
 		}
 	}
 
 	private deactivateSpinner(isSpinnerActive: boolean, url: string): void {
 		if (isSpinnerActive && this.isApiCall(url)) {
-			this.requestCount = Math.max(0, this.requestCount - 1);
-			if (!this.requestCount) {
-				this.spinner.deactivate();
-			}
+			this.spinner.deactivate();
 		}
 	}
 

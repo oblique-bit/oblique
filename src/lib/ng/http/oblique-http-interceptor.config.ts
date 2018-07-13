@@ -27,6 +27,17 @@ export class ObliqueHttpInterceptorConfig {
 	requestIntercepted: Observable<ObliqueRequest> = this.requested.asObservable();
 
 	/**
+	 * Emmitted on reception of 401 response
+	 * @type {EventEmitter<void>}
+	 */
+	expired = new EventEmitter<void>();
+	/**
+	 * This will be feed with `expired`events
+	 * @type {Observable<void>}
+	 */
+	sessionExpired: Observable<void> = this.expired.asObservable();
+
+	/**
 	 * Configuration for application API.
 	 *
 	 * @type {object}
