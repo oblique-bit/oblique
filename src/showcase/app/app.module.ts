@@ -1,31 +1,30 @@
-import {NgModule, Inject} from '@angular/core';
+import {Inject, NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {NgbDatepickerConfig, NgbModule, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
-import {TranslateModule, TranslateLoader, TranslateService} from '@ngx-translate/core';
+import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-
 // ObliqueReactive:
 import {
-	ObliqueModule,
 	DocumentMetaService,
-	MasterLayoutModule,
 	MasterLayoutApplicationService,
-	NotificationService,
+	MasterLayoutModule,
 	NotificationConfig,
-	SchemaValidationService, ObliqueHttpInterceptorConfig
+	NotificationService,
+	ObliqueHttpInterceptorConfig,
+	ObliqueModule,
+	SchemaValidationService
 } from '../../lib';
-
 // Layout:
 import {LayoutModule} from './layout/layout.module';
-
 // App:
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HomePageComponent} from './home/home.page';
 import {ObliqueHttpInterceptorProviders} from '../../lib/ng/http';
+import {MockHttpErrorInterceptor} from './samples/http-interceptor/mock-http-error-interceptor.service';
 
 // AoT requires an exported function for factories:
 export function createTranslateLoader(http: HttpClient) {
@@ -67,7 +66,8 @@ export function createTranslateLoader(http: HttpClient) {
 				timeout: 5000
 			}
 		},
-		ObliqueHttpInterceptorProviders
+		ObliqueHttpInterceptorProviders,
+		{provide: HTTP_INTERCEPTORS, useClass: MockHttpErrorInterceptor, multi: true}
 	],
 	entryComponents: [AppComponent],
 	bootstrap: [AppComponent]
