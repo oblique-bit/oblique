@@ -49,7 +49,7 @@ class MockNotificationService {
 	}
 }
 
-fdescribe(`ObliqueHttpInterceptor`, () => {
+describe(`ObliqueHttpInterceptor`, () => {
 	let service: DataService;
 	let httpMock: HttpTestingController;
 	let config: ObliqueHttpInterceptorConfig;
