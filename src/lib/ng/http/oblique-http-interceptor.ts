@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {finalize, tap} from 'rxjs/operators';
+import {tap} from 'rxjs/operators';
 import {NotificationConfig, NotificationService, NotificationType} from '../notification';
 import {SpinnerService} from '../spinner';
 import {ObliqueHttpInterceptorConfig} from './oblique-http-interceptor.config';
@@ -45,12 +45,12 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 					} else {
 						this.notificationService.error('i18n.error.general');
 					}
+				},
+				() => {
+					clearTimeout(timer);
+					this.deactivateSpinner(obliqueRequest.spinner, request.url);
 				}
-			),
-			finalize(() => {
-				clearTimeout(timer);
-				this.deactivateSpinner(obliqueRequest.spinner, request.url);
-			})
+			)
 		);
 	}
 
