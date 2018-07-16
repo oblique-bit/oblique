@@ -81,7 +81,7 @@
             "polyfills": "src/showcase/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "watch": true,
-            "codeCoverage": false,
+            "codeCoverage": true,
             "preserveSymlinks": true,
             "scripts": [],
             "styles": [

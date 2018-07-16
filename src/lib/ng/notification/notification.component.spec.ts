@@ -57,7 +57,7 @@ describe('NotificationComponent', () => {
 
 		it('with matching NotificationType CSS classes', () => {
 
-			let notificationAlerts = fixture.debugElement.queryAll(By.css('.notification .alert'));
+			const notificationAlerts = fixture.debugElement.queryAll(By.css('.notification .alert'));
 			expect(notificationAlerts[0].classes).toEqual(jasmine.objectContaining({alert: true}));
 			expect(notificationAlerts[0].classes).toEqual(jasmine.objectContaining({'alert-success': true}));
 			expect(notificationAlerts[0].classes).not.toEqual(jasmine.objectContaining({'alert-info': true}));
@@ -69,7 +69,7 @@ describe('NotificationComponent', () => {
 		notificationService.error(message, title, notificationConfig);
 		fixture.detectChanges();
 
-		let button = fixture.debugElement.query(By.css('button.close'));
+		const button = fixture.debugElement.query(By.css('button.close'));
 		button.triggerEventHandler('click', null);
 
 		// Wait for animation completion:
@@ -100,7 +100,7 @@ describe('NotificationComponent', () => {
 	});
 
 	it('should close a _non-sticky_ notification after `timeout` is reached', fakeAsync(() => {
-		let notification = notificationService.broadcast(
+		const notification = notificationService.broadcast(
 			notificationConfig.channel,
 			{
 				messageKey: message,
@@ -115,7 +115,7 @@ describe('NotificationComponent', () => {
 		expect(component.close).toHaveBeenCalledWith(notification);
 		expect(component.notifications.length).toBe(0);
 
-		let htmlNotifications = fixture.debugElement.queryAll(By.css('.notification'));
+		const htmlNotifications = fixture.debugElement.queryAll(By.css('.notification'));
 		expect(htmlNotifications.length).toBe(0);
 	}));
 
@@ -135,7 +135,7 @@ describe('NotificationComponent', () => {
 		expect(component.close).not.toHaveBeenCalled();
 		expect(component.notifications.length).toBe(1);
 
-		let htmlNotifications = fixture.debugElement.queryAll(By.css('.notification'));
+		const htmlNotifications = fixture.debugElement.queryAll(By.css('.notification'));
 		expect(htmlNotifications.length).toBe(1);
 	}));
 
@@ -143,7 +143,7 @@ describe('NotificationComponent', () => {
 		component.channel = 'myChannel';
 
 		// Send multiple notifications to different channels:
-		let notification = new Notification(message);
+		const notification = new Notification(message);
 		notificationService.broadcast('testChannel', notification);
 		notificationService.broadcast('myChannel', notification);
 		notificationService.broadcast('anotherChanel', notification);
@@ -156,7 +156,7 @@ describe('NotificationComponent', () => {
 
 	it('should *not* display a notification from a different channel', () => {
 		// Send multiple notifications to different channels:
-		let notification = new Notification(message);
+		const notification = new Notification(message);
 		notificationService.broadcast('testChannel', notification);
 		notificationService.broadcast(component.channel, notification);
 		notificationService.broadcast('anotherChanel', notification);

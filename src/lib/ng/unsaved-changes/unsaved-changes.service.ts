@@ -24,7 +24,7 @@ export class UnsavedChangesService {
 	}
 
 	listenTo(ngbTabset: NgbTabset): void {
-		let id = ngbTabset.tabs.first.id;
+		const id = ngbTabset.tabs.first.id;
 		if (!this.listener[id]) {
 			this.listener[id] = ngbTabset.tabChange.subscribe((event: NgbTabChangeEvent): void => {
 				if (!this.ignoreChanges([event.activeId])) {
@@ -35,7 +35,7 @@ export class UnsavedChangesService {
 	}
 
 	unListenTo(ngbTabset: NgbTabset): void {
-		let id = ngbTabset && ngbTabset.tabs.first.id;
+		const id = ngbTabset && ngbTabset.tabs.first.id;
 		if (this.listener[id]) {
 			this.listener[id].unsubscribe();
 			delete this.listener[id];

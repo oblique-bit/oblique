@@ -114,9 +114,9 @@ export class NavigableDirective implements AfterViewInit {
 
 	@HostListener('keydown', ['$event'])
 	onKeyDown($event: KeyboardEvent) {
-		let keyCode = $event.keyCode;
+		const keyCode = $event.keyCode;
 		if (keyCode === NavigableDirective.KEYS.UP || keyCode === NavigableDirective.KEYS.DOWN) {
-			let focused = this.element.nativeElement.querySelector(':focus');
+			const focused = this.element.nativeElement.querySelector(':focus');
 			if (!focused || !focused.classList.contains('dropdown-toggle')
 				&& !NavigableDirective.hasAncestorClass(focused, 'dropdown-menu')) {
 				$event.preventDefault();
@@ -218,7 +218,7 @@ export class NavigableDirective implements AfterViewInit {
 	 * @returns {*}
 	 */
 	private static isFocusable(element): boolean {
-		let nodeName = element.nodeName.toLowerCase();
+		const nodeName = element.nodeName.toLowerCase();
 		if (!element.offsetHeight || !element.offsetWidth || element.hasAttribute('disabled')
 			|| NavigableDirective.isWithinDisabledFieldset(element, nodeName)) {
 			return false;
@@ -232,7 +232,7 @@ export class NavigableDirective implements AfterViewInit {
 			return false;
 		}
 
-		let fieldset = NavigableDirective.getAncestorElement(element, 'fieldset');
+		const fieldset = NavigableDirective.getAncestorElement(element, 'fieldset');
 		return fieldset && fieldset.hasAttribute('disabled');
 	}
 }

@@ -66,7 +66,7 @@ describe('NotificationService', () => {
 	});
 
 	describe('send()', () => {
-		let notificationEvents: NotificationEvent[] = [];
+		const notificationEvents: NotificationEvent[] = [];
 		const count = 5;
 		beforeEach(() => {
 			notificationService.events.pipe(take(count)).subscribe(event => {

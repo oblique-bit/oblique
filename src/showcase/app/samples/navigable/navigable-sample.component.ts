@@ -42,7 +42,7 @@ export class NavigableSampleComponent {
 	logs = [];
 
 	addScientist() {
-		let count = this.scientists.length + 1;
+		const count = this.scientists.length + 1;
 		this.scientists.push({
 			firstname: count,
 			lastname: count,

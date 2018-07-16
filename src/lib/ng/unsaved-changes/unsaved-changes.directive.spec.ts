@@ -44,7 +44,7 @@ describe('UnsavedChangesDirective', () => {
 	let testComponent: FaultyTestComponent | TestComponent | TabsTestComponent;
 	let directive: UnsavedChangesDirective;
 	let unsavedChangesServiceMock;
-	let initFixture = (component: any): void => {
+	const initFixture = (component: any): void => {
 		fixture = TestBed.createComponent(component);
 		fixture.detectChanges();
 		testComponent = fixture.componentInstance;

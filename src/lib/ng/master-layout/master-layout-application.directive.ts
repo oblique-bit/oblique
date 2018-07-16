@@ -42,7 +42,7 @@ export class MasterLayoutApplicationDirective extends Unsubscribable {
 			mergeMap(route => route.data),
 			takeUntil(this.unsubscribe)
 		).subscribe((data) => {
-			let masterLayout = data.masterLayout || {};
+			const masterLayout = data.masterLayout || {};
 
 			this.hasCover = masterLayout.hasCover !== undefined ? masterLayout.hasCover : this.defaultHasCover;
 			this.noNavigation = masterLayout.noNavigation !== undefined ? masterLayout.noNavigation : this.defaultNoNavigation;

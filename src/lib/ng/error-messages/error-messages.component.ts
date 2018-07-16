@@ -45,7 +45,7 @@ export class ErrorMessagesComponent extends Unsubscribable implements AfterViewI
 	}
 
 	private generateErrorMessages() {
-		let pristineValidation = this.formGroup ? this.formGroup.pristineValidation : false;
+		const pristineValidation = this.formGroup ? this.formGroup.pristineValidation : false;
 		if (this.control.invalid && (this.form.submitted || !this.control.pristine || pristineValidation)) {
 			this.errors = this.errorMessagesService.createMessages(this.control);
 		} else {
