@@ -34,6 +34,10 @@ export class HttpMockErrorInterceptor implements HttpInterceptor {
 				return 'UNAUTHORIZED';
 			case 404:
 				return 'NOT FOUND';
+			case 500:
+				return 'SERVER ERROR';
+			case 0:
+				return 'SERVICE UNAVAILABLE';
 			default:
 				return 'UNKNOWN CODE';
 		}
