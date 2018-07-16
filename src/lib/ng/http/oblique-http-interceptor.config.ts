@@ -27,7 +27,7 @@ export class ObliqueHttpInterceptorConfig {
 	requestIntercepted: Observable<ObliqueRequest> = this.requested.asObservable();
 
 	/**
-	 * Emmitted on reception of 401 response
+	 * Emitted on reception of 401 response
 	 * @type {EventEmitter<void>}
 	 */
 	expired = new EventEmitter<void>();
@@ -75,7 +75,7 @@ export class ObliqueHttpInterceptorConfig {
 			severity: NotificationType.ERROR,
 			/**
 			 * Defines the title of the notification
-			 * @default 'error.statusText
+			 * @default error.statusText
 			 * @type {string}
 			 */
 			title: undefined,
