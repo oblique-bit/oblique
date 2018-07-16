@@ -24,7 +24,7 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HomePageComponent} from './home/home.page';
 import {ObliqueHttpInterceptorProviders} from '../../lib/ng/http';
-import {MockHttpErrorInterceptor} from './samples/http-interceptor/mock-http-error-interceptor.service';
+import {HttpMockErrorInterceptor} from './samples/http-interceptor/http-mock-error.interceptor';
 
 // AoT requires an exported function for factories:
 export function createTranslateLoader(http: HttpClient) {
@@ -67,7 +67,7 @@ export function createTranslateLoader(http: HttpClient) {
 			}
 		},
 		ObliqueHttpInterceptorProviders,
-		{provide: HTTP_INTERCEPTORS, useClass: MockHttpErrorInterceptor, multi: true}
+		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true}
 	],
 	entryComponents: [AppComponent],
 	bootstrap: [AppComponent]

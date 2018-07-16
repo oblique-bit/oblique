@@ -4,17 +4,17 @@ import {Observable, of, throwError} from 'rxjs';
 import {delay, dematerialize, materialize, mergeMap} from 'rxjs/operators';
 
 @Injectable()
-export class MockHttpErrorInterceptor implements HttpInterceptor {
+export class HttpMockErrorInterceptor implements HttpInterceptor {
 	private static readonly errorCodes = ['401', '404'];
 
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		return of(null).pipe(
 			mergeMap(() => {
 				const code = request.url.split('/').pop();
-				if (MockHttpErrorInterceptor.errorCodes.indexOf(code) > -1) {
+				if (HttpMockErrorInterceptor.errorCodes.indexOf(code) > -1) {
 					return throwError(new HttpErrorResponse({
 						status: +code,
-						statusText: MockHttpErrorInterceptor.getStatusText(+code)
+						statusText: HttpMockErrorInterceptor.getStatusText(+code)
 					}));
 				}
 

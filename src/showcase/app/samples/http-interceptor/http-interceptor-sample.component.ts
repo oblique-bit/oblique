@@ -3,7 +3,7 @@ import {NotificationService, NotificationType, ObliqueRequest} from '../../../..
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {ObliqueHttpInterceptorConfig} from '../../../../lib/ng/http';
 import {first} from 'rxjs/operators';
-import {MockHttpErrorInterceptor} from './mock-http-error-interceptor.service';
+import {HttpMockErrorInterceptor} from './http-mock-error.interceptor';
 
 @Component({
 	selector: 'oblique-http-interceptor-sample',
@@ -37,7 +37,7 @@ export class HttpInterceptorSampleComponent {
 
 	request(code: number): void {
 		const url = HttpInterceptorSampleComponent.getUrl(code);
-		this.log(`GET ${url}, expecting: ${code} ${MockHttpErrorInterceptor.getStatusText(code)}...`);
+		this.log(`GET ${url}, expecting: ${code} ${HttpMockErrorInterceptor.getStatusText(code)}...`);
 		this.configInterceptor();
 		this.sendRequest(url);
 	}
