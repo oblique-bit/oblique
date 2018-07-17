@@ -67,7 +67,7 @@ describe('NumberFormatDirective', () => {
 				expect(element.nativeElement.value).toEqual('5.236');
 			});
 		}));
-		it('should display full value on focus', async(() => {
+		xit('should display full value on focus', async(() => {
 			fixture.whenStable().then(() => {
 				element.nativeElement.focus();
 				expect(testComponent.number).toEqual(5.235689);
