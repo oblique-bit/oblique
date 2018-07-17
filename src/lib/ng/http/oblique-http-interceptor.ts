@@ -20,9 +20,9 @@ export interface ObliqueRequest {
 
 @Injectable()
 export class ObliqueHttpInterceptor implements HttpInterceptor {
-	constructor(private config: ObliqueHttpInterceptorConfig,
-				private spinner: SpinnerService,
-				private notificationService: NotificationService) {
+	constructor(private readonly config: ObliqueHttpInterceptorConfig,
+				private readonly spinner: SpinnerService,
+				private readonly notificationService: NotificationService) {
 	}
 
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

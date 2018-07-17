@@ -13,7 +13,7 @@ import {finalize} from 'rxjs/operators';
 class DataService {
 	static ROOT_URL = `http://jsonplaceholder.typicode.com`;
 
-	constructor(private http: HttpClient) {
+	constructor(private readonly http: HttpClient) {
 	}
 
 	getUsers() {

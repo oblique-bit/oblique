@@ -24,9 +24,9 @@ export class HttpInterceptorSampleComponent {
 	spinner = true;
 	variants = NotificationType.VALUES;
 
-	constructor(private notificationService: NotificationService,
-				private http: HttpClient,
-				private config: ObliqueHttpInterceptorConfig) {
+	constructor(private readonly notificationService: NotificationService,
+				private readonly http: HttpClient,
+				private readonly config: ObliqueHttpInterceptorConfig) {
 		// Redefine default API URL for showcase sample only:
 		this.config.api.url = HttpInterceptorSampleComponent.API_URL;
 
