@@ -163,7 +163,7 @@ describe(`ObliqueHttpInterceptor`, () => {
 		const req = buildRequest(success);
 		setTimeout(() => {
 			req.flush([{name: 'bob'}]);
-		});
+		}, 2);
 
 		return req;
 	}
