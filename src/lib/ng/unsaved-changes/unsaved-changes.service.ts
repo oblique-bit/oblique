@@ -7,10 +7,10 @@ import {Subscriber} from 'rxjs';
 //TODO: Handle modals
 @Injectable()
 export class UnsavedChangesService {
-	private formList: { [key: string]: ControlContainer} = {};
-	private listener: { [key: string]: Subscriber<NgbTabChangeEvent>} = {};
+	private readonly formList: { [key: string]: ControlContainer} = {};
+	private readonly listener: { [key: string]: Subscriber<NgbTabChangeEvent>} = {};
 
-	constructor(private translateService: TranslateService) {
+	constructor(private readonly translateService: TranslateService) {
 		window.addEventListener('beforeunload', e => this.onUnload(e));
 		window.addEventListener('unload', e => this.onUnload(e));
 	}

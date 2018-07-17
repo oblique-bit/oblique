@@ -18,18 +18,18 @@ export class DocumentMetaService extends Unsubscribable {
 	public titleSuffix = '';
 	public description = '';
 
-	private headElement: HTMLElement;
-	private metaDescription: HTMLElement;
-	private currentMetaInformation = {
+	private readonly headElement: HTMLElement;
+	private readonly metaDescription: HTMLElement;
+	private readonly currentMetaInformation = {
 		title: '',
 		description: ''
 	};
 
-	constructor(private router: Router,
-				private activatedRoute: ActivatedRoute,
-				private titleService: Title,
-				private translate: TranslateService,
-				@Inject(DOCUMENT) private document: any) {
+	constructor(private readonly router: Router,
+				private readonly activatedRoute: ActivatedRoute,
+				private readonly titleService: Title,
+				private readonly translate: TranslateService,
+				@Inject(DOCUMENT) private readonly document: any) {
 		super();
 
 		this.headElement = this.document.querySelector('head');

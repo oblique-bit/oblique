@@ -93,7 +93,7 @@ export class NavTreeComponent extends Unsubscribable {
 	};
 
 	// TODO: remove when https://github.com/angular/angular/issues/13205
-	constructor(private route: ActivatedRoute) {
+	constructor(private readonly route: ActivatedRoute) {
 		super();
 		this.route.fragment
 			.pipe(takeUntil(this.unsubscribe))

@@ -7,7 +7,7 @@ import {ColumnPanelDirective} from './column-panel.directive';
 })
 export class ColumnToggleDirective {
 
-	constructor(private parent: ColumnPanelDirective) {
+	constructor(private readonly parent: ColumnPanelDirective) {
 	}
 
 	@HostListener('click')

@@ -165,8 +165,8 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	isVisible = false;
 	searchFilterText = '';
 
-	constructor(private element: ElementRef,
-				private multiselectTexts: MultiselectTexts,
+	constructor(private readonly element: ElementRef,
+				private readonly multiselectTexts: MultiselectTexts,
 				multiselectConfig: MultiselectConfig,
 				differs: IterableDiffers) {
 		this.differ = differs.find([]).create(null);

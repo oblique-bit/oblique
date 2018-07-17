@@ -18,7 +18,7 @@ export class DatepickerPlaceholderDirective extends Unsubscribable implements On
 	@HostBinding()
 	placeholder;
 
-	constructor(private translateService: TranslateService) {
+	constructor(private readonly translateService: TranslateService) {
 		super();
 	}
 

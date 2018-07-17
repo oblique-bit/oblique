@@ -13,7 +13,7 @@ export class MasterLayoutHeaderToggleDirective {
 	@Output()
 	onToggle = new EventEmitter<MouseEvent>();
 
-	constructor(private headerService: MasterLayoutHeaderService) {
+	constructor(private readonly headerService: MasterLayoutHeaderService) {
 	}
 
 	@HostListener('click', ['$event'])

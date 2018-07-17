@@ -15,8 +15,8 @@ export class LayoutControlsComponent {
 
 	public locales = ['en'];
 
-	constructor(private layoutApplicationService: MasterLayoutApplicationService,
-				@Inject('ObliqueReactive.CONFIG') private config: any) {
+	constructor(private readonly layoutApplicationService: MasterLayoutApplicationService,
+				@Inject('ObliqueReactive.CONFIG') private readonly config: any) {
 		this.locales = config.locales || this.locales;
 	}
 

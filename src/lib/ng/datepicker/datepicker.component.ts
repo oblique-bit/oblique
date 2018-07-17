@@ -100,7 +100,7 @@ export class DatepickerComponent implements AfterViewInit {
 		return this._disabled;
 	}
 
-	constructor(private element: ElementRef) {
+	constructor(private readonly element: ElementRef) {
 	}
 
 	@HostListener('keydown', ['$event'])

@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 @Injectable()
 export class SampleDataResolver implements Resolve<any> {
 
-	constructor(private http: HttpClient) {
+	constructor(private readonly http: HttpClient) {
 	}
 
 	resolve(): Observable<any> {

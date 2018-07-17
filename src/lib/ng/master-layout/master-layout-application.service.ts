@@ -14,8 +14,8 @@ export class MasterLayoutApplicationService extends Unsubscribable {
 
 	public applicationDirective: MasterLayoutApplicationDirective;
 
-	constructor(private translate: TranslateService,
-				@Inject('ObliqueReactive.CONFIG') private config: any) {
+	constructor(private readonly translate: TranslateService,
+				@Inject('ObliqueReactive.CONFIG') private readonly config: any) {
 		super();
 
 		// User lang handling:

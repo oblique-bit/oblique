@@ -6,6 +6,7 @@ import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/h
 import {NgbDatepickerConfig, NgbModule, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
 // ObliqueReactive:
 import {
 	DocumentMetaService,
@@ -17,8 +18,10 @@ import {
 	ObliqueModule,
 	SchemaValidationService
 } from '../../lib';
+
 // Layout:
 import {LayoutModule} from './layout/layout.module';
+
 // App:
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -73,12 +76,12 @@ export function createTranslateLoader(http: HttpClient) {
 	bootstrap: [AppComponent]
 })
 export class AppModule {
-	constructor(private translate: TranslateService,
-				private tooltipConfig: NgbTooltipConfig,
-				private datepickerConfig: NgbDatepickerConfig,
-				private documentMetaService: DocumentMetaService,
+	constructor(private readonly translate: TranslateService,
+				private readonly tooltipConfig: NgbTooltipConfig,
+				private readonly datepickerConfig: NgbDatepickerConfig,
+				private readonly documentMetaService: DocumentMetaService,
 				interceptorConfig: ObliqueHttpInterceptorConfig,
-				@Inject('ObliqueReactive.CONFIG') private config: any) {
+				@Inject('ObliqueReactive.CONFIG') private readonly config: any) {
 		// As the HEAD `title` element and the `description` meta element are outside any
 		// Angular entry component, we use a service to update these element values:
 		documentMetaService.titleSuffix = 'i18n.application.title';

@@ -10,7 +10,7 @@ import {ScrollingConfig} from './scrolling.config';
 		</a>`
 })
 export class TopControlComponent {
-	constructor(private config: ScrollingConfig) {
+	constructor(private readonly config: ScrollingConfig) {
 	}
 
 	public scrollTop(): void {

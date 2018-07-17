@@ -8,8 +8,8 @@ import {MasterLayoutFooterService} from '../../../../lib/ng/master-layout/master
 })
 export class MasterLayoutSampleComponent {
 
-	constructor(private applicationService: MasterLayoutApplicationService,
-				private footerService: MasterLayoutFooterService) {
+	constructor(private readonly applicationService: MasterLayoutApplicationService,
+				private readonly footerService: MasterLayoutFooterService) {
 	}
 
 	get cover(): boolean {

@@ -7,10 +7,10 @@ import {SchemaValidationService} from './schema-validation.service';
 	providers: [SchemaValidationService]
 })
 export class SchemaValidationDirective implements OnInit {
-	@Input('orSchemaValidation') private schema: any;
+	@Input('orSchemaValidation') private readonly schema: any;
 	private validator;
 
-	constructor(private schemaValidationService: SchemaValidationService) {
+	constructor(private readonly schemaValidationService: SchemaValidationService) {
 	}
 
 	ngOnInit() {

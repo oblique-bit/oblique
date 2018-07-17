@@ -55,7 +55,7 @@ export class FilterBoxComponent implements OnInit {
 	@ViewChild('filterControl')
 	public filterControl: ElementRef;
 
-	private acceptedSizes = ['sm', 'lg'];
+	private readonly acceptedSizes = ['sm', 'lg'];
 
 	ngOnInit(): void {
 		if (this.size && this.acceptedSizes.indexOf(this.size) === -1) {

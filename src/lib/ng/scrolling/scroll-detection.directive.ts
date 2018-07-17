@@ -9,7 +9,7 @@ export class ScrollDetectionDirective {
 	@HostBinding('class.application-scrolling')
 	private isScrolling = false;
 
-	constructor(@Inject(DOCUMENT) private document: any, private config: ScrollingConfig) {
+	constructor(@Inject(DOCUMENT) private readonly document: any, private readonly config: ScrollingConfig) {
 	}
 
 	@HostListener('window:scroll')

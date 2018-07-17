@@ -75,7 +75,7 @@ export class NotificationComponent {
 
 	public variant: { [type: string]: string } = {};
 
-	constructor(private notificationService: NotificationService) {
+	constructor(private readonly notificationService: NotificationService) {
 		this.channel = this.channel || notificationService.config.channel;
 		this.timeout = this.timeout || notificationService.config.timeout;
 

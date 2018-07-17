@@ -11,7 +11,7 @@ export class MasterLayoutNavigationToggleDirective {
 
 	public back = false;
 
-	constructor(private elementRef: ElementRef) {
+	constructor(private readonly elementRef: ElementRef) {
 		this.back = elementRef.nativeElement.classList.contains('navbar-primary-back');
 	}
 

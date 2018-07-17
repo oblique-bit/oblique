@@ -6,7 +6,7 @@ import {MultiselectComponent} from './multiselect.component';
 })
 export class MultiselectSearchPipe implements PipeTransform {
 
-	constructor(private multiselectDropdown: MultiselectComponent) {
+	constructor(private readonly multiselectDropdown: MultiselectComponent) {
 
 	}
 
