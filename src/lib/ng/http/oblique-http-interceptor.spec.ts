@@ -1,13 +1,14 @@
 import {TestBed} from '@angular/core/testing';
 import {TestRequest} from '@angular/common/http/testing/src/request';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import {HttpClient} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {ObliqueHttpInterceptorConfig, ObliqueHttpInterceptorProviders, ObliqueHttpModule} from './index';
+import {finalize} from 'rxjs/operators';
+import {ObliqueHttpInterceptorConfig, ObliqueHttpModule} from './index';
 import {SpinnerService} from '../spinner';
 import {NotificationService, NotificationType} from '../notification';
 import {HttpMockErrorInterceptor} from '../../../showcase/app/samples/http-interceptor/http-mock-error.interceptor';
-import {finalize} from 'rxjs/operators';
+import {ObliqueHttpInterceptor} from './oblique-http-interceptor';
 
 @Injectable()
 class DataService {
@@ -61,8 +62,8 @@ describe(`ObliqueHttpInterceptor`, () => {
 			imports: [HttpClientTestingModule, ObliqueHttpModule.forRoot()],
 			providers: [
 				DataService,
-				ObliqueHttpInterceptorProviders,
 				ObliqueHttpInterceptorConfig,
+				{provide: HTTP_INTERCEPTORS, useClass: ObliqueHttpInterceptor, multi: true},
 				{provide: SpinnerService, useClass: MockSpinnerService},
 				{provide: NotificationService, useClass: MockNotificationService}
 			]

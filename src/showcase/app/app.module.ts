@@ -26,8 +26,8 @@ import {LayoutModule} from './layout/layout.module';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HomePageComponent} from './home/home.page';
-import {ObliqueHttpInterceptorProviders} from '../../lib/ng/http';
 import {HttpMockErrorInterceptor} from './samples/http-interceptor/http-mock-error.interceptor';
+import {ObliqueHttpInterceptor} from '../../lib/ng/http/oblique-http-interceptor';
 
 // AoT requires an exported function for factories:
 export function createTranslateLoader(http: HttpClient) {
@@ -69,7 +69,7 @@ export function createTranslateLoader(http: HttpClient) {
 				timeout: 5000
 			}
 		},
-		ObliqueHttpInterceptorProviders,
+		{provide: HTTP_INTERCEPTORS, useClass: ObliqueHttpInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true}
 	],
 	entryComponents: [AppComponent],
