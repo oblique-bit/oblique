@@ -69,7 +69,7 @@
     "bootstrap": "^4.1.2",
     "core-js": "^2.5.7",
     "font-awesome": "^4.7.0",
-    "oblique-ui": "2.0.0-RC.5",
+    "oblique-ui": "2.0.0",
     "rxjs": "6.2.2",
     "zone.js": "^0.8.26"
   },
