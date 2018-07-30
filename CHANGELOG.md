@@ -15,7 +15,7 @@
 ##### Bug Fixes
 * **form-control-state:** fix `control-mandatory` class ([33c916d](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/33c916d))
 * **test:** ensure `--prod` parameter is properly propagated to `ng test` ([fd42fbc](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/fd42fbc))
-* **test:** ensure `prebuild` npm script is during `ci-build` ([482a4b6](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/482a4b6))
+* **test:** ensure `prebuild` npm script is executed during `ci-build` ([482a4b6](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/482a4b6))
 
 <a name="2.0.0-RC.5"></a>
 #### [2.0.0-RC.5](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.5) (2018-07-04)
