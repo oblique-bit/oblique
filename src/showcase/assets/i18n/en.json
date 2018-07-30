@@ -167,6 +167,7 @@
       }
     },
     "validation": {
+      "type": "Bad value type, \"{{type}}\" is expected",
       "minLength": "Please enter at least {{limit}} characters",
       "required": "This field is required!",
       "basic": {
