@@ -16,7 +16,7 @@ export class SchemaValidatorInstance {
 		}
 
 		this.ajv.validate(propertyPath, value);
-		if (this.ajv.errors) {
+		if (this.ajv.errors && value != null && value !== '') {	// when a value is empty, do not check its type
 			return {[this.ajv.errors[0].keyword]: this.ajv.errors[0].params};
 		}
 
@@ -24,8 +24,7 @@ export class SchemaValidatorInstance {
 	}
 
 	getValidator(propertyPath: string): (AbstractControl) => ValidationErrors {
-		// NOTE: ajv cannot validate null or undefined => provide an empty string in those cases
-		return (control: AbstractControl) => this.validate(propertyPath, control.value == null ? '' : control.value);
+		return (control: AbstractControl) => this.validate(propertyPath, control.value);
 	}
 
 	isRequired(property: string, path: string[]): boolean {
