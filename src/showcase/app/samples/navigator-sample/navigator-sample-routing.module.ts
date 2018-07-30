@@ -8,7 +8,7 @@ import {
 
 const navigatorSampleRoutes: Routes = [
 	{
-		path: 'samples/navigator',
+		path: 'navigator',
 		component: NavigatorSampleComponent,
 		children: [
 			{
@@ -31,7 +31,7 @@ const navigatorSampleRoutes: Routes = [
 										component: ChildState112Component,
 										data: {
 											navigator: {
-												up: ['samples/navigator']
+												up: ['navigator']
 											}
 										}
 									}
