@@ -248,7 +248,6 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 			setTimeout(() => {
 				// WAI-ARIA: describe inner filter box input:
 				// TODO: create a ngAria-like directive
-				console.log(this.id, this.filterBox);
 				this.filterBox.filterControl.nativeElement.setAttribute('aria-describedby', `${this.id}-search`);
 			}, 0);
 		}
