@@ -161,7 +161,6 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 			.subscribe((changes: QueryList<NavigableDirective>) => {
 				const diff = this.differ.diff(changes.toArray());
 				diff.forEachAddedItem((record: IterableChangeRecord<NavigableDirective>) => {
-					console.log(record.item);
 					this.registerNavigableEvents(record.item);
 				});
 			});
