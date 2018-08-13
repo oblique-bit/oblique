@@ -19,21 +19,18 @@
 		<div class="navbar">
 			<div class="navbar-header">
 				<div class="application-brand">
-					<a class="application-brand-logo" [href]="home" tabindex="-1">
+					<a class="application-brand-logo" [routerLink]="home" tabindex="-1">
 						<img alt="Back to home" src="assets/oblique-ui/images/logo.svg"/>
 					</a>
 					<span class="application-brand-app-title">
-				<a [routerLink]="home" class="application-brand-link">
-				<ng-content select="[orHeaderTitle]"></ng-content>
-
-				</a>
-						</span>
+						<a [routerLink]="home" class="application-brand-link">
+							<ng-content select="[orHeaderTitle]"></ng-content>
+						</a>
+					</span>
 				</div>
 				<ul class="nav navbar-nav navbar-controls navbar-toggler">
 					<li class="nav-item">
-						<a role="button" tabindex="0"
-						   title="Toggle application header"
-						   class="nav-link control-link" data-toggle="header">
+						<a role="button" tabindex="0" title="Toggle application header" class="nav-link control-link" data-toggle="header">
 							<div class="application-header-toggler">
 								<span class="first-line"></span>
 								<span class="second-line"></span>
@@ -48,15 +45,13 @@
 				<ng-content select="[orHeaderControls]"></ng-content>
 			</div>
 		</div>
-		<div class="application-navigation navigation-scrollable" data-provides="navigation-scrollable">
+		<div class="application-navigation navigation-scrollable">
 			<h2 class="sr-only">Global navigation menu</h2>
-			<button class="navigation-scrollable-control navigation-scrollable-control-left"
-					data-navigation-scrollable="left" type="button">
+			<button class="navigation-scrollable-control navigation-scrollable-control-left" type="button">
 				<span class="fa fa-angle-left"></span>
 			</button>
 			<ng-content select="[orNavigation]"></ng-content>
-			<button class="navigation-scrollable-control navigation-scrollable-control-right"
-					data-navigation-scrollable="right" type="button">
+			<button class="navigation-scrollable-control navigation-scrollable-control-right" type="button">
 				<span class="fa fa-angle-right"></span>
 			</button>
 		</div>
@@ -79,7 +74,6 @@
 				<router-outlet></router-outlet>
 			</div>
 			<or-spinner></or-spinner>
-
 		</div>
 	</div>
 	<or-top-control></or-top-control>
