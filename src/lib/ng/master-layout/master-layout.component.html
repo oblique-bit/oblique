@@ -19,12 +19,11 @@
 		<div class="navbar">
 			<div class="navbar-header">
 				<div class="application-brand">
-					<a class="application-brand-logo" href="/home" tabindex="-1">
-						<img alt="Back to home"
-							 src="assets/oblique-ui/images/logo.svg" />
+					<a class="application-brand-logo" [href]="home" tabindex="-1">
+						<img alt="Back to home" src="assets/oblique-ui/images/logo.svg"/>
 					</a>
 					<span class="application-brand-app-title">
-				<a [routerLink]="'/home'" class="application-brand-link">
+				<a [routerLink]="home" class="application-brand-link">
 					ObliqueReactive
 				</a>
 						</span>
@@ -67,8 +66,10 @@
 				<span class="sr-only">Error</span>
 				<h4>Unsupported browser!</h4>
 				<p class="lead">Please note that your browser, Internet Explorer 9 or earlier, is deprecated.</p>
-				<p>We recommend upgrading to the <a href="https://www.microsoft.com/en-us/windows/microsoft-edge" target="_blank">latest version</a>.</p>
-				<p>If you are using IE 10 or above, make sure you <a href="https://support.microsoft.com/en-us/help/17471" target="_blank">turn off "Compatibility View".</a></p>
+				<p>We recommend upgrading to the <a href="https://www.microsoft.com/en-us/windows/microsoft-edge" target="_blank">latest
+					version</a>.</p>
+				<p>If you are using IE 10 or above, make sure you <a href="https://support.microsoft.com/en-us/help/17471" target="_blank">turn
+					off "Compatibility View".</a></p>
 			</div>
 		</div>
 		<div class="application-content-viewport">
@@ -82,5 +83,5 @@
 	</div>
 	<or-top-control></or-top-control>
 	<!--<layout-footer class="application-footer"-->
-				   <!--orMasterLayoutFooter></layout-footer>-->
+	<!--orMasterLayoutFooter></layout-footer>-->
 </div>
