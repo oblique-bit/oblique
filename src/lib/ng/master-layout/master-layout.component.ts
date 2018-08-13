@@ -6,6 +6,12 @@ import {ORFooterLink} from './master-layout-footer.component';
 import {ScrollingConfig} from '../scrolling';
 import {ORNavigationLink} from './master-layout-navigation.component';
 
+export enum Variant {
+	small,
+	medium,
+	large
+}
+
 @Component({
 	selector: 'or-master-layout',
 	template: `
