@@ -4,7 +4,7 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 import {HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {finalize} from 'rxjs/operators';
-import {ObliqueHttpInterceptorConfig, ObliqueHttpModule} from './index';
+import {ObliqueHttpInterceptorConfig, ObliqueHttpModule} from '.';
 import {SpinnerService} from '../spinner';
 import {NotificationService, NotificationType} from '../notification';
 import {HttpMockErrorInterceptor} from '../../../showcase/app/samples/http-interceptor/http-mock-error.interceptor';

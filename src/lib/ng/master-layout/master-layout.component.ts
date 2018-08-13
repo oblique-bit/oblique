@@ -6,16 +6,10 @@ import {ORFooterLink} from './master-layout-footer.component';
 import {ScrollingConfig} from '../scrolling';
 import {ORNavigationLink} from './master-layout-navigation.component';
 
-export enum Variant {
-	small,
-	medium,
-	large
-}
-
 @Component({
 	selector: 'or-master-layout',
 	template: `
-		<div class="application" orScrollDetection aria-hidden="false"
+		<div class="application offcanvas" orScrollDetection aria-hidden="false"
 			[ngClass]="{'application-fixed': applicationFixed, 'no-navigation': navigationNone, 'has-cover': coverLayout, 'header-open': menuCollapsed}">
 			<nav class="accesskeys" role="navigation" aria-label="Accesskeys">
 				<ul class="list-unstyled">
@@ -33,7 +27,7 @@ export enum Variant {
 					</li>
 				</ul>
 			</nav>
-			<or-master-layout-header class="application-header"
+			<or-master-layout-header class="application-header offcanvas-main"
 					[ngClass]="{'application-header-animate': headerAnimate, 'application-header-sticky': headerSticky, 'application-header-md': headerMedium}"
 					[navigationFullWidth]="navigationFullWidth"
 					[navigationScrollable]="navigationScrollable"
@@ -43,7 +37,7 @@ export enum Variant {
 				<ng-content select="[orHeaderControls]" orHeaderControls></ng-content>
 				<ng-content select="[orNavigation]" orNavigation></ng-content>
 			</or-master-layout-header>
-			<div id="content" class="application-content" role="main">
+			<div id="content" class="application-content offcanvas-main" role="main">
 				<div class="alert-compatibility default-layout">
 					<div class="callout callout-danger">
 						<span class="sr-only">Error</span>
@@ -71,11 +65,14 @@ export enum Variant {
 				</div>
 			</div>
 			<or-top-control></or-top-control>
-			<or-master-layout-footer class="application-footer" [ngClass]="{'application-footer-sm': footerSmall}" [footerLinks]="footerLinks">
+			<or-master-layout-footer class="application-footer offcanvas-main" [ngClass]="{'application-footer-sm': footerSmall}" [footerLinks]="footerLinks">
 				<ng-content select="[orFooterInfo]" orFooterInfo></ng-content>
 				<ng-content select="[orFooterInfoSMCollapse]" orFooterInfoSMCollapse></ng-content>
 				<ng-content select="[orFooterLinks]" orFooterLinks></ng-content>
 			</or-master-layout-footer>
+			<div class="offcanvas-sidebar inversed">
+				<ng-content select="[orOffCanvas]"></ng-content>
+			</div>
 		</div>
 	`
 })

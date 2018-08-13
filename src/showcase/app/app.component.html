@@ -6,7 +6,12 @@
 			   class="nav-link control-link"
 			   ngbTooltip="Go to ObliqueReactive GIT repository" placement="left">
 				<span class="control-icon fa fa-bitbucket"></span>
-				<span class="control-label d-layout-collapsed">GIT</span>
+			</a>
+		</li>
+		<li class="nav-item" role="presentation">
+			<a class="nav-link control-link" orOffCanvasToggle role="button" tabindex="0"
+			ngbTooltip="Toggle Off-Canvas">
+				<span class="control-icon fa fa-sign-in fa-rotate-180"></span>
 			</a>
 		</li>
 	</ul>
@@ -25,4 +30,7 @@
 		<span class="version">(6.0.9)</span>
 		<span>.</span>
 	</p>
+	<ng-container orOffCanvas>
+		Hello world
+	</ng-container>
 </or-master-layout>

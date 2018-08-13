@@ -1,4 +1,4 @@
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 
 import {ColumnLayoutModule} from './column-layout';
 import {DatepickerModule} from './datepicker';
@@ -20,6 +20,7 @@ import {ToggleModule} from './toggle';
 import {UnsavedChangesModule} from './unsaved-changes';
 import {NumberFormatModule} from './number-format';
 import {TextControlClearModule} from './text-control-clear';
+import {OffCanvasModule} from './off-canvas';
 
 export * from './column-layout';
 export * from './datepicker';
@@ -42,6 +43,7 @@ export * from './text-control-clear';
 export * from './unsaved-changes';
 export * from './unsubscribe';
 export * from './number-format';
+export * from './off-canvas';
 
 const OBLIQUE_MODULES = [
 	ColumnLayoutModule,
@@ -63,7 +65,8 @@ const OBLIQUE_MODULES = [
 	TextControlClearModule,
 	ToggleModule,
 	UnsavedChangesModule,
-	NumberFormatModule
+	NumberFormatModule,
+	OffCanvasModule
 ];
 
 @NgModule({
@@ -87,7 +90,8 @@ const OBLIQUE_MODULES = [
 		TextControlClearModule.forRoot(),
 		ToggleModule.forRoot(),
 		UnsavedChangesModule.forRoot(),
-		NumberFormatModule.forRoot()
+		NumberFormatModule.forRoot(),
+		OffCanvasModule.forRoot()
 	],
 	exports: OBLIQUE_MODULES
 })

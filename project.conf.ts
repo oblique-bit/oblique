@@ -25,7 +25,7 @@ export const ProjectConfig = {
 			},
 			application: {
 				fixed:       false,
-				attributes: 'orMasterLayoutApplication orScrollDetection'
+				attributes: 'orMasterLayoutApplication orScrollDetection orOffcanvas'
 			},
 			header: {
 				animate:    true,

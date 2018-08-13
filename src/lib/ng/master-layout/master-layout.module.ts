@@ -22,6 +22,7 @@ import {MasterLayoutFooterService} from './master-layout-footer.service';
 import {NotificationModule} from '../notification';
 import {SpinnerModule} from '../spinner';
 import {ScrollingModule} from '../scrolling';
+import {OffCanvasModule} from '../off-canvas';
 
 @NgModule({
 	imports: [
@@ -30,7 +31,8 @@ import {ScrollingModule} from '../scrolling';
 		RouterModule,
 		NotificationModule,
 		SpinnerModule,
-		ScrollingModule
+		ScrollingModule,
+		OffCanvasModule
 	],
 	declarations: [
 		MasterLayoutComponent,

@@ -1,6 +1,7 @@
 import {Directive, ElementRef, HostBinding} from '@angular/core';
-import {Router, NavigationEnd, ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
+
 import {Unsubscribable} from '../unsubscribe';
 import {MasterLayoutApplicationService} from './master-layout-application.service';
 
@@ -20,6 +21,7 @@ export class MasterLayoutApplicationDirective extends Unsubscribable {
 	private readonly defaultHasCover;
 	private readonly defaultNoNavigation;
 	private readonly defaultApplicationFixed;
+	private readonly defaultOffcanvas;
 
 	constructor(private readonly layoutApplicationService: MasterLayoutApplicationService,
 				private readonly elementRef: ElementRef,
@@ -32,6 +34,7 @@ export class MasterLayoutApplicationDirective extends Unsubscribable {
 		this.hasCover = this.defaultHasCover = this.elementRef.nativeElement.classList.contains('has-cover');
 		this.noNavigation = this.defaultNoNavigation = this.elementRef.nativeElement.classList.contains('no-navigation');
 		this.applicationFixed = this.defaultApplicationFixed = this.elementRef.nativeElement.classList.contains('application-fixed');
+		this.defaultOffcanvas = this.elementRef.nativeElement.classList.contains('offcanvas');
 
 		this.router.events.pipe(
 			filter(event => event instanceof NavigationEnd),
