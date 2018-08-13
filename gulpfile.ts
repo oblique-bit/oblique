@@ -22,7 +22,6 @@ const del = require('del'),
 	paths = {
 		src: 'src/',
 		lib: 'src/lib/',
-		sass: 'src/lib/sass/',
 		dist: 'dist/'
 	};
 //</editor-fold>
@@ -34,10 +33,14 @@ const distClean = () => {
 
 const distSources = () => {
 	return gulp.src([
-		paths.sass + '**/*'
-	], {base: paths.lib}
+			'node_modules/oblique-ui/css/**/*',
+			'node_modules/oblique-ui/scss/**/*',
+			'node_modules/oblique-ui/fonts/**/*',
+			'node_modules/oblique-ui/images/**/*',
+			'node_modules/oblique-ui/templates/**/*'
+	], {base: 'node_modules/oblique-ui'}
 	).pipe(
-		gulp.dest(paths.dist)
+		gulp.dest(paths.dist + 'oblique-ui')
 	);
 };
 
