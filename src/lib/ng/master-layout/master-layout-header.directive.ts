@@ -50,7 +50,7 @@ export class MasterLayoutHeaderDirective extends Unsubscribable implements After
 	ngAfterViewInit() {
 		// TODO: implement this using a MasterLayoutHeaderToggler instead
 		this.elementRef.nativeElement
-			.querySelector('[data-toggle="header"]')
+			.querySelector('.or-collapse-toggle')
 			.addEventListener('click', this.toggle.bind(this));
 	}
 
