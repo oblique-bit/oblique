@@ -34,16 +34,19 @@
     "path": "projects/OUI/repos/oblique2-reactive"
   },
   "scripts": {
+    "dev": "npm run start -- --open",
+    "dev-watch": "./node_modules/.bin/gulp dev-watch",
     "start": "ng serve",
     "dist": "./node_modules/.bin/gulp dist",
     "ci-build": "npm run lint && npm test -- --prod && npm run dist",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "changelog": "./node_modules/.bin/gulp -- changelog",
+    "e2e": "npm run prebuild && ng e2e",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1",
     "release": "./node_modules/.bin/gulp publish",
-    "dev-link": "./node_modules/.bin/gulp dev-link"
+    "preversion": "npm run ci-build",
+    "postversion": "npm run changelog"
   },
   "dependencies": {
     "@angular/animations": "^6.1.3",

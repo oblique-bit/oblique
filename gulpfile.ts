@@ -109,43 +109,10 @@ const dist = gulp.series(
 
 //<editor-fold desc="Deployment tasks">
 require('gulp-release-flows')({
-	branch: 'HEAD:master'
+	branch: 'HEAD:feature/OUI-633-improve-release-workflow'
 }); // Imports 'build:release-*' tasks
 
-const changelog = () => {
-	return gulp.src(
-		'CHANGELOG.md'
-	).pipe(
-		conventionalChangelog({
-			// conventional-changelog options:
-			preset: 'angular'
-			//releaseCount: 0
-		}, {
-			// context options:
-			linkCompare: false,
-			repository: pkg.repository.path // Atlassian Stash-specific
-		}, {
-			// git-raw-commits options:
-			from: '2.0.0',
-			to: 'HEAD'
-		}, {
-			// conventional-commits-parser options
-		}, {
-			// conventional-changelog-writer options
-			// transform: function (commit) {
-			// 	console.log(commit);
-			// 	return commit;
-			// },
-			headerPartial: readFileSync(join(__dirname, 'changelog-header.hbs'), 'utf-8')
-		})
-	).pipe(
-		gulp.dest('./')
-	);
-};
-
 const release = gulp.series(
-	'build:bump-version',
-	//'changelog',
 	'build:commit-changes',
 	'build:push-changes',
 	'build:create-new-tag'
@@ -168,27 +135,15 @@ const npmPublish = (callback) => {
 };
 //</editor-fold>
 
-//<editor-fold desc="NPM link for dev only">
-const npmLink = (callback) => {
-	return spawn(
-		'npm',
-		['link', paths.dist],
-		{stdio: 'inherit'}
-	).on('close', callback)
-	.on('error', function () {
-		console.log('[SPAWN] Error: ', arguments);
-		callback('Unable to execute NPM link');
-	});
-};
+//<editor-fold desc="Build-watch for dev only">
 
-const watchLink = () => {
+const watchBuild = () => {
 	gulp.watch(paths.src + '**/*', distBuild);
 };
 
-const devLink = gulp.series(
+const buildAndWatch = gulp.series(
 	distBuild,
-	npmLink,
-	watchLink
+	watchBuild
 );
 //</editor-fold>
 
@@ -214,7 +169,7 @@ gulp.task(
 gulp.task(
 	'publish',
 	gulp.series(
-		release, // Note: this increments version number!
+		release,
 		dist,
 		npmPublish
 	)
@@ -223,13 +178,8 @@ gulp.task(
 
 //<editor-fold desc="Secondary tasks">
 gulp.task(
-	'changelog',
-	changelog
-);
-
-gulp.task(
-	'dev-link',
-	devLink
+	'dev-watch',
+	buildAndWatch
 );
 //</editor-fold>
 
