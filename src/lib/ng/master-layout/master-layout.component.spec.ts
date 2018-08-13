@@ -1,6 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {MasterLayoutComponent} from './master-layout.component';
+import {MasterLayoutService} from './master-layout.service';
+import {ScrollingConfig} from '../scrolling';
 
 describe('MasterLayoutComponent', () => {
 	let component: MasterLayoutComponent;
@@ -8,7 +10,8 @@ describe('MasterLayoutComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [MasterLayoutComponent]
+			declarations: [MasterLayoutComponent],
+			providers: [MasterLayoutService, ScrollingConfig]
 		})
 			.compileComponents();
 	}));

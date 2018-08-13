@@ -1,6 +1,9 @@
 import {Directive, EventEmitter, HostListener, Input, Output} from '@angular/core';
 import {MasterLayoutHeaderService} from './master-layout-header.service';
 
+/**
+ * @deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead
+ */
 @Directive({
 	selector: '[orMasterLayoutHeaderToggle]',
 	exportAs: 'orMasterLayoutHeaderToggle'
@@ -14,6 +17,7 @@ export class MasterLayoutHeaderToggleDirective {
 	onToggle = new EventEmitter<MouseEvent>();
 
 	constructor(private readonly headerService: MasterLayoutHeaderService) {
+		console.warn('@deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead');
 	}
 
 	@HostListener('click', ['$event'])

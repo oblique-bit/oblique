@@ -4,6 +4,9 @@ import {MasterLayoutFooterService} from './master-layout-footer.service';
 import {takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe';
 
+/**
+ * @deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead
+ */
 @Directive({
 	selector: '[orMasterLayoutFooter]',
 	exportAs: 'orMasterLayoutFooter'
@@ -17,6 +20,7 @@ export class MasterLayoutFooterDirective extends Unsubscribable {
 				private readonly elementRef: ElementRef,
 				@Inject(DOCUMENT) private readonly document: any) {
 		super();
+		console.warn('@deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead');
 
 		this.footerService.small = this.elementRef.nativeElement.classList.contains('application-footer-sm');
 

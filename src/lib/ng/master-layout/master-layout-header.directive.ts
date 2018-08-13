@@ -5,6 +5,9 @@ import {takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe';
 import {MasterLayoutHeaderService} from './master-layout-header.service';
 
+/**
+ * @deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead
+ */
 @Directive({
 	selector: '[orMasterLayoutHeader]',
 	exportAs: 'orMasterLayoutHeader'
@@ -22,6 +25,7 @@ export class MasterLayoutHeaderDirective extends Unsubscribable implements After
 				private readonly elementRef: ElementRef,
 				@Inject(DOCUMENT) private readonly document: any) {
 		super();
+		console.warn('@deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead');
 
 		this.body = this.document.querySelector('body');
 		this.headerService.medium = this.elementRef.nativeElement.classList.contains('application-header-md');

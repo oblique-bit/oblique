@@ -6,6 +6,7 @@ import {MasterLayoutApplicationDirective} from './master-layout-application.dire
 
 /**
  * Service for controlling ObliqueUI application composite features.
+ * @deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead
  */
 @Injectable()
 export class MasterLayoutApplicationService extends Unsubscribable {
@@ -17,6 +18,7 @@ export class MasterLayoutApplicationService extends Unsubscribable {
 	constructor(private readonly translate: TranslateService,
 				@Inject('ObliqueReactive.CONFIG') private readonly config: any) {
 		super();
+		console.warn('@deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead');
 
 		// User lang handling:
 		// --------------------

@@ -2,6 +2,9 @@ import {AfterViewInit, ContentChildren, Directive, ElementRef, EventEmitter, Out
 import {takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe';
 
+/**
+ * @deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead
+ */
 @Directive({
 	selector: '[orMasterLayoutNavigationMenu]',
 	exportAs: 'orMasterLayoutNavigationMenu'
@@ -16,6 +19,7 @@ export class MasterLayoutNavigationMenuDirective extends Unsubscribable implemen
 
 	constructor(private readonly element: ElementRef) {
 		super();
+		console.warn('@deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead');
 	}
 
 	ngAfterViewInit() {

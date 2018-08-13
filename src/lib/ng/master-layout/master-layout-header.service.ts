@@ -5,6 +5,7 @@ import {Unsubscribable} from '../unsubscribe';
 
 /**
  * Service for controlling ObliqueUI header composite features.
+ * @deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead
  */
 @Injectable()
 export class MasterLayoutHeaderService extends Unsubscribable {
@@ -17,6 +18,7 @@ export class MasterLayoutHeaderService extends Unsubscribable {
 
 	constructor(private readonly config: ScrollingConfig) {
 		super();
+		console.warn('@deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead');
 
 		if (config.transitions) {
 			config.onScroll.pipe(takeUntil(this.unsubscribe))

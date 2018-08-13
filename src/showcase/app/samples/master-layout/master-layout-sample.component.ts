@@ -1,46 +1,73 @@
-import {Component} from '@angular/core';
-import {MasterLayoutApplicationService} from '../../../../lib';
-import {MasterLayoutFooterService} from '../../../../lib/ng/master-layout/master-layout-footer.service';
+import {Component, OnInit, AfterViewInit} from '@angular/core';
+import {MasterLayoutService} from '../../../../lib/ng/master-layout/master-layout.service';
+import {Unsubscribable} from '../../../../lib/ng/unsubscribe';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
 	selector: 'master-layout-sample',
 	templateUrl: './master-layout-sample.component.html'
 })
 export class MasterLayoutSampleComponent {
-
-	constructor(private readonly applicationService: MasterLayoutApplicationService,
-				private readonly footerService: MasterLayoutFooterService) {
-	}
-
-	get cover(): boolean {
-		return this.applicationService.cover;
-	}
-
-	set cover(value: boolean) {
-		this.applicationService.cover = value;
-	}
-
-	get navigation() {
-		return this.applicationService.navigation;
-	}
-
-	set navigation(value: boolean) {
-		this.applicationService.navigation = value;
-	}
+	coverLayout = false;
 
 	get applicationFixed() {
-		return this.applicationService.applicationFixed;
+		return this.masterLayout.applicationFixed;
 	}
 
 	set applicationFixed(value: boolean) {
-		this.applicationService.applicationFixed = value;
+		this.masterLayout.applicationFixed = value;
 	}
 
 	get footerSM() {
-		return this.footerService.small;
+		return this.masterLayout.smallFooter;
 	}
 
 	set footerSM(value: boolean) {
-		this.footerService.small = value;
+		this.masterLayout.smallFooter = value;
+	}
+
+	get headerMD() {
+		return this.masterLayout.mediumHeader;
+	}
+
+	set headerMD(value: boolean) {
+		this.masterLayout.mediumHeader = value;
+	}
+
+	get headerSticky() {
+		return this.masterLayout.stickyHeader;
+	}
+
+	set headerSticky(value: boolean) {
+		this.masterLayout.stickyHeader = value;
+	}
+
+	get headerAnimate() {
+		return this.masterLayout.animateHeader;
+	}
+
+	set headerAnimate(value: boolean) {
+		this.masterLayout.animateHeader = value;
+	}
+
+
+	get cover(): boolean {
+		return this.masterLayout.coverLayout;
+	}
+
+	set cover(value: boolean) {
+		this.masterLayout.coverLayout = value;
+	}
+
+	get navigation() {
+		return !this.masterLayout.noNavigation;
+	}
+
+	set navigation(value: boolean) {
+		this.masterLayout.noNavigation = !value;
+	}
+
+	constructor(private readonly masterLayout: MasterLayoutService) {
+		this.coverLayout = this.masterLayout.coverLayout;
 	}
 }

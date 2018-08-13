@@ -2,6 +2,8 @@ import {ModuleWithProviders, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
+import {MasterLayoutComponent} from './master-layout.component';
+import {MasterLayoutService} from './master-layout.service';
 import {MasterLayoutApplicationService} from './master-layout-application.service';
 import {MasterLayoutApplicationDirective} from './master-layout-application.directive';
 import {MasterLayoutHeaderDirective} from './master-layout-header.directive';
@@ -13,7 +15,6 @@ import {MasterLayoutNavigationDirective} from './master-layout-navigation.direct
 import {MasterLayoutFooterDirective} from './master-layout-footer.directive';
 import {MasterLayoutFooterService} from './master-layout-footer.service';
 import {MasterLayoutHeaderToggleDirective} from './master-layout-header-toggle.directive';
-import {MasterLayoutComponent} from './master-layout.component';
 import {NotificationModule} from '../notification';
 import {SpinnerModule} from '../spinner';
 import {ScrollingModule} from '../scrolling';
@@ -55,6 +56,7 @@ export class MasterLayoutModule {
 		return {
 			ngModule: MasterLayoutModule,
 			providers: [
+				MasterLayoutService,
 				MasterLayoutApplicationService,
 				MasterLayoutHeaderService,
 				MasterLayoutFooterService

@@ -6,6 +6,7 @@ import {MasterLayoutNavigationItemDirective} from './master-layout-navigation-it
 
 /**
  * FIXME: MasterLayoutNavigation* directives need more design thinking.
+ * @deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead
  */
 @Directive({
 	selector: '[orMasterLayoutNavigation]',
@@ -18,6 +19,7 @@ export class MasterLayoutNavigationDirective extends Unsubscribable {
 
 	constructor(private readonly headerService: MasterLayoutHeaderService) {
 		super();
+		console.warn('@deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead');
 		// Subscribe to header changes:
 		this.headerService.openChange
 			.pipe(takeUntil(this.unsubscribe))
