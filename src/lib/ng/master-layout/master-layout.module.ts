@@ -1,5 +1,6 @@
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {MasterLayoutApplicationService} from './master-layout-application.service';
 import {MasterLayoutApplicationDirective} from './master-layout-application.directive';
@@ -12,11 +13,19 @@ import {MasterLayoutNavigationDirective} from './master-layout-navigation.direct
 import {MasterLayoutFooterDirective} from './master-layout-footer.directive';
 import {MasterLayoutFooterService} from './master-layout-footer.service';
 import {MasterLayoutHeaderToggleDirective} from './master-layout-header-toggle.directive';
+import {MasterLayoutComponent} from './master-layout.component';
+import {NotificationModule} from '../notification';
+import {SpinnerModule} from '../spinner';
+import {ScrollingModule} from '../scrolling';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		TranslateModule,
+		RouterModule,
+		NotificationModule,
+		SpinnerModule,
+		ScrollingModule
 	],
 	declarations: [
 		MasterLayoutApplicationDirective,
@@ -26,7 +35,8 @@ import {MasterLayoutHeaderToggleDirective} from './master-layout-header-toggle.d
 		MasterLayoutNavigationDirective,
 		MasterLayoutNavigationItemDirective,
 		MasterLayoutNavigationToggleDirective,
-		MasterLayoutNavigationMenuDirective
+		MasterLayoutNavigationMenuDirective,
+		MasterLayoutComponent
 	],
 	exports: [
 		MasterLayoutApplicationDirective,
@@ -36,7 +46,8 @@ import {MasterLayoutHeaderToggleDirective} from './master-layout-header-toggle.d
 		MasterLayoutNavigationDirective,
 		MasterLayoutNavigationItemDirective,
 		MasterLayoutNavigationToggleDirective,
-		MasterLayoutNavigationMenuDirective
+		MasterLayoutNavigationMenuDirective,
+		MasterLayoutComponent
 	]
 })
 export class MasterLayoutModule {
