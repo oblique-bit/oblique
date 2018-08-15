@@ -3,14 +3,12 @@ import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+
 import {Unsubscribable} from '../unsubscribe';
 
-/**
- * Service for controlling ObliqueUI application composite features.
- */
 @Injectable()
 export class MasterLayoutService extends Unsubscribable {
-	userLang: string = localStorage.getItem('oblique:lang');
+	userLang: string;
 	applicationFixedChange: Observable<boolean>;
 	footerSmallChange: Observable<boolean>;
 	headerMediumChange: Observable<boolean>;
@@ -111,8 +109,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	constructor(private readonly translate: TranslateService,
 				private readonly router: Router,
-				private readonly activatedRoute: ActivatedRoute,
-				@Inject('ObliqueReactive.CONFIG') private readonly config: any) {
+				private readonly activatedRoute: ActivatedRoute) {
 		super();
 		this.applicationFixedChange = this.applicationFixedEmitter.asObservable();
 		this.footerSmallChange = this.footerSmallEmitter.asObservable();
@@ -123,30 +120,20 @@ export class MasterLayoutService extends Unsubscribable {
 		this.navigationFullWidthChange = this.navigationFullWidthEmitter.asObservable();
 		this.coverLayoutChange = this.coverLayoutEmitter.asObservable();
 
-		this.lang();
+		this.manageLanguage();
 		this.routeChange();
 	}
 
-	useLang(locale: string) {
-		this.translate.use(locale);
-	}
-
-	private lang() {
-		// User lang handling:
-		// --------------------
+	private manageLanguage() {
+		this.userLang = localStorage.getItem('oblique:lang') || 'en';
+		this.translate.setDefaultLang(this.userLang);
+		this.translate.use(this.userLang);
 		this.translate.onLangChange
 			.pipe(takeUntil(this.unsubscribe))
 			.subscribe((event: LangChangeEvent) => {
-				// Ensure local value remains in sync:
 				this.userLang = event.lang;
-				localStorage.setItem('oblique:lang', this.userLang);
+				localStorage.setItem('oblique:langoblique:lang', this.userLang);
 			});
-
-		// Define default/fallback lang:
-		this.translate.setDefaultLang((this.config.defaults && this.config.defaults.locale) || 'en');
-
-		// Apply user or default lang:
-		this.translate.use(this.userLang || this.translate.getDefaultLang());
 	}
 
 	private routeChange() {
