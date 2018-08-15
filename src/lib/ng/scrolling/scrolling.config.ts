@@ -9,6 +9,9 @@ import {EventEmitter, Injectable} from '@angular/core';
 @Injectable()
 export class ScrollingConfig {
 	onScroll: EventEmitter<boolean> = new EventEmitter<boolean>();
-	transitions = true;
+	transitions = {
+		header: true,	// indicates if the header should be medium if scrolling is enabled
+		footer: true	// indicates if the footer should be medium if scrolling is enabled
+	};
 	scrollDuration = 200;
 }

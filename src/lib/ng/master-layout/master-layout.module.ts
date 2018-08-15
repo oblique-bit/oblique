@@ -4,6 +4,8 @@ import {RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {MasterLayoutComponent} from './master-layout.component';
 import {MasterLayoutService} from './master-layout.service';
+import {MasterLayoutFooterComponent} from './master-layout-footer.component';
+
 import {MasterLayoutApplicationService} from './master-layout-application.service';
 import {MasterLayoutApplicationDirective} from './master-layout-application.directive';
 import {MasterLayoutHeaderDirective} from './master-layout-header.directive';
@@ -29,6 +31,9 @@ import {ScrollingModule} from '../scrolling';
 		ScrollingModule
 	],
 	declarations: [
+		MasterLayoutComponent,
+		MasterLayoutFooterComponent,
+
 		MasterLayoutApplicationDirective,
 		MasterLayoutHeaderDirective,
 		MasterLayoutHeaderToggleDirective,
@@ -36,10 +41,11 @@ import {ScrollingModule} from '../scrolling';
 		MasterLayoutNavigationDirective,
 		MasterLayoutNavigationItemDirective,
 		MasterLayoutNavigationToggleDirective,
-		MasterLayoutNavigationMenuDirective,
-		MasterLayoutComponent
+		MasterLayoutNavigationMenuDirective
 	],
 	exports: [
+		MasterLayoutComponent,
+
 		MasterLayoutApplicationDirective,
 		MasterLayoutHeaderDirective,
 		MasterLayoutHeaderToggleDirective,
@@ -47,8 +53,7 @@ import {ScrollingModule} from '../scrolling';
 		MasterLayoutNavigationDirective,
 		MasterLayoutNavigationItemDirective,
 		MasterLayoutNavigationToggleDirective,
-		MasterLayoutNavigationMenuDirective,
-		MasterLayoutComponent
+		MasterLayoutNavigationMenuDirective
 	]
 })
 export class MasterLayoutModule {

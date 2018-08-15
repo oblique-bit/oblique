@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe';
 import {MasterLayoutService} from './master-layout.service';
+import {ORFooterLink} from './master-layout-footer.component';
 import {ScrollingConfig} from '../scrolling';
 
 @Component({
@@ -95,9 +96,10 @@ import {ScrollingConfig} from '../scrolling';
 			</div>
 		</div>
 		<or-top-control></or-top-control>
-		<div class="application-footer" [ngClass]="{'application-footer-sm': footerSmall}">
-			<ng-content select="[orFooter]"></ng-content>
-		</div>
+		<or-master-layout-footer class="application-footer" [ngClass]="{'application-footer-sm': footerSmall}" [footerLinks]="footerLinks">
+			<ng-content select="[orFooterInfo]" orFooterInfo></ng-content>
+			<ng-content select="[orFooterInfoSMCollapse]" orFooterInfoSMCollapse></ng-content>
+		</or-master-layout-footer>
 	</div>
 `
 })
@@ -111,6 +113,7 @@ export class MasterLayoutComponent extends Unsubscribable {
 	@Input() navigationNone = false;
 	@Input() navigationFullWidth = false;
 	@Input() coverLayout = false;
+	@Input() footerLinks: ORFooterLink[];
 
 	constructor(private readonly masterLayout: MasterLayoutService, private readonly scroll: ScrollingConfig) {
 		super();
@@ -122,10 +125,15 @@ export class MasterLayoutComponent extends Unsubscribable {
 		this.updateNoNavigation();
 		this.updateCoverLayout();
 
-		if (scroll.transitions) {
+		if (scroll.transitions.header || scroll.transitions.footer) {
 			scroll.onScroll.pipe(takeUntil(this.unsubscribe))
 				.subscribe((isScrolling) => {
-					this.headerMedium = isScrolling;
+					if (scroll.transitions.header) {
+						this.headerMedium = isScrolling;
+					}
+					if (scroll.transitions.footer) {
+						this.footerSmall = !isScrolling;
+					}
 				});
 		}
 	}
