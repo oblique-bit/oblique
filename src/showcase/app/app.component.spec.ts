@@ -4,6 +4,7 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {NotificationService, SpinnerService} from '../../lib';
 import {AppComponent} from './app.component';
+import {MockTranslatePipe} from '../../../testhelpers';
 
 describe('AppComponent', () => {
 	beforeEach(async(() => {
@@ -11,7 +12,7 @@ describe('AppComponent', () => {
 		const mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use']);
 		TestBed.configureTestingModule({
 			declarations: [
-				AppComponent
+				AppComponent, MockTranslatePipe
 			],
 			imports: [
 				RouterTestingModule
