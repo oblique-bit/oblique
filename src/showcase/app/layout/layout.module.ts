@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {MasterLayoutModule} from '../../../lib/ng';
-import {LayoutControlsComponent} from './controls/controls.component';
 import {LayoutNavigationComponent} from './navigation/navigation.component';
 
 @NgModule({
@@ -14,11 +13,9 @@ import {LayoutNavigationComponent} from './navigation/navigation.component';
 		MasterLayoutModule
 	],
 	declarations: [
-		LayoutControlsComponent,
 		LayoutNavigationComponent
 	],
 	exports: [
-		LayoutControlsComponent,
 		LayoutNavigationComponent
 	]
 })

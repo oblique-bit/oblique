@@ -1,5 +1,16 @@
 <or-master-layout [locales]="['en', 'fr', 'de']" >
-	<layout-controls orHeaderControls></layout-controls>
+	<ng-container orHeaderTitle>ObliqueReactive</ng-container>
+	<ul class="navbar-nav navbar-controls ml-sm-auto" role="menu" orHeaderControls>
+		<li class="nav-item" role="menuitem">
+			<a href="https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/"
+			   class="nav-link control-link"
+			   ngbTooltip="Go to ObliqueReactive GIT repository" placement="left">
+				<span class="control-icon fa fa-bitbucket"></span>
+				<span class="control-label d-layout-collapsed">GIT</span>
+			</a>
+		</li>
+	</ul>
+	<layout-navigation orNavigation></layout-navigation>
 	<p class="small" orFooterInfo>&copy; 2018 {{'i18n.application.organization.name' | translate}}</p>
 	<p class="smaller" orFooterInfoSMCollapse>
 		<span>Built with </span>
@@ -15,6 +26,4 @@
 		<span class="version">(6.0.9)</span>
 		<span>.</span>
 	</p>
-	<layout-navigation orNavigation></layout-navigation>
-	<ng-container orHeaderTitle>ObliqueReactive</ng-container>
 </or-master-layout>

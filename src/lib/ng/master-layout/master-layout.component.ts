@@ -58,7 +58,7 @@ import {ScrollingConfig} from '../scrolling';
 						<ul class="navbar-nav navbar-controls navbar-locale" role="menu">
 							<li class="nav-item" role="menuitem"
 								*ngFor="let locale of locales">
-								<a class="btn btn-link nav-link control-link" tabindex="0" role="button"
+								<a class="nav-link control-link" tabindex="0" role="button"
 								   (click)="changeLang(locale)"
 								   [class.active]="isLangActive(locale)">
 									<span class="control-label">{{locale}}</span>
