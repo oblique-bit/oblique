@@ -4,6 +4,8 @@ import {RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {MasterLayoutComponent} from './master-layout.component';
 import {MasterLayoutService} from './master-layout.service';
+import {MasterLayoutHeaderComponent} from './master-layout-header.component';
+import {MasterLayoutHeaderToggleDirective} from './master-layout-header-toggle.directive';
 import {MasterLayoutFooterComponent} from './master-layout-footer.component';
 
 import {MasterLayoutApplicationService} from './master-layout-application.service';
@@ -16,7 +18,6 @@ import {MasterLayoutNavigationMenuDirective} from './master-layout-navigation-me
 import {MasterLayoutNavigationDirective} from './master-layout-navigation.directive';
 import {MasterLayoutFooterDirective} from './master-layout-footer.directive';
 import {MasterLayoutFooterService} from './master-layout-footer.service';
-import {MasterLayoutHeaderToggleDirective} from './master-layout-header-toggle.directive';
 import {NotificationModule} from '../notification';
 import {SpinnerModule} from '../spinner';
 import {ScrollingModule} from '../scrolling';
@@ -32,11 +33,12 @@ import {ScrollingModule} from '../scrolling';
 	],
 	declarations: [
 		MasterLayoutComponent,
+		MasterLayoutHeaderComponent,
+		MasterLayoutHeaderToggleDirective,
 		MasterLayoutFooterComponent,
 
 		MasterLayoutApplicationDirective,
 		MasterLayoutHeaderDirective,
-		MasterLayoutHeaderToggleDirective,
 		MasterLayoutFooterDirective,
 		MasterLayoutNavigationDirective,
 		MasterLayoutNavigationItemDirective,
@@ -45,10 +47,10 @@ import {ScrollingModule} from '../scrolling';
 	],
 	exports: [
 		MasterLayoutComponent,
+		MasterLayoutHeaderToggleDirective,
 
 		MasterLayoutApplicationDirective,
 		MasterLayoutHeaderDirective,
-		MasterLayoutHeaderToggleDirective,
 		MasterLayoutFooterDirective,
 		MasterLayoutNavigationDirective,
 		MasterLayoutNavigationItemDirective,

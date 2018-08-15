@@ -16,6 +16,7 @@ export class MasterLayoutService extends Unsubscribable {
 	noNavigationChange: Observable<boolean>;
 	navigationFullWidthChange: Observable<boolean>;
 	coverLayoutChange: Observable<boolean>;
+	menuCollapsedChange: Observable<boolean>;
 
 	get userLang(): string {
 		return this.translate.currentLang;
@@ -26,7 +27,7 @@ export class MasterLayoutService extends Unsubscribable {
 		localStorage.setItem('oblique:langoblique:lang', lang);
 	}
 
-	get applicationFixed() {
+	get applicationFixed(): boolean {
 		return this.isApplicationFixed;
 	}
 
@@ -35,7 +36,7 @@ export class MasterLayoutService extends Unsubscribable {
 		this.applicationFixedEmitter.emit(value);
 	}
 
-	get smallFooter() {
+	get smallFooter(): boolean {
 		return this.isFooterSmall;
 	}
 
@@ -44,7 +45,7 @@ export class MasterLayoutService extends Unsubscribable {
 		this.footerSmallEmitter.emit(value);
 	}
 
-	get mediumHeader() {
+	get mediumHeader(): boolean {
 		return this.isHeaderMedium;
 	}
 
@@ -53,7 +54,7 @@ export class MasterLayoutService extends Unsubscribable {
 		this.headerMediumEmitter.emit(value);
 	}
 
-	get animateHeader() {
+	get animateHeader(): boolean {
 		return this.isHeaderAnimated;
 	}
 
@@ -62,7 +63,7 @@ export class MasterLayoutService extends Unsubscribable {
 		this.headerAnimateEmitter.emit(value);
 	}
 
-	get stickyHeader() {
+	get stickyHeader(): boolean {
 		return this.isHeaderSticky;
 	}
 
@@ -71,7 +72,7 @@ export class MasterLayoutService extends Unsubscribable {
 		this.headerStickyEmitter.emit(value);
 	}
 
-	get noNavigation() {
+	get noNavigation(): boolean {
 		return this.hasNavigation;
 	}
 
@@ -80,7 +81,7 @@ export class MasterLayoutService extends Unsubscribable {
 		this.noNavigationEmitter.emit(value);
 	}
 
-	get navigationFullWidth() {
+	get navigationFullWidth(): boolean {
 		return this.isNavigationFullWidth;
 	}
 
@@ -89,13 +90,22 @@ export class MasterLayoutService extends Unsubscribable {
 		this.navigationFullWidthEmitter.emit(value);
 	}
 
-	get coverLayout() {
+	get coverLayout(): boolean {
 		return this.hasCoverLayout;
 	}
 
-	set coverLayout(value) {
+	set coverLayout(value: boolean) {
 		this.hasCoverLayout = value;
 		this.coverLayoutEmitter.emit(value);
+	}
+
+	get menuCollapsed(): boolean {
+		return this.isMenuCollapsed;
+	}
+
+	set menuCollapsed(value: boolean) {
+		this.isMenuCollapsed = value;
+		this.menuCollapsedEmitter.emit(value);
 	}
 
 	private isApplicationFixed: boolean;
@@ -106,6 +116,7 @@ export class MasterLayoutService extends Unsubscribable {
 	private hasNavigation: boolean;
 	private isNavigationFullWidth: boolean;
 	private hasCoverLayout: boolean;
+	private isMenuCollapsed: boolean;
 	private readonly applicationFixedEmitter: EventEmitter<boolean> = new EventEmitter();
 	private readonly footerSmallEmitter: EventEmitter<boolean> = new EventEmitter();
 	private readonly headerMediumEmitter: EventEmitter<boolean> = new EventEmitter();
@@ -114,6 +125,7 @@ export class MasterLayoutService extends Unsubscribable {
 	private readonly noNavigationEmitter: EventEmitter<boolean> = new EventEmitter();
 	private readonly navigationFullWidthEmitter: EventEmitter<boolean> = new EventEmitter();
 	private readonly coverLayoutEmitter: EventEmitter<boolean> = new EventEmitter();
+	private readonly menuCollapsedEmitter: EventEmitter<boolean> = new EventEmitter();
 
 	constructor(private readonly translate: TranslateService,
 				private readonly router: Router,
@@ -127,6 +139,7 @@ export class MasterLayoutService extends Unsubscribable {
 		this.noNavigationChange = this.noNavigationEmitter.asObservable();
 		this.navigationFullWidthChange = this.navigationFullWidthEmitter.asObservable();
 		this.coverLayoutChange = this.coverLayoutEmitter.asObservable();
+		this.menuCollapsedChange = this.menuCollapsedEmitter.asObservable();
 
 		this.manageLanguage();
 		this.routeChange();
