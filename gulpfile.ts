@@ -2,14 +2,12 @@
  * TODO: remove this file as soon as the Angular CLI addon API has landed:
  * https://github.com/angular/angular-cli/issues/1656#issuecomment-239366723
  */
-import {ProjectConfig} from './project.conf';
 import {readFileSync} from 'fs';
 import {join} from 'path';
 
 //<editor-fold desc="Dependencies">
-let del = require('del'),
+const del = require('del'),
 	exec = require('child_process').exec,
-	path = require('path'),
 	spawn = require('cross-spawn'),
 	webpack = require('webpack'),
 
@@ -17,8 +15,6 @@ let del = require('del'),
 	gulp = require('gulp'),
 	conventionalChangelog = require('gulp-conventional-changelog'),
 	gutil = require('gulp-util'),
-	hb = require('gulp-hb'),
-	rename = require('gulp-rename'),
 	gulpFile = require('gulp-file'),
 
 	// Project-specific:
@@ -27,17 +23,16 @@ let del = require('del'),
 		src: 'src/',
 		lib: 'src/lib/',
 		sass: 'src/lib/sass/',
-		showcase: 'src/showcase/',
 		dist: 'dist/'
 	};
 //</editor-fold>
 
 //<editor-fold desc="Distribution tasks">
-let distClean = () => {
+const distClean = () => {
 	return del(paths.dist);
 };
 
-let distSources = () => {
+const distSources = () => {
 	return gulp.src([
 		paths.sass + '**/*'
 	], {base: paths.lib}
@@ -46,7 +41,7 @@ let distSources = () => {
 	);
 };
 
-let distCompile = (callback) => {
+const distCompile = (callback) => {
 	exec(`"./node_modules/.bin/ngc" -p "tsconfig.publish.json"`, (e) => {
 		if (e) {
 			console.log(e);
@@ -56,15 +51,15 @@ let distCompile = (callback) => {
 		console.log(data);
 	});
 };
-let distBundle = (callback) => {
+const distBundle = (callback) => {
 	webpack(require('./webpack.publish.js'),
 		webpackCallBack('webpack', callback)
 	);
 };
 
-let distMeta = () => {
-	let meta = reload('./package.json');
-	let output = {};
+const distMeta = () => {
+	const meta = reload('./package.json');
+	const output = {};
 
 	[
 		'name', 'version', 'description', 'keywords',
@@ -90,7 +85,7 @@ let distMeta = () => {
 	);
 };
 
-let distBuild = gulp.parallel(
+const distBuild = gulp.parallel(
 	distSources,
 	gulp.series(
 		distCompile,
@@ -99,43 +94,10 @@ let distBuild = gulp.parallel(
 	distMeta
 );
 
-let dist = gulp.series(
+const dist = gulp.series(
 	distClean,
 	distBuild
 );
-//</editor-fold>
-
-//<editor-fold desc="Showcase tasks">
-let showcaseHTML = () => {
-	return gulp.src([
-		paths.showcase + '**/*.hbs'
-	]).pipe(
-		hb({
-			partials: [
-				'node_modules/oblique-ui/templates/layouts/**/*.hbs',
-				'node_modules/oblique-ui/templates/partials/**/*.hbs'
-			],
-			helpers: [
-				'node_modules/handlebars-helpers/lib/**/*.js',
-				'node_modules/handlebars-layouts/dist/handlebars-layouts.js',
-				'node_modules/oblique-ui/templates/helpers/**/*.js',
-				'node_modules/oblique-ui/templates/helpers/**/*.ts'
-			],
-			data: {
-				app: ProjectConfig.app
-			},
-			parsePartialName: function (options, file) {
-				return file.path.split(path.sep).pop().replace('.hbs', '');
-			}
-		})
-	).pipe(
-		rename({extname: '.html'})
-	).pipe(
-		gulp.dest(paths.showcase)
-	);
-};
-
-
 //</editor-fold>
 
 //<editor-fold desc="Deployment tasks">
@@ -143,7 +105,7 @@ require('gulp-release-flows')({
 	branch: 'HEAD:master'
 }); // Imports 'build:release-*' tasks
 
-let changelog = () => {
+const changelog = () => {
 	return gulp.src(
 		'CHANGELOG.md'
 	).pipe(
@@ -174,7 +136,7 @@ let changelog = () => {
 	);
 };
 
-let release = gulp.series(
+const release = gulp.series(
 	'build:bump-version',
 	//'changelog',
 	'build:commit-changes',
@@ -186,7 +148,7 @@ let release = gulp.series(
  * Publishes the module in the specified npm registry.
  * @see package.json > publishConfig
  */
-let npmPublish = (callback) => {
+const npmPublish = (callback) => {
 	return spawn(
 		'npm',
 		['publish', paths.dist],
@@ -200,7 +162,7 @@ let npmPublish = (callback) => {
 //</editor-fold>
 
 //<editor-fold desc="NPM link for dev only">
-let npmLink = (callback) => {
+const npmLink = (callback) => {
 	return spawn(
 		'npm',
 		['link', paths.dist],
@@ -208,15 +170,15 @@ let npmLink = (callback) => {
 	).on('close', callback)
 	.on('error', function () {
 		console.log('[SPAWN] Error: ', arguments);
-		callback('Unable to execute NPM link')
+		callback('Unable to execute NPM link');
 	});
 };
 
-let watchLink = () => {
+const watchLink = () => {
 	gulp.watch(paths.src + '**/*', distBuild);
 };
 
-let devLink = gulp.series(
+const devLink = gulp.series(
 	distBuild,
 	npmLink,
 	watchLink
@@ -253,13 +215,6 @@ gulp.task(
 //</editor-fold>
 
 //<editor-fold desc="Secondary tasks">
-gulp.task(
-	'showcase-build',
-	gulp.series(
-		showcaseHTML
-	)
-);
-
 gulp.task(
 	'changelog',
 	changelog

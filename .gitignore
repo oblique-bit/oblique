@@ -5,9 +5,6 @@
 /target
 /tmp
 
-# products of hbs:
-/src/showcase/index.html
-
 # dependencies
 /node_modules
 
@@ -36,7 +33,6 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
-/typings
 
 # e2e
 /e2e/*.js
