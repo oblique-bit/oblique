@@ -1,4 +1,4 @@
-import {EventEmitter, Inject, Injectable} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
@@ -8,7 +8,6 @@ import {Unsubscribable} from '../unsubscribe';
 
 @Injectable()
 export class MasterLayoutService extends Unsubscribable {
-	userLang: string;
 	applicationFixedChange: Observable<boolean>;
 	footerSmallChange: Observable<boolean>;
 	headerMediumChange: Observable<boolean>;
@@ -17,6 +16,15 @@ export class MasterLayoutService extends Unsubscribable {
 	noNavigationChange: Observable<boolean>;
 	navigationFullWidthChange: Observable<boolean>;
 	coverLayoutChange: Observable<boolean>;
+
+	get userLang(): string {
+		return this.translate.currentLang;
+	}
+
+	set userLang(lang: string) {
+		this.translate.use(lang);
+		localStorage.setItem('oblique:langoblique:lang', lang);
+	}
 
 	get applicationFixed() {
 		return this.isApplicationFixed;
@@ -125,14 +133,13 @@ export class MasterLayoutService extends Unsubscribable {
 	}
 
 	private manageLanguage() {
-		this.userLang = localStorage.getItem('oblique:lang') || 'en';
-		this.translate.setDefaultLang(this.userLang);
-		this.translate.use(this.userLang);
+		const lang = localStorage.getItem('oblique:lang') || 'en';
+		this.translate.setDefaultLang(lang);
+		this.translate.use(lang);
 		this.translate.onLangChange
 			.pipe(takeUntil(this.unsubscribe))
 			.subscribe((event: LangChangeEvent) => {
 				this.userLang = event.lang;
-				localStorage.setItem('oblique:langoblique:lang', this.userLang);
 			});
 	}
 

@@ -215,6 +215,7 @@
       "backToTop": "Back to top"
     },
     "oblique": {
+      "controls.title": "Controls",
       "multiselect": {
         "checkAll": "Check all",
         "uncheckAll": "Uncheck all",
