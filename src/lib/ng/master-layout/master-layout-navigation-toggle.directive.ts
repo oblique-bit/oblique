@@ -1,8 +1,5 @@
 import {Directive, ElementRef, EventEmitter, HostListener, Output} from '@angular/core';
 
-/**
- * @deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead
- */
 @Directive({
 	selector: '[orMasterLayoutNavigationToggle]',
 	exportAs: 'orMasterLayoutNavigationToggle'
@@ -15,7 +12,6 @@ export class MasterLayoutNavigationToggleDirective {
 	public back = false;
 
 	constructor(private readonly elementRef: ElementRef) {
-		console.warn('@deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead');
 		this.back = elementRef.nativeElement.classList.contains('navbar-primary-back');
 	}
 

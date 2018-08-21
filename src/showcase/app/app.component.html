@@ -1,4 +1,4 @@
-<or-master-layout [locales]="['en', 'fr', 'de']" >
+<or-master-layout [navigation]="navigation">
 	<ng-container orHeaderTitle>ObliqueReactive</ng-container>
 	<ul class="navbar-nav navbar-controls ml-sm-auto" role="menu" orHeaderControls>
 		<li class="nav-item" role="menuitem">
@@ -10,7 +10,6 @@
 			</a>
 		</li>
 	</ul>
-	<layout-navigation orNavigation></layout-navigation>
 	<p class="small" orFooterInfo>&copy; 2018 {{'i18n.application.organization.name' | translate}}</p>
 	<p class="smaller" orFooterInfoSMCollapse>
 		<span>Built with </span>

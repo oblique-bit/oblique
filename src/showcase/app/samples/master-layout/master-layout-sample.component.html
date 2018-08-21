@@ -70,6 +70,24 @@
 					<input ngbButton type="radio" [value]="false"> No
 				</label>
 			</div>
+			<h4>Full width navigation</h4>
+			<div [(ngModel)]="navigationFW" ngbRadioGroup class="btn-group btn-group-toggle">
+				<label ngbButtonLabel class="btn-secondary active">
+					<input ngbButton type="radio" [value]="true"> Yes
+				</label>
+				<label ngbButtonLabel class="btn-secondary">
+					<input ngbButton type="radio" [value]="false"> No
+				</label>
+			</div>
+			<h4>Scrollable navigation</h4>
+			<div [(ngModel)]="navigationScroll" ngbRadioGroup class="btn-group btn-group-toggle">
+				<label ngbButtonLabel class="btn-secondary active">
+					<input ngbButton type="radio" [value]="true"> Yes
+				</label>
+				<label ngbButtonLabel class="btn-secondary">
+					<input ngbButton type="radio" [value]="false"> No
+				</label>
+			</div>
 		</div>
 	</div>
 	<h2 class="text-muted">For demo purposes only</h2>

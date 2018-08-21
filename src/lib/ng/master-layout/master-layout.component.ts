@@ -4,6 +4,7 @@ import {Unsubscribable} from '../unsubscribe';
 import {MasterLayoutService} from './master-layout.service';
 import {ORFooterLink} from './master-layout-footer.component';
 import {ScrollingConfig} from '../scrolling';
+import {ORNavigationLink} from './master-layout-navigation.component';
 
 @Component({
 	selector: 'or-master-layout',
@@ -28,7 +29,10 @@ import {ScrollingConfig} from '../scrolling';
 			</nav>
 			<or-master-layout-header class="application-header application-header-sticky application-header-animate"
 					[ngClass]="{'application-header-animate': headerAnimate, 'application-header-sticky': headerSticky, 'application-header-md': headerMedium}"
-					[locales]="locales">
+					[navigationFullWidth]="navigationFullWidth"
+					[navigationScrollable]="navigationScrollable"
+					[locales]="locales"
+					[navigation]="navigation" [navigationActiveClass]="navigationActiveClass">
 				<ng-content select="[orHeaderTitle]" orHeaderTitle></ng-content>
 				<ng-content select="[orHeaderControls]" orHeaderControls></ng-content>
 				<ng-content select="[orNavigation]" orNavigation></ng-content>
@@ -76,9 +80,12 @@ export class MasterLayoutComponent extends Unsubscribable {
 	@Input() headerMedium = false;
 	@Input() footerSmall = true;
 	@Input() navigationNone = false;
-	@Input() navigationFullWidth = false;
+	@Input() navigationFullWidth = true;
+	@Input() navigationScrollable = false;
 	@Input() coverLayout = false;
 	@Input() footerLinks: ORFooterLink[];
+	@Input() navigation: ORNavigationLink[] = [];
+	@Input() navigationActiveClass = 'active';
 	@Input() locales: string[] = [];
 	menuCollapsed = false;
 
@@ -90,6 +97,8 @@ export class MasterLayoutComponent extends Unsubscribable {
 		this.updateHeaderSticky();
 		this.updateHeaderAnimate();
 		this.updateNoNavigation();
+		this.updateNavigationFullWidth();
+		this.updateNavigationScrollable();
 		this.updateCoverLayout();
 		this.headerFooterTransitions();
 
@@ -151,6 +160,20 @@ export class MasterLayoutComponent extends Unsubscribable {
 		this.masterLayout.noNavigation = this.navigationNone;
 		this.masterLayout.noNavigationChange.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.navigationNone = value;
+		});
+	}
+
+	private updateNavigationFullWidth() {
+		this.masterLayout.navigationFullWidth = this.navigationFullWidth;
+		this.masterLayout.navigationFullWidthChange.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+			this.navigationFullWidth = value;
+		});
+	}
+
+	private updateNavigationScrollable() {
+		this.masterLayout.navigationScrollable = this.navigationScrollable;
+		this.masterLayout.navigationScrollableChange.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+			this.navigationScrollable = value;
 		});
 	}
 

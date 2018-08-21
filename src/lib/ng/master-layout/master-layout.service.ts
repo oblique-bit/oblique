@@ -15,6 +15,7 @@ export class MasterLayoutService extends Unsubscribable {
 	headerStickyChange: Observable<boolean>;
 	noNavigationChange: Observable<boolean>;
 	navigationFullWidthChange: Observable<boolean>;
+	navigationScrollableChange: Observable<boolean>;
 	coverLayoutChange: Observable<boolean>;
 	menuCollapsedChange: Observable<boolean>;
 
@@ -90,6 +91,15 @@ export class MasterLayoutService extends Unsubscribable {
 		this.navigationFullWidthEmitter.emit(value);
 	}
 
+	get navigationScrollable(): boolean {
+		return this.isNavigationScrollable;
+	}
+
+	set navigationScrollable(value: boolean) {
+		this.isNavigationScrollable = value;
+		this.navigationScrollableEmitter.emit(value);
+	}
+
 	get coverLayout(): boolean {
 		return this.hasCoverLayout;
 	}
@@ -115,6 +125,7 @@ export class MasterLayoutService extends Unsubscribable {
 	private isHeaderSticky: boolean;
 	private hasNavigation: boolean;
 	private isNavigationFullWidth: boolean;
+	private isNavigationScrollable: boolean;
 	private hasCoverLayout: boolean;
 	private isMenuCollapsed: boolean;
 	private readonly applicationFixedEmitter: EventEmitter<boolean> = new EventEmitter();
@@ -124,6 +135,7 @@ export class MasterLayoutService extends Unsubscribable {
 	private readonly headerStickyEmitter: EventEmitter<boolean> = new EventEmitter();
 	private readonly noNavigationEmitter: EventEmitter<boolean> = new EventEmitter();
 	private readonly navigationFullWidthEmitter: EventEmitter<boolean> = new EventEmitter();
+	private readonly navigationScrollableEmitter: EventEmitter<boolean> = new EventEmitter();
 	private readonly coverLayoutEmitter: EventEmitter<boolean> = new EventEmitter();
 	private readonly menuCollapsedEmitter: EventEmitter<boolean> = new EventEmitter();
 
@@ -138,6 +150,7 @@ export class MasterLayoutService extends Unsubscribable {
 		this.headerStickyChange = this.headerStickyEmitter.asObservable();
 		this.noNavigationChange = this.noNavigationEmitter.asObservable();
 		this.navigationFullWidthChange = this.navigationFullWidthEmitter.asObservable();
+		this.navigationScrollableChange = this.navigationScrollableEmitter.asObservable();
 		this.coverLayoutChange = this.coverLayoutEmitter.asObservable();
 		this.menuCollapsedChange = this.menuCollapsedEmitter.asObservable();
 

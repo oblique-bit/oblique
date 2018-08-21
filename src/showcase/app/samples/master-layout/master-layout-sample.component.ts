@@ -50,6 +50,29 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.animateHeader = value;
 	}
 
+	get navigation() {
+		return !this.masterLayout.noNavigation;
+	}
+
+	set navigation(value: boolean) {
+		this.masterLayout.noNavigation = !value;
+	}
+
+	get navigationFW() {
+		return this.masterLayout.navigationFullWidth;
+	}
+
+	set navigationFW(value: boolean) {
+		this.masterLayout.navigationFullWidth = value;
+	}
+
+	get navigationScroll() {
+		return this.masterLayout.navigationScrollable;
+	}
+
+	set navigationScroll(value: boolean) {
+		this.masterLayout.navigationScrollable = value;
+	}
 
 	get cover(): boolean {
 		return this.masterLayout.coverLayout;
@@ -57,14 +80,6 @@ export class MasterLayoutSampleComponent {
 
 	set cover(value: boolean) {
 		this.masterLayout.coverLayout = value;
-	}
-
-	get navigation() {
-		return !this.masterLayout.noNavigation;
-	}
-
-	set navigation(value: boolean) {
-		this.masterLayout.noNavigation = !value;
 	}
 
 	constructor(private readonly masterLayout: MasterLayoutService) {

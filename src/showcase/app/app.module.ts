@@ -19,9 +19,6 @@ import {
 	SchemaValidationService
 } from '../../lib';
 
-// Layout:
-import {LayoutModule} from './layout/layout.module';
-
 // App:
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -54,8 +51,7 @@ export function createTranslateLoader(http: HttpClient) {
 			}
 		}),
 		AppRoutingModule,
-		MasterLayoutModule,
-		LayoutModule
+		MasterLayoutModule
 	],
 	providers: [
 		DocumentMetaService,

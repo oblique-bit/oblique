@@ -7,6 +7,7 @@ import {MasterLayoutService} from './master-layout.service';
 import {MasterLayoutHeaderComponent} from './master-layout-header.component';
 import {MasterLayoutHeaderToggleDirective} from './master-layout-header-toggle.directive';
 import {MasterLayoutFooterComponent} from './master-layout-footer.component';
+import {MasterLayoutNavigationComponent} from './master-layout-navigation.component';
 
 import {MasterLayoutApplicationService} from './master-layout-application.service';
 import {MasterLayoutApplicationDirective} from './master-layout-application.directive';
@@ -35,6 +36,7 @@ import {ScrollingModule} from '../scrolling';
 		MasterLayoutComponent,
 		MasterLayoutHeaderComponent,
 		MasterLayoutHeaderToggleDirective,
+		MasterLayoutNavigationComponent,
 		MasterLayoutFooterComponent,
 
 		MasterLayoutApplicationDirective,

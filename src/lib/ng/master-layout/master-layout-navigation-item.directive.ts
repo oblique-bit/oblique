@@ -7,9 +7,6 @@ import {MasterLayoutNavigationToggleDirective} from './master-layout-navigation-
 import {MasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
 import {MasterLayoutHeaderService} from './master-layout-header.service';
 
-/**
- * @deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead
- */
 @Directive({
 	selector: '[orMasterLayoutNavigationItem]',
 	exportAs: 'orMasterLayoutNavigationItem'
@@ -34,7 +31,6 @@ export class MasterLayoutNavigationItemDirective extends Unsubscribable implemen
 	constructor(public elementRef: ElementRef,
 				private readonly headerService: MasterLayoutHeaderService) {
 		super();
-		console.warn('@deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead');
 		// Subscribe to header changes:
 		// this.headerService.openChange.subscribe((open) => {
 		// 	// Ensure we close all open sub menus:
