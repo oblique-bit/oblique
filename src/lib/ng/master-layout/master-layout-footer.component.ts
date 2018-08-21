@@ -12,7 +12,7 @@ export interface ORFooterLink {
 	template: `
 		<div class="footer-item footer-item-logo footer-sm-collapse">
 			<a href="{{'i18n.application.organization.url' | translate}}" target="_blank" class="application-brand-logo">
-				<img src="./assets/oblique-ui/images/logo.svg"
+				<img src="./assets/styles/images/logo.svg"
 					 alt="{{'i18n.application.organization.name' | translate}}"/>
 			</a>
 		</div>
