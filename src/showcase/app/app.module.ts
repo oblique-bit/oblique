@@ -72,20 +72,14 @@ export function createTranslateLoader(http: HttpClient) {
 	bootstrap: [AppComponent]
 })
 export class AppModule {
-	constructor(private readonly translate: TranslateService,
-				private readonly tooltipConfig: NgbTooltipConfig,
+	constructor(private readonly tooltipConfig: NgbTooltipConfig,
 				private readonly datepickerConfig: NgbDatepickerConfig,
 				private readonly documentMetaService: DocumentMetaService,
-				interceptorConfig: ObliqueHttpInterceptorConfig,
-				@Inject('ObliqueReactive.CONFIG') private readonly config: any) {
+				interceptorConfig: ObliqueHttpInterceptorConfig) {
 		// As the HEAD `title` element and the `description` meta element are outside any
 		// Angular entry component, we use a service to update these element values:
 		documentMetaService.titleSuffix = 'i18n.application.title';
 		documentMetaService.description = 'i18n.application.description';
-
-		// Default i18n configuration:
-		translate.setDefaultLang(config.defaults.locale || 'en');
-		translate.use(config.defaults.locale || 'en');
 
 		// NgBootstrap configuration:
 		tooltipConfig.container = 'body';

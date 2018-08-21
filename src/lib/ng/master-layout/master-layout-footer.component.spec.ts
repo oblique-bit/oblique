@@ -10,7 +10,6 @@ describe('MasterLayoutFooterComponent', () => {
 
 	const mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use', 'getDefaultLang']);
 	mockTranslateService.onLangChange = new EventEmitter();
-	mockTranslateService.userLang = 'en';
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({

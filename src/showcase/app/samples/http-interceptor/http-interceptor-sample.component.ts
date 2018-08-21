@@ -47,6 +47,15 @@ export class HttpInterceptorSampleComponent {
 		this.logs.unshift(`${this.logs.length} - ${message}`);
 	}
 
+	private static getUrl(code: number): string {
+		switch (code) {
+			case 200:
+				return HttpInterceptorSampleComponent.API_URL + '/users';
+			default:
+				return HttpInterceptorSampleComponent.API_URL + '/' + code;
+		}
+	}
+
 	private configInterceptor(): void {
 		this.config.requestIntercepted.pipe(first()).subscribe((evt: ObliqueRequest) => {
 			evt.notification.active = this.notification.active;
@@ -74,14 +83,5 @@ export class HttpInterceptorSampleComponent {
 				}
 			}
 		);
-	}
-
-	private static getUrl(code: number): string {
-		switch (code) {
-			case 200:
-				return HttpInterceptorSampleComponent.API_URL + '/users';
-			default:
-				return HttpInterceptorSampleComponent.API_URL + '/' + code;
-		}
 	}
 }

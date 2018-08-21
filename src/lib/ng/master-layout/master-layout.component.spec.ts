@@ -6,7 +6,6 @@ import {TranslateService} from '@ngx-translate/core';
 import {MasterLayoutComponent} from './master-layout.component';
 import {MasterLayoutService} from './master-layout.service';
 import {ScrollingConfig} from '../scrolling';
-import {ProjectConfig} from '../../../../project.conf';
 
 describe('MasterLayoutComponent', () => {
 	let component: MasterLayoutComponent;
@@ -14,7 +13,6 @@ describe('MasterLayoutComponent', () => {
 
 	const mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use', 'getDefaultLang']);
 	mockTranslateService.onLangChange = new EventEmitter();
-	mockTranslateService.userLang = 'en';
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
@@ -23,8 +21,7 @@ describe('MasterLayoutComponent', () => {
 			providers: [
 				MasterLayoutService,
 				ScrollingConfig,
-				{provide: TranslateService, useValue: mockTranslateService},
-				{provide: 'ObliqueReactive.CONFIG', useValue: ProjectConfig.app}
+				{provide: TranslateService, useValue: mockTranslateService}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		})

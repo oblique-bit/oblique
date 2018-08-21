@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
 
 import {MasterLayoutService} from './master-layout.service';
 import {ORNavigationLink} from './master-layout-navigation.component';
@@ -66,14 +67,14 @@ export class MasterLayoutHeaderComponent {
 	@Input() navigation: ORNavigationLink[];
 	@Input() navigationActiveClass: string;
 
-	constructor(private readonly masterLayout: MasterLayoutService) {
+	constructor(private readonly masterLayout: MasterLayoutService, private readonly translate: TranslateService) {
 	}
 
 	isLangActive(lang: string): boolean {
-		return this.masterLayout.userLang === lang;
+		return this.translate.currentLang === lang;
 	}
 
 	changeLang(lang: string) {
-		this.masterLayout.userLang = lang;
+		this.translate.use(lang);
 	}
 }

@@ -18,15 +18,6 @@ export class MasterLayoutService extends Unsubscribable {
 	readonly coverLayoutEmitter: EventEmitter<boolean> = new EventEmitter();
 	readonly menuCollapsedEmitter: EventEmitter<boolean> = new EventEmitter();
 
-	get userLang(): string {
-		return this.translate.currentLang;
-	}
-
-	set userLang(lang: string) {
-		this.translate.use(lang);
-		localStorage.setItem('oblique:langoblique:lang', lang);
-	}
-
 	get applicationFixed(): boolean {
 		return this.isApplicationFixed;
 	}
@@ -117,6 +108,7 @@ export class MasterLayoutService extends Unsubscribable {
 		this.menuCollapsedEmitter.emit(value);
 	}
 
+	private static readonly token = 'oblique:lang';
 	private isApplicationFixed: boolean;
 	private isFooterSmall: boolean;
 	private isHeaderMedium: boolean;
@@ -138,14 +130,12 @@ export class MasterLayoutService extends Unsubscribable {
 	}
 
 	private manageLanguage() {
-		const lang = localStorage.getItem('oblique:lang') || 'en';
+		const lang = localStorage.getItem(MasterLayoutService.token) || 'de';
 		this.translate.setDefaultLang(lang);
 		this.translate.use(lang);
-		this.translate.onLangChange
-			.pipe(takeUntil(this.unsubscribe))
-			.subscribe((event: LangChangeEvent) => {
-				this.userLang = event.lang;
-			});
+		this.translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe((event: LangChangeEvent) => {
+			localStorage.setItem(MasterLayoutService.token, event.lang);
+		});
 	}
 
 	private routeChange() {

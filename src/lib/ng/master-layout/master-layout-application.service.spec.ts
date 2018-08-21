@@ -12,7 +12,6 @@ describe('MasterLayoutApplicationService', () => {
 	beforeEach(async () => {
 		mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use', 'getDefaultLang']);
 		mockTranslateService.onLangChange = new EventEmitter();
-		mockTranslateService.userLang = 'en';
 
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],

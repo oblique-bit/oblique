@@ -45,6 +45,11 @@ export class NumberFormatDirective implements OnInit {
 		this.setValue(this.ngControl.value);		// for Reactive forms
 	}
 
+	private static toFixedNumber(number: number, decimals: number): number {
+		const pow = Math.pow(10, decimals);
+		return +(Math.round(number * pow) / pow);
+	}
+
 	private setValue(value: number): void {
 		const fixedValue = NumberFormatDirective.toFixedNumber(value, this.decimals);
 		if (this.persistent) {
@@ -53,10 +58,5 @@ export class NumberFormatDirective implements OnInit {
 		} else {
 			this.el.nativeElement.value = fixedValue;
 		}
-	}
-
-	private static toFixedNumber(number: number, decimals: number): number {
-		const pow = Math.pow(10, decimals);
-		return +(Math.round(number * pow) / pow);
 	}
 }
