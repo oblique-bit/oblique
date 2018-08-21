@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
-import {EventEmitter} from '@angular/core';
+import {EventEmitter, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 
 import {MasterLayoutHeaderComponent} from './master-layout-header.component';
@@ -18,7 +18,8 @@ fdescribe('MasterLayoutHeaderComponent', () => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
 			declarations: [MasterLayoutHeaderComponent, MockTranslatePipe],
-			providers: [MasterLayoutService, {provide: TranslateService, useValue: mockTranslateService}]
+			providers: [MasterLayoutService, {provide: TranslateService, useValue: mockTranslateService}],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		})
 			.compileComponents();
 	}));
