@@ -10,17 +10,15 @@
   },
   "homepage": "http://eui.bit.admin.ch/oblique-reactive/",
   "author": {
-    "name": "Pedro De Almeida",
-    "email": "Pedro.DeAlmeida@bit.admin.ch"
+    "name": "René Giller",
+    "email": "rene.giller@bit.admin.ch"
   },
   "contributors": [
     {
-      "name": "René Giller",
-      "email": "rene.giller@bit.admin.ch"
+      "name": "Pedro De Almeida",
     },
     {
       "name": "Christian Ulmann",
-      "email": "christian.ulmann@bit.admin.ch"
     }
   ],
   "bugs": {
@@ -36,8 +34,6 @@
     "path": "projects/OUI/repos/oblique2-reactive"
   },
   "scripts": {
-    "dev": "npm run start -- --open",
-    "dev-link": "./node_modules/.bin/gulp dev-link",
     "start": "ng serve",
     "dist": "./node_modules/.bin/gulp dist",
     "ci-build": "npm run lint && npm test -- --prod && npm run dist",
@@ -46,7 +42,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "changelog": "./node_modules/.bin/gulp -- changelog",
-    "release": "./node_modules/.bin/gulp publish"
+    "release": "./node_modules/.bin/gulp publish",
+    "dev-link": "./node_modules/.bin/gulp dev-link"
   },
   "dependencies": {
     "@angular/animations": "^6.1.3",
