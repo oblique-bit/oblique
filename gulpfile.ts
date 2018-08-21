@@ -31,16 +31,19 @@ const distClean = () => {
 	return del(paths.dist);
 };
 
+const distCleanup = () => {
+	return del(paths.dist + 'dist');
+};
+
 const distSources = () => {
 	return gulp.src([
 			'node_modules/oblique-ui/css/**/*',
 			'node_modules/oblique-ui/scss/**/*',
 			'node_modules/oblique-ui/fonts/**/*',
-			'node_modules/oblique-ui/images/**/*',
-			'node_modules/oblique-ui/templates/**/*'
+			'node_modules/oblique-ui/images/**/*'
 	], {base: 'node_modules/oblique-ui'}
 	).pipe(
-		gulp.dest(paths.dist + 'oblique-ui')
+		gulp.dest(paths.dist + 'styles')
 	);
 };
 
@@ -92,7 +95,8 @@ const distBuild = gulp.parallel(
 	distSources,
 	gulp.series(
 		distCompile,
-		distBundle
+		distBundle,
+		distCleanup
 	),
 	distMeta
 );

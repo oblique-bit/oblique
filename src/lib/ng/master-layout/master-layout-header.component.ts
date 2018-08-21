@@ -10,7 +10,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 			<div class="navbar-header">
 				<div class="application-brand">
 					<a class="application-brand-logo" [routerLink]="home" tabindex="-1">
-						<img alt="Back to home" src="assets/oblique-ui/images/logo.svg"/>
+						<img alt="Back to home" src="assets/styles/images/logo.svg"/>
 					</a>
 					<span class="application-brand-app-title">
 						<a [routerLink]="home" class="application-brand-link">

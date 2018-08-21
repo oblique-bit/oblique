@@ -26,7 +26,7 @@
               {
                 "glob": "**/*",
                 "input": "node_modules/oblique-ui/images",
-                "output": "/assets/oblique-ui/images"
+                "output": "/assets/styles/images"
               }
             ],
             "styles": [
@@ -97,7 +97,7 @@
               {
                 "glob": "**/*",
                 "input": "node_modules/oblique-ui/images",
-                "output": "/assets/oblique-ui/images"
+                "output": "/assets/styles/images"
               }
             ]
           },

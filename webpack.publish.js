@@ -12,7 +12,7 @@ module.exports = {
 	mode: 'production',
 	entry: './src/lib/index.ts',
 	output: {
-		filename: './dist/bundles/oblique-reactive.js',
+		filename: './bundles/oblique-reactive.js',
 		library: 'oblique-reactive',
 		libraryTarget: 'umd'
 	},
