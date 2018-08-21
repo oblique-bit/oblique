@@ -1,4 +1,4 @@
-import {Injectable, EventEmitter} from '@angular/core';
+import {EventEmitter, Injectable, OnInit} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 import {ScrollingConfig} from '../scrolling';
 import {Unsubscribable} from '../unsubscribe';
@@ -8,28 +8,13 @@ import {Unsubscribable} from '../unsubscribe';
  * @deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead
  */
 @Injectable()
-export class MasterLayoutHeaderService extends Unsubscribable {
+export class MasterLayoutHeaderService extends Unsubscribable implements OnInit {
 
 	public openChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 	public variantChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-	private openValue = false;
-	private mediumValue = false;
-
-	constructor(private readonly config: ScrollingConfig) {
-		super();
-		console.warn('@deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead');
-
-		if (config.transitions) {
-			config.onScroll.pipe(takeUntil(this.unsubscribe))
-				.subscribe((isScrolling) => {
-					this.medium = isScrolling;
-				});
-		}
-	}
-
-	public toggle() {
-		this.open = !this.open;
+	get open() {
+		return this.openValue;
 	}
 
 	set open(value) {
@@ -39,8 +24,8 @@ export class MasterLayoutHeaderService extends Unsubscribable {
 		this.openValue = value;
 	}
 
-	get open() {
-		return this.openValue;
+	get medium() {
+		return this.mediumValue;
 	}
 
 	set medium(value) {
@@ -48,7 +33,25 @@ export class MasterLayoutHeaderService extends Unsubscribable {
 		this.variantChange.next(this.mediumValue);
 	}
 
-	get medium() {
-		return this.mediumValue;
+	private openValue = false;
+	private mediumValue = false;
+
+	constructor(private readonly config: ScrollingConfig) {
+		super();
+
+		if (config.transitions) {
+			config.onScroll.pipe(takeUntil(this.unsubscribe))
+				.subscribe((isScrolling) => {
+					this.medium = isScrolling;
+				});
+		}
+	}
+
+	ngOnInit() {
+		console.warn('@deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead');
+	}
+
+	public toggle() {
+		this.open = !this.open;
 	}
 }

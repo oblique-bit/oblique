@@ -1,11 +1,11 @@
-import {Injectable, EventEmitter} from '@angular/core';
+import {Injectable, EventEmitter, OnInit} from '@angular/core';
 
 /**
  * Service for controlling ObliqueUI footer composite features.
  * @deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead
  */
 @Injectable()
-export class MasterLayoutFooterService {
+export class MasterLayoutFooterService implements OnInit {
 
 	public variantChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -20,7 +20,7 @@ export class MasterLayoutFooterService {
 		return this.smallValue;
 	}
 
-	constructor() {
+	ngOnInit() {
 		console.warn('@deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead');
 	}
 }
