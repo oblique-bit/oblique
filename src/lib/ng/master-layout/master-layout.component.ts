@@ -27,7 +27,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 					</li>
 				</ul>
 			</nav>
-			<or-master-layout-header class="application-header application-header-sticky application-header-animate"
+			<or-master-layout-header class="application-header"
 					[ngClass]="{'application-header-animate': headerAnimate, 'application-header-sticky': headerSticky, 'application-header-md': headerMedium}"
 					[navigationFullWidth]="navigationFullWidth"
 					[navigationScrollable]="navigationScrollable"
