@@ -59,6 +59,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 	`]
 })
 export class MasterLayoutHeaderComponent {
+	@Input() home: string;
 	@Input() locales: string[] = [];
 	@Input() navigationFullWidth: boolean;
 	@Input() navigationScrollable: boolean;

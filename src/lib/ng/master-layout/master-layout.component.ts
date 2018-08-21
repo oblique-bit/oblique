@@ -31,7 +31,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 					[ngClass]="{'application-header-animate': headerAnimate, 'application-header-sticky': headerSticky, 'application-header-md': headerMedium}"
 					[navigationFullWidth]="navigationFullWidth"
 					[navigationScrollable]="navigationScrollable"
-					[locales]="locales"
+					[locales]="locales" [home]="home"
 					[navigation]="navigation" [navigationActiveClass]="navigationActiveClass">
 				<ng-content select="[orHeaderTitle]" orHeaderTitle></ng-content>
 				<ng-content select="[orHeaderControls]" orHeaderControls></ng-content>
