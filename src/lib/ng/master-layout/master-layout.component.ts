@@ -102,7 +102,7 @@ export class MasterLayoutComponent extends Unsubscribable {
 		this.updateCoverLayout();
 		this.headerFooterTransitions();
 
-		this.masterLayout.menuCollapsedChange.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.menuCollapsedEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.menuCollapsed = value;
 		});
 	}
@@ -123,63 +123,63 @@ export class MasterLayoutComponent extends Unsubscribable {
 
 	private updateApplicationFixed() {
 		this.masterLayout.applicationFixed = this.applicationFixed;
-		this.masterLayout.applicationFixedChange.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.applicationFixedEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.applicationFixed = value;
 		});
 	}
 
 	private updateFooterSmall() {
 		this.masterLayout.smallFooter = this.footerSmall;
-		this.masterLayout.footerSmallChange.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.footerSmallEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.footerSmall = value;
 		});
 	}
 
 	private updateHeaderMedium() {
 		this.masterLayout.mediumHeader = this.headerMedium;
-		this.masterLayout.headerMediumChange.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.headerMediumEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.headerMedium = value;
 		});
 	}
 
 	private updateHeaderAnimate() {
 		this.masterLayout.animateHeader = this.headerAnimate;
-		this.masterLayout.headerAnimateChange.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.headerAnimateEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.headerAnimate = value;
 		});
 	}
 
 	private updateHeaderSticky() {
 		this.masterLayout.stickyHeader = this.headerSticky;
-		this.masterLayout.headerStickyChange.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.headerStickyEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.headerSticky = value;
 		});
 	}
 
 	private updateNoNavigation() {
 		this.masterLayout.noNavigation = this.navigationNone;
-		this.masterLayout.noNavigationChange.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.noNavigationEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.navigationNone = value;
 		});
 	}
 
 	private updateNavigationFullWidth() {
 		this.masterLayout.navigationFullWidth = this.navigationFullWidth;
-		this.masterLayout.navigationFullWidthChange.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.navigationFullWidthEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.navigationFullWidth = value;
 		});
 	}
 
 	private updateNavigationScrollable() {
 		this.masterLayout.navigationScrollable = this.navigationScrollable;
-		this.masterLayout.navigationScrollableChange.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.navigationScrollableEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.navigationScrollable = value;
 		});
 	}
 
 	private updateCoverLayout() {
 		this.masterLayout.coverLayout = this.coverLayout;
-		this.masterLayout.coverLayoutChange.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.coverLayoutEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.coverLayout = value;
 		});
 	}

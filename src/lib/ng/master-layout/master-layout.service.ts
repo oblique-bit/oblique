@@ -2,22 +2,21 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
-import {Observable} from 'rxjs';
 
 import {Unsubscribable} from '../unsubscribe';
 
 @Injectable()
 export class MasterLayoutService extends Unsubscribable {
-	applicationFixedChange: Observable<boolean>;
-	footerSmallChange: Observable<boolean>;
-	headerMediumChange: Observable<boolean>;
-	headerAnimateChange: Observable<boolean>;
-	headerStickyChange: Observable<boolean>;
-	noNavigationChange: Observable<boolean>;
-	navigationFullWidthChange: Observable<boolean>;
-	navigationScrollableChange: Observable<boolean>;
-	coverLayoutChange: Observable<boolean>;
-	menuCollapsedChange: Observable<boolean>;
+	readonly applicationFixedEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly footerSmallEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly headerMediumEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly headerAnimateEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly headerStickyEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly noNavigationEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly navigationFullWidthEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly navigationScrollableEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly coverLayoutEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly menuCollapsedEmitter: EventEmitter<boolean> = new EventEmitter();
 
 	get userLang(): string {
 		return this.translate.currentLang;
@@ -128,31 +127,11 @@ export class MasterLayoutService extends Unsubscribable {
 	private isNavigationScrollable: boolean;
 	private hasCoverLayout: boolean;
 	private isMenuCollapsed: boolean;
-	private readonly applicationFixedEmitter: EventEmitter<boolean> = new EventEmitter();
-	private readonly footerSmallEmitter: EventEmitter<boolean> = new EventEmitter();
-	private readonly headerMediumEmitter: EventEmitter<boolean> = new EventEmitter();
-	private readonly headerAnimateEmitter: EventEmitter<boolean> = new EventEmitter();
-	private readonly headerStickyEmitter: EventEmitter<boolean> = new EventEmitter();
-	private readonly noNavigationEmitter: EventEmitter<boolean> = new EventEmitter();
-	private readonly navigationFullWidthEmitter: EventEmitter<boolean> = new EventEmitter();
-	private readonly navigationScrollableEmitter: EventEmitter<boolean> = new EventEmitter();
-	private readonly coverLayoutEmitter: EventEmitter<boolean> = new EventEmitter();
-	private readonly menuCollapsedEmitter: EventEmitter<boolean> = new EventEmitter();
 
 	constructor(private readonly translate: TranslateService,
 				private readonly router: Router,
 				private readonly activatedRoute: ActivatedRoute) {
 		super();
-		this.applicationFixedChange = this.applicationFixedEmitter.asObservable();
-		this.footerSmallChange = this.footerSmallEmitter.asObservable();
-		this.headerMediumChange = this.headerMediumEmitter.asObservable();
-		this.headerAnimateChange = this.headerAnimateEmitter.asObservable();
-		this.headerStickyChange = this.headerStickyEmitter.asObservable();
-		this.noNavigationChange = this.noNavigationEmitter.asObservable();
-		this.navigationFullWidthChange = this.navigationFullWidthEmitter.asObservable();
-		this.navigationScrollableChange = this.navigationScrollableEmitter.asObservable();
-		this.coverLayoutChange = this.coverLayoutEmitter.asObservable();
-		this.menuCollapsedChange = this.menuCollapsedEmitter.asObservable();
 
 		this.manageLanguage();
 		this.routeChange();
