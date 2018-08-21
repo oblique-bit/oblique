@@ -23,7 +23,8 @@ export interface ORFooterLink {
 			</div>
 		</div>
 		<div class="footer-item footer-item-links">
-			<ul class="list-unstyled small d-flex flex-row justify-content-lg-end" role="menu">
+			<ng-content select="[orFooterLinks]" *ngIf="!footerLinks.length"></ng-content>
+			<ul class="list-unstyled small d-flex flex-row justify-content-lg-end" role="menu" *ngIf="footerLinks.length">
 				<li role="presentation" *ngFor="let link of footerLinks">
 					<a [href]="link.url" class="link" [attr.title]="link.title" [attr.target]="link.external ? '_blank' : undefined">
 						{{link.label | translate}}

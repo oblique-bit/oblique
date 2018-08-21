@@ -68,6 +68,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 			<or-master-layout-footer class="application-footer" [ngClass]="{'application-footer-sm': footerSmall}" [footerLinks]="footerLinks">
 				<ng-content select="[orFooterInfo]" orFooterInfo></ng-content>
 				<ng-content select="[orFooterInfoSMCollapse]" orFooterInfoSMCollapse></ng-content>
+				<ng-content select="[orFooterLinks]" orFooterLinks></ng-content>
 			</or-master-layout-footer>
 		</div>
 	`
@@ -83,7 +84,7 @@ export class MasterLayoutComponent extends Unsubscribable {
 	@Input() navigationFullWidth = true;
 	@Input() navigationScrollable = false;
 	@Input() coverLayout = false;
-	@Input() footerLinks: ORFooterLink[];
+	@Input() footerLinks: ORFooterLink[] = [];
 	@Input() navigation: ORNavigationLink[] = [];
 	@Input() navigationActiveClass = 'active';
 	@Input() locales: string[] = [];
