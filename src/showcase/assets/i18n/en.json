@@ -14,7 +14,11 @@
         "it": "Italiano",
         "en": "English"
       },
-      "loading": "Loading..."
+      "loading": "Loading...",
+      "footer.legal": {
+        "label": "Legal",
+        "title": "Terms and conditions"
+      }
     },
     "routes": {
       "home": {

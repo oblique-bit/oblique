@@ -14,7 +14,7 @@ export class MasterLayoutConfig {
 	homePageRoute = '/home';
 
 	/**
-	 *  Controls the main page layout
+	 *  Controls the application's layout
 	 */
 	layout = {
 		fixed: false,
@@ -22,11 +22,19 @@ export class MasterLayoutConfig {
 	};
 
 	/**
-	 * Controls the header
+	 * Controls the application's header
 	 */
 	header = {
 		animate: true,
 		sticky: true,
 		medium: false
+	};
+
+	/**
+	 * Controls the applications's footer
+	 */
+	footer = {
+		small: true,
+		links: [{url: 'http://www.disclaimer.admin.ch', label: 'i18n.application.footer.legal.label', title: 'i18n.application.footer.legal.title'}]
 	};
 }

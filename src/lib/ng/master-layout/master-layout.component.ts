@@ -65,7 +65,7 @@ import {MasterLayoutConfig} from './master-layout.config';
 				</div>
 			</div>
 			<or-top-control></or-top-control>
-			<or-master-layout-footer class="application-footer offcanvas-main" [ngClass]="{'application-footer-sm': footerSmall}" [footerLinks]="footerLinks">
+			<or-master-layout-footer class="offcanvas-main">
 				<ng-content select="[orFooterInfo]" orFooterInfo></ng-content>
 				<ng-content select="[orFooterInfoSMCollapse]" orFooterInfoSMCollapse></ng-content>
 				<ng-content select="[orFooterLinks]" orFooterLinks></ng-content>
@@ -82,7 +82,6 @@ export class MasterLayoutComponent extends Unsubscribable {
 	@Input() navigationNone = false;
 	@Input() navigationFullWidth = true;
 	@Input() navigationScrollable = false;
-	@Input() footerLinks: ORFooterLink[] = [];
 	@Input() navigation: ORNavigationLink[] = [];
 	@Input() navigationActiveClass = 'active';
 	@Input() locales: string[] = [];
@@ -100,40 +99,20 @@ export class MasterLayoutComponent extends Unsubscribable {
 		this.coverLayout = this.config.layout.cover;
 
 		this.updateApplicationFixed();
-		this.updateFooterSmall();
 		this.updateNoNavigation();
 		this.updateNavigationFullWidth();
 		this.updateNavigationScrollable();
 		this.updateCoverLayout();
-		this.headerFooterTransitions();
 
 		this.masterLayout.menuCollapsedEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.menuCollapsed = value;
 		});
 	}
 
-	private headerFooterTransitions() {
-		if (this.scroll.transitions.header || this.scroll.transitions.footer) {
-			this.scroll.onScroll.pipe(takeUntil(this.unsubscribe))
-				.subscribe((isScrolling) => {
-					if (this.scroll.transitions.footer) {
-						this.footerSmall = !isScrolling;
-					}
-				});
-		}
-	}
-
 	private updateApplicationFixed() {
 		this.masterLayout.applicationFixed = this.applicationFixed;
 		this.masterLayout.applicationFixedEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.applicationFixed = value;
-		});
-	}
-
-	private updateFooterSmall() {
-		this.masterLayout.smallFooter = this.footerSmall;
-		this.masterLayout.footerSmallEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.footerSmall = value;
 		});
 	}
 

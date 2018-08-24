@@ -1,4 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
+import {Unsubscribable} from '../unsubscribe';
+import {takeUntil} from 'rxjs/operators';
+import {MasterLayoutService} from './master-layout.service';
+import {MasterLayoutConfig} from './master-layout.config';
+import {ScrollingConfig} from '../scrolling';
 
 export interface ORFooterLink {
 	url: string;
@@ -26,7 +31,7 @@ export interface ORFooterLink {
 			<ng-content select="[orFooterLinks]" *ngIf="!footerLinks.length"></ng-content>
 			<ul class="list-unstyled small d-flex flex-row justify-content-lg-end" role="menu" *ngIf="footerLinks.length">
 				<li role="presentation" *ngFor="let link of footerLinks">
-					<a [href]="link.url" class="link" [attr.title]="link.title" [attr.target]="link.external ? '_blank' : undefined">
+					<a [href]="link.url" class="link" [attr.title]="link.title | translate" [attr.target]="link.external ? '_blank' : undefined">
 						{{link.label | translate}}
 					</a>
 				</li>
@@ -34,13 +39,48 @@ export interface ORFooterLink {
 		</div>
 	`
 })
-export class MasterLayoutFooterComponent implements OnInit {
-	@Input() footerLinks: ORFooterLink[];
+export class MasterLayoutFooterComponent extends Unsubscribable implements OnInit {
+	footerLinks: ORFooterLink[];
+
+	@HostBinding('class.application-footer-sm') small: boolean;
+	@HostBinding('class.application-footer') private app = true;
+
+	constructor(private readonly masterLayout: MasterLayoutService,
+				private readonly config: MasterLayoutConfig,
+				private readonly scroll: ScrollingConfig) {
+		super();
+
+		this.small = this.config.footer.small;
+		this.footerLinks = this.config.footer.links;
+
+		this.updateFooterSmall();
+		this.footerTransitions();
+	}
 
 	ngOnInit() {
-		this.footerLinks = this.footerLinks || [{url: 'http://www.disclaimer.admin.ch', label: 'Legal', title: 'Terms and conditions'}];
+		this.footerLinks = this.footerLinks || [{
+			url: 'http://www.disclaimer.admin.ch',
+			label: 'Legal',
+			title: 'Terms and conditions'
+		}];
 		this.footerLinks.forEach((link) => {
 			link.external = link.url.startsWith('http');
 		});
+	}
+
+	private updateFooterSmall() {
+		this.masterLayout.smallFooter = this.small;
+		this.masterLayout.footerSmallEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+			this.small = value;
+		});
+	}
+
+	private footerTransitions() {
+		if (this.scroll.transitions.footer) {
+			this.scroll.onScroll.pipe(takeUntil(this.unsubscribe))
+				.subscribe((isScrolling) => {
+					this.small = !isScrolling;
+				});
+		}
 	}
 }
