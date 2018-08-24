@@ -1,15 +1,16 @@
-import {Component, Input} from '@angular/core';
+import {Component, HostBinding, Input} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe';
 import {MasterLayoutService} from './master-layout.service';
 import {ORFooterLink} from './master-layout-footer.component';
 import {ScrollingConfig} from '../scrolling';
 import {ORNavigationLink} from './master-layout-navigation.component';
+import {MasterLayoutConfig} from './master-layout.config';
 
 @Component({
 	selector: 'or-master-layout',
 	template: `
-		<div class="application offcanvas" orScrollDetection aria-hidden="false"
+		<div class="offcanvas" orScrollDetection
 			[ngClass]="{'application-fixed': applicationFixed, 'no-navigation': navigationNone, 'has-cover': coverLayout, 'header-open': menuCollapsed}">
 			<nav class="accesskeys" role="navigation" aria-label="Accesskeys">
 				<ul class="list-unstyled">
@@ -31,7 +32,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 					[ngClass]="{'application-header-animate': headerAnimate, 'application-header-sticky': headerSticky, 'application-header-md': headerMedium}"
 					[navigationFullWidth]="navigationFullWidth"
 					[navigationScrollable]="navigationScrollable"
-					[locales]="locales" [home]="home"
+					[locales]="locales"
 					[navigation]="navigation" [navigationActiveClass]="navigationActiveClass">
 				<ng-content select="[orHeaderTitle]" orHeaderTitle></ng-content>
 				<ng-content select="[orHeaderControls]" orHeaderControls></ng-content>
@@ -77,7 +78,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 	`
 })
 export class MasterLayoutComponent extends Unsubscribable {
-	@Input() home = '/home';
+	home: string;
 	@Input() applicationFixed = false;
 	@Input() headerAnimate = true;
 	@Input() headerSticky = true;
@@ -93,8 +94,13 @@ export class MasterLayoutComponent extends Unsubscribable {
 	@Input() locales: string[] = [];
 	menuCollapsed = false;
 
-	constructor(private readonly masterLayout: MasterLayoutService, private readonly scroll: ScrollingConfig) {
+	@HostBinding('class.application') private app = true;
+
+	constructor(private readonly masterLayout: MasterLayoutService, private readonly scroll: ScrollingConfig, private readonly config: MasterLayoutConfig) {
 		super();
+
+		this.home = this.config.homePageRoute;
+
 		this.updateApplicationFixed();
 		this.updateFooterSmall();
 		this.updateHeaderMedium();

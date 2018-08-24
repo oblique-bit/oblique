@@ -3,6 +3,7 @@ import {TranslateService} from '@ngx-translate/core';
 
 import {MasterLayoutService} from './master-layout.service';
 import {ORNavigationLink} from './master-layout-navigation.component';
+import {MasterLayoutConfig} from './master-layout.config';
 
 @Component({
 	selector: 'or-master-layout-header',
@@ -60,14 +61,15 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 	`]
 })
 export class MasterLayoutHeaderComponent {
-	@Input() home: string;
+	home: string;
 	@Input() locales: string[] = [];
 	@Input() navigationFullWidth: boolean;
 	@Input() navigationScrollable: boolean;
 	@Input() navigation: ORNavigationLink[];
 	@Input() navigationActiveClass: string;
 
-	constructor(private readonly masterLayout: MasterLayoutService, private readonly translate: TranslateService) {
+	constructor(private readonly masterLayout: MasterLayoutService, private readonly translate: TranslateService, private readonly config: MasterLayoutConfig) {
+		this.home = this.config.homePageRoute;
 	}
 
 	isLangActive(lang: string): boolean {

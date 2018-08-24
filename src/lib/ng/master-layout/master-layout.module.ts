@@ -23,6 +23,7 @@ import {NotificationModule} from '../notification';
 import {SpinnerModule} from '../spinner';
 import {ScrollingModule} from '../scrolling';
 import {OffCanvasModule} from '../off-canvas';
+import {MasterLayoutConfig} from './master-layout.config';
 
 @NgModule({
 	imports: [
@@ -68,6 +69,8 @@ export class MasterLayoutModule {
 			ngModule: MasterLayoutModule,
 			providers: [
 				MasterLayoutService,
+				MasterLayoutConfig,
+
 				MasterLayoutApplicationService,
 				MasterLayoutHeaderService,
 				MasterLayoutFooterService
