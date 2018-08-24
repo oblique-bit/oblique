@@ -37,7 +37,8 @@ export class MasterLayoutConfig {
 	layout = {
 		fixed: false,
 		cover: false,
-		mainNavigation: true
+		mainNavigation: true,
+		offCanvas: true
 	};
 
 	/**

@@ -57,14 +57,15 @@ export interface ORNavigationLink {
 			<span class="fa fa-angle-right"></span>
 		</button>
 	`,
-	styles: [`:host {display: block;}`]
+	styles: [`:host {display: block;}`],
+	/* tslint:disable:use-host-property-decorator */
+	host: {class: 'application-navigation'}
 })
 export class MasterLayoutNavigationComponent extends Unsubscribable {
 	fullWidth: boolean;
 	activeClass: string;
 	links: ORNavigationLink[];
 	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') scrollable: boolean;
-	@HostBinding('class.application-navigation') private app = true;
 
 	constructor(private readonly router: Router, private readonly masterLayout: MasterLayoutService, private readonly config: MasterLayoutConfig) {
 		super();

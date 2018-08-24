@@ -59,7 +59,9 @@ import {ScrollingConfig} from '../scrolling';
 			display: flex;
 			align-items: center;
 		}
-	`]
+	`],
+	/* tslint:disable:use-host-property-decorator */
+	host: {class: 'application-header'}
 })
 export class MasterLayoutHeaderComponent extends Unsubscribable {
 	home: string;
@@ -68,7 +70,6 @@ export class MasterLayoutHeaderComponent extends Unsubscribable {
 	@HostBinding('class.application-header-animate') animate: boolean;
 	@HostBinding('class.application-header-sticky') sticky: boolean;
 	@HostBinding('class.application-header-md') medium: boolean;
-	@HostBinding('class.application-header') private app = true;
 
 	constructor(private readonly masterLayout: MasterLayoutService,
 				private readonly translate: TranslateService,

@@ -38,13 +38,14 @@ export interface ORFooterLink {
 				</li>
 			</ul>
 		</div>
-	`
+	`,
+	/* tslint:disable:use-host-property-decorator */
+	host: {class: 'application-footer'}
 })
 export class MasterLayoutFooterComponent extends Unsubscribable {
 	footerLinks: ORFooterLink[];
 
 	@HostBinding('class.application-footer-sm') small: boolean;
-	@HostBinding('class.application-footer') private app = true;
 
 	constructor(private readonly masterLayout: MasterLayoutService,
 				private readonly config: MasterLayoutConfig,

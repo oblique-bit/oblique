@@ -3,7 +3,7 @@ import {DOCUMENT} from '@angular/common';
 import {ScrollingConfig} from './scrolling.config';
 
 @Directive({
-	selector: '[orScrollDetection]'
+	selector: '[orScrollDetection, or-master-layout]'
 })
 export class ScrollDetectionDirective {
 	@HostBinding('class.application-scrolling')

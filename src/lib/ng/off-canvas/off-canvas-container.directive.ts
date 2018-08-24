@@ -5,13 +5,14 @@ import {OffCanvasService} from './off-canvas.service';
 import {Unsubscribable} from '../unsubscribe';
 
 @Directive({
-	selector: '.offcanvas'
+	selector: '.offcanvas, or-master-layout'
 })
 export class OffCanvasContainerDirective extends Unsubscribable {
 	@HostBinding('class.offcanvas-in') open = false;
 
 	constructor(offCanvas: OffCanvasService) {
 		super();
+
 		offCanvas.openEmitter
 			.pipe(takeUntil(this.unsubscribe))
 			.subscribe((value) => {
