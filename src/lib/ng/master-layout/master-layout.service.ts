@@ -129,7 +129,7 @@ export class MasterLayoutService extends Unsubscribable {
 		this.routeChange();
 	}
 
-	private manageLanguage() {
+	private manageLanguage(): void {
 		const lang = localStorage.getItem(MasterLayoutService.token) || 'de';
 		this.translate.setDefaultLang(lang);
 		this.translate.use(lang);
@@ -138,7 +138,7 @@ export class MasterLayoutService extends Unsubscribable {
 		});
 	}
 
-	private routeChange() {
+	private routeChange(): void {
 		this.router.events.pipe(
 			takeUntil(this.unsubscribe),
 			filter(event => event instanceof NavigationEnd),

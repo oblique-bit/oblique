@@ -61,14 +61,14 @@ export class MasterLayoutFooterComponent extends Unsubscribable {
 		this.footerTransitions();
 	}
 
-	private updateFooterSmall() {
+	private updateFooterSmall(): void {
 		this.masterLayout.smallFooter = this.small;
 		this.masterLayout.footerSmallEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.small = value;
 		});
 	}
 
-	private footerTransitions() {
+	private footerTransitions(): void {
 		if (this.scroll.transitions.footer) {
 			this.scroll.onScroll.pipe(takeUntil(this.unsubscribe))
 				.subscribe((isScrolling) => {

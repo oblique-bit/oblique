@@ -93,32 +93,32 @@ export class MasterLayoutHeaderComponent extends Unsubscribable {
 		return this.translate.currentLang === lang;
 	}
 
-	changeLang(lang: string) {
+	changeLang(lang: string): void {
 		this.translate.use(lang);
 	}
 
-	private updateHeaderMedium() {
+	private updateHeaderMedium(): void {
 		this.masterLayout.mediumHeader = this.medium;
 		this.masterLayout.headerMediumEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.medium = value;
 		});
 	}
 
-	private updateHeaderAnimate() {
+	private updateHeaderAnimate(): void {
 		this.masterLayout.animateHeader = this.animate;
 		this.masterLayout.headerAnimateEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.animate = value;
 		});
 	}
 
-	private updateHeaderSticky() {
+	private updateHeaderSticky(): void {
 		this.masterLayout.stickyHeader = this.sticky;
 		this.masterLayout.headerStickyEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.sticky = value;
 		});
 	}
 
-	private headerTransitions() {
+	private headerTransitions(): void {
 		if (this.scroll.transitions.header) {
 			this.scroll.onScroll.pipe(takeUntil(this.unsubscribe))
 				.subscribe((isScrolling) => {

@@ -20,7 +20,7 @@ export class MasterLayoutHeaderToggleDirective {
 	}
 
 	@HostListener('click', ['$event'])
-	onClick($event) {
+	toggle($event) {
 		// As ENTER keypress delegates to click events, let's ensure
 		// browser does not try to follow any empty link (ie `href=""`):
 		$event.preventDefault();

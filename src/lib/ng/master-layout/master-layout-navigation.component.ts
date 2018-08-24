@@ -81,14 +81,14 @@ export class MasterLayoutNavigationComponent extends Unsubscribable {
 		return this.router.isActive(url, false);
 	}
 
-	private updateNavigationFullWidth() {
+	private updateNavigationFullWidth(): void {
 		this.masterLayout.navigationFullWidth = this.fullWidth;
 		this.masterLayout.navigationFullWidthEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.fullWidth = value;
 		});
 	}
 
-	private updateNavigationScrollable() {
+	private updateNavigationScrollable(): void {
 		this.masterLayout.navigationScrollable = this.scrollable;
 		this.masterLayout.navigationScrollableEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.scrollable = value;

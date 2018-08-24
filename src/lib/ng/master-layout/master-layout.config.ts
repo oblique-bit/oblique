@@ -1,5 +1,18 @@
 import {Injectable} from '@angular/core';
+import {ORFooterLink} from './master-layout-footer.component';
+import {ORNavigationLink} from './master-layout-navigation.component';
 
+interface MasterLayoutFooter {
+	small: boolean;
+	links: ORFooterLink[];
+}
+
+interface MasterLayoutNavigation {
+	fullWidth: boolean;
+	scrollable: boolean;
+	activeClass: string;
+	links: ORNavigationLink[];
+}
 /**
  * Configuration service for the Master Layout component.
  *
@@ -39,7 +52,7 @@ export class MasterLayoutConfig {
 	/**
 	 * Controls the application's main navigation
 	 */
-	navigation = {
+	navigation: MasterLayoutNavigation = {
 		fullWidth: true,
 		scrollable: false,
 		activeClass: 'active',
@@ -49,7 +62,7 @@ export class MasterLayoutConfig {
 	/**
 	 * Controls the applications's footer
 	 */
-	footer = {
+	footer: MasterLayoutFooter = {
 		small: true,
 		links: [{url: 'http://www.disclaimer.admin.ch', label: 'i18n.application.footer.legal.label', title: 'i18n.application.footer.legal.title'}]
 	};

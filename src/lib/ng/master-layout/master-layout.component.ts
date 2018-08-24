@@ -96,21 +96,21 @@ export class MasterLayoutComponent extends Unsubscribable {
 		});
 	}
 
-	private updateApplicationFixed() {
+	private updateApplicationFixed(): void {
 		this.masterLayout.applicationFixed = this.applicationFixed;
 		this.masterLayout.applicationFixedEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.applicationFixed = value;
 		});
 	}
 
-	private updateCoverLayout() {
+	private updateCoverLayout(): void {
 		this.masterLayout.coverLayout = this.coverLayout;
 		this.masterLayout.coverLayoutEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.coverLayout = value;
 		});
 	}
 
-	private updateNoNavigation() {
+	private updateNoNavigation(): void {
 		this.masterLayout.noNavigation = this.noNavigation;
 		this.masterLayout.noNavigationEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.noNavigation = value;
