@@ -12,4 +12,12 @@ export class MasterLayoutConfig {
 	 * Route to the home page
 	 */
 	homePageRoute = '/home';
+
+	/**
+	 *  Controls the main page layout
+	 */
+	layout = {
+		fixed: false,
+		cover: false
+	};
 }

@@ -9,9 +9,9 @@ import {MasterLayoutConfig} from './master-layout.config';
 
 @Component({
 	selector: 'or-master-layout',
+	styles: [`:host {display: block;}`],
 	template: `
-		<div class="offcanvas" orScrollDetection
-			[ngClass]="{'application-fixed': applicationFixed, 'no-navigation': navigationNone, 'has-cover': coverLayout, 'header-open': menuCollapsed}">
+		<div class="offcanvas" orScrollDetection [ngClass]="{'no-navigation': navigationNone, 'header-open': menuCollapsed}">
 			<nav class="accesskeys" role="navigation" aria-label="Accesskeys">
 				<ul class="list-unstyled">
 					<li>
@@ -79,7 +79,6 @@ import {MasterLayoutConfig} from './master-layout.config';
 })
 export class MasterLayoutComponent extends Unsubscribable {
 	home: string;
-	@Input() applicationFixed = false;
 	@Input() headerAnimate = true;
 	@Input() headerSticky = true;
 	@Input() headerMedium = false;
@@ -87,19 +86,22 @@ export class MasterLayoutComponent extends Unsubscribable {
 	@Input() navigationNone = false;
 	@Input() navigationFullWidth = true;
 	@Input() navigationScrollable = false;
-	@Input() coverLayout = false;
 	@Input() footerLinks: ORFooterLink[] = [];
 	@Input() navigation: ORNavigationLink[] = [];
 	@Input() navigationActiveClass = 'active';
 	@Input() locales: string[] = [];
 	menuCollapsed = false;
 
+	@HostBinding('class.application-fixed') applicationFixed: boolean;
+	@HostBinding('class.has-cover') coverLayout: boolean;
 	@HostBinding('class.application') private app = true;
 
 	constructor(private readonly masterLayout: MasterLayoutService, private readonly scroll: ScrollingConfig, private readonly config: MasterLayoutConfig) {
 		super();
 
 		this.home = this.config.homePageRoute;
+		this.applicationFixed = this.config.layout.fixed;
+		this.coverLayout = this.config.layout.cover;
 
 		this.updateApplicationFixed();
 		this.updateFooterSmall();
