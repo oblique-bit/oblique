@@ -11,7 +11,7 @@ import {MasterLayoutConfig} from './master-layout.config';
 	selector: 'or-master-layout',
 	styles: [`:host {display: block;}`],
 	template: `
-		<div class="offcanvas" orScrollDetection [ngClass]="{'no-navigation': navigationNone, 'header-open': menuCollapsed}">
+		<div class="offcanvas" orScrollDetection [ngClass]="{'no-navigation': navigationNone}">
 			<nav class="accesskeys" role="navigation" aria-label="Accesskeys">
 				<ul class="list-unstyled">
 					<li>
@@ -28,8 +28,7 @@ import {MasterLayoutConfig} from './master-layout.config';
 					</li>
 				</ul>
 			</nav>
-			<or-master-layout-header class="application-header offcanvas-main"
-					[ngClass]="{'application-header-animate': headerAnimate, 'application-header-sticky': headerSticky, 'application-header-md': headerMedium}"
+			<or-master-layout-header class="offcanvas-main"
 					[navigationFullWidth]="navigationFullWidth"
 					[navigationScrollable]="navigationScrollable"
 					[locales]="locales"
@@ -79,9 +78,6 @@ import {MasterLayoutConfig} from './master-layout.config';
 })
 export class MasterLayoutComponent extends Unsubscribable {
 	home: string;
-	@Input() headerAnimate = true;
-	@Input() headerSticky = true;
-	@Input() headerMedium = false;
 	@Input() footerSmall = true;
 	@Input() navigationNone = false;
 	@Input() navigationFullWidth = true;
@@ -90,10 +86,10 @@ export class MasterLayoutComponent extends Unsubscribable {
 	@Input() navigation: ORNavigationLink[] = [];
 	@Input() navigationActiveClass = 'active';
 	@Input() locales: string[] = [];
-	menuCollapsed = false;
 
 	@HostBinding('class.application-fixed') applicationFixed: boolean;
 	@HostBinding('class.has-cover') coverLayout: boolean;
+	@HostBinding('class.header-open') menuCollapsed = false;
 	@HostBinding('class.application') private app = true;
 
 	constructor(private readonly masterLayout: MasterLayoutService, private readonly scroll: ScrollingConfig, private readonly config: MasterLayoutConfig) {
@@ -105,9 +101,6 @@ export class MasterLayoutComponent extends Unsubscribable {
 
 		this.updateApplicationFixed();
 		this.updateFooterSmall();
-		this.updateHeaderMedium();
-		this.updateHeaderSticky();
-		this.updateHeaderAnimate();
 		this.updateNoNavigation();
 		this.updateNavigationFullWidth();
 		this.updateNavigationScrollable();
@@ -123,9 +116,6 @@ export class MasterLayoutComponent extends Unsubscribable {
 		if (this.scroll.transitions.header || this.scroll.transitions.footer) {
 			this.scroll.onScroll.pipe(takeUntil(this.unsubscribe))
 				.subscribe((isScrolling) => {
-					if (this.scroll.transitions.header) {
-						this.headerMedium = isScrolling;
-					}
 					if (this.scroll.transitions.footer) {
 						this.footerSmall = !isScrolling;
 					}
@@ -144,27 +134,6 @@ export class MasterLayoutComponent extends Unsubscribable {
 		this.masterLayout.smallFooter = this.footerSmall;
 		this.masterLayout.footerSmallEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.footerSmall = value;
-		});
-	}
-
-	private updateHeaderMedium() {
-		this.masterLayout.mediumHeader = this.headerMedium;
-		this.masterLayout.headerMediumEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.headerMedium = value;
-		});
-	}
-
-	private updateHeaderAnimate() {
-		this.masterLayout.animateHeader = this.headerAnimate;
-		this.masterLayout.headerAnimateEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.headerAnimate = value;
-		});
-	}
-
-	private updateHeaderSticky() {
-		this.masterLayout.stickyHeader = this.headerSticky;
-		this.masterLayout.headerStickyEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.headerSticky = value;
 		});
 	}
 

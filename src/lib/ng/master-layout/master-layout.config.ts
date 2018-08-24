@@ -20,4 +20,13 @@ export class MasterLayoutConfig {
 		fixed: false,
 		cover: false
 	};
+
+	/**
+	 * Controls the header
+	 */
+	header = {
+		animate: true,
+		sticky: true,
+		medium: false
+	};
 }

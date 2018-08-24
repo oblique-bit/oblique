@@ -1,9 +1,12 @@
-import {Component, Input} from '@angular/core';
+import {Component, HostBinding, Input} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
+import {takeUntil} from 'rxjs/operators';
 
 import {MasterLayoutService} from './master-layout.service';
 import {ORNavigationLink} from './master-layout-navigation.component';
 import {MasterLayoutConfig} from './master-layout.config';
+import {Unsubscribable} from '../unsubscribe';
+import {ScrollingConfig} from '../scrolling';
 
 @Component({
 	selector: 'or-master-layout-header',
@@ -60,7 +63,7 @@ import {MasterLayoutConfig} from './master-layout.config';
 		}
 	`]
 })
-export class MasterLayoutHeaderComponent {
+export class MasterLayoutHeaderComponent extends Unsubscribable {
 	home: string;
 	@Input() locales: string[] = [];
 	@Input() navigationFullWidth: boolean;
@@ -68,8 +71,26 @@ export class MasterLayoutHeaderComponent {
 	@Input() navigation: ORNavigationLink[];
 	@Input() navigationActiveClass: string;
 
-	constructor(private readonly masterLayout: MasterLayoutService, private readonly translate: TranslateService, private readonly config: MasterLayoutConfig) {
+	@HostBinding('class.application-header-animate') animate: boolean;
+	@HostBinding('class.application-header-sticky') sticky: boolean;
+	@HostBinding('class.application-header-md') medium: boolean;
+	@HostBinding('class.application-header') private app = true;
+
+	constructor(private readonly masterLayout: MasterLayoutService,
+				private readonly translate: TranslateService,
+				private readonly config: MasterLayoutConfig,
+				private readonly scroll: ScrollingConfig) {
+		super();
 		this.home = this.config.homePageRoute;
+
+		this.animate = this.config.header.animate;
+		this.sticky = this.config.header.sticky;
+		this.medium = this.config.header.medium;
+
+		this.updateHeaderMedium();
+		this.updateHeaderSticky();
+		this.updateHeaderAnimate();
+		this.headerTransitions();
 	}
 
 	isLangActive(lang: string): boolean {
@@ -78,5 +99,35 @@ export class MasterLayoutHeaderComponent {
 
 	changeLang(lang: string) {
 		this.translate.use(lang);
+	}
+
+	private updateHeaderMedium() {
+		this.masterLayout.mediumHeader = this.medium;
+		this.masterLayout.headerMediumEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+			this.medium = value;
+		});
+	}
+
+	private updateHeaderAnimate() {
+		this.masterLayout.animateHeader = this.animate;
+		this.masterLayout.headerAnimateEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+			this.animate = value;
+		});
+	}
+
+	private updateHeaderSticky() {
+		this.masterLayout.stickyHeader = this.sticky;
+		this.masterLayout.headerStickyEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+			this.sticky = value;
+		});
+	}
+
+	private headerTransitions() {
+		if (this.scroll.transitions.header) {
+			this.scroll.onScroll.pipe(takeUntil(this.unsubscribe))
+				.subscribe((isScrolling) => {
+					this.medium = isScrolling;
+				});
+		}
 	}
 }
