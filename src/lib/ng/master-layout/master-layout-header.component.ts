@@ -3,7 +3,6 @@ import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
 
 import {MasterLayoutService} from './master-layout.service';
-import {ORNavigationLink} from './master-layout-navigation.component';
 import {MasterLayoutConfig} from './master-layout.config';
 import {Unsubscribable} from '../unsubscribe';
 import {ScrollingConfig} from '../scrolling';
@@ -51,8 +50,7 @@ import {ScrollingConfig} from '../scrolling';
 				<ng-content select="[orHeaderControls]"></ng-content>
 			</div>
 		</div>
-		<or-master-layout-navigation class="application-navigation" [navigationFullWidth]="navigationFullWidth"
-		[navigationScrollable]="navigationScrollable" [navigation]="navigation" [navigationActiveClass]="navigationActiveClass">
+		<or-master-layout-navigation>
 			<ng-content select="[orNavigation]"></ng-content>
 		</or-master-layout-navigation>
 	`,
@@ -66,10 +64,6 @@ import {ScrollingConfig} from '../scrolling';
 export class MasterLayoutHeaderComponent extends Unsubscribable {
 	home: string;
 	@Input() locales: string[] = [];
-	@Input() navigationFullWidth: boolean;
-	@Input() navigationScrollable: boolean;
-	@Input() navigation: ORNavigationLink[];
-	@Input() navigationActiveClass: string;
 
 	@HostBinding('class.application-header-animate') animate: boolean;
 	@HostBinding('class.application-header-sticky') sticky: boolean;

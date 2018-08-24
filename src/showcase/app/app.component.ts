@@ -1,36 +1,38 @@
 import {Component} from '@angular/core';
-
-import {ORFooterLink} from '../../lib/ng/master-layout/master-layout-footer.component';
-import {ORNavigationLink} from '../../lib/ng/master-layout/master-layout-navigation.component';
+import {MasterLayoutConfig} from '../../lib/ng/master-layout';
 
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html'
 })
 export class AppComponent {
-	navigation: ORNavigationLink[] = [
-		{url: '/home', label: 'i18n.routes.home.title'},
-		{
-			url: '/samples', label: 'i18n.routes.samples.title', children: [
-				{url: '/column-layout', label: 'i18n.routes.samples.column-layout.title'},
-				{url: '/datepicker', label: 'i18n.routes.samples.datepicker.title'},
-				{url: '/filter-box', label: 'i18n.routes.samples.filter-box.title'},
-				{url: '/form-control-state', label: 'i18n.routes.samples.form-control-state.title'},
-				{url: '/http-interceptor', label: 'i18n.routes.samples.http-interceptor.title'},
-				{url: '/master-layout', label: 'i18n.routes.samples.master-layout.title'},
-				{url: '/multiselect', label: 'i18n.routes.samples.multiselect.title'},
-				{url: '/navigable', label: 'i18n.routes.samples.navigable.title'},
-				{url: '/nav-tree', label: 'i18n.routes.samples.nav-tree.title'},
-				{url: '/notification', label: 'i18n.routes.samples.notification.title'},
-				{url: '/number-format', label: 'i18n.routes.samples.number-format.title'},
-				{url: '/schema-validation', label: 'i18n.routes.samples.schema-validation.title'},
-				{url: '/toggle', label: 'i18n.routes.samples.toggle.title'},
-				{url: '/unsaved-changes', label: 'i18n.routes.samples.unsaved-changes.title'}
-			]
-		}
-	];
-	footerLinks: ORFooterLink[] = [
-		{url: 'http://www.disclaimer.admin.ch', label: 'Legal', title: 'Terms and conditions'},
-		{url: 'test', label: 'test'}
-	];
+
+	constructor(config: MasterLayoutConfig) {
+		config.navigation.links = [
+			{url: '/home', label: 'i18n.routes.home.title'},
+			{
+				url: '/samples', label: 'i18n.routes.samples.title', children: [
+					{url: '/column-layout', label: 'i18n.routes.samples.column-layout.title'},
+					{url: '/datepicker', label: 'i18n.routes.samples.datepicker.title'},
+					{url: '/filter-box', label: 'i18n.routes.samples.filter-box.title'},
+					{url: '/form-control-state', label: 'i18n.routes.samples.form-control-state.title'},
+					{url: '/http-interceptor', label: 'i18n.routes.samples.http-interceptor.title'},
+					{url: '/master-layout', label: 'i18n.routes.samples.master-layout.title'},
+					{url: '/multiselect', label: 'i18n.routes.samples.multiselect.title'},
+					{url: '/navigable', label: 'i18n.routes.samples.navigable.title'},
+					{url: '/nav-tree', label: 'i18n.routes.samples.nav-tree.title'},
+					{url: '/notification', label: 'i18n.routes.samples.notification.title'},
+					{url: '/number-format', label: 'i18n.routes.samples.number-format.title'},
+					{url: '/schema-validation', label: 'i18n.routes.samples.schema-validation.title'},
+					{url: '/toggle', label: 'i18n.routes.samples.toggle.title'},
+					{url: '/unsaved-changes', label: 'i18n.routes.samples.unsaved-changes.title'}
+				]
+			}
+		];
+
+		config.footer.links = [
+			{url: 'http://www.disclaimer.admin.ch', label: 'Legal', title: 'Terms and conditions'},
+			{url: 'test', label: 'test', title: ''}
+		];
+	}
 }

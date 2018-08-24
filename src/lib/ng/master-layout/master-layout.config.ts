@@ -18,7 +18,8 @@ export class MasterLayoutConfig {
 	 */
 	layout = {
 		fixed: false,
-		cover: false
+		cover: false,
+		mainNavigation: true
 	};
 
 	/**
@@ -28,6 +29,16 @@ export class MasterLayoutConfig {
 		animate: true,
 		sticky: true,
 		medium: false
+	};
+
+	/**
+	 * Controls the application's main navigation
+	 */
+	navigation = {
+		fullWidth: true,
+		scrollable: false,
+		activeClass: 'active',
+		links: []
 	};
 
 	/**

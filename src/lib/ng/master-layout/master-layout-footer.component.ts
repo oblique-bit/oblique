@@ -1,9 +1,10 @@
-import {Component, HostBinding, OnInit} from '@angular/core';
-import {Unsubscribable} from '../unsubscribe';
+import {Component, HostBinding} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
+
+import {Unsubscribable} from '../unsubscribe';
+import {ScrollingConfig} from '../scrolling';
 import {MasterLayoutService} from './master-layout.service';
 import {MasterLayoutConfig} from './master-layout.config';
-import {ScrollingConfig} from '../scrolling';
 
 export interface ORFooterLink {
 	url: string;
@@ -39,7 +40,7 @@ export interface ORFooterLink {
 		</div>
 	`
 })
-export class MasterLayoutFooterComponent extends Unsubscribable implements OnInit {
+export class MasterLayoutFooterComponent extends Unsubscribable {
 	footerLinks: ORFooterLink[];
 
 	@HostBinding('class.application-footer-sm') small: boolean;
@@ -52,20 +53,12 @@ export class MasterLayoutFooterComponent extends Unsubscribable implements OnIni
 
 		this.small = this.config.footer.small;
 		this.footerLinks = this.config.footer.links;
-
-		this.updateFooterSmall();
-		this.footerTransitions();
-	}
-
-	ngOnInit() {
-		this.footerLinks = this.footerLinks || [{
-			url: 'http://www.disclaimer.admin.ch',
-			label: 'Legal',
-			title: 'Terms and conditions'
-		}];
 		this.footerLinks.forEach((link) => {
 			link.external = link.url.startsWith('http');
 		});
+
+		this.updateFooterSmall();
+		this.footerTransitions();
 	}
 
 	private updateFooterSmall() {

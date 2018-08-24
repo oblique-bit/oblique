@@ -1,17 +1,16 @@
 import {Component, HostBinding, Input} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
+
 import {Unsubscribable} from '../unsubscribe';
-import {MasterLayoutService} from './master-layout.service';
-import {ORFooterLink} from './master-layout-footer.component';
 import {ScrollingConfig} from '../scrolling';
-import {ORNavigationLink} from './master-layout-navigation.component';
+import {MasterLayoutService} from './master-layout.service';
 import {MasterLayoutConfig} from './master-layout.config';
 
 @Component({
 	selector: 'or-master-layout',
 	styles: [`:host {display: block;}`],
 	template: `
-		<div class="offcanvas" orScrollDetection [ngClass]="{'no-navigation': navigationNone}">
+		<div class="offcanvas" orScrollDetection>
 			<nav class="accesskeys" role="navigation" aria-label="Accesskeys">
 				<ul class="list-unstyled">
 					<li>
@@ -28,11 +27,7 @@ import {MasterLayoutConfig} from './master-layout.config';
 					</li>
 				</ul>
 			</nav>
-			<or-master-layout-header class="offcanvas-main"
-					[navigationFullWidth]="navigationFullWidth"
-					[navigationScrollable]="navigationScrollable"
-					[locales]="locales"
-					[navigation]="navigation" [navigationActiveClass]="navigationActiveClass">
+			<or-master-layout-header class="offcanvas-main" [locales]="locales">
 				<ng-content select="[orHeaderTitle]" orHeaderTitle></ng-content>
 				<ng-content select="[orHeaderControls]" orHeaderControls></ng-content>
 				<ng-content select="[orNavigation]" orNavigation></ng-content>
@@ -78,17 +73,12 @@ import {MasterLayoutConfig} from './master-layout.config';
 })
 export class MasterLayoutComponent extends Unsubscribable {
 	home: string;
-	@Input() footerSmall = true;
-	@Input() navigationNone = false;
-	@Input() navigationFullWidth = true;
-	@Input() navigationScrollable = false;
-	@Input() navigation: ORNavigationLink[] = [];
-	@Input() navigationActiveClass = 'active';
 	@Input() locales: string[] = [];
 
 	@HostBinding('class.application-fixed') applicationFixed: boolean;
 	@HostBinding('class.has-cover') coverLayout: boolean;
 	@HostBinding('class.header-open') menuCollapsed = false;
+	@HostBinding('class.no-navigation') noNavigation = false;
 	@HostBinding('class.application') private app = true;
 
 	constructor(private readonly masterLayout: MasterLayoutService, private readonly scroll: ScrollingConfig, private readonly config: MasterLayoutConfig) {
@@ -97,12 +87,11 @@ export class MasterLayoutComponent extends Unsubscribable {
 		this.home = this.config.homePageRoute;
 		this.applicationFixed = this.config.layout.fixed;
 		this.coverLayout = this.config.layout.cover;
+		this.noNavigation = !this.config.layout.mainNavigation;
 
 		this.updateApplicationFixed();
-		this.updateNoNavigation();
-		this.updateNavigationFullWidth();
-		this.updateNavigationScrollable();
 		this.updateCoverLayout();
+		this.updateNoNavigation();
 
 		this.masterLayout.menuCollapsedEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.menuCollapsed = value;
@@ -116,31 +105,17 @@ export class MasterLayoutComponent extends Unsubscribable {
 		});
 	}
 
-	private updateNoNavigation() {
-		this.masterLayout.noNavigation = this.navigationNone;
-		this.masterLayout.noNavigationEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.navigationNone = value;
-		});
-	}
-
-	private updateNavigationFullWidth() {
-		this.masterLayout.navigationFullWidth = this.navigationFullWidth;
-		this.masterLayout.navigationFullWidthEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.navigationFullWidth = value;
-		});
-	}
-
-	private updateNavigationScrollable() {
-		this.masterLayout.navigationScrollable = this.navigationScrollable;
-		this.masterLayout.navigationScrollableEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.navigationScrollable = value;
-		});
-	}
-
 	private updateCoverLayout() {
 		this.masterLayout.coverLayout = this.coverLayout;
 		this.masterLayout.coverLayoutEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.coverLayout = value;
+		});
+	}
+
+	private updateNoNavigation() {
+		this.masterLayout.noNavigation = this.noNavigation;
+		this.masterLayout.noNavigationEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+			this.noNavigation = value;
 		});
 	}
 }
