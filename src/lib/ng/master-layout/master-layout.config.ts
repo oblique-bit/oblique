@@ -14,6 +14,11 @@ export class MasterLayoutConfig {
 	homePageRoute = '/home';
 
 	/**
+	 * Locales of the application
+	 */
+	locales = ['de', 'fr', 'it'];
+
+	/**
 	 *  Controls the application's layout
 	 */
 	layout = {

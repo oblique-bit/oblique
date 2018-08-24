@@ -30,9 +30,6 @@ export class AppComponent {
 			}
 		];
 
-		config.footer.links = [
-			{url: 'http://www.disclaimer.admin.ch', label: 'Legal', title: 'Terms and conditions'},
-			{url: 'test', label: 'test', title: ''}
-		];
+		config.locales = ['en', 'de', 'fr', 'it'];
 	}
 }

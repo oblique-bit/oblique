@@ -1,4 +1,4 @@
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, HostBinding} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe';
@@ -27,7 +27,7 @@ import {MasterLayoutConfig} from './master-layout.config';
 					</li>
 				</ul>
 			</nav>
-			<or-master-layout-header class="offcanvas-main" [locales]="locales">
+			<or-master-layout-header class="offcanvas-main">
 				<ng-content select="[orHeaderTitle]" orHeaderTitle></ng-content>
 				<ng-content select="[orHeaderControls]" orHeaderControls></ng-content>
 				<ng-content select="[orNavigation]" orNavigation></ng-content>
@@ -73,8 +73,6 @@ import {MasterLayoutConfig} from './master-layout.config';
 })
 export class MasterLayoutComponent extends Unsubscribable {
 	home: string;
-	@Input() locales: string[] = [];
-
 	@HostBinding('class.application-fixed') applicationFixed: boolean;
 	@HostBinding('class.has-cover') coverLayout: boolean;
 	@HostBinding('class.header-open') menuCollapsed = false;

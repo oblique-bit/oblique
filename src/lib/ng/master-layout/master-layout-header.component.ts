@@ -1,4 +1,4 @@
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, HostBinding} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
 
@@ -63,7 +63,7 @@ import {ScrollingConfig} from '../scrolling';
 })
 export class MasterLayoutHeaderComponent extends Unsubscribable {
 	home: string;
-	@Input() locales: string[] = [];
+	locales: string[];
 
 	@HostBinding('class.application-header-animate') animate: boolean;
 	@HostBinding('class.application-header-sticky') sticky: boolean;
@@ -75,7 +75,9 @@ export class MasterLayoutHeaderComponent extends Unsubscribable {
 				private readonly config: MasterLayoutConfig,
 				private readonly scroll: ScrollingConfig) {
 		super();
+
 		this.home = this.config.homePageRoute;
+		this.locales = this.config.locales;
 
 		this.animate = this.config.header.animate;
 		this.sticky = this.config.header.sticky;
