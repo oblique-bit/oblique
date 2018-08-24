@@ -73,7 +73,7 @@ export class MasterLayoutNavigationComponent extends Unsubscribable {
 		this.activeClass = this.config.navigation.activeClass;
 		this.links = this.config.navigation.links;
 		this.fullWidth = this.config.navigation.fullWidth;
-		this.scrollable= this.config.navigation.scrollable;
+		this.scrollable = this.config.navigation.scrollable;
 		this.updateNavigationFullWidth();
 		this.updateNavigationScrollable();
 	}
