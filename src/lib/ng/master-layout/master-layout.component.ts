@@ -45,16 +45,16 @@ import {MasterLayoutConfig} from './master-layout.config';
 			</div>
 			<div class="application-content-viewport">
 				<or-notification></or-notification>
-				<div class="empty-layout" *ngIf="!coverLayout">
-					<router-outlet></router-outlet>
-				</div>
-				<div class="cover-layout" *ngIf="coverLayout">
+				<div class="cover-layout" *ngIf="coverLayout; else normalLayout">
 					<div class="cover-viewport">
-						<div class="empty-layout">
-							<router-outlet></router-outlet>
-						</div>
+						<ng-container *ngTemplateOutlet="normalLayout"></ng-container>
 					</div>
 				</div>
+				<ng-template #normalLayout>
+					<div class="empty-layout">
+						<router-outlet></router-outlet>
+					</div>
+				</ng-template>
 				<or-spinner></or-spinner>
 			</div>
 		</div>
