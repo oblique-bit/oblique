@@ -1,4 +1,4 @@
-import {Component, HostBinding} from '@angular/core';
+import {Component, HostBinding, ContentChildren, TemplateRef, QueryList} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe';
@@ -28,8 +28,12 @@ import {MasterLayoutConfig} from './master-layout.config';
 		</nav>
 		<or-master-layout-header [class.offcanvas-main]="offCanvas">
 			<ng-content select="[orHeaderTitle]" orHeaderTitle></ng-content>
-			<ng-content select="[orHeaderControls]" orHeaderControls></ng-content>
 			<ng-content select="[orNavigation]" orNavigation></ng-content>
+			<ng-container *ngFor="let template of templates">
+				<ng-template>
+					<ng-container [ngTemplateOutlet]="template"></ng-container>
+				</ng-template>
+			</ng-container>
 		</or-master-layout-header>
 		<div id="content" class="application-content" role="main" [class.offcanvas-main]="offCanvas">
 			<div class="alert-compatibility default-layout">
@@ -78,6 +82,7 @@ export class MasterLayoutComponent extends Unsubscribable {
 	@HostBinding('class.header-open') menuCollapsed = false;
 	@HostBinding('class.no-navigation') noNavigation = false;
 	@HostBinding('class.offcanvas') offCanvas = false;
+	@ContentChildren(TemplateRef) templates: QueryList<TemplateRef<any>>;
 
 	constructor(private readonly masterLayout: MasterLayoutService, private readonly scroll: ScrollingConfig, private readonly config: MasterLayoutConfig) {
 		super();

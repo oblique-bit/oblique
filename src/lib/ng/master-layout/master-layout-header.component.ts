@@ -1,4 +1,4 @@
-import {Component, HostBinding} from '@angular/core';
+import {Component, ContentChildren, HostBinding, QueryList, TemplateRef} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
 
@@ -47,7 +47,11 @@ import {ScrollingConfig} from '../scrolling';
 						</a>
 					</li>
 				</ul>
-				<ng-content select="[orHeaderControls]"></ng-content>
+				<ul class="navbar-nav navbar-controls ml-sm-auto" role="menu">
+					<li class="nav-item" role="menuitem" *ngFor="let template of templates">
+						<ng-container [ngTemplateOutlet]="template"></ng-container>
+					</li>
+				</ul>
 			</div>
 		</div>
 		<or-master-layout-navigation>
@@ -70,6 +74,7 @@ export class MasterLayoutHeaderComponent extends Unsubscribable {
 	@HostBinding('class.application-header-animate') animate: boolean;
 	@HostBinding('class.application-header-sticky') sticky: boolean;
 	@HostBinding('class.application-header-md') medium: boolean;
+	@ContentChildren(TemplateRef) private templates: QueryList<TemplateRef<any>>;
 
 	constructor(private readonly masterLayout: MasterLayoutService,
 				private readonly translate: TranslateService,

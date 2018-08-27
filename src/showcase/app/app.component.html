@@ -1,20 +1,18 @@
 <or-master-layout>
 	<ng-container orHeaderTitle>ObliqueReactive</ng-container>
-	<ul class="navbar-nav navbar-controls ml-sm-auto" role="menu" orHeaderControls>
-		<li class="nav-item" role="menuitem">
-			<a href="https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/"
-			   class="nav-link control-link"
-			   ngbTooltip="Go to ObliqueReactive GIT repository" placement="left">
-				<span class="control-icon fa fa-bitbucket"></span>
-			</a>
-		</li>
-		<li class="nav-item" role="presentation">
-			<a class="nav-link control-link" orOffCanvasToggle role="button" tabindex="0"
-			ngbTooltip="Toggle Off-Canvas">
-				<span class="control-icon fa fa-sign-in fa-rotate-180"></span>
-			</a>
-		</li>
-	</ul>
+	<ng-template>
+		<a href="https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/" (click)="asdf()"
+		   class="nav-link control-link"
+		   ngbTooltip="Go to ObliqueReactive GIT repository" placement="left">
+			<span class="control-icon fa fa-bitbucket"></span>
+		</a>
+	</ng-template>
+	<ng-template>
+		<a class="nav-link control-link" orOffCanvasToggle role="button" tabindex="0"
+		   ngbTooltip="Toggle Off-Canvas" placement="left">
+			<span class="control-icon fa fa-sign-in fa-rotate-180"></span>
+		</a>
+	</ng-template>
 	<p class="small" orFooterInfo>&copy; 2018 {{'i18n.application.organization.name' | translate}}</p>
 	<p class="smaller" orFooterInfoSMCollapse>
 		<span>Built with </span>
