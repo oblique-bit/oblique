@@ -18,7 +18,6 @@ const del = require('del'),
 	gulpFile = require('gulp-file'),
 
 	// Project-specific:
-	pkg = require('./package.json'),
 	paths = {
 		src: 'src/',
 		lib: 'src/lib/',
