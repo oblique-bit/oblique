@@ -18,9 +18,7 @@ module.exports = function (config) {
 		client: {
 			clearContext: false // leave Jasmine Spec Runner output visible in browser
 		},
-		reporters: config.codeCoverage
-			? ['coverage-istanbul', 'sonarqubeUnit']
-			: ['progress', 'kjhtml'],
+		reporters: ['progress', 'kjhtml', 'coverage-istanbul', 'sonarqubeUnit'],
 		coverageIstanbulReporter: {
 			dir: require('path').join(__dirname, './target/coverage'),
 			reports: ['html', 'lcovonly'],
