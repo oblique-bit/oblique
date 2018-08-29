@@ -1,14 +1,25 @@
-<a name="2.0.1"></a>
-## [2.0.1](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/compare/2.0.0...2.0.1) (2018-08-13)
+### ObliqueReactive
 
+<a name="2.1.0"></a>
+#### [2.1.0](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/compare/2.0.0...2.1.0) (2018-08-29)
 
-### Bug Fixes
+##### Dependencies updates
+* **Angular:** 6.1.3
+* **ObliqueUI:** 2.0.1
+* **Bootstrap:** 4.1.3
+* **ng-bootstrap:** 3.0.0
+* **ajv:** 6.5.3
+
+##### Bug Fixes
 
 * **schema-validation:** do not return a `type` error with empty fields ([7418eb5](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/7418eb5))
 
 
+##### Features
 
-### ObliqueReactive
+* **master-layout:** add component and related service ([9079064](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/9079064))
+* **off-canvas:** add static off-canvas with dedicated toggle ([b557845](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/b557845))
+
 
 <a name="2.0.0"></a>
 ### [2.0.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0) (2018-07-18)
