@@ -1,9 +1,15 @@
 import {FormsModule} from '@angular/forms';
-import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {NgbDatepickerModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
-import {ObliqueModule, SchemaValidationService, DatepickerModule, DatepickerPlaceholderDirective} from '../../../../lib/ng';
+import {
+	DatepickerModule,
+	DatepickerPlaceholderDirective,
+	ObliqueModule,
+	SchemaValidationService
+} from '../../../../lib/ng';
 import {MockTranslatePipe} from '../../../../../testhelpers';
 import {DatepickerSampleComponent} from './datepicker-sample.component';
+import {TranslateService} from '@ngx-translate/core';
 
 describe('DatepickerSampleComponent', () => {
 	let component: DatepickerSampleComponent;
@@ -15,14 +21,15 @@ describe('DatepickerSampleComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [DatepickerSampleComponent, MockTranslatePipe],
 			providers: [
-				{provide: SchemaValidationService, useValue: schemaValidationService}
+				{provide: SchemaValidationService, useValue: schemaValidationService},
+				{provide: TranslateService, useValue: {currentLang: 'en'}}
 			],
 			imports: [
 				ObliqueModule.forRoot(),
 				NgbDatepickerModule.forRoot(),
 				NgbTooltipModule.forRoot(),
 				FormsModule
-			],
+			]
 		}).overrideModule(DatepickerModule, {
 			//We don't need this directive in this test
 			remove: {

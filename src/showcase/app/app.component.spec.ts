@@ -2,7 +2,7 @@ import {async, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {NotificationService, SpinnerService} from '../../lib';
+import {MasterLayoutConfig, NotificationService, SpinnerService} from '../../lib';
 import {AppComponent} from './app.component';
 import {MockTranslatePipe} from '../../../testhelpers';
 
@@ -23,7 +23,8 @@ describe('AppComponent', () => {
 			providers: [
 				{provide: NotificationService, useValue: mockNotificationService},
 				{provide: TranslateService, useValue: mockTranslateService},
-				SpinnerService
+				SpinnerService,
+				MasterLayoutConfig
 			]
 		});
 		TestBed.compileComponents();

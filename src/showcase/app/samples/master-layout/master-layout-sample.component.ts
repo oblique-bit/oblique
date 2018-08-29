@@ -1,7 +1,5 @@
-import {Component, OnInit, AfterViewInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {MasterLayoutService} from '../../../../lib/ng/master-layout/master-layout.service';
-import {Unsubscribable} from '../../../../lib/ng/unsubscribe';
-import {takeUntil} from 'rxjs/operators';
 
 @Component({
 	selector: 'master-layout-sample',

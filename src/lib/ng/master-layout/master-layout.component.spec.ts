@@ -6,6 +6,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {MasterLayoutComponent} from './master-layout.component';
 import {MasterLayoutService} from './master-layout.service';
 import {ScrollingConfig} from '../scrolling';
+import {MasterLayoutConfig} from './master-layout.config';
 
 describe('MasterLayoutComponent', () => {
 	let component: MasterLayoutComponent;
@@ -20,6 +21,7 @@ describe('MasterLayoutComponent', () => {
 			declarations: [MasterLayoutComponent],
 			providers: [
 				MasterLayoutService,
+				MasterLayoutConfig,
 				ScrollingConfig,
 				{provide: TranslateService, useValue: mockTranslateService}
 			],
