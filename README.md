@@ -12,11 +12,11 @@ ObliqueReactive uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.ang
 
 1. Register our npm repository manager:
 
-	npm config set registry https://repo.bit.admin.ch/repository/npm-group/
+	`npm config set registry https://repo.bit.admin.ch/repository/npm-group/`
 
 2. Install `oblique-reactive` as an npm dependency:
 
-	npm install oblique-reactive --save
+	`npm install oblique-reactive --save`
 
 3. Import `ObliqueModule` in your root `NgModule`:
 
@@ -145,28 +145,23 @@ You can now check for updates and bump `package.json` dependencies accordingly:
 
 Before releasing, execute the following steps:
 
-1. Switch to develop branch, if not allready on it.
+1. Switch to develop branch, if not already on it.
 2. Create a new package version 
 
 	npm version patch|minor|major
 	
 	> This will automatically run "npm run ci-build" (lint, test, build), then bump the version in the package.json and create a updated version of the CHANGELOG.md.
+	
+	1. `patch` is for bugfix only.
+	1. `minor` is for new features or features improvements without `BREAKING CHANGE`
+	1. `major` indicates at least 1 `BREAKING CHANGE`
+	
 3. Review the changes in the CHANGELOG.md
-4. Commit the changes (CHANGELOG.md and package.json)
+1. Commit the changes (`CHANGELOG.md`, `package.json`, `package-lock.json`)
 
-	npm run release
+	`npm run release`
 
 	> This will commit & push the changes to the master and upload the npm package to Nexus repoisotory.
-
-
-Prepare your workspace (first-time setup only):
-
-1. Ensure you have an account with publishing privileges on the internal `npm` registry ([BIT Nexus](https://repo.bit.admin.ch))
-2. Authenticate on the internal npm registry:
-
-	`npm login --registry=https://repo.bit.admin.ch/repository/npm-private/`
-
-    > Follow the steps on the terminal as you may be asked for credentials. Login success is confirmed by a console message.
 
 ## <a name="npm-link"></a> Debug oblique-reactive in a different project
 If you need to debug or test oblique-reactive in a 
@@ -177,6 +172,7 @@ If you need to debug or test oblique-reactive in a
 
 2. Connect your project to oblique-reactive 
 	`npm link`
+	
 	`npm link oblique-reactive`
 
 	> This will create a symlink in your projects node_modules/oblique-reactive pointing to oblique-reactive/dist folder.
@@ -190,4 +186,5 @@ If you need to debug or test oblique-reactive in a
 4. When finished with your work, you can switch back to the npm registry version of oblique-reactive.
 
 	`npm unlink oblique-reactive`
+	
 	`npm install`

@@ -8,12 +8,12 @@ import {join} from 'path';
 //<editor-fold desc="Dependencies">
 const del = require('del'),
 	exec = require('child_process').exec,
-	spawn = require('cross-spawn'),
 	webpack = require('webpack'),
+	fs = require('fs'),
 
 	// Gulp & plugins:
 	gulp = require('gulp'),
-	conventionalChangelog = require('gulp-conventional-changelog'),
+	git = require('gulp-git'),
 	gutil = require('gulp-util'),
 	gulpFile = require('gulp-file'),
 
@@ -83,7 +83,8 @@ const distMeta = () => {
 	});
 
 	return gulp.src(
-		'README.md'
+		'README.md',
+		'CHANGELOG.md'
 	).pipe(
 		gulpFile('package.json', JSON.stringify(output, null, 2))
 	).pipe(
@@ -105,35 +106,17 @@ const dist = gulp.series(
 	distClean,
 	distBuild
 );
-//</editor-fold>
 
-//<editor-fold desc="Deployment tasks">
-require('gulp-release-flows')({
-	branch: 'HEAD:feature/OUI-633-improve-release-workflow'
-}); // Imports 'build:release-*' tasks
-
-const release = gulp.series(
-	'build:commit-changes',
-	'build:push-changes',
-	'build:create-new-tag'
-);
-
-/**
- * Publishes the module in the specified npm registry.
- * @see package.json > publishConfig
- */
-const npmPublish = (callback) => {
-	return spawn(
-		'npm',
-		['publish', paths.dist],
-		{stdio: 'inherit'}
-	).on('close', callback)
-	.on('error', function () {
-		console.log('[SPAWN] Error: ', arguments);
-		callback('Unable to publish NPM module.');
-	});
+const commit = () => {
+	return gulp.src('.')
+		.pipe(git.add())
+		.pipe(git.commit('chore(version): release version ' + getPackageJsonVersion()));
+};
+const push = (cb) => {
+	return git.push('origin', 'master', cb);
 };
 //</editor-fold>
+
 
 //<editor-fold desc="Build-watch for dev only">
 
@@ -169,9 +152,8 @@ gulp.task(
 gulp.task(
 	'publish',
 	gulp.series(
-		release,
-		dist,
-		npmPublish
+		commit,
+		push
 	)
 );
 //</editor-fold>
@@ -199,4 +181,12 @@ function reload(module) {
 
 	// Require module again:
 	return require(module);
+}
+
+
+
+function getPackageJsonVersion() {
+	// We parse the json file instead of using require because require caches
+	// multiple calls so the version number won't be updated
+	return JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
 }
