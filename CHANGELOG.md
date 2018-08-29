@@ -1,3 +1,13 @@
+<a name="2.0.1"></a>
+## [2.0.1](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/compare/2.0.0...2.0.1) (2018-08-13)
+
+
+### Bug Fixes
+
+* **schema-validation:** do not return a `type` error with empty fields ([7418eb5](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/7418eb5))
+
+
+
 ### ObliqueReactive
 
 <a name="2.0.0"></a>

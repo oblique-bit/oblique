@@ -9,7 +9,7 @@ import {MasterLayoutConfig} from './master-layout.config';
 import {ScrollingConfig} from '../scrolling';
 import {MockTranslatePipe} from '../../../../testhelpers';
 
-fdescribe('MasterLayoutHeaderComponent', () => {
+describe('MasterLayoutHeaderComponent', () => {
 	let component: MasterLayoutHeaderComponent;
 	let fixture: ComponentFixture<MasterLayoutHeaderComponent>;
 	const mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use', 'getDefaultLang']);

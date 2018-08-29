@@ -8,17 +8,16 @@ import {join} from 'path';
 //<editor-fold desc="Dependencies">
 const del = require('del'),
 	exec = require('child_process').exec,
-	spawn = require('cross-spawn'),
 	webpack = require('webpack'),
+	fs = require('fs'),
 
 	// Gulp & plugins:
 	gulp = require('gulp'),
-	conventionalChangelog = require('gulp-conventional-changelog'),
+	git = require('gulp-git'),
 	gutil = require('gulp-util'),
 	gulpFile = require('gulp-file'),
 
 	// Project-specific:
-	pkg = require('./package.json'),
 	paths = {
 		src: 'src/',
 		lib: 'src/lib/',
@@ -83,7 +82,8 @@ const distMeta = () => {
 	});
 
 	return gulp.src(
-		'README.md'
+		'README.md',
+		'CHANGELOG.md'
 	).pipe(
 		gulpFile('package.json', JSON.stringify(output, null, 2))
 	).pipe(
@@ -105,90 +105,27 @@ const dist = gulp.series(
 	distClean,
 	distBuild
 );
-//</editor-fold>
 
-//<editor-fold desc="Deployment tasks">
-require('gulp-release-flows')({
-	branch: 'HEAD:master'
-}); // Imports 'build:release-*' tasks
-
-const changelog = () => {
-	return gulp.src(
-		'CHANGELOG.md'
-	).pipe(
-		conventionalChangelog({
-			// conventional-changelog options:
-			preset: 'angular'
-			//releaseCount: 0
-		}, {
-			// context options:
-			linkCompare: false,
-			repository: pkg.repository.path // Atlassian Stash-specific
-		}, {
-			// git-raw-commits options:
-			from: '2.0.0',
-			to: 'HEAD'
-		}, {
-			// conventional-commits-parser options
-		}, {
-			// conventional-changelog-writer options
-			// transform: function (commit) {
-			// 	console.log(commit);
-			// 	return commit;
-			// },
-			headerPartial: readFileSync(join(__dirname, 'changelog-header.hbs'), 'utf-8')
-		})
-	).pipe(
-		gulp.dest('./')
-	);
+const commit = () => {
+	return gulp.src('.')
+		.pipe(git.add())
+		.pipe(git.commit('chore(version): release version ' + getPackageJsonVersion()));
 };
-
-const release = gulp.series(
-	'build:bump-version',
-	//'changelog',
-	'build:commit-changes',
-	'build:push-changes',
-	'build:create-new-tag'
-);
-
-/**
- * Publishes the module in the specified npm registry.
- * @see package.json > publishConfig
- */
-const npmPublish = (callback) => {
-	return spawn(
-		'npm',
-		['publish', paths.dist],
-		{stdio: 'inherit'}
-	).on('close', callback)
-	.on('error', function () {
-		console.log('[SPAWN] Error: ', arguments);
-		callback('Unable to publish NPM module.');
-	});
+const push = (cb) => {
+	return git.push('origin', 'master', cb);
 };
 //</editor-fold>
 
-//<editor-fold desc="NPM link for dev only">
-const npmLink = (callback) => {
-	return spawn(
-		'npm',
-		['link', paths.dist],
-		{stdio: 'inherit'}
-	).on('close', callback)
-	.on('error', function () {
-		console.log('[SPAWN] Error: ', arguments);
-		callback('Unable to execute NPM link');
-	});
-};
 
-const watchLink = () => {
+//<editor-fold desc="Build-watch for dev only">
+
+const watchBuild = () => {
 	gulp.watch(paths.src + '**/*', distBuild);
 };
 
-const devLink = gulp.series(
+const buildAndWatch = gulp.series(
 	distBuild,
-	npmLink,
-	watchLink
+	watchBuild
 );
 //</editor-fold>
 
@@ -214,22 +151,16 @@ gulp.task(
 gulp.task(
 	'publish',
 	gulp.series(
-		release, // Note: this increments version number!
-		dist,
-		npmPublish
+		commit,
+		push
 	)
 );
 //</editor-fold>
 
 //<editor-fold desc="Secondary tasks">
 gulp.task(
-	'changelog',
-	changelog
-);
-
-gulp.task(
-	'dev-link',
-	devLink
+	'dev-watch',
+	buildAndWatch
 );
 //</editor-fold>
 
@@ -249,4 +180,12 @@ function reload(module) {
 
 	// Require module again:
 	return require(module);
+}
+
+
+
+function getPackageJsonVersion() {
+	// We parse the json file instead of using require because require caches
+	// multiple calls so the version number won't be updated
+	return JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
 }

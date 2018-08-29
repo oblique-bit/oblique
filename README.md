@@ -12,11 +12,11 @@ ObliqueReactive uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.ang
 
 1. Register our npm repository manager:
 
-	npm config set registry https://repo.bit.admin.ch/repository/npm-group/
+	`npm config set registry https://repo.bit.admin.ch/repository/npm-group/`
 
 2. Install `oblique-reactive` as an npm dependency:
 
-	npm install oblique-reactive --save
+	`npm install oblique-reactive --save`
 
 3. Import `ObliqueModule` in your root `NgModule`:
 
@@ -84,11 +84,6 @@ If you are using Git for the first time, configure your user information as well
 	git config --global http."https://stash.eap.bit.admin.ch/".proxy ""
 	git config --global http.proxy <http-proxy-url>
 
-###### <a name="npm-config"></a> NPM config
-
-	npm config set registry https://repo.bit.admin.ch/repository/npm-group/
-	npm config set strict-ssl false
-
 #### First-time setup
 
 Install *project* dependencies (`npm` will look at [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/package.json) and automatically install the necessary dependencies listed there):
@@ -150,66 +145,46 @@ You can now check for updates and bump `package.json` dependencies accordingly:
 
 Before releasing, execute the following steps:
 
-1. Switch to master branch and merge develop on it.
-2. Ensure project builds and runs properly:
+1. Switch to develop branch, if not already on it.
+2. Create a new package version 
 
-	npm run dev
+	npm version patch|minor|major
+	
+	> This will automatically run "npm run ci-build" (lint, test, build), then bump the version in the package.json and create a updated version of the CHANGELOG.md.
+	
+	1. `patch` is for bugfix only.
+	1. `minor` is for new features or features improvements without `BREAKING CHANGE`
+	1. `major` indicates at least 1 `BREAKING CHANGE`
+	
+3. Review the changes in the CHANGELOG.md
+1. Commit the changes (`CHANGELOG.md`, `package.json`, `package-lock.json`)
 
-3. Check project distribution (`./dist/` folder).
-4. Ensure ObliqueUI docs (<http://localhost:3001/>) are running as expected.
-5. Run the tests (if any):
+	`npm run release`
 
-	npm run test
+	> This will commit & push the changes to the master and upload the npm package to Nexus repoisotory.
 
-6. Check source code quality:
+## <a name="npm-link"></a> Debug oblique-reactive in a different project
+If you need to debug or test oblique-reactive in a 
 
-	npm run lint
+1. Prepare oblique-reactive
 
-7. Commit and push any remaining changes.
+	`npm link dist`
 
-Prepare your workspace (first-time setup only):
+2. Connect your project to oblique-reactive 
+	`npm link`
+	
+	`npm link oblique-reactive`
 
-1. Ensure you have an account with publishing privileges on the internal `npm` registry ([BIT Nexus](https://repo.bit.admin.ch))
-2. Authenticate on the internal npm registry:
+	> This will create a symlink in your projects node_modules/oblique-reactive pointing to oblique-reactive/dist folder.
 
-	npm login --registry=https://repo.bit.admin.ch/repository/npm-private/
+3. Re-build on oblique-reactive changes
 
-    > Follow the steps on the terminal as you may be asked for credentials. Login success is confirmed by a console message.
+	`npm run dev-watch`
 
-### <a name="release-changelog"></a> Update changelog
+	> This will re-build on every change in the oblique-reactive project.
 
-For every new release, changelog needs to be updated. Changelog for the next release can be automatically generated if Git commit messages follow the conventional guidelines (see [Git Commit Guidelines](#git-commit-guidelines)).
+4. When finished with your work, you can switch back to the npm registry version of oblique-reactive.
 
-1. Generate the changelog since the previous release:
-
-	npm run changelog
-
-2. Open the `CHANGELOG` file and make any required change to ensure business developers will understand the new changelog.
-
-### <a name="release-patch"></a> Releasing a *patch* version
-
-Build, release (defaults to *patch* version number increment) and finally publish using the following command:
-
-	npm run release
-
-    > Follow the steps on the terminal as you may be asked multiple times for credentials.
-
-### <a name="release-types"></a> Releasing other version types
-
-Publishing a *prerelease*:
-
-	npm run release -- --bump prerelease
-
-Publishing a *minor* release:
-
-	npm run release -- --bump minor
-
-Publishing a *major* release:
-
-	npm run release -- --bump major
-
-Publishing a *version-specific* release:
-
-	npm run release -- --tag <version>
-
-> For more release commands or options, see <https://github.com/stevelacy/gulp-bump>.
+	`npm unlink oblique-reactive`
+	
+	`npm install`
