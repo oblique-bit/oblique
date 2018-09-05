@@ -1,10 +1,11 @@
-import {Component, HostBinding, ContentChildren, TemplateRef, QueryList} from '@angular/core';
+import {Component, HostBinding, ContentChildren, TemplateRef, QueryList, Input} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe';
 import {ScrollingConfig} from '../scrolling';
 import {MasterLayoutService} from './master-layout.service';
 import {MasterLayoutConfig} from './master-layout.config';
+import {ORNavigationLink} from './master-layout-navigation.component';
 
 @Component({
 	selector: 'or-master-layout',
@@ -26,7 +27,7 @@ import {MasterLayoutConfig} from './master-layout.config';
 				</li>
 			</ul>
 		</nav>
-		<or-master-layout-header [class.offcanvas-main]="offCanvas">
+		<or-master-layout-header [class.offcanvas-main]="offCanvas" [navigation]="navigation">
 			<ng-content select="[orHeaderTitle]" orHeaderTitle></ng-content>
 			<ng-content select="[orNavigation]" orNavigation></ng-content>
 			<ng-container *ngFor="let template of templates">
@@ -77,6 +78,7 @@ import {MasterLayoutConfig} from './master-layout.config';
 })
 export class MasterLayoutComponent extends Unsubscribable {
 	home: string;
+	@Input() navigation: ORNavigationLink[] = [];
 	@HostBinding('class.application-fixed') applicationFixed: boolean;
 	@HostBinding('class.has-cover') coverLayout: boolean;
 	@HostBinding('class.header-open') menuCollapsed = false;

@@ -1,4 +1,4 @@
-import {Component, ContentChildren, HostBinding, QueryList, TemplateRef} from '@angular/core';
+import {Component, ContentChildren, HostBinding, Input, QueryList, TemplateRef} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
 
@@ -6,6 +6,7 @@ import {MasterLayoutService} from './master-layout.service';
 import {MasterLayoutConfig} from './master-layout.config';
 import {Unsubscribable} from '../unsubscribe';
 import {ScrollingConfig} from '../scrolling';
+import {ORNavigationLink} from './master-layout-navigation.component';
 
 @Component({
 	selector: 'or-master-layout-header',
@@ -54,7 +55,7 @@ import {ScrollingConfig} from '../scrolling';
 				</ul>
 			</div>
 		</div>
-		<or-master-layout-navigation>
+		<or-master-layout-navigation [links]="navigation">
 			<ng-content select="[orNavigation]"></ng-content>
 		</or-master-layout-navigation>
 	`,
@@ -70,6 +71,7 @@ import {ScrollingConfig} from '../scrolling';
 export class MasterLayoutHeaderComponent extends Unsubscribable {
 	home: string;
 	locales: string[];
+	@Input() navigation: ORNavigationLink[];
 
 	@HostBinding('class.application-header-animate') animate: boolean;
 	@HostBinding('class.application-header-sticky') sticky: boolean;

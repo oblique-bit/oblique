@@ -1,4 +1,4 @@
-import {Component, HostBinding} from '@angular/core';
+import {Component, HostBinding, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
 
@@ -61,21 +61,24 @@ export interface ORNavigationLink {
 	/* tslint:disable:use-host-property-decorator */
 	host: {class: 'application-navigation'}
 })
-export class MasterLayoutNavigationComponent extends Unsubscribable {
+export class MasterLayoutNavigationComponent extends Unsubscribable implements OnInit {
 	fullWidth: boolean;
 	activeClass: string;
-	links: ORNavigationLink[];
+	@Input() links: ORNavigationLink[];
 	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') scrollable: boolean;
 
 	constructor(private readonly router: Router, private readonly masterLayout: MasterLayoutService, private readonly config: MasterLayoutConfig) {
 		super();
 
 		this.activeClass = this.config.navigation.activeClass;
-		this.links = this.config.navigation.links;
 		this.fullWidth = this.config.navigation.fullWidth;
 		this.scrollable = this.config.navigation.scrollable;
 		this.updateNavigationFullWidth();
 		this.updateNavigationScrollable();
+	}
+
+	ngOnInit() {
+		this.links = this.links.length ? this.links : this.config.navigation.links;
 	}
 
 	isActive(url: string): boolean {
