@@ -64,7 +64,7 @@ export interface ORNavigationLink {
 export class MasterLayoutNavigationComponent extends Unsubscribable implements OnInit {
 	fullWidth: boolean;
 	activeClass: string;
-	@Input() links: ORNavigationLink[];
+	@Input() links: ORNavigationLink[] = [];
 	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') scrollable: boolean;
 
 	constructor(private readonly router: Router, private readonly masterLayout: MasterLayoutService, private readonly config: MasterLayoutConfig) {
