@@ -4,6 +4,7 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe';
+import {MasterLayoutConfig} from './master-layout.config';
 
 @Injectable()
 export class MasterLayoutService extends Unsubscribable {
@@ -120,7 +121,8 @@ export class MasterLayoutService extends Unsubscribable {
 	private hasCoverLayout: boolean;
 	private isMenuCollapsed: boolean;
 
-	constructor(private readonly translate: TranslateService,
+	constructor(private readonly config: MasterLayoutConfig,
+				private readonly translate: TranslateService,
 				private readonly router: Router,
 				private readonly activatedRoute: ActivatedRoute) {
 		super();
@@ -130,7 +132,7 @@ export class MasterLayoutService extends Unsubscribable {
 	}
 
 	private manageLanguage(): void {
-		const lang = localStorage.getItem(MasterLayoutService.token) || 'de';
+		const lang = localStorage.getItem(MasterLayoutService.token) || this.config.defaultLocale;
 		this.translate.setDefaultLang(lang);
 		this.translate.use(lang);
 		this.translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe((event: LangChangeEvent) => {

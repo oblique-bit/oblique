@@ -13,6 +13,7 @@ interface MasterLayoutNavigation {
 	activeClass: string;
 	links: ORNavigationLink[];
 }
+
 /**
  * Configuration service for the Master Layout component.
  *
@@ -30,6 +31,7 @@ export class MasterLayoutConfig {
 	 * Locales of the application
 	 */
 	locales = ['de', 'fr', 'it'];
+	defaultLocale = 'de';
 
 	/**
 	 *  Controls the application's layout
@@ -65,6 +67,10 @@ export class MasterLayoutConfig {
 	 */
 	footer: MasterLayoutFooter = {
 		small: true,
-		links: [{url: 'http://www.disclaimer.admin.ch', label: 'i18n.application.footer.legal.label', title: 'i18n.application.footer.legal.title'}]
+		links: [{
+			url: 'http://www.disclaimer.admin.ch',
+			label: 'i18n.application.footer.legal.label',
+			title: 'i18n.application.footer.legal.title'
+		}]
 	};
 }
