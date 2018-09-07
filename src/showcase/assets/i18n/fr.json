@@ -15,7 +15,11 @@
         "it": "Italiano",
         "en": "English"
       },
-      "loading": "Chargement..."
+      "loading": "Chargement...",
+      "footer.legal": {
+        "label": "Légal",
+        "title": "Conditions d'utilisation"
+      }
     },
     "routes": {
       "home": {
