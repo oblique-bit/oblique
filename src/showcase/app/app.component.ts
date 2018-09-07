@@ -28,12 +28,4 @@ export class AppComponent {
 			]
 		}
 	];
-
-	constructor(config: MasterLayoutConfig) {
-
-		config.footer.links = [
-			{url: 'http://www.disclaimer.admin.ch', label: 'Legal', title: 'Terms and conditions'},
-			{url: 'test', label: 'test'}
-		];
-	}
 }
