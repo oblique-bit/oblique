@@ -19,7 +19,8 @@ export class MasterLayoutNavigationDirective extends Unsubscribable {
 
 	constructor(private readonly headerService: MasterLayoutHeaderService) {
 		super();
-		console.warn('@deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead');
+		console.warn(' MasterLayoutNavigationDirective is deprecated since version 2.1.0 and will be deleted in version 3.0.0. ' +
+			'Use MasterLayoutComponent & MasterLayoutService instead');
 		// Subscribe to header changes:
 		this.headerService.openChange
 			.pipe(takeUntil(this.unsubscribe))

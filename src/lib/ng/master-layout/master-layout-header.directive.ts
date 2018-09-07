@@ -25,7 +25,8 @@ export class MasterLayoutHeaderDirective extends Unsubscribable implements After
 				private readonly elementRef: ElementRef,
 				@Inject(DOCUMENT) private readonly document: any) {
 		super();
-		console.warn('@deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead');
+		console.warn('MasterLayoutHeaderDirective is deprecated since version 2.1.0 and will be deleted in version 3.0.0. ' +
+			'Use MasterLayoutComponent & MasterLayoutService instead');
 
 		this.body = this.document.querySelector('body');
 		this.headerService.medium = this.elementRef.nativeElement.classList.contains('application-header-md');

@@ -20,7 +20,8 @@ export class MasterLayoutFooterDirective extends Unsubscribable {
 				private readonly elementRef: ElementRef,
 				@Inject(DOCUMENT) private readonly document: any) {
 		super();
-		console.warn('@deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead');
+		console.warn('MasterLayoutFooterDirective is deprecated since version 2.1.0 and will be deleted in version 3.0.0. ' +
+			'Use MasterLayoutComponent & MasterLayoutService instead');
 
 		this.footerService.small = this.elementRef.nativeElement.classList.contains('application-footer-sm');
 

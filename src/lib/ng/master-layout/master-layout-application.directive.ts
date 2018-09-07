@@ -29,7 +29,8 @@ export class MasterLayoutApplicationDirective extends Unsubscribable {
 				private readonly activatedRoute: ActivatedRoute) {
 		super();
 		layoutApplicationService.applicationDirective = this; // FIXME: refactor this to avoid circular coupling
-		console.warn('@deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead');
+		console.warn('MasterLayoutApplicationDirective is deprecated since version 2.1.0 and will be deleted in version 3.0.0. ' +
+			'Use MasterLayoutComponent & MasterLayoutService instead');
 
 		this.hasCover = this.defaultHasCover = this.elementRef.nativeElement.classList.contains('has-cover');
 		this.noNavigation = this.defaultNoNavigation = this.elementRef.nativeElement.classList.contains('no-navigation');

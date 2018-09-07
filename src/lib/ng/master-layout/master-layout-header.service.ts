@@ -48,7 +48,8 @@ export class MasterLayoutHeaderService extends Unsubscribable implements OnInit 
 	}
 
 	ngOnInit() {
-		console.warn('@deprecated since version 2.1.0. Will be deleted in version 3.0.0. Use MasterLayoutComponent & MasterLayoutService instead');
+		console.warn('MasterLayoutHeaderService is deprecated since version 2.1.0 and will be deleted in version 3.0.0. ' +
+			'Use MasterLayoutComponent & MasterLayoutService instead');
 	}
 
 	public toggle() {
