@@ -38,7 +38,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 			</div>
 			<div class="application-header-controls">
 				<h2 class="sr-only">{{'i18n.oblique.controls.title' | translate}}</h2>
-				<ul class="navbar-nav navbar-controls navbar-locale" role="menu">
+				<ul class="navbar-nav navbar-controls navbar-locale" role="menu" *ngIf="locales.length > 1">
 					<li class="nav-item" role="menuitem"
 						*ngFor="let locale of locales">
 						<a class="nav-link control-link" tabindex="0" role="button" orMasterLayoutHeaderToggle
