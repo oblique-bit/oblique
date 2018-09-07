@@ -132,12 +132,31 @@ export class MasterLayoutService extends Unsubscribable {
 	}
 
 	private manageLanguage(): void {
-		const lang = localStorage.getItem(MasterLayoutService.token) || this.config.defaultLocale;
+		const lang = this.getCurrentLocale();
 		this.translate.setDefaultLang(lang);
 		this.translate.use(lang);
 		this.translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe((event: LangChangeEvent) => {
 			localStorage.setItem(MasterLayoutService.token, event.lang);
 		});
+	}
+
+	private getCurrentLocale(): string {
+		let lang = localStorage.getItem(MasterLayoutService.token) || this.config.defaultLocale;
+		if (!this.config.locales.length) {
+			console.warn('No locales are defined!');
+		} else if (this.config.locales.indexOf(this.config.defaultLocale) === -1) {
+			console.warn(`The default locale ("${this.config.defaultLocale}") is not within the supported ones ` +
+				`("${this.config.locales.join('", "')}"). It will be set to "${this.config.locales[0]}"`);
+			this.config.defaultLocale = this.config.locales[0];
+		}
+		if (this.config.locales.indexOf(lang) === -1) {
+			console.warn(`The current locale ("${lang}") is not within the supported ones ` +
+				`("${this.config.locales.join('", "')}"). It will be set to "${this.config.defaultLocale}"`);
+			lang = this.config.defaultLocale;
+			localStorage.setItem(MasterLayoutService.token, lang);
+		}
+
+		return lang;
 	}
 
 	private routeChange(): void {
