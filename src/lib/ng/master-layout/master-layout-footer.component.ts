@@ -1,4 +1,4 @@
-import {Component, HostBinding} from '@angular/core';
+import {Component, HostBinding, Input, OnInit} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe';
@@ -42,9 +42,8 @@ export interface ORFooterLink {
 	/* tslint:disable:use-host-property-decorator */
 	host: {class: 'application-footer'}
 })
-export class MasterLayoutFooterComponent extends Unsubscribable {
-	footerLinks: ORFooterLink[];
-
+export class MasterLayoutFooterComponent extends Unsubscribable implements OnInit {
+	@Input() footerLinks: ORFooterLink[] = [];
 	@HostBinding('class.application-footer-sm') small: boolean;
 
 	constructor(private readonly masterLayout: MasterLayoutService,
@@ -53,13 +52,16 @@ export class MasterLayoutFooterComponent extends Unsubscribable {
 		super();
 
 		this.small = this.config.footer.small;
-		this.footerLinks = this.config.footer.links;
-		this.footerLinks.forEach((link) => {
-			link.external = link.url.startsWith('http');
-		});
 
 		this.updateFooterSmall();
 		this.footerTransitions();
+	}
+
+	ngOnInit() {
+		this.footerLinks = this.footerLinks.length ? this.footerLinks : this.config.footer.links;
+		this.footerLinks.forEach((link) => {
+			link.external = link.url.startsWith('http');
+		});
 	}
 
 	private updateFooterSmall(): void {

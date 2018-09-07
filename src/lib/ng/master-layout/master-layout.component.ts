@@ -6,6 +6,7 @@ import {ScrollingConfig} from '../scrolling';
 import {MasterLayoutService} from './master-layout.service';
 import {MasterLayoutConfig} from './master-layout.config';
 import {ORNavigationLink} from './master-layout-navigation.component';
+import {ORFooterLink} from './master-layout-footer.component';
 
 @Component({
 	selector: 'or-master-layout',
@@ -64,7 +65,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 			</div>
 		</div>
 		<or-top-control></or-top-control>
-		<or-master-layout-footer [class.offcanvas-main]="offCanvas">
+		<or-master-layout-footer [class.offcanvas-main]="offCanvas" [footerLinks]="footerLinks">
 			<ng-content select="[orFooterInfo]" orFooterInfo></ng-content>
 			<ng-content select="[orFooterInfoSMCollapse]" orFooterInfoSMCollapse></ng-content>
 			<ng-content select="[orFooterLinks]" orFooterLinks></ng-content>
@@ -79,6 +80,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 export class MasterLayoutComponent extends Unsubscribable {
 	home: string;
 	@Input() navigation: ORNavigationLink[] = [];
+	@Input() footerLinks: ORFooterLink[] = [];
 	@HostBinding('class.application-fixed') applicationFixed: boolean;
 	@HostBinding('class.has-cover') coverLayout: boolean;
 	@HostBinding('class.header-open') menuCollapsed = false;
