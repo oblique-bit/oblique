@@ -8,7 +8,6 @@ import {ColumnPanelDirective} from './column-panel.directive';
 export class ColumnToggleDirective {
 
 	constructor(private readonly parent: ColumnPanelDirective) {
-		console.log('init col');
 	}
 
 	@HostListener('click')
