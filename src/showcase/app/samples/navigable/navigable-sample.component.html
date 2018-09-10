@@ -26,7 +26,7 @@
 							 [navigableHighlight]="isHighlighted(scientist)"
 							 (navigableOnActivation)="onActivation(scientist)"
 							 (navigableOnMove)="onMove($event, scientist)"
-							 #orNavigable>
+							 #orNavigable="orNavigable">
 							<div class="col-3">{{scientist.firstname}}</div>
 							<div class="col-3">{{scientist.lastname}}</div>
 							<div class="col-3">{{scientist.birthdate}}</div>
