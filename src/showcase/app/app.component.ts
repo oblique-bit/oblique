@@ -28,4 +28,8 @@ export class AppComponent {
 			]
 		}
 	];
+
+	constructor(config: MasterLayoutConfig) {
+		config.locales = ['en'];
+	}
 }
