@@ -10,6 +10,7 @@ import {ORFooterLink} from './master-layout-footer.component';
 
 @Component({
 	selector: 'or-master-layout',
+	exportAs: 'orMasterLayout',
 	styles: [`:host {display: block;}`],
 	template: `
 		<nav class="accesskeys" role="navigation" aria-label="Accesskeys">
