@@ -31,8 +31,9 @@ import {ORFooterLink} from './master-layout-footer.component';
 		<or-master-layout-header [class.offcanvas-main]="offCanvas" [navigation]="navigation">
 			<ng-content select="[orHeaderTitle]" orHeaderTitle></ng-content>
 			<ng-content select="[orNavigation]" orNavigation></ng-content>
+			<ng-content select="[orHeaderControls]" orHeaderControls></ng-content>
 			<ng-container *ngFor="let template of templates">
-				<ng-template>
+				<ng-template #orHeaderControls>
 					<ng-container [ngTemplateOutlet]="template"></ng-container>
 				</ng-template>
 			</ng-container>

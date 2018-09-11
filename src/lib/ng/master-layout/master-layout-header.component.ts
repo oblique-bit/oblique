@@ -48,11 +48,12 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 						</a>
 					</li>
 				</ul>
-				<ul class="navbar-nav navbar-controls ml-sm-auto" role="menu">
+				<ul class="navbar-nav navbar-controls ml-sm-auto" role="menu" *ngIf="templates.length">
 					<li class="nav-item" role="menuitem" *ngFor="let template of templates">
 						<ng-container [ngTemplateOutlet]="template"></ng-container>
 					</li>
 				</ul>
+				<ng-content select="[orHeaderControls]" *ngIf="!templates.length"></ng-content>
 			</div>
 		</div>
 		<or-master-layout-navigation [links]="navigation">
@@ -76,7 +77,7 @@ export class MasterLayoutHeaderComponent extends Unsubscribable {
 	@HostBinding('class.application-header-animate') animate: boolean;
 	@HostBinding('class.application-header-sticky') sticky: boolean;
 	@HostBinding('class.application-header-md') medium: boolean;
-	@ContentChildren(TemplateRef) readonly templates: QueryList<TemplateRef<any>>;
+	@ContentChildren('orHeaderControls') readonly templates: QueryList<TemplateRef<any>>;
 
 	constructor(private readonly masterLayout: MasterLayoutService,
 				private readonly translate: TranslateService,
