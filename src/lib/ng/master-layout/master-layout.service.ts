@@ -119,7 +119,7 @@ export class MasterLayoutService extends Unsubscribable {
 	private isNavigationFullWidth: boolean;
 	private isNavigationScrollable: boolean;
 	private hasCoverLayout: boolean;
-	private isMenuCollapsed: boolean;
+	private isMenuCollapsed = true;
 
 	constructor(private readonly config: MasterLayoutConfig,
 				private readonly translate: TranslateService,
