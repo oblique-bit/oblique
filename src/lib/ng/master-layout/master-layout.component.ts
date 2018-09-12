@@ -85,9 +85,9 @@ export class MasterLayoutComponent extends Unsubscribable {
 	@Input() footerLinks: ORFooterLink[] = [];
 	@HostBinding('class.application-fixed') applicationFixed: boolean;
 	@HostBinding('class.has-cover') coverLayout: boolean;
-	@HostBinding('class.header-open') menuCollapsed = false;
-	@HostBinding('class.no-navigation') noNavigation = false;
-	@HostBinding('class.offcanvas') offCanvas = false;
+	@HostBinding('class.header-open') headerOpen: boolean;
+	@HostBinding('class.no-navigation') noNavigation: boolean;
+	@HostBinding('class.offcanvas') offCanvas: boolean;
 	@ContentChildren(TemplateRef) templates: QueryList<TemplateRef<any>>;
 
 	constructor(private readonly masterLayout: MasterLayoutService, private readonly scroll: ScrollingConfig, private readonly config: MasterLayoutConfig) {
@@ -98,13 +98,14 @@ export class MasterLayoutComponent extends Unsubscribable {
 		this.coverLayout = this.config.layout.cover;
 		this.noNavigation = !this.config.layout.mainNavigation;
 		this.offCanvas = this.config.layout.offCanvas;
+		this.headerOpen = !this.masterLayout.menuCollapsed;
 
 		this.updateApplicationFixed();
 		this.updateCoverLayout();
 		this.updateNoNavigation();
 
 		this.masterLayout.menuCollapsedEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.menuCollapsed = value;
+			this.headerOpen = !value;
 		});
 	}
 
