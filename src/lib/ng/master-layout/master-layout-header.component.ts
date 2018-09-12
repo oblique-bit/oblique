@@ -1,4 +1,14 @@
-import {Component, ContentChildren, HostBinding, Input, QueryList, TemplateRef} from '@angular/core';
+import {
+	AfterViewInit,
+	Component,
+	ContentChildren,
+	ElementRef,
+	HostBinding,
+	Input,
+	QueryList,
+	Renderer2,
+	TemplateRef
+} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
 
@@ -69,7 +79,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 	/* tslint:disable:use-host-property-decorator */
 	host: {class: 'application-header'}
 })
-export class MasterLayoutHeaderComponent extends Unsubscribable {
+export class MasterLayoutHeaderComponent extends Unsubscribable implements AfterViewInit {
 	home: string;
 	locales: string[];
 	@Input() navigation: ORNavigationLink[];
@@ -82,7 +92,9 @@ export class MasterLayoutHeaderComponent extends Unsubscribable {
 	constructor(private readonly masterLayout: MasterLayoutService,
 				private readonly translate: TranslateService,
 				private readonly config: MasterLayoutConfig,
-				private readonly scroll: ScrollingConfig) {
+				private readonly scroll: ScrollingConfig,
+				private readonly el: ElementRef,
+				private readonly renderer: Renderer2) {
 		super();
 
 		this.home = this.config.homePageRoute;
@@ -98,12 +110,26 @@ export class MasterLayoutHeaderComponent extends Unsubscribable {
 		this.headerTransitions();
 	}
 
+	ngAfterViewInit() {
+		this.setFocusable(!this.masterLayout.menuCollapsed);
+		this.masterLayout.menuCollapsedEmitter.subscribe(value => this.setFocusable(!value));
+	}
+
 	isLangActive(lang: string): boolean {
 		return this.translate.currentLang === lang;
 	}
 
 	changeLang(lang: string): void {
 		this.translate.use(lang);
+	}
+
+	private setFocusable(isFocusable: boolean): void {
+		// these elements must not be focusable during the closing animation. Otherwise, the focused element will be scrolled into view
+		// and the header will appear empty.
+		this.el.nativeElement.querySelectorAll('.application-header-controls a.control-link')
+			.forEach(el => {
+				this.renderer.setAttribute(el, 'tabindex', isFocusable ? '0' : '-1');
+			});
 	}
 
 	private updateHeaderMedium(): void {
