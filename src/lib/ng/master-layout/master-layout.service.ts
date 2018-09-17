@@ -109,7 +109,7 @@ export class MasterLayoutService extends Unsubscribable {
 		this.menuCollapsedEmitter.emit(value);
 	}
 
-	private static readonly token = 'oblique:lang';
+	private static readonly token = 'oblique_lang';
 	private isApplicationFixed: boolean;
 	private isFooterSmall: boolean;
 	private isHeaderMedium: boolean;
@@ -131,17 +131,28 @@ export class MasterLayoutService extends Unsubscribable {
 		this.routeChange();
 	}
 
+	private static getLangToken(): string {
+		let langToken = localStorage.getItem(MasterLayoutService.token);
+		if (!langToken) {
+			langToken = '_' + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+			localStorage.setItem(MasterLayoutService.token, langToken);
+		}
+
+		return langToken;
+	}
+
 	private manageLanguage(): void {
-		const lang = this.getCurrentLocale();
+		const langToken = MasterLayoutService.getLangToken();
+		const lang = this.getCurrentLocale(langToken);
 		this.translate.setDefaultLang(lang);
 		this.translate.use(lang);
 		this.translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe((event: LangChangeEvent) => {
-			localStorage.setItem(MasterLayoutService.token, event.lang);
+			localStorage.setItem(MasterLayoutService.token + langToken, event.lang);
 		});
 	}
 
-	private getCurrentLocale(): string {
-		let lang = localStorage.getItem(MasterLayoutService.token) || this.config.defaultLocale;
+	private getCurrentLocale(langToken: string): string {
+		let lang = localStorage.getItem(MasterLayoutService.token + langToken) || this.config.defaultLocale;
 		if (!this.config.locales.length) {
 			console.warn('No locales are defined!');
 		} else if (this.config.locales.indexOf(this.config.defaultLocale) === -1) {
@@ -153,7 +164,7 @@ export class MasterLayoutService extends Unsubscribable {
 			console.warn(`The current locale ("${lang}") is not within the supported ones ` +
 				`("${this.config.locales.join('", "')}"). It will be set to "${this.config.defaultLocale}"`);
 			lang = this.config.defaultLocale;
-			localStorage.setItem(MasterLayoutService.token, lang);
+			localStorage.setItem(MasterLayoutService.token + langToken, lang);
 		}
 
 		return lang;
