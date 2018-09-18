@@ -7,11 +7,11 @@ import {EventEmitter, Injectable} from '@angular/core';
 export class OffCanvasService {
 	openEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-	get open() {
+	get open(): boolean {
 		return this.isOpen;
 	}
 
-	set open(value) {
+	set open(value: boolean) {
 		this.isOpen = value;
 		this.openEmitter.next(this.isOpen);
 	}
