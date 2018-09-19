@@ -4,6 +4,7 @@ import {
 	ContentChildren,
 	ElementRef,
 	HostBinding,
+	HostListener,
 	Input,
 	QueryList,
 	Renderer2,
@@ -115,6 +116,11 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 		this.masterLayout.menuCollapsedEmitter.subscribe(value => this.setFocusable(!value));
 	}
 
+	@HostListener('window:resize')
+	onResize() {
+		this.setFocusable(!this.masterLayout.menuCollapsed);
+	}
+
 	isLangActive(lang: string): boolean {
 		return this.translate.currentLang === lang;
 	}
@@ -123,9 +129,10 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 		this.translate.use(lang);
 	}
 
-	private setFocusable(isFocusable: boolean): void {
+	private setFocusable(isMenuCollasped: boolean): void {
 		// these elements must not be focusable during the closing animation. Otherwise, the focused element will be scrolled into view
 		// and the header will appear empty.
+		const isFocusable = window.innerWidth > 991 || isMenuCollasped;
 		this.el.nativeElement.querySelectorAll('.application-header-controls a.control-link')
 			.forEach(el => {
 				this.renderer.setAttribute(el, 'tabindex', isFocusable ? '0' : '-1');
