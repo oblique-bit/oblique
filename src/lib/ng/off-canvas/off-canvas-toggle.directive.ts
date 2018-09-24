@@ -12,6 +12,7 @@ export class OffCanvasToggleDirective {
 	}
 
 	@HostListener('click')
+	@HostListener('window:keyup.Enter')
 	toggle() {
 		this.offCanvas.open = !this.offCanvas.open;
 	}
