@@ -20,13 +20,13 @@ module.exports = function (config) {
 		},
 		reporters: ['progress', 'kjhtml', 'coverage-istanbul', 'sonarqubeUnit'],
 		coverageIstanbulReporter: {
-			dir: require('path').join(__dirname, './target/coverage'),
+			dir: require('path').join(__dirname, './coverage'),
 			reports: ['html', 'lcovonly'],
 			fixWebpackSourcePaths: true
 		},
 		sonarQubeUnitReporter: {
 			sonarQubeVersion: 'LATEST',
-			outputFile: './target/sonarQube/sqr.xml',
+			outputFile: './coverage/sonarQube/sqr.xml',
 			testPaths: ['src/lib', 'src/showcase'],
 			testFilePattern: '.spec.ts',
 			overrideTestDescription: true,
