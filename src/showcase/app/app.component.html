@@ -8,8 +8,8 @@
 		</a>
 	</ng-template>
 	<ng-template>
-		<a class="nav-link control-link" orOffCanvasToggle role="button" ngbTooltip="Toggle Off-Canvas" placement="left">
-			<span class="control-icon fa fa-sign-in fa-rotate-180"></span>
+		<a class="nav-link control-link" orOffCanvasToggle role="button" ngbTooltip="Toggle Off-Canvas" placement="left" (click)="offCanvasOpen = !offCanvasOpen">
+			<span class="control-icon fa fa-sign-in" [class.fa-rotate-180]="!offCanvasOpen"></span>
 		</a>
 	</ng-template>
 	<p class="small" orFooterInfo>&copy; 2018 {{'i18n.application.organization.name' | translate}}</p>

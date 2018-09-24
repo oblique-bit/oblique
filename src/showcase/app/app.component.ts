@@ -4,9 +4,11 @@ import {ORNavigationLink} from '../../lib/ng/master-layout/master-layout-navigat
 
 @Component({
 	selector: 'app-root',
-	templateUrl: './app.component.html'
+	templateUrl: './app.component.html',
+	styles: [`.fa-sign-in {transition: transform 600ms;}`]
 })
 export class AppComponent {
+	offCanvasOpen = false;
 	navigation: ORNavigationLink[] = [
 		{url: '/home', label: 'i18n.routes.home.title'},
 		{
