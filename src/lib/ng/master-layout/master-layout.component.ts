@@ -75,6 +75,7 @@ import {ORFooterLink} from './master-layout-footer.component';
 		<div class="offcanvas-sidebar inversed" *ngIf="offCanvas">
 			<ng-content select="[orOffCanvas]"></ng-content>
 		</div>
+		<div class="modal-backdrop offcanvas-backdrop show" *ngIf="offCanvas"></div>
 	`,
 	/* tslint:disable:use-host-property-decorator */
 	host: {class: 'application'}
