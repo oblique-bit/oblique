@@ -1,5 +1,30 @@
 ### ObliqueReactive
 
+<a name="2.1.2"></a>
+#### [2.1.2](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/compare/2.1.1...2.1.2) (2018-09-25)
+
+##### Dependencies updates
+* **Angular:** 6.1.8
+* **ng-bootstrap:** 3.2.2
+* **ajv:** 6.5.4
+* **oblique-ui:** 2.0.2
+
+##### Bug Fixes
+* **master-layout:** `menuCollapsed` is set to `false` when the menu is opened and to `true` when it is closed ([0dfdd92](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/0dfdd92))
+* **master-layout:** can provide the whole header controls list as content projection ([515af00](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/515af00))
+* **master-layout:** controls are not focusable during header closure ([9c96bea](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/9c96bea))
+* **master-layout:** each Oblique webapp has it's own language token ([8331bbe](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/8331bbe))
+* **master-layout:** export everything in index.html ([91f4080](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/91f4080))
+* **master-layout:** export MasterLayoutComponent as `orMasterLayout` ([f23e3d8](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/f23e3d8))
+* **master-layout:** header controls are automatically focusable when the layout is not collapsed ([f3413a8](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/f3413a8))
+* **master-layout:** masterLayoutDirective uses old selector for the menu toggler ([00949d0](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/00949d0))
+* **master-layout:** set default `true` value for `menuCollapsed` ([25c0a80](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/25c0a80))
+* **nav-tree:** correctly match active links ([425288e](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/425288e))
+* **navigable:** correctly exports the directive ([7c9f36c](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/7c9f36c))
+* **off-canvas:** sidebar is shown on mobile view ([35b2ea3](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/35b2ea3))
+* **off-canvas:** toggle is also activated on `enter` key ([7d29701](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/7d29701))
+
+
 <a name="2.1.1"></a>
 #### [2.1.1](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/compare/2.1.0...2.1.1) (2018-09-07)
 
