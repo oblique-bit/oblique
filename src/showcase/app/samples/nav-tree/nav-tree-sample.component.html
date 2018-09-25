@@ -13,7 +13,7 @@
 								 [prefix]="'nav-tree-sample'"
 								 [filterPattern]="filter.pattern"
 								 [pathPrefix]="'nav-tree'"
-								 [rlaOptions]="rlaOptions"
+								 [activateAncestors]="activateAncestors"
 								 [variant]="variant"
 								 [orNavTreeFakeFocus]="useFakeFocus ? orFilterBox.filterControl : null"
 					>
@@ -76,7 +76,7 @@
 						<div class="col-9">
 							<div class="form-check">
 								<input type="checkbox" id="nav-tree-sample-router-rla-exact" class="form-check-input"
-										[(ngModel)]="rlaOptions.exact">
+										[(ngModel)]="activateAncestors">
 								<label class="form-check-label" for="nav-tree-sample-router-rla-exact">Exact router link for active menu?</label>
 							</div>
 						</div>

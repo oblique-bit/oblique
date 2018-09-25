@@ -12,9 +12,7 @@ export class NavTreeSampleComponent extends Unsubscribable implements OnInit {
 
 	public items: Array<NavTreeItemModel>;
 	public variant = NavTreeComponent.DEFAULTS.VARIANT;
-	public rlaOptions: any = {
-		exact: true
-	};
+	public activateAncestors = true;
 	public useFakeFocus = true;
 
 	public filter = {
