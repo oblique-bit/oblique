@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "",
     "allowJs": true,
     "sourceMap": true,
     "declaration": false,
