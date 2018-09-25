@@ -1,10 +1,10 @@
-import {Inject, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {NgbDatepickerConfig, NgbModule, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
-import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 // ObliqueReactive:
@@ -14,6 +14,7 @@ import {
 	MasterLayoutModule,
 	NotificationConfig,
 	NotificationService,
+	ObliqueHttpInterceptor,
 	ObliqueHttpInterceptorConfig,
 	ObliqueModule,
 	SchemaValidationService
@@ -24,7 +25,6 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HomePageComponent} from './home/home.page';
 import {HttpMockErrorInterceptor} from './samples/http-interceptor/http-mock-error.interceptor';
-import {ObliqueHttpInterceptor} from '../../lib/ng/http/oblique-http-interceptor';
 
 // AoT requires an exported function for factories:
 export function createTranslateLoader(http: HttpClient) {

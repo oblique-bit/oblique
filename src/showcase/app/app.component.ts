@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
-import {MasterLayoutConfig} from '../../lib/ng/master-layout';
-import {ORNavigationLink} from '../../lib/ng/master-layout/master-layout-navigation.component';
+import {MasterLayoutConfig, ORNavigationLink} from '../../lib/ng/master-layout';
 
 @Component({
 	selector: 'app-root',
