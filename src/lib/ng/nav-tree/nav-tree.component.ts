@@ -19,7 +19,7 @@ import {takeUntil} from 'rxjs/operators';
 				>
 					<a class="nav-link" role="treeitem" aria-selected="false"
 					   [routerLink]="item.routes"
-					   #rla="routerLinkActive" routerLinkActive [routerLinkActiveOptions]="rlaOptions"
+					   #rla="routerLinkActive" routerLinkActive [routerLinkActiveOptions]="{exact: activateAncestors}"
 					   [queryParams]="item.queryParams" [fragment]="item.fragment"
 					   (click)="item.collapsed = !item.collapsed"
 					   [class.collapsed]="item.collapsed"
@@ -88,9 +88,7 @@ export class NavTreeComponent extends Unsubscribable {
 	pathPrefix: string;
 
 	@Input()
-	rlaOptions: any = {
-		exact: true
-	};
+	activateAncestors: true;
 
 	// TODO: remove when https://github.com/angular/angular/issues/13205
 	constructor(private readonly route: ActivatedRoute) {

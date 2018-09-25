@@ -14,7 +14,7 @@ import {NavTreeItemModel} from './nav-tree-item.model';
 		             [variant]="variant"
 		             [filterPattern]="filterPattern"
 		             [labelFormatter]="labelFormatter"
-		             [rlaOptions]="rlaOptions"></or-nav-tree>`
+		             [activateAncestors]="activateAncestors"></or-nav-tree>`
 })
 class TestComponent {
 	items = [
@@ -47,9 +47,7 @@ class TestComponent {
 	prefix = 'nav-tree-test';
 	variant = NavTreeComponent.DEFAULTS.VARIANT;
 	filterPattern: string;
-	public rlaOptions: any = {
-		exact: true
-	};
+	public activateAncestors = true;
 
 	labelFormatter(label: string): string {
 		return `${label} - ${this.prefix}`;
