@@ -82,8 +82,7 @@ const distMeta = () => {
 	});
 
 	return gulp.src(
-		'README.md',
-		'CHANGELOG.md'
+		['README.md', 'CHANGELOG.md']
 	).pipe(
 		gulpFile('package.json', JSON.stringify(output, null, 2))
 	).pipe(
