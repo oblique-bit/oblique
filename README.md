@@ -1,8 +1,10 @@
 # [ObliqueReactive](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/)
 
-Reactive web framework powered by [ObliqueUI](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-ui/) and [Angular](https://github.com/angular/angular).
+> Read the developer docs: <https://eui.bit.admin.ch/oblique/>
 
-ObliqueReactive uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.angular.io/), [Gulp](https://github.com/gulpjs/gulp/), [Sass](http://sass-lang.com/) and [Handlebars](http://handlebarsjs.com/) to fetch dependencies, compile & build assets, compose HTML and serve & watch web content.
+Reactive web framework powered by [ObliqueUI](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-ui/) and [Angular](https://github.com/angular/angular).
+
+ObliqueReactive uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.angular.io/) and [Sass](http://sass-lang.com/) to fetch dependencies, compile & build assets, compose HTML and serve & watch web content.
 
 > **Starting a new business web project?**
 >
@@ -18,7 +20,7 @@ ObliqueReactive uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.ang
 
 	`npm install oblique-reactive --save`
 
-3. Import `ObliqueModule` in your root `NgModule`:
+3. Import `ObliqueModule` in your root `NgModule`. Note that you should only import modules that you use and not the whole collection:
 
 ```
 	import {ObliqueModule} from 'oblique-reactive';
@@ -104,13 +106,13 @@ _This task builds the project, runs the client application by starting a local s
 
 > If task fails with privilege reasons, consider installing these `npm` libraries *globally*:
 
-	npm install -g typescript gulp @angular/cli
+	npm install -g typescript @angular/cli
 
-#### TODO: Production tasks
+#### Production tasks
 
-	npm start-prod
+	npm start --prod
 
-_Same as `npm start`, except that it will serve optimized resources._
+_Same as `npm start`, except that it will serve optimized resources. This is useful to test production build._
 
 ### <a name="managing-dependencies"></a> Managing dependencies
 
@@ -137,7 +139,7 @@ You can search through npm packages over at [npmjs.com](https://www.npmjs.com/).
 
 You can now check for updates and bump `package.json` dependencies accordingly:
 
-	npm-check-updates
+	ncu
 
 ## <a name="release"></a> Releasing ObliqueReactive
 
@@ -166,24 +168,24 @@ Before releasing, execute the following steps:
 ## <a name="npm-link"></a> Debug oblique-reactive in a different project
 If you need to debug or test oblique-reactive in a 
 
-1. Prepare oblique-reactive
+1. Prepare oblique-reactive (in oblique-reactive)
 
 	`npm link dist`
 
-2. Connect your project to oblique-reactive 
+2. Connect your project to oblique-reactive (in your project) 
 	`npm link`
 	
 	`npm link oblique-reactive`
 
 	> This will create a symlink in your projects node_modules/oblique-reactive pointing to oblique-reactive/dist folder.
 
-3. Re-build on oblique-reactive changes
+3. Re-build on oblique-reactive changes (in oblique-reactive)
 
 	`npm run dev-watch`
 
 	> This will re-build on every change in the oblique-reactive project.
 
-4. When finished with your work, you can switch back to the npm registry version of oblique-reactive.
+4. When finished with your work, you can switch back to the npm registry version of oblique-reactive (in your project).
 
 	`npm unlink oblique-reactive`
 	
