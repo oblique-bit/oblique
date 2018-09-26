@@ -2,7 +2,7 @@ import {ComponentFixture, TestBed, async, fakeAsync, tick} from '@angular/core/t
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {MockTranslatePipe} from '../../../../testhelpers';
+import {MockTranslatePipe} from 'tests';
 import {NotificationComponent} from './notification.component';
 import {NotificationService} from './notification.service';
 import {Notification, NotificationType} from './notification';

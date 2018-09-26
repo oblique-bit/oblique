@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "",
+    "baseUrl": ".",
     "allowJs": true,
     "sourceMap": true,
     "declaration": false,
@@ -15,6 +15,9 @@
     "lib": [
       "es2016",
       "dom"
-    ]
+    ],
+    "paths": {
+      "tests": ["testhelpers"]
+    }
   }
 }
