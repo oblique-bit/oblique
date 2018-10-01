@@ -27,14 +27,14 @@ module.exports = function (config) {
 		sonarQubeUnitReporter: {
 			sonarQubeVersion: 'LATEST',
 			outputFile: './coverage/sonarQube/sqr.xml',
-			testPaths: ['src/lib', 'src/showcase'],
+			testPaths: [ 'src/app'],
 			testFilePattern: '.spec.ts',
 			overrideTestDescription: true,
 			useBrowserName: false
 		},
 		port: 9876,
 		colors: true,
-		logLevel: config.LOG_DEBUG,
+		logLevel: config.LOG_INFO,
 		browserConsoleLogOptions: {
 			level: 'log',
 			format: '%b %T: %m',

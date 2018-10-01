@@ -163,7 +163,7 @@ Before releasing, execute the following steps:
 
 	`npm run release`
 
-	> This will commit & push the changes to the master and upload the npm package to Nexus repoisotory.
+	> This will commit & push the changes to the master and upload the npm package to Nexus repository.
 
 ## <a name="npm-link"></a> Debug oblique-reactive in a different project
 If you need to debug or test oblique-reactive in a 

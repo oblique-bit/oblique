@@ -7,7 +7,7 @@
     "name": "Federal Office of Information Technology, Systems and Telecommunication FOITT",
     "url": "http://www.bit.admin.ch/"
   },
-  "homepage": "http://eui.bit.admin.ch/oblique-reactive/",
+  "homepage": "http://oblique.bit.admin.ch",
   "author": {
     "name": "René Giller",
     "email": "rene.giller@bit.admin.ch"
@@ -37,19 +37,20 @@
     "path": "projects/OUI/repos/oblique2-reactive"
   },
   "scripts": {
+    "lib": "npm run build -- oblique-reactive --watch",
     "start": "ng serve",
     "build": "ng build",
-    "dist": "npm run gulp -- dist",
-    "test": "ng test",
-    "lint": "ng lint",
+    "dist": "npm run build -- oblique-reactive --prod",
+    "postdist": "npm run gulp -- dist",
+    "test": "ng test oblique-reactive",
+    "lint": "ng lint oblique-reactive",
     "e2e": "ng e2e",
     "patch": "npm version patch",
     "minor": "npm version minor",
     "major": "npm version major",
     "release": "npm run gulp -- publish",
-    "preversion": "npm run lint && npm test -- --prod && npm run build -- --prod && npm run dist",
+    "preversion": "npm run lint && npm test -- --prod && npm run dist",
     "postversion": "node changelog.js",
-    "dev-watch": "npm run gulp dev-watch",
     "gulp": "./node_modules/.bin/gulp"
   },
   "dependencies": {
@@ -73,6 +74,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.3",
+    "@angular-devkit/build-ng-packagr": "~0.8.0",
     "@angular-devkit/build-optimizer": "^0.8.3",
     "@angular/cli": "^6.2.3",
     "@angular/compiler-cli": "^6.1.8",
@@ -89,7 +91,7 @@
     "gulp": "^4.0.0",
     "gulp-file": "^0.4.0",
     "gulp-git": "^2.8.0",
-    "gulp-util": "^3.0.8",
+    "gulp-header": "^2.0.5",
     "jasmine-core": "^3.2.1",
     "jasmine-spec-reporter": "^4.2.1",
     "karma": "^3.0.0",
@@ -100,10 +102,13 @@
     "karma-jasmine": "^1.1.2",
     "karma-jasmine-html-reporter": "^1.3.1",
     "karma-sonarqube-unit-reporter": "0.0.18",
+    "ng-packagr": "^4.1.0",
     "oblique-ui": "^2.0.2",
     "protractor": "^5.4.1",
     "ts-loader": "^5.2.0",
     "ts-node": "^7.0.1",
+    "tsickle": ">=0.29.0",
+    "tslib": "^1.9.0",
     "tslint": "^5.11.0",
     "typescript": "~2.9.2"
   }

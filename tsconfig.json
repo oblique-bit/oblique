@@ -2,7 +2,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": ".",
-    "allowJs": true,
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -17,7 +16,15 @@
       "dom"
     ],
     "paths": {
-      "tests": ["testhelpers"]
+      "tests": [
+        "testhelpers"
+      ],
+      "oblique-reactive": [
+        "projects/oblique-reactive/src/public_api"
+      ],
+      "oblique-reactive/*": [
+        "dist/oblique-reactive/*"
+      ]
     }
   }
 }

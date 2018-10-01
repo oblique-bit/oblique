@@ -1,0 +1,26 @@
+@import '../../../node_modules/oblique-ui/scss/variables';
+
+.application {
+	// Specify your own cover background image:
+	&.has-cover {
+		background-image: url('../assets/images/cover-background.jpg');
+	}
+}
+
+// This can safely be removed:
+.navbar-controls {
+	.user-picture {
+		border: none;
+		margin-top: -6px;
+		height: 42px;
+		width: 42px;
+		vertical-align: middle;
+		border-radius: 50%;
+
+		&.control-icon {
+			padding: 5px;
+			text-align: center;
+			background-color: $gray-lighter;
+		}
+	}
+}
