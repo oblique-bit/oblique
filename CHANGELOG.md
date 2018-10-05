@@ -17,7 +17,7 @@
 * **master-layout:** export everything in index.html ([91f4080](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/91f4080))
 * **master-layout:** export MasterLayoutComponent as `orMasterLayout` ([f23e3d8](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/f23e3d8))
 * **master-layout:** header controls are automatically focusable when the layout is not collapsed ([f3413a8](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/f3413a8))
-* **master-layout:** masterLayoutDirective uses old selector for the menu toggler ([00949d0](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/00949d0))
+* **master-layout:** masterLayoutDirective uses old selector for the menu toggle ([00949d0](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/00949d0))
 * **master-layout:** set default `true` value for `menuCollapsed` ([25c0a80](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/25c0a80))
 * **nav-tree:** correctly match active links ([425288e](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/425288e))
 * **navigable:** correctly exports the directive ([7c9f36c](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/7c9f36c))
@@ -34,12 +34,12 @@
 * **rxjs:** 6.3.2
 
 ##### Bug Fixes
-* **column-layout:** remove `console.log`; ([8fa7a60](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/8fa7a60))
+* **column-layout:** remove `console.log` ([8fa7a60](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/8fa7a60))
 * **master-layout:** `defaultLocale` can also be specified in the config ([3c517dc](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/3c517dc))
 * **master-layout:** footer links can be specified through an input as well ([16c4523](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/16c4523))
 * **master-layout:** navigation links can be specified through an input as well ([271de5e](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/271de5e))
 * **master-layout:** check validity of default locale before applying it ([26c917e](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/26c917e))
-* **master-layout:** only display locale choice if there are multiples ones ([c7090d7](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/c7090d7))
+* **master-layout:** only display locale choice if there are multiple ones ([c7090d7](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/c7090d7))
 
 <a name="2.1.0"></a>
 #### [2.1.0](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/compare/2.0.0...2.1.0) (2018-08-29)
@@ -55,7 +55,7 @@
 * **schema-validation:** do not return a `type` error with empty fields ([7418eb5](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/7418eb5))
 
 ##### Features
-* **master-layout:** add component and related service ([9079064](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/9079064))
+* **master-layout:** master layout can be controlled by a component, eliminating the use of `Handlebars` and `Gulp` (see master layout documentation) ([9079064](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/9079064))
 * **off-canvas:** add static off-canvas with dedicated toggle ([b557845](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/b557845))
 
 
