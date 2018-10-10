@@ -3,6 +3,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 
 interface MasterLayoutFooter {
 	small: boolean;
+	custom: boolean;
 }
 
 interface MasterLayoutNavigation {
@@ -64,6 +65,7 @@ export class MasterLayoutConfig {
 	 * Controls the applications's footer
 	 */
 	footer: MasterLayoutFooter = {
-		small: true
+		small: true,
+		custom: false
 	};
 }

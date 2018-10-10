@@ -9,30 +9,33 @@ import {MasterLayoutConfig} from './master-layout.config';
 @Component({
 	selector: 'or-master-layout-footer',
 	template: `
-		<div class="footer-item footer-item-logo footer-sm-collapse">
-			<a href="{{'i18n.application.organization.url' | translate}}" target="_blank" class="application-brand-logo">
-				<img src="./assets/styles/images/logo.svg"
-					 alt="{{'i18n.application.organization.name' | translate}}"/>
-			</a>
-		</div>
-		<div class="footer-item footer-item-info">
-			<ng-content select="[orFooterInfo]"></ng-content>
-			<div class="footer-sm-collapse">
-				<ng-content select="[orFooterInfoSMCollapse]"></ng-content>
+		<ng-content select="[orFooter]" *ngIf="custom"></ng-content>
+		<ng-container *ngIf="!custom">
+			<div class="footer-item footer-item-logo footer-sm-collapse">
+				<a href="{{'i18n.application.organization.url' | translate}}" target="_blank" class="application-brand-logo">
+					<img src="./assets/styles/images/logo.svg" alt="{{'i18n.application.organization.name' | translate}}"/>
+				</a>
 			</div>
-		</div>
-		<div class="footer-item footer-item-links" *ngIf="templates.length">
-			<ul class="list-unstyled small d-flex flex-row justify-content-lg-end" role="menu">
-				<li role="presentation" *ngFor="let template of templates">
-					<ng-container [ngTemplateOutlet]="template"></ng-container>
-				</li>
-			</ul>
-		</div>
+			<div class="footer-item footer-item-info">
+				<ng-content select="[orFooterInfo]"></ng-content>
+				<div class="footer-sm-collapse">
+					<ng-content select="[orFooterInfoSMCollapse]"></ng-content>
+				</div>
+			</div>
+			<div class="footer-item footer-item-links" *ngIf="templates.length">
+				<ul class="list-unstyled small d-flex flex-row justify-content-lg-end" role="menu">
+					<li role="presentation" *ngFor="let template of templates">
+						<ng-container [ngTemplateOutlet]="template"></ng-container>
+					</li>
+				</ul>
+			</div>
+		</ng-container>
 	`,
 	/* tslint:disable:use-host-property-decorator */
 	host: {class: 'application-footer'}
 })
 export class MasterLayoutFooterComponent extends Unsubscribable {
+	custom = false;
 	@HostBinding('class.application-footer-sm') small: boolean;
 	@ContentChildren('orFooterLink') readonly templates: QueryList<TemplateRef<any>>;
 
@@ -42,6 +45,7 @@ export class MasterLayoutFooterComponent extends Unsubscribable {
 		super();
 
 		this.small = this.config.footer.small;
+		this.custom = this.config.footer.custom;
 
 		this.updateFooterSmall();
 		this.footerTransitions();
