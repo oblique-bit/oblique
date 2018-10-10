@@ -1,17 +1,10 @@
-import {Component, ContentChildren, HostBinding, Input, OnInit, QueryList, TemplateRef} from '@angular/core';
+import {Component, ContentChildren, HostBinding, QueryList, TemplateRef} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe';
 import {ScrollingConfig} from '../scrolling';
 import {MasterLayoutService} from './master-layout.service';
 import {MasterLayoutConfig} from './master-layout.config';
-
-export interface ORFooterLink {
-	url: string;
-	label: string;
-	title?: string;
-	external?: boolean;
-}
 
 @Component({
 	selector: 'or-master-layout-footer',
@@ -29,17 +22,10 @@ export interface ORFooterLink {
 			</div>
 		</div>
 		<div class="footer-item footer-item-links">
-			<ng-content select="[orFooterLinks]" *ngIf="!footerLinks.length && !templates.length"></ng-content>
-			<ul class="list-unstyled small d-flex flex-row justify-content-lg-end" role="menu" *ngIf="footerLinks.length && !templates.length">
-				<li role="presentation" *ngFor="let link of footerLinks">
-					<a [href]="link.url" class="link" [attr.title]="link.title | translate" [attr.target]="link.external ? '_blank' : undefined">
-						{{link.label | translate}}
-					</a>
-				</li>
-			</ul>
+			<ng-content select="[orFooterLinks]" *ngIf="!templates.length"></ng-content>
 			<ul class="list-unstyled small d-flex flex-row justify-content-lg-end" role="menu" *ngIf="templates.length">
-				<li role="presentation" *ngFor="let link of templates" >
-					<ng-container [ngTemplateOutlet]="link"></ng-container>
+				<li role="presentation" *ngFor="let template of templates">
+					<ng-container [ngTemplateOutlet]="template"></ng-container>
 				</li>
 			</ul>
 		</div>
@@ -47,8 +33,7 @@ export interface ORFooterLink {
 	/* tslint:disable:use-host-property-decorator */
 	host: {class: 'application-footer'}
 })
-export class MasterLayoutFooterComponent extends Unsubscribable implements OnInit {
-	@Input() footerLinks: ORFooterLink[] = [];
+export class MasterLayoutFooterComponent extends Unsubscribable {
 	@HostBinding('class.application-footer-sm') small: boolean;
 	@ContentChildren('orFooterLink') readonly templates: QueryList<TemplateRef<any>>;
 
@@ -61,13 +46,6 @@ export class MasterLayoutFooterComponent extends Unsubscribable implements OnIni
 
 		this.updateFooterSmall();
 		this.footerTransitions();
-	}
-
-	ngOnInit() {
-		this.footerLinks = this.footerLinks.length ? this.footerLinks : this.config.footer.links;
-		this.footerLinks.forEach((link) => {
-			link.external = link.url.startsWith('http');
-		});
 	}
 
 	private updateFooterSmall(): void {

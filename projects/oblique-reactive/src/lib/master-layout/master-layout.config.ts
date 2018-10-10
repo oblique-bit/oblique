@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
-import {ORFooterLink} from './master-layout-footer.component';
 import {ORNavigationLink} from './master-layout-navigation.component';
 
 interface MasterLayoutFooter {
 	small: boolean;
-	links: ORFooterLink[];
 }
 
 interface MasterLayoutNavigation {
@@ -66,11 +64,6 @@ export class MasterLayoutConfig {
 	 * Controls the applications's footer
 	 */
 	footer: MasterLayoutFooter = {
-		small: true,
-		links: [{
-			url: 'http://www.disclaimer.admin.ch',
-			label: 'i18n.application.footer.legal.label',
-			title: 'i18n.application.footer.legal.title'
-		}]
+		small: true
 	};
 }
