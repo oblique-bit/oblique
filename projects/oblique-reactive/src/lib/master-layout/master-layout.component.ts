@@ -1,4 +1,4 @@
-import {Component, HostBinding, ContentChildren, TemplateRef, QueryList, Input} from '@angular/core';
+import {Component, ContentChildren, HostBinding, Input, QueryList, TemplateRef} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe';
@@ -33,8 +33,8 @@ import {ORFooterLink} from './master-layout-footer.component';
 			<ng-content select="[orHeaderTitle]" orHeaderTitle></ng-content>
 			<ng-content select="[orNavigation]" orNavigation></ng-content>
 			<ng-content select="[orHeaderControls]" orHeaderControls></ng-content>
-			<ng-container *ngFor="let template of templates">
-				<ng-template #orHeaderControls>
+			<ng-container *ngFor="let template of headerControlTemplates">
+				<ng-template #orHeaderControl>
 					<ng-container [ngTemplateOutlet]="template"></ng-container>
 				</ng-template>
 			</ng-container>
@@ -71,6 +71,11 @@ import {ORFooterLink} from './master-layout-footer.component';
 			<ng-content select="[orFooterInfo]" orFooterInfo></ng-content>
 			<ng-content select="[orFooterInfoSMCollapse]" orFooterInfoSMCollapse></ng-content>
 			<ng-content select="[orFooterLinks]" orFooterLinks></ng-content>
+			<ng-container *ngFor="let template of footerLinkTemplates">
+				<ng-template #orFooterLink>
+					<ng-container [ngTemplateOutlet]="template"></ng-container>
+				</ng-template>
+			</ng-container>
 		</or-master-layout-footer>
 		<div class="offcanvas-sidebar inversed" *ngIf="offCanvas">
 			<ng-content select="[orOffCanvas]"></ng-content>
@@ -89,7 +94,8 @@ export class MasterLayoutComponent extends Unsubscribable {
 	@HostBinding('class.header-open') headerOpen: boolean;
 	@HostBinding('class.no-navigation') noNavigation: boolean;
 	@HostBinding('class.offcanvas') offCanvas: boolean;
-	@ContentChildren(TemplateRef) templates: QueryList<TemplateRef<any>>;
+	@ContentChildren('orHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
+	@ContentChildren('orFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<any>>;
 
 	constructor(private readonly masterLayout: MasterLayoutService, private readonly scroll: ScrollingConfig, private readonly config: MasterLayoutConfig) {
 		super();
