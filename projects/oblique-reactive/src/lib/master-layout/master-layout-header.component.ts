@@ -88,7 +88,7 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 	@HostBinding('class.application-header-animate') animate: boolean;
 	@HostBinding('class.application-header-sticky') sticky: boolean;
 	@HostBinding('class.application-header-md') medium: boolean;
-	@ContentChildren('orHeaderControls') readonly templates: QueryList<TemplateRef<any>>;
+	@ContentChildren('orHeaderControl') readonly templates: QueryList<TemplateRef<any>>;
 
 	constructor(private readonly masterLayout: MasterLayoutService,
 				private readonly translate: TranslateService,

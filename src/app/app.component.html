@@ -1,17 +1,25 @@
 <or-master-layout [navigation]="navigation">
 	<ng-container orHeaderTitle>ObliqueReactive</ng-container>
-	<ng-template>
-		<a href="https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/" target="_blank"
-		   class="nav-link control-link"
+	<ng-template #orHeaderControl>
+		<a href="https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/" target="_blank" class="nav-link control-link"
 		   ngbTooltip="Go to ObliqueReactive GIT repository" placement="left">
 			<span class="control-icon fa fa-bitbucket"></span>
 		</a>
 	</ng-template>
-	<ng-template>
-		<a class="nav-link control-link" orOffCanvasToggle role="button" ngbTooltip="Toggle Off-Canvas" placement="left" (click)="offCanvasOpen = !offCanvasOpen">
+	<ng-template #orHeaderControl>
+		<a class="nav-link control-link" orOffCanvasToggle role="button" ngbTooltip="Toggle Off-Canvas" placement="left"
+		   (click)="offCanvasOpen = !offCanvasOpen">
 			<span class="control-icon fa fa-sign-in" [class.fa-rotate-180]="!offCanvasOpen"></span>
 		</a>
 	</ng-template>
+
+	<ng-template #orFooterLink>
+		<a href='http://www.google.ch' role="button" ngbTooltip="google.ch" target="_blank" placement="left">Google</a>
+	</ng-template>
+	<ng-template #orFooterLink>
+		<a href='http://www.blick.ch' role="button" target="_blank" placement="left">Blick</a>
+	</ng-template>
+
 	<p class="small" orFooterInfo>&copy; 2018 {{'i18n.application.organization.name' | translate}}</p>
 	<p class="smaller" orFooterInfoSMCollapse>
 		<span>Built with </span>

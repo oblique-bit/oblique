@@ -1,4 +1,4 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
+import {Component, ContentChildren, HostBinding, Input, OnInit, QueryList, TemplateRef} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe';
@@ -29,12 +29,17 @@ export interface ORFooterLink {
 			</div>
 		</div>
 		<div class="footer-item footer-item-links">
-			<ng-content select="[orFooterLinks]" *ngIf="!footerLinks.length"></ng-content>
-			<ul class="list-unstyled small d-flex flex-row justify-content-lg-end" role="menu" *ngIf="footerLinks.length">
+			<ng-content select="[orFooterLinks]" *ngIf="!footerLinks.length && !templates.length"></ng-content>
+			<ul class="list-unstyled small d-flex flex-row justify-content-lg-end" role="menu" *ngIf="footerLinks.length && !templates.length">
 				<li role="presentation" *ngFor="let link of footerLinks">
 					<a [href]="link.url" class="link" [attr.title]="link.title | translate" [attr.target]="link.external ? '_blank' : undefined">
 						{{link.label | translate}}
 					</a>
+				</li>
+			</ul>
+			<ul class="list-unstyled small d-flex flex-row justify-content-lg-end" role="menu" *ngIf="templates.length">
+				<li role="presentation" *ngFor="let link of templates" >
+					<ng-container [ngTemplateOutlet]="link"></ng-container>
 				</li>
 			</ul>
 		</div>
@@ -45,6 +50,7 @@ export interface ORFooterLink {
 export class MasterLayoutFooterComponent extends Unsubscribable implements OnInit {
 	@Input() footerLinks: ORFooterLink[] = [];
 	@HostBinding('class.application-footer-sm') small: boolean;
+	@ContentChildren('orFooterLink') readonly templates: QueryList<TemplateRef<any>>;
 
 	constructor(private readonly masterLayout: MasterLayoutService,
 				private readonly config: MasterLayoutConfig,
