@@ -4,6 +4,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 interface MasterLayoutFooter {
 	small: boolean;
 	custom: boolean;
+	scrollTransitions: boolean;
 }
 
 interface MasterLayoutNavigation {
@@ -66,6 +67,7 @@ export class MasterLayoutConfig {
 	 */
 	footer: MasterLayoutFooter = {
 		small: true,
-		custom: false
+		custom: false,
+		scrollTransitions: true	// indicates if the footer should be resized when scrolling
 	};
 }

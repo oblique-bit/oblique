@@ -59,7 +59,7 @@ export class MasterLayoutFooterComponent extends Unsubscribable {
 	}
 
 	private footerTransitions(): void {
-		if (this.scroll.transitions.footer) {
+		if (this.config.footer.scrollTransitions) {
 			this.scroll.onScroll.pipe(takeUntil(this.unsubscribe))
 				.subscribe((isScrolling) => {
 					this.small = !isScrolling;
