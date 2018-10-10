@@ -69,7 +69,6 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 		<or-master-layout-footer [class.offcanvas-main]="offCanvas">
 			<ng-content select="[orFooterInfo]" orFooterInfo></ng-content>
 			<ng-content select="[orFooterInfoSMCollapse]" orFooterInfoSMCollapse></ng-content>
-			<ng-content select="[orFooterLinks]" orFooterLinks></ng-content>
 			<ng-container *ngFor="let template of footerLinkTemplates">
 				<ng-template #orFooterLink>
 					<ng-container [ngTemplateOutlet]="template"></ng-container>

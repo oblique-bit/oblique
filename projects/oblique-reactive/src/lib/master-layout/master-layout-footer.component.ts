@@ -21,9 +21,8 @@ import {MasterLayoutConfig} from './master-layout.config';
 				<ng-content select="[orFooterInfoSMCollapse]"></ng-content>
 			</div>
 		</div>
-		<div class="footer-item footer-item-links">
-			<ng-content select="[orFooterLinks]" *ngIf="!templates.length"></ng-content>
-			<ul class="list-unstyled small d-flex flex-row justify-content-lg-end" role="menu" *ngIf="templates.length">
+		<div class="footer-item footer-item-links" *ngIf="templates.length">
+			<ul class="list-unstyled small d-flex flex-row justify-content-lg-end" role="menu">
 				<li role="presentation" *ngFor="let template of templates">
 					<ng-container [ngTemplateOutlet]="template"></ng-container>
 				</li>
