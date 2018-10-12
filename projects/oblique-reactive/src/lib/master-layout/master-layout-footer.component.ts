@@ -18,9 +18,6 @@ import {MasterLayoutConfig} from './master-layout.config';
 			</div>
 			<div class="footer-item footer-item-info">
 				<ng-content select="[orFooterInfo]"></ng-content>
-				<div class="footer-sm-collapse">
-					<ng-content select="[orFooterInfoSMCollapse]"></ng-content>
-				</div>
 			</div>
 			<div class="footer-item footer-item-links" *ngIf="templates.length">
 				<ul class="list-unstyled small d-flex flex-row justify-content-lg-end" role="menu">
