@@ -1,10 +1,19 @@
 import {
-	Input, EventEmitter, Output, ContentChildren, QueryList, Component,
-	ViewEncapsulation, IterableDiffers, IterableChangeRecord, AfterContentInit, IterableDiffer
+	AfterContentInit,
+	Component,
+	ContentChildren,
+	EventEmitter,
+	Input,
+	IterableChangeRecord,
+	IterableDiffer,
+	IterableDiffers,
+	Output,
+	QueryList,
+	ViewEncapsulation
 } from '@angular/core';
-import { takeUntil } from 'rxjs/operators';
-import { Unsubscribable } from '../unsubscribe';
-import { NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent } from './navigable.directive';
+import {takeUntil} from 'rxjs/operators';
+import {Unsubscribable} from '../unsubscribe';
+import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from './navigable.directive';
 
 /**
  * NavigableGroup component.
@@ -121,6 +130,8 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 
 	@ContentChildren(NavigableDirective)
 	navigables: QueryList<NavigableDirective>;
+	@Output()
+	selectionOnChange = new EventEmitter();
 
 	/**
 	 * A collection which will contain the selected data models.
@@ -134,9 +145,6 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 		this.selectionValue = val;
 		this.selectionOnChange.emit(this.selectionValue);
 	}
-
-	@Output()
-	selectionOnChange = new EventEmitter();
 
 	private selectionValue: any[];
 	private readonly differ: IterableDiffer<NavigableDirective> = null;
@@ -190,12 +198,23 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 	// Private API ---------------------
 	private registerNavigableEvents(navigable: NavigableDirective) {
 
+		this.registerOnActivation(navigable);
+		this.registerOnChange(navigable);
+		this.registerOnMouseDown(navigable);
+		this.registerOnFocus(navigable);
+		this.registerOnMove(navigable);
+	}
+
+	//START Refactoring
+	private registerOnActivation(navigable: NavigableDirective) {
 		navigable.navigableOnActivation
 			.pipe(takeUntil(this.unsubscribe))
 			.subscribe(() => {
 				this.addToSelection(navigable);
 			});
+	}
 
+	private registerOnChange(navigable: NavigableDirective) {
 		navigable.navigableOnChange
 			.pipe(takeUntil(this.unsubscribe))
 			.subscribe(($event: NavigableOnChangeEvent) => {
@@ -217,18 +236,26 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 					next.focus();
 				}
 			});
+	}
 
+	private registerOnMouseDown(navigable: NavigableDirective) {
 		navigable.navigableOnMouseDown
 			.pipe(takeUntil(this.unsubscribe))
 			.subscribe(($event: MouseEvent) => {
 				if ($event && $event.shiftKey) {
 					this.selectChildRange(navigable);
 				} else if ($event && $event.ctrlKey) {
-					if (navigable.selected) {
-						this.removeFromSelection(navigable);
-					} else {
-						this.addToSelection(navigable);
-					}
+
+					//old
+					// if (navigable.selected) {
+					// 	this.removeFromSelection(navigable);
+					// } else {
+					// 	this.addToSelection(navigable);
+					// }
+
+					//new
+					navigable.selected ? this.removeFromSelection(navigable) : this.addToSelection(navigable);
+
 				} else {
 					this.navigables.forEach(child => {
 						if (child !== navigable) {
@@ -242,7 +269,9 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 				// In any case, deactivate current active navigable item:
 				this.deactivate(this.getActive());
 			});
+	}
 
+	private registerOnFocus(navigable: NavigableDirective) {
 		navigable.navigableOnFocus
 			.pipe(takeUntil(this.unsubscribe))
 			.subscribe(() => {
@@ -252,7 +281,9 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 					this.addToSelection(navigable);
 				}
 			});
+	}
 
+	private registerOnMove(navigable: NavigableDirective) {
 		navigable.navigableOnMove
 			.pipe(takeUntil(this.unsubscribe))
 			.subscribe(($event: NavigableOnMoveEvent) => {
@@ -273,6 +304,8 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 				}
 			});
 	}
+
+	//END Refactoring
 
 	private activate(navigable: NavigableDirective, combine?: boolean) {
 		this.navigables.forEach(child => child !== navigable && this.deactivate(child)); //TODO: take a look at this

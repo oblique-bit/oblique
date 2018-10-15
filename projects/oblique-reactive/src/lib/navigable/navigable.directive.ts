@@ -1,6 +1,4 @@
-import {
-	Directive, Input, ElementRef, HostBinding, Output, EventEmitter, HostListener, AfterViewInit
-} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output} from '@angular/core';
 
 export class PreventableEvent {
 	public prevented = false;
@@ -126,11 +124,7 @@ export class NavigableDirective implements AfterViewInit {
 
 					// Try to restore focus:
 					setTimeout(() => {
-						if (focused) {
-							focused.focus();
-						} else {
-							this.focus();
-						}
+						(focused || this).focus();
 					}, 0);
 				} else {
 					this.navigableOnChange.emit(new NavigableOnChangeEvent(keyCode, $event.ctrlKey || $event.shiftKey));
