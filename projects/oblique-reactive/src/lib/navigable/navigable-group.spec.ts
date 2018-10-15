@@ -195,7 +195,7 @@ describe('NavigableGroup', () => {
 
 			// FIXME: refactor below when https://github.com/ariya/phantomjs/issues/11289
 			navigables[0].onKeyDown({
-				keyCode: NavigableDirective.KEYS.DOWN,
+				code: 'ArrowDown',
 				preventDefault: () => {
 				} // tslint:disable-line
 			} as KeyboardEvent);
@@ -215,7 +215,7 @@ describe('NavigableGroup', () => {
 
 				// FIXME: refactor below when https://github.com/ariya/phantomjs/issues/11289
 				navigables[0].onKeyDown({
-					keyCode: NavigableDirective.KEYS.DOWN,
+					code: 'ArrowDown',
 					ctrlKey: true,
 					preventDefault: () => {
 					} // tslint:disable-line
@@ -240,7 +240,7 @@ describe('NavigableGroup', () => {
 
 				// FIXME: refactor below when https://github.com/ariya/phantomjs/issues/11289
 				navigables[0].onKeyDown({
-					keyCode: NavigableDirective.KEYS.DOWN,
+					code: 'ArrowDown',
 					shiftKey: true,
 					preventDefault: () => {
 					} // tslint:disable-line
@@ -266,7 +266,7 @@ describe('NavigableGroup', () => {
 
 				// FIXME: refactor below when https://github.com/ariya/phantomjs/issues/11289
 				navigables[0].onKeyDown({
-					keyCode: NavigableDirective.KEYS.DOWN,
+					code: 'ArrowDown',
 					ctrlKey: true,
 					shiftKey: true,
 					preventDefault: () => {
@@ -294,7 +294,7 @@ describe('NavigableGroup', () => {
 
 			// FIXME: refactor below when https://github.com/ariya/phantomjs/issues/11289
 			navigables[1].onKeyDown({
-				keyCode: NavigableDirective.KEYS.UP,
+				code: 'ArrowUp',
 				preventDefault: () => {
 				} // tslint:disable-line
 			} as KeyboardEvent);
@@ -314,7 +314,7 @@ describe('NavigableGroup', () => {
 
 				// FIXME: refactor below when https://github.com/ariya/phantomjs/issues/11289
 				navigables[1].onKeyDown({
-					keyCode: NavigableDirective.KEYS.UP,
+					code: 'ArrowUp',
 					ctrlKey: true,
 					preventDefault: () => {
 					} // tslint:disable-line
@@ -339,7 +339,7 @@ describe('NavigableGroup', () => {
 
 				// FIXME: refactor below when https://github.com/ariya/phantomjs/issues/11289
 				navigables[1].onKeyDown({
-					keyCode: NavigableDirective.KEYS.UP,
+					code: 'ArrowUp',
 					shiftKey: true,
 					preventDefault: () => {
 					} // tslint:disable-line
@@ -366,7 +366,7 @@ describe('NavigableGroup', () => {
 
 				// FIXME: refactor below when https://github.com/ariya/phantomjs/issues/11289
 				navigables[1].onKeyDown({
-					keyCode: NavigableDirective.KEYS.UP,
+					code: 'ArrowUp',
 					ctrlKey: true,
 					shiftKey: true,
 					preventDefault: () => {

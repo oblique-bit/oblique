@@ -119,7 +119,7 @@ export class NavTreeComponent extends Unsubscribable {
 	}
 
 	itemKey(item: NavTreeItemModel) {
-		return this.prefix + '-' + item.id;
+		return `${this.prefix}-${item.id}`;
 	}
 
 	// TODO: remove when https://github.com/angular/angular/issues/13205
@@ -130,7 +130,7 @@ export class NavTreeComponent extends Unsubscribable {
 			: isLinkActive;
 	}
 
-	changeCollapsed(items: NavTreeItemModel[], collapsed: boolean, all: boolean = false): void {
+	changeCollapsed(items: NavTreeItemModel[], collapsed: boolean, all = false): void {
 		items
 			.filter((item) => item.items)
 			.forEach((item: NavTreeItemModel) => {
@@ -153,7 +153,7 @@ export class NavTreeComponent extends Unsubscribable {
 
 // FIXME: refactor this when https://github.com/angular/angular/issues/14485
 export function defaultLabelFormatterFactory() {
-	// noinspection UnnecessaryLocalVariableJS because this will result in a runtime error
+	// noinspection UnnecessaryLocalVariableJS because this will result in a build error
 	const formatter = (item: NavTreeItemModel, filterPattern: string) => {
 		return !filterPattern ? item.label : item.label.replace(
 			new RegExp(filterPattern, 'ig'),
@@ -162,5 +162,6 @@ export function defaultLabelFormatterFactory() {
 			}
 		);
 	};
+
 	return formatter;
 }

@@ -82,7 +82,7 @@ export class DocumentMetaService extends Unsubscribable {
 	}
 
 	private getOrCreateMetaElement(name: string): HTMLMetaElement {
-		let meta: HTMLMetaElement = this.headElement.querySelector('meta[name=' + name + ']') as HTMLMetaElement;
+		let meta: HTMLMetaElement = this.headElement.querySelector(`meta[name=${name}]`);
 		if (meta === null) {
 			meta = this.document.createElement('meta');
 			meta.setAttribute('name', name);

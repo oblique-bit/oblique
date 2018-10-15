@@ -200,10 +200,9 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 
 	@HostListener('keyup', ['$event'])
 	onKeyup($event: KeyboardEvent) {
-		if ($event.keyCode === 27) {
-			if (this.isVisible) {
-				this.toggleDropdown();
-			}
+		if ($event.code === 'ArrowUp' && this.isVisible) {
+
+			this.toggleDropdown();
 		}
 	}
 

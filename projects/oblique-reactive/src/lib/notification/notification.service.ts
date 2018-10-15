@@ -23,12 +23,13 @@ export class NotificationService {
 	 */
 	public broadcast(channel = this.config.channel, notification: Notification): Notification {
 		if (!notification.id) {
-			notification.id = this.currentId++;
+			notification.id = this.currentId;
+			this.currentId++;
 		}
 
 		this.events.emit({
-			channel: channel,
-			notification: notification
+			channel,
+			notification
 		});
 
 		return notification;
@@ -43,13 +44,13 @@ export class NotificationService {
 				type = NotificationType.DEFAULT,
 				config = this.config): Notification {
 		return this.broadcast(config.channel, {
-			messageKey: (<KeyWithParams>message).key || <string>message,
-			messageParams: (<KeyWithParams>message).params,
+			messageKey: (message as KeyWithParams).key || message as string,
+			messageParams: (message as KeyWithParams).params,
 			sticky: config.sticky,
 			timeout: config.timeout,
-			titleKey: (<KeyWithParams>title).key || title,
-			titleParams: (<KeyWithParams>title).params,
-			type: type
+			titleKey: (title as KeyWithParams).key || title,
+			titleParams: (title as KeyWithParams).params,
+			type
 		} as Notification);
 	}
 
@@ -93,7 +94,7 @@ export class NotificationService {
 	 */
 	public clear(channel = this.config.channel) {
 		this.events.emit({
-			channel: channel
+			channel
 		});
 	}
 

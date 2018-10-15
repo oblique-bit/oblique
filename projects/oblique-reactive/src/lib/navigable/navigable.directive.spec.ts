@@ -184,7 +184,7 @@ describe('NavigableDirective', () => {
 
 			// FIXME: refactor below when https://github.com/ariya/phantomjs/issues/11289
 			directive.onKeyDown({
-				keyCode: NavigableDirective.KEYS.DOWN,
+				code: 'ArrowDown',
 				preventDefault: () => {
 				} // tslint:disable-line
 			} as KeyboardEvent);
@@ -203,7 +203,7 @@ describe('NavigableDirective', () => {
 
 				// FIXME: refactor below when https://github.com/ariya/phantomjs/issues/11289
 				directive.onKeyDown({
-					keyCode: NavigableDirective.KEYS.DOWN,
+					code: 'ArrowDown',
 					ctrlKey: true,
 					shiftKey: true,
 					preventDefault: () => {
@@ -229,7 +229,7 @@ describe('NavigableDirective', () => {
 
 			// FIXME: refactor below when https://github.com/ariya/phantomjs/issues/11289
 			directive.onKeyDown({
-				keyCode: NavigableDirective.KEYS.UP,
+				code: 'ArrowUp',
 				preventDefault: () => {
 					this.defaultPrevented = true;
 				}
@@ -249,7 +249,7 @@ describe('NavigableDirective', () => {
 
 				// FIXME: refactor below when https://github.com/ariya/phantomjs/issues/11289
 				directive.onKeyDown({
-					keyCode: NavigableDirective.KEYS.UP,
+					code: 'ArrowUp',
 					ctrlKey: true,
 					shiftKey: true,
 					preventDefault: () => {

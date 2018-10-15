@@ -18,14 +18,14 @@ export class SpinnerService {
 	public activate(channel: string = SpinnerService.CHANNEL) {
 		this.broadcast({
 			active: true,
-			channel: channel
+			channel
 		});
 	}
 
 	public deactivate(channel: string = SpinnerService.CHANNEL) {
 		this.broadcast({
 			active: false,
-			channel: channel
+			channel
 		});
 	}
 

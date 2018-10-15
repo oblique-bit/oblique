@@ -221,9 +221,9 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 				const index = this.indexOf(navigable);
 				let next: NavigableDirective = null;
 
-				if ($event.keyCode === NavigableDirective.KEYS.UP) {
+				if ($event.code === 'ArrowUp') {
 					next = this.fromIndex(Math.max(index - 1, 0));
-				} else if ($event.keyCode === NavigableDirective.KEYS.DOWN) {
+				} else if ($event.code === 'ArrowDown') {
 					next = this.fromIndex(Math.min(index + 1, this.navigables.length));
 				}
 
@@ -245,15 +245,6 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 				if ($event && $event.shiftKey) {
 					this.selectChildRange(navigable);
 				} else if ($event && $event.ctrlKey) {
-
-					//old
-					// if (navigable.selected) {
-					// 	this.removeFromSelection(navigable);
-					// } else {
-					// 	this.addToSelection(navigable);
-					// }
-
-					//new
 					navigable.selected ? this.removeFromSelection(navigable) : this.addToSelection(navigable);
 
 				} else {
@@ -290,12 +281,12 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 				if (!$event.prevented) {
 					const from = this.indexOf(navigable);
 
-					if ($event.keyCode === NavigableDirective.KEYS.UP) {
+					if ($event.code === 'ArrowUp') {
 						const to = from - 1;
 						if (to >= 0) {
 							this.items.splice(to, 0, this.items.splice(from, 1)[0]);
 						}
-					} else if ($event.keyCode === NavigableDirective.KEYS.DOWN) {
+					} else if ($event.code === 'ArrowDown') {
 						const to = from + 1;
 						if (to < this.items.length) {
 							this.items.splice(to, 0, this.items.splice(from, 1)[0]);
