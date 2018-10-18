@@ -1,6 +1,4 @@
-import {Directive, EventEmitter, HostListener, Input, Output} from '@angular/core';
-
-import {MasterLayoutHeaderService} from './master-layout-header.service';
+import {Directive, HostListener} from '@angular/core';
 import {MasterLayoutService} from './master-layout.service';
 
 @Directive({
@@ -8,15 +6,9 @@ import {MasterLayoutService} from './master-layout.service';
 	exportAs: 'orMasterLayoutHeaderToggle'
 })
 export class MasterLayoutHeaderToggleDirective {
-	// @deprecated
-	@Input()
-	closeOnly = true;
 
-	// @deprecated
-	@Output()
-	onToggle = new EventEmitter<MouseEvent>();
-
-	constructor(private readonly headerService: MasterLayoutHeaderService, private readonly masterLayout: MasterLayoutService) {
+	constructor(
+		private readonly masterLayout: MasterLayoutService) {
 	}
 
 	@HostListener('click', ['$event'])
@@ -26,14 +18,5 @@ export class MasterLayoutHeaderToggleDirective {
 		$event.preventDefault();
 		this.masterLayout.menuCollapsed = !this.masterLayout.menuCollapsed;
 
-		// @deprecated
-		if (this.closeOnly) {
-			this.headerService.open = false;
-		} else {
-			this.headerService.toggle();
-		}
-
-		// Notify toggling:
-		this.onToggle.next($event);
 	}
 }
