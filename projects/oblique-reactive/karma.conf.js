@@ -5,9 +5,10 @@ module.exports = function (config) {
 	var options = config.buildWebpack.options;
 	config.set({
 		basePath: '',
-		frameworks: ['jasmine', '@angular-devkit/build-angular'],
+		frameworks: ['parallel', 'jasmine', '@angular-devkit/build-angular'],
 		plugins: [
 			require('karma-jasmine'),
+			require('karma-parallel'),
 			require('karma-chrome-launcher'),
 			require('karma-firefox-launcher'),
 			require('karma-jasmine-html-reporter'),
@@ -15,6 +16,10 @@ module.exports = function (config) {
 			require('karma-sonarqube-unit-reporter'),
 			require('@angular-devkit/build-angular/plugins/karma')
 		],
+		parallelOptions: {
+			executors: (Math.ceil(require('os').cpus().length / 2)),
+			shardStrategy: 'round-robin'
+		},
 		client: {
 			clearContext: false // leave Jasmine Spec Runner output visible in browser
 		},
