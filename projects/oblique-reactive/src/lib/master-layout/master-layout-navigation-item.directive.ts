@@ -1,11 +1,11 @@
-import {
-	AfterViewInit, ContentChild, ContentChildren, Directive, ElementRef, EventEmitter, HostBinding, Output, QueryList
-} from '@angular/core';
+import {AfterViewInit, ContentChild, ContentChildren, Directive, EventEmitter, HostBinding, Output, QueryList} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
+
+import {Unsubscribable} from '../unsubscribe';
 import {MasterLayoutNavigationToggleDirective} from './master-layout-navigation-toggle.directive';
 import {MasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
-import {MasterLayoutHeaderService} from './master-layout-header.service';
-import {Unsubscribable} from '../unsubscribe';
+import {MasterLayoutService} from './master-layout.service';
+
 
 @Directive({
 	selector: '[orMasterLayoutNavigationItem]',
@@ -28,16 +28,8 @@ export class MasterLayoutNavigationItemDirective extends Unsubscribable implemen
 	@ContentChildren(MasterLayoutNavigationItemDirective, {descendants: true})
 	$items: QueryList<MasterLayoutNavigationItemDirective>;
 
-	constructor(public elementRef: ElementRef,
-				private readonly headerService: MasterLayoutHeaderService) {
+	constructor(private readonly masterLayout: MasterLayoutService) {
 		super();
-		// Subscribe to header changes:
-		// this.headerService.openChange.subscribe((open) => {
-		// 	// Ensure we close all open sub menus:
-		// 	if (this.$menu && !open) {
-		// 		this.$menu.hide();
-		// 	}
-		// });
 	}
 
 	ngAfterViewInit() {
@@ -55,9 +47,7 @@ export class MasterLayoutNavigationItemDirective extends Unsubscribable implemen
 						} else {
 							// Final toggle, let's close all parent menus:
 							this.onClose.emit();
-
-							// Ensure we close the application header (when master layout is collapsed):
-							this.headerService.open = false;
+							this.masterLayout.menuCollapsed = true;
 						}
 						$event.prevented = true;
 					}
