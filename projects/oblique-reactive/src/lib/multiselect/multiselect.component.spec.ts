@@ -1,15 +1,10 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {Pipe, PipeTransform} from '@angular/core';
+import {NO_ERRORS_SCHEMA, Pipe, PipeTransform} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
+
 import {MockTranslatePipe} from 'tests';
-import {
-	FilterBoxComponent,
-	MultiselectComponent,
-	MultiselectConfig,
-	MultiselectTexts,
-	TextControlClearDirective
-} from 'oblique-reactive';
+import {MultiselectComponent, MultiselectConfig, MultiselectTexts} from 'oblique-reactive';
 
 @Pipe({
 	name: 'searchFilter'
@@ -38,8 +33,6 @@ describe('MultiselectComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [
 				MultiselectComponent,
-				FilterBoxComponent,
-				TextControlClearDirective,
 				MockSearchPipe,
 				MockTranslatePipe
 			],
@@ -47,7 +40,8 @@ describe('MultiselectComponent', () => {
 			providers: [
 				MultiselectConfig,
 				MultiselectTexts
-			]
+			],
+			schemas: [NO_ERRORS_SCHEMA]
 		}).compileComponents();
 	}));
 

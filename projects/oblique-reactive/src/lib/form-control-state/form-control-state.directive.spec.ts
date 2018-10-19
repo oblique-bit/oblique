@@ -83,7 +83,6 @@ describe('FormControlStateDirective', () => {
 				ReactiveTestComponent
 			],
 			imports: [
-				CommonModule,
 				FormsModule,
 				ReactiveFormsModule
 			]

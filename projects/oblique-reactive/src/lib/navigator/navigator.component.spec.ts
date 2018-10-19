@@ -1,4 +1,4 @@
-import {TestBed, ComponentFixture, async} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {NavigatorComponent} from 'oblique-reactive';
 
@@ -8,11 +8,8 @@ describe('NavigatorComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				NavigatorComponent
-			],
-			imports: [RouterTestingModule],
-			providers: []
+			declarations: [NavigatorComponent],
+			imports: [RouterTestingModule]
 		}).compileComponents();
 	}));
 

@@ -1,8 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, Pipe, PipeTransform} from '@angular/core';
+import {Component, NO_ERRORS_SCHEMA, Pipe, PipeTransform} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {FilterBoxComponent, TextControlClearDirective} from 'oblique-reactive';
+import {FilterBoxComponent} from 'oblique-reactive';
 
 @Pipe({name: 'translate'})
 class MockTranslatePipe implements PipeTransform {
@@ -28,13 +28,13 @@ describe('FilterBox', () => {
 
 	beforeEach(async(() =>
 		TestBed.configureTestingModule({
+			imports: [FormsModule],
 			declarations: [
 				TestComponent,
 				FilterBoxComponent,
-				TextControlClearDirective,
 				MockTranslatePipe
 			],
-			imports: [FormsModule]
+			schemas: [NO_ERRORS_SCHEMA]
 		}).compileComponents()
 	));
 

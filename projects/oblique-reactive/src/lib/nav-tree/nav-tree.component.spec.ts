@@ -1,9 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
-import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
-import {Component, DebugElement} from '@angular/core';
-import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
+import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {NavTreeComponent, NavTreeItemModel} from 'oblique-reactive';
 
 @Component({
@@ -61,8 +59,9 @@ describe('NavTreeComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
+			imports: [RouterTestingModule],
 			declarations: [TestComponent, NavTreeComponent],
-			imports: [CommonModule, RouterTestingModule, NgbCollapseModule.forRoot()]
+			schemas: [NO_ERRORS_SCHEMA]
 		}).compileComponents();
 	}));
 

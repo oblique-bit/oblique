@@ -1,5 +1,4 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {CommonModule} from '@angular/common';
 import {FormsModule, NgForm} from '@angular/forms';
 import {Component, ViewChild} from '@angular/core';
 import {By} from '@angular/platform-browser';
@@ -36,12 +35,7 @@ describe('ErrorMessagesComponent', () => {
 
 	beforeEach(async(() => {
 		errorMessagesServiceMock = jasmine.createSpyObj('ErrorMessagesService', ['createMessages']);
-		errorMessagesServiceMock.createMessages.and.callFake(() => {
-			return [{
-				key: `i18n.validation.bar`,
-				params: undefined
-			}];
-		});
+		errorMessagesServiceMock.createMessages.and.callFake(() => [{key: `i18n.validation.bar`, params: undefined}]);
 
 		TestBed.configureTestingModule({
 			declarations: [
@@ -49,10 +43,7 @@ describe('ErrorMessagesComponent', () => {
 				TestComponent,
 				MockTranslatePipe
 			],
-			imports: [
-				CommonModule,
-				FormsModule
-			],
+			imports: [FormsModule],
 			providers: [
 				{provide: ErrorMessagesService, useValue: errorMessagesServiceMock},
 				{provide: FormControlStateDirective, useValue: formControlStateDirectiveMock}

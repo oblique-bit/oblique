@@ -3,8 +3,8 @@ import {OffCanvasService} from 'oblique-reactive';
 
 describe('OffcanvasToggleDirective', () => {
 	it('should create an instance', () => {
-		const offcanvasService = new OffCanvasService();
-		const directive = new OffCanvasToggleDirective(offcanvasService);
+		const mockService = jasmine.createSpyObj('OffCanvasService', ['']);
+		const directive = new OffCanvasToggleDirective(mockService);
 		expect(directive).toBeTruthy();
 	});
 });

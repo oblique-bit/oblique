@@ -11,15 +11,23 @@ describe('MasterLayoutComponent', () => {
 
 	const mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use', 'getDefaultLang']);
 	mockTranslateService.onLangChange = new EventEmitter();
+	const mockScrolling = jasmine.createSpyObj('ScrollingConfig', ['']);
+	const mockConfig = jasmine.createSpyObj('MasterLayoutConfig', ['']);
+	mockConfig.layout = {};
+	const mockService = jasmine.createSpyObj('MasterLayoutService', ['']);
+	mockService.menuCollapsedEmitter = new EventEmitter();
+	mockService.applicationFixedEmitter = new EventEmitter();
+	mockService.coverLayoutEmitter = new EventEmitter();
+	mockService.noNavigationEmitter = new EventEmitter();
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
 			declarations: [MasterLayoutComponent],
 			providers: [
-				MasterLayoutService,
-				MasterLayoutConfig,
-				ScrollingConfig,
+				{provide: MasterLayoutService, useValue: mockService},
+				{provide: MasterLayoutConfig, useValue: mockConfig},
+				{provide: ScrollingConfig, useValue: mockScrolling},
 				{provide: TranslateService, useValue: mockTranslateService}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]

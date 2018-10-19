@@ -11,15 +11,21 @@ describe('MasterLayoutNavigationComponent', () => {
 	let fixture: ComponentFixture<MasterLayoutNavigationComponent>;
 	const mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use', 'onLangChange']);
 	mockTranslateService.onLangChange = new EventEmitter();
+	const mockService = jasmine.createSpyObj('MasterLayoutService', ['']);
+	mockService.navigationFullWidthEmitter = new EventEmitter();
+	mockService.navigationScrollableEmitter = new EventEmitter();
+	const mockConfig = jasmine.createSpyObj('MasterLayoutConfig', ['']);
+	mockConfig.navigation = {links: []};
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
 			declarations: [MasterLayoutNavigationComponent, MockTranslatePipe],
-			providers: [MasterLayoutService, MasterLayoutConfig, {
-				provide: TranslateService,
-				useValue: mockTranslateService
-			}]
+			providers: [
+				{provide: TranslateService, useValue: mockTranslateService},
+				{provide: MasterLayoutService, useValue: mockService},
+				{provide: MasterLayoutConfig, useValue: mockConfig}
+			]
 		})
 			.compileComponents();
 	}));

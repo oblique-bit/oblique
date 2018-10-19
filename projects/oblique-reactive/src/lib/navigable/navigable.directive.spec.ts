@@ -56,7 +56,6 @@ describe('NavigableDirective', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [TestComponent, NavigableDirective],
-			imports: [CommonModule]
 		}).compileComponents();
 	}));
 
