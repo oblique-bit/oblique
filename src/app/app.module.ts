@@ -21,6 +21,7 @@ import {
 	OffCanvasModule,
 	SchemaValidationModule,
 	ScrollingModule,
+	SearchBoxModule,
 	SpinnerModule,
 	UnsavedChangesModule
 } from 'oblique-reactive';
@@ -57,6 +58,7 @@ export function createTranslateLoader(http: HttpClient) {
 		OffCanvasModule,
 		SchemaValidationModule,
 		ScrollingModule,
+		SearchBoxModule,
 		SpinnerModule,
 		UnsavedChangesModule,
 		TranslateModule.forRoot({

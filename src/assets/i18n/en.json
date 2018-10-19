@@ -243,6 +243,11 @@
         "right": {
           "toggle": "Toggle right column."
         }
+      },
+      "search": {
+        "title": "Search",
+        "placeholder": "Search UI components...",
+        "noResults": "No results..."
       }
     }
   }

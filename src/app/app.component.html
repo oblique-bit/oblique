@@ -1,6 +1,9 @@
 <or-master-layout [navigation]="navigation">
 	<ng-container orHeaderTitle>ObliqueReactive</ng-container>
 	<ng-template #orHeaderControl>
+		<or-search-box [items]="searchItems"></or-search-box>
+	</ng-template>
+	<ng-template #orHeaderControl>
 		<a href="https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/" target="_blank" ngbTooltip="Go to ObliqueReactive GIT repository"
 		   placement="left">
 			<span class="control-icon fa fa-bitbucket"></span>

@@ -1,10 +1,12 @@
 import {Component} from '@angular/core';
-import {MasterLayoutConfig, ORNavigationLink} from 'oblique-reactive';
+import {MasterLayoutConfig, ORNavigationLink, SearchWidgetItem} from 'oblique-reactive';
 
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
-	styles: [`.fa-sign-in {transition: transform 600ms;}`]
+	styles: [`.fa-sign-in {
+		transition: transform 600ms;
+	}`]
 })
 export class AppComponent {
 	offCanvasOpen = false;
@@ -29,8 +31,27 @@ export class AppComponent {
 			]
 		}
 	];
+	searchItems: SearchWidgetItem[] = [];
 
 	constructor(config: MasterLayoutConfig) {
 		config.locale.locales = ['en', 'fr'];
+
+		this.populateSearchItems(this.navigation);
+	}
+
+	populateSearchItems(items: ORNavigationLink[], base = ''): void {
+		items.forEach((item: ORNavigationLink) => {
+			const url = item.url.substr(1);
+			if (item.children) {
+				this.populateSearchItems(item.children, url);
+			} else {
+				this.searchItems.push({
+					id: base ? `${base}_${url}` : url,
+					label: item.label,
+					routes: [base].concat(url.split('/')),
+					description: base ? `${base} > ${url}` : url
+				});
+			}
+		});
 	}
 }

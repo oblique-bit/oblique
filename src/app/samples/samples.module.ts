@@ -38,6 +38,7 @@ import {
 	NotificationModule,
 	NumberFormatModule,
 	SchemaValidationModule,
+	SearchBoxModule,
 	ToggleModule
 } from 'oblique-reactive';
 
@@ -55,6 +56,7 @@ import {
 		NumberFormatModule,
 		NotificationModule,
 		SchemaValidationModule,
+		SearchBoxModule,
 		ToggleModule,
 
 		TranslateModule,
