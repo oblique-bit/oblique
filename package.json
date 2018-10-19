@@ -40,7 +40,7 @@
     "lib": "npm run build -- oblique-reactive --watch",
     "start": "ng serve",
     "build": "ng build",
-    "dist": "npm run build -- oblique-reactive --prod",
+    "dist": "npm run build -- oblique-reactive",
     "postdist": "npm run gulp -- dist",
     "test": "ng test oblique-reactive",
     "lint": "ng lint oblique-reactive",

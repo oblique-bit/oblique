@@ -1,19 +1,17 @@
-import {
-	Directive, Input, ElementRef, HostBinding, Output, EventEmitter, HostListener, AfterViewInit
-} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output} from '@angular/core';
 
 export class PreventableEvent {
 	public prevented = false;
 }
 
 export class NavigableOnChangeEvent extends PreventableEvent {
-	constructor(public keyCode: number, public combine: boolean) {
+	constructor(public code: string, public combine: boolean) {
 		super();
 	}
 }
 
 export class NavigableOnMoveEvent extends PreventableEvent {
-	constructor(public keyCode: number) {
+	constructor(public code: string) {
 		super();
 	}
 }
@@ -37,11 +35,6 @@ export class NavigableOnMoveEvent extends PreventableEvent {
 	exportAs: 'orNavigable'
 })
 export class NavigableDirective implements AfterViewInit {
-
-	public static KEYS = {
-		UP: 38,
-		DOWN: 40
-	};
 
 	@Input('orNavigable')
 	model: any;
@@ -114,26 +107,22 @@ export class NavigableDirective implements AfterViewInit {
 
 	@HostListener('keydown', ['$event'])
 	onKeyDown($event: KeyboardEvent) {
-		const keyCode = $event.keyCode;
-		if (keyCode === NavigableDirective.KEYS.UP || keyCode === NavigableDirective.KEYS.DOWN) {
+		const code = $event.code;
+		if (code === 'ArrowUp' || code === 'ArrowDown') {
 			const focused = this.element.nativeElement.querySelector(':focus');
 			if (!focused || !focused.classList.contains('dropdown-toggle')
 				&& !NavigableDirective.hasAncestorClass(focused, 'dropdown-menu')) {
 				$event.preventDefault();
 
 				if ($event.ctrlKey && $event.shiftKey) {
-					this.navigableOnMove.emit(new NavigableOnMoveEvent(keyCode));
+					this.navigableOnMove.emit(new NavigableOnMoveEvent(code));
 
 					// Try to restore focus:
 					setTimeout(() => {
-						if (focused) {
-							focused.focus();
-						} else {
-							this.focus();
-						}
+						(focused || this).focus();
 					}, 0);
 				} else {
-					this.navigableOnChange.emit(new NavigableOnChangeEvent(keyCode, $event.ctrlKey || $event.shiftKey));
+					this.navigableOnChange.emit(new NavigableOnChangeEvent(code, $event.ctrlKey || $event.shiftKey));
 				}
 			}
 		}
@@ -186,11 +175,11 @@ export class NavigableDirective implements AfterViewInit {
 	}
 
 	public moveUp() {
-		this.navigableOnMove.emit(new NavigableOnMoveEvent(NavigableDirective.KEYS.UP));
+		this.navigableOnMove.emit(new NavigableOnMoveEvent('ArrowUp'));
 	}
 
 	public moveDown() {
-		this.navigableOnMove.emit(new NavigableOnMoveEvent(NavigableDirective.KEYS.DOWN));
+		this.navigableOnMove.emit(new NavigableOnMoveEvent('ArrowDown'));
 	}
 
 	private static hasAncestorClass(element: Element, className: string): boolean {

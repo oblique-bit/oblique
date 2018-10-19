@@ -54,11 +54,11 @@ describe('NavTreeFakeFocusDirective', () => {
 	let directive: NavTreeFakeFocusDirective;
 	let inputElement: DebugElement;
 
-	const keydown = (code: number) => {
+	const keydown = (code: string) => {
 		inputElement.triggerEventHandler(
 			NavTreeFakeFocusDirective.INPUT_EVENTS.KEY_DOWN,
 			{
-				keyCode: code,
+				code,
 				// FIXME: remove when https://github.com/ariya/phantomjs/issues/11289
 				preventDefault: () => {
 				} // tslint:disable-line

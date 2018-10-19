@@ -22,11 +22,11 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 	public static readonly KEY_DOWN_DEBOUNCE_MILLIS = 10;
 
 	public static readonly KEY_CODES = {
-		UP: 38,
-		DOWN: 40,
-		LEFT: 37,
-		RIGHT: 39,
-		ENTER: 13
+		UP: 'ArrowUp',
+		DOWN: 'ArrowDown',
+		LEFT: 'ArrowLeft',
+		RIGHT: 'ArrowRight',
+		ENTER: 'Enter'
 	};
 
 	public static readonly INPUT_EVENTS = {
@@ -133,8 +133,8 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 	}
 
 	private onKeyDown(event: KeyboardEvent) {
-		if (this.keyHandlers.hasOwnProperty(event.keyCode)) {
-			this.keyHandlers[event.keyCode](event);
+		if (this.keyHandlers.hasOwnProperty(event.code)) {
+			this.keyHandlers[event.code](event);
 		}
 	}
 

@@ -59,7 +59,7 @@ export class Notification implements INotification {
 		message: string | KeyWithParams,
 		type = NotificationType.DEFAULT,
 		sticky = false) {
-		this.messageKey = (<KeyWithParams>message).key || <string>message;
+		this.messageKey = (message as KeyWithParams).key || message as string;
 		this.type = type;
 		this.sticky = sticky;
 	}
