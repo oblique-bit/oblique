@@ -9,6 +9,7 @@ module.exports = function (config) {
 		plugins: [
 			require('karma-jasmine'),
 			require('karma-chrome-launcher'),
+			require('karma-firefox-launcher'),
 			require('karma-jasmine-html-reporter'),
 			require('karma-coverage-istanbul-reporter'),
 			require('karma-sonarqube-unit-reporter'),
@@ -42,8 +43,8 @@ module.exports = function (config) {
 			terminal: true
 		},
 		autoWatch: options.watch,
-		browsers: options.browsers.split(','),
 		singleRun: !options.watch,
+		browsers: options.browsers.split(','),
 		customLaunchers: {
 			ChromeHeadlessCustom: {
 				base: 'ChromeHeadless',

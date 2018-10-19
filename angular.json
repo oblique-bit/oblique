@@ -76,9 +76,10 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/oblique-reactive/src/test.ts",
-            "tsConfig": "projects/oblique-reactive/tsconfig.spec.json",
-            "karmaConfig": "projects/oblique-reactive/karma.conf.js",
+            "main": "src/test.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "polyfills": "src/polyfills.ts",
             "watch": true,
             "codeCoverage": false,
             "preserveSymlinks": true,
@@ -169,15 +170,33 @@
             "tsConfig": "projects/oblique-reactive/tsconfig.spec.json",
             "karmaConfig": "projects/oblique-reactive/karma.conf.js",
             "watch": true,
-            "codeCoverage": true,
+            "codeCoverage": false,
             "preserveSymlinks": true,
-            "browsers": "Chrome"
+            "sourceMap": true,
+            "browsers": "Chrome",
+            "styles": [
+              "node_modules/oblique-ui/css/oblique-ui.css",
+              "src/scss/styles.scss"
+            ],
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/oblique-ui/images",
+                "output": "/assets/styles/images"
+              }
+            ]
           },
           "configurations": {
             "production": {
               "preserveSymlinks": false,
               "watch": false,
               "codeCoverage": true,
+              "sourceMap": true,
               "progress": false,
               "browsers": "ChromeHeadlessCustom"
             }

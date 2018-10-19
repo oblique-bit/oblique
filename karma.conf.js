@@ -18,7 +18,9 @@ module.exports = function (config) {
 		client: {
 			clearContext: false // leave Jasmine Spec Runner output visible in browser
 		},
-		reporters: ['progress', 'kjhtml', 'coverage-istanbul', 'sonarqubeUnit'],
+		reporters: options.codeCoverage
+			? ['coverage-istanbul', 'sonarqubeUnit']
+			: ['kjhtml', 'progress'],
 		coverageIstanbulReporter: {
 			dir: require('path').join(__dirname, './coverage'),
 			reports: ['html', 'lcovonly'],
@@ -41,7 +43,8 @@ module.exports = function (config) {
 			terminal: true
 		},
 		autoWatch: options.watch,
-		browsers: options.watch ? ['Firefox'] : ['ChromeHeadlessCustom'],
+		singleRun: !options.watch,
+		browsers: options.browsers.split(','),
 		customLaunchers: {
 			ChromeHeadlessCustom: {
 				base: 'ChromeHeadless',
@@ -54,7 +57,6 @@ module.exports = function (config) {
 					'--enable-gpu'
 				]
 			}
-		},
-		singleRun: !options.watch
+		}
 	});
 };
