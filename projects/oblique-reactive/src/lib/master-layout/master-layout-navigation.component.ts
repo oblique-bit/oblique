@@ -10,6 +10,8 @@ export interface ORNavigationLink {
 	label: string;
 	url: string;
 	children?: ORNavigationLink[];
+	id?: string;
+
 }
 
 @Component({
@@ -24,13 +26,13 @@ export interface ORNavigationLink {
 			class="nav navbar-nav navbar-primary" [class.navigation-scrollable-content]="scrollable"
 			[class.navbar-fw]="fullWidth">
 			<li class="nav-item" role="presentation" orMasterLayoutNavigationItem *ngFor="let link of links">
-				<a class="nav-link" role="menuitem" [routerLink]="link.url" [routerLinkActive]="activeClass"
+				<a [attr.id]="link.id" class="nav-link" role="menuitem" [routerLink]="link.url" [routerLinkActive]="activeClass"
 				   orMasterLayoutNavigationToggle *ngIf="!link.children">
 					{{link.label | translate}}
 				</a>
 				<ng-container *ngIf="link.children">
-					<a class="nav-link" role="button" [class.active]="isActive('/samples')" orMasterLayoutNavigationToggle>
-						<span [id]="'navbar-primary-title-' + link.label">{{link.label | translate}}</span>
+					<a [attr.id]="link.id" class="nav-link" role="button" [class.active]="isActive('/samples')" orMasterLayoutNavigationToggle>
+						<span>{{link.label | translate}}</span>
 						<span class="toggle"></span>
 					</a>
 					<div class="navbar-primary-menu" role="menu" attr.aria-labelledby="navbar-primary-title-{{link.label}}"
@@ -43,7 +45,7 @@ export interface ORNavigationLink {
 								</a>
 							</li>
 							<li class="nav-item" role="presentation" orMasterLayoutNavigationItem *ngFor="let child of link.children">
-								<a class="nav-link" role="menuitem" [routerLink]="link.url + '/' + child.url"
+								<a class="nav-link" role="menuitem" [attr.id]="child.id" [routerLink]="link.url + '/' + child.url"
 								   [routerLinkActive]="activeClass" orMasterLayoutNavigationToggle>
 									{{child.label | translate}}
 								</a>
