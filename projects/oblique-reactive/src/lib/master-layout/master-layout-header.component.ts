@@ -171,7 +171,7 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 	}
 
 	private headerTransitions(): void {
-		if (this.scroll.transitions.header) {
+		if (this.config.header.scrollTransitions) {
 			this.scroll.onScroll.pipe(takeUntil(this.unsubscribe))
 				.subscribe((isScrolling) => {
 					this.medium = isScrolling;

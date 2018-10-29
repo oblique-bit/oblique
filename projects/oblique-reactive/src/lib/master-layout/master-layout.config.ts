@@ -49,7 +49,8 @@ export class MasterLayoutConfig {
 	header = {
 		animate: true,
 		sticky: true,
-		medium: false
+		medium: false,
+		scrollTransitions: true	// indicates if the header should be resized when scrolling
 	};
 
 	/**
