@@ -1,14 +1,13 @@
 <or-master-layout [navigation]="navigation">
 	<ng-container orHeaderTitle>ObliqueReactive</ng-container>
 	<ng-template #orHeaderControl>
-		<a href="https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/" target="_blank" class="nav-link control-link"
-		   ngbTooltip="Go to ObliqueReactive GIT repository" placement="left">
+		<a href="https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/" target="_blank" ngbTooltip="Go to ObliqueReactive GIT repository"
+		   placement="left">
 			<span class="control-icon fa fa-bitbucket"></span>
 		</a>
 	</ng-template>
 	<ng-template #orHeaderControl>
-		<a class="nav-link control-link" orOffCanvasToggle role="button" ngbTooltip="Toggle Off-Canvas" placement="left"
-		   (click)="offCanvasOpen = !offCanvasOpen">
+		<a orOffCanvasToggle role="button" ngbTooltip="Toggle Off-Canvas" placement="left" (click)="offCanvasOpen = !offCanvasOpen">
 			<span class="control-icon fa fa-sign-in" [class.fa-rotate-180]="!offCanvasOpen"></span>
 		</a>
 	</ng-template>

@@ -8,7 +8,8 @@ import {
 	Input,
 	QueryList,
 	Renderer2,
-	TemplateRef
+	TemplateRef,
+	ViewChildren
 } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
@@ -61,7 +62,9 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 				</ul>
 				<ul class="navbar-nav navbar-controls ml-sm-auto" role="menu" *ngIf="templates.length">
 					<li class="nav-item" role="menuitem" *ngFor="let template of templates">
-						<ng-container [ngTemplateOutlet]="template"></ng-container>
+						<span class="control-link" #headerControl>
+							<ng-container [ngTemplateOutlet]="template"></ng-container>
+						</span>
 					</li>
 				</ul>
 				<ng-content select="[orHeaderControls]" *ngIf="!templates.length"></ng-content>
@@ -89,6 +92,7 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 	@HostBinding('class.application-header-sticky') sticky: boolean;
 	@HostBinding('class.application-header-md') medium: boolean;
 	@ContentChildren('orHeaderControl') readonly templates: QueryList<TemplateRef<any>>;
+	@ViewChildren('headerControl') readonly headerControl: QueryList<ElementRef>;
 
 	constructor(private readonly masterLayout: MasterLayoutService,
 				private readonly translate: TranslateService,
@@ -114,6 +118,12 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 	ngAfterViewInit() {
 		this.setFocusable(!this.masterLayout.menuCollapsed);
 		this.masterLayout.menuCollapsedEmitter.subscribe(value => this.setFocusable(!value));
+
+		this.headerControl.forEach((elt: ElementRef) => {
+			elt.nativeElement.querySelectorAll('a').forEach(item => {
+				this.renderer.addClass(item, 'nav-link');
+			});
+		});
 	}
 
 	@HostListener('window:resize')
