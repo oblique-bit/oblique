@@ -1,6 +1,13 @@
 import {Injectable} from '@angular/core';
 import {ORNavigationLink} from './master-layout-navigation.component';
 
+interface MasterLayoutHeader {
+	animate: boolean;
+	sticky: boolean;
+	medium: boolean;
+	custom: boolean;
+	scrollTransitions: boolean;
+}
 interface MasterLayoutFooter {
 	small: boolean;
 	custom: boolean;
@@ -46,10 +53,12 @@ export class MasterLayoutConfig {
 	/**
 	 * Controls the application's header
 	 */
-	header = {
+	header: MasterLayoutHeader = {
 		animate: true,
 		sticky: true,
-		medium: false
+		medium: false,
+		custom: false,
+		scrollTransitions: true	// indicates if the header should be resized when scrolling
 	};
 
 	/**

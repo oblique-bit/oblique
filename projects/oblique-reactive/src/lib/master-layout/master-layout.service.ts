@@ -18,6 +18,8 @@ export class MasterLayoutService extends Unsubscribable {
 	readonly navigationScrollableEmitter: EventEmitter<boolean> = new EventEmitter();
 	readonly coverLayoutEmitter: EventEmitter<boolean> = new EventEmitter();
 	readonly menuCollapsedEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly headerCustomEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly footerCustomEmitter: EventEmitter<boolean> = new EventEmitter();
 
 	get applicationFixed(): boolean {
 		return this.isApplicationFixed;
@@ -37,6 +39,15 @@ export class MasterLayoutService extends Unsubscribable {
 		this.footerSmallEmitter.emit(value);
 	}
 
+	get customFooter() {
+		return this.isFooterCustom;
+	}
+
+	set customFooter(value: boolean) {
+		this.isFooterCustom = value;
+		this.footerCustomEmitter.emit(value);
+	}
+
 	get mediumHeader(): boolean {
 		return this.isHeaderMedium;
 	}
@@ -44,6 +55,15 @@ export class MasterLayoutService extends Unsubscribable {
 	set mediumHeader(value: boolean) {
 		this.isHeaderMedium = value;
 		this.headerMediumEmitter.emit(value);
+	}
+
+	get customHeader() {
+		return this.isHeaderCustom;
+	}
+
+	set customHeader(value: boolean) {
+		this.isHeaderCustom = value;
+		this.headerCustomEmitter.emit(value);
 	}
 
 	get animateHeader(): boolean {
@@ -120,6 +140,8 @@ export class MasterLayoutService extends Unsubscribable {
 	private isNavigationScrollable: boolean;
 	private hasCoverLayout: boolean;
 	private isMenuCollapsed = true;
+	private isHeaderCustom: boolean;
+	private isFooterCustom: boolean;
 
 	constructor(private readonly config: MasterLayoutConfig,
 				private readonly translate: TranslateService,

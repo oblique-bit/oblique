@@ -24,51 +24,54 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 	selector: 'or-master-layout-header',
 	template: `
 		<div class="navbar">
-			<div class="navbar-header">
-				<div class="application-brand">
-					<a class="application-brand-logo" [routerLink]="home" tabindex="-1">
-						<img alt="Back to home" src="assets/styles/images/logo.svg"/>
-					</a>
-					<span class="application-brand-app-title">
+			<ng-content select="[orHeader]" *ngIf="custom"></ng-content>
+			<ng-container *ngIf="!custom">
+				<div class="navbar-header">
+					<div class="application-brand">
+						<a class="application-brand-logo" [routerLink]="home" tabindex="-1">
+							<img alt="Back to home" src="assets/styles/images/logo.svg"/>
+						</a>
+						<span class="application-brand-app-title">
 						<a [routerLink]="home" class="application-brand-link">
 							<ng-content select="[orHeaderTitle]"></ng-content>
 						</a>
 					</span>
+					</div>
+					<ul class="nav navbar-nav navbar-controls navbar-toggler">
+						<li class="nav-item">
+							<a role="button" tabindex="0" title="Toggle application header" class="nav-link control-link or-collapse-toggle"
+							   orMasterLayoutHeaderToggle>
+								<div class="application-header-toggler">
+									<span class="first-line"></span>
+									<span class="second-line"></span>
+									<span class="third-line"></span>
+								</div>
+								<span class="sr-only">Toggle header & navigation</span>
+							</a>
+						</li>
+					</ul>
 				</div>
-				<ul class="nav navbar-nav navbar-controls navbar-toggler">
-					<li class="nav-item">
-						<a role="button" tabindex="0" title="Toggle application header" class="nav-link control-link or-collapse-toggle" orMasterLayoutHeaderToggle>
-							<div class="application-header-toggler">
-								<span class="first-line"></span>
-								<span class="second-line"></span>
-								<span class="third-line"></span>
-							</div>
-							<span class="sr-only">Toggle header & navigation</span>
-						</a>
-					</li>
-				</ul>
-			</div>
-			<div class="application-header-controls">
-				<h2 class="sr-only">{{'i18n.oblique.controls.title' | translate}}</h2>
-				<ul class="navbar-nav navbar-controls navbar-locale" role="menu" *ngIf="locales.length > 1">
-					<li class="nav-item" role="menuitem"
-						*ngFor="let locale of locales">
-						<a class="nav-link control-link" tabindex="0" role="button" orMasterLayoutHeaderToggle
-						   (click)="changeLang(locale)"
-						   [class.active]="isLangActive(locale)">
-							<span class="control-label">{{locale}}</span>
-						</a>
-					</li>
-				</ul>
-				<ul class="navbar-nav navbar-controls ml-sm-auto" role="menu" *ngIf="templates.length">
-					<li class="nav-item" role="menuitem" *ngFor="let template of templates">
-						<span class="control-link" #headerControl>
-							<ng-container [ngTemplateOutlet]="template"></ng-container>
-						</span>
-					</li>
-				</ul>
-				<ng-content select="[orHeaderControls]" *ngIf="!templates.length"></ng-content>
-			</div>
+				<div class="application-header-controls">
+					<h2 class="sr-only">{{'i18n.oblique.controls.title' | translate}}</h2>
+					<ul class="navbar-nav navbar-controls navbar-locale" role="menu" *ngIf="locales.length > 1">
+						<li class="nav-item" role="menuitem"
+							*ngFor="let locale of locales">
+							<a class="nav-link control-link" tabindex="0" role="button" orMasterLayoutHeaderToggle
+							   (click)="changeLang(locale)"
+							   [class.active]="isLangActive(locale)">
+								<span class="control-label">{{locale}}</span>
+							</a>
+						</li>
+					</ul>
+					<ul class="navbar-nav navbar-controls ml-sm-auto" role="menu" *ngIf="templates.length">
+						<li class="nav-item" role="menuitem" *ngFor="let template of templates">
+							<span class="control-link" #headerControl>
+								<ng-container [ngTemplateOutlet]="template"></ng-container>
+							</span>
+						</li>
+					</ul>
+				</div>
+			</ng-container>
 		</div>
 		<or-master-layout-navigation [links]="navigation">
 			<ng-content select="[orNavigation]"></ng-content>
@@ -86,6 +89,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 export class MasterLayoutHeaderComponent extends Unsubscribable implements AfterViewInit {
 	home: string;
 	locales: string[];
+	custom: boolean;
 	@Input() navigation: ORNavigationLink[];
 
 	@HostBinding('class.application-header-animate') animate: boolean;
@@ -107,6 +111,7 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 
 		this.animate = this.config.header.animate;
 		this.sticky = this.config.header.sticky;
+		this.custom = this.config.header.custom;
 		this.medium = this.config.header.medium;
 
 		this.updateHeaderMedium();
@@ -171,7 +176,7 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 	}
 
 	private headerTransitions(): void {
-		if (this.scroll.transitions.header) {
+		if (this.config.header.scrollTransitions) {
 			this.scroll.onScroll.pipe(takeUntil(this.unsubscribe))
 				.subscribe((isScrolling) => {
 					this.medium = isScrolling;
