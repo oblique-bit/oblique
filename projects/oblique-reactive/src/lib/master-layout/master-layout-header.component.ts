@@ -70,7 +70,6 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 							</span>
 						</li>
 					</ul>
-					<ng-content select="[orHeaderControls]" *ngIf="!templates.length"></ng-content>
 				</div>
 			</ng-container>
 		</div>
