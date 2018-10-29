@@ -19,6 +19,7 @@ export class MasterLayoutService extends Unsubscribable {
 	readonly coverLayoutEmitter: EventEmitter<boolean> = new EventEmitter();
 	readonly menuCollapsedEmitter: EventEmitter<boolean> = new EventEmitter();
 	readonly headerCustomEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly footerCustomEmitter: EventEmitter<boolean> = new EventEmitter();
 
 	get applicationFixed(): boolean {
 		return this.isApplicationFixed;
@@ -36,6 +37,15 @@ export class MasterLayoutService extends Unsubscribable {
 	set smallFooter(value: boolean) {
 		this.isFooterSmall = value;
 		this.footerSmallEmitter.emit(value);
+	}
+
+	get customFooter() {
+		return this.isFooterCustom;
+	}
+
+	set customFooter(value: boolean) {
+		this.isFooterCustom = value;
+		this.footerCustomEmitter.emit(value);
 	}
 
 	get mediumHeader(): boolean {
@@ -131,6 +141,7 @@ export class MasterLayoutService extends Unsubscribable {
 	private hasCoverLayout: boolean;
 	private isMenuCollapsed = true;
 	private isHeaderCustom: boolean;
+	private isFooterCustom: boolean;
 
 	constructor(private readonly config: MasterLayoutConfig,
 				private readonly translate: TranslateService,
