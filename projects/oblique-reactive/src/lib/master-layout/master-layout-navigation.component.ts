@@ -1,5 +1,6 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
+import {Component, HostBinding, HostListener, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
+import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe';
@@ -11,20 +12,19 @@ export interface ORNavigationLink {
 	url: string;
 	children?: ORNavigationLink[];
 	id?: string;
-
 }
 
 @Component({
 	selector: 'or-master-layout-navigation',
 	template: `
 		<h2 class="sr-only">Global navigation menu</h2>
-		<button class="navigation-scrollable-control navigation-scrollable-control-left" type="button" *ngIf="scrollable">
+		<button class="navigation-scrollable-control navigation-scrollable-control-left" type="button" (click)="scrollLeft()" *ngIf="scrollable"
+				[disabled]="!currentScroll">
 			<span class="fa fa-angle-left"></span>
 		</button>
 		<ng-content *ngIf="!links.length"></ng-content>
 		<ul id="navigation" role="menubar" *ngIf="links.length"
-			class="nav navbar-nav navbar-primary" [class.navigation-scrollable-content]="scrollable"
-			[class.navbar-fw]="fullWidth">
+			class="nav navbar-nav navbar-primary" [class.navigation-scrollable-content]="scrollable" [class.navbar-fw]="fullWidth" #container>
 			<li class="nav-item" role="presentation" orMasterLayoutNavigationItem *ngFor="let link of links">
 				<a [attr.id]="link.id" class="nav-link" role="menuitem" [routerLink]="link.url" [routerLinkActive]="activeClass"
 				   orMasterLayoutNavigationToggle *ngIf="!link.children">
@@ -55,21 +55,37 @@ export interface ORNavigationLink {
 				</ng-container>
 			</li>
 		</ul>
-		<button class="navigation-scrollable-control navigation-scrollable-control-right" type="button" *ngIf="scrollable">
+		<button class="navigation-scrollable-control navigation-scrollable-control-right" (click)="scrollRight()" type="button" *ngIf="scrollable"
+				[disabled]="currentScroll === maxScroll">
 			<span class="fa fa-angle-right"></span>
 		</button>
 	`,
-	styles: [`:host {display: block;}`],
+	styles: [`:host {
+		display: block;
+	}
+
+	button[disabled] {
+		cursor: not-allowed !important;
+	}
+	`],
 	/* tslint:disable:use-host-property-decorator */
 	host: {class: 'application-navigation'}
 })
 export class MasterLayoutNavigationComponent extends Unsubscribable implements OnInit {
 	fullWidth: boolean;
 	activeClass: string;
+	currentScroll = 0;
+	maxScroll = 0;
 	@Input() links: ORNavigationLink[] = [];
 	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') scrollable: boolean;
+	@ViewChild('container') container;
+	private static readonly buttonWidth = 30;
 
-	constructor(private readonly router: Router, private readonly masterLayout: MasterLayoutService, private readonly config: MasterLayoutConfig) {
+	constructor(private readonly router: Router,
+				private readonly masterLayout: MasterLayoutService,
+				private readonly config: MasterLayoutConfig,
+				private readonly renderer: Renderer2,
+				private readonly translate: TranslateService) {
 		super();
 
 		this.activeClass = this.config.navigation.activeClass;
@@ -79,12 +95,39 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 		this.updateNavigationScrollable();
 	}
 
+	@HostListener('window:resize')
+	onResize() {
+		if (this.container) {
+			let childWidth = 0;
+			Array.from(this.container.nativeElement.children).forEach((el: HTMLElement) => {
+				childWidth += el.clientWidth;
+			});
+			this.maxScroll = Math.max(0, -(this.container.nativeElement.clientWidth - childWidth - 2 * MasterLayoutNavigationComponent.buttonWidth));
+		}
+	}
+
 	ngOnInit() {
 		this.links = this.links.length ? this.links : this.config.navigation.links;
+		this.translate.getTranslation(this.translate.defaultLang).subscribe(() => this.onResize());
 	}
 
 	isActive(url: string): boolean {
 		return this.router.isActive(url, false);
+	}
+
+	scrollLeft(): void {
+		this.updateScroll(-this.config.navigation.scrollDelta);
+	}
+
+	scrollRight(): void {
+		this.updateScroll(this.config.navigation.scrollDelta);
+	}
+
+	private updateScroll(delta: number): void {
+		this.currentScroll += delta;
+		this.currentScroll = Math.max(0, this.currentScroll);
+		this.currentScroll = Math.min(this.currentScroll, this.maxScroll);
+		this.renderer.setStyle(this.container.nativeElement.children[0], 'margin-left', `-${this.currentScroll}px`);
 	}
 
 	private updateNavigationFullWidth(): void {
