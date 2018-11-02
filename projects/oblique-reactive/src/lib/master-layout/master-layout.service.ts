@@ -8,18 +8,38 @@ import {MasterLayoutConfig} from './master-layout.config';
 
 @Injectable()
 export class MasterLayoutService extends Unsubscribable {
+	// Layout
+	readonly menuCollapsedEmitter: EventEmitter<boolean> = new EventEmitter();
 	readonly applicationFixedEmitter: EventEmitter<boolean> = new EventEmitter();
-	readonly footerSmallEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly coverLayoutEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly noNavigationEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly offCanvasEmitter: EventEmitter<boolean> = new EventEmitter();
+
+	//Header
+	readonly headerCustomEmitter: EventEmitter<boolean> = new EventEmitter();
 	readonly headerMediumEmitter: EventEmitter<boolean> = new EventEmitter();
 	readonly headerAnimateEmitter: EventEmitter<boolean> = new EventEmitter();
 	readonly headerStickyEmitter: EventEmitter<boolean> = new EventEmitter();
-	readonly noNavigationEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly headerScrollTransitionEmitter: EventEmitter<boolean> = new EventEmitter();
+
+	// Navigation
 	readonly navigationFullWidthEmitter: EventEmitter<boolean> = new EventEmitter();
 	readonly navigationScrollableEmitter: EventEmitter<boolean> = new EventEmitter();
-	readonly coverLayoutEmitter: EventEmitter<boolean> = new EventEmitter();
-	readonly menuCollapsedEmitter: EventEmitter<boolean> = new EventEmitter();
-	readonly headerCustomEmitter: EventEmitter<boolean> = new EventEmitter();
+
+	// Footer
 	readonly footerCustomEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly footerSmallEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly footerScrollTransitionEmitter: EventEmitter<boolean> = new EventEmitter();
+
+	// Layout
+	get menuCollapsed(): boolean {
+		return this.isMenuCollapsed;
+	}
+
+	set menuCollapsed(value: boolean) {
+		this.isMenuCollapsed = value;
+		this.menuCollapsedEmitter.emit(value);
+	}
 
 	get applicationFixed(): boolean {
 		return this.isApplicationFixed;
@@ -30,22 +50,41 @@ export class MasterLayoutService extends Unsubscribable {
 		this.applicationFixedEmitter.emit(value);
 	}
 
-	get smallFooter(): boolean {
-		return this.isFooterSmall;
+	get coverLayout(): boolean {
+		return this.hasCoverLayout;
 	}
 
-	set smallFooter(value: boolean) {
-		this.isFooterSmall = value;
-		this.footerSmallEmitter.emit(value);
+	set coverLayout(value: boolean) {
+		this.hasCoverLayout = value;
+		this.coverLayoutEmitter.emit(value);
 	}
 
-	get customFooter() {
-		return this.isFooterCustom;
+	get noNavigation(): boolean {
+		return this.hasNavigation;
 	}
 
-	set customFooter(value: boolean) {
-		this.isFooterCustom = value;
-		this.footerCustomEmitter.emit(value);
+	set noNavigation(value: boolean) {
+		this.hasNavigation = value;
+		this.noNavigationEmitter.emit(value);
+	}
+
+	get offCanvas(): boolean {
+		return this.hasOffCanvas;
+	}
+
+	set offCanvas(value: boolean) {
+		this.hasOffCanvas = value;
+		this.offCanvasEmitter.emit(value);
+	}
+
+	// Header
+	get customHeader() {
+		return this.isHeaderCustom;
+	}
+
+	set customHeader(value: boolean) {
+		this.isHeaderCustom = value;
+		this.headerCustomEmitter.emit(value);
 	}
 
 	get mediumHeader(): boolean {
@@ -55,15 +94,6 @@ export class MasterLayoutService extends Unsubscribable {
 	set mediumHeader(value: boolean) {
 		this.isHeaderMedium = value;
 		this.headerMediumEmitter.emit(value);
-	}
-
-	get customHeader() {
-		return this.isHeaderCustom;
-	}
-
-	set customHeader(value: boolean) {
-		this.isHeaderCustom = value;
-		this.headerCustomEmitter.emit(value);
 	}
 
 	get animateHeader(): boolean {
@@ -84,15 +114,17 @@ export class MasterLayoutService extends Unsubscribable {
 		this.headerStickyEmitter.emit(value);
 	}
 
-	get noNavigation(): boolean {
-		return this.hasNavigation;
+	get scrollTransitionHeader(): boolean {
+		return this.hasHeaderScrollTransition;
 	}
 
-	set noNavigation(value: boolean) {
-		this.hasNavigation = value;
-		this.noNavigationEmitter.emit(value);
+	set scrollTransitionHeader(value: boolean) {
+		this.hasHeaderScrollTransition = value;
+		this.headerScrollTransitionEmitter.emit(value);
 	}
 
+
+	// Navigation
 	get navigationFullWidth(): boolean {
 		return this.isNavigationFullWidth;
 	}
@@ -111,37 +143,58 @@ export class MasterLayoutService extends Unsubscribable {
 		this.navigationScrollableEmitter.emit(value);
 	}
 
-	get coverLayout(): boolean {
-		return this.hasCoverLayout;
+	// Footer
+	get customFooter() {
+		return this.isFooterCustom;
 	}
 
-	set coverLayout(value: boolean) {
-		this.hasCoverLayout = value;
-		this.coverLayoutEmitter.emit(value);
+	set customFooter(value: boolean) {
+		this.isFooterCustom = value;
+		this.footerCustomEmitter.emit(value);
 	}
 
-	get menuCollapsed(): boolean {
-		return this.isMenuCollapsed;
+	get smallFooter(): boolean {
+		return this.isFooterSmall;
 	}
 
-	set menuCollapsed(value: boolean) {
-		this.isMenuCollapsed = value;
-		this.menuCollapsedEmitter.emit(value);
+	set smallFooter(value: boolean) {
+		this.isFooterSmall = value;
+		this.footerSmallEmitter.emit(value);
+	}
+
+	get scrollTransitionFooter(): boolean {
+		return this.hasFooterScrollTransition;
+	}
+
+	set scrollTransitionFooter(value: boolean) {
+		this.hasFooterScrollTransition = value;
+		this.footerScrollTransitionEmitter.emit(value);
 	}
 
 	private static readonly token = 'oblique_lang';
+
+	// Layout
+	private isMenuCollapsed = true;
 	private isApplicationFixed: boolean;
-	private isFooterSmall: boolean;
+	private hasCoverLayout: boolean;
+	private hasNavigation: boolean;
+	private hasOffCanvas: boolean;
+
+	// Header
+	private isHeaderCustom: boolean;
 	private isHeaderMedium: boolean;
 	private isHeaderAnimated: boolean;
 	private isHeaderSticky: boolean;
-	private hasNavigation: boolean;
+	private hasHeaderScrollTransition: boolean;
+
+	// Navigation
 	private isNavigationFullWidth: boolean;
 	private isNavigationScrollable: boolean;
-	private hasCoverLayout: boolean;
-	private isMenuCollapsed = true;
-	private isHeaderCustom: boolean;
+
+	// Footer
 	private isFooterCustom: boolean;
+	private isFooterSmall: boolean;
+	private hasFooterScrollTransition: boolean;
 
 	constructor(private readonly config: MasterLayoutConfig,
 				private readonly translate: TranslateService,
