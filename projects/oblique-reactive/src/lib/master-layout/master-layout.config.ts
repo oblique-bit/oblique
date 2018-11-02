@@ -17,6 +17,7 @@ interface MasterLayoutFooter {
 interface MasterLayoutNavigation {
 	fullWidth: boolean;
 	scrollable: boolean;
+	scrollDelta: number;
 	activeClass: string;
 	links: ORNavigationLink[];
 }
@@ -67,6 +68,7 @@ export class MasterLayoutConfig {
 	navigation: MasterLayoutNavigation = {
 		fullWidth: true,
 		scrollable: false,
+		scrollDelta: 95,
 		activeClass: 'active',
 		links: []
 	};
