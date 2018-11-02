@@ -17,14 +17,14 @@ export interface ORNavigationLink {
 @Component({
 	selector: 'or-master-layout-navigation',
 	template: `
-		<h2 class="sr-only">Global navigation menu</h2>
+		<h2 class="sr-only">{{'i18n.accessible.globalNavigationMenu' | translate}}</h2>
 		<button class="navigation-scrollable-control navigation-scrollable-control-left" type="button" (click)="scrollLeft()" *ngIf="scrollable"
 				[disabled]="!currentScroll">
 			<span class="fa fa-angle-left"></span>
 		</button>
 		<ng-content *ngIf="!links.length"></ng-content>
 		<ul id="navigation" role="menubar" *ngIf="links.length"
-			class="nav navbar-nav navbar-primary" [class.navigation-scrollable-content]="scrollable" [class.navbar-fw]="fullWidth" #container>
+			class="nav navbar-nav navbar-primary" [class.navigation-scrollable-content]="scrollable" [class.navbar-fw]="fullWidth" tabindex="0" #container>
 			<li class="nav-item" role="presentation" orMasterLayoutNavigationItem *ngFor="let link of links">
 				<a [attr.id]="link.id" class="nav-link" role="menuitem" [routerLink]="link.url" [routerLinkActive]="activeClass"
 				   orMasterLayoutNavigationToggle *ngIf="!link.children">
