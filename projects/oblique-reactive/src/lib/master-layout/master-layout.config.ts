@@ -38,8 +38,10 @@ export class MasterLayoutConfig {
 	/**
 	 * Locales of the application
 	 */
-	locales = ['de', 'fr', 'it'];
-	defaultLocale = 'de';
+	locale = {
+		locales:  ['de', 'fr', 'it'],
+		default:  'de'
+	};
 
 	/**
 	 *  Controls the application's layout

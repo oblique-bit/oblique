@@ -107,7 +107,7 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 		super();
 
 		this.home = this.config.homePageRoute;
-		this.locales = this.config.locales;
+		this.locales = this.config.locale.locales;
 
 		this.animate = this.config.header.animate;
 		this.sticky = this.config.header.sticky;

@@ -217,7 +217,7 @@ export class MasterLayoutService extends Unsubscribable {
 	}
 
 	private manageLanguage(): void {
-		if (!Array.isArray(this.config.locales)) {
+		if (!Array.isArray(this.config.locale.locales)) {
 			throw new Error('Locales needs to be an array');
 		}
 		const defaultLang = this.getDefaultLang();
@@ -231,7 +231,7 @@ export class MasterLayoutService extends Unsubscribable {
 	}
 
 	private getDefaultLang(): string {
-		const lang = this.getBrowserLang() || this.config.defaultLocale || this.config.locales[0];
+		const lang = this.getBrowserLang() || this.config.locale.default || this.config.locale.locales[0];
 		if (!lang) {
 			throw new Error('No locale defined');
 		}
@@ -240,7 +240,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	private getBrowserLang(): string {
 		const browserLang = this.translate.getBrowserLang();
-		return (browserLang && this.config.locales.indexOf(browserLang) !== -1)
+		return (browserLang && this.config.locale.locales.indexOf(browserLang) !== -1)
 			? browserLang
 			: undefined;
 	}
