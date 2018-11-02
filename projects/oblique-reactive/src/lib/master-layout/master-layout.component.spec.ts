@@ -3,6 +3,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, EventEmitter} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 
+import {MockTranslatePipe} from 'tests';
 import {MasterLayoutComponent, MasterLayoutConfig, MasterLayoutService, ScrollingConfig} from 'oblique-reactive';
 
 describe('MasterLayoutComponent', () => {
@@ -23,7 +24,7 @@ describe('MasterLayoutComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
-			declarations: [MasterLayoutComponent],
+			declarations: [MasterLayoutComponent, MockTranslatePipe],
 			providers: [
 				{provide: MasterLayoutService, useValue: mockService},
 				{provide: MasterLayoutConfig, useValue: mockConfig},

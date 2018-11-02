@@ -36,6 +36,11 @@ export class MasterLayoutConfig {
 	homePageRoute = '/home';
 
 	/**
+	 * Elements that will receive focus when provided as fragment
+	 */
+	focusableFragments = ['content', 'navigation'];
+
+	/**
 	 * Locales of the application
 	 */
 	locales = ['de', 'fr', 'it'];

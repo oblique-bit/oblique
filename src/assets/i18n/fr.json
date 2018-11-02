@@ -130,6 +130,12 @@
       "email": "Email",
       "password": "Mot de passe"
     },
+    "accesskey": {
+      "mainContent": "[fr] Skip to main content [0]",
+      "homepage": "[fr] Homepage [1]",
+      "navigation": "[fr] Navigation [2]",
+      "globalNavigationMenu":"[fr] Global navigation menu"
+    },
     "error": {
       "general": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
       "http": {

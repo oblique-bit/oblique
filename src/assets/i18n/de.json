@@ -129,6 +129,12 @@
       "email": "Email",
       "password": "Passwort"
     },
+    "accesskey":{
+      "mainContent":"Springe zum Hauptteil [0]",
+      "homepage":"Hauptseite [1]",
+      "navigation":"Navigation [2]",
+      "globalNavigationMenu":"Globales Navigationsmenu"
+    },
     "error": {
       "general": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
       "http": {

@@ -1,5 +1,6 @@
 import {Component, ContentChildren, HostBinding, Input, QueryList, TemplateRef} from '@angular/core';
-import {takeUntil} from 'rxjs/operators';
+import {NavigationEnd, Router} from '@angular/router';
+import {filter, map, takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe';
 import {ScrollingConfig} from '../scrolling';
@@ -15,16 +16,13 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 		<nav class="accesskeys" role="navigation" aria-label="Accesskeys">
 			<ul class="list-unstyled">
 				<li>
-					<a class="accessible" href="#content">Skip to main content</a>
+					<a class="accessible" accesskey="0" [routerLink]="url" fragment="content">{{'i18n.accesskey.mainContent' | translate}}</a>
 				</li>
 				<li>
-					<a class="accessible" accesskey="0" [routerLink]="home">Homepage [0]</a>
+					<a class="accessible" accesskey="1" [routerLink]="home">{{'i18n.accesskey.homepage' | translate}}</a>
 				</li>
 				<li>
-					<a class="accessible" accesskey="1" href="#navigation">Navigation [1]</a>
-				</li>
-				<li>
-					<a class="accessible" accesskey="2" href="#content">Content [2]</a>
+					<a class="accessible" accesskey="2" [routerLink]="url" fragment="navigation">{{'i18n.accesskey.navigation' | translate}}</a>
 				</li>
 			</ul>
 		</nav>
@@ -38,7 +36,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 				</ng-template>
 			</ng-container>
 		</or-master-layout-header>
-		<div id="content" class="application-content" role="main" [class.offcanvas-main]="offCanvas">
+		<div id="content" class="application-content" role="main" [class.offcanvas-main]="offCanvas" tabindex="0">
 			<div class="alert-compatibility default-layout">
 				<div class="callout callout-danger">
 					<span class="sr-only">Error</span>
@@ -85,6 +83,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 })
 export class MasterLayoutComponent extends Unsubscribable {
 	home: string;
+	url: string;
 	@Input() navigation: ORNavigationLink[] = [];
 	@HostBinding('class.application-fixed') applicationFixed: boolean;
 	@HostBinding('class.has-cover') coverLayout: boolean;
@@ -94,9 +93,25 @@ export class MasterLayoutComponent extends Unsubscribable {
 	@ContentChildren('orHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('orFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<any>>;
 
-	constructor(private readonly masterLayout: MasterLayoutService, private readonly scroll: ScrollingConfig, private readonly config: MasterLayoutConfig) {
+	constructor(private readonly masterLayout: MasterLayoutService,
+				private readonly scroll: ScrollingConfig,
+				private readonly config: MasterLayoutConfig,
+				readonly router: Router
+	) {
 		super();
 
+		router.events.pipe(
+			filter(evt => evt instanceof NavigationEnd),
+			map(() => router.url.split('#'))
+		).subscribe((route) => {
+			this.url = route[0];
+			if (route[1] && this.config.focusableFragments.indexOf(route[1]) > -1) {
+				const el = document.getElementById(route[1]);
+				if (el) {
+					el.focus();
+				}
+			}
+		});
 		this.home = this.config.homePageRoute;
 		this.applicationFixed = this.config.layout.fixed;
 		this.coverLayout = this.config.layout.cover;
