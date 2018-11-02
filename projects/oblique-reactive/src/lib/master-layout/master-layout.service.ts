@@ -217,32 +217,32 @@ export class MasterLayoutService extends Unsubscribable {
 	}
 
 	private manageLanguage(): void {
+		if (!Array.isArray(this.config.locales)) {
+			throw new Error('Locales needs to be an array');
+		}
+		const defaultLang = this.getDefaultLang();
 		const langToken = MasterLayoutService.getLangToken();
-		const lang = this.getCurrentLocale(langToken);
-		this.translate.setDefaultLang(lang);
-		this.translate.use(lang);
+		this.translate.setDefaultLang(defaultLang);
+		this.translate.use(localStorage.getItem(MasterLayoutService.token + langToken) || defaultLang);
+
 		this.translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe((event: LangChangeEvent) => {
 			localStorage.setItem(MasterLayoutService.token + langToken, event.lang);
 		});
 	}
 
-	private getCurrentLocale(langToken: string): string {
-		let lang = localStorage.getItem(MasterLayoutService.token + langToken) || this.config.defaultLocale;
-		if (!this.config.locales.length) {
-			console.warn('No locales are defined!');
-		} else if (this.config.locales.indexOf(this.config.defaultLocale) === -1) {
-			console.warn(`The default locale ("${this.config.defaultLocale}") is not within the supported ones ` +
-				`("${this.config.locales.join('", "')}"). It will be set to "${this.config.locales[0]}"`);
-			this.config.defaultLocale = this.config.locales[0];
+	private getDefaultLang(): string {
+		const lang = this.getBrowserLang() || this.config.defaultLocale || this.config.locales[0];
+		if (!lang) {
+			throw new Error('No locale defined');
 		}
-		if (this.config.locales.indexOf(lang) === -1) {
-			console.warn(`The current locale ("${lang}") is not within the supported ones ` +
-				`("${this.config.locales.join('", "')}"). It will be set to "${this.config.defaultLocale}"`);
-			lang = this.config.defaultLocale;
-			localStorage.setItem(MasterLayoutService.token + langToken, lang);
-		}
-
 		return lang;
+	}
+
+	private getBrowserLang(): string {
+		const browserLang = this.translate.getBrowserLang();
+		return (browserLang && this.config.locales.indexOf(browserLang) !== -1)
+			? browserLang
+			: undefined;
 	}
 
 	private routeChange(): void {
