@@ -16,6 +16,7 @@ export class MasterLayoutNavigationToggleDirective {
 	}
 
 	@HostListener('click', ['$event'])
+	@HostListener('keyup.enter', ['$event'])
 	onClick($event) {
 		// As ENTER keypress delegates to click events, let's ensure
 		// browser does not try to follow any empty link (ie `href=""`):

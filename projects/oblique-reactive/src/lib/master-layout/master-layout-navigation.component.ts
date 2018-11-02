@@ -31,7 +31,7 @@ export interface ORNavigationLink {
 					{{link.label | translate}}
 				</a>
 				<ng-container *ngIf="link.children">
-					<a [attr.id]="link.id" class="nav-link" role="button" [class.active]="isActive('/samples')" orMasterLayoutNavigationToggle>
+					<a [attr.id]="link.id" class="nav-link" role="button" tabindex="0" [class.active]="isActive('/samples')" orMasterLayoutNavigationToggle>
 						<span>{{link.label | translate}}</span>
 						<span class="toggle"></span>
 					</a>
