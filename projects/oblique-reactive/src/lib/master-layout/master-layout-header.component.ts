@@ -64,7 +64,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 					</ul>
 					<ul class="navbar-nav navbar-controls ml-sm-auto" role="menu" *ngIf="templates.length">
 						<li class="nav-item" role="menuitem" *ngFor="let template of templates">
-							<span class="control-link" #headerControl>
+							<span #headerControl>
 								<ng-container [ngTemplateOutlet]="template"></ng-container>
 							</span>
 						</li>
@@ -129,9 +129,16 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 		this.masterLayout.menuCollapsedEmitter.subscribe(value => this.setFocusable(!value));
 
 		this.headerControl.forEach((elt: ElementRef) => {
-			Array.from(elt.nativeElement.querySelectorAll('a')).forEach(item => {
-				this.renderer.addClass(item, 'nav-link');
-			});
+			if (elt.nativeElement.children.length) {
+				Array.from(elt.nativeElement.children).forEach((item: HTMLElement) => {
+					this.renderer.addClass(item, 'control-link');
+					if (item.nodeName === 'A') {
+						this.renderer.addClass(item, 'nav-link');
+					}
+				});
+			} else {
+				this.renderer.addClass(elt.nativeElement, 'control-link');
+			}
 		});
 	}
 
