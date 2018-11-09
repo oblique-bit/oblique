@@ -17,7 +17,7 @@ import {takeUntil} from 'rxjs/operators';
 import {ScrollingConfig} from '../scrolling';
 import {Unsubscribable} from '../unsubscribe';
 import {MasterLayoutService} from './master-layout.service';
-import {MasterLayoutConfig} from './master-layout.config';
+import {LocaleObject, MasterLayoutConfig} from './master-layout.config';
 import {ORNavigationLink} from './master-layout-navigation.component';
 
 @Component({
@@ -55,13 +55,11 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 					<h2 class="sr-only">{{'i18n.oblique.controls.title' | translate}}</h2>
 					<ng-content select="[orLocales]" *ngIf="disabledLang"></ng-content>
 					<ul class="navbar-nav navbar-controls navbar-locale" role="menu" *ngIf="locales.length > 1 && !disabledLang">
-						<li class="nav-item" role="menuitem"
-							*ngFor="let locale of locales">
-							<a class="nav-link control-link" tabindex="0" role="button" orMasterLayoutHeaderToggle
-							   (click)="changeLang(locale)"
-							   [class.active]="isLangActive(locale)">
-								<span class="control-label">{{locale}}</span>
-							</a>
+						<li class="nav-item" role="menuitem" *ngFor="let locale of locales">
+							<button class="btn btn-link" orMasterLayoutHeaderToggle
+							   (click)="changeLang(locale.locale)" [class.active]="isLangActive(locale.locale)" [attr.id]="locale.id">
+								<span class="control-label">{{locale.locale}}</span>
+							</button>
 						</li>
 					</ul>
 					<ul class="navbar-nav navbar-controls ml-sm-auto" role="menu" *ngIf="templates.length">
@@ -89,7 +87,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 })
 export class MasterLayoutHeaderComponent extends Unsubscribable implements AfterViewInit {
 	home: string;
-	locales: string[];
+	locales: LocaleObject[];
 	custom: boolean;
 	disabledLang: boolean;
 	@Input() navigation: ORNavigationLink[];
@@ -108,10 +106,9 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 				private readonly renderer: Renderer2) {
 		super();
 
-		this.home = this.config.homePageRoute;
-		this.locales = this.config.locale.locales;
+		this.locales = this.checkLocale();
 		this.disabledLang = this.config.locale.disabled;
-
+		this.home = this.config.homePageRoute;
 		this.animate = this.config.header.animate;
 		this.sticky = this.config.header.sticky;
 		this.medium = this.config.header.medium;
@@ -146,6 +143,21 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 
 	changeLang(lang: string): void {
 		this.translate.use(lang);
+	}
+
+	checkLocale(): LocaleObject[] {
+		const locales: LocaleObject[] = [];
+
+		this.config.locale.locales.forEach((loc) => {
+			const locale: LocaleObject = {
+				locale: (loc as LocaleObject).locale || (loc as string)
+			};
+			if ((loc as LocaleObject).id) {
+				locale.id = (loc as LocaleObject).id
+			}
+			locales.push(locale);
+		});
+		return locales;
 	}
 
 	private setFocusable(isMenuCollasped: boolean): void {

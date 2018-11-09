@@ -4,7 +4,7 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe';
-import {MasterLayoutConfig} from './master-layout.config';
+import {LocaleObject, MasterLayoutConfig} from './master-layout.config';
 
 @Injectable()
 export class MasterLayoutService extends Unsubscribable {
@@ -217,11 +217,11 @@ export class MasterLayoutService extends Unsubscribable {
 	}
 
 	private manageLanguage(): void {
-		if (!this.config.locale.disabled) {
+		if (this.config.locale.disabled) {
+			if (!this.translate.getDefaultLang()) {
+				console.warn('You disabled Oblique language management without providing a default language to @ngx-translate.');
+			}
 			return;
-		}
-		if (!this.translate.getDefaultLang()) {
-			console.warn('You disabled Oblique language management without providing a default language to @ngx-translate.');
 		}
 		if (!Array.isArray(this.config.locale.locales)) {
 			throw new Error('Locales needs to be an array');
@@ -237,17 +237,21 @@ export class MasterLayoutService extends Unsubscribable {
 	}
 
 	private getDefaultLang(): string {
-		const lang = this.getBrowserLang() || this.config.locale.default || this.config.locale.locales[0];
+		const firstLocale = this.config.locale.locales[0];
+		const lang = this.getSupportedLang(this.translate.getBrowserLang())
+			|| this.getSupportedLang(this.config.locale.default)
+			|| (firstLocale as LocaleObject).locale
+			|| (firstLocale as string);
 		if (!lang) {
 			throw new Error('No locale defined');
 		}
+
 		return lang;
 	}
 
-	private getBrowserLang(): string {
-		const browserLang = this.translate.getBrowserLang();
-		return (browserLang && this.config.locale.locales.indexOf(browserLang) !== -1)
-			? browserLang
+	private getSupportedLang(lang: string): string {
+		return this.config.locale.locales.indexOf(lang) > -1 || this.config.locale.locales.filter((locale: LocaleObject) => locale.locale === lang).length
+			? lang
 			: undefined;
 	}
 

@@ -22,6 +22,17 @@ interface MasterLayoutNavigation {
 	links: ORNavigationLink[];
 }
 
+interface Locale {
+	locales: (string | LocaleObject)[];
+	default: string;
+	disabled: boolean;
+}
+
+export interface LocaleObject {
+	locale: string;
+	id?: string;
+}
+
 /**
  * Configuration service for the Master Layout component.
  *
@@ -38,7 +49,7 @@ export class MasterLayoutConfig {
 	/**
 	 * Locales of the application
 	 */
-	locale = {
+	locale: Locale = {
 		locales:  ['de', 'fr', 'it'],
 		default:  'de',
 		disabled: false
