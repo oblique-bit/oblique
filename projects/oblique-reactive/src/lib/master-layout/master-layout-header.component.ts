@@ -126,7 +126,7 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 		this.masterLayout.menuCollapsedEmitter.subscribe(value => this.setFocusable(!value));
 
 		this.headerControl.forEach((elt: ElementRef) => {
-			elt.nativeElement.querySelectorAll('a').forEach(item => {
+			Array.from(elt.nativeElement.querySelectorAll('a')).forEach(item => {
 				this.renderer.addClass(item, 'nav-link');
 			});
 		});
@@ -164,7 +164,7 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 		// these elements must not be focusable during the closing animation. Otherwise, the focused element will be scrolled into view
 		// and the header will appear empty.
 		const isFocusable = window.innerWidth > 991 || isMenuCollasped;
-		this.el.nativeElement.querySelectorAll('.application-header-controls a.control-link')
+		Array.from(this.el.nativeElement.querySelectorAll('.application-header-controls a.control-link'))
 			.forEach(el => {
 				this.renderer.setAttribute(el, 'tabindex', isFocusable ? '0' : '-1');
 			});
