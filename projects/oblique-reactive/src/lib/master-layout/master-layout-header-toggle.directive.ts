@@ -18,6 +18,5 @@ export class MasterLayoutHeaderToggleDirective {
 		// browser does not try to follow any empty link (ie `href=""`):
 		$event.preventDefault();
 		this.masterLayout.menuCollapsed = !this.masterLayout.menuCollapsed;
-
 	}
 }
