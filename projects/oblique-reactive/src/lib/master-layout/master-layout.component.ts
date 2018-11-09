@@ -30,6 +30,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 		</nav>
 		<or-master-layout-header [class.offcanvas-main]="offCanvas" [navigation]="navigation">
 			<ng-content select="[orHeader]" orHeader></ng-content>
+			<ng-content select="[orLocales]" orLocales></ng-content>
 			<ng-content select="[orHeaderTitle]" orHeaderTitle></ng-content>
 			<ng-content select="[orNavigation]" orNavigation></ng-content>
 			<ng-container *ngFor="let template of headerControlTemplates">

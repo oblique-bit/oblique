@@ -40,7 +40,8 @@ export class MasterLayoutConfig {
 	 */
 	locale = {
 		locales:  ['de', 'fr', 'it'],
-		default:  'de'
+		default:  'de',
+		disabled: false
 	};
 
 	/**

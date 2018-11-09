@@ -217,6 +217,12 @@ export class MasterLayoutService extends Unsubscribable {
 	}
 
 	private manageLanguage(): void {
+		if (!this.config.locale.disabled) {
+			return;
+		}
+		if (!this.translate.getDefaultLang()) {
+			console.warn('You disabled Oblique language management without providing a default language to @ngx-translate.');
+		}
 		if (!Array.isArray(this.config.locale.locales)) {
 			throw new Error('Locales needs to be an array');
 		}

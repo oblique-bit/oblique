@@ -14,10 +14,10 @@ import {
 import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
 
+import {ScrollingConfig} from '../scrolling';
+import {Unsubscribable} from '../unsubscribe';
 import {MasterLayoutService} from './master-layout.service';
 import {MasterLayoutConfig} from './master-layout.config';
-import {Unsubscribable} from '../unsubscribe';
-import {ScrollingConfig} from '../scrolling';
 import {ORNavigationLink} from './master-layout-navigation.component';
 
 @Component({
@@ -53,7 +53,8 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 				</div>
 				<div class="application-header-controls">
 					<h2 class="sr-only">{{'i18n.oblique.controls.title' | translate}}</h2>
-					<ul class="navbar-nav navbar-controls navbar-locale" role="menu" *ngIf="locales.length > 1">
+					<ng-content select="[orLocales]" *ngIf="disabledLang"></ng-content>
+					<ul class="navbar-nav navbar-controls navbar-locale" role="menu" *ngIf="locales.length > 1 && !disabledLang">
 						<li class="nav-item" role="menuitem"
 							*ngFor="let locale of locales">
 							<a class="nav-link control-link" tabindex="0" role="button" orMasterLayoutHeaderToggle
@@ -90,6 +91,7 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 	home: string;
 	locales: string[];
 	custom: boolean;
+	disabledLang: boolean;
 	@Input() navigation: ORNavigationLink[];
 
 	@HostBinding('class.application-header-animate') animate: boolean;
@@ -108,15 +110,17 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 
 		this.home = this.config.homePageRoute;
 		this.locales = this.config.locale.locales;
+		this.disabledLang = this.config.locale.disabled;
 
 		this.animate = this.config.header.animate;
 		this.sticky = this.config.header.sticky;
-		this.custom = this.config.header.custom;
 		this.medium = this.config.header.medium;
+		this.custom = this.config.header.custom;
 
 		this.updateHeaderMedium();
 		this.updateHeaderSticky();
 		this.updateHeaderAnimate();
+		this.updateHeaderCustom();
 		this.headerTransitions();
 	}
 
@@ -172,6 +176,13 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 		this.masterLayout.stickyHeader = this.sticky;
 		this.masterLayout.headerStickyEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.sticky = value;
+		});
+	}
+
+	private updateHeaderCustom(): void {
+		this.masterLayout.customHeader = this.custom;
+		this.masterLayout.headerCustomEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+			this.custom = value;
 		});
 	}
 
