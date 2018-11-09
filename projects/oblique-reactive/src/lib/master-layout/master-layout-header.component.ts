@@ -81,6 +81,9 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 			display: flex;
 			align-items: center;
 		}
+		.navbar {
+			background-color: inherit;
+		}
 	`],
 	/* tslint:disable:use-host-property-decorator */
 	host: {class: 'application-header'}
