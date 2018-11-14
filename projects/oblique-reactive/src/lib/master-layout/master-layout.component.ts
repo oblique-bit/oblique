@@ -22,7 +22,8 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 					<a class="accessible" accesskey="1" [routerLink]="home">{{'i18n.accesskey.homepage' | translate}}</a>
 				</li>
 				<li>
-					<a class="accessible" accesskey="2" [routerLink]="url" fragment="navigation">{{'i18n.accesskey.navigation' | translate}}</a>
+					<a class="accessible" accesskey="2" [routerLink]="url" fragment="navigation" *ngIf="!noNavigation && navigation.length">
+					{{'i18n.accesskey.navigation' | translate}}</a>
 				</li>
 			</ul>
 		</nav>
