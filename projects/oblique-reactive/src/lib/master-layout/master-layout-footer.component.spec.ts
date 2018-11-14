@@ -16,6 +16,7 @@ describe('MasterLayoutFooterComponent', () => {
 	mockConfig.footer = {};
 	const mockService = jasmine.createSpyObj('MasterLayoutService', ['']);
 	mockService.footerSmallEmitter = new EventEmitter();
+	mockService.footerCustomEmitter = new EventEmitter();
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({

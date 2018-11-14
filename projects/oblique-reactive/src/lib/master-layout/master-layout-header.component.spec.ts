@@ -20,6 +20,7 @@ describe('MasterLayoutHeaderComponent', () => {
 	mockService.headerMediumEmitter = new EventEmitter();
 	mockService.headerAnimateEmitter = new EventEmitter();
 	mockService.headerStickyEmitter = new EventEmitter();
+	mockService.headerCustomEmitter = new EventEmitter();
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({

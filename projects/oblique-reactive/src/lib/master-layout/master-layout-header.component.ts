@@ -147,16 +147,16 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 
 	checkLocale(): LocaleObject[] {
 		const locales: LocaleObject[] = [];
-
 		this.config.locale.locales.forEach((loc) => {
 			const locale: LocaleObject = {
 				locale: (loc as LocaleObject).locale || (loc as string)
 			};
 			if ((loc as LocaleObject).id) {
-				locale.id = (loc as LocaleObject).id
+				locale.id = (loc as LocaleObject).id;
 			}
 			locales.push(locale);
 		});
+
 		return locales;
 	}
 
