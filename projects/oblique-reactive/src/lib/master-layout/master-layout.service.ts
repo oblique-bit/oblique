@@ -4,7 +4,7 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe';
-import {MasterLayoutConfig} from './master-layout.config';
+import {LocaleObject, MasterLayoutConfig} from './master-layout.config';
 
 @Injectable()
 export class MasterLayoutService extends Unsubscribable {
@@ -217,32 +217,42 @@ export class MasterLayoutService extends Unsubscribable {
 	}
 
 	private manageLanguage(): void {
+		if (this.config.locale.disabled) {
+			if (!this.translate.getDefaultLang()) {
+				console.warn('You disabled Oblique language management without providing a default language to @ngx-translate.');
+			}
+			return;
+		}
+		if (!Array.isArray(this.config.locale.locales)) {
+			throw new Error('Locales needs to be an array');
+		}
+		const defaultLang = this.getDefaultLang();
 		const langToken = MasterLayoutService.getLangToken();
-		const lang = this.getCurrentLocale(langToken);
-		this.translate.setDefaultLang(lang);
-		this.translate.use(lang);
+		this.translate.setDefaultLang(defaultLang);
+		this.translate.use(localStorage.getItem(MasterLayoutService.token + langToken) || defaultLang);
+
 		this.translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe((event: LangChangeEvent) => {
 			localStorage.setItem(MasterLayoutService.token + langToken, event.lang);
 		});
 	}
 
-	private getCurrentLocale(langToken: string): string {
-		let lang = localStorage.getItem(MasterLayoutService.token + langToken) || this.config.defaultLocale;
-		if (!this.config.locales.length) {
-			console.warn('No locales are defined!');
-		} else if (this.config.locales.indexOf(this.config.defaultLocale) === -1) {
-			console.warn(`The default locale ("${this.config.defaultLocale}") is not within the supported ones ` +
-				`("${this.config.locales.join('", "')}"). It will be set to "${this.config.locales[0]}"`);
-			this.config.defaultLocale = this.config.locales[0];
-		}
-		if (this.config.locales.indexOf(lang) === -1) {
-			console.warn(`The current locale ("${lang}") is not within the supported ones ` +
-				`("${this.config.locales.join('", "')}"). It will be set to "${this.config.defaultLocale}"`);
-			lang = this.config.defaultLocale;
-			localStorage.setItem(MasterLayoutService.token + langToken, lang);
+	private getDefaultLang(): string {
+		const firstLocale = this.config.locale.locales[0];
+		const lang = this.getSupportedLang(this.translate.getBrowserLang())
+			|| this.getSupportedLang(this.config.locale.default)
+			|| (firstLocale as LocaleObject).locale
+			|| (firstLocale as string);
+		if (!lang) {
+			throw new Error('No locale defined');
 		}
 
 		return lang;
+	}
+
+	private getSupportedLang(lang: string): string {
+		return this.config.locale.locales.indexOf(lang) > -1 || this.config.locale.locales.filter((locale: LocaleObject) => locale.locale === lang).length
+			? lang
+			: undefined;
 	}
 
 	private routeChange(): void {

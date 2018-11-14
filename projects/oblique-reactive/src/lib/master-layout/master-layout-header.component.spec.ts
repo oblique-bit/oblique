@@ -14,12 +14,13 @@ describe('MasterLayoutHeaderComponent', () => {
 	mockScrolling.transitions = {};
 	const mockConfig = jasmine.createSpyObj('MasterLayoutConfig', ['']);
 	mockConfig.header = {};
-	mockConfig.locales = [];
+	mockConfig.locale = {locales: []};
 	const mockService = jasmine.createSpyObj('MasterLayoutService', ['']);
 	mockService.menuCollapsedEmitter = new EventEmitter();
 	mockService.headerMediumEmitter = new EventEmitter();
 	mockService.headerAnimateEmitter = new EventEmitter();
 	mockService.headerStickyEmitter = new EventEmitter();
+	mockService.headerCustomEmitter = new EventEmitter();
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({

@@ -45,6 +45,7 @@ export class MasterLayoutFooterComponent extends Unsubscribable {
 		this.custom = this.config.footer.custom;
 
 		this.updateFooterSmall();
+		this.updateFooterCustom();
 		this.footerTransitions();
 	}
 
@@ -52,6 +53,13 @@ export class MasterLayoutFooterComponent extends Unsubscribable {
 		this.masterLayout.smallFooter = this.small;
 		this.masterLayout.footerSmallEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.small = value;
+		});
+	}
+
+	private updateFooterCustom(): void {
+		this.masterLayout.customFooter = this.custom;
+		this.masterLayout.footerCustomEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+			this.custom = value;
 		});
 	}
 
