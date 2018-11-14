@@ -1,7 +1,7 @@
 {
   "title": "ObliqueReactive",
   "name": "oblique-reactive",
-  "version": "2.1.2",
+  "version": "3.0.0-RC.1",
   "license": "All Rights Reserved",
   "organization": {
     "name": "Federal Office of Information Technology, Systems and Telecommunication FOITT",
@@ -112,7 +112,7 @@
     "karma-parallel": "^0.3.0",
     "karma-sonarqube-unit-reporter": "0.0.18",
     "ng-packagr": "^4.4.0",
-    "oblique-ui": "^2.0.2",
+    "oblique-ui": "^3.0.0-RC.1",
     "protractor": "^5.4.1",
     "ts-node": "^7.0.1",
     "tsickle": "^0.33.1",
