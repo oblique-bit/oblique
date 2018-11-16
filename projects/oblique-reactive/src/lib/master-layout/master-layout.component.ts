@@ -38,7 +38,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 				</ng-template>
 			</ng-container>
 		</or-master-layout-header>
-		<div id="content" class="application-content" role="main" [class.offcanvas-main]="offCanvas" tabindex="0">
+		<div id="content" class="application-content" role="main" [class.offcanvas-main]="offCanvas" tabindex="-1">
 			<div class="alert-compatibility default-layout">
 				<div class="callout callout-danger">
 					<span class="sr-only">Error</span>

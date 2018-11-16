@@ -24,7 +24,7 @@ export interface ORNavigationLink {
 		</button>
 		<ng-content *ngIf="!links.length"></ng-content>
 		<ul id="navigation" role="menubar" *ngIf="links.length"
-			class="nav navbar-nav navbar-primary" [class.navigation-scrollable-content]="scrollable" [class.navbar-fw]="fullWidth" tabindex="0" #container>
+			class="nav navbar-nav navbar-primary" [class.navigation-scrollable-content]="scrollable" [class.navbar-fw]="fullWidth" tabindex="-1" #container>
 			<li class="nav-item" role="presentation" orMasterLayoutNavigationItem *ngFor="let link of links">
 				<a [attr.id]="link.id" class="nav-link" role="menuitem" [routerLink]="link.url" [routerLinkActive]="activeClass"
 				   orMasterLayoutNavigationToggle *ngIf="!link.children">
