@@ -7,7 +7,7 @@
 		</a>
 	</ng-template>
 	<ng-template #orHeaderControl>
-		<a orOffCanvasToggle role="button" ngbTooltip="Toggle Off-Canvas" placement="left" (click)="offCanvasOpen = !offCanvasOpen">
+		<a orOffCanvasToggle role="button" ngbTooltip="Toggle Off-Canvas" placement="left" (click)="offCanvasOpen = !offCanvasOpen" tabindex="0">
 			<span class="control-icon fa fa-sign-in" [class.fa-rotate-180]="!offCanvasOpen"></span>
 		</a>
 	</ng-template>
@@ -36,7 +36,10 @@
 			<span>.</span>
 		</p>
 	</ng-container>
-	<ng-container orOffCanvas>
-		Hello world
+	<ng-container orOffCanvasTitle>
+		Hello world title
+	</ng-container>
+	<ng-container orOffCanvasContent>
+		Hello world content
 	</ng-container>
 </or-master-layout>
