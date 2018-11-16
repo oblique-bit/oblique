@@ -1,9 +1,10 @@
-import {Component, ContentChildren, HostBinding, Input, QueryList, TemplateRef} from '@angular/core';
+import {Component, ContentChildren, ElementRef, HostBinding, Input, QueryList, TemplateRef, ViewChild} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {filter, map, takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe';
 import {ScrollingConfig} from '../scrolling';
+import {OffCanvasService} from '../off-canvas';
 import {MasterLayoutService} from './master-layout.service';
 import {MasterLayoutConfig} from './master-layout.config';
 import {ORNavigationLink} from './master-layout-navigation.component';
@@ -76,7 +77,16 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 			</ng-container>
 		</or-master-layout-footer>
 		<div class="offcanvas-sidebar inversed" *ngIf="offCanvas">
-			<ng-content select="[orOffCanvas]"></ng-content>
+			<header class="offcanvas-header default-layout">
+				<h2><ng-content select="[orOffCanvasTitle]"></ng-content></h2>
+				<a role="button" orOffCanvasToggle tabindex="0" class="close-button" #offCanvasClose>
+					<span class="control-label fa fa-close"></span>
+					<span class="sr-only">i18n.oblique.offCanvas.close</span>
+				</a>
+			</header>
+			<div class="offcanvas-content default-layout">
+				<ng-content select="[orOffCanvasContent]"></ng-content>
+			</div>
 		</div>
 		<div class="modal-backdrop offcanvas-backdrop show" *ngIf="offCanvas"></div>
 	`,
@@ -94,10 +104,12 @@ export class MasterLayoutComponent extends Unsubscribable {
 	@HostBinding('class.offcanvas') offCanvas: boolean;
 	@ContentChildren('orHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('orFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<any>>;
+	@ViewChild('offCanvasClose') readonly offCanvasClose: ElementRef<HTMLElement>;
 
 	constructor(private readonly masterLayout: MasterLayoutService,
 				private readonly scroll: ScrollingConfig,
 				private readonly config: MasterLayoutConfig,
+				readonly offCanvasService: OffCanvasService,
 				readonly router: Router
 	) {
 		super();
@@ -127,6 +139,10 @@ export class MasterLayoutComponent extends Unsubscribable {
 
 		this.masterLayout.menuCollapsedEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.headerOpen = !value;
+		});
+
+		offCanvasService.openEmitter.pipe(takeUntil(this.unsubscribe), filter(value => value)).subscribe(() => {
+			setTimeout(() => this.offCanvasClose.nativeElement.focus(), 600);
 		});
 	}
 
