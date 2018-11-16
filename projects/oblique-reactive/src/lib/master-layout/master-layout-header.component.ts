@@ -84,6 +84,16 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 		.navbar {
 			background-color: inherit;
 		}
+		.navbar-locale .btn-link {
+			border: none;
+			border-radius: 0;
+			color: #707070;
+		}
+		.navbar-locale .btn-link:hover,
+		 .navbar-locale .btn-link.active {
+			background-color: #e5e5e5;
+			box-shadow: none;
+		}
 	`],
 	/* tslint:disable:use-host-property-decorator */
 	host: {class: 'application-header'}
