@@ -17,7 +17,7 @@ export interface ORNavigationLink {
 @Component({
 	selector: 'or-master-layout-navigation',
 	template: `
-		<h2 class="sr-only">{{'i18n.accessible.globalNavigationMenu' | translate}}</h2>
+		<h2 class="sr-only" *ngIf="links.length">{{'i18n.accessible.globalNavigationMenu' | translate}}</h2>
 		<button class="navigation-scrollable-control navigation-scrollable-control-left" type="button" (click)="scrollLeft()" *ngIf="scrollable"
 				[disabled]="!currentScroll">
 			<span class="fa fa-angle-left"></span>
