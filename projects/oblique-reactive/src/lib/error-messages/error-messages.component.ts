@@ -3,8 +3,8 @@ import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
 import {merge as observableMerge} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
-import {Unsubscribable} from '../unsubscribe';
-import {FormControlStateDirective} from '../form-control-state';
+import {Unsubscribable} from '../unsubscribe.class';
+import {FormControlStateDirective} from '../form-control-state/form-control-state.directive';
 import {ErrorMessagesService} from './error-messages.service';
 
 @Component({

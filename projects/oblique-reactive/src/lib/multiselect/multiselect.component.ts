@@ -6,9 +6,10 @@
  */
 import {Component, DoCheck, ElementRef, EventEmitter, forwardRef, HostListener, Input, IterableDiffers, OnInit, Output, ViewChild} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+
+import {FilterBoxComponent} from '../filter-box/filter-box.component';
 import {MultiselectConfig} from './multiselect.config';
 import {MultiselectTexts} from './multiselect.texts';
-import {FilterBoxComponent} from '../filter-box';
 
 // See: https://github.com/angular/angular/issues/5145
 let nextId = 0;

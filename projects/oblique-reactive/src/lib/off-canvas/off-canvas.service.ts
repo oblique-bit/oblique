@@ -3,7 +3,7 @@ import {EventEmitter, Injectable} from '@angular/core';
 /**
  * Service for controlling ObliqueUI offcanvas composite features.
  */
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class OffCanvasService {
 	openEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 

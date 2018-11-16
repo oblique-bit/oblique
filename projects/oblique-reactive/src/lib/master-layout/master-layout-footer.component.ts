@@ -1,8 +1,8 @@
 import {Component, ContentChildren, HostBinding, QueryList, TemplateRef} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 
-import {Unsubscribable} from '../unsubscribe';
-import {ScrollingConfig} from '../scrolling';
+import {Unsubscribable} from '../unsubscribe.class';
+import {ScrollingConfig} from '../scrolling/scrolling.module';
 import {MasterLayoutService} from './master-layout.service';
 import {MasterLayoutConfig} from './master-layout.config';
 

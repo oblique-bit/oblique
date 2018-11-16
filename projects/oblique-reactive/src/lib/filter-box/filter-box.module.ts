@@ -1,9 +1,12 @@
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TranslateModule} from '@ngx-translate/core';
 import {FormsModule} from '@angular/forms';
-import {FilterBoxComponent} from './filter-box.component';
+
 import {TextControlClearModule} from '../text-control-clear/text-control-clear.module';
+import {FilterBoxComponent} from './filter-box.component';
+
+export {FilterBoxComponent} from './filter-box.component';
 
 @NgModule({
 	imports: [
@@ -16,9 +19,4 @@ import {TextControlClearModule} from '../text-control-clear/text-control-clear.m
 	exports: [FilterBoxComponent]
 })
 export class FilterBoxModule {
-	static forRoot(): ModuleWithProviders {
-		return {
-			ngModule: FilterBoxModule
-		};
-	}
 }

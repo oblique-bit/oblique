@@ -1,10 +1,15 @@
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule} from '@ngx-translate/core';
+
 import {NavTreeComponent} from './nav-tree.component';
 import {NavTreeFakeFocusDirective} from './nav-tree-fake-focus.directive';
+
+export {NavTreeComponent} from './nav-tree.component';
+export {NavTreeFakeFocusDirective} from './nav-tree-fake-focus.directive';
+export {NavTreeItemModel} from './nav-tree-item.model';
 
 @NgModule({
 	imports: [
@@ -23,9 +28,4 @@ import {NavTreeFakeFocusDirective} from './nav-tree-fake-focus.directive';
 	]
 })
 export class NavTreeModule {
-	static forRoot(): ModuleWithProviders {
-		return {
-			ngModule: NavTreeModule
-		};
-	}
 }

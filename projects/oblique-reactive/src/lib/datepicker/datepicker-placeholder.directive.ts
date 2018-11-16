@@ -1,7 +1,7 @@
 import {Directive, HostBinding, OnInit, OnDestroy, Input} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
-import {Unsubscribable} from '../unsubscribe';
+import {Unsubscribable} from '../unsubscribe.class';
 
 const I18N_PLACEHOLDERS = {
 	en: 'dd.mm.yyyy',

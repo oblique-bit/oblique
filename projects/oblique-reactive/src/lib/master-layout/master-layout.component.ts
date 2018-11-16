@@ -2,9 +2,9 @@ import {Component, ContentChildren, ElementRef, HostBinding, Input, QueryList, T
 import {NavigationEnd, Router} from '@angular/router';
 import {filter, map, takeUntil} from 'rxjs/operators';
 
-import {Unsubscribable} from '../unsubscribe';
-import {ScrollingConfig} from '../scrolling';
-import {OffCanvasService} from '../off-canvas';
+import {Unsubscribable} from '../unsubscribe.class';
+import {ScrollingConfig} from '../scrolling/scrolling.module';
+import {OffCanvasService} from '../off-canvas/off-canvas.module';
 import {MasterLayoutService} from './master-layout.service';
 import {MasterLayoutConfig} from './master-layout.config';
 import {ORNavigationLink} from './master-layout-navigation.component';

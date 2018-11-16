@@ -2,7 +2,7 @@ import {UnsavedChangesService} from './unsaved-changes.service';
 import {Injectable} from '@angular/core';
 import {CanDeactivate} from '@angular/router';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class UnsavedChangesGuard implements CanDeactivate<any> {
 
 	//TODO: Currently this guard has to be added on every route where it's used

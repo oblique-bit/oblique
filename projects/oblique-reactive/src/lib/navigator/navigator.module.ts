@@ -1,6 +1,9 @@
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
+
 import {NavigatorComponent} from './navigator.component';
+
+export {NavigatorComponent} from './navigator.component';
 
 @NgModule({
 	imports: [
@@ -14,10 +17,5 @@ import {NavigatorComponent} from './navigator.component';
 	]
 })
 export class NavigatorModule {
-	static forRoot(): ModuleWithProviders {
-		return {
-			ngModule: NavigatorModule
-		};
-	}
 }
 

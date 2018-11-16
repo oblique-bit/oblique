@@ -1,7 +1,7 @@
 import {AfterViewInit, ContentChild, ContentChildren, Directive, EventEmitter, HostBinding, Output, QueryList} from '@angular/core';
 import {filter, takeUntil} from 'rxjs/operators';
 
-import {Unsubscribable} from '../unsubscribe';
+import {Unsubscribable} from '../unsubscribe.class';
 import {MasterLayoutNavigationToggleDirective} from './master-layout-navigation-toggle.directive';
 import {MasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
 import {MasterLayoutService} from './master-layout.service';

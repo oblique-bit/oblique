@@ -39,7 +39,7 @@ export interface LocaleObject {
  * You can inject this service, typically in your root component, and customize the values of its properties in
  * order to provide default values for the master layout
  */
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class MasterLayoutConfig {
 	/**
 	 * Route to the home page

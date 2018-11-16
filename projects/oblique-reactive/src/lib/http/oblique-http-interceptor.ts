@@ -2,8 +2,9 @@ import {Injectable} from '@angular/core';
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {finalize, tap} from 'rxjs/operators';
-import {NotificationConfig, NotificationService, NotificationType} from '../notification';
-import {SpinnerService} from '../spinner';
+
+import {NotificationConfig, NotificationService, NotificationType} from '../notification/notification.module';
+import {SpinnerService} from '../spinner/spinner.module';
 import {ObliqueHttpInterceptorConfig} from './oblique-http-interceptor.config';
 import Timer = NodeJS.Timer;
 
@@ -18,7 +19,7 @@ export interface ObliqueRequest {
 	spinner: boolean;
 }
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class ObliqueHttpInterceptor implements HttpInterceptor {
 	constructor(private readonly config: ObliqueHttpInterceptorConfig,
 				private readonly spinner: SpinnerService,

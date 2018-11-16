@@ -6,6 +6,8 @@ import {ColumnLayoutComponent} from './column-layout.component';
 import {ColumnToggleDirective} from './column-toggle.directive';
 import {ColumnPanelDirective} from './column-panel.directive';
 
+export {ColumnLayoutComponent} from './column-layout.component';
+
 @NgModule({
 	imports: [
 		CommonModule,
@@ -17,9 +19,7 @@ import {ColumnPanelDirective} from './column-panel.directive';
 		ColumnToggleDirective
 	],
 	exports: [
-		ColumnLayoutComponent,
-		ColumnPanelDirective,
-		ColumnToggleDirective
+		ColumnLayoutComponent
 	]
 })
 export class ColumnLayoutModule {

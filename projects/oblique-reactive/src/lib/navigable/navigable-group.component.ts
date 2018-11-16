@@ -12,7 +12,7 @@ import {
 	ViewEncapsulation
 } from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
-import {Unsubscribable} from '../unsubscribe';
+import {Unsubscribable} from '../unsubscribe.class';
 import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from './navigable.directive';
 
 /**

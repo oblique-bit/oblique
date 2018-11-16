@@ -1,26 +1,26 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 
-import {ColumnLayoutModule} from './column-layout';
-import {DatepickerModule} from './datepicker';
-import {DocumentMetaModule} from './document-meta';
-import {ErrorMessagesModule} from './error-messages';
-import {FilterBoxModule} from './filter-box';
-import {FormControlStateModule} from './form-control-state';
-import {MasterLayoutModule} from './master-layout';
-import {MultiselectModule} from './multiselect';
-import {NavigatorModule} from './navigator';
-import {NavigableModule} from './navigable';
-import {NavTreeModule} from './nav-tree';
-import {NotificationModule} from './notification';
-import {ObliqueHttpModule} from './http';
-import {SchemaValidationModule} from './schema-validation';
-import {ScrollingModule} from './scrolling';
-import {SpinnerModule} from './spinner';
-import {TextControlClearModule} from './text-control-clear';
-import {ToggleModule} from './toggle';
-import {UnsavedChangesModule} from './unsaved-changes';
-import {NumberFormatModule} from './number-format';
-import {OffCanvasModule} from './off-canvas';
+import {ColumnLayoutModule} from './column-layout/column-layout.module';
+import {DatepickerModule} from './datepicker/datepicker.module';
+import {DocumentMetaModule} from './document-meta/document-meta.module';
+import {ErrorMessagesModule} from './error-messages/error-messages.module';
+import {FilterBoxModule} from './filter-box/filter-box.module';
+import {FormControlStateModule} from './form-control-state/form-control-state.module';
+import {MasterLayoutModule} from './master-layout/master-layout.module';
+import {MultiselectModule} from './multiselect/multiselect.module';
+import {NavigatorModule} from './navigator/navigator.module';
+import {NavigableModule} from './navigable/navigable.module';
+import {NavTreeModule} from './nav-tree/nav-tree.module';
+import {NotificationModule} from './notification/notification.module';
+import {ObliqueHttpModule} from './http/oblique-http.module';
+import {SchemaValidationModule} from './schema-validation/schema-validation.module';
+import {ScrollingModule} from './scrolling/scrolling.module';
+import {SpinnerModule} from './spinner/spinner.module';
+import {TextControlClearModule} from './text-control-clear/text-control-clear.module';
+import {ToggleModule} from './toggle/toggle.module';
+import {UnsavedChangesModule} from './unsaved-changes/unsaved-changes.module';
+import {NumberFormatModule} from './number-format/number-format.module';
+import {OffCanvasModule} from './off-canvas/off-canvas.module';
 
 const OBLIQUE_MODULES = [
 	ColumnLayoutModule,
@@ -50,25 +50,25 @@ const OBLIQUE_MODULES = [
 	imports: [
 		ColumnLayoutModule,
 		DatepickerModule.forRoot(),
-		DocumentMetaModule.forRoot(),
-		ErrorMessagesModule.forRoot(),
-		FilterBoxModule.forRoot(),
-		FormControlStateModule.forRoot(),
-		MasterLayoutModule.forRoot(),
-		MultiselectModule.forRoot(),
-		NavigableModule.forRoot(),
-		NavigatorModule.forRoot(),
-		NavTreeModule.forRoot(),
-		NotificationModule.forRoot(),
-		NumberFormatModule.forRoot(),
-		ObliqueHttpModule.forRoot(),
-		OffCanvasModule.forRoot(),
-		SchemaValidationModule.forRoot(),
-		ScrollingModule.forRoot(),
-		SpinnerModule.forRoot(),
-		TextControlClearModule.forRoot(),
-		ToggleModule.forRoot(),
-		UnsavedChangesModule.forRoot()
+		DocumentMetaModule,
+		ErrorMessagesModule,
+		FilterBoxModule,
+		FormControlStateModule,
+		MasterLayoutModule,
+		MultiselectModule,
+		NavigableModule,
+		NavigatorModule,
+		NavTreeModule,
+		NotificationModule,
+		NumberFormatModule,
+		ObliqueHttpModule,
+		OffCanvasModule,
+		SchemaValidationModule,
+		ScrollingModule,
+		SpinnerModule,
+		TextControlClearModule,
+		ToggleModule,
+		UnsavedChangesModule
 	],
 	exports: OBLIQUE_MODULES
 })

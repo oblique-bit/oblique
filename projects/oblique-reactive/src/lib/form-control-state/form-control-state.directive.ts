@@ -12,7 +12,7 @@ import {FormGroupDirective, FormGroupName, NgControl, NgForm, NgModelGroup} from
 import {merge} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
-import {Unsubscribable} from '../unsubscribe';
+import {Unsubscribable} from '../unsubscribe.class';
 
 @Directive({
 	selector: '[orFormControlState]'

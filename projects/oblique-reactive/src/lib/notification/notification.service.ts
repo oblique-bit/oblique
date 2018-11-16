@@ -8,7 +8,7 @@ import {NotificationConfig} from './notification.config';
  * @see NotificationComponent
  * @see NotificationConfig
  */
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class NotificationService {
 
 	public events: EventEmitter<NotificationEvent> = new EventEmitter<NotificationEvent>();

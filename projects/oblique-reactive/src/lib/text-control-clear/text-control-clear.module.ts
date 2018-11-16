@@ -1,8 +1,11 @@
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TranslateModule} from '@ngx-translate/core';
 import {FormsModule} from '@angular/forms';
+
 import {TextControlClearDirective} from './text-control-clear.directive';
+
+export {TextControlClearDirective} from './text-control-clear.directive';
 
 @NgModule({
 	imports: [
@@ -18,9 +21,4 @@ import {TextControlClearDirective} from './text-control-clear.directive';
 	]
 })
 export class TextControlClearModule {
-	static forRoot(): ModuleWithProviders {
-		return {
-			ngModule: TextControlClearModule
-		};
-	}
 }

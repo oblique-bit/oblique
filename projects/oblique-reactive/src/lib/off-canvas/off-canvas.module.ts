@@ -1,10 +1,15 @@
-import {ModuleWithProviders, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {OffCanvasToggleDirective} from './off-canvas-toggle.directive';
 import {OffCanvasService} from './off-canvas.service';
 import {OffCanvasContainerDirective} from './off-canvas-container.directive';
 import {OffCanvasBackdropDirective} from './off-canvas-backdrop.directive';
+
+export {OffCanvasToggleDirective} from './off-canvas-toggle.directive';
+export {OffCanvasService} from './off-canvas.service';
+export {OffCanvasContainerDirective} from './off-canvas-container.directive';
+export {OffCanvasBackdropDirective} from './off-canvas-backdrop.directive';
 
 @NgModule({
 	imports: [
@@ -22,10 +27,4 @@ import {OffCanvasBackdropDirective} from './off-canvas-backdrop.directive';
 	]
 })
 export class OffCanvasModule {
-	static forRoot(): ModuleWithProviders {
-		return {
-			ngModule: OffCanvasModule,
-			providers: [OffCanvasService]
-		};
-	}
 }

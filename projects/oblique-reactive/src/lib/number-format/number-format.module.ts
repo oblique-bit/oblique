@@ -1,6 +1,9 @@
-import {ModuleWithProviders, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+
 import {NumberFormatDirective} from './number-format.directive';
+
+export {NumberFormatDirective} from './number-format.directive';
 
 @NgModule({
 	imports: [
@@ -10,9 +13,4 @@ import {NumberFormatDirective} from './number-format.directive';
 	exports: [NumberFormatDirective]
 })
 export class NumberFormatModule {
-	static forRoot(): ModuleWithProviders {
-		return {
-			ngModule: NumberFormatModule
-		};
-	}
 }

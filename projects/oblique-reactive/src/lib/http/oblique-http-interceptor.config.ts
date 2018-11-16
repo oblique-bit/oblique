@@ -1,7 +1,7 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {Observable} from 'rxjs/internal/Observable';
 import {ObliqueRequest} from './oblique-http-interceptor';
-import {NotificationConfig, NotificationType} from '../notification';
+import {NotificationConfig, NotificationType} from '../notification/notification.module';
 
 // TODO: make sure that app.module.ts provides an instance of ObliqueHttpInterceptorConfig filled with data from environment[.prod].ts
 
@@ -13,7 +13,7 @@ import {NotificationConfig, NotificationType} from '../notification';
  * You can inject this service, typically in your root component, and customize the values of its properties in
  * order to provide default values for all the Oblique HTTP interceptor, if imported as `HTTP_INTERCEPTORS` provider.
  */
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class ObliqueHttpInterceptorConfig {
 	/**
 	 * Emitted *before* the request is sent

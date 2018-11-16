@@ -3,10 +3,10 @@ import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 
-import {Unsubscribable} from '../unsubscribe';
+import {Unsubscribable} from '../unsubscribe.class';
 import {LocaleObject, MasterLayoutConfig} from './master-layout.config';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class MasterLayoutService extends Unsubscribable {
 	// Layout
 	readonly menuCollapsedEmitter: EventEmitter<boolean> = new EventEmitter();
@@ -15,7 +15,7 @@ export class MasterLayoutService extends Unsubscribable {
 	readonly noNavigationEmitter: EventEmitter<boolean> = new EventEmitter();
 	readonly offCanvasEmitter: EventEmitter<boolean> = new EventEmitter();
 
-	//Header
+	// Header
 	readonly headerCustomEmitter: EventEmitter<boolean> = new EventEmitter();
 	readonly headerMediumEmitter: EventEmitter<boolean> = new EventEmitter();
 	readonly headerAnimateEmitter: EventEmitter<boolean> = new EventEmitter();

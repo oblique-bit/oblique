@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {draft06} from './draft06.decorator';
 import {SchemaValidatorInstance} from './schema-validator.instance';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class SchemaValidationService {
 
 	@draft06

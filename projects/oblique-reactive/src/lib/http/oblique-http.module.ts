@@ -1,23 +1,11 @@
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import {NgModule} from '@angular/core';
+
 import {ObliqueHttpInterceptorConfig} from './oblique-http-interceptor.config';
 import {ObliqueHttpInterceptor} from './oblique-http-interceptor';
 
-@NgModule({
-	imports: [
-	],
-	declarations: [
-	],
-	exports: [
-	]
-})
+export {ObliqueHttpInterceptorConfig} from './oblique-http-interceptor.config';
+export {ObliqueHttpInterceptor, ObliqueRequest} from './oblique-http-interceptor';
+
+@NgModule()
 export class ObliqueHttpModule {
-	static forRoot(): ModuleWithProviders {
-		return {
-			ngModule: ObliqueHttpModule,
-			providers: [
-				ObliqueHttpInterceptor,
-				ObliqueHttpInterceptorConfig
-			]
-		};
-	}
 }

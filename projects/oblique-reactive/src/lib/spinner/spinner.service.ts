@@ -5,7 +5,7 @@ import {SpinnerEvent} from './spinner-event';
  * SpinnerService (TODO: Rethink this concept)
  *
  */
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class SpinnerService {
 
 	/**

@@ -5,7 +5,7 @@ import {NgbTabChangeEvent, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
 import {Subscriber} from 'rxjs';
 
 //TODO: Handle modals
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class UnsavedChangesService {
 	private readonly formList: { [key: string]: ControlContainer} = {};
 	private readonly listener: { [key: string]: Subscriber<NgbTabChangeEvent>} = {};

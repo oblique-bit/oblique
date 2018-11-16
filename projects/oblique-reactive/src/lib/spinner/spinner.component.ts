@@ -3,7 +3,7 @@ import {takeUntil} from 'rxjs/operators';
 import {SpinnerService} from './spinner.service';
 import {SpinnerEvent} from './spinner-event';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
-import {Unsubscribable} from '../unsubscribe';
+import {Unsubscribable} from '../unsubscribe.class';
 
 @Component({
 	selector: 'or-spinner',

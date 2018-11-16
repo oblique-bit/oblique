@@ -14,8 +14,8 @@ import {
 import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
 
-import {ScrollingConfig} from '../scrolling';
-import {Unsubscribable} from '../unsubscribe';
+import {ScrollingConfig} from '../scrolling/scrolling.module';
+import {Unsubscribable} from '../unsubscribe.class';
 import {MasterLayoutService} from './master-layout.service';
 import {LocaleObject, MasterLayoutConfig} from './master-layout.config';
 import {ORNavigationLink} from './master-layout-navigation.component';

@@ -1,9 +1,16 @@
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+
 import {SchemaValidationDirective} from './schema-validation.directive';
 import {SchemaValidateDirective} from './schema-validator';
 import {SchemaRequiredDirective} from './schema-required.directive';
 import {SchemaValidationService} from './schema-validation.service';
+
+export {SchemaValidationDirective} from './schema-validation.directive';
+export {SchemaValidateDirective} from './schema-validator';
+export {SchemaRequiredDirective} from './schema-required.directive';
+export {SchemaValidationService} from './schema-validation.service';
+export {draft06} from './draft06.decorator';
 
 @NgModule({
 	imports: [
@@ -13,10 +20,4 @@ import {SchemaValidationService} from './schema-validation.service';
 	exports: [SchemaValidateDirective, SchemaValidationDirective, SchemaRequiredDirective]
 })
 export class SchemaValidationModule {
-	static forRoot(): ModuleWithProviders {
-		return {
-			ngModule: SchemaValidationModule,
-			providers: [SchemaValidationService]
-		};
-	}
 }

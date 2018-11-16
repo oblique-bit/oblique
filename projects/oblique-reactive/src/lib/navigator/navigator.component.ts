@@ -1,7 +1,7 @@
 import {Component, HostListener} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
-import {Unsubscribable} from '../unsubscribe';
+import {Unsubscribable} from '../unsubscribe.class';
 
 @Component({
 	selector: 'or-navigator',
