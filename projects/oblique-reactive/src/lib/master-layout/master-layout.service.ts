@@ -226,11 +226,10 @@ export class MasterLayoutService extends Unsubscribable {
 		if (!Array.isArray(this.config.locale.locales)) {
 			throw new Error('Locales needs to be an array');
 		}
-		const defaultLang = this.getDefaultLang();
 		const langToken = MasterLayoutService.getLangToken();
-		this.translate.setDefaultLang(defaultLang);
-		this.translate.use(localStorage.getItem(MasterLayoutService.token + langToken) || defaultLang);
-
+		const lang = localStorage.getItem(MasterLayoutService.token + langToken) || this.getDefaultLang();
+		this.translate.setDefaultLang(lang);
+		this.translate.use(lang);
 		this.translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe((event: LangChangeEvent) => {
 			localStorage.setItem(MasterLayoutService.token + langToken, event.lang);
 		});
