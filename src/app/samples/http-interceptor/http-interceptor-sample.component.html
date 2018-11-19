@@ -26,6 +26,10 @@
 							<label ngbButtonLabel class="btn-danger">
 								<input ngbButton type="radio" (click)="request(401)"> 401 UNAUTHORIZED
 							</label>
+							<label ngbButtonLabel class="btn-info">
+								<input ngbButton type="radio" (click)="parallelRequest();"> Parallel 200
+							</label>
+							<input type="number" [(ngModel)]="parallelRequests"/>
 						</div>
 					</div>
 					<div class="form-group row">

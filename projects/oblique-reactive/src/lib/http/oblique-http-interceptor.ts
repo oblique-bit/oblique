@@ -22,10 +22,12 @@ export interface ObliqueRequest {
 
 @Injectable({providedIn: 'root'})
 export class ObliqueHttpInterceptor implements HttpInterceptor {
+	private readonly activeRequestUrls: string[] = [];
+
 	constructor(private readonly config: ObliqueHttpInterceptorConfig,
-		private readonly interceptorEvents: ObliqueHttpInterceptorEvents,
-		private readonly spinner: SpinnerService,
-		private readonly notificationService: NotificationService) {
+				private readonly interceptorEvents: ObliqueHttpInterceptorEvents,
+				private readonly spinner: SpinnerService,
+				private readonly notificationService: NotificationService) {
 	}
 
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -77,13 +79,20 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 
 	private activateSpinner(isSpinnerActive: boolean, url: string): void {
 		if (isSpinnerActive && this.isApiCall(url)) {
+			this.activeRequestUrls.push(url);
 			this.spinner.activate();
 		}
 	}
 
 	private deactivateSpinner(isSpinnerActive: boolean, url: string): void {
 		if (isSpinnerActive && this.isApiCall(url)) {
-			this.spinner.deactivate();
+			const request = this.activeRequestUrls.filter(activeRequestUrl => activeRequestUrl === url).pop();
+			if (request) {
+				this.activeRequestUrls.splice(this.activeRequestUrls.indexOf(request), 1);
+			}
+			if (!this.activeRequestUrls.length) {
+				this.spinner.deactivate();
+			}
 		}
 	}
 

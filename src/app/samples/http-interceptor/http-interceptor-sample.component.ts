@@ -1,8 +1,11 @@
 import {Component} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {NotificationService, NotificationType, ObliqueRequest, ObliqueHttpInterceptorEvents} from 'oblique-reactive';
-import {first} from 'rxjs/operators';
+import {NotificationService, NotificationType, ObliqueHttpInterceptorEvents, ObliqueRequest} from 'oblique-reactive';
+import {delay, first, mergeMap, tap} from 'rxjs/operators';
+import {from, Observable} from 'rxjs';
 import {HttpMockErrorInterceptor} from './http-mock-error.interceptor';
+
+let requestId = 0;
 
 @Component({
 	selector: 'oblique-http-interceptor-sample',
@@ -22,10 +25,11 @@ export class HttpInterceptorSampleComponent {
 	};
 	spinner = true;
 	variants = NotificationType.VALUES;
+	parallelRequests = 5;
 
 	constructor(private readonly notificationService: NotificationService,
-		private readonly http: HttpClient,
-		private readonly interceptorEvents: ObliqueHttpInterceptorEvents) {
+				private readonly http: HttpClient,
+				private readonly interceptorEvents: ObliqueHttpInterceptorEvents) {
 
 		this.interceptorEvents.sessionExpired.subscribe(() => {
 			this.notificationService.warning('The session has expired');
@@ -33,24 +37,40 @@ export class HttpInterceptorSampleComponent {
 	}
 
 	request(code: number): void {
-		const url = HttpInterceptorSampleComponent.getUrl(code);
-		this.log(`GET ${url}, expecting: ${code} ${HttpMockErrorInterceptor.getStatusText(code)}...`);
 		this.configInterceptor();
-		this.sendRequest(url);
+
+		this.createSampleRequest(code).subscribe();
 	}
 
-	// Debug:
+	parallelRequest() {
+		this.configInterceptor();
+		const arrayOfObservables: Array<Observable<any>> = [];
+		for (let index = 0; index < this.parallelRequests; index++) {
+			arrayOfObservables.push(this.createSampleRequest(200));
+		}
+
+		const mergedObservable = from(arrayOfObservables).pipe(
+			mergeMap(save => save)
+		);
+
+		mergedObservable.subscribe();
+	}
+
 	log(message: string) {
-		this.logs.unshift(`${this.logs.length} - ${message}`);
+		this.logs.unshift(message);
 	}
 
 	private static getUrl(code: number): string {
-		switch (code) {
-			case 200:
-				return HttpInterceptorSampleComponent.API_URL + '/users';
-			default:
-				return HttpInterceptorSampleComponent.API_URL + '/' + code;
+		if (code === 200) {
+			return HttpInterceptorSampleComponent.API_URL + '/users';
 		}
+		return HttpInterceptorSampleComponent.API_URL + '/' + code;
+	}
+
+	private createSampleRequest(code: number): Observable<any> {
+		const url = HttpInterceptorSampleComponent.getUrl(code);
+		this.log(`${++requestId} - GET ${url}, expecting: ${code} ${HttpMockErrorInterceptor.getStatusText(code)}...`);
+		return this.createRequest(url, requestId);
 	}
 
 	private configInterceptor(): void {
@@ -65,20 +85,24 @@ export class HttpInterceptorSampleComponent {
 		});
 	}
 
-	private sendRequest(url: string): void {
+	private createRequest(url: string, currentId: number): Observable<any> {
 		const started = Date.now();
-		this.http.get(url).subscribe(
-			() => {
-				const elapsed = Date.now() - started;
-				this.log(`Received: 200 OK in ${elapsed} ms.`);
-			},
-			(error: HttpErrorResponse) => {
-				const elapsed = Date.now() - started;
-				this.log(`Received: ${error.status} ${error.statusText} in ${elapsed} ms.`);
-				if (!this.notification.active) {
-					this.notificationService.info('Oblique error handling is disabled. The component itself is responsible for error handling.');
+		const d = Math.ceil(Math.random() * 1000);
+		return this.http.get(url).pipe(
+			delay(d),
+			tap(
+				() => {
+					const elapsed = Date.now() - started;
+					this.log(`${currentId} - Received 200 OK in ${elapsed} ms with ${d} ms delay.`);
+				},
+				(error: HttpErrorResponse) => {
+					const elapsed = Date.now() - started;
+					this.log(`${currentId} - Received ${error.status} ${error.statusText} in ${elapsed} ms with ${d} ms delay.`);
+					if (!this.notification.active) {
+						this.notificationService.info('Oblique error handling is disabled. The component itself is responsible for error handling.');
+					}
 				}
-			}
+			)
 		);
 	}
 }
