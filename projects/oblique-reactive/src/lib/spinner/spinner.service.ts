@@ -1,5 +1,6 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {SpinnerEvent} from './spinner-event';
+import {Subject} from 'rxjs';
 
 /**
  * SpinnerService (TODO: Rethink this concept)
@@ -13,7 +14,7 @@ export class SpinnerService {
 	 */
 	public static CHANNEL = 'default';
 
-	public events: EventEmitter<SpinnerEvent> = new EventEmitter<SpinnerEvent>();
+	public events: Subject<SpinnerEvent> = new Subject<SpinnerEvent>();
 
 	public activate(channel: string = SpinnerService.CHANNEL) {
 		this.broadcast({
@@ -30,6 +31,6 @@ export class SpinnerService {
 	}
 
 	private broadcast(event: SpinnerEvent) {
-		this.events.emit(event);
+		this.events.next(event);
 	}
 }

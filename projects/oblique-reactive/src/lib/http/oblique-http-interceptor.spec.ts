@@ -87,14 +87,14 @@ describe(`ObliqueHttpInterceptor`, () => {
 	});
 
 	it('should emit a requestIntercepted event', () => {
-		spyOn(config.requested, 'emit');
+		spyOn(config.requested, 'next');
 		getUsers();
-		expect(config.requested.emit).toHaveBeenCalled();
+		expect(config.requested.next).toHaveBeenCalled();
 	});
 
 	it('should emit a sessionExpired event in case of 401', () => {
-		spyOn(config.expired, 'emit');
-		getError(401, () => expect(config.expired.emit).toHaveBeenCalled());
+		spyOn(config.expired, 'next');
+		getError(401, () => expect(config.expired.next).toHaveBeenCalled());
 	});
 
 	xit('should activate spinner with spinner enabled', () => {

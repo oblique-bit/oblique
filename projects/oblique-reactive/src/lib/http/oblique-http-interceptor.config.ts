@@ -1,5 +1,5 @@
-import {EventEmitter, Injectable} from '@angular/core';
-import {Observable} from 'rxjs/internal/Observable';
+import {Injectable} from '@angular/core';
+import {Observable, Subject} from 'rxjs';
 import {ObliqueRequest} from './oblique-http-interceptor';
 import {NotificationConfig, NotificationType} from '../notification/notification.module';
 
@@ -18,7 +18,7 @@ export class ObliqueHttpInterceptorConfig {
 	/**
 	 * Emitted *before* the request is sent
 	 */
-	requested = new EventEmitter<ObliqueRequest>();
+	requested = new Subject<ObliqueRequest>();
 	/**
 	 * This will be feed with `requested` events
 	 */
@@ -27,7 +27,7 @@ export class ObliqueHttpInterceptorConfig {
 	/**
 	 * Emitted on reception of 401 response
 	 */
-	expired = new EventEmitter<void>();
+	expired = new Subject<void>();
 	/**
 	 * This will be feed with `expired`events
 	 */

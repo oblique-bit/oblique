@@ -39,7 +39,7 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 				error => {
 					if (error instanceof HttpErrorResponse) {
 						if (error.status === 401) {
-							this.config.expired.emit();
+							this.config.expired.next();
 						} else {
 							this.notify(obliqueRequest.notification, error);
 						}
@@ -68,7 +68,7 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 			notification: this.config.api.notification,
 			spinner: this.config.api.spinner
 		};
-		this.config.requested.emit(evt);
+		this.config.requested.next(evt);
 
 		return evt;
 	}

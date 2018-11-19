@@ -1,11 +1,12 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
+import {Subject} from 'rxjs';
 
 /**
  * Service for controlling ObliqueUI offcanvas composite features.
  */
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class OffCanvasService {
-	openEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
+	openEmitter: Subject<boolean> = new Subject();
 
 	get open(): boolean {
 		return this.isOpen;

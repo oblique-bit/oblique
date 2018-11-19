@@ -17,7 +17,7 @@ export class ScrollDetectionDirective {
 		const scrollTop = window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
 		if (this.isScrolling !== scrollTop > 0) {
 			this.isScrolling = scrollTop > 0;
-			this.config.onScroll.emit(this.isScrolling);
+			this.config.onScroll.next(this.isScrolling);
 		}
 	}
 }

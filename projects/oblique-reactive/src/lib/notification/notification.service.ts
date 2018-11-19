@@ -1,6 +1,7 @@
-import {Injectable, EventEmitter} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Notification, NotificationEvent, KeyWithParams, NotificationType} from './notification.interfaces';
 import {NotificationConfig} from './notification.config';
+import {Subject} from 'rxjs';
 
 /**
  * Service for the `NotificationComponent`. Can be configured using `NotificationConfig`.
@@ -11,7 +12,7 @@ import {NotificationConfig} from './notification.config';
 @Injectable({providedIn: 'root'})
 export class NotificationService {
 
-	public events: EventEmitter<NotificationEvent> = new EventEmitter<NotificationEvent>();
+	public events: Subject<NotificationEvent> = new Subject<NotificationEvent>();
 
 	private currentId = 0;
 
@@ -27,7 +28,7 @@ export class NotificationService {
 			this.currentId++;
 		}
 
-		this.events.emit({
+		this.events.next({
 			channel,
 			notification
 		});
@@ -93,7 +94,7 @@ export class NotificationService {
 	 * Broadcasts an event to clear all notifications from specified `channel`.
 	 */
 	public clear(channel = this.config.channel) {
-		this.events.emit({
+		this.events.next({
 			channel
 		});
 	}
@@ -102,6 +103,6 @@ export class NotificationService {
 	 * Broadcasts an event to clear all notifications from any available.
 	 */
 	public clearAll() {
-		this.events.emit(null);
+		this.events.next(null);
 	}
 }

@@ -1,35 +1,36 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe.class';
 import {LocaleObject, MasterLayoutConfig} from './master-layout.config';
+import {Subject} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class MasterLayoutService extends Unsubscribable {
 	// Layout
-	readonly menuCollapsedEmitter: EventEmitter<boolean> = new EventEmitter();
-	readonly applicationFixedEmitter: EventEmitter<boolean> = new EventEmitter();
-	readonly coverLayoutEmitter: EventEmitter<boolean> = new EventEmitter();
-	readonly noNavigationEmitter: EventEmitter<boolean> = new EventEmitter();
-	readonly offCanvasEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly menuCollapsedEmitter: Subject<boolean> = new Subject<boolean>();
+	readonly applicationFixedEmitter: Subject<boolean> = new Subject<boolean>();
+	readonly coverLayoutEmitter: Subject<boolean> = new Subject<boolean>();
+	readonly noNavigationEmitter: Subject<boolean> = new Subject<boolean>();
+	readonly offCanvasEmitter: Subject<boolean> = new Subject<boolean>();
 
 	// Header
-	readonly headerCustomEmitter: EventEmitter<boolean> = new EventEmitter();
-	readonly headerMediumEmitter: EventEmitter<boolean> = new EventEmitter();
-	readonly headerAnimateEmitter: EventEmitter<boolean> = new EventEmitter();
-	readonly headerStickyEmitter: EventEmitter<boolean> = new EventEmitter();
-	readonly headerScrollTransitionEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly headerCustomEmitter: Subject<boolean> = new Subject<boolean>();
+	readonly headerMediumEmitter: Subject<boolean> = new Subject<boolean>();
+	readonly headerAnimateEmitter: Subject<boolean> = new Subject<boolean>();
+	readonly headerStickyEmitter: Subject<boolean> = new Subject<boolean>();
+	readonly headerScrollTransitionEmitter: Subject<boolean> = new Subject<boolean>();
 
 	// Navigation
-	readonly navigationFullWidthEmitter: EventEmitter<boolean> = new EventEmitter();
-	readonly navigationScrollableEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly navigationFullWidthEmitter: Subject<boolean> = new Subject<boolean>();
+	readonly navigationScrollableEmitter: Subject<boolean> = new Subject<boolean>();
 
 	// Footer
-	readonly footerCustomEmitter: EventEmitter<boolean> = new EventEmitter();
-	readonly footerSmallEmitter: EventEmitter<boolean> = new EventEmitter();
-	readonly footerScrollTransitionEmitter: EventEmitter<boolean> = new EventEmitter();
+	readonly footerCustomEmitter: Subject<boolean> = new Subject<boolean>();
+	readonly footerSmallEmitter: Subject<boolean> = new Subject<boolean>();
+	readonly footerScrollTransitionEmitter: Subject<boolean> = new Subject<boolean>();
 
 	// Layout
 	get menuCollapsed(): boolean {
@@ -38,7 +39,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set menuCollapsed(value: boolean) {
 		this.isMenuCollapsed = value;
-		this.menuCollapsedEmitter.emit(value);
+		this.menuCollapsedEmitter.next(value);
 	}
 
 	get applicationFixed(): boolean {
@@ -47,7 +48,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set applicationFixed(value: boolean) {
 		this.isApplicationFixed = value;
-		this.applicationFixedEmitter.emit(value);
+		this.applicationFixedEmitter.next(value);
 	}
 
 	get coverLayout(): boolean {
@@ -56,7 +57,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set coverLayout(value: boolean) {
 		this.hasCoverLayout = value;
-		this.coverLayoutEmitter.emit(value);
+		this.coverLayoutEmitter.next(value);
 	}
 
 	get noNavigation(): boolean {
@@ -65,7 +66,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set noNavigation(value: boolean) {
 		this.hasNavigation = value;
-		this.noNavigationEmitter.emit(value);
+		this.noNavigationEmitter.next(value);
 	}
 
 	get offCanvas(): boolean {
@@ -74,7 +75,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set offCanvas(value: boolean) {
 		this.hasOffCanvas = value;
-		this.offCanvasEmitter.emit(value);
+		this.offCanvasEmitter.next(value);
 	}
 
 	// Header
@@ -84,7 +85,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set customHeader(value: boolean) {
 		this.isHeaderCustom = value;
-		this.headerCustomEmitter.emit(value);
+		this.headerCustomEmitter.next(value);
 	}
 
 	get mediumHeader(): boolean {
@@ -93,7 +94,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set mediumHeader(value: boolean) {
 		this.isHeaderMedium = value;
-		this.headerMediumEmitter.emit(value);
+		this.headerMediumEmitter.next(value);
 	}
 
 	get animateHeader(): boolean {
@@ -102,7 +103,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set animateHeader(value: boolean) {
 		this.isHeaderAnimated = value;
-		this.headerAnimateEmitter.emit(value);
+		this.headerAnimateEmitter.next(value);
 	}
 
 	get stickyHeader(): boolean {
@@ -111,7 +112,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set stickyHeader(value: boolean) {
 		this.isHeaderSticky = value;
-		this.headerStickyEmitter.emit(value);
+		this.headerStickyEmitter.next(value);
 	}
 
 	get scrollTransitionHeader(): boolean {
@@ -120,7 +121,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set scrollTransitionHeader(value: boolean) {
 		this.hasHeaderScrollTransition = value;
-		this.headerScrollTransitionEmitter.emit(value);
+		this.headerScrollTransitionEmitter.next(value);
 	}
 
 
@@ -131,7 +132,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set navigationFullWidth(value: boolean) {
 		this.isNavigationFullWidth = value;
-		this.navigationFullWidthEmitter.emit(value);
+		this.navigationFullWidthEmitter.next(value);
 	}
 
 	get navigationScrollable(): boolean {
@@ -140,7 +141,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set navigationScrollable(value: boolean) {
 		this.isNavigationScrollable = value;
-		this.navigationScrollableEmitter.emit(value);
+		this.navigationScrollableEmitter.next(value);
 	}
 
 	// Footer
@@ -150,7 +151,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set customFooter(value: boolean) {
 		this.isFooterCustom = value;
-		this.footerCustomEmitter.emit(value);
+		this.footerCustomEmitter.next(value);
 	}
 
 	get smallFooter(): boolean {
@@ -159,7 +160,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set smallFooter(value: boolean) {
 		this.isFooterSmall = value;
-		this.footerSmallEmitter.emit(value);
+		this.footerSmallEmitter.next(value);
 	}
 
 	get scrollTransitionFooter(): boolean {
@@ -168,7 +169,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set scrollTransitionFooter(value: boolean) {
 		this.hasFooterScrollTransition = value;
-		this.footerScrollTransitionEmitter.emit(value);
+		this.footerScrollTransitionEmitter.next(value);
 	}
 
 	private static readonly token = 'oblique_lang';

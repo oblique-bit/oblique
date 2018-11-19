@@ -1,4 +1,5 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
+import {Subject} from 'rxjs';
 
 /**
  * Configuration service for the Scroll Detection directive.
@@ -8,6 +9,6 @@ import {EventEmitter, Injectable} from '@angular/core';
  */
 @Injectable({providedIn: 'root'})
 export class ScrollingConfig {
-	onScroll: EventEmitter<boolean> = new EventEmitter<boolean>();
+	onScroll: Subject<boolean> = new Subject<boolean>();
 	scrollDuration = 200;
 }
