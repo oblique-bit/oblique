@@ -67,6 +67,8 @@ export class NavTreeComponent extends Unsubscribable {
 		LABEL_FORMATTER: defaultLabelFormatterFactory
 	};
 
+	static regexp = /[.*+?^@${}()|[\]\\]/g;
+
 	activeFragment: string; // TODO: remove when https://github.com/angular/angular/issues/13205
 
 	@Input()
@@ -101,10 +103,11 @@ export class NavTreeComponent extends Unsubscribable {
 	}
 
 	@Input()
-	patternMatcher(item: NavTreeItemModel, pattern: string): boolean {
+	patternMatcher(item: NavTreeItemModel, pattern = ''): boolean {
+		pattern = pattern.replace(NavTreeComponent.regexp, '\\$&');
 		const match = new RegExp(pattern, 'gi').test(item.label);
 		const childMatch = (item.items || []).some((subItem) => {
-			const subMatch = this.patternMatcher(subItem, pattern);
+			const subMatch = this.patternMatcher(subItem, pattern.replace(/\\/g, ''));
 			if (subMatch) {
 				// Ensure parent item is not collapsed:
 				item.collapsed = false;
@@ -155,11 +158,10 @@ export class NavTreeComponent extends Unsubscribable {
 export function defaultLabelFormatterFactory() {
 	// noinspection UnnecessaryLocalVariableJS because this will result in a build error
 	const formatter = (item: NavTreeItemModel, filterPattern: string) => {
+		filterPattern = (filterPattern || '').replace(NavTreeComponent.regexp, '\\$&');
 		return !filterPattern ? item.label : item.label.replace(
 			new RegExp(filterPattern, 'ig'),
-			(text) => {
-				return `<span class="${NavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`;
-			}
+			(text) => `<span class="${NavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`
 		);
 	};
 
