@@ -3,7 +3,8 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, EventEmitter} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 
-import {MasterLayoutConfig, MasterLayoutHeaderComponent, MasterLayoutService, ScrollingConfig} from 'oblique-reactive';
+import {MasterLayoutConfig, MasterLayoutService, ScrollingConfig} from 'oblique-reactive';
+import {MasterLayoutHeaderComponent} from './master-layout-header.component';
 import {MockTranslatePipe} from 'tests';
 
 describe('MasterLayoutHeaderComponent', () => {

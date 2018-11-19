@@ -4,7 +4,8 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {of} from 'rxjs';
 
-import {MasterLayoutConfig, MasterLayoutNavigationComponent, MasterLayoutService} from 'oblique-reactive';
+import {MasterLayoutConfig, MasterLayoutService} from 'oblique-reactive';
+import {MasterLayoutNavigationComponent} from './master-layout-navigation.component';
 import {MockTranslatePipe} from 'tests';
 
 describe('MasterLayoutNavigationComponent', () => {

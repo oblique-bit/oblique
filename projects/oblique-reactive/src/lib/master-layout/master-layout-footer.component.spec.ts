@@ -2,7 +2,8 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {EventEmitter} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 
-import {MasterLayoutConfig, MasterLayoutFooterComponent, MasterLayoutService, ScrollingConfig} from 'oblique-reactive';
+import {MasterLayoutConfig, MasterLayoutService, ScrollingConfig} from 'oblique-reactive';
+import {MasterLayoutFooterComponent} from './master-layout-footer.component';
 import {MockTranslatePipe} from 'tests';
 
 describe('MasterLayoutFooterComponent', () => {

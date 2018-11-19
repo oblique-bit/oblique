@@ -63,7 +63,7 @@ describe(`ObliqueHttpInterceptor`, () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [HttpClientTestingModule, ObliqueHttpModule.forRoot()],
+			imports: [HttpClientTestingModule, ObliqueHttpModule],
 			providers: [
 				DataService,
 				ObliqueHttpInterceptorConfig,
