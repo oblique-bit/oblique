@@ -112,7 +112,7 @@
     "karma-parallel": "^0.3.0",
     "karma-sonarqube-unit-reporter": "0.0.18",
     "ng-packagr": "^4.4.0",
-    "oblique-ui": "^3.0.0-RC.1",
+    "oblique-ui": "^3.0.0-RC.2",
     "protractor": "^5.4.1",
     "ts-node": "^7.0.1",
     "tsickle": "^0.34.0",
