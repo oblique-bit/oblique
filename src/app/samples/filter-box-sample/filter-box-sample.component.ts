@@ -4,7 +4,8 @@ import {Component, Pipe, PipeTransform} from '@angular/core';
 	name: 'patternFilter'
 })
 export class PatternFilterPipe implements PipeTransform {
-	transform(items: Array<any>, pattern: string): Array<any> {
+	transform(items: Array<any>, pattern = ''): Array<any> {
+		pattern = pattern.replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
 		return items.filter(item => new RegExp(pattern, 'gi').test(item));
 	}
 }
