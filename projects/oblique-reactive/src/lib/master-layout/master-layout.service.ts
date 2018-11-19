@@ -227,7 +227,7 @@ export class MasterLayoutService extends Unsubscribable {
 			throw new Error('Locales needs to be an array');
 		}
 		const langToken = MasterLayoutService.getLangToken();
-		const lang = localStorage.getItem(MasterLayoutService.token + langToken) || this.getDefaultLang();
+		const lang = this.getCurrentLang(langToken);
 		this.translate.setDefaultLang(lang);
 		this.translate.use(lang);
 		this.translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe((event: LangChangeEvent) => {
@@ -235,9 +235,10 @@ export class MasterLayoutService extends Unsubscribable {
 		});
 	}
 
-	private getDefaultLang(): string {
+	private getCurrentLang(langToken: string): string {
 		const firstLocale = this.config.locale.locales[0];
-		const lang = this.getSupportedLang(this.translate.getBrowserLang())
+		const lang = this.getSupportedLang(localStorage.getItem(MasterLayoutService.token + langToken))
+			|| this.getSupportedLang(this.translate.getBrowserLang())
 			|| this.getSupportedLang(this.config.locale.default)
 			|| (firstLocale as LocaleObject).locale
 			|| (firstLocale as string);
