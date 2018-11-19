@@ -1,8 +1,9 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, RouterLinkActive} from '@angular/router';
+import {takeUntil} from 'rxjs/operators';
+
 import {Unsubscribable} from '../unsubscribe.class';
 import {NavTreeItemModel} from './nav-tree-item.model';
-import {takeUntil} from 'rxjs/operators';
 
 @Component({
 	selector: 'or-nav-tree',
@@ -67,8 +68,6 @@ export class NavTreeComponent extends Unsubscribable {
 		LABEL_FORMATTER: defaultLabelFormatterFactory
 	};
 
-	static regexp = /[.*+?^@${}()|[\]\\]/g;
-
 	activeFragment: string; // TODO: remove when https://github.com/angular/angular/issues/13205
 
 	@Input()
@@ -104,7 +103,7 @@ export class NavTreeComponent extends Unsubscribable {
 
 	@Input()
 	patternMatcher(item: NavTreeItemModel, pattern = ''): boolean {
-		pattern = pattern.replace(NavTreeComponent.regexp, '\\$&');
+		pattern = pattern.replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
 		const match = new RegExp(pattern, 'gi').test(item.label);
 		const childMatch = (item.items || []).some((subItem) => {
 			const subMatch = this.patternMatcher(subItem, pattern.replace(/\\/g, ''));
@@ -158,7 +157,7 @@ export class NavTreeComponent extends Unsubscribable {
 export function defaultLabelFormatterFactory() {
 	// noinspection UnnecessaryLocalVariableJS because this will result in a build error
 	const formatter = (item: NavTreeItemModel, filterPattern: string) => {
-		filterPattern = (filterPattern || '').replace(NavTreeComponent.regexp, '\\$&');
+		filterPattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
 		return !filterPattern ? item.label : item.label.replace(
 			new RegExp(filterPattern, 'ig'),
 			(text) => `<span class="${NavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`
