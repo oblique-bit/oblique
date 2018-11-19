@@ -1,8 +1,27 @@
 ### ObliqueReactive
+#### [3.0.0-RC.2](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/compare/3.0.0-RC.1...3.0.0-RC.2) (2018-11-19)
+
+##### Bug Fixes
+* **master-layout:** ensure user chosen language is supported ([0e0cbd4](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/0e0cbd4))
+* **master-layout:** apply `control-link` and `nav-link` on same element ([b52f551](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/b52f551))
+* **master-layout:** can dynamically update custom footer ([359c8ff](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/359c8ff))
+* **master-layout:** close main navigation when sub-navigation is active on mobile mode ([11cac0e](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/11cac0e))
+* **master-layout:** do not highlight `#content` and `#navigation` when focused ([2aa4540](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/2aa4540))
+* **master-layout:** improve aspect of language selection buttons ([1df4f59](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/1df4f59))
+* **master-layout:** remove navigation jump link when there is no navigation ([0d6ea68](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/0d6ea68))
+* **master-layout:** remove navigation title when there is no navigation ([2372d92](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/2372d92))
+* **master-layout:** use same language for both the default and current language ([1710405](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/1710405))
+* **nav-tree:** filtering treats regex terminals as string instead of throwing an error ([e415570](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/e415570))
+
+##### Features
+* **master-layout:** remove `[orOffCanvas]` content projection from `MasterLayoutComponent` ([a50e91e](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/a50e91e))
+
+##### BREAKING CHANGES
+* **master-layout:** the content of the main off-canvas cannot be projected with `[orOffCanvas]` anymore. Use `[orOffCanvasTitle]` and `[orOffCanvasContent]` instead.
+
 
 <a name="3.0.0-RC.1"></a>
 #### [3.0.0-RC.1](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/compare/2.1.2...3.0.0-RC.1) (2018-11-14)
-
 
 ##### Bug Fixes
 * **master-layout:** `.navbar` inherits `background-color` from parent ([19d7a02](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/19d7a02))
