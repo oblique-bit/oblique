@@ -84,7 +84,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 					<span class="sr-only">i18n.oblique.offCanvas.close</span>
 				</a>
 			</header>
-			<div class="offcanvas-content default-layout">
+			<div class="offcanvas-content">
 				<ng-content select="[orOffCanvasContent]"></ng-content>
 			</div>
 		</div>
