@@ -44,7 +44,13 @@ export {
 	OffCanvasBackdropDirective, OffCanvasContainerDirective, OffCanvasModule, OffCanvasService, OffCanvasToggleDirective
 }from './lib/off-canvas/off-canvas.module';
 export {
-	draft06, SchemaRequiredDirective, SchemaValidateDirective, SchemaValidationDirective, SchemaValidationModule, SchemaValidationService
+	draft06,
+	SchemaRequiredDirective,
+	SchemaValidateDirective,
+	SchemaValidationDirective,
+	SchemaValidationModule,
+	SchemaValidationService,
+	SchemaValidatorInstance
 }from './lib/schema-validation/schema-validation.module';
 export {ScrollDetectionDirective, ScrollingConfig, ScrollingModule, TopControlComponent} from './lib/scrolling/scrolling.module';
 export {SpinnerEvent, SpinnerComponent, SpinnerModule, SpinnerService} from './lib/spinner/spinner.module';
