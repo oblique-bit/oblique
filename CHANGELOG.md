@@ -1,4 +1,11 @@
 ### ObliqueReactive
+#### [3.0.0-RC.3](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/compare/3.0.0-RC.2...3.0.0-RC.3) (2018-11-20)
+
+##### Bug Fixes
+* **master-layout:** export missing  `SchemaValidatorInstance` ([f232780](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/f232780))
+* **off-canvas:** do not set `default-layout` on off-canvas content ([7d90998](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/7d90998))
+
+
 #### [3.0.0-RC.2](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/compare/3.0.0-RC.1...3.0.0-RC.2) (2018-11-19)
 
 ##### Bug Fixes
