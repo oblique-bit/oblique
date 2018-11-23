@@ -1,3 +1,9 @@
+# [3.0.0-RC.4](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/compare/3.0.0-RC.3...3.0.0-RC.4) (2018-11-23)
+
+## Dependencies updates
+* **Angular:** 7.1.0
+
+
 # [3.0.0-RC.3](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/compare/3.0.0-RC.2...3.0.0-RC.3) (2018-11-20)
 
 ## Bug Fixes
