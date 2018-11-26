@@ -87,7 +87,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 		.navbar-locale .btn-link {
 			border: none;
 			border-radius: 0;
-			color: #707070;
+			color: #171717;
 		}
 		.navbar-locale .btn-link:hover,
 		 .navbar-locale .btn-link.active {
