@@ -84,6 +84,9 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 		.navbar {
 			background-color: inherit;
 		}
+		.navbar-locale {
+			margin-right: 1rem;
+		}
 		.navbar-locale .btn-link {
 			border: none;
 			border-radius: 0;
