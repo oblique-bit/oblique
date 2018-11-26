@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Notification, NotificationEvent, KeyWithParams, NotificationType} from './notification.interfaces';
 import {NotificationConfig} from './notification.config';
-import {Subject} from 'rxjs';
+import {Subject, Observable} from 'rxjs';
 
 /**
  * Service for the `NotificationComponent`. Can be configured using `NotificationConfig`.
@@ -12,8 +12,12 @@ import {Subject} from 'rxjs';
 @Injectable({providedIn: 'root'})
 export class NotificationService {
 
-	public events: Subject<NotificationEvent> = new Subject<NotificationEvent>();
+	public get events(): Observable<NotificationEvent> {
+		return this.events$;
+	}
 
+	private readonly eventSubject: Subject<NotificationEvent> = new Subject<NotificationEvent>();
+	private readonly events$ = this.eventSubject.asObservable();
 	private currentId = 0;
 
 	constructor(public config: NotificationConfig) {
@@ -28,7 +32,7 @@ export class NotificationService {
 			this.currentId++;
 		}
 
-		this.events.next({
+		this.eventSubject.next({
 			channel,
 			notification
 		});
@@ -94,7 +98,7 @@ export class NotificationService {
 	 * Broadcasts an event to clear all notifications from specified `channel`.
 	 */
 	public clear(channel = this.config.channel) {
-		this.events.next({
+		this.eventSubject.next({
 			channel
 		});
 	}
@@ -103,6 +107,6 @@ export class NotificationService {
 	 * Broadcasts an event to clear all notifications from any available.
 	 */
 	public clearAll() {
-		this.events.next(null);
+		this.eventSubject.next(null);
 	}
 }

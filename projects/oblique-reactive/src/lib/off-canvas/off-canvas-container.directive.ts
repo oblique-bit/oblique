@@ -13,7 +13,7 @@ export class OffCanvasContainerDirective extends Unsubscribable {
 	constructor(offCanvas: OffCanvasService) {
 		super();
 
-		offCanvas.openEmitter
+		offCanvas.opened
 			.pipe(takeUntil(this.unsubscribe))
 			.subscribe((value) => {
 				this.open = value;

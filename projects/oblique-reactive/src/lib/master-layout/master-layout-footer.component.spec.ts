@@ -2,8 +2,9 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {EventEmitter} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
+import {Subject} from 'rxjs';
 
-import {MasterLayoutConfig, MasterLayoutService, ScrollingConfig} from 'oblique-reactive';
+import {MasterLayoutConfig, MasterLayoutService} from 'oblique-reactive';
 import {MasterLayoutFooterComponent} from './master-layout-footer.component';
 import {MockTranslatePipe} from 'tests';
 
@@ -13,12 +14,11 @@ describe('MasterLayoutFooterComponent', () => {
 
 	const mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use', 'getDefaultLang']);
 	mockTranslateService.onLangChange = new EventEmitter();
-	const mockScrolling = jasmine.createSpyObj('ScrollingConfig', ['']);
 	const mockConfig = jasmine.createSpyObj('MasterLayoutConfig', ['']);
 	mockConfig.footer = {};
 	const mockService = jasmine.createSpyObj('MasterLayoutService', ['']);
-	mockService.footerSmallEmitter = new EventEmitter();
-	mockService.footerCustomEmitter = new EventEmitter();
+	mockService.footerSmallChanged = new Subject<boolean>();
+	mockService.footerCustomChanged = new Subject<boolean>();
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
@@ -27,7 +27,6 @@ describe('MasterLayoutFooterComponent', () => {
 			providers: [
 				{provide: MasterLayoutService, useValue: mockService},
 				{provide: TranslateService, useValue: mockTranslateService},
-				{provide: ScrollingConfig, useValue: mockScrolling},
 				{provide: MasterLayoutConfig, useValue: mockConfig}
 			]
 		})

@@ -6,6 +6,7 @@ import {finalize, tap} from 'rxjs/operators';
 import {NotificationConfig, NotificationService, NotificationType} from '../notification/notification.module';
 import {SpinnerService} from '../spinner/spinner.module';
 import {ObliqueHttpInterceptorConfig} from './oblique-http-interceptor.config';
+import {ObliqueHttpInterceptorEvents} from './oblique-http-interceptor.events';
 import Timer = NodeJS.Timer;
 
 export interface ObliqueRequest {
@@ -22,8 +23,9 @@ export interface ObliqueRequest {
 @Injectable({providedIn: 'root'})
 export class ObliqueHttpInterceptor implements HttpInterceptor {
 	constructor(private readonly config: ObliqueHttpInterceptorConfig,
-				private readonly spinner: SpinnerService,
-				private readonly notificationService: NotificationService) {
+		private readonly interceptorEvents: ObliqueHttpInterceptorEvents,
+		private readonly spinner: SpinnerService,
+		private readonly notificationService: NotificationService) {
 	}
 
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -39,7 +41,7 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 				error => {
 					if (error instanceof HttpErrorResponse) {
 						if (error.status === 401) {
-							this.config.expired.next();
+							this.interceptorEvents.sessionExpire();
 						} else {
 							this.notify(obliqueRequest.notification, error);
 						}
@@ -68,7 +70,7 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 			notification: this.config.api.notification,
 			spinner: this.config.api.spinner
 		};
-		this.config.requested.next(evt);
+		this.interceptorEvents.requestIntercept(evt);
 
 		return evt;
 	}

@@ -3,7 +3,6 @@ import {NavigationEnd, Router} from '@angular/router';
 import {filter, map, takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe.class';
-import {ScrollingConfig} from '../scrolling/scrolling.module';
 import {OffCanvasService} from '../off-canvas/off-canvas.module';
 import {MasterLayoutService} from './master-layout.service';
 import {MasterLayoutConfig} from './master-layout.config';
@@ -107,7 +106,6 @@ export class MasterLayoutComponent extends Unsubscribable {
 	@ViewChild('offCanvasClose') readonly offCanvasClose: ElementRef<HTMLElement>;
 
 	constructor(private readonly masterLayout: MasterLayoutService,
-				private readonly scroll: ScrollingConfig,
 				private readonly config: MasterLayoutConfig,
 				readonly offCanvasService: OffCanvasService,
 				readonly router: Router
@@ -137,32 +135,32 @@ export class MasterLayoutComponent extends Unsubscribable {
 		this.updateCoverLayout();
 		this.updateNoNavigation();
 
-		this.masterLayout.menuCollapsedEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.menuCollapsedChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.headerOpen = !value;
 		});
 
-		offCanvasService.openEmitter.pipe(takeUntil(this.unsubscribe), filter(value => value)).subscribe(() => {
+		offCanvasService.opened.pipe(takeUntil(this.unsubscribe), filter(value => value)).subscribe(() => {
 			setTimeout(() => this.offCanvasClose.nativeElement.focus(), 600);
 		});
 	}
 
 	private updateApplicationFixed(): void {
 		this.masterLayout.applicationFixed = this.applicationFixed;
-		this.masterLayout.applicationFixedEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.applicationFixedChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.applicationFixed = value;
 		});
 	}
 
 	private updateCoverLayout(): void {
 		this.masterLayout.coverLayout = this.coverLayout;
-		this.masterLayout.coverLayoutEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.coverLayoutChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.coverLayout = value;
 		});
 	}
 
 	private updateNoNavigation(): void {
 		this.masterLayout.noNavigation = this.noNavigation;
-		this.masterLayout.noNavigationEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.noNavigationChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.noNavigation = value;
 		});
 	}

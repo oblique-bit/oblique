@@ -2,7 +2,7 @@ import {EventEmitter} from '@angular/core';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TranslateService} from '@ngx-translate/core';
-import {of} from 'rxjs';
+import {of, Subject} from 'rxjs';
 
 import {MasterLayoutConfig, MasterLayoutService} from 'oblique-reactive';
 import {MasterLayoutNavigationComponent} from './master-layout-navigation.component';
@@ -16,8 +16,8 @@ describe('MasterLayoutNavigationComponent', () => {
 	mockTranslateService.getTranslation.and.returnValue(of());
 	mockTranslateService.defaultLang = '';
 	const mockService = jasmine.createSpyObj('MasterLayoutService', ['']);
-	mockService.navigationFullWidthEmitter = new EventEmitter();
-	mockService.navigationScrollableEmitter = new EventEmitter();
+	mockService.navigationFullWidthChanged = new Subject<boolean>();
+	mockService.navigationScrollableChanged = new Subject<boolean>();
 	const mockConfig = jasmine.createSpyObj('MasterLayoutConfig', ['']);
 	mockConfig.navigation = {links: []};
 

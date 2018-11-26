@@ -52,6 +52,11 @@ export class MasterLayoutConfig {
 	focusableFragments = ['content', 'navigation'];
 
 	/**
+	 * Duration of the scroll to top functionality
+	 */
+	scrollToTopDuration = 200;
+
+	/**
 	 * Locales of the application
 	 */
 	locale: Locale = {

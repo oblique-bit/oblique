@@ -14,7 +14,7 @@ import {
 import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
 
-import {ScrollingConfig} from '../scrolling/scrolling.module';
+import {ScrollingEvents} from '../scrolling/scrolling.module';
 import {Unsubscribable} from '../unsubscribe.class';
 import {MasterLayoutService} from './master-layout.service';
 import {LocaleObject, MasterLayoutConfig} from './master-layout.config';
@@ -117,7 +117,7 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 	constructor(private readonly masterLayout: MasterLayoutService,
 				private readonly translate: TranslateService,
 				private readonly config: MasterLayoutConfig,
-				private readonly scroll: ScrollingConfig,
+				private readonly scrollEvents: ScrollingEvents,
 				private readonly el: ElementRef,
 				private readonly renderer: Renderer2) {
 		super();
@@ -139,7 +139,7 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 
 	ngAfterViewInit() {
 		this.setFocusable(!this.masterLayout.menuCollapsed);
-		this.masterLayout.menuCollapsedEmitter.subscribe(value => this.setFocusable(!value));
+		this.masterLayout.menuCollapsedChanged.subscribe(value => this.setFocusable(!value));
 
 		this.headerControl.forEach((elt: ElementRef) => {
 			if (elt.nativeElement.children.length) {
@@ -195,35 +195,35 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 
 	private updateHeaderMedium(): void {
 		this.masterLayout.mediumHeader = this.medium;
-		this.masterLayout.headerMediumEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.headerMediumChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.medium = value;
 		});
 	}
 
 	private updateHeaderAnimate(): void {
 		this.masterLayout.animateHeader = this.animate;
-		this.masterLayout.headerAnimateEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.headerAnimateChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.animate = value;
 		});
 	}
 
 	private updateHeaderSticky(): void {
 		this.masterLayout.stickyHeader = this.sticky;
-		this.masterLayout.headerStickyEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.headerStickyChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.sticky = value;
 		});
 	}
 
 	private updateHeaderCustom(): void {
 		this.masterLayout.customHeader = this.custom;
-		this.masterLayout.headerCustomEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.headerCustomChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.custom = value;
 		});
 	}
 
 	private headerTransitions(): void {
 		if (this.config.header.scrollTransitions) {
-			this.scroll.onScroll.pipe(takeUntil(this.unsubscribe))
+			this.scrollEvents.scrolled.pipe(takeUntil(this.unsubscribe))
 				.subscribe((isScrolling) => {
 					this.medium = isScrolling;
 				});

@@ -10,7 +10,13 @@ export {DocumentMetaService, DocumentMetaModule} from './lib/document-meta/docum
 export {ErrorMessagesComponent, ErrorMessagesModule, ErrorMessagesService} from './lib/error-messages/error-messages.module';
 export {FilterBoxComponent, FilterBoxModule} from './lib/filter-box/filter-box.module';
 export {FormControlStateDirective, FormControlStateModule} from './lib/form-control-state/form-control-state.module';
-export {ObliqueHttpInterceptor, ObliqueHttpInterceptorConfig, ObliqueHttpModule, ObliqueRequest} from './lib/http/oblique-http.module';
+export {
+	ObliqueHttpInterceptor,
+	ObliqueHttpInterceptorConfig,
+	ObliqueHttpInterceptorEvents,
+	ObliqueHttpModule,
+	ObliqueRequest
+} from './lib/http/oblique-http.module';
 export {
 	MasterLayoutComponent,
 	MasterLayoutConfig,
@@ -52,7 +58,7 @@ export {
 	SchemaValidationService,
 	SchemaValidatorInstance
 }from './lib/schema-validation/schema-validation.module';
-export {ScrollDetectionDirective, ScrollingConfig, ScrollingModule, TopControlComponent} from './lib/scrolling/scrolling.module';
+export {ScrollDetectionDirective, ScrollingEvents, ScrollingModule, TopControlComponent} from './lib/scrolling/scrolling.module';
 export {SpinnerEvent, SpinnerComponent, SpinnerModule, SpinnerService} from './lib/spinner/spinner.module';
 export {TextControlClearDirective, TextControlClearModule} from './lib/text-control-clear/text-control-clear.module';
 export {ToggleDirective, ToggleModule} from './lib/toggle/toggle.module';

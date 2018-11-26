@@ -2,7 +2,7 @@ import {Component, ContentChildren, HostBinding, QueryList, TemplateRef} from '@
 import {takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe.class';
-import {ScrollingConfig} from '../scrolling/scrolling.module';
+import {ScrollingEvents} from '../scrolling/scrolling.module';
 import {MasterLayoutService} from './master-layout.service';
 import {MasterLayoutConfig} from './master-layout.config';
 
@@ -39,7 +39,7 @@ export class MasterLayoutFooterComponent extends Unsubscribable {
 
 	constructor(private readonly masterLayout: MasterLayoutService,
 				private readonly config: MasterLayoutConfig,
-				private readonly scroll: ScrollingConfig) {
+				private readonly scrollEvents: ScrollingEvents) {
 		super();
 
 		this.small = this.config.footer.small;
@@ -53,21 +53,21 @@ export class MasterLayoutFooterComponent extends Unsubscribable {
 
 	private updateFooterSmall(): void {
 		this.masterLayout.smallFooter = this.small;
-		this.masterLayout.footerSmallEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.footerSmallChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.small = value;
 		});
 	}
 
 	private updateFooterCustom(): void {
 		this.masterLayout.customFooter = this.custom;
-		this.masterLayout.footerCustomEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.footerCustomChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.custom = value;
 		});
 	}
 
 	private footerTransitions(): void {
 		if (this.config.footer.scrollTransitions) {
-			this.scroll.onScroll.pipe(takeUntil(this.unsubscribe))
+			this.scrollEvents.scrolled.pipe(takeUntil(this.unsubscribe))
 				.subscribe((isScrolling) => {
 					this.small = !isScrolling;
 				});

@@ -48,7 +48,7 @@ export class MasterLayoutNavigationItemDirective extends Unsubscribable implemen
 				});
 		});
 
-		this.masterLayout.menuCollapsedEmitter.pipe(filter(value => value)).subscribe(() => this.close());
+		this.masterLayout.menuCollapsedChanged.pipe(filter(value => value)).subscribe(() => this.close());
 
 		this.$items.forEach(($item) => {
 			$item.onClose.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.close());

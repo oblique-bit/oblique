@@ -9,10 +9,13 @@ import {
 	NotificationType,
 	ObliqueHttpInterceptor,
 	ObliqueHttpInterceptorConfig,
+	ObliqueHttpInterceptorEvents,
 	ObliqueHttpModule,
-	SpinnerService
+	SpinnerService,
+	ObliqueRequest
 } from 'oblique-reactive';
 import {HttpMockErrorInterceptor} from '../../../../../src/app/samples/http-interceptor/http-mock-error.interceptor';
+import { Subject } from 'rxjs';
 
 @Injectable()
 class DataService {
@@ -54,10 +57,20 @@ class MockNotificationService {
 	}
 }
 
+class MockObliqueHttpInterceptorEvents extends ObliqueHttpInterceptorEvents {
+	get requested_exported(): Subject<ObliqueRequest> {
+		return this.requested;
+	}
+	get expired_exported(): Subject<void> {
+		return this.expired;
+	}
+}
+
 describe(`ObliqueHttpInterceptor`, () => {
 	let service: DataService;
 	let httpMock: HttpTestingController;
 	let config: ObliqueHttpInterceptorConfig;
+	let events: MockObliqueHttpInterceptorEvents;
 	let spinner: SpinnerService;
 	let notification: NotificationService;
 
@@ -67,6 +80,7 @@ describe(`ObliqueHttpInterceptor`, () => {
 			providers: [
 				DataService,
 				ObliqueHttpInterceptorConfig,
+				{provide: ObliqueHttpInterceptorEvents, useClass: MockObliqueHttpInterceptorEvents},
 				{provide: HTTP_INTERCEPTORS, useClass: ObliqueHttpInterceptor, multi: true},
 				{provide: SpinnerService, useClass: MockSpinnerService},
 				{provide: NotificationService, useClass: MockNotificationService}
@@ -76,6 +90,7 @@ describe(`ObliqueHttpInterceptor`, () => {
 		service = TestBed.get(DataService);
 		httpMock = TestBed.get(HttpTestingController);
 		config = TestBed.get(ObliqueHttpInterceptorConfig);
+		events = TestBed.get(ObliqueHttpInterceptorEvents);
 		spinner = TestBed.get(SpinnerService);
 		notification = TestBed.get(NotificationService);
 	});
@@ -87,14 +102,14 @@ describe(`ObliqueHttpInterceptor`, () => {
 	});
 
 	it('should emit a requestIntercepted event', () => {
-		spyOn(config.requested, 'next');
+		spyOn(events.requested_exported, 'next');
 		getUsers();
-		expect(config.requested.next).toHaveBeenCalled();
+		expect(events.requested_exported.next).toHaveBeenCalled();
 	});
 
 	it('should emit a sessionExpired event in case of 401', () => {
-		spyOn(config.expired, 'next');
-		getError(401, () => expect(config.expired.next).toHaveBeenCalled());
+		spyOn(events.expired_exported, 'next');
+		getError(401, () => expect(events.expired_exported.next).toHaveBeenCalled());
 	});
 
 	xit('should activate spinner with spinner enabled', () => {

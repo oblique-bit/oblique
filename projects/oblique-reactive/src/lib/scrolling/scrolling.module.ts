@@ -4,11 +4,10 @@ import {TranslateModule} from '@ngx-translate/core';
 
 import {ScrollDetectionDirective} from './scroll-detection.directive';
 import {TopControlComponent} from './top-control.component';
-import {ScrollingConfig} from './scrolling.config';
 
 export {ScrollDetectionDirective} from './scroll-detection.directive';
 export {TopControlComponent} from './top-control.component';
-export {ScrollingConfig} from './scrolling.config';
+export {ScrollingEvents} from './scrolling-events';
 
 @NgModule({
 	imports: [

@@ -132,14 +132,14 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 
 	private updateNavigationFullWidth(): void {
 		this.masterLayout.navigationFullWidth = this.fullWidth;
-		this.masterLayout.navigationFullWidthEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.navigationFullWidthChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.fullWidth = value;
 		});
 	}
 
 	private updateNavigationScrollable(): void {
 		this.masterLayout.navigationScrollable = this.scrollable;
-		this.masterLayout.navigationScrollableEmitter.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.masterLayout.navigationScrollableChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.scrollable = value;
 		});
 	}

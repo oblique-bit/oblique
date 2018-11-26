@@ -1,9 +1,7 @@
 import {NgModule} from '@angular/core';
 
-import {ObliqueHttpInterceptorConfig} from './oblique-http-interceptor.config';
-import {ObliqueHttpInterceptor} from './oblique-http-interceptor';
-
 export {ObliqueHttpInterceptorConfig} from './oblique-http-interceptor.config';
+export {ObliqueHttpInterceptorEvents} from './oblique-http-interceptor.events';
 export {ObliqueHttpInterceptor, ObliqueRequest} from './oblique-http-interceptor';
 
 @NgModule()

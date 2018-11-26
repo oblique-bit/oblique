@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ScrollingConfig} from './scrolling.config';
+import { MasterLayoutConfig } from '../master-layout/master-layout.config';
 
 @Component({
 	selector: 'or-top-control',
@@ -10,11 +10,11 @@ import {ScrollingConfig} from './scrolling.config';
 		</a>`
 })
 export class TopControlComponent {
-	constructor(private readonly config: ScrollingConfig) {
+	constructor(private readonly config: MasterLayoutConfig) {
 	}
 
 	public scrollTop(): void {
-		const scrollStep = window.scrollY / (this.config.scrollDuration / 15);
+		const scrollStep = window.scrollY / (this.config.scrollToTopDuration / 15);
 		this.scrollToTop(scrollStep);
 	}
 

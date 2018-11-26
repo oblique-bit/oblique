@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {NotificationService, NotificationType, ObliqueHttpInterceptorConfig, ObliqueRequest} from 'oblique-reactive';
+import {NotificationService, NotificationType, ObliqueRequest, ObliqueHttpInterceptorEvents} from 'oblique-reactive';
 import {first} from 'rxjs/operators';
 import {HttpMockErrorInterceptor} from './http-mock-error.interceptor';
 
@@ -24,12 +24,10 @@ export class HttpInterceptorSampleComponent {
 	variants = NotificationType.VALUES;
 
 	constructor(private readonly notificationService: NotificationService,
-				private readonly http: HttpClient,
-				private readonly config: ObliqueHttpInterceptorConfig) {
-		// Redefine default API URL for showcase sample only:
-		this.config.api.url = HttpInterceptorSampleComponent.API_URL;
+		private readonly http: HttpClient,
+		private readonly interceptorEvents: ObliqueHttpInterceptorEvents) {
 
-		this.config.sessionExpired.subscribe(() => {
+		this.interceptorEvents.sessionExpired.subscribe(() => {
 			this.notificationService.warning('The session has expired');
 		});
 	}
@@ -56,7 +54,7 @@ export class HttpInterceptorSampleComponent {
 	}
 
 	private configInterceptor(): void {
-		this.config.requestIntercepted.pipe(first()).subscribe((evt: ObliqueRequest) => {
+		this.interceptorEvents.requestIntercepted.pipe(first()).subscribe((evt: ObliqueRequest) => {
 			evt.notification.active = this.notification.active;
 			evt.notification.severity = this.notification.severity;
 			evt.notification.title = this.notification.title;

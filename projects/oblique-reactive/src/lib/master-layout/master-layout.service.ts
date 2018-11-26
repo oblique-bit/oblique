@@ -5,32 +5,63 @@ import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe.class';
 import {LocaleObject, MasterLayoutConfig} from './master-layout.config';
-import {Subject} from 'rxjs';
+import {Subject, Observable} from 'rxjs';
+import { $ } from 'protractor';
 
 @Injectable({providedIn: 'root'})
 export class MasterLayoutService extends Unsubscribable {
 	// Layout
-	readonly menuCollapsedEmitter: Subject<boolean> = new Subject<boolean>();
-	readonly applicationFixedEmitter: Subject<boolean> = new Subject<boolean>();
-	readonly coverLayoutEmitter: Subject<boolean> = new Subject<boolean>();
-	readonly noNavigationEmitter: Subject<boolean> = new Subject<boolean>();
-	readonly offCanvasEmitter: Subject<boolean> = new Subject<boolean>();
+	get menuCollapsedChanged(): Observable<boolean> {
+		return this.menuCollapsedChanged$;
+	}
+	get applicationFixedChanged(): Observable<boolean> {
+		return this.applicationFixedChanged$;
+	}
+	get coverLayoutChanged(): Observable<boolean> {
+		return this.coverLayoutChanged$;
+	}
+	get noNavigationChanged(): Observable<boolean> {
+		return this.noNavigationChanged$;
+	}
+	get offCanvasChanged(): Observable<boolean> {
+		return this.offCanvasChanged$;
+	}
 
 	// Header
-	readonly headerCustomEmitter: Subject<boolean> = new Subject<boolean>();
-	readonly headerMediumEmitter: Subject<boolean> = new Subject<boolean>();
-	readonly headerAnimateEmitter: Subject<boolean> = new Subject<boolean>();
-	readonly headerStickyEmitter: Subject<boolean> = new Subject<boolean>();
-	readonly headerScrollTransitionEmitter: Subject<boolean> = new Subject<boolean>();
+	get headerCustomChanged(): Observable<boolean> {
+		return this.headerCustomChanged$;
+	}
+	get headerMediumChanged(): Observable<boolean> {
+		return this.headerMediumChanged$;
+	}
+	get headerAnimateChanged(): Observable<boolean> {
+		return this.headerAnimateChanged$;
+	}
+	get headerStickyChanged(): Observable<boolean> {
+		return this.headerStickyChanged$;
+	}
+	get headerScrollTransitionChanged(): Observable<boolean> {
+		return this.headerScrollTransitionChanged$;
+	}
 
 	// Navigation
-	readonly navigationFullWidthEmitter: Subject<boolean> = new Subject<boolean>();
-	readonly navigationScrollableEmitter: Subject<boolean> = new Subject<boolean>();
+	get navigationFullWidthChanged(): Observable<boolean> {
+		return this.navigationFullWidthChanged$;
+	}
+	get navigationScrollableChanged(): Observable<boolean> {
+		return this.navigationScrollableChanged$;
+	}
 
 	// Footer
-	readonly footerCustomEmitter: Subject<boolean> = new Subject<boolean>();
-	readonly footerSmallEmitter: Subject<boolean> = new Subject<boolean>();
-	readonly footerScrollTransitionEmitter: Subject<boolean> = new Subject<boolean>();
+	get footerCustomChanged(): Observable<boolean> {
+		return this.footerCustomChanged$;
+	}
+	get footerSmallChanged(): Observable<boolean> {
+		return this.footerSmallChanged$;
+	}
+	get footerScrollTransitionChanged(): Observable<boolean> {
+		return this.footerScrollTransitionChanged$;
+	}
 
 	// Layout
 	get menuCollapsed(): boolean {
@@ -39,7 +70,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set menuCollapsed(value: boolean) {
 		this.isMenuCollapsed = value;
-		this.menuCollapsedEmitter.next(value);
+		this.menuCollapsedSubject.next(value);
 	}
 
 	get applicationFixed(): boolean {
@@ -48,7 +79,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set applicationFixed(value: boolean) {
 		this.isApplicationFixed = value;
-		this.applicationFixedEmitter.next(value);
+		this.applicationFixedSubject.next(value);
 	}
 
 	get coverLayout(): boolean {
@@ -57,7 +88,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set coverLayout(value: boolean) {
 		this.hasCoverLayout = value;
-		this.coverLayoutEmitter.next(value);
+		this.coverLayoutSubject.next(value);
 	}
 
 	get noNavigation(): boolean {
@@ -66,7 +97,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set noNavigation(value: boolean) {
 		this.hasNavigation = value;
-		this.noNavigationEmitter.next(value);
+		this.noNavigationSubject.next(value);
 	}
 
 	get offCanvas(): boolean {
@@ -75,7 +106,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set offCanvas(value: boolean) {
 		this.hasOffCanvas = value;
-		this.offCanvasEmitter.next(value);
+		this.offCanvasSubject.next(value);
 	}
 
 	// Header
@@ -85,7 +116,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set customHeader(value: boolean) {
 		this.isHeaderCustom = value;
-		this.headerCustomEmitter.next(value);
+		this.headerCustomSubject.next(value);
 	}
 
 	get mediumHeader(): boolean {
@@ -94,7 +125,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set mediumHeader(value: boolean) {
 		this.isHeaderMedium = value;
-		this.headerMediumEmitter.next(value);
+		this.headerMediumSubject.next(value);
 	}
 
 	get animateHeader(): boolean {
@@ -103,7 +134,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set animateHeader(value: boolean) {
 		this.isHeaderAnimated = value;
-		this.headerAnimateEmitter.next(value);
+		this.headerAnimateSubject.next(value);
 	}
 
 	get stickyHeader(): boolean {
@@ -112,7 +143,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set stickyHeader(value: boolean) {
 		this.isHeaderSticky = value;
-		this.headerStickyEmitter.next(value);
+		this.headerStickySubject.next(value);
 	}
 
 	get scrollTransitionHeader(): boolean {
@@ -121,7 +152,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set scrollTransitionHeader(value: boolean) {
 		this.hasHeaderScrollTransition = value;
-		this.headerScrollTransitionEmitter.next(value);
+		this.headerScrollTransitionSubject.next(value);
 	}
 
 
@@ -132,7 +163,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set navigationFullWidth(value: boolean) {
 		this.isNavigationFullWidth = value;
-		this.navigationFullWidthEmitter.next(value);
+		this.navigationFullWidthSubject.next(value);
 	}
 
 	get navigationScrollable(): boolean {
@@ -141,7 +172,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set navigationScrollable(value: boolean) {
 		this.isNavigationScrollable = value;
-		this.navigationScrollableEmitter.next(value);
+		this.navigationScrollableSubject.next(value);
 	}
 
 	// Footer
@@ -151,7 +182,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set customFooter(value: boolean) {
 		this.isFooterCustom = value;
-		this.footerCustomEmitter.next(value);
+		this.footerCustomSubject.next(value);
 	}
 
 	get smallFooter(): boolean {
@@ -160,7 +191,7 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set smallFooter(value: boolean) {
 		this.isFooterSmall = value;
-		this.footerSmallEmitter.next(value);
+		this.footerSmallSubject.next(value);
 	}
 
 	get scrollTransitionFooter(): boolean {
@@ -169,10 +200,48 @@ export class MasterLayoutService extends Unsubscribable {
 
 	set scrollTransitionFooter(value: boolean) {
 		this.hasFooterScrollTransition = value;
-		this.footerScrollTransitionEmitter.next(value);
+		this.footerScrollTransitionSubject.next(value);
 	}
 
 	private static readonly token = 'oblique_lang';
+
+	// Layout
+	private readonly menuCollapsedSubject: Subject<boolean> = new Subject<boolean>();
+	private readonly menuCollapsedChanged$ = this.menuCollapsedSubject.asObservable();
+	private readonly applicationFixedSubject: Subject<boolean> = new Subject<boolean>();
+	private readonly applicationFixedChanged$ = this.applicationFixedSubject.asObservable();
+	private readonly coverLayoutSubject: Subject<boolean> = new Subject<boolean>();
+	private readonly coverLayoutChanged$ = this.coverLayoutSubject.asObservable();
+	private readonly noNavigationSubject: Subject<boolean> = new Subject<boolean>();
+	private readonly noNavigationChanged$ = this.noNavigationSubject.asObservable();
+	private readonly offCanvasSubject: Subject<boolean> = new Subject<boolean>();
+	private readonly offCanvasChanged$ = this.offCanvasSubject.asObservable();
+
+	// Header
+	private readonly headerCustomSubject: Subject<boolean> = new Subject<boolean>();
+	private readonly headerCustomChanged$ = this.headerCustomSubject.asObservable();
+	private readonly headerMediumSubject: Subject<boolean> = new Subject<boolean>();
+	private readonly headerMediumChanged$ = this.headerMediumSubject.asObservable();
+	private readonly headerAnimateSubject: Subject<boolean> = new Subject<boolean>();
+	private readonly headerAnimateChanged$ = this.headerAnimateSubject.asObservable();
+	private readonly headerStickySubject: Subject<boolean> = new Subject<boolean>();
+	private readonly headerStickyChanged$ = this.headerStickySubject.asObservable();
+	private readonly headerScrollTransitionSubject: Subject<boolean> = new Subject<boolean>();
+	private readonly headerScrollTransitionChanged$ = this.headerScrollTransitionSubject.asObservable();
+
+	// Navigation
+	private readonly navigationFullWidthSubject: Subject<boolean> = new Subject<boolean>();
+	private readonly navigationFullWidthChanged$ = this.navigationFullWidthSubject.asObservable();
+	private readonly navigationScrollableSubject: Subject<boolean> = new Subject<boolean>();
+	private readonly navigationScrollableChanged$ = this.navigationScrollableSubject.asObservable();
+
+	// Footer
+	private readonly footerCustomSubject: Subject<boolean> = new Subject<boolean>();
+	private readonly footerCustomChanged$ = this.footerCustomSubject.asObservable();
+	private readonly footerSmallSubject: Subject<boolean> = new Subject<boolean>();
+	private readonly footerSmallChanged$ = this.footerSmallSubject.asObservable();
+	private readonly footerScrollTransitionSubject: Subject<boolean> = new Subject<boolean>();
+	private readonly footerScrollTransitionChanged$ = this.footerScrollTransitionSubject.asObservable();
 
 	// Layout
 	private isMenuCollapsed = true;

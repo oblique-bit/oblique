@@ -1,6 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Observable, Subject} from 'rxjs';
-import {ObliqueRequest} from './oblique-http-interceptor';
 import {NotificationConfig, NotificationType} from '../notification/notification.module';
 
 // TODO: make sure that app.module.ts provides an instance of ObliqueHttpInterceptorConfig filled with data from environment[.prod].ts
@@ -15,24 +13,6 @@ import {NotificationConfig, NotificationType} from '../notification/notification
  */
 @Injectable({providedIn: 'root'})
 export class ObliqueHttpInterceptorConfig {
-	/**
-	 * Emitted *before* the request is sent
-	 */
-	requested = new Subject<ObliqueRequest>();
-	/**
-	 * This will be feed with `requested` events
-	 */
-	requestIntercepted: Observable<ObliqueRequest> = this.requested.asObservable();
-
-	/**
-	 * Emitted on reception of 401 response
-	 */
-	expired = new Subject<void>();
-	/**
-	 * This will be feed with `expired`events
-	 */
-	sessionExpired: Observable<void> = this.expired.asObservable();
-
 	/**
 	 * Configuration for application API.
 	 */

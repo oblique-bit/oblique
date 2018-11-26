@@ -1,12 +1,17 @@
 import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
+import {Subject, Observable} from 'rxjs';
 
 /**
  * Service for controlling ObliqueUI offcanvas composite features.
  */
 @Injectable({ providedIn: 'root' })
 export class OffCanvasService {
-	openEmitter: Subject<boolean> = new Subject();
+	/**
+	 * Fire an `opened` event
+	 */
+	get opened(): Observable<boolean> {
+		return this.opened$;
+	}
 
 	get open(): boolean {
 		return this.isOpen;
@@ -14,8 +19,10 @@ export class OffCanvasService {
 
 	set open(value: boolean) {
 		this.isOpen = value;
-		this.openEmitter.next(this.isOpen);
+		this.openedSubject.next(this.isOpen);
 	}
 
+	private readonly openedSubject: Subject<boolean> = new Subject<boolean>();
+	private readonly opened$ = this.openedSubject.asObservable();
 	private isOpen = false;
 }
