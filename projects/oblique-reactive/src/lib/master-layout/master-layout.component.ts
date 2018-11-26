@@ -80,7 +80,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 			<header class="offcanvas-header default-layout">
 				<h2><ng-content select="[orOffCanvasTitle]"></ng-content></h2>
 				<a role="button" orOffCanvasToggle tabindex="0" class="close-button" #offCanvasClose>
-					<span class="control-label fa fa-close"></span>
+					<span class="control-label fa fa-lg fa-close"></span>
 					<span class="sr-only">i18n.oblique.offCanvas.close</span>
 				</a>
 			</header>
