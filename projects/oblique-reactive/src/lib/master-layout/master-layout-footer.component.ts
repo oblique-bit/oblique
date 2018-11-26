@@ -12,7 +12,7 @@ import {MasterLayoutConfig} from './master-layout.config';
 		<ng-content select="[orFooter]" *ngIf="custom"></ng-content>
 		<ng-container *ngIf="!custom">
 			<div class="footer-item footer-item-logo footer-sm-collapse">
-				<a href="{{'i18n.application.organization.url' | translate}}" target="_blank" class="application-brand-logo">
+				<a [routerLink]="home" class="application-brand-logo">
 					<img src="./assets/styles/images/logo.svg" alt="{{'i18n.application.organization.name' | translate}}"/>
 				</a>
 			</div>
@@ -32,6 +32,7 @@ import {MasterLayoutConfig} from './master-layout.config';
 	host: {class: 'application-footer'}
 })
 export class MasterLayoutFooterComponent extends Unsubscribable {
+	home: string;
 	custom = false;
 	@HostBinding('class.application-footer-sm') small: boolean;
 	@ContentChildren('orFooterLink') readonly templates: QueryList<TemplateRef<any>>;
@@ -43,6 +44,7 @@ export class MasterLayoutFooterComponent extends Unsubscribable {
 
 		this.small = this.config.footer.small;
 		this.custom = this.config.footer.custom;
+		this.home = this.config.homePageRoute;
 
 		this.updateFooterSmall();
 		this.updateFooterCustom();
