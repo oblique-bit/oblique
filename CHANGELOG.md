@@ -1,17 +1,17 @@
-# [3.0.0-RC.4](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/compare/3.0.0-RC.3...3.0.0-RC.4) (2018-11-23)
+# [3.0.0-RC.4](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=3.0.0-RC.4) (2018-11-23)
 
 ## Dependencies updates
 * **Angular:** 7.1.0
 
 
-# [3.0.0-RC.3](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/compare/3.0.0-RC.2...3.0.0-RC.3) (2018-11-20)
+# [3.0.0-RC.3](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=3.0.0-RC.3) (2018-11-20)
 
 ## Bug Fixes
 * **master-layout:** export missing  `SchemaValidatorInstance` ([f232780](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/f232780))
 * **off-canvas:** do not set `default-layout` on off-canvas content ([7d90998](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/7d90998))
 
 
-# [3.0.0-RC.2](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/compare/3.0.0-RC.1...3.0.0-RC.2) (2018-11-19)
+# [3.0.0-RC.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=3.0.0-RC.2) (2018-11-19)
 
 ## Bug Fixes
 * **master-layout:** ensure user chosen language is supported ([0e0cbd4](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/0e0cbd4))
@@ -33,7 +33,7 @@
 
 
 <a name="3.0.0-RC.1"></a>
-# [3.0.0-RC.1](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/compare/2.1.2...3.0.0-RC.1) (2018-11-14)
+# [3.0.0-RC.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=3.0.0-RC.1) (2018-11-14)
 
 ## Bug Fixes
 * **master-layout:** `.navbar` inherits `background-color` from parent ([19d7a02](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/19d7a02))
@@ -89,7 +89,7 @@
 
 
 <a name="2.1.2"></a>
-# [2.1.2](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/compare/2.1.1...2.1.2) (2018-09-25)
+# [2.1.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.1.2) (2018-09-25)
 
 ## Dependencies updates
 * **Angular:** 6.1.8
@@ -114,7 +114,7 @@
 
 
 <a name="2.1.1"></a>
-# [2.1.1](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/compare/2.1.0...2.1.1) (2018-09-07)
+# [2.1.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.1.1) (2018-09-07)
 
 ## Dependencies updates
 * **Angular:** 6.1.7
@@ -130,7 +130,7 @@
 * **master-layout:** only display locale choice if there are multiple ones ([c7090d7](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/c7090d7))
 
 <a name="2.1.0"></a>
-# [2.1.0](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/compare/2.0.0...2.1.0) (2018-08-29)
+# [2.1.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.1.0) (2018-08-29)
 
 ## Dependencies updates
 * **Angular:** 6.1.3
