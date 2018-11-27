@@ -1,9 +1,11 @@
+import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {ObliqueRequest} from './oblique-http-interceptor';
 
 /**
  * Provides access to the Oblique HTTP Interceptor events.
  */
+@Injectable({providedIn: 'root'})
 export class ObliqueHttpInterceptorEvents {
 	/**
 	 * This will be feed with `requested` events
