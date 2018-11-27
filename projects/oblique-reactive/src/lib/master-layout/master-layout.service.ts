@@ -2,11 +2,10 @@ import {Injectable} from '@angular/core';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
+import {Observable, Subject} from 'rxjs';
 
 import {Unsubscribable} from '../unsubscribe.class';
 import {LocaleObject, MasterLayoutConfig} from './master-layout.config';
-import {Subject, Observable} from 'rxjs';
-import { $ } from 'protractor';
 
 @Injectable({providedIn: 'root'})
 export class MasterLayoutService extends Unsubscribable {
@@ -14,15 +13,19 @@ export class MasterLayoutService extends Unsubscribable {
 	get menuCollapsedChanged(): Observable<boolean> {
 		return this.menuCollapsedChanged$;
 	}
+
 	get applicationFixedChanged(): Observable<boolean> {
 		return this.applicationFixedChanged$;
 	}
+
 	get coverLayoutChanged(): Observable<boolean> {
 		return this.coverLayoutChanged$;
 	}
+
 	get noNavigationChanged(): Observable<boolean> {
 		return this.noNavigationChanged$;
 	}
+
 	get offCanvasChanged(): Observable<boolean> {
 		return this.offCanvasChanged$;
 	}
@@ -31,15 +34,19 @@ export class MasterLayoutService extends Unsubscribable {
 	get headerCustomChanged(): Observable<boolean> {
 		return this.headerCustomChanged$;
 	}
+
 	get headerMediumChanged(): Observable<boolean> {
 		return this.headerMediumChanged$;
 	}
+
 	get headerAnimateChanged(): Observable<boolean> {
 		return this.headerAnimateChanged$;
 	}
+
 	get headerStickyChanged(): Observable<boolean> {
 		return this.headerStickyChanged$;
 	}
+
 	get headerScrollTransitionChanged(): Observable<boolean> {
 		return this.headerScrollTransitionChanged$;
 	}
@@ -48,6 +55,7 @@ export class MasterLayoutService extends Unsubscribable {
 	get navigationFullWidthChanged(): Observable<boolean> {
 		return this.navigationFullWidthChanged$;
 	}
+
 	get navigationScrollableChanged(): Observable<boolean> {
 		return this.navigationScrollableChanged$;
 	}
@@ -56,9 +64,11 @@ export class MasterLayoutService extends Unsubscribable {
 	get footerCustomChanged(): Observable<boolean> {
 		return this.footerCustomChanged$;
 	}
+
 	get footerSmallChanged(): Observable<boolean> {
 		return this.footerSmallChanged$;
 	}
+
 	get footerScrollTransitionChanged(): Observable<boolean> {
 		return this.footerScrollTransitionChanged$;
 	}
@@ -154,7 +164,6 @@ export class MasterLayoutService extends Unsubscribable {
 		this.hasHeaderScrollTransition = value;
 		this.headerScrollTransitionSubject.next(value);
 	}
-
 
 	// Navigation
 	get navigationFullWidth(): boolean {
