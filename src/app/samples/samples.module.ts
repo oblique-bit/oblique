@@ -37,7 +37,8 @@ import {
 	NavTreeModule,
 	NotificationModule,
 	NumberFormatModule,
-	SchemaValidationModule
+	SchemaValidationModule,
+	ToggleModule
 } from 'oblique-reactive';
 
 @NgModule({
@@ -54,6 +55,7 @@ import {
 		NumberFormatModule,
 		NotificationModule,
 		SchemaValidationModule,
+		ToggleModule,
 
 		TranslateModule,
 		FormsModule,
