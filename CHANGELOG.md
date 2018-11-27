@@ -1,21 +1,23 @@
-# [3.0.0-RC.4](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=3.0.0-RC.4) (2018-11-23)
+<a name="3.0.0"></a>
+# [3.0.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=3.0.0) (2018-11-27)
 
 ## Dependencies updates
 * **Angular:** 7.1.0
-
-
-# [3.0.0-RC.3](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=3.0.0-RC.3) (2018-11-20)
+* **ObliqueUI:** 3.0.0
+* **ng-bootstrap:** 4.0.0
+* **ngx-translate:** 11.0.1
+* **ajv:** 6.5.5
+* **rxjs:** 6.9.3
+* **tslib:** 1.9.3
 
 ## Bug Fixes
-* **master-layout:** export missing  `SchemaValidatorInstance` ([f232780](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/f232780))
+* **changelog:** use correct link to named versions ([207392c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/207392c))
+* **master-layout:** add a normal space on the right of the locale selection ([0186d2a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/0186d2a))
+* **master-layout:** apply `home` link on footer logo ([34afa1d](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/34afa1d))
+* **master-layout:** improve contrast of locale buttons ([ee459f3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/ee459f3))
+* **off-canvas:** increase the size of the close button ([d39949c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/d39949c))
 * **off-canvas:** do not set `default-layout` on off-canvas content ([7d90998](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/7d90998))
-
-
-# [3.0.0-RC.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=3.0.0-RC.2) (2018-11-19)
-
-## Bug Fixes
 * **master-layout:** ensure user chosen language is supported ([0e0cbd4](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/0e0cbd4))
-* **master-layout:** apply `control-link` and `nav-link` on same element ([b52f551](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/b52f551))
 * **master-layout:** can dynamically update custom footer ([359c8ff](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/359c8ff))
 * **master-layout:** close main navigation when sub-navigation is active on mobile mode ([11cac0e](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/11cac0e))
 * **master-layout:** do not highlight `#content` and `#navigation` when focused ([2aa4540](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/2aa4540))
@@ -24,29 +26,12 @@
 * **master-layout:** remove navigation title when there is no navigation ([2372d92](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/2372d92))
 * **master-layout:** use same language for both the default and current language ([1710405](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/1710405))
 * **nav-tree:** filtering treats regex terminals as string instead of throwing an error ([e415570](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/e415570))
+* **master-layout:** `.navbar` inherits `background-color` from parent ([19d7a02](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/19d7a02))
+* **master-layout:** jumplinks use angular route fragments ([d1f4b61](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/d1f4b61))
+* **master-layout:** transform `NodeList` into `array` (IE compatibility) ([5fd0b9a](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/5fd0b9a))
 
 ## Features
 * **master-layout:** remove `[orOffCanvas]` content projection from `MasterLayoutComponent` ([a50e91e](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/a50e91e))
-
-## BREAKING CHANGES
-* **master-layout:** the content of the main off-canvas cannot be projected with `[orOffCanvas]` anymore. Use `[orOffCanvasTitle]` and `[orOffCanvasContent]` instead.
-
-
-<a name="3.0.0-RC.1"></a>
-# [3.0.0-RC.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=3.0.0-RC.1) (2018-11-14)
-
-## Bug Fixes
-* **master-layout:** `.navbar` inherits `background-color` from parent ([19d7a02](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/19d7a02))
-* **master-layout:** apply `control-link` and `nav-link` on same element ([b52f551](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/b52f551))
-* **master-layout:** close main navigation when sub-navigation is active on mobile mode ([11cac0e](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/11cac0e))
-* **master-layout:** jumplinks use angular route fragments ([d1f4b61](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/d1f4b61))
-* **master-layout:** transform `NodeList` into `array` (IE compatibility) ([5fd0b9a](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/5fd0b9a))
-* **off-canvas:** only toggle offCanvas with `Enter` key if the focus is on the toggle ([904e0b8](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/904e0b8))
-
-## Code Refactoring
-* use the cli to build the distribution ([f703b61](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/f703b61))
-
-## Features
 * **master-layout:** add `[orFooter]` and `[orHeader]` content projection to use a completely custom content ([aca2775](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/aca2775))
 * **master-layout:** add controls for offCanvas, custom header and footer and scroll transitions for header and footer ([0dde5ab](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/0dde5ab))
 * **master-layout:** add support for ids on navigation items ([014c916](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/014c916))
@@ -56,7 +41,6 @@
 * **master-layout:** dropdown navigation can be toggled with `Enter` key ([b279e72](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/b279e72))
 * **master-layout:** dynamically add oblique classes on header controls ([b587df6](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/b587df6))
 * **master-layout:** move `ScrollingConfig.transitions.header` to `MasterLayoutConfig.header.scrollTransitions` ([08269d7](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/08269d7))
-* **master-layout:** move `ScrollingConfig.transitions.footer` to `MasterLayoutConfig.footer.scrollTransitions` ([882aca2](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/882aca2))
 * **master-layout:** navigation can be scrollable ([81887ea](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/81887ea))
 * **master-layout:** remove `[orFooterInfoSMCollapse]` ([80b12f6](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/80b12f6))
 * **master-layout:** remove `[orFooterLinks]` content projection from `MasterLayoutComponent` ([1b3a45f](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/1b3a45f))
@@ -67,7 +51,20 @@
 * **master-layout:** use named templates for header controls and footer links ([6994b3f](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/6994b3f))
 * **master-layout:** wrap `defaultLocale` and `locales` within `locale` ([9ea5ff2](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/9ea5ff2))
 
+## Code Refactoring
+* change `EventEmitter` to `rxjs.Subject` where applicable ([e3d57e3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/e3d57e3))
+* use the cli to build the distribution ([f703b61](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/f703b61))
+
+
 ## BREAKING CHANGES
+* **architecture**: `Subject` replace `EventEmitter`  
+	* public event API from `MasterLayoutService` is renamed from `*Emitter` to `*Changed`
+	* all subjects are encapsulated and only an observable is provided on the public API.
+	* `emit` is no longer accessible, use dedicated function instead.
+* **http-interceptor**: `ObliqueHttpInterceptorConfig` has been renamed to `ObliqueHttpInterceptorEvents` 
+* **scrolling**: `ScrollingConfig` has been renamed to `ScrollingEvents` 
+* **master-layout:** scroll duration  is accessible through `MasterLayoutConfig.scrollToTopDuration` instead of `ScrollingConfig.scrollDuration`
+* **master-layout:** the content of the main off-canvas cannot be projected with `[orOffCanvas]` anymore. Use `[orOffCanvasTitle]` and `[orOffCanvasContent]` instead.
 * **master-layout:** `defaultLocale` property has been renamed to `default` and is accessible through `MasterLayoutConfig.locale` instead of `MasterLayoutConfig`
 * **master-layout:** `locales` property is accessible through `MasterLayoutConfig.locale` instead of `MasterLayoutConfig`
 * **master-layout:** the whole header controls list cannot be projected with `[orHeaderControls]` anymore. Use `#orHeaderControl` instead
@@ -80,11 +77,11 @@
 	* `MasterLayoutHeaderDirective`
 	* `MasterLayoutHeaderService`
 	* `MasterLayoutNavigationDirective`
-* **master-layout:** footer info for medium size footer cannot be projected with `[orFooterInfoSMCollapse]` anymore. Use  `[orFooterInfo]` for all footer info, Oblique will display only the 1st line with small footer size on non collapsed mode
+* **master-layout:** footer info for medium size footer cannot be projected with `[orFooterInfoSMCollapse]` anymore. Use `[orFooterInfo]` for all footer info, Oblique will display only the 1st line with small footer size on non collapsed mode
 * **master-layout:** footer links cannot be projected with `[orFooterLinks]` anymore. Use `#orFooterLink` template instead
 * **master-layout:** footer links cannot be set as an `ORFooterLink` list in `MasterLayoutConfig` anymore. Use `#orFooterLink` template instead
 * **master-layout:** header control templates projected into `MasterLayoutComponent` must have `#orHeaderControl` attribute
-* The library is now delivered in Angular Package Format (APF). As a side-effect, the bundle name is now `oblique.reactive.umd.js`
+* **architecture** The library is now delivered in Angular Package Format (APF). As a side-effect, the bundle name is now `oblique.reactive.umd.js`
 
 
 
