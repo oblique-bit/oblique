@@ -3,6 +3,8 @@ import {CommonModule} from '@angular/common';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 
 import {NumberFormatDirective} from './number-format.directive';
+import { TelemetryService } from '../telemetry/telemetry.service';
+import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
 
 export {NumberFormatDirective} from './number-format.directive';
 
@@ -15,4 +17,7 @@ export {NumberFormatDirective} from './number-format.directive';
 	exports: [NumberFormatDirective]
 })
 export class NumberFormatModule {
+	constructor(telemetry: TelemetryService) {
+		requireAndRecordTelemetry(telemetry, NumberFormatModule);
+	}
 }

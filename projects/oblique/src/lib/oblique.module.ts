@@ -25,6 +25,8 @@ import {NumberFormatModule} from './number-format/number-format.module';
 import {OffCanvasModule} from './off-canvas/off-canvas.module';
 import {SearchBoxModule} from './searchbox/search-box.module';
 import {StickyModule} from './sticky/sticky.module';
+import {TelemetryService} from './telemetry/telemetry.service';
+import {requireAndRecordTelemetry} from './telemetry/telemetry-require';
 
 const OBLIQUE_MODULES = [
 	ColumnLayoutModule,
@@ -59,4 +61,7 @@ const OBLIQUE_MODULES = [
 	exports: OBLIQUE_MODULES
 })
 export class ObliqueModule {
+	constructor(telemetry: TelemetryService) {
+		requireAndRecordTelemetry(telemetry, ObliqueModule);
+	}
 }

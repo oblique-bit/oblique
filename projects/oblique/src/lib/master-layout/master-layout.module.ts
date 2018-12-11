@@ -9,6 +9,8 @@ import {SpinnerModule} from '../spinner/spinner.module';
 import {ScrollingModule} from '../scrolling/scrolling.module';
 import {OffCanvasModule} from '../off-canvas/off-canvas.module';
 import {ThemeService} from '../theme/theme.service';
+import {TelemetryService} from '../telemetry/telemetry.service';
+import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 
 import {MasterLayoutComponent} from './master-layout/master-layout.component';
 import {MasterLayoutService} from './master-layout.service';
@@ -21,6 +23,7 @@ import {MasterLayoutNavigationItemDirective} from './master-layout-navigation/ma
 import {MasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
 import {MasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
 import {MasterLayoutConfig} from './master-layout.config';
+
 export {MasterLayoutComponent} from './master-layout/master-layout.component';
 export {MasterLayoutService} from './master-layout.service';
 export {MasterLayoutHeaderToggleDirective} from './master-layout-header/master-layout-header-toggle.directive';
@@ -61,7 +64,8 @@ export {MasterLayoutConfig} from './master-layout.config';
 	]
 })
 export class MasterLayoutModule {
-	constructor(theme: ThemeService) {
+	constructor(theme: ThemeService, telemetry: TelemetryService) {
 		theme.setDefaultTheme();
+		requireAndRecordTelemetry(telemetry, MasterLayoutModule);
 	}
 }

@@ -9,6 +9,8 @@ import {MultiselectComponent} from './multiselect.component';
 import {MultiselectConfig} from './multiselect.config';
 import {MultiselectSearchPipe} from './multiselect-search.pipe';
 import {MultiselectTexts} from './multiselect.texts';
+import { TelemetryService } from '../telemetry/telemetry.service';
+import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
 
 export {MultiselectComponent} from './multiselect.component';
 export {MultiselectConfig} from './multiselect.config';
@@ -32,4 +34,7 @@ export {MultiselectTexts} from './multiselect.texts';
 	]
 })
 export class MultiselectModule {
+	constructor(telemetry: TelemetryService) {
+		requireAndRecordTelemetry(telemetry, MultiselectModule);
+	}
 }

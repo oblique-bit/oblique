@@ -6,6 +6,8 @@ import {SchemaValidationDirective} from './schema-validation.directive';
 import {SchemaValidateDirective} from './schema-validator';
 import {SchemaRequiredDirective} from './schema-required.directive';
 import {SchemaValidationService} from './schema-validation.service';
+import { TelemetryService } from '../telemetry/telemetry.service';
+import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
 
 export {SchemaValidationDirective} from './schema-validation.directive';
 export {SchemaValidateDirective} from './schema-validator';
@@ -23,4 +25,7 @@ export {draft06} from './draft06.decorator';
 	exports: [SchemaValidateDirective, SchemaValidationDirective, SchemaRequiredDirective]
 })
 export class SchemaValidationModule {
+	constructor(telemetry: TelemetryService) {
+		requireAndRecordTelemetry(telemetry, SchemaValidationModule);
+	}
 }

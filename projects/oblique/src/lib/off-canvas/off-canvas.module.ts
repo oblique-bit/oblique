@@ -6,6 +6,8 @@ import {OffCanvasToggleDirective} from './off-canvas-toggle.directive';
 import {OffCanvasService} from './off-canvas.service';
 import {OffCanvasContainerDirective} from './off-canvas-container.directive';
 import {OffCanvasBackdropDirective} from './off-canvas-backdrop.directive';
+import { TelemetryService } from '../telemetry/telemetry.service';
+import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
 
 export {OffCanvasToggleDirective} from './off-canvas-toggle.directive';
 export {OffCanvasService} from './off-canvas.service';
@@ -29,4 +31,7 @@ export {OffCanvasBackdropDirective} from './off-canvas-backdrop.directive';
 	]
 })
 export class OffCanvasModule {
+	constructor(telemetry: TelemetryService) {
+		requireAndRecordTelemetry(telemetry, OffCanvasModule);
+	}
 }

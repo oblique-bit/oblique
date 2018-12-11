@@ -5,6 +5,8 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 import {TranslateModule} from '@ngx-translate/core';
 
 import {TextControlClearDirective} from './text-control-clear.directive';
+import { TelemetryService } from '../telemetry/telemetry.service';
+import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
 
 export {TextControlClearDirective} from './text-control-clear.directive';
 
@@ -23,4 +25,7 @@ export {TextControlClearDirective} from './text-control-clear.directive';
 	]
 })
 export class TextControlClearModule {
+	constructor(telemetry: TelemetryService) {
+		requireAndRecordTelemetry(telemetry, TextControlClearModule);
+	}
 }

@@ -5,6 +5,8 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 import {UnsavedChangesTabsDirective} from './unsaved-changes-tabs.directive';
 import {UnsavedChangesTabsService} from './unsaved-changes-tabs.service';
 import {UnsavedChangesModule} from '../unsaved-changes/unsaved-changes.module';
+import { TelemetryService } from '../telemetry/telemetry.service';
+import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
 
 export {UnsavedChangesTabsDirective} from './unsaved-changes-tabs.directive';
 export {UnsavedChangesTabsService} from './unsaved-changes-tabs.service';
@@ -16,4 +18,7 @@ export {UnsavedChangesTabsService} from './unsaved-changes-tabs.service';
 	exports: [UnsavedChangesTabsDirective]
 })
 export class UnsavedChangesTabsModule {
+	constructor(telemetry: TelemetryService) {
+		requireAndRecordTelemetry(telemetry, UnsavedChangesTabsModule);
+	}
 }
