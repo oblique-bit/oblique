@@ -15,13 +15,11 @@ import {
 	MultiselectModule,
 	NotificationConfig,
 	NotificationModule,
-	NotificationService,
 	ObliqueHttpInterceptor,
 	ObliqueHttpInterceptorConfig,
 	ObliqueHttpModule,
 	OffCanvasModule,
 	SchemaValidationModule,
-	SchemaValidationService,
 	ScrollingModule,
 	SpinnerModule,
 	UnsavedChangesModule
@@ -71,8 +69,6 @@ export function createTranslateLoader(http: HttpClient) {
 		MasterLayoutModule
 	],
 	providers: [
-		NotificationService,
-		SchemaValidationService,
 		{
 			provide: NotificationConfig,
 			useValue: {
