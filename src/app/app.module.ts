@@ -30,6 +30,7 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HomePageComponent} from './home/home.page';
 import {HttpMockErrorInterceptor} from './samples/http-interceptor/http-mock-error.interceptor';
+import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
 
 // AoT requires an exported function for factories:
 export function createTranslateLoader(http: HttpClient) {
@@ -97,5 +98,6 @@ export class AppModule {
 		datepickerConfig.navigation = 'arrows';
 
 		interceptorConfig.api.notification.config.channel = 'app';
+		interceptorConfig.api.url = HttpInterceptorSampleComponent.API_URL;
 	}
 }
