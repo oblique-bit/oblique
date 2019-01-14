@@ -62,6 +62,7 @@ export {ScrollDetectionDirective, ScrollingEvents, ScrollingModule, TopControlCo
 export {SpinnerEvent, SpinnerComponent, SpinnerModule, SpinnerService} from './lib/spinner/spinner.module';
 export {TextControlClearDirective, TextControlClearModule} from './lib/text-control-clear/text-control-clear.module';
 export {ToggleDirective, ToggleModule} from './lib/toggle/toggle.module';
+export {TranslateParamsModule, TranslateParamsPipe} from './lib/translate-params/translate-params.module';
 export {UnsavedChangesDirective, UnsavedChangesGuard, UnsavedChangesModule, UnsavedChangesService} from './lib/unsaved-changes/unsaved-changes.module';
 export {Unsubscribable} from './lib/unsubscribe.class';
 export {ObliqueModule} from './lib/oblique-reactive.module';
