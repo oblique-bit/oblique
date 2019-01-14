@@ -10,7 +10,7 @@ import {ErrorMessagesService} from './error-messages.service';
 @Component({
 	selector: 'or-error-messages',
 	template: `
-		<div class="form-control-feedback" *ngFor="let error of errors">{{error.key | translate:error.params}}</div>`
+		<div class="form-control-feedback" *ngFor="let error of errors">{{error.key | orTranslateParams:error.params}}</div>`
 })
 export class ErrorMessagesComponent extends Unsubscribable implements AfterViewInit {
 	@Input() control: NgControl;
