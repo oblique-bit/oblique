@@ -2,7 +2,9 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {By} from '@angular/platform-browser';
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
 import {NavTreeComponent, NavTreeFakeFocusDirective, NavTreeItemModel} from 'oblique-reactive';
+import {MockTranslatePipe} from 'tests';
 
 @Component({
 	template: `
@@ -51,6 +53,7 @@ describe('NavTreeFakeFocusDirective', () => {
 	let element: DebugElement;
 	let directive: NavTreeFakeFocusDirective;
 	let inputElement: DebugElement;
+	const tranlsateMock = jasmine.createSpyObj('TranslateService', ['']);
 
 	const keydown = (code: string) => {
 		inputElement.triggerEventHandler(
@@ -67,7 +70,8 @@ describe('NavTreeFakeFocusDirective', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
-			declarations: [TestComponent, NavTreeComponent, NavTreeFakeFocusDirective],
+			declarations: [TestComponent, NavTreeComponent, NavTreeFakeFocusDirective, MockTranslatePipe],
+			providers: [{provide: TranslateService, useValue: tranlsateMock}],
 			schemas: [NO_ERRORS_SCHEMA]
 		}).compileComponents();
 	}));

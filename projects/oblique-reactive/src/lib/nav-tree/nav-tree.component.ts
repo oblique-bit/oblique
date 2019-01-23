@@ -1,5 +1,6 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, RouterLinkActive} from '@angular/router';
+import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe.class';
@@ -16,8 +17,7 @@ import {NavTreeItemModel} from './nav-tree-item.model';
 					role="presentation"
 					(or.navTree.item.toggleCollapsed)="item.collapsed = !item.collapsed"
 					[attr.id]="item.id ? (prefix ? prefix + '-' : '') + item.id : null"
-					[class.disabled]="item.disabled === true || null"
-				>
+					[class.disabled]="item.disabled === true || null">
 					<a class="nav-link" role="treeitem" aria-selected="false"
 					   [routerLink]="item.routes"
 					   #rla="routerLinkActive" routerLinkActive [routerLinkActiveOptions]="{exact: !activateAncestors}"
@@ -36,8 +36,7 @@ import {NavTreeItemModel} from './nav-tree-item.model';
 							[ngClass]="variant"
 							[class.expanded]="parentExpanded && !item.collapsed"
 							[class.disabled]="item.disabled === true || null"
-							role="tree"
-						>
+							role="tree">
 							<ng-container *ngTemplateOutlet="itemList; context:{ $implicit: item.items, parentExpanded: parentExpanded && !item.collapsed}">
 							</ng-container>
 						</ul>
@@ -61,38 +60,23 @@ import {NavTreeItemModel} from './nav-tree-item.model';
 	`]
 })
 export class NavTreeComponent extends Unsubscribable {
-
-	public static DEFAULTS = {
+	static DEFAULTS = {
 		VARIANT: 'nav-bordered nav-hover',
 		HIGHLIGHT: 'nav-tree-pattern-highlight',
 		LABEL_FORMATTER: defaultLabelFormatterFactory
 	};
 
 	activeFragment: string; // TODO: remove when https://github.com/angular/angular/issues/13205
-
-	@Input()
-	items: Array<NavTreeItemModel>;
-
-	@Input()
-	prefix = 'nav-tree';
-
-	@Input()
-	filterPattern: string;
-
-	@Input()
-	labelFormatter: (item: NavTreeItemModel, filterPattern) => string = NavTreeComponent.DEFAULTS.LABEL_FORMATTER();
-
-	@Input()
-	variant = NavTreeComponent.DEFAULTS.VARIANT;
-
-	@Input()
-	pathPrefix: string;
-
-	@Input()
-	activateAncestors: true;
+	@Input() items: NavTreeItemModel[] = [];
+	@Input() prefix = 'nav-tree';
+	@Input() filterPattern: string;
+	@Input() labelFormatter: (item: NavTreeItemModel, filterPattern?: string) => string = NavTreeComponent.DEFAULTS.LABEL_FORMATTER.bind(this)();
+	@Input() variant = NavTreeComponent.DEFAULTS.VARIANT;
+	@Input() pathPrefix: string;
+	@Input() activateAncestors = true;
 
 	// TODO: remove when https://github.com/angular/angular/issues/13205
-	constructor(private readonly route: ActivatedRoute) {
+	constructor(private readonly route: ActivatedRoute, private readonly translate: TranslateService) {
 		super();
 		this.route.fragment
 			.pipe(takeUntil(this.unsubscribe))
@@ -104,7 +88,8 @@ export class NavTreeComponent extends Unsubscribable {
 	@Input()
 	patternMatcher(item: NavTreeItemModel, pattern = ''): boolean {
 		pattern = pattern.replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
-		const match = new RegExp(pattern, 'gi').test(item.label);
+		const label = this.translate.instant(item.label);
+		const match = new RegExp(pattern, 'gi').test(label);
 		const childMatch = (item.items || []).some((subItem) => {
 			const subMatch = this.patternMatcher(subItem, pattern.replace(/\\/g, ''));
 			if (subMatch) {
@@ -158,9 +143,9 @@ export function defaultLabelFormatterFactory() {
 	// noinspection UnnecessaryLocalVariableJS because this will result in a build error
 	const formatter = (item: NavTreeItemModel, filterPattern: string) => {
 		filterPattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
-		return !filterPattern ? item.label : item.label.replace(
-			new RegExp(filterPattern, 'ig'),
-			(text) => `<span class="${NavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`
+		const label = this.translate.instant(item.label);
+		return !filterPattern ? label : label.replace(
+			new RegExp(filterPattern, 'ig'), (text) => `<span class="${NavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`
 		);
 	};
 

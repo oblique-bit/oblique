@@ -13,8 +13,8 @@ export class NavTreeItemModel {
 	fragment?: string; // See `fragment` docs under https://angular.io/api/router/RouterLink
 	queryParams?: any; // See `queryParams` docs under https://angular.io/api/router/RouterLink
 
-	disabled = false;
-	collapsed = false;
+	disabled ? = false;
+	collapsed ? = false;
 
 	parent?: NavTreeItemModel; // Reference to parent, if any.
 

@@ -2,7 +2,10 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {By} from '@angular/platform-browser';
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
+
 import {NavTreeComponent, NavTreeItemModel} from 'oblique-reactive';
+import {MockTranslatePipe} from 'tests';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
 	template: `
@@ -56,11 +59,14 @@ describe('NavTreeComponent', () => {
 	let component: NavTreeComponent;
 	let fixture: ComponentFixture<TestComponent>;
 	let element: DebugElement;
+	const tranlsateMock = jasmine.createSpyObj('TranslateService', ['instant']);
+	tranlsateMock.instant.and.callFake(key => key);
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
-			declarations: [TestComponent, NavTreeComponent],
+			declarations: [TestComponent, NavTreeComponent, MockTranslatePipe],
+			providers: [{provide: TranslateService, useValue: tranlsateMock}],
 			schemas: [NO_ERRORS_SCHEMA]
 		}).compileComponents();
 	}));
