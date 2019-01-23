@@ -1,4 +1,4 @@
-import {ModuleWithProviders, NgModule} from '@angular/core';
+import {NgModule, ModuleWithProviders} from '@angular/core';
 
 import {ColumnLayoutModule} from './column-layout/column-layout.module';
 import {DatepickerModule} from './datepicker/datepicker.module';
@@ -21,6 +21,7 @@ import {ToggleModule} from './toggle/toggle.module';
 import {UnsavedChangesModule} from './unsaved-changes/unsaved-changes.module';
 import {NumberFormatModule} from './number-format/number-format.module';
 import {OffCanvasModule} from './off-canvas/off-canvas.module';
+import {SearchBoxModule} from './searchbox/search-box.module';
 import {TranslateParamsPipe} from './translate-params/translate-params.pipe';
 import {TranslateParamsModule} from './translate-params/translate-params.module';
 
@@ -42,6 +43,7 @@ const OBLIQUE_MODULES = [
 	OffCanvasModule,
 	SchemaValidationModule,
 	ScrollingModule,
+	SearchBoxModule,
 	SpinnerModule,
 	TextControlClearModule,
 	ToggleModule,
@@ -67,6 +69,7 @@ const OBLIQUE_MODULES = [
 		ObliqueHttpModule,
 		OffCanvasModule,
 		SchemaValidationModule,
+		SearchBoxModule,
 		ScrollingModule,
 		SpinnerModule,
 		TextControlClearModule,

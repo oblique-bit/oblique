@@ -59,6 +59,7 @@ export {
 	SchemaValidatorInstance
 }from './lib/schema-validation/schema-validation.module';
 export {ScrollDetectionDirective, ScrollingEvents, ScrollingModule, TopControlComponent} from './lib/scrolling/scrolling.module';
+export {SearchBoxDirective, SearchWidgetItem, SearchBoxComponent, SearchBoxResultsComponent, SearchBoxModule} from './lib/searchbox/search-box.module';
 export {SpinnerEvent, SpinnerComponent, SpinnerModule, SpinnerService} from './lib/spinner/spinner.module';
 export {TextControlClearDirective, TextControlClearModule} from './lib/text-control-clear/text-control-clear.module';
 export {ToggleDirective, ToggleModule} from './lib/toggle/toggle.module';
