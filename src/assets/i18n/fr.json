@@ -189,6 +189,8 @@
         "float": "Ungültiges Format, bitte geben Sie eine Zahl mit Dezimalstellen ein",
         "date": "Ungültiges Format, bitte geben Sie eine korrekte Datum"
       },
+      "test": "Ce champ a une {{value}}",
+      "testValue": "valeur traduite",
       "custom": {
         "date": {
           "day": {

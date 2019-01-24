@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, NgForm, Validators, ValidationErrors} from '@angular/forms';
 import {NotificationService} from 'oblique-reactive';
 
 @Component({
@@ -21,13 +21,13 @@ export class FormControlStateSampleComponent {
 	constructor(private readonly notificationService: NotificationService, formBuilder: FormBuilder) {
 		this.formData = formBuilder.group({
 			numberOptional: '',
-			numberMandatory: ['', Validators.required],
+			numberMandatory: ['', this.customValidator()],
 			numberMandatoryPristine: ['', Validators.required],
 			address: formBuilder.group({
 				street: ['', [Validators.required, Validators.minLength(5)]],
-				number: ['', Validators.required],
+				number: ['', Validators.required]
 			}),
-			email: ['', Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)],
+			email: ['', Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]
 		});
 	}
 
@@ -41,5 +41,13 @@ export class FormControlStateSampleComponent {
 
 	reset(form?: NgForm): void {
 		(form || this.formData).reset();
+	}
+
+	private customValidator(): ValidationErrors {
+		return (): ValidationErrors => {
+			return {
+				test: {value: 'i18n.validation.testValue'}
+			};
+		};
 	}
 }

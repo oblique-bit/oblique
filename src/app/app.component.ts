@@ -31,6 +31,6 @@ export class AppComponent {
 	];
 
 	constructor(config: MasterLayoutConfig) {
-		config.locale.locales = ['en'];
+		config.locale.locales = ['en', 'fr'];
 	}
 }

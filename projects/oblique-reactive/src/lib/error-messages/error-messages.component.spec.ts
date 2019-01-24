@@ -2,8 +2,8 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule, NgForm} from '@angular/forms';
 import {Component, ViewChild} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {MockTranslatePipe} from 'tests';
 import {ErrorMessagesComponent, ErrorMessagesService, FormControlStateDirective} from 'oblique-reactive';
+import {MockTranslateParamsPipe} from 'testhelpers/mock-translate-params.pipe';
 
 @Component({
 	template: `
@@ -19,7 +19,7 @@ class TestComponent {
 	@ViewChild(ErrorMessagesComponent) errorMessages: ErrorMessagesComponent;
 }
 
-describe('ErrorMessagesComponent', () => {
+fdescribe('ErrorMessagesComponent', () => {
 	let component: TestComponent;
 	let fixture: ComponentFixture<TestComponent>;
 	let formControlStateDirectiveMock;
@@ -41,7 +41,7 @@ describe('ErrorMessagesComponent', () => {
 			declarations: [
 				ErrorMessagesComponent,
 				TestComponent,
-				MockTranslatePipe
+				MockTranslateParamsPipe
 			],
 			imports: [FormsModule],
 			providers: [

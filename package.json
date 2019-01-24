@@ -109,7 +109,6 @@
     "karma-firefox-launcher": "^1.1.0",
     "karma-jasmine": "^2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
-    "karma-parallel": "^0.3.0",
     "karma-sonarqube-unit-reporter": "0.0.18",
     "ng-packagr": "^4.4.0",
     "oblique-ui": "^3.0.0",
