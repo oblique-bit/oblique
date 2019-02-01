@@ -1,14 +1,10 @@
 # [ObliqueReactive](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/)
 
-> Read the developer docs: <https://eui.bit.admin.ch/oblique/>
-
-Reactive web framework powered by [ObliqueUI](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-ui/) and [Angular](https://github.com/angular/angular).
+Read the developer docs: <https://oblique.bit.admin.ch/>
 
 ObliqueReactive uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.angular.io/) and [Sass](http://sass-lang.com/) to fetch dependencies, compile & build assets, compose HTML and serve & watch web content.
 
-> **Starting a new business web project?**
->
-> If you are starting a new business web project, please clone directly [ObliqueReactiveSeed](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive-seed/), an ObliqueReactive-enabled project template. 
+If you are starting a new business web project, please clone directly [ObliqueReactiveSeed](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive-seed/), an ObliqueReactive-enabled project template. 
 
 ## Using ObliqueReactive as a dependency
 
@@ -41,152 +37,119 @@ ObliqueReactive uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.ang
 
 An usage example can be found in [ObliqueReactiveSeed](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive-seed/)
 
-## Working on ObliqueReactive (Oblique *core* developers only)
+## Working on ObliqueReactive (Oblique core developers only)
 
+### Prerequisites
+- GIT
+- nodejs & npm
+- AngularCli installed globally: `npm i -g @angular/cli`
+- ncu installed globally: `npm install -g npm-check-updates`
+
+### Setup the the environment
 - Clone the repo: `git clone https://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive.git`.
+- Install project dependencies: `npm i`
+- start the showcase: `npm start`
 
-### Install
+### Commit message format
+We have very precise rules over how our git commit messages can be formatted. This leads to more readable messages that are easy to follow when looking 
+through the project history. But also, we use the git commit messages to generate the Oblique change log.
+For better readability, there should be 1 commit per change and any line of the commit message cannot be longer 100 characters! 
+Each commit message consists of a **header**, a **body** and a **footer**. The header has a special format that includes a **type**, a **scope** and a 
+**subject**:
 
-#### Prerequisites
+	<type>(<scope>): <subject>
+	
+	<body>
+	
+	<footer>
 
-* Git: <http://git-scm.com/downloads>
+This rule only concern commit on the Oblique library. Changes to the showcase must not be mixed with those of the library and have not to follow any specific
+ format.
+#### Header
+The header is mandatory and lowercase only. The scope of the header is optional. There no space between **type** and **scope**. 
 
-> If you are running Windows, select following options during installation:
-> - _Run Git from the Windows Command Prompt_
-> - _Checkout Windows-style, commit Unix-style endings_
+##### Type
+The type is mandatory and must be one of the following:
+* **build**: Changes that affect the build system or external dependencies (example scopes: gulp, npm)
+* **docs**: Documentation only changes
+* **feat**: A new feature or an improvement of an existing feature
+* **fix**: A bug fix
+* **perf**: A code change that improves performance
+* **refactor**: A code change that neither fixes a bug nor adds a feature
+* **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+* **test**: Adding missing tests or correcting existing tests
+* **chore**: Anything that do not fit in previous types (e.g. release, dependencies update)
 
-* NPM via Node.js: <http://nodejs.org/download/>
+###### Scope
+The scope is optional and should be the name of the Oblique feature affected:
+* **column-layout**
+* **datepicker**
+* **document-meta**
+* **error-messages**
+* **filter-box**
+* **form-control-state**
+* **http-interceptor**
+* **master-layout**
+* **multiselect**
+* **nav-tree**
+* **navigable**
+* **navigator**
+* **notification**
+* **number-format**
+* **off-canvas**
+* **schema-validation**
+* **scrolling**
+* **spinner**
+* **text-control-clear**
+* **toggle**
+* **unsaved-changes**
+* **unsubscribe**
 
-> NPM, the Node Package Manager, is installed during the Node.js installation process.
+#####Subject
+The subject is mandatory and contains a succinct description of the change:
 
-#### Environment setup
+* use the imperative, present tense: "change" not "changed" nor "changes"
+* don't capitalize the first letter
+* no dot (.) at the end
 
-##### GIT configuration
+#### Body
+The body is optional.
+Just as in the subject, use the imperative, present tense: "change" not "changed" nor "changes". The body should include the motivation for the change and contrast this with previous behavior.
 
-If you are using Git for the first time, configure your user information as well:
+####Footer
+The footer is optional and should contain a reference to a JIRA issue if any, e.g.: `OUI-715`.
 
-	git config --global user.name "<firstname> <lastname>"
-	git config --global user.email "<email>"
+It should also contain any information about Breaking Changes.
 
-##### Proxy configuration (if applicable)
+Breaking Changes have to start with the word BREAKING CHANGE: with a newline. The rest of the commit message is then used for this.
 
-###### Environment Variables
+	OUI-715
+	BREAKING CHANGE:
+	Function `funcA` have been removed. Use `funcB` instead 
 
-> *Note*: proxy URL must start with `http[s]://`!
+### Checking for updates
+- Bump dependencies through Angular cli first: `ng update`
+- Then update the dependencies without build-in schematics: `ncu` 
 
-	HTTP_PROXY <http-proxy-url>
-	HTTPS_PROXY <http-or-https-proxy-url>
-	NO_PROXY localhost,127.0.0.1,admin.ch
-
-> *Note*: `HTTP_PROXY` & `HTTPS_PROXY` values for the BIT proxy are identical (i.e. there is no dedicated HTTPS proxy)
-
-###### GIT Config (.gitconfig)
-
-	git config --global url."https://".insteadOf git://
-	git config --global http."https://stash.eap.bit.admin.ch/".proxy ""
-	git config --global http.proxy <http-proxy-url>
-
-#### First-time setup
-
-Install *project* dependencies (`npm` will look at [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/package.json) and automatically install the necessary dependencies listed there):
-
-		npm install
-
-#### Troubleshooting dependencies
-
-Should you encounter problems with installing dependencies or running AngularCLI / Gulp commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
-
-### Build & Run the showcase
-
-#### Development tasks
-
-	npm start
-
-_This task builds the project, runs the client application by starting a local server and watches for file changes._
-
-> If task fails with privilege reasons, consider installing these `npm` libraries *globally*:
-
-	npm install -g typescript @angular/cli
-
-#### Production tasks
-
-	npm start --prod
-
-_Same as `npm start`, except that it will serve optimized resources. This is useful to test production build._
-
-### <a name="managing-dependencies"></a> Managing dependencies
-
-#### npm dependencies
-
-Run the following command to install a new npm dependency:
-
-	npm i <dependency> -S
-
-Before you do so, make sure you're in your project's root folder, where [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-reactive/browse/package.json) is.
-After everything is done, you should see your new dependency listed in [package.json](https://stash.eap.bit.admin.ch/projects/oui/repos/oblique2-reactive/browse/package.json).
-
-If you need to install a global dependency, such as Gulp, switch the *-S* to a *-g* in your command. This would look something like this:
-
-	npm i <dependency> -g
-
-Installing a global npm dependency makes it accessible from every command line, independent of your console's location. Local dependencies are only accessible inside a project. Most of the time it isn't neccessary for you to install global npm packages.
-
-You can search through npm packages over at [npmjs.com](https://www.npmjs.com/).
-
-#### Checking for updates
-
-	npm install -g npm-check-updates
-
-You can now check for updates and bump `package.json` dependencies accordingly:
-
-	ncu
-
-## <a name="release"></a> Releasing ObliqueReactive
-
-> TODO: Releasing & publishing should be performed with a continuous integration tool and not manually!
+## Releasing ObliqueReactive
 
 Before releasing, execute the following steps:
 
 1. Switch to develop branch, if not already on it.
 2. Create a new package version 
+```
+npm version patch|minor|major
+```
 
-	npm version patch|minor|major
-	
-	> This will automatically run "npm run ci-build" (lint, test, build), then bump the version in the package.json and create a updated version of the CHANGELOG.md.
-	
-	1. `patch` is for bugfix only.
-	1. `minor` is for new features or features improvements without `BREAKING CHANGE`
-	1. `major` indicates at least 1 `BREAKING CHANGE`
-	
-3. Review the changes in the CHANGELOG.md
+* `patch` is for bugfix only.
+* `minor` is for new features or features improvements without `BREAKING CHANGE`
+* `major` indicates at least 1 `BREAKING CHANGE`
+
+> This will automatically lint, test and build the library, bump the version in the package.json and create a updated version of the CHANGELOG.md.
+
+3. Review the changes in the `CHANGELOG.md`
 1. Commit the changes (`CHANGELOG.md`, `package.json`, `package-lock.json`)
-
-	`npm run release`
-
-	> This will commit & push the changes to the master and upload the npm package to Nexus repository.
-
-## <a name="npm-link"></a> Debug oblique-reactive in a different project
-If you need to debug or test oblique-reactive in a 
-
-1. Prepare oblique-reactive (in oblique-reactive)
-
-	`npm link dist`
-
-2. Connect your project to oblique-reactive (in your project) 
-	`npm link`
-	
-	`npm link oblique-reactive`
-
-	> This will create a symlink in your projects node_modules/oblique-reactive pointing to oblique-reactive/dist folder.
-
-3. Re-build on oblique-reactive changes (in oblique-reactive)
-
-	`npm run dev-watch`
-
-	> This will re-build on every change in the oblique-reactive project.
-
-4. When finished with your work, you can switch back to the npm registry version of oblique-reactive (in your project).
-
-	`npm unlink oblique-reactive`
-	
-	`npm install`
+```
+`npm run release`
+```
+> This will commit & push the changes to the master and Jenkins will then upload the npm package to the Nexus repository.
