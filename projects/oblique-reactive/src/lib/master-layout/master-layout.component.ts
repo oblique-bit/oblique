@@ -134,6 +134,7 @@ export class MasterLayoutComponent extends Unsubscribable {
 		this.updateApplicationFixed();
 		this.updateCoverLayout();
 		this.updateNoNavigation();
+		this.updateOffCanvas();
 
 		this.masterLayout.menuCollapsedChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.headerOpen = !value;
@@ -162,6 +163,13 @@ export class MasterLayoutComponent extends Unsubscribable {
 		this.masterLayout.noNavigation = this.noNavigation;
 		this.masterLayout.noNavigationChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.noNavigation = value;
+		});
+	}
+
+	private updateOffCanvas(): void {
+		this.masterLayout.offCanvas = this.offCanvas;
+		this.masterLayout.offCanvasChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+			this.offCanvas = value;
 		});
 	}
 }
