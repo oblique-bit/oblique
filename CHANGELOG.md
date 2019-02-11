@@ -84,7 +84,6 @@
 * **architecture** The library is now delivered in Angular Package Format (APF). As a side-effect, the bundle name is now `oblique.reactive.umd.js`
 
 
-
 <a name="2.1.2"></a>
 # [2.1.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.1.2) (2018-09-25)
 
@@ -161,6 +160,7 @@
 * **test:** ensure `--prod` parameter is properly propagated to `ng test` ([fd42fbc](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/fd42fbc))
 * **test:** ensure `prebuild` npm script is executed during `ci-build` ([482a4b6](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/482a4b6))
 
+
 <a name="2.0.0-RC.5"></a>
 # [2.0.0-RC.5](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.5) (2018-07-04)
 
@@ -186,6 +186,7 @@
 * **navigable:**
 	- `NavigableGroupComponent` is now exported as `orNavigableGroup`
 	- `NavigableDirective` is now exported as `orNavigable`
+
 
 <a name="2.0.0-RC.4"></a>
 # [2.0.0-RC.4](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.4) (2018-04-17)
@@ -215,6 +216,7 @@
 * **filter-box:** use the new `text-control` ObliqueUI component for clearing filter box control (& refactor other component to use `OrFilterBox`) ([ea3d02e](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/ea3d02e))
 * **orNavTree:** use `ngTemplate` instead of recursive component ([b8e9e59](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b8e9e59))
 * **orNavTreeFakeFocus:** do not change CSS resources at runtime, reorganize source code and fix some minor issues ([f8882c7](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f8882c7))
+
 
 <a name="2.0.0-RC.3-1"></a>
 # [2.0.0-RC.3-1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.3-1) (2018-02-08)
@@ -306,6 +308,7 @@
 * **navigator:** rename `orNavigator` into `or-navigator`
 * **scss:** remove any import of ObliqueReactive CSS styles (mainly in your Angular CLI configuration) as they are now bundled with components.
 
+
 <a name="2.0.0-RC.2"></a>
 # [2.0.0-RC.2](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.2) (2017-08-04)
 
@@ -354,6 +357,7 @@
 * **multiselect:**
 	- If you used `[settings]` of `MultiselectComponent` you now have to bind every config value separately.
 
+
 <a name="2.0.0-RC.1"></a>
 # [2.0.0-RC.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.1) (2017-06-23)
 
@@ -369,6 +373,7 @@
 ## BREAKING CHANGES
 ObliqueReactive has been migrated to Angular 4.
 This of course breaks all compatibility to any previous release of ObliqueReactive. 
+
 
 <a name="1.4.1"></a>
 # [1.4.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.4.1) (2018-10-23)
@@ -389,6 +394,7 @@ This of course breaks all compatibility to any previous release of ObliqueReacti
 ## Bug Fixes
 * **multiselect**: remove custom `checkboxes`  
 
+
 <a name="1.4.0"></a>
 # [1.4.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.4.0) (2018-03-20)
 
@@ -404,24 +410,25 @@ This of course breaks all compatibility to any previous release of ObliqueReacti
 * **animate.css:** 3.6.1
 
 ## BREAKING CHANGES
-
 * deprecated `angular-ui-router` has been dropped in favor of `@router/angularjs`
 	- the project's dependencies have to be updated
 	- the project's typings related to router have to be updated
 	- `$stateChange*` events are replaced with [Transitions hooks](https://ui-router.github.io/ng1/docs/latest/classes/transition.transitionservice.html)
 
+
 <a name="1.3.9"></a>
 # [1.3.9](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.3.9) (2017-10-17)
 
 ## Bug Fixes
-
 * **schemaValidation:** accept zero for `number` and `integer` inputs ([7a14c14](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/7a14c14))
+
 
 <a name="1.3.8"></a>
 # [1.3.8](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.3.8) (2017-09-18)
 
 ## Bug Fixes
 * **number-format:** ensure model value is always of type number (instead of string) ([b90fcf7](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/b90fcf7))
+
 
 <a name="1.3.7"></a>
 # [1.3.7](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.3.7) (2017-08-15)
@@ -439,7 +446,6 @@ This of course breaks all compatibility to any previous release of ObliqueReacti
 # [1.3.6](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.3.6) (2017-05-24)
 
 ## Bug Fixes
-
 * **datepicker:** providing custom template for the uib-datepicker-popup, this ensures the rebinding of the min- and max-dates ([11767d8](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/11767d8)), closes [#OUI-464](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/issues/OUI-464)
 
 
@@ -452,12 +458,10 @@ This of course breaks all compatibility to any previous release of ObliqueReacti
 * **moment:** 2.18.1
 
 ## Bug Fixes
-
 * **datepicker:** parse programmatically changed min- and max-dates ([46ab410](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/46ab410)), closes [#OUI-448](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/issues/OUI-448)
 * **number-format:** ensure that empty values are correctly parsed and that formatter understands 0 decimals ([0d87acb](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/0d87acb)), closes [#OUI-449](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/issues/OUI-449) [#OUI-450](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/issues/OUI-450)
 
 ## Features
-
 * **date-picker:** new `dateChange` binding allows tracking of `ngModel` changes ([ea5de08](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/ea5de08)), closes [#OUI-447](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/issues/OUI-447)
 
 
@@ -465,17 +469,14 @@ This of course breaks all compatibility to any previous release of ObliqueReacti
 # [1.3.4](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.3.4) (2017-04-11)
 
 ## Bug Fixes
-
 * **error-messages:** renders error messages at the same time as form-control adds the has-error class ([7d9003a](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/7d9003a))
 * **datepicker:** triggers min/max validation if the min or max value changes ([123fed5](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/123fed5))
 * **number-format:** keeps an invalid viewValue on focus ([d9d19e4](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/d9d19e4))
 
 ## Features
-
 * **number-format:** only parses number if its not `NaN` ([8e452b0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/8e452b0))
 
 ## BREAKING CHANGES
-
 * **datepicker:** Now uses the ngModelOption `allowInvalid = true`: Dates that do not pass the min/max validation will still be written to the model ([123fed5](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/123fed5))
 
 
@@ -483,11 +484,9 @@ This of course breaks all compatibility to any previous release of ObliqueReacti
 # [1.3.3](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.3.3) (2017-03-16)
 
 ## Bug Fixes
-
 * **error-messages:** `ORErrorMessagesModule` is now exported
 
 ## Features
-
 * **error-messages:** add option `showErrorMessages` on the `DatepickerPopupConfig`, if set to `true` the `date-picker` will show the `error-messages` by itself (default: true) 
 
 Can be globally configured like this:
@@ -499,8 +498,8 @@ Can be globally configured like this:
 ```
 
 ## BREAKING CHANGES
-
 * **error-messages:** `error-message` was renamed to `error-messages`
+
 
 <a name="1.3.2"></a>
 # [1.3.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.3.2) (2017-03-14)
@@ -542,13 +541,13 @@ Can be globally configured like this:
 	- **ORTypeaheadModule**
 	- **ORUnsavedChangesModule**
 	- **ORUtilModule**
-	
-## BREAKING CHANGES
 
+## BREAKING CHANGES
 * **i18n:** ObliqueReactive locales have a new prefix (`i18n.oblique`) and get published:
 	- you have to remove the ObliqueReactive specific translation codes from your locales and merge them together with a gulp task. See merge-i18n task in ObliqueReactiveSeed
 	- if you use texts that are now published with ObliqueReactive you have to change the prefix from `i18n` to `i18n.oblique` everywhere you use them
 * `HttpInterceptor` has been renamed to `ObliqueHttpInterceptor` ([c727ac7](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/c727ac7)). If you use `ObliqueHttpInterceptor`, you will have to update the interceptor config in your `app.module` from `$httpProvider.interceptors.push('ObliqueHttpInterceptor');` to `$httpProvider.interceptors.push('HttpInterceptor');`.
+
 
 <a name="1.3.1"></a>
 # [1.3.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.3.1) (2017-01-24)
@@ -560,6 +559,7 @@ Can be globally configured like this:
 * **angular-ui-router:** 0.4.2
 
 (see [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse/package.json?at=1.3.1) for the full list of dependencies)
+
 
 <a name="1.3.0"></a>
 # [1.3.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.3.0) (2016-12-12)
@@ -617,6 +617,7 @@ Can be globally configured like this:
 	- `has-error="controlName"` becomes `&lt;form-control name="controlName" /&gt;`
 	- `has-error-pristine` becomes `&lt;form-control pristine-validation /&gt;`
 
+
 <a name="1.2.7"></a>
 # [v1.2.7](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=v1.2.7) (2016-05-31)
 
@@ -630,6 +631,7 @@ Can be globally configured like this:
 * **navigable:** ensure `navigable` item gets activated when a child element gets focused ([972e7ad](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/972e7ad), [df64911](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/df64911))
 * **ngAnimate:** ensure `ngRepeat` does not show stale items due to ngAnimate transitions ([51cbfdc](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/51cbfdc))
 * **typeahead:** provide a workaround for scrollable AngularUI Typeahead suggestions and create a sample state to showcase it. ([cca3282](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/cca3282))
+
 
 <a name="1.2.2"></a>
 # [v1.2.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=v1.2.2) (2015-09-11)
@@ -648,6 +650,7 @@ Can be globally configured like this:
 * **notifications:** notification can now be dismissed with the close button ([a24bf28](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/a24bf28))
 * **schema-validation:** fix nested properties validation and showcase with a sample usage ([6ff2932](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/commits/6ff2932))
 
+
 <a name="0.0.3"></a>
 # [v0.0.3](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=v0.0.3) (2015-03-18)
 
@@ -656,6 +659,7 @@ Can be globally configured like this:
 
 ## BREAKING CHANGES
 * notifications: API-specific methods are now scoped under `$http.api` (i.e. `$http.api.get()`, `$http.api.post()`, etc.)
+
 
 <a name="0.0.2"></a>
 # [v0.0.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=v0.0.2) (2015-03-11)
