@@ -114,23 +114,6 @@ export class DatepickerComponent implements AfterViewInit {
 		}
 	}
 
-	// TODO: only apply this listener if the popup is open and remove it as soon as it's closed.
-	@HostListener('document:click', ['$event.target'])
-	onDocumentClick(target: HTMLElement) {
-		if (this.ngbDatePicker.isOpen()) {
-			let parentFound = false;
-			while (target != null && !parentFound) {
-				if (target === this.element.nativeElement) {
-					parentFound = true;
-				}
-				target = target.parentElement;
-			}
-			if (!parentFound) {
-				this.ngbDatePicker.close();
-			}
-		}
-	}
-
 	ngAfterViewInit() {
 		if (!this.ngbDatePicker) {
 			throw new Error('or-date-picker requires a transcluded ngbDatepicker!');
