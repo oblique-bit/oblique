@@ -52,7 +52,8 @@ export class SpinnerComponent extends Unsubscribable implements OnInit {
 		spinnerService.events.pipe(takeUntil(this.unsubscribe))
 			.subscribe((event: SpinnerEvent) => {
 				if (event.channel === this.channel) {
-					this.$state = event.active ? 'in' : 'out';
+					// TODO: Workaround until https://github.com/angular/angular/issues/28801 is solved
+					setTimeout(() => this.$state = event.active ? 'in' : 'out');
 				}
 			});
 	}
