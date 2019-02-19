@@ -15,9 +15,11 @@ export class SchemaValidatorInstance {
 			return {required: true};
 		}
 
-		this.ajv.validate(propertyPath, value);
-		if (this.ajv.errors && value != null && value !== '') {	// when a value is empty, do not check its type
-			return {[this.ajv.errors[0].keyword]: this.ajv.errors[0].params};
+		if (this.ajv.getSchema(propertyPath)) {
+			this.ajv.validate(propertyPath, value);
+			if (this.ajv.errors && value != null && value !== '') {	// when a value is empty, do not check its type
+				return {[this.ajv.errors[0].keyword]: this.ajv.errors[0].params};
+			}
 		}
 
 		return null;
@@ -43,7 +45,7 @@ export class SchemaValidatorInstance {
 	}
 
 	private addSchema(schema: any, parentPropertyName?): void {
-		Object.keys(schema.properties).forEach((propertyName) => {
+		Object.keys(schema.properties || {}).forEach((propertyName) => {
 			const propertyPath = parentPropertyName ? `${parentPropertyName}.${propertyName}` : propertyName;
 			if (schema.properties[propertyName].properties) {
 				this.addSchema(schema.properties[propertyName], propertyPath);
