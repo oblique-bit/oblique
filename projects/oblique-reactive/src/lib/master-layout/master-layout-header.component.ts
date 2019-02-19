@@ -146,9 +146,9 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 		this.headerControl.forEach((elt: ElementRef) => {
 			Array.from(elt.nativeElement.children).forEach((item: HTMLElement) => {
 				this.renderer.addClass(item, 'control-link');
-				if (item.nodeName === 'A') {
-					this.renderer.addClass(item, 'nav-link');
-				}
+			});
+			elt.nativeElement.querySelectorAll('a').forEach((item: HTMLElement) => {
+				this.renderer.addClass(item, 'nav-link');
 			});
 		});
 	}
