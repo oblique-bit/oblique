@@ -57,16 +57,14 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 					<ul class="navbar-nav navbar-controls navbar-locale" role="menu" *ngIf="locales.length > 1 && !disabledLang">
 						<li class="nav-item" role="menuitem" *ngFor="let locale of locales">
 							<button class="btn btn-link" orMasterLayoutHeaderToggle
-							   (click)="changeLang(locale.locale)" [class.active]="isLangActive(locale.locale)" [attr.id]="locale.id">
+									(click)="changeLang(locale.locale)" [class.active]="isLangActive(locale.locale)" [attr.id]="locale.id">
 								<span class="control-label">{{locale.locale}}</span>
 							</button>
 						</li>
 					</ul>
 					<ul class="navbar-nav navbar-controls ml-sm-auto" role="menu" *ngIf="templates.length">
-						<li class="nav-item" role="menuitem" *ngFor="let template of templates">
-							<span #headerControl>
-								<ng-container [ngTemplateOutlet]="template"></ng-container>
-							</span>
+						<li class="nav-item" role="menuitem" *ngFor="let template of templates" #headerControl>
+							<ng-container [ngTemplateOutlet]="template"></ng-container>
 						</li>
 					</ul>
 				</div>
@@ -81,19 +79,23 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 			display: flex;
 			align-items: center;
 		}
+
 		.navbar {
 			background-color: inherit;
 		}
+
 		.navbar-locale {
 			margin-right: 1rem;
 		}
+
 		.navbar-locale .btn-link {
 			border: none;
 			border-radius: 0;
 			color: #171717;
 		}
+
 		.navbar-locale .btn-link:hover,
-		 .navbar-locale .btn-link.active {
+		.navbar-locale .btn-link.active {
 			background-color: #e5e5e5;
 			box-shadow: none;
 		}
@@ -142,16 +144,12 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 		this.masterLayout.menuCollapsedChanged.subscribe(value => this.setFocusable(!value));
 
 		this.headerControl.forEach((elt: ElementRef) => {
-			if (elt.nativeElement.children.length) {
-				Array.from(elt.nativeElement.children).forEach((item: HTMLElement) => {
-					this.renderer.addClass(item, 'control-link');
-					if (item.nodeName === 'A') {
-						this.renderer.addClass(item, 'nav-link');
-					}
-				});
-			} else {
-				this.renderer.addClass(elt.nativeElement, 'control-link');
-			}
+			Array.from(elt.nativeElement.children).forEach((item: HTMLElement) => {
+				this.renderer.addClass(item, 'control-link');
+				if (item.nodeName === 'A') {
+					this.renderer.addClass(item, 'nav-link');
+				}
+			});
 		});
 	}
 
