@@ -6,13 +6,37 @@
 	<ng-template #orHeaderControl>
 		<a href="https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/" target="_blank" ngbTooltip="Go to ObliqueReactive GIT repository"
 		   placement="left">
-			<span class="control-icon fa fa-bitbucket"></span>
+			<span class="fa fa-bitbucket"></span>
 		</a>
 	</ng-template>
 	<ng-template #orHeaderControl>
 		<a orOffCanvasToggle role="button" ngbTooltip="Toggle Off-Canvas" placement="left" (click)="offCanvasOpen = !offCanvasOpen" tabindex="0">
-			<span class="control-icon fa fa-sign-in" [class.fa-rotate-180]="!offCanvasOpen"></span>
+			<span class="fa fa-sign-in" [class.fa-rotate-180]="!offCanvasOpen"></span>
 		</a>
+	</ng-template>
+	<ng-template #orHeaderControl>
+		<div placement="bottom-right" ngbDropdown>
+			<a id="navbar-header-user-language" tabindex="0" role="menuitem" ngbDropdownToggle>
+				<span class="fa fa-cog"></span>
+			</a>
+			<h3 class="sr-only" translate>i18n.rtfas.nav.bar-header.configuration</h3>
+			<div ngbDropdownMenu aria-labelledby="navbar-header-user-language">
+				<div class="control-content">
+					<h4 class="nav-header" translate>i18n.rtfas.nav.bar-header.language</h4>
+					<ul role="menu" class="nav nav-vertical nav-hover" aria-hidden="false">
+						<li class="nav-item" role="menuitem">
+							<a class="dropdown-item" role="button">FR</a>
+						</li>
+						<li class="nav-item" role="menuitem">
+							<a class="dropdown-item" role="button">DE</a>
+						</li>
+						<li class="nav-item" role="menuitem">
+							<a class="dropdown-item" role="button">EN</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 	</ng-template>
 
 	<ng-template #orFooterLink>
