@@ -19,7 +19,7 @@ class TestComponent {
 	@ViewChild(ErrorMessagesComponent) errorMessages: ErrorMessagesComponent;
 }
 
-fdescribe('ErrorMessagesComponent', () => {
+describe('ErrorMessagesComponent', () => {
 	let component: TestComponent;
 	let fixture: ComponentFixture<TestComponent>;
 	let formControlStateDirectiveMock;
