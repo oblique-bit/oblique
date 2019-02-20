@@ -70,7 +70,7 @@ export class NavTreeComponent extends Unsubscribable {
 	@Input() items: NavTreeItemModel[] = [];
 	@Input() prefix = 'nav-tree';
 	@Input() filterPattern: string;
-	@Input() labelFormatter: (item: NavTreeItemModel, filterPattern?: string) => string = NavTreeComponent.DEFAULTS.LABEL_FORMATTER.bind(this)();
+	@Input() labelFormatter: (item: NavTreeItemModel, filterPattern?: string) => string = NavTreeComponent.DEFAULTS.LABEL_FORMATTER(this.translate);
 	@Input() variant = NavTreeComponent.DEFAULTS.VARIANT;
 	@Input() pathPrefix: string;
 	@Input() activateAncestors = true;
@@ -139,11 +139,11 @@ export class NavTreeComponent extends Unsubscribable {
 }
 
 // FIXME: refactor this when https://github.com/angular/angular/issues/14485
-export function defaultLabelFormatterFactory() {
+export function defaultLabelFormatterFactory(translate: TranslateService) {
 	// noinspection UnnecessaryLocalVariableJS because this will result in a build error
 	const formatter = (item: NavTreeItemModel, filterPattern: string) => {
 		filterPattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
-		const label = this.translate.instant(item.label);
+		const label = translate.instant(item.label);
 		return !filterPattern ? label : label.replace(
 			new RegExp(filterPattern, 'ig'), (text) => `<span class="${NavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`
 		);
