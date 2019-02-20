@@ -25,6 +25,10 @@ const distSources = () => {
 	);
 };
 
+const distTestHelpers = () => {
+	return gulp.src(['test_helpers']).pipe(gulp.dest(paths.dist + 'test_helpers'));
+};
+
 const distMeta = () => {
 	const meta = reload('./package.json');
 	const output = require(paths.dist + 'package.json');
@@ -50,6 +54,7 @@ const distBundle = () => {
 
 const distBuild = gulp.parallel(
 	distSources,
+	distTestHelpers,
 	distMeta,
 	distBundle
 );
