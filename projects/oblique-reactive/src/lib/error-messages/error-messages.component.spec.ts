@@ -3,7 +3,7 @@ import {FormsModule, NgForm} from '@angular/forms';
 import {Component, ViewChild} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {ErrorMessagesComponent, ErrorMessagesService, FormControlStateDirective} from 'oblique-reactive';
-import {MockTranslateParamsPipe} from 'testhelpers/mock-translate-params.pipe';
+import {MockTranslateParamsPipe} from 'tests';
 
 @Component({
 	template: `
