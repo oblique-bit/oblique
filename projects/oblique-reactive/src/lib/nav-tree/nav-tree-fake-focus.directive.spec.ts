@@ -53,7 +53,8 @@ describe('NavTreeFakeFocusDirective', () => {
 	let element: DebugElement;
 	let directive: NavTreeFakeFocusDirective;
 	let inputElement: DebugElement;
-	const tranlsateMock = jasmine.createSpyObj('TranslateService', ['']);
+	const translateMock = jasmine.createSpyObj('TranslateService', ['instant']);
+	translateMock.instant.and.callFake(key => key);
 
 	const keydown = (code: string) => {
 		inputElement.triggerEventHandler(
@@ -71,7 +72,7 @@ describe('NavTreeFakeFocusDirective', () => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
 			declarations: [TestComponent, NavTreeComponent, NavTreeFakeFocusDirective, MockTranslatePipe],
-			providers: [{provide: TranslateService, useValue: tranlsateMock}],
+			providers: [{provide: TranslateService, useValue: translateMock}],
 			schemas: [NO_ERRORS_SCHEMA]
 		}).compileComponents();
 	}));

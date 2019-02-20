@@ -59,14 +59,14 @@ describe('NavTreeComponent', () => {
 	let component: NavTreeComponent;
 	let fixture: ComponentFixture<TestComponent>;
 	let element: DebugElement;
-	const tranlsateMock = jasmine.createSpyObj('TranslateService', ['instant']);
-	tranlsateMock.instant.and.callFake(key => key);
+	const translateMock = jasmine.createSpyObj('TranslateService', ['instant']);
+	translateMock.instant.and.callFake(key => key);
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
 			declarations: [TestComponent, NavTreeComponent, MockTranslatePipe],
-			providers: [{provide: TranslateService, useValue: tranlsateMock}],
+			providers: [{provide: TranslateService, useValue: translateMock}],
 			schemas: [NO_ERRORS_SCHEMA]
 		}).compileComponents();
 	}));
@@ -153,7 +153,7 @@ describe('NavTreeComponent', () => {
 
 	it('should highlight patterns on filtered navigation items', () => {
 		// Restore default label formatter:
-		component.labelFormatter = NavTreeComponent.DEFAULTS.LABEL_FORMATTER();
+		component.labelFormatter = NavTreeComponent.DEFAULTS.LABEL_FORMATTER(translateMock);
 		component.filterPattern = 'C'; // Filter on 'C' pattern
 		fixture.detectChanges();
 

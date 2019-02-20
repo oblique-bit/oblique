@@ -20,6 +20,7 @@ describe('MasterLayoutComponent', () => {
 	mockService.applicationFixedChanged = new Subject<boolean>();
 	mockService.coverLayoutChanged = new Subject<boolean>();
 	mockService.noNavigationChanged = new Subject<boolean>();
+	mockService.offCanvasChanged = new Subject<boolean>();
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
