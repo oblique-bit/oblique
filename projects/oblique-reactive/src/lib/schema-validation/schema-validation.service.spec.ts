@@ -58,15 +58,15 @@ describe('SchemaValidationService', () => {
 			});
 		});
 
-		it('should throw, if property doesn\'t exist', () => {
-			expect(() => validator.validate('nonexistentProperty', 1337)).toThrowError();
+		it('should return null, if property doesn\'t exist', () => {
+			expect(validator.validate('nonexistentProperty', 1337)).toBeNull();
 		});
 
 		it('should return null, if subproperty is valid', () => {
 			expect(validator.validate('object.subproperty', 1337)).toBeNull();
 		});
 
-		it('should return angular2 conform error objects if subproperties are validated', () => {
+		it('should return angular conform error objects if subproperties are validated', () => {
 			expect(validator.validate('object.subproperty', 'string')).toEqual({
 				type: {
 					type: 'number'
@@ -74,8 +74,8 @@ describe('SchemaValidationService', () => {
 			});
 		});
 
-		it('should throw, if subproperty doesn\'t exist', () => {
-			expect(() => validator.validate('object.nonexistentProperty', 1337)).toThrowError();
+		it('should return null, if subproperty doesn\'t exist', () => {
+			expect(validator.validate('object.nonexistentProperty', 1337)).toBeNull();
 		});
 	});
 });
