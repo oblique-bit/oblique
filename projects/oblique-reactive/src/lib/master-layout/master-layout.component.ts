@@ -44,9 +44,9 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 					<span class="sr-only">Error</span>
 					<h4>Unsupported browser!</h4>
 					<p class="lead">Please note that your browser, Internet Explorer 9 or earlier, is deprecated.</p>
-					<p>We recommend upgrading to the <a href="https://www.microsoft.com/en-us/windows/microsoft-edge" target="_blank">latest
+					<p>We recommend upgrading to the <a href="https://www.microsoft.com/en-us/windows/microsoft-edge" target="_blank" rel="noopener">latest
 						version</a>.</p>
-					<p>If you are using IE 10 or above, make sure you <a href="https://support.microsoft.com/en-us/help/17471" target="_blank">turn
+					<p>If you are using IE 10 or above, make sure you <a href="https://support.microsoft.com/en-us/help/17471" target="_blank" rel="noopener">turn
 						off "Compatibility View".</a></p>
 				</div>
 			</div>
