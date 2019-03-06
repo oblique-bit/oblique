@@ -90,7 +90,7 @@ let nextId = 0;
 		<div [ngClass]="{'dropdown': !dropup, 'dropup': dropup}">
 			<button type="button" class="multiselect-toggle btn btn-secondary"
 					(click)="toggleDropdown()" [disabled]="disabled"
-					[ngClass]="{open: isVisible}">
+					[ngClass]="{open: isVisible}" [attr.id]="orId">
 				<span class="multiselect-label">{{ title | translate:titleTranslateParams }}</span>
 				<span class="toggle" [ngClass]="{'toggle-down-up': !dropup, 'toggle-up-down': dropup}"></span>
 			</button>
@@ -139,6 +139,7 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	@Input() disabled = false;
 	@Input() labelProperty: string;
 	@Input() labelFormatter: (option: any) => string;
+	@Input() orId: string;
 
 	//Inputs that are initialized by the config
 	@Input() enableAllSelectedText;
