@@ -6,27 +6,26 @@
 		</div>
 		<div class="card-body">
 			<section>
-				<h3>Default multiselect</h3>
-
+				<label for="default">Default multiselect</label>
 				<div class="row">
 					<div class="col-md-6">
-						<or-multiselect [options]="states"
-										[(ngModel)]="model">
+						<or-multiselect [options]="states" [(ngModel)]="model" orId="default">
 						</or-multiselect>
 					</div>
 					<div class="col-md-6">
 						<pre>{{model | json}}</pre>
 					</div>
 				</div>
-				<h3>Multiselect with complex options and <code>labelProperty</code></h3>
 
+				<label for="labelProperty">Multiselect with complex options and <code>labelProperty</code></label>
 				<div class="row">
 					<div class="col-md-6">
 						<or-multiselect [options]="statesComplex"
 										[(ngModel)]="labelModel"
 										[showCheckAll]="true"
 										[showUncheckAll]="true"
-										labelProperty="name">
+										labelProperty="name"
+										orId="labelProperty">
 						</or-multiselect>
 					</div>
 					<div class="col-md-6">
@@ -34,8 +33,7 @@
 					</div>
 				</div>
 
-				<h3>Multiselect with complex options, search filter, <code>labelFormatter</code>...</h3>
-
+				<label for="labelFormatter">Multiselect with complex options, search filter, <code>labelFormatter</code>...</label>
 				<div class="row">
 					<div class="col-md-6">
 						<or-multiselect [options]="statesComplex"
@@ -51,12 +49,11 @@
 						<pre>{{formatterModel | json}}</pre>
 					</div>
 				</div>
-				<h3>Dropup variation</h3>
 
+				<label for="dropup">Dropup variation</label>
 				<div class="row">
 					<div class="col-md-6">
-						<or-multiselect [options]="states" [(ngModel)]="model"
-										[dropup]="true">
+						<or-multiselect [options]="states" [(ngModel)]="model" [dropup]="true" orId="dropup">
 						</or-multiselect>
 					</div>
 					<div class="col-md-6">
