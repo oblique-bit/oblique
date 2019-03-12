@@ -39,7 +39,8 @@ import {
 	NumberFormatModule,
 	SchemaValidationModule,
 	SearchBoxModule,
-	ToggleModule
+	ToggleModule,
+	UnsavedChangesModule
 } from 'oblique-reactive';
 
 @NgModule({
@@ -58,6 +59,7 @@ import {
 		SchemaValidationModule,
 		SearchBoxModule,
 		ToggleModule,
+		UnsavedChangesModule,
 
 		TranslateModule,
 		FormsModule,
