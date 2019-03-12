@@ -2,13 +2,13 @@ import {Injectable} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {NgbTabChangeEvent, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
-import {Subscriber} from 'rxjs';
+import {Subscription} from 'rxjs';
 
 //TODO: Handle modals
 @Injectable({providedIn: 'root'})
 export class UnsavedChangesService {
 	private readonly formList: { [key: string]: ControlContainer} = {};
-	private readonly listener: { [key: string]: Subscriber<NgbTabChangeEvent>} = {};
+	private readonly listener: { [key: string]: Subscription} = {};
 
 	constructor(private readonly translateService: TranslateService) {
 		window.addEventListener('beforeunload', e => this.onUnload(e));
