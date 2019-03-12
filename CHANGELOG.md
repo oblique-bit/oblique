@@ -1,3 +1,34 @@
+# [3.1.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=3.1.0) (2019-03-12)
+
+## Dependencies updates
+* **Angular:** 7.2.8
+* **ObliqueUI:** 3.0.0
+* **ng-bootstrap:** 4.1.0
+* **ngx-translate:** 11.0.1
+* **ajv:** 6.10.0
+* **rxjs:** 6.4.0
+* **zone.js:** 0.8.29
+
+### Bug Fixes
+* **datepicker:** remove onDocumentClick ([3cd4b47](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/3cd4b47))
+* **master-layout:** `offCanvas` can be dynamically toggled on/off ([2b00202](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/2b00202))
+* **master-layout:** apply `nav-link` class on child anchors of header control ([74e528a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/74e528a))
+* **master-layout:** custom navigation can be scrollable ([375a647](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/375a647))
+* **multiselect:** add customizable `id` to underlying input ([0423b82](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/0423b82))
+* **nav-tree:** pass `translateService` to the default formatter factory ([efa999a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/efa999a))
+* **schema-validator:** accepts `properties` property to be empty or not present ([269a897](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/269a897))
+* **security:** links to cross-origin destinations are unsafe ([595f0cf](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/595f0cf))
+* **spinner:** delay `$state` change to avoid `ExpressionChangedAfterItHasBeenCheckedError` ([f23621e](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/f23621e))
+* **unsaved-changes:** use correct type for `Subscription` ([4f29c10](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/4f29c10))
+
+### Features
+* **error-messages:** use `orTranslateParams` instead of `translate` ([d2434ed](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/d2434ed))
+* **interceptor:** keep track of running requests ([e234f23](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/e234f23))
+* **master-layout:** apply `control-icon` class automatically on `nav-link` elements ([669d94b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/669d94b))
+* **nav-tree:** translate labels ([901d42e](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/901d42e))
+* **translate-params:** add `orTranslateParams` pipe ([4c27ed1](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/4c27ed1))
+
+
 <a name="3.0.0"></a>
 # [3.0.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=3.0.0) (2018-11-27)
 
