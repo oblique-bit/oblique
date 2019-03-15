@@ -27,7 +27,8 @@ export class AppComponent {
 				{url: 'toggle', label: 'i18n.routes.samples.toggle.title'},
 				{url: 'validation/form-control-state', label: 'i18n.routes.samples.form-control-state.title'},
 				{url: 'validation/schema-validation', label: 'i18n.routes.samples.schema-validation.title'},
-				{url: 'validation/unsaved-changes', label: 'i18n.routes.samples.unsaved-changes.title'}
+				{url: 'validation/unsaved-changes', label: 'i18n.routes.samples.unsaved-changes.title'},
+				{url: 'sticky', label: 'Sticky'}
 			]
 		}
 	];

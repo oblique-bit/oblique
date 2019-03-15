@@ -18,6 +18,7 @@ import {ToggleSampleComponent} from './toggle/toggle-sample.component';
 import {NumberFormatSampleComponent} from './number-format/number-format-sample.component';
 import {HttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
 import {UnsavedChangesGuard} from 'oblique-reactive';
+import {StickySampleComponent} from './sticky/sticky-sample.component';
 
 const samplesRoutes: Routes = [
 
@@ -52,6 +53,7 @@ const samplesRoutes: Routes = [
 			}
 		}
 	},
+	{path: 'sticky', component: StickySampleComponent},
 	{path: 'validation/form-control-state', component: FormControlStateSampleComponent},
 	{path: 'validation/schema-validation', component: SchemaValidationSampleComponent},
 	{

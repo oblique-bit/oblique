@@ -78,6 +78,9 @@
         "number-format": {
           "title": "Number format"
         },
+        "sticky": {
+          "title": "Sticky"
+        },
         "schema-validation": {
           "title": "Schema Validation"
         },
