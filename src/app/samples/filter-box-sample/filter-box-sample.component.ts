@@ -1,4 +1,5 @@
 import {Component, Pipe, PipeTransform} from '@angular/core';
+import {MasterLayoutService, MaterialService} from 'oblique-reactive';
 
 @Pipe({
 	name: 'patternFilter'
@@ -19,7 +20,9 @@ export class PatternFilterPipe implements PipeTransform {
 		}
 	`]
 })
-export class FilterBoxSampleComponent  {
+export class FilterBoxSampleComponent {
+	material: boolean;
+	isMenuOpen = false;
 	color = 'black';
 	cleared = 0;
 	changed = 0;
@@ -36,6 +39,13 @@ export class FilterBoxSampleComponent  {
 		'Kai'
 	];
 
+	constructor(private masterLayout: MasterLayoutService, materialService: MaterialService) {
+		this.material = materialService.enabled;
+		materialService.toggled.subscribe(enabled => {
+			this.material = enabled;
+		});
+	}
+
 	toggleColor(color: string): void {
 		this.color = this.color === color ? this.color = 'black' : color;
 	}
@@ -46,5 +56,13 @@ export class FilterBoxSampleComponent  {
 
 	incrementChanged() {
 		this.changed++;
+	}
+
+	toggle(close?: boolean) {
+		if (close) {
+			this.isMenuOpen = false;
+		} else {
+			this.isMenuOpen = !this.isMenuOpen;
+		}
 	}
 }

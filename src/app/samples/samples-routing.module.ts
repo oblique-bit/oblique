@@ -19,6 +19,8 @@ import {NumberFormatSampleComponent} from './number-format/number-format-sample.
 import {HttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
 import {UnsavedChangesGuard} from 'oblique-reactive';
 import {StickySampleComponent} from './sticky/sticky-sample.component';
+import {FormComponent} from './form/form.component';
+import {ButtonComponent} from './button/button.component';
 
 const samplesRoutes: Routes = [
 
@@ -62,7 +64,9 @@ const samplesRoutes: Routes = [
 		canDeactivate: [UnsavedChangesGuard]
 	},
 	{path: 'toggle', component: ToggleSampleComponent},
-	{path: 'number-format', component: NumberFormatSampleComponent}
+	{path: 'number-format', component: NumberFormatSampleComponent},
+	{path: 'form', component: FormComponent},
+	{path: 'button', component: ButtonComponent}
 ];
 
 @NgModule({

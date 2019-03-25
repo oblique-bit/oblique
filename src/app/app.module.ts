@@ -12,7 +12,7 @@ import {
 	DocumentMetaService,
 	ErrorMessagesModule,
 	MasterLayoutConfig,
-	MasterLayoutModule,
+	MasterLayoutModule, MaterialConfigService,
 	MultiselectModule,
 	NotificationConfig,
 	NotificationModule,
@@ -32,6 +32,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {HomePageComponent} from './home/home.page';
 import {HttpMockErrorInterceptor} from './samples/http-interceptor/http-mock-error.interceptor';
 import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 
 // AoT requires an exported function for factories:
 export function createTranslateLoader(http: HttpClient) {
@@ -79,6 +80,7 @@ export function createTranslateLoader(http: HttpClient) {
 				timeout: 5000
 			}
 		},
+		{provide: MaterialConfigService, useValue: {enabled: false}},
 		{provide: HTTP_INTERCEPTORS, useClass: ObliqueHttpInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true}
 	],

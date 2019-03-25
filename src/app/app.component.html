@@ -15,6 +15,11 @@
 		</a>
 	</ng-template>
 	<ng-template #orHeaderControl>
+		<a role="button" (click)="toggle()">
+			{{material ? 'material' : 'bootstrap'}}
+		</a>
+	</ng-template>
+	<ng-template #orHeaderControl>
 		<div placement="bottom-right" ngbDropdown>
 			<a id="navbar-header-user-language" tabindex="0" role="menuitem" ngbDropdownToggle>
 				<span class="fa fa-cog"></span>

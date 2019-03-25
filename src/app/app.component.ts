@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ORNavigationLink, SearchWidgetItem} from 'oblique-reactive';
+import {MaterialService, ORNavigationLink, SearchWidgetItem} from 'oblique-reactive';
 
 @Component({
 	selector: 'app-root',
@@ -10,6 +10,7 @@ import {ORNavigationLink, SearchWidgetItem} from 'oblique-reactive';
 })
 export class AppComponent {
 	offCanvasOpen = false;
+	material: boolean;
 	navigation: ORNavigationLink[] = [
 		{url: 'home', label: 'i18n.routes.home.title'},
 		{
@@ -29,13 +30,21 @@ export class AppComponent {
 				{url: 'validation/schema-validation', label: 'i18n.routes.samples.schema-validation.title'},
 				{url: 'validation/unsaved-changes', label: 'i18n.routes.samples.unsaved-changes.title'},
 				{url: 'sticky', label: 'Sticky'}
+				{url: 'form', label: 'Forms'},
+				{url: 'button', label: 'Buttons'}
 			]
 		}
 	];
 	searchItems: SearchWidgetItem[] = [];
 
-	constructor() {
+	constructor(private materialService: MaterialService) {
 		this.populateSearchItems(this.navigation);
+		this.material = materialService.enabled;
+	}
+
+	toggle() {
+		this.material = !this.material;
+		this.materialService.enabled = this.material;
 	}
 
 	populateSearchItems(items: ORNavigationLink[], base = ''): void {

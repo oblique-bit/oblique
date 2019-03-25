@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {MatButtonModule, MatIconModule, MatMenuModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatCheckboxModule, MatRadioModule} from '@angular/material';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -25,6 +26,9 @@ import {ToggleSampleComponent} from './toggle/toggle-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
 import {HttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
+import {StickySampleComponent} from './sticky/sticky-sample.component';
+import {FormComponent} from './form/form.component';
+import {ButtonComponent} from './button/button.component';
 
 import {
 	ColumnLayoutModule,
@@ -43,7 +47,6 @@ import {
 	StickyModule,
 	UnsavedChangesModule
 } from 'oblique-reactive';
-import { StickySampleComponent } from './sticky/sticky-sample.component';
 
 @NgModule({
 	imports: [
@@ -60,8 +63,10 @@ import { StickySampleComponent } from './sticky/sticky-sample.component';
 		NotificationModule,
 		SchemaValidationModule,
 		SearchBoxModule,
+		StickyModule,
 		ToggleModule,
 		UnsavedChangesModule,
+
 		TranslateModule,
 		FormsModule,
 		NgbModule,
@@ -70,11 +75,21 @@ import { StickySampleComponent } from './sticky/sticky-sample.component';
 		NavigatorSampleModule,
 		NavigatorSampleRoutingModule,
 		ReactiveFormsModule,
-		StickyModule
+		ReactiveFormsModule,
+		MatMenuModule,
+		MatIconModule,
+		MatButtonModule,
+		MatInputModule,
+		MatFormFieldModule,
+		MatSelectModule,
+		MatCheckboxModule,
+		MatRadioModule
 	],
 	declarations: [
+		ButtonComponent,
 		ColumnLayoutSampleComponent,
 		DatepickerSampleComponent,
+		FormComponent,
 		FormControlStateSampleComponent,
 		FilterBoxSampleComponent,
 		HttpInterceptorSampleComponent,
@@ -87,10 +102,10 @@ import { StickySampleComponent } from './sticky/sticky-sample.component';
 		NotificationSampleComponent,
 		NumberFormatSampleComponent,
 		SchemaValidationSampleComponent,
+		StickySampleComponent,
 		ToggleSampleComponent,
 		UnsavedChangesSampleComponent,
-		UnsavedChangesSampleModalComponent,
-		StickySampleComponent
+		UnsavedChangesSampleModalComponent
 	],
 	exports: [
 		RouterModule

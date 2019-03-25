@@ -31,6 +31,7 @@
             ],
             "styles": [
               "node_modules/oblique-ui/css/oblique-ui.css",
+              "projects/oblique-reactive/src/scss/oblique-material.scss",
               "src/scss/styles.scss"
             ],
             "scripts": []

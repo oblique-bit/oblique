@@ -19,7 +19,7 @@
 			<div class="card-body">
 				<p class="small">You can prepend a custom input add-on by providing content matching the <code>.input-group-prepend</code> CSS selector.</p>
 				<or-filter-box [(pattern)]="patterns[2]" size="sm" class="form-group">
-					<span class="input-group-prepend"><i class="input-group-text fa fa-search"></i></span>
+					<ng-template #prepend><i class="fa fa-search"></i></ng-template>
 				</or-filter-box>
 				<ul>
 					<li *ngFor="let item of items | patternFilter:patterns[2]">{{item}}</li>
@@ -31,27 +31,42 @@
 			<div class="card-body">
 				<p class="small">You can prepend a custom input add-on by providing content matching the <code>.input-group-append</code> CSS selector.</p>
 				<or-filter-box [(pattern)]="patterns[3]" size="lg" class="form-group">
-					<span class="input-group-append" ngbDropdown>
-						<button id="search-actions-dropdown" class="btn btn-secondary dropdown-toggle"
-								type="button"
-								ngbDropdownToggle
-								ngbTooltip="{{'i18n.common.actions' | translate}}"
-								placement="left">
-							<span class="sr-only">{{'i18n.common.actions' | translate}}</span>
+					<ng-template #append *ngIf="!material">
+						<div ngbDropdown>
+							<button id="search-actions-dropdown" class="btn btn-secondary dropdown-toggle"
+									type="button"
+									ngbDropdownToggle
+									ngbTooltip="{{'i18n.common.actions' | translate}}"
+									placement="top">
+								<span class="sr-only">{{'i18n.common.actions' | translate}}</span>
+							</button>
+							<span class="dropdown-menu dropdown-menu-right" role="menu"
+								  aria-labelledby="search-actions-dropdown"
+								  ngbDropdownMenu>
+								<a class="dropdown-item" role="button" tabindex="0"
+								   (click)="toggleColor('red')">
+									Toggle red color
+								</a>
+								<a class="dropdown-item" role="button" tabindex="0"
+								   (click)="toggleColor('blue')">
+									Toggle blue color
+								</a>
+							</span>
+						</div>
+					</ng-template>
+					<ng-template #append *ngIf="material">
+						<button mat-icon-button [matMenuTriggerFor]="dropdownMenu" (click)="toggle()">
+							<mat-icon>{{isMenuOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
 						</button>
-						<span class="dropdown-menu dropdown-menu-right" role="menu"
-							  aria-labelledby="search-actions-dropdown"
-							  ngbDropdownMenu>
-							<a class="dropdown-item" role="button" tabindex="0"
-							   (click)="toggleColor('red')">
-								Toggle red color
-							</a>
-							<a class="dropdown-item" role="button" tabindex="0"
-							   (click)="toggleColor('blue')">
-								Toggle blue color
-							</a>
-						</span>
-					</span>
+						<mat-menu #dropdownMenu="matMenu" (closed)="toggle(true)">
+							<button mat-menu-item (click)="toggleColor('red')">
+								<span>Toggle red color</span>
+							</button>
+							<button mat-menu-item (click)="toggleColor('blue')">
+								<span>Toggle blue color</span>
+							</button>
+						</mat-menu>
+					</ng-template>
 				</or-filter-box>
 				<ul>
 					<li *ngFor="let item of items | patternFilter:patterns[3]" [style.color]="color">{{item}}</li>
@@ -73,7 +88,8 @@
 		<div class="card">
 			<div class="card-header">With "cleared" feedback</div>
 			<div class="card-body">
-				<p class="small">The <code>patternClear</code> event is used to count the number of times the search pattern has been cleared: <span class="badge badge-default">{{cleared}}</span>.</p>
+				<p class="small">The <code>patternClear</code> event is used to count the number of times the search pattern has been cleared: <span
+					class="badge badge-default">{{cleared}}</span>.</p>
 				<or-filter-box [(pattern)]="patterns[4]" (patternClear)="incrementCleared()" class="form-group"></or-filter-box>
 				<ul>
 					<li *ngFor="let item of items | patternFilter:patterns[4]">{{item}}</li>
@@ -83,7 +99,8 @@
 		<div class="card">
 			<div class="card-header">With "changed" feedback</div>
 			<div class="card-body">
-				<p class="small">The <code>patternChange</code> event is used to count the number of times the search pattern has been changed: <span class="badge badge-default">{{changed}}</span>.</p>
+				<p class="small">The <code>patternChange</code> event is used to count the number of times the search pattern has been changed: <span
+					class="badge badge-default">{{changed}}</span>.</p>
 				<or-filter-box [(pattern)]="patterns[5]" (patternChange)="incrementChanged()" class="form-group"></or-filter-box>
 				<ul>
 					<li *ngFor="let item of items | patternFilter:patterns[5]">{{item}}</li>
