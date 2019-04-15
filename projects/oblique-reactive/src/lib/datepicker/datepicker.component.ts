@@ -1,6 +1,10 @@
 import {AfterViewInit, Component, ContentChild, ElementRef, HostListener, Input, ViewEncapsulation} from '@angular/core';
 import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
+import {MaterialService} from '../material.service';
 
+/**
+ * @deprecated with material theme since version 4.0.0. Use angular material datepicker instead
+ */
 @Component({
 	selector: 'or-date-picker',
 	styleUrls: ['./datepicker.component.scss'],
@@ -29,7 +33,8 @@ export class DatepickerComponent implements AfterViewInit {
 		return this._disabled;
 	}
 
-	constructor(private readonly element: ElementRef) {
+	constructor(private readonly element: ElementRef, materialService: MaterialService) {
+		materialService.deprecated('datepicker');
 	}
 
 	@HostListener('keydown', ['$event'])
