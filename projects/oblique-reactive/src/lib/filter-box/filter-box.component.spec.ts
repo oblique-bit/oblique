@@ -2,7 +2,8 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, NO_ERRORS_SCHEMA, Pipe, PipeTransform} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {FilterBoxComponent} from 'oblique-reactive';
+import {of} from 'rxjs/internal/observable/of';
+import {FilterBoxComponent, MaterialService, TextControlClearModule} from 'oblique-reactive';
 
 @Pipe({name: 'translate'})
 class MockTranslatePipe implements PipeTransform {
@@ -14,8 +15,8 @@ class MockTranslatePipe implements PipeTransform {
 @Component({
 	template: `
 		<or-filter-box pattern="test">
-			<span class="input-group-prepend"><i class="fa fa-search"></i></span>
-			<span class="input-group-append"><i class="fa fa-search"></i></span>
+			<ng-template #prepend><i class="fa fa-search"></i></ng-template>
+			<ng-template #append><i class="fa fa-search"></i></ng-template>
 		</or-filter-box>
 	`
 })
@@ -26,16 +27,21 @@ describe('FilterBox', () => {
 	let component: TestComponent;
 	let fixture: ComponentFixture<TestComponent>;
 
-	beforeEach(async(() =>
-		TestBed.configureTestingModule({
-			imports: [FormsModule],
-			declarations: [
-				TestComponent,
-				FilterBoxComponent,
-				MockTranslatePipe
-			],
-			schemas: [NO_ERRORS_SCHEMA]
-		}).compileComponents()
+	beforeEach(async(() => {
+			const materialMock = {
+				toggled: of(false)
+			};
+			TestBed.configureTestingModule({
+				imports: [FormsModule, TextControlClearModule],
+				declarations: [
+					TestComponent,
+					FilterBoxComponent,
+					MockTranslatePipe
+				],
+				schemas: [NO_ERRORS_SCHEMA],
+				providers: [{provide: MaterialService, useValue: materialMock}]
+			}).compileComponents();
+		}
 	));
 
 	beforeEach(async(() => {
@@ -49,14 +55,12 @@ describe('FilterBox', () => {
 	});
 
 	it('should have an `.input-group-prepend` content projected', () => {
-		expect(fixture.debugElement.queryAll(
-			By.css('.input-group .input-group-prepend')
-		).length).toBe(1);
+		const elements = fixture.debugElement.queryAll(By.css('.input-group .input-group-text'));
+		expect(elements[0].nativeElement.parentElement.classList.contains('input-group-prepend')).toBe(true);
 	});
 
 	it('should have an `.input-group-append` content projected', () => {
-		expect(fixture.debugElement.queryAll(
-			By.css('.input-group .input-group-append')
-		).length).toBe(1);
+		const elements = fixture.debugElement.queryAll(By.css('.input-group .input-group-text'));
+		expect(elements.pop().nativeElement.parentElement.classList.contains('input-group-append')).toBe(true);
 	});
 });
