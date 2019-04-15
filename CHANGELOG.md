@@ -1,3 +1,16 @@
+# [4.0.0-Beta.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.0-Beta.1) (2019-04-15)
+
+## Features
+* **filter-box:** add `angular material` variant ([cd7c148](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/cd7c148))
+* **material:** add `angular material` variant with Roboto font ([cce3b02](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/cce3b02))
+* **material:** force `outline` variants for all Oblique modules ([fb28717](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/fb28717))
+
+## BREAKING CHANGES
+* **filter-box:** 
+    * prefixed content cannot be projected with `.input-group-prepend` anymore. Use `#prepend` instead.
+    * suffixed content cannot be projected with `.input-group-append` anymore. Use `#append` instead.
+
+
 # [3.1.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=3.1.1) (2019-04-29)
 
 ## Bug Fixes
