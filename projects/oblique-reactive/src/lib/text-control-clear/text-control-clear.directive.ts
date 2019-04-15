@@ -5,25 +5,19 @@ import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, O
 	exportAs: 'orTextControlClear'
 })
 export class TextControlClearDirective {
-
-	@Input('orTextControlClear')
-	control: HTMLInputElement;
-
-	@Input()
-	focusOnClear = true;
-
-	@Output()
-	onClear = new EventEmitter<MouseEvent>();
-
-	@HostBinding('class.text-control-clear')
-	cssClass = true;
+	@Input('orTextControlClear') control: HTMLInputElement;
+	@Input() focusOnClear = true;
+	@Output() onClear = new EventEmitter<MouseEvent>();
+	@HostBinding('class.text-control-clear') cssClass = true;
 
 	constructor(private readonly element: ElementRef) {
-		// Ensure parent gets ready to render the text clear control:
-		const parent = this.element.nativeElement.parentElement;
-		if (parent) {
-			parent.classList.add('text-control');
-		}
+		// ensure matInput got resolved beforehand
+		setTimeout(() => {
+			const parent = this.element.nativeElement.parentElement;
+			if (parent) {
+				parent.classList.add('text-control');
+			}
+		});
 	}
 
 	@HostListener('click', ['$event'])

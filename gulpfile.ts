@@ -3,6 +3,7 @@ const fs = require('fs'),
 	git = require('gulp-git'),
 	gulpFile = require('gulp-file'),
 	header = require('gulp-header'),
+	replace = require('gulp-replace'),
 	paths = {
 		dist: './dist/oblique-reactive/'
 	},
@@ -22,7 +23,19 @@ const distSources = () => gulp.src([
 )
 	.pipe(gulp.dest(paths.dist + 'styles'));
 
+const rewriteStylesPath = () =>
+	gulp.src(paths.dist + 'styles/scss/themes/oblique-material.scss')
+		.pipe(replace('~oblique-ui/scss/variables', '../variables'))
+		.pipe(gulp.dest(paths.dist + 'styles/scss/themes'));
+
+
+const distStyles = () =>
+	gulp.src(['projects/oblique-reactive/src/scss/**/*'])
+		.pipe(gulp.dest(paths.dist + 'styles/scss/themes'));
+
+
 const distTestHelpers = () => gulp.src(['test_helpers/*']).pipe(gulp.dest(paths.dist + 'test_helpers'));
+
 
 const distMeta = () => {
 	const meta = reload('./package.json');
@@ -58,6 +71,7 @@ gulp.task(
 		distSources,
 		distTestHelpers,
 		distMeta,
+		gulp.series(distStyles, rewriteStylesPath),
 		distBundle
 	)
 );
