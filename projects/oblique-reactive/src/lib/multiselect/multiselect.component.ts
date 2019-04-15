@@ -234,6 +234,10 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 		this.onModelTouched = fn;
 	}
 
+	setDisabledState(isDisabled: boolean): void {
+		this.disabled = isDisabled;
+	}
+
 	ngDoCheck() {
 		const changes = this.differ.diff(this.model);
 		if (changes) {
