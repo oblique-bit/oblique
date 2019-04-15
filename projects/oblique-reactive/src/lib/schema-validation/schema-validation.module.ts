@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 
 import {SchemaValidationDirective} from './schema-validation.directive';
 import {SchemaValidateDirective} from './schema-validator';
@@ -18,6 +19,7 @@ export {draft06} from './draft06.decorator';
 		CommonModule
 	],
 	declarations: [SchemaValidateDirective, SchemaValidationDirective, SchemaRequiredDirective],
+	providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
 	exports: [SchemaValidateDirective, SchemaValidationDirective, SchemaRequiredDirective]
 })
 export class SchemaValidationModule {

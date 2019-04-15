@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule} from '@ngx-translate/core';
 
@@ -22,6 +23,7 @@ export {NavTreeItemModel} from './nav-tree-item.model';
 		NavTreeComponent,
 		NavTreeFakeFocusDirective
 	],
+	providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
 	exports: [
 		NavTreeComponent,
 		NavTreeFakeFocusDirective

@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 import {TranslateModule} from '@ngx-translate/core';
 
 import {FilterBoxModule} from '../filter-box/filter-box.module';
@@ -24,6 +25,7 @@ export {MultiselectTexts} from './multiselect.texts';
 	exports: [
 		MultiselectComponent
 	],
+	providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
 	declarations: [
 		MultiselectComponent,
 		MultiselectSearchPipe

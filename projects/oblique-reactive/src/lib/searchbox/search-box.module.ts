@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 
 import {TranslateModule} from '@ngx-translate/core';
 import {SearchBoxDirective} from './search-box.directive';
@@ -22,6 +23,7 @@ export {SearchBoxDirective} from './search-box.directive';
 		RouterModule
 	],
 	declarations: [SearchBoxDirective, SearchBoxComponent, SearchBoxResultsComponent],
+	providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
 	exports: [SearchBoxDirective, SearchBoxComponent],
 	entryComponents: [SearchBoxResultsComponent]
 })

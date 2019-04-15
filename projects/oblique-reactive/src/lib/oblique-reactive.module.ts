@@ -1,4 +1,5 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 
 import {ColumnLayoutModule} from './column-layout/column-layout.module';
 import {DatepickerModule} from './datepicker/datepicker.module';
@@ -78,6 +79,7 @@ const OBLIQUE_MODULES = [
 		ToggleModule,
 		UnsavedChangesModule
 	],
+	providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
 	exports: OBLIQUE_MODULES
 })
 export class ObliqueRootModule {

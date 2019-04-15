@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 import {TranslateModule} from '@ngx-translate/core';
 
 import {NotificationModule} from '../notification/notification.module';
@@ -50,6 +51,7 @@ export {MasterLayoutConfig} from './master-layout.config';
 		MasterLayoutNavigationToggleDirective,
 		MasterLayoutNavigationMenuDirective
 	],
+	providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
 	exports: [
 		MasterLayoutComponent,
 		MasterLayoutHeaderToggleDirective,

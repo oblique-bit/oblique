@@ -1,6 +1,7 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgbModule, NgbDatepickerI18n, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 
@@ -28,6 +29,7 @@ export {DatepickerComponent} from './datepicker.component';
 		DatepickerPlaceholderDirective,
 		DateFormatterPipe
 	],
+	providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
 	exports: [
 		DatepickerComponent,
 		DatepickerPlaceholderDirective,
