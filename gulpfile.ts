@@ -26,7 +26,7 @@ const distSources = () => {
 };
 
 const distTestHelpers = () => {
-	return gulp.src(['test_helpers']).pipe(gulp.dest(paths.dist + 'test_helpers'));
+	return gulp.src(['test_helpers/*']).pipe(gulp.dest(paths.dist + 'test_helpers'));
 };
 
 const distMeta = () => {

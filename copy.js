@@ -38,4 +38,4 @@ function copyFolderRecursiveSync( source, target ) {
 	}
 }
 
-copyFolderRecursiveSync('test_helpers', '');
+copyFolderRecursiveSync('test_helpers', process.env.INIT_CWD);
