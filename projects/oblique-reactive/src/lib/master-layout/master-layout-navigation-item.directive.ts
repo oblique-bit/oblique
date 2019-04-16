@@ -1,4 +1,4 @@
-import {AfterViewInit, ContentChild, ContentChildren, Directive, EventEmitter, HostBinding, Output, QueryList} from '@angular/core';
+import {AfterViewInit, ContentChild, ContentChildren, Directive, ElementRef, EventEmitter, HostBinding, HostListener, Output, QueryList} from '@angular/core';
 import {filter, takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe.class';
@@ -28,7 +28,7 @@ export class MasterLayoutNavigationItemDirective extends Unsubscribable implemen
 	@ContentChildren(MasterLayoutNavigationItemDirective, {descendants: true})
 	$items: QueryList<MasterLayoutNavigationItemDirective>;
 
-	constructor(private readonly masterLayout: MasterLayoutService) {
+	constructor(private readonly masterLayout: MasterLayoutService, private readonly element: ElementRef) {
 		super();
 	}
 
@@ -68,6 +68,13 @@ export class MasterLayoutNavigationItemDirective extends Unsubscribable implemen
 
 		if (this.$menu) {
 			this.$menu.hide();
+		}
+	}
+
+	@HostListener('document:click', ['$event.target'])
+	onClick(targetElement) {
+		if (this.show && !this.element.nativeElement.contains(targetElement)) {
+			this.close();
 		}
 	}
 }
