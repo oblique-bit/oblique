@@ -1,4 +1,4 @@
-@Library('jeap-pipelinelibrary@feature/oblique') _
+@Library('jeap-pipelinelibrary@oblique') _
 nodejsPipelineTemplate {
 	nexusPublishPath = './dist/oblique-reactive'
 }
