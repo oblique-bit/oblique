@@ -72,7 +72,8 @@ export class MasterLayoutNavigationItemDirective extends Unsubscribable implemen
 	}
 
 	@HostListener('document:click', ['$event.target'])
-	onClick(targetElement) {
+	@HostListener('document:keyup.escape')
+	onClick(targetElement?) {
 		if (this.show && !this.element.nativeElement.contains(targetElement)) {
 			this.close();
 		}
