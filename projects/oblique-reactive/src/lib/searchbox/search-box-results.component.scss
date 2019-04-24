@@ -1,0 +1,116 @@
+@import "~oblique-ui/scss/variables";
+
+or-search-box-results {
+	width: 100%;
+}
+
+.search-results-list {
+	top: 113px;
+	left: 0;
+	right: 0;
+	height: 0;
+	background-color: $white;
+	overflow: hidden;
+	transition: height $duration-default;
+
+	&.nav-hover .nav-item .nav-link {
+		&.active,
+		&:hover,
+		&:focus {
+			&:after {
+				left: 0;
+			}
+		}
+	}
+
+	.highlight {
+		font-weight: bold;
+		text-decoration: underline;
+	}
+
+	small {
+		color: #6c757d;
+		display: block;
+	}
+}
+
+.control-link .search-results-list {
+	position: fixed;
+}
+
+:hover > or-search-box-results .search-results-list.hasResults,
+:focus-within > or-search-box-results .search-results-list.hasResults {
+	height: unset;
+}
+
+.noResult {
+	padding: 8px $spacing-default;
+
+	&:not(:only-child) {
+		display: none;
+	}
+}
+
+@media (min-width: 992px) {
+	.control-link .search-results-list {
+		position: absolute;
+	}
+
+	.search-results-list {
+		display: block;
+		position: absolute;
+		top: unset;
+		height: unset;
+		left: -20px;
+		min-width: 300px;
+		max-height: 0;
+		padding: 0 $spacing-default;
+		margin-top: 29px;
+		background-color: $white;
+		box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+		transition: max-height $duration-default, padding $duration-default;
+		z-index: 1;
+
+		&.nav-hover .nav-item .nav-link {
+			&.active,
+			&:hover,
+			&:focus {
+				&:after {
+					left: -$spacing-default;
+				}
+			}
+		}
+
+		&::before,
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			border-style: solid;
+			transition: right $duration-default, left $duration-default;
+		}
+
+		&::before {
+			left: $spacing-default;
+			top: -$spacing-default;
+			border-width: 0 $spacing-default $spacing-default;
+			border-color: $gray-light transparent;
+		}
+
+		&::after {
+			left: 16px;
+			top: -14px;
+			border-width: 0 14px 14px;
+			border-color: white transparent;
+		}
+	}
+
+	:hover > or-search-box-results .search-results-list.hasResults,
+	:focus-within > or-search-box-results .search-results-list.hasResults {
+		max-height: calc(100vh - 200px);
+		height: unset;
+		padding: $spacing-default;
+		overflow: unset;
+		border: 1px solid $gray-light;
+	}
+}

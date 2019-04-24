@@ -1,0 +1,96 @@
+@import "~oblique-ui/scss/variables";
+
+::ng-deep .navigable {
+	line-height: 38px;
+	transition-property: background-color;
+	transition-duration: $duration-fast;
+	animation-timing-function: ease-in-out;
+
+	& .navigable-actions {
+		display: flex;
+		justify-content: flex-end;
+
+		&:not(.navigable-actions-fluid) {
+			min-height: 38px;
+			min-width: 113px;
+		}
+
+		&.navigable-actions-md:not(.navigable-actions-fluid) {
+			min-width: 150px;
+		}
+
+		&:not(.text-left) {
+			text-align: right;
+		}
+
+		& .navigable-reveal {
+			display: none;
+		}
+
+		& .navigable-show {
+			visibility: hidden;
+		}
+
+		& .navigable-collapse {
+			display: inline-flex;
+		}
+
+		&.navigable-actions-center {
+			text-align: center;
+		}
+	}
+
+	&:hover,
+	&:hover > td,
+	&.list-group-item:hover,
+	&.navigable-highlight:hover,
+	&.navigable-highlight:hover > td,
+	&.navigable-highlight.list-group-item:hover,
+	&.navigable-active,
+	&.navigable-active > td,
+	&.navigable-active.list-group-item,
+	&.navigable-selected,
+	&.navigable-selected > td,
+	&.navigable-selected.list-group-item {
+		transition-property: background-color;
+		transition-duration: $duration-default;
+		animation-timing-function: ease-in-out;
+		background-color: $brand-light;
+	}
+
+	&:hover .navigable-actions .navigable-show,
+	&.navigable-active .navigable-actions .navigable-show {
+		visibility: visible;
+	}
+
+	&:hover .navigable-actions .navigable-reveal,
+	&.navigable-active .navigable-actions .navigable-reveal {
+		visibility: visible;
+		display: inline-flex;
+	}
+
+	&:hover .navigable-actions .navigable-collapse,
+	&.navigable-active .navigable-actions .navigable-collapse {
+		display: none;
+	}
+
+	&.navigable-active,
+	&:focus {
+		z-index: 2;
+	}
+
+	&.navigable-highlight {
+		background-color: $brand-warning-light !important;
+		transition-duration: 3.5s;
+	}
+
+	&.list-group-item .navigable-actions {
+		white-space: nowrap;
+	}
+}
+
+@media screen {
+	> td {
+		height: 54px;
+	}
+}

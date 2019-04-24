@@ -1,0 +1,26 @@
+@import "~oblique-ui/scss/variables";
+
+.application-header-controls {
+	display: flex;
+	align-items: center;
+}
+
+.navbar {
+	background-color: inherit;
+}
+
+.navbar-locale {
+	margin-right: 1rem;
+
+	.btn-link {
+		border: none;
+		border-radius: 0;
+		color: $brand-default;
+
+		&:hover,
+		&.active {
+			background-color: $gray-lighter-2;
+			box-shadow: none;
+		}
+	}
+}

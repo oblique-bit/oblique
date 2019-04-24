@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import { MasterLayoutConfig } from '../master-layout/master-layout.config';
+import {MasterLayoutConfig} from '../master-layout/master-layout.config';
 
 @Component({
 	selector: 'or-top-control',

@@ -3,28 +3,8 @@ import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} f
 @Component({
 	selector: 'or-filter-box',
 	exportAs: 'orFilterBox',
-	template: `
-		<div class="input-group" [ngClass]="getSizeClass('input-group-')">
-			<ng-content select=".input-group-prepend"></ng-content>
-			<input class="form-control" [ngClass]="getSizeClass('form-control-')" type="text"
-				   name="filterPattern" placeholder="{{placeholder | translate}}"
-				   [attr.readonly]="readonly" [attr.disabled]="disabled"
-				   [ngModel]="pattern" (ngModelChange)="onPatternChanged($event)" [ngModelOptions]="modelOptions"
-				   #filterControl>
-			<button type="button" role="button"
-					[orTextControlClear]="filterControl"
-					(onClear)="onPatternCleared();">
-				<span class="fa fa-times-circle"></span>
-				<span class="sr-only">{{'i18n.common.clear' | translate}}</span>
-			</button>
-			<ng-content select=".input-group-append"></ng-content>
-		</div>
-	`,
-	styles: [`
-		:host {
-			display: block;
-		}
-	`]
+	templateUrl: './filter-box.component.html',
+	styleUrls: ['./filter-box.component.scss']
 })
 export class FilterBoxComponent implements OnInit {
 

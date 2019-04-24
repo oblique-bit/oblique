@@ -1,8 +1,9 @@
 import {Component, ElementRef, Input, OnInit} from '@angular/core';
+import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 import {takeUntil} from 'rxjs/operators';
+
 import {SpinnerService} from './spinner.service';
 import {SpinnerEvent} from './spinner-event';
-import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 import {Unsubscribable} from '../unsubscribe.class';
 
 @Component({

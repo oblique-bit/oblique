@@ -1,0 +1,48 @@
+<h2 class="sr-only" *ngIf="links.length">{{'i18n.accessible.globalNavigationMenu' | translate}}</h2>
+<button class="navigation-scrollable-control navigation-scrollable-control-left" type="button" (click)="scrollLeft()"
+		*ngIf="scrollable" [disabled]="!currentScroll">
+	<span class="fa fa-angle-left"></span>
+</button>
+<ng-container #container>
+	<ng-content *ngIf="!links.length"></ng-content>
+	<ul id="navigation" role="menubar" *ngIf="links.length" class="nav navbar-nav navbar-primary"
+		[class.navigation-scrollable-content]="scrollable" [class.navbar-fw]="fullWidth" tabindex="-1">
+		<li class="nav-item" role="presentation" orMasterLayoutNavigationItem *ngFor="let link of links">
+			<a [attr.id]="link.id" class="nav-link" role="menuitem" [routerLink]="link.url"
+			   [routerLinkActive]="activeClass" orMasterLayoutNavigationToggle *ngIf="!link.children">
+				{{link.label | translate}}
+			</a>
+			<ng-container *ngIf="link.children">
+				<a [attr.id]="link.id" class="nav-link" role="button" tabindex="0" [class.active]="isActive(link.url)"
+				   orMasterLayoutNavigationToggle>
+					<span>{{link.label | translate}}</span>
+					<span class="toggle"></span>
+				</a>
+				<div class="navbar-primary-menu" role="menu" attr.aria-labelledby="navbar-primary-title-{{link.label}}"
+					 orMasterLayoutNavigationMenu>
+					<ul class="nav nav-hover">
+						<li class="nav-item nav-header" role="presentation">
+							<a class="nav-header-title navbar-primary-back" role="button"
+							   orMasterLayoutNavigationToggle>
+								<span class="toggle d-layout-collapsed"></span>
+								<span>{{link.label | translate}}</span>
+							</a>
+						</li>
+						<li class="nav-item" role="presentation" orMasterLayoutNavigationItem
+							*ngFor="let child of link.children">
+							<a class="nav-link" role="menuitem" [attr.id]="child.id"
+							   [routerLink]="link.url + '/' + child.url" [routerLinkActive]="activeClass"
+							   orMasterLayoutNavigationToggle>
+								{{child.label | translate}}
+							</a>
+						</li>
+					</ul>
+				</div>
+			</ng-container>
+		</li>
+	</ul>
+</ng-container>
+<button class="navigation-scrollable-control navigation-scrollable-control-right" (click)="scrollRight()" type="button"
+		*ngIf="scrollable" [disabled]="currentScroll === maxScroll">
+	<span class="fa fa-angle-right"></span>
+</button>

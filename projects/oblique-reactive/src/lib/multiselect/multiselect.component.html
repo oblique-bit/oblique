@@ -1,0 +1,41 @@
+<div [ngClass]="{'dropdown': !dropup, 'dropup': dropup}">
+	<button type="button" class="multiselect-toggle btn btn-secondary"
+			(click)="toggleDropdown()" [disabled]="disabled"
+			[ngClass]="{open: isVisible}" [attr.id]="orId">
+		<span class="multiselect-label">{{ title | translate:titleTranslateParams }}</span>
+		<span class="toggle" [ngClass]="{'toggle-down-up': !dropup, 'toggle-up-down': dropup}"></span>
+	</button>
+	<div *ngIf="isVisible" class="dropdown-menu"
+		 [style.max-height]="maxHeight" style="display: block; height: auto; overflow-y: auto;"
+		 [attr.aria-hidden]="!isVisible">
+		<div class="dropdown-item" *ngIf="enableSearch">
+			<or-filter-box [(pattern)]="searchFilterText" [modelOptions]="{standalone: true}"
+						   placeholder="{{ texts.searchPlaceholder | translate}}" size="sm" #orFilterBox>
+				<span class="input-group-prepend" [attr.id]="id + '-search'"
+					  [attr.aria-label]="texts.searchPlaceholder | translate">
+					<span class="input-group-text fa fa-search"></span>
+				</span>
+			</or-filter-box>
+		</div>
+		<div class="dropdown-divider divider" *ngIf="enableSearch"></div>
+		<button class="dropdown-item multiselect-control multiselect-control-check" *ngIf="showCheckAll"
+				(click)="checkAll()">
+			<span style="width: 16px;" class="fa fa-check"></span>
+			{{ texts.checkAll | translate }}
+		</button>
+		<button class="dropdown-item multiselect-control multiselect-control-uncheck" *ngIf="showUncheckAll"
+				(click)="uncheckAll()">
+			<span style="width: 16px;" class="fa fa-times"></span>
+			{{ texts.uncheckAll | translate }}
+		</button>
+		<div *ngIf="showCheckAll || showUncheckAll" class="dropdown-divider divider"></div>
+		<button class="dropdown-item" *ngFor="let option of options | searchFilter:searchFilterText; let i = index"
+				(click)="toggleSelection(option)">
+			<div class="form-check">
+				<input tabindex="-1" type="checkbox" id="{{id}}-{{i}}" [checked]="isSelected(option)"
+					   class="form-check-input" (click)="preventCheckboxCheck($event)">
+				<label class="form-check-label" for="{{id}}-{{i}}">{{formatOptionForLabel(option)}}</label>
+			</div>
+		</button>
+	</div>
+</div>

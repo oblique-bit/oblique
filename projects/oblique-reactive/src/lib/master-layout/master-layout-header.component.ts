@@ -22,84 +22,8 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 
 @Component({
 	selector: 'or-master-layout-header',
-	template: `
-		<div class="navbar">
-			<ng-content select="[orHeader]" *ngIf="custom"></ng-content>
-			<ng-container *ngIf="!custom">
-				<div class="navbar-header">
-					<div class="application-brand">
-						<a class="application-brand-logo" [routerLink]="home" tabindex="-1">
-							<img alt="Back to home" src="assets/styles/images/logo.svg"/>
-						</a>
-						<span class="application-brand-app-title">
-						<a [routerLink]="home" class="application-brand-link">
-							<ng-content select="[orHeaderTitle]"></ng-content>
-						</a>
-					</span>
-					</div>
-					<ul class="nav navbar-nav navbar-controls navbar-toggler">
-						<li class="nav-item">
-							<a role="button" tabindex="0" title="Toggle application header" class="nav-link control-link or-collapse-toggle"
-							   orMasterLayoutHeaderToggle>
-								<div class="application-header-toggler">
-									<span class="first-line"></span>
-									<span class="second-line"></span>
-									<span class="third-line"></span>
-								</div>
-								<span class="sr-only">Toggle header & navigation</span>
-							</a>
-						</li>
-					</ul>
-				</div>
-				<div class="application-header-controls">
-					<h2 class="sr-only">{{'i18n.oblique.controls.title' | translate}}</h2>
-					<ng-content select="[orLocales]" *ngIf="disabledLang"></ng-content>
-					<ul class="navbar-nav navbar-controls navbar-locale" role="menu" *ngIf="locales.length > 1 && !disabledLang">
-						<li class="nav-item" role="menuitem" *ngFor="let locale of locales">
-							<button class="btn btn-link" orMasterLayoutHeaderToggle
-									(click)="changeLang(locale.locale)" [class.active]="isLangActive(locale.locale)" [attr.id]="locale.id">
-								<span class="control-label">{{locale.locale}}</span>
-							</button>
-						</li>
-					</ul>
-					<ul class="navbar-nav navbar-controls ml-sm-auto" role="menu" *ngIf="templates.length">
-						<li class="nav-item" role="menuitem" *ngFor="let template of templates" #headerControl>
-							<ng-container [ngTemplateOutlet]="template"></ng-container>
-						</li>
-					</ul>
-				</div>
-			</ng-container>
-		</div>
-		<or-master-layout-navigation [links]="navigation">
-			<ng-content select="[orNavigation]"></ng-content>
-		</or-master-layout-navigation>
-	`,
-	styles: [`
-		.application-header-controls {
-			display: flex;
-			align-items: center;
-		}
-
-		.navbar {
-			background-color: inherit;
-		}
-
-		.navbar-locale {
-			margin-right: 1rem;
-		}
-
-		.navbar-locale .btn-link {
-			border: none;
-			border-radius: 0;
-			color: #171717;
-		}
-
-		.navbar-locale .btn-link:hover,
-		.navbar-locale .btn-link.active {
-			background-color: #e5e5e5;
-			box-shadow: none;
-		}
-	`],
+	templateUrl: './master-layout-header.component.html',
+	styleUrls: ['./master-layout-header.component.scss'],
 	/* tslint:disable:use-host-property-decorator */
 	host: {class: 'application-header'}
 })
