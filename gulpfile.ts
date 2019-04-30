@@ -13,21 +13,16 @@ const fs = require('fs'),
 			+ '\r */\n';
 	};
 
-const distSources = () => {
-	return gulp.src([
-			'node_modules/oblique-ui/css/**/*',
-			'node_modules/oblique-ui/scss/**/*',
-			'node_modules/oblique-ui/fonts/**/*',
-			'node_modules/oblique-ui/images/**/*'
-		], {base: 'node_modules/oblique-ui'}
-	).pipe(
-		gulp.dest(paths.dist + 'styles')
-	);
-};
+const distSources = () => gulp.src([
+		'node_modules/oblique-ui/css/**/*',
+		'node_modules/oblique-ui/scss/**/*',
+		'node_modules/oblique-ui/fonts/**/*',
+		'node_modules/oblique-ui/images/**/*'
+	], {base: 'node_modules/oblique-ui'}
+)
+	.pipe(gulp.dest(paths.dist + 'styles'));
 
-const distTestHelpers = () => {
-	return gulp.src(['test_helpers/*']).pipe(gulp.dest(paths.dist + 'test_helpers'));
-};
+const distTestHelpers = () => gulp.src(['test_helpers/*']).pipe(gulp.dest(paths.dist + 'test_helpers'));
 
 const distMeta = () => {
 	const meta = reload('./package.json');
@@ -45,7 +40,6 @@ const distMeta = () => {
 		.pipe(gulp.dest(paths.dist));
 };
 
-
 const distBundle = () => {
 	const meta = reload('./package.json');
 	return gulp.src(paths.dist + 'bundles/oblique-reactive.umd.js')
@@ -53,23 +47,18 @@ const distBundle = () => {
 		.pipe(gulp.dest(paths.dist + 'bundles'));
 };
 
-const distBuild = gulp.parallel(
-	distSources,
-	distTestHelpers,
-	distMeta,
-	distBundle
-);
+const commit = () => gulp.src('.')
+	.pipe(git.add())
+	.pipe(git.commit('chore(version): release version ' + getPackageJsonVersion()));
 
-const commit = () => {
-	return gulp.src('.')
-		.pipe(git.add())
-		.pipe(git.commit('chore(version): release version ' + getPackageJsonVersion()));
-};
 
 gulp.task(
 	'dist',
-	gulp.series(
-		distBuild
+	gulp.parallel(
+		distSources,
+		distTestHelpers,
+		distMeta,
+		distBundle
 	)
 );
 
@@ -77,6 +66,7 @@ gulp.task(
 	'publish',
 	gulp.series(commit)
 );
+
 function reload(module) {
 	// Uncache module:
 	delete require.cache[require.resolve(module)];
