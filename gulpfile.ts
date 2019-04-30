@@ -65,9 +65,6 @@ const commit = () => {
 		.pipe(git.add())
 		.pipe(git.commit('chore(version): release version ' + getPackageJsonVersion()));
 };
-const push = (cb) => {
-	return git.push('origin', 'master', cb);
-};
 
 gulp.task(
 	'dist',
@@ -78,10 +75,7 @@ gulp.task(
 
 gulp.task(
 	'publish',
-	gulp.series(
-		commit,
-		push
-	)
+	gulp.series(commit)
 );
 function reload(module) {
 	// Uncache module:
