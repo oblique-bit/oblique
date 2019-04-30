@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MasterLayoutConfig, ORNavigationLink, SearchWidgetItem} from 'oblique-reactive';
+import {ORNavigationLink, SearchWidgetItem} from 'oblique-reactive';
 
 @Component({
 	selector: 'app-root',
@@ -34,9 +34,7 @@ export class AppComponent {
 	];
 	searchItems: SearchWidgetItem[] = [];
 
-	constructor(config: MasterLayoutConfig) {
-		config.locale.locales = ['en', 'fr'];
-
+	constructor() {
 		this.populateSearchItems(this.navigation);
 	}
 
