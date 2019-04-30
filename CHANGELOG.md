@@ -1,6 +1,6 @@
-## [3.1.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=3.1.1) (2019-04-29)
+# [3.1.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=3.1.1) (2019-04-29)
 
-### Bug Fixes
+## Bug Fixes
 * **master-layout:** close main navigation menu on `Escape` ([b8c61ba](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/b8c61ba))
 * **master-layout:** close main navigation menu on outside click ([70a4714](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/70a4714))
 * **master-layout:** main navigation menu is active when sub-route is active ([601dd2f](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/601dd2f))

@@ -105,7 +105,7 @@ The scope is optional and should be the name of the Oblique feature affected:
 * **unsaved-changes**
 * **unsubscribe**
 
-#####Subject
+##### Subject
 The subject is mandatory and contains a succinct description of the change:
 
 * use the imperative, present tense: "change" not "changed" nor "changes"
@@ -116,7 +116,7 @@ The subject is mandatory and contains a succinct description of the change:
 The body is optional.
 Just as in the subject, use the imperative, present tense: "change" not "changed" nor "changes". The body should include the motivation for the change and contrast this with previous behavior.
 
-####Footer
+#### Footer
 The footer is optional and should contain a reference to a JIRA issue if any, e.g.: `OUI-715`.
 
 It should also contain any information about Breaking Changes.
