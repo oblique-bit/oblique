@@ -1,0 +1,62 @@
+@import "~oblique-ui/scss/variables";
+
+ngb-datepicker.dropdown-menu {
+	margin-top: 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border-top: 0;
+	border-color: $gray;
+}
+
+.ngb-dp-header {
+	padding-top: 0 !important;
+
+	.btn-link {
+		color: $gray;
+		height: 2.25rem;
+		border-radius: 0;
+
+		&:hover {
+			color: $gray;
+			border-color: transparent;
+		}
+
+		&:not([disabled]):hover {
+			color: $brand-default;
+		}
+	}
+}
+
+.ngb-dp-months {
+	padding: 0 !important;
+}
+
+.ngb-dp-weekday {
+	color: $gray-darker !important;
+	font-style: normal;
+	width: 2.5rem !important;
+}
+
+.ngb-dp-day, .ngb-dp-week-number {
+	width: 2.5rem !important;
+	height: 2.5rem !important;
+}
+
+.ngb-dp-day .btn-secondary {
+	border-radius: 0;
+	width: 2.5rem;
+	height: 2.5rem;
+	line-height: 2.5rem;
+
+	&:not(.bg-primary) {
+		color: $gray-darker !important;
+	}
+
+	&:not(.bg-primary):hover {
+		font-weight: bold;
+	}
+
+	&.bg-primary {
+		box-shadow: inset 0 0 7px -1px $brand-default;
+	}
+}

@@ -14,36 +14,8 @@ let nextId = 0;
 	selector: 'or-search-box',
 	exportAs: 'orSearchBox',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	template: `
-		<div role="search" class="search-box" [class.slide-control]="slide">
-			<label class="control-toggle" for="{{id}}">
-				<span class="control-icon fa fa-search"></span>
-				<span class="control-label sr-only">{{'i18n.oblique.search.title' | translate}}</span>
-			</label>
-			<input [id]="id" class="search-box-input" type="search" placeholder="{{placeholder | translate}}" role="searchbox" [orSearchBox]="items"
-				   [(ngModel)]="pattern" [minPatternLength]="minPatternLength" [maxResults]="maxResults"/>
-		</div>
-	`,
-	styles: [`
-		.search-box {
-			flex-wrap: wrap;
-		}
-
-		.search-box::before {
-			top: 24px;
-			bottom: unset;
-		}
-
-		.search-box.slide-control:focus-within .search-box-input {
-			max-width: 400px;
-		}
-
-		.search-box:not(.slide-control)::before,
-		.search-box.slide-control:focus-within::before,
-		.search-box.slide-control:hover::before {
-			border-color: #b4b4b4;
-		}
-	`],
+	templateUrl: './search-box.component.html',
+	styleUrls: ['./search-box.component.scss'],
 	encapsulation: ViewEncapsulation.None
 })
 export class SearchBoxComponent implements OnInit {

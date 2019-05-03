@@ -7,29 +7,8 @@ import {NotificationService} from './notification.service';
 @Component({
 	selector: 'or-notification',
 	exportAs: 'orNotification',
-	template: `
-		<div class="notification-container">
-			<div class="notification show"
-			     *ngFor="let notification of notifications"
-			     [@inOut]="notification.$state">
-				<div [ngClass]="variant[notification.type]">
-					<button (click)="close(notification)" type="button" class="close">
-						&times;
-					</button>
-					<h4>
-						<span *ngIf="!notification.titleKey">{{("i18n.notification.type." + notification.type) | translate}}</span>
-						<span>{{notification.titleKey | translate:notification.titleParams}}</span>
-					</h4>
-					<p>{{notification.messageKey | translate:notification.messageParams}}</p>
-				</div>
-			</div>
-		</div>
-	`,
-	styles: [`
-		.notification-container {
-			perspective: 80px;
-		}
-	`],
+	templateUrl: './notification.component.html',
+	styleUrls: ['./notification.component.scss'],
 	animations: [
 		trigger('inOut', [
 			state('in', style({opacity: 1})),

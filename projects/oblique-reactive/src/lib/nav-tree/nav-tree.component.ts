@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ActivatedRoute, RouterLinkActive} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
@@ -9,55 +9,8 @@ import {NavTreeItemModel} from './nav-tree-item.model';
 @Component({
 	selector: 'or-nav-tree',
 	exportAs: 'orNavTree',
-	template: `
-		<ng-template #itemList let-items let-parentExpanded="parentExpanded">
-			<ng-template ngFor [ngForOf]="items" let-item>
-				<li *ngIf="visible(item)"
-					class="nav-item open"
-					role="presentation"
-					(or.navTree.item.toggleCollapsed)="item.collapsed = !item.collapsed"
-					[attr.id]="item.id ? (prefix ? prefix + '-' : '') + item.id : null"
-					[class.disabled]="item.disabled === true || null">
-					<a class="nav-link" role="treeitem" aria-selected="false"
-					   [routerLink]="item.routes"
-					   #rla="routerLinkActive" routerLinkActive [routerLinkActiveOptions]="{exact: !activateAncestors}"
-					   [queryParams]="item.queryParams" [fragment]="item.fragment"
-					   (click)="item.collapsed = !item.collapsed"
-					   [class.collapsed]="item.collapsed"
-					   [class.active]="isLinkActive(rla, item)"
-					   [attr.data-toggle]="item.items && !filterPattern ? 'collapse' : null"
-					   [attr.disabled]="item.disabled === true || null"
-					   [attr.aria-controls]="item.items ? itemKey(item) : null">
-						<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
-					</a>
-					<div id="#{{itemKey(item)}}" class="collapse show"
-						 *ngIf="item.items" [ngbCollapse]="item.collapsed">
-						<ul class="nav nav-tree"
-							[ngClass]="variant"
-							[class.expanded]="parentExpanded && !item.collapsed"
-							[class.disabled]="item.disabled === true || null"
-							role="tree">
-							<ng-container *ngTemplateOutlet="itemList; context:{ $implicit: item.items, parentExpanded: parentExpanded && !item.collapsed}">
-							</ng-container>
-						</ul>
-					</div>
-				</li>
-			</ng-template>
-		</ng-template>
-		<ul #root class="nav nav-tree expanded" role="tree" [ngClass]="variant">
-			<ng-content></ng-content>
-			<ng-container *ngTemplateOutlet="itemList; context:{ $implicit: items, parentExpanded: true }"></ng-container>
-		</ul>
-	`,
-	// Ensure CSS styles are added to global styles as search pattern highlighting is done at runtime:
-	// (see also: https://angular.io/docs/ts/latest/guide/component-styles.html#!#view-encapsulation)
-	encapsulation: ViewEncapsulation.None,
-	styles: [`
-		.nav-tree-pattern-highlight {
-			font-weight: bold;
-			text-decoration: underline;
-		}
-	`]
+	templateUrl: './nav-tree.component.html',
+	styleUrls: ['./nav-tree.component.scss']
 })
 export class NavTreeComponent extends Unsubscribable {
 	static DEFAULTS = {

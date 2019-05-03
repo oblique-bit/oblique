@@ -1,0 +1,82 @@
+<nav class="accesskeys" role="navigation" aria-label="Accesskeys">
+	<ul class="list-unstyled">
+		<li>
+			<a class="accessible" accesskey="0" [routerLink]="url"
+			   fragment="content">{{'i18n.accesskey.mainContent' | translate}}</a>
+		</li>
+		<li>
+			<a class="accessible" accesskey="1" [routerLink]="home">{{'i18n.accesskey.homepage' | translate}}</a>
+		</li>
+		<li>
+			<a class="accessible" accesskey="2" [routerLink]="url" fragment="navigation"
+			   *ngIf="!noNavigation && navigation.length">
+				{{'i18n.accesskey.navigation' | translate}}</a>
+		</li>
+	</ul>
+</nav>
+<or-master-layout-header [class.offcanvas-main]="offCanvas" [navigation]="navigation">
+	<ng-content select="[orHeader]" orHeader></ng-content>
+	<ng-content select="[orLocales]" orLocales></ng-content>
+	<ng-content select="[orHeaderTitle]" orHeaderTitle></ng-content>
+	<ng-content select="[orNavigation]" orNavigation></ng-content>
+	<ng-container *ngFor="let template of headerControlTemplates">
+		<ng-template #orHeaderControl>
+			<ng-container [ngTemplateOutlet]="template"></ng-container>
+		</ng-template>
+	</ng-container>
+</or-master-layout-header>
+<div id="content" class="application-content" role="main" [class.offcanvas-main]="offCanvas" tabindex="-1">
+	<div class="alert-compatibility default-layout">
+		<div class="callout callout-danger">
+			<span class="sr-only">Error</span>
+			<h4>Unsupported browser!</h4>
+			<p class="lead">Please note that your browser, Internet Explorer 9 or earlier, is deprecated.</p>
+			<p>We recommend upgrading to the <a href="https://www.microsoft.com/en-us/windows/microsoft-edge"
+												target="_blank" rel="noopener">latest
+				version</a>.</p>
+			<p>If you are using IE 10 or above, make sure you <a href="https://support.microsoft.com/en-us/help/17471"
+																 target="_blank" rel="noopener">turn
+				off "Compatibility View".</a></p>
+		</div>
+	</div>
+	<div class="application-content-viewport">
+		<or-notification></or-notification>
+		<div class="cover-layout" *ngIf="coverLayout; else normalLayout">
+			<div class="cover-viewport">
+				<ng-container *ngTemplateOutlet="normalLayout"></ng-container>
+			</div>
+		</div>
+		<ng-template #normalLayout>
+			<div class="empty-layout">
+				<router-outlet></router-outlet>
+			</div>
+		</ng-template>
+		<or-spinner></or-spinner>
+	</div>
+</div>
+<or-top-control></or-top-control>
+<or-master-layout-footer [class.offcanvas-main]="offCanvas">
+	<ng-content select="[orFooter]" orFooter></ng-content>
+	<ng-content select="[orFooterInfo]" orFooterInfo></ng-content>
+	<ng-container *ngFor="let template of footerLinkTemplates">
+		<ng-template #orFooterLink>
+			<ng-container [ngTemplateOutlet]="template"></ng-container>
+		</ng-template>
+	</ng-container>
+</or-master-layout-footer>
+<div class="offcanvas-sidebar inversed" *ngIf="offCanvas">
+	<header class="offcanvas-header default-layout">
+		<h2>
+			<ng-content select="[orOffCanvasTitle]"></ng-content>
+		</h2>
+		<a role="button" orOffCanvasToggle tabindex="0" class="close-button" #offCanvasClose>
+			<span class="control-label fa fa-lg fa-close"></span>
+			<span class="sr-only">i18n.oblique.offCanvas.close</span>
+		</a>
+	</header>
+	<div class="offcanvas-content">
+		<ng-content select="[orOffCanvasContent]"></ng-content>
+	</div>
+</div>
+<div class="modal-backdrop offcanvas-backdrop show" *ngIf="offCanvas"></div>
+

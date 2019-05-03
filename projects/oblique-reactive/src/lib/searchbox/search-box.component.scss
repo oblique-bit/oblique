@@ -1,0 +1,20 @@
+@import "~oblique-ui/scss/variables";
+
+.search-box {
+	flex-wrap: wrap;
+
+	&::before {
+		top: 24px;
+		bottom: unset;
+	}
+
+	&.slide-control:focus-within .search-box-input {
+		max-width: 400px;
+	}
+
+	&:not(.slide-control)::before,
+	&.slide-control:focus-within::before,
+	&.slide-control:hover::before {
+		border-color: $gray;
+	}
+}

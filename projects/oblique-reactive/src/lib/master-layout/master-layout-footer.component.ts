@@ -8,26 +8,7 @@ import {MasterLayoutConfig} from './master-layout.config';
 
 @Component({
 	selector: 'or-master-layout-footer',
-	template: `
-		<ng-content select="[orFooter]" *ngIf="custom"></ng-content>
-		<ng-container *ngIf="!custom">
-			<div class="footer-item footer-item-logo footer-sm-collapse">
-				<a [routerLink]="home" class="application-brand-logo">
-					<img src="./assets/styles/images/logo.svg" alt="{{'i18n.application.organization.name' | translate}}"/>
-				</a>
-			</div>
-			<div class="footer-item footer-item-info">
-				<ng-content select="[orFooterInfo]"></ng-content>
-			</div>
-			<div class="footer-item footer-item-links" *ngIf="templates.length">
-				<ul class="list-unstyled small d-flex flex-row justify-content-lg-end" role="menu">
-					<li role="presentation" *ngFor="let template of templates">
-						<ng-container [ngTemplateOutlet]="template"></ng-container>
-					</li>
-				</ul>
-			</div>
-		</ng-container>
-	`,
+	templateUrl: './master-layout-footer.component.html',
 	/* tslint:disable:use-host-property-decorator */
 	host: {class: 'application-footer'}
 })

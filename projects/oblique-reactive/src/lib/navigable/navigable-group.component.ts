@@ -8,8 +8,7 @@ import {
 	IterableDiffer,
 	IterableDiffers,
 	Output,
-	QueryList,
-	ViewEncapsulation
+	QueryList
 } from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe.class';
@@ -21,104 +20,8 @@ import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from '
 @Component({
 	selector: 'or-navigable-group',
 	exportAs: 'orNavigableGroup',
-	template: `
-		<ng-content></ng-content>`,
-	encapsulation: ViewEncapsulation.None,
-	styles: [`
-		.navigable {
-			line-height: 38px;
-			transition-property: background-color;
-			transition-duration: .25s;
-			animation-timing-function: ease-in-out;
-		}
-
-		.navigable .navigable-actions {
-			display: flex;
-			justify-content: flex-end;
-		}
-
-		.navigable .navigable-actions:not(.navigable-actions-fluid) {
-			min-height: 38px;
-			min-width: 113px;
-		}
-
-		.navigable .navigable-actions.navigable-actions-md:not(.navigable-actions-fluid) {
-			min-width: 150px;
-		}
-
-		.navigable .navigable-actions:not(.text-left) {
-			text-align: right;
-		}
-
-		.navigable .navigable-actions .navigable-reveal {
-			display: none;
-		}
-
-		.navigable .navigable-actions .navigable-show {
-			visibility: hidden;
-		}
-
-		.navigable .navigable-actions .navigable-collapse {
-			display: inline-flex;
-		}
-
-		.navigable .navigable-actions.navigable-actions-center {
-			text-align: center;
-		}
-
-		.navigable:hover,
-		.navigable:hover > td,
-		.navigable.list-group-item:hover,
-		.navigable.navigable-highlight:hover,
-		.navigable.navigable-highlight:hover > td,
-		.navigable.navigable-highlight.list-group-item:hover,
-		.navigable.navigable-active,
-		.navigable.navigable-active > td,
-		.navigable.navigable-active.list-group-item,
-		.navigable.navigable-selected,
-		.navigable.navigable-selected > td,
-		.navigable.navigable-selected.list-group-item {
-			transition-property: background-color;
-			transition-duration: .6s;
-			animation-timing-function: ease-in-out;
-			background-color: #d8e8ef;
-		}
-
-		.navigable:hover .navigable-actions .navigable-show,
-		.navigable.navigable-active .navigable-actions .navigable-show {
-			visibility: visible;
-		}
-
-		.navigable:hover .navigable-actions .navigable-reveal,
-		.navigable.navigable-active .navigable-actions .navigable-reveal {
-			visibility: visible;
-			display: inline-flex;
-		}
-
-		.navigable:hover .navigable-actions .navigable-collapse,
-		.navigable.navigable-active .navigable-actions .navigable-collapse {
-			display: none;
-		}
-
-		.navigable.navigable-active,
-		.navigable:focus {
-			z-index: 2;
-		}
-
-		.navigable.navigable-highlight {
-			background-color: #fffab2 !important;
-			transition-duration: 3.5s;
-		}
-
-		.navigable.list-group-item .navigable-actions {
-			white-space: nowrap;
-		}
-
-		@media screen {
-			> td {
-				height: 54px;
-			}
-		}`]
+	template: `<ng-content></ng-content>`,
+	styleUrls: ['./navigable-group.component.scss']
 })
 export class NavigableGroupComponent extends Unsubscribable implements AfterContentInit {
 
