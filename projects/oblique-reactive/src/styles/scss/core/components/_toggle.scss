@@ -1,0 +1,19 @@
+//
+// Toggle - Component
+// --------------------------------------------------
+.toggle                     { @include toggle();                            }
+
+// Toggle modifiers:
+.toggle-down-up             { @include toggle-icon($fa-var-angle-down, $fa-var-angle-up);    }
+.toggle-down-right          { @include toggle-icon($fa-var-angle-down, $fa-var-angle-right); }
+.toggle-down-left           { @include toggle-icon($fa-var-angle-down, $fa-var-angle-left);  }
+.toggle-up-down             { @include toggle-icon($fa-var-angle-up,   $fa-var-angle-down);  }
+.toggle-up-right            { @include toggle-icon($fa-var-angle-up,   $fa-var-angle-right); }
+.toggle-up-left             { @include toggle-icon($fa-var-angle-up,   $fa-var-angle-left);  }
+.toggle-right-left          { @include toggle-icon($fa-var-angle-right,$fa-var-angle-left);  }
+.toggle-right-down          { @include toggle-icon($fa-var-angle-right,$fa-var-angle-down);  }
+.toggle-right-up            { @include toggle-icon($fa-var-angle-right,$fa-var-angle-up);    }
+.toggle-left-right          { @include toggle-icon($fa-var-angle-left, $fa-var-angle-right); }
+.toggle-left-down           { @include toggle-icon($fa-var-angle-left, $fa-var-angle-down);  }
+.toggle-left-up             { @include toggle-icon($fa-var-angle-left, $fa-var-angle-up);    }
+.toggle-collapse            { @include toggle-icon($fa-var-angle-up,   $fa-var-angle-down, collapsed);  }

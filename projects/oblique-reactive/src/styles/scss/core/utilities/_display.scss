@@ -1,0 +1,59 @@
+//
+// Display - Utilities
+// --------------------------------------------------
+
+.d-layout-collapsed {
+	@include layout-collapse-up() {
+		display: none;
+	}
+}
+
+.d-layout-expanded {
+	@include layout-collapse-down() {
+		display: none;
+	}
+}
+
+.d-fixed-top {
+	@include layout-fixed-top();
+}
+
+[class*="visible-open"] {
+	display: none !important;
+}
+
+.open {
+	.visible-open,
+	.visible-open-block {
+		display: block !important;
+	}
+	.visible-open-inline {
+		display: inline !important;
+	}
+	.visible-open-inline-block {
+		display: inline-block !important;
+	}
+	.hidden-open {
+		display: none !important;
+	}
+}
+
+[class*="visible-collapsed"] {
+	display: none !important;
+}
+
+.collapsed {
+	.visible-collapsed,
+	.visible-collapsed-block {
+		display: block !important;
+	}
+	.visible-collapsed-inline {
+		display: inline !important;
+	}
+	.visible-collapsed-inline-block {
+		display: inline-block !important;
+	}
+	.hidden-collapsed {
+		display: none !important;
+	}
+}

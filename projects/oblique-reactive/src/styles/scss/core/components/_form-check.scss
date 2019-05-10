@@ -1,0 +1,126 @@
+//
+// Checkbox & Radio - Component
+// --------------------------------------------------
+$size: 1.1875em;		//19px with a 16px basis
+$small: 0.6875em;		//11px with a 16px basis
+$smallSize: 1.7273em;	//19px with a 11px basis
+
+.form-check {
+	line-height: $size;
+	padding-left: $size;
+	margin-top: 0.5625em;
+	margin-bottom: 0.5626em;
+
+	&.form-check-lg {
+		font-size: 1.25em;
+	}
+
+	&.form-check-sm {
+		font-size: 0.875rem;
+	}
+
+	.form-check-label {
+		vertical-align: middle;
+		position: relative;
+		min-height: $size;
+		padding-left: 0.3em;
+		font-weight: normal;
+		cursor: pointer;
+
+		&:empty {
+			padding-left: 0;
+		}
+
+		&::before,
+		&::after {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		&::before {
+			width: $size;
+			height: $size;
+			margin-left: -$size;
+			border: 1px solid $input-border-color;
+			background-color: $white;
+			@include transition(border-radius 0.15s ease-in-out, color 0.15s ease-in-out);
+		}
+
+		&::after {
+			width: $smallSize;
+			height: $smallSize;
+			margin-left: -$smallSize;
+			color: $input-color;
+			font-size: $small;
+
+			text-align: center;
+			line-height: $smallSize;
+			vertical-align: middle;
+
+			transform: scale(0, 0);
+			transition: transform .15s cubic-bezier(.8, -0.33, .2, 1.33);
+			//curve - http://cubic-bezier.com/#.8,-0.33,.2,1.33
+		}
+	}
+
+	.form-check-input {
+		opacity: 0;
+		margin: 0;
+		z-index: -1;
+
+		&:checked + .form-check-label::after {
+			transform: scale(1, 1);
+		}
+
+		&:focus + .form-check-label::before {
+			color: $input-focus-color;
+			background-color: $input-focus-bg;
+			border-color: $input-focus-border-color;
+			outline: 0;
+			// Avoid using mixin so we can pass custom focus shadow properly
+			@if $enable-shadows {
+				box-shadow: $input-box-shadow, $input-focus-box-shadow;
+			} @else {
+				box-shadow: $input-focus-box-shadow;
+			}
+		}
+
+		&:disabled,
+		fieldset:disabled & {
+			cursor: not-allowed;
+
+			+ .form-check-label {
+				cursor: default;
+				opacity: 0.65;
+
+				&::before {
+					background-color: $gray-lighter;
+				}
+
+				&::before,
+				&::after {
+					cursor: not-allowed;
+				}
+			}
+		}
+	}
+
+	.form-inline & {
+		padding-left: $size;
+	}
+
+	&.form-check-inline {
+		display: inline-block;
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+
+		.form-check-input {
+			position: absolute;
+		}
+	}
+}

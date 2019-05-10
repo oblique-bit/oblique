@@ -1,0 +1,72 @@
+// Text control - Component
+// ------------------------------------------------
+*::-ms-clear {
+	display: none;
+}
+
+$text-control-width: 2rem;
+
+.text-control {
+	display: flex;
+
+	.form-control {
+		padding-right: $text-control-width;
+	}
+
+	.text-control-clear {
+		z-index: 3;
+		background-color: transparent;
+		border: none;
+		width: $text-control-width;
+		margin-left: -$text-control-width;
+		padding: $input-padding-y;
+		opacity: 0;
+		@include transition(opacity 0.2s);
+
+		.fa {
+			color: $gray;
+			@include transition(color 0.2s);
+		}
+
+		&:hover .fa {
+			color: $gray-darker;
+		}
+	}
+
+	&:hover .text-control-clear,
+	input:focus + .text-control-clear,
+	.text-control-clear:focus {
+		opacity: 1;
+	}
+
+	input[disabled] + .text-control-clear,
+	input[readonly] + .text-control-clear {
+		display: none;
+	}
+
+	// SM sizing:
+	$text-control-width-sm: $text-control-width * 0.8;
+	.form-control-sm {
+		padding-right: $text-control-width-sm;
+	}
+
+	&.input-group-sm > .text-control-clear,
+	.form-control-sm + .text-control-clear {
+		width: $text-control-width-sm;
+		margin-left: -$text-control-width-sm;
+		padding: $input-padding-y-sm;
+	}
+
+	// LG sizing:
+	$text-control-width-lg: $text-control-width * 1.2;
+	.form-control-lg {
+		padding-right: $text-control-width-lg;
+	}
+
+	&.input-group-lg > .text-control-clear,
+	.form-control-lg + .text-control-clear {
+		width: $text-control-width-lg;
+		margin-left: -$text-control-width-lg;
+		padding: $input-padding-y-lg;
+	}
+}

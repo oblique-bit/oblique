@@ -1,3 +1,366 @@
-:host {
+@import "~font-awesome/scss/variables";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins/breakpoints";
+@import "~bootstrap/scss/mixins/grid";
+@import "~bootstrap/scss/mixins/screen-reader";
+@import "../../styles/scss/variables";
+@import "../../styles/scss/mixins/animation";
+@import "../../styles/scss/mixins/decoration";
+@import "../../styles/scss/mixins/layout";
+@import "../../styles/scss/mixins/notification";
+
+$header-transition-duration: 0.5s;
+:host.application {
+	/* FIXME: refactor with flexbox when IE11 won't be supported anymore */
 	display: block;
+	position: relative;
+	min-height: 100%;
+
+	// Ensure we provide space for sticky footer in continuous mode:
+	padding-bottom: $footer-height-collapsed;
+
+	.application-header + .application-content {
+		@include layout-collapse-down() {
+			padding-top: 61px;
+		}
+	}
+
+
+	&.no-navigation .application-header + .application-content {
+		@include layout-collapse-down() {
+			transition: padding $header-transition-duration;
+
+			.header-open & {
+				padding-top: $header-height-md;
+			}
+		}
+	}
+
+	$header-delta-md: $header-height - $header-height-md;
+	$header-height-md-no-navigation: $header-height-no-navigation - $header-delta-md;
+	@include layout-collapse-up() {
+		padding-bottom: $footer-height-md;
+
+		&.application-scrolling {
+			padding-bottom: $footer-height;
+		}
+
+		&:not(.application-fixed) .application-header-sticky {
+			& + .application-content {
+				padding-top: $header-height;
+
+				@at-root #{selector-append(".no-navigation", &)} {
+					padding-top: $header-height-no-navigation;
+				}
+			}
+
+			&.application-header-md + .application-content {
+				padding-top: $header-height-md;
+
+				@at-root #{selector-append(".no-navigation", &)} {
+					padding-top: $header-height-md-no-navigation;
+				}
+			}
+
+			&.application-header-animate + .application-content:not(.offcanvas-main) {
+				@include animatable(padding-top);
+			}
+		}
+	}
+
+
+	&.application-fixed {
+		@include layout-collapse-up() {
+			display: flex;
+			flex-direction: column;
+			overflow: hidden;
+			height: 100%;
+			padding-bottom: 0;
+
+			.application-header {
+				flex-shrink: 0;
+			}
+
+			.application-content {
+				flex: 2; // Fill vertical space!
+				overflow-y: auto;
+			}
+
+			.application-footer {
+				position: relative;
+			}
+
+			.application-content {
+				> .application-content-viewport {
+					position: relative;
+				}
+			}
+
+			.application-content-viewport {
+				height: 100%;
+
+				> .empty-layout,
+				> .default-layout {
+					overflow-y: auto;
+					height: 100%;
+				}
+			}
+		}
+	}
+
+	&.has-cover {
+		background-position: 50% 50%;
+		background-size: cover;
+		background-repeat: no-repeat;
+
+		@include layout-collapse-down() {
+			&:before {
+				position: absolute;
+				display: block;
+				content: '';
+
+				width: 100%;
+				height: 100%;
+
+				top: 0;
+				left: 0;
+
+				@include bg($white, 0.9);
+			}
+
+			.application-content {
+				position: relative;
+			}
+		}
+	}
+}
+
+.header-open {
+	overflow: hidden;
+}
+
+.alert-compatibility {
+	display: none;
+
+	:host-context(.lt-ie10) & {
+		display: block;
+	}
+}
+
+.accesskeys {
+	position: fixed;
+	z-index: 100000;
+	display: flex;
+	justify-content: center;
+	top: 0;
+	width: 100%;
+	height: 0;
+	overflow: visible;
+}
+
+.accessible {
+	@include sr-only;
+	@include sr-only-focusable;
+	@include notification-base();
+	@include notification-style($state-warning-bg, $fa-var-universal-access, $state-warning-border, 54px);
+
+	display: block;
+	position: absolute;
+	width: 250px;
+
+	padding-top: $spacing-default;
+	padding-right: $spacing-default;
+	padding-bottom: $spacing-default;
+
+
+	$anims: transform, opacity;
+	@include animatable($anims);
+	transform: translateY(-100%);
+	transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+	opacity: 0;
+
+	box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2);
+
+	&:active,
+	&:focus {
+		z-index: $zindex-accessible;
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+
+$offcanvas-velocity: 600ms;
+$offcanvas-sidebar-width: 40%;
+$offcanvas-sidebar-collapsed-width: 80%;
+
+.offcanvas-sidebar {
+	display: none;
+	visibility: hidden; // A11y: ensure tabbing does not focus an offcanvas sidebar element when hidden.
+
+	:host.offcanvas-in &,
+	:host.offcanvas-open &,
+	:host.offcanvas-animating & {
+		visibility: visible; // A11y: ensure tabbing can focus again an offcanvas sidebar element when visible.
+	}
+}
+
+:host.offcanvas {
+	overflow-x: hidden;
+
+	.offcanvas-main {
+		width: 100%;
+		transition: transform $offcanvas-velocity, width $offcanvas-velocity;
+	}
+
+	.offcanvas-sidebar {
+		display: block;
+		box-sizing: content-box; // Fix scrollbar in IE9
+
+		position: fixed;
+		z-index: $zindex-modal;
+
+		top: 0;
+		left: 100%;
+
+		height: 100%;
+		width: $offcanvas-sidebar-collapsed-width;
+		overflow-y: auto;
+
+		transition: transform $offcanvas-velocity, left $offcanvas-velocity, width $offcanvas-velocity, visibility $offcanvas-velocity;
+
+		@include media-breakpoint-up(lg) {
+			width: $offcanvas-sidebar-width;
+		}
+
+		.offcanvas-header {
+			height: $header-height-no-navigation;
+			border-bottom: $brand-line-width solid $gray;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			h2 {
+				margin: 0;
+			}
+
+			.close-button {
+				color: $white;
+			}
+
+			@media(max-width: $layout-collapse) {
+				height: $header-height-collapsed;
+			}
+		}
+
+		.offcanvas-content {
+			height: calc(100vh - #{$header-height-no-navigation});
+			overflow-y: auto;
+
+			@media(max-width: $layout-collapse) {
+				height: calc(100vh - #{$header-height-collapsed});
+			}
+		}
+	}
+
+	&.offcanvas-in {
+		.offcanvas-main {
+			transform: translateX(-$offcanvas-sidebar-collapsed-width);
+
+			@include media-breakpoint-up(lg) {
+				width: 100% - $offcanvas-sidebar-width;
+				transform: translateX(0);
+			}
+		}
+
+		.offcanvas-sidebar {
+			transform: translateX(-100%);
+
+			@include media-breakpoint-up(lg) {
+				left: 100% - $offcanvas-sidebar-width;
+				transform: translateX(0);
+			}
+		}
+
+		.offcanvas-backdrop {
+			@include media-breakpoint-down(md) {
+				display: block;
+			}
+		}
+	}
+
+	.offcanvas-backdrop {
+		display: none;
+	}
+}
+
+@media(max-width: $layout-collapse) {
+	:host.header-open.offcanvas .offcanvas-sidebar {
+		.offcanvas-header {
+			height: $header-height-md;
+		}
+
+		.offcanvas-content {
+			height: calc(100vh - #{$header-height-md});
+		}
+	}
+}
+
+
+.cover-layout {
+	width: 100%;
+	height: 100%;
+}
+
+.cover-viewport {
+	width: 100%;
+	height: 100%;
+
+	overflow-y: auto;
+	overflow-x: hidden;
+
+	@include layout-collapse-up() {
+		min-height: calc(100vh - #{$header-height} - #{$footer-height-md});
+
+		margin-left: 35%;
+		width: 45%;
+
+		@include bg($white, 0.9);
+	}
+
+	@include media-breakpoint-up(lg) {
+		margin-left: 45%;
+		width: 38%;
+	}
+
+	@include media-breakpoint-up(xl) {
+		margin-left: 50%;
+		width: 33%;
+	}
+}
+
+
+// Layout-specific components:
+.cover-header,
+.cover-alert {
+	@include make-row();
+	border: none;
+	margin-bottom: $spacing-md * 3;
+}
+
+:host.no-navigation {
+	@include layout-collapse-up() {
+		.cover-viewport {
+			min-height: calc(100vh - #{$header-height-no-navigation} - #{$footer-height-md});
+		}
+	}
+}
+
+.cover-header {
+	padding: 0 $spacing-default;
+
+	@include layout-collapse-up() {
+		background-color: $white;
+	}
 }

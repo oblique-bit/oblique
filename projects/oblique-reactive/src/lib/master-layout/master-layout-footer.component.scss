@@ -1,0 +1,119 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "../../styles/scss/core/variables";
+@import "../../styles/scss/core/mixins/layout";
+
+$logo-container-width: $brand-logo-width + (2 * $spacing-default);
+$links-width: 28%;
+
+:host.application-footer  {
+	display: flex;
+	flex-direction: column;
+	color: $gray-darker;
+	font-size: $font-size-sm;
+	background-color: $gray-lighter;
+	border-top: 1px solid $gray-light;
+	padding: $spacing-xs $spacing-default;
+
+	// This allows application footer to remain sticky at the bottom if content is smaller than viewport:
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+
+	.footer-item {
+		padding: $spacing-xs 0;
+
+		&:not(:last-child) {
+			border-bottom: 1px solid $gray-light;
+		}
+
+		.application-brand-logo {
+			margin-bottom: $spacing-xs;
+		}
+
+		p,
+		ul,
+		ul > li {
+			margin: 0;
+			line-height: 17px;
+		}
+
+		ul > li:not(:last-child) {
+			padding: 0 $spacing-md 0 0;
+		}
+
+		p + p {
+			margin-top: 2px;
+		}
+	}
+
+	.application-brand-logo {
+		display: inline-block;
+
+		img {
+			float: left;
+			width: $brand-logo-width;
+			height: 54px;
+		}
+	}
+
+	@include layout-collapse-up() {
+		flex-direction: row;
+		height: $footer-height-md;
+
+		.footer-item {
+			max-height: 100%;
+		}
+
+		.footer-item:not(:last-child) {
+			border-bottom: unset;
+		}
+
+		.footer-item-logo {
+			width: $logo-container-width;
+		}
+
+		.footer-item-info {
+			flex: 1; // Variable width.
+			overflow: hidden;
+		}
+
+		.footer-item-links {
+			width: $links-width;
+		}
+
+		ul {
+			text-align: right;
+
+			li:not(:first-child) a {
+				margin-left: $spacing-md;
+			}
+		}
+	}
+
+	// Footer SM variant:
+	&.application-footer-sm {
+		@include layout-collapse-up() {
+			height: $footer-height-sm;
+			padding-top: $spacing-xs + 3px;
+			padding-bottom: $spacing-xs + 3px;
+
+			.footer-item {
+				padding: 0;
+			}
+		}
+	}
+}
+
+@include layout-collapse-up() {
+	:host-context(.application-scrolling).application-footer:not(.application-footer-sm) {
+		height: $footer-height;
+	}
+
+	:host-context(.application:not(.application-scrolling)),
+	:host-context(.application.application-fixed) {
+		.footer-item-logo {
+			display: none;
+		}
+	}
+}

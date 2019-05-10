@@ -1,0 +1,23 @@
+@import "../variables";
+
+//
+// Nav - Mixins
+// --------------------------------------------------
+@mixin nav-hover {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -15px;
+	height: 100%;
+	border-left: 6px solid $brand-accent;
+}
+
+@mixin nav-indentation($offset: 0) {
+	$spacing: $offset + $spacing-default;
+	.nav-link {                                 padding-left: $offset;}
+	.nav > li > .nav-link {                     padding-left: $spacing;}
+	.nav .nav > li > .nav-link {                padding-left: $spacing + 10; font-size: 90%;}
+	.nav .nav .nav > li > .nav-link {           padding-left: $spacing + 26; font-size: 85%;}
+	.nav .nav .nav .nav > li > .nav-link {      padding-left: $spacing + 36; font-size: 80%; }
+	.nav .nav .nav .nav .nav > li > .nav-link { padding-left: $spacing + 46; font-size: 75%; }
+}

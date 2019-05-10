@@ -1,0 +1,124 @@
+@import "../variables";
+
+//
+// Nav - stepper
+// --------------------------------------------------
+$stepper-step-size: 30px;
+$stepper-border-width: 3px;
+
+.nav-stepper {
+	@extend .nav-vertical;
+	display: flex;
+	flex-wrap: nowrap;
+	list-style-type: none;
+
+	// Steps:
+	.nav-item {
+		flex-basis: auto;
+		flex-grow: 1;
+		position: relative;
+		z-index: 0;
+
+		&:before {
+			z-index: 1;
+
+			font-weight: 900;
+			text-align: center;
+			color: $brand-secondary;
+
+			border: $stepper-border-width solid $brand-secondary;
+			border-radius: 50%;
+			background-color: $white;
+			box-shadow: 0 0 2px 2px $white;
+		}
+
+		&:after {
+			@include content-generated($index: -1);
+			border-width: 0;
+			border-left-style: solid;
+			border-left-color: $brand-secondary;
+			border-top-style: solid;
+			border-top-color: $brand-secondary;
+		}
+
+		.nav-stepper-title {
+			line-height: inherit;
+			font-size: inherit;
+			margin: 0;
+			padding: 0;
+		}
+
+		// States:
+		&.active {      @include stepper-state($white, $brand-secondary, $brand-secondary);}
+		&.disabled {    @include stepper-state($gray-light, $white, $gray-light);
+
+			&.active {
+				.nav-link {
+					color: inherit;
+				}
+			}
+		}
+
+		// Variants:
+		&.success {     @include stepper-state($brand-success, $white, $brand-success);}
+		&.warning {     @include stepper-state($brand-warning, $white, $brand-warning);}
+		&.danger {      @include stepper-state($brand-danger, $white, $brand-danger);}
+
+		// Feedback:
+		&.valid {       @include stepper-feedback($fa-var-check); }
+		&.invalid {     @include stepper-feedback($fa-var-exclamation); }
+		&.error {       @include stepper-feedback($fa-var-times); }
+	}
+
+	// Sizes -----
+
+	// Default:
+	@include stepper-variant($font-size-base, $stepper-step-size, $stepper-border-width);
+
+	// Small:
+	&.nav-stepper-sm {
+		@include stepper-variant($font-size-base - 0.1, 24px, $stepper-border-width - 1);
+	}
+
+	// Large:
+	&.nav-stepper-lg {
+		@include stepper-variant($font-size-xl, 80px, $stepper-border-width + 1);
+	}
+
+	// Usage -----
+
+	// Ordered steps:
+	@at-root #{selector-append("ol", &)} {
+		counter-reset: li-counter;
+
+		.nav-item {
+			&:before {
+				content: counter(li-counter);
+				counter-increment: li-counter;
+			}
+		}
+	}
+
+	// Labelled steps:
+	.nav-item[data-step-label] {
+		&:before {
+			content: attr(data-step-label);
+		}
+	}
+}
+
+// Contextual steppers:
+.modal-header {
+
+	.nav-stepper {
+		.nav-item {
+			margin-bottom: -1em;
+		}
+
+		// If a modal close button follows a `.nav-stepper`, ensure its margin does not break the
+		// `justify-content: space-between;` property of the enclosing `.modal-header`:
+		+ .close {
+			margin-left: (-$modal-header-padding);
+		}
+	}
+}

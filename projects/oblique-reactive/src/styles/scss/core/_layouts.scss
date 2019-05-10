@@ -1,0 +1,19 @@
+@import "core/variables";
+@import "core/mixins";
+
+//
+// Base - Layout composition
+// --------------------------------------------------
+html,
+body {
+	height: 100%;
+
+	@include layout-collapse-down() {
+		// Ensure fixed elements keep scrolling smoothly on iOS:
+		-webkit-overflow-scrolling: touch;
+	}
+}
+
+.default-layout {
+	padding: $spacing-default;
+}

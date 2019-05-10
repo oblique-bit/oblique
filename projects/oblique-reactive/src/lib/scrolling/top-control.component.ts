@@ -7,7 +7,8 @@ import {MasterLayoutConfig} from '../master-layout/master-layout.config';
 		<a class="top-control" role="button" tabindex="0" (click)="scrollTop()">
 			<span class="control-icon fa fa-angle-up"></span>
 			<span class="control-label">{{'i18n.topControl.backToTop' | translate}}</span>
-		</a>`
+		</a>`,
+	styleUrls: ['top-control.component.scss']
 })
 export class TopControlComponent {
 	constructor(private readonly config: MasterLayoutConfig) {

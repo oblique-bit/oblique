@@ -1,0 +1,17 @@
+//
+// Modal - Extensions
+// ------------------------------------------------
+
+// With columns:
+.modal {
+	.column-layout {
+		padding: 0;
+
+		.column-left {
+			@include layout-collapse-up() {
+				flex-basis: 40%;
+			}
+		}
+	}
+}
+

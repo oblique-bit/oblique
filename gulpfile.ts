@@ -14,28 +14,11 @@ const fs = require('fs'),
 			+ '\r */\n';
 	};
 
-const distSources = () => gulp.src([
-		'node_modules/oblique-ui/css/**/*',
-		'node_modules/oblique-ui/scss/**/*',
-		'node_modules/oblique-ui/fonts/**/*',
-		'node_modules/oblique-ui/images/**/*'
-	], {base: 'node_modules/oblique-ui'}
-)
-	.pipe(gulp.dest(paths.dist + 'styles'));
-
-const rewriteStylesPath = () =>
-	gulp.src(paths.dist + 'styles/scss/themes/oblique-material.scss')
-		.pipe(replace('~oblique-ui/scss/variables', '../variables'))
-		.pipe(gulp.dest(paths.dist + 'styles/scss/themes'));
-
 
 const distStyles = () =>
-	gulp.src(['projects/oblique-reactive/src/scss/**/*'])
-		.pipe(gulp.dest(paths.dist + 'styles/scss/themes'));
-
+	gulp.src(['projects/oblique-reactive/src/styles/**/*']).pipe(gulp.dest(paths.dist + 'styles'));
 
 const distTestHelpers = () => gulp.src(['test_helpers/*']).pipe(gulp.dest(paths.dist + 'test_helpers'));
-
 
 const distMeta = () => {
 	const meta = reload('./package.json');
@@ -68,10 +51,9 @@ const commit = () => gulp.src('.')
 gulp.task(
 	'dist',
 	gulp.parallel(
-		distSources,
 		distTestHelpers,
 		distMeta,
-		gulp.series(distStyles, rewriteStylesPath),
+		distStyles,
 		distBundle
 	)
 );

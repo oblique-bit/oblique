@@ -1,0 +1,55 @@
+//
+// Layout - Mixins
+// --------------------------------------------------
+
+@mixin layout-collapse-down() {
+	@media (max-width: $layout-collapse-max) {
+		@content;
+	}
+}
+
+@mixin layout-collapse-up() {
+	@media (min-width: $layout-collapse) {
+		@content;
+	}
+}
+
+@mixin layout-fixed-top($top: 0) {
+	position: fixed;
+	top: $top;
+	left: 0;
+	right: 0;
+}
+
+@mixin layer($layer: before) {
+	@if $layer == before {
+		&::before {
+			@content;
+		}
+	} @else if $layer == after {
+		&::after {
+			@content;
+		}
+	}
+}
+
+@mixin content-generated($content: '', $index: 0, $top: 0, $right: 0, $bottom: 0, $left: 0) {
+	content: $content;
+	position: absolute;
+	z-index: $index;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+@mixin responsive-max-height($max-height: 250px) {
+	max-height: $max-height;
+
+	@media (min-height: breakpoint-min(md)) {
+		@include media-breakpoint-up(lg) {
+			max-height: $max-height + 100;
+		}
+	}
+}
+

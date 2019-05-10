@@ -1,0 +1,46 @@
+//
+// Radio - Component
+// --------------------------------------------------
+$outer: 1.18182em;  //13px with a 16px basis
+$inner: 0.27273em;  // 3px with a 16px basis
+
+@mixin radio-variant($color) {
+	.form-check-input[type="radio"]:checked + .form-check-label {
+		&::before {
+			border-color: $color;
+		}
+		&::after {
+			background-color: $color;
+		}
+	}
+}
+
+.form-check {
+	.form-check-input[type="radio"] {
+		& + .form-check-label::before,
+		& + .form-check-label::after {
+			border-radius: 50%;
+		}
+
+		&:checked + .form-check-label::after {
+			width: $outer;
+			height: $outer;
+			left: $inner;
+			top: $inner;
+			background-color: $input-color;
+		}
+	}
+
+	&.form-check-primary {
+		@include radio-variant($brand-primary);
+	}
+	&.form-check-success {
+		@include radio-variant($brand-success);
+	}
+	&.form-check-warning {
+		@include radio-variant($brand-warning);
+	}
+	&.form-check-danger {
+		@include radio-variant($brand-danger);
+	}
+}

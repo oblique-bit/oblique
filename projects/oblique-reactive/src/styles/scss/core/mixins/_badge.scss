@@ -1,0 +1,8 @@
+//
+// Badge - Mixins
+// --------------------------------------------------
+
+@mixin badge-styles($bg-color, $font-color) {
+	background-color: $bg-color;
+	color: $font-color;
+}

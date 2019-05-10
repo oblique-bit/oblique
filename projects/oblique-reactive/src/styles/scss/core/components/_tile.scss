@@ -1,0 +1,41 @@
+@import "../variables";
+
+//
+// Tile - Component
+// ------------------------------------------------
+.tile {
+	display: block;
+	min-height: 35px;
+	line-height: 23px;
+	color: #fff;
+	background-color: $brand-default;
+	padding: $spacing-xs $spacing-md;
+
+	.jumbotron &:not(.tile-lg) {
+		text-align: left;
+	}
+
+	.tile-group & {
+		margin-top: $grid-gutter-width / 2;
+
+		@include media-breakpoint-up(md) {
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+	}
+
+	// Types:
+	&.tile-icon {
+		text-align: center;
+	}
+
+	// Variations:
+	&.tile-lg {
+		min-width: 85px;
+		min-height: 85px;
+		font-size: 60px;
+		line-height: 65px;
+		padding: $spacing-md $spacing-default;
+	}
+}

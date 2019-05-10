@@ -15,6 +15,7 @@ import {Unsubscribable} from '../unsubscribe.class';
 				<span class="spinner fa fa-spinner fa-4x"></span>
 			</div>
 		</div>`,
+	styleUrls: ['spinner.component.scss'],
 	animations: [
 		trigger('inOut', [
 			state('in', style({opacity: 1, display: 'block'})),

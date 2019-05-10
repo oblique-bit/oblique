@@ -1,0 +1,52 @@
+// Primary navbar - Component
+// --------------------------------------------------
+
+
+// Navigation row & cols:
+.navbar-primary-row {
+	display: flex;
+	flex-direction: column;
+
+	@include layout-collapse-up() {
+		flex-direction: row;
+		flex-wrap: wrap;
+
+		> .nav-header {
+			display: block;
+			width: 100%;
+		}
+	}
+}
+
+.navbar-primary-col {
+	@include layout-collapse-up() {
+		flex: 1 1 20%;
+
+		& + & {
+			padding-left: $spacing-default;
+		}
+	}
+}
+
+// Navigation menu:
+
+
+// Navigation section:
+.navbar-primary-section {
+	@include layout-collapse-up() {
+		.nav .nav .nav-link {
+			text-indent: $spacing-xs;
+
+			&:before {
+				content: '- ';
+			}
+		}
+	}
+}
+
+.navbar-primary-section-title {
+	font-weight: 600;
+}
+
+// `Back` toggle:
+

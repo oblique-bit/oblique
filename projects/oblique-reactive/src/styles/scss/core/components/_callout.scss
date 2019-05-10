@@ -1,0 +1,62 @@
+@import '../variables';
+
+//
+// Callout - Component
+// ------------------------------------------------
+// Not quite alerts, but custom and helpful way to present context-unrelated information.
+// Requires a base and modifier class.
+.callout {
+	padding: $card-spacer-x;
+	margin-bottom: $spacing-default;
+	border-left: 3px solid transparent;
+
+	h2, h3, h4 {
+		margin-top: 0;
+		margin-bottom: 5px;
+
+		&.lead {
+			border-bottom: 1px solid transparent;
+			margin-bottom: 10px;
+		}
+
+		small {
+			font-weight: 600;
+		}
+	}
+
+	p {
+		&.lead {
+			font-size: 16px;
+		}
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.callout-link {
+		color: $brand-default;
+		text-decoration: underline;
+		font-weight: $font-weight-bold;
+	}
+}
+
+// Mixin for generating new callout styles:
+@mixin callout-styles($text, $bg, $border) {
+	background-color: $bg;
+	border-color: $border;
+
+	h2, h3, h4 {
+		color: $text;
+
+		&.lead {
+			border-color: fade-out($text, 0.10);
+		}
+	}
+}
+
+// Callout variations:
+.callout-default    { @include callout-styles($brand-light, $gray-lighter, $brand-secondary); }
+.callout-success    { @include callout-styles($state-success-text, $state-success-bg, $state-success-border); }
+.callout-info       { @include callout-styles($state-info-text, $state-info-bg, $state-info-border); }
+.callout-warning    { @include callout-styles($state-warning-text, $state-warning-bg, $state-warning-border); }
+.callout-danger     { @include callout-styles($state-danger-text, $state-danger-bg, $state-danger-border); }

@@ -1,0 +1,79 @@
+//
+// Type - Component
+// --------------------------------------------------
+
+// Headings
+// --------------------------------------------------
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	line-height: 1.4;
+}
+
+h1 {
+	line-height: 1.5;
+	font-weight: 300;
+	margin-bottom: $spacer;
+}
+
+h2 {
+	line-height: 1.5;
+	font-weight: 400;
+	margin-bottom: $spacer * 0.75;
+}
+
+h3 {
+	font-weight: 600;
+}
+
+h4 {
+	font-weight: 600;
+}
+
+h5 {
+	font-weight: 600;
+}
+
+h6 {
+	font-weight: 600;
+}
+
+.page-header {
+	border-bottom: 1px solid $gray-lighter;
+}
+
+// Block elements
+// --------------------------------------------------
+pre {
+	background-color: #f7f7f9;
+	border: 1px solid $gray-light;
+	padding: $spacer / 2;
+}
+
+// Inline elements
+// --------------------------------------------------
+a:hover {
+	//text-decoration: none;
+}
+
+label {
+	font-weight: 600;
+}
+
+i {
+	font-weight: normal;
+	font-style: italic;
+}
+
+.smaller {
+	font-size: 75%;
+}
+
+.text-description {
+	color: $gray-dark;
+}
+
+// Inversed content
+// --------------------------------------------------
+.inversed {
+	@include inversed();
+}

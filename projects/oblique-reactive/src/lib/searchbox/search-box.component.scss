@@ -1,20 +1,86 @@
-@import "~oblique-ui/scss/variables";
+@import "../../styles/scss/core/variables";
+@import "../../styles/scss/core/mixins/layout";
 
 .search-box {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
 	flex-wrap: wrap;
 
-	&::before {
-		top: 24px;
-		bottom: unset;
+	.control-toggle {
+		margin: 0;
 	}
 
-	&.slide-control:focus-within .search-box-input {
-		max-width: 400px;
+	.control-icon {
+		font-size: 1.65em;
+	}
+
+	.search-box-input {
+		overflow: hidden;
+		padding-left: 0.65em;
+		display: inline-block;
+		white-space: nowrap;
+		outline: none;
+		border: none;
+		font-weight: normal;
+		vertical-align: middle;
+		background-color: transparent;
+		width: calc(100% - 1.65em);
+	}
+
+	&::before {
+		@include content-generated($top: auto, $right: 0, $bottom: 0, $left: 2em);
+		top: 24px;
+		bottom: unset;
+		display: block;
+		height: 4px;
+		border-bottom: 1px solid transparent;
+		border-left: 1px solid transparent;
+		border-right: 1px solid transparent;
+		transition: border-color 0.6s;
+	}
+
+	&.open::before {
+		border-color: $gray;
+	}
+
+	&.slide-control {
+		.search-box-input {
+			max-width: 0;
+			transition: max-width $duration-default;
+
+			&:focus,
+			&:active {
+				max-width: 400px;
+			}
+		}
+
+		&:focus,
+		&:focus-within,
+		&:active,
+		&:hover,
+		&.open {
+			.search-box-input {
+				max-width: 400px;
+			}
+		}
 	}
 
 	&:not(.slide-control)::before,
 	&.slide-control:focus-within::before,
 	&.slide-control:hover::before {
 		border-color: $gray;
+	}
+}
+
+:host-context(.control-link) .search-box.slide-control {
+	transition: color $duration-default;
+
+	&:focus,
+	&:active,
+	&:hover,
+	&.open {
+		color: $brand-default;
 	}
 }

@@ -1,0 +1,66 @@
+@import "../../styles/scss/core/variables";
+@import "../../styles/scss/core/mixins/animation";
+@import "../../styles/scss/core/mixins/decoration";
+@import "../../styles/scss/core/mixins/layout";
+
+.top-control {
+	visibility: hidden; // A11y: ensure element is not reachable when tabbing.
+	position: fixed;
+	z-index: $zindex-accessible;
+	opacity: 0;
+	white-space: nowrap;
+	width: 200px;
+	padding: 8px 14px;
+	bottom: -52px;
+	right: -150px;
+	color: $gray-dark;
+	border-bottom-left-radius: $border-radius-base;
+	border-top-left-radius: $border-radius-base;
+
+	@include bg($gray-light, 0.65);
+	@include animatable(all, .5s);
+
+	.control-icon {
+		float: left;
+		font-size: 36px;
+		line-height: 28px;
+		margin-right: 15px;
+	}
+
+	.control-label {
+		float: left;
+		line-height: 20px;
+		vertical-align: top;
+		white-space: normal;
+		width: calc(100% - 40px);
+		padding: 6px 0;
+	}
+
+	&:hover, &:focus {
+		text-decoration: none;
+		color: $brand-default;
+		background-color: $gray-light;
+		box-shadow: $brand-shadow;
+	}
+
+	:host-context(.application-scrolling) & {
+		visibility: visible; // A11y: ensure element is reachable again when tabbing.
+		opacity: 0.85;
+		bottom: 15px;
+
+		@include layout-collapse-up() {
+			bottom: $footer-height + 6;
+		}
+
+		&:hover, &:focus {
+			opacity: 1;
+			right: 0;
+		}
+	}
+
+	:host-context(.header-open) & {
+		@include layout-collapse-down() {
+			display: none;
+		}
+	}
+}

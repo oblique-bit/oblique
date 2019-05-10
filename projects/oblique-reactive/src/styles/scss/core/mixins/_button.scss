@@ -1,0 +1,68 @@
+//
+// Button - Mixins
+// --------------------------------------------------
+// $Override
+
+@mixin btn-variant(
+	$color, $background, $border,
+	$selected-color, $selected-background, $selected-border,
+	$active-color) {
+
+	color: $color;
+	border-color: $border;
+	background-color: $background;
+
+	&:hover,
+	&:focus,
+	&.focus,
+	&:active,
+	&.active {
+		// FIXME: .open .dropdown-toggle& {
+		color: $selected-color;
+		text-decoration: none;
+		background-color: $selected-background;
+		border-color: $selected-border;
+	}
+
+	&.focus {
+		text-decoration: none;
+	}
+
+	&:not([disabled]):not(.disabled) {  // to cancel a bootstrap rule
+		&:active,
+		&.active {
+			// FIXME:.open .dropdown-toggle& {
+			background-image: none;
+			background-color: darken($selected-background, 4%);
+			border-color: darken($selected-border, 4%);
+			color: $active-color;
+		}
+	}
+
+	&.disabled,
+	&[disabled] {
+		// FIXME: fieldset[disabled] & {
+		&,
+		&:hover,
+		&:focus,
+		&.focus,
+		&:active,
+		&.active {
+			color: $color;
+			background-color: $background;
+			border-color: $border;
+		}
+	}
+
+	.badge {
+		color: $background;
+		background-color: $color;
+	}
+}
+
+@mixin mixed-dropdown-btn-group($variant) {
+	.btn-group > .btn-#{$variant} + .dropdown-toggle:not(.btn-#{$variant}) {
+		margin-left: 0;
+		border-left: none;
+	}
+}

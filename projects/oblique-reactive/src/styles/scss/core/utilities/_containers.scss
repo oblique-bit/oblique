@@ -1,0 +1,53 @@
+//
+// Container - Utilities
+// --------------------------------------------------
+
+@import "../variables";
+
+// Scrollable
+// --------------------------------------------------
+.scrollable {
+	@include responsive-max-height($scrollable-max-height);
+	overflow-y: auto;
+
+	&.scrollable-fluid {
+		height: 100%;
+	}
+
+	> *:last-child {
+		margin-bottom: 0;
+	}
+}
+
+// Indents
+// --------------------------------------------------
+.has-indent {
+	margin-left: $spacing-indent;
+
+	.indent-control {
+		margin-left: -$spacing-indent;
+	}
+}
+
+// Stackable elements
+// ------------------------------------------------
+.stacks {
+	> * {
+		@include animatable();
+	}
+
+	.out {
+		opacity: 0;
+		height: 0;
+		overflow: hidden;
+		padding: 0;
+		border: none;
+		transform: translate(0, -50%);
+	}
+
+	.in {
+		opacity: 1;
+		height: auto;
+		transform: translate(0, 0);
+	}
+}

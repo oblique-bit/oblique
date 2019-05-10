@@ -25,13 +25,13 @@
               },
               {
                 "glob": "**/*",
-                "input": "node_modules/oblique-ui/images",
+                "input": "projects/oblique-reactive/src/styles/images",
                 "output": "/assets/styles/images"
               }
             ],
             "styles": [
-              "node_modules/oblique-ui/css/oblique-ui.css",
               "projects/oblique-reactive/src/scss/oblique-material.scss",
+              "projects/oblique-reactive/src/styles/scss/oblique-core.scss",
               "src/scss/styles.scss"
             ],
             "scripts": []
@@ -99,29 +99,6 @@
             "exclude": [
               "**/node_modules/**"
             ]
-          }
-        }
-      }
-    },
-    "oblique-reactive-e2e": {
-      "root": "",
-      "sourceRoot": "",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "oblique-reactive-showcase:serve"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "e2e/tsconfig.e2e.json"
-            ],
-            "exclude": []
           }
         }
       }

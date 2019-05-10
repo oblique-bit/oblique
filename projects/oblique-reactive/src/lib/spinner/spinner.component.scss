@@ -1,0 +1,16 @@
+@import "~font-awesome/scss/variables";
+@import "~font-awesome/scss/animated";
+
+.spinner {
+	margin: auto;
+	@extend .fa-spin;
+}
+
+.spinner-viewport {
+	margin: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	transform: translate(-50%, -50%);
+}

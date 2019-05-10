@@ -1,0 +1,118 @@
+//
+// Bubble tail - Mixins
+// --------------------------------------------------
+
+@mixin bubble-tail($color: #efefef, $width: 12px, $align: none, $align-value: auto, $placement: top, $direction: top, $position: relative, $layer: after) {
+
+	@if $layer == before {
+		&:before {
+			content: '';
+			position: absolute;
+			border-style: solid;
+			display: block;
+			width: 0;
+			z-index: 1;
+			margin-left: auto;
+			margin-right: auto;
+
+			// TODO: check below
+			@if type-of($align-value) == 'string' { // CSS keyword
+				left: 0;
+				right: 0;
+			}
+
+			@if type-of($align-value) == 'number' { // CSS pixel, percent
+				#{$align}: $align-value;
+			}
+
+			@if $placement == top {
+				@if $direction == top {
+					top: $width * -1;
+				}
+
+				@if $direction == bottom {
+					top: 0;
+				}
+			}
+
+			@if $placement == bottom and $direction == top {
+				bottom: 0;
+			}
+
+			@if $direction == top {
+				border-width: 0 $width $width;
+				border-color: $color transparent;
+			}
+
+			@if $direction == bottom {
+				border-width: $width $width 0;
+				border-color: $color transparent;
+			}
+
+			@if $direction == right {
+				border-width: $width 0 $width $width;
+				border-color: transparent $color;
+				top: 0;
+				left: auto;
+				right: $width * -1;
+			}
+		}
+	} @else if $layer == after {
+		&:after {
+			content: '';
+			position: absolute;
+			border-style: solid;
+			display: block;
+			width: 0;
+			z-index: 1;
+			margin-left: auto;
+			margin-right: auto;
+
+			@if type-of($align-value) == 'string' { // CSS keyword
+				left: 0;
+				right: 0;
+			}
+
+			@if type-of($align-value) == 'number' { // CSS pixel, percent
+				#{$align}: $align-value;
+			}
+
+			@if $placement == top {
+				@if $direction == top {
+					top: $width * -1;
+				}
+
+				@if $direction == bottom {
+					top: 0;
+				}
+			}
+
+			@if $placement == bottom and $direction == top {
+				bottom: 0;
+			}
+
+			@if $direction == top {
+				border-width: 0 $width + 1 $width + 1;
+				border-color: $color transparent;
+			}
+
+			@if $direction == bottom {
+				border-width: $width + 1 $width + 1 0;
+				border-color: $color transparent;
+			}
+
+			@if $direction == right {
+				border-width: $width + 1 0 $width + 1 $width + 1;
+				border-color: transparent $color;
+				top: 0;
+				left: auto;
+				right: $width * -1;
+			}
+		}
+	}
+}
+
+@mixin bubble-tail-border($bg: #efefef, $border: #666666, $width: 12px, $align: center, $align-value: auto, $placement: top, $direction: top, $position: relative) {
+	@include bubble-tail($bg, $width, $align, $align-value, $placement: $placement, $direction: $direction, $position: $position, $layer: after);
+	@include bubble-tail($border, $width + 1, $align, $align-value, $placement: $placement, $direction: $direction, $position: $position, $layer: before);
+}

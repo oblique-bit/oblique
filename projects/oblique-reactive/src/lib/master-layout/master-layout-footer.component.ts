@@ -9,6 +9,7 @@ import {MasterLayoutConfig} from './master-layout.config';
 @Component({
 	selector: 'or-master-layout-footer',
 	templateUrl: './master-layout-footer.component.html',
+	styleUrls: ['./master-layout-footer.component.scss'],
 	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'application-footer'}
 })

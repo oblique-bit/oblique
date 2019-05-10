@@ -1,0 +1,43 @@
+// Dropdown - Component
+// --------------------------------------------------
+.dropdown-menu {
+	box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+
+	.dropdown-header {
+		font-weight: bold;
+		font-size: $font-size-base * 0.95;
+		color: $brand-default;
+	}
+}
+
+// Dropdown toggles
+// --------------------------------------------------
+.dropdown-toggle {
+
+	// @override
+	&::after,
+	.dropup &::after{
+		border: none;
+		width: auto;
+		height: auto;
+		margin-left: 0;
+		vertical-align: baseline;
+	}
+	@include toggle($state: show, $layer: after);
+
+	.dropup &::after {
+		content: $fa-var-angle-up;
+
+		@at-root #{selector-append(".show", &)} {
+			content: $fa-var-angle-down
+		}
+	}
+
+	@at-root .show > #{selector-append(".btn-secondary", &)} {
+		@include btn-variant(
+				$btn-secondary-color, $btn-secondary-bg, $btn-secondary-border,
+				$btn-secondary-color, $btn-secondary-accent, $btn-secondary-selected,
+				$btn-secondary-color
+		);
+	}
+}

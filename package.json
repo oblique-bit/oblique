@@ -103,6 +103,7 @@
     "codelyzer": "^5.0.1",
     "conventional-changelog": "^3.0.6",
     "del": "^4.1.1",
+    "font-awesome": "^4.7.0",
     "gulp": "^4.0.0",
     "gulp-file": "^0.4.0",
     "gulp-git": "^2.9.0",

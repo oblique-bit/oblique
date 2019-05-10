@@ -1,0 +1,19 @@
+//
+// Table - Component
+// --------------------------------------------------
+@import "../variables";
+
+.table-striped tbody tr:nth-of-type(odd) {
+	background-color: $gray-lighter;
+}
+
+.table-hover tbody tr:hover {
+	background-color: $gray-light;
+}
+
+@include table-variant('table-active', $brand-light, $brand-default);
+@include table-variant('table-primary', $brand-primary, $white);
+@include table-variant('table-secondary', $brand-secondary, $white);
+@include table-variant('table-success', $brand-success-light, $brand-default);
+@include table-variant('table-warning', $brand-warning-light, $brand-default);
+@include table-variant('table-danger', $brand-danger-light, $brand-default);

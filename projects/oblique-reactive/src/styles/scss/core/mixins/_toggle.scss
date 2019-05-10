@@ -1,0 +1,29 @@
+//
+// Toggle - Mixins
+// --------------------------------------------------
+
+@mixin toggle($default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show, $layer: before) {
+	@include icon($default-icon, $layer);
+	@include toggle-state($state) {
+		@include icon-content($toggle-icon, $layer);
+	};
+}
+
+@mixin toggle-icon($default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show, $layer: before) {
+	@include icon-content($default-icon, $layer);
+
+	@include toggle-state($state) {
+		@include icon-content($toggle-icon, $layer);
+	};
+}
+
+@mixin toggle-state($state: show) {
+	&.#{$state},
+	.#{$state} > &,
+	.#{$state} > a &,
+	.#{$state} > button &,
+	a.#{$state} &,
+	button.#{$state} & {
+		@content;
+	}
+}
