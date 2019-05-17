@@ -1,11 +1,14 @@
-import {Component, Input, ViewChild} from '@angular/core';
+import {Component, Input, ViewChild, ViewEncapsulation} from '@angular/core';
 import {ColumnPanelDirective} from './column-panel.directive';
 
 @Component({
 	selector: 'or-column-layout',
 	exportAs: 'orColumnLayout',
 	templateUrl: './column-layout.component.html',
-	styleUrls: ['./column-layout.component.scss']
+	styleUrls: ['./column-layout.component.scss'],
+	encapsulation: ViewEncapsulation.None,
+	// tslint:disable-next-line:no-host-metadata-property
+	host: {class: 'column-layout'}
 })
 export class ColumnLayoutComponent {
 

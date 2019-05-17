@@ -1,21 +1,19 @@
-<div class="column-layout">
-	<div class="column-left d-print-none" role="complementary" #columnLeft="orColumnPanel" orColumnPanel *ngIf="left">
-		<button type="button" class="column-toggle-left" orColumnToggle>
-			<span class="sr-only">{{'i18n.oblique.column.left.toggle' | translate}}</span>
-		</button>
-		<div class="column-content">
-			<ng-content select="[column-left-content]"></ng-content>
-		</div>
+<div class="column-left d-print-none" role="complementary" #columnLeft="orColumnPanel" orColumnPanel *ngIf="left">
+	<button type="button" class="column-toggle-left" orColumnToggle>
+		<span class="sr-only">{{'i18n.oblique.column.left.toggle' | translate}}</span>
+	</button>
+	<div class="column-content">
+		<ng-content select="[column-left-content]"></ng-content>
 	</div>
-	<div class="column-main">
-		<ng-content select="[column-main-content]"></ng-content>
-	</div>
-	<div class="column-right" role="complementary" #columnRight="orColumnPanel" orColumnPanel *ngIf="right">
-		<button type="button" class="column-toggle-right" orColumnToggle>
-			<span class="sr-only">{{'i18n.oblique.column.right.toggle' | translate}}</span>
-		</button>
-		<div class="column-content">
-			<ng-content select="[column-right-content]"></ng-content>
-		</div>
+</div>
+<div class="column-main">
+	<ng-content select="[column-main-content]"></ng-content>
+</div>
+<div class="column-right" role="complementary" #columnRight="orColumnPanel" orColumnPanel *ngIf="right">
+	<button type="button" class="column-toggle-right" orColumnToggle>
+		<span class="sr-only">{{'i18n.oblique.column.right.toggle' | translate}}</span>
+	</button>
+	<div class="column-content">
+		<ng-content select="[column-right-content]"></ng-content>
 	</div>
 </div>

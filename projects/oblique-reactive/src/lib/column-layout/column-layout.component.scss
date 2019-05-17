@@ -7,133 +7,127 @@
 @import "../../styles/scss/core/mixins/icon";
 @import "../../styles/scss/core/mixins/layout";
 
+.column-toggle-left,
+.column-toggle-right {
+	display: none;
+}
 
-$column-velocity: 500ms;
-$column-width: 20%;
-.column-layout {
+@include layout-collapse-up() {
+	:host.column-layout {
+		display: flex;
+		overflow-x: hidden;
+	}
 
 	.column-toggle-left,
 	.column-toggle-right {
-		display: none;
+		display: block;
+		position: absolute;
+		z-index: 1;
+		top: 58px;
+		margin-top: -20px;
+		width: 20px;
+		height: 40px;
+		font-size: 17px;
+		text-align: center;
+		padding: 0;
+		border: 1px solid $gray-light;
+		background-color: $white;
+
+		@include transition(all $duration-default);
+		color: $gray-light;
+
+		&:hover,
+		&:focus {
+			transform: scale(1.25);
+			color: $brand-default;
+			border-color: $gray;
+			cursor: pointer;
+		}
 	}
 
-	@include layout-collapse-up() {
-		display: flex;
-		overflow-x: hidden;
+	.column-toggle-left {
+		transform-origin: 100% 50%;
+		right: 0;
+		margin-left: -20px;
+		border-radius: 20px 0 0 20px;
+		border-right-width: 0;
+		box-shadow: -2px 0 4px 0px rgba(0, 0, 0, 0.1);
+		@include icon($fa-var-angle-left);
+	}
 
-		.column-toggle-left,
-		.column-toggle-right {
-			display: block;
-			position: absolute;
-			z-index: 1;
-			top: 58px;
-			margin-top: -20px;
-			width: 20px;
-			height: 40px;
-			font-size: 17px;
-			text-align: center;
-			padding: 0;
-			border: 1px solid $gray-light;
-			background-color: $white;
+	.column-toggle-right {
+		transform-origin: 0 50%;
+		left: 0;
+		margin-right: -20px;
+		border-radius: 0 20px 20px 0;
+		border-left-width: 0;
+		box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.1);
+		@include icon($fa-var-angle-right);
+	}
 
-			@include transition(all $column-velocity);
-			color: $gray-light;
+	.column-main {
+		flex: 1 1 100%;
+		position: relative;
+	}
 
-			&:hover,
-			&:focus {
-				transform: scale(1.25);
-				color: $brand-default;
-				border-color: $gray;
-				cursor: pointer;
+	.column-left,
+	.column-right {
+		position: relative;
+		flex: 0 0 $column-width;
+		max-width: $column-width; // Ensure columns keep shrinking even if text content may overflow.
+	}
+	.column-left {
+		transition: margin-left $duration-default;
+
+		&.collapsed {
+			margin-left: -$column-width;
+
+			.column-toggle-left {
+				transform-origin: 0 50%;
+				margin-left: 0;
+				margin-right: -20px;
+				border-radius: 0 20px 20px 0;
+				border-right-width: 1px;
+				border-left-width: 0;
+				box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.1);
+				@include icon($fa-var-angle-right);
 			}
 		}
 
-		.column-toggle-left {
-			transform-origin: 100% 50%;
-			right: 0;
-			margin-left: -20px;
-			border-radius: 20px 0 0 20px;
-			border-right-width: 0;
-			box-shadow: -2px 0 4px 0px rgba(0, 0, 0, 0.1);
-			@include icon($fa-var-angle-left);
-		}
-
-		.column-toggle-right {
-			transform-origin: 0 50%;
-			left: 0;
-			margin-right: -20px;
-			border-radius: 0 20px 20px 0;
-			border-left-width: 0;
-			box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.1);
-			@include icon($fa-var-angle-right);
-		}
-
-		.column-main {
-			flex: 1 1 100%;
-			position: relative;
-		}
-
-		.column-left,
-		.column-right {
-			position: relative;
-			flex: 0 0 $column-width;
-			max-width: $column-width; // Ensure columns keep shrinking even if text content may overflow.
-		}
-		.column-left {
-			transition: margin-left $column-velocity;
-
-			&.collapsed {
-				margin-left: -$column-width;
-
-				.column-toggle-left {
-					transform-origin: 0 50%;
-					margin-left: 0;
-					margin-right: -20px;
-					border-radius: 0 20px 20px 0;
-					border-right-width: 1px;
-					border-left-width: 0;
-					box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.1);
-					@include icon($fa-var-angle-right);
-				}
+		&:after {
+			@include column-separator {
+				right: 0;
 			}
+		}
+	}
 
-			&:after {
-				@include column-separator {
-					right: 0;
-				}
-			;
+	.column-right {
+		transition: margin-right $duration-default;
+
+		&.collapsed {
+			margin-right: -$column-width;
+
+			.column-toggle-right {
+				transform-origin: 100% 50%;
+				margin-right: 0;
+				margin-left: -20px;
+				border-radius: 20px 0 0 20px;
+				border-right-width: 0;
+				border-left-width: 1px;
+				box-shadow: -2px 0 4px 0px rgba(0, 0, 0, 0.1);
+				@include icon($fa-var-angle-left);
 			}
 		}
 
-		.column-right {
-			transition: margin-right $column-velocity;
-
-			&.collapsed {
-				margin-right: -$column-width;
-
-				.column-toggle-right {
-					transform-origin: 100% 50%;
-					margin-right: 0;
-					margin-left: -20px;
-					border-radius: 20px 0 0 20px;
-					border-right-width: 0;
-					border-left-width: 1px;
-					box-shadow: -2px 0 4px 0px rgba(0, 0, 0, 0.1);
-					@include icon($fa-var-angle-left);
-				}
-			}
-
-			&:before {
-				@include column-separator {
-					left: 0;
-				}
-			;
+		&:before {
+			@include column-separator {
+				left: 0;
 			}
 		}
 	}
 }
 
-:host-context(.application-fixed) .column-layout {
+:host-context(.application-fixed).column-layout {
 	height: 100%;
 
 	.column-main,
