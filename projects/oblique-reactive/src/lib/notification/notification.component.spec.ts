@@ -5,7 +5,6 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MockTranslatePipe} from 'tests';
 import {Notification, NotificationComponent, NotificationConfig, NotificationService, NotificationType} from 'oblique-reactive';
 
-// TODO: reenable once https://github.com/angular/angular/pull/19055 is merged
 describe('NotificationComponent', () => {
 	let component: NotificationComponent;
 	let fixture: ComponentFixture<NotificationComponent>;
@@ -53,8 +52,7 @@ describe('NotificationComponent', () => {
 		});
 
 		it('with matching NotificationType CSS classes', () => {
-
-			const notificationAlerts = fixture.debugElement.queryAll(By.css('.notification .alert'));
+			const notificationAlerts = fixture.debugElement.queryAll(By.css('.notification.alert'));
 			expect(notificationAlerts[0].classes).toEqual(jasmine.objectContaining({alert: true}));
 			expect(notificationAlerts[0].classes).toEqual(jasmine.objectContaining({'alert-success': true}));
 			expect(notificationAlerts[0].classes).not.toEqual(jasmine.objectContaining({'alert-info': true}));
