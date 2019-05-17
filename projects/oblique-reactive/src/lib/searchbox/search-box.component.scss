@@ -30,9 +30,7 @@
 	}
 
 	&::before {
-		@include content-generated($top: auto, $right: 0, $bottom: 0, $left: 2em);
-		top: 24px;
-		bottom: unset;
+		@include content-generated($top: unset, $right: 0, $bottom: 0, $left: 2em);
 		display: block;
 		height: 4px;
 		border-bottom: 1px solid transparent;
@@ -74,13 +72,20 @@
 	}
 }
 
-:host-context(.control-link) .search-box.slide-control {
-	transition: color $duration-default;
+.control-link.search-box {
+	&::before {
+		bottom: $spacing-default;
+		left: calc(2em + #{$spacing-default});
+	}
 
-	&:focus,
-	&:active,
-	&:hover,
-	&.open {
-		color: $brand-default;
+	&.search-box.slide-control {
+		transition: color $duration-default;
+
+		&:focus,
+		&:active,
+		&:hover,
+		&.open {
+			color: $brand-default;
+		}
 	}
 }

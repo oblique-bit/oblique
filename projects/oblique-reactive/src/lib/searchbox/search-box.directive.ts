@@ -46,11 +46,11 @@ export class SearchBoxDirective extends Unsubscribable implements AfterViewInit,
 		});
 	}
 
-	@HostListener('keydown.arrowdown') navigateDown() {
-		this.results.navigateDown();
+	@HostListener('keydown.arrowdown', ['$event']) navigateDown($event: KeyboardEvent) {
+		this.results.navigateDown($event);
 	}
 
-	@HostListener('keydown.arrowup') navigateUp() {
-		this.results.navigateUp();
+	@HostListener('keydown.arrowup', ['$event']) navigateUp($event: KeyboardEvent) {
+		this.results.navigateUp($event);
 	}
 }
