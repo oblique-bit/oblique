@@ -25,12 +25,18 @@ export class SearchBoxResultsComponent implements OnDestroy {
 	constructor(private readonly translate: TranslateService, private readonly master: MasterLayoutService) {
 	}
 
-	@HostListener('keydown.arrowdown') navigateDown() {
+	@HostListener('keydown.arrowdown', ['$event']) navigateDown($event: KeyboardEvent) {
 		this.focusLink(this.active != null ? (this.active + 1) % this.filteredItems.length : 0);
+		if ($event) {
+			$event.preventDefault();
+		}
 	}
 
-	@HostListener('keydown.arrowup') navigateUp() {
+	@HostListener('keydown.arrowup', ['$event']) navigateUp($event: KeyboardEvent) {
 		this.focusLink(this.active != null ? (this.active - 1 + this.filteredItems.length) % this.filteredItems.length : this.filteredItems.length - 1);
+		if ($event) {
+			$event.preventDefault();
+		}
 	}
 
 	@HostListener('keydown.escape') close(): void {
