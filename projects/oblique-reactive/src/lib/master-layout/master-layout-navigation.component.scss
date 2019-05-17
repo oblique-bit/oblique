@@ -1,4 +1,3 @@
-@import "~font-awesome/scss/variables";
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins/transition";
@@ -7,387 +6,106 @@
 @import "../../styles/scss/core/mixins/icon";
 @import "../../styles/scss/core/mixins/layout";
 
-$header-transition-duration: 0.5s;
-:host.application-navigation {
+.application-navigation {
 	display: block;
 	z-index: 0; // Ensure absolute elements from .navbar are displayed over absolute elements from .application-navigation
 
 	@include layout-collapse-down() {
 		flex: 2; // Variable fluid height
 		visibility: hidden; // Avoids keyboard navigation when collapsed
-		transition: visibility $header-transition-duration; // Ensure element keeps visible when header is closing
+		transition: visibility $duration-default; // Ensure element keeps visible when header is closing
 		position: relative;
 		overflow: hidden;
 		background-color: $white;
-	}
-}
 
-:host-context(.application.no-navigation).application-navigation {
-	display: none !important;
-}
-
-button[disabled] {
-	cursor: not-allowed !important;
-}
-
-.navbar-fw {
-	position: relative;
-	float: none;
-
-	// Reset positions:
-	&.nav > .nav-item {
-		position: static;
-	}
-
-	> .nav-item {
-		// Fullwidth submenus:
-		> .navbar-primary-menu {
-			left: 0;
-			right: 0;
-		}
-	}
-}
-
-.navbar-primary {
-	background: $gray-lighter;
-	box-shadow: inset 0 -4px 14px -4px rgba(0, 0, 0, 0.1);
-
-	.nav:not(.navbar-primary-row) {
-		display: block; // Do not use Flexbox here!
-	}
-
-	// First level only:
-	> .nav-item {
-
-		// TODO: remove when https://github.com/twbs/bootstrap/issues/21979
-		> .nav-link {
-			padding: $spacing-default;
-		}
-
-		.nav-link.active {
-			background-color: $white;
-		}
-
-		> .navbar-primary-menu {
-			box-shadow: 0 6px 12px 2px rgba(0, 0, 0, 0.175);
-			background-color: $white;
-			border: none;
+		.header-open & {
+			visibility: visible; // Restores keyboard navigation
 		}
 	}
 
-	.toggle {
-		float: right;
-		margin-left: 5px;
-	}
-
-	@include layout-collapse-down() {
-		width: 100vw;
-		height: 100%;
-		overflow-y: auto;
-		flex-wrap: nowrap;
-
-		.nav-item {
-			> .navbar-primary-menu {
-				position: fixed;
-				top: $header-height-md;
-				bottom: 0;
-				height: auto;
-
-				> ul > li:last-child {
-					// [iOS only] Simulate a bottom spacing to ensure that
-					// last item is reachable when scrolling the menu and
-					// does not display under the MobileSafari tools menu:
-					margin-bottom: 70px;
-				}
-			}
-		}
-
-		.nav-header {
-			background-color: $white;
-
-			.nav-header-title {
-				padding-left: $spacing-default;
-			}
-		}
-
-		.nav-link:focus {
-			z-index: 1;
-		}
-
-		.nav-item {
-			position: static;
-			margin: 0;
-
-			> .nav-link,
-			.nav .nav-item > .nav-link {
-				margin: 0;
-				padding: $spacing-md $spacing-default;
-				border-bottom: 1px solid $gray-light;
-			}
-
-			> .nav-link:not(.active):not(.navbar-primary-back) {
-				font-size: $font-size-base;
-				font-weight: normal;
-				background-color: $gray-lighter;
-			}
-
-			&.show {
-				> a {
-					z-index: 1;
-				}
-
-			}
-		}
-
-		.toggle {
-			@include icon($fa-var-angle-right, $min-width: 0);
-		}
-	}
-
-	@include layout-collapse-up() {
-		flex-direction: row;
-		padding-left: $spacing-default;
-		height: $navigation-height;
-		flex-wrap: nowrap;
-
-		.navbar-primary-menu {
-			font-size: 94%;
-
-			.navigation-toggle {
-				> .toggle {
-					display: none;
-				}
-			}
-		}
-
-		// First level only:
-		> .nav-item {
-			> .nav-link {
-				display: inline-flex;
-				align-items: baseline;
-				font-size: $font-size-base * 0.9;
-				white-space: nowrap;
-
-				&:hover,
-				&:focus,
-				&:active {
-					background-color: $gray-light;
-				}
-
-				&:focus {
-					font-weight: 600;
-				}
-			}
-
-			> .navbar-primary-menu {
-				z-index: 2;
-				position: absolute;
-				top: 100%;
-				min-width: 280px;
-				max-height: 60vh;
-				overflow-x: hidden;
-				overflow-y: auto;
-				padding: $spacing-md $spacing-default $spacing-default $spacing-default;
-			}
-
-			&.show > .nav-link {
-				z-index: $zindex-dropdown + 1;
-
-				&,
-				&:hover,
-				&:focus {
-					color: $brand-default;
-					background-color: $white;
-					box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
-				}
-			}
-
-			&:not(.show) > .navbar-primary-menu {
-				display: none;
-			}
-		}
-	}
-}
-
-.navbar-primary-menu {
-	@include layout-collapse-down() {
-		visibility: hidden; // Do not use `display: none` to avoid reflow & transition issues!
-		position: absolute;
-		z-index: 2;
-		top: 0;
-		left: 0;
-
-		width: 100%;
-		height: 100%;
-		padding: 0;
-		margin: 0;
-
-		overflow-y: auto;
-		overflow-x: hidden;
-
-		background-color: $white;
-
-		transform: translateX(105%);
-		@include transition(visibility .4s, transform .4s);
-
-		.show > & {
-			visibility: visible;
-			display: block;
-			transform: translateX(0%);
-		}
-	}
-
-	@include layout-collapse-up() {
-		font-size: 94%;
-
-		.navigation-toggle {
-			> .toggle {
-				display: none;
-			}
-		}
-	}
-}
-
-.navbar-primary-back {
-	@include layout-collapse-down() {
-		font-weight: 400;
-		font-size: 1.125rem;
-		line-height: 20px;
-		text-align: center;
-		padding: $spacing-md $spacing-default $spacing-md + 6 $spacing-default;
-
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-
-		.toggle {
-			@include icon($fa-var-angle-left);
-			float: left;
-			margin: 0;
-		}
-	}
-}
-
-$navigation-scrollable-padding: 30px;
-$navigation-scrollable-velocity: 500ms;
-
-:host.navigation-scrollable {
-
+	.application.no-navigation &,
 	.navigation-scrollable-control {
 		display: none;
-
-		position: absolute;
-		z-index: 1;
-
-		top: 0;
-
-		width: $navigation-scrollable-padding;
-		height: 100%;
-
-		border: none;
-		background-color: $gray-lighter;
-		// Hack to simulate inner bottom shadow on the back
-		$shadow: 0 -1px 0 #eaeaea inset,
-		0 -2px 0 #ebebeb inset,
-		0 -3px 0 #ededed inset,
-		0 -4px 0 #eeeeee inset,
-		0 -5px 0 #f0f0f0 inset,
-		0 -6px 0 #f1f1f1 inset,
-		0 -7px 0 #f2f2f2 inset,
-		0 -8px 0 #f3f3f3 inset,
-		0 -9px 0 #f4f4f4 inset;
-		box-shadow: $shadow;
-
-		text-align: center;
-
-		> span {
-			@include animatable(transform, $duration-fast);
-		}
-
-		&:hover,
-		&:focus,
-		&:active {
-			cursor: pointer;
-			background-color: $gray-light;
-			box-shadow: none;
-
-			> span {
-				transform: scale(1.3);
-			}
-		}
 	}
 
-	.navigation-scrollable-control-left {
-		left: 0;
-	}
-
-	.navigation-scrollable-control-right {
-		right: 0;
+	@include layout-collapse-down() {
+		.navigation-scrollable-content > li {
+			// Ensure navigation scrolling is disabled on small viewports:
+			margin-left: 0 !important;
+		}
 	}
 
 	@include layout-collapse-up() {
-		position: relative;
+		&.navigation-scrollable {
+			position: relative;
+		}
+
+		.navigation-scrollable-control {
+			position: absolute;
+			top: 0;
+			width: $navigation-scrollable-padding;
+			height: 100%;
+			border: none;
+			display: inline-block;
+			background-color: $gray-lighter;
+			text-align: center;
+			z-index: 1;
+			// Hack to simulate inner bottom shadow on the back
+			box-shadow: 0 -1px 0 #eaeaea inset,
+			0 -2px 0 #ebebeb inset,
+			0 -3px 0 #ededed inset,
+			0 -4px 0 #eeeeee inset,
+			0 -5px 0 #f0f0f0 inset,
+			0 -6px 0 #f1f1f1 inset,
+			0 -7px 0 #f2f2f2 inset,
+			0 -8px 0 #f3f3f3 inset,
+			0 -9px 0 #f4f4f4 inset;
+
+			> span {
+				@include animatable(transform, $duration-fast);
+			}
+
+			&:hover,
+			&:focus,
+			&:active {
+				cursor: pointer;
+				background-color: $gray-light;
+				box-shadow: none;
+
+				> span {
+					transform: scale(1.3);
+				}
+			}
+		}
+
+		.navigation-scrollable-control-left {
+			left: 0;
+		}
+
+		.navigation-scrollable-control-right {
+			right: 0;
+		}
 
 		.navigation-scrollable-content {
 			display: block;
 			vertical-align: bottom;
-			min-width: 100%;
-			max-width: 100vw;
 			white-space: nowrap;
-
 			margin-left: 0;
 			margin-right: 0;
+			padding-right: $navigation-scrollable-padding;
+			padding-left: $navigation-scrollable-padding;
+			@include transition(padding $duration-default);
 
-			font-size: 0;
-
-			& > li {
-				float: none;
+			> li {
 				display: inline-block;
-				font-size: $font-size-base;
 				white-space: initial;
-			}
-
-			&:not(.no-animation) {
-				@include transition(padding $navigation-scrollable-velocity);
-
-				> li:not(.nav-header) {
-					// Animating list item with a negative margin ensures parent menu keeps the original width:
-					@include transition(margin $navigation-scrollable-velocity);
-				}
+				// Animating list item with a negative margin ensures parent menu keeps the original width:
+				@include transition(margin $duration-default);
 			}
 		}
-	}
 
-	&.navigation-scrollable-active {
-		@include layout-collapse-up() {
-			.navigation-scrollable-control {
-				display: inline-block;
-				animation: appear $navigation-scrollable-velocity;
-			}
-
-			.navigation-scrollable-content {
-				padding-right: $navigation-scrollable-padding;
-				padding-left: $navigation-scrollable-padding;
-			}
+		.navigation-toggle .toggle {
+			display: none;
 		}
-	}
-
-	@include layout-collapse-down() {
-		.navigation-scrollable-content {
-			> li:not(.nav-header) {
-				// Ensure navigation scrolling is disabled on small viewports:
-				margin-left: 0 !important;
-			}
-		}
-	}
-}
-
-// TODO: remove from here
-@keyframes appear {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
 	}
 }

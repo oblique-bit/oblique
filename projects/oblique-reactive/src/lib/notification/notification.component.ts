@@ -9,7 +9,8 @@ import {NotificationService} from './notification.service';
 	exportAs: 'orNotification',
 	templateUrl: './notification.component.html',
 	styleUrls: ['./notification.component.scss'],
-	/* tslint:disable:use-host-property-decorator */
+	encapsulation: ViewEncapsulation.None,
+	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'notification-container '},
 	animations: [
 		trigger('inOut', [

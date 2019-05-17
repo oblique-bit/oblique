@@ -1,0 +1,76 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins/breakpoints";
+@import "~bootstrap/scss/mixins/grid";
+@import "../../styles/scss/core/variables";
+@import "../../styles/scss/core/mixins/decoration";
+@import "../../styles/scss/core/mixins/layout";
+
+.application {
+	&.has-cover {
+		background-position: 50% 50%;
+		background-size: cover;
+		background-repeat: no-repeat;
+
+		@include layout-collapse-down() {
+			&:before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				display: block;
+				@include bg($white, 0.9);
+			}
+		}
+
+		.cover-layout {
+			width: 100%;
+			height: 100%;
+		}
+
+		.cover-viewport {
+			width: 100%;
+			height: 100%;
+			overflow-y: auto;
+			overflow-x: hidden;
+
+			@include layout-collapse-up() {
+				min-height: calc(100vh - #{$header-height} - #{$footer-height-md});
+				margin-left: 35%;
+				width: 45%;
+				@include bg($white, 0.9);
+
+				@at-root #{selector-append(".no-navigation", &)} {
+					min-height: calc(100vh - #{$header-height-no-navigation} - #{$footer-height-md});
+				}
+			}
+
+			@include media-breakpoint-up(lg) {
+				margin-left: 45%;
+				width: 38%;
+			}
+
+			@include media-breakpoint-up(xl) {
+				margin-left: 50%;
+				width: 33%;
+			}
+		}
+
+		.cover-header,
+		.cover-alert {
+			@include make-row();
+			border: none;
+			margin-bottom: $spacing-md * 3;
+		}
+
+		.cover-header {
+			padding: 0 $spacing-default;
+
+			@include layout-collapse-up() {
+				background-color: $white;
+			}
+		}
+	}
+}

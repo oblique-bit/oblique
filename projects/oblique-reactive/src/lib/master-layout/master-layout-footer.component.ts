@@ -1,4 +1,4 @@
-import {Component, ContentChildren, HostBinding, QueryList, TemplateRef} from '@angular/core';
+import {Component, ContentChildren, HostBinding, QueryList, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe.class';
@@ -10,6 +10,7 @@ import {MasterLayoutConfig} from './master-layout.config';
 	selector: 'or-master-layout-footer',
 	templateUrl: './master-layout-footer.component.html',
 	styleUrls: ['./master-layout-footer.component.scss'],
+	encapsulation: ViewEncapsulation.None,
 	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'application-footer'}
 })

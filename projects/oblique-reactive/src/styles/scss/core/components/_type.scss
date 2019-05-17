@@ -72,6 +72,10 @@ i {
 	color: $gray-dark;
 }
 
+button[disabled] {
+	cursor: not-allowed !important;
+}
+
 // Inversed content
 // --------------------------------------------------
 .inversed {

@@ -91,7 +91,10 @@ $brand-shadow-bottom:           0 1px 3px 1px fade-out($gray-lighter, 0.25), 0 1
 
 
 $brand-logo-width:            216px !default;
-$header-height:               140px !default;
+$brand-logo-height:            55px !default;
+$brand-logo-height-collapsed:  34px !default;
+$brand-logo-width-collapsed:   30px !default;
+$header-height:               141px !default;
 $header-height-md:            113px !default;
 $header-height-no-navigation:  90px !default;
 $header-height-collapsed:      61px !default;
@@ -191,6 +194,7 @@ $nav-tabs-link-hover-border-color:  $gray-light !default;
 $nav-tabs-active-link-hover-color:  $brand-default !default;
 
 $nav-pills-border-radius:           0 !default;
+$navigation-scrollable-padding: 2 * $spacing-default;
 
 // List group:
 $list-group-border-radius:      0 !default;
@@ -205,3 +209,8 @@ $alert-border-width:             0 !default;
 
 // Column layout
 $column-width: 20% !default;
+
+// Offcanvas
+$offcanvas-sidebar-width: 40%;
+$offcanvas-sidebar-collapsed-width: 80%;
+

@@ -17,7 +17,7 @@ let nextId = 0;
 	templateUrl: './search-box.component.html',
 	styleUrls: ['./search-box.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	/* tslint:disable:use-host-property-decorator */
+	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'search-box', role: 'search'}
 })
 export class SearchBoxComponent implements OnInit {

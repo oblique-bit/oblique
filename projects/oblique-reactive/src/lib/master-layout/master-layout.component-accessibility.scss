@@ -1,0 +1,51 @@
+@import "~font-awesome/scss/variables";
+@import "~bootstrap/scss/mixins/screen-reader";
+@import "../../styles/scss/core/variables";
+@import "../../styles/scss/core/mixins/animation";
+@import "../../styles/scss/core/mixins/notification";
+
+.accesskeys {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 0;
+	display: flex;
+	justify-content: center;
+	overflow: visible;
+	z-index: 100000;
+}
+
+.accessible {
+	@include sr-only;
+	@include sr-only-focusable;
+	@include notification-base();
+	@include notification-style($state-warning-bg, $fa-var-universal-access, $state-warning-border, 54px);
+
+	position: absolute;
+	width: 250px;
+	display: block;
+	padding-top: $spacing-default;
+	padding-right: $spacing-default;
+	padding-bottom: $spacing-default;
+	$anims: transform, opacity;
+	@include animatable($anims);
+	transform: translateY(-100%);
+	transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+	opacity: 0;
+	box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2);
+
+	&:active,
+	&:focus {
+		z-index: $zindex-accessible;
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.alert-compatibility {
+	display: none;
+
+	.lt-ie10 & {
+		display: block;
+	}
+}

@@ -1,4 +1,4 @@
-import {Component, ContentChildren, ElementRef, HostBinding, Input, QueryList, TemplateRef, ViewChild} from '@angular/core';
+import {Component, ContentChildren, ElementRef, HostBinding, Input, QueryList, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {filter, map, takeUntil} from 'rxjs/operators';
 
@@ -11,8 +11,14 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 @Component({
 	selector: 'or-master-layout',
 	exportAs: 'orMasterLayout',
-	styleUrls: ['./master-layout.component.scss'],
 	templateUrl: './master-layout.component.html',
+	styleUrls: [
+		'./master-layout.component.scss',
+		'./master-layout.component-cover.scss',
+		'./master-layout.component-offcanvas.scss',
+		'./master-layout.component-accessibility.scss'
+	],
+	encapsulation: ViewEncapsulation.None,
 	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'application'}
 })

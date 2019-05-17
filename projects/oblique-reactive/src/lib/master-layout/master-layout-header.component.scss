@@ -5,100 +5,16 @@
 @import "../../styles/scss/core/mixins/bubble-tail";
 @import "../../styles/scss/core/mixins/layout";
 
-$header-transition-duration: 0.5s;
-$offcanvas-velocity: 600ms;
-$sticky-content-top: $header-height;
-
-:host.application-header {
+.application-header {
 	position: relative;
 	background-color: $white;
 	background-clip: content-box;
 	z-index: 10;
-	@include animatable(height, $duration: $header-transition-duration);
+	@include animatable(height, $duration: $duration-default);
 
-	&.offcanvas-main {
-		// do not override original off-canvas transitions
-		transition: transform $offcanvas-velocity, width $offcanvas-velocity, height $header-transition-duration;
-	}
-
-	.navbar {
-		display: block;
-		z-index: 1;
-		width: 100%;
-		padding: 0;
-		border-bottom: $brand-line-width solid $brand-danger;
-
-		@include layout-collapse-up() {
-			display: flex;
-			flex-direction: row;
-
-			.navbar-nav .dropdown-menu {
-				margin-top: -2px;
-			}
-		}
-
-		@include layout-collapse-down() {
-			overflow: hidden;
-			height: $header-height-collapsed;
-			@include animatable(height);
-
-			.header-open > & {
-				height: $header-height-md;
-			}
-		}
-
-		.navbar-header {
-			margin-right: auto; // Ensure controls get pushed to the right
-			display: flex;
-			flex-direction: row;
-
-			flex: 1;
-			flex-wrap: nowrap;
-			min-width: 0; // Important, for text ellipsis of app title (cf. https://css-tricks.com/flexbox-truncated-text/)!
-		}
-
-		.application-brand {
-			display: flex;
-			flex: auto;
-			flex-direction: row;
-			align-items: center;
-			min-width: 0; // Important, for text ellipsis of app title (cf. https://css-tricks.com/flexbox-truncated-text/)!
-
-			padding: 8px $spacing-default;
-			@include animatable(padding);
-
-			.application-brand-logo {
-				float: left; // IE7+ fix
-				overflow: hidden;
-				width: 30px;
-				height: 34px;
-				margin-right: $spacing-default;
-
-				img {
-					width: $brand-logo-width;
-					height: 55px;
-				}
-			}
-
-			.application-brand-app-title {
-				display: block;
-				flex: 1;
-				font-size: $font-size-xl;
-				font-weight: 300;
-				padding-left: $spacing-default;
-				border-left: 1px solid $gray-lighter;
-				max-height: 34px;
-
-				overflow: hidden;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-
-				.application-brand-link {
-					color: $brand-default;
-					text-decoration: none;
-				}
-			}
-		}
+	.application:not(.application-fixed) &.application-header-sticky {
+		@include layout-fixed-top();
+		z-index: $zindex-dropdown + 2;
 	}
 
 	@include layout-collapse-down() {
@@ -106,67 +22,154 @@ $sticky-content-top: $header-height;
 		overflow: hidden;
 		display: flex;
 		flex-direction: column;
-		width: 100vw;
+		width: 100%;
 		height: $header-height-collapsed;
 
 		.header-open & {
 			height: 100%;
-
-			.application-header-controls,
-			.application-navigation {
-				visibility: visible; // Restores keyboard navigation
-			}
 		}
 
 		.header-open.no-navigation & {
 			height: $header-height-md;
 		}
+	}
 
-		.navbar-controls {
-			> .nav-item {
-				&.dropdown {
-					&.show {
-						@include bubble-tail-border(
-								$brand-danger,
-								$brand-danger,
-							$width: 8px,
-							$align: left,
-							$align-value: 18px,
-							$placement: bottom,
-							$direction: top
-						);
-					}
+	@include layout-collapse-up() {
+		height: $header-height;
 
-					.dropdown-menu {
-						@include layout-fixed-top($header-height-md);
-						bottom: 0;
-						padding: 0;
-						margin: 0;
+		&.application-header-md {
+			height: $header-height-md;
+		}
 
-						// Disable the bubbletail from the navbar controls dropdown menu:
-						&:before,
-						&:after {
-							content: none;
-						}
+		&.application-header-animate {
+			padding: 0;
+			margin: 0;
+		}
 
-						.control-content {
-							height: 100%;
-							overflow-y: auto;
-							padding-top: $spacing-default;
-						}
-					}
-				}
+		.application.no-navigation & {
+			height: $header-height-no-navigation;
 
-				.nav-link {
-					margin-bottom: 0;
-
-					text-overflow: ellipsis;
-					overflow: hidden;
-					white-space: nowrap;
-				}
+			&.application-header-md {
+				height: $header-height-no-navigation - ($header-height - $header-height-md);
 			}
 		}
 
+		.application-fixed & {
+			flex-shrink: 0;
+		}
+	}
+
+	.application-brand {
+		display: flex;
+		flex: auto;
+		flex-direction: row;
+		align-items: center;
+		min-width: 0; // Important, for text ellipsis of app title (cf. https://css-tricks.com/flexbox-truncated-text/)!
+		padding: 8px $spacing-default;
+		@include animatable(padding);
+
+		@include layout-collapse-up() {
+			@at-root #{selector-append(":not(.application-header-md)", &)} {
+				padding: $spacing-default;
+			}
+		}
+	}
+
+	.application-brand-logo {
+		float: left; // IE7+ fix
+		overflow: hidden;
+		width: $brand-logo-width-collapsed;
+		height: $brand-logo-height-collapsed;
+		margin-right: $spacing-default;
+
+		@include layout-collapse-up() {
+			@at-root #{selector-append(":not(.application-header-md)", &)} {
+				width: $brand-logo-width;
+				height: $brand-logo-height;
+				margin-top: 0;
+			}
+		}
+
+		img {
+			width: $brand-logo-width;
+			height: $brand-logo-height;
+		}
+	}
+
+	.application-brand-app-title {
+		display: block;
+		flex: 1;
+		font-size: $font-size-xl;
+		font-weight: 300;
+		padding-left: $spacing-default;
+		border-left: 1px solid $gray-lighter;
+		max-height: $brand-logo-height-collapsed;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+
+		@include layout-collapse-up() {
+			@at-root #{selector-append(":not(.application-header-md)", &)} {
+				font-size: $font-size-xl;
+				max-height: $brand-logo-height;
+			}
+		}
+
+		.application-brand-link {
+			color: $brand-default;
+			text-decoration: none;
+		}
+	}
+
+
+	.navbar-toggler {
+		border: none;
+
+		@include layout-collapse-down() {
+			flex-wrap: nowrap;
+		}
+
+		@include layout-collapse-up() {
+			display: none !important;
+		}
+	}
+
+	:not(.application-fixed) &.application-header-animate {
+		.application-brand-logo, .application-brand-app-title {
+			@include animatable();
+		}
+	}
+
+	.application-header-controls {
+		display: flex;
+		align-items: center;
+		@include layout-collapse-down() {
+			visibility: hidden; // Avoids keyboard navigation when collapsed
+			transition: visibility $duration-default; // Ensure element keeps visible when header is closing
+
+			.header-open & {
+				visibility: visible; // Restores keyboard navigation
+			}
+		}
+
+		.navbar-locale {
+			margin-right: 1rem;
+
+			.btn-link {
+				border: none;
+				border-radius: 0;
+				color: $brand-default;
+
+				&:hover,
+				&.active {
+					background-color: $gray-lighter-2;
+					box-shadow: none;
+				}
+			}
+		}
+	}
+
+	@include layout-collapse-down() {
 		.application-header-toggler {
 			position: relative;
 
@@ -215,327 +218,5 @@ $sticky-content-top: $header-height;
 				}
 			}
 		}
-	}
-
-	@include layout-collapse-up() {
-		.navbar-controls {
-			.dropdown-menu.control-body {
-				$control-height: calc(100vh - #{$header-height});
-				max-height: $control-height;
-				padding: 0;
-
-				.control-content {
-					max-height: $control-height;
-					overflow: auto;
-					padding: $spacing-default;
-				}
-			}
-		}
-
-		.application-header-md {
-			height: $header-height-md;
-		}
-
-		&:not(.application-header-md) {
-			.navbar .application-brand {
-				padding: $spacing-default;
-
-				.application-brand-logo {
-					width: $brand-logo-width;
-					height: 55px;
-					margin-top: 0;
-				}
-
-				.application-brand-app-title {
-					font-size: $font-size-xl;
-					max-height: 55px;
-				}
-			}
-		}
-
-		&.application-header-animate {
-			padding: 0;
-			margin: 0;
-		}
-	}
-}
-
-
-:host-context(.application:not(.application-fixed)).application-header-sticky {
-	@include layout-fixed-top();
-	z-index: $zindex-dropdown + 2;
-}
-
-$header-delta-md: $header-height - $header-height-md;
-$header-height-md-no-navigation: $header-height-no-navigation - $header-delta-md;
-@include layout-collapse-up() {
-	:host-context(.application.no-navigation).application-header {
-		height: $header-height-no-navigation;
-
-		&.application-header-md {
-			height: $header-height-md-no-navigation;
-
-		}
-	}
-
-	:host-context(:not(.application-fixed)).application-header-animate {
-		> .navbar {
-			.application-brand {
-				.application-brand-logo, .application-brand-app-title {
-					@include animatable();
-				}
-			}
-
-			.navbar-controls {
-				@include animatable(margin-top);
-			}
-		}
-	}
-}
-
-.application-header-controls {
-	display: flex;
-	align-items: center;
-
-	@include layout-collapse-down() {
-		visibility: hidden; // Avoids keyboard navigation when collapsed
-		transition: visibility $header-transition-duration; // Ensure element keeps visible when header is closing
-
-		.navbar-controls > .nav-item .nav-link {
-			padding-top: 13px;
-			padding-bottom: 13px;
-		}
-	}
-}
-
-.navbar {
-	background-color: inherit;
-	padding: 0;
-}
-
-.navbar-nav {
-	min-height: inherit;
-	margin: 0;
-	padding: 0;
-
-	.nav-item {
-
-		.dropdown-menu {
-			border-radius: 0;
-			position: absolute;
-
-			&.dropdown-menu-right {
-				right: 0;
-				left: auto;
-			}
-
-			@include layout-collapse-up() {
-				left: auto;
-				min-width: 260px;
-				padding: $spacing-default;
-			}
-
-			> .nav-item > .nav-link {
-				background-color: inherit;
-			}
-		}
-	}
-}
-
-::ng-deep .navbar-controls {
-	display: inline-flex;
-	flex-direction: row;
-	align-items: center;
-
-	@include layout-collapse-up {
-		justify-content: flex-end;
-	}
-
-	.navbar > & {
-		flex-basis: 100%;
-
-		@include layout-collapse-up {
-			flex-basis: auto;
-		}
-	}
-
-	.control-link {
-		@include animatable();
-		display: block;
-		padding: $spacing-default;
-		color: $gray-dark;
-
-		.control-toggle,
-		.control-icon,
-		.control-label {
-			margin: 0;
-			vertical-align: middle;
-		}
-
-		.control-icon + .control-label,
-		.control-toggle + .control-label,
-		.control-label + .control-icon {
-			margin-left: $spacing-xs;
-		}
-
-		.control-toggle {
-			font-weight: normal;
-		}
-
-		.control-icon {
-			cursor: pointer;
-			font-size: $font-size-xl;
-		}
-
-		.control-label {
-			cursor: pointer;
-
-			&:before {
-				opacity: 0.6;
-			}
-		}
-
-		.nav-link {
-			color: inherit;
-		}
-	}
-
-	.nav-item {
-		.control-link:hover,
-		.control-link:active,
-		.control-link:focus,
-		&:active .control-link,
-		&:focus .control-link,
-		&.active .control-link,
-		&.open .control-link,
-		&.show .control-link {
-			color: $brand-default;
-		}
-
-		&:active .control-link,
-		&:focus .control-link,
-		&.active .control-link {
-			.control-label {
-				&:before {
-					opacity: 1;
-				}
-			}
-		}
-
-		> .tooltip,
-		> .control-link > .tooltip {
-			white-space: nowrap;
-
-			&.top {
-				margin-top: 14px;
-			}
-
-			&.bottom {
-				margin-top: -4px;
-			}
-		}
-
-		.dropdown-item.active,
-		.dropdown-item:active {
-			background-color: #f8f9fa;
-			color: $brand-default;
-		}
-
-		&.dropdown .dropdown-menu {
-			position: absolute;
-
-			&:not(.dropdown-menu-right) {
-				@include bubble-tail-border(
-						$dropdown-bg,
-						$dropdown-border-color,
-					$align: left,
-					$align-value: 14px,
-					$position: absolute
-				);
-			}
-
-			&.dropdown-menu-right {
-				@include bubble-tail-border(
-						$dropdown-bg,
-						$dropdown-border-color,
-					$align: right,
-					$align-value: 14px,
-					$position: absolute
-				);
-			}
-		}
-
-		@include layout-collapse-down() {
-			.control-body,
-			&.open .control-body {
-				padding-left: $spacing-default;
-				padding-right: $spacing-default;
-			}
-
-			// Don't display control tooltips on small viewports:
-			> .tooltip,
-			> .control-link > .tooltip {
-				display: none !important;
-			}
-		}
-	}
-
-	.control-content {
-		padding: $spacing-default;
-	}
-
-	// Restyle the nav-pills within the navbar controls context:
-	&.nav-pills {
-		> .nav-item {
-			> .nav-link {
-				padding: 8px 10px;
-				margin: 0 3px;
-				min-width: 38px;
-				font-size: 0.85rem;
-				font-weight: 400;
-				text-align: center;
-				text-transform: uppercase;
-				border-radius: 0;
-				color: $gray-dark;
-
-				&:hover {
-					color: $brand-primary;
-					text-decoration: underline;
-					background-color: $gray-lighter-2;
-				}
-
-				&.active {
-					background-color: $gray-lighter-2;
-				}
-			}
-		}
-	}
-}
-
-.navbar-locale {
-	margin-right: 1rem;
-
-	.btn-link {
-		border: none;
-		border-radius: 0;
-		color: $brand-default;
-
-		&:hover,
-		&.active {
-			background-color: $gray-lighter-2;
-			box-shadow: none;
-		}
-	}
-}
-
-.navbar-toggler {
-	border: none;
-
-	@include layout-collapse-down() {
-		flex-wrap: nowrap;
-	}
-
-	@include layout-collapse-up() {
-		display: none !important;
 	}
 }

@@ -3,10 +3,10 @@
 @import "../../styles/scss/core/variables";
 @import "../../styles/scss/core/mixins/layout";
 
-$logo-container-width: $brand-logo-width + (2 * $spacing-default);
-$links-width: 28%;
-
-:host.application-footer  {
+.application-footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	color: $gray-darker;
@@ -15,20 +15,26 @@ $links-width: 28%;
 	border-top: 1px solid $gray-light;
 	padding: $spacing-xs $spacing-default;
 
-	// This allows application footer to remain sticky at the bottom if content is smaller than viewport:
-	position: absolute;
-	bottom: 0;
-	width: 100%;
+	@include layout-collapse-up() {
+		flex-direction: row;
+		height: $footer-height-md;
+
+		.application-fixed & {
+			position: relative;
+		}
+	}
 
 	.footer-item {
 		padding: $spacing-xs 0;
 
-		&:not(:last-child) {
-			border-bottom: 1px solid $gray-light;
+		@include layout-collapse-down() {
+			&:not(:last-child) {
+				border-bottom: 1px solid $gray-light;
+			}
 		}
 
-		.application-brand-logo {
-			margin-bottom: $spacing-xs;
+		@include layout-collapse-up() {
+			max-height: 100%;
 		}
 
 		p,
@@ -53,33 +59,23 @@ $links-width: 28%;
 		img {
 			float: left;
 			width: $brand-logo-width;
-			height: 54px;
+			height: $brand-logo-height;
 		}
 	}
 
 	@include layout-collapse-up() {
-		flex-direction: row;
-		height: $footer-height-md;
-
-		.footer-item {
-			max-height: 100%;
-		}
-
-		.footer-item:not(:last-child) {
-			border-bottom: unset;
-		}
-
 		.footer-item-logo {
-			width: $logo-container-width;
+			margin-right: $spacing-default;
+
+			.application:not(.application-scrolling) &,
+			.application.application-fixed & {
+				display: none;
+			}
 		}
 
 		.footer-item-info {
 			flex: 1; // Variable width.
 			overflow: hidden;
-		}
-
-		.footer-item-links {
-			width: $links-width;
 		}
 
 		ul {
@@ -89,11 +85,8 @@ $links-width: 28%;
 				margin-left: $spacing-md;
 			}
 		}
-	}
 
-	// Footer SM variant:
-	&.application-footer-sm {
-		@include layout-collapse-up() {
+		&.application-footer-sm {
 			height: $footer-height-sm;
 			padding-top: $spacing-xs + 3px;
 			padding-bottom: $spacing-xs + 3px;
@@ -102,18 +95,9 @@ $links-width: 28%;
 				padding: 0;
 			}
 		}
-	}
-}
 
-@include layout-collapse-up() {
-	:host-context(.application-scrolling).application-footer:not(.application-footer-sm) {
-		height: $footer-height;
-	}
-
-	:host-context(.application:not(.application-scrolling)),
-	:host-context(.application.application-fixed) {
-		.footer-item-logo {
-			display: none;
+		.application-scrolling &:not(.application-footer-sm) {
+			height: $footer-height;
 		}
 	}
 }

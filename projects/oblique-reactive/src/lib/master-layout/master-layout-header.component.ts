@@ -9,7 +9,8 @@ import {
 	QueryList,
 	Renderer2,
 	TemplateRef,
-	ViewChildren
+	ViewChildren,
+	ViewEncapsulation
 } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
@@ -23,7 +24,8 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 @Component({
 	selector: 'or-master-layout-header',
 	templateUrl: './master-layout-header.component.html',
-	styleUrls: ['./master-layout-header.component.scss'],
+	styleUrls: ['./master-layout-header.component.scss', './master-layout-header.component-navbar.scss'],
+	encapsulation: ViewEncapsulation.None,
 	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'application-header'}
 })

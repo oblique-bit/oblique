@@ -1,0 +1,105 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins/breakpoints";
+@import "../../styles/scss/core/variables";
+@import "../../styles/scss/core/mixins/animation";
+@import "../../styles/scss/core/mixins/layout";
+
+.offcanvas-sidebar {
+	display: none; // only show if offcanvas is enable, i.e. parent has .offcanvas class
+}
+
+.offcanvas {
+	overflow-x: hidden;
+
+	.offcanvas-main {
+		width: 100%;
+		transition-property: transform, width, height;
+		transition-duration: $duration-default;
+
+		@at-root #{selector-append(".offcanvas-in", &)} {
+			transform: translateX(-$offcanvas-sidebar-collapsed-width);
+
+			@include media-breakpoint-up(lg) {
+				width: 100% - $offcanvas-sidebar-width;
+				transform: translateX(0);
+			}
+		}
+	}
+
+	.offcanvas-sidebar {
+		position: fixed;
+		top: 0;
+		left: 100%;
+		height: 100%;
+		width: $offcanvas-sidebar-collapsed-width;
+		display: block;
+		visibility: hidden; // A11y: ensure tabbing does not focus an offcanvas sidebar element when hidden.
+		overflow-y: auto;
+		box-sizing: content-box; // Fix scrollbar in IE9
+		z-index: $zindex-modal;
+		transition-property: transform, left, width, visibility;
+		transition-duration: $duration-default;
+
+		@include media-breakpoint-up(lg) {
+			width: $offcanvas-sidebar-width;
+		}
+
+		@at-root #{selector-append(".offcanvas-in", &)} {
+			visibility: visible; // A11y: ensure tabbing can focus again an offcanvas sidebar element when visible.
+			transform: translateX(-100%);
+
+			@include media-breakpoint-up(lg) {
+				left: 100% - $offcanvas-sidebar-width;
+				transform: translateX(0);
+			}
+		}
+	}
+
+	.offcanvas-header {
+		height: $header-height-no-navigation;
+		border-bottom: $brand-line-width solid $gray;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		h2 {
+			margin: 0;
+		}
+
+		.close-button {
+			color: $white;
+		}
+
+		@include layout-collapse-down() {
+			height: $header-height-collapsed;
+
+			@at-root #{selector-append(".header-open", &)} {
+				height: $header-height-md;
+			}
+		}
+	}
+
+	.offcanvas-content {
+		height: calc(100vh - #{$header-height-no-navigation});
+		overflow-y: auto;
+
+		@include layout-collapse-down() {
+			height: calc(100vh - #{$header-height-collapsed});
+
+			@at-root #{selector-append(".header-open", &)} {
+				height: calc(100vh - #{$header-height-md});
+			}
+		}
+	}
+
+	.offcanvas-backdrop {
+		display: none;
+
+		@at-root #{selector-append(".offcanvas-in", &)} {
+			@include media-breakpoint-down(md) {
+				display: block;
+			}
+		}
+	}
+}

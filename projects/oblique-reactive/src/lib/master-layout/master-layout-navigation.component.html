@@ -5,7 +5,7 @@
 </button>
 <ng-container #container>
 	<ng-content *ngIf="!links.length"></ng-content>
-	<ul id="navigation" role="menubar" *ngIf="links.length" class="nav navbar-nav navbar-primary"
+	<ul id="navigation" role="menubar" *ngIf="links.length" class="nav navbar-nav navbar-primary nav-hover"
 		[class.navigation-scrollable-content]="scrollable" [class.navbar-fw]="fullWidth" tabindex="-1">
 		<li class="nav-item" role="presentation" orMasterLayoutNavigationItem *ngFor="let link of links">
 			<a [attr.id]="link.id" class="nav-link" role="menuitem" [routerLink]="link.url"
