@@ -30,7 +30,7 @@
               }
             ],
             "styles": [
-              "projects/oblique-reactive/src/scss/oblique-material.scss",
+              "projects/oblique-reactive/src/styles/scss/themes/oblique-material.scss",
               "projects/oblique-reactive/src/styles/scss/oblique-core.scss",
               "src/scss/styles.scss"
             ],
