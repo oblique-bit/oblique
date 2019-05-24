@@ -22,6 +22,7 @@ export {
 	MasterLayoutConfig,
 	MasterLayoutHeaderToggleDirective,
 	MasterLayoutModule,
+	MasterLayoutNavigationService,
 	MasterLayoutNavigationItemDirective,
 	MasterLayoutNavigationMenuDirective,
 	MasterLayoutNavigationToggleDirective,

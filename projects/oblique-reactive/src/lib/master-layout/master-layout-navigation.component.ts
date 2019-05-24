@@ -1,11 +1,11 @@
 import {AfterContentChecked, Component, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
-import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe.class';
 import {MasterLayoutService} from './master-layout.service';
 import {MasterLayoutConfig} from './master-layout.config';
+import {MasterLayoutNavigationService} from './master-layout-navigation.service';
 
 export interface ORNavigationLink {
 	label: string;
@@ -34,9 +34,9 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 
 	constructor(private readonly router: Router,
 				private readonly masterLayout: MasterLayoutService,
+				private readonly masterLayoutNavigation: MasterLayoutNavigationService,
 				private readonly config: MasterLayoutConfig,
-				private readonly renderer: Renderer2,
-				private readonly translate: TranslateService) {
+				private readonly renderer: Renderer2) {
 		super();
 
 		this.activeClass = this.config.navigation.activeClass;
@@ -44,22 +44,15 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 		this.scrollable = this.config.navigation.scrollable;
 		this.updateNavigationFullWidth();
 		this.updateNavigationScrollable();
-	}
-
-	@HostListener('window:resize')
-	onResize() {
-		if (this.nav) {
-			let childWidth = 0;
-			Array.from(this.nav.children).forEach((el: HTMLElement) => {
-				childWidth += el.clientWidth;
-			});
-			this.maxScroll = Math.max(0, -(this.nav.clientWidth - childWidth - 2 * MasterLayoutNavigationComponent.buttonWidth));
-		}
+		this.masterLayoutNavigation.refreshed.pipe(takeUntil(this.unsubscribe)).subscribe(this.refresh.bind(this));
+		this.masterLayoutNavigation.scrolledRight.pipe(takeUntil(this.unsubscribe)).subscribe((offset?: number) =>
+			this.updateScroll(offset || this.config.navigation.scrollDelta));
+		this.masterLayoutNavigation.scrolledLeft.pipe(takeUntil(this.unsubscribe)).subscribe((offset?: number) =>
+			this.updateScroll(-(offset || this.config.navigation.scrollDelta)));
 	}
 
 	ngOnInit() {
 		this.links = this.links.length ? this.links : this.config.navigation.links;
-		this.translate.getTranslation(this.translate.defaultLang).subscribe(() => this.onResize());
 	}
 
 	ngAfterContentChecked() {
@@ -72,12 +65,27 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 		return this.router.isActive(url, false);
 	}
 
+	@HostListener('window:resize')
+	onResize() {
+		this.masterLayoutNavigation.refresh();
+	}
+
 	scrollLeft(): void {
-		this.updateScroll(-this.config.navigation.scrollDelta);
+		this.masterLayoutNavigation.scrollLeft();
 	}
 
 	scrollRight(): void {
-		this.updateScroll(this.config.navigation.scrollDelta);
+		this.masterLayoutNavigation.scrollRight();
+	}
+
+	private refresh() {
+		if (this.nav) {
+			let childWidth = 0;
+			Array.from(this.nav.children).forEach((el: HTMLElement) => {
+				childWidth += el.clientWidth;
+			});
+			this.maxScroll = Math.max(0, -(this.nav.clientWidth - childWidth - 2 * MasterLayoutNavigationComponent.buttonWidth));
+		}
 	}
 
 	private updateScroll(delta: number): void {
@@ -98,6 +106,9 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 		this.masterLayout.navigationScrollable = this.scrollable;
 		this.masterLayout.navigationScrollableChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
 			this.scrollable = value;
+			if (value) {
+				this.masterLayoutNavigation.refresh();
+			}
 		});
 	}
 }
