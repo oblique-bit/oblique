@@ -185,7 +185,7 @@
 
 
 <a name="2.0.0"></a>
- [2.0.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0) (2018-07-18)
+# [2.0.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0) (2018-07-18)
 
 ## Dependencies updates
 * **Angular:** 6.0.9
@@ -414,6 +414,18 @@
 ## BREAKING CHANGES
 ObliqueReactive has been migrated to Angular 4.
 This of course breaks all compatibility to any previous release of ObliqueReactive. 
+
+
+<a name="1.5.0"></a>
+# [1.5.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.5.0) (2019-03-20)
+
+## Dependencies updates
+* **AngularJS:** 1.7.8
+* **@uirouter/angularjs:** 1.0.22
+
+##Bug Fixes
+* **form-control-state**: add has-error on init only if pristineValidation is explicitly set to true ([1898d04](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/1898d04))
+* **form-control-state**: correct handling of control-mandatory class ([b601989](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/b601989))
 
 
 <a name="1.4.1"></a>
