@@ -16,7 +16,7 @@ describe('MultiselectSampleComponent', () => {
 			imports: [
 				FormsModule,
 				TranslateModule.forRoot(),
-				MultiselectModule.forRoot()
+				MultiselectModule
 			]
 		})
 			.compileComponents();

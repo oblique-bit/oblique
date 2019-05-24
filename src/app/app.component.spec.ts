@@ -8,8 +8,15 @@ import {MockTranslatePipe} from 'tests';
 
 describe('AppComponent', () => {
 	beforeEach(async(() => {
-		const mockNotificationService = jasmine.createSpyObj('NotificationService', ['success']);
-		const mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use']);
+		const mockNotificationService = {
+			success: jest.fn()
+		};
+
+		const mockTranslateService = {
+			setDefaultLang: jest.fn(),
+			use: jest.fn()
+		};
+
 		TestBed.configureTestingModule({
 			declarations: [
 				AppComponent, MockTranslatePipe

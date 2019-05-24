@@ -1,37 +1,31 @@
 import {TestBed, inject} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TranslateService} from '@ngx-translate/core';
+import {of} from 'rxjs';
 import {DocumentMetaService} from 'oblique-reactive';
 
 describe('DocumentMetaService', () => {
-	let documentMetaService: DocumentMetaService;
 
 	beforeEach(async () => {
-		const mockTranslateService = jasmine.createSpyObj(
-			'TranslateService',
-			[
-				'setDefaultLang',
-				'use',
-				'onLangChange'
-			]);
+		const mockTranslateService = {
+			setDefaultLang: jest.fn(),
+			use: jest.fn(),
+			onLangChange: of()
+		};
 
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
 			providers: [
-				{
-					provide: TranslateService,
-					useValue: mockTranslateService
-				},
-				DocumentMetaService
+				DocumentMetaService,
+				{ provide: TranslateService, useValue: mockTranslateService },
 			]
 		});
 	});
 
-	beforeEach(inject([DocumentMetaService], (service: DocumentMetaService) => {
-		documentMetaService = service;
+
+	it('should be created', inject([DocumentMetaService], (service: DocumentMetaService) => {
+		expect(service).toBeTruthy();
 	}));
 
-	// it('should set document title', () => {
-	// 	// TODO
-	// });
+
 });

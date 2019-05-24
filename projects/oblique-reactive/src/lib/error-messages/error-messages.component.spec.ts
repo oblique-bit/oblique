@@ -34,8 +34,10 @@ describe('ErrorMessagesComponent', () => {
 	});
 
 	beforeEach(async(() => {
-		errorMessagesServiceMock = jasmine.createSpyObj('ErrorMessagesService', ['createMessages']);
-		errorMessagesServiceMock.createMessages.and.callFake(() => [{key: `i18n.validation.bar`, params: undefined}]);
+
+		errorMessagesServiceMock =  {
+			createMessages: jest.fn().mockImplementation(() => [{key: `i18n.validation.bar`, params: undefined}])
+		};
 
 		TestBed.configureTestingModule({
 			declarations: [

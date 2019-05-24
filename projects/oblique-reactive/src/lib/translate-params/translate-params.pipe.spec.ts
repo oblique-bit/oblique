@@ -4,12 +4,14 @@ import {inject, TestBed} from '@angular/core/testing';
 
 describe('TranslateParamsPipe', () => {
 	beforeEach(() => {
-		const mockTranslate = jasmine.createSpyObj('TranslateService', ['instant']);
-		mockTranslate.instant.and.callFake((value: string, arg?: {value: string}) =>  {
-			return typeof arg === 'object' && arg.value
-				? value.replace('{{value}}', arg.value)
-				: value;
-		});
+
+		const mockTranslate = {
+			instant: jest.fn().mockImplementation((value: string, arg?: { value: string }) => {
+				return typeof arg === 'object' && arg.value
+					? value.replace('{{value}}', arg.value)
+					: value;
+			})
+		};
 		TestBed
 			.configureTestingModule({
 				providers: [{provide: TranslateService, useValue: mockTranslate}]

@@ -6,8 +6,9 @@ import {MasterLayoutNavigationService} from './master-layout-navigation.service'
 import {MasterLayoutService} from '../master-layout/master-layout.service';
 
 describe('MasterLayoutNavigationService', () => {
-	const translateMock = jasmine.createSpyObj('TranslateService', ['']);
-	translateMock.onLangChange = of();
+	const translateMock = {
+		onLangChange : of()
+	};
 	const mockMasterLayout = {navigationScrollable: false};
 	beforeEach(() => TestBed.configureTestingModule({
 		providers: [

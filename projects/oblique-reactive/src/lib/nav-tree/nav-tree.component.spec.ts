@@ -10,11 +10,11 @@ import {TranslateService} from '@ngx-translate/core';
 @Component({
 	template: `
 		<or-nav-tree [items]="items"
-		             [prefix]="prefix"
-		             [variant]="variant"
-		             [filterPattern]="filterPattern"
-		             [labelFormatter]="labelFormatter"
-		             [activateAncestors]="activateAncestors"></or-nav-tree>`
+					 [prefix]="prefix"
+					 [variant]="variant"
+					 [filterPattern]="filterPattern"
+					 [labelFormatter]="labelFormatter"
+					 [activateAncestors]="activateAncestors"></or-nav-tree>`
 })
 class TestComponent {
 	items = [
@@ -59,8 +59,9 @@ describe('NavTreeComponent', () => {
 	let component: NavTreeComponent;
 	let fixture: ComponentFixture<TestComponent>;
 	let element: DebugElement;
-	const translateMock = jasmine.createSpyObj('TranslateService', ['instant']);
-	translateMock.instant.and.callFake(key => key);
+	const translateMock = {
+		instant: jest.fn().mockImplementation(key => key)
+	};
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
@@ -153,7 +154,7 @@ describe('NavTreeComponent', () => {
 
 	it('should highlight patterns on filtered navigation items', () => {
 		// Restore default label formatter:
-		component.labelFormatter = NavTreeComponent.DEFAULTS.LABEL_FORMATTER(translateMock);
+		component.labelFormatter = NavTreeComponent.DEFAULTS.LABEL_FORMATTER(translateMock as unknown as TranslateService);
 		component.filterPattern = 'C'; // Filter on 'C' pattern
 		fixture.detectChanges();
 

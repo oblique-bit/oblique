@@ -30,6 +30,9 @@
 /.sass-cache
 /connect.lock
 /coverage/*
+/projects/oblique-reactive/coverage/*
+/projects/oblique-reactive/test-report.xml
+/test-report.xml
 /libpeerconnection.log
 npm-debug.log
 testem.log

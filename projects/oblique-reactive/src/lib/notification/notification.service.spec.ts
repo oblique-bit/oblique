@@ -1,4 +1,4 @@
-import {TestBed, inject} from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 import {first, take} from 'rxjs/operators';
 import {NotificationService} from './notification.service';
 import {NotificationEvent, NotificationType} from './notification.interfaces';

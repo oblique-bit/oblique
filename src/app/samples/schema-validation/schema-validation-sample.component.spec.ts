@@ -18,14 +18,20 @@ describe('SchemaValidationSampleComponent', () => {
 	let mockNotificationService;
 
 	beforeEach(() => {
-		mockNotificationService = jasmine.createSpyObj('NotificationService', ['']);
+		mockNotificationService =  {
+			warning: jest.fn(),
+			error: jest.fn(),
+			success: jest.fn(),
+			info: jest.fn()
+		};
+
 		TestBed.configureTestingModule({
 			imports: [
 				SchemaValidationModule,
 				FormsModule,
 				ReactiveFormsModule,
-				ErrorMessagesModule.forRoot(),
-				FormControlStateModule.forRoot(),
+				ErrorMessagesModule,
+				FormControlStateModule,
 				NgbModule.forRoot()
 			],
 			declarations: [

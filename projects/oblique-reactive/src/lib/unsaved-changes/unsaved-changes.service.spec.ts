@@ -1,4 +1,4 @@
-import {TestBed, inject} from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 import {EventEmitter} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {NgbTabChangeEvent, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
@@ -13,7 +13,7 @@ describe('UnsavedChangesService', () => {
 				UnsavedChangesService,
 				{
 					provide: TranslateService, useValue: {
-						instant: jasmine.createSpy('instant').and.callFake((val) => val)
+						instant: jest.fn().mockImplementation((val) => val)
 					}
 				}
 			]
@@ -45,7 +45,7 @@ describe('UnsavedChangesService', () => {
 			evt = {
 				activeId: 'tab_1',
 				nextId: '',
-				preventDefault: jasmine.createSpy('preventDefault')
+				preventDefault: jest.fn()
 			};
 			tabSet = {
 				tabs: {first: {id: 'tab_1'}, last: {id: 'tab_2'}, length: 2},
@@ -105,13 +105,13 @@ describe('UnsavedChangesService', () => {
 			});
 
 			it('should not prevent default, if confirmed', () => {
-				spyOn(window, 'confirm').and.callFake(() => true);
+				jest.spyOn(window, 'confirm').mockImplementation(() => true);
 				tabSet.select('tab_2');
 				expect(evt.preventDefault).not.toHaveBeenCalled();
 			});
 
 			it('should prevent default, if not confirmed', () => {
-				spyOn(window, 'confirm').and.callFake(() => false);
+				jest.spyOn(window, 'confirm').mockImplementation(() => false);
 				tabSet.select('tab_2');
 				expect(evt.preventDefault).toHaveBeenCalled();
 			});
@@ -161,12 +161,12 @@ describe('UnsavedChangesService', () => {
 			});
 
 			it('should return false, if not confirmed', () => {
-				spyOn(window, 'confirm').and.callFake(() => false);
+				jest.spyOn(window, 'confirm').mockImplementation(() => false);
 				expect(unsavedChangesService.canDeactivate()).toBeFalsy();
 			});
 
 			it('should return true, if confirmed', () => {
-				spyOn(window, 'confirm').and.callFake(() => true);
+				jest.spyOn(window, 'confirm').mockImplementation(() => true);
 				expect(unsavedChangesService.canDeactivate()).toBeTruthy();
 			});
 		});

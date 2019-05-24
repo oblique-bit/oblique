@@ -18,7 +18,9 @@ xdescribe('DatepickerSampleComponent', () => {
 	let schemaValidationService;
 
 	beforeEach(async(() => {
-		schemaValidationService = jasmine.createSpyObj('SchemaValidationService', ['isRequired']);
+		schemaValidationService = {
+			isRequired: jest.fn(),
+		};
 		TestBed.configureTestingModule({
 			declarations: [DatepickerSampleComponent, MockTranslatePipe],
 			providers: [
@@ -26,7 +28,7 @@ xdescribe('DatepickerSampleComponent', () => {
 				{provide: TranslateService, useValue: {currentLang: 'en'}}
 			],
 			imports: [
-				ErrorMessagesModule.forRoot(),
+				ErrorMessagesModule,
 				DatepickerModule.forRoot(),
 				NgbDatepickerModule.forRoot(),
 				NgbTooltipModule.forRoot(),
