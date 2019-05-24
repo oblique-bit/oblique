@@ -1,7 +1,6 @@
-import {fakeAsync, TestBed} from '@angular/core/testing';
+import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {of} from 'rxjs';
-import {skip} from 'rxjs/operators';
 
 import {MasterLayoutNavigationService} from './master-layout-navigation.service';
 import {MasterLayoutService} from '../master-layout/master-layout.service';
@@ -26,6 +25,29 @@ describe('MasterLayoutNavigationService', () => {
 		beforeEach(() => {
 			mockMasterLayout.navigationScrollable = true;
 		});
+
+		it('should emit scrolledLeft on scrollLeft call', fakeAsync(() => {
+			const service: MasterLayoutNavigationService = TestBed.get(MasterLayoutNavigationService);
+			let emitted = false;
+			service.scrolledLeft.subscribe(() => {
+				emitted = true;
+			});
+			service.scrollLeft();
+			tick(0);
+			expect(emitted).toBe(true);
+		}));
+
+		it('should emit scrolledRight on scrollRight call', fakeAsync(() => {
+			const service: MasterLayoutNavigationService = TestBed.get(MasterLayoutNavigationService);
+			let emitted = false;
+			service.scrolledRight.subscribe(() => {
+				emitted = true;
+			});
+			service.scrollRight();
+			tick(0);
+			expect(emitted).toBe(true);
+		}));
+
 		it('should emit refreshed on refresh call', fakeAsync(() => {
 			const service: MasterLayoutNavigationService = TestBed.get(MasterLayoutNavigationService);
 			let emitted = false;
@@ -33,7 +55,7 @@ describe('MasterLayoutNavigationService', () => {
 				emitted = true;
 			});
 			service.refresh();
-			skip(1000);
+			tick(0);
 			expect(emitted).toBe(true);
 		}));
 	});
@@ -43,6 +65,28 @@ describe('MasterLayoutNavigationService', () => {
 			mockMasterLayout.navigationScrollable = false;
 		});
 
+		it('should not emit scrolledLeft on scrollLeft call', fakeAsync(() => {
+			const service: MasterLayoutNavigationService = TestBed.get(MasterLayoutNavigationService);
+			let emitted = false;
+			service.scrolledLeft.subscribe(() => {
+				emitted = true;
+			});
+			service.scrollLeft();
+			tick(0);
+			expect(emitted).toBe(false);
+		}));
+
+		it('should not emit scrolledRight on scrollRight call', fakeAsync(() => {
+			const service: MasterLayoutNavigationService = TestBed.get(MasterLayoutNavigationService);
+			let emitted = false;
+			service.scrolledRight.subscribe(() => {
+				emitted = true;
+			});
+			service.scrollRight();
+			tick(0);
+			expect(emitted).toBe(false);
+		}));
+
 		it('should not emit refreshed on refresh call', fakeAsync(() => {
 			const service: MasterLayoutNavigationService = TestBed.get(MasterLayoutNavigationService);
 			let emitted = false;
@@ -50,7 +94,7 @@ describe('MasterLayoutNavigationService', () => {
 				emitted = true;
 			});
 			service.refresh();
-			skip(1000);
+			tick(0);
 			expect(emitted).toBe(false);
 		}));
 	});

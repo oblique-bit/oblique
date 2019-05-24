@@ -45,6 +45,10 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 		this.updateNavigationFullWidth();
 		this.updateNavigationScrollable();
 		this.masterLayoutNavigation.refreshed.pipe(takeUntil(this.unsubscribe)).subscribe(this.refresh.bind(this));
+		this.masterLayoutNavigation.scrolledRight.pipe(takeUntil(this.unsubscribe)).subscribe((offset?: number) =>
+			this.updateScroll(offset || this.config.navigation.scrollDelta));
+		this.masterLayoutNavigation.scrolledLeft.pipe(takeUntil(this.unsubscribe)).subscribe((offset?: number) =>
+			this.updateScroll(-(offset || this.config.navigation.scrollDelta)));
 	}
 
 	ngOnInit() {
@@ -61,17 +65,17 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 		return this.router.isActive(url, false);
 	}
 
-	scrollLeft(): void {
-		this.updateScroll(-this.config.navigation.scrollDelta);
-	}
-
-	scrollRight(): void {
-		this.updateScroll(this.config.navigation.scrollDelta);
-	}
-
 	@HostListener('window:resize')
 	onResize() {
 		this.masterLayoutNavigation.refresh();
+	}
+
+	scrollLeft(): void {
+		this.masterLayoutNavigation.scrollLeft();
+	}
+
+	scrollRight(): void {
+		this.masterLayoutNavigation.scrollRight();
 	}
 
 	private refresh() {
