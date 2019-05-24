@@ -6,6 +6,7 @@ import {of, Subject} from 'rxjs';
 
 import {MasterLayoutConfig, MasterLayoutService} from 'oblique-reactive';
 import {MasterLayoutNavigationComponent} from './master-layout-navigation.component';
+import {MasterLayoutNavigationService} from './master-layout-navigation.service';
 import {MockTranslatePipe} from 'tests';
 
 describe('MasterLayoutNavigationComponent', () => {
@@ -20,6 +21,10 @@ describe('MasterLayoutNavigationComponent', () => {
 	mockService.navigationScrollableChanged = new Subject<boolean>();
 	const mockConfig = jasmine.createSpyObj('MasterLayoutConfig', ['']);
 	mockConfig.navigation = {links: []};
+	const mockNavService = jasmine.createSpyObj('MasterLayoutNavigationService', ['']);
+	mockNavService.refreshed = of();
+	mockNavService.scrolledRight = of();
+	mockNavService.scrolledLeft = of();
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
@@ -28,7 +33,8 @@ describe('MasterLayoutNavigationComponent', () => {
 			providers: [
 				{provide: TranslateService, useValue: mockTranslateService},
 				{provide: MasterLayoutService, useValue: mockService},
-				{provide: MasterLayoutConfig, useValue: mockConfig}
+				{provide: MasterLayoutConfig, useValue: mockConfig},
+				{provide: MasterLayoutNavigationService, useValue: mockNavService}
 			]
 		})
 			.compileComponents();
