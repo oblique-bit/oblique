@@ -40,8 +40,10 @@ import {
 	SchemaValidationModule,
 	SearchBoxModule,
 	ToggleModule,
+	StickyModule,
 	UnsavedChangesModule
 } from 'oblique-reactive';
+import { StickySampleComponent } from './sticky/sticky-sample.component';
 
 @NgModule({
 	imports: [
@@ -60,7 +62,6 @@ import {
 		SearchBoxModule,
 		ToggleModule,
 		UnsavedChangesModule,
-
 		TranslateModule,
 		FormsModule,
 		NgbModule,
@@ -68,7 +69,8 @@ import {
 		SamplesRoutingModule,
 		NavigatorSampleModule,
 		NavigatorSampleRoutingModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		StickyModule
 	],
 	declarations: [
 		ColumnLayoutSampleComponent,
@@ -87,7 +89,8 @@ import {
 		SchemaValidationSampleComponent,
 		ToggleSampleComponent,
 		UnsavedChangesSampleComponent,
-		UnsavedChangesSampleModalComponent
+		UnsavedChangesSampleModalComponent,
+		StickySampleComponent
 	],
 	exports: [
 		RouterModule

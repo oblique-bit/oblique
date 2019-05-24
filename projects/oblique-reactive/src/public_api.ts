@@ -61,6 +61,7 @@ export {
 export {ScrollDetectionDirective, ScrollingEvents, ScrollingModule, TopControlComponent} from './lib/scrolling/scrolling.module';
 export {SearchBoxDirective, SearchWidgetItem, SearchBoxComponent, SearchBoxResultsComponent, SearchBoxModule} from './lib/searchbox/search-box.module';
 export {SpinnerEvent, SpinnerComponent, SpinnerModule, SpinnerService} from './lib/spinner/spinner.module';
+export {StickyComponent, StickyModule} from './lib/sticky/sticky.module';
 export {TextControlClearDirective, TextControlClearModule} from './lib/text-control-clear/text-control-clear.module';
 export {ToggleDirective, ToggleModule} from './lib/toggle/toggle.module';
 export {TranslateParamsModule, TranslateParamsPipe} from './lib/translate-params/translate-params.module';
