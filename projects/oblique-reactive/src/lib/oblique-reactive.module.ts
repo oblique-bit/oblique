@@ -22,7 +22,7 @@ import {UnsavedChangesModule} from './unsaved-changes/unsaved-changes.module';
 import {NumberFormatModule} from './number-format/number-format.module';
 import {OffCanvasModule} from './off-canvas/off-canvas.module';
 import {SearchBoxModule} from './searchbox/search-box.module';
-import {TranslateParamsPipe} from './translate-params/translate-params.pipe';
+import {StickyModule} from './sticky/sticky.module';
 import {TranslateParamsModule} from './translate-params/translate-params.module';
 
 const OBLIQUE_MODULES = [
@@ -45,6 +45,7 @@ const OBLIQUE_MODULES = [
 	ScrollingModule,
 	SearchBoxModule,
 	SpinnerModule,
+	StickyModule,
 	TextControlClearModule,
 	ToggleModule,
 	TranslateParamsModule,
