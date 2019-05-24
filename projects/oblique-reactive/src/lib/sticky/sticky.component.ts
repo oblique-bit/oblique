@@ -61,6 +61,8 @@ export class StickyComponent implements OnInit, OnChanges {
 			}
 		} else if (this.stickyFooterTemplate) {
 			this.hostClass = this.setClassList(this.footerSize);
+		} else {
+			this.hostClass = this.setClassList();
 		}
 	}
 
