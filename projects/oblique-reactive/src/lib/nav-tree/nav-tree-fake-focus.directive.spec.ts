@@ -53,8 +53,9 @@ describe('NavTreeFakeFocusDirective', () => {
 	let element: DebugElement;
 	let directive: NavTreeFakeFocusDirective;
 	let inputElement: DebugElement;
-	const translateMock = jasmine.createSpyObj('TranslateService', ['instant']);
-	translateMock.instant.and.callFake(key => key);
+	const translateMock = {
+		instant: jest.fn().mockImplementation(key => key)
+	};
 
 	const keydown = (code: string) => {
 		inputElement.triggerEventHandler(
@@ -76,6 +77,7 @@ describe('NavTreeFakeFocusDirective', () => {
 			schemas: [NO_ERRORS_SCHEMA]
 		}).compileComponents();
 	}));
+
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(TestComponent);

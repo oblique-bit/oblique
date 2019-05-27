@@ -11,7 +11,10 @@ describe('FormControlStateSampleComponent', () => {
 	let schemaValidationService;
 
 	beforeEach(async(() => {
-		schemaValidationService = jasmine.createSpyObj('SchemaValidationService', ['isRequired']);
+		schemaValidationService = {
+			isRequired: jest.fn()
+		};
+
 		TestBed.configureTestingModule({
 			declarations: [
 				FormControlStateSampleComponent,

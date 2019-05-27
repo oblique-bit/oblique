@@ -9,6 +9,7 @@ import {NgbButtonsModule, NgbCollapseModule, NgbTooltipModule} from '@ng-bootstr
 import {NavTreeComponent} from 'oblique-reactive';
 import {MockTranslatePipe} from 'tests';
 import {NavTreeSampleComponent} from './nav-tree-sample.component';
+import {TranslateService} from '@ngx-translate/core';
 
 describe('NavTreeSampleComponent', () => {
 	let component: NavTreeSampleComponent;
@@ -27,11 +28,12 @@ describe('NavTreeSampleComponent', () => {
 				RouterTestingModule,
 				NgbCollapseModule,
 				NgbButtonsModule,
-				NgbTooltipModule.forRoot()
+				NgbTooltipModule
 			],
 			schemas: [
 				CUSTOM_ELEMENTS_SCHEMA
-			]
+			],
+			providers: [{provide: TranslateService, useValue: jest.fn()}]
 		}).compileComponents();
 	}));
 

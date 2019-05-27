@@ -11,16 +11,21 @@ describe('MasterLayoutComponent', () => {
 	let component: MasterLayoutComponent;
 	let fixture: ComponentFixture<MasterLayoutComponent>;
 
-	const mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use', 'getDefaultLang']);
-	mockTranslateService.onLangChange = new EventEmitter();
-	const mockConfig = jasmine.createSpyObj('MasterLayoutConfig', ['']);
-	mockConfig.layout = {};
-	const mockService = jasmine.createSpyObj('MasterLayoutService', ['']);
-	mockService.menuCollapsedChanged = new Subject<boolean>();
-	mockService.applicationFixedChanged = new Subject<boolean>();
-	mockService.coverLayoutChanged = new Subject<boolean>();
-	mockService.noNavigationChanged = new Subject<boolean>();
-	mockService.offCanvasChanged = new Subject<boolean>();
+	const mockTranslateService = {
+		setDefaultLang: jest.fn(),
+		use: jest.fn(),
+		getDefaultLang: jest.fn(),
+		onLangChange: new EventEmitter()
+	};
+
+	const mockConfig = {layout: {}};
+	const mockService = {
+		menuCollapsedChanged: new Subject<boolean>(),
+		applicationFixedChanged: new Subject<boolean>(),
+		coverLayoutChanged: new Subject<boolean>(),
+		noNavigationChanged: new Subject<boolean>(),
+		offCanvasChanged: new Subject<boolean>()
+	};
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({

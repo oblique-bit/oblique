@@ -3,13 +3,7 @@ import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MockTranslatePipe} from 'tests';
-import {
-	Notification,
-	NotificationComponent,
-	NotificationConfig,
-	NotificationService,
-	NotificationType
-} from 'oblique-reactive';
+import {Notification, NotificationComponent, NotificationConfig, NotificationService, NotificationType} from 'oblique-reactive';
 
 // TODO: reenable once https://github.com/angular/angular/pull/19055 is merged
 describe('NotificationComponent', () => {

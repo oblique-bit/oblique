@@ -6,7 +6,14 @@ import {SpinnerEvent} from './spinner-event';
 describe('SpinnerService', () => {
 	let mockNotificationService;
 	beforeEach(() => {
-		mockNotificationService = jasmine.createSpyObj('NotificationService', ['error']);
+
+		mockNotificationService = {
+			warning: jest.fn(),
+			error: jest.fn(),
+			success: jest.fn(),
+			info: jest.fn()
+		};
+
 		TestBed.configureTestingModule({
 			providers: [
 				SpinnerService,

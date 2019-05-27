@@ -51,7 +51,12 @@ describe('UnsavedChangesDirective', () => {
 	};
 
 	beforeEach(async(() => {
-		unsavedChangesServiceMock = jasmine.createSpyObj('UnsavedChangesService', ['watch', 'listenTo', 'unWatch', 'unListenTo']);
+		unsavedChangesServiceMock = {
+			watch: jest.fn(),
+			listenTo: jest.fn(),
+			unWatch: jest.fn(),
+			unListenTo: jest.fn()
+		};
 
 		//noinspection JSIgnoredPromiseFromCall
 		TestBed.configureTestingModule({

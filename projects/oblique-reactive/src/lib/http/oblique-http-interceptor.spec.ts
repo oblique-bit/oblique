@@ -4,6 +4,7 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 import {HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {finalize} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 import {
 	NotificationService,
 	NotificationType,
@@ -11,11 +12,10 @@ import {
 	ObliqueHttpInterceptorConfig,
 	ObliqueHttpInterceptorEvents,
 	ObliqueHttpModule,
-	SpinnerService,
-	ObliqueRequest
+	ObliqueRequest,
+	SpinnerService
 } from 'oblique-reactive';
 import {HttpMockErrorInterceptor} from '../../../../../src/app/samples/http-interceptor/http-mock-error.interceptor';
-import { Subject } from 'rxjs';
 
 @Injectable()
 class DataService {
@@ -61,6 +61,7 @@ class MockObliqueHttpInterceptorEvents extends ObliqueHttpInterceptorEvents {
 	get requested_exported(): Subject<ObliqueRequest> {
 		return this.requested;
 	}
+
 	get expired_exported(): Subject<void> {
 		return this.expired;
 	}

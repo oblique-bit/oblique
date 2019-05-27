@@ -11,11 +11,15 @@ import {MockTranslatePipe} from 'tests';
 describe('MasterLayoutHeaderComponent', () => {
 	let component: MasterLayoutHeaderComponent;
 	let fixture: ComponentFixture<MasterLayoutHeaderComponent>;
-	const mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use', 'getDefaultLang']);
-	const mockConfig = jasmine.createSpyObj('MasterLayoutConfig', ['']);
+	const mockTranslateService =  {
+		setDefaultLang: jest.fn(),
+		use: jest.fn(),
+		getDefaultLang: jest.fn()
+	};
+	const mockConfig = jest.fn();
 	mockConfig.header = {};
 	mockConfig.locale = {locales: []};
-	const mockService = jasmine.createSpyObj('MasterLayoutService', ['']);
+	const mockService = jest.fn();
 	mockService.menuCollapsedChanged = new Subject<boolean>();
 	mockService.headerMediumChanged = new Subject<boolean>();
 	mockService.headerAnimateChanged = new Subject<boolean>();

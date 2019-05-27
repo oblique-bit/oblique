@@ -74,42 +74,18 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "main": "src/test.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "polyfills": "src/polyfills.ts",
+            "configPath": "../tests/jest.config.js",
+            "no-cache": true,
             "watch": true,
-            "codeCoverage": false,
-            "preserveSymlinks": true,
-            "browsers": "Chrome",
-            "scripts": [],
-            "styles": [
-              "node_modules/oblique-ui/css/oblique-ui.css",
-              "src/scss/styles.scss"
-            ],
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "src/assets",
-                "output": "/assets"
-              },
-              {
-                "glob": "**/*",
-                "input": "node_modules/oblique-ui/images",
-                "output": "/assets/styles/images"
-              }
-            ]
+            "verbose": true
           },
           "configurations": {
             "production": {
-              "preserveSymlinks": false,
+              "configPath": "../tests/jest.config.prod.js",
               "watch": false,
-              "codeCoverage": true,
-              "sourceMap": true,
-              "progress": false,
-              "browsers": "ChromeHeadlessCustom"
+              "verbose": false
             }
           }
         },
@@ -164,41 +140,18 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "main": "projects/oblique-reactive/src/test.ts",
-            "tsConfig": "projects/oblique-reactive/tsconfig.spec.json",
-            "karmaConfig": "projects/oblique-reactive/karma.conf.js",
+            "configPath": "jest.config.js",
+            "no-cache": true,
             "watch": true,
-            "codeCoverage": false,
-            "preserveSymlinks": true,
-            "sourceMap": true,
-            "browsers": "Chrome",
-            "styles": [
-              "node_modules/oblique-ui/css/oblique-ui.css",
-              "src/scss/styles.scss"
-            ],
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "src/assets",
-                "output": "/assets"
-              },
-              {
-                "glob": "**/*",
-                "input": "node_modules/oblique-ui/images",
-                "output": "/assets/styles/images"
-              }
-            ]
+            "verbose": true
           },
           "configurations": {
             "production": {
-              "preserveSymlinks": false,
+              "configPath": "jest.config.prod.js",
               "watch": false,
-              "codeCoverage": true,
-              "sourceMap": true,
-              "progress": false,
-              "browsers": "ChromeHeadlessCustom"
+              "verbose": false
             }
           }
         },

@@ -90,7 +90,7 @@ describe('MultiselectComponent', () => {
 		it('should use labelFormatter if it\'s set', () => {
 			const formatterReturnValue = 'FuuBar';
 
-			component.labelFormatter = jasmine.createSpy('formatter').and.callFake(() => formatterReturnValue);
+			component.labelFormatter = jest.fn().mockImplementation(() => formatterReturnValue);
 
 			const result = component.formatOptionForLabel(modelOption);
 

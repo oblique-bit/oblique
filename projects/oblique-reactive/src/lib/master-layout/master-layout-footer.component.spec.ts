@@ -12,13 +12,18 @@ describe('MasterLayoutFooterComponent', () => {
 	let component: MasterLayoutFooterComponent;
 	let fixture: ComponentFixture<MasterLayoutFooterComponent>;
 
-	const mockTranslateService = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use', 'getDefaultLang']);
-	mockTranslateService.onLangChange = new EventEmitter();
-	const mockConfig = jasmine.createSpyObj('MasterLayoutConfig', ['']);
-	mockConfig.footer = {};
-	const mockService = jasmine.createSpyObj('MasterLayoutService', ['']);
-	mockService.footerSmallChanged = new Subject<boolean>();
-	mockService.footerCustomChanged = new Subject<boolean>();
+	const mockTranslateService = {
+		setDefaultLang: jest.fn(),
+		use: jest.fn(),
+		getDefaultLang: jest.fn(),
+		onLangChange: new EventEmitter()
+	};
+
+	const mockConfig = {footer: {}};
+	const mockService = {
+		footerSmallChanged: new Subject<boolean>(),
+		footerCustomChanged: new Subject<boolean>()
+	};
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({

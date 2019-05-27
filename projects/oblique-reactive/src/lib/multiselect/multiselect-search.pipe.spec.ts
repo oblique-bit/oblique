@@ -5,7 +5,9 @@ describe('MultiselectSearchPipe', () => {
 	let multiselectDropdownMock;
 
 	beforeEach(() => {
-		multiselectDropdownMock = jasmine.createSpyObj('MultiselectComponent', ['formatOptionForLabel']);
+		multiselectDropdownMock = {
+			formatOptionForLabel: jest.fn()
+		};
 		pipe = new MultiselectSearchPipe(multiselectDropdownMock);
 	});
 
@@ -13,7 +15,7 @@ describe('MultiselectSearchPipe', () => {
 		const stringOptions = ['Fuu', 'Bar', 'Baz'];
 
 		beforeEach(() => {
-			multiselectDropdownMock.formatOptionForLabel.and.callFake((value) => value);
+			multiselectDropdownMock.formatOptionForLabel.mockImplementation((value) => value);
 		});
 
 		it('should keep option if it\'s equal to the searchString ', () => {
@@ -47,7 +49,7 @@ describe('MultiselectSearchPipe', () => {
 		];
 
 		beforeEach(() => {
-			multiselectDropdownMock.formatOptionForLabel.and.callFake((value) => value.name);
+			multiselectDropdownMock.formatOptionForLabel.mockImplementation((value) => value.name);
 		});
 
 		it('should keep option if it\'s equal to the searchString ', () => {
