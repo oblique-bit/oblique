@@ -13,8 +13,8 @@ module.exports = {
 			diagnostics: false
 		}
 	},
-	coverageDirectory: './coverage/sonarQube',
+	coverageDirectory: '<rootDir>/coverage/sonarQube',
 	testResultsProcessor: 'jest-sonar-reporter',
 	collectCoverage: true,
-	coveragePathIgnorePatterns : ['node_modules', '/tests/']
+	coveragePathIgnorePatterns : ['node_modules', '/tests/', 'test_helpers']
 };

@@ -149,7 +149,6 @@
           },
           "configurations": {
             "production": {
-              "configPath": "jest.config.prod.js",
               "watch": false,
               "verbose": false
             }

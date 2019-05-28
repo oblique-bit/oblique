@@ -61,6 +61,12 @@
     "postversion": "node changelog.js",
     "gulp": "./node_modules/.bin/gulp"
   },
+  "jestSonar": {
+    "reportPath": "./coverage/sonarQube",
+    "reportFile": "sqr.xml",
+    "indent": 4,
+    "sonar56x": true
+  },
   "dependencies": {
     "@angular/animations": "^7.2.8",
     "@angular/common": "^7.2.8",
