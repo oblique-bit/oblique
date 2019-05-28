@@ -15,7 +15,6 @@ import {
 	ObliqueRequest,
 	SpinnerService
 } from 'oblique-reactive';
-import {HttpMockErrorInterceptor} from '../../../../../src/app/samples/http-interceptor/http-mock-error.interceptor';
 
 @Injectable()
 class DataService {
@@ -209,8 +208,25 @@ describe(`ObliqueHttpInterceptor`, () => {
 		});
 		const req = httpMock.expectOne(`${DataService.ROOT_URL}/${code}`);
 		expect(req.request.method).toEqual('GET');
-		req.flush('', {status: code, statusText: HttpMockErrorInterceptor.getStatusText(code)});
+		req.flush('', {status: code, statusText: getStatusText(code)});
 
 		return req;
+	}
+
+	function getStatusText(code: number): string {
+		switch (code) {
+			case 200:
+				return 'OK';
+			case 401:
+				return 'UNAUTHORIZED';
+			case 404:
+				return 'NOT FOUND';
+			case 500:
+				return 'SERVER ERROR';
+			case 0:
+				return 'SERVICE UNAVAILABLE';
+			default:
+				return 'UNKNOWN CODE';
+		}
 	}
 });
