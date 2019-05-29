@@ -106,6 +106,7 @@ The scope is optional and should be the name of the Oblique feature affected:
 * **toggle**
 * **unsaved-changes**
 * **unsubscribe**
+* **utilities**
 
 ##### Subject
 The subject is mandatory and contains a succinct description of the change:

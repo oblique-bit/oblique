@@ -1,0 +1,25 @@
+@import "core/variables";
+@import "core/mixins/layout";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+
+.text-ellipsis {
+	width: 100%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.d-layout-collapsed {
+	@include layout-collapse-up() {
+		display: none;
+	}
+}
+
+.d-layout-expanded {
+	@include layout-collapse-down() {
+		display: none;
+	}
+}
