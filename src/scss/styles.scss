@@ -1,12 +1,10 @@
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/mixins/breakpoints';
-@import '~bootstrap/scss/mixins/breakpoints';
-
-// Vendor overrides:
-@import 'vendor/oblique-ui';
+@import "~projects/oblique-reactive/src/styles/scss/core/mixins/layout";
 
 $snippet-default-height: 350px;
+
+.headline {
+	text-align: center;
+}
 
 // Samples:
 .card-footer pre {
@@ -40,3 +38,4 @@ $snippet-default-height: 350px;
 		}
 	}
 }
+

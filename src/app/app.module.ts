@@ -23,7 +23,7 @@ import {
 	SchemaValidationModule,
 	ScrollingModule,
 	SearchBoxModule,
-	SpinnerModule,
+	SpinnerModule, TextControlClearModule,
 	UnsavedChangesModule
 } from 'oblique-reactive';
 // App:
@@ -32,7 +32,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {HomePageComponent} from './home/home.page';
 import {HttpMockErrorInterceptor} from './samples/http-interceptor/http-mock-error.interceptor';
 import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule, MatInputModule} from '@angular/material';
+import { StylesComponent } from './styles/styles.component';
 
 // AoT requires an exported function for factories:
 export function createTranslateLoader(http: HttpClient) {
@@ -42,7 +43,8 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
 	declarations: [
 		AppComponent,
-		HomePageComponent
+		HomePageComponent,
+		StylesComponent
 	],
 	imports: [
 		BrowserModule,
@@ -70,7 +72,10 @@ export function createTranslateLoader(http: HttpClient) {
 			}
 		}),
 		AppRoutingModule,
-		MasterLayoutModule
+		MasterLayoutModule,
+		MatFormFieldModule,
+		MatInputModule,
+		TextControlClearModule
 	],
 	providers: [
 		{

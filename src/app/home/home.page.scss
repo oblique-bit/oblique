@@ -1,43 +1,18 @@
-@import '~oblique-ui/scss/variables';
-@import '~oblique-ui/scss/mixins/layout';
+@import '../../../projects/oblique-reactive/src/styles/scss/core/variables';
 
-.headline {
-	&.headline-lg {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
+.default-layout {
+	display: flex;
+	justify-content: center;
 }
 
-.oblique {
-	> span:not(.vendor-logo) {
-		font-weight: bold;
-		> span {
-			font-weight: normal;
-		}
-	}
-
-	.oblique-logo {
-		width: 10rem;
-		max-width: 80%;
-	}
-
-	.headline & {
-		.oblique-logo {
-			width: 32rem;
-		}
-	}
+.content {
+	text-align: center;
 }
 
-.vendor-logo {
-	display: inline-block;
-	width: 4rem;
+.title {
+	font-size: $font-size-lg;
+}
 
-	img {
-		width: 100%;
-	}
-
-	+ span {
-		margin-left: 5px;
-	}
+.version {
+	font-size: $font-size-xl;
 }

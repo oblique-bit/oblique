@@ -29,22 +29,25 @@ export class AppComponent {
 				{url: 'validation/form-control-state', label: 'i18n.routes.samples.form-control-state.title'},
 				{url: 'validation/schema-validation', label: 'i18n.routes.samples.schema-validation.title'},
 				{url: 'validation/unsaved-changes', label: 'i18n.routes.samples.unsaved-changes.title'},
-				{url: 'sticky', label: 'Sticky'}
+				{url: 'sticky', label: 'Sticky'},
 				{url: 'form', label: 'Forms'},
 				{url: 'button', label: 'Buttons'}
 			]
-		}
+		},
+		{url: 'styles', label: 'styles'}
 	];
 	searchItems: SearchWidgetItem[] = [];
 
 	constructor(private materialService: MaterialService) {
 		this.populateSearchItems(this.navigation);
 		this.material = materialService.enabled;
+		this.setTheme();
 	}
 
 	toggle() {
 		this.material = !this.material;
 		this.materialService.enabled = this.material;
+		this.setTheme();
 	}
 
 	populateSearchItems(items: ORNavigationLink[], base = ''): void {
@@ -61,5 +64,10 @@ export class AppComponent {
 				});
 			}
 		});
+	}
+
+	private setTheme(): void {
+		const link = document.getElementById('dynamic-theme');
+		link['href'] = 'assets/styles/css/oblique-' + (this.material ? 'material' : 'bootstrap') + '.css';
 	}
 }

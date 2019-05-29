@@ -27,10 +27,14 @@
                 "glob": "**/*",
                 "input": "projects/oblique-reactive/src/styles/images",
                 "output": "/assets/styles/images"
+              },
+              {
+                "glob": "**/*",
+                "input": "dist/oblique-reactive/styles/css",
+                "output": "/assets/styles/css"
               }
             ],
             "styles": [
-              "projects/oblique-reactive/src/styles/scss/themes/oblique-material.scss",
               "projects/oblique-reactive/src/styles/scss/oblique-core.scss",
               "src/scss/styles.scss"
             ],
