@@ -24,7 +24,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 	selector: 'or-master-layout-header',
 	templateUrl: './master-layout-header.component.html',
 	styleUrls: ['./master-layout-header.component.scss'],
-	/* tslint:disable:use-host-property-decorator */
+	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'application-header'}
 })
 export class MasterLayoutHeaderComponent extends Unsubscribable implements AfterViewInit {

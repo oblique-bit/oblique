@@ -48,7 +48,7 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	@Output() onAdded = new EventEmitter<any>();
 	@Output() onRemoved = new EventEmitter<any>();
 
-	@ViewChild('orFilterBox')
+	@ViewChild('orFilterBox', { static: false })
 	filterBox: FilterBoxComponent;
 
 	id = `or-multiselect-${nextId++}`;

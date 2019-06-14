@@ -22,7 +22,7 @@ export class MasterLayoutNavigationItemDirective extends Unsubscribable implemen
 	@ContentChildren(MasterLayoutNavigationToggleDirective, {descendants: true})
 	$toggles: QueryList<MasterLayoutNavigationToggleDirective>;
 
-	@ContentChild(MasterLayoutNavigationMenuDirective)
+	@ContentChild(MasterLayoutNavigationMenuDirective, {static: false})
 	$menu: MasterLayoutNavigationMenuDirective;
 
 	@ContentChildren(MasterLayoutNavigationItemDirective, {descendants: true})

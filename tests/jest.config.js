@@ -3,7 +3,7 @@
 module.exports = {
 	preset: 'jest-preset-angular',
 	roots: ['<rootDir>/src'],
-	setupTestFrameworkScriptFile: '<rootDir>/tests/setupJest.ts',
+	setupFilesAfterEnv: ['<rootDir>/tests/setupJest.ts'],
 	moduleNameMapper: {
 		'oblique-reactive': '<rootDir>projects/oblique-reactive/src/public_api.ts',
 		'tests': '<rootDir>/test_helpers'

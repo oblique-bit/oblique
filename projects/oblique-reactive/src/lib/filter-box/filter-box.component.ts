@@ -32,7 +32,7 @@ export class FilterBoxComponent implements OnInit {
 	@Output()
 	patternClear = new EventEmitter<void>();
 
-	@ViewChild('filterControl')
+	@ViewChild('filterControl', { static: true })
 	public filterControl: ElementRef;
 
 	private readonly acceptedSizes = ['sm', 'lg'];

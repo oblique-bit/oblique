@@ -13,7 +13,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 	exportAs: 'orMasterLayout',
 	styleUrls: ['./master-layout.component.scss'],
 	templateUrl: './master-layout.component.html',
-	/* tslint:disable:use-host-property-decorator */
+	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'application'}
 })
 export class MasterLayoutComponent extends Unsubscribable {
@@ -27,7 +27,7 @@ export class MasterLayoutComponent extends Unsubscribable {
 	@HostBinding('class.offcanvas') offCanvas: boolean;
 	@ContentChildren('orHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('orFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<any>>;
-	@ViewChild('offCanvasClose') readonly offCanvasClose: ElementRef<HTMLElement>;
+	@ViewChild('offCanvasClose', { static: false }) readonly offCanvasClose: ElementRef<HTMLElement>;
 
 	constructor(private readonly masterLayout: MasterLayoutService,
 				private readonly config: MasterLayoutConfig,
