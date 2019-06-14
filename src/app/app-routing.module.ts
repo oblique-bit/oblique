@@ -5,7 +5,7 @@ import {HomePageComponent} from './home/home.page';
 
 const appRoutes: Routes = [
 	{path: 'home', component: HomePageComponent, data: {title: 'i18n.routes.home.title'}},
-	{path: 'samples', loadChildren: './samples/samples.module#SamplesModule'},
+	{path: 'samples', loadChildren: () => import('./samples/samples.module').then(m => m.SamplesModule)},
 	{path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 @NgModule({

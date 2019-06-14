@@ -12,7 +12,7 @@ import {
 	SchemaValidationService
 } from 'oblique-reactive';
 
-xdescribe('DatepickerSampleComponent', () => {
+describe('DatepickerSampleComponent', () => {
 	let component: DatepickerSampleComponent;
 	let fixture: ComponentFixture<DatepickerSampleComponent>;
 	let schemaValidationService;
@@ -30,8 +30,8 @@ xdescribe('DatepickerSampleComponent', () => {
 			imports: [
 				ErrorMessagesModule,
 				DatepickerModule.forRoot(),
-				NgbDatepickerModule.forRoot(),
-				NgbTooltipModule.forRoot(),
+				NgbDatepickerModule,
+				NgbTooltipModule,
 				FormsModule
 			]
 		}).overrideModule(DatepickerModule, {
