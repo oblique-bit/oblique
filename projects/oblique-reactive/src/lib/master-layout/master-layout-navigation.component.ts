@@ -1,4 +1,4 @@
-import {AfterContentChecked, Component, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer2, ViewChild, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer2, ViewChild, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
 
