@@ -59,7 +59,8 @@
     "release": "npm run gulp -- publish",
     "preversion": "npm run lint && npm test -- --prod && npm run dist",
     "postversion": "node changelog.js",
-    "gulp": "./node_modules/.bin/gulp"
+    "gulp": "./node_modules/.bin/gulp",
+    "css": "node transpile.js"
   },
   "jestSonar": {
     "reportPath": "./coverage/sonarQube",
@@ -114,6 +115,7 @@
     "jest-preset-angular": "^7.1.1",
     "jest-sonar-reporter": "^2.0.0",
     "ng-packagr": "^5.3.0",
+    "node-sass": "^4.12.0",
     "oblique-ui": "^3.0.1",
     "protractor": "^5.4.2",
     "ts-node": "^8.3.0",
