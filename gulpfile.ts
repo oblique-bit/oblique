@@ -5,7 +5,6 @@ const fs = require('fs'),
 	header = require('gulp-header'),
 	sass = require('node-sass'),
 	path = require('path'),
-	replace = require('gulp-replace'),
 	paths = {
 		dist: './dist/oblique-reactive/'
 	},
