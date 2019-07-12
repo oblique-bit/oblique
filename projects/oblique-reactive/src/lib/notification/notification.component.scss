@@ -1,17 +1,5 @@
-@import "~font-awesome/scss/variables";
 @import "../../styles/scss/core/variables";
 @import "../../styles/scss/core/mixins/alert";
-@import "../../styles/scss/core/mixins/notification";
-
-.alert {
-	@include notification-base();
-}
-
-.alert-default    { @include alert-style($gray-lighter, $fa-var-envelope, $brand-secondary, $gray-dark, $brand-default); }
-.alert-info       { @include alert-style($brand-light, $fa-var-info, $brand-secondary, $brand-primary, $brand-default); }
-.alert-success    { @include alert-style($brand-success-light, $fa-var-check, $brand-success, $brand-success-dark, $brand-default); }
-.alert-warning    { @include alert-style($brand-warning-light, $fa-var-exclamation, $brand-warning, $brand-warning-dark, $brand-default); }
-.alert-danger     { @include alert-style($brand-danger-light, $fa-var-times, $brand-danger, $brand-danger-dark, $brand-default); }
 
 or-notification {
 	&.notification-container {

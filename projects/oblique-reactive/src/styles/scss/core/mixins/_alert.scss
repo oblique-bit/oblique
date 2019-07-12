@@ -1,15 +1,31 @@
-@import "notification";
+@import "icon";
+@import "../variables";
 
-@mixin alert-style($bg, $icon, $icon-bg, $close, $close-hover) {
-	@include notification-style($bg, $icon, $icon-bg);
+@mixin alert-variant($bg, $icon, $icon-bg, $icon-color: $white) {
+	@include icon($icon: $icon);
+	background-color: $bg;
 
-	&.alert-dismissible {
-		.close {
-			opacity: 1;
-			color: $close;
-			&:hover {
-				color: $close-hover;
-			}
-		}
+	&::before {
+		background-color: $icon-bg;
+		color: $icon-color;
+	}
+}
+
+@mixin alert-base() {
+	position: relative;
+	padding: $spacing-default $spacing-default $spacing-default $alert-symbol-width + $spacing-default;
+	color: $brand-default;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: $alert-symbol-width;
+		padding: $spacing-default;
+		font-size: 1.5rem !important;
+		text-align: center;
+		vertical-align: middle;
 	}
 }

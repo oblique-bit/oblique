@@ -1,6 +1,6 @@
 @import "~font-awesome/scss/variables";
 @import "../../styles/scss/core/variables";
-@import "../../styles/scss/core/mixins/notification";
+@import "../../styles/scss/core/mixins/alert";
 
 .access-keys {
 	position: fixed;
@@ -33,8 +33,8 @@
 	opacity: 0;
 	transform: translateY(-100%);
 	transition: transform $duration-default cubic-bezier(0.7, 0, 0.3, 1), opacity $duration-default ease-in-out;
-	@include notification-base();
-	@include notification-style($brand-warning-light, $fa-var-universal-access, $brand-warning, 54px);
+	@include alert-base();
+	@include alert-variant($brand-warning-light, $fa-var-universal-access, $brand-warning);
 
 	&:active,
 	&:focus {
