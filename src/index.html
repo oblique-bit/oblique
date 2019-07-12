@@ -4,21 +4,26 @@
 <!--[if gte IE 10]><!-->
 <html lang="en">
 <!--<![endif]-->
-	<head>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-		<meta charset="utf-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<base href="/">
-		<title>ObliqueReactive</title>
-		<link href="assets/styles/images/favicon.png" rel="shortcut icon"/>
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link rel="stylesheet" id="dynamic-theme">
-	</head>
-	<body>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<base href="/">
+	<title>ObliqueReactive</title>
+	<link href="assets/styles/images/favicon.png" rel="shortcut icon"/>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" id="dynamic-theme">
+</head>
+<body>
 	<noscript>
 		<div class="default-layout">
 			<h1>ObliqueReactive</h1>
-			<div class="callout callout-danger">
+			<style>
+				.alert:before {
+					box-sizing: border-box;
+				}
+			</style>
+			<div class="alert alert-danger">
 				<span class="sr-only">Error</span>
 				<h4>Javascript required!</h4>
 				<p class="lead">JavaScript must be enabled to use this app.</p>
@@ -27,5 +32,5 @@
 		</div>
 	</noscript>
 	<app-root></app-root>
-	</body>
+</body>
 </html>
