@@ -1,5 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {Component} from '@angular/core';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -15,8 +14,6 @@ export class DatepickerSampleComponent {
 	model: any = {
 		range: {}
 	};
-
-	@ViewChild(NgForm) form: NgForm;
 
 	constructor() {
 		const today = new Date();

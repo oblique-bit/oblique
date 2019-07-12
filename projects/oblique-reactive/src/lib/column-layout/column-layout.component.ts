@@ -14,10 +14,10 @@ export class ColumnLayoutComponent {
 	@Input()
 	right = true;
 
-	@ViewChild('columnLeft')
+	@ViewChild('columnLeft', { static: false })
 	private readonly columnLeft: ColumnPanelDirective;
 
-	@ViewChild('columnRight')
+	@ViewChild('columnRight', { static: false })
 	private readonly columnRight: ColumnPanelDirective;
 
 	toggleLeft() {

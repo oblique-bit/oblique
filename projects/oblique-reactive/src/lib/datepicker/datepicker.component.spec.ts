@@ -24,7 +24,7 @@ describe('DatepickerSampleComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [TestComponent, DatepickerComponent],
-			imports: [FormsModule, NgbDatepickerModule.forRoot()]
+			imports: [FormsModule, NgbDatepickerModule]
 		}).compileComponents();
 	}));
 

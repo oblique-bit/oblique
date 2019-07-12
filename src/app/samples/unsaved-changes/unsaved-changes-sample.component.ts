@@ -36,9 +36,9 @@ export class UnsavedChangesSampleComponent implements OnInit {
 		tabForm1: {number: null, text: null, integer: null, date: null}
 	};
 
-	@ViewChild('form1') form1 = <NgModelGroup>{};
-	@ViewChild('form3') form3 = <NgModelGroup>{};
-	@ViewChild('form7') form7 = <NgModelGroup>{};
+	@ViewChild('form1', { static: false }) form1 = <NgModelGroup>{};
+	@ViewChild('form3', { static: false }) form3 = <NgModelGroup>{};
+	@ViewChild('form7', { static: false }) form7 = <NgModelGroup>{};
 
 
 	constructor(private readonly modalService: NgbModal,

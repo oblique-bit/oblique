@@ -1,4 +1,14 @@
-import {AfterContentChecked, Component, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {
+	AfterViewInit,
+	Component,
+	ElementRef,
+	HostBinding,
+	HostListener,
+	Input,
+	OnInit,
+	Renderer2,
+	ViewChild
+} from '@angular/core';
 import {Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
 
@@ -18,10 +28,10 @@ export interface ORNavigationLink {
 	selector: 'or-master-layout-navigation',
 	templateUrl: './master-layout-navigation.component.html',
 	styleUrls: ['./master-layout-navigation.component.scss'],
-	/* tslint:disable:use-host-property-decorator */
+	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'application-navigation'}
 })
-export class MasterLayoutNavigationComponent extends Unsubscribable implements OnInit, AfterContentChecked {
+export class MasterLayoutNavigationComponent extends Unsubscribable implements OnInit, AfterViewInit  {
 	fullWidth: boolean;
 	activeClass: string;
 	currentScroll = 0;
@@ -29,7 +39,7 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 	@Input() links: ORNavigationLink[] = [];
 	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') scrollable: boolean;
 	private static readonly buttonWidth = 30;
-	@ViewChild('container') private readonly container: ElementRef;
+	@ViewChild('container', { static: false }) private readonly container: ElementRef;
 	private nav: HTMLElement;
 
 	constructor(private readonly router: Router,
@@ -55,7 +65,7 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 		this.links = this.links.length ? this.links : this.config.navigation.links;
 	}
 
-	ngAfterContentChecked() {
+	ngAfterViewInit() {
 		if (!this.nav) {
 			this.nav = this.container.nativeElement.nextElementSibling;
 		}

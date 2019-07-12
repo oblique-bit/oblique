@@ -32,7 +32,7 @@ describe('SchemaValidationSampleComponent', () => {
 				ReactiveFormsModule,
 				ErrorMessagesModule,
 				FormControlStateModule,
-				NgbModule.forRoot()
+				NgbModule
 			],
 			declarations: [
 				SchemaValidationSampleComponent,

@@ -65,7 +65,7 @@ describe('UnsavedChangesDirective', () => {
 				ControlContainer,
 				{provide: UnsavedChangesService, useValue: unsavedChangesServiceMock}
 			],
-			imports: [CommonModule, NgbTabsetModule.forRoot()]
+			imports: [CommonModule, NgbTabsetModule]
 		}).compileComponents();
 	}));
 

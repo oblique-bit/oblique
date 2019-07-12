@@ -24,7 +24,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 	selector: 'or-master-layout-header',
 	templateUrl: './master-layout-header.component.html',
 	styleUrls: ['./master-layout-header.component.scss'],
-	/* tslint:disable:use-host-property-decorator */
+	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'application-header'}
 })
 export class MasterLayoutHeaderComponent extends Unsubscribable implements AfterViewInit {
@@ -71,10 +71,10 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 			Array.from(elt.nativeElement.children).forEach((item: HTMLElement) => {
 				this.renderer.addClass(item, 'control-link');
 			});
-			elt.nativeElement.querySelectorAll('a').forEach((item: HTMLElement) => {
+			Array.from(elt.nativeElement.querySelectorAll('a')).forEach((item: HTMLElement) => {
 				this.renderer.addClass(item, 'nav-link');
 			});
-			elt.nativeElement.querySelectorAll('.nav-link .fa').forEach((item: HTMLElement) => {
+			Array.from(elt.nativeElement.querySelectorAll('.nav-link .fa')).forEach((item: HTMLElement) => {
 				this.renderer.addClass(item, 'control-icon');
 			});
 		});

@@ -9,7 +9,7 @@ import {MasterLayoutConfig} from './master-layout.config';
 @Component({
 	selector: 'or-master-layout-footer',
 	templateUrl: './master-layout-footer.component.html',
-	/* tslint:disable:use-host-property-decorator */
+	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'application-footer'}
 })
 export class MasterLayoutFooterComponent extends Unsubscribable {

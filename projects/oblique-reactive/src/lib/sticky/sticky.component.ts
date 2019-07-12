@@ -33,9 +33,9 @@ import {Component, ContentChild, HostBinding, Input, OnChanges, OnInit, Template
 	`
 })
 export class StickyComponent implements OnInit, OnChanges {
-	@ContentChild('orStickyHeader') readonly stickyHeaderTemplate: TemplateRef<any>;
-	@ContentChild('orStickyMain') readonly stickyMainTemplate: TemplateRef<any>;
-	@ContentChild('orStickyFooter') readonly stickyFooterTemplate: TemplateRef<any>;
+	@ContentChild('orStickyHeader', {static: false}) readonly stickyHeaderTemplate: TemplateRef<any>;
+	@ContentChild('orStickyMain', {static: false}) readonly stickyMainTemplate: TemplateRef<any>;
+	@ContentChild('orStickyFooter', {static: false}) readonly stickyFooterTemplate: TemplateRef<any>;
 	@Input() headerSize: string;
 	@Input() footerSize: string;
 	@HostBinding('class') @Input('class') hostClass: string;

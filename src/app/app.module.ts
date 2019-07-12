@@ -48,7 +48,7 @@ export function createTranslateLoader(http: HttpClient) {
 		BrowserAnimationsModule,
 		FormsModule,
 		HttpClientModule,
-		NgbModule.forRoot(),
+		NgbModule,
 		DocumentMetaModule,
 		ErrorMessagesModule,
 		ObliqueHttpModule,

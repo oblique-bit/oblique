@@ -11,7 +11,7 @@ import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 })
 export class DatepickerComponent implements AfterViewInit {
 
-	@ContentChild(NgbInputDatepicker)
+	@ContentChild(NgbInputDatepicker, {static: false})
 	ngbDatePicker: NgbInputDatepicker;
 
 	private _disabled = false;
