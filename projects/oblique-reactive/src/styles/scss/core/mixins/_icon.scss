@@ -1,35 +1,25 @@
 @import "layout";
-//
-// Icon - Mixins
-// --------------------------------------------------
-// Based on FontAwesome icons.
-// Usage:
-//   .foo {
-//      @include icon($fa-var-flag);
-//   }
 
-@mixin icon-base() {
+@mixin icon-base($icon) {
+	content: $icon;
 	display: inline-block;
 	font: normal normal normal 1rem FontAwesome;
 	font-size: inherit;
 	text-rendering: auto;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	min-width: $spacing-default;
 }
 
-@mixin icon($icon, $layer: before, $min-width: 15px) {
-	@include layer($layer) {
-		min-width: $min-width;
-		content: $icon;
-
-		//@include fa-icon(); // TODO Uncomment & remove below when https://github.com/sass/sass/issues/739
-		@include icon-base();
-	}
-}
-
-@mixin icon-content($icon, $layer: before) {
-	@include layer($layer) {
-		content: $icon;
+@mixin icon($icon, $position: before) {
+	@if $position == before {
+		&::before {
+			@include icon-base($icon);
+		}
+	} @else if $position == after {
+		&::after {
+			@include icon-base($icon);
+		}
 	}
 }
 

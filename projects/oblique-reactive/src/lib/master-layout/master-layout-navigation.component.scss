@@ -1,10 +1,8 @@
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/mixins/transition";
+@import "~font-awesome/scss/variables";
 @import "../../styles/scss/core/variables";
-@import "../../styles/scss/core/mixins/animation";
 @import "../../styles/scss/core/mixins/icon";
 @import "../../styles/scss/core/mixins/layout";
+@import "../../styles/scss/core/mixins/nav";
 
 .application-navigation {
 	display: block;
@@ -23,89 +21,197 @@
 		}
 	}
 
-	.application.no-navigation &,
-	.navigation-scrollable-control {
+	.application.no-navigation & {
 		display: none;
 	}
 
-	@include layout-collapse-down() {
-		.navigation-scrollable-content > li {
-			// Ensure navigation scrolling is disabled on small viewports:
-			margin-left: 0 !important;
-		}
-	}
+	.main-nav {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		overflow-y: auto;
+		list-style: none;
+		background-color: $gray-lighter;
+		box-shadow: inset 0 -4px 14px -4px rgba(0, 0, 0, 0.1);
 
-	@include layout-collapse-up() {
-		&.navigation-scrollable {
+		&:not(.sub-nav) {
+			@include layout-collapse-up() {
+				flex-direction: row;
+				padding-left: $spacing-default;
+				height: $navigation-height;
+			}
+		}
+
+		a {
 			position: relative;
-		}
+			display: flex;
+			justify-content: space-between;
+			margin: 0;
+			padding: $spacing-md $spacing-default;
+			border-bottom: 1px solid $gray-light;
+			color: $brand-default;
+			text-decoration: none;
+			cursor: pointer;
 
-		.navigation-scrollable-control {
-			position: absolute;
-			top: 0;
-			width: $navigation-scrollable-padding;
-			height: 100%;
-			border: none;
-			display: inline-block;
-			background-color: $gray-lighter;
-			text-align: center;
-			z-index: 1;
-			// Hack to simulate inner bottom shadow on the back
-			box-shadow: 0 -1px 0 #eaeaea inset,
-			0 -2px 0 #ebebeb inset,
-			0 -3px 0 #ededed inset,
-			0 -4px 0 #eeeeee inset,
-			0 -5px 0 #f0f0f0 inset,
-			0 -6px 0 #f1f1f1 inset,
-			0 -7px 0 #f2f2f2 inset,
-			0 -8px 0 #f3f3f3 inset,
-			0 -9px 0 #f4f4f4 inset;
+			@include layout-collapse-up() {
+				border: 0 none;
+				padding: $spacing-xs 0 $spacing-xs $spacing-default;
+			}
 
-			> span {
-				@include animatable(transform, $duration-fast);
+			&.active {
+				background-color: $white;
 			}
 
 			&:hover,
 			&:focus,
 			&:active {
-				cursor: pointer;
 				background-color: $gray-light;
-				box-shadow: none;
+				z-index: 1;
+			}
 
-				> span {
-					transform: scale(1.3);
+			&:hover,
+			&:focus,
+			&:active,
+			&.active {
+				&::after {
+					@include nav-hover();
 				}
 			}
 		}
 
-		.navigation-scrollable-control-left {
-			left: 0;
-		}
+		// First level only:
+		> .main-nav-item {
+			@include layout-collapse-up() {
+				> a {
+					display: inline-flex;
+					padding: $spacing-default;
+					white-space: nowrap;
+					font-size: $font-size-base * 0.9;
 
-		.navigation-scrollable-control-right {
-			right: 0;
-		}
+					&::after {
+						display: none; // do not show red border on main nav 1st level
+					}
+				}
 
-		.navigation-scrollable-content {
-			display: block;
-			vertical-align: bottom;
-			white-space: nowrap;
-			margin-left: 0;
-			margin-right: 0;
-			padding-right: $navigation-scrollable-padding;
-			padding-left: $navigation-scrollable-padding;
-			@include transition(padding $duration-default);
+				&.show > a {
+					z-index: 1000 + 1;
 
-			> li {
-				display: inline-block;
-				white-space: initial;
-				// Animating list item with a negative margin ensures parent menu keeps the original width:
-				@include transition(margin $duration-default);
+					&,
+					&:hover,
+					&:focus {
+						box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+					}
+				}
 			}
 		}
 
-		.navigation-toggle .toggle {
-			display: none;
+		.toggle {
+			margin-left: $spacing-sm;
+			min-width: 0;
+
+			@include layout-collapse-down() {
+				&::before {
+					content: $fa-var-angle-right;
+				}
+			}
+		}
+
+		.sub-menu {
+			visibility: hidden; // Do not use `display: none` to avoid reflow & transition issues!
+			position: fixed;
+			top: $header-height-md;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: auto;
+			padding: 0;
+			margin: 0;
+			border: none;
+			overflow-y: auto;
+			overflow-x: hidden;
+			background-color: $gray-lighter;
+			z-index: 2;
+			transform: translateX(105%);
+			transition: visibility $duration-default, transform $duration-default;
+
+			@include layout-collapse-up() {
+				position: absolute;
+				top: 100%;
+				bottom: unset;
+				left: unset;
+				right: unset;
+				height: unset;
+				min-width: 280px;
+				max-height: 60vh;
+				overflow-x: hidden;
+				overflow-y: auto;
+				background-color: $white;
+				z-index: 2;
+				box-shadow: 0 6px 12px 2px rgba(0, 0, 0, 0.175);
+				transform: none;
+				transition: none;
+				display: block;
+			}
+
+			@include layout-collapse-down() {
+				> ul > li:last-child {
+					// [iOS only] Simulate a bottom spacing to ensure that last item is reachable when scrolling the menu and does not display under the MobileSafari tools menu:
+					margin-bottom: 70px;
+				}
+			}
+		}
+
+		@include layout-collapse-up() {
+			&.main-nav-fw .sub-menu {
+				left: 0;
+				right: 0;
+			}
+		}
+
+		.sub-nav {
+			@include layout-collapse-up() {
+				background-color: $white;
+			}
+		}
+
+		& .show > .sub-menu {
+			visibility: visible;
+
+			@include layout-collapse-down() {
+				transform: translateX(0%);
+			}
+		}
+
+		.sub-menu-back {
+			text-align: center;
+			font-weight: 600;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			background-color: $white;
+
+			@include layout-collapse-up() {
+				display: none;
+			}
+
+			.toggle {
+				margin: 0;
+
+				@include layout-collapse-up() {
+					display: none;
+				}
+
+				&::before {
+					content: $fa-var-angle-left;
+				}
+			}
+
+			.label {
+				flex: 1
+			}
 		}
 	}
 }

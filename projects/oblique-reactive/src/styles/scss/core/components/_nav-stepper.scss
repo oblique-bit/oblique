@@ -1,16 +1,18 @@
+@import "~font-awesome/scss/variables";
 @import "../variables";
+@import "../mixins/layout";
+@import "../mixins/stepper";
 
-//
-// Nav - stepper
-// --------------------------------------------------
 $stepper-step-size: 30px;
 $stepper-border-width: 3px;
 
 .nav-stepper {
-	@extend .nav-vertical;
 	display: flex;
+	flex-direction: column;
 	flex-wrap: nowrap;
 	list-style-type: none;
+	margin-bottom: 0;
+	padding-left: 0;
 
 	// Steps:
 	.nav-item {
@@ -21,11 +23,9 @@ $stepper-border-width: 3px;
 
 		&:before {
 			z-index: 1;
-
 			font-weight: 900;
 			text-align: center;
 			color: $brand-secondary;
-
 			border: $stepper-border-width solid $brand-secondary;
 			border-radius: 50%;
 			background-color: $white;
@@ -33,12 +33,17 @@ $stepper-border-width: 3px;
 		}
 
 		&:after {
-			@include content-generated($index: -1);
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: -1;
 			border-width: 0;
 			border-left-style: solid;
-			border-left-color: $brand-secondary;
 			border-top-style: solid;
-			border-top-color: $brand-secondary;
+			border-color: $brand-secondary;
 		}
 
 		.nav-stepper-title {
@@ -109,7 +114,6 @@ $stepper-border-width: 3px;
 
 // Contextual steppers:
 .modal-header {
-
 	.nav-stepper {
 		.nav-item {
 			margin-bottom: -1em;
@@ -118,7 +122,7 @@ $stepper-border-width: 3px;
 		// If a modal close button follows a `.nav-stepper`, ensure its margin does not break the
 		// `justify-content: space-between;` property of the enclosing `.modal-header`:
 		+ .close {
-			margin-left: (-$modal-header-padding);
+			margin-left: (-1rem);
 		}
 	}
 }

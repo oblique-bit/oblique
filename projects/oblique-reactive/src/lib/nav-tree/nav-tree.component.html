@@ -1,7 +1,7 @@
 <ng-template #itemList let-items let-parentExpanded="parentExpanded">
 	<ng-template ngFor [ngForOf]="items" let-item>
 		<li *ngIf="visible(item)"
-			class="nav-item open"
+			class="open"
 			role="presentation"
 			(or.navTree.item.toggleCollapsed)="item.collapsed = !item.collapsed"
 			[attr.id]="item.id ? (prefix ? prefix + '-' : '') + item.id : null"
@@ -12,6 +12,7 @@
 			   [queryParams]="item.queryParams" [fragment]="item.fragment"
 			   (click)="item.collapsed = !item.collapsed"
 			   [class.collapsed]="item.collapsed"
+			   [class.has-child]="item.items"
 			   [class.active]="isLinkActive(rla, item)"
 			   [attr.data-toggle]="item.items && !filterPattern ? 'collapse' : null"
 			   [attr.disabled]="item.disabled === true || null"
@@ -20,7 +21,7 @@
 			</a>
 			<div id="#{{itemKey(item)}}" class="collapse show"
 				 *ngIf="item.items" [ngbCollapse]="item.collapsed">
-				<ul class="nav nav-tree"
+				<ul class="nav-tree"
 					[ngClass]="variant"
 					[class.expanded]="parentExpanded && !item.collapsed"
 					[class.disabled]="item.disabled === true || null"
@@ -33,7 +34,7 @@
 		</li>
 	</ng-template>
 </ng-template>
-<ul #root class="nav nav-tree expanded" role="tree" [ngClass]="variant">
+<ul #root class="nav-tree nav-indent nav-toggle expanded" role="tree" [ngClass]="variant">
 	<ng-content></ng-content>
 	<ng-container *ngTemplateOutlet="itemList; context:{ $implicit: items, parentExpanded: true }"></ng-container>
 </ul>

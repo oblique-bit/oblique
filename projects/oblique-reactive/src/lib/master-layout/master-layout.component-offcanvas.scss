@@ -1,12 +1,10 @@
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/mixins/breakpoints";
 @import "../../styles/scss/core/variables";
-@import "../../styles/scss/core/mixins/animation";
 @import "../../styles/scss/core/mixins/layout";
 
 .offcanvas-sidebar {
 	display: none; // only show if offcanvas is enable, i.e. parent has .offcanvas class
+	color: $white;
+	background-color: $gray-darker;
 }
 
 .offcanvas {
@@ -18,10 +16,10 @@
 		transition-duration: $duration-default;
 
 		@at-root #{selector-append(".offcanvas-in", &)} {
-			transform: translateX(-$offcanvas-sidebar-collapsed-width);
+			transform: translateX(-$off-canvas-sidebar-collapsed-width);
 
 			@include media-breakpoint-up(lg) {
-				width: 100% - $offcanvas-sidebar-width;
+				width: 100% - $off-canvas-sidebar-width;
 				transform: translateX(0);
 			}
 		}
@@ -32,17 +30,17 @@
 		top: 0;
 		left: 100%;
 		height: 100%;
-		width: $offcanvas-sidebar-collapsed-width;
+		width: $off-canvas-sidebar-collapsed-width;
 		display: block;
 		visibility: hidden; // A11y: ensure tabbing does not focus an offcanvas sidebar element when hidden.
 		overflow-y: auto;
 		box-sizing: content-box; // Fix scrollbar in IE9
-		z-index: $zindex-modal;
+		z-index: 1050;
 		transition-property: transform, left, width, visibility;
 		transition-duration: $duration-default;
 
 		@include media-breakpoint-up(lg) {
-			width: $offcanvas-sidebar-width;
+			width: $off-canvas-sidebar-width;
 		}
 
 		@at-root #{selector-append(".offcanvas-in", &)} {
@@ -50,7 +48,7 @@
 			transform: translateX(-100%);
 
 			@include media-breakpoint-up(lg) {
-				left: 100% - $offcanvas-sidebar-width;
+				left: 100% - $off-canvas-sidebar-width;
 				transform: translateX(0);
 			}
 		}

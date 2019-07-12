@@ -1,0 +1,99 @@
+@import "../../styles/scss/core/variables";
+@import "../../styles/scss/core/mixins/bubble-tail";
+@import "../../styles/scss/core/mixins/layout";
+
+.application-header {
+	.header-controls {
+		.control-item {
+			> .tooltip,
+			> .control-link > .tooltip {
+				white-space: nowrap;
+
+				&.top {
+					margin-top: 14px;
+				}
+
+				&.bottom {
+					margin-top: -4px;
+				}
+			}
+
+			.dropdown-item.active,
+			.dropdown-item:active {
+				background-color: #f8f9fa;
+				color: $brand-default;
+			}
+
+			.dropdown {
+				@include layout-collapse-down() {
+					&.show {
+						@include bubble-tail-border(
+								$brand-danger,
+								$brand-danger,
+							$width: 8px,
+							$align: left,
+							$align-value: 18px,
+							$placement: bottom,
+							$direction: top
+						);
+					}
+				}
+
+				.dropdown-menu {
+					border-radius: 0;
+
+					@include layout-collapse-down() {
+						position: fixed !important;
+						top: $header-height-md !important;
+						left: 0;
+						right: 0;
+						bottom: 0;
+						padding: $spacing-default;
+						margin: 0;
+						transform: none !important;
+						height: 100%;
+						overflow-y: auto;
+
+						.nav-link {
+							margin-bottom: 0;
+							text-overflow: ellipsis;
+							white-space: nowrap;
+							padding-top: 13px;
+							padding-bottom: 13px;
+						}
+					}
+
+					@include layout-collapse-up() {
+						position: absolute;
+						left: $spacing-default !important;
+						top: $spacing-default !important;
+						min-width: 260px;
+						padding: $spacing-default;
+						margin-top: -2px;
+						max-height: calc(100vh - #{$header-height});
+
+						@include bubble-tail-border(
+								$white,
+								$gray-light,
+							$align: right,
+							$align-value: 14px,
+							$position: absolute
+						);
+					}
+				}
+
+				.dropdown-toggle::after {
+					display: none;
+				}
+			}
+
+			@include layout-collapse-down() {
+				// Don't display control tooltips on small viewports:
+				> .tooltip,
+				> .control-link > .tooltip {
+					display: none !important;
+				}
+			}
+		}
+	}
+}

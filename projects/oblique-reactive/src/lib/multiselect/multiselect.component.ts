@@ -4,7 +4,20 @@
  * Inspired from Simon Lindh:
  * https://github.com/softsimon/angular-2-dropdown-multiselect
  */
-import {Component, DoCheck, ElementRef, EventEmitter, forwardRef, HostListener, Input, IterableDiffers, OnInit, Output, ViewChild} from '@angular/core';
+import {
+	Component,
+	DoCheck,
+	ElementRef,
+	EventEmitter,
+	forwardRef,
+	HostListener,
+	Input,
+	IterableDiffers,
+	OnInit,
+	Output,
+	ViewChild,
+	ViewEncapsulation
+} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 import {FilterBoxComponent} from '../filter-box/filter-box.component';
@@ -27,6 +40,7 @@ let nextId = 0;
 		multi: true
 	}],
 	styleUrls: ['./multiselect.component.scss'],
+	encapsulation: ViewEncapsulation.None,
 	templateUrl: './multiselect.component.html'
 })
 export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccessor {

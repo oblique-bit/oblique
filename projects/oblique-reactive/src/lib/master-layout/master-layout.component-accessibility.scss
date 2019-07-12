@@ -1,7 +1,5 @@
 @import "~font-awesome/scss/variables";
-@import "~bootstrap/scss/mixins/screen-reader";
 @import "../../styles/scss/core/variables";
-@import "../../styles/scss/core/mixins/animation";
 @import "../../styles/scss/core/mixins/notification";
 
 .accesskeys {
@@ -13,32 +11,41 @@
 	justify-content: center;
 	overflow: visible;
 	z-index: 100000;
+
+	ul {
+		list-style: none;
+		margin: 0;
+	}
 }
 
 .accessible {
-	@include sr-only;
-	@include sr-only-focusable;
-	@include notification-base();
-	@include notification-style($state-warning-bg, $fa-var-universal-access, $state-warning-border, 54px);
-
 	position: absolute;
 	width: 250px;
+	height: 1px;
+	padding: $spacing-default;
 	display: block;
-	padding-top: $spacing-default;
-	padding-right: $spacing-default;
-	padding-bottom: $spacing-default;
-	$anims: transform, opacity;
-	@include animatable($anims);
-	transform: translateY(-100%);
-	transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
-	opacity: 0;
+	clip: rect(0, 0, 0, 0);
+	overflow: hidden;
+	white-space: nowrap;
+	border: 0;
 	box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2);
+	opacity: 0;
+	transform: translateY(-100%);
+	transition: transform $duration-default cubic-bezier(0.7, 0, 0.3, 1), opacity $duration-default ease-in-out;
+	@include notification-base();
+	@include notification-style($brand-warning-light, $fa-var-universal-access, $brand-warning, 54px);
 
 	&:active,
 	&:focus {
-		z-index: $zindex-accessible;
+		position: static;
+		width: auto;
+		height: auto;
 		transform: translateY(0);
 		opacity: 1;
+		z-index: 9000;
+		overflow: visible;
+		clip: auto;
+		white-space: normal;
 	}
 }
 

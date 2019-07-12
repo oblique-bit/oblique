@@ -1,12 +1,10 @@
 @import "../../styles/scss/core/variables";
-@import "../../styles/scss/core/mixins/animation";
-@import "../../styles/scss/core/mixins/decoration";
 @import "../../styles/scss/core/mixins/layout";
 
 .top-control {
 	visibility: hidden; // A11y: ensure element is not reachable when tabbing.
 	position: fixed;
-	z-index: $zindex-accessible;
+	z-index: 9000;
 	opacity: 0;
 	white-space: nowrap;
 	width: 200px;
@@ -16,9 +14,8 @@
 	color: $gray-dark;
 	border-bottom-left-radius: $border-radius-base;
 	border-top-left-radius: $border-radius-base;
-
-	@include bg($gray-light, 0.65);
-	@include animatable(all, .5s);
+	background-color: rgba(red($gray-light), green($gray-light), blue($gray-light), 0.65);
+	transition: all $duration-default ease-in-out;
 
 	.control-icon {
 		float: left;
@@ -40,10 +37,10 @@
 		text-decoration: none;
 		color: $brand-default;
 		background-color: $gray-light;
-		box-shadow: $brand-shadow;
+		box-shadow:  0 3px 1px fade-out($gray-lighter, 0.3), 0 0 1px 1px fade($gray-lighter, 0.30);
 	}
 
-	:host-context(.application-scrolling) & {
+	.application-scrolling & {
 		visibility: visible; // A11y: ensure element is reachable again when tabbing.
 		opacity: 0.85;
 		bottom: 15px;
@@ -58,7 +55,7 @@
 		}
 	}
 
-	:host-context(.header-open) & {
+	.header-open & {
 		@include layout-collapse-down() {
 			display: none;
 		}

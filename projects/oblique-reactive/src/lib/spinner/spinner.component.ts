@@ -10,7 +10,7 @@ import {Unsubscribable} from '../unsubscribe.class';
 	selector: 'or-spinner',
 	exportAs: 'orSpinner',
 	template: `
-		<div class="overlay overlay-inverse" [class.overlay-fixed]="fixed" [@inOut]="$state">
+		<div class="overlay" [class.overlay-fixed]="fixed" [@inOut]="$state">
 			<div class="spinner-viewport">
 				<span class="spinner fa fa-spinner fa-4x"></span>
 			</div>
@@ -61,8 +61,8 @@ export class SpinnerComponent extends Unsubscribable implements OnInit {
 	}
 
 	ngOnInit() {
-		if (!this.fixed) {
+		// if (!this.fixed) {
 			this.element.nativeElement.parentElement.classList.add('has-overlay');
-		}
+		// }
 	}
 }

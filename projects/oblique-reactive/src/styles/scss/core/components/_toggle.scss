@@ -1,9 +1,7 @@
-//
-// Toggle - Component
-// --------------------------------------------------
-.toggle                     { @include toggle();                            }
+@import "../mixins/toggle";
+@import "~font-awesome/scss/variables";
 
-// Toggle modifiers:
+.toggle                     { @include toggle-before();                            }
 .toggle-down-up             { @include toggle-icon($fa-var-angle-down, $fa-var-angle-up);    }
 .toggle-down-right          { @include toggle-icon($fa-var-angle-down, $fa-var-angle-right); }
 .toggle-down-left           { @include toggle-icon($fa-var-angle-down, $fa-var-angle-left);  }

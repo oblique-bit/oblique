@@ -1,9 +1,6 @@
-//
-// Alert - Mixins
-// --------------------------------------------------
+@import "notification";
 
 @mixin alert-style($bg, $icon, $icon-bg, $close, $close-hover) {
-
 	@include notification-style($bg, $icon, $icon-bg);
 
 	&.alert-dismissible {

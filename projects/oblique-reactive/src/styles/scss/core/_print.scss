@@ -1,0 +1,47 @@
+@media print {
+	*,
+	*:before,
+	*:after,
+	*:focus {
+		box-shadow: none !important;
+		text-shadow: none !important;
+		transition: none !important;
+	}
+
+	.application-header {
+		display: none;
+	}
+
+	.column-left,
+	.column-right {
+		display: none;
+	}
+	.column-main {
+		width: 100% !important;
+	}
+
+	body.modal-open {
+		.application,
+		.modal-backdrop {
+			display: none;
+		}
+
+		.modal,
+		.modal-dialog {
+			position: static !important;
+			width: 100% !important;
+			margin: 0 !important;
+		}
+	}
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}

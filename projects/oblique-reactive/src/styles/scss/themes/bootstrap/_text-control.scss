@@ -1,0 +1,31 @@
+@import "../../core/variables";
+@import "~bootstrap/scss/variables";
+@import "mixins/text-control";
+
+.text-control {
+	.form-control {
+		padding-right: calc(#{$spacing-default} + #{$input-padding-x});
+
+		+ .text-control-clear {
+			@include text-control-clear-position($input-padding-x);
+		}
+	}
+
+	.form-control-sm {
+		padding-right: calc(#{$spacing-default} + #{$input-padding-x-sm});
+	}
+
+	&.input-group-sm > .text-control-clear,
+	.form-control-sm + .text-control-clear {
+		@include text-control-clear-position($input-padding-x-sm);
+	}
+
+	.form-control-lg {
+		padding-right: calc(#{$spacing-default} + #{$input-padding-x-lg});
+	}
+
+	&.input-group-lg > .text-control-clear,
+	.form-control-lg + .text-control-clear {
+		@include text-control-clear-position($input-padding-x-lg);
+	}
+}

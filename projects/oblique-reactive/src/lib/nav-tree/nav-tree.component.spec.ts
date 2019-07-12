@@ -90,7 +90,7 @@ describe('NavTreeComponent', () => {
 	});
 
 	it('should create 12 navigation items after recursive rendering', () => {
-		const navItems = fixture.debugElement.queryAll(By.css('li.nav-item'));
+		const navItems = fixture.debugElement.queryAll(By.css('li'));
 		expect(navItems.length).toBe(12);
 	});
 
@@ -98,7 +98,7 @@ describe('NavTreeComponent', () => {
 		testComponent.items.push(new NavTreeItemModel({id: 'X', label: 'X - Label'}));
 		fixture.detectChanges();
 
-		const navItems = fixture.debugElement.queryAll(By.css('li.nav-item'));
+		const navItems = fixture.debugElement.queryAll(By.css('li'));
 		expect(navItems.length).toBe(13);
 	});
 
@@ -121,7 +121,7 @@ describe('NavTreeComponent', () => {
 		const suffix = '[custom]';
 		component.labelFormatter = (item: NavTreeItemModel) => `${item.label} - ${suffix}`;
 		fixture.detectChanges();
-		const firstNavItem = fixture.debugElement.query(By.css('li.nav-item'));
+		const firstNavItem = fixture.debugElement.query(By.css('li'));
 		expect(firstNavItem.nativeElement.innerHTML).toContain(suffix);
 	});
 
@@ -148,7 +148,7 @@ describe('NavTreeComponent', () => {
 		fixture.detectChanges();
 
 		// All items containing the string '2' and their respective parents should be visible:
-		const navItems = fixture.debugElement.queryAll(By.css('li.nav-item'));
+		const navItems = fixture.debugElement.queryAll(By.css('li'));
 		expect(navItems.length).toBe(7);
 	});
 
@@ -159,7 +159,7 @@ describe('NavTreeComponent', () => {
 		fixture.detectChanges();
 
 		// All items containing the string 'C' and their respective parents should be visible:
-		const navItems = fixture.debugElement.queryAll(By.css('li.nav-item'));
+		const navItems = fixture.debugElement.queryAll(By.css('li'));
 		expect(navItems.length).toBe(4);
 
 		// ...and filter patterns highlighted:

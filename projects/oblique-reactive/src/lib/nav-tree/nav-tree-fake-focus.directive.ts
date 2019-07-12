@@ -43,7 +43,7 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 		LINK_ACTIVE: `.${NavTreeFakeFocusDirective.CSS_CLASSES.LINK_ACTIVE}`,
 		FAKE_FOCUS: `.${NavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS}`,
 		ITEM_LINK: '.nav-link',
-		ITEM_WRAPPER: '.nav-tree.expanded:not(.disabled) > .nav-item:not(.nav-header):not(.disabled)'
+		ITEM_WRAPPER: '.nav-tree.expanded:not(.disabled) > li:not(.nav-header):not(.disabled)'
 	};
 
 	@Input('orNavTreeFakeFocus')

@@ -1,0 +1,83 @@
+@import "../../styles/scss/core/variables";
+@import "../../styles/scss/core/mixins/layout";
+
+.application-navigation.navigation-scrollable  {
+	position: relative;
+
+	.navigation-scrollable-control {
+		display: none;
+	}
+
+	@include layout-collapse-down() {
+		.navigation-scrollable-content > li {
+			// Ensure navigation scrolling is disabled on small viewports:
+			margin-left: 0 !important;
+		}
+	}
+
+	@include layout-collapse-up() {
+		.navigation-scrollable-control {
+			position: absolute;
+			top: 0;
+			width: $navigation-scrollable-padding;
+			height: 100%;
+			border: none;
+			display: inline-block;
+			background-color: $gray-lighter;
+			text-align: center;
+			z-index: 1;
+			// Hack to simulate inner bottom shadow on the back
+			box-shadow: 0 -1px 0 #eaeaea inset,
+			0 -2px 0 #ebebeb inset,
+			0 -3px 0 #ededed inset,
+			0 -4px 0 #eeeeee inset,
+			0 -5px 0 #f0f0f0 inset,
+			0 -6px 0 #f1f1f1 inset,
+			0 -7px 0 #f2f2f2 inset,
+			0 -8px 0 #f3f3f3 inset,
+			0 -9px 0 #f4f4f4 inset;
+
+			> span {
+				transition: transform $duration-fast ease-in-out;
+			}
+
+			&:hover,
+			&:focus,
+			&:active {
+				cursor: pointer;
+				background-color: $gray-light;
+				box-shadow: none;
+
+				> span {
+					transform: scale(1.3);
+				}
+			}
+		}
+
+		.navigation-scrollable-control-left {
+			left: 0;
+		}
+
+		.navigation-scrollable-control-right {
+			right: 0;
+		}
+
+		.navigation-scrollable-content {
+			display: block;
+			vertical-align: bottom;
+			white-space: nowrap;
+			margin-left: 0;
+			margin-right: 0;
+			padding-right: $navigation-scrollable-padding;
+			padding-left: $navigation-scrollable-padding;
+			transition: padding $duration-default;
+
+			> li {
+				display: inline-block;
+				white-space: initial;
+				// Animating list item with a negative margin ensures parent menu keeps the original width:
+				transition: margin $duration-default;
+			}
+		}
+	}
+}

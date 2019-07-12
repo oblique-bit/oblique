@@ -1,15 +1,13 @@
 <nav class="accesskeys" role="navigation" aria-label="Accesskeys">
-	<ul class="list-unstyled">
+	<ul>
 		<li>
-			<a class="accessible" accesskey="0" [routerLink]="url"
-			   fragment="content">{{'i18n.accesskey.mainContent' | translate}}</a>
+			<a class="accessible" accesskey="0" [routerLink]="url" fragment="content">{{'i18n.accesskey.mainContent' | translate}}</a>
 		</li>
 		<li>
 			<a class="accessible" accesskey="1" [routerLink]="home">{{'i18n.accesskey.homepage' | translate}}</a>
 		</li>
 		<li>
-			<a class="accessible" accesskey="2" [routerLink]="url" fragment="navigation"
-			   *ngIf="!noNavigation && navigation.length">
+			<a class="accessible" accesskey="2" [routerLink]="url" fragment="navigation" *ngIf="!noNavigation && navigation.length">
 				{{'i18n.accesskey.navigation' | translate}}</a>
 		</li>
 	</ul>
@@ -61,7 +59,7 @@
 		</ng-template>
 	</ng-container>
 </or-master-layout-footer>
-<div class="offcanvas-sidebar inversed" *ngIf="offCanvas">
+<div class="offcanvas-sidebar" *ngIf="offCanvas">
 	<header class="offcanvas-header default-layout">
 		<h2>
 			<ng-content select="[orOffCanvasTitle]"></ng-content>

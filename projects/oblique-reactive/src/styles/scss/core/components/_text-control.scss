@@ -1,31 +1,23 @@
-// Text control - Component
-// ------------------------------------------------
+@import "../variables";
+
 *::-ms-clear {
 	display: none;
 }
 
-$text-control-width: 2rem;
-
 .text-control {
-	display: flex;
-
-	.form-control {
-		padding-right: $text-control-width;
-	}
+	display: flex !important;
 
 	.text-control-clear {
 		z-index: 3;
 		background-color: transparent;
 		border: none;
-		width: $text-control-width;
-		margin-left: -$text-control-width;
-		padding: $input-padding-y;
+		padding: 0;
 		opacity: 0;
-		@include transition(opacity 0.2s);
+		transition: opacity $duration-fast;
 
 		.fa {
 			color: $gray;
-			@include transition(color 0.2s);
+			transition: color $duration-fast;
 		}
 
 		&:hover .fa {
@@ -42,31 +34,5 @@ $text-control-width: 2rem;
 	input[disabled] + .text-control-clear,
 	input[readonly] + .text-control-clear {
 		display: none;
-	}
-
-	// SM sizing:
-	$text-control-width-sm: $text-control-width * 0.8;
-	.form-control-sm {
-		padding-right: $text-control-width-sm;
-	}
-
-	&.input-group-sm > .text-control-clear,
-	.form-control-sm + .text-control-clear {
-		width: $text-control-width-sm;
-		margin-left: -$text-control-width-sm;
-		padding: $input-padding-y-sm;
-	}
-
-	// LG sizing:
-	$text-control-width-lg: $text-control-width * 1.2;
-	.form-control-lg {
-		padding-right: $text-control-width-lg;
-	}
-
-	&.input-group-lg > .text-control-clear,
-	.form-control-lg + .text-control-clear {
-		width: $text-control-width-lg;
-		margin-left: -$text-control-width-lg;
-		padding: $input-padding-y-lg;
 	}
 }

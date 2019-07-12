@@ -1,6 +1,6 @@
-//
-// stepper - Mixins
-// --------------------------------------------------
+@import "../variables";
+@import "icon";
+
 @mixin stepper-state($bullet-color, $bullet-bg, $bullet-border) {
 	&:before {
 		color: $bullet-color;
@@ -15,10 +15,9 @@
 }
 
 @mixin stepper-feedback($icon) {
-	@include icon-content($icon);
-
-	&:before {
-		font-family: $font-family-icon;
+	&::before {
+		content: $icon;
+		font-family: FontAwesome;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 	}
@@ -51,9 +50,6 @@
 		}
 	}
 
-	// Layouts -----
-
-	// Vertical:
 	&:not(.nav-horizontal) {
 		.nav-item {
 			padding-top: $node-step-size * 0.4;
@@ -86,7 +82,6 @@
 		}
 	}
 
-	// Horizontal:
 	&.nav-horizontal {
 		flex-direction: row;
 		justify-content: center;

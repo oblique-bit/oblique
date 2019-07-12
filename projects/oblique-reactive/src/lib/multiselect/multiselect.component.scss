@@ -1,62 +1,65 @@
 @import "../../styles/scss/core/variables";
 
-:host[readonly],
-:host.readonly {
-	border: none;
-}
-
-.multiselect-toggle {
-	display: flex;
-	background-color: $white;
-	border-radius: 0;
-	text-align: left;
-	white-space: normal;
-	min-width: 100%;
-
-	&:disabled {
-		color: black;
-		opacity: 1;
-		border: 1px solid #f4f4f4;
+or-multiselect {
+	&[readonly],
+	&.readonly {
+		border: none;
 	}
 
-	& .toggle {
-		margin-left: auto;
+	.multiselect-toggle {
+		display: flex;
+		background-color: $white;
+		border-radius: 0;
+		text-align: left;
+		white-space: normal;
+		min-width: 100%;
 
-		&::before {
-			min-width: 0;
-			margin-left: $spacing-xs;
+		&:disabled {
+			color: black;
+			opacity: 1;
+			border: 1px solid #f4f4f4;
+		}
+
+		& .toggle {
+			margin-left: auto;
+
+			&::before {
+				min-width: 0;
+				margin-left: $spacing-xs;
+			}
 		}
 	}
+
+	.dropdown-menu {
+		overflow: auto !important;
+		width: 100%;
+	}
+
+	.dropdown .dropdown-menu {
+		margin-top: 0;
+		border-top-right-radius: 0;
+		border-top-left-radius: 0;
+		border-top: none;
+	}
+
+	.dropup .dropdown-menu {
+		margin-bottom: 0;
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+		border-bottom: none;
+	}
+
+	.multiselect-control {
+		font-size: small;
+	}
+
+	.dropdown-item:active {
+		color: $brand-default;
+		background-color: $brand-extralight;
+	}
+
+	button.dropdown-item {
+		cursor: pointer;
+	}
 }
 
-.dropdown-menu {
-	overflow: auto !important;
-	width: 100%;
-}
-
-.dropdown .dropdown-menu {
-	margin-top: 0;
-	border-top-right-radius: 0;
-	border-top-left-radius: 0;
-	border-top: none;
-}
-
-.dropup .dropdown-menu {
-	margin-bottom: 0;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
-	border-bottom: none;
-}
-
-.multiselect-control {
-	font-size: small;
-}
-
-.dropdown-item:active {
-	color: $brand-default;
-	background-color: $brand-extralight;
-}
-
-button.dropdown-item {
-	cursor: pointer;
-}

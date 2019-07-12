@@ -1,62 +1,65 @@
-//
-// Type - Component
-// --------------------------------------------------
+@import "../variables";
 
-// Headings
-// --------------------------------------------------
 h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
 	line-height: 1.4;
+	margin-top: 0;
 }
 
 h1 {
 	line-height: 1.5;
 	font-weight: 300;
-	margin-bottom: $spacer;
+	margin-bottom: $spacing-default;
 }
 
 h2 {
 	line-height: 1.5;
 	font-weight: 400;
-	margin-bottom: $spacer * 0.75;
+	margin-bottom: $spacing-default * 0.75;
 }
 
-h3 {
+h3, h4, h5, h6 {
+	margin-bottom: $spacing-default * 0.5;
 	font-weight: 600;
 }
 
-h4 {
-	font-weight: 600;
+p {
+	margin-top: 0;
+	margin-bottom: $spacing-default;
 }
 
-h5 {
-	font-weight: 600;
+ol,
+ul,
+dl {
+	margin-top: 0;
+	margin-bottom: $spacing-default;
 }
 
-h6 {
-	font-weight: 600;
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+	margin-bottom: 0;
 }
 
-.page-header {
-	border-bottom: 1px solid $gray-lighter;
+dd {
+	margin-bottom: $spacing-default * 0.5;
+	margin-left: 0;
 }
 
-// Block elements
-// --------------------------------------------------
-pre {
-	background-color: #f7f7f9;
-	border: 1px solid $gray-light;
-	padding: $spacer / 2;
+blockquote {
+	margin: 0 0 $spacing-default;
 }
 
-// Inline elements
-// --------------------------------------------------
-a:hover {
-	//text-decoration: none;
+address {
+	margin-bottom: $spacing-default;
+	font-style: normal;
+	line-height: inherit;
 }
 
-label {
-	font-weight: 600;
+b,
+strong {
+	font-weight: bolder;
 }
 
 i {
@@ -64,20 +67,39 @@ i {
 	font-style: italic;
 }
 
-.smaller {
-	font-size: 75%;
+small {
+	 font-size: 80%;
 }
 
-.text-description {
-	color: $gray-dark;
+a {
+	color: $brand-secondary;
+	text-decoration: none;
+
+	&:hover{
+		color: $brand-primary;
+		text-decoration: underline;
+	}
+}
+
+pre {
+	background-color: #f7f7f9;
+	border: 1px solid $gray-light;
+	padding: $spacing-default / 2;
+}
+
+figure, pre {
+	margin: 0 0 1em;
+}
+
+label {
+	font-weight: 600;
 }
 
 button[disabled] {
 	cursor: not-allowed !important;
 }
 
-// Inversed content
-// --------------------------------------------------
-.inversed {
-	@include inversed();
+legend {
+	margin-bottom: $spacing-default / 2;
+	font-size: 1.5rem;
 }

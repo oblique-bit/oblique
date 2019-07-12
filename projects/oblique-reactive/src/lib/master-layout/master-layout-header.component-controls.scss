@@ -1,0 +1,178 @@
+@import "../../styles/scss/core/variables";
+@import "../../styles/scss/core/mixins/layout";
+
+.application-header {
+	.header-toggle {
+		border: none;
+
+		@include layout-collapse-down() {
+			flex-wrap: nowrap;
+		}
+
+		@include layout-collapse-up() {
+			display: none !important;
+		}
+	}
+
+	.application-header-toggle {
+		position: relative;
+
+		.first-line,
+		.second-line,
+		.third-line {
+			display: block;
+			width: 25px;
+			height: 4px;
+			background-color: $gray-dark;
+			background-clip: border-box;
+			border-radius: 2px;
+			transition: .25s transform, .15s opacity, .25s border-color;
+		}
+
+		&:focus,
+		&:active,
+		&:hover {
+			.first-line,
+			.second-line,
+			.third-line {
+				background-color: $brand-default;
+			}
+		}
+
+		.first-line {
+			margin-bottom: 5px;
+
+			.header-open & {
+				transform: rotate(45deg) translate(8px, 5px) scale(1.1);
+			}
+		}
+
+		.second-line {
+			.header-open & {
+				opacity: 0;
+				transform: scale(0);
+			}
+		}
+
+		.third-line {
+			margin-top: 5px;
+
+			.header-open & {
+				transform: rotate(-45deg) translate(8px, -5px) scale(1.1);
+			}
+		}
+	}
+
+	.application-header-controls {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		@include layout-collapse-down() {
+			visibility: hidden; // Avoids keyboard navigation when collapsed
+			transition: visibility $duration-default; // Ensure element keeps visible when header is closing
+
+			.header-open & {
+				visibility: visible; // Restores keyboard navigation
+			}
+		}
+	}
+
+	.control-locale {
+		padding: 0.375rem 0.75rem;
+		color: $brand-default;
+		background-color: transparent;
+		border: none transparent;
+		border-radius: 0;
+		user-select: none;
+		transition: background-color $duration-fast ease-in-out;
+
+		&:hover,
+		&.active {
+			background-color: $gray-lighter-2;
+			box-shadow: none;
+		}
+	}
+
+	.header-locale + .header-controls {
+		margin-left: 1rem;
+	}
+
+	.header-controls {
+		display: inline-flex;
+		flex-direction: row;
+		align-items: center;
+		min-height: inherit;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.control-item {
+		@include layout-collapse-up() {
+			justify-content: flex-end;
+
+			@at-root :not(.application-fixed) #{selector-append(".application-header-animate", &)} {
+				transition: margin-top $duration-default ease-in-out;
+			}
+		}
+
+		.control-link:hover,
+		.control-link:active,
+		.control-link:focus,
+		&:active .control-link,
+		&:focus .control-link,
+		&.active .control-link,
+		&.open .control-link,
+		&.show .control-link {
+			color: $brand-default;
+		}
+
+		&:active .control-link,
+		&:focus .control-link,
+		&.active .control-link {
+			.control-label {
+				&::before {
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	.control-link {
+		transition: all $duration-default ease-in-out;
+		display: block;
+		padding: $spacing-default;
+		color: $gray-dark;
+
+		.control-toggle,
+		.control-icon,
+		.control-label {
+			margin: 0;
+			vertical-align: middle;
+		}
+
+		.control-icon + .control-label,
+		.control-toggle + .control-label,
+		.control-label + .control-icon {
+			margin-left: $spacing-xs;
+		}
+
+		.control-toggle {
+			font-weight: normal;
+		}
+
+		.control-icon {
+			cursor: pointer;
+			font-size: $font-size-xl;
+		}
+
+		.control-label {
+			cursor: pointer;
+
+			&::before {
+				opacity: 0.6;
+			}
+		}
+	}
+}

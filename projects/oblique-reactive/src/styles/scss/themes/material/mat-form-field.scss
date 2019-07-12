@@ -20,18 +20,6 @@ $large: 1.25rem;
 		font-size: $large;
 	}
 
-	.text-control {
-		display: flex;
-
-		.mat-input-element {
-			padding-right: 2rem;
-		}
-
-		.text-control-clear {
-			padding: 0;
-		}
-	}
-
 	&.mat-form-field-appearance-outline {
 		.mat-form-field-wrapper {
 			margin: 0;

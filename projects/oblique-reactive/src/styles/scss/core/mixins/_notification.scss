@@ -1,9 +1,6 @@
 @import "icon";
 @import "../variables";
 
-//
-// Notification - Mixins
-// --------------------------------------------------
 $notification-symbol-width: 50px;
 
 @mixin notification-base() {

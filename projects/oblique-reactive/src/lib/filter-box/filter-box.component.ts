@@ -4,8 +4,7 @@ import {MaterialService} from '../material.service';
 @Component({
 	selector: 'or-filter-box',
 	exportAs: 'orFilterBox',
-	templateUrl: './filter-box.component.html',
-	styleUrls: ['./filter-box.component.scss']
+	templateUrl: './filter-box.component.html'
 })
 export class FilterBoxComponent implements OnInit {
 	material: boolean;

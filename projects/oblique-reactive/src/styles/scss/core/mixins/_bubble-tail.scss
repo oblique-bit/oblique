@@ -1,9 +1,4 @@
-//
-// Bubble tail - Mixins
-// --------------------------------------------------
-
 @mixin bubble-tail($color: #efefef, $width: 12px, $align: none, $align-value: auto, $placement: top, $direction: top, $position: relative, $layer: after) {
-
 	@if $layer == before {
 		&:before {
 			content: '';

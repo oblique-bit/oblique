@@ -1,0 +1,22 @@
+@mixin checkbox-variant($color) {
+	.form-check-input[type="checkbox"]:checked + .form-check-label {
+		&::before {
+			background-color: $color;
+			border-color: $color;
+		}
+		&::after {
+			color: #fff;
+		}
+	}
+}
+
+@mixin radio-variant($color) {
+	.form-check-input[type="radio"]:checked + .form-check-label {
+		&::before {
+			border-color: $color;
+		}
+		&::after {
+			background-color: $color;
+		}
+	}
+}

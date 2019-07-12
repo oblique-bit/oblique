@@ -1,4 +1,6 @@
 @import '../variables';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
 
 //
 // Callout - Component
@@ -56,7 +58,7 @@
 
 // Callout variations:
 .callout-default    { @include callout-styles($brand-light, $gray-lighter, $brand-secondary); }
-.callout-success    { @include callout-styles($state-success-text, $state-success-bg, $state-success-border); }
-.callout-info       { @include callout-styles($state-info-text, $state-info-bg, $state-info-border); }
-.callout-warning    { @include callout-styles($state-warning-text, $state-warning-bg, $state-warning-border); }
-.callout-danger     { @include callout-styles($state-danger-text, $state-danger-bg, $state-danger-border); }
+.callout-success    { @include callout-styles($brand-success-dark, $brand-success-light, $brand-success); }
+.callout-info       { @include callout-styles($brand-secondary, $brand-light, $brand-secondary); }
+.callout-warning    { @include callout-styles($brand-warning-dark, $brand-warning-light, $brand-warning); }
+.callout-danger     { @include callout-styles($brand-danger-dark, $brand-danger-light, $brand-danger); }

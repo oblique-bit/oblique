@@ -1,0 +1,45 @@
+@import "../../core/variables";
+@import "variables";
+@import "mixins/button";
+
+.btn-primary {
+	@include btn-variant($white, $brand-primary, $brand-primary, $white, $brand-dark, $brand-dark, $gray-lighter-2);
+}
+
+.btn-secondary {
+	@include btn-variant($brand-default, $gray-lighter, $gray, $brand-default, $gray-lighter-2, $gray-darker, $brand-default);
+
+	&:not([disabled]):not(.disabled) {
+		&:active,
+		&.active {
+			box-shadow: 0 0 0 0.2rem rgba(0, 94, 142, 0.25);
+		}
+	}
+}
+
+.btn-success {
+	@include btn-variant($white, $brand-success, $brand-success, $white, $brand-success-dark, $brand-success-dark, $gray-lighter-2);
+}
+
+.btn-warning {
+	@include btn-variant($brand-default, $brand-warning-light, $gray, $brand-default, $brand-warning-semilight, $gray-dark, $brand-default);
+}
+
+.btn-danger {
+	@include btn-variant($white, $brand-danger, $brand-danger, $white, $brand-danger-dark, $brand-danger-dark, $gray-lighter-2);
+}
+
+.btn-link {
+	@include btn-variant($link-color, transparent, transparent, $link-hover-color, $gray-lighter-2, $gray-darker, $link-hover-color);
+
+	border-radius: $border-radius-base;
+
+	&:not([disabled]):not(.disabled) {
+		&:active,
+		&.active,
+		&:focus,
+		&.focus{
+			box-shadow: 0 0 0 0.2rem rgba(0, 94, 142, 0.25);
+		}
+	}
+}

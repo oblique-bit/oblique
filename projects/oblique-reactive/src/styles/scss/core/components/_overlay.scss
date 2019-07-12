@@ -1,28 +1,22 @@
-//
-// Overlay - Component
-// --------------------------------------------------
+@import "../variables";
+
 .has-overlay {
 	position: relative;
 
 	.overlay {
-		display: none;
-		opacity: 0;
-		transition: opacity $duration-fast ease-in;
-		z-index: 2;
 		position: absolute;
 		top: 0;
 		right: 0;
 		bottom: 0;
 		left: 0;
-		color: $white;
-		text-align: center;
-		background-color: rgba(0, 0, 0, 0.6);
+		z-index: 2;
+		display: none;
 		padding: 15px;
-
-		&.overlay-inverse {
-			color: $brand-default;
-			background-color: rgba(255, 255, 255, 0.8);
-		}
+		opacity: 0;
+		text-align: center;
+		color: $brand-default;
+		background-color: rgba(255, 255, 255, 0.8);
+		transition: opacity $duration-fast ease-in;
 
 		&.overlay-fixed {
 			position: fixed;

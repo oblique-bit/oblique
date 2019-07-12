@@ -1,16 +1,3 @@
-//
-// Variables
-// --------------------------------------------------
-
-// Copy settings from this file into your custom SCSS file to override
-// ObliqueUI (and Bootstrap) defaults without modifying key, versioned files.
-//
-// Variables should follow the `$component-state-property-size` formula for
-// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
-
-//
-// Color system
-//
 $white:                     #ffffff !default;
 $gray-lighter:              #f5f5f5 !default;
 $gray-lighter-2:            #e5e5e5 !default;
@@ -32,8 +19,6 @@ $brand-success-light:       #cfe6c2 !default;
 $brand-success:             #00813a !default;
 $brand-success-dark:        #004d22 !default;
 
-$brand-info:                $brand-light !default;
-
 $brand-warning-light:       #fffab2 !default;
 $brand-warning-semilight:   #ffc81b !default;
 $brand-warning:             #e75e00 !default;
@@ -43,61 +28,24 @@ $brand-danger-light:        #ffdddd !default;
 $brand-danger:              #dc0018 !default;
 $brand-danger-dark:         #b30014 !default;
 
-$state-success-text:        $brand-success-dark !default;
-$state-success-bg:          $brand-success-light !default;
-$state-success-border:      $brand-success !default;
-
-$state-info-text:           $brand-secondary !default;
-$state-info-bg:             $brand-light !default;
-$state-info-border:         $brand-secondary !default;
-
-$state-warning-text:        $brand-warning-dark !default;
-$state-warning-bg:          $brand-warning-light !default;
-$state-warning-border:      $brand-warning !default;
-
-$state-danger-text:         $brand-danger-dark !default;
-$state-danger-bg:           $brand-danger-light !default;
-$state-danger-border:       $brand-danger !default;
-
-// Theme colors:
-$primary:                   $brand-primary !default;
-$secondary:                 $brand-secondary !default;
-$success:                   $brand-success !default;
-$info:                      $brand-info !default;
-$warning:                   $brand-warning !default;
-$danger:                    $brand-danger !default;
-
-$theme-color-interval: 0;
-
-// Body:
-$body-color:                $brand-default !default;
-
-// Transitions & Animations:
 $duration-default:              .6s !default;
 $duration-fast:                .25s !default;
 
-// Spacing & Dimensions:
 $spacing-default:              15px !default;
 $spacing-xs:                    5px !default;
 $spacing-sm:                   10px !default;
 $spacing-md:                   12px !default;
-$spacing-indent:               22px !default;
-$scrollable-max-height:       350px !default;
-
-// Branding:
-$brand-line-width:              5px;
-$brand-shadow:                  0 0 3px 1px fade-out($gray-lighter, 0.3), 0 0 1px 1px fade($gray-lighter, 0.30);
-$brand-shadow-bottom:           0 1px 3px 1px fade-out($gray-lighter, 0.25), 0 1px 1px 1px fade($gray-lighter, 0.25);
-
 
 $brand-logo-width:            216px !default;
 $brand-logo-height:            55px !default;
 $brand-logo-height-collapsed:  34px !default;
 $brand-logo-width-collapsed:   30px !default;
+
 $header-height:               141px !default;
-$header-height-md:            113px !default;
+$header-height-md:            112px !default;
 $header-height-no-navigation:  90px !default;
 $header-height-collapsed:      61px !default;
+$brand-line-width:              5px !default;
 $navigation-height:            51px !default;
 
 $footer-height:                84px !default;
@@ -105,112 +53,31 @@ $footer-height-md:             60px !default;
 $footer-height-sm:             34px !default;
 $footer-height-collapsed:     162px !default;
 
-// Fonts:
-$font-family-sans-serif:        "Open Sans", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
-$font-family-icon:              "FontAwesome" !default;
+$font-size-base:                1rem !default;
+$font-size-xl:                  $font-size-base * 1.65 !default;
+$font-size-lg:                  $font-size-base * 1.25 !default;
+$font-size-sm:                  $font-size-base * .875 !default;
+$font-size-xs:                  $font-size-base * .8 !default;
 
-$font-size-base:                1rem !default; // Assumes the browser default, typically `16px`
-$font-size-xl:                  1.65rem;
-
-$h1-font-size:                  2.5rem !default;
-$h2-font-size:                  1.75rem !default;
-$h3-font-size:                  1.25rem !default;
-$h4-font-size:                  1rem !default;
-$h5-font-size:                  0.875rem !default;
-$h6-font-size:                  0.75rem !default;
-
-// Layout:
 $layout-collapse:               992px !default; // Breakpoint at which the layout becomes expanded.
-$layout-collapse-max:           $layout-collapse - 1;
 
-// Z-index master list:
-$zindex-accessible:             9000 !default;
-
-
-// Components
-// --------------------------------------------------
-
-// Common:
 $border-radius-base:            4px !default;
 
-// Link:
-$link-color:                    $brand-secondary !default;
-$link-hover-color:              $brand-primary !default;
+$navigation-scrollable-padding: 2 * $spacing-default !default;
 
-// Button:
-$btn-primary-color:             $white !default;
-$btn-primary-bg:                $brand-primary !default;
-$btn-primary-border:            $brand-primary !default;
-$btn-primary-selected:          $brand-dark !default;
-$btn-primary-accent:            $brand-dark !default;
-
-$btn-secondary-color:           $brand-default !default;
-$btn-secondary-bg:              $gray-lighter !default;
-$btn-secondary-border:          $gray !default;
-$btn-secondary-selected:        $brand-dark !default;
-$btn-secondary-accent:          $gray-lighter-2 !default;
-
-$btn-success-color:             $white !default;
-$btn-success-bg:                $brand-success !default;
-$btn-success-border:            $brand-success !default;
-$btn-success-selected:          $brand-success-dark !default;
-$btn-success-accent:            $brand-success-dark !default;
-
-$btn-warning-color:             $brand-default !default;
-$btn-warning-bg:                $brand-warning-light !default;
-$btn-warning-border:            $gray !default;
-$btn-warning-selected:          $brand-default !default;
-$btn-warning-accent:            $brand-warning-semilight !default;
-
-$btn-danger-color:              $white !default;
-$btn-danger-bg:                 $brand-danger !default;
-$btn-danger-border:             $brand-danger !default;
-$btn-danger-selected:           $brand-danger-dark !default;
-$btn-danger-accent:             $brand-danger-dark !default;
-
-$btn-secondary-color:           $link-color !default;
-$btn-secondary-bg:              $white !default;
-$btn-secondary-border:          transparent !default;
-$btn-secondary-selected: $btn-secondary-selected !default;
-$btn-secondary-accent: $btn-secondary-accent !default;
-
-// Input:
-$input-color:                   $brand-default !default;
-$input-border-color:            $gray !default;
-$input-border-radius:           0 !default;
-$input-border-radius-lg:        0 !default;
-$input-border-radius-sm:        0 !default;
-
-// Dropdown:
-$dropdown-border-color:             $gray-light !default;
-$dropdown-link-color:               $brand-default !default;
-$dropdown-link-hover-color:         $brand-default !default;
-
-// Nav:
-$nav-link-disabled-color:           $gray-light !default;
-
-$nav-tabs-active-link-color:        $brand-default !default;
-$nav-tabs-link-hover-border-color:  $gray-light !default;
-$nav-tabs-active-link-hover-color:  $brand-default !default;
-
-$nav-pills-border-radius:           0 !default;
-$navigation-scrollable-padding: 2 * $spacing-default;
-
-// List group:
-$list-group-border-radius:      0 !default;
-$list-group-item-padding-x:     .75rem !default;
-
-// Modal:
-$modal-content-border-color:     $gray-lighter !default;
-
-// Alert:
-$alert-border-radius:            none !default;
-$alert-border-width:             0 !default;
-
-// Column layout
 $column-width: 20% !default;
 
-// Offcanvas
-$offcanvas-sidebar-width: 40%;
-$offcanvas-sidebar-collapsed-width: 80%;
+$off-canvas-sidebar-width: 40% !default;
+$off-canvas-sidebar-collapsed-width: 80% !default;
 
+$cover-layout-background: '../../styles/images/cover-background.jpg' !default;	// relative to oblique-reactive/styles/
+
+$grid-breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px
+) !default;
+
+$font: "Open Sans", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;

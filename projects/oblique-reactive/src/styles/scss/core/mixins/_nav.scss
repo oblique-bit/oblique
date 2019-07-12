@@ -1,23 +1,43 @@
 @import "../variables";
 
-//
-// Nav - Mixins
-// --------------------------------------------------
-@mixin nav-hover {
+@mixin nav-hover() {
 	content: '';
 	position: absolute;
 	top: 0;
-	left: -15px;
+	left: 0;
 	height: 100%;
-	border-left: 6px solid $brand-accent;
+	border-left: $brand-line-width solid $brand-accent;
+
+	.nav-modal & {
+		left: -$brand-line-width;
+	}
 }
 
-@mixin nav-indentation($offset: 0) {
-	$spacing: $offset + $spacing-default;
-	.nav-link {                                 padding-left: $offset;}
-	.nav > li > .nav-link {                     padding-left: $spacing;}
-	.nav .nav > li > .nav-link {                padding-left: $spacing + 10; font-size: 90%;}
-	.nav .nav .nav > li > .nav-link {           padding-left: $spacing + 26; font-size: 85%;}
-	.nav .nav .nav .nav > li > .nav-link {      padding-left: $spacing + 36; font-size: 80%; }
-	.nav .nav .nav .nav .nav > li > .nav-link { padding-left: $spacing + 46; font-size: 75%; }
+@mixin nav-indent($base: 0) {
+	$base: $base +  2 * $spacing-default;
+	$base-md: $base +  2 * $spacing-md;
+
+	.nav-tree > li > .nav-link {
+		padding-left: $base;
+	}
+
+	.nav-tree .nav-tree > li > .nav-link {
+		padding-left: $base + $spacing-md;
+		font-size: 90%;
+	}
+
+	.nav-tree .nav-tree .nav-tree > li > .nav-link {
+		padding-left: $base-md;
+		font-size: 85%;
+	}
+
+	.nav-tree .nav-tree .nav-tree .nav-tree > li > .nav-link {
+		padding-left: $base-md + $spacing-sm;
+		font-size: 80%;
+	}
+
+	.nav-tree .nav-tree .nav-tree .nav-tree .nav-tree > li > .nav-link {
+		padding-left: $base-md + 2 * $spacing-sm;
+		font-size: 75%;
+	}
 }

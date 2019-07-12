@@ -1,4 +1,79 @@
-::ng-deep .nav-tree-pattern-highlight {
-	font-weight: bold;
-	text-decoration: underline;
+@import "~font-awesome/scss/variables";
+@import "../../styles/scss/core/variables";
+@import "../../styles/scss/core/mixins/nav";
+@import "../../styles/scss/core/mixins/icon";
+
+.nav-tree {
+	display: flex;
+	flex-direction: column;
+	list-style: none;
+	margin-bottom: 0;
+	padding: 0;
+
+	.nav-link {
+		display: block;
+		padding: $spacing-xs $spacing-default;
+		text-decoration: none;
+		color: $brand-default;
+
+		&.disabled,
+		&[disabled],
+		.disabled > & {
+			color: $gray-dark;
+			cursor: not-allowed;
+		}
+	}
+
+	&.nav-indent {
+		@include nav-indent(0);
+	}
+
+	&.nav-bordered .nav-link {
+		border-bottom: 1px solid $gray-light;
+	}
+
+	&.nav-hover .nav-link {
+		position: relative;
+
+		&.active,
+		&:hover,
+		&:focus {
+			background-color: $gray-lighter;
+
+			&:after {
+				@include nav-hover();
+			}
+		}
+	}
+
+	&.nav-toggle {
+		&.nav-indent {
+			.nav-link {
+				padding-left: 2 * $spacing-default;
+			}
+
+			@include nav-indent($spacing-default);
+		}
+
+		.nav-link.has-child {
+			@include icon($fa-var-angle-down, before);
+
+			&.collapsed::before {
+				content: $fa-var-angle-right;
+			}
+
+			&:before {
+				margin-left: -$spacing-default;
+			}
+
+			+ .collapse:not(.show) {
+				display: none;
+			}
+		}
+	}
+
+	.pattern-highlight {
+		font-weight: bold;
+		text-decoration: underline;
+	}
 }

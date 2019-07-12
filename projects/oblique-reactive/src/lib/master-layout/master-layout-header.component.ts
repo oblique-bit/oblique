@@ -24,7 +24,7 @@ import {ORNavigationLink} from './master-layout-navigation.component';
 @Component({
 	selector: 'or-master-layout-header',
 	templateUrl: './master-layout-header.component.html',
-	styleUrls: ['./master-layout-header.component.scss', './master-layout-header.component-navbar.scss'],
+	styleUrls: ['./master-layout-header.component.scss', './master-layout-header.component-controls.scss', './master-layout-header.component-dropdown.scss'],
 	encapsulation: ViewEncapsulation.None,
 	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'application-header'}

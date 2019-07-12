@@ -1,0 +1,111 @@
+@import "mixins/form";
+@import "../../core/variables";
+@import "../../core/mixins/browser";
+
+@include form-control-validation($gray, $brand-secondary, $brand-secondary, $gray-dark);
+
+.has-success {
+	@include form-control-validation($brand-success, $brand-success-dark, $brand-success, $brand-success-dark);
+}
+
+.has-warning {
+	@include form-control-validation($brand-warning, $brand-warning-dark, $brand-warning, $brand-warning-dark);
+}
+
+.has-error {
+	@include form-control-validation($brand-danger, $brand-danger-dark, $brand-danger, $brand-danger-dark);
+}
+
+a.form-control-plaintext {
+	display: inline-block;
+	color: $gray-dark;
+
+	&:hover {
+		color: $brand-default;
+		text-decoration: none;
+	}
+}
+
+.form-actions {
+	text-align: right;
+
+	.dropdown-menu {
+		text-align: left;
+	}
+}
+
+.help-block {
+	font-size: 12px;
+}
+
+.input-group .has-feedback .form-control-feedback {
+	z-index: 5;
+	top: 0;
+	font-size: 1.5em;
+}
+
+.control-mandatory {
+	position: relative;
+
+	&::before {
+		z-index: 5;
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: inline;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 8px 8px 0 0;
+		border-color: $brand-primary transparent transparent transparent;
+
+		@at-root #{selector-append('.row:not(.no-gutters) [class*="col-"]', &)} {
+			left: 15px;
+		}
+
+		@at-root #{selector-append('.form-row [class*="col-"]', &)} {
+			left: 5px;
+		}
+	}
+
+	&.form-check::before {
+		top: 1px;
+	}
+
+	&.form-check.form-check-lg::before {
+		top: 2px;
+	}
+
+	&.form-control::before {
+		top: -1px;
+		left: -1px;
+	}
+
+	@include firefox() {
+		&.form-check:not(.form-check-sm)::before {
+			top: 2px;
+		}
+
+		&.form-check.form-check-lg::before {
+			top: 3px;
+		}
+
+		&.form-check.form-check-lg.mandatory-radio::before {
+			top: 2px;
+		}
+	}
+
+	@include ms() {
+		&.form-check::before,
+		&.form-check.form-check-lg::before {
+			top: 3px;
+		}
+		&.form-check.mandatory-radio::before {
+			top: 2px;
+		}
+		&.form-check.form-check-lg.mandatory-radio::before {
+			top: 4px;
+		}
+	}
+}

@@ -8,102 +8,103 @@
 }
 
 .alert-default    { @include alert-style($gray-lighter, $fa-var-envelope, $brand-secondary, $gray-dark, $brand-default); }
-.alert-info       { @include alert-style($state-info-bg, $fa-var-info, $state-info-border, $brand-primary, $brand-default); }
-.alert-success    { @include alert-style($state-success-bg, $fa-var-check, $state-success-border, $brand-success-dark, $brand-default); }
-.alert-warning    { @include alert-style($state-warning-bg, $fa-var-exclamation, $state-warning-border, $brand-warning-dark, $brand-default); }
-.alert-danger     { @include alert-style($state-danger-bg, $fa-var-times, $state-danger-border, $brand-danger-dark, $brand-default); }
+.alert-info       { @include alert-style($brand-light, $fa-var-info, $brand-secondary, $brand-primary, $brand-default); }
+.alert-success    { @include alert-style($brand-success-light, $fa-var-check, $brand-success, $brand-success-dark, $brand-default); }
+.alert-warning    { @include alert-style($brand-warning-light, $fa-var-exclamation, $brand-warning, $brand-warning-dark, $brand-default); }
+.alert-danger     { @include alert-style($brand-danger-light, $fa-var-times, $brand-danger, $brand-danger-dark, $brand-default); }
 
-
-:host.notification-container {
-	position: fixed;
-	display: block;
-	z-index: 99999;
-	perspective: 80px;
-	overflow-x: hidden;
-	right: 0; // Note: do not specify `top` attribute!
-}
-
-.notification {
-	display: none;
-	width: 65vw;
-	margin: 5px; // Reserve spacing for box shadow!
-	box-shadow: 0 0 6px gray;
-
-	@include layout-collapse-up() {
-		width: 380px;
-	}
-
-	&.show {
+or-notification {
+	&.notification-container {
+		position: fixed;
 		display: block;
+		z-index: 99999;
+		perspective: 80px;
+		overflow-x: hidden;
+		right: 0; // Note: do not specify `top` attribute!
 	}
 
-	&.fadeLeft {
-		animation: notification-fadeLeft $duration-default;
+	.notification {
+		display: none;
+		width: 65vw;
+		margin: 5px; // Reserve spacing for box shadow!
+		box-shadow: 0 0 6px gray;
+
+		@include layout-collapse-up() {
+			width: 380px;
+		}
+
+		&.show {
+			display: block;
+		}
+
+		&.fadeLeft {
+			animation: notification-fadeLeft $duration-default;
+		}
+
+		&.fadeLeft-delayed {
+			animation: notification-fadeLeft $duration-default;
+			animation-delay: $duration-default;
+			animation-fill-mode: backwards;
+		}
+
+		&.fadeOut {
+			animation: notification-fadeOut $duration-default;
+		}
+
+		&.slideTop {
+			animation: notification-slideTop $duration-default;
+			animation-delay: $duration-default;
+		}
+
+		&.slideBottom {
+			animation: notification-slideBottom $duration-default;
+		}
+
+		.notification-title {
+			font-weight: 600;
+			margin-bottom: 0.5em;
+		}
 	}
 
-	&.fadeLeft-delayed {
-		animation: notification-fadeLeft $duration-default;
-		animation-delay: $duration-default;
-		animation-fill-mode: backwards;
+	@keyframes notification-fadeOut {
+		0% {
+			opacity: 1;
+		}
+
+		100% {
+			opacity: 0;
+		}
 	}
 
-	&.fadeOut {
-		animation: notification-fadeOut $duration-default;
+	@keyframes notification-fadeLeft {
+		0% {
+			opacity: 0;
+			transform: translateX(100px);
+		}
+
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 
-	&.slideTop {
-		animation: notification-slideTop $duration-default;
-		animation-delay: $duration-default;
+	@keyframes notification-slideTop {
+		0% {
+			transform: translateY(100%);
+		}
+
+		100% {
+			transform: translateY(0);
+		}
 	}
 
-	&.slideBottom {
-		animation: notification-slideBottom $duration-default;
-	}
+	@keyframes notification-slideBottom {
+		0% {
+			transform: translateY(-100%);
+		}
 
-	.notification-title {
-		font-weight: 600;
-		margin-bottom: 0.5em;
-	}
-}
-
-@keyframes notification-fadeOut {
-	0% {
-		opacity: 1;
-	}
-
-	100% {
-		opacity: 0;
-	}
-}
-
-@keyframes notification-fadeLeft {
-	0% {
-		opacity: 0;
-		transform: translateX(100px);
-	}
-
-	100% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
-@keyframes notification-slideTop {
-	0% {
-		transform: translateY(100%);
-	}
-
-	100% {
-		transform: translateY(0);
-	}
-}
-
-@keyframes notification-slideBottom {
-	0% {
-		transform: translateY(-100%);
-	}
-
-	100% {
-		transform: translateY(0);
+		100% {
+			transform: translateY(0);
+		}
 	}
 }

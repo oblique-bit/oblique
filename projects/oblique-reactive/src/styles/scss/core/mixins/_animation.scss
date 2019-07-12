@@ -1,9 +1,0 @@
-//
-// Animation - Mixins
-// --------------------------------------------------
-
-@mixin animatable($property: all, $duration: $duration-default, $timing-function: ease-in-out) {
-	transition-property: $property;
-	transition-duration: $duration;
-	animation-timing-function: $timing-function;
-}

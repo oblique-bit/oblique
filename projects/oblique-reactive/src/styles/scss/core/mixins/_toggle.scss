@@ -1,21 +1,5 @@
-//
-// Toggle - Mixins
-// --------------------------------------------------
-
-@mixin toggle($default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show, $layer: before) {
-	@include icon($default-icon, $layer);
-	@include toggle-state($state) {
-		@include icon-content($toggle-icon, $layer);
-	};
-}
-
-@mixin toggle-icon($default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show, $layer: before) {
-	@include icon-content($default-icon, $layer);
-
-	@include toggle-state($state) {
-		@include icon-content($toggle-icon, $layer);
-	};
-}
+@import "~font-awesome/scss/variables";
+@import "icon";
 
 @mixin toggle-state($state: show) {
 	&.#{$state},
@@ -26,4 +10,34 @@
 	button.#{$state} & {
 		@content;
 	}
+}
+
+@mixin toggle-before($default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show) {
+	@include icon($default-icon);
+	@include toggle-state($state) {
+		&::before {
+			content: $toggle-icon;
+		}
+	};
+}
+
+@mixin toggle-after($default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show) {
+	@include icon($default-icon, after);
+	@include toggle-state($state) {
+		&::after {
+			content: $toggle-icon;
+		}
+	};
+}
+
+@mixin toggle-icon($default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show) {
+	&::before {
+		content: $default-icon;
+	}
+
+	@include toggle-state($state) {
+		&::before {
+			content: $toggle-icon;
+		}
+	};
 }

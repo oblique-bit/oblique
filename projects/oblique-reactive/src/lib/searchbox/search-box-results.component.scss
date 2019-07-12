@@ -13,16 +13,6 @@ or-search-box-results {
 	overflow: hidden;
 	transition: height $duration-default;
 
-	&.nav-hover .nav-item .nav-link {
-		&.active,
-		&:hover,
-		&:focus {
-			&:after {
-				left: 0;
-			}
-		}
-	}
-
 	.highlight {
 		font-weight: bold;
 		text-decoration: underline;
@@ -70,16 +60,6 @@ or-search-box-results {
 		box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
 		transition: max-height $duration-default, padding $duration-default;
 		z-index: 1;
-
-		&.nav-hover .nav-item .nav-link {
-			&.active,
-			&:hover,
-			&:focus {
-				&:after {
-					left: -$spacing-default;
-				}
-			}
-		}
 
 		&::before,
 		&::after {

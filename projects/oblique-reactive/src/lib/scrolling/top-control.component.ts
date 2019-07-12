@@ -1,14 +1,11 @@
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {MasterLayoutConfig} from '../master-layout/master-layout.config';
 
 @Component({
 	selector: 'or-top-control',
-	template: `
-		<a class="top-control" role="button" tabindex="0" (click)="scrollTop()">
-			<span class="control-icon fa fa-angle-up"></span>
-			<span class="control-label">{{'i18n.topControl.backToTop' | translate}}</span>
-		</a>`,
-	styleUrls: ['top-control.component.scss']
+	templateUrl: './top-control.component.html',
+	styleUrls: ['top-control.component.scss'],
+	encapsulation: ViewEncapsulation.None
 })
 export class TopControlComponent {
 	constructor(private readonly config: MasterLayoutConfig) {

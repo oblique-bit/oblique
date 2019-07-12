@@ -8,7 +8,8 @@ import {
 	IterableDiffer,
 	IterableDiffers,
 	Output,
-	QueryList
+	QueryList,
+	ViewEncapsulation
 } from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe.class';
@@ -21,7 +22,8 @@ import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from '
 	selector: 'or-navigable-group',
 	exportAs: 'orNavigableGroup',
 	template: `<ng-content></ng-content>`,
-	styleUrls: ['./navigable-group.component.scss']
+	styleUrls: ['./navigable-group.component.scss'],
+	encapsulation: ViewEncapsulation.None
 })
 export class NavigableGroupComponent extends Unsubscribable implements AfterContentInit {
 

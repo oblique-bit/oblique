@@ -1,5 +1,5 @@
-@import "core/variables";
-@import "core/mixins";
+@import "variables";
+@import "mixins/layout";
 
 html,
 body {
@@ -11,6 +11,14 @@ body {
 	}
 }
 
+body {
+	min-width: 320px;
+}
+
 .default-layout {
 	padding: $spacing-default;
+}
+
+.bg-secondary {
+	background-color: $brand-extralight !important;
 }

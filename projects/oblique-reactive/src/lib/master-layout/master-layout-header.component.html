@@ -1,7 +1,7 @@
-<div class="navbar">
+<div class="header">
 	<ng-content select="[orHeader]" *ngIf="custom"></ng-content>
 	<ng-container *ngIf="!custom">
-		<div class="navbar-header">
+		<div class="application-header-title">
 			<div class="application-brand">
 				<a class="application-brand-logo" [routerLink]="home" tabindex="-1">
 					<img alt="Back to home" src="assets/styles/images/logo.svg"/>
@@ -12,11 +12,11 @@
 						</a>
 					</span>
 			</div>
-			<ul class="nav navbar-nav navbar-controls navbar-toggler">
+			<ul class="header-controls header-toggle">
 				<li class="nav-item">
 					<a role="button" tabindex="0" title="Toggle application header"
-					   class="nav-link control-link or-collapse-toggle" orMasterLayoutHeaderToggle>
-						<div class="application-header-toggler">
+					   class="control-link" orMasterLayoutHeaderToggle>
+						<div class="application-header-toggle">
 							<span class="first-line"></span>
 							<span class="second-line"></span>
 							<span class="third-line"></span>
@@ -29,17 +29,17 @@
 		<div class="application-header-controls">
 			<h2 class="sr-only">{{'i18n.oblique.controls.title' | translate}}</h2>
 			<ng-content select="[orLocales]" *ngIf="disabledLang"></ng-content>
-			<ul class="navbar-nav navbar-controls navbar-locale" role="menu"
+			<ul class="header-controls header-locale" role="menu"
 				*ngIf="locales.length > 1 && !disabledLang">
-				<li class="nav-item" role="menuitem" *ngFor="let locale of locales">
-					<button class="btn btn-link" orMasterLayoutHeaderToggle (click)="changeLang(locale.locale)"
+				<li class="control-item" role="menuitem" *ngFor="let locale of locales">
+					<button class="control-locale" orMasterLayoutHeaderToggle (click)="changeLang(locale.locale)"
 							[class.active]="isLangActive(locale.locale)" [attr.id]="locale.id">
 						<span class="control-label">{{locale.locale}}</span>
 					</button>
 				</li>
 			</ul>
-			<ul class="navbar-nav navbar-controls ml-sm-auto" role="menu" *ngIf="templates.length">
-				<li class="nav-item" role="menuitem" *ngFor="let template of templates" #headerControl>
+			<ul class="header-controls" role="menu" *ngIf="templates.length">
+				<li class="control-item" role="menuitem" *ngFor="let template of templates" #headerControl>
 					<ng-container [ngTemplateOutlet]="template"></ng-container>
 				</li>
 			</ul>

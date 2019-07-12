@@ -1,0 +1,38 @@
+@import "~font-awesome/scss/variables";
+@import "../../core/variables";
+@import "../../core/mixins/toggle";
+@import "mixins/button";
+
+.dropdown-menu {
+	box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+
+	.dropdown-header {
+		font-weight: bold;
+		font-size: $font-size-base * 0.95;
+		color: $brand-default;
+	}
+}
+
+.dropdown-toggle {
+	&::after,
+	.dropup &::after{
+		border: none;
+		width: auto;
+		height: auto;
+		margin-left: 0;
+		vertical-align: baseline;
+	}
+	@include toggle-after($state: show);
+
+	.dropup &::after {
+		content: $fa-var-angle-up;
+
+		@at-root #{selector-append(".show", &)} {
+			content: $fa-var-angle-down
+		}
+	}
+
+	@at-root .show > #{selector-append(".btn-secondary", &)} {
+		@include btn-variant($brand-default, $gray-lighter, $gray, $brand-default, $gray-lighter-2, $gray-darker, $brand-default);
+	}
+}

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, RouterLinkActive} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
@@ -10,12 +10,13 @@ import {NavTreeItemModel} from './nav-tree-item.model';
 	selector: 'or-nav-tree',
 	exportAs: 'orNavTree',
 	templateUrl: './nav-tree.component.html',
-	styleUrls: ['./nav-tree.component.scss']
+	styleUrls: ['./nav-tree.component.scss'],
+	encapsulation: ViewEncapsulation.None
 })
 export class NavTreeComponent extends Unsubscribable {
 	static DEFAULTS = {
 		VARIANT: 'nav-bordered nav-hover',
-		HIGHLIGHT: 'nav-tree-pattern-highlight',
+		HIGHLIGHT: 'pattern-highlight',
 		LABEL_FORMATTER: defaultLabelFormatterFactory
 	};
 

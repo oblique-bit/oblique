@@ -1,21 +1,13 @@
-//
-// ObliqueUI CSS - Bundle
-// --------------------------------------------------
-
-// References:
-@import "core/variables";
-@import "core/mixins";
-@import "core/vendors";
+@import "~font-awesome/scss/font-awesome";
 @import "core/fonts";
+@import "core/components/callout";
+@import "core/components/form";
+@import "core/components/nav-stepper";
+@import "core/components/overlay";
+@import "core/components/sticky";
+@import "core/components/text-control";
+@import "core/components/toggle";
+@import "core/components/type";
 
-// Utilities:
-@import "core/utilities";
-
-// Components:
-@import "core/components";
-
-// Layouts:
 @import "core/layouts";
-
-// Medias:
-@import "core/medias/print";
+@import "core/print";

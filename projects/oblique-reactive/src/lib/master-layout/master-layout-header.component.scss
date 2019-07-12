@@ -1,7 +1,4 @@
-@import '~bootstrap/scss/functions';
-@import "~bootstrap/scss/variables";
 @import "../../styles/scss/core/variables";
-@import "../../styles/scss/core/mixins/animation";
 @import "../../styles/scss/core/mixins/bubble-tail";
 @import "../../styles/scss/core/mixins/layout";
 
@@ -10,15 +7,21 @@
 	background-color: $white;
 	background-clip: content-box;
 	z-index: 10;
-	@include animatable(height, $duration: $duration-default);
+	transition: height $duration-default ease-in-out;
 
 	.application:not(.application-fixed) &.application-header-sticky {
-		@include layout-fixed-top();
-		z-index: $zindex-dropdown + 2;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 1000 + 2;
 	}
 
 	@include layout-collapse-down() {
-		@include layout-fixed-top();
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
 		overflow: hidden;
 		display: flex;
 		flex-direction: column;
@@ -59,6 +62,39 @@
 		}
 	}
 
+	.header {
+		display: block;
+		z-index: 1;
+		width: 100%;
+		padding: 0;
+		background-color: inherit;
+		border-bottom: $brand-line-width solid $brand-danger;
+
+		@include layout-collapse-up() {
+			display: flex;
+			flex-direction: row;
+		}
+
+		@include layout-collapse-down() {
+			overflow: hidden;
+			height: $header-height-collapsed;
+			transition: height $duration-default ease-in-out;
+
+			.header-open & {
+				height: $header-height-md;
+			}
+		}
+	}
+
+	.application-header-title {
+		display: flex;
+		flex: 1;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		margin-right: auto; // Ensure controls get pushed to the right
+		min-width: 0; // Important, for text ellipsis of app title (cf. https://css-tricks.com/flexbox-truncated-text/)!
+	}
+
 	.application-brand {
 		display: flex;
 		flex: auto;
@@ -66,7 +102,7 @@
 		align-items: center;
 		min-width: 0; // Important, for text ellipsis of app title (cf. https://css-tricks.com/flexbox-truncated-text/)!
 		padding: 8px $spacing-default;
-		@include animatable(padding);
+		transition: padding $duration-default ease-in-out;
 
 		@include layout-collapse-up() {
 			@at-root #{selector-append(":not(.application-header-md)", &)} {
@@ -76,7 +112,6 @@
 	}
 
 	.application-brand-logo {
-		float: left; // IE7+ fix
 		overflow: hidden;
 		width: $brand-logo-width-collapsed;
 		height: $brand-logo-height-collapsed;
@@ -114,15 +149,20 @@
 				max-height: $brand-logo-height;
 			}
 		}
+	}
 
-		.application-brand-link {
-			color: $brand-default;
-			text-decoration: none;
+	.application-brand-link {
+		color: $brand-default;
+		text-decoration: none;
+	}
+
+	:not(.application-fixed) &.application-header-animate {
+		.application-brand-logo, .application-brand-app-title {
+			transition: all $duration-default ease-in-out;
 		}
 	}
 
-
-	.navbar-toggler {
+	.header-toggle {
 		border: none;
 
 		@include layout-collapse-down() {
@@ -131,92 +171,6 @@
 
 		@include layout-collapse-up() {
 			display: none !important;
-		}
-	}
-
-	:not(.application-fixed) &.application-header-animate {
-		.application-brand-logo, .application-brand-app-title {
-			@include animatable();
-		}
-	}
-
-	.application-header-controls {
-		display: flex;
-		align-items: center;
-		@include layout-collapse-down() {
-			visibility: hidden; // Avoids keyboard navigation when collapsed
-			transition: visibility $duration-default; // Ensure element keeps visible when header is closing
-
-			.header-open & {
-				visibility: visible; // Restores keyboard navigation
-			}
-		}
-
-		.navbar-locale {
-			margin-right: 1rem;
-
-			.btn-link {
-				border: none;
-				border-radius: 0;
-				color: $brand-default;
-
-				&:hover,
-				&.active {
-					background-color: $gray-lighter-2;
-					box-shadow: none;
-				}
-			}
-		}
-	}
-
-	@include layout-collapse-down() {
-		.application-header-toggler {
-			position: relative;
-
-			.first-line,
-			.second-line,
-			.third-line {
-				display: block;
-				width: 25px;
-				height: 4px;
-				background-color: $gray-dark;
-				background-clip: border-box;
-				border-radius: 2px;
-				transition: .25s transform, .15s opacity, .25s border-color;
-			}
-
-			&:focus,
-			&:active,
-			&:hover {
-				.first-line,
-				.second-line,
-				.third-line {
-					background-color: $brand-default;
-				}
-			}
-
-			.first-line {
-				margin-bottom: 5px;
-
-				.header-open & {
-					transform: rotate(45deg) translate(8px, 5px) scale(1.1);
-				}
-			}
-
-			.second-line {
-				.header-open & {
-					opacity: 0;
-					transform: scale(0);
-				}
-			}
-
-			.third-line {
-				margin-top: 5px;
-
-				.header-open & {
-					transform: rotate(-45deg) translate(8px, -5px) scale(1.1);
-				}
-			}
 		}
 	}
 }

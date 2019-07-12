@@ -7,8 +7,6 @@ import {MasterLayoutService} from '../master-layout/master-layout.module';
 	selector: 'or-search-box-results',
 	exportAs: 'orSearchBoxResults',
 	templateUrl: './search-box-results.component.html',
-	styleUrls: ['./search-box-results.component.scss'],
-	encapsulation: ViewEncapsulation.None
 	styleUrls: ['./search-box-results.component.scss', '../nav-tree/nav-tree.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	// tslint:disable-next-line:no-host-metadata-property

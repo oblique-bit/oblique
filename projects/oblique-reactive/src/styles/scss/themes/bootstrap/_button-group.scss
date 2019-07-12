@@ -1,0 +1,19 @@
+@import "mixins/button";
+
+// Give the line between buttons some depth
+.btn-group > .dropdown-toggle + .btn {
+	padding-left: 8px;
+	padding-right: 8px;
+}
+.btn-group > .dropdown-toggle + .btn-lg {
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+// If dropdown toggle button variant is different from main button variant, remove shared border:
+@include mixed-dropdown-btn-group(default);
+@include mixed-dropdown-btn-group(primary);
+@include mixed-dropdown-btn-group(success);
+@include mixed-dropdown-btn-group(info);
+@include mixed-dropdown-btn-group(warning);
+@include mixed-dropdown-btn-group(danger);

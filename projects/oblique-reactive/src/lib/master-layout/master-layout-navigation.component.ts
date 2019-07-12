@@ -17,7 +17,7 @@ export interface ORNavigationLink {
 @Component({
 	selector: 'or-master-layout-navigation',
 	templateUrl: './master-layout-navigation.component.html',
-	styleUrls: ['./master-layout-navigation.component.scss', './master-layout-navigation.component-navbar.scss'],
+	styleUrls: ['./master-layout-navigation.component.scss', './master-layout-navigation.component-scrollable.scss'],
 	encapsulation: ViewEncapsulation.None,
 	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'application-navigation'}
