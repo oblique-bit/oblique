@@ -40,11 +40,9 @@ export {
 	NotificationConfig,
 	NotificationModule,
 	NotificationService,
-	NotificationEvent,
 	NotificationType,
-	Notification,
-	KeyWithParams,
-	INotification
+	INotification,
+	KeyWithParams
 } from './lib/notification/notification.module';
 export {NumberFormatDirective, NumberFormatModule} from './lib/number-format/number-format.module';
 export {

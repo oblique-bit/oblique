@@ -1,17 +1,26 @@
 export interface INotification {
-	messageKey: string;
-	messageParams?: {[key: string]: any};
-	titleKey?: string;
-	titleParams?: {[key: string]: any};
 	id?: number;
 	type?: NotificationType;
+	message?: string | KeyWithParams;
+	messageParams?: { [key: string]: any };
+	title?: string | KeyWithParams;
+	titleParams?: { [key: string]: any };
+	channel?: string;
 	sticky?: boolean;
 	timeout?: number;
+	$state?: string;
+}
+
+export interface INotificationConfig {
+	channel?: string;
+	sticky?: boolean;
+	timeout?: number;
+	title?: string | KeyWithParams;
 }
 
 export interface KeyWithParams {
 	key: string;
-	params: {[key: string]: any};
+	params: { [key: string]: any };
 }
 
 export enum NotificationType {
@@ -19,36 +28,4 @@ export enum NotificationType {
 	SUCCESS = 'success',
 	WARNING = 'warning',
 	ERROR = 'error'
-}
-
-export class Notification implements INotification {
-	messageKey: string;
-	messageParams?: {[key: string]: any};
-	titleKey = '';
-	titleParams?: {[key: string]: any};
-	id?: number;
-	type = NotificationType.INFO;
-	sticky = false;
-	timeout?: number;
-
-	/**
-	 * Animation state.
-	 *
-	 * @see https://angular.io/guide/animations
-	 */
-	$state: string = null;
-
-	constructor(
-		message: string | KeyWithParams,
-		type = NotificationType.INFO,
-		sticky = false) {
-		this.messageKey = (message as KeyWithParams).key || message as string;
-		this.type = type;
-		this.sticky = sticky;
-	}
-}
-
-export interface NotificationEvent {
-	channel: string;
-	notification?: Notification;
 }

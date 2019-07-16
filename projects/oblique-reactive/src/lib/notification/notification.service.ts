@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Notification, NotificationEvent, KeyWithParams, NotificationType} from './notification.interfaces';
+import {Observable, Subject} from 'rxjs';
+import {INotification, NotificationType} from './notification.interfaces';
 import {NotificationConfig} from './notification.config';
-import {Subject, Observable} from 'rxjs';
 
 /**
  * Service for the `NotificationComponent`. Can be configured using `NotificationConfig`.
@@ -11,89 +11,55 @@ import {Subject, Observable} from 'rxjs';
  */
 @Injectable({providedIn: 'root'})
 export class NotificationService {
-
-	public get events(): Observable<NotificationEvent> {
-		return this.events$;
-	}
-
-	private readonly eventSubject: Subject<NotificationEvent> = new Subject<NotificationEvent>();
+	private readonly eventSubject: Subject<INotification> = new Subject<INotification>();
 	private readonly events$ = this.eventSubject.asObservable();
 	private currentId = 0;
 
 	constructor(public config: NotificationConfig) {
 	}
 
-	/**
-	 * Broadcasts a notification to the specified `channel`.
-	 */
-	public broadcast(channel = this.config.channel, notification: Notification): Notification {
-		if (!notification.id) {
-			notification.id = this.currentId;
-			this.currentId++;
-		}
-
-		this.eventSubject.next({
-			channel,
-			notification
-		});
-
-		return notification;
-	}
-
-	/**
-	 * Sends a notification of the specified `type` and with provided `title` and `messageKey`.
-	 * An additional `NotificationConfig` can also be provided.
-	 */
-	public send(message: string | KeyWithParams,
-				title: string | KeyWithParams = '',
-				type = NotificationType.INFO,
-				config = this.config): Notification {
-		return this.broadcast(config.channel, {
-			messageKey: (message as KeyWithParams).key || message as string,
-			messageParams: (message as KeyWithParams).params,
-			sticky: config.sticky,
-			timeout: config.timeout,
-			titleKey: (title as KeyWithParams).key || title,
-			titleParams: (title as KeyWithParams).params,
-			type
-		} as Notification);
+	public get events(): Observable<INotification> {
+		return this.events$;
 	}
 
 	/**
 	 * Sends an _info_ notification.
 	 */
-	public info(message: string | KeyWithParams, title: string | KeyWithParams = '', config = this.config): Notification {
-		return this.send(message, title, NotificationType.INFO, config);
+	public info(config: INotification | string): INotification {
+		return this.broadcast(config, NotificationType.INFO);
 	}
 
 	/**
 	 * Sends a _success_ notification.
 	 */
-	public success(message: string | KeyWithParams, title: string | KeyWithParams = '', config = this.config): Notification {
-		return this.send(message, title, NotificationType.SUCCESS, config);
+	public success(config: INotification | string): INotification {
+		return this.broadcast(config, NotificationType.SUCCESS);
 	}
 
 	/**
 	 * Sends a _warning_ notification.
 	 */
-	public warning(message: string | KeyWithParams, title: string | KeyWithParams = '', config = this.config): Notification {
-		return this.send(message, title, NotificationType.WARNING, config);
+	public warning(config: INotification | string): INotification {
+		console.log(config);
+		return this.broadcast(config, NotificationType.WARNING);
 	}
 
 	/**
 	 * Sends an _error_ notification.
 	 */
-	public error(message: string | KeyWithParams, title: string | KeyWithParams = '', config = this.config): Notification {
-		return this.send(message, title, NotificationType.ERROR, config);
+	public error(config: INotification | string): INotification {
+		return this.broadcast(config, NotificationType.ERROR);
+	}
+
+	public send(config: INotification | string, type?: NotificationType): INotification {
+		return this.broadcast(config, type || (config as INotification).type || NotificationType.INFO);
 	}
 
 	/**
 	 * Broadcasts an event to clear all notifications from specified `channel`.
 	 */
 	public clear(channel = this.config.channel) {
-		this.eventSubject.next({
-			channel
-		});
+		this.eventSubject.next({channel});
 	}
 
 	/**
@@ -101,5 +67,27 @@ export class NotificationService {
 	 */
 	public clearAll() {
 		this.eventSubject.next(null);
+	}
+
+	private broadcast(config: INotification | string, type: NotificationType): INotification {
+		if (typeof config === 'string') {
+			config = {
+				message: config
+			};
+		}
+		const notification = {
+			id: config.id || this.currentId++,
+			type: type,
+			message: config.message,
+			messageParams: config.messageParams,
+			title: config.title || this.config[type].title,
+			titleParams: config.titleParams,
+			channel: config.channel || this.config[type].channel || this.config.channel,
+			sticky: config.sticky || this.config[type].sticky || this.config.sticky,
+			timeout: config.timeout || this.config[type].timeout || this.config.timeout
+		};
+		this.eventSubject.next(notification);
+
+		return notification;
 	}
 }

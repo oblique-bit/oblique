@@ -10,7 +10,7 @@ import {NotificationConfig} from './notification.config';
 export {NotificationComponent} from './notification.component';
 export {NotificationService} from './notification.service';
 export {NotificationConfig} from './notification.config';
-export {INotification, KeyWithParams, Notification, NotificationEvent, NotificationType} from './notification.interfaces';
+export {KeyWithParams, INotification, NotificationType} from './notification.interfaces';
 
 @NgModule({
 	imports: [

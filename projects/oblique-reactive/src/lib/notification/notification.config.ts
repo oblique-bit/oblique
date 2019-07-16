@@ -1,25 +1,26 @@
 import {Injectable} from '@angular/core';
+import {INotificationConfig} from './notification.interfaces';
 
-/**
- * Configuration service for the Notification component.
- *
- * You can inject this service, typically in your root component, and customize the values of its properties in
- * order to provide default values for all the notifications used in the application.
- */
 @Injectable({providedIn: 'root'})
 export class NotificationConfig {
-	/**
-	 * The channel name where notifications will be broadcasted to.
-	 */
+	sticky = false;
+	timeout = 3500;
 	channel = 'default';
 
-	/**
-	 * Defines if notifications should be manually closed or if they should auto-close after some timeout.
-	 */
-	sticky = false;
+	info = {
+		title: 'i18n.notification.type.info'
+	} as INotificationConfig;
 
-	/**
-	 * The duration delay to wait before closing non-sticky notifications. Applies only for _non-stikcy_ notifications.
-	 */
-	timeout = 3500;
+	success = {
+		title: 'i18n.notification.type.success'
+	} as INotificationConfig;
+
+	warning = {
+		title: 'i18n.notification.type.warning'
+	} as INotificationConfig;
+
+	error = {
+		title: 'i18n.notification.type.error',
+		sticky: true,
+	} as INotificationConfig;
 }

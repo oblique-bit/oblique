@@ -1,7 +1,7 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 
-import {Notification, NotificationType} from './notification.interfaces';
+import {INotification} from './notification.interfaces';
 import {NotificationService} from './notification.service';
 
 @Component({
@@ -17,16 +17,16 @@ import {NotificationService} from './notification.service';
 			state('in', style({opacity: 1})),
 			transition('* => in', [
 				animate('650ms ease-in-out', keyframes([
-					style({offset: 0,   opacity: 0, 'max-height': 0,        transform: 'translateX(15%)',   overflow: 'hidden'}),
-					style({offset: 0.6, opacity: 0, 'max-height': '500px',  transform: 'translateX(15%)',   overflow: 'hidden'}),
-					style({offset: 1,   opacity: 1, 'max-height': 'none',   transform: 'translateX(0)',     overflow: 'hidden'})
+					style({offset: 0, opacity: 0, 'max-height': 0, transform: 'translateX(15%)', overflow: 'hidden'}),
+					style({offset: 0.6, opacity: 0, 'max-height': '500px', transform: 'translateX(15%)', overflow: 'hidden'}),
+					style({offset: 1, opacity: 1, 'max-height': 'none', transform: 'translateX(0)', overflow: 'hidden'})
 				]))
 			]),
 			state('in-first', style({opacity: 1})),
 			transition('* => in-first', [
 				animate('350ms ease-in-out', keyframes([
-					style({offset: 0,   opacity: 0, transform: 'translateX(15%)'}),
-					style({offset: 1,   opacity: 1, transform: 'translateX(0)'})
+					style({offset: 0, opacity: 0, transform: 'translateX(15%)'}),
+					style({offset: 1, opacity: 1, transform: 'translateX(0)'})
 				]))
 			]),
 			state('out',
@@ -34,64 +34,43 @@ import {NotificationService} from './notification.service';
 			),
 			transition('* => out', [
 				animate('350ms ease-in-out', keyframes([
-					style({offset: 0,   opacity: 1, 'max-height': '500px',  overflow: 'hidden'}),
-					style({offset: 0.2, opacity: 0, 'max-height': '500px',  overflow: 'hidden'}),
-					style({offset: 1,   opacity: 0, 'max-height': 0,        overflow: 'hidden'}),
+					style({offset: 0, opacity: 1, 'max-height': '500px', overflow: 'hidden'}),
+					style({offset: 0.2, opacity: 0, 'max-height': '500px', overflow: 'hidden'}),
+					style({offset: 1, opacity: 0, 'max-height': 0, overflow: 'hidden'}),
 				]))
 			])
 		])
 	]
 })
 export class NotificationComponent {
-
-	public static ANIMATION_OUT_DURATION = 350;
-
-	@Input()
-	channel: string;
-
-	@Input()
-	timeout: number;
-
-	public notifications: Notification[] = [];
-
+	public static REMOVE_DELAY = 350;
+	@Input() channel: string;
+	public notifications: INotification[] = [];
 	public variant: { [type: string]: string } = {};
 
 	constructor(private readonly notificationService: NotificationService) {
 		this.channel = this.channel || notificationService.config.channel;
-		this.timeout = this.timeout || notificationService.config.timeout;
-
-		this.variant[NotificationType.INFO] = 'alert alert-info';
-		this.variant[NotificationType.SUCCESS] = 'alert alert-success';
-		this.variant[NotificationType.WARNING] = 'alert alert-warning';
-		this.variant[NotificationType.ERROR] = 'alert alert-danger';
 
 		this.notificationService.events.subscribe(
-			(event) => {
-				if (!event || (!event.notification && event.channel === this.channel)) {
+			(notification) => {
+				if (!notification || (!notification.message && notification.channel === this.channel)) {
 					this.clear();
-				} else if (event.channel === this.channel) {
-					this.open(event.notification);
+				} else if (notification.channel === this.channel) {
+					this.open(notification);
 				}
 			}
 		);
 	}
 
-	// Public API:
-	// ---------------------------------
-
 	/**
 	 * Adds & opens the specified notification.
 	 */
-	public open(notification) {
-
-		// Prepare for enter animation:
+	public open(notification: INotification) {
 		notification.$state = this.notifications.length ? 'in' : 'in-first';
-
-		// Append notification to inbox:
 		this.notifications.unshift(notification);
 
 		if (!notification.sticky) {
-			setTimeout(() => this.close(notification), notification.timeout || this.timeout);
+			setTimeout(() => this.close(notification), notification.timeout);
 		}
 	}
 
@@ -101,11 +80,8 @@ export class NotificationComponent {
 	 * @see remove
 	 */
 	public close(notification) {
-		// Start close animation:
 		notification.$state = 'out';
-
-		// Remove element after close:
-		setTimeout(() => this.remove(notification), NotificationComponent.ANIMATION_OUT_DURATION);
+		setTimeout(() => this.remove(notification), NotificationComponent.REMOVE_DELAY);
 	}
 
 	/**
@@ -119,7 +95,6 @@ export class NotificationComponent {
 	 * Closes all notifications in the current subscribed channel.
 	 */
 	public clear() {
-		// Clear the array without changing its reference:
 		this.notifications.length = 0;
 	}
 }

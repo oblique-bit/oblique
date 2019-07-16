@@ -1,7 +1,7 @@
 import {inject, TestBed} from '@angular/core/testing';
 import {first, take} from 'rxjs/operators';
 import {NotificationService} from './notification.service';
-import {NotificationEvent, NotificationType} from './notification.interfaces';
+import {INotification, NotificationType} from './notification.interfaces';
 import {NotificationConfig} from './notification.config';
 
 describe('NotificationService', () => {
@@ -26,187 +26,157 @@ describe('NotificationService', () => {
 			(config: NotificationConfig, service: NotificationService) => {
 				notificationService = service;
 				notificationConfig = config;
-				spyOn(notificationService, 'broadcast').and.callThrough();
 			}
 		)
 	);
 
 	describe('send()', () => {
-		let notificationEvent: NotificationEvent;
+		let notification: INotification;
 		beforeEach(() => {
 			notificationService.events.pipe(first()).subscribe(event => {
-				notificationEvent = event;
+				notification = event;
 			});
 		});
 
 		it('should broadcast a notification event', () => {
-			notificationService.send(message, title);
+			notificationService.send({message, title});
 
-			expect(notificationService.broadcast).toHaveBeenCalled();
-			expect(notificationEvent.channel).toBe(notificationConfig.channel);
-			expect(notificationEvent.notification.messageKey).toBe(message);
-			expect(notificationEvent.notification.titleKey).toBe(title);
+			expect(notification.channel).toBe(notificationConfig.channel);
+			expect(notification.message).toBe(message);
+			expect(notification.title).toBe(title);
 		});
 
 		it('should broadcast a notification with a custom NotificationConfig', () => {
 			notificationConfig.channel = 'test';
 			notificationConfig.timeout = 42;
 			notificationConfig.sticky = true;
-			notificationService.send(message, title, NotificationType.SUCCESS, notificationConfig);
+			notificationService.send(message, NotificationType.SUCCESS);
 
-			expect(notificationService.broadcast).toHaveBeenCalled();
-			expect(notificationEvent.channel).toBe('test');
-			expect(notificationEvent.notification.type).toBe(NotificationType.SUCCESS);
-			expect(notificationEvent.notification.messageKey).toBe(message);
-			expect(notificationEvent.notification.titleKey).toBe(title);
-			expect(notificationEvent.notification.timeout).toBe(42);
-			expect(notificationEvent.notification.sticky).toBe(true);
+			expect(notification.channel).toBe('test');
+			expect(notification.type).toBe(NotificationType.SUCCESS);
+			expect(notification.message).toBe(message);
+			expect(notification.title).toBe('i18n.notification.type.success');
+			expect(notification.timeout).toBe(42);
+			expect(notification.sticky).toBe(true);
 		});
 	});
 
 	describe('send()', () => {
-		const notificationEvents: NotificationEvent[] = [];
+		const notifications: INotification[] = [];
 		const count = 5;
 		beforeEach(() => {
 			notificationService.events.pipe(take(count)).subscribe(event => {
-				notificationEvents.push(event);
+				notifications.push(event);
 			});
 		});
 
 		it('should broadcast multiple notification events', () => {
 			for (let i = 0; i < count; i++) {
-				notificationService.send(message, title);
+				notificationService.send(message);
 			}
 
-			expect(notificationService.broadcast).toHaveBeenCalledTimes(count);
-			expect(notificationEvents.length).toBe(count);
+			expect(notifications.length).toBe(count);
 		});
 	});
 
 	describe('clear()', () => {
-		let notificationEvent: NotificationEvent;
+		let notification: INotification;
 		beforeEach(() => {
 			notificationService.events.pipe(first()).subscribe(event => {
-				notificationEvent = event;
+				notification = event;
 			});
 		});
 
 		it('should emit a `clear` NotificationEvent', () => {
 			notificationService.clear();
-			expect(notificationEvent).toBeDefined();
-			expect(notificationEvent.notification).toBeUndefined();
+			expect(notification).toBeDefined();
+			expect(notification.message).toBeUndefined();
 		});
 	});
 
 	describe('clearAll()', () => {
 		let notificationEmitted = false;
-		let notificationEvent: NotificationEvent;
+		let notification: INotification;
 		beforeEach(() => {
 			notificationService.events.pipe(first()).subscribe(event => {
+				console.log(event);
 				notificationEmitted = true;
-				notificationEvent = event;
+				notification = event;
 			});
 		});
 
 		it('should emit a `clear all` NotificationEvent', () => {
 			notificationService.clearAll();
 			expect(notificationEmitted).toBeTruthy();
-			expect(notificationEvent).toBeNull();
+			expect(notification).toBeNull();
 		});
 	});
 
 	describe('info()', () => {
-		let notificationEvent: NotificationEvent;
+		let notification: INotification;
 		beforeEach(() => {
 			notificationService.events.pipe(first()).subscribe(event => {
-				notificationEvent = event;
+				notification = event;
 			});
 		});
 
 		it('should broadcast a NotificationType.INFO notification event', () => {
-			notificationService.info(message, title);
+			notificationService.info(message);
 
-			expect(notificationService.broadcast).toHaveBeenCalled();
-
-			expect(notificationEvent).toBeDefined();
-			expect(notificationEvent.notification).toBeDefined();
-			expect(notificationEvent.notification.type).toBe(NotificationType.INFO);
-		});
-	});
-
-	describe('info()', () => {
-		let notificationEvent: NotificationEvent;
-		beforeEach(() => {
-			notificationService.events.pipe(first()).subscribe(event => {
-				notificationEvent = event;
-			});
-		});
-
-		it('should broadcast a NotificationType.INFO notification event', () => {
-			notificationService.info(message, title);
-
-			expect(notificationService.broadcast).toHaveBeenCalled();
-
-			expect(notificationEvent).toBeDefined();
-			expect(notificationEvent.notification).toBeDefined();
-			expect(notificationEvent.notification.type).toBe(NotificationType.INFO);
+			expect(notification).toBeDefined();
+			expect(notification.message).toBe(message);
+			expect(notification.type).toBe(NotificationType.INFO);
 		});
 	});
 
 	describe('success()', () => {
-		let notificationEvent: NotificationEvent;
+		let notification: INotification;
 		beforeEach(() => {
 			notificationService.events.pipe(first()).subscribe(event => {
-				notificationEvent = event;
+				notification = event;
 			});
 		});
 
 		it('should broadcast a NotificationType.SUCCESS notification event', () => {
-			notificationService.success(message, title);
+			notificationService.success(message);
 
-			expect(notificationService.broadcast).toHaveBeenCalled();
-
-			expect(notificationEvent).toBeDefined();
-			expect(notificationEvent.notification).toBeDefined();
-			expect(notificationEvent.notification.type).toBe(NotificationType.SUCCESS);
+			expect(notification).toBeDefined();
+			expect(notification.message).toBe(message);
+			expect(notification.type).toBe(NotificationType.SUCCESS);
 		});
 	});
 
 	describe('warning()', () => {
-		let notificationEvent: NotificationEvent;
+		let notification: INotification;
 		beforeEach(() => {
 			notificationService.events.pipe(first()).subscribe(event => {
-				notificationEvent = event;
+				notification = event;
 			});
 		});
 
 		it('should broadcast a NotificationType.WARNING notification event', () => {
-			notificationService.warning(message, title);
+			notificationService.warning(message);
 
-			expect(notificationService.broadcast).toHaveBeenCalled();
-
-			expect(notificationEvent).toBeDefined();
-			expect(notificationEvent.notification).toBeDefined();
-			expect(notificationEvent.notification.type).toBe(NotificationType.WARNING);
+			expect(notification).toBeDefined();
+			expect(notification.message).toBe(message);
+			expect(notification.type).toBe(NotificationType.WARNING);
 		});
 	});
 
 	describe('error()', () => {
-		let notificationEvent: NotificationEvent;
+		let notification: INotification;
 		beforeEach(() => {
 			notificationService.events.pipe(first()).subscribe(event => {
-				notificationEvent = event;
+				notification = event;
 			});
 		});
 
 		it('should broadcast a NotificationType.ERROR notification event', () => {
-			notificationService.error(message, title);
+			notificationService.error(message);
 
-			expect(notificationService.broadcast).toHaveBeenCalled();
-
-			expect(notificationEvent).toBeDefined();
-			expect(notificationEvent.notification).toBeDefined();
-			expect(notificationEvent.notification.type).toBe(NotificationType.ERROR);
+			expect(notification).toBeDefined();
+			expect(notification.message).toBe(message);
+			expect(notification.type).toBe(NotificationType.ERROR);
 		});
 	});
 });
