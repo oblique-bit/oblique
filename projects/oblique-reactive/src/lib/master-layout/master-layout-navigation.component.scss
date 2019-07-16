@@ -154,6 +154,12 @@
 				transform: none;
 				transition: none;
 				display: block;
+
+				a:hover,
+				a:focus,
+				a:active {
+					background-color: $gray-lighter;
+				}
 			}
 
 			@include layout-collapse-down() {
