@@ -3,7 +3,7 @@ import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest}
 import {Observable} from 'rxjs';
 import {finalize, tap} from 'rxjs/operators';
 
-import {NotificationConfig, NotificationService, NotificationType} from '../notification/notification.module';
+import {NotificationService, NotificationType} from '../notification/notification.module';
 import {SpinnerService} from '../spinner/spinner.module';
 import {ObliqueHttpInterceptorConfig} from './oblique-http-interceptor.config';
 import {ObliqueHttpInterceptorEvents} from './oblique-http-interceptor.events';
@@ -15,7 +15,6 @@ export interface ObliqueRequest {
 		severity: NotificationType;
 		title: string;
 		text: string;
-		config: NotificationConfig;
 	};
 	spinner: boolean;
 }
@@ -98,12 +97,11 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 
 	private notify(notification: ObliqueRequest['notification'], error: HttpErrorResponse): void {
 		if (notification.active || error.status >= 500 || error.status === 0) {
-			this.notificationService.send(
-				notification.text || 'i18n.error.http.status.' + error.status,
-				notification.title || error.statusText,
-				notification.severity,
-				notification.config
-			);
+			this.notificationService.send({
+				message: notification.text || 'i18n.error.http.status.' + error.status,
+				title: notification.title || error.statusText,
+				type: notification.severity
+			});
 		}
 	}
 
