@@ -90,7 +90,7 @@ export class MasterLayoutConfig {
 	 * Controls the application's main navigation
 	 */
 	navigation: MasterLayoutNavigation = {
-		fullWidth: true,
+		fullWidth: false,
 		scrollable: false,
 		scrollDelta: 95,
 		activeClass: 'active',
