@@ -1,8 +1,8 @@
-@import "~font-awesome/scss/variables";
-@import "../../styles/scss/core/variables";
-@import "../../styles/scss/core/mixins/icon";
-@import "../../styles/scss/core/mixins/layout";
-@import "../../styles/scss/core/mixins/nav";
+@import "../../../../../../node_modules/font-awesome/scss/variables";
+@import "../../../styles/scss/core/variables";
+@import "../../../styles/scss/core/mixins/icon";
+@import "../../../styles/scss/core/mixins/layout";
+@import "../../../styles/scss/core/mixins/nav";
 
 .application-navigation {
 	display: block;

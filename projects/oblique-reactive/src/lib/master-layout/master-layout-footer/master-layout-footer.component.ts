@@ -1,10 +1,10 @@
 import {Component, ContentChildren, HostBinding, QueryList, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 
-import {Unsubscribable} from '../unsubscribe.class';
-import {ScrollingEvents} from '../scrolling/scrolling.module';
-import {MasterLayoutService} from './master-layout.service';
-import {MasterLayoutConfig} from './master-layout.config';
+import {Unsubscribable} from '../../unsubscribe.class';
+import {ScrollingEvents} from '../../scrolling/scrolling.module';
+import {MasterLayoutService} from '../master-layout.service';
+import {MasterLayoutConfig} from '../master-layout.config';
 
 @Component({
 	selector: 'or-master-layout-footer',

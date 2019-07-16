@@ -15,11 +15,11 @@ import {
 import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
 
-import {ScrollingEvents} from '../scrolling/scrolling.module';
-import {Unsubscribable} from '../unsubscribe.class';
-import {MasterLayoutService} from './master-layout.service';
-import {LocaleObject, MasterLayoutConfig} from './master-layout.config';
-import {ORNavigationLink} from './master-layout-navigation.component';
+import {ScrollingEvents} from '../../scrolling/scrolling.module';
+import {Unsubscribable} from '../../unsubscribe.class';
+import {MasterLayoutService} from '../master-layout.service';
+import {LocaleObject, MasterLayoutConfig} from '../master-layout.config';
+import {ORNavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
 
 @Component({
 	selector: 'or-master-layout-header',

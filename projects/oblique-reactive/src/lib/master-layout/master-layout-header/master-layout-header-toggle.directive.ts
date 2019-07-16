@@ -1,5 +1,5 @@
 import {Directive, HostListener} from '@angular/core';
-import {MasterLayoutService} from './master-layout.service';
+import {MasterLayoutService} from '../master-layout.service';
 
 @Directive({
 	selector: '[orMasterLayoutHeaderToggle]',

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ORNavigationLink} from './master-layout-navigation.component';
+import {ORNavigationLink} from './master-layout-navigation/master-layout-navigation.component';
 
 interface MasterLayoutHeader {
 	animate: boolean;

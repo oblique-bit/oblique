@@ -1,6 +1,6 @@
 import {AfterViewInit, ContentChildren, Directive, ElementRef, EventEmitter, Output, QueryList} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
-import {Unsubscribable} from '../unsubscribe.class';
+import {Unsubscribable} from '../../unsubscribe.class';
 
 @Directive({
 	selector: '[orMasterLayoutNavigationMenu]',

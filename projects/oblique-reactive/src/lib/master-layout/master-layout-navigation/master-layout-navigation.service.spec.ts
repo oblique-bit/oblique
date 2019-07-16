@@ -3,7 +3,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {of} from 'rxjs';
 
 import {MasterLayoutNavigationService} from './master-layout-navigation.service';
-import {MasterLayoutService} from '../master-layout/master-layout.service';
+import {MasterLayoutService} from '../master-layout.service';
 
 describe('MasterLayoutNavigationService', () => {
 	const translateMock = {

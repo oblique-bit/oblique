@@ -3,8 +3,8 @@ import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {TranslateService} from '@ngx-translate/core';
 
-import {Unsubscribable} from '../unsubscribe.class';
-import {MasterLayoutService} from '../master-layout/master-layout.service';
+import {Unsubscribable} from '../../unsubscribe.class';
+import {MasterLayoutService} from '../master-layout.service';
 
 @Injectable({
 	providedIn: 'root'

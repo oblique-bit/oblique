@@ -2,9 +2,9 @@ import {AfterViewInit, Component, ElementRef, HostBinding, HostListener, Input, 
 import {Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
 
-import {Unsubscribable} from '../unsubscribe.class';
-import {MasterLayoutService} from './master-layout.service';
-import {MasterLayoutConfig} from './master-layout.config';
+import {Unsubscribable} from '../../unsubscribe.class';
+import {MasterLayoutService} from '../master-layout.service';
+import {MasterLayoutConfig} from '../master-layout.config';
 import {MasterLayoutNavigationService} from './master-layout-navigation.service';
 
 export interface ORNavigationLink {
