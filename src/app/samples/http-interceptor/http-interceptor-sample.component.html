@@ -63,7 +63,7 @@
 						<div class="form-group row">
 							<label class="col-4 col-form-label">Severity</label>
 							<select [(ngModel)]="notification.severity" class="col-8 form-control">
-								<option *ngFor="let variant of variants" [ngValue]="variant">{{variant.name}}</option>
+								<option *ngFor="let variant of variants | keyvalue" [ngValue]="variant.value">{{variant.key}}</option>
 							</select>
 						</div>
 						<div class="form-group row">

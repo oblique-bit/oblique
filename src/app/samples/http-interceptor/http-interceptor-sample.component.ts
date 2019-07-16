@@ -24,7 +24,7 @@ export class HttpInterceptorSampleComponent {
 		timeout: 3500
 	};
 	spinner = true;
-	variants = NotificationType.VALUES;
+	variants = NotificationType;
 	parallelRequests = 5;
 
 	constructor(private readonly notificationService: NotificationService,
@@ -79,8 +79,6 @@ export class HttpInterceptorSampleComponent {
 			evt.notification.severity = this.notification.severity;
 			evt.notification.title = this.notification.title;
 			evt.notification.text = this.notification.text;
-			evt.notification.config.timeout = this.notification.timeout;
-			evt.notification.config.sticky = this.notification.sticky;
 			evt.spinner = this.spinner;
 		});
 	}

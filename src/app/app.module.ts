@@ -14,7 +14,6 @@ import {
 	MasterLayoutConfig,
 	MasterLayoutModule, MaterialConfigService,
 	MultiselectModule,
-	NotificationConfig,
 	NotificationModule,
 	ObliqueHttpInterceptor,
 	ObliqueHttpInterceptorConfig,
@@ -78,13 +77,6 @@ export function createTranslateLoader(http: HttpClient) {
 		TextControlClearModule
 	],
 	providers: [
-		{
-			provide: NotificationConfig,
-			useValue: {
-				channel: 'app',
-				timeout: 5000
-			}
-		},
 		{provide: MaterialConfigService, useValue: {enabled: false}},
 		{provide: HTTP_INTERCEPTORS, useClass: ObliqueHttpInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true}
@@ -107,7 +99,6 @@ export class AppModule {
 		tooltipConfig.container = 'body';
 		datepickerConfig.navigation = 'arrows';
 
-		interceptorConfig.api.notification.config.channel = 'app';
 		interceptorConfig.api.url = HttpInterceptorSampleComponent.API_URL;
 		config.locale.locales = ['en', 'fr'];
 	}

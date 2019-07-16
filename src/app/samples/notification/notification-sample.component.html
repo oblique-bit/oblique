@@ -6,7 +6,7 @@
 			<div class="card h-100">
 				<h3 class="card-header">Preview</h3>
 				<div class="card-body notification-sample-preview">
-					<or-notification [channel]="sampleChannel" [timeout]="timeout"></or-notification>
+					<or-notification [channel]="sampleChannel"></or-notification>
 				</div>
 			</div>
 		</div>
@@ -90,16 +90,16 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label for="or-notification-variant" class="form-control-label">Variant</label>
+							<select [(ngModel)]="variant" class="form-control" id="or-notification-variant">
+								<option *ngFor="let variant of variants | keyvalue" [ngValue]="variant.value">{{variant.key}}</option>
+							</select>
+						</div>
+						<div class="form-group">
 							<label for="or-notification-channel" class="form-control-label">Channel</label>
 							<select [(ngModel)]="channel" class="form-control" id="or-notification-channel">
 								<option value="{{sampleChannel}}">{{sampleChannel}}</option>
 								<option value="{{appChannel}}">{{appChannel}} (from NotificationConfig)</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="or-notification-variant" class="form-control-label">Variant</label>
-							<select [(ngModel)]="variant" class="form-control" id="or-notification-variant">
-								<option *ngFor="let variant of variants" [ngValue]="variant">{{variant.name}}</option>
 							</select>
 						</div>
 						<div class="form-group row" *ngIf="variant.toString() !== 'error'">
