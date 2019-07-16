@@ -50,6 +50,6 @@
 	@include alert-variant($brand-warning-light, $fa-var-exclamation, $brand-warning);
 }
 
-.alert-danger {
+.alert-error {
 	@include alert-variant($brand-danger-light, $fa-var-times, $brand-danger);
 }
