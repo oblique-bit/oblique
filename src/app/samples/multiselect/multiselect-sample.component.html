@@ -6,10 +6,10 @@
 		</div>
 		<div class="card-body">
 			<section>
-				<label for="default">Default multiselect</label>
+				<label for="{{default.id}}">Default multiselect</label>
 				<div class="row">
 					<div class="col-md-6">
-						<or-multiselect [options]="states" [(ngModel)]="model" orId="default">
+						<or-multiselect [options]="states" [(ngModel)]="model" idPrefix="default" #default>
 						</or-multiselect>
 					</div>
 					<div class="col-md-6">
@@ -17,7 +17,7 @@
 					</div>
 				</div>
 
-				<label for="labelProperty">Multiselect with complex options and <code>labelProperty</code></label>
+				<label for="{{label.id}}">Multiselect with complex options and <code>labelProperty</code></label>
 				<div class="row">
 					<div class="col-md-6">
 						<or-multiselect [options]="statesComplex"
@@ -25,7 +25,8 @@
 										[showCheckAll]="true"
 										[showUncheckAll]="true"
 										labelProperty="name"
-										orId="labelProperty">
+										idPrefix="labelProperty"
+										#label>
 						</or-multiselect>
 					</div>
 					<div class="col-md-6">
@@ -33,7 +34,7 @@
 					</div>
 				</div>
 
-				<label for="labelFormatter">Multiselect with complex options, search filter, <code>labelFormatter</code>...</label>
+				<label for="{{formatter.id}}">Multiselect with complex options, search filter, <code>labelFormatter</code>...</label>
 				<div class="row">
 					<div class="col-md-6">
 						<or-multiselect [options]="statesComplex"
@@ -42,7 +43,8 @@
 										[showUncheckAll]="true"
 										[enableSearch]="true"
 										[texts]="{defaultTitle: '... and a custom title'}"
-										[labelFormatter]="complexStateLabelFormatter">
+										[labelFormatter]="complexStateLabelFormatter"
+										#formatter>
 						</or-multiselect>
 					</div>
 					<div class="col-md-6">
@@ -50,10 +52,10 @@
 					</div>
 				</div>
 
-				<label for="dropup">Dropup variation</label>
+				<label for="{{dropup.id}}">Dropup variation</label>
 				<div class="row">
 					<div class="col-md-6">
-						<or-multiselect [options]="states" [(ngModel)]="model" [dropup]="true" orId="dropup">
+						<or-multiselect [options]="states" [(ngModel)]="model" [dropup]="true" idPrefix="dropup" #dropup>
 						</or-multiselect>
 					</div>
 					<div class="col-md-6">
