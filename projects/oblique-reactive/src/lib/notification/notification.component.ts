@@ -60,7 +60,6 @@ export class NotificationComponent {
 		this.channel = this.channel || notificationService.config.channel;
 		this.timeout = this.timeout || notificationService.config.timeout;
 
-		this.variant[NotificationType.DEFAULT.name] = 'alert alert-default';
 		this.variant[NotificationType.INFO.name] = 'alert alert-info';
 		this.variant[NotificationType.SUCCESS.name] = 'alert alert-success';
 		this.variant[NotificationType.WARNING.name] = 'alert alert-warning';

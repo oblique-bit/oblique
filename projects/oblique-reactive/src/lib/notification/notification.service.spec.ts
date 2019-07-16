@@ -115,7 +115,7 @@ describe('NotificationService', () => {
 		});
 	});
 
-	describe('default()', () => {
+	describe('info()', () => {
 		let notificationEvent: NotificationEvent;
 		beforeEach(() => {
 			notificationService.events.pipe(first()).subscribe(event => {
@@ -123,14 +123,14 @@ describe('NotificationService', () => {
 			});
 		});
 
-		it('should broadcast a NotificationType.DEFAULT notification event', () => {
-			notificationService.default(message, title);
+		it('should broadcast a NotificationType.INFO notification event', () => {
+			notificationService.info(message, title);
 
 			expect(notificationService.broadcast).toHaveBeenCalled();
 
 			expect(notificationEvent).toBeDefined();
 			expect(notificationEvent.notification).toBeDefined();
-			expect(notificationEvent.notification.type).toBe(NotificationType.DEFAULT);
+			expect(notificationEvent.notification.type).toBe(NotificationType.INFO);
 		});
 	});
 

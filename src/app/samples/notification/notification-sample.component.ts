@@ -18,7 +18,7 @@ export class NotificationSampleComponent {
 
 	// Selection:
 	channel = this.sampleChannel;
-	variant = NotificationType.DEFAULT;
+	variant = NotificationType.INFO;
 	title = {
 		text: 'Well done!',
 		key: 'i18n.notification.sampleTitle',
@@ -64,9 +64,6 @@ export class NotificationSampleComponent {
 				break;
 			case NotificationType.ERROR:
 				this.notificationService.error(message, title, config);
-				break;
-			default:
-				this.notificationService.default(message, title, config);
 				break;
 		}
 	}

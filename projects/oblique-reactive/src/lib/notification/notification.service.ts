@@ -46,7 +46,7 @@ export class NotificationService {
 	 */
 	public send(message: string | KeyWithParams,
 				title: string | KeyWithParams = '',
-				type = NotificationType.DEFAULT,
+				type = NotificationType.INFO,
 				config = this.config): Notification {
 		return this.broadcast(config.channel, {
 			messageKey: (message as KeyWithParams).key || message as string,
@@ -57,13 +57,6 @@ export class NotificationService {
 			titleParams: (title as KeyWithParams).params,
 			type
 		} as Notification);
-	}
-
-	/**
-	 * Sends a _default_ notification.
-	 */
-	public default(message: string | KeyWithParams, title: string | KeyWithParams = '', config = this.config): Notification {
-		return this.send(message, title, NotificationType.DEFAULT, config);
 	}
 
 	/**
