@@ -9,7 +9,7 @@ import {
 	DoCheck,
 	ElementRef,
 	EventEmitter,
-	forwardRef,
+	forwardRef, HostBinding,
 	HostListener,
 	Input,
 	IterableDiffers,
@@ -24,9 +24,6 @@ import {FilterBoxComponent} from '../filter-box/filter-box.component';
 import {MultiselectConfig} from './multiselect.config';
 import {MultiselectTexts} from './multiselect.texts';
 import {MaterialService} from '../material.service';
-
-// See: https://github.com/angular/angular/issues/5145
-let nextId = 0;
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular material select instead
@@ -50,7 +47,7 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	@Input() disabled = false;
 	@Input() labelProperty: string;
 	@Input() labelFormatter: (option: any) => string;
-	@Input() orId: string;
+	@Input() @HostBinding('id') idPrefix = 'multiselect';
 
 	//Inputs that are initialized by the config
 	@Input() enableAllSelectedText;
@@ -66,11 +63,9 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	@Output() onAdded = new EventEmitter<any>();
 	@Output() onRemoved = new EventEmitter<any>();
 
-	@ViewChild('orFilterBox', { static: false })
-	filterBox: FilterBoxComponent;
+	@ViewChild('orFilterBox', {static: false}) filterBox: FilterBoxComponent;
 
-	id = `or-multiselect-${nextId++}`;
-
+	id: string;
 	model: any[] = [];
 	title: string;
 	titleTranslateParams: any = {};
@@ -80,8 +75,8 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 
 	constructor(private readonly element: ElementRef,
 				private readonly multiselectTexts: MultiselectTexts,
+				private readonly multiselectConfig: MultiselectConfig,
 				materialService: MaterialService,
-				multiselectConfig: MultiselectConfig,
 				differs: IterableDiffers) {
 		this.differ = differs.find([]).create(null);
 
@@ -131,6 +126,8 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	ngOnInit() {
 		this.texts = Object.assign({}, this.multiselectTexts, this.texts);
 		this.title = this.texts.defaultTitle || '';
+		this.idPrefix = this.multiselectConfig.getUniqueId(this.idPrefix);
+		this.id = `${this.idPrefix}-toggle`;
 	}
 
 	writeValue(value: any): void {
@@ -166,7 +163,7 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 			setTimeout(() => {
 				// WAI-ARIA: describe inner filter box input:
 				// TODO: create a ngAria-like directive
-				this.filterBox.filterControl.nativeElement.setAttribute('aria-describedby', `${this.id}-search`);
+				this.filterBox.filterControl.nativeElement.setAttribute('aria-describedby', `${this.idPrefix}-search`);
 			}, 0);
 		}
 	}

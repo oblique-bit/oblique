@@ -9,5 +9,15 @@ export class MultiselectConfig {
 	selectionLimit = 0;
 	showCheckAll = false;
 	showUncheckAll = false;
+
+	private readonly occurrences: {[key: string]: number} = {};
+
+	getUniqueId(id: string) {
+		if (!this.occurrences[id]) {
+			this.occurrences[id] = 0;
+		}
+
+		return id + '_' + this.occurrences[id]++;
+	}
 }
 
