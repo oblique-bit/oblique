@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {INotification, NotificationType} from './notification.interfaces';
+import {INotification, KeyWithParams, NotificationType} from './notification.interfaces';
 import {NotificationConfig} from './notification.config';
 
 /**
@@ -13,7 +13,6 @@ import {NotificationConfig} from './notification.config';
 export class NotificationService {
 	private readonly eventSubject: Subject<INotification> = new Subject<INotification>();
 	private readonly events$ = this.eventSubject.asObservable();
-	private currentId = 0;
 
 	constructor(public config: NotificationConfig) {
 	}
@@ -76,7 +75,7 @@ export class NotificationService {
 			};
 		}
 		const notification = {
-			id: config.id || this.currentId++,
+			idPrefix: config.idPrefix || `notification-${type}-${this.formatMessage(config.message)}-`,
 			type: type,
 			message: config.message,
 			messageParams: config.messageParams,
@@ -89,5 +88,12 @@ export class NotificationService {
 		this.eventSubject.next(notification);
 
 		return notification;
+	}
+
+	// Do not make it static as it breaks the build
+	private formatMessage(message: string | KeyWithParams): string {
+		return typeof message === 'string'
+			? message.substr(0, 15).replace(/[^\w]/gi, '_').toLowerCase()
+			: message.key;
 	}
 }

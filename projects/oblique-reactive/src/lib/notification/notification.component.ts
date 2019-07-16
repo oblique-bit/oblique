@@ -67,6 +67,7 @@ export class NotificationComponent {
 	 */
 	public open(notification: INotification) {
 		notification.$state = this.notifications.length ? 'in' : 'in-first';
+		this.fixIDPrefix(notification);
 		this.notifications.unshift(notification);
 
 		if (!notification.sticky) {
@@ -96,5 +97,12 @@ export class NotificationComponent {
 	 */
 	public clear() {
 		this.notifications.length = 0;
+	}
+
+	private fixIDPrefix(notification: INotification) {
+		const offset = this.notifications.filter((notif) => notif.idPrefix.match('^' + notification.idPrefix)).length;
+		if (offset) {
+			notification.idPrefix = `${notification.idPrefix}${offset}-`;
+		}
 	}
 }

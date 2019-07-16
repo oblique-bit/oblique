@@ -1,5 +1,5 @@
 export interface INotification {
-	id?: number;
+	idPrefix?: string;
 	type?: NotificationType;
 	message?: string | KeyWithParams;
 	messageParams?: { [key: string]: any };
