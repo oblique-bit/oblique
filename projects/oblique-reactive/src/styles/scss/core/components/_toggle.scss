@@ -14,4 +14,3 @@
 .toggle-left-right          { @include toggle-icon($fa-var-angle-left, $fa-var-angle-right); }
 .toggle-left-down           { @include toggle-icon($fa-var-angle-left, $fa-var-angle-down);  }
 .toggle-left-up             { @include toggle-icon($fa-var-angle-left, $fa-var-angle-up);    }
-.toggle-collapse            { @include toggle-icon($fa-var-angle-up,   $fa-var-angle-down, collapsed);  }
