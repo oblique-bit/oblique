@@ -14,26 +14,11 @@ export interface KeyWithParams {
 	params: {[key: string]: any};
 }
 
-export class NotificationType {
-	// Variants:
-	static INFO = new NotificationType('info', 1);
-	static SUCCESS = new NotificationType('success', 2);
-	static WARNING = new NotificationType('warning', 3);
-	static ERROR = new NotificationType('error', 4);
-
-	static VALUES = [
-		NotificationType.INFO,
-		NotificationType.SUCCESS,
-		NotificationType.WARNING,
-		NotificationType.ERROR,
-	];
-
-	constructor(public name: string, public priority: number) {
-	}
-
-	toString() {
-		return this.name;
-	}
+export enum NotificationType {
+	INFO = 'info',
+	SUCCESS = 'success',
+	WARNING = 'warning',
+	ERROR = 'error'
 }
 
 export class Notification implements INotification {

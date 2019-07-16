@@ -60,10 +60,10 @@ export class NotificationComponent {
 		this.channel = this.channel || notificationService.config.channel;
 		this.timeout = this.timeout || notificationService.config.timeout;
 
-		this.variant[NotificationType.INFO.name] = 'alert alert-info';
-		this.variant[NotificationType.SUCCESS.name] = 'alert alert-success';
-		this.variant[NotificationType.WARNING.name] = 'alert alert-warning';
-		this.variant[NotificationType.ERROR.name] = 'alert alert-danger';
+		this.variant[NotificationType.INFO] = 'alert alert-info';
+		this.variant[NotificationType.SUCCESS] = 'alert alert-success';
+		this.variant[NotificationType.WARNING] = 'alert alert-warning';
+		this.variant[NotificationType.ERROR] = 'alert alert-danger';
 
 		this.notificationService.events.subscribe(
 			(event) => {
@@ -89,9 +89,6 @@ export class NotificationComponent {
 
 		// Append notification to inbox:
 		this.notifications.unshift(notification);
-
-		// TODO: should we really sort notifications?
-		this.notifications.sort((a: Notification, b: Notification) => b.type.priority - a.type.priority);
 
 		if (!notification.sticky) {
 			setTimeout(() => this.close(notification), notification.timeout || this.timeout);
