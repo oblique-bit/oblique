@@ -9,78 +9,78 @@ export class MasterLayoutSampleComponent {
 	coverLayout = false;
 
 	get applicationFixed() {
-		return this.masterLayout.applicationFixed;
+		return this.masterLayout.layout.isFixed;
 	}
 
 	set applicationFixed(value: boolean) {
-		this.masterLayout.applicationFixed = value;
+		this.masterLayout.layout.isFixed = value;
 	}
 
 	get footerSM() {
-		return this.masterLayout.smallFooter;
+		return this.masterLayout.footer.isSmall;
 	}
 
 	set footerSM(value: boolean) {
-		this.masterLayout.smallFooter = value;
+		this.masterLayout.footer.isSmall = value;
 	}
 
 	get headerMD() {
-		return this.masterLayout.mediumHeader;
+		return this.masterLayout.header.isMedium;
 	}
 
 	set headerMD(value: boolean) {
-		this.masterLayout.mediumHeader = value;
+		this.masterLayout.header.isMedium = value;
 	}
 
 	get headerSticky() {
-		return this.masterLayout.stickyHeader;
+		return this.masterLayout.header.isSticky;
 	}
 
 	set headerSticky(value: boolean) {
-		this.masterLayout.stickyHeader = value;
+		this.masterLayout.header.isSticky = value;
 	}
 
 	get headerAnimate() {
-		return this.masterLayout.animateHeader;
+		return this.masterLayout.header.isAnimated;
 	}
 
 	set headerAnimate(value: boolean) {
-		this.masterLayout.animateHeader = value;
+		this.masterLayout.header.isAnimated = value;
 	}
 
 	get navigation() {
-		return !this.masterLayout.noNavigation;
+		return this.masterLayout.layout.hasMainNavigation;
 	}
 
 	set navigation(value: boolean) {
-		this.masterLayout.noNavigation = !value;
+		this.masterLayout.layout.hasMainNavigation = value;
 	}
 
 	get navigationFW() {
-		return this.masterLayout.navigationFullWidth;
+		return this.masterLayout.navigation.isFullWidth;
 	}
 
 	set navigationFW(value: boolean) {
-		this.masterLayout.navigationFullWidth = value;
+		this.masterLayout.navigation.isFullWidth = value;
 	}
 
 	get navigationScroll() {
-		return this.masterLayout.navigationScrollable;
+		return this.masterLayout.navigation.isScrollable;
 	}
 
 	set navigationScroll(value: boolean) {
-		this.masterLayout.navigationScrollable = value;
+		this.masterLayout.navigation.isScrollable = value;
 	}
 
 	get cover(): boolean {
-		return this.masterLayout.coverLayout;
+		return this.masterLayout.layout.hasCover;
 	}
 
 	set cover(value: boolean) {
-		this.masterLayout.coverLayout = value;
+		this.masterLayout.layout.hasCover = value;
 	}
 
 	constructor(private readonly masterLayout: MasterLayoutService) {
-		this.coverLayout = this.masterLayout.coverLayout;
+		this.coverLayout = this.masterLayout.layout.hasCover;
 	}
 }
