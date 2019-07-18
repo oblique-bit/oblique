@@ -2,21 +2,21 @@ import {Injectable} from '@angular/core';
 import {ORNavigationLink} from './master-layout-navigation/master-layout-navigation.component';
 
 interface MasterLayoutHeader {
-	animate: boolean;
-	sticky: boolean;
-	medium: boolean;
-	custom: boolean;
-	scrollTransitions: boolean;
+	isAnimated: boolean;
+	isSticky: boolean;
+	isMedium: boolean;
+	isCustom: boolean;
+	hasScrollTransitions: boolean;
 }
 interface MasterLayoutFooter {
-	small: boolean;
-	custom: boolean;
-	scrollTransitions: boolean;
+	isSmall: boolean;
+	isCustom: boolean;
+	hasScrollTransitions: boolean;
 }
 
 interface MasterLayoutNavigation {
-	fullWidth: boolean;
-	scrollable: boolean;
+	isFullWidth: boolean;
+	isScrollable: boolean;
 	scrollDelta: number;
 	activeClass: string;
 	links: ORNavigationLink[];
@@ -69,29 +69,29 @@ export class MasterLayoutConfig {
 	 *  Controls the application's layout
 	 */
 	layout = {
-		fixed: false,
-		cover: false,
-		mainNavigation: true,
-		offCanvas: true
+		isFixed: false,
+		hasCover: false,
+		hasMainNavigation: true,
+		hasOffCanvas: true
 	};
 
 	/**
 	 * Controls the application's header
 	 */
 	header: MasterLayoutHeader = {
-		animate: true,
-		sticky: true,
-		medium: false,
-		custom: false,
-		scrollTransitions: true	// indicates if the header should be resized when scrolling
+		isAnimated: true,
+		isSticky: true,
+		isMedium: false,
+		isCustom: false,
+		hasScrollTransitions: true	// indicates if the header should be resized when scrolling
 	};
 
 	/**
 	 * Controls the application's main navigation
 	 */
 	navigation: MasterLayoutNavigation = {
-		fullWidth: false,
-		scrollable: false,
+		isFullWidth: false,
+		isScrollable: false,
 		scrollDelta: 95,
 		activeClass: 'active',
 		links: []
@@ -101,8 +101,8 @@ export class MasterLayoutConfig {
 	 * Controls the applications's footer
 	 */
 	footer: MasterLayoutFooter = {
-		small: true,
-		custom: false,
-		scrollTransitions: true	// indicates if the footer should be resized when scrolling
+		isSmall: true,
+		isCustom: false,
+		hasScrollTransitions: true	// indicates if the footer should be resized when scrolling
 	};
 }

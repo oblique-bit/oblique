@@ -1,11 +1,11 @@
 import {AfterViewInit, Component, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer2, ViewChild, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
-import {takeUntil} from 'rxjs/operators';
+import {filter, takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../../unsubscribe.class';
 import {MasterLayoutService} from '../master-layout.service';
 import {MasterLayoutConfig} from '../master-layout.config';
-import {MasterLayoutNavigationService} from './master-layout-navigation.service';
+import {MasterLayoutEvent, MasterLayoutEventValues} from '../master-layout.utility';
 
 export interface ORNavigationLink {
 	label: string;
@@ -23,33 +23,25 @@ export interface ORNavigationLink {
 	host: {class: 'application-navigation'}
 })
 export class MasterLayoutNavigationComponent extends Unsubscribable implements OnInit, AfterViewInit {
-	fullWidth: boolean;
-	activeClass: string;
+	isFullWidth = this.masterLayout.navigation.isFullWidth;
+	activeClass = this.config.navigation.activeClass;
 	currentScroll = 0;
 	maxScroll = 0;
 	@Input() links: ORNavigationLink[] = [];
-	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') scrollable: boolean;
+	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') isScrollable = this.config.navigation.isScrollable;
 	private static readonly buttonWidth = 30;
 	@ViewChild('container', {static: false}) private readonly container: ElementRef;
 	private nav: HTMLElement;
 
 	constructor(private readonly router: Router,
 				private readonly masterLayout: MasterLayoutService,
-				private readonly masterLayoutNavigation: MasterLayoutNavigationService,
 				private readonly config: MasterLayoutConfig,
 				private readonly renderer: Renderer2) {
 		super();
 
-		this.activeClass = this.config.navigation.activeClass;
-		this.fullWidth = this.config.navigation.fullWidth;
-		this.scrollable = this.config.navigation.scrollable;
-		this.updateNavigationFullWidth();
-		this.updateNavigationScrollable();
-		this.masterLayoutNavigation.refreshed.pipe(takeUntil(this.unsubscribe)).subscribe(this.refresh.bind(this));
-		this.masterLayoutNavigation.scrolledRight.pipe(takeUntil(this.unsubscribe)).subscribe((offset?: number) =>
-			this.updateScroll(offset || this.config.navigation.scrollDelta));
-		this.masterLayoutNavigation.scrolledLeft.pipe(takeUntil(this.unsubscribe)).subscribe((offset?: number) =>
-			this.updateScroll(-(offset || this.config.navigation.scrollDelta)));
+		this.masterLayout.navigation.refreshed.pipe(takeUntil(this.unsubscribe)).subscribe(this.refresh.bind(this));
+		this.masterLayout.navigation.scrolled.pipe(takeUntil(this.unsubscribe)).subscribe((offset) => this.updateScroll(offset));
+		this.propertyChanges();
 	}
 
 	ngOnInit() {
@@ -68,15 +60,39 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 
 	@HostListener('window:resize')
 	onResize() {
-		this.masterLayoutNavigation.refresh();
+		this.masterLayout.navigation.refresh();
+	}
+
+	@HostListener('window:keydown.escape') close(): void {
+		this.masterLayout.layout.isMenuOpened = false;
 	}
 
 	scrollLeft(): void {
-		this.masterLayoutNavigation.scrollLeft();
+		this.masterLayout.navigation.scrollLeft();
 	}
 
 	scrollRight(): void {
-		this.masterLayoutNavigation.scrollRight();
+		this.masterLayout.navigation.scrollRight();
+	}
+
+	private propertyChanges() {
+		const events = [MasterLayoutEventValues.SCROLLABLE, MasterLayoutEventValues.FULL_WIDTH];
+		this.masterLayout.navigation.configEvents.pipe(
+			filter((evt: MasterLayoutEvent) => events.includes(evt.name)),
+			takeUntil(this.unsubscribe)
+		).subscribe((event) => {
+			switch (event.name) {
+				case MasterLayoutEventValues.SCROLLABLE:
+					this.isScrollable = event.value;
+					if (event.value) {
+						this.masterLayout.navigation.refresh();
+					}
+					break;
+				case MasterLayoutEventValues.FULL_WIDTH:
+					this.isFullWidth = event.value;
+					break;
+			}
+		});
 	}
 
 	private refresh() {
@@ -94,22 +110,5 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 		this.currentScroll = Math.max(0, this.currentScroll);
 		this.currentScroll = Math.min(this.currentScroll, this.maxScroll);
 		this.renderer.setStyle(this.nav.children[0], 'margin-left', `-${this.currentScroll}px`);
-	}
-
-	private updateNavigationFullWidth(): void {
-		this.masterLayout.navigationFullWidth = this.fullWidth;
-		this.masterLayout.navigationFullWidthChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.fullWidth = value;
-		});
-	}
-
-	private updateNavigationScrollable(): void {
-		this.masterLayout.navigationScrollable = this.scrollable;
-		this.masterLayout.navigationScrollableChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.scrollable = value;
-			if (value) {
-				this.masterLayoutNavigation.refresh();
-			}
-		});
 	}
 }

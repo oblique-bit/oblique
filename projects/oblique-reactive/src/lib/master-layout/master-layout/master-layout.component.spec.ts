@@ -2,10 +2,10 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, EventEmitter} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {Subject} from 'rxjs';
 
 import {MockTranslatePipe} from 'tests';
 import {MasterLayoutComponent, MasterLayoutConfig, MasterLayoutService} from 'oblique-reactive';
+import {of} from 'rxjs';
 
 describe('MasterLayoutComponent', () => {
 	let component: MasterLayoutComponent;
@@ -20,11 +20,13 @@ describe('MasterLayoutComponent', () => {
 
 	const mockConfig = {layout: {}};
 	const mockService = {
-		menuCollapsedChanged: new Subject<boolean>(),
-		applicationFixedChanged: new Subject<boolean>(),
-		coverLayoutChanged: new Subject<boolean>(),
-		noNavigationChanged: new Subject<boolean>(),
-		offCanvasChanged: new Subject<boolean>()
+		layout: {
+			isFixed: false,
+			hasCover: false,
+			isMenuOpened: false,
+			hasMainNavigation: true,
+			configEvents: of({})
+		}
 	};
 
 	beforeEach(async(() => {

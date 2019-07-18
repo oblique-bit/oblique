@@ -13,13 +13,14 @@ import {
 	ViewEncapsulation
 } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {takeUntil} from 'rxjs/operators';
+import {filter, takeUntil} from 'rxjs/operators';
 
 import {ScrollingEvents} from '../../scrolling/scrolling.module';
 import {Unsubscribable} from '../../unsubscribe.class';
 import {MasterLayoutService} from '../master-layout.service';
 import {LocaleObject, MasterLayoutConfig} from '../master-layout.config';
 import {ORNavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
+import {MasterLayoutEvent, MasterLayoutEventValues, scrollEnabled} from '../master-layout.utility';
 
 @Component({
 	selector: 'or-master-layout-header',
@@ -30,15 +31,14 @@ import {ORNavigationLink} from '../master-layout-navigation/master-layout-naviga
 	host: {class: 'application-header'}
 })
 export class MasterLayoutHeaderComponent extends Unsubscribable implements AfterViewInit {
-	home: string;
+	home = this.config.homePageRoute;
 	locales: LocaleObject[];
-	custom: boolean;
-	disabledLang: boolean;
+	isCustom = this.masterLayout.header.isCustom;
+	disabledLang = this.config.locale.disabled;
 	@Input() navigation: ORNavigationLink[];
-
-	@HostBinding('class.application-header-animate') animate: boolean;
-	@HostBinding('class.application-header-sticky') sticky: boolean;
-	@HostBinding('class.application-header-md') medium: boolean;
+	@HostBinding('class.application-header-animate') isAnimated = this.masterLayout.header.isAnimated;
+	@HostBinding('class.application-header-sticky') isSticky = this.masterLayout.header.isSticky;
+	@HostBinding('class.application-header-md') isMedium = this.masterLayout.header.isMedium;
 	@ContentChildren('orHeaderControl') readonly templates: QueryList<TemplateRef<any>>;
 	@ViewChildren('headerControl') readonly headerControl: QueryList<ElementRef>;
 
@@ -50,24 +50,14 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 				private readonly renderer: Renderer2) {
 		super();
 
-		this.locales = this.checkLocale();
-		this.disabledLang = this.config.locale.disabled;
-		this.home = this.config.homePageRoute;
-		this.animate = this.config.header.animate;
-		this.sticky = this.config.header.sticky;
-		this.medium = this.config.header.medium;
-		this.custom = this.config.header.custom;
-
-		this.updateHeaderMedium();
-		this.updateHeaderSticky();
-		this.updateHeaderAnimate();
-		this.updateHeaderCustom();
-		this.headerTransitions();
+		this.locales = this.formatLocales();
+		this.propertyChanges();
+		this.reduceOnScroll();
 	}
 
 	ngAfterViewInit() {
-		this.setFocusable(!this.masterLayout.menuCollapsed);
-		this.masterLayout.menuCollapsedChanged.subscribe(value => this.setFocusable(!value));
+		this.setFocusable(this.masterLayout.layout.isMenuOpened);
+		this.masterLayout.layout.configEvents.pipe(filter(evt => evt.name === MasterLayoutEventValues.COLLAPSE)).subscribe(value => this.setFocusable(!value));
 
 		this.headerControl.forEach((elt: ElementRef) => {
 			Array.from(elt.nativeElement.children).forEach((item: HTMLElement) => {
@@ -84,7 +74,7 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 
 	@HostListener('window:resize')
 	onResize() {
-		this.setFocusable(!this.masterLayout.menuCollapsed);
+		this.setFocusable(this.masterLayout.layout.isMenuOpened);
 	}
 
 	isLangActive(lang: string): boolean {
@@ -95,65 +85,60 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 		this.translate.use(lang);
 	}
 
-	checkLocale(): LocaleObject[] {
-		const locales: LocaleObject[] = [];
-		this.config.locale.locales.forEach((loc) => {
-			const locale: LocaleObject = {
-				locale: (loc as LocaleObject).locale || (loc as string)
-			};
-			if ((loc as LocaleObject).id) {
-				locale.id = (loc as LocaleObject).id;
+	private reduceOnScroll() {
+		this.scrollEvents.scrolled.pipe(takeUntil(this.unsubscribe), scrollEnabled(this.masterLayout.header.configEvents))
+			.subscribe((isScrolling) => {
+				this.isMedium = isScrolling;
+			});
+	}
+
+	private propertyChanges() {
+		const events = [MasterLayoutEventValues.ANIMATE, MasterLayoutEventValues.CUSTOM, MasterLayoutEventValues.MEDIUM, MasterLayoutEventValues.STICKY];
+		this.masterLayout.header.configEvents.pipe(
+			filter((evt: MasterLayoutEvent) => events.includes(evt.name)),
+			takeUntil(this.unsubscribe)
+		).subscribe((event) => {
+			switch (event.name) {
+				case MasterLayoutEventValues.ANIMATE:
+					this.isAnimated = event.value;
+					break;
+				case MasterLayoutEventValues.CUSTOM:
+					this.isCustom = event.value;
+					break;
+				case MasterLayoutEventValues.MEDIUM:
+					this.isMedium = event.value;
+					break;
+				case MasterLayoutEventValues.STICKY:
+					this.isSticky = event.value;
+					break;
 			}
-			locales.push(locale);
 		});
+	}
+
+	private formatLocales(): LocaleObject[] {
+		const locales: LocaleObject[] = [];
+		if (!this.config.locale.disabled) {
+			this.config.locale.locales.forEach((loc) => {
+				const locale: LocaleObject = {
+					locale: (loc as LocaleObject).locale || (loc as string)
+				};
+				if ((loc as LocaleObject).id) {
+					locale.id = (loc as LocaleObject).id;
+				}
+				locales.push(locale);
+			});
+		}
 
 		return locales;
 	}
 
-	private setFocusable(isMenuCollasped: boolean): void {
+	private setFocusable(isMenuOpened: boolean): void {
 		// these elements must not be focusable during the closing animation. Otherwise, the focused element will be scrolled into view
 		// and the header will appear empty.
-		const isFocusable = window.innerWidth > 991 || isMenuCollasped;
+		const isFocusable = window.innerWidth > 991 || !isMenuOpened;
 		Array.from(this.el.nativeElement.querySelectorAll('.application-header-controls a.control-link'))
 			.forEach(el => {
 				this.renderer.setAttribute(el, 'tabindex', isFocusable ? '0' : '-1');
 			});
-	}
-
-	private updateHeaderMedium(): void {
-		this.masterLayout.mediumHeader = this.medium;
-		this.masterLayout.headerMediumChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.medium = value;
-		});
-	}
-
-	private updateHeaderAnimate(): void {
-		this.masterLayout.animateHeader = this.animate;
-		this.masterLayout.headerAnimateChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.animate = value;
-		});
-	}
-
-	private updateHeaderSticky(): void {
-		this.masterLayout.stickyHeader = this.sticky;
-		this.masterLayout.headerStickyChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.sticky = value;
-		});
-	}
-
-	private updateHeaderCustom(): void {
-		this.masterLayout.customHeader = this.custom;
-		this.masterLayout.headerCustomChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.custom = value;
-		});
-	}
-
-	private headerTransitions(): void {
-		if (this.config.header.scrollTransitions) {
-			this.scrollEvents.scrolled.pipe(takeUntil(this.unsubscribe))
-				.subscribe((isScrolling) => {
-					this.medium = isScrolling;
-				});
-		}
 	}
 }

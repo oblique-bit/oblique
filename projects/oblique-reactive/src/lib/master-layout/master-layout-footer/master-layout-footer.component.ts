@@ -1,10 +1,11 @@
 import {Component, ContentChildren, HostBinding, QueryList, TemplateRef, ViewEncapsulation} from '@angular/core';
-import {takeUntil} from 'rxjs/operators';
+import {filter, takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../../unsubscribe.class';
 import {ScrollingEvents} from '../../scrolling/scrolling.module';
 import {MasterLayoutService} from '../master-layout.service';
 import {MasterLayoutConfig} from '../master-layout.config';
+import {MasterLayoutEvent, MasterLayoutEventValues, scrollEnabled} from '../master-layout.utility';
 
 @Component({
 	selector: 'or-master-layout-footer',
@@ -15,9 +16,9 @@ import {MasterLayoutConfig} from '../master-layout.config';
 	host: {class: 'application-footer'}
 })
 export class MasterLayoutFooterComponent extends Unsubscribable {
-	home: string;
-	custom = false;
-	@HostBinding('class.application-footer-sm') small: boolean;
+	home = this.config.homePageRoute;
+	isCustom = this.masterLayout.footer.isCustom;
+	@HostBinding('class.application-footer-sm') isSmall = this.masterLayout.footer.isSmall;
 	@ContentChildren('orFooterLink') readonly templates: QueryList<TemplateRef<any>>;
 
 	constructor(private readonly masterLayout: MasterLayoutService,
@@ -25,35 +26,32 @@ export class MasterLayoutFooterComponent extends Unsubscribable {
 				private readonly scrollEvents: ScrollingEvents) {
 		super();
 
-		this.small = this.config.footer.small;
-		this.custom = this.config.footer.custom;
-		this.home = this.config.homePageRoute;
-
-		this.updateFooterSmall();
-		this.updateFooterCustom();
-		this.footerTransitions();
+		this.propertyChanges();
+		this.reduceOnScroll();
 	}
 
-	private updateFooterSmall(): void {
-		this.masterLayout.smallFooter = this.small;
-		this.masterLayout.footerSmallChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.small = value;
+	private propertyChanges() {
+		const events = [MasterLayoutEventValues.SMALL, MasterLayoutEventValues.CUSTOM];
+		this.masterLayout.footer.configEvents.pipe(
+			filter((evt: MasterLayoutEvent) => events.includes(evt.name)),
+			takeUntil(this.unsubscribe)
+		).subscribe((event) => {
+			switch (event.name) {
+				case MasterLayoutEventValues.SMALL:
+					this.isSmall = event.value;
+					break;
+				case MasterLayoutEventValues.CUSTOM:
+					this.isCustom = event.value;
+					break;
+			}
 		});
 	}
 
-	private updateFooterCustom(): void {
-		this.masterLayout.customFooter = this.custom;
-		this.masterLayout.footerCustomChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.custom = value;
-		});
-	}
-
-	private footerTransitions(): void {
-		if (this.config.footer.scrollTransitions) {
-			this.scrollEvents.scrolled.pipe(takeUntil(this.unsubscribe))
-				.subscribe((isScrolling) => {
-					this.small = !isScrolling;
-				});
-		}
+	private reduceOnScroll() {
+		this.scrollEvents.scrolled.pipe(takeUntil(this.unsubscribe), scrollEnabled(this.masterLayout.footer.configEvents))
+			.subscribe((isScrolling) => {
+				this.isSmall = !isScrolling;
+			});
 	}
 }
+

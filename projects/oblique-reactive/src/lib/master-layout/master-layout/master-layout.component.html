@@ -12,7 +12,7 @@
 		</li>
 	</ul>
 </nav>
-<or-master-layout-header [class.offcanvas-main]="offCanvas" [navigation]="navigation">
+<or-master-layout-header [class.offcanvas-main]="hasOffCanvas" [navigation]="navigation">
 	<ng-content select="[orHeader]" orHeader></ng-content>
 	<ng-content select="[orLocales]" orLocales></ng-content>
 	<ng-content select="[orHeaderTitle]" orHeaderTitle></ng-content>
@@ -23,7 +23,7 @@
 		</ng-template>
 	</ng-container>
 </or-master-layout-header>
-<div id="content" class="application-content" role="main" [class.offcanvas-main]="offCanvas" tabindex="-1">
+<div id="content" class="application-content" role="main" [class.offcanvas-main]="hasOffCanvas" tabindex="-1">
 	<div class="alert-compatibility default-layout">
 		<div class="alert alert-error">
 			<span class="sr-only">Error</span>
@@ -37,7 +37,7 @@
 	</div>
 	<div class="application-content-viewport">
 		<or-notification></or-notification>
-		<div class="cover-layout" *ngIf="coverLayout; else normalLayout">
+		<div class="cover-layout" *ngIf="hasCover; else normalLayout">
 			<div class="cover-viewport">
 				<ng-container *ngTemplateOutlet="normalLayout"></ng-container>
 			</div>
@@ -50,7 +50,7 @@
 	</div>
 </div>
 <or-top-control></or-top-control>
-<or-master-layout-footer [class.offcanvas-main]="offCanvas">
+<or-master-layout-footer [class.offcanvas-main]="hasOffCanvas">
 	<ng-content select="[orFooter]" orFooter></ng-content>
 	<ng-content select="[orFooterInfo]" orFooterInfo></ng-content>
 	<ng-container *ngFor="let template of footerLinkTemplates">
@@ -59,7 +59,7 @@
 		</ng-template>
 	</ng-container>
 </or-master-layout-footer>
-<div class="offcanvas-sidebar" *ngIf="offCanvas">
+<div class="offcanvas-sidebar" *ngIf="hasOffCanvas">
 	<header class="offcanvas-header default-layout">
 		<h2>
 			<ng-content select="[orOffCanvasTitle]"></ng-content>
@@ -73,6 +73,6 @@
 		<ng-content select="[orOffCanvasContent]"></ng-content>
 	</div>
 </div>
-<div class="modal-backdrop offcanvas-backdrop show" *ngIf="offCanvas"></div>
+<div class="modal-backdrop offcanvas-backdrop show" *ngIf="hasOffCanvas"></div>
 <or-spinner></or-spinner>
 

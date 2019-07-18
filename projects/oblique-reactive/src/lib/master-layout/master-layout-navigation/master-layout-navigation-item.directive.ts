@@ -4,7 +4,8 @@ import {filter, takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../../unsubscribe.class';
 import {MasterLayoutNavigationToggleDirective} from './master-layout-navigation-toggle.directive';
 import {MasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
-import {MasterLayoutService} from '../master-layout.service';
+import {MasterLayoutEventValues} from '../master-layout.utility';
+import {MasterLayoutComponentService} from '../master-layout/master-layout-component.service';
 
 
 @Directive({
@@ -12,23 +13,13 @@ import {MasterLayoutService} from '../master-layout.service';
 	exportAs: 'orMasterLayoutNavigationItem'
 })
 export class MasterLayoutNavigationItemDirective extends Unsubscribable implements AfterViewInit {
+	@HostBinding('class.show')  public show = false;
+	@Output() onClose = new EventEmitter<void>();
+	@ContentChildren(MasterLayoutNavigationToggleDirective, {descendants: true}) $toggles: QueryList<MasterLayoutNavigationToggleDirective>;
+	@ContentChild(MasterLayoutNavigationMenuDirective, {static: false}) $menu: MasterLayoutNavigationMenuDirective;
+	@ContentChildren(MasterLayoutNavigationItemDirective, {descendants: true}) $items: QueryList<MasterLayoutNavigationItemDirective>;
 
-	@HostBinding('class.show')
-	public show = false;
-
-	@Output()
-	onClose = new EventEmitter<void>();
-
-	@ContentChildren(MasterLayoutNavigationToggleDirective, {descendants: true})
-	$toggles: QueryList<MasterLayoutNavigationToggleDirective>;
-
-	@ContentChild(MasterLayoutNavigationMenuDirective, {static: false})
-	$menu: MasterLayoutNavigationMenuDirective;
-
-	@ContentChildren(MasterLayoutNavigationItemDirective, {descendants: true})
-	$items: QueryList<MasterLayoutNavigationItemDirective>;
-
-	constructor(private readonly masterLayout: MasterLayoutService, private readonly element: ElementRef) {
+	constructor(private readonly masterLayout: MasterLayoutComponentService, private readonly element: ElementRef) {
 		super();
 	}
 
@@ -42,13 +33,14 @@ export class MasterLayoutNavigationItemDirective extends Unsubscribable implemen
 					} else {
 						// Final toggle, let's close all parent menus:
 						this.onClose.emit();
-						this.masterLayout.menuCollapsed = true;
+						this.masterLayout.isMenuOpened = false;
 					}
 					$event.prevented = true;
 				});
 		});
 
-		this.masterLayout.menuCollapsedChanged.pipe(filter(value => value)).subscribe(() => this.close());
+		this.masterLayout.configEvents
+			.pipe(filter(evt => evt.name === MasterLayoutEventValues.COLLAPSE && evt.value)).subscribe(() => this.close());
 
 		this.$items.forEach(($item) => {
 			$item.onClose.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.close());

@@ -7,6 +7,7 @@ import {OffCanvasService} from '../../off-canvas/off-canvas.module';
 import {MasterLayoutService} from '../master-layout.service';
 import {MasterLayoutConfig} from '../master-layout.config';
 import {ORNavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
+import {MasterLayoutEventValues} from '../master-layout.utility';
 
 @Component({
 	selector: 'or-master-layout',
@@ -23,14 +24,14 @@ import {ORNavigationLink} from '../master-layout-navigation/master-layout-naviga
 	host: {class: 'application'}
 })
 export class MasterLayoutComponent extends Unsubscribable {
-	home: string;
+	home = this.config.homePageRoute;
 	url: string;
 	@Input() navigation: ORNavigationLink[] = [];
-	@HostBinding('class.application-fixed') applicationFixed: boolean;
-	@HostBinding('class.has-cover') coverLayout: boolean;
-	@HostBinding('class.header-open') headerOpen: boolean;
-	@HostBinding('class.no-navigation') noNavigation: boolean;
-	@HostBinding('class.offcanvas') offCanvas: boolean;
+	@HostBinding('class.application-fixed') isFixed = this.masterLayout.layout.isFixed;
+	@HostBinding('class.has-cover') hasCover = this.masterLayout.layout.hasCover;
+	@HostBinding('class.header-open') isMenuCollapsed = this.masterLayout.layout.isMenuOpened;
+	@HostBinding('class.no-navigation') noNavigation = !this.masterLayout.layout.hasMainNavigation;
+	@HostBinding('class.offcanvas') hasOffCanvas = this.masterLayout.layout.hasOffCanvas;
 	@ContentChildren('orHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('orFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<any>>;
 	@ViewChild('offCanvasClose', { static: false }) readonly offCanvasClose: ElementRef<HTMLElement>;
@@ -38,13 +39,41 @@ export class MasterLayoutComponent extends Unsubscribable {
 	constructor(private readonly masterLayout: MasterLayoutService,
 				private readonly config: MasterLayoutConfig,
 				readonly offCanvasService: OffCanvasService,
-				readonly router: Router
+				private readonly router: Router
 	) {
 		super();
 
-		router.events.pipe(
+		this.propertyChanges();
+		this.focusFragment();
+		this.focusOffCanvasClose();
+	}
+
+	private propertyChanges() {
+		this.masterLayout.layout.configEvents.pipe(takeUntil(this.unsubscribe)).subscribe((event) => {
+			switch (event.name) {
+				case MasterLayoutEventValues.MAIN_NAVIGATION:
+					this.noNavigation = !event.value;
+					break;
+				case MasterLayoutEventValues.FIXED:
+					this.isFixed = event.value;
+					break;
+				case MasterLayoutEventValues.COVER:
+					this.hasCover = event.value;
+					break;
+				case MasterLayoutEventValues.OFF_CANVAS:
+					this.hasOffCanvas = event.value;
+					break;
+				case MasterLayoutEventValues.COLLAPSE:
+					this.isMenuCollapsed = event.value;
+					break;
+			}
+		});
+	}
+
+	private focusFragment() {
+		this.router.events.pipe(
 			filter(evt => evt instanceof NavigationEnd),
-			map(() => router.url.split('#'))
+			map(() => this.router.url.split('#'))
 		).subscribe((route) => {
 			this.url = route[0];
 			if (route[1] && this.config.focusableFragments.indexOf(route[1]) > -1) {
@@ -54,52 +83,11 @@ export class MasterLayoutComponent extends Unsubscribable {
 				}
 			}
 		});
-		this.home = this.config.homePageRoute;
-		this.applicationFixed = this.config.layout.fixed;
-		this.coverLayout = this.config.layout.cover;
-		this.noNavigation = !this.config.layout.mainNavigation;
-		this.offCanvas = this.config.layout.offCanvas;
-		this.headerOpen = !this.masterLayout.menuCollapsed;
+	}
 
-		this.updateApplicationFixed();
-		this.updateCoverLayout();
-		this.updateNoNavigation();
-		this.updateOffCanvas();
-
-		this.masterLayout.menuCollapsedChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.headerOpen = !value;
-		});
-
-		offCanvasService.opened.pipe(takeUntil(this.unsubscribe), filter(value => value)).subscribe(() => {
+	private focusOffCanvasClose() {
+		this.offCanvasService.opened.pipe(takeUntil(this.unsubscribe), filter(value => value)).subscribe(() => {
 			setTimeout(() => this.offCanvasClose.nativeElement.focus(), 600);
-		});
-	}
-
-	private updateApplicationFixed(): void {
-		this.masterLayout.applicationFixed = this.applicationFixed;
-		this.masterLayout.applicationFixedChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.applicationFixed = value;
-		});
-	}
-
-	private updateCoverLayout(): void {
-		this.masterLayout.coverLayout = this.coverLayout;
-		this.masterLayout.coverLayoutChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.coverLayout = value;
-		});
-	}
-
-	private updateNoNavigation(): void {
-		this.masterLayout.noNavigation = this.noNavigation;
-		this.masterLayout.noNavigationChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.noNavigation = value;
-		});
-	}
-
-	private updateOffCanvas(): void {
-		this.masterLayout.offCanvas = this.offCanvas;
-		this.masterLayout.offCanvasChanged.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
-			this.offCanvas = value;
 		});
 	}
 }

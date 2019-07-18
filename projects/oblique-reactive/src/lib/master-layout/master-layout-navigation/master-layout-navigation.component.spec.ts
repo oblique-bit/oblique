@@ -17,18 +17,17 @@ describe('MasterLayoutNavigationComponent', () => {
 		getTranslation: jest.fn(),
 	};
 	const mockService = {
-		navigationFullWidthChanged: of(),
-		navigationScrollableChanged: of()
+		navigation: {
+			isFullWidth: true,
+			configEvents: of({}),
+			refreshed: of(),
+			scrolled: of()
+		}
 	};
 	const mockConfig = {
 		navigation: {links: []}
 	};
 
-	const mockNavService = {
-		refreshed: of(),
-		scrolledRight: of(),
-		scrolledLeft: of()
-	};
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
@@ -36,8 +35,7 @@ describe('MasterLayoutNavigationComponent', () => {
 			providers: [
 				{provide: TranslateService, useValue: mockTranslateService},
 				{provide: MasterLayoutService, useValue: mockService},
-				{provide: MasterLayoutConfig, useValue: mockConfig},
-				{provide: MasterLayoutNavigationService, useValue: mockNavService}
+				{provide: MasterLayoutConfig, useValue: mockConfig}
 			]
 		})
 			.compileComponents();

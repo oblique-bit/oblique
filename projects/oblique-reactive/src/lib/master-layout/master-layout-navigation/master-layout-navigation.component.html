@@ -1,12 +1,12 @@
 <h2 class="sr-only" *ngIf="links.length">{{'i18n.accessible.globalNavigationMenu' | translate}}</h2>
-<button class="navigation-scrollable-control navigation-scrollable-control-left" type="button" (click)="scrollLeft()" *ngIf="scrollable"
+<button class="navigation-scrollable-control navigation-scrollable-control-left" type="button" (click)="scrollLeft()" *ngIf="isScrollable"
 		[disabled]="!currentScroll">
 	<span class="fa fa-angle-left"></span>
 </button>
 <ng-container #container>
 	<ng-content *ngIf="!links.length"></ng-content>
-	<ul id="navigation" role="menubar" *ngIf="links.length" class="main-nav" [class.navigation-scrollable-content]="scrollable" [class.main-nav-fw]="fullWidth"
-		tabindex="-1">
+	<ul id="navigation" role="menubar" *ngIf="links.length" class="main-nav" [class.navigation-scrollable-content]="isScrollable"
+		[class.main-nav-fw]="isFullWidth" tabindex="-1">
 		<li class="main-nav-item" role="presentation" orMasterLayoutNavigationItem *ngFor="let link of links">
 			<a [attr.id]="link.id" role="menuitem" [routerLink]="link.url" [routerLinkActive]="activeClass" orMasterLayoutNavigationToggle
 			   *ngIf="!link.children">
@@ -38,6 +38,6 @@
 	</ul>
 </ng-container>
 <button class="navigation-scrollable-control navigation-scrollable-control-right" (click)="scrollRight()" type="button"
-		*ngIf="scrollable" [disabled]="currentScroll === maxScroll">
+		*ngIf="isScrollable" [disabled]="currentScroll === maxScroll">
 	<span class="fa fa-angle-right"></span>
 </button>

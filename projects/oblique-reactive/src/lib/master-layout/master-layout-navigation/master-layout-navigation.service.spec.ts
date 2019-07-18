@@ -3,34 +3,37 @@ import {TranslateService} from '@ngx-translate/core';
 import {of} from 'rxjs';
 
 import {MasterLayoutNavigationService} from './master-layout-navigation.service';
-import {MasterLayoutService} from '../master-layout.service';
+import {MasterLayoutConfig} from 'oblique-reactive';
 
 describe('MasterLayoutNavigationService', () => {
+	let service: MasterLayoutNavigationService;
 	const translateMock = {
 		onLangChange : of()
 	};
-	const mockMasterLayout = {navigationScrollable: false};
+	const mockMasterLayout = {
+		navigation: {}
+	};
 	beforeEach(() => TestBed.configureTestingModule({
 		providers: [
 			{provide: TranslateService, useValue: translateMock},
-			{provide: MasterLayoutService, useValue: mockMasterLayout}
+			{provide: MasterLayoutConfig, useValue: mockMasterLayout}
 		]
 	}));
 
 	it('should be created', () => {
-		const service: MasterLayoutNavigationService = TestBed.get(MasterLayoutNavigationService);
+		service = TestBed.get(MasterLayoutNavigationService);
 		expect(service).toBeTruthy();
 	});
 
 	describe('with scrollable navigation enabled', () => {
 		beforeEach(() => {
-			mockMasterLayout.navigationScrollable = true;
+			service = TestBed.get(MasterLayoutNavigationService);
+			service.isScrollable = true;
 		});
 
 		it('should emit scrolledLeft on scrollLeft call', fakeAsync(() => {
-			const service: MasterLayoutNavigationService = TestBed.get(MasterLayoutNavigationService);
 			let emitted = false;
-			service.scrolledLeft.subscribe(() => {
+			service.scrolled.subscribe(() => {
 				emitted = true;
 			});
 			service.scrollLeft();
@@ -39,9 +42,8 @@ describe('MasterLayoutNavigationService', () => {
 		}));
 
 		it('should emit scrolledRight on scrollRight call', fakeAsync(() => {
-			const service: MasterLayoutNavigationService = TestBed.get(MasterLayoutNavigationService);
 			let emitted = false;
-			service.scrolledRight.subscribe(() => {
+			service.scrolled.subscribe(() => {
 				emitted = true;
 			});
 			service.scrollRight();
@@ -50,7 +52,6 @@ describe('MasterLayoutNavigationService', () => {
 		}));
 
 		it('should emit refreshed on refresh call', fakeAsync(() => {
-			const service: MasterLayoutNavigationService = TestBed.get(MasterLayoutNavigationService);
 			let emitted = false;
 			service.refreshed.subscribe(() => {
 				emitted = true;
@@ -63,13 +64,13 @@ describe('MasterLayoutNavigationService', () => {
 
 	describe('with scrollable navigation disabled', () => {
 		beforeEach(() => {
-			mockMasterLayout.navigationScrollable = false;
+			service = TestBed.get(MasterLayoutNavigationService);
+			service.isScrollable = false;
 		});
 
 		it('should not emit scrolledLeft on scrollLeft call', fakeAsync(() => {
-			const service: MasterLayoutNavigationService = TestBed.get(MasterLayoutNavigationService);
 			let emitted = false;
-			service.scrolledLeft.subscribe(() => {
+			service.scrolled.subscribe(() => {
 				emitted = true;
 			});
 			service.scrollLeft();
@@ -78,9 +79,8 @@ describe('MasterLayoutNavigationService', () => {
 		}));
 
 		it('should not emit scrolledRight on scrollRight call', fakeAsync(() => {
-			const service: MasterLayoutNavigationService = TestBed.get(MasterLayoutNavigationService);
 			let emitted = false;
-			service.scrolledRight.subscribe(() => {
+			service.scrolled.subscribe(() => {
 				emitted = true;
 			});
 			service.scrollRight();
@@ -89,7 +89,6 @@ describe('MasterLayoutNavigationService', () => {
 		}));
 
 		it('should not emit refreshed on refresh call', fakeAsync(() => {
-			const service: MasterLayoutNavigationService = TestBed.get(MasterLayoutNavigationService);
 			let emitted = false;
 			service.refreshed.subscribe(() => {
 				emitted = true;

@@ -1,5 +1,5 @@
-<ng-content select="[orFooter]" *ngIf="custom"></ng-content>
-<ng-container *ngIf="!custom">
+<ng-content select="[orFooter]" *ngIf="isCustom"></ng-content>
+<ng-container *ngIf="!isCustom">
 	<div class="footer-item footer-item-logo footer-sm-collapse">
 		<a [routerLink]="home" class="application-brand-logo">
 			<img src="./assets/styles/images/logo.svg" alt="{{'i18n.application.organization.name' | translate}}"/>

@@ -1,5 +1,5 @@
 import {Directive, HostListener} from '@angular/core';
-import {MasterLayoutService} from '../master-layout.service';
+import {MasterLayoutComponentService} from '../master-layout/master-layout-component.service';
 
 @Directive({
 	selector: '[orMasterLayoutHeaderToggle]',
@@ -7,8 +7,7 @@ import {MasterLayoutService} from '../master-layout.service';
 })
 export class MasterLayoutHeaderToggleDirective {
 
-	constructor(
-		private readonly masterLayout: MasterLayoutService) {
+	constructor(private readonly masterLayout: MasterLayoutComponentService) {
 	}
 
 	@HostListener('click', ['$event'])
@@ -17,6 +16,6 @@ export class MasterLayoutHeaderToggleDirective {
 		// As ENTER keypress delegates to click events, let's ensure
 		// browser does not try to follow any empty link (ie `href=""`):
 		$event.preventDefault();
-		this.masterLayout.menuCollapsed = !this.masterLayout.menuCollapsed;
+		this.masterLayout.isMenuOpened = !this.masterLayout.isMenuOpened;
 	}
 }

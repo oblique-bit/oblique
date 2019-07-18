@@ -2,11 +2,11 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {EventEmitter} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {Subject} from 'rxjs';
 
 import {MasterLayoutConfig, MasterLayoutService} from 'oblique-reactive';
 import {MasterLayoutFooterComponent} from './master-layout-footer.component';
 import {MockTranslatePipe} from 'tests';
+import {of} from 'rxjs';
 
 describe('MasterLayoutFooterComponent', () => {
 	let component: MasterLayoutFooterComponent;
@@ -21,8 +21,9 @@ describe('MasterLayoutFooterComponent', () => {
 
 	const mockConfig = {footer: {}};
 	const mockService = {
-		footerSmallChanged: new Subject<boolean>(),
-		footerCustomChanged: new Subject<boolean>()
+		footer: {
+			configEvents: of({})
+		}
 	};
 
 	beforeEach(async(() => {

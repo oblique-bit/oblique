@@ -1,6 +1,6 @@
 <div class="header">
-	<ng-content select="[orHeader]" *ngIf="custom"></ng-content>
-	<ng-container *ngIf="!custom">
+	<ng-content select="[orHeader]" *ngIf="isCustom"></ng-content>
+	<ng-container *ngIf="!isCustom">
 		<div class="application-header-title">
 			<div class="application-brand">
 				<a class="application-brand-logo" [routerLink]="home" tabindex="-1">
