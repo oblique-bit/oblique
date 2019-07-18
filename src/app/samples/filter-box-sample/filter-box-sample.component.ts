@@ -1,5 +1,5 @@
 import {Component, Pipe, PipeTransform} from '@angular/core';
-import {MasterLayoutService, MaterialService} from 'oblique-reactive';
+import {MasterLayoutService, MaterialService} from 'oblique';
 
 @Pipe({
 	name: 'patternFilter'

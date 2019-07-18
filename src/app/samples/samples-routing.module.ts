@@ -17,7 +17,7 @@ import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-s
 import {ToggleSampleComponent} from './toggle/toggle-sample.component';
 import {NumberFormatSampleComponent} from './number-format/number-format-sample.component';
 import {HttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
-import {UnsavedChangesGuard} from 'oblique-reactive';
+import {UnsavedChangesGuard} from 'oblique';
 import {StickySampleComponent} from './sticky/sticky-sample.component';
 import {FormComponent} from './form/form.component';
 import {ButtonComponent} from './button/button.component';

@@ -26,7 +26,7 @@ import {
 	SpinnerModule,
 	TextControlClearModule,
 	UnsavedChangesModule
-} from 'oblique-reactive';
+} from 'oblique';
 // App:
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';

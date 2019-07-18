@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, OnInit, ViewChild, ViewEncapsulation
 import {FormBuilder, FormGroup, NgModelGroup} from '@angular/forms';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes-sample-modal.component';
-import {UnsavedChangesService} from 'oblique-reactive';
+import {UnsavedChangesService} from 'oblique';
 
 
 @Component({

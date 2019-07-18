@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, NgForm} from '@angular/forms';
-import {NotificationService, SchemaValidationService} from 'oblique-reactive';
+import {NotificationService, SchemaValidationService} from 'oblique';
 
 @Component({
 	selector: 'app-schema-validation',

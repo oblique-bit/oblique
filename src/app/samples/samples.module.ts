@@ -46,7 +46,7 @@ import {
 	ToggleModule,
 	StickyModule,
 	UnsavedChangesModule
-} from 'oblique-reactive';
+} from 'oblique';
 
 @NgModule({
 	imports: [

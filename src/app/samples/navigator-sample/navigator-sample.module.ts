@@ -10,7 +10,7 @@ import {
 	ChildState1Component,
 	NavigatorSampleComponent
 } from './navigator-sample.component';
-import {NavigatorModule} from 'oblique-reactive';
+import {NavigatorModule} from 'oblique';
 
 
 @NgModule({

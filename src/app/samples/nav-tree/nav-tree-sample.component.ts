@@ -2,7 +2,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {merge, takeUntil} from 'rxjs/operators';
-import {NavTreeComponent, NavTreeItemModel, Unsubscribable} from 'oblique-reactive';
+import {NavTreeComponent, NavTreeItemModel, Unsubscribable} from 'oblique';
 
 @Component({
 	selector: 'nav-tree-sample',

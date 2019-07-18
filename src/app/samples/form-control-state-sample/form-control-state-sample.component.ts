@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, NgForm, Validators, ValidationErrors} from '@angular/forms';
-import {NotificationService} from 'oblique-reactive';
+import {NotificationService} from 'oblique';
 
 @Component({
 	selector: 'app-form-control-state-sample',

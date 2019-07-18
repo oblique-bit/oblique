@@ -7,7 +7,7 @@ import {
 	NotificationService,
 	SchemaValidationModule,
 	SchemaValidationService
-} from 'oblique-reactive';
+} from 'oblique';
 import {MockTranslatePipe} from 'tests';
 import {SchemaValidationSampleComponent} from './schema-validation-sample.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';

@@ -1,5 +1,5 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {MaterialService} from 'oblique-reactive';
+import {MaterialService} from 'oblique';
 
 @Component({
 	selector: 'or-styles',

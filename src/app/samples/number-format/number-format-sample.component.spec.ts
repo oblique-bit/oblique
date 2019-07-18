@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {MockTranslatePipe} from 'tests';
 import {NumberFormatSampleComponent} from './number-format-sample.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NumberFormatDirective} from 'oblique-reactive';
+import {NumberFormatDirective} from 'oblique';
 
 describe('NumberFormatSampleComponent', () => {
 	let component: NumberFormatSampleComponent;

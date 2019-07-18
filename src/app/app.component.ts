@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MaterialService, ORNavigationLink, SearchWidgetItem} from 'oblique-reactive';
+import {MaterialService, ORNavigationLink, SearchWidgetItem} from 'oblique';
 
 @Component({
 	selector: 'app-root',

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MasterLayoutService, MaterialService} from 'oblique-reactive';
+import {MasterLayoutService, MaterialService} from 'oblique';
 
 @Component({
 	selector: 'or-button',

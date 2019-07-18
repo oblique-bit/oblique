@@ -2,7 +2,7 @@ import {async, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {MasterLayoutConfig, NotificationService, SpinnerService} from 'oblique-reactive';
+import {MasterLayoutConfig, NotificationService, SpinnerService} from 'oblique';
 import {AppComponent} from './app.component';
 import {MockTranslatePipe} from 'tests';
 

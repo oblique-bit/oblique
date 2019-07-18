@@ -6,7 +6,7 @@ import {FormsModule} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {of} from 'rxjs';
 import {NgbButtonsModule, NgbCollapseModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
-import {NavTreeComponent} from 'oblique-reactive';
+import {NavTreeComponent} from 'oblique';
 import {MockTranslatePipe} from 'tests';
 import {NavTreeSampleComponent} from './nav-tree-sample.component';
 import {TranslateService} from '@ngx-translate/core';

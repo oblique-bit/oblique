@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MasterLayoutService} from 'oblique-reactive';
+import {MasterLayoutService} from 'oblique';
 
 @Component({
 	selector: 'master-layout-sample',

@@ -1,6 +1,6 @@
 //TODO: remove if codelyzer 4 is out
 import {Component} from '@angular/core';
-import {NavigableOnMoveEvent, NavigableGroupComponent} from 'oblique-reactive';
+import {NavigableOnMoveEvent, NavigableGroupComponent} from 'oblique';
 
 @Component({
 	selector: 'navigable-sample',

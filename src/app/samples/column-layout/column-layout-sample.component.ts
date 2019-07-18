@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ORNavigationLink, SearchWidgetItem} from 'oblique-reactive';
+import {ORNavigationLink, SearchWidgetItem} from 'oblique';
 
 @Component({
 	selector: 'or-column-layout-sample',

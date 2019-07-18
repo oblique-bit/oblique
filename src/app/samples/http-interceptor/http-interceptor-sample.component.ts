@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {NotificationService, NotificationType, ObliqueHttpInterceptorEvents, ObliqueRequest} from 'oblique-reactive';
+import {NotificationService, NotificationType, ObliqueHttpInterceptorEvents, ObliqueRequest} from 'oblique';
 import {delay, first, mergeMap, tap} from 'rxjs/operators';
 import {from, Observable} from 'rxjs';
 import {HttpMockErrorInterceptor} from './http-mock-error.interceptor';

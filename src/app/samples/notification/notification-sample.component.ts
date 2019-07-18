@@ -1,9 +1,5 @@
 import {Component} from '@angular/core';
-import {
-	NotificationConfig,
-	NotificationService,
-	NotificationType
-} from 'oblique-reactive';
+import {NotificationService, NotificationType} from 'oblique';
 
 @Component({
 	selector: 'notification-sample',
@@ -28,7 +24,7 @@ export class NotificationSampleComponent {
 		}
 	};
 	message = {
-		text: 'You successfully sent your first notification with ObliqueReactive :)',
+		text: 'You successfully sent your first notification with Oblique :)',
 		key: 'i18n.notification.sampleMessage',
 		params: {
 			message: 'message',

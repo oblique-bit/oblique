@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {NavigableDirective, NavigableGroupComponent} from 'oblique-reactive';
+import {NavigableDirective, NavigableGroupComponent} from 'oblique';
 import {NavigableSampleComponent} from './navigable-sample.component';
 import {MockTranslatePipe} from 'tests';
 
