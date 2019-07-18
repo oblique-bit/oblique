@@ -67,5 +67,4 @@ export {TranslateParamsModule, TranslateParamsPipe} from './lib/translate-params
 export {UnsavedChangesDirective, UnsavedChangesGuard, UnsavedChangesModule, UnsavedChangesService} from './lib/unsaved-changes/unsaved-changes.module';
 export {Unsubscribable} from './lib/unsubscribe.class';
 export {ObliqueModule} from './lib/oblique-reactive.module';
-export {MaterialService} from './lib/material.service';
-export {MaterialConfigService} from './lib/material-config.service';
+export {MaterialService, MATERIAL_DESIGN_DISABLE} from './lib/material.service';

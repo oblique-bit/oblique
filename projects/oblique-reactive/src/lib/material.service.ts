@@ -1,6 +1,7 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable, InjectionToken, Optional} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {MaterialConfigService} from './material-config.service';
+
+export const MATERIAL_DESIGN_DISABLE = new InjectionToken<boolean>('MATERIAL_DESIGN_DISABLE');
 
 @Injectable({
 	providedIn: 'root'
@@ -11,8 +12,8 @@ export class MaterialService {
 	private readonly toggled$ = this.enabledSubject.asObservable();
 	private isEnabled: boolean;
 
-	constructor(private readonly config: MaterialConfigService) {
-		this.enabled = config.enabled;
+	constructor(@Optional() @Inject(MATERIAL_DESIGN_DISABLE) isDisabled: boolean) {
+		this.isEnabled = !isDisabled;
 	}
 
 	get toggled(): Observable<boolean> {
