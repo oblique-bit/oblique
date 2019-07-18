@@ -203,21 +203,22 @@
 			<td>
 				<mat-form-field class="control-mandatory">
 					<mat-label>Mandatory</mat-label>
-					<input type="text" matInput placeholder="Mandatory">
+					<input type="text" matInput placeholder="Mandatory" required ngModel>
 				</mat-form-field>
 			</td>
 			<td>
-				<mat-checkbox class="control-mandatory">Mandatory</mat-checkbox>
+				<mat-checkbox class="control-mandatory" required ngModel>Mandatory</mat-checkbox>
 			</td>
 			<td>
 				<mat-radio-group class="control-mandatory">
-					<mat-radio-button value="1">Mandatory</mat-radio-button>
+					<mat-radio-button value="1" required ngModel>Mandatory</mat-radio-button>
 				</mat-radio-group>
 			</td>
 			<td>
 				<mat-form-field class="control-mandatory">
 					<mat-label>Mandatory</mat-label>
-					<mat-select>
+					<mat-select required ngModel>
+						<mat-option [value]=""></mat-option>
 						<mat-option [value]="1">One</mat-option>
 						<mat-option [value]="2">Two</mat-option>
 						<mat-option [value]="3">Three</mat-option>
@@ -229,7 +230,7 @@
 			<td>
 				<mat-form-field class="control-mandatory">
 					<mat-label>Mandatory</mat-label>
-					<textarea matInput placeholder="Mandatory"></textarea>
+					<textarea matInput placeholder="Mandatory" required ngModel></textarea>
 				</mat-form-field>
 			</td>
 		</tr>
