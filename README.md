@@ -99,11 +99,13 @@ The scope is optional and should be the name of the Oblique feature affected:
 * **off-canvas**
 * **schema-validation**
 * **scrolling**
+* **search-box**
 * **spinner**
 * **sticky**
 * **text-control-clear**
 * **themes**
 * **toggle**
+* **translate-params**
 * **unsaved-changes**
 * **unsubscribe**
 * **utilities**
@@ -124,7 +126,7 @@ The footer is optional and should contain a reference to a JIRA issue if any, e.
 
 It should also contain any information about Breaking Changes.
 
-Breaking Changes have to start with the word BREAKING CHANGE: with a newline. The rest of the commit message is then used for this.
+Breaking Changes have to start with the words `BREAKING CHANGE:` with a newline. The rest of the commit message is then used for this.
 
 	OUI-715
 	BREAKING CHANGE:
