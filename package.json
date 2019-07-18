@@ -1,6 +1,6 @@
 {
-  "title": "ObliqueReactive",
-  "name": "oblique-reactive",
+  "title": "Oblique",
+  "name": "oblique",
   "version": "4.0.0-Beta.2",
   "license": "All Rights Reserved",
   "organization": {
@@ -45,13 +45,13 @@
     "path": "projects/OUI/repos/oblique2-reactive"
   },
   "scripts": {
-    "lib": "npm run build -- oblique-reactive --watch",
+    "lib": "npm run build -- oblique --watch",
     "start": "ng serve",
     "build": "ng build",
-    "dist": "npm run build -- oblique-reactive",
+    "dist": "npm run build -- oblique",
     "postdist": "npm run gulp -- dist",
-    "test": "ng test oblique-reactive",
-    "lint": "ng lint oblique-reactive",
+    "test": "ng test oblique",
+    "lint": "ng lint oblique",
     "e2e": "ng e2e",
     "patch": "npm version patch",
     "minor": "npm version minor",

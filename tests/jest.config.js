@@ -5,7 +5,7 @@ module.exports = {
 	roots: ['<rootDir>/src'],
 	setupFilesAfterEnv: ['<rootDir>/tests/setupJest.ts'],
 	moduleNameMapper: {
-		'oblique-reactive': '<rootDir>projects/oblique-reactive/src/public_api.ts',
+		'oblique': '<rootDir>projects/oblique/src/public_api.ts',
 		'tests': '<rootDir>/test_helpers'
 	},
 	globals: {

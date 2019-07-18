@@ -21,11 +21,11 @@
       "tests": [
         "test_helpers"
       ],
-      "oblique-reactive": [
-        "projects/oblique-reactive/src/public_api"
+      "oblique": [
+        "projects/oblique/src/public_api"
       ],
-      "oblique-reactive/*": [
-        "dist/oblique-reactive/*"
+      "oblique/*": [
+        "dist/oblique/*"
       ]
     }
   }

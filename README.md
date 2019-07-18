@@ -1,25 +1,25 @@
-# [ObliqueReactive](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/)
+# [Oblique](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/)
 
 Read the developer docs: <https://oblique.bit.admin.ch/>
 
-ObliqueReactive uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.angular.io/) and [Sass](http://sass-lang.com/) to fetch dependencies, compile & build assets, compose HTML and serve & watch web content.
+Oblique uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.angular.io/) and [Sass](http://sass-lang.com/) to fetch dependencies, compile & build assets, compose HTML and serve & watch web content.
 
-If you are starting a new business web project, please clone directly [ObliqueReactiveSeed](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive-seed/), an ObliqueReactive-enabled project template. 
+If you are starting a new business web project, please clone directly [ObliqueSeed](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive-seed/), an Oblique-enabled project template. 
 
-## Using ObliqueReactive as a dependency
+## Using Oblique as a dependency
 
 1. Register our npm repository manager:
 
 	`npm config set registry https://repo.bit.admin.ch/repository/npm-group/`
 
-2. Install `oblique-reactive` as an npm dependency:
+2. Install `oblique` as an npm dependency:
 
-	`npm install oblique-reactive --save`
+	`npm install oblique --save`
 
 3. Import `ObliqueModule` in your root `NgModule`. Note that you should only import modules that you use and not the whole collection:
 
 ```
-	import {ObliqueModule} from 'oblique-reactive';
+	import {ObliqueModule} from 'oblique';
 	
 	@NgModule({
 	    declarations: [...],
@@ -33,11 +33,11 @@ If you are starting a new business web project, please clone directly [ObliqueRe
 	export class AppModule {}
 ```
 
-4. You can now import & use any ObliqueReactive components within you app.
+4. You can now import & use any Oblique components within you app.
 
-An usage example can be found in [ObliqueReactiveSeed](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive-seed/)
+An usage example can be found in [ObliqueSeed](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive-seed/)
 
-## Working on ObliqueReactive (Oblique core developers only)
+## Working on Oblique (Oblique core developers only)
 
 ### Prerequisites
 - GIT
@@ -136,7 +136,7 @@ Breaking Changes have to start with the words `BREAKING CHANGE:` with a newline.
 - Bump dependencies through Angular cli first: `ng update`
 - Then update the dependencies without build-in schematics: `ncu` 
 
-## Releasing ObliqueReactive
+## Releasing Oblique
 
 Before releasing, execute the following steps:
 

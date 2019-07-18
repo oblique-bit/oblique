@@ -1,14 +1,14 @@
-import {ObliqueReactivePage} from './app.po';
+import {ObliquePage} from './app.po';
 
-describe('ObliqueReactive App', function () {
-	let page: ObliqueReactivePage;
+describe('Oblique App', function () {
+	let page: ObliquePage;
 
 	beforeEach(() => {
-		page = new ObliqueReactivePage();
+		page = new ObliquePage();
 	});
 
 	it('should display message saying app works', () => {
 		page.navigateTo();
-		expect(page.getHeaderText()).toEqual('ObliqueReactive');
+		expect(page.getHeaderText()).toEqual('Oblique');
 	});
 });

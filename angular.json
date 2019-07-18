@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "oblique-reactive-showcase": {
+    "oblique-showcase": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -25,17 +25,17 @@
               },
               {
                 "glob": "**/*",
-                "input": "projects/oblique-reactive/src/styles/images",
+                "input": "projects/oblique/src/styles/images",
                 "output": "/assets/styles/images"
               },
               {
                 "glob": "**/*",
-                "input": "dist/oblique-reactive/styles/css",
+                "input": "dist/oblique/styles/css",
                 "output": "/assets/styles/css"
               }
             ],
             "styles": [
-              "projects/oblique-reactive/src/styles/scss/oblique-core.scss",
+              "projects/oblique/src/styles/scss/oblique-core.scss",
               "src/scss/styles.scss"
             ],
             "scripts": []
@@ -65,13 +65,13 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "oblique-reactive-showcase:build",
+            "browserTarget": "oblique-showcase:build",
             "port": 3001,
             "sourceMap": true
           },
           "configurations": {
             "production": {
-              "browserTarget": "oblique-reactive-showcase:build:prod",
+              "browserTarget": "oblique-showcase:build:prod",
               "aot": true,
               "optimization": true,
               "sourceMap": true
@@ -107,17 +107,17 @@
         }
       }
     },
-    "oblique-reactive": {
-      "root": "projects/oblique-reactive",
-      "sourceRoot": "projects/oblique-reactive/src",
+    "oblique": {
+      "root": "projects/oblique",
+      "sourceRoot": "projects/oblique/src",
       "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/oblique-reactive/tsconfig.lib.json",
-            "project": "projects/oblique-reactive/ng-package.json"
+            "tsConfig": "projects/oblique/tsconfig.lib.json",
+            "project": "projects/oblique/ng-package.json"
           }
         },
         "test": {
@@ -139,8 +139,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/oblique-reactive/tsconfig.lib.json",
-              "projects/oblique-reactive/tsconfig.spec.json"
+              "projects/oblique/tsconfig.lib.json",
+              "projects/oblique/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -150,7 +150,7 @@
       }
     }
   },
-  "defaultProject": "oblique-reactive-showcase",
+  "defaultProject": "oblique-showcase",
   "schematics": {
     "@schematics/angular:component": {
       "spec": true,

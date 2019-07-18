@@ -10,7 +10,7 @@ import {
 	DatepickerPlaceholderDirective,
 	ErrorMessagesModule,
 	SchemaValidationService
-} from 'oblique-reactive';
+} from 'oblique';
 
 describe('DatepickerSampleComponent', () => {
 	let component: DatepickerSampleComponent;

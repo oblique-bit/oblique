@@ -6,7 +6,7 @@ const fs = require('fs'),
 	sass = require('node-sass'),
 	path = require('path'),
 	paths = {
-		dist: './dist/oblique-reactive/'
+		dist: './dist/oblique/'
 	},
 	banner = function (pkg) {
 		return '/*! \r * ' + pkg.title + ' - v' + pkg.version
@@ -17,13 +17,13 @@ const fs = require('fs'),
 
 
 const distStyles = () =>
-	gulp.src(['projects/oblique-reactive/src/styles/**/*']).pipe(gulp.dest(paths.dist + 'styles'));
+	gulp.src(['projects/oblique/src/styles/**/*']).pipe(gulp.dest(paths.dist + 'styles'));
 
 const distMaterialCss = (done) => transpile('material', 'themes', done);
 const distBootstrapCss = (done) => transpile('bootstrap', 'themes', done);
 const distCoreCss = (done) => transpile('core', '', done);
 const distUtilCss = (done) => transpile('utilities', '', done);
-const distComponentsCss = (done) => transpileComponents('projects/oblique-reactive/src/lib', done);
+const distComponentsCss = (done) => transpileComponents('projects/oblique/src/lib', done);
 
 const distTestHelpers = () => gulp.src(['test_helpers/*']).pipe(gulp.dest(paths.dist + 'test_helpers'));
 
@@ -45,7 +45,7 @@ const distMeta = () => {
 
 const distBundle = () => {
 	const meta = reload('./package.json');
-	return gulp.src(paths.dist + 'bundles/oblique-reactive.umd.js')
+	return gulp.src(paths.dist + 'bundles/oblique.umd.js')
 		.pipe(header(banner(meta)))
 		.pipe(gulp.dest(paths.dist + 'bundles'));
 };
@@ -120,7 +120,7 @@ function fixPath(url, prev, relative) {
 }
 
 function transpile(target, dir, cb) {
-	transpileFile('dist/oblique-reactive/styles/scss/' + dir + '/oblique-' + target + '.scss', target, true, cb);
+	transpileFile('dist/oblique/styles/scss/' + dir + '/oblique-' + target + '.scss', target, true, cb);
 }
 
 function transpileFile(file, target, relative, cb) {
@@ -131,15 +131,15 @@ function transpileFile(file, target, relative, cb) {
 		},
 		outputStyle: 'compressed',
 		sourceMap: false, // doesn't get generated correctly
-		outFile: 'dist/oblique-reactive/styles/css/oblique-' + target + '.css'
+		outFile: 'dist/oblique/styles/css/oblique-' + target + '.css'
 	}, function (error, result) {
 		if (error) {
 			console.log(error.message);
 		} else {
-			if (!fs.existsSync('dist/oblique-reactive/styles/css')) {
-				fs.mkdirSync('dist/oblique-reactive/styles/css');
+			if (!fs.existsSync('dist/oblique/styles/css')) {
+				fs.mkdirSync('dist/oblique/styles/css');
 			}
-			fs.writeFile('dist/oblique-reactive/styles/css/oblique-' + target + '.css', result.css, (err) => {
+			fs.writeFile('dist/oblique/styles/css/oblique-' + target + '.css', result.css, (err) => {
 				if (err) {
 					console.log(err);
 				}
