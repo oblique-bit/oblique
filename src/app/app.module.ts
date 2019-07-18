@@ -12,7 +12,8 @@ import {
 	DocumentMetaService,
 	ErrorMessagesModule,
 	MasterLayoutConfig,
-	MasterLayoutModule, MaterialConfigService,
+	MasterLayoutModule,
+	MATERIAL_DESIGN_DISABLE,
 	MultiselectModule,
 	NotificationModule,
 	ObliqueHttpInterceptor,
@@ -22,7 +23,8 @@ import {
 	SchemaValidationModule,
 	ScrollingModule,
 	SearchBoxModule,
-	SpinnerModule, TextControlClearModule,
+	SpinnerModule,
+	TextControlClearModule,
 	UnsavedChangesModule
 } from 'oblique-reactive';
 // App:
@@ -31,8 +33,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {HomePageComponent} from './home/home.page';
 import {HttpMockErrorInterceptor} from './samples/http-interceptor/http-mock-error.interceptor';
 import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule, MatInputModule} from '@angular/material';
-import { StylesComponent } from './styles/styles.component';
+import {MatFormFieldModule, MatInputModule} from '@angular/material';
+import {StylesComponent} from './styles/styles.component';
 
 // AoT requires an exported function for factories:
 export function createTranslateLoader(http: HttpClient) {
@@ -77,7 +79,7 @@ export function createTranslateLoader(http: HttpClient) {
 		TextControlClearModule
 	],
 	providers: [
-		{provide: MaterialConfigService, useValue: {enabled: false}},
+		{provide: MATERIAL_DESIGN_DISABLE, useValue: true},
 		{provide: HTTP_INTERCEPTORS, useClass: ObliqueHttpInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true}
 	],
