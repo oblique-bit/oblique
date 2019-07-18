@@ -1,7 +1,6 @@
 import {Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, Output, QueryList, ViewChildren, ViewEncapsulation} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {SearchWidgetItem} from './search-box.component';
-import {MasterLayoutService} from '../master-layout/master-layout.module';
 
 @Component({
 	selector: 'or-search-box-results',
@@ -24,7 +23,7 @@ export class SearchBoxResultsComponent implements OnDestroy {
 	private _pattern = '';
 	@ViewChildren('link') private readonly links: QueryList<ElementRef>;
 
-	constructor(private readonly translate: TranslateService, private readonly master: MasterLayoutService) {
+	constructor(private readonly translate: TranslateService) {
 	}
 
 	@HostListener('keydown.arrowdown', ['$event']) navigateDown($event: KeyboardEvent) {
@@ -46,7 +45,6 @@ export class SearchBoxResultsComponent implements OnDestroy {
 		this.filteredItems = [];
 		this.active = undefined;
 		this.closed.emit();
-		this.master.menuCollapsed = true;
 	}
 
 	get pattern(): string {
