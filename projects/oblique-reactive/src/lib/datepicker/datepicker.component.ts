@@ -34,7 +34,7 @@ export class DatepickerComponent implements AfterViewInit {
 	}
 
 	constructor(private readonly element: ElementRef, materialService: MaterialService) {
-		materialService.deprecated('datepicker');
+		materialService.deprecated('datepicker', 'datepicker');
 	}
 
 	@HostListener('keydown', ['$event'])

@@ -87,7 +87,7 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 		this.selectionLimit = multiselectConfig.selectionLimit;
 		this.showCheckAll = multiselectConfig.showCheckAll;
 		this.showUncheckAll = multiselectConfig.showUncheckAll;
-		materialService.deprecated('datepicker');
+		materialService.deprecated('multiselect', 'select/overview#multiple-selection');
 	}
 
 	//TODO: only apply this listener if the popup is open and remove it as soon as it's closed

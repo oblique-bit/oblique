@@ -28,10 +28,10 @@ export class MaterialService {
 		this.enabledSubject.next(value);
 	}
 
-	deprecated(component: string): void {
+	deprecated(component: string, target: string): void {
 		if (!this.isEnabled) {
-			console.warn(`Oblique ${component} should not be used with Material Design, prefer the Angular enabled implementation:
-			https://material.angular.io/components/categories.`);
+			console.warn(`Oblique's "${component}" should not be used with Material Design, prefer the Angular implementation:
+			https://material.angular.io/components/${target}.`);
 		}
 	}
 }
