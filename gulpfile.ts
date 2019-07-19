@@ -35,6 +35,7 @@ const distMeta = () => {
 		.forEach(field => output[field] = meta[field]);
 
 	output['peerDependencies'] = {};
+	output['name'] = 'oblique-bit';
 	output['scripts'] = {postinstall: 'node copy.js'};
 	Object.keys(meta.dependencies).forEach((dependency) => output['peerDependencies'][dependency] = meta.dependencies[dependency]);
 
