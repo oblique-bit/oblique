@@ -86,7 +86,7 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 	}
 
 	private reduceOnScroll() {
-		this.scrollEvents.scrolled.pipe(takeUntil(this.unsubscribe), scrollEnabled(this.masterLayout.header.configEvents))
+		this.scrollEvents.isScrolled.pipe(takeUntil(this.unsubscribe), scrollEnabled(this.masterLayout.header.configEvents))
 			.subscribe((isScrolling) => {
 				this.isMedium = isScrolling;
 			});
