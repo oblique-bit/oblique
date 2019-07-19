@@ -11,20 +11,19 @@
 	}
 
 	@include layout-collapse-up() {
-		& {
-			display: flex;
-			overflow-x: hidden;
-		}
+		min-height: $column-layout-toggle-height;
+		overflow-x: hidden;
+		flex-wrap: nowrap;
 
 		.column-toggle-left,
 		.column-toggle-right {
 			display: block;
 			position: absolute;
 			z-index: 1;
-			top: 58px;
-			margin-top: -20px;
-			width: 20px;
-			height: 40px;
+			top: 50%;
+			margin-top: -$column-layout-toggle-height / 2;
+			width: $column-layout-toggle-width;
+			height: $column-layout-toggle-height;
 			font-size: 17px;
 			text-align: center;
 			padding: 0;
@@ -46,8 +45,8 @@
 		.column-toggle-left {
 			transform-origin: 100% 50%;
 			right: 0;
-			margin-left: -20px;
-			border-radius: 20px 0 0 20px;
+			margin-left: -$column-layout-toggle-width;
+			border-radius: $column-layout-toggle-radius 0 0 $column-layout-toggle-radius;
 			border-right-width: 0;
 			box-shadow: -2px 0 4px 0px rgba(0, 0, 0, 0.1);
 			@include icon($fa-var-angle-left);
@@ -56,15 +55,14 @@
 		.column-toggle-right {
 			transform-origin: 0 50%;
 			left: 0;
-			margin-right: -20px;
-			border-radius: 0 20px 20px 0;
+			margin-right: -$column-layout-toggle-width;
+			border-radius: 0 $column-layout-toggle-radius $column-layout-toggle-radius 0;
 			border-left-width: 0;
 			box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.1);
 			@include icon($fa-var-angle-right);
 		}
 
 		.column-main {
-			flex: 1 1 100%;
 			position: relative;
 		}
 
@@ -83,8 +81,8 @@
 				.column-toggle-left {
 					transform-origin: 0 50%;
 					margin-left: 0;
-					margin-right: -20px;
-					border-radius: 0 20px 20px 0;
+					margin-right: -$column-layout-toggle-width;
+					border-radius: 0 $column-layout-toggle-radius $column-layout-toggle-radius 0;
 					border-right-width: 1px;
 					border-left-width: 0;
 					box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.1);
@@ -108,8 +106,8 @@
 				.column-toggle-right {
 					transform-origin: 100% 50%;
 					margin-right: 0;
-					margin-left: -20px;
-					border-radius: 20px 0 0 20px;
+					margin-left: -$column-layout-toggle-width;
+					border-radius: $column-layout-toggle-radius 0 0 $column-layout-toggle-radius;
 					border-right-width: 0;
 					border-left-width: 1px;
 					box-shadow: -2px 0 4px 0px rgba(0, 0, 0, 0.1);
