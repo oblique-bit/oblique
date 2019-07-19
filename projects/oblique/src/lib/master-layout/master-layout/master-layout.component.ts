@@ -69,6 +69,7 @@ export class MasterLayoutComponent extends Unsubscribable implements AfterViewIn
 	@HostListener('window:scroll')
 	ngAfterViewInit(): void {
 		const scrollTop = window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
+		this.scrollEvents.hasScrolled(scrollTop);
 		if (this.isScrolling !== scrollTop > 0) {
 			this.isScrolling = scrollTop > 0;
 			this.scrollEvents.scrolling(this.isScrolling);
