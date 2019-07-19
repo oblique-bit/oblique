@@ -5,9 +5,7 @@ import {Directive, HostBinding} from '@angular/core';
 	exportAs: 'orColumnPanel'
 })
 export class ColumnPanelDirective {
-
-	@HostBinding('class.collapsed')
-	public collapsed = false;
+	@HostBinding('class.collapsed') public collapsed = false;
 
 	toggle(): void {
 		this.collapsed = !this.collapsed;

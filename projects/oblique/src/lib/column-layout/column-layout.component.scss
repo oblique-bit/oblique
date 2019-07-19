@@ -5,9 +5,36 @@
 @import "../../styles/scss/core/mixins/column-layout";
 
 .column-layout {
+	display: flex;
+	flex-direction: column;
+
 	.column-toggle-left,
 	.column-toggle-right {
 		display: none;
+	}
+
+	.column-left,
+	.column-right {
+		order: 1;
+	}
+
+	@include media-breakpoint-up(sm) {
+		flex-direction: row;
+		flex-wrap: wrap;
+
+		.column-main,
+		.column-left,
+		.column-right  {
+			flex-grow: 1;
+		}
+
+		.column-main {
+			flex: 1 1 100%;
+		}
+
+		.column-content {
+			height: 100%;
+		}
 	}
 
 	@include layout-collapse-up() {
@@ -70,8 +97,10 @@
 		.column-right {
 			position: relative;
 			flex: 0 0 $column-width;
+			order: unset;
 			max-width: $column-width; // Ensure columns keep shrinking even if text content may overflow.
 		}
+
 		.column-left {
 			transition: margin-left $duration-default;
 
@@ -123,26 +152,13 @@
 		}
 	}
 
-	.application-fixed & .column-layout {
+	.application-fixed & {
 		height: 100%;
-
-		.column-main,
-		.column-left,
-		.column-right,
-		.column-content {
-			min-height: 0;
-			height: 100%;
-		}
 
 		.column-main,
 		.column-content {
 			overflow-y: auto;
 			overflow-x: hidden;
-		}
-
-		.column-toggle-left,
-		.column-toggle-right {
-			top: 50%;
 		}
 	}
 }
