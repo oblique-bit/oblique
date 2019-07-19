@@ -1,7 +1,7 @@
 {
   "title": "Oblique",
   "name": "oblique",
-  "version": "4.0.0-Beta.2",
+  "version": "4.0.0-RC.1",
   "license": "All Rights Reserved",
   "organization": {
     "name": "Federal Office of Information Technology, Systems and Telecommunication FOITT",
@@ -59,8 +59,7 @@
     "release": "npm run gulp -- publish",
     "preversion": "npm run lint && npm test -- --prod && npm run dist",
     "postversion": "node changelog.js",
-    "gulp": "./node_modules/.bin/gulp",
-    "css": "node transpile.js"
+    "gulp": "./node_modules/.bin/gulp"
   },
   "jestSonar": {
     "reportPath": "./coverage/sonarQube",

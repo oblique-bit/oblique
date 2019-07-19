@@ -1,3 +1,143 @@
+# [4.0.0-RC.1](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/compare/4.0.0-Beta.2...4.0.0-RC.1) (2019-07-19)
+
+## Bug Fixes
+* **master-layout:** use lighter grey on submenu item hover ([80d5e56](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/80d5e56))
+* **multiselect:** correctly pass prepend to filter-box ([92143f4](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/92143f4))
+* **search-box:** mouse up and down events are not propagated ([076fb5a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/076fb5a))
+
+## Code Refactoring
+* **http-interceptor:** refactor according to notification changes ([c3e214a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/c3e214a))
+* **master-layout:** separate MasterLayoutService into multiple files ([76a84f1](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/76a84f1))
+* **notification:** simplify notification signatures ([6febfbe](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/6febfbe))
+* **toggle:** use @Input() instead of classes for toggle direction ([686f8d7](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/686f8d7))
+* **package:** `oblique-reactive` has been renamed into `oblique` but is distributed under `oblique-bit` ([12b9a99](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/12b9a99))
+
+## Features
+* **master-layout:** use multiple column with full width navigation ([1099780](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/1099780))
+* **master-layout:** full width main navigation is disabled by default ([c30ad65](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/c30ad65))
+* **multiselect:** add `id`s on multiselect's elements ([0ee04c1](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/0ee04c1))
+* **notification:** add `id`s on notification's elements ([b68d340](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/b68d340))
+* **notification:** remove `default` notification ([0a54f3e](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/0a54f3e))
+* **themes:** adjust colors ([72d25a0](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/72d25a0))
+* **themes:** provide minified css files in the dist ([80e3362](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/80e3362))
+* **themes:** separate `oblique-bootstrap` from `oblique-core` ([8dcd1b8](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/8dcd1b8))
+* **themes:** extract alert into a standalone css component ([bbab6cc](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/bbab6cc))
+* **themes:** remove callout css component ([23be35e](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/23be35e))
+* **themes:** add `oblique-utilities` ([82c5a3e](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/82c5a3e))
+* **toggle:** remove `toggle-collapse` class ([462c9c9](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/462c9c9))
+
+### BREAKING CHANGES
+* **package:** `oblique-reactive` has been renamed into `oblique` but is distributed under `oblique-bit`, this means all imports have to be adapted
+* **master-layout:** all observables defined in `MasterLayoutService` have been moved into the relevant service and grouped under the `configEvents` observable in their respective service. This observable provides an object with a `name` (specified in parenthesis below) and a boolean `value`:
+* **master-layout:** following observables have been replaced by the `configEvents` observable of `MasterLayoutComponentService`
+	* `menuCollapsedChanged` (`MasterLayoutEventValues.COLLAPSE`)
+	* `applicationFixedChanged` (`MasterLayoutEventValues.FIXED`)
+	* `coverLayoutChanged` (`MasterLayoutEventValues.COVER`)
+	* `noNavigationChanged` (`MasterLayoutEventValues.MAIN_NAVIGATION`)
+	* `offCanvasChanged` (`MasterLayoutEventValues.OFF_CANVAS`)
+* **master-layout:**  following observables have been replaced by the `configEvents` observable of `MasterLayoutHeaderService`
+	* `headerCustomChanged` (`MasterLayoutEventValues.CUSTOM`)
+	* `headerMediumChanged` (`MasterLayoutEventValues.MEDIUM`)
+	* `headerAnimateChanged` (`MasterLayoutEventValues.ANIMATE`)
+	* `headerStickyChanged` (`MasterLayoutEventValues.STICKY`)
+	* `headerScrollTransitionChanged` (`MasterLayoutEventValues.SCROLL_TRANSITION`)
+* **master-layout:**  following observables have been replaced by the `configEvents` observable of `MasterLayoutNavigationService`
+	* `navigationFullWidthChanged` (`MasterLayoutEventValues.FULL_WIDTH`)
+	* `navigationScrollableChanged` (`MasterLayoutEventValues.SCROLLABLE`)
+* **master-layout:**  following observables have been replaced by the `configEvents` observable of `MasterLayoutFooterService`
+	* `footerCustomChanged` (`MasterLayoutEventValues.CUSTOM`)
+	* `footerSmallChanged` (`MasterLayoutEventValues.SMALL`)
+	* `footerScrollTransitionChanged` (`MasterLayoutEventValues.SCROLL_TRANSITION`)
+* **master-layout:**  all properties defined in `MasterLayoutService` have been moved into the relevant service:
+	* `menuCollapsed` has become `layout.isMenuOpened`
+	* `applicationFixed` has become `layout.isFixed`
+	* `coverLayout` has become `layout.hasCover`
+	* `noNavigation` has become `layout.hasMainNavigation`
+	* `offCanvas` has become `layout.hasOffCanvas`
+	* `customHeader` has become `header.isCustom`
+	* `mediumHeader` has become `header.isMedium`
+	* `animateHeader` has become `header.isAnimated`
+	* `stickyHeader` has become `header.isSticky`
+	* `scrollTransitionHeader` has become `header.hasScrollTransition`
+	* `navigationFullWidth` has become `navigation.isFullWidth`
+	* `navigationScrollable` has become `navigation.isScrollable`
+	* `customFooter` has become `footer.isCustom`
+	* `smallFooter` has become `footer.isSmall`
+	* `scrollTransitionFooter` has become `footer.hasScrollTransition`
+* **master-layout:**  several `MasterLayoutConfig` properties have been renamed:
+	* `layout.fixed` has become `layout.isFixed`
+	* `layout.cover` has become `layout.hasCover`
+	* `layout.mainNavigation` has become `layout.hasMainNavigation`
+	* `layout.offCanvas` has become `layout.hasOffCanvas`
+	* `header.animate` has become `header.isAnuimated`
+	* `header.sticky` has become `header.isSticky`
+	* `header.medium` has become `header.isMedium`
+	* `header.custom` has become `header.isCustom`
+	* `header.scrollTransitions` has become `header.hasScrollTransitions`
+	* `footer.small` has become `footer.isSmall`
+	* `footer.custom` has become `footer.isCustom`
+	* `footer.scrollTransitions` has become `footer.hasScrollTransitions`
+	* `navigation.fullWidth` has become `navigation.isFullWidth`
+	* `navigation.scrollable` has become `navigation.isScrollable`
+* **master-layout:**  `scrolledLeft` and `scrolledRight` observables from `MasterLayoutNavigationService` have been grouped into a new `scrolled` observable that provides a positive offset for right scroll and a negative one for left scroll
+* **master-layout:** `MasterLayoutConfig.navigation.fullWidth` is set to `false` by default
+* **multiselect:** `orId` has been renamed into `idPrefix`
+* **http-interceptor:** only notification's `title`, `text` and `type` can be configured
+* **notification:**  remove `timeout` `@input`. Use notification's configuration instead
+* **notification:**  remove `Notification` class in favor of `INotification` interface
+* **notification:**  remove `NotificationEvent` interface in favor of `INotification` interface
+* **notification:**  rename `ANIMATION_OUT_DURATION` into `REMOVE_DELAY`
+* **notification:**  `default` notification has been removed
+* **notification:**  `info`, `success`, `warning`, `error` and `send` functions have new signature
+* **notification:**  `broadcast` function is now private, use `send` instead
+* **toggle:**  `toggle` class is set automatically by the directive and shouldn't be manually specified
+* **toggle:**  `toggle-*-*` direction classes have been removed in favor of values passed to the `orToggle` directive:
+	* `down-up` (default)
+	* `down-right`
+	* `down-left`
+	* `up-down`
+	* `up-right`
+	* `up-left`
+	* `right-left`
+	* `right-down`
+	* `right-up`
+	* `left-right`
+	* `left-down`
+	* `left-up`
+* **themes:** `callout` have been removed in favor of `alert`
+* **themes:**  a theme `oblique-material` or `oblique-bootstrsap` has to be imported either in `angular.json`or in the project main stylesheet, usually `styles.scss`
+* **themes:**  without importing  `oblique-bootstrap`, Oblique does not provide bootstrap's SCSS variables anymore
+* **themes:**   following CSS classes have been dropped with no replacement:
+	* `smaller`
+	* `text-description`
+	* `page-header`
+	* `inversed`
+	* `spacer-*`
+	* `scrollable`
+	* `has-indent`
+	* `nav-pills`
+	* `d-fixed-top`
+	* `open visible-*`
+	* `open hidden-open`
+	* `collapsed visible-*`
+	* `collapsed hidden-collapsed`
+	* `dropcap`
+	* `headline`
+	* `reveal`
+	* `stacks`
+	* `tile`
+* **themes:**   almost all oblique mixins have either been removed or modified
+* **themes:**   following Oblique CSS components are only available with `oblique-bootstrap` theme:
+	* `badge`
+	* `button`
+	* `dropdown`
+	* `form-check`
+	* `input-group`
+	* `table`
+* **themes:** Oblique CSS is imported form `node_modules/oblique-reactive/styles/scss/oblique-core.scss` instead of
+`node_modules/oblique-reactive/styles/css/oblique-ui.css`
+
+
 # [4.0.0-Beta.2](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/browse?at=4.0.0-Beta.2) (2019-04-30)
 
 ## Bug Fixes
@@ -23,7 +163,7 @@
     * prefixed content cannot be projected with `.input-group-prepend` anymore. Use `#prepend` instead.
     * suffixed content cannot be projected with `.input-group-append` anymore. Use `#append` instead.
 
-
+<a name="3.1.1"></a>
 # [3.1.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=3.1.1) (2019-04-29)
 
 ## Bug Fixes
@@ -33,7 +173,7 @@
 * **multiselect:** add `setDisabledState` function ([b434daf](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/b434daf))
 * **packaging:** `test_helpers` is correctly copied ([33d3c0f](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/33d3c0f))
 
-
+<a name="3.1.0"></a>
 # [3.1.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=3.1.0) (2019-03-12)
 
 ## Dependencies updates
