@@ -1,5 +1,19 @@
-import {Component, ContentChildren, ElementRef, HostBinding, Input, QueryList, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
+import {
+	AfterViewInit,
+	Component,
+	ContentChildren,
+	ElementRef,
+	HostBinding,
+	HostListener,
+	Inject,
+	Input,
+	QueryList,
+	TemplateRef,
+	ViewChild,
+	ViewEncapsulation
+} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
+import {DOCUMENT} from '@angular/common';
 import {filter, map, takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../../unsubscribe.class';
@@ -7,6 +21,7 @@ import {OffCanvasService} from '../../off-canvas/off-canvas.module';
 import {MasterLayoutService} from '../master-layout.service';
 import {MasterLayoutConfig} from '../master-layout.config';
 import {ORNavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
+import {ScrollingEvents} from '../../scrolling/scrolling-events';
 import {MasterLayoutEventValues} from '../master-layout.utility';
 
 @Component({
@@ -23,7 +38,7 @@ import {MasterLayoutEventValues} from '../master-layout.utility';
 	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'application'}
 })
-export class MasterLayoutComponent extends Unsubscribable {
+export class MasterLayoutComponent extends Unsubscribable implements AfterViewInit {
 	home = this.config.homePageRoute;
 	url: string;
 	@Input() navigation: ORNavigationLink[] = [];
@@ -32,6 +47,7 @@ export class MasterLayoutComponent extends Unsubscribable {
 	@HostBinding('class.header-open') isMenuCollapsed = this.masterLayout.layout.isMenuOpened;
 	@HostBinding('class.no-navigation') noNavigation = !this.masterLayout.layout.hasMainNavigation;
 	@HostBinding('class.offcanvas') hasOffCanvas = this.masterLayout.layout.hasOffCanvas;
+	@HostBinding('class.application-scrolling') isScrolling = false;
 	@ContentChildren('orHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('orFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<any>>;
 	@ViewChild('offCanvasClose', { static: false }) readonly offCanvasClose: ElementRef<HTMLElement>;
@@ -39,13 +55,24 @@ export class MasterLayoutComponent extends Unsubscribable {
 	constructor(private readonly masterLayout: MasterLayoutService,
 				private readonly config: MasterLayoutConfig,
 				readonly offCanvasService: OffCanvasService,
-				private readonly router: Router
+				private readonly router: Router,
+				private readonly scrollEvents: ScrollingEvents,
+				@Inject(DOCUMENT) private readonly document: any
 	) {
 		super();
 
 		this.propertyChanges();
 		this.focusFragment();
 		this.focusOffCanvasClose();
+	}
+
+	@HostListener('window:scroll')
+	ngAfterViewInit(): void {
+		const scrollTop = window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
+		if (this.isScrolling !== scrollTop > 0) {
+			this.isScrolling = scrollTop > 0;
+			this.scrollEvents.scrolling(this.isScrolling);
+		}
 	}
 
 	private propertyChanges() {
