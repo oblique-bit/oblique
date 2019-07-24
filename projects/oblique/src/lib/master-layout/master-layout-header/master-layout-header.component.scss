@@ -152,8 +152,10 @@
 	}
 
 	.application-brand-link {
-		color: $brand-default;
-		text-decoration: none;
+		.application & {
+			color: $brand-default;
+			text-decoration: none;
+		}
 	}
 
 	:not(.application-fixed) &.application-header-animate {

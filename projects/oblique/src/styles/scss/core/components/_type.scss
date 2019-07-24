@@ -1,33 +1,126 @@
 @import "../variables";
 
+body {
+	color: $brand-default
+}
+
 h1, h2, h3, h4, h5, h6 {
-	font-weight: normal;
-	line-height: 1.4;
 	margin-top: 0;
+	line-height: 1.4;
 }
 
 h1 {
-	line-height: 1.5;
+	font-size: 3rem;
 	font-weight: 300;
 	margin-bottom: $spacing-default;
 }
 
 h2 {
-	line-height: 1.5;
-	font-weight: 400;
-	margin-bottom: $spacing-default * 0.75;
+	font-size: 2.5rem;
+	font-weight: 300;
+	margin-bottom: $spacing-md;
 }
 
-h3, h4, h5, h6 {
-	margin-bottom: $spacing-default * 0.5;
+h3 {
+	font-size: 2rem;
+	font-weight: 400;
+	margin-bottom: $spacing-sm;
+}
+
+h4 {
+	font-size: 1.75rem;
+	font-weight: 400;
+	margin-bottom: $spacing-xs;
+}
+
+h5 {
+	font-size: 1.5rem;
+	font-weight: 400;
+	margin-bottom: $spacing-xs;
+}
+
+h6 {
+	font-size: 1.25rem;
+	font-weight: 500;
+	margin-bottom: $spacing-xs;
+}
+
+// inline elements
+a {
+	color: $brand-secondary;
+	text-decoration: none;
+
+	&:hover {
+		color: $brand-primary;
+		text-decoration: underline;
+	}
+}
+
+b,
+strong {
+	font-weight: 700;
+}
+
+cite, dfn, em, i, q, var {
+	font-weight: normal;
+	font-style: italic;
+}
+
+mark, ins {
+	padding: 0;
+	text-decoration: none;
+}
+
+mark {
+	background-color: $brand-warning-light;
+}
+
+ins {
+	background-color: $brand-light;
+}
+
+pre, code, kbd, samp {
+	font-family: monospace;
+	font-size: 90%;
+}
+
+code, kbd {
+	border-radius: $border-radius-base;
+	padding: 2px 4px;
+}
+
+code, pre {
+	border: 1px solid $gray-light;
+	background-color: $gray-lighter;
+	color: $brand-default;
+}
+
+kbd {
+	background-color: $brand-default;
+	color: $gray-lighter;
+}
+
+small {
+	font-size: 85%;
+}
+
+s, del {
+	text-decoration: line-through;
+}
+
+samp {
+
+}
+
+u {
+	text-decoration: underline;
+}
+
+label {
 	font-weight: 600;
 }
 
-p {
-	margin-top: 0;
-	margin-bottom: $spacing-default;
-}
-
+// lists
 ol,
 ul,
 dl {
@@ -42,13 +135,24 @@ ul ol {
 	margin-bottom: 0;
 }
 
+dt {
+	font-weight: 700;
+}
+
 dd {
 	margin-bottom: $spacing-default * 0.5;
 	margin-left: 0;
 }
 
+// block elements
+p {
+	margin-top: 0;
+	margin-bottom: $spacing-default;
+}
+
 blockquote {
 	margin: 0 0 $spacing-default;
+	font-size: 1em;
 }
 
 address {
@@ -57,42 +161,9 @@ address {
 	line-height: inherit;
 }
 
-b,
-strong {
-	font-weight: bolder;
-}
-
-i {
-	font-weight: normal;
-	font-style: italic;
-}
-
-small {
-	 font-size: 80%;
-}
-
-a {
-	color: $brand-secondary;
-	text-decoration: none;
-
-	&:hover{
-		color: $brand-primary;
-		text-decoration: underline;
-	}
-}
-
 pre {
-	background-color: #f7f7f9;
-	border: 1px solid $gray-light;
-	padding: $spacing-default / 2;
-}
-
-figure, pre {
-	margin: 0 0 1em;
-}
-
-label {
-	font-weight: 600;
+	padding: $spacing-sm;
+	border-radius: $border-radius-base;
 }
 
 button[disabled] {
