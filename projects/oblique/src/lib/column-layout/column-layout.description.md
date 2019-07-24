@@ -1,0 +1,3 @@
+The column layout component comes with 1, 2 or 3 columns. Both side columns are collapsible / expansible and optional. They use each 20% of the total width while the center one takes up the rest.
+It comes with no preconfigured margin which enables it to be used either as a full page layout or only as a page's subdivision layout.
+On smaller viewports, both side columns are moved below the main one. 
