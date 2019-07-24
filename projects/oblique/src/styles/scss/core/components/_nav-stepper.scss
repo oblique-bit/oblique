@@ -46,13 +46,6 @@ $stepper-border-width: 3px;
 			border-color: $brand-secondary;
 		}
 
-		.nav-stepper-title {
-			line-height: inherit;
-			font-size: inherit;
-			margin: 0;
-			padding: 0;
-		}
-
 		// States:
 		&.active {      @include stepper-state($white, $brand-secondary, $brand-secondary);}
 		&.disabled {    @include stepper-state($gray-light, $white, $gray-light);
@@ -75,22 +68,19 @@ $stepper-border-width: 3px;
 		&.error {       @include stepper-feedback($fa-var-times); }
 	}
 
-	// Sizes -----
+	.nav-link {
+		display: block;
+	}
 
-	// Default:
 	@include stepper-variant($font-size-base, $stepper-step-size, $stepper-border-width);
 
-	// Small:
 	&.nav-stepper-sm {
 		@include stepper-variant($font-size-base - 0.1, 24px, $stepper-border-width - 1);
 	}
 
-	// Large:
 	&.nav-stepper-lg {
 		@include stepper-variant($font-size-xl, 80px, $stepper-border-width + 1);
 	}
-
-	// Usage -----
 
 	// Ordered steps:
 	@at-root #{selector-append("ol", &)} {
