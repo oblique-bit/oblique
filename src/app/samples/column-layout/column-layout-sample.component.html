@@ -1,8 +1,5 @@
 <div class="default-layout">
-	<h2 class="page-header">{{'i18n.routes.samples.column-layout.title' | translate}}</h2>
-	<p class="lead">
-		Disposes content within collapsible/expansible columns. Click on the column toggle buttons to collapse the side columns.
-	</p>
+	<h2>{{'i18n.routes.samples.column-layout.title' | translate}}</h2>
 	<div class="row">
 		<div class="col-md-9">
 			<div class="card">
@@ -17,6 +14,26 @@
 					</div>
 					<div column-main-content class="default-layout">
 						<h1>Three-Column Layout</h1>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla finibus orci, vitae sollicitudin massa laoreet vel. Donec
+							libero quam, dictum quis orci ac, hendrerit egestas urna. Ut cursus euismod leo ut vulputate. Vestibulum luctus sapien a finibus
+							ornare. Integer bibendum dui eu lacus tempor, eget mollis turpis pharetra. Ut nec nulla nec justo ultricies tempor at non ante.
+							Aliquam diam turpis, tincidunt sit amet tincidunt viverra, suscipit sed metus. Fusce et rhoncus tortor.</p>
+						<p>Mauris facilisis leo eu convallis luctus. Sed vel est porta, tempor ex vel, finibus arcu. Suspendisse id consectetur leo. Ut at enim
+							eget magna pellentesque posuere. Nam id elementum est, ac consequat nulla. Nam consectetur maximus sodales. In placerat
+							pharetra imperdiet.</p>
+						<p>Curabitur lacinia, odio at semper tempor, massa tellus tempus dolor, id malesuada nibh nisi in nulla. Nulla ipsum neque, tincidunt a
+							orci quis, ultricies maximus tellus. Aenean ut purus non nisl hendrerit mollis. Nunc viverra nisi erat, ac vehicula justo
+							tincidunt eget. Proin nec accumsan odio, nec vehicula mauris. Fusce quam metus, vestibulum vel congue eu, eleifend quis mauris.
+							Nulla blandit eu nisl at vulputate.</p>
+						<p>Aenean sagittis eu magna a mollis. Nullam ultrices massa a tempor ultricies. Nulla sit amet malesuada justo, id placerat nisi.
+							Aliquam in ipsum hendrerit, maximus ex vitae, semper ex. Maecenas porttitor, enim ut pellentesque malesuada, ligula arcu
+							malesuada magna, nec laoreet dui risus vitae libero. Mauris sit amet fringilla lectus, nec molestie libero. Integer tincidunt in
+							nulla eget placerat. Sed et enim sed nibh vestibulum dignissim. Nunc posuere facilisis erat. Nam id sem sollicitudin, scelerisque
+							ligula a, fermentum turpis.</p>
+						<p>Nullam euismod ipsum posuere iaculis accumsan. Nam at tellus ultricies, dignissim dolor sit amet, imperdiet turpis. Donec magna erat,
+							pulvinar id mauris eget, commodo sodales augue. Cras placerat sodales metus. In nec erat efficitur, vehicula lacus at, convallis
+							enim. Ut eleifend rhoncus urna, at lobortis elit maximus id. Suspendisse potenti. Phasellus elit magna, congue sed elit a, dictum
+							convallis lacus. Nulla facilisi.</p>
 					</div>
 					<div column-right-content class="default-layout">
 						<h3 class="nav-header-title">Right Column</h3>
@@ -46,50 +63,6 @@
 						</div>
 						<div class="ml-auto" *ngIf="right">
 							<button class="btn btn-sm btn-secondary" (click)="orColumnLayout.toggleRight()">Toggle</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="card mt-3">
-		<div class="card-header">
-			<h3 class="card-title mb-0">Preview (using <code>orColumnPanel</code> and <code>orColumnToggle</code> directives)</h3>
-		</div>
-		<div class="column-layout">
-			<div class="column-left d-print-none" role="complementary" orColumnPanel>
-				<button type="button" class="column-toggle-left" orColumnToggle>
-					<span class="sr-only">{{'i18n.oblique.column.left.toggle' | translate}}</span>
-				</button>
-				<div class="column-content">
-					<div class="default-layout">
-						<h3 class="nav-header-title">Left Column</h3>
-						<div class="sample mt-3">
-							<p>Nulla consectetur nulla reprehenderit dolore cillum ea.</p>
-							<p>Eiusmod do est non velit velit.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="column-main">
-				<div class="default-layout">
-					<h1>Three-Column Layout</h1>
-					<div class="sample mt-3">
-						<p>Nulla consectetur nulla reprehenderit dolore cillum ea.</p>
-						<p>Eiusmod do est non velit velit.</p>
-					</div>
-				</div>
-			</div>
-			<div class="column-right" role="complementary" orColumnPanel>
-				<button type="button" class="column-toggle-right" orColumnToggle>
-					<span class="sr-only">{{'i18n.oblique.column.right.toggle' | translate}}</span>
-				</button>
-				<div class="column-content">
-					<div class="default-layout">
-						<h3 class="nav-header-title">Right Column</h3>
-						<div class="sample mt-3">
-							<p>Nulla consectetur nulla reprehenderit dolore cillum ea.</p>
-							<p>Eiusmod do est non velit velit.</p>
 						</div>
 					</div>
 				</div>
