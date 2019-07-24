@@ -72,7 +72,7 @@
 }</pre>
 
 	<h2>Stepper</h2>
-	<ol class="nav nav-stepper" role="menu">
+	<ol class="nav-stepper" role="menu">
 		<li class="nav-item valid" role="presentation">
 			<a href="#nav-stepper-1" class="nav-link" role="menuitem">Step</a>
 		</li>
@@ -114,5 +114,23 @@
 		</tr>
 		</tbody>
 	</table>
+
+	<h2>tabs</h2>
+	<ul class="nav nav-tabs" id="myTab" role="tablist">
+		<li class="nav-item">
+			<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+		</li>
+	</ul>
+	<div class="default-layout" id="myTabContent">
+		<div role="tabpanel" aria-labelledby="home-tab">
+			Tab Home
+		</div>
+	</div>
 </div>
 
