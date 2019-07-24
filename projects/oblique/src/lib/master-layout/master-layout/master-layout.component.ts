@@ -1,5 +1,4 @@
 import {
-	AfterViewInit,
 	Component,
 	ContentChildren,
 	ElementRef,
@@ -7,6 +6,7 @@ import {
 	HostListener,
 	Inject,
 	Input,
+	OnInit,
 	QueryList,
 	TemplateRef,
 	ViewChild,
@@ -38,7 +38,7 @@ import {MasterLayoutEventValues} from '../master-layout.utility';
 	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'application'}
 })
-export class MasterLayoutComponent extends Unsubscribable implements AfterViewInit {
+export class MasterLayoutComponent extends Unsubscribable implements OnInit {
 	home = this.config.homePageRoute;
 	url: string;
 	@Input() navigation: ORNavigationLink[] = [];
@@ -50,7 +50,7 @@ export class MasterLayoutComponent extends Unsubscribable implements AfterViewIn
 	@HostBinding('class.application-scrolling') isScrolling = false;
 	@ContentChildren('orHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('orFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<any>>;
-	@ViewChild('offCanvasClose', { static: false }) readonly offCanvasClose: ElementRef<HTMLElement>;
+	@ViewChild('offCanvasClose', {static: false}) readonly offCanvasClose: ElementRef<HTMLElement>;
 
 	constructor(private readonly masterLayout: MasterLayoutService,
 				private readonly config: MasterLayoutConfig,
@@ -67,7 +67,7 @@ export class MasterLayoutComponent extends Unsubscribable implements AfterViewIn
 	}
 
 	@HostListener('window:scroll')
-	ngAfterViewInit(): void {
+	ngOnInit(): void {
 		const scrollTop = window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
 		this.scrollEvents.hasScrolled(scrollTop);
 		if (this.isScrolling !== scrollTop > 0) {
