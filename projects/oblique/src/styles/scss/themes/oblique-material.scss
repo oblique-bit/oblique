@@ -2,8 +2,9 @@
 @import '../core/normalize';
 @import '~@angular/material/theming';
 @import 'material/oblique-palette';
-@import 'material/mat-form-field';
 @import 'material/mat-checkbox-radio';
+@import 'material/mat-form-field';
+@import 'material/mat-table';
 
 @include mat-core();
 @include angular-material-theme(mat-light-theme(mat-palette($oblique-primary), mat-palette($oblique-accent), mat-palette($oblique-warn)));

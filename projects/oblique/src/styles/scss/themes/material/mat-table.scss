@@ -1,0 +1,29 @@
+@import "../../core/variables";
+
+.table {
+	tr.mat-row,
+	tr.mat-header-row,
+	tr.mat-footer-row {
+		height: unset
+	}
+
+	td.mat-cell,
+	td.mat-footer-cell,
+	th.mat-header-cell {
+		font-size: inherit;
+		padding: $spacing-sm !important;
+
+		@at-root #{selector-append(".table-sm", &)} {
+			padding: $spacing-xs !important;
+		}
+
+		@at-root #{selector-append(".table-lg", &)} {
+			padding: $spacing-md !important;
+		}
+	}
+
+	.mat-header-cell,
+	.mat-footer-cell {
+		color: $brand-default;
+	}
+}

@@ -1,0 +1,73 @@
+@import "../variables";
+@import "../mixins/layout";
+@import "../mixins/table";
+
+.table {
+	width: 100%;
+	color: $brand-default;
+
+	thead,
+	tfoot {
+		background-color: $gray-lighter-2;
+	}
+
+	td, th {
+		border: 1px solid $gray-light;
+		padding: $spacing-sm;
+		text-align: inherit;
+
+		@at-root #{selector-append(".table-sm", &)} {
+			padding: $spacing-xs;
+		}
+
+		@at-root #{selector-append(".table-lg", &)} {
+			padding: $spacing-md;
+		}
+	}
+
+	th {
+		font-weight: 700;
+	}
+
+	&:not(.table-plain) {
+		tbody tr:nth-child(odd) {
+			background-color: $gray-lighter;
+		}
+	}
+
+	&.table-collapse {
+		@include layout-collapse-down() {
+			@include table-collapse();
+		}
+	}
+
+	&.table-collapse-sm {
+		@include media-breakpoint-down(sm) {
+			@include table-collapse();
+		}
+	}
+
+	&.table-collapse-md {
+		@include media-breakpoint-down(md) {
+			@include table-collapse();
+		}
+	}
+
+	&.table-hover tbody tr:hover,
+	.active {
+		background-color: $brand-extralight;
+	}
+}
+
+.table-scrollable {
+	overflow-x: auto;
+}
+
+caption {
+	padding-top: $spacing-md;
+	padding-bottom: $spacing-md;
+	color: $gray-dark;
+	font-weight: 700;
+	text-align: left;
+	caption-side: top;
+}

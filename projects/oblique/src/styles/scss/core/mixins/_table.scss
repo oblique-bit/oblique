@@ -1,0 +1,38 @@
+@import "../variables";
+
+@mixin table-collapse() {
+	&, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	td {
+		position: relative;
+		margin-left: $table-collapsed-header-width;
+
+		+ td {
+			border-top: 0;
+		}
+	}
+
+	td:before {
+		content: attr(title);
+		position: absolute;
+		top: -1px;
+		bottom: -1px;
+		left: -1px;
+		width: $table-collapsed-header-width + 1px;
+		padding: inherit;
+		margin-left: -$table-collapsed-header-width;
+		border: 1px solid $gray-light;
+		font-weight: 700;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}
