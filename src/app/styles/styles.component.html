@@ -1,31 +1,4 @@
 <div class="default-layout">
-	<h2>Badges</h2>
-	<div class="badge badge-default ml">Default</div>
-	<div class="badge badge-primary ml">Primary</div>
-	<div class="badge badge-secondary ml">Secondary</div>
-	<div class="badge badge-success ml">Success</div>
-	<div class="badge badge-warning ml">Warning</div>
-	<div class="badge badge-danger ml">Danger</div>
-
-	<h2>Buttons</h2>
-	<button class="btn btn-primary ml">Primary</button>
-	<button class="btn btn-secondary ml">Secondary</button>
-	<button class="btn btn-success ml">Success</button>
-	<button class="btn btn-warning ml">Warning</button>
-	<button class="btn btn-danger ml">Danger</button>
-
-	<h2>Dropdown</h2>
-	<div class="dropdown d-inline-block mb-1">
-		<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			Primary dropdown
-		</button>
-		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-			<a class="dropdown-item" href="javascript:">Action</a>
-			<a class="dropdown-item" href="javascript:">Another action</a>
-			<a class="dropdown-item" href="javascript:">Something else here</a>
-		</div>
-	</div>
-
 	<h2>Stepper</h2>
 	<ol class="nav nav-stepper" role="menu">
 		<li class="nav-item valid" role="presentation">
@@ -41,84 +14,33 @@
 			<a href="#nav-stepper-4" class="nav-link" role="menuitem">Disabled</a>
 		</li>
 	</ol>
-
-	<h2>Form</h2>
-	<ng-container *ngIf="!material">
-		<div class="form-group">
-			<div class="text-control">
-				<input type="text" class="form-control form-control-sm" placeholder="Small text input with clear control">
-				<button class="text-control-clear" data-action="clear" role="button">
-					<span class="fa fa-times-circle"></span>
-				</button>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="text-control">
-				<input type="text" class="form-control" placeholder="Normal text input with clear control">
-				<button class="text-control-clear" data-action="clear" role="button">
-					<span class="fa fa-times-circle"></span>
-				</button>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="text-control">
-				<input type="text" class="form-control form-control-lg" placeholder="Large text input with clear control">
-				<button class="text-control-clear" data-action="clear" role="button">
-					<span class="fa fa-times-circle"></span>
-				</button>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="input-group input-group-lg text-control">
-				<input type="text" class="form-control" placeholder="Search for...">
-				<button class="text-control-clear" data-action="clear" role="button">
-					<span class="fa fa-times-circle"></span>
-				</button>
-				<div class="input-group-append">
-					<button class="btn btn-secondary" type="button" role="button">
-						<span class="fa fa-search"></span>
-						<span class="sr-only">Search</span>
-					</button>
-				</div>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="input-group text-control">
-				<input type="text" class="form-control" placeholder="Search for...">
-				<button class="text-control-clear" data-action="clear" role="button">
-					<span class="fa fa-times-circle"></span>
-				</button>
-				<div class="input-group-append">
-					<button class="btn btn-secondary" type="button" role="button">
-						<span class="fa fa-search"></span>
-						<span class="sr-only">Search</span>
-					</button>
-				</div>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="input-group input-group-sm text-control">
-				<input type="text" class="form-control" placeholder="Search for...">
-				<button class="text-control-clear" data-action="clear" role="button">
-					<span class="fa fa-times-circle"></span>
-				</button>
-				<div class="input-group-append">
-					<button class="btn btn-secondary" type="button" role="button">
-						<span class="fa fa-search"></span>
-						<span class="sr-only">Search</span>
-					</button>
-				</div>
-			</div>
-		</div>
-	</ng-container>
-	<ng-container *ngIf="material">
-		<mat-form-field>
-			<mat-label>label</mat-label>
-			<input type="text" matInput #filterControl>
-			<button type="button" role="button" [orTextControlClear]="filterControl">
-				<span class="fa fa-times-circle"></span>
-			</button>
-		</mat-form-field>
-	</ng-container>
+	<h2>Table</h2>
+	<table class="table table-hover table-sm table-collapse-sm">
+		<caption>Table caption</caption>
+		<thead>
+			<tr>
+				<th>Table header 1</th>
+				<th class="active">Table header 2</th>
+				<th>Table header 3</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td title="table header 1">Table cell</td>
+				<td title="table header 2">Table cell</td>
+				<td title="table header 3">Table cell</td>
+			</tr>
+			<tr>
+				<td title="table header 1">Table cell</td>
+				<td title="table header 2">Table cell</td>
+				<td title="table header 3">Table cell</td>
+			</tr>
+			<tr>
+				<td title="table header 1">Table cell</td>
+				<td title="table header 2">Table cell</td>
+				<td title="table header 3">Table cell</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 
