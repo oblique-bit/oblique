@@ -87,6 +87,16 @@ gulp.task(
 	gulp.series(commit)
 );
 
+gulp.task('themes',
+	gulp.series(
+		distStyles,
+		gulp.parallel(
+			distMaterialCss,
+			distBootstrapCss
+		)
+	)
+);
+
 
 function reload(module) {
 	// Uncache module:

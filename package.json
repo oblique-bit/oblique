@@ -47,7 +47,7 @@
   "scripts": {
     "lib": "npm run build -- oblique --watch",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "npm run gulp themes && ng build",
     "dist": "npm run build -- oblique",
     "postdist": "npm run gulp -- dist",
     "test": "ng test oblique",
