@@ -1,3 +1,35 @@
+# [4.0.0-RC.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/4.0.0-RC.1...4.0.0-RC.2) (2019-07-25)
+
+## Bug Fixes
+* **master-layout:** no `overflow` on main navigation ([47e9841](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/47e9841))
+* **master-layout:** timing issue with `application-scrolling` ([0e42337](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/0e42337))
+* **search-box:** fix bootstrap rendering ([c4f924d](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/c4f924d))
+* **themes:** add `nav-tabs` component ([3e529b9](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/3e529b9))
+* **themes:** fix stepper with material ([d5bfc58](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/d5bfc58))
+
+
+## Code Refactoring
+* **datepicker:** remove `DatePickerModule` form `ObliqueModule` ([a8383e9](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/a8383e9))
+* **master-layout:** remove `ScrollDetectionDirective` ([3c7af50](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/3c7af50))
+* **master-layout:** rename `scrolled` event into `isScrolled` ([b0a975a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/b0a975a))
+* **unsaved-changes:** split code into 2 modules ([02df9ae](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/02df9ae))
+
+## Features
+* **column-layout:** vertically center the toggle ([c9e1535](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/c9e1535))
+* **dropdown:** add `dropdown` component ([7629d5a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/7629d5a))
+* **master-layout:** add `scrolled` event to provide scroll offset ([959e8b1](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/959e8b1))
+* **themes:** add `hover-effect` to `oblique-utilities` ([4279e9b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/4279e9b))
+* **themes:** improve typography definitions ([9f376b2](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/9f376b2))
+* **themes:** style `table` according to CI/CD ([2712f1e](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/2712f1e))
+
+## BREAKING CHANGES
+* **unsaved-changes:** all code related to Bootstrap's tabset has been moved into a new `UnsavedChangesTabsModule` module which has to be imported separately from `ObliqueModule`.
+* **unsaved-changes:** to Monitor changes on Bootstrap's Tabset, `orUnsavedChangesTabs` directive has to be used instead of `orUnsavedChanges`
+* **datepicker:** `DatePickerModule` has to be imported separately from `ObliqueModule`
+* **master-layout:** `ScrollEvents.scrolled` has been renamed into `ScrollEvents.isScrolled`
+* **master-layout:** `ScrollDetectionDirective` has been removed with no replacement
+
+
 # [4.0.0-RC.1](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/compare/4.0.0-Beta.2...4.0.0-RC.1) (2019-07-19)
 
 ## Bug Fixes
