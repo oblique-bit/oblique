@@ -1,5 +1,6 @@
 @import "core/variables";
 @import "core/mixins/layout";
+@import "core/mixins/nav";
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
@@ -21,5 +22,11 @@
 .d-layout-expanded {
 	@include layout-collapse-down() {
 		display: none;
+	}
+}
+
+.hover-effect {
+	> * {
+		@include nav-hover();
 	}
 }
