@@ -52,7 +52,7 @@ export class AppComponent {
 
 	populateSearchItems(items: ORNavigationLink[], base = ''): void {
 		items.forEach((item: ORNavigationLink) => {
-			const url = item.url.substr(1);
+			const url = item.url;
 			if (item.children) {
 				this.populateSearchItems(item.children, url);
 			} else {
