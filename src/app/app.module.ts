@@ -10,6 +10,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {
 	DocumentMetaModule,
 	DocumentMetaService,
+	DropdownModule,
 	ErrorMessagesModule,
 	MasterLayoutConfig,
 	MasterLayoutModule,
@@ -55,6 +56,7 @@ export function createTranslateLoader(http: HttpClient) {
 		NgbModule,
 		DocumentMetaModule,
 		ErrorMessagesModule,
+		DropdownModule,
 		ObliqueHttpModule,
 		MasterLayoutModule,
 		MultiselectModule,

@@ -17,32 +17,51 @@
 		</a>
 	</ng-template>
 	<ng-template #orHeaderControl>
+		<or-dropdown position="left">
+			<button dropdown-toggle><span class="fa fa-cog control-icon"></span></button>
+			<ng-container dropdown-content>
+				<h4 translate>i18n.rtfas.nav.bar-header.language</h4>
+				<ul role="menu" class="nav-tree" aria-hidden="false">
+					<li class="nav-item" role="menuitem">
+						<a class="nav-link" role="button">FR</a>
+					</li>
+					<li role="menuitem">
+						<a role="button">DE</a>
+					</li>
+					<li role="menuitem">
+						<a role="button">EN</a>
+					</li>
+				</ul>
+			</ng-container>
+		</or-dropdown>
+	</ng-template>
+	<ng-template #orHeaderControl>
+		<div placement="bottom-right" ngbDropdown>
+			<a id="navbar-header-user-language" tabindex="0" role="menuitem" ngbDropdownToggle>
+				<span class="fa fa-cog control-icon"></span>
+			</a>
+			<h3 class="sr-only" translate>i18n.rtfas.nav.bar-header.configuration</h3>
+			<div ngbDropdownMenu aria-labelledby="navbar-header-user-language" class="control-content">
+				<h4 class="nav-header" translate>i18n.rtfas.nav.bar-header.language</h4>
+				<ul role="menu" class="nav nav-vertical nav-hover" aria-hidden="false">
+					<li class="nav-item" role="menuitem">
+						<a class="dropdown-item" role="button">FR</a>
+					</li>
+					<li class="nav-item" role="menuitem">
+						<a class="dropdown-item" role="button">DE</a>
+					</li>
+					<li class="nav-item" role="menuitem">
+						<a class="dropdown-item" role="button">EN</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</ng-template>
+	<ng-template #orHeaderControl>
 		<a role="button" (click)="toggle()">
 			{{material ? 'material' : 'bootstrap'}}
 		</a>
 	</ng-template>
-<!--	<ng-template #orHeaderControl>-->
-<!--		<div placement="bottom-right" ngbDropdown>-->
-<!--			<a id="navbar-header-user-language" tabindex="0" role="menuitem" ngbDropdownToggle>-->
-<!--				<span class="fa fa-cog"></span>-->
-<!--			</a>-->
-<!--			<h3 class="sr-only" translate>i18n.rtfas.nav.bar-header.configuration</h3>-->
-<!--			<div ngbDropdownMenu aria-labelledby="navbar-header-user-language" class="control-content">-->
-<!--				<h4 class="nav-header" translate>i18n.rtfas.nav.bar-header.language</h4>-->
-<!--				<ul role="menu" class="nav nav-vertical nav-hover" aria-hidden="false">-->
-<!--					<li class="nav-item" role="menuitem">-->
-<!--						<a class="dropdown-item" role="button">FR</a>-->
-<!--					</li>-->
-<!--					<li class="nav-item" role="menuitem">-->
-<!--						<a class="dropdown-item" role="button">DE</a>-->
-<!--					</li>-->
-<!--					<li class="nav-item" role="menuitem">-->
-<!--						<a class="dropdown-item" role="button">EN</a>-->
-<!--					</li>-->
-<!--				</ul>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--	</ng-template>-->
 
 	<ng-template #orFooterLink>
 		<a href='http://www.google.ch' role="button" ngbTooltip="google.ch" target="_blank" placement="left">Google</a>
