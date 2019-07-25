@@ -45,7 +45,8 @@ import {
 	SearchBoxModule,
 	ToggleModule,
 	StickyModule,
-	UnsavedChangesModule
+	UnsavedChangesModule,
+	UnsavedChangesTabsModule
 } from 'oblique';
 
 @NgModule({
@@ -66,6 +67,7 @@ import {
 		StickyModule,
 		ToggleModule,
 		UnsavedChangesModule,
+		UnsavedChangesTabsModule,
 
 		TranslateModule,
 		FormsModule,

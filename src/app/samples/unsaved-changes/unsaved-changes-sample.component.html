@@ -143,7 +143,7 @@
 									  placement="bottom" *ngIf="form1?.dirty">&nbsp;</span>
 							</ng-template>
 							<ng-template ngbTabContent>
-								<fieldset ngModelGroup="form1" #form1="ngModelGroup" orUnsavedChanges>
+								<fieldset ngModelGroup="form1" #form1="ngModelGroup" orUnsavedChangesTabs>
 									<div class="form-group row">
 										<label for="form1.text" class="col-sm-4 col-form-label">Text</label>
 										<div class="col-sm-8">
@@ -235,7 +235,7 @@
 									  *ngIf="form3?.dirty">&nbsp;</span>
 							</ng-template>
 							<ng-template ngbTabContent>
-								<fieldset ngModelGroup="form3" #form3="ngModelGroup" orUnsavedChanges>
+								<fieldset ngModelGroup="form3" #form3="ngModelGroup" UnsavedChangesTabsModule>
 									<div class="form-group row">
 										<label for="form3.text" class="col-sm-4 col-form-label">Text</label>
 										<div class="col-sm-8">
@@ -312,7 +312,7 @@
 									  placement="bottom" *ngIf="nestedReactive.value.form4.dirty">&nbsp;</span>
 							</ng-template>
 							<ng-template ngbTabContent>
-								<fieldset formGroupName="form4" orUnsavedChanges>
+								<fieldset formGroupName="form4" orUnsavedChangesTabs>
 									<div class="form-group row">
 										<label for="form4.text" class="col-sm-4 col-form-label">Text</label>
 										<div class="col-sm-8">
@@ -404,7 +404,7 @@
 									  *ngIf="nestedReactive.value.form6.dirty">&nbsp;</span>
 							</ng-template>
 							<ng-template ngbTabContent>
-								<fieldset formGroupName="form6" orUnsavedChanges>
+								<fieldset formGroupName="form6" UnsavedChangesTabsModule>
 									<div class="form-group row">
 										<label for="form6.text" class="col-sm-4 col-form-label">Text</label>
 										<div class="col-sm-8">
@@ -483,7 +483,7 @@
 								  *ngIf="form7?.dirty">&nbsp;</span>
 						</ng-template>
 						<ng-template ngbTabContent>
-							<form class="form-horizontal has-validation" #form7="ngForm" role="form" orUnsavedChanges>
+							<form class="form-horizontal has-validation" #form7="ngForm" role="form" orUnsavedChangesTabs>
 								<div class="form-group row">
 									<label for="tabForm1.text" class="col-sm-4 col-form-label">Text</label>
 									<div class="col-sm-8">
@@ -581,8 +581,7 @@
 								  *ngIf="tabForm9Reactive.dirty">&nbsp;</span>
 						</ng-template>
 						<ng-template ngbTabContent>
-							<form class="form-horizontal has-validation" role="form" [formGroup]="tabForm9Reactive"
-								  orUnsavedChanges>
+							<form class="form-horizontal has-validation" role="form" [formGroup]="tabForm9Reactive" UnsavedChangesTabsModule>
 								<div class="form-group row">
 									<label for="templateForm3.text" class="col-sm-4 col-form-label">Text</label>
 									<div class="col-sm-8">
