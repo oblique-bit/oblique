@@ -1,15 +1,32 @@
 @import "../variables";
 
-@mixin nav-hover() {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 100%;
-	border-left: $brand-line-width solid $brand-accent;
+@mixin nav-hover($offset: 0) {
+	position: relative;
 
-	.nav-modal & {
-		left: -$brand-line-width;
+	&.active,
+	&:active,
+	&:hover,
+	&:focus {
+		background-color: $gray-lighter;
+		z-index: 1;
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: #{$offset}px;
+			bottom: #{$offset}px;
+			left: 0;
+			border-left: $brand-line-width solid $brand-accent;
+
+			.nav-modal & {
+				left: -$brand-line-width;
+			}
+		}
+	}
+
+	&.active {
+		font-weight: 600;
+		background-color: $gray-light;
 	}
 }
 

@@ -32,18 +32,12 @@
 		border-bottom: 1px solid $gray-light;
 	}
 
-	&.nav-hover .nav-link {
-		position: relative;
+	&.nav-hover.nav-bordered .nav-link {
+		@include nav-hover(-1);
+	}
 
-		&.active,
-		&:hover,
-		&:focus {
-			background-color: $gray-lighter;
-
-			&:after {
-				@include nav-hover();
-			}
-		}
+	&.nav-hover:not(.nav-bordered) .nav-link {
+		@include nav-hover();
 	}
 
 	&.nav-toggle {

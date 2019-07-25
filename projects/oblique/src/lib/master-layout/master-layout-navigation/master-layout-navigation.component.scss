@@ -46,38 +46,29 @@
 		}
 
 		a {
-			position: relative;
 			display: flex;
 			justify-content: space-between;
 			margin: 0;
 			padding: $spacing-md $spacing-default;
 			border-bottom: 1px solid $gray-light;
 			color: $brand-default;
+			background-color: $white;
 			text-decoration: none;
 			cursor: pointer;
+			@include nav-hover(-1);
 
 			@include layout-collapse-up() {
 				border: 0 none;
 				padding: $spacing-xs 0 $spacing-xs $spacing-default;
-			}
 
-			&.active {
-				background-color: $white;
-			}
-
-			&:hover,
-			&:focus,
-			&:active {
-				background-color: $gray-light;
-				z-index: 1;
-			}
-
-			&:hover,
-			&:focus,
-			&:active,
-			&.active {
-				&::after {
-					@include nav-hover();
+				&.active,
+				&:active,
+				&:hover,
+				&:focus {
+					&::after {
+						top: 0;
+						bottom: 0;
+					}
 				}
 			}
 		}
@@ -90,6 +81,17 @@
 					padding: $spacing-default;
 					white-space: nowrap;
 					font-size: $font-size-base * 0.9;
+					background-color: transparent;
+
+					&.active {
+						background-color: $white;
+					}
+
+					&:active,
+					&:hover,
+					&:focus {
+						background-color: $gray-light;
+					}
 
 					&::after {
 						display: none; // do not show red border on main nav 1st level
@@ -132,7 +134,6 @@
 			border: none;
 			overflow-y: auto;
 			overflow-x: hidden;
-			background-color: $gray-lighter;
 			z-index: 2;
 			transform: translateX(105%);
 			transition: visibility $duration-default, transform $duration-default;
@@ -154,12 +155,6 @@
 				transform: none;
 				transition: none;
 				display: block;
-
-				a:hover,
-				a:focus,
-				a:active {
-					background-color: $gray-lighter;
-				}
 			}
 
 			@include layout-collapse-down() {
