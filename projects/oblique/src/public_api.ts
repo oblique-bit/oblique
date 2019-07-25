@@ -7,6 +7,7 @@ export {
 	DateDMYParserFormatter, DateFormatterPipe, DatepickerComponent, DatepickerI18nService, DatepickerModule, DatepickerPlaceholderDirective
 }from './lib/datepicker/datepicker.module';
 export {DocumentMetaService, DocumentMetaModule} from './lib/document-meta/document-meta.module';
+export {DropdownComponent, DropdownModule} from './lib/dropdown/dropdown.module';
 export {ErrorMessagesComponent, ErrorMessagesModule, ErrorMessagesService} from './lib/error-messages/error-messages.module';
 export {FilterBoxComponent, FilterBoxModule} from './lib/filter-box/filter-box.module';
 export {FormControlStateDirective, FormControlStateModule} from './lib/form-control-state/form-control-state.module';

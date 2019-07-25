@@ -1,0 +1,132 @@
+@import "../../styles/scss/core/variables";
+@import "../../styles/scss/core/mixins/layout";
+@import "../../styles/scss/core/mixins/bubble-tail";
+
+.dropdown {
+	button[dropdown-toggle] {
+		margin: 0;
+		padding: 0;
+		background-color: transparent;
+		color: inherit;
+		border: 0;
+	}
+
+	.dropdown-content {
+		display: block;
+		position: absolute;
+		left: 0;
+		right: 0;
+		min-width: 300px;
+		max-height: 0;
+		padding: 0 $spacing-default;
+		margin-top: $spacing-default;
+		margin-left: -50%;
+		overflow: hidden;
+		background-color: $white;
+		box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+		transition-property: max-height, padding;
+		transition-duration: $duration-default;
+
+		&.middle {
+			transform: translateX(-50%);
+		}
+
+		&.right {
+			transform: translateX(-$spacing-default);
+		}
+
+		&.left {
+			transform: translateX(calc(-100% + 2 * #{$spacing-default}));
+			margin-left: 50%;
+		}
+	}
+
+	&.open .dropdown-content {
+		max-height: calc(100vh - 200px);
+		padding: $spacing-default;
+		border: 1px solid $gray-light;
+		overflow: visible;
+
+		&::before,
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			border-style: solid;
+			transition: right $duration-default, left $duration-default;
+		}
+
+		&::before {
+			top: -$spacing-default;
+			border-width: 0 $spacing-default $spacing-default;
+			border-color: $gray-light transparent;
+		}
+
+		&.middle::before {
+			left: 50%;
+		}
+
+		&.right::before {
+			left: $spacing-default;
+		}
+
+		&.left::before {
+			right: $spacing-default;
+		}
+
+		&::after {
+			top: -14px;
+			border-width: 0 14px 14px;
+			border-color: white transparent;
+		}
+
+		&.middle::after {
+			left: calc(50% + 1px);
+		}
+
+		&.right::after {
+			left: 16px;
+		}
+
+		&.left::after {
+			right: 16px;
+		}
+	}
+
+	@include layout-collapse-down() {
+		&.control-link {
+			position: relative;
+
+			.dropdown-content {
+				position: fixed;
+				top: $header-height-md;
+				height: 0;
+				margin: 0;
+				transform: unset;
+			}
+
+			&.open {
+				@include bubble-tail-border(
+						$brand-danger,
+						$brand-danger,
+					$width: 8px,
+					$align: left,
+					$align-value: 18px,
+					$placement: bottom,
+					$direction: top
+				);
+
+				.dropdown-content {
+					height: unset;
+					padding: $spacing-default;
+					border-color: transparent transparent transparent $gray-light;
+
+					&::after,
+					&::before {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}

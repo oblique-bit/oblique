@@ -1,9 +1,10 @@
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 
 import {ColumnLayoutModule} from './column-layout/column-layout.module';
 import {DatepickerModule} from './datepicker/datepicker.module';
 import {DocumentMetaModule} from './document-meta/document-meta.module';
+import {DropdownModule} from './dropdown/dropdown.module';
 import {ErrorMessagesModule} from './error-messages/error-messages.module';
 import {FilterBoxModule} from './filter-box/filter-box.module';
 import {FormControlStateModule} from './form-control-state/form-control-state.module';
@@ -19,17 +20,18 @@ import {ScrollingModule} from './scrolling/scrolling.module';
 import {SpinnerModule} from './spinner/spinner.module';
 import {TextControlClearModule} from './text-control-clear/text-control-clear.module';
 import {ToggleModule} from './toggle/toggle.module';
+import {TranslateParamsModule} from './translate-params/translate-params.module';
 import {UnsavedChangesModule} from './unsaved-changes/unsaved-changes.module';
 import {NumberFormatModule} from './number-format/number-format.module';
 import {OffCanvasModule} from './off-canvas/off-canvas.module';
 import {SearchBoxModule} from './searchbox/search-box.module';
 import {StickyModule} from './sticky/sticky.module';
-import {TranslateParamsModule} from './translate-params/translate-params.module';
 
 const OBLIQUE_MODULES = [
 	ColumnLayoutModule,
 	DatepickerModule,
 	DocumentMetaModule,
+	DropdownModule,
 	ErrorMessagesModule,
 	FilterBoxModule,
 	FormControlStateModule,
@@ -58,6 +60,7 @@ const OBLIQUE_MODULES = [
 		ColumnLayoutModule,
 		DatepickerModule.forRoot(),
 		DocumentMetaModule,
+		DropdownModule,
 		ErrorMessagesModule,
 		FilterBoxModule,
 		FormControlStateModule,
