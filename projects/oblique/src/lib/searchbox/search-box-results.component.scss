@@ -1,11 +1,12 @@
 @import "../../styles/scss/core/variables";
+@import "../../styles/scss/core/mixins/layout";
 
 or-search-box-results {
 	width: 100%;
 }
 
 .search-results-list {
-	top: 113px;
+	top: $header-height-md;
 	left: 0;
 	right: 0;
 	height: 0;
@@ -19,7 +20,7 @@ or-search-box-results {
 	}
 
 	small {
-		color: #6c757d;
+		color: $gray-dark;
 		display: block;
 	}
 }
@@ -41,7 +42,7 @@ or-search-box-results {
 	}
 }
 
-@media (min-width: 992px) {
+@include media-breakpoint-up(lg) {
 	.control-link .search-results-list {
 		position: absolute;
 	}
