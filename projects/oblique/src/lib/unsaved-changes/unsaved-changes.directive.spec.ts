@@ -2,7 +2,6 @@ import {async, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {Component, ViewChild} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
-import {NgbTabsetModule} from '@ng-bootstrap/ng-bootstrap';
 import {UnsavedChangesDirective, UnsavedChangesService} from 'oblique';
 
 @Component({
@@ -10,7 +9,7 @@ import {UnsavedChangesDirective, UnsavedChangesService} from 'oblique';
 		<form orUnsavedChanges></form>`
 })
 class FaultyTestComponent {
-	@ViewChild(UnsavedChangesDirective) unsavedChangesDirective;
+	@ViewChild(UnsavedChangesDirective, {static: false}) unsavedChangesDirective;
 }
 
 @Component({
@@ -20,27 +19,12 @@ class FaultyTestComponent {
 })
 class TestComponent {
 	//noinspection JSUnusedGlobalSymbols
-	@ViewChild(UnsavedChangesDirective) unsavedChangesDirective;
-}
-
-@Component({
-	template: `
-		<ngb-tabset>
-			<ngb-tab id="tab" title="tab1">
-				<ng-template ngbTabContent>
-					<form orUnsavedChanges></form>
-				</ng-template>
-			</ngb-tab>
-		</ngb-tabset>`
-})
-class TabsTestComponent {
-	//noinspection JSUnusedGlobalSymbols
-	@ViewChild(UnsavedChangesDirective) unsavedChangesDirective;
+	@ViewChild(UnsavedChangesDirective, {static: false}) unsavedChangesDirective;
 }
 
 describe('UnsavedChangesDirective', () => {
 	let fixture;
-	let testComponent: FaultyTestComponent | TestComponent | TabsTestComponent;
+	let testComponent: FaultyTestComponent | TestComponent;
 	let directive: UnsavedChangesDirective;
 	let unsavedChangesServiceMock;
 	const initFixture = (component: any): void => {
@@ -60,12 +44,12 @@ describe('UnsavedChangesDirective', () => {
 
 		//noinspection JSIgnoredPromiseFromCall
 		TestBed.configureTestingModule({
-			declarations: [FaultyTestComponent, TestComponent, TabsTestComponent, UnsavedChangesDirective],
+			declarations: [FaultyTestComponent, TestComponent, UnsavedChangesDirective],
 			providers: [
 				ControlContainer,
 				{provide: UnsavedChangesService, useValue: unsavedChangesServiceMock}
 			],
-			imports: [CommonModule, NgbTabsetModule]
+			imports: [CommonModule]
 		}).compileComponents();
 	}));
 
@@ -87,41 +71,9 @@ describe('UnsavedChangesDirective', () => {
 			expect(unsavedChangesServiceMock.watch).toHaveBeenCalled();
 		});
 
-		it('should not call listenTo after content init', () => {
-			directive.ngAfterContentInit();
-			expect(unsavedChangesServiceMock.listenTo).not.toHaveBeenCalled();
-		});
-
-		it('should call unwatch and unListenTo on destroy', () => {
+		it('should call unwatch on destroy', () => {
 			directive.ngOnDestroy();
 			expect(unsavedChangesServiceMock.unWatch).toHaveBeenCalled();
-			expect(unsavedChangesServiceMock.unListenTo).toHaveBeenCalled();
-		});
-	});
-
-	describe('with nbg-tabs', () => {
-		beforeEach(() => {
-			initFixture(TabsTestComponent);
-		});
-
-		it('should be created', () => {
-			expect(directive).toBeTruthy();
-		});
-
-		it('should call watch on init', () => {
-			directive.ngOnInit();
-			expect(unsavedChangesServiceMock.watch).toHaveBeenCalled();
-		});
-
-		it('should call listenTo after content init', () => {
-			directive.ngAfterContentInit();
-			expect(unsavedChangesServiceMock.listenTo).toHaveBeenCalled();
-		});
-
-		it('should call unwatch and unListenTo on destroy', () => {
-			directive.ngOnDestroy();
-			expect(unsavedChangesServiceMock.unWatch).toHaveBeenCalled();
-			expect(unsavedChangesServiceMock.unListenTo).toHaveBeenCalled();
 		});
 	});
 });
