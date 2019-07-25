@@ -1,8 +1,7 @@
-import {ModuleWithProviders, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 
 import {ColumnLayoutModule} from './column-layout/column-layout.module';
-import {DatepickerModule} from './datepicker/datepicker.module';
 import {DocumentMetaModule} from './document-meta/document-meta.module';
 import {DropdownModule} from './dropdown/dropdown.module';
 import {ErrorMessagesModule} from './error-messages/error-messages.module';
@@ -29,7 +28,6 @@ import {StickyModule} from './sticky/sticky.module';
 
 const OBLIQUE_MODULES = [
 	ColumnLayoutModule,
-	DatepickerModule,
 	DocumentMetaModule,
 	DropdownModule,
 	ErrorMessagesModule,
@@ -56,46 +54,9 @@ const OBLIQUE_MODULES = [
 ];
 
 @NgModule({
-	imports: [
-		ColumnLayoutModule,
-		DatepickerModule.forRoot(),
-		DocumentMetaModule,
-		DropdownModule,
-		ErrorMessagesModule,
-		FilterBoxModule,
-		FormControlStateModule,
-		MasterLayoutModule,
-		MultiselectModule,
-		NavigableModule,
-		NavigatorModule,
-		NavTreeModule,
-		NotificationModule,
-		NumberFormatModule,
-		ObliqueHttpModule,
-		OffCanvasModule,
-		SchemaValidationModule,
-		SearchBoxModule,
-		ScrollingModule,
-		SpinnerModule,
-		TextControlClearModule,
-		TranslateParamsModule,
-		ToggleModule,
-		UnsavedChangesModule
-	],
+	imports: OBLIQUE_MODULES,
 	providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
 	exports: OBLIQUE_MODULES
 })
-export class ObliqueRootModule {
-}
-
-@NgModule({
-	imports: OBLIQUE_MODULES,
-	exports: OBLIQUE_MODULES
-})
 export class ObliqueModule {
-	static forRoot(): ModuleWithProviders {
-		return {
-			ngModule: ObliqueRootModule
-		};
-	}
 }
