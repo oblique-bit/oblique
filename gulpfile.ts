@@ -34,10 +34,8 @@ const distMeta = () => {
 	['version', 'description', 'keywords', 'author', 'contributors', 'homepage', 'repository', 'license', 'bugs', 'publishConfig']
 		.forEach(field => output[field] = meta[field]);
 
-	output['peerDependencies'] = {};
 	output['name'] = 'oblique-bit';
 	output['scripts'] = {postinstall: 'node copy.js'};
-	Object.keys(meta.dependencies).forEach((dependency) => output['peerDependencies'][dependency] = meta.dependencies[dependency]);
 
 	return gulp.src(['README.md', 'CHANGELOG.md', 'copy.js'])
 		.pipe(gulpFile('package.json', JSON.stringify(output, null, 2)))
