@@ -1,6 +1,6 @@
-@import "../../../styles/scss/core/variables";
-@import "../../../styles/scss/core/mixins/bubble-tail";
-@import "../../../styles/scss/core/mixins/layout";
+@import "../../core/variables";
+@import "../../core/mixins/bubble-tail";
+@import "../../core/mixins/layout";
 
 .application-header {
 	.header-controls {
@@ -82,8 +82,15 @@
 					}
 				}
 
-				.dropdown-toggle::after {
-					display: none;
+				.dropdown-toggle {
+					&.nav-link {
+						padding: 0;
+						color: inherit;
+					}
+
+					&::after {
+						display: none;
+					}
 				}
 			}
 
