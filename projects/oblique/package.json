@@ -1,5 +1,5 @@
 {
-  "name": "oblique",
+  "name": "oblique-bit",
   "version": "2.1.2",
   "peerDependencies": {
     "@angular/animations": "^8.1.0",

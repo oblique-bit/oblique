@@ -34,7 +34,6 @@ const distMeta = () => {
 	['version', 'description', 'keywords', 'author', 'contributors', 'homepage', 'repository', 'license', 'bugs', 'publishConfig']
 		.forEach(field => output[field] = meta[field]);
 
-	output['name'] = 'oblique-bit';
 	output['scripts'] = {postinstall: 'node copy.js'};
 
 	return gulp.src(['README.md', 'CHANGELOG.md', 'copy.js'])
@@ -44,7 +43,7 @@ const distMeta = () => {
 
 const distBundle = () => {
 	const meta = reload('./package.json');
-	return gulp.src(paths.dist + 'bundles/oblique.umd.js')
+	return gulp.src(paths.dist + 'bundles/oblique-bit.umd.js')
 		.pipe(header(banner(meta)))
 		.pipe(gulp.dest(paths.dist + 'bundles'));
 };
