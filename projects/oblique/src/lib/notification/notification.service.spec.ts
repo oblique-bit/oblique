@@ -99,7 +99,6 @@ describe('NotificationService', () => {
 		let notification: INotification;
 		beforeEach(() => {
 			notificationService.events.pipe(first()).subscribe(event => {
-				console.log(event);
 				notificationEmitted = true;
 				notification = event;
 			});

@@ -39,7 +39,6 @@ export class NotificationService {
 	 * Sends a _warning_ notification.
 	 */
 	public warning(config: INotification | string): INotification {
-		console.log(config);
 		return this.broadcast(config, NotificationType.WARNING);
 	}
 
