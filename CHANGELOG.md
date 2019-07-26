@@ -1,4 +1,13 @@
-# [4.0.0-RC.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/4.0.0-RC.1...4.0.0-RC.2) (2019-07-25)
+# [4.0.0-RC.3](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.0-RC.3) (2019-07-26)
+
+## Bug Fixes
+* **master-layout:** fix accessibility quick links ([0083863](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0083863))
+
+## Code Refactoring
+* **package:** package has been fully renamed into `oblique-bit` 
+
+
+# [4.0.0-RC.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.0-RC.2) (2019-07-25)
 
 ## Bug Fixes
 * **master-layout:** no `overflow` on main navigation ([47e9841](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/47e9841))
