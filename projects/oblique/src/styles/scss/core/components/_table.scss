@@ -2,6 +2,10 @@
 @import "../mixins/layout";
 @import "../mixins/table";
 
+table {
+	border-collapse: collapse; // Prevent double borders
+}
+
 .table {
 	width: 100%;
 	color: $brand-default;

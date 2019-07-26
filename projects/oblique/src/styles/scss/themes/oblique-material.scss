@@ -1,5 +1,4 @@
 @import '../core/variables';
-@import '../core/normalize';
 @import '~@angular/material/theming';
 @import 'material/oblique-palette';
 @import 'material/mat-checkbox-radio';
@@ -8,7 +7,3 @@
 
 @include mat-core();
 @include angular-material-theme(mat-light-theme(mat-palette($oblique-primary), mat-palette($oblique-accent), mat-palette($oblique-warn)));
-
-body {
-	font-family: $font;
-}
