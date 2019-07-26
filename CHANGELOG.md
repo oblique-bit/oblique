@@ -1,26 +1,26 @@
 # [4.0.0-RC.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/4.0.0-RC.1...4.0.0-RC.2) (2019-07-25)
 
 ## Bug Fixes
-* **master-layout:** no `overflow` on main navigation ([47e9841](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/47e9841))
-* **master-layout:** timing issue with `application-scrolling` ([0e42337](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/0e42337))
-* **search-box:** fix bootstrap rendering ([c4f924d](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/c4f924d))
-* **themes:** add `nav-tabs` component ([3e529b9](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/3e529b9))
-* **themes:** fix stepper with material ([d5bfc58](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/d5bfc58))
+* **master-layout:** no `overflow` on main navigation ([47e9841](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/47e9841))
+* **master-layout:** timing issue with `application-scrolling` ([0e42337](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0e42337))
+* **search-box:** fix bootstrap rendering ([c4f924d](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c4f924d))
+* **themes:** add `nav-tabs` component ([3e529b9](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/3e529b9))
+* **themes:** fix stepper with material ([d5bfc58](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d5bfc58))
 
 
 ## Code Refactoring
-* **datepicker:** remove `DatePickerModule` form `ObliqueModule` ([a8383e9](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/a8383e9))
-* **master-layout:** remove `ScrollDetectionDirective` ([3c7af50](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/3c7af50))
-* **master-layout:** rename `scrolled` event into `isScrolled` ([b0a975a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/b0a975a))
-* **unsaved-changes:** split code into 2 modules ([02df9ae](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/02df9ae))
+* **datepicker:** remove `DatePickerModule` form `ObliqueModule` ([a8383e9](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/a8383e9))
+* **master-layout:** remove `ScrollDetectionDirective` ([3c7af50](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/3c7af50))
+* **master-layout:** rename `scrolled` event into `isScrolled` ([b0a975a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b0a975a))
+* **unsaved-changes:** split code into 2 modules ([02df9ae](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/02df9ae))
 
 ## Features
-* **column-layout:** vertically center the toggle ([c9e1535](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/c9e1535))
-* **dropdown:** add `dropdown` component ([7629d5a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/7629d5a))
-* **master-layout:** add `scrolled` event to provide scroll offset ([959e8b1](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/959e8b1))
-* **themes:** add `hover-effect` to `oblique-utilities` ([4279e9b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/4279e9b))
-* **themes:** improve typography definitions ([9f376b2](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/9f376b2))
-* **themes:** style `table` according to CI/CD ([2712f1e](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/2712f1e))
+* **column-layout:** vertically center the toggle ([c9e1535](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c9e1535))
+* **dropdown:** add `dropdown` component ([7629d5a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7629d5a))
+* **master-layout:** add `scrolled` event to provide scroll offset ([959e8b1](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/959e8b1))
+* **themes:** add `hover-effect` to `oblique-utilities` ([4279e9b](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/4279e9b))
+* **themes:** improve typography definitions ([9f376b2](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/9f376b2))
+* **themes:** style `table` according to CI/CD ([2712f1e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/2712f1e))
 
 ## BREAKING CHANGES
 * **unsaved-changes:** all code related to Bootstrap's tabset has been moved into a new `UnsavedChangesTabsModule` module which has to be imported separately from `ObliqueModule`.
@@ -30,33 +30,33 @@
 * **master-layout:** `ScrollDetectionDirective` has been removed with no replacement
 
 
-# [4.0.0-RC.1](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/compare/4.0.0-Beta.2...4.0.0-RC.1) (2019-07-19)
+# [4.0.0-RC.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.0-RC.1) (2019-07-19)
 
 ## Bug Fixes
-* **master-layout:** use lighter grey on submenu item hover ([80d5e56](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/80d5e56))
-* **multiselect:** correctly pass prepend to filter-box ([92143f4](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/92143f4))
-* **search-box:** mouse up and down events are not propagated ([076fb5a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/076fb5a))
+* **master-layout:** use lighter grey on submenu item hover ([80d5e56](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/80d5e56))
+* **multiselect:** correctly pass prepend to filter-box ([92143f4](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/92143f4))
+* **search-box:** mouse up and down events are not propagated ([076fb5a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/076fb5a))
 
 ## Code Refactoring
-* **http-interceptor:** refactor according to notification changes ([c3e214a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/c3e214a))
-* **master-layout:** separate MasterLayoutService into multiple files ([76a84f1](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/76a84f1))
-* **notification:** simplify notification signatures ([6febfbe](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/6febfbe))
-* **toggle:** use @Input() instead of classes for toggle direction ([686f8d7](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/686f8d7))
-* **package:** `oblique-reactive` has been renamed into `oblique` but is distributed under `oblique-bit` ([12b9a99](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/12b9a99))
+* **http-interceptor:** refactor according to notification changes ([c3e214a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c3e214a))
+* **master-layout:** separate MasterLayoutService into multiple files ([76a84f1](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/76a84f1))
+* **notification:** simplify notification signatures ([6febfbe](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/6febfbe))
+* **toggle:** use @Input() instead of classes for toggle direction ([686f8d7](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/686f8d7))
+* **package:** `oblique-reactive` has been renamed into `oblique` but is distributed under `oblique-bit` ([12b9a99](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/12b9a99))
 
 ## Features
-* **master-layout:** use multiple column with full width navigation ([1099780](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/1099780))
-* **master-layout:** full width main navigation is disabled by default ([c30ad65](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/c30ad65))
-* **multiselect:** add `id`s on multiselect's elements ([0ee04c1](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/0ee04c1))
-* **notification:** add `id`s on notification's elements ([b68d340](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/b68d340))
-* **notification:** remove `default` notification ([0a54f3e](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/0a54f3e))
-* **themes:** adjust colors ([72d25a0](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/72d25a0))
-* **themes:** provide minified css files in the dist ([80e3362](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/80e3362))
-* **themes:** separate `oblique-bootstrap` from `oblique-core` ([8dcd1b8](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/8dcd1b8))
-* **themes:** extract alert into a standalone css component ([bbab6cc](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/bbab6cc))
-* **themes:** remove callout css component ([23be35e](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/23be35e))
-* **themes:** add `oblique-utilities` ([82c5a3e](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/82c5a3e))
-* **toggle:** remove `toggle-collapse` class ([462c9c9](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/462c9c9))
+* **master-layout:** use multiple column with full width navigation ([1099780](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/1099780))
+* **master-layout:** full width main navigation is disabled by default ([c30ad65](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c30ad65))
+* **multiselect:** add `id`s on multiselect's elements ([0ee04c1](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0ee04c1))
+* **notification:** add `id`s on notification's elements ([b68d340](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b68d340))
+* **notification:** remove `default` notification ([0a54f3e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0a54f3e))
+* **themes:** adjust colors ([72d25a0](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/72d25a0))
+* **themes:** provide minified css files in the dist ([80e3362](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/80e3362))
+* **themes:** separate `oblique-bootstrap` from `oblique-core` ([8dcd1b8](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/8dcd1b8))
+* **themes:** extract alert into a standalone css component ([bbab6cc](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/bbab6cc))
+* **themes:** remove callout css component ([23be35e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/23be35e))
+* **themes:** add `oblique-utilities` ([82c5a3e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/82c5a3e))
+* **toggle:** remove `toggle-collapse` class ([462c9c9](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/462c9c9))
 
 ### BREAKING CHANGES
 * **package:** `oblique-reactive` has been renamed into `oblique` but is distributed under `oblique-bit`, this means all imports have to be adapted
@@ -170,25 +170,25 @@
 `node_modules/oblique-reactive/styles/css/oblique-ui.css`
 
 
-# [4.0.0-Beta.2](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/browse?at=4.0.0-Beta.2) (2019-04-30)
+# [4.0.0-Beta.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.0-Beta.2) (2019-04-30)
 
 ## Bug Fixes
-* **master-layout:** close main navigation menu on `Escape` ([b8c61ba](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/b8c61ba))
-* **master-layout:** close main navigation menu on outside click ([70a4714](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/70a4714))
-* **master-layout:** main navigation menu is active when sub-route is active ([601dd2f](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/601dd2f))
-* **multiselect:** correctly handle `disable` state ([b434daf](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/b434daf))
-* **packaging:** `test_helpers` is correctly copied ([33d3c0f](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/33d3c0f))
+* **master-layout:** close main navigation menu on `Escape` ([b8c61ba](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b8c61ba))
+* **master-layout:** close main navigation menu on outside click ([70a4714](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/70a4714))
+* **master-layout:** main navigation menu is active when sub-route is active ([601dd2f](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/601dd2f))
+* **multiselect:** correctly handle `disable` state ([b434daf](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b434daf))
+* **packaging:** `test_helpers` is correctly copied ([33d3c0f](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/33d3c0f))
 
 ## Features
-* **material:** use Roboto as base font ([233c902](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/233c902))
+* **material:** use Roboto as base font ([233c902](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/233c902))
 
 
 # [4.0.0-Beta.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.0-Beta.1) (2019-04-15)
 
 ## Features
-* **filter-box:** add `angular material` variant ([cd7c148](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/cd7c148))
-* **material:** add `angular material` variant with Roboto font ([cce3b02](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/cce3b02))
-* **material:** force `outline` variants for all Oblique modules ([fb28717](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/fb28717))
+* **filter-box:** add `angular material` variant ([cd7c148](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/cd7c148))
+* **material:** add `angular material` variant with Roboto font ([cce3b02](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/cce3b02))
+* **material:** force `outline` variants for all Oblique modules ([fb28717](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/fb28717))
 
 ## BREAKING CHANGES
 * **filter-box:** 
@@ -199,11 +199,11 @@
 # [3.1.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=3.1.1) (2019-04-29)
 
 ## Bug Fixes
-* **master-layout:** close main navigation menu on `Escape` ([b8c61ba](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/b8c61ba))
-* **master-layout:** close main navigation menu on outside click ([70a4714](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/70a4714))
-* **master-layout:** main navigation menu is active when sub-route is active ([601dd2f](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/601dd2f))
-* **multiselect:** add `setDisabledState` function ([b434daf](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/b434daf))
-* **packaging:** `test_helpers` is correctly copied ([33d3c0f](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/33d3c0f))
+* **master-layout:** close main navigation menu on `Escape` ([b8c61ba](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b8c61ba))
+* **master-layout:** close main navigation menu on outside click ([70a4714](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/70a4714))
+* **master-layout:** main navigation menu is active when sub-route is active ([601dd2f](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/601dd2f))
+* **multiselect:** add `setDisabledState` function ([b434daf](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b434daf))
+* **packaging:** `test_helpers` is correctly copied ([33d3c0f](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/33d3c0f))
 
 <a name="3.1.0"></a>
 # [3.1.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=3.1.0) (2019-03-12)
@@ -218,23 +218,23 @@
 * **zone.js:** 0.8.29
 
 ### Bug Fixes
-* **datepicker:** remove onDocumentClick ([3cd4b47](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/3cd4b47))
-* **master-layout:** `offCanvas` can be dynamically toggled on/off ([2b00202](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/2b00202))
-* **master-layout:** apply `nav-link` class on child anchors of header control ([74e528a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/74e528a))
-* **master-layout:** custom navigation can be scrollable ([375a647](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/375a647))
-* **multiselect:** add customizable `id` to underlying input ([0423b82](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/0423b82))
-* **nav-tree:** pass `translateService` to the default formatter factory ([efa999a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/efa999a))
-* **schema-validator:** accepts `properties` property to be empty or not present ([269a897](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/269a897))
-* **security:** links to cross-origin destinations are unsafe ([595f0cf](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/595f0cf))
-* **spinner:** delay `$state` change to avoid `ExpressionChangedAfterItHasBeenCheckedError` ([f23621e](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/f23621e))
-* **unsaved-changes:** use correct type for `Subscription` ([4f29c10](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/4f29c10))
+* **datepicker:** remove onDocumentClick ([3cd4b47](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/3cd4b47))
+* **master-layout:** `offCanvas` can be dynamically toggled on/off ([2b00202](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/2b00202))
+* **master-layout:** apply `nav-link` class on child anchors of header control ([74e528a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/74e528a))
+* **master-layout:** custom navigation can be scrollable ([375a647](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/375a647))
+* **multiselect:** add customizable `id` to underlying input ([0423b82](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0423b82))
+* **nav-tree:** pass `translateService` to the default formatter factory ([efa999a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/efa999a))
+* **schema-validator:** accepts `properties` property to be empty or not present ([269a897](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/269a897))
+* **security:** links to cross-origin destinations are unsafe ([595f0cf](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/595f0cf))
+* **spinner:** delay `$state` change to avoid `ExpressionChangedAfterItHasBeenCheckedError` ([f23621e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f23621e))
+* **unsaved-changes:** use correct type for `Subscription` ([4f29c10](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/4f29c10))
 
 ### Features
-* **error-messages:** use `orTranslateParams` instead of `translate` ([d2434ed](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/d2434ed))
-* **interceptor:** keep track of running requests ([e234f23](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/e234f23))
-* **master-layout:** apply `control-icon` class automatically on `nav-link` elements ([669d94b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/669d94b))
-* **nav-tree:** translate labels ([901d42e](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/901d42e))
-* **translate-params:** add `orTranslateParams` pipe ([4c27ed1](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/4c27ed1))
+* **error-messages:** use `orTranslateParams` instead of `translate` ([d2434ed](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d2434ed))
+* **interceptor:** keep track of running requests ([e234f23](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/e234f23))
+* **master-layout:** apply `control-icon` class automatically on `nav-link` elements ([669d94b](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/669d94b))
+* **nav-tree:** translate labels ([901d42e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/901d42e))
+* **translate-params:** add `orTranslateParams` pipe ([4c27ed1](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/4c27ed1))
 
 
 <a name="3.0.0"></a>
@@ -250,49 +250,49 @@
 * **tslib:** 1.9.3
 
 ## Bug Fixes
-* **changelog:** use correct link to named versions ([207392c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/207392c))
-* **master-layout:** add a normal space on the right of the locale selection ([0186d2a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/0186d2a))
-* **master-layout:** apply `home` link on footer logo ([34afa1d](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/34afa1d))
-* **master-layout:** improve contrast of locale buttons ([ee459f3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/ee459f3))
-* **off-canvas:** increase the size of the close button ([d39949c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/d39949c))
-* **off-canvas:** do not set `default-layout` on off-canvas content ([7d90998](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/7d90998))
-* **master-layout:** ensure user chosen language is supported ([0e0cbd4](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/0e0cbd4))
-* **master-layout:** can dynamically update custom footer ([359c8ff](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/359c8ff))
-* **master-layout:** close main navigation when sub-navigation is active on mobile mode ([11cac0e](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/11cac0e))
-* **master-layout:** do not highlight `#content` and `#navigation` when focused ([2aa4540](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/2aa4540))
-* **master-layout:** improve aspect of language selection buttons ([1df4f59](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/1df4f59))
-* **master-layout:** remove navigation jump link when there is no navigation ([0d6ea68](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/0d6ea68))
-* **master-layout:** remove navigation title when there is no navigation ([2372d92](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/2372d92))
-* **master-layout:** use same language for both the default and current language ([1710405](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/1710405))
-* **nav-tree:** filtering treats regex terminals as string instead of throwing an error ([e415570](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/e415570))
-* **master-layout:** `.navbar` inherits `background-color` from parent ([19d7a02](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/19d7a02))
-* **master-layout:** jumplinks use angular route fragments ([d1f4b61](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/d1f4b61))
-* **master-layout:** transform `NodeList` into `array` (IE compatibility) ([5fd0b9a](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/5fd0b9a))
+* **changelog:** use correct link to named versions ([207392c](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/207392c))
+* **master-layout:** add a normal space on the right of the locale selection ([0186d2a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0186d2a))
+* **master-layout:** apply `home` link on footer logo ([34afa1d](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/34afa1d))
+* **master-layout:** improve contrast of locale buttons ([ee459f3](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/ee459f3))
+* **off-canvas:** increase the size of the close button ([d39949c](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d39949c))
+* **off-canvas:** do not set `default-layout` on off-canvas content ([7d90998](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7d90998))
+* **master-layout:** ensure user chosen language is supported ([0e0cbd4](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0e0cbd4))
+* **master-layout:** can dynamically update custom footer ([359c8ff](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/359c8ff))
+* **master-layout:** close main navigation when sub-navigation is active on mobile mode ([11cac0e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/11cac0e))
+* **master-layout:** do not highlight `#content` and `#navigation` when focused ([2aa4540](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/2aa4540))
+* **master-layout:** improve aspect of language selection buttons ([1df4f59](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/1df4f59))
+* **master-layout:** remove navigation jump link when there is no navigation ([0d6ea68](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0d6ea68))
+* **master-layout:** remove navigation title when there is no navigation ([2372d92](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/2372d92))
+* **master-layout:** use same language for both the default and current language ([1710405](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/1710405))
+* **nav-tree:** filtering treats regex terminals as string instead of throwing an error ([e415570](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/e415570))
+* **master-layout:** `.navbar` inherits `background-color` from parent ([19d7a02](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/19d7a02))
+* **master-layout:** jumplinks use angular route fragments ([d1f4b61](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d1f4b61))
+* **master-layout:** transform `NodeList` into `array` (IE compatibility) ([5fd0b9a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/5fd0b9a))
 
 ## Features
-* **master-layout:** remove `[orOffCanvas]` content projection from `MasterLayoutComponent` ([a50e91e](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/a50e91e))
-* **master-layout:** add `[orFooter]` and `[orHeader]` content projection to use a completely custom content ([aca2775](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/aca2775))
-* **master-layout:** add controls for offCanvas, custom header and footer and scroll transitions for header and footer ([0dde5ab](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/0dde5ab))
-* **master-layout:** add support for ids on navigation items ([014c916](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/014c916))
-* **master-layout:** add support for `Enter` key for menu toggle ([4d0937d](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/4d0937d))
-* **master-layout:** can now totally disable Oblique language management ([593cb77](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/593cb77))
-* **master-layout:** can specify an id per locale ([885f5d6](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/885f5d6))
-* **master-layout:** dropdown navigation can be toggled with `Enter` key ([b279e72](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/b279e72))
-* **master-layout:** dynamically add oblique classes on header controls ([b587df6](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/b587df6))
-* **master-layout:** move `ScrollingConfig.transitions.header` to `MasterLayoutConfig.header.scrollTransitions` ([08269d7](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/08269d7))
-* **master-layout:** navigation can be scrollable ([81887ea](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/81887ea))
-* **master-layout:** remove `[orFooterInfoSMCollapse]` ([80b12f6](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/80b12f6))
-* **master-layout:** remove `[orFooterLinks]` content projection from `MasterLayoutComponent` ([1b3a45f](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/1b3a45f))
-* **master-layout:** remove `[orHeaderControls]` content projection from `MasterLayoutComponent` ([65f65eb](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/65f65eb))
-* **master-layout:** remove `ORFooterLink` from `MasterLayoutConfig` ([be6dfd9](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/be6dfd9))
-* **master-layout:** remove deprecated master layout code ([81fc6ff](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/81fc6ff))
-* **master-layout:** use browser language as default and remove locale related warnings ([ffa5c3b](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/ffa5c3b))
-* **master-layout:** use named templates for header controls and footer links ([6994b3f](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/6994b3f))
-* **master-layout:** wrap `defaultLocale` and `locales` within `locale` ([9ea5ff2](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/9ea5ff2))
+* **master-layout:** remove `[orOffCanvas]` content projection from `MasterLayoutComponent` ([a50e91e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/a50e91e))
+* **master-layout:** add `[orFooter]` and `[orHeader]` content projection to use a completely custom content ([aca2775](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/aca2775))
+* **master-layout:** add controls for offCanvas, custom header and footer and scroll transitions for header and footer ([0dde5ab](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0dde5ab))
+* **master-layout:** add support for ids on navigation items ([014c916](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/014c916))
+* **master-layout:** add support for `Enter` key for menu toggle ([4d0937d](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/4d0937d))
+* **master-layout:** can now totally disable Oblique language management ([593cb77](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/593cb77))
+* **master-layout:** can specify an id per locale ([885f5d6](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/885f5d6))
+* **master-layout:** dropdown navigation can be toggled with `Enter` key ([b279e72](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b279e72))
+* **master-layout:** dynamically add oblique classes on header controls ([b587df6](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b587df6))
+* **master-layout:** move `ScrollingConfig.transitions.header` to `MasterLayoutConfig.header.scrollTransitions` ([08269d7](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/08269d7))
+* **master-layout:** navigation can be scrollable ([81887ea](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/81887ea))
+* **master-layout:** remove `[orFooterInfoSMCollapse]` ([80b12f6](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/80b12f6))
+* **master-layout:** remove `[orFooterLinks]` content projection from `MasterLayoutComponent` ([1b3a45f](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/1b3a45f))
+* **master-layout:** remove `[orHeaderControls]` content projection from `MasterLayoutComponent` ([65f65eb](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/65f65eb))
+* **master-layout:** remove `ORFooterLink` from `MasterLayoutConfig` ([be6dfd9](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/be6dfd9))
+* **master-layout:** remove deprecated master layout code ([81fc6ff](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/81fc6ff))
+* **master-layout:** use browser language as default and remove locale related warnings ([ffa5c3b](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/ffa5c3b))
+* **master-layout:** use named templates for header controls and footer links ([6994b3f](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/6994b3f))
+* **master-layout:** wrap `defaultLocale` and `locales` within `locale` ([9ea5ff2](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/9ea5ff2))
 
 ## Code Refactoring
-* change `EventEmitter` to `rxjs.Subject` where applicable ([e3d57e3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/e3d57e3))
-* use the cli to build the distribution ([f703b61](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/f703b61))
+* change `EventEmitter` to `rxjs.Subject` where applicable ([e3d57e3](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/e3d57e3))
+* use the cli to build the distribution ([f703b61](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f703b61))
 
 
 ## BREAKING CHANGES
@@ -333,19 +333,19 @@
 * **oblique-ui:** 2.0.2
 
 ## Bug Fixes
-* **master-layout:** `menuCollapsed` is set to `false` when the menu is opened and to `true` when it is closed ([0dfdd92](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/0dfdd92))
-* **master-layout:** can provide the whole header controls list as content projection ([515af00](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/515af00))
-* **master-layout:** controls are not focusable during header closure ([9c96bea](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/9c96bea))
-* **master-layout:** each Oblique webapp has it's own language token ([8331bbe](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/8331bbe))
-* **master-layout:** export everything in index.html ([91f4080](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/91f4080))
-* **master-layout:** export MasterLayoutComponent as `orMasterLayout` ([f23e3d8](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/f23e3d8))
-* **master-layout:** header controls are automatically focusable when the layout is not collapsed ([f3413a8](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/f3413a8))
-* **master-layout:** masterLayoutDirective uses old selector for the menu toggle ([00949d0](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/00949d0))
-* **master-layout:** set default `true` value for `menuCollapsed` ([25c0a80](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/25c0a80))
-* **nav-tree:** correctly match active links ([425288e](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/425288e))
-* **navigable:** correctly exports the directive ([7c9f36c](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/7c9f36c))
-* **off-canvas:** sidebar is shown on mobile view ([35b2ea3](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/35b2ea3))
-* **off-canvas:** toggle is also activated on `enter` key ([7d29701](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/7d29701))
+* **master-layout:** `menuCollapsed` is set to `false` when the menu is opened and to `true` when it is closed ([0dfdd92](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0dfdd92))
+* **master-layout:** can provide the whole header controls list as content projection ([515af00](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/515af00))
+* **master-layout:** controls are not focusable during header closure ([9c96bea](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/9c96bea))
+* **master-layout:** each Oblique webapp has it's own language token ([8331bbe](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/8331bbe))
+* **master-layout:** export everything in index.html ([91f4080](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/91f4080))
+* **master-layout:** export MasterLayoutComponent as `orMasterLayout` ([f23e3d8](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f23e3d8))
+* **master-layout:** header controls are automatically focusable when the layout is not collapsed ([f3413a8](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f3413a8))
+* **master-layout:** masterLayoutDirective uses old selector for the menu toggle ([00949d0](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/00949d0))
+* **master-layout:** set default `true` value for `menuCollapsed` ([25c0a80](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/25c0a80))
+* **nav-tree:** correctly match active links ([425288e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/425288e))
+* **navigable:** correctly exports the directive ([7c9f36c](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7c9f36c))
+* **off-canvas:** sidebar is shown on mobile view ([35b2ea3](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/35b2ea3))
+* **off-canvas:** toggle is also activated on `enter` key ([7d29701](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7d29701))
 
 
 <a name="2.1.1"></a>
@@ -357,12 +357,12 @@
 * **rxjs:** 6.3.2
 
 ## Bug Fixes
-* **column-layout:** remove `console.log` ([8fa7a60](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/8fa7a60))
-* **master-layout:** `defaultLocale` can also be specified in the config ([3c517dc](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/3c517dc))
-* **master-layout:** footer links can be specified through an input as well ([16c4523](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/16c4523))
-* **master-layout:** navigation links can be specified through an input as well ([271de5e](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/271de5e))
-* **master-layout:** check validity of default locale before applying it ([26c917e](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/26c917e))
-* **master-layout:** only display locale choice if there are multiple ones ([c7090d7](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/c7090d7))
+* **column-layout:** remove `console.log` ([8fa7a60](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/8fa7a60))
+* **master-layout:** `defaultLocale` can also be specified in the config ([3c517dc](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/3c517dc))
+* **master-layout:** footer links can be specified through an input as well ([16c4523](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/16c4523))
+* **master-layout:** navigation links can be specified through an input as well ([271de5e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/271de5e))
+* **master-layout:** check validity of default locale before applying it ([26c917e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/26c917e))
+* **master-layout:** only display locale choice if there are multiple ones ([c7090d7](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c7090d7))
 
 <a name="2.1.0"></a>
 # [2.1.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.1.0) (2018-08-29)
@@ -375,11 +375,11 @@
 * **ajv:** 6.5.3
 
 ## Bug Fixes
-* **schema-validation:** do not return a `type` error with empty fields ([7418eb5](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/7418eb5))
+* **schema-validation:** do not return a `type` error with empty fields ([7418eb5](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7418eb5))
 
 ## Features
-* **master-layout:** master layout can be controlled by a component, eliminating the use of `Handlebars` and `Gulp` (see master layout documentation) ([9079064](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/9079064))
-* **off-canvas:** add static off-canvas with dedicated toggle ([b557845](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/b557845))
+* **master-layout:** master layout can be controlled by a component, eliminating the use of `Handlebars` and `Gulp` (see master layout documentation) ([9079064](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/9079064))
+* **off-canvas:** add static off-canvas with dedicated toggle ([b557845](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b557845))
 
 
 <a name="2.0.0"></a>
@@ -392,12 +392,12 @@
 * **rxjs:** 6.2.2
 
 ## Features
-* **http:** add a custom Http interceptor for Oblique-based projects ([1ab2986](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/1ab2986))
+* **http:** add a custom Http interceptor for Oblique-based projects ([1ab2986](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/1ab2986))
 
 ## Bug Fixes
-* **form-control-state:** fix `control-mandatory` class ([33c916d](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/33c916d))
-* **test:** ensure `--prod` parameter is properly propagated to `ng test` ([fd42fbc](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/fd42fbc))
-* **test:** ensure `prebuild` npm script is executed during `ci-build` ([482a4b6](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/482a4b6))
+* **form-control-state:** fix `control-mandatory` class ([33c916d](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/33c916d))
+* **test:** ensure `--prod` parameter is properly propagated to `ng test` ([fd42fbc](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/fd42fbc))
+* **test:** ensure `prebuild` npm script is executed during `ci-build` ([482a4b6](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/482a4b6))
 
 
 <a name="2.0.0-RC.5"></a>
@@ -412,14 +412,14 @@
 * **rxjs:** 6.2.1
 
 ## Features
-* **spinner:** SpinnerComponent now supports channels in order to handle multiple spinners within the same page ([506e263](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/506e263))
-* **multiselect:** MultiselectComponent is now exported as `orMultiselect` ([7d6cc9a](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7d6cc9a))
-* **tests:** PhantomJS has been removed in favor of ChromeHeadless (FirefoxHeadless under Windows as per privileges issues) ([0c34dce](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0c34dce))
+* **spinner:** SpinnerComponent now supports channels in order to handle multiple spinners within the same page ([506e263](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/506e263))
+* **multiselect:** MultiselectComponent is now exported as `orMultiselect` ([7d6cc9a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7d6cc9a))
+* **tests:** PhantomJS has been removed in favor of ChromeHeadless (FirefoxHeadless under Windows as per privileges issues) ([0c34dce](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0c34dce))
 
 ## Bug Fixes
-* **datepicker-i18n:** fix german translation for short months labels ([f259a5d](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f259a5d)), closes [#579](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/issues/579)
-* **navigable:** events are now successfully registered on new added navigables (which may be created by adding new data models) ([14c7121](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/14c7121))
-* **tests:** workaround for resolving Karma timeout issues on Windows (cf. https://github.com/karma-runner/karma-chrome-launcher/issues/154, https://github.com/karma-runner/karma/issues/2652) ([5526c37](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/5526c37))
+* **datepicker-i18n:** fix german translation for short months labels ([f259a5d](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f259a5d)), closes [#579](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/issues/579)
+* **navigable:** events are now successfully registered on new added navigables (which may be created by adding new data models) ([14c7121](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/14c7121))
+* **tests:** workaround for resolving Karma timeout issues on Windows (cf. https://github.com/karma-runner/karma-chrome-launcher/issues/154, https://github.com/karma-runner/karma/issues/2652) ([5526c37](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/5526c37))
 
 ## BREAKING CHANGES
 * **navigable:**
@@ -442,19 +442,19 @@
 (see [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/package.json?at=2.0.0-RC.2-1) for the full list of dependencies)
 
 ## Features
-* **orNavTreeFakeFocus:** add fake focus for `orNavTree` ([ea12cfb](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/ea12cfb))
-* **master-layout:** provide a `noNavigation` parameter for collapsing the application navigation ([7ed28e5](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7ed28e5))
-* **text-control-clear:** add a `TextControlClearDirective` based on ObliqueUI `.text-control-clear` for clearing input controls ([c090f6e](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c090f6e))
+* **orNavTreeFakeFocus:** add fake focus for `orNavTree` ([ea12cfb](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/ea12cfb))
+* **master-layout:** provide a `noNavigation` parameter for collapsing the application navigation ([7ed28e5](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7ed28e5))
+* **text-control-clear:** add a `TextControlClearDirective` based on ObliqueUI `.text-control-clear` for clearing input controls ([c090f6e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c090f6e))
 
 ## Bug Fixes
-* **MasterLayoutNavigationMenuDirective:** (MS Edge) access `HTMLElement.style.cssText` instead of `HTMLElement.style` to avoid *Assignment to read-only properties is not allowed in strict mode* runtime errors ([eb689de](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/eb689de))
-* **NavTreeFakeFocusDirective:** (MS Edge | IE) use `KeyboardEvent.keyCode` instead of `KeyboardEvent.key` for browser compatibility ([f41daa7](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f41daa7))
-* **orMasterLayoutHeaderToggle:** Fix lint error ([f465266](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f465266))
+* **MasterLayoutNavigationMenuDirective:** (MS Edge) access `HTMLElement.style.cssText` instead of `HTMLElement.style` to avoid *Assignment to read-only properties is not allowed in strict mode* runtime errors ([eb689de](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/eb689de))
+* **NavTreeFakeFocusDirective:** (MS Edge | IE) use `KeyboardEvent.keyCode` instead of `KeyboardEvent.key` for browser compatibility ([f41daa7](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f41daa7))
+* **orMasterLayoutHeaderToggle:** Fix lint error ([f465266](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f465266))
 
 ## Code Refactoring
-* **filter-box:** use the new `text-control` ObliqueUI component for clearing filter box control (& refactor other component to use `OrFilterBox`) ([ea3d02e](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/ea3d02e))
-* **orNavTree:** use `ngTemplate` instead of recursive component ([b8e9e59](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b8e9e59))
-* **orNavTreeFakeFocus:** do not change CSS resources at runtime, reorganize source code and fix some minor issues ([f8882c7](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f8882c7))
+* **filter-box:** use the new `text-control` ObliqueUI component for clearing filter box control (& refactor other component to use `OrFilterBox`) ([ea3d02e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/ea3d02e))
+* **orNavTree:** use `ngTemplate` instead of recursive component ([b8e9e59](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b8e9e59))
+* **orNavTreeFakeFocus:** do not change CSS resources at runtime, reorganize source code and fix some minor issues ([f8882c7](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f8882c7))
 
 
 <a name="2.0.0-RC.3-1"></a>
@@ -469,14 +469,14 @@
 * **zone.js:** 0.8.20
 
 ## Bug Fixes
-* **notification:** do not show default title if a title is provided ([3e6810a](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/3e6810a))
+* **notification:** do not show default title if a title is provided ([3e6810a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/3e6810a))
 
 ## Features
 * **footer:**
-	- add configuration parameter for enabling small footer variant ([b399e26](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b399e26))
-	- add Footer component for layout customization ([1bcb191](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/1bcb191))
-* **master-layout:** add a `MasterLayoutHeaderToggleDirective` for toggling the application header ([299a55b](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/299a55b))
-* **number-format:** add directive ([9a364c5](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/9a364c5))
+	- add configuration parameter for enabling small footer variant ([b399e26](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b399e26))
+	- add Footer component for layout customization ([1bcb191](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/1bcb191))
+* **master-layout:** add a `MasterLayoutHeaderToggleDirective` for toggling the application header ([299a55b](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/299a55b))
+* **number-format:** add directive ([9a364c5](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/9a364c5))
 
 ## Code Refactoring
 * **toolchain:** migrate to Gulp 4 ([788c987](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/788c987))
@@ -495,15 +495,15 @@
 * **ajv:** 6.0.0
 
 ## Features
-* **notification:** can pass parameters to title and message translations ([d781e19](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d781e19))
-* **unsubscribe:** add `Unsubscribable` class to unsubscribe form `Observable` ([d20d4bd](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d20d4bd))
+* **notification:** can pass parameters to title and message translations ([d781e19](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d781e19))
+* **unsubscribe:** add `Unsubscribable` class to unsubscribe form `Observable` ([d20d4bd](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d20d4bd))
 
 ## Bug Fixes
-* **schema-validation:** `SchemaValidationModule` now provides `schemaValidationService` ([acbc7f9](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/acbc7f9))
-* **AoT:** avoid lambda function on providers ([8a90825](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/8a90825))
-* **navigator:** fix routing to module ([74e2778](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/74e2778))
-* **notification:** add `alert-default` class to default alerts ([dac70b1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/dac70b1))
-* **observable:** unsubscribe from all observables ([95b4b7a](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/95b4b7a))
+* **schema-validation:** `SchemaValidationModule` now provides `schemaValidationService` ([acbc7f9](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/acbc7f9))
+* **AoT:** avoid lambda function on providers ([8a90825](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/8a90825))
+* **navigator:** fix routing to module ([74e2778](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/74e2778))
+* **notification:** add `alert-default` class to default alerts ([dac70b1](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/dac70b1))
+* **observable:** unsubscribe from all observables ([95b4b7a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/95b4b7a))
 
 
 <a name="2.0.0-RC.2-1"></a>
@@ -516,32 +516,32 @@
 * **rxjs:** 5.5.1
 * **ajv:** 5.3.0
 
-(see [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/package.json?at=2.0.0-RC.2-1) for the full list of dependencies)
+(see [package.json](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/package.json?at=2.0.0-RC.2-1) for the full list of dependencies)
 
 ## Bug Fixes
 * **formControlState:**
-	- `name` attribute is not mandatory. Either `ngModel`, `ngModelChange` or `formControlName` is ([7abce66](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7abce66))
-	- for reactive forms, allow `pristineValidation` and set `control-mandatory` on page initialisation ([19d5f5c](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/19d5f5c))
-	- remove `has-error` class on form reset ([d1c605f](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d1c605f))
+	- `name` attribute is not mandatory. Either `ngModel`, `ngModelChange` or `formControlName` is ([7abce66](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7abce66))
+	- for reactive forms, allow `pristineValidation` and set `control-mandatory` on page initialisation ([19d5f5c](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/19d5f5c))
+	- remove `has-error` class on form reset ([d1c605f](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d1c605f))
 * **schemaValidation:**
-	- never pass null to ajv ([afc7468](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/afc7468), [4353179](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/4353179))
-	- prevent multiple compile with same schema ([84c9dac](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/84c9dac))
+	- never pass null to ajv ([afc7468](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/afc7468), [4353179](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/4353179))
+	- prevent multiple compile with same schema ([84c9dac](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/84c9dac))
 
 ## Code Refactoring
-* **navigator:** rename `orNavigator` into `or-navigator` ([0cb9f47](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0cb9f47))
-* **scss:** remove module SCSS resources and cleanup showcase ones ([d2f3383](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d2f3383))
+* **navigator:** rename `orNavigator` into `or-navigator` ([0cb9f47](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0cb9f47))
+* **scss:** remove module SCSS resources and cleanup showcase ones ([d2f3383](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d2f3383))
 
 ## Features
-* **column-layout:** dispose content within collapsible/expansible columns using `ColumnLayoutComponent` (or `ColumnPanelDirective` & `ColumnPanelDirective`) ([4348d51](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/4348d51))
-* **filterBox:** add `size`, `disabled` and `readonly` attributes ([847d3a7](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/847d3a7))
-* **formControlState:** add reactive form sample ([226d0d5](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/226d0d5))
+* **column-layout:** dispose content within collapsible/expansible columns using `ColumnLayoutComponent` (or `ColumnPanelDirective` & `ColumnPanelDirective`) ([4348d51](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/4348d51))
+* **filterBox:** add `size`, `disabled` and `readonly` attributes ([847d3a7](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/847d3a7))
+* **formControlState:** add reactive form sample ([226d0d5](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/226d0d5))
 * **schemaValidation:**
-	- add `getValidator` function for reactive forms ([d3ff5f3](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d3ff5f3))
-	- add reactive form to the showcase ([1e4afde](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/1e4afde))
-	- move Draft06 transformation into a decorator ([75a8b8b](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/75a8b8b))
-* **toggle:** add `ToggleDirective` for icon toggle ([dc6f8e8](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/dc6f8e8))
-* **toolchain:** add npm script & Gulp task for npm linking and watching distribution files ([8ed5c89](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/8ed5c89))
-* **unsavedChangesService:** expose `discardChanges` function ([3e84226](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/3e84226))
+	- add `getValidator` function for reactive forms ([d3ff5f3](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d3ff5f3))
+	- add reactive form to the showcase ([1e4afde](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/1e4afde))
+	- move Draft06 transformation into a decorator ([75a8b8b](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/75a8b8b))
+* **toggle:** add `ToggleDirective` for icon toggle ([dc6f8e8](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/dc6f8e8))
+* **toolchain:** add npm script & Gulp task for npm linking and watching distribution files ([8ed5c89](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/8ed5c89))
+* **unsavedChangesService:** expose `discardChanges` function ([3e84226](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/3e84226))
 
 ## BREAKING CHANGES
 * **navigator:** rename `orNavigator` into `or-navigator`
@@ -549,7 +549,7 @@
 
 
 <a name="2.0.0-RC.2"></a>
-# [2.0.0-RC.2](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.2) (2017-08-04)
+# [2.0.0-RC.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.2) (2017-08-04)
 
 ## Dependencies updates
 * **ObliqueUI:** 2.0.0-RC.2
@@ -560,7 +560,7 @@
 * **ngx-translate:** 8.0.0
 * **rxjs:** 5.4.3
 
-(see [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/package.json?at=2.0.0-RC.2) for the full list of dependencies)
+(see [package.json](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/package.json?at=2.0.0-RC.2) for the full list of dependencies)
 
 ## Features
 * **toolchain**
@@ -622,8 +622,8 @@ This of course breaks all compatibility to any previous release of ObliqueReacti
 * **@uirouter/angularjs:** 1.0.22
 
 ##Bug Fixes
-* **form-control-state**: add has-error on init only if pristineValidation is explicitly set to true ([1898d04](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/1898d04))
-* **form-control-state**: correct handling of control-mandatory class ([b601989](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/b601989))
+* **form-control-state**: add has-error on init only if pristineValidation is explicitly set to true ([1898d04](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/1898d04))
+* **form-control-state**: correct handling of control-mandatory class ([b601989](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b601989))
 
 
 <a name="1.4.1"></a>
