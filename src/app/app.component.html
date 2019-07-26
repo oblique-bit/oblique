@@ -35,7 +35,7 @@
 			</ng-container>
 		</or-dropdown>
 	</ng-template>
-	<ng-template #orHeaderControl>
+	<ng-template #orHeaderControl *ngIf="!material">
 		<div placement="bottom-right" ngbDropdown>
 			<a id="navbar-header-user-language" tabindex="0" role="menuitem" ngbDropdownToggle>
 				<span class="fa fa-cog control-icon"></span>
