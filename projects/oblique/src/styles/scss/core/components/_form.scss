@@ -8,17 +8,17 @@ fieldset {
 }
 
 legend {
-	display: block;	// IE
+	display: block; // IE
 	width: 100%;
-	max-width: 100%;	// IE
+	max-width: 100%; // IE
 	padding: 0;
 	margin-bottom: $spacing-sm;
 	border-bottom: 1px dotted $gray;
 	font-size: $font-size-lg;
 	font-weight: 600;
 	line-height: inherit;
-	color: inherit;	// IE
-	white-space: normal;	// IE
+	color: inherit; // IE
+	white-space: normal; // IE
 }
 
 button {
@@ -56,7 +56,7 @@ select {
 }
 
 select {
-	word-wrap: normal;	// Safari
+	word-wrap: normal; // Safari
 }
 
 button,
@@ -97,9 +97,21 @@ textarea {
 }
 
 [type="search"] {
-	&, &::-webkit-search-decoration {
-		outline-offset: -2px; // Safari.
-		-webkit-appearance: none; // Safari.
+	outline-offset: -2px; // Safari.
+	-webkit-appearance: none; // Safari.
+
+	&::-ms-clear,
+	&::-ms-reveal {
+		display: none;
+		width: 0;
+		height: 0;
+	}
+
+	&::-webkit-search-decoration,
+	&::-webkit-search-cancel-button,
+	&::-webkit-search-results-button,
+	&::-webkit-search-results-decoration {
+		display: none;
 	}
 }
 
