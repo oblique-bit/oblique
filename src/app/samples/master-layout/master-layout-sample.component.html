@@ -2,117 +2,96 @@
 	<div [class.cover-header]="coverLayout">
 		<h1 translate>i18n.routes.samples.master-layout.title</h1>
 	</div>
-	<div class="card">
-		<div class="card-header">
-			<h3 class="card-title">Tools</h3>
-		</div>
-		<div class="card-body">
-			<h4>Master Layout</h4>
-			<div [(ngModel)]="applicationFixed" ngbRadioGroup class="btn-group btn-group-toggle">
-				<label ngbButtonLabel class="btn-secondary">
-					<input ngbButton type="radio" [value]="false"> Continuous
-				</label>
-				<label ngbButtonLabel class="btn-secondary">
-					<input ngbButton type="radio" [value]="true"> Fixed
-				</label>
-			</div>
-			<h4>Content Disposition</h4>
-			<div [(ngModel)]="cover" ngbRadioGroup class="btn-group btn-group-toggle">
-				<label ngbButtonLabel class="btn-secondary">
-					<input ngbButton type="radio" [value]="false"> Default
-				</label>
-				<label ngbButtonLabel class="btn-secondary active">
-					<input ngbButton type="radio" [value]="true"> Cover
-				</label>
-			</div>
-			<h4>Primary Navigation</h4>
-			<div [(ngModel)]="navigation" ngbRadioGroup class="btn-group btn-group-toggle">
-				<label ngbButtonLabel class="btn-secondary active">
-					<input ngbButton type="radio" [value]="true"> Yes
-				</label>
-				<label ngbButtonLabel class="btn-secondary">
-					<input ngbButton type="radio" [value]="false"> No
-				</label>
-			</div>
-			<h4>Footer</h4>
-			<div [(ngModel)]="footerSM" ngbRadioGroup class="btn-group btn-group-toggle">
-				<label ngbButtonLabel class="btn-secondary active">
-					<input ngbButton type="radio" [value]="false"> Default
-				</label>
-				<label ngbButtonLabel class="btn-secondary">
-					<input ngbButton type="radio" [value]="true"> Small
-				</label>
-			</div>
-			<h4>Footer transitions</h4>
-			<div [(ngModel)]="footerTransition" ngbRadioGroup class="btn-group btn-group-toggle">
-				<label ngbButtonLabel class="btn-secondary active">
-					<input ngbButton type="radio" [value]="true"> Yes
-				</label>
-				<label ngbButtonLabel class="btn-secondary">
-					<input ngbButton type="radio" [value]="false"> No
-				</label>
-			</div>
-			<h4>Header size</h4>
-			<div [(ngModel)]="headerMD" ngbRadioGroup class="btn-group btn-group-toggle">
-				<label ngbButtonLabel class="btn-secondary active">
-					<input ngbButton type="radio" [value]="false"> Default
-				</label>
-				<label ngbButtonLabel class="btn-secondary">
-					<input ngbButton type="radio" [value]="true"> Medium
-				</label>
-			</div>
-			<h4>Header sticky</h4>
-			<div [(ngModel)]="headerSticky" ngbRadioGroup class="btn-group btn-group-toggle">
-				<label ngbButtonLabel class="btn-secondary active">
-					<input ngbButton type="radio" [value]="true"> Yes
-				</label>
-				<label ngbButtonLabel class="btn-secondary">
-					<input ngbButton type="radio" [value]="false"> No
-				</label>
-			</div>
-			<h4>Header animate</h4>
-			<div [(ngModel)]="headerAnimate" ngbRadioGroup class="btn-group btn-group-toggle">
-				<label ngbButtonLabel class="btn-secondary active">
-					<input ngbButton type="radio" [value]="true"> Yes
-				</label>
-				<label ngbButtonLabel class="btn-secondary">
-					<input ngbButton type="radio" [value]="false"> No
-				</label>
-			</div>
-			<h4>Header scroll transition</h4>
-			<div [(ngModel)]="headerTransition" ngbRadioGroup class="btn-group btn-group-toggle">
-				<label ngbButtonLabel class="btn-secondary active">
-					<input ngbButton type="radio" [value]="true"> Yes
-				</label>
-				<label ngbButtonLabel class="btn-secondary">
-					<input ngbButton type="radio" [value]="false"> No
-				</label>
-			</div>
-			<h4>Full width navigation</h4>
-			<div [(ngModel)]="navigationFW" ngbRadioGroup class="btn-group btn-group-toggle">
-				<label ngbButtonLabel class="btn-secondary active">
-					<input ngbButton type="radio" [value]="true"> Yes
-				</label>
-				<label ngbButtonLabel class="btn-secondary">
-					<input ngbButton type="radio" [value]="false"> No
-				</label>
-			</div>
-			<h4>Scrollable navigation</h4>
-			<div [(ngModel)]="navigationScroll" ngbRadioGroup class="btn-group btn-group-toggle">
-				<label ngbButtonLabel class="btn-secondary active">
-					<input ngbButton type="radio" [value]="true"> Yes
-				</label>
-				<label ngbButtonLabel class="btn-secondary">
-					<input ngbButton type="radio" [value]="false"> No
-				</label>
-			</div>
-		</div>
+	<or-description component="master-layout"></or-description>
+	<h4>Master Layout</h4>
+	<div [(ngModel)]="applicationFixed" ngbRadioGroup class="btn-group btn-group-toggle">
+		<label ngbButtonLabel class="btn-secondary">
+			<input ngbButton type="radio" [value]="false"> Continuous
+		</label>
+		<label ngbButtonLabel class="btn-secondary">
+			<input ngbButton type="radio" [value]="true"> Fixed
+		</label>
 	</div>
-	<h2 class="text-muted">For demo purposes only</h2>
-	<p>Nulla consectetur nulla reprehenderit dolore cillum ea.</p>
-	<p>Eiusmod do est non velit velit.</p>
-	<p>Dolore sint excepteur magna occaecat officia cillum cillum laboris fugiat.</p>
-	<p>Consequat anim labore reprehenderit officia duis.</p>
-	<p>Consectetur exercitation commodo eiusmod veniam aliqua.</p>
-	<p>Eu nulla eu esse magna do exercitation.</p>
+	<h4>Content Disposition</h4>
+	<div [(ngModel)]="cover" ngbRadioGroup class="btn-group btn-group-toggle">
+		<label ngbButtonLabel class="btn-secondary">
+			<input ngbButton type="radio" [value]="false"> Default
+		</label>
+		<label ngbButtonLabel class="btn-secondary active">
+			<input ngbButton type="radio" [value]="true"> Cover
+		</label>
+	</div>
+	<h4>Primary Navigation</h4>
+	<div [(ngModel)]="navigation" ngbRadioGroup class="btn-group btn-group-toggle">
+		<label ngbButtonLabel class="btn-secondary active">
+			<input ngbButton type="radio" [value]="true"> Yes
+		</label>
+		<label ngbButtonLabel class="btn-secondary">
+			<input ngbButton type="radio" [value]="false"> No
+		</label>
+	</div>
+	<h4>Footer</h4>
+	<div [(ngModel)]="footerSM" ngbRadioGroup class="btn-group btn-group-toggle">
+		<label ngbButtonLabel class="btn-secondary active">
+			<input ngbButton type="radio" [value]="false"> Default
+		</label>
+		<label ngbButtonLabel class="btn-secondary">
+			<input ngbButton type="radio" [value]="true"> Small
+		</label>
+	</div>
+	<h4>Footer transition</h4>
+	<div [(ngModel)]="footerTransition" ngbRadioGroup class="btn-group btn-group-toggle">
+		<label ngbButtonLabel class="btn-secondary active">
+			<input ngbButton type="radio" [value]="true"> Yes
+		</label>
+		<label ngbButtonLabel class="btn-secondary">
+			<input ngbButton type="radio" [value]="false"> No
+		</label>
+	</div>
+	<h4>Header size</h4>
+	<div [(ngModel)]="headerMD" ngbRadioGroup class="btn-group btn-group-toggle">
+		<label ngbButtonLabel class="btn-secondary active">
+			<input ngbButton type="radio" [value]="false"> Default
+		</label>
+		<label ngbButtonLabel class="btn-secondary">
+			<input ngbButton type="radio" [value]="true"> Medium
+		</label>
+	</div>
+	<h4>Header sticky</h4>
+	<div [(ngModel)]="headerSticky" ngbRadioGroup class="btn-group btn-group-toggle">
+		<label ngbButtonLabel class="btn-secondary active">
+			<input ngbButton type="radio" [value]="true"> Yes
+		</label>
+		<label ngbButtonLabel class="btn-secondary">
+			<input ngbButton type="radio" [value]="false"> No
+		</label>
+	</div>
+	<h4>Header animate</h4>
+	<div [(ngModel)]="headerAnimate" ngbRadioGroup class="btn-group btn-group-toggle">
+		<label ngbButtonLabel class="btn-secondary active">
+			<input ngbButton type="radio" [value]="true"> Yes
+		</label>
+		<label ngbButtonLabel class="btn-secondary">
+			<input ngbButton type="radio" [value]="false"> No
+		</label>
+	</div>
+	<h4>Full width navigation</h4>
+	<div [(ngModel)]="navigationFW" ngbRadioGroup class="btn-group btn-group-toggle">
+		<label ngbButtonLabel class="btn-secondary active">
+			<input ngbButton type="radio" [value]="true"> Yes
+		</label>
+		<label ngbButtonLabel class="btn-secondary">
+			<input ngbButton type="radio" [value]="false"> No
+		</label>
+	</div>
+	<h4>Scrollable navigation</h4>
+	<div [(ngModel)]="navigationScroll" ngbRadioGroup class="btn-group btn-group-toggle">
+		<label ngbButtonLabel class="btn-secondary active">
+			<input ngbButton type="radio" [value]="true"> Yes
+		</label>
+		<label ngbButtonLabel class="btn-secondary">
+			<input ngbButton type="radio" [value]="false"> No
+		</label>
+	</div>
+	<or-api component="master-layout"></or-api>
 </div>

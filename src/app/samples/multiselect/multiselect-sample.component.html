@@ -1,68 +1,64 @@
 <div class="default-layout">
-	<h2 class="page-header">{{'i18n.routes.samples.multiselect.title' | translate}}</h2>
-	<div class="card">
-		<div class="card-header">
-			<h3 class="card-title">Preview</h3>
+	<h2>{{'i18n.routes.samples.multiselect.title' | translate}}</h2>
+	<or-description component="multiselect"></or-description>
+	<section>
+		<label for="{{default.id}}">Default multiselect</label>
+		<div class="row">
+			<div class="col-md-6">
+				<or-multiselect [options]="states" [(ngModel)]="model" idPrefix="default" #default>
+				</or-multiselect>
+			</div>
+			<div class="col-md-6">
+				<pre>{{model | json}}</pre>
+			</div>
 		</div>
-		<div class="card-body">
-			<section>
-				<label for="{{default.id}}">Default multiselect</label>
-				<div class="row">
-					<div class="col-md-6">
-						<or-multiselect [options]="states" [(ngModel)]="model" idPrefix="default" #default>
-						</or-multiselect>
-					</div>
-					<div class="col-md-6">
-						<pre>{{model | json}}</pre>
-					</div>
-				</div>
 
-				<label for="{{label.id}}">Multiselect with complex options and <code>labelProperty</code></label>
-				<div class="row">
-					<div class="col-md-6">
-						<or-multiselect [options]="statesComplex"
-										[(ngModel)]="labelModel"
-										[showCheckAll]="true"
-										[showUncheckAll]="true"
-										labelProperty="name"
-										idPrefix="labelProperty"
-										#label>
-						</or-multiselect>
-					</div>
-					<div class="col-md-6">
-						<pre>{{labelModel | json}}</pre>
-					</div>
-				</div>
-
-				<label for="{{formatter.id}}">Multiselect with complex options, search filter, <code>labelFormatter</code>...</label>
-				<div class="row">
-					<div class="col-md-6">
-						<or-multiselect [options]="statesComplex"
-										[(ngModel)]="formatterModel"
-										[showCheckAll]="true"
-										[showUncheckAll]="true"
-										[enableSearch]="true"
-										[texts]="{defaultTitle: '... and a custom title'}"
-										[labelFormatter]="complexStateLabelFormatter"
-										#formatter>
-						</or-multiselect>
-					</div>
-					<div class="col-md-6">
-						<pre>{{formatterModel | json}}</pre>
-					</div>
-				</div>
-
-				<label for="{{dropup.id}}">Dropup variation</label>
-				<div class="row">
-					<div class="col-md-6">
-						<or-multiselect [options]="states" [(ngModel)]="model" [dropup]="true" idPrefix="dropup" #dropup>
-						</or-multiselect>
-					</div>
-					<div class="col-md-6">
-						<pre>{{model | json}}</pre>
-					</div>
-				</div>
-			</section>
+		<label for="{{label.id}}">Multiselect with complex options and <code>labelProperty</code></label>
+		<div class="row">
+			<div class="col-md-6">
+				<or-multiselect [options]="statesComplex"
+								[(ngModel)]="labelModel"
+								[showCheckAll]="true"
+								[showUncheckAll]="true"
+								labelProperty="name"
+								idPrefix="labelProperty"
+								#label>
+				</or-multiselect>
+			</div>
+			<div class="col-md-6">
+				<pre>{{labelModel | json}}</pre>
+			</div>
 		</div>
-	</div>
+
+		<label for="{{formatter.id}}">Multiselect with complex options, search filter,
+			<code>labelFormatter</code>...</label>
+		<div class="row">
+			<div class="col-md-6">
+				<or-multiselect [options]="statesComplex"
+								[(ngModel)]="formatterModel"
+								[showCheckAll]="true"
+								[showUncheckAll]="true"
+								[enableSearch]="true"
+								[texts]="{defaultTitle: '... and a custom title'}"
+								[labelFormatter]="complexStateLabelFormatter"
+								#formatter>
+				</or-multiselect>
+			</div>
+			<div class="col-md-6">
+				<pre>{{formatterModel | json}}</pre>
+			</div>
+		</div>
+
+		<label for="{{dropup.id}}">Dropup variation</label>
+		<div class="row">
+			<div class="col-md-6">
+				<or-multiselect [options]="states" [(ngModel)]="model" [dropup]="true" idPrefix="dropup" #dropup>
+				</or-multiselect>
+			</div>
+			<div class="col-md-6">
+				<pre>{{model | json}}</pre>
+			</div>
+		</div>
+	</section>
+	<or-api component="multiselect"></or-api>
 </div>

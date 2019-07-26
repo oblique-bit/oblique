@@ -1,106 +1,100 @@
 <div class="default-layout notification-sample">
-	<h2 class="page-header">{{'i18n.routes.samples.http-interceptor.title' | translate}}</h2>
-	<p class="lead">Custom HTTP interception for Oblique.</p>
-	<div class="row">
-		<div class="col-md-6 mb-3">
-			<div class="card h-100">
-				<h3 class="card-header">Logs</h3>
-				<div class="card-body notification-sample-preview">
-					<div class="smaller" *ngFor="let log of logs">{{log}}</div>
-				</div>
+	<h2>{{'i18n.routes.samples.http-interceptor.title' | translate}}</h2>
+	<or-description component="oblique-http-interceptor" directory="http"></or-description>
+	<or-column-layout [left]="false" [right]="true">
+		<div column-right-content>
+			<h3 >Logs</h3>
+			<div class="notification-sample-preview">
+				<div class="smaller" *ngFor="let log of logs">{{log}}</div>
 			</div>
 		</div>
-		<div class="col-md-6">
-			<div class="card h-100">
-				<h3 class="card-header">Controls</h3>
-				<div class="card-body">
-					<div class="form-group">
-						<label>Request</label>
-						<div class="btn-group btn-group-toggle w-100" ngbRadioGroup>
-							<label ngbButtonLabel class="btn-success">
-								<input ngbButton type="radio" (click)="request(200)"> 200 OK
-							</label>
-							<label ngbButtonLabel class="btn-danger">
-								<input ngbButton type="radio" (click)="request(404)"> 404 NOT FOUND
-							</label>
-							<label ngbButtonLabel class="btn-danger">
-								<input ngbButton type="radio" (click)="request(401)"> 401 UNAUTHORIZED
-							</label>
-							<label ngbButtonLabel class="btn-info">
-								<input ngbButton type="radio" (click)="parallelRequest();"> Parallel 200
-							</label>
-							<input type="number" [(ngModel)]="parallelRequests"/>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-4 col-form-label">show spinner</label>
-						<div class="col-8">
-							<div [(ngModel)]="spinner" ngbRadioGroup name="spinner" class="btn-group-toggle">
-								<label ngbButtonLabel class="btn btn-secondary">
-									<input ngbButton type="radio" [value]="true"> Yes
-								</label>
-								<label ngbButtonLabel class="btn btn-secondary">
-									<input ngbButton type="radio" [value]="false"> No
-								</label>
-							</div>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-4 col-form-label">show notification on error</label>
-						<div class="col-8">
-							<div [(ngModel)]="notification.active" ngbRadioGroup name="notification" class="btn-group-toggle">
-								<label ngbButtonLabel class="btn btn-secondary">
-									<input ngbButton type="radio" [value]="true"> Yes
-								</label>
-								<label ngbButtonLabel class="btn btn-secondary">
-									<input ngbButton type="radio" [value]="false"> No
-								</label>
-							</div>
-						</div>
-					</div>
-					<fieldset>
-						<legend>Customize default notification</legend>
-						<div class="form-group row">
-							<label class="col-4 col-form-label">Severity</label>
-							<select [(ngModel)]="notification.severity" class="col-8 form-control">
-								<option *ngFor="let variant of variants | keyvalue" [ngValue]="variant.value">{{variant.key}}</option>
-							</select>
-						</div>
-						<div class="form-group row">
-							<label class="col-4 form-control-label">Title</label>
-							<input [(ngModel)]="notification.title" type="text"
-								   class="col-4 col-form-label"
-								   placeholder="Notification title...">
-						</div>
-						<div class="form-group row">
-							<label class="col-4 col-form-label">Message</label>
-							<input [(ngModel)]="notification.text" type="text"
-								   class="col-8 form-control"
-								   placeholder="Notification text...">
-						</div>
-						<div class="form-group row">
-							<label class="col-4 col-form-label">timeout</label>
-							<input [(ngModel)]="notification.timeout" type="text"
-								   class="col-8 form-control"
-								   placeholder="Notification timeout...">
-						</div>
-						<div class="form-group row">
-							<label class="col-4 col-form-label">Sticky</label>
-							<div class="col-8">
-								<div [(ngModel)]="notification.sticky" ngbRadioGroup name="notificationSticky" class="btn-group-toggle">
-									<label ngbButtonLabel class="btn btn-secondary">
-										<input ngbButton type="radio" [value]="true"> Yes
-									</label>
-									<label ngbButtonLabel class="btn btn-secondary">
-										<input ngbButton type="radio" [value]="false"> No
-									</label>
-								</div>
-							</div>
-						</div>
-					</fieldset>
+		<div class="default-layout" column-main-content>
+			<h3>Controls</h3>
+			<div class="form-group">
+				<label>Request</label>
+				<div class="btn-group btn-group-toggle w-100" ngbRadioGroup>
+					<label ngbButtonLabel class="btn-success">
+						<input ngbButton type="radio" (click)="request(200)"> 200 OK
+					</label>
+					<label ngbButtonLabel class="btn-danger">
+						<input ngbButton type="radio" (click)="request(404)"> 404 NOT FOUND
+					</label>
+					<label ngbButtonLabel class="btn-danger">
+						<input ngbButton type="radio" (click)="request(401)"> 401 UNAUTHORIZED
+					</label>
+					<label ngbButtonLabel class="btn-info">
+						<input ngbButton type="radio" (click)="parallelRequest();"> Parallel 200
+					</label>
+					<input type="number" [(ngModel)]="parallelRequests"/>
 				</div>
 			</div>
-			<router-outlet></router-outlet>
+			<div class="form-group row">
+				<label class="col-4 col-form-label">show spinner</label>
+				<div class="col-8">
+					<div [(ngModel)]="spinner" ngbRadioGroup name="spinner" class="btn-group-toggle">
+						<label ngbButtonLabel class="btn btn-secondary">
+							<input ngbButton type="radio" [value]="true"> Yes
+						</label>
+						<label ngbButtonLabel class="btn btn-secondary">
+							<input ngbButton type="radio" [value]="false"> No
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-4 col-form-label">show notification on error</label>
+				<div class="col-8">
+					<div [(ngModel)]="notification.active" ngbRadioGroup name="notification" class="btn-group-toggle">
+						<label ngbButtonLabel class="btn btn-secondary">
+							<input ngbButton type="radio" [value]="true"> Yes
+						</label>
+						<label ngbButtonLabel class="btn btn-secondary">
+							<input ngbButton type="radio" [value]="false"> No
+						</label>
+					</div>
+				</div>
+			</div>
+			<fieldset>
+				<legend>Customize default notification</legend>
+				<div class="form-group row">
+					<label class="col-4 col-form-label">Severity</label>
+					<select [(ngModel)]="notification.severity" class="col-8 form-control">
+						<option *ngFor="let variant of variants | keyvalue" [ngValue]="variant.value">{{variant.key}}</option>
+					</select>
+				</div>
+				<div class="form-group row">
+					<label class="col-4 form-control-label">Title</label>
+					<input [(ngModel)]="notification.title" type="text"
+						   class="col-4 col-form-label"
+						   placeholder="Notification title...">
+				</div>
+				<div class="form-group row">
+					<label class="col-4 col-form-label">Message</label>
+					<input [(ngModel)]="notification.text" type="text"
+						   class="col-8 form-control"
+						   placeholder="Notification text...">
+				</div>
+				<div class="form-group row">
+					<label class="col-4 col-form-label">timeout</label>
+					<input [(ngModel)]="notification.timeout" type="text"
+						   class="col-8 form-control"
+						   placeholder="Notification timeout...">
+				</div>
+				<div class="form-group row">
+					<label class="col-4 col-form-label">Sticky</label>
+					<div class="col-8">
+						<div [(ngModel)]="notification.sticky" ngbRadioGroup name="notificationSticky" class="btn-group-toggle">
+							<label ngbButtonLabel class="btn btn-secondary">
+								<input ngbButton type="radio" [value]="true"> Yes
+							</label>
+							<label ngbButtonLabel class="btn btn-secondary">
+								<input ngbButton type="radio" [value]="false"> No
+							</label>
+						</div>
+					</div>
+				</div>
+			</fieldset>
 		</div>
-	</div>
+	</or-column-layout>
+	<or-api component="oblique-http-interceptor" directory="http"></or-api>
 </div>
