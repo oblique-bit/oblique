@@ -5,7 +5,7 @@ import {Directive, HostBinding, HostListener, Input, OnInit} from '@angular/core
 	exportAs: 'orToggle'
 })
 export class ToggleDirective implements OnInit {
-	@HostBinding('class.show') active = false;
+	@HostBinding('class.show') @Input() active = false;
 	@HostBinding('class') @Input('class') hostClass: string;
 	@Input('orToggle') direction: string;
 
@@ -20,6 +20,9 @@ export class ToggleDirective implements OnInit {
 			classes.add(this.hostClass.split(' '));
 		}
 		classes.add('toggle').add(`toggle-${this.direction || 'down-up'}`);
+		if (this.active) {
+			classes.add('show');
+		}
 		this.hostClass = Array.from(classes).join(' ');
 	}
 }
