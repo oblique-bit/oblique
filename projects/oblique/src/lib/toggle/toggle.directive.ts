@@ -15,9 +15,11 @@ export class ToggleDirective implements OnInit {
 
 	ngOnInit() {
 		// use a Set to ensure there are no duplicates
-		const classes = new Set((this.hostClass || '').split(' '))
-			.add('toggle')
-			.add(`toggle-${this.direction || 'down-up'}`);
+		const classes = new Set();
+		if (this.hostClass) {
+			classes.add(this.hostClass.split(' '));
+		}
+		classes.add('toggle').add(`toggle-${this.direction || 'down-up'}`);
 		this.hostClass = Array.from(classes).join(' ');
 	}
 }
