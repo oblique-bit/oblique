@@ -32,7 +32,8 @@
                 "glob": "**/*",
                 "input": "dist/oblique/styles/css",
                 "output": "/assets/styles/css"
-              }
+              },
+              "src/Staticfile"
             ],
             "styles": [
               "projects/oblique/src/styles/scss/oblique-core.scss",
