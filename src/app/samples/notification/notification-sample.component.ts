@@ -8,7 +8,7 @@ import {NotificationService, NotificationType} from 'oblique';
 export class NotificationSampleComponent {
 	messageWithParams = false;
 	titleWithParams = false;
-	appChannel: string;
+	appChannel = 'oblique';
 	sampleChannel = 'demo';
 	variants = NotificationType;
 
@@ -18,8 +18,8 @@ export class NotificationSampleComponent {
 	title = 'Well done!';
 	titleKey = 'i18n.notification.sampleTitle';
 	titleParams = {
-			title: 'title',
-			parameters: 'parameters'
+		title: 'title',
+		parameters: 'parameters'
 	};
 	message = 'You successfully sent your first notification with Oblique :)';
 	messageKey = 'i18n.notification.sampleMessage';
@@ -29,9 +29,9 @@ export class NotificationSampleComponent {
 	};
 	sticky = false;
 	timeout = 2500;
+	group = false;
 
 	constructor(private readonly notificationService: NotificationService) {
-		this.appChannel = 'oblique';
 	}
 
 	get clearAllOnNavigate() {
@@ -48,7 +48,12 @@ export class NotificationSampleComponent {
 			messageParams: this.messageWithParams ? this.messageParams : undefined,
 			title: this.titleWithParams ? this.titleKey : this.title,
 			titleParams: this.titleWithParams ? this.titleParams : undefined,
-			sticky: this.sticky, channel: this.channel, timeout: this.timeout, type: this.variant});
+			sticky: this.sticky,
+			channel: this.channel,
+			timeout: this.timeout,
+			groupSimilar: this.group,
+			type: this.variant
+		});
 	}
 
 	clear() {
