@@ -5,7 +5,7 @@ import {INotificationConfig} from './notification.interfaces';
 export class NotificationConfig {
 	sticky = false;
 	timeout = 3500;
-	channel = 'default';
+	channel = 'oblique';
 
 	info = {
 		title: 'i18n.notification.type.info'
