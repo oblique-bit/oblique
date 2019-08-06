@@ -9,7 +9,7 @@ export class ToggleDirective implements OnInit {
 	@HostBinding('class') @Input('class') hostClass: string;
 	@Input('orToggle') direction: string;
 
-	@HostListener('click') activate() {
+	@HostListener('click') toggle() {
 		this.active = !this.active;
 	}
 
