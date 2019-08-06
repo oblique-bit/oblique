@@ -146,7 +146,7 @@ describe('NotificationComponent', () => {
 		notificationService.send({message, channel: 'testChannel'});
 		notificationService.send({message, channel: 'myChannel'});
 		notificationService.send({message, channel: 'anotherChanel'});
-		notificationService.send({message, channel: 'default'});
+		notificationService.send({message, channel: 'oblique'});
 		notificationService.send({message, channel: 'appChannel'});
 		fixture.detectChanges();
 

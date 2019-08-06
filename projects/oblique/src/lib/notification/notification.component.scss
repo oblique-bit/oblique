@@ -9,6 +9,10 @@ or-notification {
 		perspective: 80px;
 		overflow-x: hidden;
 		right: 0; // Note: do not specify `top` attribute!
+
+		&.custom {
+			position: absolute;
+		}
 	}
 
 	.notification {

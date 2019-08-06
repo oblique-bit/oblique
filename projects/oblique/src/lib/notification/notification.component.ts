@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, HostBinding, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 
 import {INotification} from './notification.interfaces';
@@ -42,14 +42,19 @@ import {NotificationService} from './notification.service';
 		])
 	]
 })
-export class NotificationComponent {
+export class NotificationComponent implements OnInit {
 	public static REMOVE_DELAY = 350;
 	@Input() channel: string;
+	@HostBinding('class.custom') customChannel = false;
 	public notifications: INotification[] = [];
 	public variant: { [type: string]: string } = {};
 
 	constructor(private readonly notificationService: NotificationService) {
-		this.channel = this.channel || notificationService.config.channel;
+	}
+
+	ngOnInit(): void {
+		this.channel = this.channel || this.notificationService.config.channel;
+		this.customChannel = this.channel !== 'oblique';
 
 		this.notificationService.events.subscribe(
 			(notification) => {
