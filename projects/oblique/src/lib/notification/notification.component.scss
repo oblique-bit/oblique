@@ -1,18 +1,16 @@
 @import "../../styles/scss/core/variables";
 @import "../../styles/scss/core/mixins/alert";
 
-or-notification {
-	&.notification-container {
-		position: fixed;
-		display: block;
-		z-index: 99999;
-		perspective: 80px;
-		overflow-x: hidden;
-		right: 0; // Note: do not specify `top` attribute!
+.notification-container {
+	position: fixed;
+	display: block;
+	z-index: 99999;
+	perspective: 80px;
+	overflow-x: hidden;
+	right: 0; // Note: do not specify `top` attribute!
 
-		&.custom {
-			position: absolute;
-		}
+	&.custom {
+		position: absolute;
 	}
 
 	.notification {
