@@ -83,6 +83,13 @@
         "since": "4.1.0"
       },
       {
+        "name": "groupSimilar",
+        "text": "Defines if similar notifications should grouped.",
+        "type": "boolean",
+        "default": "GROUP_SIMILAR_NOTIFICATIONS",
+        "since": "4.1.0"
+      },
+      {
         "name": "info",
         "text": "Custom configuration for <b>info</b> notifications.",
         "type": "INotification",
@@ -115,6 +122,13 @@
       {
         "name": "CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE",
         "text": "Defines if all notifications should be cleared upon <code>NavigationEnd</code> event.",
+        "type": "boolean",
+        "default": false,
+        "since": "4.1.0"
+      },
+      {
+        "name": "GROUP_SIMILAR_NOTIFICATIONS",
+        "text": "Defines if similar notifications should be grouped.",
         "type": "boolean",
         "default": false,
         "since": "4.1.0"
