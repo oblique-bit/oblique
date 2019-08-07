@@ -43,11 +43,11 @@ h6 {
 
 // inline elements
 a {
-	color: $brand-secondary;
+	color: $brand-primary;
 	text-decoration: none;
 
 	&:hover {
-		color: $brand-primary;
+		color: $brand-dark;
 		text-decoration: underline;
 	}
 

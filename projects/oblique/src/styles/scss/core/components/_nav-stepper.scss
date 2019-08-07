@@ -25,8 +25,8 @@ $stepper-border-width: 3px;
 			z-index: 1;
 			font-weight: 900;
 			text-align: center;
-			color: $brand-secondary;
-			border: $stepper-border-width solid $brand-secondary;
+			color: $brand-primary;
+			border: $stepper-border-width solid $brand-primary;
 			border-radius: 50%;
 			background-color: $white;
 			box-shadow: 0 0 2px 2px $white;
@@ -43,12 +43,16 @@ $stepper-border-width: 3px;
 			border-width: 0;
 			border-left-style: solid;
 			border-top-style: solid;
-			border-color: $brand-secondary;
+			border-color: $brand-primary;
 		}
 
 		// States:
-		&.active {      @include stepper-state($white, $brand-secondary, $brand-secondary);}
-		&.disabled {    @include stepper-state($gray-light, $white, $gray-light);
+		&.active {
+			@include stepper-state($white, $brand-primary, $brand-primary);
+		}
+
+		&.disabled {
+			@include stepper-state($gray-light, $white, $gray-light);
 
 			&.active {
 				.nav-link {
@@ -58,14 +62,30 @@ $stepper-border-width: 3px;
 		}
 
 		// Variants:
-		&.success {     @include stepper-state($brand-success, $white, $brand-success);}
-		&.warning {     @include stepper-state($brand-warning, $white, $brand-warning);}
-		&.danger {      @include stepper-state($brand-error, $white, $brand-error);}
+		&.success {
+			@include stepper-state($brand-success, $white, $brand-success);
+		}
+
+		&.warning {
+			@include stepper-state($brand-warning, $white, $brand-warning);
+		}
+
+		&.danger {
+			@include stepper-state($brand-error, $white, $brand-error);
+		}
 
 		// Feedback:
-		&.valid {       @include stepper-feedback($fa-var-check); }
-		&.invalid {     @include stepper-feedback($fa-var-exclamation); }
-		&.error {       @include stepper-feedback($fa-var-times); }
+		&.valid {
+			@include stepper-feedback($fa-var-check);
+		}
+
+		&.invalid {
+			@include stepper-feedback($fa-var-exclamation);
+		}
+
+		&.error {
+			@include stepper-feedback($fa-var-times);
+		}
 	}
 
 	.nav-link {

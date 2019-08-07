@@ -1,4 +1,5 @@
 // http://mcg.mbitson.com/#!?mcgpalette0=%23ffc81b&themename=mcgtheme
+@import "../../core/variables";
 
 $oblique-primary: (
 	50 : #e0ecf1,
@@ -6,7 +7,7 @@ $oblique-primary: (
 	200 : #80afc7,
 	300 : #4d8eb0,
 	400 : #26769f,
-	500 : #005e8e,	// $brand-primary
+	500 : $brand-primary,
 	600 : #005686,
 	700 : #004c7b,	// darker
 	800 : #004271,
@@ -39,7 +40,7 @@ $oblique-accent: (
 	200 : #86bbd6,
 	300 : #559fc6,
 	400 : #308bb9,
-	500 : #0c76ad,	// $brand-secondary
+	500 : $brand-secondary,
 	600 : #0a6ea6,
 	700 : #08639c,
 	800 : #065993,
@@ -72,7 +73,7 @@ $oblique-warn: (
 	200 : #fb808e,
 	300 : #f94d61,
 	400 : #f8263f,
-	500 : #f7001d,	// $brand-accent
+	500 : $brand-error,
 	600 : #f6001a,
 	700 : #f50015,
 	800 : #f30011,
