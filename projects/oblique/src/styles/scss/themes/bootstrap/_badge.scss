@@ -20,7 +20,7 @@
 	@include badge-styles($brand-success, $white);
 }
 .badge-warning {
-	@include badge-styles($brand-warning-semilight, $brand-default);
+	@include badge-styles($brand-warning, $white);
 }
 .badge-danger {
 	@include badge-styles($brand-error, $white);

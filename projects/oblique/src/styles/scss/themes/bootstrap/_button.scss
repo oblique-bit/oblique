@@ -16,7 +16,7 @@
 }
 
 .btn-warning {
-	@include btn-variant($brand-default, $brand-warning-light, $gray, $brand-default, $brand-warning-semilight, $gray-dark, $brand-default);
+	@include btn-variant($white, $brand-warning, $brand-warning, $white, $brand-warning-dark, $brand-warning-dark, $gray-lighter-2);
 }
 
 .btn-danger {
