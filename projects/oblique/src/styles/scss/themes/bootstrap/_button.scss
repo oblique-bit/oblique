@@ -8,13 +8,7 @@
 
 .btn-secondary {
 	@include btn-variant($brand-default, $gray-lighter, $gray, $brand-default, $gray-lighter-2, $gray-darker, $brand-default);
-
-	&:not([disabled]):not(.disabled) {
-		&:active,
-		&.active {
-			box-shadow: 0 0 0 0.2rem rgba(0, 94, 142, 0.25);
-		}
-	}
+	@include box-shadow-secondary();
 }
 
 .btn-success {
@@ -31,15 +25,6 @@
 
 .btn-link {
 	@include btn-variant($link-color, transparent, transparent, $link-hover-color, $gray-lighter-2, $gray-darker, $link-hover-color);
-
+	@include box-shadow-secondary();
 	border-radius: $border-radius-base;
-
-	&:not([disabled]):not(.disabled) {
-		&:active,
-		&.active,
-		&:focus,
-		&.focus{
-			box-shadow: 0 0 0 0.2rem rgba(0, 94, 142, 0.25);
-		}
-	}
 }

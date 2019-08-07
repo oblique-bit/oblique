@@ -61,3 +61,15 @@
 		border-left: none;
 	}
 }
+
+@mixin box-shadow-secondary() {
+	box-shadow: none;
+
+	&,
+	&:not(:disabled):not(.disabled).active {
+		&:focus,
+		&.focus {
+			box-shadow: 0 0 0 0.2rem $gray-light;
+		}
+	}
+}
