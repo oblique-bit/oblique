@@ -1,19 +1,38 @@
-$white:                     #ffffff !default;
-$gray-lighter:              #f5f5f5 !default;
-$gray-lighter-2:            #e5e5e5 !default;
-$gray-light:                #d5d5d5 !default;
+// CI / CD colors
+$venetian-red: #dc0018;	// error message, red line
+$red: #f7001d;	// unused
+$cerulean: #006699;
+$malibu: #66afe9;
+$pattens-blue: #d8e8ef;
+$solitude: #e7edef;		// unused
+$clear-day: #f2f7f9;
+$mocassin: #fffab2;	// unused
+$white: #ffffff;
+$smoke: #f5f5f5;
+$gainsboro: #e5e5e5;
+$light-grey: #d5d5d5;
+$silver: #cccccc;	// unused
+$empress: #757575;	// unused
+$coal: #454545;	 // unused, default font color
+$night-rider: #333333;
+$black: #000000;	// unused, default for headings and table headers
+
+
+// Oblique colors
+$gray-lighter:              $smoke !default;
+$gray-lighter-2:            $gainsboro !default;
+$gray-light:                $light-grey !default;
 $gray:                      #b4b4b4 !default;
 $gray-dark:                 #707070 !default;
-$gray-darker:               #333333 !default;
-$black:                     #000000 !default;
+$gray-darker:               $night-rider !default;
 
 $brand-default:             #171717 !default;
-$brand-extralight:          #f2f7f9 !default;
-$brand-light:               #d8e8ef !default;
+$brand-extralight:          $clear-day !default;
+$brand-light:               $pattens-blue !default;
 $brand-secondary:           #0c76ad !default;
 $brand-primary:             #005e8e !default;
 $brand-dark:                #003552 !default;
-$brand-accent:              #f7001d !default;
+$brand-accent:              $red !default;
 
 $brand-success-light:       #cfe6c2 !default;
 $brand-success:             #00813a !default;
