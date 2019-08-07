@@ -1,4 +1,4 @@
-<div *ngIf="material else bootstrap">
+<div *ngIf="material | async else bootstrap">
 	<mat-form-field [ngClass]="getSizeClass('mat-form-field-')">
 		<mat-label>{{placeholder | translate}}</mat-label>
 		<ng-container matPrefix *ngIf="prepend">

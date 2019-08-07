@@ -2,8 +2,8 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, NO_ERRORS_SCHEMA, Pipe, PipeTransform} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {of} from 'rxjs/internal/observable/of';
-import {FilterBoxComponent, MaterialService, TextControlClearModule} from 'oblique';
+import {FilterBoxComponent, TextControlClearModule, ThemeService} from 'oblique';
+import {BehaviorSubject} from 'rxjs';
 
 @Pipe({name: 'translate'})
 class MockTranslatePipe implements PipeTransform {
@@ -28,8 +28,9 @@ describe('FilterBox', () => {
 	let fixture: ComponentFixture<TestComponent>;
 
 	beforeEach(async(() => {
-			const materialMock = {
-				toggled: of(false)
+			const themeMock = {
+				theme$: new BehaviorSubject(undefined),
+				isMaterial: () => false
 			};
 			TestBed.configureTestingModule({
 				imports: [FormsModule, TextControlClearModule],
@@ -39,7 +40,7 @@ describe('FilterBox', () => {
 					MockTranslatePipe
 				],
 				schemas: [NO_ERRORS_SCHEMA],
-				providers: [{provide: MaterialService, useValue: materialMock}]
+				providers: [{provide: ThemeService, useValue: themeMock}]
 			}).compileComponents();
 		}
 	));

@@ -69,4 +69,4 @@ export {UnsavedChangesDirective, UnsavedChangesGuard, UnsavedChangesModule, Unsa
 export {UnsavedChangesTabsDirective, UnsavedChangesTabsModule, UnsavedChangesTabsService} from './lib/unsaved-changes-tabs/unsaved-changes-tabs.module';
 export {Unsubscribable} from './lib/unsubscribe.class';
 export {ObliqueModule} from './lib/oblique.module';
-export {MaterialService, MATERIAL_DESIGN_DISABLE} from './lib/material.service';
+export {ThemeService, FRUTIGER, THEMES, OBLIQUE_THEME} from './lib/theme.service';

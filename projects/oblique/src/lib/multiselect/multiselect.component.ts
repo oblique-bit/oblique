@@ -23,7 +23,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {FilterBoxComponent} from '../filter-box/filter-box.component';
 import {MultiselectConfig} from './multiselect.config';
 import {MultiselectTexts} from './multiselect.texts';
-import {MaterialService} from '../material.service';
+import {ThemeService} from '../theme.service';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular material select instead
@@ -76,7 +76,7 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	constructor(private readonly element: ElementRef,
 				private readonly multiselectTexts: MultiselectTexts,
 				private readonly multiselectConfig: MultiselectConfig,
-				materialService: MaterialService,
+				theme: ThemeService,
 				differs: IterableDiffers) {
 		this.differ = differs.find([]).create(null);
 
@@ -87,7 +87,7 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 		this.selectionLimit = multiselectConfig.selectionLimit;
 		this.showCheckAll = multiselectConfig.showCheckAll;
 		this.showUncheckAll = multiselectConfig.showUncheckAll;
-		materialService.deprecated('multiselect', 'select/overview#multiple-selection');
+		theme.deprecated('multiselect', 'select/overview#multiple-selection');
 	}
 
 	//TODO: only apply this listener if the popup is open and remove it as soon as it's closed

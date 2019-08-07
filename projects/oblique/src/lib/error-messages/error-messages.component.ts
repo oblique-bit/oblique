@@ -6,7 +6,7 @@ import {takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe.class';
 import {FormControlStateDirective} from '../form-control-state/form-control-state.directive';
 import {ErrorMessagesService} from './error-messages.service';
-import {MaterialService} from '../material.service';
+import {ThemeService} from '../theme.service';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular material mat-error instead
@@ -23,12 +23,12 @@ export class ErrorMessagesComponent extends Unsubscribable implements AfterViewI
 	private readonly form: NgForm | FormGroupDirective;
 
 	constructor(private readonly errorMessagesService: ErrorMessagesService,
-				materialService: MaterialService,
+				theme: ThemeService,
 				@Optional() private readonly formGroup: FormControlStateDirective,
 				@Optional() ngForm: NgForm,
 				@Optional() formGroupDirective: FormGroupDirective) {
 		super();
-		materialService.deprecated('error messages', 'form-field/overview#error-messages');
+		theme.deprecated('error messages', 'form-field/overview#error-messages');
 		this.form = ngForm || formGroupDirective;
 
 		if (!this.form) {

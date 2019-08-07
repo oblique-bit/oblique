@@ -13,7 +13,7 @@ import {merge} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe.class';
-import {MaterialService} from '../material.service';
+import {ThemeService} from '../theme.service';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular default material behavior for both mandatory and error states instead
@@ -39,11 +39,11 @@ export class FormControlStateDirective extends Unsubscribable implements AfterVi
 				@Optional() formGroupDirective: FormGroupDirective,
 				@Optional() formGroupName: FormGroupName,
 				@Optional() modelGroup: NgModelGroup,
-				materialService: MaterialService,
+				theme: ThemeService,
 				private readonly elementRef: ElementRef,
 				private readonly renderer: Renderer2) {
 		super();
-		materialService.deprecated('form control state', 'form-field/overview#error-messages');
+		theme.deprecated('form control state', 'form-field/overview#error-messages');
 		this.form = ngForm || formGroupDirective;
 		this.group = modelGroup || formGroupName;
 

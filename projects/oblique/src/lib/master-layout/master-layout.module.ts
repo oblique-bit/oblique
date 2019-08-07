@@ -20,6 +20,7 @@ import {MasterLayoutNavigationItemDirective} from './master-layout-navigation/ma
 import {MasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
 import {MasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
 import {MasterLayoutConfig} from './master-layout.config';
+import {ThemeService} from '../theme.service';
 
 export {MasterLayoutComponent} from './master-layout/master-layout.component';
 export {MasterLayoutService} from './master-layout.service';
@@ -61,4 +62,7 @@ export {MasterLayoutConfig} from './master-layout.config';
 	]
 })
 export class MasterLayoutModule {
+	constructor(theme: ThemeService) {
+		theme.setDefaultTheme();
+	}
 }

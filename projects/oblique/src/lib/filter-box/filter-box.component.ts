@@ -1,5 +1,7 @@
 import {Component, ContentChild, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, TemplateRef, ViewChild} from '@angular/core';
-import {MaterialService} from '../material.service';
+import {map, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {ThemeService} from '../theme.service';
 
 @Component({
 	selector: 'or-filter-box',
@@ -7,7 +9,7 @@ import {MaterialService} from '../material.service';
 	templateUrl: './filter-box.component.html'
 })
 export class FilterBoxComponent implements OnInit {
-	material: boolean;
+	material: Observable<boolean>;
 	@Input() pattern: string;
 	@Input() placeholder = 'i18n.common.filter.placeholder';
 	@Input() size: string;
@@ -16,20 +18,15 @@ export class FilterBoxComponent implements OnInit {
 	@Input() modelOptions: any; // See https://angular.io/api/forms/NgModel#options
 	@Output() patternChange = new EventEmitter<string>();
 	@Output() patternClear = new EventEmitter<void>();
-	@ViewChild('filterControl', { static: false }) filterControl: ElementRef;
-	@ViewChild('inputGroup', { static: false }) inputGroup: ElementRef;
-	@ContentChild('prepend', { static: false }) readonly prepend: TemplateRef<any>;
-	@ContentChild('append', { static: false }) readonly append: TemplateRef<any>;
+	@ViewChild('filterControl', {static: false}) filterControl: ElementRef;
+	@ViewChild('inputGroup', {static: false}) inputGroup: ElementRef;
+	@ContentChild('prepend', {static: false}) readonly prepend: TemplateRef<any>;
+	@ContentChild('append', {static: false}) readonly append: TemplateRef<any>;
 
 	private readonly acceptedSizes = ['sm', 'lg'];
 
-	constructor(materialService: MaterialService, private readonly renderer: Renderer2) {
-		this.material = materialService.enabled;
-		this.addBootstrapClasses();
-		materialService.toggled.subscribe(enabled => {
-			this.material = enabled;
-			this.addBootstrapClasses();
-		});
+	constructor(theme: ThemeService, private readonly renderer: Renderer2) {
+		this.material = theme.theme$.pipe(map(() => theme.isMaterial()), tap(() => this.addBootstrapClasses()));
 	}
 
 	ngOnInit(): void {
