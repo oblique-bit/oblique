@@ -68,7 +68,7 @@
 		width: 100%;
 		padding: 0;
 		background-color: inherit;
-		border-bottom: $brand-line-width solid $brand-danger;
+		border-bottom: $brand-line-width solid $brand-accent;
 
 		@include layout-collapse-up() {
 			display: flex;

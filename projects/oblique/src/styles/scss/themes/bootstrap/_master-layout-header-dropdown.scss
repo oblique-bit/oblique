@@ -28,8 +28,8 @@
 				@include layout-collapse-down() {
 					&.show {
 						@include bubble-tail-border(
-								$brand-danger,
-								$brand-danger,
+								$brand-accent,
+								$brand-accent,
 							$width: 8px,
 							$align: left,
 							$align-value: 18px,
