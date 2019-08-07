@@ -10,7 +10,7 @@
 	</tr>
 	</thead>
 	<tbody>
-	<ng-container *ngIf="material else bootstrap">
+	<ng-container *ngIf="material | async else bootstrap">
 		<tr>
 			<td>
 				<label>Default</label>
@@ -45,6 +45,117 @@
 				<mat-form-field>
 					<mat-label>Default</mat-label>
 					<textarea matInput placeholder="Default"></textarea>
+				</mat-form-field>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Primary</label>
+			</td>
+			<td>
+				<mat-form-field color="primary">
+					<mat-label>Primary</mat-label>
+					<input type="text" matInput placeholder="Primary">
+				</mat-form-field>
+			</td>
+			<td>
+				<mat-checkbox color="primary">Primary</mat-checkbox>
+			</td>
+			<td>
+				<mat-radio-group color="primary">
+					<mat-radio-button value="1">Primary</mat-radio-button>
+				</mat-radio-group>
+			</td>
+			<td>
+				<mat-form-field color="primary">
+					<mat-label>Primary</mat-label>
+					<mat-select>
+						<mat-option [value]="1">One</mat-option>
+						<mat-option [value]="2">Two</mat-option>
+						<mat-option [value]="3">Three</mat-option>
+						<mat-option [value]="4">Four</mat-option>
+						<mat-option [value]="5">Five</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</td>
+			<td>
+				<mat-form-field color="primary">
+					<mat-label>Primary</mat-label>
+					<textarea matInput placeholder="Primary"></textarea>
+				</mat-form-field>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Accent</label>
+			</td>
+			<td>
+				<mat-form-field color="accent">
+					<mat-label>Accent</mat-label>
+					<input type="text" matInput placeholder="Accent">
+				</mat-form-field>
+			</td>
+			<td>
+				<mat-checkbox color="accent">Accent</mat-checkbox>
+			</td>
+			<td>
+				<mat-radio-group color="accent">
+					<mat-radio-button value="1">Accent</mat-radio-button>
+				</mat-radio-group>
+			</td>
+			<td>
+				<mat-form-field color="accent">
+					<mat-label>Accent</mat-label>
+					<mat-select>
+						<mat-option [value]="1">One</mat-option>
+						<mat-option [value]="2">Two</mat-option>
+						<mat-option [value]="3">Three</mat-option>
+						<mat-option [value]="4">Four</mat-option>
+						<mat-option [value]="5">Five</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</td>
+			<td>
+				<mat-form-field color="accent">
+					<mat-label>Accent</mat-label>
+					<textarea matInput placeholder="Accent"></textarea>
+				</mat-form-field>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Warn</label>
+			</td>
+			<td>
+				<mat-form-field color="warn">
+					<mat-label>Warn</mat-label>
+					<input type="text" matInput placeholder="Warn">
+				</mat-form-field>
+			</td>
+			<td>
+				<mat-checkbox color="warn">Warn</mat-checkbox>
+			</td>
+			<td>
+				<mat-radio-group color="warn">
+					<mat-radio-button value="1">Warn</mat-radio-button>
+				</mat-radio-group>
+			</td>
+			<td>
+				<mat-form-field color="warn">
+					<mat-label>Warn</mat-label>
+					<mat-select>
+						<mat-option [value]="1">One</mat-option>
+						<mat-option [value]="2">Two</mat-option>
+						<mat-option [value]="3">Three</mat-option>
+						<mat-option [value]="4">Four</mat-option>
+						<mat-option [value]="5">Five</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</td>
+			<td>
+				<mat-form-field color="warn">
+					<mat-label>Warn</mat-label>
+					<textarea matInput placeholder="Warn"></textarea>
 				</mat-form-field>
 			</td>
 		</tr>
@@ -201,21 +312,21 @@
 				<label>Mandatory</label>
 			</td>
 			<td>
-				<mat-form-field class="control-mandatory">
+				<mat-form-field>
 					<mat-label>Mandatory</mat-label>
 					<input type="text" matInput placeholder="Mandatory" required ngModel>
 				</mat-form-field>
 			</td>
 			<td>
-				<mat-checkbox class="control-mandatory" required ngModel>Mandatory</mat-checkbox>
+				<mat-checkbox required ngModel>Mandatory</mat-checkbox>
 			</td>
 			<td>
-				<mat-radio-group class="control-mandatory">
+				<mat-radio-group>
 					<mat-radio-button value="1" required ngModel>Mandatory</mat-radio-button>
 				</mat-radio-group>
 			</td>
 			<td>
-				<mat-form-field class="control-mandatory">
+				<mat-form-field>
 					<mat-label>Mandatory</mat-label>
 					<mat-select required ngModel>
 						<mat-option [value]=""></mat-option>
@@ -228,7 +339,7 @@
 				</mat-form-field>
 			</td>
 			<td>
-				<mat-form-field class="control-mandatory">
+				<mat-form-field>
 					<mat-label>Mandatory</mat-label>
 					<textarea matInput placeholder="Mandatory" required ngModel></textarea>
 				</mat-form-field>

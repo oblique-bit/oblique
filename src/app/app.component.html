@@ -35,31 +35,36 @@
 			</ng-container>
 		</or-dropdown>
 	</ng-template>
-	<ng-template #orHeaderControl *ngIf="!material">
-		<div placement="bottom-right" ngbDropdown>
-			<a id="navbar-header-user-language" tabindex="0" role="menuitem" ngbDropdownToggle>
-				<span class="fa fa-cog control-icon"></span>
-			</a>
-			<h3 class="sr-only" translate>i18n.rtfas.nav.bar-header.configuration</h3>
-			<div ngbDropdownMenu aria-labelledby="navbar-header-user-language" class="control-content">
-				<h4 class="nav-header" translate>i18n.rtfas.nav.bar-header.language</h4>
-				<ul role="menu" class="nav nav-vertical nav-hover" aria-hidden="false">
-					<li class="nav-item" role="menuitem">
-						<a class="dropdown-item" role="button">FR</a>
-					</li>
-					<li class="nav-item" role="menuitem">
-						<a class="dropdown-item" role="button">DE</a>
-					</li>
-					<li class="nav-item" role="menuitem">
-						<a class="dropdown-item" role="button">EN</a>
-					</li>
-				</ul>
-			</div>
-		</div>
+<!--	<ng-template #orHeaderControl *ngIf="!material">-->
+<!--		<div placement="bottom-right" ngbDropdown>-->
+<!--			<a id="navbar-header-user-language" tabindex="0" role="menuitem" ngbDropdownToggle>-->
+<!--				<span class="fa fa-cog control-icon"></span>-->
+<!--			</a>-->
+<!--			<h3 class="sr-only" translate>i18n.rtfas.nav.bar-header.configuration</h3>-->
+<!--			<div ngbDropdownMenu aria-labelledby="navbar-header-user-language" class="control-content">-->
+<!--				<h4 class="nav-header" translate>i18n.rtfas.nav.bar-header.language</h4>-->
+<!--				<ul role="menu" class="nav nav-vertical nav-hover" aria-hidden="false">-->
+<!--					<li class="nav-item" role="menuitem">-->
+<!--						<a class="dropdown-item" role="button">FR</a>-->
+<!--					</li>-->
+<!--					<li class="nav-item" role="menuitem">-->
+<!--						<a class="dropdown-item" role="button">DE</a>-->
+<!--					</li>-->
+<!--					<li class="nav-item" role="menuitem">-->
+<!--						<a class="dropdown-item" role="button">EN</a>-->
+<!--					</li>-->
+<!--				</ul>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</ng-template>-->
+	<ng-template #orHeaderControl>
+		<a role="button" (click)="toggleTheme()">
+			{{material ? 'material' : 'bootstrap'}}
+		</a>
 	</ng-template>
 	<ng-template #orHeaderControl>
-		<a role="button" (click)="toggle()">
-			{{material ? 'material' : 'bootstrap'}}
+		<a role="button" (click)="toggleFont()">
+			{{frutiger ? 'Frutiger' : 'Arial'}}
 		</a>
 	</ng-template>
 

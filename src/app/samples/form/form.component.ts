@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
-import {MasterLayoutService, MaterialService} from 'oblique';
+import {MasterLayoutService, ThemeService} from 'oblique';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
 	selector: 'or-form',
@@ -7,12 +9,9 @@ import {MasterLayoutService, MaterialService} from 'oblique';
 	styleUrls: ['./form.component.scss']
 })
 export class FormComponent {
-	material: boolean;
+	material: Observable<boolean>;
 
-	constructor(masterLayout: MasterLayoutService, materialService: MaterialService) {
-		this.material = materialService.enabled;
-		materialService.toggled.subscribe(enabled => {
-			this.material = enabled;
-		});
+	constructor(masterLayout: MasterLayoutService, theme: ThemeService) {
+		this.material = theme.theme$.pipe(map(() => theme.isMaterial()));
 	}
 }

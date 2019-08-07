@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MaterialService, ORNavigationLink, SearchWidgetItem} from 'oblique';
+import {ORNavigationLink, SearchWidgetItem, THEMES, ThemeService} from 'oblique';
 
 @Component({
 	selector: 'app-root',
@@ -11,6 +11,7 @@ import {MaterialService, ORNavigationLink, SearchWidgetItem} from 'oblique';
 export class AppComponent {
 	offCanvasOpen = false;
 	material: boolean;
+	frutiger = true;
 	navigation: ORNavigationLink[] = [
 		{url: 'home', label: 'i18n.routes.home.title'},
 		{
@@ -38,16 +39,21 @@ export class AppComponent {
 	];
 	searchItems: SearchWidgetItem[] = [];
 
-	constructor(private materialService: MaterialService) {
+	constructor(private theme: ThemeService) {
 		this.populateSearchItems(this.navigation);
-		this.material = materialService.enabled;
-		this.setTheme();
+		this.theme.theme$.subscribe(() => {
+			this.material = theme.isMaterial();
+		});
 	}
 
-	toggle() {
+	toggleTheme() {
 		this.material = !this.material;
-		this.materialService.enabled = this.material;
-		this.setTheme();
+		this.theme.setTheme(this.material ? THEMES.MATERIAL : THEMES.BOOTSTRAP);
+	}
+
+	toggleFont() {
+		this.frutiger = !this.frutiger;
+		this.theme.setFrutiger(this.frutiger);
 	}
 
 	populateSearchItems(items: ORNavigationLink[], base = ''): void {
@@ -64,10 +70,5 @@ export class AppComponent {
 				});
 			}
 		});
-	}
-
-	private setTheme(): void {
-		const link = document.getElementById('dynamic-theme');
-		link['href'] = 'assets/styles/css/oblique-' + (this.material ? 'material' : 'bootstrap') + '.css';
 	}
 }

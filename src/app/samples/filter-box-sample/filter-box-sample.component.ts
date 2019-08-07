@@ -1,5 +1,6 @@
 import {Component, Pipe, PipeTransform} from '@angular/core';
-import {MasterLayoutService, MaterialService} from 'oblique';
+import {MasterLayoutService, ThemeService} from 'oblique';
+import {map} from 'rxjs/operators';
 
 @Pipe({
 	name: 'patternFilter'
@@ -39,10 +40,9 @@ export class FilterBoxSampleComponent {
 		'Kai'
 	];
 
-	constructor(private masterLayout: MasterLayoutService, materialService: MaterialService) {
-		this.material = materialService.enabled;
-		materialService.toggled.subscribe(enabled => {
-			this.material = enabled;
+	constructor(private masterLayout: MasterLayoutService, theme: ThemeService) {
+		theme.theme$.subscribe(() => {
+			this.material = theme.isMaterial();
 		});
 	}
 

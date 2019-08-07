@@ -14,9 +14,9 @@ import {
 	ErrorMessagesModule,
 	MasterLayoutConfig,
 	MasterLayoutModule,
-	MATERIAL_DESIGN_DISABLE,
 	MultiselectModule,
 	NotificationModule,
+	OBLIQUE_THEME,
 	ObliqueHttpInterceptor,
 	ObliqueHttpInterceptorConfig,
 	ObliqueHttpModule,
@@ -26,6 +26,7 @@ import {
 	SearchBoxModule,
 	SpinnerModule,
 	TextControlClearModule,
+	THEMES,
 	UnsavedChangesModule
 } from 'oblique';
 // App:
@@ -81,7 +82,7 @@ export function createTranslateLoader(http: HttpClient) {
 		TextControlClearModule
 	],
 	providers: [
-		{provide: MATERIAL_DESIGN_DISABLE, useValue: true},
+		{provide: OBLIQUE_THEME, useValue: THEMES.BOOTSTRAP},
 		{provide: HTTP_INTERCEPTORS, useClass: ObliqueHttpInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true}
 	],
