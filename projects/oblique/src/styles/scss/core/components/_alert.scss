@@ -47,5 +47,5 @@
 }
 
 .alert-error {
-	@include alert-variant($brand-danger-light, $fa-var-times, $brand-danger);
+	@include alert-variant($brand-error-light, $fa-var-times, $brand-error);
 }

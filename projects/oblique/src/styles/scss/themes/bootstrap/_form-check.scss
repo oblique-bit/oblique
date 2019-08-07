@@ -168,7 +168,7 @@ $smallSize: 1.7273em;	//19px with a 11px basis
 		@include radio-variant($brand-warning);
 	}
 	&.form-check-danger {
-		@include checkbox-variant($brand-danger);
-		@include radio-variant($brand-danger);
+		@include checkbox-variant($brand-error);
+		@include radio-variant($brand-error);
 	}
 }

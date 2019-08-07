@@ -26,7 +26,7 @@
 }
 
 .btn-danger {
-	@include btn-variant($white, $brand-danger, $brand-danger, $white, $brand-danger-dark, $brand-danger-dark, $gray-lighter-2);
+	@include btn-variant($white, $brand-error, $brand-error, $white, $brand-error-dark, $brand-error-dark, $gray-lighter-2);
 }
 
 .btn-link {

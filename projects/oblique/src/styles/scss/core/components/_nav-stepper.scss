@@ -60,7 +60,7 @@ $stepper-border-width: 3px;
 		// Variants:
 		&.success {     @include stepper-state($brand-success, $white, $brand-success);}
 		&.warning {     @include stepper-state($brand-warning, $white, $brand-warning);}
-		&.danger {      @include stepper-state($brand-danger, $white, $brand-danger);}
+		&.danger {      @include stepper-state($brand-error, $white, $brand-error);}
 
 		// Feedback:
 		&.valid {       @include stepper-feedback($fa-var-check); }

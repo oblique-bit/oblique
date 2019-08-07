@@ -23,5 +23,5 @@
 	@include badge-styles($brand-warning-semilight, $brand-default);
 }
 .badge-danger {
-	@include badge-styles($brand-danger, $white);
+	@include badge-styles($brand-error, $white);
 }

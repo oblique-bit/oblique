@@ -6,7 +6,7 @@
 @include table-variant('table-secondary', $brand-secondary, $white);
 @include table-variant('table-success', $brand-success-light, $brand-default);
 @include table-variant('table-warning', $brand-warning-light, $brand-default);
-@include table-variant('table-danger', $brand-danger-light, $brand-default);
+@include table-variant('table-danger', $brand-error-light, $brand-default);
 
 .table thead th {
 	border: 1px solid $gray-light;

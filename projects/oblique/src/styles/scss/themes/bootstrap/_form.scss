@@ -13,7 +13,7 @@
 }
 
 .has-error {
-	@include form-control-validation($brand-danger, $brand-danger-dark, $brand-danger, $brand-danger-dark);
+	@include form-control-validation($brand-error, $brand-error-dark, $brand-error, $brand-error-dark);
 }
 
 a.form-control-plaintext {
