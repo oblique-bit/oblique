@@ -52,6 +52,7 @@
     "postdist": "npm run gulp -- dist",
     "test": "ng test oblique",
     "lint": "ng lint oblique",
+    "themes": "npm run gulp -- themes",
     "e2e": "ng e2e",
     "patch": "npm version patch",
     "minor": "npm version minor",
