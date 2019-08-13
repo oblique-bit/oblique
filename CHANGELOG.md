@@ -1,3 +1,33 @@
+# [4.0.0-RC.4](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.0-RC.4) (2019-08-13)
+
+## Bug Fixes
+* **toggle:** remove leading whitespace in class list ([8df4c32](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/8df4c32))
+
+## Code Refactoring
+* **package:** rename to `@oblique/oblique` ([10095d5](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/10095d5))
+* **themes:** change `warning` colors ([a794b53](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/a794b53))
+* **themes:** rename `brand-danger` into `brand-error` ([61b473a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/61b473a))
+* **toggle:** rename `activate` function into `toggle` ([3510496](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/3510496))
+
+## Features
+* **notification:** only `oblique` chanel has `position: fixed` ([8143f54](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/8143f54))
+* **themes:** add `$brand-info` colors and use them ([c2e02f4](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/c2e02f4))
+* **themes:** add `theme` service to take care of themes and font ([a76fc20](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/a76fc20))
+* **themes:** add all CI/CD colors and use them ([e4a540b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/e4a540b))
+* **themes:** redefine material color palette with oblique colors ([f91087c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/f91087c))
+* **themes:** redefine typography ([35a3727](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/35a3727))
+* **themes:** replace OpenSans with Frutiger and Arial as fallback ([00c839d](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/00c839d))
+* **toggle:** can be activated by default with `active` input ([e092e6c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/e092e6c))
+
+## BREAKING CHANGES
+* **themes:** * `MaterialService` has been replace by `ThemeService`
+* **themes:** * `MATERIAL_DESIGN_DISABLE` token has been replaced by `OBLIQUE_THEME`
+* **themes:** `$brand-warning-semilight` has been removed, use `$brand-warning-light` instead
+* **themes:** `$brand-danger` SCSS variable has been renamed into `$brand-error`
+* **package:** Oblique has been renamed `@oblique/oblique` to be consistent with angular naming. It means that all imports have to be updated and that the package is available under its new name
+* **toggle:** `activate` function has been renamed into `toggle`
+
+
 # [4.0.0-RC.3](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.0-RC.3) (2019-07-26)
 
 ## Bug Fixes
