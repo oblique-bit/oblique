@@ -3,7 +3,10 @@ const fs = require('fs'),
 	git = require('gulp-git'),
 	gulpFile = require('gulp-file'),
 	header = require('gulp-header'),
+	rename = require('gulp-rename'),
+	merge = require('merge-stream'),
 	sass = require('node-sass'),
+	del = require('del'),
 	path = require('path'),
 	paths = {
 		dist: './dist/oblique/'
@@ -33,7 +36,8 @@ const distMeta = () => {
 
 	['version', 'description', 'keywords', 'author', 'contributors', 'homepage', 'repository', 'license', 'bugs', 'publishConfig']
 		.forEach(field => output[field] = meta[field]);
-
+	['main', 'module', 'es2015', 'esm5', 'esm2015', 'fesm5', 'fesm2015', 'typings', 'metadata']
+		.forEach(field => output[field] = output[field].replace('oblique-oblique', 'oblique'));
 	output['scripts'] = {postinstall: 'node copy.js'};
 
 	return gulp.src(['README.md', 'CHANGELOG.md', 'copy.js'])
@@ -43,7 +47,7 @@ const distMeta = () => {
 
 const distBundle = () => {
 	const meta = reload('./package.json');
-	return gulp.src(paths.dist + 'bundles/oblique-bit.umd.js')
+	return gulp.src(paths.dist + 'bundles/oblique.umd.js')
 		.pipe(header(banner(meta)))
 		.pipe(gulp.dest(paths.dist + 'bundles'));
 };
@@ -58,6 +62,17 @@ const distCss = () => {
 const commit = () => gulp.src('.')
 	.pipe(git.add())
 	.pipe(git.commit('chore(version): release version ' + getPackageJsonVersion()));
+
+const distRename = () => {
+	const streams = [];
+	const stream = gulp.src(`dist/oblique/**/oblique-oblique*`)
+		.pipe(rename((filename) => filename.basename = filename.basename.replace('oblique-oblique', 'oblique')))
+		.pipe(gulp.dest('dist/oblique'));
+	streams.push(stream);
+	return merge(streams);
+};
+
+const clean = () => del('dist/oblique/**/oblique-oblique*');
 
 gulp.task(
 	'dist',
@@ -75,13 +90,18 @@ gulp.task(
 			),
 			distCss
 		),
-		distBundle
+		gulp.series(distRename, clean, distBundle)
 	)
 );
 
 gulp.task(
 	'publish',
 	gulp.series(commit)
+);
+
+gulp.task(
+	'test',
+	gulp.series(distRename, clean)
 );
 
 gulp.task('themes',
