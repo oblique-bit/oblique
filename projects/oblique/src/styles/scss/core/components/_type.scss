@@ -1,44 +1,39 @@
 @import "../variables";
 
 h1, h2, h3, h4, h5, h6 {
-	margin-top: 0;
+	margin: 0;
 	line-height: 1.4;
+	color: $black;
 }
 
 h1 {
-	font-size: 3rem;
+	font-size: 2.25rem;
 	font-weight: 300;
-	margin-bottom: $spacing-default;
 }
 
 h2 {
-	font-size: 2.5rem;
+	font-size: 1.875rem;
 	font-weight: 300;
-	margin-bottom: $spacing-md;
 }
 
 h3 {
-	font-size: 2rem;
-	font-weight: 400;
-	margin-bottom: $spacing-sm;
+	font-size: 1.5rem;
+	font-weight: 300;
 }
 
 h4 {
-	font-size: 1.75rem;
-	font-weight: 400;
-	margin-bottom: $spacing-xs;
+	font-size: 1.25rem;
+	font-weight: 300;
 }
 
 h5 {
-	font-size: 1.5rem;
+	font-size: 1.125rem;
 	font-weight: 400;
-	margin-bottom: $spacing-xs;
 }
 
 h6 {
-	font-size: 1.25rem;
-	font-weight: 500;
-	margin-bottom: $spacing-xs;
+	font-size: 1rem;
+	font-weight: 400;
 }
 
 // inline elements

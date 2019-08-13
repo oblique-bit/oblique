@@ -1,4 +1,4 @@
-// CI / CD colors
+// CI / CD
 $venetian-red: #dc0018;	// error message, red line
 $red: #f7001d;	// unused
 $cerulean: #006699;
@@ -18,7 +18,7 @@ $night-rider: #333333;
 $black: #000000;	// unused, default for headings and table headers
 
 
-// Oblique colors
+// Oblique
 $gray-lighter:              $smoke !default;
 $gray-lighter-2:            $gainsboro !default;
 $gray-light:                $light-grey !default;
@@ -53,6 +53,12 @@ $brand-error-dark:         #b30014 !default;
 $duration-default:              .6s !default;
 $duration-fast:                .25s !default;
 
+$font-size-base:                1rem !default;
+$font-size-xl:                  $font-size-base * 1.65 !default;
+$font-size-lg:                  $font-size-base * 1.25 !default;
+$font-size-sm:                  $font-size-base * .875 !default;
+$font-size-xs:                  $font-size-base * .8 !default;
+
 $spacing-default:              15px !default;
 $spacing-xs:                    5px !default;
 $spacing-sm:                   10px !default;
@@ -74,12 +80,6 @@ $footer-height:                84px !default;
 $footer-height-md:             60px !default;
 $footer-height-sm:             34px !default;
 $footer-height-collapsed:     162px !default;
-
-$font-size-base:                1rem !default;
-$font-size-xl:                  $font-size-base * 1.65 !default;
-$font-size-lg:                  $font-size-base * 1.25 !default;
-$font-size-sm:                  $font-size-base * .875 !default;
-$font-size-xs:                  $font-size-base * .8 !default;
 
 $layout-collapse:               992px !default; // Breakpoint at which the layout becomes expanded.
 
