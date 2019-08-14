@@ -14,6 +14,7 @@
 		width: 100%;
 		transition-property: transform, width, height;
 		transition-duration: $duration-default;
+		transition-timing-function: ease;
 
 		@at-root #{selector-append(".offcanvas-in", &)} {
 			transform: translateX(-$off-canvas-sidebar-collapsed-width);
@@ -38,6 +39,7 @@
 		z-index: 1050;
 		transition-property: transform, left, width, visibility;
 		transition-duration: $duration-default;
+		transition-timing-function: ease;
 
 		@include media-breakpoint-up(lg) {
 			width: $off-canvas-sidebar-width;
