@@ -1,4 +1,4 @@
-@import "~font-awesome/scss/variables";
+@import "~@fortawesome/fontawesome-free/scss/variables";
 @import "../../core/variables";
 @import "../../core/mixins/toggle";
 @import "mixins/button";
@@ -25,10 +25,10 @@
 	@include toggle-after($state: show);
 
 	.dropup &::after {
-		content: $fa-var-angle-up;
+		content: fa-content($fa-var-angle-up);
 
 		@at-root #{selector-append(".show", &)} {
-			content: $fa-var-angle-down
+			content: fa-content($fa-var-angle-down);
 		}
 	}
 

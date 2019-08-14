@@ -16,8 +16,9 @@
 
 @mixin stepper-feedback($icon) {
 	&::before {
-		content: $icon;
-		font-family: FontAwesome;
+		content: fa-content($icon);
+		font-family: 'Font Awesome 5 Free';
+		font-weight: 900;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 	}

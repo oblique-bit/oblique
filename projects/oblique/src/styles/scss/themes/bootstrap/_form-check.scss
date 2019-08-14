@@ -1,4 +1,4 @@
-@import "~font-awesome/scss/variables";
+@import "~@fortawesome/fontawesome-free/scss/variables";
 @import "~bootstrap/scss/variables";
 @import "../../core/variables";
 @import "mixins/form-check";
@@ -133,8 +133,9 @@ $smallSize: 1.7273em;	//19px with a 11px basis
 		}
 
 		&:checked + .form-check-label::after {
-			font-family: FontAwesome;
-			content: $fa-var-check;
+			font-family: 'Font Awesome 5 Free';
+			font-weight: 900;
+			content: fa-content($fa-var-check);
 		}
 	}
 

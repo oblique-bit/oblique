@@ -1,4 +1,4 @@
-@import "~font-awesome/scss/variables";
+@import "~@fortawesome/fontawesome-free/scss/variables";
 @import "../../styles/scss/core/variables";
 @import "../../styles/scss/core/mixins/nav";
 @import "../../styles/scss/core/mixins/icon";
@@ -50,14 +50,15 @@
 		}
 
 		.nav-link.has-child {
-			@include icon($fa-var-angle-down, before);
+			@include icon($fa-var-angle-down);
 
 			&.collapsed::before {
-				content: $fa-var-angle-right;
+				content: fa-content($fa-var-angle-right);
 			}
 
 			&:before {
 				margin-left: -$spacing-default;
+				width: $fa-fw-width;
 			}
 
 			+ .collapse:not(.show) {

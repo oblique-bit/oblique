@@ -1,5 +1,5 @@
 @import "../mixins/toggle";
-@import "~font-awesome/scss/variables";
+@import "~@fortawesome/fontawesome-free/scss/variables";
 
 .toggle                     { @include toggle-before();                            }
 .toggle-down-up             { @include toggle-icon($fa-var-angle-down, $fa-var-angle-up);    }

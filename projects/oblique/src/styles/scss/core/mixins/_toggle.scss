@@ -1,4 +1,4 @@
-@import "~font-awesome/scss/variables";
+@import "~@fortawesome/fontawesome-free/scss/variables";
 @import "icon";
 
 @mixin toggle-state($state: show) {
@@ -16,28 +16,35 @@
 	@include icon($default-icon);
 	@include toggle-state($state) {
 		&::before {
-			content: $toggle-icon;
+			content: fa-content($toggle-icon);
 		}
 	};
+	&::before {
+		width: $fa-fw-width;
+	}
 }
 
 @mixin toggle-after($default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show) {
 	@include icon($default-icon, after);
 	@include toggle-state($state) {
 		&::after {
-			content: $toggle-icon;
+			content: fa-content($toggle-icon);
+			width: $fa-fw-width;
 		}
 	};
+	&::after {
+		width: $fa-fw-width;
+	}
 }
 
 @mixin toggle-icon($default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show) {
 	&::before {
-		content: $default-icon;
+		content: fa-content($default-icon);
 	}
 
 	@include toggle-state($state) {
 		&::before {
-			content: $toggle-icon;
+			content: fa-content($toggle-icon);
 		}
 	};
 }

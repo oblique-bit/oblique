@@ -1,24 +1,27 @@
+@import "~@fortawesome/fontawesome-free/scss/variables";
 @import "layout";
 
-@mixin icon-base($icon) {
-	content: $icon;
-	display: inline-block;
-	font: normal normal normal 1rem FontAwesome;
-	font-size: inherit;
-	text-rendering: auto;
+@mixin icon-base($icon, $pack) {
+	content: fa-content($icon);
 	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	min-width: $spacing-default;
+	display: inline-block;
+	font-family: 'Font Awesome 5 ' + $pack;
+	font-weight: 900;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	line-height: 1;
+	text-align: center;
 }
 
-@mixin icon($icon, $position: before) {
+@mixin icon($icon, $position: before, $pack: 'Free') {
 	@if $position == before {
 		&::before {
-			@include icon-base($icon);
+			@include icon-base($icon, $pack);
 		}
 	} @else if $position == after {
 		&::after {
-			@include icon-base($icon);
+			@include icon-base($icon, $pack);
 		}
 	}
 }

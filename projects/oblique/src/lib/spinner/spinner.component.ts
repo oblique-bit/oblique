@@ -12,7 +12,7 @@ import {Unsubscribable} from '../unsubscribe.class';
 	template: `
 		<div class="overlay" [class.overlay-fixed]="fixed" [@inOut]="$state">
 			<div class="spinner-viewport">
-				<span class="spinner fa fa-spinner fa-4x"></span>
+				<span class="fa fa-spinner fa-spin fa-4x"></span>
 			</div>
 		</div>`,
 	styleUrls: ['spinner.component.scss'],

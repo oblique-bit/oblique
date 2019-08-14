@@ -1,4 +1,4 @@
-@import "../../../../../../node_modules/font-awesome/scss/variables";
+@import "~@fortawesome/fontawesome-free/scss/variables";
 @import "../../../styles/scss/core/variables";
 @import "../../../styles/scss/core/mixins/icon";
 @import "../../../styles/scss/core/mixins/layout";
@@ -115,7 +115,7 @@
 
 			@include layout-collapse-down() {
 				&::before {
-					content: $fa-var-angle-right;
+					content: fa-content($fa-var-angle-right);
 				}
 			}
 		}
@@ -214,7 +214,7 @@
 				}
 
 				&::before {
-					content: $fa-var-angle-left;
+					content: fa-content($fa-var-angle-left);
 				}
 			}
 
