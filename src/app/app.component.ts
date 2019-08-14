@@ -4,7 +4,7 @@ import {ORNavigationLink, SearchWidgetItem, THEMES, ThemeService} from 'oblique'
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
-	styles: [`.fa-sign-in {
+	styles: [`.fa-sign-in-alt {
 		transition: transform 600ms;
 	}`]
 })
