@@ -1,3 +1,13 @@
+# [4.0.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.0) (2019-08-14)
+
+## Bug Fixes
+* **master-layout:** fix offcanvas animation ([4063da7](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/4063da7))
+* **master-layout:** reduce offcanvas header height if header is collapsed ([6143bc3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/6143bc3))
+* **master-layout:** set `default-layout` to offcanvas content ([a330416](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/a330416))
+* **master-layout:** use white color for headings within offcanvas ([6e20249](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/6e20249))
+* **themes:** Frutiger is enabled by default ([610d69b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/610d69b))
+
+
 # [4.0.0-RC.4](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.0-RC.4) (2019-08-13)
 
 ## Bug Fixes
