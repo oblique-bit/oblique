@@ -1,3 +1,10 @@
+## [4.0.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.1) (2019-08-15)
+
+## Bug Fixes
+* **master-layout:** use white for heading in `offcanvas-sidebar` only ([daabf9b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/daabf9b))
+* **themes:** integrate FA5 CSS with oblique-core without `@import` ([bfe26de](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/bfe26de))
+
+
 # [4.0.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.0) (2019-08-14)
 
 ## Bug Fixes
@@ -7,6 +14,10 @@
 * **master-layout:** use white color for headings within offcanvas ([6e20249](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/6e20249))
 * **themes:** Frutiger is enabled by default ([610d69b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/610d69b))
 
+## BREAKING CHANGES
+* **toolchain:** `angular.json ` has to be patched, under `<projectName>.architect.build.options.assets`
+	* change `"input": "node_modules/oblique-reactive/styles/images"` into `"node_modules/@oblique/oblique/styles"`
+	* change `"output": "/assets/styles/images"` into `"output": "/assets/styles"`
 
 # [4.0.0-RC.4](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.0-RC.4) (2019-08-13)
 
@@ -30,8 +41,8 @@
 * **toggle:** can be activated by default with `active` input ([e092e6c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/e092e6c))
 
 ## BREAKING CHANGES
-* **themes:** * `MaterialService` has been replace by `ThemeService`
-* **themes:** * `MATERIAL_DESIGN_DISABLE` token has been replaced by `OBLIQUE_THEME`
+* **themes:** `MaterialService` has been replace by `ThemeService`
+* **themes:** `MATERIAL_DESIGN_DISABLE` token has been replaced by `OBLIQUE_THEME`
 * **themes:** `$brand-warning-semilight` has been removed, use `$brand-warning-light` instead
 * **themes:** `$brand-danger` SCSS variable has been renamed into `$brand-error`
 * **package:** Oblique has been renamed `@oblique/oblique` to be consistent with angular naming. It means that all imports have to be updated and that the package is available under its new name
