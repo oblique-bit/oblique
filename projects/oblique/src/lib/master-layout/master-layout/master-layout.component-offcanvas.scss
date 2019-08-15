@@ -10,10 +10,6 @@
 .offcanvas {
 	overflow-x: hidden;
 
-	h1, h2, h3, h4, h5, h6 {
-		color: $white;
-	}
-
 	.offcanvas-main {
 		width: 100%;
 		transition-property: transform, width, height;
@@ -44,6 +40,10 @@
 		transition-property: transform, left, width, visibility;
 		transition-duration: $duration-default;
 		transition-timing-function: ease;
+
+		h1, h2, h3, h4, h5, h6 {
+			color: $white;
+		}
 
 		@include media-breakpoint-up(lg) {
 			width: $off-canvas-sidebar-width;
