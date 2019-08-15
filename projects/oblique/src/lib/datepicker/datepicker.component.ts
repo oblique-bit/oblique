@@ -7,6 +7,7 @@ import {ThemeService} from '../theme.service';
  */
 @Component({
 	selector: 'or-date-picker',
+	exportAs: 'orDatePicker',
 	styleUrls: ['./datepicker.component.scss'],
 	templateUrl: './datepicker.component.html',
 	// Ensure CSS styles are added to global styles to ensure `ngb-datepicker` styles can be overrided:
