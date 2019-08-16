@@ -19,7 +19,8 @@ import {ThemeService} from '../theme.service';
  * @deprecated with material theme since version 4.0.0. Use angular default material behavior for both mandatory and error states instead
  */
 @Directive({
-	selector: '[orFormControlState]'
+	selector: '[orFormControlState]',
+	exportAs: 'orFormControlState'
 })
 export class FormControlStateDirective extends Unsubscribable implements AfterViewInit {
 
