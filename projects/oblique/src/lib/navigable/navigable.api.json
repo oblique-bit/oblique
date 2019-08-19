@@ -1,0 +1,98 @@
+[
+  {
+    "name": "NavigableGroupComponent",
+    "selector": "or-navigable-group",
+    "exported": "orNavigableGroup",
+    "since": "2.0.0",
+    "inputs": [
+      {
+        "name": "items",
+        "text": "A collection containing all data models of the current group.",
+        "type": "any[]",
+        "since": "2.0.0"
+      },
+      {
+        "name": "selection",
+        "text": "A collection which will contain the selected data models..",
+        "type": "any[]",
+        "since": "2.0.0"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "selectionOnChange",
+        "text": "Emits when an item is selected. Event's payload equals to the current selection list.",
+        "type": "Observable<any[]>",
+        "since": "2.0.0"
+      }
+    ]
+  },
+  {
+    "name": "NavigableDirective",
+    "selector": "[orNavigable]",
+    "export": "orNavigable",
+    "usage": "Set on an <code>nav-tree</code>, it will allow to navigate the tree while maintaining the focus on the filter input.",
+    "since": "2.0.0",
+    "inputs": [
+      {
+        "name": "orNavigable",
+        "text": "The data model of the current navigable item.",
+        "type": "any",
+        "since": "2.0.0"
+      },
+      {
+        "name": "navigableActivate",
+        "text": "Controls activation of the navigable item.",
+        "type": "boolean",
+        "default": false,
+        "since": "2.0.0"
+      },
+      {
+        "name": "navigableFocusOnInit",
+        "text": "Defines if the navigable item should be focused on directive initialisation.",
+        "type": "boolean",
+        "default": false,
+        "since": "2.0.0"
+      },
+      {
+        "name": "navigableHighlight",
+        "text": "Controls highlighting of the navigable item.",
+        "type": "boolean",
+        "default": false,
+        "since": "2.0.0"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "navigableOnActivation",
+        "text": "Emits when a navigable item is activated.",
+        "type": "Observable<void>",
+        "since": "2.0.0"
+      },
+      {
+        "name": "navigableOnChange",
+        "text": "Emits when UP or DOWN key is pressed while a navigable item is focused.",
+        "type": "Observable<NavigableOnChangeEvent>",
+        "since": "2.0.0"
+      },
+      {
+        "name": "navigableOnFocus",
+        "text": "Emits whena navigable item is focused.",
+        "type": "Observable<FocusEvent>",
+        "since": "2.0.0"
+      },
+      {
+        "name": "navigableOnMouseDown",
+        "text": "Emits whena navigable item is clicked.",
+        "type": "Observable<MouseEvent>",
+        "since": "2.0.0"
+      },
+      {
+        "name": "navigableOnMouseDown",
+        "text": "Emits whena navigable item is moved.",
+        "type": "Observable<NavigableOnMoveEvent>",
+        "since": "2.0.0"
+      }
+    ]
+  }
+]
