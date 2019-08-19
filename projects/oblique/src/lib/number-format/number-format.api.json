@@ -1,0 +1,24 @@
+[
+  {
+    "name": "NumberFormatDirective",
+    "selector": "[orNumberFormat]",
+    "export": "orNumberFormat",
+    "since": "2.0.0",
+    "inputs": [
+      {
+        "name": "decimals",
+        "text": "The number of decimals to display.",
+        "type": "number",
+        "default": 2,
+        "since": "2.0.0"
+      },
+      {
+        "name": "persistent",
+        "text": "Indicates that the formatted value will be reported to the model.",
+        "type": "boolean",
+        "default": true,
+        "since": "2.0.0"
+      }
+    ]
+  }
+]
