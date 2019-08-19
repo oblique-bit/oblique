@@ -1,0 +1,15 @@
+<p>This pipes allows to translate the parameters of the <code>translate</code> pipe.</p>
+<p>The following example will output: <code>Start date cannot be before end date.</code></p>
+<b>*.json</b>
+<pre>
+    ...
+    "key": "Start date cannot be before {{target}} date. ",
+    "target1": "end",
+    "target2": "intermediate"
+    ...
+</pre>
+
+<b>*.html</b><br>
+<pre>
+    {{'key' | orTranslateParams:{target: 'target1'} }}
+</pre>
