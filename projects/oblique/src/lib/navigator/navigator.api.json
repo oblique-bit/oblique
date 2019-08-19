@@ -1,0 +1,7 @@
+[
+	{
+		"name": "NavigatorComponent",
+		"selector": "or-navigator",
+		"since": "2.0.0"
+	}
+]
