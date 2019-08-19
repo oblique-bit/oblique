@@ -1,0 +1,15 @@
+[
+  {
+    "name": "SchemaValidationDirective",
+    "selector": "[orSchemaValidation]",
+    "since": "2.0.0",
+    "inputs": [
+      {
+        "name": "orSchemaValidation",
+        "text": "The JSON schema",
+        "type": "any",
+        "since": "2.0.0"
+      }
+    ]
+  }
+]
