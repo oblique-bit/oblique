@@ -1,0 +1,43 @@
+[
+  {
+    "name": "StickyComponent",
+    "selector": "or-sticky",
+    "exported": "orSticky",
+    "since": "4.0.0",
+    "inputs": [
+      {
+        "name": "headerSize",
+        "text": "Defines the size of panel's header.",
+        "type": "string",
+        "default": "md",
+        "values": ["sm", "md", "lg"],
+        "since": "4.0.0"
+      },
+      {
+        "name": "footerSize",
+        "text": "Defines the size of panel's footer.",
+        "type": "string",
+        "default": "md",
+        "values": ["sm", "md", "lg"],
+        "since": "4.0.0"
+      }
+    ],
+    "projection": [
+      {
+        "name": "<ng-template #orStickyHeader>",
+        "text": "Content that will be projected into the header",
+        "since": "4.0.0"
+      },
+      {
+        "name": "<ng-template #orStickyMain>",
+        "text": "Content that will be projected into the main container",
+        "since": "4.0.0"
+      },
+      {
+        "name": "<ng-template #orStickyFooter>",
+        "text": "Content that will be projected into the footer",
+        "since": "4.0.0"
+      }
+    ]
+  }
+]
