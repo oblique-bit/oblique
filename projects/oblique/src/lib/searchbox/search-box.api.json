@@ -1,0 +1,44 @@
+[
+  {
+    "name": "SearchboxComponent",
+    "selector": "or-search-box",
+    "export": "orSearchBox",
+    "since": "3.0.0",
+    "inputs": [
+      {
+        "name": "slide",
+        "text": "Indicates it the component should always be opened or only on <code>hover</code> / <code>focus</code>.",
+        "type": "boolean",
+        "default": true,
+        "since": "3.0.0"
+      },
+      {
+        "name": "placeholder",
+        "text": "The placeholder displayed within the component, it will be translated.",
+        "type": "string",
+        "default": "i18n.oblique.search.placeholder",
+        "since": "3.0.0"
+      },
+      {
+        "name": "minPatternLength",
+        "text": "The minimum length of the pattern for a search to occur.",
+        "type": "string",
+        "default": "i18n.oblique.search.placeholder",
+        "since": "3.0.0"
+      },
+      {
+        "name": "maxResults",
+        "text": "The maximum number of results that can be displayed.",
+        "type": "number",
+        "default": 10,
+        "since": "3.0.0"
+      },
+      {
+        "name": "items",
+        "text": "The list of possible hits. The search pattern will be match with the translation of its <code>label</code> property.",
+        "type": "SearchWidgetItem[]",
+        "since": "3.0.0"
+      }
+    ]
+  }
+]
