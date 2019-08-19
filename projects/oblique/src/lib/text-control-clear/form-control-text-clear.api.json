@@ -1,0 +1,31 @@
+[
+  {
+    "name": "TextControlClearDirective",
+    "selector": "[orTextControlClear]",
+    "exported": "orTextControlClear",
+    "since": "2.0.0",
+    "inputs": [
+      {
+        "name": "orTextControlClear",
+        "text": "Reference to the input element to be cleared.",
+        "type": "ElementRef",
+        "since": "2.0.0"
+      },
+      {
+        "name": "focusOnClear",
+        "text": "Defines if the referenced input element should be focused after content has been cleared.",
+        "type": "boolean",
+        "default": true,
+        "since": "2.0.0"
+      }
+    ],
+    "Outputs": [
+      {
+        "name": "onClear",
+        "text": "Emits when the input's content has been cleared",
+        "type": "Observable<MouseEvent>",
+        "since": "4.0.0"
+      }
+    ]
+  }
+]
