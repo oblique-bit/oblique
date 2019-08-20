@@ -26,27 +26,27 @@
 						</div>
 						<div class="form-group" *ngIf="!messageWithParams">
 							<label for="or-notification-message" class="form-control-label">Message</label>
-							<textarea [(ngModel)]="message.text" rows="3"
+							<textarea [(ngModel)]="message" rows="3"
 									  id="or-notification-message" class="form-control"
 									  placeholder="Notification message..."></textarea>
 						</div>
 						<div *ngIf="messageWithParams" class="row">
 							<div class="form-group col-12">
 								<label for="or-notification-translation-key" class="form-control-label">Message key</label>
-								<input [(ngModel)]="message.key" type="text" disabled
+								<input [(ngModel)]="messageKey" type="text" disabled
 									   id="or-notification-translation-key" class="form-control"
 									   placeholder="Notification title...">
 								<p class="help-block" ngNonBindable>This {{message}} do accepts 2 {{parameters}}.</p>
 							</div>
 							<div class="form-group col">
 								<label for="or-notification-translation-params-message" class="form-control-label">"message" parameter</label>
-								<input [(ngModel)]="message.params.message" type="text"
+								<input [(ngModel)]="messageParams.message" type="text"
 									   id="or-notification-translation-params-message" class="form-control"
 									   placeholder="Notification title...">
 							</div>
 							<div class="form-group col">
 								<label for="or-notification-translation-params-parameters" class="form-control-label">"parameters" parameter</label>
-								<input [(ngModel)]="message.params.parameters" type="text"
+								<input [(ngModel)]="messageParams.parameters" type="text"
 									   id="or-notification-translation-params-parameters" class="form-control"
 									   placeholder="Notification title...">
 							</div>
@@ -64,27 +64,27 @@
 						</div>
 						<div class="form-group" *ngIf="!titleWithParams">
 							<label for="or-notification-title" class="form-control-label">Title</label>
-							<input [(ngModel)]="title.text" type="text"
+							<input [(ngModel)]="title" type="text"
 							       id="or-notification-title" class="form-control"
 							       placeholder="Notification title...">
 						</div>
 						<div *ngIf="titleWithParams" class="row">
 							<div class="form-group col-12">
 								<label for="or-notification-title-translation-key" class="form-control-label">Message key</label>
-								<input [(ngModel)]="title.key" type="text" disabled
+								<input [(ngModel)]="titleKey" type="text" disabled
 									   id="or-notification-title-translation-key" class="form-control"
 									   placeholder="Notification title...">
 								<p class="help-block" ngNonBindable>This {{title}} do accepts 2 {{parameters}}.</p>
 							</div>
 							<div class="form-group col">
 								<label for="or-notification-title-translation-params-message" class="form-control-label">"title" parameter</label>
-								<input [(ngModel)]="title.params.title" type="text"
+								<input [(ngModel)]="titleParams.title" type="text"
 									   id="or-notification-title-translation-params-message" class="form-control"
 									   placeholder="Notification title...">
 							</div>
 							<div class="form-group col">
 								<label for="or-notification-title-translation-params-parameters" class="form-control-label">"parameters" parameter</label>
-								<input [(ngModel)]="title.params.parameters" type="text"
+								<input [(ngModel)]="titleParams.parameters" type="text"
 									   id="or-notification-title-translation-params-parameters" class="form-control"
 									   placeholder="Notification title...">
 							</div>
