@@ -15,21 +15,17 @@ export class NotificationSampleComponent {
 	// Selection:
 	channel = this.sampleChannel;
 	variant = NotificationType.INFO;
-	title = {
-		text: 'Well done!',
-		key: 'i18n.notification.sampleTitle',
-		params: {
+	title = 'Well done!';
+	titleKey = 'i18n.notification.sampleTitle';
+	titleParams = {
 			title: 'title',
 			parameters: 'parameters'
-		}
 	};
-	message = {
-		text: 'You successfully sent your first notification with Oblique :)',
-		key: 'i18n.notification.sampleMessage',
-		params: {
-			message: 'message',
-			parameters: 'parameters'
-		}
+	message = 'You successfully sent your first notification with Oblique :)';
+	messageKey = 'i18n.notification.sampleMessage';
+	messageParams = {
+		message: 'message',
+		parameters: 'parameters'
 	};
 	sticky = false;
 	timeout = 2500;
@@ -39,9 +35,12 @@ export class NotificationSampleComponent {
 	}
 
 	send() {
-		const message = this.messageWithParams ? {key: this.message.key, params: this.message.params} : this.message.text;
-		const title = this.titleWithParams ? {key: this.title.key, params: this.title.params} : this.title.text;
-		this.notificationService.send({message, title, sticky: this.sticky, channel: this.channel, timeout: this.timeout, type: this.variant});
+		this.notificationService.send({
+			message: this.messageWithParams ? this.messageKey : this.message,
+			messageParams: this.messageWithParams ? this.messageParams : undefined,
+			title: this.titleWithParams ? this.titleKey : this.title,
+			titleParams: this.titleWithParams ? this.titleParams : undefined,
+			sticky: this.sticky, channel: this.channel, timeout: this.timeout, type: this.variant});
 	}
 
 	clear() {

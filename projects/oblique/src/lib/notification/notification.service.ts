@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {INotification, KeyWithParams, NotificationType} from './notification.interfaces';
+import {INotification, NotificationType} from './notification.interfaces';
 import {NotificationConfig} from './notification.config';
 
 /**
@@ -90,9 +90,9 @@ export class NotificationService {
 	}
 
 	// Do not make it static as it breaks the build
-	private formatMessage(message: string | KeyWithParams): string {
-		return typeof message === 'string'
-			? message.substr(0, 15).replace(/[^\w]/gi, '_').toLowerCase()
-			: message.key;
+	private formatMessage(message: string): string {
+		return message.indexOf('i18n') === 0
+			? message
+			: message.substr(0, 50).replace(/[^\w]/gi, '_').toLowerCase();
 	}
 }
