@@ -1,9 +1,9 @@
 export interface INotification {
 	idPrefix?: string;
 	type?: NotificationType;
-	message?: string | KeyWithParams;
+	message?: string;
 	messageParams?: { [key: string]: any };
-	title?: string | KeyWithParams;
+	title?: string;
 	titleParams?: { [key: string]: any };
 	channel?: string;
 	sticky?: boolean;
@@ -15,9 +15,10 @@ export interface INotificationConfig {
 	channel?: string;
 	sticky?: boolean;
 	timeout?: number;
-	title?: string | KeyWithParams;
+	title?: string;
 }
 
+// @deprecated, will be removed in v5.0.0
 export interface KeyWithParams {
 	key: string;
 	params: { [key: string]: any };
