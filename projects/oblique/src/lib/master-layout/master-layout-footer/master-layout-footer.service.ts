@@ -12,7 +12,7 @@ export class MasterLayoutFooterService {
 	private readonly eventsS = this._events.asObservable();
 	private _isCustom = this.config.footer.isCustom;
 	private _isSmall = this.config.footer.isSmall;
-	private _hasScrollTransition = this.config.header.hasScrollTransitions;
+	private _hasScrollTransition = this.config.footer.hasScrollTransitions;
 
 	constructor(private readonly config: MasterLayoutConfig) {
 	}
