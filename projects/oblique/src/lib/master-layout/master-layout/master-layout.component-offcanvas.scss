@@ -114,7 +114,7 @@
 		display: none;
 
 		@at-root #{selector-append(".offcanvas-in", &)} {
-			@include media-breakpoint-down(md) {
+			@include layout-collapse-down {
 				display: block;
 			}
 		}
