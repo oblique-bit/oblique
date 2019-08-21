@@ -13,6 +13,7 @@
 
 	@include layout-collapse-up() {
 		padding-bottom: $footer-height-md;
+		transition: padding-bottom $duration-default;
 
 		&.application-fixed {
 			display: flex;
@@ -86,6 +87,16 @@
 
 				&.application-header-md + .application-content {
 					padding-top: $header-height-no-navigation - ($header-height - $header-height-md);
+				}
+			}
+
+			&.application-scrolling {
+				.application-header-sticky.application-header-md + .application-content {
+					padding-top: $header-height;
+				}
+
+				&.no-navigation .application-header-sticky.application-header-md + .application-content {
+					padding-top: $header-height-no-navigation;
 				}
 			}
 		}
