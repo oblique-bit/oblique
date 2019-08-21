@@ -4,6 +4,7 @@ const fs = require('fs'),
 	gulpFile = require('gulp-file'),
 	header = require('gulp-header'),
 	rename = require('gulp-rename'),
+	replace = require('gulp-replace'),
 	merge = require('merge-stream'),
 	sass = require('node-sass'),
 	del = require('del'),
@@ -20,7 +21,9 @@ const fs = require('fs'),
 
 
 const distStyles = () =>
-	gulp.src(['projects/oblique/src/styles/**/*']).pipe(gulp.dest(paths.dist + 'styles'));
+	gulp.src(['projects/oblique/src/styles/**/*'])
+		.pipe(replace('~@fortawesome/fontawesome-free/webfonts', '~@oblique/oblique/styles/fonts'))
+		.pipe(gulp.dest(paths.dist + 'styles'));
 
 const distMaterialCss = (done) => transpile('material', 'themes', done);
 const distBootstrapCss = (done) => transpile('bootstrap', 'themes', done);
@@ -56,7 +59,13 @@ const distCss = () => {
 	const meta = reload('./package.json');
 	return gulp.src(paths.dist + 'styles/css/*')
 		.pipe(header(banner(meta)))
+		.pipe(replace('~@fortawesome/fontawesome-free/webfonts', '~@oblique/oblique/styles/fonts'))
 		.pipe(gulp.dest(paths.dist + 'styles/css'));
+};
+
+const distFonts = () => {
+	return gulp.src('./node_modules/@fortawesome/fontawesome-free/webfonts/*')
+		.pipe(gulp.dest(paths.dist + 'styles/fonts'));
 };
 
 const commit = () => gulp.src('.')
@@ -79,6 +88,7 @@ gulp.task(
 	gulp.parallel(
 		distTestHelpers,
 		distMeta,
+		distFonts,
 		gulp.series(
 			distStyles,
 			gulp.parallel(
@@ -97,11 +107,6 @@ gulp.task(
 gulp.task(
 	'publish',
 	gulp.series(commit)
-);
-
-gulp.task(
-	'test',
-	gulp.series(distRename, clean)
 );
 
 gulp.task('themes',
