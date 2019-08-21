@@ -24,6 +24,10 @@
 
 		&.application-scrolling {
 			padding-bottom: $footer-height;
+
+			&.footer-sm {
+				padding-bottom: $footer-height-sm;
+			}
 		}
 	}
 

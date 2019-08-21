@@ -64,6 +64,10 @@
 			}
 		}
 
+		.application.application-scrolling &.application-footer-sm .footer-item-logo {
+			display: none;
+		}
+
 		.footer-item-info {
 			margin-right: $spacing-default;
 			flex: 1; // Variable width.
