@@ -1,5 +1,7 @@
-import {Observable, partition} from 'rxjs';
+import {merge, Observable, of, partition} from 'rxjs';
 import {filter, repeatWhen, shareReplay, takeUntil} from 'rxjs/operators';
+import {MasterLayoutHeaderService} from './master-layout-header/master-layout.header.service';
+import {MasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
 
 export interface MasterLayoutEvent {
 	name: MasterLayoutEventValues;
@@ -22,9 +24,12 @@ export enum MasterLayoutEventValues {
 	STICKY
 }
 
-export function scrollEnabled(events: Observable<MasterLayoutEvent>) {
+export function scrollEnabled(service: MasterLayoutHeaderService | MasterLayoutFooterService): <T>(source: Observable<T>) => Observable<T>  {
 	const [enabled$, disabled$] = partition(
-		events.pipe(
+		merge(service.configEvents, of({
+			name: MasterLayoutEventValues.SCROLL_TRANSITION,
+			value: service.hasScrollTransition
+		})).pipe(
 			filter((evt: MasterLayoutEvent) => evt.name === MasterLayoutEventValues.SCROLL_TRANSITION),
 			shareReplay({refCount: true, bufferSize: 1})
 		),
