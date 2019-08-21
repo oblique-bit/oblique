@@ -13,7 +13,7 @@ export class NavTreeSampleComponent extends Unsubscribable implements OnInit {
 	public items: Array<NavTreeItemModel>;
 	public variant = NavTreeComponent.DEFAULTS.VARIANT;
 	public activateAncestors = true;
-	public useFakeFocus = true;
+	public useFakeFocus = false;
 
 	public filter = {
 		pattern: null,
