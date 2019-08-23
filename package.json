@@ -110,6 +110,7 @@
     "gulp-git": "^2.9.0",
     "gulp-header": "^2.0.9",
     "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
     "jasmine-core": "^3.4.0",
     "jasmine-spec-reporter": "^4.2.1",
     "jest": "^24.8.0",
