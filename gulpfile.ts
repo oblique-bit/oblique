@@ -22,7 +22,6 @@ const fs = require('fs'),
 
 const distStyles = () =>
 	gulp.src(['projects/oblique/src/styles/**/*'])
-		.pipe(replace('~@fortawesome/fontawesome-free/webfonts', '~@oblique/oblique/styles/fonts'))
 		.pipe(gulp.dest(paths.dist + 'styles'));
 
 const distMaterialCss = (done) => transpile('material', 'themes', done);
@@ -68,6 +67,17 @@ const distFonts = () => {
 		.pipe(gulp.dest(paths.dist + 'styles/fonts'));
 };
 
+const distFontAwesome = () => {
+	return gulp.src('./node_modules/@fortawesome/fontawesome-free/scss/*')
+		.pipe(gulp.dest(paths.dist + 'styles/scss/fontawesome'));
+};
+
+const distScss = () =>
+	gulp.src(paths.dist + 'styles/scss/**/*.scss')
+		.pipe(replace('~@fortawesome/fontawesome-free/webfonts', '~@oblique/oblique/styles/fonts'))
+		.pipe(replace('~@fortawesome/fontawesome-free/scss/', '~@oblique/oblique/styles/scss/fontawesome/'))
+		.pipe(gulp.dest(paths.dist + 'styles/scss'));
+
 const commit = () => gulp.src('.')
 	.pipe(git.add())
 	.pipe(git.commit('chore(version): release version ' + getPackageJsonVersion()));
@@ -89,6 +99,7 @@ gulp.task(
 		distTestHelpers,
 		distMeta,
 		distFonts,
+		distFontAwesome,
 		gulp.series(
 			distStyles,
 			gulp.parallel(
@@ -98,6 +109,7 @@ gulp.task(
 				distUtilCss,
 				distComponentsCss
 			),
+			distScss,
 			distCss
 		),
 		gulp.series(distRename, clean, distBundle)
