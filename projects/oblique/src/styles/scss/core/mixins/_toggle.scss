@@ -37,7 +37,7 @@
 	}
 }
 
-@mixin toggle-icon($default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show) {
+@mixin toggle-icon-before($default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show) {
 	&::before {
 		content: fa-content($default-icon);
 	}
@@ -47,4 +47,26 @@
 			content: fa-content($toggle-icon);
 		}
 	};
+}
+
+@mixin toggle-icon-after($default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show) {
+	&::after {
+		content: fa-content($default-icon);
+	}
+
+	@include toggle-state($state) {
+		&::after {
+			content: fa-content($toggle-icon);
+		}
+	};
+}
+
+@mixin add-toggle($default-icon, $toggle-icon) {
+	&:not(.toggle-after) {
+		@include toggle-icon-before($default-icon, $toggle-icon);
+	}
+
+	&.toggle-after {
+		@include toggle-icon-after($default-icon, $toggle-icon);
+	}
 }

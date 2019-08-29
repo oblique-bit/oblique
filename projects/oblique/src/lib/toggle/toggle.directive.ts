@@ -8,6 +8,7 @@ export class ToggleDirective implements OnInit {
 	@HostBinding('class.show') @Input() active = false;
 	@HostBinding('class') @Input('class') hostClass: string;
 	@Input('orToggle') direction: string;
+	@Input() after = false;
 
 	@HostListener('click') toggle() {
 		this.active = !this.active;
@@ -20,6 +21,9 @@ export class ToggleDirective implements OnInit {
 			classes.add(this.hostClass.split(' '));
 		}
 		classes.add('toggle').add(`toggle-${this.direction || 'down-up'}`);
+		if (this.after) {
+			classes.add('toggle-after');
+		}
 		if (this.active) {
 			classes.add('show');
 		}
