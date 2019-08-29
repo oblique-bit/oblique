@@ -48,7 +48,7 @@ export class MasterLayoutFooterComponent extends Unsubscribable {
 	}
 
 	private reduceOnScroll() {
-		this.scrollEvents.isScrolled.pipe(takeUntil(this.unsubscribe), scrollEnabled(this.masterLayout.footer.configEvents))
+		this.scrollEvents.isScrolled.pipe(takeUntil(this.unsubscribe), scrollEnabled(this.masterLayout.footer))
 			.subscribe((isScrolling) => {
 				this.isSmall = !isScrolling;
 			});

@@ -24,6 +24,14 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.footer.isSmall = value;
 	}
 
+	get footerTransition() {
+		return this.masterLayout.footer.hasScrollTransition;
+	}
+
+	set footerTransition(value: boolean) {
+		this.masterLayout.footer.hasScrollTransition = value;
+	}
+
 	get headerMD() {
 		return this.masterLayout.header.isMedium;
 	}
@@ -46,6 +54,14 @@ export class MasterLayoutSampleComponent {
 
 	set headerAnimate(value: boolean) {
 		this.masterLayout.header.isAnimated = value;
+	}
+
+	get headerTransition() {
+		return this.masterLayout.header.hasScrollTransition;
+	}
+
+	set headerTransition(value: boolean) {
+		this.masterLayout.header.hasScrollTransition = value;
 	}
 
 	get navigation() {

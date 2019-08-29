@@ -43,6 +43,15 @@
 					<input ngbButton type="radio" [value]="true"> Small
 				</label>
 			</div>
+			<h4>Footer transitions</h4>
+			<div [(ngModel)]="footerTransition" ngbRadioGroup class="btn-group btn-group-toggle">
+				<label ngbButtonLabel class="btn-secondary active">
+					<input ngbButton type="radio" [value]="true"> Yes
+				</label>
+				<label ngbButtonLabel class="btn-secondary">
+					<input ngbButton type="radio" [value]="false"> No
+				</label>
+			</div>
 			<h4>Header size</h4>
 			<div [(ngModel)]="headerMD" ngbRadioGroup class="btn-group btn-group-toggle">
 				<label ngbButtonLabel class="btn-secondary active">
@@ -63,6 +72,15 @@
 			</div>
 			<h4>Header animate</h4>
 			<div [(ngModel)]="headerAnimate" ngbRadioGroup class="btn-group btn-group-toggle">
+				<label ngbButtonLabel class="btn-secondary active">
+					<input ngbButton type="radio" [value]="true"> Yes
+				</label>
+				<label ngbButtonLabel class="btn-secondary">
+					<input ngbButton type="radio" [value]="false"> No
+				</label>
+			</div>
+			<h4>Header scroll transition</h4>
+			<div [(ngModel)]="headerTransition" ngbRadioGroup class="btn-group btn-group-toggle">
 				<label ngbButtonLabel class="btn-secondary active">
 					<input ngbButton type="radio" [value]="true"> Yes
 				</label>

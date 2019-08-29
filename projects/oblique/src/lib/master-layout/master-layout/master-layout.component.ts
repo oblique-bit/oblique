@@ -47,6 +47,7 @@ export class MasterLayoutComponent extends Unsubscribable implements OnInit {
 	@HostBinding('class.header-open') isMenuCollapsed = this.masterLayout.layout.isMenuOpened;
 	@HostBinding('class.no-navigation') noNavigation = !this.masterLayout.layout.hasMainNavigation;
 	@HostBinding('class.offcanvas') hasOffCanvas = this.masterLayout.layout.hasOffCanvas;
+	@HostBinding('class.footer-sm') footerSm = this.masterLayout.footer.isSmall;
 	@HostBinding('class.application-scrolling') isScrolling = false;
 	@ContentChildren('orHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('orFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<any>>;

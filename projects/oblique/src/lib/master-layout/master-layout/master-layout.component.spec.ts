@@ -26,6 +26,9 @@ describe('MasterLayoutComponent', () => {
 			isMenuOpened: false,
 			hasMainNavigation: true,
 			configEvents: of({})
+		},
+		footer: {
+			isSmall: false
 		}
 	};
 
