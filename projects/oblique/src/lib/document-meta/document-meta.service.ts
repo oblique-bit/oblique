@@ -67,7 +67,6 @@ export class DocumentMetaService extends Unsubscribable {
 		}
 	}
 
-
 	public getMetaDescription(): string {
 		return this.metaDescription.getAttribute('content');
 	}

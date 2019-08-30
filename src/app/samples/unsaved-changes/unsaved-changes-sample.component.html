@@ -2,8 +2,7 @@
 	<h2 class="page-header">
 		{{'i18n.routes.samples.unsavedChanges.title' | translate}}
 	</h2>
-	<p class="lead">Tracks and notifies about unsaved form changes when switching to another tab, navigating to
-		another state or when closing the current browser tab (or the browser itself).</p>
+	<or-description component="unsaved-changes"></or-description>
 	<div class="row">
 		<div class="col">
 			<form class="card form-horizontal has-validation" id="templateForm" #standAloneTemplate="ngForm" role="form"
@@ -638,4 +637,5 @@
 			</div>
 		</div>
 	</div>
+	<or-api component="unsaved-changes"></or-api>
 </div>

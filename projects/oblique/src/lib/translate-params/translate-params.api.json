@@ -1,0 +1,7 @@
+[
+  {
+    "name": "TranslateParamsPipe",
+    "selector": "orTranslateParams",
+    "since": "3.1.0"
+  }
+]

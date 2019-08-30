@@ -1,0 +1,16 @@
+[
+  {
+    "name": "OffCanvasToggleDirective",
+    "selector": "[orOffCanvasToggle]",
+    "export": "orOffCanvasToggle",
+    "since": "3.0.0",
+    "methods": [
+      {
+        "name": "toggle",
+        "text": "Toggles the off-canvas.",
+        "returns": "void",
+        "since": "3.0.0"
+      }
+    ]
+  }
+]

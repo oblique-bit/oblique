@@ -1,0 +1,13 @@
+[
+  {
+    "name": "UnsavedChangesDirective",
+    "selector": "[orUnsavedChanges]",
+    "usage": "Applied on a <code>&gt;form&lt;</code> or any element with <code>ngModelGroup</code> directive. The host element needs an <code>id</code>.",
+    "since": "2.0.0"
+  },
+  {
+    "name": "UnsavedChangesGuard",
+    "usage": "Apply to routes that have to be protected",
+    "since": "2.0.0"
+  }
+]

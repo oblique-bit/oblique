@@ -48,6 +48,9 @@ import {
 	UnsavedChangesModule,
 	UnsavedChangesTabsModule
 } from 'oblique';
+import {ApiComponent} from '../api/api.component';
+import {DescriptionComponent} from '../description/description.component';
+import {ApiElementComponent} from '../api/api-element.component';
 
 @NgModule({
 	imports: [
@@ -107,10 +110,14 @@ import {
 		StickySampleComponent,
 		ToggleSampleComponent,
 		UnsavedChangesSampleComponent,
-		UnsavedChangesSampleModalComponent
+		UnsavedChangesSampleModalComponent,
+		ApiComponent,
+		ApiElementComponent,
+		DescriptionComponent
 	],
 	exports: [
-		RouterModule
+		RouterModule,
+		ApiComponent
 	],
 	providers: [
 		SampleDataResolver

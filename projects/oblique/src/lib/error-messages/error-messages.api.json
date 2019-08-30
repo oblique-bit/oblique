@@ -1,0 +1,17 @@
+[
+	{
+		"name": "ErrorMessagesComponent",
+		"selector": "or-error-messages",
+		"exported": "orErrorMessages",
+		"since": "2.0.0",
+		"inputs": [
+			{
+				"name": "control",
+				"text": "The <code>ngModel</code> or <code>formControlName</code> whose errors to display.",
+				"default": "FormControlStateDirective.ngControl",
+				"type": "NgControl",
+				"since": "2.0.0"
+			}
+		]
+	}
+]

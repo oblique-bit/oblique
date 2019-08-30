@@ -2,8 +2,7 @@
 	<h2 class="page-header">
 		{{'i18n.routes.samples.schema-validation.title' | translate}}
 	</h2>
-	<p class="lead">Use a custom <a href="http://json-schema.org/">JSON schema</a> in order to perform automatic form
-		control validation.</p>
+	<or-description component="schema-validation"></or-description>
 	<div class="row">
 		<div class="col">
 			<form id="schemaValidationForm" class="form-horizontal has-validation card" name="validationForm"
@@ -423,4 +422,5 @@
 			<pre>{{schema | json}}</pre>
 		</div>
 	</div>
+	<or-api component="schema-validation"></or-api>
 </div>

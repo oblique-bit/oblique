@@ -1,0 +1,17 @@
+[
+  {
+    "name": "DatepickerComponent",
+    "exported": "orDatePicker",
+    "selector": "or-date-picker",
+    "since": "2.0.0",
+    "inputs": [
+      {
+        "name": "disabled",
+        "text": "Defines if the component should be disabled.",
+        "type": "boolean",
+        "default": false,
+        "since": "2.0.0"
+      }
+    ]
+  }
+]

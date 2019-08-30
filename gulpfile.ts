@@ -78,6 +78,11 @@ const distScss = () =>
 		.pipe(replace('~@fortawesome/fontawesome-free/scss/', '~@oblique/oblique/styles/scss/fontawesome/'))
 		.pipe(gulp.dest(paths.dist + 'styles/scss'));
 
+const distDocs = () => {
+	return gulp.src(['./projects/oblique/src/lib/**/*.description.html', './projects/oblique/src/lib/**/*.api.json'])
+		.pipe(gulp.dest(paths.dist + 'lib'));
+};
+
 const commit = () => gulp.src('.')
 	.pipe(git.add())
 	.pipe(git.commit('chore(version): release version ' + getPackageJsonVersion()));
@@ -99,6 +104,7 @@ gulp.task(
 		distTestHelpers,
 		distMeta,
 		distFonts,
+		distDocs,
 		distFontAwesome,
 		gulp.series(
 			distStyles,

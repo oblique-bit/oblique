@@ -1,145 +1,144 @@
 <div class="default-layout notification-sample">
 	<h2 class="page-header">{{'i18n.routes.samples.notification.title' | translate}}</h2>
-	<p class="lead">Notifications provide short, timely, and relevant information for your application users.</p>
-	<div class="row">
-		<div class="col-md-6 mb-3">
-			<div class="card h-100">
-				<h3 class="card-header">Preview</h3>
-				<div class="card-body notification-sample-preview">
-					<or-notification [channel]="sampleChannel"></or-notification>
-				</div>
-			</div>
+	<or-description component="notification"></or-description>
+	<or-column-layout [left]="false">
+		<div column-main-content>
+			<or-notification [channel]="sampleChannel"></or-notification>
 		</div>
-		<div class="col-md-6">
-			<div class="card h-100">
-				<h3 class="card-header">Controls</h3>
-				<div class="card-body">
-					<fieldset>
-						<legend>Mandatory parameter</legend>
-						<div class="btn-group btn-group-sm btn-group-toggle" ngbRadioGroup name="messageWithParams" [(ngModel)]="messageWithParams">
-							<label ngbButtonLabel class="btn-primary">
-								<input ngbButton type="radio" [value]="false"> Simple text
-							</label>
-							<label ngbButtonLabel class="btn-primary">
-								<input ngbButton type="radio" [value]="true"> Translation key with parameters
-							</label>
-						</div>
-						<div class="form-group" *ngIf="!messageWithParams">
-							<label for="or-notification-message" class="form-control-label">Message</label>
-							<textarea [(ngModel)]="message" rows="3"
-									  id="or-notification-message" class="form-control"
-									  placeholder="Notification message..."></textarea>
-						</div>
-						<div *ngIf="messageWithParams" class="row">
-							<div class="form-group col-12">
-								<label for="or-notification-translation-key" class="form-control-label">Message key</label>
-								<input [(ngModel)]="messageKey" type="text" disabled
-									   id="or-notification-translation-key" class="form-control"
-									   placeholder="Notification title...">
-								<p class="help-block" ngNonBindable>This {{message}} do accepts 2 {{parameters}}.</p>
-							</div>
-							<div class="form-group col">
-								<label for="or-notification-translation-params-message" class="form-control-label">"message" parameter</label>
-								<input [(ngModel)]="messageParams.message" type="text"
-									   id="or-notification-translation-params-message" class="form-control"
-									   placeholder="Notification title...">
-							</div>
-							<div class="form-group col">
-								<label for="or-notification-translation-params-parameters" class="form-control-label">"parameters" parameter</label>
-								<input [(ngModel)]="messageParams.parameters" type="text"
-									   id="or-notification-translation-params-parameters" class="form-control"
-									   placeholder="Notification title...">
-							</div>
-						</div>
-					</fieldset>
-					<fieldset>
-						<legend>Optional parameters</legend>
-						<div class="btn-group btn-group-sm btn-group-toggle" ngbRadioGroup name="titleWithParams" [(ngModel)]="titleWithParams">
-							<label ngbButtonLabel class="btn-primary">
-								<input ngbButton type="radio" [value]="false"> Simple key
-							</label>
-							<label ngbButtonLabel class="btn-primary">
-								<input ngbButton type="radio" [value]="true"> Translation key with parameters
-							</label>
-						</div>
-						<div class="form-group" *ngIf="!titleWithParams">
-							<label for="or-notification-title" class="form-control-label">Title</label>
-							<input [(ngModel)]="title" type="text"
-							       id="or-notification-title" class="form-control"
-							       placeholder="Notification title...">
-						</div>
-						<div *ngIf="titleWithParams" class="row">
-							<div class="form-group col-12">
-								<label for="or-notification-title-translation-key" class="form-control-label">Message key</label>
-								<input [(ngModel)]="titleKey" type="text" disabled
-									   id="or-notification-title-translation-key" class="form-control"
-									   placeholder="Notification title...">
-								<p class="help-block" ngNonBindable>This {{title}} do accepts 2 {{parameters}}.</p>
-							</div>
-							<div class="form-group col">
-								<label for="or-notification-title-translation-params-message" class="form-control-label">"title" parameter</label>
-								<input [(ngModel)]="titleParams.title" type="text"
-									   id="or-notification-title-translation-params-message" class="form-control"
-									   placeholder="Notification title...">
-							</div>
-							<div class="form-group col">
-								<label for="or-notification-title-translation-params-parameters" class="form-control-label">"parameters" parameter</label>
-								<input [(ngModel)]="titleParams.parameters" type="text"
-									   id="or-notification-title-translation-params-parameters" class="form-control"
-									   placeholder="Notification title...">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="or-notification-variant" class="form-control-label">Variant</label>
-							<select [(ngModel)]="variant" class="form-control" id="or-notification-variant">
-								<option *ngFor="let variant of variants | keyvalue" [ngValue]="variant.value">{{variant.key}}</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="or-notification-channel" class="form-control-label">Channel</label>
-							<select [(ngModel)]="channel" class="form-control" id="or-notification-channel">
-								<option value="{{sampleChannel}}">{{sampleChannel}}</option>
-								<option value="{{appChannel}}">{{appChannel}} (from NotificationConfig)</option>
-							</select>
-						</div>
-						<div class="form-group row" *ngIf="variant.toString() !== 'error'">
-							<div class="col-4">
-								<div class="form-check">
-									<input type="checkbox" id="or-notification-sticky" class="form-check-input"
-									       [(ngModel)]="sticky">
-									<label class="form-check-label" for="or-notification-sticky">Sticky?</label>
-								</div>
-							</div>
-							<div class="col-8" *ngIf="!sticky">
-								<div class="form-group form-inline">
-									<label for="or-notification-timeout" class="mr-sm-2">Timeout</label>
-									<input [(ngModel)]="timeout" type="number"
-									       id="or-notification-timeout" class="form-control"
-									       placeholder="Notification timeout..."
-									       ngbTooltip="The duration delay to wait before closing non-sticky notifications.">
-								</div>
-							</div>
-						</div>
-					</fieldset>
-					<div class="form-group form-actions">
-						<button (click)="clear()" class="btn btn-link"
-						        ngbTooltip="Clears notifications from current selected channel.">
-							<span class="fa fa-trash mr-2"></span>
-							<span>Clear</span>
-						</button>
-						<button (click)="clearAllChannels()" class="btn btn-link"
-						        ngbTooltip="Clears notifications from all channels.">
-							<span class="fa fa-trash mr-2"></span>
-							<span>Clear all</span>
-						</button>
-						<button (click)="send()" class="btn btn-secondary">
-							<span class="fa fa-paper-plane mr-2"></span>
-							<span>Send notification</span>
-						</button>
+		<div column-right-content>
+			<h3>Controls</h3>
+			<fieldset>
+				<legend>Mandatory parameter</legend>
+				<div class="btn-group btn-group-sm btn-group-toggle" ngbRadioGroup name="messageWithParams"
+					 [(ngModel)]="messageWithParams">
+					<label ngbButtonLabel class="btn-primary">
+						<input ngbButton type="radio" [value]="false"> Simple text
+					</label>
+					<label ngbButtonLabel class="btn-primary">
+						<input ngbButton type="radio" [value]="true"> Translation key with parameters
+					</label>
+				</div>
+				<div class="form-group" *ngIf="!messageWithParams">
+					<label for="or-notification-message" class="form-control-label">Message</label>
+					<textarea [(ngModel)]="message.text" rows="3"
+							  id="or-notification-message" class="form-control"
+							  placeholder="Notification message..."></textarea>
+				</div>
+				<div *ngIf="messageWithParams" class="row">
+					<div class="form-group col-12">
+						<label for="or-notification-translation-key" class="form-control-label">Message key</label>
+						<input [(ngModel)]="message.key" type="text" disabled
+							   id="or-notification-translation-key" class="form-control"
+							   placeholder="Notification title...">
+						<p class="help-block" ngNonBindable>This {{message}} do accepts 2 {{parameters}}.</p>
+					</div>
+					<div class="form-group col">
+						<label for="or-notification-translation-params-message" class="form-control-label">"message"
+							parameter</label>
+						<input [(ngModel)]="message.params.message" type="text"
+							   id="or-notification-translation-params-message" class="form-control"
+							   placeholder="Notification title...">
+					</div>
+					<div class="form-group col">
+						<label for="or-notification-translation-params-parameters" class="form-control-label">"parameters"
+							parameter</label>
+						<input [(ngModel)]="message.params.parameters" type="text"
+							   id="or-notification-translation-params-parameters" class="form-control"
+							   placeholder="Notification title...">
 					</div>
 				</div>
+			</fieldset>
+			<fieldset>
+				<legend>Optional parameters</legend>
+				<div class="btn-group btn-group-sm btn-group-toggle" ngbRadioGroup name="titleWithParams"
+					 [(ngModel)]="titleWithParams">
+					<label ngbButtonLabel class="btn-primary">
+						<input ngbButton type="radio" [value]="false"> Simple key
+					</label>
+					<label ngbButtonLabel class="btn-primary">
+						<input ngbButton type="radio" [value]="true"> Translation key with parameters
+					</label>
+				</div>
+				<div class="form-group" *ngIf="!titleWithParams">
+					<label for="or-notification-title" class="form-control-label">Title</label>
+					<input [(ngModel)]="title.text" type="text"
+						   id="or-notification-title" class="form-control"
+						   placeholder="Notification title...">
+				</div>
+				<div *ngIf="titleWithParams" class="row">
+					<div class="form-group col-12">
+						<label for="or-notification-title-translation-key" class="form-control-label">Message
+							key</label>
+						<input [(ngModel)]="title.key" type="text" disabled
+							   id="or-notification-title-translation-key" class="form-control"
+							   placeholder="Notification title...">
+						<p class="help-block" ngNonBindable>This {{title}} do accepts 2 {{parameters}}.</p>
+					</div>
+					<div class="form-group col">
+						<label for="or-notification-title-translation-params-message" class="form-control-label">"title"
+							parameter</label>
+						<input [(ngModel)]="title.params.title" type="text"
+							   id="or-notification-title-translation-params-message" class="form-control"
+							   placeholder="Notification title...">
+					</div>
+					<div class="form-group col">
+						<label for="or-notification-title-translation-params-parameters" class="form-control-label">"parameters"
+							parameter</label>
+						<input [(ngModel)]="title.params.parameters" type="text"
+							   id="or-notification-title-translation-params-parameters" class="form-control"
+							   placeholder="Notification title...">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="or-notification-variant" class="form-control-label">Variant</label>
+					<select [(ngModel)]="variant" class="form-control" id="or-notification-variant">
+						<option *ngFor="let variant of variants | keyvalue"
+								[ngValue]="variant.value">{{variant.key}}</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="or-notification-channel" class="form-control-label">Channel</label>
+					<select [(ngModel)]="channel" class="form-control" id="or-notification-channel">
+						<option value="{{sampleChannel}}">{{sampleChannel}}</option>
+						<option value="{{appChannel}}">{{appChannel}} (from NotificationConfig)</option>
+					</select>
+				</div>
+				<div class="form-group row" *ngIf="variant.toString() !== 'error'">
+					<div class="col-4">
+						<div class="form-check">
+							<input type="checkbox" id="or-notification-sticky" class="form-check-input"
+								   [(ngModel)]="sticky">
+							<label class="form-check-label" for="or-notification-sticky">Sticky?</label>
+						</div>
+					</div>
+					<div class="col-8" *ngIf="!sticky">
+						<div class="form-group form-inline">
+							<label for="or-notification-timeout" class="mr-sm-2">Timeout</label>
+							<input [(ngModel)]="timeout" type="number"
+								   id="or-notification-timeout" class="form-control"
+								   placeholder="Notification timeout..."
+								   ngbTooltip="The duration delay to wait before closing non-sticky notifications.">
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-group form-actions">
+				<button (click)="clear()" class="btn btn-link"
+						ngbTooltip="Clears notifications from current selected channel.">
+					<span class="fa fa-trash mr-2"></span>
+					<span>Clear</span>
+				</button>
+				<button (click)="clearAllChannels()" class="btn btn-link"
+						ngbTooltip="Clears notifications from all channels.">
+					<span class="fa fa-trash mr-2"></span>
+					<span>Clear all</span>
+				</button>
+				<button (click)="send()" class="btn btn-secondary">
+					<span class="fa fa-paper-plane mr-2"></span>
+					<span>Send notification</span>
+				</button>
 			</div>
-			<router-outlet></router-outlet>
 		</div>
-	</div>
+	</or-column-layout>
+	<or-api component="notification"></or-api>
 </div>

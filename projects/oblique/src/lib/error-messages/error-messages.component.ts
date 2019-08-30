@@ -13,6 +13,7 @@ import {ThemeService} from '../theme.service';
  */
 @Component({
 	selector: 'or-error-messages',
+	exportAs: 'orErrorMessages',
 	templateUrl: './error-messages.component.html'
 })
 export class ErrorMessagesComponent extends Unsubscribable implements AfterViewInit {

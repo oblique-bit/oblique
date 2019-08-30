@@ -1,6 +1,7 @@
 import {Component, Pipe, PipeTransform} from '@angular/core';
-import {MasterLayoutService, ThemeService} from 'oblique';
-import {map} from 'rxjs/operators';
+import {SafeHtml} from '@angular/platform-browser';
+
+import {ThemeService} from 'oblique';
 
 @Pipe({
 	name: 'patternFilter'
@@ -28,6 +29,9 @@ export class FilterBoxSampleComponent {
 	cleared = 0;
 	changed = 0;
 	patterns: string[] = [undefined, undefined, undefined, undefined, undefined, undefined];
+	placeholder: string;
+	prepend = false;
+	append = false;
 	items: string[] = [
 		'Jani',
 		'Carl',
@@ -40,7 +44,7 @@ export class FilterBoxSampleComponent {
 		'Kai'
 	];
 
-	constructor(private masterLayout: MasterLayoutService, theme: ThemeService) {
+	constructor(theme: ThemeService) {
 		theme.theme$.subscribe(() => {
 			this.material = theme.isMaterial();
 		});

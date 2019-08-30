@@ -1,0 +1,216 @@
+[
+  {
+    "name": "MultiselectComponent",
+    "selector": "or-multiselect",
+    "exported": "orMultiselect",
+    "since": "2.0.0",
+    "inputs": [
+      {
+        "name": "options",
+        "text": "All options for the dropdown.",
+        "type": "any",
+        "since": "2.0.0"
+      },
+      {
+        "name": "idPrefix",
+        "text": "The <code>id</code> that will be applied to the component and used as a prefix <code>id</code> for its underlying elements. A number is appended to the id to ensure its uniqueness.",
+        "type": "string",
+        "default": "multiselect",
+        "since": "4.0.0"
+      },
+      {
+        "name": "texts",
+        "text": "Custom texts for only this instance. These texts will be merged with the global <code>MultiselectTexts</code>",
+        "type": "MultiselectTexts",
+        "default": "MultiselectTexts",
+        "since": "2.0.0"
+      },
+      {
+        "name": "dropup",
+        "text": "Whether it should dropup.",
+        "type": "boolean",
+        "default": false,
+        "since": "2.0.0"
+      },
+      {
+        "name": "disabled",
+        "text": "A flag indication if the multiselect should be disabled.",
+        "type": "boolean",
+        "default": false,
+        "since": "2.0.0"
+      },
+      {
+        "name": "labelProperty",
+        "text": "If the model is an option, the property that matches <code>labelProperty</code> will be displayed.",
+        "type": "string",
+        "default": "",
+        "since": "2.0.0"
+      },
+      {
+        "name": "labelFormatter",
+        "text": "A function to transform an option to a label that will be shown in the multiselect. This will be used in favor of the <code>labelProperty</code>.",
+        "type": "(option: any) => string",
+        "since": "2.0.0"
+      },
+      {
+        "name": "enableAllSelectedText",
+        "text": "Whether to use the <code>allSelectedText</code> or just the checked text. Initialized from <code>MultiselectConfig</code> service.",
+        "type": "boolean",
+        "default": true,
+        "since": "2.0.0"
+      },
+      {
+        "name": "dynamicTitleMaxItems",
+        "text": "Max amount of selected items for which a dynamic title will be generated. Initialized from <code>MultiselectConfig</code> service.",
+        "type": "number",
+        "default": 3,
+        "since": "2.0.0"
+      },
+      {
+        "name": "enableSearch",
+        "text": "Whether to display the search field. Initialized from <code>MultiselectConfig</code> service. Initialized from <code>MultiselectConfig</code> service.",
+        "type": "boolean",
+        "default": false,
+        "since": "2.0.0"
+      },
+      {
+        "name": "maxHeight",
+        "text": "May height of the dropdown. Initialized from <code>MultiselectConfig</code> service. Initialized from <code>MultiselectConfig</code> service.",
+        "type": "string",
+        "default": "300px",
+        "since": "2.0.0"
+      },
+      {
+        "name": "selectionLimit",
+        "text": "Max amount of selectable options. If set to <code>0</code> no max amount will be checked. Initialized from <code>MultiselectConfig</code> service.",
+        "type": "number",
+        "default": 0,
+        "since": "2.0.0"
+      },
+      {
+        "name": "showCheckAll",
+        "text": "Whether checkAll should be shown.. Initialized from <code>MultiselectConfig</code> service. Initialized from <code>MultiselectConfig</code> service.",
+        "type": "boolean",
+        "default": false,
+        "since": "2.0.0"
+      },
+      {
+        "name": "showUncheckAll",
+        "text": "Whether uncheckAll should be shown.. Initialized from <code>MultiselectConfig</code> service. Initialized from <code>MultiselectConfig</code> service.",
+        "type": "boolean",
+        "default": false,
+        "since": "2.0.0"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "selectionLimitReached",
+        "text": "Emits when the selection limit is reached. Event's payload equals to the model length.",
+        "type": "Observable<number>",
+        "since": "2.0.0"
+      },
+      {
+        "name": "dropdownClosed",
+        "text": "Emits when the dropdown gets closed.",
+        "type": "Observable<void>",
+        "since": "2.0.0"
+      },
+      {
+        "name": "onAdded",
+        "text": "Emits whenan option gets selected. Event's payload equals the selected option.",
+        "type": "Observable<any>",
+        "since": "2.0.0"
+      },
+      {
+        "name": "onRemoved",
+        "text": "Emits whenan option gets unselected. event's payload equals the unselected option.",
+        "type": "Observable<void>",
+        "since": "2.0.0"
+      }
+    ]
+  },
+  {
+    "name": "MultiselectConfig",
+    "usage": "Should by injected, typically in the <code>AppModule</code>, to customize the values of its properties in order to provide alternate default values for all the <code>MultiselectComponent</code> instances.",
+    "since": "2.0.0",
+    "variables": [
+      {
+        "name": "enableAllSelectedText",
+        "text": "Whether to use the <code>allSelectedText</code> or just the checked text.",
+        "type": "boolean",
+        "default": true,
+        "since": "2.0.0"
+      },
+      {
+        "name": "dynamicTitleMaxItems",
+        "text": "Max amount of selected items for which a dynamic title will be generated.",
+        "type": "number",
+        "default": 3,
+        "since": "2.0.0"
+      },
+      {
+        "name": "enableSearch",
+        "text": "Whether to display the search field. Initialized from <code>MultiselectConfig</code> service.",
+        "type": "boolean",
+        "default": false,
+        "since": "2.0.0"
+      },
+      {
+        "name": "maxHeight",
+        "text": "May height of the dropdown. Initialized from <code>MultiselectConfig</code> service.",
+        "type": "string",
+        "default": "300px",
+        "since": "2.0.0"
+      },
+      {
+        "name": "selectionLimit",
+        "text": "Max amount of selectable options. If set to <code>0</code> no max amount will be checked.",
+        "type": "number",
+        "default": 0,
+        "since": "2.0.0"
+      },
+      {
+        "name": "showCheckAll",
+        "text": "Whether checkAll should be shown.. Initialized from <code>MultiselectConfig</code> service.",
+        "type": "boolean",
+        "default": false,
+        "since": "2.0.0"
+      },
+      {
+        "name": "showUncheckAll",
+        "text": "Whether uncheckAll should be shown.. Initialized from <code>MultiselectConfig</code> service.",
+        "type": "boolean",
+        "default": false,
+        "since": "2.0.0"
+      }
+    ]
+  },
+  {
+    "name": "MultiselectTexts",
+    "usage": "This is the default configuration object for the texts of all <code>MultiselectComponent</code> instances. The values can be normal strings or ngx-translate keys.",
+    "since": "2.0.0",
+    "variables": [
+      {
+        "name": "checkAll",
+        "text": "The label for the check all option.",
+        "type": "string",
+        "default": "i18n.oblique.multiselect.checkAll",
+        "since": "2.0.0"
+      },
+      {
+        "name": "uncheckAll",
+        "text": "The label for uncheck all option.",
+        "type": "string",
+        "default": "i18n.oblique.multiselect.uncheckAll",
+        "since": "2.0.0"
+      },
+      {
+        "name": "searchPlaceholder",
+        "text": "The placeholder",
+        "type": "string",
+        "default": "i18n.oblique.multiselect.searchPlaceholder",
+        "since": "2.0.0"
+      }
+    ]
+  }
+]

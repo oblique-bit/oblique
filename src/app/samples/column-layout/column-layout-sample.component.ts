@@ -9,7 +9,6 @@ export class ColumnLayoutSampleComponent {
 	left = true;
 	right = true;
 	searchItems: SearchWidgetItem[] = [];
-
 	private navigation: ORNavigationLink[] = [
 		{url: '/home', label: 'i18n.routes.home.title'},
 		{

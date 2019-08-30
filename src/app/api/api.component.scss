@@ -1,0 +1,63 @@
+@import "~projects/oblique/src/styles/scss/core/variables";
+@import "~projects/oblique/src/styles/scss/core/mixins/layout";
+
+$label-width: 25%;
+::ng-deep {
+	@include layout-collapse-down() {
+		dt {
+			border-top: 1px solid $gray;
+			padding-top: $spacing-xs;
+		}
+
+		dd {
+			padding-left: $spacing-default;
+			margin-bottom: 0;
+
+			+ dt {
+				margin-top: $spacing-default;
+			}
+		}
+	}
+
+	@include layout-collapse-up() {
+		dl {
+			display: flex;
+			flex-flow: row wrap;
+			margin-top: -$spacing-default;
+			margin-bottom: 2 * $spacing-default;
+		}
+		dt,
+		dd {
+			padding: 0;
+			margin: 0;
+			word-wrap: break-word;
+		}
+		dt {
+			width: $label-width;
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+
+			&,
+			& + dd {
+				margin-top: $spacing-default;
+				padding-top: $spacing-xs;
+				border-top: 1px solid $gray;
+			}
+		}
+
+		dd {
+			padding-left: $spacing-default;
+			width: calc(100% - #{$label-width});
+
+			+ dd {
+				width: 100%;
+				padding-left: calc(#{$label-width} + #{$spacing-default});
+			}
+		}
+	}
+
+	b ~ code {
+		margin-left: 4px;
+	}
+}
