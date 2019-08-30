@@ -63,7 +63,7 @@ describe('UnsavedChangesService', () => {
 			});
 		});
 
-		describe('with dirty form', () => {
+		describe('with dirty form (watch)', () => {
 			beforeEach(() => {
 				const form: ControlContainer = {dirty: true} as ControlContainer;
 				unsavedChangesService.watch('tab_1', form);
@@ -78,6 +78,18 @@ describe('UnsavedChangesService', () => {
 			it('should return false, if not confirmed', () => {
 				jest.spyOn(window, 'confirm').mockImplementation(() => false);
 				expect(unsavedChangesService.canDeactivate()).toBeFalsy();
+			});
+
+			it('should return true, if confirmed', () => {
+				jest.spyOn(window, 'confirm').mockImplementation(() => true);
+				expect(unsavedChangesService.canDeactivate()).toBeTruthy();
+			});
+		});
+
+		describe('with dirty form (unWatch)', () => {
+			beforeEach(() => {
+				const form: ControlContainer = {dirty: true} as ControlContainer;
+				unsavedChangesService.unWatch('tab_1');
 			});
 
 			it('should return true, if confirmed', () => {

@@ -1,5 +1,5 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {FormsModule, NgForm} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {Component, ViewChild} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {ErrorMessagesComponent, ErrorMessagesService, FormControlStateDirective} from 'oblique';
@@ -15,8 +15,7 @@ import {MockTranslateParamsPipe} from 'tests';
 	`
 })
 class TestComponent {
-	@ViewChild(NgForm) form: NgForm;
-	@ViewChild(ErrorMessagesComponent) errorMessages: ErrorMessagesComponent;
+	@ViewChild(ErrorMessagesComponent, {static: false}) readonly errorMessages: ErrorMessagesComponent;
 }
 
 describe('ErrorMessagesComponent', () => {
@@ -35,7 +34,7 @@ describe('ErrorMessagesComponent', () => {
 
 	beforeEach(async(() => {
 
-		errorMessagesServiceMock =  {
+		errorMessagesServiceMock = {
 			createMessages: jest.fn().mockImplementation(() => [{key: `i18n.validation.bar`, params: undefined}])
 		};
 
