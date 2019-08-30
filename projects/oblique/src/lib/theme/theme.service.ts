@@ -7,7 +7,14 @@ export enum THEMES {
 	BOOTSTRAP = 'oblique-bootstrap'
 }
 
+export enum FONTS {
+	FRUTIGER = 'oblique-material',
+	ROBOTO = 'oblique-bootstrap',
+	ARIAL = 'oblique-bootstrap'
+}
+
 export const OBLIQUE_THEME = new InjectionToken<THEMES>('OBLIQUE_THEME');
+export const OBLIQUE_FONT = new InjectionToken<THEMES>('OBLIQUE_FONT');
 export const FRUTIGER = new InjectionToken<boolean>('FRUTIGER');
 
 @Injectable({
@@ -15,29 +22,45 @@ export const FRUTIGER = new InjectionToken<boolean>('FRUTIGER');
 })
 export class ThemeService {
 	theme$: Observable<THEMES>;
+	font$: Observable<FONTS>;
 	private readonly mainTheme$ = new BehaviorSubject<THEMES>(THEMES.MATERIAL);
+	private readonly mainFont$ = new BehaviorSubject<FONTS>(FONTS.FRUTIGER);
 	private readonly renderer: Renderer2;
 	private readonly head: HTMLElement;
-	private themeLink: HTMLElement;
-	private fontLink: HTMLElement;
-	private currentTheme: string;
+	private readonly themeLink: HTMLElement;
+	private readonly fontLink: HTMLElement;
+	private currentTheme: THEMES;
+	private currentFont: FONTS;
 
 	constructor(
 		rendererFactory: RendererFactory2,
 		@Inject(DOCUMENT) document: any, // NOTE: do not set type, it will break AOT
 		@Optional() @Inject(OBLIQUE_THEME) private readonly theme: any, // NOTE: do not set type, it will break AOT
-		@Optional() @Inject(FRUTIGER) frutiger: boolean
+		@Optional() @Inject(OBLIQUE_FONT) private readonly font: any,
+		@Optional() @Inject(FRUTIGER) private readonly frutiger
 	) {
 		this.head = document.head;
 		this.renderer = rendererFactory.createRenderer(null, null);
 		this.theme$ = this.mainTheme$.asObservable();
-		this.addFrutiger(frutiger == null ? true : frutiger);
-		this.addBlankTheme();
+		this.font$ = this.mainFont$.asObservable();
+		this.fontLink = this.createAndAddEmptyLink();
+		this.themeLink = this.createAndAddEmptyLink();
+		this.frutiger = this.frutiger != null ? this.frutiger : true;
 	}
 
 	setTheme(theme: THEMES): void {
 		this.currentTheme = theme;
 		this.mainTheme$.next(theme);
+	}
+
+	setFont(font: FONTS): void {
+		this.currentFont = font;
+		this.mainFont$.next(font);
+	}
+
+	// @deprecated
+	setFrutiger(enabled: boolean) {
+		this.setFont(enabled ? FONTS.FRUTIGER : FONTS.ROBOTO);
 	}
 
 	isMaterial(): boolean {
@@ -53,26 +76,23 @@ export class ThemeService {
 
 	setDefaultTheme(): void {
 		this.setTheme(this.theme || THEMES.MATERIAL);
+		this.setFont(this.font || (this.frutiger ? FONTS.FRUTIGER : FONTS.ROBOTO));
 		this.theme$.subscribe((newTheme) => {
 			this.renderer.setAttribute(this.themeLink, 'href', `assets/styles/css/${newTheme}.css`);
 		});
-	}
-
-	setFrutiger(enabled: boolean): void {
-		if (enabled) {
-			this.renderer.setAttribute(this.fontLink, 'href', 'assets/styles/css/frutiger.css');
-		} else {
-			this.renderer.removeAttribute(this.fontLink, 'href');
-		}
-	}
-
-	private addFrutiger(enabled: boolean): void {
-		this.fontLink = this.createAndAddEmptyLink();
-		this.setFrutiger(enabled);
-	}
-
-	private addBlankTheme(): void {
-		this.themeLink = this.createAndAddEmptyLink();
+		this.font$.subscribe((newFont) => {
+			switch (newFont) {
+				case FONTS.FRUTIGER:
+					this.renderer.setAttribute(this.fontLink, 'href', 'assets/styles/css/frutiger.css');
+					break;
+				case FONTS.ROBOTO:
+					this.renderer.setAttribute(this.fontLink, 'href', 'assets/styles/css/roboto.css');
+					break;
+				default:
+					this.renderer.removeAttribute(this.fontLink, 'href');
+					break;
+			}
+		});
 	}
 
 	private createAndAddEmptyLink(): HTMLElement {

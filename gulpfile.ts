@@ -62,7 +62,7 @@ const distCss = () => {
 };
 
 const distFonts = () => {
-	return gulp.src(['./node_modules/@fortawesome/fontawesome-free/webfonts/*', './node_modules/font-awesome/fonts/*'])
+	return gulp.src(['./node_modules/@fortawesome/fontawesome-free/webfonts/*', './node_modules/font-awesome/fonts/*', './projects/oblique/src/styles/fonts/*'])
 		.pipe(gulp.dest(paths.dist + 'styles/fonts'));
 };
 
