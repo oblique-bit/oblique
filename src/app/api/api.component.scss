@@ -2,7 +2,7 @@
 @import "~projects/oblique/src/styles/scss/core/mixins/layout";
 
 $label-width: 25%;
-::ng-deep {
+:host::ng-deep {
 	@include layout-collapse-down() {
 		dt {
 			border-top: 1px solid $gray;
