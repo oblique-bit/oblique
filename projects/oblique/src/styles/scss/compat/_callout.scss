@@ -1,4 +1,5 @@
 @import "../core/variables";
+@import "../themes/bootstrap/variables";
 
 // Mixin for generating new callout styles:
 @mixin callout-styles($text, $bg, $border) {
@@ -50,7 +51,7 @@
 }
 
 .callout-default {
-	@include callout-styles($brand-light, $gray-lighter, $brand-secondary);
+	@include callout-styles($brand-light, $gray-extra-light, $secondary);
 }
 
 .callout-success {
@@ -58,7 +59,7 @@
 }
 
 .callout-info {
-	@include callout-styles($brand-secondary, $brand-light, $brand-secondary);
+	@include callout-styles($secondary, $brand-light, $secondary);
 }
 
 .callout-warning {

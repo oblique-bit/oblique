@@ -1,7 +1,7 @@
 @import "../../core/variables";
 
 $primary: $brand-primary !default;
-$secondary: $brand-secondary !default;
+$secondary: $malibu !default;
 $success: $brand-success !default;
 $info: $brand-info-light !default;
 $warning: $brand-warning !default;
@@ -33,7 +33,7 @@ $nav-pills-border-radius: 0 !default;
 $list-group-border-radius: 0 !default;
 $list-group-item-padding-x: .75rem !default;
 
-$modal-content-border-color: $gray-lighter !default;
+$modal-content-border-color: $gray-extra-light !default;
 
 $alert-border-radius: none !default;
 $alert-border-width: 0 !default;

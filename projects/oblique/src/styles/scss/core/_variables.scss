@@ -1,54 +1,35 @@
-// CI / CD
-$venetian-red: #dc0018;	// error message, red line
-$red: #f7001d;	// unused
-$cerulean: #006699;
-$malibu: #66afe9;
-$pattens-blue: #d8e8ef;
-$solitude: #e7edef;		// unused
-$clear-day: #f2f7f9;
-$mocassin: #fffab2;	// unused
-$white: #ffffff;
-$smoke: #f5f5f5;
-$gainsboro: #e5e5e5;
-$light-grey: #d5d5d5;
-$silver: #cccccc;	// unused
-$empress: #757575;	// unused
-$coal: #454545;	 // unused, default font color
-$night-rider: #333333;
-$black: #000000;	// unused, default for headings and table headers
+@import "palette";
 
+$gray-extra-light:          $gray-100 !default;
+$gray-lighter:              $gray-200 !default;
+$gray-light:                $gray-300 !default;
+$gray:                      $gray-400 !default;
+$gray-dark:                 $gray-500 !default;
+$gray-darker:               $gray-700 !default;
 
-// Oblique
-$gray-lighter:              $smoke !default;
-$gray-lighter-2:            $gainsboro !default;
-$gray-light:                $light-grey !default;
-$gray:                      #b4b4b4 !default;
-$gray-dark:                 #707070 !default;
-$gray-darker:               $night-rider !default;
-
-$brand-default:             #171717 !default;
-$brand-extralight:          $clear-day !default;
-$brand-light:               $pattens-blue !default;
-$brand-secondary:           $malibu !default;
-$brand-primary:             $cerulean !default;
-$brand-dark:                #003552 !default;
+$brand-default:             $gray-800 !default;
 $brand-accent:              $venetian-red !default;
 
-$brand-success-light:       #cfe6c2 !default;
-$brand-success:             #00813a !default;
-$brand-success-dark:        #004d22 !default;
+$brand-extra-light:         $primary-50 !default;
+$brand-light:               $primary-100 !default;
+$brand-primary:             $primary-500 !default;
+$brand-dark:                $primary-700 !default;
+
+$brand-success-light:       $success-100 !default;
+$brand-success:             $success-500 !default;
+$brand-success-dark:        $success-700 !default;
 
 $brand-info-light:          #e6eff3 !default;
-$brand-info:                $cerulean !default;
+$brand-info:                $primary-500 !default;
 $brand-info-dark:           #004569 !default;
 
-$brand-warning-light:       #ffe2c2 !default;
-$brand-warning:             #e75e00 !default;
-$brand-warning-dark:        #c63d00 !default;
+$brand-warning-light:       $warning-100 !default;
+$brand-warning:             $warning-500 !default;
+$brand-warning-dark:        $warning-700 !default;
 
-$brand-error-light:        #ffdddd !default;
-$brand-error:              #dc0018 !default;
-$brand-error-dark:         #b30014 !default;
+$brand-error-light:         $error-100 !default;
+$brand-error:               $error-500 !default;
+$brand-error-dark:          $error-700 !default;
 
 $duration-default:              .6s !default;
 $duration-fast:                .25s !default;

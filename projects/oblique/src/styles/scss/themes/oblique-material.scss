@@ -1,9 +1,9 @@
 @import '../core/variables';
 @import '~@angular/material/theming';
-@import 'material/oblique-palette';
+@import 'material/material-palette';
 
 @include mat-core(mat-typography-config($font-family: $font));
-@include angular-material-theme(mat-light-theme(mat-palette($oblique-primary), mat-palette($oblique-accent), mat-palette($oblique-warn)));
+@include angular-material-theme(mat-light-theme(mat-palette($oblique-primary), mat-palette($oblique-primary), mat-palette($oblique-warn)));
 
 @import 'material/mat-checkbox-radio';
 @import 'material/mat-form-field';
