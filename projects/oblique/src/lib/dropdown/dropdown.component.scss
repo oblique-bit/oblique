@@ -3,6 +3,8 @@
 @import "../../styles/scss/core/mixins/bubble-tail";
 
 .dropdown {
+	position: relative;
+
 	button[dropdown-toggle] {
 		margin: 0;
 		padding: 0;
