@@ -62,12 +62,30 @@ describe('UnsavedChangesTabsService', () => {
 			});
 		});
 
-		describe('with no dirty form', () => {
+		describe('with no dirty form (listenTo)', () => {
 			beforeEach(() => {
 				spyOn(window, 'confirm');
 				const form: ControlContainer = {dirty: false} as ControlContainer;
 				unsavedChangesService.watch('tab_1', form);
 				unsavedChangesService.listenTo(tabSet);
+				tabSet.select('tab_2');
+			});
+
+			it('shouldn\'t call window.confirm', () => {
+				expect(window.confirm).not.toHaveBeenCalled();
+			});
+
+			it('shouldn\'t prevent default', () => {
+				expect(evt.preventDefault).not.toHaveBeenCalled();
+			});
+		});
+
+		describe('with no dirty form (unListenTo)', () => {
+			beforeEach(() => {
+				spyOn(window, 'confirm');
+				const form: ControlContainer = {dirty: false} as ControlContainer;
+				unsavedChangesService.watch('tab_1', form);
+				unsavedChangesService.unListenTo(tabSet);
 				tabSet.select('tab_2');
 			});
 

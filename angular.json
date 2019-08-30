@@ -88,7 +88,7 @@
           },
           "configurations": {
             "production": {
-              "configPath": "../tests/jest.config.prod.js",
+              "configPath": "../tests/jest.config.js",
               "watch": false,
               "verbose": false
             }

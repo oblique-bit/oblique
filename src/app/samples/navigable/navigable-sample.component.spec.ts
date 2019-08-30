@@ -40,19 +40,19 @@ describe('NavigableSampleComponent', () => {
 		expect(component).toBeTruthy();
 	});
 
-	xit('first navigable item should be active by default', () => {
+	it('first navigable item should be active by default', () => {
 		expect(navigables[0].active).toBeTruthy();
 		expect(component.scientistsSelection.length).toBe(1);
 	});
 
-	xit('should add another item to selection when using activation toggle', () => {
+	it('should add another item to selection when using activation toggle', () => {
 		fixture.detectChanges();
 		component.toggleActivation(component.scientists[1], navigableGroup);
 		expect(navigables[1].selected).toBeTruthy();
 		expect(component.scientistsSelection.length).toBe(2);
 	});
 
-	xit('should highlight navigable item when using highlight toggle', () => {
+	it('should highlight navigable item when using highlight toggle', () => {
 		component.toggleHighlighting(component.scientists[1]);
 		fixture.detectChanges();
 		expect(navigables[0].active).toBeTruthy();

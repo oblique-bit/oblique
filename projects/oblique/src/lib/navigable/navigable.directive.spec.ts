@@ -124,15 +124,15 @@ describe('NavigableDirective', () => {
 			fixture.detectChanges();
 		});
 
-		xit('should select the directive', () => {
+		it('should select the directive', () => {
 			expect(directive.selected).toBeTruthy();
 		});
 
-		xit('should activate the directive', () => {
+		it('should activate the directive', () => {
 			expect(directive.active).toBeTruthy();
 		});
 
-		xit('should call `onFocus` callback', () => {
+		it('should call `onFocus` callback', () => {
 			expect(testComponent.onFocus).toHaveBeenCalled();
 		});
 	});
@@ -158,21 +158,21 @@ describe('NavigableDirective', () => {
 	});
 
 	// FIXME: click events do not seem to bubble up in test environment
-	// describe('clicking on some focusable child', () => {
-	// 	beforeEach(() => {
-	// 		button.nativeElement.dispatchEvent(new MouseEvent('mousedown'));
-	// 		button.nativeElement.focus();
-	// 		fixture.detectChanges();
-	// 	});
-	//
-	// 	it('should select the directive', () => {
-	// 		expect(directive.selected).toBeTruthy();
-	// 	});
-	//
-	// 	it('should activate the directive', () => {
-	// 		expect(directive.active).toBeTruthy();
-	// 	});
-	// });
+	xdescribe('clicking on some focusable child', () => {
+		beforeEach(() => {
+			button.nativeElement.dispatchEvent(new MouseEvent('mousedown'));
+			button.nativeElement.focus();
+			fixture.detectChanges();
+		});
+
+		it('should select the directive', () => {
+			expect(directive.selected).toBeTruthy();
+		});
+
+		it('should activate the directive', () => {
+			expect(directive.active).toBeTruthy();
+		});
+	});
 
 	describe('pressing DOWN key', () => {
 

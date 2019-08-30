@@ -1,5 +1,4 @@
-import {TestBed, async, ComponentFixture, fakeAsync, tick} from '@angular/core/testing';
-import {CommonModule} from '@angular/common';
+import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {FormBuilder, FormControlName, FormsModule, NgModel, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {By} from '@angular/platform-browser';
@@ -7,40 +6,37 @@ import {FormControlStateDirective} from 'oblique';
 
 @Component({
 	template: `
-		<form name="testForm">
-			<div orFormControlState [pristineValidation]="pristineValidation">
-				<input name="name" type="text" [(ngModel)]="model" #name="ngModel" required minlength="3">
-			</div>
-			<input id="submit" type="submit" value="Click Me">
-		</form>
+        <form name="testForm">
+            <div orFormControlState [pristineValidation]="pristineValidation">
+                <input name="name" type="text" [(ngModel)]="model" #name="ngModel" required minlength="3">
+            </div>
+            <input id="submit" type="submit" value="Click Me">
+        </form>
 	`
 })
 class TestWithPristineValidationComponent {
 	pristineValidation = true;
 	model;
 
-	@ViewChild(NgModel) ngModel: NgModel;
-	@ViewChild(FormControlStateDirective) formControlState: FormControlStateDirective;
+	@ViewChild(NgModel, {static: false}) ngModel;
+	@ViewChild(FormControlStateDirective, {static: false}) formControlState;
 }
 
 @Component({
 	template: `
-		<form [formGroup]="model">
-			<div orFormControlState>
-				<input formControlName="name" type="text">
-			</div>
-			<input id="submit" type="submit" value="Click Me">
-		</form>
+        <form [formGroup]="model">
+            <div orFormControlState>
+                <input formControlName="name" type="text">
+            </div>
+            <input id="submit" type="submit" value="Click Me">
+        </form>
 	`
 })
 class ReactiveTestComponent implements OnInit {
 	model;
 
-	@ViewChild(NgModel)
-	ngModel: FormControlName;
-
-	@ViewChild(FormControlStateDirective)
-	formControlState: FormControlStateDirective;
+	@ViewChild(NgModel, {static: false}) ngModel: FormControlName;
+	@ViewChild(FormControlStateDirective, {static: false}) formControlState;
 
 	constructor(private readonly formBuilder: FormBuilder) {
 	}
@@ -52,19 +48,18 @@ class ReactiveTestComponent implements OnInit {
 
 @Component({
 	template: `
-		<form name="testForm">
-			<div orFormControlState>
-				<input name="name" type="text" [(ngModel)]="model" #name="ngModel" required minlength="4">
-			</div>
-			<input id="submit" type="submit" value="Click Me">
-		</form>
+        <form name="testForm">
+            <div orFormControlState>
+                <input name="name" type="text" [(ngModel)]="model" #name="ngModel" required minlength="4">
+            </div>
+            <input id="submit" type="submit" value="Click Me">
+        </form>
 	`
 })
 class TestComponent {
 	model;
-
-	@ViewChild(NgModel) ngModel: NgModel;
-	@ViewChild(FormControlStateDirective) formControlState: FormControlStateDirective;
+	@ViewChild(NgModel, {static: false}) ngModel;
+	@ViewChild(FormControlStateDirective, {static: false}) formControlState;
 }
 
 describe('FormControlStateDirective', () => {
