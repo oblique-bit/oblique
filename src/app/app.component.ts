@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ORNavigationLink, SearchWidgetItem, THEMES, ThemeService} from 'oblique';
+import {FONTS, ORNavigationLink, SearchWidgetItem, THEMES, ThemeService} from 'oblique';
 
 @Component({
 	selector: 'app-root',
@@ -11,7 +11,7 @@ import {ORNavigationLink, SearchWidgetItem, THEMES, ThemeService} from 'oblique'
 export class AppComponent {
 	offCanvasOpen = false;
 	material: boolean;
-	frutiger = true;
+	frutiger: boolean;
 	navigation: ORNavigationLink[] = [
 		{url: 'home', label: 'i18n.routes.home.title'},
 		{
@@ -54,6 +54,9 @@ export class AppComponent {
 		this.theme.theme$.subscribe(() => {
 			this.material = theme.isMaterial();
 		});
+		this.theme.font$.subscribe((font) => {
+			this.frutiger = font === FONTS.FRUTIGER;
+		});
 	}
 
 	toggleTheme() {
@@ -63,7 +66,7 @@ export class AppComponent {
 
 	toggleFont() {
 		this.frutiger = !this.frutiger;
-		this.theme.setFrutiger(this.frutiger);
+		this.theme.setFont(this.frutiger ? FONTS.FRUTIGER : FONTS.ROBOTO);
 	}
 
 	populateSearchItems(items: ORNavigationLink[], base = ''): void {

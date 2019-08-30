@@ -16,6 +16,7 @@ import {
 	MultiselectModule,
 	multiTranslateLoader,
 	NotificationModule,
+	OBLIQUE_FONT,
 	OBLIQUE_THEME,
 	ObliqueHttpInterceptor,
 	ObliqueHttpInterceptorConfig,
@@ -27,7 +28,8 @@ import {
 	SpinnerModule,
 	TextControlClearModule,
 	THEMES,
-	UnsavedChangesModule
+	UnsavedChangesModule,
+	FONTS
 } from 'oblique';
 // App:
 import {AppComponent} from './app.component';
@@ -73,7 +75,8 @@ import {StylesComponent} from './styles/styles.component';
 		TextControlClearModule
 	],
 	providers: [
-		{provide: OBLIQUE_THEME, useValue: THEMES.BOOTSTRAP},
+		{provide: OBLIQUE_THEME, useValue: THEMES.MATERIAL},
+		{provide: OBLIQUE_FONT, useValue: FONTS.ROBOTO},
 		{provide: HTTP_INTERCEPTORS, useClass: ObliqueHttpInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true}
 	],
