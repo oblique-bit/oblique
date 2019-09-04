@@ -112,6 +112,11 @@ code, pre {
 
 pre {
 	overflow: auto;
+
+	code {
+		border: none;
+		padding: 0;
+	}
 }
 
 kbd {
