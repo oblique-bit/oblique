@@ -1,257 +1,138 @@
 {
-  "i18n": {
-    "application": {
-      "title": "oblique",
-      "description": "Reactive front-end framework for your business web application.",
-      "organization": {
-        "name": "Federal Office of Information Technology, Systems and Telecommunication FOITT",
-        "url": "https://www.bit.admin.ch/bit/en/home.html",
-        "email": "info@bit.admin.ch"
-      },
-      "locales": {
-        "de": "Deutsch",
-        "fr": "Français",
-        "it": "Italiano",
-        "en": "English"
-      },
-      "loading": "Loading...",
-      "footer.legal": {
-        "label": "Legal",
-        "title": "Terms and conditions"
-      }
-    },
-    "routes": {
-      "home": {
-        "title": "Home",
-        "description": "Description for the Home state page."
-      },
-      "auth": {
-        "title": "Sign in",
-        "login": {
-          "title": "Login",
-          "rememberme": "Remember me?",
-          "submit": "Log in",
-          "password-lost": "Forgot password?",
-          "error": "We have been unable to authenticate you, please check your credentials!",
-          "success": "You have been successfully authenticated."
-        },
-        "register": {
-          "title": "New to {{title}}? Sign up!",
-          "submit": "Register"
-        }
-      },
-      "samples": {
-        "title": "Samples",
-        "column-layout": {
-          "title": "Column Layout"
-        },
-        "datepicker": {
-          "title": "Datepicker"
-        },
-        "filter-box": {
-          "title": "Filter Box"
-        },
-        "form-control-state": {
-          "title": "Form Control State"
-        },
-        "http-interceptor": {
-          "title": "HTTP Interceptor"
-        },
-        "master-layout": {
-          "title": "Master Layout"
-        },
-        "multiselect": {
-          "title": "Multiselect"
-        },
-        "navigable": {
-          "title": "Navigable"
-        },
-        "navigator": {
-          "title": "States Navigator"
-        },
-        "nav-tree": {
-          "title": "Navigation Tree"
-        },
-        "notification": {
-          "title": "Notification"
-        },
-        "number-format": {
-          "title": "Number format"
-        },
-        "sticky": {
-          "title": "Sticky"
-        },
-        "schema-validation": {
-          "title": "Schema Validation"
-        },
-        "toggle": {
-          "title": "Toggles"
-        },
-        "ui-scroll": {
-          "title": "UI Scroll"
-        },
-        "unsaved-changes": {
-          "title": "Unsaved Changes"
-        }
-      }
-    },
-    "common": {
-      "yes": "Yes",
-      "no": "No",
-      "save": "Save",
-      "cancel": "Cancel",
-      "delete": "Delete",
-      "select": "Select please.",
-      "actions": "Actions",
-      "action": "Action",
-      "collapseAll": "Collapse all",
-      "expandAll": "Expand all",
-      "pager": {
-        "pagesLengthBefore": "Displaying",
-        "pagesLengthAfter": "Results per page",
-        "page": "Page",
-        "of": "from",
-        "hits": "Hits"
-      },
-      "date": {
-        "format": {
-          "dd.MM.yyyy": "dd.mm.yyyy",
-          "d!.M!.yyyy": "dd.mm.yyyy"
-        }
-      },
-      "search": {
-        "label": "Search",
-        "action": "Search",
-        "noResults": "No results...",
-        "placeholder": "Search by term",
-        "results": "Result(s)"
-      }
-    },
-    "labels": {
-      "language": "Language",
-      "email": "Email",
-      "password": "Password"
-    },
-    "accesskey":{
-      "mainContent":"Skip to main content [0]",
-      "homepage":"Homepage [1]",
-      "navigation":"Navigation [2]",
-      "globalNavigationMenu":"Global navigation menu"
-    },
-    "error": {
-      "general": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
-      "http": {
-        "status": {
-          "0": "Service Unavailable",
-          "400": "Bad Request",
-          "404": "The requested resource could not be found",
-          "500": "Internal Server Error",
-          "501": "Not Implemented",
-          "502": "Bad Gateway",
-          "503": "Service Unavailable"
-        }
-      },
-      "other": {
-        "timeout": "Server hat zu lange nicht reagiert. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
-        "upload": "Es ist ein Fehler bei hochladen aufgetrten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support"
-      },
-      "business": {
-        "ObjectOptimisticLockingFailureException": "Daten können nicht gespeichert werden, da sie auf dem Server geändert werden. Form wurde mit aktuellen Daten neu geladen."
-      }
-    },
-    "notification": {
-      "sampleMessage": "This {{message}} do accepts 2 {{parameters}}.",
-      "sampleTitle": "This {{title}} do accepts 2 {{parameters}}.",
-      "type": {
-        "default": "",
-        "info": "Info",
-        "success": "Success",
-        "warning": "Warning",
-        "error": "Error"
-      },
-      "common": {
-        "form": {
-          "success": "Speichern erfolgreich",
-          "pristine": "Ihre Eingaben haben sich nicht geändert",
-          "invalid": "Bitte korrigieren Sie die Fehler im Formular"
-        }
-      },
-      "custom": {
-      }
-    },
-    "validation": {
-      "type": "Bad value type, \"{{type}}\" is expected",
-      "minLength": "Please enter at least {{limit}} characters",
-      "required": "This field is required!",
-      "basic": {
-        "required": "Pflichtfeld, bitte machen Sie eine Angabe",
-        "email": "Ungültiges Format, bitte geben Sie eine gültige E-Mail Adresse an",
-        "url": "Ungültige Format, bitte geben Sie eine gültige URL Adresse an",
-        "minlength": "Bitte geben Sie mindestens {{limit}} Zeichen ein (Sie haben nur {{actual}} Zeichen eingegeben)",
-        "maxlength": "Bitte geben Sie höchstens {{limit}} Zeichen ein (Sie haben nur {{actual}} Zeichen eingegeben)",
-        "min": "Bitte geben Sie eine Zahl grösser oder gleich {{limit}} ein",
-        "max": "Bitte geben Sie eine Zahl kleiner oder gleich {{limit}} ein",
-        "integer": "Ungültiges Format, bitte geben Sie eine Zahl ohne Dezimalstellen ein",
-        "float": "Ungültiges Format, bitte geben Sie eine Zahl mit Dezimalstellen ein",
-        "date": "Ungültiges Format, bitte geben Sie eine korrekte Datum"
-      },
-      "test": "This field has a {{value}}",
-      "testValue": "Translated value",
-      "custom": {
-        "date": {
-          "day": {
-            "min": "Ungültiger Tag, geben Sie eine Zahl zwischen 1 und 31 ein",
-            "max": "Ungültiger Tag, geben Sie eine Zahl zwischen 1 und 31 ein"
-          },
-          "month": {
-            "min": "Ungültiger Monat, geben Sie eine Zahl zwischen 1 und 12 ein",
-            "max": "Ungültiger Monat, geben Sie eine Zahl zwischen 1 und 12 ein"
-          }
-        }
-      },
-      "ngbDate": "Incorrect date or format, please enter a valid date in the dd.mm.yyyy format.",
-      "ngbDate.requiredBefore": "The date is under the min datum {{day}}.{{month}}.{{year}}",
-      "ngbDate.requiredAfter": "The date is above the max date {{day}}.{{month}}.{{year}}",
-      "unsavedChanges": "Pending changes have been detected, do you really want to continue?"
-    },
-    "form": {
-      "action": {
-        "add": "Add",
-        "apply": "Apply",
-        "applyAndContinue": "Apply and continue",
-        "save": "Save",
-        "delete": "Delete",
-        "cancel": "Cancel",
-        "next": "Next",
-        "back": "Back"
-      }
-    },
-    "topControl": {
-      "backToTop": "Back to top"
-    },
-    "oblique": {
-      "controls.title": "Controls",
-      "multiselect": {
-        "checkAll": "Check all",
-        "uncheckAll": "Uncheck all",
-        "checked": "{{amount}} checked",
-        "searchPlaceholder": "Search...",
-        "defaultTitle": "Select please.",
-        "allSelected": "All elements have been selected."
-      },
-      "column": {
-        "left": {
-          "toggle": "Toggle left column."
-        },
-        "right": {
-          "toggle": "Toggle right column."
-        }
-      },
-      "search": {
-        "title": "Search",
-        "placeholder": "Search UI components...",
-        "noResults": "No results..."
-      }
-    }
-  }
+  "i18n.application.title": "oblique",
+  "i18n.application.description": "Reactive front-end framework for your business web application.",
+  "i18n.application.organization.name": "Federal Office of Information Technology, Systems and Telecommunication FOITT",
+  "i18n.application.organization.url": "https://www.bit.admin.ch/bit/en/home.html",
+  "i18n.application.organization.email": "info@bit.admin.ch",
+  "i18n.application.locales.de": "Deutsch",
+  "i18n.application.locales.fr": "Français",
+  "i18n.application.locales.it": "Italiano",
+  "i18n.application.locales.en": "English",
+  "i18n.application.loading": "Loading...",
+  "i18n.application.footer.legal.label": "Legal",
+  "i18n.application.footer.legal.title": "Terms and conditions",
+  "i18n.routes.home.title": "Home",
+  "i18n.routes.home.description": "Description for the Home state page.",
+  "i18n.routes.auth.title": "Sign in",
+  "i18n.routes.auth.login.title": "Login",
+  "i18n.routes.auth.login.rememberme": "Remember me?",
+  "i18n.routes.auth.login.submit": "Log in",
+  "i18n.routes.auth.login.password-lost": "Forgot password?",
+  "i18n.routes.auth.login.error": "We have been unable to authenticate you, please check your credentials!",
+  "i18n.routes.auth.login.success": "You have been successfully authenticated.",
+  "i18n.routes.auth.register.title": "New to {{title}}? Sign up!",
+  "i18n.routes.auth.register.submit": "Register",
+  "i18n.routes.samples.title": "Samples",
+  "i18n.routes.samples.column-layout.title": "Column Layout",
+  "i18n.routes.samples.datepicker.title": "Datepicker",
+  "i18n.routes.samples.filter-box.title": "Filter Box",
+  "i18n.routes.samples.form-control-state.title": "Form Control State",
+  "i18n.routes.samples.http-interceptor.title": "HTTP Interceptor",
+  "i18n.routes.samples.master-layout.title": "Master Layout",
+  "i18n.routes.samples.multiselect.title": "Multiselect",
+  "i18n.routes.samples.navigable.title": "Navigable",
+  "i18n.routes.samples.navigator.title": "States Navigator",
+  "i18n.routes.samples.nav-tree.title": "Navigation Tree",
+  "i18n.routes.samples.notification.title": "Notification",
+  "i18n.routes.samples.number-format.title": "Number format",
+  "i18n.routes.samples.sticky.title": "Sticky",
+  "i18n.routes.samples.schema-validation.title": "Schema Validation",
+  "i18n.routes.samples.toggle.title": "Toggles",
+  "i18n.routes.samples.ui-scroll.title": "UI Scroll",
+  "i18n.routes.samples.unsaved-changes.title": "Unsaved Changes",
+  "i18n.common.yes": "Yes",
+  "i18n.common.no": "No",
+  "i18n.common.save": "Save",
+  "i18n.common.cancel": "Cancel",
+  "i18n.common.delete": "Delete",
+  "i18n.common.select": "Select please.",
+  "i18n.common.actions": "Actions",
+  "i18n.common.action": "Action",
+  "i18n.common.collapseAll": "Collapse all",
+  "i18n.common.expandAll": "Expand all",
+  "i18n.common.pager.pagesLengthBefore": "Displaying",
+  "i18n.common.pager.pagesLengthAfter": "Results per page",
+  "i18n.common.pager.page": "Page",
+  "i18n.common.pager.of": "from",
+  "i18n.common.pager.hits": "Hits",
+  "i18n.common.date.format.dd.MM.yyyy": "dd.mm.yyyy",
+  "i18n.common.date.format.d!.M!.yyyy": "dd.mm.yyyy",
+  "i18n.common.search.label": "Search",
+  "i18n.common.search.action": "Search",
+  "i18n.common.search.noResults": "No results...",
+  "i18n.common.search.placeholder": "Search by term",
+  "i18n.common.search.results": "Result(s)",
+  "i18n.labels.language": "Language",
+  "i18n.labels.email": "Email",
+  "i18n.labels.password": "Password",
+  "i18n.accesskey.mainContent": "Skip to main content [0]",
+  "i18n.accesskey.homepage": "Homepage [1]",
+  "i18n.accesskey.navigation": "Navigation [2]",
+  "i18n.accesskey.globalNavigationMenu": "Global navigation menu",
+  "i18n.error.general": "Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
+  "i18n.error.http.status.0": "Service Unavailable",
+  "i18n.error.http.status.400": "Bad Request",
+  "i18n.error.http.status.404": "The requested resource could not be found",
+  "i18n.error.http.status.500": "Internal Server Error",
+  "i18n.error.http.status.501": "Not Implemented",
+  "i18n.error.http.status.502": "Bad Gateway",
+  "i18n.error.http.status.503": "Service Unavailable",
+  "i18n.error.other.timeout": "Server hat zu lange nicht reagiert. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
+  "i18n.error.other.upload": "Es ist ein Fehler bei hochladen aufgetrten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
+  "i18n.error.business.ObjectOptimisticLockingFailureException": "Daten können nicht gespeichert werden, da sie auf dem Server geändert werden. Form wurde mit aktuellen Daten neu geladen.",
+  "i18n.notification.sampleMessage": "This {{message}} do accepts 2 {{parameters}}.",
+  "i18n.notification.sampleTitle": "This {{title}} do accepts 2 {{parameters}}.",
+  "i18n.notification.type.default": "",
+  "i18n.notification.type.info": "Info",
+  "i18n.notification.type.success": "Success",
+  "i18n.notification.type.warning": "Warning",
+  "i18n.notification.type.error": "Error",
+  "i18n.notification.common.form.success": "Speichern erfolgreich",
+  "i18n.notification.common.form.pristine": "Ihre Eingaben haben sich nicht geändert",
+  "i18n.notification.common.form.invalid": "Bitte korrigieren Sie die Fehler im Formular",
+  "i18n.notification.custom": {},
+  "i18n.validation.type": "Bad value type, \"{{type}}\" is expected",
+  "i18n.validation.minLength": "Please enter at least {{limit}} characters",
+  "i18n.validation.required": "This field is required!",
+  "i18n.validation.basic.required": "Pflichtfeld, bitte machen Sie eine Angabe",
+  "i18n.validation.basic.email": "Ungültiges Format, bitte geben Sie eine gültige E-Mail Adresse an",
+  "i18n.validation.basic.url": "Ungültige Format, bitte geben Sie eine gültige URL Adresse an",
+  "i18n.validation.basic.minlength": "Bitte geben Sie mindestens {{limit}} Zeichen ein (Sie haben nur {{actual}} Zeichen eingegeben)",
+  "i18n.validation.basic.maxlength": "Bitte geben Sie höchstens {{limit}} Zeichen ein (Sie haben nur {{actual}} Zeichen eingegeben)",
+  "i18n.validation.basic.min": "Bitte geben Sie eine Zahl grösser oder gleich {{limit}} ein",
+  "i18n.validation.basic.max": "Bitte geben Sie eine Zahl kleiner oder gleich {{limit}} ein",
+  "i18n.validation.basic.integer": "Ungültiges Format, bitte geben Sie eine Zahl ohne Dezimalstellen ein",
+  "i18n.validation.basic.float": "Ungültiges Format, bitte geben Sie eine Zahl mit Dezimalstellen ein",
+  "i18n.validation.basic.date": "Ungültiges Format, bitte geben Sie eine korrekte Datum",
+  "i18n.validation.test": "This field has a {{value}}",
+  "i18n.validation.testValue": "Translated value",
+  "i18n.validation.custom.date.day.min": "Ungültiger Tag, geben Sie eine Zahl zwischen 1 und 31 ein",
+  "i18n.validation.custom.date.day.max": "Ungültiger Tag, geben Sie eine Zahl zwischen 1 und 31 ein",
+  "i18n.validation.custom.date.month.min": "Ungültiger Monat, geben Sie eine Zahl zwischen 1 und 12 ein",
+  "i18n.validation.custom.date.month.max": "Ungültiger Monat, geben Sie eine Zahl zwischen 1 und 12 ein",
+  "i18n.validation.ngbDate": "Incorrect date or format, please enter a valid date in the dd.mm.yyyy format.",
+  "i18n.validation.ngbDate.requiredBefore": "The date is under the min datum {{day}}.{{month}}.{{year}}",
+  "i18n.validation.ngbDate.requiredAfter": "The date is above the max date {{day}}.{{month}}.{{year}}",
+  "i18n.validation.unsavedChanges": "Pending changes have been detected, do you really want to continue?",
+  "i18n.form.action.add": "Add",
+  "i18n.form.action.apply": "Apply",
+  "i18n.form.action.applyAndContinue": "Apply and continue",
+  "i18n.form.action.save": "Save",
+  "i18n.form.action.delete": "Delete",
+  "i18n.form.action.cancel": "Cancel",
+  "i18n.form.action.next": "Next",
+  "i18n.form.action.back": "Back",
+  "i18n.topControl.backToTop": "Back to top",
+  "i18n.oblique.controls.title": "Controls",
+  "i18n.oblique.multiselect.checkAll": "Check all",
+  "i18n.oblique.multiselect.uncheckAll": "Uncheck all",
+  "i18n.oblique.multiselect.checked": "{{amount}} checked",
+  "i18n.oblique.multiselect.searchPlaceholder": "Search...",
+  "i18n.oblique.multiselect.defaultTitle": "Select please.",
+  "i18n.oblique.multiselect.allSelected": "All elements have been selected.",
+  "i18n.oblique.column.left.toggle": "Toggle left column.",
+  "i18n.oblique.column.right.toggle": "Toggle right column.",
+  "i18n.oblique.search.title": "Search",
+  "i18n.oblique.search.placeholder": "Search UI components...",
+  "i18n.oblique.search.noResults": "No results..."
 }
