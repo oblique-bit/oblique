@@ -57,17 +57,7 @@ export class FilterBoxComponent implements OnInit {
 			if (this.inputGroup && !this.inputGroup.nativeElement.classList.contains('bootstrapped')) {
 				let prepend = true;
 				Array.from(this.inputGroup.nativeElement.children).forEach((item: HTMLElement) => {
-					if (!item.classList.contains('form-control') && !item.classList.contains('text-control-clear')) {
-						if (item.classList.contains('btn') || item.classList.contains('dropdown')) {
-							this.renderer.addClass(item, prepend ? 'input-group-prepend' : 'input-group-append');
-						} else {
-							const elt = this.renderer.createElement('span');
-							this.renderer.addClass(elt, prepend ? 'input-group-prepend' : 'input-group-append');
-							this.renderer.insertBefore(item.parentElement, elt, item);
-							this.renderer.appendChild(elt, item);
-							this.renderer.addClass(item, 'input-group-text');
-						}
-					}
+					this.addClasses(item, prepend);
 					if (item.classList.contains('form-control')) {
 						prepend = false;
 					}
@@ -75,5 +65,24 @@ export class FilterBoxComponent implements OnInit {
 				this.renderer.addClass(this.inputGroup.nativeElement, 'bootstrapped');
 			}
 		});
+	}
+
+	private addClasses(item: HTMLElement, prepend: boolean) {
+		if (!item.classList.contains('form-control') && !item.classList.contains('text-control-clear')) {
+			const className = prepend ? 'input-group-prepend' : 'input-group-append';
+			if (item.classList.contains('btn') || item.classList.contains('dropdown')) {
+				this.renderer.addClass(item, className);
+			} else {
+				this.wrapItem(item, className);
+			}
+		}
+	}
+
+	private wrapItem(item: HTMLElement, className: string) {
+		const elt = this.renderer.createElement('span');
+		this.renderer.addClass(elt, className);
+		this.renderer.insertBefore(item.parentElement, elt, item);
+		this.renderer.appendChild(elt, item);
+		this.renderer.addClass(item, 'input-group-text');
 	}
 }
