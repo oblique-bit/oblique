@@ -28,7 +28,7 @@ const distMaterialCss = (done) => transpile('material', 'themes', done);
 const distBootstrapCss = (done) => transpile('bootstrap', 'themes', done);
 const distCoreCss = (done) => transpile('core', '', done);
 const distUtilCss = (done) => transpile('utilities', '', done);
-const distComponentsCss = (done) => transpileComponents('projects/oblique/src/lib', done);
+const distComponentsCss = (done) => transpileComponents(['projects', 'oblique', 'src', 'lib'], done);
 
 const distTestHelpers = () => gulp.src(['test_helpers/*']).pipe(gulp.dest(paths.dist + 'test_helpers'));
 
@@ -138,7 +138,7 @@ gulp.task('themes',
 );
 
 
-function reload(module) {
+function reload(module: string) {
 	// Uncache module:
 	delete require.cache[require.resolve(module)];
 
@@ -146,13 +146,13 @@ function reload(module) {
 	return require(module);
 }
 
-function getPackageJsonVersion() {
+function getPackageJsonVersion(): string {
 	// We parse the json file instead of using require because require caches
 	// multiple calls so the version number won't be updated
 	return JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
 }
 
-function fixPath(url, prev, relative) {
+function fixPath(url: string, prev: string, relative: boolean): string {
 	if (!url.startsWith('~')) {
 		return url;
 	}
@@ -170,27 +170,28 @@ function fixPath(url, prev, relative) {
 
 }
 
-function transpile(target, dir, cb) {
-	transpileFile('dist/oblique/styles/scss/' + dir + '/oblique-' + target + '.scss', target, true, cb);
+function transpile(target: string, dir: string, cb): void {
+	transpileFile(['dist', 'oblique', 'styles', 'scss', dir, 'oblique-' + target + '.scss'], target, true, cb);
 }
 
-function transpileFile(file, target, relative, cb) {
+function transpileFile(file: string[], target: string, relative: boolean, cb): void {
+	const distCssPath = path.join('dist', 'oblique', 'styles', 'css');
 	sass.render({
-		file: file,
+		file: path.join(...file),
 		importer: (url, prev, cbb) => {
 			cbb({file: fixPath(url, prev, relative)});
 		},
 		outputStyle: 'compressed',
 		sourceMap: false, // doesn't get generated correctly
 		outFile: 'dist/oblique/styles/css/oblique-' + target + '.css'
-	}, function (error, result) {
+	}, (error, result) => {
 		if (error) {
 			console.log(error.message);
 		} else {
-			if (!fs.existsSync('dist/oblique/styles/css')) {
-				fs.mkdirSync('dist/oblique/styles/css');
+			if (!fs.existsSync(distCssPath)) {
+				fs.mkdirSync(distCssPath);
 			}
-			fs.writeFile('dist/oblique/styles/css/oblique-' + target + '.css', result.css, (err) => {
+			fs.writeFile(path.join('dist', 'oblique', 'styles', 'css', 'oblique-' + target + '.css'), result.css, (err) => {
 				if (err) {
 					console.log(err);
 				}
@@ -200,29 +201,29 @@ function transpileFile(file, target, relative, cb) {
 	});
 }
 
-function deleteFile(component) {
+function deleteFile(component: string): void {
 	if (fs.existsSync(component)) {
 		fs.unlinkSync(component);
 	}
 }
 
-function generateComponentsStyles(dir, component) {
-	fs.readdirSync(dir).forEach(d => {
-		if (fs.statSync(path.join(dir, d)).isDirectory()) {
-			fs.readdirSync(path.join(dir, d)).forEach(f => {
+function generateComponentsStyles(dir: string[], component: string): void {
+	fs.readdirSync(path.join(...dir)).forEach(d => {
+		if (fs.statSync(path.join(...dir, d)).isDirectory()) {
+			fs.readdirSync(path.join(...dir, d)).forEach(f => {
 				if (f.endsWith('scss')) {
-					fs.appendFileSync(component, '@import "' + path.join(dir, d, f) + '";\n');
+					fs.appendFileSync(component, `@import "${dir.join('/')}/${d}/${f}";\n`);
 				}
 			});
 		}
 	});
 }
 
-function transpileComponents(dir, cb) {
+function transpileComponents(dir: string[], cb): void {
 	const component = 'components.scss';
 	deleteFile(component);
 	generateComponentsStyles(dir, component);
-	transpileFile('components.scss', 'components', false, () => {
+	transpileFile(['components.scss'], 'components', false, () => {
 		deleteFile(component);
 		cb();
 	});

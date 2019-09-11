@@ -110,6 +110,15 @@ code, pre {
 	color: $brand-default;
 }
 
+pre {
+	overflow: auto;
+
+	code {
+		border: none;
+		padding: 0;
+	}
+}
+
 kbd {
 	background-color: $brand-default;
 	color: $gray-lighter;

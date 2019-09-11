@@ -8,118 +8,80 @@
 # [4.0.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.0) (2019-08-14)
 
 ## Bug Fixes
-* **master-layout:** fix offcanvas animation ([4063da7](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/4063da7))
-* **master-layout:** reduce offcanvas header height if header is collapsed ([6143bc3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/6143bc3))
-* **master-layout:** set `default-layout` to offcanvas content ([a330416](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/a330416))
-* **master-layout:** use white color for headings within offcanvas ([6e20249](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/6e20249))
-* **themes:** Frutiger is enabled by default ([610d69b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/610d69b))
-
-## BREAKING CHANGES
-* **toolchain:** `angular.json ` has to be patched, under `<projectName>.architect.build.options.assets`
-	* change `"input": "node_modules/oblique-reactive/styles/images"` into `"node_modules/@oblique/oblique/styles"`
-	* change `"output": "/assets/styles/images"` into `"output": "/assets/styles"`
-
-# [4.0.0-RC.4](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.0-RC.4) (2019-08-13)
-
-## Bug Fixes
+* **master-layout:** fix `off-canvas` animation ([4063da7](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/4063da7))
+* **master-layout:** reduce `off-canvas` header height if header is collapsed ([6143bc3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/6143bc3))
+* **master-layout:** set `default-layout` to `off-canvas` content ([a330416](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/a330416))
+* **master-layout:** use white color for headings within `off-canvas` ([6e20249](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/6e20249))
+* **master-layout:** fix accessibility quick links ([0083863](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0083863))
+* **master-layout:** no `overflow` on main navigation ([47e9841](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/47e9841))
+* **master-layout:** timing issue with `application-scrolling` ([0e42337](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0e42337))
+* **master-layout:** close main navigation menu on `Escape` ([b8c61ba](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b8c61ba))
+* **master-layout:** close main navigation menu on outside click ([70a4714](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/70a4714))
+* **master-layout:** main navigation menu is active when sub-route is active ([601dd2f](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/601dd2f))
 * **toggle:** remove leading whitespace in class list ([8df4c32](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/8df4c32))
-
-## Code Refactoring
-* **package:** rename to `@oblique/oblique` ([10095d5](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/10095d5))
-* **themes:** change `warning` colors ([a794b53](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/a794b53))
-* **themes:** rename `brand-danger` into `brand-error` ([61b473a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/61b473a))
-* **toggle:** rename `activate` function into `toggle` ([3510496](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/3510496))
+* **search-box:** fix bootstrap rendering ([c4f924d](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c4f924d))
+* **search-box:** mouse up and down events are not propagated ([076fb5a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/076fb5a))
+* **themes:** add `nav-tabs` component ([3e529b9](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/3e529b9))
+* **themes:** fix stepper with material ([d5bfc58](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d5bfc58))
+* **multiselect:** correctly pass prepend to filter-box ([92143f4](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/92143f4))
+* **multiselect:** correctly handle `disable` state ([b434daf](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b434daf))
+* **packaging:** `test_helpers` is correctly copied ([33d3c0f](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/33d3c0f))
 
 ## Features
+* **master-layout:** add `scrolled` event to provide scroll offset ([959e8b1](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/959e8b1))
+* **master-layout:** navigation is displayed with multiple columns with full width ([1099780](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/1099780))
+* **master-layout:** full width main navigation is disabled by default ([c30ad65](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c30ad65))
+* **master-layout:** use lighter grey on submenu item hover ([80d5e56](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/80d5e56))
 * **notification:** only `oblique` chanel has `position: fixed` ([8143f54](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/8143f54))
+* **notification:** add `id`s on notification's elements ([b68d340](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b68d340))
+* **notification:** remove `default` notification ([0a54f3e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0a54f3e))
 * **themes:** add `$brand-info` colors and use them ([c2e02f4](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/c2e02f4))
-* **themes:** add `theme` service to take care of themes and font ([a76fc20](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/a76fc20))
+* **themes:** add `theme` service to take care of themes and fonts ([a76fc20](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/a76fc20))
 * **themes:** add all CI/CD colors and use them ([e4a540b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/e4a540b))
 * **themes:** redefine material color palette with oblique colors ([f91087c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/f91087c))
 * **themes:** redefine typography ([35a3727](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/35a3727))
-* **themes:** replace OpenSans with Frutiger and Arial as fallback ([00c839d](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/00c839d))
-* **toggle:** can be activated by default with `active` input ([e092e6c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/e092e6c))
-
-## BREAKING CHANGES
-* **themes:** `MaterialService` has been replace by `ThemeService`
-* **themes:** `MATERIAL_DESIGN_DISABLE` token has been replaced by `OBLIQUE_THEME`
-* **themes:** `$brand-warning-semilight` has been removed, use `$brand-warning-light` instead
-* **themes:** `$brand-danger` SCSS variable has been renamed into `$brand-error`
-* **package:** Oblique has been renamed `@oblique/oblique` to be consistent with angular naming. It means that all imports have to be updated and that the package is available under its new name
-* **toggle:** `activate` function has been renamed into `toggle`
-
-
-# [4.0.0-RC.3](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.0-RC.3) (2019-07-26)
-
-## Bug Fixes
-* **master-layout:** fix accessibility quick links ([0083863](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0083863))
-
-## Code Refactoring
-* **package:** package has been fully renamed into `oblique-bit` 
-
-
-# [4.0.0-RC.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.0-RC.2) (2019-07-25)
-
-## Bug Fixes
-* **master-layout:** no `overflow` on main navigation ([47e9841](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/47e9841))
-* **master-layout:** timing issue with `application-scrolling` ([0e42337](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0e42337))
-* **search-box:** fix bootstrap rendering ([c4f924d](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c4f924d))
-* **themes:** add `nav-tabs` component ([3e529b9](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/3e529b9))
-* **themes:** fix stepper with material ([d5bfc58](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d5bfc58))
-
-
-## Code Refactoring
-* **datepicker:** remove `DatePickerModule` form `ObliqueModule` ([a8383e9](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/a8383e9))
-* **master-layout:** remove `ScrollDetectionDirective` ([3c7af50](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/3c7af50))
-* **master-layout:** rename `scrolled` event into `isScrolled` ([b0a975a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b0a975a))
-* **unsaved-changes:** split code into 2 modules ([02df9ae](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/02df9ae))
-
-## Features
-* **column-layout:** vertically center the toggle ([c9e1535](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c9e1535))
-* **dropdown:** add `dropdown` component ([7629d5a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7629d5a))
-* **master-layout:** add `scrolled` event to provide scroll offset ([959e8b1](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/959e8b1))
-* **themes:** add `hover-effect` to `oblique-utilities` ([4279e9b](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/4279e9b))
-* **themes:** improve typography definitions ([9f376b2](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/9f376b2))
+* **themes:** replace `OpenSans` with `Frutiger` and `Arial` as fallback ([00c839d](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/00c839d))
 * **themes:** style `table` according to CI/CD ([2712f1e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/2712f1e))
-
-## BREAKING CHANGES
-* **unsaved-changes:** all code related to Bootstrap's tabset has been moved into a new `UnsavedChangesTabsModule` module which has to be imported separately from `ObliqueModule`.
-* **unsaved-changes:** to Monitor changes on Bootstrap's Tabset, `orUnsavedChangesTabs` directive has to be used instead of `orUnsavedChanges`
-* **datepicker:** `DatePickerModule` has to be imported separately from `ObliqueModule`
-* **master-layout:** `ScrollEvents.scrolled` has been renamed into `ScrollEvents.isScrolled`
-* **master-layout:** `ScrollDetectionDirective` has been removed with no replacement
-
-
-# [4.0.0-RC.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.0-RC.1) (2019-07-19)
-
-## Bug Fixes
-* **master-layout:** use lighter grey on submenu item hover ([80d5e56](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/80d5e56))
-* **multiselect:** correctly pass prepend to filter-box ([92143f4](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/92143f4))
-* **search-box:** mouse up and down events are not propagated ([076fb5a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/076fb5a))
-
-## Code Refactoring
-* **http-interceptor:** refactor according to notification changes ([c3e214a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c3e214a))
-* **master-layout:** separate MasterLayoutService into multiple files ([76a84f1](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/76a84f1))
-* **notification:** simplify notification signatures ([6febfbe](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/6febfbe))
-* **toggle:** use @Input() instead of classes for toggle direction ([686f8d7](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/686f8d7))
-* **package:** `oblique-reactive` has been renamed into `oblique` but is distributed under `oblique-bit` ([12b9a99](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/12b9a99))
-
-## Features
-* **master-layout:** use multiple column with full width navigation ([1099780](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/1099780))
-* **master-layout:** full width main navigation is disabled by default ([c30ad65](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c30ad65))
-* **multiselect:** add `id`s on multiselect's elements ([0ee04c1](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0ee04c1))
-* **notification:** add `id`s on notification's elements ([b68d340](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b68d340))
-* **notification:** remove `default` notification ([0a54f3e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0a54f3e))
 * **themes:** adjust colors ([72d25a0](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/72d25a0))
 * **themes:** provide minified css files in the dist ([80e3362](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/80e3362))
 * **themes:** separate `oblique-bootstrap` from `oblique-core` ([8dcd1b8](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/8dcd1b8))
 * **themes:** extract alert into a standalone css component ([bbab6cc](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/bbab6cc))
 * **themes:** remove callout css component ([23be35e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/23be35e))
 * **themes:** add `oblique-utilities` ([82c5a3e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/82c5a3e))
+* **themes:** add `angular material` variant  ([cce3b02](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/cce3b02))
+* **themes:** force `outline` input variant for all Oblique modules ([fb28717](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/fb28717))
+* **themes:** `OBLIQUE_THEME` can be used to change the main theme ([a76fc208c78](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/a76fc208c78))
+* **themes:** `FRUTIGER` can be used to disable `frutiger` font ([a76fc208c78](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/a76fc208c78))
+* **multiselect:** add `id`s on multiselect's elements ([0ee04c1](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0ee04c1))
+* **toggle:** can be activated by default with `active` input ([e092e6c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/e092e6c))
 * **toggle:** remove `toggle-collapse` class ([462c9c9](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/462c9c9))
+* **dropdown:** add `dropdown` component ([7629d5a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7629d5a))
+* **column-layout:** vertically center the toggle ([c9e1535](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c9e1535))
+* **filter-box:** add `angular material` variant ([cd7c148](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/cd7c148))
 
-### BREAKING CHANGES
-* **package:** `oblique-reactive` has been renamed into `oblique` but is distributed under `oblique-bit`, this means all imports have to be adapted
+## Code Refactoring
+* **package:** rename library to `@oblique/oblique` ([10095d5](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/10095d5))
+* **themes:** rename `brand-danger` into `brand-error` ([61b473a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/61b473a))
+* **datepicker:** remove `DatePickerModule` form `ObliqueModule` ([a8383e9](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/a8383e9))
+* **toggle:** rename `activate` function into `toggle` ([3510496](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/3510496))
+* **toggle:** use `@Input` instead of classes for toggle direction ([686f8d7](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/686f8d7))
+* **master-layout:** remove `ScrollDetectionDirective` ([3c7af50](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/3c7af50))
+* **master-layout:** rename `scrolled` event into `isScrolled` ([b0a975a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b0a975a))
+* **master-layout:** separate MasterLayoutService into multiple files ([76a84f1](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/76a84f1))
+* **unsaved-changes:** split code into 2 modules ([02df9ae](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/02df9ae))
+* **notification:** simplify notification signatures ([6febfbe](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/6febfbe))
+* **http-interceptor:** refactor according to notification changes ([c3e214a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c3e214a))
+
+## BREAKING CHANGES
+* **toolchain:** `angular.json ` has to be patched, under `<projectName>.architect.build.options.assets`
+	* change `"input": "node_modules/oblique-reactive/styles/images"` into `"node_modules/@oblique/oblique/styles"`
+	* change `"output": "/assets/styles/images"` into `"output": "/assets/styles"`
+* **package:** Oblique has been renamed `@oblique/oblique` to be consistent with angular naming. It means that all imports have to be updated and that the package is available under its new name
+* **unsaved-changes:** all code related to Bootstrap's `tabset` has been moved into a new `UnsavedChangesTabsModule` module which has to be imported separately from `ObliqueModule`.
+* **unsaved-changes:** to Monitor changes on Bootstrap's `tabset`, `orUnsavedChangesTabs` directive has to be used instead of `orUnsavedChanges`
+* **datepicker:** `DatePickerModule` has to be imported separately from `ObliqueModule`
+* **master-layout:** `ScrollEvents.scrolled` has been renamed into `ScrollEvents.isScrolled`
+* **master-layout:** `ScrollDetectionDirective` has been removed with no replacement
 * **master-layout:** all observables defined in `MasterLayoutService` have been moved into the relevant service and grouped under the `configEvents` observable in their respective service. This observable provides an object with a `name` (specified in parenthesis below) and a boolean `value`:
 * **master-layout:** following observables have been replaced by the `configEvents` observable of `MasterLayoutComponentService`
 	* `menuCollapsedChanged` (`MasterLayoutEventValues.COLLAPSE`)
@@ -182,6 +144,7 @@
 * **notification:**  `default` notification has been removed
 * **notification:**  `info`, `success`, `warning`, `error` and `send` functions have new signature
 * **notification:**  `broadcast` function is now private, use `send` instead
+* **toggle:** `activate` function has been renamed into `toggle`
 * **toggle:**  `toggle` class is set automatically by the directive and shouldn't be manually specified
 * **toggle:**  `toggle-*-*` direction classes have been removed in favor of values passed to the `orToggle` directive:
 	* `down-up` (default)
@@ -196,10 +159,11 @@
 	* `left-right`
 	* `left-down`
 	* `left-up`
+* **themes:** `$brand-warning-semilight` has been removed, use `$brand-warning-light` instead
+* **themes:** `$brand-danger` SCSS variable has been renamed into `$brand-error`
 * **themes:** `callout` have been removed in favor of `alert`
-* **themes:**  a theme `oblique-material` or `oblique-bootstrsap` has to be imported either in `angular.json`or in the project main stylesheet, usually `styles.scss`
-* **themes:**  without importing  `oblique-bootstrap`, Oblique does not provide bootstrap's SCSS variables anymore
-* **themes:**   following CSS classes have been dropped with no replacement:
+* **themes:**  default material theme does not provide bootstrap's SCSS variables anymore
+* **themes:**  following CSS classes have been dropped with no replacement:
 	* `smaller`
 	* `text-description`
 	* `page-header`
@@ -218,42 +182,17 @@
 	* `reveal`
 	* `stacks`
 	* `tile`
-* **themes:**   almost all oblique mixins have either been removed or modified
-* **themes:**   following Oblique CSS components are only available with `oblique-bootstrap` theme:
+* **themes:** almost all oblique mixins have either been removed or modified
+* **themes:** following Oblique CSS components are only available with `bootstrap` theme:
 	* `badge`
 	* `button`
 	* `dropdown`
 	* `form-check`
 	* `input-group`
 	* `table`
-* **themes:** Oblique CSS is imported form `node_modules/oblique-reactive/styles/scss/oblique-core.scss` instead of
-`node_modules/oblique-reactive/styles/css/oblique-ui.css`
-
-
-# [4.0.0-Beta.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.0-Beta.2) (2019-04-30)
-
-## Bug Fixes
-* **master-layout:** close main navigation menu on `Escape` ([b8c61ba](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b8c61ba))
-* **master-layout:** close main navigation menu on outside click ([70a4714](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/70a4714))
-* **master-layout:** main navigation menu is active when sub-route is active ([601dd2f](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/601dd2f))
-* **multiselect:** correctly handle `disable` state ([b434daf](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b434daf))
-* **packaging:** `test_helpers` is correctly copied ([33d3c0f](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/33d3c0f))
-
-## Features
-* **material:** use Roboto as base font ([233c902](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/233c902))
-
-
-# [4.0.0-Beta.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.0-Beta.1) (2019-04-15)
-
-## Features
-* **filter-box:** add `angular material` variant ([cd7c148](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/cd7c148))
-* **material:** add `angular material` variant with Roboto font ([cce3b02](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/cce3b02))
-* **material:** force `outline` variants for all Oblique modules ([fb28717](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/fb28717))
-
-## BREAKING CHANGES
-* **filter-box:** 
-    * prefixed content cannot be projected with `.input-group-prepend` anymore. Use `#prepend` instead.
-    * suffixed content cannot be projected with `.input-group-append` anymore. Use `#append` instead.
+* **themes:** Oblique CSS is imported form `node_modules/oblique-reactive/styles/scss/oblique-core.scss` instead of `node_modules/oblique-reactive/styles/css/oblique-ui.css`
+* **filter-box:** prefixed content cannot be projected with `.input-group-prepend` anymore. Use `#prepend` instead.
+* **filter-box:** suffixed content cannot be projected with `.input-group-append` anymore. Use `#append` instead.
 
 <a name="3.1.1"></a>
 # [3.1.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=3.1.1) (2019-04-29)
@@ -449,136 +388,64 @@
 * **Angular:** 6.0.9
 * **ObliqueUI:** 2.0.0
 * **Bootstrap:** 4.1.2
+* **ng-bootstrap:** 2.2.0
+* **ngx-translate:** 9.0.2
+* **ajv:** 6.5.2
 * **rxjs:** 6.2.2
+* **zone.js:** 0.8.26
 
 ## Features
 * **http:** add a custom Http interceptor for Oblique-based projects ([1ab2986](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/1ab2986))
+* **spinner:** SpinnerComponent now supports channels in order to handle multiple spinners within the same page ([506e263](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/506e263))
+* **multiselect:** MultiselectComponent is now exported as `orMultiselect` ([7d6cc9a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7d6cc9a))
+* **multiselect:** dropped the input `[settings]`, every property of `MultiselectConfig` is now an input of `MuliselectComponent`. This ensures, that we can change the settings at runtime
+* **toolchain:** PhantomJS has been removed in favor of ChromeHeadless (FirefoxHeadless under Windows as per privileges issues) ([0c34dce](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0c34dce))
+* **toolchain:** add npm script & Gulp task for npm linking and watching distribution files ([8ed5c89](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/8ed5c89))
+* **toolchain** Enable NodeJS 8+ & npm 5+ support.
+* **orNavTreeFakeFocus:** add fake focus for `orNavTree` ([ea12cfb](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/ea12cfb))
+* **text-control-clear:** add a `TextControlClearDirective` based on ObliqueUI `.text-control-clear` for clearing input controls ([c090f6e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c090f6e))
+* **footer:** add configuration parameter for enabling small footer variant ([b399e26](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b399e26))
+* **footer:** add Footer component for layout customization ([1bcb191](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/1bcb191))
+* **number-format:** add directive ([9a364c5](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/9a364c5))
+* **unsubscribe:** add `Unsubscribable` class to unsubscribe form `Observable` ([d20d4bd](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d20d4bd))
+* **column-layout:** dispose content within collapsible/expansible columns using `ColumnLayoutComponent` (or `ColumnPanelDirective` & `ColumnPanelDirective`) ([4348d51](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/4348d51))
+* **filterBox:** add `size`, `disabled` and `readonly` attributes ([847d3a7](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/847d3a7))
+* **formControlState:** add reactive form sample ([226d0d5](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/226d0d5))
+* **schema-validation** add `getValidator` function for reactive forms ([d3ff5f3](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d3ff5f3))
+* **schema-validation** add reactive form to the showcase ([1e4afde](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/1e4afde))
+* **schema-validation** move Draft06 transformation into a decorator ([75a8b8b](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/75a8b8b))
+* **schema-validation** `SchemaValidationDirective` now accepts JSON schema draft 06 and partially drafts 04 and 03 as well.
+* **toggle:** add `ToggleDirective` for icon toggle ([dc6f8e8](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/dc6f8e8))
+* **unsavedChanges:** expose `discardChanges` function ([3e84226](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/3e84226))
+* **master-layout:** provide a `noNavigation` parameter for collapsing the application navigation ([7ed28e5](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7ed28e5))
+* **master-layout:** add a `MasterLayoutHeaderToggleDirective` for toggling the application header ([299a55b](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/299a55b))
+* **master-layout** `MasterLayoutHeaderDirective` & `MasterLayoutHeaderService` added for controlling the application header.
+* **master-layout** `MasterLayoutNavigation`, `MasterLayoutNavigationItem`, `MasterLayoutNavigationToggle` & `MasterLayoutNavigation` added for controlling the application navigation.
+* **master-layout** `ScrollDetectionDirective` & `ScrollingConfig` added for controlling the application scroll.
+* **notification:** can pass parameters to title and message translations ([d781e19](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d781e19))
+* **notification:** use Angular animations for transitions (_enter_ & _leave_).
+* **notification:** can now be configured using `NotificationConfig` for default notification parameters (`channel`, `sticky`, `timeout`).
+* **document-meta** title `suffix` is now translated as well.
+* **document-meta** page `title`, `suffix` and `description` are now translated on locale change.
+* **filter-box**`FilterBoxComponent` added to building search pattern-like components.
+* **form-control** `control-mandatory` CSS class is added if `required` attribute is set on form control.
 
 ## Bug Fixes
 * **form-control-state:** fix `control-mandatory` class ([33c916d](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/33c916d))
-* **test:** ensure `--prod` parameter is properly propagated to `ng test` ([fd42fbc](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/fd42fbc))
-* **test:** ensure `prebuild` npm script is executed during `ci-build` ([482a4b6](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/482a4b6))
-
-
-<a name="2.0.0-RC.5"></a>
-# [2.0.0-RC.5](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.5) (2018-07-04)
-
-## Dependencies updates
-* **Angular:** 6.0.7
-* **ObliqueUI:** 2.0.0-RC.5
-* **Bootstrap:** 4.1.1
-* **ng-bootstrap:** 2.2.0
-* **ajv:** 6.5.2
-* **rxjs:** 6.2.1
-
-## Features
-* **spinner:** SpinnerComponent now supports channels in order to handle multiple spinners within the same page ([506e263](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/506e263))
-* **multiselect:** MultiselectComponent is now exported as `orMultiselect` ([7d6cc9a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7d6cc9a))
-* **tests:** PhantomJS has been removed in favor of ChromeHeadless (FirefoxHeadless under Windows as per privileges issues) ([0c34dce](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0c34dce))
-
-## Bug Fixes
+* **toolchain:** ensure `--prod` parameter is properly propagated to `ng test` ([fd42fbc](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/fd42fbc))
+* **toolchain:** ensure `prebuild` npm script is executed during `ci-build` ([482a4b6](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/482a4b6))
+* **toolchain:** workaround for resolving Karma timeout issues on Windows (cf. https://github.com/karma-runner/karma-chrome-launcher/issues/154, https://github.com/karma-runner/karma/issues/2652) ([5526c37](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/5526c37))
 * **datepicker-i18n:** fix german translation for short months labels ([f259a5d](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f259a5d)), closes [#579](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/issues/579)
 * **navigable:** events are now successfully registered on new added navigables (which may be created by adding new data models) ([14c7121](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/14c7121))
-* **tests:** workaround for resolving Karma timeout issues on Windows (cf. https://github.com/karma-runner/karma-chrome-launcher/issues/154, https://github.com/karma-runner/karma/issues/2652) ([5526c37](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/5526c37))
-
-## BREAKING CHANGES
-* **navigable:**
-	- `NavigableGroupComponent` is now exported as `orNavigableGroup`
-	- `NavigableDirective` is now exported as `orNavigable`
-
-
-<a name="2.0.0-RC.4"></a>
-# [2.0.0-RC.4](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.4) (2018-04-17)
-
-## Dependencies updates
-* **ObliqueUI:** 2.0.0-RC.4
-* **Bootstrap:** 4.1.0
-* **Angular:** 5.2.10
-* **ng-bootstrap:** 1.1.2
-* **ajv:** 6.3.0
-* **rxjs:** 5.5.10
-* **zone.js:** 0.8.26
-
-(see [package.json](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/package.json?at=2.0.0-RC.2-1) for the full list of dependencies)
-
-## Features
-* **orNavTreeFakeFocus:** add fake focus for `orNavTree` ([ea12cfb](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/ea12cfb))
-* **master-layout:** provide a `noNavigation` parameter for collapsing the application navigation ([7ed28e5](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7ed28e5))
-* **text-control-clear:** add a `TextControlClearDirective` based on ObliqueUI `.text-control-clear` for clearing input controls ([c090f6e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c090f6e))
-
-## Bug Fixes
 * **MasterLayoutNavigationMenuDirective:** (MS Edge) access `HTMLElement.style.cssText` instead of `HTMLElement.style` to avoid *Assignment to read-only properties is not allowed in strict mode* runtime errors ([eb689de](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/eb689de))
 * **NavTreeFakeFocusDirective:** (MS Edge | IE) use `KeyboardEvent.keyCode` instead of `KeyboardEvent.key` for browser compatibility ([f41daa7](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f41daa7))
 * **orMasterLayoutHeaderToggle:** Fix lint error ([f465266](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f465266))
-
-## Code Refactoring
-* **filter-box:** use the new `text-control` ObliqueUI component for clearing filter box control (& refactor other component to use `OrFilterBox`) ([ea3d02e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/ea3d02e))
-* **orNavTree:** use `ngTemplate` instead of recursive component ([b8e9e59](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b8e9e59))
-* **orNavTreeFakeFocus:** do not change CSS resources at runtime, reorganize source code and fix some minor issues ([f8882c7](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f8882c7))
-
-
-<a name="2.0.0-RC.3-1"></a>
-# [2.0.0-RC.3-1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.3-1) (2018-02-08)
-
-## Dependencies updates
-* **ObliqueUI:** 2.0.0-RC.3-1
-* **Bootstrap:** 4.0.0
-* **Angular:** 5.2.3
-* **ng-bootstrap:** 1.0.0
-* **ngx-translate:** 9.1.1
-* **zone.js:** 0.8.20
-
-## Bug Fixes
 * **notification:** do not show default title if a title is provided ([3e6810a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/3e6810a))
-
-## Features
-* **footer:**
-	- add configuration parameter for enabling small footer variant ([b399e26](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b399e26))
-	- add Footer component for layout customization ([1bcb191](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/1bcb191))
-* **master-layout:** add a `MasterLayoutHeaderToggleDirective` for toggling the application header ([299a55b](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/299a55b))
-* **number-format:** add directive ([9a364c5](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/9a364c5))
-
-## Code Refactoring
-* **toolchain:** migrate to Gulp 4 ([788c987](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/788c987))
-
-
-<a name="2.0.0-RC.3"></a>
-# [2.0.0-RC.3](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.3) (2018-01-09)
-
-## Dependencies updates
-* **ObliqueUI:** 2.0.0-RC.3
-* **Bootstrap:** 4.0.0-beta.3
-* **Angular:** 5.1.3
-* **ng-bootstrap:** 1.0.0-beta.9
-* **ngx-translate:** 9.0.2
-* **rxjs:** 5.5.6
-* **ajv:** 6.0.0
-
-## Features
-* **notification:** can pass parameters to title and message translations ([d781e19](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d781e19))
-* **unsubscribe:** add `Unsubscribable` class to unsubscribe form `Observable` ([d20d4bd](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d20d4bd))
-
-## Bug Fixes
+* **notification:** add `alert-default` class to default alerts ([dac70b1](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/dac70b1))
 * **schema-validation:** `SchemaValidationModule` now provides `schemaValidationService` ([acbc7f9](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/acbc7f9))
 * **AoT:** avoid lambda function on providers ([8a90825](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/8a90825))
 * **navigator:** fix routing to module ([74e2778](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/74e2778))
-* **notification:** add `alert-default` class to default alerts ([dac70b1](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/dac70b1))
 * **observable:** unsubscribe from all observables ([95b4b7a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/95b4b7a))
-
-
-<a name="2.0.0-RC.2-1"></a>
-# [2.0.0-RC.2-1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.2-1) (2017-11-01)
-
-## Dependencies updates
-* **ObliqueUI:** 2.0.0-RC.2-1
-* **Bootstrap:** 4.0.0-beta.2
-* **Angular:** 4.4.6
-* **rxjs:** 5.5.1
-* **ajv:** 5.3.0
-
-(see [package.json](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/package.json?at=2.0.0-RC.2-1) for the full list of dependencies)
-
-## Bug Fixes
 * **formControlState:**
 	- `name` attribute is not mandatory. Either `ngModel`, `ngModelChange` or `formControlName` is ([7abce66](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/7abce66))
 	- for reactive forms, allow `pristineValidation` and set `control-mandatory` on page initialisation ([19d5f5c](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/19d5f5c))
@@ -588,63 +455,19 @@
 	- prevent multiple compile with same schema ([84c9dac](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/84c9dac))
 
 ## Code Refactoring
+* **filter-box:** use the new `text-control` ObliqueUI component for clearing filter box control (& refactor other component to use `OrFilterBox`) ([ea3d02e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/ea3d02e))
+* **orNavTree:** use `ngTemplate` instead of recursive component ([b8e9e59](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b8e9e59))
+* **orNavTreeFakeFocus:** do not change CSS resources at runtime, reorganize source code and fix some minor issues ([f8882c7](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f8882c7))
+* **toolchain:** migrate to Gulp 4 ([788c987](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/788c987))
 * **navigator:** rename `orNavigator` into `or-navigator` ([0cb9f47](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0cb9f47))
 * **scss:** remove module SCSS resources and cleanup showcase ones ([d2f3383](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d2f3383))
 
-## Features
-* **column-layout:** dispose content within collapsible/expansible columns using `ColumnLayoutComponent` (or `ColumnPanelDirective` & `ColumnPanelDirective`) ([4348d51](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/4348d51))
-* **filterBox:** add `size`, `disabled` and `readonly` attributes ([847d3a7](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/847d3a7))
-* **formControlState:** add reactive form sample ([226d0d5](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/226d0d5))
-* **schemaValidation:**
-	- add `getValidator` function for reactive forms ([d3ff5f3](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d3ff5f3))
-	- add reactive form to the showcase ([1e4afde](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/1e4afde))
-	- move Draft06 transformation into a decorator ([75a8b8b](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/75a8b8b))
-* **toggle:** add `ToggleDirective` for icon toggle ([dc6f8e8](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/dc6f8e8))
-* **toolchain:** add npm script & Gulp task for npm linking and watching distribution files ([8ed5c89](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/8ed5c89))
-* **unsavedChangesService:** expose `discardChanges` function ([3e84226](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/3e84226))
-
 ## BREAKING CHANGES
+* **navigable:**
+	- `NavigableGroupComponent` is now exported as `orNavigableGroup`
+	- `NavigableDirective` is now exported as `orNavigable`
 * **navigator:** rename `orNavigator` into `or-navigator`
 * **scss:** remove any import of ObliqueReactive CSS styles (mainly in your Angular CLI configuration) as they are now bundled with components.
-
-
-<a name="2.0.0-RC.2"></a>
-# [2.0.0-RC.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.2) (2017-08-04)
-
-## Dependencies updates
-* **ObliqueUI:** 2.0.0-RC.2
-* **jQuery:** 3.2.1
-* **Bootstrap:** 4.0.0-beta
-* **Angular:** 4.4.3
-* **ng-bootstrap:** 1.0.0-beta.5
-* **ngx-translate:** 8.0.0
-* **rxjs:** 5.4.3
-
-(see [package.json](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/package.json?at=2.0.0-RC.2) for the full list of dependencies)
-
-## Features
-* **toolchain**
-	- Enable NodeJS 8+ & npm 5+ support.
-* **master-layout**
-	- `MasterLayoutHeaderDirective` & `MasterLayoutHeaderService` added for controlling the application header.
-	- `MasterLayoutNavigation`, `MasterLayoutNavigationItem`, `MasterLayoutNavigationToggle` & `MasterLayoutNavigation` added for controlling the application navigation.
-	- `ScrollDetectionDirective` & `ScrollingConfig` added for controlling the application scroll.
-* **notification**
-	- Notifications now use Angular animations for transitions (_enter_ & _leave_).
-	- Notifications can now be configured using `NotificationConfig` for default notification parameters (`channel`, `sticky`, `timeout`).
-* **document-meta**
-	- Title `suffix` is now translated as well.
-	- Page `title`, `suffix` and `description` are now translated on locale change.
-* **filter-box**
-	- `FilterBoxComponent` added to building search pattern-like components.
-* **form-control**
-	- `control-mandatory` CSS class is added if `required` attribute is set on form control.
-* **schema-validation**
-	- `SchemaValidationDirective` now accepts JSON schema draft 06 and partially drafts 04 and 03 as well.
-* **multiselect:**
-	- dropped the input `[settings]`, every property of `MultiselectConfig` is now an input of `MuliselectComponent`. This ensures, that we can change the settings at runtime
-
-## BREAKING CHANGES
 * **Webpack**:
 	- ObliqueUI CSS & images folders are now located directly on the root of the dependency module instead of the `dist/` folder. These references should be adapted on your [Angular CLI](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/.angular-cli.json?at=2.0.0-RC.2) configuration.
 	- ObliqueUI JavaScript resources are no more required to run ObliqueReactive-based applications. These references should be removed from the [Angular CLI](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse/.angular-cli.json?at=2.0.0-RC.2) configuration.
@@ -655,23 +478,7 @@
 	* You need to include an animation strategy module in your app as some ObliqueReactive components are using Angular animations. Simply import `BrowserAnimationsModule` (or alternatively `NoopAnimationsModule` if you prefer to disable animations) in your `app-module.ts`.
 * **multiselect:**
 	- If you used `[settings]` of `MultiselectComponent` you now have to bind every config value separately.
-
-
-<a name="2.0.0-RC.1"></a>
-# [2.0.0-RC.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=2.0.0-RC.1) (2017-06-23)
-
-## Dependencies updates
-* **ObliqueUI:** 2.0.0-RC.1
-* **jQuery:** 3.2.1
-* **Bootstrap:** 4.0.0-alpha.6
-* **Angular:** 4.2.4
-* **ng-bootstrap:** 1.0.0-alpha.26
-* **ngx-translate:** 7.0.0
-* **rxjs:** 5.4.1
-
-## BREAKING CHANGES
-ObliqueReactive has been migrated to Angular 4.
-This of course breaks all compatibility to any previous release of ObliqueReactive. 
+* **toolchain:** ObliqueReactive has been migrated to Angular 4. This of course breaks all compatibility to any previous release of ObliqueReactive. 
 
 
 <a name="1.5.0"></a>
