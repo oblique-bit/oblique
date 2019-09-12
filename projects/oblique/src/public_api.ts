@@ -70,3 +70,4 @@ export {UnsavedChangesTabsDirective, UnsavedChangesTabsModule, UnsavedChangesTab
 export {Unsubscribable} from './lib/unsubscribe.class';
 export {ObliqueModule} from './lib/oblique.module';
 export {ThemeService, FRUTIGER, THEMES, OBLIQUE_THEME} from './lib/theme.service';
+export {createTranslateLoader} from './lib/utilities';
