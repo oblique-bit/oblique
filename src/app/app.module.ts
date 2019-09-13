@@ -5,6 +5,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
 import {NgbDatepickerConfig, NgbModule, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule} from '@ngx-translate/core';
 
@@ -71,6 +72,7 @@ import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-in
 		MasterLayoutModule,
 		MatFormFieldModule,
 		MatInputModule,
+		MatCardModule,
 		TextControlClearModule
 	],
 	providers: [
