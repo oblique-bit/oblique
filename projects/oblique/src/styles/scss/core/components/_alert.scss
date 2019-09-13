@@ -4,6 +4,7 @@
 
 .alert {
 	@include alert-base();
+	margin-bottom: $spacing-default;
 
 	.alert-link {
 		color: $brand-default;
