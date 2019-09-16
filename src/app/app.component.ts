@@ -65,7 +65,8 @@ export class AppComponent {
 				{url: 'expansion-panel', label: 'Expansion Panel'},
 				{url: 'progress-bar', label: 'Progress bar'},
 				{url: 'slider', label: 'Slider'},
-				{url: 'table', label: 'Table'}
+				{url: 'table', label: 'Table'},
+				{url: 'tooltip', label: 'Tooltip'}
 			]
 		}
 	];

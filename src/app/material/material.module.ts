@@ -24,6 +24,7 @@ import {CdkTableModule} from '@angular/cdk/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
 import {ColumnLayoutModule, ObSelectableModule, TextControlClearModule} from 'oblique';
 import {CardComponent} from './card/card.component';
 import {ChipsComponent} from './chips/chips.component';
@@ -33,6 +34,8 @@ import {DialogComponent} from './dialog/dialog.component';
 import {ExampleDialogComponent} from './dialog/example-dialog/example-dialog.component';
 import {ExpansionPanelComponent} from './expansion-panel/expansion-panel.component';
 import {ProgressBarComponent} from './progress-bar/progress-bar.component';
+import {TableComponent} from './table/table.component';
+import {TooltipComponent} from './tooltip/tooltip.component';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: BadgeComponent},
@@ -43,6 +46,7 @@ const appRoutes: Routes = [
 	{path: 'progress-bar', component: ProgressBarComponent},
 	{path: 'slider', component: SliderComponent},
 	{path: 'table', component: TableComponent},
+	{path: 'tooltip', component: TooltipComponent},
 	{path: '', redirectTo: 'card', pathMatch: 'full'}
 ];
 
@@ -56,7 +60,8 @@ const appRoutes: Routes = [
 		ExpansionPanelComponent,
 		ProgressBarComponent,
 		SliderComponent,
-		TableComponent
+		TableComponent,
+		TooltipComponent
 	],
 	imports: [
 		CommonModule,
@@ -82,6 +87,7 @@ const appRoutes: Routes = [
 		MatPaginatorModule,
 		MatProgressBarModule,
 		MatRadioModule,
+		MatSelectModule,
 		MatSliderModule,
 		MatSlideToggleModule,
 		MatSortModule,
