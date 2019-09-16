@@ -6,6 +6,7 @@ import {BlockElementsComponent} from './block-elements/block-elements.component'
 import {InlineElementComponent} from './inline-element/inline-element.component';
 import {ListsComponent} from './lists/lists.component';
 import {PaletteComponent} from './palette/palette.component';
+import {TableComponent} from './table/table.component';
 
 @NgModule({
 	imports: [
@@ -16,6 +17,7 @@ import {PaletteComponent} from './palette/palette.component';
 			{path: 'inline', component: InlineElementComponent},
 			{path: 'lists', component: ListsComponent},
 			{path: 'palette', component: PaletteComponent},
+			{path: 'table', component: TableComponent},
 			{path: '', redirectTo: 'typography', pathMatch: 'full'}
 		])
 	],
@@ -24,6 +26,7 @@ import {PaletteComponent} from './palette/palette.component';
 		BlockElementsComponent,
 		InlineElementComponent,
 		ListsComponent,
+		TableComponent,
 		PaletteComponent
 	]
 })

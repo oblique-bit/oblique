@@ -19,6 +19,12 @@ import {MatOptionModule} from '@angular/material/core';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {CdkTableModule} from '@angular/cdk/table';
+import {MatSortModule} from '@angular/material/sort';
+import {MatTableModule} from '@angular/material/table';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {ColumnLayoutModule, ObSelectableModule, TextControlClearModule} from 'oblique';
 import {CardComponent} from './card/card.component';
 import {ChipsComponent} from './chips/chips.component';
 import {SliderComponent} from './slider/slider.component';
@@ -27,7 +33,6 @@ import {DialogComponent} from './dialog/dialog.component';
 import {ExampleDialogComponent} from './dialog/example-dialog/example-dialog.component';
 import {ExpansionPanelComponent} from './expansion-panel/expansion-panel.component';
 import {ProgressBarComponent} from './progress-bar/progress-bar.component';
-import {ColumnLayoutModule, ObSelectableModule} from 'oblique';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: BadgeComponent},
@@ -37,6 +42,7 @@ const appRoutes: Routes = [
 	{path: 'expansion-panel', component: ExpansionPanelComponent},
 	{path: 'progress-bar', component: ProgressBarComponent},
 	{path: 'slider', component: SliderComponent},
+	{path: 'table', component: TableComponent},
 	{path: '', redirectTo: 'card', pathMatch: 'full'}
 ];
 
@@ -49,11 +55,13 @@ const appRoutes: Routes = [
 		ExampleDialogComponent,
 		ExpansionPanelComponent,
 		ProgressBarComponent,
-		SliderComponent
+		SliderComponent,
+		TableComponent
 	],
 	imports: [
 		CommonModule,
 		ColumnLayoutModule,
+		TextControlClearModule,
 		ReactiveFormsModule,
 		ObSelectableModule,
 		FormsModule,
@@ -62,6 +70,7 @@ const appRoutes: Routes = [
 		MatBadgeModule,
 		MatButtonModule,
 		MatCardModule,
+		MatCheckboxModule,
 		MatChipsModule,
 		MatDialogModule,
 		MatExpansionModule,
@@ -70,11 +79,15 @@ const appRoutes: Routes = [
 		MatInputModule,
 		MatListModule,
 		MatOptionModule,
+		MatPaginatorModule,
 		MatProgressBarModule,
 		MatRadioModule,
 		MatSliderModule,
 		MatSlideToggleModule,
-		MatTooltipModule
+		MatSortModule,
+		MatTableModule,
+		MatTooltipModule,
+		CdkTableModule
 	]
 })
 export class MaterialModule {

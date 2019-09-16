@@ -47,6 +47,7 @@ export class AppComponent {
 				{url: 'block', label: 'Block elements'},
 				{url: 'inline', label: 'Inline elements'},
 				{url: 'lists', label: 'Lists'},
+				{url: 'table', label: 'HTML table'},
 				{url: 'palette', label: 'Palette'}
 			]
 		},
@@ -63,7 +64,8 @@ export class AppComponent {
 				{url: 'dialog', label: 'Dialog'},
 				{url: 'expansion-panel', label: 'Expansion Panel'},
 				{url: 'progress-bar', label: 'Progress bar'},
-				{url: 'slider', label: 'Slider'}
+				{url: 'slider', label: 'Slider'},
+				{url: 'table', label: 'Table'}
 			]
 		}
 	];
