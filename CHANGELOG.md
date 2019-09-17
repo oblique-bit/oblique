@@ -1,3 +1,30 @@
+# [4.0.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.2) (2019-09-17)
+
+## Bug Fixes
+* **datepicker:** export as `orDatePicker` ([bea3ab6](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/bea3ab6))
+* **dropdown:** fix `z-index` ([46d0d03](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/46d0d03))
+* **dropdown:** fix position with material design ([05d7eed](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/05d7eed))
+* **error-messages:** export as `orErrorMessages` ([cceec64](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/cceec64))
+* **form-control-state:** export as `orFormControlState` ([f4e6353](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/f4e6353))
+* **master-layout:** fix double scrollbar ([32d16fe](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/32d16fe))
+* **master-layout:** fix flickering upon scrolling ([9c80b4b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/9c80b4b))
+* **master-layout:** fix layout with `hasScrollTransition` disabled ([279a1ed](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/279a1ed))
+* **master-layout:** footer service monitor footer `hasScrollTransition` property ([1f24a99](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/1f24a99))
+* **master-layout:** show off-canvas backdrop below layout collapse ([9f0fef3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/9f0fef3))
+* **master-layout:** use initial value of `hasScrollTransition` ([9bc4da7](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/9bc4da7))
+* **notification:** do not use `KeyWithParams` interface and deprecate it ([b141570](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/b141570))
+* **theme:** add `margin-bottom` to alert ([aa8d175](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/aa8d175))
+* **theme:** add bootstrap's grid to `oblique-utilities` ([6c97ef6](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/6c97ef6))
+* **theme:** add scroll on `pre` element ([0506d5a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/0506d5a))
+* **theme:** correctly read `FRUTIGER` value ([9864fd5](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/9864fd5))
+* **theme:** do not add border and padding to `code` within `pre` ([becfa83](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/becfa83))
+* **themes:** add fontawesome 5 font files ([7f00f15](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/7f00f15))
+* **themes:** add fontawesome SCSS files ([2915181](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/2915181))
+* **themes:** remove fontawesome 4 font files ([d6ddd04](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/d6ddd04))
+* **toggle:** can place toggle before or after ([f609400](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/f609400))
+* **toolchain:** fix `dist` on Windows ([1fe07f9](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/1fe07f9))
+
+
 ## [4.0.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.1) (2019-08-15)
 
 ## Bug Fixes
