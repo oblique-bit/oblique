@@ -18,10 +18,13 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatOptionModule} from '@angular/material/core';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatDialogModule} from '@angular/material/dialog';
 import {CardComponent} from './card/card.component';
 import {ChipsComponent} from './chips/chips.component';
 import {SliderComponent} from './slider/slider.component';
 import {BadgeComponent} from './badge/badge.component';
+import {DialogComponent} from './dialog/dialog.component';
+import {ExampleDialogComponent} from './dialog/example-dialog/example-dialog.component';
 import {ExpansionPanelComponent} from './expansion-panel/expansion-panel.component';
 import {ProgressBarComponent} from './progress-bar/progress-bar.component';
 import {ColumnLayoutModule, ObSelectableModule} from 'oblique';
@@ -30,6 +33,7 @@ const appRoutes: Routes = [
 	{path: 'badge', component: BadgeComponent},
 	{path: 'card', component: CardComponent},
 	{path: 'chips', component: ChipsComponent},
+	{path: 'dialog', component: DialogComponent},
 	{path: 'expansion-panel', component: ExpansionPanelComponent},
 	{path: 'progress-bar', component: ProgressBarComponent},
 	{path: 'slider', component: SliderComponent},
@@ -41,6 +45,8 @@ const appRoutes: Routes = [
 		BadgeComponent,
 		CardComponent,
 		ChipsComponent,
+		DialogComponent,
+		ExampleDialogComponent,
 		ExpansionPanelComponent,
 		ProgressBarComponent,
 		SliderComponent
@@ -57,6 +63,7 @@ const appRoutes: Routes = [
 		MatButtonModule,
 		MatCardModule,
 		MatChipsModule,
+		MatDialogModule,
 		MatExpansionModule,
 		MatFormFieldModule,
 		MatIconModule,

@@ -60,6 +60,7 @@ export class AppComponent {
 				{url: 'badge', label: 'Badge'},
 				{url: 'card', label: 'Card'},
 				{url: 'chips', label: 'Chips'},
+				{url: 'dialog', label: 'Dialog'},
 				{url: 'expansion-panel', label: 'Expansion Panel'},
 				{url: 'progress-bar', label: 'Progress bar'},
 				{url: 'slider', label: 'Slider'}
