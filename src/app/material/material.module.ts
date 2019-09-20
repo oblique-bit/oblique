@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
@@ -14,7 +14,11 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatOptionModule} from '@angular/material/core';
+import {MatChipsModule} from '@angular/material/chips';
 import {CardComponent} from './card/card.component';
+import {ChipsComponent} from './chips/chips.component';
 import {SliderComponent} from './slider/slider.component';
 import {BadgeComponent} from './badge/badge.component';
 import {ExpansionPanelComponent} from './expansion-panel/expansion-panel.component';
@@ -23,6 +27,7 @@ import {ColumnLayoutModule, ObSelectableModule} from 'oblique';
 const appRoutes: Routes = [
 	{path: 'badge', component: BadgeComponent},
 	{path: 'card', component: CardComponent},
+	{path: 'chips', component: ChipsComponent},
 	{path: 'expansion-panel', component: ExpansionPanelComponent},
 	{path: 'slider', component: SliderComponent},
 	{path: '', redirectTo: 'card', pathMatch: 'full'}
@@ -32,22 +37,27 @@ const appRoutes: Routes = [
 	declarations: [
 		BadgeComponent,
 		CardComponent,
+		ChipsComponent,
 		ExpansionPanelComponent,
 		SliderComponent
 	],
 	imports: [
 		CommonModule,
 		ColumnLayoutModule,
+		ReactiveFormsModule,
 		ObSelectableModule,
 		FormsModule,
 		RouterModule.forChild(appRoutes),
+		MatAutocompleteModule,
 		MatBadgeModule,
 		MatButtonModule,
 		MatCardModule,
+		MatChipsModule,
 		MatFormFieldModule,
 		MatIconModule,
 		MatInputModule,
 		MatListModule,
+		MatOptionModule,
 		MatRadioModule,
 		MatSliderModule,
 		MatSlideToggleModule,

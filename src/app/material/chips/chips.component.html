@@ -1,0 +1,89 @@
+<div class="default-layout">
+	<h2 class="page-header">Chips</h2>
+	<or-column-layout [left]="false">
+		<div column-main-content class="main-div">
+			<mat-list *ngIf="!showAutocompleteForm">
+				<mat-list-item>
+					<mat-chip-list [ngClass]="{'mat-chip-list-stacked': stacked}">
+						<mat-chip [ngClass]="variant" [disabled]="disabled" [class.ob-selected]="selected">Default</mat-chip>
+						<mat-chip [color]="color" selected [ngClass]="variant" [disabled]="disabled" [class.ob-selected]="selected">Selected</mat-chip>
+					</mat-chip-list>
+				</mat-list-item>
+			</mat-list>
+			<mat-form-field *ngIf="showAutocompleteForm">
+				<mat-chip-list #chipList>
+					<mat-chip
+						*ngFor="let tag of tags"
+						[selectable]="true"
+						[removable]="true"
+						(removed)="remove(tag)">
+						{{tag}}
+						<mat-icon matChipRemove>cancel</mat-icon>
+					</mat-chip>
+					<input
+						placeholder="New tag..."
+						#tagInput
+						[formControl]="tagsCtrl"
+						[matAutocomplete]="auto"
+						[matChipInputFor]="chipList"
+						[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+						[matChipInputAddOnBlur]="true"
+						(matChipInputTokenEnd)="add($event)">
+				</mat-chip-list>
+				<mat-autocomplete #auto="matAutocomplete" (optionSelected)="select($event)">
+					<mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+						{{tag}}
+					</mat-option>
+				</mat-autocomplete>
+			</mat-form-field>
+		</div>
+		<div class="default-layout" column-right-content>
+			<h3>Controls</h3>
+			<mat-list>
+				<fieldset *ngIf="!showAutocompleteForm">
+					<legend>Color</legend>
+					<mat-radio-group [(ngModel)]="color">
+						<mat-list-item *ngFor="let chipColor of colors">
+							<mat-radio-button [value]="chipColor">
+								{{chipColor ? (chipColor | titlecase) : 'Default'}}
+							</mat-radio-button>
+						</mat-list-item>
+					</mat-radio-group>
+				</fieldset>
+				<fieldset *ngIf="!showAutocompleteForm">
+					<legend>Variants</legend>
+					<mat-radio-group [(ngModel)]="variant">
+						<mat-list-item *ngFor="let chipColor of variants">
+							<mat-radio-button [value]="chipColor">
+								{{chipColor ? (chipColor | titlecase) : 'Default'}}
+							</mat-radio-button>
+						</mat-list-item>
+					</mat-radio-group>
+				</fieldset>
+				<fieldset>
+					<legend>Toggle features</legend>
+					<mat-list-item *ngIf="!showAutocompleteForm">
+						<mat-slide-toggle (click)="toggleStacked()" matTooltip="Toggle stacked">
+							Stack
+						</mat-slide-toggle>
+					</mat-list-item>
+					<mat-list-item>
+						<mat-slide-toggle (click)="toggleAutocompleteForm()" matTooltip="Toggle autocomplete">
+							Autocomplete form
+						</mat-slide-toggle>
+					</mat-list-item>
+					<mat-list-item>
+						<mat-slide-toggle (click)="disabled = !disabled">
+							Disabled
+						</mat-slide-toggle>
+					</mat-list-item>
+					<mat-list-item>
+						<mat-slide-toggle (click)="selected = !selected">
+							Selected
+						</mat-slide-toggle>
+					</mat-list-item>
+				</fieldset>
+			</mat-list>
+		</div>
+	</or-column-layout>
+</div>
