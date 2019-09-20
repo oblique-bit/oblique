@@ -61,6 +61,7 @@ export class AppComponent {
 				{url: 'card', label: 'Card'},
 				{url: 'chips', label: 'Chips'},
 				{url: 'expansion-panel', label: 'Expansion Panel'},
+				{url: 'progress-bar', label: 'Progress bar'},
 				{url: 'slider', label: 'Slider'}
 			]
 		}
