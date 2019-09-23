@@ -7,6 +7,13 @@
 	> .input-group-append > .btn {
 		border-radius: $input-border-radius;
 	}
+
+	> .input-group-prepend,
+	> .input-group-append {
+		.fa {
+			line-height: unset;
+		}
+	}
 }
 
 label.input-group-prepend,
