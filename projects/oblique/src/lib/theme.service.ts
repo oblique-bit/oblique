@@ -14,8 +14,8 @@ export const FRUTIGER = new InjectionToken<boolean>('FRUTIGER');
 	providedIn: 'root'
 })
 export class ThemeService {
-	theme$: Observable<string>;
-	private readonly mainTheme$ = new BehaviorSubject<string>(THEMES.MATERIAL);
+	theme$: Observable<THEMES>;
+	private readonly mainTheme$ = new BehaviorSubject<THEMES>(THEMES.MATERIAL);
 	private readonly renderer: Renderer2;
 	private readonly head: HTMLElement;
 	private themeLink: HTMLElement;
