@@ -38,8 +38,9 @@ $large: 1.25rem;
 			top: 1.84375em;
 		}
 
-		.mat-form-field-prefix {
-			top: -0.25em; // TODO https://github.com/angular/material2/issues/12803
+		.mat-form-field-prefix,
+		.mat-form-field-suffix {
+			top: 0; // TODO https://github.com/angular/material2/issues/12803
 		}
 	}
 }
