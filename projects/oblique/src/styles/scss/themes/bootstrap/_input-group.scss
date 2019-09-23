@@ -4,7 +4,9 @@
 	> .input-group-prepend > .input-group-text,
 	> .input-group-append > .input-group-text,
 	> .input-group-prepend > .btn,
-	> .input-group-append > .btn {
+	> .input-group-append > .btn,
+	> .input-group-prepend > .dropdown .dropdown-toggle,
+	> .input-group-append > .dropdown .dropdown-toggle {
 		border-radius: $input-border-radius;
 	}
 
@@ -12,6 +14,10 @@
 	> .input-group-append {
 		.fa {
 			line-height: unset;
+		}
+
+		.dropdown .dropdown-toggle {
+			margin-left: -1px;
 		}
 	}
 }
