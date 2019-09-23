@@ -1,4 +1,13 @@
-
 .headline {
 	text-align: center;
+}
+
+.application {
+	&.material .bootstrap-only {
+		display: none;;
+	}
+
+	&.bootstrap .material-only {
+		display: none;
+	}
 }
