@@ -322,7 +322,7 @@
 			</td>
 			<td>
 				<mat-radio-group>
-					<mat-radio-button value="1" required ngModel>Mandatory</mat-radio-button>
+					<mat-radio-button value="1" required>Mandatory</mat-radio-button>
 				</mat-radio-group>
 			</td>
 			<td>
@@ -383,6 +383,48 @@
 					<textarea matInput placeholder="Hint"></textarea>
 					<mat-hint>Hint text</mat-hint>
 					<mat-error>Error text</mat-error>
+				</mat-form-field>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Multiline</label>
+			</td>
+			<td>
+				<mat-form-field>
+					<mat-label>Multiline</mat-label>
+					<input type="text" matInput placeholder="Multiline" required ngModel>
+					<mat-hint>Trigger an error by setting a value and deleting it</mat-hint>
+					<mat-error>A really loooooooooong error message that will span over multiple rows. This demonstrate how the message remains readable without breaking the layout.</mat-error>
+				</mat-form-field>
+			</td>
+			<td>
+				N / A
+			</td>
+			<td>
+				N / A
+			</td>
+			<td>
+				<mat-form-field>
+					<mat-label>Multiline</mat-label>
+					<mat-select required ngModel>
+						<mat-option [value]=""></mat-option>
+						<mat-option [value]="1">One</mat-option>
+						<mat-option [value]="2">Two</mat-option>
+						<mat-option [value]="3">Three</mat-option>
+						<mat-option [value]="4">Four</mat-option>
+						<mat-option [value]="5">Five</mat-option>
+					</mat-select>
+					<mat-hint>Trigger an error by setting a value and deleting it</mat-hint>
+					<mat-error>A really loooooooooong error message that will span over multiple rows. This demonstrate how the message remains readable without breaking the layout.</mat-error>
+				</mat-form-field>
+			</td>
+			<td>
+				<mat-form-field>
+					<mat-label>Multiline</mat-label>
+					<textarea matInput placeholder="Mandatory" required ngModel></textarea>
+					<mat-hint>Trigger an error by setting a value and deleting it</mat-hint>
+					<mat-error>A really loooooooooong error message that will span over multiple rows. This demonstrate how the message remains readable without breaking the layout.</mat-error>
 				</mat-form-field>
 			</td>
 		</tr>
