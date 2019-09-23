@@ -2,7 +2,16 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {MatButtonModule, MatIconModule, MatMenuModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatCheckboxModule, MatRadioModule} from '@angular/material';
+import {
+	MatButtonModule,
+	MatCheckboxModule,
+	MatFormFieldModule,
+	MatIconModule,
+	MatInputModule,
+	MatMenuModule,
+	MatRadioModule,
+	MatSelectModule
+} from '@angular/material';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -43,8 +52,9 @@ import {
 	NumberFormatModule,
 	SchemaValidationModule,
 	SearchBoxModule,
-	ToggleModule,
 	StickyModule,
+	TextControlClearModule,
+	ToggleModule,
 	UnsavedChangesModule,
 	UnsavedChangesTabsModule
 } from 'oblique';
@@ -68,6 +78,7 @@ import {ApiElementComponent} from '../api/api-element.component';
 		SchemaValidationModule,
 		SearchBoxModule,
 		StickyModule,
+		TextControlClearModule,
 		ToggleModule,
 		UnsavedChangesModule,
 		UnsavedChangesTabsModule,
