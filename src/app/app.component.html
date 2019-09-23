@@ -1,4 +1,4 @@
-<or-master-layout [navigation]="navigation">
+<or-master-layout [navigation]="navigation" [class.material]="material" [class.bootstrap]="!material">
 	<ng-container orHeaderTitle>Oblique</ng-container>
 	<ng-template #orHeaderControl>
 		<or-search-box [items]="searchItems"></or-search-box>
