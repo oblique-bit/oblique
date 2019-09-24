@@ -140,10 +140,9 @@
 			@include layout-collapse-up() {
 				position: absolute;
 				top: 100%;
-				bottom: unset;
-				left: unset;
-				right: unset;
-				height: unset;
+				bottom: auto;
+				left: auto;
+				right: auto;
 				min-width: 280px;
 				max-height: 60vh;
 				overflow-x: hidden;
