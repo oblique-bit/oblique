@@ -1,0 +1,32 @@
+@import "../../core/variables";
+
+.list-group-item-primary {
+	background-color: $brand-light;
+	color: $brand-dark;
+}
+.list-group-item-secondary {
+	background-color: $brand-extralight;
+	color: $brand-primary;
+}
+.list-group-item-success {
+	background-color: $brand-success-light;
+	color: $brand-success-dark;
+}
+.list-group-item-danger {
+	background-color: $brand-error-light;
+	color: $brand-error-dark;
+}
+.list-group-item-warning {
+	background-color: $brand-warning-light;
+	color: $brand-warning-dark;
+}
+.list-group-item-info {
+	background-color: $brand-info-light;
+	color: $brand-info-dark;
+}
+.list-group-item-light {
+	color: $brand-default;
+}
+.list-group-item-dark {
+	color: $white;
+}
