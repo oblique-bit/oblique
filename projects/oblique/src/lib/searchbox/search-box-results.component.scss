@@ -59,7 +59,8 @@ or-search-box-results {
 		margin-top: 29px;
 		background-color: $white;
 		box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-		transition: max-height $duration-default, padding $duration-default;
+		transition-property: max-height, padding-top, padding-bottom;
+		transition-duration: $duration-default;
 		z-index: 1;
 
 		&::before,
