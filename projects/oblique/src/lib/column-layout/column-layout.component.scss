@@ -97,7 +97,7 @@
 		.column-right {
 			position: relative;
 			flex: 0 0 $column-width;
-			order: unset;
+			order: 0;
 			max-width: $column-width; // Ensure columns keep shrinking even if text content may overflow.
 		}
 
