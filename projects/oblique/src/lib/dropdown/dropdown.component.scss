@@ -105,7 +105,7 @@
 				top: $header-height-md;
 				height: 0;
 				margin: 0;
-				transform: unset;
+				transform: none;
 			}
 
 			&.open {
@@ -120,7 +120,7 @@
 				);
 
 				.dropdown-content {
-					height: unset;
+					height: auto;
 					padding: $spacing-default;
 					border-color: transparent transparent transparent $gray-light;
 
