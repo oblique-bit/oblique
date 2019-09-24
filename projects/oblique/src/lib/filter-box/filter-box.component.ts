@@ -1,4 +1,4 @@
-import {Component, ContentChild, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, TemplateRef, ViewChild} from '@angular/core';
+import {Component, ContentChildren, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, Renderer2, TemplateRef, ViewChild} from '@angular/core';
 import {map, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {ThemeService} from '../theme.service';
@@ -20,8 +20,8 @@ export class FilterBoxComponent implements OnInit {
 	@Output() patternClear = new EventEmitter<void>();
 	@ViewChild('filterControl', {static: false}) filterControl: ElementRef;
 	@ViewChild('inputGroup', {static: false}) inputGroup: ElementRef;
-	@ContentChild('prepend', {static: false}) readonly prepend: TemplateRef<any>;
-	@ContentChild('append', {static: false}) readonly append: TemplateRef<any>;
+	@ContentChildren('prepend') readonly prepends: QueryList<TemplateRef<any>>;
+	@ContentChildren('append') readonly appends: QueryList<TemplateRef<any>>;
 
 	private readonly acceptedSizes = ['sm', 'lg'];
 
@@ -55,34 +55,11 @@ export class FilterBoxComponent implements OnInit {
 	private addBootstrapClasses() {
 		setTimeout(() => {
 			if (this.inputGroup && !this.inputGroup.nativeElement.classList.contains('bootstrapped')) {
-				let prepend = true;
-				Array.from(this.inputGroup.nativeElement.children).forEach((item: HTMLElement) => {
-					this.addClasses(item, prepend);
-					if (item.classList.contains('form-control')) {
-						prepend = false;
-					}
-				});
+				Array.from(this.inputGroup.nativeElement.querySelectorAll(
+					['.input-group-prepend > :not(.btn):not(.dropdown)', '.input-group-append > :not(.btn):not(.dropdown)'])
+				).forEach(el => this.renderer.addClass(el, 'input-group-text'));
 				this.renderer.addClass(this.inputGroup.nativeElement, 'bootstrapped');
 			}
 		});
-	}
-
-	private addClasses(item: HTMLElement, prepend: boolean) {
-		if (!item.classList.contains('form-control') && !item.classList.contains('text-control-clear')) {
-			const className = prepend ? 'input-group-prepend' : 'input-group-append';
-			if (item.classList.contains('btn') || item.classList.contains('dropdown')) {
-				this.renderer.addClass(item, className);
-			} else {
-				this.wrapItem(item, className);
-			}
-		}
-	}
-
-	private wrapItem(item: HTMLElement, className: string) {
-		const elt = this.renderer.createElement('span');
-		this.renderer.addClass(elt, className);
-		this.renderer.insertBefore(item.parentElement, elt, item);
-		this.renderer.appendChild(elt, item);
-		this.renderer.addClass(item, 'input-group-text');
 	}
 }

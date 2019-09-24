@@ -1,37 +1,36 @@
 <div *ngIf="material | async else bootstrap">
 	<mat-form-field [ngClass]="getSizeClass('mat-form-field-')">
 		<mat-label>{{placeholder | translate}}</mat-label>
-		<ng-container matPrefix *ngIf="prepend">
+		<ng-container matPrefix *ngFor="let prepend of prepends">
 			<ng-container [ngTemplateOutlet]="prepend"></ng-container>
 		</ng-container>
-		<input type="text" matInput
-			   [readonly]="readonly" [attr.disabled]="disabled"
-			   [ngModel]="pattern" (ngModelChange)="onPatternChanged($event)" [ngModelOptions]="modelOptions" #filterControl>
-		<button type="button" role="button"
-				[orTextControlClear]="filterControl"
-				(onClear)="onPatternCleared();">
+		<input type="text" matInput [readonly]="readonly" [attr.disabled]="disabled"
+			   [ngModel]="pattern" (ngModelChange)="onPatternChanged($event)" [ngModelOptions]="modelOptions"
+			   #filterControl>
+		<button type="button" role="button" [orTextControlClear]="filterControl" (onClear)="onPatternCleared();">
 			<span class="fa fa-times-circle"></span>
 			<span class="sr-only">{{'i18n.common.clear' | translate}}</span>
 		</button>
-		<ng-container matSuffix *ngIf="append">
+		<ng-container matSuffix *ngFor="let append of appends">
 			<ng-container [ngTemplateOutlet]="append"></ng-container>
 		</ng-container>
 	</mat-form-field>
 </div>
 <ng-template #bootstrap>
 	<div class="input-group" [ngClass]="getSizeClass('input-group-')" #inputGroup>
-		<ng-container [ngTemplateOutlet]="prepend"></ng-container>
-		<input class="form-control" [ngClass]="getSizeClass('form-control-')" type="text"
-			   name="filterPattern" placeholder="{{placeholder | translate}}"
-			   [attr.readonly]="readonly" [attr.disabled]="disabled"
+		<div class="input-group-prepend" *ngIf="prepends.length">
+			<ng-container *ngFor="let prepend of prepends" [ngTemplateOutlet]="prepend"></ng-container>
+		</div>
+		<input class="form-control" [ngClass]="getSizeClass('form-control-')" type="text" name="filterPattern"
+			   placeholder="{{placeholder | translate}}" [attr.readonly]="readonly" [attr.disabled]="disabled"
 			   [ngModel]="pattern" (ngModelChange)="onPatternChanged($event)" [ngModelOptions]="modelOptions"
 			   #filterControl>
-		<button type="button" role="button"
-				[orTextControlClear]="filterControl"
-				(onClear)="onPatternCleared();">
+		<button type="button" role="button" [orTextControlClear]="filterControl" (onClear)="onPatternCleared();">
 			<span class="fa fa-times-circle"></span>
 			<span class="sr-only">{{'i18n.common.clear' | translate}}</span>
 		</button>
-		<ng-container [ngTemplateOutlet]="append"></ng-container>
+		<div class="input-group-append" *ngIf="appends.length">
+			<ng-container *ngFor="let append of appends" [ngTemplateOutlet]="append"></ng-container>
+		</div>
 	</div>
 </ng-template>
