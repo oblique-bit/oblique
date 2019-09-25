@@ -1,3 +1,5 @@
+@import "../../core/variables";
+
 $small: .875rem;
 $large: 1.25rem;
 
@@ -5,11 +7,50 @@ $large: 1.25rem;
 	width: 100%;
 
 	.mat-form-field-prefix {
-		margin-right: 5px;
+		margin-right: $spacing-xs;
 	}
 
 	.mat-form-field-suffix {
-		margin-left: 5px;
+		margin-left: $spacing-xs;
+	}
+
+	.mat-error,
+	.mat-hint {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	&:hover,
+	&:focus-within {
+		.mat-form-field-subscript-wrapper {
+			overflow: visible;
+		}
+
+		.mat-error,
+		.mat-hint {
+			white-space: unset;
+			background-color: inherit;
+			position: relative;
+			overflow: visible;
+
+			&::before {
+				content: '';
+				position: absolute;
+				display: block;
+				right: -12px;
+				left: -12px;
+				top: 0;
+				bottom: -$spacing-xs;
+				background-color: $white;
+				opacity: 0.75;
+				z-index: -1;
+
+				.table:not(.table-plain) tbody tr:nth-child(odd) & {
+					background-color: $gray-lighter;
+				}
+			}
+		}
 	}
 
 	&.mat-form-field-sm {
