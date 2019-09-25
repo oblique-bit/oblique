@@ -35,7 +35,12 @@ export class AppComponent {
 				{url: 'button', label: 'Buttons'}
 			]
 		},
-		{url: 'styles', label: 'styles'}
+		{url: 'styles', label: 'Styles'},
+		{
+			url: 'bootstrap', label: 'Bootstrap', children: [
+				{url: 'list-group', label: 'List group'}
+			]
+		}
 	];
 	searchItems: SearchWidgetItem[] = [];
 
