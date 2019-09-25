@@ -1,3 +1,24 @@
+# [4.0.3](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.3) (2019-09-25)
+
+# Bug Fixes
+* **column-layout:** do not use `unset` CSS value (IE11) ([beb1b92](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/beb1b92))
+* **dropdown:** better align the bubble-tail ([c0d3db3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/c0d3db3))
+* **dropdown:** do not use `unset` CSS value (IE11) ([4741130](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/4741130))
+* **filter-box:** allow multiple prefix and suffix ([9fbf6f8](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/9fbf6f8))
+* **master-layout:** do not use `unset` or `initial` CSS values (IE11) ([aee60b5](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/aee60b5))
+* **master-layout:** fix scroll `padding-bottom` on `.application` ([e82c1eb](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/e82c1eb))
+* **search-box:** do not animate left and right padding of hit list ([d00f359](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/d00f359))
+* **search-box:** do not use `unset` CSS value (IE11) ([bac090f](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/bac090f))
+* **themes:** `themes$` observable deliver `THEMES` instead of `string` ([b440bff](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/b440bff))
+* **themes:** add `margin-top` to avoid clipping label with Material ([928df57](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/928df57))
+* **themes:** align Material's `prefix` and `suffix` with input text ([8b1035d](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/8b1035d))
+* **themes:** do not use `unset` CSS value (IE11) ([5e69d96](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/5e69d96))
+* **themes:** fix Bootstrap's `input-groups` dropdown appearance ([909a444](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/909a444))
+* **themes:** fix bootstrap's pre- and append icon height ([270d9d3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/270d9d3))
+* **themes:** improve contrast of bootstrap's `list-group` ([eb0b3f7](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/eb0b3f7))
+* **themes:** show full hint or error texts only on hover ([aeafaf2](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/aeafaf2))
+
+
 # [4.0.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.2) (2019-09-17)
 
 ## Bug Fixes
@@ -13,11 +34,11 @@
 * **master-layout:** show off-canvas backdrop below layout collapse ([9f0fef3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/9f0fef3))
 * **master-layout:** use initial value of `hasScrollTransition` ([9bc4da7](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/9bc4da7))
 * **notification:** do not use `KeyWithParams` interface and deprecate it ([b141570](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/b141570))
-* **theme:** add `margin-bottom` to alert ([aa8d175](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/aa8d175))
-* **theme:** add bootstrap's grid to `oblique-utilities` ([6c97ef6](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/6c97ef6))
-* **theme:** add scroll on `pre` element ([0506d5a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/0506d5a))
-* **theme:** correctly read `FRUTIGER` value ([9864fd5](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/9864fd5))
-* **theme:** do not add border and padding to `code` within `pre` ([becfa83](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/becfa83))
+* **themes:** add `margin-bottom` to alert ([aa8d175](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/aa8d175))
+* **themes:** add bootstrap's grid to `oblique-utilities` ([6c97ef6](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/6c97ef6))
+* **themes:** add scroll on `pre` element ([0506d5a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/0506d5a))
+* **themes:** correctly read `FRUTIGER` value ([9864fd5](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/9864fd5))
+* **themes:** do not add border and padding to `code` within `pre` ([becfa83](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/becfa83))
 * **themes:** add fontawesome 5 font files ([7f00f15](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/7f00f15))
 * **themes:** add fontawesome SCSS files ([2915181](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/2915181))
 * **themes:** remove fontawesome 4 font files ([d6ddd04](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/d6ddd04))
