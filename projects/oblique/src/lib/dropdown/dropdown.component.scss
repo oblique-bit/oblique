@@ -105,7 +105,7 @@
 				top: $header-height-md;
 				height: 0;
 				margin: 0;
-				transform: unset;
+				transform: none;
 			}
 
 			&.open {
@@ -114,13 +114,13 @@
 						$brand-accent,
 					$width: 8px,
 					$align: left,
-					$align-value: 18px,
+					$align-value: 20px,
 					$placement: bottom,
 					$direction: top
 				);
 
 				.dropdown-content {
-					height: unset;
+					height: auto;
 					padding: $spacing-default;
 					border-color: transparent transparent transparent $gray-light;
 

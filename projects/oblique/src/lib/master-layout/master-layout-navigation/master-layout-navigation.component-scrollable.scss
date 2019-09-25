@@ -74,7 +74,7 @@
 
 			> li {
 				display: inline-block;
-				white-space: initial;
+				white-space: normal;
 				// Animating list item with a negative margin ensures parent menu keeps the original width:
 				transition: margin $duration-default;
 			}

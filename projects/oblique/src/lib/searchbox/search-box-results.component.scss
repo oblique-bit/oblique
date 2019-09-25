@@ -31,7 +31,7 @@ or-search-box-results {
 
 :hover > or-search-box-results .search-results-list.hasResults,
 :focus-within > or-search-box-results .search-results-list.hasResults {
-	height: unset;
+	height: auto;
 }
 
 .noResult {
@@ -50,8 +50,7 @@ or-search-box-results {
 	.search-results-list {
 		display: block;
 		position: absolute;
-		top: unset;
-		height: unset;
+		top: auto;
 		left: -5px;
 		min-width: 300px;
 		max-height: 0;
@@ -59,7 +58,8 @@ or-search-box-results {
 		margin-top: 29px;
 		background-color: $white;
 		box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-		transition: max-height $duration-default, padding $duration-default;
+		transition-property: max-height, padding-top, padding-bottom;
+		transition-duration: $duration-default;
 		z-index: 1;
 
 		&::before,
@@ -89,9 +89,8 @@ or-search-box-results {
 	:hover > or-search-box-results .search-results-list.hasResults,
 	:focus-within > or-search-box-results .search-results-list.hasResults {
 		max-height: calc(100vh - 200px);
-		height: unset;
 		padding: $spacing-default;
-		overflow: unset;
+		overflow: visible;
 		border: 1px solid $gray-light;
 	}
 }
