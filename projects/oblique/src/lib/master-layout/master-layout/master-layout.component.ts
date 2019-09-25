@@ -75,6 +75,7 @@ export class MasterLayoutComponent extends Unsubscribable implements OnInit {
 			this.isScrolling = scrollTop > 0;
 			this.scrollEvents.scrolling(this.isScrolling);
 		}
+		this.masterLayout.footer.configEvents.pipe(filter(evt => evt.name === MasterLayoutEventValues.SMALL)).subscribe(evt => this.footerSm = evt.value);
 	}
 
 	private propertyChanges() {

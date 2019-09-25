@@ -28,7 +28,8 @@ describe('MasterLayoutComponent', () => {
 			configEvents: of({})
 		},
 		footer: {
-			isSmall: false
+			isSmall: false,
+			configEvents: of({})
 		}
 	};
 
