@@ -15,7 +15,7 @@ export class DescriptionComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.description = this.sanitizer.bypassSecurityTrustHtml(
-			require(`!!raw-loader!../../../projects/oblique/src/lib/${this.directory || this.component}/${this.component}.description.html`)
+			require(`!!raw-loader!../../../projects/oblique/src/lib/${this.directory || this.component}/${this.component}.description.html`).default
 		);
 	}
 }
