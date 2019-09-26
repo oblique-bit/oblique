@@ -20,6 +20,14 @@ export class PatternFilterPipe implements PipeTransform {
 		.card-deck + .card-deck {
 			margin-top: 1em;
 		}
+		::ng-deep .closed,
+		::ng-deep [aria-expanded="true"] .opened {
+			display: none;
+		}
+		::ng-deep [aria-expanded="true"] .closed,
+		::ng-deep .opened {
+			display: inline;
+		}
 	`]
 })
 export class FilterBoxSampleComponent {

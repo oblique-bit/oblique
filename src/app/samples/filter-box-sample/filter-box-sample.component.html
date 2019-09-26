@@ -7,11 +7,12 @@
 						   (patternChange)="incrementChanged()">
 				<ng-template #prepend><i class="fa fa-search"></i></ng-template>
 				<ng-template #prepend>
-					<button class="btn btn-secondary" type="button">Go!</button>
+					<button class="btn btn-secondary" type="button" *ngIf="!material">Go!</button>
+					<button mat-stroked-button type="button" *ngIf="material">Go!</button>
 				</ng-template>
 				<ng-template #append><span>hint</span></ng-template>
 				<ng-template #append>
-					<div ngbDropdown>
+					<div ngbDropdown *ngIf="!material">
 						<button id="search-actions-dropdown" class="btn btn-secondary dropdown-toggle" ngbDropdownToggle>
 							<span class="sr-only">{{'i18n.common.actions' | translate}}</span>
 						</button>
@@ -20,6 +21,16 @@
 							<a class="dropdown-item" role="button" tabindex="0">Another action</a>
 						</span>
 					</div>
+					<ng-container *ngIf="material">
+						<mat-menu #appMenu="matMenu">
+							<button mat-menu-item>An action</button>
+							<button mat-menu-item>Another action</button>
+						</mat-menu>
+						<button mat-raised-button [matMenuTriggerFor]="appMenu">
+							<span class="fa fa-chevron-down opened"></span>
+							<span class="fa fa-chevron-up closed"></span>
+						</button>
+					</ng-container>
 				</ng-template>
 			</or-filter-box>
 			<ul>
