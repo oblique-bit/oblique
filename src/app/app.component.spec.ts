@@ -4,17 +4,12 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {MasterLayoutConfig, NotificationService, SpinnerService} from 'oblique';
 import {AppComponent} from './app.component';
-import {MockTranslatePipe} from 'tests';
+import {MockTranslatePipe, MockTranslateService} from 'tests';
 
 describe('AppComponent', () => {
 	beforeEach(async(() => {
 		const mockNotificationService = {
 			success: jest.fn()
-		};
-
-		const mockTranslateService = {
-			setDefaultLang: jest.fn(),
-			use: jest.fn()
 		};
 
 		TestBed.configureTestingModule({
@@ -29,7 +24,7 @@ describe('AppComponent', () => {
 			],
 			providers: [
 				{provide: NotificationService, useValue: mockNotificationService},
-				{provide: TranslateService, useValue: mockTranslateService},
+				{provide: TranslateService, useValue: MockTranslateService},
 				SpinnerService,
 				MasterLayoutConfig
 			]
