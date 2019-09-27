@@ -44,7 +44,7 @@ export class AppComponent {
 	];
 	searchItems: SearchWidgetItem[] = [];
 
-	constructor(private theme: ThemeService) {
+	constructor(private readonly theme: ThemeService) {
 		this.populateSearchItems(this.navigation);
 		this.theme.theme$.subscribe(() => {
 			this.material = theme.isMaterial();
