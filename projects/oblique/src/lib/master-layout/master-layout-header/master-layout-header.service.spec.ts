@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {MasterLayoutHeaderService} from './master-layout.header.service';
+import {MasterLayoutHeaderService} from './master-layout-header.service';
 import {MasterLayoutEvent} from '../master-layout.utility';
 import {Observable, Subject} from 'rxjs';
 

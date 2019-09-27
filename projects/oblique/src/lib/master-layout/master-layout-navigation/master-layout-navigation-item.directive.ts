@@ -5,7 +5,7 @@ import {Unsubscribable} from '../../unsubscribe.class';
 import {MasterLayoutNavigationToggleDirective} from './master-layout-navigation-toggle.directive';
 import {MasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
 import {MasterLayoutEventValues} from '../master-layout.utility';
-import {MasterLayoutComponentService} from '../master-layout/master-layout-component.service';
+import {MasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 
 
 @Directive({

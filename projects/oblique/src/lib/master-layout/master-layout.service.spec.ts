@@ -3,9 +3,9 @@ import {MasterLayoutConfig, MasterLayoutNavigationService, MasterLayoutService} 
 import {TranslateService} from '@ngx-translate/core';
 import {MockTranslatePipe, MockTranslateService} from 'tests';
 import {RouterTestingModule} from '@angular/router/testing';
-import {MasterLayoutHeaderService} from './master-layout-header/master-layout.header.service';
+import {MasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
 import {MasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
-import {MasterLayoutComponentService} from './master-layout/master-layout-component.service';
+import {MasterLayoutComponentService} from './master-layout/master-layout.component.service';
 
 describe('MasterLayoutService', () => {
 	let masterLayoutService: MasterLayoutService;
