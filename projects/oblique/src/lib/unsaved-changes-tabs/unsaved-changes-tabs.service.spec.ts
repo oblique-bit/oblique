@@ -4,6 +4,7 @@ import {ControlContainer} from '@angular/forms';
 import {NgbTabChangeEvent, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateService} from '@ngx-translate/core';
 import {UnsavedChangesTabsService} from './unsaved-changes-tabs.service';
+import {MockTranslateService} from 'tests';
 
 describe('UnsavedChangesTabsService', () => {
 	let unsavedChangesService: UnsavedChangesTabsService;
@@ -12,9 +13,7 @@ describe('UnsavedChangesTabsService', () => {
 			providers: [
 				UnsavedChangesTabsService,
 				{
-					provide: TranslateService, useValue: {
-						instant: jest.fn().mockImplementation((val) => val)
-					}
+					provide: TranslateService, useClass: MockTranslateService
 				}
 			]
 		});
