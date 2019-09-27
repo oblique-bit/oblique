@@ -2,6 +2,7 @@ import {inject, TestBed} from '@angular/core/testing';
 import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {UnsavedChangesService} from 'oblique';
+import {MockTranslateService} from 'tests';
 
 describe('UnsavedChangesService', () => {
 	let unsavedChangesService: UnsavedChangesService;
@@ -10,9 +11,7 @@ describe('UnsavedChangesService', () => {
 			providers: [
 				UnsavedChangesService,
 				{
-					provide: TranslateService, useValue: {
-						instant: jest.fn().mockImplementation((val) => val)
-					}
+					provide: TranslateService, useClass: MockTranslateService
 				}
 			]
 		});

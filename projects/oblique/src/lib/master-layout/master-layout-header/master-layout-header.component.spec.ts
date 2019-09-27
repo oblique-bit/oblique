@@ -6,16 +6,12 @@ import {of} from 'rxjs';
 
 import {MasterLayoutConfig, MasterLayoutService} from 'oblique';
 import {MasterLayoutHeaderComponent} from './master-layout-header.component';
-import {MockTranslatePipe} from 'tests';
+import {MockTranslatePipe, MockTranslateService} from 'tests';
 
 describe('MasterLayoutHeaderComponent', () => {
 	let component: MasterLayoutHeaderComponent;
 	let fixture: ComponentFixture<MasterLayoutHeaderComponent>;
-	const mockTranslateService = {
-		setDefaultLang: jest.fn(),
-		use: jest.fn(),
-		getDefaultLang: jest.fn()
-	};
+
 	const mockConfig = {
 		header: {},
 		locale: {locales: []}
@@ -36,7 +32,7 @@ describe('MasterLayoutHeaderComponent', () => {
 			declarations: [MasterLayoutHeaderComponent, MockTranslatePipe],
 			providers: [
 				{provide: MasterLayoutService, useValue: mockService},
-				{provide: TranslateService, useValue: mockTranslateService},
+				{provide: TranslateService, useClass: MockTranslateService},
 				{provide: MasterLayoutConfig, useValue: mockConfig}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]

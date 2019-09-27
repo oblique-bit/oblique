@@ -1,5 +1,4 @@
 import {TestBed} from '@angular/core/testing';
-
 import {THEMES, ThemeService} from './theme.service';
 
 describe('ThemeService', () => {
@@ -28,7 +27,6 @@ describe('ThemeService', () => {
 		expect(service.isMaterial()).not.toBeTruthy();
 	});
 
-	//
 	it('should be composant is deprecated', () => {
 		const service: ThemeService = TestBed.get(ThemeService);
 		const component = 'datepicker';
@@ -36,9 +34,30 @@ describe('ThemeService', () => {
 
 		service.setTheme(THEMES.MATERIAL);
 		service.deprecated(component, target);
-		// expect(console.warn).toHaveBeenCalled();
 		expect(service.isMaterial()).toBeTruthy();
 	});
+
+	it('should enable Frutiger', () => {
+		const service: ThemeService = TestBed.get(ThemeService);
+		const spy = jest.spyOn(service, 'setFrutiger');
+		const enable = true;
+		service.setFrutiger(enable);
+		expect(spy).toHaveBeenCalled();
+		expect(service.setFrutiger).toBeTruthy();
+		spy.mockRestore();
+	});
+
+	it('should not enable Frutiger', () => {
+		const service: ThemeService = TestBed.get(ThemeService);
+		const spy = jest.spyOn(service, 'setFrutiger');
+		const enable = false;
+		service.setFrutiger(enable);
+		expect(spy).toHaveBeenCalled();
+		expect(service.setFrutiger).toBeTruthy();
+		spy.mockRestore();
+	});
+
+
 
 
 });

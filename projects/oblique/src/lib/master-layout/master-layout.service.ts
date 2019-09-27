@@ -5,10 +5,10 @@ import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe.class';
 import {LocaleObject, MasterLayoutConfig} from './master-layout.config';
-import {MasterLayoutHeaderService} from './master-layout-header/master-layout.header.service';
+import {MasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
 import {MasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
 import {MasterLayoutNavigationService} from './master-layout-navigation/master-layout-navigation.service';
-import {MasterLayoutComponentService} from './master-layout/master-layout-component.service';
+import {MasterLayoutComponentService} from './master-layout/master-layout.component.service';
 
 @Injectable({providedIn: 'root'})
 export class MasterLayoutService extends Unsubscribable {

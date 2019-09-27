@@ -61,13 +61,15 @@ describe('NumberFormatDirective', () => {
 		beforeEach(() => {
 			createFixture(TestNonPersistentComponent);
 		});
+
 		it('should have rounded model value and full display value', async(() => {
 			fixture.whenStable().then(() => {
 				expect(testComponent.number).toEqual(5.235689);
 				expect(element.nativeElement.value).toEqual('5.236');
 			});
 		}));
-		xit('should display full value on focus', async(() => {
+
+		it('should display full value on focus', async(() => {
 			fixture.whenStable().then(() => {
 				element.nativeElement.focus();
 				expect(testComponent.number).toEqual(5.235689);

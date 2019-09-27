@@ -1,22 +1,15 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
-import {CUSTOM_ELEMENTS_SCHEMA, EventEmitter} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 
-import {MockTranslatePipe} from 'tests';
+import {MockTranslatePipe, MockTranslateService} from 'tests';
 import {MasterLayoutComponent, MasterLayoutConfig, MasterLayoutService} from 'oblique';
 import {of} from 'rxjs';
 
 describe('MasterLayoutComponent', () => {
 	let component: MasterLayoutComponent;
 	let fixture: ComponentFixture<MasterLayoutComponent>;
-
-	const mockTranslateService = {
-		setDefaultLang: jest.fn(),
-		use: jest.fn(),
-		getDefaultLang: jest.fn(),
-		onLangChange: new EventEmitter()
-	};
 
 	const mockConfig = {layout: {}};
 	const mockService = {
@@ -40,7 +33,7 @@ describe('MasterLayoutComponent', () => {
 			providers: [
 				{provide: MasterLayoutService, useValue: mockService},
 				{provide: MasterLayoutConfig, useValue: mockConfig},
-				{provide: TranslateService, useValue: mockTranslateService}
+				{provide: TranslateService, useClass: MockTranslateService}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		})

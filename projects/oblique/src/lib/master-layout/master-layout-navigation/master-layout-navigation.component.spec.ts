@@ -3,19 +3,14 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {of} from 'rxjs';
 
-import {MasterLayoutConfig, MasterLayoutNavigationService, MasterLayoutService} from 'oblique';
+import {MasterLayoutConfig, MasterLayoutService} from 'oblique';
 import {MasterLayoutNavigationComponent} from './master-layout-navigation.component';
-import {MockTranslatePipe} from 'tests';
+import {MockTranslatePipe, MockTranslateService} from 'tests';
 
 describe('MasterLayoutNavigationComponent', () => {
 	let component: MasterLayoutNavigationComponent;
 	let fixture: ComponentFixture<MasterLayoutNavigationComponent>;
-	const mockTranslateService =  {
-		setDefaultLang: jest.fn(),
-		use: jest.fn(),
-		onLangChange: of(),
-		getTranslation: jest.fn(),
-	};
+
 	const mockService = {
 		navigation: {
 			isFullWidth: true,
@@ -33,7 +28,7 @@ describe('MasterLayoutNavigationComponent', () => {
 			imports: [RouterTestingModule],
 			declarations: [MasterLayoutNavigationComponent, MockTranslatePipe],
 			providers: [
-				{provide: TranslateService, useValue: mockTranslateService},
+				{provide: TranslateService, useClass: MockTranslateService},
 				{provide: MasterLayoutService, useValue: mockService},
 				{provide: MasterLayoutConfig, useValue: mockConfig}
 			]
