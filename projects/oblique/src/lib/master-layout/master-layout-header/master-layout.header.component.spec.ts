@@ -32,7 +32,7 @@ describe('MasterLayoutHeaderComponent', () => {
 			declarations: [MasterLayoutHeaderComponent, MockTranslatePipe],
 			providers: [
 				{provide: MasterLayoutService, useValue: mockService},
-				{provide: TranslateService, useClass: MockTranslateService},
+				{ provide: TranslateService, useClass: MockTranslateService },
 				{provide: MasterLayoutConfig, useValue: mockConfig}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
