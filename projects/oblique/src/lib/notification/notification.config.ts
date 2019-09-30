@@ -8,19 +8,19 @@ export class NotificationConfig {
 	channel = 'oblique';
 
 	info = {
-		title: 'i18n.notification.type.info'
+		title: 'i18n.oblique.notification.type.info'
 	} as INotificationConfig;
 
 	success = {
-		title: 'i18n.notification.type.success'
+		title: 'i18n.oblique.notification.type.success'
 	} as INotificationConfig;
 
 	warning = {
-		title: 'i18n.notification.type.warning'
+		title: 'i18n.oblique.notification.type.warning'
 	} as INotificationConfig;
 
 	error = {
-		title: 'i18n.notification.type.error',
+		title: 'i18n.oblique.notification.type.error',
 		sticky: true,
 	} as INotificationConfig;
 }
