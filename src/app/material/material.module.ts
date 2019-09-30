@@ -11,16 +11,19 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
 import {CardComponent} from './card/card.component';
 import {SliderComponent} from './slider/slider.component';
 import {BadgeComponent} from './badge/badge.component';
+import {ExpansionPanelComponent} from './expansion-panel/expansion-panel.component';
 import {ColumnLayoutModule, ObSelectableModule} from 'oblique';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: BadgeComponent},
 	{path: 'card', component: CardComponent},
+	{path: 'expansion-panel', component: ExpansionPanelComponent},
 	{path: 'slider', component: SliderComponent},
 	{path: '', redirectTo: 'card', pathMatch: 'full'}
 ];
@@ -29,6 +32,7 @@ const appRoutes: Routes = [
 	declarations: [
 		BadgeComponent,
 		CardComponent,
+		ExpansionPanelComponent,
 		SliderComponent
 	],
 	imports: [
@@ -47,7 +51,8 @@ const appRoutes: Routes = [
 		MatRadioModule,
 		MatSliderModule,
 		MatSlideToggleModule,
-		MatTooltipModule
+		MatTooltipModule,
+		MatExpansionModule
 	]
 })
 export class MaterialModule {
