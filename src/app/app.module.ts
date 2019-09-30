@@ -1,8 +1,9 @@
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, HAMMER_GESTURE_CONFIG} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {GestureConfig} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
@@ -79,7 +80,8 @@ import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-in
 		{provide: OBLIQUE_THEME, useValue: THEMES.MATERIAL},
 		{provide: OBLIQUE_FONT, useValue: FONTS.ROBOTO},
 		{provide: HTTP_INTERCEPTORS, useClass: ObliqueHttpInterceptor, multi: true},
-		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true}
+		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
+		{provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig}
 	],
 	entryComponents: [AppComponent],
 	bootstrap: [AppComponent]

@@ -57,7 +57,8 @@ export class AppComponent {
 		},
 		{
 			url: 'material', label: 'Material', children: [
-				{url: 'card', label: 'Card'}
+				{url: 'card', label: 'Card'},
+				{url: 'slider', label: 'Slider'}
 			]
 		}
 	];
