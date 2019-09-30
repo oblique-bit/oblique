@@ -76,6 +76,13 @@
         "since": "2.0.0"
       },
       {
+        "name": "clearAllOnNavigate",
+        "text": "Defines if all notifications should be cleared upon <code>NavigationEnd</code> event.",
+        "type": "boolean",
+        "default": "CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE",
+        "since": "4.1.0"
+      },
+      {
         "name": "info",
         "text": "Custom configuration for <b>info</b> notifications.",
         "type": "INotification",
@@ -103,6 +110,15 @@
         "default": "{title: 'i18n.oblique.notification.type.error', sticky: true}",
         "since": "4.0.0"
       }
+    ],
+    "tokens": [
+      {
+        "name": "CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE",
+        "text": "Defines if all notifications should be cleared upon <code>NavigationEnd</code> event.",
+        "type": "boolean",
+        "default": false,
+        "since": "4.1.0"
+      }
     ]
   },
   {
@@ -115,6 +131,13 @@
         "text": "An observable that emits every time a notification is sent or cleared through the service",
         "returns": "Observable<INotification>",
         "since": "4.0.0"
+      },
+      {
+        "name": "clearAllOnNavigate",
+        "text": "Defines if all notifications should be cleared upon <code>NavigationEnd</code> event.",
+        "type": "boolean",
+        "default": "CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE",
+        "since": "4.1.0"
       }
     ],
     "methods": [
