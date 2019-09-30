@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {NotificationService, NotificationType, ObliqueHttpInterceptorEvents, ObliqueRequest} from 'oblique';
-import {delay, first, mergeMap, tap} from 'rxjs/operators';
+import {delay, mergeMap, take, tap} from 'rxjs/operators';
 import {from, Observable} from 'rxjs';
 import {HttpMockErrorInterceptor} from './http-mock-error.interceptor';
 
@@ -73,8 +73,8 @@ export class HttpInterceptorSampleComponent {
 		return this.createRequest(url, requestId);
 	}
 
-	private configInterceptor(): void {
-		this.interceptorEvents.requestIntercepted.pipe(first()).subscribe((evt: ObliqueRequest) => {
+	private configInterceptor(number = 1): void {
+		this.interceptorEvents.requestIntercepted.pipe(take(number)).subscribe((evt: ObliqueRequest) => {
 			evt.notification.active = this.notification.active;
 			evt.notification.severity = this.notification.severity;
 			evt.notification.title = this.notification.title;
