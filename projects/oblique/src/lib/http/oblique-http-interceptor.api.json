@@ -77,6 +77,26 @@
         "type": "Observable<void>",
         "since": "3.0.0"
       }
+    ],
+    "methods": [
+      {
+        "name": "deactivateSpinnerOnNextAPICalls",
+        "text": "No spinner will be activated on the next <code>number</code> API calls.",
+        "arguments": ["number = 1"],
+        "since": "4.1.0"
+      },
+      {
+        "name": "deactivateNotificationOnNextAPICalls",
+        "text": "No notification will be activated on the next <code>number</code> API calls.",
+        "arguments": ["number = 1"],
+        "since": "4.1.0"
+      },
+      {
+        "name": "deactivateOnNextAPICalls",
+        "text": "No spinner nor notification will be activated on the next <code>number</code> API calls.",
+        "arguments": ["number = 1"],
+        "since": "4.1.0"
+      }
     ]
   }
 ]
