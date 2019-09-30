@@ -34,6 +34,14 @@ export class NotificationSampleComponent {
 		this.appChannel = 'oblique';
 	}
 
+	get clearAllOnNavigate() {
+		return this.notificationService.clearAllOnNavigate;
+	}
+
+	set clearAllOnNavigate(value: boolean) {
+		this.notificationService.clearAllOnNavigate = value;
+	}
+
 	send() {
 		this.notificationService.send({
 			message: this.messageWithParams ? this.messageKey : this.message,
