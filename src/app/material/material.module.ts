@@ -10,30 +10,42 @@ import {MatListModule} from '@angular/material/list';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatIconModule} from '@angular/material/icon';
+import {MatBadgeModule} from '@angular/material/badge';
 import {CardComponent} from './card/card.component';
 import {SliderComponent} from './slider/slider.component';
+import {BadgeComponent} from './badge/badge.component';
 import {ColumnLayoutModule, ObSelectableModule} from 'oblique';
 
 const appRoutes: Routes = [
+	{path: 'badge', component: BadgeComponent},
 	{path: 'card', component: CardComponent},
 	{path: 'slider', component: SliderComponent},
 	{path: '', redirectTo: 'card', pathMatch: 'full'}
 ];
 
 @NgModule({
-	declarations: [CardComponent, SliderComponent],
+	declarations: [
+		BadgeComponent,
+		CardComponent,
+		SliderComponent
+	],
 	imports: [
 		CommonModule,
 		ColumnLayoutModule,
 		ObSelectableModule,
 		FormsModule,
 		RouterModule.forChild(appRoutes),
+		MatBadgeModule,
 		MatButtonModule,
 		MatCardModule,
 		MatFormFieldModule,
+		MatIconModule,
 		MatInputModule,
 		MatListModule,
 		MatRadioModule,
+		MatSliderModule,
 		MatSlideToggleModule,
 		MatTooltipModule
 	]

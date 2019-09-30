@@ -1,0 +1,60 @@
+<div class="default-layout">
+	<h2 class="page-header">Badge</h2>
+	<or-column-layout [left]="false">
+		<div column-main-content class="main-div">
+			<mat-list>
+				<mat-list-item>
+					<p [matBadge]="badgeContent" matBadgeOverlap="false" [matBadgePosition]="position" [matBadgeColor]="color">
+						Text with a badge
+					</p>
+				</mat-list-item>
+				<mat-list-item>
+					<p>
+						Button with a badge
+						<button mat-raised-button color="primary"
+								[matBadge]="badgeContent" [matBadgePosition]="position" [matBadgeColor]="color">
+							Action
+						</button>
+					</p>
+				</mat-list-item>
+				<mat-list-item>
+					<p>
+						Icon with a badge
+						<mat-icon [matBadge]="badgeContent" [matBadgePosition]="position" [matBadgeColor]="color">home</mat-icon>
+					</p>
+				</mat-list-item>
+			</mat-list>
+		</div>
+		<div class="default-layout" column-right-content>
+			<h3>Controls</h3>
+			<mat-list>
+				<fieldset>
+					<legend>Content</legend>
+					<mat-form-field>
+						<input matInput type="number" [(ngModel)]="badgeContent">
+					</mat-form-field>
+				</fieldset>
+				<fieldset>
+					<legend>Color</legend>
+					<mat-radio-group [(ngModel)]="color">
+						<mat-list-item *ngFor="let badgeColor of colors">
+							<mat-radio-button [value]="badgeColor">
+								{{badgeColor | titlecase}}
+							</mat-radio-button>
+						</mat-list-item>
+					</mat-radio-group>
+				</fieldset>
+				<fieldset>
+					<legend>Position</legend>
+					<mat-radio-group [(ngModel)]="position">
+						<mat-list-item *ngFor="let badgePosition of positions">
+							<mat-radio-button [value]="badgePosition">
+								{{badgePosition | titlecase}}
+							</mat-radio-button>
+						</mat-list-item>
+					</mat-radio-group>
+				</fieldset>
+			</mat-list>
+		</div>
+	</or-column-layout>
+</div>
