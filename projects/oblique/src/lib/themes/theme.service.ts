@@ -58,7 +58,7 @@ export class ThemeService {
 		});
 	}
 
-	setFrutiger(enabled: boolean) {
+	setFrutiger(enabled: boolean): void {
 		if (enabled) {
 			this.renderer.setAttribute(this.fontLink, 'href', 'assets/styles/css/frutiger.css');
 		} else {

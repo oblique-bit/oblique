@@ -1,7 +1,7 @@
 import {Component, ContentChildren, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, Renderer2, TemplateRef, ViewChild} from '@angular/core';
 import {map, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {ThemeService} from '../theme.service';
+import {ThemeService} from '../themes/theme.service';
 
 @Component({
 	selector: 'or-filter-box',

@@ -13,7 +13,7 @@ import {merge} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe.class';
-import {ThemeService} from '../theme.service';
+import {ThemeService} from '../themes/theme.service';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular default material behavior for both mandatory and error states instead
