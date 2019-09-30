@@ -1,252 +1,43 @@
 {
-  "i18n": {
-    "application": {
-      "code": "ORS",
-      "title": "oblique",
-      "description": "[it] Reactive front-end framework for your business web application.",
-      "organization": {
-        "name": "Ufficio federale dell'informatica e della telecomunicazione",
-        "url": "https://www.bit.admin.ch/bit/it/home.html",
-        "email": "info@bit.admin.ch"
-      },
-      "locales": {
-        "de": "Deutsch",
-        "fr": "Français",
-        "it": "Italiano",
-        "en": "English"
-      },
-      "loading": "[it] Loading...",
-      "footer.legal": {
-        "label": "Legal",
-        "title": "Terms and conditions"
-      }
-    },
-    "routes": {
-      "home": {
-        "title": "[it] Home",
-        "description": "[it] Description for the Home state page."
-      },
-      "auth": {
-        "title": "[it] Sign in",
-        "login": {
-          "title": "[it] Login",
-          "rememberme": "[it] Remember me?",
-          "submit": "[it] Log in",
-          "password-lost": "[it] Forgot password?",
-          "error": "[it] We have been unable to authenticate you, please check your credentials!",
-          "success": "[it] You have been successfully authenticated."
-        },
-        "register": {
-          "title": "[it] New to {{title}}? Sign up!",
-          "submit": "[it] Register"
-        }
-      },
-      "samples": {
-        "title": "[it] Samples",
-        "column-layout": {
-          "title": "Column Layout"
-        },
-        "datepicker": {
-          "title": "Datepicker"
-        },
-        "filter-box": {
-          "title": "Filter Box"
-        },
-        "form-control-state": {
-          "title": "Form Control State"
-        },
-        "http-interceptor": {
-          "title": "HTTP Interceptor"
-        },
-        "master-layout": {
-          "title": "Master Layout"
-        },
-        "multiselect": {
-          "title": "Multiselect"
-        },
-        "navigable": {
-          "title": "Navigable"
-        },
-        "navigator": {
-          "title": "States Navigator"
-        },
-        "nav-tree": {
-          "title": "Navigation Tree"
-        },
-        "notification": {
-          "title": "Notification"
-        },
-        "number-format": {
-          "title": "Number format"
-        },
-        "sticky": {
-          "title": "Sticky"
-        },
-        "schema-validation": {
-          "title": "Schema Validation"
-        },
-        "toggle": {
-          "title": "Toggles"
-        },
-        "ui-scroll": {
-          "title": "UI Scroll"
-        },
-        "unsaved-changes": {
-          "title": "Unsaved Changes"
-        }
-      }
-    },
-    "common": {
-      "yes": "[it] Yes",
-      "no": "[it] No",
-      "save": "[it] Save",
-      "cancel": "[it] Cancel",
-      "delete": "[it] Delete",
-      "select": "[it] Select please.",
-      "actions": "[it] Actions",
-      "action": "[it] Action",
-      "collapseAll": "Ridurre tutto",
-      "expandAll": "Espandere tutto",
-      "pager": {
-        "pagesLengthBefore": "[it] Displaying",
-        "pagesLengthAfter": "[it] Results per page",
-        "page": "[it] Page",
-        "of": "[it] from",
-        "hits": "[it] Hits"
-      },
-      "date": {
-        "format": {
-          "dd.MM.yyyy": "gg.mm.aaaa",
-          "d!.M!.yyyy": "gg.mm.aaaa"
-        }
-      },
-      "search": {
-        "label": "Ricerca",
-        "action": "Ricerca",
-        "noResults": "Nessun risultato",
-        "placeholder": "Ricerca per temi",
-        "results": "Risultato"
-      }
-    },
-    "labels": {
-      "language": "Lingua",
-      "email": "Email",
-      "password": "Password"
-    },
-    "accesskey": {
-      "mainContent": "[it] Skip to main content [0]",
-      "homepage": "[it] Homepage [1]",
-      "navigation": "[it] Navigation [2]",
-      "globalNavigationMenu":"[it] Global navigation menu"
-    },
-    "error": {
-      "general": "[it] Es ist ein Fehler aufgetreten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
-      "http": {
-        "status": {
-          "0": "Service Unavailable",
-          "400": "Bad Request",
-          "404": "The requested resource could not be found",
-          "500": "Internal Server Error",
-          "501": "Not Implemented",
-          "502": "Bad Gateway",
-          "503": "Service Unavailable"
-        }
-      },
-      "other": {
-        "timeout": "[it] Server hat nicht zu lange reagiert. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support",
-        "upload": "[it] Es ist ein Fehler bei hochladen aufgetrten. Versuchen Sie es später nocheinmal oder kontaktieren Sie den Support"
-      },
-      "business": {
-        "ObjectOptimisticLockingFailureException": "Daten können nicht gespeichert werden, da sie auf dem Server geändert werden. Form wurde mit aktuellen Daten neu geladen."
-      }
-    },
-    "notification": {
-      "type": {
-        "default": "",
-        "info": "Info",
-        "success": "Success",
-        "warning": "Warning",
-        "error": "Error"
-      },
-      "common": {
-        "form": {
-          "success": "Speichern erfolgreich",
-          "pristine": "Ihre Eingaben haben sich nicht geändert",
-          "invalid": "Bitte korrigieren Sie die Fehler im Formular"
-        }
-      },
-      "custom": {
-      }
-    },
-    "validation": {
-      "required": "[it] This field is required!",
-      "basic": {
-        "required": "Pflichtfeld, bitte machen Sie eine Angabe",
-        "email": "Ungültiges Format, bitte geben Sie eine gültige E-Mail Adresse an",
-        "url": "Ungültige Format, bitte geben Sie eine gültige URL Adresse an",
-        "minlength": "Bitte geben Sie mindestens {{limit}} Zeichen ein (Sie haben nur {{actual}} Zeichen eingegeben)",
-        "maxlength": "Bitte geben Sie höchstens {{limit}} Zeichen ein (Sie haben nur {{actual}} Zeichen eingegeben)",
-        "min": "Bitte geben Sie eine Zahl grösser oder gleich {{limit}} ein",
-        "max": "Bitte geben Sie eine Zahl kleiner oder gleich {{limit}} ein",
-        "integer": "Ungültiges Format, bitte geben Sie eine Zahl ohne Dezimalstellen ein",
-        "float": "Ungültiges Format, bitte geben Sie eine Zahl mit Dezimalstellen ein",
-        "date": "Ungültiges Format, bitte geben Sie eine korrekte Datum"
-      },
-      "custom": {
-        "date": {
-          "day": {
-            "min": "Ungültiger Tag, geben Sie eine Zahl zwischen 1 und 31 ein",
-            "max": "Ungültiger Tag, geben Sie eine Zahl zwischen 1 und 31 ein"
-          },
-          "month": {
-            "min": "Ungültiger Monat, geben Sie eine Zahl zwischen 1 und 12 ein",
-            "max": "Ungültiger Monat, geben Sie eine Zahl zwischen 1 und 12 ein"
-          }
-        }
-      },
-      "ngbDate": "[it] Incorrect date or format, please enter a valid date in the dd.mm.yyyy format.",
-      "ngbDate.requiredBefore": "[it] The date is under the min datum {{day}}.{{month}}.{{year}}",
-      "ngbDate.requiredAfter": "[it] The date is above the max date {{day}}.{{month}}.{{year}}",
-      "unsavedChanges": "Alcuni cambiamenti non sono stati salvati, continuare?"
-    },
-    "form": {
-      "action": {
-        "add": "Add",
-        "apply": "Apply",
-        "applyAndContinue": "Apply and continue",
-        "save": "Save",
-        "delete": "Delete",
-        "cancel": "Cancel",
-        "next": "Next",
-        "back": "Back"
-      }
-    },
-    "multiselect": {
-      "checkAll": "Selezionare <strong>tutto</strong>",
-      "uncheckAll": "Selezionare <strong>zero</strong>",
-      "buttonDefault": "Selezionare",
-      "allSelected": "Tutti gli elementi sono stati selezionati."
-    },
-    "topControl": {
-      "backToTop": "Inizio pagina"
-    },
-    "oblique": {
-      "multiselect": {
-        "checkAll": "Selezionare tutto",
-        "uncheckAll": "Selezionare zero",
-        "checked": "{{amount}} selezionati",
-        "searchPlaceholder": "Ricerca...",
-        "defaultTitle": "Selezionare",
-        "allSelected": "Tutti gli elementi sono stati selezionati."
-      },
-      "column": {
-        "left": {
-          "toggle": "[it] Toggle left column."
-        },
-        "right": {
-          "toggle": "[it] Toggle right column."
-        }
-      }
-    }
-  }
+  "i18n.application.title": "oblique",
+  "i18n.application.description": "[it] Reactive front-end framework for your business web application.",
+  "i18n.application.organization.name": "Ufficio federale dell'informatica e della telecomunicazione",
+  "i18n.application.organization.url": "https://www.bit.admin.ch/bit/it/home.html",
+  "i18n.application.organization.email": "info@bit.admin.ch",
+  "i18n.application.locales.de": "Deutsch",
+  "i18n.application.locales.fr": "Français",
+  "i18n.application.locales.it": "Italiano",
+  "i18n.application.locales.en": "English",
+  "i18n.application.loading": "[it] Loading...",
+  "i18n.application.footer.legal.label": "Legal",
+  "i18n.application.footer.legal.title": "Terms and conditions",
+  "i18n.routes.home.title": "[it] Home",
+  "i18n.routes.home.description": "[it] Description for the Home state page.",
+  "i18n.routes.auth.title": "[it] Sign in",
+  "i18n.routes.auth.login.title": "[it] Login",
+  "i18n.routes.auth.login.rememberme": "[it] Remember me?",
+  "i18n.routes.auth.login.submit": "[it] Log in",
+  "i18n.routes.auth.login.password-lost": "[it] Forgot password?",
+  "i18n.routes.auth.login.error": "[it] We have been unable to authenticate you, please check your credentials!",
+  "i18n.routes.auth.login.success": "[it] You have been successfully authenticated.",
+  "i18n.routes.auth.register.title": "[it] New to {{title}}? Sign up!",
+  "i18n.routes.auth.register.submit": "[it] Register",
+  "i18n.routes.samples.title": "[it] Samples",
+  "i18n.routes.samples.column-layout.title": "Column Layout",
+  "i18n.routes.samples.datepicker.title": "Datepicker",
+  "i18n.routes.samples.filter-box.title": "Filter Box",
+  "i18n.routes.samples.form-control-state.title": "Form Control State",
+  "i18n.routes.samples.http-interceptor.title": "HTTP Interceptor",
+  "i18n.routes.samples.master-layout.title": "Master Layout",
+  "i18n.routes.samples.multiselect.title": "Multiselect",
+  "i18n.routes.samples.navigable.title": "Navigable",
+  "i18n.routes.samples.navigator.title": "States Navigator",
+  "i18n.routes.samples.nav-tree.title": "Navigation Tree",
+  "i18n.routes.samples.notification.title": "Notification",
+  "i18n.routes.samples.number-format.title": "Number format",
+  "i18n.routes.samples.sticky.title": "Sticky",
+  "i18n.routes.samples.schema-validation.title": "Schema Validation",
+  "i18n.routes.samples.toggle.title": "Toggles",
+  "i18n.routes.samples.ui-scroll.title": "UI Scroll",
+  "i18n.routes.samples.unsaved-changes.title": "Unsaved Changes"
 }

@@ -5,9 +5,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {NgbDatepickerConfig, NgbModule, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import {
+	createTranslateLoader,
 	DocumentMetaModule,
 	DocumentMetaService,
 	DropdownModule,
@@ -38,10 +38,6 @@ import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-in
 import {MatFormFieldModule, MatInputModule} from '@angular/material';
 import {StylesComponent} from './styles/styles.component';
 
-// AoT requires an exported function for factories:
-export function createTranslateLoader(http: HttpClient) {
-	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
 
 @NgModule({
 	declarations: [

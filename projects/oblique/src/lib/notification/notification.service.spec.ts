@@ -55,7 +55,7 @@ describe('NotificationService', () => {
 			expect(notification.channel).toBe('test');
 			expect(notification.type).toBe(NotificationType.SUCCESS);
 			expect(notification.message).toBe(message);
-			expect(notification.title).toBe('i18n.notification.type.success');
+			expect(notification.title).toBe('i18n.oblique.notification.type.success');
 			expect(notification.timeout).toBe(42);
 			expect(notification.sticky).toBe(true);
 		});
