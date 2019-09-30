@@ -11,10 +11,10 @@
 		</a>
 	</ng-template>
 	<ng-template #orHeaderControl>
-		<a orOffCanvasToggle role="button" ngbTooltip="Toggle Off-Canvas" placement="left"
+		<button orOffCanvasToggle ngbTooltip="Toggle Off-Canvas" placement="left"
 		   (click)="offCanvasOpen = !offCanvasOpen" tabindex="0">
 			<span class="fa fa-sign-in-alt" [class.fa-rotate-180]="!offCanvasOpen"></span>
-		</a>
+		</button>
 	</ng-template>
 	<ng-template #orHeaderControl>
 		<or-dropdown position="left">
@@ -22,8 +22,8 @@
 			<ng-container dropdown-content>
 				<h4 translate>i18n.rtfas.nav.bar-header.language</h4>
 				<ul role="menu" class="nav-tree" aria-hidden="false">
-					<li class="nav-item" role="menuitem">
-						<a class="nav-link" role="button">FR</a>
+					<li role="menuitem">
+						<a role="button">FR</a>
 					</li>
 					<li role="menuitem">
 						<a role="button">DE</a>
@@ -58,14 +58,16 @@
 <!--		</div>-->
 <!--	</ng-template>-->
 	<ng-template #orHeaderControl>
-		<a role="button" (click)="toggleTheme()">
+		<div class="wrapper">
+		<button (click)="toggleTheme()">
 			{{material ? 'material' : 'bootstrap'}}
-		</a>
+		</button>
+		</div>
 	</ng-template>
 	<ng-template #orHeaderControl>
-		<a role="button" (click)="toggleFont()">
+		<button (click)="toggleFont()">
 			{{frutiger ? 'Frutiger' : 'Arial'}}
-		</a>
+		</button>
 	</ng-template>
 
 	<ng-template #orFooterLink>
