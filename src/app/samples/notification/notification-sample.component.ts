@@ -31,7 +31,7 @@ export class NotificationSampleComponent {
 	timeout = 2500;
 
 	constructor(private readonly notificationService: NotificationService) {
-		this.appChannel = 'default';
+		this.appChannel = 'oblique';
 	}
 
 	send() {
