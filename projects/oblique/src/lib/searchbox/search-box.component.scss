@@ -77,20 +77,12 @@
 	}
 }
 
-.control-link.search-box {
-	&::before {
-		bottom: $spacing-default;
-		left: calc(2em + #{$spacing-default});
-	}
+.control-item .search-box {
+	color: $gray-dark;
 
-	&.search-box.slide-control {
-		transition: color $duration-default;
-
-		&:focus,
-		&:active,
-		&:hover,
-		&.open {
-			color: $brand-default;
-		}
+	&:hover,
+	&:active,
+	&:focus {
+		color: $brand-default;
 	}
 }

@@ -106,6 +106,10 @@
 		margin: 0;
 		padding: 0;
 		list-style: none;
+
+		&:not(.header-locale) .control-item {
+			padding: $spacing-default;
+		}
 	}
 
 	.control-item {
@@ -116,63 +120,25 @@
 				transition: margin-top $duration-default ease-in-out;
 			}
 		}
-
-		.control-link:hover,
-		.control-link:active,
-		.control-link:focus,
-		&:active .control-link,
-		&:focus .control-link,
-		&.active .control-link,
-		&.open .control-link,
-		&.show .control-link {
-			color: $brand-default;
-		}
-
-		&:active .control-link,
-		&:focus .control-link,
-		&.active .control-link {
-			.control-label {
-				&::before {
-					opacity: 1;
-				}
-			}
-		}
 	}
 
 	.control-link {
-		transition: all $duration-default ease-in-out;
-		display: block;
-		padding: $spacing-default;
+		padding: 0;
+		border: none;
+		background-color: transparent;
 		color: $gray-dark;
+		transition: color $duration-fast ease-in-out;
 
-		.control-toggle,
-		.control-icon,
-		.control-label {
-			margin: 0;
-			vertical-align: middle;
+		&:hover,
+		&:active,
+		&:focus {
+			color: $brand-default;
 		}
+	}
 
-		.control-icon + .control-label,
-		.control-toggle + .control-label,
-		.control-label + .control-icon {
-			margin-left: $spacing-xs;
-		}
-
-		.control-toggle {
-			font-weight: normal;
-		}
-
-		.control-icon {
-			cursor: pointer;
-			font-size: $font-size-xl;
-		}
-
-		.control-label {
-			cursor: pointer;
-
-			&::before {
-				opacity: 0.6;
-			}
-		}
+	.control-icon {
+		margin: 0;
+		vertical-align: middle;
+		font-size: $font-size-xl;
 	}
 }

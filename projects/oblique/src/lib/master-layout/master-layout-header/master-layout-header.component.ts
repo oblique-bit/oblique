@@ -58,18 +58,7 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 	ngAfterViewInit() {
 		this.setFocusable(this.masterLayout.layout.isMenuOpened);
 		this.masterLayout.layout.configEvents.pipe(filter(evt => evt.name === MasterLayoutEventValues.COLLAPSE)).subscribe(value => this.setFocusable(!value));
-
-		this.headerControl.forEach((elt: ElementRef) => {
-			Array.from(elt.nativeElement.children).forEach((item: HTMLElement) => {
-				this.renderer.addClass(item, 'control-link');
-			});
-			Array.from(elt.nativeElement.querySelectorAll('a')).forEach((item: HTMLElement) => {
-				this.renderer.addClass(item, 'nav-link');
-			});
-			Array.from(elt.nativeElement.querySelectorAll('.nav-link .fa, .nav-link .fab')).forEach((item: HTMLElement) => {
-				this.renderer.addClass(item, 'control-icon');
-			});
-		});
+		this.addObliqueClasses();
 	}
 
 	@HostListener('window:resize')
@@ -83,6 +72,23 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 
 	changeLang(lang: string): void {
 		this.translate.use(lang);
+	}
+
+	private addObliqueClasses() {
+		const actionable = ['a', 'button'];
+		this.headerControl.forEach((elt: ElementRef) => {
+			if (actionable.indexOf(elt.nativeElement.nodeName.toLowerCase()) > -1) {
+				this.renderer.addClass(elt.nativeElement, 'control-link');
+			} else {
+				const el = elt.nativeElement.querySelector('a, button');
+				if (el) {
+					this.renderer.addClass(el, 'control-link');
+				}
+			}
+			Array.from(elt.nativeElement.querySelectorAll('.control-link .fa, .control-link .fab')).forEach((item: HTMLElement) => {
+				this.renderer.addClass(item, 'control-icon');
+			});
+		});
 	}
 
 	private reduceOnScroll() {
