@@ -40,4 +40,8 @@
 		<h5>Internationalization</h5>
 		<or-api-element [elements]="component.internationalization"></or-api-element>
 	</ng-container>
+	<ng-container *ngIf="component.tokens">
+		<h5>Injection tokens</h5>
+		<or-api-element [elements]="component.tokens"></or-api-element>
+	</ng-container>
 </ng-container>

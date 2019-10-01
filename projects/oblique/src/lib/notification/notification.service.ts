@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
+import {NavigationEnd, Router} from '@angular/router';
 import {Observable, Subject} from 'rxjs';
+import {filter} from 'rxjs/operators';
 import {INotification, NotificationType} from './notification.interfaces';
 import {NotificationConfig} from './notification.config';
 
@@ -11,10 +13,13 @@ import {NotificationConfig} from './notification.config';
  */
 @Injectable({providedIn: 'root'})
 export class NotificationService {
+	clearAllOnNavigate = this.config.clearAllOnNavigate;
 	private readonly eventSubject: Subject<INotification> = new Subject<INotification>();
 	private readonly events$ = this.eventSubject.asObservable();
 
-	constructor(public config: NotificationConfig) {
+
+	constructor(public config: NotificationConfig, router: Router) {
+		router.events.pipe(filter(evt => evt instanceof NavigationEnd && this.clearAllOnNavigate)).subscribe(() => this.clearAll());
 	}
 
 	public get events(): Observable<INotification> {

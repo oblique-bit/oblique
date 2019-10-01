@@ -37,6 +37,7 @@ export {
 }from './lib/navigable/navigable.module';
 export {NavigatorComponent, NavigatorModule} from './lib/navigator/navigator.module';
 export {
+	CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE,
 	NotificationComponent,
 	NotificationConfig,
 	NotificationModule,

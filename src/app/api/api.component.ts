@@ -12,6 +12,7 @@ export interface API {
 	methods?: APIelement[];
 	projection?: APIelement[];
 	internationalization?: APIelement[];
+	tokens?: APIelement[];
 }
 
 export interface APIelement {

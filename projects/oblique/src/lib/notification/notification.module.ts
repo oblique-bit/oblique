@@ -9,7 +9,7 @@ import {NotificationConfig} from './notification.config';
 
 export {NotificationComponent} from './notification.component';
 export {NotificationService} from './notification.service';
-export {NotificationConfig} from './notification.config';
+export {NotificationConfig, CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE} from './notification.config';
 export {KeyWithParams, INotification, NotificationType} from './notification.interfaces';
 
 @NgModule({

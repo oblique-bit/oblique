@@ -1,3 +1,4 @@
+import {RouterTestingModule} from '@angular/router/testing';
 import {inject, TestBed} from '@angular/core/testing';
 import {first, take} from 'rxjs/operators';
 import {NotificationService} from './notification.service';
@@ -13,6 +14,7 @@ describe('NotificationService', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
+			imports: [RouterTestingModule],
 			providers: [
 				NotificationConfig,
 				NotificationService
