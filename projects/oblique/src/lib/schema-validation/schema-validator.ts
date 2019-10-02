@@ -1,5 +1,5 @@
-import {Directive, AfterViewInit, forwardRef, Injector} from '@angular/core';
-import {NG_VALIDATORS, FormControl, NgControl, Validator, ValidationErrors} from '@angular/forms';
+import {AfterViewInit, Directive, forwardRef, Injector} from '@angular/core';
+import {FormControl, NG_VALIDATORS, NgControl, ValidationErrors, Validator} from '@angular/forms';
 import {SchemaValidationDirective} from './schema-validation.directive';
 
 @Directive({
@@ -9,7 +9,6 @@ import {SchemaValidationDirective} from './schema-validation.directive';
 	]
 })
 export class SchemaValidateDirective implements AfterViewInit, Validator {
-
 	private propertyName: string;
 
 	constructor(private readonly schemaDirective: SchemaValidationDirective,
