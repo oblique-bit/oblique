@@ -3,7 +3,7 @@ import {NG_VALIDATORS, FormControl, NgControl, Validator, ValidationErrors} from
 import {SchemaValidationDirective} from './schema-validation.directive';
 
 @Directive({
-	selector: '[orSchemaValidate][ngModel],[orSchemaValidate][formControl]',
+	selector: '[orSchemaValidate][ngModel],[orSchemaValidate][formControlName]',
 	providers: [
 		{provide: NG_VALIDATORS, useExisting: forwardRef(() => SchemaValidateDirective), multi: true}
 	]

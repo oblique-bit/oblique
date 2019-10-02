@@ -10,7 +10,7 @@ export class SchemaValidatorInstance {
 		this.schema = schema;
 	}
 
-	validate(propertyPath: string, value: any): ValidationErrors {
+	validate(propertyPath = '', value: any): ValidationErrors {
 		if (this.hasRequiredError(propertyPath.split('.'), value)) {
 			return {required: true};
 		}
