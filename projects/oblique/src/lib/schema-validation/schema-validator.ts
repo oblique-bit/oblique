@@ -18,7 +18,10 @@ export class SchemaValidateDirective implements AfterViewInit, Validator {
 
 	ngAfterViewInit(): void {
 		//TODO: this is a workaround: if NgControl is required in the constructor, we have cyclic dependencies
-		this.propertyName = this.injector.get(NgControl).path.join('.');
+		const ngControl = this.injector.get(NgControl);
+		this.propertyName = ngControl.path.join('.');
+		// Force validation for reactive form, but delay it to avoid ExpressionChangedAfterItHasBeenCheckedError
+		setTimeout(() => ngControl.control.updateValueAndValidity());
 	}
 
 	validate(formControl: FormControl): ValidationErrors {
