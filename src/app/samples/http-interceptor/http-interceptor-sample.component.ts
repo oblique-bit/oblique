@@ -79,6 +79,7 @@ export class HttpInterceptorSampleComponent {
 			evt.notification.severity = this.notification.severity;
 			evt.notification.title = this.notification.title;
 			evt.notification.text = this.notification.text;
+			evt.notification.sticky = this.notification.sticky;
 			evt.spinner = this.spinner;
 		});
 	}
