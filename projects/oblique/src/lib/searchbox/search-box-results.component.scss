@@ -25,7 +25,7 @@ or-search-box-results {
 	}
 }
 
-.control-link .search-results-list {
+.control-item .search-results-list {
 	position: fixed;
 }
 
@@ -43,24 +43,24 @@ or-search-box-results {
 }
 
 @include media-breakpoint-up(lg) {
-	.control-link .search-results-list {
-		position: absolute;
-	}
-
 	.search-results-list {
 		display: block;
 		position: absolute;
 		top: auto;
-		left: -5px;
+		left: -$spacing-default - 5px;
 		min-width: 300px;
 		max-height: 0;
 		padding: 0 $spacing-default;
-		margin-top: 29px;
+		margin-top: $spacing-default;
 		background-color: $white;
 		box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
 		transition-property: max-height, padding-top, padding-bottom;
 		transition-duration: $duration-default;
 		z-index: 1;
+
+		.control-item & {
+			position: absolute;
+		}
 
 		&::before,
 		&::after {

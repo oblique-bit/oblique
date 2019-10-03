@@ -83,10 +83,8 @@
 				}
 
 				.dropdown-toggle {
-					&.nav-link {
-						padding: 0;
-						color: inherit;
-					}
+					padding: 0;
+					cursor: pointer;
 
 					&::after {
 						display: none;
