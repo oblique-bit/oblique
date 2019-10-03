@@ -17,7 +17,7 @@ $large: 1.25rem;
 		margin-right: $spacing-xs;
 	}
 
-	.mat-form-field-suffix > * {
+	.mat-form-field-suffix > *:not(.mat-datepicker-toggle) {
 		margin-left: $spacing-xs;
 	}
 
@@ -89,6 +89,11 @@ $large: 1.25rem;
 		.mat-form-field-prefix,
 		.mat-form-field-suffix {
 			top: 0; // TODO https://github.com/angular/material2/issues/12803
+		}
+
+		.mat-datepicker-toggle {
+			position: relative;
+			top: 0.25em;
 		}
 	}
 }
