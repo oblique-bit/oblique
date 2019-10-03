@@ -15,6 +15,7 @@ export interface ObliqueRequest {
 		severity: NotificationType;
 		title: string;
 		text: string;
+		sticky: boolean;
 	};
 	spinner: boolean;
 }
@@ -100,7 +101,8 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 			this.notificationService.send({
 				message: notification.text || 'i18n.oblique.http.error.status.' + error.status,
 				title: notification.title || error.statusText,
-				type: notification.severity
+				type: notification.severity,
+				sticky: notification.sticky
 			});
 		}
 	}

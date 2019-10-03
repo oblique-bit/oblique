@@ -49,7 +49,8 @@ export class ObliqueHttpInterceptorConfig {
 			 * Defines the text of the notification
 			 * @default 'i18n.error.http.status.' + error.status
 			 */
-			text: undefined
+			text: undefined,
+			sticky: undefined
 		}
 	};
 
