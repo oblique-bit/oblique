@@ -452,7 +452,7 @@
 			},
 			{
 				"name": "scrollRight",
-				"text": "When scrolled navigation is enabled, will scroll the navigation to the right by the given amout or default amount if none is given.",
+				"text": "When scrolled navigation is enabled, will scroll the navigation to the right by the given amount or default amount if none is given.",
 				"returns": "void",
 				"arguments": [
 					"offset?: number"
