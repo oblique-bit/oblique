@@ -9,14 +9,14 @@
 * **master-layout:** fix scroll `padding-bottom` on `.application` ([e82c1eb](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/e82c1eb))
 * **search-box:** do not animate left and right padding of hit list ([d00f359](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/d00f359))
 * **search-box:** do not use `unset` CSS value (IE11) ([bac090f](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/bac090f))
-* **themes:** `themes$` observable deliver `THEMES` instead of `string` ([b440bff](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/b440bff))
-* **themes:** add `margin-top` to avoid clipping label with Material ([928df57](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/928df57))
-* **themes:** align Material's `prefix` and `suffix` with input text ([8b1035d](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/8b1035d))
-* **themes:** do not use `unset` CSS value (IE11) ([5e69d96](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/5e69d96))
-* **themes:** fix Bootstrap's `input-groups` dropdown appearance ([909a444](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/909a444))
-* **themes:** fix bootstrap's pre- and append icon height ([270d9d3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/270d9d3))
-* **themes:** improve contrast of bootstrap's `list-group` ([eb0b3f7](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/eb0b3f7))
-* **themes:** show full hint or error texts only on hover ([aeafaf2](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/aeafaf2))
+* **theme:** `themes$` observable deliver `THEMES` instead of `string` ([b440bff](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/b440bff))
+* **theme:** add `margin-top` to avoid clipping label with Material ([928df57](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/928df57))
+* **theme:** align Material's `prefix` and `suffix` with input text ([8b1035d](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/8b1035d))
+* **theme:** do not use `unset` CSS value (IE11) ([5e69d96](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/5e69d96))
+* **theme:** fix Bootstrap's `input-groups` dropdown appearance ([909a444](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/909a444))
+* **theme:** fix bootstrap's pre- and append icon height ([270d9d3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/270d9d3))
+* **theme:** improve contrast of bootstrap's `list-group` ([eb0b3f7](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/eb0b3f7))
+* **theme:** show full hint or error texts only on hover ([aeafaf2](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/aeafaf2))
 
 
 # [4.0.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.2) (2019-09-17)
@@ -34,14 +34,14 @@
 * **master-layout:** show off-canvas backdrop below layout collapse ([9f0fef3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/9f0fef3))
 * **master-layout:** use initial value of `hasScrollTransition` ([9bc4da7](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/9bc4da7))
 * **notification:** do not use `KeyWithParams` interface and deprecate it ([b141570](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/b141570))
-* **themes:** add `margin-bottom` to alert ([aa8d175](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/aa8d175))
-* **themes:** add bootstrap's grid to `oblique-utilities` ([6c97ef6](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/6c97ef6))
-* **themes:** add scroll on `pre` element ([0506d5a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/0506d5a))
-* **themes:** correctly read `FRUTIGER` value ([9864fd5](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/9864fd5))
-* **themes:** do not add border and padding to `code` within `pre` ([becfa83](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/becfa83))
-* **themes:** add fontawesome 5 font files ([7f00f15](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/7f00f15))
-* **themes:** add fontawesome SCSS files ([2915181](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/2915181))
-* **themes:** remove fontawesome 4 font files ([d6ddd04](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/d6ddd04))
+* **theme:** add `margin-bottom` to alert ([aa8d175](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/aa8d175))
+* **theme:** add bootstrap's grid to `oblique-utilities` ([6c97ef6](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/6c97ef6))
+* **theme:** add scroll on `pre` element ([0506d5a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/0506d5a))
+* **theme:** correctly read `FRUTIGER` value ([9864fd5](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/9864fd5))
+* **theme:** do not add border and padding to `code` within `pre` ([becfa83](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/becfa83))
+* **theme:** add fontawesome 5 font files ([7f00f15](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/7f00f15))
+* **theme:** add fontawesome SCSS files ([2915181](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/2915181))
+* **theme:** remove fontawesome 4 font files ([d6ddd04](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/d6ddd04))
 * **toggle:** can place toggle before or after ([f609400](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/f609400))
 * **toolchain:** fix `dist` on Windows ([1fe07f9](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/1fe07f9))
 
@@ -50,7 +50,7 @@
 
 ## Bug Fixes
 * **master-layout:** use white for heading in `offcanvas-sidebar` only ([daabf9b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/daabf9b))
-* **themes:** integrate FA5 CSS with oblique-core without `@import` ([bfe26de](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/bfe26de))
+* **theme:** integrate FA5 CSS with oblique-core without `@import` ([bfe26de](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/bfe26de))
 
 
 # [4.0.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.0) (2019-08-14)
@@ -69,8 +69,8 @@
 * **toggle:** remove leading whitespace in class list ([8df4c32](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/8df4c32))
 * **search-box:** fix bootstrap rendering ([c4f924d](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c4f924d))
 * **search-box:** mouse up and down events are not propagated ([076fb5a](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/076fb5a))
-* **themes:** add `nav-tabs` component ([3e529b9](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/3e529b9))
-* **themes:** fix stepper with material ([d5bfc58](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d5bfc58))
+* **theme:** add `nav-tabs` component ([3e529b9](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/3e529b9))
+* **theme:** fix stepper with material ([d5bfc58](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/d5bfc58))
 * **multiselect:** correctly pass prepend to filter-box ([92143f4](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/92143f4))
 * **multiselect:** correctly handle `disable` state ([b434daf](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b434daf))
 * **packaging:** `test_helpers` is correctly copied ([33d3c0f](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/33d3c0f))
@@ -83,23 +83,23 @@
 * **notification:** only `oblique` chanel has `position: fixed` ([8143f54](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/8143f54))
 * **notification:** add `id`s on notification's elements ([b68d340](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/b68d340))
 * **notification:** remove `default` notification ([0a54f3e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0a54f3e))
-* **themes:** add `$brand-info` colors and use them ([c2e02f4](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/c2e02f4))
-* **themes:** add `theme` service to take care of themes and fonts ([a76fc20](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/a76fc20))
-* **themes:** add all CI/CD colors and use them ([e4a540b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/e4a540b))
-* **themes:** redefine material color palette with oblique colors ([f91087c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/f91087c))
-* **themes:** redefine typography ([35a3727](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/35a3727))
-* **themes:** replace `OpenSans` with `Frutiger` and `Arial` as fallback ([00c839d](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/00c839d))
-* **themes:** style `table` according to CI/CD ([2712f1e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/2712f1e))
-* **themes:** adjust colors ([72d25a0](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/72d25a0))
-* **themes:** provide minified css files in the dist ([80e3362](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/80e3362))
-* **themes:** separate `oblique-bootstrap` from `oblique-core` ([8dcd1b8](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/8dcd1b8))
-* **themes:** extract alert into a standalone css component ([bbab6cc](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/bbab6cc))
-* **themes:** remove callout css component ([23be35e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/23be35e))
-* **themes:** add `oblique-utilities` ([82c5a3e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/82c5a3e))
-* **themes:** add `angular material` variant  ([cce3b02](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/cce3b02))
-* **themes:** force `outline` input variant for all Oblique modules ([fb28717](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/fb28717))
-* **themes:** `OBLIQUE_THEME` can be used to change the main theme ([a76fc208c78](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/a76fc208c78))
-* **themes:** `FRUTIGER` can be used to disable `frutiger` font ([a76fc208c78](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/a76fc208c78))
+* **theme:** add `$brand-info` colors and use them ([c2e02f4](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/c2e02f4))
+* **theme:** add `theme` service to take care of themes and fonts ([a76fc20](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/a76fc20))
+* **theme:** add all CI/CD colors and use them ([e4a540b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/e4a540b))
+* **theme:** redefine material color palette with oblique colors ([f91087c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/f91087c))
+* **theme:** redefine typography ([35a3727](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/35a3727))
+* **theme:** replace `OpenSans` with `Frutiger` and `Arial` as fallback ([00c839d](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/00c839d))
+* **theme:** style `table` according to CI/CD ([2712f1e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/2712f1e))
+* **theme:** adjust colors ([72d25a0](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/72d25a0))
+* **theme:** provide minified css files in the dist ([80e3362](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/80e3362))
+* **theme:** separate `oblique-bootstrap` from `oblique-core` ([8dcd1b8](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/8dcd1b8))
+* **theme:** extract alert into a standalone css component ([bbab6cc](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/bbab6cc))
+* **theme:** remove callout css component ([23be35e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/23be35e))
+* **theme:** add `oblique-utilities` ([82c5a3e](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/82c5a3e))
+* **theme:** add `angular material` variant  ([cce3b02](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/cce3b02))
+* **theme:** force `outline` input variant for all Oblique modules ([fb28717](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/fb28717))
+* **theme:** `OBLIQUE_THEME` can be used to change the main theme ([a76fc208c78](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/a76fc208c78))
+* **theme:** `FRUTIGER` can be used to disable `frutiger` font ([a76fc208c78](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/a76fc208c78))
 * **multiselect:** add `id`s on multiselect's elements ([0ee04c1](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0ee04c1))
 * **toggle:** can be activated by default with `active` input ([e092e6c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/e092e6c))
 * **toggle:** remove `toggle-collapse` class ([462c9c9](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/462c9c9))
@@ -109,7 +109,7 @@
 
 ## Code Refactoring
 * **package:** rename library to `@oblique/oblique` ([10095d5](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/10095d5))
-* **themes:** rename `brand-danger` into `brand-error` ([61b473a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/61b473a))
+* **theme:** rename `brand-danger` into `brand-error` ([61b473a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/61b473a))
 * **datepicker:** remove `DatePickerModule` form `ObliqueModule` ([a8383e9](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/a8383e9))
 * **toggle:** rename `activate` function into `toggle` ([3510496](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/3510496))
 * **toggle:** use `@Input` instead of classes for toggle direction ([686f8d7](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/686f8d7))
@@ -207,11 +207,11 @@
 	* `left-right`
 	* `left-down`
 	* `left-up`
-* **themes:** `$brand-warning-semilight` has been removed, use `$brand-warning-light` instead
-* **themes:** `$brand-danger` SCSS variable has been renamed into `$brand-error`
-* **themes:** `callout` have been removed in favor of `alert`
-* **themes:**  default material theme does not provide bootstrap's SCSS variables anymore
-* **themes:**  following CSS classes have been dropped with no replacement:
+* **theme:** `$brand-warning-semilight` has been removed, use `$brand-warning-light` instead
+* **theme:** `$brand-danger` SCSS variable has been renamed into `$brand-error`
+* **theme:** `callout` have been removed in favor of `alert`
+* **theme:**  default material theme does not provide bootstrap's SCSS variables anymore
+* **theme:**  following CSS classes have been dropped with no replacement:
 	* `smaller`
 	* `text-description`
 	* `page-header`
@@ -230,15 +230,15 @@
 	* `reveal`
 	* `stacks`
 	* `tile`
-* **themes:** almost all oblique mixins have either been removed or modified
-* **themes:** following Oblique CSS components are only available with `bootstrap` theme:
+* **theme:** almost all oblique mixins have either been removed or modified
+* **theme:** following Oblique CSS components are only available with `bootstrap` theme:
 	* `badge`
 	* `button`
 	* `dropdown`
 	* `form-check`
 	* `input-group`
 	* `table`
-* **themes:** Oblique CSS is imported form `node_modules/oblique-reactive/styles/scss/oblique-core.scss` instead of `node_modules/oblique-reactive/styles/css/oblique-ui.css`
+* **theme:** Oblique CSS is imported form `node_modules/oblique-reactive/styles/scss/oblique-core.scss` instead of `node_modules/oblique-reactive/styles/css/oblique-ui.css`
 * **filter-box:** prefixed content cannot be projected with `.input-group-prepend` anymore. Use `#prepend` instead.
 * **filter-box:** suffixed content cannot be projected with `.input-group-append` anymore. Use `#append` instead.
 

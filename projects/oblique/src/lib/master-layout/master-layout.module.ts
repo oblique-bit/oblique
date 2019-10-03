@@ -8,7 +8,7 @@ import {NotificationModule} from '../notification/notification.module';
 import {SpinnerModule} from '../spinner/spinner.module';
 import {ScrollingModule} from '../scrolling/scrolling.module';
 import {OffCanvasModule} from '../off-canvas/off-canvas.module';
-import {ThemeService} from '../themes/theme.service';
+import {ThemeService} from '../theme/theme.service';
 
 import {MasterLayoutComponent} from './master-layout/master-layout.component';
 import {MasterLayoutService} from './master-layout.service';
