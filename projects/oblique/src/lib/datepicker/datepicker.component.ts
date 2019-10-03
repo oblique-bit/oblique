@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ContentChild, ElementRef, HostListener, Input, ViewEncapsulation} from '@angular/core';
 import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
-import {ThemeService} from '../theme.service';
+import {ThemeService} from '../themes/theme.service';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular material datepicker instead

@@ -6,7 +6,7 @@ import {takeUntil} from 'rxjs/operators';
 import {Unsubscribable} from '../unsubscribe.class';
 import {FormControlStateDirective} from '../form-control-state/form-control-state.directive';
 import {ErrorMessagesService} from './error-messages.service';
-import {ThemeService} from '../theme.service';
+import {ThemeService} from '../themes/theme.service';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular material mat-error instead

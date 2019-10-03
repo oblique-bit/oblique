@@ -8,6 +8,7 @@ import {NotificationModule} from '../notification/notification.module';
 import {SpinnerModule} from '../spinner/spinner.module';
 import {ScrollingModule} from '../scrolling/scrolling.module';
 import {OffCanvasModule} from '../off-canvas/off-canvas.module';
+import {ThemeService} from '../themes/theme.service';
 
 import {MasterLayoutComponent} from './master-layout/master-layout.component';
 import {MasterLayoutService} from './master-layout.service';
@@ -20,8 +21,6 @@ import {MasterLayoutNavigationItemDirective} from './master-layout-navigation/ma
 import {MasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
 import {MasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
 import {MasterLayoutConfig} from './master-layout.config';
-import {ThemeService} from '../theme.service';
-
 export {MasterLayoutComponent} from './master-layout/master-layout.component';
 export {MasterLayoutService} from './master-layout.service';
 export {MasterLayoutHeaderToggleDirective} from './master-layout-header/master-layout-header-toggle.directive';

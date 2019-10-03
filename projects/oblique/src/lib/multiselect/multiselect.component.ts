@@ -23,7 +23,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {FilterBoxComponent} from '../filter-box/filter-box.component';
 import {MultiselectConfig} from './multiselect.config';
 import {MultiselectTexts} from './multiselect.texts';
-import {ThemeService} from '../theme.service';
+import {ThemeService} from '../themes/theme.service';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular material select instead

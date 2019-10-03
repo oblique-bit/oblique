@@ -1,0 +1,51 @@
+[
+  {
+    "name": "ThemeService",
+    "since": "4.0.0",
+    "variables": [
+      {
+        "name": "theme$",
+        "text": "An observable that emits each time the main theme is changed.",
+        "type": "Observable<THEMES>",
+        "since": "4.0.0"
+      }
+    ],
+    "methods": [
+      {
+        "name": "setTheme",
+        "text": "Sets a theme, e.g. loads the corresponding CSS and adds it the the <code>head</code>.",
+        "returns": "void",
+        "arguments": [
+          "theme: THEMES"
+        ],
+        "since": "4.0.0"
+      },
+      {
+        "name": "isMaterial",
+        "text": "Returns <code>true</code> if the current theme is Material, and <code>false</code> otherwise.",
+        "returns": "boolean",
+        "since": "4.0.0"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "OBLIQUE_THEME",
+        "text": "Defines the theme to apply.",
+        "type": "THEMES",
+        "values": [
+          "THEMES.MATERIAL",
+          "THEMES.BOOTSTRAP"
+        ],
+        "default": "THEMES.MATERIAL",
+        "since": "4.0.0"
+      },
+      {
+        "name": "FRUTIGER",
+        "text": "Defines if Frutiger font should be used. The alternative is Arial.",
+        "type": "boolean",
+        "default": true,
+        "since": "4.0.0"
+      }
+    ]
+  }
+]
