@@ -5,9 +5,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {NgbDatepickerConfig, NgbModule, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {createTranslateLoader} from '../../projects/oblique/src/lib/utilities';
 
 import {
-	createTranslateLoader,
 	DocumentMetaModule,
 	DocumentMetaService,
 	DropdownModule,
