@@ -1,15 +1,14 @@
-import {Directive, AfterViewInit, forwardRef, Injector} from '@angular/core';
-import {NG_VALIDATORS, FormControl, NgControl, Validator, ValidationErrors} from '@angular/forms';
+import {AfterViewInit, Directive, forwardRef, Injector} from '@angular/core';
+import {FormControl, NG_VALIDATORS, NgControl, ValidationErrors, Validator} from '@angular/forms';
 import {SchemaValidationDirective} from './schema-validation.directive';
 
 @Directive({
-	selector: '[orSchemaValidate][ngModel],[orSchemaValidate][formControl]',
+	selector: '[orSchemaValidate][ngModel],[orSchemaValidate][formControlName]',
 	providers: [
 		{provide: NG_VALIDATORS, useExisting: forwardRef(() => SchemaValidateDirective), multi: true}
 	]
 })
 export class SchemaValidateDirective implements AfterViewInit, Validator {
-
 	private propertyName: string;
 
 	constructor(private readonly schemaDirective: SchemaValidationDirective,
@@ -18,7 +17,10 @@ export class SchemaValidateDirective implements AfterViewInit, Validator {
 
 	ngAfterViewInit(): void {
 		//TODO: this is a workaround: if NgControl is required in the constructor, we have cyclic dependencies
-		this.propertyName = this.injector.get(NgControl).path.join('.');
+		const ngControl = this.injector.get(NgControl);
+		this.propertyName = ngControl.path.join('.');
+		// Force validation for reactive form, but delay it to avoid ExpressionChangedAfterItHasBeenCheckedError
+		setTimeout(() => ngControl.control.updateValueAndValidity());
 	}
 
 	validate(formControl: FormControl): ValidationErrors {

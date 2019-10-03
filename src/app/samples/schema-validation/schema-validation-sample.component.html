@@ -1,4 +1,4 @@
-<div class="default-layout">
+<div class="default-layout" *ngIf="schema$ | async as schema">
 	<h2 class="page-header">
 		{{'i18n.routes.samples.schema-validation.title' | translate}}
 	</h2>
@@ -231,7 +231,7 @@
 			<pre>{{templateForm.value | json}}</pre>
 		</div>
 		<div class="col">
-			<form class="form-horizontal has-validation card" role="form"
+			<form class="form-horizontal has-validation card" role="form" [orSchemaValidation]="schema"
 				  [formGroup]="formData" (submit)="check()" (reset)="reset()">
 				<div class="card-header">
 					<h3 class="card-title d-flex justify-content-between">
@@ -246,7 +246,7 @@
 					<div orFormControlState class="row form-group" [pristineValidation]="true">
 						<label class="col-3 col-form-label">Text</label>
 						<div class="col-8">
-							<input formControlName="text" type="text" placeholder="Text" class="form-control"/>
+							<input formControlName="text" type="text" placeholder="Text" class="form-control" orSchemaValidate/>
 							<or-error-messages></or-error-messages>
 						</div>
 						<div class="col-1 form-control-plaintext">
@@ -259,12 +259,11 @@
 					<div orFormControlState class="row form-group">
 						<label class="col-3 col-form-label">Number</label>
 						<div class="col-8">
-							<input formControlName="number" type="number" placeholder="Number" class="form-control"/>
+							<input formControlName="number" type="number" placeholder="Number" class="form-control" orSchemaValidate/>
 							<or-error-messages></or-error-messages>
 						</div>
 						<div class="col-1 form-control-plaintext">
-							<a class="form-control-static" role="button"
-							   [ngbPopover]="numberSchema" popoverTitle="Schema" placement="left">
+							<a class="form-control-static" role="button" [ngbPopover]="numberSchema" popoverTitle="Schema" placement="left">
 								<span class="fa fa-sitemap"></span>
 							</a>
 						</div>
@@ -272,12 +271,11 @@
 					<div orFormControlState class="row form-group">
 						<label class="col-3 col-form-label">Integer</label>
 						<div class="col-8">
-							<input formControlName="integer" type="number" placeholder="integer" class="form-control"/>
+							<input formControlName="integer" type="number" placeholder="integer" class="form-control" orSchemaValidate/>
 							<or-error-messages></or-error-messages>
 						</div>
 						<div class="col-1">
-							<a class="form-control-static" role="button"
-							   [ngbPopover]="integerSchema" popoverTitle="Schema" placement="left">
+							<a class="form-control-static" role="button" [ngbPopover]="integerSchema" popoverTitle="Schema" placement="left">
 								<span class="fa fa-sitemap"></span>
 							</a>
 						</div>
@@ -286,13 +284,12 @@
 						<label class="col-3 col-form-label" for="reactiveDate">Date</label>
 						<div class="col-8">
 							<or-date-picker>
-								<input id="reactiveDate" class="form-control" formControlName="date" ngbDatepicker>
+								<input id="reactiveDate" class="form-control" formControlName="date" ngbDatepicker orSchemaValidate>
 							</or-date-picker>
 							<or-error-messages></or-error-messages>
 						</div>
 						<div class="col-1">
-							<a class="form-control-static" role="button"
-							   [ngbPopover]="dateSchema" popoverTitle="Schema" placement="left">
+							<a class="form-control-static" role="button" [ngbPopover]="dateSchema" popoverTitle="Schema" placement="left">
 								<span class="fa fa-sitemap"></span>
 							</a>
 						</div>
@@ -300,15 +297,14 @@
 					<div orFormControlState class="row form-group">
 						<label class="col-3 col-form-label" for="reactiveSelect">Select</label>
 						<div class="col-8">
-							<select id="reactiveSelect" formControlName="select" class="form-control">
+							<select id="reactiveSelect" formControlName="select" class="form-control" orSchemaValidate>
 								<option value="">Select</option>
 								<option *ngFor="let item of schema.properties.select.options" value="{{item.value}}">{{item.label}}</option>
 							</select>
 							<or-error-messages></or-error-messages>
 						</div>
 						<div class="col-1">
-							<a class="form-control-static" role="button"
-							   [ngbPopover]="selectSchema" popoverTitle="Schema" placement="left">
+							<a class="form-control-static" role="button" [ngbPopover]="selectSchema" popoverTitle="Schema" placement="left">
 								<span class="fa fa-sitemap"></span>
 							</a>
 						</div>
@@ -316,13 +312,11 @@
 					<div orFormControlState class="row form-group">
 						<label class="col-3 col-form-label">Textarea</label>
 						<div class="col-8">
-						<textarea formControlName="textarea" type="text" class="form-control" placeholder="Textarea"
-								  rows="1"></textarea>
+						<textarea formControlName="textarea" type="text" class="form-control" placeholder="Textarea" rows="1" orSchemaValidate></textarea>
 							<or-error-messages></or-error-messages>
 						</div>
 						<div class="col-1">
-							<a class="form-control-static" role="button"
-							   [ngbPopover]="numberSchema" popoverTitle="Schema" placement="left">
+							<a class="form-control-static" role="button" [ngbPopover]="numberSchema" popoverTitle="Schema" placement="left">
 								<span class="fa fa-sitemap"></span>
 							</a>
 						</div>
@@ -331,8 +325,7 @@
 						<legend>
 							<span>Name</span>
 							<span class="pull-right">
-								<a class="form-control-static" role="button"
-								   [ngbPopover]="nameSchema" popoverTitle="Schema" placement="left">
+								<a class="form-control-static" role="button" [ngbPopover]="nameSchema" popoverTitle="Schema" placement="left">
 									<span class="fa fa-sitemap"></span>
 								</a>
 							</span>
@@ -340,12 +333,11 @@
 						<div orFormControlState class="row form-group">
 							<label class="col-3 col-form-label">First name</label>
 							<div class="col-8">
-								<input type="text" formControlName="firstName" class="form-control" placeholder="First name">
+								<input type="text" formControlName="firstName" class="form-control" placeholder="First name" orSchemaValidate>
 								<or-error-messages></or-error-messages>
 							</div>
 							<div class="col-1">
-								<a class="form-control-static" role="button"
-								   [ngbPopover]="firstNameSchema" popoverTitle="Schema" placement="left">
+								<a class="form-control-static" role="button" [ngbPopover]="firstNameSchema" popoverTitle="Schema" placement="left">
 									<span class="fa fa-sitemap"></span>
 								</a>
 							</div>
@@ -353,12 +345,11 @@
 						<div orFormControlState class="row form-group">
 							<label class="col-3 col-form-label">Last name</label>
 							<div class="col-8">
-								<input type="text" formControlName="lastName" class="form-control" placeholder="Last name">
+								<input type="text" formControlName="lastName" class="form-control" placeholder="Last name" orSchemaValidate>
 								<or-error-messages></or-error-messages>
 							</div>
 							<div class="col-1">
-								<a class="form-control-static" role="button"
-								   [ngbPopover]="lastNameSchema" popoverTitle="Schema" placement="left">
+								<a class="form-control-static" role="button" [ngbPopover]="lastNameSchema" popoverTitle="Schema" placement="left">
 									<span class="fa fa-sitemap"></span>
 								</a>
 							</div>
@@ -367,8 +358,7 @@
 							<legend>
 								<span>Address</span>
 								<span class="pull-right">
-									<a class="form-control-static" role="button"
-									   [ngbPopover]="addressSchema" popoverTitle="Schema" placement="left">
+									<a class="form-control-static" role="button" [ngbPopover]="addressSchema" popoverTitle="Schema" placement="left">
 										<span class="fa fa-sitemap"></span>
 									</a>
 								</span>
@@ -376,15 +366,14 @@
 							<div orFormControlState class="row form-group">
 								<label class="col-3 col-form-label">Street</label>
 								<div class="col-8">
-									<input type="text" formControlName="street" class="form-control" placeholder="Street">
+									<input type="text" formControlName="street" class="form-control" placeholder="Street" orSchemaValidate>
 									<or-error-messages></or-error-messages>
 								</div>
 								<div class="col-1">
 									<ng-template #streetSchema>
 										<pre>{{schema.properties.name.properties.address.properties.street | json}}</pre>
 									</ng-template>
-									<a class="form-control-static" role="button"
-									   [ngbPopover]="streetSchema" popoverTitle="Schema" placement="left">
+									<a class="form-control-static" role="button" [ngbPopover]="streetSchema" popoverTitle="Schema" placement="left">
 										<span class="fa fa-sitemap"></span>
 									</a>
 								</div>
@@ -392,12 +381,11 @@
 							<div orFormControlState class="row form-group">
 								<label class="col-3 col-form-label">Number</label>
 								<div class="col-8">
-									<input type="number" formControlName="number" class="form-control" placeholder="Number">
+									<input type="number" formControlName="number" class="form-control" placeholder="Number" orSchemaValidate>
 									<or-error-messages></or-error-messages>
 								</div>
 								<div class="col-1">
-									<a class="form-control-static" role="button"
-									   [ngbPopover]="streetNumberSchema" popoverTitle="Schema" placement="left">
+									<a class="form-control-static" role="button" [ngbPopover]="streetNumberSchema" popoverTitle="Schema" placement="left">
 										<span class="fa fa-sitemap"></span>
 									</a>
 								</div>

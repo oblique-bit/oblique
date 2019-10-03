@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, NgForm} from '@angular/forms';
 import {NotificationService, SchemaValidationService} from 'oblique';
+import {of} from 'rxjs';
 
 @Component({
 	selector: 'app-schema-validation',
@@ -14,11 +15,10 @@ import {NotificationService, SchemaValidationService} from 'oblique';
 export class SchemaValidationSampleComponent implements OnInit {
 
 	formData: FormGroup;
-	schema = {
+	schema$ = of({
 		'title': 'SampleSchemaSampleValidation',
 		'type': 'object',
 		'required': [
-			'id',
 			'text',
 			'number',
 			'date',
@@ -26,9 +26,6 @@ export class SchemaValidationSampleComponent implements OnInit {
 			'time'
 		],
 		'properties': {
-			'id': {
-				'type': 'integer'
-			},
 			'text': {
 				'type': 'string',
 				'minLength': 3,
@@ -114,7 +111,7 @@ export class SchemaValidationSampleComponent implements OnInit {
 				}
 			}
 		}
-	};
+	});
 
 	constructor(private readonly schemaValidation: SchemaValidationService,
 				private readonly notification: NotificationService,
@@ -122,20 +119,19 @@ export class SchemaValidationSampleComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		const validator = this.schemaValidation.compileSchema(this.schema);
 		this.formData = this.formBuilder.group({
-			text: ['', validator.getValidator('text')],
-			number: ['', validator.getValidator('number')],
-			integer: ['', validator.getValidator('integer')],
-			date: ['', validator.getValidator('date')],
-			select: ['', validator.getValidator('select')],
-			textarea: ['', validator.getValidator('textarea')],
+			text: undefined,
+			number: undefined,
+			integer: undefined,
+			date: undefined,
+			select: undefined,
+			textarea: undefined,
 			name: this.formBuilder.group({
-				firstName: ['', validator.getValidator('name.firstName')],
-				lastName: ['', validator.getValidator('name.lastName')],
+				firstName: undefined,
+				lastName: undefined,
 				address: this.formBuilder.group({
-					street: ['', validator.getValidator('name.address.street')],
-					number: ['', validator.getValidator('name.address.number')]
+					street: undefined,
+					number: undefined
 				})
 			})
 		});
