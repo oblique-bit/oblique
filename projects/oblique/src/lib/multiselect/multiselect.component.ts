@@ -48,6 +48,8 @@ export class MultiselectComponent implements OnInit, OnDestroy, DoCheck, Control
 	@Input() disabled = false;
 	@Input() labelProperty: string;
 	@Input() labelFormatter: (option: any) => string;
+	@Input() titleProperty: string;
+	@Input() titleFormatter: (option: any) => string;
 	@Input() @HostBinding('id') idPrefix = 'multiselect';
 
 	//Inputs that are initialized by the config
@@ -199,7 +201,7 @@ export class MultiselectComponent implements OnInit, OnDestroy, DoCheck, Control
 			this.title = this.texts.defaultTitle || '';
 		} else if (this.dynamicTitleMaxItems && this.dynamicTitleMaxItems >= this.model.length) {
 			this.title = this.model
-				.map((option) => this.formatOptionForLabel(option))
+				.map((option) => this.formatOptionForTitle(option))
 				.join(', ');
 		} else if (this.enableAllSelectedText && this.model.length === this.options.length) {
 			this.title = this.texts.allSelected || '';
@@ -234,10 +236,19 @@ export class MultiselectComponent implements OnInit, OnDestroy, DoCheck, Control
 	formatOptionForLabel(item: any): string {
 		if (this.labelFormatter) {
 			return this.labelFormatter(item);
-		} else if (this.labelProperty) {
+		} else if (this.labelProperty && item[this.labelProperty]) {
 			return item[this.labelProperty];
 		}
 		return item;
+	}
+
+	formatOptionForTitle(item: any): string {
+		if (this.titleFormatter) {
+			return this.titleFormatter(item);
+		} else if (this.titleProperty && item[this.titleProperty]) {
+			return item[this.titleProperty];
+		}
+		return this.formatOptionForLabel(item);
 	}
 
 	private emitModelChange() {
