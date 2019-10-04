@@ -226,18 +226,27 @@ describe('MultiselectComponent', () => {
 				expect(component.title).toBe(component.texts.defaultTitle);
 			});
 
-			it('should set the title to the selected option, if only one option is selected', () => {
+			it('should have no list-item, if no option is selected', () => {
+				fixture.detectChanges();
+				const items = fixture.debugElement.queryAll(By.css('.list-item'));
+
+				expect(items.length).toBe(0);
+			});
+
+			it('should empty the title, if one option is selected', () => {
 				component.model.push(stringOption1);
 				component.updateTitle();
 
-				expect(component.title).toBe(stringOption1);
+				expect(component.title).toBe('');
 			});
 
-			it('should set the title to contain every selected option, if selected options <= dynamicTitleMaxItem  ', () => {
+			it('should have one list-item per selected option', () => {
 				component.model.push(stringOption1, stringOption2);
-				component.updateTitle();
-
-				expect(component.title).toBe(`${stringOption1}, ${stringOption2}`);
+				fixture.detectChanges();
+				const items = fixture.debugElement.queryAll(By.css('.list-item'));
+				expect(items.length).toBe(2);
+				expect(items[0].nativeElement.textContent).toBe(stringOption1);
+				expect(items[1].nativeElement.textContent).toBe(stringOption2);
 			});
 		});
 	});

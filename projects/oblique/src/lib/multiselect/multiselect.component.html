@@ -2,7 +2,12 @@
 	<button type="button" class="multiselect-toggle btn btn-secondary"
 			(click)="toggleDropdown()" [disabled]="disabled"
 			[ngClass]="{open: isVisible}" [id]="id">
-		<span class="multiselect-label">{{ title | translate:titleTranslateParams }}</span>
+		<span class="multiselect-label">
+			<span role="list" [class.sr-only]="model.length > dynamicTitleMaxItems" *ngIf="model.length">
+				<span class="list-item" role="listitem" *ngFor="let option of model">{{formatOptionForTitle(option)}}</span>
+			</span>
+			{{ title | translate:titleTranslateParams }}
+		</span>
 		<span class="toggle" [ngClass]="{'toggle-down-up': !dropup, 'toggle-up-down': dropup}"></span>
 	</button>
 	<div *ngIf="isVisible" class="dropdown-menu"

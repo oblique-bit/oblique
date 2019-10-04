@@ -200,9 +200,7 @@ export class MultiselectComponent implements OnInit, OnDestroy, DoCheck, Control
 		if (this.model.length === 0) {
 			this.title = this.texts.defaultTitle || '';
 		} else if (this.dynamicTitleMaxItems && this.dynamicTitleMaxItems >= this.model.length) {
-			this.title = this.model
-				.map((option) => this.formatOptionForTitle(option))
-				.join(', ');
+			this.title = '';
 		} else if (this.enableAllSelectedText && this.model.length === this.options.length) {
 			this.title = this.texts.allSelected || '';
 		} else {
