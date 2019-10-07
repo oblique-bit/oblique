@@ -16,7 +16,8 @@ import {
 	OnInit,
 	Output,
 	ViewChild,
-	ViewEncapsulation
+	ViewEncapsulation,
+	OnDestroy
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
@@ -40,7 +41,7 @@ import {ThemeService} from '../theme/theme.service';
 	encapsulation: ViewEncapsulation.None,
 	templateUrl: './multiselect.component.html'
 })
-export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccessor {
+export class MultiselectComponent implements OnInit, OnDestroy, DoCheck, ControlValueAccessor {
 	@Input() options: any[];
 	@Input() texts: MultiselectTexts;
 	@Input() dropup = false;
@@ -126,8 +127,13 @@ export class MultiselectComponent implements OnInit, DoCheck, ControlValueAccess
 	ngOnInit() {
 		this.texts = Object.assign({}, this.multiselectTexts, this.texts);
 		this.title = this.texts.defaultTitle || '';
-		this.idPrefix = this.multiselectConfig.getUniqueId(this.idPrefix);
+		this.multiselectConfig.isIdUnique(this.idPrefix);
+		this.idPrefix = `${this.idPrefix}_0`;
 		this.id = `${this.idPrefix}-toggle`;
+	}
+
+	ngOnDestroy() {
+		this.multiselectConfig.clearId(this.idPrefix);
 	}
 
 	writeValue(value: any): void {

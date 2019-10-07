@@ -10,14 +10,20 @@ export class MultiselectConfig {
 	showCheckAll = false;
 	showUncheckAll = false;
 
-	private readonly occurrences: {[key: string]: number} = {};
+	private readonly ids: string[] = [];
 
-	getUniqueId(id: string) {
-		if (!this.occurrences[id]) {
-			this.occurrences[id] = 0;
+	isIdUnique(id: string): void {
+		if (this.ids.indexOf(id) > -1) {
+			throw new Error(id === 'multiselect'
+				? 'There cannot be multiple multiselects without explicit ID\'s. Please add a unique id attribute on each multiselect element.'
+				: `ID\'s have to be unique, "${id}" has been defined twice`
+			);
 		}
+		this.ids.push(id);
+	}
 
-		return id + '_' + this.occurrences[id]++;
+	clearId(id: string): void {
+		this.ids.splice(this.ids.indexOf(id), 1);
 	}
 }
 

@@ -11,7 +11,7 @@ import {NotificationService} from './notification.service';
 	styleUrls: ['./notification.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	// tslint:disable-next-line:no-host-metadata-property
-	host: {class: 'notification-container '},
+	host: {class: 'notification-container'},
 	animations: [
 		trigger('inOut', [
 			state('in', style({opacity: 1})),
