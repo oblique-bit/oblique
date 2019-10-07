@@ -20,8 +20,8 @@ export class MultiselectSampleComponent {
 		'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
 
 	statesComplex = [
-		{id: 1, name: 'Alabama', region: 'South'}, {id: 2, name: 'Alaska', region: 'West'}, {id: 3, name: 'Arizona', region: 'West'},
-		{id: 4, name: 'Arkansas', region: 'South'}, {id: 5, name: 'California', region: 'West'},
+		{id: 1, name: 'Alabama', region: 'South', short: 'Al'}, {id: 2, name: 'Alaska', region: 'West'}, {id: 3, name: 'Arizona', region: 'West'},
+		{id: 4, name: 'Arkansas', region: 'South', short: 'Ar'}, {id: 5, name: 'California', region: 'West'},
 		{id: 6, name: 'Colorado', region: 'West'}, {id: 7, name: 'Connecticut', region: 'Northeast'},
 		{id: 8, name: 'Delaware', region: 'South'}, {id: 9, name: 'Florida', region: 'South'},
 		{id: 10, name: 'Georgia', region: 'South'}, {id: 11, name: 'Hawaii', region: 'West'},
