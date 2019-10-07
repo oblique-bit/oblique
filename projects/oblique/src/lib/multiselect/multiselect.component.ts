@@ -42,7 +42,7 @@ import {ThemeService} from '../theme/theme.service';
 	templateUrl: './multiselect.component.html'
 })
 export class MultiselectComponent implements OnInit, OnDestroy, DoCheck, ControlValueAccessor {
-	@Input() options: any[];
+	@Input() options: any[] = [];
 	@Input() texts: MultiselectTexts;
 	@Input() dropup = false;
 	@Input() disabled = false;
@@ -67,6 +67,9 @@ export class MultiselectComponent implements OnInit, OnDestroy, DoCheck, Control
 	@Output() onRemoved = new EventEmitter<any>();
 
 	@ViewChild('orFilterBox', {static: false}) filterBox: FilterBoxComponent;
+	@HostBinding('attr.count') get count(): number {
+		return this.options.length;
+	}
 
 	id: string;
 	model: any[] = [];
