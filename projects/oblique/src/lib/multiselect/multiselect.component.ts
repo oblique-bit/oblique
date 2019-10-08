@@ -42,7 +42,7 @@ import {ThemeService} from '../theme/theme.service';
 	templateUrl: './multiselect.component.html'
 })
 export class MultiselectComponent implements OnInit, OnDestroy, DoCheck, ControlValueAccessor {
-	@Input() options: any[];
+	@Input() options: any[] = [];
 	@Input() texts: MultiselectTexts;
 	@Input() dropup = false;
 	@Input() disabled = false;
@@ -67,6 +67,9 @@ export class MultiselectComponent implements OnInit, OnDestroy, DoCheck, Control
 	@Output() onRemoved = new EventEmitter<any>();
 
 	@ViewChild('orFilterBox', {static: false}) filterBox: FilterBoxComponent;
+	@HostBinding('attr.count') get count(): number {
+		return this.options.length;
+	}
 
 	id: string;
 	model: any[] = [];
@@ -200,9 +203,7 @@ export class MultiselectComponent implements OnInit, OnDestroy, DoCheck, Control
 		if (this.model.length === 0) {
 			this.title = this.texts.defaultTitle || '';
 		} else if (this.dynamicTitleMaxItems && this.dynamicTitleMaxItems >= this.model.length) {
-			this.title = this.model
-				.map((option) => this.formatOptionForTitle(option))
-				.join(', ');
+			this.title = '';
 		} else if (this.enableAllSelectedText && this.model.length === this.options.length) {
 			this.title = this.texts.allSelected || '';
 		} else {

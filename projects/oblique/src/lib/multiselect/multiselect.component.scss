@@ -30,6 +30,10 @@ or-multiselect {
 		}
 	}
 
+	.multiselect-label .list-item + .list-item::before {
+		content: ', ';
+	}
+
 	.dropdown-menu {
 		overflow: auto !important;
 		width: 100%;
@@ -62,4 +66,3 @@ or-multiselect {
 		cursor: pointer;
 	}
 }
-

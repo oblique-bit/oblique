@@ -41,14 +41,27 @@
       },
       {
         "name": "labelProperty",
-        "text": "If the model is an option, the property that matches <code>labelProperty</code> will be displayed.",
+        "text": "If the model is an object, this property will be used to display both the available and selected options. The <code>labelFormatter</code> takes precedence over <code>labelProperty</code>.",
         "type": "string",
         "default": "",
         "since": "2.0.0"
       },
       {
         "name": "labelFormatter",
-        "text": "A function to transform an option to a label that will be shown in the multiselect. This will be used in favor of the <code>labelProperty</code>.",
+        "text": "If the model is an object, this function will be used to format both the available and selected options. The <code>labelFormatter</code> takes precedence over <code>labelProperty</code>.",
+        "type": "(option: any) => string",
+        "since": "2.0.0"
+      },
+      {
+        "name": "titleProperty",
+        "text": "If the model is an object, this property will be used to display the selected options. The <code>titleFormatter</code> takes precedence over <code>titleProperty</code>, but <code>titleProperty</code> takes precedence over both <code>labelProperty</code> and <code>labelFormatter</code>.",
+        "type": "string",
+        "default": "",
+        "since": "4.1.0"
+      },
+      {
+        "name": "titleFormatter",
+        "text": "If the model is an object, this function will be used to format the selected options. The <code>titleFormatter</code> takes precedence over <code>titleProperty</code>, but <code>titleProperty</code> takes precedence over both <code>labelProperty</code> and <code>labelFormatter</code>.",
         "type": "(option: any) => string",
         "since": "2.0.0"
       },
