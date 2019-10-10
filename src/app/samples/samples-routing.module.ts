@@ -21,6 +21,7 @@ import {UnsavedChangesGuard} from 'oblique';
 import {StickySampleComponent} from './sticky/sticky-sample.component';
 import {FormComponent} from './form/form.component';
 import {ButtonComponent} from './button/button.component';
+import {ErrorMessagesSampleComponent} from './error-messages-sample/error-messages-sample.component';
 
 const samplesRoutes: Routes = [
 
@@ -63,6 +64,7 @@ const samplesRoutes: Routes = [
 		component: UnsavedChangesSampleComponent,
 		canDeactivate: [UnsavedChangesGuard]
 	},
+	{path: 'error-messages', component: ErrorMessagesSampleComponent},
 	{path: 'toggle', component: ToggleSampleComponent},
 	{path: 'number-format', component: NumberFormatSampleComponent},
 	{path: 'form', component: FormComponent},

@@ -5,10 +5,12 @@
 export {ColumnLayoutModule, ColumnLayoutComponent} from './lib/column-layout/column-layout.module';
 export {
 	DateDMYParserFormatter, DateFormatterPipe, DatepickerComponent, DatepickerI18nService, DatepickerModule, DatepickerPlaceholderDirective
-}from './lib/datepicker/datepicker.module';
+} from './lib/datepicker/datepicker.module';
 export {DocumentMetaService, DocumentMetaModule} from './lib/document-meta/document-meta.module';
 export {DropdownComponent, DropdownModule} from './lib/dropdown/dropdown.module';
-export {ErrorMessagesComponent, ErrorMessagesModule, ErrorMessagesService} from './lib/error-messages/error-messages.module';
+export {
+	MatErrorDirective, ErrorMessagesDirective, ErrorMessagesComponent, ErrorMessagesModule, ErrorMessagesService
+} from './lib/error-messages/error-messages.module';
 export {FilterBoxComponent, FilterBoxModule} from './lib/filter-box/filter-box.module';
 export {FormControlStateDirective, FormControlStateModule} from './lib/form-control-state/form-control-state.module';
 export {
@@ -34,7 +36,7 @@ export {MultiselectComponent, MultiselectConfig, MultiselectModule, MultiselectS
 export {NavTreeComponent, NavTreeFakeFocusDirective, NavTreeModule, NavTreeItemModel} from './lib/nav-tree/nav-tree.module';
 export {
 	NavigableDirective, NavigableGroupComponent, NavigableModule, NavigableOnMoveEvent, PreventableEvent, NavigableOnChangeEvent
-}from './lib/navigable/navigable.module';
+} from './lib/navigable/navigable.module';
 export {NavigatorComponent, NavigatorModule} from './lib/navigator/navigator.module';
 export {
 	CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE,
@@ -49,7 +51,7 @@ export {
 export {NumberFormatDirective, NumberFormatModule} from './lib/number-format/number-format.module';
 export {
 	OffCanvasBackdropDirective, OffCanvasContainerDirective, OffCanvasModule, OffCanvasService, OffCanvasToggleDirective
-}from './lib/off-canvas/off-canvas.module';
+} from './lib/off-canvas/off-canvas.module';
 export {
 	draft06,
 	SchemaRequiredDirective,
@@ -58,7 +60,7 @@ export {
 	SchemaValidationModule,
 	SchemaValidationService,
 	SchemaValidatorInstance
-}from './lib/schema-validation/schema-validation.module';
+} from './lib/schema-validation/schema-validation.module';
 export {ScrollingEvents, ScrollingModule, TopControlComponent} from './lib/scrolling/scrolling.module';
 export {SearchBoxDirective, SearchWidgetItem, SearchBoxComponent, SearchBoxResultsComponent, SearchBoxModule} from './lib/searchbox/search-box.module';
 export {SpinnerEvent, SpinnerComponent, SpinnerModule, SpinnerService} from './lib/spinner/spinner.module';

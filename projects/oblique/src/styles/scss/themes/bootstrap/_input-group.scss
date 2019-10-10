@@ -1,4 +1,5 @@
 @import "../../core/variables";
+@import "../bootstrap/variables";
 
 .input-group {
 	> .input-group-prepend > .input-group-text,
@@ -13,7 +14,7 @@
 	> .input-group-prepend,
 	> .input-group-append {
 		.fa {
-			line-height: unset;
+			line-height: normal;
 		}
 
 		.dropdown .dropdown-toggle {

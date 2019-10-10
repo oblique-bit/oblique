@@ -30,6 +30,7 @@ export class AppComponent {
 				{url: 'validation/form-control-state', label: 'i18n.routes.samples.form-control-state.title'},
 				{url: 'validation/schema-validation', label: 'i18n.routes.samples.schema-validation.title'},
 				{url: 'validation/unsaved-changes', label: 'i18n.routes.samples.unsaved-changes.title'},
+				{url: 'error-messages', label: 'Error messages'},
 				{url: 'sticky', label: 'Sticky'},
 				{url: 'form', label: 'Forms'},
 				{url: 'button', label: 'Buttons'}
