@@ -20,6 +20,7 @@ import {SamplesRoutingModule} from './samples-routing.module';
 
 import {ColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
 import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
+import {ErrorMessagesSampleComponent} from './error-messages-sample/error-messages-sample.component';
 import {FormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
 import {FilterBoxSampleComponent, PatternFilterPipe} from './filter-box-sample/filter-box-sample.component';
 import {MasterLayoutSampleComponent} from './master-layout/master-layout-sample.component';
@@ -37,8 +38,8 @@ import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-chan
 import {HttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
 import {StickySampleComponent} from './sticky/sticky-sample.component';
 import {FormComponent} from './form/form.component';
-import {ButtonComponent} from './button/button.component';
 
+import {ButtonComponent} from './button/button.component';
 import {
 	ColumnLayoutModule,
 	DatepickerModule,
@@ -105,6 +106,7 @@ import {ApiElementComponent} from '../api/api-element.component';
 		ButtonComponent,
 		ColumnLayoutSampleComponent,
 		DatepickerSampleComponent,
+		ErrorMessagesSampleComponent,
 		FormComponent,
 		FormControlStateSampleComponent,
 		FilterBoxSampleComponent,
