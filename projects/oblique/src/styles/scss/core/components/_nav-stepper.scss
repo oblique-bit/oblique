@@ -95,7 +95,7 @@ $stepper-border-width: 3px;
 	@include stepper-variant($font-size-base, $stepper-step-size, $stepper-border-width);
 
 	&.nav-stepper-sm {
-		@include stepper-variant($font-size-base - 0.1, 24px, $stepper-border-width - 1);
+		@include stepper-variant($font-size-sm, 24px, $stepper-border-width - 1);
 	}
 
 	&.nav-stepper-lg {

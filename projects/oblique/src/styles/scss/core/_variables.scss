@@ -53,11 +53,20 @@ $brand-error-dark:         #b30014 !default;
 $duration-default:              .6s !default;
 $duration-fast:                .25s !default;
 
+$smaller:                       .875 !default;
+$smallest:                      .8 !default;
+$bigger:                        1.25 !default;
+$biggest:                       1.65 !default;
 $font-size-base:                1rem !default;
-$font-size-xl:                  $font-size-base * 1.65 !default;
-$font-size-lg:                  $font-size-base * 1.25 !default;
-$font-size-sm:                  $font-size-base * .875 !default;
-$font-size-xs:                  $font-size-base * .8 !default;
+$font-size-xl:                  $font-size-base * $biggest !default;
+$font-size-lg:                  $font-size-base * $bigger !default;
+$font-size-sm:                  $font-size-base * $smaller !default;
+$font-size-xs:                  $font-size-base * $smallest !default;
+$font-size-normal:              1em !default;
+$font-size-biggest:             $font-size-normal * $biggest !default;
+$font-size-bigger:              $font-size-normal * $bigger !default;
+$font-size-smaller:             $font-size-normal * $smaller !default;
+$font-size-smallest:            $font-size-normal * $smallest !default;
 
 $spacing-default:              15px !default;
 $spacing-xs:                    5px !default;

@@ -96,7 +96,7 @@ ins {
 
 pre, code, kbd, samp {
 	font-family: monospace;
-	font-size: $font-size-base;
+	font-size: $font-size-normal;
 }
 
 code, kbd {
@@ -125,7 +125,7 @@ kbd {
 }
 
 small {
-	font-size: $font-size-sm;
+	font-size: $font-size-smaller;
 }
 
 s, del {
@@ -143,7 +143,7 @@ u {
 // prevent `sub` and `sup` elements from affecting the line height
 sub,
 sup {
-	font-size: $font-size-sm;
+	font-size: $font-size-smaller;
 	line-height: 0;
 	position: relative;
 	vertical-align: baseline;
