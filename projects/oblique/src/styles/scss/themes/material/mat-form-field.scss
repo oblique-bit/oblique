@@ -23,6 +23,7 @@ $large: 1.25rem;
 
 	.mat-error,
 	.mat-hint {
+		height: 1.2em;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
@@ -30,14 +31,16 @@ $large: 1.25rem;
 
 	&:hover,
 	&:focus-within {
+		z-index: 1;	// so that multilines hints & errors are above next elements
+
 		.mat-form-field-subscript-wrapper {
 			overflow: visible;
 		}
 
 		.mat-error,
 		.mat-hint {
-			white-space: unset;
-			background-color: inherit;
+			height: auto;
+			white-space: normal;
 			position: relative;
 			overflow: visible;
 
@@ -70,7 +73,12 @@ $large: 1.25rem;
 
 	&.mat-form-field-appearance-outline {
 		.mat-form-field-wrapper {
-			margin: 0.1em 0;
+			margin: 0.2em 0;
+			padding-bottom: 1.2em;
+		}
+
+		.mat-form-field-subscript-wrapper {
+			margin-top: 6px;
 		}
 
 		.mat-form-field-infix {
