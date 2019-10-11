@@ -112,6 +112,15 @@
 						<input ngbButton type="radio" [value]="false"> No
 					</label>
 				</div>
+				<div [(ngModel)]="group" ngbRadioGroup class="btn-group btn-group-toggle">
+					<label>Group similar</label>
+					<label ngbButtonLabel class="btn-secondary">
+						<input ngbButton type="radio" [value]="true"> Yes
+					</label>
+					<label ngbButtonLabel class="btn-secondary active">
+						<input ngbButton type="radio" [value]="false"> No
+					</label>
+				</div>
 				<div class="form-group row" *ngIf="variant.toString() !== 'error'">
 					<div class="col-4">
 						<div class="form-check">

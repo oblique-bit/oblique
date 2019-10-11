@@ -9,6 +9,8 @@ export interface INotification {
 	sticky?: boolean;
 	timeout?: number;
 	$state?: string;
+	occurrences?: number;
+	groupSimilar?: boolean;
 }
 
 export interface INotificationConfig {
@@ -16,6 +18,7 @@ export interface INotificationConfig {
 	sticky?: boolean;
 	timeout?: number;
 	title?: string;
+	groupSimilar?: boolean;
 }
 
 // @deprecated, will be removed in v5.0.0

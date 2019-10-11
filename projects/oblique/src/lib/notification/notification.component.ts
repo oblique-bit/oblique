@@ -70,13 +70,17 @@ export class NotificationComponent implements OnInit {
 	/**
 	 * Adds & opens the specified notification.
 	 */
-	public open(notification: INotification) {
-		notification.$state = this.notifications.length ? 'in' : 'in-first';
-		this.fixIDPrefix(notification);
-		this.notifications.unshift(notification);
-
-		if (!notification.sticky) {
-			setTimeout(() => this.close(notification), notification.timeout);
+	public open(notification: INotification): void {
+		notification.occurrences = 1;
+		const existingNotification = this.notifications.find((notif) => notif.idPrefix === notification.idPrefix);
+		if (existingNotification && notification.groupSimilar) {
+			existingNotification.occurrences++;
+		} else {
+			this.notifications.unshift(notification);
+			notification.$state = this.notifications.length ? 'in' : 'in-first';
+			if (!notification.sticky) {
+				this.selfClose(notification);
+			}
 		}
 	}
 
@@ -85,7 +89,7 @@ export class NotificationComponent implements OnInit {
 	 *
 	 * @see remove
 	 */
-	public close(notification) {
+	public close(notification): void {
 		notification.$state = 'out';
 		setTimeout(() => this.remove(notification), NotificationComponent.REMOVE_DELAY);
 	}
@@ -93,21 +97,25 @@ export class NotificationComponent implements OnInit {
 	/**
 	 * Removes the specified notification without triggering a _close_ animation.
 	 */
-	public remove(notification: Notification) {
+	public remove(notification: Notification): void {
 		this.notifications.splice(this.notifications.indexOf(notification), 1);
 	}
 
 	/**
 	 * Closes all notifications in the current subscribed channel.
 	 */
-	public clear() {
+	public clear(): void {
 		this.notifications.length = 0;
 	}
 
-	private fixIDPrefix(notification: INotification) {
-		const offset = this.notifications.filter((notif) => notif.idPrefix.match('^' + notification.idPrefix)).length;
-		if (offset) {
-			notification.idPrefix = `${notification.idPrefix}${offset}-`;
-		}
+	private selfClose(notification: INotification): void {
+		setTimeout(() => {
+			if (notification.occurrences) {
+				notification.occurrences--;
+				this.selfClose(notification);
+			} else {
+				this.close(notification);
+			}
+		}, notification.timeout);
 	}
 }

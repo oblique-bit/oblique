@@ -76,9 +76,9 @@ describe('NotificationComponent', () => {
 
 	it('should clear all notification', () => {
 		// Send multiple notifications:
-		notificationService.send(message);
-		notificationService.send(message);
-		notificationService.send(message);
+		notificationService.send('message 1');
+		notificationService.send('message 2');
+		notificationService.send('message 3');
 		fixture.detectChanges();
 
 		expect(component.notifications.length).toBe(3);
@@ -94,13 +94,38 @@ describe('NotificationComponent', () => {
 		expect(htmlNotifications.length).toBe(0);
 	});
 
+	it('should have only 1 message if same message is send multiple times with groupSimilar enabled', () => {
+		notificationConfig.groupSimilar = true;
+		// Send multiple notifications:
+		notificationService.send(message);
+		notificationService.send(message);
+		notificationService.send(message);
+		fixture.detectChanges();
+
+		expect(component.notifications.length).toBe(1);
+		const htmlNotifications = fixture.debugElement.queryAll(By.css('.notification'));
+		expect(htmlNotifications.length).toBe(1);
+	});
+
+	it('should have multiple messages if same message is send multiple times with groupSimilar disabled', () => {
+		// Send multiple notifications:
+		notificationService.send(message);
+		notificationService.send(message);
+		notificationService.send(message);
+		fixture.detectChanges();
+
+		expect(component.notifications.length).toBe(3);
+		const htmlNotifications = fixture.debugElement.queryAll(By.css('.notification'));
+		expect(htmlNotifications.length).toBe(3);
+	});
+
 	it('should close a _non-sticky_ notification after `timeout` is reached', fakeAsync(() => {
 		const notification = notificationService.send({
 			message: message,
 			title: title,
 			sticky: false
 		});
-		tick(notificationConfig.timeout + NotificationComponent.REMOVE_DELAY);
+		tick(2 * notificationConfig.timeout + NotificationComponent.REMOVE_DELAY);
 		fixture.detectChanges();
 
 		expect(component.close).toHaveBeenCalled();
@@ -132,11 +157,11 @@ describe('NotificationComponent', () => {
 		component.channel = 'myChannel';
 
 		// Send multiple notifications to different channels:
-		notificationService.send({message, channel: 'testChannel'});
-		notificationService.send({message, channel: 'myChannel'});
-		notificationService.send({message, channel: 'anotherChanel'});
-		notificationService.send({message, channel: 'myChannel'});
-		notificationService.send({message, channel: 'appChannel'});
+		notificationService.send({message: 'message 1', channel: 'testChannel'});
+		notificationService.send({message: 'message 2', channel: 'myChannel'});
+		notificationService.send({message: 'message 3', channel: 'anotherChanel'});
+		notificationService.send({message: 'message 4', channel: 'myChannel'});
+		notificationService.send({message: 'message 5', channel: 'appChannel'});
 		fixture.detectChanges();
 
 		expect(component.notifications.length).toBe(2);
@@ -144,11 +169,11 @@ describe('NotificationComponent', () => {
 
 	it('should *not* display a notification from a different channel', () => {
 		// Send multiple notifications to different channels:
-		notificationService.send({message, channel: 'testChannel'});
-		notificationService.send({message, channel: 'myChannel'});
-		notificationService.send({message, channel: 'anotherChanel'});
-		notificationService.send({message, channel: 'oblique'});
-		notificationService.send({message, channel: 'appChannel'});
+		notificationService.send({message: 'message 1', channel: 'testChannel'});
+		notificationService.send({message: 'message 2', channel: 'myChannel'});
+		notificationService.send({message: 'message 3', channel: 'anotherChanel'});
+		notificationService.send({message: 'message 4', channel: 'oblique'});
+		notificationService.send({message: 'message 5', channel: 'appChannel'});
 		fixture.detectChanges();
 
 		expect(component.notifications.length).toBe(1);

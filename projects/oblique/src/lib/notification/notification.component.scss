@@ -56,6 +56,34 @@
 		}
 	}
 
+	.occurrence {
+		display: inline-block;
+		position: absolute;
+		bottom: -$spacing-xs;
+		right: -$spacing-xs;
+		padding: $spacing-xs;
+		line-height: 1;
+		text-align: right;
+		color: $white;
+		border-radius: 50%;
+	}
+
+	.alert-info .occurrence {
+		background-color: $brand-dark;
+	}
+
+	.alert-success .occurrence {
+		background-color: $brand-success-dark;
+	}
+
+	.alert-warning .occurrence {
+		background-color: $brand-warning-dark;
+	}
+
+	.alert-error .occurrence {
+		background-color: $brand-error-dark;
+	}
+
 	@keyframes notification-fadeOut {
 		0% {
 			opacity: 1;
