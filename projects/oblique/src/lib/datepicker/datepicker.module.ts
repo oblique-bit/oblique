@@ -10,6 +10,8 @@ import {DateDMYParserFormatter} from './date-parser-formatter';
 import {DatepickerPlaceholderDirective} from './datepicker-placeholder.directive';
 import {DateFormatterPipe} from './date-formatter.pipe';
 import {DatepickerComponent} from './datepicker.component';
+import { TelemetryService } from '../telemetry/telemetry.service';
+import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
 
 export {DatepickerI18nService} from './datepicker-i18n.service';
 export {DateDMYParserFormatter} from './date-parser-formatter';
@@ -37,6 +39,10 @@ export {DatepickerComponent} from './datepicker.component';
 	]
 })
 export class DatepickerModule {
+	constructor(telemetry: TelemetryService) {
+		requireAndRecordTelemetry(telemetry, DatepickerModule);
+	}
+
 	static forRoot(): ModuleWithProviders {
 		return {
 			ngModule: DatepickerModule,

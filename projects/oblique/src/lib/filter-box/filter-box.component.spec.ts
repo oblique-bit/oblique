@@ -1,16 +1,9 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, NO_ERRORS_SCHEMA, Pipe, PipeTransform} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {By} from '@angular/platform-browser';
-import {FilterBoxComponent, TextControlClearModule, ThemeService} from 'oblique';
+import {Component, NO_ERRORS_SCHEMA} from '@angular/core';
+import {FilterBoxComponent, ThemeService} from 'oblique';
 import {BehaviorSubject} from 'rxjs';
-
-@Pipe({name: 'translate'})
-class MockTranslatePipe implements PipeTransform {
-	transform(value: string): string {
-		return value;
-	}
-}
+import {MockTranslatePipe} from 'tests';
+import {By} from '@angular/platform-browser';
 
 @Component({
 	template: `
@@ -28,22 +21,20 @@ describe('FilterBox', () => {
 	let fixture: ComponentFixture<TestComponent>;
 
 	beforeEach(async(() => {
-			const themeMock = {
-				theme$: new BehaviorSubject(undefined),
-				isMaterial: () => false
-			};
-			TestBed.configureTestingModule({
-				imports: [FormsModule, TextControlClearModule],
-				declarations: [
-					TestComponent,
-					FilterBoxComponent,
-					MockTranslatePipe
-				],
-				schemas: [NO_ERRORS_SCHEMA],
-				providers: [{provide: ThemeService, useValue: themeMock}]
-			}).compileComponents();
-		}
-	));
+		const themeMock = {
+			theme$: new BehaviorSubject(undefined),
+			isMaterial: () => false
+		};
+		TestBed.configureTestingModule({
+			declarations: [
+				TestComponent,
+				FilterBoxComponent,
+				MockTranslatePipe
+			],
+			schemas: [NO_ERRORS_SCHEMA],
+			providers: [{provide: ThemeService, useValue: themeMock}]
+		}).compileComponents();
+	}));
 
 	beforeEach(async(() => {
 		fixture = TestBed.createComponent(TestComponent);

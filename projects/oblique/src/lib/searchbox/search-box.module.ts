@@ -9,6 +9,8 @@ import {SearchBoxDirective} from './search-box.directive';
 import {SearchBoxResultsComponent} from './search-box-results.component';
 import {SearchBoxComponent} from './search-box.component';
 import {NavTreeModule} from '../nav-tree/nav-tree.module';
+import { TelemetryService } from '../telemetry/telemetry.service';
+import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
 
 export {SearchBoxResultsComponent} from './search-box-results.component';
 export {SearchBoxComponent, SearchWidgetItem} from './search-box.component';
@@ -28,4 +30,7 @@ export {SearchBoxDirective} from './search-box.directive';
 	entryComponents: [SearchBoxResultsComponent]
 })
 export class SearchBoxModule {
+	constructor(telemetry: TelemetryService) {
+		requireAndRecordTelemetry(telemetry, SearchBoxModule);
+	}
 }

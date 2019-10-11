@@ -2,6 +2,8 @@ import {NgModule} from '@angular/core';
 import {TranslateModule} from '@ngx-translate/core';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 import {TranslateParamsPipe} from './translate-params.pipe';
+import { TelemetryService } from '../telemetry/telemetry.service';
+import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
 
 export {TranslateParamsPipe} from './translate-params.pipe';
 
@@ -12,4 +14,7 @@ export {TranslateParamsPipe} from './translate-params.pipe';
 	exports:  [TranslateParamsPipe]
 })
 export class TranslateParamsModule {
+	constructor(telemetry: TelemetryService) {
+		requireAndRecordTelemetry(telemetry, TranslateParamsModule);
+	}
 }

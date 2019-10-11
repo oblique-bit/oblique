@@ -71,5 +71,6 @@ export {TranslateParamsModule, TranslateParamsPipe} from './lib/translate-params
 export {UnsavedChangesDirective, UnsavedChangesGuard, UnsavedChangesModule, UnsavedChangesService} from './lib/unsaved-changes/unsaved-changes.module';
 export {UnsavedChangesTabsDirective, UnsavedChangesTabsModule, UnsavedChangesTabsService} from './lib/unsaved-changes-tabs/unsaved-changes-tabs.module';
 export {ThemeService, FRUTIGER, THEMES, OBLIQUE_THEME} from './lib/theme/theme.service';
+export {TELEMETRY_DISABLE} from './lib/telemetry/telemetry.service';
 export {Unsubscribable} from './lib/unsubscribe.class';
 export {ObliqueModule} from './lib/oblique.module';

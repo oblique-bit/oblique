@@ -4,6 +4,9 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 import {TranslateModule} from '@ngx-translate/core';
 
 import {TopControlComponent} from './top-control.component';
+import {TelemetryService} from '../telemetry/telemetry.service';
+import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
+
 export {TopControlComponent} from './top-control.component';
 export {ScrollingEvents} from './scrolling-events';
 
@@ -17,4 +20,7 @@ export {ScrollingEvents} from './scrolling-events';
 	exports: [TopControlComponent]
 })
 export class ScrollingModule {
+	constructor(telemetry: TelemetryService) {
+		requireAndRecordTelemetry(telemetry, ScrollingModule);
+	}
 }

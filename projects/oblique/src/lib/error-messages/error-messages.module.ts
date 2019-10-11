@@ -10,6 +10,8 @@ import {TranslateParamsModule} from '../translate-params/translate-params.module
 import {FormControlStateModule} from '../form-control-state/form-control-state.module';
 import {ErrorMessagesComponent} from './error-messages.component';
 import {ErrorMessagesService} from './error-messages.service';
+import {TelemetryService} from '../telemetry/telemetry.service';
+import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 
 export {ErrorMessagesComponent} from './error-messages.component';
 export {ErrorMessagesService} from './error-messages.service';
@@ -29,4 +31,7 @@ export {ErrorMessagesDirective} from './error-messages.directive';
 	exports: [ErrorMessagesComponent, MatErrorDirective, ErrorMessagesDirective]
 })
 export class ErrorMessagesModule {
+	constructor(telemetry: TelemetryService) {
+		requireAndRecordTelemetry(telemetry, ErrorMessagesModule);
+	}
 }

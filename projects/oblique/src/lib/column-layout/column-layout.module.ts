@@ -7,6 +7,9 @@ import {ColumnLayoutComponent} from './column-layout.component';
 import {ColumnToggleDirective} from './column-toggle.directive';
 import {ColumnPanelDirective} from './column-panel.directive';
 
+import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
+import { TelemetryService } from '../telemetry/telemetry.service';
+
 export {ColumnLayoutComponent} from './column-layout.component';
 
 @NgModule({
@@ -25,4 +28,7 @@ export {ColumnLayoutComponent} from './column-layout.component';
 	]
 })
 export class ColumnLayoutModule {
+	constructor(telemetry: TelemetryService) {
+		requireAndRecordTelemetry(telemetry, ColumnLayoutModule);
+	}
 }

@@ -6,6 +6,8 @@ import {MatIconModule, MatFormFieldModule, MatInputModule, MAT_FORM_FIELD_DEFAUL
 
 import {TextControlClearModule} from '../text-control-clear/text-control-clear.module';
 import {FilterBoxComponent} from './filter-box.component';
+import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
+import { TelemetryService } from '../telemetry/telemetry.service';
 
 export {FilterBoxComponent} from './filter-box.component';
 
@@ -24,4 +26,7 @@ export {FilterBoxComponent} from './filter-box.component';
 	exports: [FilterBoxComponent]
 })
 export class FilterBoxModule {
+	constructor(telemetry: TelemetryService) {
+		requireAndRecordTelemetry(telemetry, FilterBoxModule);
+	}
 }

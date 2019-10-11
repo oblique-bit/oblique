@@ -6,6 +6,8 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 import {NotificationComponent} from './notification.component';
 import {NotificationService} from './notification.service';
 import {NotificationConfig} from './notification.config';
+import { TelemetryService } from '../telemetry/telemetry.service';
+import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
 
 export {NotificationComponent} from './notification.component';
 export {NotificationService} from './notification.service';
@@ -22,4 +24,7 @@ export {KeyWithParams, INotification, NotificationType} from './notification.int
 	exports: [NotificationComponent]
 })
 export class NotificationModule {
+	constructor(telemetry: TelemetryService) {
+		requireAndRecordTelemetry(telemetry, NotificationModule);
+	}
 }

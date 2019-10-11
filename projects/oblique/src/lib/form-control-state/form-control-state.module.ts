@@ -4,6 +4,8 @@ import {FormsModule} from '@angular/forms';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 
 import {FormControlStateDirective} from './form-control-state.directive';
+import { TelemetryService } from '../telemetry/telemetry.service';
+import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
 
 export {FormControlStateDirective} from './form-control-state.directive';
 
@@ -17,4 +19,7 @@ export {FormControlStateDirective} from './form-control-state.directive';
 	exports: [FormControlStateDirective]
 })
 export class FormControlStateModule {
+	constructor(telemetry: TelemetryService) {
+		requireAndRecordTelemetry(telemetry, FormControlStateModule);
+	}
 }

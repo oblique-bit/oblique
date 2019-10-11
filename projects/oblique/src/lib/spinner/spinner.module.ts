@@ -4,6 +4,8 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 
 import {SpinnerComponent} from './spinner.component';
 import {SpinnerService} from './spinner.service';
+import { TelemetryService } from '../telemetry/telemetry.service';
+import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
 
 export {SpinnerComponent} from './spinner.component';
 export {SpinnerService} from './spinner.service';
@@ -18,4 +20,7 @@ export {SpinnerEvent} from './spinner-event';
 	exports: [SpinnerComponent]
 })
 export class SpinnerModule {
+	constructor(telemetry: TelemetryService) {
+		requireAndRecordTelemetry(telemetry, SpinnerModule);
+	}
 }
