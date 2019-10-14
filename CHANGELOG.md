@@ -14,7 +14,7 @@
 * **theme:** align Material's `prefix` and `suffix` with input text ([8b1035d](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/8b1035d))
 * **theme:** do not use `unset` CSS value (IE11) ([5e69d96](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/5e69d96))
 * **theme:** fix Bootstrap's `input-groups` dropdown appearance ([909a444](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/909a444))
-* **theme:** fix bootstrap's pre- and append icon height ([270d9d3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/270d9d3))
+* **theme:** fix bootstrap's prepend and append icon height ([270d9d3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/270d9d3))
 * **theme:** improve contrast of bootstrap's `list-group` ([eb0b3f7](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/eb0b3f7))
 * **theme:** show full hint or error texts only on hover ([aeafaf2](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/aeafaf2))
 
@@ -238,7 +238,6 @@
 	* `form-check`
 	* `input-group`
 	* `table`
-* **theme:** Oblique CSS is imported form `node_modules/oblique-reactive/styles/scss/oblique-core.scss` instead of `node_modules/oblique-reactive/styles/css/oblique-ui.css`
 * **filter-box:** prefixed content cannot be projected with `.input-group-prepend` anymore. Use `#prepend` instead.
 * **filter-box:** suffixed content cannot be projected with `.input-group-append` anymore. Use `#append` instead.
 
