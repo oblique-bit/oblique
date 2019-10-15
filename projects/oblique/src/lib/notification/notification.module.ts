@@ -6,12 +6,12 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 import {NotificationComponent} from './notification.component';
 import {NotificationService} from './notification.service';
 import {NotificationConfig} from './notification.config';
-import { TelemetryService } from '../telemetry/telemetry.service';
-import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
+import {TelemetryService} from '../telemetry/telemetry.service';
+import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 
 export {NotificationComponent} from './notification.component';
 export {NotificationService} from './notification.service';
-export {NotificationConfig, CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE} from './notification.config';
+export {NotificationConfig, CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE, GROUP_SIMILAR_NOTIFICATIONS} from './notification.config';
 export {KeyWithParams, INotification, NotificationType} from './notification.interfaces';
 
 @NgModule({

@@ -40,6 +40,7 @@ export {
 export {NavigatorComponent, NavigatorModule} from './lib/navigator/navigator.module';
 export {
 	CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE,
+	GROUP_SIMILAR_NOTIFICATIONS,
 	NotificationComponent,
 	NotificationConfig,
 	NotificationModule,
