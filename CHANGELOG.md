@@ -1,3 +1,30 @@
+# [4.1.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.1.0) (2019-10-15)
+
+### Bug Fixes
+* **http-interceptor:** pass `sticky` parameter to notification ([88444f2](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/88444f2))
+* **multiselect:** throw error with duplicate `id`s ([c1ac9e1](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/c1ac9e1))
+* **notification:** use provided `sticky` value even if it's `false` ([df0ce69](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/df0ce69))
+* **schema-validation:** let `orSchemaValidate` match reactive forms ([cd954e9](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/cd954e9))
+* **theme:** do not use `unset` CSS value (IE11) ([a3a134a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/a3a134a))
+* **theme:** fix icon position on datepicker for MD ([0f9d457](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/0f9d457))
+* **theme:** use relative font size for typography ([2c699f2](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/2c699f2))
+
+### Features
+* **error-messages:** add directive to show errors with MD ([f58bbb5](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/f58bbb5))
+* **http-interceptor:** add helper functions to tweak the interceptor ([2dd5a89](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/2dd5a89))
+* **multiselect:** add `count` property ([bd9b7a1](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/bd9b7a1))
+* **multiselect:** add `titleProperty` and  `titleFormater` ([29ac09c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/29ac09c))
+* **multiselect:** add selected items list for accessibility ([ebf2ec4](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/ebf2ec4))
+* **notification:** can clear all notifications on navigate ([7a80920](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/7a80920))
+* **notification:** can group similar notifications ([1b7e408](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/1b7e408))
+* **telemetry:** add telemetry feature ([ed149d2](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/ed149d2))
+* **theme:** improve errors and hints rendering for MD ([313952c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/313952c))
+* **theme:** add relative font sizes ([03bd4a5](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/03bd4a5))
+* **toolchain:** add support for multiple translation files ([6672112](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/6672112))
+* **toolchain:** provide translation files with Oblique and common keys ([7422c16](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/7422c16))
+* **utilities:** add `MockTranslateService` to `test_helpers` ([2a908a7](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/2a908a7))
+
+
 # [4.0.3](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.3) (2019-09-25)
 
 # Bug Fixes
