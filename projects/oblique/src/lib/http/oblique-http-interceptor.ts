@@ -48,7 +48,7 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 							this.notify(obliqueRequest.notification, error);
 						}
 					} else {
-						this.notificationService.error('i18n.oblique.http.error.general');
+						this.notificationService.error('i18n.error.general');
 					}
 				}
 			),
@@ -63,7 +63,7 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 		return !this.config.timeout
 			? undefined
 			: setTimeout(() => {
-				this.notificationService.warning('i18n.oblique.http.error.timeout');
+				this.notificationService.warning('i18n.error.other.timeout');
 			}, this.config.timeout);
 	}
 
@@ -99,7 +99,7 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 	private notify(notification: ObliqueRequest['notification'], error: HttpErrorResponse): void {
 		if (notification.active || error.status >= 500 || error.status === 0) {
 			this.notificationService.send({
-				message: notification.text || 'i18n.oblique.http.error.status.' + error.status,
+				message: notification.text || 'i18n.http.error.error.status.' + error.status,
 				title: notification.title || error.statusText,
 				type: notification.severity,
 				sticky: notification.sticky
