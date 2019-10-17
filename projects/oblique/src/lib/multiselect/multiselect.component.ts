@@ -45,7 +45,6 @@ export class MultiselectComponent implements OnInit, OnDestroy, DoCheck, Control
 	@Input() options: any[] = [];
 	@Input() texts: MultiselectTexts;
 	@Input() dropup = false;
-	@Input() disabled = false;
 	@Input() labelProperty: string;
 	@Input() labelFormatter: (option: any) => string;
 	@Input() titleProperty: string;
@@ -78,6 +77,7 @@ export class MultiselectComponent implements OnInit, OnDestroy, DoCheck, Control
 	differ: any;
 	isVisible = false;
 	searchFilterText = '';
+	disabled = false;
 
 	constructor(private readonly element: ElementRef,
 				private readonly multiselectTexts: MultiselectTexts,
