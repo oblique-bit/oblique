@@ -1,4 +1,10 @@
-# [4.1.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.1.0) (2019-10-15)
+# [4.1.1](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.1.1) (2019-10-18)
+
+## Bug Fixes
+* **packaging:** restore previous Oblique's translation keys ([82d4fa4](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/82d4fa4))
+
+
+# [4.1.0](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.1.0) (2019-10-15)
 
 ### Bug Fixes
 * **http-interceptor:** pass `sticky` parameter to notification ([88444f2](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/88444f2))
