@@ -93,28 +93,28 @@
         "name": "info",
         "text": "Custom configuration for <b>info</b> notifications.",
         "type": "INotification",
-        "default": "{title: 'i18n.oblique.notification.type.info'}",
+        "default": "{title: 'i18n.notification.type.info'}",
         "since": "4.0.0"
       },
       {
         "name": "success",
         "text": "Custom configuration for <b>success</b> notifications.",
         "type": "INotification",
-        "default": "{title: 'i18n.oblique.notification.type.success'}",
+        "default": "{title: 'i18n.notification.type.success'}",
         "since": "4.0.0"
       },
       {
         "name": "warning",
         "text": "Custom configuration for <b>warning</b> notifications.",
         "type": "INotification",
-        "default": "{title: 'i18n.oblique.notification.type.warning'}",
+        "default": "{title: 'i18n.notification.type.warning'}",
         "since": "4.0.0"
       },
       {
         "name": "error",
         "text": "Custom configuration for <b>error</b> notifications.",
         "type": "INotification",
-        "default": "{title: 'i18n.oblique.notification.type.error', sticky: true}",
+        "default": "{title: 'i18n.notification.type.error', sticky: true}",
         "since": "4.0.0"
       }
     ],

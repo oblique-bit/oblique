@@ -1,14 +1,14 @@
 <nav class="access-keys" role="navigation" aria-label="Access keys">
 	<ul>
 		<li>
-			<a class="accessible" accesskey="0" [routerLink]="url" fragment="content">{{'i18n.oblique.master-layout.accesskey.mainContent' | translate}}</a>
+			<a class="accessible" accesskey="0" [routerLink]="url" fragment="content">{{'i18n.accesskey.mainContent' | translate}}</a>
 		</li>
 		<li>
-			<a class="accessible" accesskey="1" [routerLink]="home">{{'i18n.oblique.master-layout.accesskey.homepage' | translate}}</a>
+			<a class="accessible" accesskey="1" [routerLink]="home">{{'i18n.accesskey.homepage' | translate}}</a>
 		</li>
 		<li>
 			<a class="accessible" accesskey="2" [routerLink]="url" fragment="navigation" *ngIf="!noNavigation && navigation.length">
-				{{'i18n.oblique.master-layout.accesskey.navigation' | translate}}</a>
+				{{'i18n.accesskey.navigation' | translate}}</a>
 		</li>
 	</ul>
 </nav>
