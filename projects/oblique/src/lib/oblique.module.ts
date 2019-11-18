@@ -25,6 +25,7 @@ import {NumberFormatModule} from './number-format/number-format.module';
 import {OffCanvasModule} from './off-canvas/off-canvas.module';
 import {SearchBoxModule} from './searchbox/search-box.module';
 import {StickyModule} from './sticky/sticky.module';
+import {UnknownRouteModule} from './unknown-route/unknown-route.module';
 import {TelemetryService} from './telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from './telemetry/telemetry-require';
 
@@ -52,6 +53,7 @@ const OBLIQUE_MODULES = [
 	TextControlClearModule,
 	ToggleModule,
 	TranslateParamsModule,
+	UnknownRouteModule,
 	UnsavedChangesModule
 ];
 

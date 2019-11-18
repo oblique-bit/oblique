@@ -69,6 +69,7 @@ export {StickyComponent, StickyModule} from './lib/sticky/sticky.module';
 export {TextControlClearDirective, TextControlClearModule} from './lib/text-control-clear/text-control-clear.module';
 export {ToggleDirective, ToggleModule} from './lib/toggle/toggle.module';
 export {TranslateParamsModule, TranslateParamsPipe} from './lib/translate-params/translate-params.module';
+export {UnknownRouteModule, UnknownRouteComponent} from './lib/unknown-route/unknown-route.module';
 export {UnsavedChangesDirective, UnsavedChangesGuard, UnsavedChangesModule, UnsavedChangesService} from './lib/unsaved-changes/unsaved-changes.module';
 export {UnsavedChangesTabsDirective, UnsavedChangesTabsModule, UnsavedChangesTabsService} from './lib/unsaved-changes-tabs/unsaved-changes-tabs.module';
 export {ThemeService, FRUTIGER, THEMES, OBLIQUE_THEME} from './lib/theme/theme.service';
