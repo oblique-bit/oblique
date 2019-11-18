@@ -22,6 +22,7 @@ import {StickySampleComponent} from './sticky/sticky-sample.component';
 import {FormComponent} from './form/form.component';
 import {ButtonComponent} from './button/button.component';
 import {ErrorMessagesSampleComponent} from './error-messages-sample/error-messages-sample.component';
+import {UnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
 
 const samplesRoutes: Routes = [
 
@@ -68,7 +69,8 @@ const samplesRoutes: Routes = [
 	{path: 'toggle', component: ToggleSampleComponent},
 	{path: 'number-format', component: NumberFormatSampleComponent},
 	{path: 'form', component: FormComponent},
-	{path: 'button', component: ButtonComponent}
+	{path: 'button', component: ButtonComponent},
+	{path: 'unknown-route-sample', component: UnknownRouteSampleComponent}
 ];
 
 @NgModule({
