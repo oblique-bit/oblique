@@ -33,6 +33,7 @@ import {NotificationSampleComponent} from './notification/notification-sample.co
 import {NumberFormatSampleComponent} from './number-format/number-format-sample.component';
 import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
 import {ToggleSampleComponent} from './toggle/toggle-sample.component';
+import {UnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
 import {HttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
@@ -56,6 +57,7 @@ import {
 	StickyModule,
 	TextControlClearModule,
 	ToggleModule,
+	UnknownRouteModule,
 	UnsavedChangesModule,
 	UnsavedChangesTabsModule
 } from 'oblique';
@@ -81,6 +83,7 @@ import {ApiElementComponent} from '../api/api-element.component';
 		StickyModule,
 		TextControlClearModule,
 		ToggleModule,
+		UnknownRouteModule,
 		UnsavedChangesModule,
 		UnsavedChangesTabsModule,
 
@@ -122,6 +125,7 @@ import {ApiElementComponent} from '../api/api-element.component';
 		SchemaValidationSampleComponent,
 		StickySampleComponent,
 		ToggleSampleComponent,
+		UnknownRouteSampleComponent,
 		UnsavedChangesSampleComponent,
 		UnsavedChangesSampleModalComponent,
 		ApiComponent,
