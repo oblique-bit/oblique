@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {Observable, Subject} from 'rxjs';
 import {filter} from 'rxjs/operators';
+
 import {INotification, NotificationType} from './notification.interfaces';
 import {NotificationConfig} from './notification.config';
 
@@ -79,7 +80,7 @@ export class NotificationService {
 			};
 		}
 		const notification = {
-			idPrefix: config.idPrefix || `notification-${type}-${this.formatMessage(config.message)}-`,
+			idPrefix: config.idPrefix || `notification-${type}-${this.formatMessage(config.message, config.messageParams)}-`,
 			type: type,
 			message: config.message,
 			messageParams: config.messageParams,
@@ -96,9 +97,8 @@ export class NotificationService {
 	}
 
 	// Do not make it static as it breaks the build
-	private formatMessage(message: string): string {
-		return message.indexOf('i18n') === 0
-			? message
-			: message.substr(0, 50).replace(/[^\w]/gi, '_').toLowerCase();
+	private formatMessage(message: string, messageParams: { [key: string]: any }): string {
+		return Object.keys(messageParams || {}).reduce((msg, key) => `${msg}-${messageParams[key].toString()}`, message.substr(0, 50))
+			.replace(/[^\w]/gi, '_').toLowerCase();
 	}
 }
