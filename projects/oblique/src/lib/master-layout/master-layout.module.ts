@@ -22,7 +22,7 @@ import {MasterLayoutNavigationComponent} from './master-layout-navigation/master
 import {MasterLayoutNavigationItemDirective} from './master-layout-navigation/master-layout-navigation-item.directive';
 import {MasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
 import {MasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
-import {MasterLayoutConfig} from './master-layout.config';
+import {MasterLayoutConfig, ScrollMode} from './master-layout.config';
 
 export {MasterLayoutComponent} from './master-layout/master-layout.component';
 export {MasterLayoutService} from './master-layout.service';
@@ -32,7 +32,7 @@ export {MasterLayoutNavigationItemDirective} from './master-layout-navigation/ma
 export {MasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
 export {MasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
 export {ORNavigationLink} from './master-layout-navigation/master-layout-navigation.component';
-export {MasterLayoutConfig} from './master-layout.config';
+export {MasterLayoutConfig, ScrollMode} from './master-layout.config';
 
 @NgModule({
 	imports: [

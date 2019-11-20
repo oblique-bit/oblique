@@ -1,6 +1,12 @@
 import {Injectable} from '@angular/core';
 import {ORNavigationLink} from './master-layout-navigation/master-layout-navigation.component';
 
+export enum ScrollMode {
+	AUTO,
+	ENABLED,
+	DISABLED
+}
+
 interface MasterLayoutHeader {
 	isAnimated: boolean;
 	isSticky: boolean;
@@ -16,7 +22,7 @@ interface MasterLayoutFooter {
 
 interface MasterLayoutNavigation {
 	isFullWidth: boolean;
-	isScrollable: boolean;
+	scrollMode: ScrollMode;
 	scrollDelta: number;
 	activeClass: string;
 	links: ORNavigationLink[];
@@ -91,7 +97,7 @@ export class MasterLayoutConfig {
 	 */
 	navigation: MasterLayoutNavigation = {
 		isFullWidth: false,
-		isScrollable: false,
+		scrollMode: ScrollMode.AUTO,
 		scrollDelta: 95,
 		activeClass: 'active',
 		links: []
