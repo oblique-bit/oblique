@@ -26,6 +26,7 @@ export class AppComponent {
 				{url: 'nav-tree', label: 'i18n.routes.samples.nav-tree.title'},
 				{url: 'notification', label: 'i18n.routes.samples.notification.title'},
 				{url: 'number-format', label: 'i18n.routes.samples.number-format.title'},
+				{url: 'pop-up', label: 'Pop-up'},
 				{url: 'toggle', label: 'i18n.routes.samples.toggle.title'},
 				{url: 'validation/form-control-state', label: 'i18n.routes.samples.form-control-state.title'},
 				{url: 'validation/schema-validation', label: 'i18n.routes.samples.schema-validation.title'},
