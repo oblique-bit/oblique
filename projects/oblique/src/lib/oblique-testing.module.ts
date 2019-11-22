@@ -21,6 +21,7 @@ import {MockNotificationModule} from './notification/mock/mock-notification.modu
 import {MockNumberFormatModule} from './number-format/mock/mock-number-format.module';
 import {MockObliqueHttpModule} from './http/mock/mock-oblique-http.module';
 import {MockOffCanvasModule} from './off-canvas/mock/mock-off-canvas.module';
+import {MockPopUpModule} from './pop-up/_mock/mock-pop-up.module';
 import {MockSchemaValidationModule} from './schema-validation/mock/mock-schema-validation.module';
 import {MockScrollingModule} from './scrolling/mock/mock-scrolling.module';
 import {MockSpinnerModule} from './spinner/mock/mock-spinner.module';
@@ -69,6 +70,7 @@ export {MockNavigatorModule, MockNavigatorComponent} from './navigator/mock/mock
 export {MockNavTreeModule, MockNavTreeComponent, MockNavTreeFakeFocusDirective} from './nav-tree/mock/mock-nav-tree.module';
 export {MockNotificationModule, MockNotificationService, MockNotificationComponent, MockNotificationConfig} from './notification/mock/mock-notification.module';
 export {MockNumberFormatModule, MockNumberFormatDirective} from './number-format/mock/mock-number-format.module';
+export {MockPopUpModule, MockPopUpService} from './pop-up/_mock/mock-pop-up.module';
 export {
 	MockObliqueHttpModule, MockObliqueHttpInterceptor, MockObliqueHttpInterceptorConfig, MockObliqueHttpInterceptorEvents
 } from './http/mock/mock-oblique-http.module';
@@ -107,6 +109,7 @@ const MOCK_OBLIQUE_MODULES = [
 	MockNotificationModule,
 	MockNumberFormatModule,
 	MockOffCanvasModule,
+	MockPopUpModule,
 	MockSchemaValidationModule,
 	MockScrollingModule,
 	MockSearchBoxModule,

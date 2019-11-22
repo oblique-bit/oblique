@@ -1,0 +1,29 @@
+[
+  {
+    "name": "PopUpService",
+    "since": "5.0.0",
+    "methods": [
+      {
+        "name": "confirm",
+        "text": "Displays the browser's confirm dialog with the given message.",
+        "arguments": ["message: string"],
+        "returns": "boolean",
+        "since": "5.0.0"
+      },
+      {
+        "name": "alert",
+        "text": "Displays the browser's alert dialog with the given message.",
+        "arguments": ["message: string"],
+        "returns": "void",
+        "since": "5.0.0"
+      },
+      {
+        "name": "prompt",
+        "text": "Displays the browser's prompt dialog with the given message.",
+        "arguments": ["message: string"],
+        "returns": "string",
+        "since": "5.0.0"
+      }
+    ]
+  }
+]
