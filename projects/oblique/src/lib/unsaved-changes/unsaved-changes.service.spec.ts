@@ -2,17 +2,22 @@ import {inject, TestBed} from '@angular/core/testing';
 import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {UnsavedChangesService} from 'oblique';
+import {PopUpService} from '../pop-up/pop-up.service';
 import {MockTranslateService} from '../_mocks/mock-translate.service';
+import {MockPopUpModule} from '../pop-up/_mock/mock-pop-up.module';
 
 describe('UnsavedChangesService', () => {
 	let unsavedChangesService: UnsavedChangesService;
+	let popUpService: PopUpService;
 	beforeEach(() => {
 		TestBed.configureTestingModule({
+			imports: [MockPopUpModule],
 			providers: [
 				UnsavedChangesService,
 				{provide: TranslateService, useClass: MockTranslateService}
 			]
 		});
+		popUpService = TestBed.get(PopUpService);
 	});
 
 	beforeEach(() => {
@@ -26,16 +31,14 @@ describe('UnsavedChangesService', () => {
 
 	it('should attach beforeUnload eventListener', () => {
 		expect(window.addEventListener).toHaveBeenCalled();
-		//TODO: does not work
-		//expect(window.addEventListener).toHaveBeenCalledWith('beforeUnload', jasmine.any(Function));
 	});
 
 	describe('canDeactivate()', () => {
 		describe('with no watched form', () => {
 			it('shouldn\'t call window.confirm', () => {
-				spyOn(window, 'confirm');
+				jest.spyOn(popUpService, 'confirm');
 				unsavedChangesService.canDeactivate();
-				expect(window.confirm).not.toHaveBeenCalled();
+				expect(popUpService.confirm).not.toHaveBeenCalled();
 			});
 
 			it('should return true', () => {
@@ -50,9 +53,9 @@ describe('UnsavedChangesService', () => {
 			});
 
 			it('shouldn\'t call window.confirm', () => {
-				spyOn(window, 'confirm');
+				jest.spyOn(popUpService, 'confirm');
 				unsavedChangesService.canDeactivate();
-				expect(window.confirm).not.toHaveBeenCalled();
+				expect(popUpService.confirm).not.toHaveBeenCalled();
 			});
 
 			it('should return true', () => {
@@ -67,18 +70,18 @@ describe('UnsavedChangesService', () => {
 			});
 
 			it('should call window.confirm', () => {
-				spyOn(window, 'confirm');
+				jest.spyOn(popUpService, 'confirm');
 				unsavedChangesService.canDeactivate();
-				expect(window.confirm).toHaveBeenCalled();
+				expect(popUpService.confirm).toHaveBeenCalled();
 			});
 
 			it('should return false, if not confirmed', () => {
-				jest.spyOn(window, 'confirm').mockImplementation(() => false);
+				jest.spyOn(popUpService, 'confirm').mockImplementation(() => false);
 				expect(unsavedChangesService.canDeactivate()).toBeFalsy();
 			});
 
 			it('should return true, if confirmed', () => {
-				jest.spyOn(window, 'confirm').mockImplementation(() => true);
+				jest.spyOn(popUpService, 'confirm').mockImplementation(() => true);
 				expect(unsavedChangesService.canDeactivate()).toBeTruthy();
 			});
 		});
@@ -89,7 +92,7 @@ describe('UnsavedChangesService', () => {
 			});
 
 			it('should return true, if confirmed', () => {
-				jest.spyOn(window, 'confirm').mockImplementation(() => true);
+				jest.spyOn(popUpService, 'confirm').mockImplementation(() => true);
 				expect(unsavedChangesService.canDeactivate()).toBeTruthy();
 			});
 		});
