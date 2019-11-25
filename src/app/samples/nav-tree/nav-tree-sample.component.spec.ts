@@ -7,9 +7,8 @@ import {ActivatedRoute} from '@angular/router';
 import {of} from 'rxjs';
 import {NgbButtonsModule, NgbCollapseModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {NavTreeComponent} from 'oblique';
-import {MockTranslatePipe, MockTranslateService} from 'tests';
 import {NavTreeSampleComponent} from './nav-tree-sample.component';
-import {TranslateService} from '@ngx-translate/core';
+import {ObliqueTestingModule} from 'oblique/lib/oblique-testing.module';
 
 describe('NavTreeSampleComponent', () => {
 	let component: NavTreeSampleComponent;
@@ -18,7 +17,6 @@ describe('NavTreeSampleComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [
-				MockTranslatePipe,
 				NavTreeSampleComponent,
 				NavTreeComponent
 			],
@@ -28,13 +26,11 @@ describe('NavTreeSampleComponent', () => {
 				RouterTestingModule,
 				NgbCollapseModule,
 				NgbButtonsModule,
-				NgbTooltipModule
+				NgbTooltipModule,
+				ObliqueTestingModule
 			],
 			schemas: [
 				CUSTOM_ELEMENTS_SCHEMA
-			],
-			providers: [
-				{ provide: TranslateService, useClass: MockTranslateService }
 			]
 		}).compileComponents();
 	}));

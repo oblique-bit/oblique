@@ -3,7 +3,7 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {NavigableDirective, NavigableGroupComponent} from 'oblique';
 import {NavigableSampleComponent} from './navigable-sample.component';
-import {MockTranslatePipe} from 'tests';
+import {ObliqueTestingModule} from 'oblique';
 
 describe('NavigableSampleComponent', () => {
 	let component: NavigableSampleComponent;
@@ -13,11 +13,9 @@ describe('NavigableSampleComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
+			imports: [ObliqueTestingModule],
 			declarations: [
-				MockTranslatePipe,
 				NavigableSampleComponent,
-				NavigableDirective,
-				NavigableGroupComponent
 			],
 			schemas: [
 				CUSTOM_ELEMENTS_SCHEMA

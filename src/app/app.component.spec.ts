@@ -1,32 +1,20 @@
 import {async, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
-import {MasterLayoutConfig, NotificationService, SpinnerService} from 'oblique';
+import {ObliqueTestingModule} from 'oblique/lib/oblique-testing.module';
 import {AppComponent} from './app.component';
-import {MockTranslatePipe, MockTranslateService} from 'tests';
 
 describe('AppComponent', () => {
 	beforeEach(async(() => {
-		const mockNotificationService = {
-			success: jest.fn()
-		};
-
 		TestBed.configureTestingModule({
 			declarations: [
-				AppComponent, MockTranslatePipe
+				AppComponent
 			],
 			imports: [
-				RouterTestingModule
+				RouterTestingModule, ObliqueTestingModule
 			],
 			schemas: [
 				CUSTOM_ELEMENTS_SCHEMA
-			],
-			providers: [
-				{provide: NotificationService, useValue: mockNotificationService},
-				{provide: TranslateService, useValue: MockTranslateService},
-				SpinnerService,
-				MasterLayoutConfig
 			]
 		});
 		TestBed.compileComponents();
