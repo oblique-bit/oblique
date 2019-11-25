@@ -18,9 +18,6 @@
       "dom"
     ],
     "paths": {
-      "tests": [
-        "test_helpers"
-      ],
       "oblique": [
         "projects/oblique/src/public_api"
       ],
