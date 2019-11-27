@@ -2,6 +2,8 @@
  * Public API Surface of oblique
  */
 
+import {NestedFormComponent} from './lib/nested-form/nested-form.component';
+
 export {ColumnLayoutModule, ColumnLayoutComponent} from './lib/column-layout/column-layout.module';
 export {
 	DateDMYParserFormatter, DateFormatterPipe, DatepickerComponent, DatepickerI18nService, DatepickerModule, DatepickerPlaceholderDirective
@@ -39,6 +41,7 @@ export {
 	NavigableDirective, NavigableGroupComponent, NavigableModule, NavigableOnMoveEvent, PreventableEvent, NavigableOnChangeEvent
 } from './lib/navigable/navigable.module';
 export {NavigatorComponent, NavigatorModule} from './lib/navigator/navigator.module';
+export {NestedFormModule, NestedFormComponent, ParentFormDirective} from './lib/nested-form/nested-form.module';
 export {
 	CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE,
 	GROUP_SIMILAR_NOTIFICATIONS,
