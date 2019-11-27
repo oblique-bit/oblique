@@ -2,10 +2,10 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {By} from '@angular/platform-browser';
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
-
-import {NavTreeComponent, NavTreeItemModel} from 'oblique';
-import {MockTranslatePipe} from 'tests';
 import {TranslateService} from '@ngx-translate/core';
+import {NavTreeComponent, NavTreeItemModel} from 'oblique';
+import {MockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {MockTranslateService} from '../_mocks/mock-translate.service';
 
 @Component({
 	template: `
@@ -59,15 +59,12 @@ describe('NavTreeComponent', () => {
 	let component: NavTreeComponent;
 	let fixture: ComponentFixture<TestComponent>;
 	let element: DebugElement;
-	const translateMock = {
-		instant: jest.fn().mockImplementation(key => key)
-	};
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
 			declarations: [TestComponent, NavTreeComponent, MockTranslatePipe],
-			providers: [{provide: TranslateService, useValue: translateMock}],
+			providers: [{provide: TranslateService, useClass: MockTranslateService}],
 			schemas: [NO_ERRORS_SCHEMA]
 		}).compileComponents();
 	}));
@@ -154,7 +151,8 @@ describe('NavTreeComponent', () => {
 
 	it('should highlight patterns on filtered navigation items', () => {
 		// Restore default label formatter:
-		component.labelFormatter = NavTreeComponent.DEFAULTS.LABEL_FORMATTER(translateMock as unknown as TranslateService);
+		const translate = TestBed.get(TranslateService);
+		component.labelFormatter = NavTreeComponent.DEFAULTS.LABEL_FORMATTER(translate);
 		component.filterPattern = 'C'; // Filter on 'C' pattern
 		fixture.detectChanges();
 

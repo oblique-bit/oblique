@@ -4,7 +4,8 @@ import {By} from '@angular/platform-browser';
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {NavTreeComponent, NavTreeFakeFocusDirective, NavTreeItemModel} from 'oblique';
-import {MockTranslatePipe} from 'tests';
+import {MockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {MockTranslateService} from '../_mocks/mock-translate.service';
 
 @Component({
 	template: `
@@ -53,9 +54,6 @@ describe('NavTreeFakeFocusDirective', () => {
 	let element: DebugElement;
 	let directive: NavTreeFakeFocusDirective;
 	let inputElement: DebugElement;
-	const translateMock = {
-		instant: jest.fn().mockImplementation(key => key)
-	};
 
 	const keydown = (code: string) => {
 		inputElement.triggerEventHandler(
@@ -73,7 +71,7 @@ describe('NavTreeFakeFocusDirective', () => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
 			declarations: [TestComponent, NavTreeComponent, NavTreeFakeFocusDirective, MockTranslatePipe],
-			providers: [{provide: TranslateService, useValue: translateMock}],
+			providers: [{provide: TranslateService, useClass: MockTranslateService}],
 			schemas: [NO_ERRORS_SCHEMA]
 		}).compileComponents();
 	}));

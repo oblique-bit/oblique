@@ -3,36 +3,22 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 
-import {MockTranslatePipe, MockTranslateService} from 'tests';
 import {MasterLayoutComponent, MasterLayoutConfig, MasterLayoutService} from 'oblique';
-import {of} from 'rxjs';
+import {MockTranslatePipe} from '../../_mocks/mock-translate.pipe';
+import {MockMasterLayoutConfig, MockMasterLayoutService} from '../mock/mock-master-layout.module';
+import {MockTranslateService} from '../../_mocks/mock-translate.service';
 
 describe('MasterLayoutComponent', () => {
 	let component: MasterLayoutComponent;
 	let fixture: ComponentFixture<MasterLayoutComponent>;
-
-	const mockConfig = {layout: {}};
-	const mockService = {
-		layout: {
-			isFixed: false,
-			hasCover: false,
-			isMenuOpened: false,
-			hasMainNavigation: true,
-			configEvents: of({})
-		},
-		footer: {
-			isSmall: false,
-			configEvents: of({})
-		}
-	};
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
 			declarations: [MasterLayoutComponent, MockTranslatePipe],
 			providers: [
-				{provide: MasterLayoutService, useValue: mockService},
-				{provide: MasterLayoutConfig, useValue: mockConfig},
+				{provide: MasterLayoutService, useClass: MockMasterLayoutService},
+				{provide: MasterLayoutConfig, useClass: MockMasterLayoutConfig},
 				{provide: TranslateService, useClass: MockTranslateService}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]

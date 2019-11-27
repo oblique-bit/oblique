@@ -1,7 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {TopControlComponent} from 'oblique';
 import {TranslateService} from '@ngx-translate/core';
-import {MockTranslatePipe, MockTranslateService} from 'tests';
+import {MockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {MockTranslateService} from '../_mocks/mock-translate.service';
 
 describe('TopControlComponent', () => {
 	let fixture: ComponentFixture<TopControlComponent>;
@@ -14,7 +15,7 @@ describe('TopControlComponent', () => {
 				MockTranslatePipe
 			],
 			providers: [
-				{provide: TranslateService, useValue: MockTranslateService},
+				{provide: TranslateService, useClass: MockTranslateService},
 			]
 		}).compileComponents();
 	}));
