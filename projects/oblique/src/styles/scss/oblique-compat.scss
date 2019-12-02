@@ -1,0 +1,10 @@
+@import "core/variables";
+@import "compat/font";
+@import "compat/font-awesome";
+
+.application {
+	@import "compat/master-layout";
+	@import "compat/type";
+	@import "compat/callout";
+	@import "compat/table";
+}

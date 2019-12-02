@@ -1,0 +1,33 @@
+.table {
+	thead {
+		border-top: 1px solid #dee2e6;
+		border-bottom: 2px solid #dee2e6;
+	}
+
+	thead,
+	tfoot {
+		background-color: transparent;
+
+		td, th {
+			border: 0;
+		}
+	}
+
+	td, th {
+		border-left: 0;
+		border-right: 0;
+	}
+
+	&:not(.table-plain) tbody tr:nth-child(odd) {
+		background-color: transparent;
+	}
+
+	&.table-striped tbody tr:nth-of-type(odd) {
+		background-color: rgba(0, 0, 0, 0.05);
+	}
+
+	&.table-hover tbody tr:hover,
+	.active {
+		background-color: rgba(0, 0, 0, 0.075);
+	}
+}
