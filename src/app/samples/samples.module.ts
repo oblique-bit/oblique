@@ -29,6 +29,9 @@ import {NavigableSampleComponent} from './navigable/navigable-sample.component';
 import {NavigatorSampleModule} from './navigator-sample/navigator-sample.module';
 import {NavigatorSampleRoutingModule} from './navigator-sample/navigator-sample-routing.module';
 import {NavTreeDetailSampleComponent, NavTreeSampleComponent} from './nav-tree/nav-tree-sample.component';
+import {NestedFormSampleComponent} from './nested-form/nested-form-sample.component';
+import {NestedFormChildSampleComponent} from './nested-form/nested-form-child-sample.component';
+import {NestedFormGrandChildSampleComponent} from './nested-form/nested-form-grandchild-sample.component';
 import {NotificationSampleComponent} from './notification/notification-sample.component';
 import {NumberFormatSampleComponent} from './number-format/number-format-sample.component';
 import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
@@ -36,10 +39,10 @@ import {ToggleSampleComponent} from './toggle/toggle-sample.component';
 import {UnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
+
 import {HttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
 import {StickySampleComponent} from './sticky/sticky-sample.component';
 import {FormComponent} from './form/form.component';
-
 import {ButtonComponent} from './button/button.component';
 import {
 	ColumnLayoutModule,
@@ -50,6 +53,7 @@ import {
 	MultiselectModule,
 	NavigableModule,
 	NavTreeModule,
+	NestedFormModule,
 	NotificationModule,
 	NumberFormatModule,
 	SchemaValidationModule,
@@ -64,7 +68,9 @@ import {
 import {ApiComponent} from '../api/api.component';
 import {DescriptionComponent} from '../description/description.component';
 import {ApiElementComponent} from '../api/api-element.component';
-import { PopUpSampleComponent } from './pop-up/pop-up-sample.component';
+import {PopUpSampleComponent} from './pop-up/pop-up-sample.component';
+import {NestedFormChildTDSampleComponent} from './nested-form/nested-form-child-td-sample.component';
+import {NestedFormGrandChildTDSampleComponent} from './nested-form/nested-form-grandchild-td-sample.component';
 
 @NgModule({
 	imports: [
@@ -77,6 +83,7 @@ import { PopUpSampleComponent } from './pop-up/pop-up-sample.component';
 		MultiselectModule,
 		NavigableModule,
 		NavTreeModule,
+		NestedFormModule,
 		NumberFormatModule,
 		NotificationModule,
 		SchemaValidationModule,
@@ -121,6 +128,11 @@ import { PopUpSampleComponent } from './pop-up/pop-up-sample.component';
 		NavigableSampleComponent,
 		NavTreeSampleComponent,
 		NavTreeDetailSampleComponent,
+		NestedFormSampleComponent,
+		NestedFormChildSampleComponent,
+		NestedFormChildTDSampleComponent,
+		NestedFormGrandChildSampleComponent,
+		NestedFormGrandChildTDSampleComponent,
 		NotificationSampleComponent,
 		NumberFormatSampleComponent,
 		SchemaValidationSampleComponent,

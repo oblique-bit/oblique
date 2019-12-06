@@ -1,0 +1,26 @@
+<div [formGroup]="grandChildForm">
+	<ng-container *ngIf="material | async else bootstrap">
+		<mat-form-field orErrorMessages>
+			<mat-label>Reactive Material Grand child 1</mat-label>
+			<input matInput formControlName="field1"/>
+			<mat-error></mat-error>
+		</mat-form-field>
+		<mat-form-field orErrorMessages>
+			<mat-label>Reactive Material Grand child 2</mat-label>
+			<input matInput formControlName="field2"/>
+			<mat-error></mat-error>
+		</mat-form-field>
+	</ng-container>
+	<ng-template #bootstrap>
+		<div class="form-group" orFormControlState>
+			<label class="control-label">Reactive Bootstrap Grand Child 1</label>
+			<input class="form-control" type="text" formControlName="field1"/>
+			<or-error-messages></or-error-messages>
+		</div>
+		<div class="form-group" orFormControlState>
+			<label class="control-label">Reactive Bootstrap Grand Child 2</label>
+			<input class="form-control" type="text" formControlName="field2"/>
+			<or-error-messages></or-error-messages>
+		</div>
+	</ng-template>
+</div>

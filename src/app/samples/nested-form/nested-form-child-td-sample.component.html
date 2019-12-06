@@ -1,0 +1,29 @@
+<div ngForm>
+	<ng-container  *ngIf="material | async else bootstrap">
+		<mat-form-field orErrorMessages>
+			<mat-label>Template Material Child 1</mat-label>
+			<input matInput name="field1" [(ngModel)]="field1" required/>
+			<mat-error></mat-error>
+		</mat-form-field>
+		<mat-form-field orErrorMessages>
+			<mat-label>Template Material Child 2</mat-label>
+			<input matInput name="field2" [(ngModel)]="field2" required/>
+			<mat-error></mat-error>
+		</mat-form-field>
+	</ng-container>
+	<ng-template #bootstrap>
+		<div class="form-group" orFormControlState>
+			<label class="control-label">Template Bootstrap Child 1</label>
+			<input class="form-control" type="text" name="field1" [(ngModel)]="field1" required/>
+			<or-error-messages></or-error-messages>
+		</div>
+		<div class="form-group" orFormControlState>
+			<label class="control-label">Template Bootstrap Child 2</label>
+			<input class="form-control" type="text" name="field2" [(ngModel)]="field2" required/>
+			<or-error-messages></or-error-messages>
+		</div>
+	</ng-template>
+	<or-nested-form name="grandchild" [(ngModel)]="grandchild" [nestedForm]="grandChildTD.ngForm.control">
+		<app-nested-form-grandchild-td-sample #grandChildTD></app-nested-form-grandchild-td-sample>
+	</or-nested-form>
+</div>
