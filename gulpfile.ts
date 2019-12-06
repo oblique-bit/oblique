@@ -208,13 +208,11 @@ function deleteFile(component: string): void {
 }
 
 function generateComponentsStyles(dir: string[], component: string): void {
-	fs.readdirSync(path.join(...dir)).forEach(d => {
-		if (fs.statSync(path.join(...dir, d)).isDirectory()) {
-			fs.readdirSync(path.join(...dir, d)).forEach(f => {
-				if (f.endsWith('scss')) {
-					fs.appendFileSync(component, `@import "${dir.join('/')}/${d}/${f}";\n`);
-				}
-			});
+	fs.readdirSync(path.join(...dir)).forEach(file => {
+		if (fs.statSync(path.join(...dir, file)).isDirectory()) {
+			generateComponentsStyles([...dir, file], component);
+		} else if (file.endsWith('scss')) {
+			fs.appendFileSync(component, `@import "${dir.join('/')}/${file}";\n`);
 		}
 	});
 }
