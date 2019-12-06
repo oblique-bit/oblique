@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 import {takeUntil} from 'rxjs/operators';
 
@@ -16,6 +16,7 @@ import {Unsubscribable} from '../unsubscribe.class';
 			</div>
 		</div>`,
 	styleUrls: ['spinner.component.scss'],
+	encapsulation: ViewEncapsulation.None,
 	animations: [
 		trigger('inOut', [
 			state('in', style({opacity: 1, display: 'block'})),
