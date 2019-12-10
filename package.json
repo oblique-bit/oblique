@@ -71,7 +71,7 @@
     "major": "npm version major",
     "release": "npm run gulp -- publish",
     "preversion": "npm run lint && npm test -- --prod && npm run dist",
-    "postversion": "node changelog.js",
+    "postversion": "node changelog.js && node version $npm_package_version",
     "gulp": "./node_modules/.bin/gulp"
   },
   "jestSonar": {
