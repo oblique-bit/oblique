@@ -1,5 +1,6 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, Inject, ViewEncapsulation} from '@angular/core';
 import {MasterLayoutConfig} from '../master-layout/master-layout.config';
+import {WINDOW} from '../utilities';
 
 @Component({
 	selector: 'or-top-control',
@@ -8,17 +9,19 @@ import {MasterLayoutConfig} from '../master-layout/master-layout.config';
 	encapsulation: ViewEncapsulation.None
 })
 export class TopControlComponent {
-	constructor(private readonly config: MasterLayoutConfig) {
+	private readonly window: Window;
+	constructor(private readonly config: MasterLayoutConfig, @Inject(WINDOW) window) {
+		this.window = window; // because AoT don't accept interfaces as DI
 	}
 
 	public scrollTop(): void {
-		const scrollStep = window.scrollY / (this.config.scrollToTopDuration / 15);
+		const scrollStep = this.window.scrollY / (this.config.scrollToTopDuration / 15);
 		this.scrollToTop(scrollStep);
 	}
 
 	private scrollToTop(scrollStep: number): void {
-		if (window.scrollY) {
-			window.scrollBy(0, -scrollStep);
+		if (this.window.scrollY) {
+			this.window.scrollBy(0, -scrollStep);
 			setTimeout(() => this.scrollToTop(scrollStep), 15);
 		}
 	}

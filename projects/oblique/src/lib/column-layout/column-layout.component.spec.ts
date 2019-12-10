@@ -9,6 +9,7 @@ import {MockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {MockTranslateService} from '../_mocks/mock-translate.service';
 import {MockMasterLayoutModule} from '../master-layout/mock/mock-master-layout.module';
 import {MockScrollingModule} from '../scrolling/mock/mock-scrolling.module';
+import {windowProvider, WINDOW} from '../utilities';
 
 @Component({
 	template: `
@@ -44,7 +45,8 @@ describe('ColumnLayoutComponent', () => {
 			declarations: [TestComponent, ColumnLayoutComponent, MockColumnPanelDirective, MockTranslatePipe],
 			imports: [RouterTestingModule, MockMasterLayoutModule, MockScrollingModule],
 			providers: [
-				{provide: TranslateService, useClass: MockTranslateService}
+				{provide: TranslateService, useClass: MockTranslateService},
+				{provide: WINDOW, useFactory: windowProvider}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();

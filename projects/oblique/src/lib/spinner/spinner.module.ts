@@ -4,19 +4,21 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 
 import {SpinnerComponent} from './spinner.component';
 import {SpinnerService} from './spinner.service';
-import { TelemetryService } from '../telemetry/telemetry.service';
-import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
+import {TelemetryService} from '../telemetry/telemetry.service';
+import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
+import {WINDOW, windowProvider} from '../utilities';
 
 export {SpinnerComponent} from './spinner.component';
 export {SpinnerService} from './spinner.service';
 export {SpinnerEvent} from './spinner-event';
 
 @NgModule({
-	imports: [
-		CommonModule
-	],
+	imports: [CommonModule],
 	declarations: [SpinnerComponent],
-	providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
+	providers: [
+		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+		{provide: WINDOW, useFactory: windowProvider}
+	],
 	exports: [SpinnerComponent]
 })
 export class SpinnerModule {

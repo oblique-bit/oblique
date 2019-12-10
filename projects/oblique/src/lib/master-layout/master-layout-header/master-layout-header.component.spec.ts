@@ -9,6 +9,7 @@ import {MockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {MockTranslateService} from '../../_mocks/mock-translate.service';
 import {MockMasterLayoutService} from '../mock/mock-master-layout.service';
 import {MockMasterLayoutConfig} from '../mock/mock-master-layout.config';
+import {windowProvider, WINDOW} from '../../utilities';
 
 describe('MasterLayoutHeaderComponent', () => {
 	let component: MasterLayoutHeaderComponent;
@@ -21,7 +22,8 @@ describe('MasterLayoutHeaderComponent', () => {
 			providers: [
 				{provide: TranslateService, useClass: MockTranslateService},
 				{provide: MasterLayoutService, useClass: MockMasterLayoutService},
-				{provide: MasterLayoutConfig, useClass: MockMasterLayoutConfig}
+				{provide: MasterLayoutConfig, useClass: MockMasterLayoutConfig},
+				{provide: WINDOW, useValue: windowProvider},
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		})

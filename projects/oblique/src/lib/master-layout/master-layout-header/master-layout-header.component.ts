@@ -5,6 +5,7 @@ import {
 	ElementRef,
 	HostBinding,
 	HostListener,
+	Inject,
 	Input,
 	QueryList,
 	Renderer2,
@@ -21,6 +22,7 @@ import {MasterLayoutService} from '../master-layout.service';
 import {LocaleObject, MasterLayoutConfig} from '../master-layout.config';
 import {ORNavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
 import {MasterLayoutEvent, MasterLayoutEventValues, scrollEnabled} from '../master-layout.utility';
+import {WINDOW} from '../../utilities';
 
 @Component({
 	selector: 'or-master-layout-header',
@@ -41,15 +43,17 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 	@HostBinding('class.application-header-md') isMedium = this.masterLayout.header.isMedium;
 	@ContentChildren('orHeaderControl') readonly templates: QueryList<TemplateRef<any>>;
 	@ViewChildren('headerControl') readonly headerControl: QueryList<ElementRef>;
+	private readonly window: Window;
 
 	constructor(private readonly masterLayout: MasterLayoutService,
 				private readonly translate: TranslateService,
 				private readonly config: MasterLayoutConfig,
 				private readonly scrollEvents: ScrollingEvents,
 				private readonly el: ElementRef,
-				private readonly renderer: Renderer2) {
+				private readonly renderer: Renderer2,
+				@Inject(WINDOW) window) {
 		super();
-
+		this.window = window; // because AoT don't accept interfaces as DI
 		this.locales = this.formatLocales();
 		this.propertyChanges();
 		this.reduceOnScroll();
@@ -141,7 +145,7 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 	private setFocusable(isMenuOpened: boolean): void {
 		// these elements must not be focusable during the closing animation. Otherwise, the focused element will be scrolled into view
 		// and the header will appear empty.
-		const isFocusable = window.innerWidth > 991 || !isMenuOpened;
+		const isFocusable = this.window.innerWidth > 991 || !isMenuOpened;
 		Array.from(this.el.nativeElement.querySelectorAll('.application-header-controls a.control-link'))
 			.forEach(el => {
 				this.renderer.setAttribute(el, 'tabindex', isFocusable ? '0' : '-1');

@@ -8,6 +8,7 @@ import {NotificationService} from './notification.service';
 import {NotificationConfig} from './notification.config';
 import {TelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
+import {WINDOW, windowProvider} from '../utilities';
 
 export {NotificationComponent} from './notification.component';
 export {NotificationService} from './notification.service';
@@ -20,7 +21,10 @@ export {KeyWithParams, INotification, NotificationType} from './notification.int
 		TranslateModule
 	],
 	declarations: [NotificationComponent],
-	providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
+	providers: [
+		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+		{provide: WINDOW, useFactory: windowProvider}
+	],
 	exports: [NotificationComponent]
 })
 export class NotificationModule {

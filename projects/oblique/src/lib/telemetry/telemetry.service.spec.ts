@@ -2,6 +2,7 @@ import {TelemetryMessage} from './telemetry-message';
 import {TestBed} from '@angular/core/testing';
 import {TelemetryService} from './telemetry.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {windowProvider, WINDOW} from '../utilities';
 
 describe('TelemetryService', () => {
 	let service: TelemetryService;
@@ -9,9 +10,8 @@ describe('TelemetryService', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [
-				HttpClientTestingModule
-			]
+			imports: [HttpClientTestingModule],
+			providers: [{provide: WINDOW, useFactory: windowProvider}]
 		});
 
 		service = TestBed.get(TelemetryService);

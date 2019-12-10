@@ -7,8 +7,9 @@ import {ColumnLayoutComponent} from './column-layout.component';
 import {ColumnToggleDirective} from './column-toggle.directive';
 import {ColumnPanelDirective} from './column-panel.directive';
 
-import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
-import { TelemetryService } from '../telemetry/telemetry.service';
+import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
+import {TelemetryService} from '../telemetry/telemetry.service';
+import {windowProvider, WINDOW} from '../utilities';
 
 export {ColumnLayoutComponent} from './column-layout.component';
 
@@ -22,7 +23,10 @@ export {ColumnLayoutComponent} from './column-layout.component';
 		ColumnPanelDirective,
 		ColumnToggleDirective
 	],
-	providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
+	providers: [
+		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+		{provide: WINDOW, useFactory: windowProvider}
+	],
 	exports: [
 		ColumnLayoutComponent
 	]

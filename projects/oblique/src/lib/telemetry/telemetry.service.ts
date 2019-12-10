@@ -1,8 +1,9 @@
 import {Inject, Injectable, InjectionToken, isDevMode, Optional} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {EMPTY, fromEvent, race} from 'rxjs';
-import {TelemetryMessage} from './telemetry-message';
 import {catchError} from 'rxjs/operators';
+import {TelemetryMessage} from './telemetry-message';
+import {WINDOW} from '../utilities';
 
 export const TELEMETRY_DISABLE = new InjectionToken<boolean>('TELEMETRY_DISABLE');
 
@@ -13,11 +14,12 @@ export class TelemetryService {
 	private readonly TELEMETRY_URL = 'https://oblique-telemetry.bit.admin.ch/api/v1/telemetry';
 	private readonly telemetryRecords: Array<TelemetryMessage> = new Array<TelemetryMessage>();
 	private readonly disableTokenValue: boolean;
+	private readonly window: Window;
 
 	constructor(
-		private readonly http: HttpClient,
-		@Optional() @Inject(TELEMETRY_DISABLE) private readonly isDisabled: boolean) {
-
+		private readonly http: HttpClient, @Optional() @Inject(TELEMETRY_DISABLE) private readonly isDisabled: boolean, @Inject(WINDOW) window
+	) {
+		this.window = window; // because AoT don't accept interfaces as DI // because AoT don't accept interfaces as DI
 		if (isDisabled) {
 			console.log('Oblique Telemetry is disabled by injection token.');
 		}

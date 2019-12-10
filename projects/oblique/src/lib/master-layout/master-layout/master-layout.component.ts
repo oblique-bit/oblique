@@ -24,6 +24,7 @@ import {ORNavigationLink} from '../master-layout-navigation/master-layout-naviga
 import {ScrollingEvents} from '../../scrolling/scrolling-events';
 import {MasterLayoutEventValues} from '../master-layout.utility';
 import {appVersion} from '../../version';
+import {WINDOW} from '../../utilities';
 
 @Component({
 	selector: 'or-master-layout',
@@ -53,16 +54,17 @@ export class MasterLayoutComponent extends Unsubscribable implements OnInit {
 	@ContentChildren('orHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('orFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<any>>;
 	@ViewChild('offCanvasClose', {static: false}) readonly offCanvasClose: ElementRef<HTMLElement>;
+	private readonly window: Window;
 
 	constructor(private readonly masterLayout: MasterLayoutService,
 				private readonly config: MasterLayoutConfig,
 				readonly offCanvasService: OffCanvasService,
 				private readonly router: Router,
 				private readonly scrollEvents: ScrollingEvents,
-				@Inject(DOCUMENT) private readonly document: any
-	) {
+				@Inject(DOCUMENT) private readonly document: any,
+				@Inject(WINDOW) window) {
 		super();
-
+		this.window = window; // because AoT don't accept interfaces as DI
 		this.propertyChanges();
 		this.focusFragment();
 		this.focusOffCanvasClose();
@@ -70,7 +72,7 @@ export class MasterLayoutComponent extends Unsubscribable implements OnInit {
 
 	@HostListener('window:scroll')
 	ngOnInit(): void {
-		const scrollTop = window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
+		const scrollTop = this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
 		this.scrollEvents.hasScrolled(scrollTop);
 		if (this.isScrolling !== scrollTop > 0) {
 			this.isScrolling = scrollTop > 0;

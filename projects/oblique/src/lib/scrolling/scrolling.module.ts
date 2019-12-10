@@ -6,6 +6,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {TopControlComponent} from './top-control.component';
 import {TelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
+import {windowProvider, WINDOW} from '../utilities';
 
 export {TopControlComponent} from './top-control.component';
 export {ScrollingEvents} from './scrolling-events';
@@ -16,7 +17,10 @@ export {ScrollingEvents} from './scrolling-events';
 		TranslateModule
 	],
 	declarations: [TopControlComponent],
-	providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
+	providers: [
+		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+		{provide: WINDOW, useFactory: windowProvider}
+	],
 	exports: [TopControlComponent]
 })
 export class ScrollingModule {

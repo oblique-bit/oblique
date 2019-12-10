@@ -3,6 +3,7 @@ import {TopControlComponent} from 'oblique';
 import {TranslateService} from '@ngx-translate/core';
 import {MockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {MockTranslateService} from '../_mocks/mock-translate.service';
+import {windowProvider, WINDOW} from '../utilities';
 
 describe('TopControlComponent', () => {
 	let fixture: ComponentFixture<TopControlComponent>;
@@ -16,6 +17,7 @@ describe('TopControlComponent', () => {
 			],
 			providers: [
 				{provide: TranslateService, useClass: MockTranslateService},
+				{provide: WINDOW, useValue: windowProvider},
 			]
 		}).compileComponents();
 	}));

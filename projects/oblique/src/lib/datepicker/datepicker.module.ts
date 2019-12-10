@@ -13,6 +13,7 @@ import {DatepickerComponent} from './datepicker.component';
 import {TelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {ThemeService} from '../theme/theme.service';
+import {WINDOW, windowProvider} from '../utilities';
 
 export {DatepickerI18nService} from './datepicker-i18n.service';
 export {DateDMYParserFormatter} from './date-parser-formatter';
@@ -39,7 +40,8 @@ export {DatepickerComponent} from './datepicker.component';
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 		{provide: NgbDatepickerI18n, useClass: DatepickerI18nService},
-		{provide: NgbDateParserFormatter, useClass: DateDMYParserFormatter}
+		{provide: NgbDateParserFormatter, useClass: DateDMYParserFormatter},
+		{provide: WINDOW, useFactory: windowProvider}
 	],
 	exports: [
 		DatepickerComponent,

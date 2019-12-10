@@ -9,8 +9,9 @@ import {SearchBoxDirective} from './search-box.directive';
 import {SearchBoxResultsComponent} from './search-box-results.component';
 import {SearchBoxComponent} from './search-box.component';
 import {NavTreeModule} from '../nav-tree/nav-tree.module';
-import { TelemetryService } from '../telemetry/telemetry.service';
-import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
+import {TelemetryService} from '../telemetry/telemetry.service';
+import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
+import {WINDOW, windowProvider} from '../utilities';
 
 export {SearchBoxResultsComponent} from './search-box-results.component';
 export {SearchBoxComponent, SearchWidgetItem} from './search-box.component';
@@ -25,7 +26,10 @@ export {SearchBoxDirective} from './search-box.directive';
 		RouterModule
 	],
 	declarations: [SearchBoxDirective, SearchBoxComponent, SearchBoxResultsComponent],
-	providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
+	providers: [
+		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+		{provide: WINDOW, useFactory: windowProvider}
+	],
 	exports: [SearchBoxDirective, SearchBoxComponent],
 	entryComponents: [SearchBoxResultsComponent]
 })

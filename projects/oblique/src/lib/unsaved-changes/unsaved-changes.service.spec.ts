@@ -1,10 +1,11 @@
 import {inject, TestBed} from '@angular/core/testing';
 import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
-import {UnsavedChangesService} from 'oblique';
+import {UnsavedChangesService, WINDOW} from 'oblique';
 import {PopUpService} from '../pop-up/pop-up.service';
 import {MockTranslateService} from '../_mocks/mock-translate.service';
 import {MockPopUpModule} from '../pop-up/_mock/mock-pop-up.module';
+import {windowProvider} from '../utilities';
 
 describe('UnsavedChangesService', () => {
 	let unsavedChangesService: UnsavedChangesService;
@@ -14,7 +15,8 @@ describe('UnsavedChangesService', () => {
 			imports: [MockPopUpModule],
 			providers: [
 				UnsavedChangesService,
-				{provide: TranslateService, useClass: MockTranslateService}
+				{provide: TranslateService, useClass: MockTranslateService},
+				{provide: WINDOW, useFactory: windowProvider}
 			]
 		});
 		popUpService = TestBed.get(PopUpService);
