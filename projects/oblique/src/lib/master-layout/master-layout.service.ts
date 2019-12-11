@@ -52,6 +52,7 @@ export class MasterLayoutService extends Unsubscribable {
 		const lang = this.getCurrentLang(langToken);
 		this.translate.setDefaultLang(lang);
 		this.translate.use(lang);
+		this.translate.addLangs(this.config.locale.locales.reduce((languages, language) => languages.concat([(language as LocaleObject).locale || language]), []));
 		this.translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe((event: LangChangeEvent) => {
 			localStorage.setItem(MasterLayoutService.token + langToken, event.lang);
 		});
