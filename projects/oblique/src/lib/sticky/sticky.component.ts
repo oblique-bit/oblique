@@ -1,13 +1,10 @@
-import {Component, ContentChild, HostBinding, Input, OnChanges, OnInit, TemplateRef} from '@angular/core';
+import {Component, ContentChild, HostBinding, Input, OnChanges, OnInit, TemplateRef, ViewEncapsulation} from '@angular/core';
 
 @Component({
 	selector: 'or-sticky',
 	exportAs: 'orSticky',
-	styles: [`
-		:host {
-			overflow: hidden;
-		}
-	`],
+	styleUrls: ['./sticky.component.scss'],
+	encapsulation: ViewEncapsulation.None,
 	template: `
 		<div class="sticky-header" *ngIf="stickyHeaderTemplate">
 			<ng-container *ngTemplateOutlet="stickyHeaderTemplate"></ng-container>
