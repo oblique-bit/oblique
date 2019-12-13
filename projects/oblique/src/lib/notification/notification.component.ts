@@ -91,6 +91,7 @@ export class NotificationComponent implements OnInit {
 	 */
 	public close(notification): void {
 		notification.$state = 'out';
+		clearTimeout(notification.timer);
 		setTimeout(() => this.remove(notification), NotificationComponent.REMOVE_DELAY);
 	}
 
@@ -109,7 +110,7 @@ export class NotificationComponent implements OnInit {
 	}
 
 	private selfClose(notification: INotification): void {
-		setTimeout(() => {
+		notification.timer = setTimeout(() => {
 			if (notification.occurrences) {
 				notification.occurrences--;
 				this.selfClose(notification);

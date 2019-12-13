@@ -1,3 +1,5 @@
+import Timer = NodeJS.Timer;
+
 export interface INotification {
 	idPrefix?: string;
 	type?: NotificationType;
@@ -11,6 +13,7 @@ export interface INotification {
 	$state?: string;
 	occurrences?: number;
 	groupSimilar?: boolean;
+	timer?: Timer;
 }
 
 export interface INotificationConfig {
