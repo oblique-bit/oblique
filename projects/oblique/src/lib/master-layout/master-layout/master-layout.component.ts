@@ -23,6 +23,7 @@ import {MasterLayoutConfig} from '../master-layout.config';
 import {ORNavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
 import {ScrollingEvents} from '../../scrolling/scrolling-events';
 import {MasterLayoutEventValues} from '../master-layout.utility';
+import {appVersion} from '../../version';
 
 @Component({
 	selector: 'or-master-layout',
@@ -36,7 +37,7 @@ import {MasterLayoutEventValues} from '../master-layout.utility';
 	],
 	encapsulation: ViewEncapsulation.None,
 	// tslint:disable-next-line:no-host-metadata-property
-	host: {class: 'application'}
+	host: {class: 'application', 'or-version': appVersion}
 })
 export class MasterLayoutComponent extends Unsubscribable implements OnInit {
 	home = this.config.homePageRoute;
