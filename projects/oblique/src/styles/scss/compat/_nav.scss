@@ -1,0 +1,28 @@
+@import "../core/variables";
+
+.nav-header {
+	position: relative;
+	color: $brand-default;
+	font-size: $font-size-base;
+	border: none;
+
+	.nav-item + & {
+		margin-top: $spacing-sm;
+	}
+}
+
+.nav-header-title {
+	display: block;
+	font-size: inherit;
+	font-weight: bold;
+	color: $brand-default;
+	border-bottom: 1px solid $gray-light;
+	padding: $spacing-default - 5 $spacing-default $spacing-default - 5 0;
+	margin: 0;
+
+	&:hover,
+	&:hover {
+		color: $brand-default;
+		text-decoration: none;
+	}
+}

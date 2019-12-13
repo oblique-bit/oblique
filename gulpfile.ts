@@ -28,6 +28,7 @@ const distMaterialCss = (done) => transpile('material', 'themes', done);
 const distBootstrapCss = (done) => transpile('bootstrap', 'themes', done);
 const distCoreCss = (done) => transpile('core', '', done);
 const distUtilCss = (done) => transpile('utilities', '', done);
+const distCompatCss = (done) => transpile('compat', '', done);
 const distComponentsCss = (done) => transpileComponents(['projects', 'oblique', 'src', 'lib'], done);
 
 const distTestHelpers = () => gulp.src(['test_helpers/*']).pipe(gulp.dest(paths.dist + 'test_helpers'));
@@ -63,7 +64,7 @@ const distCss = () => {
 };
 
 const distFonts = () => {
-	return gulp.src('./node_modules/@fortawesome/fontawesome-free/webfonts/*')
+	return gulp.src(['./node_modules/@fortawesome/fontawesome-free/webfonts/*', './node_modules/font-awesome/fonts/*'])
 		.pipe(gulp.dest(paths.dist + 'styles/fonts'));
 };
 
@@ -113,6 +114,7 @@ gulp.task(
 				distBootstrapCss,
 				distCoreCss,
 				distUtilCss,
+				distCompatCss,
 				distComponentsCss
 			),
 			distScss,
@@ -132,7 +134,8 @@ gulp.task('themes',
 		distStyles,
 		gulp.parallel(
 			distMaterialCss,
-			distBootstrapCss
+			distBootstrapCss,
+			distCompatCss
 		)
 	)
 );
