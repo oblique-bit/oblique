@@ -6,12 +6,12 @@ import {FormControlStateDirective} from 'oblique';
 
 @Component({
 	template: `
-        <form name="testForm">
-            <div orFormControlState [pristineValidation]="pristineValidation">
-                <input name="name" type="text" [(ngModel)]="model" #name="ngModel" required minlength="3">
-            </div>
-            <input id="submit" type="submit" value="Click Me">
-        </form>
+		<form name="testForm">
+			<div orFormControlState [pristineValidation]="pristineValidation">
+				<input name="name" type="text" [(ngModel)]="model" #name="ngModel" required minlength="3">
+			</div>
+			<input id="submit" type="submit" value="Click Me">
+		</form>
 	`
 })
 class TestWithPristineValidationComponent {
@@ -24,12 +24,12 @@ class TestWithPristineValidationComponent {
 
 @Component({
 	template: `
-        <form [formGroup]="model">
+		<form [formGroup]="model">
             <div orFormControlState>
-                <input formControlName="name" type="text">
-            </div>
-            <input id="submit" type="submit" value="Click Me">
-        </form>
+				<input formControlName="name" type="text">
+			</div>
+			<input id="submit" type="submit" value="Click Me">
+		</form>
 	`
 })
 class ReactiveTestComponent implements OnInit {
@@ -48,12 +48,12 @@ class ReactiveTestComponent implements OnInit {
 
 @Component({
 	template: `
-        <form name="testForm">
-            <div orFormControlState>
-                <input name="name" type="text" [(ngModel)]="model" #name="ngModel" required minlength="4">
-            </div>
-            <input id="submit" type="submit" value="Click Me">
-        </form>
+		<form name="testForm">
+			<div orFormControlState>
+				<input name="name" type="text" [(ngModel)]="model" #name="ngModel" required minlength="4">
+			</div>
+			<input id="submit" type="submit" value="Click Me">
+		</form>
 	`
 })
 class TestComponent {
@@ -93,12 +93,13 @@ describe('FormControlStateDirective', () => {
 			submitButton = fixture.debugElement.query(By.css('#submit')).nativeElement;
 		}));
 
-		it('should add has-error class on form submit', () => {
+		it('should add has-error class on form submit', fakeAsync(() => {
 			submitButton.click();
+			tick(0);
 			fixture.detectChanges();
 
 			expect(fixture.debugElement.query(By.css('.has-error'))).toBeTruthy();
-		});
+		}));
 
 		it('should add has-error on value change', fakeAsync(() => {
 			component.model = 'A valid Value';
@@ -156,12 +157,13 @@ describe('FormControlStateDirective', () => {
 			submitButton = fixture.debugElement.query(By.css('#submit')).nativeElement;
 		}));
 
-		it('should add has-error class on form submit', () => {
+		it('should add has-error class on form submit', fakeAsync(() => {
 			submitButton.click();
+			tick(0);
 			fixture.detectChanges();
 
 			expect(fixture.debugElement.query(By.css('.has-error'))).toBeTruthy();
-		});
+		}));
 
 		it('should remove has-error on statusChange', fakeAsync(() => {
 			component.model.value.name = 'A valid Value';

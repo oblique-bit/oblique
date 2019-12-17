@@ -1,19 +1,11 @@
-import {
-	AfterViewInit,
-	ContentChild,
-	Directive,
-	ElementRef,
-	HostBinding,
-	Input,
-	Optional,
-	Renderer2
-} from '@angular/core';
+import {AfterViewInit, ContentChild, Directive, ElementRef, HostBinding, Input, Optional, Renderer2} from '@angular/core';
 import {FormGroupDirective, FormGroupName, NgControl, NgForm, NgModelGroup} from '@angular/forms';
 import {merge} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {delay, takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe.class';
 import {ThemeService} from '../theme/theme.service';
+import {ParentFormDirective} from '../nested-form/parent-form.directive';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular default material behavior for both mandatory and error states instead
@@ -40,6 +32,7 @@ export class FormControlStateDirective extends Unsubscribable implements AfterVi
 				@Optional() formGroupDirective: FormGroupDirective,
 				@Optional() formGroupName: FormGroupName,
 				@Optional() modelGroup: NgModelGroup,
+				@Optional() private readonly parent: ParentFormDirective,
 				theme: ThemeService,
 				private readonly elementRef: ElementRef,
 				private readonly renderer: Renderer2) {
@@ -71,8 +64,13 @@ export class FormControlStateDirective extends Unsubscribable implements AfterVi
 			this.form.ngSubmit,
 			this.ngControl.statusChanges
 		)
-			.pipe(takeUntil(this.unsubscribe))
+			.pipe(takeUntil(this.unsubscribe), delay(0))
 			.subscribe(() => this.generateState());
+
+		// in case of nested forms, the root form is not accessible
+		if (this.parent) {
+			this.parent.submit$.subscribe(() => this.generateState(true));
+		}
 
 		this.delayStateGenerationForReactiveForms();
 	}
@@ -91,8 +89,8 @@ export class FormControlStateDirective extends Unsubscribable implements AfterVi
 			|| (this.ngControl.errors && this.ngControl.errors.required);
 	}
 
-	private generateState(): void {
-		this.hasErrorClass = (this.form.submitted || !this.ngControl.pristine || this.pristineValidation)
+	private generateState(submitted = false): void {
+		this.hasErrorClass = (submitted || this.form.submitted || !this.ngControl.pristine || this.pristineValidation)
 			? this.ngControl.invalid
 			: false;
 
