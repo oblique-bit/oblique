@@ -1,5 +1,10 @@
 import {NgModule} from '@angular/core';
 
+import {TranslateService} from '@ngx-translate/core';
+import {MockTranslateService} from './_mocks/mock-translate.service';
+import {MockTranslatePipe} from './_mocks/mock-translate.pipe';
+import {MockMatFormElementComponent} from './_mocks/mock-form-element.component';
+
 import {MockColumnLayoutModule} from './column-layout/mock/mock-column-layout.module';
 import {MockSearchBoxModule} from './searchbox/mock/mock-search-box.module';
 import {MockDocumentMetaModule} from './document-meta/mock/mock-document-meta.module';
@@ -119,6 +124,10 @@ const MOCK_OBLIQUE_MODULES = [
 @NgModule({
 	imports: MOCK_OBLIQUE_MODULES,
 	exports: MOCK_OBLIQUE_MODULES,
+	declarations: [MockTranslatePipe, MockMatFormElementComponent],
+	providers: [
+		{provide: TranslateService, useClass: MockTranslateService}
+	]
 })
 export class ObliqueTestingModule {
 }
