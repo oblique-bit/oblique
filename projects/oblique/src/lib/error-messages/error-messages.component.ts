@@ -1,12 +1,13 @@
 import {AfterViewInit, Component, Input, Optional} from '@angular/core';
 import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
 import {merge as observableMerge} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {delay, takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../unsubscribe.class';
 import {FormControlStateDirective} from '../form-control-state/form-control-state.directive';
 import {ErrorMessagesService} from './error-messages.service';
 import {ThemeService} from '../theme/theme.service';
+import {ParentFormDirective} from '../nested-form/parent-form.directive';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular material mat-error instead
@@ -27,7 +28,8 @@ export class ErrorMessagesComponent extends Unsubscribable implements AfterViewI
 				theme: ThemeService,
 				@Optional() private readonly formGroup: FormControlStateDirective,
 				@Optional() ngForm: NgForm,
-				@Optional() formGroupDirective: FormGroupDirective) {
+				@Optional() formGroupDirective: FormGroupDirective,
+				@Optional() private readonly parent: ParentFormDirective) {
 		super();
 		theme.deprecated('error messages', 'form-field/overview#error-messages');
 		this.form = ngForm || formGroupDirective;
@@ -44,15 +46,20 @@ export class ErrorMessagesComponent extends Unsubscribable implements AfterViewI
 			this.control.statusChanges,
 			this.form.ngSubmit
 		)
-			.pipe(takeUntil(this.unsubscribe))
+			.pipe(takeUntil(this.unsubscribe), delay(0)) // delay event to let native submit and reset events be applied
 			.subscribe(() => this.generateErrorMessages());
+
+		// in case of nested forms, the root form is not accessible
+		if (this.parent) {
+			this.parent.submit$.subscribe(() => this.generateErrorMessages(true));
+		}
 
 		this.delayMessageGenerationForReactiveForms();
 	}
 
-	private generateErrorMessages() {
+	private generateErrorMessages(submitted = false) {
 		const pristineValidation = this.formGroup ? this.formGroup.pristineValidation : false;
-		if (this.control.invalid && (this.form.submitted || !this.control.pristine || pristineValidation)) {
+		if (this.control.invalid && (submitted || this.form.submitted || !this.control.pristine || pristineValidation)) {
 			this.errors = this.errorMessagesService.createMessages(this.control);
 		} else {
 			this.errors = [];
