@@ -12,6 +12,7 @@ export class DatepickerSampleComponent {
 	maxDate: NgbDateStruct;
 
 	model: any = {
+		date: undefined,
 		range: {}
 	};
 
@@ -26,7 +27,6 @@ export class DatepickerSampleComponent {
 	}
 
 	min() {
-		//TODO should we set the control dirty?
 		const underMinDate = DatepickerSampleComponent.ngbDateStructToDate(this.minDate);
 		underMinDate.setDate(underMinDate.getDate() - 1);
 		this.model.minMax = DatepickerSampleComponent.dateToNgbDateStruct(underMinDate);
@@ -35,7 +35,6 @@ export class DatepickerSampleComponent {
 	max() {
 		const overMaxDate = DatepickerSampleComponent.ngbDateStructToDate(this.maxDate);
 		overMaxDate.setDate(overMaxDate.getDate() + 1);
-		console.log(this.maxDate);
 		this.model.minMax = DatepickerSampleComponent.dateToNgbDateStruct(overMaxDate);
 	}
 

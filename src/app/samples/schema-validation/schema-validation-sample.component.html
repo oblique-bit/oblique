@@ -72,9 +72,7 @@
 					<div orFormControlState class="row form-group">
 						<label class="col-3 col-form-label" for="templateDate">Date</label>
 						<div class="col-8">
-							<or-date-picker>
-								<input id="templateDate" class="form-control" name="date" ngModel ngbDatepicker required>
-							</or-date-picker>
+							<or-date-picker id="templateDate" ngModel name="date" required></or-date-picker>
 							<or-error-messages></or-error-messages>
 						</div>
 						<div class="col-1">
@@ -283,9 +281,7 @@
 					<div orFormControlState class="row form-group">
 						<label class="col-3 col-form-label" for="reactiveDate">Date</label>
 						<div class="col-8">
-							<or-date-picker>
-								<input id="reactiveDate" class="form-control" formControlName="date" ngbDatepicker orSchemaValidate>
-							</or-date-picker>
+							<or-date-picker id="reactiveDate" formControlName="date" required orSchemaValidate></or-date-picker>
 							<or-error-messages></or-error-messages>
 						</div>
 						<div class="col-1">

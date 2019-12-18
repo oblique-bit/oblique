@@ -3,15 +3,12 @@
 	<or-description component="datepicker"></or-description>
 	<or-column-layout [left]="false" [right]="true">
 		<form novalidate column-main-content>
-			<div class="form-group row" orFormControlState mandatory="true">
+			<div class="form-group row" orFormControlState pristineValidation="true">
 				<label class="col-sm-4 col-lg-3 col-control-label">Date</label>
 				<div class="col-sm-8 col-lg-9">
 					<div class="row">
 						<div class="col-md-6">
-							<or-date-picker>
-								<input class="form-control"
-									   name="date" [(ngModel)]="model.date" ngbDatepicker required>
-							</or-date-picker>
+							<or-date-picker [ngModel]="model.date" name="date" required></or-date-picker>
 							<or-error-messages></or-error-messages>
 						</div>
 						<div class="col-md-6">
@@ -20,15 +17,6 @@
 										ngbTooltip="Sets model to today's date using the standard JavaScript Date object">
 									Today
 								</button>
-								<!-- Not implemented yet -->
-								<!--<button type="button" class="btn btn-info" ng-click="ctrl.toISO()"
-										tooltip-append-to-body="true"
-										ngbTooltip="Sets model to today's date using the ISO 8601 format">ISO
-								</button>
-								<button type="button" class="btn btn-info" ng-click="ctrl.toTimestamp()"
-										tooltip-append-to-body="true"
-										ngbTooltip="Sets model to today's date using a timestamp">Timestamp
-								</button>-->
 							</div>
 						</div>
 					</div>
@@ -39,12 +27,10 @@
 				<div class="col-sm-8 col-lg-9">
 					<div class="row">
 						<div class="col-md-6">
-							<or-date-picker>
-								<input class="form-control"
-									   placeholder="Enter a date between {{minDate | orDateFormatter}} and {{maxDate | orDateFormatter}}"
-									   name="minMax" ngbDatepicker [(ngModel)]="model.minMax"
-									   [minDate]="minDate" [maxDate]="maxDate">
-							</or-date-picker>
+							<or-date-picker #orDatePicker
+								[placeholder]="'Enter a date between ' + (minDate | orDateFormatter) + ' and ' + (maxDate | orDateFormatter)"
+								[(ngModel)]="model.minMax" name="minMax" [minDate]="minDate"
+								[maxDate]="maxDate"></or-date-picker>
 							<or-error-messages></or-error-messages>
 						</div>
 						<div class="col-md-6">
@@ -69,20 +55,14 @@
 				<div class="col-sm-8 col-lg-9">
 					<div class="row">
 						<div orFormControlState class="col-md-6">
-							<or-date-picker>
-								<input class="form-control"
-									   name="from" ngbDatepicker [(ngModel)]="model.range.from"
-									   [maxDate]="model.range.to">
-							</or-date-picker>
+							<or-date-picker [(ngModel)]="model.range.from" name="from"
+											[maxDate]="model.range.to"></or-date-picker>
 							<or-error-messages></or-error-messages>
 						</div>
 						<div orFormControlState class="col-md-6">
 							<div name="rangeTo">
-								<or-date-picker>
-									<input class="form-control"
-										   name="to" ngbDatepicker [(ngModel)]="model.range.to"
-										   [minDate]="model.range.from">
-								</or-date-picker>
+								<or-date-picker [(ngModel)]="model.range.to" name="to"
+												[minDate]="model.range.from"></or-date-picker>
 								<or-error-messages></or-error-messages>
 							</div>
 						</div>
@@ -94,10 +74,7 @@
 				<div class="col-sm-8 col-lg-9">
 					<div class="row">
 						<div class="col-md-6">
-							<or-date-picker [disabled]="isDatepickerDisabled">
-								<input class="form-control"
-									   name="disabled" ngbDatepicker ngModel>
-							</or-date-picker>
+							<or-date-picker [disabled]="isDatepickerDisabled" ngModel name="disabled"></or-date-picker>
 							<or-error-messages></or-error-messages>
 						</div>
 						<div class="col-md-6">

@@ -1,4 +1,5 @@
 import {FormsModule} from '@angular/forms';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {NgbDatepickerModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -14,11 +15,14 @@ describe('DatepickerSampleComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [DatepickerSampleComponent],
 			imports: [
-				DatepickerModule.forRoot(),
+				DatepickerModule,
 				NgbDatepickerModule,
 				NgbTooltipModule,
 				FormsModule,
 				ObliqueTestingModule
+			],
+			schemas: [
+				CUSTOM_ELEMENTS_SCHEMA
 			]
 		}).overrideModule(DatepickerModule, {
 			//We don't need this directive in this test
