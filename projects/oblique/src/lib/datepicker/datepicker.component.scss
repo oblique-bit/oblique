@@ -72,5 +72,27 @@ ngb-datepicker.dropdown-menu {
 
 	.form-control {
 		flex-grow: 1;
+
+		.has-error & {
+			border-color: transparent;
+
+			&:focus {
+				box-shadow: none;
+			}
+		}
+	}
+
+	.has-error & {
+		border: 1px solid $brand-error;
+
+		&:focus-within {
+			box-shadow: 0 0 6px 1px rgba(220, 0, 24, 0.4);
+		}
+
+		.calendar-toggle {
+			border-top-width: 0;
+			border-bottom-width: 0;
+			border-right-width: 0;
+		}
 	}
 }
