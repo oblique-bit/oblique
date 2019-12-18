@@ -3,15 +3,16 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 import {TranslateModule} from '@ngx-translate/core';
-import {NgbModule, NgbDatepickerI18n, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDateParserFormatter, NgbDatepickerI18n, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {DatepickerI18nService} from './datepicker-i18n.service';
 import {DateDMYParserFormatter} from './date-parser-formatter';
 import {DatepickerPlaceholderDirective} from './datepicker-placeholder.directive';
 import {DateFormatterPipe} from './date-formatter.pipe';
 import {DatepickerComponent} from './datepicker.component';
-import { TelemetryService } from '../telemetry/telemetry.service';
-import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
+import {TelemetryService} from '../telemetry/telemetry.service';
+import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
+import {ThemeService} from '../theme/theme.service';
 
 export {DatepickerI18nService} from './datepicker-i18n.service';
 export {DateDMYParserFormatter} from './date-parser-formatter';
@@ -19,6 +20,9 @@ export {DatepickerPlaceholderDirective} from './datepicker-placeholder.directive
 export {DateFormatterPipe} from './date-formatter.pipe';
 export {DatepickerComponent} from './datepicker.component';
 
+/**
+ * @deprecated with material theme since version 4.0.0. Use angular material datepicker instead
+ */
 @NgModule({
 	imports: [
 		CommonModule,
@@ -39,8 +43,10 @@ export {DatepickerComponent} from './datepicker.component';
 	]
 })
 export class DatepickerModule {
-	constructor(telemetry: TelemetryService) {
+	constructor(telemetry: TelemetryService, theme: ThemeService) {
 		requireAndRecordTelemetry(telemetry, DatepickerModule);
+
+		theme.deprecated('datepicker', 'datepicker');
 	}
 
 	static forRoot(): ModuleWithProviders {
