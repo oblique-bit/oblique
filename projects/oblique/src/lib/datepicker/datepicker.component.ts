@@ -31,6 +31,7 @@ export class DatepickerComponent implements OnInit, ControlValueAccessor, Valida
 	datePicker = new FormControl();
 	opts = {} as DatepickerOptions;
 
+	@Input() size: 'sm' | 'lg' | null;
 	@Input() maxDate: NgbDateStruct;
 	@Input() minDate: NgbDateStruct;
 	@Input() startDate: NgbDateStruct;

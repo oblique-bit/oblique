@@ -9,7 +9,7 @@
 	   [container]="opts.appendToBody ? 'body' : null"
 	   ngbDatepicker/>
 <div class="input-group-append">
-	<button type="button" class="btn btn-secondary calendar-toggle"
+	<button type="button" class="btn btn-secondary calendar-toggle" [class.btn-sm]="size === 'sm'" [class.btn-lg]="size === 'lg'"
 			[disabled]="ngbDatePicker.disabled"
 			(click)="ngbDatePicker.toggle()">
 		<span class="fa {{opts.icon}}"></span>

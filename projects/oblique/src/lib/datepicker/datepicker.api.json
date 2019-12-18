@@ -6,6 +6,14 @@
     "since": "2.0.0",
     "inputs": [
       {
+        "name": "size",
+        "text": "The size of the date picker controls.",
+        "type": "string",
+        "values": ["sm", "lg"],
+        "default": "",
+        "since": "5.0.0"
+      },
+      {
         "name": "maxDate",
         "text": "The latest date that can be displayed or selected.",
         "type": "NgbDateStruct",
@@ -53,6 +61,7 @@
     "variables": [
       {
         "name": "options",
+        "text": "A set of default options described below",
         "type": "DatepickerOptions",
         "since": "5.0.0"
       },
