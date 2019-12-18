@@ -3,8 +3,10 @@ import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterTestingModule} from '@angular/router/testing';
-import {MockTranslatePipe} from 'tests';
-import {NotificationComponent, NotificationConfig, NotificationService, NotificationType} from 'oblique';
+import {INotification, NotificationComponent, NotificationConfig, NotificationService, NotificationType} from 'oblique';
+import {MockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {MockNotificationConfig, MockNotificationService} from './mock/mock-notification.module';
+import {Subject} from 'rxjs';
 
 describe('NotificationComponent', () => {
 	let component: NotificationComponent;
@@ -20,8 +22,8 @@ describe('NotificationComponent', () => {
 			declarations: [NotificationComponent, MockTranslatePipe],
 			imports: [CommonModule, NoopAnimationsModule, RouterTestingModule],
 			providers: [
-				NotificationConfig,
-				NotificationService
+				{provide: NotificationConfig, useClass: MockNotificationConfig},
+				{provide: NotificationService, useClass: MockNotificationService}
 			]
 		})
 			.compileComponents();
@@ -40,8 +42,8 @@ describe('NotificationComponent', () => {
 		let htmlNotifications;
 
 		beforeEach(() => {
-			notificationService.info('Notification 1');
-			notificationService.send({message: 'Notification 2', title: 'Title 2', type: NotificationType.SUCCESS});
+			component.open({message: 'Notification 1'});
+			component.open({message: 'Notification 2', title: 'Title 2', type: NotificationType.SUCCESS});
 			fixture.detectChanges();
 
 			// Retrieve notifications form the component template view:
@@ -61,7 +63,7 @@ describe('NotificationComponent', () => {
 	});
 
 	it('should close a notification when clicking on `.close` button', fakeAsync(() => {
-		notificationService.error({message, title, sticky: true});
+		component.open({message, title, sticky: true});
 		fixture.detectChanges();
 
 		const button = fixture.debugElement.query(By.css('button.close'));
@@ -76,9 +78,9 @@ describe('NotificationComponent', () => {
 
 	it('should clear all notification', () => {
 		// Send multiple notifications:
-		notificationService.send('message 1');
-		notificationService.send('message 2');
-		notificationService.send('message 3');
+		component.open({message: 'message 1'});
+		component.open({message: 'message 2'});
+		component.open({message: 'message 3'});
 		fixture.detectChanges();
 
 		expect(component.notifications.length).toBe(3);
@@ -95,11 +97,10 @@ describe('NotificationComponent', () => {
 	});
 
 	it('should have only 1 message if same message is send multiple times with groupSimilar enabled', () => {
-		notificationConfig.groupSimilar = true;
 		// Send multiple notifications:
-		notificationService.send(message);
-		notificationService.send(message);
-		notificationService.send(message);
+		component.open({message: message, groupSimilar: true});
+		component.open({message: message, groupSimilar: true});
+		component.open({message: message, groupSimilar: true});
 		fixture.detectChanges();
 
 		expect(component.notifications.length).toBe(1);
@@ -109,9 +110,9 @@ describe('NotificationComponent', () => {
 
 	it('should have multiple messages if same message is send multiple times with groupSimilar disabled', () => {
 		// Send multiple notifications:
-		notificationService.send(message);
-		notificationService.send(message);
-		notificationService.send(message);
+		component.open({message: message, groupSimilar: false});
+		component.open({message: message, groupSimilar: false});
+		component.open({message: message, groupSimilar: false});
 		fixture.detectChanges();
 
 		expect(component.notifications.length).toBe(3);
@@ -120,11 +121,12 @@ describe('NotificationComponent', () => {
 	});
 
 	it('should close a _non-sticky_ notification after `timeout` is reached', fakeAsync(() => {
-		const notification = notificationService.send({
+		const notification = {
 			message: message,
 			title: title,
 			sticky: false
-		});
+		};
+		component.open(notification);
 		tick(2 * notificationConfig.timeout + NotificationComponent.REMOVE_DELAY);
 		fixture.detectChanges();
 
@@ -138,7 +140,7 @@ describe('NotificationComponent', () => {
 
 
 	it('should *not* close a _sticky_ notification after `timeout` is reached', fakeAsync(() => {
-		notificationService.send({
+		component.open({
 			message: message,
 			title: title,
 			sticky: true
@@ -157,11 +159,11 @@ describe('NotificationComponent', () => {
 		component.channel = 'myChannel';
 
 		// Send multiple notifications to different channels:
-		notificationService.send({message: 'message 1', channel: 'testChannel'});
-		notificationService.send({message: 'message 2', channel: 'myChannel'});
-		notificationService.send({message: 'message 3', channel: 'anotherChanel'});
-		notificationService.send({message: 'message 4', channel: 'myChannel'});
-		notificationService.send({message: 'message 5', channel: 'appChannel'});
+		(notificationService.events as Subject<INotification>).next({message: 'message 1', channel: 'testChannel'});
+		(notificationService.events as Subject<INotification>).next({message: 'message 2', channel: 'myChannel'});
+		(notificationService.events as Subject<INotification>).next({message: 'message 3', channel: 'anotherChanel'});
+		(notificationService.events as Subject<INotification>).next({message: 'message 4', channel: 'myChannel'});
+		(notificationService.events as Subject<INotification>).next({message: 'message 5', channel: 'appChannel'});
 		fixture.detectChanges();
 
 		expect(component.notifications.length).toBe(2);
@@ -169,11 +171,11 @@ describe('NotificationComponent', () => {
 
 	it('should *not* display a notification from a different channel', () => {
 		// Send multiple notifications to different channels:
-		notificationService.send({message: 'message 1', channel: 'testChannel'});
-		notificationService.send({message: 'message 2', channel: 'myChannel'});
-		notificationService.send({message: 'message 3', channel: 'anotherChanel'});
-		notificationService.send({message: 'message 4', channel: 'oblique'});
-		notificationService.send({message: 'message 5', channel: 'appChannel'});
+		(notificationService.events as Subject<INotification>).next({message: 'message 1', channel: 'testChannel'});
+		(notificationService.events as Subject<INotification>).next({message: 'message 2', channel: 'myChannel'});
+		(notificationService.events as Subject<INotification>).next({message: 'message 3', channel: 'anotherChanel'});
+		(notificationService.events as Subject<INotification>).next({message: 'message 4', channel: 'oblique'});
+		(notificationService.events as Subject<INotification>).next({message: 'message 5', channel: 'appChannel'});
 		fixture.detectChanges();
 
 		expect(component.notifications.length).toBe(1);

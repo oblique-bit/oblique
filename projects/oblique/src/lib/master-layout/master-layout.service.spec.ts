@@ -1,56 +1,36 @@
 import {TestBed} from '@angular/core/testing';
 import {MasterLayoutConfig, MasterLayoutNavigationService, MasterLayoutService} from 'oblique';
 import {TranslateService} from '@ngx-translate/core';
-import {MockTranslatePipe, MockTranslateService} from 'tests';
 import {RouterTestingModule} from '@angular/router/testing';
 import {MasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
 import {MasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
 import {MasterLayoutComponentService} from './master-layout/master-layout.component.service';
+import {MockTranslateService} from '../_mocks/mock-translate.service';
+import {MockMasterLayoutConfig} from './mock/mock-master-layout.config';
+import {
+	MockMasterLayoutComponentService,
+	MockMasterLayoutFooterService,
+	MockMasterLayoutHeaderService,
+	MockMasterLayoutNavigationService,
+	MockMasterLayoutService
+} from './mock/mock-master-layout.module';
 
 describe('MasterLayoutService', () => {
 	let masterLayoutService: MasterLayoutService;
 
-	const mockConfig = {
-		navigation: {links: []},
-	};
-
-	const mockMasterLayoutHeaderService = {
-		isCustom: jest.fn()
-	};
-	const mockMasterLayoutFooterService = {
-		isCustom: jest.fn()
-	};
-
-	const mockMasterLayoutNavigationService = {
-		pipe: jest.fn()
-	};
-
-	const mockMasterLayoutComponentService = {
-		isFixed: jest.fn()
-	};
-
-	const mockMasterLayoutService = {
-		disabled: jest.fn()
-	};
-
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				MockTranslatePipe
-			],
 			imports: [
 				RouterTestingModule
 			],
 			providers: [
-				MasterLayoutService,
-				MasterLayoutConfig,
-				{provide: TranslateService, useValue: MockTranslateService},
-				{provide: MasterLayoutConfig, useValue: mockConfig},
-				{provide: MasterLayoutHeaderService, useValue: mockMasterLayoutHeaderService},
-				{provide: MasterLayoutFooterService, useValue: mockMasterLayoutFooterService},
-				{provide: MasterLayoutNavigationService, useValue: mockMasterLayoutNavigationService},
-				{provide: MasterLayoutComponentService, useValue: mockMasterLayoutComponentService},
-				{provide: MasterLayoutService, useValue: mockMasterLayoutService},
+				{provide: TranslateService, useClass: MockTranslateService},
+				{provide: MasterLayoutConfig, useClass: MockMasterLayoutConfig},
+				{provide: MasterLayoutHeaderService, useClass: MockMasterLayoutHeaderService},
+				{provide: MasterLayoutFooterService, useClass: MockMasterLayoutFooterService},
+				{provide: MasterLayoutNavigationService, useClass: MockMasterLayoutNavigationService},
+				{provide: MasterLayoutComponentService, useClass: MockMasterLayoutComponentService},
+				{provide: MasterLayoutService, useClass: MockMasterLayoutService},
 			],
 		});
 		masterLayoutService = TestBed.get(MasterLayoutService);

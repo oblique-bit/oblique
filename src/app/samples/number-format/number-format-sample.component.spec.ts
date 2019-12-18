@@ -1,8 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {MockTranslatePipe} from 'tests';
 import {NumberFormatSampleComponent} from './number-format-sample.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NumberFormatDirective} from 'oblique';
+import {ObliqueTestingModule} from 'oblique';
 
 describe('NumberFormatSampleComponent', () => {
 	let component: NumberFormatSampleComponent;
@@ -10,8 +9,8 @@ describe('NumberFormatSampleComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			imports: [FormsModule, ReactiveFormsModule],
-			declarations: [NumberFormatSampleComponent, MockTranslatePipe, NumberFormatDirective]
+			imports: [FormsModule, ReactiveFormsModule, ObliqueTestingModule],
+			declarations: [NumberFormatSampleComponent]
 		}).compileComponents();
 	}));
 

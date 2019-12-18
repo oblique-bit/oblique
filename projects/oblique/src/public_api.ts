@@ -76,3 +76,5 @@ export {ThemeService, FRUTIGER, THEMES, OBLIQUE_THEME} from './lib/theme/theme.s
 export {TELEMETRY_DISABLE} from './lib/telemetry/telemetry.service';
 export {Unsubscribable} from './lib/unsubscribe.class';
 export {ObliqueModule} from './lib/oblique.module';
+
+export {ObliqueTestingModule} from './lib/oblique-testing.module';

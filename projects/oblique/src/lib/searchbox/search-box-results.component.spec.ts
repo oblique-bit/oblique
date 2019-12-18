@@ -1,8 +1,9 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {SearchBoxResultsComponent} from 'oblique';
 import {RouterTestingModule} from '@angular/router/testing';
-import {MockTranslatePipe, MockTranslateService} from 'tests';
 import {TranslateService} from '@ngx-translate/core';
+import {SearchBoxResultsComponent} from 'oblique';
+import {MockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {MockTranslateService} from '../_mocks/mock-translate.service';
 
 describe('SearchBoxResultsComponent', () => {
 	let component: SearchBoxResultsComponent;
@@ -18,7 +19,7 @@ describe('SearchBoxResultsComponent', () => {
 				RouterTestingModule
 			],
 			providers: [
-				{ provide: TranslateService, useClass: MockTranslateService }
+				{provide: TranslateService, useClass: MockTranslateService}
 			]
 		})
 			.compileComponents();

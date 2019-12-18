@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {Component, ViewChild} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {ErrorMessagesComponent, ErrorMessagesService, FormControlStateDirective} from 'oblique';
-import {MockTranslateParamsPipe} from 'tests';
+import {MockTranslateParamsModule} from '../translate-params/mock/mock-translate-params.module';
 
 @Component({
 	template: `
@@ -41,10 +41,9 @@ describe('ErrorMessagesComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [
 				ErrorMessagesComponent,
-				TestComponent,
-				MockTranslateParamsPipe
+				TestComponent
 			],
-			imports: [FormsModule],
+			imports: [FormsModule, MockTranslateParamsModule],
 			providers: [
 				{provide: ErrorMessagesService, useValue: errorMessagesServiceMock},
 				{provide: FormControlStateDirective, useValue: formControlStateDirectiveMock}

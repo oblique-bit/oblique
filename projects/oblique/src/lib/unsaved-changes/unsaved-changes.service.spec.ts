@@ -2,7 +2,7 @@ import {inject, TestBed} from '@angular/core/testing';
 import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {UnsavedChangesService} from 'oblique';
-import {MockTranslateService} from 'tests';
+import {MockTranslateService} from '../_mocks/mock-translate.service';
 
 describe('UnsavedChangesService', () => {
 	let unsavedChangesService: UnsavedChangesService;
@@ -10,9 +10,7 @@ describe('UnsavedChangesService', () => {
 		TestBed.configureTestingModule({
 			providers: [
 				UnsavedChangesService,
-				{
-					provide: TranslateService, useClass: MockTranslateService
-				}
+				{provide: TranslateService, useClass: MockTranslateService}
 			]
 		});
 	});
@@ -87,7 +85,6 @@ describe('UnsavedChangesService', () => {
 
 		describe('with dirty form (unWatch)', () => {
 			beforeEach(() => {
-				const form: ControlContainer = {dirty: true} as ControlContainer;
 				unsavedChangesService.unWatch('tab_1');
 			});
 

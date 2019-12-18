@@ -4,11 +4,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
 	ErrorMessagesModule,
 	FormControlStateModule,
-	NotificationService,
+	NotificationService, ObliqueTestingModule,
 	SchemaValidationModule,
 	SchemaValidationService
 } from 'oblique';
-import {MockTranslatePipe} from 'tests';
 import {SchemaValidationSampleComponent} from './schema-validation-sample.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -27,23 +26,13 @@ describe('SchemaValidationSampleComponent', () => {
 
 		TestBed.configureTestingModule({
 			imports: [
-				SchemaValidationModule,
 				FormsModule,
 				ReactiveFormsModule,
-				ErrorMessagesModule,
-				FormControlStateModule,
-				NgbModule
+				NgbModule,
+				ObliqueTestingModule
 			],
 			declarations: [
 				SchemaValidationSampleComponent,
-				MockTranslatePipe
-			],
-			providers: [
-				SchemaValidationService,
-				{
-					provide: NotificationService,
-					useValue: mockNotificationService
-				}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();

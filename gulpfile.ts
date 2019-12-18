@@ -31,8 +31,6 @@ const distUtilCss = (done) => transpile('utilities', '', done);
 const distCompatCss = (done) => transpile('compat', '', done);
 const distComponentsCss = (done) => transpileComponents(['projects', 'oblique', 'src', 'lib'], done);
 
-const distTestHelpers = () => gulp.src(['test_helpers/*']).pipe(gulp.dest(paths.dist + 'test_helpers'));
-
 const distMeta = () => {
 	const meta = reload('./package.json');
 	const output = require(paths.dist + 'package.json');
@@ -41,9 +39,8 @@ const distMeta = () => {
 		.forEach(field => output[field] = meta[field]);
 	['main', 'module', 'es2015', 'esm5', 'esm2015', 'fesm5', 'fesm2015', 'typings', 'metadata']
 		.forEach(field => output[field] = output[field].replace('oblique-oblique', 'oblique'));
-	output['scripts'] = {postinstall: 'node copy.js'};
 
-	return gulp.src(['README.md', 'CHANGELOG.md', 'copy.js'])
+	return gulp.src(['README.md', 'CHANGELOG.md'])
 		.pipe(gulpFile('package.json', JSON.stringify(output, null, 2)))
 		.pipe(gulp.dest(paths.dist));
 };
@@ -102,7 +99,6 @@ const clean = () => del('dist/oblique/**/oblique-oblique*');
 gulp.task(
 	'dist',
 	gulp.parallel(
-		distTestHelpers,
 		distMeta,
 		distFonts,
 		distDocs,

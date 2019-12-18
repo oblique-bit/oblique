@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, Input, QueryList, Renderer2, ViewChild, ViewChildren, ViewEncapsulation} from '@angular/core';
-import {delay, filter} from 'rxjs/operators';
+import {filter} from 'rxjs/operators';
 import {merge} from 'rxjs';
 import {ColumnPanelDirective} from './column-panel.directive';
 import {ScrollingEvents} from '../scrolling/scrolling-events';

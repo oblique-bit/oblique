@@ -4,7 +4,9 @@ import {ControlContainer} from '@angular/forms';
 import {NgbTabChangeEvent, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateService} from '@ngx-translate/core';
 import {UnsavedChangesTabsService} from './unsaved-changes-tabs.service';
-import {MockTranslateService} from 'tests';
+import {MockTranslateService} from '../_mocks/mock-translate.service';
+import {UnsavedChangesService} from 'oblique';
+import {MockUnsavedChangesService} from '../unsaved-changes/mock/mock-unsaved-changes.service';
 
 describe('UnsavedChangesTabsService', () => {
 	let unsavedChangesService: UnsavedChangesTabsService;
@@ -12,9 +14,8 @@ describe('UnsavedChangesTabsService', () => {
 		TestBed.configureTestingModule({
 			providers: [
 				UnsavedChangesTabsService,
-				{
-					provide: TranslateService, useClass: MockTranslateService
-				}
+				{provide: UnsavedChangesService, useClass: MockUnsavedChangesService},
+				{provide: TranslateService, useClass: MockTranslateService}
 			]
 		});
 	});
@@ -105,19 +106,19 @@ describe('UnsavedChangesTabsService', () => {
 			});
 
 			it('should ask for confirmation', () => {
-				spyOn(window, 'confirm');
+				spyOn(unsavedChangesService, 'ignoreChanges');
 				tabSet.select('tab_2');
-				expect(window.confirm).toHaveBeenCalled();
+				expect(unsavedChangesService.ignoreChanges).toHaveBeenCalled();
 			});
 
 			it('should not prevent default, if confirmed', () => {
-				jest.spyOn(window, 'confirm').mockImplementation(() => true);
+				jest.spyOn(unsavedChangesService, 'ignoreChanges').mockImplementation(() => true);
 				tabSet.select('tab_2');
 				expect(evt.preventDefault).not.toHaveBeenCalled();
 			});
 
 			it('should prevent default, if not confirmed', () => {
-				jest.spyOn(window, 'confirm').mockImplementation(() => false);
+				jest.spyOn(unsavedChangesService, 'ignoreChanges').mockImplementation(() => false);
 				tabSet.select('tab_2');
 				expect(evt.preventDefault).toHaveBeenCalled();
 			});

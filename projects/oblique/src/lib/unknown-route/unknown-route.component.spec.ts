@@ -1,8 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {RouterTestingModule} from '@angular/router/testing';
 
 import {UnknownRouteComponent} from './unknown-route.component';
-import {MockTranslatePipe} from 'tests';
-import {RouterTestingModule} from '@angular/router/testing';
+import {MockTranslatePipe} from '../_mocks/mock-translate.pipe';
 
 describe('UnknownRouteComponent', () => {
 	let component: UnknownRouteComponent;
