@@ -36,7 +36,12 @@ import {MockUnsavedChangesModule} from './unsaved-changes/mock/mock-unsaved-chan
 
 export {MockColumnLayoutComponent, MockColumnLayoutModule} from './column-layout/mock/mock-column-layout.module';
 export {
-	MockDateFormatterPipe, MockDatepickerComponent, MockDatepickerModule, MockDatepickerPlaceholderDirective
+	MockDateFormatterPipe,
+	MockDatepickerComponent,
+	MockDatepickerConfigService,
+	MockDatepickerI18nService,
+	MockDatepickerModule,
+	MockDatepickerPlaceholderDirective
 } from './datepicker/mock/mock-datepicker.module';
 export {MockDocumentMetaModule, DocumentMetaService} from './document-meta/mock/mock-document-meta.module';
 export {MockDropdownModule, MockDropdownComponent} from './dropdown/mock/mock-dropdown.module';

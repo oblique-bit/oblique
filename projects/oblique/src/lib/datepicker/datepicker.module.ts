@@ -1,6 +1,6 @@
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgbDateParserFormatter, NgbDatepickerI18n, NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -18,6 +18,7 @@ export {DatepickerI18nService} from './datepicker-i18n.service';
 export {DateDMYParserFormatter} from './date-parser-formatter';
 export {DatepickerPlaceholderDirective} from './datepicker-placeholder.directive';
 export {DateFormatterPipe} from './date-formatter.pipe';
+export {DatepickerOptions, DatepickerConfigService} from './datepicker-config.service';
 export {DatepickerComponent} from './datepicker.component';
 
 /**
@@ -27,15 +28,19 @@ export {DatepickerComponent} from './datepicker.component';
 	imports: [
 		CommonModule,
 		NgbModule,
-		FormsModule,
-		TranslateModule
+		TranslateModule,
+		ReactiveFormsModule
 	],
 	declarations: [
 		DatepickerComponent,
 		DatepickerPlaceholderDirective,
 		DateFormatterPipe
 	],
-	providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
+	providers: [
+		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+		{provide: NgbDatepickerI18n, useClass: DatepickerI18nService},
+		{provide: NgbDateParserFormatter, useClass: DateDMYParserFormatter}
+	],
 	exports: [
 		DatepickerComponent,
 		DatepickerPlaceholderDirective,
@@ -47,15 +52,5 @@ export class DatepickerModule {
 		requireAndRecordTelemetry(telemetry, DatepickerModule);
 
 		theme.deprecated('datepicker', 'datepicker');
-	}
-
-	static forRoot(): ModuleWithProviders {
-		return {
-			ngModule: DatepickerModule,
-			providers: [
-				{provide: NgbDatepickerI18n, useClass: DatepickerI18nService},
-				{provide: NgbDateParserFormatter, useClass: DateDMYParserFormatter}
-			]
-		};
 	}
 }

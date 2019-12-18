@@ -1,6 +1,8 @@
-import {AfterViewInit, Component, ContentChild, ElementRef, HostListener, Input, ViewEncapsulation} from '@angular/core';
-import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
+import {Component, ElementRef, forwardRef, HostListener, Input, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
+import {NgbDateStruct, NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 import {ThemeService} from '../theme/theme.service';
+import {DatepickerConfigService, DatepickerOptions} from './datepicker-config.service';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular material datepicker instead
@@ -10,32 +12,63 @@ import {ThemeService} from '../theme/theme.service';
 	exportAs: 'orDatePicker',
 	styleUrls: ['./datepicker.component.scss'],
 	templateUrl: './datepicker.component.html',
-	// Ensure CSS styles are added to global styles to ensure `ngb-datepicker` styles can be overrided:
-	// dd(see also: https://angular.io/docs/ts/latest/guide/component-styles.html#!#view-encapsulation)
-	encapsulation: ViewEncapsulation.None
+	encapsulation: ViewEncapsulation.None,
+	providers: [
+		{
+			provide: NG_VALUE_ACCESSOR,
+			multi: true,
+			useExisting: forwardRef(() => DatepickerComponent)
+		}, {
+			provide: NG_VALIDATORS,
+			multi: true,
+			useExisting: forwardRef(() => DatepickerComponent)
+		}
+	],
+	// tslint:disable-next-line:no-host-metadata-property
+	host: {class: 'datepicker input-group'}
 })
-export class DatepickerComponent implements AfterViewInit {
+export class DatepickerComponent implements OnInit, ControlValueAccessor, Validator {
+	datePicker = new FormControl();
+	opts = {} as DatepickerOptions;
 
-	@ContentChild(NgbInputDatepicker, {static: false})
-	ngbDatePicker: NgbInputDatepicker;
+	@Input() maxDate: NgbDateStruct;
+	@Input() minDate: NgbDateStruct;
+	@Input() startDate: NgbDateStruct;
+	@Input() placeholder: string;
+	@Input() options = {} as DatepickerOptions;
+	@ViewChild(NgbInputDatepicker, {static: true}) ngbDatePicker: NgbInputDatepicker;
 
-	private _disabled = false;
+	get disabled() {
+		return this.datePicker.disabled;
+	}
 
-	@Input()
-	set disabled(val) {
-		this._disabled = val;
-		if (this.ngbDatePicker) {
-			this.ngbDatePicker.setDisabledState(val);
-			this.ngbDatePicker.close();
+	constructor(private readonly element: ElementRef, private readonly config: DatepickerConfigService, theme: ThemeService) {
+		theme.deprecated('datepicker', 'datepicker');
+	}
+
+	ngOnInit(): void {
+		this.opts = {...this.config.options, ...this.options};
+	}
+
+	writeValue(obj: any): void {
+		if (obj) {
+			this.datePicker.setValue(obj);
 		}
 	}
 
-	get disabled() {
-		return this._disabled;
+	registerOnChange(fn: any): void {
+		this.datePicker.valueChanges.subscribe(fn);
 	}
 
-	constructor(private readonly element: ElementRef, theme: ThemeService) {
-		theme.deprecated('datepicker', 'datepicker');
+	registerOnTouched(fn: any): void {
+	}
+
+	setDisabledState(isDisabled: boolean): void {
+		isDisabled ? this.datePicker.disable() : this.datePicker.enable();
+	}
+
+	validate(control: AbstractControl): ValidationErrors | null {
+		return this.datePicker.valid ? null : this.datePicker.errors;
 	}
 
 	@HostListener('keydown', ['$event'])
@@ -47,12 +80,5 @@ export class DatepickerComponent implements AfterViewInit {
 				this.ngbDatePicker.close();
 			}
 		}
-	}
-
-	ngAfterViewInit() {
-		if (!this.ngbDatePicker) {
-			throw new Error('or-date-picker requires a transcluded ngbDatepicker!');
-		}
-		this.ngbDatePicker.setDisabledState(this._disabled);
 	}
 }

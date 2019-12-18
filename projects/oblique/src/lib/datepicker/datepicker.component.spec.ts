@@ -1,55 +1,53 @@
-import {async, TestBed, ComponentFixture} from '@angular/core/testing';
-import {Component, DebugElement} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {Component, CUSTOM_ELEMENTS_SCHEMA, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {NgbInputDatepicker, NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import {DatepickerComponent} from 'oblique';
 
 @Component({
-	template: `<or-date-picker>
-					<input name="date" [(ngModel)]="model" ngbDatepicker>
-				</or-date-picker>`
+	template: `
+		<or-date-picker [formControl]="model"></or-date-picker>`
 })
 class TestComponent {
-	model = null;
+	model = new FormControl();
 }
 
-describe('DatepickerSampleComponent', () => {
+describe('DatepickerComponent', () => {
 	let fixture: ComponentFixture<TestComponent>;
 	let component: TestComponent;
 	let datepicker: DatepickerComponent;
-	let ngbDatepicker: NgbInputDatepicker;
 	let button: DebugElement;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [TestComponent, DatepickerComponent],
-			imports: [FormsModule, NgbDatepickerModule]
+			imports: [ReactiveFormsModule, NgbDatepickerModule],
+			schemas: [
+				CUSTOM_ELEMENTS_SCHEMA,
+				NO_ERRORS_SCHEMA
+			]
 		}).compileComponents();
 	}));
 
-	beforeEach(async(() => {
+	beforeEach(() => {
 		fixture = TestBed.createComponent(TestComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 		button = fixture.debugElement.query(By.css('button'));
-
-		fixture.whenStable().then(() => {
-			datepicker = fixture.debugElement.query(By.directive(DatepickerComponent)).injector.get(DatepickerComponent);
-			ngbDatepicker = fixture.debugElement.query(By.directive(NgbInputDatepicker)).injector.get(NgbInputDatepicker);
-		});
-	}));
+		datepicker = fixture.debugElement.query(By.directive(DatepickerComponent)).injector.get(DatepickerComponent);
+	});
 
 	it('should toggle the NgbDatepicker on button click', () => {
-		spyOn(ngbDatepicker, 'toggle').and.callThrough();
+		spyOn(datepicker.ngbDatePicker, 'toggle').and.callThrough();
 
 		button.nativeElement.click();
 
-		expect(ngbDatepicker.toggle).toHaveBeenCalled();
+		expect(datepicker.ngbDatePicker.toggle).toHaveBeenCalled();
 	});
 
 	it('should disable the button, if disable gets set to true', () => {
-		datepicker.disabled = true;
+		datepicker.setDisabledState(true);
 
 		fixture.detectChanges();
 
@@ -57,11 +55,10 @@ describe('DatepickerSampleComponent', () => {
 	});
 
 	it('should disable the input, if disable gets set to true', () => {
-		datepicker.disabled = true;
+		datepicker.setDisabledState(true);
 
 		fixture.detectChanges();
 
 		expect(fixture.debugElement.query(By.css('input')).properties['disabled']).toBeTruthy();
 	});
-
 });
