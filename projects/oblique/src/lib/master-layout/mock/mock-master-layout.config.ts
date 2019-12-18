@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {ScrollMode} from '../master-layout.config';
 
 @Injectable({providedIn: 'root'})
 export class MockMasterLayoutConfig {
@@ -25,7 +26,7 @@ export class MockMasterLayoutConfig {
 	};
 	navigation = {
 		isFullWidth: false,
-		isScrollable: false,
+		scrollMode: ScrollMode.AUTO,
 		scrollDelta: 95,
 		activeClass: 'active',
 		links: []

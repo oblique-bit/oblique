@@ -185,11 +185,12 @@
 				"since": "4.0.0"
 			},
 			{
-				"name": "navigation.isScrollable",
-				"text": "Hide main navigation elements that are outside of the visible area (true) or make the navigation bar scrollable to display them (true).",
-				"type": "boolean",
-				"default": false,
-				"since": "4.0.0"
+				"name": "navigation.scrollMode",
+				"text": "Controls the main navigation's scroll mode, i.e. how to handle the elements outside of the visible area. They can either be hidden or the navigation bar can be made scrollable to display those elements.",
+				"type": "ScrollMode",
+				"values": ["ScrollMode.AUTO", "ScrollMode.ENABLED", "ScrollMode.DISABLED"],
+				"default": "ScrollMode.AUTO",
+				"since": "5.0.0"
 			},
 			{
 				"name": "navigation.scrollDelta",
@@ -415,11 +416,12 @@
 				"since": "4.0.0"
 			},
 			{
-				"name": "isScrollable",
-				"text": "Controls <code>MasterLayoutConfig.navigation.isScrollable</code> property.",
-				"type": "boolean",
-				"default": false,
-				"since": "4.0.0"
+				"name": "scrollMode",
+				"text": "Controls <code>MasterLayoutConfig.navigation.scrollMode</code> property.",
+				"type": "ScrollMode",
+				"values": ["ScrollMode.AUTO", "ScrollMode.ENABLED", "ScrollMode.DISABLED"],
+				"default": "ScrollMode.AUTO",
+				"since": "5.0.0"
 			},
 			{
 				"name": "scrolled",

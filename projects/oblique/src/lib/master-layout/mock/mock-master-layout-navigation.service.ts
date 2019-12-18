@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {EMPTY, Observable, of} from 'rxjs';
 import {MasterLayoutEvent} from '../master-layout.utility';
+import {ScrollMode} from '../master-layout.config';
 
 @Injectable()
 export class MockMasterLayoutNavigationService {
 	isFullWidth = true;
-	isScrollable = true;
+	scrollMode = ScrollMode.AUTO;
 
 	get configEvents(): Observable<MasterLayoutEvent> {
 		return of({} as MasterLayoutEvent);

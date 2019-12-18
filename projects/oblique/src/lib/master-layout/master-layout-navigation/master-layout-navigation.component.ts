@@ -4,7 +4,7 @@ import {filter, takeUntil} from 'rxjs/operators';
 
 import {Unsubscribable} from '../../unsubscribe.class';
 import {MasterLayoutService} from '../master-layout.service';
-import {MasterLayoutConfig} from '../master-layout.config';
+import {MasterLayoutConfig, ScrollMode} from '../master-layout.config';
 import {MasterLayoutEvent, MasterLayoutEventValues} from '../master-layout.utility';
 
 export interface ORNavigationLink {
@@ -28,7 +28,7 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 	currentScroll = 0;
 	maxScroll = 0;
 	@Input() links: ORNavigationLink[] = [];
-	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') isScrollable = this.config.navigation.isScrollable;
+	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') isScrollable: boolean;
 	private static readonly buttonWidth = 30;
 	@ViewChild('container', {static: false}) private readonly container: ElementRef;
 	private nav: HTMLElement;
@@ -83,10 +83,7 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 		).subscribe((event) => {
 			switch (event.name) {
 				case MasterLayoutEventValues.SCROLLABLE:
-					this.isScrollable = event.value;
-					if (event.value) {
-						this.masterLayout.navigation.refresh();
-					}
+					this.masterLayout.navigation.refresh();
 					break;
 				case MasterLayoutEventValues.FULL_WIDTH:
 					this.isFullWidth = event.value;
@@ -95,14 +92,16 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 		});
 	}
 
-	private refresh() {
-		if (this.nav) {
-			let childWidth = 0;
-			Array.from(this.nav.children).forEach((el: HTMLElement) => {
-				childWidth += el.clientWidth;
-			});
+	private refresh(): void {
+		const scrollMode = this.masterLayout.navigation.scrollMode;
+		if (this.nav && scrollMode !== ScrollMode.DISABLED) {
+			const childWidth = Array.from(this.nav.children).reduce((total, el: HTMLElement) => total + el.clientWidth, 0);
 			this.maxScroll = Math.max(0, -(this.nav.clientWidth - childWidth - 2 * MasterLayoutNavigationComponent.buttonWidth));
+			this.isScrollable = scrollMode === ScrollMode.ENABLED ? true : childWidth > this.nav.clientWidth;
+		} else {
+			this.isScrollable = false;
 		}
+		this.updateScroll(this.isScrollable ? 0 : -this.currentScroll);
 	}
 
 	private updateScroll(delta: number): void {

@@ -30,6 +30,7 @@ export {
 	MasterLayoutNavigationMenuDirective,
 	MasterLayoutNavigationToggleDirective,
 	MasterLayoutService,
+	ScrollMode,
 	ORNavigationLink
 } from './lib/master-layout/master-layout.module';
 export {MultiselectComponent, MultiselectConfig, MultiselectModule, MultiselectSearchPipe, MultiselectTexts} from './lib/multiselect/multiselect.module';

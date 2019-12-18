@@ -2,10 +2,12 @@ import {merge, Observable, of, partition} from 'rxjs';
 import {filter, repeatWhen, shareReplay, takeUntil} from 'rxjs/operators';
 import {MasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
 import {MasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
+import {ScrollMode} from './master-layout.config';
 
 export interface MasterLayoutEvent {
 	name: MasterLayoutEventValues;
-	value: boolean;
+	value?: boolean;
+	mode?: ScrollMode;
 }
 
 export enum MasterLayoutEventValues {

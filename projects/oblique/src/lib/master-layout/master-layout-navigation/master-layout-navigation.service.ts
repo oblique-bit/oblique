@@ -5,7 +5,7 @@ import {TranslateService} from '@ngx-translate/core';
 
 import {Unsubscribable} from '../../unsubscribe.class';
 import {MasterLayoutEvent, MasterLayoutEventValues} from '../master-layout.utility';
-import {MasterLayoutConfig} from '../master-layout.config';
+import {MasterLayoutConfig, ScrollMode} from '../master-layout.config';
 
 @Injectable({
 	providedIn: 'root'
@@ -18,13 +18,12 @@ export class MasterLayoutNavigationService extends Unsubscribable {
 	private readonly _refreshed: Subject<void> = new Subject<void>();
 	private readonly refreshed$ = this._refreshed.asObservable();
 	private _isFullWidth = this.config.navigation.isFullWidth;
-	private _isScrollable = this.config.navigation.isScrollable;
+	private _scrollMode = this.config.navigation.scrollMode;
 
 	constructor(private readonly config: MasterLayoutConfig, translate: TranslateService) {
 		super();
 		translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.refresh());
 	}
-
 
 	get isFullWidth() {
 		return this._isFullWidth;
@@ -38,15 +37,15 @@ export class MasterLayoutNavigationService extends Unsubscribable {
 		});
 	}
 
-	get isScrollable() {
-		return this._isScrollable;
+	get scrollMode() {
+		return this._scrollMode;
 	}
 
-	set isScrollable(value: boolean) {
-		this._isScrollable = value;
+	set scrollMode(value: ScrollMode) {
+		this._scrollMode = value;
 		this._events.next({
 			name: MasterLayoutEventValues.SCROLLABLE,
-			value: value
+			mode: value
 		});
 	}
 
@@ -63,23 +62,17 @@ export class MasterLayoutNavigationService extends Unsubscribable {
 	}
 
 	refresh() {
-		if (this.isScrollable) {
-			// postpone the event emission so that Angular has time to apply changes to the DOM
-			setTimeout(() => this._refreshed.next());
-		}
+		// postpone the event emission so that Angular has time to apply changes to the DOM
+		setTimeout(() => this._refreshed.next());
 	}
 
 	scrollLeft(offset?: number): void {
-		if (this.isScrollable) {
-			// postpone the event emission so that Angular has time to apply changes to the DOM
-			setTimeout(() => this._scrolled.next(-(offset || this.config.navigation.scrollDelta)));
-		}
+		// postpone the event emission so that Angular has time to apply changes to the DOM
+		setTimeout(() => this._scrolled.next(-(offset || this.config.navigation.scrollDelta)));
 	}
 
 	scrollRight(offset?: number): void {
-		if (this.isScrollable) {
-			// postpone the event emission so that Angular has time to apply changes to the DOM
-			setTimeout(() => this._scrolled.next(offset || this.config.navigation.scrollDelta));
-		}
+		// postpone the event emission so that Angular has time to apply changes to the DOM
+		setTimeout(() => this._scrolled.next(offset || this.config.navigation.scrollDelta));
 	}
 }

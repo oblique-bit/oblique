@@ -85,12 +85,15 @@
 		</label>
 	</div>
 	<h4>Scrollable navigation</h4>
-	<div [(ngModel)]="navigationScroll" ngbRadioGroup class="btn-group btn-group-toggle">
+	<div [(ngModel)]="navigationScrollMode" ngbRadioGroup class="btn-group btn-group-toggle">
 		<label ngbButtonLabel class="btn-secondary active">
-			<input ngbButton type="radio" [value]="true"> Yes
+			<input ngbButton type="radio" [value]="scrollMode.AUTO"> Auto
 		</label>
 		<label ngbButtonLabel class="btn-secondary">
-			<input ngbButton type="radio" [value]="false"> No
+			<input ngbButton type="radio" [value]="scrollMode.ENABLED"> Enabled
+		</label>
+		<label ngbButtonLabel class="btn-secondary">
+			<input ngbButton type="radio" [value]="scrollMode.DISABLED"> Disabled
 		</label>
 	</div>
 	<or-api component="master-layout"></or-api>
