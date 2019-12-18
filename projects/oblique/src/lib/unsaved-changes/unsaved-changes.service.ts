@@ -1,13 +1,14 @@
 import {Injectable} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
+import {PopUpService} from '../pop-up/pop-up.service';
 
 //TODO: Handle modals
 @Injectable({providedIn: 'root'})
 export class UnsavedChangesService {
 	private readonly formList: { [key: string]: ControlContainer} = {};
 
-	constructor(private readonly translateService: TranslateService) {
+	constructor(private readonly translateService: TranslateService, private readonly popUpService: PopUpService) {
 		window.addEventListener('beforeunload', e => this.onUnload(e));
 		window.addEventListener('unload', e => this.onUnload(e));
 	}
@@ -21,11 +22,11 @@ export class UnsavedChangesService {
 	}
 
 	canDeactivate(): boolean {
-		return this.hasPendingChanges() ? window.confirm(this.message()) : true;
+		return this.hasPendingChanges() ? this.popUpService.confirm(this.message()) : true;
 	}
 
 	ignoreChanges(formIds: string[]): boolean {
-		return this.hasPendingChanges(formIds) ? window.confirm(this.message()) : true;
+		return this.hasPendingChanges(formIds) ? this.popUpService.confirm(this.message()) : true;
 	}
 
 	private onUnload(event: BeforeUnloadEvent) {

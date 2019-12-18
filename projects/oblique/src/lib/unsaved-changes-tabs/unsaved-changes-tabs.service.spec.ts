@@ -1,15 +1,16 @@
-import {inject, TestBed} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {EventEmitter} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {NgbTabChangeEvent, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateService} from '@ngx-translate/core';
-import {UnsavedChangesTabsService} from './unsaved-changes-tabs.service';
 import {MockTranslateService} from '../_mocks/mock-translate.service';
 import {UnsavedChangesService} from 'oblique';
 import {MockUnsavedChangesService} from '../unsaved-changes/mock/mock-unsaved-changes.service';
+import {UnsavedChangesTabsService} from './unsaved-changes-tabs.service';
 
 describe('UnsavedChangesTabsService', () => {
-	let unsavedChangesService: UnsavedChangesTabsService;
+	let unsavedChangesService: UnsavedChangesService;
+	let unsavedChangesTabService: UnsavedChangesTabsService;
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			providers: [
@@ -18,11 +19,9 @@ describe('UnsavedChangesTabsService', () => {
 				{provide: TranslateService, useClass: MockTranslateService}
 			]
 		});
+		unsavedChangesService = TestBed.get(UnsavedChangesService);
+		unsavedChangesTabService = TestBed.get(UnsavedChangesTabsService);
 	});
-
-	beforeEach(inject([UnsavedChangesTabsService], (service: UnsavedChangesTabsService) => {
-		unsavedChangesService = service;
-	}));
 
 	describe('listenTo()', () => {
 		let evtEmitter: EventEmitter<NgbTabChangeEvent>;
@@ -30,6 +29,7 @@ describe('UnsavedChangesTabsService', () => {
 		let tabSet: NgbTabset;
 
 		beforeEach(() => {
+			spyOn(unsavedChangesService, 'watch');
 			evtEmitter = new EventEmitter<NgbTabChangeEvent>();
 			evt = {
 				activeId: 'tab_1',
@@ -48,13 +48,17 @@ describe('UnsavedChangesTabsService', () => {
 
 		describe('with no watched form', () => {
 			beforeEach(() => {
-				spyOn(window, 'confirm');
-				unsavedChangesService.listenTo(tabSet);
+				spyOn(unsavedChangesService, 'ignoreChanges').and.returnValue(true);
+				unsavedChangesTabService.listenTo(tabSet);
 				tabSet.select('tab_2');
 			});
 
-			it('shouldn\'t call window.confirm', () => {
-				expect(window.confirm).not.toHaveBeenCalled();
+			it('shouldn\'t call unsavedChangesService.watch', () => {
+				expect(unsavedChangesService.watch).not.toHaveBeenCalled();
+			});
+
+			it('should call unsavedChangesService.ignoreChanges', () => {
+				expect(unsavedChangesService.ignoreChanges).toHaveBeenCalledWith(['tab_1']);
 			});
 
 			it('should\'t prevent default', () => {
@@ -62,65 +66,67 @@ describe('UnsavedChangesTabsService', () => {
 			});
 		});
 
-		describe('with no dirty form (listenTo)', () => {
+		describe('with no dirty form', () => {
 			beforeEach(() => {
-				spyOn(window, 'confirm');
-				const form: ControlContainer = {dirty: false} as ControlContainer;
-				unsavedChangesService.watch('tab_1', form);
-				unsavedChangesService.listenTo(tabSet);
+				spyOn(unsavedChangesService, 'ignoreChanges').and.returnValue(true);
+				unsavedChangesTabService.watch('tab_1', {} as ControlContainer);
+				unsavedChangesTabService.listenTo(tabSet);
 				tabSet.select('tab_2');
 			});
 
-			it('shouldn\'t call window.confirm', () => {
-				expect(window.confirm).not.toHaveBeenCalled();
+			it('should call unsavedChangesService.watch', () => {
+				expect(unsavedChangesService.watch).toHaveBeenCalled();
 			});
 
-			it('shouldn\'t prevent default', () => {
-				expect(evt.preventDefault).not.toHaveBeenCalled();
-			});
-		});
-
-		describe('with no dirty form (unListenTo)', () => {
-			beforeEach(() => {
-				spyOn(window, 'confirm');
-				const form: ControlContainer = {dirty: false} as ControlContainer;
-				unsavedChangesService.watch('tab_1', form);
-				unsavedChangesService.unListenTo(tabSet);
-				tabSet.select('tab_2');
+			it('should call unsavedChangesService.ignoreChanges', () => {
+				expect(unsavedChangesService.ignoreChanges).toHaveBeenCalledWith(['tab_1']);
 			});
 
-			it('shouldn\'t call window.confirm', () => {
-				expect(window.confirm).not.toHaveBeenCalled();
-			});
-
-			it('shouldn\'t prevent default', () => {
+			it('should\'t prevent default', () => {
 				expect(evt.preventDefault).not.toHaveBeenCalled();
 			});
 		});
 
 		describe('with dirty form', () => {
 			beforeEach(() => {
-				const form: ControlContainer = {dirty: true} as ControlContainer;
-				unsavedChangesService.watch('tab_1', form);
-				unsavedChangesService.listenTo(tabSet);
+				spyOn(unsavedChangesService, 'ignoreChanges').and.returnValue(false);
+				unsavedChangesTabService.watch('tab_1', {} as ControlContainer);
+				unsavedChangesTabService.listenTo(tabSet);
+				tabSet.select('tab_2');
 			});
 
-			it('should ask for confirmation', () => {
-				spyOn(unsavedChangesService, 'ignoreChanges');
-				tabSet.select('tab_2');
-				expect(unsavedChangesService.ignoreChanges).toHaveBeenCalled();
+			it('should call unsavedChangesService.watch', () => {
+				expect(unsavedChangesService.watch).toHaveBeenCalled();
 			});
 
-			it('should not prevent default, if confirmed', () => {
-				jest.spyOn(unsavedChangesService, 'ignoreChanges').mockImplementation(() => true);
-				tabSet.select('tab_2');
-				expect(evt.preventDefault).not.toHaveBeenCalled();
+			it('should call unsavedChangesService.ignoreChanges', () => {
+				expect(unsavedChangesService.ignoreChanges).toHaveBeenCalledWith(['tab_1']);
 			});
 
-			it('should prevent default, if not confirmed', () => {
-				jest.spyOn(unsavedChangesService, 'ignoreChanges').mockImplementation(() => false);
-				tabSet.select('tab_2');
+			it('should prevent default', () => {
 				expect(evt.preventDefault).toHaveBeenCalled();
+			});
+		});
+
+		describe('unListenTo()', () => {
+			beforeEach(() => {
+				spyOn(unsavedChangesService, 'ignoreChanges').and.returnValue(false);
+				unsavedChangesTabService.watch('tab_1', {} as ControlContainer);
+				unsavedChangesTabService.listenTo(tabSet);
+				unsavedChangesTabService.unListenTo(tabSet);
+				tabSet.select('tab_2');
+			});
+
+			it('should call unsavedChangesService.watch', () => {
+				expect(unsavedChangesService.watch).toHaveBeenCalled();
+			});
+
+			it('shouldn\'t call unsavedChangesService.ignoreChanges', () => {
+				expect(unsavedChangesService.ignoreChanges).not.toHaveBeenCalled();
+			});
+
+			it('shouldn\'t prevent default', () => {
+				expect(evt.preventDefault).not.toHaveBeenCalled();
 			});
 		});
 	});

@@ -23,6 +23,7 @@ import {FormComponent} from './form/form.component';
 import {ButtonComponent} from './button/button.component';
 import {ErrorMessagesSampleComponent} from './error-messages-sample/error-messages-sample.component';
 import {UnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
+import {PopUpSampleComponent} from './pop-up/pop-up-sample.component';
 
 const samplesRoutes: Routes = [
 
@@ -58,6 +59,7 @@ const samplesRoutes: Routes = [
 		}
 	},
 	{path: 'sticky', component: StickySampleComponent},
+	{path: 'pop-up', component: PopUpSampleComponent},
 	{path: 'validation/form-control-state', component: FormControlStateSampleComponent},
 	{path: 'validation/schema-validation', component: SchemaValidationSampleComponent},
 	{

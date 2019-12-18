@@ -64,6 +64,7 @@ import {
 import {ApiComponent} from '../api/api.component';
 import {DescriptionComponent} from '../description/description.component';
 import {ApiElementComponent} from '../api/api-element.component';
+import { PopUpSampleComponent } from './pop-up/pop-up-sample.component';
 
 @NgModule({
 	imports: [
@@ -130,7 +131,8 @@ import {ApiElementComponent} from '../api/api-element.component';
 		UnsavedChangesSampleModalComponent,
 		ApiComponent,
 		ApiElementComponent,
-		DescriptionComponent
+		DescriptionComponent,
+		PopUpSampleComponent
 	],
 	exports: [
 		RouterModule,
