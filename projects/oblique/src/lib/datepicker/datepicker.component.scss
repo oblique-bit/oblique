@@ -40,6 +40,12 @@ ngb-datepicker.dropdown-menu {
 .ngb-dp-day, .ngb-dp-week-number {
 	width: 2.5rem !important;
 	height: 2.5rem !important;
+
+	& > div {
+		width: 2.5rem !important;
+		height: 2.5rem !important;
+		line-height: 2.5rem;
+	}
 }
 
 .ngb-dp-day .btn-secondary {
