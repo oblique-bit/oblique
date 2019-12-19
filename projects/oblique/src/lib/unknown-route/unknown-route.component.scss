@@ -1,5 +1,10 @@
-.default-layout {
+@import "../../styles/scss/core/variables";
+
+.center-layout {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-around;
 	align-items: center;
+	height: 10rem;
+	margin-top: $spacing-default;
 }
