@@ -26,12 +26,8 @@ a.form-control-plaintext {
 	}
 }
 
-.form-actions {
-	text-align: right;
-
-	.dropdown-menu {
-		text-align: left;
-	}
+.form-actions .dropdown-menu {
+	text-align: left;
 }
 
 .help-block {

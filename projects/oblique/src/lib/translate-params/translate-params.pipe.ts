@@ -15,11 +15,7 @@ export class TranslateParamsPipe implements PipeTransform {
 	}
 
 	private translateParams(params: Object): Object {
-		const translatedParams = Object.assign({}, params);
-		Object.keys(translatedParams)
-			.filter(key => translatedParams[key] && typeof translatedParams[key] === 'string')
-			.forEach(key => {
-				translatedParams[key] = this.translate.instant(translatedParams[key]);
-			});
-		return translatedParams;
+		return Object.keys(params)
+			.filter(key => params[key] && typeof params[key] === 'string')
+			.reduce((parameters, key) => ({...parameters, [key]: this.translate.instant(params[key])}), {});
 	}}

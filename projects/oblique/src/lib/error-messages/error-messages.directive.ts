@@ -15,9 +15,7 @@ export class ErrorMessagesDirective extends Unsubscribable implements AfterViewI
 	private readonly errors = new Subject<ValidationErrors>();
 	private readonly form: NgForm | FormGroupDirective;
 
-	constructor(@Optional() ngForm: NgForm,
-				@Optional() formGroupDirective: FormGroupDirective
-	) {
+	constructor(@Optional() ngForm: NgForm, @Optional() formGroupDirective: FormGroupDirective) {
 		super();
 		this.errors$ = this.errors.asObservable();
 		this.form = ngForm || formGroupDirective;
@@ -28,6 +26,7 @@ export class ErrorMessagesDirective extends Unsubscribable implements AfterViewI
 	}
 
 	ngAfterViewInit() {
+		this.errors.next(this.matInput.ngControl.errors); // because 1st statusChange occurs before ngAfterViewInit
 		merge(
 			this.form.ngSubmit,
 			this.matInput.ngControl.statusChanges

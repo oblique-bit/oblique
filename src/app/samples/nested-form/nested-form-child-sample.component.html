@@ -1,0 +1,32 @@
+<div [formGroup]="nestedForm">
+	<ng-container *ngIf="material | async else bootstrap">
+		<mat-form-field orErrorMessages>
+			<mat-label>Reactive Material Child 1</mat-label>
+			<input matInput formControlName="field1"/>
+			<mat-error></mat-error>
+		</mat-form-field>
+		<mat-form-field orErrorMessages>
+			<mat-label>Reactive Material Child 2</mat-label>
+			<input matInput formControlName="field2"/>
+			<mat-error></mat-error>
+		</mat-form-field>
+		<or-nested-form formControlName="grandchild" [nestedForm]="grandChild.grandChildForm">
+			<app-nested-form-grandchild-sample #grandChild></app-nested-form-grandchild-sample>
+		</or-nested-form>
+	</ng-container>
+	<ng-template #bootstrap>
+		<div class="form-group" orFormControlState>
+			<label class="control-label">Reactive Bootstrap Child 1</label>
+			<input class="form-control" type="text" formControlName="field1"/>
+			<or-error-messages></or-error-messages>
+		</div>
+		<div class="form-group" orFormControlState>
+			<label class="control-label">Reactive Bootstrap Child 2</label>
+			<input class="form-control" type="text" formControlName="field2"/>
+			<or-error-messages></or-error-messages>
+		</div>
+		<or-nested-form formControlName="grandchild" [nestedForm]="grandChildB.grandChildForm">
+			<app-nested-form-grandchild-sample #grandChildB="grandChild"></app-nested-form-grandchild-sample>
+		</or-nested-form>
+	</ng-template>
+</div>

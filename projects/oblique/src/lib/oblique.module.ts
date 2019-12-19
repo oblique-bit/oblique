@@ -12,6 +12,7 @@ import {MultiselectModule} from './multiselect/multiselect.module';
 import {NavigatorModule} from './navigator/navigator.module';
 import {NavigableModule} from './navigable/navigable.module';
 import {NavTreeModule} from './nav-tree/nav-tree.module';
+import {NestedFormModule} from './nested-form/nested-form.module';
 import {NotificationModule} from './notification/notification.module';
 import {ObliqueHttpModule} from './http/oblique-http.module';
 import {SchemaValidationModule} from './schema-validation/schema-validation.module';
@@ -41,6 +42,7 @@ const OBLIQUE_MODULES = [
 	NavigableModule,
 	NavigatorModule,
 	NavTreeModule,
+	NestedFormModule,
 	NotificationModule,
 	NumberFormatModule,
 	ObliqueHttpModule,

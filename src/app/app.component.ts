@@ -24,6 +24,7 @@ export class AppComponent {
 				{url: 'multiselect', label: 'i18n.routes.samples.multiselect.title'},
 				{url: 'navigable', label: 'i18n.routes.samples.navigable.title'},
 				{url: 'nav-tree', label: 'i18n.routes.samples.nav-tree.title'},
+				{url: 'nested-form', label: 'Nested froms'},
 				{url: 'notification', label: 'i18n.routes.samples.notification.title'},
 				{url: 'number-format', label: 'i18n.routes.samples.number-format.title'},
 				{url: 'pop-up', label: 'Pop-up'},

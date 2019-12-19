@@ -11,6 +11,7 @@ import {MasterLayoutSampleComponent} from './master-layout/master-layout-sample.
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
 import {NavigableSampleComponent} from './navigable/navigable-sample.component';
 import {NavTreeDetailSampleComponent, NavTreeSampleComponent} from './nav-tree/nav-tree-sample.component';
+import {NestedFormSampleComponent} from './nested-form/nested-form-sample.component';
 import {NotificationSampleComponent} from './notification/notification-sample.component';
 import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
@@ -49,6 +50,7 @@ const samplesRoutes: Routes = [
 			{path: ':section/:subsection/:subsubsection', component: NavTreeDetailSampleComponent}
 		]
 	},
+	{path: 'nested-form', component: NestedFormSampleComponent},
 	{path: 'notification', component: NotificationSampleComponent},
 	{path: 'multiselect', component: MultiselectSampleComponent},
 	{

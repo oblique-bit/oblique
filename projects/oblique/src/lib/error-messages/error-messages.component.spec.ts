@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import {Component, ViewChild} from '@angular/core';
 import {By} from '@angular/platform-browser';
@@ -62,12 +62,13 @@ describe('ErrorMessagesComponent', () => {
 		expect(component).toBeDefined();
 	});
 
-	it('should render messages on submit', () => {
+	it('should render messages on submit', fakeAsync(() => {
 		submitButton.click();
+		tick(0);
 
 		expect(component.errorMessages.errors.length).not.toBe(0);
 		expect(errorMessagesServiceMock.createMessages).toHaveBeenCalled();
-	});
+	}));
 
 	describe('with FormControlStateDirective.pristineValidation = true', () => {
 
