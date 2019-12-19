@@ -26,7 +26,6 @@ export class NavTreeComponent extends Unsubscribable {
 	@Input() filterPattern: string;
 	@Input() labelFormatter: (item: NavTreeItemModel, filterPattern?: string) => string = NavTreeComponent.DEFAULTS.LABEL_FORMATTER(this.translate);
 	@Input() variant = NavTreeComponent.DEFAULTS.VARIANT;
-	@Input() pathPrefix: string;
 	@Input() activateAncestors = true;
 
 	// TODO: remove when https://github.com/angular/angular/issues/13205
