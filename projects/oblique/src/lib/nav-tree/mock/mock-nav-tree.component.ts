@@ -19,7 +19,6 @@ export class MockNavTreeComponent {
 	@Input() filterPattern: string;
 	@Input() labelFormatter: any;
 	@Input() variant = MockNavTreeComponent.DEFAULTS.VARIANT;
-	@Input() pathPrefix: string;
 	@Input() activateAncestors = true;
 
 	@Input() patternMatcher(item: NavTreeItemModel, pattern = ''): boolean {
