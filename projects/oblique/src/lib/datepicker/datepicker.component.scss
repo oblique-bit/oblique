@@ -40,6 +40,12 @@ ngb-datepicker.dropdown-menu {
 .ngb-dp-day, .ngb-dp-week-number {
 	width: 2.5rem !important;
 	height: 2.5rem !important;
+
+	& > div {
+		width: 2.5rem !important;
+		height: 2.5rem !important;
+		line-height: 2.5rem;
+	}
 }
 
 .ngb-dp-day .btn-secondary {
@@ -58,5 +64,35 @@ ngb-datepicker.dropdown-menu {
 
 	&.bg-primary {
 		box-shadow: inset 0 0 7px -1px $brand-default;
+	}
+}
+
+.datepicker {
+	display: flex;
+
+	.form-control {
+		flex-grow: 1;
+
+		.has-error & {
+			border-color: transparent;
+
+			&:focus {
+				box-shadow: none;
+			}
+		}
+	}
+
+	.has-error & {
+		border: 1px solid $brand-error;
+
+		&:focus-within {
+			box-shadow: 0 0 6px 1px rgba(220, 0, 24, 0.4);
+		}
+
+		.calendar-toggle {
+			border-top-width: 0;
+			border-bottom-width: 0;
+			border-right-width: 0;
+		}
 	}
 }

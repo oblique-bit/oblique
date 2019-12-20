@@ -6,7 +6,14 @@ import {NestedFormComponent} from './lib/nested-form/nested-form.component';
 
 export {ColumnLayoutModule, ColumnLayoutComponent} from './lib/column-layout/column-layout.module';
 export {
-	DateDMYParserFormatter, DateFormatterPipe, DatepickerComponent, DatepickerI18nService, DatepickerModule, DatepickerPlaceholderDirective
+	DateDMYParserFormatter,
+	DateFormatterPipe,
+	DatepickerComponent,
+	DatepickerI18nService,
+	DatepickerModule,
+	DatepickerPlaceholderDirective,
+	DatepickerConfigService,
+	DatepickerOptions
 } from './lib/datepicker/datepicker.module';
 export {DocumentMetaService, DocumentMetaModule} from './lib/document-meta/document-meta.module';
 export {DropdownComponent, DropdownModule} from './lib/dropdown/dropdown.module';

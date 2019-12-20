@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
-import {FormBuilder, FormGroup, NgModelGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, NgModelGroup, Validators} from '@angular/forms';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes-sample-modal.component';
 import {UnsavedChangesService} from 'oblique';
@@ -47,7 +47,7 @@ export class UnsavedChangesSampleComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.standAloneReactive = this.formBuilder.group({text: '', number: '', integer: '', date: ''});
+		this.standAloneReactive = this.formBuilder.group({text: '', number: '', integer: '', date: ['f', Validators.required]});
 		this.nestedReactive = this.formBuilder.group({
 			form4: this.formBuilder.group({text: '', number: '', integer: '', date: ''}),
 			form5: this.formBuilder.group({text: '', number: '', integer: '', date: ''}),
