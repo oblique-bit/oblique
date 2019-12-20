@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer2, ViewChild, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostBinding, HostListener, Inject, Input, OnInit, Renderer2, ViewChild, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
 import {filter, takeUntil} from 'rxjs/operators';
 
@@ -36,7 +36,8 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 	constructor(private readonly router: Router,
 				private readonly masterLayout: MasterLayoutService,
 				private readonly config: MasterLayoutConfig,
-				private readonly renderer: Renderer2) {
+				private readonly renderer: Renderer2
+	) {
 		super();
 
 		this.masterLayout.navigation.refreshed.pipe(takeUntil(this.unsubscribe)).subscribe(this.refresh.bind(this));
@@ -60,6 +61,7 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 
 	@HostListener('window:resize')
 	onResize() {
+		console.log('resize');
 		this.masterLayout.navigation.refresh();
 	}
 

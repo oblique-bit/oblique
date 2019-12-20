@@ -9,8 +9,9 @@ import {MultiselectComponent} from './multiselect.component';
 import {MultiselectConfig} from './multiselect.config';
 import {MultiselectSearchPipe} from './multiselect-search.pipe';
 import {MultiselectTexts} from './multiselect.texts';
-import { TelemetryService } from '../telemetry/telemetry.service';
-import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
+import {TelemetryService} from '../telemetry/telemetry.service';
+import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
+import {WINDOW, windowProvider} from '../utilities';
 
 export {MultiselectComponent} from './multiselect.component';
 export {MultiselectConfig} from './multiselect.config';
@@ -27,7 +28,10 @@ export {MultiselectTexts} from './multiselect.texts';
 	exports: [
 		MultiselectComponent
 	],
-	providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
+	providers: [
+		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+		{provide: WINDOW, useFactory: windowProvider}
+	],
 	declarations: [
 		MultiselectComponent,
 		MultiselectSearchPipe

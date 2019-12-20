@@ -6,6 +6,7 @@ import {NavigableDirective} from './navigable.directive';
 import {NavigableGroupComponent} from './navigable-group.component';
 import { TelemetryService } from '../telemetry/telemetry.service';
 import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
+import {WINDOW, windowProvider} from '../utilities';
 
 export {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent, PreventableEvent} from './navigable.directive';
 export {NavigableGroupComponent} from './navigable-group.component';
@@ -15,7 +16,10 @@ export {NavigableGroupComponent} from './navigable-group.component';
 		CommonModule
 	],
 	declarations: [NavigableDirective, NavigableGroupComponent],
-	providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
+	providers: [
+		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+		{provide: WINDOW, useFactory: windowProvider}
+	],
 	exports: [NavigableDirective, NavigableGroupComponent]
 })
 export class NavigableModule {

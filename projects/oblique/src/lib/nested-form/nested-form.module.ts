@@ -4,6 +4,7 @@ import {TelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {ParentFormDirective} from './parent-form.directive';
 import {NestedFormComponent} from './nested-form.component';
+import {WINDOW, windowProvider} from '../utilities';
 
 export {ParentFormDirective} from './parent-form.directive';
 export {NestedFormComponent} from './nested-form.component';
@@ -12,7 +13,10 @@ export {NestedFormComponent} from './nested-form.component';
 	declarations: [
 		ParentFormDirective, NestedFormComponent
 	],
-	providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
+	providers: [
+		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+		{provide: WINDOW, useFactory: windowProvider}
+	],
 	exports: [
 		ParentFormDirective, NestedFormComponent
 	]

@@ -33,6 +33,7 @@ import {MockToggleModule} from './toggle/mock/mock-toggle.module';
 import {MockTranslateParamsModule} from './translate-params/mock/mock-translate-params.module';
 import {MockUnknownRouteModule} from './unknown-route/mock/mock-unknown-route.module';
 import {MockUnsavedChangesModule} from './unsaved-changes/mock/mock-unsaved-changes.module';
+import {WINDOW, windowProvider} from './utilities';
 
 export {MockColumnLayoutComponent, MockColumnLayoutModule} from './column-layout/mock/mock-column-layout.module';
 export {
@@ -134,7 +135,8 @@ const MOCK_OBLIQUE_MODULES = [
 	exports: MOCK_OBLIQUE_MODULES,
 	declarations: [MockTranslatePipe, MockMatFormElementComponent],
 	providers: [
-		{provide: TranslateService, useClass: MockTranslateService}
+		{provide: TranslateService, useClass: MockTranslateService},
+		{provide: WINDOW, useFactory: windowProvider}
 	]
 })
 export class ObliqueTestingModule {

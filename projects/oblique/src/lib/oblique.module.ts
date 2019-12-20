@@ -29,6 +29,7 @@ import {StickyModule} from './sticky/sticky.module';
 import {UnknownRouteModule} from './unknown-route/unknown-route.module';
 import {TelemetryService} from './telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from './telemetry/telemetry-require';
+import {WINDOW, windowProvider} from './utilities';
 
 const OBLIQUE_MODULES = [
 	ColumnLayoutModule,
@@ -61,7 +62,10 @@ const OBLIQUE_MODULES = [
 
 @NgModule({
 	imports: OBLIQUE_MODULES,
-	providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
+	providers: [
+		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+		{provide: WINDOW, useFactory: windowProvider}
+	],
 	exports: OBLIQUE_MODULES
 })
 export class ObliqueModule {

@@ -5,8 +5,9 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
 import {TranslateModule} from '@ngx-translate/core';
 
 import {TextControlClearDirective} from './text-control-clear.directive';
-import { TelemetryService } from '../telemetry/telemetry.service';
-import { requireAndRecordTelemetry } from '../telemetry/telemetry-require';
+import {TelemetryService} from '../telemetry/telemetry.service';
+import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
+import {WINDOW, windowProvider} from '../utilities';
 
 export {TextControlClearDirective} from './text-control-clear.directive';
 
@@ -19,7 +20,10 @@ export {TextControlClearDirective} from './text-control-clear.directive';
 	declarations: [
 		TextControlClearDirective
 	],
-	providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
+	providers: [
+		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+		{provide: WINDOW, useFactory: windowProvider}
+	],
 	exports: [
 		TextControlClearDirective
 	]

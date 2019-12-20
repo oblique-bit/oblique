@@ -23,6 +23,7 @@ import {MasterLayoutNavigationItemDirective} from './master-layout-navigation/ma
 import {MasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
 import {MasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
 import {MasterLayoutConfig, ScrollMode} from './master-layout.config';
+import {windowProvider, WINDOW} from '../utilities';
 
 export {MasterLayoutComponent} from './master-layout/master-layout.component';
 export {MasterLayoutService} from './master-layout.service';
@@ -54,7 +55,10 @@ export {MasterLayoutConfig, ScrollMode} from './master-layout.config';
 		MasterLayoutNavigationToggleDirective,
 		MasterLayoutNavigationMenuDirective
 	],
-	providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
+	providers: [
+		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+		{provide: WINDOW, useFactory: windowProvider}
+	],
 	exports: [
 		MasterLayoutComponent,
 		MasterLayoutHeaderToggleDirective,
