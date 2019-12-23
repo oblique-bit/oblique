@@ -1,3 +1,48 @@
+# [5.0.0-alpha.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=5.0.0-alpha.1) (2019-12-23)
+
+### Bug Fixes
+* **error-messages:** emit an error as soon as possible ([0ce1924](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/0ce1924))
+* **master-layout:** add available languages to `TranslateService` ([66316d5](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/66316d5))
+* **multiselect:** remove `input` decorator on `disabled` property ([dc87d7b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/dc87d7b))
+* **notification:** cancel timeout when notification closed ([78f449b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/78f449b))
+* **theme:** change `btn-link` color to `brand-primary` ([f7f4d6b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/f7f4d6b))
+* **theme:** move `form-actions` class into core ([36561cc](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/36561cc))
+* **toolchain:** ensure all components have external, non encapsulated styles ([d448243](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/d448243))
+* **toolchain:** include nested folders in `oblique-components` ([a6e47d6](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/a6e47d6))
+* **translate-params:** return non string parameters unchanged ([23bff42](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/23bff42))
+
+### Code Refactoring
+* **datepicker:** transform the component into a form element ([6235e97](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/6235e97))
+
+### Features
+* **datepicker:** add size option ([7b35257](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/7b35257))
+* **datepicker:** improve error rendering ([ae0301c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/ae0301c))
+* **datepicker:** improve outlined and selected day rendering ([5cd24c7](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/5cd24c7))
+* **datepicker:** mark as deprecated for `Bootstrap` ([18c7dc5](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/18c7dc5))
+* **error-messages:** component support nested forms ([c07346d](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/c07346d))
+* **form-control-state:** component support nested forms ([c61e834](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/c61e834))
+* **master-layout:** replace `isScrollable` with `scrollMode` ([de25521](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/de25521))
+* **master-layout:** shows oblique version number ([77274f4](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/77274f4))
+* **nav-tree:** remove `pathPrefix` input ([33b097c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/33b097c))
+* **nested-form:** add feature ([2ea5ccf](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/2ea5ccf))
+* **notification:** add message params in notification id ([8834e82](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/8834e82))
+* add `WINDOW` InjectionToken for SSR compatibility ([a34eb41](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/a34eb41))
+* **pop-up:** add `PopUpService` ([ad16987](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/ad16987))
+* **theme:** add `oblique-compat.scss` ([5a0aa0c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/5a0aa0c))
+* **toolchain:** remove `test_helpers` ([15416d2](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/15416d2))
+* **unknown-route:** add feature ([e65f90a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/e65f90a))
+
+### BREAKING CHANGES
+* **datepicker:** content projection has been removed
+* **datepicker:** some `ngbDatePicker` properties are not accessible anymore
+* **datepicker:** some `ngbDatePicker` properties can be set through the `options` input
+* **datepicker:** some `ngbDatePicker` properties can be set through inputs.
+* **datepicker:** navigation has been set to `select` instead of `arrows`
+* **datepicker:** `forRoot` method has been removed
+* **nav-tree:** `pathPrefix` input has been removed with no replacement. It was without effect anyway
+* **toolchain:** `test_helpers` directory have been removed in favor of `ObliqueTestingModule`
+
+
 # [4.1.1](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.1.1) (2019-10-18)
 
 ## Bug Fixes
