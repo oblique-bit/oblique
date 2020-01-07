@@ -21,6 +21,7 @@ export class AppComponent {
 				{url: 'filter-box', label: 'i18n.routes.samples.filter-box.title'},
 				{url: 'http-interceptor', label: 'i18n.routes.samples.http-interceptor.title'},
 				{url: 'master-layout', label: 'i18n.routes.samples.master-layout.title'},
+				{url: 'multi-translate-loader', label: 'Multi translate loader'},
 				{url: 'multiselect', label: 'i18n.routes.samples.multiselect.title'},
 				{url: 'navigable', label: 'i18n.routes.samples.navigable.title'},
 				{url: 'nav-tree', label: 'i18n.routes.samples.nav-tree.title'},

@@ -2,10 +2,9 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {NgbDatepickerConfig, NgbModule, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {createTranslateLoader} from '../../projects/oblique/src/lib/utilities';
+import {TranslateModule} from '@ngx-translate/core';
 
 import {
 	DocumentMetaModule,
@@ -15,6 +14,7 @@ import {
 	MasterLayoutConfig,
 	MasterLayoutModule,
 	MultiselectModule,
+	multiTranslateLoader,
 	NotificationModule,
 	OBLIQUE_THEME,
 	ObliqueHttpInterceptor,
@@ -64,13 +64,7 @@ import {StylesComponent} from './styles/styles.component';
 		SearchBoxModule,
 		SpinnerModule,
 		UnsavedChangesModule,
-		TranslateModule.forRoot({
-			loader: {
-				provide: TranslateLoader,
-				useFactory: createTranslateLoader,
-				deps: [HttpClient]
-			}
-		}),
+		TranslateModule.forRoot(multiTranslateLoader()),
 		AppRoutingModule,
 		MasterLayoutModule,
 		MatFormFieldModule,

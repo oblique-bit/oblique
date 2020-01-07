@@ -25,6 +25,7 @@ import {ButtonComponent} from './button/button.component';
 import {ErrorMessagesSampleComponent} from './error-messages-sample/error-messages-sample.component';
 import {UnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
 import {PopUpSampleComponent} from './pop-up/pop-up-sample.component';
+import {MultiTranslateLoaderSampleComponent} from './multi-tranlsate-loader/multi-translate-loader-sample.component';
 
 const samplesRoutes: Routes = [
 
@@ -60,6 +61,7 @@ const samplesRoutes: Routes = [
 			}
 		}
 	},
+	{path: 'multi-translate-loader', component: MultiTranslateLoaderSampleComponent},
 	{path: 'sticky', component: StickySampleComponent},
 	{path: 'pop-up', component: PopUpSampleComponent},
 	{path: 'validation/form-control-state', component: FormControlStateSampleComponent},

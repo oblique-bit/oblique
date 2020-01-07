@@ -1,0 +1,40 @@
+[
+  {
+    "name": "MultiTranslateHttpLoader",
+    "usage": "A <code>factory</code> to be used as a <code>TranslateLoader</code> for the <code>TranslationModule</code>",
+    "since": "5.0.0",
+    "inputs": [
+      {
+        "name": "http",
+        "text": "The angular's <code>HttpClient</code> injectable",
+        "type": "HttpClient",
+        "since": "5.0.0"
+      },
+      {
+        "name": "resources",
+        "text": "The translations files to load",
+        "type": "{prefix: string, suffix: string}[]",
+        "since": "5.0.0"
+      }
+    ]
+  },
+  {
+    "name": "multiTranslateLoader",
+    "usage": "A utility function that returns a <code>TranslateModuleConfig</code> with multiple files support",
+    "since": "5.0.0",
+    "inputs": [
+      {
+        "name": "files",
+        "text": "The translations files to load",
+        "type": "{prefix: string, suffix: string}[]",
+        "since": "5.0.0"
+      },
+      {
+        "name": "config",
+        "text": "Additional config options for the <code>TranslateModule</code>",
+        "type": "TranslateModuleConfig",
+        "since": "5.0.0"
+      }
+    ]
+  }
+]

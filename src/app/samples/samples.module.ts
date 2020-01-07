@@ -71,6 +71,7 @@ import {ApiElementComponent} from '../api/api-element.component';
 import {PopUpSampleComponent} from './pop-up/pop-up-sample.component';
 import {NestedFormChildTDSampleComponent} from './nested-form/nested-form-child-td-sample.component';
 import {NestedFormGrandChildTDSampleComponent} from './nested-form/nested-form-grandchild-td-sample.component';
+import {MultiTranslateLoaderSampleComponent} from './multi-tranlsate-loader/multi-translate-loader-sample.component';
 
 @NgModule({
 	imports: [
@@ -144,7 +145,8 @@ import {NestedFormGrandChildTDSampleComponent} from './nested-form/nested-form-g
 		ApiComponent,
 		ApiElementComponent,
 		DescriptionComponent,
-		PopUpSampleComponent
+		PopUpSampleComponent,
+		MultiTranslateLoaderSampleComponent
 	],
 	exports: [
 		RouterModule,
