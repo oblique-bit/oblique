@@ -21,7 +21,6 @@
     "@angular/cdk": "^8.0.0",
     "@angular/material": "^8.0.0",
     "@ng-bootstrap/ng-bootstrap": "^5.0.0",
-    "ajv": "^6.10.0",
-    "ngx-translate-multi-http-loader": "^3.0.0"
+    "ajv": "^6.10.0"
   }
 }
