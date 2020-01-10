@@ -6,15 +6,17 @@
     "declaration": true,
     "inlineSources": true,
     "importHelpers": true,
-    "types": ["node"],
+    "types": [
+      "node"
+    ]
   },
   "angularCompilerOptions": {
-    "annotateForClosureCompiler": true,
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
-    "enableResourceInlining": true
+    "enableResourceInlining": true,
+    "enableIvy": false
   },
   "exclude": [
     "src/test.ts",

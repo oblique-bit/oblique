@@ -90,5 +90,3 @@ export {MultiTranslateLoader, TRANSLATION_FILES, TranslationFile} from './lib/mu
 export {PopUpService} from './lib/pop-up/pop-up.service';
 export {Unsubscribable} from './lib/unsubscribe.class';
 export {ObliqueModule} from './lib/oblique.module';
-
-export {ObliqueTestingModule} from './lib/oblique-testing.module';

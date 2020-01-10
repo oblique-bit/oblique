@@ -37,7 +37,7 @@ const distMeta = () => {
 
 	['version', 'description', 'keywords', 'author', 'contributors', 'homepage', 'repository', 'license', 'bugs', 'publishConfig']
 		.forEach(field => output[field] = meta[field]);
-	['main', 'module', 'es2015', 'esm5', 'esm2015', 'fesm5', 'fesm2015', 'typings', 'metadata']
+	['main', 'module', 'es2015', 'esm5', 'esm2015', 'fesm5', 'fesm2015', 'typings']
 		.forEach(field => output[field] = output[field].replace('oblique-oblique', 'oblique'));
 
 	return gulp.src(['README.md', 'CHANGELOG.md'])

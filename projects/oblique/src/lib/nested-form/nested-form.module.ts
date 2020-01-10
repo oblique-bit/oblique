@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {TelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {ParentFormDirective} from './parent-form.directive';

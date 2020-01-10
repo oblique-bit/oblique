@@ -65,7 +65,7 @@ export class MultiselectComponent implements OnInit, OnDestroy, DoCheck, Control
 	@Output() onAdded = new EventEmitter<any>();
 	@Output() onRemoved = new EventEmitter<any>();
 
-	@ViewChild('orFilterBox', {static: false}) filterBox: FilterBoxComponent;
+	@ViewChild('orFilterBox') filterBox: FilterBoxComponent;
 	@HostBinding('attr.count') get count(): number {
 		return this.options.length;
 	}

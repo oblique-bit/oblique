@@ -1,6 +1,8 @@
+import {Injectable} from '@angular/core';
 import {EMPTY, Observable, of} from 'rxjs';
 import {ObliqueRequest} from '../oblique-http.module';
 
+@Injectable()
 export class MockObliqueHttpInterceptorEvents {
 	get requestIntercepted(): Observable<ObliqueRequest> {
 		return of({} as ObliqueRequest);

@@ -1,3 +1,6 @@
+import {Injectable} from '@angular/core';
+
+@Injectable()
 export class MockMultiselectTexts {
 	checkAll = 'i18n.oblique.multiselect.checkAll';
 	uncheckAll = 'i18n.oblique.multiselect.uncheckAll';

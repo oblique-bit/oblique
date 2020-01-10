@@ -2,7 +2,9 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TranslateModule} from '@ngx-translate/core';
 import {FormsModule} from '@angular/forms';
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule, MatIconModule, MatInputModule} from '@angular/material';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
 
 import {TextControlClearModule} from '../text-control-clear/text-control-clear.module';
 import {FilterBoxComponent} from './filter-box.component';

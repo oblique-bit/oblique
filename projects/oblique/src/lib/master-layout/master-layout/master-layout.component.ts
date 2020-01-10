@@ -53,7 +53,7 @@ export class MasterLayoutComponent extends Unsubscribable implements OnInit {
 	@HostBinding('class.application-scrolling') isScrolling = false;
 	@ContentChildren('orHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('orFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<any>>;
-	@ViewChild('offCanvasClose', {static: false}) readonly offCanvasClose: ElementRef<HTMLElement>;
+	@ViewChild('offCanvasClose') readonly offCanvasClose: ElementRef<HTMLElement>;
 	private readonly window: Window;
 
 	constructor(private readonly masterLayout: MasterLayoutService,

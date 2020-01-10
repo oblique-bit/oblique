@@ -18,8 +18,8 @@ export class FilterBoxComponent implements OnInit {
 	@Input() modelOptions: any; // See https://angular.io/api/forms/NgModel#options
 	@Output() patternChange = new EventEmitter<string>();
 	@Output() patternClear = new EventEmitter<void>();
-	@ViewChild('filterControl', {static: false}) filterControl: ElementRef;
-	@ViewChild('inputGroup', {static: false}) inputGroup: ElementRef;
+	@ViewChild('filterControl') filterControl: ElementRef;
+	@ViewChild('inputGroup') inputGroup: ElementRef;
 	@ContentChildren('prepend') readonly prepends: QueryList<TemplateRef<any>>;
 	@ContentChildren('append') readonly appends: QueryList<TemplateRef<any>>;
 

@@ -35,7 +35,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {HomePageComponent} from './home/home.page';
 import {HttpMockErrorInterceptor} from './samples/http-interceptor/http-mock-error.interceptor';
 import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
-import {MatFormFieldModule, MatInputModule} from '@angular/material';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 import {StylesComponent} from './styles/styles.component';
 
 
