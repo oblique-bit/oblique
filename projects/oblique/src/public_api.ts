@@ -85,8 +85,8 @@ export {UnsavedChangesDirective, UnsavedChangesGuard, UnsavedChangesModule, Unsa
 export {UnsavedChangesTabsDirective, UnsavedChangesTabsModule, UnsavedChangesTabsService} from './lib/unsaved-changes-tabs/unsaved-changes-tabs.module';
 export {ThemeService, FRUTIGER, THEMES, OBLIQUE_THEME} from './lib/theme/theme.service';
 export {TELEMETRY_DISABLE} from './lib/telemetry/telemetry.service';
-export {WINDOW, multiTranslateLoader} from './lib/utilities';
-export {MultiTranslateLoader} from './lib/multi-translate-loader/multi-translate-loader';
+export {WINDOW, multiTranslateLoader, getTranslateLoader} from './lib/utilities';
+export {MultiTranslateLoader, TRANSLATION_FILES, TranslationFile} from './lib/multi-translate-loader/multi-translate-loader';
 export {PopUpService} from './lib/pop-up/pop-up.service';
 export {Unsubscribable} from './lib/unsubscribe.class';
 export {ObliqueModule} from './lib/oblique.module';

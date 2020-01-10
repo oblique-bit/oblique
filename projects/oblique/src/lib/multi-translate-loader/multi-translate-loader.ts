@@ -1,10 +1,18 @@
 import {HttpClient} from '@angular/common/http';
 import {TranslateLoader} from '@ngx-translate/core';
+import {InjectionToken} from '@angular/core';
 import {catchError, map} from 'rxjs/operators';
 import {forkJoin, Observable, of} from 'rxjs';
 
+export interface TranslationFile {
+	prefix: string;
+	suffix: string;
+}
+
+export const TRANSLATION_FILES = new InjectionToken('TRANSLATION_FILES');
+
 export class MultiTranslateLoader implements TranslateLoader {
-	constructor(private readonly http: HttpClient, private readonly resources: {prefix: string, suffix: string}[]) {
+	constructor(private readonly http: HttpClient, private readonly resources: TranslationFile[]) {
 	}
 
 	public getTranslation(lang: string): Observable<any> {
@@ -13,7 +21,7 @@ export class MultiTranslateLoader implements TranslateLoader {
 			return this.http.get(path).pipe(
 				// if some files are flat while others are expanded, the flatten properties will be ignored. Therefore, all files are flatten to avoid conflicts
 				map((data) => this.flatten(data)),
-				catchError(res => {
+				catchError(() => {
 					console.error('Could not find translation file:', path);
 					return of({});
 				})
