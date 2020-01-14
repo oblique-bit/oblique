@@ -25,7 +25,7 @@
 								   orSchemaValidate/>
 							<or-error-messages></or-error-messages>
 						</div>
-						<div class="col-1 form-control-plaintext">
+						<div class="col-1">
 							<ng-template #textSchema>
 								<pre>{{schema.properties.text | json}}</pre>
 							</ng-template>
@@ -42,7 +42,7 @@
 								   ngModel orSchemaValidate/>
 							<or-error-messages></or-error-messages>
 						</div>
-						<div class="col-1 form-control-plaintext">
+						<div class="col-1">
 							<ng-template #numberSchema>
 								<pre>{{schema.properties.number | json}}</pre>
 							</ng-template>
@@ -72,7 +72,7 @@
 					<div orFormControlState class="row form-group">
 						<label class="col-3 col-form-label" for="templateDate">Date</label>
 						<div class="col-8">
-							<or-date-picker id="templateDate" ngModel name="date" required></or-date-picker>
+							<or-date-picker id="templateDate" ngModel name="date"></or-date-picker>
 							<or-error-messages></or-error-messages>
 						</div>
 						<div class="col-1">
@@ -247,7 +247,7 @@
 							<input formControlName="text" type="text" placeholder="Text" class="form-control" orSchemaValidate/>
 							<or-error-messages></or-error-messages>
 						</div>
-						<div class="col-1 form-control-plaintext">
+						<div class="col-1">
 							<a class="form-control-static" role="button"
 							   [ngbPopover]="textSchema" popoverTitle="Schema" placement="left">
 								<span class="fa fa-sitemap"></span>
@@ -260,7 +260,7 @@
 							<input formControlName="number" type="number" placeholder="Number" class="form-control" orSchemaValidate/>
 							<or-error-messages></or-error-messages>
 						</div>
-						<div class="col-1 form-control-plaintext">
+						<div class="col-1">
 							<a class="form-control-static" role="button" [ngbPopover]="numberSchema" popoverTitle="Schema" placement="left">
 								<span class="fa fa-sitemap"></span>
 							</a>
@@ -281,7 +281,7 @@
 					<div orFormControlState class="row form-group">
 						<label class="col-3 col-form-label" for="reactiveDate">Date</label>
 						<div class="col-8">
-							<or-date-picker id="reactiveDate" formControlName="date" required orSchemaValidate></or-date-picker>
+							<or-date-picker id="reactiveDate" formControlName="date" orSchemaValidate></or-date-picker>
 							<or-error-messages></or-error-messages>
 						</div>
 						<div class="col-1">
