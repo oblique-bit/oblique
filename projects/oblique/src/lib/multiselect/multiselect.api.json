@@ -13,7 +13,7 @@
       },
       {
         "name": "idPrefix",
-        "text": "The <code>id</code> that will be applied to the component and used as a prefix <code>id</code> for its underlying elements. A number is appended to the id to ensure its uniqueness.",
+        "text": "The unique <code>id</code> that will be applied to the component's actionable part. It will also be used as a prefix <code>id</code> for its underlying elements.",
         "type": "string",
         "default": "multiselect",
         "since": "4.0.0"
@@ -28,13 +28,6 @@
       {
         "name": "dropup",
         "text": "Whether it should dropup.",
-        "type": "boolean",
-        "default": false,
-        "since": "2.0.0"
-      },
-      {
-        "name": "disabled",
-        "text": "A flag indication if the multiselect should be disabled.",
         "type": "boolean",
         "default": false,
         "since": "2.0.0"

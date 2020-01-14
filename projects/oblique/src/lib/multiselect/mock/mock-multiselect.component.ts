@@ -16,7 +16,6 @@ export class MockMultiselectComponent implements ControlValueAccessor {
 	@Input() options: any[] = [];
 	@Input() texts: MockMultiselectTexts;
 	@Input() dropup = false;
-	@Input() disabled = false;
 	@Input() labelProperty: string;
 	@Input() labelFormatter: (option: any) => string;
 	@Input() titleProperty: string;
@@ -30,6 +29,15 @@ export class MockMultiselectComponent implements ControlValueAccessor {
 	@Input() selectionLimit;
 	@Input() showCheckAll;
 	@Input() showUncheckAll;
+
+	idContainer = 'multiselect-container';
+	model: any[] = [];
+	title: string;
+	titleTranslateParams: any = {};
+	differ: any;
+	isVisible = false;
+	searchFilterText = '';
+	disabled = false;
 
 	onClick(target: HTMLElement) {
 	}
