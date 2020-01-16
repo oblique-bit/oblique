@@ -41,3 +41,18 @@ main {
 .bg-secondary {
 	background-color: $brand-extralight !important;
 }
+
+.hover-visible {
+	visibility: hidden;
+	opacity: 0;
+	transition-property: opacity, visibility;
+	transition-duration: $duration-fast, 0s;
+	transition-timing-function: ease-in-out;
+	transition-delay: 0s, $duration-fast;
+
+	*:hover > & {
+		visibility: visible;
+		opacity: 1;
+		transition-delay: 0s;
+	}
+}
