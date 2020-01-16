@@ -8,7 +8,9 @@ import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {WINDOW, windowProvider} from '../utilities';
 
 export {NavigatorComponent} from './navigator.component';
-
+/**
+ * @deprecated since version 4.0.0. This module is neither useful nor used and will be removed in future versions
+ */
 @NgModule({
 	imports: [
 		RouterModule
