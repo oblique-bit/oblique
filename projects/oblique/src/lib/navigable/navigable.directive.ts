@@ -17,18 +17,12 @@ export class NavigableOnMoveEvent extends PreventableEvent {
 }
 
 /**
- * NavigableDirective
- *
- * API:
- * - [orNavigable]:any                           The data model of the current navigable item.
- * - [navigableActivate]:boolean                 Activates current item if `true`.
- * - [navigableFocusOnInit]:boolean              Defines if the current item should be focused on directive initialisation.
- * - [navigableHighlight]:boolean                Highlights current item if `true`.
- * - (navigableOnActivation):void                Emits if the navigable item is activated.
- * - (navigableOnChange):NavigableOnChangeEvent  Emits if UP or DOWN key is pressed, while the navigable item is focused.
- * - (navigableOnFocus):FocusEvent               Emits if the navigable item is focused.
- * - (navigableOnMouseDown):MouseEvent           Emits if the navigable item is clicked/tapped.
- * - (navigableOnMove):FocusEvent                Emits if the navigable item is moved (with SHIFT+CTRL+[UP|DOWN]).
+ * @deprecated since version 5.0.0. This module is complex, buggy and never used as intended. It will be removed without replacement in future version.
+ * If you have a use case for it, please contact oblique@bit.admin.ch.
+ * * to use the keyboard navigation, add a <code>tabindex</code> on each element and navigate with <kbd>tab</tbd> or <kbd>shift</tbd> + <kbd>tab</tbd>
+ * * to use the hover effect on buttons use the <code>hover-visible</code> class.
+ * * to use the multiple items selection, use the <code>obSelectable</code> directive
+ * * the items reordering feature will be lost, but is incomplete anyway
  */
 @Directive({
 	selector: '[orNavigable]',
