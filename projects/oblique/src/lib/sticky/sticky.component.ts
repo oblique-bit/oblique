@@ -1,76 +1,52 @@
-import {Component, ContentChild, HostBinding, Input, OnChanges, OnInit, TemplateRef, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, ContentChild, HostBinding, Input, OnChanges, TemplateRef, ViewEncapsulation} from '@angular/core';
 
 @Component({
 	selector: 'or-sticky',
 	exportAs: 'orSticky',
+	templateUrl: 'sticky.component.html',
 	styleUrls: ['./sticky.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	template: `
-		<div class="sticky-header" *ngIf="stickyHeaderTemplate">
-			<ng-container *ngTemplateOutlet="stickyHeaderTemplate"></ng-container>
-		</div>
-		<div class="sticky-main">
-			<div class="sticky" [ngClass]="nestedSize"
-				 *ngIf="stickyHeaderTemplate && stickyFooterTemplate; else mainContent">
-				<div class="sticky-main">
-					<ng-container *ngTemplateOutlet="mainContent"></ng-container>
-				</div>
-				<div class="sticky-footer" *ngIf="stickyFooterTemplate">
-					<ng-container *ngTemplateOutlet="stickyFooterTemplate"></ng-container>
-				</div>
-			</div>
-		</div>
-		<div class="sticky-footer" *ngIf="!stickyHeaderTemplate && stickyFooterTemplate">
-			<ng-container *ngTemplateOutlet="stickyFooterTemplate"></ng-container>
-		</div>
-
-		<ng-template #mainContent>
-			<ng-container *ngTemplateOutlet="stickyMainTemplate"></ng-container>
-		</ng-template>
-	`
+	// tslint:disable-next-line:no-host-metadata-property
+	host: {class: 'sticky'}
 })
-export class StickyComponent implements OnInit, OnChanges {
+export class StickyComponent implements OnChanges, AfterViewInit {
 	@ContentChild('orStickyHeader') readonly stickyHeaderTemplate: TemplateRef<any>;
 	@ContentChild('orStickyMain') readonly stickyMainTemplate: TemplateRef<any>;
 	@ContentChild('orStickyFooter') readonly stickyFooterTemplate: TemplateRef<any>;
 	@Input() headerSize: string;
 	@Input() footerSize: string;
-	@HostBinding('class') @Input('class') hostClass: string;
-	nestedSize = '';
+	@HostBinding('class.sticky-lg') isMainStickyLarge = false;
+	@HostBinding('class.sticky-sm') isMainStickySmall = false;
+	nestedStickySize: string;
 
-	private static readonly acceptedSizes = ['sm', 'md', 'lg'];
-	private initialClass: string;
+	private static readonly SIZES = ['sm', 'md', 'lg'];
 
-	ngOnInit(): void {
-		this.initialClass = this.hostClass;
+	ngAfterViewInit() {
+		setTimeout(() => this.ngOnChanges());	// so that initial values are taken into account
 	}
 
 	ngOnChanges(): void {
-		if ((this.headerSize && StickyComponent.acceptedSizes.indexOf(this.headerSize) === -1)
-			|| (this.footerSize && StickyComponent.acceptedSizes.indexOf(this.footerSize) === -1)) {
-			throw new Error(`"${this.headerSize}" is not a valid size.Only "lg", "md" and "sm" are acceptable alternatives.`);
-		}
+		StickyComponent.validateSize(this.headerSize);
+		StickyComponent.validateSize(this.footerSize);
 
 		if (this.stickyHeaderTemplate) {
-			this.hostClass = this.setClassList(this.headerSize);
+			this.setMainStickySize(this.headerSize);
 			if (this.stickyFooterTemplate) {
-				this.nestedSize = 'sticky-' + this.footerSize;
+				this.nestedStickySize = 'sticky-' + this.footerSize;
 			}
 		} else if (this.stickyFooterTemplate) {
-			this.hostClass = this.setClassList(this.footerSize);
-		} else {
-			this.hostClass = this.setClassList();
+			this.setMainStickySize(this.footerSize);
 		}
 	}
 
-	private setClassList(size?: string): string {
-		const classList = ['sticky'];
-		if (size && size !== 'md') {
-			classList.push(`sticky-${size}`);
+	private static validateSize(size: string): void {
+		if (size && StickyComponent.SIZES.indexOf(size) === -1) {
+			throw new Error(`"${size}" is not a valid size.Only "lg", "md" and "sm" are acceptable alternatives.`);
 		}
-		if (this.initialClass) {
-			classList.unshift(this.initialClass);
-		}
-		return classList.join(' ');
+	}
+
+	private setMainStickySize(size: string): void {
+		this.isMainStickyLarge = size === 'lg';
+		this.isMainStickySmall = size === 'sm';
 	}
 }
