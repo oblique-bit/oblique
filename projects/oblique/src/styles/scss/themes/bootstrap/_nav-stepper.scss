@@ -1,0 +1,13 @@
+.modal-header {
+	.nav-stepper {
+		.nav-step {
+			margin-bottom: -1em;
+		}
+
+		// If a modal close button follows a `.nav-stepper`, ensure its margin does not break the
+		// `justify-content: space-between;` property of the enclosing `.modal-header`:
+		+ .close {
+			margin-left: (-1rem);
+		}
+	}
+}

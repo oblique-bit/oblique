@@ -3,9 +3,6 @@
 @import "../mixins/layout";
 @import "../mixins/stepper";
 
-$stepper-step-size: 30px;
-$stepper-border-width: 3px;
-
 .nav-stepper {
 	display: flex;
 	flex-direction: column;
@@ -13,23 +10,23 @@ $stepper-border-width: 3px;
 	list-style-type: none;
 	margin-bottom: 0;
 	padding-left: 0;
+	counter-reset: li-counter;
 
-	// Steps:
-	.nav-item {
+	.nav-step {
 		flex-basis: auto;
 		flex-grow: 1;
 		position: relative;
-		z-index: 0;
 
 		&:before {
-			z-index: 1;
-			font-weight: 900;
+			content: counter(li-counter);
+			counter-increment: li-counter;
 			text-align: center;
 			color: $brand-primary;
-			border: $stepper-border-width solid $brand-primary;
-			border-radius: 50%;
 			background-color: $white;
+			border: 1px solid $brand-primary;
+			border-radius: 50%;
 			box-shadow: 0 0 2px 2px $white;
+			z-index: 1;
 		}
 
 		&:after {
@@ -39,100 +36,116 @@ $stepper-border-width: 3px;
 			right: 0;
 			bottom: 0;
 			left: 0;
-			z-index: -1;
 			border-width: 0;
 			border-left-style: solid;
 			border-top-style: solid;
 			border-color: $brand-primary;
 		}
 
-		// States:
+		&:hover::before {
+			background-color: $brand-light;
+		}
+
 		&.active {
 			@include stepper-state($white, $brand-primary, $brand-primary);
 		}
 
-		&.disabled {
-			@include stepper-state($gray-light, $white, $gray-light);
-
-			&.active {
-				.nav-link {
-					color: inherit;
-				}
-			}
-		}
-
-		// Variants:
 		&.success {
-			@include stepper-state($brand-success, $white, $brand-success);
+			@include stepper-state($brand-success, $white, $brand-success, $brand-success-light, $fa-var-check);
 		}
 
-		&.warning {
-			@include stepper-state($brand-warning, $white, $brand-warning);
-		}
+		&.disabled {
+			@include stepper-state($gray-dark, $white, $gray-dark);
 
-		&.danger {
-			@include stepper-state($brand-error, $white, $brand-error);
-		}
-
-		// Feedback:
-		&.valid {
-			@include stepper-feedback($fa-var-check);
-		}
-
-		&.invalid {
-			@include stepper-feedback($fa-var-exclamation);
-		}
-
-		&.error {
-			@include stepper-feedback($fa-var-times);
-		}
-	}
-
-	.nav-link {
-		display: block;
-	}
-
-	@include stepper-variant($font-size-base, $stepper-step-size, $stepper-border-width);
-
-	&.nav-stepper-sm {
-		@include stepper-variant($font-size-sm, 24px, $stepper-border-width - 1);
-	}
-
-	&.nav-stepper-lg {
-		@include stepper-variant($font-size-xl, 80px, $stepper-border-width + 1);
-	}
-
-	// Ordered steps:
-	@at-root #{selector-append("ol", &)} {
-		counter-reset: li-counter;
-
-		.nav-item {
-			&:before {
-				content: counter(li-counter);
-				counter-increment: li-counter;
+			.step-link {
+				color: $gray-dark;
+				cursor: default;
 			}
 		}
-	}
 
-	// Labelled steps:
-	.nav-item[data-step-label] {
-		&:before {
+		&:not(.disabled) {
+			cursor: pointer;
+		}
+
+		&[data-step-label]::before {
 			content: attr(data-step-label);
 		}
 	}
-}
 
-// Contextual steppers:
-.modal-header {
-	.nav-stepper {
-		.nav-item {
-			margin-bottom: -1em;
+	.step-link {
+		display: block;
+		text-decoration: none;
+	}
+
+	&:not(.nav-stepper-sm):not(.nav-stepper-lg) {
+		@include stepper-variant($stepper-font-size, $stepper-size);
+	}
+
+	&.nav-stepper-sm {
+		@include stepper-variant($stepper-sm-font-size, $stepper-size-sm);
+	}
+
+	&.nav-stepper-lg {
+		@include stepper-variant($stepper-lg-font-size, $stepper-size-lg);
+	}
+
+	&:not(.nav-horizontal) .nav-step {
+		&::before {
+			position: absolute;
+			left: 0;
 		}
 
-		// If a modal close button follows a `.nav-stepper`, ensure its margin does not break the
-		// `justify-content: space-between;` property of the enclosing `.modal-header`:
-		+ .close {
-			margin-left: (-1rem);
+		&::after {
+			border-left-width: 1px;
+		}
+
+		&:not(:first-child) {
+			padding-top: $spacing-default;
+		}
+
+		&:not(:last-child) {
+			padding-bottom: $spacing-default;
+		}
+	}
+
+	&.nav-horizontal {
+		flex-direction: row;
+		text-align: center;
+
+		.nav-step {
+			flex-grow: 0;
+
+			&:not(:first-child) {
+				padding-left: $spacing-default;
+			}
+
+			&:not(:last-child) {
+				padding-right: $spacing-default;
+			}
+
+			&::before {
+				position: relative;
+				display: block;
+				margin: auto;
+			}
+
+			&::after {
+				border-top-width: 1px;
+			}
+
+			&:first-child::after {
+				left: 50%;
+			}
+
+			&:last-child::after {
+				right: 50%;
+			}
+		}
+
+		&.full-width {
+			.nav-step {
+				flex-grow: 1;
+			}
 		}
 	}
 }

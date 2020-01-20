@@ -1,0 +1,157 @@
+.nav-stepper {
+	.nav-step::before {
+		font-size: .85rem;
+		width: 30px;
+		height: 30px;
+		line-height: 24px;
+		border-width: 3px;
+	}
+
+	.step-link,
+	.step-title {
+		line-height: 30px;
+		font-size: 1rem;
+	}
+
+	&:not(.nav-horizontal) {
+		.nav-step {
+			padding-left: 36px !important;
+
+			&:not(:first-child) {
+				padding-top: 12px;
+			}
+
+			&:not(:last-child) {
+				padding-bottom: 12px;
+			}
+
+			&::after {
+				left: 13px;
+				border-left-width: 3px;
+			}
+		}
+	}
+
+	&.nav-horizontal {
+		.nav-step {
+			&:not(:first-child) {
+				padding-left: 15px;
+			}
+
+			&:not(:last-child) {
+				padding-right: 15px;
+			}
+
+			&::after {
+				top: 15px;
+				border-top-width: 3px;
+			}
+		}
+	}
+
+
+	&.nav-stepper-sm {
+		.nav-step::before {
+			font-size: .725rem;
+			width: 24px;
+			height: 24px;
+			line-height: 20px;
+			border-width: 2px;
+		}
+
+		.step-link,
+		.step-title {
+			line-height: 24px;
+			font-size: 0.875rem;
+		}
+
+		&:not(.nav-horizontal) {
+			.nav-step {
+				padding-left: 29px !important;
+
+				&:not(:first-child) {
+					padding-top: 10px;
+				}
+
+				&:not(:last-child) {
+					padding-bottom: 10px;
+				}
+
+				&::after {
+					left: 10px;
+					border-left-width: 2px;
+				}
+			}
+		}
+
+		&.nav-horizontal {
+			.nav-step {
+				&:not(:first-child) {
+					padding-left: 12px;
+				}
+
+				&:not(:last-child) {
+					padding-right: 12px;
+				}
+
+				&::after {
+					top: 12px;
+					border-top-width: 2px;
+				}
+			}
+		}
+	}
+
+
+	&.nav-stepper-lg {
+		.nav-step::before {
+			font-size: 1.5rem;
+			width: 80px;
+			height: 80px;
+			line-height: 72px;
+			border-width: 4px;
+		}
+
+		.step-link,
+		.step-title {
+			line-height: 80px;
+			font-size: 1.65rem;
+		}
+
+		&:not(.nav-horizontal) {
+			.nav-step {
+				padding-left: 96px !important;
+
+				&:not(:first-child) {
+					padding-top: 32px;
+				}
+
+				&:not(:last-child) {
+					padding-bottom: 32px;
+				}
+
+				&::after {
+					left: 38px;
+					border-left-width: 4px;
+				}
+			}
+		}
+
+		&.nav-horizontal {
+			.nav-step {
+				&:not(:first-child) {
+					padding-left: 30px;
+				}
+
+				&:not(:last-child) {
+					padding-right: 30px;
+				}
+
+				&::after {
+					top: 40px;
+					border-top-width: 4px;
+				}
+			}
+		}
+	}
+}
