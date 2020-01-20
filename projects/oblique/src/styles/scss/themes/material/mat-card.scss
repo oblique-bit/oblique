@@ -1,0 +1,62 @@
+@import "../../core/variables";
+@import 'projects/oblique/src/styles/scss/core/mixins/typography';
+
+.mat-card {
+	.mat-card-header {
+		min-height: 70px;
+
+		&:first-child {
+			padding-top: $spacing-xs;
+		}
+
+		.mat-card-title {
+			@include h5;
+			margin-bottom: 0;
+		}
+
+		.mat-card-subtitle {
+			&, &:not(:first-child) {
+				margin-top: 2px;
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.mat-card-avatar {
+		margin-top: $spacing-xs;
+		border-radius: 4px;
+	}
+
+	.mat-card-header-text:first-child {
+		margin-left: 0;
+	}
+
+	.mat-card-subtitle,
+	.mat-card-content {
+		@include body2;
+		color: $gray-dark;
+	}
+
+	.mat-card-actions {
+		text-align: right;
+	}
+
+	&.ob-selected {
+		background-color: $brand-extra-light;
+
+		&::before {
+			content: '\f00c';
+			position: absolute;
+			top: $spacing-sm;
+			right: $spacing-sm;
+			padding: $spacing-xs;
+			line-height: 1;
+			font-size: 16px;
+			font-family: $icon-font-family;
+			font-weight: 800;
+			color: $white;
+			background-color: $brand-primary;
+			border-radius: 50%;
+		}
+	}
+}
