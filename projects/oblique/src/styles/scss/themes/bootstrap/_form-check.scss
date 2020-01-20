@@ -133,7 +133,7 @@ $smallSize: 1.7273em;	//19px with a 11px basis
 		}
 
 		&:checked + .form-check-label::after {
-			font-family: 'Font Awesome 5 Free';
+			font-family: $icon-font-family;
 			font-weight: 900;
 			content: fa-content($fa-var-check);
 		}
