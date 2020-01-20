@@ -1,5 +1,7 @@
 import {NotificationType} from '../../notification/notification.module';
+import {Injectable} from '@angular/core';
 
+@Injectable()
 export class MockObliqueHttpInterceptorConfig {
 	api = {
 		url: '',

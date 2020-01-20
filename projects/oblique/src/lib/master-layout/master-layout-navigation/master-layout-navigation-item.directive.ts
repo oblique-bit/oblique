@@ -16,7 +16,7 @@ export class MasterLayoutNavigationItemDirective extends Unsubscribable implemen
 	@HostBinding('class.show')  public show = false;
 	@Output() onClose = new EventEmitter<void>();
 	@ContentChildren(MasterLayoutNavigationToggleDirective, {descendants: true}) $toggles: QueryList<MasterLayoutNavigationToggleDirective>;
-	@ContentChild(MasterLayoutNavigationMenuDirective, {static: false}) $menu: MasterLayoutNavigationMenuDirective;
+	@ContentChild(MasterLayoutNavigationMenuDirective) $menu: MasterLayoutNavigationMenuDirective;
 	@ContentChildren(MasterLayoutNavigationItemDirective, {descendants: true}) $items: QueryList<MasterLayoutNavigationItemDirective>;
 
 	constructor(private readonly masterLayout: MasterLayoutComponentService, private readonly element: ElementRef) {

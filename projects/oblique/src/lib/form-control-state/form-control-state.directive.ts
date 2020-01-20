@@ -21,7 +21,7 @@ export class FormControlStateDirective extends Unsubscribable implements AfterVi
 
 	@HostBinding('class.has-error') hasErrorClass = false;
 
-	@ContentChild(NgControl, {static: false}) ngControl: NgControl;
+	@ContentChild(NgControl) ngControl: NgControl;
 
 	private readonly form: NgForm | FormGroupDirective;
 	private readonly group: NgModelGroup | FormGroupName;

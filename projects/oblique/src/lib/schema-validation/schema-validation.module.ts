@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 
 import {SchemaValidationDirective} from './schema-validation.directive';
 import {SchemaValidateDirective} from './schema-validator';
@@ -9,6 +9,7 @@ import {SchemaValidationService} from './schema-validation.service';
 import {TelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {WINDOW, windowProvider} from '../utilities';
+
 
 export {SchemaValidationDirective} from './schema-validation.directive';
 export {SchemaValidateDirective} from './schema-validator';

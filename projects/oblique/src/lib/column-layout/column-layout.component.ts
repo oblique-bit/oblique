@@ -19,8 +19,8 @@ import {WINDOW} from '../utilities';
 export class ColumnLayoutComponent implements AfterViewInit {
 	@Input() left = true;
 	@Input() right = true;
-	@ViewChild('columnLeft', {static: false}) private readonly columnLeft: ColumnPanelDirective;
-	@ViewChild('columnRight', {static: false}) private readonly columnRight: ColumnPanelDirective;
+	@ViewChild('columnLeft') private readonly columnLeft: ColumnPanelDirective;
+	@ViewChild('columnRight') private readonly columnRight: ColumnPanelDirective;
 	@ViewChildren('columnToggle') private readonly toggles: QueryList<ElementRef>;
 	private readonly window: Window;
 

@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {TranslateModule} from '@ngx-translate/core';
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {TranslateParamsPipe} from './translate-params.pipe';
 import {TelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';

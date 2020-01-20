@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {TranslateModule} from '@ngx-translate/core';
 
 import {NotificationModule} from '../notification/notification.module';
@@ -23,7 +23,7 @@ import {MasterLayoutNavigationItemDirective} from './master-layout-navigation/ma
 import {MasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
 import {MasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
 import {MasterLayoutConfig, ScrollMode} from './master-layout.config';
-import {windowProvider, WINDOW} from '../utilities';
+import {WINDOW, windowProvider} from '../utilities';
 
 export {MasterLayoutComponent} from './master-layout/master-layout.component';
 export {MasterLayoutService} from './master-layout.service';

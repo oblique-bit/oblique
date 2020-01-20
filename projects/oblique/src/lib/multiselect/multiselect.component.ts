@@ -49,7 +49,8 @@ export class MultiselectComponent implements OnInit, OnDestroy, DoCheck, Control
 	@Input() labelFormatter: (option: any) => string;
 	@Input() titleProperty: string;
 	@Input() titleFormatter: (option: any) => string;
-	@Input() @HostBinding('id') idPrefix = 'multiselect';
+	@Input() idPrefix = 'multiselect';
+	@HostBinding('id') idContainer = `${this.idPrefix}-container`;
 
 	//Inputs that are initialized by the config
 	@Input() enableAllSelectedText;
@@ -65,12 +66,11 @@ export class MultiselectComponent implements OnInit, OnDestroy, DoCheck, Control
 	@Output() onAdded = new EventEmitter<any>();
 	@Output() onRemoved = new EventEmitter<any>();
 
-	@ViewChild('orFilterBox', {static: false}) filterBox: FilterBoxComponent;
+	@ViewChild('orFilterBox') filterBox: FilterBoxComponent;
 	@HostBinding('attr.count') get count(): number {
 		return this.options.length;
 	}
 
-	id: string;
 	model: any[] = [];
 	title: string;
 	titleTranslateParams: any = {};
@@ -133,8 +133,6 @@ export class MultiselectComponent implements OnInit, OnDestroy, DoCheck, Control
 		this.texts = Object.assign({}, this.multiselectTexts, this.texts);
 		this.title = this.texts.defaultTitle || '';
 		this.multiselectConfig.isIdUnique(this.idPrefix);
-		this.idPrefix = `${this.idPrefix}_0`;
-		this.id = `${this.idPrefix}-toggle`;
 	}
 
 	ngOnDestroy() {

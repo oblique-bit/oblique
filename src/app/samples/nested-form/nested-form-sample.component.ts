@@ -16,8 +16,8 @@ export class NestedFormSampleComponent {
 		child: undefined
 	};
 	material: Observable<boolean>;
-	@ViewChild(FormGroupDirective, {static: false}) reactiveForm: FormGroupDirective;
-	@ViewChild(NgForm, {static: false}) templateForm: NgForm;
+	@ViewChild(FormGroupDirective) reactiveForm: FormGroupDirective;
+	@ViewChild(NgForm) templateForm: NgForm;
 
 	constructor(private readonly fb: FormBuilder, private readonly notification: NotificationService, theme: ThemeService) {
 		this.parentForm = this.fb.group({

@@ -1,7 +1,7 @@
 <div [ngClass]="{'dropdown': !dropup, 'dropup': dropup}">
 	<button type="button" class="multiselect-toggle btn btn-secondary"
 			(click)="toggleDropdown()" [disabled]="disabled"
-			[ngClass]="{open: isVisible}" [id]="id">
+			[ngClass]="{open: isVisible}" [id]="idPrefix">
 		<span class="multiselect-label">
 			<span role="list" [class.sr-only]="model.length > dynamicTitleMaxItems" *ngIf="model.length">
 				<span class="list-item" role="listitem" *ngFor="let option of model">{{formatOptionForTitle(option)}}</span>

@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {TranslateModule} from '@ngx-translate/core';
 
 import {ColumnLayoutComponent} from './column-layout.component';
@@ -9,7 +9,7 @@ import {ColumnPanelDirective} from './column-panel.directive';
 
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {TelemetryService} from '../telemetry/telemetry.service';
-import {windowProvider, WINDOW} from '../utilities';
+import {WINDOW, windowProvider} from '../utilities';
 
 export {ColumnLayoutComponent} from './column-layout.component';
 
