@@ -108,7 +108,8 @@
 		list-style: none;
 
 		&:not(.header-locale) .control-item {
-			padding: $spacing-default;
+			padding-right: $spacing-default;
+			padding-left: $spacing-default;
 		}
 	}
 
