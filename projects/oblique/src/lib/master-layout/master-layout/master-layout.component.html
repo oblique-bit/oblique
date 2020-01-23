@@ -17,11 +17,9 @@
 	<ng-content select="[orLocales]" orLocales></ng-content>
 	<ng-content select="[orHeaderTitle]" orHeaderTitle></ng-content>
 	<ng-content select="[orNavigation]" orNavigation></ng-content>
-	<ng-container *ngFor="let template of headerControlTemplates">
-		<ng-template #orHeaderControl>
-			<ng-container [ngTemplateOutlet]="template"></ng-container>
-		</ng-template>
-	</ng-container>
+	<ng-template #orHeaderControl *ngFor="let template of headerControlTemplates">
+		<ng-container [ngTemplateOutlet]="template"></ng-container>
+	</ng-template>
 </or-master-layout-header>
 <div id="content" class="application-content" role="main" [class.offcanvas-main]="hasOffCanvas" tabindex="-1">
 	<div class="alert-compatibility default-layout">
@@ -53,11 +51,9 @@
 <or-master-layout-footer [class.offcanvas-main]="hasOffCanvas">
 	<ng-content select="[orFooter]" orFooter></ng-content>
 	<ng-content select="[orFooterInfo]" orFooterInfo></ng-content>
-	<ng-container *ngFor="let template of footerLinkTemplates">
-		<ng-template #orFooterLink>
-			<ng-container [ngTemplateOutlet]="template"></ng-container>
-		</ng-template>
-	</ng-container>
+	<ng-template #orFooterLink *ngFor="let template of footerLinkTemplates">
+		<ng-container [ngTemplateOutlet]="template"></ng-container>
+	</ng-template>
 </or-master-layout-footer>
 <div class="offcanvas-sidebar" *ngIf="hasOffCanvas">
 	<header class="offcanvas-header default-layout">
