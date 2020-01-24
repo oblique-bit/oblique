@@ -1,6 +1,75 @@
-# [5.0.0-alpha.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=5.0.0-alpha.1) (2019-12-23)
+# [5.0.0-alpha.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=5.0.0-alpha12) (2020-01-24)
+
 
 ### Bug Fixes
+
+* **error-messages:** emit an error as soon as possible ([0ce1924](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/0ce19241eec72b93ad0918f20d0b7c3ad1a2eb1a))
+* **master-layout:** add available languages to `TranslateService` ([66316d5](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/66316d52d4f273fa49e13e2d042840303f3b381b))
+* **master-layout:** ensure consistent header height ([32766d7](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/32766d7200cd13ca409c6e1df7bf79a4ca4cae8e))
+* **multi-translate-loader:** aot needs exported function ([1db4b4e](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/1db4b4ebf9ba405faee2fb3ec6b1ef7d37dd4882))
+* **multiselect:** apply given `idPrefix` to toggle button ([31f2e4a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/31f2e4a881a51da404706fa16119b4ec7f1258fb))
+* **multiselect:** remove `input` decorator on `disabled` property ([dc87d7b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/dc87d7bb4fb0bcc77440ae235edd6dc5887e41ff))
+* **notification:** cancel timeout when notification closes ([78f449b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/78f449b821a2b721beaada260d1a52e5b4098d92))
+* **search-box:** remove padding when collapsed ([8302da5](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/8302da59295e6404524c471cd8ee5ca9eaa1e786))
+* **sticky:** apply initial values and keep `sticky` class ([7bf7ba9](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/7bf7ba9246402c237621f51ed2c56fe220cc5caa))
+* **theme:** change `btn-link` color to `brand-primary` ([f7f4d6b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/f7f4d6b288b8966deb4348b24b06f133e2cda902))
+* **theme:** move `form-actions` class into core ([36561cc](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/36561cc7967a8b891ac47199790ef2ce1cc19066))
+* **toolchain:** ensure correct file order in `oblique-compat` ([3659e6e](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/3659e6e73c20e62dff45d26c1fc96d570bbdf4d2))
+* **toolchain:** ensure all components have external, non encapsulated, styles ([d448243](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/d448243ee8a17b61825d4a22e435bea47f30084e))
+* **toolchain:** include nested folders in `oblique-components` ([a6e47d6](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/a6e47d6719fe5afb77c2fcfe677d578043a5fe83))
+* **translate-params:** return non string parameters unchanged ([23bff42](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/23bff4261bc82ab367145643eb09f44cb5e029be))
+* **unknown-route:** do not alter `default-layout` ([a39f869](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/a39f8699487806b49fea6b7fc7d84687ad7514d8))
+
+## chore
+* **toolchain:** update to angular9.0.0-rc10 and refactor accordingly ([b81a4df](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/b81a4dfb503842ea90201cfc8d77e68ff5b58428))
+
+## Code Refactoring
+* **datepicker:** transform the component into a form element ([6235e97](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/6235e970964072042125cb472b684785d2b5c911))
+* **sticky:** move sticky-related CSS into `sticky` component ([724fbe5](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/724fbe571779c53cbbd3cbd4fecb2af26db46db6))
+
+## Features
+* **datepicker:** add size option ([7b35257](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/7b3525778e2266149b553ca422f0866f6b1acd63))
+* **datepicker:** improve error rendering ([ae0301c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/ae0301c1f148e8128db5af6c1bb052732ebd927e))
+* **datepicker:** improve outlined and selected day rendering ([5cd24c7](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/5cd24c73ab0e3fdb3ee6e9d94ba7f17fc7aa3ed3))
+* **datepicker:** mark as deprecated for `Material` ([18c7dc5](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/18c7dc5c07f574f246b95ac5829ced6cf5a5b9f0))
+* **error-messages:** the component supports nested forms ([c07346d](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/c07346d4cd4dc1d5b71c029b6eccbe268557d06e))
+* **form-control-state:** the component supports nested forms ([c61e834](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/c61e83496642091adf35c36bfd30380724c1c027))
+* **master-layout:** replace `isScrollable` with `scrollMode` ([de25521](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/de25521d4a37680c7ea8130dc1e46ac1cbe38719))
+* **master-layout:** shows oblique version number on `or-master-layout` ([77274f4](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/77274f4337fccbad17835b4d1045a1012eab856a))
+* **multi-translate-loader:** add custom loader for `TranslateModule` ([89d5078](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/89d507806a71706bfba29f0576fe350f6a39db51))
+* **nav-tree:** remove `pathPrefix` input ([33b097c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/33b097c80301d38b5beb2cb4f87ed46b097b6474))
+* **navigable:** mark as deprecated ([de0ecb1](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/de0ecb1b2a135c056176e4c7e4078e2f5e6592a2))
+* **navigator:** also depreciate the module ([e9c149c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/e9c149c0b5e916ef8b74aa0a861dce3f41144631))
+* **nested-form:** add feature ([2ea5ccf](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/2ea5ccf178aebc2803040333b3496ccad155c493))
+* **notification:** add message params in notification id ([8834e82](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/8834e82b36cdca361b4f849ecf9b3fac50aeaf41))
+* **pop-up:** add `PopUpService` ([ad16987](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/ad1698760fbba82334be83532615fe5d885b4796))
+* **theme:** add `hover-visible` class ([aeb2480](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/aeb2480a42d00d2090436a817380d89c6ce95509))
+* **theme:** add `oblique-compat.scss` ([5a0aa0c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/5a0aa0c0415eba7a56ec1f2a106971c7a48fe919))
+* **toolchain:** remove `test_helpers` ([15416d2](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/15416d2e40f84ed489449104bbe9bebf1ef03fbc))
+* **unknown-route:** add feature ([e65f90a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/e65f90acad86f528b2df6309e370f0eb2efd6284))
+* **utilities:** add configurable multi translation loader ([daf8dbb](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/daf8dbb485cf174b805e30349c2aa699cca02ed7))
+* **utilities:** add `WINDOW` InjectionToken for SSR compatibility ([a34eb41](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/a34eb41730dfb38aae0bfc761a79d3ccd4ef4e95))
+
+## BREAKING CHANGES
+* **sticky:** Sticky layouts built without the component need the `oblique-components.css` file
+* **multiselect:** id of `or-multiselect` component has been changed to `<idPrefix>-container` instead of `<idPrefix>`
+* **multiselect:** id of multiselect toggle has been changed to `<idPrefix>` instead of `<idPrefix>-toggle`
+* **multiselect:** `id` property has been removed in favor of `idPrefix`
+* **multiselect:** `_0` is removed from `idPrefix`
+* **toolchain:** localize is now a peer dependency: `ng add @angular/localize`
+* **datepicker:** content projection has been removed, the aspect is now immutable
+* **datepicker:** some `ngbDatePicker` properties are not accessible anymore, see API for more info
+* **datepicker:** some `ngbDatePicker` properties can be set through the `options` input, see API for more info
+* **datepicker:** some `ngbDatePicker` properties can be set through inputs, see API for more info
+* **datepicker:** default navigation has been set to `select` instead of `arrows`
+* **datepicker:** `forRoot` method has been removed with no replacement. It is not useful anymore
+* **nav-tree:** `pathPrefix` input has been removed with no replacement. It was without effect anyway
+* **toolchain:** `test_helpers` directory have been removed in favor of `ObliqueTestingModule`
+
+
+# [5.0.0-alpha.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=5.0.0-alpha.1) (2019-12-23)
+
+## Bug Fixes
 * **error-messages:** emit an error as soon as possible ([0ce1924](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/0ce1924))
 * **master-layout:** add available languages to `TranslateService` ([66316d5](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/66316d5))
 * **multiselect:** remove `input` decorator on `disabled` property ([dc87d7b](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/dc87d7b))
@@ -11,10 +80,10 @@
 * **toolchain:** include nested folders in `oblique-components` ([a6e47d6](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/a6e47d6))
 * **translate-params:** return non string parameters unchanged ([23bff42](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/23bff42))
 
-### Code Refactoring
+## Code Refactoring
 * **datepicker:** transform the component into a form element ([6235e97](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/6235e97))
 
-### Features
+## Features
 * **datepicker:** add size option ([7b35257](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/7b35257))
 * **datepicker:** improve error rendering ([ae0301c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/ae0301c))
 * **datepicker:** improve outlined and selected day rendering ([5cd24c7](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/5cd24c7))
@@ -32,7 +101,7 @@
 * **toolchain:** remove `test_helpers` ([15416d2](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/15416d2))
 * **unknown-route:** add feature ([e65f90a](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/e65f90a))
 
-### BREAKING CHANGES
+## BREAKING CHANGES
 * **datepicker:** content projection has been removed
 * **datepicker:** some `ngbDatePicker` properties are not accessible anymore
 * **datepicker:** some `ngbDatePicker` properties can be set through the `options` input
@@ -51,7 +120,7 @@
 
 # [4.1.0](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.1.0) (2019-10-15)
 
-### Bug Fixes
+## Bug Fixes
 * **http-interceptor:** pass `sticky` parameter to notification ([88444f2](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/88444f2))
 * **multiselect:** throw error with duplicate `id`s ([c1ac9e1](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c1ac9e1))
 * **notification:** use provided `sticky` value even if it's `false` ([df0ce69](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/df0ce69))
@@ -60,7 +129,7 @@
 * **theme:** fix icon position on datepicker for MD ([0f9d457](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/0f9d457))
 * **theme:** use relative font size for typography ([2c699f2](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/2c699f2))
 
-### Features
+## Features
 * **error-messages:** add directive to show errors with MD ([f58bbb5](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/f58bbb5))
 * **http-interceptor:** add helper functions to tweak the interceptor ([2dd5a89](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/2dd5a89))
 * **multiselect:** add `count` property ([bd9b7a1](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/bd9b7a1))
@@ -78,7 +147,7 @@
 
 # [4.0.3](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=4.0.3) (2019-09-25)
 
-# Bug Fixes
+## Bug Fixes
 * **column-layout:** do not use `unset` CSS value (IE11) ([beb1b92](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/beb1b92))
 * **dropdown:** better align the bubble-tail ([c0d3db3](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/c0d3db3))
 * **dropdown:** do not use `unset` CSS value (IE11) ([4741130](https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/commits/4741130))
