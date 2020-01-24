@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, HostBinding, HostListener, Inject, Input, OnInit, Renderer2, ViewChild, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer2, ViewChild, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
 import {filter, takeUntil} from 'rxjs/operators';
 
@@ -61,7 +61,6 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 
 	@HostListener('window:resize')
 	onResize() {
-		console.log('resize');
 		this.masterLayout.navigation.refresh();
 	}
 
@@ -95,15 +94,17 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 	}
 
 	private refresh(): void {
-		const scrollMode = this.masterLayout.navigation.scrollMode;
-		if (this.nav && scrollMode !== ScrollMode.DISABLED) {
-			const childWidth = Array.from(this.nav.children).reduce((total, el: HTMLElement) => total + el.clientWidth, 0);
-			this.maxScroll = Math.max(0, -(this.nav.clientWidth - childWidth - 2 * MasterLayoutNavigationComponent.buttonWidth));
-			this.isScrollable = scrollMode === ScrollMode.ENABLED ? true : childWidth > this.nav.clientWidth;
-		} else {
-			this.isScrollable = false;
+		if (this.nav) {
+			const scrollMode = this.masterLayout.navigation.scrollMode;
+			if (scrollMode !== ScrollMode.DISABLED) {
+				const childWidth = Array.from(this.nav.children).reduce((total, el: HTMLElement) => total + el.clientWidth, 0);
+				this.maxScroll = Math.max(0, -(this.nav.clientWidth - childWidth - 2 * MasterLayoutNavigationComponent.buttonWidth));
+				this.isScrollable = scrollMode === ScrollMode.ENABLED ? true : childWidth > this.nav.clientWidth;
+			} else {
+				this.isScrollable = false;
+			}
+			this.updateScroll(this.isScrollable ? 0 : -this.currentScroll);
 		}
-		this.updateScroll(this.isScrollable ? 0 : -this.currentScroll);
 	}
 
 	private updateScroll(delta: number): void {
