@@ -210,8 +210,17 @@ function generateComponentsStyles(dir: string[], component: string): void {
 	fs.readdirSync(path.join(...dir)).forEach(file => {
 		if (fs.statSync(path.join(...dir, file)).isDirectory()) {
 			generateComponentsStyles([...dir, file], component);
-		} else if (file.endsWith('scss')) {
-			fs.appendFileSync(component, `@import "${dir.join('/')}/${file}";\n`);
+		} else if (file.endsWith('ts')) {
+			const content = fs.readFileSync(path.join(...dir, file), 'utf8').replace(/\s/g, '');
+			const stylePattern = /styleUrls:(\[(.*?)\]){1}/;
+			const result = content.match(stylePattern);
+			if ( result ) {
+				const styleUrls = JSON.parse(result[0].replace('styleUrls:', '').replace(/'/g, '"').trim());
+				styleUrls.filter(url => url.indexOf('..') === -1)
+				.map(url => url.replace(/.\//g, ''))
+				.map(url => `${dir.join('/')}/${url}`)
+				.forEach(stylePath => fs.appendFileSync(component, `@import "${stylePath}";\n`));
+			}
 		}
 	});
 }
