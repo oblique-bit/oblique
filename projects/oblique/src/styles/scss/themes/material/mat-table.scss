@@ -1,29 +1,55 @@
 @import "../../core/variables";
 
-.table {
-	tr.mat-row,
-	tr.mat-header-row,
-	tr.mat-footer-row {
-		height: auto;
-	}
-
-	td.mat-cell,
-	td.mat-footer-cell,
-	th.mat-header-cell {
-		font-size: inherit;
-		padding: $spacing-sm !important;
-
-		@at-root #{selector-append(".table-sm", &)} {
-			padding: $spacing-xs !important;
+.mat-table {
+	&.table {
+		.mat-row,
+		.mat-header-row,
+		.mat-footer-row {
+			height: auto;
+			min-height: auto;
 		}
 
-		@at-root #{selector-append(".table-lg", &)} {
-			padding: $spacing-md !important;
+		.mat-cell,
+		.mat-footer-cell,
+		.mat-header-cell {
+			font-size: inherit;
+			padding: $spacing-sm;
+
+			@at-root #{selector-append(".table-sm", &)} {
+				padding: $spacing-xs;
+			}
+
+			@at-root #{selector-append(".table-lg", &)} {
+				padding: $spacing-default;
+			}
+		}
+
+		@at-root #{selector-append("mat-table", &)}:not(.table-plain) .mat-row:nth-child(odd) {
+			background-color: $gray-extra-light;
 		}
 	}
 
+	.mat-header-row {
+		button, .mat-sort-header-arrow {
+			color: $black;
+			font-size: 14px;
+		}
+	}
+
+	.mat-cell,
 	.mat-header-cell,
-	.mat-footer-cell {
-		color: $brand-default;
+	.mat-footer-cell,
+	.mat-row,
+	.mat-header-row,
+	.mat-footer-row {
+		border-color: $gray;
+
+		.mat-cell {
+			color: $gray-dark;
+		}
+	}
+
+	.mat-row:hover {
+		background-color: $brand-extra-light;
 	}
 }
