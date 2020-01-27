@@ -30,13 +30,13 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 	@Input() links: ORNavigationLink[] = [];
 	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') isScrollable: boolean;
 	private static readonly buttonWidth = 30;
-	@ViewChild('container') private readonly container: ElementRef;
 	private nav: HTMLElement;
 
 	constructor(private readonly router: Router,
 				private readonly masterLayout: MasterLayoutService,
 				private readonly config: MasterLayoutConfig,
-				private readonly renderer: Renderer2
+				private readonly renderer: Renderer2,
+				private readonly el: ElementRef
 	) {
 		super();
 
@@ -49,10 +49,8 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 	}
 
 	ngAfterViewInit() {
-		if (!this.nav) {
-			this.nav = this.container.nativeElement.previousElementSibling;
-			this.masterLayout.navigation.scrolled.pipe(takeUntil(this.unsubscribe)).subscribe((offset) => this.updateScroll(offset));
-		}
+		this.nav = this.el.nativeElement.querySelector('.main-nav:not(.sub-nav)');
+		this.masterLayout.navigation.scrolled.pipe(takeUntil(this.unsubscribe)).subscribe((offset) => this.updateScroll(offset));
 	}
 
 	isActive(url: string): boolean {

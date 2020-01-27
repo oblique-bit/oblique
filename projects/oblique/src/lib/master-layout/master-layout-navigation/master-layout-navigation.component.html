@@ -3,40 +3,38 @@
 		[disabled]="!currentScroll">
 	<span class="fa fa-angle-left"></span>
 </button>
-<ng-container #container>
-	<ng-content *ngIf="!links.length"></ng-content>
-	<ul id="navigation" role="menubar" *ngIf="links.length" class="main-nav" [class.navigation-scrollable-content]="isScrollable"
-		[class.main-nav-fw]="isFullWidth" tabindex="-1">
-		<li class="main-nav-item" role="presentation" orMasterLayoutNavigationItem *ngFor="let link of links">
-			<a [attr.id]="link.id" role="menuitem" [routerLink]="link.url" [routerLinkActive]="activeClass" orMasterLayoutNavigationToggle
-			   *ngIf="!link.children">
-				{{link.label | translate}}
+<ng-content *ngIf="!links.length"></ng-content>
+<ul id="navigation" role="menubar" *ngIf="links.length" class="main-nav" [class.navigation-scrollable-content]="isScrollable"
+	[class.main-nav-fw]="isFullWidth" tabindex="-1">
+	<li class="main-nav-item" role="presentation" orMasterLayoutNavigationItem *ngFor="let link of links">
+		<a [attr.id]="link.id" role="menuitem" [routerLink]="link.url" [routerLinkActive]="activeClass" orMasterLayoutNavigationToggle
+		   *ngIf="!link.children">
+			{{link.label | translate}}
+		</a>
+		<ng-container *ngIf="link.children">
+			<a [attr.id]="link.id" role="button" tabindex="0" [class.active]="isActive(link.url)" orMasterLayoutNavigationToggle>
+				<span>{{link.label | translate}}</span>
+				<span class="toggle"></span>
 			</a>
-			<ng-container *ngIf="link.children">
-				<a [attr.id]="link.id" role="button" tabindex="0" [class.active]="isActive(link.url)" orMasterLayoutNavigationToggle>
-					<span>{{link.label | translate}}</span>
-					<span class="toggle"></span>
-				</a>
-				<div class="sub-menu" role="menu" orMasterLayoutNavigationMenu>
-					<ul class="main-nav sub-nav">
-						<li role="presentation">
-							<a class="sub-menu-back" role="button" orMasterLayoutNavigationToggle tabindex="0">
-								<span class="toggle"></span>
-								<span class="label">{{link.label | translate}}</span>
-							</a>
-						</li>
-						<li role="presentation" orMasterLayoutNavigationItem *ngFor="let child of link.children">
-							<a role="menuitem" [attr.id]="child.id" [routerLink]="link.url + '/' + child.url" [routerLinkActive]="activeClass"
-							   orMasterLayoutNavigationToggle>
-								{{child.label | translate}}
-							</a>
-						</li>
-					</ul>
-				</div>
-			</ng-container>
-		</li>
-	</ul>
-</ng-container>
+			<div class="sub-menu" role="menu" orMasterLayoutNavigationMenu>
+				<ul class="main-nav sub-nav">
+					<li role="presentation">
+						<a class="sub-menu-back" role="button" orMasterLayoutNavigationToggle tabindex="0">
+							<span class="toggle"></span>
+							<span class="label">{{link.label | translate}}</span>
+						</a>
+					</li>
+					<li role="presentation" orMasterLayoutNavigationItem *ngFor="let child of link.children">
+						<a role="menuitem" [attr.id]="child.id" [routerLink]="link.url + '/' + child.url" [routerLinkActive]="activeClass"
+						   orMasterLayoutNavigationToggle>
+							{{child.label | translate}}
+						</a>
+					</li>
+				</ul>
+			</div>
+		</ng-container>
+	</li>
+</ul>
 <button class="navigation-scrollable-control navigation-scrollable-control-right" (click)="scrollRight()" type="button"
 		*ngIf="isScrollable" [disabled]="currentScroll === maxScroll">
 	<span class="fa fa-angle-right"></span>
