@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {TranslateModule} from '@ngx-translate/core';
 
 import {NotificationModule} from '../notification/notification.module';
@@ -11,7 +12,6 @@ import {OffCanvasModule} from '../off-canvas/off-canvas.module';
 import {ThemeService} from '../theme/theme.service';
 import {TelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
-
 import {MasterLayoutComponent} from './master-layout/master-layout.component';
 import {MasterLayoutService} from './master-layout.service';
 import {MasterLayoutHeaderComponent} from './master-layout-header/master-layout-header.component';
@@ -57,6 +57,7 @@ export {MasterLayoutConfig, ScrollMode} from './master-layout.config';
 	],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+		{provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
 	exports: [

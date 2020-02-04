@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
 import {ColumnLayoutModule} from './column-layout/column-layout.module';
 import {DocumentMetaModule} from './document-meta/document-meta.module';
@@ -66,6 +67,7 @@ const OBLIQUE_MODULES = [
 	imports: OBLIQUE_MODULES,
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+		{provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
 	exports: OBLIQUE_MODULES
