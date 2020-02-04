@@ -1,0 +1,16 @@
+{
+  "$schema": "./node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "migrate": {
+      "description": "Upgrade to Oblique 5",
+      "factory": "./index/ng-update/index#initalize",
+      "schema": "./index/ng-update/update-schema.json"
+    },
+    "migrate-4-to-5": {
+      "description": "Upgrade to Oblique 5",
+      "version": "5",
+      "factory": "./index/ng-update/index#initalize",
+      "schema": "./index/ng-update/update-schema.json"
+    }
+  }
+}
