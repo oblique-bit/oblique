@@ -39,7 +39,8 @@
     "lib": "npm run build -- oblique --watch",
     "start": "ng serve",
     "build": "npm run gulp themes && ng build",
-    "dist": "npm run build -- oblique",
+    "schematics": "npm run dist --prefix projects/oblique/schematics",
+    "dist": "npm run build -- oblique && npm run schematics",
     "postdist": "npm run gulp -- dist",
     "test": "ng test oblique",
     "lint": "ng lint oblique",
@@ -114,6 +115,7 @@
     "protractor": "^5.4.2",
     "ts-node": "^8.6.0",
     "tslint": "^5.20.1",
-    "typescript": "~3.6.4"
+    "typescript": "~3.6.4",
+    "cpx": "^1.5.0"
   }
 }

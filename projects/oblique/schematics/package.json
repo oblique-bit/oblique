@@ -1,6 +1,6 @@
 {
   "name": "@oblique/schematics",
-  "version": "5.0.0-alpha.2",
+  "version": "5.0.0",
   "description": "Oblique schematics",
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
@@ -20,10 +20,8 @@
   "dependencies": {
     "@angular-devkit/core": "^8.3.23",
     "@angular-devkit/schematics": "^8.3.23",
-    "@types/jasmine": "^3.3.9",
     "@types/node": "^8.0.31",
     "cpx": "^1.5.0",
-    "jasmine": "^3.3.1",
     "typescript": "~3.5.3"
   }
 }
