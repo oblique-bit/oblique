@@ -57,6 +57,7 @@ const distCss = () => {
 	return gulp.src(paths.dist + 'styles/css/*')
 		.pipe(header(banner(meta)))
 		.pipe(replace('~@fortawesome/fontawesome-free/webfonts', '~@oblique/oblique/styles/fonts'))
+		.pipe(replace('../../../styles/images/cover-background.jpg', '../images/cover-background.jpg'))
 		.pipe(gulp.dest(paths.dist + 'styles/css'));
 };
 
