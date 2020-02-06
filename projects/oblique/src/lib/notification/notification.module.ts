@@ -13,7 +13,7 @@ import {WINDOW, windowProvider} from '../utilities';
 export {NotificationComponent} from './notification.component';
 export {NotificationService} from './notification.service';
 export {NotificationConfig, CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE, GROUP_SIMILAR_NOTIFICATIONS} from './notification.config';
-export {KeyWithParams, INotification, NotificationType} from './notification.interfaces';
+export {INotification, NotificationType} from './notification.interfaces';
 
 @NgModule({
 	imports: [

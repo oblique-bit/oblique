@@ -24,12 +24,6 @@ export interface INotificationConfig {
 	groupSimilar?: boolean;
 }
 
-// @deprecated, will be removed in v5.0.0
-export interface KeyWithParams {
-	key: string;
-	params: { [key: string]: any };
-}
-
 export enum NotificationType {
 	INFO = 'info',
 	SUCCESS = 'success',

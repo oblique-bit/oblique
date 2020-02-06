@@ -57,8 +57,7 @@ export {
 	NotificationModule,
 	NotificationService,
 	NotificationType,
-	INotification,
-	KeyWithParams
+	INotification
 } from './lib/notification/notification.module';
 export {NumberFormatDirective, NumberFormatModule} from './lib/number-format/number-format.module';
 export {
