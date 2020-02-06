@@ -1,8 +1,20 @@
+# [5.0.0-alpha.3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/compare/5.0.0-alpha.2...5.0.0-alpha.3) (2020-02-06)
+
+## Bug Fixes
+* **master-layout:** do not refresh the navigation if there is none ([82090e2](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/82090e21ff1b28174c4c6e39585a9a3ee329e618))
+* **toolchain:** export `ObliqueTestingModule` in `public_api` ([99e64d0](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/99e64d0c8772b5b3566b9515f9e5e043c4d8775f))
+
+## Features
+* **chore(toolchain)** set up schematics ([1deb5cc](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/1deb5cc27f123a5379f648bb00b4d326b21fc58a))
+* **notification:** remove obsolete `KeyWithParams` interface ([6ea60ed](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/6ea60ed6aaac0090f9b8060b3ac10ff4a4fa3efd))
+
+## BREAKING CHANGES
+* **notification:** `KeyWithParams` interface has been dropped in favor of `INotification`
+
+
 # [5.0.0-alpha.2](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=5.0.0-alpha12) (2020-01-24)
 
-
-### Bug Fixes
-
+## Bug Fixes
 * **error-messages:** emit an error as soon as possible ([0ce1924](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/0ce19241eec72b93ad0918f20d0b7c3ad1a2eb1a))
 * **master-layout:** add available languages to `TranslateService` ([66316d5](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/66316d52d4f273fa49e13e2d042840303f3b381b))
 * **master-layout:** ensure consistent header height ([32766d7](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/32766d7200cd13ca409c6e1df7bf79a4ca4cae8e))
