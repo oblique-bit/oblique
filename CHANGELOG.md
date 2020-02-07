@@ -1,3 +1,10 @@
+# [5.0.0-alpha.4](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/compare/5.0.0-alpha.3...5.0.0-alpha.4) (2020-02-07)
+
+## Bug Fixes
+* **theme:** fix cover layout background image path ([ffed67d](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/ffed67d53f3e0424859144ba737e2af3281db4ee))
+* **toolchain:** add schematics build ([401b194](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/401b194c9fc90d8510aa00c7bcebebcd79df4dd1))
+
+
 # [5.0.0-alpha.3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/compare/5.0.0-alpha.2...5.0.0-alpha.3) (2020-02-06)
 
 ## Bug Fixes
