@@ -26,6 +26,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatTabsModule} from '@angular/material/tabs';
 import {ColumnLayoutModule, ObSelectableModule, TextControlClearModule} from 'oblique';
 import {CardComponent} from './card/card.component';
 import {ChipsComponent} from './chips/chips.component';
@@ -39,6 +40,7 @@ import {TableComponent} from './table/table.component';
 import {TooltipComponent} from './tooltip/tooltip.component';
 import {StepperVerticalComponent} from './stepper-vertical/stepper-vertical.component';
 import {StepperHorizontalComponent} from './stepper-horizontal/stepper-horizontal.component';
+import {TabsComponent} from './tabs/tabs.component';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: BadgeComponent},
@@ -52,6 +54,7 @@ const appRoutes: Routes = [
 	{path: 'stepper-vertical', component: StepperVerticalComponent},
 	{path: 'table', component: TableComponent},
 	{path: 'tooltip', component: TooltipComponent},
+	{path: 'tabs', component: TabsComponent},
 	{path: '', redirectTo: 'card', pathMatch: 'full'}
 ];
 
@@ -67,6 +70,7 @@ const appRoutes: Routes = [
 		SliderComponent,
 		StepperHorizontalComponent,
 		StepperVerticalComponent,
+		TabsComponent,
 		TableComponent,
 		TooltipComponent
 	],
@@ -100,6 +104,7 @@ const appRoutes: Routes = [
 		MatSortModule,
 		MatStepperModule,
 		MatTableModule,
+		MatTabsModule,
 		MatTooltipModule,
 		CdkTableModule
 	]

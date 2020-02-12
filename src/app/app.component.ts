@@ -49,6 +49,7 @@ export class AppComponent {
 				{url: 'lists', label: 'Lists'},
 				{url: 'table', label: 'HTML table'},
 				{url: 'stepper', label: 'HTML Stepper'},
+				{url: 'tabs', label: 'HTML tabs'},
 				{url: 'palette', label: 'Palette'}
 			]
 		},
@@ -69,6 +70,7 @@ export class AppComponent {
 				{url: 'stepper-horizontal', label: 'Stepper horizontal'},
 				{url: 'stepper-vertical', label: 'Stepper vertical'},
 				{url: 'table', label: 'Table'},
+				{url: 'tabs', label: 'Tabs'},
 				{url: 'tooltip', label: 'Tooltip'}
 			]
 		}
