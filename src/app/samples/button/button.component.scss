@@ -1,3 +1,9 @@
+@import "../../../../projects/oblique/src/styles/scss/core/variables";
+
 td {
 	vertical-align: middle;
+}
+
+.fas {
+	margin-right: $spacing-sm;
 }

@@ -4,13 +4,9 @@
 			<thead>
 			<tr>
 				<th></th>
-				<th>Default</th>
-				<th>Raised</th>
-				<th>Stroked</th>
-				<th>Flat</th>
-				<th>Icon</th>
-				<th>Fab</th>
-				<th>Mini fab</th>
+				<th>Primary</th>
+				<th>Secondary</th>
+				<th>Tertiary</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -19,127 +15,27 @@
 					<label>Default</label>
 				</td>
 				<td>
-					<button mat-button>Default</button>
+					<button mat-flat-button color="primary">Primary</button>
 				</td>
 				<td>
-					<button mat-raised-button>Raised</button>
+					<button mat-stroked-button color="primary">Secondary</button>
 				</td>
 				<td>
-					<button mat-stroked-button>Stroked</button>
-				</td>
-				<td>
-					<button mat-flat-button>Flat</button>
-				</td>
-				<td>
-					<button mat-icon-button>
-						<mat-icon>favorite</mat-icon>
-					</button>
-				</td>
-				<td>
-					<button mat-fab>
-						<mat-icon>favorite</mat-icon>
-					</button>
-				</td>
-				<td>
-					<button mat-mini-fab>
-						<mat-icon>favorite</mat-icon>
-					</button>
+					<button mat-button color="primary">Tertiary</button>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<label>Primary</label>
+					<label>Icon</label>
 				</td>
 				<td>
-					<button mat-button color="primary">Default</button>
+					<button mat-flat-button color="primary"><span class="fas fa-sign-in-alt"></span>Primary</button>
 				</td>
 				<td>
-					<button mat-raised-button color="primary">Raised</button>
+					<button mat-stroked-button color="primary"><span class="fas fa-sign-in-alt"></span>Secondary</button>
 				</td>
 				<td>
-					<button mat-stroked-button color="primary">Stroked</button>
-				</td>
-				<td>
-					<button mat-flat-button color="primary">Flat</button>
-				</td>
-				<td>
-					<button mat-icon-button color="primary">
-						<mat-icon>favorite</mat-icon>
-					</button>
-				</td>
-				<td>
-					<button mat-fab color="primary">
-						<mat-icon>favorite</mat-icon>
-					</button>
-				</td>
-				<td>
-					<button mat-mini-fab color="primary">
-						<mat-icon>favorite</mat-icon>
-					</button>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label>Accent</label>
-				</td>
-				<td>
-					<button mat-button color="accent">Default</button>
-				</td>
-				<td>
-					<button mat-raised-button color="accent">Raised</button>
-				</td>
-				<td>
-					<button mat-stroked-button color="accent">Stroked</button>
-				</td>
-				<td>
-					<button mat-flat-button color="accent">Flat</button>
-				</td>
-				<td>
-					<button mat-icon-button color="accent">
-						<mat-icon>favorite</mat-icon>
-					</button>
-				</td>
-				<td>
-					<button mat-fab color="accent">
-						<mat-icon>favorite</mat-icon>
-					</button>
-				</td>
-				<td>
-					<button mat-mini-fab color="accent">
-						<mat-icon>favorite</mat-icon>
-					</button>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label>Warning</label>
-				</td>
-				<td>
-					<button mat-button color="warn">Default</button>
-				</td>
-				<td>
-					<button mat-raised-button color="warn">Raised</button>
-				</td>
-				<td>
-					<button mat-stroked-button color="warn">Stroked</button>
-				</td>
-				<td>
-					<button mat-flat-button color="warn">Flat</button>
-				</td>
-				<td>
-					<button mat-icon-button color="warn">
-						<mat-icon>favorite</mat-icon>
-					</button>
-				</td>
-				<td>
-					<button mat-fab color="warn">
-						<mat-icon>favorite</mat-icon>
-					</button>
-				</td>
-				<td>
-					<button mat-mini-fab color="warn">
-						<mat-icon>favorite</mat-icon>
-					</button>
+					<button mat-button color="primary"><span class="fas fa-sign-in-alt"></span>Tertiary</button>
 				</td>
 			</tr>
 			<tr>
@@ -147,63 +43,13 @@
 					<label>Disabled</label>
 				</td>
 				<td>
-					<button mat-button disabled>Default</button>
+					<button mat-flat-button color="primary" disabled>Primary</button>
 				</td>
 				<td>
-					<button mat-raised-button disabled>Raised</button>
+					<button mat-stroked-button color="primary" disabled>Secondary</button>
 				</td>
 				<td>
-					<button mat-stroked-button disabled>Stroked</button>
-				</td>
-				<td>
-					<button mat-flat-button disabled>Flat</button>
-				</td>
-				<td>
-					<button mat-icon-button disabled>
-						<mat-icon>favorite</mat-icon>
-					</button>
-				</td>
-				<td>
-					<button mat-fab disabled>
-						<mat-icon>favorite</mat-icon>
-					</button>
-				</td>
-				<td>
-					<button mat-mini-fab disabled>
-						<mat-icon>favorite</mat-icon>
-					</button>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label>Link</label>
-				</td>
-				<td>
-					<a mat-button routerLink=".">Default</a>
-				</td>
-				<td>
-					<a mat-raised-button routerLink=".">Raised</a>
-				</td>
-				<td>
-					<a mat-stroked-button routerLink=".">Stroked</a>
-				</td>
-				<td>
-					<a mat-flat-button routerLink=".">Flat</a>
-				</td>
-				<td>
-					<a mat-icon-button routerLink=".">
-						<mat-icon>favorite</mat-icon>
-					</a>
-				</td>
-				<td>
-					<a mat-fab routerLink=".">
-						<mat-icon>favorite</mat-icon>
-					</a>
-				</td>
-				<td>
-					<a mat-mini-fab routerLink=".">
-						<mat-icon>favorite</mat-icon>
-					</a>
+					<button mat-button color="primary" disabled>Tertiary</button>
 				</td>
 			</tr>
 			</tbody>
@@ -322,6 +168,7 @@
 				</td>
 			</tr>
 			</tbody>
+
 		</ng-template>
 	</table>
 </div>
