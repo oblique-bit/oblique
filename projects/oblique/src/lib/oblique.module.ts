@@ -18,6 +18,7 @@ import {ObliqueHttpModule} from './http/oblique-http.module';
 import {SchemaValidationModule} from './schema-validation/schema-validation.module';
 import {ScrollingModule} from './scrolling/scrolling.module';
 import {SpinnerModule} from './spinner/spinner.module';
+import {ObSelectableModule} from './selectable/selectable.module';
 import {TextControlClearModule} from './text-control-clear/text-control-clear.module';
 import {ToggleModule} from './toggle/toggle.module';
 import {TranslateParamsModule} from './translate-params/translate-params.module';
@@ -51,6 +52,7 @@ const OBLIQUE_MODULES = [
 	SchemaValidationModule,
 	ScrollingModule,
 	SearchBoxModule,
+	ObSelectableModule,
 	SpinnerModule,
 	StickyModule,
 	TextControlClearModule,

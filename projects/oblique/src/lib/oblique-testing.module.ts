@@ -23,6 +23,7 @@ import {MockObliqueHttpModule} from './http/mock/mock-oblique-http.module';
 import {MockOffCanvasModule} from './off-canvas/mock/mock-off-canvas.module';
 import {MockPopUpModule} from './pop-up/_mock/mock-pop-up.module';
 import {MockSchemaValidationModule} from './schema-validation/mock/mock-schema-validation.module';
+import {MockObSelectableModule} from './selectable/mock/mock-selectable.module';
 import {MockScrollingModule} from './scrolling/mock/mock-scrolling.module';
 import {MockSpinnerModule} from './spinner/mock/mock-spinner.module';
 import {MockStickyModule} from './sticky/mock/mock-sticky.module';
@@ -86,6 +87,7 @@ export {
 export {
 	MockSchemaValidationModule, MockSchemaRequiredDirective, MockSchemaValidateDirective, MockSchemaValidationDirective, MockSchemaValidationService
 } from './schema-validation/mock/mock-schema-validation.module';
+export {MockSelectableDirective, MockSelectableService} from './selectable/mock/mock-selectable.module';
 export {MockScrollingModule, MockScrollingEvents, MockTopControlComponent} from './scrolling/mock/mock-scrolling.module';
 export {MockSpinnerModule, MockSpinnerComponent, MockSpinnerService} from './spinner/mock/mock-spinner.module';
 export {MockStickyModule, MockStickyComponent} from './sticky/mock/mock-sticky.module';
@@ -119,6 +121,7 @@ const MOCK_OBLIQUE_MODULES = [
 	MockSchemaValidationModule,
 	MockScrollingModule,
 	MockSearchBoxModule,
+	MockObSelectableModule,
 	MockSpinnerModule,
 	MockStickyModule,
 	MockTelemetryModule,
