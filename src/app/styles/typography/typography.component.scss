@@ -1,0 +1,24 @@
+@import '../../../../projects/oblique/src/styles/scss/core/mixins/typography';
+@import '../../../../projects/oblique/src/styles/scss/core/variables';
+
+.subtitle1 {
+	@include subtitle1;
+}
+.subtitle2 {
+	@include subtitle2;
+}
+.body1 {
+	@include body1;
+}
+.body2 {
+	@include body2;
+}
+.overline {
+	@include overline;
+}
+.caption {
+	@include caption;
+}
+.button {
+	@include button;
+}

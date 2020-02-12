@@ -3,6 +3,8 @@ import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 import {NgbDatepickerConfig, NgbModule, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule} from '@ngx-translate/core';
 
@@ -11,6 +13,7 @@ import {
 	DocumentMetaService,
 	DropdownModule,
 	ErrorMessagesModule,
+	FONTS,
 	MasterLayoutConfig,
 	MasterLayoutModule,
 	MultiselectModule,
@@ -28,8 +31,7 @@ import {
 	SpinnerModule,
 	TextControlClearModule,
 	THEMES,
-	UnsavedChangesModule,
-	FONTS
+	UnsavedChangesModule
 } from 'oblique';
 // App:
 import {AppComponent} from './app.component';
@@ -37,16 +39,11 @@ import {AppRoutingModule} from './app-routing.module';
 import {HomePageComponent} from './home/home.page';
 import {HttpMockErrorInterceptor} from './samples/http-interceptor/http-mock-error.interceptor';
 import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {StylesComponent} from './styles/styles.component';
-
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		HomePageComponent,
-		StylesComponent
+		HomePageComponent
 	],
 	imports: [
 		BrowserModule,

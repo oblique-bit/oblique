@@ -5,8 +5,8 @@ import {FONTS, ORNavigationLink, SearchWidgetItem, THEMES, ThemeService} from 'o
 	selector: 'app-root',
 	templateUrl: './app.component.html',
 	styles: [`.fa-sign-in-alt {
-		transition: transform 600ms;
-	}`]
+        transition: transform 600ms;
+    }`]
 })
 export class AppComponent {
 	offCanvasOpen = false;
@@ -40,7 +40,14 @@ export class AppComponent {
 				{url: 'button', label: 'Buttons'}
 			]
 		},
-		{url: 'styles', label: 'Styles'},
+		{
+			url: 'styles', label: 'Styles', children: [
+				{url: 'typography', label: 'Typography'},
+				{url: 'block', label: 'Block elements'},
+				{url: 'inline', label: 'Inline elements'},
+				{url: 'lists', label: 'Lists'}
+			]
+		},
 		{
 			url: 'bootstrap', label: 'Bootstrap', children: [
 				{url: 'list-group', label: 'List group'}
