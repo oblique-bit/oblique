@@ -54,6 +54,7 @@ import {
 	NestedFormModule,
 	NotificationModule,
 	NumberFormatModule,
+	ObSelectableModule,
 	SchemaValidationModule,
 	SearchBoxModule,
 	StickyModule,
@@ -70,6 +71,7 @@ import {PopUpSampleComponent} from './pop-up/pop-up-sample.component';
 import {NestedFormChildTDSampleComponent} from './nested-form/nested-form-child-td-sample.component';
 import {NestedFormGrandChildTDSampleComponent} from './nested-form/nested-form-grandchild-td-sample.component';
 import {MultiTranslateLoaderSampleComponent} from './multi-tranlsate-loader/multi-translate-loader-sample.component';
+import {SelectableSampleComponent} from './selectable/selectable-sample.component';
 
 @NgModule({
 	imports: [
@@ -87,6 +89,7 @@ import {MultiTranslateLoaderSampleComponent} from './multi-tranlsate-loader/mult
 		NotificationModule,
 		SchemaValidationModule,
 		SearchBoxModule,
+		ObSelectableModule,
 		StickyModule,
 		TextControlClearModule,
 		ToggleModule,
@@ -135,6 +138,7 @@ import {MultiTranslateLoaderSampleComponent} from './multi-tranlsate-loader/mult
 		NotificationSampleComponent,
 		NumberFormatSampleComponent,
 		SchemaValidationSampleComponent,
+		SelectableSampleComponent,
 		StickySampleComponent,
 		ToggleSampleComponent,
 		UnknownRouteSampleComponent,

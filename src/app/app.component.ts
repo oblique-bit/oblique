@@ -34,6 +34,7 @@ export class AppComponent {
 				{url: 'validation/schema-validation', label: 'i18n.routes.samples.schema-validation.title'},
 				{url: 'validation/unsaved-changes', label: 'i18n.routes.samples.unsaved-changes.title'},
 				{url: 'error-messages', label: 'Error messages'},
+				{url: 'selectable', 'label': 'Selectable'},
 				{url: 'sticky', label: 'Sticky'},
 				{url: 'unknown-route-sample', label: 'Unknown route'},
 				{url: 'form', label: 'Forms'},
