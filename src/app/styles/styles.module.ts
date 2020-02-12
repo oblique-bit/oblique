@@ -5,6 +5,7 @@ import {TypographyComponent} from './typography/typography.component';
 import {BlockElementsComponent} from './block-elements/block-elements.component';
 import {InlineElementComponent} from './inline-element/inline-element.component';
 import {ListsComponent} from './lists/lists.component';
+import {PaletteComponent} from './palette/palette.component';
 
 @NgModule({
 	imports: [
@@ -14,6 +15,7 @@ import {ListsComponent} from './lists/lists.component';
 			{path: 'block', component: BlockElementsComponent},
 			{path: 'inline', component: InlineElementComponent},
 			{path: 'lists', component: ListsComponent},
+			{path: 'palette', component: PaletteComponent},
 			{path: '', redirectTo: 'typography', pathMatch: 'full'}
 		])
 	],
@@ -21,7 +23,8 @@ import {ListsComponent} from './lists/lists.component';
 		TypographyComponent,
 		BlockElementsComponent,
 		InlineElementComponent,
-		ListsComponent
+		ListsComponent,
+		PaletteComponent
 	]
 })
 export class StylesModule {}

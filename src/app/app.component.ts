@@ -45,7 +45,8 @@ export class AppComponent {
 				{url: 'typography', label: 'Typography'},
 				{url: 'block', label: 'Block elements'},
 				{url: 'inline', label: 'Inline elements'},
-				{url: 'lists', label: 'Lists'}
+				{url: 'lists', label: 'Lists'},
+				{url: 'palette', label: 'Palette'}
 			]
 		},
 		{
