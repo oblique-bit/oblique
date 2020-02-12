@@ -68,27 +68,27 @@ $font-size-bigger:              $font-size-normal * $bigger !default;
 $font-size-smaller:             $font-size-normal * $smaller !default;
 $font-size-smallest:            $font-size-normal * $smallest !default;
 
-$spacing-default:              15px !default;
-$spacing-xs:                    5px !default;
-$spacing-sm:                   10px !default;
-$spacing-md:                   12px !default;
+$spacing-lg:                   32px !default;
+$spacing-default:              16px !default;
+$spacing-sm:                    8px !default;
+$spacing-xs:                    4px !default;
 
 $brand-logo-width:            216px !default;
 $brand-logo-height:            55px !default;
 $brand-logo-height-collapsed:  34px !default;
 $brand-logo-width-collapsed:   30px !default;
 
-$header-height:               141px !default;
-$header-height-md:            106px !default;
-$header-height-no-navigation:  90px !default;
-$header-height-collapsed:      61px !default;
+$header-height:               145px !default;
+$header-height-md:            116px !default;
+$header-height-no-navigation:  92px !default;
+$header-height-collapsed:      63px !default;
 $brand-line-width:              5px !default;
-$navigation-height:            51px !default;
+$navigation-height:            53px !default;
 
-$footer-height:                84px !default;
+$footer-height:                75px !default;
 $footer-height-md:             60px !default;
-$footer-height-sm:             34px !default;
-$footer-height-collapsed:     162px !default;
+$footer-height-sm:             28px !default;
+$footer-height-collapsed:     151px !default;
 
 $layout-collapse:               992px !default; // Breakpoint at which the layout becomes expanded.
 
