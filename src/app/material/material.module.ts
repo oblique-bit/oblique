@@ -25,6 +25,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
+import {MatStepperModule} from '@angular/material/stepper';
 import {ColumnLayoutModule, ObSelectableModule, TextControlClearModule} from 'oblique';
 import {CardComponent} from './card/card.component';
 import {ChipsComponent} from './chips/chips.component';
@@ -36,6 +37,8 @@ import {ExpansionPanelComponent} from './expansion-panel/expansion-panel.compone
 import {ProgressBarComponent} from './progress-bar/progress-bar.component';
 import {TableComponent} from './table/table.component';
 import {TooltipComponent} from './tooltip/tooltip.component';
+import {StepperVerticalComponent} from './stepper-vertical/stepper-vertical.component';
+import {StepperHorizontalComponent} from './stepper-horizontal/stepper-horizontal.component';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: BadgeComponent},
@@ -45,6 +48,8 @@ const appRoutes: Routes = [
 	{path: 'expansion-panel', component: ExpansionPanelComponent},
 	{path: 'progress-bar', component: ProgressBarComponent},
 	{path: 'slider', component: SliderComponent},
+	{path: 'stepper-horizontal', component: StepperHorizontalComponent},
+	{path: 'stepper-vertical', component: StepperVerticalComponent},
 	{path: 'table', component: TableComponent},
 	{path: 'tooltip', component: TooltipComponent},
 	{path: '', redirectTo: 'card', pathMatch: 'full'}
@@ -60,6 +65,8 @@ const appRoutes: Routes = [
 		ExpansionPanelComponent,
 		ProgressBarComponent,
 		SliderComponent,
+		StepperHorizontalComponent,
+		StepperVerticalComponent,
 		TableComponent,
 		TooltipComponent
 	],
@@ -91,6 +98,7 @@ const appRoutes: Routes = [
 		MatSliderModule,
 		MatSlideToggleModule,
 		MatSortModule,
+		MatStepperModule,
 		MatTableModule,
 		MatTooltipModule,
 		CdkTableModule

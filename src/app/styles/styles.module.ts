@@ -7,6 +7,7 @@ import {InlineElementComponent} from './inline-element/inline-element.component'
 import {ListsComponent} from './lists/lists.component';
 import {PaletteComponent} from './palette/palette.component';
 import {TableComponent} from './table/table.component';
+import {StepperComponent} from './stepper/stepper.component';
 
 @NgModule({
 	imports: [
@@ -18,6 +19,7 @@ import {TableComponent} from './table/table.component';
 			{path: 'lists', component: ListsComponent},
 			{path: 'palette', component: PaletteComponent},
 			{path: 'table', component: TableComponent},
+			{path: 'stepper', component: StepperComponent},
 			{path: '', redirectTo: 'typography', pathMatch: 'full'}
 		])
 	],
@@ -27,7 +29,8 @@ import {TableComponent} from './table/table.component';
 		InlineElementComponent,
 		ListsComponent,
 		TableComponent,
-		PaletteComponent
+		PaletteComponent,
+		StepperComponent
 	]
 })
 export class StylesModule {}

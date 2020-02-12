@@ -48,6 +48,7 @@ export class AppComponent {
 				{url: 'inline', label: 'Inline elements'},
 				{url: 'lists', label: 'Lists'},
 				{url: 'table', label: 'HTML table'},
+				{url: 'stepper', label: 'HTML Stepper'},
 				{url: 'palette', label: 'Palette'}
 			]
 		},
@@ -65,6 +66,8 @@ export class AppComponent {
 				{url: 'expansion-panel', label: 'Expansion Panel'},
 				{url: 'progress-bar', label: 'Progress bar'},
 				{url: 'slider', label: 'Slider'},
+				{url: 'stepper-horizontal', label: 'Stepper horizontal'},
+				{url: 'stepper-vertical', label: 'Stepper vertical'},
 				{url: 'table', label: 'Table'},
 				{url: 'tooltip', label: 'Tooltip'}
 			]
