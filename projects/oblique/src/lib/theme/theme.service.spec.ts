@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {THEMES, ThemeService} from './theme.service';
+import {FONTS, THEMES, ThemeService} from './theme.service';
 
 describe('ThemeService', () => {
 	let service: ThemeService;
@@ -32,6 +32,25 @@ describe('ThemeService', () => {
 		});
 	});
 
+	describe('setDefaultFont', () => {
+		it('font$ should emit frutiger', (done) => {
+			service.setDefaultFont();
+			service.font$.subscribe(font => {
+				expect(font).toBe(FONTS.FRUTIGER);
+				done();
+			});
+		});
+	});
+
+	describe('setFont', () => {
+		it('font$ should emit the last given font', (done) => {
+			service.setFont(FONTS.ROBOTO);
+			service.font$.subscribe(font => {
+				expect(font).toBe(FONTS.ROBOTO);
+				done();
+			});
+		});
+	});
 
 	it('should be composant is deprecated', () => {
 		const component = 'datepicker';
@@ -41,26 +60,4 @@ describe('ThemeService', () => {
 		service.deprecated(component, target);
 		expect(service.isMaterial()).toBeTruthy();
 	});
-
-	it('should enable Frutiger', () => {
-		const spy = jest.spyOn(service, 'setFrutiger');
-		const enable = true;
-		service.setFrutiger(enable);
-		expect(spy).toHaveBeenCalled();
-		expect(service.setFrutiger).toBeTruthy();
-		spy.mockRestore();
-	});
-
-	it('should not enable Frutiger', () => {
-		const spy = jest.spyOn(service, 'setFrutiger');
-		const enable = false;
-		service.setFrutiger(enable);
-		expect(spy).toHaveBeenCalled();
-		expect(service.setFrutiger).toBeTruthy();
-		spy.mockRestore();
-	});
-
-
-
-
 });

@@ -9,6 +9,12 @@
         "text": "An observable that emits each time the main theme is changed.",
         "type": "Observable<THEMES | string>",
         "since": "4.0.0"
+      },
+      {
+        "name": "font$",
+        "text": "An observable that emits each time the main font is changed.",
+        "type": "Observable<FONTS>",
+        "since": "5.0.0"
       }
     ],
     "methods": [
@@ -22,6 +28,15 @@
         "since": "4.0.0"
       },
       {
+        "name": "setFont",
+        "text": "Sets a font, e.g. loads the corresponding CSS and adds it the the <code>head</code>.",
+        "returns": "void",
+        "arguments": [
+          "font: FONTS"
+        ],
+        "since": "5.0.0"
+      },
+      {
         "name": "isMaterial",
         "text": "Returns <code>true</code> if the current theme is Material, and <code>false</code> otherwise.",
         "returns": "boolean",
@@ -30,11 +45,12 @@
     ],
     "tokens": [
       {
-        "name": "FRUTIGER",
-        "text": "Defines if Frutiger font should be used. The alternative is Arial.",
-        "type": "boolean",
-        "default": true,
-        "since": "4.0.0"
+        "name": "OBLIQUE_FONT",
+        "text": "Defines the font to use",
+        "type": "FONTS",
+        "values": ["FONTS.FRUTIGER", "FONTS.ROBOTO", "FONTS.ARIAL"],
+        "default": "FONTS.FRUTIGER",
+        "since": "5.0.0"
       }
     ]
   }

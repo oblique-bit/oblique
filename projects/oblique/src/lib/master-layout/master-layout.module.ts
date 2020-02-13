@@ -70,7 +70,7 @@ export {MasterLayoutConfig, ScrollMode} from './master-layout.config';
 })
 export class MasterLayoutModule {
 	constructor(theme: ThemeService, telemetry: TelemetryService) {
-		theme.setDefaultTheme();
+		theme.setDefaultFont();
 		requireAndRecordTelemetry(telemetry, MasterLayoutModule);
 	}
 }
