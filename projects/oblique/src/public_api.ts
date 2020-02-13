@@ -74,6 +74,7 @@ export {
 } from './lib/schema-validation/schema-validation.module';
 export {ScrollingEvents, ScrollingModule, TopControlComponent} from './lib/scrolling/scrolling.module';
 export {SearchBoxDirective, SearchWidgetItem, SearchBoxComponent, SearchBoxResultsComponent, SearchBoxModule} from './lib/searchbox/search-box.module';
+export {ObSelectableDirective, ObSelectableService, ObSelectableModule} from './lib/selectable/selectable.module';
 export {SpinnerEvent, SpinnerComponent, SpinnerModule, SpinnerService} from './lib/spinner/spinner.module';
 export {StickyComponent, StickyModule} from './lib/sticky/sticky.module';
 export {TextControlClearDirective, TextControlClearModule} from './lib/text-control-clear/text-control-clear.module';
@@ -82,11 +83,12 @@ export {TranslateParamsModule, TranslateParamsPipe} from './lib/translate-params
 export {UnknownRouteModule, UnknownRouteComponent} from './lib/unknown-route/unknown-route.module';
 export {UnsavedChangesDirective, UnsavedChangesGuard, UnsavedChangesModule, UnsavedChangesService} from './lib/unsaved-changes/unsaved-changes.module';
 export {UnsavedChangesTabsDirective, UnsavedChangesTabsModule, UnsavedChangesTabsService} from './lib/unsaved-changes-tabs/unsaved-changes-tabs.module';
-export {ThemeService, FRUTIGER, THEMES, OBLIQUE_THEME} from './lib/theme/theme.service';
 export {TELEMETRY_DISABLE} from './lib/telemetry/telemetry.service';
 export {WINDOW, multiTranslateLoader, getTranslateLoader} from './lib/utilities';
 export {MultiTranslateLoader, TRANSLATION_FILES, TranslationFile} from './lib/multi-translate-loader/multi-translate-loader';
 export {PopUpService} from './lib/pop-up/pop-up.service';
 export {Unsubscribable} from './lib/unsubscribe.class';
 export {ObliqueModule} from './lib/oblique.module';
+export {FRUTIGER, OBLIQUE_FONT, OBLIQUE_THEME, FONTS, THEMES, ThemeService} from './lib/theme/theme.service';
+
 export {ObliqueTestingModule} from './lib/oblique-testing.module';

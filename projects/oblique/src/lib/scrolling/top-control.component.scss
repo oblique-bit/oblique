@@ -37,7 +37,7 @@
 		text-decoration: none;
 		color: $brand-default;
 		background-color: $gray-light;
-		box-shadow:  0 3px 1px fade-out($gray-lighter, 0.3), 0 0 1px 1px fade($gray-lighter, 0.30);
+		box-shadow:  0 3px 1px fade-out($gray-extra-light, 0.3), 0 0 1px 1px fade($gray-extra-light, 0.30);
 	}
 
 	.application-scrolling & {

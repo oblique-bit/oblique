@@ -5,11 +5,12 @@
 	position: absolute;
 	bottom: 0;
 	width: 100%;
+	height: $footer-height-collapsed;
 	display: flex;
 	flex-direction: column;
 	color: $gray-darker;
 	font-size: $font-size-xs;
-	background-color: $gray-lighter;
+	background-color: $gray-extra-light;
 	border-top: 1px solid $gray-light;
 	padding: $spacing-xs $spacing-default;
 
@@ -76,8 +77,8 @@
 
 		&.application-footer-sm {
 			height: $footer-height-sm;
-			padding-top: $spacing-xs + 3px;
-			padding-bottom: $spacing-xs + 3px;
+			padding-top: $spacing-xs;
+			padding-bottom: $spacing-xs;
 
 			.footer-item {
 				padding: 0;
@@ -95,8 +96,8 @@
 		margin: 0;
 		padding-left: 0;
 
-		li:not(:last-child) {
-			padding-right: $spacing-md;
+		li + li {
+			padding-left: $spacing-sm;
 		}
 	}
 }

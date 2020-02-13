@@ -1,0 +1,54 @@
+@import "../../core/variables";
+@import "../../core/mixins/_typography";
+
+.mat-chip.mat-standard-chip {
+	@include caption;
+	border: 1px solid $gray;
+	background-color: $white;
+
+	&.mat-chip-selected,
+	&.warning,
+	&.success,
+	&.info,
+	&.error {
+		color: $white;
+		border-color: inherit;
+	}
+
+	&.success {
+		&,
+		&.mat-chip-selected {
+			background-color: $success-500;
+		}
+	}
+
+	&.info {
+		&,
+		&.mat-chip-selected {
+			background-color: $primary-500;
+		}
+	}
+
+	&.warning {
+		&,
+		&.mat-chip-selected {
+			background-color: $warning-500;
+		}
+	}
+
+	&.error {
+		&,
+		&.mat-chip-selected {
+			background-color: $error-500;
+		}
+	}
+
+	&.ob-selected {
+		&,
+		&.mat-chip-selected {
+			background-color: $primary-100;
+			border-color: $primary-500;
+			color: $primary-500;
+		}
+	}
+}

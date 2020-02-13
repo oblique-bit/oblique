@@ -1,0 +1,17 @@
+@import '../../../../projects/oblique/src/styles/scss/core/variables';
+
+.columns {
+	display: flex;
+
+	div:last-child {
+		flex-grow: 1;
+	}
+
+	div + div {
+		margin-left: 2 * $spacing-default;
+	}
+}
+
+ol + ol {
+	margin-top: $spacing-default;
+}

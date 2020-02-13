@@ -26,6 +26,7 @@ import {ErrorMessagesSampleComponent} from './error-messages-sample/error-messag
 import {UnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
 import {PopUpSampleComponent} from './pop-up/pop-up-sample.component';
 import {MultiTranslateLoaderSampleComponent} from './multi-tranlsate-loader/multi-translate-loader-sample.component';
+import {SelectableSampleComponent} from './selectable/selectable-sample.component';
 
 const samplesRoutes: Routes = [
 
@@ -76,7 +77,8 @@ const samplesRoutes: Routes = [
 	{path: 'number-format', component: NumberFormatSampleComponent},
 	{path: 'form', component: FormComponent},
 	{path: 'button', component: ButtonComponent},
-	{path: 'unknown-route-sample', component: UnknownRouteSampleComponent}
+	{path: 'unknown-route-sample', component: UnknownRouteSampleComponent},
+	{path: 'selectable', component: SelectableSampleComponent},
 ];
 
 @NgModule({

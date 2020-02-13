@@ -103,6 +103,7 @@ The scope is optional and should be the name of the Oblique feature affected:
 * **schema-validation**
 * **scrolling**
 * **search-box**
+* **selectable**
 * **spinner**
 * **sticky**
 * **text-control-clear**

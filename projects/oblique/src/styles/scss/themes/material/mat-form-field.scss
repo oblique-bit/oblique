@@ -57,7 +57,7 @@ $large: 1.25rem;
 				z-index: -1;
 
 				.table:not(.table-plain) tbody tr:nth-child(odd) & {
-					background-color: $gray-lighter;
+					background-color: $gray-extra-light;
 				}
 			}
 		}

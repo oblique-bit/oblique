@@ -1,0 +1,13 @@
+<div class="default-layout">
+	<h1>Palette</h1>
+	<ng-container *ngFor="let group of colorGroups">
+		<h2>{{group.name}} colors</h2>
+		<section class="colors">
+			<div class="color" [ngStyle]="{color: color.contrast, backgroundColor: color.color}" *ngFor="let color of group.colors">
+				<span>{{color.color}}</span>
+				<span>{{color.name}}</span>
+				<span *ngIf="color.details">{{color.details}}</span>
+			</div>
+		</section>
+	</ng-container>
+</div>

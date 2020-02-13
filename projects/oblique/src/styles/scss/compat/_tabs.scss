@@ -1,28 +1,22 @@
-@import "../variables";
+@import "../core/variables";
+@import "../core/mixins/_typography";
 
 .application {
-	.nav-tabs {
-		display: flex;
-		flex-wrap: wrap;
-		padding: 0;
-		margin: 0;
-		list-style: none;
+	.tabs {
 		border-bottom: 1px solid $gray-light;
 
-		.nav-item {
+		.tab-item {
 			margin-bottom: -1px;
-
-			+ .nav-item {
-				margin-left: 2px;
-			}
 		}
 
-		.nav-link {
+		.tab-link {
 			position: relative;
-			display: block;
 			padding: $spacing-xs $spacing-default;
-			background-color: $white;
+			font-size: 1rem;
+			line-height: 1.5;
+			letter-spacing: 0;
 			color: $brand-default;
+			background-color: $white;
 			text-decoration: none;
 			border: 1px solid transparent;
 			border-bottom-color: $gray-light;
@@ -33,23 +27,25 @@
 				font-weight: bold;
 			}
 
-			&.active,
 			&:hover,
 			&:focus,
+			&.active,
 			&:active {
-				border-color: $gray-light $gray-light transparent;
+				background-color: inherit;
+				color: inherit;
+				border-color: $gray-light $gray-light $white;
 			}
 
 			&:hover:before,
 			&.active:before {
 				content: "";
-				border-radius: $border-radius-base $border-radius-base 0 0;
-				background-color: $brand-accent;
-				height: 3px;
 				position: absolute;
+				height: 3px;
 				top: 0;
 				left: 0;
 				right: 0;
+				background-color: $brand-accent;
+				border-radius: $border-radius-base $border-radius-base 0 0;
 			}
 
 			&:not(.active):hover:before {

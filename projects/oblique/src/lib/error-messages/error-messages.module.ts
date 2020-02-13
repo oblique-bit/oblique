@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {FormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
 
@@ -30,6 +31,7 @@ export {ErrorMessagesDirective} from './error-messages.directive';
 	declarations: [ErrorMessagesComponent, MatErrorDirective, ErrorMessagesDirective],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+		{provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
 	exports: [ErrorMessagesComponent, MatErrorDirective, ErrorMessagesDirective]

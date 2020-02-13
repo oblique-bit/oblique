@@ -1,8 +1,12 @@
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, HAMMER_GESTURE_CONFIG} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {GestureConfig} from '@angular/material/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
 import {NgbDatepickerConfig, NgbModule, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule} from '@ngx-translate/core';
 
@@ -11,15 +15,18 @@ import {
 	DocumentMetaService,
 	DropdownModule,
 	ErrorMessagesModule,
+	FONTS,
 	MasterLayoutConfig,
 	MasterLayoutModule,
 	MultiselectModule,
 	multiTranslateLoader,
 	NotificationModule,
+	OBLIQUE_FONT,
 	OBLIQUE_THEME,
 	ObliqueHttpInterceptor,
 	ObliqueHttpInterceptorConfig,
 	ObliqueHttpModule,
+	ObSelectableModule,
 	OffCanvasModule,
 	SchemaValidationModule,
 	ScrollingModule,
@@ -35,16 +42,11 @@ import {AppRoutingModule} from './app-routing.module';
 import {HomePageComponent} from './home/home.page';
 import {HttpMockErrorInterceptor} from './samples/http-interceptor/http-mock-error.interceptor';
 import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {StylesComponent} from './styles/styles.component';
-
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		HomePageComponent,
-		StylesComponent
+		HomePageComponent
 	],
 	imports: [
 		BrowserModule,
@@ -63,6 +65,7 @@ import {StylesComponent} from './styles/styles.component';
 		SchemaValidationModule,
 		ScrollingModule,
 		SearchBoxModule,
+		ObSelectableModule,
 		SpinnerModule,
 		UnsavedChangesModule,
 		TranslateModule.forRoot(multiTranslateLoader()),
@@ -70,12 +73,15 @@ import {StylesComponent} from './styles/styles.component';
 		MasterLayoutModule,
 		MatFormFieldModule,
 		MatInputModule,
+		MatCardModule,
 		TextControlClearModule
 	],
 	providers: [
-		{provide: OBLIQUE_THEME, useValue: THEMES.BOOTSTRAP},
+		{provide: OBLIQUE_THEME, useValue: THEMES.MATERIAL},
+		{provide: OBLIQUE_FONT, useValue: FONTS.ROBOTO},
 		{provide: HTTP_INTERCEPTORS, useClass: ObliqueHttpInterceptor, multi: true},
-		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true}
+		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
+		{provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig}
 	],
 	entryComponents: [AppComponent],
 	bootstrap: [AppComponent]

@@ -1,0 +1,69 @@
+<div class="default-layout">
+	<h2 class="page-header">Card</h2>
+	<or-column-layout [left]="false">
+		<div column-main-content class="main-div">
+			<mat-card obSelectable>
+				<img *ngIf="pictureVisible" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+				<mat-card-header *ngIf="headerVisible">
+					<div *ngIf="avatarVisible" mat-card-avatar></div>
+					<mat-card-title *ngIf="titleVisible">Shiba Inu</mat-card-title>
+					<mat-card-subtitle *ngIf="subtitleVisible">Dog Breed</mat-card-subtitle>
+				</mat-card-header>
+				<mat-card-content *ngIf="contentVisible">
+					<p>
+						The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+						A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+						bred for hunting.
+					</p>
+				</mat-card-content>
+				<mat-card-actions *ngIf="actionsVisible">
+					<button mat-stroked-button>Like</button>
+					<button mat-stroked-button>Share</button>
+				</mat-card-actions>
+			</mat-card>
+		</div>
+		<div class="default-layout" column-right-content>
+			<h3>Controls</h3>
+			<mat-list>
+				<fieldset>
+					<legend>Toggle features</legend>
+					<mat-list-item>
+						<mat-slide-toggle [checked]="true" (click)="toggleAvatarVisibility()" matTooltip="Toggle avatar">
+							Avatar
+						</mat-slide-toggle>
+					</mat-list-item>
+					<mat-list-item>
+						<mat-slide-toggle [checked]="true" (click)="toggleTitleVisibility()" matTooltip="Toggle title">
+							Title
+						</mat-slide-toggle>
+					</mat-list-item>
+					<mat-list-item>
+						<mat-slide-toggle [checked]="true" (click)="toggleSubtitleVisibility()" matTooltip="Toggle subtitle">
+							Subtitle
+						</mat-slide-toggle>
+					</mat-list-item>
+					<mat-list-item>
+						<mat-slide-toggle [checked]="true" (click)="toggleHeaderVisibility()" matTooltip="Toggle header">
+							Header
+						</mat-slide-toggle>
+					</mat-list-item>
+					<mat-list-item>
+						<mat-slide-toggle [checked]="true" (click)="togglePictureVisibility()" matTooltip="Toggle picture">
+							Picture
+						</mat-slide-toggle>
+					</mat-list-item>
+					<mat-list-item>
+						<mat-slide-toggle [checked]="true" (click)="toggleContentVisibility()" matTooltip="Toggle content">
+							Content
+						</mat-slide-toggle>
+					</mat-list-item>
+					<mat-list-item>
+						<mat-slide-toggle [checked]="true" (click)="toggleActionsVisibility()" matTooltip="Toggle actions">
+							Actions
+						</mat-slide-toggle>
+					</mat-list-item>
+				</fieldset>
+			</mat-list>
+		</div>
+	</or-column-layout>
+</div>

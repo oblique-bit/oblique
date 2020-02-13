@@ -1,0 +1,8 @@
+@import '../../core/variables';
+@import 'projects/oblique/src/styles/scss/core/mixins/typography';
+
+.mat-tooltip {
+	@include caption;
+	background-color: $gray-darker;
+	padding: 6px 7px 4px;
+}

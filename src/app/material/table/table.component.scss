@@ -1,0 +1,11 @@
+.table-example {
+	width: 100%;
+}
+
+:host::ng-deep {
+@media (max-width: 1450px) {
+	.mat-paginator-range-label{
+		display: none;
+	}
+}
+}

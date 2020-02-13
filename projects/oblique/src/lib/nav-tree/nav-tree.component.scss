@@ -25,7 +25,7 @@
 	}
 
 	&.nav-indent {
-		@include nav-indent(0);
+		@include nav-indent();
 	}
 
 	&.nav-bordered .nav-link {
@@ -41,12 +41,14 @@
 	}
 
 	&.nav-toggle {
+		$fa-fw-width-px: 20px;
 		&.nav-indent {
+			$indent: $fa-fw-width-px + $spacing-sm;
 			.nav-link {
-				padding-left: 2 * $spacing-default;
+				padding-left: $indent;
 			}
 
-			@include nav-indent($spacing-default);
+			@include nav-indent($indent);
 		}
 
 		.nav-link.has-child {
@@ -57,8 +59,8 @@
 			}
 
 			&:before {
-				margin-left: -$spacing-default;
-				width: $fa-fw-width;
+				margin-left: -$fa-fw-width-px;
+				width: $fa-fw-width-px;
 			}
 
 			+ .collapse:not(.show) {

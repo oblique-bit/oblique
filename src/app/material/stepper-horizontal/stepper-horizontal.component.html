@@ -1,0 +1,68 @@
+<div class="default-layout">
+	<h2 class="page-header">Stepper Horizontal</h2>
+	<or-column-layout [left]="false">
+		<div column-main-content class="main-div">
+			<mat-horizontal-stepper [linear]="true" [disableRipple]="isRippleDisabled" [labelPosition]="labelBottom ? 'bottom' : 'end'" #stepper [class.mat-stepper-lg]="isLarge" [class.mat-stepper-sm]="isSmall">
+				<mat-step [stepControl]="firstFormGroup">
+					<form [formGroup]="firstFormGroup">
+						<ng-template matStepLabel>Fill out your name</ng-template>
+						<mat-form-field>
+							<input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+						</mat-form-field>
+						<div>
+							<button mat-flat-button matStepperNext color="primary">Next</button>
+						</div>
+					</form>
+				</mat-step>
+				<mat-step [stepControl]="secondFormGroup">
+					<form [formGroup]="secondFormGroup">
+						<ng-template matStepLabel>Fill out your address</ng-template>
+						<mat-form-field>
+							<input matInput placeholder="Address" formControlName="secondCtrl" required>
+						</mat-form-field>
+						<div>
+							<button mat-flat-button matStepperPrevious color="accent">Back</button>
+							<button mat-flat-button matStepperNext color="primary">Next</button>
+						</div>
+					</form>
+				</mat-step>
+				<mat-step>
+					<ng-template matStepLabel>Done</ng-template>
+					You are now done.
+					<div>
+						<button mat-flat-button matStepperPrevious color="accent">Back</button>
+						<button mat-flat-button (click)="stepper.reset()" color="warn">Reset</button>
+					</div>
+				</mat-step>
+			</mat-horizontal-stepper>
+		</div>
+		<div class="default-layout" column-right-content>
+			<h3>Controls</h3>
+			<mat-list>
+				<fieldset>
+					<legend>Stepper features</legend>
+					<mat-list-item>
+						<mat-slide-toggle [checked]="false" (change)="isRippleDisabled = !isRippleDisabled" matTooltip="Disable ripple on header click">
+							Disable ripples
+						</mat-slide-toggle>
+					</mat-list-item>
+					<mat-list-item>
+						<mat-slide-toggle [checked]="false" (change)="isSmall = !isSmall">
+							Small size
+						</mat-slide-toggle>
+					</mat-list-item>
+					<mat-list-item>
+						<mat-slide-toggle [checked]="false" (change)="isLarge = !isLarge">
+							Large size
+						</mat-slide-toggle>
+					</mat-list-item>
+					<mat-list-item>
+						<mat-slide-toggle [checked]="true" (change)="labelBottom = !labelBottom">
+							Bottom label
+						</mat-slide-toggle>
+					</mat-list-item>
+				</fieldset>
+			</mat-list>
+		</div>
+	</or-column-layout>
+</div>

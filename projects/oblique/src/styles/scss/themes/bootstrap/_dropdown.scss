@@ -33,6 +33,6 @@
 	}
 
 	@at-root .show > #{selector-append(".btn-secondary", &)} {
-		@include btn-variant($brand-default, $gray-lighter, $gray, $brand-default, $gray-lighter-2, $gray-darker, $brand-default);
+		@include btn-variant($brand-default, $gray-extra-light, $gray, $brand-default, $gray-lighter, $gray-darker, $brand-default);
 	}
 }

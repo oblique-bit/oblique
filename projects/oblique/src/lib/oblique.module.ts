@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
 import {ColumnLayoutModule} from './column-layout/column-layout.module';
 import {DocumentMetaModule} from './document-meta/document-meta.module';
@@ -18,6 +19,7 @@ import {ObliqueHttpModule} from './http/oblique-http.module';
 import {SchemaValidationModule} from './schema-validation/schema-validation.module';
 import {ScrollingModule} from './scrolling/scrolling.module';
 import {SpinnerModule} from './spinner/spinner.module';
+import {ObSelectableModule} from './selectable/selectable.module';
 import {TextControlClearModule} from './text-control-clear/text-control-clear.module';
 import {ToggleModule} from './toggle/toggle.module';
 import {TranslateParamsModule} from './translate-params/translate-params.module';
@@ -51,6 +53,7 @@ const OBLIQUE_MODULES = [
 	SchemaValidationModule,
 	ScrollingModule,
 	SearchBoxModule,
+	ObSelectableModule,
 	SpinnerModule,
 	StickyModule,
 	TextControlClearModule,
@@ -64,6 +67,7 @@ const OBLIQUE_MODULES = [
 	imports: OBLIQUE_MODULES,
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+		{provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
 	exports: OBLIQUE_MODULES
