@@ -2,12 +2,13 @@ import { Rule, SchematicContext, Tree, chain } from '@angular-devkit/schematics'
 import { IUpdateSchema, IMigratable } from './update-schema';
 import { UpdateV4toV5 } from './update-v4-to-v5';
 import { colors } from '@angular-devkit/core/src/terminal';
-import { OB_VERSION, OB_LATEST, installDependencies, getCurrentObliqueVersion, OB_LAST_MAJOR_SUPPORT_VERSION } from '../utils';
+import { OB_VERSION, OB_LATEST, OB_LAST_MAJOR_SUPPORT_VERSION, SchematicsUtil } from '../utils';
 
 export function initalize(_options: IUpdateSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 
-		const numericObVersion = getCurrentObliqueVersion(tree).match(/\d+/)[0];
+		const util: SchematicsUtil = SchematicsUtil.getInstance();
+		const numericObVersion = util.getCurrentObliqueVersion(tree).match(/\d+/)[0];
 
 		if ( numericObVersion < OB_LAST_MAJOR_SUPPORT_VERSION ) {
 			throw new Error(`[ERROR] Oblique Major ${numericObVersion} is not supported anymore - no migration possible. Sorry.`);
@@ -24,7 +25,6 @@ export function initalize(_options: IUpdateSchema): Rule {
 			case '6':
 				_context.logger.info(colors.red('\nNOT SUPPORTED YET, TRY VERSION 5 - ABORTING\n'));
 				return tree;
-			break;
 			default:
 		}
 
@@ -34,7 +34,7 @@ export function initalize(_options: IUpdateSchema): Rule {
 			migratable.applyMigrations(_options),
 			migratable.updateToLatest(_options, latestVersion),
 			migratable.updatePeerDependencies(_options),
-			installDependencies()
+			util.installDependencies()
 		])(tree, _context);
 	};
 }
