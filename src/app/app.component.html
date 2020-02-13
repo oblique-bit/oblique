@@ -1,4 +1,4 @@
-<or-master-layout [navigation]="navigation" [class.material]="material" [class.bootstrap]="!material">
+<or-master-layout [navigation]="navigation" [ngClass]="theme" *ngIf="theme$ | async as theme">
 	<ng-container orHeaderTitle>Oblique</ng-container>
 	<ng-template #orHeaderControl>
 		<or-search-box [items]="searchItems"></or-search-box>
@@ -60,13 +60,13 @@
 	<ng-template #orHeaderControl>
 		<div class="wrapper">
 		<button (click)="toggleTheme()">
-			{{material ? 'material' : 'bootstrap'}}
+			{{theme}}
 		</button>
 		</div>
 	</ng-template>
 	<ng-template #orHeaderControl>
-		<button (click)="toggleFont()">
-			{{frutiger ? 'Frutiger' : 'Roboto'}}
+		<button (click)="toggleFont(font)" *ngIf="font$ | async as font">
+			{{font}}
 		</button>
 	</ng-template>
 
