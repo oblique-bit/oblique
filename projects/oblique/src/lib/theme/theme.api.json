@@ -7,17 +7,17 @@
       {
         "name": "theme$",
         "text": "An observable that emits each time the main theme is changed.",
-        "type": "Observable<THEMES>",
+        "type": "Observable<THEMES | string>",
         "since": "4.0.0"
       }
     ],
     "methods": [
       {
         "name": "setTheme",
-        "text": "Sets a theme, e.g. loads the corresponding CSS and adds it the the <code>head</code>.",
+        "text": "Sets a theme, e.g. loads the corresponding CSS and adds it the the <code>head</code>. In case of a <code>string</code>, the full path of the theme has to be provided",
         "returns": "void",
         "arguments": [
-          "theme: THEMES"
+          "theme: THEMES | string"
         ],
         "since": "4.0.0"
       },

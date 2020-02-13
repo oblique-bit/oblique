@@ -1,6 +1,7 @@
 import {Inject, Injectable, InjectionToken, Optional, Renderer2, RendererFactory2} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {BehaviorSubject, Observable, ReplaySubject} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 export enum THEMES {
 	MATERIAL = 'oblique-material',
@@ -20,15 +21,15 @@ export const FRUTIGER = new InjectionToken<boolean>('FRUTIGER');
 	providedIn: 'root'
 })
 export class ThemeService {
-	theme$: Observable<THEMES>;
+	theme$: Observable<THEMES | string>;
 	font$: Observable<FONTS>;
-	private readonly mainTheme = new ReplaySubject<THEMES>(1);
+	private readonly mainTheme = new ReplaySubject<THEMES | string>(1);
 	private readonly mainFont$ = new BehaviorSubject<FONTS>(FONTS.FRUTIGER);
 	private readonly renderer: Renderer2;
 	private readonly head: HTMLElement;
 	private themeLink: HTMLElement;
 	private readonly fontLink: HTMLElement;
-	private currentTheme: THEMES;
+	private currentTheme: THEMES | string;
 	private currentFont: FONTS;
 
 	constructor(
@@ -44,7 +45,7 @@ export class ThemeService {
 		this.frutiger = this.frutiger != null ? this.frutiger : true;
 	}
 
-	setTheme(theme: THEMES): void {
+	setTheme(theme: THEMES | string): void {
 		if (!this.themeLink) {
 			this.initTheme();
 		}
@@ -102,8 +103,8 @@ export class ThemeService {
 	private initTheme(): void {
 		this.themeLink = this.createAndAddEmptyLink();
 		this.theme$ = this.mainTheme.asObservable();
-		this.theme$.subscribe(newTheme => {
-			this.renderer.setAttribute(this.themeLink, 'href', `assets/styles/css/${newTheme}.css`);
-		});
+		this.theme$
+			.pipe(map(theme => Object.values(THEMES).includes(theme as THEMES) ? `assets/styles/css/${theme}.css` : theme))
+			.subscribe(path => this.renderer.setAttribute(this.themeLink, 'href', path));
 	}
 }
