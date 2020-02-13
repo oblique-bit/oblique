@@ -1,7 +1,7 @@
 import {Inject, Injectable, InjectionToken, Optional, Renderer2, RendererFactory2} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {Observable, ReplaySubject} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 
 export enum THEMES {
 	MATERIAL = 'oblique-material',
@@ -94,7 +94,20 @@ export class ThemeService {
 		this.fontLink = this.createAndAddEmptyLink();
 		this.font$ = this.mainFont.asObservable();
 		this.font$
-			.pipe(map(font => ThemeService.isInEnum(font, FONTS) ? `assets/styles/css/${font}.css` : ''))
-			.subscribe((path) => this.renderer.setAttribute(this.fontLink, 'href', path));
+			.pipe(
+				tap(font => this.addWarning(font === FONTS.FRUTIGER)),
+				map(font => ThemeService.isInEnum(font, FONTS) ? `assets/styles/css/${font}.css` : '')
+			)
+			.subscribe(path => this.renderer.setAttribute(this.fontLink, 'href', path));
+	}
+
+	private addWarning(addWarning: boolean): void {
+		if (addWarning) {
+			this.renderer.setAttribute(
+				this.fontLink,
+				'onError',
+				`console.warn('Please consult http://oblique.bit.admin.ch for instructions on how to install Frutiger')`
+			);
+		}
 	}
 }
