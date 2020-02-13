@@ -2,33 +2,38 @@ import {TestBed} from '@angular/core/testing';
 import {THEMES, ThemeService} from './theme.service';
 
 describe('ThemeService', () => {
-	beforeEach(() => TestBed.configureTestingModule({}));
+	let service: ThemeService;
+	beforeEach(() => {
+		TestBed.configureTestingModule({});
+		service = TestBed.inject(ThemeService);
+	});
 
 	it('should be created', () => {
-		const service: ThemeService = TestBed.get(ThemeService);
 		expect(service).toBeTruthy();
 	});
 
-	it('should be the Default Theme  equal to  MATERIAL', () => {
-		const service: ThemeService = TestBed.get(ThemeService);
-		service.setDefaultTheme();
-		expect(service.isMaterial()).toBeTruthy();
+	describe('setTheme', () => {
+		it('isMaterial should be true if fed with material', () => {
+			service.setTheme(THEMES.MATERIAL);
+			expect(service.isMaterial()).toBe(true);
+		});
+
+		it('isMaterial should be false if fed with BOOTSTRAP', () => {
+			service.setTheme(THEMES.BOOTSTRAP);
+			expect(service.isMaterial()).toBe(false);
+		});
+
+		it('theme$ should emit the last given theme', (done) => {
+			service.setTheme(THEMES.MATERIAL);
+			service.theme$.subscribe(theme => {
+				expect(theme).toBe(THEMES.MATERIAL);
+				done();
+			});
+		});
 	});
 
-	it('should be Theme equal to  MATERIAL', () => {
-		const service: ThemeService = TestBed.get(ThemeService);
-		service.setTheme(THEMES.MATERIAL);
-		expect(service.isMaterial()).toBeTruthy();
-	});
-
-	it('should be Theme not equal to  BOOTSTRAP', () => {
-		const service: ThemeService = TestBed.get(ThemeService);
-		service.setTheme(THEMES.BOOTSTRAP);
-		expect(service.isMaterial()).not.toBeTruthy();
-	});
 
 	it('should be composant is deprecated', () => {
-		const service: ThemeService = TestBed.get(ThemeService);
 		const component = 'datepicker';
 		const target =  'datepicker';
 
@@ -38,7 +43,6 @@ describe('ThemeService', () => {
 	});
 
 	it('should enable Frutiger', () => {
-		const service: ThemeService = TestBed.get(ThemeService);
 		const spy = jest.spyOn(service, 'setFrutiger');
 		const enable = true;
 		service.setFrutiger(enable);
@@ -48,7 +52,6 @@ describe('ThemeService', () => {
 	});
 
 	it('should not enable Frutiger', () => {
-		const service: ThemeService = TestBed.get(ThemeService);
 		const spy = jest.spyOn(service, 'setFrutiger');
 		const enable = false;
 		service.setFrutiger(enable);

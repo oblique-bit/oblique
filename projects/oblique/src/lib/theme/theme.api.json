@@ -1,6 +1,7 @@
 [
   {
     "name": "ThemeService",
+    "usage": "Allows live changing to the theme and font",
     "since": "4.0.0",
     "variables": [
       {
@@ -28,17 +29,6 @@
       }
     ],
     "tokens": [
-      {
-        "name": "OBLIQUE_THEME",
-        "text": "Defines the theme to apply.",
-        "type": "THEMES",
-        "values": [
-          "THEMES.MATERIAL",
-          "THEMES.BOOTSTRAP"
-        ],
-        "default": "THEMES.MATERIAL",
-        "since": "4.0.0"
-      },
       {
         "name": "FRUTIGER",
         "text": "Defines if Frutiger font should be used. The alternative is Arial.",

@@ -1,6 +1,6 @@
 import {Inject, Injectable, InjectionToken, Optional, Renderer2, RendererFactory2} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, Observable, ReplaySubject} from 'rxjs';
 
 export enum THEMES {
 	MATERIAL = 'oblique-material',
@@ -13,7 +13,6 @@ export enum FONTS {
 	ARIAL = 'oblique-bootstrap'
 }
 
-export const OBLIQUE_THEME = new InjectionToken<THEMES>('OBLIQUE_THEME');
 export const OBLIQUE_FONT = new InjectionToken<THEMES>('OBLIQUE_FONT');
 export const FRUTIGER = new InjectionToken<boolean>('FRUTIGER');
 
@@ -23,11 +22,11 @@ export const FRUTIGER = new InjectionToken<boolean>('FRUTIGER');
 export class ThemeService {
 	theme$: Observable<THEMES>;
 	font$: Observable<FONTS>;
-	private readonly mainTheme$ = new BehaviorSubject<THEMES>(THEMES.MATERIAL);
+	private readonly mainTheme = new ReplaySubject<THEMES>(1);
 	private readonly mainFont$ = new BehaviorSubject<FONTS>(FONTS.FRUTIGER);
 	private readonly renderer: Renderer2;
 	private readonly head: HTMLElement;
-	private readonly themeLink: HTMLElement;
+	private themeLink: HTMLElement;
 	private readonly fontLink: HTMLElement;
 	private currentTheme: THEMES;
 	private currentFont: FONTS;
@@ -35,22 +34,22 @@ export class ThemeService {
 	constructor(
 		rendererFactory: RendererFactory2,
 		@Inject(DOCUMENT) document: any, // NOTE: do not set type, it will break AOT
-		@Optional() @Inject(OBLIQUE_THEME) private readonly theme: any, // NOTE: do not set type, it will break AOT
 		@Optional() @Inject(OBLIQUE_FONT) private readonly font: any,
 		@Optional() @Inject(FRUTIGER) private readonly frutiger
 	) {
 		this.head = document.head;
 		this.renderer = rendererFactory.createRenderer(null, null);
-		this.theme$ = this.mainTheme$.asObservable();
 		this.font$ = this.mainFont$.asObservable();
 		this.fontLink = this.createAndAddEmptyLink();
-		this.themeLink = this.createAndAddEmptyLink();
 		this.frutiger = this.frutiger != null ? this.frutiger : true;
 	}
 
 	setTheme(theme: THEMES): void {
+		if (!this.themeLink) {
+			this.initTheme();
+		}
 		this.currentTheme = theme;
-		this.mainTheme$.next(theme);
+		this.mainTheme.next(theme);
 	}
 
 	setFont(font: FONTS): void {
@@ -75,11 +74,7 @@ export class ThemeService {
 	}
 
 	setDefaultTheme(): void {
-		this.setTheme(this.theme || THEMES.MATERIAL);
 		this.setFont(this.font || (this.frutiger ? FONTS.FRUTIGER : FONTS.ROBOTO));
-		this.theme$.subscribe((newTheme) => {
-			this.renderer.setAttribute(this.themeLink, 'href', `assets/styles/css/${newTheme}.css`);
-		});
 		this.font$.subscribe((newFont) => {
 			switch (newFont) {
 				case FONTS.FRUTIGER:
@@ -102,5 +97,13 @@ export class ThemeService {
 		const style = this.head.querySelector('style');
 		this.renderer.insertBefore(this.head, el, style);
 		return el;
+	}
+
+	private initTheme(): void {
+		this.themeLink = this.createAndAddEmptyLink();
+		this.theme$ = this.mainTheme.asObservable();
+		this.theme$.subscribe(newTheme => {
+			this.renderer.setAttribute(this.themeLink, 'href', `assets/styles/css/${newTheme}.css`);
+		});
 	}
 }

@@ -89,5 +89,6 @@ export {MultiTranslateLoader, TRANSLATION_FILES, TranslationFile} from './lib/mu
 export {PopUpService} from './lib/pop-up/pop-up.service';
 export {Unsubscribable} from './lib/unsubscribe.class';
 export {ObliqueModule} from './lib/oblique.module';
-export {FRUTIGER, OBLIQUE_FONT, OBLIQUE_THEME, FONTS, THEMES, ThemeService} from './lib/theme/theme.service';
+export {FRUTIGER, OBLIQUE_FONT, FONTS, THEMES, ThemeService} from './lib/theme/theme.service';
+
 export {ObliqueTestingModule, MockTranslateService} from './lib/oblique-testing.module';
