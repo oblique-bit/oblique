@@ -34,12 +34,9 @@ main {
 	display: block; // IE
 }
 
-.default-layout {
-	padding: $spacing-default;
-}
-
 .bg-secondary {
 	background-color: $brand-extra-light !important;
+	height: 100%;
 }
 
 .hover-visible {

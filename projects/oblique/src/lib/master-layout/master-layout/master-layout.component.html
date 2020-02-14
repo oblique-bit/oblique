@@ -56,7 +56,7 @@
 	</ng-template>
 </or-master-layout-footer>
 <div class="offcanvas-sidebar" *ngIf="hasOffCanvas">
-	<header class="offcanvas-header default-layout">
+	<header class="offcanvas-header">
 		<h2>
 			<ng-content select="[orOffCanvasTitle]"></ng-content>
 		</h2>
@@ -65,7 +65,7 @@
 			<span class="sr-only">i18n.oblique.offCanvas.close</span>
 		</a>
 	</header>
-	<div class="offcanvas-content default-layout">
+	<div class="offcanvas-content">
 		<ng-content select="[orOffCanvasContent]"></ng-content>
 	</div>
 </div>
