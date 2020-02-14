@@ -22,17 +22,6 @@
 	</ng-template>
 </or-master-layout-header>
 <div id="content" class="application-content" role="main" [class.offcanvas-main]="hasOffCanvas" tabindex="-1">
-	<div class="alert-compatibility default-layout">
-		<div class="alert alert-error">
-			<span class="sr-only">Error</span>
-			<h4>Unsupported browser!</h4>
-			<p class="lead">Please note that your browser, Internet Explorer 9 or earlier, is deprecated.</p>
-			<p>We recommend upgrading to the <a href="https://www.microsoft.com/en-us/windows/microsoft-edge"
-												target="_blank" rel="noopener">latest version</a>.</p>
-			<p>If you are using IE 10 or above, make sure you <a href="https://support.microsoft.com/en-us/help/17471"
-																 target="_blank" rel="noopener">turn off "Compatibility View".</a></p>
-		</div>
-	</div>
 	<div class="application-content-viewport">
 		<or-notification channel="oblique"></or-notification>
 		<div class="cover-layout" *ngIf="hasCover; else normalLayout">
@@ -42,6 +31,15 @@
 		</div>
 		<ng-template #normalLayout>
 			<main class="main-layout">
+				<div class="alert alert-error alert-compatibility">
+					<span class="sr-only">Error</span>
+					<h4>Unsupported browser!</h4>
+					<p class="lead">Please note that your browser, Internet Explorer 9 or earlier, is deprecated.</p>
+					<p>We recommend upgrading to the
+						<a href="https://www.microsoft.com/en-us/windows/microsoft-edge" target="_blank" rel="noopener">latest version</a>.</p>
+					<p>If you are using IE 10 or above, make sure you
+						<a href="https://support.microsoft.com/en-us/help/17471" target="_blank" rel="noopener">turn off "Compatibility View".</a></p>
+				</div>
 				<router-outlet></router-outlet>
 			</main>
 		</ng-template>
