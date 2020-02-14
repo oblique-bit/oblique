@@ -129,6 +129,13 @@
 				"since": "4.0.0"
 			},
 			{
+				"name": "layout.hasLayout",
+				"text": "Apply default padding (true) to the <code>main-layout</code> or no padding at all (false).",
+				"type": "boolean",
+				"default": true,
+				"since": "5.0.0"
+			},
+			{
 				"name": "layout.hasMainNavigation",
 				"text": "Use Oblique's default main navigation (true) or a custom one (false). The custom navigation has to be provided through <code>[orNavigation]</code>.",
 				"type": "boolean",
@@ -298,6 +305,13 @@
 				"type": "boolean",
 				"default": true,
 				"since": "4.0.0"
+			},
+			{
+				"name": "hasLayout",
+				"text": "Controls <code>MasterLayoutConfig.layout.hasLayout</code> property.",
+				"type": "boolean",
+				"default": true,
+				"since": "5.0.0"
 			},
 			{
 				"name": "hasOffCanvas",

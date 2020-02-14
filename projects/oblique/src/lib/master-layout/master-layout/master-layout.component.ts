@@ -46,6 +46,7 @@ export class MasterLayoutComponent extends Unsubscribable implements OnInit {
 	@Input() navigation: ORNavigationLink[] = [];
 	@HostBinding('class.application-fixed') isFixed = this.masterLayout.layout.isFixed;
 	@HostBinding('class.has-cover') hasCover = this.masterLayout.layout.hasCover;
+	@HostBinding('class.has-layout') hasLayout = this.masterLayout.layout.hasLayout;
 	@HostBinding('class.header-open') isMenuCollapsed = this.masterLayout.layout.isMenuOpened;
 	@HostBinding('class.no-navigation') noNavigation = !this.masterLayout.layout.hasMainNavigation;
 	@HostBinding('class.offcanvas') hasOffCanvas = this.masterLayout.layout.hasOffCanvas;
@@ -98,6 +99,9 @@ export class MasterLayoutComponent extends Unsubscribable implements OnInit {
 					break;
 				case MasterLayoutEventValues.COLLAPSE:
 					this.isMenuCollapsed = event.value;
+					break;
+				case MasterLayoutEventValues.LAYOUT:
+					this.hasLayout = event.value;
 					break;
 			}
 		});

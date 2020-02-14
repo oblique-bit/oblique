@@ -23,7 +23,8 @@ export enum MasterLayoutEventValues {
 	SMALL,
 	SCROLL_TRANSITION,
 	SCROLLABLE,
-	STICKY
+	STICKY,
+	LAYOUT
 }
 
 export function scrollEnabled(service: MasterLayoutHeaderService | MasterLayoutFooterService): <T>(source: Observable<T>) => Observable<T>  {
