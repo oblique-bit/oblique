@@ -1,10 +1,9 @@
 <div class="sticky-header" *ngIf="stickyHeaderTemplate">
 	<ng-container *ngTemplateOutlet="stickyHeaderTemplate"></ng-container>
 </div>
-<div class="sticky-main">
-	<div class="sticky" [ngClass]="nestedStickySize"
-		 *ngIf="stickyHeaderTemplate && stickyFooterTemplate; else mainContent">
-		<div class="sticky-main">
+<div class="sticky-main" [class.sticky-content]="!stickyHeaderTemplate || !stickyFooterTemplate">
+	<div class="sticky" [ngClass]="nestedStickySize" [class.no-layout]="noLayout" *ngIf="stickyHeaderTemplate && stickyFooterTemplate; else mainContent">
+		<div class="sticky-main sticky-content">
 			<ng-container *ngTemplateOutlet="mainContent"></ng-container>
 		</div>
 		<div class="sticky-footer" *ngIf="stickyFooterTemplate">

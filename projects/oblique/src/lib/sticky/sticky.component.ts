@@ -15,6 +15,7 @@ export class StickyComponent implements OnChanges, AfterViewInit {
 	@ContentChild('orStickyFooter') readonly stickyFooterTemplate: TemplateRef<any>;
 	@Input() headerSize: string;
 	@Input() footerSize: string;
+	@Input() @HostBinding('class.no-layout') noLayout = false;
 	@HostBinding('class.sticky-lg') isMainStickyLarge = false;
 	@HostBinding('class.sticky-sm') isMainStickySmall = false;
 	nestedStickySize: string;

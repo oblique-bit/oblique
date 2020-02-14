@@ -20,6 +20,13 @@
         "default": "md",
         "values": ["sm", "md", "lg"],
         "since": "4.0.0"
+      },
+      {
+        "name": "noLayout",
+        "text": "Defines if the main content should have default layout.",
+        "type": "boolean",
+        "default": false,
+        "since": "5.0.0"
       }
     ],
     "projection": [

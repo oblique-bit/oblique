@@ -5,12 +5,16 @@
 	display: block;
 	height: 100%;
 	overflow: hidden;
+
+	&:not(.no-layout) .sticky-content {
+		padding: $spacing-default 0;
+	}
 }
 
 .sticky-main {
 	@include layout-collapse-up() {
 		overflow-y: auto;
-		height: calc(100% - #{$sticky-element-height});
+		height: calc(100% - #{$sticky-element-height}); // is it really needed?
 		// Restrict container width to avoid unwanted horizontal scrollbar
 		// when elements are injected to container or when viewport is resized:
 		width: 100%;
@@ -21,7 +25,7 @@
 .sticky-footer {
 	z-index: 1;
 	position: relative;
-	padding: 13px 15px;
+	padding: 13px 0;
 
 	@include layout-collapse-up() {
 		height: $sticky-element-height;
@@ -112,5 +116,14 @@
 		.sticky-actions {
 			line-height: 50px;
 		}
+	}
+}
+
+§.application:not(.has-layout) .main-layout > .sticky {
+	.sticky-header,
+	.sticky-footer,
+	.sticky-content {
+		padding-left: $spacing-default;
+		padding-right: $spacing-default;
 	}
 }
