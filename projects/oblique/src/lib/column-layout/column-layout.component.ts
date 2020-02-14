@@ -1,4 +1,16 @@
-import {AfterViewInit, Component, ElementRef, Inject, Input, QueryList, Renderer2, ViewChild, ViewChildren, ViewEncapsulation} from '@angular/core';
+import {
+	AfterViewInit,
+	Component,
+	ElementRef,
+	HostBinding,
+	Inject,
+	Input,
+	QueryList,
+	Renderer2,
+	ViewChild,
+	ViewChildren,
+	ViewEncapsulation
+} from '@angular/core';
 import {filter} from 'rxjs/operators';
 import {merge} from 'rxjs';
 import {ColumnPanelDirective} from './column-panel.directive';
@@ -19,6 +31,7 @@ import {WINDOW} from '../utilities';
 export class ColumnLayoutComponent implements AfterViewInit {
 	@Input() left = true;
 	@Input() right = true;
+	@Input() @HostBinding('class.no-layout') noLayout = false;
 	@ViewChild('columnLeft') private readonly columnLeft: ColumnPanelDirective;
 	@ViewChild('columnRight') private readonly columnRight: ColumnPanelDirective;
 	@ViewChildren('columnToggle') private readonly toggles: QueryList<ElementRef>;

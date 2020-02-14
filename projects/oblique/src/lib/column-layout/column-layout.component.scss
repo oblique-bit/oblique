@@ -24,8 +24,20 @@
 
 		.column-main,
 		.column-left,
-		.column-right  {
+		.column-right {
 			flex-grow: 1;
+		}
+
+		&:not(.no-layout) {
+			> .column-left,
+			> .column-main:not(:last-child) {
+				padding-right: $spacing-default;
+			}
+
+			> .column-right,
+			> .column-main:not(:first-child) {
+				padding-left: $spacing-default;
+			}
 		}
 
 		.column-main {
