@@ -1,7 +1,7 @@
 <h2>{{'i18n.routes.samples.column-layout.title' | translate}}</h2>
 <or-description component="column-layout"></or-description>
 <or-column-layout [left]="false" [right]="true">
-	<or-column-layout [left]="left" [right]="right" #orColumnLayout column-main-content>
+	<or-column-layout [left]="left" [right]="right" [noLayout]="noLayout" #orColumnLayout column-main-content>
 		<ng-container column-left-content>
 			<h3 class="nav-header-title">Left Column</h3>
 		</ng-container>
@@ -52,6 +52,14 @@
 				<label class="form-check-label" for="or-column-layout-right">Right column?</label>
 			</div>
 			<button (click)="orColumnLayout.toggleRight()" *ngIf="right">Toggle</button>
+		</div>
+		<div>
+			<div class="form-check form-check-inline">
+				<input type="checkbox" id="or-column-layout-no" class="form-check-input"
+					   [(ngModel)]="noLayout">
+				<label class="form-check-label" for="or-column-layout-no">Remove layout</label>
+			</div>
+			<button (click)="noLayout = !noLayout" *ngIf="right">Toggle</button>
 		</div>
 	</ng-container>
 </or-column-layout>

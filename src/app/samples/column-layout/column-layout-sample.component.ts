@@ -8,6 +8,7 @@ import {ORNavigationLink, SearchWidgetItem} from 'oblique';
 export class ColumnLayoutSampleComponent {
 	left = true;
 	right = true;
+	noLayout = false;
 	searchItems: SearchWidgetItem[] = [];
 	private navigation: ORNavigationLink[] = [
 		{url: '/home', label: 'i18n.routes.home.title'},

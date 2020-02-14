@@ -17,6 +17,14 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.layout.isFixed = value;
 	}
 
+	get hasLayout() {
+		return this.masterLayout.layout.hasLayout;
+	}
+
+	set hasLayout(value: boolean) {
+		this.masterLayout.layout.hasLayout = value;
+	}
+
 	get footerSM() {
 		return this.masterLayout.footer.isSmall;
 	}
