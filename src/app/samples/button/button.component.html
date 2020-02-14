@@ -1,15 +1,14 @@
-<div class="default-layout">
-	<table class="table">
-		<ng-container *ngIf="material | async else bootstrap">
-			<thead>
+<table class="table">
+	<ng-container *ngIf="material | async else bootstrap">
+		<thead>
 			<tr>
 				<th></th>
 				<th>Primary</th>
 				<th>Secondary</th>
 				<th>Tertiary</th>
 			</tr>
-			</thead>
-			<tbody>
+		</thead>
+		<tbody>
 			<tr>
 				<td>
 					<label>Default</label>
@@ -52,10 +51,10 @@
 					<button mat-button color="primary" disabled>Tertiary</button>
 				</td>
 			</tr>
-			</tbody>
-		</ng-container>
-		<ng-template #bootstrap>
-			<thead>
+		</tbody>
+	</ng-container>
+	<ng-template #bootstrap>
+		<thead>
 			<tr>
 				<th></th>
 				<th>Normal & Hover</th>
@@ -63,8 +62,8 @@
 				<th>Active</th>
 				<th>Disabled</th>
 			</tr>
-			</thead>
-			<tbody>
+		</thead>
+		<tbody>
 			<tr>
 				<td>
 					<label class="form-control-static">Primary</label>
@@ -167,8 +166,6 @@
 					<button type="button" class="btn btn-link" disabled="disabled">Link</button>
 				</td>
 			</tr>
-			</tbody>
-
-		</ng-template>
-	</table>
-</div>
+		</tbody>
+	</ng-template>
+</table>

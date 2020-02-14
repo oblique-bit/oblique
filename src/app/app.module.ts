@@ -77,7 +77,7 @@ import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-in
 		TextControlClearModule
 	],
 	providers: [
-		{provide: OBLIQUE_THEME, useValue: THEMES.MATERIAL},
+		{provide: OBLIQUE_THEME, useValue: THEMES.BOOTSTRAP},
 		{provide: OBLIQUE_FONT, useValue: FONTS.ROBOTO},
 		{provide: HTTP_INTERCEPTORS, useClass: ObliqueHttpInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},

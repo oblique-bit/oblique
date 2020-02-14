@@ -1,91 +1,89 @@
-<div class="default-layout">
-	<h2 class="page-header">Expansion Panel</h2>
-	<or-column-layout [left]="false">
-		<div column-main-content class="main-div">
-			<mat-accordion [multi]="multi" [displayMode]="displayMode">
-				<mat-expansion-panel [hideToggle]="!toggleVisible" [togglePosition]="togglePosition">
-					<mat-expansion-panel-header>
-						<mat-panel-title>
-							Personal data
-						</mat-panel-title>
-						<mat-panel-description>
-							Type your name and age
-						</mat-panel-description>
-					</mat-expansion-panel-header>
+<h2 class="page-header">Expansion Panel</h2>
+<or-column-layout [left]="false">
+	<ng-container column-main-content>
+		<mat-accordion [multi]="multi" [displayMode]="displayMode">
+			<mat-expansion-panel [hideToggle]="!toggleVisible" [togglePosition]="togglePosition">
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						Personal data
+					</mat-panel-title>
+					<mat-panel-description>
+						Type your name and age
+					</mat-panel-description>
+				</mat-expansion-panel-header>
 
-					<mat-form-field>
-						<mat-label>First name</mat-label>
-						<input matInput>
-					</mat-form-field>
+				<mat-form-field>
+					<mat-label>First name</mat-label>
+					<input matInput>
+				</mat-form-field>
 
-					<mat-form-field>
-						<mat-label>Age</mat-label>
-						<input matInput>
-					</mat-form-field>
-					<mat-action-row *ngIf="actionRowVisible">
-						<button mat-button color="primary" (click)="selfAwarePanel.open()">Next</button>
-					</mat-action-row>
-				</mat-expansion-panel>
-				<mat-expansion-panel #selfAwarePanel [hideToggle]="!toggleVisible" [togglePosition]="togglePosition"
-									 (opened)="panelOpenState = true"
-									 (closed)="panelOpenState = false">
-					<mat-expansion-panel-header>
-						<mat-panel-title>
-							Self aware panel
-						</mat-panel-title>
-						<mat-panel-description>
-							Currently I am {{panelOpenState ? 'open' : 'closed'}}
-						</mat-panel-description>
-					</mat-expansion-panel-header>
-					<p>I'm visible because I am open</p>
-					<mat-action-row *ngIf="actionRowVisible">
-						<button mat-button color="primary" (click)="selfAwarePanel.close()">Close</button>
-					</mat-action-row>
-				</mat-expansion-panel>
-			</mat-accordion>
-		</div>
-		<div class="default-layout" column-right-content>
-			<h3>Controls</h3>
-			<mat-list>
-				<fieldset>
-					<legend>Toggle features</legend>
-					<mat-list-item>
-						<mat-slide-toggle (click)="toggleAccordionMultiAttribute()" matTooltip="Toggle accordion multi-attribute">
-							Multiple can be opened
-						</mat-slide-toggle>
+				<mat-form-field>
+					<mat-label>Age</mat-label>
+					<input matInput>
+				</mat-form-field>
+				<mat-action-row *ngIf="actionRowVisible">
+					<button mat-button color="primary" (click)="selfAwarePanel.open()">Next</button>
+				</mat-action-row>
+			</mat-expansion-panel>
+			<mat-expansion-panel #selfAwarePanel [hideToggle]="!toggleVisible" [togglePosition]="togglePosition"
+								 (opened)="panelOpenState = true"
+								 (closed)="panelOpenState = false">
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						Self aware panel
+					</mat-panel-title>
+					<mat-panel-description>
+						Currently I am {{panelOpenState ? 'open' : 'closed'}}
+					</mat-panel-description>
+				</mat-expansion-panel-header>
+				<p>I'm visible because I am open</p>
+				<mat-action-row *ngIf="actionRowVisible">
+					<button mat-button color="primary" (click)="selfAwarePanel.close()">Close</button>
+				</mat-action-row>
+			</mat-expansion-panel>
+		</mat-accordion>
+	</ng-container>
+	<ng-container column-right-content>
+		<h3>Controls</h3>
+		<mat-list>
+			<fieldset>
+				<legend>Toggle features</legend>
+				<mat-list-item>
+					<mat-slide-toggle (click)="toggleAccordionMultiAttribute()" matTooltip="Toggle accordion multi-attribute">
+						Multiple can be opened
+					</mat-slide-toggle>
+				</mat-list-item>
+				<mat-list-item>
+					<mat-slide-toggle (click)="toggleActionRowVisibility()" matTooltip="Toggle action row-visibility">
+						Action row
+					</mat-slide-toggle>
+				</mat-list-item>
+				<mat-list-item>
+					<mat-slide-toggle [checked]="true" (click)="toggleToggleVisibility()" matTooltip="Toggle toggle-visibility">
+						Show toggle
+					</mat-slide-toggle>
+				</mat-list-item>
+			</fieldset>
+			<fieldset>
+				<legend>Display mode</legend>
+				<mat-radio-group [(ngModel)]="displayMode">
+					<mat-list-item *ngFor="let mode of displayModes">
+						<mat-radio-button [value]="mode">
+							{{mode}}
+						</mat-radio-button>
 					</mat-list-item>
-					<mat-list-item>
-						<mat-slide-toggle (click)="toggleActionRowVisibility()" matTooltip="Toggle action row-visibility">
-							Action row
-						</mat-slide-toggle>
+				</mat-radio-group>
+			</fieldset>
+			<fieldset>
+				<legend>Set toggle position</legend>
+				<mat-radio-group [(ngModel)]="togglePosition">
+					<mat-list-item *ngFor="let position of togglePositions">
+						<mat-radio-button [value]="position">
+							{{position}}
+						</mat-radio-button>
 					</mat-list-item>
-					<mat-list-item>
-						<mat-slide-toggle [checked]="true" (click)="toggleToggleVisibility()" matTooltip="Toggle toggle-visibility">
-							Show toggle
-						</mat-slide-toggle>
-					</mat-list-item>
-				</fieldset>
-				<fieldset>
-					<legend>Display mode</legend>
-					<mat-radio-group [(ngModel)]="displayMode">
-						<mat-list-item *ngFor="let mode of displayModes">
-							<mat-radio-button [value]="mode">
-								{{mode}}
-							</mat-radio-button>
-						</mat-list-item>
-					</mat-radio-group>
-				</fieldset>
-				<fieldset>
-					<legend>Set toggle position</legend>
-					<mat-radio-group [(ngModel)]="togglePosition">
-						<mat-list-item *ngFor="let position of togglePositions">
-							<mat-radio-button [value]="position">
-								{{position}}
-							</mat-radio-button>
-						</mat-list-item>
-					</mat-radio-group>
-				</fieldset>
-			</mat-list>
-		</div>
-	</or-column-layout>
-</div>
+				</mat-radio-group>
+			</fieldset>
+		</mat-list>
+	</ng-container>
+</or-column-layout>

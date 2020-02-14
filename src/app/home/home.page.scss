@@ -1,12 +1,11 @@
 @import '~projects/oblique/src/styles/scss/core/variables';
 
-.default-layout {
-	display: flex;
-	justify-content: center;
-}
-
 .content {
 	text-align: center;
+}
+
+img {
+	max-width: 100%;
 }
 
 .title {

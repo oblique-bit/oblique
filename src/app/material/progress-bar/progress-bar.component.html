@@ -1,60 +1,58 @@
-<div class="default-layout">
-	<h2 class="page-header">Progress bar</h2>
-	<or-column-layout [left]="false">
-		<div column-main-content class="main-div">
-			<mat-list>
-				<mat-list-item>
-					<h3 mat-header>Determinate</h3>
-				</mat-list-item>
-				<mat-list-item>
-					<mat-progress-bar mode="determinate" [value]="value" [color]="color"></mat-progress-bar>
-				</mat-list-item>
-				<mat-list-item>
-					<h3 mat-header>Indeterminate</h3>
-				</mat-list-item>
-				<mat-list-item>
-					<mat-progress-bar mode="indeterminate" [color]="color"></mat-progress-bar>
-				</mat-list-item>
-				<mat-list-item>
-					<h3 mat-header>Buffer</h3>
-				</mat-list-item>
-				<mat-list-item>
-					<mat-progress-bar mode="buffer" [bufferValue]="bufferValue" [value]="value" [color]="color"></mat-progress-bar>
-				</mat-list-item>
-				<mat-list-item>
-					<h3 mat-header>Query</h3>
-				</mat-list-item>
-				<mat-list-item>
-					<mat-progress-bar mode="query" [color]="color"></mat-progress-bar>
-				</mat-list-item>
-			</mat-list>
-		</div>
-		<div class="default-layout" column-right-content>
-			<h3>Controls</h3>
-			<mat-list>
-				<fieldset>
-					<legend>Color</legend>
-					<mat-radio-group [(ngModel)]="color">
-						<mat-list-item *ngFor="let barColor of colors">
-							<mat-radio-button [value]="barColor">
-								{{barColor | titlecase}}
-							</mat-radio-button>
-						</mat-list-item>
-					</mat-radio-group>
-				</fieldset>
-				<fieldset>
-					<legend>Value</legend>
-					<mat-list-item>
-						<mat-slider  [(ngModel)]="value"></mat-slider>
+<h2 class="page-header">Progress bar</h2>
+<or-column-layout [left]="false">
+	<ng-container column-main-content>
+		<mat-list>
+			<mat-list-item>
+				<h3 mat-header>Determinate</h3>
+			</mat-list-item>
+			<mat-list-item>
+				<mat-progress-bar mode="determinate" [value]="value" [color]="color"></mat-progress-bar>
+			</mat-list-item>
+			<mat-list-item>
+				<h3 mat-header>Indeterminate</h3>
+			</mat-list-item>
+			<mat-list-item>
+				<mat-progress-bar mode="indeterminate" [color]="color"></mat-progress-bar>
+			</mat-list-item>
+			<mat-list-item>
+				<h3 mat-header>Buffer</h3>
+			</mat-list-item>
+			<mat-list-item>
+				<mat-progress-bar mode="buffer" [bufferValue]="bufferValue" [value]="value" [color]="color"></mat-progress-bar>
+			</mat-list-item>
+			<mat-list-item>
+				<h3 mat-header>Query</h3>
+			</mat-list-item>
+			<mat-list-item>
+				<mat-progress-bar mode="query" [color]="color"></mat-progress-bar>
+			</mat-list-item>
+		</mat-list>
+	</ng-container>
+	<ng-container column-right-content>
+		<h3>Controls</h3>
+		<mat-list>
+			<fieldset>
+				<legend>Color</legend>
+				<mat-radio-group [(ngModel)]="color">
+					<mat-list-item *ngFor="let barColor of colors">
+						<mat-radio-button [value]="barColor">
+							{{barColor | titlecase}}
+						</mat-radio-button>
 					</mat-list-item>
-				</fieldset>
-				<fieldset>
-					<legend>Buffer-Value</legend>
-					<mat-list-item>
-						<mat-slider [(ngModel)]="bufferValue"></mat-slider>
-					</mat-list-item>
-				</fieldset>
-			</mat-list>
-		</div>
-	</or-column-layout>
-</div>
+				</mat-radio-group>
+			</fieldset>
+			<fieldset>
+				<legend>Value</legend>
+				<mat-list-item>
+					<mat-slider [(ngModel)]="value"></mat-slider>
+				</mat-list-item>
+			</fieldset>
+			<fieldset>
+				<legend>Buffer-Value</legend>
+				<mat-list-item>
+					<mat-slider [(ngModel)]="bufferValue"></mat-slider>
+				</mat-list-item>
+			</fieldset>
+		</mat-list>
+	</ng-container>
+</or-column-layout>

@@ -53,8 +53,8 @@ const appRoutes: Routes = [
 	{path: 'stepper-horizontal', component: StepperHorizontalComponent},
 	{path: 'stepper-vertical', component: StepperVerticalComponent},
 	{path: 'table', component: TableComponent},
-	{path: 'tooltip', component: TooltipComponent},
 	{path: 'tabs', component: TabsComponent},
+	{path: 'tooltip', component: TooltipComponent},
 	{path: '', redirectTo: 'card', pathMatch: 'full'}
 ];
 

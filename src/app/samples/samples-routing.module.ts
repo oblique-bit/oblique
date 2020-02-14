@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
+import {UnsavedChangesGuard} from 'oblique';
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
-
 import {ColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
 import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {FilterBoxSampleComponent} from './filter-box-sample/filter-box-sample.component';
@@ -18,7 +18,6 @@ import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-s
 import {ToggleSampleComponent} from './toggle/toggle-sample.component';
 import {NumberFormatSampleComponent} from './number-format/number-format-sample.component';
 import {HttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
-import {UnsavedChangesGuard} from 'oblique';
 import {StickySampleComponent} from './sticky/sticky-sample.component';
 import {FormComponent} from './form/form.component';
 import {ButtonComponent} from './button/button.component';
@@ -29,17 +28,15 @@ import {MultiTranslateLoaderSampleComponent} from './multi-tranlsate-loader/mult
 import {SelectableSampleComponent} from './selectable/selectable-sample.component';
 
 const samplesRoutes: Routes = [
-
 	{path: 'column-layout', component: ColumnLayoutSampleComponent},
 	{path: 'datepicker', component: DatepickerSampleComponent},
+	{path: 'error-messages', component: ErrorMessagesSampleComponent},
 	{path: 'filter-box', component: FilterBoxSampleComponent},
-	{
-		path: 'navigable', component: NavigableSampleComponent, data: {
-			title: 'Navigable Sample',
-			description: 'Description for the Navigable Sample'
-		}
-	},
+	{path: 'form-control-state', component: FormControlStateSampleComponent},
 	{path: 'http-interceptor', component: HttpInterceptorSampleComponent},
+	{path: 'master-layout', component: MasterLayoutSampleComponent},
+	{path: 'multi-translate-loader', component: MultiTranslateLoaderSampleComponent},
+	{path: 'multiselect', component: MultiselectSampleComponent},
 	{
 		path: 'nav-tree',
 		component: NavTreeSampleComponent,
@@ -52,33 +49,19 @@ const samplesRoutes: Routes = [
 			{path: ':section/:subsection/:subsubsection', component: NavTreeDetailSampleComponent}
 		]
 	},
+	{path: 'navigable', component: NavigableSampleComponent, data: {title: 'Navigable Sample'}},
 	{path: 'nested-form', component: NestedFormSampleComponent},
 	{path: 'notification', component: NotificationSampleComponent},
-	{path: 'multiselect', component: MultiselectSampleComponent},
-	{
-		path: 'master-layout', component: MasterLayoutSampleComponent, data: {
-			masterLayout: {
-				hasCover: true
-			}
-		}
-	},
-	{path: 'multi-translate-loader', component: MultiTranslateLoaderSampleComponent},
-	{path: 'sticky', component: StickySampleComponent},
-	{path: 'pop-up', component: PopUpSampleComponent},
-	{path: 'validation/form-control-state', component: FormControlStateSampleComponent},
-	{path: 'validation/schema-validation', component: SchemaValidationSampleComponent},
-	{
-		path: 'validation/unsaved-changes',
-		component: UnsavedChangesSampleComponent,
-		canDeactivate: [UnsavedChangesGuard]
-	},
-	{path: 'error-messages', component: ErrorMessagesSampleComponent},
-	{path: 'toggle', component: ToggleSampleComponent},
 	{path: 'number-format', component: NumberFormatSampleComponent},
+	{path: 'pop-up', component: PopUpSampleComponent},
+	{path: 'schema-validation', component: SchemaValidationSampleComponent},
+	{path: 'selectable', component: SelectableSampleComponent},
+	{path: 'sticky', component: StickySampleComponent},
+	{path: 'toggle', component: ToggleSampleComponent},
+	{path: 'unknown-route-sample', component: UnknownRouteSampleComponent},
+	{path: 'unsaved-changes', component: UnsavedChangesSampleComponent, canDeactivate: [UnsavedChangesGuard]},
 	{path: 'form', component: FormComponent},
 	{path: 'button', component: ButtonComponent},
-	{path: 'unknown-route-sample', component: UnknownRouteSampleComponent},
-	{path: 'selectable', component: SelectableSampleComponent},
 ];
 
 @NgModule({

@@ -1,39 +1,37 @@
-<div class="default-layout">
-	<h2>{{'i18n.routes.samples.selected.title' | translate}}</h2>
-	<or-description component="selectable"></or-description>
-	<or-column-layout [left]="false" [right]="true">
-		<section column-main-content>
-			<h3>Default selectable</h3>
-			<div class="selectable-div-example" obSelectable [value]="'div'">a selectable div</div>
-			<p obSelectable [value]="'p'">a selectable p</p>
-			values of 'unnamed' collection:
-			<ul>
-				<li *ngFor="let item of unnamedCollection">{{item}}</li>
-			</ul>
+<h2>{{'i18n.routes.samples.selected.title' | translate}}</h2>
+<or-description component="selectable"></or-description>
+<or-column-layout [left]="false" [right]="true">
+	<section column-main-content>
+		<h3>Default selectable</h3>
+		<div class="selectable-div-example" obSelectable [value]="'div'">a selectable div</div>
+		<p obSelectable [value]="'p'">a selectable p</p>
+		values of 'unnamed' collection:
+		<ul>
+			<li *ngFor="let item of unnamedCollection">{{item}}</li>
+		</ul>
 
-			<h3>Preselection</h3>
-			<div obSelectable value="cat" [selected]="true" collection="preselection">a preselected cat</div>
-			<div obSelectable value="bird" [selected]="true" collection="preselection">a preselected bird</div>
-			<div obSelectable value="dog" [selected]="false" collection="preselection">a selectable dog</div>
-			values of 'preselection' collection:
-			<ul>
-				<li *ngFor="let item of preselectionCollection">{{item}}</li>
-			</ul>
+		<h3>Preselection</h3>
+		<div obSelectable value="cat" [selected]="true" collection="preselection">a preselected cat</div>
+		<div obSelectable value="bird" [selected]="true" collection="preselection">a preselected bird</div>
+		<div obSelectable value="dog" [selected]="false" collection="preselection">a selectable dog</div>
+		values of 'preselection' collection:
+		<ul>
+			<li *ngFor="let item of preselectionCollection">{{item}}</li>
+		</ul>
 
-			<h3>Collections</h3>
-			<pre>{{collections | json}}</pre>
-		</section>
-		<section column-right-content>
-			<button mat-flat-button color="primary" (click)="clearCollection('unnamed')">clear default collection</button>
-			<button mat-flat-button color="primary" (click)="removeCollection('unnamed')">remove default collection</button>
-			<button mat-flat-button color="primary" (click)="clearCollection('preselection')">clear preselection collection</button>
-			<button mat-flat-button color="primary" (click)="removeCollection('preselection')">remove preselection collection</button>
-			<button mat-flat-button color="primary" (click)="clearCollections()">clear all collections</button>
-			<div>
-				<h3>last event</h3>
-				<pre>{{ event | json }}</pre>
-			</div>
-		</section>
-	</or-column-layout>
-	<or-api component="selectable"></or-api>
-</div>
+		<h3>Collections</h3>
+		<pre>{{collections | json}}</pre>
+	</section>
+	<section column-right-content>
+		<button mat-flat-button color="primary" (click)="clearCollection('unnamed')">clear default collection</button>
+		<button mat-flat-button color="primary" (click)="removeCollection('unnamed')">remove default collection</button>
+		<button mat-flat-button color="primary" (click)="clearCollection('preselection')">clear preselection collection</button>
+		<button mat-flat-button color="primary" (click)="removeCollection('preselection')">remove preselection collection</button>
+		<button mat-flat-button color="primary" (click)="clearCollections()">clear all collections</button>
+		<div>
+			<h3>last event</h3>
+			<pre>{{ event | json }}</pre>
+		</div>
+	</section>
+</or-column-layout>
+<or-api component="selectable"></or-api>

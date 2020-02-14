@@ -1,105 +1,98 @@
-<div class="default-layout">
-	<h2 class="page-header">{{'i18n.routes.samples.datepicker.title' | translate}}</h2>
-	<or-description component="datepicker"></or-description>
-	<or-column-layout [left]="false" [right]="true">
-		<form novalidate column-main-content>
-			<div class="form-group row" orFormControlState pristineValidation="true">
-				<label class="col-sm-4 col-lg-3 col-control-label">Date</label>
-				<div class="col-sm-8 col-lg-9">
-					<div class="row">
-						<div class="col-md-6">
-							<or-date-picker [ngModel]="model.date" name="date" required></or-date-picker>
-							<or-error-messages></or-error-messages>
-						</div>
-						<div class="col-md-6">
-							<div class="btn-group">
-								<button type="button" class="btn btn-info" (click)="setToday()"
-										ngbTooltip="Sets model to today's date using the standard JavaScript Date object">
-									Today
-								</button>
-							</div>
+<h2 class="page-header">{{'i18n.routes.samples.datepicker.title' | translate}}</h2>
+<or-description component="datepicker"></or-description>
+<or-column-layout [left]="false" [right]="true">
+	<form novalidate column-main-content>
+		<div class="form-group row" orFormControlState pristineValidation="true">
+			<label class="col-sm-4 col-lg-3 col-control-label">Date</label>
+			<div class="col-sm-8 col-lg-9">
+				<div class="row">
+					<div class="col-md-6">
+						<or-date-picker [ngModel]="model.date" name="date" required></or-date-picker>
+						<or-error-messages></or-error-messages>
+					</div>
+					<div class="col-md-6">
+						<div class="btn-group">
+							<button type="button" class="btn btn-info" (click)="setToday()"
+									ngbTooltip="Sets model to today's date using the standard JavaScript Date object">
+								Today
+							</button>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div orFormControlState pristineValidation="true" class="form-group row">
-				<label class="col-sm-4 col-lg-3 control-label">Min / Max</label>
-				<div class="col-sm-8 col-lg-9">
-					<div class="row">
-						<div class="col-md-6">
-							<or-date-picker #orDatePicker
-								[placeholder]="'Enter a date between ' + (minDate | orDateFormatter) + ' and ' + (maxDate | orDateFormatter)"
-								[(ngModel)]="model.minMax" name="minMax" [minDate]="minDate"
-								[maxDate]="maxDate"></or-date-picker>
-							<or-error-messages></or-error-messages>
-						</div>
-						<div class="col-md-6">
-							<div class="btn-group">
-								<button type="button" class="btn btn-warning" (click)="min()"
-										tooltip-append-to-body="true"
-										ngbTooltip="Sets model to some invalid date after the minimum limit">
-									<span class="fa fa-chevron-left"></span> Min
-								</button>
-								<button type="button" class="btn btn-warning" (click)="max()"
-										tooltip-append-to-body="true"
-										ngbTooltip="Sets model to some invalid date after the maximum limit">
-									<span class="fa fa-chevron-right"></span> Max
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="form-group row" ngModelGroup="range">
-				<label class="col-sm-4 col-lg-3 control-label">Range</label>
-				<div class="col-sm-8 col-lg-9">
-					<div class="row">
-						<div orFormControlState class="col-md-6">
-							<or-date-picker [(ngModel)]="model.range.from" name="from"
-											[maxDate]="model.range.to"></or-date-picker>
-							<or-error-messages></or-error-messages>
-						</div>
-						<div orFormControlState class="col-md-6">
-							<div name="rangeTo">
-								<or-date-picker [(ngModel)]="model.range.to" name="to"
-												[minDate]="model.range.from"></or-date-picker>
-								<or-error-messages></or-error-messages>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div orFormControlState class="form-group row">
-				<label class="col-sm-4 col-lg-3 control-label">Disabled</label>
-				<div class="col-sm-8 col-lg-9">
-					<div class="row">
-						<div class="col-md-6">
-							<or-date-picker [disabled]="isDatepickerDisabled" ngModel name="disabled"></or-date-picker>
-							<or-error-messages></or-error-messages>
-						</div>
-						<div class="col-md-6">
-							<div class="btn-group">
-								<button type="button" class="btn btn-info"
-										(click)="isDatepickerDisabled = !isDatepickerDisabled"
-										tooltip-append-to-body="true"
-										ngbTooltip="Enables/Disables Datepicker control. Date can not be updated until control gets enabled again.">
-									Toggle disabled
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</form>
-		<div class="default-layout" column-right-content>
-			<h3>Controls</h3>
-			<pre>{{model | json }}</pre>
 		</div>
-	</or-column-layout>
-	<or-api component="datepicker"></or-api>
-</div>
-
-
-
-
-
+		<div orFormControlState pristineValidation="true" class="form-group row">
+			<label class="col-sm-4 col-lg-3 control-label">Min / Max</label>
+			<div class="col-sm-8 col-lg-9">
+				<div class="row">
+					<div class="col-md-6">
+						<or-date-picker #orDatePicker
+										[placeholder]="'Enter a date between ' + (minDate | orDateFormatter) + ' and ' + (maxDate | orDateFormatter)"
+										[(ngModel)]="model.minMax" name="minMax" [minDate]="minDate"
+										[maxDate]="maxDate"></or-date-picker>
+						<or-error-messages></or-error-messages>
+					</div>
+					<div class="col-md-6">
+						<div class="btn-group">
+							<button type="button" class="btn btn-warning" (click)="min()"
+									tooltip-append-to-body="true"
+									ngbTooltip="Sets model to some invalid date after the minimum limit">
+								<span class="fa fa-chevron-left"></span> Min
+							</button>
+							<button type="button" class="btn btn-warning" (click)="max()"
+									tooltip-append-to-body="true"
+									ngbTooltip="Sets model to some invalid date after the maximum limit">
+								<span class="fa fa-chevron-right"></span> Max
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group row" ngModelGroup="range">
+			<label class="col-sm-4 col-lg-3 control-label">Range</label>
+			<div class="col-sm-8 col-lg-9">
+				<div class="row">
+					<div orFormControlState class="col-md-6">
+						<or-date-picker [(ngModel)]="model.range.from" name="from"
+										[maxDate]="model.range.to"></or-date-picker>
+						<or-error-messages></or-error-messages>
+					</div>
+					<div orFormControlState class="col-md-6">
+						<div name="rangeTo">
+							<or-date-picker [(ngModel)]="model.range.to" name="to"
+											[minDate]="model.range.from"></or-date-picker>
+							<or-error-messages></or-error-messages>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div orFormControlState class="form-group row">
+			<label class="col-sm-4 col-lg-3 control-label">Disabled</label>
+			<div class="col-sm-8 col-lg-9">
+				<div class="row">
+					<div class="col-md-6">
+						<or-date-picker [disabled]="isDatepickerDisabled" ngModel name="disabled"></or-date-picker>
+						<or-error-messages></or-error-messages>
+					</div>
+					<div class="col-md-6">
+						<div class="btn-group">
+							<button type="button" class="btn btn-info"
+									(click)="isDatepickerDisabled = !isDatepickerDisabled"
+									tooltip-append-to-body="true"
+									ngbTooltip="Enables/Disables Datepicker control. Date can not be updated until control gets enabled again.">
+								Toggle disabled
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<ng-container column-right-content>
+		<h3>Controls</h3>
+		<pre>{{model | json }}</pre>
+	</ng-container>
+</or-column-layout>
+<or-api component="datepicker"></or-api>
