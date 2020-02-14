@@ -26,6 +26,7 @@ export class ThemeService {
 	private readonly mainFont = new ReplaySubject<FONTS>(1);
 	private readonly renderer: Renderer2;
 	private readonly head: HTMLElement;
+	private readonly warned = [];
 	private themeLink: HTMLElement;
 	private fontLink: HTMLElement;
 	private currentTheme: THEMES | string;
@@ -59,7 +60,8 @@ export class ThemeService {
 	}
 
 	deprecated(component: string, target: string): void {
-		if (this.isMaterial()) {
+		if (this.isMaterial() && !this.warned.includes(component)) {
+			this.warned.push(component);
 			console.warn(`Oblique's "${component}" should not be used with Material Design, prefer the Angular implementation:
 			https://material.angular.io/components/${target}.`);
 		}
