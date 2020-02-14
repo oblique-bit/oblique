@@ -31,6 +31,7 @@ import {WINDOW} from '../utilities';
 export class ColumnLayoutComponent implements AfterViewInit {
 	@Input() left = true;
 	@Input() right = true;
+	@Input() @HostBinding('class.wider-columns') wider = false;
 	@Input() @HostBinding('class.no-layout') noLayout = false;
 	@ViewChild('columnLeft') private readonly columnLeft: ColumnPanelDirective;
 	@ViewChild('columnRight') private readonly columnRight: ColumnPanelDirective;

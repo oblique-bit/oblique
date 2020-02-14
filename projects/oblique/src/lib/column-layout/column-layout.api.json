@@ -25,6 +25,13 @@
         "type": "boolean",
         "default": false,
         "since": "5.0.0"
+      },
+      {
+        "name": "wider",
+        "text": "Defines if the side panels should be wider (40% each).",
+        "type": "boolean",
+        "default": false,
+        "since": "5.0.0"
       }
     ],
     "methods": [
