@@ -7,14 +7,22 @@ import {WINDOW} from '../utilities';
 
 export const TELEMETRY_DISABLE = new InjectionToken<boolean>('TELEMETRY_DISABLE');
 
+interface ModuleList {
+	timestamp: number;
+	modules: string[];
+}
+
 @Injectable({
 	providedIn: 'root'
 })
 export class TelemetryService {
+	private static readonly telemetryToken = 'OBLIQUE_TELEMETRY';
+	private static readonly oneDay = 60 * 60 * 24 * 1000;
 	private readonly TELEMETRY_URL = 'https://oblique-telemetry.bit.admin.ch/api/v1/telemetry';
 	private readonly telemetryRecords: Array<TelemetryMessage> = new Array<TelemetryMessage>();
 	private readonly disableTokenValue: boolean;
 	private readonly window: Window;
+	private readonly headers = new HttpHeaders().set('telemetry-api-key', '4E28E649-C2B2-4985-9409-CFC905A34E92');
 
 	constructor(
 		private readonly http: HttpClient, @Optional() @Inject(TELEMETRY_DISABLE) private readonly isDisabled: boolean, @Inject(WINDOW) window
@@ -23,7 +31,6 @@ export class TelemetryService {
 		if (isDisabled) {
 			console.log('Oblique Telemetry is disabled by injection token.');
 		}
-
 		this.disableTokenValue = isDisabled;
 		race(
 			fromEvent(window, 'beforeunload'),
@@ -64,6 +71,19 @@ export class TelemetryService {
 		};
 	}
 
+	private static isTooOld(timestamp): boolean {
+		return +new Date() - timestamp > TelemetryService.oneDay;
+	}
+
+	private static getModuleList(): ModuleList {
+		try {
+			return JSON.parse(localStorage.getItem(TelemetryService.telemetryToken)) || {} as ModuleList;
+		} catch (e) {
+			return {} as ModuleList;
+		}
+	}
+
+
 	private storeMessage(msg: TelemetryMessage): void {
 		const existing = this.telemetryRecords.find(r => TelemetryService.areEqual(r, msg));
 
@@ -77,15 +97,30 @@ export class TelemetryService {
 		if (this.isTelemetryDisabled()) {
 			return;
 		}
-
-		const headers = new HttpHeaders().set('telemetry-api-key', '4E28E649-C2B2-4985-9409-CFC905A34E92');
-
-		this.http.post(this.TELEMETRY_URL, this.telemetryRecords, {headers: headers})
-			.pipe(catchError(() => EMPTY))
-			.subscribe();
+		const moduleList = TelemetryService.getModuleList();
+		if (!moduleList.timestamp || !moduleList.modules || this.hasMissingModule(moduleList)) {
+			this.sendAndStoreData();
+		} else if (TelemetryService.isTooOld(moduleList.timestamp)) {
+			this.sendAndStoreData(moduleList.modules);
+		}
 	}
 
 	private isTelemetryDisabled(): boolean {
 		return !isDevMode() || this.disableTokenValue;
+	}
+
+	private hasMissingModule(modules: ModuleList): boolean {
+		return this.telemetryRecords.reduce((missing, name) => missing && modules.modules.includes(name.obliqueModuleName), false);
+	}
+
+	private sendAndStoreData(modules?: string[]) {
+		this.http.post(this.TELEMETRY_URL, this.telemetryRecords, {headers: this.headers})
+			.pipe(catchError(() => EMPTY))
+			.subscribe();
+
+		localStorage.setItem(TelemetryService.telemetryToken, JSON.stringify({
+			modules: modules || this.telemetryRecords.map(value => value.obliqueModuleName),
+			timestamp: +new Date()
+		}));
 	}
 }
