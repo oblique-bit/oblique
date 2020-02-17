@@ -34,6 +34,16 @@ export class SchematicsUtil {
 
 	static instance: SchematicsUtil;
 
+	private readonly customImplentations: string[] = [];
+	private readonly forceObliqueImplentations: string[] = [
+		'TranslatePipe',
+		'TranslateService',
+		'TranslateParamsPipe',
+		'MockTranslatePipe',
+		'MockTranslateService',
+		'MockTranslateParamsPipe'
+	];
+
 	static getInstance(): SchematicsUtil {
 		if ( !SchematicsUtil.instance ) {
 			SchematicsUtil.instance = new SchematicsUtil();
@@ -124,6 +134,13 @@ export class SchematicsUtil {
 		return extracted;
 	}
 
+	extractProjections(tag: string, content: string): string[] {
+		return content.split(`</${tag}>`)
+		.map(leading => leading.split(`<${tag}`)[1])
+		.filter(inner => !!inner)
+		.reduce((extracted, inner) => [...extracted, this.extractInnerFragment(inner)], []);
+	}
+
 	addToList(list: string, toAdd: string, spacer = ' ', uniqueEntries = true): string {
 		const entries = list.split(',').map(s => s.trim());
 		if ( entries.includes(toAdd) && uniqueEntries ) {
@@ -186,6 +203,22 @@ export class SchematicsUtil {
 		}
 	}
 
+	removeImport(tree: Tree, filePath: string, symbol: string): void {
+		const sourceFile = this.getProject().createSourceFile(filePath, this.getFile(tree, filePath));
+		const content = sourceFile.getFullText();
+		const array = sourceFile.getChildrenOfKind(SyntaxKind.ImportDeclaration);
+		if ( array ) {
+			array.forEach((child) => {
+				const imports = this.extractFromBrackets('{}', child.getText());
+				if ( imports.split(',').map((fragment: string) => fragment.trim()).includes(symbol) ) {
+					const newImports = this.removeFromList(imports, symbol);
+
+					tree.overwrite(filePath, content.replace(child.getText(), child.getText().replace(imports, newImports)));
+				}
+			});
+		}
+	}
+
 	addToConstructor(tree: Tree, filePath: string, toInject: string): void {
 		const sourceFile = this.getProject().createSourceFile(filePath, this.getFile(tree, filePath));
 		const content = sourceFile.getFullText();
@@ -218,6 +251,10 @@ export class SchematicsUtil {
 			const newProperties = this.addToList(call.oldProperties, symbol);
 			const newContent = call.oldContent.replace(call.oldProperties, newProperties);
 			tree.overwrite(filePath, call.content.replace(call.oldContent, newContent));
+		} else if ( call.isEmptyOptions ) {
+			// TODO write proper replacement
+			const regex = new RegExp(`('|")?${property}('|")?(\\s)*:(\\s)*\\[(\\s)*\\]{1}`);
+			this.replaceInFile(tree, filePath, regex, `${property}: [${symbol}]`);
 		} else {
 			// no existing property array
 			const newProperties = `\t\t\t${property}: [${this.addToList('', symbol)}]`;
@@ -269,8 +306,33 @@ export class SchematicsUtil {
 		tree.overwrite(filePath, call.content.replace(call.oldContent, newContent));
 	}
 
+	loadBusinessSymbols(tree: Tree): void {
+		const files = glob.sync(`**/*.ts`, { ignore: 'node_modules/**/*.ts' });
+		files.forEach((file: string) => {
+				const sourceFile = this.getProject().createSourceFile(file, this.getFile(tree, file));
+				sourceFile.getChildrenOfKind(SyntaxKind.ClassDeclaration).forEach((classDeclaration: any) => {
+					this.customImplentations.push(classDeclaration.getFirstChildByKind(SyntaxKind.Identifier).getText());
+				});
+		});
+	}
+
 	isObliqueSymbol(symbol: string): boolean {
-		return this.getObliqueModules().includes(symbol);
+		// always remove translation implementations
+		if ( this.forceObliqueImplentations.includes(symbol) ) {
+			return true;
+		}
+
+		if ( this.getObliqueModules().includes(symbol) ) {
+			// check if it's a wrapper or a completely separate implementation
+			const counterPart = ( symbol.indexOf('Mock') === -1 ) ? `Mock${symbol}` : symbol.replace('Mock', '') ;
+			const hasCustomImplemntation = this.customImplentations.includes(symbol) || this.customImplentations.includes(counterPart);
+			return !hasCustomImplemntation;
+		}
+		return false;
+	}
+
+	private extractInnerFragment(inner: string): string {
+		return inner.split('>').map((fragment: string, index: number) => index > 0 ? fragment : '').join('>').substr(1);
 	}
 
 	private getLiteralSymbol(child: any): string | undefined {
@@ -321,12 +383,7 @@ export class SchematicsUtil {
 			exported = exported.concat(this.extractFromBrackets('{}', line).split(',').map(symbol => symbol.trim()).filter((symbol: string) => symbol.length > 0));
 		});
 		exported = exported.concat(exported.map((symbol: string) => symbol.replace('Mock', '')));
-		exported.push('TranslatePipe');
-		exported.push('TranslateService');
-		exported.push('TranslateParamsPipe');
-		exported.push('MockTranslatePipe');
-		exported.push('MockTranslateService');
-		exported.push('MockTranslateParamsPipe');
+		exported = exported.concat(this.forceObliqueImplentations);
 		return exported;
 	}
 
@@ -344,11 +401,14 @@ export class SchematicsUtil {
 		const oldContent = content.substr(start);
 		const oldOptions = this.extractFromBrackets('{}', content.substr(start));
 		const oldProperties = this.extractFromBrackets('[]', oldOptions.substr(oldOptions.indexOf(property)));
+		const oldOptionsBoundary = `[${oldProperties}]`.replace(/\s/g, '');
+
 		return {
 			content: content,
 			oldContent: oldContent,
 			oldProperties: oldProperties,
 			oldOptions: oldOptions,
+			isEmptyOptions: (oldContent.indexOf(property) !== -1 && oldOptionsBoundary === '[]'),
 			needsMigration: true
 		};
 	}
@@ -361,6 +421,7 @@ interface IConfigureTestingModuleCall {
 	oldContent: string;
 	oldProperties: string;
 	oldOptions: string;
+	isEmptyOptions: boolean;
 	needsMigration: boolean;
 }
 

@@ -135,7 +135,7 @@ const MOCK_OBLIQUE_MODULES = [
 
 @NgModule({
 	imports: MOCK_OBLIQUE_MODULES,
-	exports: MOCK_OBLIQUE_MODULES,
+	exports: [...MOCK_OBLIQUE_MODULES, MockTranslatePipe, MockMatFormElementComponent],
 	declarations: [MockTranslatePipe, MockMatFormElementComponent],
 	providers: [
 		{provide: TranslateService, useClass: MockTranslateService},
@@ -145,6 +145,4 @@ const MOCK_OBLIQUE_MODULES = [
 export class ObliqueTestingModule {
 }
 
-
-
-
+export { MockTranslateService };
