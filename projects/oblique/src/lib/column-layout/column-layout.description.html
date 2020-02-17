@@ -1,4 +1,23 @@
-<p>The column layout component comes with 1, 2 or 3 columns. Both side columns are collapsible / expansible and optional. They use each 20% of the total width
-while the center one takes up the rest.<p>
-<p>It comes with no preconfigured margin which enables it to be used either as a full page layout or only as a page's subdivision layout.
-	On smaller viewports, both side columns are moved below the main one.</p>
+<p>The column layout component comes with 1, 2 or 3 columns. Both side columns are collapsible / expansible and optional. They both use 20 % of the total
+	width while the center column takes up the remaining 60%. The side columns can be enlarged with the <code>wider</code> option to use 40% each. This option
+	is only suitable when only 2 columns are displayed<p>
+<p>It comes with preconfigured padding which can be canceled with the <code>noLayout</code> input. On smaller viewports, both side columns are moved below the
+	main one.</p>
+<p>To adapt the column width to your needs, overwrite following CSS rules:</p>
+<pre>
+@media (min-width: 992px) &#123;
+	.column-layout &#123;
+		.column-left,
+		.column-right &#123;
+			flex-basis: $column-width;
+			max-width: $column-width;
+		}
+		.column-left.collapsed &#123;
+			margin-left: -$column-width;
+		}
+		.column-right.collapsed &#123;
+			margin-right: -$column-width;
+		}
+	}
+}
+</pre>

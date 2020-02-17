@@ -12,6 +12,7 @@ export class MockMasterLayoutComponent {
 	@Input() navigation: ORNavigationLink[] = [];
 	isFixed = true;
 	hasCover = true;
+	hasLayout = true;
 	isMenuCollapsed = true;
 	noNavigation = true;
 	hasOffCanvas = true;

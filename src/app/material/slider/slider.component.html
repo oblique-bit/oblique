@@ -1,80 +1,78 @@
-<div class="default-layout">
-	<h2 class="page-header">Slider</h2>
-	<or-column-layout [left]="false">
-		<div column-main-content class="main-div">
-			<mat-slider
-				[disabled]="disabled"
-				[invert]="invert"
-				[max]="max"
-				[min]="min"
-				[step]="step"
-				[thumbLabel]="thumbLabel"
-				[tickInterval]="tickInterval"
-				[(ngModel)]="value"
-				[vertical]="vertical"
-				[color]="color">
-			</mat-slider>
-		</div>
-		<div class="default-layout" column-right-content>
-			<h3>Controls</h3>
-			<mat-list>
-				<fieldset>
-					<legend>Configuration</legend>
-					<mat-form-field>
-						<mat-label>Value</mat-label>
-						<input matInput type="number" [(ngModel)]="value">
-					</mat-form-field>
-					<mat-form-field>
-						<mat-label>Min value</mat-label>
-						<input matInput type="number" [(ngModel)]="min">
-					</mat-form-field>
-					<mat-form-field>
-						<mat-label>Max value</mat-label>
-						<input matInput type="number" [(ngModel)]="max">
-					</mat-form-field>
-					<mat-form-field>
-						<mat-label>Step size</mat-label>
-						<input matInput type="number" [(ngModel)]="step">
-					</mat-form-field>
-					<mat-form-field>
-						<mat-label>Tick interval</mat-label>
-						<input matInput type="number" [(ngModel)]="tickInterval">
-					</mat-form-field>
-				</fieldset>
-				<fieldset>
-					<legend>Color</legend>
-					<mat-radio-group [(ngModel)]="color">
-						<mat-list-item *ngFor="let sliderColor of colors">
-							<mat-radio-button [value]="sliderColor">
-								{{sliderColor | titlecase}}
-							</mat-radio-button>
-						</mat-list-item>
-					</mat-radio-group>
-				</fieldset>
-				<fieldset>
-					<legend>Toggle features</legend>
-					<mat-list-item>
-						<mat-slide-toggle (click)="toggleDisabled()" matTooltip="Toggle disabled">
-							Disabled
-						</mat-slide-toggle>
+<h2 class="page-header">Slider</h2>
+<or-column-layout [left]="false">
+	<ng-container column-main-content>
+		<mat-slider
+			[disabled]="disabled"
+			[invert]="invert"
+			[max]="max"
+			[min]="min"
+			[step]="step"
+			[thumbLabel]="thumbLabel"
+			[tickInterval]="tickInterval"
+			[(ngModel)]="value"
+			[vertical]="vertical"
+			[color]="color">
+		</mat-slider>
+	</ng-container>
+	<ng-container column-right-content>
+		<h3>Controls</h3>
+		<mat-list>
+			<fieldset>
+				<legend>Configuration</legend>
+				<mat-form-field>
+					<mat-label>Value</mat-label>
+					<input matInput type="number" [(ngModel)]="value">
+				</mat-form-field>
+				<mat-form-field>
+					<mat-label>Min value</mat-label>
+					<input matInput type="number" [(ngModel)]="min">
+				</mat-form-field>
+				<mat-form-field>
+					<mat-label>Max value</mat-label>
+					<input matInput type="number" [(ngModel)]="max">
+				</mat-form-field>
+				<mat-form-field>
+					<mat-label>Step size</mat-label>
+					<input matInput type="number" [(ngModel)]="step">
+				</mat-form-field>
+				<mat-form-field>
+					<mat-label>Tick interval</mat-label>
+					<input matInput type="number" [(ngModel)]="tickInterval">
+				</mat-form-field>
+			</fieldset>
+			<fieldset>
+				<legend>Color</legend>
+				<mat-radio-group [(ngModel)]="color">
+					<mat-list-item *ngFor="let sliderColor of colors">
+						<mat-radio-button [value]="sliderColor">
+							{{sliderColor | titlecase}}
+						</mat-radio-button>
 					</mat-list-item>
-					<mat-list-item>
-						<mat-slide-toggle (click)="toggleInverted()" matTooltip="Toggle inverted">
-							Inverted
-						</mat-slide-toggle>
-					</mat-list-item>
-					<mat-list-item>
-						<mat-slide-toggle (click)="toggleVertical()" matTooltip="Toggle vertical/horizontal">
-							Vertical
-						</mat-slide-toggle>
-					</mat-list-item>
-					<mat-list-item>
-						<mat-slide-toggle (click)="toggleThumbLabel()" matTooltip="Toggle thumb-label-visibility">
-							Show thumb-label
-						</mat-slide-toggle>
-					</mat-list-item>
-				</fieldset>
-			</mat-list>
-		</div>
-	</or-column-layout>
-</div>
+				</mat-radio-group>
+			</fieldset>
+			<fieldset>
+				<legend>Toggle features</legend>
+				<mat-list-item>
+					<mat-slide-toggle (click)="toggleDisabled()" matTooltip="Toggle disabled">
+						Disabled
+					</mat-slide-toggle>
+				</mat-list-item>
+				<mat-list-item>
+					<mat-slide-toggle (click)="toggleInverted()" matTooltip="Toggle inverted">
+						Inverted
+					</mat-slide-toggle>
+				</mat-list-item>
+				<mat-list-item>
+					<mat-slide-toggle (click)="toggleVertical()" matTooltip="Toggle vertical/horizontal">
+						Vertical
+					</mat-slide-toggle>
+				</mat-list-item>
+				<mat-list-item>
+					<mat-slide-toggle (click)="toggleThumbLabel()" matTooltip="Toggle thumb-label-visibility">
+						Show thumb-label
+					</mat-slide-toggle>
+				</mat-list-item>
+			</fieldset>
+		</mat-list>
+	</ng-container>
+</or-column-layout>

@@ -11,6 +11,7 @@ export class MockStickyComponent {
 	readonly stickyFooterTemplate: TemplateRef<any>;
 	@Input() headerSize: string;
 	@Input() footerSize: string;
+	@Input() noLayout: boolean;
 	hostClass: string;
 	nestedSize = '';
 }

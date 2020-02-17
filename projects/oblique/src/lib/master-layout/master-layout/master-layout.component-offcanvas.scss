@@ -62,6 +62,7 @@
 		height: $header-height-no-navigation;
 		border-bottom: $brand-line-width solid $gray;
 		display: flex;
+		padding: $spacing-default;
 		justify-content: space-between;
 		align-items: center;
 		transition: height $duration-default ease-in-out;
@@ -85,6 +86,7 @@
 
 	.offcanvas-content {
 		height: calc(100vh - #{$header-height-no-navigation});
+		padding: $spacing-default;
 		overflow-y: auto;
 
 		@include layout-collapse-down() {

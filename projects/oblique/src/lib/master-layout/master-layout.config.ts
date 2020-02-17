@@ -78,7 +78,8 @@ export class MasterLayoutConfig {
 		isFixed: false,
 		hasCover: false,
 		hasMainNavigation: true,
-		hasOffCanvas: true
+		hasOffCanvas: true,
+		hasLayout: true
 	};
 
 	/**

@@ -15,7 +15,8 @@ export class MockMasterLayoutConfig {
 		isFixed: false,
 		hasCover: false,
 		hasMainNavigation: true,
-		hasOffCanvas: true
+		hasOffCanvas: true,
+		hasLayout: true
 	};
 	header = {
 		isAnimated: true,

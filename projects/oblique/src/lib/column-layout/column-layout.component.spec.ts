@@ -14,14 +14,14 @@ import {windowProvider, WINDOW} from '../utilities';
 @Component({
 	template: `
 		<or-column-layout [left]="left" [right]="right" orColumnPanel>
-			<div column-left-content class="default-layout">
+			<div column-left-content>
 				<h3 class="nav-header-title">Left Column</h3>
 			</div>
-			<div column-main-content class="default-layout">
+			<div column-main-content>
 				<h1>Three-Column Layout</h1>
 				<p>Lorem ipsum dolor sit amet, consectetur </p>
 			</div>
-			<div column-right-content class="default-layout">
+			<div column-right-content>
 				<h3 class="nav-header-title">Right Column</h3>
 			</div>
 		</or-column-layout>`

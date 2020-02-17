@@ -18,6 +18,20 @@
         "type": "boolean",
         "default": true,
         "since": "2.0.0"
+      },
+      {
+        "name": "noLayout",
+        "text": "Defines if the panels should have default layout.",
+        "type": "boolean",
+        "default": false,
+        "since": "5.0.0"
+      },
+      {
+        "name": "wider",
+        "text": "Defines if the side panels should be wider (40% each).",
+        "type": "boolean",
+        "default": false,
+        "since": "5.0.0"
       }
     ],
     "methods": [

@@ -15,6 +15,7 @@ export class MasterLayoutComponentService {
 	private _hasCover = this.config.layout.hasCover;
 	private _hasOffCanvas = this.config.layout.hasOffCanvas;
 	private _hasMainNavigation = this.config.layout.hasMainNavigation;
+	private _hasLayout = this.config.layout.hasLayout;
 
 	constructor(private readonly config: MasterLayoutConfig) {
 	}
@@ -79,6 +80,18 @@ export class MasterLayoutComponentService {
 		this._hasMainNavigation = value;
 		this._events.next({
 			name: MasterLayoutEventValues.MAIN_NAVIGATION,
+			value: value
+		});
+	}
+
+	get hasLayout(): boolean {
+		return this._hasLayout;
+	}
+
+	set hasLayout(value: boolean) {
+		this._hasLayout = value;
+		this._events.next({
+			name: MasterLayoutEventValues.LAYOUT,
 			value: value
 		});
 	}

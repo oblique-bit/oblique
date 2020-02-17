@@ -7,6 +7,7 @@ import {Component} from '@angular/core';
 export class StickySampleComponent {
 	stickyHeader = true;
 	stickyFooter = true;
+	noLayout = false;
 	footerSize = 'md';
 	headerSize = 'md';
 	sizes: {num: string, name: string}[] = [

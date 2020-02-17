@@ -9,6 +9,7 @@ export class MockMasterLayoutComponentService {
 	hasCover = true;
 	hasOffCanvas = true;
 	hasMainNavigation = true;
+	hasLayout = true;
 
 	get configEvents(): Observable<MasterLayoutEvent> {
 		return of();

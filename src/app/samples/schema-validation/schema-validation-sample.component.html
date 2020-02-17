@@ -1,4 +1,4 @@
-<div class="default-layout" *ngIf="schema$ | async as schema">
+<ng-container *ngIf="schema$ | async as schema">
 	<h2 class="page-header">
 		{{'i18n.routes.samples.schema-validation.title' | translate}}
 	</h2>
@@ -407,4 +407,4 @@
 		</div>
 	</div>
 	<or-api component="schema-validation"></or-api>
-</div>
+</ng-container>
