@@ -28,13 +28,20 @@ export function initalize(_options: IUpdateSchema): Rule {
 			default:
 		}
 
-		_context.logger.info(colors.green(`\nSTARTING MIGRATION TO OBLIQUE V${_options.targetVersion} \n\n`));
+		_context.logger.info(colors.black(colors.bold(`\nTHANK YOU FOR USING OBLIQUE! STARTING MIGRATION TO OBLIQUE V${_options.targetVersion} 💙 \n`)));
 
 		return chain([
 			migratable.applyMigrations(_options),
 			migratable.updateToLatest(_options, latestVersion),
 			migratable.updatePeerDependencies(_options),
+			finish(),
 			util.installDependencies()
 		])(tree, _context);
+	};
+}
+
+export function finish(): Rule {
+	return (tree: Tree, _context: SchematicContext) => {
+		_context.logger.info(colors.black(colors.bold(`\n WE'RE DONE WITH OBLIQUE MIGRATIONS 👌 ! LET US JUST UPDATE OTHER PACKAGES TO CONCLUDE. run ng update and npm outdated to discover the concerned packages \n`)));
 	};
 }

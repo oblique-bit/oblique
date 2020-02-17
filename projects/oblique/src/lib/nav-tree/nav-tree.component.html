@@ -35,6 +35,5 @@
 	</ng-template>
 </ng-template>
 <ul #root class="nav-tree nav-indent nav-toggle expanded" role="tree" [ngClass]="variant">
-	<ng-content></ng-content>
 	<ng-container *ngTemplateOutlet="itemList; context:{ $implicit: items, parentExpanded: true }"></ng-container>
 </ul>

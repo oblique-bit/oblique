@@ -15,7 +15,7 @@ export class UpdateV4toV5 implements IMigratable {
 
 	updateToLatest(_options: any, latestVersion: string): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(`Set latest major oblique dependency`) + colors.green(` ✔`));
+			_context.logger.info(colors.blue(colors.bold(`Setting latest major oblique dependency`)) + colors.green(` ✔`));
 
 			const projectPackageJSON = JSON.parse(UpdateV4toV5.util.getFile(tree, PROJECT_PACKAGE_JSON));
 			projectPackageJSON['dependencies'][OB_PACKAGE] = latestVersion;
@@ -27,7 +27,7 @@ export class UpdateV4toV5 implements IMigratable {
 
 	updatePeerDependencies(_options: any): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(`Update peer dependencies`));
+			_context.logger.info(colors.blue(colors.bold(`Update peer dependencies`)));
 
 			const obPackageJSON = JSON.parse(UpdateV4toV5.util.getFile(tree, OB_PACKAGE_JSON));
 			const changes: Rule[] = [];
@@ -41,14 +41,20 @@ export class UpdateV4toV5 implements IMigratable {
 
 	applyMigrations(_options: any): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(`Apply migrations`));
+			_context.logger.info(colors.blue(colors.bold(`Analyzing project 🧬`)));
+
+			UpdateV4toV5.util.loadBusinessSymbols(tree);
+
+			_context.logger.info(colors.blue(colors.bold(`Applying migrations 🏁`)));
+
 			return chain([
 				this.migratePopUpService(),
 				this.migratePopUpServiceSpecs(),
 				this.migrateMasterLayout(),
 				this.migrateTestingModule(),
 				this.migrateDatePicker(),
-				this.migrateWindow()
+				this.migrateWindow(),
+				this.migrateNavTree()
 			])(tree, _context);
 		};
 	}
@@ -111,12 +117,16 @@ export class UpdateV4toV5 implements IMigratable {
 			_context.logger.info(colors.blue(`- TestingModule`) + colors.green(` ✔`));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toApply = (filePath: string) => {
+				UpdateV4toV5.util.removeImport(tree, filePath, 'MockTranslateService');
 				UpdateV4toV5.util.addImport(tree, filePath, 'ObliqueTestingModule', OB_PACKAGE);
+				UpdateV4toV5.util.addImport(tree, filePath, 'MockTranslateService', OB_PACKAGE);
+				UpdateV4toV5.util.addImport(tree, filePath, 'TranslateService', '@ngx-translate/core');
 				UpdateV4toV5.util.addToTestBedConfig(tree, filePath, 'ObliqueTestingModule', 'imports');
 				UpdateV4toV5.util.removeFromTestBedConfig(tree, filePath, 'ObliqueModule', 'imports');
 				UpdateV4toV5.util.removeImplicitDeclarations(tree, filePath, 'declarations');
 				UpdateV4toV5.util.removeImplicitDeclarations(tree, filePath, 'imports');
 				UpdateV4toV5.util.removeImplicitDeclarations(tree, filePath, 'providers');
+				UpdateV4toV5.util.addToTestBedConfig(tree, filePath, '{ provide: TranslateService, useClass: MockTranslateService }', 'providers');
 			};
 			return chain([
 				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.spec.ts')
@@ -147,6 +157,30 @@ export class UpdateV4toV5 implements IMigratable {
 			};
 			return chain([
 				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.ts')
+			])(tree, _context);
+		};
+	}
+
+	private migrateNavTree(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			_context.logger.info(colors.blue(`- NavTree`) + colors.green(` ✔`));
+			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
+			const toApply = (filePath: string) => {
+				let html = UpdateV4toV5.util.getFile(tree, filePath);
+				if ( html.indexOf('</or-nav-tree>') !== -1 ) {
+					const projections = UpdateV4toV5.util.extractProjections('or-nav-tree', html);
+					projections.forEach((projection: string) => {
+						html = html.replace(projection, '');
+					});
+					html = html.split('<or-nav-tree').map((fragment: string, index: number) => {
+						const projection = ( projections[index] ) ? projections[index] : '' ;
+						return fragment + projection.split('\n').map((line: string) => line.replace('\t', '')).join('\n');
+					}).join('\t<or-nav-tree');
+					tree.overwrite(filePath, html);
+				}
+			};
+			return chain([
+				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.html')
 			])(tree, _context);
 		};
 	}
