@@ -20,7 +20,7 @@ import {SchemaValidationModule} from './schema-validation/schema-validation.modu
 import {ScrollingModule} from './scrolling/scrolling.module';
 import {SpinnerModule} from './spinner/spinner.module';
 import {ObSelectableModule} from './selectable/selectable.module';
-import {TextControlClearModule} from './text-control-clear/text-control-clear.module';
+import {InputClearModule} from './input-clear/input-clear.module';
 import {ToggleModule} from './toggle/toggle.module';
 import {TranslateParamsModule} from './translate-params/translate-params.module';
 import {UnsavedChangesModule} from './unsaved-changes/unsaved-changes.module';
@@ -56,7 +56,7 @@ const OBLIQUE_MODULES = [
 	ObSelectableModule,
 	SpinnerModule,
 	StickyModule,
-	TextControlClearModule,
+	InputClearModule,
 	ToggleModule,
 	TranslateParamsModule,
 	UnknownRouteModule,

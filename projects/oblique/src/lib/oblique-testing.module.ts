@@ -27,7 +27,7 @@ import {MockScrollingModule} from './scrolling/mock/mock-scrolling.module';
 import {MockSpinnerModule} from './spinner/mock/mock-spinner.module';
 import {MockStickyModule} from './sticky/mock/mock-sticky.module';
 import {MockTelemetryModule} from './telemetry/_mock/mock-telemetry.module';
-import {MockTextControlClearModule} from './text-control-clear/mock/mock-text-control-clear.module';
+import {MockInputClearModule} from './input-clear/mock/mock-input-clear.module';
 import {MockThemeModule} from './theme/mock/mock-theme.module';
 import {MockToggleModule} from './toggle/mock/mock-toggle.module';
 import {MockTranslateParamsModule} from './translate-params/mock/mock-translate-params.module';
@@ -91,7 +91,7 @@ export {MockScrollingModule, MockScrollingEvents, MockTopControlComponent} from 
 export {MockSpinnerModule, MockSpinnerComponent, MockSpinnerService} from './spinner/mock/mock-spinner.module';
 export {MockStickyModule, MockStickyComponent} from './sticky/mock/mock-sticky.module';
 export {MockTelemetryModule, MockTelemetryService} from './telemetry/_mock/mock-telemetry.module';
-export {MockTextControlClearModule, MockTextControlClearDirective} from './text-control-clear/mock/mock-text-control-clear.module';
+export {MockInputClearModule, MockInputClearDirective} from './input-clear/mock/mock-input-clear.module';
 export {MockThemeService, MockThemeModule} from './theme/mock/mock-theme.module';
 export {MockToggleModule, MockToggleDirective} from './toggle/mock/mock-toggle.module';
 export {MockTranslateParamsModule, MockTranslateParamsPipe} from './translate-params/mock/mock-translate-params.module';
@@ -125,7 +125,7 @@ const MOCK_OBLIQUE_MODULES = [
 	MockSpinnerModule,
 	MockStickyModule,
 	MockTelemetryModule,
-	MockTextControlClearModule,
+	MockInputClearModule,
 	MockThemeModule,
 	MockToggleModule,
 	MockTranslateParamsModule,

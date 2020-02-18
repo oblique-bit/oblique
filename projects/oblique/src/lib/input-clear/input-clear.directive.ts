@@ -1,11 +1,11 @@
 import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output} from '@angular/core';
 
 @Directive({
-	selector: '[orTextControlClear]',
-	exportAs: 'orTextControlClear'
+	selector: '[orInputClear]',
+	exportAs: 'orInputClear'
 })
-export class TextControlClearDirective {
-	@Input('orTextControlClear') control: HTMLInputElement;
+export class InputClearDirective {
+	@Input('orInputClear') control: HTMLInputElement;
 	@Input() focusOnClear = true;
 	@Output() onClear = new EventEmitter<MouseEvent>();
 	@HostBinding('class.text-control-clear') cssClass = true;

@@ -77,7 +77,7 @@ export {SearchBoxDirective, SearchWidgetItem, SearchBoxComponent, SearchBoxResul
 export {ObSelectableDirective, ObSelectableService, ObSelectableModule} from './lib/selectable/selectable.module';
 export {SpinnerEvent, SpinnerComponent, SpinnerModule, SpinnerService} from './lib/spinner/spinner.module';
 export {StickyComponent, StickyModule} from './lib/sticky/sticky.module';
-export {TextControlClearDirective, TextControlClearModule} from './lib/text-control-clear/text-control-clear.module';
+export {InputClearDirective, InputClearModule} from './lib/input-clear/input-clear.module';
 export {ToggleDirective, ToggleModule} from './lib/toggle/toggle.module';
 export {TranslateParamsModule, TranslateParamsPipe} from './lib/translate-params/translate-params.module';
 export {UnknownRouteModule, UnknownRouteComponent} from './lib/unknown-route/unknown-route.module';

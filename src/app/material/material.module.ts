@@ -27,7 +27,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatTabsModule} from '@angular/material/tabs';
-import {ColumnLayoutModule, ObSelectableModule, TextControlClearModule} from 'oblique';
+import {ColumnLayoutModule, ObSelectableModule, InputClearModule} from 'oblique';
 import {CardComponent} from './card/card.component';
 import {ChipsComponent} from './chips/chips.component';
 import {SliderComponent} from './slider/slider.component';
@@ -77,7 +77,7 @@ const appRoutes: Routes = [
 	imports: [
 		CommonModule,
 		ColumnLayoutModule,
-		TextControlClearModule,
+		InputClearModule,
 		ReactiveFormsModule,
 		ObSelectableModule,
 		FormsModule,

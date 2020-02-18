@@ -31,7 +31,7 @@ import {
 	ScrollingModule,
 	SearchBoxModule,
 	SpinnerModule,
-	TextControlClearModule,
+	InputClearModule,
 	THEMES,
 	ThemeService,
 	UnsavedChangesModule
@@ -74,7 +74,7 @@ import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-in
 		MatFormFieldModule,
 		MatInputModule,
 		MatCardModule,
-		TextControlClearModule
+		InputClearModule
 	],
 	providers: [
 		{provide: OBLIQUE_FONT, useValue: FONTS.ROBOTO},

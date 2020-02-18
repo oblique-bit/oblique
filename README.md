@@ -106,7 +106,7 @@ The scope is optional and should be the name of the Oblique feature affected:
 * **selectable**
 * **spinner**
 * **sticky**
-* **text-control-clear**
+* **input-clear**
 * **theme**
 * **toggle**
 * **translate-params**

@@ -5,12 +5,12 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {TranslateModule} from '@ngx-translate/core';
 
-import {TextControlClearDirective} from './text-control-clear.directive';
+import {InputClearDirective} from './input-clear.directive';
 import {TelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {WINDOW, windowProvider} from '../utilities';
 
-export {TextControlClearDirective} from './text-control-clear.directive';
+export {InputClearDirective} from './input-clear.directive';
 
 @NgModule({
 	imports: [
@@ -19,7 +19,7 @@ export {TextControlClearDirective} from './text-control-clear.directive';
 		FormsModule
 	],
 	declarations: [
-		TextControlClearDirective
+		InputClearDirective
 	],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
@@ -27,11 +27,11 @@ export {TextControlClearDirective} from './text-control-clear.directive';
 		{provide: WINDOW, useFactory: windowProvider}
 	],
 	exports: [
-		TextControlClearDirective
+		InputClearDirective
 	]
 })
-export class TextControlClearModule {
+export class InputClearModule {
 	constructor(telemetry: TelemetryService) {
-		requireAndRecordTelemetry(telemetry, TextControlClearModule);
+		requireAndRecordTelemetry(telemetry, InputClearModule);
 	}
 }
