@@ -54,7 +54,8 @@ export class UpdateV4toV5 implements IMigratable {
 				this.migratePopUpServiceSpecs(),
 				this.migrateMasterLayout(),
 				this.migrateTestingModule(),
-				this.migrateDatePicker(),
+				this.migrateDatePickerModule(),
+				this.migrateDatePickerHTML(),
 				this.migrateWindow(),
 				this.migrateNavTree()
 			])(tree, _context);
@@ -136,11 +137,42 @@ export class UpdateV4toV5 implements IMigratable {
 		};
 	}
 
-	private migrateDatePicker(): Rule {
+	private migrateDatePickerModule(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			_context.logger.info(colors.blue(`- DatePickerModule`) + colors.green(` ✔`));
+			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
+			const toApply = (filePath: string) => {
+				if ( UpdateV4toV5.util.hasImport(tree, filePath, 'DatepickerModule', OB_PACKAGE) ) {
+					UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('DatepickerModule\\.forRoot\\(\\)', 'g'), 'DatepickerModule');
+				}
+			};
+			return chain([
+				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.ts')
+			])(tree, _context);
+		};
+	}
+
+	private migrateDatePickerHTML(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			_context.logger.info(colors.blue(`- DatePicker`) + colors.green(` ✔`));
-			// TODO
-			return tree;
+			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
+			const toApply = (filePath: string) => {
+				let html = UpdateV4toV5.util.getFile(tree, filePath);
+				if ( html.indexOf('</or-date-picker>') !== -1 ) {
+					const projections = UpdateV4toV5.util.extractProjections('or-date-picker', html);
+					const childRegex = /(<(\w)*)/g;
+					const classRegex = /(class=("|')(\w|-|_)*("|'))/g;
+					html = html.replace(/(<or-date-picker((\s)*(\w)*(\[|\]|]|=|")*)*>)/g, '');
+					html = html.replace(/<\/or-date-picker>/g, '\t</or-date-picker>');
+					projections.forEach((projection: string) => {
+						html = html.replace(projection, projection.replace(childRegex, '<or-date-picker').replace('ngbDatepicker', '').replace(classRegex, ''));
+					});
+					tree.overwrite(filePath, html);
+				}
+			};
+			return chain([
+				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.html')
+			])(tree, _context);
 		};
 	}
 
