@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {FONTS, ORNavigationLink, SearchWidgetItem, THEMES, ThemeService} from 'oblique';
+import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Component({
 	selector: 'app-root',
@@ -10,8 +12,8 @@ import {FONTS, ORNavigationLink, SearchWidgetItem, THEMES, ThemeService} from 'o
 })
 export class AppComponent {
 	offCanvasOpen = false;
-	material: boolean;
-	frutiger: boolean;
+	theme$: Observable<string>;
+	font$: Observable<string>;
 	navigation: ORNavigationLink[] = [
 		{url: 'home', label: 'i18n.routes.home.title'},
 		{
@@ -80,22 +82,16 @@ export class AppComponent {
 
 	constructor(private readonly theme: ThemeService) {
 		this.populateSearchItems(this.navigation);
-		this.theme.theme$.subscribe(() => {
-			this.material = theme.isMaterial();
-		});
-		this.theme.font$.subscribe((font) => {
-			this.frutiger = font === FONTS.FRUTIGER;
-		});
+		this.theme$ = this.theme.theme$.pipe(map(() => theme.isMaterial() ? 'material' : 'bootstrap'));
+		this.font$ = this.theme.font$;
 	}
 
 	toggleTheme() {
-		this.material = !this.material;
-		this.theme.setTheme(this.material ? THEMES.MATERIAL : THEMES.BOOTSTRAP);
+		this.theme.setTheme(this.theme.isMaterial() ? THEMES.BOOTSTRAP : THEMES.MATERIAL);
 	}
 
-	toggleFont() {
-		this.frutiger = !this.frutiger;
-		this.theme.setFont(this.frutiger ? FONTS.FRUTIGER : FONTS.ROBOTO);
+	toggleFont(font: string): void {
+		this.theme.setFont(font === FONTS.FRUTIGER ? FONTS.ROBOTO : FONTS.FRUTIGER);
 	}
 
 	populateSearchItems(items: ORNavigationLink[], base = ''): void {

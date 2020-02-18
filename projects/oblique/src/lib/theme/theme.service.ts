@@ -1,6 +1,7 @@
 import {Inject, Injectable, InjectionToken, Optional, Renderer2, RendererFactory2} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {Observable, ReplaySubject} from 'rxjs';
+import {map, tap} from 'rxjs/operators';
 
 export enum THEMES {
 	MATERIAL = 'oblique-material',
@@ -8,59 +9,50 @@ export enum THEMES {
 }
 
 export enum FONTS {
-	FRUTIGER = 'oblique-material',
-	ROBOTO = 'oblique-bootstrap',
-	ARIAL = 'oblique-bootstrap'
+	FRUTIGER = 'frutiger',
+	ROBOTO = 'roboto',
+	ARIAL = 'arial'
 }
 
-export const OBLIQUE_THEME = new InjectionToken<THEMES>('OBLIQUE_THEME');
 export const OBLIQUE_FONT = new InjectionToken<THEMES>('OBLIQUE_FONT');
-export const FRUTIGER = new InjectionToken<boolean>('FRUTIGER');
 
 @Injectable({
 	providedIn: 'root'
 })
 export class ThemeService {
-	theme$: Observable<THEMES>;
+	theme$: Observable<THEMES | string>;
 	font$: Observable<FONTS>;
-	private readonly mainTheme$ = new BehaviorSubject<THEMES>(THEMES.MATERIAL);
-	private readonly mainFont$ = new BehaviorSubject<FONTS>(FONTS.FRUTIGER);
+	private readonly mainTheme = new ReplaySubject<THEMES | string>(1);
+	private readonly mainFont = new ReplaySubject<FONTS>(1);
 	private readonly renderer: Renderer2;
 	private readonly head: HTMLElement;
-	private readonly themeLink: HTMLElement;
-	private readonly fontLink: HTMLElement;
-	private currentTheme: THEMES;
-	private currentFont: FONTS;
+	private readonly warned = [];
+	private themeLink: HTMLElement;
+	private fontLink: HTMLElement;
+	private currentTheme: THEMES | string;
 
 	constructor(
 		rendererFactory: RendererFactory2,
 		@Inject(DOCUMENT) document: any, // NOTE: do not set type, it will break AOT
-		@Optional() @Inject(OBLIQUE_THEME) private readonly theme: any, // NOTE: do not set type, it will break AOT
-		@Optional() @Inject(OBLIQUE_FONT) private readonly font: any,
-		@Optional() @Inject(FRUTIGER) private readonly frutiger
+		@Optional() @Inject(OBLIQUE_FONT) private readonly font: any
 	) {
 		this.head = document.head;
 		this.renderer = rendererFactory.createRenderer(null, null);
-		this.theme$ = this.mainTheme$.asObservable();
-		this.font$ = this.mainFont$.asObservable();
-		this.fontLink = this.createAndAddEmptyLink();
-		this.themeLink = this.createAndAddEmptyLink();
-		this.frutiger = this.frutiger != null ? this.frutiger : true;
 	}
 
-	setTheme(theme: THEMES): void {
+	setTheme(theme: THEMES | string): void {
+		if (!this.themeLink) {
+			this.initTheme();
+		}
 		this.currentTheme = theme;
-		this.mainTheme$.next(theme);
+		this.mainTheme.next(theme);
 	}
 
 	setFont(font: FONTS): void {
-		this.currentFont = font;
-		this.mainFont$.next(font);
-	}
-
-	// @deprecated
-	setFrutiger(enabled: boolean) {
-		this.setFont(enabled ? FONTS.FRUTIGER : FONTS.ROBOTO);
+		if (!this.fontLink) {
+			this.initFont();
+		}
+		this.mainFont.next(font);
 	}
 
 	isMaterial(): boolean {
@@ -68,31 +60,19 @@ export class ThemeService {
 	}
 
 	deprecated(component: string, target: string): void {
-		if (this.isMaterial()) {
+		if (this.isMaterial() && !this.warned.includes(component)) {
+			this.warned.push(component);
 			console.warn(`Oblique's "${component}" should not be used with Material Design, prefer the Angular implementation:
 			https://material.angular.io/components/${target}.`);
 		}
 	}
 
-	setDefaultTheme(): void {
-		this.setTheme(this.theme || THEMES.MATERIAL);
-		this.setFont(this.font || (this.frutiger ? FONTS.FRUTIGER : FONTS.ROBOTO));
-		this.theme$.subscribe((newTheme) => {
-			this.renderer.setAttribute(this.themeLink, 'href', `assets/styles/css/${newTheme}.css`);
-		});
-		this.font$.subscribe((newFont) => {
-			switch (newFont) {
-				case FONTS.FRUTIGER:
-					this.renderer.setAttribute(this.fontLink, 'href', 'assets/styles/css/frutiger.css');
-					break;
-				case FONTS.ROBOTO:
-					this.renderer.setAttribute(this.fontLink, 'href', 'assets/styles/css/roboto.css');
-					break;
-				default:
-					this.renderer.removeAttribute(this.fontLink, 'href');
-					break;
-			}
-		});
+	setDefaultFont(): void {
+		this.setFont(this.font || FONTS.FRUTIGER);
+	}
+
+	private static isInEnum(value, enumName): boolean {
+		return Object.values(enumName).includes(value);
 	}
 
 	private createAndAddEmptyLink(): HTMLElement {
@@ -102,5 +82,34 @@ export class ThemeService {
 		const style = this.head.querySelector('style');
 		this.renderer.insertBefore(this.head, el, style);
 		return el;
+	}
+
+	private initTheme(): void {
+		this.themeLink = this.createAndAddEmptyLink();
+		this.theme$ = this.mainTheme.asObservable();
+		this.theme$
+			.pipe(map(theme => ThemeService.isInEnum(theme, THEMES) ? `assets/styles/css/${theme}.css` : theme))
+			.subscribe(path => this.renderer.setAttribute(this.themeLink, 'href', path));
+	}
+
+	private initFont(): void {
+		this.fontLink = this.createAndAddEmptyLink();
+		this.font$ = this.mainFont.asObservable();
+		this.font$
+			.pipe(
+				tap(font => this.addWarning(font === FONTS.FRUTIGER)),
+				map(font => ThemeService.isInEnum(font, FONTS) ? `assets/styles/css/${font}.css` : '')
+			)
+			.subscribe(path => this.renderer.setAttribute(this.fontLink, 'href', path));
+	}
+
+	private addWarning(addWarning: boolean): void {
+		if (addWarning) {
+			this.renderer.setAttribute(
+				this.fontLink,
+				'onError',
+				`console.warn('Please consult http://oblique.bit.admin.ch for instructions on how to install Frutiger')`
+			);
+		}
 	}
 }

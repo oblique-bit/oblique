@@ -1,24 +1,40 @@
 [
   {
     "name": "ThemeService",
+    "usage": "Allows live changing to the theme and font",
     "since": "4.0.0",
     "variables": [
       {
         "name": "theme$",
         "text": "An observable that emits each time the main theme is changed.",
-        "type": "Observable<THEMES>",
+        "type": "Observable<THEMES | string>",
         "since": "4.0.0"
+      },
+      {
+        "name": "font$",
+        "text": "An observable that emits each time the main font is changed.",
+        "type": "Observable<FONTS>",
+        "since": "5.0.0"
       }
     ],
     "methods": [
       {
         "name": "setTheme",
-        "text": "Sets a theme, e.g. loads the corresponding CSS and adds it the the <code>head</code>.",
+        "text": "Sets a theme, e.g. loads the corresponding CSS and adds it the the <code>head</code>. In case of a <code>string</code>, the full path of the theme has to be provided",
         "returns": "void",
         "arguments": [
-          "theme: THEMES"
+          "theme: THEMES | string"
         ],
         "since": "4.0.0"
+      },
+      {
+        "name": "setFont",
+        "text": "Sets a font, e.g. loads the corresponding CSS and adds it the the <code>head</code>.",
+        "returns": "void",
+        "arguments": [
+          "font: FONTS"
+        ],
+        "since": "5.0.0"
       },
       {
         "name": "isMaterial",
@@ -29,22 +45,12 @@
     ],
     "tokens": [
       {
-        "name": "OBLIQUE_THEME",
-        "text": "Defines the theme to apply.",
-        "type": "THEMES",
-        "values": [
-          "THEMES.MATERIAL",
-          "THEMES.BOOTSTRAP"
-        ],
-        "default": "THEMES.MATERIAL",
-        "since": "4.0.0"
-      },
-      {
-        "name": "FRUTIGER",
-        "text": "Defines if Frutiger font should be used. The alternative is Arial.",
-        "type": "boolean",
-        "default": true,
-        "since": "4.0.0"
+        "name": "OBLIQUE_FONT",
+        "text": "Defines the font to use",
+        "type": "FONTS",
+        "values": ["FONTS.FRUTIGER", "FONTS.ROBOTO", "FONTS.ARIAL"],
+        "default": "FONTS.FRUTIGER",
+        "since": "5.0.0"
       }
     ]
   }

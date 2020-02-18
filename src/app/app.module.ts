@@ -22,7 +22,6 @@ import {
 	multiTranslateLoader,
 	NotificationModule,
 	OBLIQUE_FONT,
-	OBLIQUE_THEME,
 	ObliqueHttpInterceptor,
 	ObliqueHttpInterceptorConfig,
 	ObliqueHttpModule,
@@ -34,6 +33,7 @@ import {
 	SpinnerModule,
 	TextControlClearModule,
 	THEMES,
+	ThemeService,
 	UnsavedChangesModule
 } from 'oblique';
 // App:
@@ -77,7 +77,6 @@ import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-in
 		TextControlClearModule
 	],
 	providers: [
-		{provide: OBLIQUE_THEME, useValue: THEMES.BOOTSTRAP},
 		{provide: OBLIQUE_FONT, useValue: FONTS.ROBOTO},
 		{provide: HTTP_INTERCEPTORS, useClass: ObliqueHttpInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
@@ -91,7 +90,8 @@ export class AppModule {
 				private readonly datepickerConfig: NgbDatepickerConfig,
 				private readonly documentMetaService: DocumentMetaService,
 				interceptorConfig: ObliqueHttpInterceptorConfig,
-				config: MasterLayoutConfig) {
+				config: MasterLayoutConfig,
+				theme: ThemeService) {
 		// As the HEAD `title` element and the `description` meta element are outside any
 		// Angular entry component, we use a service to update these element values:
 		documentMetaService.titleSuffix = 'i18n.application.title';
@@ -103,5 +103,6 @@ export class AppModule {
 
 		interceptorConfig.api.url = HttpInterceptorSampleComponent.API_URL;
 		config.locale.locales = ['en', 'fr'];
+		theme.setTheme(THEMES.BOOTSTRAP);
 	}
 }

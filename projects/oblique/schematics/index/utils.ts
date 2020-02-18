@@ -331,6 +331,33 @@ export class SchematicsUtil {
 		return false;
 	}
 
+	readSymbolInNgModule(tree: Tree, filePath: string, symbolToRead: string): string {
+		const sourceFile = this.getProject().createSourceFile(filePath, this.getFile(tree, filePath));
+		let foundSymbol = '';
+		sourceFile.getClasses().forEach((classDeclaration) => {
+			classDeclaration.getChildrenOfKind(SyntaxKind.Decorator).forEach(decorator => {
+				if ( decorator.getText().substr(0, '@NgModule'.length) === '@NgModule' ) {
+					const callExpression = decorator.getFirstChildByKind(SyntaxKind.CallExpression);
+					if ( callExpression ) {
+						const objectExpression = callExpression.getFirstChildByKind(SyntaxKind.ObjectLiteralExpression);
+						if ( objectExpression ) {
+							objectExpression.getChildrenOfKind(SyntaxKind.PropertyAssignment).forEach((propertyAssignment) => {
+								propertyAssignment.getChildrenOfKind(SyntaxKind.ArrayLiteralExpression).forEach((child) => {
+									child.getChildrenOfKind(SyntaxKind.ObjectLiteralExpression).forEach((objLiteral) => {
+										if ( objLiteral.getText().indexOf(symbolToRead) !== -1 ) {
+											foundSymbol = objLiteral.getText();
+										}
+									});
+								});
+							});
+						}
+					}
+				}
+			});
+		});
+		return foundSymbol;
+	}
+
 	private extractInnerFragment(inner: string): string {
 		return inner.split('>').map((fragment: string, index: number) => index > 0 ? fragment : '').join('>').substr(1);
 	}
