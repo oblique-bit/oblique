@@ -48,6 +48,7 @@ export class UpdateV4toV5 implements IMigratable {
 			_context.logger.info(colors.blue(colors.bold(`Applying migrations 🏁`)));
 
 			return chain([
+				this.migrateColorPalette(),
 				this.migrateAutomaticTheming(),
 				this.migratePopUpService(),
 				this.migratePopUpServiceSpecs(),
@@ -225,6 +226,25 @@ export class UpdateV4toV5 implements IMigratable {
 			};
 			return chain([
 				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, 'app.module.ts')
+			])(tree, _context);
+		};
+	}
+
+	private migrateColorPalette(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			_context.logger.info(colors.blue(`- Color Palette`) + colors.green(` ✔`));
+			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
+			const toApply = (filePath: string) => {
+				const placeholder = 'PLACEHOLDER' + Date.now();
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/\$brand-secondary/g), '#66afe9');
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/\$gray-lighter-2/g), placeholder);
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/\$gray-lighter/g), '$gray-extra-light');
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(placeholder, 'g'), '$gray-lighter');
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/\$brand-extralight/g), '$brand-extra-light');
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/\_nav-tabs.scss/g), '_tabs.scss');
+			};
+			return chain([
+				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.scss')
 			])(tree, _context);
 		};
 	}
