@@ -48,6 +48,7 @@ export class UpdateV4toV5 implements IMigratable {
 			_context.logger.info(colors.blue(colors.bold(`Applying migrations 🏁`)));
 
 			return chain([
+				this.migrateAutomaticTheming(),
 				this.migratePopUpService(),
 				this.migratePopUpServiceSpecs(),
 				this.migrateMasterLayout(),
@@ -181,6 +182,49 @@ export class UpdateV4toV5 implements IMigratable {
 			};
 			return chain([
 				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.html')
+			])(tree, _context);
+		};
+	}
+
+	private migrateAutomaticTheming(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			_context.logger.info(colors.blue(`- Automatic Theming`) + colors.green(` ✔`));
+			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
+			const toApply = (filePath: string) => {
+				UpdateV4toV5.util.removeImport(tree, filePath, 'OBLIQUE_THEME');
+				UpdateV4toV5.util.removeImport(tree, filePath, 'FRUTIGER');
+				const oldContent = UpdateV4toV5.util.getFile(tree, filePath);
+				const obliqueTheme = UpdateV4toV5.util.readSymbolInNgModule(tree, filePath, 'OBLIQUE_THEME');
+				const frutigerConfig = UpdateV4toV5.util.readSymbolInNgModule(tree, filePath, 'FRUTIGER');
+				const usedTheme = UpdateV4toV5.util.extractFromBrackets('{}', obliqueTheme).replace(/\s/g, '').split('useValue:')[1];
+				const usingFrutiger = UpdateV4toV5.util.extractFromBrackets('{}', frutigerConfig).replace(/\s/g, '').split('useValue:')[1];
+
+				if ( usingFrutiger === 'false' ) {
+					tree.overwrite(filePath, oldContent.replace(frutigerConfig, '{ provide: OBLIQUE_FONT, useValue: FONTS.ROBOTO }'));
+					UpdateV4toV5.util.addImport(tree, filePath, 'OBLIQUE_FONT', OB_PACKAGE);
+					UpdateV4toV5.util.addImport(tree, filePath, 'FONTS', OB_PACKAGE);
+				}
+
+				tree.overwrite(filePath, UpdateV4toV5.util.getFile(tree, filePath).replace(obliqueTheme, ''));
+
+				const themeFile = ( usedTheme === 'THEMES.BOOTSTRAP' ) ? 'oblique-bootstrap.css' : 'oblique-material.css' ;
+				const stylePath = `node_modules/@oblique/oblique/styles/css/${themeFile}`;
+
+				const projectJSON = JSON.parse(UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
+				Object.entries(projectJSON['projects']).forEach((project: any) => {
+					const config = project[1];
+					if (config.hasOwnProperty('architect') &&
+					config.architect.hasOwnProperty('build') &&
+					config.architect.build.hasOwnProperty('options') &&
+					config.architect.build.options.hasOwnProperty('styles') ) {
+						config.architect.build.options.styles.push(stylePath);
+					}
+				});
+
+				tree.overwrite(PROJECT_ANGULAR_JSON, JSON.stringify(projectJSON, null, '\t'));
+			};
+			return chain([
+				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, 'app.module.ts')
 			])(tree, _context);
 		};
 	}
