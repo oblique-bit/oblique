@@ -29,12 +29,14 @@ export const PROJECT_APP_MODULE = PROJECT_SRC_DIR + '/app.module.ts';
 export const PROJECT_ROUTING_MODULE = PROJECT_SRC_DIR + '/app/app-routing.module.ts';
 export const PROJECT_ANGULAR_JSON = './angular.json';
 export const PROJECT_PACKAGE_JSON = './package.json';
+export const PROJECT_FORCE_IMPLEMENTATION = PROJECT_ROOT_DIR + 'custom-implementation.migration';
 
 export class SchematicsUtil {
 
 	static instance: SchematicsUtil;
 
 	private readonly customImplentations: string[] = [];
+	private readonly forceCustomImplentations: string[] = [];
 	private readonly forceObliqueImplentations: string[] = [
 		'TranslatePipe',
 		'TranslateService',
@@ -314,6 +316,13 @@ export class SchematicsUtil {
 					this.customImplentations.push(classDeclaration.getFirstChildByKind(SyntaxKind.Identifier).getText());
 				});
 		});
+		if ( tree.exists(PROJECT_FORCE_IMPLEMENTATION) ) {
+			this.getFile(tree, PROJECT_FORCE_IMPLEMENTATION)
+			.split('\n').map((customImplementation: string) => customImplementation.trim())
+			.forEach((customImplementation: string) => {
+				this.forceCustomImplentations.push(customImplementation);
+			});
+		}
 	}
 
 	isObliqueSymbol(symbol: string): boolean {
@@ -364,6 +373,24 @@ export class SchematicsUtil {
 
 	private getLiteralSymbol(child: any): string | undefined {
 		const literalSymbol = child.getText().trim();
+
+		if ( literalSymbol.indexOf('MockComponent(') !== -1 || literalSymbol.indexOf('MockPipe(') !== -1 ) {
+			// special useage of ng-mock class wrappers
+			const mockedSymbol = this.extractFromBrackets('()', literalSymbol);
+			if ( !this.getObliqueModules().includes(mockedSymbol) ) {
+				return literalSymbol;
+			}
+			if ( this.forceCustomImplentations.includes(mockedSymbol) ) {
+				// project wants to keep this symbol
+				return literalSymbol;
+			}
+		}
+
+		if ( this.forceCustomImplentations.includes(literalSymbol) ) {
+			// project wants to keep this symbol
+			return literalSymbol;
+		}
+
 		switch ( child.getKind() ) {
 			case SyntaxKind.Identifier:
 				if ( !this.isObliqueSymbol(literalSymbol) ) {
