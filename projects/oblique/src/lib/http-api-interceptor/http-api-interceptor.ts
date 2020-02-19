@@ -5,11 +5,11 @@ import {finalize, tap} from 'rxjs/operators';
 
 import {NotificationService, NotificationType} from '../notification/notification.module';
 import {SpinnerService} from '../spinner/spinner.module';
-import {ObliqueHttpInterceptorConfig} from './oblique-http-interceptor.config';
-import {ObliqueHttpInterceptorEvents} from './oblique-http-interceptor.events';
+import {HttpApiInterceptorConfig} from './http-api-interceptor.config';
+import {HttpApiInterceptorEvents} from './http-api-interceptor.events';
 import Timer = NodeJS.Timer;
 
-export interface ObliqueRequest {
+export interface HttpApiRequest {
 	notification: {
 		active: boolean;
 		severity: NotificationType;
@@ -21,11 +21,11 @@ export interface ObliqueRequest {
 }
 
 @Injectable({providedIn: 'root'})
-export class ObliqueHttpInterceptor implements HttpInterceptor {
+export class HttpApiInterceptor implements HttpInterceptor {
 	private readonly activeRequestUrls: string[] = [];
 
-	constructor(private readonly config: ObliqueHttpInterceptorConfig,
-				private readonly interceptorEvents: ObliqueHttpInterceptorEvents,
+	constructor(private readonly config: HttpApiInterceptorConfig,
+				private readonly interceptorEvents: HttpApiInterceptorEvents,
 				private readonly spinner: SpinnerService,
 				private readonly notificationService: NotificationService) {
 	}
@@ -67,8 +67,8 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 			}, this.config.timeout);
 	}
 
-	private broadcast(): ObliqueRequest {
-		const evt: ObliqueRequest = {
+	private broadcast(): HttpApiRequest {
+		const evt: HttpApiRequest = {
 			notification: this.config.api.notification,
 			spinner: this.config.api.spinner
 		};
@@ -96,7 +96,7 @@ export class ObliqueHttpInterceptor implements HttpInterceptor {
 		}
 	}
 
-	private notify(notification: ObliqueRequest['notification'], error: HttpErrorResponse): void {
+	private notify(notification: HttpApiRequest['notification'], error: HttpErrorResponse): void {
 		if (notification.active || error.status >= 500 || error.status === 0) {
 			this.notificationService.send({
 				message: notification.text || 'i18n.http.error.error.status.' + error.status,

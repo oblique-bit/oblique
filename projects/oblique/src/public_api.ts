@@ -23,12 +23,12 @@ export {
 export {FilterBoxComponent, FilterBoxModule} from './lib/filter-box/filter-box.module';
 export {FormControlStateDirective, FormControlStateModule} from './lib/form-control-state/form-control-state.module';
 export {
-	ObliqueHttpInterceptor,
-	ObliqueHttpInterceptorConfig,
-	ObliqueHttpInterceptorEvents,
-	ObliqueHttpModule,
-	ObliqueRequest
-} from './lib/http/oblique-http.module';
+	HttpApiInterceptor,
+	HttpApiInterceptorConfig,
+	HttpApiInterceptorEvents,
+	HttpApiInterceptorModule,
+	HttpApiRequest
+} from './lib/http-api-interceptor/http-api-interceptor.module';
 export {
 	MasterLayoutComponent,
 	MasterLayoutConfig,

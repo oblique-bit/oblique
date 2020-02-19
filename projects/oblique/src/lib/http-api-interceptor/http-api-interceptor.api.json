@@ -1,7 +1,7 @@
 [
   {
-    "name": "ObliqueHttpInterceptorConfig",
-    "usage": "Should by injected, typically in the AppModule, to customize the values of its properties in order to provide alternate default values for the <code>ObliqueHttpInterceptor</code>.",
+    "name": "HttpApiInterceptorConfig",
+    "usage": "Should by injected, typically in the AppModule, to customize the values of its properties in order to provide alternate default values for the <code>HttpApiInterceptor</code>.",
     "since": "3.0.0",
     "variables": [
       {
@@ -62,13 +62,13 @@
     ]
   },
   {
-    "name": "ObliqueHttpInterceptorEvents",
+    "name": "HttpApiInterceptorEvents",
     "since": "3.0.0",
     "variables": [
       {
         "name": "requestIntercepted",
         "text": "This observable emits events before the request is sent to the server and can be used to tweak the behavior of the interceptor.",
-        "type": "Observable<ObliqueRequest>",
+        "type": "Observable<HttpApiRequest>",
         "since": "3.0.0"
       },
       {

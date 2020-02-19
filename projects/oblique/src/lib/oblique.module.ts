@@ -15,7 +15,7 @@ import {NavigableModule} from './navigable/navigable.module';
 import {NavTreeModule} from './nav-tree/nav-tree.module';
 import {NestedFormModule} from './nested-form/nested-form.module';
 import {NotificationModule} from './notification/notification.module';
-import {ObliqueHttpModule} from './http/oblique-http.module';
+import {HttpApiInterceptorModule} from './http-api-interceptor/http-api-interceptor.module';
 import {SchemaValidationModule} from './schema-validation/schema-validation.module';
 import {ScrollingModule} from './scrolling/scrolling.module';
 import {SpinnerModule} from './spinner/spinner.module';
@@ -48,7 +48,7 @@ const OBLIQUE_MODULES = [
 	NestedFormModule,
 	NotificationModule,
 	NumberFormatModule,
-	ObliqueHttpModule,
+	HttpApiInterceptorModule,
 	OffCanvasModule,
 	SchemaValidationModule,
 	ScrollingModule,

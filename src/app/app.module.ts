@@ -22,9 +22,9 @@ import {
 	multiTranslateLoader,
 	NotificationModule,
 	OBLIQUE_FONT,
-	ObliqueHttpInterceptor,
-	ObliqueHttpInterceptorConfig,
-	ObliqueHttpModule,
+	HttpApiInterceptor,
+	HttpApiInterceptorConfig,
+	HttpApiInterceptorModule,
 	ObSelectableModule,
 	OffCanvasModule,
 	SchemaValidationModule,
@@ -57,7 +57,7 @@ import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-in
 		DocumentMetaModule,
 		ErrorMessagesModule,
 		DropdownModule,
-		ObliqueHttpModule,
+		HttpApiInterceptorModule,
 		MasterLayoutModule,
 		MultiselectModule,
 		NotificationModule,
@@ -78,7 +78,7 @@ import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-in
 	],
 	providers: [
 		{provide: OBLIQUE_FONT, useValue: FONTS.ROBOTO},
-		{provide: HTTP_INTERCEPTORS, useClass: ObliqueHttpInterceptor, multi: true},
+		{provide: HTTP_INTERCEPTORS, useClass: HttpApiInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
 		{provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig}
 	],
@@ -89,7 +89,7 @@ export class AppModule {
 	constructor(private readonly tooltipConfig: NgbTooltipConfig,
 				private readonly datepickerConfig: NgbDatepickerConfig,
 				private readonly documentMetaService: DocumentMetaService,
-				interceptorConfig: ObliqueHttpInterceptorConfig,
+				interceptorConfig: HttpApiInterceptorConfig,
 				config: MasterLayoutConfig,
 				theme: ThemeService) {
 		// As the HEAD `title` element and the `description` meta element are outside any

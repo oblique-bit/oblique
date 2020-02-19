@@ -18,7 +18,7 @@ import {MockNavigatorModule} from './navigator/mock/mock-navigator.module';
 import {MockNavTreeModule} from './nav-tree/mock/mock-nav-tree.module';
 import {MockNotificationModule} from './notification/mock/mock-notification.module';
 import {MockNumberFormatModule} from './number-format/mock/mock-number-format.module';
-import {MockObliqueHttpModule} from './http/mock/mock-oblique-http.module';
+import {MockHttpApiInterceptorModule} from './http-api-interceptor/mock/mock-http-api-interceptor.module';
 import {MockOffCanvasModule} from './off-canvas/mock/mock-off-canvas.module';
 import {MockPopUpModule} from './pop-up/_mock/mock-pop-up.module';
 import {MockSchemaValidationModule} from './schema-validation/mock/mock-schema-validation.module';
@@ -78,8 +78,8 @@ export {MockNotificationModule, MockNotificationService, MockNotificationCompone
 export {MockNumberFormatModule, MockNumberFormatDirective} from './number-format/mock/mock-number-format.module';
 export {MockPopUpModule, MockPopUpService} from './pop-up/_mock/mock-pop-up.module';
 export {
-	MockObliqueHttpModule, MockObliqueHttpInterceptor, MockObliqueHttpInterceptorConfig, MockObliqueHttpInterceptorEvents
-} from './http/mock/mock-oblique-http.module';
+	MockHttpApiInterceptorModule, MockHttpApiInterceptor, MockHttpApiInterceptorConfig, MockHttpApiInterceptorEvents
+} from './http-api-interceptor/mock/mock-http-api-interceptor.module';
 export {
 	MockOffCanvasModule, MockOffCanvasBackdropDirective, MockOffCanvasContainerDirective, MockOffCanvasService, MockOffCanvasToggleDirective
 } from './off-canvas/mock/mock-off-canvas.module';
@@ -108,7 +108,7 @@ const MOCK_OBLIQUE_MODULES = [
 	MockErrorMessagesModule,
 	MockFilterBoxModule,
 	MockFormControlStateModule,
-	MockObliqueHttpModule,
+	MockHttpApiInterceptorModule,
 	MockMasterLayoutModule,
 	MockMultiselectModule,
 	MockNavigableModule,

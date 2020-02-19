@@ -2,7 +2,7 @@ import {NotificationType} from '../../notification/notification.module';
 import {Injectable} from '@angular/core';
 
 @Injectable()
-export class MockObliqueHttpInterceptorConfig {
+export class MockHttpApiInterceptorConfig {
 	api = {
 		url: '',
 		spinner: true,
