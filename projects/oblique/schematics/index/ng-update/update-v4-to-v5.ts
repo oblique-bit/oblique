@@ -242,8 +242,8 @@ export class UpdateV4toV5 implements IMigratable {
 
 				tree.overwrite(filePath, UpdateV4toV5.util.getFile(tree, filePath).replace(obliqueTheme, ''));
 
-				const themeFile = ( usedTheme === 'THEMES.BOOTSTRAP' ) ? 'oblique-bootstrap.css' : 'oblique-material.css' ;
-				const stylePath = `node_modules/@oblique/oblique/styles/css/${themeFile}`;
+				const obliqueStyleKind = ( usedTheme === 'THEMES.BOOTSTRAP' ) ? 'oblique-bootstrap.css' : 'oblique-material.css' ;
+				const obliqueStyleLocation = `node_modules/@oblique/oblique/styles/css`;
 
 				const projectJSON = JSON.parse(UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 				Object.entries(projectJSON['projects']).forEach((project: any) => {
@@ -252,7 +252,29 @@ export class UpdateV4toV5 implements IMigratable {
 					config.architect.hasOwnProperty('build') &&
 					config.architect.build.hasOwnProperty('options') &&
 					config.architect.build.options.hasOwnProperty('styles') ) {
-						config.architect.build.options.styles.push(stylePath);
+
+						const obliqueStyleOrder = [
+							`${obliqueStyleLocation}/oblique-core.css`,
+							`${obliqueStyleLocation}/${obliqueStyleKind}`,
+						];
+
+						// add oblique-compact only if it was present before
+						if ( config.architect.build.options.styles.includes(`${obliqueStyleLocation}/oblique-compact.css`) ) {
+							obliqueStyleOrder.push(`${obliqueStyleLocation}/oblique-compact.css`);
+						}
+
+						// same for oblique-utilities.css
+						if ( config.architect.build.options.styles.includes(`${obliqueStyleLocation}/oblique-utilities.css`) ) {
+							obliqueStyleOrder.push(`${obliqueStyleLocation}/oblique-utilities.css`);
+						}
+
+						obliqueStyleOrder.push(`${obliqueStyleLocation}/oblique-components.css`);
+						const projectStyles = config.architect.build.options.styles.filter((styleUrl: string) => !obliqueStyleOrder.includes(styleUrl));
+
+						config.architect.build.options.styles = [
+							...obliqueStyleOrder,
+							...projectStyles
+						];
 					}
 				});
 
