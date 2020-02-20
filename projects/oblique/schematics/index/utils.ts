@@ -52,12 +52,14 @@ export class SchematicsUtil {
 		}
 		return SchematicsUtil.instance;
 	}
+
 	getCurrentObliqueVersion(tree: Tree) {
 		const projectPackageJSON = JSON.parse(this.getFile(tree, PROJECT_PACKAGE_JSON));
 		if ( !projectPackageJSON['dependencies'].hasOwnProperty(OB_PACKAGE) ) {
 			throw new Error(`[ERROR] no installation found, abort migration`);
 		}
-		return projectPackageJSON['dependencies'][OB_PACKAGE];
+		const packageVersion = projectPackageJSON['dependencies'][OB_PACKAGE];
+		return ( packageVersion === 'next' ) ? [100] : packageVersion || [100];
 	}
 
 	getFile(tree: Tree, path: string) {

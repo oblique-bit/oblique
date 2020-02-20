@@ -260,9 +260,9 @@ export class UpdateV4toV5 implements IMigratable {
 							`${obliqueStyleLocation}/${obliqueStyleKind}`,
 						];
 
-						// add oblique-compact only if it was present before
-						if ( config.architect.build.options.styles.includes(`${obliqueStyleLocation}/oblique-compact.css`) ) {
-							obliqueStyleOrder.push(`${obliqueStyleLocation}/oblique-compact.css`);
+						// add oblique-compat only if it was present before
+						if ( config.architect.build.options.styles.includes(`${obliqueStyleLocation}/oblique-compat.css`) ) {
+							obliqueStyleOrder.push(`${obliqueStyleLocation}/oblique-compat.css`);
 						}
 
 						// same for oblique-utilities.css
@@ -270,7 +270,11 @@ export class UpdateV4toV5 implements IMigratable {
 							obliqueStyleOrder.push(`${obliqueStyleLocation}/oblique-utilities.css`);
 						}
 
-						obliqueStyleOrder.push(`${obliqueStyleLocation}/oblique-components.css`);
+						// ... and same for oblique-components.css
+						if ( config.architect.build.options.styles.includes(`${obliqueStyleLocation}/oblique-components.css`) ) {
+							obliqueStyleOrder.push(`${obliqueStyleLocation}/oblique-components.css`);
+						}
+
 						const projectStyles = config.architect.build.options.styles.filter((styleUrl: string) => !obliqueStyleOrder.includes(styleUrl));
 
 						config.architect.build.options.styles = [
