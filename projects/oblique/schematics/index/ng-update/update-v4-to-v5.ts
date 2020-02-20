@@ -191,8 +191,8 @@ export class UpdateV4toV5 implements IMigratable {
 						UpdateV4toV5.util.addImport(tree, filePath, 'WINDOW', OB_PACKAGE);
 						UpdateV4toV5.util.addToConstructor(tree, filePath, toInject);
 					}
-				};
 				}
+			};
 			return chain([
 				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.ts')
 			])(tree, _context);
