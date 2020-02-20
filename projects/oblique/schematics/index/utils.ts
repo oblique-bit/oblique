@@ -221,6 +221,11 @@ export class SchematicsUtil {
 		}
 	}
 
+	getClassImplementation(tree: Tree, filePath: string): string[] {
+		const sourceFile = this.getProject().createSourceFile(filePath, this.getFile(tree, filePath));
+		return sourceFile.getClasses().map((classDeclaration) => classDeclaration.getText());
+	}
+
 	addToConstructor(tree: Tree, filePath: string, toInject: string): void {
 		const sourceFile = this.getProject().createSourceFile(filePath, this.getFile(tree, filePath));
 		const content = sourceFile.getFullText();

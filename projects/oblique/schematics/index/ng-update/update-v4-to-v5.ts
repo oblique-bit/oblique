@@ -182,13 +182,15 @@ export class UpdateV4toV5 implements IMigratable {
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toInject = '@Inject(WINDOW) private readonly window';
 			const toApply = (filePath: string) => {
-				const window = UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/window\./g), 'this.window.');
-				if ( window ) {
-					UpdateV4toV5.util.addImport(tree, filePath, 'Inject', '@angular/core');
-					UpdateV4toV5.util.addImport(tree, filePath, 'WINDOW', OB_PACKAGE);
-					UpdateV4toV5.util.addToConstructor(tree, filePath, toInject);
+				if ( UpdateV4toV5.util.getClassImplementation(tree, filePath).join('').indexOf('window.') !== -1 ) {
+					const window = UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/window\./g), 'this.window.');
+					if ( window ) {
+						UpdateV4toV5.util.addImport(tree, filePath, 'Inject', '@angular/core');
+						UpdateV4toV5.util.addImport(tree, filePath, 'WINDOW', OB_PACKAGE);
+						UpdateV4toV5.util.addToConstructor(tree, filePath, toInject);
+					}
+				};
 				}
-			};
 			return chain([
 				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.ts')
 			])(tree, _context);
