@@ -111,7 +111,7 @@ export class SchematicsUtil {
 	replaceInFile(tree: Tree, path: string, pattern: RegExp, replacement: string): boolean {
 		const fileContent = this.getFile(tree, path);
 		if ( pattern.test(fileContent) ) {
-			tree.overwrite(path, fileContent.replace(pattern, replacement));
+			this.overwrite(tree, path, fileContent.replace(pattern, replacement));
 			return true;
 		}
 		return false;
@@ -190,7 +190,7 @@ export class SchematicsUtil {
 			if ( importDeclaration.getModuleSpecifierValue() === packageName ) {
 				const oldContent = this.extractFromBrackets('{}', importDeclaration.getText());
 				const newContent = this.addToList(oldContent, newSymbol);
-				tree.overwrite(filePath, content.replace(oldContent, newContent));
+				this.overwrite(tree, filePath, content.replace(oldContent, newContent));
 			}
 		});
 	}
@@ -199,7 +199,7 @@ export class SchematicsUtil {
 		if ( !this.hasImport(tree, filePath, symbol, packageName) ) {
 			const fileContent = this.getFile(tree, filePath);
 			const newImports = `import {${symbol}} from '${packageName}';\n`;
-			tree.overwrite(filePath, newImports + fileContent);
+			this.overwrite(tree, filePath, newImports + fileContent);
 		} else {
 			this.updateImport(tree, filePath, symbol, packageName);
 		}
@@ -215,7 +215,7 @@ export class SchematicsUtil {
 				if ( imports.split(',').map((fragment: string) => fragment.trim()).includes(symbol) ) {
 					const newImports = this.removeFromList(imports, symbol);
 
-					tree.overwrite(filePath, content.replace(child.getText(), child.getText().replace(imports, newImports)));
+					this.overwrite(tree, filePath, content.replace(child.getText(), child.getText().replace(imports, newImports)));
 				}
 			});
 		}
@@ -238,7 +238,7 @@ export class SchematicsUtil {
 				const newParams = this.addToList(params, toInject);
 				const newConstructor = `\tconstructor(${newParams}) {${body}}`;
 
-				tree.overwrite(filePath, content.replace(oldConstructor, newConstructor));
+				this.overwrite(tree, filePath, content.replace(oldConstructor, newConstructor));
 			});
 		});
 	}
@@ -257,7 +257,7 @@ export class SchematicsUtil {
 			// append property
 			const newProperties = this.addToList(call.oldProperties, symbol);
 			const newContent = call.oldContent.replace(call.oldProperties, newProperties);
-			tree.overwrite(filePath, call.content.replace(call.oldContent, newContent));
+			this.overwrite(tree, filePath, call.content.replace(call.oldContent, newContent));
 		} else if ( call.isEmptyOptions ) {
 			// TODO write proper replacement
 			const regex = new RegExp(`('|")?${property}('|")?(\\s)*:(\\s)*\\[(\\s)*\\]{1}`);
@@ -270,7 +270,7 @@ export class SchematicsUtil {
 			if ( isEmptyConfig ) {
 				newContent = call.oldContent.replace(this.extractFromBrackets('()', call.oldContent), `{${newOptions.trim()}}`);
 			}
-			tree.overwrite(filePath, call.content.replace(call.oldContent, newContent));
+			this.overwrite(tree, filePath, call.content.replace(call.oldContent, newContent));
 		}
 	}
 
@@ -286,7 +286,7 @@ export class SchematicsUtil {
 			// remove property
 			const newProperties = this.removeFromList(call.oldProperties, symbol);
 			const newContent = call.oldContent.replace(call.oldProperties, newProperties);
-			tree.overwrite(filePath, call.content.replace(call.oldContent, newContent));
+			this.overwrite(tree, filePath, call.content.replace(call.oldContent, newContent));
 		}
 	}
 
@@ -310,7 +310,7 @@ export class SchematicsUtil {
 			});
 		}
 		const newContent = call.oldContent.replace(call.oldProperties, newProperties.join(', '));
-		tree.overwrite(filePath, call.content.replace(call.oldContent, newContent));
+		this.overwrite(tree, filePath, call.content.replace(call.oldContent, newContent));
 	}
 
 	loadBusinessSymbols(tree: Tree): void {
@@ -426,6 +426,10 @@ export class SchematicsUtil {
 				}
 				break;
 		}
+	}
+
+	private overwrite(tree: Tree, filePath: string, newContent: string): void {
+		tree.overwrite(filePath, newContent.replace(/,,/g, ''));
 	}
 
 	private walk(node: any, identifier: string, results: any[]): void {
