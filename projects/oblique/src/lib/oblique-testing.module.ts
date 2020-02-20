@@ -100,6 +100,7 @@ export {MockUnknownRouteModule, MockUnknownRouteComponent} from './unknown-route
 export {
 	MockUnsavedChangesModule, MockUnsavedChangesGuard, MockUnsavedChangesDirective, MockUnsavedChangesService
 } from './unsaved-changes/mock/mock-unsaved-changes.module';
+export {MockTranslateService};
 
 const MOCK_OBLIQUE_MODULES = [
 	MockColumnLayoutModule,
@@ -144,5 +145,3 @@ const MOCK_OBLIQUE_MODULES = [
 })
 export class ObliqueTestingModule {
 }
-
-export { MockTranslateService };
