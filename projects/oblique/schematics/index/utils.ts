@@ -391,6 +391,11 @@ export class SchematicsUtil {
 			return literalSymbol;
 		}
 
+		if ( literalSymbol.includes('(') && literalSymbol.includes(')') ) {
+			// special configured module
+			return literalSymbol;
+		}
+
 		switch ( child.getKind() ) {
 			case SyntaxKind.Identifier:
 				if ( !this.isObliqueSymbol(literalSymbol) ) {
