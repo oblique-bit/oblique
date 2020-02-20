@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {MockTranslateService} from './_mocks/mock-translate.service';
 import {MockTranslatePipe} from './_mocks/mock-translate.pipe';
-import {MockMatFormElementComponent} from './_mocks/mock-form-element.component';
 
 import {MockColumnLayoutModule} from './column-layout/mock/mock-column-layout.module';
 import {MockSearchBoxModule} from './searchbox/mock/mock-search-box.module';
@@ -136,8 +135,8 @@ const MOCK_OBLIQUE_MODULES = [
 
 @NgModule({
 	imports: MOCK_OBLIQUE_MODULES,
-	exports: [...MOCK_OBLIQUE_MODULES, MockTranslatePipe, MockMatFormElementComponent],
-	declarations: [MockTranslatePipe, MockMatFormElementComponent],
+	exports: [...MOCK_OBLIQUE_MODULES, MockTranslatePipe],
+	declarations: [MockTranslatePipe],
 	providers: [
 		{provide: TranslateService, useClass: MockTranslateService},
 		{provide: WINDOW, useFactory: windowProvider}
