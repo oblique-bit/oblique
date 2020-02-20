@@ -120,16 +120,18 @@ export class UpdateV4toV5 implements IMigratable {
 			_context.logger.info(colors.blue(`- TestingModule`) + colors.green(` ✔`));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toApply = (filePath: string) => {
-				UpdateV4toV5.util.removeImport(tree, filePath, 'MockTranslateService');
-				UpdateV4toV5.util.addImport(tree, filePath, 'ObliqueTestingModule', OB_PACKAGE);
-				UpdateV4toV5.util.addImport(tree, filePath, 'MockTranslateService', OB_PACKAGE);
-				UpdateV4toV5.util.addImport(tree, filePath, 'TranslateService', '@ngx-translate/core');
-				UpdateV4toV5.util.addToTestBedConfig(tree, filePath, 'ObliqueTestingModule', 'imports');
-				UpdateV4toV5.util.removeFromTestBedConfig(tree, filePath, 'ObliqueModule', 'imports');
-				UpdateV4toV5.util.removeImplicitDeclarations(tree, filePath, 'declarations');
-				UpdateV4toV5.util.removeImplicitDeclarations(tree, filePath, 'imports');
-				UpdateV4toV5.util.removeImplicitDeclarations(tree, filePath, 'providers');
-				UpdateV4toV5.util.addToTestBedConfig(tree, filePath, '{ provide: TranslateService, useClass: MockTranslateService }', 'providers');
+				if ( UpdateV4toV5.util.getFile(tree, filePath).indexOf('configureTestingModule') !== -1 ) {
+					UpdateV4toV5.util.removeImport(tree, filePath, 'MockTranslateService');
+					UpdateV4toV5.util.addImport(tree, filePath, 'ObliqueTestingModule', OB_PACKAGE);
+					UpdateV4toV5.util.addImport(tree, filePath, 'MockTranslateService', OB_PACKAGE);
+					UpdateV4toV5.util.addImport(tree, filePath, 'TranslateService', '@ngx-translate/core');
+					UpdateV4toV5.util.addToTestBedConfig(tree, filePath, 'ObliqueTestingModule', 'imports');
+					UpdateV4toV5.util.removeFromTestBedConfig(tree, filePath, 'ObliqueModule', 'imports');
+					UpdateV4toV5.util.removeImplicitDeclarations(tree, filePath, 'declarations');
+					UpdateV4toV5.util.removeImplicitDeclarations(tree, filePath, 'imports');
+					UpdateV4toV5.util.removeImplicitDeclarations(tree, filePath, 'providers');
+					UpdateV4toV5.util.addToTestBedConfig(tree, filePath, '{ provide: TranslateService, useClass: MockTranslateService }', 'providers');
+				}
 			};
 			return chain([
 				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.spec.ts')
