@@ -10,7 +10,7 @@ export const NODE_MODULES = './node_modules';
 
 export const OB_VERSION = {
 	'version-5': {
-		'LATEST': '5.0.0-alpha.4',
+		'LATEST': 'next',
 		'5_0_1': '5.0.1'
 	},
 	'version-6': {
