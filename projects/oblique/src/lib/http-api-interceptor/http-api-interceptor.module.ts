@@ -5,9 +5,9 @@ import {TelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {WINDOW, windowProvider} from '../utilities';
 
-export {ObliqueHttpInterceptorConfig} from './oblique-http-interceptor.config';
-export {ObliqueHttpInterceptorEvents} from './oblique-http-interceptor.events';
-export {ObliqueHttpInterceptor, ObliqueRequest} from './oblique-http-interceptor';
+export {HttpApiInterceptorConfig} from './http-api-interceptor.config';
+export {HttpApiInterceptorEvents} from './http-api-interceptor.events';
+export {HttpApiInterceptor, HttpApiRequest} from './http-api-interceptor';
 
 @NgModule({
 	providers: [
@@ -16,8 +16,8 @@ export {ObliqueHttpInterceptor, ObliqueRequest} from './oblique-http-interceptor
 		{provide: WINDOW, useFactory: windowProvider}
 	]
 })
-export class ObliqueHttpModule {
+export class HttpApiInterceptorModule {
 	constructor(telemetry: TelemetryService) {
-		requireAndRecordTelemetry(telemetry, ObliqueHttpModule);
+		requireAndRecordTelemetry(telemetry, HttpApiInterceptorModule);
 	}
 }

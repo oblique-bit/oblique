@@ -1,18 +1,18 @@
 import {Injectable} from '@angular/core';
 import {NotificationType} from '../notification/notification.module';
 
-// TODO: make sure that app.module.ts provides an instance of ObliqueHttpInterceptorConfig filled with data from environment[.prod].ts
+// TODO: make sure that app.module.ts provides an instance of HttpApiInterceptorConfig filled with data from environment[.prod].ts
 
 /**
  * Configuration service for the Oblique HTTP interceptor.
  *
- * @link ObliqueHttpInterceptor
+ * @link HttpApiInterceptor
  *
  * You can inject this service, typically in your root component, and customize the values of its properties in
  * order to provide default values for all the Oblique HTTP interceptor, if imported as `HTTP_INTERCEPTORS` provider.
  */
 @Injectable({providedIn: 'root'})
-export class ObliqueHttpInterceptorConfig {
+export class HttpApiInterceptorConfig {
 	/**
 	 * Configuration for application API.
 	 */

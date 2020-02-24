@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {NotificationService, NotificationType, ObliqueHttpInterceptorEvents, ObliqueRequest} from 'oblique';
+import {NotificationService, NotificationType, HttpApiInterceptorEvents, HttpApiRequest} from 'oblique';
 import {delay, mergeMap, take, tap} from 'rxjs/operators';
 import {from, Observable} from 'rxjs';
 import {HttpMockErrorInterceptor} from './http-mock-error.interceptor';
@@ -8,7 +8,7 @@ import {HttpMockErrorInterceptor} from './http-mock-error.interceptor';
 let requestId = 0;
 
 @Component({
-	selector: 'oblique-http-interceptor-sample',
+	selector: 'http-api-interceptor-sample',
 	templateUrl: './http-interceptor-sample.component.html'
 })
 export class HttpInterceptorSampleComponent {
@@ -29,7 +29,7 @@ export class HttpInterceptorSampleComponent {
 
 	constructor(private readonly notificationService: NotificationService,
 				private readonly http: HttpClient,
-				private readonly interceptorEvents: ObliqueHttpInterceptorEvents) {
+				private readonly interceptorEvents: HttpApiInterceptorEvents) {
 
 		this.interceptorEvents.sessionExpired.subscribe(() => {
 			this.notificationService.warning('The session has expired');
@@ -74,7 +74,7 @@ export class HttpInterceptorSampleComponent {
 	}
 
 	private configInterceptor(number = 1): void {
-		this.interceptorEvents.requestIntercepted.pipe(take(number)).subscribe((evt: ObliqueRequest) => {
+		this.interceptorEvents.requestIntercepted.pipe(take(number)).subscribe((evt: HttpApiRequest) => {
 			evt.notification.active = this.notification.active;
 			evt.notification.severity = this.notification.severity;
 			evt.notification.title = this.notification.title;

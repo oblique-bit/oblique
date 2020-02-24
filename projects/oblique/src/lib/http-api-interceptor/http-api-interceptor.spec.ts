@@ -2,7 +2,7 @@ import {async, TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule, HttpTestingController, TestRequest} from '@angular/common/http/testing';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {NotificationService, NotificationType, ObliqueHttpInterceptorConfig, ObliqueHttpInterceptorEvents, ObliqueRequest, SpinnerService} from 'oblique';
+import {NotificationService, NotificationType, HttpApiInterceptorConfig, HttpApiInterceptorEvents, HttpApiRequest, SpinnerService} from 'oblique';
 import {of} from 'rxjs';
 import {finalize} from 'rxjs/operators';
 
@@ -46,15 +46,15 @@ class MockNotificationService {
 	}
 }
 
-class MockObliqueHttpInterceptorEvents {
-	requestIntercepted = of({} as ObliqueRequest);
+class MockHttpApiInterceptorEvents {
+	requestIntercepted = of({} as HttpApiRequest);
 }
 
-describe(`ObliqueHttpInterceptor`, () => {
+describe(`HttpApiInterceptor`, () => {
 	let service: DataService;
 	let httpMock: HttpTestingController;
-	let config: ObliqueHttpInterceptorConfig;
-	let events: ObliqueHttpInterceptorEvents;
+	let config: HttpApiInterceptorConfig;
+	let events: HttpApiInterceptorEvents;
 	let spinner: SpinnerService;
 	let notification: NotificationService;
 
@@ -63,7 +63,7 @@ describe(`ObliqueHttpInterceptor`, () => {
 			imports: [HttpClientTestingModule],
 			providers: [
 				DataService,
-				{provide: ObliqueHttpInterceptorEvents, useClass: MockObliqueHttpInterceptorEvents},
+				{provide: HttpApiInterceptorEvents, useClass: MockHttpApiInterceptorEvents},
 				{provide: SpinnerService, useClass: MockSpinnerService},
 				{provide: NotificationService, useClass: MockNotificationService}
 			]
@@ -71,8 +71,8 @@ describe(`ObliqueHttpInterceptor`, () => {
 
 		service = TestBed.get(DataService);
 		httpMock = TestBed.get(HttpTestingController);
-		config = TestBed.get(ObliqueHttpInterceptorConfig);
-		events = TestBed.get(ObliqueHttpInterceptorEvents);
+		config = TestBed.get(HttpApiInterceptorConfig);
+		events = TestBed.get(HttpApiInterceptorEvents);
 		spinner = TestBed.get(SpinnerService);
 		notification = TestBed.get(NotificationService);
 	}));
