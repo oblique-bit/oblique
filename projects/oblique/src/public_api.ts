@@ -73,7 +73,7 @@ export {
 	SchemaValidatorInstance
 } from './lib/schema-validation/schema-validation.module';
 export {ScrollingEvents, ScrollingModule, TopControlComponent} from './lib/scrolling/scrolling.module';
-export {SearchBoxDirective, SearchWidgetItem, SearchBoxComponent, SearchBoxResultsComponent, SearchBoxModule} from './lib/searchbox/search-box.module';
+export {SearchBoxDirective, SearchWidgetItem, SearchBoxComponent, SearchBoxResultsComponent, SearchBoxModule} from './lib/search-box/search-box.module';
 export {ObSelectableDirective, ObSelectableService, ObSelectableModule} from './lib/selectable/selectable.module';
 export {SpinnerEvent, SpinnerComponent, SpinnerModule, SpinnerService} from './lib/spinner/spinner.module';
 export {StickyComponent, StickyModule} from './lib/sticky/sticky.module';

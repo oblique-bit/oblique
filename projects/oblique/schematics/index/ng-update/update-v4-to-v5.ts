@@ -120,16 +120,18 @@ export class UpdateV4toV5 implements IMigratable {
 			_context.logger.info(colors.blue(`- TestingModule`) + colors.green(` ✔`));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toApply = (filePath: string) => {
-				UpdateV4toV5.util.removeImport(tree, filePath, 'MockTranslateService');
-				UpdateV4toV5.util.addImport(tree, filePath, 'ObliqueTestingModule', OB_PACKAGE);
-				UpdateV4toV5.util.addImport(tree, filePath, 'MockTranslateService', OB_PACKAGE);
-				UpdateV4toV5.util.addImport(tree, filePath, 'TranslateService', '@ngx-translate/core');
-				UpdateV4toV5.util.addToTestBedConfig(tree, filePath, 'ObliqueTestingModule', 'imports');
-				UpdateV4toV5.util.removeFromTestBedConfig(tree, filePath, 'ObliqueModule', 'imports');
-				UpdateV4toV5.util.removeImplicitDeclarations(tree, filePath, 'declarations');
-				UpdateV4toV5.util.removeImplicitDeclarations(tree, filePath, 'imports');
-				UpdateV4toV5.util.removeImplicitDeclarations(tree, filePath, 'providers');
-				UpdateV4toV5.util.addToTestBedConfig(tree, filePath, '{ provide: TranslateService, useClass: MockTranslateService }', 'providers');
+				if ( UpdateV4toV5.util.getFile(tree, filePath).indexOf('configureTestingModule') !== -1 ) {
+					UpdateV4toV5.util.removeImport(tree, filePath, 'MockTranslateService');
+					UpdateV4toV5.util.addImport(tree, filePath, 'ObliqueTestingModule', OB_PACKAGE);
+					UpdateV4toV5.util.addImport(tree, filePath, 'MockTranslateService', OB_PACKAGE);
+					UpdateV4toV5.util.addImport(tree, filePath, 'TranslateService', '@ngx-translate/core');
+					UpdateV4toV5.util.addToTestBedConfig(tree, filePath, 'ObliqueTestingModule', 'imports');
+					UpdateV4toV5.util.removeFromTestBedConfig(tree, filePath, 'ObliqueModule', 'imports');
+					UpdateV4toV5.util.removeImplicitDeclarations(tree, filePath, 'declarations');
+					UpdateV4toV5.util.removeImplicitDeclarations(tree, filePath, 'imports');
+					UpdateV4toV5.util.removeImplicitDeclarations(tree, filePath, 'providers');
+					UpdateV4toV5.util.addToTestBedConfig(tree, filePath, '{ provide: TranslateService, useClass: MockTranslateService }', 'providers');
+				}
 			};
 			return chain([
 				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.spec.ts')
@@ -182,11 +184,13 @@ export class UpdateV4toV5 implements IMigratable {
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toInject = '@Inject(WINDOW) private readonly window';
 			const toApply = (filePath: string) => {
-				const window = UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/window\./g), 'this.window.');
-				if ( window ) {
-					UpdateV4toV5.util.addImport(tree, filePath, 'Inject', '@angular/core');
-					UpdateV4toV5.util.addImport(tree, filePath, 'WINDOW', OB_PACKAGE);
-					UpdateV4toV5.util.addToConstructor(tree, filePath, toInject);
+				if ( UpdateV4toV5.util.getClassImplementation(tree, filePath).join('').indexOf('window.') !== -1 ) {
+					const window = UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/window\./g), 'this.window.');
+					if ( window ) {
+						UpdateV4toV5.util.addImport(tree, filePath, 'Inject', '@angular/core');
+						UpdateV4toV5.util.addImport(tree, filePath, 'WINDOW', OB_PACKAGE);
+						UpdateV4toV5.util.addToConstructor(tree, filePath, toInject);
+					}
 				}
 			};
 			return chain([
@@ -240,8 +244,8 @@ export class UpdateV4toV5 implements IMigratable {
 
 				tree.overwrite(filePath, UpdateV4toV5.util.getFile(tree, filePath).replace(obliqueTheme, ''));
 
-				const themeFile = ( usedTheme === 'THEMES.BOOTSTRAP' ) ? 'oblique-bootstrap.css' : 'oblique-material.css' ;
-				const stylePath = `node_modules/@oblique/oblique/styles/css/${themeFile}`;
+				const obliqueStyleKind = ( usedTheme === 'THEMES.BOOTSTRAP' ) ? 'oblique-bootstrap.css' : 'oblique-material.css' ;
+				const obliqueStyleLocation = `node_modules/@oblique/oblique/styles/css`;
 
 				const projectJSON = JSON.parse(UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 				Object.entries(projectJSON['projects']).forEach((project: any) => {
@@ -250,7 +254,33 @@ export class UpdateV4toV5 implements IMigratable {
 					config.architect.hasOwnProperty('build') &&
 					config.architect.build.hasOwnProperty('options') &&
 					config.architect.build.options.hasOwnProperty('styles') ) {
-						config.architect.build.options.styles.push(stylePath);
+
+						const obliqueStyleOrder = [
+							`${obliqueStyleLocation}/oblique-core.css`,
+							`${obliqueStyleLocation}/${obliqueStyleKind}`,
+						];
+
+						// add oblique-compat only if it was present before
+						if ( config.architect.build.options.styles.includes(`${obliqueStyleLocation}/oblique-compat.css`) ) {
+							obliqueStyleOrder.push(`${obliqueStyleLocation}/oblique-compat.css`);
+						}
+
+						// same for oblique-utilities.css
+						if ( config.architect.build.options.styles.includes(`${obliqueStyleLocation}/oblique-utilities.css`) ) {
+							obliqueStyleOrder.push(`${obliqueStyleLocation}/oblique-utilities.css`);
+						}
+
+						// ... and same for oblique-components.css
+						if ( config.architect.build.options.styles.includes(`${obliqueStyleLocation}/oblique-components.css`) ) {
+							obliqueStyleOrder.push(`${obliqueStyleLocation}/oblique-components.css`);
+						}
+
+						const projectStyles = config.architect.build.options.styles.filter((styleUrl: string) => !obliqueStyleOrder.includes(styleUrl));
+
+						config.architect.build.options.styles = [
+							...obliqueStyleOrder,
+							...projectStyles
+						];
 					}
 				});
 

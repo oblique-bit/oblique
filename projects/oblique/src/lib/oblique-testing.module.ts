@@ -5,7 +5,7 @@ import {MockTranslateService} from './_mocks/mock-translate.service';
 import {MockTranslatePipe} from './_mocks/mock-translate.pipe';
 
 import {MockColumnLayoutModule} from './column-layout/mock/mock-column-layout.module';
-import {MockSearchBoxModule} from './searchbox/mock/mock-search-box.module';
+import {MockSearchBoxModule} from './search-box/mock/mock-search-box.module';
 import {MockDocumentMetaModule} from './document-meta/mock/mock-document-meta.module';
 import {MockDropdownModule} from './dropdown/mock/mock-dropdown.module';
 import {MockErrorMessagesModule} from './error-messages/mock/mock-error-messages.module';

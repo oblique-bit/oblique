@@ -3,9 +3,13 @@ import { IUpdateSchema, IMigratable } from './update-schema';
 import { UpdateV4toV5 } from './update-v4-to-v5';
 import { colors } from '@angular-devkit/core/src/terminal';
 import { OB_VERSION, OB_LATEST, OB_LAST_MAJOR_SUPPORT_VERSION, SchematicsUtil } from '../utils';
+import { execSync } from 'child_process';
 
 export function initalize(_options: IUpdateSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
+
+		// install ts-morph tools as dev dependency
+		execSync('npm i -D --silent ts-morph');
 
 		const util: SchematicsUtil = SchematicsUtil.getInstance();
 		const numericObVersion = util.getCurrentObliqueVersion(tree).match(/\d+/)[0];

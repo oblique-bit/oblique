@@ -10,7 +10,7 @@ export const NODE_MODULES = './node_modules';
 
 export const OB_VERSION = {
 	'version-5': {
-		'LATEST': '5.0.0-alpha.4',
+		'LATEST': 'next',
 		'5_0_1': '5.0.1'
 	},
 	'version-6': {
@@ -29,12 +29,14 @@ export const PROJECT_APP_MODULE = PROJECT_SRC_DIR + '/app.module.ts';
 export const PROJECT_ROUTING_MODULE = PROJECT_SRC_DIR + '/app/app-routing.module.ts';
 export const PROJECT_ANGULAR_JSON = './angular.json';
 export const PROJECT_PACKAGE_JSON = './package.json';
+export const PROJECT_FORCE_IMPLEMENTATION = PROJECT_ROOT_DIR + 'custom-implementation.migration';
 
 export class SchematicsUtil {
 
 	static instance: SchematicsUtil;
 
 	private readonly customImplentations: string[] = [];
+	private readonly forceCustomImplentations: string[] = [];
 	private readonly forceObliqueImplentations: string[] = [
 		'TranslatePipe',
 		'TranslateService',
@@ -50,12 +52,14 @@ export class SchematicsUtil {
 		}
 		return SchematicsUtil.instance;
 	}
+
 	getCurrentObliqueVersion(tree: Tree) {
 		const projectPackageJSON = JSON.parse(this.getFile(tree, PROJECT_PACKAGE_JSON));
 		if ( !projectPackageJSON['dependencies'].hasOwnProperty(OB_PACKAGE) ) {
 			throw new Error(`[ERROR] no installation found, abort migration`);
 		}
-		return projectPackageJSON['dependencies'][OB_PACKAGE];
+		const packageVersion = projectPackageJSON['dependencies'][OB_PACKAGE];
+		return ( packageVersion === 'next' ) ? [100] : packageVersion || [100];
 	}
 
 	getFile(tree: Tree, path: string) {
@@ -109,7 +113,7 @@ export class SchematicsUtil {
 	replaceInFile(tree: Tree, path: string, pattern: RegExp, replacement: string): boolean {
 		const fileContent = this.getFile(tree, path);
 		if ( pattern.test(fileContent) ) {
-			tree.overwrite(path, fileContent.replace(pattern, replacement));
+			this.overwrite(tree, path, fileContent.replace(pattern, replacement));
 			return true;
 		}
 		return false;
@@ -188,7 +192,7 @@ export class SchematicsUtil {
 			if ( importDeclaration.getModuleSpecifierValue() === packageName ) {
 				const oldContent = this.extractFromBrackets('{}', importDeclaration.getText());
 				const newContent = this.addToList(oldContent, newSymbol);
-				tree.overwrite(filePath, content.replace(oldContent, newContent));
+				this.overwrite(tree, filePath, content.replace(oldContent, newContent));
 			}
 		});
 	}
@@ -197,7 +201,7 @@ export class SchematicsUtil {
 		if ( !this.hasImport(tree, filePath, symbol, packageName) ) {
 			const fileContent = this.getFile(tree, filePath);
 			const newImports = `import {${symbol}} from '${packageName}';\n`;
-			tree.overwrite(filePath, newImports + fileContent);
+			this.overwrite(tree, filePath, newImports + fileContent);
 		} else {
 			this.updateImport(tree, filePath, symbol, packageName);
 		}
@@ -213,10 +217,15 @@ export class SchematicsUtil {
 				if ( imports.split(',').map((fragment: string) => fragment.trim()).includes(symbol) ) {
 					const newImports = this.removeFromList(imports, symbol);
 
-					tree.overwrite(filePath, content.replace(child.getText(), child.getText().replace(imports, newImports)));
+					this.overwrite(tree, filePath, content.replace(child.getText(), child.getText().replace(imports, newImports)));
 				}
 			});
 		}
+	}
+
+	getClassImplementation(tree: Tree, filePath: string): string[] {
+		const sourceFile = this.getProject().createSourceFile(filePath, this.getFile(tree, filePath));
+		return sourceFile.getClasses().map((classDeclaration) => classDeclaration.getText());
 	}
 
 	addToConstructor(tree: Tree, filePath: string, toInject: string): void {
@@ -231,7 +240,7 @@ export class SchematicsUtil {
 				const newParams = this.addToList(params, toInject);
 				const newConstructor = `\tconstructor(${newParams}) {${body}}`;
 
-				tree.overwrite(filePath, content.replace(oldConstructor, newConstructor));
+				this.overwrite(tree, filePath, content.replace(oldConstructor, newConstructor));
 			});
 		});
 	}
@@ -250,7 +259,7 @@ export class SchematicsUtil {
 			// append property
 			const newProperties = this.addToList(call.oldProperties, symbol);
 			const newContent = call.oldContent.replace(call.oldProperties, newProperties);
-			tree.overwrite(filePath, call.content.replace(call.oldContent, newContent));
+			this.overwrite(tree, filePath, call.content.replace(call.oldContent, newContent));
 		} else if ( call.isEmptyOptions ) {
 			// TODO write proper replacement
 			const regex = new RegExp(`('|")?${property}('|")?(\\s)*:(\\s)*\\[(\\s)*\\]{1}`);
@@ -263,7 +272,7 @@ export class SchematicsUtil {
 			if ( isEmptyConfig ) {
 				newContent = call.oldContent.replace(this.extractFromBrackets('()', call.oldContent), `{${newOptions.trim()}}`);
 			}
-			tree.overwrite(filePath, call.content.replace(call.oldContent, newContent));
+			this.overwrite(tree, filePath, call.content.replace(call.oldContent, newContent));
 		}
 	}
 
@@ -279,7 +288,7 @@ export class SchematicsUtil {
 			// remove property
 			const newProperties = this.removeFromList(call.oldProperties, symbol);
 			const newContent = call.oldContent.replace(call.oldProperties, newProperties);
-			tree.overwrite(filePath, call.content.replace(call.oldContent, newContent));
+			this.overwrite(tree, filePath, call.content.replace(call.oldContent, newContent));
 		}
 	}
 
@@ -303,7 +312,7 @@ export class SchematicsUtil {
 			});
 		}
 		const newContent = call.oldContent.replace(call.oldProperties, newProperties.join(', '));
-		tree.overwrite(filePath, call.content.replace(call.oldContent, newContent));
+		this.overwrite(tree, filePath, call.content.replace(call.oldContent, newContent));
 	}
 
 	loadBusinessSymbols(tree: Tree): void {
@@ -314,6 +323,13 @@ export class SchematicsUtil {
 					this.customImplentations.push(classDeclaration.getFirstChildByKind(SyntaxKind.Identifier).getText());
 				});
 		});
+		if ( tree.exists(PROJECT_FORCE_IMPLEMENTATION) ) {
+			this.getFile(tree, PROJECT_FORCE_IMPLEMENTATION)
+			.split('\n').map((customImplementation: string) => customImplementation.trim())
+			.forEach((customImplementation: string) => {
+				this.forceCustomImplentations.push(customImplementation);
+			});
+		}
 	}
 
 	isObliqueSymbol(symbol: string): boolean {
@@ -364,6 +380,29 @@ export class SchematicsUtil {
 
 	private getLiteralSymbol(child: any): string | undefined {
 		const literalSymbol = child.getText().trim();
+
+		if ( literalSymbol.indexOf('MockComponent(') !== -1 || literalSymbol.indexOf('MockPipe(') !== -1 ) {
+			// special useage of ng-mock class wrappers
+			const mockedSymbol = this.extractFromBrackets('()', literalSymbol);
+			if ( !this.getObliqueModules().includes(mockedSymbol) ) {
+				return literalSymbol;
+			}
+			if ( this.forceCustomImplentations.includes(mockedSymbol) ) {
+				// project wants to keep this symbol
+				return literalSymbol;
+			}
+		}
+
+		if ( this.forceCustomImplentations.includes(literalSymbol) ) {
+			// project wants to keep this symbol
+			return literalSymbol;
+		}
+
+		if ( literalSymbol.includes('(') && literalSymbol.includes(')') ) {
+			// special configured module
+			return literalSymbol;
+		}
+
 		switch ( child.getKind() ) {
 			case SyntaxKind.Identifier:
 				if ( !this.isObliqueSymbol(literalSymbol) ) {
@@ -389,6 +428,10 @@ export class SchematicsUtil {
 				}
 				break;
 		}
+	}
+
+	private overwrite(tree: Tree, filePath: string, newContent: string): void {
+		tree.overwrite(filePath, newContent.replace(/,,/g, ''));
 	}
 
 	private walk(node: any, identifier: string, results: any[]): void {
