@@ -104,7 +104,7 @@
 					<mat-form-field>
 						<mat-label>Name</mat-label>
 						<input matInput #filterControl (keyup)="applyFilter($event)">
-						<button type="button" role="button" [orTextControlClear]="filterControl" (onClear)="applyFilter($event)">
+						<button type="button" role="button" [orInputClear]="filterControl" (onClear)="applyFilter($event)">
 							<span class="fa fa-times-circle"></span>
 						</button>
 					</mat-form-field>

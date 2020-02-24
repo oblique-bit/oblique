@@ -57,7 +57,9 @@ export class UpdateV4toV5 implements IMigratable {
 				this.migrateDatePickerModule(),
 				this.migrateDatePickerHTML(),
 				this.migrateWindow(),
-				this.migrateNavTree()
+				this.migrateNavTree(),
+				this.migrateTextControlClearHTML(),
+				this.migrateTextControlClearTS()
 			])(tree, _context);
 		};
 	}
@@ -307,6 +309,36 @@ export class UpdateV4toV5 implements IMigratable {
 			};
 			return chain([
 				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.scss')
+			])(tree, _context);
+		};
+	}
+
+	private migrateTextControlClearHTML(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
+			const toApply = (filePath: string) => {
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/orTextControlClear/g), 'orInputClear');
+			};
+			return chain([
+				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.html')
+			])(tree, _context);
+		};
+	}
+
+	private migrateTextControlClearTS(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			_context.logger.info(colors.blue(`- Text Control Clear`) + colors.green(` ✔`));
+			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
+			const toApply = (filePath: string) => {
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/MockTextControlClearModule/g), 'MockInputClearModule');
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/MockTextControlClearDirective/g), 'MockInputClearDirective');
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/TextControlClearModule/g), 'InputClearModule');
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/ControlClearDirective/g), 'InputClearDirective');
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/\/text-control-clear\//g), '/input-clear/');
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/text-control-clear\.module/g), 'input-clear\.module');
+			};
+			return chain([
+				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.ts')
 			])(tree, _context);
 		};
 	}

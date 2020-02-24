@@ -7,7 +7,7 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 
-import {TextControlClearModule} from '../text-control-clear/text-control-clear.module';
+import {InputClearModule} from '../input-clear/input-clear.module';
 import {FilterBoxComponent} from './filter-box.component';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {TelemetryService} from '../telemetry/telemetry.service';
@@ -20,7 +20,7 @@ export {FilterBoxComponent} from './filter-box.component';
 		CommonModule,
 		TranslateModule,
 		FormsModule,
-		TextControlClearModule,
+		InputClearModule,
 		MatIconModule,
 		MatFormFieldModule,
 		MatInputModule

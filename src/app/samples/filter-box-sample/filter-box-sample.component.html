@@ -41,7 +41,7 @@
 		<div>
 			<label>Placeholder</label>
 			<input type="text" [(ngModel)]="placeholder" #filterControl>
-			<button type="button" role="button" [orTextControlClear]="filterControl" (onClear)="placeholder = null">
+			<button type="button" role="button" [orInputClear]="filterControl" (onClear)="placeholder = null">
 				<span class="fa fa-times-circle"></span>
 				<span class="sr-only">{{'i18n.common.clear' | translate}}</span>
 			</button>
