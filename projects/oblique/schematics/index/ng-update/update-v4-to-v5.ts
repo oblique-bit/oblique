@@ -423,11 +423,11 @@ export class UpdateV4toV5 implements IMigratable {
 			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.accesskey.navigation'), 'i18n.oblique.master-layout.accesskey.navigation');
 			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.accessible.globalNavigationMenu'), 'i18n.oblique.master-layout.accessible.globalNavigationMenu');
 			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.oblique.controls.title'), 'i18n.oblique.master-layout.header.controls.title');
-			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.oblique.notification.type.info'), 'i18n.notification.type.info');
-			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.oblique.notification.type.success'), 'i18n.notification.type.success');
-			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.oblique.notification.type.warning'), 'i18n.notification.type.warning');
-			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.oblique.notification.type.error'), 'i18n.notification.type.error');
-			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.oblique.scrolling.topControl'), 'i18n.topControl.backToTop');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.notification.type.info'), 'i18n.oblique.notification.type.info');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.notification.type.success'), 'i18n.oblique.notification.type.success');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.notification.type.warning'), 'i18n.oblique.notification.type.warning');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.notification.type.error'), 'i18n.oblique.notification.type.error');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.topControl.backToTop'), 'i18n.oblique.scrolling.topControl');
 		}
 	}
 
