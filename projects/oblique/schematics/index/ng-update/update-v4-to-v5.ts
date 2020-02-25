@@ -12,6 +12,7 @@ import {
 export class UpdateV4toV5 implements IMigratable {
 
 	static util: SchematicsUtil = SchematicsUtil.getInstance();
+	static hasTranslateMultiLoader = false;
 
 	updateToLatest(_options: any, latestVersion: string): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
@@ -60,7 +61,10 @@ export class UpdateV4toV5 implements IMigratable {
 				this.migrateNavTree(),
 				this.migrateTextControlClearHTML(),
 				this.migrateTextControlClearTS(),
-				this.migrateInterceptor()
+				this.migrateInterceptor(),
+				this.migrateTranslationFiles(),
+				this.migrateTranslationCallsTS(),
+				this.migrateTranslationCallsHTML()
 			])(tree, _context);
 		};
 	}
@@ -288,6 +292,11 @@ export class UpdateV4toV5 implements IMigratable {
 				});
 
 				tree.overwrite(PROJECT_ANGULAR_JSON, JSON.stringify(projectJSON, null, '\t'));
+
+				// ... and check for mulit translate loader!
+				if ( UpdateV4toV5.util.getFile(tree, filePath).indexOf('new MultiTranslateLoader') !== -1 ) {
+					UpdateV4toV5.hasTranslateMultiLoader = true;
+				}
 			};
 			return chain([
 				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, 'app.module.ts')
@@ -359,6 +368,67 @@ export class UpdateV4toV5 implements IMigratable {
 				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.ts')
 			])(tree, _context);
 		};
+	}
+
+	private migrateTranslationFiles(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
+			const toApply = (filePath: string) => {
+				this.migrateTranslationKeys(tree, filePath);
+			};
+			return chain([
+				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.json')
+			])(tree, _context);
+		};
+	}
+
+	private migrateTranslationCallsTS(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
+			const toApply = (filePath: string) => {
+				this.migrateTranslationKeys(tree, filePath);
+			};
+			return chain([
+				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.ts')
+			])(tree, _context);
+		};
+	}
+
+	private migrateTranslationCallsHTML(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			_context.logger.info(colors.blue(`- Translations`) + colors.green(` ✔`));
+			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
+			const toApply = (filePath: string) => {
+				this.migrateTranslationKeys(tree, filePath);
+			};
+			return chain([
+				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.html')
+			])(tree, _context);
+		};
+	}
+
+	private migrateTranslationKeys(tree: Tree, filePath: string): void {
+		if ( !UpdateV4toV5.hasTranslateMultiLoader ) {
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.error.http.general'), 'i18n.oblique.http.error.general');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.error.http.status.0'), 'i18n.oblique.http.error.status.0');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.error.http.status.400'), 'i18n.oblique.http.error.status.400');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.error.http.status.404'), 'i18n.oblique.http.error.status.404');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.error.http.status.500'), 'i18n.oblique.http.error.status.500');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.error.http.status.501'), 'i18n.oblique.http.error.status.501');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.error.http.status.502'), 'i18n.oblique.http.error.status.502');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.error.http.status.503'), 'i18n.oblique.http.error.status.503');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.error.http.timeout'), 'i18n.oblique.http.error.timeout');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.accesskey.mainContent'), 'i18n.oblique.master-layout.accesskey.mainContent');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.accesskey.homepage'), 'i18n.oblique.master-layout.accesskey.homepage');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.accesskey.navigation'), 'i18n.oblique.master-layout.accesskey.navigation');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.accessible.globalNavigationMenu'), 'i18n.oblique.master-layout.accessible.globalNavigationMenu');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.oblique.controls.title'), 'i18n.oblique.master-layout.header.controls.title');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.notification.type.info'), 'i18n.oblique.notification.type.info');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.notification.type.success'), 'i18n.oblique.notification.type.success');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.notification.type.warning'), 'i18n.oblique.notification.type.warning');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.notification.type.error'), 'i18n.oblique.notification.type.error');
+			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.topControl.backToTop'), 'i18n.oblique.scrolling.topControl');
+		}
 	}
 
 }
