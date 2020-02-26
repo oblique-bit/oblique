@@ -3,49 +3,49 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {By} from '@angular/platform-browser';
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {NavTreeComponent, NavTreeItemModel} from 'oblique';
-import {MockTranslatePipe} from '../_mocks/mock-translate.pipe';
-import {MockTranslateService} from '../_mocks/mock-translate.service';
+import {ObNavTreeComponent, ObNavTreeItemModel} from 'oblique';
+import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 
 @Component({
 	template: `
-		<or-nav-tree [items]="items"
+		<ob-nav-tree [items]="items"
 					 [prefix]="prefix"
 					 [variant]="variant"
 					 [filterPattern]="filterPattern"
 					 [labelFormatter]="labelFormatter"
-					 [activateAncestors]="activateAncestors"></or-nav-tree>`
+					 [activateAncestors]="activateAncestors"></ob-nav-tree>`
 })
 class TestComponent {
 	items = [
-		new NavTreeItemModel({id: 'A', label: 'A - Label', fragment: 'fragment', queryParams: {foo: 'bar'}}),
-		new NavTreeItemModel({
+		new ObNavTreeItemModel({id: 'A', label: 'A - Label', fragment: 'fragment', queryParams: {foo: 'bar'}}),
+		new ObNavTreeItemModel({
 			id: 'B', label: 'B - Label',
 			items: [
-				new NavTreeItemModel({id: 'B-1', label: 'B.1 - Label'}),
-				new NavTreeItemModel({
+				new ObNavTreeItemModel({id: 'B-1', label: 'B.1 - Label'}),
+				new ObNavTreeItemModel({
 					id: 'B-2', label: 'B.2 - Label',
 					items: [
-						new NavTreeItemModel({id: 'B2-1', label: 'B.2.1 - Label'}),
-						new NavTreeItemModel({id: 'B2-2', label: 'B.2.2 - Label'}),
-						new NavTreeItemModel({id: 'B2-3', label: 'B.2.3 - Label'})
+						new ObNavTreeItemModel({id: 'B2-1', label: 'B.2.1 - Label'}),
+						new ObNavTreeItemModel({id: 'B2-2', label: 'B.2.2 - Label'}),
+						new ObNavTreeItemModel({id: 'B2-3', label: 'B.2.3 - Label'})
 					]
 				}),
-				new NavTreeItemModel({id: 'B-3', label: 'B.3 - Label'})
+				new ObNavTreeItemModel({id: 'B-3', label: 'B.3 - Label'})
 			]
 		}),
-		new NavTreeItemModel({
+		new ObNavTreeItemModel({
 			id: 'C', label: 'C - Label',
 			items: [
-				new NavTreeItemModel({id: 'C-1', label: 'C.1 - Label'}),
-				new NavTreeItemModel({id: 'C-2', label: 'C.2 - Label'}),
-				new NavTreeItemModel({id: 'C-3', label: 'C.3 - Label'})
+				new ObNavTreeItemModel({id: 'C-1', label: 'C.1 - Label'}),
+				new ObNavTreeItemModel({id: 'C-2', label: 'C.2 - Label'}),
+				new ObNavTreeItemModel({id: 'C-3', label: 'C.3 - Label'})
 			]
 		})
 	];
 
 	prefix = 'nav-tree-test';
-	variant = NavTreeComponent.DEFAULTS.VARIANT;
+	variant = ObNavTreeComponent.DEFAULTS.VARIANT;
 	filterPattern: string;
 	public activateAncestors = true;
 
@@ -56,15 +56,15 @@ class TestComponent {
 
 describe('NavTreeComponent', () => {
 	let testComponent: TestComponent;
-	let component: NavTreeComponent;
+	let component: ObNavTreeComponent;
 	let fixture: ComponentFixture<TestComponent>;
 	let element: DebugElement;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
-			declarations: [TestComponent, NavTreeComponent, MockTranslatePipe],
-			providers: [{provide: TranslateService, useClass: MockTranslateService}],
+			declarations: [TestComponent, ObNavTreeComponent, ObMockTranslatePipe],
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
 			schemas: [NO_ERRORS_SCHEMA]
 		}).compileComponents();
 	}));
@@ -73,8 +73,8 @@ describe('NavTreeComponent', () => {
 		fixture = TestBed.createComponent(TestComponent);
 		testComponent = fixture.componentInstance;
 		fixture.detectChanges();
-		element = fixture.debugElement.query(By.directive(NavTreeComponent));
-		component = element.injector.get(NavTreeComponent);
+		element = fixture.debugElement.query(By.directive(ObNavTreeComponent));
+		component = element.injector.get(ObNavTreeComponent);
 	});
 
 	it('should be created', () => {
@@ -92,7 +92,7 @@ describe('NavTreeComponent', () => {
 	});
 
 	it('should detect changes if another `NavTreeItemModel is added`', () => {
-		testComponent.items.push(new NavTreeItemModel({id: 'X', label: 'X - Label'}));
+		testComponent.items.push(new ObNavTreeItemModel({id: 'X', label: 'X - Label'}));
 		fixture.detectChanges();
 
 		const navItems = fixture.debugElement.queryAll(By.css('li'));
@@ -116,7 +116,7 @@ describe('NavTreeComponent', () => {
 
 	it('should custom format item labels', () => {
 		const suffix = '[custom]';
-		component.labelFormatter = (item: NavTreeItemModel) => `${item.label} - ${suffix}`;
+		component.labelFormatter = (item: ObNavTreeItemModel) => `${item.label} - ${suffix}`;
 		fixture.detectChanges();
 		const firstNavItem = fixture.debugElement.query(By.css('li'));
 		expect(firstNavItem.nativeElement.innerHTML).toContain(suffix);
@@ -152,7 +152,7 @@ describe('NavTreeComponent', () => {
 	it('should highlight patterns on filtered navigation items', () => {
 		// Restore default label formatter:
 		const translate = TestBed.get(TranslateService);
-		component.labelFormatter = NavTreeComponent.DEFAULTS.LABEL_FORMATTER(translate);
+		component.labelFormatter = ObNavTreeComponent.DEFAULTS.LABEL_FORMATTER(translate);
 		component.filterPattern = 'C'; // Filter on 'C' pattern
 		fixture.detectChanges();
 
@@ -162,7 +162,7 @@ describe('NavTreeComponent', () => {
 
 		// ...and filter patterns highlighted:
 		navItems.forEach((item) => {
-			expect(item.nativeElement.innerHTML).toContain(NavTreeComponent.DEFAULTS.HIGHLIGHT);
+			expect(item.nativeElement.innerHTML).toContain(ObNavTreeComponent.DEFAULTS.HIGHLIGHT);
 		});
 	});
 

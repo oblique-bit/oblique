@@ -2,13 +2,13 @@ import {Component, ElementRef, Input, OnInit, ViewEncapsulation} from '@angular/
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 import {takeUntil} from 'rxjs/operators';
 
-import {SpinnerService} from './spinner.service';
-import {SpinnerEvent} from './spinner-event';
-import {Unsubscribable} from '../unsubscribe.class';
+import {ObSpinnerService} from './spinner.service';
+import {ObISpinnerEvent} from './spinner-event';
+import {ObUnsubscribable} from '../unsubscribe.class';
 
 @Component({
-	selector: 'or-spinner',
-	exportAs: 'orSpinner',
+	selector: 'ob-spinner',
+	exportAs: 'obSpinner',
 	template: `
 		<div class="overlay" [class.overlay-fixed]="fixed" [@inOut]="$state">
 			<div class="spinner-viewport">
@@ -39,10 +39,10 @@ import {Unsubscribable} from '../unsubscribe.class';
 		])
 	]
 })
-export class SpinnerComponent extends Unsubscribable implements OnInit {
+export class ObSpinnerComponent extends ObUnsubscribable implements OnInit {
 
 	@Input()
-	channel: string = SpinnerService.CHANNEL;
+	channel: string = ObSpinnerService.CHANNEL;
 
 	@Input()
 	fixed = false;
@@ -50,10 +50,10 @@ export class SpinnerComponent extends Unsubscribable implements OnInit {
 	// Animation state:
 	$state = 'out';
 
-	constructor(private readonly spinnerService: SpinnerService, private readonly element: ElementRef) {
+	constructor(private readonly spinnerService: ObSpinnerService, private readonly element: ElementRef) {
 		super();
 		spinnerService.events.pipe(takeUntil(this.unsubscribe))
-			.subscribe((event: SpinnerEvent) => {
+			.subscribe((event: ObISpinnerEvent) => {
 				if (event.channel === this.channel) {
 					// TODO: Workaround until https://github.com/angular/angular/issues/28801 is solved
 					setTimeout(() => this.$state = event.active ? 'in' : 'out');

@@ -5,29 +5,29 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {TranslateModule} from '@ngx-translate/core';
 
-import {FilterBoxModule} from '../filter-box/filter-box.module';
-import {MultiselectComponent} from './multiselect.component';
-import {MultiselectConfig} from './multiselect.config';
-import {MultiselectSearchPipe} from './multiselect-search.pipe';
-import {MultiselectTexts} from './multiselect.texts';
-import {TelemetryService} from '../telemetry/telemetry.service';
+import {ObFilterBoxModule} from '../filter-box/filter-box.module';
+import {ObMultiselectComponent} from './multiselect.component';
+import {ObMultiselectConfig} from './multiselect.config';
+import {ObMultiselectSearchPipe} from './multiselect-search.pipe';
+import {ObMultiselectTexts} from './multiselect.texts';
+import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {WINDOW, windowProvider} from '../utilities';
 
-export {MultiselectComponent} from './multiselect.component';
-export {MultiselectConfig} from './multiselect.config';
-export {MultiselectSearchPipe} from './multiselect-search.pipe';
-export {MultiselectTexts} from './multiselect.texts';
+export {ObMultiselectComponent} from './multiselect.component';
+export {ObMultiselectConfig} from './multiselect.config';
+export {ObMultiselectSearchPipe} from './multiselect-search.pipe';
+export {ObMultiselectTexts} from './multiselect.texts';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule,
 		TranslateModule,
-		FilterBoxModule
+		ObFilterBoxModule
 	],
 	exports: [
-		MultiselectComponent
+		ObMultiselectComponent
 	],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
@@ -35,12 +35,12 @@ export {MultiselectTexts} from './multiselect.texts';
 		{provide: WINDOW, useFactory: windowProvider}
 	],
 	declarations: [
-		MultiselectComponent,
-		MultiselectSearchPipe
+		ObMultiselectComponent,
+		ObMultiselectSearchPipe
 	]
 })
-export class MultiselectModule {
-	constructor(telemetry: TelemetryService) {
-		requireAndRecordTelemetry(telemetry, MultiselectModule);
+export class ObMultiselectModule {
+	constructor(telemetry: ObTelemetryService) {
+		requireAndRecordTelemetry(telemetry, ObMultiselectModule);
 	}
 }

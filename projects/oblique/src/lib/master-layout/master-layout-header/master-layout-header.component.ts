@@ -16,39 +16,39 @@ import {
 import {TranslateService} from '@ngx-translate/core';
 import {filter, takeUntil} from 'rxjs/operators';
 
-import {ScrollingEvents} from '../../scrolling/scrolling.module';
-import {Unsubscribable} from '../../unsubscribe.class';
-import {MasterLayoutService} from '../master-layout.service';
-import {LocaleObject, MasterLayoutConfig} from '../master-layout.config';
-import {ORNavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
-import {MasterLayoutEvent, MasterLayoutEventValues, scrollEnabled} from '../master-layout.utility';
+import {ObScrollingEvents} from '../../scrolling/scrolling.module';
+import {ObUnsubscribable} from '../../unsubscribe.class';
+import {ObMasterLayoutService} from '../master-layout.service';
+import {ObILocaleObject, ObMasterLayoutConfig} from '../master-layout.config';
+import {ObNavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
+import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues, scrollEnabled} from '../master-layout.utility';
 import {WINDOW} from '../../utilities';
 
 @Component({
-	selector: 'or-master-layout-header',
+	selector: 'ob-master-layout-header',
 	templateUrl: './master-layout-header.component.html',
 	styleUrls: ['./master-layout-header.component.scss', './master-layout-header.component-controls.scss'],
 	encapsulation: ViewEncapsulation.None,
 	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'application-header'}
 })
-export class MasterLayoutHeaderComponent extends Unsubscribable implements AfterViewInit {
+export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements AfterViewInit {
 	home = this.config.homePageRoute;
-	locales: LocaleObject[];
+	locales: ObILocaleObject[];
 	isCustom = this.masterLayout.header.isCustom;
 	disabledLang = this.config.locale.disabled;
-	@Input() navigation: ORNavigationLink[];
+	@Input() navigation: ObNavigationLink[];
 	@HostBinding('class.application-header-animate') isAnimated = this.masterLayout.header.isAnimated;
 	@HostBinding('class.application-header-sticky') isSticky = this.masterLayout.header.isSticky;
 	@HostBinding('class.application-header-md') isMedium = this.masterLayout.header.isMedium;
-	@ContentChildren('orHeaderControl') readonly templates: QueryList<TemplateRef<any>>;
+	@ContentChildren('obHeaderControl') readonly templates: QueryList<TemplateRef<any>>;
 	@ViewChildren('headerControl') readonly headerControl: QueryList<ElementRef>;
 	private readonly window: Window;
 
-	constructor(private readonly masterLayout: MasterLayoutService,
+	constructor(private readonly masterLayout: ObMasterLayoutService,
 				private readonly translate: TranslateService,
-				private readonly config: MasterLayoutConfig,
-				private readonly scrollEvents: ScrollingEvents,
+				private readonly config: ObMasterLayoutConfig,
+				private readonly scrollEvents: ObScrollingEvents,
 				private readonly el: ElementRef,
 				private readonly renderer: Renderer2,
 				@Inject(WINDOW) window) {
@@ -61,7 +61,7 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 
 	ngAfterViewInit() {
 		this.setFocusable(this.masterLayout.layout.isMenuOpened);
-		this.masterLayout.layout.configEvents.pipe(filter(evt => evt.name === MasterLayoutEventValues.COLLAPSE)).subscribe(value => this.setFocusable(!value));
+		this.masterLayout.layout.configEvents.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.COLLAPSE)).subscribe(value => this.setFocusable(!value));
 		this.addObliqueClasses();
 	}
 
@@ -103,37 +103,37 @@ export class MasterLayoutHeaderComponent extends Unsubscribable implements After
 	}
 
 	private propertyChanges() {
-		const events = [MasterLayoutEventValues.ANIMATE, MasterLayoutEventValues.CUSTOM, MasterLayoutEventValues.MEDIUM, MasterLayoutEventValues.STICKY];
+		const events = [ObEMasterLayoutEventValues.ANIMATE, ObEMasterLayoutEventValues.CUSTOM, ObEMasterLayoutEventValues.MEDIUM, ObEMasterLayoutEventValues.STICKY];
 		this.masterLayout.header.configEvents.pipe(
-			filter((evt: MasterLayoutEvent) => events.includes(evt.name)),
+			filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
 			takeUntil(this.unsubscribe)
 		).subscribe((event) => {
 			switch (event.name) {
-				case MasterLayoutEventValues.ANIMATE:
+				case ObEMasterLayoutEventValues.ANIMATE:
 					this.isAnimated = event.value;
 					break;
-				case MasterLayoutEventValues.CUSTOM:
+				case ObEMasterLayoutEventValues.CUSTOM:
 					this.isCustom = event.value;
 					break;
-				case MasterLayoutEventValues.MEDIUM:
+				case ObEMasterLayoutEventValues.MEDIUM:
 					this.isMedium = event.value;
 					break;
-				case MasterLayoutEventValues.STICKY:
+				case ObEMasterLayoutEventValues.STICKY:
 					this.isSticky = event.value;
 					break;
 			}
 		});
 	}
 
-	private formatLocales(): LocaleObject[] {
-		const locales: LocaleObject[] = [];
+	private formatLocales(): ObILocaleObject[] {
+		const locales: ObILocaleObject[] = [];
 		if (!this.config.locale.disabled) {
 			this.config.locale.locales.forEach((loc) => {
-				const locale: LocaleObject = {
-					locale: (loc as LocaleObject).locale || (loc as string)
+				const locale: ObILocaleObject = {
+					locale: (loc as ObILocaleObject).locale || (loc as string)
 				};
-				if ((loc as LocaleObject).id) {
-					locale.id = (loc as LocaleObject).id;
+				if ((loc as ObILocaleObject).id) {
+					locale.id = (loc as ObILocaleObject).id;
 				}
 				locales.push(locale);
 			});

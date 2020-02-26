@@ -1,10 +1,10 @@
 import {Directive, Input} from '@angular/core';
 
 @Directive({
-	selector: '[orNumberFormat]',
-	exportAs: 'orNumberFormat'
+	selector: '[obNumberFormat]',
+	exportAs: 'obNumberFormat'
 })
-export class MockNumberFormatDirective {
+export class ObMockNumberFormatDirective {
 	@Input() decimals = 2;
 	@Input() persistent = true;
 

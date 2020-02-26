@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 
 @Component({
-	selector: 'or-top-control',
+	selector: 'ob-top-control',
 	template: ''
 })
-export class MockTopControlComponent {
+export class ObMockTopControlComponent {
 
 	public scrollTop(): void {
 	}

@@ -2,11 +2,11 @@ import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {of} from 'rxjs';
 
-import {MasterLayoutNavigationService} from './master-layout-navigation.service';
-import {MasterLayoutConfig} from 'oblique';
+import {ObMasterLayoutNavigationService} from './master-layout-navigation.service';
+import {ObMasterLayoutConfig} from 'oblique';
 
 describe('MasterLayoutNavigationService', () => {
-	let service: MasterLayoutNavigationService;
+	let service: ObMasterLayoutNavigationService;
 	const translateMock = {
 		onLangChange: of()
 	};
@@ -16,12 +16,12 @@ describe('MasterLayoutNavigationService', () => {
 	beforeEach(() => TestBed.configureTestingModule({
 		providers: [
 			{provide: TranslateService, useValue: translateMock},
-			{provide: MasterLayoutConfig, useValue: mockMasterLayout}
+			{provide: ObMasterLayoutConfig, useValue: mockMasterLayout}
 		]
 	}));
 
 	it('should be created', () => {
-		service = TestBed.get(MasterLayoutNavigationService);
+		service = TestBed.get(ObMasterLayoutNavigationService);
 		expect(service).toBeTruthy();
 	});
 

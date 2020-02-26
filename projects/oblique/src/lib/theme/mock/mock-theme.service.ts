@@ -3,7 +3,7 @@ import {BehaviorSubject} from 'rxjs';
 import {FONTS, THEMES} from '../theme.service';
 
 @Injectable()
-export class MockThemeService {
+export class ObMockThemeService {
 	theme$ = new BehaviorSubject<THEMES | string>(THEMES.MATERIAL);
 	private currentTheme: string;
 

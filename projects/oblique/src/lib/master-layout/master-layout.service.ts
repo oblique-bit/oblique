@@ -3,25 +3,25 @@ import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 
-import {Unsubscribable} from '../unsubscribe.class';
-import {LocaleObject, MasterLayoutConfig} from './master-layout.config';
-import {MasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
-import {MasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
-import {MasterLayoutNavigationService} from './master-layout-navigation/master-layout-navigation.service';
-import {MasterLayoutComponentService} from './master-layout/master-layout.component.service';
+import {ObUnsubscribable} from '../unsubscribe.class';
+import {ObILocaleObject, ObMasterLayoutConfig} from './master-layout.config';
+import {ObMasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
+import {ObMasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
+import {ObMasterLayoutNavigationService} from './master-layout-navigation/master-layout-navigation.service';
+import {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
 
 @Injectable({providedIn: 'root'})
-export class MasterLayoutService extends Unsubscribable {
+export class ObMasterLayoutService extends ObUnsubscribable {
 	private static readonly token = 'oblique_lang';
 
-	constructor(private readonly config: MasterLayoutConfig,
+	constructor(private readonly config: ObMasterLayoutConfig,
 				private readonly translate: TranslateService,
 				private readonly router: Router,
 				private readonly activatedRoute: ActivatedRoute,
-				public readonly header: MasterLayoutHeaderService,
-				public readonly footer: MasterLayoutFooterService,
-				public readonly navigation: MasterLayoutNavigationService,
-				public readonly layout: MasterLayoutComponentService
+				public readonly header: ObMasterLayoutHeaderService,
+				public readonly footer: ObMasterLayoutFooterService,
+				public readonly navigation: ObMasterLayoutNavigationService,
+				public readonly layout: ObMasterLayoutComponentService
 	) {
 		super();
 		this.manageLanguage();
@@ -29,10 +29,10 @@ export class MasterLayoutService extends Unsubscribable {
 	}
 
 	private static getLangToken(): string {
-		let langToken = localStorage.getItem(MasterLayoutService.token);
+		let langToken = localStorage.getItem(ObMasterLayoutService.token);
 		if (!langToken) {
 			langToken = '_' + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
-			localStorage.setItem(MasterLayoutService.token, langToken);
+			localStorage.setItem(ObMasterLayoutService.token, langToken);
 		}
 
 		return langToken;
@@ -48,22 +48,22 @@ export class MasterLayoutService extends Unsubscribable {
 		if (!Array.isArray(this.config.locale.locales)) {
 			throw new Error('Locales needs to be an array');
 		}
-		const langToken = MasterLayoutService.getLangToken();
+		const langToken = ObMasterLayoutService.getLangToken();
 		const lang = this.getCurrentLang(langToken);
 		this.translate.setDefaultLang(lang);
 		this.translate.use(lang);
-		this.translate.addLangs(this.config.locale.locales.reduce((languages, language) => languages.concat([(language as LocaleObject).locale || language]), []));
+		this.translate.addLangs(this.config.locale.locales.reduce((languages, language) => languages.concat([(language as ObILocaleObject).locale || language]), []));
 		this.translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe((event: LangChangeEvent) => {
-			localStorage.setItem(MasterLayoutService.token + langToken, event.lang);
+			localStorage.setItem(ObMasterLayoutService.token + langToken, event.lang);
 		});
 	}
 
 	private getCurrentLang(langToken: string): string {
 		const firstLocale = this.config.locale.locales[0];
-		const lang = this.getSupportedLang(localStorage.getItem(MasterLayoutService.token + langToken))
+		const lang = this.getSupportedLang(localStorage.getItem(ObMasterLayoutService.token + langToken))
 			|| this.getSupportedLang(this.translate.getBrowserLang())
 			|| this.getSupportedLang(this.config.locale.default)
-			|| (firstLocale as LocaleObject).locale
+			|| (firstLocale as ObILocaleObject).locale
 			|| (firstLocale as string);
 		if (!lang) {
 			throw new Error('No locale defined');
@@ -73,7 +73,7 @@ export class MasterLayoutService extends Unsubscribable {
 	}
 
 	private getSupportedLang(lang: string): string {
-		return this.config.locale.locales.indexOf(lang) > -1 || this.config.locale.locales.filter((locale: LocaleObject) => locale.locale === lang).length
+		return this.config.locale.locales.indexOf(lang) > -1 || this.config.locale.locales.filter((locale: ObILocaleObject) => locale.locale === lang).length
 			? lang
 			: undefined;
 	}

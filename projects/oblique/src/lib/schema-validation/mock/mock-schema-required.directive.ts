@@ -3,7 +3,7 @@ import {Directive, Input} from '@angular/core';
 @Directive({
 	selector: '[ngModel]',
 })
-export class MockSchemaRequiredDirective {
+export class ObMockSchemaRequiredDirective {
 	@Input('name') name: string;
 	required = true;
 }

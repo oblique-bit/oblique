@@ -1,18 +1,18 @@
 import {AfterViewInit, ContentChildren, Directive, ElementRef, EventEmitter, Output, QueryList} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
-import {Unsubscribable} from '../../unsubscribe.class';
+import {ObUnsubscribable} from '../../unsubscribe.class';
 
 @Directive({
-	selector: '[orMasterLayoutNavigationMenu]',
-	exportAs: 'orMasterLayoutNavigationMenu'
+	selector: '[obMasterLayoutNavigationMenu]',
+	exportAs: 'obMasterLayoutNavigationMenu'
 })
-export class MasterLayoutNavigationMenuDirective extends Unsubscribable implements AfterViewInit {
+export class ObMasterLayoutNavigationMenuDirective extends ObUnsubscribable implements AfterViewInit {
 
 	@Output()
 	onShow = new EventEmitter<boolean>();
 
-	@ContentChildren(MasterLayoutNavigationMenuDirective, {descendants: true})
-	$menus: QueryList<MasterLayoutNavigationMenuDirective>;
+	@ContentChildren(ObMasterLayoutNavigationMenuDirective, {descendants: true})
+	$menus: QueryList<ObMasterLayoutNavigationMenuDirective>;
 
 	constructor(private readonly element: ElementRef) {
 		super();

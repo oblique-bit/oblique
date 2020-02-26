@@ -1,13 +1,13 @@
 import {RouterTestingModule} from '@angular/router/testing';
 import {inject, TestBed} from '@angular/core/testing';
 import {first, take} from 'rxjs/operators';
-import {NotificationService} from './notification.service';
-import {INotification, NotificationType} from './notification.interfaces';
-import {NotificationConfig} from './notification.config';
+import {ObNotificationService} from './notification.service';
+import {ObINotification, ObENotificationType} from './notification.interfaces';
+import {ObNotificationConfig} from './notification.config';
 
 describe('NotificationService', () => {
-	let notificationConfig: NotificationConfig;
-	let notificationService: NotificationService;
+	let notificationConfig: ObNotificationConfig;
+	let notificationService: ObNotificationService;
 
 	const message = 'myMessage';
 	const title = 'myTitle';
@@ -16,16 +16,16 @@ describe('NotificationService', () => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
 			providers: [
-				NotificationConfig,
-				NotificationService
+				ObNotificationConfig,
+				ObNotificationService
 			]
 		});
 	});
 
 	beforeEach(
 		inject(
-			[NotificationConfig, NotificationService],
-			(config: NotificationConfig, service: NotificationService) => {
+			[ObNotificationConfig, ObNotificationService],
+			(config: ObNotificationConfig, service: ObNotificationService) => {
 				notificationService = service;
 				notificationConfig = config;
 			}
@@ -33,7 +33,7 @@ describe('NotificationService', () => {
 	);
 
 	describe('send()', () => {
-		let notification: INotification;
+		let notification: ObINotification;
 		beforeEach(() => {
 			notificationService.events.pipe(first()).subscribe(event => {
 				notification = event;
@@ -52,10 +52,10 @@ describe('NotificationService', () => {
 			notificationConfig.channel = 'test';
 			notificationConfig.timeout = 42;
 			notificationConfig.sticky = true;
-			notificationService.send(message, NotificationType.SUCCESS);
+			notificationService.send(message, ObENotificationType.SUCCESS);
 
 			expect(notification.channel).toBe('test');
-			expect(notification.type).toBe(NotificationType.SUCCESS);
+			expect(notification.type).toBe(ObENotificationType.SUCCESS);
 			expect(notification.message).toBe(message);
 			expect(notification.title).toBe('i18n.oblique.notification.type.success');
 			expect(notification.timeout).toBe(42);
@@ -64,7 +64,7 @@ describe('NotificationService', () => {
 	});
 
 	describe('send()', () => {
-		const notifications: INotification[] = [];
+		const notifications: ObINotification[] = [];
 		const count = 5;
 		beforeEach(() => {
 			notificationService.events.pipe(take(count)).subscribe(event => {
@@ -82,7 +82,7 @@ describe('NotificationService', () => {
 	});
 
 	describe('clear()', () => {
-		let notification: INotification;
+		let notification: ObINotification;
 		beforeEach(() => {
 			notificationService.events.pipe(first()).subscribe(event => {
 				notification = event;
@@ -98,7 +98,7 @@ describe('NotificationService', () => {
 
 	describe('clearAll()', () => {
 		let notificationEmitted = false;
-		let notification: INotification;
+		let notification: ObINotification;
 		beforeEach(() => {
 			notificationService.events.pipe(first()).subscribe(event => {
 				notificationEmitted = true;
@@ -114,70 +114,70 @@ describe('NotificationService', () => {
 	});
 
 	describe('info()', () => {
-		let notification: INotification;
+		let notification: ObINotification;
 		beforeEach(() => {
 			notificationService.events.pipe(first()).subscribe(event => {
 				notification = event;
 			});
 		});
 
-		it('should broadcast a NotificationType.INFO notification event', () => {
+		it('should broadcast a ObENotificationType.INFO notification event', () => {
 			notificationService.info(message);
 
 			expect(notification).toBeDefined();
 			expect(notification.message).toBe(message);
-			expect(notification.type).toBe(NotificationType.INFO);
+			expect(notification.type).toBe(ObENotificationType.INFO);
 		});
 	});
 
 	describe('success()', () => {
-		let notification: INotification;
+		let notification: ObINotification;
 		beforeEach(() => {
 			notificationService.events.pipe(first()).subscribe(event => {
 				notification = event;
 			});
 		});
 
-		it('should broadcast a NotificationType.SUCCESS notification event', () => {
+		it('should broadcast a ObENotificationType.SUCCESS notification event', () => {
 			notificationService.success(message);
 
 			expect(notification).toBeDefined();
 			expect(notification.message).toBe(message);
-			expect(notification.type).toBe(NotificationType.SUCCESS);
+			expect(notification.type).toBe(ObENotificationType.SUCCESS);
 		});
 	});
 
 	describe('warning()', () => {
-		let notification: INotification;
+		let notification: ObINotification;
 		beforeEach(() => {
 			notificationService.events.pipe(first()).subscribe(event => {
 				notification = event;
 			});
 		});
 
-		it('should broadcast a NotificationType.WARNING notification event', () => {
+		it('should broadcast a ObENotificationType.WARNING notification event', () => {
 			notificationService.warning(message);
 
 			expect(notification).toBeDefined();
 			expect(notification.message).toBe(message);
-			expect(notification.type).toBe(NotificationType.WARNING);
+			expect(notification.type).toBe(ObENotificationType.WARNING);
 		});
 	});
 
 	describe('error()', () => {
-		let notification: INotification;
+		let notification: ObINotification;
 		beforeEach(() => {
 			notificationService.events.pipe(first()).subscribe(event => {
 				notification = event;
 			});
 		});
 
-		it('should broadcast a NotificationType.ERROR notification event', () => {
+		it('should broadcast a ObENotificationType.ERROR notification event', () => {
 			notificationService.error(message);
 
 			expect(notification).toBeDefined();
 			expect(notification.message).toBe(message);
-			expect(notification.type).toBe(NotificationType.ERROR);
+			expect(notification.type).toBe(ObENotificationType.ERROR);
 		});
 	});
 });

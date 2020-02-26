@@ -1,18 +1,18 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 
-import {UnknownRouteComponent} from './unknown-route.component';
-import {MockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {ObUnknownRouteComponent} from './unknown-route.component';
+import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 
 describe('UnknownRouteComponent', () => {
-	let component: UnknownRouteComponent;
-	let fixture: ComponentFixture<UnknownRouteComponent>;
+	let component: ObUnknownRouteComponent;
+	let fixture: ComponentFixture<ObUnknownRouteComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [
-				UnknownRouteComponent,
-				MockTranslatePipe
+				ObUnknownRouteComponent,
+				ObMockTranslatePipe
 			],
 			imports: [RouterTestingModule]
 		})
@@ -20,7 +20,7 @@ describe('UnknownRouteComponent', () => {
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(UnknownRouteComponent);
+		fixture = TestBed.createComponent(ObUnknownRouteComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

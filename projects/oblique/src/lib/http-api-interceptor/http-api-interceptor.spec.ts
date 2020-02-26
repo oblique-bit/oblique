@@ -2,7 +2,7 @@ import {async, TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule, HttpTestingController, TestRequest} from '@angular/common/http/testing';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {NotificationService, NotificationType, HttpApiInterceptorConfig, HttpApiInterceptorEvents, HttpApiRequest, SpinnerService} from 'oblique';
+import {ObNotificationService, ObENotificationType, ObHttpApiInterceptorConfig, ObHttpApiInterceptorEvents, ObIHttpApiRequest, ObSpinnerService} from 'oblique';
 import {of} from 'rxjs';
 import {finalize} from 'rxjs/operators';
 
@@ -47,34 +47,34 @@ class MockNotificationService {
 }
 
 class MockHttpApiInterceptorEvents {
-	requestIntercepted = of({} as HttpApiRequest);
+	requestIntercepted = of({} as ObIHttpApiRequest);
 }
 
 describe(`HttpApiInterceptor`, () => {
 	let service: DataService;
 	let httpMock: HttpTestingController;
-	let config: HttpApiInterceptorConfig;
-	let events: HttpApiInterceptorEvents;
-	let spinner: SpinnerService;
-	let notification: NotificationService;
+	let config: ObHttpApiInterceptorConfig;
+	let events: ObHttpApiInterceptorEvents;
+	let spinner: ObSpinnerService;
+	let notification: ObNotificationService;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [HttpClientTestingModule],
 			providers: [
 				DataService,
-				{provide: HttpApiInterceptorEvents, useClass: MockHttpApiInterceptorEvents},
-				{provide: SpinnerService, useClass: MockSpinnerService},
-				{provide: NotificationService, useClass: MockNotificationService}
+				{provide: ObHttpApiInterceptorEvents, useClass: MockHttpApiInterceptorEvents},
+				{provide: ObSpinnerService, useClass: MockSpinnerService},
+				{provide: ObNotificationService, useClass: MockNotificationService}
 			]
 		});
 
 		service = TestBed.get(DataService);
 		httpMock = TestBed.get(HttpTestingController);
-		config = TestBed.get(HttpApiInterceptorConfig);
-		events = TestBed.get(HttpApiInterceptorEvents);
-		spinner = TestBed.get(SpinnerService);
-		notification = TestBed.get(NotificationService);
+		config = TestBed.get(ObHttpApiInterceptorConfig);
+		events = TestBed.get(ObHttpApiInterceptorEvents);
+		spinner = TestBed.get(ObSpinnerService);
+		notification = TestBed.get(ObNotificationService);
 	}));
 
 	it('should add an X-Requested-With header', () => {
@@ -132,18 +132,18 @@ describe(`HttpApiInterceptor`, () => {
 		config.api.notification.active = false;
 		config.api.notification.title = 'test';
 		config.api.notification.text = 'test';
-		config.api.notification.severity = NotificationType.ERROR;
+		config.api.notification.severity = ObENotificationType.ERROR;
 		spyOn(notification, 'send');
-		getError(500, () => expect(notification.send).toHaveBeenCalledWith('test', 'test', NotificationType.ERROR));
+		getError(500, () => expect(notification.send).toHaveBeenCalledWith('test', 'test', ObENotificationType.ERROR));
 	});
 
 	xit('should display a notification on error when notification is disabled but http status is 0', () => {
 		config.api.notification.active = false;
 		config.api.notification.title = 'test';
 		config.api.notification.text = 'test';
-		config.api.notification.severity = NotificationType.ERROR;
+		config.api.notification.severity = ObENotificationType.ERROR;
 		spyOn(notification, 'send');
-		getError(0, () => expect(notification.send).toHaveBeenCalledWith('test', 'test', NotificationType.ERROR));
+		getError(0, () => expect(notification.send).toHaveBeenCalledWith('test', 'test', ObENotificationType.ERROR));
 	});
 
 	xit('should display a notification after timeout is expired', (done) => {

@@ -1,69 +1,69 @@
 import {NgModule} from '@angular/core';
-import {MasterLayoutConfig, MasterLayoutNavigationService, MasterLayoutService} from '../master-layout.module';
-import {MasterLayoutHeaderService} from '../master-layout-header/master-layout-header.service';
-import {MasterLayoutFooterService} from '../master-layout-footer/master-layout-footer.service';
+import {ObMasterLayoutConfig, ObMasterLayoutNavigationService, ObMasterLayoutService} from '../master-layout.module';
+import {ObMasterLayoutHeaderService} from '../master-layout-header/master-layout-header.service';
+import {ObMasterLayoutFooterService} from '../master-layout-footer/master-layout-footer.service';
 
-import {MockMasterLayoutComponent} from './mock-master-layout.component';
-import {MockMasterLayoutHeaderComponent} from './mock-master-layout-header.component';
-import {MockMasterLayoutHeaderToggleDirective} from './mock-master-layout-header-toggle.directive';
-import {MockMasterLayoutFooterComponent} from './mock-master-layout-footer.component';
-import {MockMasterLayoutNavigationComponent} from './mock-master-layout-navigation.component';
-import {MockMasterLayoutNavigationItemDirective} from './mock-master-layout-navigation-item.directive';
-import {MockMasterLayoutNavigationToggleDirective} from './mock-master-layout-navigation-toggle.directive';
-import {MockMasterLayoutNavigationMenuDirective} from './mock-master-layout-navigation-menu.directive';
-import {MockMasterLayoutFooterService} from './mock-master-layout-footer.service';
-import {MockMasterLayoutHeaderService} from './mock-master-layout-header.service';
-import {MockMasterLayoutNavigationService} from './mock-master-layout-navigation.service';
-import {MockMasterLayoutConfig} from './mock-master-layout.config';
-import {MockMasterLayoutService} from './mock-master-layout.service';
-import {MockMasterLayoutComponentService} from './mock-master-layout.component.service';
-import {MasterLayoutComponentService} from '../master-layout/master-layout.component.service';
+import {ObMockMasterLayoutComponent} from './mock-master-layout.component';
+import {ObMockMasterLayoutHeaderComponent} from './mock-master-layout-header.component';
+import {ObMockMasterLayoutHeaderToggleDirective} from './mock-master-layout-header-toggle.directive';
+import {ObMockMasterLayoutFooterComponent} from './mock-master-layout-footer.component';
+import {ObMockMasterLayoutNavigationComponent} from './mock-master-layout-navigation.component';
+import {ObMockMasterLayoutNavigationItemDirective} from './mock-master-layout-navigation-item.directive';
+import {ObMockMasterLayoutNavigationToggleDirective} from './mock-master-layout-navigation-toggle.directive';
+import {ObMockMasterLayoutNavigationMenuDirective} from './mock-master-layout-navigation-menu.directive';
+import {ObMockMasterLayoutFooterService} from './mock-master-layout-footer.service';
+import {ObMockMasterLayoutHeaderService} from './mock-master-layout-header.service';
+import {ObMockMasterLayoutNavigationService} from './mock-master-layout-navigation.service';
+import {ObMockMasterLayoutConfig} from './mock-master-layout.config';
+import {ObMockMasterLayoutService} from './mock-master-layout.service';
+import {ObMockMasterLayoutComponentService} from './mock-master-layout.component.service';
+import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 
-export {MockMasterLayoutComponent} from './mock-master-layout.component';
-export {MockMasterLayoutHeaderComponent} from './mock-master-layout-header.component';
-export {MockMasterLayoutHeaderToggleDirective} from './mock-master-layout-header-toggle.directive';
-export {MockMasterLayoutFooterComponent} from './mock-master-layout-footer.component';
-export {MockMasterLayoutNavigationComponent} from './mock-master-layout-navigation.component';
-export {MockMasterLayoutNavigationItemDirective} from './mock-master-layout-navigation-item.directive';
-export {MockMasterLayoutNavigationToggleDirective} from './mock-master-layout-navigation-toggle.directive';
-export {MockMasterLayoutNavigationMenuDirective} from './mock-master-layout-navigation-menu.directive';
-export {MockMasterLayoutFooterService} from './mock-master-layout-footer.service';
-export {MockMasterLayoutHeaderService} from './mock-master-layout-header.service';
-export {MockMasterLayoutNavigationService} from './mock-master-layout-navigation.service';
-export {MockMasterLayoutComponentService} from './mock-master-layout.component.service';
-export {MockMasterLayoutConfig} from './mock-master-layout.config';
-export {MockMasterLayoutService} from './mock-master-layout.service';
+export {ObMockMasterLayoutComponent} from './mock-master-layout.component';
+export {ObMockMasterLayoutHeaderComponent} from './mock-master-layout-header.component';
+export {ObMockMasterLayoutHeaderToggleDirective} from './mock-master-layout-header-toggle.directive';
+export {ObMockMasterLayoutFooterComponent} from './mock-master-layout-footer.component';
+export {ObMockMasterLayoutNavigationComponent} from './mock-master-layout-navigation.component';
+export {ObMockMasterLayoutNavigationItemDirective} from './mock-master-layout-navigation-item.directive';
+export {ObMockMasterLayoutNavigationToggleDirective} from './mock-master-layout-navigation-toggle.directive';
+export {ObMockMasterLayoutNavigationMenuDirective} from './mock-master-layout-navigation-menu.directive';
+export {ObMockMasterLayoutFooterService} from './mock-master-layout-footer.service';
+export {ObMockMasterLayoutHeaderService} from './mock-master-layout-header.service';
+export {ObMockMasterLayoutNavigationService} from './mock-master-layout-navigation.service';
+export {ObMockMasterLayoutComponentService} from './mock-master-layout.component.service';
+export {ObMockMasterLayoutConfig} from './mock-master-layout.config';
+export {ObMockMasterLayoutService} from './mock-master-layout.service';
 
 @NgModule({
 	declarations: [
-		MockMasterLayoutComponent,
-		MockMasterLayoutHeaderComponent,
-		MockMasterLayoutHeaderToggleDirective,
-		MockMasterLayoutNavigationComponent,
-		MockMasterLayoutFooterComponent,
-		MockMasterLayoutNavigationItemDirective,
-		MockMasterLayoutNavigationToggleDirective,
-		MockMasterLayoutNavigationMenuDirective
+		ObMockMasterLayoutComponent,
+		ObMockMasterLayoutHeaderComponent,
+		ObMockMasterLayoutHeaderToggleDirective,
+		ObMockMasterLayoutNavigationComponent,
+		ObMockMasterLayoutFooterComponent,
+		ObMockMasterLayoutNavigationItemDirective,
+		ObMockMasterLayoutNavigationToggleDirective,
+		ObMockMasterLayoutNavigationMenuDirective
 	],
 	exports: [
-		MockMasterLayoutComponent,
-		MockMasterLayoutHeaderComponent,
-		MockMasterLayoutHeaderToggleDirective,
-		MockMasterLayoutNavigationComponent,
-		MockMasterLayoutFooterComponent,
-		MockMasterLayoutNavigationItemDirective,
-		MockMasterLayoutNavigationToggleDirective,
-		MockMasterLayoutNavigationMenuDirective
+		ObMockMasterLayoutComponent,
+		ObMockMasterLayoutHeaderComponent,
+		ObMockMasterLayoutHeaderToggleDirective,
+		ObMockMasterLayoutNavigationComponent,
+		ObMockMasterLayoutFooterComponent,
+		ObMockMasterLayoutNavigationItemDirective,
+		ObMockMasterLayoutNavigationToggleDirective,
+		ObMockMasterLayoutNavigationMenuDirective
 	],
 	providers: [
-		{provide: MasterLayoutFooterService, useClass: MockMasterLayoutFooterService},
-		{provide: MasterLayoutHeaderService, useClass: MockMasterLayoutHeaderService},
-		{provide: MasterLayoutNavigationService, useClass: MockMasterLayoutNavigationService},
-		{provide: MasterLayoutComponentService, useClass: MockMasterLayoutComponentService},
-		{provide: MasterLayoutConfig, useClass: MockMasterLayoutConfig},
-		{provide: MasterLayoutService, useClass: MockMasterLayoutService}
+		{provide: ObMasterLayoutFooterService, useClass: ObMockMasterLayoutFooterService},
+		{provide: ObMasterLayoutHeaderService, useClass: ObMockMasterLayoutHeaderService},
+		{provide: ObMasterLayoutNavigationService, useClass: ObMockMasterLayoutNavigationService},
+		{provide: ObMasterLayoutComponentService, useClass: ObMockMasterLayoutComponentService},
+		{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
+		{provide: ObMasterLayoutService, useClass: ObMockMasterLayoutService}
 	]
 })
-export class MockMasterLayoutModule {
+export class ObMockMasterLayoutModule {
 
 }

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
-export class ScrollingEvents {
+export class ObScrollingEvents {
 	private readonly _scrolling = new Subject<boolean>();
 	private readonly scrolling$ = this._scrolling.asObservable();
 	private readonly _scrolled = new BehaviorSubject<number>(0);

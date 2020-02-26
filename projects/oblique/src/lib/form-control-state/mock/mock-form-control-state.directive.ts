@@ -1,10 +1,10 @@
 import {Directive, Input} from '@angular/core';
 
 @Directive({
-	selector: '[orFormControlState]',
-	exportAs: 'orFormControlState'
+	selector: '[obFormControlState]',
+	exportAs: 'obFormControlState'
 })
-export class MockFormControlStateDirective {
+export class ObMockFormControlStateDirective {
 	@Input() pristineValidation = false;
 	@Input() mandatory;
 }

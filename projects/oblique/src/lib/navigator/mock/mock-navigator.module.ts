@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
 
-import {MockNavigatorComponent} from './mock-navigator.component';
+import {ObMockNavigatorComponent} from './mock-navigator.component';
 
-export {MockNavigatorComponent} from './mock-navigator.component';
+export {ObMockNavigatorComponent} from './mock-navigator.component';
 
 @NgModule({
-	declarations: [MockNavigatorComponent],
-	exports: [MockNavigatorComponent]
+	declarations: [ObMockNavigatorComponent],
+	exports: [ObMockNavigatorComponent]
 })
-export class MockNavigatorModule {
+export class ObMockNavigatorModule {
 }
 

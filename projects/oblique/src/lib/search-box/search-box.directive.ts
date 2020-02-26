@@ -2,20 +2,20 @@ import {AfterViewInit, ComponentFactoryResolver, Directive, ElementRef, HostList
 import {NgControl} from '@angular/forms';
 import {takeUntil} from 'rxjs/operators';
 
-import {Unsubscribable} from '../unsubscribe.class';
-import {SearchWidgetItem} from './search-box.component';
-import {SearchBoxResultsComponent} from './search-box-results.component';
+import {ObUnsubscribable} from '../unsubscribe.class';
+import {ObISearchWidgetItem} from './search-box.component';
+import {ObSearchBoxResultsComponent} from './search-box-results.component';
 
 @Directive({
-	selector: '[orSearchBox]',
-	exportAs: 'orSearchBoxDirective'
+	selector: '[obSearchBox]',
+	exportAs: 'obSearchBoxDirective'
 })
-export class SearchBoxDirective extends Unsubscribable implements AfterViewInit, OnChanges {
-	@Input('orSearchBox') items: SearchWidgetItem[] = [];
+export class ObSearchBoxDirective extends ObUnsubscribable implements AfterViewInit, OnChanges {
+	@Input('obSearchBox') items: ObISearchWidgetItem[] = [];
 	@Input() minPatternLength = 1;
 	@Input() maxResults = 10;
 
-	private results: SearchBoxResultsComponent;
+	private results: ObSearchBoxResultsComponent;
 
 	public constructor(
 		private readonly ngControl: NgControl,
@@ -34,7 +34,7 @@ export class SearchBoxDirective extends Unsubscribable implements AfterViewInit,
 	}
 
 	ngAfterViewInit(): void {
-		const factory = this.componentFactoryResolver.resolveComponentFactory(SearchBoxResultsComponent);
+		const factory = this.componentFactoryResolver.resolveComponentFactory(ObSearchBoxResultsComponent);
 		this.results = this.viewContainer.createComponent(factory).instance;
 		this.results.items = this.items;
 		this.results.input = this.element;

@@ -1,30 +1,30 @@
 import {NgModule} from '@angular/core';
 
-import {SchemaValidationService} from '../schema-validation.module';
-import {MockSchemaValidationDirective} from './mock-schema-validation.directive';
-import {MockSchemaRequiredDirective} from './mock-schema-required.directive';
-import {MockSchemaValidateDirective} from './mock-schema-validator';
-import {MockSchemaValidationService} from './mock-schema-validation.service';
+import {ObSchemaValidationService} from '../schema-validation.module';
+import {ObMockSchemaValidationDirective} from './mock-schema-validation.directive';
+import {ObMockSchemaRequiredDirective} from './mock-schema-required.directive';
+import {ObMockSchemaValidateDirective} from './mock-schema-validator';
+import {ObMockSchemaValidationService} from './mock-schema-validation.service';
 
-export {MockSchemaValidationDirective} from './mock-schema-validation.directive';
-export {MockSchemaRequiredDirective} from './mock-schema-required.directive';
-export {MockSchemaValidateDirective} from './mock-schema-validator';
-export {MockSchemaValidationService} from './mock-schema-validation.service';
+export {ObMockSchemaValidationDirective} from './mock-schema-validation.directive';
+export {ObMockSchemaRequiredDirective} from './mock-schema-required.directive';
+export {ObMockSchemaValidateDirective} from './mock-schema-validator';
+export {ObMockSchemaValidationService} from './mock-schema-validation.service';
 
 @NgModule({
 	exports: [
-		MockSchemaValidateDirective,
-		MockSchemaValidationDirective,
-		MockSchemaRequiredDirective
+		ObMockSchemaValidateDirective,
+		ObMockSchemaValidationDirective,
+		ObMockSchemaRequiredDirective
 	],
 	declarations: [
-		MockSchemaValidateDirective,
-		MockSchemaValidationDirective,
-		MockSchemaRequiredDirective
+		ObMockSchemaValidateDirective,
+		ObMockSchemaValidationDirective,
+		ObMockSchemaRequiredDirective
 	],
 	providers: [
-		{provide: SchemaValidationService, useClass: MockSchemaValidationService}
+		{provide: ObSchemaValidationService, useClass: ObMockSchemaValidationService}
 	]
 })
-export class MockSchemaValidationModule {
+export class ObMockSchemaValidationModule {
 }

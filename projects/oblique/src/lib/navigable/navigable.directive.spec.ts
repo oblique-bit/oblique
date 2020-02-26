@@ -1,11 +1,11 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from 'oblique';
+import {ObNavigableDirective, ObNavigableOnChangeEvent, ObNavigableOnMoveEvent} from 'oblique';
 
 @Component({
 	template: `
-		<div [orNavigable]="model"
+		<div [obNavigable]="model"
 			 [navigableActivate]="activate"
 			 [navigableHighlight]="highlighted"
 			 [navigableFocusOnInit]="focusOnInit"
@@ -27,7 +27,7 @@ class TestComponent {
 		/* Do nothing */
 	}
 
-	onChange($event: NavigableOnChangeEvent) {
+	onChange($event: ObNavigableOnChangeEvent) {
 		/* Do nothing */
 	}
 
@@ -35,7 +35,7 @@ class TestComponent {
 		/* Do nothing */
 	}
 
-	onMove($event: NavigableOnMoveEvent) {
+	onMove($event: ObNavigableOnMoveEvent) {
 		/* Do nothing */
 	}
 
@@ -46,7 +46,7 @@ class TestComponent {
 
 describe('NavigableDirective', () => {
 	let testComponent: TestComponent;
-	let directive: NavigableDirective;
+	let directive: ObNavigableDirective;
 	let fixture: ComponentFixture<TestComponent>;
 	let element: DebugElement;
 	let button: DebugElement;
@@ -54,7 +54,7 @@ describe('NavigableDirective', () => {
 	//TODO: async not working
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [TestComponent, NavigableDirective],
+			declarations: [TestComponent, ObNavigableDirective],
 		}).compileComponents();
 	}));
 
@@ -62,8 +62,8 @@ describe('NavigableDirective', () => {
 		fixture = TestBed.createComponent(TestComponent);
 		testComponent = fixture.componentInstance;
 		fixture.detectChanges();
-		element = fixture.debugElement.query(By.directive(NavigableDirective));
-		directive = element.injector.get(NavigableDirective);
+		element = fixture.debugElement.query(By.directive(ObNavigableDirective));
+		directive = element.injector.get(ObNavigableDirective);
 		button = fixture.debugElement.query(By.css('button'));
 	});
 

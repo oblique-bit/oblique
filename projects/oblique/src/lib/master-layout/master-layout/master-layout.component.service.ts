@@ -1,14 +1,14 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 
-import {MasterLayoutConfig} from '../master-layout.config';
-import {MasterLayoutEvent, MasterLayoutEventValues} from '../master-layout.utility';
+import {ObMasterLayoutConfig} from '../master-layout.config';
+import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from '../master-layout.utility';
 
 @Injectable({
 	providedIn: 'root'
 })
-export class MasterLayoutComponentService {
-	private readonly _events = new Subject<MasterLayoutEvent>();
+export class ObMasterLayoutComponentService {
+	private readonly _events = new Subject<ObIMasterLayoutEvent>();
 	private readonly eventsS = this._events.asObservable();
 	private _isMenuOpened = false;
 	private _isFixed = this.config.layout.isFixed;
@@ -17,10 +17,10 @@ export class MasterLayoutComponentService {
 	private _hasMainNavigation = this.config.layout.hasMainNavigation;
 	private _hasLayout = this.config.layout.hasLayout;
 
-	constructor(private readonly config: MasterLayoutConfig) {
+	constructor(private readonly config: ObMasterLayoutConfig) {
 	}
 
-	get configEvents(): Observable<MasterLayoutEvent> {
+	get configEvents(): Observable<ObIMasterLayoutEvent> {
 		return this.eventsS;
 	}
 
@@ -31,7 +31,7 @@ export class MasterLayoutComponentService {
 	set isMenuOpened(value: boolean) {
 		this._isMenuOpened = value;
 		this._events.next({
-			name: MasterLayoutEventValues.COLLAPSE,
+			name: ObEMasterLayoutEventValues.COLLAPSE,
 			value: value
 		});
 	}
@@ -43,7 +43,7 @@ export class MasterLayoutComponentService {
 	set isFixed(value: boolean) {
 		this._isFixed = value;
 		this._events.next({
-			name: MasterLayoutEventValues.FIXED,
+			name: ObEMasterLayoutEventValues.FIXED,
 			value: value
 		});
 	}
@@ -55,7 +55,7 @@ export class MasterLayoutComponentService {
 	set hasCover(value: boolean) {
 		this._hasCover = value;
 		this._events.next({
-			name: MasterLayoutEventValues.COVER,
+			name: ObEMasterLayoutEventValues.COVER,
 			value: value
 		});
 	}
@@ -67,7 +67,7 @@ export class MasterLayoutComponentService {
 	set hasOffCanvas(value: boolean) {
 		this._hasOffCanvas = value;
 		this._events.next({
-			name: MasterLayoutEventValues.OFF_CANVAS,
+			name: ObEMasterLayoutEventValues.OFF_CANVAS,
 			value: value
 		});
 	}
@@ -79,7 +79,7 @@ export class MasterLayoutComponentService {
 	set hasMainNavigation(value: boolean) {
 		this._hasMainNavigation = value;
 		this._events.next({
-			name: MasterLayoutEventValues.MAIN_NAVIGATION,
+			name: ObEMasterLayoutEventValues.MAIN_NAVIGATION,
 			value: value
 		});
 	}
@@ -91,7 +91,7 @@ export class MasterLayoutComponentService {
 	set hasLayout(value: boolean) {
 		this._hasLayout = value;
 		this._events.next({
-			name: MasterLayoutEventValues.LAYOUT,
+			name: ObEMasterLayoutEventValues.LAYOUT,
 			value: value
 		});
 	}

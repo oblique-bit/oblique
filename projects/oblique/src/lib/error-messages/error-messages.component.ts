@@ -3,33 +3,33 @@ import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
 import {merge as observableMerge} from 'rxjs';
 import {delay, takeUntil} from 'rxjs/operators';
 
-import {Unsubscribable} from '../unsubscribe.class';
-import {FormControlStateDirective} from '../form-control-state/form-control-state.directive';
-import {ErrorMessagesService} from './error-messages.service';
-import {ThemeService} from '../theme/theme.service';
-import {ParentFormDirective} from '../nested-form/parent-form.directive';
+import {ObUnsubscribable} from '../unsubscribe.class';
+import {ObFormControlStateDirective} from '../form-control-state/form-control-state.directive';
+import {ObErrorMessagesService} from './error-messages.service';
+import {ObThemeService} from '../theme/theme.service';
+import {ObParentFormDirective} from '../nested-form/parent-form.directive';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular material mat-error instead
  */
 @Component({
-	selector: 'or-error-messages',
-	exportAs: 'orErrorMessages',
+	selector: 'ob-error-messages',
+	exportAs: 'obErrorMessages',
 	templateUrl: './error-messages.component.html'
 })
-export class ErrorMessagesComponent extends Unsubscribable implements AfterViewInit {
+export class ObErrorMessagesComponent extends ObUnsubscribable implements AfterViewInit {
 	@Input() control: NgControl;
 
 	errors: { key: string, params: { [param: string]: any } }[] = [];
 
 	private readonly form: NgForm | FormGroupDirective;
 
-	constructor(private readonly errorMessagesService: ErrorMessagesService,
-				theme: ThemeService,
-				@Optional() private readonly formGroup: FormControlStateDirective,
+	constructor(private readonly errorMessagesService: ObErrorMessagesService,
+				theme: ObThemeService,
+				@Optional() private readonly formGroup: ObFormControlStateDirective,
 				@Optional() ngForm: NgForm,
 				@Optional() formGroupDirective: FormGroupDirective,
-				@Optional() private readonly parent: ParentFormDirective) {
+				@Optional() private readonly parent: ObParentFormDirective) {
 		super();
 		theme.deprecated('error messages', 'form-field/overview#error-messages');
 		this.form = ngForm || formGroupDirective;

@@ -1,13 +1,13 @@
 import {Directive, HostBinding, HostListener, Input, OnInit} from '@angular/core';
 
 @Directive({
-	selector: '[orToggle]',
-	exportAs: 'orToggle'
+	selector: '[obToggle]',
+	exportAs: 'obToggle'
 })
-export class ToggleDirective implements OnInit {
+export class ObToggleDirective implements OnInit {
 	@HostBinding('class.show') @Input() active = false;
 	@HostBinding('class') @Input('class') hostClass: string;
-	@Input('orToggle') direction: string;
+	@Input('obToggle') direction: string;
 	@Input() after = false;
 
 	@HostListener('click') toggle() {

@@ -3,7 +3,7 @@ import {ControlContainer} from '@angular/forms';
 import {NgbTabset} from '@ng-bootstrap/ng-bootstrap';
 
 @Injectable()
-export class MockUnsavedChangesTabsService {
+export class ObMockUnsavedChangesTabsService {
 	watch(formId: string, form: ControlContainer): void {
 	}
 

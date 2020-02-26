@@ -1,18 +1,18 @@
 import {AfterViewInit, Component, ContentChild, HostBinding, Input, OnChanges, TemplateRef, ViewEncapsulation} from '@angular/core';
 
 @Component({
-	selector: 'or-sticky',
-	exportAs: 'orSticky',
+	selector: 'ob-sticky',
+	exportAs: 'obSticky',
 	templateUrl: 'sticky.component.html',
 	styleUrls: ['./sticky.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'sticky'}
 })
-export class StickyComponent implements OnChanges, AfterViewInit {
-	@ContentChild('orStickyHeader') readonly stickyHeaderTemplate: TemplateRef<any>;
-	@ContentChild('orStickyMain') readonly stickyMainTemplate: TemplateRef<any>;
-	@ContentChild('orStickyFooter') readonly stickyFooterTemplate: TemplateRef<any>;
+export class ObStickyComponent implements OnChanges, AfterViewInit {
+	@ContentChild('obStickyHeader') readonly stickyHeaderTemplate: TemplateRef<any>;
+	@ContentChild('obStickyMain') readonly stickyMainTemplate: TemplateRef<any>;
+	@ContentChild('obStickyFooter') readonly stickyFooterTemplate: TemplateRef<any>;
 	@Input() headerSize: string;
 	@Input() footerSize: string;
 	@Input() @HostBinding('class.no-layout') noLayout = false;
@@ -27,8 +27,8 @@ export class StickyComponent implements OnChanges, AfterViewInit {
 	}
 
 	ngOnChanges(): void {
-		StickyComponent.validateSize(this.headerSize);
-		StickyComponent.validateSize(this.footerSize);
+		ObStickyComponent.validateSize(this.headerSize);
+		ObStickyComponent.validateSize(this.footerSize);
 
 		if (this.stickyHeaderTemplate) {
 			this.setMainStickySize(this.headerSize);
@@ -41,7 +41,7 @@ export class StickyComponent implements OnChanges, AfterViewInit {
 	}
 
 	private static validateSize(size: string): void {
-		if (size && StickyComponent.SIZES.indexOf(size) === -1) {
+		if (size && ObStickyComponent.SIZES.indexOf(size) === -1) {
 			throw new Error(`"${size}" is not a valid size.Only "lg", "md" and "sm" are acceptable alternatives.`);
 		}
 	}

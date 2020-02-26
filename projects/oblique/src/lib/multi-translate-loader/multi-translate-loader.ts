@@ -4,15 +4,15 @@ import {InjectionToken} from '@angular/core';
 import {catchError, map} from 'rxjs/operators';
 import {forkJoin, Observable, of} from 'rxjs';
 
-export interface TranslationFile {
+export interface ObITranslationFile {
 	prefix: string;
 	suffix: string;
 }
 
 export const TRANSLATION_FILES = new InjectionToken('TRANSLATION_FILES');
 
-export class MultiTranslateLoader implements TranslateLoader {
-	constructor(private readonly http: HttpClient, private readonly resources: TranslationFile[]) {
+export class ObMultiTranslateLoader implements TranslateLoader {
+	constructor(private readonly http: HttpClient, private readonly resources: ObITranslationFile[]) {
 	}
 
 	public getTranslation(lang: string): Observable<any> {

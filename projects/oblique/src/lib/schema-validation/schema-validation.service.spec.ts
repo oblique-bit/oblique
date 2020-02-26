@@ -1,20 +1,20 @@
 import {inject, TestBed} from '@angular/core/testing';
-import {SchemaValidationService} from 'oblique';
+import {ObSchemaValidationService} from 'oblique';
 
 
 describe('SchemaValidationService', () => {
-	let schemaValidationService: SchemaValidationService;
+	let schemaValidationService: ObSchemaValidationService;
 	let validator;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			providers: [
-				SchemaValidationService
+				ObSchemaValidationService
 			]
 		});
 	});
 
-	beforeEach(inject([SchemaValidationService], (service: SchemaValidationService) => {
+	beforeEach(inject([ObSchemaValidationService], (service: ObSchemaValidationService) => {
 		schemaValidationService = service;
 	}));
 

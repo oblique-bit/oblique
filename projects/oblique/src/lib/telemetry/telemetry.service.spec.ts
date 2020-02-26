@@ -1,11 +1,11 @@
-import {TelemetryMessage} from './telemetry-message';
+import {ObTelemetryMessage} from './telemetry-message';
 import {TestBed} from '@angular/core/testing';
-import {TelemetryService} from './telemetry.service';
+import {ObTelemetryService} from './telemetry.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {windowProvider, WINDOW} from '../utilities';
 
 describe('TelemetryService', () => {
-	let service: TelemetryService;
+	let service: ObTelemetryService;
 	let httpMock: HttpTestingController;
 
 	beforeEach(() => {
@@ -14,7 +14,7 @@ describe('TelemetryService', () => {
 			providers: [{provide: WINDOW, useFactory: windowProvider}]
 		});
 
-		service = TestBed.get(TelemetryService);
+		service = TestBed.get(ObTelemetryService);
 		httpMock = TestBed.get(HttpTestingController);
 	});
 
@@ -23,7 +23,7 @@ describe('TelemetryService', () => {
 	});
 
 	it('should store telemetry messages', () => {
-		const message: TelemetryMessage = {
+		const message: ObTelemetryMessage = {
 			obliqueModuleName: 'testmodule',
 			obliqueVersion: 'testversion',
 			applicationName: 'testapplication',
@@ -36,14 +36,14 @@ describe('TelemetryService', () => {
 	});
 
 	it('should not store equal messages multiple times', () => {
-		const message1: TelemetryMessage = {
+		const message1: ObTelemetryMessage = {
 			obliqueModuleName: 'testmodule',
 			obliqueVersion: 'testversion',
 			applicationName: 'testapplication',
 			applicationVersion: 'testappversion'
 		};
 
-		const message2: TelemetryMessage = {
+		const message2: ObTelemetryMessage = {
 			obliqueModuleName: 'testmodule',
 			obliqueVersion: 'testversion',
 			applicationName: 'testapplication',
@@ -57,7 +57,7 @@ describe('TelemetryService', () => {
 	});
 
 	it('should send the stored messages correctly', () => {
-		const message: TelemetryMessage = {
+		const message: ObTelemetryMessage = {
 			obliqueModuleName: 'testmodule',
 			obliqueVersion: 'testversion',
 			applicationName: 'testapplication',

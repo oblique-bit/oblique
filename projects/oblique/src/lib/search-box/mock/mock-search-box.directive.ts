@@ -1,12 +1,12 @@
 import {Directive, Input} from '@angular/core';
-import {SearchWidgetItem} from '../search-box.module';
+import {ObISearchWidgetItem} from '../search-box.module';
 
 @Directive({
-	selector: '[orSearchBox]',
-	exportAs: 'orSearchBoxDirective'
+	selector: '[obSearchBox]',
+	exportAs: 'obSearchBoxDirective'
 })
-export class MockSearchBoxDirective {
-	@Input('orSearchBox') items: SearchWidgetItem[] = [];
+export class ObMockSearchBoxDirective {
+	@Input('obSearchBox') items: ObISearchWidgetItem[] = [];
 	@Input() minPatternLength = 1;
 	@Input() maxResults = 10;
 

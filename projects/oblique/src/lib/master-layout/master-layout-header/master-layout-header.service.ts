@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {MasterLayoutConfig} from '../master-layout.config';
-import {MasterLayoutEvent, MasterLayoutEventValues} from '../master-layout.utility';
+import {ObMasterLayoutConfig} from '../master-layout.config';
+import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from '../master-layout.utility';
 
 
 @Injectable({providedIn: 'root'})
-export class MasterLayoutHeaderService {
-	private readonly _events = new Subject<MasterLayoutEvent>();
+export class ObMasterLayoutHeaderService {
+	private readonly _events = new Subject<ObIMasterLayoutEvent>();
 	private readonly eventsS = this._events.asObservable();
 	private _isCustom = this.config.header.isCustom;
 	private _isMedium = this.config.header.isMedium;
@@ -14,10 +14,10 @@ export class MasterLayoutHeaderService {
 	private _isSticky = this.config.header.isSticky;
 	private _hasScrollTransition = this.config.header.hasScrollTransitions;
 
-	constructor(private readonly config: MasterLayoutConfig) {
+	constructor(private readonly config: ObMasterLayoutConfig) {
 	}
 
-	get configEvents(): Observable<MasterLayoutEvent> {
+	get configEvents(): Observable<ObIMasterLayoutEvent> {
 		return this.eventsS;
 	}
 
@@ -28,7 +28,7 @@ export class MasterLayoutHeaderService {
 	set isCustom(value: boolean) {
 		this._isCustom = value;
 		this._events.next({
-			name: MasterLayoutEventValues.CUSTOM,
+			name: ObEMasterLayoutEventValues.CUSTOM,
 			value: value
 		});
 	}
@@ -40,7 +40,7 @@ export class MasterLayoutHeaderService {
 	set isMedium(value: boolean) {
 		this._isMedium = value;
 		this._events.next({
-			name: MasterLayoutEventValues.MEDIUM,
+			name: ObEMasterLayoutEventValues.MEDIUM,
 			value: value
 		});
 	}
@@ -52,7 +52,7 @@ export class MasterLayoutHeaderService {
 	set isAnimated(value: boolean) {
 		this._isAnimated = value;
 		this._events.next({
-			name: MasterLayoutEventValues.ANIMATE,
+			name: ObEMasterLayoutEventValues.ANIMATE,
 			value: value
 		});
 	}
@@ -64,7 +64,7 @@ export class MasterLayoutHeaderService {
 	set isSticky(value: boolean) {
 		this._isSticky = value;
 		this._events.next({
-			name: MasterLayoutEventValues.STICKY,
+			name: ObEMasterLayoutEventValues.STICKY,
 			value: value
 		});
 	}
@@ -76,7 +76,7 @@ export class MasterLayoutHeaderService {
 	set hasScrollTransition(value: boolean) {
 		this._hasScrollTransition = value;
 		this._events.next({
-			name: MasterLayoutEventValues.SCROLL_TRANSITION,
+			name: ObEMasterLayoutEventValues.SCROLL_TRANSITION,
 			value: value
 		});
 	}

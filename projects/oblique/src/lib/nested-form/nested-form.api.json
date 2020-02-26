@@ -1,8 +1,8 @@
 [
   {
-    "name": "ParentFormDirective",
+    "name": "ObParentFormDirective",
     "usage": "Should be applied to the root element with a <code>formGroup</code> directive. It will simply forward its <code>submit</code> and <code>reset</code> events.",
-    "selector": "orParentForm",
+    "selector": "obParentForm",
     "since": "5.0.0",
     "variables": [
       {
@@ -20,9 +20,9 @@
     ]
   },
   {
-    "name": "NestedFormComponent",
-    "selector": "or-nested-form",
-    "exported": "orNestedForm",
+    "name": "ObNestedFormComponent",
+    "selector": "ob-nested-form",
+    "exported": "obNestedForm",
     "usage": "Should wrap a custom sub-component which contains a form.",
     "since": "5.0.0",
     "inputs":  [

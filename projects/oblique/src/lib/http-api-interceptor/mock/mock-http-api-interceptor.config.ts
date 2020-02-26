@@ -1,14 +1,14 @@
-import {NotificationType} from '../../notification/notification.module';
+import {ObENotificationType} from '../../notification/notification.module';
 import {Injectable} from '@angular/core';
 
 @Injectable()
-export class MockHttpApiInterceptorConfig {
+export class ObMockHttpApiInterceptorConfig {
 	api = {
 		url: '',
 		spinner: true,
 		notification: {
 			active: true,
-			severity: NotificationType.ERROR,
+			severity: ObENotificationType.ERROR,
 			title: undefined,
 			text: undefined,
 			sticky: undefined

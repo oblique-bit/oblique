@@ -1,13 +1,13 @@
 import {Directive, Input} from '@angular/core';
 
 @Directive({
-	selector: '[orToggle]',
-	exportAs: 'orToggle'
+	selector: '[obToggle]',
+	exportAs: 'obToggle'
 })
-export class MockToggleDirective {
+export class ObMockToggleDirective {
 	@Input() active = false;
 	@Input('class') hostClass: string;
-	@Input('orToggle') direction: string;
+	@Input('obToggle') direction: string;
 	@Input() after = false;
 
 	toggle() {

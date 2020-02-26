@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {DatepickerOptions} from '../datepicker-config.service';
+import {ObIDatepickerOptions} from '../datepicker-config.service';
 
 @Injectable()
-export class MockDatepickerConfigService {
-	options: DatepickerOptions = {
+export class ObMockDatepickerConfigService {
+	options: ObIDatepickerOptions = {
 		displayMonths: 1,
 		firstDayOfWeek: 1,
 		navigation: 'select',

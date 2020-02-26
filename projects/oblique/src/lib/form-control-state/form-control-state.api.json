@@ -1,8 +1,8 @@
 [
   {
-    "name": "FormControlStateDirective",
-    "selector": "[orFormControlState]",
-    "exported": "orFormControlState",
+    "name": "ObFormControlStateDirective",
+    "selector": "[obFormControlState]",
+    "exported": "obFormControlState",
     "since": "2.0.0",
     "inputs": [
       {

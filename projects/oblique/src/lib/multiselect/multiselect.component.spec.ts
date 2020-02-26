@@ -3,8 +3,8 @@ import {NO_ERRORS_SCHEMA, Pipe, PipeTransform} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 
-import {MultiselectComponent, MultiselectConfig, MultiselectTexts} from 'oblique';
-import {MockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {ObMultiselectComponent, ObMultiselectConfig, ObMultiselectTexts} from 'oblique';
+import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 
 @Pipe({
 	name: 'searchFilter'
@@ -16,8 +16,8 @@ class MockSearchPipe implements PipeTransform {
 }
 
 describe('MultiselectComponent', () => {
-	let fixture: ComponentFixture<MultiselectComponent>;
-	let component: MultiselectComponent;
+	let fixture: ComponentFixture<ObMultiselectComponent>;
+	let component: ObMultiselectComponent;
 
 	const stringOption1 = 'fuu';
 	const stringOption2 = 'bar';
@@ -32,21 +32,21 @@ describe('MultiselectComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [
-				MultiselectComponent,
+				ObMultiselectComponent,
 				MockSearchPipe,
-				MockTranslatePipe
+				ObMockTranslatePipe
 			],
 			imports: [FormsModule],
 			providers: [
-				MultiselectConfig,
-				MultiselectTexts
+				ObMultiselectConfig,
+				ObMultiselectTexts
 			],
 			schemas: [NO_ERRORS_SCHEMA]
 		}).compileComponents();
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(MultiselectComponent);
+		fixture = TestBed.createComponent(ObMultiselectComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

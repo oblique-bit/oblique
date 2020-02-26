@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {of} from 'rxjs';
 
 @Injectable()
-export class MockSelectableService {
+export class ObMockSelectableService {
 	collectionChange$ = of({});
 
 	toggleValue(value: any, collection: string): void {

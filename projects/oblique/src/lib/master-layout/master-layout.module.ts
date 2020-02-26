@@ -5,55 +5,55 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {TranslateModule} from '@ngx-translate/core';
 
-import {NotificationModule} from '../notification/notification.module';
-import {SpinnerModule} from '../spinner/spinner.module';
-import {ScrollingModule} from '../scrolling/scrolling.module';
-import {OffCanvasModule} from '../off-canvas/off-canvas.module';
-import {ThemeService} from '../theme/theme.service';
-import {TelemetryService} from '../telemetry/telemetry.service';
+import {ObNotificationModule} from '../notification/notification.module';
+import {ObSpinnerModule} from '../spinner/spinner.module';
+import {ObScrollingModule} from '../scrolling/scrolling.module';
+import {ObOffCanvasModule} from '../off-canvas/off-canvas.module';
+import {ObThemeService} from '../theme/theme.service';
+import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
-import {MasterLayoutComponent} from './master-layout/master-layout.component';
-import {MasterLayoutService} from './master-layout.service';
-import {MasterLayoutHeaderComponent} from './master-layout-header/master-layout-header.component';
-import {MasterLayoutHeaderToggleDirective} from './master-layout-header/master-layout-header-toggle.directive';
-import {MasterLayoutFooterComponent} from './master-layout-footer/master-layout-footer.component';
-import {MasterLayoutNavigationService} from './master-layout-navigation/master-layout-navigation.service';
-import {MasterLayoutNavigationComponent} from './master-layout-navigation/master-layout-navigation.component';
-import {MasterLayoutNavigationItemDirective} from './master-layout-navigation/master-layout-navigation-item.directive';
-import {MasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
-import {MasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
-import {MasterLayoutConfig, ScrollMode} from './master-layout.config';
+import {ObMasterLayoutComponent} from './master-layout/master-layout.component';
+import {ObMasterLayoutService} from './master-layout.service';
+import {ObMasterLayoutHeaderComponent} from './master-layout-header/master-layout-header.component';
+import {ObMasterLayoutHeaderToggleDirective} from './master-layout-header/master-layout-header-toggle.directive';
+import {ObMasterLayoutFooterComponent} from './master-layout-footer/master-layout-footer.component';
+import {ObMasterLayoutNavigationService} from './master-layout-navigation/master-layout-navigation.service';
+import {ObMasterLayoutNavigationComponent} from './master-layout-navigation/master-layout-navigation.component';
+import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation/master-layout-navigation-item.directive';
+import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
+import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
+import {ObMasterLayoutConfig, ObEScrollMode} from './master-layout.config';
 import {WINDOW, windowProvider} from '../utilities';
 
-export {MasterLayoutComponent} from './master-layout/master-layout.component';
-export {MasterLayoutService} from './master-layout.service';
-export {MasterLayoutHeaderToggleDirective} from './master-layout-header/master-layout-header-toggle.directive';
-export {MasterLayoutNavigationService} from './master-layout-navigation/master-layout-navigation.service';
-export {MasterLayoutNavigationItemDirective} from './master-layout-navigation/master-layout-navigation-item.directive';
-export {MasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
-export {MasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
-export {ORNavigationLink} from './master-layout-navigation/master-layout-navigation.component';
-export {MasterLayoutConfig, ScrollMode} from './master-layout.config';
+export {ObMasterLayoutComponent} from './master-layout/master-layout.component';
+export {ObMasterLayoutService} from './master-layout.service';
+export {ObMasterLayoutHeaderToggleDirective} from './master-layout-header/master-layout-header-toggle.directive';
+export {ObMasterLayoutNavigationService} from './master-layout-navigation/master-layout-navigation.service';
+export {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation/master-layout-navigation-item.directive';
+export {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
+export {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
+export {ObNavigationLink} from './master-layout-navigation/master-layout-navigation.component';
+export {ObMasterLayoutConfig, ObEScrollMode} from './master-layout.config';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		TranslateModule,
 		RouterModule,
-		NotificationModule,
-		SpinnerModule,
-		ScrollingModule,
-		OffCanvasModule
+		ObNotificationModule,
+		ObSpinnerModule,
+		ObScrollingModule,
+		ObOffCanvasModule
 	],
 	declarations: [
-		MasterLayoutComponent,
-		MasterLayoutHeaderComponent,
-		MasterLayoutHeaderToggleDirective,
-		MasterLayoutNavigationComponent,
-		MasterLayoutFooterComponent,
-		MasterLayoutNavigationItemDirective,
-		MasterLayoutNavigationToggleDirective,
-		MasterLayoutNavigationMenuDirective
+		ObMasterLayoutComponent,
+		ObMasterLayoutHeaderComponent,
+		ObMasterLayoutHeaderToggleDirective,
+		ObMasterLayoutNavigationComponent,
+		ObMasterLayoutFooterComponent,
+		ObMasterLayoutNavigationItemDirective,
+		ObMasterLayoutNavigationToggleDirective,
+		ObMasterLayoutNavigationMenuDirective
 	],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
@@ -61,16 +61,16 @@ export {MasterLayoutConfig, ScrollMode} from './master-layout.config';
 		{provide: WINDOW, useFactory: windowProvider}
 	],
 	exports: [
-		MasterLayoutComponent,
-		MasterLayoutHeaderToggleDirective,
-		MasterLayoutNavigationItemDirective,
-		MasterLayoutNavigationToggleDirective,
-		MasterLayoutNavigationMenuDirective
+		ObMasterLayoutComponent,
+		ObMasterLayoutHeaderToggleDirective,
+		ObMasterLayoutNavigationItemDirective,
+		ObMasterLayoutNavigationToggleDirective,
+		ObMasterLayoutNavigationMenuDirective
 	]
 })
-export class MasterLayoutModule {
-	constructor(theme: ThemeService, telemetry: TelemetryService) {
+export class ObMasterLayoutModule {
+	constructor(theme: ObThemeService, telemetry: ObTelemetryService) {
 		theme.setDefaultFont();
-		requireAndRecordTelemetry(telemetry, MasterLayoutModule);
+		requireAndRecordTelemetry(telemetry, ObMasterLayoutModule);
 	}
 }

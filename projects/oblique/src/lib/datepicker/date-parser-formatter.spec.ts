@@ -1,10 +1,10 @@
-import {DateDMYParserFormatter} from 'oblique';
+import {ObDateDMYParserFormatter} from 'oblique';
 
 describe('DateDMYParserFormatter', () => {
-	let pf: DateDMYParserFormatter;
+	let pf: ObDateDMYParserFormatter;
 
 	beforeEach(() => {
-		pf = new DateDMYParserFormatter();
+		pf = new ObDateDMYParserFormatter();
 	});
 
 	describe('parse()', () => {

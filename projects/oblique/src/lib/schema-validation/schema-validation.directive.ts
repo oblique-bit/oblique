@@ -1,16 +1,16 @@
 import {Directive, Input, OnInit} from '@angular/core';
 import {ValidationErrors} from '@angular/forms';
-import {SchemaValidationService} from './schema-validation.service';
+import {ObSchemaValidationService} from './schema-validation.service';
 
 @Directive({
-	selector: '[orSchemaValidation]',
-	providers: [SchemaValidationService]
+	selector: '[obSchemaValidation]',
+	providers: [ObSchemaValidationService]
 })
-export class SchemaValidationDirective implements OnInit {
-	@Input('orSchemaValidation') private readonly schema: any;
+export class ObSchemaValidationDirective implements OnInit {
+	@Input('obSchemaValidation') private readonly schema: any;
 	private validator;
 
-	constructor(private readonly schemaValidationService: SchemaValidationService) {
+	constructor(private readonly schemaValidationService: ObSchemaValidationService) {
 	}
 
 	ngOnInit() {

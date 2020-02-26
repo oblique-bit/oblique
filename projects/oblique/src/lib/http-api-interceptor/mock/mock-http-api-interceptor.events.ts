@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {EMPTY, Observable, of} from 'rxjs';
-import {HttpApiRequest} from '../http-api-interceptor.module';
+import {ObIHttpApiRequest} from '../http-api-interceptor.module';
 
 @Injectable()
-export class MockHttpApiInterceptorEvents {
-	get requestIntercepted(): Observable<HttpApiRequest> {
-		return of({} as HttpApiRequest);
+export class ObMockHttpApiInterceptorEvents {
+	get requestIntercepted(): Observable<ObIHttpApiRequest> {
+		return of({} as ObIHttpApiRequest);
 	}
 
 	get sessionExpired(): Observable<void> {
@@ -15,7 +15,7 @@ export class MockHttpApiInterceptorEvents {
 	sessionExpire(): void {
 	}
 
-	requestIntercept(request: HttpApiRequest): void {
+	requestIntercept(request: ObIHttpApiRequest): void {
 	}
 
 	deactivateSpinnerOnNextAPICalls(number = 1): void {

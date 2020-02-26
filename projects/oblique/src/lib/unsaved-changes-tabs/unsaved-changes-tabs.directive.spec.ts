@@ -3,25 +3,25 @@ import {CommonModule} from '@angular/common';
 import {Component, ViewChild} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {NgbTabsetModule} from '@ng-bootstrap/ng-bootstrap';
-import {UnsavedChangesTabsDirective} from './unsaved-changes-tabs.directive';
-import {UnsavedChangesTabsService} from './unsaved-changes-tabs.service';
+import {ObUnsavedChangesTabsDirective} from './unsaved-changes-tabs.directive';
+import {ObUnsavedChangesTabsService} from './unsaved-changes-tabs.service';
 
 @Component({
 	template: `
-		<form orUnsavedChangesTabs></form>`
+		<form obUnsavedChangesTabs></form>`
 })
 class FaultyTestComponent {
-	@ViewChild(UnsavedChangesTabsDirective, {static: false}) unsavedChangesDirective;
+	@ViewChild(ObUnsavedChangesTabsDirective, {static: false}) unsavedChangesDirective;
 }
 
 @Component({
 	template: `
-		<form id="test" orUnsavedChangesTabs></form>`
+		<form id="test" obUnsavedChangesTabs></form>`
 
 })
 class TestComponent {
 	//noinspection JSUnusedGlobalSymbols
-	@ViewChild(UnsavedChangesTabsDirective, {static: false}) unsavedChangesDirective;
+	@ViewChild(ObUnsavedChangesTabsDirective, {static: false}) unsavedChangesDirective;
 }
 
 @Component({
@@ -29,20 +29,20 @@ class TestComponent {
 		<ngb-tabset>
 			<ngb-tab id="tab" title="tab1">
 				<ng-template ngbTabContent>
-					<form orUnsavedChangesTabs></form>
+					<form obUnsavedChangesTabs></form>
 				</ng-template>
 			</ngb-tab>
 		</ngb-tabset>`
 })
 class TabsTestComponent {
 	//noinspection JSUnusedGlobalSymbols
-	@ViewChild(UnsavedChangesTabsDirective, {static: false}) unsavedChangesDirective;
+	@ViewChild(ObUnsavedChangesTabsDirective, {static: false}) unsavedChangesDirective;
 }
 
 describe('UnsavedChangesTabsDirective', () => {
 	let fixture;
 	let testComponent: FaultyTestComponent | TestComponent | TabsTestComponent;
-	let directive: UnsavedChangesTabsDirective;
+	let directive: ObUnsavedChangesTabsDirective;
 	let unsavedChangesServiceMock;
 	const initFixture = (component: any): void => {
 		fixture = TestBed.createComponent(component);
@@ -61,10 +61,10 @@ describe('UnsavedChangesTabsDirective', () => {
 
 		//noinspection JSIgnoredPromiseFromCall
 		TestBed.configureTestingModule({
-			declarations: [FaultyTestComponent, TestComponent, TabsTestComponent, UnsavedChangesTabsDirective],
+			declarations: [FaultyTestComponent, TestComponent, TabsTestComponent, ObUnsavedChangesTabsDirective],
 			providers: [
 				ControlContainer,
-				{provide: UnsavedChangesTabsService, useValue: unsavedChangesServiceMock}
+				{provide: ObUnsavedChangesTabsService, useValue: unsavedChangesServiceMock}
 			],
 			imports: [CommonModule, NgbTabsetModule]
 		}).compileComponents();

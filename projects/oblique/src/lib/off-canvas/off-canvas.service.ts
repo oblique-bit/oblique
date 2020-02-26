@@ -5,7 +5,7 @@ import {Subject, Observable} from 'rxjs';
  * Service for controlling ObliqueUI offcanvas composite features.
  */
 @Injectable({ providedIn: 'root' })
-export class OffCanvasService {
+export class ObOffCanvasService {
 	/**
 	 * Fire an `opened` event
 	 */

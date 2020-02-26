@@ -1,8 +1,8 @@
 [
   {
-    "name": "DropdownComponent",
-    "selector": "or-dropdown",
-    "exported": "orDropdown",
+    "name": "ObDropdownComponent",
+    "selector": "ob-dropdown",
+    "exported": "obDropdown",
     "since": "2.0.0",
     "inputs": [
       {

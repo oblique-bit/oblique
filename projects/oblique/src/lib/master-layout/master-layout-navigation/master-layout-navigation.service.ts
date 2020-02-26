@@ -3,15 +3,15 @@ import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {TranslateService} from '@ngx-translate/core';
 
-import {Unsubscribable} from '../../unsubscribe.class';
-import {MasterLayoutEvent, MasterLayoutEventValues} from '../master-layout.utility';
-import {MasterLayoutConfig, ScrollMode} from '../master-layout.config';
+import {ObUnsubscribable} from '../../unsubscribe.class';
+import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from '../master-layout.utility';
+import {ObMasterLayoutConfig, ObEScrollMode} from '../master-layout.config';
 
 @Injectable({
 	providedIn: 'root'
 })
-export class MasterLayoutNavigationService extends Unsubscribable {
-	private readonly _events = new Subject<MasterLayoutEvent>();
+export class ObMasterLayoutNavigationService extends ObUnsubscribable {
+	private readonly _events = new Subject<ObIMasterLayoutEvent>();
 	private readonly eventsS = this._events.asObservable();
 	private readonly _scrolled: Subject<number> = new Subject<number>();
 	private readonly scrolled$ = this._scrolled.asObservable();
@@ -20,7 +20,7 @@ export class MasterLayoutNavigationService extends Unsubscribable {
 	private _isFullWidth = this.config.navigation.isFullWidth;
 	private _scrollMode = this.config.navigation.scrollMode;
 
-	constructor(private readonly config: MasterLayoutConfig, translate: TranslateService) {
+	constructor(private readonly config: ObMasterLayoutConfig, translate: TranslateService) {
 		super();
 		translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.refresh());
 	}
@@ -32,7 +32,7 @@ export class MasterLayoutNavigationService extends Unsubscribable {
 	set isFullWidth(value: boolean) {
 		this._isFullWidth = value;
 		this._events.next({
-			name: MasterLayoutEventValues.FULL_WIDTH,
+			name: ObEMasterLayoutEventValues.FULL_WIDTH,
 			value: value
 		});
 	}
@@ -41,15 +41,15 @@ export class MasterLayoutNavigationService extends Unsubscribable {
 		return this._scrollMode;
 	}
 
-	set scrollMode(value: ScrollMode) {
+	set scrollMode(value: ObEScrollMode) {
 		this._scrollMode = value;
 		this._events.next({
-			name: MasterLayoutEventValues.SCROLLABLE,
+			name: ObEMasterLayoutEventValues.SCROLLABLE,
 			mode: value
 		});
 	}
 
-	get configEvents(): Observable<MasterLayoutEvent> {
+	get configEvents(): Observable<ObIMasterLayoutEvent> {
 		return this.eventsS;
 	}
 

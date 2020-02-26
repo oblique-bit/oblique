@@ -1,8 +1,8 @@
 import Timer = NodeJS.Timer;
 
-export interface INotification {
+export interface ObINotification {
 	idPrefix?: string;
-	type?: NotificationType;
+	type?: ObENotificationType;
 	message?: string;
 	messageParams?: { [key: string]: any };
 	title?: string;
@@ -16,7 +16,7 @@ export interface INotification {
 	timer?: Timer;
 }
 
-export interface INotificationConfig {
+export interface ObINotificationConfig {
 	channel?: string;
 	sticky?: boolean;
 	timeout?: number;
@@ -24,7 +24,7 @@ export interface INotificationConfig {
 	groupSimilar?: boolean;
 }
 
-export enum NotificationType {
+export enum ObENotificationType {
 	INFO = 'info',
 	SUCCESS = 'success',
 	WARNING = 'warning',

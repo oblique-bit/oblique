@@ -7,7 +7,7 @@
 		<input type="text" matInput [readonly]="readonly" [attr.disabled]="disabled"
 			   [ngModel]="pattern" (ngModelChange)="onPatternChanged($event)" [ngModelOptions]="modelOptions"
 			   #filterControl>
-		<button type="button" role="button" [orInputClear]="filterControl" (onClear)="onPatternCleared();">
+		<button type="button" role="button" [obInputClear]="filterControl" (onClear)="onPatternCleared();">
 			<span class="fa fa-times-circle"></span>
 			<span class="sr-only">{{'i18n.common.clear' | translate}}</span>
 		</button>
@@ -25,7 +25,7 @@
 			   placeholder="{{placeholder | translate}}" [attr.readonly]="readonly" [attr.disabled]="disabled"
 			   [ngModel]="pattern" (ngModelChange)="onPatternChanged($event)" [ngModelOptions]="modelOptions"
 			   #filterControl>
-		<button type="button" role="button" [orInputClear]="filterControl" (onClear)="onPatternCleared();">
+		<button type="button" role="button" [obInputClear]="filterControl" (onClear)="onPatternCleared();">
 			<span class="fa fa-times-circle"></span>
 			<span class="sr-only">{{'i18n.common.clear' | translate}}</span>
 		</button>

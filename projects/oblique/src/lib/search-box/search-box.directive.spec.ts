@@ -1,10 +1,10 @@
-import {SearchBoxDirective} from './search-box.directive';
+import {ObSearchBoxDirective} from './search-box.directive';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NgControl} from '@angular/forms';
 import {Component} from '@angular/core';
 
 @Component({
-	template: '<input [id]="id" class="search-box-input" type="search" [orSearchBox]="items" />'
+	template: '<input [id]="id" class="search-box-input" type="search" [obSearchBox]="items" />'
 })
 class TestComponent {
 	// clickCount is not necessary but it's used here to verify that the component
@@ -20,7 +20,7 @@ describe('SearchBoxDirective', () => {
 		TestBed.configureTestingModule({
 			declarations: [
 				TestComponent,
-				SearchBoxDirective
+				ObSearchBoxDirective
 			],
 			providers: [
 				NgControl

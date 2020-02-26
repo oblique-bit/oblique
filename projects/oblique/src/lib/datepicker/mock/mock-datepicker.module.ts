@@ -1,33 +1,33 @@
 import {NgModule} from '@angular/core';
-import {DatepickerI18nService} from '../datepicker-i18n.service';
-import {DatepickerConfigService} from '../datepicker-config.service';
-import {MockDateFormatterPipe} from './mock-date-formatter.pipe';
-import {MockDatepickerPlaceholderDirective} from './mock-datepicker-placeholder.directive';
-import {MockDatepickerI18nService} from './mock-datepicker-i18n.service';
-import {MockDatepickerComponent} from './mock-datepicker.component';
-import {MockDatepickerConfigService} from './mock-datepicker-config.service';
+import {ObDatepickerI18nService} from '../datepicker-i18n.service';
+import {ObDatepickerConfigService} from '../datepicker-config.service';
+import {ObMockDateFormatterPipe} from './mock-date-formatter.pipe';
+import {ObMockDatepickerPlaceholderDirective} from './mock-datepicker-placeholder.directive';
+import {ObMockDatepickerI18nService} from './mock-datepicker-i18n.service';
+import {ObMockDatepickerComponent} from './mock-datepicker.component';
+import {ObMockDatepickerConfigService} from './mock-datepicker-config.service';
 
-export {MockDateFormatterPipe} from './mock-date-formatter.pipe';
-export {MockDatepickerPlaceholderDirective} from './mock-datepicker-placeholder.directive';
-export {MockDatepickerComponent} from './mock-datepicker.component';
-export {MockDatepickerI18nService} from './mock-datepicker-i18n.service';
-export {MockDatepickerConfigService} from './mock-datepicker-config.service';
+export {ObMockDateFormatterPipe} from './mock-date-formatter.pipe';
+export {ObMockDatepickerPlaceholderDirective} from './mock-datepicker-placeholder.directive';
+export {ObMockDatepickerComponent} from './mock-datepicker.component';
+export {ObMockDatepickerI18nService} from './mock-datepicker-i18n.service';
+export {ObMockDatepickerConfigService} from './mock-datepicker-config.service';
 
 @NgModule({
 	declarations: [
-		MockDateFormatterPipe,
-		MockDatepickerPlaceholderDirective,
-		MockDatepickerComponent
+		ObMockDateFormatterPipe,
+		ObMockDatepickerPlaceholderDirective,
+		ObMockDatepickerComponent
 	],
 	exports: [
-		MockDateFormatterPipe,
-		MockDatepickerPlaceholderDirective,
-		MockDatepickerComponent
+		ObMockDateFormatterPipe,
+		ObMockDatepickerPlaceholderDirective,
+		ObMockDatepickerComponent
 	],
 	providers: [
-		{provide: DatepickerI18nService, useClass: MockDatepickerI18nService},
-		{provide: DatepickerConfigService, useClass: MockDatepickerConfigService},
+		{provide: ObDatepickerI18nService, useClass: ObMockDatepickerI18nService},
+		{provide: ObDatepickerConfigService, useClass: ObMockDatepickerConfigService},
 	]
 })
-export class MockDatepickerModule {
+export class ObMockDatepickerModule {
 }

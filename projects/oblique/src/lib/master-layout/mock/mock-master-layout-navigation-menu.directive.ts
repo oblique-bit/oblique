@@ -1,13 +1,13 @@
 import {Directive, EventEmitter, Output, QueryList} from '@angular/core';
-import {MasterLayoutNavigationMenuDirective} from '../master-layout.module';
+import {ObMasterLayoutNavigationMenuDirective} from '../master-layout.module';
 
 @Directive({
-	selector: '[orMasterLayoutNavigationMenu]',
-	exportAs: 'orMasterLayoutNavigationMenu'
+	selector: '[obMasterLayoutNavigationMenu]',
+	exportAs: 'obMasterLayoutNavigationMenu'
 })
-export class MockMasterLayoutNavigationMenuDirective {
+export class ObMockMasterLayoutNavigationMenuDirective {
 	@Output() onShow = new EventEmitter<boolean>();
-	$menus: QueryList<MasterLayoutNavigationMenuDirective>;
+	$menus: QueryList<ObMasterLayoutNavigationMenuDirective>;
 
 	show(): void {
 	}

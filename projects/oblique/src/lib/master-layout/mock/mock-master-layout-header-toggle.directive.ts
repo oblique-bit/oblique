@@ -1,10 +1,10 @@
 import {Directive} from '@angular/core';
 
 @Directive({
-	selector: '[orMasterLayoutHeaderToggle]',
-	exportAs: 'orMasterLayoutHeaderToggle'
+	selector: '[obMasterLayoutHeaderToggle]',
+	exportAs: 'obMasterLayoutHeaderToggle'
 })
-export class MockMasterLayoutHeaderToggleDirective {
+export class ObMockMasterLayoutHeaderToggleDirective {
 	toggle($event): void {
 	}
 }

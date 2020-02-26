@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {NgbDateParserFormatter, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Injectable()
-export class DateDMYParserFormatter extends NgbDateParserFormatter {
+export class ObDateDMYParserFormatter extends NgbDateParserFormatter {
 	parse(value: string): NgbDateStruct {
 		if (value) {
 			const dateParts = value.trim().split('.');

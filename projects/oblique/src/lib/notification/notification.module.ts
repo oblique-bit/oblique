@@ -4,33 +4,33 @@ import {TranslateModule} from '@ngx-translate/core';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
-import {NotificationComponent} from './notification.component';
-import {NotificationService} from './notification.service';
-import {NotificationConfig} from './notification.config';
-import {TelemetryService} from '../telemetry/telemetry.service';
+import {ObNotificationComponent} from './notification.component';
+import {ObNotificationService} from './notification.service';
+import {ObNotificationConfig} from './notification.config';
+import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {WINDOW, windowProvider} from '../utilities';
 
-export {NotificationComponent} from './notification.component';
-export {NotificationService} from './notification.service';
-export {NotificationConfig, CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE, GROUP_SIMILAR_NOTIFICATIONS} from './notification.config';
-export {INotification, NotificationType} from './notification.interfaces';
+export {ObNotificationComponent} from './notification.component';
+export {ObNotificationService} from './notification.service';
+export {ObNotificationConfig, CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE, GROUP_SIMILAR_NOTIFICATIONS} from './notification.config';
+export {ObINotification, ObENotificationType} from './notification.interfaces';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		TranslateModule
 	],
-	declarations: [NotificationComponent],
+	declarations: [ObNotificationComponent],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 		{provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
-	exports: [NotificationComponent]
+	exports: [ObNotificationComponent]
 })
-export class NotificationModule {
-	constructor(telemetry: TelemetryService) {
-		requireAndRecordTelemetry(telemetry, NotificationModule);
+export class ObNotificationModule {
+	constructor(telemetry: ObTelemetryService) {
+		requireAndRecordTelemetry(telemetry, ObNotificationModule);
 	}
 }

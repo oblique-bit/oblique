@@ -1,37 +1,37 @@
 [
 	{
 		"name": "MasterLayoutComponent",
-		"selector": "or-master-layout",
-		"exported": "orMasterLayout",
+		"selector": "ob-master-layout",
+		"exported": "obMasterLayout",
 		"usage": "This component takes care of the structure of the application and should be used in <code>app.component.html</code>",
 		"since": "2.0.0",
 		"inputs": [
 			{
 				"name": "navigation",
-				"text": "A list of links to populate the primary navigation. If more control on the navigation is needed, use <code>[orNavigation]</code> content projection (see below) instead",
-				"type": "ORNavigationLink[]",
+				"text": "A list of links to populate the primary navigation. If more control on the navigation is needed, use <code>[obNavigation]</code> content projection (see below) instead",
+				"type": "ObNavigationLink[]",
 				"default": "[]",
 				"since": "3.0.0"
 			}
 		],
 		"projection": [
 			{
-				"name": "[orHeader]",
+				"name": "[obHeader]",
 				"text": "Content that will be projected as the main header, i.e. everything above the read line. It will replace the default Oblique header if custom header is enabled (see <code>MasterLayoutConfig</code>).",
 				"since": "3.0.0"
 			},
 			{
-				"name": "[orHeaderTitle]",
+				"name": "[obHeaderTitle]",
 				"text": "Content that will be projected as the application's title within the main header.",
 				"since": "3.0.0"
 			},
 			{
-				"name": "[orNavigation]",
+				"name": "[obNavigation]",
 				"text": "Content that will be projected as the main navigation. It will replace the default Oblique navigation if no navigation links are provided. It is an alternative to <code>navigation</code> input but the whole navigation markup has to be provided, not only the links.",
 				"since": "3.0.0"
 			},
 			{
-				"name": "[orLocales]",
+				"name": "[obLocales]",
 				"text": "Content that will be projected as the locales choice. It will replace the default Oblique locales if locale management is disabled (see <code>MasterLayoutConfig</code>).",
 				"since": "3.0.0"
 			},
@@ -41,12 +41,12 @@
 				"since": "3.0.0"
 			},
 			{
-				"name": "[orFooter]",
+				"name": "[obFooter]",
 				"text": "Content that will be projected as the main footer. It will replace the default Oblique footer if custom footer is enabled (see <code>MasterLayoutConfig</code>).",
 				"since": "3.0.0"
 			},
 			{
-				"name": "[orFooterInfo]",
+				"name": "[obFooterInfo]",
 				"text": "Content that will be projected into the left hand side of the footer.",
 				"since": "3.0.0"
 			},
@@ -56,12 +56,12 @@
 				"since": "3.0.0"
 			},
 			{
-				"name": "[orOffCanvasTitle]",
+				"name": "[obOffCanvasTitle]",
 				"text": "Content that will be projected as the title of the main off-canvas if off canvas is enabled (see <code>MasterLayoutConfig</code>).",
 				"since": "3.0.0"
 			},
 			{
-				"name": "[orOffCanvasContent]",
+				"name": "[obOffCanvasContent]",
 				"text": "Content that will be projected as the content of the main off-canvas if off canvas is enabled (see <code>MasterLayoutConfig</code>).",
 				"since": "3.0.0"
 			}
@@ -137,7 +137,7 @@
 			},
 			{
 				"name": "layout.hasMainNavigation",
-				"text": "Use Oblique's default main navigation (true) or a custom one (false). The custom navigation has to be provided through <code>[orNavigation]</code>.",
+				"text": "Use Oblique's default main navigation (true) or a custom one (false). The custom navigation has to be provided through <code>[obNavigation]</code>.",
 				"type": "boolean",
 				"default": true,
 				"since": "4.0.0"
@@ -172,7 +172,7 @@
 			},
 			{
 				"name": "header.isCustom",
-				"text": "Use Oblique's default header (false) or a custom one (true). The custom header has to be provided through <code>[orHeader]</code>.",
+				"text": "Use Oblique's default header (false) or a custom one (true). The custom header has to be provided through <code>[obHeader]</code>.",
 				"type": "boolean",
 				"default": false,
 				"since": "4.0.0"
@@ -216,7 +216,7 @@
 			{
 				"name": "navigation.links",
 				"text": "The main navigation links. It is an alternative to <code>navigation</code> input with a lesser priority.",
-				"type": "ORNavigationLink[]",
+				"type": "obNavigationLink[]",
 				"default": "[]",
 				"since": "4.0.0"
 			},
@@ -229,7 +229,7 @@
 			},
 			{
 				"name": "footer.isCustom",
-				"text": "Use Oblique's default footer (false) or a custom one (true). The custom footer has to be provided through <code>[orFooter]</code>.",
+				"text": "Use Oblique's default footer (false) or a custom one (true). The custom footer has to be provided through <code>[obFooter]</code>.",
 				"type": "boolean",
 				"default": true,
 				"since": "4.0.0"

@@ -1,16 +1,16 @@
 import {merge, Observable, of, partition} from 'rxjs';
 import {filter, repeatWhen, shareReplay, takeUntil} from 'rxjs/operators';
-import {MasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
-import {MasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
-import {ScrollMode} from './master-layout.config';
+import {ObMasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
+import {ObMasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
+import {ObEScrollMode} from './master-layout.config';
 
-export interface MasterLayoutEvent {
-	name: MasterLayoutEventValues;
+export interface ObIMasterLayoutEvent {
+	name: ObEMasterLayoutEventValues;
 	value?: boolean;
-	mode?: ScrollMode;
+	mode?: ObEScrollMode;
 }
 
-export enum MasterLayoutEventValues {
+export enum ObEMasterLayoutEventValues {
 	ANIMATE,
 	COLLAPSE,
 	COVER,
@@ -27,16 +27,16 @@ export enum MasterLayoutEventValues {
 	LAYOUT
 }
 
-export function scrollEnabled(service: MasterLayoutHeaderService | MasterLayoutFooterService): <T>(source: Observable<T>) => Observable<T>  {
+export function scrollEnabled(service: ObMasterLayoutHeaderService | ObMasterLayoutFooterService): <T>(source: Observable<T>) => Observable<T>  {
 	const [enabled$, disabled$] = partition(
 		merge(service.configEvents, of({
-			name: MasterLayoutEventValues.SCROLL_TRANSITION,
+			name: ObEMasterLayoutEventValues.SCROLL_TRANSITION,
 			value: service.hasScrollTransition
 		})).pipe(
-			filter((evt: MasterLayoutEvent) => evt.name === MasterLayoutEventValues.SCROLL_TRANSITION),
+			filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.SCROLL_TRANSITION),
 			shareReplay({refCount: true, bufferSize: 1})
 		),
-		(evt: MasterLayoutEvent) => evt.value === true
+		(evt: ObIMasterLayoutEvent) => evt.value === true
 	);
 
 	return function <T>(source: Observable<T>): Observable<T> {

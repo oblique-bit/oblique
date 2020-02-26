@@ -163,11 +163,11 @@
     "@schematics/angular:component": {
       "spec": true,
       "inlineTemplate": false,
-      "prefix": "or",
+      "prefix": "ob",
       "styleext": "scss"
     },
     "@schematics/angular:directive": {
-      "prefix": "or"
+      "prefix": "ob"
     }
   }
 }

@@ -1,8 +1,8 @@
 [
   {
-    "name": "SearchboxComponent",
-    "selector": "or-search-box",
-    "export": "orSearchBox",
+    "name": "ObSearchboxComponent",
+    "selector": "ob-search-box",
+    "export": "obSearchBox",
     "since": "3.0.0",
     "inputs": [
       {

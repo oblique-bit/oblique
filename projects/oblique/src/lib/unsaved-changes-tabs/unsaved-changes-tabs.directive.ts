@@ -1,15 +1,15 @@
 import {AfterContentInit, Directive, Input, OnDestroy, OnInit, Optional} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {NgbTab, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
-import {UnsavedChangesTabsService} from './unsaved-changes-tabs.service';
+import {ObUnsavedChangesTabsService} from './unsaved-changes-tabs.service';
 
 @Directive({
-	selector: '[orUnsavedChangesTabs]'
+	selector: '[obUnsavedChangesTabs]'
 })
-export class UnsavedChangesTabsDirective implements OnDestroy, OnInit, AfterContentInit {
+export class ObUnsavedChangesTabsDirective implements OnDestroy, OnInit, AfterContentInit {
 	@Input() id;
 
-	constructor(private readonly unsavedChangesService: UnsavedChangesTabsService,
+	constructor(private readonly unsavedChangesService: ObUnsavedChangesTabsService,
 				private readonly form: ControlContainer,
 				@Optional() private readonly ngbTab: NgbTab,
 				@Optional() private readonly ngbTabset: NgbTabset) {
@@ -18,7 +18,7 @@ export class UnsavedChangesTabsDirective implements OnDestroy, OnInit, AfterCont
 	ngOnInit() {
 		const id = this.ngbTab ? this.ngbTab.id : this.id;
 		if (!id) {
-			throw new Error('orUnsavedChanges directive needs either to be within a NgbTab directive or to have an "id" attribute.');
+			throw new Error('obUnsavedChanges directive needs either to be within a NgbTab directive or to have an "id" attribute.');
 		}
 		this.unsavedChangesService.watch(id, this.form);
 	}

@@ -1,8 +1,8 @@
 [
   {
-    "name": "NotificationComponent",
-    "selector": "or-notification",
-    "export": "orNotification",
+    "name": "ObNotificationComponent",
+    "selector": "ob-notification",
+    "export": "obNotification",
     "since": "2.0.0",
     "inputs": [
       {

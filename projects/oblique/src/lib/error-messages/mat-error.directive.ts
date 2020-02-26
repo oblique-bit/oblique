@@ -1,17 +1,17 @@
 import {Directive, ElementRef, OnInit, Optional} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {filter} from 'rxjs/operators';
-import {TranslateParamsPipe} from '../translate-params/translate-params.module';
-import {ErrorMessagesDirective} from './error-messages.directive';
+import {ObTranslateParamsPipe} from '../translate-params/translate-params.module';
+import {ObErrorMessagesDirective} from './error-messages.directive';
 
 @Directive({
 	selector: 'mat-error'
 })
-export class MatErrorDirective implements OnInit {
-	private readonly pipe: TranslateParamsPipe;
+export class ObMatErrorDirective implements OnInit {
+	private readonly pipe: ObTranslateParamsPipe;
 
-	constructor(@Optional() private readonly control: ErrorMessagesDirective, private readonly el: ElementRef, translate: TranslateService) {
-		this.pipe = new TranslateParamsPipe(translate);
+	constructor(@Optional() private readonly control: ObErrorMessagesDirective, private readonly el: ElementRef, translate: TranslateService) {
+		this.pipe = new ObTranslateParamsPipe(translate);
 	}
 
 	ngOnInit() {

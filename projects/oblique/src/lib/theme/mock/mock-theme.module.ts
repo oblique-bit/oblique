@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
-import {ThemeService} from '../theme.service';
-import {MockThemeService} from './mock-theme.service';
+import {ObThemeService} from '../theme.service';
+import {ObMockThemeService} from './mock-theme.service';
 
-export {MockThemeService} from './mock-theme.service';
+export {ObMockThemeService} from './mock-theme.service';
 
 @NgModule({
 	providers: [
-		{provide: ThemeService, useClass: MockThemeService}]
+		{provide: ObThemeService, useClass: ObMockThemeService}]
 })
-export class MockThemeModule {
+export class ObMockThemeModule {
 }

@@ -1,11 +1,11 @@
 import {Component, Input} from '@angular/core';
 
 @Component({
-	selector: 'or-dropdown',
-	exportAs: 'orDropdown',
+	selector: 'ob-dropdown',
+	exportAs: 'obDropdown',
 	template: ''
 })
-export class MockDropdownComponent {
+export class ObMockDropdownComponent {
 	isOpen = false;
 	@Input() position = 'middle';
 

@@ -1,8 +1,8 @@
 [
   {
-    "name": "NavigableGroupComponent",
-    "selector": "or-navigable-group",
-    "exported": "orNavigableGroup",
+    "name": "ObNavigableGroupComponent",
+    "selector": "ob-navigable-group",
+    "exported": "obNavigableGroup",
     "since": "2.0.0",
     "inputs": [
       {
@@ -28,14 +28,14 @@
     ]
   },
   {
-    "name": "NavigableDirective",
-    "selector": "[orNavigable]",
-    "export": "orNavigable",
+    "name": "ObNavigableDirective",
+    "selector": "[obNavigable]",
+    "export": "obNavigable",
     "usage": "Set on an <code>nav-tree</code>, it will allow to navigate the tree while maintaining the focus on the filter input.",
     "since": "2.0.0",
     "inputs": [
       {
-        "name": "orNavigable",
+        "name": "obNavigable",
         "text": "The data model of the current navigable item.",
         "type": "any",
         "since": "2.0.0"

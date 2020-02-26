@@ -1,18 +1,18 @@
 import {NgModule} from '@angular/core';
 
-import {SpinnerService} from '../spinner.module';
-import {MockSpinnerComponent} from './mock-spinner.component';
-import {MockSpinnerService} from './mock-spinner.service';
+import {ObSpinnerService} from '../spinner.module';
+import {ObMockSpinnerComponent} from './mock-spinner.component';
+import {ObMockSpinnerService} from './mock-spinner.service';
 
-export {MockSpinnerComponent} from './mock-spinner.component';
-export {MockSpinnerService} from './mock-spinner.service';
+export {ObMockSpinnerComponent} from './mock-spinner.component';
+export {ObMockSpinnerService} from './mock-spinner.service';
 
 @NgModule({
-	declarations: [MockSpinnerComponent],
-	exports: [MockSpinnerComponent],
+	declarations: [ObMockSpinnerComponent],
+	exports: [ObMockSpinnerComponent],
 	providers: [
-		{provide: SpinnerService, useClass: MockSpinnerService}
+		{provide: ObSpinnerService, useClass: ObMockSpinnerService}
 	]
 })
-export class MockSpinnerModule {
+export class ObMockSpinnerModule {
 }

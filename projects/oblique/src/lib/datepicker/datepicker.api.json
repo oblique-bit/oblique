@@ -1,8 +1,8 @@
 [
   {
-    "name": "DatepickerComponent",
-    "exported": "orDatePicker",
-    "selector": "or-date-picker",
+    "name": "ObDatepickerComponent",
+    "exported": "obDatePicker",
+    "selector": "ob-date-picker",
     "since": "2.0.0",
     "inputs": [
       {

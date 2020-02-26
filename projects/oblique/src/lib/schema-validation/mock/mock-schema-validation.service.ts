@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {SchemaValidatorInstance} from '../schema-validator.instance';
+import {ObSchemaValidatorInstance} from '../schema-validator.instance';
 
 @Injectable()
-export class MockSchemaValidationService {
-	compileSchema(schema: any): SchemaValidatorInstance {
-		return {} as SchemaValidatorInstance;
+export class ObMockSchemaValidationService {
+	compileSchema(schema: any): ObSchemaValidatorInstance {
+		return {} as ObSchemaValidatorInstance;
 	}
 }

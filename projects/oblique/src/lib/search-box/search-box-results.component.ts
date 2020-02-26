@@ -1,24 +1,24 @@
 import {Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, Output, QueryList, ViewChildren, ViewEncapsulation} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {SearchWidgetItem} from './search-box.component';
+import {ObISearchWidgetItem} from './search-box.component';
 
 @Component({
-	selector: 'or-search-box-results',
-	exportAs: 'orSearchBoxResults',
+	selector: 'ob-search-box-results',
+	exportAs: 'obSearchBoxResults',
 	templateUrl: './search-box-results.component.html',
 	styleUrls: ['./search-box-results.component.scss', '../nav-tree/nav-tree.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'nav-modal'}
 })
-export class SearchBoxResultsComponent implements OnDestroy {
+export class ObSearchBoxResultsComponent implements OnDestroy {
 	@Input() input: ElementRef;
-	@Input() items: SearchWidgetItem[] = [];
+	@Input() items: ObISearchWidgetItem[] = [];
 	@Input() minPatternLength = 1;
 	@Input() maxResults = 10;
 	@Output() closed = new EventEmitter<void>();
 	showResults = false;
-	filteredItems: SearchWidgetItem[] = [];
+	filteredItems: ObISearchWidgetItem[] = [];
 	private active: number;
 	private _pattern = '';
 	@ViewChildren('link') private readonly links: QueryList<ElementRef>;
@@ -69,7 +69,7 @@ export class SearchBoxResultsComponent implements OnDestroy {
 		return !filterPattern ? label : label.replace(new RegExp(filterPattern, 'ig'), (text) => `<span class="highlight">${text}</span>`);
 	}
 
-	private filterItems(item: SearchWidgetItem): boolean {
+	private filterItems(item: ObISearchWidgetItem): boolean {
 		return this.pattern.length >= this.minPatternLength
 			&& new RegExp(this.pattern.replace(/[.*+?^@${}()|[\]\\]/g, '\\$&'), 'gi').test(this.translate.instant(item.label));
 	}

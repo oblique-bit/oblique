@@ -1,6 +1,6 @@
 [
   {
-    "name": "PopUpService",
+    "name": "ObPopUpService",
     "since": "5.0.0",
     "methods": [
       {

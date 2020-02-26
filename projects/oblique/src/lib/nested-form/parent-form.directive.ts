@@ -2,9 +2,9 @@ import {Directive, HostListener, OnDestroy} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 
 @Directive({
-	selector: '[orParentFormDirective]'
+	selector: '[obParentFormDirective]'
 })
-export class ParentFormDirective implements OnDestroy {
+export class ObParentFormDirective implements OnDestroy {
 	public readonly submit$: Observable<void>;
 	public readonly reset$: Observable<void>;
 	private readonly submitSubject = new Subject<void>();

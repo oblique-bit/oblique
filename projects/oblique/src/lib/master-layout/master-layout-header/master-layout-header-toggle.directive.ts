@@ -1,13 +1,13 @@
 import {Directive, HostListener} from '@angular/core';
-import {MasterLayoutComponentService} from '../master-layout/master-layout.component.service';
+import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 
 @Directive({
-	selector: '[orMasterLayoutHeaderToggle]',
-	exportAs: 'orMasterLayoutHeaderToggle'
+	selector: '[obMasterLayoutHeaderToggle]',
+	exportAs: 'obMasterLayoutHeaderToggle'
 })
-export class MasterLayoutHeaderToggleDirective {
+export class ObMasterLayoutHeaderToggleDirective {
 
-	constructor(private readonly masterLayout: MasterLayoutComponentService) {
+	constructor(private readonly masterLayout: ObMasterLayoutComponentService) {
 	}
 
 	@HostListener('click', ['$event'])

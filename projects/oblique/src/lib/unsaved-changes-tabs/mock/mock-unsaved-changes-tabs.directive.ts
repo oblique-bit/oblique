@@ -1,8 +1,8 @@
 import {Directive, Input} from '@angular/core';
 
 @Directive({
-	selector: '[orUnsavedChangesTabs]'
+	selector: '[obUnsavedChangesTabs]'
 })
-export class MockUnsavedChangesTabsDirective {
+export class ObMockUnsavedChangesTabsDirective {
 	@Input() id;
 }

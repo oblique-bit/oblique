@@ -4,12 +4,12 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {TranslateModule} from '@ngx-translate/core';
 
-import {DocumentMetaService} from './document-meta.service';
-import {TelemetryService} from '../telemetry/telemetry.service';
+import {ObDocumentMetaService} from './document-meta.service';
+import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {WINDOW, windowProvider} from '../utilities';
 
-export {DocumentMetaService} from './document-meta.service';
+export {ObDocumentMetaService} from './document-meta.service';
 
 @NgModule({
 	imports: [CommonModule, TranslateModule],
@@ -19,8 +19,8 @@ export {DocumentMetaService} from './document-meta.service';
 		{provide: WINDOW, useFactory: windowProvider}
 	]
 })
-export class DocumentMetaModule {
-	constructor(telemetry: TelemetryService) {
-		requireAndRecordTelemetry(telemetry, DocumentMetaModule);
+export class ObDocumentMetaModule {
+	constructor(telemetry: ObTelemetryService) {
+		requireAndRecordTelemetry(telemetry, ObDocumentMetaModule);
 	}
 }

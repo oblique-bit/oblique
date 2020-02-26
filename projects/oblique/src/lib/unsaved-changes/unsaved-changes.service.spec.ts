@@ -1,25 +1,25 @@
 import {inject, TestBed} from '@angular/core/testing';
 import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
-import {UnsavedChangesService, WINDOW} from 'oblique';
-import {PopUpService} from '../pop-up/pop-up.service';
-import {MockTranslateService} from '../_mocks/mock-translate.service';
-import {MockPopUpModule} from '../pop-up/_mock/mock-pop-up.module';
+import {ObUnsavedChangesService, WINDOW} from 'oblique';
+import {ObPopUpService} from '../pop-up/pop-up.service';
+import {ObMockTranslateService} from '../_mocks/mock-translate.service';
+import {ObMockPopUpModule} from '../pop-up/_mock/mock-pop-up.module';
 import {windowProvider} from '../utilities';
 
 describe('UnsavedChangesService', () => {
-	let unsavedChangesService: UnsavedChangesService;
-	let popUpService: PopUpService;
+	let unsavedChangesService: ObUnsavedChangesService;
+	let popUpService: ObPopUpService;
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [MockPopUpModule],
+			imports: [ObMockPopUpModule],
 			providers: [
-				UnsavedChangesService,
-				{provide: TranslateService, useClass: MockTranslateService},
+				ObUnsavedChangesService,
+				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: WINDOW, useFactory: windowProvider}
 			]
 		});
-		popUpService = TestBed.get(PopUpService);
+		popUpService = TestBed.get(ObPopUpService);
 	});
 
 	beforeEach(() => {
@@ -27,7 +27,7 @@ describe('UnsavedChangesService', () => {
 		spyOn(window, 'addEventListener');
 	});
 
-	beforeEach(inject([UnsavedChangesService], (service: UnsavedChangesService) => {
+	beforeEach(inject([ObUnsavedChangesService], (service: ObUnsavedChangesService) => {
 		unsavedChangesService = service;
 	}));
 

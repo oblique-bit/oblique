@@ -1,8 +1,8 @@
 [
   {
-    "name": "StickyComponent",
-    "selector": "or-sticky",
-    "exported": "orSticky",
+    "name": "ObStickyComponent",
+    "selector": "ob-sticky",
+    "exported": "obSticky",
     "since": "4.0.0",
     "inputs": [
       {

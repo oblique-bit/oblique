@@ -1,25 +1,25 @@
 import {AfterViewInit, ContentChild, ContentChildren, Directive, ElementRef, EventEmitter, HostBinding, HostListener, Output, QueryList} from '@angular/core';
 import {filter, takeUntil} from 'rxjs/operators';
 
-import {Unsubscribable} from '../../unsubscribe.class';
-import {MasterLayoutNavigationToggleDirective} from './master-layout-navigation-toggle.directive';
-import {MasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
-import {MasterLayoutEventValues} from '../master-layout.utility';
-import {MasterLayoutComponentService} from '../master-layout/master-layout.component.service';
+import {ObUnsubscribable} from '../../unsubscribe.class';
+import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation-toggle.directive';
+import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
+import {ObEMasterLayoutEventValues} from '../master-layout.utility';
+import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 
 
 @Directive({
-	selector: '[orMasterLayoutNavigationItem]',
-	exportAs: 'orMasterLayoutNavigationItem'
+	selector: '[obMasterLayoutNavigationItem]',
+	exportAs: 'obMasterLayoutNavigationItem'
 })
-export class MasterLayoutNavigationItemDirective extends Unsubscribable implements AfterViewInit {
+export class ObMasterLayoutNavigationItemDirective extends ObUnsubscribable implements AfterViewInit {
 	@HostBinding('class.show')  public show = false;
 	@Output() onClose = new EventEmitter<void>();
-	@ContentChildren(MasterLayoutNavigationToggleDirective, {descendants: true}) $toggles: QueryList<MasterLayoutNavigationToggleDirective>;
-	@ContentChild(MasterLayoutNavigationMenuDirective) $menu: MasterLayoutNavigationMenuDirective;
-	@ContentChildren(MasterLayoutNavigationItemDirective, {descendants: true}) $items: QueryList<MasterLayoutNavigationItemDirective>;
+	@ContentChildren(ObMasterLayoutNavigationToggleDirective, {descendants: true}) $toggles: QueryList<ObMasterLayoutNavigationToggleDirective>;
+	@ContentChild(ObMasterLayoutNavigationMenuDirective) $menu: ObMasterLayoutNavigationMenuDirective;
+	@ContentChildren(ObMasterLayoutNavigationItemDirective, {descendants: true}) $items: QueryList<ObMasterLayoutNavigationItemDirective>;
 
-	constructor(private readonly masterLayout: MasterLayoutComponentService, private readonly element: ElementRef) {
+	constructor(private readonly masterLayout: ObMasterLayoutComponentService, private readonly element: ElementRef) {
 		super();
 	}
 
@@ -40,7 +40,7 @@ export class MasterLayoutNavigationItemDirective extends Unsubscribable implemen
 		});
 
 		this.masterLayout.configEvents
-			.pipe(filter(evt => evt.name === MasterLayoutEventValues.COLLAPSE && evt.value)).subscribe(() => this.close());
+			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.COLLAPSE && evt.value)).subscribe(() => this.close());
 
 		this.$items.forEach(($item) => {
 			$item.onClose.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.close());

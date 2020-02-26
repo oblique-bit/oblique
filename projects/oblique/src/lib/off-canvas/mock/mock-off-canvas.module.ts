@@ -1,30 +1,30 @@
 import {NgModule} from '@angular/core';
 
-import {OffCanvasService} from '../off-canvas.module';
-import {MockOffCanvasToggleDirective} from './mock-off-canvas-toggle.directive';
-import {MockOffCanvasBackdropDirective} from './mock-off-canvas-backdrop.directive';
-import {MockOffCanvasContainerDirective} from './mock-off-canvas-container.directive';
-import {MockOffCanvasService} from './mock-off-canvas.service';
+import {ObOffCanvasService} from '../off-canvas.module';
+import {ObMockOffCanvasToggleDirective} from './mock-off-canvas-toggle.directive';
+import {ObMockOffCanvasBackdropDirective} from './mock-off-canvas-backdrop.directive';
+import {ObMockOffCanvasContainerDirective} from './mock-off-canvas-container.directive';
+import {ObMockOffCanvasService} from './mock-off-canvas.service';
 
-export {MockOffCanvasToggleDirective} from './mock-off-canvas-toggle.directive';
-export {MockOffCanvasBackdropDirective} from './mock-off-canvas-backdrop.directive';
-export {MockOffCanvasContainerDirective} from './mock-off-canvas-container.directive';
-export {MockOffCanvasService} from './mock-off-canvas.service';
+export {ObMockOffCanvasToggleDirective} from './mock-off-canvas-toggle.directive';
+export {ObMockOffCanvasBackdropDirective} from './mock-off-canvas-backdrop.directive';
+export {ObMockOffCanvasContainerDirective} from './mock-off-canvas-container.directive';
+export {ObMockOffCanvasService} from './mock-off-canvas.service';
 
 @NgModule({
 	exports: [
-		MockOffCanvasToggleDirective,
-		MockOffCanvasContainerDirective,
-		MockOffCanvasBackdropDirective
+		ObMockOffCanvasToggleDirective,
+		ObMockOffCanvasContainerDirective,
+		ObMockOffCanvasBackdropDirective
 	],
 	declarations: [
-		MockOffCanvasToggleDirective,
-		MockOffCanvasContainerDirective,
-		MockOffCanvasBackdropDirective
+		ObMockOffCanvasToggleDirective,
+		ObMockOffCanvasContainerDirective,
+		ObMockOffCanvasBackdropDirective
 	],
 	providers: [
-		{provide: OffCanvasService, useClass: MockOffCanvasService}
+		{provide: ObOffCanvasService, useClass: ObMockOffCanvasService}
 	]
 })
-export class MockOffCanvasModule {
+export class ObMockOffCanvasModule {
 }

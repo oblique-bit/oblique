@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
-import {NavigatorComponent} from 'oblique';
+import {ObNavigatorComponent} from 'oblique';
 
 describe('NavigatorComponent', () => {
-	let fixture: ComponentFixture<NavigatorComponent>;
-	let component: NavigatorComponent;
+	let fixture: ComponentFixture<ObNavigatorComponent>;
+	let component: ObNavigatorComponent;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [NavigatorComponent],
+			declarations: [ObNavigatorComponent],
 			imports: [RouterTestingModule]
 		}).compileComponents();
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(NavigatorComponent);
+		fixture = TestBed.createComponent(ObNavigatorComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

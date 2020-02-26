@@ -1,16 +1,16 @@
 import {AfterViewInit, Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output} from '@angular/core';
 
-export class PreventableEvent {
+export class ObPreventableEvent {
 	public prevented = false;
 }
 
-export class NavigableOnChangeEvent extends PreventableEvent {
+export class ObNavigableOnChangeEvent extends ObPreventableEvent {
 	constructor(public code: string, public combine: boolean) {
 		super();
 	}
 }
 
-export class NavigableOnMoveEvent extends PreventableEvent {
+export class ObNavigableOnMoveEvent extends ObPreventableEvent {
 	constructor(public code: string) {
 		super();
 	}
@@ -25,12 +25,12 @@ export class NavigableOnMoveEvent extends PreventableEvent {
  * * the items reordering feature will be lost, but is incomplete anyway
  */
 @Directive({
-	selector: '[orNavigable]',
-	exportAs: 'orNavigable'
+	selector: '[obNavigable]',
+	exportAs: 'obNavigable'
 })
-export class NavigableDirective implements AfterViewInit {
+export class ObNavigableDirective implements AfterViewInit {
 
-	@Input('orNavigable')
+	@Input('obNavigable')
 	model: any;
 
 	@Input('navigableFocusOnInit')
@@ -40,7 +40,7 @@ export class NavigableDirective implements AfterViewInit {
 	navigableOnActivation = new EventEmitter();
 
 	@Output()
-	navigableOnChange = new EventEmitter<NavigableOnChangeEvent>();
+	navigableOnChange = new EventEmitter<ObNavigableOnChangeEvent>();
 
 	@Output()
 	navigableOnFocus = new EventEmitter();
@@ -105,18 +105,18 @@ export class NavigableDirective implements AfterViewInit {
 		if (code === 'ArrowUp' || code === 'ArrowDown') {
 			const focused = this.element.nativeElement.querySelector(':focus');
 			if (!focused || !focused.classList.contains('dropdown-toggle')
-				&& !NavigableDirective.hasAncestorClass(focused, 'dropdown-menu')) {
+				&& !ObNavigableDirective.hasAncestorClass(focused, 'dropdown-menu')) {
 				$event.preventDefault();
 
 				if ($event.ctrlKey && $event.shiftKey) {
-					this.navigableOnMove.emit(new NavigableOnMoveEvent(code));
+					this.navigableOnMove.emit(new ObNavigableOnMoveEvent(code));
 
 					// Try to restore focus:
 					setTimeout(() => {
 						(focused || this).focus();
 					}, 0);
 				} else {
-					this.navigableOnChange.emit(new NavigableOnChangeEvent(code, $event.ctrlKey || $event.shiftKey));
+					this.navigableOnChange.emit(new ObNavigableOnChangeEvent(code, $event.ctrlKey || $event.shiftKey));
 				}
 			}
 		}
@@ -135,7 +135,7 @@ export class NavigableDirective implements AfterViewInit {
 
 		// Check that event does not originate from a focusable child element:
 		const target = $event.target || $event.currentTarget;
-		if (target === this.element.nativeElement || !NavigableDirective.isFocusable(target)) {
+		if (target === this.element.nativeElement || !ObNavigableDirective.isFocusable(target)) {
 			if (!$event.defaultPrevented) {
 				if ($event && $event.shiftKey) {
 					this.active = true;
@@ -169,11 +169,11 @@ export class NavigableDirective implements AfterViewInit {
 	}
 
 	public moveUp() {
-		this.navigableOnMove.emit(new NavigableOnMoveEvent('ArrowUp'));
+		this.navigableOnMove.emit(new ObNavigableOnMoveEvent('ArrowUp'));
 	}
 
 	public moveDown() {
-		this.navigableOnMove.emit(new NavigableOnMoveEvent('ArrowDown'));
+		this.navigableOnMove.emit(new ObNavigableOnMoveEvent('ArrowDown'));
 	}
 
 	private static hasAncestorClass(element: Element, className: string): boolean {
@@ -199,7 +199,7 @@ export class NavigableDirective implements AfterViewInit {
 	private static isFocusable(element): boolean {
 		const nodeName = element.nodeName.toLowerCase();
 		if (!element.offsetHeight || !element.offsetWidth || element.hasAttribute('disabled')
-			|| NavigableDirective.isWithinDisabledFieldset(element, nodeName)) {
+			|| ObNavigableDirective.isWithinDisabledFieldset(element, nodeName)) {
 			return false;
 		}
 
@@ -211,7 +211,7 @@ export class NavigableDirective implements AfterViewInit {
 			return false;
 		}
 
-		const fieldset = NavigableDirective.getAncestorElement(element, 'fieldset');
+		const fieldset = ObNavigableDirective.getAncestorElement(element, 'fieldset');
 		return fieldset && fieldset.hasAttribute('disabled');
 	}
 }

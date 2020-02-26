@@ -1,14 +1,14 @@
 import {Component, ContentChildren, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, Renderer2, TemplateRef, ViewChild} from '@angular/core';
 import {map, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {ThemeService} from '../theme/theme.service';
+import {ObThemeService} from '../theme/theme.service';
 
 @Component({
-	selector: 'or-filter-box',
-	exportAs: 'orFilterBox',
+	selector: 'ob-filter-box',
+	exportAs: 'obFilterBox',
 	templateUrl: './filter-box.component.html'
 })
-export class FilterBoxComponent implements OnInit {
+export class ObFilterBoxComponent implements OnInit {
 	material: Observable<boolean>;
 	@Input() pattern: string;
 	@Input() placeholder = 'i18n.common.filter.placeholder';
@@ -25,7 +25,7 @@ export class FilterBoxComponent implements OnInit {
 
 	private readonly acceptedSizes = ['sm', 'lg'];
 
-	constructor(theme: ThemeService, private readonly renderer: Renderer2) {
+	constructor(theme: ObThemeService, private readonly renderer: Renderer2) {
 		this.material = theme.theme$.pipe(map(() => theme.isMaterial()), tap(() => this.addBootstrapClasses()));
 	}
 

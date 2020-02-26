@@ -1,12 +1,12 @@
 import {Directive, HostListener} from '@angular/core';
 
-import {OffCanvasService} from './off-canvas.service';
+import {ObOffCanvasService} from './off-canvas.service';
 
 @Directive({
 	selector: '.offcanvas-backdrop'
 })
-export class OffCanvasBackdropDirective {
-	constructor(private readonly offCanvas: OffCanvasService) {
+export class ObOffCanvasBackdropDirective {
+	constructor(private readonly offCanvas: ObOffCanvasService) {
 	}
 
 	@HostListener('click')

@@ -1,11 +1,11 @@
 import {Component, Input} from '@angular/core';
 
 @Component({
-	selector: 'or-spinner',
-	exportAs: 'orSpinner',
+	selector: 'ob-spinner',
+	exportAs: 'obSpinner',
 	template: ''
 })
-export class MockSpinnerComponent {
+export class ObMockSpinnerComponent {
 	@Input() channel = '';
 	@Input() fixed = false;
 	$state = 'out';

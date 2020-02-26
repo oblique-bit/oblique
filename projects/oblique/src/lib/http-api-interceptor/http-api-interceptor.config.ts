@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {NotificationType} from '../notification/notification.module';
+import {ObENotificationType} from '../notification/notification.module';
 
 // TODO: make sure that app.module.ts provides an instance of HttpApiInterceptorConfig filled with data from environment[.prod].ts
 
@@ -12,7 +12,7 @@ import {NotificationType} from '../notification/notification.module';
  * order to provide default values for all the Oblique HTTP interceptor, if imported as `HTTP_INTERCEPTORS` provider.
  */
 @Injectable({providedIn: 'root'})
-export class HttpApiInterceptorConfig {
+export class ObHttpApiInterceptorConfig {
 	/**
 	 * Configuration for application API.
 	 */
@@ -39,7 +39,7 @@ export class HttpApiInterceptorConfig {
 			/**
 			 * Defines the severity (type) of the notification
 			 */
-			severity: NotificationType.ERROR,
+			severity: ObENotificationType.ERROR,
 			/**
 			 * Defines the title of the notification
 			 * @default error.statusText

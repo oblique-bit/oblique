@@ -1,10 +1,10 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
-import {MasterLayoutNavigationItemDirective} from 'oblique';
+import {ObMasterLayoutNavigationItemDirective} from 'oblique';
 
 
 @Component({
-	template: '<li role="presentation" orMasterLayoutNavigationItem > test </li>'
+	template: '<li role="presentation" obMasterLayoutNavigationItem > test </li>'
 })
 class TestComponent {
 
@@ -17,7 +17,7 @@ describe('MasterLayoutNavigationItemDirective', () => {
 		TestBed.configureTestingModule({
 			declarations: [
 				TestComponent,
-				MasterLayoutNavigationItemDirective
+				ObMasterLayoutNavigationItemDirective
 			]
 		});
 

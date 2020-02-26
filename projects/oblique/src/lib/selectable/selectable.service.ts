@@ -3,9 +3,9 @@ import {Observable, Subject} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class ObSelectableService {
-	collectionChange$: Observable<IObSelectableCollectionChanged>;
+	collectionChange$: Observable<ObISelectableCollectionChanged>;
 	private readonly collections: Map<string, any[]> = new Map<string, any[]>();
-	private readonly trigger: Subject<IObSelectableCollectionChanged> = new Subject();
+	private readonly trigger: Subject<ObISelectableCollectionChanged> = new Subject();
 
 	constructor() {
 		this.collectionChange$ = this.trigger.asObservable();
@@ -69,7 +69,7 @@ export class ObSelectableService {
 	}
 }
 
-export interface IObSelectableCollectionChanged {
+export interface ObISelectableCollectionChanged {
 	collection?: string;
 	value?: any[];
 	eventType: 'CREATE' | 'UPDATE' | 'DESTROY';

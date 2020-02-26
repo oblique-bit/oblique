@@ -1,8 +1,8 @@
-import {ParentFormDirective} from './parent-form.directive';
+import {ObParentFormDirective} from './parent-form.directive';
 
 describe('ParentFormDirective', () => {
 	it('should create an instance', () => {
-		const directive = new ParentFormDirective();
+		const directive = new ObParentFormDirective();
 		expect(directive).toBeTruthy();
 	});
 });

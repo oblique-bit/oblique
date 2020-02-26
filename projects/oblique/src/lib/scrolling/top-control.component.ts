@@ -1,16 +1,16 @@
 import {Component, Inject, ViewEncapsulation} from '@angular/core';
-import {MasterLayoutConfig} from '../master-layout/master-layout.config';
+import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
 import {WINDOW} from '../utilities';
 
 @Component({
-	selector: 'or-top-control',
+	selector: 'ob-top-control',
 	templateUrl: './top-control.component.html',
 	styleUrls: ['top-control.component.scss'],
 	encapsulation: ViewEncapsulation.None
 })
-export class TopControlComponent {
+export class ObTopControlComponent {
 	private readonly window: Window;
-	constructor(private readonly config: MasterLayoutConfig, @Inject(WINDOW) window) {
+	constructor(private readonly config: ObMasterLayoutConfig, @Inject(WINDOW) window) {
 		this.window = window; // because AoT don't accept interfaces as DI
 	}
 

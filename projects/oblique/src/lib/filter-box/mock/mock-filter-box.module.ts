@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
-import {MockFilterBoxComponent} from './mock-filter-box.component';
+import {ObMockFilterBoxComponent} from './mock-filter-box.component';
 
-export {MockFilterBoxComponent} from './mock-filter-box.component';
+export {ObMockFilterBoxComponent} from './mock-filter-box.component';
 
 @NgModule({
-	declarations: [MockFilterBoxComponent],
-	exports: [MockFilterBoxComponent]
+	declarations: [ObMockFilterBoxComponent],
+	exports: [ObMockFilterBoxComponent]
 })
-export class MockFilterBoxModule {
+export class ObMockFilterBoxModule {
 }

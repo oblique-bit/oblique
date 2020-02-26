@@ -1,10 +1,10 @@
 import {Directive, ElementRef, EventEmitter, HostListener, Output} from '@angular/core';
 
 @Directive({
-	selector: '[orMasterLayoutNavigationToggle]',
-	exportAs: 'orMasterLayoutNavigationToggle'
+	selector: '[obMasterLayoutNavigationToggle]',
+	exportAs: 'obMasterLayoutNavigationToggle'
 })
-export class MasterLayoutNavigationToggleDirective {
+export class ObMasterLayoutNavigationToggleDirective {
 
 	@Output()
 	onToggle = new EventEmitter<MouseEvent>();

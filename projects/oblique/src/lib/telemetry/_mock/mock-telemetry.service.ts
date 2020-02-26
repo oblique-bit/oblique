@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
 @Injectable()
-export class MockTelemetryService {
+export class ObMockTelemetryService {
 	record(mod: any) {
 	}
 }

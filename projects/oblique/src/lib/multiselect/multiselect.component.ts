@@ -21,29 +21,29 @@ import {
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
-import {FilterBoxComponent} from '../filter-box/filter-box.component';
-import {MultiselectConfig} from './multiselect.config';
-import {MultiselectTexts} from './multiselect.texts';
-import {ThemeService} from '../theme/theme.service';
+import {ObFilterBoxComponent} from '../filter-box/filter-box.component';
+import {ObMultiselectConfig} from './multiselect.config';
+import {ObMultiselectTexts} from './multiselect.texts';
+import {ObThemeService} from '../theme/theme.service';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular material select instead
  */
 @Component({
-	selector: 'or-multiselect',
-	exportAs: 'orMultiselect',
+	selector: 'ob-multiselect',
+	exportAs: 'obMultiselect',
 	providers: [{
 		provide: NG_VALUE_ACCESSOR,
-		useExisting: forwardRef(() => MultiselectComponent),
+		useExisting: forwardRef(() => ObMultiselectComponent),
 		multi: true
 	}],
 	styleUrls: ['./multiselect.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	templateUrl: './multiselect.component.html'
 })
-export class MultiselectComponent implements OnInit, OnDestroy, DoCheck, ControlValueAccessor {
+export class ObMultiselectComponent implements OnInit, OnDestroy, DoCheck, ControlValueAccessor {
 	@Input() options: any[] = [];
-	@Input() texts: MultiselectTexts;
+	@Input() texts: ObMultiselectTexts;
 	@Input() dropup = false;
 	@Input() labelProperty: string;
 	@Input() labelFormatter: (option: any) => string;
@@ -66,7 +66,7 @@ export class MultiselectComponent implements OnInit, OnDestroy, DoCheck, Control
 	@Output() onAdded = new EventEmitter<any>();
 	@Output() onRemoved = new EventEmitter<any>();
 
-	@ViewChild('orFilterBox') filterBox: FilterBoxComponent;
+	@ViewChild('obFilterBox') filterBox: ObFilterBoxComponent;
 	@HostBinding('attr.count') get count(): number {
 		return this.options.length;
 	}
@@ -80,9 +80,9 @@ export class MultiselectComponent implements OnInit, OnDestroy, DoCheck, Control
 	disabled = false;
 
 	constructor(private readonly element: ElementRef,
-				private readonly multiselectTexts: MultiselectTexts,
-				private readonly multiselectConfig: MultiselectConfig,
-				theme: ThemeService,
+				private readonly multiselectTexts: ObMultiselectTexts,
+				private readonly multiselectConfig: ObMultiselectConfig,
+				theme: ObThemeService,
 				differs: IterableDiffers) {
 		this.differ = differs.find([]).create(null);
 

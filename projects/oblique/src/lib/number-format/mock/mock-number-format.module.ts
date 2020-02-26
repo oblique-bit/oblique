@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
-import {MockNumberFormatDirective} from './mock-number-format.directive';
+import {ObMockNumberFormatDirective} from './mock-number-format.directive';
 
-export {MockNumberFormatDirective} from './mock-number-format.directive';
+export {ObMockNumberFormatDirective} from './mock-number-format.directive';
 
 @NgModule({
-	declarations: [MockNumberFormatDirective],
-	exports: [MockNumberFormatDirective]
+	declarations: [ObMockNumberFormatDirective],
+	exports: [ObMockNumberFormatDirective]
 })
-export class MockNumberFormatModule {
+export class ObMockNumberFormatModule {
 }

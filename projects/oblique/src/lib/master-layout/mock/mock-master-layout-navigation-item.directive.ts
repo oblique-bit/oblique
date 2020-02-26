@@ -1,16 +1,16 @@
 import {Directive, EventEmitter, Output, QueryList} from '@angular/core';
-import {MasterLayoutNavigationItemDirective, MasterLayoutNavigationMenuDirective, MasterLayoutNavigationToggleDirective} from '../master-layout.module';
+import {ObMasterLayoutNavigationItemDirective, ObMasterLayoutNavigationMenuDirective, ObMasterLayoutNavigationToggleDirective} from '../master-layout.module';
 
 @Directive({
-	selector: '[orMasterLayoutNavigationItem]',
-	exportAs: 'orMasterLayoutNavigationItem'
+	selector: '[obMasterLayoutNavigationItem]',
+	exportAs: 'obMasterLayoutNavigationItem'
 })
-export class MockMasterLayoutNavigationItemDirective {
+export class ObMockMasterLayoutNavigationItemDirective {
 	show = false;
 	@Output() onClose = new EventEmitter<void>();
-	$toggles: QueryList<MasterLayoutNavigationToggleDirective>;
-	$menu: MasterLayoutNavigationMenuDirective;
-	$items: QueryList<MasterLayoutNavigationItemDirective>;
+	$toggles: QueryList<ObMasterLayoutNavigationToggleDirective>;
+	$menu: ObMasterLayoutNavigationMenuDirective;
+	$items: QueryList<ObMasterLayoutNavigationItemDirective>;
 
 	open(): void {
 	}

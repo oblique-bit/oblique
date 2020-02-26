@@ -1,19 +1,19 @@
 import {TestBed} from '@angular/core/testing';
-import {MasterLayoutHeaderService} from './master-layout-header.service';
-import {MasterLayoutEvent} from '../master-layout.utility';
+import {ObMasterLayoutHeaderService} from './master-layout-header.service';
+import {ObMasterLayoutEvent} from '../master-layout.utility';
 import {Observable, Subject} from 'rxjs';
 
 
 describe('MasterLayoutHeaderService', () => {
-	let masterLayoutHeaderService: MasterLayoutHeaderService;
+	let masterLayoutHeaderService: ObMasterLayoutHeaderService;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			providers: [
-				MasterLayoutHeaderService
+				ObMasterLayoutHeaderService
 			]
 		});
-		masterLayoutHeaderService = TestBed.get(MasterLayoutHeaderService);
+		masterLayoutHeaderService = TestBed.get(ObMasterLayoutHeaderService);
 	});
 
 	it('should be created', () => {
@@ -25,7 +25,7 @@ describe('MasterLayoutHeaderService', () => {
 
 		it('should get configEvents  when true', () => {
 			const spy = jest.spyOn(masterLayoutHeaderService, 'configEvents', 'get');
-			let newValue: Observable<MasterLayoutEvent> = new Subject<MasterLayoutEvent>();
+			let newValue: Observable<ObMasterLayoutEvent> = new Subject<ObMasterLayoutEvent>();
 			newValue = masterLayoutHeaderService.configEvents;
 			const mockResult = masterLayoutHeaderService.configEvents;
 			expect(spy).toHaveBeenCalled();

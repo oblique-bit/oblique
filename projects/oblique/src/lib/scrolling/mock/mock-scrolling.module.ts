@@ -1,18 +1,18 @@
 import {NgModule} from '@angular/core';
 
-import {ScrollingEvents} from '../scrolling.module';
-import {MockTopControlComponent} from './mock-top-control.component';
-import {MockScrollingEvents} from './mock-scrolling-events.service';
+import {ObScrollingEvents} from '../scrolling.module';
+import {ObMockTopControlComponent} from './mock-top-control.component';
+import {ObMockScrollingEvents} from './mock-scrolling-events.service';
 
-export {MockTopControlComponent} from './mock-top-control.component';
-export {MockScrollingEvents} from './mock-scrolling-events.service';
+export {ObMockTopControlComponent} from './mock-top-control.component';
+export {ObMockScrollingEvents} from './mock-scrolling-events.service';
 
 @NgModule({
-	declarations: [MockTopControlComponent],
-	exports: [MockTopControlComponent],
+	declarations: [ObMockTopControlComponent],
+	exports: [ObMockTopControlComponent],
 	providers: [
-		{provide: ScrollingEvents, useClass: MockScrollingEvents}
+		{provide: ObScrollingEvents, useClass: ObMockScrollingEvents}
 	]
 })
-export class MockScrollingModule {
+export class ObMockScrollingModule {
 }

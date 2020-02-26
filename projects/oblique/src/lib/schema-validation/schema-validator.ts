@@ -1,17 +1,17 @@
 import {AfterViewInit, Directive, forwardRef, Injector} from '@angular/core';
 import {FormControl, NG_VALIDATORS, NgControl, ValidationErrors, Validator} from '@angular/forms';
-import {SchemaValidationDirective} from './schema-validation.directive';
+import {ObSchemaValidationDirective} from './schema-validation.directive';
 
 @Directive({
-	selector: '[orSchemaValidate][ngModel],[orSchemaValidate][formControlName]',
+	selector: '[obSchemaValidate][ngModel],[obSchemaValidate][formControlName]',
 	providers: [
-		{provide: NG_VALIDATORS, useExisting: forwardRef(() => SchemaValidateDirective), multi: true}
+		{provide: NG_VALIDATORS, useExisting: forwardRef(() => ObSchemaValidateDirective), multi: true}
 	]
 })
-export class SchemaValidateDirective implements AfterViewInit, Validator {
+export class ObSchemaValidateDirective implements AfterViewInit, Validator {
 	private propertyName: string;
 
-	constructor(private readonly schemaDirective: SchemaValidationDirective,
+	constructor(private readonly schemaDirective: ObSchemaValidationDirective,
 				private readonly injector: Injector) {
 	}
 

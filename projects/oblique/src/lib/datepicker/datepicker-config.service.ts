@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 
-export interface DatepickerOptions {
+export interface ObIDatepickerOptions {
 	displayMonths: number;
 	firstDayOfWeek: 1;
 	navigation: 'select' | 'arrows' | 'none';
@@ -14,8 +14,8 @@ export interface DatepickerOptions {
 @Injectable({
 	providedIn: 'root'
 })
-export class DatepickerConfigService {
-	options: DatepickerOptions = {
+export class ObDatepickerConfigService {
+	options: ObIDatepickerOptions = {
 		displayMonths: 1,
 		firstDayOfWeek: 1,
 		navigation: 'select',

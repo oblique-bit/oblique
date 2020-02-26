@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {ObSelectableService} from 'oblique';
-import {IObSelectableCollectionChanged} from './selectable.service';
+import {ObISelectableCollectionChanged} from './selectable.service';
 
 describe('SelectedService', () => {
 	let selectableService: ObSelectableService;
@@ -189,7 +189,7 @@ describe('SelectedService', () => {
 	});
 
 	it('should emit CREATE when collections is created', (done) => {
-		selectableService.collectionChange$.subscribe((wrapper: IObSelectableCollectionChanged) => {
+		selectableService.collectionChange$.subscribe((wrapper: ObISelectableCollectionChanged) => {
 			expect(wrapper.collection).toBe('meteorolgy');
 			expect(wrapper.value[0]).toBe('weather');
 			expect(wrapper.eventType).toBe('CREATE');
@@ -201,7 +201,7 @@ describe('SelectedService', () => {
 	it('should emit UPDATE when values being added', (done) => {
 		selectableService.addValue('weather', 'meteorolgy');
 		selectableService.addValue('rain', 'meteorolgy');
-		selectableService.collectionChange$.subscribe((wrapper: IObSelectableCollectionChanged) => {
+		selectableService.collectionChange$.subscribe((wrapper: ObISelectableCollectionChanged) => {
 			expect(wrapper.collection).toBe('meteorolgy');
 			expect(wrapper.value[2]).toBe('sun');
 			expect(wrapper.eventType).toBe('UPDATE');
@@ -213,7 +213,7 @@ describe('SelectedService', () => {
 	it('should emit UPDATE when collections changes', (done) => {
 		selectableService.addValue('weather', 'meteorolgy');
 		selectableService.addValue('rain', 'meteorolgy');
-		selectableService.collectionChange$.subscribe((wrapper: IObSelectableCollectionChanged) => {
+		selectableService.collectionChange$.subscribe((wrapper: ObISelectableCollectionChanged) => {
 			expect(wrapper.collection).toBe('meteorolgy');
 			expect(wrapper.value[1]).toBeUndefined();
 			expect(wrapper.eventType).toBe('UPDATE');
@@ -225,7 +225,7 @@ describe('SelectedService', () => {
 	it('should emit DESTROY when collections is being destroyed', (done) => {
 		selectableService.addValue('star', 'astronomy');
 		selectableService.addValue('earth', 'astronomy');
-		selectableService.collectionChange$.subscribe((wrapper: IObSelectableCollectionChanged) => {
+		selectableService.collectionChange$.subscribe((wrapper: ObISelectableCollectionChanged) => {
 			expect(wrapper.collection).toBe('astronomy');
 			expect(wrapper.eventType).toBe('DESTROY');
 			done();

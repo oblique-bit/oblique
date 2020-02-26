@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
 @Injectable()
-export class MockMultiselectConfig {
+export class ObMockMultiselectConfig {
 	enableAllSelectedText = true;
 	dynamicTitleMaxItems = 3;
 	enableSearch = false;

@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {InjectionToken, Optional} from '@angular/core';
 import {TranslateLoader, TranslateModuleConfig} from '@ngx-translate/core';
-import {MultiTranslateLoader, TRANSLATION_FILES, TranslationFile} from './multi-translate-loader/multi-translate-loader';
+import {ObMultiTranslateLoader, TRANSLATION_FILES, ObITranslationFile} from './multi-translate-loader/multi-translate-loader';
 
 export const WINDOW = new InjectionToken<Window>('Window');
 
@@ -20,8 +20,8 @@ export function multiTranslateLoader(config: TranslateModuleConfig = {}): Transl
 	};
 }
 
-export function getTranslateLoader(http: HttpClient, files: TranslationFile[]): MultiTranslateLoader {
-	return new MultiTranslateLoader(http, [
+export function getTranslateLoader(http: HttpClient, files: ObITranslationFile[]): ObMultiTranslateLoader {
+	return new ObMultiTranslateLoader(http, [
 		{prefix: './assets/styles/i18n/', suffix: '.json'},
 		...(files || [{prefix: './assets/i18n/', suffix: '.json'}])
 	]);

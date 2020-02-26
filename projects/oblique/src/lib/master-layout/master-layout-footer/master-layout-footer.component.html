@@ -1,4 +1,4 @@
-<ng-content select="[orFooter]" *ngIf="isCustom"></ng-content>
+<ng-content select="[obFooter]" *ngIf="isCustom"></ng-content>
 <ng-container *ngIf="!isCustom">
 	<div class="footer-item footer-item-logo footer-sm-collapse">
 		<a [routerLink]="home" class="application-brand-logo">
@@ -6,7 +6,7 @@
 		</a>
 	</div>
 	<div class="footer-item footer-item-info">
-		<ng-content select="[orFooterInfo]"></ng-content>
+		<ng-content select="[obFooterInfo]"></ng-content>
 	</div>
 	<ul class="footer-item footer-item-links" role="menu" *ngIf="templates.length">
 		<li role="presentation" *ngFor="let template of templates">

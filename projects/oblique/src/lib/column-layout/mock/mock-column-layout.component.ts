@@ -1,11 +1,11 @@
 import {Component, Input} from '@angular/core';
 
 @Component({
-	selector: 'or-column-layout',
-	exportAs: 'orColumnLayout',
+	selector: 'ob-column-layout',
+	exportAs: 'obColumnLayout',
 	template: ''
 })
-export class MockColumnLayoutComponent {
+export class ObMockColumnLayoutComponent {
 	@Input() left = true;
 	@Input() right = true;
 	@Input() noLayout = false;

@@ -1,8 +1,8 @@
 [
   {
-    "name": "NumberFormatDirective",
-    "selector": "[orNumberFormat]",
-    "export": "orNumberFormat",
+    "name": "ObNumberFormatDirective",
+    "selector": "[obNumberFormat]",
+    "export": "obNumberFormat",
     "since": "2.0.0",
     "inputs": [
       {

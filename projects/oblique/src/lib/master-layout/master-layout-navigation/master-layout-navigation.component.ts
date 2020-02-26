@@ -2,39 +2,39 @@ import {AfterViewInit, Component, ElementRef, HostBinding, HostListener, Input, 
 import {Router} from '@angular/router';
 import {filter, takeUntil} from 'rxjs/operators';
 
-import {Unsubscribable} from '../../unsubscribe.class';
-import {MasterLayoutService} from '../master-layout.service';
-import {MasterLayoutConfig, ScrollMode} from '../master-layout.config';
-import {MasterLayoutEvent, MasterLayoutEventValues} from '../master-layout.utility';
+import {ObUnsubscribable} from '../../unsubscribe.class';
+import {ObMasterLayoutService} from '../master-layout.service';
+import {ObMasterLayoutConfig, ObEScrollMode} from '../master-layout.config';
+import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from '../master-layout.utility';
 
-export interface ORNavigationLink {
+export interface ObNavigationLink {
 	label: string;
 	url: string;
-	children?: ORNavigationLink[];
+	children?: ObNavigationLink[];
 	id?: string;
 }
 
 @Component({
-	selector: 'or-master-layout-navigation',
+	selector: 'ob-master-layout-navigation',
 	templateUrl: './master-layout-navigation.component.html',
 	styleUrls: ['./master-layout-navigation.component.scss', './master-layout-navigation.component-scrollable.scss'],
 	encapsulation: ViewEncapsulation.None,
 	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'application-navigation'}
 })
-export class MasterLayoutNavigationComponent extends Unsubscribable implements OnInit, AfterViewInit {
+export class ObMasterLayoutNavigationComponent extends ObUnsubscribable implements OnInit, AfterViewInit {
 	isFullWidth = this.masterLayout.navigation.isFullWidth;
 	activeClass = this.config.navigation.activeClass;
 	currentScroll = 0;
 	maxScroll = 0;
-	@Input() links: ORNavigationLink[] = [];
+	@Input() links: ObNavigationLink[] = [];
 	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') isScrollable: boolean;
 	private static readonly buttonWidth = 30;
 	private nav: HTMLElement;
 
 	constructor(private readonly router: Router,
-				private readonly masterLayout: MasterLayoutService,
-				private readonly config: MasterLayoutConfig,
+				private readonly masterLayout: ObMasterLayoutService,
+				private readonly config: ObMasterLayoutConfig,
 				private readonly renderer: Renderer2,
 				private readonly el: ElementRef
 	) {
@@ -75,16 +75,16 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 	}
 
 	private propertyChanges() {
-		const events = [MasterLayoutEventValues.SCROLLABLE, MasterLayoutEventValues.FULL_WIDTH];
+		const events = [ObEMasterLayoutEventValues.SCROLLABLE, ObEMasterLayoutEventValues.FULL_WIDTH];
 		this.masterLayout.navigation.configEvents.pipe(
-			filter((evt: MasterLayoutEvent) => events.includes(evt.name)),
+			filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
 			takeUntil(this.unsubscribe)
 		).subscribe((event) => {
 			switch (event.name) {
-				case MasterLayoutEventValues.SCROLLABLE:
+				case ObEMasterLayoutEventValues.SCROLLABLE:
 					this.masterLayout.navigation.refresh();
 					break;
-				case MasterLayoutEventValues.FULL_WIDTH:
+				case ObEMasterLayoutEventValues.FULL_WIDTH:
 					this.isFullWidth = event.value;
 					break;
 			}
@@ -94,10 +94,10 @@ export class MasterLayoutNavigationComponent extends Unsubscribable implements O
 	private refresh(): void {
 		if (this.nav) {
 			const scrollMode = this.masterLayout.navigation.scrollMode;
-			if (scrollMode !== ScrollMode.DISABLED) {
+			if (scrollMode !== ObEScrollMode.DISABLED) {
 				const childWidth = Array.from(this.nav.children).reduce((total, el: HTMLElement) => total + el.clientWidth, 0);
-				this.maxScroll = Math.max(0, -(this.nav.clientWidth - childWidth - 2 * MasterLayoutNavigationComponent.buttonWidth));
-				this.isScrollable = scrollMode === ScrollMode.ENABLED ? true : childWidth > this.nav.clientWidth;
+				this.maxScroll = Math.max(0, -(this.nav.clientWidth - childWidth - 2 * ObMasterLayoutNavigationComponent.buttonWidth));
+				this.isScrollable = scrollMode === ObEScrollMode.ENABLED ? true : childWidth > this.nav.clientWidth;
 			} else {
 				this.isScrollable = false;
 			}

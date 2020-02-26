@@ -1,35 +1,35 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
-import {INotification, NotificationType} from '../notification.interfaces';
-import {NotificationConfig} from '../notification.config';
+import {ObINotification, ObENotificationType} from '../notification.interfaces';
+import {ObNotificationConfig} from '../notification.config';
 
 @Injectable()
-export class MockNotificationService {
+export class ObMockNotificationService {
 	clearAllOnNavigate = false;
 
-	events = new Subject<INotification>();
+	events = new Subject<ObINotification>();
 
-	constructor(public config: NotificationConfig) {
+	constructor(public config: ObNotificationConfig) {
 	}
 
-	info(config: INotification | string): INotification {
-		return {} as INotification;
+	info(config: ObINotification | string): ObINotification {
+		return {} as ObINotification;
 	}
 
-	success(config: INotification | string): INotification {
-		return {} as INotification;
+	success(config: ObINotification | string): ObINotification {
+		return {} as ObINotification;
 	}
 
-	warning(config: INotification | string): INotification {
-		return {} as INotification;
+	warning(config: ObINotification | string): ObINotification {
+		return {} as ObINotification;
 	}
 
-	error(config: INotification | string): INotification {
-		return {} as INotification;
+	error(config: ObINotification | string): ObINotification {
+		return {} as ObINotification;
 	}
 
-	send(config: INotification | string, type?: NotificationType): INotification {
-		return {} as INotification;
+	send(config: ObINotification | string, type?: ObENotificationType): ObINotification {
+		return {} as ObINotification;
 	}
 
 	clear(channel): void {

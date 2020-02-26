@@ -1,8 +1,8 @@
-import {MatErrorDirective} from './mat-error.directive';
+import {ObMatErrorDirective} from './mat-error.directive';
 
 describe('MatErrorDirective', () => {
 	it('should create an instance', () => {
-		const directive = new MatErrorDirective(null, null, null);
+		const directive = new ObMatErrorDirective(null, null, null);
 		expect(directive).toBeTruthy();
 	});
 });

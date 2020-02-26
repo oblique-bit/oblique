@@ -5,12 +5,12 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {TranslateModule} from '@ngx-translate/core';
 
-import {InputClearDirective} from './input-clear.directive';
-import {TelemetryService} from '../telemetry/telemetry.service';
+import {ObInputClearDirective} from './input-clear.directive';
+import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {WINDOW, windowProvider} from '../utilities';
 
-export {InputClearDirective} from './input-clear.directive';
+export {ObInputClearDirective} from './input-clear.directive';
 
 @NgModule({
 	imports: [
@@ -19,7 +19,7 @@ export {InputClearDirective} from './input-clear.directive';
 		FormsModule
 	],
 	declarations: [
-		InputClearDirective
+		ObInputClearDirective
 	],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
@@ -27,11 +27,11 @@ export {InputClearDirective} from './input-clear.directive';
 		{provide: WINDOW, useFactory: windowProvider}
 	],
 	exports: [
-		InputClearDirective
+		ObInputClearDirective
 	]
 })
-export class InputClearModule {
-	constructor(telemetry: TelemetryService) {
-		requireAndRecordTelemetry(telemetry, InputClearModule);
+export class ObInputClearModule {
+	constructor(telemetry: ObTelemetryService) {
+		requireAndRecordTelemetry(telemetry, ObInputClearModule);
 	}
 }

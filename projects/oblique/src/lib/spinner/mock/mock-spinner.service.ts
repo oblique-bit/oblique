@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {SpinnerEvent} from '../spinner-event';
+import {ObISpinnerEvent} from '../spinner-event';
 
 @Injectable()
-export class MockSpinnerService {
+export class ObMockSpinnerService {
 	static CHANNEL = 'default';
 
-	get events(): Observable<SpinnerEvent> {
-		return of({} as SpinnerEvent);
+	get events(): Observable<ObISpinnerEvent> {
+		return of({} as ObISpinnerEvent);
 	}
 
 	activate(channel?: string) {

@@ -1,17 +1,17 @@
 import {Component, ElementRef, Input, QueryList, TemplateRef} from '@angular/core';
-import {LocaleObject} from '../master-layout.config';
-import {ORNavigationLink} from '../master-layout.module';
+import {ObILocaleObject} from '../master-layout.config';
+import {ObNavigationLink} from '../master-layout.module';
 
 @Component({
-	selector: 'or-master-layout-header',
+	selector: 'ob-master-layout-header',
 	template: ''
 })
-export class MockMasterLayoutHeaderComponent {
+export class ObMockMasterLayoutHeaderComponent {
 	home = '';
-	locales: LocaleObject[];
+	locales: ObILocaleObject[];
 	isCustom = true;
 	disabledLang = true;
-	@Input() navigation: ORNavigationLink[];
+	@Input() navigation: ObNavigationLink[];
 	isAnimated = true;
 	isSticky = true;
 	isMedium = true;

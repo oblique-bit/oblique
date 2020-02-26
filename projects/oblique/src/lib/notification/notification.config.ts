@@ -1,11 +1,11 @@
 import {Inject, Injectable, InjectionToken, Optional} from '@angular/core';
-import {INotificationConfig} from './notification.interfaces';
+import {ObINotificationConfig} from './notification.interfaces';
 
 export const CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE = new InjectionToken<boolean>('CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE');
 export const GROUP_SIMILAR_NOTIFICATIONS = new InjectionToken<boolean>('GROUP_SIMILAR_NOTIFICATIONS');
 
 @Injectable({providedIn: 'root'})
-export class NotificationConfig {
+export class ObNotificationConfig {
 	sticky = false;
 	timeout = 3500;
 	channel = 'oblique';
@@ -14,20 +14,20 @@ export class NotificationConfig {
 
 	info = {
 		title: 'i18n.oblique.notification.type.info'
-	} as INotificationConfig;
+	} as ObINotificationConfig;
 
 	success = {
 		title: 'i18n.oblique.notification.type.success'
-	} as INotificationConfig;
+	} as ObINotificationConfig;
 
 	warning = {
 		title: 'i18n.oblique.notification.type.warning'
-	} as INotificationConfig;
+	} as ObINotificationConfig;
 
 	error = {
 		title: 'i18n.oblique.notification.type.error',
 		sticky: true,
-	} as INotificationConfig;
+	} as ObINotificationConfig;
 
 	constructor(
 		@Optional() @Inject(CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE) clear,

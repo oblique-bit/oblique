@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input, OnInit, ViewEncapsulation} from '@angular/core';
 
-export interface SearchWidgetItem {
+export interface ObISearchWidgetItem {
 	id: string;
 	label: string;
 	routes: string[];
@@ -11,8 +11,8 @@ export interface SearchWidgetItem {
 let nextId = 0;
 
 @Component({
-	selector: 'or-search-box',
-	exportAs: 'orSearchBox',
+	selector: 'ob-search-box',
+	exportAs: 'obSearchBox',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	templateUrl: './search-box.component.html',
 	styleUrls: ['./search-box.component.scss'],
@@ -20,8 +20,8 @@ let nextId = 0;
 	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'search-box', role: 'search'}
 })
-export class SearchBoxComponent implements OnInit {
-	@Input() items: SearchWidgetItem[];
+export class ObSearchBoxComponent implements OnInit {
+	@Input() items: ObISearchWidgetItem[];
 	@Input() placeholder = 'i18n.oblique.search.placeholder';
 	@Input() minPatternLength = 1;
 	@Input() maxResults = 10;

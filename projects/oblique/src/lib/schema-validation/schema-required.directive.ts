@@ -1,16 +1,16 @@
 import {Directive, HostBinding, Input, OnInit, Optional} from '@angular/core';
 import {NgModelGroup} from '@angular/forms';
-import {SchemaValidationDirective} from './schema-validation.directive';
+import {ObSchemaValidationDirective} from './schema-validation.directive';
 
 @Directive({
 	selector: '[ngModel]',
 })
-export class SchemaRequiredDirective implements OnInit {
+export class ObSchemaRequiredDirective implements OnInit {
 
 	@HostBinding('attr.required') required: boolean;
 	@Input('name') name: string;
 
-	constructor(@Optional() private readonly schemaValidation: SchemaValidationDirective,
+	constructor(@Optional() private readonly schemaValidation: ObSchemaValidationDirective,
 				@Optional() private readonly modelGroup: NgModelGroup) {
 	}
 

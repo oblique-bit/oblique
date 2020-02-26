@@ -1,8 +1,8 @@
 [
   {
-    "name": "FilterBoxComponent",
-    "selector": "or-filter-box",
-    "exported": "orFilterBox",
+    "name": "ObFilterBoxComponent",
+    "selector": "ob-filter-box",
+    "exported": "obFilterBox",
     "since": "2.0.0",
     "inputs": [
       {

@@ -1,12 +1,12 @@
-import {ErrorMessagesService} from 'oblique';
+import {ObErrorMessagesService} from 'oblique';
 
 describe('ErrorMessagesService', () => {
-	let service: ErrorMessagesService;
+	let service: ObErrorMessagesService;
 	let controlMock;
 	let result;
 
 	beforeEach(() => {
-		service = new ErrorMessagesService();
+		service = new ObErrorMessagesService();
 		controlMock = {
 			errors: {
 				bar: {
