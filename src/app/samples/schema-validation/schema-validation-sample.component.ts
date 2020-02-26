@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, NgForm} from '@angular/forms';
-import {NotificationService, SchemaValidationService} from 'oblique';
+import {ObNotificationService, ObSchemaValidationService} from 'oblique';
 import {of} from 'rxjs';
 
 @Component({
@@ -113,8 +113,8 @@ export class SchemaValidationSampleComponent implements OnInit {
 		}
 	});
 
-	constructor(private readonly schemaValidation: SchemaValidationService,
-				private readonly notification: NotificationService,
+	constructor(private readonly schemaValidation: ObSchemaValidationService,
+				private readonly notification: ObNotificationService,
 				private readonly formBuilder: FormBuilder) {
 	}
 

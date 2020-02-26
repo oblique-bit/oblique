@@ -2,7 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
-import {NotificationService, ThemeService} from 'oblique';
+import {ObNotificationService, ObThemeService} from 'oblique';
 
 @Component({
 	selector: 'app-nested-form-sample',
@@ -19,7 +19,7 @@ export class NestedFormSampleComponent {
 	@ViewChild(FormGroupDirective) reactiveForm: FormGroupDirective;
 	@ViewChild(NgForm) templateForm: NgForm;
 
-	constructor(private readonly fb: FormBuilder, private readonly notification: NotificationService, theme: ThemeService) {
+	constructor(private readonly fb: FormBuilder, private readonly notification: ObNotificationService, theme: ObThemeService) {
 		this.parentForm = this.fb.group({
 			child: [''],
 			parent: ['', [Validators.required]]

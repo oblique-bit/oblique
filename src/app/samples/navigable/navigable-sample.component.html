@@ -1,10 +1,10 @@
 <h2 class="page-header">{{'i18n.routes.samples.navigable.title' | translate}}</h2>
-<or-description component="navigable"></or-description>
-<or-column-layout [left]="false" [right]="true">
+<ob-description component="navigable"></ob-description>
+<ob-column-layout [left]="false" [right]="true">
 	<div column-main-content>
-		<or-navigable-group [(items)]="scientists"
+		<ob-navigable-group [(items)]="scientists"
 							[(selection)]="scientistsSelection"
-							#orNavigableGroup
+							#obNavigableGroup
 							class="list-group mb-4">
 			<div class="list-group-item list-group-header">
 				<div class="col-3">First Name</div>
@@ -14,12 +14,12 @@
 			</div>
 			<div class="list-group-item"
 				 *ngFor="let scientist of scientists; let i = index"
-				 [orNavigable]="scientist"
+				 [obNavigable]="scientist"
 				 [navigableFocusOnInit]="i === 0"
 				 [navigableHighlight]="isHighlighted(scientist)"
 				 (navigableOnActivation)="onActivation(scientist)"
 				 (navigableOnMove)="onMove($event, scientist)"
-				 #orNavigable="orNavigable">
+				 #obNavigable="orNavigable">
 				<div class="col-3">{{scientist.firstname}}</div>
 				<div class="col-3">{{scientist.lastname}}</div>
 				<div class="col-3">{{scientist.birthdate}}</div>
@@ -81,7 +81,7 @@
 					</div>
 				</div>
 			</div>
-		</or-navigable-group>
+		</ob-navigable-group>
 		<ul class="nav nav-vertical nav-bordered">
 			<li class="nav-item nav-header" role="presentation">
 				<h3 class="nav-header-title">Selected scientist(s) <span class="badge">{{scientistsSelection.length}} / {{scientists.length}}</span>
@@ -106,7 +106,7 @@
 			<div class="list-group-item" *ngFor="let scientist of scientists">
 				<div class="btn-group">
 					<button type="button" class="btn btn-secondary"
-							(click)="toggleActivation(scientist, orNavigableGroup)"
+							(click)="toggleActivation(scientist, obNavigableGroup)"
 							ngbTooltip="Toggle item activation" container="body">
 									<span class="fa fa-toggle-off"
 										  [ngClass]="{'text-success fa-toggle-on': isSelected(scientist)}"></span>
@@ -144,5 +144,5 @@
 			</li>
 		</ul>
 	</div>
-</or-column-layout>
-<or-api component="navigable"></or-api>
+</ob-column-layout>
+<ob-api component="navigable"></ob-api>

@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
-import {NotificationService, PopUpService} from 'oblique';
+import {ObNotificationService, ObPopUpService} from 'oblique';
 
 @Component({
-	selector: 'or-pop-up-sample',
+	selector: 'ob-pop-up-sample',
 	templateUrl: './pop-up-sample.component.html'
 })
-export class PopUpSampleComponent {
+export class ObPopUpSampleComponent {
 
-	constructor(private popup: PopUpService, private notification: NotificationService) {
+	constructor(private popup: ObPopUpService, private notification: ObNotificationService) {
 	}
 
 	confirm(text: string): void {

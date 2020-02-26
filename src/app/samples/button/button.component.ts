@@ -1,17 +1,17 @@
 import {Component} from '@angular/core';
-import {MasterLayoutService, ThemeService} from 'oblique';
+import {ObMasterLayoutService, ObThemeService} from 'oblique';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
-	selector: 'or-button',
+	selector: 'ob-button',
 	templateUrl: './button.component.html',
 	styleUrls: ['./button.component.scss']
 })
-export class ButtonComponent {
+export class ObButtonComponent {
 	material: Observable<boolean>;
 
-	constructor(masterLayout: MasterLayoutService, theme: ThemeService) {
+	constructor(masterLayout: ObMasterLayoutService, theme: ObThemeService) {
 		this.material = theme.theme$.pipe(map(() => theme.isMaterial()));
 	}
 }

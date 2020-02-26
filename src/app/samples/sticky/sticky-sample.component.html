@@ -1,15 +1,15 @@
 <h2 class="page-header">{{'i18n.routes.samples.sticky.title' | translate}}</h2>
-<or-description component="sticky"></or-description>
-<or-column-layout [left]="false">
-	<or-sticky [headerSize]="headerSize" [footerSize]="footerSize" [noLayout]="noLayout" column-main-content>
-		<ng-template #orStickyHeader *ngIf="stickyHeader">
+<ob-description component="sticky"></ob-description>
+<ob-column-layout [left]="false">
+	<ob-sticky [headerSize]="headerSize" [footerSize]="footerSize" [noLayout]="noLayout" column-main-content>
+		<ng-template #obStickyHeader *ngIf="stickyHeader">
 			<div class="btn-group" role="group" aria-label="Basic example">
 				<button type="button" class="btn btn-secondary">Left</button>
 				<button type="button" class="btn btn-secondary">Middle</button>
 				<button type="button" class="btn btn-secondary">Right</button>
 			</div>
 		</ng-template>
-		<ng-template #orStickyMain>
+		<ng-template #obStickyMain>
 			<h1>Default Layout</h1>
 			<div class="card mb-3">
 				<div class="card-header">
@@ -26,7 +26,7 @@
 			<strong>Ok!</strong> You read
 			<a href="#">this default callout message</a>.
 		</ng-template>
-		<ng-template #orStickyFooter *ngIf="stickyFooter">
+		<ng-template #obStickyFooter *ngIf="stickyFooter">
 			<div class="sticky-actions">
 				<div class="btn-group" role="group" aria-label="Basic example">
 					<button type="button" class="btn btn-secondary">Left</button>
@@ -35,7 +35,7 @@
 				</div>
 			</div>
 		</ng-template>
-	</or-sticky>
+	</ob-sticky>
 	<div column-right-content>
 		<div class="form-check">
 			<input type="checkbox" id="or-sticky-header" class="form-check-input"
@@ -67,5 +67,5 @@
 			<label class="form-check-label" for="or-sticky-layout">remove main content layout?</label>
 		</div>
 	</div>
-</or-column-layout>
-<or-api component="sticky"></or-api>
+</ob-column-layout>
+<ob-api component="sticky"></ob-api>

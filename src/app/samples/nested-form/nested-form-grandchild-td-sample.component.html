@@ -1,26 +1,26 @@
 <div ngForm>
 	<ng-container *ngIf="material | async else bootstrap">
-		<mat-form-field orErrorMessages>
+		<mat-form-field obErrorMessages>
 			<mat-label>Template Material Grand child 1</mat-label>
 			<input matInput name="field1" [(ngModel)]="field1" required/>
 			<mat-error></mat-error>
 		</mat-form-field>
-		<mat-form-field orErrorMessages>
+		<mat-form-field obErrorMessages>
 			<mat-label>Template Material Grand child 2</mat-label>
 			<input matInput name="field2" [(ngModel)]="field2"/>
 			<mat-error></mat-error>
 		</mat-form-field>
 	</ng-container>
 	<ng-template #bootstrap>
-		<div class="form-group" orFormControlState>
+		<div class="form-group" obFormControlState>
 			<label class="control-label">Template Bootstrap Grand Child 1</label>
 			<input class="form-control" type="text" name="field1" [(ngModel)]="field1" required/>
-			<or-error-messages></or-error-messages>
+			<ob-error-messages></ob-error-messages>
 		</div>
-		<div class="form-group" orFormControlState>
+		<div class="form-group" obFormControlState>
 			<label class="control-label">Template Bootstrap Grand Child 2</label>
 			<input class="form-control" type="text" name="field2" [(ngModel)]="field2"/>
-			<or-error-messages></or-error-messages>
+			<ob-error-messages></ob-error-messages>
 		</div>
 	</ng-template>
 </div>

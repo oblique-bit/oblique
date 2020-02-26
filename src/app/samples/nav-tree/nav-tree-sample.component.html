@@ -1,35 +1,35 @@
 <h2 class="page-header">{{'i18n.routes.samples.nav-tree.title' | translate}}</h2>
-<or-description component="nav-tree"></or-description>
-<or-column-layout [left]="false" [right]="true">
-	<or-nav-tree #orNavTree column-main-content
+<ob-description component="nav-tree"></ob-description>
+<ob-column-layout [left]="false" [right]="true">
+	<ob-nav-tree #obNavTree column-main-content
 				 [items]="items"
 				 [prefix]="'nav-tree-sample'"
 				 [filterPattern]="filter.pattern"
 				 [activateAncestors]="activateAncestors"
 				 [variant]="variant"
-				 [orNavTreeFakeFocus]="useFakeFocus ? orFilterBox.filterControl : null"
+				 [obNavTreeFakeFocus]="useFakeFocus ? obFilterBox.filterControl : null"
 	>
 		<li class="nav-item nav-header" role="presentation">
 			<h3 class="nav-header-title" *ngIf="!filter.pattern">Menu Sample</h3>
 			<h3 class="nav-header-title" *ngIf="filter.pattern">{{'i18n.common.filter.results' | translate}}</h3>
 		</li>
-	</or-nav-tree>
+	</ob-nav-tree>
 	<div column-right-content>
 		<h2>Controls</h2>
 		<div class="form-group row">
 			<label class="col-3 col-form-label">Filter</label>
 			<div class="col-9">
-				<or-filter-box [(pattern)]="filter.pattern" #orFilterBox></or-filter-box>
+				<ob-filter-box [(pattern)]="filter.pattern" #obFilterBox></ob-filter-box>
 			</div>
 		</div>
 		<div class="form-group row">
 			<label class="col-3 col-form-label">Toggle</label>
 			<div class="col-9">
 				<div class="btn-group">
-					<button class="btn btn-secondary" role="button" (click)="orNavTree.collapseAll()">
+					<button class="btn btn-secondary" role="button" (click)="obNavTree.collapseAll()">
 						<span class="fa fa-compress"></span> {{'i18n.common.collapseAll' | translate}}
 					</button>
-					<button class="btn btn-secondary" role="button" (click)="orNavTree.expandAll()">
+					<button class="btn btn-secondary" role="button" (click)="obNavTree.expandAll()">
 						<span class="fa fa-expand"></span> {{'i18n.common.expandAll' | translate}}
 					</button>
 				</div>
@@ -78,5 +78,5 @@
 			</div>
 		</div>
 	</div>
-</or-column-layout>
-<or-api component="nav-tree"></or-api>
+</ob-column-layout>
+<ob-api component="nav-tree"></ob-api>

@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-	selector: 'or-block-elements',
+	selector: 'ob-block-elements',
 	templateUrl: './block-elements.component.html'
 })
-export class BlockElementsComponent {
+export class ObBlockElementsComponent {
 }

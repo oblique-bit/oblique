@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {ExampleDialogComponent} from './example-dialog/example-dialog.component';
+import {ObExampleDialogComponent} from './example-dialog/example-dialog.component';
 
 @Component({
-	selector: 'or-dialog',
+	selector: 'ob-dialog',
 	templateUrl: './dialog.component.html'
 })
-export class DialogComponent {
+export class ObDialogComponent {
 	name: string;
 	animal: string;
 	dialogState: string;
@@ -22,7 +22,7 @@ export class DialogComponent {
 
 	openDialog() {
 		this.dialogState = this.DIALOG_STATE_CURRENTLY_OPEN;
-		const dialogRef = this.dialog.open(ExampleDialogComponent, {
+		const dialogRef = this.dialog.open(ObExampleDialogComponent, {
 			width: this.DIALOG_WIDTH,
 			data: {name: this.name, animal: this.animal},
 		});

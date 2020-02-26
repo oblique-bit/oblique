@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, OnInit, ViewChild, ViewEncapsulation
 import {FormBuilder, FormGroup, NgModelGroup, Validators} from '@angular/forms';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes-sample-modal.component';
-import {UnsavedChangesService} from 'oblique';
+import {ObUnsavedChangesService} from 'oblique';
 
 
 @Component({
@@ -43,7 +43,7 @@ export class UnsavedChangesSampleComponent implements OnInit {
 
 	constructor(private readonly modalService: NgbModal,
 				private readonly formBuilder: FormBuilder,
-				private readonly unsavedChangesService: UnsavedChangesService) {
+				private readonly unsavedChangesService: ObUnsavedChangesService) {
 	}
 
 	ngOnInit() {

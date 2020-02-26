@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {ThemeService} from 'oblique';
+import {ObThemeService} from 'oblique';
 
 @Component({
 	selector: 'app-nested-form-grandchild-sample',
@@ -14,7 +14,7 @@ export class NestedFormGrandChildSampleComponent {
 	grandChildForm: FormGroup;
 	material: Observable<boolean>;
 
-	constructor(private readonly fb: FormBuilder, theme: ThemeService) {
+	constructor(private readonly fb: FormBuilder, theme: ObThemeService) {
 		this.grandChildForm = this.fb.group({
 			field1: ['', [Validators.required]],
 			field2: ['', Validators.minLength(5)]

@@ -1,21 +1,21 @@
 import {Component, Input, OnInit} from '@angular/core';
 
-export interface API {
+export interface ObIAPI {
 	name: string;
 	selector?: string;
 	exported?: string;
 	usage?: string;
 	since: string;
-	variables?: APIelement[];
-	inputs?: APIelement[];
-	outputs?: APIelement[];
-	methods?: APIelement[];
-	projection?: APIelement[];
-	internationalization?: APIelement[];
-	tokens?: APIelement[];
+	variables?: ObIAPIelement[];
+	inputs?: ObIAPIelement[];
+	outputs?: ObIAPIelement[];
+	methods?: ObIAPIelement[];
+	projection?: ObIAPIelement[];
+	internationalization?: ObIAPIelement[];
+	tokens?: ObIAPIelement[];
 }
 
-export interface APIelement {
+export interface ObIAPIelement {
 	name: string;
 	text: string;
 	type?: string;
@@ -28,14 +28,14 @@ export interface APIelement {
 }
 
 @Component({
-	selector: 'or-api',
+	selector: 'ob-api',
 	templateUrl: './api.component.html',
 	styleUrls: ['./api.component.scss']
 })
-export class ApiComponent implements OnInit {
+export class ObApiComponent implements OnInit {
 	@Input() component: string;
 	@Input() directory: string;
-	api: API[];
+	api: ObIAPI[];
 
 	ngOnInit() {
 		this.api = require(`../../../projects/oblique/src/lib/${this.directory || this.component}/${this.component}.api.json`);

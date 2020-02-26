@@ -3,11 +3,11 @@ import {ThemePalette} from '@angular/material/core';
 import {MatBadgePosition} from '@angular/material/badge';
 
 @Component({
-	selector: 'or-badge',
+	selector: 'ob-badge',
 	templateUrl: './badge.component.html',
 	styleUrls: ['./badge.component.scss']
 })
-export class BadgeComponent {
+export class ObBadgeComponent {
 	colors: ThemePalette[] = [];
 	color: ThemePalette;
 	positions: MatBadgePosition[] = [];

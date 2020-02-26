@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NotificationService, NotificationType} from 'oblique';
+import {ObNotificationService, ObENotificationType} from 'oblique';
 
 @Component({
 	selector: 'notification-sample',
@@ -10,11 +10,11 @@ export class NotificationSampleComponent {
 	titleWithParams = false;
 	appChannel = 'oblique';
 	sampleChannel = 'demo';
-	variants = NotificationType;
+	variants = ObENotificationType;
 
 	// Selection:
 	channel = this.sampleChannel;
-	variant = NotificationType.INFO;
+	variant = ObENotificationType.INFO;
 	title = 'Well done!';
 	titleKey = 'i18n.notification.sampleTitle';
 	titleParams = {
@@ -31,7 +31,7 @@ export class NotificationSampleComponent {
 	timeout = 2500;
 	group = false;
 
-	constructor(private readonly notificationService: NotificationService) {
+	constructor(private readonly notificationService: ObNotificationService) {
 	}
 
 	get clearAllOnNavigate() {

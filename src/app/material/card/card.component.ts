@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 
 @Component({
-	selector: 'or-card',
+	selector: 'ob-card',
 	templateUrl: './card.component.html',
 	styleUrls: ['./card.component.scss']
 })
-export class CardComponent {
+export class ObCardComponent {
 	avatarVisible = true;
 	titleVisible = true;
 	subtitleVisible = true;

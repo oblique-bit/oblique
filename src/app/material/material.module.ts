@@ -27,57 +27,57 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatTabsModule} from '@angular/material/tabs';
-import {ColumnLayoutModule, ObSelectableModule, InputClearModule} from 'oblique';
-import {CardComponent} from './card/card.component';
-import {ChipsComponent} from './chips/chips.component';
-import {SliderComponent} from './slider/slider.component';
-import {BadgeComponent} from './badge/badge.component';
-import {DialogComponent} from './dialog/dialog.component';
-import {ExampleDialogComponent} from './dialog/example-dialog/example-dialog.component';
-import {ExpansionPanelComponent} from './expansion-panel/expansion-panel.component';
-import {ProgressBarComponent} from './progress-bar/progress-bar.component';
-import {TableComponent} from './table/table.component';
-import {TooltipComponent} from './tooltip/tooltip.component';
-import {StepperVerticalComponent} from './stepper-vertical/stepper-vertical.component';
-import {StepperHorizontalComponent} from './stepper-horizontal/stepper-horizontal.component';
-import {TabsComponent} from './tabs/tabs.component';
+import {ObColumnLayoutModule, ObSelectableModule, ObInputClearModule} from 'oblique';
+import {ObCardComponent} from './card/card.component';
+import {ObChipsComponent} from './chips/chips.component';
+import {ObSliderComponent} from './slider/slider.component';
+import {ObBadgeComponent} from './badge/badge.component';
+import {ObDialogComponent} from './dialog/dialog.component';
+import {ObExampleDialogComponent} from './dialog/example-dialog/example-dialog.component';
+import {ObExpansionPanelComponent} from './expansion-panel/expansion-panel.component';
+import {ObProgressBarComponent} from './progress-bar/progress-bar.component';
+import {ObTableComponent} from './table/table.component';
+import {ObTooltipComponent} from './tooltip/tooltip.component';
+import {ObStepperVerticalComponent} from './stepper-vertical/stepper-vertical.component';
+import {ObStepperHorizontalComponent} from './stepper-horizontal/stepper-horizontal.component';
+import {ObTabsComponent} from './tabs/tabs.component';
 
 const appRoutes: Routes = [
-	{path: 'badge', component: BadgeComponent},
-	{path: 'card', component: CardComponent},
-	{path: 'chips', component: ChipsComponent},
-	{path: 'dialog', component: DialogComponent},
-	{path: 'expansion-panel', component: ExpansionPanelComponent},
-	{path: 'progress-bar', component: ProgressBarComponent},
-	{path: 'slider', component: SliderComponent},
-	{path: 'stepper-horizontal', component: StepperHorizontalComponent},
-	{path: 'stepper-vertical', component: StepperVerticalComponent},
-	{path: 'table', component: TableComponent},
-	{path: 'tabs', component: TabsComponent},
-	{path: 'tooltip', component: TooltipComponent},
+	{path: 'badge', component: ObBadgeComponent},
+	{path: 'card', component: ObCardComponent},
+	{path: 'chips', component: ObChipsComponent},
+	{path: 'dialog', component: ObDialogComponent},
+	{path: 'expansion-panel', component: ObExpansionPanelComponent},
+	{path: 'progress-bar', component: ObProgressBarComponent},
+	{path: 'slider', component: ObSliderComponent},
+	{path: 'stepper-horizontal', component: ObStepperHorizontalComponent},
+	{path: 'stepper-vertical', component: ObStepperVerticalComponent},
+	{path: 'table', component: ObTableComponent},
+	{path: 'tabs', component: ObTabsComponent},
+	{path: 'tooltip', component: ObTooltipComponent},
 	{path: '', redirectTo: 'card', pathMatch: 'full'}
 ];
 
 @NgModule({
 	declarations: [
-		BadgeComponent,
-		CardComponent,
-		ChipsComponent,
-		DialogComponent,
-		ExampleDialogComponent,
-		ExpansionPanelComponent,
-		ProgressBarComponent,
-		SliderComponent,
-		StepperHorizontalComponent,
-		StepperVerticalComponent,
-		TabsComponent,
-		TableComponent,
-		TooltipComponent
+		ObBadgeComponent,
+		ObCardComponent,
+		ObChipsComponent,
+		ObDialogComponent,
+		ObExampleDialogComponent,
+		ObExpansionPanelComponent,
+		ObProgressBarComponent,
+		ObSliderComponent,
+		ObStepperHorizontalComponent,
+		ObStepperVerticalComponent,
+		ObTabsComponent,
+		ObTableComponent,
+		ObTooltipComponent
 	],
 	imports: [
 		CommonModule,
-		ColumnLayoutModule,
-		InputClearModule,
+		ObColumnLayoutModule,
+		ObInputClearModule,
 		ReactiveFormsModule,
 		ObSelectableModule,
 		FormsModule,

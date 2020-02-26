@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 
-interface Colors {
+interface ObIColors {
 	name: string;
 	colors: {
 		name: string;
@@ -11,12 +11,12 @@ interface Colors {
 }
 
 @Component({
-	selector: 'or-palette',
+	selector: 'ob-palette',
 	templateUrl: './palette.component.html',
 	styleUrls: ['./palette.component.scss']
 })
-export class PaletteComponent {
-	colorGroups: Colors[] = [
+export class ObPaletteComponent {
+	colorGroups: ObIColors[] = [
 		{
 			name: 'CI / CD',
 			colors: [

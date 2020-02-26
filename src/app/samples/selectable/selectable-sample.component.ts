@@ -1,18 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import {ObSelectableService} from 'oblique';
-import {IObSelectableCollectionChanged} from 'projects/oblique/src/lib/selectable/selectable.service';
+import {ObISelectableCollectionChanged} from 'projects/oblique/src/lib/selectable/selectable.service';
 import {tap} from 'rxjs/operators';
 
 @Component({
-	selector: 'or-selected',
+	selector: 'ob-selected',
 	templateUrl: './selectable-sample.component.html',
 	styleUrls: ['./selectable-sample.component.scss']
 })
-export class SelectableSampleComponent implements OnInit {
+export class ObSelectableSampleComponent implements OnInit {
 	collections = {};
 	unnamedCollection: any[] = [];
 	preselectionCollection: any[] = [];
-	event: IObSelectableCollectionChanged;
+	event: ObISelectableCollectionChanged;
 
 	constructor(readonly selectedService: ObSelectableService) {
 	}

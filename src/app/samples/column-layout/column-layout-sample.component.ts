@@ -1,17 +1,17 @@
 import {Component} from '@angular/core';
-import {ORNavigationLink, SearchWidgetItem} from 'oblique';
+import {ObNavigationLink, ObISearchWidgetItem} from 'oblique';
 
 @Component({
-	selector: 'or-column-layout-sample',
+	selector: 'ob-column-layout-sample',
 	templateUrl: 'column-layout-sample.component.html'
 })
-export class ColumnLayoutSampleComponent {
+export class ObColumnLayoutSampleComponent {
 	left = true;
 	right = true;
 	noLayout = false;
 	wider = false;
-	searchItems: SearchWidgetItem[] = [];
-	private navigation: ORNavigationLink[] = [
+	searchItems: ObISearchWidgetItem[] = [];
+	private navigation: ObNavigationLink[] = [
 		{url: '/home', label: 'i18n.routes.home.title'},
 		{
 			url: '/samples', label: 'i18n.routes.samples.title', children: [
@@ -37,8 +37,8 @@ export class ColumnLayoutSampleComponent {
 		this.populateSearchItems(this.navigation);
 	}
 
-	populateSearchItems(items: ORNavigationLink[], base = ''): void {
-		items.forEach((item: ORNavigationLink) => {
+	populateSearchItems(items: ObNavigationLink[], base = ''): void {
+		items.forEach((item: ObNavigationLink) => {
 			const url = item.url.substr(1);
 			if (item.children) {
 				this.populateSearchItems(item.children, url);

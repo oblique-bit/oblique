@@ -1,8 +1,8 @@
 <h2>{{'i18n.routes.samples.filter-box.title' | translate}}</h2>
-<or-description component="filter-box"></or-description>
-<or-column-layout [left]="false" [right]="true">
+<ob-description component="filter-box"></ob-description>
+<ob-column-layout [left]="false" [right]="true">
 	<ng-container column-main-content>
-		<or-filter-box [(pattern)]="patterns[0]" [placeholder]="placeholder" (patternClear)="incrementCleared()"
+		<ob-filter-box [(pattern)]="patterns[0]" [placeholder]="placeholder" (patternClear)="incrementCleared()"
 					   (patternChange)="incrementChanged()">
 			<ng-template #prepend><i class="fa fa-search"></i></ng-template>
 			<ng-template #prepend>
@@ -31,7 +31,7 @@
 					</button>
 				</ng-container>
 			</ng-template>
-		</or-filter-box>
+		</ob-filter-box>
 		<ul>
 			<li *ngFor="let item of items | patternFilter:patterns[0]">{{item}}</li>
 		</ul>
@@ -41,7 +41,7 @@
 		<div>
 			<label>Placeholder</label>
 			<input type="text" [(ngModel)]="placeholder" #filterControl>
-			<button type="button" role="button" [orInputClear]="filterControl" (onClear)="placeholder = null">
+			<button type="button" role="button" [obInputClear]="filterControl" (onClear)="placeholder = null">
 				<span class="fa fa-times-circle"></span>
 				<span class="sr-only">{{'i18n.common.clear' | translate}}</span>
 			</button>
@@ -49,5 +49,5 @@
 		<p>cleared: {{cleared}}</p>
 		<p>changed: {{changed}}</p>
 	</ng-container>
-</or-column-layout>
-<or-api component="filter-box"></or-api>
+</ob-column-layout>
+<ob-api component="filter-box"></ob-api>

@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import { ListGroupComponent } from './list-group/list-group.component';
+import { ObListGroupComponent } from './list-group/list-group.component';
 
 @NgModule({
-	declarations: [ListGroupComponent],
+	declarations: [ObListGroupComponent],
 	imports: [
 		CommonModule,
 		RouterModule.forChild([
-			{path: 'list-group', component: ListGroupComponent}
+			{path: 'list-group', component: ObListGroupComponent}
 		])
 	]
 })

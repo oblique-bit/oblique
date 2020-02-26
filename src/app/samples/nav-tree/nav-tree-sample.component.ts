@@ -2,16 +2,16 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {merge, takeUntil} from 'rxjs/operators';
-import {NavTreeComponent, NavTreeItemModel, Unsubscribable} from 'oblique';
+import {ObNavTreeComponent, ObNavTreeItemModel, ObUnsubscribable} from 'oblique';
 
 @Component({
 	selector: 'nav-tree-sample',
 	templateUrl: './nav-tree-sample.component.html'
 })
-export class NavTreeSampleComponent extends Unsubscribable implements OnInit {
+export class NavTreeSampleComponent extends ObUnsubscribable implements OnInit {
 
-	public items: Array<NavTreeItemModel>;
-	public variant = NavTreeComponent.DEFAULTS.VARIANT;
+	public items: Array<ObNavTreeItemModel>;
+	public variant = ObNavTreeComponent.DEFAULTS.VARIANT;
 	public activateAncestors = true;
 	public useFakeFocus = false;
 
@@ -30,7 +30,7 @@ export class NavTreeSampleComponent extends Unsubscribable implements OnInit {
 		this.route.data.pipe(takeUntil(this.unsubscribe))
 			.subscribe((data: {sample: any}) => {
 				this.items = data.sample.navTree.items.map((item: any) => {
-					return new NavTreeItemModel(item);
+					return new ObNavTreeItemModel(item);
 				});
 			});
 	}
@@ -50,7 +50,7 @@ export class NavTreeSampleComponent extends Unsubscribable implements OnInit {
 			</div>
 		</div>`
 })
-export class NavTreeDetailSampleComponent extends Unsubscribable implements OnInit {
+export class NavTreeDetailSampleComponent extends ObUnsubscribable implements OnInit {
 	routing: string;
 
 	constructor(private readonly route: ActivatedRoute, private readonly router: Router) {

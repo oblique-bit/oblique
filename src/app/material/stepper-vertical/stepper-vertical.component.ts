@@ -2,10 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-	selector: 'or-stepper-vertical',
+	selector: 'ob-stepper-vertical',
 	templateUrl: './stepper-vertical.component.html'
 })
-export class StepperVerticalComponent implements OnInit {
+export class ObStepperVerticalComponent implements OnInit {
 	firstFormGroup: FormGroup;
 	secondFormGroup: FormGroup;
 	isRippleDisabled = false;

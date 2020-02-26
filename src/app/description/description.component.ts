@@ -2,10 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 
 @Component({
-	selector: 'or-description',
+	selector: 'ob-description',
 	templateUrl: './description.component.html'
 })
-export class DescriptionComponent implements OnInit {
+export class ObDescriptionComponent implements OnInit {
 	@Input() component: string;
 	@Input() directory: string;
 	description: SafeHtml;

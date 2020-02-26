@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FONTS, ORNavigationLink, SearchWidgetItem, THEMES, ThemeService} from 'oblique';
+import {FONTS, ObNavigationLink, ObISearchWidgetItem, THEMES, ObThemeService} from 'oblique';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
@@ -14,7 +14,7 @@ export class AppComponent {
 	offCanvasOpen = false;
 	theme$: Observable<string>;
 	font$: Observable<string>;
-	navigation: ORNavigationLink[] = [
+	navigation: ObNavigationLink[] = [
 		{url: 'home', label: 'i18n.routes.home.title'},
 		{
 			url: 'samples', label: 'i18n.routes.samples.title', children: [
@@ -78,9 +78,9 @@ export class AppComponent {
 			]
 		}
 	];
-	searchItems: SearchWidgetItem[] = [];
+	searchItems: ObISearchWidgetItem[] = [];
 
-	constructor(private readonly theme: ThemeService) {
+	constructor(private readonly theme: ObThemeService) {
 		this.populateSearchItems(this.navigation);
 		this.theme$ = this.theme.theme$.pipe(map(() => theme.isMaterial() ? 'material' : 'bootstrap'));
 		this.font$ = this.theme.font$;
@@ -94,8 +94,8 @@ export class AppComponent {
 		this.theme.setFont(font === FONTS.FRUTIGER ? FONTS.ROBOTO : FONTS.FRUTIGER);
 	}
 
-	populateSearchItems(items: ORNavigationLink[], base = ''): void {
-		items.forEach((item: ORNavigationLink) => {
+	populateSearchItems(items: ObNavigationLink[], base = ''): void {
+		items.forEach((item: ObNavigationLink) => {
 			const url = item.url;
 			if (item.children) {
 				this.populateSearchItems(item.children, url);

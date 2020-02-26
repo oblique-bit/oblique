@@ -1,5 +1,5 @@
 <h2 class="page-header">Table</h2>
-<or-column-layout [left]="false">
+<ob-column-layout [left]="false">
 	<ng-container column-main-content class="main-div" [ngClass]="tableParentClasses">
 		<table *ngIf="!flexTable" mat-table matSort (matSortChange)="sortData($event)" [dataSource]="dataSource" class="table-example"
 			   [ngClass]="tableClasses">
@@ -104,7 +104,7 @@
 					<mat-form-field>
 						<mat-label>Name</mat-label>
 						<input matInput #filterControl (keyup)="applyFilter($event)">
-						<button type="button" role="button" [orInputClear]="filterControl" (onClear)="applyFilter($event)">
+						<button type="button" role="button" [obInputClear]="filterControl" (onClear)="applyFilter($event)">
 							<span class="fa fa-times-circle"></span>
 						</button>
 					</mat-form-field>
@@ -169,4 +169,4 @@
 			</fieldset>
 		</mat-list>
 	</ng-container>
-</or-column-layout>
+</ob-column-layout>
