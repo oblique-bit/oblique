@@ -22,6 +22,7 @@ export const OB_LAST_MAJOR_SUPPORT_VERSION = 4;
 export const OB_PACKAGE = '@oblique/oblique';
 export const OB_PACKAGE_JSON = NODE_MODULES + '/' + OB_PACKAGE + '/package.json';
 export const OB_TESTING_MODULE = NODE_MODULES + '/' + OB_PACKAGE + '/lib/oblique-testing.module.d.ts';
+export const OB_PUBLIC_API = NODE_MODULES + '/' + OB_PACKAGE + '/public_api.d.ts';
 
 export const PROJECT_ROOT_DIR = './';
 export const PROJECT_SRC_DIR = './src';
@@ -35,8 +36,6 @@ export class SchematicsUtil {
 
 	static instance: SchematicsUtil;
 
-	private readonly customImplentations: string[] = [];
-	private readonly forceCustomImplentations: string[] = [];
 	private readonly forceObliqueImplentations: string[] = [
 		'TranslatePipe',
 		'TranslateService',
@@ -45,6 +44,9 @@ export class SchematicsUtil {
 		'MockTranslateService',
 		'MockTranslateParamsPipe'
 	];
+	private readonly customImplentations: string[] = [];
+	private readonly publicExports: string[] = [];
+	private readonly forceCustomImplentations: string[] = [];
 
 	static getInstance(): SchematicsUtil {
 		if ( !SchematicsUtil.instance ) {
@@ -330,6 +332,7 @@ export class SchematicsUtil {
 				this.forceCustomImplentations.push(customImplementation);
 			});
 		}
+		this.loadPublicApi();
 	}
 
 	isObliqueSymbol(symbol: string): boolean {
@@ -372,6 +375,81 @@ export class SchematicsUtil {
 			});
 		});
 		return foundSymbol;
+	}
+
+	updateClassIdentifiers(tree: Tree, filePath: string): void {
+		const sourceFile = this.getProject().createSourceFile(filePath, this.getFile(tree, filePath));
+		const callback: Function = (node: any) => {
+			return node.getKind() === SyntaxKind.Identifier && node.getText()[0].toUpperCase() === node.getText()[0];
+		};
+		const results: any[] = [];
+		this.walkFunctional(sourceFile, callback, results);
+		const replaceTasks: { start: number; oldContent: string; newContent: string }[] = [];
+		results.forEach((identifier: any) => {
+			// found class that changed it's class name prefix
+			const name = identifier.getText();
+			if ( this.publicExports.includes(name) ) {
+				// don't do anything if it's custom (as long it's not forced from oblique)
+				if ( !this.customImplentations.includes(name) || this.forceObliqueImplentations.includes(name) ) {
+					replaceTasks.push({
+						start: identifier.getStart(),
+						oldContent: name,
+						newContent: `Ob${name}`
+					});
+				}
+			}
+		});
+		replaceTasks.reverse(); // positioning based on start, reverse to keep deterministic!
+		replaceTasks.forEach((replaceTask: any) => {
+			const temporarySrc = this.getProject().createSourceFile(filePath, this.getFile(tree, filePath));
+			const partContent = temporarySrc.getFullText().substr(replaceTask.start);
+			const updatedContent = partContent.replace(replaceTask.oldContent, replaceTask.newContent);
+			const newContent = temporarySrc.getFullText().replace(partContent, updatedContent);
+			tree.overwrite(filePath, newContent);
+		});
+	}
+
+	private loadPublicApi(): void {
+		if (!fs.existsSync(OB_PUBLIC_API)) {
+			throw new Error(`[ERROR] no public api found, abort migration`);
+		}
+		const notRenamedSymbols = [
+			'CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE',
+			'GROUP_SIMILAR_NOTIFICATIONS',
+			'TELEMETRY_DISABLE',
+			'WINDOW',
+			'multiTranslateLoader',
+			'getTranslateLoader',
+			'draft06',
+			'OBLIQUE_FONT',
+			'FONTS',
+			'THEMES',
+			'Module',
+			'ObliqueModule',
+			'ObliqueTestingModule'
+		];
+		const moduleContent = fs.readFileSync(OB_PUBLIC_API, 'utf8');
+		const timeStamp = Date.now() + '-migration';
+		let exported: string[] = [];
+		moduleContent.split(';').forEach((line: string) => {
+			exported = exported.concat(this.extractFromBrackets('{}', line).split(',').map(symbol => symbol.trim()).filter((symbol: string) => symbol.length > 0));
+		});
+		exported = exported.map((symbol: string) => {
+			if ( symbol.indexOf('as ') === -1 ) {
+				return symbol;
+			}
+			return symbol.split('as').map((fragment: string) => fragment.trim())[1];
+		}).filter((symbol: string) => !notRenamedSymbols.includes(symbol))
+		.map((symbol: string) => symbol.replace('Oblique', timeStamp))
+		.map((symbol: string) => symbol.replace('Ob', ''))
+		.map((symbol: string) => symbol.replace(timeStamp, 'Oblique'));
+		exported = exported.concat([
+			'MockTranslatePipe',
+			'MockTranslateService',
+			'MockTranslateParamsPipe'
+		]);
+		exported.sort((a, b) => b.length - a.length);
+		exported.forEach((symbol: string) => this.publicExports.push(symbol));
 	}
 
 	private extractInnerFragment(inner: string): string {
@@ -440,6 +518,15 @@ export class SchematicsUtil {
 		}
 		node.getChildren().map((child: any) => {
 			this.walk(child, identifier, results);
+		});
+	}
+
+	private walkFunctional(node: any, callback: Function, results: any[]): void {
+		if ( callback(node) ) {
+			results.push(node);
+		}
+		node.getChildren().map((child: any) => {
+			this.walkFunctional(child, callback, results);
 		});
 	}
 

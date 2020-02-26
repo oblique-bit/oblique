@@ -47,5 +47,6 @@ export function initalize(_options: IUpdateSchema): Rule {
 export function finish(): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		_context.logger.info(colors.black(colors.bold(`\n WE'RE DONE WITH OBLIQUE MIGRATIONS 👌 ! LET US JUST UPDATE OTHER PACKAGES TO CONCLUDE. run ng update and npm outdated to discover the concerned packages \n`)));
+		_context.logger.info(colors.black(colors.bold(`\n NOTE: Please check that the changes are correct, especially it's possible that some word containing 'or' have been wrongly changed or if you have implementations that are named the same as in Oblique!\n`)));
 	};
 }
