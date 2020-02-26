@@ -4,6 +4,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslateService} from './_mocks/mock-translate.service';
 import {ObMockTranslatePipe} from './_mocks/mock-translate.pipe';
 
+import {MockCollapseModule} from './collapse/mock/mock-collapse.module';
 import {ObMockColumnLayoutModule} from './column-layout/mock/mock-column-layout.module';
 import {ObMockSearchBoxModule} from './search-box/mock/mock-search-box.module';
 import {ObMockDocumentMetaModule} from './document-meta/mock/mock-document-meta.module';
@@ -29,12 +30,12 @@ import {ObMockStickyModule} from './sticky/mock/mock-sticky.module';
 import {ObMockTelemetryModule} from './telemetry/_mock/mock-telemetry.module';
 import {ObMockInputClearModule} from './input-clear/mock/mock-input-clear.module';
 import {ObMockThemeModule} from './theme/mock/mock-theme.module';
-import {ObMockToggleModule} from './toggle/mock/mock-toggle.module';
 import {ObMockTranslateParamsModule} from './translate-params/mock/mock-translate-params.module';
 import {ObMockUnknownRouteModule} from './unknown-route/mock/mock-unknown-route.module';
 import {ObMockUnsavedChangesModule} from './unsaved-changes/mock/mock-unsaved-changes.module';
 import {WINDOW, windowProvider} from './utilities';
 
+export {MockCollapseModule, MockCollapseComponent } from './collapse/mock/mock-collapse.module';
 export {ObMockColumnLayoutComponent, ObMockColumnLayoutModule} from './column-layout/mock/mock-column-layout.module';
 export {
 	ObMockDateFormatterPipe,
@@ -103,7 +104,6 @@ export {ObMockStickyModule, ObMockStickyComponent} from './sticky/mock/mock-stic
 export {ObMockTelemetryModule, ObMockTelemetryService} from './telemetry/_mock/mock-telemetry.module';
 export {ObMockInputClearModule, ObMockInputClearDirective} from './input-clear/mock/mock-input-clear.module';
 export {ObMockThemeService, ObMockThemeModule} from './theme/mock/mock-theme.module';
-export {ObMockToggleModule, ObMockToggleDirective} from './toggle/mock/mock-toggle.module';
 export {ObMockTranslateParamsModule, ObMockTranslateParamsPipe} from './translate-params/mock/mock-translate-params.module';
 export {ObMockUnknownRouteModule, ObMockUnknownRouteComponent} from './unknown-route/mock/mock-unknown-route.module';
 export {
@@ -112,6 +112,7 @@ export {
 export {ObMockTranslateService};
 
 const MOCK_OBLIQUE_MODULES = [
+	MockCollapseModule,
 	ObMockColumnLayoutModule,
 	ObMockDocumentMetaModule,
 	ObMockDropdownModule,
@@ -137,7 +138,6 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockTelemetryModule,
 	ObMockInputClearModule,
 	ObMockThemeModule,
-	ObMockToggleModule,
 	ObMockTranslateParamsModule,
 	ObMockUnknownRouteModule,
 	ObMockUnsavedChangesModule

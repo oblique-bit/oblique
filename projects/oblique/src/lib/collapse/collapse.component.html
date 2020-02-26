@@ -1,0 +1,7 @@
+<div class="toggle toggle-{{direction}}" [class.show]="active" role="button" (click)="active = !active"
+	 [class.toggle-after]="iconPosition != 'left'" [class.toggle-justified]="iconPosition == 'justified'">
+	<ng-content select="[obCollapseHeader]"></ng-content>
+</div>
+<div [@expandCollapse]="active ? 'open' : 'close'">
+	<ng-content select="[obCollapseMain]"></ng-content>
+</div>

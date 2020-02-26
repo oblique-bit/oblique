@@ -1,27 +1,28 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
-import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-
-import {ObToggleDirective} from './toggle.directive';
 import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {WINDOW, windowProvider} from '../utilities';
+import {ObCollapseComponent} from './collapse.component';
 
-export {ObToggleDirective} from './toggle.directive';
+export {ObCollapseComponent, OBLIQUE_COLLAPSE_ACTIVE} from './collapse.component';
 
 @NgModule({
 	imports: [CommonModule],
-	declarations: [ObToggleDirective],
+	declarations: [
+		ObCollapseComponent
+	],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
-		{provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
-	exports: [ObToggleDirective]
+	exports: [
+		ObCollapseComponent
+	]
 })
-export class ObToggleModule {
+export class ObCollapseModule {
 	constructor(telemetry: ObTelemetryService) {
-		requireAndRecordTelemetry(telemetry, ObToggleModule);
+		requireAndRecordTelemetry(telemetry, ObCollapseModule);
 	}
 }

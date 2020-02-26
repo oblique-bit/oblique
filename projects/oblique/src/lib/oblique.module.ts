@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
+import {ObCollapseModule} from './collapse/collapse.module';
 import {ObColumnLayoutModule} from './column-layout/column-layout.module';
 import {ObDocumentMetaModule} from './document-meta/document-meta.module';
 import {ObDropdownModule} from './dropdown/dropdown.module';
@@ -21,7 +22,6 @@ import {ObScrollingModule} from './scrolling/scrolling.module';
 import {ObSpinnerModule} from './spinner/spinner.module';
 import {ObSelectableModule} from './selectable/selectable.module';
 import {ObInputClearModule} from './input-clear/input-clear.module';
-import {ObToggleModule} from './toggle/toggle.module';
 import {ObTranslateParamsModule} from './translate-params/translate-params.module';
 import {ObUnsavedChangesModule} from './unsaved-changes/unsaved-changes.module';
 import {ObNumberFormatModule} from './number-format/number-format.module';
@@ -34,6 +34,7 @@ import {requireAndRecordTelemetry} from './telemetry/telemetry-require';
 import {WINDOW, windowProvider} from './utilities';
 
 const OBLIQUE_MODULES = [
+	ObCollapseModule,
 	ObColumnLayoutModule,
 	ObDocumentMetaModule,
 	ObDropdownModule,
@@ -57,7 +58,6 @@ const OBLIQUE_MODULES = [
 	ObSpinnerModule,
 	ObStickyModule,
 	ObInputClearModule,
-	ObToggleModule,
 	ObTranslateParamsModule,
 	ObUnknownRouteModule,
 	ObUnsavedChangesModule
