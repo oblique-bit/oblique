@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {ObUnsavedChangesGuard} from 'oblique';
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
+import {CollapseSampleComponent} from './collapse/collapse-sample.component';
 import {ObColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
 import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {FilterBoxSampleComponent} from './filter-box-sample/filter-box-sample.component';
@@ -15,7 +16,6 @@ import {NestedFormSampleComponent} from './nested-form/nested-form-sample.compon
 import {NotificationSampleComponent} from './notification/notification-sample.component';
 import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
-import {ObToggleSampleComponent} from './toggle/toggle-sample.component';
 import {NumberFormatSampleComponent} from './number-format/number-format-sample.component';
 import {HttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
 import {ObStickySampleComponent} from './sticky/sticky-sample.component';
@@ -28,6 +28,7 @@ import {MultiTranslateLoaderSampleComponent} from './multi-tranlsate-loader/mult
 import {ObSelectableSampleComponent} from './selectable/selectable-sample.component';
 
 const samplesRoutes: Routes = [
+	{path: 'collapse', component: CollapseSampleComponent},
 	{path: 'column-layout', component: ObColumnLayoutSampleComponent},
 	{path: 'datepicker', component: DatepickerSampleComponent},
 	{path: 'error-messages', component: ErrorMessagesSampleComponent},
@@ -57,7 +58,6 @@ const samplesRoutes: Routes = [
 	{path: 'schema-validation', component: SchemaValidationSampleComponent},
 	{path: 'selectable', component: ObSelectableSampleComponent},
 	{path: 'sticky', component: ObStickySampleComponent},
-	{path: 'toggle', component: ObToggleSampleComponent},
 	{path: 'unknown-route-sample', component: ObUnknownRouteSampleComponent},
 	{path: 'unsaved-changes', component: UnsavedChangesSampleComponent, canDeactivate: [ObUnsavedChangesGuard]},
 	{path: 'form', component: ObFormComponent},
