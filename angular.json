@@ -161,10 +161,10 @@
   "defaultProject": "oblique-showcase",
   "schematics": {
     "@schematics/angular:component": {
-      "spec": true,
+      "skipTests": false,
       "inlineTemplate": false,
       "prefix": "ob",
-      "styleext": "scss"
+      "style": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": "ob"
