@@ -1,3 +1,39 @@
+# [5.0.0-RC.1](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/compare/5.0.0-beta.1...5.0.0-RC.1) (2020-02-26)
+
+## Bug Fixes
+* **theme:** `mockThemeService` correctly implements `ThemeService` ([c6409f0](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/c6409f0e7ce26307c1a181d4ddb5bfcb0a1f1496))
+* **toolchain:** remove `MockFormElementComponent` component ([54673af](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/54673afea7469b32b86295d2335add3c1e8faf7e))
+* **toolchain:** schematics refer to next oblique version ([abc2626](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/abc2626fe6ecd2bdd69c84bebd034fcb6d6acf66))
+* **toolchain:** schematics remove empty list ([7a74313](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/7a74313e725dc789775c5ddd948058a89ddc9df8))
+* **toolchain:** schematics styles order ([207cae3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/207cae31cb6634e51539c12ec50a9811a4c95b83))
+
+## Code Refactoring
+* **http-interceptor:** rename files and classes of `ObliqueHttpModule` ([78b852e](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/78b852e14a9126f2c528ef13b1ddc230a664a151))
+* **input-clear:** rename `text-control-clear` to `input-clear` ([dda514e](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/dda514ec338da939c432e41ad6a4f97ad33dac51))
+* add prefix to each class and selector ([ebd81d6](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/ebd81d6990e4659c4d6b387dfc90465a8b794028))
+
+## Features
+* **collapse:** transform `toggle` into `collapse` ([b932369](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/b93236987ee85addbafc6de9ac245eaf0c138e90))
+* **master-layout:** accessibility improvement ([8d45976](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/8d459762c8fdecc31e9ac6eec7567dea5e4d9bcb))
+* **toolchain:** add schematics according renaming ([ca9d4e1](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/ca9d4e10c275bd5f635384ae90495a37d34ffb29))
+* **toolchain:** add schematics according translation key changes ([14ac897](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/14ac897b311f8c3e47b064c407ceeb800ae011d4))
+* **toolchain:** add schematics for prefix change ([fb38604](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/fb38604ecd4588c1e4bc1df7530b68fac8734d26))
+
+## BREAKING CHANGES
+* **collapse:** `toggle` feature has been removed in favor of `collapse`
+* **collapse:** `toggle` css now needs `oblique-compat` to be use without its the component
+* **http-interceptor:** `ObliqueHttpInterceptor` has been renamed to `HttpApiInterceptor`
+* **http-interceptor:** `ObliqueHttpInterceptorConfig` has been renamed to `HttpApiInterceptorConfig`
+* **http-interceptor:** `ObliqueHttpInterceptorEvents` has been renamed to `HttpApiInterceptorEvents`
+* **http-interceptor:** `ObliqueHttpInterceptorModule` has been renamed to `HttpApiInterceptorModule`
+* **http-interceptor:** `ObliqueRequest` has been renamed to `HttpApiRequest`
+* **input-clear:** `orTextControlClear` has been renamed to `orInputClear`
+* all selectors prefixes changed from `or` to `ob`
+* all classes has been prefixed with `Ob`
+* all enums has been prefixed with `ObE`
+* all interfaces has been prefixed with `ObI`
+
+
 # [5.0.0-beta.1](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/compare/5.0.0-alpha.4...5.0.0-beta.1) (2020-02-18)
 
 ## Bug Fixes
