@@ -1,20 +1,19 @@
 <div class="header">
 	<ng-content select="[obHeader]" *ngIf="isCustom"></ng-content>
+	<h1 class="sr-only">{{'i18n.oblique.header.title' | translate}}</h1>
 	<ng-container *ngIf="!isCustom">
 		<div class="application-header-title">
 			<div class="application-brand">
 				<a class="application-brand-logo" [routerLink]="home" tabindex="-1">
-					<img alt="Back to home" src="assets/styles/images/logo.svg"/>
+					<img alt="{{'i18n.oblique.header.logo' | translate}}" src="assets/styles/images/logo.svg"/>
 				</a>
 				<span class="application-brand-app-title">
-						<a [routerLink]="home" class="application-brand-link">
-							<ng-content select="[obHeaderTitle]"></ng-content>
-						</a>
-					</span>
+					<a [routerLink]="home" class="application-brand-link"><ng-content select="[obHeaderTitle]"></ng-content></a>
+				</span>
 			</div>
 			<ul class="header-controls header-toggle">
 				<li class="nav-item">
-					<a role="button" tabindex="0" title="Toggle application header"
+					<a role="button" tabindex="0" title="{{'i18n.oblique.header.toggle' | translate}}" class="control-link" obMasterLayoutHeaderToggle>
 					   class="control-link" obMasterLayoutHeaderToggle>
 						<div class="application-header-toggle">
 							<span class="first-line"></span>
@@ -27,7 +26,7 @@
 			</ul>
 		</div>
 		<div class="application-header-controls">
-			<h2 class="sr-only">{{'i18n.oblique.master-layout.header.controls.title' | translate}}</h2>
+			<h2 class="sr-only">{{'i18n.oblique.header.languages.title' | translate}}</h2>
 			<ng-content select="[obLocales]" *ngIf="disabledLang"></ng-content>
 			<ul class="header-controls header-locale" role="menu"
 				*ngIf="locales.length > 1 && !disabledLang">
@@ -38,6 +37,7 @@
 					</button>
 				</li>
 			</ul>
+			<h2 class="sr-only">{{'i18n.oblique.header.controls.title' | translate}}</h2>
 			<ul class="header-controls" role="menu" *ngIf="templates.length">
 				<li class="control-item" role="menuitem" *ngFor="let template of templates" #headerControl>
 					<ng-container [ngTemplateOutlet]="template"></ng-container>
