@@ -1,12 +1,12 @@
 [
   {
-    "name": "InputClearDirective",
-    "selector": "[orInputClear]",
-    "exported": "orInputClear",
+    "name": "ObInputClearDirective",
+    "selector": "[obInputClear]",
+    "exported": "obInputClear",
     "since": "2.0.0",
     "inputs": [
       {
-        "name": "orInputClear",
+        "name": "obInputClear",
         "text": "Reference to the input element to be cleared.",
         "type": "ElementRef",
         "since": "2.0.0"

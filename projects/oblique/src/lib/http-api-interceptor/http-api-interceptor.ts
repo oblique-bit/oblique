@@ -3,16 +3,16 @@ import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest}
 import {Observable} from 'rxjs';
 import {finalize, tap} from 'rxjs/operators';
 
-import {NotificationService, NotificationType} from '../notification/notification.module';
-import {SpinnerService} from '../spinner/spinner.module';
-import {HttpApiInterceptorConfig} from './http-api-interceptor.config';
-import {HttpApiInterceptorEvents} from './http-api-interceptor.events';
+import {ObNotificationService, ObENotificationType} from '../notification/notification.module';
+import {ObSpinnerService} from '../spinner/spinner.module';
+import {ObHttpApiInterceptorConfig} from './http-api-interceptor.config';
+import {ObHttpApiInterceptorEvents} from './http-api-interceptor.events';
 import Timer = NodeJS.Timer;
 
-export interface HttpApiRequest {
+export interface ObIHttpApiRequest {
 	notification: {
 		active: boolean;
-		severity: NotificationType;
+		severity: ObENotificationType;
 		title: string;
 		text: string;
 		sticky: boolean;
@@ -21,13 +21,13 @@ export interface HttpApiRequest {
 }
 
 @Injectable({providedIn: 'root'})
-export class HttpApiInterceptor implements HttpInterceptor {
+export class ObHttpApiInterceptor implements HttpInterceptor {
 	private readonly activeRequestUrls: string[] = [];
 
-	constructor(private readonly config: HttpApiInterceptorConfig,
-				private readonly interceptorEvents: HttpApiInterceptorEvents,
-				private readonly spinner: SpinnerService,
-				private readonly notificationService: NotificationService) {
+	constructor(private readonly config: ObHttpApiInterceptorConfig,
+				private readonly interceptorEvents: ObHttpApiInterceptorEvents,
+				private readonly spinner: ObSpinnerService,
+				private readonly notificationService: ObNotificationService) {
 	}
 
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -67,8 +67,8 @@ export class HttpApiInterceptor implements HttpInterceptor {
 			}, this.config.timeout);
 	}
 
-	private broadcast(): HttpApiRequest {
-		const evt: HttpApiRequest = {
+	private broadcast(): ObIHttpApiRequest {
+		const evt: ObIHttpApiRequest = {
 			notification: this.config.api.notification,
 			spinner: this.config.api.spinner
 		};
@@ -96,7 +96,7 @@ export class HttpApiInterceptor implements HttpInterceptor {
 		}
 	}
 
-	private notify(notification: HttpApiRequest['notification'], error: HttpErrorResponse): void {
+	private notify(notification: ObIHttpApiRequest['notification'], error: HttpErrorResponse): void {
 		if (notification.active || error.status >= 500 || error.status === 0) {
 			this.notificationService.send({
 				message: notification.text || 'i18n.oblique.http.error.status.' + error.status,

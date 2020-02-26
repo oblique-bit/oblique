@@ -1,11 +1,11 @@
-import {NumberFormatDirective} from 'oblique';
+import {ObNumberFormatDirective} from 'oblique';
 import {ChangeDetectionStrategy, Component, DebugElement} from '@angular/core';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 
 @Component({
-	template: `<input name="number" [(ngModel)]="number" orNumberFormat/>`,
+	template: `<input name="number" [(ngModel)]="number" obNumberFormat/>`,
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 class TestDefaultComponent {
@@ -13,7 +13,7 @@ class TestDefaultComponent {
 }
 
 @Component({
-	template: `<input name="number" [(ngModel)]="number" orNumberFormat [persistent]="false" [decimals]="3"/>`,
+	template: `<input name="number" [(ngModel)]="number" obNumberFormat [persistent]="false" [decimals]="3"/>`,
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 class TestNonPersistentComponent {
@@ -22,7 +22,7 @@ class TestNonPersistentComponent {
 
 describe('NumberFormatDirective', () => {
 	let testComponent: TestDefaultComponent | TestNonPersistentComponent;
-	let directive: NumberFormatDirective;
+	let directive: ObNumberFormatDirective;
 	let fixture: ComponentFixture<TestDefaultComponent>;
 	let element: DebugElement;
 
@@ -30,8 +30,8 @@ describe('NumberFormatDirective', () => {
 		fixture = TestBed.createComponent(component);
 		testComponent = fixture.componentInstance;
 		fixture.detectChanges();
-		element = fixture.debugElement.query(By.directive(NumberFormatDirective));
-		directive = element.injector.get(NumberFormatDirective);
+		element = fixture.debugElement.query(By.directive(ObNumberFormatDirective));
+		directive = element.injector.get(ObNumberFormatDirective);
 	}
 
 	beforeEach(async(() => {
@@ -40,7 +40,7 @@ describe('NumberFormatDirective', () => {
 			declarations: [
 				TestDefaultComponent,
 				TestNonPersistentComponent,
-				NumberFormatDirective
+				ObNumberFormatDirective
 			]
 		});
 	}));

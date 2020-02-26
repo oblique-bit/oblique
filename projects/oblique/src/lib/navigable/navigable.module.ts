@@ -3,14 +3,19 @@ import {CommonModule} from '@angular/common';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
-import {NavigableDirective} from './navigable.directive';
-import {NavigableGroupComponent} from './navigable-group.component';
-import {TelemetryService} from '../telemetry/telemetry.service';
+import {ObNavigableDirective} from './navigable.directive';
+import {ObNavigableGroupComponent} from './navigable-group.component';
+import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {WINDOW, windowProvider} from '../utilities';
 
-export {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent, PreventableEvent} from './navigable.directive';
-export {NavigableGroupComponent} from './navigable-group.component';
+export {
+	ObNavigableDirective,
+	ObNavigableOnChangeEvent,
+	ObNavigableOnMoveEvent,
+	ObPreventableEvent
+} from './navigable.directive';
+export {ObNavigableGroupComponent} from './navigable-group.component';
 
 /**
  * @deprecated since version 5.0.0. This module is complex, buggy and never used as intended. It will be removed without replacement in future version.
@@ -24,16 +29,16 @@ export {NavigableGroupComponent} from './navigable-group.component';
 	imports: [
 		CommonModule
 	],
-	declarations: [NavigableDirective, NavigableGroupComponent],
+	declarations: [ObNavigableDirective, ObNavigableGroupComponent],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 		{provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
-	exports: [NavigableDirective, NavigableGroupComponent]
+	exports: [ObNavigableDirective, ObNavigableGroupComponent]
 })
-export class NavigableModule {
-	constructor(telemetry: TelemetryService) {
-		requireAndRecordTelemetry(telemetry, NavigableModule);
+export class ObNavigableModule {
+	constructor(telemetry: ObTelemetryService) {
+		requireAndRecordTelemetry(telemetry, ObNavigableModule);
 	}
 }

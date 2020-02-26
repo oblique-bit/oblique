@@ -1,23 +1,23 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 
-import {MasterLayoutConfig} from '../master-layout.config';
-import {MasterLayoutEvent, MasterLayoutEventValues} from '../master-layout.utility';
+import {ObMasterLayoutConfig} from '../master-layout.config';
+import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from '../master-layout.utility';
 
 @Injectable({
 	providedIn: 'root'
 })
-export class MasterLayoutFooterService {
-	private readonly _events = new Subject<MasterLayoutEvent>();
+export class ObMasterLayoutFooterService {
+	private readonly _events = new Subject<ObIMasterLayoutEvent>();
 	private readonly eventsS = this._events.asObservable();
 	private _isCustom = this.config.footer.isCustom;
 	private _isSmall = this.config.footer.isSmall;
 	private _hasScrollTransition = this.config.footer.hasScrollTransitions;
 
-	constructor(private readonly config: MasterLayoutConfig) {
+	constructor(private readonly config: ObMasterLayoutConfig) {
 	}
 
-	get configEvents(): Observable<MasterLayoutEvent> {
+	get configEvents(): Observable<ObIMasterLayoutEvent> {
 		return this.eventsS;
 	}
 
@@ -28,7 +28,7 @@ export class MasterLayoutFooterService {
 	set isCustom(value: boolean) {
 		this._isCustom = value;
 		this._events.next({
-			name: MasterLayoutEventValues.CUSTOM,
+			name: ObEMasterLayoutEventValues.CUSTOM,
 			value: value
 		});
 	}
@@ -40,7 +40,7 @@ export class MasterLayoutFooterService {
 	set isSmall(value: boolean) {
 		this._isSmall = value;
 		this._events.next({
-			name: MasterLayoutEventValues.SMALL,
+			name: ObEMasterLayoutEventValues.SMALL,
 			value: value
 		});
 	}
@@ -52,7 +52,7 @@ export class MasterLayoutFooterService {
 	set hasScrollTransition(value: boolean) {
 		this._hasScrollTransition = value;
 		this._events.next({
-			name: MasterLayoutEventValues.SCROLL_TRANSITION,
+			name: ObEMasterLayoutEventValues.SCROLL_TRANSITION,
 			value: value
 		});
 	}

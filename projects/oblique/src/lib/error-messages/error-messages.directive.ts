@@ -3,13 +3,13 @@ import {MatInput} from '@angular/material/input';
 import {FormGroupDirective, NgForm, ValidationErrors} from '@angular/forms';
 import {merge, Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {Unsubscribable} from '../unsubscribe.class';
+import {ObUnsubscribable} from '../unsubscribe.class';
 
 @Directive({
-	selector: '[orErrorMessages]',
-	exportAs: 'orErrorMessages'
+	selector: '[obErrorMessages]',
+	exportAs: 'obErrorMessages'
 })
-export class ErrorMessagesDirective extends Unsubscribable implements AfterViewInit, OnDestroy {
+export class ObErrorMessagesDirective extends ObUnsubscribable implements AfterViewInit, OnDestroy {
 	@ContentChild(MatInput) matInput;
 	readonly errors$: Observable<ValidationErrors>;
 	private readonly errors = new Subject<ValidationErrors>();

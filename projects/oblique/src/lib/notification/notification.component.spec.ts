@@ -3,37 +3,37 @@ import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterTestingModule} from '@angular/router/testing';
-import {INotification, NotificationComponent, NotificationConfig, NotificationService, NotificationType} from 'oblique';
-import {MockTranslatePipe} from '../_mocks/mock-translate.pipe';
-import {MockNotificationConfig, MockNotificationService} from './mock/mock-notification.module';
+import {ObINotification, ObNotificationComponent, ObNotificationConfig, ObNotificationService, ObENotificationType} from 'oblique';
+import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {ObMockNotificationConfig, ObMockNotificationService} from './mock/mock-notification.module';
 import {Subject} from 'rxjs';
 
 describe('NotificationComponent', () => {
-	let component: NotificationComponent;
-	let fixture: ComponentFixture<NotificationComponent>;
-	let notificationConfig: NotificationConfig;
-	let notificationService: NotificationService;
+	let component: ObNotificationComponent;
+	let fixture: ComponentFixture<ObNotificationComponent>;
+	let notificationConfig: ObNotificationConfig;
+	let notificationService: ObNotificationService;
 
 	const message = 'myMessage';
 	const title = 'myTitle';
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [NotificationComponent, MockTranslatePipe],
+			declarations: [ObNotificationComponent, ObMockTranslatePipe],
 			imports: [CommonModule, NoopAnimationsModule, RouterTestingModule],
 			providers: [
-				{provide: NotificationConfig, useClass: MockNotificationConfig},
-				{provide: NotificationService, useClass: MockNotificationService}
+				{provide: ObNotificationConfig, useClass: ObMockNotificationConfig},
+				{provide: ObNotificationService, useClass: ObMockNotificationService}
 			]
 		})
 			.compileComponents();
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(NotificationComponent);
+		fixture = TestBed.createComponent(ObNotificationComponent);
 		component = fixture.componentInstance;
-		notificationConfig = fixture.debugElement.injector.get(NotificationConfig);
-		notificationService = fixture.debugElement.injector.get(NotificationService);
+		notificationConfig = fixture.debugElement.injector.get(ObNotificationConfig);
+		notificationService = fixture.debugElement.injector.get(ObNotificationService);
 		jest.spyOn(component, 'close');
 		fixture.detectChanges();
 	});
@@ -43,7 +43,7 @@ describe('NotificationComponent', () => {
 
 		beforeEach(() => {
 			component.open({message: 'Notification 1'});
-			component.open({message: 'Notification 2', title: 'Title 2', type: NotificationType.SUCCESS});
+			component.open({message: 'Notification 2', title: 'Title 2', type: ObENotificationType.SUCCESS});
 			fixture.detectChanges();
 
 			// Retrieve notifications form the component template view:
@@ -54,7 +54,7 @@ describe('NotificationComponent', () => {
 			expect(htmlNotifications.length).toBe(2);
 		});
 
-		it('with matching NotificationType CSS classes', () => {
+		it('with matching ObENotificationType CSS classes', () => {
 			const notificationAlerts = fixture.debugElement.queryAll(By.css('.notification.alert'));
 			expect(notificationAlerts[0].classes).toEqual(jasmine.objectContaining({alert: true}));
 			expect(notificationAlerts[0].classes).toEqual(jasmine.objectContaining({'alert-success': true}));
@@ -70,7 +70,7 @@ describe('NotificationComponent', () => {
 		button.triggerEventHandler('click', null);
 
 		// Wait for animation completion:
-		tick(NotificationComponent.REMOVE_DELAY);
+		tick(ObNotificationComponent.REMOVE_DELAY);
 
 		expect(component.close).toHaveBeenCalled();
 		expect(component.notifications.length).toBe(0);
@@ -127,7 +127,7 @@ describe('NotificationComponent', () => {
 			sticky: false
 		};
 		component.open(notification);
-		tick(2 * notificationConfig.timeout + NotificationComponent.REMOVE_DELAY);
+		tick(2 * notificationConfig.timeout + ObNotificationComponent.REMOVE_DELAY);
 		fixture.detectChanges();
 
 		expect(component.close).toHaveBeenCalled();
@@ -145,7 +145,7 @@ describe('NotificationComponent', () => {
 			title: title,
 			sticky: true
 		});
-		tick(notificationConfig.timeout + NotificationComponent.REMOVE_DELAY);
+		tick(notificationConfig.timeout + ObNotificationComponent.REMOVE_DELAY);
 		fixture.detectChanges();
 
 		expect(component.close).not.toHaveBeenCalled();
@@ -159,11 +159,11 @@ describe('NotificationComponent', () => {
 		component.channel = 'myChannel';
 
 		// Send multiple notifications to different channels:
-		(notificationService.events as Subject<INotification>).next({message: 'message 1', channel: 'testChannel'});
-		(notificationService.events as Subject<INotification>).next({message: 'message 2', channel: 'myChannel'});
-		(notificationService.events as Subject<INotification>).next({message: 'message 3', channel: 'anotherChanel'});
-		(notificationService.events as Subject<INotification>).next({message: 'message 4', channel: 'myChannel'});
-		(notificationService.events as Subject<INotification>).next({message: 'message 5', channel: 'appChannel'});
+		(notificationService.events as Subject<ObINotification>).next({message: 'message 1', channel: 'testChannel'});
+		(notificationService.events as Subject<ObINotification>).next({message: 'message 2', channel: 'myChannel'});
+		(notificationService.events as Subject<ObINotification>).next({message: 'message 3', channel: 'anotherChanel'});
+		(notificationService.events as Subject<ObINotification>).next({message: 'message 4', channel: 'myChannel'});
+		(notificationService.events as Subject<ObINotification>).next({message: 'message 5', channel: 'appChannel'});
 		fixture.detectChanges();
 
 		expect(component.notifications.length).toBe(2);
@@ -171,11 +171,11 @@ describe('NotificationComponent', () => {
 
 	it('should *not* display a notification from a different channel', () => {
 		// Send multiple notifications to different channels:
-		(notificationService.events as Subject<INotification>).next({message: 'message 1', channel: 'testChannel'});
-		(notificationService.events as Subject<INotification>).next({message: 'message 2', channel: 'myChannel'});
-		(notificationService.events as Subject<INotification>).next({message: 'message 3', channel: 'anotherChanel'});
-		(notificationService.events as Subject<INotification>).next({message: 'message 4', channel: 'oblique'});
-		(notificationService.events as Subject<INotification>).next({message: 'message 5', channel: 'appChannel'});
+		(notificationService.events as Subject<ObINotification>).next({message: 'message 1', channel: 'testChannel'});
+		(notificationService.events as Subject<ObINotification>).next({message: 'message 2', channel: 'myChannel'});
+		(notificationService.events as Subject<ObINotification>).next({message: 'message 3', channel: 'anotherChanel'});
+		(notificationService.events as Subject<ObINotification>).next({message: 'message 4', channel: 'oblique'});
+		(notificationService.events as Subject<ObINotification>).next({message: 'message 5', channel: 'appChannel'});
 		fixture.detectChanges();
 
 		expect(component.notifications.length).toBe(1);

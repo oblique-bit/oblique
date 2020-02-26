@@ -1,8 +1,8 @@
 [
   {
-    "name": "SpinnerComponent",
-    "selector": "or-spinner",
-    "export": "orSpinner",
+    "name": "ObSpinnerComponent",
+    "selector": "ob-spinner",
+    "export": "obSpinner",
     "since": "2.0.0",
     "inputs": [
       {
@@ -61,7 +61,7 @@
     ]
   },
   {
-    "name": "SpinnerEvent", 
+    "name": "SpinnerEvent",
     "usage": "Event emitted by <code>activate</code> and <code>deactivate</code> methods.",
     "since": "2.0.0",
     "variables": [

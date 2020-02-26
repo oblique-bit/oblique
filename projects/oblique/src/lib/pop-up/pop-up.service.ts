@@ -4,7 +4,7 @@ import {WINDOW} from '../utilities';
 @Injectable({
 	providedIn: 'root'
 })
-export class PopUpService {
+export class ObPopUpService {
 	private readonly window: Window;
 
 	constructor(@Inject(WINDOW) window) {

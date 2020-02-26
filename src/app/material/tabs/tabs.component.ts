@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-	selector: 'or-tabs',
+	selector: 'ob-tabs',
 	templateUrl: './tabs.component.html'
 })
-export class TabsComponent {
+export class ObTabsComponent {
 }

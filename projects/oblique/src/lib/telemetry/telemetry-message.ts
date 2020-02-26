@@ -1,4 +1,4 @@
-export interface TelemetryMessage {
+export interface ObITelemetryMessage {
 	obliqueModuleName: string;
 	obliqueVersion: string;
 	applicationName: string;

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 
 @Injectable()
-export class MockUnsavedChangesService {
+export class ObMockUnsavedChangesService {
 
 	watch(formId: string, form: ControlContainer): void {
 	}

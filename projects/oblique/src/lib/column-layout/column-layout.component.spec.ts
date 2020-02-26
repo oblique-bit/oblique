@@ -3,17 +3,17 @@ import {Component, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TranslateService} from '@ngx-translate/core';
-import {ColumnLayoutComponent} from 'oblique';
-import {MockColumnPanelDirective} from './mock/mock-column-panel.directive';
-import {MockTranslatePipe} from '../_mocks/mock-translate.pipe';
-import {MockTranslateService} from '../_mocks/mock-translate.service';
-import {MockMasterLayoutModule} from '../master-layout/mock/mock-master-layout.module';
-import {MockScrollingModule} from '../scrolling/mock/mock-scrolling.module';
+import {ObColumnLayoutComponent} from 'oblique';
+import {ObMockColumnPanelDirective} from './mock/mock-column-panel.directive';
+import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {ObMockTranslateService} from '../_mocks/mock-translate.service';
+import {ObMockMasterLayoutModule} from '../master-layout/mock/mock-master-layout.module';
+import {ObMockScrollingModule} from '../scrolling/mock/mock-scrolling.module';
 import {windowProvider, WINDOW} from '../utilities';
 
 @Component({
 	template: `
-		<or-column-layout [left]="left" [right]="right" orColumnPanel>
+		<ob-column-layout [left]="left" [right]="right" obColumnPanel>
 			<div column-left-content>
 				<h3 class="nav-header-title">Left Column</h3>
 			</div>
@@ -24,7 +24,7 @@ import {windowProvider, WINDOW} from '../utilities';
 			<div column-right-content>
 				<h3 class="nav-header-title">Right Column</h3>
 			</div>
-		</or-column-layout>`
+		</ob-column-layout>`
 })
 class TestComponent {
 	left = false;
@@ -42,10 +42,10 @@ describe('ColumnLayoutComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [TestComponent, ColumnLayoutComponent, MockColumnPanelDirective, MockTranslatePipe],
-			imports: [RouterTestingModule, MockMasterLayoutModule, MockScrollingModule],
+			declarations: [TestComponent, ObColumnLayoutComponent, ObMockColumnPanelDirective, ObMockTranslatePipe],
+			imports: [RouterTestingModule, ObMockMasterLayoutModule, ObMockScrollingModule],
 			providers: [
-				{provide: TranslateService, useClass: MockTranslateService},
+				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: WINDOW, useFactory: windowProvider}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -63,7 +63,7 @@ describe('ColumnLayoutComponent', () => {
 	}));
 
 	it('should contain columnLayout class', async(() => {
-		expect(fixture.debugElement.query(By.css('or-column-layout')).nativeElement.classList).toContain('column-layout');
+		expect(fixture.debugElement.query(By.css('ob-column-layout')).nativeElement.classList).toContain('column-layout');
 	}));
 
 });

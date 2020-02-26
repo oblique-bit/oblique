@@ -1,20 +1,20 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
-export interface DialogData {
+export interface ObIDialogData {
 	animal: string;
 	name: string;
 }
 
 @Component({
-	selector: 'or-example-dialog',
+	selector: 'ob-example-dialog',
 	templateUrl: './example-dialog.component.html'
 })
-export class ExampleDialogComponent {
+export class ObExampleDialogComponent {
 
 	constructor(
-		public dialogRef: MatDialogRef<ExampleDialogComponent>,
-		@Inject(MAT_DIALOG_DATA) public data: DialogData) {
+		public dialogRef: MatDialogRef<ObExampleDialogComponent>,
+		@Inject(MAT_DIALOG_DATA) public data: ObIDialogData) {
 	}
 
 	onCancel(): void {

@@ -6,7 +6,7 @@ import {ObSelectableService} from './selectable.service';
 	selector: '[obSelectable]',
 	exportAs: 'obSelectable'
 })
-export class SelectableDirective implements OnInit {
+export class ObSelectableDirective implements OnInit {
 	@Input() collection = 'unnamed';
 	@Input() value: any;
 	@Input() @HostBinding('class.ob-selected') selected = false;

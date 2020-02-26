@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
-import {MultiselectModule} from 'oblique';
+import {ObMultiselectModule} from 'oblique';
 import {MultiselectSampleComponent} from './multiselect-sample.component';
 
 describe('MultiselectSampleComponent', () => {
@@ -16,7 +16,7 @@ describe('MultiselectSampleComponent', () => {
 			imports: [
 				FormsModule,
 				TranslateModule.forRoot(),
-				MultiselectModule
+				ObMultiselectModule
 			]
 		})
 			.compileComponents();

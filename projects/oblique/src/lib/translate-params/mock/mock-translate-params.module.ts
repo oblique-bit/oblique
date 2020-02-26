@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 
-import {MockTranslateParamsPipe} from './mock-translate-params.pipe';
+import {ObMockTranslateParamsPipe} from './mock-translate-params.pipe';
 
-export {MockTranslateParamsPipe} from './mock-translate-params.pipe';
+export {ObMockTranslateParamsPipe} from './mock-translate-params.pipe';
 
 @NgModule({
-	declarations: [MockTranslateParamsPipe],
-	exports: [MockTranslateParamsPipe]
+	declarations: [ObMockTranslateParamsPipe],
+	exports: [ObMockTranslateParamsPipe]
 })
-export class MockTranslateParamsModule {
+export class ObMockTranslateParamsModule {
 }

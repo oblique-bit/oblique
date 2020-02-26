@@ -3,33 +3,33 @@ import {CommonModule} from '@angular/common';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
-import {SchemaValidationDirective} from './schema-validation.directive';
-import {SchemaValidateDirective} from './schema-validator';
-import {SchemaRequiredDirective} from './schema-required.directive';
-import {SchemaValidationService} from './schema-validation.service';
-import {TelemetryService} from '../telemetry/telemetry.service';
+import {ObSchemaValidationDirective} from './schema-validation.directive';
+import {ObSchemaValidateDirective} from './schema-validator';
+import {ObSchemaRequiredDirective} from './schema-required.directive';
+import {ObSchemaValidationService} from './schema-validation.service';
+import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {WINDOW, windowProvider} from '../utilities';
 
-export {SchemaValidationDirective} from './schema-validation.directive';
-export {SchemaValidateDirective} from './schema-validator';
-export {SchemaRequiredDirective} from './schema-required.directive';
-export {SchemaValidationService} from './schema-validation.service';
-export {SchemaValidatorInstance} from './schema-validator.instance';
+export {ObSchemaValidationDirective} from './schema-validation.directive';
+export {ObSchemaValidateDirective} from './schema-validator';
+export {ObSchemaRequiredDirective} from './schema-required.directive';
+export {ObSchemaValidationService} from './schema-validation.service';
+export {ObSchemaValidatorInstance} from './schema-validator.instance';
 export {draft06} from './draft06.decorator';
 
 @NgModule({
 	imports: [CommonModule],
-	declarations: [SchemaValidateDirective, SchemaValidationDirective, SchemaRequiredDirective],
+	declarations: [ObSchemaValidateDirective, ObSchemaValidationDirective, ObSchemaRequiredDirective],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 		{provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
-	exports: [SchemaValidateDirective, SchemaValidationDirective, SchemaRequiredDirective]
+	exports: [ObSchemaValidateDirective, ObSchemaValidationDirective, ObSchemaRequiredDirective]
 })
-export class SchemaValidationModule {
-	constructor(telemetry: TelemetryService) {
-		requireAndRecordTelemetry(telemetry, SchemaValidationModule);
+export class ObSchemaValidationModule {
+	constructor(telemetry: ObTelemetryService) {
+		requireAndRecordTelemetry(telemetry, ObSchemaValidationModule);
 	}
 }

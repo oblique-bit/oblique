@@ -3,48 +3,48 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {By} from '@angular/platform-browser';
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {NavTreeComponent, NavTreeFakeFocusDirective, NavTreeItemModel} from 'oblique';
-import {MockTranslatePipe} from '../_mocks/mock-translate.pipe';
-import {MockTranslateService} from '../_mocks/mock-translate.service';
+import {ObNavTreeComponent, ObNavTreeFakeFocusDirective, ObNavTreeItemModel} from 'oblique';
+import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 
 @Component({
 	template: `
 		<input #inputControl/>
-		<or-nav-tree [items]="items"
-					 [orNavTreeFakeFocus]="inputControl"
-		></or-nav-tree>`
+		<ob-nav-tree [items]="items"
+					 [obNavTreeFakeFocus]="inputControl"
+		></ob-nav-tree>`
 })
 class TestComponent {
 	items = [
-		new NavTreeItemModel({id: 'A', label: 'A - Label', fragment: 'fragment', queryParams: {foo: 'bar'}}),
-		new NavTreeItemModel({
+		new ObNavTreeItemModel({id: 'A', label: 'A - Label', fragment: 'fragment', queryParams: {foo: 'bar'}}),
+		new ObNavTreeItemModel({
 			id: 'B', label: 'B - Label',
 			items: [
-				new NavTreeItemModel({id: 'B-1', label: 'B.1 - Label'}),
-				new NavTreeItemModel({
+				new ObNavTreeItemModel({id: 'B-1', label: 'B.1 - Label'}),
+				new ObNavTreeItemModel({
 					id: 'B-2', label: 'B.2 - Label',
 					items: [
-						new NavTreeItemModel({id: 'B2-1', label: 'B.2.1 - Label'}),
-						new NavTreeItemModel({id: 'B2-2', label: 'B.2.2 - Label'}),
-						new NavTreeItemModel({id: 'B2-3', label: 'B.2.3 - Label'})
+						new ObNavTreeItemModel({id: 'B2-1', label: 'B.2.1 - Label'}),
+						new ObNavTreeItemModel({id: 'B2-2', label: 'B.2.2 - Label'}),
+						new ObNavTreeItemModel({id: 'B2-3', label: 'B.2.3 - Label'})
 					]
 				}),
-				new NavTreeItemModel({id: 'B-3', label: 'B.3 - Label'})
+				new ObNavTreeItemModel({id: 'B-3', label: 'B.3 - Label'})
 			]
 		}),
-		new NavTreeItemModel({
+		new ObNavTreeItemModel({
 			id: 'C', label: 'C - Label',
 			items: [
-				new NavTreeItemModel({id: 'C-1', label: 'C.1 - Label'}),
-				new NavTreeItemModel({id: 'C-2', label: 'C.2 - Label'}),
-				new NavTreeItemModel({id: 'C-3', label: 'C.3 - Label'})
+				new ObNavTreeItemModel({id: 'C-1', label: 'C.1 - Label'}),
+				new ObNavTreeItemModel({id: 'C-2', label: 'C.2 - Label'}),
+				new ObNavTreeItemModel({id: 'C-3', label: 'C.3 - Label'})
 			]
 		})
 	];
 }
 
 const CSS_QUERIES = {
-	FAKE_FOCUS: By.css(NavTreeFakeFocusDirective.CSS_SELECTORS.FAKE_FOCUS),
+	FAKE_FOCUS: By.css(ObNavTreeFakeFocusDirective.CSS_SELECTORS.FAKE_FOCUS),
 	ITEM_BY_ID: (id: string) => By.css(`#nav-tree-${id}`)
 };
 
@@ -52,12 +52,12 @@ describe('NavTreeFakeFocusDirective', () => {
 	let testComponent: TestComponent;
 	let fixture: ComponentFixture<TestComponent>;
 	let element: DebugElement;
-	let directive: NavTreeFakeFocusDirective;
+	let directive: ObNavTreeFakeFocusDirective;
 	let inputElement: DebugElement;
 
 	const keydown = (code: string) => {
 		inputElement.triggerEventHandler(
-			NavTreeFakeFocusDirective.INPUT_EVENTS.KEY_DOWN,
+			ObNavTreeFakeFocusDirective.INPUT_EVENTS.KEY_DOWN,
 			{
 				code,
 				// FIXME: remove when https://github.com/ariya/phantomjs/issues/11289
@@ -70,8 +70,8 @@ describe('NavTreeFakeFocusDirective', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
-			declarations: [TestComponent, NavTreeComponent, NavTreeFakeFocusDirective, MockTranslatePipe],
-			providers: [{provide: TranslateService, useClass: MockTranslateService}],
+			declarations: [TestComponent, ObNavTreeComponent, ObNavTreeFakeFocusDirective, ObMockTranslatePipe],
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
 			schemas: [NO_ERRORS_SCHEMA]
 		}).compileComponents();
 	}));
@@ -81,8 +81,8 @@ describe('NavTreeFakeFocusDirective', () => {
 		fixture = TestBed.createComponent(TestComponent);
 		testComponent = fixture.componentInstance;
 		fixture.detectChanges();
-		element = fixture.debugElement.query(By.directive(NavTreeFakeFocusDirective));
-		directive = element.injector.get(NavTreeFakeFocusDirective);
+		element = fixture.debugElement.query(By.directive(ObNavTreeFakeFocusDirective));
+		directive = element.injector.get(ObNavTreeFakeFocusDirective);
 		inputElement = fixture.debugElement.query(By.css('input'));
 	});
 
@@ -102,7 +102,7 @@ describe('NavTreeFakeFocusDirective', () => {
 		directive.fakeFocus(element.query(CSS_QUERIES.ITEM_BY_ID('B')));
 
 		expect(item.collapsed).toBeFalsy();
-		keydown(NavTreeFakeFocusDirective.KEY_CODES.RIGHT);
+		keydown(ObNavTreeFakeFocusDirective.KEY_CODES.RIGHT);
 		expect(item.collapsed).toBeTruthy();
 	});
 
@@ -112,7 +112,7 @@ describe('NavTreeFakeFocusDirective', () => {
 		directive.fakeFocus(element.query(CSS_QUERIES.ITEM_BY_ID('B')));
 
 		expect(item.collapsed).toBeTruthy();
-		keydown(NavTreeFakeFocusDirective.KEY_CODES.RIGHT);
+		keydown(ObNavTreeFakeFocusDirective.KEY_CODES.RIGHT);
 		expect(item.collapsed).toBeFalsy();
 	});
 
@@ -124,7 +124,7 @@ describe('NavTreeFakeFocusDirective', () => {
 
 		directive.fakeFocus(targetElement);
 		expect(targetLink.click).toHaveBeenCalledTimes(0);
-		keydown(NavTreeFakeFocusDirective.KEY_CODES.ENTER);
+		keydown(ObNavTreeFakeFocusDirective.KEY_CODES.ENTER);
 		expect(targetLink.click).toHaveBeenCalledTimes(1);
 	});
 
@@ -141,7 +141,7 @@ describe('NavTreeFakeFocusDirective', () => {
 		directive.fakeFocus(element.query(CSS_QUERIES.ITEM_BY_ID('B-1')));
 		inputElement.triggerEventHandler('blur', {});
 		inputElement.nativeElement.focus();
-		keydown(NavTreeFakeFocusDirective.KEY_CODES.DOWN);
+		keydown(ObNavTreeFakeFocusDirective.KEY_CODES.DOWN);
 		const fakeFocusElement = element.query(CSS_QUERIES.FAKE_FOCUS);
 		expect(fakeFocusElement).toBeDefined();
 		expect(fakeFocusElement.nativeElement.textContent.trim()).toBe('A - Label');
@@ -150,14 +150,14 @@ describe('NavTreeFakeFocusDirective', () => {
 	describe('on InitialFocus', () => {
 
 		it('should fake focus the first element on initial ArrowDown', () => {
-			keydown(NavTreeFakeFocusDirective.KEY_CODES.DOWN);
+			keydown(ObNavTreeFakeFocusDirective.KEY_CODES.DOWN);
 			const fakeFocusElement = element.query(CSS_QUERIES.FAKE_FOCUS);
 			expect(fakeFocusElement).toBeDefined();
 			expect(fakeFocusElement.nativeElement.textContent.trim()).toBe('A - Label');
 		});
 
 		it('should fake focus the last element on initial ArrowUp', () => {
-			keydown(NavTreeFakeFocusDirective.KEY_CODES.UP);
+			keydown(ObNavTreeFakeFocusDirective.KEY_CODES.UP);
 			const fakeFocusElement = element.query(CSS_QUERIES.FAKE_FOCUS);
 			expect(fakeFocusElement).toBeDefined();
 			expect(fakeFocusElement.nativeElement.textContent.trim()).toBe('C.3 - Label');
@@ -167,7 +167,7 @@ describe('NavTreeFakeFocusDirective', () => {
 			testComponent.items[2].collapsed = true;
 			fixture.detectChanges();
 
-			keydown(NavTreeFakeFocusDirective.KEY_CODES.UP);
+			keydown(ObNavTreeFakeFocusDirective.KEY_CODES.UP);
 			const fakeFocusElement = element.query(CSS_QUERIES.FAKE_FOCUS);
 			expect(fakeFocusElement).toBeDefined();
 			expect(fakeFocusElement.nativeElement.textContent.trim()).toBe('C - Label');
@@ -178,7 +178,7 @@ describe('NavTreeFakeFocusDirective', () => {
 
 		it('should fake focus the next descendant', () => {
 			directive.fakeFocus(element.query(CSS_QUERIES.ITEM_BY_ID('B')));
-			keydown(NavTreeFakeFocusDirective.KEY_CODES.DOWN);
+			keydown(ObNavTreeFakeFocusDirective.KEY_CODES.DOWN);
 			const fakeFocusElement = element.query(CSS_QUERIES.FAKE_FOCUS);
 			expect(fakeFocusElement).toBeDefined();
 			expect(fakeFocusElement.nativeElement.textContent.trim()).toBe('B.1 - Label');
@@ -186,7 +186,7 @@ describe('NavTreeFakeFocusDirective', () => {
 
 		it('should fake focus the next sibling', () => {
 			directive.fakeFocus(element.query(CSS_QUERIES.ITEM_BY_ID('B-1')));
-			keydown(NavTreeFakeFocusDirective.KEY_CODES.DOWN);
+			keydown(ObNavTreeFakeFocusDirective.KEY_CODES.DOWN);
 			const fakeFocusElement = element.query(CSS_QUERIES.FAKE_FOCUS);
 			expect(fakeFocusElement).toBeDefined();
 			expect(fakeFocusElement.nativeElement.textContent.trim()).toBe('B.2 - Label');
@@ -194,7 +194,7 @@ describe('NavTreeFakeFocusDirective', () => {
 
 		it('should fake focus the next parent sibling', () => {
 			directive.fakeFocus(element.query(CSS_QUERIES.ITEM_BY_ID('B-3')));
-			keydown(NavTreeFakeFocusDirective.KEY_CODES.DOWN);
+			keydown(ObNavTreeFakeFocusDirective.KEY_CODES.DOWN);
 			const fakeFocusElement = element.query(CSS_QUERIES.FAKE_FOCUS);
 			expect(fakeFocusElement).toBeDefined();
 			expect(fakeFocusElement.nativeElement.textContent.trim()).toBe('C - Label');
@@ -202,7 +202,7 @@ describe('NavTreeFakeFocusDirective', () => {
 
 		it('should fake focus the first element if the end of the list is reached', () => {
 			directive.fakeFocus(element.query(CSS_QUERIES.ITEM_BY_ID('C-3')));
-			keydown(NavTreeFakeFocusDirective.KEY_CODES.DOWN);
+			keydown(ObNavTreeFakeFocusDirective.KEY_CODES.DOWN);
 			const fakeFocusElement = element.query(CSS_QUERIES.FAKE_FOCUS);
 			expect(fakeFocusElement).toBeDefined();
 			expect(fakeFocusElement.nativeElement.textContent.trim()).toBe('A - Label');
@@ -213,7 +213,7 @@ describe('NavTreeFakeFocusDirective', () => {
 			fixture.detectChanges();
 			directive.fakeFocus(element.query(CSS_QUERIES.ITEM_BY_ID('B-1')));
 
-			keydown(NavTreeFakeFocusDirective.KEY_CODES.DOWN);
+			keydown(ObNavTreeFakeFocusDirective.KEY_CODES.DOWN);
 			const fakeFocusElement = element.query(CSS_QUERIES.FAKE_FOCUS);
 			expect(fakeFocusElement).toBeDefined();
 			expect(fakeFocusElement.nativeElement.textContent.trim()).toBe('B.3 - Label');
@@ -224,7 +224,7 @@ describe('NavTreeFakeFocusDirective', () => {
 
 		it('should fake focus the previous sibling\'s last child', () => {
 			directive.fakeFocus(element.query(CSS_QUERIES.ITEM_BY_ID('C')));
-			keydown(NavTreeFakeFocusDirective.KEY_CODES.UP);
+			keydown(ObNavTreeFakeFocusDirective.KEY_CODES.UP);
 			const fakeFocusElement = element.query(CSS_QUERIES.FAKE_FOCUS);
 			expect(fakeFocusElement).toBeDefined();
 			expect(fakeFocusElement.nativeElement.textContent.trim()).toBe('B.3 - Label');
@@ -235,7 +235,7 @@ describe('NavTreeFakeFocusDirective', () => {
 			fixture.detectChanges();
 
 			directive.fakeFocus(element.query(CSS_QUERIES.ITEM_BY_ID('C')));
-			keydown(NavTreeFakeFocusDirective.KEY_CODES.UP);
+			keydown(ObNavTreeFakeFocusDirective.KEY_CODES.UP);
 			const fakeFocusElement = element.query(CSS_QUERIES.FAKE_FOCUS);
 			expect(fakeFocusElement).toBeDefined();
 			expect(fakeFocusElement.nativeElement.textContent.trim()).toBe('B - Label');
@@ -243,7 +243,7 @@ describe('NavTreeFakeFocusDirective', () => {
 
 		it('should fake focus the parent', () => {
 			directive.fakeFocus(element.query(CSS_QUERIES.ITEM_BY_ID('B-1')));
-			keydown(NavTreeFakeFocusDirective.KEY_CODES.UP);
+			keydown(ObNavTreeFakeFocusDirective.KEY_CODES.UP);
 			const fakeFocusElement = element.query(CSS_QUERIES.FAKE_FOCUS);
 			expect(fakeFocusElement).toBeDefined();
 			expect(fakeFocusElement.nativeElement.textContent.trim()).toBe('B - Label');
@@ -251,7 +251,7 @@ describe('NavTreeFakeFocusDirective', () => {
 
 		it('should fake focus the last element if the beginning of the list is reached', () => {
 			directive.fakeFocus(element.query(CSS_QUERIES.ITEM_BY_ID('A')));
-			keydown(NavTreeFakeFocusDirective.KEY_CODES.UP);
+			keydown(ObNavTreeFakeFocusDirective.KEY_CODES.UP);
 			const fakeFocusElement = element.query(CSS_QUERIES.FAKE_FOCUS);
 			expect(fakeFocusElement).toBeDefined();
 			expect(fakeFocusElement.nativeElement.textContent.trim()).toBe('C.3 - Label');
@@ -262,7 +262,7 @@ describe('NavTreeFakeFocusDirective', () => {
 			fixture.detectChanges();
 			directive.fakeFocus(element.query(CSS_QUERIES.ITEM_BY_ID('B-3')));
 
-			keydown(NavTreeFakeFocusDirective.KEY_CODES.UP);
+			keydown(ObNavTreeFakeFocusDirective.KEY_CODES.UP);
 			const fakeFocusElement = element.query(CSS_QUERIES.FAKE_FOCUS);
 			expect(fakeFocusElement).toBeDefined();
 			expect(fakeFocusElement.nativeElement.textContent.trim()).toBe('B.1 - Label');

@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-	selector: 'or-lists',
+	selector: 'ob-lists',
 	templateUrl: './lists.component.html'
 })
-export class ListsComponent {
+export class ObListsComponent {
 }

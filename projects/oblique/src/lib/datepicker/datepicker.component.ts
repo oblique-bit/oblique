@@ -1,15 +1,15 @@
 import {Component, ElementRef, forwardRef, HostListener, Input, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
 import {NgbDateStruct, NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
-import {ThemeService} from '../theme/theme.service';
-import {DatepickerConfigService, DatepickerOptions} from './datepicker-config.service';
+import {ObThemeService} from '../theme/theme.service';
+import {ObDatepickerConfigService, ObIDatepickerOptions} from './datepicker-config.service';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular material datepicker instead
  */
 @Component({
-	selector: 'or-date-picker',
-	exportAs: 'orDatePicker',
+	selector: 'ob-date-picker',
+	exportAs: 'obDatePicker',
 	styleUrls: ['./datepicker.component.scss'],
 	templateUrl: './datepicker.component.html',
 	encapsulation: ViewEncapsulation.None,
@@ -17,33 +17,33 @@ import {DatepickerConfigService, DatepickerOptions} from './datepicker-config.se
 		{
 			provide: NG_VALUE_ACCESSOR,
 			multi: true,
-			useExisting: forwardRef(() => DatepickerComponent)
+			useExisting: forwardRef(() => ObDatepickerComponent)
 		}, {
 			provide: NG_VALIDATORS,
 			multi: true,
-			useExisting: forwardRef(() => DatepickerComponent)
+			useExisting: forwardRef(() => ObDatepickerComponent)
 		}
 	],
 	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'datepicker input-group'}
 })
-export class DatepickerComponent implements OnInit, ControlValueAccessor, Validator {
+export class ObDatepickerComponent implements OnInit, ControlValueAccessor, Validator {
 	datePicker = new FormControl();
-	opts = {} as DatepickerOptions;
+	opts = {} as ObIDatepickerOptions;
 
 	@Input() size: 'sm' | 'lg' | null;
 	@Input() maxDate: NgbDateStruct;
 	@Input() minDate: NgbDateStruct;
 	@Input() startDate: NgbDateStruct;
 	@Input() placeholder: string;
-	@Input() options = {} as DatepickerOptions;
+	@Input() options = {} as ObIDatepickerOptions;
 	@ViewChild(NgbInputDatepicker, {static: true}) ngbDatePicker: NgbInputDatepicker;
 
 	get disabled() {
 		return this.datePicker.disabled;
 	}
 
-	constructor(private readonly element: ElementRef, private readonly config: DatepickerConfigService, theme: ThemeService) {
+	constructor(private readonly element: ElementRef, private readonly config: ObDatepickerConfigService, theme: ObThemeService) {
 		theme.deprecated('datepicker', 'datepicker');
 	}
 

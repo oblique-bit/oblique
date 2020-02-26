@@ -3,7 +3,7 @@ import {DefaultLangChangeEvent, LangChangeEvent, TranslationChangeEvent} from '@
 import {Observable, of} from 'rxjs';
 
 @Injectable()
-export class MockTranslateService {
+export class ObMockTranslateService {
 	onLangChange = new EventEmitter<LangChangeEvent>();
 	onTranslationChange = new EventEmitter<TranslationChangeEvent>();
 	onDefaultLangChange = new EventEmitter<DefaultLangChangeEvent>();

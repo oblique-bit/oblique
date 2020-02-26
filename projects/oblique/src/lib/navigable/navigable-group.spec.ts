@@ -2,16 +2,16 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, DebugElement} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
-import {NavigableDirective, NavigableGroupComponent} from 'oblique';
+import {ObNavigableDirective, ObNavigableGroupComponent} from 'oblique';
 
 @Component({
 	template: `
-		<or-navigable-group [items]="models" [selection]="selectedModels">
-			<div [orNavigable]="models[0]"></div>
-			<div [orNavigable]="models[1]"></div>
-			<div [orNavigable]="models[2]"></div>
-			<div [orNavigable]="models[3]"></div>
-		</or-navigable-group>`
+		<ob-navigable-group [items]="models" [selection]="selectedModels">
+			<div [obNavigable]="models[0]"></div>
+			<div [obNavigable]="models[1]"></div>
+			<div [obNavigable]="models[2]"></div>
+			<div [obNavigable]="models[3]"></div>
+		</ob-navigable-group>`
 })
 class TestComponent {
 	selectedModels = [];
@@ -26,16 +26,16 @@ class TestComponent {
 describe('NavigableGroup', () => {
 	let testComponent: TestComponent;
 	let fixture: ComponentFixture<TestComponent>;
-	let navigableGroup: NavigableGroupComponent;
-	let navigables: NavigableDirective[];
+	let navigableGroup: ObNavigableGroupComponent;
+	let navigables: ObNavigableDirective[];
 	let navigableElements: DebugElement[];
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [
 				TestComponent,
-				NavigableDirective,
-				NavigableGroupComponent
+				ObNavigableDirective,
+				ObNavigableGroupComponent
 			],
 			imports: [CommonModule]
 		})
@@ -46,11 +46,11 @@ describe('NavigableGroup', () => {
 		fixture = TestBed.createComponent(TestComponent);
 		fixture.detectChanges();
 		testComponent = fixture.componentInstance;
-		navigableGroup = fixture.debugElement.query(By.directive(NavigableGroupComponent)).injector.get(NavigableGroupComponent);
-		navigables = fixture.debugElement.queryAll(By.directive(NavigableDirective)).map(child => {
-			return child.injector.get(NavigableDirective);
+		navigableGroup = fixture.debugElement.query(By.directive(ObNavigableGroupComponent)).injector.get(ObNavigableGroupComponent);
+		navigables = fixture.debugElement.queryAll(By.directive(ObNavigableDirective)).map(child => {
+			return child.injector.get(ObNavigableDirective);
 		});
-		navigableElements = fixture.debugElement.queryAll(By.directive(NavigableDirective));
+		navigableElements = fixture.debugElement.queryAll(By.directive(ObNavigableDirective));
 	});
 
 	it('should be created', () => {
@@ -65,7 +65,7 @@ describe('NavigableGroup', () => {
 	});
 
 	describe('clicking on a navigable item', () => {
-		let navigable: NavigableDirective;
+		let navigable: ObNavigableDirective;
 		let mouseDownEvent: MouseEvent;
 		let ctrlMouseDownEvent: MouseEvent;
 		let shiftMouseDownEvent: MouseEvent;

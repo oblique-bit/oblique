@@ -1,7 +1,7 @@
 import {Directive, HostBinding, OnInit, OnDestroy, Input} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
-import {Unsubscribable} from '../unsubscribe.class';
+import {ObUnsubscribable} from '../unsubscribe.class';
 
 const I18N_PLACEHOLDERS = {
 	en: 'dd.mm.yyyy',
@@ -13,7 +13,7 @@ const I18N_PLACEHOLDERS = {
 @Directive({
 	selector: 'input[ngbDatepicker]'
 })
-export class DatepickerPlaceholderDirective extends Unsubscribable implements OnInit, OnDestroy {
+export class ObDatepickerPlaceholderDirective extends ObUnsubscribable implements OnInit, OnDestroy {
 	@Input()
 	@HostBinding()
 	placeholder;

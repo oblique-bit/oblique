@@ -1,17 +1,17 @@
 import {Component} from '@angular/core';
-import {MasterLayoutService, ThemeService} from 'oblique';
+import {ObMasterLayoutService, ObThemeService} from 'oblique';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
-	selector: 'or-form',
+	selector: 'ob-form',
 	templateUrl: './form.component.html',
 	styleUrls: ['./form.component.scss']
 })
-export class FormComponent {
+export class ObFormComponent {
 	material: Observable<boolean>;
 
-	constructor(masterLayout: MasterLayoutService, theme: ThemeService) {
+	constructor(masterLayout: ObMasterLayoutService, theme: ObThemeService) {
 		this.material = theme.theme$.pipe(map(() => theme.isMaterial()));
 	}
 }

@@ -1,7 +1,7 @@
 import {Component, Pipe, PipeTransform} from '@angular/core';
 import {SafeHtml} from '@angular/platform-browser';
 
-import {ThemeService} from 'oblique';
+import {ObThemeService} from 'oblique';
 
 @Pipe({
 	name: 'patternFilter'
@@ -52,7 +52,7 @@ export class FilterBoxSampleComponent {
 		'Kai'
 	];
 
-	constructor(theme: ThemeService) {
+	constructor(theme: ObThemeService) {
 		theme.theme$.subscribe(() => {
 			this.material = theme.isMaterial();
 		});

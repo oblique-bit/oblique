@@ -1,8 +1,8 @@
 <h2>Error messages</h2>
-<or-description component="error-messages"></or-description>
+<ob-description component="error-messages"></ob-description>
 <form>
 	<h3>Template</h3>
-	<mat-form-field class="form-element" orErrorMessages>
+	<mat-form-field class="form-element" obErrorMessages>
 		<mat-label>Text</mat-label>
 		<input matInput ngModel name="text" required>
 		<mat-error></mat-error>
@@ -14,17 +14,17 @@
 </form>
 <form [formGroup]="form">
 	<h3>Reactive</h3>
-	<mat-form-field class="form-element" orErrorMessages>
+	<mat-form-field class="form-element" obErrorMessages>
 		<mat-label>Text</mat-label>
 		<input matInput formControlName="email">
 		<mat-error></mat-error>
 	</mat-form-field>
-	<mat-form-field class="form-element mat-form-field-sm" orErrorMessages>
+	<mat-form-field class="form-element mat-form-field-sm" obErrorMessages>
 		<mat-label>Text</mat-label>
 		<input matInput formControlName="email">
 		<mat-error></mat-error>
 	</mat-form-field>
-	<mat-form-field class="form-element mat-form-field-lg" orErrorMessages>
+	<mat-form-field class="form-element mat-form-field-lg" obErrorMessages>
 		<mat-label>Text</mat-label>
 		<input matInput formControlName="email">
 		<mat-error></mat-error>
@@ -34,4 +34,4 @@
 		<button mat-raised-button color="primary" type="submit">Check</button>
 	</div>
 </form>
-<or-api component="error-messages"></or-api>
+<ob-api component="error-messages"></ob-api>

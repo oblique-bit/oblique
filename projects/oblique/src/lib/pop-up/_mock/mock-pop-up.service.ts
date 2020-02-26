@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
 @Injectable()
-export class MockPopUpService {
+export class ObMockPopUpService {
 	public confirm(message?: string): boolean {
 		return true;
 	}

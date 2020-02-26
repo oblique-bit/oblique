@@ -1,16 +1,16 @@
 import {Component, EventEmitter, Input, Output, QueryList} from '@angular/core';
-import {NavigableDirective} from '../navigable.directive';
+import {ObNavigableDirective} from '../navigable.directive';
 
 @Component({
-	selector: 'or-navigable-group',
-	exportAs: 'orNavigableGroup',
+	selector: 'ob-navigable-group',
+	exportAs: 'obNavigableGroup',
 	template: `
 		<ng-content></ng-content>`
 })
-export class MockNavigableGroupComponent {
+export class ObMockNavigableGroupComponent {
 	@Input('items') items: any[];
 	@Input('selection') selection;
-	navigables: QueryList<NavigableDirective>;
+	navigables: QueryList<ObNavigableDirective>;
 	@Output() selectionOnChange = new EventEmitter();
 
 	add(model: any): void {

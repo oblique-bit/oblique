@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {take} from 'rxjs/operators';
-import {HttpApiRequest} from './http-api-interceptor';
+import {ObIHttpApiRequest} from './http-api-interceptor';
 
 /**
  * Provides access to the Oblique HTTP Interceptor events.
  */
 @Injectable({providedIn: 'root'})
-export class HttpApiInterceptorEvents {
+export class ObHttpApiInterceptorEvents {
 	// INFO: this is only protected to support unit tests
-	protected requested = new Subject<HttpApiRequest>();
+	protected requested = new Subject<ObIHttpApiRequest>();
 	protected expired = new Subject<void>();
 	private readonly requestIntercepted$ = this.requested.asObservable();
 	private readonly sessionExpired$ = this.expired.asObservable();
@@ -17,7 +17,7 @@ export class HttpApiInterceptorEvents {
 	/**
 	 * This will be feed with `requested` events
 	 */
-	get requestIntercepted(): Observable<HttpApiRequest> {
+	get requestIntercepted(): Observable<ObIHttpApiRequest> {
 		return this.requestIntercepted$;
 	}
 
@@ -38,24 +38,24 @@ export class HttpApiInterceptorEvents {
 	/**
 	 * Fire an `requesteed` event
 	 */
-	public requestIntercept(request: HttpApiRequest): void {
+	public requestIntercept(request: ObIHttpApiRequest): void {
 		this.requested.next(request);
 	}
 
 	public deactivateSpinnerOnNextAPICalls(number = 1): void {
-		this.requestIntercepted.pipe(take(number)).subscribe((evt: HttpApiRequest) => {
+		this.requestIntercepted.pipe(take(number)).subscribe((evt: ObIHttpApiRequest) => {
 			evt.spinner = false;
 		});
 	}
 
 	public deactivateNotificationOnNextAPICalls(number = 1): void {
-		this.requestIntercepted.pipe(take(number)).subscribe((evt: HttpApiRequest) => {
+		this.requestIntercepted.pipe(take(number)).subscribe((evt: ObIHttpApiRequest) => {
 			evt.notification.active = false;
 		});
 	}
 
 	public deactivateOnNextAPICalls(number = 1): void {
-		this.requestIntercepted.pipe(take(number)).subscribe((evt: HttpApiRequest) => {
+		this.requestIntercepted.pipe(take(number)).subscribe((evt: ObIHttpApiRequest) => {
 			evt.notification.active = false;
 			evt.spinner = false;
 		});

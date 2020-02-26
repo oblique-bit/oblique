@@ -1,20 +1,20 @@
 import {Component, forwardRef, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {MockMultiselectTexts} from './mock-multiselect.texts';
+import {ObMockMultiselectTexts} from './mock-multiselect.texts';
 
 @Component({
-	selector: 'or-multiselect',
-	exportAs: 'orMultiselect',
+	selector: 'ob-multiselect',
+	exportAs: 'obMultiselect',
 	providers: [{
 		provide: NG_VALUE_ACCESSOR,
-		useExisting: forwardRef(() => MockMultiselectComponent),
+		useExisting: forwardRef(() => ObMockMultiselectComponent),
 		multi: true
 	}],
 	template: ''
 })
-export class MockMultiselectComponent implements ControlValueAccessor {
+export class ObMockMultiselectComponent implements ControlValueAccessor {
 	@Input() options: any[] = [];
-	@Input() texts: MockMultiselectTexts;
+	@Input() texts: ObMockMultiselectTexts;
 	@Input() dropup = false;
 	@Input() labelProperty: string;
 	@Input() labelFormatter: (option: any) => string;

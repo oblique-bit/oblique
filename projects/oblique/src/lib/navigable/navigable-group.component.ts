@@ -12,8 +12,8 @@ import {
 	ViewEncapsulation
 } from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
-import {Unsubscribable} from '../unsubscribe.class';
-import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from './navigable.directive';
+import {ObUnsubscribable} from '../unsubscribe.class';
+import {ObNavigableDirective, ObNavigableOnChangeEvent, ObNavigableOnMoveEvent} from './navigable.directive';
 
 /**
  * @deprecated since version 5.0.0. This module is complex, buggy and never used as intended. It will be removed without replacement in future version.
@@ -24,13 +24,13 @@ import {NavigableDirective, NavigableOnChangeEvent, NavigableOnMoveEvent} from '
  * * the items reordering feature will be lost, but is incomplete anyway
  */
 @Component({
-	selector: 'or-navigable-group',
-	exportAs: 'orNavigableGroup',
+	selector: 'ob-navigable-group',
+	exportAs: 'obNavigableGroup',
 	template: `<ng-content></ng-content>`,
 	styleUrls: ['./navigable-group.component.scss'],
 	encapsulation: ViewEncapsulation.None
 })
-export class NavigableGroupComponent extends Unsubscribable implements AfterContentInit {
+export class ObNavigableGroupComponent extends ObUnsubscribable implements AfterContentInit {
 
 	/**
 	 * A collection containing all data models of the current group.
@@ -38,8 +38,8 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 	@Input('items')
 	items: any[];
 
-	@ContentChildren(NavigableDirective)
-	navigables: QueryList<NavigableDirective>;
+	@ContentChildren(ObNavigableDirective)
+	navigables: QueryList<ObNavigableDirective>;
 	@Output()
 	selectionOnChange = new EventEmitter();
 
@@ -57,7 +57,7 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 	}
 
 	private selectionValue: any[];
-	private readonly differ: IterableDiffer<NavigableDirective> = null;
+	private readonly differ: IterableDiffer<ObNavigableDirective> = null;
 
 	constructor(private readonly differs: IterableDiffers) {
 		super();
@@ -76,9 +76,9 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 		// Listen to navigable list changes:
 		this.navigables.changes
 			.pipe(takeUntil(this.unsubscribe))
-			.subscribe((changes: QueryList<NavigableDirective>) => {
+			.subscribe((changes: QueryList<ObNavigableDirective>) => {
 				const diff = this.differ.diff(changes.toArray());
-				diff.forEachAddedItem((record: IterableChangeRecord<NavigableDirective>) => {
+				diff.forEachAddedItem((record: IterableChangeRecord<ObNavigableDirective>) => {
 					this.registerNavigableEvents(record.item);
 				});
 			});
@@ -86,7 +86,7 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 
 	// Public API ---------------------
 	public add(model: any) {
-		const navigableToSelect = this.navigables.find((navigable: NavigableDirective) => {
+		const navigableToSelect = this.navigables.find((navigable: ObNavigableDirective) => {
 			return navigable.model === model;
 		});
 
@@ -96,7 +96,7 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 	}
 
 	public remove(model: any) {
-		const navigableToRemove = this.navigables.find((navigable: NavigableDirective) => {
+		const navigableToRemove = this.navigables.find((navigable: ObNavigableDirective) => {
 			return navigable.model === model;
 		});
 
@@ -106,7 +106,7 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 	}
 
 	// Private API ---------------------
-	private registerNavigableEvents(navigable: NavigableDirective) {
+	private registerNavigableEvents(navigable: ObNavigableDirective) {
 
 		this.registerOnActivation(navigable);
 		this.registerOnChange(navigable);
@@ -116,7 +116,7 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 	}
 
 	//START Refactoring
-	private registerOnActivation(navigable: NavigableDirective) {
+	private registerOnActivation(navigable: ObNavigableDirective) {
 		navigable.navigableOnActivation
 			.pipe(takeUntil(this.unsubscribe))
 			.subscribe(() => {
@@ -124,12 +124,12 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 			});
 	}
 
-	private registerOnChange(navigable: NavigableDirective) {
+	private registerOnChange(navigable: ObNavigableDirective) {
 		navigable.navigableOnChange
 			.pipe(takeUntil(this.unsubscribe))
-			.subscribe(($event: NavigableOnChangeEvent) => {
+			.subscribe(($event: ObNavigableOnChangeEvent) => {
 				const index = this.indexOf(navigable);
-				let next: NavigableDirective = null;
+				let next: ObNavigableDirective = null;
 
 				if ($event.code === 'ArrowUp') {
 					next = this.fromIndex(Math.max(index - 1, 0));
@@ -148,7 +148,7 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 			});
 	}
 
-	private registerOnMouseDown(navigable: NavigableDirective) {
+	private registerOnMouseDown(navigable: ObNavigableDirective) {
 		navigable.navigableOnMouseDown
 			.pipe(takeUntil(this.unsubscribe))
 			.subscribe(($event: MouseEvent) => {
@@ -172,7 +172,7 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 			});
 	}
 
-	private registerOnFocus(navigable: NavigableDirective) {
+	private registerOnFocus(navigable: ObNavigableDirective) {
 		navigable.navigableOnFocus
 			.pipe(takeUntil(this.unsubscribe))
 			.subscribe(() => {
@@ -184,10 +184,10 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 			});
 	}
 
-	private registerOnMove(navigable: NavigableDirective) {
+	private registerOnMove(navigable: ObNavigableDirective) {
 		navigable.navigableOnMove
 			.pipe(takeUntil(this.unsubscribe))
-			.subscribe(($event: NavigableOnMoveEvent) => {
+			.subscribe(($event: ObNavigableOnMoveEvent) => {
 				if (!$event.prevented) {
 					const from = this.indexOf(navigable);
 
@@ -208,14 +208,14 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 
 	//END Refactoring
 
-	private activate(navigable: NavigableDirective, combine?: boolean) {
+	private activate(navigable: ObNavigableDirective, combine?: boolean) {
 		this.navigables.forEach(child => child !== navigable && this.deactivate(child)); //TODO: take a look at this
 
 		navigable.active = true;
 		this.select(navigable, combine);
 	}
 
-	private deactivate(navigable: NavigableDirective, unselect?: boolean) {
+	private deactivate(navigable: ObNavigableDirective, unselect?: boolean) {
 		if (navigable) {
 			navigable.active = false;
 
@@ -225,7 +225,7 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 		}
 	}
 
-	private select(navigable: NavigableDirective, combine?: boolean) {
+	private select(navigable: ObNavigableDirective, combine?: boolean) {
 		if (!combine) {
 			this.navigables.forEach(child => this.deselect(child));
 		}
@@ -233,12 +233,12 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 		this.addToSelection(navigable);
 	}
 
-	private deselect(navigable: NavigableDirective) {
+	private deselect(navigable: ObNavigableDirective) {
 		navigable.selected = false;
 		this.removeFromSelection(navigable);
 	}
 
-	private selectChildRange(target: NavigableDirective, combine?: boolean) {
+	private selectChildRange(target: ObNavigableDirective, combine?: boolean) {
 		const from = this.indexOf(this.getActive());
 		if (!combine) {
 			this.navigables.forEach(child => this.deselect(child));
@@ -266,11 +266,11 @@ export class NavigableGroupComponent extends Unsubscribable implements AfterCont
 		return this.navigables.toArray().filter(child => child.active)[0];
 	}
 
-	private fromIndex(index: number): NavigableDirective {
+	private fromIndex(index: number): ObNavigableDirective {
 		return this.navigables.toArray()[index];
 	}
 
-	private indexOf(child: NavigableDirective): number {
+	private indexOf(child: ObNavigableDirective): number {
 		return this.navigables.toArray().indexOf(child);
 	}
 }

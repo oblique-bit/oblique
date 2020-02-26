@@ -2,11 +2,11 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Observable} from 'rxjs';
 
 @Component({
-	selector: 'or-filter-box',
-	exportAs: 'orFilterBox',
+	selector: 'ob-filter-box',
+	exportAs: 'obFilterBox',
 	template: ''
 })
-export class MockFilterBoxComponent {
+export class ObMockFilterBoxComponent {
 	material: Observable<boolean>;
 	@Input() pattern: string;
 	@Input() placeholder = 'i18n.common.filter.placeholder';

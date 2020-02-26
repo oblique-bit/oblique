@@ -1,7 +1,7 @@
 import {AbstractControl, ValidationErrors} from '@angular/forms';
 import * as Ajv from 'ajv';
 
-export class SchemaValidatorInstance {
+export class ObSchemaValidatorInstance {
 	private readonly ajv = new Ajv({allErrors: true});
 	private readonly schema;
 

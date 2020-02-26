@@ -1,29 +1,29 @@
 import {Component, ContentChildren, HostBinding, QueryList, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {filter, takeUntil} from 'rxjs/operators';
 
-import {Unsubscribable} from '../../unsubscribe.class';
-import {ScrollingEvents} from '../../scrolling/scrolling.module';
-import {MasterLayoutService} from '../master-layout.service';
-import {MasterLayoutConfig} from '../master-layout.config';
-import {MasterLayoutEvent, MasterLayoutEventValues, scrollEnabled} from '../master-layout.utility';
+import {ObUnsubscribable} from '../../unsubscribe.class';
+import {ObScrollingEvents} from '../../scrolling/scrolling.module';
+import {ObMasterLayoutService} from '../master-layout.service';
+import {ObMasterLayoutConfig} from '../master-layout.config';
+import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues, scrollEnabled} from '../master-layout.utility';
 
 @Component({
-	selector: 'or-master-layout-footer',
+	selector: 'ob-master-layout-footer',
 	templateUrl: './master-layout-footer.component.html',
 	styleUrls: ['./master-layout-footer.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'application-footer'}
 })
-export class MasterLayoutFooterComponent extends Unsubscribable {
+export class ObMasterLayoutFooterComponent extends ObUnsubscribable {
 	home = this.config.homePageRoute;
 	isCustom = this.masterLayout.footer.isCustom;
 	@HostBinding('class.application-footer-sm') isSmall = this.masterLayout.footer.isSmall;
-	@ContentChildren('orFooterLink') readonly templates: QueryList<TemplateRef<any>>;
+	@ContentChildren('obFooterLink') readonly templates: QueryList<TemplateRef<any>>;
 
-	constructor(private readonly masterLayout: MasterLayoutService,
-				private readonly config: MasterLayoutConfig,
-				private readonly scrollEvents: ScrollingEvents) {
+	constructor(private readonly masterLayout: ObMasterLayoutService,
+				private readonly config: ObMasterLayoutConfig,
+				private readonly scrollEvents: ObScrollingEvents) {
 		super();
 
 		this.propertyChanges();
@@ -31,16 +31,16 @@ export class MasterLayoutFooterComponent extends Unsubscribable {
 	}
 
 	private propertyChanges() {
-		const events = [MasterLayoutEventValues.SMALL, MasterLayoutEventValues.CUSTOM];
+		const events = [ObEMasterLayoutEventValues.SMALL, ObEMasterLayoutEventValues.CUSTOM];
 		this.masterLayout.footer.configEvents.pipe(
-			filter((evt: MasterLayoutEvent) => events.includes(evt.name)),
+			filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
 			takeUntil(this.unsubscribe)
 		).subscribe((event) => {
 			switch (event.name) {
-				case MasterLayoutEventValues.SMALL:
+				case ObEMasterLayoutEventValues.SMALL:
 					this.isSmall = event.value;
 					break;
-				case MasterLayoutEventValues.CUSTOM:
+				case ObEMasterLayoutEventValues.CUSTOM:
 					this.isCustom = event.value;
 					break;
 			}

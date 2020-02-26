@@ -1,12 +1,12 @@
 [
   {
-    "name": "ToggleDirective",
-    "selector": "[orToggle]",
-    "exported": "orToggle",
+    "name": "ObToggleDirective",
+    "selector": "[obToggle]",
+    "exported": "obToggle",
     "since": "2.0.0",
     "inputs": [
       {
-        "name": "orToggle",
+        "name": "obToggle",
         "text": "Defines the regular and active directions.",
         "type": "string",
         "default": "down-up",

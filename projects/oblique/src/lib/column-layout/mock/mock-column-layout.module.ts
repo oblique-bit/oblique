@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
-import {MockColumnLayoutComponent} from './mock-column-layout.component';
-import {MockColumnPanelDirective} from './mock-column-panel.directive';
-import {MockColumnToggleDirective} from './mock-column-toggle.directive';
+import {ObMockColumnLayoutComponent} from './mock-column-layout.component';
+import {ObMockColumnPanelDirective} from './mock-column-panel.directive';
+import {ObMockColumnToggleDirective} from './mock-column-toggle.directive';
 
-export {MockColumnLayoutComponent} from './mock-column-layout.component';
+export {ObMockColumnLayoutComponent} from './mock-column-layout.component';
 
 @NgModule({
-	declarations: [MockColumnLayoutComponent, MockColumnPanelDirective, MockColumnToggleDirective],
-	exports: [MockColumnLayoutComponent]
+	declarations: [ObMockColumnLayoutComponent, ObMockColumnPanelDirective, ObMockColumnToggleDirective],
+	exports: [ObMockColumnLayoutComponent]
 })
-export class MockColumnLayoutModule {
+export class ObMockColumnLayoutModule {
 }

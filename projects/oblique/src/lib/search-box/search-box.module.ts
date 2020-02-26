@@ -6,37 +6,37 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
 import {TranslateModule} from '@ngx-translate/core';
-import {SearchBoxDirective} from './search-box.directive';
-import {SearchBoxResultsComponent} from './search-box-results.component';
-import {SearchBoxComponent} from './search-box.component';
-import {NavTreeModule} from '../nav-tree/nav-tree.module';
-import {TelemetryService} from '../telemetry/telemetry.service';
+import {ObSearchBoxDirective} from './search-box.directive';
+import {ObSearchBoxResultsComponent} from './search-box-results.component';
+import {ObSearchBoxComponent} from './search-box.component';
+import {ObNavTreeModule} from '../nav-tree/nav-tree.module';
+import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {WINDOW, windowProvider} from '../utilities';
 
-export {SearchBoxResultsComponent} from './search-box-results.component';
-export {SearchBoxComponent, SearchWidgetItem} from './search-box.component';
-export {SearchBoxDirective} from './search-box.directive';
+export {ObSearchBoxResultsComponent} from './search-box-results.component';
+export {ObSearchBoxComponent, ObISearchWidgetItem} from './search-box.component';
+export {ObSearchBoxDirective} from './search-box.directive';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule,
-		NavTreeModule,
+		ObNavTreeModule,
 		TranslateModule,
 		RouterModule
 	],
-	declarations: [SearchBoxDirective, SearchBoxComponent, SearchBoxResultsComponent],
+	declarations: [ObSearchBoxDirective, ObSearchBoxComponent, ObSearchBoxResultsComponent],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 		{provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
-	exports: [SearchBoxDirective, SearchBoxComponent],
-	entryComponents: [SearchBoxResultsComponent]
+	exports: [ObSearchBoxDirective, ObSearchBoxComponent],
+	entryComponents: [ObSearchBoxResultsComponent]
 })
-export class SearchBoxModule {
-	constructor(telemetry: TelemetryService) {
-		requireAndRecordTelemetry(telemetry, SearchBoxModule);
+export class ObSearchBoxModule {
+	constructor(telemetry: ObTelemetryService) {
+		requireAndRecordTelemetry(telemetry, ObSearchBoxModule);
 	}
 }

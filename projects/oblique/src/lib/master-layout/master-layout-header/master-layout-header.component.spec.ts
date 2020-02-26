@@ -3,26 +3,26 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 
-import {MasterLayoutConfig, MasterLayoutService} from 'oblique';
-import {MasterLayoutHeaderComponent} from './master-layout-header.component';
-import {MockTranslatePipe} from '../../_mocks/mock-translate.pipe';
-import {MockTranslateService} from '../../_mocks/mock-translate.service';
-import {MockMasterLayoutService} from '../mock/mock-master-layout.service';
-import {MockMasterLayoutConfig} from '../mock/mock-master-layout.config';
+import {ObMasterLayoutConfig, ObMasterLayoutService} from 'oblique';
+import {ObMasterLayoutHeaderComponent} from './master-layout-header.component';
+import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
+import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
+import {ObMockMasterLayoutService} from '../mock/mock-master-layout.service';
+import {ObMockMasterLayoutConfig} from '../mock/mock-master-layout.config';
 import {windowProvider, WINDOW} from '../../utilities';
 
 describe('MasterLayoutHeaderComponent', () => {
-	let component: MasterLayoutHeaderComponent;
-	let fixture: ComponentFixture<MasterLayoutHeaderComponent>;
+	let component: ObMasterLayoutHeaderComponent;
+	let fixture: ComponentFixture<ObMasterLayoutHeaderComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
-			declarations: [MasterLayoutHeaderComponent, MockTranslatePipe],
+			declarations: [ObMasterLayoutHeaderComponent, ObMockTranslatePipe],
 			providers: [
-				{provide: TranslateService, useClass: MockTranslateService},
-				{provide: MasterLayoutService, useClass: MockMasterLayoutService},
-				{provide: MasterLayoutConfig, useClass: MockMasterLayoutConfig},
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: ObMasterLayoutService, useClass: ObMockMasterLayoutService},
+				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
 				{provide: WINDOW, useValue: windowProvider},
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -31,7 +31,7 @@ describe('MasterLayoutHeaderComponent', () => {
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(MasterLayoutHeaderComponent);
+		fixture = TestBed.createComponent(ObMasterLayoutHeaderComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

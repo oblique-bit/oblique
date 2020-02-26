@@ -51,7 +51,7 @@ const I18N_VALUES = {
 
 
 @Injectable({providedIn: 'root'})
-export class DatepickerI18nService extends NgbDatepickerI18n {
+export class ObDatepickerI18nService extends NgbDatepickerI18n {
 	constructor(private readonly translateService: TranslateService) {
 		super();
 	}

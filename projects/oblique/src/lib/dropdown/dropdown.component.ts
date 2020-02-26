@@ -1,15 +1,15 @@
 import {Component, ElementRef, HostBinding, HostListener, Input, ViewEncapsulation} from '@angular/core';
 
 @Component({
-	selector: 'or-dropdown',
-	exportAs: 'orDropdown',
+	selector: 'ob-dropdown',
+	exportAs: 'obDropdown',
 	templateUrl: './dropdown.component.html',
 	styleUrls: ['./dropdown.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'dropdown'}
 })
-export class DropdownComponent {
+export class ObDropdownComponent {
 	@HostBinding('class.open') isOpen = false;
 	@Input() position = 'middle';
 

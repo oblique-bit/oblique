@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
-import {MockDropdownComponent} from './mock-dropdown.component';
+import {ObMockDropdownComponent} from './mock-dropdown.component';
 
-export {MockDropdownComponent} from './mock-dropdown.component';
+export {ObMockDropdownComponent} from './mock-dropdown.component';
 
 @NgModule({
-	declarations: [MockDropdownComponent],
-	exports: [MockDropdownComponent]
+	declarations: [ObMockDropdownComponent],
+	exports: [ObMockDropdownComponent]
 })
-export class MockDropdownModule {
+export class ObMockDropdownModule {
 }

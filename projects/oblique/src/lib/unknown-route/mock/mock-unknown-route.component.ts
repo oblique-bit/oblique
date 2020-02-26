@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 
 @Component({
-	selector: 'or-unknown-route',
+	selector: 'ob-unknown-route',
 	template: ''
 })
-export class MockUnknownRouteComponent {
+export class ObMockUnknownRouteComponent {
 	homePageRoute;
 }

@@ -4,13 +4,13 @@
     "directive-selector": [
       false,
       "attribute",
-      "or",
+      "ob",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "or",
+      "ob",
       "kebab-case"
     ]
   }

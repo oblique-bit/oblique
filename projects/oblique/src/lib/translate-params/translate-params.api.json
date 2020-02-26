@@ -1,7 +1,7 @@
 [
   {
-    "name": "TranslateParamsPipe",
-    "selector": "orTranslateParams",
+    "name": "ObTranslateParamsPipe",
+    "selector": "obTranslateParams",
     "since": "3.1.0"
   }
 ]

@@ -1,28 +1,28 @@
 import {NgModule} from '@angular/core';
 
-import {MockMatErrorDirective} from './mock-mat-error.directive';
-import {MockErrorMessagesComponent} from './mock-error-messages.component';
-import {MockErrorMessagesDirective} from './mock-error-messages.directive';
-import {MockErrorMessagesService} from './mock-error-messages.service';
-import {ErrorMessagesService} from '../error-messages.module';
+import {ObMockMatErrorDirective} from './mock-mat-error.directive';
+import {ObMockErrorMessagesComponent} from './mock-error-messages.component';
+import {ObMockErrorMessagesDirective} from './mock-error-messages.directive';
+import {ObMockErrorMessagesService} from './mock-error-messages.service';
+import {ObErrorMessagesService} from '../error-messages.module';
 
-export {MockMatErrorDirective} from './mock-mat-error.directive';
-export {MockErrorMessagesComponent} from './mock-error-messages.component';
-export {MockErrorMessagesDirective} from './mock-error-messages.directive';
-export {MockErrorMessagesService} from './mock-error-messages.service';
+export {ObMockMatErrorDirective} from './mock-mat-error.directive';
+export {ObMockErrorMessagesComponent} from './mock-error-messages.component';
+export {ObMockErrorMessagesDirective} from './mock-error-messages.directive';
+export {ObMockErrorMessagesService} from './mock-error-messages.service';
 
 @NgModule({
 	declarations: [
-		MockErrorMessagesComponent,
-		MockMatErrorDirective,
-		MockErrorMessagesDirective
+		ObMockErrorMessagesComponent,
+		ObMockMatErrorDirective,
+		ObMockErrorMessagesDirective
 	],
 	exports: [
-		MockErrorMessagesComponent,
-		MockMatErrorDirective,
-		MockErrorMessagesDirective
+		ObMockErrorMessagesComponent,
+		ObMockMatErrorDirective,
+		ObMockErrorMessagesDirective
 	],
-	providers: [{provide: ErrorMessagesService, useClass: MockErrorMessagesService}]
+	providers: [{provide: ObErrorMessagesService, useClass: ObMockErrorMessagesService}]
 })
-export class MockErrorMessagesModule {
+export class ObMockErrorMessagesModule {
 }

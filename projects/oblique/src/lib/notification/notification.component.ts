@@ -1,12 +1,12 @@
 import {Component, HostBinding, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 
-import {INotification} from './notification.interfaces';
-import {NotificationService} from './notification.service';
+import {ObINotification} from './notification.interfaces';
+import {ObNotificationService} from './notification.service';
 
 @Component({
-	selector: 'or-notification',
-	exportAs: 'orNotification',
+	selector: 'ob-notification',
+	exportAs: 'obNotification',
 	templateUrl: './notification.component.html',
 	styleUrls: ['./notification.component.scss'],
 	encapsulation: ViewEncapsulation.None,
@@ -42,14 +42,14 @@ import {NotificationService} from './notification.service';
 		])
 	]
 })
-export class NotificationComponent implements OnInit {
+export class ObNotificationComponent implements OnInit {
 	public static REMOVE_DELAY = 350;
 	@Input() channel: string;
 	@HostBinding('class.custom') customChannel = false;
-	public notifications: INotification[] = [];
+	public notifications: ObINotification[] = [];
 	public variant: { [type: string]: string } = {};
 
-	constructor(private readonly notificationService: NotificationService) {
+	constructor(private readonly notificationService: ObNotificationService) {
 	}
 
 	ngOnInit(): void {
@@ -70,7 +70,7 @@ export class NotificationComponent implements OnInit {
 	/**
 	 * Adds & opens the specified notification.
 	 */
-	public open(notification: INotification): void {
+	public open(notification: ObINotification): void {
 		notification.occurrences = 1;
 		const existingNotification = this.notifications.find((notif) => notif.idPrefix === notification.idPrefix);
 		if (existingNotification && notification.groupSimilar) {
@@ -92,7 +92,7 @@ export class NotificationComponent implements OnInit {
 	public close(notification): void {
 		notification.$state = 'out';
 		clearTimeout(notification.timer);
-		setTimeout(() => this.remove(notification), NotificationComponent.REMOVE_DELAY);
+		setTimeout(() => this.remove(notification), ObNotificationComponent.REMOVE_DELAY);
 	}
 
 	/**
@@ -109,7 +109,7 @@ export class NotificationComponent implements OnInit {
 		this.notifications.length = 0;
 	}
 
-	private selfClose(notification: INotification): void {
+	private selfClose(notification: ObINotification): void {
 		notification.timer = setTimeout(() => {
 			if (notification.occurrences) {
 				notification.occurrences--;

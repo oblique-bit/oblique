@@ -3,6 +3,6 @@ import {Directive, Input} from '@angular/core';
 @Directive({
 	selector: 'input[ngbDatepicker]'
 })
-export class MockDatepickerPlaceholderDirective {
+export class ObMockDatepickerPlaceholderDirective {
 	@Input() placeholder;
 }

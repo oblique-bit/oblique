@@ -1,7 +1,7 @@
 [
   {
-    "name": "UnknownRouteComponent",
-    "selector": "or-unknown-route",
+    "name": "ObUnknownRouteComponent",
+    "selector": "ob-unknown-route",
     "since": "5.0.0"
   }
 ]

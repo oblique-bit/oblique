@@ -3,24 +3,24 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 
-import {MasterLayoutComponent, MasterLayoutConfig, MasterLayoutService} from 'oblique';
-import {MockTranslatePipe} from '../../_mocks/mock-translate.pipe';
-import {MockMasterLayoutConfig, MockMasterLayoutService} from '../mock/mock-master-layout.module';
-import {MockTranslateService} from '../../_mocks/mock-translate.service';
+import {ObMasterLayoutComponent, ObMasterLayoutConfig, ObMasterLayoutService} from 'oblique';
+import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
+import {ObMockMasterLayoutConfig, ObMockMasterLayoutService} from '../mock/mock-master-layout.module';
+import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {windowProvider, WINDOW} from '../../utilities';
 
 describe('MasterLayoutComponent', () => {
-	let component: MasterLayoutComponent;
-	let fixture: ComponentFixture<MasterLayoutComponent>;
+	let component: ObMasterLayoutComponent;
+	let fixture: ComponentFixture<ObMasterLayoutComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
-			declarations: [MasterLayoutComponent, MockTranslatePipe],
+			declarations: [ObMasterLayoutComponent, ObMockTranslatePipe],
 			providers: [
-				{provide: MasterLayoutService, useClass: MockMasterLayoutService},
-				{provide: MasterLayoutConfig, useClass: MockMasterLayoutConfig},
-				{provide: TranslateService, useClass: MockTranslateService},
+				{provide: ObMasterLayoutService, useClass: ObMockMasterLayoutService},
+				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
+				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: WINDOW, useClass: windowProvider}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -29,7 +29,7 @@ describe('MasterLayoutComponent', () => {
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(MasterLayoutComponent);
+		fixture = TestBed.createComponent(ObMasterLayoutComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

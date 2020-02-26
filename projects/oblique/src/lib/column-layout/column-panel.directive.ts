@@ -1,10 +1,10 @@
 import {Directive, HostBinding} from '@angular/core';
 
 @Directive({
-	selector: '[orColumnPanel]',
-	exportAs: 'orColumnPanel'
+	selector: '[obColumnPanel]',
+	exportAs: 'obColumnPanel'
 })
-export class ColumnPanelDirective {
+export class ObColumnPanelDirective {
 	@HostBinding('class.collapsed') public collapsed = false;
 
 	toggle(): void {

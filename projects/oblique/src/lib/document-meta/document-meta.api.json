@@ -1,6 +1,6 @@
 [
   {
-    "name": "DocumentMetaService",
+    "name": "ObDocumentMetaService",
     "since": "2.0.0",
     "variables": [
       {

@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
-import {MockUnknownRouteComponent} from './mock-unknown-route.component';
+import {ObMockUnknownRouteComponent} from './mock-unknown-route.component';
 
-export {MockUnknownRouteComponent} from './mock-unknown-route.component';
+export {ObMockUnknownRouteComponent} from './mock-unknown-route.component';
 
 @NgModule({
-	declarations: [MockUnknownRouteComponent],
-	exports: [MockUnknownRouteComponent]
+	declarations: [ObMockUnknownRouteComponent],
+	exports: [ObMockUnknownRouteComponent]
 })
-export class MockUnknownRouteModule {
+export class ObMockUnknownRouteModule {
 }

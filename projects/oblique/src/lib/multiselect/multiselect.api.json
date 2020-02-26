@@ -1,8 +1,8 @@
 [
   {
-    "name": "MultiselectComponent",
-    "selector": "or-multiselect",
-    "exported": "orMultiselect",
+    "name": "ObMultiselectComponent",
+    "selector": "ob-multiselect",
+    "exported": "obMultiselect",
     "since": "2.0.0",
     "inputs": [
       {

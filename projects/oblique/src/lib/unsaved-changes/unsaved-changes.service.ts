@@ -1,15 +1,15 @@
 import {Inject, Injectable} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
-import {PopUpService} from '../pop-up/pop-up.service';
+import {ObPopUpService} from '../pop-up/pop-up.service';
 import {WINDOW} from '../utilities';
 
 //TODO: Handle modals
 @Injectable({providedIn: 'root'})
-export class UnsavedChangesService {
+export class ObUnsavedChangesService {
 	private readonly formList: { [key: string]: ControlContainer} = {};
 
-	constructor(private readonly translateService: TranslateService, private readonly popUpService: PopUpService, @Inject(WINDOW) window) {
+	constructor(private readonly translateService: TranslateService, private readonly popUpService: ObPopUpService, @Inject(WINDOW) window) {
 		window.addEventListener('beforeunload', e => this.onUnload(e));
 		window.addEventListener('unload', e => this.onUnload(e));
 	}

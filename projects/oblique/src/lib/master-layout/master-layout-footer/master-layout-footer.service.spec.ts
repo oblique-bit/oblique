@@ -1,19 +1,19 @@
 import {TestBed} from '@angular/core/testing';
-import {MasterLayoutFooterService} from './master-layout-footer.service';
-import {MasterLayoutEvent} from '../master-layout.utility';
+import {ObMasterLayoutFooterService} from './master-layout-footer.service';
+import {ObMasterLayoutEvent} from '../master-layout.utility';
 import {Observable, Subject} from 'rxjs';
 
 
 describe('MasterLayoutFooterService', () => {
-	let masterLayoutFooterService: MasterLayoutFooterService;
+	let masterLayoutFooterService: ObMasterLayoutFooterService;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			providers: [
-				MasterLayoutFooterService
+				ObMasterLayoutFooterService
 			]
 		});
-		masterLayoutFooterService = TestBed.get(MasterLayoutFooterService);
+		masterLayoutFooterService = TestBed.get(ObMasterLayoutFooterService);
 	});
 
 	it('should be created', () => {
@@ -24,7 +24,7 @@ describe('MasterLayoutFooterService', () => {
 
 		it('should get configEvents  when true', () => {
 			const spy = jest.spyOn(masterLayoutFooterService, 'configEvents', 'get');
-			let newValue: Observable<MasterLayoutEvent> = new Subject<MasterLayoutEvent>();
+			let newValue: Observable<ObMasterLayoutEvent> = new Subject<ObMasterLayoutEvent>();
 			newValue = masterLayoutFooterService.configEvents;
 			const mockResult = masterLayoutFooterService.configEvents;
 			expect(spy).toHaveBeenCalled();

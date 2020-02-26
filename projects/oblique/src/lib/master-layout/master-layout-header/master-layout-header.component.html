@@ -1,5 +1,5 @@
 <div class="header">
-	<ng-content select="[orHeader]" *ngIf="isCustom"></ng-content>
+	<ng-content select="[obHeader]" *ngIf="isCustom"></ng-content>
 	<ng-container *ngIf="!isCustom">
 		<div class="application-header-title">
 			<div class="application-brand">
@@ -8,14 +8,14 @@
 				</a>
 				<span class="application-brand-app-title">
 						<a [routerLink]="home" class="application-brand-link">
-							<ng-content select="[orHeaderTitle]"></ng-content>
+							<ng-content select="[obHeaderTitle]"></ng-content>
 						</a>
 					</span>
 			</div>
 			<ul class="header-controls header-toggle">
 				<li class="nav-item">
 					<a role="button" tabindex="0" title="Toggle application header"
-					   class="control-link" orMasterLayoutHeaderToggle>
+					   class="control-link" obMasterLayoutHeaderToggle>
 						<div class="application-header-toggle">
 							<span class="first-line"></span>
 							<span class="second-line"></span>
@@ -28,11 +28,11 @@
 		</div>
 		<div class="application-header-controls">
 			<h2 class="sr-only">{{'i18n.oblique.master-layout.header.controls.title' | translate}}</h2>
-			<ng-content select="[orLocales]" *ngIf="disabledLang"></ng-content>
+			<ng-content select="[obLocales]" *ngIf="disabledLang"></ng-content>
 			<ul class="header-controls header-locale" role="menu"
 				*ngIf="locales.length > 1 && !disabledLang">
 				<li class="control-item" role="menuitem" *ngFor="let locale of locales">
-					<button class="control-locale" orMasterLayoutHeaderToggle (click)="changeLang(locale.locale)"
+					<button class="control-locale" obMasterLayoutHeaderToggle (click)="changeLang(locale.locale)"
 							[class.active]="isLangActive(locale.locale)" [attr.id]="locale.id">
 						<span class="control-label">{{locale.locale}}</span>
 					</button>
@@ -46,6 +46,6 @@
 		</div>
 	</ng-container>
 </div>
-<or-master-layout-navigation [links]="navigation">
-	<ng-content select="[orNavigation]"></ng-content>
-</or-master-layout-navigation>
+<ob-master-layout-navigation [links]="navigation">
+	<ng-content select="[obNavigation]"></ng-content>
+</ob-master-layout-navigation>

@@ -3,11 +3,11 @@ import {Component, CUSTOM_ELEMENTS_SCHEMA, DebugElement, NO_ERRORS_SCHEMA} from 
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
-import {DatepickerComponent} from 'oblique';
+import {ObDatepickerComponent} from 'oblique';
 
 @Component({
 	template: `
-		<or-date-picker [formControl]="model"></or-date-picker>`
+		<ob-date-picker [formControl]="model"></ob-date-picker>`
 })
 class TestComponent {
 	model = new FormControl();
@@ -16,12 +16,12 @@ class TestComponent {
 describe('DatepickerComponent', () => {
 	let fixture: ComponentFixture<TestComponent>;
 	let component: TestComponent;
-	let datepicker: DatepickerComponent;
+	let datepicker: ObDatepickerComponent;
 	let button: DebugElement;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [TestComponent, DatepickerComponent],
+			declarations: [TestComponent, ObDatepickerComponent],
 			imports: [ReactiveFormsModule, NgbDatepickerModule],
 			schemas: [
 				CUSTOM_ELEMENTS_SCHEMA,
@@ -35,7 +35,7 @@ describe('DatepickerComponent', () => {
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 		button = fixture.debugElement.query(By.css('button'));
-		datepicker = fixture.debugElement.query(By.directive(DatepickerComponent)).injector.get(DatepickerComponent);
+		datepicker = fixture.debugElement.query(By.directive(ObDatepickerComponent)).injector.get(ObDatepickerComponent);
 	});
 
 	it('should toggle the NgbDatepicker on button click', () => {

@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
-import {MockSearchBoxDirective} from './mock-search-box.directive';
-import {MockSearchBoxComponent} from './mock-search-box.component';
+import {ObMockSearchBoxDirective} from './mock-search-box.directive';
+import {ObMockSearchBoxComponent} from './mock-search-box.component';
 
-export  {MockSearchBoxDirective} from './mock-search-box.directive';
-export {MockSearchBoxComponent} from './mock-search-box.component';
+export  {ObMockSearchBoxDirective} from './mock-search-box.directive';
+export {ObMockSearchBoxComponent} from './mock-search-box.component';
 
 @NgModule({
-	declarations: [MockSearchBoxDirective, MockSearchBoxComponent],
-	exports: [MockSearchBoxDirective, MockSearchBoxComponent]
+	declarations: [ObMockSearchBoxDirective, ObMockSearchBoxComponent],
+	exports: [ObMockSearchBoxDirective, ObMockSearchBoxComponent]
 })
-export class MockSearchBoxModule {
+export class ObMockSearchBoxModule {
 }

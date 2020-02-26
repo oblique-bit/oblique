@@ -14,12 +14,12 @@
 		 [style.max-height]="maxHeight" style="display: block; height: auto; overflow-y: auto;"
 		 [attr.aria-hidden]="!isVisible">
 		<div class="dropdown-item" *ngIf="enableSearch">
-			<or-filter-box [(pattern)]="searchFilterText" [modelOptions]="{standalone: true}"
-						   placeholder="{{ texts.searchPlaceholder | translate}}" size="sm" #orFilterBox>
+			<ob-filter-box [(pattern)]="searchFilterText" [modelOptions]="{standalone: true}"
+						   placeholder="{{ texts.searchPlaceholder | translate}}" size="sm" #obFilterBox>
 				<ng-template #prepend>
 					<span class="input-group-text fa fa-search" [id]="idPrefix + '-search'" [attr.aria-label]="texts.searchPlaceholder | translate"></span>
 				</ng-template>
-			</or-filter-box>
+			</ob-filter-box>
 		</div>
 		<div class="dropdown-divider divider" *ngIf="enableSearch"></div>
 		<button [id]="idPrefix + '-check_all'" class="dropdown-item multiselect-control multiselect-control-check"

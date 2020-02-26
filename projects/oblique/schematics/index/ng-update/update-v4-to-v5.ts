@@ -64,7 +64,9 @@ export class UpdateV4toV5 implements IMigratable {
 				this.migrateInterceptor(),
 				this.migrateTranslationFiles(),
 				this.migrateTranslationCallsTS(),
-				this.migrateTranslationCallsHTML()
+				this.migrateTranslationCallsHTML(),
+				this.migratePrefixesTS(),
+				this.migratePrefixesHTML()
 			])(tree, _context);
 		};
 	}
@@ -429,6 +431,40 @@ export class UpdateV4toV5 implements IMigratable {
 			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.notification.type.error'), 'i18n.oblique.notification.type.error');
 			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.topControl.backToTop'), 'i18n.oblique.scrolling.topControl');
 		}
+	}
+
+	private migratePrefixesTS(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			_context.logger.info(colors.blue(`- Prefixes in TypeScript`) + colors.green(` ✔`));
+			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
+			const toApply = (filePath: string) => {
+				UpdateV4toV5.util.updateClassIdentifiers(tree, filePath);
+				// clean up since it's not always deterministic
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(`ObOb`, 'g'), `Ob`);
+			};
+			return chain([
+				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.ts')
+			])(tree, _context);
+		};
+	}
+
+	private migratePrefixesHTML(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			_context.logger.info(colors.blue(`- Prefixes in HTML`) + colors.green(` ✔`));
+			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
+			const toApply = (filePath: string) => {
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/<or-/g), '<ob-');
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/<\/or-/g), '</ob-');
+				const matches = UpdateV4toV5.util.getFile(tree, filePath).match(/ or([^\s])/g) || [];
+				matches.forEach((match) => {
+					const content = UpdateV4toV5.util.getFile(tree, filePath);
+					tree.overwrite(filePath, content.replace(match, match.replace('or', 'ob')));
+				});
+			};
+			return chain([
+				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.html')
+			])(tree, _context);
+		};
 	}
 
 }

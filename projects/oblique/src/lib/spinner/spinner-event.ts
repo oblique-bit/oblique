@@ -1,4 +1,4 @@
-export interface SpinnerEvent {
+export interface ObISpinnerEvent {
 	active: boolean;
 	channel: string;
 }

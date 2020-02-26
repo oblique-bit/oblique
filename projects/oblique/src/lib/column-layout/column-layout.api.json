@@ -1,8 +1,8 @@
 [
   {
-    "name": "ColumnLayoutComponent",
-    "selector": "or-column-layout",
-    "exported": "orColumnLayout",
+    "name": "ObColumnLayoutComponent",
+    "selector": "ob-column-layout",
+    "exported": "obColumnLayout",
     "since": "2.0.0",
     "inputs": [
       {

@@ -1,14 +1,14 @@
-import {MultiselectSearchPipe} from './multiselect-search.pipe';
+import {ObMultiselectSearchPipe} from './multiselect-search.pipe';
 
 describe('MultiselectSearchPipe', () => {
-	let pipe: MultiselectSearchPipe;
+	let pipe: ObMultiselectSearchPipe;
 	let multiselectDropdownMock;
 
 	beforeEach(() => {
 		multiselectDropdownMock = {
 			formatOptionForLabel: jest.fn()
 		};
-		pipe = new MultiselectSearchPipe(multiselectDropdownMock);
+		pipe = new ObMultiselectSearchPipe(multiselectDropdownMock);
 	});
 
 	describe('with options as string array', () => {

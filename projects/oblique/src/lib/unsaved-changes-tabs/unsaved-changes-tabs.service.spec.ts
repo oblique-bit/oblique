@@ -3,24 +3,24 @@ import {EventEmitter} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {NgbTabChangeEvent, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateService} from '@ngx-translate/core';
-import {MockTranslateService} from '../_mocks/mock-translate.service';
-import {UnsavedChangesService} from 'oblique';
-import {MockUnsavedChangesService} from '../unsaved-changes/mock/mock-unsaved-changes.service';
-import {UnsavedChangesTabsService} from './unsaved-changes-tabs.service';
+import {ObMockTranslateService} from '../_mocks/mock-translate.service';
+import {ObUnsavedChangesService} from 'oblique';
+import {ObMockUnsavedChangesService} from '../unsaved-changes/mock/mock-unsaved-changes.service';
+import {ObUnsavedChangesTabsService} from './unsaved-changes-tabs.service';
 
 describe('UnsavedChangesTabsService', () => {
-	let unsavedChangesService: UnsavedChangesService;
-	let unsavedChangesTabService: UnsavedChangesTabsService;
+	let unsavedChangesService: ObUnsavedChangesService;
+	let unsavedChangesTabService: ObUnsavedChangesTabsService;
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			providers: [
-				UnsavedChangesTabsService,
-				{provide: UnsavedChangesService, useClass: MockUnsavedChangesService},
-				{provide: TranslateService, useClass: MockTranslateService}
+				ObUnsavedChangesTabsService,
+				{provide: ObUnsavedChangesService, useClass: ObMockUnsavedChangesService},
+				{provide: TranslateService, useClass: ObMockTranslateService}
 			]
 		});
-		unsavedChangesService = TestBed.get(UnsavedChangesService);
-		unsavedChangesTabService = TestBed.get(UnsavedChangesTabsService);
+		unsavedChangesService = TestBed.get(ObUnsavedChangesService);
+		unsavedChangesTabService = TestBed.get(ObUnsavedChangesTabsService);
 	});
 
 	describe('listenTo()', () => {

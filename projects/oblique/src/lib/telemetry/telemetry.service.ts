@@ -2,12 +2,12 @@ import {Inject, Injectable, InjectionToken, isDevMode, Optional} from '@angular/
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {EMPTY, fromEvent, race} from 'rxjs';
 import {catchError} from 'rxjs/operators';
-import {TelemetryMessage} from './telemetry-message';
+import {ObITelemetryMessage} from './telemetry-message';
 import {WINDOW} from '../utilities';
 
 export const TELEMETRY_DISABLE = new InjectionToken<boolean>('TELEMETRY_DISABLE');
 
-interface ModuleList {
+interface ObIModuleList {
 	timestamp: number;
 	modules: string[];
 }
@@ -15,11 +15,11 @@ interface ModuleList {
 @Injectable({
 	providedIn: 'root'
 })
-export class TelemetryService {
+export class ObTelemetryService {
 	private static readonly telemetryToken = 'OBLIQUE_TELEMETRY';
 	private static readonly oneDay = 60 * 60 * 24 * 1000;
 	private readonly TELEMETRY_URL = 'https://oblique-telemetry.bit.admin.ch/api/v1/telemetry';
-	private readonly telemetryRecords: Array<TelemetryMessage> = new Array<TelemetryMessage>();
+	private readonly telemetryRecords: Array<ObITelemetryMessage> = new Array<ObITelemetryMessage>();
 	private readonly disableTokenValue: boolean;
 	private readonly window: Window;
 	private readonly headers = new HttpHeaders().set('telemetry-api-key', '4E28E649-C2B2-4985-9409-CFC905A34E92');
@@ -45,19 +45,19 @@ export class TelemetryService {
 		}
 
 		const pkg = require('package.json');
-		const msg = TelemetryService.createMessage(mod, pkg);
+		const msg = ObTelemetryService.createMessage(mod, pkg);
 
 		this.storeMessage(msg);
 	}
 
-	private static areEqual(msg1: TelemetryMessage, msg2: TelemetryMessage): boolean {
+	private static areEqual(msg1: ObITelemetryMessage, msg2: ObITelemetryMessage): boolean {
 		return msg1.applicationName === msg2.applicationName &&
 			msg1.applicationVersion === msg2.applicationVersion &&
 			msg1.obliqueModuleName === msg2.obliqueModuleName &&
 			msg1.obliqueVersion === msg2.obliqueVersion;
 	}
 
-	private static createMessage(mod: any, pkg: any): TelemetryMessage {
+	private static createMessage(mod: any, pkg: any): ObITelemetryMessage {
 		const obliqueModuleName = mod ? mod.name : 'Unknown Module';
 		const obliqueVersion = pkg.dependencies['@oblique/oblique'];
 		const name = pkg ? pkg.name : 'Unknown package name';
@@ -72,20 +72,20 @@ export class TelemetryService {
 	}
 
 	private static isTooOld(timestamp): boolean {
-		return +new Date() - timestamp > TelemetryService.oneDay;
+		return +new Date() - timestamp > ObTelemetryService.oneDay;
 	}
 
-	private static getModuleList(): ModuleList {
+	private static getModuleList(): ObIModuleList {
 		try {
-			return JSON.parse(localStorage.getItem(TelemetryService.telemetryToken)) || {} as ModuleList;
+			return JSON.parse(localStorage.getItem(ObTelemetryService.telemetryToken)) || {} as ObIModuleList;
 		} catch (e) {
-			return {} as ModuleList;
+			return {} as ObIModuleList;
 		}
 	}
 
 
-	private storeMessage(msg: TelemetryMessage): void {
-		const existing = this.telemetryRecords.find(r => TelemetryService.areEqual(r, msg));
+	private storeMessage(msg: ObITelemetryMessage): void {
+		const existing = this.telemetryRecords.find(r => ObTelemetryService.areEqual(r, msg));
 
 		if (!existing) {
 			//only add the message if there is no equal message in the list already
@@ -97,10 +97,10 @@ export class TelemetryService {
 		if (this.isTelemetryDisabled()) {
 			return;
 		}
-		const moduleList = TelemetryService.getModuleList();
+		const moduleList = ObTelemetryService.getModuleList();
 		if (!moduleList.timestamp || !moduleList.modules || this.hasMissingModule(moduleList)) {
 			this.sendAndStoreData();
-		} else if (TelemetryService.isTooOld(moduleList.timestamp)) {
+		} else if (ObTelemetryService.isTooOld(moduleList.timestamp)) {
 			this.sendAndStoreData(moduleList.modules);
 		}
 	}
@@ -109,7 +109,7 @@ export class TelemetryService {
 		return !isDevMode() || this.disableTokenValue;
 	}
 
-	private hasMissingModule(modules: ModuleList): boolean {
+	private hasMissingModule(modules: ObIModuleList): boolean {
 		return this.telemetryRecords.reduce((missing, name) => missing && modules.modules.includes(name.obliqueModuleName), false);
 	}
 
@@ -118,7 +118,7 @@ export class TelemetryService {
 			.pipe(catchError(() => EMPTY))
 			.subscribe();
 
-		localStorage.setItem(TelemetryService.telemetryToken, JSON.stringify({
+		localStorage.setItem(ObTelemetryService.telemetryToken, JSON.stringify({
 			modules: modules || this.telemetryRecords.map(value => value.obliqueModuleName),
 			timestamp: +new Date()
 		}));

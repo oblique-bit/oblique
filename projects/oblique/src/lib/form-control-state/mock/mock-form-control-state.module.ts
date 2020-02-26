@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 
-import {MockFormControlStateDirective} from './mock-form-control-state.directive';
+import {ObMockFormControlStateDirective} from './mock-form-control-state.directive';
 
-export {MockFormControlStateDirective} from './mock-form-control-state.directive';
+export {ObMockFormControlStateDirective} from './mock-form-control-state.directive';
 
 @NgModule({
-	declarations: [MockFormControlStateDirective],
-	exports: [MockFormControlStateDirective]
+	declarations: [ObMockFormControlStateDirective],
+	exports: [ObMockFormControlStateDirective]
 })
-export class MockFormControlStateModule {
+export class ObMockFormControlStateModule {
 }

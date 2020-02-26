@@ -4,7 +4,7 @@ import {Directive, Input} from '@angular/core';
 	selector: '[obSelectable]',
 	exportAs: 'obSelectable'
 })
-export class MockSelectableDirective {
+export class ObMockSelectableDirective {
 	@Input() collection = 'unnamed';
 	@Input() selected = false;
 	@Input() value: any;

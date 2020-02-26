@@ -1,7 +1,7 @@
 [
 	{
-		"name": "NavigatorComponent",
-		"selector": "or-navigator",
+		"name": "ObNavigatorComponent",
+		"selector": "ob-navigator",
 		"since": "2.0.0"
 	}
 ]

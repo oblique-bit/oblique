@@ -1,19 +1,19 @@
 import {Component, Input} from '@angular/core';
-import {INotification} from '../notification.interfaces';
+import {ObINotification} from '../notification.interfaces';
 
 @Component({
-	selector: 'or-notification',
-	exportAs: 'orNotification',
+	selector: 'ob-notification',
+	exportAs: 'obNotification',
 	template: ''
 })
-export class MockNotificationComponent {
+export class ObMockNotificationComponent {
 	static REMOVE_DELAY = 350;
 	@Input() channel: string;
 	customChannel = false;
-	notifications: INotification[] = [];
+	notifications: ObINotification[] = [];
 	variant: { [type: string]: string } = {};
 
-	open(notification: INotification): void {
+	open(notification: ObINotification): void {
 	}
 
 	close(notification): void {

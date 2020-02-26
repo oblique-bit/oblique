@@ -2,10 +2,10 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 
 @Pipe({
-	name: 'orTranslateParams',
+	name: 'obTranslateParams',
 	pure: false
 })
-export class TranslateParamsPipe implements PipeTransform {
+export class ObTranslateParamsPipe implements PipeTransform {
 
 	constructor(private readonly translate: TranslateService) {
 	}

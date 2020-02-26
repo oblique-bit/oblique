@@ -1,24 +1,24 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {StickySampleComponent} from './sticky-sample.component';
+import {ObStickySampleComponent} from './sticky-sample.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {ObliqueTestingModule} from 'oblique';
 
 describe('StickySampleComponent', () => {
-	let component: StickySampleComponent;
-	let fixture: ComponentFixture<StickySampleComponent>;
+	let component: ObStickySampleComponent;
+	let fixture: ComponentFixture<ObStickySampleComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [ObliqueTestingModule],
-			declarations: [StickySampleComponent],
+			declarations: [ObStickySampleComponent],
 			schemas: [NO_ERRORS_SCHEMA]
 		})
 			.compileComponents();
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(StickySampleComponent);
+		fixture = TestBed.createComponent(ObStickySampleComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

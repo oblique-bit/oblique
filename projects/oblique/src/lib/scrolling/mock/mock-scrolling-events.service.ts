@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 
 @Injectable()
-export class MockScrollingEvents {
+export class ObMockScrollingEvents {
 
 	get isScrolled(): Observable<boolean> {
 		return of(true);

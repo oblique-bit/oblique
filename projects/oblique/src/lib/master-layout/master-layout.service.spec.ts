@@ -1,22 +1,22 @@
 import {TestBed} from '@angular/core/testing';
-import {MasterLayoutConfig, MasterLayoutNavigationService, MasterLayoutService} from 'oblique';
+import {ObMasterLayoutConfig, ObMasterLayoutNavigationService, ObMasterLayoutService} from 'oblique';
 import {TranslateService} from '@ngx-translate/core';
 import {RouterTestingModule} from '@angular/router/testing';
-import {MasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
-import {MasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
-import {MasterLayoutComponentService} from './master-layout/master-layout.component.service';
-import {MockTranslateService} from '../_mocks/mock-translate.service';
-import {MockMasterLayoutConfig} from './mock/mock-master-layout.config';
+import {ObMasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
+import {ObMasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
+import {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
+import {ObMockTranslateService} from '../_mocks/mock-translate.service';
+import {ObMockMasterLayoutConfig} from './mock/mock-master-layout.config';
 import {
-	MockMasterLayoutComponentService,
-	MockMasterLayoutFooterService,
-	MockMasterLayoutHeaderService,
-	MockMasterLayoutNavigationService,
-	MockMasterLayoutService
+	ObMockMasterLayoutComponentService,
+	ObMockMasterLayoutFooterService,
+	ObMockMasterLayoutHeaderService,
+	ObMockMasterLayoutNavigationService,
+	ObMockMasterLayoutService
 } from './mock/mock-master-layout.module';
 
 describe('MasterLayoutService', () => {
-	let masterLayoutService: MasterLayoutService;
+	let masterLayoutService: ObMasterLayoutService;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
@@ -24,16 +24,16 @@ describe('MasterLayoutService', () => {
 				RouterTestingModule
 			],
 			providers: [
-				{provide: TranslateService, useClass: MockTranslateService},
-				{provide: MasterLayoutConfig, useClass: MockMasterLayoutConfig},
-				{provide: MasterLayoutHeaderService, useClass: MockMasterLayoutHeaderService},
-				{provide: MasterLayoutFooterService, useClass: MockMasterLayoutFooterService},
-				{provide: MasterLayoutNavigationService, useClass: MockMasterLayoutNavigationService},
-				{provide: MasterLayoutComponentService, useClass: MockMasterLayoutComponentService},
-				{provide: MasterLayoutService, useClass: MockMasterLayoutService},
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
+				{provide: ObMasterLayoutHeaderService, useClass: ObMockMasterLayoutHeaderService},
+				{provide: ObMasterLayoutFooterService, useClass: ObMockMasterLayoutFooterService},
+				{provide: ObMasterLayoutNavigationService, useClass: ObMockMasterLayoutNavigationService},
+				{provide: ObMasterLayoutComponentService, useClass: ObMockMasterLayoutComponentService},
+				{provide: ObMasterLayoutService, useClass: ObMockMasterLayoutService},
 			],
 		});
-		masterLayoutService = TestBed.get(MasterLayoutService);
+		masterLayoutService = TestBed.get(ObMasterLayoutService);
 	});
 
 	it('should be created', () => {

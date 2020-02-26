@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, NgForm, Validators, ValidationErrors} from '@angular/forms';
-import {NotificationService} from 'oblique';
+import {ObNotificationService} from 'oblique';
 
 @Component({
 	selector: 'app-form-control-state-sample',
@@ -18,7 +18,7 @@ import {NotificationService} from 'oblique';
 export class FormControlStateSampleComponent {
 	formData: FormGroup;
 
-	constructor(private readonly notificationService: NotificationService, formBuilder: FormBuilder) {
+	constructor(private readonly notificationService: ObNotificationService, formBuilder: FormBuilder) {
 		this.formData = formBuilder.group({
 			numberOptional: '',
 			numberMandatory: ['', this.customValidator()],

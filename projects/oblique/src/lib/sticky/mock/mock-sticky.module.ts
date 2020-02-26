@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 
-import {MockStickyComponent} from './mock-sticky.component';
+import {ObMockStickyComponent} from './mock-sticky.component';
 
-export {MockStickyComponent} from './mock-sticky.component';
+export {ObMockStickyComponent} from './mock-sticky.component';
 
 @NgModule({
-	declarations: [MockStickyComponent],
-	exports: [MockStickyComponent]
+	declarations: [ObMockStickyComponent],
+	exports: [ObMockStickyComponent]
 })
-export class MockStickyModule {
+export class ObMockStickyModule {
 }

@@ -1,10 +1,10 @@
 import {Component, QueryList, TemplateRef} from '@angular/core';
 
 @Component({
-	selector: 'or-master-layout-footer',
+	selector: 'ob-master-layout-footer',
 	template: ''
 })
-export class MockMasterLayoutFooterComponent {
+export class ObMockMasterLayoutFooterComponent {
 	home = '';
 	isCustom = true;
 	isSmall = true;

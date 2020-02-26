@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
 @Injectable({providedIn: 'root'})
-export class MultiselectConfig {
+export class ObMultiselectConfig {
 	enableAllSelectedText = true;
 	dynamicTitleMaxItems = 3;
 	enableSearch = false;

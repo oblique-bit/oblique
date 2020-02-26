@@ -1,28 +1,28 @@
 import {NgModule} from '@angular/core';
-import {MockMultiselectComponent} from './mock-multiselect.component';
-import {MockMultiselectSearchPipe} from './mock-multiselect-search.pipe';
-import {MockMultiselectConfig} from './mock-multiselect.config';
-import {MockMultiselectTexts} from './mock-multiselect.texts';
-import {MultiselectConfig, MultiselectTexts} from '../multiselect.module';
+import {ObMockMultiselectComponent} from './mock-multiselect.component';
+import {ObMockMultiselectSearchPipe} from './mock-multiselect-search.pipe';
+import {ObMockMultiselectConfig} from './mock-multiselect.config';
+import {ObMockMultiselectTexts} from './mock-multiselect.texts';
+import {ObMultiselectConfig, ObMultiselectTexts} from '../multiselect.module';
 
-export {MockMultiselectComponent} from './mock-multiselect.component';
-export {MockMultiselectSearchPipe} from './mock-multiselect-search.pipe';
-export {MockMultiselectConfig} from './mock-multiselect.config';
-export {MockMultiselectTexts} from './mock-multiselect.texts';
+export {ObMockMultiselectComponent} from './mock-multiselect.component';
+export {ObMockMultiselectSearchPipe} from './mock-multiselect-search.pipe';
+export {ObMockMultiselectConfig} from './mock-multiselect.config';
+export {ObMockMultiselectTexts} from './mock-multiselect.texts';
 
 @NgModule({
 	declarations: [
-		MockMultiselectComponent,
-		MockMultiselectSearchPipe
+		ObMockMultiselectComponent,
+		ObMockMultiselectSearchPipe
 	],
 	exports: [
-		MockMultiselectComponent,
-		MockMultiselectSearchPipe
+		ObMockMultiselectComponent,
+		ObMockMultiselectSearchPipe
 	],
 	providers: [
-		{provide: MultiselectConfig, useClass: MockMultiselectConfig},
-		{provide: MultiselectTexts, useClass: MockMultiselectTexts}
+		{provide: ObMultiselectConfig, useClass: ObMockMultiselectConfig},
+		{provide: ObMultiselectTexts, useClass: ObMockMultiselectTexts}
 	]
 })
-export class MockMultiselectModule {
+export class ObMockMultiselectModule {
 }

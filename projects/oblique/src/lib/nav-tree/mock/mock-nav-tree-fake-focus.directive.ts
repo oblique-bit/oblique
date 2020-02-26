@@ -1,10 +1,10 @@
 import {Directive, ElementRef, Input} from '@angular/core';
 
 @Directive({
-	selector: '[orNavTreeFakeFocus]'
+	selector: '[obNavTreeFakeFocus]'
 })
-export class MockNavTreeFakeFocusDirective {
-	static readonly EVENT_TOGGLE_COLLAPSED = 'or.navTree.item.toggleCollapsed';
+export class ObMockNavTreeFakeFocusDirective {
+	static readonly EVENT_TOGGLE_COLLAPSED = 'ob.navTree.item.toggleCollapsed';
 	static readonly KEY_DOWN_DEBOUNCE_MILLIS = 10;
 	static readonly KEY_CODES = {
 		UP: 'ArrowUp',
@@ -31,7 +31,7 @@ export class MockNavTreeFakeFocusDirective {
 		ITEM_WRAPPER: '.nav-tree.expanded:not(.disabled) > li:not(.nav-header):not(.disabled)'
 	};
 
-	@Input('orNavTreeFakeFocus')
+	@Input('obNavTreeFakeFocus')
 	set focusInputElement(element: any) {
 	}
 

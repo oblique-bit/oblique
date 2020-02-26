@@ -8,10 +8,10 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
-	selector: 'or-chips',
+	selector: 'ob-chips',
 	templateUrl: './chips.component.html'
 })
-export class ChipsComponent implements OnInit {
+export class ObChipsComponent implements OnInit {
 	showAutocompleteForm = false;
 	color: ThemePalette = null;
 	variant: string = null;

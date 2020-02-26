@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MasterLayoutService, ScrollMode} from 'oblique';
+import {ObMasterLayoutService, ObEScrollMode} from 'oblique';
 
 @Component({
 	selector: 'master-layout-sample',
@@ -7,7 +7,7 @@ import {MasterLayoutService, ScrollMode} from 'oblique';
 })
 export class MasterLayoutSampleComponent {
 	coverLayout = false;
-	scrollMode = ScrollMode;
+	scrollMode = ObEScrollMode;
 
 	get applicationFixed() {
 		return this.masterLayout.layout.isFixed;
@@ -93,7 +93,7 @@ export class MasterLayoutSampleComponent {
 		return this.masterLayout.navigation.scrollMode;
 	}
 
-	set navigationScrollMode(value: ScrollMode) {
+	set navigationScrollMode(value: ObEScrollMode) {
 		this.masterLayout.navigation.scrollMode = value;
 	}
 
@@ -105,7 +105,7 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.layout.hasCover = value;
 	}
 
-	constructor(private readonly masterLayout: MasterLayoutService) {
+	constructor(private readonly masterLayout: ObMasterLayoutService) {
 		this.coverLayout = this.masterLayout.layout.hasCover;
 	}
 }

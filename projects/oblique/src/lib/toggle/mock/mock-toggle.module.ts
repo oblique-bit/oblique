@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 
-import {MockToggleDirective} from './mock-toggle.directive';
+import {ObMockToggleDirective} from './mock-toggle.directive';
 
-export {MockToggleDirective} from './mock-toggle.directive';
+export {ObMockToggleDirective} from './mock-toggle.directive';
 
 @NgModule({
-	declarations: [MockToggleDirective],
-	exports: [MockToggleDirective]
+	declarations: [ObMockToggleDirective],
+	exports: [ObMockToggleDirective]
 })
-export class MockToggleModule {
+export class ObMockToggleModule {
 }

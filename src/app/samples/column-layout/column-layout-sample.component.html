@@ -1,17 +1,17 @@
 <h2>{{'i18n.routes.samples.column-layout.title' | translate}}</h2>
-<or-description component="column-layout"></or-description>
-<or-column-layout [left]="false" [right]="true">
-	<or-column-layout [left]="left" [right]="right" [noLayout]="noLayout" [wider]="wider"#orColumnLayout column-main-content>
+<ob-description component="column-layout"></ob-description>
+<ob-column-layout [left]="false" [right]="true">
+	<ob-column-layout [left]="left" [right]="right" [noLayout]="noLayout" [wider]="wider"#obColumnLayout column-main-content>
 		<ng-container column-left-content>
 			<h3 class="nav-header-title">Left Column</h3>
 		</ng-container>
 		<ng-container column-main-content>
 			<h1>Three-Column Layout</h1>
 			<p>
-				<or-search-box [items]="searchItems"></or-search-box>
+				<ob-search-box [items]="searchItems"></ob-search-box>
 			</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla finibus orci, vitae sollicitudin massa laoreet vel. Donec
-				libero quam, dictum quis orci ac, hendrerit egestas urna. Ut cursus euismod leo ut vulputate. Vestibulum luctus sapien a finibus
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla finibus obci, vitae sollicitudin massa laoreet vel. Donec
+				libero quam, dictum quis obci ac, hendrerit egestas urna. Ut cursus euismod leo ut vulputate. Vestibulum luctus sapien a finibus
 				ornare. Integer bibendum dui eu lacus tempor, eget mollis turpis pharetra. Ut nec nulla nec justo ultricies tempor at non ante.
 				Aliquam diam turpis, tincidunt sit amet tincidunt viverra, suscipit sed metus. Fusce et rhoncus tortor.</p>
 			<p>Mauris facilisis leo eu convallis luctus. Sed vel est porta, tempor ex vel, finibus arcu. Suspendisse id consectetur leo. Ut at enim
@@ -34,7 +34,7 @@
 		<ng-container column-right-content>
 			<h3 class="nav-header-title">Right Column</h3>
 		</ng-container>
-	</or-column-layout>
+	</ob-column-layout>
 	<ng-container column-right-content>
 		<h3>Controls</h3>
 		<div>
@@ -69,5 +69,5 @@
 			</div>
 		</div>
 	</ng-container>
-</or-column-layout>
-<or-api component="column-layout"></or-api>
+</ob-column-layout>
+<ob-api component="column-layout"></ob-api>

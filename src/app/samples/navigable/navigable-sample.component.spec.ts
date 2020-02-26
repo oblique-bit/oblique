@@ -1,14 +1,14 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {NavigableDirective, NavigableGroupComponent} from 'oblique';
+import {ObNavigableDirective, ObNavigableGroupComponent} from 'oblique';
 import {NavigableSampleComponent} from './navigable-sample.component';
 import {ObliqueTestingModule} from 'oblique';
 
 describe('NavigableSampleComponent', () => {
 	let component: NavigableSampleComponent;
-	let navigableGroup: NavigableGroupComponent;
-	let navigables: NavigableDirective[];
+	let navigableGroup: ObNavigableGroupComponent;
+	let navigables: ObNavigableDirective[];
 	let fixture: ComponentFixture<NavigableSampleComponent>;
 
 	beforeEach(async(() => {
@@ -28,9 +28,9 @@ describe('NavigableSampleComponent', () => {
 		fixture = TestBed.createComponent(NavigableSampleComponent);
 		fixture.detectChanges();
 		component = fixture.componentInstance;
-		navigableGroup = fixture.debugElement.query(By.directive(NavigableGroupComponent)).injector.get(NavigableGroupComponent);
-		navigables = fixture.debugElement.queryAll(By.directive(NavigableDirective)).map(child => {
-			return child.injector.get(NavigableDirective);
+		navigableGroup = fixture.debugElement.query(By.directive(ObNavigableGroupComponent)).injector.get(ObNavigableGroupComponent);
+		navigables = fixture.debugElement.queryAll(By.directive(ObNavigableDirective)).map(child => {
+			return child.injector.get(ObNavigableDirective);
 		});
 	}));
 

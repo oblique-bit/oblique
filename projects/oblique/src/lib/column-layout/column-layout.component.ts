@@ -13,36 +13,36 @@ import {
 } from '@angular/core';
 import {filter} from 'rxjs/operators';
 import {merge} from 'rxjs';
-import {ColumnPanelDirective} from './column-panel.directive';
-import {ScrollingEvents} from '../scrolling/scrolling-events';
-import {MasterLayoutService} from '../master-layout/master-layout.service';
-import {MasterLayoutEventValues} from '../master-layout/master-layout.utility';
+import {ObColumnPanelDirective} from './column-panel.directive';
+import {ObScrollingEvents} from '../scrolling/scrolling-events';
+import {ObMasterLayoutService} from '../master-layout/master-layout.service';
+import {ObEMasterLayoutEventValues} from '../master-layout/master-layout.utility';
 import {WINDOW} from '../utilities';
 
 @Component({
-	selector: 'or-column-layout',
-	exportAs: 'orColumnLayout',
+	selector: 'ob-column-layout',
+	exportAs: 'obColumnLayout',
 	templateUrl: './column-layout.component.html',
 	styleUrls: ['./column-layout.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	// tslint:disable-next-line:no-host-metadata-property
 	host: {class: 'column-layout'}
 })
-export class ColumnLayoutComponent implements AfterViewInit {
+export class ObColumnLayoutComponent implements AfterViewInit {
 	@Input() left = true;
 	@Input() right = true;
 	@Input() @HostBinding('class.wider-columns') wider = false;
 	@Input() @HostBinding('class.no-layout') noLayout = false;
-	@ViewChild('columnLeft') private readonly columnLeft: ColumnPanelDirective;
-	@ViewChild('columnRight') private readonly columnRight: ColumnPanelDirective;
+	@ViewChild('columnLeft') private readonly columnLeft: ObColumnPanelDirective;
+	@ViewChild('columnRight') private readonly columnRight: ObColumnPanelDirective;
 	@ViewChildren('columnToggle') private readonly toggles: QueryList<ElementRef>;
 	private readonly window: Window;
 
 	constructor(
 		private readonly el: ElementRef,
 		private readonly renderer: Renderer2,
-		private readonly scroll: ScrollingEvents,
-		private readonly master: MasterLayoutService,
+		private readonly scroll: ObScrollingEvents,
+		private readonly master: ObMasterLayoutService,
 		@Inject(WINDOW) window
 	) {
 		this.window = window; // because AoT don't accept interfaces as DI
@@ -51,7 +51,7 @@ export class ColumnLayoutComponent implements AfterViewInit {
 	ngAfterViewInit() {
 		merge(
 			this.scroll.scrolled.pipe(filter(() => !this.master.layout.isFixed)),
-			this.master.layout.configEvents.pipe(filter(evt => evt.name === MasterLayoutEventValues.FIXED))
+			this.master.layout.configEvents.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.FIXED))
 		).subscribe(() => this.center());
 	}
 
@@ -79,7 +79,7 @@ export class ColumnLayoutComponent implements AfterViewInit {
 
 	private center(): void {
 		const dimension = this.el.nativeElement.getBoundingClientRect();
-		const middle = ColumnLayoutComponent.visibleHeight(dimension, this.window) / 2;
+		const middle = ObColumnLayoutComponent.visibleHeight(dimension, this.window) / 2;
 		const top = (this.master.layout.isFixed || this.window.innerHeight > dimension.height) ? '50%' : `${middle}px`;
 		this.toggles.forEach(toggle => this.renderer.setStyle(toggle.nativeElement, 'top', top));
 	}

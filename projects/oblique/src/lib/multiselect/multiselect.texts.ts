@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
 @Injectable({providedIn: 'root'})
-export class MultiselectTexts {
+export class ObMultiselectTexts {
 	checkAll = 'i18n.oblique.multiselect.checkAll';
 	uncheckAll = 'i18n.oblique.multiselect.uncheckAll';
 	checked = 'i18n.oblique.multiselect.checked';

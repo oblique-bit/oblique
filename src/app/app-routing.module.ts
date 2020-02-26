@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {UnknownRouteModule} from 'oblique';
+import {ObUnknownRouteModule} from 'oblique';
 import {HomePageComponent} from './home/home.page';
 
 const appRoutes: Routes = [
@@ -16,7 +16,7 @@ const appRoutes: Routes = [
 @NgModule({
 	imports: [
 		RouterModule.forRoot(appRoutes),
-		UnknownRouteModule
+		ObUnknownRouteModule
 	],
 	exports: [
 		RouterModule

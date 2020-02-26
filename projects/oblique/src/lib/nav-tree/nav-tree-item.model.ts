@@ -3,11 +3,11 @@
  *
  * @see NavTreeComponent
  */
-export class NavTreeItemModel {
+export class ObNavTreeItemModel {
 	id: string;
 	label: string;
 
-	items?: NavTreeItemModel[];
+	items?: ObNavTreeItemModel[];
 
 	path?: string; // See `routerLink` docs under https://angular.io/api/router/RouterLink
 	fragment?: string; // See `fragment` docs under https://angular.io/api/router/RouterLink
@@ -16,12 +16,12 @@ export class NavTreeItemModel {
 	disabled ? = false;
 	collapsed ? = false;
 
-	parent?: NavTreeItemModel; // Reference to parent, if any.
+	parent?: ObNavTreeItemModel; // Reference to parent, if any.
 
 	// All nested routes, since root nav item:
 	routes: any[] = [];
 
-	constructor(json: any, parent?: NavTreeItemModel) {
+	constructor(json: any, parent?: ObNavTreeItemModel) {
 
 		Object.assign(this, json);
 		if (parent) {
@@ -36,7 +36,7 @@ export class NavTreeItemModel {
 		// Convert all sub items:
 		if (Array.isArray(json.items)) {
 			this.items = json.items.map((item) => {
-				return new NavTreeItemModel(item, this);
+				return new ObNavTreeItemModel(item, this);
 			});
 		}
 	}

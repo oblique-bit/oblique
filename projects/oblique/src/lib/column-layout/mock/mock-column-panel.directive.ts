@@ -1,10 +1,10 @@
 import {Directive} from '@angular/core';
 
 @Directive({
-	selector: '[orColumnPanel]',
-	exportAs: 'orColumnPanel'
+	selector: '[obColumnPanel]',
+	exportAs: 'obColumnPanel'
 })
-export class MockColumnPanelDirective {
+export class ObMockColumnPanelDirective {
 	toggle(): void {
 	}
 }

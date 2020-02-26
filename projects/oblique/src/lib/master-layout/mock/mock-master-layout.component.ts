@@ -1,15 +1,15 @@
 import {Component, ElementRef, Input, QueryList, TemplateRef} from '@angular/core';
-import {ORNavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
+import {ObNavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
 
 @Component({
-	selector: 'or-master-layout',
-	exportAs: 'orMasterLayout',
+	selector: 'ob-master-layout',
+	exportAs: 'obMasterLayout',
 	template: ''
 })
-export class MockMasterLayoutComponent {
+export class ObMockMasterLayoutComponent {
 	home = '';
 	url: string;
-	@Input() navigation: ORNavigationLink[] = [];
+	@Input() navigation: ObNavigationLink[] = [];
 	isFixed = true;
 	hasCover = true;
 	hasLayout = true;

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {ThemeService} from 'oblique';
+import {ObThemeService} from 'oblique';
 
 @Component({
 	selector: 'app-nested-form-child-sample',
@@ -14,7 +14,7 @@ export class NestedFormChildSampleComponent {
 	nestedForm: FormGroup;
 	material: Observable<boolean>;
 
-	constructor(private readonly fb: FormBuilder, theme: ThemeService) {
+	constructor(private readonly fb: FormBuilder, theme: ObThemeService) {
 		this.nestedForm = this.fb.group({
 			field1: ['', [Validators.required]],
 			field2: [''],

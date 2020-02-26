@@ -3,9 +3,9 @@ import {ValidationErrors} from '@angular/forms';
 import {Observable} from 'rxjs';
 
 @Directive({
-	selector: '[orErrorMessages]',
-	exportAs: 'orErrorMessages'
+	selector: '[obErrorMessages]',
+	exportAs: 'obErrorMessages'
 })
-export class MockErrorMessagesDirective {
+export class ObMockErrorMessagesDirective {
 	readonly errors$: Observable<ValidationErrors>;
 }

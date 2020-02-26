@@ -1,10 +1,10 @@
 <h2>{{'i18n.routes.samples.multiselect.title' | translate}}</h2>
-<or-description component="multiselect"></or-description>
+<ob-description component="multiselect"></ob-description>
 <section>
 	<label [for]="'default'">Default multiselect</label>
 	<div class="row">
 		<div class="col-md-6">
-			<or-multiselect [options]="states" [(ngModel)]="model" idPrefix="default"></or-multiselect>
+			<ob-multiselect [options]="states" [(ngModel)]="model" idPrefix="default"></ob-multiselect>
 		</div>
 		<div class="col-md-6">
 			<pre>{{model | json}}</pre>
@@ -14,14 +14,14 @@
 	<label [for]="'label'">Multiselect with complex options and <code>labelProperty</code></label>
 	<div class="row">
 		<div class="col-md-6">
-			<or-multiselect [options]="statesComplex"
+			<ob-multiselect [options]="statesComplex"
 							[(ngModel)]="labelModel"
 							[showCheckAll]="true"
 							[showUncheckAll]="true"
 							labelProperty="name"
 							titleProperty="short"
 							idPrefix="label">
-			</or-multiselect>
+			</ob-multiselect>
 		</div>
 		<div class="col-md-6">
 			<pre>{{labelModel | json}}</pre>
@@ -32,7 +32,7 @@
 		<code>labelFormatter</code>...</label>
 	<div class="row">
 		<div class="col-md-6">
-			<or-multiselect [options]="statesComplex"
+			<ob-multiselect [options]="statesComplex"
 							[(ngModel)]="formatterModel"
 							[showCheckAll]="true"
 							[showUncheckAll]="true"
@@ -40,7 +40,7 @@
 							[texts]="{defaultTitle: '... and a custom title'}"
 							[labelFormatter]="complexStateLabelFormatter"
 							idPrefix="formatter">
-			</or-multiselect>
+			</ob-multiselect>
 		</div>
 		<div class="col-md-6">
 			<pre>{{formatterModel | json}}</pre>
@@ -50,11 +50,11 @@
 	<label [for]="'dropup'">Dropup variation</label>
 	<div class="row">
 		<div class="col-md-6">
-			<or-multiselect [options]="states" [(ngModel)]="model" [dropup]="true" idPrefix="dropup"></or-multiselect>
+			<ob-multiselect [options]="states" [(ngModel)]="model" [dropup]="true" idPrefix="dropup"></ob-multiselect>
 		</div>
 		<div class="col-md-6">
 			<pre>{{model | json}}</pre>
 		</div>
 	</div>
 </section>
-<or-api component="multiselect"></or-api>
+<ob-api component="multiselect"></ob-api>

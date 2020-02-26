@@ -10,7 +10,7 @@ import {
 	ChildState1Component,
 	NavigatorSampleComponent
 } from './navigator-sample.component';
-import {NavigatorModule} from 'oblique';
+import {ObNavigatorModule} from 'oblique';
 
 
 @NgModule({
@@ -18,7 +18,7 @@ import {NavigatorModule} from 'oblique';
 		CommonModule,
 		NavigatorSampleRoutingModule,
 		TranslateModule,
-		NavigatorModule
+		ObNavigatorModule
 	],
 	declarations: [
 		NavigatorSampleComponent,

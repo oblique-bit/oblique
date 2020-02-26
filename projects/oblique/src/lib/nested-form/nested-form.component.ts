@@ -1,28 +1,28 @@
 import {AfterViewInit, Component, forwardRef, Input} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
-import {ParentFormDirective} from './parent-form.directive';
+import {ObParentFormDirective} from './parent-form.directive';
 
 @Component({
-	selector: 'or-nested-form',
-	exportAs: 'orNestedForm',
+	selector: 'ob-nested-form',
+	exportAs: 'obNestedForm',
 	templateUrl: './nested-form.component.html',
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
 			multi: true,
-			useExisting: forwardRef(() => NestedFormComponent)
+			useExisting: forwardRef(() => ObNestedFormComponent)
 		},
 		{
 			provide: NG_VALIDATORS,
 			multi: true,
-			useExisting: forwardRef(() => NestedFormComponent)
+			useExisting: forwardRef(() => ObNestedFormComponent)
 		}
 	]
 })
-export class NestedFormComponent implements ControlValueAccessor, Validator, AfterViewInit {
+export class ObNestedFormComponent implements ControlValueAccessor, Validator, AfterViewInit {
 	@Input() nestedForm: FormGroup;
 
-	constructor(private readonly parent: ParentFormDirective) {
+	constructor(private readonly parent: ObParentFormDirective) {
 	}
 
 	ngAfterViewInit() {

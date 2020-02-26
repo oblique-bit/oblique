@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {async, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {AbstractControl, FormBuilder, FormGroup, FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
-import {SchemaValidateDirective, SchemaValidationDirective, SchemaValidationService} from 'oblique';
+import {ObSchemaValidateDirective, ObSchemaValidationDirective, ObSchemaValidationService} from 'oblique';
 
 
 describe('SchemaValidation', () => {
@@ -29,10 +29,10 @@ describe('SchemaValidation', () => {
 
 	@Component({
 		template: `
-			<form [orSchemaValidation]='schema'>
-				<input type='text' name='string' ngModel orSchemaValidate>
+			<form [obSchemaValidation]='schema'>
+				<input type='text' name='string' ngModel obSchemaValidate>
 				<div ngModelGroup='object'>
-					<input type='number' name='subproperty' ngModel orSchemaValidate>
+					<input type='number' name='subproperty' ngModel obSchemaValidate>
 				</div>
 			</form>
 		`
@@ -50,13 +50,13 @@ describe('SchemaValidation', () => {
 				</div>
 			</form>
 		`,
-		providers: [SchemaValidationService]
+		providers: [ObSchemaValidationService]
 	})
 	class ModelFormTestComponent implements OnInit {
 		sampleForm: FormGroup;
 		validator;
 
-		constructor(private readonly formBuilder: FormBuilder, private readonly schemaValidationService: SchemaValidationService) {
+		constructor(private readonly formBuilder: FormBuilder, private readonly schemaValidationService: ObSchemaValidationService) {
 			this.validator = schemaValidationService.compileSchema(schema);
 		}
 
@@ -98,8 +98,8 @@ describe('SchemaValidation', () => {
 				TestBed.configureTestingModule({
 					declarations: [
 						CONFIG.testComponent,
-						SchemaValidationDirective,
-						SchemaValidateDirective
+						ObSchemaValidationDirective,
+						ObSchemaValidateDirective
 					],
 					imports: [CONFIG.formModule]
 				})

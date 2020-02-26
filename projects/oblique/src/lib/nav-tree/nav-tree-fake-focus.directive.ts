@@ -8,16 +8,16 @@ import {Subject} from 'rxjs';
  * Usage:
  * <or-nav-tree
  *        ...
- *        [orNavTreeFakeFocus]="elementRef"
+ *        [obNavTreeFakeFocus]="elementRef"
  *        ...
  * ></or-nav-tree>
  */
 @Directive({
-	selector: '[orNavTreeFakeFocus]'
+	selector: '[obNavTreeFakeFocus]'
 })
-export class NavTreeFakeFocusDirective implements OnDestroy {
+export class ObNavTreeFakeFocusDirective implements OnDestroy {
 
-	public static readonly EVENT_TOGGLE_COLLAPSED = 'or.navTree.item.toggleCollapsed';
+	public static readonly EVENT_TOGGLE_COLLAPSED = 'ob.navTree.item.toggleCollapsed';
 
 	public static readonly KEY_DOWN_DEBOUNCE_MILLIS = 10;
 
@@ -40,13 +40,13 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 	};
 
 	public static readonly CSS_SELECTORS = {
-		LINK_ACTIVE: `.${NavTreeFakeFocusDirective.CSS_CLASSES.LINK_ACTIVE}`,
-		FAKE_FOCUS: `.${NavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS}`,
+		LINK_ACTIVE: `.${ObNavTreeFakeFocusDirective.CSS_CLASSES.LINK_ACTIVE}`,
+		FAKE_FOCUS: `.${ObNavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS}`,
 		ITEM_LINK: '.nav-link',
 		ITEM_WRAPPER: '.nav-tree.expanded:not(.disabled) > li:not(.nav-header):not(.disabled)'
 	};
 
-	@Input('orNavTreeFakeFocus')
+	@Input('obNavTreeFakeFocus')
 	public set focusInputElement(element: any) {
 		if (element && !(element instanceof ElementRef)) {
 			element = new ElementRef(element);
@@ -65,17 +65,17 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 		private readonly element: ElementRef,
 		private readonly renderer: Renderer2
 	) {
-		if (this.element.nativeElement.localName !== 'or-nav-tree') {
+		if (this.element.nativeElement.localName !== 'ob-nav-tree') {
 			throw new Error(
 				'Directive nav-tree-selector can only be used on or-nav-tree elements. '
 				+ `Current element is: '${this.element.nativeElement.localName}'`
 			);
 		}
-		this.keyHandlers[NavTreeFakeFocusDirective.KEY_CODES.DOWN] = () => this.focusNext();
-		this.keyHandlers[NavTreeFakeFocusDirective.KEY_CODES.UP] = (event) => this.focusPrevious(event);
-		this.keyHandlers[NavTreeFakeFocusDirective.KEY_CODES.ENTER] = () => this.accept();
-		this.keyHandlers[NavTreeFakeFocusDirective.KEY_CODES.LEFT] = () => this.toggleCollapsed();
-		this.keyHandlers[NavTreeFakeFocusDirective.KEY_CODES.RIGHT] = () => this.toggleCollapsed();
+		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.DOWN] = () => this.focusNext();
+		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.UP] = (event) => this.focusPrevious(event);
+		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.ENTER] = () => this.accept();
+		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.LEFT] = () => this.toggleCollapsed();
+		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.RIGHT] = () => this.toggleCollapsed();
 	}
 
 	public ngOnDestroy() {
@@ -90,9 +90,9 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 		this.onBlur();
 
 		// Ensure we don't apply the fake focus on a pre-activated link:
-		if (!link.nativeElement.classList.contains(NavTreeFakeFocusDirective.CSS_CLASSES.LINK_ACTIVE)) {
-			this.renderer.addClass(link.nativeElement, NavTreeFakeFocusDirective.CSS_CLASSES.LINK_ACTIVE);
-			this.renderer.addClass(link.nativeElement, NavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS);
+		if (!link.nativeElement.classList.contains(ObNavTreeFakeFocusDirective.CSS_CLASSES.LINK_ACTIVE)) {
+			this.renderer.addClass(link.nativeElement, ObNavTreeFakeFocusDirective.CSS_CLASSES.LINK_ACTIVE);
+			this.renderer.addClass(link.nativeElement, ObNavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS);
 		}
 
 		this.focusedElement = element;
@@ -106,7 +106,7 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 		}
 		if (!this.inputElement.nativeElement || !this.inputElement.nativeElement.tagName) {
 			throw new Error(
-				'The given value for [orNavTreeFakeFocus] is invalid. ' +
+				'The given value for [obNavTreeFakeFocus] is invalid. ' +
 				'It must be a valid native DOM element or ElementRef.'
 			);
 		}
@@ -117,17 +117,17 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 
 	private initEventListeners() {
 		const debouncer: Subject<any> = new Subject<any>();
-		debouncer.pipe(throttleTime(NavTreeFakeFocusDirective.KEY_DOWN_DEBOUNCE_MILLIS)).subscribe(
+		debouncer.pipe(throttleTime(ObNavTreeFakeFocusDirective.KEY_DOWN_DEBOUNCE_MILLIS)).subscribe(
 			(event) => this.onKeyDown(event)
 		);
 		this.eventSubscriptions.push(this.renderer.listen(
 			this.inputElement.nativeElement,
-			NavTreeFakeFocusDirective.INPUT_EVENTS.KEY_DOWN,
+			ObNavTreeFakeFocusDirective.INPUT_EVENTS.KEY_DOWN,
 			(event) => debouncer.next(event)
 		));
 		this.eventSubscriptions.push(this.renderer.listen(
 			this.inputElement.nativeElement,
-			NavTreeFakeFocusDirective.INPUT_EVENTS.BLUR,
+			ObNavTreeFakeFocusDirective.INPUT_EVENTS.BLUR,
 			() => this.onBlur(true)
 		));
 	}
@@ -143,9 +143,9 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 			const link = this.findLink(this.focusedElement);
 
 			// Ensure we don't remove the active state from non-"fake-focus" links:
-			if (link.nativeElement.classList.contains(NavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS)) {
-				this.renderer.removeClass(link.nativeElement, NavTreeFakeFocusDirective.CSS_CLASSES.LINK_ACTIVE);
-				this.renderer.removeClass(link.nativeElement, NavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS);
+			if (link.nativeElement.classList.contains(ObNavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS)) {
+				this.renderer.removeClass(link.nativeElement, ObNavTreeFakeFocusDirective.CSS_CLASSES.LINK_ACTIVE);
+				this.renderer.removeClass(link.nativeElement, ObNavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS);
 			}
 
 			if (reset) {
@@ -162,7 +162,7 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 	private accept() {
 		const link = this.findLink();
 		if (link && link.nativeElement) {
-			this.renderer.removeClass(link.nativeElement, NavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS);
+			this.renderer.removeClass(link.nativeElement, ObNavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS);
 			this.focusedElement = null;
 			link.nativeElement.click();
 		}
@@ -174,10 +174,10 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 		}
 		let event;
 		if (CustomEvent && typeof CustomEvent === 'function') {
-			event = new CustomEvent(NavTreeFakeFocusDirective.EVENT_TOGGLE_COLLAPSED);
+			event = new CustomEvent(ObNavTreeFakeFocusDirective.EVENT_TOGGLE_COLLAPSED);
 		} else { // Some browsers (IE) don't support Event constructors
 			event = document.createEvent('Event');
-			event.initEvent(NavTreeFakeFocusDirective.EVENT_TOGGLE_COLLAPSED, false, true);
+			event.initEvent(ObNavTreeFakeFocusDirective.EVENT_TOGGLE_COLLAPSED, false, true);
 		}
 		this.focusedElement.nativeElement.dispatchEvent(event);
 	}
@@ -208,18 +208,18 @@ export class NavTreeFakeFocusDirective implements OnDestroy {
 		if (!element || !element.nativeElement) {
 			return null;
 		}
-		const link = element.nativeElement.querySelector(NavTreeFakeFocusDirective.CSS_SELECTORS.ITEM_LINK);
+		const link = element.nativeElement.querySelector(ObNavTreeFakeFocusDirective.CSS_SELECTORS.ITEM_LINK);
 		return link ? new ElementRef(link) : null;
 	}
 
 	private extractAllListElements(): any[] {
-		return [].slice.call(Array.from(this.element.nativeElement.querySelectorAll(NavTreeFakeFocusDirective.CSS_SELECTORS.ITEM_WRAPPER)));
+		return [].slice.call(Array.from(this.element.nativeElement.querySelectorAll(ObNavTreeFakeFocusDirective.CSS_SELECTORS.ITEM_WRAPPER)));
 	}
 
 	private ensureInView(): void {
 		const link = this.findLink();
 		if (link && link.nativeElement) {
-			link.nativeElement.scrollIntoView(NavTreeFakeFocusDirective.SCROLL_OPTIONS);
+			link.nativeElement.scrollIntoView(ObNavTreeFakeFocusDirective.SCROLL_OPTIONS);
 		}
 	}
 }

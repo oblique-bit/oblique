@@ -5,39 +5,39 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {FormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
 
-import {MatErrorDirective} from './mat-error.directive';
-import {ErrorMessagesDirective} from './error-messages.directive';
-import {TranslateParamsModule} from '../translate-params/translate-params.module';
-import {FormControlStateModule} from '../form-control-state/form-control-state.module';
-import {ErrorMessagesComponent} from './error-messages.component';
-import {ErrorMessagesService} from './error-messages.service';
-import {TelemetryService} from '../telemetry/telemetry.service';
+import {ObMatErrorDirective} from './mat-error.directive';
+import {ObErrorMessagesDirective} from './error-messages.directive';
+import {ObTranslateParamsModule} from '../translate-params/translate-params.module';
+import {ObFormControlStateModule} from '../form-control-state/form-control-state.module';
+import {ObErrorMessagesComponent} from './error-messages.component';
+import {ObErrorMessagesService} from './error-messages.service';
+import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {WINDOW, windowProvider} from '../utilities';
 
-export {ErrorMessagesComponent} from './error-messages.component';
-export {ErrorMessagesService} from './error-messages.service';
-export {MatErrorDirective} from './mat-error.directive';
-export {ErrorMessagesDirective} from './error-messages.directive';
+export {ObErrorMessagesComponent} from './error-messages.component';
+export {ObErrorMessagesService} from './error-messages.service';
+export {ObMatErrorDirective} from './mat-error.directive';
+export {ObErrorMessagesDirective} from './error-messages.directive';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule,
 		TranslateModule,
-		FormControlStateModule,
-		TranslateParamsModule
+		ObFormControlStateModule,
+		ObTranslateParamsModule
 	],
-	declarations: [ErrorMessagesComponent, MatErrorDirective, ErrorMessagesDirective],
+	declarations: [ObErrorMessagesComponent, ObMatErrorDirective, ObErrorMessagesDirective],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 		{provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
-	exports: [ErrorMessagesComponent, MatErrorDirective, ErrorMessagesDirective]
+	exports: [ObErrorMessagesComponent, ObMatErrorDirective, ObErrorMessagesDirective]
 })
-export class ErrorMessagesModule {
-	constructor(telemetry: TelemetryService) {
-		requireAndRecordTelemetry(telemetry, ErrorMessagesModule);
+export class ObErrorMessagesModule {
+	constructor(telemetry: ObTelemetryService) {
+		requireAndRecordTelemetry(telemetry, ObErrorMessagesModule);
 	}
 }

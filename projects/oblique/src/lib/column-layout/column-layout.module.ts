@@ -4,15 +4,15 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {TranslateModule} from '@ngx-translate/core';
 
-import {ColumnLayoutComponent} from './column-layout.component';
-import {ColumnToggleDirective} from './column-toggle.directive';
-import {ColumnPanelDirective} from './column-panel.directive';
+import {ObColumnLayoutComponent} from './column-layout.component';
+import {ObColumnToggleDirective} from './column-toggle.directive';
+import {ObColumnPanelDirective} from './column-panel.directive';
 
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
-import {TelemetryService} from '../telemetry/telemetry.service';
+import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {WINDOW, windowProvider} from '../utilities';
 
-export {ColumnLayoutComponent} from './column-layout.component';
+export {ObColumnLayoutComponent} from './column-layout.component';
 
 @NgModule({
 	imports: [
@@ -20,9 +20,9 @@ export {ColumnLayoutComponent} from './column-layout.component';
 		TranslateModule
 	],
 	declarations: [
-		ColumnLayoutComponent,
-		ColumnPanelDirective,
-		ColumnToggleDirective
+		ObColumnLayoutComponent,
+		ObColumnPanelDirective,
+		ObColumnToggleDirective
 	],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
@@ -30,11 +30,11 @@ export {ColumnLayoutComponent} from './column-layout.component';
 		{provide: WINDOW, useFactory: windowProvider}
 	],
 	exports: [
-		ColumnLayoutComponent
+		ObColumnLayoutComponent
 	]
 })
-export class ColumnLayoutModule {
-	constructor(telemetry: TelemetryService) {
-		requireAndRecordTelemetry(telemetry, ColumnLayoutModule);
+export class ObColumnLayoutModule {
+	constructor(telemetry: ObTelemetryService) {
+		requireAndRecordTelemetry(telemetry, ObColumnLayoutModule);
 	}
 }

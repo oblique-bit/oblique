@@ -3,14 +3,14 @@ import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {NgbTabChangeEvent, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
 import {Subscription} from 'rxjs';
-import {UnsavedChangesService} from '../unsaved-changes/unsaved-changes.service';
+import {ObUnsavedChangesService} from '../unsaved-changes/unsaved-changes.service';
 
 //TODO: Handle modals
 @Injectable({providedIn: 'root'})
-export class UnsavedChangesTabsService {
+export class ObUnsavedChangesTabsService {
 	private readonly listener: { [key: string]: Subscription} = {};
 
-	constructor(private readonly translateService: TranslateService, private readonly unsavedChanges: UnsavedChangesService) {
+	constructor(private readonly translateService: TranslateService, private readonly unsavedChanges: ObUnsavedChangesService) {
 	}
 
 	watch(formId: string, form: ControlContainer): void {

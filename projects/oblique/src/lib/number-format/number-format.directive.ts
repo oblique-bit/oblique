@@ -2,10 +2,10 @@ import {Directive, ElementRef, HostListener, Input, OnInit} from '@angular/core'
 import {NgControl} from '@angular/forms';
 
 @Directive({
-	selector: '[orNumberFormat]',
-	exportAs: 'orNumberFormat'
+	selector: '[obNumberFormat]',
+	exportAs: 'obNumberFormat'
 })
-export class NumberFormatDirective implements OnInit {
+export class ObNumberFormatDirective implements OnInit {
 	@Input() decimals = 2;
 	@Input() persistent = true;
 	private changed = false;
@@ -17,7 +17,7 @@ export class NumberFormatDirective implements OnInit {
 	@HostListener('blur')
 	onBlur(): void {
 		this.focused = false;
-		const value = NumberFormatDirective.toFixedNumber(this.ngControl.value, this.decimals);
+		const value = ObNumberFormatDirective.toFixedNumber(this.ngControl.value, this.decimals);
 		if (this.persistent) {
 			this.changed = true;
 			this.ngControl.reset(value);
@@ -51,7 +51,7 @@ export class NumberFormatDirective implements OnInit {
 	}
 
 	private setValue(value: number): void {
-		const fixedValue = NumberFormatDirective.toFixedNumber(value, this.decimals);
+		const fixedValue = ObNumberFormatDirective.toFixedNumber(value, this.decimals);
 		if (this.persistent) {
 			this.changed = true;
 			this.ngControl.reset(fixedValue);

@@ -3,25 +3,25 @@ import {CommonModule} from '@angular/common';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
-import {ToggleDirective} from './toggle.directive';
-import {TelemetryService} from '../telemetry/telemetry.service';
+import {ObToggleDirective} from './toggle.directive';
+import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {WINDOW, windowProvider} from '../utilities';
 
-export {ToggleDirective} from './toggle.directive';
+export {ObToggleDirective} from './toggle.directive';
 
 @NgModule({
 	imports: [CommonModule],
-	declarations: [ToggleDirective],
+	declarations: [ObToggleDirective],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 		{provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
-	exports: [ToggleDirective]
+	exports: [ObToggleDirective]
 })
-export class ToggleModule {
-	constructor(telemetry: TelemetryService) {
-		requireAndRecordTelemetry(telemetry, ToggleModule);
+export class ObToggleModule {
+	constructor(telemetry: ObTelemetryService) {
+		requireAndRecordTelemetry(telemetry, ObToggleModule);
 	}
 }

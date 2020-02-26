@@ -3,7 +3,7 @@
 		<li *ngIf="visible(item)"
 			class="open"
 			role="presentation"
-			(or.navTree.item.toggleCollapsed)="item.collapsed = !item.collapsed"
+			(ob.navTree.item.toggleCollapsed)="item.collapsed = !item.collapsed"
 			[attr.id]="item.id ? (prefix ? prefix + '-' : '') + item.id : null"
 			[class.disabled]="item.disabled === true || null">
 			<a class="nav-link" role="treeitem" aria-selected="false"

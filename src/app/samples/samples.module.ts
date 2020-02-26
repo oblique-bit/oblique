@@ -16,7 +16,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 import {SamplesRoutingModule} from './samples-routing.module';
 
-import {ColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
+import {ObColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
 import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {ErrorMessagesSampleComponent} from './error-messages-sample/error-messages-sample.component';
 import {FormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
@@ -33,69 +33,69 @@ import {NestedFormGrandChildSampleComponent} from './nested-form/nested-form-gra
 import {NotificationSampleComponent} from './notification/notification-sample.component';
 import {NumberFormatSampleComponent} from './number-format/number-format-sample.component';
 import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
-import {ToggleSampleComponent} from './toggle/toggle-sample.component';
-import {UnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
+import {ObToggleSampleComponent} from './toggle/toggle-sample.component';
+import {ObUnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
 
 import {HttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
-import {StickySampleComponent} from './sticky/sticky-sample.component';
-import {FormComponent} from './form/form.component';
-import {ButtonComponent} from './button/button.component';
+import {ObStickySampleComponent} from './sticky/sticky-sample.component';
+import {ObFormComponent} from './form/form.component';
+import {ObButtonComponent} from './button/button.component';
 import {
-	ColumnLayoutModule,
-	DatepickerModule,
-	ErrorMessagesModule,
-	FilterBoxModule,
-	FormControlStateModule,
-	MultiselectModule,
-	NavigableModule,
-	NavTreeModule,
-	NestedFormModule,
-	NotificationModule,
-	NumberFormatModule,
+	ObColumnLayoutModule,
+	ObDatepickerModule,
+	ObErrorMessagesModule,
+	ObFilterBoxModule,
+	ObFormControlStateModule,
+	ObMultiselectModule,
+	ObNavigableModule,
+	ObNavTreeModule,
+	ObNestedFormModule,
+	ObNotificationModule,
+	ObNumberFormatModule,
 	ObSelectableModule,
-	SchemaValidationModule,
-	SearchBoxModule,
-	StickyModule,
-	InputClearModule,
-	ToggleModule,
-	UnknownRouteModule,
-	UnsavedChangesModule,
-	UnsavedChangesTabsModule
+	ObSchemaValidationModule,
+	ObSearchBoxModule,
+	ObStickyModule,
+	ObInputClearModule,
+	ObToggleModule,
+	ObUnknownRouteModule,
+	ObUnsavedChangesModule,
+	ObUnsavedChangesTabsModule
 } from 'oblique';
-import {ApiComponent} from '../api/api.component';
-import {DescriptionComponent} from '../description/description.component';
-import {ApiElementComponent} from '../api/api-element.component';
-import {PopUpSampleComponent} from './pop-up/pop-up-sample.component';
+import {ObApiComponent} from '../api/api.component';
+import {ObDescriptionComponent} from '../description/description.component';
+import {ObApiElementComponent} from '../api/api-element.component';
+import {ObPopUpSampleComponent} from './pop-up/pop-up-sample.component';
 import {NestedFormChildTDSampleComponent} from './nested-form/nested-form-child-td-sample.component';
 import {NestedFormGrandChildTDSampleComponent} from './nested-form/nested-form-grandchild-td-sample.component';
 import {MultiTranslateLoaderSampleComponent} from './multi-tranlsate-loader/multi-translate-loader-sample.component';
-import {SelectableSampleComponent} from './selectable/selectable-sample.component';
+import {ObSelectableSampleComponent} from './selectable/selectable-sample.component';
 
 @NgModule({
 	imports: [
 		CommonModule,
-		ColumnLayoutModule,
-		DatepickerModule,
-		FilterBoxModule,
-		ErrorMessagesModule,
-		FormControlStateModule,
-		MultiselectModule,
-		NavigableModule,
-		NavTreeModule,
-		NestedFormModule,
-		NumberFormatModule,
-		NotificationModule,
-		SchemaValidationModule,
-		SearchBoxModule,
+		ObColumnLayoutModule,
+		ObDatepickerModule,
+		ObFilterBoxModule,
+		ObErrorMessagesModule,
+		ObFormControlStateModule,
+		ObMultiselectModule,
+		ObNavigableModule,
+		ObNavTreeModule,
+		ObNestedFormModule,
+		ObNumberFormatModule,
+		ObNotificationModule,
+		ObSchemaValidationModule,
+		ObSearchBoxModule,
 		ObSelectableModule,
-		StickyModule,
-		InputClearModule,
-		ToggleModule,
-		UnknownRouteModule,
-		UnsavedChangesModule,
-		UnsavedChangesTabsModule,
+		ObStickyModule,
+		ObInputClearModule,
+		ObToggleModule,
+		ObUnknownRouteModule,
+		ObUnsavedChangesModule,
+		ObUnsavedChangesTabsModule,
 
 		TranslateModule,
 		FormsModule,
@@ -116,11 +116,11 @@ import {SelectableSampleComponent} from './selectable/selectable-sample.componen
 		MatRadioModule
 	],
 	declarations: [
-		ButtonComponent,
-		ColumnLayoutSampleComponent,
+		ObButtonComponent,
+		ObColumnLayoutSampleComponent,
 		DatepickerSampleComponent,
 		ErrorMessagesSampleComponent,
-		FormComponent,
+		ObFormComponent,
 		FormControlStateSampleComponent,
 		FilterBoxSampleComponent,
 		HttpInterceptorSampleComponent,
@@ -138,21 +138,21 @@ import {SelectableSampleComponent} from './selectable/selectable-sample.componen
 		NotificationSampleComponent,
 		NumberFormatSampleComponent,
 		SchemaValidationSampleComponent,
-		SelectableSampleComponent,
-		StickySampleComponent,
-		ToggleSampleComponent,
-		UnknownRouteSampleComponent,
+		ObSelectableSampleComponent,
+		ObStickySampleComponent,
+		ObToggleSampleComponent,
+		ObUnknownRouteSampleComponent,
 		UnsavedChangesSampleComponent,
 		UnsavedChangesSampleModalComponent,
-		ApiComponent,
-		ApiElementComponent,
-		DescriptionComponent,
-		PopUpSampleComponent,
+		ObApiComponent,
+		ObApiElementComponent,
+		ObDescriptionComponent,
+		ObPopUpSampleComponent,
 		MultiTranslateLoaderSampleComponent
 	],
 	exports: [
 		RouterModule,
-		ApiComponent
+		ObApiComponent
 	],
 	providers: [
 		SampleDataResolver

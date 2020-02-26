@@ -1,10 +1,10 @@
 import {Directive} from '@angular/core';
 
 @Directive({
-	selector: '[orOffCanvasToggle]',
-	exportAs: 'orOffCanvasToggle'
+	selector: '[obOffCanvasToggle]',
+	exportAs: 'obOffCanvasToggle'
 })
-export class MockOffCanvasToggleDirective {
+export class ObMockOffCanvasToggleDirective {
 	toggle(): void {
 	}
 }

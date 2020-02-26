@@ -1,29 +1,29 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {TopControlComponent} from 'oblique';
+import {ObTopControlComponent} from 'oblique';
 import {TranslateService} from '@ngx-translate/core';
-import {MockTranslatePipe} from '../_mocks/mock-translate.pipe';
-import {MockTranslateService} from '../_mocks/mock-translate.service';
+import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 import {windowProvider, WINDOW} from '../utilities';
 
 describe('TopControlComponent', () => {
-	let fixture: ComponentFixture<TopControlComponent>;
-	let topControlComponent: TopControlComponent;
+	let fixture: ComponentFixture<ObTopControlComponent>;
+	let topControlComponent: ObTopControlComponent;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [
-				TopControlComponent,
-				MockTranslatePipe
+				ObTopControlComponent,
+				ObMockTranslatePipe
 			],
 			providers: [
-				{provide: TranslateService, useClass: MockTranslateService},
+				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: WINDOW, useValue: windowProvider},
 			]
 		}).compileComponents();
 	}));
 
 	beforeEach(async(() => {
-		fixture = TestBed.createComponent(TopControlComponent);
+		fixture = TestBed.createComponent(ObTopControlComponent);
 		topControlComponent = fixture.componentInstance;
 		fixture.detectChanges();
 	}));

@@ -1,14 +1,14 @@
 import {Directive, HostListener} from '@angular/core';
 
-import {OffCanvasService} from './off-canvas.service';
+import {ObOffCanvasService} from './off-canvas.service';
 
 @Directive({
-	selector: '[orOffCanvasToggle]',
-	exportAs: 'orOffCanvasToggle'
+	selector: '[obOffCanvasToggle]',
+	exportAs: 'obOffCanvasToggle'
 })
-export class OffCanvasToggleDirective {
+export class ObOffCanvasToggleDirective {
 
-	constructor(private readonly offCanvas: OffCanvasService) {
+	constructor(private readonly offCanvas: ObOffCanvasService) {
 	}
 
 	@HostListener('click')

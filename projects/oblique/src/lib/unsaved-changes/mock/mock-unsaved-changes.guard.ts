@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
 @Injectable({providedIn: 'root'})
-export class MockUnsavedChangesGuard {
+export class ObMockUnsavedChangesGuard {
 	canDeactivate(): boolean {
 		return true;
 	}

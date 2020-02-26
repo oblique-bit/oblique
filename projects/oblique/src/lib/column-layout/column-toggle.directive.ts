@@ -1,13 +1,13 @@
 import {Directive, HostListener} from '@angular/core';
-import {ColumnPanelDirective} from './column-panel.directive';
+import {ObColumnPanelDirective} from './column-panel.directive';
 
 @Directive({
-	selector: '[orColumnToggle]',
-	exportAs: 'orColumnToggle'
+	selector: '[obColumnToggle]',
+	exportAs: 'obColumnToggle'
 })
-export class ColumnToggleDirective {
+export class ObColumnToggleDirective {
 
-	constructor(private readonly parent: ColumnPanelDirective) {
+	constructor(private readonly parent: ObColumnPanelDirective) {
 	}
 
 	@HostListener('click')

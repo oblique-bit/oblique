@@ -2,30 +2,30 @@ import {async, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {Component, ViewChild} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
-import {UnsavedChangesDirective, UnsavedChangesService} from 'oblique';
+import {ObUnsavedChangesDirective, ObUnsavedChangesService} from 'oblique';
 
 @Component({
 	template: `
-		<form orUnsavedChanges></form>`
+		<form obUnsavedChanges></form>`
 })
 class FaultyTestComponent {
-	@ViewChild(UnsavedChangesDirective, {static: false}) unsavedChangesDirective;
+	@ViewChild(ObUnsavedChangesDirective, {static: false}) unsavedChangesDirective;
 }
 
 @Component({
 	template: `
-		<form id="test" orUnsavedChanges></form>`
+		<form id="test" obUnsavedChanges></form>`
 
 })
 class TestComponent {
 	//noinspection JSUnusedGlobalSymbols
-	@ViewChild(UnsavedChangesDirective, {static: false}) unsavedChangesDirective;
+	@ViewChild(ObUnsavedChangesDirective, {static: false}) unsavedChangesDirective;
 }
 
 describe('UnsavedChangesDirective', () => {
 	let fixture;
 	let testComponent: FaultyTestComponent | TestComponent;
-	let directive: UnsavedChangesDirective;
+	let directive: ObUnsavedChangesDirective;
 	let unsavedChangesServiceMock;
 	const initFixture = (component: any): void => {
 		fixture = TestBed.createComponent(component);
@@ -44,10 +44,10 @@ describe('UnsavedChangesDirective', () => {
 
 		//noinspection JSIgnoredPromiseFromCall
 		TestBed.configureTestingModule({
-			declarations: [FaultyTestComponent, TestComponent, UnsavedChangesDirective],
+			declarations: [FaultyTestComponent, TestComponent, ObUnsavedChangesDirective],
 			providers: [
 				ControlContainer,
-				{provide: UnsavedChangesService, useValue: unsavedChangesServiceMock}
+				{provide: ObUnsavedChangesService, useValue: unsavedChangesServiceMock}
 			],
 			imports: [CommonModule]
 		}).compileComponents();

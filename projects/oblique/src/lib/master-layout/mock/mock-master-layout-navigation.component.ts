@@ -1,16 +1,16 @@
 import {Component, Input} from '@angular/core';
-import {ORNavigationLink} from '../master-layout.module';
+import {ObNavigationLink} from '../master-layout.module';
 
 @Component({
-	selector: 'or-master-layout-navigation',
+	selector: 'ob-master-layout-navigation',
 	template: ''
 })
-export class MockMasterLayoutNavigationComponent {
+export class ObMockMasterLayoutNavigationComponent {
 	isFullWidth = true;
 	activeClass = '';
 	currentScroll = 0;
 	maxScroll = 0;
-	@Input() links: ORNavigationLink[] = [];
+	@Input() links: ObNavigationLink[] = [];
 	isScrollable = true;
 
 	isActive(url: string): boolean {

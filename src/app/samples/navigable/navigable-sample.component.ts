@@ -1,6 +1,6 @@
 //TODO: remove if codelyzer 4 is out
 import {Component} from '@angular/core';
-import {NavigableOnMoveEvent, NavigableGroupComponent} from 'oblique';
+import {ObNavigableOnMoveEvent, ObNavigableGroupComponent} from 'oblique';
 
 @Component({
 	selector: 'navigable-sample',
@@ -59,7 +59,7 @@ export class NavigableSampleComponent {
 		this.log(`Activated: ${scientist.firstname}`);
 	}
 
-	toggleActivation(scientist: any, navigableGroup: NavigableGroupComponent) {
+	toggleActivation(scientist: any, navigableGroup: ObNavigableGroupComponent) {
 		if (this.scientistsSelection.indexOf(scientist) !== -1) {
 			navigableGroup.remove(scientist);
 		} else {
@@ -73,7 +73,7 @@ export class NavigableSampleComponent {
 	}
 
 	// Move:
-	onMove(event: NavigableOnMoveEvent, scientist: any) {
+	onMove(event: ObNavigableOnMoveEvent, scientist: any) {
 		if (this.isLocked(scientist)) {
 			// Prevent item to be moved:
 			event.prevented = true;

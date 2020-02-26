@@ -1,10 +1,10 @@
 import {Component, Input} from '@angular/core';
-import {APIelement} from './api.component';
+import {ObIAPIelement} from './api.component';
 
 @Component({
-	selector: 'or-api-element',
+	selector: 'ob-api-element',
 	templateUrl: './api-element.component.html'
 })
-export class ApiElementComponent {
-	@Input() elements: APIelement[];
+export class ObApiElementComponent {
+	@Input() elements: ObIAPIelement[];
 }

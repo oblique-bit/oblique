@@ -19,7 +19,7 @@ export const OBLIQUE_FONT = new InjectionToken<THEMES>('OBLIQUE_FONT');
 @Injectable({
 	providedIn: 'root'
 })
-export class ThemeService {
+export class ObThemeService {
 	theme$: Observable<THEMES | string>;
 	font$: Observable<FONTS>;
 	private readonly mainTheme = new ReplaySubject<THEMES | string>(1);
@@ -88,7 +88,7 @@ export class ThemeService {
 		this.themeLink = this.createAndAddEmptyLink();
 		this.theme$ = this.mainTheme.asObservable();
 		this.theme$
-			.pipe(map(theme => ThemeService.isInEnum(theme, THEMES) ? `assets/styles/css/${theme}.css` : theme))
+			.pipe(map(theme => ObThemeService.isInEnum(theme, THEMES) ? `assets/styles/css/${theme}.css` : theme))
 			.subscribe(path => this.renderer.setAttribute(this.themeLink, 'href', path));
 	}
 
@@ -98,7 +98,7 @@ export class ThemeService {
 		this.font$
 			.pipe(
 				tap(font => this.addWarning(font === FONTS.FRUTIGER)),
-				map(font => ThemeService.isInEnum(font, FONTS) ? `assets/styles/css/${font}.css` : '')
+				map(font => ObThemeService.isInEnum(font, FONTS) ? `assets/styles/css/${font}.css` : '')
 			)
 			.subscribe(path => this.renderer.setAttribute(this.fontLink, 'href', path));
 	}

@@ -1,15 +1,15 @@
 import {Directive, EventEmitter, Input, Output} from '@angular/core';
-import {NavigableOnChangeEvent} from '../navigable.module';
+import {ObNavigableOnChangeEvent} from '../navigable.module';
 
 @Directive({
-	selector: '[orNavigable]',
-	exportAs: 'orNavigable'
+	selector: '[obNavigable]',
+	exportAs: 'obNavigable'
 })
-export class MockNavigableDirective {
-	@Input('orNavigable') model: any;
+export class ObMockNavigableDirective {
+	@Input('obNavigable') model: any;
 	@Input('navigableFocusOnInit') focusOnInit: boolean;
 	@Output() navigableOnActivation = new EventEmitter();
-	@Output() navigableOnChange = new EventEmitter<NavigableOnChangeEvent>();
+	@Output() navigableOnChange = new EventEmitter<ObNavigableOnChangeEvent>();
 	@Output() navigableOnFocus = new EventEmitter();
 	@Output() navigableOnMouseDown = new EventEmitter();
 	@Output() navigableOnMove = new EventEmitter();

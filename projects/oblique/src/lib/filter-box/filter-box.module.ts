@@ -7,34 +7,34 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 
-import {InputClearModule} from '../input-clear/input-clear.module';
-import {FilterBoxComponent} from './filter-box.component';
+import {ObInputClearModule} from '../input-clear/input-clear.module';
+import {ObFilterBoxComponent} from './filter-box.component';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
-import {TelemetryService} from '../telemetry/telemetry.service';
+import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {WINDOW, windowProvider} from '../utilities';
 
-export {FilterBoxComponent} from './filter-box.component';
+export {ObFilterBoxComponent} from './filter-box.component';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		TranslateModule,
 		FormsModule,
-		InputClearModule,
+		ObInputClearModule,
 		MatIconModule,
 		MatFormFieldModule,
 		MatInputModule
 	],
-	declarations: [FilterBoxComponent],
+	declarations: [ObFilterBoxComponent],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 		{provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
-	exports: [FilterBoxComponent]
+	exports: [ObFilterBoxComponent]
 })
-export class FilterBoxModule {
-	constructor(telemetry: TelemetryService) {
-		requireAndRecordTelemetry(telemetry, FilterBoxModule);
+export class ObFilterBoxModule {
+	constructor(telemetry: ObTelemetryService) {
+		requireAndRecordTelemetry(telemetry, ObFilterBoxModule);
 	}
 }

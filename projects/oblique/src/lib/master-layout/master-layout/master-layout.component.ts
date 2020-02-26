@@ -16,19 +16,19 @@ import {NavigationEnd, Router} from '@angular/router';
 import {DOCUMENT} from '@angular/common';
 import {filter, map, takeUntil} from 'rxjs/operators';
 
-import {Unsubscribable} from '../../unsubscribe.class';
-import {OffCanvasService} from '../../off-canvas/off-canvas.module';
-import {MasterLayoutService} from '../master-layout.service';
-import {MasterLayoutConfig} from '../master-layout.config';
-import {ORNavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
-import {ScrollingEvents} from '../../scrolling/scrolling-events';
-import {MasterLayoutEventValues} from '../master-layout.utility';
+import {ObUnsubscribable} from '../../unsubscribe.class';
+import {ObOffCanvasService} from '../../off-canvas/off-canvas.module';
+import {ObMasterLayoutService} from '../master-layout.service';
+import {ObMasterLayoutConfig} from '../master-layout.config';
+import {ObNavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
+import {ObScrollingEvents} from '../../scrolling/scrolling-events';
+import {ObEMasterLayoutEventValues} from '../master-layout.utility';
 import {appVersion} from '../../version';
 import {WINDOW} from '../../utilities';
 
 @Component({
-	selector: 'or-master-layout',
-	exportAs: 'orMasterLayout',
+	selector: 'ob-master-layout',
+	exportAs: 'obMasterLayout',
 	templateUrl: './master-layout.component.html',
 	styleUrls: [
 		'./master-layout.component.scss',
@@ -38,12 +38,12 @@ import {WINDOW} from '../../utilities';
 	],
 	encapsulation: ViewEncapsulation.None,
 	// tslint:disable-next-line:no-host-metadata-property
-	host: {class: 'application', 'or-version': appVersion}
+	host: {class: 'application', 'ob-version': appVersion}
 })
-export class MasterLayoutComponent extends Unsubscribable implements OnInit {
+export class ObMasterLayoutComponent extends ObUnsubscribable implements OnInit {
 	home = this.config.homePageRoute;
 	url: string;
-	@Input() navigation: ORNavigationLink[] = [];
+	@Input() navigation: ObNavigationLink[] = [];
 	@HostBinding('class.application-fixed') isFixed = this.masterLayout.layout.isFixed;
 	@HostBinding('class.has-cover') hasCover = this.masterLayout.layout.hasCover;
 	@HostBinding('class.has-layout') hasLayout = this.masterLayout.layout.hasLayout;
@@ -52,16 +52,16 @@ export class MasterLayoutComponent extends Unsubscribable implements OnInit {
 	@HostBinding('class.offcanvas') hasOffCanvas = this.masterLayout.layout.hasOffCanvas;
 	@HostBinding('class.footer-sm') footerSm = this.masterLayout.footer.isSmall;
 	@HostBinding('class.application-scrolling') isScrolling = false;
-	@ContentChildren('orHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
-	@ContentChildren('orFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<any>>;
+	@ContentChildren('obHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
+	@ContentChildren('obFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<any>>;
 	@ViewChild('offCanvasClose') readonly offCanvasClose: ElementRef<HTMLElement>;
 	private readonly window: Window;
 
-	constructor(private readonly masterLayout: MasterLayoutService,
-				private readonly config: MasterLayoutConfig,
-				readonly offCanvasService: OffCanvasService,
+	constructor(private readonly masterLayout: ObMasterLayoutService,
+				private readonly config: ObMasterLayoutConfig,
+				readonly offCanvasService: ObOffCanvasService,
 				private readonly router: Router,
-				private readonly scrollEvents: ScrollingEvents,
+				private readonly scrollEvents: ObScrollingEvents,
 				@Inject(DOCUMENT) private readonly document: any,
 				@Inject(WINDOW) window) {
 		super();
@@ -79,28 +79,28 @@ export class MasterLayoutComponent extends Unsubscribable implements OnInit {
 			this.isScrolling = scrollTop > 0;
 			this.scrollEvents.scrolling(this.isScrolling);
 		}
-		this.masterLayout.footer.configEvents.pipe(filter(evt => evt.name === MasterLayoutEventValues.SMALL)).subscribe(evt => this.footerSm = evt.value);
+		this.masterLayout.footer.configEvents.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.SMALL)).subscribe(evt => this.footerSm = evt.value);
 	}
 
 	private propertyChanges() {
 		this.masterLayout.layout.configEvents.pipe(takeUntil(this.unsubscribe)).subscribe((event) => {
 			switch (event.name) {
-				case MasterLayoutEventValues.MAIN_NAVIGATION:
+				case ObEMasterLayoutEventValues.MAIN_NAVIGATION:
 					this.noNavigation = !event.value;
 					break;
-				case MasterLayoutEventValues.FIXED:
+				case ObEMasterLayoutEventValues.FIXED:
 					this.isFixed = event.value;
 					break;
-				case MasterLayoutEventValues.COVER:
+				case ObEMasterLayoutEventValues.COVER:
 					this.hasCover = event.value;
 					break;
-				case MasterLayoutEventValues.OFF_CANVAS:
+				case ObEMasterLayoutEventValues.OFF_CANVAS:
 					this.hasOffCanvas = event.value;
 					break;
-				case MasterLayoutEventValues.COLLAPSE:
+				case ObEMasterLayoutEventValues.COLLAPSE:
 					this.isMenuCollapsed = event.value;
 					break;
-				case MasterLayoutEventValues.LAYOUT:
+				case ObEMasterLayoutEventValues.LAYOUT:
 					this.hasLayout = event.value;
 					break;
 			}

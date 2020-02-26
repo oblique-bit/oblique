@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {NgControl} from '@angular/forms';
 
 @Injectable({providedIn: 'root'})
-export class ErrorMessagesService {
+export class ObErrorMessagesService {
 	createMessages(control: NgControl): { key: string, params: { [param: string]: any } }[] {
 		return Object.keys(control.errors).map((key) => {
 			const subkeys = Object.keys(control.errors[key]);

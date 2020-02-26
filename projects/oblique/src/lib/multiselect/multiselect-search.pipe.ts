@@ -1,12 +1,12 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {MultiselectComponent} from './multiselect.component';
+import {ObMultiselectComponent} from './multiselect.component';
 
 @Pipe({
 	name: 'searchFilter'
 })
-export class MultiselectSearchPipe implements PipeTransform {
+export class ObMultiselectSearchPipe implements PipeTransform {
 
-	constructor(private readonly multiselectDropdown: MultiselectComponent) {
+	constructor(private readonly multiselectDropdown: ObMultiselectComponent) {
 
 	}
 

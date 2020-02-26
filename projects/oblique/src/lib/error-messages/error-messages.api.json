@@ -1,8 +1,8 @@
 [
   {
-    "name": "ErrorMessagesDirective",
-    "selector": "orErrors",
-    "exported": "orErrors",
+    "name": "ObErrorMessagesDirective",
+    "selector": "obErrors",
+    "exported": "obErrors",
     "usage": "Meant for Material Design. Applied on a <code>mat-form-field</code> element, it will populate a <code>mat-error</code> that has to be provided.",
     "since": "4.1.0",
     "variables": [
@@ -15,9 +15,9 @@
     ]
   },
   {
-    "name": "ErrorMessagesComponent",
-    "selector": "or-error-messages",
-    "exported": "orErrorMessages",
+    "name": "ObErrorMessagesComponent",
+    "selector": "ob-error-messages",
+    "exported": "obErrorMessages",
     "usage": "Meant for Bootstrap.",
     "since": "2.0.0",
     "inputs": [

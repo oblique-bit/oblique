@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
 @Injectable()
-export class MockDocumentMetaService {
+export class ObMockDocumentMetaService {
 	titleSeparator = ' · ';
 	titleSuffix = '';
 	description = '';

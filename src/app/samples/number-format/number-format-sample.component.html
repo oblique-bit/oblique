@@ -1,5 +1,5 @@
 <h2 class="page-header">{{'i18n.routes.samples.number-format.title' | translate}}</h2>
-<or-description component="number-format"></or-description>
+<ob-description component="number-format"></ob-description>
 <h3>Preview with template form</h3>
 <form>
 	<div class="form-group row">
@@ -8,7 +8,7 @@
 	</div>
 	<div class="form-group row">
 		<div class="col-sm-8">
-			<input class="form-control" type="number" orNumberFormat
+			<input class="form-control" type="number" obNumberFormat
 				   name="number1" [(ngModel)]="number1" aria-labelledby="number1Label"/>
 			<span id="number1Label" class="form-text text-muted">Default format with 2 decimals and persistent changes.</span>
 		</div>
@@ -19,7 +19,7 @@
 	</div>
 	<div class="form-group row">
 		<div class="col-sm-8">
-			<input class="form-control" type="number" orNumberFormat [persistent]="false"
+			<input class="form-control" type="number" obNumberFormat [persistent]="false"
 				   name="number2" [(ngModel)]="number2" aria-labelledby="number2Label"/>
 			<span id="number2Label" class="form-text text-muted">2 decimals format without persistent change.</span>
 		</div>
@@ -38,7 +38,7 @@
 	</div>
 	<div class="form-group row">
 		<div class="col-sm-8">
-			<input class="form-control" type="number" orNumberFormat [decimals]="4"
+			<input class="form-control" type="number" obNumberFormat [decimals]="4"
 				   formControlName="number5" aria-labelledby="number5Label"/>
 			<span id="number5Label" class="form-text text-muted">4 decimals and persistent changes.</span>
 		</div>
@@ -49,7 +49,7 @@
 	</div>
 	<div class="form-group row">
 		<div class="col-sm-8">
-			<input class="form-control" type="number" orNumberFormat [decimals]="4" [persistent]="false"
+			<input class="form-control" type="number" obNumberFormat [decimals]="4" [persistent]="false"
 				   formControlName="number6" aria-labelledby="number6Label"/>
 			<span id="number6Label" class="form-text text-muted">4 decimals format without persistent change.</span>
 		</div>
@@ -59,4 +59,4 @@
 		</div>
 	</div>
 </form>
-<or-api component="number-format"></or-api>
+<ob-api component="number-format"></ob-api>

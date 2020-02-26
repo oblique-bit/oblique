@@ -5,7 +5,7 @@ import {DOCUMENT} from '@angular/common';
 import {TranslateService} from '@ngx-translate/core';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 
-import {Unsubscribable} from '../unsubscribe.class';
+import {ObUnsubscribable} from '../unsubscribe.class';
 
 /**
  * DocumentMetaService - Service for updating document metadata
@@ -13,7 +13,7 @@ import {Unsubscribable} from '../unsubscribe.class';
  * Inspired & adapted from: https://gist.github.com/LA1CH3/718588765d56a8932de52c64c3561dcf
  */
 @Injectable({providedIn: 'root'})
-export class DocumentMetaService extends Unsubscribable {
+export class ObDocumentMetaService extends ObUnsubscribable {
 
 	public titleSeparator = ' · ';
 	public titleSuffix = '';

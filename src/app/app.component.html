@@ -1,23 +1,23 @@
-<or-master-layout [navigation]="navigation" [ngClass]="theme" *ngIf="theme$ | async as theme">
-	<ng-container orHeaderTitle>Oblique</ng-container>
-	<ng-template #orHeaderControl>
-		<or-search-box [items]="searchItems"></or-search-box>
+<ob-master-layout [navigation]="navigation" [ngClass]="theme" *ngIf="theme$ | async as theme">
+	<ng-container obHeaderTitle>Oblique</ng-container>
+	<ng-template #obHeaderControl>
+		<ob-search-box [items]="searchItems"></ob-search-box>
 	</ng-template>
-	<ng-template #orHeaderControl>
+	<ng-template #obHeaderControl>
 		<a href="https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique/" target="_blank"
 		   ngbTooltip="Go to Oblique GIT repository"
 		   placement="left">
 			<span class="fab fa-bitbucket"></span>
 		</a>
 	</ng-template>
-	<ng-template #orHeaderControl>
-		<button orOffCanvasToggle ngbTooltip="Toggle Off-Canvas" placement="left"
+	<ng-template #obHeaderControl>
+		<button obOffCanvasToggle ngbTooltip="Toggle Off-Canvas" placement="left"
 		   (click)="offCanvasOpen = !offCanvasOpen" tabindex="0">
 			<span class="fa fa-sign-in-alt" [class.fa-rotate-180]="!offCanvasOpen"></span>
 		</button>
 	</ng-template>
-	<ng-template #orHeaderControl>
-		<or-dropdown position="left">
+	<ng-template #obHeaderControl>
+		<ob-dropdown position="left">
 			<button dropdown-toggle><span class="fa fa-cog control-icon"></span></button>
 			<ng-container dropdown-content>
 				<h4 translate>i18n.rtfas.nav.bar-header.language</h4>
@@ -33,9 +33,9 @@
 					</li>
 				</ul>
 			</ng-container>
-		</or-dropdown>
+		</ob-dropdown>
 	</ng-template>
-<!--	<ng-template #orHeaderControl *ngIf="!material">-->
+<!--	<ng-template #obHeaderControl *ngIf="!material">-->
 <!--		<div placement="bottom-right" ngbDropdown>-->
 <!--			<a id="navbar-header-user-language" tabindex="0" role="menuitem" ngbDropdownToggle>-->
 <!--				<span class="fa fa-cog control-icon"></span>-->
@@ -57,27 +57,27 @@
 <!--			</div>-->
 <!--		</div>-->
 <!--	</ng-template>-->
-	<ng-template #orHeaderControl>
+	<ng-template #obHeaderControl>
 		<div class="wrapper">
 		<button (click)="toggleTheme()">
 			{{theme}}
 		</button>
 		</div>
 	</ng-template>
-	<ng-template #orHeaderControl>
+	<ng-template #obHeaderControl>
 		<button (click)="toggleFont(font)" *ngIf="font$ | async as font">
 			{{font}}
 		</button>
 	</ng-template>
 
-	<ng-template #orFooterLink>
+	<ng-template #obFooterLink>
 		<a href='http://www.google.ch' role="button" ngbTooltip="google.ch" target="_blank" placement="left">Google</a>
 	</ng-template>
-	<ng-template #orFooterLink>
+	<ng-template #obFooterLink>
 		<a href='http://www.blick.ch' role="button" target="_blank" placement="left">Blick</a>
 	</ng-template>
 
-	<ng-container orFooterInfo>
+	<ng-container obFooterInfo>
 		<p>&copy; 2018 {{'i18n.application.organization.name' | translate}}</p>
 		<p>
 			<span>Built with </span>
@@ -95,10 +95,10 @@
 			<span>.</span>
 		</p>
 	</ng-container>
-	<ng-container orOffCanvasTitle>
+	<ng-container obOffCanvasTitle>
 		Hello world title
 	</ng-container>
-	<ng-container orOffCanvasContent>
+	<ng-container obOffCanvasContent>
 		Hello world content
 	</ng-container>
-</or-master-layout>
+</ob-master-layout>

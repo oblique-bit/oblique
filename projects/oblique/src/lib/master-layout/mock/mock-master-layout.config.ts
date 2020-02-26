@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {ScrollMode} from '../master-layout.config';
+import {ObEScrollMode} from '../master-layout.config';
 
 @Injectable({providedIn: 'root'})
-export class MockMasterLayoutConfig {
+export class ObMockMasterLayoutConfig {
 	homePageRoute = '/home';
 	focusableFragments = ['content', 'navigation'];
 	scrollToTopDuration = 200;
@@ -27,7 +27,7 @@ export class MockMasterLayoutConfig {
 	};
 	navigation = {
 		isFullWidth: false,
-		scrollMode: ScrollMode.AUTO,
+		scrollMode: ObEScrollMode.AUTO,
 		scrollDelta: 95,
 		activeClass: 'active',
 		links: []

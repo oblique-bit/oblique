@@ -1,12 +1,12 @@
 <h2 class="page-header">Nested form</h2>
-<or-description component="nested-form"></or-description>
-<form [formGroup]="parentForm" (submit)="validateForm(parentForm.valid)" (reset)="resetForm()" orParentFormDirective>
+<ob-description component="nested-form"></ob-description>
+<form [formGroup]="parentForm" (submit)="validateForm(parentForm.valid)" (reset)="resetForm()" obParentFormDirective>
 	<h3>Reactive form</h3>
-	<or-nested-form formControlName="child" [nestedForm]="child.nestedForm">
+	<ob-nested-form formControlName="child" [nestedForm]="child.nestedForm">
 		<app-nested-form-child-sample #child></app-nested-form-child-sample>
-	</or-nested-form>
+	</ob-nested-form>
 	<ng-container *ngIf="material | async else bootstrap">
-		<mat-form-field orErrorMessages>
+		<mat-form-field obErrorMessages>
 			<mat-label>Reactive Material Parent</mat-label>
 			<input matInput formControlName="parent"/>
 			<mat-error></mat-error>
@@ -17,10 +17,10 @@
 		</div>
 	</ng-container>
 	<ng-template #bootstrap>
-		<div class="form-group" orFormControlState>
+		<div class="form-group" obFormControlState>
 			<label class="control-label">Reactive Bootstrap Parent</label>
 			<input class="form-control" type="text" formControlName="parent"/>
-			<or-error-messages></or-error-messages>
+			<ob-error-messages></ob-error-messages>
 		</div>
 		<div class="form-actions ">
 			<div class="btn-group ">
@@ -33,13 +33,13 @@
 <h4>Form value</h4>
 <pre>{{parentForm.value | json}}</pre>
 
-<form #ngForm (submit)="validateForm(ngForm.valid)" orParentFormDirective>
+<form #ngForm (submit)="validateForm(ngForm.valid)" obParentFormDirective>
 	<h3>Template driven form</h3>
-	<or-nested-form [(ngModel)]="model.child" name="child" [nestedForm]="childTD.ngForm.control">
+	<ob-nested-form [(ngModel)]="model.child" name="child" [nestedForm]="childTD.ngForm.control">
 		<app-nested-form-child-td-sample #childTD></app-nested-form-child-td-sample>
-	</or-nested-form>
+	</ob-nested-form>
 	<ng-container *ngIf="material | async else bootstrapTD">
-		<mat-form-field orErrorMessages>
+		<mat-form-field obErrorMessages>
 			<mat-label>Template Material Parent</mat-label>
 			<input matInput name="parent" [(ngModel)]="model.parent" required/>
 			<mat-error></mat-error>
@@ -50,10 +50,10 @@
 		</div>
 	</ng-container>
 	<ng-template #bootstrapTD>
-		<div class="form-group" orFormControlState>
+		<div class="form-group" obFormControlState>
 			<label class="control-label">Template Bootstrap Parent</label>
 			<input class="form-control" name="parent" [(ngModel)]="model.parent" required/>
-			<or-error-messages></or-error-messages>
+			<ob-error-messages></ob-error-messages>
 		</div>
 		<div class="form-actions ">
 			<div class="btn-group ">
@@ -65,4 +65,4 @@
 </form>
 <h4>Form value</h4>
 <pre>{{model | json}}</pre>
-<or-api component="nested-form"></or-api>
+<ob-api component="nested-form"></ob-api>

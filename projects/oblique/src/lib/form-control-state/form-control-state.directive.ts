@@ -3,18 +3,18 @@ import {FormGroupDirective, FormGroupName, NgControl, NgForm, NgModelGroup} from
 import {merge} from 'rxjs';
 import {delay, takeUntil} from 'rxjs/operators';
 
-import {Unsubscribable} from '../unsubscribe.class';
-import {ThemeService} from '../theme/theme.service';
-import {ParentFormDirective} from '../nested-form/parent-form.directive';
+import {ObUnsubscribable} from '../unsubscribe.class';
+import {ObThemeService} from '../theme/theme.service';
+import {ObParentFormDirective} from '../nested-form/parent-form.directive';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular default material behavior for both mandatory and error states instead
  */
 @Directive({
-	selector: '[orFormControlState]',
-	exportAs: 'orFormControlState'
+	selector: '[obFormControlState]',
+	exportAs: 'obFormControlState'
 })
-export class FormControlStateDirective extends Unsubscribable implements AfterViewInit {
+export class ObFormControlStateDirective extends ObUnsubscribable implements AfterViewInit {
 
 	@Input() pristineValidation = false;
 	@Input() mandatory;
@@ -32,8 +32,8 @@ export class FormControlStateDirective extends Unsubscribable implements AfterVi
 				@Optional() formGroupDirective: FormGroupDirective,
 				@Optional() formGroupName: FormGroupName,
 				@Optional() modelGroup: NgModelGroup,
-				@Optional() private readonly parent: ParentFormDirective,
-				theme: ThemeService,
+				@Optional() private readonly parent: ObParentFormDirective,
+				theme: ObThemeService,
 				private readonly elementRef: ElementRef,
 				private readonly renderer: Renderer2) {
 		super();

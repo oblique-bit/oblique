@@ -1,13 +1,13 @@
 import {Component, Input} from '@angular/core';
-import {SearchWidgetItem} from '../search-box.module';
+import {ObISearchWidgetItem} from '../search-box.module';
 
 @Component({
-	selector: 'or-search-box',
-	exportAs: 'orSearchBox',
+	selector: 'ob-search-box',
+	exportAs: 'obSearchBox',
 	template: ''
 })
-export class MockSearchBoxComponent {
-	@Input() items: SearchWidgetItem[];
+export class ObMockSearchBoxComponent {
+	@Input() items: ObISearchWidgetItem[];
 	@Input() placeholder = 'i18n.oblique.search.placeholder';
 	@Input() minPatternLength = 1;
 	@Input() maxResults = 10;

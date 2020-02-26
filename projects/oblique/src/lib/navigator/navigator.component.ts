@@ -1,17 +1,17 @@
 import {Component, HostListener} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
-import {Unsubscribable} from '../unsubscribe.class';
+import {ObUnsubscribable} from '../unsubscribe.class';
 
 /**
  * @deprecated since version 4.0.0. This component is neither useful nor used and will be removed in future versions
  */
 @Component({
-	selector: 'or-navigator',
+	selector: 'ob-navigator',
 	template: `
 		<ng-content></ng-content>`
 })
-export class NavigatorComponent extends Unsubscribable {
+export class ObNavigatorComponent extends ObUnsubscribable {
 
 	constructor(private readonly router: Router, private readonly route: ActivatedRoute) {
 		super();

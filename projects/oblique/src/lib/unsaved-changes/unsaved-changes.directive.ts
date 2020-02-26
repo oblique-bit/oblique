@@ -1,20 +1,20 @@
 import {Directive, Input, OnDestroy, OnInit} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
-import {UnsavedChangesService} from './unsaved-changes.service';
+import {ObUnsavedChangesService} from './unsaved-changes.service';
 
 @Directive({
-	selector: '[orUnsavedChanges]'
+	selector: '[obUnsavedChanges]'
 })
-export class UnsavedChangesDirective implements OnDestroy, OnInit {
+export class ObUnsavedChangesDirective implements OnDestroy, OnInit {
 	@Input() id;
 
-	constructor(private readonly unsavedChangesService: UnsavedChangesService,
+	constructor(private readonly unsavedChangesService: ObUnsavedChangesService,
 				private readonly form: ControlContainer) {
 	}
 
 	ngOnInit() {
 		if (!this.id) {
-			throw new Error('orUnsavedChanges directive needs an "id" attribute.');
+			throw new Error('obUnsavedChanges directive needs an "id" attribute.');
 		}
 		this.unsavedChangesService.watch(this.id, this.form);
 	}

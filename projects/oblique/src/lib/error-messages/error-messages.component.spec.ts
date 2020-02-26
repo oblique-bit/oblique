@@ -2,20 +2,20 @@ import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/t
 import {FormsModule} from '@angular/forms';
 import {Component, ViewChild} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {ErrorMessagesComponent, ErrorMessagesService, FormControlStateDirective} from 'oblique';
-import {MockTranslateParamsModule} from '../translate-params/mock/mock-translate-params.module';
+import {ObErrorMessagesComponent, ObErrorMessagesService, ObFormControlStateDirective} from 'oblique';
+import {ObMockTranslateParamsModule} from '../translate-params/mock/mock-translate-params.module';
 
 @Component({
 	template: `
 		<form name="testForm">
 			<input name="name" type="text" ngModel #name="ngModel" required>
-			<or-error-messages [control]="name"></or-error-messages>
+			<ob-error-messages [control]="name"></ob-error-messages>
 			<input id="submit" type="submit" value="Click Me">
 		</form>
 	`
 })
 class TestComponent {
-	@ViewChild(ErrorMessagesComponent, {static: false}) readonly errorMessages: ErrorMessagesComponent;
+	@ViewChild(ObErrorMessagesComponent, {static: false}) readonly errorMessages: ObErrorMessagesComponent;
 }
 
 describe('ErrorMessagesComponent', () => {
@@ -40,13 +40,13 @@ describe('ErrorMessagesComponent', () => {
 
 		TestBed.configureTestingModule({
 			declarations: [
-				ErrorMessagesComponent,
+				ObErrorMessagesComponent,
 				TestComponent
 			],
-			imports: [FormsModule, MockTranslateParamsModule],
+			imports: [FormsModule, ObMockTranslateParamsModule],
 			providers: [
-				{provide: ErrorMessagesService, useValue: errorMessagesServiceMock},
-				{provide: FormControlStateDirective, useValue: formControlStateDirectiveMock}
+				{provide: ObErrorMessagesService, useValue: errorMessagesServiceMock},
+				{provide: ObFormControlStateDirective, useValue: formControlStateDirectiveMock}
 			]
 		}).compileComponents();
 	}));

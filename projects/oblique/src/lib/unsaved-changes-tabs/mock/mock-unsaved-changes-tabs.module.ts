@@ -1,17 +1,17 @@
 import {NgModule} from '@angular/core';
-import {UnsavedChangesTabsService} from '../unsaved-changes-tabs.module';
-import {MockUnsavedChangesTabsDirective} from './mock-unsaved-changes-tabs.directive';
-import {MockUnsavedChangesTabsService} from './mock-unsaved-changes-tabs.service';
+import {ObUnsavedChangesTabsService} from '../unsaved-changes-tabs.module';
+import {ObMockUnsavedChangesTabsDirective} from './mock-unsaved-changes-tabs.directive';
+import {ObMockUnsavedChangesTabsService} from './mock-unsaved-changes-tabs.service';
 
-export {MockUnsavedChangesTabsDirective} from './mock-unsaved-changes-tabs.directive';
-export {MockUnsavedChangesTabsService} from './mock-unsaved-changes-tabs.service';
+export {ObMockUnsavedChangesTabsDirective} from './mock-unsaved-changes-tabs.directive';
+export {ObMockUnsavedChangesTabsService} from './mock-unsaved-changes-tabs.service';
 
 @NgModule({
-	declarations: [MockUnsavedChangesTabsDirective],
-	exports: [MockUnsavedChangesTabsDirective],
+	declarations: [ObMockUnsavedChangesTabsDirective],
+	exports: [ObMockUnsavedChangesTabsDirective],
 	providers: [
-		{provide: UnsavedChangesTabsService, useClass: MockUnsavedChangesTabsService}
+		{provide: ObUnsavedChangesTabsService, useClass: ObMockUnsavedChangesTabsService}
 	]
 })
-export class MockUnsavedChangesTabsModule {
+export class ObMockUnsavedChangesTabsModule {
 }

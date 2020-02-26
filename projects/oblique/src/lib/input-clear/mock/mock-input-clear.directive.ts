@@ -1,11 +1,11 @@
 import {Directive, EventEmitter, Input, Output} from '@angular/core';
 
 @Directive({
-	selector: '[orInputClear]',
-	exportAs: 'orInputClear'
+	selector: '[obInputClear]',
+	exportAs: 'obInputClear'
 })
-export class MockInputClearDirective {
-	@Input('orInputClear') control: HTMLInputElement;
+export class ObMockInputClearDirective {
+	@Input('obInputClear') control: HTMLInputElement;
 	@Input() focusOnClear = true;
 	@Output() onClear = new EventEmitter<MouseEvent>();
 	cssClass = true;

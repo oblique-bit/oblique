@@ -5,16 +5,16 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
-	selector: 'or-table',
+	selector: 'ob-table',
 	templateUrl: './table.component.html',
 	styleUrls: ['./table.component.scss']
 })
 
-export class TableComponent implements OnInit {
+export class ObTableComponent implements OnInit {
 	@ViewChild(MatSort, {static: true}) sort: MatSort;
 	@ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-	ELEMENT_DATA: PeriodicElement[] = [
+	ELEMENT_DATA: ObIPeriodicElement[] = [
 		{position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
 		{position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
 		{position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
@@ -26,7 +26,7 @@ export class TableComponent implements OnInit {
 		{position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
 		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
 	];
-	dataSource = new MatTableDataSource<PeriodicElement>(this.ELEMENT_DATA);
+	dataSource = new MatTableDataSource<ObIPeriodicElement>(this.ELEMENT_DATA);
 	pageSizeOptions = [10, 5, 2];
 	displayedColumns: string[];
 	tableClasses: string[] = [];
@@ -47,7 +47,7 @@ export class TableComponent implements OnInit {
 	readonly OBLIQUE_CLASS_TABLE_PLAIN = 'table-plain';
 	readonly OBLIQUE_CLASS_TABLE_COLLAPSE = 'table-collapse';
 
-	private selection = new SelectionModel<PeriodicElement>(true, []);
+	private selection = new SelectionModel<ObIPeriodicElement>(true, []);
 	private totalWeight: number;
 	private readonly SORT_DIRECTION_ASCENDING = 'asc';
 	private readonly SORT_DIRECTION_DESCENDING = 'desc';
@@ -151,7 +151,7 @@ export class TableComponent implements OnInit {
 				}));
 	}
 
-	private sortAscending(left: PeriodicElement, right: PeriodicElement, sortColumn: string): number {
+	private sortAscending(left: ObIPeriodicElement, right: ObIPeriodicElement, sortColumn: string): number {
 		if (left[sortColumn] > right[sortColumn]) {
 			return 1;
 		} else if (left[sortColumn] === right[sortColumn]) {
@@ -161,7 +161,7 @@ export class TableComponent implements OnInit {
 		}
 	}
 
-	private sortDescending(left: PeriodicElement, right: PeriodicElement, sortColumn: string): number {
+	private sortDescending(left: ObIPeriodicElement, right: ObIPeriodicElement, sortColumn: string): number {
 		if (right[sortColumn] > left[sortColumn]) {
 			return 1;
 		} else if (left[sortColumn] === right[sortColumn]) {
@@ -172,7 +172,7 @@ export class TableComponent implements OnInit {
 	}
 }
 
-export interface PeriodicElement {
+export interface ObIPeriodicElement {
 	name: string;
 	position: number;
 	weight: number;

@@ -3,7 +3,7 @@ import {Directive} from '@angular/core';
 @Directive({
 	selector: '.offcanvas-backdrop'
 })
-export class MockOffCanvasBackdropDirective {
+export class ObMockOffCanvasBackdropDirective {
 	close(): void {
 	}
 }

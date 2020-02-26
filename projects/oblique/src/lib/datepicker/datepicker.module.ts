@@ -6,22 +6,22 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgbDateParserFormatter, NgbDatepickerI18n, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-import {DatepickerI18nService} from './datepicker-i18n.service';
-import {DateDMYParserFormatter} from './date-parser-formatter';
-import {DatepickerPlaceholderDirective} from './datepicker-placeholder.directive';
-import {DateFormatterPipe} from './date-formatter.pipe';
-import {DatepickerComponent} from './datepicker.component';
-import {TelemetryService} from '../telemetry/telemetry.service';
+import {ObDatepickerI18nService} from './datepicker-i18n.service';
+import {ObDateDMYParserFormatter} from './date-parser-formatter';
+import {ObDatepickerPlaceholderDirective} from './datepicker-placeholder.directive';
+import {ObDateFormatterPipe} from './date-formatter.pipe';
+import {ObDatepickerComponent} from './datepicker.component';
+import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
-import {ThemeService} from '../theme/theme.service';
+import {ObThemeService} from '../theme/theme.service';
 import {WINDOW, windowProvider} from '../utilities';
 
-export {DatepickerI18nService} from './datepicker-i18n.service';
-export {DateDMYParserFormatter} from './date-parser-formatter';
-export {DatepickerPlaceholderDirective} from './datepicker-placeholder.directive';
-export {DateFormatterPipe} from './date-formatter.pipe';
-export {DatepickerOptions, DatepickerConfigService} from './datepicker-config.service';
-export {DatepickerComponent} from './datepicker.component';
+export {ObDatepickerI18nService} from './datepicker-i18n.service';
+export {ObDateDMYParserFormatter} from './date-parser-formatter';
+export {ObDatepickerPlaceholderDirective} from './datepicker-placeholder.directive';
+export {ObDateFormatterPipe} from './date-formatter.pipe';
+export {ObIDatepickerOptions, ObDatepickerConfigService} from './datepicker-config.service';
+export {ObDatepickerComponent} from './datepicker.component';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular material datepicker instead
@@ -34,26 +34,26 @@ export {DatepickerComponent} from './datepicker.component';
 		ReactiveFormsModule
 	],
 	declarations: [
-		DatepickerComponent,
-		DatepickerPlaceholderDirective,
-		DateFormatterPipe
+		ObDatepickerComponent,
+		ObDatepickerPlaceholderDirective,
+		ObDateFormatterPipe
 	],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 		{provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }},
-		{provide: NgbDatepickerI18n, useClass: DatepickerI18nService},
-		{provide: NgbDateParserFormatter, useClass: DateDMYParserFormatter},
+		{provide: NgbDatepickerI18n, useClass: ObDatepickerI18nService},
+		{provide: NgbDateParserFormatter, useClass: ObDateDMYParserFormatter},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
 	exports: [
-		DatepickerComponent,
-		DatepickerPlaceholderDirective,
-		DateFormatterPipe
+		ObDatepickerComponent,
+		ObDatepickerPlaceholderDirective,
+		ObDateFormatterPipe
 	]
 })
-export class DatepickerModule {
-	constructor(telemetry: TelemetryService, theme: ThemeService) {
-		requireAndRecordTelemetry(telemetry, DatepickerModule);
+export class ObDatepickerModule {
+	constructor(telemetry: ObTelemetryService, theme: ObThemeService) {
+		requireAndRecordTelemetry(telemetry, ObDatepickerModule);
 
 		theme.deprecated('datepicker', 'datepicker');
 	}

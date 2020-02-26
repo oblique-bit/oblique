@@ -1,6 +1,6 @@
 [
   {
-    "name": "ThemeService",
+    "name": "ObThemeService",
     "usage": "Allows live changing to the theme and font",
     "since": "4.0.0",
     "variables": [

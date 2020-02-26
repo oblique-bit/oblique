@@ -3,8 +3,8 @@ import {NavigationEnd, Router} from '@angular/router';
 import {Observable, Subject} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
-import {INotification, NotificationType} from './notification.interfaces';
-import {NotificationConfig} from './notification.config';
+import {ObINotification, ObENotificationType} from './notification.interfaces';
+import {ObNotificationConfig} from './notification.config';
 
 /**
  * Service for the `NotificationComponent`. Can be configured using `NotificationConfig`.
@@ -13,50 +13,50 @@ import {NotificationConfig} from './notification.config';
  * @see NotificationConfig
  */
 @Injectable({providedIn: 'root'})
-export class NotificationService {
+export class ObNotificationService {
 	clearAllOnNavigate = this.config.clearAllOnNavigate;
-	private readonly eventSubject: Subject<INotification> = new Subject<INotification>();
+	private readonly eventSubject: Subject<ObINotification> = new Subject<ObINotification>();
 	private readonly events$ = this.eventSubject.asObservable();
 
 
-	constructor(public config: NotificationConfig, router: Router) {
+	constructor(public config: ObNotificationConfig, router: Router) {
 		router.events.pipe(filter(evt => evt instanceof NavigationEnd && this.clearAllOnNavigate)).subscribe(() => this.clearAll());
 	}
 
-	public get events(): Observable<INotification> {
+	public get events(): Observable<ObINotification> {
 		return this.events$;
 	}
 
 	/**
 	 * Sends an _info_ notification.
 	 */
-	public info(config: INotification | string): INotification {
-		return this.broadcast(config, NotificationType.INFO);
+	public info(config: ObINotification | string): ObINotification {
+		return this.broadcast(config, ObENotificationType.INFO);
 	}
 
 	/**
 	 * Sends a _success_ notification.
 	 */
-	public success(config: INotification | string): INotification {
-		return this.broadcast(config, NotificationType.SUCCESS);
+	public success(config: ObINotification | string): ObINotification {
+		return this.broadcast(config, ObENotificationType.SUCCESS);
 	}
 
 	/**
 	 * Sends a _warning_ notification.
 	 */
-	public warning(config: INotification | string): INotification {
-		return this.broadcast(config, NotificationType.WARNING);
+	public warning(config: ObINotification | string): ObINotification {
+		return this.broadcast(config, ObENotificationType.WARNING);
 	}
 
 	/**
 	 * Sends an _error_ notification.
 	 */
-	public error(config: INotification | string): INotification {
-		return this.broadcast(config, NotificationType.ERROR);
+	public error(config: ObINotification | string): ObINotification {
+		return this.broadcast(config, ObENotificationType.ERROR);
 	}
 
-	public send(config: INotification | string, type?: NotificationType): INotification {
-		return this.broadcast(config, type || (config as INotification).type || NotificationType.INFO);
+	public send(config: ObINotification | string, type?: ObENotificationType): ObINotification {
+		return this.broadcast(config, type || (config as ObINotification).type || ObENotificationType.INFO);
 	}
 
 	/**
@@ -73,7 +73,7 @@ export class NotificationService {
 		this.eventSubject.next(null);
 	}
 
-	private broadcast(config: INotification | string, type: NotificationType): INotification {
+	private broadcast(config: ObINotification | string, type: ObENotificationType): ObINotification {
 		if (typeof config === 'string') {
 			config = {
 				message: config

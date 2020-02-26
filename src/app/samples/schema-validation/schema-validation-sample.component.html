@@ -2,11 +2,11 @@
 	<h2 class="page-header">
 		{{'i18n.routes.samples.schema-validation.title' | translate}}
 	</h2>
-	<or-description component="schema-validation"></or-description>
+	<ob-description component="schema-validation"></ob-description>
 	<div class="row">
 		<div class="col">
 			<form id="schemaValidationForm" class="form-horizontal has-validation card" name="validationForm"
-				  role="form" [orSchemaValidation]="schema" #templateForm="ngForm"
+				  role="form" [obSchemaValidation]="schema" #templateForm="ngForm"
 				  (submit)="check(templateForm)" (reset)="reset(templateForm)">
 				<div class="card-header">
 					<h3 class="card-title d-flex justify-content-between">
@@ -18,12 +18,12 @@
 					</h3>
 				</div>
 				<div class="card-body">
-					<div orFormControlState class="row form-group" [pristineValidation]="true">
+					<div obFormControlState class="row form-group" [pristineValidation]="true">
 						<label class="col-3 col-form-label">Text</label>
 						<div class="col-8">
 							<input name="text" type="text" placeholder="Text" class="form-control" ngModel
-								   orSchemaValidate/>
-							<or-error-messages></or-error-messages>
+								   obSchemaValidate/>
+							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
 							<ng-template #textSchema>
@@ -35,12 +35,12 @@
 							</a>
 						</div>
 					</div>
-					<div orFormControlState class="row form-group">
+					<div obFormControlState class="row form-group">
 						<label class="col-3 col-form-label">Number</label>
 						<div class="col-8">
 							<input name="number" type="number" placeholder="Number" class="form-control"
-								   ngModel orSchemaValidate/>
-							<or-error-messages></or-error-messages>
+								   ngModel obSchemaValidate/>
+							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
 							<ng-template #numberSchema>
@@ -52,12 +52,12 @@
 							</a>
 						</div>
 					</div>
-					<div orFormControlState class="row form-group">
+					<div obFormControlState class="row form-group">
 						<label class="col-3 col-form-label">Integer</label>
 						<div class="col-8">
 							<input name="integer" type="number" placeholder="integer" class="form-control"
-								   ngModel orSchemaValidate/>
-							<or-error-messages></or-error-messages>
+								   ngModel obSchemaValidate/>
+							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
 							<ng-template #integerSchema>
@@ -69,11 +69,11 @@
 							</a>
 						</div>
 					</div>
-					<div orFormControlState class="row form-group">
+					<div obFormControlState class="row form-group">
 						<label class="col-3 col-form-label" for="templateDate">Date</label>
 						<div class="col-8">
-							<or-date-picker id="templateDate" ngModel name="date"></or-date-picker>
-							<or-error-messages></or-error-messages>
+							<ob-date-picker id="templateDate" ngModel name="date"></ob-date-picker>
+							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
 							<ng-template #dateSchema>
@@ -85,14 +85,14 @@
 							</a>
 						</div>
 					</div>
-					<div orFormControlState class="row form-group">
+					<div obFormControlState class="row form-group">
 						<label class="col-3 col-form-label" for="templateSelect">Select</label>
 						<div class="col-8">
-							<select id="templateSelect" name="select" class="form-control" ngModel orSchemaValidate>
+							<select id="templateSelect" name="select" class="form-control" ngModel obSchemaValidate>
 								<option value="">Select</option>
 								<option *ngFor="let item of schema.properties.select.options" value="{{item.value}}">{{item.label}}</option>
 							</select>
-							<or-error-messages></or-error-messages>
+							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
 							<ng-template #selectSchema>
@@ -104,12 +104,12 @@
 							</a>
 						</div>
 					</div>
-					<div orFormControlState class="row form-group">
+					<div obFormControlState class="row form-group">
 						<label class="col-3 col-form-label">Textarea</label>
 						<div class="col-8">
 						<textarea name="textarea" type="text" class="form-control" placeholder="Textarea"
-								  ngModel rows="1" orSchemaValidate></textarea>
-							<or-error-messages></or-error-messages>
+								  ngModel rows="1" obSchemaValidate></textarea>
+							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
 							<ng-template #textareaSchema>
@@ -134,12 +134,12 @@
 								</a>
 							</span>
 						</legend>
-						<div orFormControlState class="row form-group">
+						<div obFormControlState class="row form-group">
 							<label class="col-3 col-form-label">First name</label>
 							<div class="col-8">
 								<input type="text" name="firstName" class="form-control" placeholder="First name"
-									   ngModel orSchemaValidate>
-								<or-error-messages></or-error-messages>
+									   ngModel obSchemaValidate>
+								<ob-error-messages></ob-error-messages>
 							</div>
 							<div class="col-1">
 								<ng-template #firstNameSchema>
@@ -151,12 +151,12 @@
 								</a>
 							</div>
 						</div>
-						<div orFormControlState class="row form-group">
+						<div obFormControlState class="row form-group">
 							<label class="col-3 col-form-label">Last name</label>
 							<div class="col-8">
 								<input type="text" name="lastName" class="form-control" placeholder="Last name"
-									   ngModel orSchemaValidate>
-								<or-error-messages></or-error-messages>
+									   ngModel obSchemaValidate>
+								<ob-error-messages></ob-error-messages>
 							</div>
 							<div class="col-1">
 								<ng-template #lastNameSchema>
@@ -181,12 +181,12 @@
 								</a>
 							</span>
 							</legend>
-							<div orFormControlState class="row form-group">
+							<div obFormControlState class="row form-group">
 								<label class="col-3 col-form-label">Street</label>
 								<div class="col-8">
 									<input type="text" name="street" class="form-control" placeholder="Street"
-										   ngModel orSchemaValidate>
-									<or-error-messages></or-error-messages>
+										   ngModel obSchemaValidate>
+									<ob-error-messages></ob-error-messages>
 								</div>
 								<div class="col-1">
 									<ng-template #streetSchema>
@@ -198,12 +198,12 @@
 									</a>
 								</div>
 							</div>
-							<div orFormControlState class="row form-group">
+							<div obFormControlState class="row form-group">
 								<label class="col-3 col-form-label">Number</label>
 								<div class="col-8">
 									<input type="number" name="number" class="form-control" placeholder="Number"
-										   ngModel orSchemaValidate>
-									<or-error-messages></or-error-messages>
+										   ngModel obSchemaValidate>
+									<ob-error-messages></ob-error-messages>
 								</div>
 								<div class="col-1">
 									<ng-template #streetNumberSchema>
@@ -229,7 +229,7 @@
 			<pre>{{templateForm.value | json}}</pre>
 		</div>
 		<div class="col">
-			<form class="form-horizontal has-validation card" role="form" [orSchemaValidation]="schema"
+			<form class="form-horizontal has-validation card" role="form" [obSchemaValidation]="schema"
 				  [formGroup]="formData" (submit)="check()" (reset)="reset()">
 				<div class="card-header">
 					<h3 class="card-title d-flex justify-content-between">
@@ -241,11 +241,11 @@
 					</h3>
 				</div>
 				<div class="card-body">
-					<div orFormControlState class="row form-group" [pristineValidation]="true">
+					<div obFormControlState class="row form-group" [pristineValidation]="true">
 						<label class="col-3 col-form-label">Text</label>
 						<div class="col-8">
-							<input formControlName="text" type="text" placeholder="Text" class="form-control" orSchemaValidate/>
-							<or-error-messages></or-error-messages>
+							<input formControlName="text" type="text" placeholder="Text" class="form-control" obSchemaValidate/>
+							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
 							<a class="form-control-static" role="button"
@@ -254,11 +254,11 @@
 							</a>
 						</div>
 					</div>
-					<div orFormControlState class="row form-group">
+					<div obFormControlState class="row form-group">
 						<label class="col-3 col-form-label">Number</label>
 						<div class="col-8">
-							<input formControlName="number" type="number" placeholder="Number" class="form-control" orSchemaValidate/>
-							<or-error-messages></or-error-messages>
+							<input formControlName="number" type="number" placeholder="Number" class="form-control" obSchemaValidate/>
+							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
 							<a class="form-control-static" role="button" [ngbPopover]="numberSchema" popoverTitle="Schema" placement="left">
@@ -266,11 +266,11 @@
 							</a>
 						</div>
 					</div>
-					<div orFormControlState class="row form-group">
+					<div obFormControlState class="row form-group">
 						<label class="col-3 col-form-label">Integer</label>
 						<div class="col-8">
-							<input formControlName="integer" type="number" placeholder="integer" class="form-control" orSchemaValidate/>
-							<or-error-messages></or-error-messages>
+							<input formControlName="integer" type="number" placeholder="integer" class="form-control" obSchemaValidate/>
+							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
 							<a class="form-control-static" role="button" [ngbPopover]="integerSchema" popoverTitle="Schema" placement="left">
@@ -278,11 +278,11 @@
 							</a>
 						</div>
 					</div>
-					<div orFormControlState class="row form-group">
+					<div obFormControlState class="row form-group">
 						<label class="col-3 col-form-label" for="reactiveDate">Date</label>
 						<div class="col-8">
-							<or-date-picker id="reactiveDate" formControlName="date" orSchemaValidate></or-date-picker>
-							<or-error-messages></or-error-messages>
+							<ob-date-picker id="reactiveDate" formControlName="date" obSchemaValidate></ob-date-picker>
+							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
 							<a class="form-control-static" role="button" [ngbPopover]="dateSchema" popoverTitle="Schema" placement="left">
@@ -290,14 +290,14 @@
 							</a>
 						</div>
 					</div>
-					<div orFormControlState class="row form-group">
+					<div obFormControlState class="row form-group">
 						<label class="col-3 col-form-label" for="reactiveSelect">Select</label>
 						<div class="col-8">
-							<select id="reactiveSelect" formControlName="select" class="form-control" orSchemaValidate>
+							<select id="reactiveSelect" formControlName="select" class="form-control" obSchemaValidate>
 								<option value="">Select</option>
 								<option *ngFor="let item of schema.properties.select.options" value="{{item.value}}">{{item.label}}</option>
 							</select>
-							<or-error-messages></or-error-messages>
+							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
 							<a class="form-control-static" role="button" [ngbPopover]="selectSchema" popoverTitle="Schema" placement="left">
@@ -305,11 +305,11 @@
 							</a>
 						</div>
 					</div>
-					<div orFormControlState class="row form-group">
+					<div obFormControlState class="row form-group">
 						<label class="col-3 col-form-label">Textarea</label>
 						<div class="col-8">
-						<textarea formControlName="textarea" type="text" class="form-control" placeholder="Textarea" rows="1" orSchemaValidate></textarea>
-							<or-error-messages></or-error-messages>
+						<textarea formControlName="textarea" type="text" class="form-control" placeholder="Textarea" rows="1" obSchemaValidate></textarea>
+							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
 							<a class="form-control-static" role="button" [ngbPopover]="numberSchema" popoverTitle="Schema" placement="left">
@@ -326,11 +326,11 @@
 								</a>
 							</span>
 						</legend>
-						<div orFormControlState class="row form-group">
+						<div obFormControlState class="row form-group">
 							<label class="col-3 col-form-label">First name</label>
 							<div class="col-8">
-								<input type="text" formControlName="firstName" class="form-control" placeholder="First name" orSchemaValidate>
-								<or-error-messages></or-error-messages>
+								<input type="text" formControlName="firstName" class="form-control" placeholder="First name" obSchemaValidate>
+								<ob-error-messages></ob-error-messages>
 							</div>
 							<div class="col-1">
 								<a class="form-control-static" role="button" [ngbPopover]="firstNameSchema" popoverTitle="Schema" placement="left">
@@ -338,11 +338,11 @@
 								</a>
 							</div>
 						</div>
-						<div orFormControlState class="row form-group">
+						<div obFormControlState class="row form-group">
 							<label class="col-3 col-form-label">Last name</label>
 							<div class="col-8">
-								<input type="text" formControlName="lastName" class="form-control" placeholder="Last name" orSchemaValidate>
-								<or-error-messages></or-error-messages>
+								<input type="text" formControlName="lastName" class="form-control" placeholder="Last name" obSchemaValidate>
+								<ob-error-messages></ob-error-messages>
 							</div>
 							<div class="col-1">
 								<a class="form-control-static" role="button" [ngbPopover]="lastNameSchema" popoverTitle="Schema" placement="left">
@@ -359,11 +359,11 @@
 									</a>
 								</span>
 							</legend>
-							<div orFormControlState class="row form-group">
+							<div obFormControlState class="row form-group">
 								<label class="col-3 col-form-label">Street</label>
 								<div class="col-8">
-									<input type="text" formControlName="street" class="form-control" placeholder="Street" orSchemaValidate>
-									<or-error-messages></or-error-messages>
+									<input type="text" formControlName="street" class="form-control" placeholder="Street" obSchemaValidate>
+									<ob-error-messages></ob-error-messages>
 								</div>
 								<div class="col-1">
 									<ng-template #streetSchema>
@@ -374,11 +374,11 @@
 									</a>
 								</div>
 							</div>
-							<div orFormControlState class="row form-group">
+							<div obFormControlState class="row form-group">
 								<label class="col-3 col-form-label">Number</label>
 								<div class="col-8">
-									<input type="number" formControlName="number" class="form-control" placeholder="Number" orSchemaValidate>
-									<or-error-messages></or-error-messages>
+									<input type="number" formControlName="number" class="form-control" placeholder="Number" obSchemaValidate>
+									<ob-error-messages></ob-error-messages>
 								</div>
 								<div class="col-1">
 									<a class="form-control-static" role="button" [ngbPopover]="streetNumberSchema" popoverTitle="Schema" placement="left">
@@ -406,5 +406,5 @@
 			<pre>{{schema | json}}</pre>
 		</div>
 	</div>
-	<or-api component="schema-validation"></or-api>
+	<ob-api component="schema-validation"></ob-api>
 </ng-container>
