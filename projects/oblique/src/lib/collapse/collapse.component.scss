@@ -1,13 +1,20 @@
-@import "../mixins/toggle";
+@import "../../styles/scss/core/mixins/toggle";
 @import "~@fortawesome/fontawesome-free/scss/variables";
 
 .toggle {
+	cursor: pointer;
+
 	&:not(.toggle-after) {
 		@include toggle-before();
 	}
 
 	&.toggle-after {
 		@include toggle-after();
+
+		&.toggle-justified {
+			display: flex;
+			justify-content: space-between;
+		}
 	}
 
 	&.toggle-down-up {

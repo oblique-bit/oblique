@@ -1,0 +1,74 @@
+<div class="default-layout">
+	<h2 class="page-header">Collapse</h2>
+	<ob-description component="collapse"></ob-description>
+	<ob-column-layout [left]="false">
+		<ob-collapse [(active)]="active" [direction]="direction.value" column-main-content [iconPosition]="iconPosition.value" >
+    			<span id="{{collapseTitle}}_title" obCollapseHeader>
+       		 		{{collapseTitle}}
+    			</span>
+				<p obCollapseMain>	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+					dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+					clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+					consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
+					diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+					takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+					diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+					accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+				</p>
+		</ob-collapse>
+		<div column-right-content>
+			<ng-container *ngIf="material | async else bootstrap">
+				<mat-form-field>
+					<mat-label>Direction</mat-label>
+					<mat-select [(value)]="direction">
+						<mat-option *ngFor="let variant of directions" [value]="variant">
+							{{variant.viewValue}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+
+				<mat-form-field>
+					<mat-label>iconPositions</mat-label>
+					<mat-select [(value)]="iconPosition">
+						<mat-option *ngFor="let variant of iconPositions" [value]="variant">
+							{{variant.viewValue}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+
+				<div mat-dialog-actions>
+					<button mat-button (click)="active =! active"><span class="fa fa-compress"></span> collapse</button>
+				</div>
+
+			</ng-container>
+			<ng-template #bootstrap>
+				<div class="form-group">
+					<label  class="form-control-label">Direction</label>
+					<select [formControl]=direction class="form-control">
+						<option *ngFor="let variant of directions"
+								[ngValue]="variant.value">{{variant.viewValue}}</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label  class="form-control-label">iconPositions</label>
+					<select [formControl]=iconPosition class="form-control">
+						<option *ngFor="let variant of iconPositions"
+								[ngValue]="variant.value">{{variant.viewValue}}</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-secondary" role="button" (click)="active =! active">
+						<span class="fa fa-compress"></span> collapse
+					</button>
+				</div>
+			</ng-template>
+		</div>
+
+
+
+
+	</ob-column-layout>
+	<ob-api component="collapse"></ob-api>
+</div>
+
+

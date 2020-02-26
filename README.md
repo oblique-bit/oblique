@@ -82,6 +82,7 @@ The type is mandatory and must be one of the following:
 
 ###### Scope
 The scope is optional and should be the name of the Oblique feature affected:
+* **collapse**
 * **column-layout**
 * **datepicker**
 * **document-meta**

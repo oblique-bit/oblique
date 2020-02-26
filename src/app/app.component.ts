@@ -18,6 +18,7 @@ export class AppComponent {
 		{url: 'home', label: 'i18n.routes.home.title'},
 		{
 			url: 'samples', label: 'i18n.routes.samples.title', children: [
+				{url: 'collapse', label: 'Collapse'},
 				{url: 'column-layout', label: 'i18n.routes.samples.column-layout.title'},
 				{url: 'datepicker', label: 'i18n.routes.samples.datepicker.title'},
 				{url: 'error-messages', label: 'Error messages'},
@@ -36,7 +37,6 @@ export class AppComponent {
 				{url: 'schema-validation', label: 'i18n.routes.samples.schema-validation.title'},
 				{url: 'selectable', 'label': 'Selectable'},
 				{url: 'sticky', label: 'Sticky'},
-				{url: 'toggle', label: 'i18n.routes.samples.toggle.title'},
 				{url: 'unknown-route-sample', label: 'Unknown route'},
 				{url: 'unsaved-changes', label: 'Unsaved changes'},
 				{url: 'form', label: 'Forms'},

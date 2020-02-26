@@ -16,6 +16,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 import {SamplesRoutingModule} from './samples-routing.module';
 
+import {CollapseSampleComponent} from './collapse/collapse-sample.component';
 import {ObColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
 import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {ErrorMessagesSampleComponent} from './error-messages-sample/error-messages-sample.component';
@@ -33,16 +34,15 @@ import {NestedFormGrandChildSampleComponent} from './nested-form/nested-form-gra
 import {NotificationSampleComponent} from './notification/notification-sample.component';
 import {NumberFormatSampleComponent} from './number-format/number-format-sample.component';
 import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
-import {ObToggleSampleComponent} from './toggle/toggle-sample.component';
 import {ObUnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
-
 import {HttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
 import {ObStickySampleComponent} from './sticky/sticky-sample.component';
 import {ObFormComponent} from './form/form.component';
 import {ObButtonComponent} from './button/button.component';
 import {
+	ObCollapseModule,
 	ObColumnLayoutModule,
 	ObDatepickerModule,
 	ObErrorMessagesModule,
@@ -59,7 +59,6 @@ import {
 	ObSearchBoxModule,
 	ObStickyModule,
 	ObInputClearModule,
-	ObToggleModule,
 	ObUnknownRouteModule,
 	ObUnsavedChangesModule,
 	ObUnsavedChangesTabsModule
@@ -76,6 +75,7 @@ import {ObSelectableSampleComponent} from './selectable/selectable-sample.compon
 @NgModule({
 	imports: [
 		CommonModule,
+		ObCollapseModule,
 		ObColumnLayoutModule,
 		ObDatepickerModule,
 		ObFilterBoxModule,
@@ -92,7 +92,6 @@ import {ObSelectableSampleComponent} from './selectable/selectable-sample.compon
 		ObSelectableModule,
 		ObStickyModule,
 		ObInputClearModule,
-		ObToggleModule,
 		ObUnknownRouteModule,
 		ObUnsavedChangesModule,
 		ObUnsavedChangesTabsModule,
@@ -117,6 +116,7 @@ import {ObSelectableSampleComponent} from './selectable/selectable-sample.compon
 	],
 	declarations: [
 		ObButtonComponent,
+		CollapseSampleComponent,
 		ObColumnLayoutSampleComponent,
 		DatepickerSampleComponent,
 		ErrorMessagesSampleComponent,
@@ -140,7 +140,6 @@ import {ObSelectableSampleComponent} from './selectable/selectable-sample.compon
 		SchemaValidationSampleComponent,
 		ObSelectableSampleComponent,
 		ObStickySampleComponent,
-		ObToggleSampleComponent,
 		ObUnknownRouteSampleComponent,
 		UnsavedChangesSampleComponent,
 		UnsavedChangesSampleModalComponent,
