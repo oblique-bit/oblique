@@ -1,20 +1,23 @@
+import { execSync } from 'child_process';
+// install ts-morph tools as dev dependency
+console.log('Preparing tools for migration, please wait...');
+execSync('npm i -D --silent ts-morph');
+execSync('npm i -D --silent @ts-morph/common');
 import { Rule, SchematicContext, Tree, chain } from '@angular-devkit/schematics';
 import { IUpdateSchema, IMigratable } from './update-schema';
 import { UpdateV4toV5 } from './update-v4-to-v5';
 import { colors } from '@angular-devkit/core/src/terminal';
 import { OB_VERSION, OB_LATEST, OB_LAST_MAJOR_SUPPORT_VERSION, SchematicsUtil } from '../utils';
-import { execSync } from 'child_process';
 
 export function initalize(_options: IUpdateSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 
-		// install ts-morph tools as dev dependency
-		execSync('npm i -D --silent ts-morph');
-
 		const util: SchematicsUtil = SchematicsUtil.getInstance();
-		const numericObVersion = util.getCurrentObliqueVersion(tree).match(/\d+/)[0];
+		const readVersion = util.getCurrentObliqueVersion(tree) || '100' ;
+		const match = readVersion.match(/\d+/);
+		const numericObVersion = ( match && match.length > 0 ) ? match[0] : '100';
 
-		if ( numericObVersion < OB_LAST_MAJOR_SUPPORT_VERSION ) {
+		if ( parseInt(numericObVersion, 0) < OB_LAST_MAJOR_SUPPORT_VERSION ) {
 			throw new Error(`[ERROR] Oblique Major ${numericObVersion} is not supported anymore - no migration possible. Sorry.`);
 		}
 
