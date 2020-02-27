@@ -1,3 +1,13 @@
+# [5.0.0-RC.2](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/compare/5.0.0-RC.1...5.0.0-RC.2) (2020-02-27)
+
+## Bug Fixes
+* **toolchain:** ensure no `map` file points to a file named `oblique-oblique.*` ([afd8f46](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/afd8f464a44e35c9a4c5dc8f58982d2b5500615f))
+* **toolchain:** install `ts-morph-tools` for migration, remove typo in `package.json` ([da97fe2](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/da97fe2aad44fa4224380ca93e3786117fec45e1))
+* **toolchain:** replace `#or` with `#ob` ([926e239](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/926e239ed962db1e4bcde90b3d352b6f83eae88f))
+* **toolchain:** add preconditions to schematics ([1555a989](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/afd8f464a44e35c9a4c5dc8f58982d2b5500615f))
+* **toolchain:** clean up imports after schematics ([c26b136c8](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/c26b136c8dd267f652cfcee829aa6e0e0473d2c7))
+
+
 # [5.0.0-RC.1](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/compare/5.0.0-beta.1...5.0.0-RC.1) (2020-02-26)
 
 ## Bug Fixes
