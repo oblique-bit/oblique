@@ -74,6 +74,18 @@ const distScss = () => gulp.src(paths.dist + 'styles/scss/**/*.scss')
 const distDocs = () => gulp.src(['./projects/oblique/src/lib/**/*.description.html', './projects/oblique/src/lib/**/*.api.json'])
 	.pipe(gulp.dest(paths.dist + 'lib'));
 
+const distBundles = () => gulp.src(paths.dist + 'bundles/oblique.umd.js.map')
+	.pipe(replace('oblique-oblique', 'oblique'))
+	.pipe(gulp.dest(paths.dist + 'bundles'));
+
+const distFesm5 = () => gulp.src(paths.dist + 'fesm5/oblique.js.map')
+	.pipe(replace('oblique-oblique', 'oblique'))
+	.pipe(gulp.dest(paths.dist + 'fesm5'));
+
+const distFesm2015 = () => gulp.src(paths.dist + 'fesm2015/oblique.js.map')
+	.pipe(replace('oblique-oblique', 'oblique'))
+	.pipe(gulp.dest(paths.dist + 'fesm2015'));
+
 const commit = () => gulp.src('.')
 	.pipe(git.add())
 	.pipe(git.commit('chore(version): release version ' + getPackageJsonVersion()));
@@ -105,7 +117,16 @@ gulp.task(
 			distScss,
 			distCss
 		),
-		gulp.series(distRename, clean, distBundle)
+		gulp.series(
+			distRename,
+			gulp.parallel(
+				distBundles,
+				distFesm5,
+				distFesm2015
+			),
+			clean,
+			distBundle
+		)
 	)
 );
 
