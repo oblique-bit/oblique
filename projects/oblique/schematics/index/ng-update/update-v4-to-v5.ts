@@ -68,7 +68,8 @@ export class UpdateV4toV5 implements IMigratable {
 				this.migrateTranslationCallsTS(),
 				this.migrateTranslationCallsHTML(),
 				this.migratePrefixesTS(),
-				this.migratePrefixesHTML()
+				this.migratePrefixesHTML(),
+				this.cleanUp()
 			])(tree, _context);
 		};
 	}
@@ -510,6 +511,19 @@ export class UpdateV4toV5 implements IMigratable {
 			return '0'; // nothing there
 		}
 		return packageFound;
+	}
+
+	private cleanUp(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			_context.logger.info(colors.blue(`- Clean up`) + colors.green(` ✔`));
+			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
+			const toApply = (filePath: string) => {
+				UpdateV4toV5.util.cleanUp(tree, filePath);
+			};
+			return chain([
+				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.ts')
+			])(tree, _context);
+		};
 	}
 
 }
