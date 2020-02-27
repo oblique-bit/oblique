@@ -20,9 +20,8 @@ const fs = require('fs'),
 	};
 
 
-const distStyles = () =>
-	gulp.src(['projects/oblique/src/styles/**/*'])
-		.pipe(gulp.dest(paths.dist + 'styles'));
+const distStyles = () => gulp.src(['projects/oblique/src/styles/**/*'])
+	.pipe(gulp.dest(paths.dist + 'styles'));
 
 const distMaterialCss = (done) => transpile('material', 'themes', done);
 const distBootstrapCss = (done) => transpile('bootstrap', 'themes', done);
@@ -61,39 +60,28 @@ const distCss = () => {
 		.pipe(gulp.dest(paths.dist + 'styles/css'));
 };
 
-const distFonts = () => {
-	return gulp.src(['./node_modules/@fortawesome/fontawesome-free/webfonts/*', './node_modules/font-awesome/fonts/*', './projects/oblique/src/styles/fonts/*'])
-		.pipe(gulp.dest(paths.dist + 'styles/fonts'));
-};
+const distFonts = () => gulp.src(['./node_modules/@fortawesome/fontawesome-free/webfonts/*', './node_modules/font-awesome/fonts/*', './projects/oblique/src/styles/fonts/*'])
+	.pipe(gulp.dest(paths.dist + 'styles/fonts'));
 
-const distFontAwesome = () => {
-	return gulp.src('./node_modules/@fortawesome/fontawesome-free/scss/*')
-		.pipe(gulp.dest(paths.dist + 'styles/scss/fontawesome'));
-};
+const distFontAwesome = () => gulp.src('./node_modules/@fortawesome/fontawesome-free/scss/*')
+	.pipe(gulp.dest(paths.dist + 'styles/scss/fontawesome'));
 
-const distScss = () =>
-	gulp.src(paths.dist + 'styles/scss/**/*.scss')
-		.pipe(replace('~@fortawesome/fontawesome-free/webfonts', '~@oblique/oblique/styles/fonts'))
-		.pipe(replace('~@fortawesome/fontawesome-free/scss/', '~@oblique/oblique/styles/scss/fontawesome/'))
-		.pipe(gulp.dest(paths.dist + 'styles/scss'));
+const distScss = () => gulp.src(paths.dist + 'styles/scss/**/*.scss')
+	.pipe(replace('~@fortawesome/fontawesome-free/webfonts', '~@oblique/oblique/styles/fonts'))
+	.pipe(replace('~@fortawesome/fontawesome-free/scss/', '~@oblique/oblique/styles/scss/fontawesome/'))
+	.pipe(gulp.dest(paths.dist + 'styles/scss'));
 
-const distDocs = () => {
-	return gulp.src(['./projects/oblique/src/lib/**/*.description.html', './projects/oblique/src/lib/**/*.api.json'])
-		.pipe(gulp.dest(paths.dist + 'lib'));
-};
+const distDocs = () => gulp.src(['./projects/oblique/src/lib/**/*.description.html', './projects/oblique/src/lib/**/*.api.json'])
+	.pipe(gulp.dest(paths.dist + 'lib'));
 
 const commit = () => gulp.src('.')
 	.pipe(git.add())
 	.pipe(git.commit('chore(version): release version ' + getPackageJsonVersion()));
 
-const distRename = () => {
-	const streams = [];
-	const stream = gulp.src(`dist/oblique/**/oblique-oblique*`)
-		.pipe(rename((filename) => filename.basename = filename.basename.replace('oblique-oblique', 'oblique')))
-		.pipe(gulp.dest('dist/oblique'));
-	streams.push(stream);
-	return merge(streams);
-};
+const distRename = () => gulp.src(`dist/oblique/**/oblique-oblique*`)
+	.pipe(rename((filename) => filename.basename = filename.basename.replace('oblique-oblique', 'oblique')))
+	.pipe(gulp.dest('dist/oblique'));
+
 
 const clean = () => del('dist/oblique/**/oblique-oblique*');
 
@@ -215,12 +203,12 @@ function generateComponentsStyles(dir: string[], component: string): void {
 			const content = fs.readFileSync(path.join(...dir, file), 'utf8').replace(/\s/g, '');
 			const stylePattern = /styleUrls:(\[(.*?)\]){1}/;
 			const result = content.match(stylePattern);
-			if ( result ) {
+			if (result) {
 				const styleUrls = JSON.parse(result[0].replace('styleUrls:', '').replace(/'/g, '"').trim());
 				styleUrls.filter(url => url.indexOf('..') === -1)
-				.map(url => url.replace(/.\//g, ''))
-				.map(url => `${dir.join('/')}/${url}`)
-				.forEach(stylePath => fs.appendFileSync(component, `@import "${stylePath}";\n`));
+					.map(url => url.replace(/.\//g, ''))
+					.map(url => `${dir.join('/')}/${url}`)
+					.forEach(stylePath => fs.appendFileSync(component, `@import "${stylePath}";\n`));
 			}
 		}
 	});
