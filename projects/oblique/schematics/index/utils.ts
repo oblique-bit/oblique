@@ -409,6 +409,13 @@ export class SchematicsUtil {
 		});
 	}
 
+	cleanUp(tree: Tree, filePath: string): void {
+		const sourceFile = this.getProject().createSourceFile(filePath, this.getFile(tree, filePath));
+		const cleanSourceFile = sourceFile.organizeImports();
+		const content = cleanSourceFile.getFullText();
+		tree.overwrite(filePath, content);
+	}
+
 	private loadPublicApi(): void {
 		if (!fs.existsSync(OB_PUBLIC_API)) {
 			throw new Error(`[ERROR] no public api found, abort migration`);

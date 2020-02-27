@@ -1,13 +1,14 @@
+import { execSync } from 'child_process';
 import { Rule, SchematicContext, Tree, chain } from '@angular-devkit/schematics';
 import { IMigratable } from './update-schema';
 import { colors } from '@angular-devkit/core/src/terminal';
 import {
 	PROJECT_PACKAGE_JSON,
 	OB_PACKAGE,
-	OB_PACKAGE_JSON,
 	PROJECT_ROOT_DIR,
 	PROJECT_ANGULAR_JSON,
-	SchematicsUtil} from '../utils';
+	SchematicsUtil,
+	OB_PACKAGE_JSON} from '../utils';
 
 export class UpdateV4toV5 implements IMigratable {
 
@@ -30,11 +31,11 @@ export class UpdateV4toV5 implements IMigratable {
 		return (tree: Tree, _context: SchematicContext) => {
 			_context.logger.info(colors.blue(colors.bold(`Update peer dependencies`)));
 
-			const obPackageJSON = JSON.parse(UpdateV4toV5.util.getFile(tree, OB_PACKAGE_JSON));
 			const changes: Rule[] = [];
+			// dont set peer dependencies directly in package.json
+			/*const obPackageJSON = JSON.parse(UpdateV4toV5.util.getFile(tree, OB_PACKAGE_JSON));
 			Object.keys(obPackageJSON['peerDependencies']).forEach(name => {
-				changes.push(UpdateV4toV5.util.updatePackageJSONDependency(name, obPackageJSON['peerDependencies'][name]));
-			});
+			});*/
 
 			return chain(changes)(tree, _context);
 		};
@@ -49,6 +50,7 @@ export class UpdateV4toV5 implements IMigratable {
 			_context.logger.info(colors.blue(colors.bold(`Applying migrations 🏁`)));
 
 			return chain([
+				this.checkPreconditions(),
 				this.migrateColorPalette(),
 				this.migrateAutomaticTheming(),
 				this.migratePopUpService(),
@@ -66,7 +68,8 @@ export class UpdateV4toV5 implements IMigratable {
 				this.migrateTranslationCallsTS(),
 				this.migrateTranslationCallsHTML(),
 				this.migratePrefixesTS(),
-				this.migratePrefixesHTML()
+				this.migratePrefixesHTML(),
+				this.cleanUp()
 			])(tree, _context);
 		};
 	}
@@ -455,6 +458,7 @@ export class UpdateV4toV5 implements IMigratable {
 			const toApply = (filePath: string) => {
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/<or-/g), '<ob-');
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/<\/or-/g), '</ob-');
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/ #or/g), ' #ob');
 				const matches = UpdateV4toV5.util.getFile(tree, filePath).match(/ or([^\s])/g) || [];
 				matches.forEach((match) => {
 					const content = UpdateV4toV5.util.getFile(tree, filePath);
@@ -463,6 +467,61 @@ export class UpdateV4toV5 implements IMigratable {
 			};
 			return chain([
 				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.html')
+			])(tree, _context);
+		};
+	}
+
+	private checkPreconditions(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			_context.logger.info(colors.blue(`Checking preconditions...`));
+			const projectPackageJSON = JSON.parse(UpdateV4toV5.util.getFile(tree, PROJECT_PACKAGE_JSON));
+			const obPackageJSON = JSON.parse(UpdateV4toV5.util.getFile(tree, OB_PACKAGE_JSON));
+			const dependencies = Object.keys(projectPackageJSON['dependencies']);
+
+			if ( !dependencies.includes('@angular/localize') ) {
+				_context.logger.info(colors.blue(`- Seems there is no @localize, will add it for you...`));
+				execSync('ng add @angular/localize');
+			}
+
+			Object.keys(obPackageJSON['peerDependencies']).filter(packageName => packageName !== '@angular/localize').forEach(packageName => {
+				const peerPackage = this.getPackage(obPackageJSON, 'peerDependencies', packageName).match(/\d+/) || ['0'];
+				const dependencyPackage = this.getPackage(projectPackageJSON, 'dependencies', packageName).match(/\d+/) || ['0'];
+				const peerDependencyMajorVersion = parseInt(peerPackage[0], 0);
+				const dependecyMajorVersion = parseInt(dependencyPackage[0], 0);
+				if ( !dependencies.includes(packageName) || (dependecyMajorVersion < peerDependencyMajorVersion) ) {
+					throw new Error(`[ERROR] Oblique requires a peer of ${packageName}@${peerDependencyMajorVersion} but none is installed. You must install peer dependencies yourself.`);
+				}
+			});
+
+			Object.keys(obPackageJSON['optionalDependencies']).forEach(packageName => {
+				const peerPackage = this.getPackage(obPackageJSON, 'optionalDependencies', packageName).match(/\d+/) || ['0'];
+				const dependencyPackage = this.getPackage(projectPackageJSON, 'dependencies', packageName).match(/\d+/) || ['0'];
+				const peerDependencyMajorVersion = parseInt(peerPackage[0], 0);
+				const dependecyMajorVersion = parseInt(dependencyPackage[0], 0);
+				if ( dependencies.includes(packageName) && (dependecyMajorVersion < peerDependencyMajorVersion) ) {
+					throw new Error(`[ERROR] Oblique requires a peer of ${packageName}@${peerDependencyMajorVersion} but none is installed. You must install peer dependencies yourself.`);
+				}
+			});
+		};
+	}
+
+	private getPackage(list: any, property: string, packageName: string): string {
+		const packageFound = list[property][packageName];
+		if ( !packageFound ) {
+			return '0'; // nothing there
+		}
+		return packageFound;
+	}
+
+	private cleanUp(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			_context.logger.info(colors.blue(`- Clean up`) + colors.green(` ✔`));
+			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
+			const toApply = (filePath: string) => {
+				UpdateV4toV5.util.cleanUp(tree, filePath);
+			};
+			return chain([
+				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.ts')
 			])(tree, _context);
 		};
 	}
