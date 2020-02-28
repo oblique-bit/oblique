@@ -47,6 +47,22 @@ export class SchematicsUtil {
 	private readonly customImplentations: string[] = [];
 	private readonly publicExports: string[] = [];
 	private readonly forceCustomImplentations: string[] = [];
+	private readonly obliqueEnumsAndInterfaces: string[] = [
+		'ObIDatepickerOptions',
+		'ObIHttpApiRequest',
+		'ObILocaleObject ',
+		'ObIMasterLayoutEvent',
+		'ObITranslationFile',
+		'ObINotification',
+		'ObINotification',
+		'ObISearchWidgetItem',
+		'ObISelectableCollectionChanged',
+		'ObISpinnerEvent',
+		'ObITelemetryMessage',
+		'ObEScrollMode',
+		'ObEMasterLayoutEventValues',
+		'ObENotificationType'
+	];
 
 	static getInstance(): SchematicsUtil {
 		if ( !SchematicsUtil.instance ) {
@@ -397,6 +413,14 @@ export class SchematicsUtil {
 						newContent: `Ob${name}`
 					});
 				}
+			}
+			if ( this.obliqueEnumsAndInterfaces.map((symbol: string) => symbol.substr(3)).includes(name) ) {
+				const enumOrInterface = this.obliqueEnumsAndInterfaces.find((symbol: string) => symbol.substr(3) === name);
+				replaceTasks.push({
+					start: identifier.getStart(),
+					oldContent: name,
+					newContent: `${enumOrInterface}`
+				});
 			}
 		});
 		replaceTasks.reverse(); // positioning based on start, reverse to keep deterministic!
