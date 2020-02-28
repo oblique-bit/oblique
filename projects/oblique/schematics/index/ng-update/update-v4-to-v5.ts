@@ -351,6 +351,7 @@ export class UpdateV4toV5 implements IMigratable {
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(placeholder, 'g'), '$gray-lighter');
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/\$brand-extralight/g), '$brand-extra-light');
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/\_nav-tabs.scss/g), '_tabs.scss');
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/\$spacing-md/g), '$spacing-sm');
 			};
 			return chain([
 				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.scss')
