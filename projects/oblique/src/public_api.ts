@@ -100,4 +100,4 @@ export {ObUnsubscribable} from './lib/unsubscribe.class';
 export {ObliqueModule} from './lib/oblique.module';
 export {OBLIQUE_FONT, FONTS, THEMES, ObThemeService} from './lib/theme/theme.service';
 
-export {ObliqueTestingModule, ObMockTranslateService} from './lib/oblique-testing.module';
+export * from './lib/oblique-testing.module';
