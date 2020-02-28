@@ -1,5 +1,5 @@
 import {Component, ElementRef, Input, QueryList, TemplateRef} from '@angular/core';
-import {ObNavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
+import {ObINavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
 
 @Component({
 	selector: 'ob-master-layout',
@@ -9,7 +9,7 @@ import {ObNavigationLink} from '../master-layout-navigation/master-layout-naviga
 export class ObMockMasterLayoutComponent {
 	home = '';
 	url: string;
-	@Input() navigation: ObNavigationLink[] = [];
+	@Input() navigation: ObINavigationLink[] = [];
 	isFixed = true;
 	hasCover = true;
 	hasLayout = true;

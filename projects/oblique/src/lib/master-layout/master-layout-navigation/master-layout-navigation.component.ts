@@ -7,10 +7,10 @@ import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig, ObEScrollMode} from '../master-layout.config';
 import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from '../master-layout.utility';
 
-export interface ObNavigationLink {
+export interface ObINavigationLink {
 	label: string;
 	url: string;
-	children?: ObNavigationLink[];
+	children?: ObINavigationLink[];
 	id?: string;
 }
 
@@ -27,7 +27,7 @@ export class ObMasterLayoutNavigationComponent extends ObUnsubscribable implemen
 	activeClass = this.config.navigation.activeClass;
 	currentScroll = 0;
 	maxScroll = 0;
-	@Input() links: ObNavigationLink[] = [];
+	@Input() links: ObINavigationLink[] = [];
 	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') isScrollable: boolean;
 	private static readonly buttonWidth = 30;
 	private nav: HTMLElement;

@@ -1,6 +1,6 @@
 import {Component, ElementRef, Input, QueryList, TemplateRef} from '@angular/core';
 import {ObILocaleObject} from '../master-layout.config';
-import {ObNavigationLink} from '../master-layout.module';
+import {ObINavigationLink} from '../master-layout.module';
 
 @Component({
 	selector: 'ob-master-layout-header',
@@ -11,7 +11,7 @@ export class ObMockMasterLayoutHeaderComponent {
 	locales: ObILocaleObject[];
 	isCustom = true;
 	disabledLang = true;
-	@Input() navigation: ObNavigationLink[];
+	@Input() navigation: ObINavigationLink[];
 	isAnimated = true;
 	isSticky = true;
 	isMedium = true;

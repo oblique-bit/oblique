@@ -9,7 +9,7 @@
 			{
 				"name": "navigation",
 				"text": "A list of links to populate the primary navigation. If more control on the navigation is needed, use <code>[obNavigation]</code> content projection (see below) instead",
-				"type": "ObNavigationLink[]",
+				"type": "ObINavigationLink[]",
 				"default": "[]",
 				"since": "3.0.0"
 			}
@@ -216,7 +216,7 @@
 			{
 				"name": "navigation.links",
 				"text": "The main navigation links. It is an alternative to <code>navigation</code> input with a lesser priority.",
-				"type": "obNavigationLink[]",
+				"type": "ObINavigationLink[]",
 				"default": "[]",
 				"since": "4.0.0"
 			},

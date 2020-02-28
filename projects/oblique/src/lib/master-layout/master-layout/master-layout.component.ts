@@ -20,7 +20,7 @@ import {ObUnsubscribable} from '../../unsubscribe.class';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.module';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {ObNavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
+import {ObINavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {ObEMasterLayoutEventValues} from '../master-layout.utility';
 import {appVersion} from '../../version';
@@ -43,7 +43,7 @@ import {WINDOW} from '../../utilities';
 export class ObMasterLayoutComponent extends ObUnsubscribable implements OnInit {
 	home = this.config.homePageRoute;
 	url: string;
-	@Input() navigation: ObNavigationLink[] = [];
+	@Input() navigation: ObINavigationLink[] = [];
 	@HostBinding('class.application-fixed') isFixed = this.masterLayout.layout.isFixed;
 	@HostBinding('class.has-cover') hasCover = this.masterLayout.layout.hasCover;
 	@HostBinding('class.has-layout') hasLayout = this.masterLayout.layout.hasLayout;

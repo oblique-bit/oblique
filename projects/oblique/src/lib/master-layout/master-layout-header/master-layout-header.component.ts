@@ -20,7 +20,7 @@ import {ObScrollingEvents} from '../../scrolling/scrolling.module';
 import {ObUnsubscribable} from '../../unsubscribe.class';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObILocaleObject, ObMasterLayoutConfig} from '../master-layout.config';
-import {ObNavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
+import {ObINavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
 import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues, scrollEnabled} from '../master-layout.utility';
 import {WINDOW} from '../../utilities';
 
@@ -37,7 +37,7 @@ export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements A
 	locales: ObILocaleObject[];
 	isCustom = this.masterLayout.header.isCustom;
 	disabledLang = this.config.locale.disabled;
-	@Input() navigation: ObNavigationLink[];
+	@Input() navigation: ObINavigationLink[];
 	@HostBinding('class.application-header-animate') isAnimated = this.masterLayout.header.isAnimated;
 	@HostBinding('class.application-header-sticky') isSticky = this.masterLayout.header.isSticky;
 	@HostBinding('class.application-header-md') isMedium = this.masterLayout.header.isMedium;

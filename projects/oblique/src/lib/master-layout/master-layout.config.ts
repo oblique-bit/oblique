@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ObNavigationLink} from './master-layout-navigation/master-layout-navigation.component';
+import {ObINavigationLink} from './master-layout-navigation/master-layout-navigation.component';
 
 export enum ObEScrollMode {
 	AUTO,
@@ -25,7 +25,7 @@ interface ObIMasterLayoutNavigation {
 	scrollMode: ObEScrollMode;
 	scrollDelta: number;
 	activeClass: string;
-	links: ObNavigationLink[];
+	links: ObINavigationLink[];
 }
 
 interface ObILocale {

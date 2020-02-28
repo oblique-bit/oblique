@@ -41,7 +41,7 @@ export {
 	ObMasterLayoutNavigationToggleDirective,
 	ObMasterLayoutService,
 	ObEScrollMode,
-	ObNavigationLink
+	ObINavigationLink
 } from './lib/master-layout/master-layout.module';
 export {
 	ObMultiselectComponent, ObMultiselectConfig, ObMultiselectModule, ObMultiselectSearchPipe, ObMultiselectTexts
