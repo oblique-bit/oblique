@@ -1,3 +1,18 @@
+# [5.0.0-RC.3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/compare/5.0.0-RC.2...5.0.0-RC.3) (2020-02-28)
+
+## Bug Fixes
+* **master-layout:** theme's observables are created in constructor ([88060d2](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/88060d28a95e079d8a0212122aac568db682aa6a))
+* **toolchain:** change `or-datepicker` schematics to avoid timeout ([47a88a0](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/47a88a04cc07d7aa5a24c099b0da82eb863864cc))
+* **toolchain:** rename `$spacing-md` to `$spacing-sm` through schematics ([e6c91eb](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/e6c91ebdd1ebcb8832b8baefdc9d3cf6e27d030f))
+* **toolchain:** rename all enums and interfaces through schematics ([f5fba46](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/f5fba46305867e0815b8284e9d803a5d8ff2fa42))
+
+## Code Refactoring
+* rename `ObNavigationLink` into `ObINavigationLink` ([5f0ff42](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/5f0ff425838dc920b1e6c2982217aa2de9411672))
+
+## BREAKING CHANGES
+* `ObNavigationLink` has been renamed into `ObINavigationLink`
+
+
 # [5.0.0-RC.2](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/compare/5.0.0-RC.1...5.0.0-RC.2) (2020-02-27)
 
 ## Bug Fixes
