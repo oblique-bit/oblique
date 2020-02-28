@@ -137,7 +137,7 @@ export class SchematicsUtil {
 		return false;
 	}
 
-	extractFromBrackets(bracketType: '()' | '[]' | '{}', content: string): string {
+	extractFromBrackets(bracketType: '()' | '[]' | '{}' | '<>', content: string): string {
 		const boundaryLeft = bracketType.substr(0, 1);
 		let extracted = '';
 		let deepness = 0;

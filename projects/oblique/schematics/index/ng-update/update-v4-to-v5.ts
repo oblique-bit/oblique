@@ -174,13 +174,43 @@ export class UpdateV4toV5 implements IMigratable {
 				let html = UpdateV4toV5.util.getFile(tree, filePath);
 				if ( html.indexOf('</or-date-picker>') !== -1 ) {
 					const projections = UpdateV4toV5.util.extractProjections('or-date-picker', html);
-					const childRegex = /(<(\w)*)/g;
 					const classRegex = /(class=("|')(\w|-|_)*("|'))/g;
-					html = html.replace(/(<or-date-picker((\s)*(\w)*(\[|\]|]|=|")*)*>)/g, '');
-					html = html.replace(/<\/or-date-picker>/g, '\t</or-date-picker>');
-					projections.forEach((projection: string) => {
-						html = html.replace(projection, projection.replace(childRegex, '<or-date-picker').replace('ngbDatepicker', '').replace(classRegex, ''));
+					const attributeRegex = /(<((\w|-)+))|(<\/((\w|-)+))/g;
+
+					let capture = false;
+					let htmlSnippet: string[] = [];
+					const htmlSnippets: string[] = [];
+
+					html.split('\n').forEach((line: string) => {
+						// start record
+						capture = ( line.indexOf('<or-date-picker') !== -1 ) ? true : capture ;
+						if ( capture ) {
+							htmlSnippet.push(line);
+						}
+						// save records and clean
+						if ( capture && line.indexOf('</or-date-picker>') !== -1 ) {
+							htmlSnippets.push(htmlSnippet.join('\n'));
+							capture = false;
+							htmlSnippet = [];
+						}
 					});
+
+					htmlSnippets.forEach((snippet: string, index: number) => {
+						if ( projections[index].trim() !== '' ) {
+							const attributeList = UpdateV4toV5.util.extractFromBrackets('<>', snippet);
+							const newSnippet = snippet.replace(`<${attributeList}>`, '').replace(/<\/or-date-picker>/, '');
+							html = html.replace(snippet, newSnippet);
+						}
+					});
+
+					projections.forEach((projection: string) => {
+						if ( projection.trim() !== '' ) {
+							const matches = projection.match(attributeRegex) || [];
+							const modifiedProjection = projection.replace(matches[0], '<or-date-picker').replace(matches[1], '</or-date-picker');
+							html = html.replace(projection, modifiedProjection.replace('ngbDatepicker', '').replace(classRegex, ''));
+						}
+					});
+
 					tree.overwrite(filePath, html);
 				}
 			};
