@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FONTS, ObNavigationLink, ObISearchWidgetItem, THEMES, ObThemeService} from 'oblique';
+import {FONTS, ObINavigationLink, ObISearchWidgetItem, THEMES, ObThemeService} from 'oblique';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
@@ -14,7 +14,7 @@ export class AppComponent {
 	offCanvasOpen = false;
 	theme$: Observable<string>;
 	font$: Observable<string>;
-	navigation: ObNavigationLink[] = [
+	navigation: ObINavigationLink[] = [
 		{url: 'home', label: 'i18n.routes.home.title'},
 		{
 			url: 'samples', label: 'i18n.routes.samples.title', children: [
@@ -94,8 +94,8 @@ export class AppComponent {
 		this.theme.setFont(font === FONTS.FRUTIGER ? FONTS.ROBOTO : FONTS.FRUTIGER);
 	}
 
-	populateSearchItems(items: ObNavigationLink[], base = ''): void {
-		items.forEach((item: ObNavigationLink) => {
+	populateSearchItems(items: ObINavigationLink[], base = ''): void {
+		items.forEach((item: ObINavigationLink) => {
 			const url = item.url;
 			if (item.children) {
 				this.populateSearchItems(item.children, url);
