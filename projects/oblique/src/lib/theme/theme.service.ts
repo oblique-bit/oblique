@@ -38,6 +38,8 @@ export class ObThemeService {
 	) {
 		this.head = document.head;
 		this.renderer = rendererFactory.createRenderer(null, null);
+		this.theme$ = this.mainTheme.asObservable();
+		this.font$ = this.mainFont.asObservable();
 	}
 
 	setTheme(theme: THEMES | string): void {
@@ -86,7 +88,6 @@ export class ObThemeService {
 
 	private initTheme(): void {
 		this.themeLink = this.createAndAddEmptyLink();
-		this.theme$ = this.mainTheme.asObservable();
 		this.theme$
 			.pipe(map(theme => ObThemeService.isInEnum(theme, THEMES) ? `assets/styles/css/${theme}.css` : theme))
 			.subscribe(path => this.renderer.setAttribute(this.themeLink, 'href', path));
@@ -94,7 +95,6 @@ export class ObThemeService {
 
 	private initFont(): void {
 		this.fontLink = this.createAndAddEmptyLink();
-		this.font$ = this.mainFont.asObservable();
 		this.font$
 			.pipe(
 				tap(font => this.addWarning(font === FONTS.FRUTIGER)),
