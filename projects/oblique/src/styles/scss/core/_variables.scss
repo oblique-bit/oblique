@@ -84,8 +84,8 @@ $off-canvas-sidebar-collapsed-width: 80% !default;
 
 $alert-symbol-width: 54px !default;
 $column-layout-toggle-height: 60px !default;
-$column-layout-toggle-width: 20px !default;
-$column-layout-toggle-radius: 20px !default;
+$column-layout-toggle-width: $spacing-default !default;
+$column-layout-toggle-radius: $spacing-default !default;
 
 $sticky-element-height: 64px !default;
 $sticky-element-height-sm: 45px !default;
