@@ -495,6 +495,13 @@ export class UpdateV4toV5 implements IMigratable {
 					const content = UpdateV4toV5.util.getFile(tree, filePath);
 					tree.overwrite(filePath, content.replace(match, match.replace('or', 'ob')));
 				});
+				const variableMatches = UpdateV4toV5.util.getFile(tree, filePath).match(/#(\w)*=(\"|\')(or(\w)*)(\"|\')/g) || [] ;
+				variableMatches.forEach((match) => {
+					const variable = match.split('=')[1];
+					const newContent = match.replace(variable, variable.replace('or', 'ob'));
+					const content = UpdateV4toV5.util.getFile(tree, filePath);
+					tree.overwrite(filePath, content.replace(match, newContent));
+				});
 			};
 			return chain([
 				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.html')
