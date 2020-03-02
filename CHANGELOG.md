@@ -1,3 +1,19 @@
+# [5.0.0-RC.4](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/compare/5.0.0-RC.3...5.0.0-RC.4) (2020-03-02)
+
+## Bug Fixes
+* **theme:** do not add font if it is neither Frutiger nor Roboto ([b6743ee](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/b6743eecdefa83de67d185bcaba23dfb2b5c5b31))
+* **toolchain:** add constructor for `window` when missing ([3f9c32c](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/3f9c32c7d4df2b8119f4d53a4ce270ef6b9d8824))
+* **toolchain:** export all mocks in `public_api` ([1026d67](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/1026d67c3ebd7f957cd4c2ee5a99762ffd26e594))
+* **toolchain:** replace `ORNavigationLink` with `ObINavigationLink ` ([a5e66c4](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/a5e66c4a899d60aef73ec5cad368d094afa49b2f))
+* **toolchain:** replace variables `#var=orSomething` with `#var=obSomething` ([dc9307f](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/dc9307f42bb663e56bf10aa2622f463ae21c50a1))
+
+## Features
+* **toolchain:** replace `FONTS.ARIAL` with `FONTS.NONE` ([829b732](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/829b732fc7a65a0c46208f3be8b4307ee285fa57))
+
+### BREAKING CHANGES
+* **theme:** `FONTS.ARIAL` has been renamed into `FONTS.NONE`
+
+
 # [5.0.0-RC.3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/compare/5.0.0-RC.2...5.0.0-RC.3) (2020-02-28)
 
 ## Bug Fixes
