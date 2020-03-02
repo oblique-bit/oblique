@@ -82,23 +82,23 @@ $column-width: 20% !default;
 $off-canvas-sidebar-width: 40% !default;
 $off-canvas-sidebar-collapsed-width: 80% !default;
 
-$alert-symbol-width: 54px;
-$column-layout-toggle-height: 60px;
-$column-layout-toggle-width: 20px;
-$column-layout-toggle-radius: 20px;
+$alert-symbol-width: 54px !default;
+$column-layout-toggle-height: 60px !default;
+$column-layout-toggle-width: 20px !default;
+$column-layout-toggle-radius: 20px !default;
 
-$sticky-element-height: 64px;
-$sticky-element-height-sm: 45px;
-$sticky-element-height-lg: 98px;
+$sticky-element-height: 64px !default;
+$sticky-element-height-sm: 45px !default;
+$sticky-element-height-lg: 98px !default;
 
-$stepper-size: 26px;
-$stepper-size-sm: 16px;
-$stepper-size-lg: 38px;
-$stepper-font-size: 12px;
-$stepper-sm-font-size: 10px;
-$stepper-lg-font-size: 16px;
+$stepper-size: 26px !default;
+$stepper-size-sm: 16px !default;
+$stepper-size-lg: 38px !default;
+$stepper-font-size: 12px !default;
+$stepper-sm-font-size: 10px !default;
+$stepper-lg-font-size: 16px !default;
 
-$table-collapsed-header-width: 150px;
+$table-collapsed-header-width: 150px !default;
 
 $grid-breakpoints: (
 	xs: 0,
@@ -109,4 +109,4 @@ $grid-breakpoints: (
 ) !default;
 
 $font: 'Frutiger Neue', Roboto, Arial, system-ui, -apple-system, BlinkMacSystemFont, sans-serif !default;
-$icon-font-family: 'Font Awesome 5 Free';
+$icon-font-family: 'Font Awesome 5 Free' !default;

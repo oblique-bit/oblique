@@ -32,7 +32,9 @@ $oblique-primary: (
 		A400 : $white,
 		A700 : $white
 	)
-);
+) !default;
+
+$oblique-accent: $oblique-primary !default;
 
 $oblique-warn: (
 	50 : $error-50,
@@ -65,4 +67,4 @@ $oblique-warn: (
 		A400 : $brand-default,
 		A700 : $brand-default
 	)
-);
+) !default;

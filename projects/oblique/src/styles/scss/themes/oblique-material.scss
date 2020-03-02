@@ -3,7 +3,7 @@
 @import 'material/material-palette';
 
 @include mat-core(mat-typography-config($font-family: $font));
-@include angular-material-theme(mat-light-theme(mat-palette($oblique-primary), mat-palette($oblique-primary), mat-palette($oblique-warn)));
+@include angular-material-theme(mat-light-theme(mat-palette($oblique-primary), mat-palette($oblique-accent), mat-palette($oblique-warn)));
 
 @import 'material/mat-card';
 @import 'material/mat-checkbox-radio';
