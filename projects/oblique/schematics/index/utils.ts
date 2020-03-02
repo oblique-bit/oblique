@@ -250,6 +250,19 @@ export class SchematicsUtil {
 		const sourceFile = this.getProject().createSourceFile(filePath, this.getFile(tree, filePath));
 		const content = sourceFile.getFullText();
 		sourceFile.getClasses().forEach((classDeclaration) => {
+			// no constructor but class found
+			if ( classDeclaration.getConstructors().length === 0 ) {
+				const classContent = classDeclaration.getFullText();
+				classDeclaration.addConstructor({
+					'parameters': [
+						{ 'name': '@Inject(WINDOW) private readonly window' }
+					]
+				});
+				const classNewContent = classDeclaration.getFullText();
+				this.overwrite(tree, filePath, content.replace(classContent, classNewContent));
+				return;
+			}
+			// class with constructor
 			classDeclaration.getConstructors().forEach((constructorDeclaration) => {
 				const oldConstructor = constructorDeclaration.getText();
 				const params = this.extractFromBrackets('()', oldConstructor);

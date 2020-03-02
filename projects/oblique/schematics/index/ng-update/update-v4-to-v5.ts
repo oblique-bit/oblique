@@ -472,6 +472,8 @@ export class UpdateV4toV5 implements IMigratable {
 			_context.logger.info(colors.blue(`- Prefixes in TypeScript`) + colors.green(` ✔`));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toApply = (filePath: string) => {
+				// special renaming
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(`ORNavigationLink`, 'g'), `ObINavigationLink`);
 				UpdateV4toV5.util.updateClassIdentifiers(tree, filePath);
 				// clean up since it's not always deterministic
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(`ObOb`, 'g'), `Ob`);
@@ -494,6 +496,13 @@ export class UpdateV4toV5 implements IMigratable {
 				matches.forEach((match) => {
 					const content = UpdateV4toV5.util.getFile(tree, filePath);
 					tree.overwrite(filePath, content.replace(match, match.replace('or', 'ob')));
+				});
+				const variableMatches = UpdateV4toV5.util.getFile(tree, filePath).match(/#(\w)*=(\"|\')(or(\w)*)(\"|\')/g) || [] ;
+				variableMatches.forEach((match) => {
+					const variable = match.split('=')[1];
+					const newContent = match.replace(variable, variable.replace('or', 'ob'));
+					const content = UpdateV4toV5.util.getFile(tree, filePath);
+					tree.overwrite(filePath, content.replace(match, newContent));
 				});
 			};
 			return chain([
