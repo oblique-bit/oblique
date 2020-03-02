@@ -11,7 +11,7 @@ export enum THEMES {
 export enum FONTS {
 	FRUTIGER = 'frutiger',
 	ROBOTO = 'roboto',
-	ARIAL = 'arial'
+	NONE = 'none'
 }
 
 export const OBLIQUE_FONT = new InjectionToken<THEMES>('OBLIQUE_FONT');
@@ -51,7 +51,7 @@ export class ObThemeService {
 	}
 
 	setFont(font: FONTS): void {
-		if (!this.fontLink) {
+		if (!this.fontLink && font !== FONTS.NONE) {
 			this.initFont();
 		}
 		this.mainFont.next(font);
@@ -98,7 +98,7 @@ export class ObThemeService {
 		this.font$
 			.pipe(
 				tap(font => this.addWarning(font === FONTS.FRUTIGER)),
-				map(font => ObThemeService.isInEnum(font, FONTS) ? `assets/styles/css/${font}.css` : '')
+				map(font => [FONTS.FRUTIGER, FONTS.ROBOTO].includes(font) ? `assets/styles/css/${font}.css` : '')
 			)
 			.subscribe(path => this.renderer.setAttribute(this.fontLink, 'href', path));
 	}

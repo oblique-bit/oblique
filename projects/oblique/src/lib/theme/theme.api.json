@@ -20,7 +20,7 @@
     "methods": [
       {
         "name": "setTheme",
-        "text": "Sets a theme, e.g. loads the corresponding CSS and adds it the the <code>head</code>. In case of a <code>string</code>, the full path of the theme has to be provided",
+        "text": "Sets a theme, e.g. loads the corresponding CSS and adds it the the documents's <code>head</code> tag. In case of a <code>string</code>, the full path of the theme has to be provided",
         "returns": "void",
         "arguments": [
           "theme: THEMES | string"
@@ -48,7 +48,7 @@
         "name": "OBLIQUE_FONT",
         "text": "Defines the font to use",
         "type": "FONTS",
-        "values": ["FONTS.FRUTIGER", "FONTS.ROBOTO", "FONTS.ARIAL"],
+        "values": ["FONTS.FRUTIGER", "FONTS.ROBOTO", "FONTS.NONE"],
         "default": "FONTS.FRUTIGER",
         "since": "5.0.0"
       }
