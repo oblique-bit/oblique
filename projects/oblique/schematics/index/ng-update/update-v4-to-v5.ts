@@ -472,6 +472,8 @@ export class UpdateV4toV5 implements IMigratable {
 			_context.logger.info(colors.blue(`- Prefixes in TypeScript`) + colors.green(` ✔`));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toApply = (filePath: string) => {
+				// special renaming
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(`ORNavigationLink`, 'g'), `ObINavigationLink`);
 				UpdateV4toV5.util.updateClassIdentifiers(tree, filePath);
 				// clean up since it's not always deterministic
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(`ObOb`, 'g'), `Ob`);
