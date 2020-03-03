@@ -560,6 +560,7 @@ export class UpdateV4toV5 implements IMigratable {
 			_context.logger.info(colors.blue(`- Clean up`) + colors.green(` ✔`));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toApply = (filePath: string) => {
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(`this.this.`, 'g'), `this.`);
 				UpdateV4toV5.util.cleanUp(tree, filePath);
 			};
 			return chain([
