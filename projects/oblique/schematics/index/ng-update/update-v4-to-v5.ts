@@ -281,10 +281,12 @@ export class UpdateV4toV5 implements IMigratable {
 				if ( usingFrutiger === 'false' ) {
 					tree.overwrite(filePath, oldContent.replace(frutigerConfig, '{ provide: OBLIQUE_FONT, useValue: FONTS.ROBOTO }'));
 					UpdateV4toV5.util.addImport(tree, filePath, 'OBLIQUE_FONT', OB_PACKAGE);
-					UpdateV4toV5.util.addImport(tree, filePath, 'FONTS', OB_PACKAGE);
 				}
+
 				tree.overwrite(filePath, UpdateV4toV5.util.getFile(tree, filePath).replace(obliqueTheme, ''));
-				tree.overwrite(filePath, oldContent.replace('FONTS.ARIAL', 'FONTS.NONE'));
+				tree.overwrite(filePath, UpdateV4toV5.util.getFile(tree, filePath).replace('FONTS.ARIAL', 'FONTS.NONE'));
+				tree.overwrite(filePath, UpdateV4toV5.util.getFile(tree, filePath).replace('FRUTIGER', 'FONTS.FRUTIGER'));
+				UpdateV4toV5.util.addImport(tree, filePath, 'FONTS', OB_PACKAGE);
 
 				const obliqueStyleKind = ( usedTheme === 'THEMES.BOOTSTRAP' ) ? 'oblique-bootstrap.css' : 'oblique-material.css' ;
 				const obliqueStyleLocation = `node_modules/@oblique/oblique/styles/css`;
