@@ -13,12 +13,13 @@ const fs = require('fs'),
 		dist: './dist/oblique/'
 	},
 	banner = function (pkg) {
-		return '/*! \r * ' + pkg.title + ' - v' + pkg.version
-			+ '\r * ' + pkg.homepage
-			+ '\r * Copyright (c) ' + new Date().getFullYear() + ' ' + pkg.organization.name + ' (' + pkg.organization.url + ')'
-			+ '\r */\n';
+		return `/**
+* @license Oblique - v${pkg.version}
+* Copyright (c) 2020-${new Date().getFullYear()} The Swiss Confederation, represented by the Federal Office of Information Technology, Systems and Telecommunication FOITT http://oblique.bit.oblique.ch
+* License: MIT (http://oblique.bit.oblique.ch/license)
+*/
+`;
 	};
-
 
 const distStyles = () => gulp.src(['projects/oblique/src/styles/**/*'])
 	.pipe(gulp.dest(paths.dist + 'styles'));
@@ -30,6 +31,10 @@ const distUtilCss = (done) => transpile('utilities', '', done);
 const distCompatCss = (done) => transpile('compat', '', done);
 const distComponentsCss = (done) => transpileComponents(['projects', 'oblique', 'src', 'lib'], done);
 
+const addBanner = () => gulp.src([paths.dist + '**/*.js', paths.dist + '**/*.css'])
+	.pipe(header(banner(reload('./package.json'))))
+	.pipe(gulp.dest(paths.dist));
+
 const distMeta = () => {
 	const meta = reload('./package.json');
 	const output = require(paths.dist + 'package.json');
@@ -39,26 +44,18 @@ const distMeta = () => {
 	['main', 'module', 'es2015', 'esm5', 'esm2015', 'fesm5', 'fesm2015', 'typings']
 		.forEach(field => output[field] = output[field].replace('oblique-oblique', 'oblique'));
 
-	return gulp.src(['README.md', 'CHANGELOG.md'])
+	return gulp.src(['README.md', 'CHANGELOG.md', 'LICENSE'])
 		.pipe(gulpFile('package.json', JSON.stringify(output, null, 2)))
 		.pipe(gulp.dest(paths.dist));
 };
 
-const distBundle = () => {
-	const meta = reload('./package.json');
-	return gulp.src(paths.dist + 'bundles/oblique.umd.js')
-		.pipe(header(banner(meta)))
-		.pipe(gulp.dest(paths.dist + 'bundles'));
-};
+const distBundle = () => gulp.src([paths.dist + 'bundles/oblique.umd.js', paths.dist + 'bundles/oblique.umd.min.js'])
+	.pipe(gulp.dest(paths.dist + 'bundles'));
 
-const distCss = () => {
-	const meta = reload('./package.json');
-	return gulp.src(paths.dist + 'styles/css/*')
-		.pipe(header(banner(meta)))
-		.pipe(replace('~@fortawesome/fontawesome-free/webfonts', '~@oblique/oblique/styles/fonts'))
-		.pipe(replace('../../../styles/images/cover-background.jpg', '../images/cover-background.jpg'))
-		.pipe(gulp.dest(paths.dist + 'styles/css'));
-};
+const distCss = () => gulp.src(paths.dist + 'styles/css/*')
+	.pipe(replace('~@fortawesome/fontawesome-free/webfonts', '~@oblique/oblique/styles/fonts'))
+	.pipe(replace('../../../styles/images/cover-background.jpg', '../images/cover-background.jpg'))
+	.pipe(gulp.dest(paths.dist + 'styles/css'));
 
 const distFonts = () => gulp.src(['./node_modules/@fortawesome/fontawesome-free/webfonts/*', './node_modules/font-awesome/fonts/*', './projects/oblique/src/styles/fonts/*'])
 	.pipe(gulp.dest(paths.dist + 'styles/fonts'));
@@ -100,6 +97,7 @@ const clean = () => del('dist/oblique/**/oblique-oblique*');
 gulp.task(
 	'dist',
 	gulp.parallel(
+		addBanner,
 		distMeta,
 		distFonts,
 		distDocs,
