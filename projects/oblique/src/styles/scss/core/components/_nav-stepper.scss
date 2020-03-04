@@ -40,6 +40,7 @@
 			border-left-style: solid;
 			border-top-style: solid;
 			border-color: $brand-primary;
+			z-index: -1;
 		}
 
 		&:hover::before {
