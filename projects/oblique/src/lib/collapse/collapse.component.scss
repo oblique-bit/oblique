@@ -2,6 +2,7 @@
 @import "~@fortawesome/fontawesome-free/scss/variables";
 
 .toggle {
+	display: flex;
 	cursor: pointer;
 
 	&:not(.toggle-after) {
@@ -12,7 +13,6 @@
 		@include toggle-after();
 
 		&.toggle-justified {
-			display: flex;
 			justify-content: space-between;
 		}
 	}
