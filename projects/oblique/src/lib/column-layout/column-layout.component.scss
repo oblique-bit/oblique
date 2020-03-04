@@ -31,12 +31,16 @@
 		&:not(.no-layout) {
 			> .column-left,
 			> .column-main:not(:last-child) {
-				padding-right: $spacing-default;
+				> .column-content {
+					padding-right: $spacing-default;
+				}
 			}
 
 			> .column-right,
 			> .column-main:not(:first-child) {
-				padding-left: $spacing-default;
+				> .column-content {
+					padding-left: $spacing-default;
+				}
 			}
 		}
 
@@ -51,7 +55,6 @@
 
 	@include layout-collapse-up() {
 		min-height: $column-layout-toggle-height;
-		overflow-x: hidden;
 		flex-wrap: nowrap;
 
 		.column-toggle-left,

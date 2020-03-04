@@ -7,7 +7,9 @@
 	</div>
 </div>
 <div class="column-main">
-	<ng-content select="[column-main-content]"></ng-content>
+	<div class="column-content">
+		<ng-content select="[column-main-content]"></ng-content>
+	</div>
 </div>
 <div class="column-right" role="complementary" #columnRight="obColumnPanel" obColumnPanel *ngIf="right">
 	<button type="button" class="column-toggle-right" obColumnToggle #columnToggle>
