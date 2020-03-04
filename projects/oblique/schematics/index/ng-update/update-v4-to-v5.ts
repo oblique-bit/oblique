@@ -19,9 +19,10 @@ export class UpdateV4toV5 implements IMigratable {
 		return (tree: Tree, _context: SchematicContext) => {
 			_context.logger.info(colors.blue(colors.bold(`Setting latest major oblique dependency`)) + colors.green(` ✔`));
 
-			const projectPackageJSON = JSON.parse(UpdateV4toV5.util.getFile(tree, PROJECT_PACKAGE_JSON));
+			// dont set the version by script
+			/*const projectPackageJSON = JSON.parse(UpdateV4toV5.util.getFile(tree, PROJECT_PACKAGE_JSON));
 			projectPackageJSON['dependencies'][OB_PACKAGE] = latestVersion;
-			tree.overwrite(PROJECT_PACKAGE_JSON, JSON.stringify(projectPackageJSON, null, '\t'));
+			tree.overwrite(PROJECT_PACKAGE_JSON, JSON.stringify(projectPackageJSON, null, '\t'));*/
 
 			return tree;
 		};
