@@ -28,7 +28,7 @@
 			flex-grow: 1;
 		}
 
-		&:not(.no-layout) {
+		.application.has-layout &:not(.no-layout) {
 			> .column-left,
 			> .column-main:not(:last-child) {
 				> .column-content {
@@ -39,6 +39,17 @@
 			> .column-right,
 			> .column-main:not(:first-child) {
 				> .column-content {
+					padding-left: $spacing-default;
+				}
+			}
+		}
+
+		.application:not(.has-layout) &:not(.no-layout) {
+			> .column-left,
+			> .column-right,
+			> .column-main {
+				> .column-content {
+					padding-right: $spacing-default;
 					padding-left: $spacing-default;
 				}
 			}
