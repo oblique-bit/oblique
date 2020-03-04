@@ -493,9 +493,9 @@ export class UpdateV4toV5 implements IMigratable {
 			const toApply = (filePath: string) => {
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/<or-/g), '<ob-');
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/<\/or-/g), '</ob-');
-				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/ #or/g), ' #ob');
-				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/ \[or/g), ' \[ob');
-				const matches = UpdateV4toV5.util.getFile(tree, filePath).match(/ or([^\s])/g) || [];
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/\s+#or/g), ' #ob');
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/\s+\[or/g), ' \[ob');
+				const matches = UpdateV4toV5.util.getFile(tree, filePath).match(/\s+or([^\s])/g) || [];
 				matches.forEach((match) => {
 					const content = UpdateV4toV5.util.getFile(tree, filePath);
 					tree.overwrite(filePath, content.replace(match, match.replace('or', 'ob')));
