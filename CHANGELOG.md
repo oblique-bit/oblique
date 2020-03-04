@@ -1,3 +1,16 @@
+## [5.0.1](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=5.0.1) (2020-03-04)
+
+## Bug Fixes
+* **collapse:** always use `flex` display for header ([1be353e](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/1be353ec676baf7e432d8c2f39d0d66ad792895b))
+* **column-layout:** apply alternate `padding` if master-layout has no layout ([781eeaa](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/781eeaa16171490df010a180ad70b87d74518c7f))
+* **column-layout:** apply padding to `column-contain` instead of its parent ([d0c8775](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/d0c8775f931f47a4b414ce6e1e52b676b72f3802))
+* **master-layout:** remove unwanted text in header ([9d0341d](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/9d0341d6199c319aab8b4bed3f2efc71f16da3be))
+* **stepper:** ensure the `:after` pseudo-element is not displayed above the stepper ([bc33ef3](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/bc33ef335be7b983b3696efbd61b7586d979baee))
+* **theme:** `icon` mixin inherits `line-height` ([90638b7](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/90638b7cb588726baa9c0bb3d5b07f68e8f083f0))
+* **toolchain:** ignore whitespace in HTML schematics ([b5126f2](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/b5126f239c0484f8d4361afa64945c9617b972db))
+* **toolchain:** use `ng update` to set oblique version to it's latest ([addccd6](http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive/commits/addccd6606c2cfcad40eec92c8e69e26e7b31b4a))
+
+
 # [5.0.0](http://stash.eap.bit.admin.ch/projects/OUI/repos/oblique2-reactive/browse?at=5.0.0) (2020-03-03)
 
 ## Bug Fixes
