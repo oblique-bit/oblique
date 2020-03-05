@@ -85,7 +85,6 @@ const clean = () => del(`${paths.dist}/**/oblique-oblique*`);
 gulp.task(
 	'dist',
 	gulp.parallel(
-		addBanner,
 		distMeta,
 		distFonts,
 		distDocs,
@@ -104,6 +103,7 @@ gulp.task(
 			distCss,
 			distRename,
 			gulp.parallel(
+				addBanner,
 				distMap
 			),
 			clean
