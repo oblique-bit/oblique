@@ -32,8 +32,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://stash.eap.bit.admin.ch/scm/oui/oblique2-reactive.git",
-    "path": "projects/OUI/repos/oblique2-reactive"
+    "url": "http://stash.eap.bit.admin.ch/scm/oui/oblique.git",
+    "path": "projects/OUI/repos/oblique"
   },
   "scripts": {
     "lib": "npm run build -- oblique --watch",
