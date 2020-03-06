@@ -1,5 +1,5 @@
-@import "../core/variables";
-@import "../themes/bootstrap/variables";
+@import "projects/oblique/src/styles/scss/core/variables";
+@import "projects/oblique/src/styles/scss/themes/bootstrap/variables";
 
 // Mixin for generating new callout styles:
 @mixin callout-styles($text, $bg, $border) {

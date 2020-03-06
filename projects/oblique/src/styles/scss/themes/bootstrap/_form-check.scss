@@ -1,7 +1,7 @@
 @import "~@fortawesome/fontawesome-free/scss/variables";
 @import "~bootstrap/scss/variables";
-@import "../../core/variables";
-@import "mixins/form-check";
+@import "projects/oblique/src/styles/scss/core/variables";
+@import "projects/oblique/src/styles/scss/themes/bootstrap/mixins/form-check";
 
 $size: 1.1875em;		//19px with a 16px basis
 $small: 0.6875em;		//11px with a 16px basis

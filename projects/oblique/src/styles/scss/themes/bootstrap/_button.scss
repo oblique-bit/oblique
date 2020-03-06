@@ -1,6 +1,6 @@
-@import "../../core/variables";
-@import "variables";
-@import "mixins/button";
+@import "projects/oblique/src/styles/scss/core/variables";
+@import "projects/oblique/src/styles/scss/themes/bootstrap/variables";
+@import "projects/oblique/src/styles/scss/themes/bootstrap/mixins/button";
 
 .btn-primary {
 	@include btn-variant($white, $brand-primary, $brand-primary, $white, $brand-dark, $brand-dark, $gray-lighter);

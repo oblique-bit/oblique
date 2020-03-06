@@ -1,12 +1,12 @@
-@import "core/variables";
-@import "compat/font";
-@import "compat/font-awesome";
+@import "projects/oblique/src/styles/scss/core/variables";
+@import "projects/oblique/src/styles/scss/compat/font";
+@import "projects/oblique/src/styles/scss/compat/font-awesome";
 
 .application {
-	@import "compat/master-layout";
-	@import "compat/type";
-	@import "compat/callout";
-	@import "compat/table";
-	@import "compat/stepper";
-	@import "compat/tabs";
+	@import "projects/oblique/src/styles/scss/compat/master-layout";
+	@import "projects/oblique/src/styles/scss/compat/type";
+	@import "projects/oblique/src/styles/scss/compat/callout";
+	@import "projects/oblique/src/styles/scss/compat/table";
+	@import "projects/oblique/src/styles/scss/compat/stepper";
+	@import "projects/oblique/src/styles/scss/compat/tabs";
 }
