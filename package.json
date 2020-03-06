@@ -2,7 +2,7 @@
   "title": "Oblique",
   "name": "@oblique/oblique",
   "version": "5.0.1",
-  "license": "All Rights Reserved",
+  "license": "MIT License",
   "organization": {
     "name": "Federal Office of Information Technology, Systems and Telecommunication FOITT",
     "url": "http://www.bit.admin.ch/"
@@ -27,7 +27,6 @@
   "bugs": {
     "url": "https://jira.eap.bit.admin.ch/browse/OUI/"
   },
-  "private": true,
   "publishConfig": {
     "registry": "https://repo.bit.admin.ch/repository/npm-private/"
   },
