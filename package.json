@@ -24,16 +24,12 @@
     "Pedro De Almeida",
     "Christian Ulmann"
   ],
-  "bugs": {
-    "url": "https://jira.eap.bit.admin.ch/browse/OUI/"
-  },
   "publishConfig": {
-    "registry": "https://repo.bit.admin.ch/repository/npm-private/"
+    "registry": "https://registry.npmjs.com/"
   },
   "repository": {
     "type": "git",
-    "url": "http://stash.eap.bit.admin.ch/scm/oui/oblique.git",
-    "path": "projects/OUI/repos/oblique"
+    "url": "https://github.com/oblique-bit/oblique.git"
   },
   "scripts": {
     "lib": "npm run build -- oblique --watch",
