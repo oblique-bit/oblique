@@ -11,6 +11,7 @@
 	&:focus,
 	&.focus,
 	&:active,
+	&:visited,
 	&.active {
 		// FIXME: .open .dropdown-toggle& {
 		color: $selected-color;
