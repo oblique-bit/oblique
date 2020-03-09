@@ -1,62 +1,65 @@
-[
-  {
-    "name": "multiTranslateLoader",
-    "usage": "A utility function that returns a <code>TranslateModuleConfig</code> with multiple files support.",
-    "since": "5.0.0",
-    "inputs": [
-      {
-        "name": "config",
-        "text": "Additional optional config options for the <code>TranslateModule</code>",
-        "type": "TranslateModuleConfig",
-        "since": "5.0.0"
-      }
-    ],
-    "tokens": [
-      {
-        "name": "TRANSLATION_FILES",
-        "text": "An array with the translation files to load.",
-        "type": "TranslationFile[]",
-        "default": "[{prefix: './assets/i18n/', suffix: '.json'}]",
-        "since": "5.0.0"
-      }
-    ]
-  },
-  {
-    "name": "getTranslateLoader",
-    "usage": "A factory that returns a <code>MultiTranslateHttpLoader</code> instance. It should only be directly used if <code>multiTranslateLoader</code> could not be used.",
-    "since": "5.0.0",
-    "inputs": [
-      {
-        "name": "http",
-        "text": "The angular's <code>HttpClient</code> injectable",
-        "type": "HttpClient",
-        "since": "5.0.0"
-      },
-      {
-        "name": "files",
-        "text": "The translations files to load",
-        "type": "TranslationFile[]",
-        "since": "5.0.0"
-      }
-    ]
-  },
-  {
-    "name": "MultiTranslateHttpLoader",
-    "usage": "An handler to load multiple translation files. It should only be directly used if neither <code>multiTranslateLoader</code> nor <code>getTranslateLoader</code> could be used.",
-    "since": "5.0.0",
-    "inputs": [
-      {
-        "name": "http",
-        "text": "The angular's <code>HttpClient</code> injectable",
-        "type": "HttpClient",
-        "since": "5.0.0"
-      },
-      {
-        "name": "resources",
-        "text": "The translations files to load",
-        "type": "TranslationFile[]",
-        "since": "5.0.0"
-      }
-    ]
-  }
-]
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "multiTranslateLoader",
+      "usage": "A utility function that returns a <code>TranslateModuleConfig</code> with multiple files support.",
+      "since": "5.0.0",
+      "inputs": [
+        {
+          "name": "config",
+          "text": "Additional optional config options for the <code>TranslateModule</code>",
+          "type": "TranslateModuleConfig",
+          "since": "5.0.0"
+        }
+      ],
+      "tokens": [
+        {
+          "name": "TRANSLATION_FILES",
+          "text": "An array with the translation files to load.",
+          "type": "TranslationFile[]",
+          "default": "[{prefix: './assets/i18n/', suffix: '.json'}]",
+          "since": "5.0.0"
+        }
+      ]
+    },
+    {
+      "name": "getTranslateLoader",
+      "usage": "A factory that returns a <code>MultiTranslateHttpLoader</code> instance. It should only be directly used if <code>multiTranslateLoader</code> could not be used.",
+      "since": "5.0.0",
+      "inputs": [
+        {
+          "name": "http",
+          "text": "The angular's <code>HttpClient</code> injectable",
+          "type": "HttpClient",
+          "since": "5.0.0"
+        },
+        {
+          "name": "files",
+          "text": "The translations files to load",
+          "type": "TranslationFile[]",
+          "since": "5.0.0"
+        }
+      ]
+    },
+    {
+      "name": "MultiTranslateHttpLoader",
+      "usage": "An handler to load multiple translation files. It should only be directly used if neither <code>multiTranslateLoader</code> nor <code>getTranslateLoader</code> could be used.",
+      "since": "5.0.0",
+      "inputs": [
+        {
+          "name": "http",
+          "text": "The angular's <code>HttpClient</code> injectable",
+          "type": "HttpClient",
+          "since": "5.0.0"
+        },
+        {
+          "name": "resources",
+          "text": "The translations files to load",
+          "type": "TranslationFile[]",
+          "since": "5.0.0"
+        }
+      ]
+    }
+  ]
+}

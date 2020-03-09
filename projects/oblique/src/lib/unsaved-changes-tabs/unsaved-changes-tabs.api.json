@@ -1,13 +1,16 @@
-[
-  {
-    "name": "ObUnsavedChangesTabsDirective",
-    "selector": "[obUnsavedChangesTabs]",
-    "usage": "Applied on a <code>&gt;form&lt;</code> or any element with <code>ngModelGroup</code> directive. The host element needs either an <code>id</code> or be wrapped int a <code>NgbTab</code> component.",
-    "since": "2.0.0"
-  },
-  {
-    "name": "UnsavedChangesGuard",
-    "usage": "Apply to routes that have to be protected",
-    "since": "2.0.0"
-  }
-]
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObUnsavedChangesTabsDirective",
+      "selector": "[obUnsavedChangesTabs]",
+      "usage": "Applied on a <code>&gt;form&lt;</code> or any element with <code>ngModelGroup</code> directive. The host element needs either an <code>id</code> or be wrapped int a <code>NgbTab</code> component.",
+      "since": "2.0.0"
+    },
+    {
+      "name": "UnsavedChangesGuard",
+      "usage": "Apply to routes that have to be protected",
+      "since": "2.0.0"
+    }
+  ]
+}

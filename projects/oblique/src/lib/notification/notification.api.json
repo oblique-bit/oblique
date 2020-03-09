@@ -1,221 +1,224 @@
-[
-  {
-    "name": "ObNotificationComponent",
-    "selector": "ob-notification",
-    "export": "obNotification",
-    "since": "2.0.0",
-    "inputs": [
-      {
-        "name": "channel",
-        "text": "The channel name where notifications will be retrieved from. If not specified, component will listen to the default channel.",
-        "type": "string",
-        "default": "oblique",
-        "since": "2.0.0"
-      }
-    ],
-    "methods": [
-      {
-        "name": "open",
-        "text": "Adds & opens the specified notification.",
-        "returns": "void",
-        "arguments": [
-          "notification: INotification"
-        ],
-        "since": "2.0.0"
-      },
-      {
-        "name": "close",
-        "text": "Closes & removes the specified notification.",
-        "returns": "void",
-        "arguments": [
-          "notification: INotification"
-        ],
-        "since": "2.0.0"
-      },
-      {
-        "name": "remove",
-        "text": "Removes the specified notification without triggering a close animation.",
-        "returns": "void",
-        "arguments": [
-          "notification: INotification"
-        ],
-        "since": "2.0.0"
-      },
-      {
-        "name": "clear",
-        "text": "Closes all notifications in the current subscribed channel.",
-        "returns": "void",
-        "since": "2.0.0"
-      }
-    ]
-  },
-  {
-    "name": "NotificationConfig",
-    "usage": "Should by injected, typically in the AppModule, to customize the values of its properties in order to provide alternate default values for the <code>NotificationComponent</code>.",
-    "since": "2.0.0",
-    "variables": [
-      {
-        "name": "sticky",
-        "text": "Defines if notifications should be manually closed or if they should auto-close after some timeout.",
-        "type": "boolean",
-        "default": false,
-        "since": "2.0.0"
-      },
-      {
-        "name": "timeout",
-        "text": "The duration delay, in milliseconds, to wait before closing non-sticky notifications.",
-        "type": "number",
-        "default": 3500,
-        "since": "2.0.0"
-      },
-      {
-        "name": "channel",
-        "text": "The channel name where notifications will be retrieved from. If not specified, component will listen to the default channel.",
-        "type": "string",
-        "default": "oblique",
-        "since": "2.0.0"
-      },
-      {
-        "name": "clearAllOnNavigate",
-        "text": "Defines if all notifications should be cleared upon <code>NavigationEnd</code> event.",
-        "type": "boolean",
-        "default": "CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE",
-        "since": "4.1.0"
-      },
-      {
-        "name": "groupSimilar",
-        "text": "Defines if similar notifications should grouped.",
-        "type": "boolean",
-        "default": "GROUP_SIMILAR_NOTIFICATIONS",
-        "since": "4.1.0"
-      },
-      {
-        "name": "info",
-        "text": "Custom configuration for <b>info</b> notifications.",
-        "type": "INotification",
-        "default": "{title: 'i18n.oblique.notification.type.info'}",
-        "since": "4.0.0"
-      },
-      {
-        "name": "success",
-        "text": "Custom configuration for <b>success</b> notifications.",
-        "type": "INotification",
-        "default": "{title: 'i18n.oblique.notification.type.success'}",
-        "since": "4.0.0"
-      },
-      {
-        "name": "warning",
-        "text": "Custom configuration for <b>warning</b> notifications.",
-        "type": "INotification",
-        "default": "{title: 'i18n.oblique.notification.type.warning'}",
-        "since": "4.0.0"
-      },
-      {
-        "name": "error",
-        "text": "Custom configuration for <b>error</b> notifications.",
-        "type": "INotification",
-        "default": "{title: 'i18n.oblique.notification.type.error', sticky: true}",
-        "since": "4.0.0"
-      }
-    ],
-    "tokens": [
-      {
-        "name": "CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE",
-        "text": "Defines if all notifications should be cleared upon <code>NavigationEnd</code> event.",
-        "type": "boolean",
-        "default": false,
-        "since": "4.1.0"
-      },
-      {
-        "name": "GROUP_SIMILAR_NOTIFICATIONS",
-        "text": "Defines if similar notifications should be grouped.",
-        "type": "boolean",
-        "default": false,
-        "since": "4.1.0"
-      }
-    ]
-  },
-  {
-    "name": "NotificationService",
-    "usage": "Should be injected in component's constructor to send notifications to the <code>NotificationComponent</code>",
-    "since": "2.0.0",
-    "variables": [
-      {
-        "name": "events",
-        "text": "An observable that emits every time a notification is sent or cleared through the service",
-        "returns": "Observable<INotification>",
-        "since": "4.0.0"
-      },
-      {
-        "name": "clearAllOnNavigate",
-        "text": "Defines if all notifications should be cleared upon <code>NavigationEnd</code> event.",
-        "type": "boolean",
-        "default": "CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE",
-        "since": "4.1.0"
-      }
-    ],
-    "methods": [
-      {
-        "name": "info",
-        "text": "Triggers an <b>info</b> notification. It takes either the notification's text or a full notification config object.",
-        "returns": "INotification",
-        "arguments": [
-          "config: INotification | string"
-        ],
-        "since": "4.0.0"
-      },
-      {
-        "name": "success",
-        "text": "Triggers an <b>success</b> notification. It takes either the notification's text or a full notification config object.",
-        "returns": "INotification",
-        "arguments": [
-          "config: INotification | string"
-        ],
-        "since": "4.0.0"
-      },
-      {
-        "name": "warning",
-        "text": "Triggers an <b>warning</b> notification. It takes either the notification's text or a full notification config object.",
-        "returns": "INotification",
-        "arguments": [
-          "config: INotification | string"
-        ],
-        "since": "4.0.0"
-      },
-      {
-        "name": "error",
-        "text": "Triggers an <b>error</b> notification. It takes either the notification's text or a full notification config object.",
-        "returns": "INotification",
-        "arguments": [
-          "config: INotification | string"
-        ],
-        "since": "4.0.0"
-      },
-      {
-        "name": "send",
-        "text": "Triggers a notification whose type is either the one provided as second argument or the one specified in the config. It takes either the notification's text or a full notification config object.",
-        "returns": "INotification",
-        "arguments": [
-          "config: INotification | string",
-          "type?: NotificationType"
-        ],
-        "since": "4.0.0"
-      },
-      {
-        "name": "clear",
-        "text": "Clears all notifications displayed in the specified <code>channel</code>.",
-        "returns": "void",
-        "arguments": [
-          "channel: string"
-        ],
-        "since": "2.0.0"
-      },
-      {
-        "name": "clearAll",
-        "text": "Clears all notification from all channels.",
-        "returns": "void",
-        "since": "2.0.0"
-      }
-    ]
-  }
-]
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObNotificationComponent",
+      "selector": "ob-notification",
+      "export": "obNotification",
+      "since": "2.0.0",
+      "inputs": [
+        {
+          "name": "channel",
+          "text": "The channel name where notifications will be retrieved from. If not specified, component will listen to the default channel.",
+          "type": "string",
+          "default": "oblique",
+          "since": "2.0.0"
+        }
+      ],
+      "methods": [
+        {
+          "name": "open",
+          "text": "Adds & opens the specified notification.",
+          "returns": "void",
+          "arguments": [
+            "notification: INotification"
+          ],
+          "since": "2.0.0"
+        },
+        {
+          "name": "close",
+          "text": "Closes & removes the specified notification.",
+          "returns": "void",
+          "arguments": [
+            "notification: INotification"
+          ],
+          "since": "2.0.0"
+        },
+        {
+          "name": "remove",
+          "text": "Removes the specified notification without triggering a close animation.",
+          "returns": "void",
+          "arguments": [
+            "notification: INotification"
+          ],
+          "since": "2.0.0"
+        },
+        {
+          "name": "clear",
+          "text": "Closes all notifications in the current subscribed channel.",
+          "returns": "void",
+          "since": "2.0.0"
+        }
+      ]
+    },
+    {
+      "name": "NotificationConfig",
+      "usage": "Should by injected, typically in the AppModule, to customize the values of its properties in order to provide alternate default values for the <code>NotificationComponent</code>.",
+      "since": "2.0.0",
+      "variables": [
+        {
+          "name": "sticky",
+          "text": "Defines if notifications should be manually closed or if they should auto-close after some timeout.",
+          "type": "boolean",
+          "default": false,
+          "since": "2.0.0"
+        },
+        {
+          "name": "timeout",
+          "text": "The duration delay, in milliseconds, to wait before closing non-sticky notifications.",
+          "type": "number",
+          "default": 3500,
+          "since": "2.0.0"
+        },
+        {
+          "name": "channel",
+          "text": "The channel name where notifications will be retrieved from. If not specified, component will listen to the default channel.",
+          "type": "string",
+          "default": "oblique",
+          "since": "2.0.0"
+        },
+        {
+          "name": "clearAllOnNavigate",
+          "text": "Defines if all notifications should be cleared upon <code>NavigationEnd</code> event.",
+          "type": "boolean",
+          "default": "CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE",
+          "since": "4.1.0"
+        },
+        {
+          "name": "groupSimilar",
+          "text": "Defines if similar notifications should grouped.",
+          "type": "boolean",
+          "default": "GROUP_SIMILAR_NOTIFICATIONS",
+          "since": "4.1.0"
+        },
+        {
+          "name": "info",
+          "text": "Custom configuration for <b>info</b> notifications.",
+          "type": "INotification",
+          "default": "{title: 'i18n.oblique.notification.type.info'}",
+          "since": "4.0.0"
+        },
+        {
+          "name": "success",
+          "text": "Custom configuration for <b>success</b> notifications.",
+          "type": "INotification",
+          "default": "{title: 'i18n.oblique.notification.type.success'}",
+          "since": "4.0.0"
+        },
+        {
+          "name": "warning",
+          "text": "Custom configuration for <b>warning</b> notifications.",
+          "type": "INotification",
+          "default": "{title: 'i18n.oblique.notification.type.warning'}",
+          "since": "4.0.0"
+        },
+        {
+          "name": "error",
+          "text": "Custom configuration for <b>error</b> notifications.",
+          "type": "INotification",
+          "default": "{title: 'i18n.oblique.notification.type.error', sticky: true}",
+          "since": "4.0.0"
+        }
+      ],
+      "tokens": [
+        {
+          "name": "CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE",
+          "text": "Defines if all notifications should be cleared upon <code>NavigationEnd</code> event.",
+          "type": "boolean",
+          "default": false,
+          "since": "4.1.0"
+        },
+        {
+          "name": "GROUP_SIMILAR_NOTIFICATIONS",
+          "text": "Defines if similar notifications should be grouped.",
+          "type": "boolean",
+          "default": false,
+          "since": "4.1.0"
+        }
+      ]
+    },
+    {
+      "name": "NotificationService",
+      "usage": "Should be injected in component's constructor to send notifications to the <code>NotificationComponent</code>",
+      "since": "2.0.0",
+      "variables": [
+        {
+          "name": "events",
+          "text": "An observable that emits every time a notification is sent or cleared through the service",
+          "returns": "Observable<INotification>",
+          "since": "4.0.0"
+        },
+        {
+          "name": "clearAllOnNavigate",
+          "text": "Defines if all notifications should be cleared upon <code>NavigationEnd</code> event.",
+          "type": "boolean",
+          "default": "CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE",
+          "since": "4.1.0"
+        }
+      ],
+      "methods": [
+        {
+          "name": "info",
+          "text": "Triggers an <b>info</b> notification. It takes either the notification's text or a full notification config object.",
+          "returns": "INotification",
+          "arguments": [
+            "config: INotification | string"
+          ],
+          "since": "4.0.0"
+        },
+        {
+          "name": "success",
+          "text": "Triggers an <b>success</b> notification. It takes either the notification's text or a full notification config object.",
+          "returns": "INotification",
+          "arguments": [
+            "config: INotification | string"
+          ],
+          "since": "4.0.0"
+        },
+        {
+          "name": "warning",
+          "text": "Triggers an <b>warning</b> notification. It takes either the notification's text or a full notification config object.",
+          "returns": "INotification",
+          "arguments": [
+            "config: INotification | string"
+          ],
+          "since": "4.0.0"
+        },
+        {
+          "name": "error",
+          "text": "Triggers an <b>error</b> notification. It takes either the notification's text or a full notification config object.",
+          "returns": "INotification",
+          "arguments": [
+            "config: INotification | string"
+          ],
+          "since": "4.0.0"
+        },
+        {
+          "name": "send",
+          "text": "Triggers a notification whose type is either the one provided as second argument or the one specified in the config. It takes either the notification's text or a full notification config object.",
+          "returns": "INotification",
+          "arguments": [
+            "config: INotification | string",
+            "type?: NotificationType"
+          ],
+          "since": "4.0.0"
+        },
+        {
+          "name": "clear",
+          "text": "Clears all notifications displayed in the specified <code>channel</code>.",
+          "returns": "void",
+          "arguments": [
+            "channel: string"
+          ],
+          "since": "2.0.0"
+        },
+        {
+          "name": "clearAll",
+          "text": "Clears all notification from all channels.",
+          "returns": "void",
+          "since": "2.0.0"
+        }
+      ]
+    }
+  ]
+}

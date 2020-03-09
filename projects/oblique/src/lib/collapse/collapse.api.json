@@ -1,79 +1,82 @@
-[
-  {
-    "name": "ObCollapseComponent",
-    "selector": "ob-collapse",
-    "exported": "obCollapse",
-    "since": "5.0.0",
-    "inputs": [
-      {
-        "name": "active",
-        "text": "Defines the status of the collapse component: opened or closed.",
-        "type": "boolean",
-        "default": false,
-        "since": "5.0.0"
-      },
-      {
-        "name": "direction",
-        "text": "Defines the directions that the icon faces when active or not",
-        "type": "string",
-        "default": "down-up",
-        "values": [
-          "down-up",
-          "down-right",
-          "down-left",
-          "up-down",
-          "up-right",
-          "up-left",
-          "right-left",
-          "right-up",
-          "right-down",
-          "left-right",
-          "left-up",
-          "left-down"
-        ],
-        "since": "5.0.0"
-      },
-      {
-        "name": "iconPosition",
-        "text": "Defines the icon's position within the collapse's header",
-        "type": "string",
-        "default": "left",
-        "values": [
-          "left",
-          "right",
-          "justified"
-        ],
-        "since": "5.0.0"
-      }
-    ],
-    "outputs": [
-      {
-        "name": "active",
-        "text": "Event that is emitted each time the <code>active</code> property is altered.",
-        "type": "Observable<boolean>",
-        "since": "5.0.0"
-      }
-    ],
-    "tokens": [
-      {
-        "name": "OBLIQUE_COLLAPSE_ACTIVE",
-        "text": "The default value for <code>active</code> property that will be applied to all <code>ObCollapseComponent</code> throughout the application.",
-        "type": "boolean",
-        "default": "false",
-        "since": "5.0.0"
-      }
-    ],
-    "projection": [
-      {
-        "name": "[obCollapseHeader]",
-        "text": "Content that will be projected into the header, i.e. the part that will always be shown.",
-        "since": "5.0.0"
-      },
-      {
-        "name": "[obCollapseMain]",
-        "text": "Content that will be projected into the main container, i.e. the part that will be hidden or shown",
-        "since": "5.0.0"
-      }
-    ]
-  }
-]
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObCollapseComponent",
+      "selector": "ob-collapse",
+      "exported": "obCollapse",
+      "since": "5.0.0",
+      "inputs": [
+        {
+          "name": "active",
+          "text": "Defines the status of the collapse component: opened or closed.",
+          "type": "boolean",
+          "default": false,
+          "since": "5.0.0"
+        },
+        {
+          "name": "direction",
+          "text": "Defines the directions that the icon faces when active or not",
+          "type": "string",
+          "default": "down-up",
+          "values": [
+            "down-up",
+            "down-right",
+            "down-left",
+            "up-down",
+            "up-right",
+            "up-left",
+            "right-left",
+            "right-up",
+            "right-down",
+            "left-right",
+            "left-up",
+            "left-down"
+          ],
+          "since": "5.0.0"
+        },
+        {
+          "name": "iconPosition",
+          "text": "Defines the icon's position within the collapse's header",
+          "type": "string",
+          "default": "left",
+          "values": [
+            "left",
+            "right",
+            "justified"
+          ],
+          "since": "5.0.0"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "active",
+          "text": "Event that is emitted each time the <code>active</code> property is altered.",
+          "type": "Observable<boolean>",
+          "since": "5.0.0"
+        }
+      ],
+      "tokens": [
+        {
+          "name": "OBLIQUE_COLLAPSE_ACTIVE",
+          "text": "The default value for <code>active</code> property that will be applied to all <code>ObCollapseComponent</code> throughout the application.",
+          "type": "boolean",
+          "default": "false",
+          "since": "5.0.0"
+        }
+      ],
+      "projection": [
+        {
+          "name": "[obCollapseHeader]",
+          "text": "Content that will be projected into the header, i.e. the part that will always be shown.",
+          "since": "5.0.0"
+        },
+        {
+          "name": "[obCollapseMain]",
+          "text": "Content that will be projected into the main container, i.e. the part that will be hidden or shown",
+          "since": "5.0.0"
+        }
+      ]
+    }
+  ]
+}

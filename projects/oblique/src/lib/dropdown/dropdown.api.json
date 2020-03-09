@@ -1,42 +1,45 @@
-[
-  {
-    "name": "ObDropdownComponent",
-    "selector": "ob-dropdown",
-    "exported": "obDropdown",
-    "since": "2.0.0",
-    "inputs": [
-      {
-        "name": "position",
-        "text": "Defines the position of the dropdown according to its toggle.",
-        "values": [
-          "right",
-          "middle",
-          "left"
-        ],
-        "type": "string",
-        "default": "middle",
-        "since": "4.0.0"
-      }
-    ],
-    "methods": [
-      {
-        "name": "toggle",
-        "text": "Toggles the dropdown.",
-        "returns": "void",
-        "since": "4.0.0"
-      }
-    ],
-    "projection": [
-      {
-        "name": "[dropdown-toggle]",
-        "text": "Selects the content to be projected as the toggle button. It will always be visible.",
-        "since": "4.0.0"
-      },
-      {
-        "name": "[dropdown-content]",
-        "text": "Selects the content to be projected in the dropdown panel. It will only be visible when the dropdown is opened.",
-        "since": "4.0.0"
-      }
-    ]
-  }
-]
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObDropdownComponent",
+      "selector": "ob-dropdown",
+      "exported": "obDropdown",
+      "since": "2.0.0",
+      "inputs": [
+        {
+          "name": "position",
+          "text": "Defines the position of the dropdown according to its toggle.",
+          "values": [
+            "right",
+            "middle",
+            "left"
+          ],
+          "type": "string",
+          "default": "middle",
+          "since": "4.0.0"
+        }
+      ],
+      "methods": [
+        {
+          "name": "toggle",
+          "text": "Toggles the dropdown.",
+          "returns": "void",
+          "since": "4.0.0"
+        }
+      ],
+      "projection": [
+        {
+          "name": "[dropdown-toggle]",
+          "text": "Selects the content to be projected as the toggle button. It will always be visible.",
+          "since": "4.0.0"
+        },
+        {
+          "name": "[dropdown-content]",
+          "text": "Selects the content to be projected in the dropdown panel. It will only be visible when the dropdown is opened.",
+          "since": "4.0.0"
+        }
+      ]
+    }
+  ]
+}

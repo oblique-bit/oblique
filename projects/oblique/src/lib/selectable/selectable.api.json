@@ -1,112 +1,115 @@
-[
-  {
-    "name": "ObSelectableDirective",
-    "selector": "[obSelectable]",
-    "exported": "obSelectable",
-    "since": "5.0.0",
-    "inputs": [
-      {
-        "name": "collection",
-        "text": "Name of the collection that the element belongs. If nothing is provided, the collection <code>unnamed</code> is being used.",
-        "type": "string",
-        "since": "5.0.0"
-      },
-      {
-        "name": "selected",
-        "text": "Controls if the element is selected or not (for instance during component initialization). Default is <code>false</code>.",
-        "type": "boolean",
-        "since": "5.0.0"
-      },
-      {
-        "name": "value",
-        "text": "Defines the value of the selectable element and will be stored in the collection.",
-        "type": "any",
-        "since": "5.0.0"
-      }
-    ]
-  },
-  {
-    "name": "ObSelectedService",
-    "usage": "A service to hold the state of selectable elements.",
-    "since": "5.0.0",
-    "variables": [
-      {
-        "name": "collectionChange$",
-        "text": "Emits collection events (CREATE, UPDATE, DESTROY).",
-        "type": "Observable<IObSelectableCollectionChanged>",
-        "since": "5.0.0"
-      }
-    ],
-    "methods": [
-      {
-        "name": "toggleValue",
-        "text": "Toggles the given value on the given collection, creating it if needed.",
-        "returns": "void",
-        "arguments": [
-          "value: any",
-          "collection: string"
-        ],
-        "since": "5.0.0"
-      },
-      {
-        "name": "addValue",
-        "text": "Adds the given value to the given collection, creating it if needed.",
-        "returns": "void",
-        "arguments": [
-          "value: any",
-          "collection: string"
-        ],
-        "since": "5.0.0"
-      },
-      {
-        "name": "removeValue",
-        "text": "Removes the given value from the given collection.",
-        "returns": "void",
-        "arguments": [
-          "value: any",
-          "collection: string"
-        ],
-        "since": "5.0.0"
-      },
-      {
-        "name": "getCollection",
-        "text": "Gets the values from the given collection.",
-        "returns": "any[] | undefined",
-        "arguments": [
-          "collection: string"
-        ],
-        "since": "5.0.0"
-      },
-      {
-        "name": "getCollections",
-        "text": "Gets all collections as a map.",
-        "returns": "Map<string, any[]>",
-        "since": "5.0.0"
-      },
-      {
-        "name": "removeCollection",
-        "text": "Removes the given collection.",
-        "returns": "void",
-        "arguments": [
-          "collection: string"
-        ],
-        "since": "5.0.0"
-      },
-      {
-        "name": "clearCollection",
-        "text": "Removes all values from the given collection.",
-        "returns": "void",
-        "arguments": [
-          "collection: string"
-        ],
-        "since": "5.0.0"
-      },
-      {
-        "name": "clearCollections",
-        "text": "Removes all collections.",
-        "returns": "void",
-        "since": "5.0.0"
-      }
-    ]
-  }
-]
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObSelectableDirective",
+      "selector": "[obSelectable]",
+      "exported": "obSelectable",
+      "since": "5.0.0",
+      "inputs": [
+        {
+          "name": "collection",
+          "text": "Name of the collection that the element belongs. If nothing is provided, the collection <code>unnamed</code> is being used.",
+          "type": "string",
+          "since": "5.0.0"
+        },
+        {
+          "name": "selected",
+          "text": "Controls if the element is selected or not (for instance during component initialization). Default is <code>false</code>.",
+          "type": "boolean",
+          "since": "5.0.0"
+        },
+        {
+          "name": "value",
+          "text": "Defines the value of the selectable element and will be stored in the collection.",
+          "type": "any",
+          "since": "5.0.0"
+        }
+      ]
+    },
+    {
+      "name": "ObSelectedService",
+      "usage": "A service to hold the state of selectable elements.",
+      "since": "5.0.0",
+      "variables": [
+        {
+          "name": "collectionChange$",
+          "text": "Emits collection events (CREATE, UPDATE, DESTROY).",
+          "type": "Observable<IObSelectableCollectionChanged>",
+          "since": "5.0.0"
+        }
+      ],
+      "methods": [
+        {
+          "name": "toggleValue",
+          "text": "Toggles the given value on the given collection, creating it if needed.",
+          "returns": "void",
+          "arguments": [
+            "value: any",
+            "collection: string"
+          ],
+          "since": "5.0.0"
+        },
+        {
+          "name": "addValue",
+          "text": "Adds the given value to the given collection, creating it if needed.",
+          "returns": "void",
+          "arguments": [
+            "value: any",
+            "collection: string"
+          ],
+          "since": "5.0.0"
+        },
+        {
+          "name": "removeValue",
+          "text": "Removes the given value from the given collection.",
+          "returns": "void",
+          "arguments": [
+            "value: any",
+            "collection: string"
+          ],
+          "since": "5.0.0"
+        },
+        {
+          "name": "getCollection",
+          "text": "Gets the values from the given collection.",
+          "returns": "any[] | undefined",
+          "arguments": [
+            "collection: string"
+          ],
+          "since": "5.0.0"
+        },
+        {
+          "name": "getCollections",
+          "text": "Gets all collections as a map.",
+          "returns": "Map<string, any[]>",
+          "since": "5.0.0"
+        },
+        {
+          "name": "removeCollection",
+          "text": "Removes the given collection.",
+          "returns": "void",
+          "arguments": [
+            "collection: string"
+          ],
+          "since": "5.0.0"
+        },
+        {
+          "name": "clearCollection",
+          "text": "Removes all values from the given collection.",
+          "returns": "void",
+          "arguments": [
+            "collection: string"
+          ],
+          "since": "5.0.0"
+        },
+        {
+          "name": "clearCollections",
+          "text": "Removes all collections.",
+          "returns": "void",
+          "since": "5.0.0"
+        }
+      ]
+    }
+  ]
+}

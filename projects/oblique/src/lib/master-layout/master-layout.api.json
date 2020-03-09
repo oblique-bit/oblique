@@ -1,480 +1,491 @@
-[
-	{
-		"name": "MasterLayoutComponent",
-		"selector": "ob-master-layout",
-		"exported": "obMasterLayout",
-		"usage": "This component takes care of the structure of the application and should be used in <code>app.component.html</code>",
-		"since": "2.0.0",
-		"inputs": [
-			{
-				"name": "navigation",
-				"text": "A list of links to populate the primary navigation. If more control on the navigation is needed, use <code>[obNavigation]</code> content projection (see below) instead",
-				"type": "ObINavigationLink[]",
-				"default": "[]",
-				"since": "3.0.0"
-			}
-		],
-		"projection": [
-			{
-				"name": "[obHeader]",
-				"text": "Content that will be projected as the main header, i.e. everything above the read line. It will replace the default Oblique header if custom header is enabled (see <code>MasterLayoutConfig</code>).",
-				"since": "3.0.0"
-			},
-			{
-				"name": "[obHeaderTitle]",
-				"text": "Content that will be projected as the application's title within the main header.",
-				"since": "3.0.0"
-			},
-			{
-				"name": "[obNavigation]",
-				"text": "Content that will be projected as the main navigation. It will replace the default Oblique navigation if no navigation links are provided. It is an alternative to <code>navigation</code> input but the whole navigation markup has to be provided, not only the links.",
-				"since": "3.0.0"
-			},
-			{
-				"name": "[obLocales]",
-				"text": "Content that will be projected as the locales choice. It will replace the default Oblique locales if locale management is disabled (see <code>MasterLayoutConfig</code>).",
-				"since": "3.0.0"
-			},
-			{
-				"name": "<ng-template #orHeaderControl>",
-				"text": "Templates that will be projected into the controls section of the main header (next to the locales choice).",
-				"since": "3.0.0"
-			},
-			{
-				"name": "[obFooter]",
-				"text": "Content that will be projected as the main footer. It will replace the default Oblique footer if custom footer is enabled (see <code>MasterLayoutConfig</code>).",
-				"since": "3.0.0"
-			},
-			{
-				"name": "[obFooterInfo]",
-				"text": "Content that will be projected into the left hand side of the footer.",
-				"since": "3.0.0"
-			},
-			{
-				"name": "<ng-template #orFooterLink>",
-				"text": "Templates that will be projected into the links section in the right hand side of the main footer.",
-				"since": "3.0.0"
-			},
-			{
-				"name": "[obOffCanvasTitle]",
-				"text": "Content that will be projected as the title of the main off-canvas if off canvas is enabled (see <code>MasterLayoutConfig</code>).",
-				"since": "3.0.0"
-			},
-			{
-				"name": "[obOffCanvasContent]",
-				"text": "Content that will be projected as the content of the main off-canvas if off canvas is enabled (see <code>MasterLayoutConfig</code>).",
-				"since": "3.0.0"
-			}
-		]
-	},
-	{
-		"name": "MasterLayoutConfig",
-		"usage": "This is the default configuration of the master layout. Values can be tweaked by injecting this service into <code>app.module.ts</code> to customize the global structure of the application.",
-		"since": "2.0.0",
-		"variables": [
-			{
-				"name": "homePageRoute",
-				"text": "The home page route. A click on the confederation logos or on the application's title will trigger this route.",
-				"type": "string",
-				"default": "/home",
-				"since": "3.0.0"
-			},
-			{
-				"name": "focusableFragments",
-				"text": "The ids corresponding to these fragments are focusable.",
-				"type": "string[]",
-				"default": "['content', 'navigation']",
-				"since": "3.0.0"
-			},
-			{
-				"name": "scrollToTopDuration",
-				"text": "Duration, in milliseconds, of the scroll to top feature.",
-				"type": "number",
-				"default": 200,
-				"since": "3.0.0"
-			},
-			{
-				"name": "locale.locales",
-				"text": "A list of supported locales.",
-				"type": "(string | LocaleObject)[]",
-				"default": "['de', 'fr', 'it']",
-				"since": "3.0.0"
-			},
-			{
-				"name": "locale.default",
-				"text": "The default locale, used when none is actually chosen of if the chosen one is not valid.",
-				"type": "string",
-				"default": "de",
-				"since": "3.0.0"
-			},
-			{
-				"name": "locale.disabled",
-				"text": "Let Oblique handles locales (false) or completely disables Oblique language management (true). In ths case, the application have to provide a default language as well as a change language mechanism",
-				"type": "boolean",
-				"default": false,
-				"since": "3.0.0"
-			},
-			{
-				"name": "layout.isFixed",
-				"text": "Use continuous layout (false) or fixed layout (true). With fixed layout, header and footer are always shown and scrolling applies only to main content.",
-				"type": "boolean",
-				"default": false,
-				"since": "4.0.0"
-			},
-			{
-				"name": "layout.hasCover",
-				"text": "Use regular layout (false) or cover layout (true). The cover layout uses only part of the available width and displays a background image on the unused space.",
-				"type": "boolean",
-				"default": false,
-				"since": "4.0.0"
-			},
-			{
-				"name": "layout.hasLayout",
-				"text": "Apply default padding (true) to the <code>main-layout</code> or no padding at all (false).",
-				"type": "boolean",
-				"default": true,
-				"since": "5.0.0"
-			},
-			{
-				"name": "layout.hasMainNavigation",
-				"text": "Use Oblique's default main navigation (true) or a custom one (false). The custom navigation has to be provided through <code>[obNavigation]</code>.",
-				"type": "boolean",
-				"default": true,
-				"since": "4.0.0"
-			},
-			{
-				"name": "layout.hasOffCanvas",
-				"text": "Add an off-canvas on the main content level (true) or removes it. An off-canvas is a collapsible sidebar that partially takes the place of the contend if activated.",
-				"type": "boolean",
-				"default": true,
-				"since": "4.0.0"
-			},
-			{
-				"name": "header.isAnimated",
-				"text": "Add animations to header size changes (true) or not (false).",
-				"type": "boolean",
-				"default": true,
-				"since": "4.0.0"
-			},
-			{
-				"name": "header.isSticky",
-				"text": "The header is always shown on top of the content is continuous mode (true) or normally hidden when scrolled away (false).",
-				"type": "boolean",
-				"default": true,
-				"since": "4.0.0"
-			},
-			{
-				"name": "header.isMedium",
-				"text": "Keep default, large header size (false) or forces medium size (true).",
-				"type": "boolean",
-				"default": false,
-				"since": "4.0.0"
-			},
-			{
-				"name": "header.isCustom",
-				"text": "Use Oblique's default header (false) or a custom one (true). The custom header has to be provided through <code>[obHeader]</code>.",
-				"type": "boolean",
-				"default": false,
-				"since": "4.0.0"
-			},
-			{
-				"name": "header.hasScrollTransitions",
-				"text": "Resize the header to medium when the page is scrolled with continuous layout (true) or keep the header to its defined size (false) ",
-				"type": "boolean",
-				"default": true,
-				"since": "4.0.0"
-			},
-			{
-				"name": "navigation.isFullWidth",
-				"text": "Should drop-downs main navigation menus take the full available width or only use the needed space.",
-				"type": "boolean",
-				"default": false,
-				"since": "4.0.0"
-			},
-			{
-				"name": "navigation.scrollMode",
-				"text": "Controls the main navigation's scroll mode, i.e. how to handle the elements outside of the visible area. They can either be hidden or the navigation bar can be made scrollable to display those elements.",
-				"type": "ScrollMode",
-				"values": ["ScrollMode.AUTO", "ScrollMode.ENABLED", "ScrollMode.DISABLED"],
-				"default": "ScrollMode.AUTO",
-				"since": "5.0.0"
-			},
-			{
-				"name": "navigation.scrollDelta",
-				"text": "The size, in pixels, of a scroll increment for a scrollable navigation.",
-				"type": "number",
-				"default": 95,
-				"since": "4.0.0"
-			},
-			{
-				"name": "navigation.activeClass",
-				"text": "The class that will be automatically added on active links.",
-				"type": "string",
-				"default": "active",
-				"since": "4.0.0"
-			},
-			{
-				"name": "navigation.links",
-				"text": "The main navigation links. It is an alternative to <code>navigation</code> input with a lesser priority.",
-				"type": "ObINavigationLink[]",
-				"default": "[]",
-				"since": "4.0.0"
-			},
-			{
-				"name": "footer.isSmall",
-				"text": "Keep default, small footer size (true) or forces large size (false).",
-				"type": "boolean",
-				"default": true,
-				"since": "4.0.0"
-			},
-			{
-				"name": "footer.isCustom",
-				"text": "Use Oblique's default footer (false) or a custom one (true). The custom footer has to be provided through <code>[obFooter]</code>.",
-				"type": "boolean",
-				"default": true,
-				"since": "4.0.0"
-			},
-			{
-				"name": "footer.hasScrollTransitions",
-				"text": "Resize the footer to large when the page is scrolled with continuous layout (true) or keep the footer to its defined size (false) ",
-				"type": "boolean",
-				"default": true,
-				"since": "4.0.0"
-			}
-		]
-	},
-	{
-		"name": "MasterLayoutService",
-		"usage": "A service to configure the master layout. The changes are live.",
-		"since": "2.0.0",
-		"variables": [
-			{
-				"name": "header",
-				"text": "A reference to the service that configures the header(see below)",
-				"type": "MasterLayoutHeaderService",
-				"since": "4.0.0"
-			},
-			{
-				"name": "footer",
-				"text": "A reference to the service that configures the footer (see below)",
-				"type": "MasterLayoutFooterService",
-				"since": "4.0.0"
-			},
-			{
-				"name": "navigation",
-				"text": "A reference to the service that configures the navigation (see below)",
-				"type": "MasterLayoutNavigationService",
-				"since": "4.0.0"
-			},
-			{
-				"name": "layout",
-				"text": "A reference to the service that configures the master layout (see below)",
-				"type": "MasterLayoutComponentService",
-				"since": "4.0.0"
-			}
-		]
-	},
-	{
-		"name": "MasterLayoutComponentService",
-		"usage": "A service to configure the master layout component. The changes are live.",
-		"since": "4.0.0",
-		"variables": [
-			{
-				"name": "configEvents",
-				"text": "Emits every time one of its property is changed",
-				"type": "Observable<MasterLayoutEvent>",
-				"since": "4.0.0"
-			},
-			{
-				"name": "isMenuOpened",
-				"text": "In collapsed mode, closes the hamburger menu (false) or opens it (true).",
-				"type": "boolean",
-				"default": false,
-				"since": "4.0.0"
-			},
-			{
-				"name": "isFixed",
-				"text": "Controls <code>MasterLayoutConfig.layout.isFixed</code> property.",
-				"type": "boolean",
-				"default": false,
-				"since": "4.0.0"
-			},
-			{
-				"name": "hasCover",
-				"text": "Controls <code>MasterLayoutConfig.layout.hasCover</code> property.",
-				"type": "boolean",
-				"default": true,
-				"since": "4.0.0"
-			},
-			{
-				"name": "hasLayout",
-				"text": "Controls <code>MasterLayoutConfig.layout.hasLayout</code> property.",
-				"type": "boolean",
-				"default": true,
-				"since": "5.0.0"
-			},
-			{
-				"name": "hasOffCanvas",
-				"text": "Controls <code>MasterLayoutConfig.layout.hasOffCanvas</code> property.",
-				"type": "boolean",
-				"default": false,
-				"since": "4.0.0"
-			},
-			{
-				"name": "hasMainNavigation",
-				"text": "Controls <code>MasterLayoutConfig.layout.hasMainNavigation</code> property.",
-				"type": "boolean",
-				"default": true,
-				"since": "4.0.0"
-			}
-		]
-	},
-	{
-		"name": "MasterLayoutHeaderService",
-		"usage": "A service to configure the master layout header. The changes are live.",
-		"since": "4.0.0",
-		"variables": [
-			{
-				"name": "configEvents",
-				"text": "Emits every time one of its property is changed",
-				"type": "Observable<MasterLayoutEvent>",
-				"since": "4.0.0"
-			},
-			{
-				"name": "isCustom",
-				"text": "Controls <code>MasterLayoutConfig.header.isCustom</code> property.",
-				"type": "boolean",
-				"default": false,
-				"since": "4.0.0"
-			},
-			{
-				"name": "isMedium",
-				"text": "Controls <code>MasterLayoutConfig.header.isMedium</code> property.",
-				"type": "boolean",
-				"default": false,
-				"since": "4.0.0"
-			},
-			{
-				"name": "isAnimated",
-				"text": "Controls <code>MasterLayoutConfig.header.isAnimated</code> property.",
-				"type": "boolean",
-				"default": true,
-				"since": "4.0.0"
-			},
-			{
-				"name": "isSticky",
-				"text": "Controls <code>MasterLayoutConfig.header.isSticky</code> property.",
-				"type": "boolean",
-				"default": false,
-				"since": "4.0.0"
-			},
-			{
-				"name": "hasScrollTransition",
-				"text": "Controls <code>MasterLayoutConfig.header.hasScrollTransition</code> property.",
-				"type": "boolean",
-				"default": true,
-				"since": "4.0.0"
-			}
-		]
-	},
-	{
-		"name": "MasterLayoutFooterService",
-		"usage": "A service to configure the master layout footer. The changes are live.",
-		"since": "4.0.0",
-		"variables": [
-			{
-				"name": "configEvents",
-				"text": "Emits every time one of its property is changed",
-				"type": "Observable<MasterLayoutEvent>",
-				"since": "4.0.0"
-			},
-			{
-				"name": "isCustom",
-				"text": "Controls <code>MasterLayoutConfig.footer.isCustom</code> property.",
-				"type": "boolean",
-				"default": false,
-				"since": "4.0.0"
-			},
-			{
-				"name": "isSmall",
-				"text": "Controls <code>MasterLayoutConfig.footer.isSmall</code> property.",
-				"type": "boolean",
-				"default": false,
-				"since": "4.0.0"
-			},
-			{
-				"name": "hasScrollTransition",
-				"text": "Controls <code>MasterLayoutConfig.footer.hasScrollTransition</code> property.",
-				"type": "boolean",
-				"default": true,
-				"since": "4.0.0"
-			}
-		]
-	},
-	{
-		"name": "MasterLayoutNavigationService",
-		"usage": "A service to configure the master layout navigation. The changes are live.",
-		"since": "4.0.0",
-		"variables": [
-			{
-				"name": "configEvents",
-				"text": "Emits every time one of its property is changed",
-				"type": "Observable<MasterLayoutEvent>",
-				"since": "4.0.0"
-			},
-			{
-				"name": "isFullWidth",
-				"text": "Controls <code>MasterLayoutConfig.navigation.isFullWidth</code> property.",
-				"type": "boolean",
-				"default": false,
-				"since": "4.0.0"
-			},
-			{
-				"name": "scrollMode",
-				"text": "Controls <code>MasterLayoutConfig.navigation.scrollMode</code> property.",
-				"type": "ScrollMode",
-				"values": ["ScrollMode.AUTO", "ScrollMode.ENABLED", "ScrollMode.DISABLED"],
-				"default": "ScrollMode.AUTO",
-				"since": "5.0.0"
-			},
-			{
-				"name": "scrolled",
-				"text": "Emits when the navigation is scrolled. The payload is the scrolled delta in pixels",
-				"type": "Observable<number> ",
-				"since": "4.0.0"
-			},
-			{
-				"name": "refreshed",
-				"text": "Emits when the navigation is refreshed.",
-				"type": "Observable<void> ",
-				"since": "4.0.0"
-			}
-		],
-		"methods": [
-			{
-				"name": "refresh",
-				"text": "When scrolled navigation is enabled, forces to recompute the scroll position. Useful with dynamic navigation entries.",
-				"returns": "void",
-				"since": "4.0.0"
-			},
-			{
-				"name": "scrollLeft",
-				"text": "When scrolled navigation is enabled, will scroll the navigation to the left by the given amout or default amount if none is given.",
-				"returns": "void",
-				"arguments": [
-					"offset?: number"
-				],
-				"since": "4.0.0"
-			},
-			{
-				"name": "scrollRight",
-				"text": "When scrolled navigation is enabled, will scroll the navigation to the right by the given amount or default amount if none is given.",
-				"returns": "void",
-				"arguments": [
-					"offset?: number"
-				],
-				"since": "4.0.0"
-			}
-		]
-	}
-]
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "MasterLayoutComponent",
+      "selector": "ob-master-layout",
+      "exported": "obMasterLayout",
+      "usage": "This component takes care of the structure of the application and should be used in <code>app.component.html</code>",
+      "since": "2.0.0",
+      "inputs": [
+        {
+          "name": "navigation",
+          "text": "A list of links to populate the primary navigation. If more control on the navigation is needed, use <code>[obNavigation]</code> content projection (see below) instead",
+          "type": "ObINavigationLink[]",
+          "default": "[]",
+          "since": "3.0.0"
+        }
+      ],
+      "projection": [
+        {
+          "name": "[obHeader]",
+          "text": "Content that will be projected as the main header, i.e. everything above the read line. It will replace the default Oblique header if custom header is enabled (see <code>MasterLayoutConfig</code>).",
+          "since": "3.0.0"
+        },
+        {
+          "name": "[obHeaderTitle]",
+          "text": "Content that will be projected as the application's title within the main header.",
+          "since": "3.0.0"
+        },
+        {
+          "name": "[obNavigation]",
+          "text": "Content that will be projected as the main navigation. It will replace the default Oblique navigation if no navigation links are provided. It is an alternative to <code>navigation</code> input but the whole navigation markup has to be provided, not only the links.",
+          "since": "3.0.0"
+        },
+        {
+          "name": "[obLocales]",
+          "text": "Content that will be projected as the locales choice. It will replace the default Oblique locales if locale management is disabled (see <code>MasterLayoutConfig</code>).",
+          "since": "3.0.0"
+        },
+        {
+          "name": "<ng-template #orHeaderControl>",
+          "text": "Templates that will be projected into the controls section of the main header (next to the locales choice).",
+          "since": "3.0.0"
+        },
+        {
+          "name": "[obFooter]",
+          "text": "Content that will be projected as the main footer. It will replace the default Oblique footer if custom footer is enabled (see <code>MasterLayoutConfig</code>).",
+          "since": "3.0.0"
+        },
+        {
+          "name": "[obFooterInfo]",
+          "text": "Content that will be projected into the left hand side of the footer.",
+          "since": "3.0.0"
+        },
+        {
+          "name": "<ng-template #orFooterLink>",
+          "text": "Templates that will be projected into the links section in the right hand side of the main footer.",
+          "since": "3.0.0"
+        },
+        {
+          "name": "[obOffCanvasTitle]",
+          "text": "Content that will be projected as the title of the main off-canvas if off canvas is enabled (see <code>MasterLayoutConfig</code>).",
+          "since": "3.0.0"
+        },
+        {
+          "name": "[obOffCanvasContent]",
+          "text": "Content that will be projected as the content of the main off-canvas if off canvas is enabled (see <code>MasterLayoutConfig</code>).",
+          "since": "3.0.0"
+        }
+      ]
+    },
+    {
+      "name": "MasterLayoutConfig",
+      "usage": "This is the default configuration of the master layout. Values can be tweaked by injecting this service into <code>app.module.ts</code> to customize the global structure of the application.",
+      "since": "2.0.0",
+      "variables": [
+        {
+          "name": "homePageRoute",
+          "text": "The home page route. A click on the confederation logos or on the application's title will trigger this route.",
+          "type": "string",
+          "default": "/home",
+          "since": "3.0.0"
+        },
+        {
+          "name": "focusableFragments",
+          "text": "The ids corresponding to these fragments are focusable.",
+          "type": "string[]",
+          "default": "['content', 'navigation']",
+          "since": "3.0.0"
+        },
+        {
+          "name": "scrollToTopDuration",
+          "text": "Duration, in milliseconds, of the scroll to top feature.",
+          "type": "number",
+          "default": 200,
+          "since": "3.0.0"
+        },
+        {
+          "name": "locale.locales",
+          "text": "A list of supported locales.",
+          "type": "(string | LocaleObject)[]",
+          "default": "['de', 'fr', 'it']",
+          "since": "3.0.0"
+        },
+        {
+          "name": "locale.default",
+          "text": "The default locale, used when none is actually chosen of if the chosen one is not valid.",
+          "type": "string",
+          "default": "de",
+          "since": "3.0.0"
+        },
+        {
+          "name": "locale.disabled",
+          "text": "Let Oblique handles locales (false) or completely disables Oblique language management (true). In ths case, the application have to provide a default language as well as a change language mechanism",
+          "type": "boolean",
+          "default": false,
+          "since": "3.0.0"
+        },
+        {
+          "name": "layout.isFixed",
+          "text": "Use continuous layout (false) or fixed layout (true). With fixed layout, header and footer are always shown and scrolling applies only to main content.",
+          "type": "boolean",
+          "default": false,
+          "since": "4.0.0"
+        },
+        {
+          "name": "layout.hasCover",
+          "text": "Use regular layout (false) or cover layout (true). The cover layout uses only part of the available width and displays a background image on the unused space.",
+          "type": "boolean",
+          "default": false,
+          "since": "4.0.0"
+        },
+        {
+          "name": "layout.hasLayout",
+          "text": "Apply default padding (true) to the <code>main-layout</code> or no padding at all (false).",
+          "type": "boolean",
+          "default": true,
+          "since": "5.0.0"
+        },
+        {
+          "name": "layout.hasMainNavigation",
+          "text": "Use Oblique's default main navigation (true) or a custom one (false). The custom navigation has to be provided through <code>[obNavigation]</code>.",
+          "type": "boolean",
+          "default": true,
+          "since": "4.0.0"
+        },
+        {
+          "name": "layout.hasOffCanvas",
+          "text": "Add an off-canvas on the main content level (true) or removes it. An off-canvas is a collapsible sidebar that partially takes the place of the contend if activated.",
+          "type": "boolean",
+          "default": true,
+          "since": "4.0.0"
+        },
+        {
+          "name": "header.isAnimated",
+          "text": "Add animations to header size changes (true) or not (false).",
+          "type": "boolean",
+          "default": true,
+          "since": "4.0.0"
+        },
+        {
+          "name": "header.isSticky",
+          "text": "The header is always shown on top of the content is continuous mode (true) or normally hidden when scrolled away (false).",
+          "type": "boolean",
+          "default": true,
+          "since": "4.0.0"
+        },
+        {
+          "name": "header.isMedium",
+          "text": "Keep default, large header size (false) or forces medium size (true).",
+          "type": "boolean",
+          "default": false,
+          "since": "4.0.0"
+        },
+        {
+          "name": "header.isCustom",
+          "text": "Use Oblique's default header (false) or a custom one (true). The custom header has to be provided through <code>[obHeader]</code>.",
+          "type": "boolean",
+          "default": false,
+          "since": "4.0.0"
+        },
+        {
+          "name": "header.hasScrollTransitions",
+          "text": "Resize the header to medium when the page is scrolled with continuous layout (true) or keep the header to its defined size (false) ",
+          "type": "boolean",
+          "default": true,
+          "since": "4.0.0"
+        },
+        {
+          "name": "navigation.isFullWidth",
+          "text": "Should drop-downs main navigation menus take the full available width or only use the needed space.",
+          "type": "boolean",
+          "default": false,
+          "since": "4.0.0"
+        },
+        {
+          "name": "navigation.scrollMode",
+          "text": "Controls the main navigation's scroll mode, i.e. how to handle the elements outside of the visible area. They can either be hidden or the navigation bar can be made scrollable to display those elements.",
+          "type": "ScrollMode",
+          "values": [
+            "ScrollMode.AUTO",
+            "ScrollMode.ENABLED",
+            "ScrollMode.DISABLED"
+          ],
+          "default": "ScrollMode.AUTO",
+          "since": "5.0.0"
+        },
+        {
+          "name": "navigation.scrollDelta",
+          "text": "The size, in pixels, of a scroll increment for a scrollable navigation.",
+          "type": "number",
+          "default": 95,
+          "since": "4.0.0"
+        },
+        {
+          "name": "navigation.activeClass",
+          "text": "The class that will be automatically added on active links.",
+          "type": "string",
+          "default": "active",
+          "since": "4.0.0"
+        },
+        {
+          "name": "navigation.links",
+          "text": "The main navigation links. It is an alternative to <code>navigation</code> input with a lesser priority.",
+          "type": "ObINavigationLink[]",
+          "default": "[]",
+          "since": "4.0.0"
+        },
+        {
+          "name": "footer.isSmall",
+          "text": "Keep default, small footer size (true) or forces large size (false).",
+          "type": "boolean",
+          "default": true,
+          "since": "4.0.0"
+        },
+        {
+          "name": "footer.isCustom",
+          "text": "Use Oblique's default footer (false) or a custom one (true). The custom footer has to be provided through <code>[obFooter]</code>.",
+          "type": "boolean",
+          "default": true,
+          "since": "4.0.0"
+        },
+        {
+          "name": "footer.hasScrollTransitions",
+          "text": "Resize the footer to large when the page is scrolled with continuous layout (true) or keep the footer to its defined size (false) ",
+          "type": "boolean",
+          "default": true,
+          "since": "4.0.0"
+        }
+      ]
+    },
+    {
+      "name": "MasterLayoutService",
+      "usage": "A service to configure the master layout. The changes are live.",
+      "since": "2.0.0",
+      "variables": [
+        {
+          "name": "header",
+          "text": "A reference to the service that configures the header(see below)",
+          "type": "MasterLayoutHeaderService",
+          "since": "4.0.0"
+        },
+        {
+          "name": "footer",
+          "text": "A reference to the service that configures the footer (see below)",
+          "type": "MasterLayoutFooterService",
+          "since": "4.0.0"
+        },
+        {
+          "name": "navigation",
+          "text": "A reference to the service that configures the navigation (see below)",
+          "type": "MasterLayoutNavigationService",
+          "since": "4.0.0"
+        },
+        {
+          "name": "layout",
+          "text": "A reference to the service that configures the master layout (see below)",
+          "type": "MasterLayoutComponentService",
+          "since": "4.0.0"
+        }
+      ]
+    },
+    {
+      "name": "MasterLayoutComponentService",
+      "usage": "A service to configure the master layout component. The changes are live.",
+      "since": "4.0.0",
+      "variables": [
+        {
+          "name": "configEvents",
+          "text": "Emits every time one of its property is changed",
+          "type": "Observable<MasterLayoutEvent>",
+          "since": "4.0.0"
+        },
+        {
+          "name": "isMenuOpened",
+          "text": "In collapsed mode, closes the hamburger menu (false) or opens it (true).",
+          "type": "boolean",
+          "default": false,
+          "since": "4.0.0"
+        },
+        {
+          "name": "isFixed",
+          "text": "Controls <code>MasterLayoutConfig.layout.isFixed</code> property.",
+          "type": "boolean",
+          "default": false,
+          "since": "4.0.0"
+        },
+        {
+          "name": "hasCover",
+          "text": "Controls <code>MasterLayoutConfig.layout.hasCover</code> property.",
+          "type": "boolean",
+          "default": true,
+          "since": "4.0.0"
+        },
+        {
+          "name": "hasLayout",
+          "text": "Controls <code>MasterLayoutConfig.layout.hasLayout</code> property.",
+          "type": "boolean",
+          "default": true,
+          "since": "5.0.0"
+        },
+        {
+          "name": "hasOffCanvas",
+          "text": "Controls <code>MasterLayoutConfig.layout.hasOffCanvas</code> property.",
+          "type": "boolean",
+          "default": false,
+          "since": "4.0.0"
+        },
+        {
+          "name": "hasMainNavigation",
+          "text": "Controls <code>MasterLayoutConfig.layout.hasMainNavigation</code> property.",
+          "type": "boolean",
+          "default": true,
+          "since": "4.0.0"
+        }
+      ]
+    },
+    {
+      "name": "MasterLayoutHeaderService",
+      "usage": "A service to configure the master layout header. The changes are live.",
+      "since": "4.0.0",
+      "variables": [
+        {
+          "name": "configEvents",
+          "text": "Emits every time one of its property is changed",
+          "type": "Observable<MasterLayoutEvent>",
+          "since": "4.0.0"
+        },
+        {
+          "name": "isCustom",
+          "text": "Controls <code>MasterLayoutConfig.header.isCustom</code> property.",
+          "type": "boolean",
+          "default": false,
+          "since": "4.0.0"
+        },
+        {
+          "name": "isMedium",
+          "text": "Controls <code>MasterLayoutConfig.header.isMedium</code> property.",
+          "type": "boolean",
+          "default": false,
+          "since": "4.0.0"
+        },
+        {
+          "name": "isAnimated",
+          "text": "Controls <code>MasterLayoutConfig.header.isAnimated</code> property.",
+          "type": "boolean",
+          "default": true,
+          "since": "4.0.0"
+        },
+        {
+          "name": "isSticky",
+          "text": "Controls <code>MasterLayoutConfig.header.isSticky</code> property.",
+          "type": "boolean",
+          "default": false,
+          "since": "4.0.0"
+        },
+        {
+          "name": "hasScrollTransition",
+          "text": "Controls <code>MasterLayoutConfig.header.hasScrollTransition</code> property.",
+          "type": "boolean",
+          "default": true,
+          "since": "4.0.0"
+        }
+      ]
+    },
+    {
+      "name": "MasterLayoutFooterService",
+      "usage": "A service to configure the master layout footer. The changes are live.",
+      "since": "4.0.0",
+      "variables": [
+        {
+          "name": "configEvents",
+          "text": "Emits every time one of its property is changed",
+          "type": "Observable<MasterLayoutEvent>",
+          "since": "4.0.0"
+        },
+        {
+          "name": "isCustom",
+          "text": "Controls <code>MasterLayoutConfig.footer.isCustom</code> property.",
+          "type": "boolean",
+          "default": false,
+          "since": "4.0.0"
+        },
+        {
+          "name": "isSmall",
+          "text": "Controls <code>MasterLayoutConfig.footer.isSmall</code> property.",
+          "type": "boolean",
+          "default": false,
+          "since": "4.0.0"
+        },
+        {
+          "name": "hasScrollTransition",
+          "text": "Controls <code>MasterLayoutConfig.footer.hasScrollTransition</code> property.",
+          "type": "boolean",
+          "default": true,
+          "since": "4.0.0"
+        }
+      ]
+    },
+    {
+      "name": "MasterLayoutNavigationService",
+      "usage": "A service to configure the master layout navigation. The changes are live.",
+      "since": "4.0.0",
+      "variables": [
+        {
+          "name": "configEvents",
+          "text": "Emits every time one of its property is changed",
+          "type": "Observable<MasterLayoutEvent>",
+          "since": "4.0.0"
+        },
+        {
+          "name": "isFullWidth",
+          "text": "Controls <code>MasterLayoutConfig.navigation.isFullWidth</code> property.",
+          "type": "boolean",
+          "default": false,
+          "since": "4.0.0"
+        },
+        {
+          "name": "scrollMode",
+          "text": "Controls <code>MasterLayoutConfig.navigation.scrollMode</code> property.",
+          "type": "ScrollMode",
+          "values": [
+            "ScrollMode.AUTO",
+            "ScrollMode.ENABLED",
+            "ScrollMode.DISABLED"
+          ],
+          "default": "ScrollMode.AUTO",
+          "since": "5.0.0"
+        },
+        {
+          "name": "scrolled",
+          "text": "Emits when the navigation is scrolled. The payload is the scrolled delta in pixels",
+          "type": "Observable<number> ",
+          "since": "4.0.0"
+        },
+        {
+          "name": "refreshed",
+          "text": "Emits when the navigation is refreshed.",
+          "type": "Observable<void> ",
+          "since": "4.0.0"
+        }
+      ],
+      "methods": [
+        {
+          "name": "refresh",
+          "text": "When scrolled navigation is enabled, forces to recompute the scroll position. Useful with dynamic navigation entries.",
+          "returns": "void",
+          "since": "4.0.0"
+        },
+        {
+          "name": "scrollLeft",
+          "text": "When scrolled navigation is enabled, will scroll the navigation to the left by the given amout or default amount if none is given.",
+          "returns": "void",
+          "arguments": [
+            "offset?: number"
+          ],
+          "since": "4.0.0"
+        },
+        {
+          "name": "scrollRight",
+          "text": "When scrolled navigation is enabled, will scroll the navigation to the right by the given amount or default amount if none is given.",
+          "returns": "void",
+          "arguments": [
+            "offset?: number"
+          ],
+          "since": "4.0.0"
+        }
+      ]
+    }
+  ]
+}

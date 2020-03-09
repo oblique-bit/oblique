@@ -1,24 +1,27 @@
-[
-  {
-    "name": "ObFormControlStateDirective",
-    "selector": "[obFormControlState]",
-    "exported": "obFormControlState",
-    "since": "2.0.0",
-    "inputs": [
-      {
-        "name": "pristineValidation",
-        "text": "Indicates if the field should be validated while the from is still pristine.",
-        "type": "boolean",
-        "default": false,
-        "since": "2.0.0"
-      },
-      {
-        "name": "mandatory",
-        "text": "Mark the field as mandatory.",
-        "type": "boolean",
-        "default": false,
-        "since": "2.0.0"
-      }
-    ]
-  }
-]
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObFormControlStateDirective",
+      "selector": "[obFormControlState]",
+      "exported": "obFormControlState",
+      "since": "2.0.0",
+      "inputs": [
+        {
+          "name": "pristineValidation",
+          "text": "Indicates if the field should be validated while the from is still pristine.",
+          "type": "boolean",
+          "default": false,
+          "since": "2.0.0"
+        },
+        {
+          "name": "mandatory",
+          "text": "Mark the field as mandatory.",
+          "type": "boolean",
+          "default": false,
+          "since": "2.0.0"
+        }
+      ]
+    }
+  ]
+}

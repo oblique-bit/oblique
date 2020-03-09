@@ -1,24 +1,27 @@
-[
-  {
-    "name": "ObNumberFormatDirective",
-    "selector": "[obNumberFormat]",
-    "export": "obNumberFormat",
-    "since": "2.0.0",
-    "inputs": [
-      {
-        "name": "decimals",
-        "text": "The number of decimals to display.",
-        "type": "number",
-        "default": 2,
-        "since": "2.0.0"
-      },
-      {
-        "name": "persistent",
-        "text": "Indicates that the formatted value will be reported to the model.",
-        "type": "boolean",
-        "default": true,
-        "since": "2.0.0"
-      }
-    ]
-  }
-]
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObNumberFormatDirective",
+      "selector": "[obNumberFormat]",
+      "export": "obNumberFormat",
+      "since": "2.0.0",
+      "inputs": [
+        {
+          "name": "decimals",
+          "text": "The number of decimals to display.",
+          "type": "number",
+          "default": 2,
+          "since": "2.0.0"
+        },
+        {
+          "name": "persistent",
+          "text": "Indicates that the formatted value will be reported to the model.",
+          "type": "boolean",
+          "default": true,
+          "since": "2.0.0"
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,10 @@
-[
-  {
-    "name": "ObUnknownRouteComponent",
-    "selector": "ob-unknown-route",
-    "since": "5.0.0"
-  }
-]
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObUnknownRouteComponent",
+      "selector": "ob-unknown-route",
+      "since": "5.0.0"
+    }
+  ]
+}

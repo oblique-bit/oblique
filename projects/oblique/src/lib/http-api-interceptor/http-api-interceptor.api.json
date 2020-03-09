@@ -1,102 +1,111 @@
-[
-  {
-    "name": "ObHttpApiInterceptorConfig",
-    "usage": "Should by injected, typically in the AppModule, to customize the values of its properties in order to provide alternate default values for the <code>HttpApiInterceptor</code>.",
-    "since": "3.0.0",
-    "variables": [
-      {
-        "name": "api.url",
-        "text": "Matching URLs will be treated as API calls and thus affected by this interceptor.",
-        "type": "string",
-        "default": "",
-        "since": "3.0.0"
-      },
-      {
-        "name": "api.spinner",
-        "text": "Defines if a spinner should be activated whenever an API call starts.",
-        "type": "boolean",
-        "default": true,
-        "since": "3.0.0"
-      },
-      {
-        "name": "api.notification.active",
-        "text": "Defines if a notification should be displayed in case of API error response.",
-        "type": "boolean",
-        "default": true,
-        "since": "3.0.0"
-      },
-      {
-        "name": "api.notification.severity",
-        "text": "Defines the notification's severity.",
-        "values": [
-          "error",
-          "warning",
-          "info",
-          "success"
-        ],
-        "type": "NotificationType",
-        "default": "error",
-        "since": "3.0.0"
-      },
-      {
-        "name": "api.notification.title",
-        "text": "Defines the notification's text.",
-        "type": "string",
-        "default": "error.statusText.<error.status>",
-        "since": "3.0.0"
-      },
-      {
-        "name": "api.notification.text",
-        "text": "Defines the notification's title.",
-        "type": "string",
-        "default": "i18n.error.http.status.<error.status>",
-        "since": "3.0.0"
-      },
-      {
-        "name": "timeout",
-        "text": "The timeout to wait before considering an API call as failed. A notification will be issued to warn the user about request timeout, but the request itself won't be cancelled.",
-        "type": "number",
-        "default": 15000,
-        "since": "3.0.0"
-      }
-    ]
-  },
-  {
-    "name": "HttpApiInterceptorEvents",
-    "since": "3.0.0",
-    "variables": [
-      {
-        "name": "requestIntercepted",
-        "text": "This observable emits events before the request is sent to the server and can be used to tweak the behavior of the interceptor.",
-        "type": "Observable<HttpApiRequest>",
-        "since": "3.0.0"
-      },
-      {
-        "name": "sessionExpired",
-        "text": "This observable emits when the server respond with a 401 error, which is typically the case with an expired EIAM session.",
-        "type": "Observable<void>",
-        "since": "3.0.0"
-      }
-    ],
-    "methods": [
-      {
-        "name": "deactivateSpinnerOnNextAPICalls",
-        "text": "No spinner will be activated on the next <code>number</code> API calls.",
-        "arguments": ["number = 1"],
-        "since": "4.1.0"
-      },
-      {
-        "name": "deactivateNotificationOnNextAPICalls",
-        "text": "No notification will be activated on the next <code>number</code> API calls.",
-        "arguments": ["number = 1"],
-        "since": "4.1.0"
-      },
-      {
-        "name": "deactivateOnNextAPICalls",
-        "text": "No spinner nor notification will be activated on the next <code>number</code> API calls.",
-        "arguments": ["number = 1"],
-        "since": "4.1.0"
-      }
-    ]
-  }
-]
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObHttpApiInterceptorConfig",
+      "usage": "Should by injected, typically in the AppModule, to customize the values of its properties in order to provide alternate default values for the <code>HttpApiInterceptor</code>.",
+      "since": "3.0.0",
+      "variables": [
+        {
+          "name": "api.url",
+          "text": "Matching URLs will be treated as API calls and thus affected by this interceptor.",
+          "type": "string",
+          "default": "",
+          "since": "3.0.0"
+        },
+        {
+          "name": "api.spinner",
+          "text": "Defines if a spinner should be activated whenever an API call starts.",
+          "type": "boolean",
+          "default": true,
+          "since": "3.0.0"
+        },
+        {
+          "name": "api.notification.active",
+          "text": "Defines if a notification should be displayed in case of API error response.",
+          "type": "boolean",
+          "default": true,
+          "since": "3.0.0"
+        },
+        {
+          "name": "api.notification.severity",
+          "text": "Defines the notification's severity.",
+          "values": [
+            "error",
+            "warning",
+            "info",
+            "success"
+          ],
+          "type": "NotificationType",
+          "default": "error",
+          "since": "3.0.0"
+        },
+        {
+          "name": "api.notification.title",
+          "text": "Defines the notification's text.",
+          "type": "string",
+          "default": "error.statusText.<error.status>",
+          "since": "3.0.0"
+        },
+        {
+          "name": "api.notification.text",
+          "text": "Defines the notification's title.",
+          "type": "string",
+          "default": "i18n.error.http.status.<error.status>",
+          "since": "3.0.0"
+        },
+        {
+          "name": "timeout",
+          "text": "The timeout to wait before considering an API call as failed. A notification will be issued to warn the user about request timeout, but the request itself won't be cancelled.",
+          "type": "number",
+          "default": 15000,
+          "since": "3.0.0"
+        }
+      ]
+    },
+    {
+      "name": "HttpApiInterceptorEvents",
+      "since": "3.0.0",
+      "variables": [
+        {
+          "name": "requestIntercepted",
+          "text": "This observable emits events before the request is sent to the server and can be used to tweak the behavior of the interceptor.",
+          "type": "Observable<HttpApiRequest>",
+          "since": "3.0.0"
+        },
+        {
+          "name": "sessionExpired",
+          "text": "This observable emits when the server respond with a 401 error, which is typically the case with an expired EIAM session.",
+          "type": "Observable<void>",
+          "since": "3.0.0"
+        }
+      ],
+      "methods": [
+        {
+          "name": "deactivateSpinnerOnNextAPICalls",
+          "text": "No spinner will be activated on the next <code>number</code> API calls.",
+          "arguments": [
+            "number = 1"
+          ],
+          "since": "4.1.0"
+        },
+        {
+          "name": "deactivateNotificationOnNextAPICalls",
+          "text": "No notification will be activated on the next <code>number</code> API calls.",
+          "arguments": [
+            "number = 1"
+          ],
+          "since": "4.1.0"
+        },
+        {
+          "name": "deactivateOnNextAPICalls",
+          "text": "No spinner nor notification will be activated on the next <code>number</code> API calls.",
+          "arguments": [
+            "number = 1"
+          ],
+          "since": "4.1.0"
+        }
+      ]
+    }
+  ]
+}
