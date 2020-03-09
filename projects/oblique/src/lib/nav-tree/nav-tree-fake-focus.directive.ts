@@ -67,7 +67,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 	) {
 		if (this.element.nativeElement.localName !== 'ob-nav-tree') {
 			throw new Error(
-				'Directive nav-tree-selector can only be used on or-nav-tree elements. '
+				'Directive nav-tree-selector can only be used on ob-nav-tree elements. '
 				+ `Current element is: '${this.element.nativeElement.localName}'`
 			);
 		}

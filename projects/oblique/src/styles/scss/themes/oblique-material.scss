@@ -1,16 +1,16 @@
-@import '../core/variables';
+@import 'projects/oblique/src/styles/scss/core/variables';
 @import '~@angular/material/theming';
-@import 'material/material-palette';
+@import 'projects/oblique/src/styles/scss/themes/material/material-palette';
 
 @include mat-core(mat-typography-config($font-family: $font));
 @include angular-material-theme(mat-light-theme(mat-palette($oblique-primary), mat-palette($oblique-accent), mat-palette($oblique-warn)));
 
-@import 'material/mat-card';
-@import 'material/mat-checkbox-radio';
-@import 'material/mat-chip';
-@import 'material/mat-dialog';
-@import 'material/mat-form-field';
-@import 'material/mat-stepper';
-@import 'material/mat-table';
-@import 'material/mat-tab';
-@import 'material/mat-tooltip';
+@import 'projects/oblique/src/styles/scss/themes/material/mat-card';
+@import 'projects/oblique/src/styles/scss/themes/material/mat-checkbox-radio';
+@import 'projects/oblique/src/styles/scss/themes/material/mat-chip';
+@import 'projects/oblique/src/styles/scss/themes/material/mat-dialog';
+@import 'projects/oblique/src/styles/scss/themes/material/mat-form-field';
+@import 'projects/oblique/src/styles/scss/themes/material/mat-stepper';
+@import 'projects/oblique/src/styles/scss/themes/material/mat-table';
+@import 'projects/oblique/src/styles/scss/themes/material/mat-tab';
+@import 'projects/oblique/src/styles/scss/themes/material/mat-tooltip';

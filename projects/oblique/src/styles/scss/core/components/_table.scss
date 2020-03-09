@@ -1,7 +1,7 @@
-@import "../variables";
-@import "../mixins/layout";
-@import "../mixins/table";
-@import "../mixins/_typography";
+@import "projects/oblique/src/styles/scss/core/variables";
+@import "projects/oblique/src/styles/scss/core/mixins/layout";
+@import "projects/oblique/src/styles/scss/core/mixins/table";
+@import "../mixins/typography";
 
 table {
 	border-collapse: collapse; // Prevent double borders

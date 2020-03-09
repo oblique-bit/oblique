@@ -19,7 +19,7 @@
 				 [navigableHighlight]="isHighlighted(scientist)"
 				 (navigableOnActivation)="onActivation(scientist)"
 				 (navigableOnMove)="onMove($event, scientist)"
-				 #obNavigable="orNavigable">
+				 #obNavigable="obNavigable">
 				<div class="col-3">{{scientist.firstname}}</div>
 				<div class="col-3">{{scientist.lastname}}</div>
 				<div class="col-3">{{scientist.birthdate}}</div>
@@ -33,13 +33,13 @@
 					<div class="btn-group navigable-reveal" role="group" aria-label="actions"
 						 *ngIf="scientistsSelection.length <= 1">
 						<button type="button" class="btn btn-primary"
-								(click)="orNavigable.moveUp(scientist)"
+								(click)="obNavigable.moveUp(scientist)"
 								*ngIf="i > 0" [disabled]="isLocked(scientist)">
 							<span class="fa fa-arrow-up"></span>
 							<span class="sr-only">Move UP</span>
 						</button>
 						<button type="button" class="btn btn-primary"
-								(click)="orNavigable.moveDown(scientist)"
+								(click)="obNavigable.moveDown(scientist)"
 								*ngIf="i < scientists.length - 1" [disabled]="isLocked(scientist)">
 							<span class="fa fa-arrow-down"></span>
 							<span class="sr-only">Move DOWN</span>

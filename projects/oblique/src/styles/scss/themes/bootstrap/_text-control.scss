@@ -1,6 +1,6 @@
-@import "../../core/variables";
+@import "projects/oblique/src/styles/scss/core/variables";
 @import "~bootstrap/scss/variables";
-@import "mixins/text-control";
+@import "projects/oblique/src/styles/scss/themes/bootstrap/mixins/text-control";
 
 .text-control {
 	.form-control {

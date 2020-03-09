@@ -5,7 +5,7 @@ import {ObOffCanvasService} from './off-canvas.service';
 import {ObUnsubscribable} from '../unsubscribe.class';
 
 @Directive({
-	selector: '.offcanvas, or-master-layout'
+	selector: '.offcanvas, ob-master-layout'
 })
 export class ObOffCanvasContainerDirective extends ObUnsubscribable {
 	@HostBinding('class.offcanvas-in') open = false;

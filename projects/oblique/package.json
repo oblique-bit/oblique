@@ -19,6 +19,8 @@
     "@angular/cdk": "^9.0.0",
     "@angular/material": "^9.0.0",
     "@ng-bootstrap/ng-bootstrap": "^6.0.0",
+    "bootstrap": "^4.0.0",
+    "font-awesome": "^4.7.0",
     "ajv": "^6.0.0"
   },
   "schematics": "./schematics/collection.json",
