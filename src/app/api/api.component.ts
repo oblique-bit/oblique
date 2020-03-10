@@ -38,6 +38,6 @@ export class ObApiComponent implements OnInit {
 	api: ObIAPI[];
 
 	ngOnInit() {
-		this.api = require(`../../../projects/oblique/src/lib/${this.directory || this.component}/${this.component}.api.json`);
+		this.api = require(`../../../projects/oblique/src/lib/${this.directory || this.component}/${this.component}.api.json`).api;
 	}
 }

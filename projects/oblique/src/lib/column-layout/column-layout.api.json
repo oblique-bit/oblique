@@ -1,81 +1,84 @@
-[
-  {
-    "name": "ObColumnLayoutComponent",
-    "selector": "ob-column-layout",
-    "exported": "obColumnLayout",
-    "since": "2.0.0",
-    "inputs": [
-      {
-        "name": "left",
-        "text": "Defines if the left panel should be rendered.",
-        "type": "boolean",
-        "default": true,
-        "since": "2.0.0"
-      },
-      {
-        "name": "right",
-        "text": "Defines if the right panel should be rendered.",
-        "type": "boolean",
-        "default": true,
-        "since": "2.0.0"
-      },
-      {
-        "name": "noLayout",
-        "text": "Defines if the panels should have default layout.",
-        "type": "boolean",
-        "default": false,
-        "since": "5.0.0"
-      },
-      {
-        "name": "wider",
-        "text": "Defines if the side panels should be wider (40% each).",
-        "type": "boolean",
-        "default": false,
-        "since": "5.0.0"
-      }
-    ],
-    "methods": [
-      {
-        "name": "toggleLeft",
-        "text": "Toggles the left panel.",
-        "returns": "void",
-        "since": "2.0.0"
-      },
-      {
-        "name": "toggleRight",
-        "text": "Toggles the right panel.",
-        "returns": "void",
-        "since": "2.0.0"
-      }
-    ],
-    "projection": [
-      {
-        "name": "[column-left-content]",
-        "text": "Selects the content to project into the left panel.",
-        "since": "2.0.0"
-      },
-      {
-        "name": "[column-main-content]",
-        "text": "Selects the content to project into the main panel.",
-        "since": "2.0.0"
-      },
-      {
-        "name": "[column-right-content]",
-        "text": "Selects the content to project into the right panel.",
-        "since": "2.0.0"
-      }
-    ],
-    "internationalization": [
-      {
-        "name": "i18n.oblique.column.left.toggle",
-        "text": "Screen-reader only label for the left toggle button.",
-        "since": "2.0.0"
-      },
-      {
-        "name": "i18n.oblique.column.right.toggle",
-        "text": "Screen-reader only label for the right toggle button.",
-        "since": "2.0.0"
-      }
-    ]
-  }
-]
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObColumnLayoutComponent",
+      "selector": "ob-column-layout",
+      "exported": "obColumnLayout",
+      "since": "2.0.0",
+      "inputs": [
+        {
+          "name": "left",
+          "text": "Defines if the left panel should be rendered.",
+          "type": "boolean",
+          "default": true,
+          "since": "2.0.0"
+        },
+        {
+          "name": "right",
+          "text": "Defines if the right panel should be rendered.",
+          "type": "boolean",
+          "default": true,
+          "since": "2.0.0"
+        },
+        {
+          "name": "noLayout",
+          "text": "Defines if the panels should have default layout.",
+          "type": "boolean",
+          "default": false,
+          "since": "5.0.0"
+        },
+        {
+          "name": "wider",
+          "text": "Defines if the side panels should be wider (40% each).",
+          "type": "boolean",
+          "default": false,
+          "since": "5.0.0"
+        }
+      ],
+      "methods": [
+        {
+          "name": "toggleLeft",
+          "text": "Toggles the left panel.",
+          "returns": "void",
+          "since": "2.0.0"
+        },
+        {
+          "name": "toggleRight",
+          "text": "Toggles the right panel.",
+          "returns": "void",
+          "since": "2.0.0"
+        }
+      ],
+      "projection": [
+        {
+          "name": "[column-left-content]",
+          "text": "Selects the content to project into the left panel.",
+          "since": "2.0.0"
+        },
+        {
+          "name": "[column-main-content]",
+          "text": "Selects the content to project into the main panel.",
+          "since": "2.0.0"
+        },
+        {
+          "name": "[column-right-content]",
+          "text": "Selects the content to project into the right panel.",
+          "since": "2.0.0"
+        }
+      ],
+      "internationalization": [
+        {
+          "name": "i18n.oblique.column.left.toggle",
+          "text": "Screen-reader only label for the left toggle button.",
+          "since": "2.0.0"
+        },
+        {
+          "name": "i18n.oblique.column.right.toggle",
+          "text": "Screen-reader only label for the right toggle button.",
+          "since": "2.0.0"
+        }
+      ]
+    }
+  ]
+}

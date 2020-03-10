@@ -1,33 +1,36 @@
-[
-  {
-    "name": "ObErrorMessagesDirective",
-    "selector": "obErrors",
-    "exported": "obErrors",
-    "usage": "Meant for Material Design. Applied on a <code>mat-form-field</code> element, it will populate a <code>mat-error</code> that has to be provided.",
-    "since": "4.1.0",
-    "variables": [
-      {
-        "name": "errors$",
-        "text": "An observable that emits every time Angular throws a validation error on the underlying form control.",
-        "type": "Observable<ValidationErrors>",
-        "since": "4.1.0"
-      }
-    ]
-  },
-  {
-    "name": "ObErrorMessagesComponent",
-    "selector": "ob-error-messages",
-    "exported": "obErrorMessages",
-    "usage": "Meant for Bootstrap.",
-    "since": "2.0.0",
-    "inputs": [
-      {
-        "name": "control",
-        "text": "The <code>ngModel</code> or <code>formControlName</code> whose errors to display.",
-        "default": "FormControlStateDirective.ngControl",
-        "type": "NgControl",
-        "since": "2.0.0"
-      }
-    ]
-  }
-]
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObErrorMessagesDirective",
+      "selector": "obErrors",
+      "exported": "obErrors",
+      "usage": "Meant for Material Design. Applied on a <code>mat-form-field</code> element, it will populate a <code>mat-error</code> that has to be provided.",
+      "since": "4.1.0",
+      "variables": [
+        {
+          "name": "errors$",
+          "text": "An observable that emits every time Angular throws a validation error on the underlying form control.",
+          "type": "Observable<ValidationErrors>",
+          "since": "4.1.0"
+        }
+      ]
+    },
+    {
+      "name": "ObErrorMessagesComponent",
+      "selector": "ob-error-messages",
+      "exported": "obErrorMessages",
+      "usage": "Meant for Bootstrap.",
+      "since": "2.0.0",
+      "inputs": [
+        {
+          "name": "control",
+          "text": "The <code>ngModel</code> or <code>formControlName</code> whose errors to display.",
+          "default": "FormControlStateDirective.ngControl",
+          "type": "NgControl",
+          "since": "2.0.0"
+        }
+      ]
+    }
+  ]
+}

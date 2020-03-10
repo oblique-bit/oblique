@@ -1,16 +1,19 @@
-[
-  {
-    "name": "ObOffCanvasToggleDirective",
-    "selector": "[obOffCanvasToggle]",
-    "export": "obOffCanvasToggle",
-    "since": "3.0.0",
-    "methods": [
-      {
-        "name": "toggle",
-        "text": "Toggles the off-canvas.",
-        "returns": "void",
-        "since": "3.0.0"
-      }
-    ]
-  }
-]
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObOffCanvasToggleDirective",
+      "selector": "[obOffCanvasToggle]",
+      "export": "obOffCanvasToggle",
+      "since": "3.0.0",
+      "methods": [
+        {
+          "name": "toggle",
+          "text": "Toggles the off-canvas.",
+          "returns": "void",
+          "since": "3.0.0"
+        }
+      ]
+    }
+  ]
+}

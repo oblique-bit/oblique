@@ -1,0 +1,144 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "id": "https://angular.io/schemas/cli-1/schema",
+  "title": "Angular CLI Configuration",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "api": {
+      "type": "array",
+      "description": "List of static application assets.",
+      "default": [],
+      "items": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "selector": {
+            "type": "string",
+            "additionalProperties": false
+          },
+          "exported": {
+            "type": "string",
+            "additionalProperties": false
+          },
+          "usage": {
+            "type": "string",
+            "additionalProperties": false
+          },
+          "since": {
+            "type": "string"
+          },
+          "variables": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "$ref": "#/definitions/elementPattern"
+            },
+            "additionalProperties": false
+          },
+          "inputs": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "$ref": "#/definitions/elementPattern"
+            },
+            "additionalProperties": false
+          },
+          "outputs": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "$ref": "#/definitions/elementPattern"
+            },
+            "additionalProperties": false
+          },
+          "methods": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "$ref": "#/definitions/elementPattern"
+            },
+            "additionalProperties": false
+          },
+          "projection": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "$ref": "#/definitions/elementPattern"
+            },
+            "additionalProperties": false
+          },
+          "internationalization": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "$ref": "#/definitions/elementPattern"
+            },
+            "additionalProperties": false
+          },
+          "tokens": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "$ref": "#/definitions/elementPattern"
+            }
+          },
+          "additionalProperties": false
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "since"
+        ]
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "api"
+  ],
+  "definitions": {
+    "elementPattern": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "values": {
+          "type": "array"
+        },
+        "arguments": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "returns": {
+          "type": "string"
+        },
+        "see": {
+          "type": "string"
+        },
+        "default": {
+        },
+        "since": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "text",
+        "since"
+      ]
+    }
+  }
+}

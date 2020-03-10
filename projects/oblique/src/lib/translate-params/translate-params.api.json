@@ -1,7 +1,10 @@
-[
-  {
-    "name": "ObTranslateParamsPipe",
-    "selector": "obTranslateParams",
-    "since": "3.1.0"
-  }
-]
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObTranslateParamsPipe",
+      "selector": "obTranslateParams",
+      "since": "3.1.0"
+    }
+  ]
+}

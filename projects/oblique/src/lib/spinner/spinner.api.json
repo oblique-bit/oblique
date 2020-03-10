@@ -1,82 +1,85 @@
-[
-  {
-    "name": "ObSpinnerComponent",
-    "selector": "ob-spinner",
-    "export": "obSpinner",
-    "since": "2.0.0",
-    "inputs": [
-      {
-        "name": "channel",
-        "text": "The channel name where spinner events will be retrieved from. If not specified, component will listen to the default channel.",
-        "type": "string",
-        "default": "default",
-        "since": "2.0.0"
-      },
-      {
-        "name": "fixed",
-        "text": "Defines if the spinner overlay should be positioned in a fixed way (i.e. in reference to the browser viewport).",
-        "type": "boolean",
-        "default": false,
-        "since": "2.0.0"
-      }
-    ]
-  },
-  {
-    "name": "SpinnerService",
-    "since": "2.0.0",
-    "variables": [
-      {
-        "name": "events",
-        "text": "An observable that emits every time the spinner is triggered or canceled",
-        "type": "Observable<SpinnerEvent>",
-        "since": "2.0.0"
-      },
-      {
-        "name": "CHANNEL",
-        "text": "The default channel name for broadcasting spinner events.",
-        "type": "string",
-        "default": "default",
-        "since": "2.0.0"
-      }
-    ],
-    "methods": [
-      {
-        "name": "activate",
-        "text": "Shows the spinner.",
-        "returns": "void",
-        "arguments": [
-          "channel: string"
-        ],
-        "since": "2.0.0"
-      },
-      {
-        "name": "deactivate",
-        "text": "Hides the spinner.",
-        "returns": "void",
-        "arguments": [
-          "channel: string"
-        ],
-        "since": "2.0.0"
-      }
-    ]
-  },
-  {
-    "name": "SpinnerEvent",
-    "usage": "Event emitted by <code>activate</code> and <code>deactivate</code> methods.",
-    "since": "2.0.0",
-    "variables": [
-      {
-        "name": "active",
-        "text": "Defines if the spinner should be displayed or not.",
-        "type": "boolean",
-        "since": "2.0.0"
-      },
-      {
-        "name": "channel",
-        "text": "The channel name related to this event.",
-        "type": "string",
-        "since": "2.0.0"
-      }
-    ]
-  }
-]
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObSpinnerComponent",
+      "selector": "ob-spinner",
+      "export": "obSpinner",
+      "since": "2.0.0",
+      "inputs": [
+        {
+          "name": "channel",
+          "text": "The channel name where spinner events will be retrieved from. If not specified, component will listen to the default channel.",
+          "type": "string",
+          "default": "default",
+          "since": "2.0.0"
+        },
+        {
+          "name": "fixed",
+          "text": "Defines if the spinner overlay should be positioned in a fixed way (i.e. in reference to the browser viewport).",
+          "type": "boolean",
+          "default": false,
+          "since": "2.0.0"
+        }
+      ]
+    },
+    {
+      "name": "SpinnerService",
+      "since": "2.0.0",
+      "variables": [
+        {
+          "name": "events",
+          "text": "An observable that emits every time the spinner is triggered or canceled",
+          "type": "Observable<SpinnerEvent>",
+          "since": "2.0.0"
+        },
+        {
+          "name": "CHANNEL",
+          "text": "The default channel name for broadcasting spinner events.",
+          "type": "string",
+          "default": "default",
+          "since": "2.0.0"
+        }
+      ],
+      "methods": [
+        {
+          "name": "activate",
+          "text": "Shows the spinner.",
+          "returns": "void",
+          "arguments": [
+            "channel: string"
+          ],
+          "since": "2.0.0"
+        },
+        {
+          "name": "deactivate",
+          "text": "Hides the spinner.",
+          "returns": "void",
+          "arguments": [
+            "channel: string"
+          ],
+          "since": "2.0.0"
+        }
+      ]
+    },
+    {
+      "name": "SpinnerEvent",
+      "usage": "Event emitted by <code>activate</code> and <code>deactivate</code> methods.",
+      "since": "2.0.0",
+      "variables": [
+        {
+          "name": "active",
+          "text": "Defines if the spinner should be displayed or not.",
+          "type": "boolean",
+          "since": "2.0.0"
+        },
+        {
+          "name": "channel",
+          "text": "The channel name related to this event.",
+          "type": "string",
+          "since": "2.0.0"
+        }
+      ]
+    }
+  ]
+}

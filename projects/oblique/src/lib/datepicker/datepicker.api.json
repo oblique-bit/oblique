@@ -1,128 +1,142 @@
-[
-  {
-    "name": "ObDatepickerComponent",
-    "exported": "obDatePicker",
-    "selector": "ob-date-picker",
-    "since": "2.0.0",
-    "inputs": [
-      {
-        "name": "size",
-        "text": "The size of the date picker controls.",
-        "type": "string",
-        "values": ["sm", "lg"],
-        "default": "",
-        "since": "5.0.0"
-      },
-      {
-        "name": "maxDate",
-        "text": "The latest date that can be displayed or selected.",
-        "type": "NgbDateStruct",
-        "default": "in 10 years",
-        "see": "https://ng-bootstrap.github.io/#/components/datepicker/api",
-        "since": "5.0.0"
-      },
-      {
-        "name": "minDate",
-        "text": "The earliest date that can be displayed or selected.",
-        "type": "NgbDateStruct",
-        "default": "10 years ago",
-        "see": "https://ng-bootstrap.github.io/#/components/datepicker/api",
-        "since": "5.0.0"
-      },
-      {
-        "name": "startDate",
-        "text": "The date to open calendar with.",
-        "type": "NgbDateStruct",
-        "default": "today",
-        "see": "https://ng-bootstrap.github.io/#/components/datepicker/api",
-        "since": "5.0.0"
-      },
-      {
-        "name": "placeholder",
-        "text": "The placeholder to be shown.",
-        "type": "string",
-        "default": "",
-        "since": "5.0.0"
-      },
-      {
-        "name": "options",
-        "text": "Options to customize the datepicker",
-        "type": "DatepickerOptions",
-        "default": "today",
-        "see": "https://ng-bootstrap.github.io/#/components/datepicker/api",
-        "since": "5.0.0"
-      }
-    ]
-  },
-  {
-    "name": "DatepickerConfigService",
-    "usage": "Should by injected, typically in the AppModule, to customize the values of its properties in order to provide alternate default values for the <code>Datepicker</code>.",
-    "since": "5.0.0",
-    "variables": [
-      {
-        "name": "options",
-        "text": "A set of default options described below",
-        "type": "DatepickerOptions",
-        "since": "5.0.0"
-      },
-      {
-        "name": "options.displayMonths",
-        "text": "The number of months to display",
-        "type": "number",
-        "default": 1,
-        "since": "5.0.0"
-      },
-      {
-        "name": "options.firstDayOfWeek",
-        "text": "The first day of the week",
-        "type": "number",
-        "default": 1,
-        "since": "5.0.0"
-      },
-      {
-        "name": "options.navigation",
-        "text": "Navigation type, <code>select</code> show selection boxes for month and navigation arrows, <code>arrows</code> show only navigation arrows and <code>none</code> hides the navigation",
-        "type": "string",
-        "values": ["select", "arrows", "none"],
-        "default": "select",
-        "since": "5.0.0"
-      },
-      {
-        "name": "options.outsideDays",
-        "text": "Days outside of the current month",
-        "type": "string",
-        "values": ["visible", "hidden", "collapsed"],
-        "default": "visible",
-        "since": "5.0.0"
-      },
-      {
-        "name": "options.appendToBody",
-        "text": "Should the calender be appended to the body to display next to its toggle",
-        "type": "boolean",
-        "default": true,
-        "since": "5.0.0"
-      },
-      {
-        "name": "options.showWeekdays",
-        "text": "Should the week day names be shown",
-        "type": "boolean",
-        "default": false,
-        "since": "5.0.0"
-      },
-      {
-        "name": "options.showWeekNumbers",
-        "text": "Should the week numbers be shown",
-        "type": "boolean",
-        "default": false,
-        "since": "5.0.0"
-      },
-      {
-        "name": "options.icon",
-        "text": "The icon shown on the toggle",
-        "type": "string",
-        "default": "fa-calendar-alt",
-        "since": "5.0.0"
-      }
-    ]
-  }
-]
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObDatepickerComponent",
+      "exported": "obDatePicker",
+      "selector": "ob-date-picker",
+      "since": "2.0.0",
+      "inputs": [
+        {
+          "name": "size",
+          "text": "The size of the date picker controls.",
+          "type": "string",
+          "values": [
+            "sm",
+            "lg"
+          ],
+          "default": "",
+          "since": "5.0.0"
+        },
+        {
+          "name": "maxDate",
+          "text": "The latest date that can be displayed or selected.",
+          "type": "NgbDateStruct",
+          "default": "in 10 years",
+          "see": "https://ng-bootstrap.github.io/#/components/datepicker/api",
+          "since": "5.0.0"
+        },
+        {
+          "name": "minDate",
+          "text": "The earliest date that can be displayed or selected.",
+          "type": "NgbDateStruct",
+          "default": "10 years ago",
+          "see": "https://ng-bootstrap.github.io/#/components/datepicker/api",
+          "since": "5.0.0"
+        },
+        {
+          "name": "startDate",
+          "text": "The date to open calendar with.",
+          "type": "NgbDateStruct",
+          "default": "today",
+          "see": "https://ng-bootstrap.github.io/#/components/datepicker/api",
+          "since": "5.0.0"
+        },
+        {
+          "name": "placeholder",
+          "text": "The placeholder to be shown.",
+          "type": "string",
+          "default": "",
+          "since": "5.0.0"
+        },
+        {
+          "name": "options",
+          "text": "Options to customize the datepicker",
+          "type": "DatepickerOptions",
+          "default": "today",
+          "see": "https://ng-bootstrap.github.io/#/components/datepicker/api",
+          "since": "5.0.0"
+        }
+      ]
+    },
+    {
+      "name": "DatepickerConfigService",
+      "usage": "Should by injected, typically in the AppModule, to customize the values of its properties in order to provide alternate default values for the <code>Datepicker</code>.",
+      "since": "5.0.0",
+      "variables": [
+        {
+          "name": "options",
+          "text": "A set of default options described below",
+          "type": "DatepickerOptions",
+          "since": "5.0.0"
+        },
+        {
+          "name": "options.displayMonths",
+          "text": "The number of months to display",
+          "type": "number",
+          "default": 1,
+          "since": "5.0.0"
+        },
+        {
+          "name": "options.firstDayOfWeek",
+          "text": "The first day of the week",
+          "type": "number",
+          "default": 1,
+          "since": "5.0.0"
+        },
+        {
+          "name": "options.navigation",
+          "text": "Navigation type, <code>select</code> show selection boxes for month and navigation arrows, <code>arrows</code> show only navigation arrows and <code>none</code> hides the navigation",
+          "type": "string",
+          "values": [
+            "select",
+            "arrows",
+            "none"
+          ],
+          "default": "select",
+          "since": "5.0.0"
+        },
+        {
+          "name": "options.outsideDays",
+          "text": "Days outside of the current month",
+          "type": "string",
+          "values": [
+            "visible",
+            "hidden",
+            "collapsed"
+          ],
+          "default": "visible",
+          "since": "5.0.0"
+        },
+        {
+          "name": "options.appendToBody",
+          "text": "Should the calender be appended to the body to display next to its toggle",
+          "type": "boolean",
+          "default": true,
+          "since": "5.0.0"
+        },
+        {
+          "name": "options.showWeekdays",
+          "text": "Should the week day names be shown",
+          "type": "boolean",
+          "default": false,
+          "since": "5.0.0"
+        },
+        {
+          "name": "options.showWeekNumbers",
+          "text": "Should the week numbers be shown",
+          "type": "boolean",
+          "default": false,
+          "since": "5.0.0"
+        },
+        {
+          "name": "options.icon",
+          "text": "The icon shown on the toggle",
+          "type": "string",
+          "default": "fa-calendar-alt",
+          "since": "5.0.0"
+        }
+      ]
+    }
+  ]
+}

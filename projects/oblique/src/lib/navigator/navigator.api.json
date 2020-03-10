@@ -1,7 +1,10 @@
-[
-	{
-		"name": "ObNavigatorComponent",
-		"selector": "ob-navigator",
-		"since": "2.0.0"
-	}
-]
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObNavigatorComponent",
+      "selector": "ob-navigator",
+      "since": "2.0.0"
+    }
+  ]
+}

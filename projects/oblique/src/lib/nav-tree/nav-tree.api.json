@@ -1,75 +1,81 @@
-[
-  {
-    "name": "ObNavTreeComponent",
-    "selector": "ob-nav-tree",
-    "exported": "obNavTree",
-    "since": "2.0.0",
-    "inputs": [
-      {
-        "name": "items",
-        "text": "An hierarchical array of nav entries.",
-        "type": "NavTreeItemModel[]",
-        "since": "2.0.0"
-      },
-      {
-        "name": "prefix",
-        "text": "A prefix for the <code>id</code> of child routes.",
-        "type": "string",
-        "default": "nav-tree",
-        "since": "2.0.0"
-      },
-      {
-        "name": "filterPattern",
-        "text": "A string to match against all nav entries.",
-        "type": "string",
-        "default": "",
-        "since": "2.0.0"
-      },
-      {
-        "name": "labelFormatter",
-        "text": "A function to format each nav entry label.",
-        "arguments": ["item: NavTreeItemModel", "filterPattern: string"],
-        "returns": "string",
-        "since": "2.0.0"
-      },
-      {
-        "name": "variant",
-        "text": "Classes applied to the component to customize it.",
-        "type": "string",
-        "default": "nav-bordered nav-hover",
-        "values": [
-          "nav-bordered",
-          "nav-hover"
-        ],
-        "since": "2.0.0"
-      },
-      {
-        "name": "activateAncestors",
-        "text": "Whether active link's ancestors also be active.",
-        "type": "boolean",
-        "default": true,
-        "since": "2.0.0"
-      }
-    ],
-    "methods": [
-      {
-        "name": "collapseAll",
-        "text": "Collapses the whole tree.",
-        "returns": "void",
-        "since": "2.0.0"
-      },
-      {
-        "name": "expandAll",
-        "text": "Expands the whole tree.",
-        "returns": "void",
-        "since": "2.0.0"
-      }
-    ]
-  },
-  {
-    "name": "NavTreeFakeFocusDirective",
-    "selector": "[obNavTreeFakeFocus]",
-    "usage": "Set on an <code>nav-tree</code>, it will allow to navigate the tree while maintaining the focus on the filter input.",
-    "since": "2.0.0"
-  }
-]
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObNavTreeComponent",
+      "selector": "ob-nav-tree",
+      "exported": "obNavTree",
+      "since": "2.0.0",
+      "inputs": [
+        {
+          "name": "items",
+          "text": "An hierarchical array of nav entries.",
+          "type": "NavTreeItemModel[]",
+          "since": "2.0.0"
+        },
+        {
+          "name": "prefix",
+          "text": "A prefix for the <code>id</code> of child routes.",
+          "type": "string",
+          "default": "nav-tree",
+          "since": "2.0.0"
+        },
+        {
+          "name": "filterPattern",
+          "text": "A string to match against all nav entries.",
+          "type": "string",
+          "default": "",
+          "since": "2.0.0"
+        },
+        {
+          "name": "labelFormatter",
+          "text": "A function to format each nav entry label.",
+          "arguments": [
+            "item: NavTreeItemModel",
+            "filterPattern: string"
+          ],
+          "returns": "string",
+          "since": "2.0.0"
+        },
+        {
+          "name": "variant",
+          "text": "Classes applied to the component to customize it.",
+          "type": "string",
+          "default": "nav-bordered nav-hover",
+          "values": [
+            "nav-bordered",
+            "nav-hover"
+          ],
+          "since": "2.0.0"
+        },
+        {
+          "name": "activateAncestors",
+          "text": "Whether active link's ancestors also be active.",
+          "type": "boolean",
+          "default": true,
+          "since": "2.0.0"
+        }
+      ],
+      "methods": [
+        {
+          "name": "collapseAll",
+          "text": "Collapses the whole tree.",
+          "returns": "void",
+          "since": "2.0.0"
+        },
+        {
+          "name": "expandAll",
+          "text": "Expands the whole tree.",
+          "returns": "void",
+          "since": "2.0.0"
+        }
+      ]
+    },
+    {
+      "name": "NavTreeFakeFocusDirective",
+      "selector": "[obNavTreeFakeFocus]",
+      "usage": "Set on an <code>nav-tree</code>, it will allow to navigate the tree while maintaining the focus on the filter input.",
+      "since": "2.0.0"
+    }
+  ]
+}

@@ -1,57 +1,60 @@
-[
-  {
-    "name": "ObDocumentMetaService",
-    "since": "2.0.0",
-    "variables": [
-      {
-        "name": "titleSeparator",
-        "text": "The separator between the dynamic title and static <code>titleSuffix</code> in the <code>title</code> attribute.",
-        "type": "string",
-        "default": " · ",
-        "since": "2.0.0"
-      },
-      {
-        "name": "titleSuffix",
-        "text": "The suffix - an i18n key - that will be displayed after the <code>titleSeparator</code>.",
-        "type": "string",
-        "default": "",
-        "since": "2.0.0"
-      },
-      {
-        "name": "description",
-        "text": "The description of the current page - an i18n key - that will be displayed in the <code>title</code> attribute.",
-        "type": "string",
-        "default": "",
-        "since": "2.0.0"
-      }
-    ],
-    "methods": [
-      {
-        "name": "setTitle",
-        "arguments": [
-          "title: string",
-          "separator: string = ' · '",
-          "suffix: string = ''"
-        ],
-        "text": "Updates the <code>title</code> attribute.",
-        "returns": "void",
-        "since": "2.0.0"
-      },
-      {
-        "name": "getMetaDescription",
-        "text": "Gets the document page description, i.e. the content of the <code>meta  type=\"description\"</code> tag",
-        "return": "string",
-        "since": "2.0.0"
-      },
-      {
-        "name": "setDescription",
-        "arguments": [
-          "description: string"
-        ],
-        "text": "Updates the document page description, i.e. the content of the <code>meta  type=\"description\"</code> tag",
-        "returns": "string",
-        "since": "2.0.0"
-      }
-    ]
-  }
-]
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObDocumentMetaService",
+      "since": "2.0.0",
+      "variables": [
+        {
+          "name": "titleSeparator",
+          "text": "The separator between the dynamic title and static <code>titleSuffix</code> in the <code>title</code> attribute.",
+          "type": "string",
+          "default": " · ",
+          "since": "2.0.0"
+        },
+        {
+          "name": "titleSuffix",
+          "text": "The suffix - an i18n key - that will be displayed after the <code>titleSeparator</code>.",
+          "type": "string",
+          "default": "",
+          "since": "2.0.0"
+        },
+        {
+          "name": "description",
+          "text": "The description of the current page - an i18n key - that will be displayed in the <code>title</code> attribute.",
+          "type": "string",
+          "default": "",
+          "since": "2.0.0"
+        }
+      ],
+      "methods": [
+        {
+          "name": "setTitle",
+          "arguments": [
+            "title: string",
+            "separator: string = ' · '",
+            "suffix: string = ''"
+          ],
+          "text": "Updates the <code>title</code> attribute.",
+          "returns": "void",
+          "since": "2.0.0"
+        },
+        {
+          "name": "getMetaDescription",
+          "text": "Gets the document page description, i.e. the content of the <code>meta  type=\"description\"</code> tag",
+          "return": "string",
+          "since": "2.0.0"
+        },
+        {
+          "name": "setDescription",
+          "arguments": [
+            "description: string"
+          ],
+          "text": "Updates the document page description, i.e. the content of the <code>meta  type=\"description\"</code> tag",
+          "returns": "string",
+          "since": "2.0.0"
+        }
+      ]
+    }
+  ]
+}
