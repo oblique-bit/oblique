@@ -1,17 +1,18 @@
-import {Component, ElementRef, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewEncapsulation, HostListener, ViewChild, AfterViewInit} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 import {takeUntil} from 'rxjs/operators';
 
 import {ObSpinnerService} from './spinner.service';
 import {ObISpinnerEvent} from './spinner-event';
 import {ObUnsubscribable} from '../unsubscribe.class';
+import {ObMasterLayoutComponentService} from '../master-layout/master-layout/master-layout.component.service';
 
 @Component({
 	selector: 'ob-spinner',
 	exportAs: 'obSpinner',
 	template: `
 		<div class="overlay" [class.overlay-fixed]="fixed" [@inOut]="$state">
-			<div class="spinner-viewport">
+			<div class="spinner-viewport" #spinnerContainer>
 				<span class="fa fa-spinner fa-spin fa-4x"></span>
 			</div>
 		</div>`,
@@ -39,7 +40,7 @@ import {ObUnsubscribable} from '../unsubscribe.class';
 		])
 	]
 })
-export class ObSpinnerComponent extends ObUnsubscribable implements OnInit {
+export class ObSpinnerComponent extends ObUnsubscribable implements OnInit, AfterViewInit {
 
 	@Input()
 	channel: string = ObSpinnerService.CHANNEL;
@@ -47,10 +48,14 @@ export class ObSpinnerComponent extends ObUnsubscribable implements OnInit {
 	@Input()
 	fixed = false;
 
+	@ViewChild('spinnerContainer') spinnerContainer: ElementRef;
+
 	// Animation state:
 	$state = 'out';
 
-	constructor(private readonly spinnerService: ObSpinnerService, private readonly element: ElementRef) {
+	constructor(private readonly spinnerService: ObSpinnerService,
+				private readonly element: ElementRef,
+				private readonly masterLayoutComponentService: ObMasterLayoutComponentService) {
 		super();
 		spinnerService.events.pipe(takeUntil(this.unsubscribe))
 			.subscribe((event: ObISpinnerEvent) => {
@@ -65,5 +70,21 @@ export class ObSpinnerComponent extends ObUnsubscribable implements OnInit {
 		// if (!this.fixed) {
 			this.element.nativeElement.parentElement.classList.add('has-overlay');
 		// }
+	}
+
+	ngAfterViewInit(): void {
+		this.calculateSpinnerPosition();
+	}
+
+	@HostListener('window:scroll', ['$event'])
+	@HostListener('window:resize', ['$event'])
+	onEvent(): void {
+		this.calculateSpinnerPosition();
+	}
+
+	private calculateSpinnerPosition(): void {
+		if ( !this.masterLayoutComponentService.isFixed ) { // no fixed layout, calculate manually
+			this.spinnerContainer.nativeElement.style.top = `${+(window.innerHeight / 2 + window.scrollY)}px`;
+		}
 	}
 }
