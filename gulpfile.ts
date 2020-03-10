@@ -43,7 +43,7 @@ const addBanner = () => gulp.src([`${paths.dist}/**/*.js`, `${paths.dist}/**/*.c
 		`/**
 * @license Oblique - v${pkg.version}
 * Copyright (c) 2020-${new Date().getFullYear()} The Swiss Confederation, represented by the Federal Office of Information Technology, Systems and Telecommunication FOITT http://oblique.bit.oblique.ch
-* License: MIT (http://oblique.bit.oblique.ch/license)
+* License: MIT (https://oblique.bit.admin.ch/license)
 */
 `))
 	.pipe(gulp.dest(paths.dist));
