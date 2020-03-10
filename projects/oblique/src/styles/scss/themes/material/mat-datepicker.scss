@@ -1,0 +1,54 @@
+// Edge without Chromium
+@supports (-ms-ime-align: auto) {
+	.mat-form-field.ms-fix {
+		.mat-form-field-flex {
+			height: 44px;
+
+			.mat-form-field-infix {
+				top: -8px;
+			}
+		}
+		&.mat-form-field-sm {
+			.mat-form-field-flex {
+				height: 37px;
+			}
+		}
+
+		&.mat-form-field-lg {
+			.mat-form-field-flex {
+				height: 54px;
+			}
+		}
+	}
+
+}
+// IE11
+_:-ms-fullscreen,
+:root .mat-form-field.ms-fix .mat-form-field-flex {
+	height: 44px;
+}
+
+_:-ms-fullscreen,
+:root .mat-form-field.ms-fix .mat-form-field-flex .mat-form-field-suffix {
+	top: -31px;
+}
+
+_:-ms-fullscreen,
+:root .mat-form-field.ms-fix.mat-form-field-sm .mat-form-field-flex {
+	height: 37px;
+}
+
+_:-ms-fullscreen,
+:root .mat-form-field.ms-fix.mat-form-field-sm .mat-form-field-flex .mat-form-field-suffix {
+	top: -28px;
+}
+
+_:-ms-fullscreen,
+:root .mat-form-field.ms-fix.mat-form-field-lg .mat-form-field-flex {
+	height: 54px;
+}
+
+_:-ms-fullscreen,
+:root .mat-form-field.ms-fix.mat-form-field-lg .mat-form-field-flex .mat-form-field-suffix {
+	top: -38px;
+}
