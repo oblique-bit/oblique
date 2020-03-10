@@ -86,7 +86,7 @@ const distMap = () => gulp.src(`${paths.dist}/**/*.map`)
 
 const commit = () => gulp.src('.')
 	.pipe(git.add())
-	.pipe(git.commit(`chore(version): release version ${pkg.version}`));
+	.pipe(git.commit(`chore(toolchain): release version ${pkg.version}`));
 
 const distRename = () => gulp.src(`${paths.dist}/**/oblique-oblique*`)
 	.pipe(rename((filename) => filename.basename = filename.basename.replace('oblique-oblique', 'oblique')))
