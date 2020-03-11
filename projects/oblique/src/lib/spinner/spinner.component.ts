@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewEncapsulation, HostListener, ViewChild, AfterViewInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, Input, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 import {takeUntil} from 'rxjs/operators';
 
@@ -22,7 +22,7 @@ import {ObMasterLayoutComponentService} from '../master-layout/master-layout/mas
 		trigger('inOut', [
 			state('in', style({opacity: 1, display: 'block'})),
 			transition('* => in', [
-				style({ display: 'block' }), // As we can not animate the `display` property, we modify it before starting the next animation.
+				style({display: 'block'}), // As we can not animate the `display` property, we modify it before starting the next animation.
 				animate('250ms ease-in-out', keyframes([
 					style({offset: 0, opacity: 0, display: 'block'}),
 					style({offset: 1, opacity: 1, display: 'block'})
@@ -34,7 +34,7 @@ import {ObMasterLayoutComponentService} from '../master-layout/master-layout/mas
 			transition('* => out', [
 				animate('250ms ease-in-out', keyframes([
 					style({offset: 0, opacity: 1, display: 'block'}),
-					style({offset: 1, opacity: 0, display: 'block'}),
+					style({offset: 1, opacity: 0, display: 'block'})
 				]))
 			])
 		])
@@ -67,23 +67,17 @@ export class ObSpinnerComponent extends ObUnsubscribable implements OnInit, Afte
 	}
 
 	ngOnInit() {
-		// if (!this.fixed) {
-			this.element.nativeElement.parentElement.classList.add('has-overlay');
-		// }
+		this.element.nativeElement.parentElement.classList.add('has-overlay');
 	}
 
 	ngAfterViewInit(): void {
 		this.calculateSpinnerPosition();
 	}
 
-	@HostListener('window:scroll', ['$event'])
-	@HostListener('window:resize', ['$event'])
-	onEvent(): void {
-		this.calculateSpinnerPosition();
-	}
-
-	private calculateSpinnerPosition(): void {
-		if ( !this.masterLayoutComponentService.isFixed ) { // no fixed layout, calculate manually
+	@HostListener('window:scroll')
+	@HostListener('window:resize')
+	calculateSpinnerPosition(): void {
+		if (!this.masterLayoutComponentService.isFixed) { // no fixed layout, calculate manually
 			this.spinnerContainer.nativeElement.style.top = `${+(window.innerHeight / 2 + window.scrollY)}px`;
 		}
 	}
