@@ -4,7 +4,7 @@ nodejsPipelineTemplate {
 	versionNumberType = 'none'
 	replacePackageJsonVersion = false
 	nexusPublishPath = './dist/oblique'
-	npmRegistry = 'https://registry.npmjs.org/'
+	npmRegistry = 'true'
 	deployCloudFoundry = [
 		'develop': ['space': 'dev', 'configuration': 'production']
 	]
