@@ -13,6 +13,8 @@ import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {WINDOW, windowProvider} from '../utilities';
 
 export {ObColumnLayoutComponent} from './column-layout.component';
+export {ObColumnPanelDirective} from './column-panel.directive';
+export {ObColumnToggleDirective} from './column-toggle.directive';
 
 @NgModule({
 	imports: [
@@ -30,7 +32,9 @@ export {ObColumnLayoutComponent} from './column-layout.component';
 		{provide: WINDOW, useFactory: windowProvider}
 	],
 	exports: [
-		ObColumnLayoutComponent
+		ObColumnLayoutComponent,
+		ObColumnPanelDirective,
+		ObColumnToggleDirective
 	]
 })
 export class ObColumnLayoutModule {

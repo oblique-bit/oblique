@@ -27,7 +27,8 @@ export {ObMultiselectTexts} from './multiselect.texts';
 		ObFilterBoxModule
 	],
 	exports: [
-		ObMultiselectComponent
+		ObMultiselectComponent,
+		ObMultiselectSearchPipe
 	],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
