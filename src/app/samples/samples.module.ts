@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import {RouterModule} from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -104,7 +106,6 @@ import {ObSelectableSampleComponent} from './selectable/selectable-sample.compon
 		NavigatorSampleModule,
 		NavigatorSampleRoutingModule,
 		ReactiveFormsModule,
-		ReactiveFormsModule,
 		MatMenuModule,
 		MatIconModule,
 		MatButtonModule,
@@ -112,7 +113,9 @@ import {ObSelectableSampleComponent} from './selectable/selectable-sample.compon
 		MatFormFieldModule,
 		MatSelectModule,
 		MatCheckboxModule,
-		MatRadioModule
+		MatRadioModule,
+		MatDatepickerModule,
+		MatNativeDateModule
 	],
 	declarations: [
 		ObButtonComponent,
