@@ -39,6 +39,7 @@ export class ObThemeService {
 		this.head = document.head;
 		this.renderer = rendererFactory.createRenderer(null, null);
 		this.theme$ = this.mainTheme.asObservable();
+		this.mainTheme.next(THEMES.MATERIAL);
 		this.font$ = this.mainFont.asObservable();
 	}
 
