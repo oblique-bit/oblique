@@ -52,6 +52,7 @@ export class ObMasterLayoutComponent extends ObUnsubscribable implements OnInit 
 	@HostBinding('class.offcanvas') hasOffCanvas = this.masterLayout.layout.hasOffCanvas;
 	@HostBinding('class.footer-sm') footerSm = this.masterLayout.footer.isSmall;
 	@HostBinding('class.application-scrolling') isScrolling = false;
+	@HostBinding('class.outline') outline = true;
 	@ContentChildren('obHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('obFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<any>>;
 	@ViewChild('offCanvasClose') readonly offCanvasClose: ElementRef<HTMLElement>;
@@ -71,6 +72,16 @@ export class ObMasterLayoutComponent extends ObUnsubscribable implements OnInit 
 		this.propertyChanges();
 		this.focusFragment();
 		this.focusOffCanvasClose();
+	}
+
+	@HostListener('mousedown')
+	mousedown() {
+		this.outline = false;
+	}
+
+	@HostListener('keydown')
+	mouseup() {
+		this.outline = true;
 	}
 
 	@HostListener('window:scroll')
