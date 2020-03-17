@@ -1,14 +1,25 @@
-import {Component, Input} from '@angular/core';
+import {Component, forwardRef, Input} from '@angular/core';
 import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
-import {AbstractControl, FormControl, ValidationErrors} from '@angular/forms';
+import {AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
 import {ObIDatepickerOptions} from '../datepicker-config.service';
 
 @Component({
 	selector: 'ob-date-picker',
 	exportAs: 'obDatePicker',
-	template: ''
+	template: '',
+	providers: [
+		{
+			provide: NG_VALUE_ACCESSOR,
+			multi: true,
+			useExisting: forwardRef(() => ObMockDatepickerComponent)
+		}, {
+			provide: NG_VALIDATORS,
+			multi: true,
+			useExisting: forwardRef(() => ObMockDatepickerComponent)
+		}
+	]
 })
-export class ObMockDatepickerComponent {
+export class ObMockDatepickerComponent implements ControlValueAccessor, Validator {
 	datePicker = new FormControl();
 	opts = {} as ObIDatepickerOptions;
 
