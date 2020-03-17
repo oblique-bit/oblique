@@ -5,7 +5,7 @@
 import {ObNestedFormComponent} from './lib/nested-form/nested-form.component';
 
 export {ObCollapseComponent, ObCollapseModule, OBLIQUE_COLLAPSE_ACTIVE} from './lib/collapse/collapse.module';
-export {ObColumnLayoutModule, ObColumnLayoutComponent} from './lib/column-layout/column-layout.module';
+export {ObColumnLayoutModule, ObColumnLayoutComponent, ObColumnToggleDirective, ObColumnPanelDirective} from './lib/column-layout/column-layout.module';
 export {
 	ObDateDMYParserFormatter,
 	ObDateFormatterPipe,
@@ -32,15 +32,23 @@ export {
 } from './lib/http-api-interceptor/http-api-interceptor.module';
 export {
 	ObMasterLayoutComponent,
+	ObMasterLayoutComponentService,
 	ObMasterLayoutConfig,
+	ObMasterLayoutFooterComponent,
+	ObMasterLayoutFooterService,
+	ObMasterLayoutHeaderComponent,
+	ObMasterLayoutHeaderService,
 	ObMasterLayoutHeaderToggleDirective,
 	ObMasterLayoutModule,
 	ObMasterLayoutNavigationService,
+	ObMasterLayoutNavigationComponent,
 	ObMasterLayoutNavigationItemDirective,
 	ObMasterLayoutNavigationMenuDirective,
 	ObMasterLayoutNavigationToggleDirective,
 	ObMasterLayoutService,
 	ObEScrollMode,
+	ObIMasterLayoutEvent,
+	ObEMasterLayoutEventValues,
 	ObINavigationLink
 } from './lib/master-layout/master-layout.module';
 export {
@@ -65,6 +73,7 @@ export {
 	ObNotificationModule,
 	ObNotificationService,
 	ObENotificationType,
+	ObINotificationConfig,
 	ObINotification
 } from './lib/notification/notification.module';
 export {ObNumberFormatDirective, ObNumberFormatModule} from './lib/number-format/number-format.module';
@@ -92,7 +101,7 @@ export {ObTranslateParamsModule, ObTranslateParamsPipe} from './lib/translate-pa
 export {ObUnknownRouteModule, ObUnknownRouteComponent} from './lib/unknown-route/unknown-route.module';
 export {ObUnsavedChangesDirective, ObUnsavedChangesGuard, ObUnsavedChangesModule, ObUnsavedChangesService} from './lib/unsaved-changes/unsaved-changes.module';
 export {ObUnsavedChangesTabsDirective, ObUnsavedChangesTabsModule, ObUnsavedChangesTabsService} from './lib/unsaved-changes-tabs/unsaved-changes-tabs.module';
-export {TELEMETRY_DISABLE} from './lib/telemetry/telemetry.service';
+export {ObTelemetryService, TELEMETRY_DISABLE} from './lib/telemetry/telemetry.service';
 export {WINDOW, multiTranslateLoader, getTranslateLoader} from './lib/utilities';
 export {ObMultiTranslateLoader, TRANSLATION_FILES, ObITranslationFile}from './lib/multi-translate-loader/multi-translate-loader';
 export {ObPopUpService} from './lib/pop-up/pop-up.service';

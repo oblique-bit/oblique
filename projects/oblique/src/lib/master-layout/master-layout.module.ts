@@ -26,14 +26,21 @@ import {ObMasterLayoutConfig, ObEScrollMode} from './master-layout.config';
 import {WINDOW, windowProvider} from '../utilities';
 
 export {ObMasterLayoutComponent} from './master-layout/master-layout.component';
+export {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
 export {ObMasterLayoutService} from './master-layout.service';
+export {ObMasterLayoutFooterComponent} from './master-layout-footer/master-layout-footer.component';
+export {ObMasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
+export {ObMasterLayoutHeaderComponent} from './master-layout-header/master-layout-header.component';
+export {ObMasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
 export {ObMasterLayoutHeaderToggleDirective} from './master-layout-header/master-layout-header-toggle.directive';
+export {ObMasterLayoutNavigationComponent} from './master-layout-navigation/master-layout-navigation.component';
 export {ObMasterLayoutNavigationService} from './master-layout-navigation/master-layout-navigation.service';
 export {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation/master-layout-navigation-item.directive';
 export {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
 export {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
 export {ObINavigationLink} from './master-layout-navigation/master-layout-navigation.component';
 export {ObMasterLayoutConfig, ObEScrollMode} from './master-layout.config';
+export {ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from './master-layout.utility';
 
 @NgModule({
 	imports: [
@@ -62,7 +69,10 @@ export {ObMasterLayoutConfig, ObEScrollMode} from './master-layout.config';
 	],
 	exports: [
 		ObMasterLayoutComponent,
+		ObMasterLayoutHeaderComponent,
 		ObMasterLayoutHeaderToggleDirective,
+		ObMasterLayoutNavigationComponent,
+		ObMasterLayoutFooterComponent,
 		ObMasterLayoutNavigationItemDirective,
 		ObMasterLayoutNavigationToggleDirective,
 		ObMasterLayoutNavigationMenuDirective
