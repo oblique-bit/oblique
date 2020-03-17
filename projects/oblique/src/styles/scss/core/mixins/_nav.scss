@@ -17,10 +17,6 @@
 			bottom: #{$offset}px;
 			left: 0;
 			border-left: $brand-line-width solid $brand-accent;
-
-			.nav-modal & {
-				left: -$brand-line-width;
-			}
 		}
 	}
 
