@@ -1,6 +1,7 @@
 @import "../../styles/scss/core/variables";
+@import "../../styles/scss/core/mixins/toggle";
 
-or-multiselect {
+ob-multiselect {
 	&[readonly],
 	&.readonly {
 		border: none;
@@ -21,10 +22,13 @@ or-multiselect {
 		}
 
 		& .toggle {
+			display: flex;
+			cursor: pointer;
 			margin-left: auto;
+			@include toggle-before();
+			@include add-toggle($fa-var-angle-down, $fa-var-angle-up);
 
 			&::before {
-				min-width: 0;
 				margin-left: $spacing-xs;
 			}
 		}

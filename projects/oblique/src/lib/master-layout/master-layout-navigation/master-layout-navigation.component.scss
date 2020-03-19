@@ -3,6 +3,7 @@
 @import "../../../styles/scss/core/mixins/icon";
 @import "../../../styles/scss/core/mixins/layout";
 @import "../../../styles/scss/core/mixins/nav";
+@import "../../../styles/scss/core/mixins/toggle";
 
 .application-navigation {
 	display: block;
@@ -112,12 +113,17 @@
 		.toggle {
 			margin-left: $spacing-sm;
 			min-width: 0;
+			@include toggle-before();
 
 			@include layout-collapse-down() {
 				&::before {
 					content: fa-content($fa-var-angle-right);
 				}
 			}
+		}
+
+		.show .toggle::before {
+			content: fa-content($fa-var-angle-up);
 		}
 
 		.sub-menu {

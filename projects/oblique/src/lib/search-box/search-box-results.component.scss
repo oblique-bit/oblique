@@ -1,10 +1,6 @@
 @import "../../styles/scss/core/variables";
 @import "../../styles/scss/core/mixins/layout";
 
-or-search-box-results {
-	width: 100%;
-}
-
 .search-results-list {
 	top: $header-height-md;
 	left: 0;
@@ -79,7 +75,7 @@ or-search-box-results {
 		}
 
 		&::after {
-			left: 16px;
+			left: 18px;
 			top: -14px;
 			border-width: 0 14px 14px;
 			border-color: white transparent;
