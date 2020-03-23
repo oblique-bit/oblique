@@ -47,7 +47,7 @@ export class ObTableComponent implements OnInit {
 	readonly OBLIQUE_CLASS_TABLE_PLAIN = 'table-plain';
 	readonly OBLIQUE_CLASS_TABLE_COLLAPSE = 'table-collapse';
 
-	private selection = new SelectionModel<ObIPeriodicElement>(true, []);
+	private readonly selection = new SelectionModel<ObIPeriodicElement>(true, []);
 	private totalWeight: number;
 	private readonly SORT_DIRECTION_ASCENDING = 'asc';
 	private readonly SORT_DIRECTION_DESCENDING = 'desc';
@@ -82,9 +82,8 @@ export class ObTableComponent implements OnInit {
 		} else {
 			this.dataSource = new MatTableDataSource(
 				this.ELEMENT_DATA
-					.filter((element) => {
-						return element.name.toLowerCase().includes(filter.trim().toLowerCase());
-					}));
+					.filter((element) => element.name.toLowerCase().includes(filter.trim().toLowerCase()))
+			);
 		}
 		this.updateFooterRow();
 	}
@@ -96,6 +95,7 @@ export class ObTableComponent implements OnInit {
 	}
 
 	masterToggle() {
+		// eslint-disable-next-line no-unused-expressions
 		this.isAllSelected() ?
 			this.selection.clear() :
 			this.dataSource.data.forEach(row => this.selection.select(row));
@@ -148,7 +148,8 @@ export class ObTableComponent implements OnInit {
 						case this.SORT_DIRECTION_DESCENDING: return this.sortDescending(left, right, sortColumn);
 						default: return this.sortAscending(left, right, sortColumn);
 					}
-				}));
+				})
+		);
 	}
 
 	private sortAscending(left: ObIPeriodicElement, right: ObIPeriodicElement, sortColumn: string): number {

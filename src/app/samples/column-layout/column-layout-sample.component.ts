@@ -11,7 +11,7 @@ export class ObColumnLayoutSampleComponent {
 	noLayout = false;
 	wider = false;
 	searchItems: ObISearchWidgetItem[] = [];
-	private navigation: ObINavigationLink[] = [
+	private readonly navigation: ObINavigationLink[] = [
 		{url: '/home', label: 'i18n.routes.home.title'},
 		{
 			url: '/samples', label: 'i18n.routes.samples.title', children: [

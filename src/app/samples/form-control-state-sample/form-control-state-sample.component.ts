@@ -44,10 +44,8 @@ export class FormControlStateSampleComponent {
 	}
 
 	private customValidator(): ValidationErrors {
-		return (): ValidationErrors => {
-			return {
-				test: {value: 'i18n.validation.testValue'}
-			};
-		};
+		return (): ValidationErrors => ({
+			test: {value: 'i18n.validation.testValue'}
+		});
 	}
 }

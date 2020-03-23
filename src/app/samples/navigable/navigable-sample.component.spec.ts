@@ -29,9 +29,7 @@ describe('NavigableSampleComponent', () => {
 		fixture.detectChanges();
 		component = fixture.componentInstance;
 		navigableGroup = fixture.debugElement.query(By.directive(ObNavigableGroupComponent)).injector.get(ObNavigableGroupComponent);
-		navigables = fixture.debugElement.queryAll(By.directive(ObNavigableDirective)).map(child => {
-			return child.injector.get(ObNavigableDirective);
-		});
+		navigables = fixture.debugElement.queryAll(By.directive(ObNavigableDirective)).map(child => child.injector.get(ObNavigableDirective));
 	}));
 
 	it('should create', () => {

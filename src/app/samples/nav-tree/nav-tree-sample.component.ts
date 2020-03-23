@@ -29,9 +29,7 @@ export class NavTreeSampleComponent extends ObUnsubscribable implements OnInit {
 	ngOnInit() {
 		this.route.data.pipe(takeUntil(this.unsubscribe))
 			.subscribe((data: {sample: any}) => {
-				this.items = data.sample.navTree.items.map((item: any) => {
-					return new ObNavTreeItemModel(item);
-				});
+				this.items = data.sample.navTree.items.map((item: any) => new ObNavTreeItemModel(item));
 			});
 	}
 }

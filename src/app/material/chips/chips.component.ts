@@ -22,18 +22,19 @@ export class ObChipsComponent implements OnInit {
 	readonly separatorKeysCodes = [ENTER, COMMA, SEMICOLON];
 
 	private stacked = false;
-	private tagsCtrl = new FormControl();
+	private readonly tagsCtrl = new FormControl();
 	private filteredTags: Observable<string[]>;
-	private allTags = ['IT', 'Sales', 'Marketing', 'Management', 'HR', 'Cleaning'];
-	private tags = this.allTags.splice(0, 3);
+	private readonly allTags = ['IT', 'Sales', 'Marketing', 'Management', 'HR', 'Cleaning'];
+	private readonly tags = this.allTags.splice(0, 3);
 
-	@ViewChild('tagInput', {static: false}) private tagInput: ElementRef<HTMLInputElement>;
-	@ViewChild('auto', {static: false}) private matAutocomplete: MatAutocomplete;
+	@ViewChild('tagInput', {static: false}) private readonly tagInput: ElementRef<HTMLInputElement>;
+	@ViewChild('auto', {static: false}) private readonly matAutocomplete: MatAutocomplete;
 
 	ngOnInit(): void {
 		this.color = this.colors[0];
 		this.filteredTags = this.tagsCtrl.valueChanges.pipe(
-			map((tag: string | null) => tag ? this._filter(tag) : this._remainingTags()));
+			map((tag: string | null) => tag ? this._filter(tag) : this._remainingTags())
+		);
 	}
 
 	toggleStacked(): void {

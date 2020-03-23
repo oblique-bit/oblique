@@ -113,9 +113,11 @@ export class SchemaValidationSampleComponent implements OnInit {
 		}
 	});
 
-	constructor(private readonly schemaValidation: ObSchemaValidationService,
-				private readonly notification: ObNotificationService,
-				private readonly formBuilder: FormBuilder) {
+	constructor(
+		private readonly schemaValidation: ObSchemaValidationService,
+		private readonly notification: ObNotificationService,
+		private readonly formBuilder: FormBuilder
+	) {
 	}
 
 	ngOnInit(): void {

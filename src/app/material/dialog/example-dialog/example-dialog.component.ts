@@ -14,7 +14,8 @@ export class ObExampleDialogComponent {
 
 	constructor(
 		public dialogRef: MatDialogRef<ObExampleDialogComponent>,
-		@Inject(MAT_DIALOG_DATA) public data: ObIDialogData) {
+		@Inject(MAT_DIALOG_DATA) public data: ObIDialogData
+	) {
 	}
 
 	onCancel(): void {
