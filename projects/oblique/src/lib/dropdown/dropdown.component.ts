@@ -6,7 +6,7 @@ import {Component, ElementRef, HostBinding, HostListener, Input, ViewEncapsulati
 	templateUrl: './dropdown.component.html',
 	styleUrls: ['./dropdown.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// tslint:disable-next-line:no-host-metadata-property
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'dropdown'}
 })
 export class ObDropdownComponent {

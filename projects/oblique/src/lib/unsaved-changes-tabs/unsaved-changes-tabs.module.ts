@@ -18,7 +18,7 @@ export {ObUnsavedChangesTabsService} from './unsaved-changes-tabs.service';
 	declarations: [ObUnsavedChangesTabsDirective],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
-		{provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }},
+		{provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
 	exports: [ObUnsavedChangesTabsDirective]

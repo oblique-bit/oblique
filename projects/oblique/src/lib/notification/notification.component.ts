@@ -10,7 +10,7 @@ import {ObNotificationService} from './notification.service';
 	templateUrl: './notification.component.html',
 	styleUrls: ['./notification.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// tslint:disable-next-line:no-host-metadata-property
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'notification-container'},
 	animations: [
 		trigger('inOut', [
@@ -21,7 +21,7 @@ import {ObNotificationService} from './notification.service';
 					style({offset: 0.6, opacity: 0, maxHeight: '500px', transform: 'translateX({{translateX}})', overflow: 'hidden'}),
 					style({offset: 1, opacity: 1, maxHeight: 'none', transform: 'translateX(0)', overflow: 'hidden'})
 				]))
-			], {params : { translateX: '15%' }}),
+			], {params : {translateX: '15%'}}),
 			state('in-first', style({opacity: 1})),
 			transition('* => in-first', [
 				animate('350ms ease-in-out', keyframes([
@@ -29,7 +29,8 @@ import {ObNotificationService} from './notification.service';
 					style({offset: 1, opacity: 1, transform: 'translateX(0)'})
 				]))
 			]),
-			state('out',
+			state(
+				'out',
 				style({opacity: 0, maxHeight: 0, overflow: 'hidden', display: 'none'})
 			),
 			transition('* => out', [

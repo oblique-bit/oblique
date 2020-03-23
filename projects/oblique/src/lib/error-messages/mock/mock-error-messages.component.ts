@@ -8,5 +8,5 @@ import {NgControl} from '@angular/forms';
 })
 export class ObMockErrorMessagesComponent {
 	@Input() control: NgControl;
-	errors: { key: string, params: { [param: string]: any } }[] = [];
+	errors: { key: string; params: { [param: string]: any } }[] = [];
 }

@@ -37,7 +37,7 @@ import {WINDOW} from '../../utilities';
 		'./master-layout.component-accessibility.scss'
 	],
 	encapsulation: ViewEncapsulation.None,
-	// tslint:disable-next-line:no-host-metadata-property
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'application', 'ob-version': appVersion}
 })
 export class ObMasterLayoutComponent extends ObUnsubscribable implements OnInit {
@@ -57,13 +57,15 @@ export class ObMasterLayoutComponent extends ObUnsubscribable implements OnInit 
 	@ViewChild('offCanvasClose') readonly offCanvasClose: ElementRef<HTMLElement>;
 	private readonly window: Window;
 
-	constructor(private readonly masterLayout: ObMasterLayoutService,
-				private readonly config: ObMasterLayoutConfig,
-				readonly offCanvasService: ObOffCanvasService,
-				private readonly router: Router,
-				private readonly scrollEvents: ObScrollingEvents,
-				@Inject(DOCUMENT) private readonly document: any,
-				@Inject(WINDOW) window) {
+	constructor(
+		private readonly masterLayout: ObMasterLayoutService,
+		private readonly config: ObMasterLayoutConfig,
+		readonly offCanvasService: ObOffCanvasService,
+		private readonly router: Router,
+		private readonly scrollEvents: ObScrollingEvents,
+		@Inject(DOCUMENT) private readonly document: any,
+		@Inject(WINDOW) window
+	) {
 		super();
 		this.window = window; // because AoT don't accept interfaces as DI
 		this.propertyChanges();

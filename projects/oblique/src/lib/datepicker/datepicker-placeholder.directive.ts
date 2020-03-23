@@ -30,7 +30,7 @@ export class ObDatepickerPlaceholderDirective extends ObUnsubscribable implement
 				.pipe(takeUntil(this.unsubscribe))
 				.subscribe(({lang}) => {
 					this.setPlaceholder(lang);
-			});
+				});
 		}
 	}
 

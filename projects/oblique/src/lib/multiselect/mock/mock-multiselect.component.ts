@@ -46,10 +46,10 @@ export class ObMockMultiselectComponent implements ControlValueAccessor {
 	}
 
 	onModelChange: (_: any) => void = (_: any) => {
-	}
+	};
 
 	onModelTouched: () => void = () => {
-	}
+	};
 
 	writeValue(value: any): void {
 	}

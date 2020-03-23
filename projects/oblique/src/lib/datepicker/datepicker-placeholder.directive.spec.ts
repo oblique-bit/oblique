@@ -5,7 +5,7 @@ import {TranslateService, LangChangeEvent} from '@ngx-translate/core';
 import {ObDatepickerPlaceholderDirective} from 'oblique';
 
 @Component({
-	template: `<input ngbDatepicker />`
+	template: '<input ngbDatepicker />'
 })
 class TestComponent {
 }
@@ -41,9 +41,9 @@ describe('DatepickerPlaceholderDirective', () => {
 			providers: [
 				{
 					provide: TranslateService, useValue: {
-					currentLang: 'en',
-					onLangChange: new EventEmitter<LangChangeEvent>()
-				}
+						currentLang: 'en',
+						onLangChange: new EventEmitter<LangChangeEvent>()
+					}
 				}
 			]
 		});
@@ -73,7 +73,7 @@ describe('DatepickerPlaceholderDirective', () => {
 
 	describe('with a custom placeholder', () => {
 		beforeEach(async(() => {
-			TestBed.overrideTemplate(TestComponent, `<input ngbDatepicker placeholder="custom"/>`);
+			TestBed.overrideTemplate(TestComponent, '<input ngbDatepicker placeholder="custom"/>');
 			createFixture();
 		}));
 

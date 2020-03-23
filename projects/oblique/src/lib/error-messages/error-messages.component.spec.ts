@@ -35,7 +35,7 @@ describe('ErrorMessagesComponent', () => {
 	beforeEach(async(() => {
 
 		errorMessagesServiceMock = {
-			createMessages: jest.fn().mockImplementation(() => [{key: `i18n.validation.bar`, params: undefined}])
+			createMessages: jest.fn().mockImplementation(() => [{key: 'i18n.validation.bar', params: undefined}])
 		};
 
 		TestBed.configureTestingModule({

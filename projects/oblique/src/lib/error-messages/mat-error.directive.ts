@@ -18,8 +18,7 @@ export class ObMatErrorDirective implements OnInit {
 		if (this.control) {
 			this.control.errors$.pipe(filter(evt => !!evt)).subscribe(evt => {
 				this.el.nativeElement.innerText = Object.keys(evt).map(key =>
-					this.pipe.transform(`i18n.validation.${key}`, evt[key])
-				).join('\n');
+					this.pipe.transform(`i18n.validation.${key}`, evt[key])).join('\n');
 			});
 		}
 	}

@@ -17,7 +17,7 @@ let nextId = 0;
 	templateUrl: './search-box.component.html',
 	styleUrls: ['./search-box.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// tslint:disable-next-line:no-host-metadata-property
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'search-box', role: 'search'}
 })
 export class ObSearchBoxComponent implements OnInit {

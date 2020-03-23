@@ -76,15 +76,11 @@ describe('SchemaValidation', () => {
 	[
 		{
 			formType: 'template', testComponent: TemplateFormTestComponent, formModule: FormsModule,
-			getControls: (fixture): { [key: string]: AbstractControl } => {
-				return fixture.debugElement.query(By.directive(NgForm)).injector.get(NgForm).controls;
-			}
+			getControls: (fixture): { [key: string]: AbstractControl } => fixture.debugElement.query(By.directive(NgForm)).injector.get(NgForm).controls
 		},
 		{
 			formType: 'model', testComponent: ModelFormTestComponent, formModule: ReactiveFormsModule,
-			getControls: (fixture): { [key: string]: AbstractControl } => {
-				return fixture.componentInstance.sampleForm.controls;
-			}
+			getControls: (fixture): { [key: string]: AbstractControl } => fixture.componentInstance.sampleForm.controls
 		}
 	].forEach((CONFIG) => {
 		//TODO: add test for more complex types and required option

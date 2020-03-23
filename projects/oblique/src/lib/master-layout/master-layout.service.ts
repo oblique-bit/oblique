@@ -14,14 +14,15 @@ import {ObMasterLayoutComponentService} from './master-layout/master-layout.comp
 export class ObMasterLayoutService extends ObUnsubscribable {
 	private static readonly token = 'oblique_lang';
 
-	constructor(private readonly config: ObMasterLayoutConfig,
-				private readonly translate: TranslateService,
-				private readonly router: Router,
-				private readonly activatedRoute: ActivatedRoute,
-				public readonly header: ObMasterLayoutHeaderService,
-				public readonly footer: ObMasterLayoutFooterService,
-				public readonly navigation: ObMasterLayoutNavigationService,
-				public readonly layout: ObMasterLayoutComponentService
+	constructor(
+		private readonly config: ObMasterLayoutConfig,
+		private readonly translate: TranslateService,
+		private readonly router: Router,
+		private readonly activatedRoute: ActivatedRoute,
+		public readonly header: ObMasterLayoutHeaderService,
+		public readonly footer: ObMasterLayoutFooterService,
+		public readonly navigation: ObMasterLayoutNavigationService,
+		public readonly layout: ObMasterLayoutComponentService
 	) {
 		super();
 		this.manageLanguage();
@@ -52,7 +53,8 @@ export class ObMasterLayoutService extends ObUnsubscribable {
 		const lang = this.getCurrentLang(langToken);
 		this.translate.setDefaultLang(lang);
 		this.translate.use(lang);
-		this.translate.addLangs(this.config.locale.locales.reduce((languages, language) => languages.concat([(language as ObILocaleObject).locale || language]), []));
+		this.translate.addLangs(this.config.locale.locales
+			.reduce((languages, language) => languages.concat([(language as ObILocaleObject).locale || language]), []));
 		this.translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe((event: LangChangeEvent) => {
 			localStorage.setItem(ObMasterLayoutService.token + langToken, event.lang);
 		});

@@ -5,7 +5,7 @@ import {By} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 
 @Component({
-	template: `<input name="number" [(ngModel)]="number" obNumberFormat/>`,
+	template: '<input name="number" [(ngModel)]="number" obNumberFormat/>',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 class TestDefaultComponent {
@@ -13,7 +13,7 @@ class TestDefaultComponent {
 }
 
 @Component({
-	template: `<input name="number" [(ngModel)]="number" obNumberFormat [persistent]="false" [decimals]="3"/>`,
+	template: '<input name="number" [(ngModel)]="number" obNumberFormat [persistent]="false" [decimals]="3"/>',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 class TestNonPersistentComponent {

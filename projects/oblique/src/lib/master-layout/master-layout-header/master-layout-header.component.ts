@@ -29,7 +29,7 @@ import {WINDOW} from '../../utilities';
 	templateUrl: './master-layout-header.component.html',
 	styleUrls: ['./master-layout-header.component.scss', './master-layout-header.component-controls.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// tslint:disable-next-line:no-host-metadata-property
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'application-header'}
 })
 export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements AfterViewInit {
@@ -45,13 +45,15 @@ export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements A
 	@ViewChildren('headerControl') readonly headerControl: QueryList<ElementRef>;
 	private readonly window: Window;
 
-	constructor(private readonly masterLayout: ObMasterLayoutService,
-				private readonly translate: TranslateService,
-				private readonly config: ObMasterLayoutConfig,
-				private readonly scrollEvents: ObScrollingEvents,
-				private readonly el: ElementRef,
-				private readonly renderer: Renderer2,
-				@Inject(WINDOW) window) {
+	constructor(
+		private readonly masterLayout: ObMasterLayoutService,
+		private readonly translate: TranslateService,
+		private readonly config: ObMasterLayoutConfig,
+		private readonly scrollEvents: ObScrollingEvents,
+		private readonly el: ElementRef,
+		private readonly renderer: Renderer2,
+		@Inject(WINDOW) window
+	) {
 		super();
 		this.window = window; // because AoT don't accept interfaces as DI
 		this.locales = this.formatLocales();
@@ -61,7 +63,9 @@ export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements A
 
 	ngAfterViewInit() {
 		this.setFocusable(this.masterLayout.layout.isMenuOpened);
-		this.masterLayout.layout.configEvents.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.COLLAPSE)).subscribe(value => this.setFocusable(!value));
+		this.masterLayout.layout.configEvents
+			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.COLLAPSE))
+			.subscribe(value => this.setFocusable(!value));
 		this.addObliqueClasses();
 	}
 
@@ -103,7 +107,12 @@ export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements A
 	}
 
 	private propertyChanges() {
-		const events = [ObEMasterLayoutEventValues.ANIMATE, ObEMasterLayoutEventValues.CUSTOM, ObEMasterLayoutEventValues.MEDIUM, ObEMasterLayoutEventValues.STICKY];
+		const events = [
+			ObEMasterLayoutEventValues.ANIMATE,
+			ObEMasterLayoutEventValues.CUSTOM,
+			ObEMasterLayoutEventValues.MEDIUM,
+			ObEMasterLayoutEventValues.STICKY
+		];
 		this.masterLayout.header.configEvents.pipe(
 			filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
 			takeUntil(this.unsubscribe)

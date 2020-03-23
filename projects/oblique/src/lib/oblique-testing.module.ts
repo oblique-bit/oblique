@@ -35,7 +35,7 @@ import {ObMockUnknownRouteModule} from './unknown-route/mock/mock-unknown-route.
 import {ObMockUnsavedChangesModule} from './unsaved-changes/mock/mock-unsaved-changes.module';
 import {WINDOW, windowProvider} from './utilities';
 
-export {MockCollapseModule, MockCollapseComponent } from './collapse/mock/mock-collapse.module';
+export {MockCollapseModule, MockCollapseComponent} from './collapse/mock/mock-collapse.module';
 export {ObMockColumnLayoutComponent, ObMockColumnLayoutModule} from './column-layout/mock/mock-column-layout.module';
 export {
 	ObMockDateFormatterPipe,
@@ -77,7 +77,12 @@ export {
 export {ObMockNavigableModule, ObMockNavigableDirective, ObMockNavigableGroupComponent} from './navigable/mock/mock-navigable.module';
 export {ObMockNavigatorModule, ObMockNavigatorComponent} from './navigator/mock/mock-navigator.module';
 export {ObMockNavTreeModule, ObMockNavTreeComponent, ObMockNavTreeFakeFocusDirective} from './nav-tree/mock/mock-nav-tree.module';
-export {ObMockNotificationModule, ObMockNotificationService, ObMockNotificationComponent, ObMockNotificationConfig} from './notification/mock/mock-notification.module';
+export {
+	ObMockNotificationModule,
+	ObMockNotificationService,
+	ObMockNotificationComponent,
+	ObMockNotificationConfig
+} from './notification/mock/mock-notification.module';
 export {ObMockNumberFormatModule, ObMockNumberFormatDirective} from './number-format/mock/mock-number-format.module';
 export {ObMockPopUpModule, ObMockPopUpService} from './pop-up/_mock/mock-pop-up.module';
 export {

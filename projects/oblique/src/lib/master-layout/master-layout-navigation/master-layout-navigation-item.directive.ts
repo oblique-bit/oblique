@@ -29,6 +29,7 @@ export class ObMasterLayoutNavigationItemDirective extends ObUnsubscribable impl
 				.pipe(takeUntil(this.unsubscribe), filter(($event: any) => !$event.prevented))
 				.subscribe(($event: any) => {
 					if (this.$menu) {
+						// eslint-disable-next-line no-unused-expressions
 						this.show ? this.close() : this.open();
 					} else {
 						// Final toggle, let's close all parent menus:

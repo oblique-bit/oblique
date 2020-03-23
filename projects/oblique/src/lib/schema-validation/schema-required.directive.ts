@@ -10,8 +10,10 @@ export class ObSchemaRequiredDirective implements OnInit {
 	@HostBinding('attr.required') required: boolean;
 	@Input('name') name: string;
 
-	constructor(@Optional() private readonly schemaValidation: ObSchemaValidationDirective,
-				@Optional() private readonly modelGroup: NgModelGroup) {
+	constructor(
+		@Optional() private readonly schemaValidation: ObSchemaValidationDirective,
+		@Optional() private readonly modelGroup: NgModelGroup
+	) {
 	}
 
 	ngOnInit() {

@@ -19,7 +19,7 @@ export interface ObINavigationLink {
 	templateUrl: './master-layout-navigation.component.html',
 	styleUrls: ['./master-layout-navigation.component.scss', './master-layout-navigation.component-scrollable.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// tslint:disable-next-line:no-host-metadata-property
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'application-navigation'}
 })
 export class ObMasterLayoutNavigationComponent extends ObUnsubscribable implements OnInit, AfterViewInit {
@@ -32,11 +32,12 @@ export class ObMasterLayoutNavigationComponent extends ObUnsubscribable implemen
 	private static readonly buttonWidth = 30;
 	private nav: HTMLElement;
 
-	constructor(private readonly router: Router,
-				private readonly masterLayout: ObMasterLayoutService,
-				private readonly config: ObMasterLayoutConfig,
-				private readonly renderer: Renderer2,
-				private readonly el: ElementRef
+	constructor(
+		private readonly router: Router,
+		private readonly masterLayout: ObMasterLayoutService,
+		private readonly config: ObMasterLayoutConfig,
+		private readonly renderer: Renderer2,
+		private readonly el: ElementRef
 	) {
 		super();
 

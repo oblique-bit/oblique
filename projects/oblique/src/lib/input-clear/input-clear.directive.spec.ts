@@ -25,8 +25,7 @@ describe('TextControlClear', () => {
 		TestBed.configureTestingModule({
 			declarations: [TestComponent, MockTranslatePipe],
 			imports: [FormsModule]
-		}).compileComponents()
-	));
+		}).compileComponents()));
 
 	beforeEach(async(() => {
 		fixture = TestBed.createComponent(TestComponent);

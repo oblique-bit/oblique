@@ -26,7 +26,7 @@ import {ObNavigableDirective, ObNavigableOnChangeEvent, ObNavigableOnMoveEvent} 
 @Component({
 	selector: 'ob-navigable-group',
 	exportAs: 'obNavigableGroup',
-	template: `<ng-content></ng-content>`,
+	template: '<ng-content></ng-content>',
 	styleUrls: ['./navigable-group.component.scss'],
 	encapsulation: ViewEncapsulation.None
 })
@@ -86,9 +86,7 @@ export class ObNavigableGroupComponent extends ObUnsubscribable implements After
 
 	// Public API ---------------------
 	public add(model: any) {
-		const navigableToSelect = this.navigables.find((navigable: ObNavigableDirective) => {
-			return navigable.model === model;
-		});
+		const navigableToSelect = this.navigables.find((navigable: ObNavigableDirective) => navigable.model === model);
 
 		if (navigableToSelect) {
 			this.select(navigableToSelect, true);
@@ -96,9 +94,7 @@ export class ObNavigableGroupComponent extends ObUnsubscribable implements After
 	}
 
 	public remove(model: any) {
-		const navigableToRemove = this.navigables.find((navigable: ObNavigableDirective) => {
-			return navigable.model === model;
-		});
+		const navigableToRemove = this.navigables.find((navigable: ObNavigableDirective) => navigable.model === model);
 
 		if (navigableToRemove) {
 			this.deactivate(navigableToRemove, true);
@@ -155,6 +151,7 @@ export class ObNavigableGroupComponent extends ObUnsubscribable implements After
 				if ($event && $event.shiftKey) {
 					this.selectChildRange(navigable);
 				} else if ($event && $event.ctrlKey) {
+					// eslint-disable-next-line no-unused-expressions
 					navigable.selected ? this.removeFromSelection(navigable) : this.addToSelection(navigable);
 
 				} else {

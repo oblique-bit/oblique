@@ -28,14 +28,16 @@ export class ObFormControlStateDirective extends ObUnsubscribable implements Aft
 	private inputContainer;
 	private inputElement;
 
-	constructor(@Optional() ngForm: NgForm,
-				@Optional() formGroupDirective: FormGroupDirective,
-				@Optional() formGroupName: FormGroupName,
-				@Optional() modelGroup: NgModelGroup,
-				@Optional() private readonly parent: ObParentFormDirective,
-				theme: ObThemeService,
-				private readonly elementRef: ElementRef,
-				private readonly renderer: Renderer2) {
+	constructor(
+	@Optional() ngForm: NgForm,
+		@Optional() formGroupDirective: FormGroupDirective,
+		@Optional() formGroupName: FormGroupName,
+		@Optional() modelGroup: NgModelGroup,
+		@Optional() private readonly parent: ObParentFormDirective,
+		theme: ObThemeService,
+		private readonly elementRef: ElementRef,
+		private readonly renderer: Renderer2
+	) {
 		super();
 		theme.deprecated('form control state', 'form-field/overview#error-messages');
 		this.form = ngForm || formGroupDirective;
