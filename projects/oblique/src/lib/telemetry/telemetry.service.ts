@@ -44,10 +44,18 @@ export class ObTelemetryService {
 			return;
 		}
 
-		const pkg = require('package.json');
-		const msg = ObTelemetryService.createMessage(mod, pkg);
+		this.storeMessage(ObTelemetryService.createMessage(mod, ObTelemetryService.readPackageJson()));
+	}
 
-		this.storeMessage(msg);
+	private static readPackageJson(): Object {
+		try {
+			return require('./package.json');
+		} catch (e) {
+			if (e.code !== 'MODULE_NOT_FOUND') {
+				throw e;
+			}
+			return {dependencies: {}};
+		}
 	}
 
 	private static areEqual(msg1: ObITelemetryMessage, msg2: ObITelemetryMessage): boolean {
