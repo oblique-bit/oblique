@@ -7,6 +7,7 @@
 .column-layout {
 	display: flex;
 	flex-direction: column;
+	overflow: hidden;	// cannot set overflow-x as it will add a vertical scrollbar
 
 	.column-toggle-left,
 	.column-toggle-right {
