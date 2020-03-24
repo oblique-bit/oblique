@@ -58,7 +58,8 @@ export class AppComponent {
 		},
 		{
 			url: 'bootstrap', label: 'Bootstrap', children: [
-				{url: 'list-group', label: 'List group'}
+				{url: 'list-group', label: 'List group'},
+				{url: 'tabs', label: 'Tabs'}
 			]
 		},
 		{
