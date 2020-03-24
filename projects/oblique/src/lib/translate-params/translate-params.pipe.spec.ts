@@ -6,11 +6,9 @@ describe('TranslateParamsPipe', () => {
 	beforeEach(() => {
 
 		const mockTranslate = {
-			instant: jest.fn().mockImplementation((value: string, arg?: { value: string }) => {
-				return typeof arg === 'object' && arg.value
-					? value.replace('{{value}}', arg.value)
-					: value;
-			})
+			instant: jest.fn().mockImplementation((value: string, arg?: { value: string }) => typeof arg === 'object' && arg.value
+				? value.replace('{{value}}', arg.value)
+				: value)
 		};
 		TestBed
 			.configureTestingModule({

@@ -28,7 +28,8 @@ import {ObMasterLayoutComponentService} from '../master-layout/master-layout/mas
 					style({offset: 1, opacity: 1, display: 'block'})
 				]))
 			]),
-			state('out',
+			state(
+				'out',
 				style({opacity: 0, display: 'none'})
 			),
 			transition('* => out', [
@@ -53,9 +54,11 @@ export class ObSpinnerComponent extends ObUnsubscribable implements OnInit, Afte
 	// Animation state:
 	$state = 'out';
 
-	constructor(private readonly spinnerService: ObSpinnerService,
-				private readonly element: ElementRef,
-				private readonly masterLayoutComponentService: ObMasterLayoutComponentService) {
+	constructor(
+		private readonly spinnerService: ObSpinnerService,
+		private readonly element: ElementRef,
+		private readonly masterLayoutComponentService: ObMasterLayoutComponentService
+	) {
 		super();
 		spinnerService.events.pipe(takeUntil(this.unsubscribe))
 			.subscribe((event: ObISpinnerEvent) => {

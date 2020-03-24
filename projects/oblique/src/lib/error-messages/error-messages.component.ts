@@ -20,16 +20,18 @@ import {ObParentFormDirective} from '../nested-form/parent-form.directive';
 export class ObErrorMessagesComponent extends ObUnsubscribable implements AfterViewInit {
 	@Input() control: NgControl;
 
-	errors: { key: string, params: { [param: string]: any } }[] = [];
+	errors: { key: string; params: { [param: string]: any } }[] = [];
 
 	private readonly form: NgForm | FormGroupDirective;
 
-	constructor(private readonly errorMessagesService: ObErrorMessagesService,
-				theme: ObThemeService,
-				@Optional() private readonly formGroup: ObFormControlStateDirective,
-				@Optional() ngForm: NgForm,
-				@Optional() formGroupDirective: FormGroupDirective,
-				@Optional() private readonly parent: ObParentFormDirective) {
+	constructor(
+		private readonly errorMessagesService: ObErrorMessagesService,
+		theme: ObThemeService,
+		@Optional() private readonly formGroup: ObFormControlStateDirective,
+		@Optional() ngForm: NgForm,
+		@Optional() formGroupDirective: FormGroupDirective,
+		@Optional() private readonly parent: ObParentFormDirective
+	) {
 		super();
 		theme.deprecated('error messages', 'form-field/overview#error-messages');
 		this.form = ngForm || formGroupDirective;

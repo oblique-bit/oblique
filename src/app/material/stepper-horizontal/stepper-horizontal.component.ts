@@ -13,7 +13,7 @@ export class ObStepperHorizontalComponent implements OnInit {
 	isLarge = false;
 	labelBottom = true;
 
-	constructor(private formBuilder: FormBuilder) {
+	constructor(private readonly formBuilder: FormBuilder) {
 	}
 
 	ngOnInit() {

@@ -26,13 +26,10 @@ export class ObNotificationConfig {
 
 	error = {
 		title: 'i18n.oblique.notification.type.error',
-		sticky: true,
+		sticky: true
 	} as ObINotificationConfig;
 
-	constructor(
-		@Optional() @Inject(CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE) clear,
-		@Optional() @Inject(GROUP_SIMILAR_NOTIFICATIONS) group
-	) {
+	constructor(@Optional() @Inject(CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE) clear, @Optional() @Inject(GROUP_SIMILAR_NOTIFICATIONS) group) {
 		this.clearAllOnNavigate = clear || false;
 		this.groupSimilar = group || false;
 	}

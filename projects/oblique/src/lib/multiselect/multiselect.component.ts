@@ -79,11 +79,13 @@ export class ObMultiselectComponent implements OnInit, OnDestroy, DoCheck, Contr
 	searchFilterText = '';
 	disabled = false;
 
-	constructor(private readonly element: ElementRef,
-				private readonly multiselectTexts: ObMultiselectTexts,
-				private readonly multiselectConfig: ObMultiselectConfig,
-				theme: ObThemeService,
-				differs: IterableDiffers) {
+	constructor(
+		private readonly element: ElementRef,
+		private readonly multiselectTexts: ObMultiselectTexts,
+		private readonly multiselectConfig: ObMultiselectConfig,
+		theme: ObThemeService,
+		differs: IterableDiffers
+	) {
 		this.differ = differs.find([]).create(null);
 
 		this.enableAllSelectedText = multiselectConfig.enableAllSelectedText;
@@ -124,10 +126,10 @@ export class ObMultiselectComponent implements OnInit, OnDestroy, DoCheck, Contr
 
 	onModelChange: (_: any) => void = (_: any) => {
 		//
-	}
+	};
 	onModelTouched: () => void = () => {
 		//
-	}
+	};
 
 	ngOnInit() {
 		this.texts = Object.assign({}, this.multiselectTexts, this.texts);

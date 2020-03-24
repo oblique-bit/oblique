@@ -12,7 +12,7 @@ import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues, scrollEnabled} from '.
 	templateUrl: './master-layout-footer.component.html',
 	styleUrls: ['./master-layout-footer.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// tslint:disable-next-line:no-host-metadata-property
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'application-footer'}
 })
 export class ObMasterLayoutFooterComponent extends ObUnsubscribable {
@@ -21,9 +21,11 @@ export class ObMasterLayoutFooterComponent extends ObUnsubscribable {
 	@HostBinding('class.application-footer-sm') isSmall = this.masterLayout.footer.isSmall;
 	@ContentChildren('obFooterLink') readonly templates: QueryList<TemplateRef<any>>;
 
-	constructor(private readonly masterLayout: ObMasterLayoutService,
-				private readonly config: ObMasterLayoutConfig,
-				private readonly scrollEvents: ObScrollingEvents) {
+	constructor(
+		private readonly masterLayout: ObMasterLayoutService,
+		private readonly config: ObMasterLayoutConfig,
+		private readonly scrollEvents: ObScrollingEvents
+	) {
 		super();
 
 		this.propertyChanges();

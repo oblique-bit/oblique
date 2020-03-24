@@ -56,8 +56,8 @@ export class ObFilterBoxComponent implements OnInit {
 		setTimeout(() => {
 			if (this.inputGroup && !this.inputGroup.nativeElement.classList.contains('bootstrapped')) {
 				Array.from(this.inputGroup.nativeElement.querySelectorAll(
-					['.input-group-prepend > :not(.btn):not(.dropdown)', '.input-group-append > :not(.btn):not(.dropdown)'])
-				).forEach(el => this.renderer.addClass(el, 'input-group-text'));
+					['.input-group-prepend > :not(.btn):not(.dropdown)', '.input-group-append > :not(.btn):not(.dropdown)']
+				)).forEach(el => this.renderer.addClass(el, 'input-group-text'));
 				this.renderer.addClass(this.inputGroup.nativeElement, 'bootstrapped');
 			}
 		});

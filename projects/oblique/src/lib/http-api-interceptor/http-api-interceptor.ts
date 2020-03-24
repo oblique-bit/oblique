@@ -24,10 +24,12 @@ export interface ObIHttpApiRequest {
 export class ObHttpApiInterceptor implements HttpInterceptor {
 	private readonly activeRequestUrls: string[] = [];
 
-	constructor(private readonly config: ObHttpApiInterceptorConfig,
-				private readonly interceptorEvents: ObHttpApiInterceptorEvents,
-				private readonly spinner: ObSpinnerService,
-				private readonly notificationService: ObNotificationService) {
+	constructor(
+		private readonly config: ObHttpApiInterceptorConfig,
+		private readonly interceptorEvents: ObHttpApiInterceptorEvents,
+		private readonly spinner: ObSpinnerService,
+		private readonly notificationService: ObNotificationService
+	) {
 	}
 
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

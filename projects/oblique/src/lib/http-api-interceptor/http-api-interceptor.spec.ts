@@ -8,7 +8,7 @@ import {finalize} from 'rxjs/operators';
 
 @Injectable()
 class DataService {
-	static ROOT_URL = `http://jsonplaceholder.typicode.com`;
+	static ROOT_URL = 'http://jsonplaceholder.typicode.com';
 
 	constructor(private readonly http: HttpClient) {
 	}
@@ -50,7 +50,7 @@ class MockHttpApiInterceptorEvents {
 	requestIntercepted = of({} as ObIHttpApiRequest);
 }
 
-describe(`HttpApiInterceptor`, () => {
+describe('HttpApiInterceptor', () => {
 	let service: DataService;
 	let httpMock: HttpTestingController;
 	let config: ObHttpApiInterceptorConfig;

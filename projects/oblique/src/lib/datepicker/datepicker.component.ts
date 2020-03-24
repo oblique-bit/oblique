@@ -24,7 +24,7 @@ import {ObDatepickerConfigService, ObIDatepickerOptions} from './datepicker-conf
 			useExisting: forwardRef(() => ObDatepickerComponent)
 		}
 	],
-	// tslint:disable-next-line:no-host-metadata-property
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'datepicker input-group'}
 })
 export class ObDatepickerComponent implements OnInit, ControlValueAccessor, Validator {
@@ -65,6 +65,7 @@ export class ObDatepickerComponent implements OnInit, ControlValueAccessor, Vali
 	}
 
 	setDisabledState(isDisabled: boolean): void {
+		// eslint-disable-next-line no-unused-expressions
 		isDisabled ? this.datePicker.disable() : this.datePicker.enable();
 	}
 

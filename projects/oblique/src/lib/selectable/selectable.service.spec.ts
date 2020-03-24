@@ -112,12 +112,12 @@ describe('SelectedService', () => {
 
 	it('should return all collections', () => {
 		expect(selectableService.getCollections().size).toBe(0);
-		selectableService.addValue(Math.random(), `A`);
-		selectableService.addValue(Math.random(), `B`);
-		selectableService.addValue(Math.random(), `C`);
-		selectableService.addValue(Math.random(), `D`);
-		selectableService.addValue(Math.random(), `E`);
-		selectableService.addValue(Math.random(), `F`);
+		selectableService.addValue(Math.random(), 'A');
+		selectableService.addValue(Math.random(), 'B');
+		selectableService.addValue(Math.random(), 'C');
+		selectableService.addValue(Math.random(), 'D');
+		selectableService.addValue(Math.random(), 'E');
+		selectableService.addValue(Math.random(), 'F');
 		expect(selectableService.getCollections().size).toBe(6);
 		const collections = selectableService.getCollections();
 		expect(collections.get('A')).toBeDefined();
@@ -131,12 +131,12 @@ describe('SelectedService', () => {
 
 	it('should remove collection', () => {
 		expect(selectableService.getCollections().size).toBe(0);
-		selectableService.addValue(Math.random(), `A`);
-		selectableService.addValue(Math.random(), `B`);
-		selectableService.addValue(Math.random(), `C`);
-		selectableService.addValue(Math.random(), `D`);
-		selectableService.addValue(Math.random(), `E`);
-		selectableService.addValue(Math.random(), `F`);
+		selectableService.addValue(Math.random(), 'A');
+		selectableService.addValue(Math.random(), 'B');
+		selectableService.addValue(Math.random(), 'C');
+		selectableService.addValue(Math.random(), 'D');
+		selectableService.addValue(Math.random(), 'E');
+		selectableService.addValue(Math.random(), 'F');
 		expect(selectableService.getCollections().size).toBe(6);
 		selectableService.removeCollection('A');
 		expect(selectableService.getCollections().size).toBe(5);

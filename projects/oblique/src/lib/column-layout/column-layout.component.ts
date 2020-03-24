@@ -25,7 +25,7 @@ import {WINDOW} from '../utilities';
 	templateUrl: './column-layout.component.html',
 	styleUrls: ['./column-layout.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// tslint:disable-next-line:no-host-metadata-property
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'column-layout'}
 })
 export class ObColumnLayoutComponent implements AfterViewInit {

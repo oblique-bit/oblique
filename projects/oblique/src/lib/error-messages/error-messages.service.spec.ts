@@ -21,8 +21,8 @@ describe('ErrorMessagesService', () => {
 	});
 
 	it('should add the `i18n.validation.` prefix to the key', () => {
-		expect(result[0].key).toBe(`i18n.validation.bar`);
-		expect(result[1].key).toBe(`i18n.validation.fuu`);
+		expect(result[0].key).toBe('i18n.validation.bar');
+		expect(result[1].key).toBe('i18n.validation.fuu');
 	});
 
 	it('should keep the params if they are provided', () => {

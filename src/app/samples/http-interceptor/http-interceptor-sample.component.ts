@@ -27,9 +27,11 @@ export class HttpInterceptorSampleComponent {
 	variants = ObENotificationType;
 	parallelRequests = 5;
 
-	constructor(private readonly notificationService: ObNotificationService,
-				private readonly http: HttpClient,
-				private readonly interceptorEvents: ObHttpApiInterceptorEvents) {
+	constructor(
+		private readonly notificationService: ObNotificationService,
+		private readonly http: HttpClient,
+		private readonly interceptorEvents: ObHttpApiInterceptorEvents
+	) {
 
 		this.interceptorEvents.sessionExpired.subscribe(() => {
 			this.notificationService.warning('The session has expired');

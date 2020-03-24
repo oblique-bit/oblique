@@ -24,9 +24,7 @@ export class ObTelemetryService {
 	private readonly window: Window;
 	private readonly headers = new HttpHeaders().set('telemetry-api-key', '4E28E649-C2B2-4985-9409-CFC905A34E92');
 
-	constructor(
-		private readonly http: HttpClient, @Optional() @Inject(TELEMETRY_DISABLE) private readonly isDisabled: boolean, @Inject(WINDOW) window
-	) {
+	constructor(private readonly http: HttpClient, @Optional() @Inject(TELEMETRY_DISABLE) private readonly isDisabled: boolean, @Inject(WINDOW) window) {
 		this.window = window; // because AoT don't accept interfaces as DI // because AoT don't accept interfaces as DI
 		if (isDisabled) {
 			console.log('Oblique Telemetry is disabled by injection token.');
@@ -90,7 +88,6 @@ export class ObTelemetryService {
 			return {} as ObIModuleList;
 		}
 	}
-
 
 	private storeMessage(msg: ObITelemetryMessage): void {
 		const existing = this.telemetryRecords.find(r => ObTelemetryService.areEqual(r, msg));

@@ -97,9 +97,8 @@ export function defaultLabelFormatterFactory(translate: TranslateService) {
 	const formatter = (item: ObNavTreeItemModel, filterPattern: string) => {
 		filterPattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
 		const label = translate.instant(item.label);
-		return !filterPattern ? label : label.replace(
-			new RegExp(filterPattern, 'ig'), (text) => `<span class="${ObNavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`
-		);
+		return !filterPattern ? label : label
+			.replace(new RegExp(filterPattern, 'ig'), (text) => `<span class="${ObNavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`);
 	};
 
 	return formatter;

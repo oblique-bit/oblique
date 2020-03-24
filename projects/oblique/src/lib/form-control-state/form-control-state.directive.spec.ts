@@ -64,8 +64,8 @@ class TestComponent {
 
 describe('ObFormControlStateDirective', () => {
 	let fixture: ComponentFixture<TestComponent>
-		| ComponentFixture<TestWithPristineValidationComponent>
-		| ComponentFixture<ReactiveTestComponent>;
+	| ComponentFixture<TestWithPristineValidationComponent>
+	| ComponentFixture<ReactiveTestComponent>;
 	let component: TestComponent | TestWithPristineValidationComponent | ReactiveTestComponent;
 	let submitButton;
 

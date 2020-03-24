@@ -10,7 +10,7 @@ export class ObStickySampleComponent {
 	noLayout = false;
 	footerSize = 'md';
 	headerSize = 'md';
-	sizes: {num: string, name: string}[] = [
+	sizes: {num: string; name: string}[] = [
 		{num: 'lg', name: 'Large'},
 		{num: 'md', name: 'Default'},
 		{num: 'sm', name: 'Small'}

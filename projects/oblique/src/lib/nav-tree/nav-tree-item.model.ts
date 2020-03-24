@@ -35,9 +35,7 @@ export class ObNavTreeItemModel {
 
 		// Convert all sub items:
 		if (Array.isArray(json.items)) {
-			this.items = json.items.map((item) => {
-				return new ObNavTreeItemModel(item, this);
-			});
+			this.items = json.items.map((item) => new ObNavTreeItemModel(item, this));
 		}
 	}
 }

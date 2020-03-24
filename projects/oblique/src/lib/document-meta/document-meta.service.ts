@@ -26,11 +26,13 @@ export class ObDocumentMetaService extends ObUnsubscribable {
 		description: ''
 	};
 
-	constructor(private readonly router: Router,
-				private readonly activatedRoute: ActivatedRoute,
-				private readonly titleService: Title,
-				private readonly translate: TranslateService,
-				@Inject(DOCUMENT) private readonly document: any) {
+	constructor(
+		private readonly router: Router,
+		private readonly activatedRoute: ActivatedRoute,
+		private readonly titleService: Title,
+		private readonly translate: TranslateService,
+		@Inject(DOCUMENT) private readonly document: any
+	) {
 		super();
 
 		this.headElement = this.document.querySelector('head');

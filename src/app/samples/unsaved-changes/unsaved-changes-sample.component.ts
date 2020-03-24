@@ -41,9 +41,11 @@ export class UnsavedChangesSampleComponent implements OnInit {
 	@ViewChild('form7') form7 = <NgModelGroup>{};
 
 
-	constructor(private readonly modalService: NgbModal,
-				private readonly formBuilder: FormBuilder,
-				private readonly unsavedChangesService: ObUnsavedChangesService) {
+	constructor(
+		private readonly modalService: NgbModal,
+		private readonly formBuilder: FormBuilder,
+		private readonly unsavedChangesService: ObUnsavedChangesService
+	) {
 	}
 
 	ngOnInit() {

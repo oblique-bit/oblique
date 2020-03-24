@@ -27,21 +27,21 @@ export class ChildState11Component {
 }
 
 @Component({
-	template: `<span class="sample-node fa fa-chevron-right"></span> <span class="sample-node">Child state 1.1.1</span>`,
+	template: '<span class="sample-node fa fa-chevron-right"></span> <span class="sample-node">Child state 1.1.1</span>',
 })
 export class ChildState111Component {
 
 }
 
 @Component({
-	template: `<span class="sample-node fa fa-chevron-right"></span> <span class="sample-node">Child state 1.1.2</span>`,
+	template: '<span class="sample-node fa fa-chevron-right"></span> <span class="sample-node">Child state 1.1.2</span>',
 })
 export class ChildState112Component {
 
 }
 
 @Component({
-	template: `<span class="sample-node fa fa-chevron-right"></span> <span class="sample-node">Child state 1.2</span>`,
+	template: '<span class="sample-node fa fa-chevron-right"></span> <span class="sample-node">Child state 1.2</span>',
 })
 export class ChildState12Component {
 

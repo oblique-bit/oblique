@@ -7,7 +7,7 @@ import {ObNotificationService, ObPopUpService} from 'oblique';
 })
 export class ObPopUpSampleComponent {
 
-	constructor(private popup: ObPopUpService, private notification: ObNotificationService) {
+	constructor(private readonly popup: ObPopUpService, private readonly notification: ObNotificationService) {
 	}
 
 	confirm(text: string): void {

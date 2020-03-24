@@ -6,10 +6,11 @@ import {AfterViewInit, Component, ContentChild, HostBinding, Input, OnChanges, T
 	templateUrl: 'sticky.component.html',
 	styleUrls: ['./sticky.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// tslint:disable-next-line:no-host-metadata-property
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'sticky'}
 })
 export class ObStickyComponent implements OnChanges, AfterViewInit {
+
 	@ContentChild('obStickyHeader') readonly stickyHeaderTemplate: TemplateRef<any>;
 	@ContentChild('obStickyMain') readonly stickyMainTemplate: TemplateRef<any>;
 	@ContentChild('obStickyFooter') readonly stickyFooterTemplate: TemplateRef<any>;

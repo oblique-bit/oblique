@@ -11,8 +11,10 @@ import {ObSchemaValidationDirective} from './schema-validation.directive';
 export class ObSchemaValidateDirective implements AfterViewInit, Validator {
 	private propertyName: string;
 
-	constructor(private readonly schemaDirective: ObSchemaValidationDirective,
-				private readonly injector: Injector) {
+	constructor(
+		private readonly schemaDirective: ObSchemaValidationDirective,
+		private readonly injector: Injector
+	) {
 	}
 
 	ngAfterViewInit(): void {

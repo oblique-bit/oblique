@@ -9,10 +9,12 @@ import {ObUnsavedChangesTabsService} from './unsaved-changes-tabs.service';
 export class ObUnsavedChangesTabsDirective implements OnDestroy, OnInit, AfterContentInit {
 	@Input() id;
 
-	constructor(private readonly unsavedChangesService: ObUnsavedChangesTabsService,
-				private readonly form: ControlContainer,
-				@Optional() private readonly ngbTab: NgbTab,
-				@Optional() private readonly ngbTabset: NgbTabset) {
+	constructor(
+		private readonly unsavedChangesService: ObUnsavedChangesTabsService,
+		private readonly form: ControlContainer,
+		@Optional() private readonly ngbTab: NgbTab,
+		@Optional() private readonly ngbTabset: NgbTabset
+	) {
 	}
 
 	ngOnInit() {
