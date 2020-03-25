@@ -10,7 +10,7 @@
         {
           "name": "items",
           "text": "An hierarchical array of nav entries.",
-          "type": "NavTreeItemModel[]",
+          "type": "ObNavTreeItemModel[]",
           "since": "2.0.0"
         },
         {
@@ -31,7 +31,7 @@
           "name": "labelFormatter",
           "text": "A function to format each nav entry label.",
           "arguments": [
-            "item: NavTreeItemModel",
+            "item: ObNavTreeItemModel",
             "filterPattern: string"
           ],
           "returns": "string",

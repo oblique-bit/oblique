@@ -2,7 +2,7 @@
   "$schema": "../../../schema.json",
   "api": [
     {
-      "name": "multiTranslateLoader",
+      "name": "ObMultiTranslateLoader",
       "usage": "A utility function that returns a <code>TranslateModuleConfig</code> with multiple files support.",
       "since": "5.0.0",
       "inputs": [
@@ -25,7 +25,7 @@
     },
     {
       "name": "getTranslateLoader",
-      "usage": "A factory that returns a <code>MultiTranslateHttpLoader</code> instance. It should only be directly used if <code>multiTranslateLoader</code> could not be used.",
+      "usage": "A factory that returns a <code>MultiTranslateHttpLoader</code> instance. It should only be directly used if <code>ObMultiTranslateLoader</code> could not be used.",
       "since": "5.0.0",
       "inputs": [
         {
@@ -37,14 +37,14 @@
         {
           "name": "files",
           "text": "The translations files to load",
-          "type": "TranslationFile[]",
+          "type": "ObITranslationFile[]",
           "since": "5.0.0"
         }
       ]
     },
     {
       "name": "MultiTranslateHttpLoader",
-      "usage": "An handler to load multiple translation files. It should only be directly used if neither <code>multiTranslateLoader</code> nor <code>getTranslateLoader</code> could be used.",
+      "usage": "An handler to load multiple translation files. It should only be directly used if neither <code>ObMultiTranslateLoader</code> nor <code>getTranslateLoader</code> could be used.",
       "since": "5.0.0",
       "inputs": [
         {
@@ -56,7 +56,7 @@
         {
           "name": "resources",
           "text": "The translations files to load",
-          "type": "TranslationFile[]",
+          "type": "ObITranslationFile[]",
           "since": "5.0.0"
         }
       ]

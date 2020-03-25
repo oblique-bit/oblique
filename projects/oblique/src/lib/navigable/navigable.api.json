@@ -74,7 +74,7 @@
         {
           "name": "navigableOnChange",
           "text": "Emits when UP or DOWN key is pressed while a navigable item is focused.",
-          "type": "Observable<NavigableOnChangeEvent>",
+          "type": "Observable<ObNavigableOnChangeEvent>",
           "since": "2.0.0"
         },
         {
@@ -92,7 +92,7 @@
         {
           "name": "navigableOnMouseDown",
           "text": "Emits whena navigable item is moved.",
-          "type": "Observable<NavigableOnMoveEvent>",
+          "type": "Observable<ObNavigableOnMoveEvent>",
           "since": "2.0.0"
         }
       ]
