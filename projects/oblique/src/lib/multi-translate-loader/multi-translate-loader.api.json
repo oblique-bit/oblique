@@ -60,6 +60,26 @@
           "since": "5.0.0"
         }
       ]
+    },
+    {
+      "name": "ObITranslationFile",
+      "type": "interface",
+      "usage": "This interface represent the location of translation resource file",
+      "since": "5.0.0",
+      "variables": [
+        {
+          "name": "prefix",
+          "text": "Prefix of the translation resource file",
+          "type": "string",
+          "since": "5.0.0"
+        },
+        {
+          "name": "suffix",
+          "text": "Suffix of the translation resource file",
+          "type": "string",
+          "since": "5.0.0"
+        }
+      ]
     }
   ]
 }

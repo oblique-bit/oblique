@@ -486,6 +486,89 @@
           "since": "4.0.0"
         }
       ]
+    },
+    {
+      "name": "ObINavigationLink",
+      "type": "interface",
+      "usage": "The structure of a link in navigation area",
+      "since": "4.0.0",
+      "variables": [
+        {
+          "name": "label",
+          "text": "Label to show in the link",
+          "type": "string",
+          "since": "4.0.0"
+        },
+        {
+          "name": "url",
+          "text": "Url to navigate when clicking the link",
+          "type": "string",
+          "since": "4.0.0"
+        },
+        {
+          "name": "id",
+          "text": "Id of the link",
+          "type": "string",
+          "isOptional": true,
+          "since": "4.0.0"
+        },
+        {
+          "name": "children",
+          "text": "Child links under the current link",
+          "type": "ObINavigationLink[]",
+          "isOptional": true,
+          "since": "4.0.0"
+        }
+      ]
+    },
+    {
+      "name": "ObIMasterLayoutEvent",
+      "type": "interface",
+      "usage": "The event emitted by master layout",
+      "since": "4.0.0",
+      "variables": [
+        {
+          "name": "name",
+          "text": "Name of the event",
+          "type": "ObEMasterLayoutEventValues",
+          "values":[
+            "ObEMasterLayoutEventValues.ANIMATE",
+            "ObEMasterLayoutEventValues.COLLAPSE",
+            "ObEMasterLayoutEventValues.COVER",
+            "ObEMasterLayoutEventValues.CUSTOM",
+            "ObEMasterLayoutEventValues.FIXED",
+            "ObEMasterLayoutEventValues.FULL_WIDTH",
+            "ObEMasterLayoutEventValues.OFF_CANVAS",
+            "ObEMasterLayoutEventValues.MEDIUM",
+            "ObEMasterLayoutEventValues.MAIN_NAVIGATION",
+            "ObEMasterLayoutEventValues.SMALL",
+            "ObEMasterLayoutEventValues.SCROLL_TRANSITION",
+            "ObEMasterLayoutEventValues.SCROLLABLE",
+            "ObEMasterLayoutEventValues.STICKY",
+            "ObEMasterLayoutEventValues.LAYOUT"
+          ],
+          "since": "4.0.0"
+        },
+        {
+          "name": "value",
+          "text": "Event value",
+          "type": "boolean",
+          "isOptional": true,
+          "since": "4.0.0"
+        },
+        {
+          "name": "mode",
+          "text": "Scroll mode of the event",
+          "type": "ObEScrollMode",
+          "values":[
+            "ObEScrollMode.AUTO",
+            "ObEScrollMode.ENABLED",
+            "ObEScrollMode.DISABLED"
+          ],
+          "isOptional": true,
+          "since": "4.0.0"
+        }
+      ]
     }
   ]
 }

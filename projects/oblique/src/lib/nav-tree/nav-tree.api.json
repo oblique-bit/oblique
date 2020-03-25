@@ -76,6 +76,74 @@
       "selector": "[obNavTreeFakeFocus]",
       "usage": "Set on an <code>nav-tree</code>, it will allow to navigate the tree while maintaining the focus on the filter input.",
       "since": "2.0.0"
+    },
+    {
+      "name": "ObNavTreeItemModel",
+      "usage": "The model of a nav tree item",
+      "since": "2.0.0",
+      "variables": [
+        {
+          "name": "id",
+          "text": "Id of nav item",
+          "type": "string",
+          "since": "2.0.0"
+        },
+        {
+          "name": "label",
+          "text": "Label to render in the nav item",
+          "type": "string",
+          "since": "2.0.0"
+        },
+        {
+          "name": "items",
+          "text": "Child items under the nav item",
+          "type": "ObNavTreeItemModel[]",
+          "isOptional": true,
+          "since": "2.0.0"
+        },
+        {
+          "name": "parent",
+          "text": "Parent item of the nav item",
+          "type": "ObNavTreeItemModel",
+          "isOptional": true,
+          "since": "2.0.0"
+        },
+        {
+          "name": "path",
+          "text": "Where to navigate to when clicking nav item, see <code>routerLink</code> docs under <a href=\"https://angular.io/api/router/RouterLink\" target=\"_blank\">https://angular.io/api/router/RouterLink</a>",
+          "type": "string",
+          "isOptional": true,
+          "since": "2.0.0"
+        },
+        {
+          "name": "fragment",
+          "text": "Where to navigate to when clicking nav item, see <code>fragment</code> docs under <a href=\"https://angular.io/api/router/RouterLink\" target=\"_blank\">https://angular.io/api/router/RouterLink</a>",
+          "type": "string",
+          "isOptional": true,
+          "since": "2.0.0"
+        },
+        {
+          "name": "queryParams",
+          "text": "Where to navigate to when clicking nav item, see <code>queryParams</code> docs under <a href=\"https://angular.io/api/router/RouterLink\" target=\"_blank\">https://angular.io/api/router/RouterLink</a>",
+          "type": "string",
+          "isOptional": true,
+          "since": "2.0.0"
+        },
+        {
+          "name": "disabled",
+          "text": "Is the nav item disabled",
+          "type": "boolean",
+          "isOptional": true,
+          "since": "2.0.0"
+        },
+        {
+          "name": "collapsed",
+          "text": "Is the nav item collapsed",
+          "type": "boolean",
+          "isOptional": true,
+          "since": "2.0.0"
+        }
+      ]
     }
   ]
 }

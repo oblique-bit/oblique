@@ -219,6 +219,109 @@
           "since": "2.0.0"
         }
       ]
+    },
+    {
+      "name": "ObINotification",
+      "usage": "The structure of a notification",
+      "type": "interface",
+      "since": "2.0.0",
+      "variables": [
+        {
+          "name": "idPrefix",
+          "text": "Id Prefix of notification",
+          "type": "string",
+          "isOptional": true,
+          "since": "2.0.0"
+        },
+        {
+          "name": "type",
+          "text": "type of notification",
+          "type": "ObENotificationType",
+          "values": [
+            "ObENotificationType.INFO",
+            "ObENotificationType.SUCCESS",
+            "ObENotificationType.WARNING",
+            "ObENotificationType.ERROR"
+          ],
+          "isOptional": true,
+          "since": "2.0.0"
+        },
+        {
+          "name": "message",
+          "text": "translation key of message content in notification",
+          "type": "string",
+          "isOptional": true,
+          "since": "2.0.0"
+        },
+        {
+          "name": "messageParams",
+          "text": "translation params of message content in notification",
+          "type": "{ [key: string]: any }",
+          "isOptional": true,
+          "since": "2.0.0"
+        },
+        {
+          "name": "title",
+          "text": "translation key of title content in notification",
+          "type": "string",
+          "isOptional": true,
+          "since": "2.0.0"
+        },
+        {
+          "name": "titleParams",
+          "text": "translation params of title content in notification",
+          "type": "{ [key: string]: any }",
+          "isOptional": true,
+          "since": "2.0.0"
+        },
+        {
+          "name": "channel",
+          "text": "channel name of notification. The notification will show up in the container with same channel. If the channel name is not provided, will show up in the default channel.",
+          "type": "{ [key: string]: any }",
+          "isOptional": true,
+          "since": "2.0.0"
+        },
+        {
+          "name": "sticky",
+          "text": "If sticky is set to true, the notification will not automatically close.",
+          "type": "boolean",
+          "isOptional": true,
+          "since": "2.0.0"
+        },
+        {
+          "name": "timeout",
+          "text": "How much time (in ms) before the notification automatically close.",
+          "type": "number",
+          "isOptional": true,
+          "since": "2.0.0"
+        },
+        {
+          "name": "$state",
+          "text": "The internal state of the notification. Should not set manually",
+          "values": [
+            "in",
+            "in-first",
+            "out"
+          ],
+          "type": "string",
+          "isOptional": true,
+          "since": "2.0.0"
+        },
+        {
+          "name": "occurrences",
+          "text": "The internal occurrences of the notification. Should not set manually",
+          "type": "number",
+          "isOptional": true,
+          "since": "2.0.0"
+        },
+        {
+          "name": "$groupSimilar",
+          "text": "If set to true, will only show 1 notification if same message is send multiple times.",
+          "type": "boolean",
+          "isOptional": true,
+          "since": "2.0.0"
+        }
+      ]
     }
   ]
 }
