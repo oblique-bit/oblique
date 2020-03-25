@@ -61,16 +61,16 @@ export class ObPaletteComponent {
 		{
 			name: 'Error',
 			colors: [
-				{name: '$error-50', color: '#f6e0e4', contrast: '#171717'},
-				{name: '$error-100', color: '#ffdddd', contrast: '#171717'},
-				{name: '$error-200', color: '#d88090', contrast: '#171717'},
-				{name: '$error-300', color: '#c84d63', contrast: '#ffffff'},
-				{name: '$error-400', color: '#bc2641', contrast: '#ffffff'},
+				{name: '$error-50', color: '#fdeaee', contrast: '#171717'},
+				{name: '$error-100', color: '#fbcad2', contrast: '#171717'},
+				{name: '$error-200', color: '#ea959b', contrast: '#171717'},
+				{name: '$error-300', color: '#de6c74', contrast: '#ffffff'},
+				{name: '$error-400', color: '#de2839', contrast: '#ffffff'},
 				{name: '$error-500', color: '#b00020', contrast: '#ffffff'},
-				{name: '$error-600', color: '#a9001c', contrast: '#ffffff'},
-				{name: '$error-700', color: '#770000', contrast: '#ffffff'},
-				{name: '$error-800', color: '#970013', contrast: '#ffffff'},
-				{name: '$error-900', color: '#87000b', contrast: '#ffffff'},
+				{name: '$error-600', color: '#a31a17', contrast: '#ffffff'},
+				{name: '$error-700', color: '#931012', contrast: '#ffffff'},
+				{name: '$error-800', color: '#86090c', contrast: '#ffffff'},
+				{name: '$error-900', color: '#630012', contrast: '#ffffff'},
 				{name: '$error-a100', color: '#ffb3b6', contrast: '#171717'},
 				{name: '$error-a200', color: '#ff8085', contrast: '#171717'},
 				{name: '$error-a400', color: '#ff4d53', contrast: '#171717'},
@@ -95,17 +95,31 @@ export class ObPaletteComponent {
 		{
 			name: 'Success',
 			colors: [
-				{name: '$success-100', color: '#cfe6c2', contrast: '#171717'},
-				{name: '$success-500', color: '#00813a', contrast: '#ffffff'},
-				{name: '$success-700', color: '#004d22', contrast: '#ffffff'}
+				{name: '$success-50', color: '#e6f6eb', contrast: '#171717'},
+				{name: '$success-100', color: '#c3e8cd', contrast: '#171717'},
+				{name: '$success-200', color: '#9cd9ad', contrast: '#171717'},
+				{name: '$success-300', color: '#72cb8c', contrast: '#171717'},
+				{name: '$success-400', color: '#50bf73', contrast: '#ffffff'},
+				{name: '$success-500', color: '#27b45b', contrast: '#ffffff'},
+				{name: '$success-600', color: '#1da451', contrast: '#ffffff'},
+				{name: '$success-700', color: '#0f9245', contrast: '#ffffff'},
+				{name: '$success-800', color: '#00813a', contrast: '#ffffff'},
+				{name: '$success-900', color: '#006226', contrast: '#ffffff'}
 			]
 		},
 		{
 			name: 'Warning',
 			colors: [
-				{name: '$warning-100', color: '#ffe2c2', contrast: '#171717'},
+				{name: '$warning-50 ', color: '#fee3b5', contrast: '#171717'},
+				{name: '$warning-100', color: '#fed284', contrast: '#171717'},
+				{name: '$warning-200', color: '#ffbf52', contrast: '#171717'},
+				{name: '$warning-300', color: '#fb970b', contrast: '#171717'},
+				{name: '$warning-400', color: '#f07703', contrast: '#ffffff'},
 				{name: '$warning-500', color: '#e75e00', contrast: '#ffffff'},
-				{name: '$warning-700', color: '#9c3c0a', contrast: '#ffffff'}
+				{name: '$warning-600', color: '#af4600', contrast: '#ffffff'},
+				{name: '$warning-700', color: '#80310d', contrast: '#ffffff'},
+				{name: '$warning-800', color: '#5f1a00', contrast: '#ffffff'},
+				{name: '$warning-900', color: '#501900', contrast: '#ffffff'}
 			]
 		},
 		{
@@ -123,18 +137,18 @@ export class ObPaletteComponent {
 				{name: '$brand-light', color: '#cce0eb', contrast: '#171717', details: '$primary-100'},
 				{name: '$brand-primary', color: '#006699', contrast: '#ffffff', details: '$primary-500'},
 				{name: '$brand-dark', color: '#14516f', contrast: '#ffffff', details: '$primary-700'},
-				{name: '$brand-success-light', color: '#cfe6c2', contrast: '#171717', details: '$success-100'},
-				{name: '$brand-success', color: '#00813a', contrast: '#ffffff', details: '$success-500'},
-				{name: '$brand-success-dark', color: '#004d22', contrast: '#ffffff', details: '$success-700'},
-				{name: '$brand-info-light', color: '#e6eff3', contrast: '#171717'},
-				{name: '$brand-info', color: '#006699', contrast: '#ffffff', details: '$primary-500'},
-				{name: '$brand-info-dark', color: '#004569', contrast: '#ffffff'},
-				{name: '$brand-warning-light', color: '#ffe2c2', contrast: '#171717', details: '$warning-100'},
+				{name: '$brand-success-light', color: '#c3e8cd', contrast: '#171717', details: '$success-100'},
+				{name: '$brand-success', color: '#00813a', contrast: '#ffffff', details: '$success-800'},
+				{name: '$brand-success-dark', color: '#006226', contrast: '#ffffff', details: '$success-900'},
+				{name: '$brand-info-light', color: '#cce0eb', contrast: '#171717', details: '$brand-light'},
+				{name: '$brand-info', color: '#006699', contrast: '#ffffff', details: '$brand-primary'},
+				{name: '$brand-info-dark', color: '#14516f', contrast: '#ffffff', details: '$brand-primary-dark'},
+				{name: '$brand-warning-light', color: '#fee3b5', contrast: '#171717', details: '$warning-50'},
 				{name: '$brand-warning', color: '#e75e00', contrast: '#ffffff', details: '$warning-500'},
-				{name: '$brand-warning-dark', color: '#983d00', contrast: '#ffffff', details: '$warning-700'},
-				{name: '$brand-error-light', color: '#ffdddd', contrast: '#171717'},
-				{name: '$brand-error', color: '#dc0018', contrast: '#ffffff', details: 'error-500'},
-				{name: '$brand-error-dark', color: '#b30014', contrast: '#ffffff'}
+				{name: '$brand-warning-dark', color: '#80310d', contrast: '#ffffff', details: '$warning-700'},
+				{name: '$brand-error-light', color: '#fbcad2', contrast: '#171717'},
+				{name: '$brand-error', color: '#b00020', contrast: '#ffffff', details: 'error-500'},
+				{name: '$brand-error-dark', color: '#931012', contrast: '#ffffff'}
 			]
 		}
 	];

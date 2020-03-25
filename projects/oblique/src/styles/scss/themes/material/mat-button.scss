@@ -1,0 +1,33 @@
+@import "projects/oblique/src/styles/scss/core/variables";
+
+.mat-button-base.mat-primary:not([disabled]) {
+	&:hover {
+		background-color: $brand-light;
+		color: $brand-primary;
+	}
+
+	&:focus {
+		outline: none;
+	}
+
+	.outline &:focus {
+		outline: 2px solid $brand-primary;
+		outline-offset: -4px;
+		box-shadow: 0 0 $spacing-xs 0 $brand-default;
+
+		&.mat-flat-button {
+			outline-color: $brand-light;
+		}
+	}
+}
+
+.mat-button-wrapper {
+	.fa,
+	.fas,
+	.far,
+	.fal,
+	.fad,
+	.fab {
+		margin-right: $spacing-sm;
+	}
+}

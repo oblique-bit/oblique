@@ -1,11 +1,15 @@
 import {Component} from '@angular/core';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import {ObMasterLayoutService, ObThemeService} from 'oblique';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
 	selector: 'app-datepicker',
 	templateUrl: './datepicker-sample.component.html'
 })
 export class DatepickerSampleComponent {
+	material: Observable<boolean>;
 
 	isDatepickerDisabled = true;
 	minDate: NgbDateStruct;
@@ -16,7 +20,8 @@ export class DatepickerSampleComponent {
 		range: {}
 	};
 
-	constructor() {
+	constructor(masterLayout: ObMasterLayoutService, theme: ObThemeService) {
+		this.material = theme.theme$.pipe(map(() => theme.isMaterial()));
 		const today = new Date();
 		this.minDate = DatepickerSampleComponent.dateToNgbDateStruct(new Date(new Date().setDate(today.getDate() - 7)));
 		this.maxDate = DatepickerSampleComponent.dateToNgbDateStruct(new Date(new Date().setDate(today.getDate() + 7)));

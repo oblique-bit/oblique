@@ -19,14 +19,14 @@ $black: #000000;
 
 // Oblique colors
 // http://mcg.mbitson.com/#!?mcgpalette0=%23ffc81b&themename=mcgtheme
-$primary-50: #f2f7fa;
+$primary-50: #f2f7fa;	// $brand-default
 $primary-100: #cce0eb;
 $primary-200: #99c2d6;
 $primary-300: #66a3c2;
-$primary-400: #267da8;
+$primary-400: #267da8;	// $white
 $primary-500: $cerulean;
 $primary-600: #0a5b84;
-$primary-700: #14516f;		// was #003552
+$primary-700: #14516f;
 $primary-800: #214456;
 $primary-900: #293d47;
 $primary-a100: #90c0ff;		// not from Fridolin
@@ -34,36 +34,50 @@ $primary-a200: #5da3ff;		// not from Fridolin
 $primary-a400: #2a85ff;		// not from Fridolin
 $primary-a700: #1077ff;		// not from Fridolin
 
-$error-50: #f6e0e4;		// not from Fridolin
-$error-100: #ffdddd;
-$error-200: #d88090;		// not from Fridolin
-$error-300: #c84d63;		// not from Fridolin
-$error-400: #bc2641;		// not from Fridolin
+$error-50: #fdeaee;	// $brand-default
+$error-100: #fbcad2;
+$error-200: #ea959b;
+$error-300: #de6c74;	// $white
+$error-400: #de2839;
 $error-500: #b00020;
-$error-600: #a9001c;		// not from Fridolin
-$error-700: #770000;
-$error-800: #970013;		// not from Fridolin
-$error-900: #87000b;		// not from Fridolin
-$error-a100: #ffb3b6;		// not from Fridolin
+$error-600: #a31a17;
+$error-700: #931012;
+$error-800: #86090c;
+$error-900: #630012;
+$error-a100: #ffb3b6;	// not from Fridolin
 $error-a200: #ff8085;	// not from Fridolin
 $error-a400: #ff4d53;	// not from Fridolin
 $error-a700: #ff343b;	// not from Fridolin
 
-$gray-50: $white;
+$gray-50: $white;	// $brand-default
 $gray-100: $smoke;
 $gray-200: $gainsboro;
 $gray-300: $light-gray;
 $gray-400: #b4b4b4;
-$gray-500: $empress;
+$gray-500: $empress;	// $white
 $gray-600: $coal;
 $gray-700: $night-rider;
 $gray-800: #171717;
 $gray-900: $black;
 
-$success-100: #cfe6c2;
-$success-500: #00813a;
-$success-700: #004d22;
+$success-50: #e6f6eb;	// $brand-default
+$success-100: #c3e8cd;
+$success-200: #9cd9ad;
+$success-300: #72cb8c;
+$success-400: #50bf73;	// $white
+$success-500: #27b45b;
+$success-600: #1da451;
+$success-700: #0f9245;
+$success-800: #00813a;
+$success-900: #006226;
 
-$warning-100: #ffe2c2;
+$warning-50: #fee3b5;	// $brand-default
+$warning-100: #fed284;
+$warning-200: #ffbf52;
+$warning-300: #fb970b;
+$warning-400: #f07703;	// $white
 $warning-500: #e75e00;
-$warning-700: #9c3c0a;
+$warning-600: #af4600;
+$warning-700: #80310d;
+$warning-800: #5f1a00;
+$warning-900: #501900;
