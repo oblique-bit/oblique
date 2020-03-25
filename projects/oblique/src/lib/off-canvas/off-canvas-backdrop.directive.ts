@@ -3,6 +3,7 @@ import {Directive, HostListener} from '@angular/core';
 import {ObOffCanvasService} from './off-canvas.service';
 
 @Directive({
+	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: '.offcanvas-backdrop'
 })
 export class ObOffCanvasBackdropDirective {

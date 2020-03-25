@@ -3,6 +3,7 @@ import {NgModelGroup} from '@angular/forms';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 
 @Directive({
+	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: '[ngModel]',
 })
 export class ObSchemaRequiredDirective implements OnInit {

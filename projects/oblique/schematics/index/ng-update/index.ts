@@ -1,13 +1,13 @@
-import { execSync } from 'child_process';
+import {execSync} from 'child_process';
 // install ts-morph tools as dev dependency
 console.log('Preparing tools for migration, please wait...');
 execSync('npm i -D --silent ts-morph');
 execSync('npm i -D --silent @ts-morph/common');
-import { Rule, SchematicContext, Tree, chain } from '@angular-devkit/schematics';
-import { IUpdateSchema, IMigratable } from './update-schema';
-import { UpdateV4toV5 } from './update-v4-to-v5';
-import { colors } from '@angular-devkit/core/src/terminal';
-import { OB_VERSION, OB_LATEST, OB_LAST_MAJOR_SUPPORT_VERSION, SchematicsUtil } from '../utils';
+import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
+import {IUpdateSchema, IMigratable} from './update-schema';
+import {UpdateV4toV5} from './update-v4-to-v5';
+import {colors} from '@angular-devkit/core/src/terminal';
+import {OB_VERSION, OB_LATEST, OB_LAST_MAJOR_SUPPORT_VERSION, SchematicsUtil} from '../utils';
 
 export function initalize(_options: IUpdateSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
@@ -28,7 +28,7 @@ export function initalize(_options: IUpdateSchema): Rule {
 			case '5':
 				migratable = new UpdateV4toV5();
 				latestVersion = OB_VERSION['version-5'].LATEST;
-			break;
+				break;
 			case '6':
 				_context.logger.info(colors.red('\nNOT SUPPORTED YET, TRY VERSION 5 - ABORTING\n'));
 				return tree;
@@ -49,7 +49,11 @@ export function initalize(_options: IUpdateSchema): Rule {
 
 export function finish(): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		_context.logger.info(colors.black(colors.bold(`\n WE'RE DONE WITH OBLIQUE MIGRATIONS 👌 ! LET US JUST UPDATE OTHER PACKAGES TO CONCLUDE. run ng update and npm outdated to discover the concerned packages \n`)));
-		_context.logger.info(colors.black(colors.bold(`\n NOTE: Please check that the changes are correct, especially it's possible that some word containing 'or' have been wrongly changed or if you have implementations that are named the same as in Oblique!\n`)));
+		_context.logger.info(colors.black(colors.bold('\n WE\'RE DONE WITH OBLIQUE MIGRATIONS 👌 !')));
+		_context.logger.info(colors.black(colors.bold('LET US JUST UPDATE OTHER PACKAGES TO CONCLUDE.')));
+		_context.logger.info(colors.black(colors.bold('run ng update and npm outdated to discover the concerned packages \n')));
+		_context.logger.info(colors.black(colors.bold('\n NOTE: Please check that the changes are correct')));
+		_context.logger.info(colors.black(colors.bold('especially it\'s possible that some word containing \'or\' have been wrongly changed')));
+		_context.logger.info(colors.black(colors.bold('or if you have implementations that are named the same as in Oblique!')));
 	};
 }

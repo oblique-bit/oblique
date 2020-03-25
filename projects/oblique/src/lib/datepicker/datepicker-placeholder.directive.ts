@@ -11,6 +11,7 @@ const I18N_PLACEHOLDERS = {
 };
 
 @Directive({
+	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'input[ngbDatepicker]'
 })
 export class ObDatepickerPlaceholderDirective extends ObUnsubscribable implements OnInit, OnDestroy {

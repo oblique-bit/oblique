@@ -5,6 +5,7 @@ import {ObTranslateParamsPipe} from '../translate-params/translate-params.module
 import {ObErrorMessagesDirective} from './error-messages.directive';
 
 @Directive({
+	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'mat-error'
 })
 export class ObMatErrorDirective implements OnInit {

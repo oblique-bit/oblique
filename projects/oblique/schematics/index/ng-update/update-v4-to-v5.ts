@@ -1,7 +1,7 @@
-import { execSync } from 'child_process';
-import { Rule, SchematicContext, Tree, chain } from '@angular-devkit/schematics';
-import { IMigratable } from './update-schema';
-import { colors } from '@angular-devkit/core/src/terminal';
+import {execSync} from 'child_process';
+import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
+import {IMigratable} from './update-schema';
+import {colors} from '@angular-devkit/core/src/terminal';
 import {
 	PROJECT_PACKAGE_JSON,
 	OB_PACKAGE,
@@ -17,7 +17,7 @@ export class UpdateV4toV5 implements IMigratable {
 
 	updateToLatest(_options: any, latestVersion: string): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(colors.bold(`Setting latest major oblique dependency`)) + colors.green(` ✔`));
+			_context.logger.info(colors.blue(colors.bold('Setting latest major oblique dependency')) + colors.green(' ✔'));
 
 			// dont set the version by script
 			/*const projectPackageJSON = JSON.parse(UpdateV4toV5.util.getFile(tree, PROJECT_PACKAGE_JSON));
@@ -30,7 +30,7 @@ export class UpdateV4toV5 implements IMigratable {
 
 	updatePeerDependencies(_options: any): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(colors.bold(`Update peer dependencies`)));
+			_context.logger.info(colors.blue(colors.bold('Update peer dependencies')));
 
 			const changes: Rule[] = [];
 			// dont set peer dependencies directly in package.json
@@ -44,11 +44,11 @@ export class UpdateV4toV5 implements IMigratable {
 
 	applyMigrations(_options: any): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(colors.bold(`Analyzing project 🧬`)));
+			_context.logger.info(colors.blue(colors.bold('Analyzing project 🧬')));
 
 			UpdateV4toV5.util.loadBusinessSymbols(tree);
 
-			_context.logger.info(colors.blue(colors.bold(`Applying migrations 🏁`)));
+			_context.logger.info(colors.blue(colors.bold('Applying migrations 🏁')));
 
 			return chain([
 				this.checkPreconditions(),
@@ -77,7 +77,7 @@ export class UpdateV4toV5 implements IMigratable {
 
 	private migratePopUpService(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(`- PopUpService`) + colors.green(` ✔`));
+			_context.logger.info(colors.blue('- PopUpService') + colors.green(' ✔'));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toInject = 'private readonly popUpService: PopUpService';
 			const toApply = (filePath: string) => {
@@ -116,10 +116,15 @@ export class UpdateV4toV5 implements IMigratable {
 
 	private migrateMasterLayout(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(`- MasterLayout`) + colors.green(` ✔`));
+			_context.logger.info(colors.blue('- MasterLayout') + colors.green(' ✔'));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toApply = (filePath: string) => {
-				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/MasterLayoutNavigationService\.isScrollable/g), 'MasterLayoutNavigationService\.scrollMode');
+				UpdateV4toV5.util.replaceInFile(
+					tree,
+					filePath,
+					new RegExp(/MasterLayoutNavigationService\.isScrollable/g),
+					'MasterLayoutNavigationService\.scrollMode'
+				);
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/MasterLayoutConfig\.isScrollable/g), 'MasterLayoutConfig\.scrollMode');
 			};
 			return chain([
@@ -130,7 +135,7 @@ export class UpdateV4toV5 implements IMigratable {
 
 	private migrateTestingModule(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(`- TestingModule`) + colors.green(` ✔`));
+			_context.logger.info(colors.blue('- TestingModule') + colors.green(' ✔'));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toApply = (filePath: string) => {
 				if ( UpdateV4toV5.util.getFile(tree, filePath).indexOf('configureTestingModule') !== -1 ) {
@@ -154,7 +159,7 @@ export class UpdateV4toV5 implements IMigratable {
 
 	private migrateDatePickerModule(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(`- DatePickerModule`) + colors.green(` ✔`));
+			_context.logger.info(colors.blue('- DatePickerModule') + colors.green(' ✔'));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toApply = (filePath: string) => {
 				if ( UpdateV4toV5.util.hasImport(tree, filePath, 'DatepickerModule', OB_PACKAGE) ) {
@@ -169,7 +174,7 @@ export class UpdateV4toV5 implements IMigratable {
 
 	private migrateDatePickerHTML(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(`- DatePicker`) + colors.green(` ✔`));
+			_context.logger.info(colors.blue('- DatePicker') + colors.green(' ✔'));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toApply = (filePath: string) => {
 				let html = UpdateV4toV5.util.getFile(tree, filePath);
@@ -223,7 +228,7 @@ export class UpdateV4toV5 implements IMigratable {
 
 	private migrateWindow(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(`- Window`) + colors.green(` ✔`));
+			_context.logger.info(colors.blue('- Window') + colors.green(' ✔'));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toInject = '@Inject(WINDOW) private readonly window';
 			const toApply = (filePath: string) => {
@@ -244,7 +249,7 @@ export class UpdateV4toV5 implements IMigratable {
 
 	private migrateNavTree(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(`- NavTree`) + colors.green(` ✔`));
+			_context.logger.info(colors.blue('- NavTree') + colors.green(' ✔'));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toApply = (filePath: string) => {
 				let html = UpdateV4toV5.util.getFile(tree, filePath);
@@ -268,7 +273,7 @@ export class UpdateV4toV5 implements IMigratable {
 
 	private migrateAutomaticTheming(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(`- Automatic Theming`) + colors.green(` ✔`));
+			_context.logger.info(colors.blue('- Automatic Theming') + colors.green(' ✔'));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toApply = (filePath: string) => {
 				UpdateV4toV5.util.removeImport(tree, filePath, 'OBLIQUE_THEME');
@@ -290,7 +295,7 @@ export class UpdateV4toV5 implements IMigratable {
 				UpdateV4toV5.util.addImport(tree, filePath, 'FONTS', OB_PACKAGE);
 
 				const obliqueStyleKind = ( usedTheme === 'THEMES.BOOTSTRAP' ) ? 'oblique-bootstrap.css' : 'oblique-material.css' ;
-				const obliqueStyleLocation = `node_modules/@oblique/oblique/styles/css`;
+				const obliqueStyleLocation = 'node_modules/@oblique/oblique/styles/css';
 
 				const projectJSON = JSON.parse(UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 				Object.entries(projectJSON['projects']).forEach((project: any) => {
@@ -344,7 +349,7 @@ export class UpdateV4toV5 implements IMigratable {
 
 	private migrateColorPalette(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(`- Color Palette`) + colors.green(` ✔`));
+			_context.logger.info(colors.blue('- Color Palette') + colors.green(' ✔'));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toApply = (filePath: string) => {
 				const placeholder = 'PLACEHOLDER' + Date.now();
@@ -376,7 +381,7 @@ export class UpdateV4toV5 implements IMigratable {
 
 	private migrateTextControlClearTS(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(`- Text Control Clear`) + colors.green(` ✔`));
+			_context.logger.info(colors.blue('- Text Control Clear') + colors.green(' ✔'));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toApply = (filePath: string) => {
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/MockTextControlClearModule/g), 'MockInputClearModule');
@@ -394,7 +399,7 @@ export class UpdateV4toV5 implements IMigratable {
 
 	private migrateInterceptor(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(`- Interceptor`) + colors.green(` ✔`));
+			_context.logger.info(colors.blue('- Interceptor') + colors.green(' ✔'));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toApply = (filePath: string) => {
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/ObliqueHttpInterceptorModule/g), 'HttpApiInterceptorModule');
@@ -435,7 +440,7 @@ export class UpdateV4toV5 implements IMigratable {
 
 	private migrateTranslationCallsHTML(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(`- Translations`) + colors.green(` ✔`));
+			_context.logger.info(colors.blue('- Translations') + colors.green(' ✔'));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toApply = (filePath: string) => {
 				this.migrateTranslationKeys(tree, filePath);
@@ -460,7 +465,12 @@ export class UpdateV4toV5 implements IMigratable {
 			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.accesskey.mainContent'), 'i18n.oblique.master-layout.accesskey.mainContent');
 			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.accesskey.homepage'), 'i18n.oblique.master-layout.accesskey.homepage');
 			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.accesskey.navigation'), 'i18n.oblique.master-layout.accesskey.navigation');
-			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.accessible.globalNavigationMenu'), 'i18n.oblique.master-layout.accessible.globalNavigationMenu');
+			UpdateV4toV5.util.replaceInFile(
+				tree,
+				filePath,
+				new RegExp('i18n.accessible.globalNavigationMenu'),
+				'i18n.oblique.master-layout.accessible.globalNavigationMenu'
+			);
 			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.oblique.controls.title'), 'i18n.oblique.master-layout.header.controls.title');
 			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.notification.type.info'), 'i18n.oblique.notification.type.info');
 			UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('i18n.notification.type.success'), 'i18n.oblique.notification.type.success');
@@ -472,14 +482,14 @@ export class UpdateV4toV5 implements IMigratable {
 
 	private migratePrefixesTS(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(`- Prefixes in TypeScript`) + colors.green(` ✔`));
+			_context.logger.info(colors.blue('- Prefixes in TypeScript') + colors.green(' ✔'));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toApply = (filePath: string) => {
 				// special renaming
-				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(`ORNavigationLink`, 'g'), `ObINavigationLink`);
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('ORNavigationLink', 'g'), 'ObINavigationLink');
 				UpdateV4toV5.util.updateClassIdentifiers(tree, filePath);
 				// clean up since it's not always deterministic
-				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(`ObOb`, 'g'), `Ob`);
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('ObOb', 'g'), 'Ob');
 			};
 			return chain([
 				UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.ts')
@@ -489,7 +499,7 @@ export class UpdateV4toV5 implements IMigratable {
 
 	private migratePrefixesHTML(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(`- Prefixes in HTML`) + colors.green(` ✔`));
+			_context.logger.info(colors.blue('- Prefixes in HTML') + colors.green(' ✔'));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toApply = (filePath: string) => {
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/<or-/g), '<ob-');
@@ -523,13 +533,13 @@ export class UpdateV4toV5 implements IMigratable {
 
 	private checkPreconditions(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(`Checking preconditions...`));
+			_context.logger.info(colors.blue('Checking preconditions...'));
 			const projectPackageJSON = JSON.parse(UpdateV4toV5.util.getFile(tree, PROJECT_PACKAGE_JSON));
 			const obPackageJSON = JSON.parse(UpdateV4toV5.util.getFile(tree, OB_PACKAGE_JSON));
 			const dependencies = Object.keys(projectPackageJSON['dependencies']);
 
 			if ( !dependencies.includes('@angular/localize') ) {
-				_context.logger.info(colors.blue(`- Seems there is no @localize, will add it for you...`));
+				_context.logger.info(colors.blue('- Seems there is no @localize, will add it for you...'));
 				execSync('ng add @angular/localize');
 			}
 
@@ -539,7 +549,10 @@ export class UpdateV4toV5 implements IMigratable {
 				const peerDependencyMajorVersion = parseInt(peerPackage[0], 0);
 				const dependecyMajorVersion = parseInt(dependencyPackage[0], 0);
 				if ( !dependencies.includes(packageName) || (dependecyMajorVersion < peerDependencyMajorVersion) ) {
-					throw new Error(`[ERROR] Oblique requires a peer of ${packageName}@${peerDependencyMajorVersion} but none is installed. You must install peer dependencies yourself.`);
+					const peer = `${packageName}@${peerDependencyMajorVersion}`;
+					const errorMsg =
+						`[ERROR] Oblique requires a peer of ${peer} but none is installed. You must install peer dependencies yourself.`;
+					throw new Error(errorMsg);
 				}
 			});
 
@@ -549,7 +562,8 @@ export class UpdateV4toV5 implements IMigratable {
 				const peerDependencyMajorVersion = parseInt(peerPackage[0], 0);
 				const dependecyMajorVersion = parseInt(dependencyPackage[0], 0);
 				if ( dependencies.includes(packageName) && (dependecyMajorVersion < peerDependencyMajorVersion) ) {
-					throw new Error(`[ERROR] Oblique requires a peer of ${packageName}@${peerDependencyMajorVersion} but none is installed. You must install peer dependencies yourself.`);
+					const peer = `${packageName}@${peerDependencyMajorVersion}`;
+					throw new Error(`[ERROR] Oblique requires a peer of ${peer} but none is installed. You must install peer dependencies yourself.`);
 				}
 			});
 		};
@@ -565,10 +579,10 @@ export class UpdateV4toV5 implements IMigratable {
 
 	private cleanUp(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			_context.logger.info(colors.blue(`- Clean up`) + colors.green(` ✔`));
+			_context.logger.info(colors.blue('- Clean up') + colors.green(' ✔'));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toApply = (filePath: string) => {
-				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(`this.this.`, 'g'), `this.`);
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('this.this.', 'g'), 'this.');
 				UpdateV4toV5.util.cleanUp(tree, filePath);
 			};
 			return chain([
