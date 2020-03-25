@@ -31,6 +31,9 @@
           "since": {
             "type": "string"
           },
+          "type": {
+            "type": "string"
+          },
           "variables": {
             "type": "array",
             "default": [],
@@ -132,6 +135,9 @@
         },
         "since": {
           "type": "string"
+        },
+        "isOptional": {
+          "type": "boolean"
         }
       },
       "required": [

@@ -7,6 +7,10 @@
 				<code>{{ component.selector }}</code>
 			</dd>
 		</ng-container>
+		<ng-container *ngIf="component.type">
+			<dt>Type</dt>
+			<dd>{{ component.type }}</dd>
+		</ng-container>
 		<ng-container *ngIf="component.exported">
 			<dt>Exported as</dt>
 			<dd>

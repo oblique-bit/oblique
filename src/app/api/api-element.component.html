@@ -5,6 +5,9 @@
 		<dd *ngIf="element.see">
 			See also: <a href="{{ element.see }}" target="_blank">{{ element.see }}</a>
 		</dd>
+		<dd *ngIf="element.isOptional">
+			<b>Optional</b>
+		</dd>
 		<dd *ngIf="element.type">
 			<b>Type:</b> <code>{{ element.type }}</code>
 		</dd>
@@ -15,9 +18,7 @@
 				<ng-container *ngIf="!isLast">,</ng-container>
 			</ng-container>
 		</dd>
-		<dd *ngIf="element.default != null">
-			<b>Default value:</b><span [innerHtml]="element.default"></span>
-		</dd>
+		<dd *ngIf="element.default != null"><b>Default value:</b><span [innerHtml]="element.default"></span></dd>
 		<dd *ngIf="element.arguments">
 			<b>Arguments:</b>
 			<ng-container *ngFor="let arg of element.arguments; last as isLast">
