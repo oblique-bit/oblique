@@ -32,7 +32,7 @@
     {
       "name": "ObNavigableDirective",
       "selector": "[obNavigable]",
-      "export": "obNavigable",
+      "exported": "obNavigable",
       "usage": "Set on an <code>nav-tree</code>, it will allow to navigate the tree while maintaining the focus on the filter input.",
       "since": "2.0.0",
       "inputs": [

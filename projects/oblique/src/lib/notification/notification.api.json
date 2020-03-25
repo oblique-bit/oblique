@@ -4,7 +4,7 @@
     {
       "name": "ObNotificationComponent",
       "selector": "ob-notification",
-      "export": "obNotification",
+      "exported": "obNotification",
       "since": "2.0.0",
       "inputs": [
         {

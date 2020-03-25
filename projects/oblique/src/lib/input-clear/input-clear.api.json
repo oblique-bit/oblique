@@ -21,7 +21,7 @@
           "since": "2.0.0"
         }
       ],
-      "Outputs": [
+      "outputs": [
         {
           "name": "onClear",
           "text": "Emits when the input's content has been cleared",

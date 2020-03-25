@@ -4,7 +4,7 @@
     {
       "name": "ObSpinnerComponent",
       "selector": "ob-spinner",
-      "export": "obSpinner",
+      "exported": "obSpinner",
       "since": "2.0.0",
       "inputs": [
         {
