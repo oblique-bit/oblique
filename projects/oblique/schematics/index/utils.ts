@@ -409,6 +409,9 @@ export class SchematicsUtil {
 	updateClassIdentifiers(tree: Tree, filePath: string): void {
 		const sourceFile = this.getProject().createSourceFile(filePath, this.getFile(tree, filePath));
 		const callback: Function = (node: any) => {
+			if ( !node.getText() ) {
+				return;
+			}
 			return node.getKind() === SyntaxKind.Identifier && node.getText()[0].toUpperCase() === node.getText()[0];
 		};
 		const results: any[] = [];
