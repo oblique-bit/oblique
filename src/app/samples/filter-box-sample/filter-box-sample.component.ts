@@ -14,6 +14,7 @@ export class PatternFilterPipe implements PipeTransform {
 }
 
 @Component({
+	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'app-filter-box',
 	templateUrl: 'filter-box-sample.component.html',
 	styles: [`

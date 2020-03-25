@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {ObThemeService} from 'oblique';
 
 @Component({
+	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'app-nested-form-child-td-sample',
 	exportAs: 'childTD',
 	templateUrl: './nested-form-child-td-sample.component.html',

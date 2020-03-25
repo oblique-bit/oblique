@@ -6,6 +6,7 @@ import {ObUnsavedChangesService} from 'oblique';
 
 
 @Component({
+	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'app-unsaved-changes',
 	templateUrl: 'unsaved-changes-sample.component.html',
 	styles: [`

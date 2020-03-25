@@ -5,6 +5,7 @@ import {map} from 'rxjs/operators';
 import {ObThemeService} from 'oblique';
 
 @Component({
+	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'app-nested-form-child-sample',
 	exportAs: 'child',
 	templateUrl: './nested-form-child-sample.component.html',

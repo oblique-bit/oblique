@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {ObNotificationService, ObENotificationType} from 'oblique';
 
 @Component({
+	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'notification-sample',
 	templateUrl: './notification-sample.component.html'
 })

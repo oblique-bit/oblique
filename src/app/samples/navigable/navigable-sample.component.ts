@@ -3,6 +3,7 @@ import {Component} from '@angular/core';
 import {ObNavigableOnMoveEvent, ObNavigableGroupComponent} from 'oblique';
 
 @Component({
+	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'navigable-sample',
 	templateUrl: './navigable-sample.component.html',
 	styleUrls: ['./navigable-sample.component.scss']

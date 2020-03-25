@@ -4,6 +4,7 @@ import {ObNotificationService, ObSchemaValidationService} from 'oblique';
 import {of} from 'rxjs';
 
 @Component({
+	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'app-schema-validation',
 	templateUrl: './schema-validation-sample.component.html',
 	styles: [`
