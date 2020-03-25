@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {ObMasterLayoutService, ObEScrollMode} from 'oblique';
 
 @Component({
+	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'master-layout-sample',
 	templateUrl: './master-layout-sample.component.html'
 })

@@ -1,4 +1,4 @@
-import { Rule } from '@angular-devkit/schematics';
+import {Rule} from '@angular-devkit/schematics';
 
 export interface IUpdateSchema {
 	targetVersion: string;

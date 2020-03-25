@@ -157,6 +157,20 @@ module.exports = {
 		'@angular-eslint/no-outputs-metadata-property': "error",
 		'@angular-eslint/use-lifecycle-interface': "error",
 		'@angular-eslint/use-pipe-transform-interface': "error",
+		'@angular-eslint/component-selector': ["error",
+			{
+				"type": "element",
+				"prefix": "ob",
+				"style": "kebab-case"
+			}
+		],
+		'@angular-eslint/directive-selector': ["error",
+			{
+				"type": "attribute",
+				"prefix": "ob",
+				"style": "camelCase"
+			}
+		],
 		"function-paren-newline": ["error", "multiline-arguments"]
     }
 };

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, NgForm, Validators, ValidationErrors} from '@ang
 import {ObNotificationService} from 'oblique';
 
 @Component({
+	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'app-form-control-state-sample',
 	templateUrl: './form-control-state-sample.component.html',
 	styles: [`

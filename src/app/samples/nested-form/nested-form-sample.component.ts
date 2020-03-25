@@ -5,6 +5,7 @@ import {map, tap} from 'rxjs/operators';
 import {ObNotificationService, ObThemeService} from 'oblique';
 
 @Component({
+	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'app-nested-form-sample',
 	templateUrl: './nested-form-sample.component.html',
 	styleUrls: ['./mandatory.scss']

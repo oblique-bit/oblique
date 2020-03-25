@@ -4,6 +4,7 @@ import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
 @Component({
+	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'app-root',
 	templateUrl: './app.component.html',
 	styles: [`.fa-sign-in-alt {

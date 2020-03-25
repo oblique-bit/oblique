@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
+	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'app-navigator-sample',
 	templateUrl: './navigator-sample.component.html'
 })

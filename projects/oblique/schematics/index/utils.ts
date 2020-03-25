@@ -1,8 +1,8 @@
-import { Tree, Rule, SchematicContext } from '@angular-devkit/schematics';
-import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
+import {Tree, Rule, SchematicContext} from '@angular-devkit/schematics';
+import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 import {addPackageJsonDependency, NodeDependency, NodeDependencyType, removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
-import { colors } from '@angular-devkit/core/src/terminal';
-import { Project, SyntaxKind } from 'ts-morph';
+import {colors} from '@angular-devkit/core/src/terminal';
+import {Project, SyntaxKind} from 'ts-morph';
 const fs = require('fs');
 const glob = require('glob');
 
@@ -74,7 +74,7 @@ export class SchematicsUtil {
 	getCurrentObliqueVersion(tree: Tree): string {
 		const projectPackageJSON = JSON.parse(this.getFile(tree, PROJECT_PACKAGE_JSON));
 		if ( !projectPackageJSON['dependencies'].hasOwnProperty(OB_PACKAGE) ) {
-			throw new Error(`[ERROR] no installation found, abort migration`);
+			throw new Error('[ERROR] no installation found, abort migration');
 		}
 		const packageVersion = projectPackageJSON['dependencies'][OB_PACKAGE];
 		return ( packageVersion === 'next' ) ? '100' : `${packageVersion}` || '100';
@@ -106,7 +106,7 @@ export class SchematicsUtil {
 				overwrite: true
 			};
 			addPackageJsonDependency(tree, nodeDependency);
-			_context.logger.info(colors.blue(`- ${name}@${version}`) + colors.green(` ✔`));
+			_context.logger.info(colors.blue(`- ${name}@${version}`) + colors.green(' ✔'));
 			return tree;
 		};
 	}
@@ -158,9 +158,9 @@ export class SchematicsUtil {
 
 	extractProjections(tag: string, content: string): string[] {
 		return content.split(`</${tag}>`)
-		.map(leading => leading.split(`<${tag}`)[1])
-		.filter(inner => !!inner)
-		.reduce((extracted, inner) => [...extracted, this.extractInnerFragment(inner)], []);
+			.map(leading => leading.split(`<${tag}`)[1])
+			.filter(inner => !!inner)
+			.reduce((extracted, inner) => [...extracted, this.extractInnerFragment(inner)], []);
 	}
 
 	addToList(list: string, toAdd: string, spacer = ' ', uniqueEntries = true): string {
@@ -255,7 +255,7 @@ export class SchematicsUtil {
 				const classContent = classDeclaration.getFullText();
 				classDeclaration.addConstructor({
 					'parameters': [
-						{ 'name': '@Inject(WINDOW) private readonly window' }
+						{'name': '@Inject(WINDOW) private readonly window'}
 					]
 				});
 				const classNewContent = classDeclaration.getFullText();
@@ -347,19 +347,19 @@ export class SchematicsUtil {
 	}
 
 	loadBusinessSymbols(tree: Tree): void {
-		const files = glob.sync(`**/*.ts`, { ignore: 'node_modules/**/*.ts' });
+		const files = glob.sync('**/*.ts', {ignore: 'node_modules/**/*.ts'});
 		files.forEach((file: string) => {
-				const sourceFile = this.getProject().createSourceFile(file, this.getFile(tree, file));
-				sourceFile.getChildrenOfKind(SyntaxKind.ClassDeclaration).forEach((classDeclaration: any) => {
-					this.customImplentations.push(classDeclaration.getFirstChildByKind(SyntaxKind.Identifier).getText());
-				});
+			const sourceFile = this.getProject().createSourceFile(file, this.getFile(tree, file));
+			sourceFile.getChildrenOfKind(SyntaxKind.ClassDeclaration).forEach((classDeclaration: any) => {
+				this.customImplentations.push(classDeclaration.getFirstChildByKind(SyntaxKind.Identifier).getText());
+			});
 		});
 		if ( tree.exists(PROJECT_FORCE_IMPLEMENTATION) ) {
 			this.getFile(tree, PROJECT_FORCE_IMPLEMENTATION)
-			.split('\n').map((customImplementation: string) => customImplementation.trim())
-			.forEach((customImplementation: string) => {
-				this.forceCustomImplentations.push(customImplementation);
-			});
+				.split('\n').map((customImplementation: string) => customImplementation.trim())
+				.forEach((customImplementation: string) => {
+					this.forceCustomImplentations.push(customImplementation);
+				});
 		}
 		this.loadPublicApi();
 	}
@@ -458,7 +458,7 @@ export class SchematicsUtil {
 
 	private loadPublicApi(): void {
 		if (!fs.existsSync(OB_PUBLIC_API)) {
-			throw new Error(`[ERROR] no public api found, abort migration`);
+			throw new Error('[ERROR] no public api found, abort migration');
 		}
 		const notRenamedSymbols = [
 			'CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE',
@@ -479,7 +479,10 @@ export class SchematicsUtil {
 		const timeStamp = Date.now() + '-migration';
 		let exported: string[] = [];
 		moduleContent.split(';').forEach((line: string) => {
-			exported = exported.concat(this.extractFromBrackets('{}', line).split(',').map(symbol => symbol.trim()).filter((symbol: string) => symbol.length > 0));
+			exported = exported.concat(this.extractFromBrackets('{}', line)
+				.split(',')
+				.map(symbol => symbol.trim())
+				.filter((symbol: string) => symbol.length > 0));
 		});
 		exported = exported.map((symbol: string) => {
 			if ( symbol.indexOf('as ') === -1 ) {
@@ -487,9 +490,9 @@ export class SchematicsUtil {
 			}
 			return symbol.split('as').map((fragment: string) => fragment.trim())[1];
 		}).filter((symbol: string) => !notRenamedSymbols.includes(symbol))
-		.map((symbol: string) => symbol.replace('Oblique', timeStamp))
-		.map((symbol: string) => symbol.replace('Ob', ''))
-		.map((symbol: string) => symbol.replace(timeStamp, 'Oblique'));
+			.map((symbol: string) => symbol.replace('Oblique', timeStamp))
+			.map((symbol: string) => symbol.replace('Ob', ''))
+			.map((symbol: string) => symbol.replace(timeStamp, 'Oblique'));
 		exported = exported.concat([
 			'MockTranslatePipe',
 			'MockTranslateService',
@@ -541,7 +544,9 @@ export class SchematicsUtil {
 				this.walk(child, 'useClass', results);
 				if ( results.length > 0 ) {
 					child.getChildrenOfKind(SyntaxKind.PropertyAssignment).forEach((propertyAssignment: any) => {
-						assignments = assignments.concat(propertyAssignment.getChildrenOfKind(SyntaxKind.Identifier).map((identifier: any) => identifier.getText().trim()));
+						assignments = assignments
+							.concat(propertyAssignment.getChildrenOfKind(SyntaxKind.Identifier)
+								.map((identifier: any) => identifier.getText().trim()));
 					});
 					const amount = assignments.reduce((occurences, className) => occurences + ( this.isObliqueSymbol(className) ? 1 : 0 ), 0);
 					if ( amount === 0 ) {
@@ -579,12 +584,16 @@ export class SchematicsUtil {
 
 	private getObliqueModules(): string[] {
 		if (!fs.existsSync(OB_TESTING_MODULE)) {
-			throw new Error(`[ERROR] no testing module found, abort migration`);
+			throw new Error('[ERROR] no testing module found, abort migration');
 		}
 		const moduleContent = fs.readFileSync(OB_TESTING_MODULE, 'utf8');
 		let exported: string[] = [];
 		moduleContent.split(';').forEach((line: string) => {
-			exported = exported.concat(this.extractFromBrackets('{}', line).split(',').map(symbol => symbol.trim()).filter((symbol: string) => symbol.length > 0));
+			exported = exported
+				.concat(this.extractFromBrackets('{}', line)
+					.split(',')
+					.map(symbol => symbol.trim())
+					.filter((symbol: string) => symbol.length > 0));
 		});
 		exported = exported.concat(exported.map((symbol: string) => symbol.replace('Mock', '')));
 		exported = exported.concat(this.forceObliqueImplentations);
@@ -598,7 +607,7 @@ export class SchematicsUtil {
 		this.walk(sourceFile, 'configureTestingModule', configurationCalls);
 
 		if ( configurationCalls.length === 0 ) {
-			return { needsMigration: false } as IConfigureTestingModuleCall;
+			return {needsMigration: false} as IConfigureTestingModuleCall;
 		}
 
 		const start = configurationCalls[0].getStart();
