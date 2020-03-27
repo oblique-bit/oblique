@@ -1,6 +1,6 @@
 <div class="column-left" role="complementary" #columnLeft="obColumnPanel" obColumnPanel *ngIf="left">
 	<button type="button" class="column-toggle-left" obColumnToggle #columnToggle>
-		<span class="sr-only">{{'i18n.oblique.column.left.toggle' | translate}}</span>
+		<span class="sr-only">{{ "i18n.oblique.column.left.toggle" | translate }}</span>
 	</button>
 	<div class="column-content">
 		<ng-content select="[column-left-content]"></ng-content>
@@ -13,7 +13,7 @@
 </div>
 <div class="column-right" role="complementary" #columnRight="obColumnPanel" obColumnPanel *ngIf="right">
 	<button type="button" class="column-toggle-right" obColumnToggle #columnToggle>
-		<span class="sr-only">{{'i18n.oblique.column.right.toggle' | translate}}</span>
+		<span class="sr-only">{{ "i18n.oblique.column.right.toggle" | translate }}</span>
 	</button>
 	<div class="column-content">
 		<ng-content select="[column-right-content]"></ng-content>

@@ -1,19 +1,30 @@
-<h2 class="sr-only" *ngIf="links.length">{{'i18n.oblique.header.navigation.title' | translate}}</h2>
-<button class="navigation-scrollable-control navigation-scrollable-control-left" type="button" (click)="scrollLeft()" *ngIf="isScrollable"
-		[disabled]="!currentScroll">
+<h2 class="sr-only" *ngIf="links.length">{{ "i18n.oblique.header.navigation.title" | translate }}</h2>
+<button
+	class="navigation-scrollable-control navigation-scrollable-control-left"
+	type="button"
+	(click)="scrollLeft()"
+	*ngIf="isScrollable"
+	[disabled]="!currentScroll"
+>
 	<span class="fa fa-angle-left"></span>
 </button>
 <ng-content *ngIf="!links.length"></ng-content>
-<ul id="navigation" role="menubar" *ngIf="links.length" class="main-nav" [class.navigation-scrollable-content]="isScrollable"
-	[class.main-nav-fw]="isFullWidth" tabindex="-1">
+<ul
+	id="navigation"
+	role="menubar"
+	*ngIf="links.length"
+	class="main-nav"
+	[class.navigation-scrollable-content]="isScrollable"
+	[class.main-nav-fw]="isFullWidth"
+	tabindex="-1"
+>
 	<li class="main-nav-item" role="presentation" obMasterLayoutNavigationItem *ngFor="let link of links">
-		<a [attr.id]="link.id" role="menuitem" [routerLink]="link.url" [routerLinkActive]="activeClass" obMasterLayoutNavigationToggle
-		   *ngIf="!link.children">
-			{{link.label | translate}}
+		<a [attr.id]="link.id" role="menuitem" [routerLink]="link.url" [routerLinkActive]="activeClass" obMasterLayoutNavigationToggle *ngIf="!link.children">
+			{{ link.label | translate }}
 		</a>
 		<ng-container *ngIf="link.children">
 			<a [attr.id]="link.id" role="button" tabindex="0" [class.active]="isActive(link.url)" obMasterLayoutNavigationToggle>
-				<span>{{link.label | translate}}</span>
+				<span>{{ link.label | translate }}</span>
 				<span class="toggle"></span>
 			</a>
 			<div class="sub-menu" role="menu" obMasterLayoutNavigationMenu>
@@ -21,13 +32,18 @@
 					<li role="presentation">
 						<a class="sub-menu-back" role="button" obMasterLayoutNavigationToggle tabindex="0">
 							<span class="toggle"></span>
-							<span class="label">{{link.label | translate}}</span>
+							<span class="label">{{ link.label | translate }}</span>
 						</a>
 					</li>
 					<li role="presentation" obMasterLayoutNavigationItem *ngFor="let child of link.children">
-						<a role="menuitem" [attr.id]="child.id" [routerLink]="link.url + '/' + child.url" [routerLinkActive]="activeClass"
-						   obMasterLayoutNavigationToggle>
-							{{child.label | translate}}
+						<a
+							role="menuitem"
+							[attr.id]="child.id"
+							[routerLink]="link.url + '/' + child.url"
+							[routerLinkActive]="activeClass"
+							obMasterLayoutNavigationToggle
+						>
+							{{ child.label | translate }}
 						</a>
 					</li>
 				</ul>
@@ -35,7 +51,12 @@
 		</ng-container>
 	</li>
 </ul>
-<button class="navigation-scrollable-control navigation-scrollable-control-right" (click)="scrollRight()" type="button"
-		*ngIf="isScrollable" [disabled]="currentScroll === maxScroll">
+<button
+	class="navigation-scrollable-control navigation-scrollable-control-right"
+	(click)="scrollRight()"
+	type="button"
+	*ngIf="isScrollable"
+	[disabled]="currentScroll === maxScroll"
+>
 	<span class="fa fa-angle-right"></span>
 </button>

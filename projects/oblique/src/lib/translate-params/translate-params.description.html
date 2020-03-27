@@ -3,13 +3,13 @@
 <b>*.json</b>
 <pre>
     ...
-    "key": "Start date cannot be before {{target}} date. ",
+    "key": "Start date cannot be before {{ target }} date. ",
     "target1": "end",
     "target2": "intermediate"
     ...
 </pre>
 
-<b>*.html</b><br>
+<b>*.html</b><br />
 <pre>
-    {{'key' | orTranslateParams:{target: 'target1'} }}
+    {{ "key" | orTranslateParams: { target: "target1" } }}
 </pre>
