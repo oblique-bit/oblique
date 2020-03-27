@@ -7,106 +7,94 @@ import {of} from 'rxjs';
 	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'app-schema-validation',
 	templateUrl: './schema-validation-sample.component.html',
-	styles: [`
-		.form-horizontal label {
-			text-align: right;
-		}
-	`]
+	styles: [
+		`
+			.form-horizontal label {
+				text-align: right;
+			}
+		`
+	]
 })
 export class SchemaValidationSampleComponent implements OnInit {
-
 	formData: FormGroup;
 	schema$ = of({
-		'title': 'SampleSchemaSampleValidation',
-		'type': 'object',
-		'required': [
-			'text',
-			'number',
-			'date',
-			'select',
-			'time'
-		],
-		'properties': {
-			'text': {
-				'type': 'string',
-				'minLength': 3,
-				'maxLength': 64
+		title: 'SampleSchemaSampleValidation',
+		type: 'object',
+		required: ['text', 'number', 'date', 'select', 'time'],
+		properties: {
+			text: {
+				type: 'string',
+				minLength: 3,
+				maxLength: 64
 			},
-			'number': {
-				'type': 'number',
-				'minimum': 1,
-				'maximum': 10000000,
-				'exclusiveMinimum': 1
+			number: {
+				type: 'number',
+				minimum: 1,
+				maximum: 10000000,
+				exclusiveMinimum: 1
 			},
-			'integer': {
-				'type': 'integer',
-				'minimum': 0,
-				'maximum': 100,
-				'exclusiveMaximum': 100
+			integer: {
+				type: 'integer',
+				minimum: 0,
+				maximum: 100,
+				exclusiveMaximum: 100
 			},
-			'date': {
-				'type': [
-					'object',
-					'string',
-					'number'
-				],
-				'format': 'date-time'
+			date: {
+				type: ['object', 'string', 'number'],
+				format: 'date-time'
 			},
-			'time': {
-				'format': 'date-time',
-				'type': [
-					'object',
-					'string'
+			time: {
+				format: 'date-time',
+				type: ['object', 'string']
+			},
+			select: {
+				type: 'string',
+				options: [
+					{label: 'Aaa', value: 'aaa'},
+					{label: 'Bbb', value: 'bbb'},
+					{label: 'Ccc', value: 'ccc'},
+					{label: 'Ddd', value: 'ddd'},
+					{label: 'Eee', value: 'eee'}
 				]
 			},
-			'select': {
-				'type': 'string',
-				'options': [
-					{'label': 'Aaa', 'value': 'aaa'},
-					{'label': 'Bbb', 'value': 'bbb'},
-					{'label': 'Ccc', 'value': 'ccc'},
-					{'label': 'Ddd', 'value': 'ddd'},
-					{'label': 'Eee', 'value': 'eee'}
-				]
-			},
-			'multiselect': {
-				'type': 'array',
-				'items': {
-					'type': 'object'
+			multiselect: {
+				type: 'array',
+				items: {
+					type: 'object'
 				},
-				'minItems': 1,
-				'maxItems': 4,
-				'options': [
-					{'label': 'Aaa', 'value': 'aaa'},
-					{'label': 'Bbb', 'value': 'bbb'},
-					{'label': 'Ccc', 'value': 'ccc'},
-					{'label': 'Ddd', 'value': 'ddd'},
-					{'label': 'Eee', 'value': 'eee'}
+				minItems: 1,
+				maxItems: 4,
+				options: [
+					{label: 'Aaa', value: 'aaa'},
+					{label: 'Bbb', value: 'bbb'},
+					{label: 'Ccc', value: 'ccc'},
+					{label: 'Ddd', value: 'ddd'},
+					{label: 'Eee', value: 'eee'}
 				]
 			},
-			'textarea': {
-				'type': 'string',
-				'minLength': 5,
-				'maxLength': 140
+			textarea: {
+				type: 'string',
+				minLength: 5,
+				maxLength: 140
 			},
-			'name': {
-				'type': 'object',
-				'required': ['firstName', 'lastName'],
-				'properties': {
-					'firstName': {
-						'type': 'string',
-						'minLength': 2
+			name: {
+				type: 'object',
+				required: ['firstName', 'lastName'],
+				properties: {
+					firstName: {
+						type: 'string',
+						minLength: 2
 					},
-					'lastName': {
-						'type': 'string',
-						'minLength': 2
+					lastName: {
+						type: 'string',
+						minLength: 2
 					},
-					'address': {
-						'type': 'object',
-						'required': ['street', 'number'],
-						'properties': {
-							'street': {'type': 'string'},
-							'number': {'type': 'integer'}
+					address: {
+						type: 'object',
+						required: ['street', 'number'],
+						properties: {
+							street: {type: 'string'},
+							number: {type: 'integer'}
 						}
 					}
 				}
@@ -118,8 +106,7 @@ export class SchemaValidationSampleComponent implements OnInit {
 		private readonly schemaValidation: ObSchemaValidationService,
 		private readonly notification: ObNotificationService,
 		private readonly formBuilder: FormBuilder
-	) {
-	}
+	) {}
 
 	ngOnInit(): void {
 		this.formData = this.formBuilder.group({

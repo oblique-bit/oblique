@@ -12,22 +12,8 @@ import {
 } from './navigator-sample.component';
 import {ObNavigatorModule} from 'oblique';
 
-
 @NgModule({
-	imports: [
-		CommonModule,
-		NavigatorSampleRoutingModule,
-		TranslateModule,
-		ObNavigatorModule
-	],
-	declarations: [
-		NavigatorSampleComponent,
-		ChildState1Component,
-		ChildState11Component,
-		ChildState111Component,
-		ChildState112Component,
-		ChildState12Component
-	]
+	imports: [CommonModule, NavigatorSampleRoutingModule, TranslateModule, ObNavigatorModule],
+	declarations: [NavigatorSampleComponent, ChildState1Component, ChildState11Component, ChildState111Component, ChildState112Component, ChildState12Component]
 })
-export class NavigatorSampleModule {
-}
+export class NavigatorSampleModule {}

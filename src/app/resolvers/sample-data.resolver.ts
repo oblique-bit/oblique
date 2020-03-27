@@ -5,9 +5,7 @@ import {Observable} from 'rxjs';
 
 @Injectable()
 export class SampleDataResolver implements Resolve<any> {
-
-	constructor(private readonly http: HttpClient) {
-	}
+	constructor(private readonly http: HttpClient) {}
 
 	resolve(): Observable<any> {
 		return this.http.get('./assets/sample-data.json');

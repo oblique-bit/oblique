@@ -9,7 +9,6 @@ import {ObNavigableOnMoveEvent, ObNavigableGroupComponent} from 'oblique';
 	styleUrls: ['./navigable-sample.component.scss']
 })
 export class NavigableSampleComponent {
-
 	scientistsSelection: any[] = [];
 	lockedScientists: any[] = [];
 	highlightedScientist: any = null;
@@ -52,7 +51,7 @@ export class NavigableSampleComponent {
 	}
 
 	navigablesOnChange(event) {
-		console.log(event);
+		console.info(event);
 	}
 
 	// Activation:

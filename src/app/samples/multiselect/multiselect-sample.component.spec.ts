@@ -10,16 +10,9 @@ describe('MultiselectSampleComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				MultiselectSampleComponent
-			],
-			imports: [
-				FormsModule,
-				TranslateModule.forRoot(),
-				ObMultiselectModule
-			]
-		})
-			.compileComponents();
+			declarations: [MultiselectSampleComponent],
+			imports: [FormsModule, TranslateModule.forRoot(), ObMultiselectModule]
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {

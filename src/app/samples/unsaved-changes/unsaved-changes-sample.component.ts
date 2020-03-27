@@ -4,23 +4,24 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes-sample-modal.component';
 import {ObUnsavedChangesService} from 'oblique';
 
-
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'app-unsaved-changes',
 	templateUrl: 'unsaved-changes-sample.component.html',
-	styles: [`
-		.unsaved-changes .form-horizontal label {
-			text-align: right;
-		}
+	styles: [
+		`
+			.unsaved-changes .form-horizontal label {
+				text-align: right;
+			}
 
-		/*noinspection CssUnusedSymbol*/
-		.unsaved-changes .tab-content {
-			padding: 15px;
-			border: 1px solid #ddd;
-			border-top-width: 0;
-		}
-	`],
+			/*noinspection CssUnusedSymbol*/
+			.unsaved-changes .tab-content {
+				padding: 15px;
+				border: 1px solid #ddd;
+				border-top-width: 0;
+			}
+		`
+	],
 	encapsulation: ViewEncapsulation.None,
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -41,13 +42,11 @@ export class UnsavedChangesSampleComponent implements OnInit {
 	@ViewChild('form3') form3 = <NgModelGroup>{};
 	@ViewChild('form7') form7 = <NgModelGroup>{};
 
-
 	constructor(
 		private readonly modalService: NgbModal,
 		private readonly formBuilder: FormBuilder,
 		private readonly unsavedChangesService: ObUnsavedChangesService
-	) {
-	}
+	) {}
 
 	ngOnInit() {
 		this.standAloneReactive = this.formBuilder.group({text: '', number: '', integer: '', date: ['f', Validators.required]});

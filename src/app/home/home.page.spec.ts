@@ -12,8 +12,7 @@ describe('HomePageComponent', () => {
 		TestBed.configureTestingModule({
 			imports: [ObliqueTestingModule],
 			declarations: [HomePageComponent]
-		})
-			.compileComponents();
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {

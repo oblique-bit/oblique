@@ -22,8 +22,14 @@ export class ObTooltipComponent {
 	private readonly TOOLTIP_POSITION_RIGHT: TooltipPosition = 'right';
 
 	constructor() {
-		this.positionOptions = [this.TOOLTIP_POSITION_AFTER, this.TOOLTIP_POSITION_BEFORE, this.TOOLTIP_POSITION_ABOVE,
-			this.TOOLTIP_POSITION_BELOW, this.TOOLTIP_POSITION_LEFT, this.TOOLTIP_POSITION_RIGHT];
+		this.positionOptions = [
+			this.TOOLTIP_POSITION_AFTER,
+			this.TOOLTIP_POSITION_BEFORE,
+			this.TOOLTIP_POSITION_ABOVE,
+			this.TOOLTIP_POSITION_BELOW,
+			this.TOOLTIP_POSITION_LEFT,
+			this.TOOLTIP_POSITION_RIGHT
+		];
 		this.position = this.positionOptions[0];
 	}
 

@@ -4,5 +4,4 @@ import {Component} from '@angular/core';
 	selector: 'ob-table',
 	templateUrl: './table.component.html'
 })
-export class ObTableComponent {
-}
+export class ObTableComponent {}

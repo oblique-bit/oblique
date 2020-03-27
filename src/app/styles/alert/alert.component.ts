@@ -4,5 +4,4 @@ import {Component} from '@angular/core';
 	selector: 'ob-alert',
 	templateUrl: './alert.component.html'
 })
-export class ObAlertComponent {
-}
+export class ObAlertComponent {}

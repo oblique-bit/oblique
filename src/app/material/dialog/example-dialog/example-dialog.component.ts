@@ -11,15 +11,9 @@ export interface ObIDialogData {
 	templateUrl: './example-dialog.component.html'
 })
 export class ObExampleDialogComponent {
-
-	constructor(
-		public dialogRef: MatDialogRef<ObExampleDialogComponent>,
-		@Inject(MAT_DIALOG_DATA) public data: ObIDialogData
-	) {
-	}
+	constructor(public dialogRef: MatDialogRef<ObExampleDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: ObIDialogData) {}
 
 	onCancel(): void {
 		this.dialogRef.close();
 	}
-
 }

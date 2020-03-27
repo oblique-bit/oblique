@@ -13,8 +13,7 @@ describe('StickySampleComponent', () => {
 			imports: [ObliqueTestingModule],
 			declarations: [ObStickySampleComponent],
 			schemas: [NO_ERRORS_SCHEMA]
-		})
-			.compileComponents();
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {

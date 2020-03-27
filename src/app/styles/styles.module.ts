@@ -36,7 +36,7 @@ import {ObAlertComponent} from './alert/alert.component';
 		ObPaletteComponent,
 		ObStepperComponent,
 		ObTabsComponent,
-		ObAlertComponent,
+		ObAlertComponent
 	]
 })
 export class StylesModule {}

@@ -5,5 +5,4 @@ import {Component} from '@angular/core';
 	selector: 'app-multi-tranlsate-loader',
 	templateUrl: './multi-tranlsate-loader-sample.component.html'
 })
-export class MultiTranslateLoaderSampleComponent {
-}
+export class MultiTranslateLoaderSampleComponent {}

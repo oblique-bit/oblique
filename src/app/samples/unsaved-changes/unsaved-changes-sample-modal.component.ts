@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
-
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'ngbd-modal-content',
@@ -10,6 +9,5 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 export class UnsavedChangesSampleModalComponent {
 	data: any = {};
 
-	constructor(public activeModal: NgbActiveModal) {
-	}
+	constructor(public activeModal: NgbActiveModal) {}
 }

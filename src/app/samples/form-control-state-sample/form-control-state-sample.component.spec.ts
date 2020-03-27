@@ -3,7 +3,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FormControlStateSampleComponent} from './form-control-state-sample.component';
 import {ObliqueTestingModule} from 'oblique/lib/oblique-testing.module';
 
-
 describe('FormControlStateSampleComponent', () => {
 	let component: FormControlStateSampleComponent;
 	let fixture: ComponentFixture<FormControlStateSampleComponent>;
@@ -16,13 +15,8 @@ describe('FormControlStateSampleComponent', () => {
 
 		TestBed.configureTestingModule({
 			declarations: [FormControlStateSampleComponent],
-			imports: [
-				FormsModule,
-				ReactiveFormsModule,
-				ObliqueTestingModule
-			]
-		})
-			.compileComponents();
+			imports: [FormsModule, ReactiveFormsModule, ObliqueTestingModule]
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {

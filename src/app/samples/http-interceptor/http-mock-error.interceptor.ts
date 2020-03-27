@@ -29,10 +29,12 @@ export class HttpMockErrorInterceptor implements HttpInterceptor {
 			mergeMap(() => {
 				const code = request.url.split('/').pop();
 				if (HttpMockErrorInterceptor.errorCodes.indexOf(code) > -1) {
-					return throwError(new HttpErrorResponse({
-						status: +code,
-						statusText: HttpMockErrorInterceptor.getStatusText(+code)
-					}));
+					return throwError(
+						new HttpErrorResponse({
+							status: +code,
+							statusText: HttpMockErrorInterceptor.getStatusText(+code)
+						})
+					);
 				}
 
 				return next.handle(request);
