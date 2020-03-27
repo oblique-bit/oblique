@@ -13,8 +13,8 @@ export class ObNavTreeItemModel {
 	fragment?: string; // See `fragment` docs under https://angular.io/api/router/RouterLink
 	queryParams?: any; // See `queryParams` docs under https://angular.io/api/router/RouterLink
 
-	disabled ? = false;
-	collapsed ? = false;
+	disabled? = false;
+	collapsed? = false;
 
 	parent?: ObNavTreeItemModel; // Reference to parent, if any.
 
@@ -22,7 +22,6 @@ export class ObNavTreeItemModel {
 	routes: any[] = [];
 
 	constructor(json: any, parent?: ObNavTreeItemModel) {
-
 		Object.assign(this, json);
 		if (parent) {
 			this.parent = parent;
@@ -35,7 +34,7 @@ export class ObNavTreeItemModel {
 
 		// Convert all sub items:
 		if (Array.isArray(json.items)) {
-			this.items = json.items.map((item) => new ObNavTreeItemModel(item, this));
+			this.items = json.items.map(item => new ObNavTreeItemModel(item, this));
 		}
 	}
 }

@@ -13,9 +13,7 @@ export class ObMockSearchBoxComponent {
 	@Input() maxResults = 10;
 	@Input() slide = true;
 
-	open(): void {
-	}
+	open(): void {}
 
-	close(): void {
-	}
+	close(): void {}
 }

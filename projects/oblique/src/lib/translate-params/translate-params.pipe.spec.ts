@@ -4,16 +4,16 @@ import {inject, TestBed} from '@angular/core/testing';
 
 describe('TranslateParamsPipe', () => {
 	beforeEach(() => {
-
 		const mockTranslate = {
-			instant: jest.fn().mockImplementation((value: string, arg?: { value: string }) => typeof arg === 'object' && arg.value
-				? value.replace('{{value}}', arg.value)
-				: value)
+			instant: jest
+				.fn()
+				.mockImplementation((value: string, arg?: {value: string}) =>
+					typeof arg === 'object' && arg.value ? value.replace('{{value}}', arg.value) : value
+				)
 		};
-		TestBed
-			.configureTestingModule({
-				providers: [{provide: TranslateService, useValue: mockTranslate}]
-			});
+		TestBed.configureTestingModule({
+			providers: [{provide: TranslateService, useValue: mockTranslate}]
+		});
 	});
 
 	it('create an instance', inject([TranslateService], (translate: TranslateService) => {

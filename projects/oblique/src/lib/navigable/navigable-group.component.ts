@@ -31,7 +31,6 @@ import {ObNavigableDirective, ObNavigableOnChangeEvent, ObNavigableOnMoveEvent} 
 	encapsulation: ViewEncapsulation.None
 })
 export class ObNavigableGroupComponent extends ObUnsubscribable implements AfterContentInit {
-
 	/**
 	 * A collection containing all data models of the current group.
 	 */
@@ -74,14 +73,12 @@ export class ObNavigableGroupComponent extends ObUnsubscribable implements After
 		this.differ.diff(this.navigables.toArray());
 
 		// Listen to navigable list changes:
-		this.navigables.changes
-			.pipe(takeUntil(this.unsubscribe))
-			.subscribe((changes: QueryList<ObNavigableDirective>) => {
-				const diff = this.differ.diff(changes.toArray());
-				diff.forEachAddedItem((record: IterableChangeRecord<ObNavigableDirective>) => {
-					this.registerNavigableEvents(record.item);
-				});
+		this.navigables.changes.pipe(takeUntil(this.unsubscribe)).subscribe((changes: QueryList<ObNavigableDirective>) => {
+			const diff = this.differ.diff(changes.toArray());
+			diff.forEachAddedItem((record: IterableChangeRecord<ObNavigableDirective>) => {
+				this.registerNavigableEvents(record.item);
 			});
+		});
 	}
 
 	// Public API ---------------------
@@ -103,7 +100,6 @@ export class ObNavigableGroupComponent extends ObUnsubscribable implements After
 
 	// Private API ---------------------
 	private registerNavigableEvents(navigable: ObNavigableDirective) {
-
 		this.registerOnActivation(navigable);
 		this.registerOnChange(navigable);
 		this.registerOnMouseDown(navigable);
@@ -113,94 +109,83 @@ export class ObNavigableGroupComponent extends ObUnsubscribable implements After
 
 	//START Refactoring
 	private registerOnActivation(navigable: ObNavigableDirective) {
-		navigable.navigableOnActivation
-			.pipe(takeUntil(this.unsubscribe))
-			.subscribe(() => {
-				this.addToSelection(navigable);
-			});
+		navigable.navigableOnActivation.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
+			this.addToSelection(navigable);
+		});
 	}
 
 	private registerOnChange(navigable: ObNavigableDirective) {
-		navigable.navigableOnChange
-			.pipe(takeUntil(this.unsubscribe))
-			.subscribe(($event: ObNavigableOnChangeEvent) => {
-				const index = this.indexOf(navigable);
-				let next: ObNavigableDirective = null;
+		navigable.navigableOnChange.pipe(takeUntil(this.unsubscribe)).subscribe(($event: ObNavigableOnChangeEvent) => {
+			const index = this.indexOf(navigable);
+			let next: ObNavigableDirective = null;
 
-				if ($event.code === 'ArrowUp') {
-					next = this.fromIndex(Math.max(index - 1, 0));
-				} else if ($event.code === 'ArrowDown') {
-					next = this.fromIndex(Math.min(index + 1, this.navigables.length));
+			if ($event.code === 'ArrowUp') {
+				next = this.fromIndex(Math.max(index - 1, 0));
+			} else if ($event.code === 'ArrowDown') {
+				next = this.fromIndex(Math.min(index + 1, this.navigables.length));
+			}
+
+			if (next) {
+				if (next.selected) {
+					this.deselect(navigable);
 				}
 
-				if (next) {
-					if (next.selected) {
-						this.deselect(navigable);
-					}
-
-					this.activate(next, $event.combine);
-					next.focus();
-				}
-			});
+				this.activate(next, $event.combine);
+				next.focus();
+			}
+		});
 	}
 
 	private registerOnMouseDown(navigable: ObNavigableDirective) {
-		navigable.navigableOnMouseDown
-			.pipe(takeUntil(this.unsubscribe))
-			.subscribe(($event: MouseEvent) => {
-				if ($event && $event.shiftKey) {
-					this.selectChildRange(navigable);
-				} else if ($event && $event.ctrlKey) {
-					// eslint-disable-next-line no-unused-expressions
-					navigable.selected ? this.removeFromSelection(navigable) : this.addToSelection(navigable);
+		navigable.navigableOnMouseDown.pipe(takeUntil(this.unsubscribe)).subscribe(($event: MouseEvent) => {
+			if ($event && $event.shiftKey) {
+				this.selectChildRange(navigable);
+			} else if ($event && $event.ctrlKey) {
+				// eslint-disable-next-line no-unused-expressions
+				navigable.selected ? this.removeFromSelection(navigable) : this.addToSelection(navigable);
+			} else {
+				this.navigables.forEach(child => {
+					if (child !== navigable) {
+						this.deactivate(child, true);
+					}
+				});
 
-				} else {
-					this.navigables.forEach(child => {
-						if (child !== navigable) {
-							this.deactivate(child, true);
-						}
-					});
+				this.addToSelection(navigable);
+			}
 
-					this.addToSelection(navigable);
-				}
-
-				// In any case, deactivate current active navigable item:
-				this.deactivate(this.getActive());
-			});
+			// In any case, deactivate current active navigable item:
+			this.deactivate(this.getActive());
+		});
 	}
 
 	private registerOnFocus(navigable: ObNavigableDirective) {
-		navigable.navigableOnFocus
-			.pipe(takeUntil(this.unsubscribe))
-			.subscribe(() => {
-				if (!navigable.active) {
-					// When a child is about to receive focus, deactivate the other items:
-					this.navigables.forEach(child => child !== navigable && this.deactivate(child, true)); //TODO: take a look at this
-					this.addToSelection(navigable);
-				}
-			});
+		navigable.navigableOnFocus.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
+			if (!navigable.active) {
+				// When a child is about to receive focus, deactivate the other items:
+				this.navigables.forEach(child => child !== navigable && this.deactivate(child, true)); //TODO: take a look at this
+				this.addToSelection(navigable);
+			}
+		});
 	}
 
 	private registerOnMove(navigable: ObNavigableDirective) {
-		navigable.navigableOnMove
-			.pipe(takeUntil(this.unsubscribe))
-			.subscribe(($event: ObNavigableOnMoveEvent) => {
-				if (!$event.prevented) {
-					const from = this.indexOf(navigable);
+		navigable.navigableOnMove.pipe(takeUntil(this.unsubscribe)).subscribe(($event: ObNavigableOnMoveEvent) => {
+			if (!$event.prevented) {
+				const from = this.indexOf(navigable);
 
-					if ($event.code === 'ArrowUp') {
-						const to = from - 1;
-						if (to >= 0) {
-							this.items.splice(to, 0, this.items.splice(from, 1)[0]);
-						}
-					} else if ($event.code === 'ArrowDown') {
-						const to = from + 1;
-						if (to < this.items.length) {
-							this.items.splice(to, 0, this.items.splice(from, 1)[0]);
-						}
+				if ($event.code === 'ArrowUp') {
+					const to = from - 1;
+					if (to >= 0) {
+						this.items.splice(to, 0, this.items.splice(from, 1)[0]);
+					}
+				} else if ($event.code === 'ArrowDown') {
+					const to = from + 1;
+					if (to < this.items.length) {
+						this.items.splice(to, 0, this.items.splice(from, 1)[0]);
 					}
 				}
-			});
+			}
+		});
 	}
 
 	//END Refactoring

@@ -43,15 +43,7 @@ export {ObMasterLayoutConfig, ObEScrollMode} from './master-layout.config';
 export {ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from './master-layout.utility';
 
 @NgModule({
-	imports: [
-		CommonModule,
-		TranslateModule,
-		RouterModule,
-		ObNotificationModule,
-		ObSpinnerModule,
-		ObScrollingModule,
-		ObOffCanvasModule
-	],
+	imports: [CommonModule, TranslateModule, RouterModule, ObNotificationModule, ObSpinnerModule, ObScrollingModule, ObOffCanvasModule],
 	declarations: [
 		ObMasterLayoutComponent,
 		ObMasterLayoutHeaderComponent,

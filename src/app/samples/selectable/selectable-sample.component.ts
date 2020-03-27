@@ -14,8 +14,7 @@ export class ObSelectableSampleComponent implements OnInit {
 	preselectionCollection: any[] = [];
 	event: ObISelectableCollectionChanged;
 
-	constructor(readonly selectedService: ObSelectableService) {
-	}
+	constructor(readonly selectedService: ObSelectableService) {}
 
 	ngOnInit(): void {
 		this.getCollections();
@@ -42,11 +41,10 @@ export class ObSelectableSampleComponent implements OnInit {
 		this.preselectionCollection = this.selectedService.getCollection('preselection');
 	}
 
-	private map2Object(map: Map<string, any[]>): { [key: string]: any } {
+	private map2Object(map: Map<string, any[]>): {[key: string]: any} {
 		// because JSON pipe cannot display Maps
 		const obj = {};
-		map.forEach((value, key) => obj[key] = value);
-		return (obj);
+		map.forEach((value, key) => (obj[key] = value));
+		return obj;
 	}
-
 }

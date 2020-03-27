@@ -92,11 +92,11 @@ export class ObMasterLayoutComponent extends ObUnsubscribable implements OnInit 
 			this.isScrolling = scrollTop > 0;
 			this.scrollEvents.scrolling(this.isScrolling);
 		}
-		this.masterLayout.footer.configEvents.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.SMALL)).subscribe(evt => this.footerSm = evt.value);
+		this.masterLayout.footer.configEvents.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.SMALL)).subscribe(evt => (this.footerSm = evt.value));
 	}
 
 	private propertyChanges() {
-		this.masterLayout.layout.configEvents.pipe(takeUntil(this.unsubscribe)).subscribe((event) => {
+		this.masterLayout.layout.configEvents.pipe(takeUntil(this.unsubscribe)).subscribe(event => {
 			switch (event.name) {
 				case ObEMasterLayoutEventValues.MAIN_NAVIGATION:
 					this.noNavigation = !event.value;
@@ -121,23 +121,30 @@ export class ObMasterLayoutComponent extends ObUnsubscribable implements OnInit 
 	}
 
 	private focusFragment() {
-		this.router.events.pipe(
-			filter(evt => evt instanceof NavigationEnd),
-			map(() => this.router.url.split('#'))
-		).subscribe((route) => {
-			this.url = route[0];
-			if (route[1] && this.config.focusableFragments.indexOf(route[1]) > -1) {
-				const el = document.getElementById(route[1]);
-				if (el) {
-					el.focus();
+		this.router.events
+			.pipe(
+				filter(evt => evt instanceof NavigationEnd),
+				map(() => this.router.url.split('#'))
+			)
+			.subscribe(route => {
+				this.url = route[0];
+				if (route[1] && this.config.focusableFragments.indexOf(route[1]) > -1) {
+					const el = document.getElementById(route[1]);
+					if (el) {
+						el.focus();
+					}
 				}
-			}
-		});
+			});
 	}
 
 	private focusOffCanvasClose() {
-		this.offCanvasService.opened.pipe(takeUntil(this.unsubscribe), filter(value => value)).subscribe(() => {
-			setTimeout(() => this.offCanvasClose.nativeElement.focus(), 600);
-		});
+		this.offCanvasService.opened
+			.pipe(
+				takeUntil(this.unsubscribe),
+				filter(value => value)
+			)
+			.subscribe(() => {
+				setTimeout(() => this.offCanvasClose.nativeElement.focus(), 600);
+			});
 	}
 }

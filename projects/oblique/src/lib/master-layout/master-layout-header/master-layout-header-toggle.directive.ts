@@ -6,9 +6,7 @@ import {ObMasterLayoutComponentService} from '../master-layout/master-layout.com
 	exportAs: 'obMasterLayoutHeaderToggle'
 })
 export class ObMasterLayoutHeaderToggleDirective {
-
-	constructor(private readonly masterLayout: ObMasterLayoutComponentService) {
-	}
+	constructor(private readonly masterLayout: ObMasterLayoutComponentService) {}
 
 	@HostListener('click', ['$event'])
 	@HostListener('keyup.enter', ['$event'])

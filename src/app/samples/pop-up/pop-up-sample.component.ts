@@ -6,9 +6,7 @@ import {ObNotificationService, ObPopUpService} from 'oblique';
 	templateUrl: './pop-up-sample.component.html'
 })
 export class ObPopUpSampleComponent {
-
-	constructor(private readonly popup: ObPopUpService, private readonly notification: ObNotificationService) {
-	}
+	constructor(private readonly popup: ObPopUpService, private readonly notification: ObNotificationService) {}
 
 	confirm(text: string): void {
 		if (this.popup.confirm(text)) {
@@ -20,12 +18,10 @@ export class ObPopUpSampleComponent {
 
 	alert(text: string): void {
 		this.popup.alert(text);
-		console.log('asdf');
 	}
 
 	prompt(text: string): void {
 		const data = this.popup.prompt(text);
 		this.notification.info(`You entered ${data}`);
 	}
-
 }

@@ -8,5 +8,4 @@ export {ObMockTranslateParamsPipe} from './mock-translate-params.pipe';
 	declarations: [ObMockTranslateParamsPipe],
 	exports: [ObMockTranslateParamsPipe]
 })
-export class ObMockTranslateParamsModule {
-}
+export class ObMockTranslateParamsModule {}

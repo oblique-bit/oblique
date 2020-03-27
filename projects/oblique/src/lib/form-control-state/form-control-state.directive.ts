@@ -15,7 +15,6 @@ import {ObParentFormDirective} from '../nested-form/parent-form.directive';
 	exportAs: 'obFormControlState'
 })
 export class ObFormControlStateDirective extends ObUnsubscribable implements AfterViewInit {
-
 	@Input() pristineValidation = false;
 	@Input() mandatory;
 
@@ -29,7 +28,7 @@ export class ObFormControlStateDirective extends ObUnsubscribable implements Aft
 	private inputElement;
 
 	constructor(
-	@Optional() ngForm: NgForm,
+		@Optional() ngForm: NgForm,
 		@Optional() formGroupDirective: FormGroupDirective,
 		@Optional() formGroupName: FormGroupName,
 		@Optional() modelGroup: NgModelGroup,
@@ -62,10 +61,7 @@ export class ObFormControlStateDirective extends ObUnsubscribable implements Aft
 
 		this.inputContainer = this.inputElement.parentElement;
 
-		merge(
-			this.form.ngSubmit,
-			this.ngControl.statusChanges
-		)
+		merge(this.form.ngSubmit, this.ngControl.statusChanges)
 			.pipe(takeUntil(this.unsubscribe), delay(0))
 			.subscribe(() => this.generateState());
 
@@ -86,15 +82,11 @@ export class ObFormControlStateDirective extends ObUnsubscribable implements Aft
 	}
 
 	private isMandatory(): boolean {
-		return this.mandatory
-			|| this.inputElement.hasAttribute('required')
-			|| (this.ngControl.errors && this.ngControl.errors.required);
+		return this.mandatory || this.inputElement.hasAttribute('required') || (this.ngControl.errors && this.ngControl.errors.required);
 	}
 
 	private generateState(submitted = false): void {
-		this.hasErrorClass = (submitted || this.form.submitted || !this.ngControl.pristine || this.pristineValidation)
-			? this.ngControl.invalid
-			: false;
+		this.hasErrorClass = submitted || this.form.submitted || !this.ngControl.pristine || this.pristineValidation ? this.ngControl.invalid : false;
 
 		const mandatory = 'control-mandatory';
 		if (this.isMandatory() && !this.ngControl.value) {

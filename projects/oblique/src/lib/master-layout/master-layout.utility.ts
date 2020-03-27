@@ -27,12 +27,15 @@ export enum ObEMasterLayoutEventValues {
 	LAYOUT
 }
 
-export function scrollEnabled(service: ObMasterLayoutHeaderService | ObMasterLayoutFooterService): <T>(source: Observable<T>) => Observable<T>  {
+export function scrollEnabled(service: ObMasterLayoutHeaderService | ObMasterLayoutFooterService): <T>(source: Observable<T>) => Observable<T> {
 	const [enabled$, disabled$] = partition(
-		merge(service.configEvents, of({
-			name: ObEMasterLayoutEventValues.SCROLL_TRANSITION,
-			value: service.hasScrollTransition
-		})).pipe(
+		merge(
+			service.configEvents,
+			of({
+				name: ObEMasterLayoutEventValues.SCROLL_TRANSITION,
+				value: service.hasScrollTransition
+			})
+		).pipe(
 			filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.SCROLL_TRANSITION),
 			shareReplay({refCount: true, bufferSize: 1})
 		),

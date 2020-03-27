@@ -3,7 +3,6 @@ import {Observable, Subject} from 'rxjs';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from '../master-layout.utility';
 
-
 @Injectable({providedIn: 'root'})
 export class ObMasterLayoutHeaderService {
 	private readonly _events = new Subject<ObIMasterLayoutEvent>();
@@ -14,8 +13,7 @@ export class ObMasterLayoutHeaderService {
 	private _isSticky = this.config.header.isSticky;
 	private _hasScrollTransition = this.config.header.hasScrollTransitions;
 
-	constructor(private readonly config: ObMasterLayoutConfig) {
-	}
+	constructor(private readonly config: ObMasterLayoutConfig) {}
 
 	get configEvents(): Observable<ObIMasterLayoutEvent> {
 		return this.eventsS;

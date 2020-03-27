@@ -10,8 +10,7 @@ export class ObDescriptionComponent implements OnInit {
 	@Input() directory: string;
 	description: SafeHtml;
 
-	constructor(private readonly sanitizer: DomSanitizer) {
-	}
+	constructor(private readonly sanitizer: DomSanitizer) {}
 
 	ngOnInit(): void {
 		this.description = this.sanitizer.bypassSecurityTrustHtml(

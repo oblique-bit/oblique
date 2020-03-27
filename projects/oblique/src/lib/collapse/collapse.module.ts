@@ -10,16 +10,12 @@ export {ObCollapseComponent, OBLIQUE_COLLAPSE_ACTIVE} from './collapse.component
 
 @NgModule({
 	imports: [CommonModule],
-	declarations: [
-		ObCollapseComponent
-	],
+	declarations: [ObCollapseComponent],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
-	exports: [
-		ObCollapseComponent
-	]
+	exports: [ObCollapseComponent]
 })
 export class ObCollapseModule {
 	constructor(telemetry: ObTelemetryService) {

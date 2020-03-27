@@ -1,17 +1,17 @@
 <ng-content select="[obFooter]" *ngIf="isCustom"></ng-content>
-<h1 class="sr-only">{{'i18n.oblique.footer.title' | translate}}</h1>
+<h1 class="sr-only">{{ "i18n.oblique.footer.title" | translate }}</h1>
 <ng-content select="[orFooter]" *ngIf="isCustom"></ng-content>
 <ng-container *ngIf="!isCustom">
 	<div class="footer-item footer-item-logo footer-sm-collapse">
 		<a [routerLink]="home" class="application-brand-logo">
-			<img src="./assets/styles/images/logo.svg" alt="{{'i18n.application.organization.name' | translate}}"/>
+			<img src="./assets/styles/images/logo.svg" alt="{{ 'i18n.application.organization.name' | translate }}" />
 		</a>
 	</div>
-	<h1 class="sr-only">{{'i18n.oblique.footer.info.title' | translate}}</h1>
+	<h1 class="sr-only">{{ "i18n.oblique.footer.info.title" | translate }}</h1>
 	<div class="footer-item footer-item-info">
 		<ng-content select="[obFooterInfo]"></ng-content>
 	</div>
-	<h1 class="sr-only">{{'i18n.oblique.footer.links.title' | translate}}</h1>
+	<h1 class="sr-only">{{ "i18n.oblique.footer.links.title" | translate }}</h1>
 	<ul class="footer-item footer-item-links" role="menu" *ngIf="templates.length">
 		<li role="presentation" *ngFor="let template of templates">
 			<ng-container [ngTemplateOutlet]="template"></ng-container>

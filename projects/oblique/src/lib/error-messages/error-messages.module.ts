@@ -21,13 +21,7 @@ export {ObMatErrorDirective} from './mat-error.directive';
 export {ObErrorMessagesDirective} from './error-messages.directive';
 
 @NgModule({
-	imports: [
-		CommonModule,
-		FormsModule,
-		TranslateModule,
-		ObFormControlStateModule,
-		ObTranslateParamsModule
-	],
+	imports: [CommonModule, FormsModule, TranslateModule, ObFormControlStateModule, ObTranslateParamsModule],
 	declarations: [ObErrorMessagesComponent, ObMatErrorDirective, ObErrorMessagesDirective],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},

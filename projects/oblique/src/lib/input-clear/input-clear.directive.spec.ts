@@ -10,12 +10,9 @@ class MockTranslatePipe implements PipeTransform {
 }
 
 @Component({
-	template: `
-		TODO
-	`
+	template: ` TODO `
 })
-class TestComponent {
-}
+class TestComponent {}
 
 describe('TextControlClear', () => {
 	let component: TestComponent;

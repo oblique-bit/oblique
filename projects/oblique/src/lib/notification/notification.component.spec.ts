@@ -25,8 +25,7 @@ describe('NotificationComponent', () => {
 				{provide: ObNotificationConfig, useClass: ObMockNotificationConfig},
 				{provide: ObNotificationService, useClass: ObMockNotificationService}
 			]
-		})
-			.compileComponents();
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -137,7 +136,6 @@ describe('NotificationComponent', () => {
 		const htmlNotifications = fixture.debugElement.queryAll(By.css('.notification'));
 		expect(htmlNotifications.length).toBe(0);
 	}));
-
 
 	it('should *not* close a _sticky_ notification after `timeout` is reached', fakeAsync(() => {
 		component.open({

@@ -100,10 +100,9 @@ export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements A
 	}
 
 	private reduceOnScroll() {
-		this.scrollEvents.isScrolled.pipe(takeUntil(this.unsubscribe), scrollEnabled(this.masterLayout.header))
-			.subscribe((isScrolling) => {
-				this.isMedium = isScrolling;
-			});
+		this.scrollEvents.isScrolled.pipe(takeUntil(this.unsubscribe), scrollEnabled(this.masterLayout.header)).subscribe(isScrolling => {
+			this.isMedium = isScrolling;
+		});
 	}
 
 	private propertyChanges() {
@@ -113,31 +112,33 @@ export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements A
 			ObEMasterLayoutEventValues.MEDIUM,
 			ObEMasterLayoutEventValues.STICKY
 		];
-		this.masterLayout.header.configEvents.pipe(
-			filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
-			takeUntil(this.unsubscribe)
-		).subscribe((event) => {
-			switch (event.name) {
-				case ObEMasterLayoutEventValues.ANIMATE:
-					this.isAnimated = event.value;
-					break;
-				case ObEMasterLayoutEventValues.CUSTOM:
-					this.isCustom = event.value;
-					break;
-				case ObEMasterLayoutEventValues.MEDIUM:
-					this.isMedium = event.value;
-					break;
-				case ObEMasterLayoutEventValues.STICKY:
-					this.isSticky = event.value;
-					break;
-			}
-		});
+		this.masterLayout.header.configEvents
+			.pipe(
+				filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(event => {
+				switch (event.name) {
+					case ObEMasterLayoutEventValues.ANIMATE:
+						this.isAnimated = event.value;
+						break;
+					case ObEMasterLayoutEventValues.CUSTOM:
+						this.isCustom = event.value;
+						break;
+					case ObEMasterLayoutEventValues.MEDIUM:
+						this.isMedium = event.value;
+						break;
+					case ObEMasterLayoutEventValues.STICKY:
+						this.isSticky = event.value;
+						break;
+				}
+			});
 	}
 
 	private formatLocales(): ObILocaleObject[] {
 		const locales: ObILocaleObject[] = [];
 		if (!this.config.locale.disabled) {
-			this.config.locale.locales.forEach((loc) => {
+			this.config.locale.locales.forEach(loc => {
 				const locale: ObILocaleObject = {
 					locale: (loc as ObILocaleObject).locale || (loc as string)
 				};
@@ -155,9 +156,8 @@ export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements A
 		// these elements must not be focusable during the closing animation. Otherwise, the focused element will be scrolled into view
 		// and the header will appear empty.
 		const isFocusable = this.window.innerWidth > 991 || !isMenuOpened;
-		Array.from(this.el.nativeElement.querySelectorAll('.application-header-controls a.control-link'))
-			.forEach(el => {
-				this.renderer.setAttribute(el, 'tabindex', isFocusable ? '0' : '-1');
-			});
+		Array.from(this.el.nativeElement.querySelectorAll('.application-header-controls a.control-link')).forEach(el => {
+			this.renderer.setAttribute(el, 'tabindex', isFocusable ? '0' : '-1');
+		});
 	}
 }

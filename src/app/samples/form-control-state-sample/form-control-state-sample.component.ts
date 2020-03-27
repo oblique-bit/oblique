@@ -6,15 +6,17 @@ import {ObNotificationService} from 'oblique';
 	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'app-form-control-state-sample',
 	templateUrl: './form-control-state-sample.component.html',
-	styles: [`
-		.form-horizontal label {
-			text-align: right;
-		}
+	styles: [
+		`
+			.form-horizontal label {
+				text-align: right;
+			}
 
-		.card + .card {
-			margin-top: 2rem;
-		}
-	`]
+			.card + .card {
+				margin-top: 2rem;
+			}
+		`
+	]
 })
 export class FormControlStateSampleComponent {
 	formData: FormGroup;

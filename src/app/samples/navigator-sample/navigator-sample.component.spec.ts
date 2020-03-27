@@ -11,8 +11,7 @@ describe('NavigatorSampleComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [NavigatorSampleComponent],
 			imports: [RouterTestingModule, ObliqueTestingModule]
-		})
-			.compileComponents();
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {

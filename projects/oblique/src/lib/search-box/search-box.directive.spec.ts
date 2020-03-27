@@ -18,13 +18,8 @@ describe('SearchBoxDirective', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				TestComponent,
-				ObSearchBoxDirective
-			],
-			providers: [
-				NgControl
-			]
+			declarations: [TestComponent, ObSearchBoxDirective],
+			providers: [NgControl]
 		});
 
 		fixture = TestBed.createComponent(TestComponent);
@@ -34,5 +29,4 @@ describe('SearchBoxDirective', () => {
 	it('should create component', () => {
 		expect(component).toBeDefined();
 	});
-
 });

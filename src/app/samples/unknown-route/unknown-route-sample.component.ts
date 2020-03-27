@@ -4,5 +4,4 @@ import {Component} from '@angular/core';
 	selector: 'ob-unknown-route-sample',
 	templateUrl: './unknown-route-sample.component.html'
 })
-export class ObUnknownRouteSampleComponent {
-}
+export class ObUnknownRouteSampleComponent {}

@@ -13,24 +13,17 @@ export {ObNavigatorComponent} from './navigator.component';
  * @deprecated since version 4.0.0. This module is neither useful nor used and will be removed in future versions
  */
 @NgModule({
-	imports: [
-		RouterModule
-	],
-	declarations: [
-		ObNavigatorComponent
-	],
+	imports: [RouterModule],
+	declarations: [ObNavigatorComponent],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 		{provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
-	exports: [
-		ObNavigatorComponent
-	]
+	exports: [ObNavigatorComponent]
 })
 export class ObNavigatorModule {
 	constructor(telemetry: ObTelemetryService) {
 		requireAndRecordTelemetry(telemetry, ObNavigatorModule);
 	}
 }
-

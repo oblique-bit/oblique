@@ -14,27 +14,16 @@ describe('DatepickerSampleComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [DatepickerSampleComponent],
-			imports: [
-				DatepickerModule,
-				NgbDatepickerModule,
-				NgbTooltipModule,
-				FormsModule,
-				ObliqueTestingModule
-			],
-			schemas: [
-				CUSTOM_ELEMENTS_SCHEMA
-			]
-		}).overrideModule(DatepickerModule, {
-			//We don't need this directive in this test
-			remove: {
-				declarations: [
-					DatepickerPlaceholderDirective
-				],
-				exports: [
-					DatepickerPlaceholderDirective
-				]
-			}
+			imports: [DatepickerModule, NgbDatepickerModule, NgbTooltipModule, FormsModule, ObliqueTestingModule],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		})
+			.overrideModule(DatepickerModule, {
+				//We don't need this directive in this test
+				remove: {
+					declarations: [DatepickerPlaceholderDirective],
+					exports: [DatepickerPlaceholderDirective]
+				}
+			})
 			.compileComponents();
 	}));
 

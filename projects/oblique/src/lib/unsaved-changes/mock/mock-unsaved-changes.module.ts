@@ -17,5 +17,4 @@ export {ObMockUnsavedChangesGuard} from './mock-unsaved-changes.guard';
 		{provide: ObUnsavedChangesGuard, useClass: ObMockUnsavedChangesGuard}
 	]
 })
-export class ObMockUnsavedChangesModule {
-}
+export class ObMockUnsavedChangesModule {}

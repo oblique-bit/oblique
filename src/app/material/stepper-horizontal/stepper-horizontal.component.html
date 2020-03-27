@@ -1,13 +1,19 @@
 <h2 class="page-header">Stepper Horizontal</h2>
 <ob-column-layout [left]="false">
 	<ng-container column-main-content>
-		<mat-horizontal-stepper [linear]="true" [disableRipple]="isRippleDisabled" [labelPosition]="labelBottom ? 'bottom' : 'end'" #stepper
-								[class.mat-stepper-lg]="isLarge" [class.mat-stepper-sm]="isSmall">
+		<mat-horizontal-stepper
+			[linear]="true"
+			[disableRipple]="isRippleDisabled"
+			[labelPosition]="labelBottom ? 'bottom' : 'end'"
+			#stepper
+			[class.mat-stepper-lg]="isLarge"
+			[class.mat-stepper-sm]="isSmall"
+		>
 			<mat-step [stepControl]="firstFormGroup">
 				<form [formGroup]="firstFormGroup">
 					<ng-template matStepLabel>Fill out your name</ng-template>
 					<mat-form-field>
-						<input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+						<input matInput placeholder="Last name, First name" formControlName="firstCtrl" required />
 					</mat-form-field>
 					<div>
 						<button mat-flat-button matStepperNext color="primary">Next</button>
@@ -18,7 +24,7 @@
 				<form [formGroup]="secondFormGroup">
 					<ng-template matStepLabel>Fill out your address</ng-template>
 					<mat-form-field>
-						<input matInput placeholder="Address" formControlName="secondCtrl" required>
+						<input matInput placeholder="Address" formControlName="secondCtrl" required />
 					</mat-form-field>
 					<div>
 						<button mat-flat-button matStepperPrevious color="accent">Back</button>

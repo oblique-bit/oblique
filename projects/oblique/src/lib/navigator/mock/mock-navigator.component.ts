@@ -2,16 +2,12 @@ import {Component} from '@angular/core';
 
 @Component({
 	selector: 'ob-navigator',
-	template: `
-		<ng-content></ng-content>`
+	template: ` <ng-content></ng-content>`
 })
 export class ObMockNavigatorComponent {
-	onKeyup($event): void {
-	}
+	onKeyup($event): void {}
 
-	onClick(): void {
-	}
+	onClick(): void {}
 
-	navigateUp(): void {
-	}
+	navigateUp(): void {}
 }

@@ -17,7 +17,8 @@ export class ObSchemaValidatorInstance {
 
 		if (this.ajv.getSchema(propertyPath)) {
 			this.ajv.validate(propertyPath, value);
-			if (this.ajv.errors && value != null && value !== '') {	// when a value is empty, do not check its type
+			if (this.ajv.errors && value != null && value !== '') {
+				// when a value is empty, do not check its type
 				return {[this.ajv.errors[0].keyword]: this.ajv.errors[0].params};
 			}
 		}
@@ -31,7 +32,7 @@ export class ObSchemaValidatorInstance {
 
 	isRequired(property: string, path: string[]): boolean {
 		let schema = JSON.parse(JSON.stringify(this.schema));
-		path.forEach((name) => {
+		path.forEach(name => {
 			if (schema.properties && schema.properties[name]) {
 				schema = schema.properties[name];
 			}
@@ -45,7 +46,7 @@ export class ObSchemaValidatorInstance {
 	}
 
 	private addSchema(schema: any, parentPropertyName?): void {
-		Object.keys(schema.properties || {}).forEach((propertyName) => {
+		Object.keys(schema.properties || {}).forEach(propertyName => {
 			const propertyPath = parentPropertyName ? `${parentPropertyName}.${propertyName}` : propertyName;
 			if (schema.properties[propertyName].properties) {
 				this.addSchema(schema.properties[propertyName], propertyPath);

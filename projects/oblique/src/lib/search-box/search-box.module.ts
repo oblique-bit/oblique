@@ -19,13 +19,7 @@ export {ObSearchBoxComponent, ObISearchWidgetItem} from './search-box.component'
 export {ObSearchBoxDirective} from './search-box.directive';
 
 @NgModule({
-	imports: [
-		CommonModule,
-		FormsModule,
-		ObNavTreeModule,
-		TranslateModule,
-		RouterModule
-	],
+	imports: [CommonModule, FormsModule, ObNavTreeModule, TranslateModule, RouterModule],
 	declarations: [ObSearchBoxDirective, ObSearchBoxComponent, ObSearchBoxResultsComponent],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},

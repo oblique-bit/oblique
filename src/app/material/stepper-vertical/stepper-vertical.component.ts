@@ -12,8 +12,7 @@ export class ObStepperVerticalComponent implements OnInit {
 	isSmall = false;
 	isLarge = false;
 
-	constructor(private readonly formBuilder: FormBuilder) {
-	}
+	constructor(private readonly formBuilder: FormBuilder) {}
 
 	ngOnInit() {
 		this.firstFormGroup = this.formBuilder.group({

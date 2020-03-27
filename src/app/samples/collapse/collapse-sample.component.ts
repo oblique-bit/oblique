@@ -26,7 +26,7 @@ export class CollapseSampleComponent {
 	active = false;
 
 	directions: Direction[] = [
-		{value: 'down-Up', viewValue: 'default'},
+		{value: 'down-up', viewValue: 'default'},
 		{value: 'down-right', viewValue: 'Toggle Down-Right'},
 		{value: 'down-left', viewValue: 'Toggle Down-Left'},
 		{value: 'up-down', viewValue: 'Toggle Up-Down'},

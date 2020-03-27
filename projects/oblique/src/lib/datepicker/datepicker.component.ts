@@ -18,7 +18,8 @@ import {ObDatepickerConfigService, ObIDatepickerOptions} from './datepicker-conf
 			provide: NG_VALUE_ACCESSOR,
 			multi: true,
 			useExisting: forwardRef(() => ObDatepickerComponent)
-		}, {
+		},
+		{
 			provide: NG_VALIDATORS,
 			multi: true,
 			useExisting: forwardRef(() => ObDatepickerComponent)
@@ -61,8 +62,7 @@ export class ObDatepickerComponent implements OnInit, ControlValueAccessor, Vali
 		this.datePicker.valueChanges.subscribe(fn);
 	}
 
-	registerOnTouched(fn: any): void {
-	}
+	registerOnTouched(fn: any): void {}
 
 	setDisabledState(isDisabled: boolean): void {
 		// eslint-disable-next-line no-unused-expressions
@@ -76,9 +76,11 @@ export class ObDatepickerComponent implements OnInit, ControlValueAccessor, Vali
 	@HostListener('keydown', ['$event'])
 	onKeydown($event) {
 		if ($event.target.attributes['ngbdatepicker']) {
-			if ($event.keyCode === 40) { // 40: ArrowDown
+			if ($event.keyCode === 40) {
+				// 40: ArrowDown
 				this.ngbDatePicker.open();
-			} else if ($event.keyCode === 38 || $event.keyCode === 9) { // 38: ArrowUp, 40: Tab
+			} else if ($event.keyCode === 38 || $event.keyCode === 9) {
+				// 38: ArrowUp, 40: Tab
 				this.ngbDatePicker.close();
 			}
 		}

@@ -4,9 +4,9 @@ export interface ObINotification {
 	idPrefix?: string;
 	type?: ObENotificationType;
 	message?: string;
-	messageParams?: { [key: string]: any };
+	messageParams?: {[key: string]: any};
 	title?: string;
-	titleParams?: { [key: string]: any };
+	titleParams?: {[key: string]: any};
 	channel?: string;
 	sticky?: boolean;
 	timeout?: number;

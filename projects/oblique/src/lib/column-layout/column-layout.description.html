@@ -1,23 +1,29 @@
-<p>The column layout component comes with 1, 2 or 3 columns. Both side columns are collapsible / expansible and optional. They both use 20 % of the total
-	width while the center column takes up the remaining 60%. The side columns can be enlarged with the <code>wider</code> option to use 40% each. This option
-	is only suitable when only 2 columns are displayed.<p>
-<p>It comes with preconfigured padding which can be canceled with the <code>noLayout</code> input. On smaller viewports, both side columns are moved below the
-	main one. This behavior can be tweaked by altering their <code>order</code> property.</p>
-<p>If the <code>ObColumnLayout</code> is set to a specific <code>height</code>, then it's <code>overflow</code> property have to be set to <code>auto</code> for
-	it to work properly.</p>
+<p>
+	The column layout component comes with 1, 2 or 3 columns. Both side columns are collapsible / expansible and optional. They both use 20 % of the total width
+	while the center column takes up the remaining 60%. The side columns can be enlarged with the <code>wider</code> option to use 40% each. This option is only
+	suitable when only 2 columns are displayed.
+</p>
+<p>
+	It comes with preconfigured padding which can be canceled with the <code>noLayout</code> input. On smaller viewports, both side columns are moved below the
+	main one. This behavior can be tweaked by altering their <code>order</code> property.
+</p>
+<p>
+	If the <code>ObColumnLayout</code> is set to a specific <code>height</code>, then it's <code>overflow</code> property have to be set to
+	<code>auto</code> for it to work properly.
+</p>
 <p>To adapt the column width to your needs, overwrite following CSS rules:</p>
 <pre>
-@media (min-width: 992px) &#123;
-	.column-layout &#123;
+@media (min-width: 992px) &lcub;
+	.column-layout &lcub;
 		.column-left,
-		.column-right &#123;
+		.column-right &lcub;
 			flex-basis: $column-width;
 			max-width: $column-width;
 		}
-		.column-left.collapsed &#123;
+		.column-left.collapsed &lcub;
 			margin-left: -$column-width;
 		}
-		.column-right.collapsed &#123;
+		.column-right.collapsed &lcub;
 			margin-right: -$column-width;
 		}
 	}

@@ -11,17 +11,13 @@ export {ObParentFormDirective} from './parent-form.directive';
 export {ObNestedFormComponent} from './nested-form.component';
 
 @NgModule({
-	declarations: [
-		ObParentFormDirective, ObNestedFormComponent
-	],
+	declarations: [ObParentFormDirective, ObNestedFormComponent],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 		{provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
-	exports: [
-		ObParentFormDirective, ObNestedFormComponent
-	]
+	exports: [ObParentFormDirective, ObNestedFormComponent]
 })
 export class ObNestedFormModule {
 	constructor(telemetry: ObTelemetryService) {

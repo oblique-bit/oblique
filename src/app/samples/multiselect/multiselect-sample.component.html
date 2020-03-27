@@ -1,4 +1,4 @@
-<h2>{{'i18n.routes.samples.multiselect.title' | translate}}</h2>
+<h2>{{ "i18n.routes.samples.multiselect.title" | translate }}</h2>
 <ob-description component="multiselect"></ob-description>
 <section>
 	<label [for]="'default'">Default multiselect</label>
@@ -7,43 +7,46 @@
 			<ob-multiselect [options]="states" [(ngModel)]="model" idPrefix="default"></ob-multiselect>
 		</div>
 		<div class="col-md-6">
-			<pre>{{model | json}}</pre>
+			<pre>{{ model | json }}</pre>
 		</div>
 	</div>
 
 	<label [for]="'label'">Multiselect with complex options and <code>labelProperty</code></label>
 	<div class="row">
 		<div class="col-md-6">
-			<ob-multiselect [options]="statesComplex"
-							[(ngModel)]="labelModel"
-							[showCheckAll]="true"
-							[showUncheckAll]="true"
-							labelProperty="name"
-							titleProperty="short"
-							idPrefix="label">
+			<ob-multiselect
+				[options]="statesComplex"
+				[(ngModel)]="labelModel"
+				[showCheckAll]="true"
+				[showUncheckAll]="true"
+				labelProperty="name"
+				titleProperty="short"
+				idPrefix="label"
+			>
 			</ob-multiselect>
 		</div>
 		<div class="col-md-6">
-			<pre>{{labelModel | json}}</pre>
+			<pre>{{ labelModel | json }}</pre>
 		</div>
 	</div>
 
-	<label [for]="'formatter'">Multiselect with complex options, search filter,
-		<code>labelFormatter</code>...</label>
+	<label [for]="'formatter'">Multiselect with complex options, search filter, <code>labelFormatter</code>...</label>
 	<div class="row">
 		<div class="col-md-6">
-			<ob-multiselect [options]="statesComplex"
-							[(ngModel)]="formatterModel"
-							[showCheckAll]="true"
-							[showUncheckAll]="true"
-							[enableSearch]="true"
-							[texts]="{defaultTitle: '... and a custom title'}"
-							[labelFormatter]="complexStateLabelFormatter"
-							idPrefix="formatter">
+			<ob-multiselect
+				[options]="statesComplex"
+				[(ngModel)]="formatterModel"
+				[showCheckAll]="true"
+				[showUncheckAll]="true"
+				[enableSearch]="true"
+				[texts]="{ defaultTitle: '... and a custom title' }"
+				[labelFormatter]="complexStateLabelFormatter"
+				idPrefix="formatter"
+			>
 			</ob-multiselect>
 		</div>
 		<div class="col-md-6">
-			<pre>{{formatterModel | json}}</pre>
+			<pre>{{ formatterModel | json }}</pre>
 		</div>
 	</div>
 
@@ -53,7 +56,7 @@
 			<ob-multiselect [options]="states" [(ngModel)]="model" [dropup]="true" idPrefix="dropup"></ob-multiselect>
 		</div>
 		<div class="col-md-6">
-			<pre>{{model | json}}</pre>
+			<pre>{{ model | json }}</pre>
 		</div>
 	</div>
 </section>

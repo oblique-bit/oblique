@@ -12,16 +12,13 @@ export class ObMockThemeService {
 		this.theme$.next(theme);
 	}
 
-	setFont(font: FONTS): void {
-	}
+	setFont(font: FONTS): void {}
 
 	isMaterial(): boolean {
 		return this.currentTheme === THEMES.MATERIAL;
 	}
 
-	deprecated(component: string, target: string): void {
-	}
+	deprecated(component: string, target: string): void {}
 
-	setDefaultFont(): void {
-	}
+	setDefaultFont(): void {}
 }

@@ -51,7 +51,7 @@ export class ObMasterLayoutNavigationComponent extends ObUnsubscribable implemen
 
 	ngAfterViewInit() {
 		this.nav = this.el.nativeElement.querySelector('.main-nav:not(.sub-nav)');
-		this.masterLayout.navigation.scrolled.pipe(takeUntil(this.unsubscribe)).subscribe((offset) => this.updateScroll(offset));
+		this.masterLayout.navigation.scrolled.pipe(takeUntil(this.unsubscribe)).subscribe(offset => this.updateScroll(offset));
 	}
 
 	isActive(url: string): boolean {
@@ -77,19 +77,21 @@ export class ObMasterLayoutNavigationComponent extends ObUnsubscribable implemen
 
 	private propertyChanges() {
 		const events = [ObEMasterLayoutEventValues.SCROLLABLE, ObEMasterLayoutEventValues.FULL_WIDTH];
-		this.masterLayout.navigation.configEvents.pipe(
-			filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
-			takeUntil(this.unsubscribe)
-		).subscribe((event) => {
-			switch (event.name) {
-				case ObEMasterLayoutEventValues.SCROLLABLE:
-					this.masterLayout.navigation.refresh();
-					break;
-				case ObEMasterLayoutEventValues.FULL_WIDTH:
-					this.isFullWidth = event.value;
-					break;
-			}
-		});
+		this.masterLayout.navigation.configEvents
+			.pipe(
+				filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(event => {
+				switch (event.name) {
+					case ObEMasterLayoutEventValues.SCROLLABLE:
+						this.masterLayout.navigation.refresh();
+						break;
+					case ObEMasterLayoutEventValues.FULL_WIDTH:
+						this.isFullWidth = event.value;
+						break;
+				}
+			});
 	}
 
 	private refresh(): void {

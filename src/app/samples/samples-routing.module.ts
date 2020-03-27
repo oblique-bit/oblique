@@ -61,16 +61,11 @@ const samplesRoutes: Routes = [
 	{path: 'unknown-route-sample', component: ObUnknownRouteSampleComponent},
 	{path: 'unsaved-changes', component: UnsavedChangesSampleComponent, canDeactivate: [ObUnsavedChangesGuard]},
 	{path: 'form', component: ObFormComponent},
-	{path: 'button', component: ObButtonComponent},
+	{path: 'button', component: ObButtonComponent}
 ];
 
 @NgModule({
-	imports: [
-		RouterModule.forChild(samplesRoutes)
-	],
-	exports: [
-		RouterModule
-	]
+	imports: [RouterModule.forChild(samplesRoutes)],
+	exports: [RouterModule]
 })
-export class SamplesRoutingModule {
-}
+export class SamplesRoutingModule {}

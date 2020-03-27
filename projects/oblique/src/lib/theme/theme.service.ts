@@ -90,7 +90,7 @@ export class ObThemeService {
 	private initTheme(): void {
 		this.themeLink = this.createAndAddEmptyLink();
 		this.theme$
-			.pipe(map(theme => ObThemeService.isInEnum(theme, THEMES) ? `assets/styles/css/${theme}.css` : theme))
+			.pipe(map(theme => (ObThemeService.isInEnum(theme, THEMES) ? `assets/styles/css/${theme}.css` : theme)))
 			.subscribe(path => this.renderer.setAttribute(this.themeLink, 'href', path));
 	}
 
@@ -99,7 +99,7 @@ export class ObThemeService {
 		this.font$
 			.pipe(
 				tap(font => this.addWarning(font === FONTS.FRUTIGER)),
-				map(font => [FONTS.FRUTIGER, FONTS.ROBOTO].includes(font) ? `assets/styles/css/${font}.css` : '')
+				map(font => ([FONTS.FRUTIGER, FONTS.ROBOTO].includes(font) ? `assets/styles/css/${font}.css` : ''))
 			)
 			.subscribe(path => this.renderer.setAttribute(this.fontLink, 'href', path));
 	}
@@ -109,7 +109,7 @@ export class ObThemeService {
 			this.renderer.setAttribute(
 				this.fontLink,
 				'onError',
-				'console.warn(\'Please consult http://oblique.bit.admin.ch for instructions on how to install Frutiger\')'
+				"console.warn('Please consult http://oblique.bit.admin.ch for instructions on how to install Frutiger')"
 			);
 		}
 	}

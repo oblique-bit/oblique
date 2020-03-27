@@ -18,21 +18,13 @@ export {ObOffCanvasBackdropDirective} from './off-canvas-backdrop.directive';
 
 @NgModule({
 	imports: [CommonModule],
-	declarations: [
-		ObOffCanvasToggleDirective,
-		ObOffCanvasContainerDirective,
-		ObOffCanvasBackdropDirective
-	],
+	declarations: [ObOffCanvasToggleDirective, ObOffCanvasContainerDirective, ObOffCanvasBackdropDirective],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 		{provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
-	exports: [
-		ObOffCanvasToggleDirective,
-		ObOffCanvasContainerDirective,
-		ObOffCanvasBackdropDirective
-	]
+	exports: [ObOffCanvasToggleDirective, ObOffCanvasContainerDirective, ObOffCanvasBackdropDirective]
 })
 export class ObOffCanvasModule {
 	constructor(telemetry: ObTelemetryService) {

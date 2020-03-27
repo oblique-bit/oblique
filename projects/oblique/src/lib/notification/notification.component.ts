@@ -15,30 +15,37 @@ import {ObNotificationService} from './notification.service';
 	animations: [
 		trigger('inOut', [
 			state('in', style({opacity: 1})),
-			transition('* => in', [
-				animate('650ms ease-in-out', keyframes([
-					style({offset: 0, opacity: 0,  maxHeight: 0, transform: 'translateX({{translateX}})', overflow: 'hidden'}),
-					style({offset: 0.6, opacity: 0, maxHeight: '500px', transform: 'translateX({{translateX}})', overflow: 'hidden'}),
-					style({offset: 1, opacity: 1, maxHeight: 'none', transform: 'translateX(0)', overflow: 'hidden'})
-				]))
-			], {params : {translateX: '15%'}}),
+			transition(
+				'* => in',
+				[
+					animate(
+						'650ms ease-in-out',
+						keyframes([
+							style({offset: 0, opacity: 0, maxHeight: 0, transform: 'translateX({{translateX}})', overflow: 'hidden'}),
+							style({offset: 0.6, opacity: 0, maxHeight: '500px', transform: 'translateX({{translateX}})', overflow: 'hidden'}),
+							style({offset: 1, opacity: 1, maxHeight: 'none', transform: 'translateX(0)', overflow: 'hidden'})
+						])
+					)
+				],
+				{params: {translateX: '15%'}}
+			),
 			state('in-first', style({opacity: 1})),
 			transition('* => in-first', [
-				animate('350ms ease-in-out', keyframes([
-					style({offset: 0, opacity: 0, transform: 'translateX(15%)'}),
-					style({offset: 1, opacity: 1, transform: 'translateX(0)'})
-				]))
+				animate(
+					'350ms ease-in-out',
+					keyframes([style({offset: 0, opacity: 0, transform: 'translateX(15%)'}), style({offset: 1, opacity: 1, transform: 'translateX(0)'})])
+				)
 			]),
-			state(
-				'out',
-				style({opacity: 0, maxHeight: 0, overflow: 'hidden', display: 'none'})
-			),
+			state('out', style({opacity: 0, maxHeight: 0, overflow: 'hidden', display: 'none'})),
 			transition('* => out', [
-				animate('350ms ease-in-out', keyframes([
-					style({offset: 0, opacity: 1, maxHeight: '500px', overflow: 'hidden'}),
-					style({offset: 0.2, opacity: 0, maxHeight: '500px', overflow: 'hidden'}),
-					style({offset: 1, opacity: 0, maxHeight: 0, overflow: 'hidden'}),
-				]))
+				animate(
+					'350ms ease-in-out',
+					keyframes([
+						style({offset: 0, opacity: 1, maxHeight: '500px', overflow: 'hidden'}),
+						style({offset: 0.2, opacity: 0, maxHeight: '500px', overflow: 'hidden'}),
+						style({offset: 1, opacity: 0, maxHeight: 0, overflow: 'hidden'})
+					])
+				)
 			])
 		])
 	]
@@ -48,24 +55,21 @@ export class ObNotificationComponent implements OnInit {
 	@Input() channel: string;
 	@HostBinding('class.custom') customChannel = false;
 	public notifications: ObINotification[] = [];
-	public variant: { [type: string]: string } = {};
+	public variant: {[type: string]: string} = {};
 
-	constructor(private readonly notificationService: ObNotificationService) {
-	}
+	constructor(private readonly notificationService: ObNotificationService) {}
 
 	ngOnInit(): void {
 		this.channel = this.channel || this.notificationService.config.channel;
 		this.customChannel = this.channel !== 'oblique';
 
-		this.notificationService.events.subscribe(
-			(notification) => {
-				if (!notification || (!notification.message && notification.channel === this.channel)) {
-					this.clear();
-				} else if (notification.channel === this.channel) {
-					this.open(notification);
-				}
+		this.notificationService.events.subscribe(notification => {
+			if (!notification || (!notification.message && notification.channel === this.channel)) {
+				this.clear();
+			} else if (notification.channel === this.channel) {
+				this.open(notification);
 			}
-		);
+		});
 	}
 
 	/**
@@ -73,7 +77,7 @@ export class ObNotificationComponent implements OnInit {
 	 */
 	public open(notification: ObINotification): void {
 		notification.occurrences = 1;
-		const existingNotification = this.notifications.find((notif) => notif.idPrefix === notification.idPrefix);
+		const existingNotification = this.notifications.find(notif => notif.idPrefix === notification.idPrefix);
 		if (existingNotification && notification.groupSimilar) {
 			existingNotification.occurrences++;
 		} else {

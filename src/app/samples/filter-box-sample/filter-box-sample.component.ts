@@ -17,19 +17,21 @@ export class PatternFilterPipe implements PipeTransform {
 	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'app-filter-box',
 	templateUrl: 'filter-box-sample.component.html',
-	styles: [`
-		.card-deck + .card-deck {
-			margin-top: 1em;
-		}
-		::ng-deep .closed,
-		::ng-deep [aria-expanded="true"] .opened {
-			display: none;
-		}
-		::ng-deep [aria-expanded="true"] .closed,
-		::ng-deep .opened {
-			display: inline;
-		}
-	`]
+	styles: [
+		`
+			.card-deck + .card-deck {
+				margin-top: 1em;
+			}
+			::ng-deep .closed,
+			::ng-deep [aria-expanded='true'] .opened {
+				display: none;
+			}
+			::ng-deep [aria-expanded='true'] .closed,
+			::ng-deep .opened {
+				display: inline;
+			}
+		`
+	]
 })
 export class FilterBoxSampleComponent {
 	material: boolean;
@@ -41,17 +43,7 @@ export class FilterBoxSampleComponent {
 	placeholder: string;
 	prepend = false;
 	append = false;
-	items: string[] = [
-		'Jani',
-		'Carl',
-		'Margareth',
-		'Hege',
-		'Joe',
-		'Gustav',
-		'Birgit',
-		'Mary',
-		'Kai'
-	];
+	items: string[] = ['Jani', 'Carl', 'Margareth', 'Hege', 'Joe', 'Gustav', 'Birgit', 'Mary', 'Kai'];
 
 	constructor(theme: ObThemeService) {
 		theme.theme$.subscribe(() => {
@@ -60,7 +52,7 @@ export class FilterBoxSampleComponent {
 	}
 
 	toggleColor(color: string): void {
-		this.color = this.color === color ? this.color = 'black' : color;
+		this.color = this.color === color ? (this.color = 'black') : color;
 	}
 
 	incrementCleared() {

@@ -13,18 +13,19 @@ describe('MasterLayoutNavigationService', () => {
 	const mockMasterLayout = {
 		navigation: {}
 	};
-	beforeEach(() => TestBed.configureTestingModule({
-		providers: [
-			{provide: TranslateService, useValue: translateMock},
-			{provide: ObMasterLayoutConfig, useValue: mockMasterLayout}
-		]
-	}));
+	beforeEach(() =>
+		TestBed.configureTestingModule({
+			providers: [
+				{provide: TranslateService, useValue: translateMock},
+				{provide: ObMasterLayoutConfig, useValue: mockMasterLayout}
+			]
+		})
+	);
 
 	it('should be created', () => {
 		service = TestBed.get(ObMasterLayoutNavigationService);
 		expect(service).toBeTruthy();
 	});
-
 
 	it('should emit scrolledLeft on scrollLeft call', fakeAsync(() => {
 		let emitted = false;

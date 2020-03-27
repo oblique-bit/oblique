@@ -20,9 +20,7 @@ describe('MasterLayoutService', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [
-				RouterTestingModule
-			],
+			imports: [RouterTestingModule],
 			providers: [
 				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
@@ -30,8 +28,8 @@ describe('MasterLayoutService', () => {
 				{provide: ObMasterLayoutFooterService, useClass: ObMockMasterLayoutFooterService},
 				{provide: ObMasterLayoutNavigationService, useClass: ObMockMasterLayoutNavigationService},
 				{provide: ObMasterLayoutComponentService, useClass: ObMockMasterLayoutComponentService},
-				{provide: ObMasterLayoutService, useClass: ObMockMasterLayoutService},
-			],
+				{provide: ObMasterLayoutService, useClass: ObMockMasterLayoutService}
+			]
 		});
 		masterLayoutService = TestBed.get(ObMasterLayoutService);
 	});
@@ -40,4 +38,3 @@ describe('MasterLayoutService', () => {
 		expect(masterLayoutService).toBeTruthy();
 	});
 });
-

@@ -7,5 +7,4 @@ export {ObMockPopUpService} from './mock-pop-up.service';
 @NgModule({
 	providers: [{provide: ObPopUpService, useClass: ObMockPopUpService}]
 })
-export class ObMockPopUpModule {
-}
+export class ObMockPopUpModule {}

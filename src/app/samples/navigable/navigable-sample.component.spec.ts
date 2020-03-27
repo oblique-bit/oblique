@@ -14,12 +14,8 @@ describe('NavigableSampleComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [ObliqueTestingModule],
-			declarations: [
-				NavigableSampleComponent,
-			],
-			schemas: [
-				CUSTOM_ELEMENTS_SCHEMA
-			]
+			declarations: [NavigableSampleComponent],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
 	}));
 

@@ -9,7 +9,6 @@ import {MatTableDataSource} from '@angular/material/table';
 	templateUrl: './table.component.html',
 	styleUrls: ['./table.component.scss']
 })
-
 export class ObTableComponent implements OnInit {
 	@ViewChild(MatSort, {static: true}) sort: MatSort;
 	@ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -24,7 +23,7 @@ export class ObTableComponent implements OnInit {
 		{position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
 		{position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
 		{position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'}
 	];
 	dataSource = new MatTableDataSource<ObIPeriodicElement>(this.ELEMENT_DATA);
 	pageSizeOptions = [10, 5, 2];
@@ -53,11 +52,11 @@ export class ObTableComponent implements OnInit {
 	private readonly SORT_DIRECTION_DESCENDING = 'desc';
 
 	ngOnInit() {
-		this.displayedColumns  = [this.COLUMN_NAME_POSITION, this.COLUMN_NAME_NAME, this.COLUMN_NAME_WEIGHT, this.COLUMN_NAME_SYMBOL];
+		this.displayedColumns = [this.COLUMN_NAME_POSITION, this.COLUMN_NAME_NAME, this.COLUMN_NAME_WEIGHT, this.COLUMN_NAME_SYMBOL];
 		this.dataSource.sort = this.sort;
 		this.dataSource.paginator = this.paginator;
 		this.updateFooterRow();
-		this.paginator.page.subscribe((page) => {
+		this.paginator.page.subscribe(page => {
 			this.updateFooterRowByPage(page);
 		});
 	}
@@ -76,14 +75,9 @@ export class ObTableComponent implements OnInit {
 	applyFilter(event) {
 		const filter = event.target.value;
 		if (filter === undefined) {
-			this.dataSource = new MatTableDataSource(
-				this.ELEMENT_DATA
-			);
+			this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 		} else {
-			this.dataSource = new MatTableDataSource(
-				this.ELEMENT_DATA
-					.filter((element) => element.name.toLowerCase().includes(filter.trim().toLowerCase()))
-			);
+			this.dataSource = new MatTableDataSource(this.ELEMENT_DATA.filter(element => element.name.toLowerCase().includes(filter.trim().toLowerCase())));
 		}
 		this.updateFooterRow();
 	}
@@ -96,9 +90,7 @@ export class ObTableComponent implements OnInit {
 
 	masterToggle() {
 		// eslint-disable-next-line no-unused-expressions
-		this.isAllSelected() ?
-			this.selection.clear() :
-			this.dataSource.data.forEach(row => this.selection.select(row));
+		this.isAllSelected() ? this.selection.clear() : this.dataSource.data.forEach(row => this.selection.select(row));
 	}
 
 	toggleSelectionVisibility() {
@@ -141,14 +133,16 @@ export class ObTableComponent implements OnInit {
 		const sortColumn = event.active;
 		const sortDirection = event.direction;
 		this.dataSource = new MatTableDataSource(
-			this.ELEMENT_DATA
-				.sort((left, right) => {
-					switch (sortDirection) {
-						case this.SORT_DIRECTION_ASCENDING: return this.sortAscending(left, right, sortColumn);
-						case this.SORT_DIRECTION_DESCENDING: return this.sortDescending(left, right, sortColumn);
-						default: return this.sortAscending(left, right, sortColumn);
-					}
-				})
+			this.ELEMENT_DATA.sort((left, right) => {
+				switch (sortDirection) {
+					case this.SORT_DIRECTION_ASCENDING:
+						return this.sortAscending(left, right, sortColumn);
+					case this.SORT_DIRECTION_DESCENDING:
+						return this.sortDescending(left, right, sortColumn);
+					default:
+						return this.sortAscending(left, right, sortColumn);
+				}
+			})
 		);
 	}
 

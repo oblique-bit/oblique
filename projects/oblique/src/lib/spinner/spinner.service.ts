@@ -8,7 +8,6 @@ import {Subject, Observable} from 'rxjs';
  */
 @Injectable({providedIn: 'root'})
 export class ObSpinnerService {
-
 	/**
 	 * The channel name where spinner events will be broadcasted to.
 	 */

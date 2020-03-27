@@ -5,50 +5,25 @@ import {TranslateService} from '@ngx-translate/core';
 const I18N_VALUES = {
 	en: {
 		weekdays: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
-		monthsShort: [
-			'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-			'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-		],
-		monthFull: [
-			'January', 'February', 'March', 'April', 'May', 'June',
-			'July', 'August', 'September', 'October', 'November', 'December'
-		]
+		monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+		monthFull: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 	},
 	fr: {
 		weekdays: ['Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa', 'Di'],
-		monthsShort: [
-			'Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin',
-			'Juil', 'Aou', 'Sep', 'Oct', 'Nov', 'Déc'
-		],
-		monthFull: [
-			'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-			'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
-		]
+		monthsShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aou', 'Sep', 'Oct', 'Nov', 'Déc'],
+		monthFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
 	},
 	de: {
 		weekdays: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
-		monthsShort: [
-			'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',
-			'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'
-		],
-		monthFull: [
-			'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
-			'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
-		]
+		monthsShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+		monthFull: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
 	},
 	it: {
 		weekdays: ['Lu', 'Ma', 'Me', 'Gi', 'Ve', 'Sa', 'Do'],
-		monthsShort: [
-			'Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu',
-			'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'
-		],
-		monthFull: [
-			'Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno',
-			'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'
-		]
+		monthsShort: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'],
+		monthFull: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre']
 	}
 };
-
 
 @Injectable({providedIn: 'root'})
 export class ObDatepickerI18nService extends NgbDatepickerI18n {

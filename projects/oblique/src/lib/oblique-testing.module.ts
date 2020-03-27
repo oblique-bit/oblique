@@ -49,8 +49,10 @@ export {ObMockDocumentMetaModule, ObDocumentMetaService} from './document-meta/m
 export {ObMockDropdownModule, ObMockDropdownComponent} from './dropdown/mock/mock-dropdown.module';
 export {
 	ObMockErrorMessagesModule,
-	ObMockErrorMessagesService, ObMockErrorMessagesComponent,
-	ObMockErrorMessagesDirective, ObMockMatErrorDirective
+	ObMockErrorMessagesService,
+	ObMockErrorMessagesComponent,
+	ObMockErrorMessagesDirective,
+	ObMockMatErrorDirective
 } from './error-messages/mock/mock-error-messages.module';
 export {ObMockFilterBoxModule, ObMockFilterBoxComponent} from './filter-box/mock/mock-filter-box.module';
 export {ObMockFormControlStateModule, ObMockFormControlStateDirective} from './form-control-state/mock/mock-form-control-state.module';
@@ -72,7 +74,11 @@ export {
 	ObMockMasterLayoutComponentService
 } from './master-layout/mock/mock-master-layout.module';
 export {
-	ObMockMultiselectModule, ObMockMultiselectTexts, ObMockMultiselectConfig, ObMockMultiselectComponent, ObMockMultiselectSearchPipe
+	ObMockMultiselectModule,
+	ObMockMultiselectTexts,
+	ObMockMultiselectConfig,
+	ObMockMultiselectComponent,
+	ObMockMultiselectSearchPipe
 } from './multiselect/mock/mock-multiselect.module';
 export {ObMockNavigableModule, ObMockNavigableDirective, ObMockNavigableGroupComponent} from './navigable/mock/mock-navigable.module';
 export {ObMockNavigatorModule, ObMockNavigatorComponent} from './navigator/mock/mock-navigator.module';
@@ -86,7 +92,10 @@ export {
 export {ObMockNumberFormatModule, ObMockNumberFormatDirective} from './number-format/mock/mock-number-format.module';
 export {ObMockPopUpModule, ObMockPopUpService} from './pop-up/_mock/mock-pop-up.module';
 export {
-	ObMockHttpApiInterceptorModule, ObMockHttpApiInterceptor, ObMockHttpApiInterceptorConfig, ObMockHttpApiInterceptorEvents
+	ObMockHttpApiInterceptorModule,
+	ObMockHttpApiInterceptor,
+	ObMockHttpApiInterceptorConfig,
+	ObMockHttpApiInterceptorEvents
 } from './http-api-interceptor/mock/mock-http-api-interceptor.module';
 export {
 	ObMockOffCanvasModule,
@@ -112,7 +121,10 @@ export {ObMockThemeService, ObMockThemeModule} from './theme/mock/mock-theme.mod
 export {ObMockTranslateParamsModule, ObMockTranslateParamsPipe} from './translate-params/mock/mock-translate-params.module';
 export {ObMockUnknownRouteModule, ObMockUnknownRouteComponent} from './unknown-route/mock/mock-unknown-route.module';
 export {
-	ObMockUnsavedChangesModule, ObMockUnsavedChangesGuard, ObMockUnsavedChangesDirective, ObMockUnsavedChangesService
+	ObMockUnsavedChangesModule,
+	ObMockUnsavedChangesGuard,
+	ObMockUnsavedChangesDirective,
+	ObMockUnsavedChangesService
 } from './unsaved-changes/mock/mock-unsaved-changes.module';
 export {ObMockTranslateService};
 
@@ -157,5 +169,4 @@ const MOCK_OBLIQUE_MODULES = [
 		{provide: WINDOW, useFactory: windowProvider}
 	]
 })
-export class ObliqueTestingModule {
-}
+export class ObliqueTestingModule {}

@@ -13,7 +13,6 @@ let requestId = 0;
 	templateUrl: './http-interceptor-sample.component.html'
 })
 export class HttpInterceptorSampleComponent {
-
 	static readonly API_URL = 'https://jsonplaceholder.typicode.com';
 	logs = [];
 	notification = {
@@ -33,7 +32,6 @@ export class HttpInterceptorSampleComponent {
 		private readonly http: HttpClient,
 		private readonly interceptorEvents: ObHttpApiInterceptorEvents
 	) {
-
 		this.interceptorEvents.sessionExpired.subscribe(() => {
 			this.notificationService.warning('The session has expired');
 		});
@@ -52,9 +50,7 @@ export class HttpInterceptorSampleComponent {
 			arrayOfObservables.push(this.createSampleRequest(200));
 		}
 
-		const mergedObservable = from(arrayOfObservables).pipe(
-			mergeMap(save => save)
-		);
+		const mergedObservable = from(arrayOfObservables).pipe(mergeMap(save => save));
 
 		mergedObservable.subscribe();
 	}

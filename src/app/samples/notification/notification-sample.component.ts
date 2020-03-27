@@ -32,8 +32,7 @@ export class NotificationSampleComponent {
 	timeout = 2500;
 	group = false;
 
-	constructor(private readonly notificationService: ObNotificationService) {
-	}
+	constructor(private readonly notificationService: ObNotificationService) {}
 
 	get clearAllOnNavigate() {
 		return this.notificationService.clearAllOnNavigate;

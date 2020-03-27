@@ -66,8 +66,8 @@ export class ObMasterLayoutConfig {
 	 * Locales of the application
 	 */
 	locale: ObILocale = {
-		locales:  ['de', 'fr', 'it'],
-		default:  'de',
+		locales: ['de', 'fr', 'it'],
+		default: 'de',
 		disabled: false
 	};
 
@@ -90,7 +90,7 @@ export class ObMasterLayoutConfig {
 		isSticky: true,
 		isMedium: false,
 		isCustom: false,
-		hasScrollTransitions: true	// indicates if the header should be resized when scrolling
+		hasScrollTransitions: true // indicates if the header should be resized when scrolling
 	};
 
 	/**
@@ -110,6 +110,6 @@ export class ObMasterLayoutConfig {
 	footer: ObIMasterLayoutFooter = {
 		isSmall: true,
 		isCustom: false,
-		hasScrollTransitions: true	// indicates if the footer should be resized when scrolling
+		hasScrollTransitions: true // indicates if the footer should be resized when scrolling
 	};
 }

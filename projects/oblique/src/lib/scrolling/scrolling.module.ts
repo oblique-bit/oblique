@@ -13,10 +13,7 @@ export {ObTopControlComponent} from './top-control.component';
 export {ObScrollingEvents} from './scrolling-events';
 
 @NgModule({
-	imports: [
-		CommonModule,
-		TranslateModule
-	],
+	imports: [CommonModule, TranslateModule],
 	declarations: [ObTopControlComponent],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},

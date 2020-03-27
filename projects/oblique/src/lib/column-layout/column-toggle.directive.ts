@@ -6,9 +6,7 @@ import {ObColumnPanelDirective} from './column-panel.directive';
 	exportAs: 'obColumnToggle'
 })
 export class ObColumnToggleDirective {
-
-	constructor(private readonly parent: ObColumnPanelDirective) {
-	}
+	constructor(private readonly parent: ObColumnPanelDirective) {}
 
 	@HostListener('click')
 	onclick() {

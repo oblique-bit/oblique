@@ -152,16 +152,8 @@ import {ObSelectableSampleComponent} from './selectable/selectable-sample.compon
 		ObPopUpSampleComponent,
 		MultiTranslateLoaderSampleComponent
 	],
-	exports: [
-		RouterModule,
-		ObApiComponent
-	],
-	providers: [
-		SampleDataResolver
-	],
-	entryComponents: [
-		UnsavedChangesSampleModalComponent
-	]
+	exports: [RouterModule, ObApiComponent],
+	providers: [SampleDataResolver],
+	entryComponents: [UnsavedChangesSampleModalComponent]
 })
-export class SamplesModule {
-}
+export class SamplesModule {}

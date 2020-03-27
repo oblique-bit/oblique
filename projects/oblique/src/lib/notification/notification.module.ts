@@ -17,10 +17,7 @@ export {ObNotificationConfig, CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE, GROUP_SIMILAR
 export {ObINotification, ObINotificationConfig, ObENotificationType} from './notification.interfaces';
 
 @NgModule({
-	imports: [
-		CommonModule,
-		TranslateModule
-	],
+	imports: [CommonModule, TranslateModule],
 	declarations: [ObNotificationComponent],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},

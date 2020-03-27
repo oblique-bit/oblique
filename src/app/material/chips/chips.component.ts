@@ -32,9 +32,7 @@ export class ObChipsComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.color = this.colors[0];
-		this.filteredTags = this.tagsCtrl.valueChanges.pipe(
-			map((tag: string | null) => tag ? this._filter(tag) : this._remainingTags())
-		);
+		this.filteredTags = this.tagsCtrl.valueChanges.pipe(map((tag: string | null) => (tag ? this._filter(tag) : this._remainingTags())));
 	}
 
 	toggleStacked(): void {

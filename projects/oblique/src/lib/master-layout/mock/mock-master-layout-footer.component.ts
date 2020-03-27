@@ -10,4 +10,3 @@ export class ObMockMasterLayoutFooterComponent {
 	isSmall = true;
 	readonly templates: QueryList<TemplateRef<any>>;
 }
-

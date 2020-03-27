@@ -18,13 +18,11 @@ export class ObMockMasterLayoutHeaderComponent {
 	readonly templates: QueryList<TemplateRef<any>>;
 	readonly headerControl: QueryList<ElementRef>;
 
-	onResize(): void {
-	}
+	onResize(): void {}
 
 	isLangActive(lang: string): boolean {
 		return true;
 	}
 
-	changeLang(lang: string): void {
-	}
+	changeLang(lang: string): void {}
 }

@@ -10,8 +10,7 @@ import {finalize} from 'rxjs/operators';
 class DataService {
 	static ROOT_URL = 'http://jsonplaceholder.typicode.com';
 
-	constructor(private readonly http: HttpClient) {
-	}
+	constructor(private readonly http: HttpClient) {}
 
 	getUsers() {
 		return this.http.get(`${DataService.ROOT_URL}/users`);
@@ -146,7 +145,7 @@ describe('HttpApiInterceptor', () => {
 		getError(0, () => expect(notification.send).toHaveBeenCalledWith('test', 'test', ObENotificationType.ERROR));
 	});
 
-	xit('should display a notification after timeout is expired', (done) => {
+	xit('should display a notification after timeout is expired', done => {
 		config.timeout = 1;
 		spyOn(notification, 'warning');
 		getAsyncUsers(() => {
@@ -172,9 +171,12 @@ describe('HttpApiInterceptor', () => {
 
 	function buildRequest(success?: Function): TestRequest {
 		// call success in `finalize` because `subscribe` is called before `complete` callback
-		service.getUsers().pipe(finalize(() => success && success())).subscribe(response => {
-			expect(response).toBeTruthy();
-		});
+		service
+			.getUsers()
+			.pipe(finalize(() => success && success()))
+			.subscribe(response => {
+				expect(response).toBeTruthy();
+			});
 		const req = httpMock.expectOne(`${DataService.ROOT_URL}/users`);
 		expect(req.request.method).toEqual('GET');
 
@@ -182,7 +184,7 @@ describe('HttpApiInterceptor', () => {
 	}
 
 	function getError(code: number, error?: Function): TestRequest {
-		service.getError(code).subscribe(undefined, (response) => {
+		service.getError(code).subscribe(undefined, response => {
 			expect(response).toBeTruthy();
 			if (error) {
 				error();

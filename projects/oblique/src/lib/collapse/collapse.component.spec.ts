@@ -4,13 +4,12 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {By} from '@angular/platform-browser';
 import {ObCollapseComponent, OBLIQUE_COLLAPSE_ACTIVE} from './collapse.component';
 
-
 @Component({
 	template: `
-        <ob-collapse [(active)]="active" [direction]="direction" column-main-content [iconPosition]="iconPosition">
-           <span id="{{collapseTitle}}_title" obCollapseHeader> {{collapseTitle}}</span>
-            <p obCollapseMain> Lorem ipsum dolor sit amet</p>
-        </ob-collapse>
+		<ob-collapse [(active)]="active" [direction]="direction" column-main-content [iconPosition]="iconPosition">
+			<span id="{{ collapseTitle }}_title" obCollapseHeader> {{ collapseTitle }}</span>
+			<p obCollapseMain>Lorem ipsum dolor sit amet</p>
+		</ob-collapse>
 	`
 })
 class TestCollaspseComponent {
@@ -30,9 +29,7 @@ describe('CollapseComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [TestCollaspseComponent, ObCollapseComponent],
 			imports: [NoopAnimationsModule],
-			schemas: [
-				CUSTOM_ELEMENTS_SCHEMA
-			],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA],
 			providers: [{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: false}]
 		}).compileComponents();
 	}));

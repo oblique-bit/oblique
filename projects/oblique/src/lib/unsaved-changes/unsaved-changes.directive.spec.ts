@@ -5,17 +5,14 @@ import {ControlContainer} from '@angular/forms';
 import {ObUnsavedChangesDirective, ObUnsavedChangesService} from 'oblique';
 
 @Component({
-	template: `
-		<form obUnsavedChanges></form>`
+	template: ` <form obUnsavedChanges></form>`
 })
 class FaultyTestComponent {
 	@ViewChild(ObUnsavedChangesDirective, {static: false}) unsavedChangesDirective;
 }
 
 @Component({
-	template: `
-		<form id="test" obUnsavedChanges></form>`
-
+	template: ` <form id="test" obUnsavedChanges></form>`
 })
 class TestComponent {
 	//noinspection JSUnusedGlobalSymbols
@@ -45,10 +42,7 @@ describe('UnsavedChangesDirective', () => {
 		//noinspection JSIgnoredPromiseFromCall
 		TestBed.configureTestingModule({
 			declarations: [FaultyTestComponent, TestComponent, ObUnsavedChangesDirective],
-			providers: [
-				ControlContainer,
-				{provide: ObUnsavedChangesService, useValue: unsavedChangesServiceMock}
-			],
+			providers: [ControlContainer, {provide: ObUnsavedChangesService, useValue: unsavedChangesServiceMock}],
 			imports: [CommonModule]
 		}).compileComponents();
 	}));

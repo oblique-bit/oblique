@@ -12,18 +12,13 @@ export class ObMockHttpApiInterceptorEvents {
 		return EMPTY;
 	}
 
-	sessionExpire(): void {
-	}
+	sessionExpire(): void {}
 
-	requestIntercept(request: ObIHttpApiRequest): void {
-	}
+	requestIntercept(request: ObIHttpApiRequest): void {}
 
-	deactivateSpinnerOnNextAPICalls(number = 1): void {
-	}
+	deactivateSpinnerOnNextAPICalls(number = 1): void {}
 
-	deactivateNotificationOnNextAPICalls(number = 1): void {
-	}
+	deactivateNotificationOnNextAPICalls(number = 1): void {}
 
-	deactivateOnNextAPICalls(number = 1): void {
-	}
+	deactivateOnNextAPICalls(number = 1): void {}
 }

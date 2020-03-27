@@ -10,12 +10,11 @@ import {ObMasterLayoutComponentService} from '../master-layout/master-layout/mas
 @Component({
 	selector: 'ob-spinner',
 	exportAs: 'obSpinner',
-	template: `
-		<div class="overlay" [class.overlay-fixed]="fixed" [@inOut]="$state">
-			<div class="spinner-viewport" #spinnerContainer>
-				<span class="fa fa-spinner fa-spin fa-4x"></span>
-			</div>
-		</div>`,
+	template: ` <div class="overlay" [class.overlay-fixed]="fixed" [@inOut]="$state">
+		<div class="spinner-viewport" #spinnerContainer>
+			<span class="fa fa-spinner fa-spin fa-4x"></span>
+		</div>
+	</div>`,
 	styleUrls: ['spinner.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	animations: [
@@ -23,26 +22,16 @@ import {ObMasterLayoutComponentService} from '../master-layout/master-layout/mas
 			state('in', style({opacity: 1, display: 'block'})),
 			transition('* => in', [
 				style({display: 'block'}), // As we can not animate the `display` property, we modify it before starting the next animation.
-				animate('250ms ease-in-out', keyframes([
-					style({offset: 0, opacity: 0, display: 'block'}),
-					style({offset: 1, opacity: 1, display: 'block'})
-				]))
+				animate('250ms ease-in-out', keyframes([style({offset: 0, opacity: 0, display: 'block'}), style({offset: 1, opacity: 1, display: 'block'})]))
 			]),
-			state(
-				'out',
-				style({opacity: 0, display: 'none'})
-			),
+			state('out', style({opacity: 0, display: 'none'})),
 			transition('* => out', [
-				animate('250ms ease-in-out', keyframes([
-					style({offset: 0, opacity: 1, display: 'block'}),
-					style({offset: 1, opacity: 0, display: 'block'})
-				]))
+				animate('250ms ease-in-out', keyframes([style({offset: 0, opacity: 1, display: 'block'}), style({offset: 1, opacity: 0, display: 'block'})]))
 			])
 		])
 	]
 })
 export class ObSpinnerComponent extends ObUnsubscribable implements OnInit, AfterViewInit {
-
 	@Input()
 	channel: string = ObSpinnerService.CHANNEL;
 
@@ -60,13 +49,12 @@ export class ObSpinnerComponent extends ObUnsubscribable implements OnInit, Afte
 		private readonly masterLayoutComponentService: ObMasterLayoutComponentService
 	) {
 		super();
-		spinnerService.events.pipe(takeUntil(this.unsubscribe))
-			.subscribe((event: ObISpinnerEvent) => {
-				if (event.channel === this.channel) {
-					// TODO: Workaround until https://github.com/angular/angular/issues/28801 is solved
-					setTimeout(() => this.$state = event.active ? 'in' : 'out');
-				}
-			});
+		spinnerService.events.pipe(takeUntil(this.unsubscribe)).subscribe((event: ObISpinnerEvent) => {
+			if (event.channel === this.channel) {
+				// TODO: Workaround until https://github.com/angular/angular/issues/28801 is solved
+				setTimeout(() => (this.$state = event.active ? 'in' : 'out'));
+			}
+		});
 	}
 
 	ngOnInit() {
@@ -80,7 +68,8 @@ export class ObSpinnerComponent extends ObUnsubscribable implements OnInit, Afte
 	@HostListener('window:scroll')
 	@HostListener('window:resize')
 	calculateSpinnerPosition(): void {
-		if (!this.masterLayoutComponentService.isFixed) { // no fixed layout, calculate manually
+		if (!this.masterLayoutComponentService.isFixed) {
+			// no fixed layout, calculate manually
 			this.spinnerContainer.nativeElement.style.top = `${+(window.innerHeight / 2 + window.scrollY)}px`;
 		}
 	}

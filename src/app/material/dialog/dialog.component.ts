@@ -24,7 +24,7 @@ export class ObDialogComponent {
 		this.dialogState = this.DIALOG_STATE_CURRENTLY_OPEN;
 		const dialogRef = this.dialog.open(ObExampleDialogComponent, {
 			width: this.DIALOG_WIDTH,
-			data: {name: this.name, animal: this.animal},
+			data: {name: this.name, animal: this.animal}
 		});
 
 		dialogRef.afterClosed().subscribe(result => {

@@ -1,17 +1,28 @@
-<input class="form-control" [formControl]="datePicker" [placeholder]="placeholder"
-	   [minDate]="minDate" [maxDate]="maxDate" [startDate]="startDate"
-	   [navigation]="opts.navigation"
-	   [displayMonths]="opts.displayMonths"
-	   [firstDayOfWeek]="opts.firstDayOfWeek"
-	   [outsideDays]="opts.outsideDays"
-	   [showWeekdays]="opts.showWeekdays"
-	   [showWeekNumbers]="opts.showWeekNumbers"
-	   [container]="opts.appendToBody ? 'body' : null"
-	   ngbDatepicker/>
+<input
+	class="form-control"
+	[formControl]="datePicker"
+	[placeholder]="placeholder"
+	[minDate]="minDate"
+	[maxDate]="maxDate"
+	[startDate]="startDate"
+	[navigation]="opts.navigation"
+	[displayMonths]="opts.displayMonths"
+	[firstDayOfWeek]="opts.firstDayOfWeek"
+	[outsideDays]="opts.outsideDays"
+	[showWeekdays]="opts.showWeekdays"
+	[showWeekNumbers]="opts.showWeekNumbers"
+	[container]="opts.appendToBody ? 'body' : null"
+	ngbDatepicker
+/>
 <div class="input-group-append">
-	<button type="button" class="btn btn-secondary calendar-toggle" [class.btn-sm]="size === 'sm'" [class.btn-lg]="size === 'lg'"
-			[disabled]="ngbDatePicker.disabled"
-			(click)="ngbDatePicker.toggle()">
-		<span class="fa {{opts.icon}}"></span>
+	<button
+		type="button"
+		class="btn btn-secondary calendar-toggle"
+		[class.btn-sm]="size === 'sm'"
+		[class.btn-lg]="size === 'lg'"
+		[disabled]="ngbDatePicker.disabled"
+		(click)="ngbDatePicker.toggle()"
+	>
+		<span class="fa {{ opts.icon }}"></span>
 	</button>
 </div>

@@ -8,5 +8,4 @@ export {ObMockFormControlStateDirective} from './mock-form-control-state.directi
 	declarations: [ObMockFormControlStateDirective],
 	exports: [ObMockFormControlStateDirective]
 })
-export class ObMockFormControlStateModule {
-}
+export class ObMockFormControlStateModule {}

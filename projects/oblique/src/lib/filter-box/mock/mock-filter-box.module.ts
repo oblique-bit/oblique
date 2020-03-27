@@ -7,5 +7,4 @@ export {ObMockFilterBoxComponent} from './mock-filter-box.component';
 	declarations: [ObMockFilterBoxComponent],
 	exports: [ObMockFilterBoxComponent]
 })
-export class ObMockFilterBoxModule {
-}
+export class ObMockFilterBoxModule {}

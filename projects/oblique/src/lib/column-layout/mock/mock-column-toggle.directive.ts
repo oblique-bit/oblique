@@ -4,5 +4,4 @@ import {Directive} from '@angular/core';
 	selector: '[obColumnToggle]',
 	exportAs: 'obColumnToggle'
 })
-export class ObMockColumnToggleDirective {
-}
+export class ObMockColumnToggleDirective {}

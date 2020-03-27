@@ -22,8 +22,7 @@ export class ObMockTranslateService {
 		return 'en';
 	}
 
-	setDefaultLang(lang: string): void {
-	}
+	setDefaultLang(lang: string): void {}
 
 	get(): Observable<string> {
 		return of('');
@@ -53,16 +52,13 @@ export class ObMockTranslateService {
 		return '';
 	}
 
-	set(key: string, value: string, lang?: string): void {
-	}
+	set(key: string, value: string, lang?: string): void {}
 
 	reloadLang(lang: string): Observable<any> {
 		return of('');
 	}
 
-	resetLang(lang: string): void {
-
-	}
+	resetLang(lang: string): void {}
 
 	getBrowserCultureLang(): string {
 		return 'en';

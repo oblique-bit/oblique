@@ -32,9 +32,7 @@ export class ObMockNavTreeFakeFocusDirective {
 	};
 
 	@Input('obNavTreeFakeFocus')
-	set focusInputElement(element: any) {
-	}
+	set focusInputElement(element: any) {}
 
-	fakeFocus(element: ElementRef): void {
-	}
+	fakeFocus(element: ElementRef): void {}
 }

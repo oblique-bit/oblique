@@ -14,7 +14,6 @@ import {ObUnsubscribable} from '../unsubscribe.class';
  */
 @Injectable({providedIn: 'root'})
 export class ObDocumentMetaService extends ObUnsubscribable {
-
 	public titleSeparator = ' · ';
 	public titleSuffix = '';
 	public description = '';
@@ -40,30 +39,35 @@ export class ObDocumentMetaService extends ObUnsubscribable {
 		this.translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe(this.updateMetaInformation.bind(this));
 
 		// Subscribe to NavigationEnd events and handle current activated route:
-		router.events.pipe(
-			filter(event => event instanceof NavigationEnd),
-			map(() => this.activatedRoute),
-			map(route => {
-				while (route.firstChild) {
-					route = route.firstChild;
-				}
-				return route;
-			}),
-			filter(route => route.outlet === 'primary'),
-			mergeMap(route => route.data),
-			takeUntil(this.unsubscribe)
-		).subscribe((data) => {
-			this.currentMetaInformation.title = data.title;
-			this.currentMetaInformation.description = data.description || this.description;
-			this.updateMetaInformation();
-		});
+		router.events
+			.pipe(
+				filter(event => event instanceof NavigationEnd),
+				map(() => this.activatedRoute),
+				map(route => {
+					while (route.firstChild) {
+						route = route.firstChild;
+					}
+					return route;
+				}),
+				filter(route => route.outlet === 'primary'),
+				mergeMap(route => route.data),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(data => {
+				this.currentMetaInformation.title = data.title;
+				this.currentMetaInformation.description = data.description || this.description;
+				this.updateMetaInformation();
+			});
 	}
 
 	public setTitle(title: string, separator: string = this.titleSeparator, suffix: string = this.titleSuffix) {
 		if (title && title !== '') {
-			this.translate.get([title, suffix]).pipe(takeUntil(this.unsubscribe)).subscribe(translation => {
-				this.titleService.setTitle(`${translation[title]}${separator}${translation[suffix]}`);
-			});
+			this.translate
+				.get([title, suffix])
+				.pipe(takeUntil(this.unsubscribe))
+				.subscribe(translation => {
+					this.titleService.setTitle(`${translation[title]}${separator}${translation[suffix]}`);
+				});
 		} else {
 			this.titleService.setTitle(this.translate.instant(suffix));
 		}
@@ -75,9 +79,12 @@ export class ObDocumentMetaService extends ObUnsubscribable {
 
 	public setDescription(description: string) {
 		if (description && description !== '') {
-			this.translate.get(description).pipe(takeUntil(this.unsubscribe)).subscribe(translation => {
-				this.metaDescription.setAttribute('content', translation);
-			});
+			this.translate
+				.get(description)
+				.pipe(takeUntil(this.unsubscribe))
+				.subscribe(translation => {
+					this.metaDescription.setAttribute('content', translation);
+				});
 		} else {
 			this.metaDescription.setAttribute('content', '');
 		}

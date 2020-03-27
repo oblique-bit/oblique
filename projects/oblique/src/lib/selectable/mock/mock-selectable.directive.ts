@@ -9,6 +9,5 @@ export class ObMockSelectableDirective {
 	@Input() selected = false;
 	@Input() value: any;
 
-	onClick($event: MouseEvent): void {
-	}
+	onClick($event: MouseEvent): void {}
 }

@@ -1,14 +1,23 @@
-<p>This is an internal feature of Oblique and should only be used when live theme or font change is required. The vast majority of projects won't need this
-	service and should just stick to the configuration options.</p>
-<p>The desired theme, either <code>oblique-material</code> or <code>oblique-bootstrap</code>, should simply be set in <code>angular.json</code>, after <code>oblique-core.css</code>.
-	To avoid theme conflicts, either define a theme in <code>angular.json</code> or set it through the <code>setTheme</code> method. Doing both will lead to
-	load 2 separate themes simultaneously which will lead to unpredictable results.<p>
-<p>The theme service tries to load the <strong>Frutiger</strong> font per default. This can be altered by injecting the <code>OBLIQUE_FONT</code> token with the
-	desired font into the providers array of <code>app.module.ts</code>. Both <code>Frutiger</code> and <code>Roboto</code> are served statically, which means a
-	reference to its definition will be automatically loaded and injected into the <code>HEAD</code> of the HTML document. If <code>OBLIOQUE.FONT</code> is set
-	to <code>FONTS.NONE</code>, no font definition will be loaded, which results in <code>Arial</code> being used.</p>
-<p>Because of licence restrictions, the <code>Frutiger</code> font files cannot be delivered with Oblique. Each project has to obtain the font files itself from
-	<a href="mailto:webforum@bk.admin.ch">webforum@bk.admin.ch</a> or the
+<p>
+	This is an internal feature of Oblique and should only be used when live theme or font change is required. The vast majority of projects won't need this
+	service and should just stick to the configuration options.
+</p>
+<p>
+	The desired theme, either <code>oblique-material</code> or <code>oblique-bootstrap</code>, should simply be set in <code>angular.json</code>, after
+	<code>oblique-core.css</code>. To avoid theme conflicts, either define a theme in <code>angular.json</code> or set it through the
+	<code>setTheme</code> method. Doing both will lead to load 2 separate themes simultaneously which will lead to unpredictable results.
+</p>
+
+<p></p>
+<p>
+	The theme service tries to load the <strong>Frutiger</strong> font per default. This can be altered by injecting the <code>OBLIQUE_FONT</code> token with
+	the desired font into the providers array of <code>app.module.ts</code>. Both <code>Frutiger</code> and <code>Roboto</code> are served statically, which
+	means a reference to its definition will be automatically loaded and injected into the <code>HEAD</code> of the HTML document. If
+	<code>OBLIOQUE.FONT</code> is set to <code>FONTS.NONE</code>, no font definition will be loaded, which results in <code>Arial</code> being used.
+</p>
+<p>
+	Because of licence restrictions, the <code>Frutiger</code> font files cannot be delivered with Oblique. Each project has to obtain the font files itself
+	from <a href="mailto:webforum@bk.admin.ch">webforum@bk.admin.ch</a> or the
 	<a href="https://intranet.bk.admin.ch/bk-intra/de/home/dl-koordination-bund/kommunikation/webforum-bund/Downloads.html">federal chancellery intranet</a> and
 	put them into the <code>src/assets/fonts</code> folder. Each project is also responsible for the font protection according to its
 	<a href="https://github.com/swiss/styleguide/blob/master/src/assets/fonts/LICENSE">licence</a>. The proposed solution consist of only delivering the font if

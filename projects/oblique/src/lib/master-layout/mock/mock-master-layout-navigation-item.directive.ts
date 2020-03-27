@@ -12,12 +12,9 @@ export class ObMockMasterLayoutNavigationItemDirective {
 	$menu: ObMasterLayoutNavigationMenuDirective;
 	$items: QueryList<ObMasterLayoutNavigationItemDirective>;
 
-	open(): void {
-	}
+	open(): void {}
 
-	close(): void {
-	}
+	close(): void {}
 
-	onClick(targetElement?): void {
-	}
+	onClick(targetElement?): void {}
 }

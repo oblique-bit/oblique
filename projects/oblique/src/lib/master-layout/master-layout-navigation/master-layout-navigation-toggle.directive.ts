@@ -5,7 +5,6 @@ import {Directive, ElementRef, EventEmitter, HostListener, Output} from '@angula
 	exportAs: 'obMasterLayoutNavigationToggle'
 })
 export class ObMasterLayoutNavigationToggleDirective {
-
 	@Output()
 	onToggle = new EventEmitter<MouseEvent>();
 

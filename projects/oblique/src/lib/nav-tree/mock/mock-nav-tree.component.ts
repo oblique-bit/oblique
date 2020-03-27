@@ -37,12 +37,9 @@ export class ObMockNavTreeComponent {
 		return true;
 	}
 
-	changeCollapsed(items: ObNavTreeItemModel[], collapsed: boolean, all = false): void {
-	}
+	changeCollapsed(items: ObNavTreeItemModel[], collapsed: boolean, all = false): void {}
 
-	collapseAll(): void {
-	}
+	collapseAll(): void {}
 
-	expandAll(): void {
-	}
+	expandAll(): void {}
 }

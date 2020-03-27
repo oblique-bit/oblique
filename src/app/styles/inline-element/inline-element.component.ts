@@ -4,5 +4,4 @@ import {Component} from '@angular/core';
 	selector: 'ob-inline-element',
 	templateUrl: './inline-element.component.html'
 })
-export class ObInlineElementComponent {
-}
+export class ObInlineElementComponent {}

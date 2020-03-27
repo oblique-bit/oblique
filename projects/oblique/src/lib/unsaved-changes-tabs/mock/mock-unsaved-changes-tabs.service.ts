@@ -4,17 +4,13 @@ import {NgbTabset} from '@ng-bootstrap/ng-bootstrap';
 
 @Injectable()
 export class ObMockUnsavedChangesTabsService {
-	watch(formId: string, form: ControlContainer): void {
-	}
+	watch(formId: string, form: ControlContainer): void {}
 
-	unWatch(formId: string): void {
-	}
+	unWatch(formId: string): void {}
 
-	listenTo(ngbTabset: NgbTabset): void {
-	}
+	listenTo(ngbTabset: NgbTabset): void {}
 
-	unListenTo(ngbTabset: NgbTabset): void {
-	}
+	unListenTo(ngbTabset: NgbTabset): void {}
 
 	canDeactivate(): boolean {
 		return true;

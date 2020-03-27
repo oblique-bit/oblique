@@ -18,7 +18,6 @@ export class ObNotificationService {
 	private readonly eventSubject: Subject<ObINotification> = new Subject<ObINotification>();
 	private readonly events$ = this.eventSubject.asObservable();
 
-
 	constructor(public config: ObNotificationConfig, router: Router) {
 		router.events.pipe(filter(evt => evt instanceof NavigationEnd && this.clearAllOnNavigate)).subscribe(() => this.clearAll());
 	}
@@ -87,7 +86,7 @@ export class ObNotificationService {
 			title: config.title || this.config[type].title,
 			titleParams: config.titleParams,
 			channel: config.channel || this.config[type].channel || this.config.channel,
-			sticky: config.sticky != null ? config.sticky : (this.config[type].sticky != null ? this.config[type].sticky : this.config.sticky),
+			sticky: config.sticky != null ? config.sticky : this.config[type].sticky != null ? this.config[type].sticky : this.config.sticky,
 			timeout: config.timeout || this.config[type].timeout || this.config.timeout,
 			groupSimilar: config.groupSimilar || this.config[type].groupSimilar || this.config.groupSimilar
 		};
@@ -97,8 +96,10 @@ export class ObNotificationService {
 	}
 
 	// Do not make it static as it breaks the build
-	private formatMessage(message: string, messageParams: { [key: string]: any }): string {
-		return Object.keys(messageParams || {}).reduce((msg, key) => `${msg}-${messageParams[key].toString()}`, message.substr(0, 50))
-			.replace(/[^\w]/gi, '_').toLowerCase();
+	private formatMessage(message: string, messageParams: {[key: string]: any}): string {
+		return Object.keys(messageParams || {})
+			.reduce((msg, key) => `${msg}-${messageParams[key].toString()}`, message.substr(0, 50))
+			.replace(/[^\w]/gi, '_')
+			.toLowerCase();
 	}
 }

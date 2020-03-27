@@ -8,9 +8,9 @@ import {ObFormControlStateDirective} from 'oblique';
 	template: `
 		<form name="testForm">
 			<div obFormControlState [pristineValidation]="pristineValidation">
-				<input name="name" type="text" [(ngModel)]="model" #name="ngModel" required minlength="3">
+				<input name="name" type="text" [(ngModel)]="model" #name="ngModel" required minlength="3" />
 			</div>
-			<input id="submit" type="submit" value="Click Me">
+			<input id="submit" type="submit" value="Click Me" />
 		</form>
 	`
 })
@@ -25,10 +25,10 @@ class TestWithPristineValidationComponent {
 @Component({
 	template: `
 		<form [formGroup]="model">
-            <div obFormControlState>
-				<input formControlName="name" type="text">
+			<div obFormControlState>
+				<input formControlName="name" type="text" />
 			</div>
-			<input id="submit" type="submit" value="Click Me">
+			<input id="submit" type="submit" value="Click Me" />
 		</form>
 	`
 })
@@ -38,8 +38,7 @@ class ReactiveTestComponent implements OnInit {
 	@ViewChild(NgModel, {static: false}) ngModel: FormControlName;
 	@ViewChild(ObFormControlStateDirective, {static: false}) formControlState;
 
-	constructor(private readonly formBuilder: FormBuilder) {
-	}
+	constructor(private readonly formBuilder: FormBuilder) {}
 
 	ngOnInit() {
 		this.model = this.formBuilder.group({name: ['', Validators.required]});
@@ -50,9 +49,9 @@ class ReactiveTestComponent implements OnInit {
 	template: `
 		<form name="testForm">
 			<div obFormControlState>
-				<input name="name" type="text" [(ngModel)]="model" #name="ngModel" required minlength="4">
+				<input name="name" type="text" [(ngModel)]="model" #name="ngModel" required minlength="4" />
 			</div>
-			<input id="submit" type="submit" value="Click Me">
+			<input id="submit" type="submit" value="Click Me" />
 		</form>
 	`
 })
@@ -63,24 +62,14 @@ class TestComponent {
 }
 
 describe('ObFormControlStateDirective', () => {
-	let fixture: ComponentFixture<TestComponent>
-	| ComponentFixture<TestWithPristineValidationComponent>
-	| ComponentFixture<ReactiveTestComponent>;
+	let fixture: ComponentFixture<TestComponent> | ComponentFixture<TestWithPristineValidationComponent> | ComponentFixture<ReactiveTestComponent>;
 	let component: TestComponent | TestWithPristineValidationComponent | ReactiveTestComponent;
 	let submitButton;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				ObFormControlStateDirective,
-				TestWithPristineValidationComponent,
-				TestComponent,
-				ReactiveTestComponent
-			],
-			imports: [
-				FormsModule,
-				ReactiveFormsModule
-			]
+			declarations: [ObFormControlStateDirective, TestWithPristineValidationComponent, TestComponent, ReactiveTestComponent],
+			imports: [FormsModule, ReactiveFormsModule]
 		}).compileComponents();
 	}));
 
@@ -117,7 +106,6 @@ describe('ObFormControlStateDirective', () => {
 
 			expect(fixture.debugElement.query(By.css('.has-error'))).toBeTruthy();
 		}));
-
 	});
 
 	describe('with pristineValidation = true', () => {

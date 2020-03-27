@@ -1,10 +1,13 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {
-	NavigatorSampleComponent, ChildState1Component, ChildState11Component,
-	ChildState12Component, ChildState111Component, ChildState112Component
+	NavigatorSampleComponent,
+	ChildState1Component,
+	ChildState11Component,
+	ChildState12Component,
+	ChildState111Component,
+	ChildState112Component
 } from './navigator-sample.component';
-
 
 const navigatorSampleRoutes: Routes = [
 	{
@@ -42,7 +45,7 @@ const navigatorSampleRoutes: Routes = [
 								component: ChildState12Component
 							}
 						]
-					},
+					}
 				]
 			}
 		]
@@ -50,12 +53,7 @@ const navigatorSampleRoutes: Routes = [
 ];
 
 @NgModule({
-	imports: [
-		RouterModule.forChild(navigatorSampleRoutes)
-	],
-	exports: [
-		RouterModule
-	]
+	imports: [RouterModule.forChild(navigatorSampleRoutes)],
+	exports: [RouterModule]
 })
-export class NavigatorSampleRoutingModule {
-}
+export class NavigatorSampleRoutingModule {}

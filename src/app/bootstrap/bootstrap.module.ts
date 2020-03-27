@@ -16,5 +16,4 @@ import {TabsComponent} from './tabs/tabs.component';
 		NgbTabsetModule
 	]
 })
-export class BootstrapModule {
-}
+export class BootstrapModule {}

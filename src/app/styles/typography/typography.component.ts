@@ -5,5 +5,4 @@ import {Component} from '@angular/core';
 	templateUrl: './typography.component.html',
 	styleUrls: ['./typography.component.scss']
 })
-export class ObTypographyComponent {
-}
+export class ObTypographyComponent {}

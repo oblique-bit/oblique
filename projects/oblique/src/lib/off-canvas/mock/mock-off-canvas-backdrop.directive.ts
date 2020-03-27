@@ -5,6 +5,5 @@ import {Directive} from '@angular/core';
 	selector: '.offcanvas-backdrop'
 })
 export class ObMockOffCanvasBackdropDirective {
-	close(): void {
-	}
+	close(): void {}
 }

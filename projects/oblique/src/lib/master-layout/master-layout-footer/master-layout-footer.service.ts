@@ -14,8 +14,7 @@ export class ObMasterLayoutFooterService {
 	private _isSmall = this.config.footer.isSmall;
 	private _hasScrollTransition = this.config.footer.hasScrollTransitions;
 
-	constructor(private readonly config: ObMasterLayoutConfig) {
-	}
+	constructor(private readonly config: ObMasterLayoutConfig) {}
 
 	get configEvents(): Observable<ObIMasterLayoutEvent> {
 		return this.eventsS;

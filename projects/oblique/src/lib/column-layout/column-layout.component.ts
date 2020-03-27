@@ -80,7 +80,7 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 	private center(): void {
 		const dimension = this.el.nativeElement.getBoundingClientRect();
 		const middle = ObColumnLayoutComponent.visibleHeight(dimension, this.window) / 2;
-		const top = (this.master.layout.isFixed || this.window.innerHeight > dimension.height) ? '50%' : `${middle}px`;
+		const top = this.master.layout.isFixed || this.window.innerHeight > dimension.height ? '50%' : `${middle}px`;
 		this.toggles.forEach(toggle => this.renderer.setStyle(toggle.nativeElement, 'top', top));
 	}
 }

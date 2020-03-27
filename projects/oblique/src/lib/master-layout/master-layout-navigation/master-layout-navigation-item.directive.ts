@@ -7,13 +7,12 @@ import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-
 import {ObEMasterLayoutEventValues} from '../master-layout.utility';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 
-
 @Directive({
 	selector: '[obMasterLayoutNavigationItem]',
 	exportAs: 'obMasterLayoutNavigationItem'
 })
 export class ObMasterLayoutNavigationItemDirective extends ObUnsubscribable implements AfterViewInit {
-	@HostBinding('class.show')  public show = false;
+	@HostBinding('class.show') public show = false;
 	@Output() onClose = new EventEmitter<void>();
 	@ContentChildren(ObMasterLayoutNavigationToggleDirective, {descendants: true}) $toggles: QueryList<ObMasterLayoutNavigationToggleDirective>;
 	@ContentChild(ObMasterLayoutNavigationMenuDirective) $menu: ObMasterLayoutNavigationMenuDirective;
@@ -24,9 +23,12 @@ export class ObMasterLayoutNavigationItemDirective extends ObUnsubscribable impl
 	}
 
 	ngAfterViewInit() {
-		this.$toggles.forEach(($toggle) => {
+		this.$toggles.forEach($toggle => {
 			$toggle.onToggle
-				.pipe(takeUntil(this.unsubscribe), filter(($event: any) => !$event.prevented))
+				.pipe(
+					takeUntil(this.unsubscribe),
+					filter(($event: any) => !$event.prevented)
+				)
 				.subscribe(($event: any) => {
 					if (this.$menu) {
 						// eslint-disable-next-line no-unused-expressions
@@ -40,10 +42,9 @@ export class ObMasterLayoutNavigationItemDirective extends ObUnsubscribable impl
 				});
 		});
 
-		this.masterLayout.configEvents
-			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.COLLAPSE && evt.value)).subscribe(() => this.close());
+		this.masterLayout.configEvents.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.COLLAPSE && evt.value)).subscribe(() => this.close());
 
-		this.$items.forEach(($item) => {
+		this.$items.forEach($item => {
 			$item.onClose.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.close());
 		});
 	}

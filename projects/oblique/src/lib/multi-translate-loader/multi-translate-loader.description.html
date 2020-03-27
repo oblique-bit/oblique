@@ -1,9 +1,12 @@
-<p>A loader for the <code>TranslateService</code> that handles multiple translation files. It automatically loads Oblique's own translations and all additional
-	files defined by the project, by default <code>./assets/i18n/&lt;lang&lt&gt;.json</code>.</p>
+<p>
+	A loader for the <code>TranslateService</code> that handles multiple translation files. It automatically loads Oblique's own translations and all additional
+	files defined by the project, by default <code>./assets/i18n/&lt;lang&lt&gt;.json</code>.
+</p>
 <p class="list">There are 3 possibilities to use it, ordered by simplicity:</p>
 <ol>
 	<li>Using <code>multiTranslateLoader</code> helper: <code>TranslateModule.forRoot(multiTranslateLoader())</code></li>
-	<li>Using <code>getTranslateLoader</code> helper:
+	<li>
+		Using <code>getTranslateLoader</code> helper:
 		<pre>
 TranslateModule.forRoot(&lcub;
 	loader: &lcub;
@@ -11,11 +14,12 @@ TranslateModule.forRoot(&lcub;
 		useFactory: getTranslateLoader,
 		deps: [HttpClient, [new Optional(), TRANSLATION_FILES]]
 	}
-}})
+}})<!-- prettier-ignore -->
 		</pre>
 	</li>
-	<li>Using <code>MultiTranslateLoader</code> class:
-	<pre>
+	<li>
+		Using <code>MultiTranslateLoader</code> class:
+		<pre>
 export function yourOwnFactory() &lcub;
 	return new MultiTranslateLoader(http, [
 		&lcub;prefix: './assets/styles/i18n/', suffix: '.json'},
@@ -31,7 +35,7 @@ TranslateModule.forRoot(&lcub;
 		useFactory: yourOwnFactory,
 		deps: [HttpClient]
 	}
-}})
+}})<!-- prettier-ignore -->
 		</pre>
 	</li>
 </ol>

@@ -11,6 +11,5 @@ export class ObMockMasterLayoutService {
 		public readonly footer: ObMasterLayoutFooterService,
 		public readonly navigation: ObMasterLayoutNavigationService,
 		public readonly layout: ObMasterLayoutComponentService
-	) {
-	}
+	) {}
 }

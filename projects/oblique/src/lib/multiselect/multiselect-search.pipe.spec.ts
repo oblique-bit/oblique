@@ -15,10 +15,10 @@ describe('MultiselectSearchPipe', () => {
 		const stringOptions = ['Fuu', 'Bar', 'Baz'];
 
 		beforeEach(() => {
-			multiselectDropdownMock.formatOptionForLabel.mockImplementation((value) => value);
+			multiselectDropdownMock.formatOptionForLabel.mockImplementation(value => value);
 		});
 
-		it('should keep option if it\'s equal to the searchString ', () => {
+		it("should keep option if it's equal to the searchString ", () => {
 			const filteredOptions = pipe.transform(stringOptions, 'Bar');
 
 			expect(filteredOptions.length).toBe(1);
@@ -49,10 +49,10 @@ describe('MultiselectSearchPipe', () => {
 		];
 
 		beforeEach(() => {
-			multiselectDropdownMock.formatOptionForLabel.mockImplementation((value) => value.name);
+			multiselectDropdownMock.formatOptionForLabel.mockImplementation(value => value.name);
 		});
 
-		it('should keep option if it\'s equal to the searchString ', () => {
+		it("should keep option if it's equal to the searchString ", () => {
 			const filteredOptions = pipe.transform(objectOptions, 'Bar');
 
 			expect(filteredOptions.length).toBe(1);
@@ -74,5 +74,4 @@ describe('MultiselectSearchPipe', () => {
 			expect(filteredOptions).toContain(objectOptions[2]);
 		});
 	});
-
 });

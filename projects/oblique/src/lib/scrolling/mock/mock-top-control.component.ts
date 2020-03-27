@@ -5,7 +5,5 @@ import {Component} from '@angular/core';
 	template: ''
 })
 export class ObMockTopControlComponent {
-
-	public scrollTop(): void {
-	}
+	public scrollTop(): void {}
 }

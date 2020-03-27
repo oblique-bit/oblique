@@ -9,8 +9,7 @@ export class ObMockNotificationService {
 
 	events = new Subject<ObINotification>();
 
-	constructor(public config: ObNotificationConfig) {
-	}
+	constructor(public config: ObNotificationConfig) {}
 
 	info(config: ObINotification | string): ObINotification {
 		return {} as ObINotification;
@@ -32,9 +31,7 @@ export class ObMockNotificationService {
 		return {} as ObINotification;
 	}
 
-	clear(channel): void {
-	}
+	clear(channel): void {}
 
-	clearAll(): void {
-	}
+	clearAll(): void {}
 }

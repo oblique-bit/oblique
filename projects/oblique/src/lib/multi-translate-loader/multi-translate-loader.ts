@@ -12,15 +12,14 @@ export interface ObITranslationFile {
 export const TRANSLATION_FILES = new InjectionToken('TRANSLATION_FILES');
 
 export class ObMultiTranslateLoader implements TranslateLoader {
-	constructor(private readonly http: HttpClient, private readonly resources: ObITranslationFile[]) {
-	}
+	constructor(private readonly http: HttpClient, private readonly resources: ObITranslationFile[]) {}
 
 	public getTranslation(lang: string): Observable<any> {
 		const requests = this.resources.map(resource => {
 			const path = resource.prefix + lang + resource.suffix;
 			return this.http.get(path).pipe(
 				// if some files are flat while others are expanded, the flatten properties will be ignored. Therefore, all files are flatten to avoid conflicts
-				map((data) => this.flatten(data)),
+				map(data => this.flatten(data)),
 				catchError(() => {
 					console.error('Could not find translation file:', path);
 					return of({});

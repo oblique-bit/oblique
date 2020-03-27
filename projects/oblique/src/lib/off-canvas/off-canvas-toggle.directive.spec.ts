@@ -8,16 +8,13 @@ describe('OffcanvasToggleDirective', () => {
 		offCanvasService = jest.fn();
 		TestBed.configureTestingModule({
 			declarations: [ObOffCanvasToggleDirective],
-			providers: [
-				{provide: ObOffCanvasService, useValue: offCanvasService}
-			]
-		})
-			.compileComponents();
+			providers: [{provide: ObOffCanvasService, useValue: offCanvasService}]
+		}).compileComponents();
 	}));
 
 	it('should create an instance', () => {
 		const mockService = jest.fn();
-		const directive = new ObOffCanvasToggleDirective(mockService as unknown as ObOffCanvasService);
+		const directive = new ObOffCanvasToggleDirective((mockService as unknown) as ObOffCanvasService);
 		expect(directive).toBeTruthy();
 	});
 });

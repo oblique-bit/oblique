@@ -8,21 +8,20 @@ import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 
 @Component({
-	template: `
-		<input #inputControl/>
-		<ob-nav-tree [items]="items"
-					 [obNavTreeFakeFocus]="inputControl"
-		></ob-nav-tree>`
+	template: ` <input #inputControl />
+		<ob-nav-tree [items]="items" [obNavTreeFakeFocus]="inputControl"></ob-nav-tree>`
 })
 class TestComponent {
 	items = [
 		new ObNavTreeItemModel({id: 'A', label: 'A - Label', fragment: 'fragment', queryParams: {foo: 'bar'}}),
 		new ObNavTreeItemModel({
-			id: 'B', label: 'B - Label',
+			id: 'B',
+			label: 'B - Label',
 			items: [
 				new ObNavTreeItemModel({id: 'B-1', label: 'B.1 - Label'}),
 				new ObNavTreeItemModel({
-					id: 'B-2', label: 'B.2 - Label',
+					id: 'B-2',
+					label: 'B.2 - Label',
 					items: [
 						new ObNavTreeItemModel({id: 'B2-1', label: 'B.2.1 - Label'}),
 						new ObNavTreeItemModel({id: 'B2-2', label: 'B.2.2 - Label'}),
@@ -33,7 +32,8 @@ class TestComponent {
 			]
 		}),
 		new ObNavTreeItemModel({
-			id: 'C', label: 'C - Label',
+			id: 'C',
+			label: 'C - Label',
 			items: [
 				new ObNavTreeItemModel({id: 'C-1', label: 'C.1 - Label'}),
 				new ObNavTreeItemModel({id: 'C-2', label: 'C.2 - Label'}),
@@ -56,15 +56,11 @@ describe('NavTreeFakeFocusDirective', () => {
 	let inputElement: DebugElement;
 
 	const keydown = (code: string) => {
-		inputElement.triggerEventHandler(
-			ObNavTreeFakeFocusDirective.INPUT_EVENTS.KEY_DOWN,
-			{
-				code,
-				// FIXME: remove when https://github.com/ariya/phantomjs/issues/11289
-				preventDefault: () => {
-				} // tslint:disable-line
-			}
-		);
+		inputElement.triggerEventHandler(ObNavTreeFakeFocusDirective.INPUT_EVENTS.KEY_DOWN, {
+			code,
+			// FIXME: remove when https://github.com/ariya/phantomjs/issues/11289
+			preventDefault: () => {} // tslint:disable-line
+		});
 	};
 
 	beforeEach(async(() => {
@@ -76,7 +72,6 @@ describe('NavTreeFakeFocusDirective', () => {
 		}).compileComponents();
 	}));
 
-
 	beforeEach(() => {
 		fixture = TestBed.createComponent(TestComponent);
 		testComponent = fixture.componentInstance;
@@ -85,7 +80,6 @@ describe('NavTreeFakeFocusDirective', () => {
 		directive = element.injector.get(ObNavTreeFakeFocusDirective);
 		inputElement = fixture.debugElement.query(By.css('input'));
 	});
-
 
 	it('should be created', () => {
 		expect(directive).toBeTruthy();
@@ -148,7 +142,6 @@ describe('NavTreeFakeFocusDirective', () => {
 	});
 
 	describe('on InitialFocus', () => {
-
 		it('should fake focus the first element on initial ArrowDown', () => {
 			keydown(ObNavTreeFakeFocusDirective.KEY_CODES.DOWN);
 			const fakeFocusElement = element.query(CSS_QUERIES.FAKE_FOCUS);
@@ -175,7 +168,6 @@ describe('NavTreeFakeFocusDirective', () => {
 	});
 
 	describe('on FakeFocusNext', () => {
-
 		it('should fake focus the next descendant', () => {
 			directive.fakeFocus(element.query(CSS_QUERIES.ITEM_BY_ID('B')));
 			keydown(ObNavTreeFakeFocusDirective.KEY_CODES.DOWN);
@@ -221,8 +213,7 @@ describe('NavTreeFakeFocusDirective', () => {
 	});
 
 	describe('on FakeFocusPrevious', () => {
-
-		it('should fake focus the previous sibling\'s last child', () => {
+		it("should fake focus the previous sibling's last child", () => {
 			directive.fakeFocus(element.query(CSS_QUERIES.ITEM_BY_ID('C')));
 			keydown(ObNavTreeFakeFocusDirective.KEY_CODES.UP);
 			const fakeFocusElement = element.query(CSS_QUERIES.FAKE_FOCUS);
@@ -230,7 +221,7 @@ describe('NavTreeFakeFocusDirective', () => {
 			expect(fakeFocusElement.nativeElement.textContent.trim()).toBe('B.3 - Label');
 		});
 
-		it('should fake focus the previous sibling\'s last child but skip collapsed items', () => {
+		it("should fake focus the previous sibling's last child but skip collapsed items", () => {
 			testComponent.items[1].collapsed = true;
 			fixture.detectChanges();
 

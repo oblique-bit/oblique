@@ -4,5 +4,4 @@ import {Component} from '@angular/core';
 	selector: 'ob-list-group',
 	templateUrl: './list-group.component.html'
 })
-export class ObListGroupComponent {
-}
+export class ObListGroupComponent {}

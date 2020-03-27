@@ -6,8 +6,7 @@ import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import {ObDatepickerComponent} from 'oblique';
 
 @Component({
-	template: `
-		<ob-date-picker [formControl]="model"></ob-date-picker>`
+	template: ` <ob-date-picker [formControl]="model"></ob-date-picker>`
 })
 class TestComponent {
 	model = new FormControl();
@@ -23,10 +22,7 @@ describe('DatepickerComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [TestComponent, ObDatepickerComponent],
 			imports: [ReactiveFormsModule, NgbDatepickerModule],
-			schemas: [
-				CUSTOM_ELEMENTS_SCHEMA,
-				NO_ERRORS_SCHEMA
-			]
+			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 		}).compileComponents();
 	}));
 

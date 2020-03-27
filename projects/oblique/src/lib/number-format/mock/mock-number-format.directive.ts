@@ -8,9 +8,7 @@ export class ObMockNumberFormatDirective {
 	@Input() decimals = 2;
 	@Input() persistent = true;
 
-	onBlur(): void {
-	}
+	onBlur(): void {}
 
-	onFocus(): void {
-	}
+	onFocus(): void {}
 }

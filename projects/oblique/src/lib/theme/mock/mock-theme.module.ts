@@ -5,8 +5,6 @@ import {ObMockThemeService} from './mock-theme.service';
 export {ObMockThemeService} from './mock-theme.service';
 
 @NgModule({
-	providers: [
-		{provide: ObThemeService, useClass: ObMockThemeService}]
+	providers: [{provide: ObThemeService, useClass: ObMockThemeService}]
 })
-export class ObMockThemeModule {
-}
+export class ObMockThemeModule {}

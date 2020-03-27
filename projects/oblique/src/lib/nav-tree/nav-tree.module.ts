@@ -17,25 +17,14 @@ export {ObNavTreeFakeFocusDirective} from './nav-tree-fake-focus.directive';
 export {ObNavTreeItemModel} from './nav-tree-item.model';
 
 @NgModule({
-	imports: [
-		CommonModule,
-		NgbModule,
-		RouterModule,
-		TranslateModule
-	],
-	declarations: [
-		ObNavTreeComponent,
-		ObNavTreeFakeFocusDirective
-	],
+	imports: [CommonModule, NgbModule, RouterModule, TranslateModule],
+	declarations: [ObNavTreeComponent, ObNavTreeFakeFocusDirective],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 		{provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
-	exports: [
-		ObNavTreeComponent,
-		ObNavTreeFakeFocusDirective
-	]
+	exports: [ObNavTreeComponent, ObNavTreeFakeFocusDirective]
 })
 export class ObNavTreeModule {
 	constructor(telemetry: ObTelemetryService) {

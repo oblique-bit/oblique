@@ -12,10 +12,7 @@ import {WINDOW, windowProvider} from '../utilities';
 export {ObFormControlStateDirective} from './form-control-state.directive';
 
 @NgModule({
-	imports: [
-		CommonModule,
-		FormsModule
-	],
+	imports: [CommonModule, FormsModule],
 	declarations: [ObFormControlStateDirective],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},

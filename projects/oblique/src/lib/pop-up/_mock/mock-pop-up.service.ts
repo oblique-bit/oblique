@@ -6,8 +6,7 @@ export class ObMockPopUpService {
 		return true;
 	}
 
-	public alert(message?: any): void {
-	}
+	public alert(message?: any): void {}
 
 	public prompt(message?: string, _default?: string): string | null {
 		return null;

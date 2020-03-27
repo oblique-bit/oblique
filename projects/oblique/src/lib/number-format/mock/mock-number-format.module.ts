@@ -7,5 +7,4 @@ export {ObMockNumberFormatDirective} from './mock-number-format.directive';
 	declarations: [ObMockNumberFormatDirective],
 	exports: [ObMockNumberFormatDirective]
 })
-export class ObMockNumberFormatModule {
-}
+export class ObMockNumberFormatModule {}

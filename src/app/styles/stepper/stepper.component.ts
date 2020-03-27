@@ -5,5 +5,4 @@ import {Component} from '@angular/core';
 	templateUrl: './stepper.component.html',
 	styleUrls: ['./stepper.component.scss']
 })
-export class ObStepperComponent {
-}
+export class ObStepperComponent {}

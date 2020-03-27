@@ -18,25 +18,17 @@ export class ObMockNavigableDirective {
 	active = true;
 	selected = false;
 	@Input('navigableHighlight') highlight = false;
-	@Input('navigableActivate') set activate(value: boolean) {
-	}
+	@Input('navigableActivate') set activate(value: boolean) {}
 
-	onKeyDown($event: KeyboardEvent): void {
-	}
+	onKeyDown($event: KeyboardEvent): void {}
 
-	onMouseDown($event: MouseEvent): void {
-	}
+	onMouseDown($event: MouseEvent): void {}
 
-	onFocus($event: FocusEvent): void {
-	}
+	onFocus($event: FocusEvent): void {}
 
-	focus(): void {
-	}
+	focus(): void {}
 
-	moveUp(): void {
-	}
+	moveUp(): void {}
 
-	moveDown(): void {
-	}
+	moveDown(): void {}
 }
-

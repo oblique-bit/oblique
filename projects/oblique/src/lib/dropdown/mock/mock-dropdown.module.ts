@@ -7,5 +7,4 @@ export {ObMockDropdownComponent} from './mock-dropdown.component';
 	declarations: [ObMockDropdownComponent],
 	exports: [ObMockDropdownComponent]
 })
-export class ObMockDropdownModule {
-}
+export class ObMockDropdownModule {}

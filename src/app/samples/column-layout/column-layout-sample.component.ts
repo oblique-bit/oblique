@@ -14,7 +14,9 @@ export class ObColumnLayoutSampleComponent {
 	private readonly navigation: ObINavigationLink[] = [
 		{url: '/home', label: 'i18n.routes.home.title'},
 		{
-			url: '/samples', label: 'i18n.routes.samples.title', children: [
+			url: '/samples',
+			label: 'i18n.routes.samples.title',
+			children: [
 				{url: '/column-layout', label: 'i18n.routes.samples.column-layout.title'},
 				{url: '/datepicker', label: 'i18n.routes.samples.datepicker.title'},
 				{url: '/filter-box', label: 'i18n.routes.samples.filter-box.title'},

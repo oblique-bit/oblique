@@ -11,13 +11,10 @@ describe('TopControlComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				ObTopControlComponent,
-				ObMockTranslatePipe
-			],
+			declarations: [ObTopControlComponent, ObMockTranslatePipe],
 			providers: [
 				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useValue: windowProvider},
+				{provide: WINDOW, useValue: windowProvider}
 			]
 		}).compileComponents();
 	}));
@@ -38,6 +35,4 @@ describe('TopControlComponent', () => {
 		expect(spy).toHaveBeenCalled();
 		spy.mockRestore();
 	});
-
-
 });

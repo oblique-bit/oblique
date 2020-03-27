@@ -9,7 +9,8 @@ import {
 	DoCheck,
 	ElementRef,
 	EventEmitter,
-	forwardRef, HostBinding,
+	forwardRef,
+	HostBinding,
 	HostListener,
 	Input,
 	IterableDiffers,
@@ -32,11 +33,13 @@ import {ObThemeService} from '../theme/theme.service';
 @Component({
 	selector: 'ob-multiselect',
 	exportAs: 'obMultiselect',
-	providers: [{
-		provide: NG_VALUE_ACCESSOR,
-		useExisting: forwardRef(() => ObMultiselectComponent),
-		multi: true
-	}],
+	providers: [
+		{
+			provide: NG_VALUE_ACCESSOR,
+			useExisting: forwardRef(() => ObMultiselectComponent),
+			multi: true
+		}
+	],
 	styleUrls: ['./multiselect.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	templateUrl: './multiselect.component.html'
@@ -119,7 +122,6 @@ export class ObMultiselectComponent implements OnInit, OnDestroy, DoCheck, Contr
 	@HostListener('keyup', ['$event'])
 	onKeyup($event: KeyboardEvent) {
 		if ($event.code === 'ArrowUp' && this.isVisible) {
-
 			this.toggleDropdown();
 		}
 	}
@@ -190,7 +192,7 @@ export class ObMultiselectComponent implements OnInit, OnDestroy, DoCheck, Contr
 			this.model.splice(index, 1);
 			this.onRemoved.emit(option);
 			this.emitModelChange();
-		} else if (!this.selectionLimit || (this.model.length < this.selectionLimit)) {
+		} else if (!this.selectionLimit || this.model.length < this.selectionLimit) {
 			this.model.push(option);
 			this.onAdded.emit(option);
 			this.emitModelChange();
@@ -213,18 +215,17 @@ export class ObMultiselectComponent implements OnInit, OnDestroy, DoCheck, Contr
 	}
 
 	checkAll() {
-		this.model = this.options
-			.map((option) => {
-				if (this.model.indexOf(option) === -1) {
-					this.onAdded.emit(option);
-				}
-				return option;
-			});
+		this.model = this.options.map(option => {
+			if (this.model.indexOf(option) === -1) {
+				this.onAdded.emit(option);
+			}
+			return option;
+		});
 		this.emitModelChange();
 	}
 
 	uncheckAll() {
-		this.model.forEach((option) => this.onRemoved.emit(option));
+		this.model.forEach(option => this.onRemoved.emit(option));
 		this.model = [];
 		this.emitModelChange();
 	}

@@ -109,5 +109,4 @@ const appRoutes: Routes = [
 		CdkTableModule
 	]
 })
-export class MaterialModule {
-}
+export class MaterialModule {}

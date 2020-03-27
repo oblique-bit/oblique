@@ -7,9 +7,7 @@ import {ObOffCanvasService} from './off-canvas.service';
 	exportAs: 'obOffCanvasToggle'
 })
 export class ObOffCanvasToggleDirective {
-
-	constructor(private readonly offCanvas: ObOffCanvasService) {
-	}
+	constructor(private readonly offCanvas: ObOffCanvasService) {}
 
 	@HostListener('click')
 	@HostListener('keyup.Enter')

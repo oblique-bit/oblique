@@ -4,7 +4,6 @@ import {ObSchemaValidatorInstance} from './schema-validator.instance';
 
 @Injectable({providedIn: 'root'})
 export class ObSchemaValidationService {
-
 	@draft06
 	compileSchema(schema: any): ObSchemaValidatorInstance {
 		return new ObSchemaValidatorInstance(schema);

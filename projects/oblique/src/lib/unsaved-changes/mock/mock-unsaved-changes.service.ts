@@ -3,12 +3,9 @@ import {ControlContainer} from '@angular/forms';
 
 @Injectable()
 export class ObMockUnsavedChangesService {
+	watch(formId: string, form: ControlContainer): void {}
 
-	watch(formId: string, form: ControlContainer): void {
-	}
-
-	unWatch(formId: string): void {
-	}
+	unWatch(formId: string): void {}
 
 	canDeactivate(): boolean {
 		return true;

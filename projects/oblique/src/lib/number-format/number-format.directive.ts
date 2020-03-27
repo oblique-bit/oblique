@@ -11,8 +11,7 @@ export class ObNumberFormatDirective implements OnInit {
 	private changed = false;
 	private focused = false;
 
-	constructor(private readonly ngControl: NgControl, private readonly el: ElementRef) {
-	}
+	constructor(private readonly ngControl: NgControl, private readonly el: ElementRef) {}
 
 	@HostListener('blur')
 	onBlur(): void {
@@ -42,7 +41,7 @@ export class ObNumberFormatDirective implements OnInit {
 			}
 			this.setValue(value);
 		});
-		this.setValue(this.ngControl.value);		// for Reactive forms
+		this.setValue(this.ngControl.value); // for Reactive forms
 	}
 
 	private static toFixedNumber(number: number, decimals: number): number {

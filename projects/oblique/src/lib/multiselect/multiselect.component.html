@@ -1,42 +1,64 @@
-<div [ngClass]="{'dropdown': !dropup, 'dropup': dropup}">
+<div [ngClass]="{ dropdown: !dropup, dropup: dropup }">
 	<button type="button" class="multiselect-toggle btn btn-secondary" (click)="toggleDropdown()" [disabled]="disabled" [id]="idPrefix">
 		<span class="multiselect-label">
 			<span role="list" [class.sr-only]="model.length > dynamicTitleMaxItems" *ngIf="model.length">
-				<span class="list-item" role="listitem" *ngFor="let option of model">{{formatOptionForTitle(option)}}</span>
+				<span class="list-item" role="listitem" *ngFor="let option of model">{{ formatOptionForTitle(option) }}</span>
 			</span>
-			{{ title | translate:titleTranslateParams }}
+			{{ title | translate: titleTranslateParams }}
 		</span>
 		<span class="toggle" [class.show]="isVisible"></span>
 	</button>
-	<div *ngIf="isVisible" class="dropdown-menu"
-		 [style.max-height]="maxHeight" style="display: block; height: auto; overflow-y: auto;"
-		 [attr.aria-hidden]="!isVisible">
+	<div
+		*ngIf="isVisible"
+		class="dropdown-menu"
+		[style.max-height]="maxHeight"
+		style="display: block; height: auto; overflow-y: auto;"
+		[attr.aria-hidden]="!isVisible"
+	>
 		<div class="dropdown-item" *ngIf="enableSearch">
-			<ob-filter-box [(pattern)]="searchFilterText" [modelOptions]="{standalone: true}" placeholder="{{ texts.searchPlaceholder | translate}}" size="sm"
-                           #obFilterBox>
+			<ob-filter-box
+				[(pattern)]="searchFilterText"
+				[modelOptions]="{ standalone: true }"
+				placeholder="{{ texts.searchPlaceholder | translate }}"
+				size="sm"
+				#obFilterBox
+			>
 				<ng-template #prepend>
 					<span class="input-group-text fa fa-search" [id]="idPrefix + '-search'" [attr.aria-label]="texts.searchPlaceholder | translate"></span>
 				</ng-template>
 			</ob-filter-box>
 		</div>
 		<div class="dropdown-divider divider" *ngIf="enableSearch"></div>
-		<button [id]="idPrefix + '-check_all'" class="dropdown-item multiselect-control multiselect-control-check"
-				*ngIf="showCheckAll" (click)="checkAll()">
+		<button [id]="idPrefix + '-check_all'" class="dropdown-item multiselect-control multiselect-control-check" *ngIf="showCheckAll" (click)="checkAll()">
 			<span class="fa fa-fw fa-check"></span>
 			{{ texts.checkAll | translate }}
 		</button>
-		<button [id]="idPrefix + '-uncheck_all'" class="dropdown-item multiselect-control multiselect-control-uncheck"
-				*ngIf="showUncheckAll" (click)="uncheckAll()">
+		<button
+			[id]="idPrefix + '-uncheck_all'"
+			class="dropdown-item multiselect-control multiselect-control-uncheck"
+			*ngIf="showUncheckAll"
+			(click)="uncheckAll()"
+		>
 			<span class="fa fa-fw fa-times"></span>
 			{{ texts.uncheckAll | translate }}
 		</button>
 		<div *ngIf="showCheckAll || showUncheckAll" class="dropdown-divider divider"></div>
-		<button [id]="idPrefix + '-option-' + i" class="dropdown-item" *ngFor="let option of options | searchFilter:searchFilterText; let i = index"
-				(click)="toggleSelection(option)">
+		<button
+			[id]="idPrefix + '-option-' + i"
+			class="dropdown-item"
+			*ngFor="let option of options | searchFilter: searchFilterText; let i = index"
+			(click)="toggleSelection(option)"
+		>
 			<div class="form-check">
-				<input tabindex="-1" type="checkbox" id="{{idPrefix}}-{{i}}" [checked]="isSelected(option)" class="form-check-input"
-					   (click)="preventCheckboxCheck($event)">
-				<label class="form-check-label" for="{{idPrefix}}-{{i}}">{{formatOptionForLabel(option)}}</label>
+				<input
+					tabindex="-1"
+					type="checkbox"
+					id="{{ idPrefix }}-{{ i }}"
+					[checked]="isSelected(option)"
+					class="form-check-input"
+					(click)="preventCheckboxCheck($event)"
+				/>
+				<label class="form-check-label" for="{{ idPrefix }}-{{ i }}">{{ formatOptionForLabel(option) }}</label>
 			</div>
 		</button>
 	</div>

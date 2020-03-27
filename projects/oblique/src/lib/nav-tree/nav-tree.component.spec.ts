@@ -8,23 +8,26 @@ import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 
 @Component({
-	template: `
-		<ob-nav-tree [items]="items"
-					 [prefix]="prefix"
-					 [variant]="variant"
-					 [filterPattern]="filterPattern"
-					 [labelFormatter]="labelFormatter"
-					 [activateAncestors]="activateAncestors"></ob-nav-tree>`
+	template: ` <ob-nav-tree
+		[items]="items"
+		[prefix]="prefix"
+		[variant]="variant"
+		[filterPattern]="filterPattern"
+		[labelFormatter]="labelFormatter"
+		[activateAncestors]="activateAncestors"
+	></ob-nav-tree>`
 })
 class TestComponent {
 	items = [
 		new ObNavTreeItemModel({id: 'A', label: 'A - Label', fragment: 'fragment', queryParams: {foo: 'bar'}}),
 		new ObNavTreeItemModel({
-			id: 'B', label: 'B - Label',
+			id: 'B',
+			label: 'B - Label',
 			items: [
 				new ObNavTreeItemModel({id: 'B-1', label: 'B.1 - Label'}),
 				new ObNavTreeItemModel({
-					id: 'B-2', label: 'B.2 - Label',
+					id: 'B-2',
+					label: 'B.2 - Label',
 					items: [
 						new ObNavTreeItemModel({id: 'B2-1', label: 'B.2.1 - Label'}),
 						new ObNavTreeItemModel({id: 'B2-2', label: 'B.2.2 - Label'}),
@@ -35,7 +38,8 @@ class TestComponent {
 			]
 		}),
 		new ObNavTreeItemModel({
-			id: 'C', label: 'C - Label',
+			id: 'C',
+			label: 'C - Label',
 			items: [
 				new ObNavTreeItemModel({id: 'C-1', label: 'C.1 - Label'}),
 				new ObNavTreeItemModel({id: 'C-2', label: 'C.2 - Label'}),
@@ -141,7 +145,7 @@ describe('NavTreeComponent', () => {
 	});
 
 	it('should filter navigation items', () => {
-		component.filterPattern = '2';  // Filter on '2' pattern
+		component.filterPattern = '2'; // Filter on '2' pattern
 		fixture.detectChanges();
 
 		// All items containing the string '2' and their respective parents should be visible:
@@ -161,7 +165,7 @@ describe('NavTreeComponent', () => {
 		expect(navItems.length).toBe(4);
 
 		// ...and filter patterns highlighted:
-		navItems.forEach((item) => {
+		navItems.forEach(item => {
 			expect(item.nativeElement.innerHTML).toContain(ObNavTreeComponent.DEFAULTS.HIGHLIGHT);
 		});
 	});

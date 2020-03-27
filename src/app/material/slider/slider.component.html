@@ -11,7 +11,8 @@
 			[tickInterval]="tickInterval"
 			[(ngModel)]="value"
 			[vertical]="vertical"
-			[color]="color">
+			[color]="color"
+		>
 		</mat-slider>
 	</ng-container>
 	<ng-container column-right-content>
@@ -21,23 +22,23 @@
 				<legend>Configuration</legend>
 				<mat-form-field>
 					<mat-label>Value</mat-label>
-					<input matInput type="number" [(ngModel)]="value">
+					<input matInput type="number" [(ngModel)]="value" />
 				</mat-form-field>
 				<mat-form-field>
 					<mat-label>Min value</mat-label>
-					<input matInput type="number" [(ngModel)]="min">
+					<input matInput type="number" [(ngModel)]="min" />
 				</mat-form-field>
 				<mat-form-field>
 					<mat-label>Max value</mat-label>
-					<input matInput type="number" [(ngModel)]="max">
+					<input matInput type="number" [(ngModel)]="max" />
 				</mat-form-field>
 				<mat-form-field>
 					<mat-label>Step size</mat-label>
-					<input matInput type="number" [(ngModel)]="step">
+					<input matInput type="number" [(ngModel)]="step" />
 				</mat-form-field>
 				<mat-form-field>
 					<mat-label>Tick interval</mat-label>
-					<input matInput type="number" [(ngModel)]="tickInterval">
+					<input matInput type="number" [(ngModel)]="tickInterval" />
 				</mat-form-field>
 			</fieldset>
 			<fieldset>
@@ -45,7 +46,7 @@
 				<mat-radio-group [(ngModel)]="color">
 					<mat-list-item *ngFor="let sliderColor of colors">
 						<mat-radio-button [value]="sliderColor">
-							{{sliderColor | titlecase}}
+							{{ sliderColor | titlecase }}
 						</mat-radio-button>
 					</mat-list-item>
 				</mat-radio-group>

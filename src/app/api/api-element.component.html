@@ -1,33 +1,34 @@
 <dl>
 	<ng-container *ngFor="let element of elements">
-		<dt>{{element.name}}</dt>
+		<dt>{{ element.name }}</dt>
 		<dd [innerHTML]="element.text"></dd>
 		<dd *ngIf="element.see">
-			See also: <a href="{{element.see}}" target="_blank">{{element.see}}</a>
+			See also: <a href="{{ element.see }}" target="_blank">{{ element.see }}</a>
 		</dd>
 		<dd *ngIf="element.type">
-			<b>Type:</b> <code>{{element.type}}</code>
+			<b>Type:</b> <code>{{ element.type }}</code>
 		</dd>
 		<dd *ngIf="element.values">
 			<b>Values:</b>
 			<ng-container *ngFor="let value of element.values; last as isLast">
-				<code>{{value}}</code>
+				<code>{{ value }}</code>
 				<ng-container *ngIf="!isLast">,</ng-container>
 			</ng-container>
 		</dd>
 		<dd *ngIf="element.default != null">
-			<b>Default value:</b><code *ngIf="element.default !== ''">{{element.default}}</code><i *ngIf="element.default === ''"> empty string</i>
+			<b>Default value:</b><code *ngIf="element.default !== ''">{{ element.default }}</code
+			><i *ngIf="element.default === ''"> empty string</i>
 		</dd>
 		<dd *ngIf="element.arguments">
 			<b>Arguments:</b>
 			<ng-container *ngFor="let arg of element.arguments; last as isLast">
-				<code>{{arg}}</code>
+				<code>{{ arg }}</code>
 				<ng-container *ngIf="!isLast">,</ng-container>
 			</ng-container>
 		</dd>
 		<dd *ngIf="element.returns">
-			<b>Returns:</b> <code>{{element.returns}}</code>
+			<b>Returns:</b> <code>{{ element.returns }}</code>
 		</dd>
-		<dd><b>Since:</b> {{element.since}}</dd>
+		<dd><b>Since:</b> {{ element.since }}</dd>
 	</ng-container>
 </dl>

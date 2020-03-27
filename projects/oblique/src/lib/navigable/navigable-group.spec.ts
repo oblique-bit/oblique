@@ -5,22 +5,16 @@ import {By} from '@angular/platform-browser';
 import {ObNavigableDirective, ObNavigableGroupComponent} from 'oblique';
 
 @Component({
-	template: `
-		<ob-navigable-group [items]="models" [selection]="selectedModels">
-			<div [obNavigable]="models[0]"></div>
-			<div [obNavigable]="models[1]"></div>
-			<div [obNavigable]="models[2]"></div>
-			<div [obNavigable]="models[3]"></div>
-		</ob-navigable-group>`
+	template: ` <ob-navigable-group [items]="models" [selection]="selectedModels">
+		<div [obNavigable]="models[0]"></div>
+		<div [obNavigable]="models[1]"></div>
+		<div [obNavigable]="models[2]"></div>
+		<div [obNavigable]="models[3]"></div>
+	</ob-navigable-group>`
 })
 class TestComponent {
 	selectedModels = [];
-	models = [
-		{foo: 'bar'},
-		{foo: 'bar2'},
-		{foo: 'bar3'},
-		{foo: 'bar4'}
-	];
+	models = [{foo: 'bar'}, {foo: 'bar2'}, {foo: 'bar3'}, {foo: 'bar4'}];
 }
 
 describe('NavigableGroup', () => {
@@ -32,14 +26,9 @@ describe('NavigableGroup', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				TestComponent,
-				ObNavigableDirective,
-				ObNavigableGroupComponent
-			],
+			declarations: [TestComponent, ObNavigableDirective, ObNavigableGroupComponent],
 			imports: [CommonModule]
-		})
-			.compileComponents();
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -81,7 +70,6 @@ describe('NavigableGroup', () => {
 		});
 
 		describe('while holding CTRL key', () => {
-
 			it('should still *activate* navigable item', () => {
 				navigableElements[0].nativeElement.dispatchEvent(ctrlMouseDownEvent);
 				expect(navigable.active).toBe(true);
@@ -187,15 +175,13 @@ describe('NavigableGroup', () => {
 	});
 
 	describe('pressing DOWN key', () => {
-
 		it('should activate next navigable item', () => {
 			navigables[0].active = true;
 
 			// FIXME: refactor below when https://github.com/ariya/phantomjs/issues/11289
 			navigables[0].onKeyDown({
 				code: 'ArrowDown',
-				preventDefault: () => {
-				} // tslint:disable-line
+				preventDefault: () => {} // tslint:disable-line
 			} as KeyboardEvent);
 			// navigableElements[0].nativeElement.dispatchEvent(new KeyboardEvent('keydown', {
 			// 	key: NavigableDirective.KEYS.DOWN
@@ -215,8 +201,7 @@ describe('NavigableGroup', () => {
 				navigables[0].onKeyDown({
 					code: 'ArrowDown',
 					ctrlKey: true,
-					preventDefault: () => {
-					} // tslint:disable-line
+					preventDefault: () => {} // tslint:disable-line
 				} as KeyboardEvent);
 				// navigableElements[0].nativeElement.dispatchEvent(new KeyboardEvent('keydown', {
 				// 	key: NavigableDirective.KEYS.DOWN
@@ -240,8 +225,7 @@ describe('NavigableGroup', () => {
 				navigables[0].onKeyDown({
 					code: 'ArrowDown',
 					shiftKey: true,
-					preventDefault: () => {
-					} // tslint:disable-line
+					preventDefault: () => {} // tslint:disable-line
 				} as KeyboardEvent);
 				// navigableElements[0].nativeElement.dispatchEvent(new KeyboardEvent('keydown', {
 				// 	key: NavigableDirective.KEYS.DOWN
@@ -267,8 +251,7 @@ describe('NavigableGroup', () => {
 					code: 'ArrowDown',
 					ctrlKey: true,
 					shiftKey: true,
-					preventDefault: () => {
-					} // tslint:disable-line
+					preventDefault: () => {} // tslint:disable-line
 				} as KeyboardEvent);
 				// navigableElements[0].nativeElement.dispatchEvent(new KeyboardEvent('keydown', {
 				// 	key: NavigableDirective.KEYS.DOWN
@@ -286,15 +269,13 @@ describe('NavigableGroup', () => {
 	});
 
 	describe('pressing UP key', () => {
-
 		it('should activate previous navigable item', () => {
 			navigables[1].active = true;
 
 			// FIXME: refactor below when https://github.com/ariya/phantomjs/issues/11289
 			navigables[1].onKeyDown({
 				code: 'ArrowUp',
-				preventDefault: () => {
-				} // tslint:disable-line
+				preventDefault: () => {} // tslint:disable-line
 			} as KeyboardEvent);
 			// navigableElements[1].nativeElement.dispatchEvent(new KeyboardEvent('keydown', {
 			// 	key: NavigableDirective.KEYS.UP
@@ -314,8 +295,7 @@ describe('NavigableGroup', () => {
 				navigables[1].onKeyDown({
 					code: 'ArrowUp',
 					ctrlKey: true,
-					preventDefault: () => {
-					} // tslint:disable-line
+					preventDefault: () => {} // tslint:disable-line
 				} as KeyboardEvent);
 				// navigableElements[1].nativeElement.dispatchEvent(new KeyboardEvent('keydown', {
 				// 	key: NavigableDirective.KEYS.UP
@@ -339,8 +319,7 @@ describe('NavigableGroup', () => {
 				navigables[1].onKeyDown({
 					code: 'ArrowUp',
 					shiftKey: true,
-					preventDefault: () => {
-					} // tslint:disable-line
+					preventDefault: () => {} // tslint:disable-line
 				} as KeyboardEvent);
 				// navigableElements[1].nativeElement.dispatchEvent(new KeyboardEvent('keydown', {
 				// 	key: NavigableDirective.KEYS.UP
@@ -367,8 +346,7 @@ describe('NavigableGroup', () => {
 					code: 'ArrowUp',
 					ctrlKey: true,
 					shiftKey: true,
-					preventDefault: () => {
-					} // tslint:disable-line
+					preventDefault: () => {} // tslint:disable-line
 				} as KeyboardEvent);
 				// navigableElements[1].nativeElement.dispatchEvent(new KeyboardEvent('keydown', {
 				// 	key: NavigableDirective.KEYS.UP
@@ -383,4 +361,3 @@ describe('NavigableGroup', () => {
 		});
 	});
 });
-

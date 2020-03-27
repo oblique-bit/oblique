@@ -3,7 +3,6 @@ import {Observable, of} from 'rxjs';
 
 @Injectable()
 export class ObMockScrollingEvents {
-
 	get isScrolled(): Observable<boolean> {
 		return of(true);
 	}
@@ -12,9 +11,7 @@ export class ObMockScrollingEvents {
 		return of(0);
 	}
 
-	scrolling(isScrolling: boolean): void {
-	}
+	scrolling(isScrolling: boolean): void {}
 
-	hasScrolled(offset: number): void {
-	}
+	hasScrolled(offset: number): void {}
 }

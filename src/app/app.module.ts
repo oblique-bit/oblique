@@ -44,10 +44,7 @@ import {HttpMockErrorInterceptor} from './samples/http-interceptor/http-mock-err
 import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		HomePageComponent
-	],
+	declarations: [AppComponent, HomePageComponent],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,

@@ -13,22 +13,14 @@ import {WINDOW, windowProvider} from '../utilities';
 export {ObInputClearDirective} from './input-clear.directive';
 
 @NgModule({
-	imports: [
-		CommonModule,
-		TranslateModule,
-		FormsModule
-	],
-	declarations: [
-		ObInputClearDirective
-	],
+	imports: [CommonModule, TranslateModule, FormsModule],
+	declarations: [ObInputClearDirective],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 		{provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
-	exports: [
-		ObInputClearDirective
-	]
+	exports: [ObInputClearDirective]
 })
 export class ObInputClearModule {
 	constructor(telemetry: ObTelemetryService) {

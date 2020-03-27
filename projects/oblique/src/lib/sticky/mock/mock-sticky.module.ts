@@ -8,5 +8,4 @@ export {ObMockStickyComponent} from './mock-sticky.component';
 	declarations: [ObMockStickyComponent],
 	exports: [ObMockStickyComponent]
 })
-export class ObMockStickyModule {
-}
+export class ObMockStickyModule {}

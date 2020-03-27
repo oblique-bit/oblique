@@ -1,29 +1,32 @@
-<h2 class="page-header">{{'i18n.routes.samples.form-control-state.title' | translate}}</h2>
+<h2 class="page-header">{{ "i18n.routes.samples.form-control-state.title" | translate }}</h2>
 <ob-description component="form-control-state"></ob-description>
-<form class="form-horizontal has-validation" #formControlForm="ngForm"
-	  (submit)="check(formControlForm)" (reset)="reset(formControlForm)">
+<form class="form-horizontal has-validation" #formControlForm="ngForm" (submit)="check(formControlForm)" (reset)="reset(formControlForm)">
 	<h3>Preview with template driven form</h3>
 	<div>
 		<div class="form-group row" obFormControlState>
 			<label class="col-sm-3 col-form-label">Number</label>
 			<div class="col-sm-9">
-				<input name="number" type="number" class="form-control" placeholder="This field is optional..."
-					   ngModel/>
+				<input name="number" type="number" class="form-control" placeholder="This field is optional..." ngModel />
 			</div>
 		</div>
 		<div class="form-group row" obFormControlState>
 			<label class="col-sm-3 col-form-label">Number</label>
 			<div class="col-sm-9">
-				<input name="numberRequired" type="number" class="form-control"
-					   placeholder="This field is mandatory..." ngModel required/>
+				<input name="numberRequired" type="number" class="form-control" placeholder="This field is mandatory..." ngModel required />
 				<ob-error-messages></ob-error-messages>
 			</div>
 		</div>
 		<div class="form-group row" obFormControlState [pristineValidation]="true" mandatory="true">
 			<label class="col-sm-3 col-form-label">Number</label>
 			<div class="col-sm-9">
-				<input name="numberRequiredPristine" type="number" class="form-control"
-					   placeholder="This field is already in error on load..." ngModel required/>
+				<input
+					name="numberRequiredPristine"
+					type="number"
+					class="form-control"
+					placeholder="This field is already in error on load..."
+					ngModel
+					required
+				/>
 				<ob-error-messages></ob-error-messages>
 			</div>
 		</div>
@@ -34,16 +37,14 @@
 					<div class="col-sm-7" obFormControlState>
 						<div class="input-group">
 							<label class="input-group-prepend"><span class="input-group-text">Street</span></label>
-							<input name="addressStreet" type="text" class="form-control"
-								   placeholder="Street address..." minlength="5" ngModel/>
+							<input name="addressStreet" type="text" class="form-control" placeholder="Street address..." minlength="5" ngModel />
 						</div>
 						<ob-error-messages></ob-error-messages>
 					</div>
 					<div class="col-sm-5" obFormControlState mandatory="true">
 						<div class="input-group">
 							<label class="input-group-prepend"><span class="input-group-text">Number</span></label>
-							<input name="addressNumber" type="number" class="form-control"
-								   placeholder="Street number..." ngModel required/>
+							<input name="addressNumber" type="number" class="form-control" placeholder="Street number..." ngModel required />
 						</div>
 						<ob-error-messages></ob-error-messages>
 					</div>
@@ -53,9 +54,15 @@
 		<div class="form-group row" obFormControlState>
 			<label class="col-sm-3 col-form-label">Email</label>
 			<div class="col-sm-9">
-				<input name="email" type="text" class="form-control" #email="ngModel"
-					   placeholder="This field is optional..."
-					   pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" ngModel/>
+				<input
+					name="email"
+					type="text"
+					class="form-control"
+					#email="ngModel"
+					placeholder="This field is optional..."
+					pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+					ngModel
+				/>
 				<ob-error-messages></ob-error-messages>
 			</div>
 		</div>
@@ -71,24 +78,20 @@
 		<div class="form-group row" obFormControlState>
 			<label class="col-sm-3 col-form-label">Number</label>
 			<div class="col-sm-9">
-				<input type="number" class="form-control" placeholder="This field is optional..."
-					   formControlName="numberOptional"/>
+				<input type="number" class="form-control" placeholder="This field is optional..." formControlName="numberOptional" />
 			</div>
 		</div>
 		<div class="form-group row" obFormControlState>
 			<label class="col-sm-3 col-form-label">Number</label>
 			<div class="col-sm-9">
-				<input type="number" class="form-control" placeholder="This field is mandatory..."
-					   formControlName="numberMandatory"/>
+				<input type="number" class="form-control" placeholder="This field is mandatory..." formControlName="numberMandatory" />
 				<ob-error-messages></ob-error-messages>
 			</div>
 		</div>
 		<div class="form-group row" obFormControlState [pristineValidation]="true">
 			<label class="col-sm-3 col-form-label">Number</label>
 			<div class="col-sm-9">
-				<input type="number" class="form-control"
-					   placeholder="This field is already in error on load..."
-					   formControlName="numberMandatoryPristine"/>
+				<input type="number" class="form-control" placeholder="This field is already in error on load..." formControlName="numberMandatoryPristine" />
 				<ob-error-messages></ob-error-messages>
 			</div>
 		</div>
@@ -99,16 +102,14 @@
 					<div class="col-sm-7" obFormControlState>
 						<div class="input-group">
 							<label class="input-group-prepend"><span class="input-group-text">Street</span></label>
-							<input type="text" class="form-control" placeholder="Street address..."
-								   formControlName="street"/>
+							<input type="text" class="form-control" placeholder="Street address..." formControlName="street" />
 						</div>
 						<ob-error-messages></ob-error-messages>
 					</div>
 					<div class="col-sm-5" obFormControlState>
 						<div class="input-group">
 							<label class="input-group-prepend"><span class="input-group-text">Number</span></label>
-							<input type="number" class="form-control" placeholder="Street number..."
-								   formControlName="number"/>
+							<input type="number" class="form-control" placeholder="Street number..." formControlName="number" />
 						</div>
 						<ob-error-messages></ob-error-messages>
 					</div>
@@ -118,8 +119,7 @@
 		<div class="form-group row" obFormControlState>
 			<label class="col-sm-3 col-form-label">Email</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" placeholder="This field is optional..."
-					   formControlName="email"/>
+				<input type="text" class="form-control" placeholder="This field is optional..." formControlName="email" />
 				<ob-error-messages></ob-error-messages>
 			</div>
 		</div>

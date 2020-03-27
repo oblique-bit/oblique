@@ -19,7 +19,11 @@ export {
 export {ObDocumentMetaService, ObDocumentMetaModule} from './lib/document-meta/document-meta.module';
 export {ObDropdownComponent, ObDropdownModule} from './lib/dropdown/dropdown.module';
 export {
-	ObMatErrorDirective, ObErrorMessagesDirective, ObErrorMessagesComponent, ObErrorMessagesModule, ObErrorMessagesService
+	ObMatErrorDirective,
+	ObErrorMessagesDirective,
+	ObErrorMessagesComponent,
+	ObErrorMessagesModule,
+	ObErrorMessagesService
 } from './lib/error-messages/error-messages.module';
 export {ObFilterBoxComponent, ObFilterBoxModule} from './lib/filter-box/filter-box.module';
 export {ObFormControlStateDirective, ObFormControlStateModule} from './lib/form-control-state/form-control-state.module';
@@ -52,8 +56,12 @@ export {
 	ObINavigationLink
 } from './lib/master-layout/master-layout.module';
 export {
-	ObMultiselectComponent, ObMultiselectConfig, ObMultiselectModule, ObMultiselectSearchPipe, ObMultiselectTexts
-}from './lib/multiselect/multiselect.module';
+	ObMultiselectComponent,
+	ObMultiselectConfig,
+	ObMultiselectModule,
+	ObMultiselectSearchPipe,
+	ObMultiselectTexts
+} from './lib/multiselect/multiselect.module';
 export {ObNavTreeComponent, ObNavTreeFakeFocusDirective, ObNavTreeModule, ObNavTreeItemModel} from './lib/nav-tree/nav-tree.module';
 export {
 	ObNavigableDirective,
@@ -78,7 +86,11 @@ export {
 } from './lib/notification/notification.module';
 export {ObNumberFormatDirective, ObNumberFormatModule} from './lib/number-format/number-format.module';
 export {
-	ObOffCanvasBackdropDirective, ObOffCanvasContainerDirective, ObOffCanvasModule, ObOffCanvasService, ObOffCanvasToggleDirective
+	ObOffCanvasBackdropDirective,
+	ObOffCanvasContainerDirective,
+	ObOffCanvasModule,
+	ObOffCanvasService,
+	ObOffCanvasToggleDirective
 } from './lib/off-canvas/off-canvas.module';
 export {
 	draft06,
@@ -91,8 +103,12 @@ export {
 } from './lib/schema-validation/schema-validation.module';
 export {ObScrollingEvents, ObScrollingModule, ObTopControlComponent} from './lib/scrolling/scrolling.module';
 export {
-	ObSearchBoxDirective, ObISearchWidgetItem, ObSearchBoxComponent, ObSearchBoxResultsComponent, ObSearchBoxModule
-}from './lib/search-box/search-box.module';
+	ObSearchBoxDirective,
+	ObISearchWidgetItem,
+	ObSearchBoxComponent,
+	ObSearchBoxResultsComponent,
+	ObSearchBoxModule
+} from './lib/search-box/search-box.module';
 export {ObSelectableDirective, ObSelectableService, ObSelectableModule} from './lib/selectable/selectable.module';
 export {ObISpinnerEvent, ObSpinnerComponent, ObSpinnerModule, ObSpinnerService} from './lib/spinner/spinner.module';
 export {ObStickyComponent, ObStickyModule} from './lib/sticky/sticky.module';
@@ -103,7 +119,7 @@ export {ObUnsavedChangesDirective, ObUnsavedChangesGuard, ObUnsavedChangesModule
 export {ObUnsavedChangesTabsDirective, ObUnsavedChangesTabsModule, ObUnsavedChangesTabsService} from './lib/unsaved-changes-tabs/unsaved-changes-tabs.module';
 export {ObTelemetryService, TELEMETRY_DISABLE} from './lib/telemetry/telemetry.service';
 export {WINDOW, multiTranslateLoader, getTranslateLoader} from './lib/utilities';
-export {ObMultiTranslateLoader, TRANSLATION_FILES, ObITranslationFile}from './lib/multi-translate-loader/multi-translate-loader';
+export {ObMultiTranslateLoader, TRANSLATION_FILES, ObITranslationFile} from './lib/multi-translate-loader/multi-translate-loader';
 export {ObPopUpService} from './lib/pop-up/pop-up.service';
 export {ObUnsubscribable} from './lib/unsubscribe.class';
 export {ObliqueModule} from './lib/oblique.module';

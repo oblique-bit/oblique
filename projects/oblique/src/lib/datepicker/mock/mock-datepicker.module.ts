@@ -14,20 +14,11 @@ export {ObMockDatepickerI18nService} from './mock-datepicker-i18n.service';
 export {ObMockDatepickerConfigService} from './mock-datepicker-config.service';
 
 @NgModule({
-	declarations: [
-		ObMockDateFormatterPipe,
-		ObMockDatepickerPlaceholderDirective,
-		ObMockDatepickerComponent
-	],
-	exports: [
-		ObMockDateFormatterPipe,
-		ObMockDatepickerPlaceholderDirective,
-		ObMockDatepickerComponent
-	],
+	declarations: [ObMockDateFormatterPipe, ObMockDatepickerPlaceholderDirective, ObMockDatepickerComponent],
+	exports: [ObMockDateFormatterPipe, ObMockDatepickerPlaceholderDirective, ObMockDatepickerComponent],
 	providers: [
 		{provide: ObDatepickerI18nService, useClass: ObMockDatepickerI18nService},
-		{provide: ObDatepickerConfigService, useClass: ObMockDatepickerConfigService},
+		{provide: ObDatepickerConfigService, useClass: ObMockDatepickerConfigService}
 	]
 })
-export class ObMockDatepickerModule {
-}
+export class ObMockDatepickerModule {}

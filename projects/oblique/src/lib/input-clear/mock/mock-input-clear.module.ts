@@ -8,5 +8,4 @@ export {ObMockInputClearDirective} from './mock-input-clear.directive';
 	declarations: [ObMockInputClearDirective],
 	exports: [ObMockInputClearDirective]
 })
-export class ObMockInputClearModule {
-}
+export class ObMockInputClearModule {}

@@ -27,11 +27,9 @@ export class ObDatepickerPlaceholderDirective extends ObUnsubscribable implement
 		if (!this.placeholder) {
 			this.setPlaceholder(this.translateService.currentLang);
 
-			this.translateService.onLangChange
-				.pipe(takeUntil(this.unsubscribe))
-				.subscribe(({lang}) => {
-					this.setPlaceholder(lang);
-				});
+			this.translateService.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe(({lang}) => {
+				this.setPlaceholder(lang);
+			});
 		}
 	}
 

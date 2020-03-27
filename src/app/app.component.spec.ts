@@ -7,15 +7,9 @@ import {AppComponent} from './app.component';
 describe('AppComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				AppComponent
-			],
-			imports: [
-				RouterTestingModule, ObliqueTestingModule
-			],
-			schemas: [
-				CUSTOM_ELEMENTS_SCHEMA
-			]
+			declarations: [AppComponent],
+			imports: [RouterTestingModule, ObliqueTestingModule],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		});
 		TestBed.compileComponents();
 	}));
@@ -26,4 +20,3 @@ describe('AppComponent', () => {
 		expect(app).toBeTruthy();
 	});
 });
-

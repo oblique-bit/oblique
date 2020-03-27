@@ -5,6 +5,5 @@ import {Directive} from '@angular/core';
 	exportAs: 'obOffCanvasToggle'
 })
 export class ObMockOffCanvasToggleDirective {
-	toggle(): void {
-	}
+	toggle(): void {}
 }
