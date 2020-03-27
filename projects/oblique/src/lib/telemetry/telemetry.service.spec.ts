@@ -1,4 +1,4 @@
-import {ObTelemetryMessage} from './telemetry-message';
+import {ObITelemetryMessage} from './telemetry-message';
 import {TestBed} from '@angular/core/testing';
 import {ObTelemetryService} from './telemetry.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
@@ -23,7 +23,7 @@ describe('TelemetryService', () => {
 	});
 
 	it('should store telemetry messages', () => {
-		const message: ObTelemetryMessage = {
+		const message: ObITelemetryMessage = {
 			obliqueModuleName: 'testmodule',
 			obliqueVersion: 'testversion',
 			applicationName: 'testapplication',
@@ -36,14 +36,14 @@ describe('TelemetryService', () => {
 	});
 
 	it('should not store equal messages multiple times', () => {
-		const message1: ObTelemetryMessage = {
+		const message1: ObITelemetryMessage = {
 			obliqueModuleName: 'testmodule',
 			obliqueVersion: 'testversion',
 			applicationName: 'testapplication',
 			applicationVersion: 'testappversion'
 		};
 
-		const message2: ObTelemetryMessage = {
+		const message2: ObITelemetryMessage = {
 			obliqueModuleName: 'testmodule',
 			obliqueVersion: 'testversion',
 			applicationName: 'testapplication',
@@ -57,7 +57,7 @@ describe('TelemetryService', () => {
 	});
 
 	it('should send the stored messages correctly', () => {
-		const message: ObTelemetryMessage = {
+		const message: ObITelemetryMessage = {
 			obliqueModuleName: 'testmodule',
 			obliqueVersion: 'testversion',
 			applicationName: 'testapplication',
