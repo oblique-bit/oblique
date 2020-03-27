@@ -27,17 +27,8 @@ export {ObDatepickerComponent} from './datepicker.component';
  * @deprecated with material theme since version 4.0.0. Use angular material datepicker instead
  */
 @NgModule({
-	imports: [
-		CommonModule,
-		NgbModule,
-		TranslateModule,
-		ReactiveFormsModule
-	],
-	declarations: [
-		ObDatepickerComponent,
-		ObDatepickerPlaceholderDirective,
-		ObDateFormatterPipe
-	],
+	imports: [CommonModule, NgbModule, TranslateModule, ReactiveFormsModule],
+	declarations: [ObDatepickerComponent, ObDatepickerPlaceholderDirective, ObDateFormatterPipe],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 		{provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}},
@@ -45,11 +36,7 @@ export {ObDatepickerComponent} from './datepicker.component';
 		{provide: NgbDateParserFormatter, useClass: ObDateDMYParserFormatter},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
-	exports: [
-		ObDatepickerComponent,
-		ObDatepickerPlaceholderDirective,
-		ObDateFormatterPipe
-	]
+	exports: [ObDatepickerComponent, ObDatepickerPlaceholderDirective, ObDateFormatterPipe]
 })
 export class ObDatepickerModule {
 	constructor(telemetry: ObTelemetryService, theme: ObThemeService) {

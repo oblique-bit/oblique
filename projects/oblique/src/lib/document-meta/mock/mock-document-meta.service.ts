@@ -6,13 +6,11 @@ export class ObMockDocumentMetaService {
 	titleSuffix = '';
 	description = '';
 
-	setTitle(title: string, separator: string = this.titleSeparator, suffix: string = this.titleSuffix): void {
-	}
+	setTitle(title: string, separator: string = this.titleSeparator, suffix: string = this.titleSuffix): void {}
 
 	getMetaDescription(): string {
 		return '';
 	}
 
-	setDescription(description: string): void {
-	}
+	setDescription(description: string): void {}
 }

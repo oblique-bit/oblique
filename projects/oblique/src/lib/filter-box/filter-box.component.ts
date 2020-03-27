@@ -26,7 +26,10 @@ export class ObFilterBoxComponent implements OnInit {
 	private readonly acceptedSizes = ['sm', 'lg'];
 
 	constructor(theme: ObThemeService, private readonly renderer: Renderer2) {
-		this.material = theme.theme$.pipe(map(() => theme.isMaterial()), tap(() => this.addBootstrapClasses()));
+		this.material = theme.theme$.pipe(
+			map(() => theme.isMaterial()),
+			tap(() => this.addBootstrapClasses())
+		);
 	}
 
 	ngOnInit(): void {
@@ -47,17 +50,18 @@ export class ObFilterBoxComponent implements OnInit {
 	}
 
 	getSizeClass(classPattern: string): string {
-		return this.size
-			? classPattern + this.size
-			: '';
+		return this.size ? classPattern + this.size : '';
 	}
 
 	private addBootstrapClasses() {
 		setTimeout(() => {
 			if (this.inputGroup && !this.inputGroup.nativeElement.classList.contains('bootstrapped')) {
-				Array.from(this.inputGroup.nativeElement.querySelectorAll(
-					['.input-group-prepend > :not(.btn):not(.dropdown)', '.input-group-append > :not(.btn):not(.dropdown)']
-				)).forEach(el => this.renderer.addClass(el, 'input-group-text'));
+				Array.from(
+					this.inputGroup.nativeElement.querySelectorAll([
+						'.input-group-prepend > :not(.btn):not(.dropdown)',
+						'.input-group-append > :not(.btn):not(.dropdown)'
+					])
+				).forEach(el => this.renderer.addClass(el, 'input-group-text'));
 				this.renderer.addClass(this.inputGroup.nativeElement, 'bootstrapped');
 			}
 		});

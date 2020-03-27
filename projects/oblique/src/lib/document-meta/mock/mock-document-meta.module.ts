@@ -7,5 +7,4 @@ export {ObDocumentMetaService} from '../document-meta.service';
 @NgModule({
 	providers: [{provide: ObDocumentMetaService, useClass: ObMockDocumentMetaService}]
 })
-export class ObMockDocumentMetaModule {
-}
+export class ObMockDocumentMetaModule {}

@@ -10,13 +10,9 @@ describe('UnknownRouteComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				ObUnknownRouteComponent,
-				ObMockTranslatePipe
-			],
+			declarations: [ObUnknownRouteComponent, ObMockTranslatePipe],
 			imports: [RouterTestingModule]
-		})
-			.compileComponents();
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {

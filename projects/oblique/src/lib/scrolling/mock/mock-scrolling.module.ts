@@ -10,9 +10,6 @@ export {ObMockScrollingEvents} from './mock-scrolling-events.service';
 @NgModule({
 	declarations: [ObMockTopControlComponent],
 	exports: [ObMockTopControlComponent],
-	providers: [
-		{provide: ObScrollingEvents, useClass: ObMockScrollingEvents}
-	]
+	providers: [{provide: ObScrollingEvents, useClass: ObMockScrollingEvents}]
 })
-export class ObMockScrollingModule {
-}
+export class ObMockScrollingModule {}

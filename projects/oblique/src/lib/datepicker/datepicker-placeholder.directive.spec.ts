@@ -7,8 +7,7 @@ import {ObDatepickerPlaceholderDirective} from 'oblique';
 @Component({
 	template: '<input ngbDatepicker />'
 })
-class TestComponent {
-}
+class TestComponent {}
 
 describe('DatepickerPlaceholderDirective', () => {
 	let testComponent: TestComponent;
@@ -33,14 +32,12 @@ describe('DatepickerPlaceholderDirective', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				TestComponent,
-				ObDatepickerPlaceholderDirective
-			],
+			declarations: [TestComponent, ObDatepickerPlaceholderDirective],
 			imports: [],
 			providers: [
 				{
-					provide: TranslateService, useValue: {
+					provide: TranslateService,
+					useValue: {
 						currentLang: 'en',
 						onLangChange: new EventEmitter<LangChangeEvent>()
 					}
@@ -62,7 +59,7 @@ describe('DatepickerPlaceholderDirective', () => {
 			expect(element.properties['placeholder']).toBe(I18N_PLACEHOLDERS['en']);
 		});
 
-		it('should change the placeholder onLangChange', inject([TranslateService], (translateService) => {
+		it('should change the placeholder onLangChange', inject([TranslateService], translateService => {
 			translateService.onLangChange.emit({lang: 'de'});
 
 			fixture.detectChanges();
@@ -77,11 +74,11 @@ describe('DatepickerPlaceholderDirective', () => {
 			createFixture();
 		}));
 
-		it('shouldn\'t change the placeholder', () => {
+		it("shouldn't change the placeholder", () => {
 			expect(element.properties['placeholder']).toBe('custom');
 		});
 
-		it('shouldn\'t change the placeholder onLangChange', inject([TranslateService], (translateService) => {
+		it("shouldn't change the placeholder onLangChange", inject([TranslateService], translateService => {
 			translateService.onLangChange.emit({lang: 'de'});
 
 			fixture.detectChanges();

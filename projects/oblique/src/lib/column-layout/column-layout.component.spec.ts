@@ -12,19 +12,18 @@ import {ObMockScrollingModule} from '../scrolling/mock/mock-scrolling.module';
 import {windowProvider, WINDOW} from '../utilities';
 
 @Component({
-	template: `
-		<ob-column-layout [left]="left" [right]="right" obColumnPanel>
-			<div column-left-content>
-				<h3 class="nav-header-title">Left Column</h3>
-			</div>
-			<div column-main-content>
-				<h1>Three-Column Layout</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur </p>
-			</div>
-			<div column-right-content>
-				<h3 class="nav-header-title">Right Column</h3>
-			</div>
-		</ob-column-layout>`
+	template: ` <ob-column-layout [left]="left" [right]="right" obColumnPanel>
+		<div column-left-content>
+			<h3 class="nav-header-title">Left Column</h3>
+		</div>
+		<div column-main-content>
+			<h1>Three-Column Layout</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur</p>
+		</div>
+		<div column-right-content>
+			<h3 class="nav-header-title">Right Column</h3>
+		</div>
+	</ob-column-layout>`
 })
 class TestComponent {
 	left = false;
@@ -65,5 +64,4 @@ describe('ColumnLayoutComponent', () => {
 	it('should contain columnLayout class', async(() => {
 		expect(fixture.debugElement.query(By.css('ob-column-layout')).nativeElement.classList).toContain('column-layout');
 	}));
-
 });

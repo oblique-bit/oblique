@@ -8,6 +8,5 @@ export class ObMockMasterLayoutNavigationToggleDirective {
 	@Output() onToggle = new EventEmitter<MouseEvent>();
 	back = false;
 
-	onClick($event): void {
-	}
+	onClick($event): void {}
 }

@@ -14,9 +14,11 @@ export class ObMultiselectConfig {
 
 	isIdUnique(id: string): void {
 		if (this.ids.indexOf(id) > -1) {
-			throw new Error(id === 'multiselect'
-				? 'There cannot be multiple multiselects without explicit ID\'s. Please add a unique id attribute on each multiselect element.'
-				: `ID\'s have to be unique, "${id}" has been defined twice`);
+			throw new Error(
+				id === 'multiselect'
+					? "There cannot be multiple multiselects without explicit ID's. Please add a unique id attribute on each multiselect element."
+					: `ID\'s have to be unique, "${id}" has been defined twice`
+			);
 		}
 		this.ids.push(id);
 	}
@@ -25,4 +27,3 @@ export class ObMultiselectConfig {
 		this.ids.splice(this.ids.indexOf(id), 1);
 	}
 }
-

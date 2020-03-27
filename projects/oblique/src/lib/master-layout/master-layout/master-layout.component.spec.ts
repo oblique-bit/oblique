@@ -24,8 +24,7 @@ describe('MasterLayoutComponent', () => {
 				{provide: WINDOW, useClass: windowProvider}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
-		})
-			.compileComponents();
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {

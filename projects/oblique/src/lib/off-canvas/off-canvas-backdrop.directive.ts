@@ -7,8 +7,7 @@ import {ObOffCanvasService} from './off-canvas.service';
 	selector: '.offcanvas-backdrop'
 })
 export class ObOffCanvasBackdropDirective {
-	constructor(private readonly offCanvas: ObOffCanvasService) {
-	}
+	constructor(private readonly offCanvas: ObOffCanvasService) {}
 
 	@HostListener('click')
 	@HostListener('window:keyup.Escape')

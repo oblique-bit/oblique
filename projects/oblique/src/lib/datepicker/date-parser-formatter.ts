@@ -18,9 +18,7 @@ export class ObDateDMYParserFormatter extends NgbDateParserFormatter {
 	}
 
 	format(date: NgbDateStruct): string {
-		return date ?
-			`${isNumber(date.day) ? padNumber(date.day) : ''}.${isNumber(date.month) ? padNumber(date.month) : ''}.${date.year}` :
-			'';
+		return date ? `${isNumber(date.day) ? padNumber(date.day) : ''}.${isNumber(date.month) ? padNumber(date.month) : ''}.${date.year}` : '';
 	}
 }
 

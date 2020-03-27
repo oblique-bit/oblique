@@ -3,15 +3,12 @@ import {ObMasterLayoutFooterService} from './master-layout-footer.service';
 import {ObMasterLayoutEvent} from '../master-layout.utility';
 import {Observable, Subject} from 'rxjs';
 
-
 describe('MasterLayoutFooterService', () => {
 	let masterLayoutFooterService: ObMasterLayoutFooterService;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [
-				ObMasterLayoutFooterService
-			]
+			providers: [ObMasterLayoutFooterService]
 		});
 		masterLayoutFooterService = TestBed.get(ObMasterLayoutFooterService);
 	});
@@ -21,7 +18,6 @@ describe('MasterLayoutFooterService', () => {
 	});
 
 	describe('test configEvents', () => {
-
 		it('should get configEvents  when true', () => {
 			const spy = jest.spyOn(masterLayoutFooterService, 'configEvents', 'get');
 			let newValue: Observable<ObMasterLayoutEvent> = new Subject<ObMasterLayoutEvent>();
@@ -31,11 +27,9 @@ describe('MasterLayoutFooterService', () => {
 			expect(mockResult).toEqual(newValue);
 			spy.mockRestore();
 		});
-
 	});
 
 	describe('test isCustom', () => {
-
 		it('should set custom to true', () => {
 			const spy = jest.spyOn(masterLayoutFooterService, 'isCustom', 'set');
 			const newValue = true;
@@ -64,7 +58,6 @@ describe('MasterLayoutFooterService', () => {
 			spy.mockRestore();
 		});
 
-
 		it('should get custom  when false', () => {
 			const spy = jest.spyOn(masterLayoutFooterService, 'isCustom', 'get');
 			const newValue = false;
@@ -74,11 +67,9 @@ describe('MasterLayoutFooterService', () => {
 			expect(mockResult).toEqual(newValue);
 			spy.mockRestore();
 		});
-
 	});
 
 	describe('test isSmall', () => {
-
 		it('should set isSmall to true', () => {
 			const spy = jest.spyOn(masterLayoutFooterService, 'isSmall', 'set');
 			const newValue = true;
@@ -107,7 +98,6 @@ describe('MasterLayoutFooterService', () => {
 			spy.mockRestore();
 		});
 
-
 		it('should get isSmall  when false', () => {
 			const spy = jest.spyOn(masterLayoutFooterService, 'isSmall', 'get');
 			const newValue = false;
@@ -117,11 +107,9 @@ describe('MasterLayoutFooterService', () => {
 			expect(mockResult).toEqual(newValue);
 			spy.mockRestore();
 		});
-
 	});
 
 	describe('test hasScrollTransition', () => {
-
 		it('should set hasScrollTransition to true', () => {
 			const spy = jest.spyOn(masterLayoutFooterService, 'hasScrollTransition', 'set');
 			const newValue = true;
@@ -159,7 +147,5 @@ describe('MasterLayoutFooterService', () => {
 			expect(mockResult).toEqual(newValue);
 			spy.mockRestore();
 		});
-
 	});
 });
-

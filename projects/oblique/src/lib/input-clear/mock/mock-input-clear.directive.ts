@@ -10,6 +10,5 @@ export class ObMockInputClearDirective {
 	@Output() onClear = new EventEmitter<MouseEvent>();
 	cssClass = true;
 
-	onClick($event: MouseEvent): void {
-	}
+	onClick($event: MouseEvent): void {}
 }

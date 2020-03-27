@@ -13,12 +13,14 @@ export class ObSelectableDirective implements OnInit {
 	@HostBinding('style.cursor') readonly cursor = 'pointer';
 
 	constructor(private readonly selectableService: ObSelectableService) {
-		selectableService.collectionChange$.pipe(
-			filter(event => !event.collection || event.collection === this.collection),
-			map(event => event.value || [])
-		).subscribe(values => {
-			this.selected = values.includes(this.value);
-		});
+		selectableService.collectionChange$
+			.pipe(
+				filter(event => !event.collection || event.collection === this.collection),
+				map(event => event.value || [])
+			)
+			.subscribe(values => {
+				this.selected = values.includes(this.value);
+			});
 	}
 
 	ngOnInit(): void {

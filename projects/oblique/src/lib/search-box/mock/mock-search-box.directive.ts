@@ -10,9 +10,7 @@ export class ObMockSearchBoxDirective {
 	@Input() minPatternLength = 1;
 	@Input() maxResults = 10;
 
-	navigateDown($event: KeyboardEvent): void {
-	}
+	navigateDown($event: KeyboardEvent): void {}
 
-	navigateUp($event: KeyboardEvent): void {
-	}
+	navigateUp($event: KeyboardEvent): void {}
 }

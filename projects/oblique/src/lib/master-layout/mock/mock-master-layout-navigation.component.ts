@@ -17,15 +17,11 @@ export class ObMockMasterLayoutNavigationComponent {
 		return true;
 	}
 
-	onResize(): void {
-	}
+	onResize(): void {}
 
-	close(): void {
-	}
+	close(): void {}
 
-	scrollLeft(): void {
-	}
+	scrollLeft(): void {}
 
-	scrollRight(): void {
-	}
+	scrollRight(): void {}
 }

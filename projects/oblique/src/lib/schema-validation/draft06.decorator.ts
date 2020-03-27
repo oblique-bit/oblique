@@ -1,14 +1,13 @@
 export function draft06(target, propertyKey: string, descriptor: PropertyDescriptor): any {
 	const oldValue = descriptor.value;
 
-	descriptor.value = function() {
-		const schema = JSON.parse(JSON.stringify(arguments[0]));	// deep clone
+	descriptor.value = function () {
+		const schema = JSON.parse(JSON.stringify(arguments[0])); // deep clone
 		convert(schema);
 		return oldValue.call(this, schema);
 	};
 
 	return descriptor;
-
 
 	function convert(schema): void {
 		convertId(schema);

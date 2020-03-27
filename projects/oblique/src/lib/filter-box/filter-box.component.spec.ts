@@ -13,8 +13,7 @@ import {ObMockThemeService} from '../theme/mock/mock-theme.service';
 		</ob-filter-box>
 	`
 })
-class TestComponent {
-}
+class TestComponent {}
 
 describe('FilterBox', () => {
 	let component: TestComponent;
@@ -22,11 +21,7 @@ describe('FilterBox', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				TestComponent,
-				ObFilterBoxComponent,
-				ObMockTranslatePipe
-			],
+			declarations: [TestComponent, ObFilterBoxComponent, ObMockTranslatePipe],
 			schemas: [NO_ERRORS_SCHEMA],
 			providers: [{provide: ObThemeService, useClass: ObMockThemeService}]
 		}).compileComponents();

@@ -7,7 +7,7 @@ import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {WINDOW, windowProvider} from '../utilities';
 
-export {ObStickyComponent}  from './sticky.component';
+export {ObStickyComponent} from './sticky.component';
 
 @NgModule({
 	imports: [CommonModule],

@@ -5,8 +5,10 @@ import {Observable} from 'rxjs';
 @Injectable()
 export class ObMockHttpApiInterceptor {
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-		return next.handle(request.clone({
-			headers: request.headers.set('X-Requested-With', 'XMLHttpRequest')
-		}));
+		return next.handle(
+			request.clone({
+				headers: request.headers.set('X-Requested-With', 'XMLHttpRequest')
+			})
+		);
 	}
 }

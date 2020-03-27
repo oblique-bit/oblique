@@ -11,18 +11,11 @@ export {ObMockMultiselectConfig} from './mock-multiselect.config';
 export {ObMockMultiselectTexts} from './mock-multiselect.texts';
 
 @NgModule({
-	declarations: [
-		ObMockMultiselectComponent,
-		ObMockMultiselectSearchPipe
-	],
-	exports: [
-		ObMockMultiselectComponent,
-		ObMockMultiselectSearchPipe
-	],
+	declarations: [ObMockMultiselectComponent, ObMockMultiselectSearchPipe],
+	exports: [ObMockMultiselectComponent, ObMockMultiselectSearchPipe],
 	providers: [
 		{provide: ObMultiselectConfig, useClass: ObMockMultiselectConfig},
 		{provide: ObMultiselectTexts, useClass: ObMockMultiselectTexts}
 	]
 })
-export class ObMockMultiselectModule {
-}
+export class ObMockMultiselectModule {}

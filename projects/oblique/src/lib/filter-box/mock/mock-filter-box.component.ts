@@ -17,11 +17,9 @@ export class ObMockFilterBoxComponent {
 	@Output() patternChange = new EventEmitter<string>();
 	@Output() patternClear = new EventEmitter<void>();
 
-	onPatternCleared(): void {
-	}
+	onPatternCleared(): void {}
 
-	onPatternChanged(pattern: string): void {
-	}
+	onPatternChanged(pattern: string): void {}
 
 	getSizeClass(classPattern: string): string {
 		return '';

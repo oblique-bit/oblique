@@ -11,18 +11,10 @@ describe('SearchBoxResultsComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				ObSearchBoxResultsComponent,
-				ObMockTranslatePipe
-			],
-			imports: [
-				RouterTestingModule
-			],
-			providers: [
-				{provide: TranslateService, useClass: ObMockTranslateService}
-			]
-		})
-			.compileComponents();
+			declarations: [ObSearchBoxResultsComponent, ObMockTranslatePipe],
+			imports: [RouterTestingModule],
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {

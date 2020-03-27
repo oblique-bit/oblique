@@ -7,7 +7,7 @@ import {WINDOW} from '../utilities';
 //TODO: Handle modals
 @Injectable({providedIn: 'root'})
 export class ObUnsavedChangesService {
-	private readonly formList: { [key: string]: ControlContainer} = {};
+	private readonly formList: {[key: string]: ControlContainer} = {};
 
 	constructor(private readonly translateService: TranslateService, private readonly popUpService: ObPopUpService, @Inject(WINDOW) window) {
 		window.addEventListener('beforeunload', e => this.onUnload(e));
@@ -42,9 +42,7 @@ export class ObUnsavedChangesService {
 	}
 
 	private hasPendingChanges(ids: string[] = Object.keys(this.formList)): boolean {
-		return Object.keys(this.formList).filter(
-			(formId) => ids.indexOf(formId) > -1 && this.formList[formId].dirty
-		).length > 0;
+		return Object.keys(this.formList).filter(formId => ids.indexOf(formId) > -1 && this.formList[formId].dirty).length > 0;
 	}
 
 	private message(): string {

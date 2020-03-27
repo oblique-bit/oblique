@@ -4,8 +4,7 @@ import {ObNavigableDirective} from '../navigable.directive';
 @Component({
 	selector: 'ob-navigable-group',
 	exportAs: 'obNavigableGroup',
-	template: `
-		<ng-content></ng-content>`
+	template: ` <ng-content></ng-content>`
 })
 export class ObMockNavigableGroupComponent {
 	@Input('items') items: any[];
@@ -13,9 +12,7 @@ export class ObMockNavigableGroupComponent {
 	navigables: QueryList<ObNavigableDirective>;
 	@Output() selectionOnChange = new EventEmitter();
 
-	add(model: any): void {
-	}
+	add(model: any): void {}
 
-	remove(model: any): void {
-	}
+	remove(model: any): void {}
 }

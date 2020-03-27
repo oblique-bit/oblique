@@ -8,11 +8,7 @@ import {ObUnsavedChangesService} from './unsaved-changes.service';
 export class ObUnsavedChangesDirective implements OnDestroy, OnInit {
 	@Input() id;
 
-	constructor(
-		private readonly unsavedChangesService: ObUnsavedChangesService,
-		private readonly form: ControlContainer
-	) {
-	}
+	constructor(private readonly unsavedChangesService: ObUnsavedChangesService, private readonly form: ControlContainer) {}
 
 	ngOnInit() {
 		if (!this.id) {

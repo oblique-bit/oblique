@@ -20,7 +20,7 @@ import {ObParentFormDirective} from '../nested-form/parent-form.directive';
 export class ObErrorMessagesComponent extends ObUnsubscribable implements AfterViewInit {
 	@Input() control: NgControl;
 
-	errors: { key: string; params: { [param: string]: any } }[] = [];
+	errors: {key: string; params: {[param: string]: any}}[] = [];
 
 	private readonly form: NgForm | FormGroupDirective;
 
@@ -44,10 +44,7 @@ export class ObErrorMessagesComponent extends ObUnsubscribable implements AfterV
 	ngAfterViewInit() {
 		this.control = this.control ? this.control : this.formGroup.ngControl;
 
-		observableMerge(
-			this.control.statusChanges,
-			this.form.ngSubmit
-		)
+		observableMerge(this.control.statusChanges, this.form.ngSubmit)
 			.pipe(takeUntil(this.unsubscribe), delay(0)) // delay event to let native submit and reset events be applied
 			.subscribe(() => this.generateErrorMessages());
 

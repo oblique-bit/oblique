@@ -21,8 +21,7 @@ export class ObSearchBoxResultsComponent implements OnDestroy {
 	private _pattern = '';
 	@ViewChildren('link') private readonly links: QueryList<ElementRef>;
 
-	constructor(private readonly translate: TranslateService) {
-	}
+	constructor(private readonly translate: TranslateService) {}
 
 	@HostListener('keydown.arrowdown', ['$event']) navigateDown($event: KeyboardEvent) {
 		this.focusLink(this.active != null ? (this.active + 1) % this.filteredItems.length : 0);
@@ -51,9 +50,7 @@ export class ObSearchBoxResultsComponent implements OnDestroy {
 
 	@Input() set pattern(pattern: string) {
 		this._pattern = pattern;
-		this.filteredItems = this.items
-			.filter(this.filterItems.bind(this))
-			.slice(0, this.maxResults);
+		this.filteredItems = this.items.filter(this.filterItems.bind(this)).slice(0, this.maxResults);
 		this.showResults = this.pattern.length >= this.minPatternLength;
 	}
 
@@ -64,12 +61,14 @@ export class ObSearchBoxResultsComponent implements OnDestroy {
 
 	formatter(label: string, filterPattern?: string): string {
 		filterPattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
-		return !filterPattern ? label : label.replace(new RegExp(filterPattern, 'ig'), (text) => `<span class="highlight">${text}</span>`);
+		return !filterPattern ? label : label.replace(new RegExp(filterPattern, 'ig'), text => `<span class="highlight">${text}</span>`);
 	}
 
 	private filterItems(item: ObISearchWidgetItem): boolean {
-		return this.pattern.length >= this.minPatternLength
-			&& new RegExp(this.pattern.replace(/[.*+?^@${}()|[\]\\]/g, '\\$&'), 'gi').test(this.translate.instant(item.label));
+		return (
+			this.pattern.length >= this.minPatternLength &&
+			new RegExp(this.pattern.replace(/[.*+?^@${}()|[\]\\]/g, '\\$&'), 'gi').test(this.translate.instant(item.label))
+		);
 	}
 
 	private focusLink(index: number): void {

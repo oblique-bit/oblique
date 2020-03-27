@@ -16,7 +16,6 @@ import {Subject} from 'rxjs';
 	selector: '[obNavTreeFakeFocus]'
 })
 export class ObNavTreeFakeFocusDirective implements OnDestroy {
-
 	public static readonly EVENT_TOGGLE_COLLAPSED = 'ob.navTree.item.toggleCollapsed';
 
 	public static readonly KEY_DOWN_DEBOUNCE_MILLIS = 10;
@@ -61,18 +60,14 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 	private focusedElement: ElementRef;
 	private eventSubscriptions: (() => void)[] = [];
 
-	public constructor(
-		private readonly element: ElementRef,
-		private readonly renderer: Renderer2
-	) {
+	public constructor(private readonly element: ElementRef, private readonly renderer: Renderer2) {
 		if (this.element.nativeElement.localName !== 'ob-nav-tree') {
 			throw new Error(
-				'Directive nav-tree-selector can only be used on ob-nav-tree elements. '
-				+ `Current element is: '${this.element.nativeElement.localName}'`
+				`Directive nav-tree-selector can only be used on ob-nav-tree elements. Current element is: '${this.element.nativeElement.localName}'`
 			);
 		}
 		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.DOWN] = () => this.focusNext();
-		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.UP] = (event) => this.focusPrevious(event);
+		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.UP] = event => this.focusPrevious(event);
 		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.ENTER] = () => this.accept();
 		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.LEFT] = () => this.toggleCollapsed();
 		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.RIGHT] = () => this.toggleCollapsed();
@@ -105,10 +100,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 			return;
 		}
 		if (!this.inputElement.nativeElement || !this.inputElement.nativeElement.tagName) {
-			throw new Error(
-				'The given value for [obNavTreeFakeFocus] is invalid. ' +
-				'It must be a valid native DOM element or ElementRef.'
-			);
+			throw new Error('The given value for [obNavTreeFakeFocus] is invalid. ' + 'It must be a valid native DOM element or ElementRef.');
 		}
 		this.unsubscribeInputListeners();
 		this.inputElement.nativeElement.setAttribute('autocomplete', 'off');
@@ -117,19 +109,13 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 
 	private initEventListeners() {
 		const debouncer: Subject<any> = new Subject<any>();
-		debouncer.pipe(throttleTime(ObNavTreeFakeFocusDirective.KEY_DOWN_DEBOUNCE_MILLIS)).subscribe(
-			(event) => this.onKeyDown(event)
+		debouncer.pipe(throttleTime(ObNavTreeFakeFocusDirective.KEY_DOWN_DEBOUNCE_MILLIS)).subscribe(event => this.onKeyDown(event));
+		this.eventSubscriptions.push(
+			this.renderer.listen(this.inputElement.nativeElement, ObNavTreeFakeFocusDirective.INPUT_EVENTS.KEY_DOWN, event => debouncer.next(event))
 		);
-		this.eventSubscriptions.push(this.renderer.listen(
-			this.inputElement.nativeElement,
-			ObNavTreeFakeFocusDirective.INPUT_EVENTS.KEY_DOWN,
-			(event) => debouncer.next(event)
-		));
-		this.eventSubscriptions.push(this.renderer.listen(
-			this.inputElement.nativeElement,
-			ObNavTreeFakeFocusDirective.INPUT_EVENTS.BLUR,
-			() => this.onBlur(true)
-		));
+		this.eventSubscriptions.push(
+			this.renderer.listen(this.inputElement.nativeElement, ObNavTreeFakeFocusDirective.INPUT_EVENTS.BLUR, () => this.onBlur(true))
+		);
 	}
 
 	private onKeyDown(event: KeyboardEvent) {
@@ -175,7 +161,8 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 		let event;
 		if (CustomEvent && typeof CustomEvent === 'function') {
 			event = new CustomEvent(ObNavTreeFakeFocusDirective.EVENT_TOGGLE_COLLAPSED);
-		} else { // Some browsers (IE) don't support Event constructors
+		} else {
+			// Some browsers (IE) don't support Event constructors
 			event = document.createEvent('Event');
 			event.initEvent(ObNavTreeFakeFocusDirective.EVENT_TOGGLE_COLLAPSED, false, true);
 		}

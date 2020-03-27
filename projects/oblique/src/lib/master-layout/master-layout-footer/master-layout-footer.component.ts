@@ -34,24 +34,26 @@ export class ObMasterLayoutFooterComponent extends ObUnsubscribable {
 
 	private propertyChanges() {
 		const events = [ObEMasterLayoutEventValues.SMALL, ObEMasterLayoutEventValues.CUSTOM];
-		this.masterLayout.footer.configEvents.pipe(
-			filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
-			takeUntil(this.unsubscribe)
-		).subscribe((event) => {
-			switch (event.name) {
-				case ObEMasterLayoutEventValues.SMALL:
-					this.isSmall = event.value;
-					break;
-				case ObEMasterLayoutEventValues.CUSTOM:
-					this.isCustom = event.value;
-					break;
-			}
-		});
+		this.masterLayout.footer.configEvents
+			.pipe(
+				filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(event => {
+				switch (event.name) {
+					case ObEMasterLayoutEventValues.SMALL:
+						this.isSmall = event.value;
+						break;
+					case ObEMasterLayoutEventValues.CUSTOM:
+						this.isCustom = event.value;
+						break;
+				}
+			});
 	}
 
 	private reduceOnScroll() {
-		this.scrollEvents.isScrolled.pipe(takeUntil(this.unsubscribe), scrollEnabled(this.masterLayout.footer))
-			.subscribe((isScrolling) => this.masterLayout.footer.isSmall = !isScrolling);
+		this.scrollEvents.isScrolled
+			.pipe(takeUntil(this.unsubscribe), scrollEnabled(this.masterLayout.footer))
+			.subscribe(isScrolling => (this.masterLayout.footer.isSmall = !isScrolling));
 	}
 }
-

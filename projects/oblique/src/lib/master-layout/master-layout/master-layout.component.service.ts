@@ -17,8 +17,7 @@ export class ObMasterLayoutComponentService {
 	private _hasMainNavigation = this.config.layout.hasMainNavigation;
 	private _hasLayout = this.config.layout.hasLayout;
 
-	constructor(private readonly config: ObMasterLayoutConfig) {
-	}
+	constructor(private readonly config: ObMasterLayoutConfig) {}
 
 	get configEvents(): Observable<ObIMasterLayoutEvent> {
 		return this.eventsS;

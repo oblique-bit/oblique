@@ -5,14 +5,11 @@ import {of} from 'rxjs';
 export class ObMockSelectableService {
 	collectionChange$ = of({});
 
-	toggleValue(value: any, collection: string): void {
-	}
+	toggleValue(value: any, collection: string): void {}
 
-	addValue(value: any, collection: string): void {
-	}
+	addValue(value: any, collection: string): void {}
 
-	removeValue(value: any, collection: string): void {
-	}
+	removeValue(value: any, collection: string): void {}
 
 	getCollection(collection: string): any[] {
 		return [];
@@ -22,12 +19,9 @@ export class ObMockSelectableService {
 		return new Map<string, any[]>();
 	}
 
-	removeCollection(collection: string): void {
-	}
+	removeCollection(collection: string): void {}
 
-	clearCollection(collection: string): void {
-	}
+	clearCollection(collection: string): void {}
 
-	clearCollections(): void {
-	}
+	clearCollections(): void {}
 }

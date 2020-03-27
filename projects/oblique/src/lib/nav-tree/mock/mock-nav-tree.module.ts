@@ -7,14 +7,7 @@ export {ObMockNavTreeFakeFocusDirective} from './mock-nav-tree-fake-focus.direct
 export {ObMockNavTreeComponent} from './mock-nav-tree.component';
 
 @NgModule({
-	declarations: [
-		ObMockNavTreeComponent,
-		ObMockNavTreeFakeFocusDirective
-	],
-	exports: [
-		ObMockNavTreeComponent,
-		ObMockNavTreeFakeFocusDirective
-	]
+	declarations: [ObMockNavTreeComponent, ObMockNavTreeFakeFocusDirective],
+	exports: [ObMockNavTreeComponent, ObMockNavTreeFakeFocusDirective]
 })
-export class ObMockNavTreeModule {
-}
+export class ObMockNavTreeModule {}

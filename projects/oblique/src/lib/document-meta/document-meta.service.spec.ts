@@ -5,17 +5,12 @@ import {ObDocumentMetaService} from 'oblique';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 
 describe('DocumentMetaService', () => {
-
 	beforeEach(async () => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
-			providers: [
-				ObDocumentMetaService,
-				{provide: TranslateService, useClass: ObMockTranslateService}
-			]
+			providers: [ObDocumentMetaService, {provide: TranslateService, useClass: ObMockTranslateService}]
 		});
 	});
-
 
 	it('should be created', inject([ObDocumentMetaService], (service: ObDocumentMetaService) => {
 		expect(service).toBeTruthy();

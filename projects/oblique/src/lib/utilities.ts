@@ -6,7 +6,7 @@ import {ObMultiTranslateLoader, TRANSLATION_FILES, ObITranslationFile} from './m
 export const WINDOW = new InjectionToken<Window>('Window');
 
 export function windowProvider(): Window {
-	return window || {} as Window;
+	return window || ({} as Window);
 }
 
 export function multiTranslateLoader(config: TranslateModuleConfig = {}): TranslateModuleConfig {
@@ -21,8 +21,5 @@ export function multiTranslateLoader(config: TranslateModuleConfig = {}): Transl
 }
 
 export function getTranslateLoader(http: HttpClient, files: ObITranslationFile[]): ObMultiTranslateLoader {
-	return new ObMultiTranslateLoader(http, [
-		{prefix: './assets/styles/i18n/', suffix: '.json'},
-		...(files || [{prefix: './assets/i18n/', suffix: '.json'}])
-	]);
+	return new ObMultiTranslateLoader(http, [{prefix: './assets/styles/i18n/', suffix: '.json'}, ...(files || [{prefix: './assets/i18n/', suffix: '.json'}])]);
 }

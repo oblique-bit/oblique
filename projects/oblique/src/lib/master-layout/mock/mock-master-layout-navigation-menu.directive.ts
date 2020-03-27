@@ -9,9 +9,7 @@ export class ObMockMasterLayoutNavigationMenuDirective {
 	@Output() onShow = new EventEmitter<boolean>();
 	$menus: QueryList<ObMasterLayoutNavigationMenuDirective>;
 
-	show(): void {
-	}
+	show(): void {}
 
-	hide(): void {
-	}
+	hide(): void {}
 }

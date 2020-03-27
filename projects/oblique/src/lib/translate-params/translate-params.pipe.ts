@@ -6,9 +6,7 @@ import {TranslateService} from '@ngx-translate/core';
 	pure: false
 })
 export class ObTranslateParamsPipe implements PipeTransform {
-
-	constructor(private readonly translate: TranslateService) {
-	}
+	constructor(private readonly translate: TranslateService) {}
 
 	transform(value: string, params?: any): string {
 		return this.translate.instant(value, typeof params === 'object' ? this.translateParams(params) : undefined);
@@ -18,4 +16,5 @@ export class ObTranslateParamsPipe implements PipeTransform {
 		return Object.keys(params)
 			.filter(key => params[key])
 			.reduce((parameters, key) => ({...parameters, [key]: typeof params[key] === 'string' ? this.translate.instant(params[key]) : params[key]}), {});
-	}}
+	}
+}

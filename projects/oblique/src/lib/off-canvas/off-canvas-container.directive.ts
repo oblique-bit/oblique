@@ -14,10 +14,8 @@ export class ObOffCanvasContainerDirective extends ObUnsubscribable {
 	constructor(offCanvas: ObOffCanvasService) {
 		super();
 
-		offCanvas.opened
-			.pipe(takeUntil(this.unsubscribe))
-			.subscribe((value) => {
-				this.open = value;
-			});
+		offCanvas.opened.pipe(takeUntil(this.unsubscribe)).subscribe(value => {
+			this.open = value;
+		});
 	}
 }

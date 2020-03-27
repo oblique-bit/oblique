@@ -7,5 +7,4 @@ export {MockCollapseComponent} from './mock-collapse.component';
 	declarations: [MockCollapseComponent],
 	exports: [MockCollapseComponent]
 })
-export class MockCollapseModule {
-}
+export class MockCollapseModule {}

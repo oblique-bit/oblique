@@ -6,7 +6,6 @@ import {ObISpinnerEvent} from './spinner-event';
 describe('SpinnerService', () => {
 	let mockNotificationService;
 	beforeEach(() => {
-
 		mockNotificationService = {
 			warning: jest.fn(),
 			error: jest.fn(),
@@ -15,10 +14,7 @@ describe('SpinnerService', () => {
 		};
 
 		TestBed.configureTestingModule({
-			providers: [
-				ObSpinnerService,
-				{provide: ObNotificationService, useValue: mockNotificationService}
-			]
+			providers: [ObSpinnerService, {provide: ObNotificationService, useValue: mockNotificationService}]
 		});
 	});
 

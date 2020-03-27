@@ -32,7 +32,12 @@ export class ObMasterLayoutService extends ObUnsubscribable {
 	private static getLangToken(): string {
 		let langToken = localStorage.getItem(ObMasterLayoutService.token);
 		if (!langToken) {
-			langToken = '_' + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+			langToken =
+				'_' +
+				Math.random()
+					.toString(36)
+					.replace(/[^a-z]+/g, '')
+					.substr(0, 5);
 			localStorage.setItem(ObMasterLayoutService.token, langToken);
 		}
 
@@ -53,8 +58,9 @@ export class ObMasterLayoutService extends ObUnsubscribable {
 		const lang = this.getCurrentLang(langToken);
 		this.translate.setDefaultLang(lang);
 		this.translate.use(lang);
-		this.translate.addLangs(this.config.locale.locales
-			.reduce((languages, language) => languages.concat([(language as ObILocaleObject).locale || language]), []));
+		this.translate.addLangs(
+			this.config.locale.locales.reduce((languages, language) => languages.concat([(language as ObILocaleObject).locale || language]), [])
+		);
 		this.translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe((event: LangChangeEvent) => {
 			localStorage.setItem(ObMasterLayoutService.token + langToken, event.lang);
 		});
@@ -62,7 +68,9 @@ export class ObMasterLayoutService extends ObUnsubscribable {
 
 	private getCurrentLang(langToken: string): string {
 		const firstLocale = this.config.locale.locales[0];
-		const lang = this.getSupportedLang(localStorage.getItem(ObMasterLayoutService.token + langToken))
+		// prettier-ignore
+		const lang =
+			this.getSupportedLang(localStorage.getItem(ObMasterLayoutService.token + langToken))
 			|| this.getSupportedLang(this.translate.getBrowserLang())
 			|| this.getSupportedLang(this.config.locale.default)
 			|| (firstLocale as ObILocaleObject).locale
@@ -81,25 +89,27 @@ export class ObMasterLayoutService extends ObUnsubscribable {
 	}
 
 	private routeChange(): void {
-		this.router.events.pipe(
-			takeUntil(this.unsubscribe),
-			filter(event => event instanceof NavigationEnd),
-			map(() => this.activatedRoute),
-			map(route => {
-				while (route.firstChild) {
-					route = route.firstChild;
-				}
-				return route;
-			}),
-			filter(route => route.outlet === 'primary'),
-			mergeMap(route => route.data)
-		).subscribe((data) => {
-			const masterLayout = data.masterLayout || {};
-			Object.keys(masterLayout).forEach((property: string) => {
-				if (masterLayout[property] !== this[property]) {
-					this[property] = masterLayout[property];
-				}
+		this.router.events
+			.pipe(
+				takeUntil(this.unsubscribe),
+				filter(event => event instanceof NavigationEnd),
+				map(() => this.activatedRoute),
+				map(route => {
+					while (route.firstChild) {
+						route = route.firstChild;
+					}
+					return route;
+				}),
+				filter(route => route.outlet === 'primary'),
+				mergeMap(route => route.data)
+			)
+			.subscribe(data => {
+				const masterLayout = data.masterLayout || {};
+				Object.keys(masterLayout).forEach((property: string) => {
+					if (masterLayout[property] !== this[property]) {
+						this[property] = masterLayout[property];
+					}
+				});
 			});
-		});
 	}
 }

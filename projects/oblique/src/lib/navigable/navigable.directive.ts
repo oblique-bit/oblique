@@ -29,7 +29,6 @@ export class ObNavigableOnMoveEvent extends ObPreventableEvent {
 	exportAs: 'obNavigable'
 })
 export class ObNavigableDirective implements AfterViewInit {
-
 	@Input('obNavigable')
 	model: any;
 
@@ -86,8 +85,7 @@ export class ObNavigableDirective implements AfterViewInit {
 
 	private activatedValue = false;
 
-	constructor(private readonly element: ElementRef) {
-	}
+	constructor(private readonly element: ElementRef) {}
 
 	ngAfterViewInit(): void {
 		// This makes sure, that parent components are able to
@@ -104,8 +102,7 @@ export class ObNavigableDirective implements AfterViewInit {
 		const code = $event.code;
 		if (code === 'ArrowUp' || code === 'ArrowDown') {
 			const focused = this.element.nativeElement.querySelector(':focus');
-			if (!focused || !focused.classList.contains('dropdown-toggle')
-				&& !ObNavigableDirective.hasAncestorClass(focused, 'dropdown-menu')) {
+			if (!focused || (!focused.classList.contains('dropdown-toggle') && !ObNavigableDirective.hasAncestorClass(focused, 'dropdown-menu'))) {
 				$event.preventDefault();
 
 				if ($event.ctrlKey && $event.shiftKey) {
@@ -140,7 +137,7 @@ export class ObNavigableDirective implements AfterViewInit {
 				if ($event && $event.shiftKey) {
 					this.active = true;
 					$event.preventDefault(); // This prevents text selection as we are holding the SHIFT key...
-					this.focus();            // ...but then focus needs to be manually restored.
+					this.focus(); // ...but then focus needs to be manually restored.
 				} else if ($event && $event.ctrlKey && this.selected) {
 					$event.preventDefault(); // Ensure focus event is not triggered!
 					this.active = false;
@@ -198,8 +195,13 @@ export class ObNavigableDirective implements AfterViewInit {
 
 	private static isFocusable(element): boolean {
 		const nodeName = element.nodeName.toLowerCase();
-		if (!element.offsetHeight || !element.offsetWidth || element.hasAttribute('disabled')
-			|| ObNavigableDirective.isWithinDisabledFieldset(element, nodeName)) {
+		// prettier-ignore
+		if (
+			!element.offsetHeight
+			|| !element.offsetWidth
+			|| element.hasAttribute('disabled')
+			|| ObNavigableDirective.isWithinDisabledFieldset(element, nodeName)
+		) {
 			return false;
 		}
 
@@ -215,4 +217,3 @@ export class ObNavigableDirective implements AfterViewInit {
 		return fieldset && fieldset.hasAttribute('disabled');
 	}
 }
-

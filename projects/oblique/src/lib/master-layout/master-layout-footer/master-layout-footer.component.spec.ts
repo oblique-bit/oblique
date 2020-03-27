@@ -21,8 +21,7 @@ describe('MasterLayoutFooterComponent', () => {
 				{provide: ObMasterLayoutService, useClass: ObMockMasterLayoutService},
 				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig}
 			]
-		})
-			.compileComponents();
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {

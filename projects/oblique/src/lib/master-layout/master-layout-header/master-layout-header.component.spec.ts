@@ -23,11 +23,10 @@ describe('MasterLayoutHeaderComponent', () => {
 				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: ObMasterLayoutService, useClass: ObMockMasterLayoutService},
 				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
-				{provide: WINDOW, useValue: windowProvider},
+				{provide: WINDOW, useValue: windowProvider}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
-		})
-			.compileComponents();
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {

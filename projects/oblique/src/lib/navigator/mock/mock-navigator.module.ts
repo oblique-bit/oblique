@@ -8,6 +8,4 @@ export {ObMockNavigatorComponent} from './mock-navigator.component';
 	declarations: [ObMockNavigatorComponent],
 	exports: [ObMockNavigatorComponent]
 })
-export class ObMockNavigatorModule {
-}
-
+export class ObMockNavigatorModule {}

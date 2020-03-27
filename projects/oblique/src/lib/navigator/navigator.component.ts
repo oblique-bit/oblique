@@ -8,11 +8,9 @@ import {ObUnsubscribable} from '../unsubscribe.class';
  */
 @Component({
 	selector: 'ob-navigator',
-	template: `
-		<ng-content></ng-content>`
+	template: ` <ng-content></ng-content>`
 })
 export class ObNavigatorComponent extends ObUnsubscribable {
-
 	constructor(private readonly router: Router, private readonly route: ActivatedRoute) {
 		super();
 		console.warn(`NavigatorComponent have been deprecated and will be removed in future versions.
@@ -36,7 +34,7 @@ export class ObNavigatorComponent extends ObUnsubscribable {
 		while (activeRoute.firstChild) {
 			activeRoute = activeRoute.firstChild;
 		}
-		activeRoute.data.pipe(takeUntil(this.unsubscribe)).subscribe((data) => {
+		activeRoute.data.pipe(takeUntil(this.unsubscribe)).subscribe(data => {
 			if (data['navigator'] && data['navigator'].up) {
 				this.router.navigate(data['navigator'].up);
 			} else {

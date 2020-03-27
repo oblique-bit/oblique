@@ -23,7 +23,7 @@ describe('ThemeService', () => {
 			expect(service.isMaterial()).toBe(false);
 		});
 
-		it('theme$ should emit the last given theme', (done) => {
+		it('theme$ should emit the last given theme', done => {
 			service.setTheme(THEMES.MATERIAL);
 			service.theme$.subscribe(theme => {
 				expect(theme).toBe(THEMES.MATERIAL);
@@ -33,7 +33,7 @@ describe('ThemeService', () => {
 	});
 
 	describe('setDefaultFont', () => {
-		it('font$ should emit frutiger', (done) => {
+		it('font$ should emit frutiger', done => {
 			service.setDefaultFont();
 			service.font$.subscribe(font => {
 				expect(font).toBe(FONTS.FRUTIGER);
@@ -43,7 +43,7 @@ describe('ThemeService', () => {
 	});
 
 	describe('setFont', () => {
-		it('font$ should emit the last given font', (done) => {
+		it('font$ should emit the last given font', done => {
 			service.setFont(FONTS.ROBOTO);
 			service.font$.subscribe(font => {
 				expect(font).toBe(FONTS.ROBOTO);
@@ -54,7 +54,7 @@ describe('ThemeService', () => {
 
 	it('should be composant is deprecated', () => {
 		const component = 'datepicker';
-		const target =  'datepicker';
+		const target = 'datepicker';
 
 		service.setTheme(THEMES.MATERIAL);
 		service.deprecated(component, target);

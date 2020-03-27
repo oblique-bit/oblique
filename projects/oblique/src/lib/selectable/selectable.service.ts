@@ -36,7 +36,10 @@ export class ObSelectableService {
 	removeValue(value: any, collection: string): void {
 		const foundCollection = this.collections.get(collection);
 		if (foundCollection) {
-			foundCollection.splice(foundCollection.findIndex(v => v === value), 1);
+			foundCollection.splice(
+				foundCollection.findIndex(v => v === value),
+				1
+			);
 			this.trigger.next({collection: collection, value: foundCollection, eventType: 'UPDATE'});
 		}
 	}

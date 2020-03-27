@@ -27,12 +27,11 @@ export class ObErrorMessagesDirective extends ObUnsubscribable implements AfterV
 
 	ngAfterViewInit() {
 		this.errors.next(this.matInput.ngControl.errors); // because 1st statusChange occurs before ngAfterViewInit
-		merge(
-			this.form.ngSubmit,
-			this.matInput.ngControl.statusChanges
-		).pipe(takeUntil(this.unsubscribe)).subscribe(() => {
-			this.errors.next(this.matInput.ngControl.errors);
-		});
+		merge(this.form.ngSubmit, this.matInput.ngControl.statusChanges)
+			.pipe(takeUntil(this.unsubscribe))
+			.subscribe(() => {
+				this.errors.next(this.matInput.ngControl.errors);
+			});
 	}
 
 	ngOnDestroy(): void {

@@ -6,20 +6,17 @@ import {ObSelectableDirective} from 'oblique';
 @Component({
 	template: '<div class="test-card-0" obSelectable [value]="\'test-card-0\'"></div>'
 })
-class TestValueComponent {
-}
+class TestValueComponent {}
 
 @Component({
 	template: '<div class="test-card-1" obSelectable [collection]="\'A\'"></div>'
 })
-class TestCollectionAComponent {
-}
+class TestCollectionAComponent {}
 
 @Component({
 	template: '<div class="test-card-2" obSelectable [selected]="true"></div>'
 })
-class TesttSelectedComponent {
-}
+class TesttSelectedComponent {}
 
 describe('SelectableDirective', () => {
 	let directive: ObSelectableDirective;
@@ -28,12 +25,7 @@ describe('SelectableDirective', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				TestValueComponent,
-				TestCollectionAComponent,
-				TesttSelectedComponent,
-				ObSelectableDirective
-			]
+			declarations: [TestValueComponent, TestCollectionAComponent, TesttSelectedComponent, ObSelectableDirective]
 		});
 	}));
 

@@ -17,25 +17,14 @@ export {ObColumnPanelDirective} from './column-panel.directive';
 export {ObColumnToggleDirective} from './column-toggle.directive';
 
 @NgModule({
-	imports: [
-		CommonModule,
-		TranslateModule
-	],
-	declarations: [
-		ObColumnLayoutComponent,
-		ObColumnPanelDirective,
-		ObColumnToggleDirective
-	],
+	imports: [CommonModule, TranslateModule],
+	declarations: [ObColumnLayoutComponent, ObColumnPanelDirective, ObColumnToggleDirective],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 		{provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
-	exports: [
-		ObColumnLayoutComponent,
-		ObColumnPanelDirective,
-		ObColumnToggleDirective
-	]
+	exports: [ObColumnLayoutComponent, ObColumnPanelDirective, ObColumnToggleDirective]
 })
 export class ObColumnLayoutModule {
 	constructor(telemetry: ObTelemetryService) {

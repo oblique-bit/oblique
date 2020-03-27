@@ -17,7 +17,6 @@ export class ObHttpApiInterceptorConfig {
 	 * Configuration for application API.
 	 */
 	api = {
-
 		/**
 		 * Default application API URL for matching API calls.
 		 */

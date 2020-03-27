@@ -13,11 +13,7 @@ describe('UnsavedChangesService', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [ObMockPopUpModule],
-			providers: [
-				ObUnsavedChangesService,
-				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useFactory: windowProvider}
-			]
+			providers: [ObUnsavedChangesService, {provide: TranslateService, useClass: ObMockTranslateService}, {provide: WINDOW, useFactory: windowProvider}]
 		});
 		popUpService = TestBed.get(ObPopUpService);
 	});
@@ -37,7 +33,7 @@ describe('UnsavedChangesService', () => {
 
 	describe('canDeactivate()', () => {
 		describe('with no watched form', () => {
-			it('shouldn\'t call window.confirm', () => {
+			it("shouldn't call window.confirm", () => {
 				jest.spyOn(popUpService, 'confirm');
 				unsavedChangesService.canDeactivate();
 				expect(popUpService.confirm).not.toHaveBeenCalled();
@@ -54,7 +50,7 @@ describe('UnsavedChangesService', () => {
 				unsavedChangesService.watch('tab_1', form);
 			});
 
-			it('shouldn\'t call window.confirm', () => {
+			it("shouldn't call window.confirm", () => {
 				jest.spyOn(popUpService, 'confirm');
 				unsavedChangesService.canDeactivate();
 				expect(popUpService.confirm).not.toHaveBeenCalled();

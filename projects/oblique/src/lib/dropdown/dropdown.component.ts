@@ -13,21 +13,14 @@ export class ObDropdownComponent {
 	@HostBinding('class.open') isOpen = false;
 	@Input() position = 'middle';
 
-	constructor(private readonly element: ElementRef) {
-	}
+	constructor(private readonly element: ElementRef) {}
 
 	@HostListener('document:click', ['$event'])
 	toggle($event?: MouseEvent) {
-		this.isOpen = !$event || this.isSelf(<Element>$event.target)
-			? !this.isOpen
-			: false;
+		this.isOpen = !$event || this.isSelf(<Element>$event.target) ? !this.isOpen : false;
 	}
 
 	private isSelf(el: Element): boolean {
-		return el
-			? (el === this.element.nativeElement
-				? true
-				: this.isSelf(el.parentElement))
-			: false;
+		return el ? (el === this.element.nativeElement ? true : this.isSelf(el.parentElement)) : false;
 	}
 }

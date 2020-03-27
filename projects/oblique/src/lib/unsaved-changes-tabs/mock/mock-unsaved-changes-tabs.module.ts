@@ -9,9 +9,6 @@ export {ObMockUnsavedChangesTabsService} from './mock-unsaved-changes-tabs.servi
 @NgModule({
 	declarations: [ObMockUnsavedChangesTabsDirective],
 	exports: [ObMockUnsavedChangesTabsDirective],
-	providers: [
-		{provide: ObUnsavedChangesTabsService, useClass: ObMockUnsavedChangesTabsService}
-	]
+	providers: [{provide: ObUnsavedChangesTabsService, useClass: ObMockUnsavedChangesTabsService}]
 })
-export class ObMockUnsavedChangesTabsModule {
-}
+export class ObMockUnsavedChangesTabsModule {}

@@ -41,7 +41,7 @@ export class ObSearchBoxDirective extends ObUnsubscribable implements AfterViewI
 		this.results.minPatternLength = this.minPatternLength;
 		this.results.maxResults = this.maxResults;
 		this.results.closed.subscribe(() => this.ngControl.valueAccessor.writeValue(''));
-		this.ngControl.valueChanges.pipe(takeUntil(this.unsubscribe)).subscribe((value) => {
+		this.ngControl.valueChanges.pipe(takeUntil(this.unsubscribe)).subscribe(value => {
 			this.results.pattern = value || '';
 		});
 	}

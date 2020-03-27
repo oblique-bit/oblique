@@ -7,15 +7,8 @@ export {ObMockSelectableDirective} from './mock-selectable.directive';
 export {ObMockSelectableService} from './mock-selectable.service';
 
 @NgModule({
-	declarations: [
-		ObMockSelectableDirective
-	],
-	exports: [
-		ObMockSelectableDirective
-	],
-	providers: [
-		{provide: ObSelectableService, useClass: ObMockSelectableService}
-	]
+	declarations: [ObMockSelectableDirective],
+	exports: [ObMockSelectableDirective],
+	providers: [{provide: ObSelectableService, useClass: ObMockSelectableService}]
 })
-export class ObMockObSelectableModule {
-}
+export class ObMockObSelectableModule {}

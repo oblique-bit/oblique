@@ -22,8 +22,7 @@ describe('MasterLayoutNavigationComponent', () => {
 				{provide: ObMasterLayoutService, useClass: ObMockMasterLayoutService},
 				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig}
 			]
-		})
-			.compileComponents();
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {

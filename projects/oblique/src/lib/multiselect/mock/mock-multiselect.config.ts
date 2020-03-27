@@ -12,10 +12,7 @@ export class ObMockMultiselectConfig {
 
 	private readonly ids: string[] = [];
 
-	isIdUnique(id: string): void {
-	}
+	isIdUnique(id: string): void {}
 
-	clearId(id: string): void {
-	}
+	clearId(id: string): void {}
 }
-

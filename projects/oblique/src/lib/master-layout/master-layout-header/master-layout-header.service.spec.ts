@@ -3,15 +3,12 @@ import {ObMasterLayoutHeaderService} from './master-layout-header.service';
 import {ObMasterLayoutEvent} from '../master-layout.utility';
 import {Observable, Subject} from 'rxjs';
 
-
 describe('MasterLayoutHeaderService', () => {
 	let masterLayoutHeaderService: ObMasterLayoutHeaderService;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [
-				ObMasterLayoutHeaderService
-			]
+			providers: [ObMasterLayoutHeaderService]
 		});
 		masterLayoutHeaderService = TestBed.get(ObMasterLayoutHeaderService);
 	});
@@ -20,9 +17,7 @@ describe('MasterLayoutHeaderService', () => {
 		expect(masterLayoutHeaderService).toBeTruthy();
 	});
 
-
 	describe('test configEvents', () => {
-
 		it('should get configEvents  when true', () => {
 			const spy = jest.spyOn(masterLayoutHeaderService, 'configEvents', 'get');
 			let newValue: Observable<ObMasterLayoutEvent> = new Subject<ObMasterLayoutEvent>();
@@ -32,11 +27,9 @@ describe('MasterLayoutHeaderService', () => {
 			expect(mockResult).toEqual(newValue);
 			spy.mockRestore();
 		});
-
 	});
 
 	describe('test isCustom', () => {
-
 		it('should set custom to true', () => {
 			const spy = jest.spyOn(masterLayoutHeaderService, 'isCustom', 'set');
 			const newValue = true;
@@ -65,7 +58,6 @@ describe('MasterLayoutHeaderService', () => {
 			spy.mockRestore();
 		});
 
-
 		it('should get custom  when false', () => {
 			const spy = jest.spyOn(masterLayoutHeaderService, 'isCustom', 'get');
 			const newValue = false;
@@ -75,11 +67,9 @@ describe('MasterLayoutHeaderService', () => {
 			expect(mockResult).toEqual(newValue);
 			spy.mockRestore();
 		});
-
 	});
 
 	describe('test isMedium', () => {
-
 		it('should set isMedium to true', () => {
 			const spy = jest.spyOn(masterLayoutHeaderService, 'isMedium', 'set');
 			const newValue = true;
@@ -108,7 +98,6 @@ describe('MasterLayoutHeaderService', () => {
 			spy.mockRestore();
 		});
 
-
 		it('should get isMedium  when false', () => {
 			const spy = jest.spyOn(masterLayoutHeaderService, 'isMedium', 'get');
 			const newValue = false;
@@ -118,11 +107,9 @@ describe('MasterLayoutHeaderService', () => {
 			expect(mockResult).toEqual(newValue);
 			spy.mockRestore();
 		});
-
 	});
 
 	describe('test isAnimated', () => {
-
 		it('should set isAnimated to true', () => {
 			const spy = jest.spyOn(masterLayoutHeaderService, 'isAnimated', 'set');
 			const newValue = true;
@@ -160,11 +147,9 @@ describe('MasterLayoutHeaderService', () => {
 			expect(mockResult).toEqual(newValue);
 			spy.mockRestore();
 		});
-
 	});
 
 	describe('test isSticky', () => {
-
 		it('should set isSticky to true', () => {
 			const spy = jest.spyOn(masterLayoutHeaderService, 'isSticky', 'set');
 			const newValue = true;
@@ -202,11 +187,9 @@ describe('MasterLayoutHeaderService', () => {
 			expect(mockResult).toEqual(newValue);
 			spy.mockRestore();
 		});
-
 	});
 
 	describe('test hasScrollTransition', () => {
-
 		it('should set hasScrollTransition to true', () => {
 			const spy = jest.spyOn(masterLayoutHeaderService, 'hasScrollTransition', 'set');
 			const newValue = true;
@@ -244,22 +227,5 @@ describe('MasterLayoutHeaderService', () => {
 			expect(mockResult).toEqual(newValue);
 			spy.mockRestore();
 		});
-
 	});
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

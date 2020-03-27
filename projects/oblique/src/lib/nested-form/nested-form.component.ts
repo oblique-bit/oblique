@@ -22,8 +22,7 @@ import {ObParentFormDirective} from './parent-form.directive';
 export class ObNestedFormComponent implements ControlValueAccessor, Validator, AfterViewInit {
 	@Input() nestedForm: FormGroup;
 
-	constructor(private readonly parent: ObParentFormDirective) {
-	}
+	constructor(private readonly parent: ObParentFormDirective) {}
 
 	ngAfterViewInit() {
 		this.parent.submit$.subscribe(() => this.nestedForm.markAllAsTouched());
@@ -34,15 +33,14 @@ export class ObNestedFormComponent implements ControlValueAccessor, Validator, A
 		this.nestedForm.valueChanges.subscribe(val => fn(val));
 	}
 
-	registerOnTouched(fn: any): void {
-	}
+	registerOnTouched(fn: any): void {}
 
 	setDisabledState(isDisabled: boolean): void {
 		// eslint-disable-next-line no-unused-expressions
 		isDisabled ? this.nestedForm.disable() : this.nestedForm.enable();
 	}
 
-	writeValue(obj: { field1?: string; field2?: string }): void {
+	writeValue(obj: {field1?: string; field2?: string}): void {
 		// eslint-disable-next-line no-unused-expressions
 		obj ? this.nestedForm.patchValue(obj) : this.nestedForm.reset();
 	}

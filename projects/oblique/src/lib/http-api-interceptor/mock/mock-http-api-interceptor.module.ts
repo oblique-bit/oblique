@@ -15,5 +15,4 @@ export {ObMockHttpApiInterceptorConfig} from './mock-http-api-interceptor.config
 		{provide: ObHttpApiInterceptor, useClass: ObMockHttpApiInterceptor}
 	]
 })
-export class ObMockHttpApiInterceptorModule {
-}
+export class ObMockHttpApiInterceptorModule {}

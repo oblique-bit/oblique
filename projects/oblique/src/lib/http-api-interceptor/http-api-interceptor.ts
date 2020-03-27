@@ -29,20 +29,21 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 		private readonly interceptorEvents: ObHttpApiInterceptorEvents,
 		private readonly spinner: ObSpinnerService,
 		private readonly notificationService: ObNotificationService
-	) {
-	}
+	) {}
 
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		const obliqueRequest = this.broadcast();
 		const timer = this.setTimer();
 		this.activateSpinner(obliqueRequest.spinner, request.url);
 
-		return next.handle(request.clone({
-			headers: request.headers.set('X-Requested-With', 'XMLHttpRequest')
-		})).pipe(
-			tap(
-				undefined,
-				error => {
+		return next
+			.handle(
+				request.clone({
+					headers: request.headers.set('X-Requested-With', 'XMLHttpRequest')
+				})
+			)
+			.pipe(
+				tap(undefined, error => {
 					if (error instanceof HttpErrorResponse) {
 						if (error.status === 401) {
 							this.interceptorEvents.sessionExpire();
@@ -52,21 +53,20 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 					} else {
 						this.notificationService.error('i18n.oblique.http.error.general');
 					}
-				}
-			),
-			finalize(() => {
-				clearTimeout(timer);
-				this.deactivateSpinner(obliqueRequest.spinner, request.url);
-			})
-		);
+				}),
+				finalize(() => {
+					clearTimeout(timer);
+					this.deactivateSpinner(obliqueRequest.spinner, request.url);
+				})
+			);
 	}
 
 	private setTimer(): Timer {
 		return !this.config.timeout
 			? undefined
 			: setTimeout(() => {
-				this.notificationService.warning('i18n.oblique.http.error.timeout');
-			}, this.config.timeout);
+					this.notificationService.warning('i18n.oblique.http.error.timeout');
+			  }, this.config.timeout);
 	}
 
 	private broadcast(): ObIHttpApiRequest {

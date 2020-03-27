@@ -12,19 +12,8 @@ export {ObMockSchemaValidateDirective} from './mock-schema-validator';
 export {ObMockSchemaValidationService} from './mock-schema-validation.service';
 
 @NgModule({
-	exports: [
-		ObMockSchemaValidateDirective,
-		ObMockSchemaValidationDirective,
-		ObMockSchemaRequiredDirective
-	],
-	declarations: [
-		ObMockSchemaValidateDirective,
-		ObMockSchemaValidationDirective,
-		ObMockSchemaRequiredDirective
-	],
-	providers: [
-		{provide: ObSchemaValidationService, useClass: ObMockSchemaValidationService}
-	]
+	exports: [ObMockSchemaValidateDirective, ObMockSchemaValidationDirective, ObMockSchemaRequiredDirective],
+	declarations: [ObMockSchemaValidateDirective, ObMockSchemaValidationDirective, ObMockSchemaRequiredDirective],
+	providers: [{provide: ObSchemaValidationService, useClass: ObMockSchemaValidationService}]
 })
-export class ObMockSchemaValidationModule {
-}
+export class ObMockSchemaValidationModule {}

@@ -16,15 +16,7 @@ import {WINDOW, windowProvider} from '../utilities';
 export {ObFilterBoxComponent} from './filter-box.component';
 
 @NgModule({
-	imports: [
-		CommonModule,
-		TranslateModule,
-		FormsModule,
-		ObInputClearModule,
-		MatIconModule,
-		MatFormFieldModule,
-		MatInputModule
-	],
+	imports: [CommonModule, TranslateModule, FormsModule, ObInputClearModule, MatIconModule, MatFormFieldModule, MatInputModule],
 	declarations: [ObFilterBoxComponent],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},

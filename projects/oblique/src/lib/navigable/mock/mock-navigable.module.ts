@@ -10,5 +10,4 @@ export {ObMockNavigableDirective} from './mock-navigable.directive';
 	declarations: [ObMockNavigableDirective, ObMockNavigableGroupComponent],
 	exports: [ObMockNavigableDirective, ObMockNavigableGroupComponent]
 })
-export class ObMockNavigableModule {
-}
+export class ObMockNavigableModule {}

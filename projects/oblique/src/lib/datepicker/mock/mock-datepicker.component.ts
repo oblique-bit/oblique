@@ -12,7 +12,8 @@ import {ObIDatepickerOptions} from '../datepicker-config.service';
 			provide: NG_VALUE_ACCESSOR,
 			multi: true,
 			useExisting: forwardRef(() => ObMockDatepickerComponent)
-		}, {
+		},
+		{
 			provide: NG_VALIDATORS,
 			multi: true,
 			useExisting: forwardRef(() => ObMockDatepickerComponent)
@@ -31,22 +32,17 @@ export class ObMockDatepickerComponent implements ControlValueAccessor, Validato
 	ngbDatePicker: NgbInputDatepicker;
 	disabled = false;
 
-	writeValue(obj: any): void {
-	}
+	writeValue(obj: any): void {}
 
-	registerOnChange(fn: any): void {
-	}
+	registerOnChange(fn: any): void {}
 
-	registerOnTouched(fn: any): void {
-	}
+	registerOnTouched(fn: any): void {}
 
-	setDisabledState(isDisabled: boolean): void {
-	}
+	setDisabledState(isDisabled: boolean): void {}
 
 	validate(control: AbstractControl): ValidationErrors | null {
 		return null;
 	}
 
-	onKeydown($event) {
-	}
+	onKeydown($event) {}
 }

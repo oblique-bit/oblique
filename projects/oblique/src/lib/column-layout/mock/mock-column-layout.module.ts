@@ -9,5 +9,4 @@ export {ObMockColumnLayoutComponent} from './mock-column-layout.component';
 	declarations: [ObMockColumnLayoutComponent, ObMockColumnPanelDirective, ObMockColumnToggleDirective],
 	exports: [ObMockColumnLayoutComponent]
 })
-export class ObMockColumnLayoutModule {
-}
+export class ObMockColumnLayoutModule {}

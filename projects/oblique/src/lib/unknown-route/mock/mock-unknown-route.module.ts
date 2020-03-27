@@ -7,5 +7,4 @@ export {ObMockUnknownRouteComponent} from './mock-unknown-route.component';
 	declarations: [ObMockUnknownRouteComponent],
 	exports: [ObMockUnknownRouteComponent]
 })
-export class ObMockUnknownRouteModule {
-}
+export class ObMockUnknownRouteModule {}

@@ -11,17 +11,13 @@ export class ObMockNotificationComponent {
 	@Input() channel: string;
 	customChannel = false;
 	notifications: ObINotification[] = [];
-	variant: { [type: string]: string } = {};
+	variant: {[type: string]: string} = {};
 
-	open(notification: ObINotification): void {
-	}
+	open(notification: ObINotification): void {}
 
-	close(notification): void {
-	}
+	close(notification): void {}
 
-	remove(notification: Notification): void {
-	}
+	remove(notification: Notification): void {}
 
-	clear(): void {
-	}
+	clear(): void {}
 }

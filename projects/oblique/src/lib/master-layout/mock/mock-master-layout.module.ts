@@ -64,6 +64,4 @@ export {ObMockMasterLayoutService} from './mock-master-layout.service';
 		{provide: ObMasterLayoutService, useClass: ObMockMasterLayoutService}
 	]
 })
-export class ObMockMasterLayoutModule {
-
-}
+export class ObMockMasterLayoutModule {}

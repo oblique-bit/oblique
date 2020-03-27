@@ -31,11 +31,9 @@ export class ObNavTreeComponent extends ObUnsubscribable {
 	// TODO: remove when https://github.com/angular/angular/issues/13205
 	constructor(private readonly route: ActivatedRoute, private readonly translate: TranslateService) {
 		super();
-		this.route.fragment
-			.pipe(takeUntil(this.unsubscribe))
-			.subscribe((fragment) => {
-				this.activeFragment = fragment;
-			});
+		this.route.fragment.pipe(takeUntil(this.unsubscribe)).subscribe(fragment => {
+			this.activeFragment = fragment;
+		});
 	}
 
 	@Input()
@@ -43,7 +41,7 @@ export class ObNavTreeComponent extends ObUnsubscribable {
 		pattern = pattern.replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
 		const label = this.translate.instant(item.label);
 		const match = new RegExp(pattern, 'gi').test(label);
-		const childMatch = (item.items || []).some((subItem) => {
+		const childMatch = (item.items || []).some(subItem => {
 			const subMatch = this.patternMatcher(subItem, pattern.replace(/\\/g, ''));
 			if (subMatch) {
 				// Ensure parent item is not collapsed:
@@ -65,14 +63,12 @@ export class ObNavTreeComponent extends ObUnsubscribable {
 	// TODO: remove when https://github.com/angular/angular/issues/13205
 	isLinkActive(rla: RouterLinkActive, item: ObNavTreeItemModel) {
 		const isLinkActive = rla.isActive;
-		return item.fragment
-			? isLinkActive && this.activeFragment === item.fragment
-			: isLinkActive;
+		return item.fragment ? isLinkActive && this.activeFragment === item.fragment : isLinkActive;
 	}
 
 	changeCollapsed(items: ObNavTreeItemModel[], collapsed: boolean, all = false): void {
 		items
-			.filter((item) => item.items)
+			.filter(item => item.items)
 			.forEach((item: ObNavTreeItemModel) => {
 				item.collapsed = collapsed;
 				if (all) {
@@ -97,8 +93,9 @@ export function defaultLabelFormatterFactory(translate: TranslateService) {
 	const formatter = (item: ObNavTreeItemModel, filterPattern: string) => {
 		filterPattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
 		const label = translate.instant(item.label);
-		return !filterPattern ? label : label
-			.replace(new RegExp(filterPattern, 'ig'), (text) => `<span class="${ObNavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`);
+		return !filterPattern
+			? label
+			: label.replace(new RegExp(filterPattern, 'ig'), text => `<span class="${ObNavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`);
 	};
 
 	return formatter;

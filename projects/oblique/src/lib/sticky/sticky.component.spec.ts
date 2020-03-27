@@ -5,20 +5,19 @@ import {By} from '@angular/platform-browser';
 import {ObStickyComponent} from './sticky.component';
 
 @Component({
-	template: `
-		<ob-sticky [headerSize]="headerSize" [footerSize]="footerSize">
-			<ng-template #obStickyHeader *ngIf="stickyHeader">
-				test
-			</ng-template>
-			<ng-template #obStickyMain>
-				test
-			</ng-template>
-			<ng-template #obStickyFooter *ngIf="stickyFooter">
-				<div class="sticky-actions">
-					sdfsdfsdf
-				</div>
-			</ng-template>
-		</ob-sticky>`
+	template: ` <ob-sticky [headerSize]="headerSize" [footerSize]="footerSize">
+		<ng-template #obStickyHeader *ngIf="stickyHeader">
+			test
+		</ng-template>
+		<ng-template #obStickyMain>
+			test
+		</ng-template>
+		<ng-template #obStickyFooter *ngIf="stickyFooter">
+			<div class="sticky-actions">
+				sdfsdfsdf
+			</div>
+		</ng-template>
+	</ob-sticky>`
 })
 class TestFirstCaseComponent {
 	stickyHeader = true;
@@ -34,9 +33,7 @@ describe('StickyComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [TestFirstCaseComponent, ObStickyComponent],
-			schemas: [
-				CUSTOM_ELEMENTS_SCHEMA
-			]
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
 	}));
 
@@ -67,7 +64,6 @@ describe('StickyComponent', () => {
 		expect(fixture.debugElement.query(By.css('ob-sticky')).nativeElement.classList).not.toContain('sticky-sm');
 		expect(fixture.debugElement.query(By.css('ob-sticky')).nativeElement.classList).toContain('sticky-lg');
 	});
-
 
 	it('should not contain neither sticky-lg nor sticky-sm with medium (default) header', async () => {
 		testComponent.headerSize = 'md';

@@ -20,25 +20,14 @@ export {ObMultiselectSearchPipe} from './multiselect-search.pipe';
 export {ObMultiselectTexts} from './multiselect.texts';
 
 @NgModule({
-	imports: [
-		CommonModule,
-		FormsModule,
-		TranslateModule,
-		ObFilterBoxModule
-	],
-	exports: [
-		ObMultiselectComponent,
-		ObMultiselectSearchPipe
-	],
+	imports: [CommonModule, FormsModule, TranslateModule, ObFilterBoxModule],
+	exports: [ObMultiselectComponent, ObMultiselectSearchPipe],
 	providers: [
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 		{provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}},
 		{provide: WINDOW, useFactory: windowProvider}
 	],
-	declarations: [
-		ObMultiselectComponent,
-		ObMultiselectSearchPipe
-	]
+	declarations: [ObMultiselectComponent, ObMultiselectSearchPipe]
 })
 export class ObMultiselectModule {
 	constructor(telemetry: ObTelemetryService) {

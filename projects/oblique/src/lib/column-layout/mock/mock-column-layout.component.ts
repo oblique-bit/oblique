@@ -11,8 +11,6 @@ export class ObMockColumnLayoutComponent {
 	@Input() noLayout = false;
 	@Input() wider = false;
 
-	toggleLeft(): void {
-	}
-	toggleRight(): void {
-	}
+	toggleLeft(): void {}
+	toggleRight(): void {}
 }

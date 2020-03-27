@@ -10,7 +10,6 @@ import {AfterViewInit, Component, ContentChild, HostBinding, Input, OnChanges, T
 	host: {class: 'sticky'}
 })
 export class ObStickyComponent implements OnChanges, AfterViewInit {
-
 	@ContentChild('obStickyHeader') readonly stickyHeaderTemplate: TemplateRef<any>;
 	@ContentChild('obStickyMain') readonly stickyMainTemplate: TemplateRef<any>;
 	@ContentChild('obStickyFooter') readonly stickyFooterTemplate: TemplateRef<any>;
@@ -24,7 +23,7 @@ export class ObStickyComponent implements OnChanges, AfterViewInit {
 	private static readonly SIZES = ['sm', 'md', 'lg'];
 
 	ngAfterViewInit() {
-		setTimeout(() => this.ngOnChanges());	// so that initial values are taken into account
+		setTimeout(() => this.ngOnChanges()); // so that initial values are taken into account
 	}
 
 	ngOnChanges(): void {

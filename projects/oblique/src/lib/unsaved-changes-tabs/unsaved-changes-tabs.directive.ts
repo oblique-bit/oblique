@@ -14,8 +14,7 @@ export class ObUnsavedChangesTabsDirective implements OnDestroy, OnInit, AfterCo
 		private readonly form: ControlContainer,
 		@Optional() private readonly ngbTab: NgbTab,
 		@Optional() private readonly ngbTabset: NgbTabset
-	) {
-	}
+	) {}
 
 	ngOnInit() {
 		const id = this.ngbTab ? this.ngbTab.id : this.id;

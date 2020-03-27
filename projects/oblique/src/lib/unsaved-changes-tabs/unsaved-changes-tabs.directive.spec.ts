@@ -7,17 +7,14 @@ import {ObUnsavedChangesTabsDirective} from './unsaved-changes-tabs.directive';
 import {ObUnsavedChangesTabsService} from './unsaved-changes-tabs.service';
 
 @Component({
-	template: `
-		<form obUnsavedChangesTabs></form>`
+	template: ` <form obUnsavedChangesTabs></form>`
 })
 class FaultyTestComponent {
 	@ViewChild(ObUnsavedChangesTabsDirective, {static: false}) unsavedChangesDirective;
 }
 
 @Component({
-	template: `
-		<form id="test" obUnsavedChangesTabs></form>`
-
+	template: ` <form id="test" obUnsavedChangesTabs></form>`
 })
 class TestComponent {
 	//noinspection JSUnusedGlobalSymbols
@@ -25,14 +22,13 @@ class TestComponent {
 }
 
 @Component({
-	template: `
-		<ngb-tabset>
-			<ngb-tab id="tab" title="tab1">
-				<ng-template ngbTabContent>
-					<form obUnsavedChangesTabs></form>
-				</ng-template>
-			</ngb-tab>
-		</ngb-tabset>`
+	template: ` <ngb-tabset>
+		<ngb-tab id="tab" title="tab1">
+			<ng-template ngbTabContent>
+				<form obUnsavedChangesTabs></form>
+			</ng-template>
+		</ngb-tab>
+	</ngb-tabset>`
 })
 class TabsTestComponent {
 	//noinspection JSUnusedGlobalSymbols
@@ -62,10 +58,7 @@ describe('UnsavedChangesTabsDirective', () => {
 		//noinspection JSIgnoredPromiseFromCall
 		TestBed.configureTestingModule({
 			declarations: [FaultyTestComponent, TestComponent, TabsTestComponent, ObUnsavedChangesTabsDirective],
-			providers: [
-				ControlContainer,
-				{provide: ObUnsavedChangesTabsService, useValue: unsavedChangesServiceMock}
-			],
+			providers: [ControlContainer, {provide: ObUnsavedChangesTabsService, useValue: unsavedChangesServiceMock}],
 			imports: [CommonModule, NgbTabsetModule]
 		}).compileComponents();
 	}));

@@ -9,6 +9,5 @@ export class ObMockDropdownComponent {
 	isOpen = false;
 	@Input() position = 'middle';
 
-	toggle($event?: MouseEvent): void {
-	}
+	toggle($event?: MouseEvent): void {}
 }
