@@ -1,20 +1,24 @@
 <ng-container *ngFor="let component of api">
-	<h4>{{component.name}}</h4>
+	<h4>{{ component.name }}</h4>
 	<dl>
 		<ng-container *ngIf="component.selector">
 			<dt>Selector</dt>
-			<dd><code>{{component.selector}}</code></dd>
+			<dd>
+				<code>{{ component.selector }}</code>
+			</dd>
 		</ng-container>
 		<ng-container *ngIf="component.exported">
 			<dt>Exported as</dt>
-			<dd><code>{{component.exported}}</code></dd>
+			<dd>
+				<code>{{ component.exported }}</code>
+			</dd>
 		</ng-container>
 		<ng-container *ngIf="component.usage">
 			<dt>Usage</dt>
 			<dd [innerHTML]="component.usage"></dd>
 		</ng-container>
 		<dt>Since</dt>
-		<dd>{{component.since}}</dd>
+		<dd>{{ component.since }}</dd>
 	</dl>
 	<ng-container *ngIf="component.variables">
 		<h5>Variables</h5>

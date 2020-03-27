@@ -14,27 +14,29 @@
 
 				<mat-form-field>
 					<mat-label>First name</mat-label>
-					<input matInput>
+					<input matInput />
 				</mat-form-field>
 
 				<mat-form-field>
 					<mat-label>Age</mat-label>
-					<input matInput>
+					<input matInput />
 				</mat-form-field>
 				<mat-action-row *ngIf="actionRowVisible">
 					<button mat-button color="primary" (click)="selfAwarePanel.open()">Next</button>
 				</mat-action-row>
 			</mat-expansion-panel>
-			<mat-expansion-panel #selfAwarePanel [hideToggle]="!toggleVisible" [togglePosition]="togglePosition"
-								 (opened)="panelOpenState = true"
-								 (closed)="panelOpenState = false">
+			<mat-expansion-panel
+				#selfAwarePanel
+				[hideToggle]="!toggleVisible"
+				[togglePosition]="togglePosition"
+				(opened)="panelOpenState = true"
+				(closed)="panelOpenState = false"
+			>
 				<mat-expansion-panel-header>
 					<mat-panel-title>
 						Self aware panel
 					</mat-panel-title>
-					<mat-panel-description>
-						Currently I am {{panelOpenState ? 'open' : 'closed'}}
-					</mat-panel-description>
+					<mat-panel-description> Currently I am {{ panelOpenState ? "open" : "closed" }} </mat-panel-description>
 				</mat-expansion-panel-header>
 				<p>I'm visible because I am open</p>
 				<mat-action-row *ngIf="actionRowVisible">
@@ -69,7 +71,7 @@
 				<mat-radio-group [(ngModel)]="displayMode">
 					<mat-list-item *ngFor="let mode of displayModes">
 						<mat-radio-button [value]="mode">
-							{{mode}}
+							{{ mode }}
 						</mat-radio-button>
 					</mat-list-item>
 				</mat-radio-group>
@@ -79,7 +81,7 @@
 				<mat-radio-group [(ngModel)]="togglePosition">
 					<mat-list-item *ngFor="let position of togglePositions">
 						<mat-radio-button [value]="position">
-							{{position}}
+							{{ position }}
 						</mat-radio-button>
 					</mat-list-item>
 				</mat-radio-group>

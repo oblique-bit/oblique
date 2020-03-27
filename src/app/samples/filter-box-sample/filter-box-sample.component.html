@@ -1,9 +1,8 @@
-<h2>{{'i18n.routes.samples.filter-box.title' | translate}}</h2>
+<h2>{{ "i18n.routes.samples.filter-box.title" | translate }}</h2>
 <ob-description component="filter-box"></ob-description>
 <ob-column-layout [left]="false" [right]="true">
 	<ng-container column-main-content>
-		<ob-filter-box [(pattern)]="patterns[0]" [placeholder]="placeholder" (patternClear)="incrementCleared()"
-					   (patternChange)="incrementChanged()">
+		<ob-filter-box [(pattern)]="patterns[0]" [placeholder]="placeholder" (patternClear)="incrementCleared()" (patternChange)="incrementChanged()">
 			<ng-template #prepend><i class="fa fa-search"></i></ng-template>
 			<ng-template #prepend>
 				<button class="btn btn-secondary" type="button" *ngIf="!material">Go!</button>
@@ -13,12 +12,12 @@
 			<ng-template #append>
 				<div ngbDropdown *ngIf="!material">
 					<button id="search-actions-dropdown" class="btn btn-secondary dropdown-toggle" ngbDropdownToggle>
-						<span class="sr-only">{{'i18n.common.actions' | translate}}</span>
+						<span class="sr-only">{{ "i18n.common.actions" | translate }}</span>
 					</button>
 					<span ngbDropdownMenu aria-labelledby="search-actions-dropdown">
-							<a class="dropdown-item" role="button" tabindex="0">An action</a>
-							<a class="dropdown-item" role="button" tabindex="0">Another action</a>
-						</span>
+						<a class="dropdown-item" role="button" tabindex="0">An action</a>
+						<a class="dropdown-item" role="button" tabindex="0">Another action</a>
+					</span>
 				</div>
 				<ng-container *ngIf="material">
 					<mat-menu #appMenu="matMenu">
@@ -33,21 +32,21 @@
 			</ng-template>
 		</ob-filter-box>
 		<ul>
-			<li *ngFor="let item of items | patternFilter:patterns[0]">{{item}}</li>
+			<li *ngFor="let item of items | patternFilter: patterns[0]">{{ item }}</li>
 		</ul>
 	</ng-container>
 	<ng-container column-right-content>
 		<h3>Controls</h3>
 		<div>
 			<label>Placeholder</label>
-			<input type="text" [(ngModel)]="placeholder" #filterControl>
+			<input type="text" [(ngModel)]="placeholder" #filterControl />
 			<button type="button" role="button" [obInputClear]="filterControl" (onClear)="placeholder = null">
 				<span class="fa fa-times-circle"></span>
-				<span class="sr-only">{{'i18n.common.clear' | translate}}</span>
+				<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
 			</button>
 		</div>
-		<p>cleared: {{cleared}}</p>
-		<p>changed: {{changed}}</p>
+		<p>cleared: {{ cleared }}</p>
+		<p>changed: {{ changed }}</p>
 	</ng-container>
 </ob-column-layout>
 <ob-api component="filter-box"></ob-api>

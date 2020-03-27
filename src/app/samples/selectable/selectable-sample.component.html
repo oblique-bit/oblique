@@ -1,4 +1,4 @@
-<h2>{{'i18n.routes.samples.selected.title' | translate}}</h2>
+<h2>{{ "i18n.routes.samples.selected.title" | translate }}</h2>
 <ob-description component="selectable"></ob-description>
 <ob-column-layout [left]="false" [right]="true">
 	<section column-main-content>
@@ -7,7 +7,7 @@
 		<p obSelectable [value]="'p'">a selectable p</p>
 		values of 'unnamed' collection:
 		<ul>
-			<li *ngFor="let item of unnamedCollection">{{item}}</li>
+			<li *ngFor="let item of unnamedCollection">{{ item }}</li>
 		</ul>
 
 		<h3>Preselection</h3>
@@ -16,11 +16,11 @@
 		<div obSelectable value="dog" [selected]="false" collection="preselection">a selectable dog</div>
 		values of 'preselection' collection:
 		<ul>
-			<li *ngFor="let item of preselectionCollection">{{item}}</li>
+			<li *ngFor="let item of preselectionCollection">{{ item }}</li>
 		</ul>
 
 		<h3>Collections</h3>
-		<pre>{{collections | json}}</pre>
+		<pre>{{ collections | json }}</pre>
 	</section>
 	<section column-right-content>
 		<button mat-flat-button color="primary" (click)="clearCollection('unnamed')">clear default collection</button>

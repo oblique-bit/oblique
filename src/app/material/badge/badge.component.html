@@ -10,8 +10,7 @@
 			<mat-list-item>
 				<p>
 					Button with a badge
-					<button mat-raised-button color="primary"
-							[matBadge]="badgeContent" [matBadgePosition]="position" [matBadgeColor]="color">
+					<button mat-raised-button color="primary" [matBadge]="badgeContent" [matBadgePosition]="position" [matBadgeColor]="color">
 						Action
 					</button>
 				</p>
@@ -30,7 +29,7 @@
 			<fieldset>
 				<legend>Content</legend>
 				<mat-form-field>
-					<input matInput type="number" [(ngModel)]="badgeContent">
+					<input matInput type="number" [(ngModel)]="badgeContent" />
 				</mat-form-field>
 			</fieldset>
 			<fieldset>
@@ -38,7 +37,7 @@
 				<mat-radio-group [(ngModel)]="color">
 					<mat-list-item *ngFor="let badgeColor of colors">
 						<mat-radio-button [value]="badgeColor">
-							{{badgeColor | titlecase}}
+							{{ badgeColor | titlecase }}
 						</mat-radio-button>
 					</mat-list-item>
 				</mat-radio-group>
@@ -48,7 +47,7 @@
 				<mat-radio-group [(ngModel)]="position">
 					<mat-list-item *ngFor="let badgePosition of positions">
 						<mat-radio-button [value]="badgePosition">
-							{{badgePosition | titlecase}}
+							{{ badgePosition | titlecase }}
 						</mat-radio-button>
 					</mat-list-item>
 				</mat-radio-group>

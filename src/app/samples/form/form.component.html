@@ -1,629 +1,464 @@
 <table class="table">
 	<thead>
-	<tr>
-		<th></th>
-		<th>Text</th>
-		<th>Checkbox</th>
-		<th>Radio</th>
-		<th>Select</th>
-		<th>Textarea</th>
-	</tr>
+		<tr>
+			<th></th>
+			<th>Text</th>
+			<th>Checkbox</th>
+			<th>Radio</th>
+			<th>Select</th>
+			<th>Textarea</th>
+		</tr>
 	</thead>
 	<tbody>
-	<ng-container *ngIf="material | async else bootstrap">
-		<tr>
-			<td>
-				<label>Default</label>
-			</td>
-			<td>
-				<mat-form-field>
-					<mat-label>Default</mat-label>
-					<input type="text" matInput placeholder="Default">
-				</mat-form-field>
-			</td>
-			<td>
-				<mat-checkbox>Default</mat-checkbox>
-			</td>
-			<td>
-				<mat-radio-group>
-					<mat-radio-button value="1">Default</mat-radio-button>
-				</mat-radio-group>
-			</td>
-			<td>
-				<mat-form-field>
-					<mat-label>Default</mat-label>
-					<mat-select>
-						<mat-option [value]="1">One</mat-option>
-						<mat-option [value]="2">Two</mat-option>
-						<mat-option [value]="3">Three</mat-option>
-						<mat-option [value]="4">Four</mat-option>
-						<mat-option [value]="5">Five</mat-option>
-					</mat-select>
-				</mat-form-field>
-			</td>
-			<td>
-				<mat-form-field>
-					<mat-label>Default</mat-label>
-					<textarea matInput placeholder="Default"></textarea>
-				</mat-form-field>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label>Primary</label>
-			</td>
-			<td>
-				<mat-form-field color="primary">
-					<mat-label>Primary</mat-label>
-					<input type="text" matInput placeholder="Primary">
-				</mat-form-field>
-			</td>
-			<td>
-				<mat-checkbox color="primary">Primary</mat-checkbox>
-			</td>
-			<td>
-				<mat-radio-group color="primary">
-					<mat-radio-button value="1">Primary</mat-radio-button>
-				</mat-radio-group>
-			</td>
-			<td>
-				<mat-form-field color="primary">
-					<mat-label>Primary</mat-label>
-					<mat-select>
-						<mat-option [value]="1">One</mat-option>
-						<mat-option [value]="2">Two</mat-option>
-						<mat-option [value]="3">Three</mat-option>
-						<mat-option [value]="4">Four</mat-option>
-						<mat-option [value]="5">Five</mat-option>
-					</mat-select>
-				</mat-form-field>
-			</td>
-			<td>
-				<mat-form-field color="primary">
-					<mat-label>Primary</mat-label>
-					<textarea matInput placeholder="Primary"></textarea>
-				</mat-form-field>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label>Accent</label>
-			</td>
-			<td>
-				<mat-form-field color="accent">
-					<mat-label>Accent</mat-label>
-					<input type="text" matInput placeholder="Accent">
-				</mat-form-field>
-			</td>
-			<td>
-				<mat-checkbox color="accent">Accent</mat-checkbox>
-			</td>
-			<td>
-				<mat-radio-group color="accent">
-					<mat-radio-button value="1">Accent</mat-radio-button>
-				</mat-radio-group>
-			</td>
-			<td>
-				<mat-form-field color="accent">
-					<mat-label>Accent</mat-label>
-					<mat-select>
-						<mat-option [value]="1">One</mat-option>
-						<mat-option [value]="2">Two</mat-option>
-						<mat-option [value]="3">Three</mat-option>
-						<mat-option [value]="4">Four</mat-option>
-						<mat-option [value]="5">Five</mat-option>
-					</mat-select>
-				</mat-form-field>
-			</td>
-			<td>
-				<mat-form-field color="accent">
-					<mat-label>Accent</mat-label>
-					<textarea matInput placeholder="Accent"></textarea>
-				</mat-form-field>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label>Warn</label>
-			</td>
-			<td>
-				<mat-form-field color="warn">
-					<mat-label>Warn</mat-label>
-					<input type="text" matInput placeholder="Warn">
-				</mat-form-field>
-			</td>
-			<td>
-				<mat-checkbox color="warn">Warn</mat-checkbox>
-			</td>
-			<td>
-				<mat-radio-group color="warn">
-					<mat-radio-button value="1">Warn</mat-radio-button>
-				</mat-radio-group>
-			</td>
-			<td>
-				<mat-form-field color="warn">
-					<mat-label>Warn</mat-label>
-					<mat-select>
-						<mat-option [value]="1">One</mat-option>
-						<mat-option [value]="2">Two</mat-option>
-						<mat-option [value]="3">Three</mat-option>
-						<mat-option [value]="4">Four</mat-option>
-						<mat-option [value]="5">Five</mat-option>
-					</mat-select>
-				</mat-form-field>
-			</td>
-			<td>
-				<mat-form-field color="warn">
-					<mat-label>Warn</mat-label>
-					<textarea matInput placeholder="Warn"></textarea>
-				</mat-form-field>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label>Disabled</label>
-			</td>
-			<td>
-				<mat-form-field>
-					<mat-label>Disabled</mat-label>
-					<input type="text" matInput placeholder="Disabled" disabled>
-				</mat-form-field>
-			</td>
-			<td>
-				<mat-checkbox disabled>Disabled</mat-checkbox>
-			</td>
-			<td>
-				<mat-radio-group disabled>
-					<mat-radio-button value="1">Disabled</mat-radio-button>
-				</mat-radio-group>
-			</td>
-			<td>
-				<mat-form-field>
-					<mat-label>Disabled</mat-label>
-					<mat-select disabled>
-						<mat-option [value]="1">One</mat-option>
-						<mat-option [value]="2">Two</mat-option>
-						<mat-option [value]="3">Three</mat-option>
-						<mat-option [value]="4">Four</mat-option>
-						<mat-option [value]="5">Five</mat-option>
-					</mat-select>
-				</mat-form-field>
-			</td>
-			<td>
-				<mat-form-field>
-					<mat-label>Disabled</mat-label>
-					<textarea matInput placeholder="Disabled" disabled></textarea>
-				</mat-form-field>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label>Read only</label>
-			</td>
-			<td>
-				<mat-form-field>
-					<mat-label>Read only</mat-label>
-					<input type="text" matInput placeholder="Read only" readonly>
-				</mat-form-field>
-			</td>
-			<td>
-				<mat-checkbox readonly>Read only</mat-checkbox>
-			</td>
-			<td>
-				<mat-radio-group readonly>
-					<mat-radio-button value="1">Read only</mat-radio-button>
-				</mat-radio-group>
-			</td>
-			<td>
-				<mat-form-field>
-					<mat-label>Read only</mat-label>
-					<mat-select readonly>
-						<mat-option [value]="1">One</mat-option>
-						<mat-option [value]="2">Two</mat-option>
-						<mat-option [value]="3">Three</mat-option>
-						<mat-option [value]="4">Four</mat-option>
-						<mat-option [value]="5">Five</mat-option>
-					</mat-select>
-				</mat-form-field>
-			</td>
-			<td>
-				<mat-form-field>
-					<mat-label>Read only</mat-label>
-					<textarea matInput placeholder="Read only" readonly></textarea>
-				</mat-form-field>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label>Large</label>
-			</td>
-			<td>
-				<mat-form-field class="mat-form-field-lg">
-					<mat-label>Large</mat-label>
-					<input type="text" matInput placeholder="Large">
-				</mat-form-field>
-			</td>
-			<td>
-				<mat-checkbox class="mat-form-field-lg">Large</mat-checkbox>
-			</td>
-			<td>
-				<mat-radio-group class="mat-form-field-lg">
-					<mat-radio-button value="1">Large</mat-radio-button>
-				</mat-radio-group>
-			</td>
-			<td>
-				<mat-form-field class="mat-form-field-lg">
-					<mat-label>Large</mat-label>
-					<mat-select>
-						<mat-option [value]="1">One</mat-option>
-						<mat-option [value]="2">Two</mat-option>
-						<mat-option [value]="3">Three</mat-option>
-						<mat-option [value]="4">Four</mat-option>
-						<mat-option [value]="5">Five</mat-option>
-					</mat-select>
-				</mat-form-field>
-			</td>
-			<td>
-				<mat-form-field class="mat-form-field-lg">
-					<mat-label>Large</mat-label>
-					<textarea matInput placeholder="Large"></textarea>
-				</mat-form-field>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label>Small</label>
-			</td>
-			<td>
-				<mat-form-field class="mat-form-field-sm">
-					<mat-label>Small</mat-label>
-					<input type="text" matInput placeholder="Small">
-				</mat-form-field>
-			</td>
-			<td>
-				<mat-checkbox class="mat-form-field-sm">Small</mat-checkbox>
-			</td>
-			<td>
-				<mat-radio-group class="mat-form-field-sm">
-					<mat-radio-button value="1">Small</mat-radio-button>
-				</mat-radio-group>
-			</td>
-			<td>
-				<mat-form-field class="mat-form-field-sm">
-					<mat-label>Small</mat-label>
-					<mat-select>
-						<mat-option [value]="1">One</mat-option>
-						<mat-option [value]="2">Two</mat-option>
-						<mat-option [value]="3">Three</mat-option>
-						<mat-option [value]="4">Four</mat-option>
-						<mat-option [value]="5">Five</mat-option>
-					</mat-select>
-				</mat-form-field>
-			</td>
-			<td>
-				<mat-form-field class="mat-form-field-sm">
-					<mat-label>Small</mat-label>
-					<textarea matInput placeholder="Small"></textarea>
-				</mat-form-field>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label>Mandatory</label>
-			</td>
-			<td>
-				<mat-form-field>
-					<mat-label>Mandatory</mat-label>
-					<input type="text" matInput placeholder="Mandatory" required ngModel>
-				</mat-form-field>
-			</td>
-			<td>
-				<mat-checkbox required ngModel>Mandatory</mat-checkbox>
-			</td>
-			<td>
-				<mat-radio-group>
-					<mat-radio-button value="1" required>Mandatory</mat-radio-button>
-				</mat-radio-group>
-			</td>
-			<td>
-				<mat-form-field>
-					<mat-label>Mandatory</mat-label>
-					<mat-select required ngModel>
-						<mat-option [value]=""></mat-option>
-						<mat-option [value]="1">One</mat-option>
-						<mat-option [value]="2">Two</mat-option>
-						<mat-option [value]="3">Three</mat-option>
-						<mat-option [value]="4">Four</mat-option>
-						<mat-option [value]="5">Five</mat-option>
-					</mat-select>
-				</mat-form-field>
-			</td>
-			<td>
-				<mat-form-field>
-					<mat-label>Mandatory</mat-label>
-					<textarea matInput placeholder="Mandatory" required ngModel></textarea>
-				</mat-form-field>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label>Hints</label>
-			</td>
-			<td>
-				<mat-form-field>
-					<mat-label>Hint</mat-label>
-					<input type="text" matInput placeholder="Hint">
-					<mat-hint>Hint text</mat-hint>
-					<mat-error>Error text</mat-error>
-				</mat-form-field>
-			</td>
-			<td>
-				N / A
-			</td>
-			<td>
-				N / A
-			</td>
-			<td>
-				<mat-form-field>
-					<mat-label>Hint</mat-label>
-					<mat-select>
-						<mat-option [value]="1">One</mat-option>
-						<mat-option [value]="2">Two</mat-option>
-						<mat-option [value]="3">Three</mat-option>
-						<mat-option [value]="4">Four</mat-option>
-						<mat-option [value]="5">Five</mat-option>
-					</mat-select>
-					<mat-hint>Hint text</mat-hint>
-					<mat-error>Error text</mat-error>
-				</mat-form-field>
-			</td>
-			<td>
-				<mat-form-field>
-					<mat-label>Hint</mat-label>
-					<textarea matInput placeholder="Hint"></textarea>
-					<mat-hint>Hint text</mat-hint>
-					<mat-error>Error text</mat-error>
-				</mat-form-field>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label>Multiline</label>
-			</td>
-			<td>
-				<mat-form-field>
-					<mat-label>Multiline</mat-label>
-					<input type="text" matInput placeholder="Multiline" required ngModel>
-					<mat-hint>Trigger an error by setting a value and deleting it</mat-hint>
-					<mat-error>A really loooooooooong error message that will span over multiple rows. This demonstrate how the message remains readable without breaking the layout.</mat-error>
-				</mat-form-field>
-			</td>
-			<td>
-				N / A
-			</td>
-			<td>
-				N / A
-			</td>
-			<td>
-				<mat-form-field>
-					<mat-label>Multiline</mat-label>
-					<mat-select required ngModel>
-						<mat-option [value]=""></mat-option>
-						<mat-option [value]="1">One</mat-option>
-						<mat-option [value]="2">Two</mat-option>
-						<mat-option [value]="3">Three</mat-option>
-						<mat-option [value]="4">Four</mat-option>
-						<mat-option [value]="5">Five</mat-option>
-					</mat-select>
-					<mat-hint>Trigger an error by setting a value and deleting it</mat-hint>
-					<mat-error>A really loooooooooong error message that will span over multiple rows. This demonstrate how the message remains readable without breaking the layout.</mat-error>
-				</mat-form-field>
-			</td>
-			<td>
-				<mat-form-field>
-					<mat-label>Multiline</mat-label>
-					<textarea matInput placeholder="Mandatory" required ngModel></textarea>
-					<mat-hint>Trigger an error by setting a value and deleting it</mat-hint>
-					<mat-error>A really loooooooooong error message that will span over multiple rows. This demonstrate how the message remains readable without breaking the layout.</mat-error>
-				</mat-form-field>
-			</td>
-		</tr>
-	</ng-container>
-	<ng-template #bootstrap>
-		<tr>
-			<td>
-				<label class="col-form-label">Default</label>
-			</td>
-			<td>
-				<input type="text" class="form-control" placeholder="Default">
-			</td>
-			<td>
-				<div class="form-check form-check-inline">
-					<input type="checkbox" value="option1" id="snippets-forms-variant-checkbox-default"
-						   class="form-check-input" checked="">
-					<label class="form-check-label" for="snippets-forms-variant-checkbox-default">Default</label>
-				</div>
-			</td>
-			<td>
-				<div class="form-check form-check-inline">
-					<input id="snippets-forms-variant-radio-default" type="radio" name="radio" class="form-check-input"
-						   checked>
-					<label class="form-check-label" for="snippets-forms-variant-radio-default">Default</label>
-				</div>
-			</td>
-			<td>
-				<select class="form-control">
-					<option value="1">One</option>
-					<option value="2">Two</option>
-					<option value="3">Three</option>
-					<option value="4">Four</option>
-					<option value="5">Five</option>
-				</select>
-			</td>
-			<td>
-				<textarea class="form-control" rows="1" placeholder="Default"></textarea>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label class="col-form-label">Disabled</label>
-			</td>
-			<td>
-				<input type="text" class="form-control" placeholder="Disabled" disabled>
-			</td>
-			<td>
-				<div class="form-check form-check-inline">
-					<input type="checkbox" value="option1" id="snippets-forms-variant-checkbox-disabled"
-						   class="form-check-input" checked="" disabled>
-					<label class="form-check-label" for="snippets-forms-variant-checkbox-disabled">Disabled</label>
-				</div>
-			</td>
-			<td>
-				<div class="form-check form-check-inline">
-					<input id="snippets-forms-variant-radio-disabled" type="radio" name="radio" class="form-check-input"
-						   disabled>
-					<label class="form-check-label" for="snippets-forms-variant-radio-disabled">Disabled</label>
-				</div>
-			</td>
-			<td>
-				<select class="form-control" disabled>
-					<option value="1">One</option>
-					<option value="2">Two</option>
-					<option value="3">Three</option>
-					<option value="4">Four</option>
-					<option value="5">Five</option>
-				</select>
-			</td>
-			<td>
-				<textarea class="form-control" rows="1" placeholder="Disabled" disabled></textarea>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label class="col-form-label">Read only</label>
-			</td>
-			<td>
-				<input type="text" class="form-control" placeholder="Read only" readonly>
-			</td>
-			<td>
-				<div class="form-check form-check-inline">
-					<input type="checkbox" value="option2" id="snippets-forms-variant-checkbox-readonly"
-						   class="form-check-input" checked="" readonly>
-					<label class="form-check-label" for="snippets-forms-variant-checkbox-readonly">Read only</label>
-				</div>
-			</td>
-			<td>
-				<div class="form-check form-check-inline">
-					<input id="snippets-forms-variant-radio-readonly" type="radio" name="radio" class="form-check-input"
-						   readonly>
-					<label class="form-check-label" for="snippets-forms-variant-radio-readonly">Read only</label>
-				</div>
-			</td>
-			<td>
-				<select class="form-control" readonly>
-					<option value="1">One</option>
-					<option value="2">Two</option>
-					<option value="3">Three</option>
-					<option value="4">Four</option>
-					<option value="5">Five</option>
-				</select>
-			</td>
-			<td>
-				<textarea class="form-control" rows="1" placeholder="Read only" readonly></textarea>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label class="col-form-label-lg">Large</label>
-			</td>
-			<td>
-				<div class="">
-					<input type="text" class="form-control form-control-lg" placeholder="Large">
-				</div>
-			</td>
-			<td>
-				<div class="form-check form-check-inline form-check-lg">
-					<input type="checkbox" value="option3" id="snippets-forms-variant-checkbox-large"
-						   class="form-check-input" checked="">
-					<label class="form-check-label" for="snippets-forms-variant-checkbox-large">Large</label>
-				</div>
-			</td>
-			<td>
-				<div class="form-check form-check-inline form-check-lg">
-					<input id="snippets-forms-variant-radio-large" type="radio" name="radio" class="form-check-input">
-					<label class="form-check-label" for="snippets-forms-variant-radio-large">Large</label>
-				</div>
-			</td>
-			<td>
-				<select class="form-control form-control-lg">
-					<option value="1">One</option>
-					<option value="2">Two</option>
-					<option value="3">Three</option>
-					<option value="4">Four</option>
-					<option value="5">Five</option>
-				</select>
-			</td>
-			<td>
-				<textarea class="form-control form-control-lg" rows="1" placeholder="Large"></textarea>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label class="col-form-label-sm">Small</label>
-			</td>
-			<td>
-				<input type="text" class="form-control form-control-sm" placeholder="Small">
-			</td>
-			<td>
-				<div class="form-check form-check-inline form-check-sm">
-					<input type="checkbox" value="option4" id="snippets-forms-variant-checkbox-small"
-						   class="form-check-input" checked="">
-					<label class="form-check-label" for="snippets-forms-variant-checkbox-small">Small</label>
-				</div>
-			</td>
-			<td>
-				<div class="form-check form-check-inline form-check-sm">
-					<input id="snippets-forms-variant-radio-small" type="radio" name="radio" class="form-check-input">
-					<label class="form-check-label" for="snippets-forms-variant-radio-small">Small</label>
-				</div>
-			</td>
-			<td>
-				<select class="form-control form-control-sm">
-					<option value="1">One</option>
-					<option value="2">Two</option>
-					<option value="3">Three</option>
-					<option value="4">Four</option>
-					<option value="5">Five</option>
-				</select>
-			</td>
-			<td>
-				<textarea class="form-control form-control-sm" rows="1" placeholder="Small"></textarea>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label class="col-form-label">Mandatory</label>
-			</td>
-			<td>
-				<div class="control-mandatory">
-					<input type="text" class="form-control" placeholder="Mandatory">
-				</div>
-			</td>
-			<td>
-				<div class="form-check form-check-inline control-mandatory">
-					<input type="checkbox" value="option4" id="snippets-forms-variant-checkbox-mandatory"
-						   class="form-check-input" checked="">
-					<label class="form-check-label" for="snippets-forms-variant-checkbox-mandatory">Mandatory</label>
-				</div>
-			</td>
-			<td>
-				<div class="form-check form-check-inline control-mandatory">
-					<input id="snippets-forms-variant-radio-mandatory" type="radio" name="radio" class="form-check-input">
-					<label class="form-check-label" for="snippets-forms-variant-radio-mandatory">Mandatory</label>
-				</div>
-			</td>
-			<td>
-				<div class="control-mandatory">
+		<ng-container *ngIf="material | async; else bootstrap">
+			<tr>
+				<td>
+					<label>Default</label>
+				</td>
+				<td>
+					<mat-form-field>
+						<mat-label>Default</mat-label>
+						<input type="text" matInput placeholder="Default" />
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-checkbox>Default</mat-checkbox>
+				</td>
+				<td>
+					<mat-radio-group>
+						<mat-radio-button value="1">Default</mat-radio-button>
+					</mat-radio-group>
+				</td>
+				<td>
+					<mat-form-field>
+						<mat-label>Default</mat-label>
+						<mat-select>
+							<mat-option [value]="1">One</mat-option>
+							<mat-option [value]="2">Two</mat-option>
+							<mat-option [value]="3">Three</mat-option>
+							<mat-option [value]="4">Four</mat-option>
+							<mat-option [value]="5">Five</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-form-field>
+						<mat-label>Default</mat-label>
+						<textarea matInput placeholder="Default"></textarea>
+					</mat-form-field>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Primary</label>
+				</td>
+				<td>
+					<mat-form-field color="primary">
+						<mat-label>Primary</mat-label>
+						<input type="text" matInput placeholder="Primary" />
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-checkbox color="primary">Primary</mat-checkbox>
+				</td>
+				<td>
+					<mat-radio-group color="primary">
+						<mat-radio-button value="1">Primary</mat-radio-button>
+					</mat-radio-group>
+				</td>
+				<td>
+					<mat-form-field color="primary">
+						<mat-label>Primary</mat-label>
+						<mat-select>
+							<mat-option [value]="1">One</mat-option>
+							<mat-option [value]="2">Two</mat-option>
+							<mat-option [value]="3">Three</mat-option>
+							<mat-option [value]="4">Four</mat-option>
+							<mat-option [value]="5">Five</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-form-field color="primary">
+						<mat-label>Primary</mat-label>
+						<textarea matInput placeholder="Primary"></textarea>
+					</mat-form-field>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Accent</label>
+				</td>
+				<td>
+					<mat-form-field color="accent">
+						<mat-label>Accent</mat-label>
+						<input type="text" matInput placeholder="Accent" />
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-checkbox color="accent">Accent</mat-checkbox>
+				</td>
+				<td>
+					<mat-radio-group color="accent">
+						<mat-radio-button value="1">Accent</mat-radio-button>
+					</mat-radio-group>
+				</td>
+				<td>
+					<mat-form-field color="accent">
+						<mat-label>Accent</mat-label>
+						<mat-select>
+							<mat-option [value]="1">One</mat-option>
+							<mat-option [value]="2">Two</mat-option>
+							<mat-option [value]="3">Three</mat-option>
+							<mat-option [value]="4">Four</mat-option>
+							<mat-option [value]="5">Five</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-form-field color="accent">
+						<mat-label>Accent</mat-label>
+						<textarea matInput placeholder="Accent"></textarea>
+					</mat-form-field>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Warn</label>
+				</td>
+				<td>
+					<mat-form-field color="warn">
+						<mat-label>Warn</mat-label>
+						<input type="text" matInput placeholder="Warn" />
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-checkbox color="warn">Warn</mat-checkbox>
+				</td>
+				<td>
+					<mat-radio-group color="warn">
+						<mat-radio-button value="1">Warn</mat-radio-button>
+					</mat-radio-group>
+				</td>
+				<td>
+					<mat-form-field color="warn">
+						<mat-label>Warn</mat-label>
+						<mat-select>
+							<mat-option [value]="1">One</mat-option>
+							<mat-option [value]="2">Two</mat-option>
+							<mat-option [value]="3">Three</mat-option>
+							<mat-option [value]="4">Four</mat-option>
+							<mat-option [value]="5">Five</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-form-field color="warn">
+						<mat-label>Warn</mat-label>
+						<textarea matInput placeholder="Warn"></textarea>
+					</mat-form-field>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Disabled</label>
+				</td>
+				<td>
+					<mat-form-field>
+						<mat-label>Disabled</mat-label>
+						<input type="text" matInput placeholder="Disabled" disabled />
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-checkbox disabled>Disabled</mat-checkbox>
+				</td>
+				<td>
+					<mat-radio-group disabled>
+						<mat-radio-button value="1">Disabled</mat-radio-button>
+					</mat-radio-group>
+				</td>
+				<td>
+					<mat-form-field>
+						<mat-label>Disabled</mat-label>
+						<mat-select disabled>
+							<mat-option [value]="1">One</mat-option>
+							<mat-option [value]="2">Two</mat-option>
+							<mat-option [value]="3">Three</mat-option>
+							<mat-option [value]="4">Four</mat-option>
+							<mat-option [value]="5">Five</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-form-field>
+						<mat-label>Disabled</mat-label>
+						<textarea matInput placeholder="Disabled" disabled></textarea>
+					</mat-form-field>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Read only</label>
+				</td>
+				<td>
+					<mat-form-field>
+						<mat-label>Read only</mat-label>
+						<input type="text" matInput placeholder="Read only" readonly />
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-checkbox readonly>Read only</mat-checkbox>
+				</td>
+				<td>
+					<mat-radio-group readonly>
+						<mat-radio-button value="1">Read only</mat-radio-button>
+					</mat-radio-group>
+				</td>
+				<td>
+					<mat-form-field>
+						<mat-label>Read only</mat-label>
+						<mat-select readonly>
+							<mat-option [value]="1">One</mat-option>
+							<mat-option [value]="2">Two</mat-option>
+							<mat-option [value]="3">Three</mat-option>
+							<mat-option [value]="4">Four</mat-option>
+							<mat-option [value]="5">Five</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-form-field>
+						<mat-label>Read only</mat-label>
+						<textarea matInput placeholder="Read only" readonly></textarea>
+					</mat-form-field>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Large</label>
+				</td>
+				<td>
+					<mat-form-field class="mat-form-field-lg">
+						<mat-label>Large</mat-label>
+						<input type="text" matInput placeholder="Large" />
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-checkbox class="mat-form-field-lg">Large</mat-checkbox>
+				</td>
+				<td>
+					<mat-radio-group class="mat-form-field-lg">
+						<mat-radio-button value="1">Large</mat-radio-button>
+					</mat-radio-group>
+				</td>
+				<td>
+					<mat-form-field class="mat-form-field-lg">
+						<mat-label>Large</mat-label>
+						<mat-select>
+							<mat-option [value]="1">One</mat-option>
+							<mat-option [value]="2">Two</mat-option>
+							<mat-option [value]="3">Three</mat-option>
+							<mat-option [value]="4">Four</mat-option>
+							<mat-option [value]="5">Five</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-form-field class="mat-form-field-lg">
+						<mat-label>Large</mat-label>
+						<textarea matInput placeholder="Large"></textarea>
+					</mat-form-field>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Small</label>
+				</td>
+				<td>
+					<mat-form-field class="mat-form-field-sm">
+						<mat-label>Small</mat-label>
+						<input type="text" matInput placeholder="Small" />
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-checkbox class="mat-form-field-sm">Small</mat-checkbox>
+				</td>
+				<td>
+					<mat-radio-group class="mat-form-field-sm">
+						<mat-radio-button value="1">Small</mat-radio-button>
+					</mat-radio-group>
+				</td>
+				<td>
+					<mat-form-field class="mat-form-field-sm">
+						<mat-label>Small</mat-label>
+						<mat-select>
+							<mat-option [value]="1">One</mat-option>
+							<mat-option [value]="2">Two</mat-option>
+							<mat-option [value]="3">Three</mat-option>
+							<mat-option [value]="4">Four</mat-option>
+							<mat-option [value]="5">Five</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-form-field class="mat-form-field-sm">
+						<mat-label>Small</mat-label>
+						<textarea matInput placeholder="Small"></textarea>
+					</mat-form-field>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Mandatory</label>
+				</td>
+				<td>
+					<mat-form-field>
+						<mat-label>Mandatory</mat-label>
+						<input type="text" matInput placeholder="Mandatory" required ngModel />
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-checkbox required ngModel>Mandatory</mat-checkbox>
+				</td>
+				<td>
+					<mat-radio-group>
+						<mat-radio-button value="1" required>Mandatory</mat-radio-button>
+					</mat-radio-group>
+				</td>
+				<td>
+					<mat-form-field>
+						<mat-label>Mandatory</mat-label>
+						<mat-select required ngModel>
+							<mat-option [value]=""></mat-option>
+							<mat-option [value]="1">One</mat-option>
+							<mat-option [value]="2">Two</mat-option>
+							<mat-option [value]="3">Three</mat-option>
+							<mat-option [value]="4">Four</mat-option>
+							<mat-option [value]="5">Five</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-form-field>
+						<mat-label>Mandatory</mat-label>
+						<textarea matInput placeholder="Mandatory" required ngModel></textarea>
+					</mat-form-field>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Hints</label>
+				</td>
+				<td>
+					<mat-form-field>
+						<mat-label>Hint</mat-label>
+						<input type="text" matInput placeholder="Hint" />
+						<mat-hint>Hint text</mat-hint>
+						<mat-error>Error text</mat-error>
+					</mat-form-field>
+				</td>
+				<td>
+					N / A
+				</td>
+				<td>
+					N / A
+				</td>
+				<td>
+					<mat-form-field>
+						<mat-label>Hint</mat-label>
+						<mat-select>
+							<mat-option [value]="1">One</mat-option>
+							<mat-option [value]="2">Two</mat-option>
+							<mat-option [value]="3">Three</mat-option>
+							<mat-option [value]="4">Four</mat-option>
+							<mat-option [value]="5">Five</mat-option>
+						</mat-select>
+						<mat-hint>Hint text</mat-hint>
+						<mat-error>Error text</mat-error>
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-form-field>
+						<mat-label>Hint</mat-label>
+						<textarea matInput placeholder="Hint"></textarea>
+						<mat-hint>Hint text</mat-hint>
+						<mat-error>Error text</mat-error>
+					</mat-form-field>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Multiline</label>
+				</td>
+				<td>
+					<mat-form-field>
+						<mat-label>Multiline</mat-label>
+						<input type="text" matInput placeholder="Multiline" required ngModel />
+						<mat-hint>Trigger an error by setting a value and deleting it</mat-hint>
+						<mat-error
+							>A really loooooooooong error message that will span over multiple rows. This demonstrate how the message remains readable without
+							breaking the layout.</mat-error
+						>
+					</mat-form-field>
+				</td>
+				<td>
+					N / A
+				</td>
+				<td>
+					N / A
+				</td>
+				<td>
+					<mat-form-field>
+						<mat-label>Multiline</mat-label>
+						<mat-select required ngModel>
+							<mat-option [value]=""></mat-option>
+							<mat-option [value]="1">One</mat-option>
+							<mat-option [value]="2">Two</mat-option>
+							<mat-option [value]="3">Three</mat-option>
+							<mat-option [value]="4">Four</mat-option>
+							<mat-option [value]="5">Five</mat-option>
+						</mat-select>
+						<mat-hint>Trigger an error by setting a value and deleting it</mat-hint>
+						<mat-error
+							>A really loooooooooong error message that will span over multiple rows. This demonstrate how the message remains readable without
+							breaking the layout.</mat-error
+						>
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-form-field>
+						<mat-label>Multiline</mat-label>
+						<textarea matInput placeholder="Mandatory" required ngModel></textarea>
+						<mat-hint>Trigger an error by setting a value and deleting it</mat-hint>
+						<mat-error
+							>A really loooooooooong error message that will span over multiple rows. This demonstrate how the message remains readable without
+							breaking the layout.</mat-error
+						>
+					</mat-form-field>
+				</td>
+			</tr>
+		</ng-container>
+		<ng-template #bootstrap>
+			<tr>
+				<td>
+					<label class="col-form-label">Default</label>
+				</td>
+				<td>
+					<input type="text" class="form-control" placeholder="Default" />
+				</td>
+				<td>
+					<div class="form-check form-check-inline">
+						<input type="checkbox" value="option1" id="snippets-forms-variant-checkbox-default" class="form-check-input" checked="" />
+						<label class="form-check-label" for="snippets-forms-variant-checkbox-default">Default</label>
+					</div>
+				</td>
+				<td>
+					<div class="form-check form-check-inline">
+						<input id="snippets-forms-variant-radio-default" type="radio" name="radio" class="form-check-input" checked />
+						<label class="form-check-label" for="snippets-forms-variant-radio-default">Default</label>
+					</div>
+				</td>
+				<td>
 					<select class="form-control">
 						<option value="1">One</option>
 						<option value="2">Two</option>
@@ -631,172 +466,337 @@
 						<option value="4">Four</option>
 						<option value="5">Five</option>
 					</select>
-				</div>
-			</td>
-			<td>
-				<div class="control-mandatory">
-					<textarea class="form-control" rows="1" placeholder="Mandatory"></textarea>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label class="col-form-label">Primary</label>
-			</td>
-			<td>
-				<div class="form-control-plaintext">N/A</div>
-			</td>
-			<td>
-				<div class="form-check form-check-primary">
-					<input type="checkbox" value="option2" id="snippets-forms-controls-checkbox-primary" class="form-check-input" checked="">
-					<label class="form-check-label" for="snippets-forms-controls-checkbox-primary">Primary</label>
-				</div>
-			</td>
-			<td>
-				<div class="form-check form-check-primary">
-					<input id="snippets-forms-controls-radio-primary" type="radio" name="radio" class="form-check-input">
-					<label class="form-check-label" for="snippets-forms-controls-radio-primary">Primary</label>
-				</div>
-			</td>
-			<td>
-				<div class="form-control-plaintext">N/A</div>
-			</td>
-			<td>
-				<div class="form-control-plaintext">N/A</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label class="col-form-label">Success</label>
-			</td>
-			<td>
-				<div class="form-group has-success has-feedback">
-					<input type="text" class="form-control" placeholder="Success">
-					<span class="form-control-feedback">
-					<span class="fa fa-check"></span>
-				</span>
-					<span class="help-block">Please enter an email adress</span>
-				</div>
-			</td>
-			<td>
-				<div class="form-check form-check-success">
-					<input type="checkbox" value="option1" id="snippets-forms-controls-checkbox-success" class="form-check-input" checked="">
-					<label class="form-check-label" for="snippets-forms-controls-checkbox-success">Success</label>
-				</div>
-			</td>
-			<td>
-				<div class="form-check form-check-success">
-					<input id="snippets-forms-controls-radio-success" type="radio" name="radio" class="form-check-input">
-					<label class="form-check-label" for="snippets-forms-controls-radio-success">Success</label>
-				</div>
-			</td>
-			<td>
-				<div class="form-group has-success">
-					<select class="form-control">
+				</td>
+				<td>
+					<textarea class="form-control" rows="1" placeholder="Default"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label class="col-form-label">Disabled</label>
+				</td>
+				<td>
+					<input type="text" class="form-control" placeholder="Disabled" disabled />
+				</td>
+				<td>
+					<div class="form-check form-check-inline">
+						<input type="checkbox" value="option1" id="snippets-forms-variant-checkbox-disabled" class="form-check-input" checked="" disabled />
+						<label class="form-check-label" for="snippets-forms-variant-checkbox-disabled">Disabled</label>
+					</div>
+				</td>
+				<td>
+					<div class="form-check form-check-inline">
+						<input id="snippets-forms-variant-radio-disabled" type="radio" name="radio" class="form-check-input" disabled />
+						<label class="form-check-label" for="snippets-forms-variant-radio-disabled">Disabled</label>
+					</div>
+				</td>
+				<td>
+					<select class="form-control" disabled>
 						<option value="1">One</option>
 						<option value="2">Two</option>
 						<option value="3">Three</option>
 						<option value="4">Four</option>
 						<option value="5">Five</option>
 					</select>
-					<span class="help-block">Success</span>
-				</div>
-			</td>
-			<td>
-				<div class="form-group has-success">
-					<textarea class="form-control" rows="1" placeholder="Success"></textarea>
-					<span class="help-block">Success</span>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label class="col-form-label">Warning</label>
-			</td>
-			<td>
-				<div class="form-group has-warning has-feedback">
-					<input type="text" class="form-control" placeholder="Warning">
-					<span class="form-control-feedback">
-					<span class="fa fa-exclamation-triangle"></span>
-				</span>
-					<span class="help-block">Unknown email address.</span>
-				</div>
-			</td>
-			<td>
-				<div class="form-check form-check-warning">
-					<input type="checkbox" value="option3" id="snippets-forms-controls-checkbox-warning" class="form-check-input" checked="">
-					<label class="form-check-label" for="snippets-forms-controls-checkbox-warning">Warning</label>
-				</div>
-			</td>
-			<td>
-				<div class="form-check form-check-warning">
-					<input id="snippets-forms-controls-radio-warning-1" type="radio" name="radio" class="form-check-input">
-					<label class="form-check-label" for="snippets-forms-controls-radio-warning-1">Warning</label>
-				</div>
-			</td>
-			<td>
-				<div class="form-group has-warning">
-					<select class="form-control">
+				</td>
+				<td>
+					<textarea class="form-control" rows="1" placeholder="Disabled" disabled></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label class="col-form-label">Read only</label>
+				</td>
+				<td>
+					<input type="text" class="form-control" placeholder="Read only" readonly />
+				</td>
+				<td>
+					<div class="form-check form-check-inline">
+						<input type="checkbox" value="option2" id="snippets-forms-variant-checkbox-readonly" class="form-check-input" checked="" readonly />
+						<label class="form-check-label" for="snippets-forms-variant-checkbox-readonly">Read only</label>
+					</div>
+				</td>
+				<td>
+					<div class="form-check form-check-inline">
+						<input id="snippets-forms-variant-radio-readonly" type="radio" name="radio" class="form-check-input" readonly />
+						<label class="form-check-label" for="snippets-forms-variant-radio-readonly">Read only</label>
+					</div>
+				</td>
+				<td>
+					<select class="form-control" readonly>
 						<option value="1">One</option>
 						<option value="2">Two</option>
 						<option value="3">Three</option>
 						<option value="4">Four</option>
 						<option value="5">Five</option>
 					</select>
-					<span class="help-block">Warning</span>
-				</div>
-			</td>
-			<td>
-				<div class="form-group has-warning">
-					<textarea class="form-control" rows="1" placeholder="Warning"></textarea>
-					<span class="help-block">Warning</span>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label class="col-form-label">Danger</label>
-			</td>
-			<td>
-				<div class="form-group has-error has-feedback">
-					<input type="text" class="form-control" placeholder="Danger">
-					<span class="form-control-feedback">
-					<span class="fa fa-times"></span>
-				</span>
-					<span class="help-block">Email address is invalid</span>
-				</div>
-			</td>
-			<td>
-				<div class="form-check form-check-danger">
-					<input type="checkbox" value="option4" id="snippets-forms-controls-checkbox-error" class="form-check-input" checked="">
-					<label class="form-check-label" for="snippets-forms-controls-checkbox-error">Danger</label>
-				</div>
-			</td>
-			<td>
-				<div class="form-check form-check-danger">
-					<input id="snippets-forms-controls-radio-danger" type="radio" name="radio" class="form-check-input">
-					<label class="form-check-label" for="snippets-forms-controls-radio-danger">Danger</label>
-				</div>
-			</td>
-			<td>
-				<div class="form-group has-error">
-					<select class="form-control">
+				</td>
+				<td>
+					<textarea class="form-control" rows="1" placeholder="Read only" readonly></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label class="col-form-label-lg">Large</label>
+				</td>
+				<td>
+					<div class="">
+						<input type="text" class="form-control form-control-lg" placeholder="Large" />
+					</div>
+				</td>
+				<td>
+					<div class="form-check form-check-inline form-check-lg">
+						<input type="checkbox" value="option3" id="snippets-forms-variant-checkbox-large" class="form-check-input" checked="" />
+						<label class="form-check-label" for="snippets-forms-variant-checkbox-large">Large</label>
+					</div>
+				</td>
+				<td>
+					<div class="form-check form-check-inline form-check-lg">
+						<input id="snippets-forms-variant-radio-large" type="radio" name="radio" class="form-check-input" />
+						<label class="form-check-label" for="snippets-forms-variant-radio-large">Large</label>
+					</div>
+				</td>
+				<td>
+					<select class="form-control form-control-lg">
 						<option value="1">One</option>
 						<option value="2">Two</option>
 						<option value="3">Three</option>
 						<option value="4">Four</option>
 						<option value="5">Five</option>
 					</select>
-					<span class="help-block">Error</span>
-				</div>
-			</td>
-			<td>
-				<div class="form-group has-error">
-					<textarea class="form-control" rows="1" placeholder="Danger"></textarea>
-					<span class="help-block">Error</span>
-				</div>
-			</td>
-		</tr>
-	</ng-template>
+				</td>
+				<td>
+					<textarea class="form-control form-control-lg" rows="1" placeholder="Large"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label class="col-form-label-sm">Small</label>
+				</td>
+				<td>
+					<input type="text" class="form-control form-control-sm" placeholder="Small" />
+				</td>
+				<td>
+					<div class="form-check form-check-inline form-check-sm">
+						<input type="checkbox" value="option4" id="snippets-forms-variant-checkbox-small" class="form-check-input" checked="" />
+						<label class="form-check-label" for="snippets-forms-variant-checkbox-small">Small</label>
+					</div>
+				</td>
+				<td>
+					<div class="form-check form-check-inline form-check-sm">
+						<input id="snippets-forms-variant-radio-small" type="radio" name="radio" class="form-check-input" />
+						<label class="form-check-label" for="snippets-forms-variant-radio-small">Small</label>
+					</div>
+				</td>
+				<td>
+					<select class="form-control form-control-sm">
+						<option value="1">One</option>
+						<option value="2">Two</option>
+						<option value="3">Three</option>
+						<option value="4">Four</option>
+						<option value="5">Five</option>
+					</select>
+				</td>
+				<td>
+					<textarea class="form-control form-control-sm" rows="1" placeholder="Small"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label class="col-form-label">Mandatory</label>
+				</td>
+				<td>
+					<div class="control-mandatory">
+						<input type="text" class="form-control" placeholder="Mandatory" />
+					</div>
+				</td>
+				<td>
+					<div class="form-check form-check-inline control-mandatory">
+						<input type="checkbox" value="option4" id="snippets-forms-variant-checkbox-mandatory" class="form-check-input" checked="" />
+						<label class="form-check-label" for="snippets-forms-variant-checkbox-mandatory">Mandatory</label>
+					</div>
+				</td>
+				<td>
+					<div class="form-check form-check-inline control-mandatory">
+						<input id="snippets-forms-variant-radio-mandatory" type="radio" name="radio" class="form-check-input" />
+						<label class="form-check-label" for="snippets-forms-variant-radio-mandatory">Mandatory</label>
+					</div>
+				</td>
+				<td>
+					<div class="control-mandatory">
+						<select class="form-control">
+							<option value="1">One</option>
+							<option value="2">Two</option>
+							<option value="3">Three</option>
+							<option value="4">Four</option>
+							<option value="5">Five</option>
+						</select>
+					</div>
+				</td>
+				<td>
+					<div class="control-mandatory">
+						<textarea class="form-control" rows="1" placeholder="Mandatory"></textarea>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label class="col-form-label">Primary</label>
+				</td>
+				<td>
+					<div class="form-control-plaintext">N/A</div>
+				</td>
+				<td>
+					<div class="form-check form-check-primary">
+						<input type="checkbox" value="option2" id="snippets-forms-controls-checkbox-primary" class="form-check-input" checked="" />
+						<label class="form-check-label" for="snippets-forms-controls-checkbox-primary">Primary</label>
+					</div>
+				</td>
+				<td>
+					<div class="form-check form-check-primary">
+						<input id="snippets-forms-controls-radio-primary" type="radio" name="radio" class="form-check-input" />
+						<label class="form-check-label" for="snippets-forms-controls-radio-primary">Primary</label>
+					</div>
+				</td>
+				<td>
+					<div class="form-control-plaintext">N/A</div>
+				</td>
+				<td>
+					<div class="form-control-plaintext">N/A</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label class="col-form-label">Success</label>
+				</td>
+				<td>
+					<div class="form-group has-success has-feedback">
+						<input type="text" class="form-control" placeholder="Success" />
+						<span class="form-control-feedback">
+							<span class="fa fa-check"></span>
+						</span>
+						<span class="help-block">Please enter an email adress</span>
+					</div>
+				</td>
+				<td>
+					<div class="form-check form-check-success">
+						<input type="checkbox" value="option1" id="snippets-forms-controls-checkbox-success" class="form-check-input" checked="" />
+						<label class="form-check-label" for="snippets-forms-controls-checkbox-success">Success</label>
+					</div>
+				</td>
+				<td>
+					<div class="form-check form-check-success">
+						<input id="snippets-forms-controls-radio-success" type="radio" name="radio" class="form-check-input" />
+						<label class="form-check-label" for="snippets-forms-controls-radio-success">Success</label>
+					</div>
+				</td>
+				<td>
+					<div class="form-group has-success">
+						<select class="form-control">
+							<option value="1">One</option>
+							<option value="2">Two</option>
+							<option value="3">Three</option>
+							<option value="4">Four</option>
+							<option value="5">Five</option>
+						</select>
+						<span class="help-block">Success</span>
+					</div>
+				</td>
+				<td>
+					<div class="form-group has-success">
+						<textarea class="form-control" rows="1" placeholder="Success"></textarea>
+						<span class="help-block">Success</span>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label class="col-form-label">Warning</label>
+				</td>
+				<td>
+					<div class="form-group has-warning has-feedback">
+						<input type="text" class="form-control" placeholder="Warning" />
+						<span class="form-control-feedback">
+							<span class="fa fa-exclamation-triangle"></span>
+						</span>
+						<span class="help-block">Unknown email address.</span>
+					</div>
+				</td>
+				<td>
+					<div class="form-check form-check-warning">
+						<input type="checkbox" value="option3" id="snippets-forms-controls-checkbox-warning" class="form-check-input" checked="" />
+						<label class="form-check-label" for="snippets-forms-controls-checkbox-warning">Warning</label>
+					</div>
+				</td>
+				<td>
+					<div class="form-check form-check-warning">
+						<input id="snippets-forms-controls-radio-warning-1" type="radio" name="radio" class="form-check-input" />
+						<label class="form-check-label" for="snippets-forms-controls-radio-warning-1">Warning</label>
+					</div>
+				</td>
+				<td>
+					<div class="form-group has-warning">
+						<select class="form-control">
+							<option value="1">One</option>
+							<option value="2">Two</option>
+							<option value="3">Three</option>
+							<option value="4">Four</option>
+							<option value="5">Five</option>
+						</select>
+						<span class="help-block">Warning</span>
+					</div>
+				</td>
+				<td>
+					<div class="form-group has-warning">
+						<textarea class="form-control" rows="1" placeholder="Warning"></textarea>
+						<span class="help-block">Warning</span>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label class="col-form-label">Danger</label>
+				</td>
+				<td>
+					<div class="form-group has-error has-feedback">
+						<input type="text" class="form-control" placeholder="Danger" />
+						<span class="form-control-feedback">
+							<span class="fa fa-times"></span>
+						</span>
+						<span class="help-block">Email address is invalid</span>
+					</div>
+				</td>
+				<td>
+					<div class="form-check form-check-danger">
+						<input type="checkbox" value="option4" id="snippets-forms-controls-checkbox-error" class="form-check-input" checked="" />
+						<label class="form-check-label" for="snippets-forms-controls-checkbox-error">Danger</label>
+					</div>
+				</td>
+				<td>
+					<div class="form-check form-check-danger">
+						<input id="snippets-forms-controls-radio-danger" type="radio" name="radio" class="form-check-input" />
+						<label class="form-check-label" for="snippets-forms-controls-radio-danger">Danger</label>
+					</div>
+				</td>
+				<td>
+					<div class="form-group has-error">
+						<select class="form-control">
+							<option value="1">One</option>
+							<option value="2">Two</option>
+							<option value="3">Three</option>
+							<option value="4">Four</option>
+							<option value="5">Five</option>
+						</select>
+						<span class="help-block">Error</span>
+					</div>
+				</td>
+				<td>
+					<div class="form-group has-error">
+						<textarea class="form-control" rows="1" placeholder="Danger"></textarea>
+						<span class="help-block">Error</span>
+					</div>
+				</td>
+			</tr>
+		</ng-template>
 	</tbody>
 </table>

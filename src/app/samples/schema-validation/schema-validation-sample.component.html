@@ -1,36 +1,44 @@
 <ng-container *ngIf="schema$ | async as schema">
 	<h2 class="page-header">
-		{{'i18n.routes.samples.schema-validation.title' | translate}}
+		{{ "i18n.routes.samples.schema-validation.title" | translate }}
 	</h2>
 	<ob-description component="schema-validation"></ob-description>
 	<div class="row">
 		<div class="col">
-			<form id="schemaValidationForm" class="form-horizontal has-validation card" name="validationForm"
-				  role="form" [obSchemaValidation]="schema" #templateForm="ngForm"
-				  (submit)="check(templateForm)" (reset)="reset(templateForm)">
+			<form
+				id="schemaValidationForm"
+				class="form-horizontal has-validation card"
+				name="validationForm"
+				role="form"
+				[obSchemaValidation]="schema"
+				#templateForm="ngForm"
+				(submit)="check(templateForm)"
+				(reset)="reset(templateForm)"
+			>
 				<div class="card-header">
 					<h3 class="card-title d-flex justify-content-between">
 						Preview with template driven form
-						<span class="fa fa-check text-success" ngbTooltip="Form is valid" placement="bottom"
-							  *ngIf="templateForm.valid"></span>
-						<span class="fa fa-exclamation-triangle text-danger" ngbTooltip="Form is not valid" placement="bottom"
-							  *ngIf="!templateForm.valid"></span>
+						<span class="fa fa-check text-success" ngbTooltip="Form is valid" placement="bottom" *ngIf="templateForm.valid"></span>
+						<span
+							class="fa fa-exclamation-triangle text-danger"
+							ngbTooltip="Form is not valid"
+							placement="bottom"
+							*ngIf="!templateForm.valid"
+						></span>
 					</h3>
 				</div>
 				<div class="card-body">
 					<div obFormControlState class="row form-group" [pristineValidation]="true">
 						<label class="col-3 col-form-label">Text</label>
 						<div class="col-8">
-							<input name="text" type="text" placeholder="Text" class="form-control" ngModel
-								   obSchemaValidate/>
+							<input name="text" type="text" placeholder="Text" class="form-control" ngModel obSchemaValidate />
 							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
 							<ng-template #textSchema>
-								<pre>{{schema.properties.text | json}}</pre>
+								<pre>{{ schema.properties.text | json }}</pre>
 							</ng-template>
-							<a class="form-control-static" role="button"
-							   [ngbPopover]="textSchema" popoverTitle="Schema" placement="left">
+							<a class="form-control-static" role="button" [ngbPopover]="textSchema" popoverTitle="Schema" placement="left">
 								<span class="fa fa-sitemap"></span>
 							</a>
 						</div>
@@ -38,16 +46,14 @@
 					<div obFormControlState class="row form-group">
 						<label class="col-3 col-form-label">Number</label>
 						<div class="col-8">
-							<input name="number" type="number" placeholder="Number" class="form-control"
-								   ngModel obSchemaValidate/>
+							<input name="number" type="number" placeholder="Number" class="form-control" ngModel obSchemaValidate />
 							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
 							<ng-template #numberSchema>
-								<pre>{{schema.properties.number | json}}</pre>
+								<pre>{{ schema.properties.number | json }}</pre>
 							</ng-template>
-							<a class="form-control-static" role="button"
-							   [ngbPopover]="numberSchema" popoverTitle="Schema" placement="left">
+							<a class="form-control-static" role="button" [ngbPopover]="numberSchema" popoverTitle="Schema" placement="left">
 								<span class="fa fa-sitemap"></span>
 							</a>
 						</div>
@@ -55,16 +61,14 @@
 					<div obFormControlState class="row form-group">
 						<label class="col-3 col-form-label">Integer</label>
 						<div class="col-8">
-							<input name="integer" type="number" placeholder="integer" class="form-control"
-								   ngModel obSchemaValidate/>
+							<input name="integer" type="number" placeholder="integer" class="form-control" ngModel obSchemaValidate />
 							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
 							<ng-template #integerSchema>
-								<pre>{{schema.properties.integer | json}}</pre>
+								<pre>{{ schema.properties.integer | json }}</pre>
 							</ng-template>
-							<a class="form-control-static" role="button"
-							   [ngbPopover]="integerSchema" popoverTitle="Schema" placement="left">
+							<a class="form-control-static" role="button" [ngbPopover]="integerSchema" popoverTitle="Schema" placement="left">
 								<span class="fa fa-sitemap"></span>
 							</a>
 						</div>
@@ -77,10 +81,9 @@
 						</div>
 						<div class="col-1">
 							<ng-template #dateSchema>
-								<pre>{{schema.properties.date | json}}</pre>
+								<pre>{{ schema.properties.date | json }}</pre>
 							</ng-template>
-							<a class="form-control-static" role="button"
-							   [ngbPopover]="dateSchema" popoverTitle="Schema" placement="left">
+							<a class="form-control-static" role="button" [ngbPopover]="dateSchema" popoverTitle="Schema" placement="left">
 								<span class="fa fa-sitemap"></span>
 							</a>
 						</div>
@@ -90,16 +93,15 @@
 						<div class="col-8">
 							<select id="templateSelect" name="select" class="form-control" ngModel obSchemaValidate>
 								<option value="">Select</option>
-								<option *ngFor="let item of schema.properties.select.options" value="{{item.value}}">{{item.label}}</option>
+								<option *ngFor="let item of schema.properties.select.options" value="{{ item.value }}">{{ item.label }}</option>
 							</select>
 							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
 							<ng-template #selectSchema>
-								<pre>{{schema.properties.select | json}}</pre>
+								<pre>{{ schema.properties.select | json }}</pre>
 							</ng-template>
-							<a class="form-control-static" role="button"
-							   [ngbPopover]="selectSchema" popoverTitle="Schema" placement="left">
+							<a class="form-control-static" role="button" [ngbPopover]="selectSchema" popoverTitle="Schema" placement="left">
 								<span class="fa fa-sitemap"></span>
 							</a>
 						</div>
@@ -107,16 +109,14 @@
 					<div obFormControlState class="row form-group">
 						<label class="col-3 col-form-label">Textarea</label>
 						<div class="col-8">
-						<textarea name="textarea" type="text" class="form-control" placeholder="Textarea"
-								  ngModel rows="1" obSchemaValidate></textarea>
+							<textarea name="textarea" type="text" class="form-control" placeholder="Textarea" ngModel rows="1" obSchemaValidate></textarea>
 							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
 							<ng-template #textareaSchema>
-								<pre>{{schema.properties.textarea | json}}</pre>
+								<pre>{{ schema.properties.textarea | json }}</pre>
 							</ng-template>
-							<a class="form-control-static" role="button"
-							   [ngbPopover]="numberSchema" popoverTitle="Schema" placement="left">
+							<a class="form-control-static" role="button" [ngbPopover]="numberSchema" popoverTitle="Schema" placement="left">
 								<span class="fa fa-sitemap"></span>
 							</a>
 						</div>
@@ -126,10 +126,9 @@
 							<span>Name</span>
 							<span class="pull-right">
 								<ng-template #nameSchema>
-									<pre>{{schema.properties.name | json}}</pre>
+									<pre>{{ schema.properties.name | json }}</pre>
 								</ng-template>
-								<a class="form-control-static" role="button"
-								   [ngbPopover]="nameSchema" popoverTitle="Schema" placement="left">
+								<a class="form-control-static" role="button" [ngbPopover]="nameSchema" popoverTitle="Schema" placement="left">
 									<span class="fa fa-sitemap"></span>
 								</a>
 							</span>
@@ -137,16 +136,14 @@
 						<div obFormControlState class="row form-group">
 							<label class="col-3 col-form-label">First name</label>
 							<div class="col-8">
-								<input type="text" name="firstName" class="form-control" placeholder="First name"
-									   ngModel obSchemaValidate>
+								<input type="text" name="firstName" class="form-control" placeholder="First name" ngModel obSchemaValidate />
 								<ob-error-messages></ob-error-messages>
 							</div>
 							<div class="col-1">
 								<ng-template #firstNameSchema>
-									<pre>{{schema.properties.name.properties.firstName | json}}</pre>
+									<pre>{{ schema.properties.name.properties.firstName | json }}</pre>
 								</ng-template>
-								<a class="form-control-static" role="button"
-								   [ngbPopover]="firstNameSchema" popoverTitle="Schema" placement="left">
+								<a class="form-control-static" role="button" [ngbPopover]="firstNameSchema" popoverTitle="Schema" placement="left">
 									<span class="fa fa-sitemap"></span>
 								</a>
 							</div>
@@ -154,16 +151,14 @@
 						<div obFormControlState class="row form-group">
 							<label class="col-3 col-form-label">Last name</label>
 							<div class="col-8">
-								<input type="text" name="lastName" class="form-control" placeholder="Last name"
-									   ngModel obSchemaValidate>
+								<input type="text" name="lastName" class="form-control" placeholder="Last name" ngModel obSchemaValidate />
 								<ob-error-messages></ob-error-messages>
 							</div>
 							<div class="col-1">
 								<ng-template #lastNameSchema>
-									<pre>{{schema.properties.name.properties.lastName | json}}</pre>
+									<pre>{{ schema.properties.name.properties.lastName | json }}</pre>
 								</ng-template>
-								<a class="form-control-static" role="button"
-								   [ngbPopover]="lastNameSchema" popoverTitle="Schema" placement="left">
+								<a class="form-control-static" role="button" [ngbPopover]="lastNameSchema" popoverTitle="Schema" placement="left">
 									<span class="fa fa-sitemap"></span>
 								</a>
 							</div>
@@ -172,28 +167,25 @@
 							<legend>
 								<span>Address</span>
 								<span class="pull-right">
-								<ng-template #addressSchema>
-									<pre>{{schema.properties.name.properties.address | json}}</pre>
-								</ng-template>
-								<a class="form-control-static" role="button"
-								   [ngbPopover]="addressSchema" popoverTitle="Schema" placement="left">
-									<span class="fa fa-sitemap"></span>
-								</a>
-							</span>
+									<ng-template #addressSchema>
+										<pre>{{ schema.properties.name.properties.address | json }}</pre>
+									</ng-template>
+									<a class="form-control-static" role="button" [ngbPopover]="addressSchema" popoverTitle="Schema" placement="left">
+										<span class="fa fa-sitemap"></span>
+									</a>
+								</span>
 							</legend>
 							<div obFormControlState class="row form-group">
 								<label class="col-3 col-form-label">Street</label>
 								<div class="col-8">
-									<input type="text" name="street" class="form-control" placeholder="Street"
-										   ngModel obSchemaValidate>
+									<input type="text" name="street" class="form-control" placeholder="Street" ngModel obSchemaValidate />
 									<ob-error-messages></ob-error-messages>
 								</div>
 								<div class="col-1">
 									<ng-template #streetSchema>
-										<pre>{{schema.properties.name.properties.address.properties.street | json}}</pre>
+										<pre>{{ schema.properties.name.properties.address.properties.street | json }}</pre>
 									</ng-template>
-									<a class="form-control-static" role="button"
-									   [ngbPopover]="streetSchema" popoverTitle="Schema" placement="left">
+									<a class="form-control-static" role="button" [ngbPopover]="streetSchema" popoverTitle="Schema" placement="left">
 										<span class="fa fa-sitemap"></span>
 									</a>
 								</div>
@@ -201,16 +193,14 @@
 							<div obFormControlState class="row form-group">
 								<label class="col-3 col-form-label">Number</label>
 								<div class="col-8">
-									<input type="number" name="number" class="form-control" placeholder="Number"
-										   ngModel obSchemaValidate>
+									<input type="number" name="number" class="form-control" placeholder="Number" ngModel obSchemaValidate />
 									<ob-error-messages></ob-error-messages>
 								</div>
 								<div class="col-1">
 									<ng-template #streetNumberSchema>
-										<pre>{{schema.properties.name.properties.address.properties.number | json}}</pre>
+										<pre>{{ schema.properties.name.properties.address.properties.number | json }}</pre>
 									</ng-template>
-									<a class="form-control-static" role="button"
-									   [ngbPopover]="streetNumberSchema" popoverTitle="Schema" placement="left">
+									<a class="form-control-static" role="button" [ngbPopover]="streetNumberSchema" popoverTitle="Schema" placement="left">
 										<span class="fa fa-sitemap"></span>
 									</a>
 								</div>
@@ -226,30 +216,33 @@
 				</div>
 			</form>
 			<h4 class="mt-4">Model data</h4>
-			<pre>{{templateForm.value | json}}</pre>
+			<pre>{{ templateForm.value | json }}</pre>
 		</div>
 		<div class="col">
-			<form class="form-horizontal has-validation card" role="form" [obSchemaValidation]="schema"
-				  [formGroup]="formData" (submit)="check()" (reset)="reset()">
+			<form
+				class="form-horizontal has-validation card"
+				role="form"
+				[obSchemaValidation]="schema"
+				[formGroup]="formData"
+				(submit)="check()"
+				(reset)="reset()"
+			>
 				<div class="card-header">
 					<h3 class="card-title d-flex justify-content-between">
 						Preview with reactive form
-						<span class="fa fa-check text-success" ngbTooltip="Form is valid" placement="bottom"
-							  *ngIf="formData.valid"></span>
-						<span class="fa fa-exclamation-triangle text-danger" ngbTooltip="Form is not valid" placement="bottom"
-							  *ngIf="!formData.valid"></span>
+						<span class="fa fa-check text-success" ngbTooltip="Form is valid" placement="bottom" *ngIf="formData.valid"></span>
+						<span class="fa fa-exclamation-triangle text-danger" ngbTooltip="Form is not valid" placement="bottom" *ngIf="!formData.valid"></span>
 					</h3>
 				</div>
 				<div class="card-body">
 					<div obFormControlState class="row form-group" [pristineValidation]="true">
 						<label class="col-3 col-form-label">Text</label>
 						<div class="col-8">
-							<input formControlName="text" type="text" placeholder="Text" class="form-control" obSchemaValidate/>
+							<input formControlName="text" type="text" placeholder="Text" class="form-control" obSchemaValidate />
 							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
-							<a class="form-control-static" role="button"
-							   [ngbPopover]="textSchema" popoverTitle="Schema" placement="left">
+							<a class="form-control-static" role="button" [ngbPopover]="textSchema" popoverTitle="Schema" placement="left">
 								<span class="fa fa-sitemap"></span>
 							</a>
 						</div>
@@ -257,7 +250,7 @@
 					<div obFormControlState class="row form-group">
 						<label class="col-3 col-form-label">Number</label>
 						<div class="col-8">
-							<input formControlName="number" type="number" placeholder="Number" class="form-control" obSchemaValidate/>
+							<input formControlName="number" type="number" placeholder="Number" class="form-control" obSchemaValidate />
 							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
@@ -269,7 +262,7 @@
 					<div obFormControlState class="row form-group">
 						<label class="col-3 col-form-label">Integer</label>
 						<div class="col-8">
-							<input formControlName="integer" type="number" placeholder="integer" class="form-control" obSchemaValidate/>
+							<input formControlName="integer" type="number" placeholder="integer" class="form-control" obSchemaValidate />
 							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
@@ -295,7 +288,7 @@
 						<div class="col-8">
 							<select id="reactiveSelect" formControlName="select" class="form-control" obSchemaValidate>
 								<option value="">Select</option>
-								<option *ngFor="let item of schema.properties.select.options" value="{{item.value}}">{{item.label}}</option>
+								<option *ngFor="let item of schema.properties.select.options" value="{{ item.value }}">{{ item.label }}</option>
 							</select>
 							<ob-error-messages></ob-error-messages>
 						</div>
@@ -308,7 +301,7 @@
 					<div obFormControlState class="row form-group">
 						<label class="col-3 col-form-label">Textarea</label>
 						<div class="col-8">
-						<textarea formControlName="textarea" type="text" class="form-control" placeholder="Textarea" rows="1" obSchemaValidate></textarea>
+							<textarea formControlName="textarea" type="text" class="form-control" placeholder="Textarea" rows="1" obSchemaValidate></textarea>
 							<ob-error-messages></ob-error-messages>
 						</div>
 						<div class="col-1">
@@ -329,7 +322,7 @@
 						<div obFormControlState class="row form-group">
 							<label class="col-3 col-form-label">First name</label>
 							<div class="col-8">
-								<input type="text" formControlName="firstName" class="form-control" placeholder="First name" obSchemaValidate>
+								<input type="text" formControlName="firstName" class="form-control" placeholder="First name" obSchemaValidate />
 								<ob-error-messages></ob-error-messages>
 							</div>
 							<div class="col-1">
@@ -341,7 +334,7 @@
 						<div obFormControlState class="row form-group">
 							<label class="col-3 col-form-label">Last name</label>
 							<div class="col-8">
-								<input type="text" formControlName="lastName" class="form-control" placeholder="Last name" obSchemaValidate>
+								<input type="text" formControlName="lastName" class="form-control" placeholder="Last name" obSchemaValidate />
 								<ob-error-messages></ob-error-messages>
 							</div>
 							<div class="col-1">
@@ -362,12 +355,12 @@
 							<div obFormControlState class="row form-group">
 								<label class="col-3 col-form-label">Street</label>
 								<div class="col-8">
-									<input type="text" formControlName="street" class="form-control" placeholder="Street" obSchemaValidate>
+									<input type="text" formControlName="street" class="form-control" placeholder="Street" obSchemaValidate />
 									<ob-error-messages></ob-error-messages>
 								</div>
 								<div class="col-1">
 									<ng-template #streetSchema>
-										<pre>{{schema.properties.name.properties.address.properties.street | json}}</pre>
+										<pre>{{ schema.properties.name.properties.address.properties.street | json }}</pre>
 									</ng-template>
 									<a class="form-control-static" role="button" [ngbPopover]="streetSchema" popoverTitle="Schema" placement="left">
 										<span class="fa fa-sitemap"></span>
@@ -377,7 +370,7 @@
 							<div obFormControlState class="row form-group">
 								<label class="col-3 col-form-label">Number</label>
 								<div class="col-8">
-									<input type="number" formControlName="number" class="form-control" placeholder="Number" obSchemaValidate>
+									<input type="number" formControlName="number" class="form-control" placeholder="Number" obSchemaValidate />
 									<ob-error-messages></ob-error-messages>
 								</div>
 								<div class="col-1">
@@ -397,13 +390,13 @@
 				</div>
 			</form>
 			<h4 class="mt-4">Model data</h4>
-			<pre>{{formData.value | json}}</pre>
+			<pre>{{ formData.value | json }}</pre>
 		</div>
 	</div>
 	<div class="row mt-2">
 		<div class="col">
 			<h4>Full JSON schema</h4>
-			<pre>{{schema | json}}</pre>
+			<pre>{{ schema | json }}</pre>
 		</div>
 	</div>
 	<ob-api component="schema-validation"></ob-api>

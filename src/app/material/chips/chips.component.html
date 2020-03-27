@@ -3,7 +3,7 @@
 	<ng-container column-main-content>
 		<mat-list *ngIf="!showAutocompleteForm">
 			<mat-list-item>
-				<mat-chip-list [ngClass]="{'mat-chip-list-stacked': stacked}">
+				<mat-chip-list [ngClass]="{ 'mat-chip-list-stacked': stacked }">
 					<mat-chip [ngClass]="variant" [disabled]="disabled" [class.ob-selected]="selected">Default</mat-chip>
 					<mat-chip [color]="color" selected [ngClass]="variant" [disabled]="disabled" [class.ob-selected]="selected">Selected</mat-chip>
 				</mat-chip-list>
@@ -11,12 +11,8 @@
 		</mat-list>
 		<mat-form-field *ngIf="showAutocompleteForm">
 			<mat-chip-list #chipList>
-				<mat-chip
-					*ngFor="let tag of tags"
-					[selectable]="true"
-					[removable]="true"
-					(removed)="remove(tag)">
-					{{tag}}
+				<mat-chip *ngFor="let tag of tags" [selectable]="true" [removable]="true" (removed)="remove(tag)">
+					{{ tag }}
 					<mat-icon matChipRemove>cancel</mat-icon>
 				</mat-chip>
 				<input
@@ -27,11 +23,12 @@
 					[matChipInputFor]="chipList"
 					[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
 					[matChipInputAddOnBlur]="true"
-					(matChipInputTokenEnd)="add($event)">
+					(matChipInputTokenEnd)="add($event)"
+				/>
 			</mat-chip-list>
 			<mat-autocomplete #auto="matAutocomplete" (optionSelected)="select($event)">
 				<mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
-					{{tag}}
+					{{ tag }}
 				</mat-option>
 			</mat-autocomplete>
 		</mat-form-field>
@@ -44,7 +41,7 @@
 				<mat-radio-group [(ngModel)]="color">
 					<mat-list-item *ngFor="let chipColor of colors">
 						<mat-radio-button [value]="chipColor">
-							{{chipColor ? (chipColor | titlecase) : 'Default'}}
+							{{ chipColor ? (chipColor | titlecase) : "Default" }}
 						</mat-radio-button>
 					</mat-list-item>
 				</mat-radio-group>
@@ -54,7 +51,7 @@
 				<mat-radio-group [(ngModel)]="variant">
 					<mat-list-item *ngFor="let chipColor of variants">
 						<mat-radio-button [value]="chipColor">
-							{{chipColor ? (chipColor | titlecase) : 'Default'}}
+							{{ chipColor ? (chipColor | titlecase) : "Default" }}
 						</mat-radio-button>
 					</mat-list-item>
 				</mat-radio-group>

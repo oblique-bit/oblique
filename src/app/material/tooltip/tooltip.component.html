@@ -1,14 +1,16 @@
 <h2 class="page-header">Tooltip</h2>
 <ob-column-layout [left]="false">
 	<ng-container column-main-content>
-		<button mat-raised-button
-				[matTooltip]="message"
-				[matTooltipPosition]="position"
-				[matTooltipDisabled]="disabled"
-				[matTooltipShowDelay]="showDelay"
-				[matTooltipHideDelay]="hideDelay"
-				#tooltip="matTooltip"
-				class="btn-primary">
+		<button
+			mat-raised-button
+			[matTooltip]="message"
+			[matTooltipPosition]="position"
+			[matTooltipDisabled]="disabled"
+			[matTooltipShowDelay]="showDelay"
+			[matTooltipHideDelay]="hideDelay"
+			#tooltip="matTooltip"
+			class="btn-primary"
+		>
 			Hover to see Tooltip
 		</button>
 	</ng-container>
@@ -20,7 +22,7 @@
 				<mat-list-item class="bottom-spacing bottom-spacing-sm">
 					<mat-form-field>
 						<mat-label>Message</mat-label>
-						<input matInput [(ngModel)]="message">
+						<input matInput [(ngModel)]="message" />
 					</mat-form-field>
 				</mat-list-item>
 				<mat-list-item>
@@ -28,7 +30,7 @@
 						<mat-label>Position</mat-label>
 						<mat-select [(value)]="position">
 							<mat-option *ngFor="let positionOption of positionOptions" [value]="positionOption">
-								{{positionOption}}
+								{{ positionOption }}
 							</mat-option>
 						</mat-select>
 					</mat-form-field>
