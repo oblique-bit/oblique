@@ -44,7 +44,7 @@ export class ObTelemetryService {
 
 	private static readPackageJson(): Object {
 		try {
-			return require('./package.json');
+			return require('package.json');
 		} catch (e) {
 			if (e.code !== 'MODULE_NOT_FOUND') {
 				throw e;
