@@ -13,11 +13,9 @@ Oblique uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.angular.io/
 1. Install `oblique` and its peer dependencies:
 
     ```
-        npm install @oblique/oblique`
+        npm install @oblique/oblique
         npm install @ngx-translate/core
-        npm install @angular/localize
-        npm install @ts-morph/common  
-        ng install @angular/localize
+        ng add @angular/localize
     ```
 
 1. Install `jest` and its dependencies (optional)
@@ -32,7 +30,7 @@ Oblique uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.angular.io/
         npm i jest-preset-angular
     ```
 
-1. Configure Sonar in `package.json` (optional)
+1. Configure `Sonar` for jest in `package.json` (optional)
     ```
    "jestSonar": {
       "reportPath": "./coverage/sonarQube",
@@ -115,7 +113,7 @@ Oblique uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.angular.io/
     })
     ```
 
-1. Embed the master layout in `app.component.ts`
+1. Define the main navigation in `app.component.ts`
 
     ```
     navigation: ObINavigationLink[] = [];
