@@ -36,29 +36,23 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 		const timer = this.setTimer();
 		this.activateSpinner(obliqueRequest.spinner, request.url);
 
-		return next
-			.handle(
-				request.clone({
-					headers: request.headers.set('X-Requested-With', 'XMLHttpRequest')
-				})
-			)
-			.pipe(
-				tap(undefined, error => {
-					if (error instanceof HttpErrorResponse) {
-						if (error.status === 401) {
-							this.interceptorEvents.sessionExpire();
-						} else {
-							this.notify(obliqueRequest.notification, error);
-						}
+		return next.handle(request.clone(this.isApiCall(request.url) ? {headers: request.headers.set('X-Requested-With', 'XMLHttpRequest')} : undefined)).pipe(
+			tap(undefined, error => {
+				if (error instanceof HttpErrorResponse) {
+					if (error.status === 401) {
+						this.interceptorEvents.sessionExpire();
 					} else {
-						this.notificationService.error('i18n.oblique.http.error.general');
+						this.notify(obliqueRequest.notification, error);
 					}
-				}),
-				finalize(() => {
-					clearTimeout(timer);
-					this.deactivateSpinner(obliqueRequest.spinner, request.url);
-				})
-			);
+				} else {
+					this.notificationService.error('i18n.oblique.http.error.general');
+				}
+			}),
+			finalize(() => {
+				clearTimeout(timer);
+				this.deactivateSpinner(obliqueRequest.spinner, request.url);
+			})
+		);
 	}
 
 	private setTimer(): Timer {
