@@ -21,7 +21,7 @@
           "text": "Adds & opens the specified notification.",
           "returns": "void",
           "arguments": [
-            "notification: INotification"
+            "notification: ObINotification"
           ],
           "since": "2.0.0"
         },
@@ -30,7 +30,7 @@
           "text": "Closes & removes the specified notification.",
           "returns": "void",
           "arguments": [
-            "notification: INotification"
+            "notification: ObINotification"
           ],
           "since": "2.0.0"
         },
@@ -39,7 +39,7 @@
           "text": "Removes the specified notification without triggering a close animation.",
           "returns": "void",
           "arguments": [
-            "notification: INotification"
+            "notification: ObINotification"
           ],
           "since": "2.0.0"
         },
@@ -81,41 +81,41 @@
           "name": "clearAllOnNavigate",
           "text": "Defines if all notifications should be cleared upon <code>NavigationEnd</code> event.",
           "type": "boolean",
-          "default": "CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE",
+          "default": "<code>false</code> (inferred from <code>CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE</code> injection token)",
           "since": "4.1.0"
         },
         {
           "name": "groupSimilar",
           "text": "Defines if similar notifications should grouped.",
           "type": "boolean",
-          "default": "GROUP_SIMILAR_NOTIFICATIONS",
+          "default": "<code>false</code> (inferred from <code>GROUP_SIMILAR_NOTIFICATIONS</code> injection token)",
           "since": "4.1.0"
         },
         {
           "name": "info",
           "text": "Custom configuration for <b>info</b> notifications.",
-          "type": "INotification",
+          "type": "ObINotification",
           "default": "{title: 'i18n.oblique.notification.type.info'}",
           "since": "4.0.0"
         },
         {
           "name": "success",
           "text": "Custom configuration for <b>success</b> notifications.",
-          "type": "INotification",
+          "type": "ObINotification",
           "default": "{title: 'i18n.oblique.notification.type.success'}",
           "since": "4.0.0"
         },
         {
           "name": "warning",
           "text": "Custom configuration for <b>warning</b> notifications.",
-          "type": "INotification",
+          "type": "ObINotification",
           "default": "{title: 'i18n.oblique.notification.type.warning'}",
           "since": "4.0.0"
         },
         {
           "name": "error",
           "text": "Custom configuration for <b>error</b> notifications.",
-          "type": "INotification",
+          "type": "ObINotification",
           "default": "{title: 'i18n.oblique.notification.type.error', sticky: true}",
           "since": "4.0.0"
         }
@@ -145,14 +145,14 @@
         {
           "name": "events",
           "text": "An observable that emits every time a notification is sent or cleared through the service",
-          "returns": "Observable<INotification>",
+          "returns": "Observable<ObINotification>",
           "since": "4.0.0"
         },
         {
           "name": "clearAllOnNavigate",
           "text": "Defines if all notifications should be cleared upon <code>NavigationEnd</code> event.",
           "type": "boolean",
-          "default": "CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE",
+          "default": "<code>false</code> (inferred from <code>CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE</code> injection token)",
           "since": "4.1.0"
         }
       ],
@@ -160,45 +160,45 @@
         {
           "name": "info",
           "text": "Triggers an <b>info</b> notification. It takes either the notification's text or a full notification config object.",
-          "returns": "INotification",
+          "returns": "ObINotification",
           "arguments": [
-            "config: INotification | string"
+            "config: ObINotification | string"
           ],
           "since": "4.0.0"
         },
         {
           "name": "success",
           "text": "Triggers an <b>success</b> notification. It takes either the notification's text or a full notification config object.",
-          "returns": "INotification",
+          "returns": "ObINotification",
           "arguments": [
-            "config: INotification | string"
+            "config: ObINotification | string"
           ],
           "since": "4.0.0"
         },
         {
           "name": "warning",
           "text": "Triggers an <b>warning</b> notification. It takes either the notification's text or a full notification config object.",
-          "returns": "INotification",
+          "returns": "ObINotification",
           "arguments": [
-            "config: INotification | string"
+            "config: ObINotification | string"
           ],
           "since": "4.0.0"
         },
         {
           "name": "error",
           "text": "Triggers an <b>error</b> notification. It takes either the notification's text or a full notification config object.",
-          "returns": "INotification",
+          "returns": "ObINotification",
           "arguments": [
-            "config: INotification | string"
+            "config: ObINotification | string"
           ],
           "since": "4.0.0"
         },
         {
           "name": "send",
           "text": "Triggers a notification whose type is either the one provided as second argument or the one specified in the config. It takes either the notification's text or a full notification config object.",
-          "returns": "INotification",
+          "returns": "ObINotification",
           "arguments": [
-            "config: INotification | string",
+            "config: ObINotification | string",
             "type?: NotificationType"
           ],
           "since": "4.0.0"

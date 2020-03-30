@@ -16,8 +16,7 @@
 			</ng-container>
 		</dd>
 		<dd *ngIf="element.default != null">
-			<b>Default value:</b><code *ngIf="element.default !== ''">{{ element.default }}</code
-			><i *ngIf="element.default === ''"> empty string</i>
+			<b>Default value:</b><span [innerHtml]="element.default"></span>
 		</dd>
 		<dd *ngIf="element.arguments">
 			<b>Arguments:</b>

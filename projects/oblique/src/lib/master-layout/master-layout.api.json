@@ -19,7 +19,7 @@
       "projection": [
         {
           "name": "[obHeader]",
-          "text": "Content that will be projected as the main header, i.e. everything above the read line. It will replace the default Oblique header if custom header is enabled (see <code>MasterLayoutConfig</code>).",
+          "text": "Content that will be projected as the main header, i.e. everything above the read line. It will replace the default Oblique header if custom header is enabled (see <code>ObMasterLayoutConfig</code>).",
           "since": "3.0.0"
         },
         {
@@ -34,7 +34,7 @@
         },
         {
           "name": "[obLocales]",
-          "text": "Content that will be projected as the locales choice. It will replace the default Oblique locales if locale management is disabled (see <code>MasterLayoutConfig</code>).",
+          "text": "Content that will be projected as the locales choice. It will replace the default Oblique locales if locale management is disabled (see <code>ObMasterLayoutConfig</code>).",
           "since": "3.0.0"
         },
         {
@@ -44,7 +44,7 @@
         },
         {
           "name": "[obFooter]",
-          "text": "Content that will be projected as the main footer. It will replace the default Oblique footer if custom footer is enabled (see <code>MasterLayoutConfig</code>).",
+          "text": "Content that will be projected as the main footer. It will replace the default Oblique footer if custom footer is enabled (see <code>ObMasterLayoutConfig</code>).",
           "since": "3.0.0"
         },
         {
@@ -59,18 +59,18 @@
         },
         {
           "name": "[obOffCanvasTitle]",
-          "text": "Content that will be projected as the title of the main off-canvas if off canvas is enabled (see <code>MasterLayoutConfig</code>).",
+          "text": "Content that will be projected as the title of the main off-canvas if off canvas is enabled (see <code>ObMasterLayoutConfig</code>).",
           "since": "3.0.0"
         },
         {
           "name": "[obOffCanvasContent]",
-          "text": "Content that will be projected as the content of the main off-canvas if off canvas is enabled (see <code>MasterLayoutConfig</code>).",
+          "text": "Content that will be projected as the content of the main off-canvas if off canvas is enabled (see <code>ObMasterLayoutConfig</code>).",
           "since": "3.0.0"
         }
       ]
     },
     {
-      "name": "MasterLayoutConfig",
+      "name": "ObMasterLayoutConfig",
       "usage": "This is the default configuration of the master layout. Values can be tweaked by injecting this service into <code>app.module.ts</code> to customize the global structure of the application.",
       "since": "2.0.0",
       "variables": [
@@ -196,13 +196,13 @@
         {
           "name": "navigation.scrollMode",
           "text": "Controls the main navigation's scroll mode, i.e. how to handle the elements outside of the visible area. They can either be hidden or the navigation bar can be made scrollable to display those elements.",
-          "type": "ScrollMode",
+          "type": "ObEScrollMode",
           "values": [
-            "ScrollMode.AUTO",
-            "ScrollMode.ENABLED",
-            "ScrollMode.DISABLED"
+            "ObEScrollMode.AUTO",
+            "ObEScrollMode.ENABLED",
+            "ObEScrollMode.DISABLED"
           ],
-          "default": "ScrollMode.AUTO",
+          "default": "ObEScrollMode.AUTO",
           "since": "5.0.0"
         },
         {
@@ -250,38 +250,38 @@
       ]
     },
     {
-      "name": "MasterLayoutService",
+      "name": "ObMasterLayoutService",
       "usage": "A service to configure the master layout. The changes are live.",
       "since": "2.0.0",
       "variables": [
         {
           "name": "header",
           "text": "A reference to the service that configures the header(see below)",
-          "type": "MasterLayoutHeaderService",
+          "type": "ObMasterLayoutHeaderService",
           "since": "4.0.0"
         },
         {
           "name": "footer",
           "text": "A reference to the service that configures the footer (see below)",
-          "type": "MasterLayoutFooterService",
+          "type": "ObMasterLayoutFooterService",
           "since": "4.0.0"
         },
         {
           "name": "navigation",
           "text": "A reference to the service that configures the navigation (see below)",
-          "type": "MasterLayoutNavigationService",
+          "type": "ObMasterLayoutNavigationService",
           "since": "4.0.0"
         },
         {
           "name": "layout",
           "text": "A reference to the service that configures the master layout (see below)",
-          "type": "MasterLayoutComponentService",
+          "type": "ObMasterLayoutComponentService",
           "since": "4.0.0"
         }
       ]
     },
     {
-      "name": "MasterLayoutComponentService",
+      "name": "ObMasterLayoutComponentService",
       "usage": "A service to configure the master layout component. The changes are live.",
       "since": "4.0.0",
       "variables": [
@@ -300,35 +300,35 @@
         },
         {
           "name": "isFixed",
-          "text": "Controls <code>MasterLayoutConfig.layout.isFixed</code> property.",
+          "text": "Controls <code>ObMasterLayoutConfig.layout.isFixed</code> property.",
           "type": "boolean",
           "default": false,
           "since": "4.0.0"
         },
         {
           "name": "hasCover",
-          "text": "Controls <code>MasterLayoutConfig.layout.hasCover</code> property.",
+          "text": "Controls <code>ObMasterLayoutConfig.layout.hasCover</code> property.",
           "type": "boolean",
           "default": true,
           "since": "4.0.0"
         },
         {
           "name": "hasLayout",
-          "text": "Controls <code>MasterLayoutConfig.layout.hasLayout</code> property.",
+          "text": "Controls <code>ObMasterLayoutConfig.layout.hasLayout</code> property.",
           "type": "boolean",
           "default": true,
           "since": "5.0.0"
         },
         {
           "name": "hasOffCanvas",
-          "text": "Controls <code>MasterLayoutConfig.layout.hasOffCanvas</code> property.",
+          "text": "Controls <code>ObMasterLayoutConfig.layout.hasOffCanvas</code> property.",
           "type": "boolean",
           "default": false,
           "since": "4.0.0"
         },
         {
           "name": "hasMainNavigation",
-          "text": "Controls <code>MasterLayoutConfig.layout.hasMainNavigation</code> property.",
+          "text": "Controls <code>ObMasterLayoutConfig.layout.hasMainNavigation</code> property.",
           "type": "boolean",
           "default": true,
           "since": "4.0.0"
@@ -336,7 +336,7 @@
       ]
     },
     {
-      "name": "MasterLayoutHeaderService",
+      "name": "ObMasterLayoutHeaderService",
       "usage": "A service to configure the master layout header. The changes are live.",
       "since": "4.0.0",
       "variables": [
@@ -348,35 +348,35 @@
         },
         {
           "name": "isCustom",
-          "text": "Controls <code>MasterLayoutConfig.header.isCustom</code> property.",
+          "text": "Controls <code>ObMasterLayoutConfig.header.isCustom</code> property.",
           "type": "boolean",
           "default": false,
           "since": "4.0.0"
         },
         {
           "name": "isMedium",
-          "text": "Controls <code>MasterLayoutConfig.header.isMedium</code> property.",
+          "text": "Controls <code>ObMasterLayoutConfig.header.isMedium</code> property.",
           "type": "boolean",
           "default": false,
           "since": "4.0.0"
         },
         {
           "name": "isAnimated",
-          "text": "Controls <code>MasterLayoutConfig.header.isAnimated</code> property.",
+          "text": "Controls <code>ObMasterLayoutConfig.header.isAnimated</code> property.",
           "type": "boolean",
           "default": true,
           "since": "4.0.0"
         },
         {
           "name": "isSticky",
-          "text": "Controls <code>MasterLayoutConfig.header.isSticky</code> property.",
+          "text": "Controls <code>ObMasterLayoutConfig.header.isSticky</code> property.",
           "type": "boolean",
           "default": false,
           "since": "4.0.0"
         },
         {
           "name": "hasScrollTransition",
-          "text": "Controls <code>MasterLayoutConfig.header.hasScrollTransition</code> property.",
+          "text": "Controls <code>ObMasterLayoutConfig.header.hasScrollTransition</code> property.",
           "type": "boolean",
           "default": true,
           "since": "4.0.0"
@@ -384,7 +384,7 @@
       ]
     },
     {
-      "name": "MasterLayoutFooterService",
+      "name": "ObMasterLayoutFooterService",
       "usage": "A service to configure the master layout footer. The changes are live.",
       "since": "4.0.0",
       "variables": [
@@ -396,21 +396,21 @@
         },
         {
           "name": "isCustom",
-          "text": "Controls <code>MasterLayoutConfig.footer.isCustom</code> property.",
+          "text": "Controls <code>ObMasterLayoutConfig.footer.isCustom</code> property.",
           "type": "boolean",
           "default": false,
           "since": "4.0.0"
         },
         {
           "name": "isSmall",
-          "text": "Controls <code>MasterLayoutConfig.footer.isSmall</code> property.",
+          "text": "Controls <code>ObMasterLayoutConfig.footer.isSmall</code> property.",
           "type": "boolean",
           "default": false,
           "since": "4.0.0"
         },
         {
           "name": "hasScrollTransition",
-          "text": "Controls <code>MasterLayoutConfig.footer.hasScrollTransition</code> property.",
+          "text": "Controls <code>ObMasterLayoutConfig.footer.hasScrollTransition</code> property.",
           "type": "boolean",
           "default": true,
           "since": "4.0.0"
@@ -418,7 +418,7 @@
       ]
     },
     {
-      "name": "MasterLayoutNavigationService",
+      "name": "ObMasterLayoutNavigationService",
       "usage": "A service to configure the master layout navigation. The changes are live.",
       "since": "4.0.0",
       "variables": [
@@ -430,14 +430,14 @@
         },
         {
           "name": "isFullWidth",
-          "text": "Controls <code>MasterLayoutConfig.navigation.isFullWidth</code> property.",
+          "text": "Controls <code>ObMasterLayoutConfig.navigation.isFullWidth</code> property.",
           "type": "boolean",
           "default": false,
           "since": "4.0.0"
         },
         {
           "name": "scrollMode",
-          "text": "Controls <code>MasterLayoutConfig.navigation.scrollMode</code> property.",
+          "text": "Controls <code>ObMasterLayoutConfig.navigation.scrollMode</code> property.",
           "type": "ScrollMode",
           "values": [
             "ScrollMode.AUTO",
