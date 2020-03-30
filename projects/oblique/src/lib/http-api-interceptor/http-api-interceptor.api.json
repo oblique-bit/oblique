@@ -37,7 +37,7 @@
             "success"
           ],
           "type": "ObENotificationType",
-          "default": "error",
+          "default": "<code>error</code> (inferred from <code>ObENotificationType.ERROR</code>)",
           "since": "3.0.0"
         },
         {

@@ -81,14 +81,14 @@
           "name": "clearAllOnNavigate",
           "text": "Defines if all notifications should be cleared upon <code>NavigationEnd</code> event.",
           "type": "boolean",
-          "default": "CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE",
+          "default": "<code>false</code> (inferred from <code>CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE</code> injection token)",
           "since": "4.1.0"
         },
         {
           "name": "groupSimilar",
           "text": "Defines if similar notifications should grouped.",
           "type": "boolean",
-          "default": "GROUP_SIMILAR_NOTIFICATIONS",
+          "default": "<code>false</code> (inferred from <code>GROUP_SIMILAR_NOTIFICATIONS</code> injection token)",
           "since": "4.1.0"
         },
         {
@@ -152,7 +152,7 @@
           "name": "clearAllOnNavigate",
           "text": "Defines if all notifications should be cleared upon <code>NavigationEnd</code> event.",
           "type": "boolean",
-          "default": "CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE",
+          "default": "<code>false</code> (inferred from <code>CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE</code> injection token)",
           "since": "4.1.0"
         }
       ],
