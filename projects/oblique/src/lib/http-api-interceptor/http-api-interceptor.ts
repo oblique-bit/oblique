@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {finalize, tap} from 'rxjs/operators';
+import {catchError, finalize} from 'rxjs/operators';
 
-import {ObNotificationService, ObENotificationType} from '../notification/notification.module';
+import {ObENotificationType, ObNotificationService} from '../notification/notification.module';
 import {ObSpinnerService} from '../spinner/spinner.module';
 import {ObHttpApiInterceptorConfig} from './http-api-interceptor.config';
 import {ObHttpApiInterceptorEvents} from './http-api-interceptor.events';
@@ -37,7 +37,7 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 		this.activateSpinner(obliqueRequest.spinner, request.url);
 
 		return next.handle(request.clone(this.isApiCall(request.url) ? {headers: request.headers.set('X-Requested-With', 'XMLHttpRequest')} : undefined)).pipe(
-			tap(undefined, error => {
+			catchError(error => {
 				if (error instanceof HttpErrorResponse) {
 					if (error.status === 401) {
 						this.interceptorEvents.sessionExpire();
@@ -47,6 +47,7 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 				} else {
 					this.notificationService.error('i18n.oblique.http.error.general');
 				}
+				throw error;
 			}),
 			finalize(() => {
 				clearTimeout(timer);
