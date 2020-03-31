@@ -56,11 +56,10 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 	}
 
 	private setTimer(): Timer {
+		// prettier-ignore
 		return !this.config.timeout
 			? undefined
-			: setTimeout(() => {
-					this.notificationService.warning('i18n.oblique.http.error.timeout');
-			  }, this.config.timeout);
+			: setTimeout(() => this.notificationService.warning('i18n.oblique.http.error.timeout'), this.config.timeout);
 	}
 
 	private broadcast(): ObIHttpApiRequest {
