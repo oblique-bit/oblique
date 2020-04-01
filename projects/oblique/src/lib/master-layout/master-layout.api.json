@@ -5,6 +5,7 @@
       "name": "MasterLayoutComponent",
       "selector": "ob-master-layout",
       "exported": "obMasterLayout",
+      "type": "component",
       "usage": "This component takes care of the structure of the application and should be used in <code>app.component.html</code>",
       "since": "2.0.0",
       "inputs": [
@@ -71,6 +72,7 @@
     },
     {
       "name": "ObMasterLayoutConfig",
+      "type": "injectable(config)",
       "usage": "This is the default configuration of the master layout. Values can be tweaked by injecting this service into <code>app.module.ts</code> to customize the global structure of the application.",
       "since": "2.0.0",
       "variables": [
@@ -252,6 +254,7 @@
     {
       "name": "ObMasterLayoutService",
       "usage": "A service to configure the master layout. The changes are live.",
+      "type": "service",
       "since": "2.0.0",
       "variables": [
         {
@@ -283,6 +286,7 @@
     {
       "name": "ObMasterLayoutComponentService",
       "usage": "A service to configure the master layout component. The changes are live.",
+      "type": "service",
       "since": "4.0.0",
       "variables": [
         {
@@ -338,6 +342,7 @@
     {
       "name": "ObMasterLayoutHeaderService",
       "usage": "A service to configure the master layout header. The changes are live.",
+      "type": "service",
       "since": "4.0.0",
       "variables": [
         {
@@ -386,6 +391,7 @@
     {
       "name": "ObMasterLayoutFooterService",
       "usage": "A service to configure the master layout footer. The changes are live.",
+      "type": "service",
       "since": "4.0.0",
       "variables": [
         {
@@ -420,6 +426,7 @@
     {
       "name": "ObMasterLayoutNavigationService",
       "usage": "A service to configure the master layout navigation. The changes are live.",
+      "type": "service",
       "since": "4.0.0",
       "variables": [
         {

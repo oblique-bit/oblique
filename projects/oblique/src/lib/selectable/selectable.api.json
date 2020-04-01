@@ -5,6 +5,7 @@
       "name": "ObSelectableDirective",
       "selector": "[obSelectable]",
       "exported": "obSelectable",
+      "type": "directive",
       "since": "5.0.0",
       "inputs": [
         {

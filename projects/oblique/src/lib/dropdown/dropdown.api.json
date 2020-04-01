@@ -5,6 +5,7 @@
       "name": "ObDropdownComponent",
       "selector": "ob-dropdown",
       "exported": "obDropdown",
+      "type": "component",
       "since": "2.0.0",
       "inputs": [
         {

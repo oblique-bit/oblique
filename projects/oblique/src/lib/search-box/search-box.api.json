@@ -5,6 +5,7 @@
       "name": "ObSearchboxComponent",
       "selector": "ob-search-box",
       "exported": "obSearchBox",
+      "type": "component",
       "since": "3.0.0",
       "inputs": [
         {

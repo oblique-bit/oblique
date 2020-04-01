@@ -5,6 +5,7 @@
       "name": "ObNavTreeComponent",
       "selector": "ob-nav-tree",
       "exported": "obNavTree",
+      "type": "component",
       "since": "2.0.0",
       "inputs": [
         {
@@ -75,11 +76,13 @@
       "name": "NavTreeFakeFocusDirective",
       "selector": "[obNavTreeFakeFocus]",
       "usage": "Set on an <code>nav-tree</code>, it will allow to navigate the tree while maintaining the focus on the filter input.",
+      "type": "directive",
       "since": "2.0.0"
     },
     {
       "name": "ObNavTreeItemModel",
       "usage": "The model of a nav tree item",
+      "type": "component",
       "since": "2.0.0",
       "variables": [
         {

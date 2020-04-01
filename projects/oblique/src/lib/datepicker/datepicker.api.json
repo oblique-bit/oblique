@@ -5,6 +5,7 @@
       "name": "ObDatepickerComponent",
       "exported": "obDatePicker",
       "selector": "ob-date-picker",
+      "type": "component",
       "since": "2.0.0",
       "inputs": [
         {
@@ -63,6 +64,7 @@
       "name": "DatepickerConfigService",
       "usage": "Should by injected, typically in the AppModule, to customize the values of its properties in order to provide alternate default values for the <code>Datepicker</code>.",
       "since": "5.0.0",
+      "type": "injectable(config)",
       "variables": [
         {
           "name": "options",

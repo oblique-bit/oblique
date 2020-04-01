@@ -5,6 +5,7 @@
       "name": "ObFormControlStateDirective",
       "selector": "[obFormControlState]",
       "exported": "obFormControlState",
+      "type": "directive",
       "since": "2.0.0",
       "inputs": [
         {

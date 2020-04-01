@@ -5,6 +5,7 @@
       "name": "ObInputClearDirective",
       "selector": "[obInputClear]",
       "exported": "obInputClear",
+      "type": "directive",
       "since": "2.0.0",
       "inputs": [
         {

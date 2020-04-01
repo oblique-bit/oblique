@@ -5,6 +5,7 @@
       "name": "ObCollapseComponent",
       "selector": "ob-collapse",
       "exported": "obCollapse",
+      "type": "component",
       "since": "5.0.0",
       "inputs": [
         {

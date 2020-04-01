@@ -4,6 +4,7 @@
     {
       "name": "ObHttpApiInterceptorConfig",
       "usage": "Should by injected, typically in the AppModule, to customize the values of its properties in order to provide alternate default values for the <code>HttpApiInterceptor</code>.",
+      "type": "injectable(config)",
       "since": "3.0.0",
       "variables": [
         {
@@ -65,6 +66,7 @@
     },
     {
       "name": "HttpApiInterceptorEvents",
+      "type": "injectable(event)",
       "since": "3.0.0",
       "variables": [
         {

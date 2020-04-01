@@ -5,6 +5,7 @@
       "name": "ObNotificationComponent",
       "selector": "ob-notification",
       "exported": "obNotification",
+      "type": "component",
       "since": "2.0.0",
       "inputs": [
         {
@@ -54,6 +55,7 @@
     {
       "name": "NotificationConfig",
       "usage": "Should by injected, typically in the AppModule, to customize the values of its properties in order to provide alternate default values for the <code>NotificationComponent</code>.",
+      "type": "injectable(config)",
       "since": "2.0.0",
       "variables": [
         {
@@ -140,6 +142,7 @@
     {
       "name": "NotificationService",
       "usage": "Should be injected in component's constructor to send notifications to the <code>NotificationComponent</code>",
+      "type": "service",
       "since": "2.0.0",
       "variables": [
         {

@@ -5,6 +5,7 @@
       "name": "ObMultiselectComponent",
       "selector": "ob-multiselect",
       "exported": "obMultiselect",
+      "type": "component",
       "since": "2.0.0",
       "inputs": [
         {
@@ -140,6 +141,7 @@
     {
       "name": "ObObMultiselectConfig",
       "usage": "Should by injected, typically in the <code>AppModule</code>, to customize the values of its properties in order to provide alternate default values for all the <code>MultiselectComponent</code> instances.",
+      "type": "injectable(config)",
       "since": "2.0.0",
       "variables": [
         {
@@ -196,6 +198,7 @@
     {
       "name": "ObMultiselectTexts",
       "usage": "This is the default configuration object for the texts of all <code>MultiselectComponent</code> instances. The values can be normal strings or ngx-translate keys.",
+      "type": "injectable(config)",
       "since": "2.0.0",
       "variables": [
         {
