@@ -457,7 +457,21 @@ export class SchematicsUtil {
 		const sourceFile = this.getProject().createSourceFile(filePath, this.getFile(tree, filePath));
 		const cleanSourceFile = sourceFile.organizeImports();
 		const content = cleanSourceFile.getFullText();
+		this.removeEmptyImports(tree, filePath);
 		tree.overwrite(filePath, content);
+	}
+
+	private removeEmptyImports(tree: Tree, filePath: string): void {
+		const sourceFile = this.getProject().createSourceFile(filePath, this.getFile(tree, filePath));
+		const imports = sourceFile.getImportDeclarations();
+		const regex = /{\s*}/;
+		imports
+			.filter(exp => regex.test(exp.getFullText()))
+			.forEach(exp => {
+				const tmpFile = this.getProject().createSourceFile(filePath, this.getFile(tree, filePath));
+				const emptyImport = exp.getFullText();
+				tree.overwrite(filePath, tmpFile.getFullText().replace(emptyImport, ''));
+			});
 	}
 
 	private loadPublicApi(): void {
