@@ -3,6 +3,7 @@
   "api": [
     {
       "name": "ObDocumentMetaService",
+      "type": "service",
       "since": "2.0.0",
       "variables": [
         {

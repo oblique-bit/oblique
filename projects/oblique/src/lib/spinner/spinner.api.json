@@ -4,7 +4,8 @@
     {
       "name": "ObSpinnerComponent",
       "selector": "ob-spinner",
-      "export": "obSpinner",
+      "exported": "obSpinner",
+      "type": "component",
       "since": "2.0.0",
       "inputs": [
         {
@@ -25,6 +26,7 @@
     },
     {
       "name": "SpinnerService",
+      "type": "service",
       "since": "2.0.0",
       "variables": [
         {
@@ -65,6 +67,7 @@
     {
       "name": "SpinnerEvent",
       "usage": "Event emitted by <code>activate</code> and <code>deactivate</code> methods.",
+      "type": "interface",
       "since": "2.0.0",
       "variables": [
         {

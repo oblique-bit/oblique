@@ -31,6 +31,22 @@
           "since": {
             "type": "string"
           },
+          "type": {
+            "type": "string",
+            "enum": [
+              "component",
+              "directive",
+              "pipe",
+              "service",
+              "injectable(config)",
+              "injectable(event)",
+              "injectable(guard)",
+              "injectable(other)",
+              "enum",
+              "interface",
+              "type"
+            ]
+          },
           "variables": {
             "type": "array",
             "default": [],
@@ -132,6 +148,9 @@
         },
         "since": {
           "type": "string"
+        },
+        "isOptional": {
+          "type": "boolean"
         }
       },
       "required": [

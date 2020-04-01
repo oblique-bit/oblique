@@ -3,6 +3,7 @@
   "api": [
     {
       "name": "ObPopUpService",
+      "type": "service",
       "since": "5.0.0",
       "methods": [
         {

@@ -5,6 +5,7 @@
       "name": "ObFilterBoxComponent",
       "selector": "ob-filter-box",
       "exported": "obFilterBox",
+      "type": "component",
       "since": "2.0.0",
       "inputs": [
         {

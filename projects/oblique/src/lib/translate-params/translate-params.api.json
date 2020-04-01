@@ -4,6 +4,7 @@
     {
       "name": "ObTranslateParamsPipe",
       "selector": "obTranslateParams",
+      "type": "pipe",
       "since": "3.1.0"
     }
   ]

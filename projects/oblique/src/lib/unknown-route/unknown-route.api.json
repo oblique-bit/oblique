@@ -4,6 +4,7 @@
     {
       "name": "ObUnknownRouteComponent",
       "selector": "ob-unknown-route",
+      "type": "component",
       "since": "5.0.0"
     }
   ]

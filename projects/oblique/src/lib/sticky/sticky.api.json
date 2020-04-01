@@ -5,6 +5,7 @@
       "name": "ObStickyComponent",
       "selector": "ob-sticky",
       "exported": "obSticky",
+      "type": "component",
       "since": "4.0.0",
       "inputs": [
         {

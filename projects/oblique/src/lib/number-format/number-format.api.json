@@ -4,7 +4,8 @@
     {
       "name": "ObNumberFormatDirective",
       "selector": "[obNumberFormat]",
-      "export": "obNumberFormat",
+      "exported": "obNumberFormat",
+      "type": "directive",
       "since": "2.0.0",
       "inputs": [
         {

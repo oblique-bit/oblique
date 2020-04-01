@@ -6,6 +6,7 @@
       "selector": "obErrors",
       "exported": "obErrors",
       "usage": "Meant for Material Design. Applied on a <code>mat-form-field</code> element, it will populate a <code>mat-error</code> that has to be provided.",
+      "type": "directive",
       "since": "4.1.0",
       "variables": [
         {
@@ -21,6 +22,7 @@
       "selector": "ob-error-messages",
       "exported": "obErrorMessages",
       "usage": "Meant for Bootstrap.",
+      "type": "component",
       "since": "2.0.0",
       "inputs": [
         {

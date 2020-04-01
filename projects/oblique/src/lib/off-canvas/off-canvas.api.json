@@ -4,7 +4,8 @@
     {
       "name": "ObOffCanvasToggleDirective",
       "selector": "[obOffCanvasToggle]",
-      "export": "obOffCanvasToggle",
+      "exported": "obOffCanvasToggle",
+      "type": "directive",
       "since": "3.0.0",
       "methods": [
         {

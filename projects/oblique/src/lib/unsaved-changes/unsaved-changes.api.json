@@ -4,12 +4,14 @@
     {
       "name": "ObUnsavedChangesDirective",
       "selector": "[obUnsavedChanges]",
+      "type": "directive",
       "usage": "Applied on a <code>&lt;form&gt;</code> or any element with <code>ngModelGroup</code> directive. The host element needs an <code>id</code>.",
       "since": "2.0.0"
     },
     {
       "name": "UnsavedChangesGuard",
       "usage": "Apply to routes that have to be protected",
+      "type": "injectable(guard)",
       "since": "2.0.0"
     }
   ]

@@ -4,6 +4,7 @@
     {
       "name": "ObHttpApiInterceptorConfig",
       "usage": "Should by injected, typically in the AppModule, to customize the values of its properties in order to provide alternate default values for the <code>HttpApiInterceptor</code>.",
+      "type": "injectable(config)",
       "since": "3.0.0",
       "variables": [
         {
@@ -65,6 +66,7 @@
     },
     {
       "name": "HttpApiInterceptorEvents",
+      "type": "injectable(event)",
       "since": "3.0.0",
       "variables": [
         {
@@ -104,6 +106,51 @@
             "number = 1"
           ],
           "since": "4.1.0"
+        }
+      ]
+    },
+    {
+      "name": "ObIHttpApiRequest",
+      "type": "interface",
+      "usage": "The behavior of the Http interceptor",
+      "since": "3.0.0",
+      "variables": [
+        {
+          "name": "notification.active",
+          "text": "Is the notification active",
+          "type": "boolean",
+          "since": "3.0.0"
+        },
+        {
+          "name": "notification.severity",
+          "text": "The severity of notification",
+          "type": "ObENotificationType",
+          "values": ["ObENotificationType.INFO", "ObENotificationType.SUCCESS", "ObENotificationType.WARNING", "ObENotificationType.ERROR"],
+          "since": "3.0.0"
+        },
+        {
+          "name": "notification.title",
+          "text": "Title text of the notification",
+          "type": "string",
+          "since": "3.0.0"
+        },
+        {
+          "name": "notification.text",
+          "text": "Message text of the notification",
+          "type": "string",
+          "since": "3.0.0"
+        },
+        {
+          "name": "notification.sticky",
+          "text": "Is the notification sticky (does not automatically close)",
+          "type": "boolean",
+          "since": "3.0.0"
+        },
+        {
+          "name": "spinner",
+          "text": "Is spinner active",
+          "type": "boolean",
+          "since": "3.0.0"
         }
       ]
     }

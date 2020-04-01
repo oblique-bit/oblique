@@ -5,6 +5,7 @@
       "name": "ObInputClearDirective",
       "selector": "[obInputClear]",
       "exported": "obInputClear",
+      "type": "directive",
       "since": "2.0.0",
       "inputs": [
         {
@@ -21,7 +22,7 @@
           "since": "2.0.0"
         }
       ],
-      "Outputs": [
+      "outputs": [
         {
           "name": "onClear",
           "text": "Emits when the input's content has been cleared",

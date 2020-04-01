@@ -5,6 +5,7 @@
       "name": "ObColumnLayoutComponent",
       "selector": "ob-column-layout",
       "exported": "obColumnLayout",
+      "type": "component",
       "since": "2.0.0",
       "inputs": [
         {
