@@ -39,8 +39,13 @@
           "since": "3.0.0"
         },
         {
+          "name": "[obHeaderCustomControl]",
+          "text": "Content that will be projected as the custom controls section of the main header (next to the locales choice)",
+          "since": "5.1.0"
+        },
+        {
           "name": "<ng-template #orHeaderControl>",
-          "text": "Templates that will be projected into the controls section of the main header (next to the locales choice).",
+          "text": "Templates that will be projected into the controls section of the main header (next to the custom control section).",
           "since": "3.0.0"
         },
         {

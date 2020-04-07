@@ -40,6 +40,7 @@
 					</button>
 				</li>
 			</ul>
+			<ng-content select="[obHeaderCustomControl]"></ng-content>
 			<h2 class="sr-only">{{ "i18n.oblique.header.controls.title" | translate }}</h2>
 			<ul class="header-controls" role="menu" *ngIf="templates.length">
 				<li class="control-item" role="menuitem" *ngFor="let template of templates" #headerControl>
