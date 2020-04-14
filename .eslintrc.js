@@ -47,7 +47,7 @@ module.exports = {
 		"arrow-body-style": "error",
 		"constructor-super": "error",
 		"curly": "error",
-		"dot-notation": "off",
+		"dot-notation": "error",
 		"eol-last": "error",
 		"eqeqeq": ["error", "smart"],
 		"guard-for-in": "error",
