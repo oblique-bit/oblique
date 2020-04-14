@@ -7,6 +7,7 @@ import {Directive, Input} from '@angular/core';
 export class ObMockSelectableDirective {
 	@Input() collection = 'unnamed';
 	@Input() selected = false;
+	@Input() tabindex = 0;
 	@Input() value: any;
 
 	onClick($event: MouseEvent): void {}

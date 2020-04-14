@@ -21,6 +21,12 @@
           "since": "5.0.0"
         },
         {
+          "name": "tabindex",
+          "text": "Sets the tab index of the selectable element, default is 0.",
+          "type": "number",
+          "since": "5.1.0"
+        },
+        {
           "name": "value",
           "text": "Defines the value of the selectable element and will be stored in the collection.",
           "type": "any",
