@@ -4,6 +4,7 @@
 /dist
 /target
 /tmp
+__ngcc_entry_points__.json
 
 # dependencies
 /node_modules
