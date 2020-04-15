@@ -22,6 +22,9 @@
 	<ng-template #obHeaderControl *ngFor="let template of headerControlTemplates">
 		<ng-container [ngTemplateOutlet]="template"></ng-container>
 	</ng-template>
+	<ng-template #obHeaderMobileControl *ngFor="let template of headerMobileControlTemplates">
+		<ng-container [ngTemplateOutlet]="template"></ng-container>
+	</ng-template>
 </ob-master-layout-header>
 <div id="content" class="application-content" role="main" [class.offcanvas-main]="hasOffCanvas" tabindex="-1">
 	<div class="application-content-viewport">

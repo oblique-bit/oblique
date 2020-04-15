@@ -12,6 +12,9 @@
 				</span>
 			</div>
 			<ul class="header-controls header-toggle">
+				<li class="control-item" *ngFor="let template of mobileTemplates" #headerMobileControl>
+					<ng-container [ngTemplateOutlet]="template"></ng-container>
+				</li>
 				<li class="control-item">
 					<a role="button" tabindex="0" title="{{ 'i18n.oblique.header.toggle' | translate }}" class="control-link" obMasterLayoutHeaderToggle>
 						<div class="application-header-toggle">
