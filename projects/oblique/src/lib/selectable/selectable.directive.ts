@@ -31,7 +31,11 @@ export class ObSelectableDirective implements OnInit {
 	}
 
 	@HostListener('click')
-	onClick(): void {
+	@HostListener('keydown.space', ['$event'])
+	onClick($event?: Event): void {
 		this.selectableService.toggleValue(this.value, this.collection);
+		if ($event) {
+			$event.preventDefault();
+		}
 	}
 }
