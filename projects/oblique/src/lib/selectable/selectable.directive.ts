@@ -10,6 +10,7 @@ export class ObSelectableDirective implements OnInit {
 	@Input() collection = 'unnamed';
 	@Input() value: any;
 	@Input() @HostBinding('class.ob-selected') selected = false;
+	@Input() @HostBinding('attr.tabindex') tabindex = 0;
 	@HostBinding('style.cursor') readonly cursor = 'pointer';
 
 	constructor(private readonly selectableService: ObSelectableService) {
@@ -30,7 +31,11 @@ export class ObSelectableDirective implements OnInit {
 	}
 
 	@HostListener('click')
-	onClick(): void {
+	@HostListener('keydown.space', ['$event'])
+	onClick($event?: Event): void {
 		this.selectableService.toggleValue(this.value, this.collection);
+		if ($event) {
+			$event.preventDefault();
+		}
 	}
 }
