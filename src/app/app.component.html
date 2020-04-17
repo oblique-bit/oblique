@@ -67,6 +67,12 @@
 		</button>
 	</ng-template>
 
+	<ng-template #obHeaderMobileControl>
+		<button (click)="toggleTheme()">
+			{{ theme }}
+		</button>
+	</ng-template>
+
 	<ng-container obHeaderCustomControl>
 		<ul class="header-controls" role="menu">
 			<li class="control-item" role="menuitem">

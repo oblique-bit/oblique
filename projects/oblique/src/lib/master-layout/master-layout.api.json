@@ -49,6 +49,11 @@
           "since": "3.0.0"
         },
         {
+          "name": "<ng-template #obHeaderMobileControl>",
+          "text": "Templates that will be projected into the controls section of the main header (next to the locales choice) for mobile layout.",
+          "since": "5.1.0"
+        },
+        {
           "name": "[obFooter]",
           "text": "Content that will be projected as the main footer. It will replace the default Oblique footer if custom footer is enabled (see <code>ObMasterLayoutConfig</code>).",
           "since": "3.0.0"

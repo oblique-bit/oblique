@@ -21,7 +21,7 @@ import {ObUnsubscribable} from '../../unsubscribe.class';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObILocaleObject, ObMasterLayoutConfig} from '../master-layout.config';
 import {ObINavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
-import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues, scrollEnabled} from '../master-layout.utility';
+import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent, scrollEnabled} from '../master-layout.utility';
 import {WINDOW} from '../../utilities';
 
 @Component({
@@ -42,7 +42,9 @@ export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements A
 	@HostBinding('class.application-header-sticky') isSticky = this.masterLayout.header.isSticky;
 	@HostBinding('class.application-header-md') isMedium = this.masterLayout.header.isMedium;
 	@ContentChildren('obHeaderControl') readonly templates: QueryList<TemplateRef<any>>;
+	@ContentChildren('obHeaderMobileControl') readonly mobileTemplates: QueryList<TemplateRef<any>>;
 	@ViewChildren('headerControl') readonly headerControl: QueryList<ElementRef>;
+	@ViewChildren('headerMobileControl') readonly headerMobileControl: QueryList<ElementRef>;
 	private readonly window: Window;
 
 	constructor(
@@ -66,7 +68,10 @@ export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements A
 		this.masterLayout.layout.configEvents
 			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.COLLAPSE))
 			.subscribe(value => this.setFocusable(!value));
-		this.addObliqueClasses();
+		this.headerControl
+			.toArray()
+			.concat(this.headerMobileControl.toArray())
+			.forEach(elt => this.addActionClass(elt));
 	}
 
 	@HostListener('window:resize')
@@ -82,20 +87,18 @@ export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements A
 		this.translate.use(lang);
 	}
 
-	private addObliqueClasses() {
+	private addActionClass(elt: ElementRef) {
 		const actionable = ['a', 'button'];
-		this.headerControl.forEach((elt: ElementRef) => {
-			if (actionable.indexOf(elt.nativeElement.nodeName.toLowerCase()) > -1) {
-				this.renderer.addClass(elt.nativeElement, 'control-link');
-			} else {
-				const el = elt.nativeElement.querySelector('a, button');
-				if (el) {
-					this.renderer.addClass(el, 'control-link');
-				}
+		if (actionable.indexOf(elt.nativeElement.nodeName.toLowerCase()) > -1) {
+			this.renderer.addClass(elt.nativeElement, 'control-link');
+		} else {
+			const el = elt.nativeElement.querySelector('a, button');
+			if (el) {
+				this.renderer.addClass(el, 'control-link');
 			}
-			Array.from(elt.nativeElement.querySelectorAll('.control-link .fa, .control-link .fab')).forEach((item: HTMLElement) => {
-				this.renderer.addClass(item, 'control-icon');
-			});
+		}
+		Array.from(elt.nativeElement.querySelectorAll('.control-link .fa, .control-link .fab')).forEach((item: HTMLElement) => {
+			this.renderer.addClass(item, 'control-icon');
 		});
 	}
 

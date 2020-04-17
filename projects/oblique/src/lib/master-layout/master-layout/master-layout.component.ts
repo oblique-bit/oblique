@@ -54,6 +54,7 @@ export class ObMasterLayoutComponent extends ObUnsubscribable implements OnInit 
 	@HostBinding('class.application-scrolling') isScrolling = false;
 	@HostBinding('class.outline') outline = true;
 	@ContentChildren('obHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
+	@ContentChildren('obHeaderMobileControl') readonly headerMobileControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('obFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<any>>;
 	@ViewChild('offCanvasClose') readonly offCanvasClose: ElementRef<HTMLElement>;
 	private readonly window: Window;
