@@ -23,11 +23,7 @@ Oblique uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.angular.io/
         npm i @angular-builders/jest
         npm i @types/jest
         npm i jest
-        npm i ts-jest
         npm i jest-sonar-reporter
-        npm i jest-transform-stub
-        npm i jest-serializer-vue
-        npm i jest-preset-angular
     ```
 
 1. Configure `Sonar` for jest in `package.json` (optional)
@@ -146,10 +142,12 @@ Oblique uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.angular.io/
 - nodejs & npm
 - AngularCli installed globally: `npm i -g @angular/cli`
 
-### Setup the the environment
+### Setup the environment
 - Clone the repo: `git clone https://github.com/oblique-bit/oblique.git`.
 - Install project dependencies: `npm ci`
+- Generate the theme files: `npm run themes`
 - start the showcase: `npm start`
+- start the tests: `npm test`
 
 
 ### Commit message 
