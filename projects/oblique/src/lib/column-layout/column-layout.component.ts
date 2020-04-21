@@ -16,8 +16,8 @@ import {merge} from 'rxjs';
 import {ObColumnPanelDirective} from './column-panel.directive';
 import {ObScrollingEvents} from '../scrolling/scrolling-events';
 import {ObMasterLayoutService} from '../master-layout/master-layout.service';
-import {ObEMasterLayoutEventValues} from '../master-layout/master-layout.utility';
 import {WINDOW} from '../utilities';
+import {ObEMasterLayoutEventValues} from '../master-layout/master-layout.datatypes';
 
 @Component({
 	selector: 'ob-column-layout',

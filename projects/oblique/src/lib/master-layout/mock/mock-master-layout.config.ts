@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ObEScrollMode} from '../master-layout.config';
+import {ObEScrollMode} from '../master-layout.datatypes';
 
 @Injectable({providedIn: 'root'})
 export class ObMockMasterLayoutConfig {

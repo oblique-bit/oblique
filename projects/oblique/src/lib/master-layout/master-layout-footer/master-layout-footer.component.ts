@@ -2,10 +2,11 @@ import {Component, ContentChildren, HostBinding, QueryList, TemplateRef, ViewEnc
 import {filter, takeUntil} from 'rxjs/operators';
 
 import {ObUnsubscribable} from '../../unsubscribe.class';
-import {ObScrollingEvents} from '../../scrolling/scrolling.module';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues, scrollEnabled} from '../master-layout.utility';
+import {scrollEnabled} from '../master-layout.utility';
+import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.datatypes';
+import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 
 @Component({
 	selector: 'ob-master-layout-footer',

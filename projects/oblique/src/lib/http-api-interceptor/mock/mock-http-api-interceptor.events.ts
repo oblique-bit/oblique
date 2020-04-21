@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {EMPTY, Observable, of} from 'rxjs';
-import {ObIHttpApiRequest} from '../http-api-interceptor.module';
+import {ObIHttpApiRequest} from '../http-api-interceptor.events';
 
 @Injectable()
 export class ObMockHttpApiInterceptorEvents {

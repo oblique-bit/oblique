@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {EMPTY, Observable, of} from 'rxjs';
-import {ObIMasterLayoutEvent} from '../master-layout.utility';
-import {ObEScrollMode} from '../master-layout.config';
+import {ObIMasterLayoutEvent, ObEScrollMode} from '../master-layout.datatypes';
 
 @Injectable()
 export class ObMockMasterLayoutNavigationService {

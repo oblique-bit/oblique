@@ -7,7 +7,8 @@ import {WINDOW, windowProvider} from '../utilities';
 
 export {ObHttpApiInterceptorConfig} from './http-api-interceptor.config';
 export {ObHttpApiInterceptorEvents} from './http-api-interceptor.events';
-export {ObHttpApiInterceptor, ObIHttpApiRequest} from './http-api-interceptor';
+export {ObHttpApiInterceptor} from './http-api-interceptor';
+export {ObIHttpApiRequest} from './http-api-interceptor.events';
 
 @NgModule({
 	providers: [

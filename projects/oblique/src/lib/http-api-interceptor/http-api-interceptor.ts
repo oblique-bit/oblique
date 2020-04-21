@@ -3,22 +3,11 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {catchError, finalize} from 'rxjs/operators';
 
-import {ObENotificationType, ObNotificationService} from '../notification/notification.module';
+import {ObNotificationService} from '../notification/notification.module';
 import {ObSpinnerService} from '../spinner/spinner.module';
 import {ObHttpApiInterceptorConfig} from './http-api-interceptor.config';
-import {ObHttpApiInterceptorEvents} from './http-api-interceptor.events';
+import {ObHttpApiInterceptorEvents, ObIHttpApiRequest} from './http-api-interceptor.events';
 import Timer = NodeJS.Timer;
-
-export interface ObIHttpApiRequest {
-	notification: {
-		active: boolean;
-		severity: ObENotificationType;
-		title: string;
-		text: string;
-		sticky: boolean;
-	};
-	spinner: boolean;
-}
 
 @Injectable({providedIn: 'root'})
 export class ObHttpApiInterceptor implements HttpInterceptor {
