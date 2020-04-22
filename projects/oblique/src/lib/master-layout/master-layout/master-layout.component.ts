@@ -17,14 +17,13 @@ import {DOCUMENT} from '@angular/common';
 import {filter, map, takeUntil} from 'rxjs/operators';
 
 import {ObUnsubscribable} from '../../unsubscribe.class';
-import {ObOffCanvasService} from '../../off-canvas/off-canvas.module';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {ObINavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
-import {ObEMasterLayoutEventValues} from '../master-layout.utility';
 import {appVersion} from '../../version';
 import {WINDOW} from '../../utilities';
+import {ObINavigationLink, ObEMasterLayoutEventValues} from '../master-layout.datatypes';
+import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 
 @Component({
 	selector: 'ob-master-layout',

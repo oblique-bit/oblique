@@ -4,15 +4,8 @@ import {filter, takeUntil} from 'rxjs/operators';
 
 import {ObUnsubscribable} from '../../unsubscribe.class';
 import {ObMasterLayoutService} from '../master-layout.service';
-import {ObMasterLayoutConfig, ObEScrollMode} from '../master-layout.config';
-import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from '../master-layout.utility';
-
-export interface ObINavigationLink {
-	label: string;
-	url: string;
-	children?: ObINavigationLink[];
-	id?: string;
-}
+import {ObMasterLayoutConfig} from '../master-layout.config';
+import {ObINavigationLink, ObEScrollMode, ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.datatypes';
 
 @Component({
 	selector: 'ob-master-layout-navigation',

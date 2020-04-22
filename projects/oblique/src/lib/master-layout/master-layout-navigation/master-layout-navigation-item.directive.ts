@@ -4,7 +4,7 @@ import {filter, takeUntil} from 'rxjs/operators';
 import {ObUnsubscribable} from '../../unsubscribe.class';
 import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation-toggle.directive';
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
-import {ObEMasterLayoutEventValues} from '../master-layout.utility';
+import {ObEMasterLayoutEventValues} from '../master-layout.datatypes';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 
 @Directive({

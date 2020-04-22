@@ -4,8 +4,8 @@ import {takeUntil} from 'rxjs/operators';
 import {TranslateService} from '@ngx-translate/core';
 
 import {ObUnsubscribable} from '../../unsubscribe.class';
-import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from '../master-layout.utility';
-import {ObMasterLayoutConfig, ObEScrollMode} from '../master-layout.config';
+import {ObMasterLayoutConfig} from '../master-layout.config';
+import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues, ObEScrollMode} from '../master-layout.datatypes';
 
 @Injectable({
 	providedIn: 'root'

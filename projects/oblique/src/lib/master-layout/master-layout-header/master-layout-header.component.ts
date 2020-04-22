@@ -16,13 +16,13 @@ import {
 import {TranslateService} from '@ngx-translate/core';
 import {filter, takeUntil} from 'rxjs/operators';
 
-import {ObScrollingEvents} from '../../scrolling/scrolling.module';
 import {ObUnsubscribable} from '../../unsubscribe.class';
 import {ObMasterLayoutService} from '../master-layout.service';
-import {ObILocaleObject, ObMasterLayoutConfig} from '../master-layout.config';
-import {ObINavigationLink} from '../master-layout-navigation/master-layout-navigation.component';
-import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent, scrollEnabled} from '../master-layout.utility';
+import {ObMasterLayoutConfig} from '../master-layout.config';
+import {scrollEnabled} from '../master-layout.utility';
 import {WINDOW} from '../../utilities';
+import {ObILocaleObject, ObINavigationLink, ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.datatypes';
+import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 
 @Component({
 	selector: 'ob-master-layout-header',

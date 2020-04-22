@@ -4,11 +4,12 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 
 import {ObUnsubscribable} from '../unsubscribe.class';
-import {ObILocaleObject, ObMasterLayoutConfig} from './master-layout.config';
+import {ObMasterLayoutConfig} from './master-layout.config';
 import {ObMasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
 import {ObMasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
 import {ObMasterLayoutNavigationService} from './master-layout-navigation/master-layout-navigation.service';
 import {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
+import {ObILocaleObject} from './master-layout.datatypes';
 
 @Injectable({providedIn: 'root'})
 export class ObMasterLayoutService extends ObUnsubscribable {

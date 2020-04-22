@@ -1,8 +1,8 @@
 import {Directive, ElementRef, OnInit, Optional} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {filter} from 'rxjs/operators';
-import {ObTranslateParamsPipe} from '../translate-params/translate-params.module';
 import {ObErrorMessagesDirective} from './error-messages.directive';
+import {ObTranslateParamsPipe} from '../translate-params/translate-params.pipe';
 
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector

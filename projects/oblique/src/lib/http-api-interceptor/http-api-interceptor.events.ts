@@ -1,7 +1,18 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {take} from 'rxjs/operators';
-import {ObIHttpApiRequest} from './http-api-interceptor';
+import {ObENotificationType} from '../notification/notification.interfaces';
+
+export interface ObIHttpApiRequest {
+	notification: {
+		active: boolean;
+		severity: ObENotificationType;
+		title: string;
+		text: string;
+		sticky: boolean;
+	};
+	spinner: boolean;
+}
 
 /**
  * Provides access to the Oblique HTTP Interceptor events.
