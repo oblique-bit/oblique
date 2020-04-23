@@ -61,7 +61,8 @@ describe('SelectableDirective', () => {
 		});
 
 		it('should toggle selectable onClick', () => {
-			const spy = spyOn(directive['selectableService'], 'toggleValue').and.callThrough();
+			// @ts-ignore
+			const spy = spyOn(directive.selectableService, 'toggleValue').and.callThrough();
 			expect(spy).not.toHaveBeenCalled();
 			directive.onClick();
 			expect(spy).toHaveBeenCalled();
@@ -104,7 +105,8 @@ describe('SelectableDirective', () => {
 		});
 
 		it('should toggle selectable onClick', () => {
-			const spy = spyOn(directive['selectableService'], 'toggleValue').and.callThrough();
+			// @ts-ignore
+			const spy = spyOn(directive.selectableService, 'toggleValue').and.callThrough();
 			expect(spy).not.toHaveBeenCalled();
 			directive.onClick();
 			expect(spy).toHaveBeenCalled();
@@ -146,7 +148,8 @@ describe('SelectableDirective', () => {
 		});
 
 		it('should toggle selectable onClick', () => {
-			const spy = spyOn(directive['selectableService'], 'toggleValue').and.callThrough();
+			// @ts-ignore
+			const spy = spyOn(directive.selectableService, 'toggleValue').and.callThrough();
 			expect(spy).not.toHaveBeenCalled();
 			directive.onClick();
 			expect(spy).toHaveBeenCalled();

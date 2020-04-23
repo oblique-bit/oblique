@@ -52,11 +52,11 @@ describe('DatepickerPlaceholderDirective', () => {
 		});
 
 		it('should set a placeholder on the input element', () => {
-			expect(element.properties['placeholder']).toBeDefined();
+			expect(element.properties.placeholder).toBeDefined();
 		});
 
 		it('should set the placeholder for the current lang', () => {
-			expect(element.properties['placeholder']).toBe(I18N_PLACEHOLDERS['en']);
+			expect(element.properties.placeholder).toBe(I18N_PLACEHOLDERS.en);
 		});
 
 		it('should change the placeholder onLangChange', inject([TranslateService], translateService => {
@@ -64,7 +64,7 @@ describe('DatepickerPlaceholderDirective', () => {
 
 			fixture.detectChanges();
 
-			expect(element.properties['placeholder']).toBe(I18N_PLACEHOLDERS['de']);
+			expect(element.properties.placeholder).toBe(I18N_PLACEHOLDERS.de);
 		}));
 	});
 
@@ -75,7 +75,7 @@ describe('DatepickerPlaceholderDirective', () => {
 		}));
 
 		it("shouldn't change the placeholder", () => {
-			expect(element.properties['placeholder']).toBe('custom');
+			expect(element.properties.placeholder).toBe('custom');
 		});
 
 		it("shouldn't change the placeholder onLangChange", inject([TranslateService], translateService => {
@@ -83,7 +83,7 @@ describe('DatepickerPlaceholderDirective', () => {
 
 			fixture.detectChanges();
 
-			expect(element.properties['placeholder']).toBe('custom');
+			expect(element.properties.placeholder).toBe('custom');
 		}));
 	});
 });

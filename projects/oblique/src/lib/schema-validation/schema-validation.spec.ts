@@ -106,27 +106,27 @@ describe('SchemaValidation', () => {
 
 				fixture.whenStable().then(() => {
 					controls = CONFIG.getControls(fixture);
-					subproperties = (controls['object'] as FormGroup).controls;
+					subproperties = (controls.object as FormGroup).controls;
 				});
 			}));
 
 			it('should add no errors if input is valid', async(() => {
 				fixture.whenStable().then(() => {
-					controls['string'].setValue('validVal');
+					controls.string.setValue('validVal');
 					fixture.detectChanges();
 
-					expect(controls['string'].errors).toBeNull();
+					expect(controls.string.errors).toBeNull();
 				});
 			}));
 
 			it('should add error object if input is invalid', async(() => {
 				fixture.whenStable().then(() => {
-					controls['string'].setValue('wayTooLongStringForTheMaxLength10');
+					controls.string.setValue('wayTooLongStringForTheMaxLength10');
 					//ngControls['string'].valueAccessor.writeValue('wayTooLongStringForTheMaxLength10');
 					fixture.detectChanges();
 
-					expect(controls['string'].errors).not.toBeNull();
-					expect(controls['string'].errors).toEqual({
+					expect(controls.string.errors).not.toBeNull();
+					expect(controls.string.errors).toEqual({
 						maxLength: {
 							limit: 10
 						}
@@ -136,20 +136,20 @@ describe('SchemaValidation', () => {
 
 			it('should add no errors if subproperty is valid', async(() => {
 				fixture.whenStable().then(() => {
-					subproperties['subproperty'].setValue(42);
+					subproperties.subproperty.setValue(42);
 					fixture.detectChanges();
 
-					expect(subproperties['subproperty'].errors).toBeNull();
+					expect(subproperties.subproperty.errors).toBeNull();
 				});
 			}));
 
 			it('should add error object if subproperty is invalid', async(() => {
 				fixture.whenStable().then(() => {
-					subproperties['subproperty'].setValue('aStringForANumberField');
+					subproperties.subproperty.setValue('aStringForANumberField');
 					fixture.detectChanges();
 
-					expect(subproperties['subproperty'].errors).not.toBeNull();
-					expect(subproperties['subproperty'].errors).toEqual({
+					expect(subproperties.subproperty.errors).not.toBeNull();
+					expect(subproperties.subproperty.errors).toEqual({
 						type: {
 							type: 'number'
 						}

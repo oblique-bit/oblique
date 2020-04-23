@@ -30,9 +30,11 @@ describe('TelemetryService', () => {
 			applicationVersion: 'testappversion'
 		};
 
-		service['storeMessage'](message);
+		// @ts-ignore
+		service.storeMessage(message);
 
-		expect(service['telemetryRecords'].length).toBe(1);
+		// @ts-ignore
+		expect(service.telemetryRecords.length).toBe(1);
 	});
 
 	it('should not store equal messages multiple times', () => {
@@ -50,10 +52,13 @@ describe('TelemetryService', () => {
 			applicationVersion: 'testappversion'
 		};
 
-		service['storeMessage'](message1);
-		service['storeMessage'](message2);
+		// @ts-ignore
+		service.storeMessage(message1);
+		// @ts-ignore
+		service.storeMessage(message2);
 
-		expect(service['telemetryRecords'].length).toBe(1);
+		// @ts-ignore
+		expect(service.telemetryRecords.length).toBe(1);
 	});
 
 	it('should send the stored messages correctly', () => {
@@ -64,11 +69,14 @@ describe('TelemetryService', () => {
 			applicationVersion: 'testappversion'
 		};
 
-		service['storeMessage'](message);
+		// @ts-ignore
+		service.storeMessage(message);
 
-		service['sendMessages']();
+		// @ts-ignore
+		service.sendMessages();
 
-		const mockReq = httpMock.expectOne(service['TELEMETRY_URL']);
+		// @ts-ignore
+		const mockReq = httpMock.expectOne(service.TELEMETRY_URL);
 
 		expect(mockReq.cancelled).toBeFalsy();
 		expect(mockReq.request.method).toEqual('POST');

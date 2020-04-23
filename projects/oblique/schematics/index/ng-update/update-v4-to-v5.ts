@@ -284,7 +284,7 @@ export class UpdateV4toV5 implements IMigratable {
 				const obliqueStyleLocation = 'node_modules/@oblique/oblique/styles/css';
 
 				const projectJSON = JSON.parse(UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
-				Object.entries(projectJSON['projects']).forEach((project: any) => {
+				Object.entries(projectJSON.projects).forEach((project: any) => {
 					const config = project[1];
 					if (
 						config.hasOwnProperty('architect') &&
@@ -497,14 +497,14 @@ export class UpdateV4toV5 implements IMigratable {
 			_context.logger.info(colors.blue('Checking preconditions...'));
 			const projectPackageJSON = JSON.parse(UpdateV4toV5.util.getFile(tree, PROJECT_PACKAGE_JSON));
 			const obPackageJSON = JSON.parse(UpdateV4toV5.util.getFile(tree, OB_PACKAGE_JSON));
-			const dependencies = Object.keys(projectPackageJSON['dependencies']);
+			const dependencies = Object.keys(projectPackageJSON.dependencies);
 
 			if (!dependencies.includes('@angular/localize')) {
 				_context.logger.info(colors.blue('- Seems there is no @localize, will add it for you...'));
 				execSync('ng add @angular/localize');
 			}
 
-			Object.keys(obPackageJSON['peerDependencies'])
+			Object.keys(obPackageJSON.peerDependencies)
 				.filter(packageName => packageName !== '@angular/localize')
 				.forEach(packageName => {
 					const peerPackage = this.getPackage(obPackageJSON, 'peerDependencies', packageName).match(/\d+/) || ['0'];
@@ -518,7 +518,7 @@ export class UpdateV4toV5 implements IMigratable {
 					}
 				});
 
-			Object.keys(obPackageJSON['optionalDependencies']).forEach(packageName => {
+			Object.keys(obPackageJSON.optionalDependencies).forEach(packageName => {
 				const peerPackage = this.getPackage(obPackageJSON, 'optionalDependencies', packageName).match(/\d+/) || ['0'];
 				const dependencyPackage = this.getPackage(projectPackageJSON, 'dependencies', packageName).match(/\d+/) || ['0'];
 				const peerDependencyMajorVersion = parseInt(peerPackage[0], 0);
