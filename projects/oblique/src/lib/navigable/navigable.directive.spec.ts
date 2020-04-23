@@ -73,7 +73,7 @@ describe('NavigableDirective', () => {
 	});
 
 	it('should add `.navigable` class on element', () => {
-		expect(element.classes['navigable']).toBeTruthy();
+		expect(element.classes.navigable).toBeTruthy();
 	});
 
 	it('should add `.navigable-selected` class when selected', () => {

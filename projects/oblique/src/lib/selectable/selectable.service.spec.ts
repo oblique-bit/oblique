@@ -18,7 +18,8 @@ describe('SelectedService', () => {
 	});
 
 	it('should have no collections after initialzation', () => {
-		expect(selectableService['collections']).not.toBeUndefined();
+		// @ts-ignore
+		expect(selectableService.collections).not.toBeUndefined();
 		expect(selectableService.getCollections().size).toBe(0);
 	});
 

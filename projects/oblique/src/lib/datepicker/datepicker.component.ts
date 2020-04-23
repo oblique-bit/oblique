@@ -75,7 +75,7 @@ export class ObDatepickerComponent implements OnInit, ControlValueAccessor, Vali
 
 	@HostListener('keydown', ['$event'])
 	onKeydown($event) {
-		if ($event.target.attributes['ngbdatepicker']) {
+		if ($event.target.attributes.ngbdatepicker) {
 			if ($event.keyCode === 40) {
 				// 40: ArrowDown
 				this.ngbDatePicker.open();

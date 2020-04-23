@@ -47,7 +47,7 @@ describe('DatepickerComponent', () => {
 
 		fixture.detectChanges();
 
-		expect(button.properties['disabled']).toBeTruthy();
+		expect(button.properties.disabled).toBeTruthy();
 	});
 
 	it('should disable the input, if disable gets set to true', () => {
@@ -55,6 +55,6 @@ describe('DatepickerComponent', () => {
 
 		fixture.detectChanges();
 
-		expect(fixture.debugElement.query(By.css('input')).properties['disabled']).toBeTruthy();
+		expect(fixture.debugElement.query(By.css('input')).properties.disabled).toBeTruthy();
 	});
 });

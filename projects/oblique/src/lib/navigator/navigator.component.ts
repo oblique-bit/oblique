@@ -35,8 +35,8 @@ export class ObNavigatorComponent extends ObUnsubscribable {
 			activeRoute = activeRoute.firstChild;
 		}
 		activeRoute.data.pipe(takeUntil(this.unsubscribe)).subscribe(data => {
-			if (data['navigator'] && data['navigator'].up) {
-				this.router.navigate(data['navigator'].up);
+			if (data.navigator && data.navigator.up) {
+				this.router.navigate(data.navigator.up);
 			} else {
 				this.router.navigate(['../'], {relativeTo: activeRoute});
 			}
