@@ -1,10 +1,21 @@
+@import "~@fortawesome/fontawesome-free/scss/variables";
 @import "projects/oblique/src/styles/scss/core/variables";
+@import "projects/oblique/src/styles/scss/core/mixins/icon";
 
 $small: .875rem;
 $large: 1.25rem;
 
 .mat-form-field {
 	width: 100%;
+
+	&.mat-form-field-invalid .mat-form-field-flex {
+		@include icon($fa-var-exclamation-circle, after);
+
+		&::after {
+			color: $brand-error;
+			margin-left: $spacing-xs
+		}
+	}
 
 	.mat-form-field-prefix,
 	.mat-form-field-suffix {
