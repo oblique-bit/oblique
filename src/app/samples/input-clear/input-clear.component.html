@@ -1,0 +1,41 @@
+<mat-form-field>
+	<mat-label>Mandatory</mat-label>
+	<input type="text" matInput placeholder="Mandatory" required ngModel />
+</mat-form-field>
+
+<mat-form-field>
+	<mat-label>Mandatory</mat-label>
+	<input type="text" matInput placeholder="Mandatory" required ngModel #control />
+	<button type="button" role="button" [obInputClear]="control">
+		<span class="fa fa-times-circle"></span>
+		<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
+	</button>
+</mat-form-field>
+
+<mat-form-field class="mat-form-field-lg">
+	<mat-label>Mandatory</mat-label>
+	<input type="text" matInput placeholder="Mandatory" required ngModel />
+</mat-form-field>
+
+<mat-form-field class="mat-form-field-lg">
+	<mat-label>Mandatory</mat-label>
+	<input type="text" matInput placeholder="Mandatory" required ngModel #controlLG />
+	<button type="button" role="button" [obInputClear]="controlLG">
+		<span class="fa fa-times-circle"></span>
+		<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
+	</button>
+</mat-form-field>
+
+<mat-form-field class="mat-form-field-sm">
+	<mat-label>Mandatory</mat-label>
+	<input type="text" matInput placeholder="Mandatory" required ngModel />
+</mat-form-field>
+
+<mat-form-field class="mat-form-field-sm">
+	<mat-label>Mandatory</mat-label>
+	<input type="text" matInput placeholder="Mandatory" required ngModel #controlSM />
+	<button type="button" role="button" [obInputClear]="controlSM">
+		<span class="fa fa-times-circle"></span>
+		<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
+	</button>
+</mat-form-field>
