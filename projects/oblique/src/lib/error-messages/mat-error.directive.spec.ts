@@ -1,8 +1,10 @@
 import {ObMatErrorDirective} from './mat-error.directive';
+import {EMPTY} from 'rxjs';
 
 describe('MatErrorDirective', () => {
 	it('should create an instance', () => {
-		const directive = new ObMatErrorDirective(null, null, null);
+		// @ts-ignore
+		const directive = new ObMatErrorDirective(null, null, {onLangChange: EMPTY});
 		expect(directive).toBeTruthy();
 	});
 });
