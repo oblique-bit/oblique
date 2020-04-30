@@ -20,6 +20,12 @@
           "type": "boolean",
           "default": true,
           "since": "2.0.0"
+        },
+        {
+          "name": "datePickerRef",
+          "text": "Reference to `matDatepicker` (necessary when working with a Datepicker).",
+          "type": "MatDatepicker",
+          "since": "5.1.0"
         }
       ],
       "outputs": [
