@@ -44,7 +44,7 @@
           "since": "5.1.0"
         },
         {
-          "name": "<ng-template #orHeaderControl>",
+          "name": "<ng-template #obHeaderControl>",
           "text": "Templates that will be projected into the controls section of the main header (next to the custom control section).",
           "since": "3.0.0"
         },
@@ -64,7 +64,7 @@
           "since": "3.0.0"
         },
         {
-          "name": "<ng-template #orFooterLink>",
+          "name": "<ng-template #obFooterLink>",
           "text": "Templates that will be projected into the links section in the right hand side of the main footer.",
           "since": "3.0.0"
         },
