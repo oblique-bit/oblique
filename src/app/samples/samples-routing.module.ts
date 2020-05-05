@@ -8,6 +8,7 @@ import {ObColumnLayoutSampleComponent} from './column-layout/column-layout-sampl
 import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {FilterBoxSampleComponent} from './filter-box-sample/filter-box-sample.component';
 import {FormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
+import {InputClearComponent} from './input-clear/input-clear.component';
 import {MasterLayoutSampleComponent} from './master-layout/master-layout-sample.component';
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
 import {NavigableSampleComponent} from './navigable/navigable-sample.component';
@@ -35,6 +36,7 @@ const samplesRoutes: Routes = [
 	{path: 'filter-box', component: FilterBoxSampleComponent},
 	{path: 'form-control-state', component: FormControlStateSampleComponent},
 	{path: 'http-interceptor', component: HttpInterceptorSampleComponent},
+	{path: 'input-clear', component: InputClearComponent},
 	{path: 'master-layout', component: MasterLayoutSampleComponent},
 	{path: 'multi-translate-loader', component: MultiTranslateLoaderSampleComponent},
 	{path: 'multiselect', component: MultiselectSampleComponent},
