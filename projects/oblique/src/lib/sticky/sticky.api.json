@@ -42,17 +42,17 @@
       ],
       "projection": [
         {
-          "name": "<ng-template #orStickyHeader>",
+          "name": "<ng-template #obStickyHeader>",
           "text": "Content that will be projected into the header",
           "since": "4.0.0"
         },
         {
-          "name": "<ng-template #orStickyMain>",
+          "name": "<ng-template #obStickyMain>",
           "text": "Content that will be projected into the main container",
           "since": "4.0.0"
         },
         {
-          "name": "<ng-template #orStickyFooter>",
+          "name": "<ng-template #obStickyFooter>",
           "text": "Content that will be projected into the footer",
           "since": "4.0.0"
         }
