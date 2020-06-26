@@ -1,161 +1,203 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component} from '@angular/core';
+import {Component, DebugElement, Directive} from '@angular/core';
 import {By} from '@angular/platform-browser';
+import {BehaviorSubject} from 'rxjs';
 import {ObSelectableDirective} from './selectable.directive';
+import {ObSelectableGroupDirective} from './selectable-group.directive';
 
 @Component({
-	template: '<div class="test-card-0" obSelectable [value]="\'test-card-0\'"></div>'
+	template: ` <div obSelectable value="test"></div>`
 })
-class TestValueComponent {}
+class FaultyTestComponent {}
 
 @Component({
-	template: '<div class="test-card-1" obSelectable [collection]="\'A\'"></div>'
+	template: ` <div obSelectableGroup>
+		<div obSelectable value="test"></div>
+	</div>`
 })
-class TestCollectionAComponent {}
+class TestComponent {}
 
-@Component({
-	template: '<div class="test-card-2" obSelectable [selected]="true"></div>'
+@Directive({
+	selector: '[obSelectableGroup]',
+	exportAs: 'obSelectableGroup'
 })
-class TesttSelectedComponent {}
+export class ObMockSelectableGroupDirective {
+	mode_ = new BehaviorSubject<string>('checkbox');
+	mode$ = this.mode_.asObservable();
+	register = jest.fn();
+	toggle = jest.fn();
+	focus = jest.fn();
+}
 
 describe('SelectableDirective', () => {
 	let directive: ObSelectableDirective;
-	let component: TestValueComponent | TestCollectionAComponent | TesttSelectedComponent;
-	let fixture: ComponentFixture<TestValueComponent> | ComponentFixture<TestCollectionAComponent> | ComponentFixture<TestCollectionAComponent>;
+	let group: ObSelectableGroupDirective;
+	let component: TestComponent;
+	let fixture: ComponentFixture<TestComponent>;
+	let element: DebugElement;
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			declarations: [TestValueComponent, TestCollectionAComponent, TesttSelectedComponent, ObSelectableDirective]
-		});
-	}));
+	describe('without obSelectableGroup', () => {
+		beforeEach(async(() => {
+			TestBed.configureTestingModule({
+				declarations: [FaultyTestComponent, ObSelectableDirective]
+			});
+		}));
 
-	describe('with [value] = test-card-0', () => {
-		beforeEach(() => {
-			fixture = TestBed.createComponent(TestValueComponent);
-			component = fixture.componentInstance;
-			fixture.detectChanges();
-			const element = fixture.debugElement.query(By.directive(ObSelectableDirective));
-			directive = element.injector.get(ObSelectableDirective);
-		});
-
-		it('should create an instance', () => {
-			expect(component).toBeTruthy();
-			expect(directive).toBeTruthy();
-		});
-
-		it('should not be selected', () => {
-			expect(directive.selected).toBeFalsy();
-		});
-
-		it('should not have `.ob-selected` class', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.ob-selected'));
-			expect(selectableElement).toBeNull();
-		});
-
-		it('should have value `test-card-0`', () => {
-			expect(directive.value).toBe('test-card-0');
-		});
-
-		it('should use default collection', () => {
-			expect(directive.collection).toBe('unnamed');
-		});
-
-		it('should toggle selectable onClick', () => {
-			// @ts-ignore
-			const spy = spyOn(directive.selectableService, 'toggleValue').and.callThrough();
-			expect(spy).not.toHaveBeenCalled();
-			directive.onClick();
-			expect(spy).toHaveBeenCalled();
-			expect(directive.selected).toBeTruthy();
-			directive.onClick();
-			expect(directive.selected).toBeFalsy();
+		it('should throw an error', () => {
+			expect(() => TestBed.createComponent(FaultyTestComponent)).toThrowError();
 		});
 	});
 
-	describe('with [collection] = A', () => {
+	describe('with obSelectableGroup', () => {
+		beforeEach(async(() => {
+			TestBed.configureTestingModule({
+				declarations: [TestComponent, ObSelectableDirective, ObMockSelectableGroupDirective],
+				providers: [{provide: ObSelectableGroupDirective, useClass: ObMockSelectableGroupDirective}]
+			});
+		}));
+
 		beforeEach(() => {
-			fixture = TestBed.createComponent(TestCollectionAComponent);
+			fixture = TestBed.createComponent(TestComponent);
 			component = fixture.componentInstance;
 			fixture.detectChanges();
-			const element = fixture.debugElement.query(By.directive(ObSelectableDirective));
+			element = fixture.debugElement.query(By.directive(ObSelectableDirective));
 			directive = element.injector.get(ObSelectableDirective);
+			group = fixture.debugElement.query(By.directive(ObMockSelectableGroupDirective)).injector.get(ObSelectableGroupDirective);
 		});
 
 		it('should create an instance', () => {
 			expect(component).toBeTruthy();
 			expect(directive).toBeTruthy();
+			expect(group).toBeTruthy();
 		});
 
-		it('should not be selected', () => {
-			expect(directive.selected).toBeFalsy();
+		it('should have a class', () => {
+			expect(element.nativeElement.classList).toContain('ob-selectable');
 		});
 
-		it('should not have `.ob-selected` class', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.ob-selected'));
-			expect(selectableElement).toBeNull();
+		it('should call register', () => {
+			directive.ngOnInit();
+			expect(group.register).toHaveBeenCalledWith(directive);
 		});
 
-		it('should not have a value', () => {
-			expect(directive.value).toBeUndefined();
+		describe('role', () => {
+			describe('checkbox', () => {
+				beforeEach(() => {
+					// @ts-ignore
+					group.mode_.next('checkbox');
+					fixture.detectChanges();
+				});
+				it('should be defined as property', () => {
+					expect(directive.role).toBe('checkbox');
+				});
+				it('should be defined as attribute', () => {
+					expect(element.nativeElement.getAttribute('role')).toBe('checkbox');
+				});
+			});
+			describe('radio', () => {
+				beforeEach(() => {
+					// @ts-ignore
+					group.mode_.next('radio');
+					fixture.detectChanges();
+				});
+				it('should be defined as property', () => {
+					expect(directive.role).toBe('radio');
+				});
+				it('should be defined as attribute', () => {
+					expect(element.nativeElement.getAttribute('role')).toBe('radio');
+				});
+			});
+			describe('windows', () => {
+				beforeEach(() => {
+					// @ts-ignore
+					group.mode_.next('windows');
+					fixture.detectChanges();
+				});
+				it('should be defined as property', () => {
+					expect(directive.role).toBeUndefined();
+				});
+				it('should be defined as attribute', () => {
+					expect(element.nativeElement.getAttribute('role')).toBe(null);
+				});
+			});
 		});
 
-		it('should use `A` collection', () => {
-			expect(directive.collection).not.toBe('unnamed');
-			expect(directive.collection).toBe('A');
+		describe('tabindex', () => {
+			it('should be defined as property', () => {
+				expect(directive.tabindex).toBe(0);
+			});
+			it('should be defined as attribute', () => {
+				expect(element.nativeElement.getAttribute('tabindex')).toBe('0');
+			});
 		});
 
-		it('should toggle selectable onClick', () => {
-			// @ts-ignore
-			const spy = spyOn(directive.selectableService, 'toggleValue').and.callThrough();
-			expect(spy).not.toHaveBeenCalled();
-			directive.onClick();
-			expect(spy).toHaveBeenCalled();
-			expect(directive.selected).toBeTruthy();
-			directive.onClick();
-			expect(directive.selected).toBeFalsy();
+		describe('cursor', () => {
+			it('should be defined as property', () => {
+				expect(directive.cursor).toBe('pointer');
+			});
+			it('should be defined as attribute', () => {
+				expect(element.nativeElement.getAttribute('style')).toBe('cursor: pointer;');
+			});
+		});
+
+		describe('selected', () => {
+			it('should be defined as property', () => {
+				expect(directive.selected).toBe(false);
+			});
+
+			describe('false', () => {
+				beforeEach(() => {
+					directive.selected = false;
+				});
+				it('should have an aria-checked attribute', () => {
+					expect(element.nativeElement.getAttribute('aria-checked')).toBe('false');
+				});
+
+				it('should not have a class', () => {
+					expect(element.nativeElement.classList).not.toContain('ob-selected');
+				});
+			});
+
+			describe('true', () => {
+				beforeEach(() => {
+					directive.selected = true;
+					fixture.detectChanges();
+				});
+				it('should have an aria-checked attribute', () => {
+					expect(element.nativeElement.getAttribute('aria-checked')).toBe('true');
+				});
+
+				it('should not have a class', () => {
+					expect(element.nativeElement.classList).toContain('ob-selected');
+				});
+			});
 		});
 	});
 
-	describe('with [selected] = true', () => {
-		beforeEach(() => {
-			fixture = TestBed.createComponent(TesttSelectedComponent);
-			component = fixture.componentInstance;
-			fixture.detectChanges();
-			const element = fixture.debugElement.query(By.directive(ObSelectableDirective));
-			directive = element.injector.get(ObSelectableDirective);
+	describe('onclick', () => {
+		it('should call preventDefault on passed event', () => {
+			const event = ({preventDefault: jest.fn()} as unknown) as MouseEvent;
+			directive.onClick(event);
+			expect(event.preventDefault).toHaveBeenCalled();
 		});
-
-		it('should create an instance', () => {
-			expect(component).toBeTruthy();
-			expect(directive).toBeTruthy();
+		it('should call toggle on group', () => {
+			const event = ({preventDefault: jest.fn()} as unknown) as MouseEvent;
+			directive.onClick(event);
+			expect(group.toggle).toHaveBeenCalledWith(directive, undefined, undefined);
 		});
+	});
 
-		it('should be selected', () => {
-			expect(directive.selected).toBeTruthy();
+	describe('focus', () => {
+		it('should set the focus', () => {
+			directive.focus();
+			expect(document.querySelector(':focus')).toEqual(element.nativeElement);
 		});
+	});
 
-		it('should have `.ob-selected` class', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.ob-selected'));
-			expect(selectableElement).not.toBeNull();
-		});
-
-		it('should not have a value', () => {
-			expect(directive.value).toBeUndefined();
-		});
-
-		it('should use default collection', () => {
-			expect(directive.collection).toBe('unnamed');
-		});
-
-		it('should toggle selectable onClick', () => {
-			// @ts-ignore
-			const spy = spyOn(directive.selectableService, 'toggleValue').and.callThrough();
-			expect(spy).not.toHaveBeenCalled();
-			directive.onClick();
-			expect(spy).toHaveBeenCalled();
-			expect(directive.selected).toBeFalsy();
-			directive.onClick();
-			expect(directive.selected).toBeTruthy();
+	describe('onFocus', () => {
+		it('should call focus on group', () => {
+			directive.onFocus();
+			expect(group.focus).toHaveBeenCalled();
 		});
 	});
 });

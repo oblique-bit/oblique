@@ -1,4 +1,59 @@
 <p>
-	A directive to make an element selectable. The cursor is changed to <code>pointer</code> on hover and the <code>ob-selected</code> class is toggled on mouse
-	click or <kbd>Space</kbd> key down. Use the ObSelectedService to get the information about selected elements within collections.
+	A set of 2 directives that allows to select any element with the mouse or the keyboard in an accessible way. Selected elements are simply marked with the
+	<code>ob-selected</code> class but no style is applied to it. The <code>ObSelectable</code> directives have to be wrapped into a
+	<code>ObSelectableGroup</code> that specifies the selection mode. There are 3 distinct selection modes described below.
 </p>
+
+<h3>Checkbox mode</h3>
+<p>In checkbox mode, which is the default one, the selection behaves like checkboxes.</p>
+<ul>
+	<li>multiple elements can be selected at the same time</li>
+	<li>the selection can be emptied</li>
+	<li>the <kbd>tab</kbd> key moves the focus to the next element</li>
+	<li>individual elements can be toggled with a mouse click</li>
+	<li>the focused element can be toggled with the <kbd>space</kbd> key</li>
+</ul>
+
+<h3>Radio mode</h3>
+<p>In radio mode, the selection behaves like radio buttons.</p>
+<ul>
+	<li>a single element can be selected at any time</li>
+	<li>the selection cannot be emptied</li>
+	<li>the <kbd>tab</kbd> key moves the focus to the next element</li>
+	<li>the <kbd>arrowDown</kbd> and <kbd>arrowRight</kbd> keys select the next element in a circular manner</li>
+	<li>the <kbd>arrowUp</kbd> and <kbd>arrowLeft</kbd> keys select the previous element in a circular manner</li>
+	<li>individual elements can be toggled with a mouse click</li>
+	<li>the focused element can be toggled with the <kbd>space</kbd> key</li>
+</ul>
+
+<h3>Windows mode</h3>
+<p>In Windows mode, the selection behaves like the Windows's file explorer.</p>
+<div class="alert alert-warning">
+	<strong>Accessibility</strong>
+	<p>
+		In Windows mode, the accessibility of the feature is not guaranteed. The behavior is not a web standard, which means there are no out-of-the-box roles
+		for it. The accessibility has been done as well as possible but is still limited.
+	</p>
+</div>
+<ul>
+	<li>multiple elements can be selected at the same time</li>
+	<li>the selection cannot be emptied</li>
+	<li>the <kbd>tab</kbd> key moves the focus to the next element</li>
+	<li>the <kbd>arrowDown</kbd> and <kbd>arrowRight</kbd> keys selects the next element</li>
+	<li>the <kbd>arrowUp</kbd> and <kbd>arrowLeft</kbd> keys selects the previous element</li>
+	<li>
+		the combination [<kbd>shift</kbd> + (<kbd>arrowUp</kbd> / <kbd>arrowDown</kbd> / <kbd>arrowRight</kbd> / <kbd>arrowLeft</kbd>)] keys selects all
+		elements between the start and end of selection
+	</li>
+	<li>
+		the combination [<kbd>ctrl</kbd> + (<kbd>arrowUp</kbd> / <kbd>arrowDown</kbd> / <kbd>arrowRight</kbd> / <kbd>arrowLeft</kbd>)] keys moves the focus
+		without altering the selection
+	</li>
+	<li>
+		the combination [<kbd>shift</kbd> + (<kbd>click</kbd> / <kbd>space</kbd>)] selects all elements between the element first selected and the last clicked
+		one
+	</li>
+	<li>the combination [<kbd>ctrl</kbd> + (<kbd>click</kbd> / <kbd>space</kbd>)] adds the clicked element to the current selection</li>
+	<li>individual elements can be toggled with a mouse click</li>
+	<li>the focused element can be toggled with the <kbd>space</kbd> key</li>
+</ul>
