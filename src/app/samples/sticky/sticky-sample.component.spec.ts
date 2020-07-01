@@ -1,8 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
-import {ObStickySampleComponent} from './sticky-sample.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
-import {ObliqueTestingModule} from 'oblique';
+import {ObStickySampleComponent} from './sticky-sample.component';
+import {ObliqueTestingModule} from 'projects/oblique/src/lib/oblique-testing.module';
 
 describe('StickySampleComponent', () => {
 	let component: ObStickySampleComponent;

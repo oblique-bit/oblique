@@ -1,9 +1,9 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ErrorMessagesModule, FormControlStateModule, NotificationService, ObliqueTestingModule, SchemaValidationModule, SchemaValidationService} from 'oblique';
-import {SchemaValidationSampleComponent} from './schema-validation-sample.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {SchemaValidationSampleComponent} from './schema-validation-sample.component';
+import {ObliqueTestingModule} from 'projects/oblique/src/lib/oblique-testing.module';
 
 describe('SchemaValidationSampleComponent', () => {
 	let component: SchemaValidationSampleComponent;

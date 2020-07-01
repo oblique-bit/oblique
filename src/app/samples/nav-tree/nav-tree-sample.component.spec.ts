@@ -6,9 +6,9 @@ import {FormsModule} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {of} from 'rxjs';
 import {NgbButtonsModule, NgbCollapseModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
-import {ObNavTreeComponent} from 'oblique';
 import {NavTreeSampleComponent} from './nav-tree-sample.component';
 import {ObliqueTestingModule} from 'oblique/lib/oblique-testing.module';
+import {ObNavTreeComponent} from 'oblique/src/lib/nav-tree/nav-tree.component';
 
 describe('NavTreeSampleComponent', () => {
 	let component: NavTreeSampleComponent;
