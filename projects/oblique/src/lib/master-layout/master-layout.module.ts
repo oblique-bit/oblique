@@ -1,8 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
-import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {TranslateModule} from '@ngx-translate/core';
 
 import {ObNotificationModule} from '../notification/notification.module';
@@ -23,7 +21,7 @@ import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation/
 import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
 import {ObMasterLayoutConfig} from './master-layout.config';
-import {WINDOW, windowProvider} from '../utilities';
+import {obliqueProviders} from '../utilities';
 
 export {ObMasterLayoutComponent} from './master-layout/master-layout.component';
 export {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
@@ -53,11 +51,7 @@ export {ObINavigationLink, ObEScrollMode, ObIMasterLayoutEvent, ObEMasterLayoutE
 		ObMasterLayoutNavigationToggleDirective,
 		ObMasterLayoutNavigationMenuDirective
 	],
-	providers: [
-		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
-		{provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}},
-		{provide: WINDOW, useFactory: windowProvider}
-	],
+	providers: obliqueProviders(),
 	exports: [
 		ObMasterLayoutComponent,
 		ObMasterLayoutHeaderComponent,

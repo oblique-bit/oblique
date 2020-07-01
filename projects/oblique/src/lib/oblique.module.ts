@@ -1,6 +1,4 @@
 import {NgModule} from '@angular/core';
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
-import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
 import {ObCollapseModule} from './collapse/collapse.module';
 import {ObColumnLayoutModule} from './column-layout/column-layout.module';
@@ -31,7 +29,7 @@ import {ObStickyModule} from './sticky/sticky.module';
 import {ObUnknownRouteModule} from './unknown-route/unknown-route.module';
 import {ObTelemetryService} from './telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from './telemetry/telemetry-require';
-import {WINDOW, windowProvider} from './utilities';
+import {obliqueProviders} from './utilities';
 
 const OBLIQUE_MODULES = [
 	ObCollapseModule,
@@ -65,11 +63,7 @@ const OBLIQUE_MODULES = [
 
 @NgModule({
 	imports: OBLIQUE_MODULES,
-	providers: [
-		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
-		{provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}},
-		{provide: WINDOW, useFactory: windowProvider}
-	],
+	providers: obliqueProviders(),
 	exports: OBLIQUE_MODULES
 })
 export class ObliqueModule {
