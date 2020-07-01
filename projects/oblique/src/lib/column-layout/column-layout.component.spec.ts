@@ -3,13 +3,11 @@ import {Component, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TranslateService} from '@ngx-translate/core';
-import {ObColumnLayoutComponent} from 'oblique';
 import {ObMockColumnPanelDirective} from './mock/mock-column-panel.directive';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
-import {ObMockMasterLayoutModule} from '../master-layout/mock/mock-master-layout.module';
-import {ObMockScrollingModule} from '../scrolling/mock/mock-scrolling.module';
 import {windowProvider, WINDOW} from '../utilities';
+import {ObColumnLayoutComponent} from './column-layout.component';
 
 @Component({
 	template: ` <ob-column-layout [left]="left" [right]="right" obColumnPanel>
@@ -42,7 +40,7 @@ describe('ColumnLayoutComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [TestComponent, ObColumnLayoutComponent, ObMockColumnPanelDirective, ObMockTranslatePipe],
-			imports: [RouterTestingModule, ObMockMasterLayoutModule, ObMockScrollingModule],
+			imports: [RouterTestingModule],
 			providers: [
 				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: WINDOW, useFactory: windowProvider}

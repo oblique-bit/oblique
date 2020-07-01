@@ -1,6 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {ObSelectableService} from 'oblique';
-import {ObISelectableCollectionChanged} from './selectable.service';
+import {ObISelectableCollectionChanged, ObSelectableService} from './selectable.service';
 
 describe('SelectedService', () => {
 	let selectableService: ObSelectableService;

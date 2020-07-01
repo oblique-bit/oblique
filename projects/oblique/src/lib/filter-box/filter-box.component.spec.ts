@@ -1,9 +1,10 @@
 import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {Component, NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {ObFilterBoxComponent, THEMES, ObThemeService} from 'oblique';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockThemeService} from '../theme/mock/mock-theme.service';
+import {ObThemeService, THEMES} from '../theme/theme.service';
+import {ObFilterBoxComponent} from './filter-box.component';
 
 @Component({
 	template: `

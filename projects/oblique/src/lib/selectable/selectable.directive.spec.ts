@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {ObSelectableDirective} from 'oblique';
+import {ObSelectableDirective} from './selectable.directive';
 
 @Component({
 	template: '<div class="test-card-0" obSelectable [value]="\'test-card-0\'"></div>'

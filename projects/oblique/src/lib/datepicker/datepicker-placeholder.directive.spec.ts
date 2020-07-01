@@ -2,7 +2,7 @@ import {TestBed, ComponentFixture, async, inject} from '@angular/core/testing';
 import {Component, EventEmitter, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {TranslateService, LangChangeEvent} from '@ngx-translate/core';
-import {ObDatepickerPlaceholderDirective} from 'oblique';
+import {ObDatepickerPlaceholderDirective} from './datepicker-placeholder.directive';
 
 @Component({
 	template: '<input ngbDatepicker />'

@@ -1,7 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {ObNavigableDirective, ObNavigableOnChangeEvent, ObNavigableOnMoveEvent} from 'oblique';
+import {ObNavigableOnChangeEvent, ObNavigableDirective} from './navigable.directive';
+import {ObNavigableOnMoveEvent} from 'oblique/lib/navigable/navigable.directive';
 
 @Component({
 	template: ` <div

@@ -2,7 +2,8 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, DebugElement} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
-import {ObNavigableDirective, ObNavigableGroupComponent} from 'oblique';
+import {ObNavigableDirective} from './navigable.directive';
+import {ObNavigableGroupComponent} from './navigable-group.component';
 
 @Component({
 	template: ` <ob-navigable-group [items]="models" [selection]="selectedModels">

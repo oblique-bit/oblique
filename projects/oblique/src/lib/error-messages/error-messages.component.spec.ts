@@ -2,8 +2,10 @@ import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/t
 import {FormsModule} from '@angular/forms';
 import {Component, ViewChild} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {ObErrorMessagesComponent, ObErrorMessagesService, ObFormControlStateDirective} from 'oblique';
 import {ObMockTranslateParamsModule} from '../translate-params/mock/mock-translate-params.module';
+import {ObErrorMessagesComponent} from './error-messages.component';
+import {ObErrorMessagesService} from './error-messages.service';
+import {ObFormControlStateDirective} from '../form-control-state/form-control-state.directive';
 
 @Component({
 	template: `

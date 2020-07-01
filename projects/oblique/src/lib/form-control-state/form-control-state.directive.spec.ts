@@ -2,7 +2,7 @@ import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/t
 import {FormBuilder, FormControlName, FormsModule, NgModel, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {ObFormControlStateDirective} from 'oblique';
+import {ObFormControlStateDirective} from './form-control-state.directive';
 
 @Component({
 	template: `

@@ -3,7 +3,7 @@ import {Component, CUSTOM_ELEMENTS_SCHEMA, DebugElement, NO_ERRORS_SCHEMA} from 
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
-import {ObDatepickerComponent} from 'oblique';
+import {ObDatepickerComponent} from './datepicker.component';
 
 @Component({
 	template: ` <ob-date-picker [formControl]="model"></ob-date-picker>`
