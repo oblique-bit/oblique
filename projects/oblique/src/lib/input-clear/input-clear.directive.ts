@@ -1,4 +1,5 @@
 import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output} from '@angular/core';
+import {MatDatepicker} from '@angular/material/datepicker';
 
 @Directive({
 	selector: '[obInputClear]',
@@ -7,6 +8,7 @@ import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, O
 export class ObInputClearDirective {
 	@Input('obInputClear') control: HTMLInputElement;
 	@Input() focusOnClear = true;
+	@Input() datePickerRef: MatDatepicker<any>;
 	@Output() onClear = new EventEmitter<MouseEvent>();
 	@HostBinding('class.text-control-clear') cssClass = true;
 
@@ -22,6 +24,9 @@ export class ObInputClearDirective {
 
 	@HostListener('click', ['$event'])
 	onClick($event: MouseEvent) {
+		if (this.datePickerRef) {
+			this.datePickerRef.select(undefined);
+		}
 		this.control.value = '';
 		if (this.focusOnClear) {
 			this.control.focus();

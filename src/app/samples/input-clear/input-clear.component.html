@@ -39,3 +39,21 @@
 		<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
 	</button>
 </mat-form-field>
+
+<mat-form-field>
+	<mat-label>Datepicker</mat-label>
+	<input matInput [matDatepicker]="picker" #controlD />
+	<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+	<mat-datepicker #picker></mat-datepicker>
+	<button type="button" role="button" [obInputClear]="controlD" [datePickerRef]="picker">
+		<span class="fa fa-times-circle"></span>
+		<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
+	</button>
+</mat-form-field>
+
+<mat-form-field>
+	<mat-label>Datepicker</mat-label>
+	<input matInput [matDatepicker]="picker2" />
+	<mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+	<mat-datepicker #picker2></mat-datepicker>
+</mat-form-field>
