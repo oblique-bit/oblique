@@ -52,7 +52,7 @@ const distMeta = () => {
 
 	['version', 'description', 'keywords', 'author', 'contributors', 'homepage', 'repository', 'license', 'bugs', 'publishConfig']
 		.forEach(field => output[field] = pkg[field]);
-	['main', 'module', 'es2015', 'esm5', 'esm2015', 'fesm5', 'fesm2015', 'typings']
+	['main', 'module', 'es2015', 'esm5', 'esm2015', 'fesm5', 'fesm2015', 'typings', 'metadata']
 		.forEach(field => output[field] = output[field].replace('oblique-oblique', 'oblique'));
 
 	return gulp.src(['README.md', 'CHANGELOG.md', 'LICENSE'])
@@ -70,6 +70,10 @@ const distFonts = () => gulp.src(['./node_modules/@fortawesome/fontawesome-free/
 
 const distFontAwesome = () => gulp.src('./node_modules/@fortawesome/fontawesome-free/scss/*')
 	.pipe(gulp.dest(`${paths.dist}/styles/scss/fontawesome`));
+
+const distBundles = () => gulp.src([`${paths.dist}/bundles/*.js`, `${paths.dist}/fesm5/*.js`, `${paths.dist}/fesm2015/*.js`])
+	.pipe(replace('oblique-oblique', 'oblique'))
+	.pipe(gulp.dest(file => file.base));
 
 const distScss = () => gulp.src(`${paths.dist}/styles/scss/**/*.scss`)
 	.pipe(replace(`${paths.fa}/webfonts`, `${paths.oblique}/fonts`))
@@ -100,6 +104,7 @@ gulp.task(
 		distFonts,
 		distDocs,
 		distFontAwesome,
+		distBundles,
 		gulp.series(
 			distStyles,
 			distStylesThemeRename,
