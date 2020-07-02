@@ -2,7 +2,8 @@ import {async, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {Component, ViewChild} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
-import {ObUnsavedChangesDirective, ObUnsavedChangesService} from 'oblique';
+import {ObUnsavedChangesDirective} from './unsaved-changes.directive';
+import {ObUnsavedChangesService} from './unsaved-changes.service';
 
 @Component({
 	template: ` <form obUnsavedChanges></form>`

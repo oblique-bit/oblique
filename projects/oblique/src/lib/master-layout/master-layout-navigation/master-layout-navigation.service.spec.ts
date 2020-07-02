@@ -3,7 +3,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {of} from 'rxjs';
 
 import {ObMasterLayoutNavigationService} from './master-layout-navigation.service';
-import {ObMasterLayoutConfig} from 'oblique';
+import {ObMasterLayoutConfig} from '../master-layout.config';
 
 describe('MasterLayoutNavigationService', () => {
 	let service: ObMasterLayoutNavigationService;

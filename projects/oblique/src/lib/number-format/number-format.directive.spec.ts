@@ -1,8 +1,8 @@
-import {ObNumberFormatDirective} from 'oblique';
 import {ChangeDetectionStrategy, Component, DebugElement} from '@angular/core';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
+import {ObNumberFormatDirective} from './number-format.directive';
 
 @Component({
 	template: '<input name="number" [(ngModel)]="number" obNumberFormat/>',

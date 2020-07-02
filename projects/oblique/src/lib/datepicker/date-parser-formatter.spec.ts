@@ -1,4 +1,4 @@
-import {ObDateDMYParserFormatter} from 'oblique';
+import {ObDateDMYParserFormatter} from './date-parser-formatter';
 
 describe('DateDMYParserFormatter', () => {
 	let pf: ObDateDMYParserFormatter;

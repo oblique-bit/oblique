@@ -118,7 +118,7 @@ export {ObUnknownRouteModule, ObUnknownRouteComponent} from './lib/unknown-route
 export {ObUnsavedChangesDirective, ObUnsavedChangesGuard, ObUnsavedChangesModule, ObUnsavedChangesService} from './lib/unsaved-changes/unsaved-changes.module';
 export {ObUnsavedChangesTabsDirective, ObUnsavedChangesTabsModule, ObUnsavedChangesTabsService} from './lib/unsaved-changes-tabs/unsaved-changes-tabs.module';
 export {ObTelemetryService, TELEMETRY_DISABLE} from './lib/telemetry/telemetry.service';
-export {WINDOW, multiTranslateLoader, getTranslateLoader} from './lib/utilities';
+export {OB_MATERIAL_CONFIG, ObIMaterialConfig, getTranslateLoader, multiTranslateLoader, WINDOW} from './lib/utilities';
 export {ObMultiTranslateLoader, TRANSLATION_FILES, ObITranslationFile} from './lib/multi-translate-loader/multi-translate-loader';
 export {ObPopUpService} from './lib/pop-up/pop-up.service';
 export {ObUnsubscribable} from './lib/unsubscribe.class';

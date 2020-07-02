@@ -3,8 +3,10 @@ import {NO_ERRORS_SCHEMA, Pipe, PipeTransform} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 
-import {ObMultiselectComponent, ObMultiselectConfig, ObMultiselectTexts} from 'oblique';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {ObMultiselectComponent} from './multiselect.component';
+import {ObMultiselectConfig} from './multiselect.config';
+import {ObMultiselectTexts} from './multiselect.texts';
 
 @Pipe({
 	name: 'searchFilter'

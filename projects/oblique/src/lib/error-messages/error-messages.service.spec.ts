@@ -1,4 +1,4 @@
-import {ObErrorMessagesService} from 'oblique';
+import {ObErrorMessagesService} from './error-messages.service';
 
 describe('ErrorMessagesService', () => {
 	let service: ObErrorMessagesService;

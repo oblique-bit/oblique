@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
-import {ObNavigatorComponent} from 'oblique';
+import {ObNavigatorComponent} from './navigator.component';
 
 describe('NavigatorComponent', () => {
 	let fixture: ComponentFixture<ObNavigatorComponent>;

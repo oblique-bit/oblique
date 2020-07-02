@@ -1,6 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
-import {ObMasterLayoutNavigationItemDirective} from 'oblique';
+import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
 
 @Component({
 	template: '<li role="presentation" obMasterLayoutNavigationItem > test </li>'

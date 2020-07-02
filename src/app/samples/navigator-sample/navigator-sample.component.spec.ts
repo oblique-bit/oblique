@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
-import {ObliqueTestingModule} from 'oblique';
 import {NavigatorSampleComponent} from './navigator-sample.component';
+import {ObliqueTestingModule} from 'projects/oblique/src/lib/oblique-testing.module';
 
 describe('NavigatorSampleComponent', () => {
 	let component: NavigatorSampleComponent;

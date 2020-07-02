@@ -3,11 +3,10 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 
-import {ObMasterLayoutComponent, ObMasterLayoutConfig, ObMasterLayoutService} from 'oblique';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
-import {ObMockMasterLayoutConfig, ObMockMasterLayoutService} from '../mock/mock-master-layout.module';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {windowProvider, WINDOW} from '../../utilities';
+import {ObMasterLayoutComponent} from './master-layout.component';
 
 describe('MasterLayoutComponent', () => {
 	let component: ObMasterLayoutComponent;
@@ -18,8 +17,6 @@ describe('MasterLayoutComponent', () => {
 			imports: [RouterTestingModule],
 			declarations: [ObMasterLayoutComponent, ObMockTranslatePipe],
 			providers: [
-				{provide: ObMasterLayoutService, useClass: ObMockMasterLayoutService},
-				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
 				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: WINDOW, useClass: windowProvider}
 			],

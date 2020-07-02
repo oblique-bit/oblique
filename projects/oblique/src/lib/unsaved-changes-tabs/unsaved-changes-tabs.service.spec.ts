@@ -4,9 +4,9 @@ import {ControlContainer} from '@angular/forms';
 import {NgbTabChangeEvent, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
-import {ObUnsavedChangesService} from 'oblique';
 import {ObMockUnsavedChangesService} from '../unsaved-changes/mock/mock-unsaved-changes.service';
 import {ObUnsavedChangesTabsService} from './unsaved-changes-tabs.service';
+import {ObUnsavedChangesService} from '../unsaved-changes/unsaved-changes.service';
 
 describe('UnsavedChangesTabsService', () => {
 	let unsavedChangesService: ObUnsavedChangesService;

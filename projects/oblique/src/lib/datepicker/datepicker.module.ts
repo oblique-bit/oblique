@@ -1,8 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
-import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgbDateParserFormatter, NgbDatepickerI18n, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -14,7 +12,7 @@ import {ObDatepickerComponent} from './datepicker.component';
 import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {ObThemeService} from '../theme/theme.service';
-import {WINDOW, windowProvider} from '../utilities';
+import {obliqueProviders} from '../utilities';
 
 export {ObDatepickerI18nService} from './datepicker-i18n.service';
 export {ObDateDMYParserFormatter} from './date-parser-formatter';
@@ -30,11 +28,9 @@ export {ObDatepickerComponent} from './datepicker.component';
 	imports: [CommonModule, NgbModule, TranslateModule, ReactiveFormsModule],
 	declarations: [ObDatepickerComponent, ObDatepickerPlaceholderDirective, ObDateFormatterPipe],
 	providers: [
-		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
-		{provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}},
+		...obliqueProviders(),
 		{provide: NgbDatepickerI18n, useClass: ObDatepickerI18nService},
-		{provide: NgbDateParserFormatter, useClass: ObDateDMYParserFormatter},
-		{provide: WINDOW, useFactory: windowProvider}
+		{provide: NgbDateParserFormatter, useClass: ObDateDMYParserFormatter}
 	],
 	exports: [ObDatepickerComponent, ObDatepickerPlaceholderDirective, ObDateFormatterPipe]
 })

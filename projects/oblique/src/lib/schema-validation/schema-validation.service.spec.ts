@@ -1,5 +1,5 @@
 import {inject, TestBed} from '@angular/core/testing';
-import {ObSchemaValidationService} from 'oblique';
+import {ObSchemaValidationService} from './schema-validation.service';
 
 describe('SchemaValidationService', () => {
 	let schemaValidationService: ObSchemaValidationService;

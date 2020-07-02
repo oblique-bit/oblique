@@ -2,9 +2,13 @@ import {async, TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule, HttpTestingController, TestRequest} from '@angular/common/http/testing';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {ObNotificationService, ObENotificationType, ObHttpApiInterceptorConfig, ObHttpApiInterceptorEvents, ObIHttpApiRequest, ObSpinnerService} from 'oblique';
 import {of} from 'rxjs';
 import {finalize} from 'rxjs/operators';
+import {ObIHttpApiRequest, ObHttpApiInterceptorEvents} from './http-api-interceptor.events';
+import {ObHttpApiInterceptorConfig} from './http-api-interceptor.config';
+import {ObSpinnerService} from '../spinner/spinner.service';
+import {ObNotificationService} from '../notification/notification.service';
+import {ObENotificationType} from '../notification/notification.interfaces';
 
 @Injectable()
 class DataService {

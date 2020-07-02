@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {NumberFormatSampleComponent} from './number-format-sample.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ObliqueTestingModule} from 'oblique';
+import {NumberFormatSampleComponent} from './number-format-sample.component';
+import {ObliqueTestingModule} from 'projects/oblique/src/lib/oblique-testing.module';
 
 describe('NumberFormatSampleComponent', () => {
 	let component: NumberFormatSampleComponent;

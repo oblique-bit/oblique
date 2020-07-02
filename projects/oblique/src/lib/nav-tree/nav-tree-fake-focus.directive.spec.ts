@@ -3,9 +3,11 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {By} from '@angular/platform-browser';
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {ObNavTreeComponent, ObNavTreeFakeFocusDirective, ObNavTreeItemModel} from 'oblique';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
+import {ObNavTreeItemModel} from './nav-tree-item.model';
+import {ObNavTreeFakeFocusDirective} from './nav-tree-fake-focus.directive';
+import {ObNavTreeComponent} from './nav-tree.component';
 
 @Component({
 	template: ` <input #inputControl />

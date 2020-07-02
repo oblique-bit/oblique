@@ -1,5 +1,6 @@
-import {ObOffCanvasService, ObOffCanvasToggleDirective} from 'oblique';
 import {async, TestBed} from '@angular/core/testing';
+import {ObOffCanvasToggleDirective} from './off-canvas-toggle.directive';
+import {ObOffCanvasService} from './off-canvas.service';
 
 describe('OffcanvasToggleDirective', () => {
 	let offCanvasService;
