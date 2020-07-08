@@ -98,6 +98,7 @@
     "@angular/cli": "^9.1.0",
     "@angular/compiler-cli": "^9.1.0",
     "@fortawesome/fontawesome-free": "^5.13.0",
+    "@schematics/angular": "^9.1.0",
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.5",
     "@typescript-eslint/eslint-plugin": "^2.25.0",
