@@ -2,7 +2,7 @@ import {execSync} from 'child_process';
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {IMigratable} from './update-schema';
 import {colors} from '@angular-devkit/core/src/terminal';
-import {PROJECT_PACKAGE_JSON, OB_PACKAGE, PROJECT_ROOT_DIR, PROJECT_ANGULAR_JSON, SchematicsUtil, OB_PACKAGE_JSON} from '../utils';
+import {PROJECT_PACKAGE_JSON, OB_PACKAGE, PROJECT_ROOT_DIR, PROJECT_ANGULAR_JSON, SchematicsUtil, OB_PACKAGE_JSON} from '../ng-update-utils';
 
 export class UpdateV4toV5 implements IMigratable {
 	static util: SchematicsUtil = SchematicsUtil.getInstance();
