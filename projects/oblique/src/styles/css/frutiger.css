@@ -1,13 +1,14 @@
+/* ../../../ is to cancel assets/styles/css path while keeping an eventual baseHref */
 @font-face {
 	font-family: 'Frutiger Neue';
-	src: local('Frutiger Neue'), url('/assets/fonts/FrutigerNeueW02-Bd.woff2') format('woff2'), url('/assets/fonts/FrutigerNeueW02-Bd.woff') format('woff');
+	src: local('Frutiger Neue'), url('../../../assets/fonts/FrutigerNeueW02-Bd.woff2') format('woff2'), url('../../../assets/fonts/FrutigerNeueW02-Bd.woff') format('woff');
 	font-weight: 700;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Frutiger Neue';
-	src: local('Frutiger Neue'), url('/assets/fonts/FrutigerNeueW02-It.woff2') format('woff2'), url('/assets/fonts/FrutigerNeueW02-It.woff') format('woff');
+	src: local('Frutiger Neue'), url('../../../assets/fonts/FrutigerNeueW02-It.woff2') format('woff2'), url('../../../assets/fonts/FrutigerNeueW02-It.woff') format('woff');
 	font-weight: normal;
 	font-style: italic;
 	font-display: fallback;
@@ -15,7 +16,7 @@
 
 @font-face {
 	font-family: 'Frutiger Neue';
-	src: local('Frutiger Neue'), url('/assets/fonts/FrutigerNeueW02-Regular.woff2') format('woff2'), url('/assets/fonts/FrutigerNeueW02-Regular.woff') format('woff');
+	src: local('Frutiger Neue'), url('../../../assets/fonts/FrutigerNeueW02-Regular.woff2') format('woff2'), url('../../../assets/fonts/FrutigerNeueW02-Regular.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 	font-display: fallback;
@@ -23,7 +24,7 @@
 
 @font-face {
 	font-family: 'Frutiger Neue';
-	src: local('Frutiger Neue'), url('/assets/fonts/FrutigerNeueW02-Light.woff2') format('woff2'), url('/assets/fonts/FrutigerNeueW02-Light.woff') format('woff');
+	src: local('Frutiger Neue'), url('../../../assets/fonts/FrutigerNeueW02-Light.woff2') format('woff2'), url('../../../assets/fonts/FrutigerNeueW02-Light.woff') format('woff');
 	font-weight: 100;
 	font-style: normal;
 	font-display: fallback;
