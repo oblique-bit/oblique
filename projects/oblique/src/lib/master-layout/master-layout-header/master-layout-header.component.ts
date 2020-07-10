@@ -7,6 +7,7 @@ import {
 	HostListener,
 	Inject,
 	Input,
+	Optional,
 	QueryList,
 	Renderer2,
 	TemplateRef,
@@ -20,8 +21,8 @@ import {ObUnsubscribable} from '../../unsubscribe.class';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {scrollEnabled} from '../master-layout.utility';
-import {WINDOW} from '../../utilities';
-import {ObILocaleObject, ObINavigationLink, ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.datatypes';
+import {OB_BANNER, ObIBanner, WINDOW} from '../../utilities';
+import {ObEMasterLayoutEventValues, ObILocaleObject, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.datatypes';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 
 @Component({
@@ -37,6 +38,7 @@ export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements A
 	locales: ObILocaleObject[];
 	isCustom = this.masterLayout.header.isCustom;
 	disabledLang = this.config.locale.disabled;
+	banner: ObIBanner;
 	@Input() navigation: ObINavigationLink[];
 	@HostBinding('class.application-header-animate') isAnimated = this.masterLayout.header.isAnimated;
 	@HostBinding('class.application-header-sticky') isSticky = this.masterLayout.header.isSticky;
@@ -54,13 +56,15 @@ export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements A
 		private readonly scrollEvents: ObScrollingEvents,
 		private readonly el: ElementRef,
 		private readonly renderer: Renderer2,
-		@Inject(WINDOW) window
+		@Inject(WINDOW) window,
+		@Inject(OB_BANNER) @Optional() bannerToken
 	) {
 		super();
 		this.window = window; // because AoT don't accept interfaces as DI
 		this.locales = this.formatLocales();
 		this.propertyChanges();
 		this.reduceOnScroll();
+		this.banner = {color: '#000', bgColor: '#0f0', ...bannerToken};
 	}
 
 	ngAfterViewInit() {
