@@ -5,7 +5,14 @@ import {ObITranslationFile, ObMultiTranslateLoader, TRANSLATION_FILES} from './m
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions} from '@angular/material/form-field';
 import {STEPPER_GLOBAL_OPTIONS, StepperOptions} from '@angular/cdk/stepper';
 
+export interface ObIBanner {
+	text: string;
+	color?: string;
+	bgColor?: string;
+}
+
 export const WINDOW = new InjectionToken<Window>('Window');
+export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
 
 export function windowProvider(): Window {
 	return window || ({} as Window);

@@ -63,12 +63,14 @@
 	}
 
 	.header {
+		position: relative;
 		display: block;
 		z-index: 1;
 		width: 100%;
 		padding: 0;
 		background-color: inherit;
 		border-bottom: $brand-line-width solid $brand-accent;
+		overflow: hidden;
 
 		@include layout-collapse-up() {
 			display: flex;
@@ -82,6 +84,28 @@
 
 			.header-open & {
 				height: $header-height-md;
+			}
+		}
+
+		aside {
+			position: absolute;
+			top: 0.5em;
+			font-size: $font-size-bigger;
+			line-height: 1.5;
+			text-align: center;
+			transform: rotate(-45deg);
+			transform-origin: center;
+
+			&::before {
+				content: '';
+				position: absolute;
+				display: block;
+				top: 0;
+				bottom: 0;
+				right: -100%;
+				left: -100%;
+				background-color: inherit;
+				z-index: -1;
 			}
 		}
 	}

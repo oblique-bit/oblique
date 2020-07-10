@@ -52,6 +52,7 @@
 			</ul>
 		</div>
 	</ng-container>
+	<aside *ngIf="banner.text" [style.color]="banner.color" [style.backgroundColor]="banner.bgColor">{{ banner.text }}</aside>
 </div>
 <ob-master-layout-navigation [links]="navigation">
 	<ng-content select="[obNavigation]"></ng-content>
