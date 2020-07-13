@@ -1,0 +1,18 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "emitDecoratorMetadata": true,
+    "types": [
+      "jest",
+      "node"
+    ]
+  },
+  "files": [
+    "polyfills.ts"
+  ],
+  "include": [
+    "**/*.spec.ts",
+    "../src/**/*.spec.ts"
+  ]
+}

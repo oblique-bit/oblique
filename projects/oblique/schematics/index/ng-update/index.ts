@@ -7,7 +7,7 @@ import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {IUpdateSchema, IMigratable} from './update-schema';
 import {UpdateV4toV5} from './update-v4-to-v5';
 import {colors} from '@angular-devkit/core/src/terminal';
-import {OB_VERSION, OB_LATEST, OB_LAST_MAJOR_SUPPORT_VERSION, SchematicsUtil} from '../utils';
+import {OB_VERSION, OB_LATEST, OB_LAST_MAJOR_SUPPORT_VERSION, SchematicsUtil} from '../ng-update-utils';
 
 export function initalize(_options: IUpdateSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) => {

@@ -658,27 +658,3 @@ interface IConfigureTestingModuleCall {
 	isEmptyOptions: boolean;
 	needsMigration: boolean;
 }
-
-/*
-
-importModule(moduleName: string, src: string, options: any) {
-	return (tree: Tree, _context: SchematicContext) => {
-
-		const workspace = getWorkspace(tree);
-		const project = getProjectFromWorkspace(workspace, options.defaultProject);
-
-		if (hasNgModuleImport(tree, appModulePath, moduleName)) {
-			return printModuleAlreadyImported(moduleName, _context);
-		}
-		addModuleImportToRootModule(tree, moduleName, src, project);
-		_context.logger.info(
-			green(
-				'Imported' + moduleName + ' into root module'
-			)
-		);
-
-		return tree;
-	};
-}
-
-*/

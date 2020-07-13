@@ -1,0 +1,130 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "oblique-ng-add-schema",
+  "title": "Oblique ng-add schema",
+  "type": "object",
+  "project": {
+    "$default": {
+      "$source": "projectName"
+    }
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "default": "Title",
+      "description": "Application's title",
+      "x-prompt": "What is the title of the application?"
+    },
+    "theme": {
+      "type": "string",
+      "enum": [
+        "material",
+        "bootstrap"
+      ],
+      "default": "material",
+      "description": "Main Oblique theme",
+      "x-prompt": "Choose a theme. Please note: Material is advised, Bootstrap is only there for backward compatibility."
+    },
+    "font": {
+      "type": "string",
+      "enum": [
+        "frutiger",
+        "roboto",
+        "none"
+      ],
+      "default": "frutiger",
+      "description": "Application's font",
+      "x-prompt": "Choose a font. Please note: Frutiger is mandatory for CI/CD conformity. \"none\" option will not include any external font, meaning Arial will be used."
+    },
+    "langs": {
+      "type": "string",
+      "default": "de fr it",
+      "description": "Supported languages",
+      "x-prompt": "Choose the supported languages. Use a whitespace separated list."
+    },
+    "ajv": {
+      "type": "boolean",
+      "default": true,
+      "description": "Add Ajv dependency",
+      "x-prompt": "Add schema validation? This enables form validation based on a schema delivered by the server."
+    },
+    "unknownRoute": {
+      "type": "boolean",
+      "default": true,
+      "description": "Unknown route management",
+      "x-prompt": "Add the ObUnknownRouteModule? It will display custom 404 pages instead of redirecting to the home page?"
+    },
+    "httpInterceptors": {
+      "type": "boolean",
+      "default": true,
+      "description": "Http interceptor",
+      "x-prompt": "Add the ObHttpApiInterceptor? It will show a spinner and handles errors on API calls"
+    },
+    "prefix": {
+      "type": "string",
+      "default": "app",
+      "description": "Prefix configuration",
+      "x-prompt": "Choose a prefix for components and directives's selectors? Leave empty for no prefix)"
+    },
+    "jest": {
+      "type": "boolean",
+      "default": true,
+      "description": "Jest for unit tests",
+      "x-prompt": "Replace Karma / Jasmine with Jest as the application's testing framework?"
+    },
+    "protractor": {
+      "type": "boolean",
+      "default": false,
+      "description": "Protractor for end to end tests",
+      "x-prompt": "Would you like to keep Protractor for e2e tests? Warning: If not, whole e2e folder will be removed!"
+    },
+    "npmrc": {
+      "type": "boolean",
+      "default": true,
+      "description": "Create .npmrc",
+      "x-prompt": "Is the project located within confederation / federal network? It will add an .npmrc file."
+    },
+    "proxy": {
+      "type": "string",
+      "default": "",
+      "description": "Proxy configuration",
+      "x-prompt": "Choose a port for the proxy configuration for server connection? Leave empty for no proxy configuration."
+    },
+    "sonar": {
+      "type": "boolean",
+      "default": true,
+      "description": "Sonar configuration",
+      "x-prompt": "Add Sonar configuration?"
+    },
+    "jenkins": {
+      "type": "string",
+      "default": "ORG;APP",
+      "description": "Jenkins configuration",
+      "x-prompt": "Choose the organization and application names for Cloud Foundry? Leave empty for no Jenkins / CF configuration"
+    },
+    "static": {
+      "type": "boolean",
+      "default": true,
+      "description": "Cloud foundry static build pack",
+      "x-prompt": "Use the static build pack for CF?"
+    },
+    "eslint": {
+      "type": "boolean",
+      "default": true,
+      "description": "ESLint & Prettier",
+      "x-prompt": "Replace deprecated tslint with eslint & prettier?"
+    },
+    "husky": {
+      "type": "boolean",
+      "default": true,
+      "description": "Husky configuration",
+      "x-prompt": "Add git hooks to automatically format changed files?"
+    },
+    "ie11": {
+      "type": "boolean",
+      "default": false,
+      "description": "IE11 support",
+      "x-prompt": "Enable IE 11 support?"
+    }
+  }
+}

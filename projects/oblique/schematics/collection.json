@@ -1,5 +1,10 @@
 {
-  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
+    "ng-add": {
+      "description": "Adds Oblique to the application",
+      "factory": "./index/ng-add/index#addOblique",
+      "schema": "./index/ng-add/schema.json"
+    }
   }
 }

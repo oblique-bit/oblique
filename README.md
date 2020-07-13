@@ -7,127 +7,16 @@ Read the developer docs: <https://oblique.bit.admin.ch/>
 Oblique uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.angular.io/) and [Sass](http://sass-lang.com/) to fetch dependencies, compile & build assets, compose HTML and serve & watch web content.
 
 ## Embedding Oblique into your project
-
 1. Update your project to Angular 9: <https://update.angular.io/#8.0:9.0>
-
-1. Install `oblique` and its peer dependencies:
-
-    ```
-        npm install @oblique/oblique
-        npm install @ngx-translate/core
-        ng add @angular/localize
-    ```
-
-1. Install `jest` and its dependencies (optional)
-    ```
-        npm i @angular-builders/jest
-        npm i @types/jest
-        npm i jest
-        npm i jest-sonar-reporter
-    ```
-
-1. Configure `Sonar` for jest in `package.json` (optional)
-    ```
-   "jestSonar": {
-      "reportPath": "./coverage/sonarQube",
-      "reportFile": "sqr.xml",
-      "indent": 4,
-      "sonar56x": true
-    },
-    ```
-
-1. Map Oblique's resources and load CSS in `angular.json`:
-    ```
-    "architect": {
-        "build": {
-            "builder": "@angular-devkit/build-angular:browser",
-            "options": {
-                ...
-                "assets": [
-                    ...,
-                    {
-                        "glob": "**/*",
-                        "input": "node_modules/@oblique/oblique/styles",
-                        "output": "assets/styles"
-                    }
-                ],
-                "styles": [
-                    "node_modules/@oblique/oblique/styles/css/oblique-core.css",
-                    "node_modules/@oblique/oblique/styles/css/oblique-material.css",
-                    "src/styles.scss"
-                ],
-                ...
-            },
-        },
-        ...
-    },
-    ```
-
-1. Configure jest (optional)
-    ```
-    "architect": {
-        ...
-        "test": {
-             "builder": "@angular-builders/jest:run",
-             "options": {
-                 "configPath": "../tests/jest.config.js",
-                 "watch": true,
-                 "verbose": true
-             },
-             "configurations": {
-                 "production": {
-                     "configPath": "../tests/jest.config.js",
-                     "watch": false,
-                     "verbose": false
-                 }
-             }
-        },
-        ...
-    },
-    ...
-    ```
-
-1. Configure Oblique in `app.module.ts`
-
-    ```
-    ...
-    @NgModule({
-        imports: [
-            BrowserModule,
-            BrowserAnimationsModule,
-            AppRoutingModule,
-            ObMasterLayoutModule,
-            // import others Oblique Module as necessary
-            TranslateModule.forRoot(multiTranslateLoader()),
-            HttpClientModule
-        ],
-        ...
-        providers: [
-          {provide: HTTP_INTERCEPTORS, useClass: ObHttpApiInterceptor, multi: true}
-        ],
-        ...
-    })
-    ```
-
-1. Define the main navigation in `app.component.ts`
-
-    ```
-    navigation: ObINavigationLink[] = [];
-    ```
-
-1. Embed the master layout in `app.component.html`
-
-    ```
-    <ob-master-layout [navigation]="navigation">
-      <ng-container obHeaderTitle>{{'i18n.application.title' | translate}}</ng-container>
-      <ng-template #obHeaderControl>
-         ...
-      </ng-template>
-      <ng-container obFooterInfo>
-         ...
-      </ng-container>
-    </ob-master-layout>
-    ```
+1. Add Oblique to your project: `ng add @oblique/oblique`. This interactive command will:
+    * add oblique and its dependencies
+    * refactor your application to integrate Oblique
+    * optionally replace jasmine with jest
+    * optionally configure Sonar
+    * optionally configure Jenkins & Cloud Foundry
+    * optionally replace `tslint` with `eslint` and `prettier`
+    * optionally add a git hook to auto format files before push
+    * optionally add IE11 support 
 
 ## Checking for updates
 - Bump dependencies through Angular cli first: `ng update`
