@@ -19,8 +19,8 @@ describe('UnsavedChangesTabsService', () => {
 				{provide: TranslateService, useClass: ObMockTranslateService}
 			]
 		});
-		unsavedChangesService = TestBed.get(ObUnsavedChangesService);
-		unsavedChangesTabService = TestBed.get(ObUnsavedChangesTabsService);
+		unsavedChangesService = TestBed.inject(ObUnsavedChangesService);
+		unsavedChangesTabService = TestBed.inject(ObUnsavedChangesTabsService);
 	});
 
 	describe('listenTo()', () => {

@@ -10,7 +10,7 @@ describe('MasterLayoutFooterService', () => {
 		TestBed.configureTestingModule({
 			providers: [ObMasterLayoutFooterService]
 		});
-		masterLayoutFooterService = TestBed.get(ObMasterLayoutFooterService);
+		masterLayoutFooterService = TestBed.inject(ObMasterLayoutFooterService);
 	});
 
 	it('should be created', () => {

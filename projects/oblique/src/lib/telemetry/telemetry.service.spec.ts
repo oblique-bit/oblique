@@ -14,8 +14,8 @@ describe('TelemetryService', () => {
 			providers: [{provide: WINDOW, useFactory: windowProvider}]
 		});
 
-		service = TestBed.get(ObTelemetryService);
-		httpMock = TestBed.get(HttpTestingController);
+		service = TestBed.inject(ObTelemetryService);
+		httpMock = TestBed.inject(HttpTestingController);
 	});
 
 	it('should be created', () => {

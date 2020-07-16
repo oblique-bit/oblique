@@ -31,7 +31,7 @@ describe('MasterLayoutService', () => {
 				{provide: ObMasterLayoutService, useClass: ObMockMasterLayoutService}
 			]
 		});
-		masterLayoutService = TestBed.get(ObMasterLayoutService);
+		masterLayoutService = TestBed.inject(ObMasterLayoutService);
 	});
 
 	it('should be created', () => {

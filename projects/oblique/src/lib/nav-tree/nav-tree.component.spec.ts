@@ -156,7 +156,7 @@ describe('NavTreeComponent', () => {
 
 	it('should highlight patterns on filtered navigation items', () => {
 		// Restore default label formatter:
-		const translate = TestBed.get(TranslateService);
+		const translate = TestBed.inject(TranslateService);
 		component.labelFormatter = ObNavTreeComponent.DEFAULTS.LABEL_FORMATTER(translate);
 		component.filterPattern = 'C'; // Filter on 'C' pattern
 		fixture.detectChanges();

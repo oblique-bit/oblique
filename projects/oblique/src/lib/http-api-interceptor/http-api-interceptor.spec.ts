@@ -72,16 +72,16 @@ describe('HttpApiInterceptor', () => {
 			]
 		});
 
-		service = TestBed.get(DataService);
-		httpMock = TestBed.get(HttpTestingController);
-		config = TestBed.get(ObHttpApiInterceptorConfig);
-		events = TestBed.get(ObHttpApiInterceptorEvents);
-		spinner = TestBed.get(ObSpinnerService);
-		notification = TestBed.get(ObNotificationService);
+		service = TestBed.inject(DataService);
+		httpMock = TestBed.inject(HttpTestingController);
+		config = TestBed.inject(ObHttpApiInterceptorConfig);
+		events = TestBed.inject(ObHttpApiInterceptorEvents);
+		spinner = TestBed.inject(ObSpinnerService);
+		notification = TestBed.inject(ObNotificationService);
 	}));
 
 	it('should add an X-Requested-With header', () => {
-		service = TestBed.get(DataService);
+		service = TestBed.inject(DataService);
 		const httpRequest = getUsers();
 		expect(httpRequest.request.headers.has('X-Requested-With'));
 	});

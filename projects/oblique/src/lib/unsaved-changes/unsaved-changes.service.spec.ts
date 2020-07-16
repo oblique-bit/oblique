@@ -15,7 +15,7 @@ describe('UnsavedChangesService', () => {
 			imports: [ObMockPopUpModule],
 			providers: [ObUnsavedChangesService, {provide: TranslateService, useClass: ObMockTranslateService}, {provide: WINDOW, useFactory: windowProvider}]
 		});
-		popUpService = TestBed.get(ObPopUpService);
+		popUpService = TestBed.inject(ObPopUpService);
 	});
 
 	beforeEach(() => {

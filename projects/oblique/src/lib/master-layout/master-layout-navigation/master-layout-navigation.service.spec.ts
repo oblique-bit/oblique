@@ -23,7 +23,7 @@ describe('MasterLayoutNavigationService', () => {
 	);
 
 	it('should be created', () => {
-		service = TestBed.get(ObMasterLayoutNavigationService);
+		service = TestBed.inject(ObMasterLayoutNavigationService);
 		expect(service).toBeTruthy();
 	});
 

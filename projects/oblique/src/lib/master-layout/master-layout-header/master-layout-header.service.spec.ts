@@ -10,7 +10,7 @@ describe('MasterLayoutHeaderService', () => {
 		TestBed.configureTestingModule({
 			providers: [ObMasterLayoutHeaderService]
 		});
-		masterLayoutHeaderService = TestBed.get(ObMasterLayoutHeaderService);
+		masterLayoutHeaderService = TestBed.inject(ObMasterLayoutHeaderService);
 	});
 
 	it('should be created', () => {

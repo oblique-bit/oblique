@@ -40,7 +40,7 @@ describe('FilterBox', () => {
 
 	describe('with Bootstrap theme', () => {
 		beforeEach(() => {
-			(TestBed.get(ObThemeService) as ObThemeService).setTheme(THEMES.BOOTSTRAP);
+			(TestBed.inject(ObThemeService) as ObThemeService).setTheme(THEMES.BOOTSTRAP);
 			fixture.detectChanges();
 		});
 

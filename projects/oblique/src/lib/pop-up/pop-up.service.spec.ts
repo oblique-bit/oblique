@@ -7,7 +7,7 @@ describe('PopUpService', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({providers: [{provide: WINDOW, useFactory: windowProvider}]});
-		service = TestBed.get(ObPopUpService);
+		service = TestBed.inject(ObPopUpService);
 	});
 
 	it('should be created', () => {

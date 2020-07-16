@@ -9,7 +9,7 @@ describe('SelectedService', () => {
 			imports: [],
 			providers: [ObSelectableService]
 		});
-		selectableService = TestBed.get(ObSelectableService);
+		selectableService = TestBed.inject(ObSelectableService);
 	});
 
 	it('should be created', () => {
