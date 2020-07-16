@@ -16,7 +16,7 @@ export function initalize(_options: IUpdateSchema): Rule {
 		const match = readVersion.match(/\d+/);
 		const numericObVersion = match && match.length > 0 ? match[0] : '100';
 
-		if (parseInt(numericObVersion, 0) < OB_LAST_MAJOR_SUPPORT_VERSION) {
+		if (parseInt(numericObVersion, 10) < OB_LAST_MAJOR_SUPPORT_VERSION) {
 			throw new Error(`[ERROR] Oblique Major ${numericObVersion} is not supported anymore - no migration possible. Sorry.`);
 		}
 

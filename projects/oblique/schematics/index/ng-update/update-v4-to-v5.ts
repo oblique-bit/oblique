@@ -509,8 +509,8 @@ export class UpdateV4toV5 implements IMigratable {
 				.forEach(packageName => {
 					const peerPackage = this.getPackage(obPackageJSON, 'peerDependencies', packageName).match(/\d+/) || ['0'];
 					const dependencyPackage = this.getPackage(projectPackageJSON, 'dependencies', packageName).match(/\d+/) || ['0'];
-					const peerDependencyMajorVersion = parseInt(peerPackage[0], 0);
-					const dependecyMajorVersion = parseInt(dependencyPackage[0], 0);
+					const peerDependencyMajorVersion = parseInt(peerPackage[0], 10);
+					const dependecyMajorVersion = parseInt(dependencyPackage[0], 10);
 					if (!dependencies.includes(packageName) || dependecyMajorVersion < peerDependencyMajorVersion) {
 						const peer = `${packageName}@${peerDependencyMajorVersion}`;
 						const errorMsg = `[ERROR] Oblique requires a peer of ${peer} but none is installed. You must install peer dependencies yourself.`;
@@ -521,8 +521,8 @@ export class UpdateV4toV5 implements IMigratable {
 			Object.keys(obPackageJSON.optionalDependencies).forEach(packageName => {
 				const peerPackage = this.getPackage(obPackageJSON, 'optionalDependencies', packageName).match(/\d+/) || ['0'];
 				const dependencyPackage = this.getPackage(projectPackageJSON, 'dependencies', packageName).match(/\d+/) || ['0'];
-				const peerDependencyMajorVersion = parseInt(peerPackage[0], 0);
-				const dependecyMajorVersion = parseInt(dependencyPackage[0], 0);
+				const peerDependencyMajorVersion = parseInt(peerPackage[0], 10);
+				const dependecyMajorVersion = parseInt(dependencyPackage[0], 10);
 				if (dependencies.includes(packageName) && dependecyMajorVersion < peerDependencyMajorVersion) {
 					const peer = `${packageName}@${peerDependencyMajorVersion}`;
 					throw new Error(`[ERROR] Oblique requires a peer of ${peer} but none is installed. You must install peer dependencies yourself.`);

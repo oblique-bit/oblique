@@ -147,6 +147,11 @@ function addEslint(eslint: boolean, prefix: string): Rule {
 			tree.create('.prettierrc', prettier);
 
 			let eslintFile = getTemplate('default-eslintrc.js.config').replace(/APP_PREFIX/g, prefix);
+			const tsConfig = getJson(tree, 'tsconfig.base.json');
+			if (tsConfig) {
+				// Angular 10
+				eslintFile.replace('tsconfig.json', 'tsconfig.base.json');
+			}
 			if (prefix === '') {
 				eslintFile = eslintFile.replace(`'@angular-eslint/component-selector': ["error"`, `'@angular-eslint/component-selector': ["off"`);
 				eslintFile = eslintFile.replace(`'@angular-eslint/directive-selector': ["error"`, `'@angular-eslint/directive-selector': ["off"`);
@@ -193,13 +198,25 @@ function addHusky(husky: boolean): Rule {
 function addIE11Support(ie11: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (ie11) {
-			const tsConfig = getJson(tree, 'tsconfig.json');
-			tsConfig.compilerOptions.target = 'es5';
-			tree.overwrite('tsconfig.json', JSON.stringify(tsConfig, null, 2));
-			const content = tree.read('browserslist') || '';
-			const newContent = content.toString().split('\n').reverse();
-			newContent[0] = "IE 11\nnot IE 9-10 # For IE 9-11 support, remove 'not'";
-			tree.overwrite('browserslist', newContent.reverse().join('\n'));
+			let tsConfig = getJson(tree, 'tsconfig.base.json');
+			if (tsConfig) {
+				// Angular 10
+				tsConfig.compilerOptions.target = 'es5';
+				tree.overwrite('tsconfig.base.json', JSON.stringify(tsConfig, null, 2));
+				const content = tree.read('.browserslistrc') || '';
+				const newContent = content.toString().split('\n').reverse();
+				newContent[0] = "IE 11\nnot IE 9-10 # For IE 9-11 support, remove 'not'";
+				tree.overwrite('.browserslistrc', newContent.reverse().join('\n'));
+			} else {
+				// Angular 9
+				tsConfig = getJson(tree, 'tsconfig.json');
+				tsConfig.compilerOptions.target = 'es5';
+				tree.overwrite('tsconfig.json', JSON.stringify(tsConfig, null, 2));
+				const content = tree.read('browserslist') || '';
+				const newContent = content.toString().split('\n').reverse();
+				newContent[0] = "IE 11\nnot IE 9-10 # For IE 9-11 support, remove 'not'";
+				tree.overwrite('browserslist', newContent.reverse().join('\n'));
+			}
 		}
 		return tree;
 	};

@@ -16,12 +16,5 @@
   "schematics": "./collection.json",
   "ng-update": {
     "migrations": "./migration.json"
-  },
-  "dependencies": {
-    "@angular-devkit/core": "^8.3.23",
-    "@angular-devkit/schematics": "^8.3.23",
-    "@types/node": "^8.0.31",
-    "cpx": "^1.5.0",
-    "typescript": "~3.5.3"
   }
 }

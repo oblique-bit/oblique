@@ -8,10 +8,8 @@ import {
 	getJson,
 	getJsonProperty,
 	getTemplate,
-	packageJsonConfigPath,
-	pathToTemplates
+	packageJsonConfigPath
 } from '../../ng-add-utils';
-import * as fs from 'fs';
 
 export function addJest(jest: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
@@ -35,8 +33,14 @@ function removeJasmine() {
 	return (tree: Tree, _context: SchematicContext) => {
 		let jasmineTsConfigJson = getJson(tree, 'src/tsconfig.spec.json');
 		if (!jasmineTsConfigJson) {
-			const buffer = fs.readFileSync(`${pathToTemplates}/default-tsconfig.spec.json`);
-			addFile(tree, 'src/tsconfig.spec.json', buffer.toString());
+			const tpl = getTemplate('default-tsconfig.spec.json');
+
+			const tsConfig = getJson(tree, 'tsconfig.base.json');
+			if (tsConfig) {
+				// Angular 10
+				tpl.replace('tsconfig.json', 'tsconfig.base.json');
+			}
+			addFile(tree, 'src/tsconfig.spec.json', tpl);
 			jasmineTsConfigJson = getJson(tree, 'src/tsconfig.spec.json');
 		}
 
