@@ -1,5 +1,6 @@
 import {
 	Component,
+	ContentChild,
 	ContentChildren,
 	ElementRef,
 	HostBinding,
@@ -22,7 +23,7 @@ import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {appVersion} from '../../version';
 import {WINDOW} from '../../utilities';
-import {ObINavigationLink, ObEMasterLayoutEventValues} from '../master-layout.datatypes';
+import {ObEMasterLayoutEventValues, ObINavigationLink} from '../master-layout.datatypes';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 
 @Component({
@@ -52,6 +53,7 @@ export class ObMasterLayoutComponent extends ObUnsubscribable implements OnInit 
 	@HostBinding('class.footer-sm') footerSm = this.masterLayout.footer.isSmall;
 	@HostBinding('class.application-scrolling') isScrolling = false;
 	@HostBinding('class.outline') outline = true;
+	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<any>;
 	@ContentChildren('obHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('obHeaderMobileControl') readonly headerMobileControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('obFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<any>>;

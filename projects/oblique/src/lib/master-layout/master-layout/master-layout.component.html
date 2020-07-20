@@ -25,6 +25,9 @@
 	<ng-template #obHeaderMobileControl *ngFor="let template of headerMobileControlTemplates">
 		<ng-container [ngTemplateOutlet]="template"></ng-container>
 	</ng-template>
+	<ng-template #obHeaderLogo>
+		<ng-container [ngTemplateOutlet]="obLogo || logo"></ng-container>
+	</ng-template>
 </ob-master-layout-header>
 <div id="content" class="application-content" role="main" [class.offcanvas-main]="hasOffCanvas" tabindex="-1">
 	<div class="application-content-viewport">
@@ -78,3 +81,6 @@
 </div>
 <div class="modal-backdrop offcanvas-backdrop show" *ngIf="hasOffCanvas"></div>
 <ob-spinner></ob-spinner>
+<ng-template #logo>
+	<img alt="{{ 'i18n.oblique.header.logo' | translate }}" src="assets/styles/images/logo.svg" />
+</ng-template>

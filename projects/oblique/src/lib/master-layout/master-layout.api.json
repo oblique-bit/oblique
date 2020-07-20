@@ -8,6 +8,7 @@
       "type": "component",
       "usage": "This component takes care of the structure of the application and should be used in <code>app.component.html</code>",
       "since": "2.0.0",
+      "updated": "5.1.0",
       "inputs": [
         {
           "name": "navigation",
@@ -27,6 +28,11 @@
           "name": "[obHeaderTitle]",
           "text": "Content that will be projected as the application's title within the main header.",
           "since": "3.0.0"
+        },
+        {
+          "name": "[obHeaderLogo]",
+          "text": "Content that will be projected as the application's logo (an <code>img</code> is expected) within the main header. It will replace the default Confederation logo.",
+          "since": "5.1.0"
         },
         {
           "name": "[obNavigation]",
@@ -577,7 +583,7 @@
           "name": "mode",
           "text": "Scroll mode of the event",
           "type": "ObEScrollMode",
-          "values":[
+          "values": [
             "ObEScrollMode.AUTO",
             "ObEScrollMode.ENABLED",
             "ObEScrollMode.DISABLED"
