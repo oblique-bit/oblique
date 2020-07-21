@@ -110,6 +110,27 @@
 		}
 	}
 
+	.application-header-action {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-top: $spacing-sm;
+		margin-bottom: $spacing-sm;
+		padding-left: $spacing-default;
+		padding-right: $spacing-default;
+		border-right: 1px solid $gray-lighter;
+
+		&:empty {
+			display: none;
+		}
+
+		@include layout-collapse-down() {
+			float: left;
+			margin-top: 13px;
+			margin-bottom: 13px;
+		}
+	}
+
 	.application-header-title {
 		display: flex;
 		flex: 1;

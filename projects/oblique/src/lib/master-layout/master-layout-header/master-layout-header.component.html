@@ -2,6 +2,9 @@
 	<ng-content select="[obHeader]" *ngIf="isCustom"></ng-content>
 	<h1 class="sr-only">{{ "i18n.oblique.header.title" | translate }}</h1>
 	<ng-container *ngIf="!isCustom">
+		<div class="application-header-action">
+			<ng-content select="[obHeaderAction]"></ng-content>
+		</div>
 		<div class="application-header-title">
 			<div class="application-brand">
 				<a class="application-brand-logo" [routerLink]="home" tabindex="-1">

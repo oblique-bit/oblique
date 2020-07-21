@@ -30,6 +30,11 @@
           "since": "3.0.0"
         },
         {
+          "name": "[obHeaderAction]",
+          "text": "Content that will be projected before the application's logo (only visible in expanded layout).",
+          "since": "5.1.0"
+        },
+        {
           "name": "[obHeaderLogo]",
           "text": "Content that will be projected as the application's logo (an <code>img</code> is expected) within the main header. It will replace the default Confederation logo.",
           "since": "5.1.0"
