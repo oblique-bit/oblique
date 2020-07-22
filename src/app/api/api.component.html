@@ -23,6 +23,10 @@
 		</ng-container>
 		<dt>Since</dt>
 		<dd>{{ component.since }}</dd>
+		<ng-container *ngIf="component.updated">
+			<dt>Last updated</dt>
+			<dd>{{ component.updated }}</dd>
+		</ng-container>
 	</dl>
 	<ng-container *ngIf="component.variables">
 		<h5>Variables</h5>

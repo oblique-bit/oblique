@@ -30,5 +30,6 @@
 			<b>Returns:</b> <code>{{ element.returns }}</code>
 		</dd>
 		<dd><b>Since:</b> {{ element.since }}</dd>
+		<dd *ngIf="element.updated"><b>Last updated:</b> {{ element.updated }}</dd>
 	</ng-container>
 </dl>
