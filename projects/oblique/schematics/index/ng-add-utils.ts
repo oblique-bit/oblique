@@ -109,7 +109,7 @@ export function getObliqueVersion(tree: Tree): string {
 
 export function getDepVersion(tree: Tree, dep: string): string {
 	const json = getJson(tree, 'node_modules/@oblique/oblique/package.json');
-	return json.peerDependencies[dep] || json.optionalDependencies[dep];
+	return json.peerDependencies[dep];
 }
 
 export function addPreconditions(): Rule {
