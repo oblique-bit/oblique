@@ -65,7 +65,7 @@
 	.header {
 		position: relative;
 		display: block;
-		z-index: 1;
+		z-index: 5;
 		width: 100%;
 		padding: 0;
 		background-color: inherit;
@@ -107,6 +107,27 @@
 				background-color: inherit;
 				z-index: -1;
 			}
+		}
+	}
+
+	.application-header-action {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-top: $spacing-sm;
+		margin-bottom: $spacing-sm;
+		padding-left: $spacing-default;
+		padding-right: $spacing-default;
+		border-right: 1px solid $gray-lighter;
+
+		&:empty {
+			display: none;
+		}
+
+		@include layout-collapse-down() {
+			float: left;
+			margin-top: 13px;
+			margin-bottom: 13px;
 		}
 	}
 
@@ -161,7 +182,7 @@
 		font-size: $font-size-xl;
 		font-weight: 300;
 		padding-left: $spacing-default;
-		border-left: 1px solid $gray-extra-light;
+		border-left: 1px solid $gray-lighter;
 		max-height: $brand-logo-height-collapsed;
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -197,6 +218,24 @@
 
 		@include layout-collapse-up() {
 			display: none !important;
+		}
+	}
+
+	.condensed & {
+		&:not(.application-fixed):not(.application-header-sticky) {
+			position: static;
+
+			&::before {
+				content: '';
+				display: block;
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				height: $brand-line-width;
+				background-color: $brand-accent;
+				z-index: 5;
+			}
 		}
 	}
 }

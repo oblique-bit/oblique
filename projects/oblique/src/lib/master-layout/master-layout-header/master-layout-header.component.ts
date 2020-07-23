@@ -1,6 +1,7 @@
 import {
 	AfterViewInit,
 	Component,
+	ContentChild,
 	ContentChildren,
 	ElementRef,
 	HostBinding,
@@ -43,6 +44,7 @@ export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements A
 	@HostBinding('class.application-header-animate') isAnimated = this.masterLayout.header.isAnimated;
 	@HostBinding('class.application-header-sticky') isSticky = this.masterLayout.header.isSticky;
 	@HostBinding('class.application-header-md') isMedium = this.masterLayout.header.isMedium;
+	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<any>;
 	@ContentChildren('obHeaderControl') readonly templates: QueryList<TemplateRef<any>>;
 	@ContentChildren('obHeaderMobileControl') readonly mobileTemplates: QueryList<TemplateRef<any>>;
 	@ViewChildren('headerControl') readonly headerControl: QueryList<ElementRef>;

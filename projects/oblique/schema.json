@@ -31,6 +31,9 @@
           "since": {
             "type": "string"
           },
+          "updated": {
+            "type": "string"
+          },
           "type": {
             "type": "string",
             "enum": [
