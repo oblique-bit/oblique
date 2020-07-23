@@ -1,3 +1,15 @@
+# [5.1.0-RC.2](https://github.com/oblique-bit/oblique/compare/5.1.0-RC.1...5.1.0-RC.2) (2020-07-23)
+
+## Bug Fixes
+* **master-layout:** fix separator color in header ([bee37b8](https://github.com/oblique-bit/oblique/commit/bee37b82738a6507511e0239b9d8aed8394ac0aa))
+* **toolchain:** fix peer dependencies version ([1440ce1](https://github.com/oblique-bit/oblique/commit/1440ce19f661ac085017237f5f75fa0020b7a51b))
+
+## Features
+* **master-layout:** add `obHeaderAction` to allow content before the logo ([763714c](https://github.com/oblique-bit/oblique/commit/763714cef6b5e01e7a4af8bcaafa3c3c992460c4))
+* **master-layout:** can keep the red line when the header is scrolled away ([af0ca53](https://github.com/oblique-bit/oblique/commit/af0ca53394106501be579b9bfce7d8f16881fa1e))
+* **master-layout:** header logo is customizable ([2524b6c](https://github.com/oblique-bit/oblique/commit/2524b6cf11e489d77e5c0f380c1514e8d2d91591))
+
+
 # [5.1.0-RC.1](https://github.com/oblique-bit/oblique/compare/5.0.5...5.1.0-RC.1) (2020-07-16)
 
 ## Bug Fixes
