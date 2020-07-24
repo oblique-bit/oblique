@@ -11,30 +11,31 @@ import {NgbDatepickerConfig, NgbModule, NgbTooltipConfig} from '@ng-bootstrap/ng
 import {TranslateModule} from '@ngx-translate/core';
 
 import {
+	FONTS,
+	multiTranslateLoader,
+	OB_BANNER,
 	ObDocumentMetaModule,
 	ObDocumentMetaService,
 	ObDropdownModule,
 	ObErrorMessagesModule,
-	FONTS,
-	ObMasterLayoutConfig,
-	ObMasterLayoutModule,
-	ObMultiselectModule,
-	multiTranslateLoader,
-	ObNotificationModule,
-	OBLIQUE_FONT,
 	ObHttpApiInterceptor,
 	ObHttpApiInterceptorConfig,
 	ObHttpApiInterceptorModule,
-	ObSelectableModule,
+	ObInputClearModule,
+	OBLIQUE_FONT,
+	ObMasterLayoutConfig,
+	ObMasterLayoutModule,
+	ObMultiselectModule,
+	ObNotificationModule,
 	ObOffCanvasModule,
 	ObSchemaValidationModule,
 	ObScrollingModule,
 	ObSearchBoxModule,
+	ObSelectableModule,
 	ObSpinnerModule,
-	ObInputClearModule,
-	THEMES,
 	ObThemeService,
-	ObUnsavedChangesModule
+	ObUnsavedChangesModule,
+	THEMES
 } from 'oblique';
 // App:
 import {AppComponent} from './app.component';
@@ -42,6 +43,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {HomePageComponent} from './home/home.page';
 import {HttpMockErrorInterceptor} from './samples/http-interceptor/http-mock-error.interceptor';
 import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
+import {environment} from '../environments/environment';
 
 @NgModule({
 	declarations: [AppComponent, HomePageComponent],
@@ -75,6 +77,8 @@ import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-in
 	],
 	providers: [
 		{provide: OBLIQUE_FONT, useValue: FONTS.ROBOTO},
+		// eslint-disable-next-line dot-notation
+		{provide: OB_BANNER, useValue: environment['banner']},
 		{provide: HTTP_INTERCEPTORS, useClass: ObHttpApiInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
 		{provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig}
