@@ -36,6 +36,7 @@
     "start": "ng serve",
     "build": "npm run gulp themes && ng build",
     "schematics": "npm run dist --prefix projects/oblique/schematics",
+    "predist": "npm run gulp pre-dist",
     "dist": "npm run build -- oblique && npm run schematics",
     "postdist": "npm run gulp -- dist",
     "test": "ng test oblique",

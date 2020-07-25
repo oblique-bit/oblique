@@ -1,3 +1,4 @@
+/* eslint-disable */
 delete require.cache[require.resolve('./package.json')];
 const fs = require('fs'),
 	gulp = require('gulp'),
@@ -97,9 +98,22 @@ const distRename = () => gulp.src(`${paths.dist}/**/oblique-oblique*`)
 
 const clean = () => del(`${paths.dist}/**/oblique-oblique*`);
 
+const telemetryPre = () => gulp.src(`${paths.src}/lib/telemetry/telemetry.service.ts`)
+	.pipe(replace('require(\'package.json\')', '\'_REQUIRE_PLACEHOLDER_\''))
+	.pipe(gulp.dest(`${paths.src}/lib/telemetry`));
+
+const telemetryPost = () => gulp.src(`${paths.src}/lib/telemetry/telemetry.service.ts`)
+	.pipe(replace('\'_REQUIRE_PLACEHOLDER_\'', 'require(\'package.json\')'))
+	.pipe(gulp.dest(`${paths.src}/lib/telemetry`));
+
+const telemetryPostLib = () => gulp.src(`${paths.dist}/**/*.js`)
+	.pipe(replace('\'_REQUIRE_PLACEHOLDER_\'', 'require(\'package.json\')'))
+	.pipe(gulp.dest(paths.dist));
+
 gulp.task(
 	'dist',
 	gulp.parallel(
+		telemetryPost,
 		distMeta,
 		distFonts,
 		distDocs,
@@ -120,6 +134,7 @@ gulp.task(
 			distScss,
 			distCss,
 			distRename,
+			telemetryPostLib,
 			gulp.parallel(
 				addBanner,
 				distMap
@@ -129,6 +144,8 @@ gulp.task(
 		)
 	)
 );
+
+gulp.task('pre-dist', telemetryPre);
 
 gulp.task(
 	'publish',
