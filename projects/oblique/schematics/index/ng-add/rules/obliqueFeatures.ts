@@ -1,12 +1,12 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {addPackageJsonDependency, NodeDependencyType} from '@schematics/angular/utility/dependencies';
+import {addPackageJsonDependency} from '@schematics/angular/utility/dependencies';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {addImportToModule, addProviderToModule, addRouteDeclarationToModule, insertImport} from '@schematics/angular/utility/ast-utils';
 import {
 	angularJsonConfigPath,
 	applyChanges,
 	appModulePath,
-	getDepVersion,
+	createDevDependency,
 	getJson,
 	getJsonProperty,
 	OBLIQUE_PACKAGE,
@@ -22,8 +22,7 @@ export function obliqueFeatures(options: any): Rule {
 function addAjv(ajv: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (ajv) {
-			const version = getDepVersion(tree, 'ajv');
-			addPackageJsonDependency(tree, {name: 'ajv', type: NodeDependencyType.Default, version: version});
+			addPackageJsonDependency(tree, createDevDependency('ajv'));
 
 			let tsConfig = getJson(tree, 'tsconfig.base.json');
 			if (tsConfig) {

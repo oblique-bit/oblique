@@ -4,7 +4,7 @@ import {colors} from '@angular-devkit/core/src/terminal';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 import {getFileContent} from '@schematics/angular/utility/test';
 import {getWorkspace} from '@schematics/angular/utility/config';
-import {addPackageJsonDependency, NodeDependencyType} from '@schematics/angular/utility/dependencies';
+import {addPackageJsonDependency, NodeDependency, NodeDependencyType} from '@schematics/angular/utility/dependencies';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {execSync} from 'child_process';
 import * as fs from 'fs';
@@ -16,7 +16,14 @@ export const packageJsonConfigPath = './package.json/';
 export const routingModulePath = 'src/app/app-routing.module.ts';
 export const pathToTemplates = './node_modules/@oblique/oblique/schematics/index/ng-add/templates';
 export const obliqueCssPath = 'node_modules/@oblique/oblique/styles/css/oblique-core.css';
-const versions: {[key: string]: string} = {
+const versions: {[key: string]: string | string[]} = {
+	// eslint-disable-next-line prettier/prettier
+	ajv: '^6.0.0',
+	'@ngx-translate/core': ['^12.0.0', '^13.0.0'],
+	'@ng-bootstrap/ng-bootstrap': ['^6.0.0', '^7.0.0'],
+	'@angular/cdk': ['^9.0.0', '^10.0.0'],
+	'@angular/material': ['^9.0.0', '^10.0.0'],
+
 	// eslint-disable-next-line prettier/prettier
 	jest: '^25.0.0',
 	'@types/jest': '^25.0.0',
@@ -36,9 +43,20 @@ const versions: {[key: string]: string} = {
 	husky: '^4.0.0'
 };
 
-export function createDevDependency(name: string): any {
-	// eslint-disable-next-line
-	return {type: NodeDependencyType.Dev, version: versions[name], name: name};
+export function createDevDependency(name: string, angular10 = false): NodeDependency {
+	let version = versions[name];
+	if (Array.isArray(version)) {
+		version = version[angular10 ? 1 : 0];
+	}
+	return {type: NodeDependencyType.Dev, version: version as string, name: name};
+}
+
+export function createDependency(name: string, angular10 = false): NodeDependency {
+	let version = versions[name];
+	if (Array.isArray(version)) {
+		version = version[angular10 ? 1 : 0];
+	}
+	return {type: NodeDependencyType.Default, version: version as string, name: name};
 }
 
 export function importModule(moduleName: string, src: string) {
@@ -87,11 +105,6 @@ export function getObliqueVersion(tree: Tree): string {
 	return (/\d\.\d\.\d/.exec(fileContent) || [])[0];
 }
 
-export function getDepVersion(tree: Tree, dep: string): string {
-	const json = getJson(tree, 'node_modules/@oblique/oblique/package.json');
-	return json.peerDependencies[dep];
-}
-
 export function addPreconditions(): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (!getFileContent(tree, './package.json').includes('"@angular/localize"')) {
@@ -127,4 +140,8 @@ export function addFile(tree: Tree, filename: string, content: string): void {
 	if (!tree.exists(filename)) {
 		tree.create(filename, content);
 	}
+}
+
+export function isAngular10(tree: Tree): boolean {
+	return !!getJson(tree, 'tsconfig.base.json');
 }

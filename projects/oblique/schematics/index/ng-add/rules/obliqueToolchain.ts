@@ -1,6 +1,7 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {getFileContent} from '@schematics/angular/utility/test';
-import {addPackageDependency, angularJsonConfigPath, getDepVersion, getJson, getJsonProperty, importModule} from '../../ng-add-utils';
+import {addPackageJsonDependency} from '@schematics/angular/utility/dependencies';
+import {angularJsonConfigPath, createDevDependency, getJson, getJsonProperty, importModule, isAngular10} from '../../ng-add-utils';
 import {addMainCSS, addTranslationFiles, addTranslationToImports, updateAssets} from './obliqueToolchainFunc';
 
 export function obliqueToolchain(options: any): Rule {
@@ -70,13 +71,8 @@ function addPrefix(prefix: string): Rule {
 
 function addTranslation(langs: string[]): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		const translateCoreSource = '@ngx-translate/core';
-		const version = getDepVersion(tree, translateCoreSource);
-		return chain([
-			importModule('HttpClientModule', '@angular/common/http'),
-			addPackageDependency(translateCoreSource, version),
-			addTranslationFiles(langs),
-			addTranslationToImports()
-		])(tree, _context);
+		addPackageJsonDependency(tree, createDevDependency('@ngx-translate/core', isAngular10(tree)));
+
+		return chain([importModule('HttpClientModule', '@angular/common/http'), addTranslationFiles(langs), addTranslationToImports()])(tree, _context);
 	};
 }

@@ -3,7 +3,19 @@ import {bold, colors} from '@angular-devkit/core/src/terminal';
 import {getFileContent} from '@schematics/angular/utility/test';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {addProviderToModule} from '@schematics/angular/utility/ast-utils';
-import {angularJsonConfigPath, applyChanges, appModulePath, getJson, getJsonProperty, importModule, OBLIQUE_PACKAGE, obliqueCssPath} from '../../ng-add-utils';
+import {addPackageJsonDependency} from '@schematics/angular/utility/dependencies';
+import {
+	angularJsonConfigPath,
+	applyChanges,
+	appModulePath,
+	createDependency,
+	getJson,
+	getJsonProperty,
+	importModule,
+	isAngular10,
+	OBLIQUE_PACKAGE,
+	obliqueCssPath
+} from '../../ng-add-utils';
 import {addLocales} from './locales';
 import * as ts from 'typescript';
 import yellow = colors.yellow;
@@ -15,7 +27,8 @@ export function oblique(options: any): Rule {
 			importModule('BrowserAnimationsModule', '@angular/platform-browser/animations'),
 			embedMasterLayout(options.title),
 			addComment(),
-			addTheme(options.theme),
+			addThemeDependencies(options.theme),
+			addThemeCSS(options.theme),
 			addFontWarning(options.font),
 			addFontInjectionToken(options.font.toUpperCase() || 'NONE'),
 			addLocales(options.langs.split(' '))
@@ -44,7 +57,21 @@ function addComment(): Rule {
 	};
 }
 
-function addTheme(theme: string): Rule {
+function addThemeDependencies(theme: string): Rule {
+	return (tree: Tree, _context: SchematicContext) => {
+		const angular10 = isAngular10(tree);
+		if (theme === 'material') {
+			addPackageJsonDependency(tree, createDependency('@angular/cdk', angular10));
+			addPackageJsonDependency(tree, createDependency('@angular/material', angular10));
+		} else {
+			addPackageJsonDependency(tree, createDependency('@ng-bootstrap/ng-bootstrap', angular10));
+		}
+
+		return tree;
+	};
+}
+
+function addThemeCSS(theme: string): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (!tree.exists(angularJsonConfigPath)) {
 			return tree;
