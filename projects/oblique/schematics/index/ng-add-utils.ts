@@ -4,7 +4,7 @@ import {colors} from '@angular-devkit/core/src/terminal';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 import {getFileContent} from '@schematics/angular/utility/test';
 import {getWorkspace} from '@schematics/angular/utility/config';
-import {addPackageJsonDependency, NodeDependency, NodeDependencyType} from '@schematics/angular/utility/dependencies';
+import {addPackageJsonDependency, NodeDependencyType} from '@schematics/angular/utility/dependencies';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {execSync} from 'child_process';
 import * as fs from 'fs';
@@ -45,12 +45,9 @@ export function importModule(moduleName: string, src: string) {
 	return (tree: Tree, _context: SchematicContext) => {
 		const workspace = getWorkspace(tree);
 		const project = getProjectFromWorkspace(workspace);
-
-		if (hasNgModuleImport(tree, appModulePath, moduleName)) {
-			return;
+		if (!hasNgModuleImport(tree, appModulePath, moduleName)) {
+			addModuleImportToRootModule(tree, moduleName, src, project);
 		}
-
-		addModuleImportToRootModule(tree, moduleName, src, project);
 
 		return tree;
 	};
@@ -58,47 +55,30 @@ export function importModule(moduleName: string, src: string) {
 
 export function addPackageDependency(dependencyName: string, version: string, dependencyType?: NodeDependencyType, overwrite?: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		const nodeDependency: NodeDependency = {
+		addPackageJsonDependency(tree, {
 			type: dependencyType || NodeDependencyType.Default,
 			name: dependencyName,
 			version: version,
 			overwrite: overwrite
-		};
-		addPackageJsonDependency(tree, nodeDependency);
+		});
 		return tree;
 	};
 }
 
 export function applyChanges(tree: Tree, filePath: string, changes: Change[]) {
 	const records = tree.beginUpdate(filePath);
-
-	for (const change of changes) {
-		if (change instanceof InsertChange) {
-			records.insertLeft(change.pos, change.toAdd);
-		}
-	}
+	changes.filter(change => change instanceof InsertChange).forEach((change: InsertChange) => records.insertLeft(change.pos, change.toAdd));
 	tree.commitUpdate(records);
 	return tree;
 }
 
 export function getJson(tree: any, path: string) {
 	const json = tree.read(path);
-	if (!json) {
-		return;
-	}
-	const packageJson = json.toString();
-	return JSON.parse(packageJson);
+	return json ? JSON.parse(json.toString()) : undefined;
 }
 
 export function getJsonProperty(json: any, propertyPath: string): string {
-	const properties: string[] = propertyPath.split(';');
-	properties.forEach(s => {
-		if (getProperty(json, s) === undefined) {
-			return '';
-		}
-		json = getProperty(json, s);
-	});
-	return json;
+	return propertyPath.split(';').reduce((obj, property) => obj[property], json);
 }
 
 export function getObliqueVersion(tree: Tree): string {
@@ -131,10 +111,6 @@ export function installDependencies(): Rule {
 		_context.logger.debug('Dependencies installed');
 		return tree;
 	};
-}
-
-function getProperty(json: any, s: string): JSON {
-	return json[s];
 }
 
 export function getTemplate(file: string): string {
