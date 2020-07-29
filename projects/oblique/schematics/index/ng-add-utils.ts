@@ -130,6 +130,10 @@ export function getTemplate(file: string): string {
 	return fs.readFileSync(`${pathToTemplates}/${file}`).toString();
 }
 
+export function listFiles(dir: string): string[] {
+	return fs.readdirSync(dir);
+}
+
 export function deleteFile(tree: Tree, filename: string): void {
 	if (tree.exists(filename)) {
 		tree.delete(filename);
