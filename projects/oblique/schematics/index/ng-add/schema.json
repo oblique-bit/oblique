@@ -60,6 +60,12 @@
       "description": "Http interceptor",
       "x-prompt": "Add the ObHttpApiInterceptor? It will show a spinner and handles errors on API calls"
     },
+    "banner": {
+      "type": "boolean",
+      "default": false,
+      "description": "Banner to show current environment",
+      "x-prompt": "Add the ObBanner? It will show the current environment in the header."
+    },
     "prefix": {
       "type": "string",
       "default": "app",

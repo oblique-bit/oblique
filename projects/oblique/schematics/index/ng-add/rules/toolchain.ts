@@ -27,6 +27,7 @@ export function toolchain(options: any): Rule {
 			addProtractor(options.protractor, options.jest),
 			addSonar(options.sonar, options.jest),
 			jenkins(options.jenkins, options.static, options.jest),
+			addLintDeps(options.eslint),
 			addEslint(options.eslint, options.prefix),
 			addHusky(options.husky),
 			addIE11Support(options.ie11)
@@ -135,7 +136,6 @@ function addEslint(eslint: boolean, prefix: string): Rule {
 		if (eslint) {
 			deleteFile(tree, 'tslint.json');
 			const json = getJson(tree, packageJsonConfigPath);
-			addLintDeps(tree, json);
 
 			json.scripts.lint = "eslint 'src/**/*.ts'";
 			json.scripts['lint:fix'] = 'npm run lint -- --fix';
@@ -162,21 +162,28 @@ function addEslint(eslint: boolean, prefix: string): Rule {
 	};
 }
 
-function addLintDeps(tree: Tree, json: any): void {
-	Object.keys(json.devDependencies)
-		.filter((dep: string) => dep.indexOf('lint') > -1)
-		.forEach((dep: string) => removePackageJsonDependency(tree, dep));
+function addLintDeps(eslint: boolean): Rule {
+	return (tree: Tree, _context: SchematicContext) => {
+		if (eslint) {
+			const json = getJson(tree, packageJsonConfigPath);
+			Object.keys(json.devDependencies)
+				.filter((dep: string) => dep.indexOf('lint') > -1)
+				.forEach((dep: string) => removePackageJsonDependency(tree, dep));
 
-	[
-		'@angular-eslint/builder',
-		'@angular-eslint/eslint-plugin',
-		'@typescript-eslint/eslint-plugin',
-		'@typescript-eslint/parser',
-		'eslint',
-		'eslint-config-prettier',
-		'eslint-plugin-prettier',
-		'prettier'
-	].forEach(dependency => addPackageJsonDependency(tree, createDevDependency(dependency)));
+			[
+				'@angular-eslint/builder',
+				'@angular-eslint/eslint-plugin',
+				'@typescript-eslint/eslint-plugin',
+				'@typescript-eslint/parser',
+				'eslint',
+				'eslint-config-prettier',
+				'eslint-plugin-prettier',
+				'prettier'
+			].forEach(dependency => addPackageJsonDependency(tree, createDevDependency(dependency)));
+		}
+
+		return tree;
+	};
 }
 
 function addHusky(husky: boolean): Rule {

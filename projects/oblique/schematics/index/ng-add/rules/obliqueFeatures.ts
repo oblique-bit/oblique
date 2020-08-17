@@ -1,14 +1,15 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {addPackageJsonDependency, NodeDependencyType} from '@schematics/angular/utility/dependencies';
+import {addPackageJsonDependency} from '@schematics/angular/utility/dependencies';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {addImportToModule, addProviderToModule, addRouteDeclarationToModule, insertImport} from '@schematics/angular/utility/ast-utils';
 import {
 	angularJsonConfigPath,
 	applyChanges,
 	appModulePath,
-	getDepVersion,
+	createDevDependency,
 	getJson,
 	getJsonProperty,
+	listFiles,
 	OBLIQUE_PACKAGE,
 	routingModulePath
 } from '../../ng-add-utils';
@@ -16,14 +17,16 @@ import * as ts from 'typescript';
 
 export function obliqueFeatures(options: any): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
-		chain([addAjv(options.ajv), addUnknownRoute(options.unknownRoute), addInterceptors(options.httpInterceptors)])(tree, _context);
+		chain([addAjv(options.ajv), addUnknownRoute(options.unknownRoute), addInterceptors(options.httpInterceptors), addBanner(options.banner)])(
+			tree,
+			_context
+		);
 }
 
 function addAjv(ajv: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (ajv) {
-			const version = getDepVersion(tree, 'ajv');
-			addPackageJsonDependency(tree, {name: 'ajv', type: NodeDependencyType.Default, version: version});
+			addPackageJsonDependency(tree, createDevDependency('ajv'));
 
 			let tsConfig = getJson(tree, 'tsconfig.base.json');
 			if (tsConfig) {
@@ -72,4 +75,40 @@ function addInterceptors(httpInterceptors: boolean): Rule {
 		}
 		return tree;
 	};
+}
+
+function addBanner(banner: boolean): Rule {
+	return (tree: Tree, _context: SchematicContext) => {
+		if (banner) {
+			addBannerData(tree);
+			tree = provideBanner(tree);
+		}
+		return tree;
+	};
+}
+
+function addBannerData(tree: Tree): void {
+	const src = 'src/environments';
+	listFiles(src)
+		.filter(file => file.indexOf('prod') === -1)
+		.map(file => `${src}/${file}`)
+		.forEach(file => {
+			const env = file.match(/environment\.(?<env>.*)\.ts/)?.groups?.env || 'local';
+			let content = tree.read(file);
+			if (content) {
+				tree.overwrite(file, content.toString().replace('\n};', `,\n  banner: {text: '${env}'}\n};`));
+			}
+		});
+}
+
+function provideBanner(tree: Tree): Tree {
+	const provider = "{provide: OB_BANNER, useValue: environment['banner']}";
+	const sourceFileText: any = tree.read(appModulePath);
+	const sourceFile = ts.createSourceFile(appModulePath, sourceFileText.toString('utf-8'), ts.ScriptTarget.Latest, true);
+	const changes: Change[] = addProviderToModule(sourceFile, appModulePath, provider, OBLIQUE_PACKAGE);
+	if (changes.length > 1) {
+		(changes[1] as InsertChange).toAdd = (changes[1] as InsertChange).toAdd.replace(provider, 'OB_BANNER');
+	}
+	changes.push(insertImport(sourceFile, appModulePath, 'environment', '../environments/environment'));
+	return applyChanges(tree, appModulePath, changes);
 }
