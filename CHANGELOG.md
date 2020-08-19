@@ -1,3 +1,13 @@
+# [5.1.0-RC.3](https://github.com/oblique-bit/oblique/compare/5.1.0-RC.2...5.1.0-RC.3) (2020-08-19)
+
+## Bug Fixes
+* **toolchain:** do not alter `require('package.json')` during build ([c69ee2f](https://github.com/oblique-bit/oblique/commit/c69ee2f88014fef7a45ecf4618cacbbff27b3696))
+
+## Features
+* **toolchain:** add `peerDependencies` according to theme ([70d4c60](https://github.com/oblique-bit/oblique/commit/70d4c60e275fe0a290230e16d67545e96e001195))
+* **toolchain:** schematics to add banner ([9a8f196](https://github.com/oblique-bit/oblique/commit/9a8f196768344aaad27f8abedefc077bc31a8450))
+
+
 # [5.1.0-RC.2](https://github.com/oblique-bit/oblique/compare/5.1.0-RC.1...5.1.0-RC.2) (2020-07-23)
 
 ## Bug Fixes
