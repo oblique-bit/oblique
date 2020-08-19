@@ -23,7 +23,7 @@
         },
         {
           "name": "texts",
-          "text": "Custom texts for only this instance. These texts will be merged with the global <code>MultiselectTexts</code>",
+          "text": "Custom texts for only this instance. These texts will be merged with the global <code>ObMultiselectTexts</code>",
           "type": "ObMultiselectTexts",
           "default": "ObMultiselectTexts",
           "since": "2.0.0"
@@ -63,49 +63,49 @@
         },
         {
           "name": "enableAllSelectedText",
-          "text": "Whether to use the <code>allSelectedText</code> or just the checked text. Initialized from <code>ObObMultiselectConfig</code> service.",
+          "text": "Whether to use the <code>allSelectedText</code> or just the checked text. Initialized from <code>ObMultiselectConfig</code> service.",
           "type": "boolean",
           "default": true,
           "since": "2.0.0"
         },
         {
           "name": "dynamicTitleMaxItems",
-          "text": "Max amount of selected items for which a dynamic title will be generated. Initialized from <code>ObObMultiselectConfig</code> service.",
+          "text": "Max amount of selected items for which a dynamic title will be generated. Initialized from <code>ObMultiselectConfig</code> service.",
           "type": "number",
           "default": 3,
           "since": "2.0.0"
         },
         {
           "name": "enableSearch",
-          "text": "Whether to display the search field. Initialized from <code>ObObMultiselectConfig</code> service. Initialized from <code>ObObMultiselectConfig</code> service.",
+          "text": "Whether to display the search field. Initialized from <code>ObMultiselectConfig</code> service. Initialized from <code>ObMultiselectConfig</code> service.",
           "type": "boolean",
           "default": false,
           "since": "2.0.0"
         },
         {
           "name": "maxHeight",
-          "text": "May height of the dropdown. Initialized from <code>ObObMultiselectConfig</code> service. Initialized from <code>ObObMultiselectConfig</code> service.",
+          "text": "May height of the dropdown. Initialized from <code>ObMultiselectConfig</code> service. Initialized from <code>ObMultiselectConfig</code> service.",
           "type": "string",
           "default": "300px",
           "since": "2.0.0"
         },
         {
           "name": "selectionLimit",
-          "text": "Max amount of selectable options. If set to <code>0</code> no max amount will be checked. Initialized from <code>ObObMultiselectConfig</code> service.",
+          "text": "Max amount of selectable options. If set to <code>0</code> no max amount will be checked. Initialized from <code>ObMultiselectConfig</code> service.",
           "type": "number",
           "default": 0,
           "since": "2.0.0"
         },
         {
           "name": "showCheckAll",
-          "text": "Whether checkAll should be shown.. Initialized from <code>ObObMultiselectConfig</code> service. Initialized from <code>ObObMultiselectConfig</code> service.",
+          "text": "Whether checkAll should be shown.. Initialized from <code>ObMultiselectConfig</code> service. Initialized from <code>ObMultiselectConfig</code> service.",
           "type": "boolean",
           "default": false,
           "since": "2.0.0"
         },
         {
           "name": "showUncheckAll",
-          "text": "Whether uncheckAll should be shown.. Initialized from <code>ObObMultiselectConfig</code> service. Initialized from <code>ObObMultiselectConfig</code> service.",
+          "text": "Whether uncheckAll should be shown.. Initialized from <code>ObMultiselectConfig</code> service. Initialized from <code>ObMultiselectConfig</code> service.",
           "type": "boolean",
           "default": false,
           "since": "2.0.0"
@@ -139,7 +139,7 @@
       ]
     },
     {
-      "name": "ObObMultiselectConfig",
+      "name": "ObMultiselectConfig",
       "usage": "Should by injected, typically in the <code>AppModule</code>, to customize the values of its properties in order to provide alternate default values for all the <code>MultiselectComponent</code> instances.",
       "type": "injectable(config)",
       "since": "2.0.0",
@@ -160,14 +160,14 @@
         },
         {
           "name": "enableSearch",
-          "text": "Whether to display the search field. Initialized from <code>ObObMultiselectConfig</code> service.",
+          "text": "Whether to display the search field. Initialized from <code>ObMultiselectConfig</code> service.",
           "type": "boolean",
           "default": false,
           "since": "2.0.0"
         },
         {
           "name": "maxHeight",
-          "text": "May height of the dropdown. Initialized from <code>ObObMultiselectConfig</code> service.",
+          "text": "May height of the dropdown. Initialized from <code>ObMultiselectConfig</code> service.",
           "type": "string",
           "default": "300px",
           "since": "2.0.0"
