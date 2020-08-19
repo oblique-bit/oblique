@@ -81,19 +81,19 @@
         },
         {
           "name": "navigableOnFocus",
-          "text": "Emits whena navigable item is focused.",
+          "text": "Emits when a navigable item is focused.",
           "type": "Observable<FocusEvent>",
           "since": "2.0.0"
         },
         {
           "name": "navigableOnMouseDown",
-          "text": "Emits whena navigable item is clicked.",
+          "text": "Emits when a navigable item is clicked.",
           "type": "Observable<MouseEvent>",
           "since": "2.0.0"
         },
         {
           "name": "navigableOnMouseDown",
-          "text": "Emits whena navigable item is moved.",
+          "text": "Emits when a navigable item is moved.",
           "type": "Observable<ObNavigableOnMoveEvent>",
           "since": "2.0.0"
         }
