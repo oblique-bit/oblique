@@ -313,7 +313,7 @@
         {
           "name": "configEvents",
           "text": "Emits every time one of its property is changed",
-          "type": "Observable<MasterLayoutEvent>",
+          "type": "Observable<ObIMasterLayoutEvent>",
           "since": "4.0.0"
         },
         {
@@ -369,7 +369,7 @@
         {
           "name": "configEvents",
           "text": "Emits every time one of its property is changed",
-          "type": "Observable<MasterLayoutEvent>",
+          "type": "Observable<ObIMasterLayoutEvent>",
           "since": "4.0.0"
         },
         {
@@ -418,7 +418,7 @@
         {
           "name": "configEvents",
           "text": "Emits every time one of its property is changed",
-          "type": "Observable<MasterLayoutEvent>",
+          "type": "Observable<ObIMasterLayoutEvent>",
           "since": "4.0.0"
         },
         {
@@ -453,7 +453,7 @@
         {
           "name": "configEvents",
           "text": "Emits every time one of its property is changed",
-          "type": "Observable<MasterLayoutEvent>",
+          "type": "Observable<ObIMasterLayoutEvent>",
           "since": "4.0.0"
         },
         {
