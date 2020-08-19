@@ -65,7 +65,7 @@
       ]
     },
     {
-      "name": "HttpApiInterceptorEvents",
+      "name": "ObHttpApiInterceptorEvents",
       "type": "injectable(event)",
       "since": "3.0.0",
       "variables": [
