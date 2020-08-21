@@ -99,12 +99,6 @@ export function getJsonProperty(json: any, propertyPath: string): string {
 	return propertyPath.split(';').reduce((obj, property) => obj[property], json);
 }
 
-export function getObliqueVersion(tree: Tree): string {
-	// Version of oblique is inserted into version.d.ts from gulpfile and we can take the version value out of that file.
-	const fileContent = getFileContent(tree, 'node_modules/@oblique/oblique/lib/version.d.ts');
-	return (/\d\.\d\.\d/.exec(fileContent) || [])[0];
-}
-
 export function addPreconditions(): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (!getFileContent(tree, './package.json').includes('"@angular/localize"')) {
