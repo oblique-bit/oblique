@@ -19,28 +19,36 @@
 					<ng-container [ngTemplateOutlet]="template"></ng-container>
 				</li>
 				<li class="control-item">
-					<a role="button" tabindex="0" title="{{ 'i18n.oblique.header.toggle' | translate }}" class="control-link" obMasterLayoutHeaderToggle>
-						<div class="application-header-toggle">
+					<button
+						type="button"
+						title="{{ 'i18n.oblique.header.toggle' | translate }}"
+						class="control-link"
+						obMasterLayoutHeaderToggle
+						obAriaMenuButton="navigation"
+					>
+						<span class="application-header-toggle">
 							<span class="first-line"></span>
 							<span class="second-line"></span>
 							<span class="third-line"></span>
-						</div>
-						<span class="sr-only">Toggle header & navigation</span>
-					</a>
+						</span>
+						<span class="sr-only">{{ "i18n.oblique.header.toggle" | translate }}</span>
+					</button>
 				</li>
 			</ul>
 		</div>
 		<div class="application-header-controls">
-			<h2 class="sr-only">{{ "i18n.oblique.header.languages.title" | translate }}</h2>
+			<h2 class="sr-only" id="ob-language-change">{{ "i18n.oblique.header.languages.title" | translate }}</h2>
 			<ng-content select="[obLocales]" *ngIf="disabledLang"></ng-content>
-			<ul class="header-controls header-locale" role="menu" *ngIf="locales.length > 1 && !disabledLang">
-				<li class="control-item" role="menuitem" *ngFor="let locale of locales">
+			<ul class="header-controls header-locale" *ngIf="locales.length > 1 && !disabledLang">
+				<li class="control-item" *ngFor="let locale of locales">
 					<button
 						class="control-locale"
 						obMasterLayoutHeaderToggle
 						(click)="changeLang(locale.locale)"
 						[class.active]="isLangActive(locale.locale)"
 						[attr.id]="locale.id"
+						[attr.aria-current]="isLangActive(locale.locale) ? 'page' : undefined"
+						aria-labelledby="ob-language-change"
 					>
 						<span class="control-label">{{ locale.locale.toUpperCase() }}</span>
 					</button>
@@ -48,8 +56,8 @@
 			</ul>
 			<ng-content select="[obHeaderCustomControl]"></ng-content>
 			<h2 class="sr-only">{{ "i18n.oblique.header.controls.title" | translate }}</h2>
-			<ul class="header-controls" role="menu" *ngIf="templates.length">
-				<li class="control-item" role="menuitem" *ngFor="let template of templates" #headerControl>
+			<ul class="header-controls" *ngIf="templates.length">
+				<li class="control-item" *ngFor="let template of templates" #headerControl>
 					<ng-container [ngTemplateOutlet]="template"></ng-container>
 				</li>
 			</ul>

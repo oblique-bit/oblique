@@ -1,5 +1,6 @@
 @import "../../../styles/scss/core/variables";
 @import "../../../styles/scss/core/mixins/layout";
+@import "../../../styles/scss/core/mixins/button";
 
 .offcanvas-sidebar {
 	display: none; // only show if offcanvas is enable, i.e. parent has .offcanvas class
@@ -72,6 +73,9 @@
 		}
 
 		.close-button {
+			@include link-btn;
+			padding: $spacing-xs;
+			line-height: 1;
 			color: $white;
 		}
 

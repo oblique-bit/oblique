@@ -7,13 +7,13 @@
 			<img src="./assets/styles/images/logo.svg" alt="{{ 'i18n.application.organization.name' | translate }}" />
 		</a>
 	</div>
-	<h1 class="sr-only">{{ "i18n.oblique.footer.info.title" | translate }}</h1>
+	<h2 class="sr-only">{{ "i18n.oblique.footer.info.title" | translate }}</h2>
 	<div class="footer-item footer-item-info">
 		<ng-content select="[obFooterInfo]"></ng-content>
 	</div>
-	<h1 class="sr-only">{{ "i18n.oblique.footer.links.title" | translate }}</h1>
-	<ul class="footer-item footer-item-links" role="menu" *ngIf="templates.length">
-		<li role="presentation" *ngFor="let template of templates">
+	<h2 class="sr-only">{{ "i18n.oblique.footer.links.title" | translate }}</h2>
+	<ul class="footer-item footer-item-links" *ngIf="templates.length">
+		<li *ngFor="let template of templates">
 			<ng-container [ngTemplateOutlet]="template"></ng-container>
 		</li>
 	</ul>
