@@ -33,7 +33,7 @@ export class ObStickyComponent implements OnChanges, AfterViewInit {
 		if (this.stickyHeaderTemplate) {
 			this.setMainStickySize(this.headerSize);
 			if (this.stickyFooterTemplate) {
-				this.nestedStickySize = 'sticky-' + this.footerSize;
+				this.nestedStickySize = `sticky-${this.footerSize}`;
 			}
 		} else if (this.stickyFooterTemplate) {
 			this.setMainStickySize(this.footerSize);

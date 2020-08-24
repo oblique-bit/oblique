@@ -17,7 +17,7 @@ export class ObDropdownComponent {
 
 	@HostListener('document:click', ['$event'])
 	toggle($event?: MouseEvent) {
-		this.isOpen = !$event || this.isSelf(<Element>$event.target) ? !this.isOpen : false;
+		this.isOpen = !$event || this.isSelf($event.target as Element) ? !this.isOpen : false;
 	}
 
 	private isSelf(el: Element): boolean {

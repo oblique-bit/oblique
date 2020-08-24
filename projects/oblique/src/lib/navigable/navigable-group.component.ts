@@ -192,14 +192,14 @@ export class ObNavigableGroupComponent extends ObUnsubscribable implements After
 
 	//END Refactoring
 
-	private activate(navigable: ObNavigableDirective, combine?: boolean) {
+	private activate(navigable: ObNavigableDirective, combine = false) {
 		this.navigables.forEach(child => child !== navigable && this.deactivate(child)); //TODO: take a look at this
 
 		navigable.active = true;
 		this.select(navigable, combine);
 	}
 
-	private deactivate(navigable: ObNavigableDirective, unselect?: boolean) {
+	private deactivate(navigable: ObNavigableDirective, unselect = false) {
 		if (navigable) {
 			navigable.active = false;
 
@@ -209,7 +209,7 @@ export class ObNavigableGroupComponent extends ObUnsubscribable implements After
 		}
 	}
 
-	private select(navigable: ObNavigableDirective, combine?: boolean) {
+	private select(navigable: ObNavigableDirective, combine = false) {
 		if (!combine) {
 			this.navigables.forEach(child => this.deselect(child));
 		}
@@ -222,7 +222,7 @@ export class ObNavigableGroupComponent extends ObUnsubscribable implements After
 		this.removeFromSelection(navigable);
 	}
 
-	private selectChildRange(target: ObNavigableDirective, combine?: boolean) {
+	private selectChildRange(target: ObNavigableDirective, combine = false) {
 		const from = this.indexOf(this.getActive());
 		if (!combine) {
 			this.navigables.forEach(child => this.deselect(child));

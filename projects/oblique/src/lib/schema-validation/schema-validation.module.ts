@@ -4,7 +4,6 @@ import {CommonModule} from '@angular/common';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 import {ObSchemaValidateDirective} from './schema-validator';
 import {ObSchemaRequiredDirective} from './schema-required.directive';
-import {ObSchemaValidationService} from './schema-validation.service';
 import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';

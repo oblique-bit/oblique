@@ -84,7 +84,7 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 	private notify(notification: ObIHttpApiRequest['notification'], error: HttpErrorResponse): void {
 		if (notification.active || error.status >= 500 || error.status === 0) {
 			this.notificationService.send({
-				message: notification.text || 'i18n.oblique.http.error.status.' + error.status,
+				message: notification.text || `i18n.oblique.http.error.status.${error.status}`,
 				title: notification.title || error.statusText,
 				type: notification.severity,
 				sticky: notification.sticky

@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {ObOffCanvasToggleDirective} from './off-canvas-toggle.directive';
-import {ObOffCanvasService} from './off-canvas.service';
 import {ObOffCanvasContainerDirective} from './off-canvas-container.directive';
 import {ObOffCanvasBackdropDirective} from './off-canvas-backdrop.directive';
 import {ObTelemetryService} from '../telemetry/telemetry.service';

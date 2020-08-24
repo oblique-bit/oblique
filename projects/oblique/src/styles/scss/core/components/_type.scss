@@ -104,7 +104,8 @@ code, pre {
 
 pre {
 	overflow: auto;
-
+	padding: $spacing-sm;
+	border-radius: $border-radius-base;
 	code {
 		border: none;
 		padding: 0;
@@ -196,11 +197,6 @@ address {
 	margin-bottom: $spacing-default;
 	font-style: normal;
 	line-height: inherit;
-}
-
-pre {
-	padding: $spacing-sm;
-	border-radius: $border-radius-base;
 }
 
 // misc elements
