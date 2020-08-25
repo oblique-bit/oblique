@@ -4,6 +4,7 @@
 	[ngClass]="'alert alert-' + [notification.type]"
 	*ngFor="let notification of notifications"
 	[@inOut]="notification.$state"
+	role="alert"
 >
 	<span class="occurrence" title="{{ 'i18n.oblique.occurrences' | translate }}" *ngIf="notification.occurrences > 1">{{ notification.occurrences }}</span>
 	<button [id]="notification.idPrefix + 'close_button'" (click)="close(notification)" type="button" class="close">&times;</button>
