@@ -119,7 +119,7 @@
 	}
 }
 
-§.application:not(.has-layout) .main-layout > .sticky {
+.application:not(.has-layout) .main-layout > .sticky {
 	.sticky-header,
 	.sticky-footer,
 	.sticky-content {
