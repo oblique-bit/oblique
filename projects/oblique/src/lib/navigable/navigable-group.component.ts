@@ -28,7 +28,9 @@ import {ObNavigableDirective, ObNavigableOnChangeEvent, ObNavigableOnMoveEvent} 
 	exportAs: 'obNavigableGroup',
 	template: '<ng-content></ng-content>',
 	styleUrls: ['./navigable-group.component.scss'],
-	encapsulation: ViewEncapsulation.None
+	encapsulation: ViewEncapsulation.None,
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
+	host: {class: 'ob-navigable-group'}
 })
 export class ObNavigableGroupComponent extends ObUnsubscribable implements AfterContentInit {
 	/**

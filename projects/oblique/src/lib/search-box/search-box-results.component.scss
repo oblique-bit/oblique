@@ -25,8 +25,8 @@
 	position: fixed;
 }
 
-:hover > ob-search-box-results .search-results-list.hasResults,
-:focus-within > ob-search-box-results .search-results-list.hasResults {
+:hover > .ob-search-box-results .search-results-list.hasResults,
+:focus-within > .ob-search-box-results .search-results-list.hasResults {
 	height: auto;
 }
 
@@ -82,8 +82,8 @@
 		}
 	}
 
-	:hover > ob-search-box-results .search-results-list.hasResults,
-	:focus-within > ob-search-box-results .search-results-list.hasResults {
+	:hover > .ob-search-box-results .search-results-list.hasResults,
+	:focus-within > .ob-search-box-results .search-results-list.hasResults {
 		max-height: calc(100vh - 200px);
 		padding: $spacing-default;
 		overflow: visible;
