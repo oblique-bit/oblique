@@ -1,8 +1,9 @@
 <p>Tracks and notifies about unsaved form changes and ask for confirmation in case of:</p>
 <ul>
-	<li>navigating to another state</li>
+	<li>navigating to another route</li>
 	<li>reloading the current browser tab</li>
 	<li>closing the current browser tab</li>
 	<li>closing the browser itself</li>
 </ul>
+<p>The custom message shown in the popup asking for confirmation can be changed by overriding <code>i18n.validation.unsavedChanges</code>. It is only shown when navigating to another route but not when leaving or reloading the page. Then the default message of the browser is shown.</p>
 <p>To use this directive with ng-bootstrap's tabs</p>
