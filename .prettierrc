@@ -8,7 +8,8 @@
 			"bracketSpacing": false,
 			"useTabs": true,
 			"trailingComma": "none",
-			"arrowParens": "avoid"
+			"arrowParens": "avoid",
+			"endOfLine": "auto"
 		}
 	  },
 	  {
