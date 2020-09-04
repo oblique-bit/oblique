@@ -43,10 +43,6 @@ table {
 		}
 	}
 
-	&:not(.table-cicd) tbody td {
-		color: $gray-dark;
-	}
-
 	&:not(.table-cicd) thead tr:first-child th {
 		border-top: none;
 	}

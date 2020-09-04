@@ -5,7 +5,7 @@
 	.mat-dialog-title {
 		@include h6;
 		position: relative;
-		margin-bottom: $spacing-sm;
+		margin-bottom: $spacing-default + $spacing-sm;
 	}
 	.mat-button.close {
 		position: absolute;
@@ -36,6 +36,13 @@
 	}
 	.mat-dialog-content {
 		@include body1;
-		color: $gray-dark;
+	}
+	.mat-dialog-actions {
+		margin-top: $spacing-default + $spacing-sm;
+		justify-content: flex-end;
+
+		.mat-button + .mat-button {
+			margin-left: $spacing-default;
+		}
 	}
 }
