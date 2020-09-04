@@ -1,5 +1,13 @@
-<p>Simple route fallback component.</p>
+<p>A simple unknown route fallback component.</p>
 <p>
-	Import <code>MockUnknownRouteModule</code> in the application's root routing module, i.e. either <code>AppModule</code> or <code>AppRoutingModule</code> in
-	a regular CLI project. Also add following route as the <strong>last</strong> route <code>{path: '**', redirectTo: 'unknown-route'}</code>.
+	Import <code>UnknownRouteModule</code> in the application's root routing module, i.e. either <code>AppRoutingModule</code> or <code>AppModule</code> in a
+	regular CLI project. Then add the following route as the <strong>last</strong> one <code>&#123;path: '**', redirectTo: 'unknown-route'}</code>.
 </p>
+<p>Per default, the <code>UnknownRouteComponent</code> redirects to <code>/home</code>. This can be tweaked in the <code>MasterLayoutConfigService</code>:</p>
+<pre>
+export class AppModule &#123;
+	constructor(config: ObMasterLayoutConfig) &#123;
+		config.homePageRoute = '/oblique';
+	}
+}
+</pre>
