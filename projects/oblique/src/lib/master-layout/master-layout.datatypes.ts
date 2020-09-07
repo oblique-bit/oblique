@@ -41,6 +41,7 @@ export interface ObINavigationLink {
 	url: string;
 	children?: ObINavigationLink[];
 	id?: string;
+	active?: boolean;
 }
 
 export interface ObIMasterLayoutEvent {

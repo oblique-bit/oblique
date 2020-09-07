@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable, Renderer2, RendererFactory2} from '@angular/core';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
@@ -10,10 +10,13 @@ import {ObMasterLayoutFooterService} from './master-layout-footer/master-layout-
 import {ObMasterLayoutNavigationService} from './master-layout-navigation/master-layout-navigation.service';
 import {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
 import {ObILocaleObject} from './master-layout.datatypes';
+import {DOCUMENT} from '@angular/common';
 
 @Injectable({providedIn: 'root'})
 export class ObMasterLayoutService extends ObUnsubscribable {
 	private static readonly token = 'oblique_lang';
+	private readonly renderer: Renderer2;
+	private readonly html: HTMLElement;
 
 	constructor(
 		private readonly config: ObMasterLayoutConfig,
@@ -23,9 +26,13 @@ export class ObMasterLayoutService extends ObUnsubscribable {
 		public readonly header: ObMasterLayoutHeaderService,
 		public readonly footer: ObMasterLayoutFooterService,
 		public readonly navigation: ObMasterLayoutNavigationService,
-		public readonly layout: ObMasterLayoutComponentService
+		public readonly layout: ObMasterLayoutComponentService,
+		rendererFactory: RendererFactory2,
+		@Inject(DOCUMENT) document: any // NOTE: do not set type, it will break AOT
 	) {
 		super();
+		this.html = document.head.parentElement;
+		this.renderer = rendererFactory.createRenderer(null, null);
 		this.manageLanguage();
 		this.routeChange();
 	}
@@ -64,6 +71,7 @@ export class ObMasterLayoutService extends ObUnsubscribable {
 		);
 		this.translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe((event: LangChangeEvent) => {
 			localStorage.setItem(ObMasterLayoutService.token + langToken, event.lang);
+			this.renderer.setAttribute(this.html, 'lang', event.lang);
 		});
 	}
 

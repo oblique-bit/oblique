@@ -18,6 +18,7 @@ import {ObMockMasterLayoutConfig} from './mock-master-layout.config';
 import {ObMockMasterLayoutService} from './mock-master-layout.service';
 import {ObMockMasterLayoutComponentService} from './mock-master-layout.component.service';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
+import {ObMockAriaMenuButtonDirective} from './mock-aria-menu-button.directive';
 
 export {ObMockMasterLayoutComponent} from './mock-master-layout.component';
 export {ObMockMasterLayoutHeaderComponent} from './mock-master-layout-header.component';
@@ -33,6 +34,7 @@ export {ObMockMasterLayoutNavigationService} from './mock-master-layout-navigati
 export {ObMockMasterLayoutComponentService} from './mock-master-layout.component.service';
 export {ObMockMasterLayoutConfig} from './mock-master-layout.config';
 export {ObMockMasterLayoutService} from './mock-master-layout.service';
+export {ObMockAriaMenuButtonDirective} from './mock-aria-menu-button.directive';
 
 @NgModule({
 	declarations: [
@@ -43,7 +45,8 @@ export {ObMockMasterLayoutService} from './mock-master-layout.service';
 		ObMockMasterLayoutFooterComponent,
 		ObMockMasterLayoutNavigationItemDirective,
 		ObMockMasterLayoutNavigationToggleDirective,
-		ObMockMasterLayoutNavigationMenuDirective
+		ObMockMasterLayoutNavigationMenuDirective,
+		ObMockAriaMenuButtonDirective
 	],
 	exports: [
 		ObMockMasterLayoutComponent,
@@ -53,7 +56,8 @@ export {ObMockMasterLayoutService} from './mock-master-layout.service';
 		ObMockMasterLayoutFooterComponent,
 		ObMockMasterLayoutNavigationItemDirective,
 		ObMockMasterLayoutNavigationToggleDirective,
-		ObMockMasterLayoutNavigationMenuDirective
+		ObMockMasterLayoutNavigationMenuDirective,
+		ObMockAriaMenuButtonDirective
 	],
 	providers: [
 		{provide: ObMasterLayoutFooterService, useClass: ObMockMasterLayoutFooterService},

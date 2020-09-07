@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer2, ViewChild, ViewEncapsulation} from '@angular/core';
-import {Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {filter, takeUntil} from 'rxjs/operators';
 
 import {ObUnsubscribable} from '../../unsubscribe.class';
@@ -40,15 +40,17 @@ export class ObMasterLayoutNavigationComponent extends ObUnsubscribable implemen
 
 	ngOnInit() {
 		this.links = this.links.length ? this.links : this.config.navigation.links;
+		this.router.events
+			.pipe(
+				takeUntil(this.unsubscribe),
+				filter(evt => evt instanceof NavigationEnd)
+			)
+			.subscribe(() => (this.links = this.links.map(link => ({...link, active: this.router.isActive(link.url, false)}))));
 	}
 
 	ngAfterViewInit() {
 		this.nav = this.el.nativeElement.querySelector('.main-nav:not(.sub-nav)');
 		this.masterLayout.navigation.scrolled.pipe(takeUntil(this.unsubscribe)).subscribe(offset => this.updateScroll(offset));
-	}
-
-	isActive(url: string): boolean {
-		return this.router.isActive(url, false);
 	}
 
 	@HostListener('window:resize')

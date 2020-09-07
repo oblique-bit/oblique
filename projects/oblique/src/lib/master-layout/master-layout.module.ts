@@ -22,6 +22,7 @@ import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigatio
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
 import {ObMasterLayoutConfig} from './master-layout.config';
 import {obliqueProviders} from '../utilities';
+import {ObAriaMenuButtonDirective} from './aria-menu-button.directive';
 
 export {ObMasterLayoutComponent} from './master-layout/master-layout.component';
 export {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
@@ -49,7 +50,8 @@ export {ObINavigationLink, ObEScrollMode, ObIMasterLayoutEvent, ObEMasterLayoutE
 		ObMasterLayoutFooterComponent,
 		ObMasterLayoutNavigationItemDirective,
 		ObMasterLayoutNavigationToggleDirective,
-		ObMasterLayoutNavigationMenuDirective
+		ObMasterLayoutNavigationMenuDirective,
+		ObAriaMenuButtonDirective
 	],
 	providers: obliqueProviders(),
 	exports: [

@@ -4,6 +4,7 @@
 @import "../../../styles/scss/core/mixins/layout";
 @import "../../../styles/scss/core/mixins/nav";
 @import "../../../styles/scss/core/mixins/toggle";
+@import "../../../styles/scss/core/mixins/button";
 
 .application-navigation {
 	display: block;
@@ -45,9 +46,14 @@
 			}
 		}
 
-		a {
+		button {
+			@include link-btn;
+		}
+
+		a, button {
 			display: flex;
 			justify-content: space-between;
+			width: 100%;
 			margin: 0;
 			padding: $spacing-sm $spacing-default;
 			border-bottom: 1px solid $gray-light;
@@ -76,7 +82,8 @@
 		// First level only:
 		> .main-nav-item {
 			@include layout-collapse-up() {
-				> a {
+				> a,
+				> button {
 					display: inline-flex;
 					padding: $spacing-default;
 					white-space: nowrap;
@@ -98,7 +105,8 @@
 					}
 				}
 
-				&.show > a {
+				&.show > a,
+				&.show > button {
 					z-index: 1000 + 1;
 
 					&,

@@ -71,10 +71,10 @@
 		<h2>
 			<ng-content select="[obOffCanvasTitle]"></ng-content>
 		</h2>
-		<a role="button" obOffCanvasToggle tabindex="0" class="close-button" #offCanvasClose>
-			<span class="fa fa-lg fa-times"></span>
-			<span class="sr-only">i18n.oblique.offCanvas.close</span>
-		</a>
+		<button type="button" obOffCanvasToggle class="close-button" #offCanvasClose>
+			<span class="fa fa-lg fa-times" aria-hidden="true"></span>
+			<span class="sr-only">{{ "i18n.oblique.offCanvas.close" | translate }}</span>
+		</button>
 	</header>
 	<div class="offcanvas-content">
 		<ng-content select="[obOffCanvasContent]"></ng-content>

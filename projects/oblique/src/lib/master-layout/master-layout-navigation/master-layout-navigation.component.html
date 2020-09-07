@@ -5,58 +5,75 @@
 	(click)="scrollLeft()"
 	*ngIf="isScrollable"
 	[disabled]="!currentScroll"
+	aria-hidden="true"
 >
 	<span class="fa fa-angle-left"></span>
 </button>
 <ng-content *ngIf="!links.length"></ng-content>
-<ul
-	id="navigation"
-	role="menubar"
-	*ngIf="links.length"
-	class="main-nav"
-	[class.navigation-scrollable-content]="isScrollable"
-	[class.main-nav-fw]="isFullWidth"
-	tabindex="-1"
->
-	<li class="main-nav-item" role="presentation" obMasterLayoutNavigationItem *ngFor="let link of links">
-		<a [attr.id]="link.id" role="menuitem" [routerLink]="link.url" [routerLinkActive]="activeClass" obMasterLayoutNavigationToggle *ngIf="!link.children">
-			{{ link.label | translate }}
-		</a>
-		<ng-container *ngIf="link.children">
-			<a [attr.id]="link.id" role="button" tabindex="0" [class.active]="isActive(link.url)" obMasterLayoutNavigationToggle>
-				<span>{{ link.label | translate }}</span>
-				<span class="toggle"></span>
+<nav>
+	<ul
+		id="navigation"
+		*ngIf="links.length"
+		class="main-nav"
+		[class.navigation-scrollable-content]="isScrollable"
+		[class.main-nav-fw]="isFullWidth"
+		tabindex="-1"
+	>
+		<li class="main-nav-item" obMasterLayoutNavigationItem *ngFor="let link of links">
+			<a
+				[attr.id]="link.id"
+				[routerLink]="link.url"
+				[routerLinkActive]="activeClass"
+				[attr.aria-current]="link.active ? 'page' : undefined"
+				obMasterLayoutNavigationToggle
+				*ngIf="!link.children"
+			>
+				{{ link.label | translate }}
 			</a>
-			<div class="sub-menu" role="menu" obMasterLayoutNavigationMenu>
-				<ul class="main-nav sub-nav">
-					<li role="presentation">
-						<a class="sub-menu-back" role="button" obMasterLayoutNavigationToggle tabindex="0">
-							<span class="toggle"></span>
-							<span class="label">{{ link.label | translate }}</span>
-						</a>
-					</li>
-					<li role="presentation" obMasterLayoutNavigationItem *ngFor="let child of link.children">
-						<a
-							role="menuitem"
-							[attr.id]="child.id"
-							[routerLink]="link.url + '/' + child.url"
-							[routerLinkActive]="activeClass"
-							obMasterLayoutNavigationToggle
-						>
-							{{ child.label | translate }}
-						</a>
-					</li>
-				</ul>
-			</div>
-		</ng-container>
-	</li>
-</ul>
+			<ng-container *ngIf="link.children">
+				<button
+					type="button"
+					[attr.id]="link.id"
+					[class.active]="link.active"
+					[attr.aria-current]="link.active ? 'page' : undefined"
+					obMasterLayoutNavigationToggle
+					obAriaMenuButton="menu-{{ link.id || link.url }}"
+				>
+					<span>{{ link.label | translate }}</span>
+					<span class="toggle" aria-hidden="true"></span>
+				</button>
+				<div class="sub-menu" id="menu-{{ link.id || link.url }}" obMasterLayoutNavigationMenu>
+					<ul class="main-nav sub-nav">
+						<li>
+							<button class="sub-menu-back" type="button" obMasterLayoutNavigationToggle>
+								<span class="toggle" aria-hidden="true"></span>
+								<span class="label">{{ link.label | translate }}</span>
+							</button>
+						</li>
+						<li obMasterLayoutNavigationItem *ngFor="let child of link.children">
+							<a
+								[attr.id]="child.id"
+								[routerLink]="link.url + '/' + child.url"
+								[routerLinkActive]="activeClass"
+								[attr.aria-current]="link.active ? 'page' : undefined"
+								obMasterLayoutNavigationToggle
+							>
+								{{ child.label | translate }}
+							</a>
+						</li>
+					</ul>
+				</div>
+			</ng-container>
+		</li>
+	</ul>
+</nav>
 <button
 	class="navigation-scrollable-control navigation-scrollable-control-right"
 	(click)="scrollRight()"
 	type="button"
 	*ngIf="isScrollable"
 	[disabled]="currentScroll === maxScroll"
+	aria-hidden="true"
 >
 	<span class="fa fa-angle-right"></span>
 </button>
