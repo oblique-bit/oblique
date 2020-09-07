@@ -20,7 +20,7 @@
   "i18n.routes.auth.login.password-lost": "Mot de passe oublié?",
   "i18n.routes.auth.login.error": "We have been unable to authenticate you, please check your credentials!",
   "i18n.routes.auth.login.success": "You have been successfully authenticated.",
-  "i18n.routes.auth.register.title": "New to {{title}}? Sign up!",
+  "i18n.routes.auth.register.title": "Nouveau sur {{title}}? Rejoignez-nous !",
   "i18n.routes.auth.register.submit": "Register",
   "i18n.routes.samples.title": "Examples",
   "i18n.routes.samples.column-layout.title": "Column Layout",

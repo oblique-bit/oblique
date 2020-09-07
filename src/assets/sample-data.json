@@ -8,7 +8,8 @@
       },
       {
         "id": "tree-item-2",
-        "label": "Tree item 2",
+        "label": "i18n.routes.auth.register.title",
+        "labelParams": {"title": "Oblique"},
         "items": [
           {
             "id": "tree-item-2-1",
