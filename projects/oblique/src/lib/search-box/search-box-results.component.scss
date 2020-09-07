@@ -43,11 +43,11 @@
 		display: block;
 		position: absolute;
 		top: auto;
-		left: -$spacing-default - 5px;
+		left: -$spacing-default;
 		min-width: 300px;
 		max-height: 0;
 		padding: 0 $spacing-default;
-		margin-top: $spacing-default;
+		margin-top: 1.65em;	// icon height
 		background-color: $white;
 		box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
 		transition-property: max-height, padding-top, padding-bottom;
@@ -67,17 +67,19 @@
 			transition: right $duration-default, left $duration-default;
 		}
 
+		$arrow-size: 16px;
+		$arrow-lg-size: 14px;
 		&::before {
-			left: $spacing-default;
-			top: -$spacing-default;
-			border-width: 0 $spacing-default $spacing-default;
+			left: 10px;
+			top: -$arrow-size;
+			border-width: 0 $arrow-size $arrow-size;
 			border-color: $gray-light transparent;
 		}
 
 		&::after {
-			left: 18px;
-			top: -14px;
-			border-width: 0 14px 14px;
+			left: 12px;
+			top: -$arrow-lg-size;
+			border-width: 0 $arrow-lg-size $arrow-lg-size;
 			border-color: white transparent;
 		}
 	}
