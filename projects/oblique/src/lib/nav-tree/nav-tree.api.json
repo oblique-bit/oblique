@@ -84,6 +84,7 @@
       "usage": "The model of a nav tree item",
       "type": "component",
       "since": "2.0.0",
+      "updated": "5.2.0",
       "variables": [
         {
           "name": "id",
@@ -96,6 +97,13 @@
           "text": "Label to render in the nav item",
           "type": "string",
           "since": "2.0.0"
+        },
+        {
+          "name": "labelParams",
+          "text": "Parameters to render in the label in the nav item",
+          "type": "{[key: string]: string | number}",
+          "isOptional": true,
+          "since": "5.2.0"
         },
         {
           "name": "items",
