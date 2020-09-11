@@ -4,7 +4,7 @@ import {takeUntil} from 'rxjs/operators';
 import {ObUnsubscribable} from '../unsubscribe.class';
 
 /**
- * @deprecated since version 4.0.0. This component is neither useful nor used and will be removed in future versions
+ * @deprecated since version 4.0.0. This component is neither useful nor used and will be removed without replacement in Oblique 6
  */
 @Component({
 	selector: 'ob-navigator',
