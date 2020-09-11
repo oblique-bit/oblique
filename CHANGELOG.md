@@ -92,7 +92,6 @@
 * **toolchain:** fix licence url ([7bee739](https://github.com/oblique-bit/oblique/commit/7bee739f8c3bfb03154579a8d8d1fd11c042ef53))
 * **toolchain:** fix SCSS import paths in the library ([f129787](https://github.com/oblique-bit/oblique/commit/f12978702c932c56e06f623d9a8b11dcc1da1326))
 * **toolchain:** remove unnecessary files ([8aa0cca](https://github.com/oblique-bit/oblique/commit/8aa0cca93352d0a9b0f01916ad1b370207a6dd8a))
-* **toolchain:** update `ngx-translate` peer dependency to version 12 ([55686ba](https://github.com/oblique-bit/oblique/commit/55686bac1ddfa7bfd632b841b1190ce6cd1d463b))
 * **toolchain:** add schema for apis ([9a05337](https://github.com/oblique-bit/oblique/commit/9a0533715a735faa9fde16fe84d163c16d62f0d9))
 
 # [5.0.2](https://github.com/oblique-bit/oblique/compare/5.0.1...5.0.2) (2020-03-09)
@@ -208,6 +207,7 @@
 * **master-layout:** rename `ObNavigationLink` into `ObINavigationLink` ([5f0ff42](https://github.com/oblique-bit/oblique/commit/5f0ff425838dc920b1e6c2982217aa2de9411672))
 * **sticky:** move sticky-related CSS into `sticky` component ([724fbe5](https://github.com/oblique-bit/oblique/commit/724fbe571779c53cbbd3cbd4fecb2af26db46db6))
 * add `ob` prefix to every Oblique element (selectors, classes, interfaces, ...) ([ebd81d6](https://github.com/oblique-bit/oblique/commit/ebd81d6990e4659c4d6b387dfc90465a8b794028))
+* all oblique translations keys starts with `i18n.oblique` ([5f1ed2d](https://github.com/oblique-bit/oblique/commit/5f1ed2d213c86b72c9f713ac5ac7301675984c4a)
 
 ## BREAKING CHANGES
 * **collapse:** `toggle` feature has been removed in favor of `collapse`
@@ -255,6 +255,7 @@
 * **theme:** `FONTS.ARIAL` has been renamed into `FONTS.NONE` (solved with schematics)
 * **toolchain:** localize is now a peer dependency: `ng add @angular/localize` (solved with schematics)
 * **toolchain:** `test_helpers` directory have been removed in favor of `ObliqueTestingModule` (solved with schematics)
+* all oblique translations keys starts with `i18n.oblique`
 * all selectors prefixes has been changed from `or` to `ob` (solved with schematics)
 * all classes has been prefixed with `Ob` (solved with schematics)
 * all enums has been prefixed with `ObE` (solved with schematics)
