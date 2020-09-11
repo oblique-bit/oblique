@@ -14,6 +14,11 @@ import {obliqueProviders} from '../utilities';
 
 export {ObFilterBoxComponent} from './filter-box.component';
 
+/**
+ * @deprecated since version 5.2.0 This module is overly complex and could simply be replaced by a simple input.
+ * Its removal will allow to greatly simplify Oblique and reduce its bundle size.
+ * It will be removed with no replacement in Oblique 6
+ */
 @NgModule({
 	imports: [CommonModule, TranslateModule, FormsModule, ObInputClearModule, MatIconModule, MatFormFieldModule, MatInputModule],
 	declarations: [ObFilterBoxComponent],

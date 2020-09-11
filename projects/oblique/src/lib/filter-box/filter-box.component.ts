@@ -3,6 +3,9 @@ import {map, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {ObThemeService} from '../theme/theme.service';
 
+/**
+ * @deprecated This component is overly complex and could simply be replaced by a simple input. It will be removed with no replacement in Oblique 6
+ */
 @Component({
 	selector: 'ob-filter-box',
 	exportAs: 'obFilterBox',
