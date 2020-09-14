@@ -11,16 +11,23 @@ import {
 	getJsonProperty,
 	listFiles,
 	OBLIQUE_PACKAGE,
-	routingModulePath
+	routingModulePath,
+	addFile,
+	getTemplate
 } from '../../ng-add-utils';
 import * as ts from 'typescript';
+import * as fs from 'fs';
 
 export function obliqueFeatures(options: any): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
-		chain([addAjv(options.ajv), addUnknownRoute(options.unknownRoute), addInterceptors(options.httpInterceptors), addBanner(options.banner)])(
-			tree,
-			_context
-		);
+		chain([
+			addAjv(options.ajv),
+			addUnknownRoute(options.unknownRoute),
+			addDefaultComponentRouteToAppRoutingModule(),
+            addDefaultComponent(options.prefix),
+			addInterceptors(options.httpInterceptors),
+			addBanner(options.banner)
+		])(tree, _context);
 }
 
 function addAjv(ajv: boolean): Rule {
@@ -54,6 +61,36 @@ function addUnknownRoute(unknownRoute: boolean): Rule {
 
 			changes.push(addRouteDeclarationToModule(sourceFile, 'app-routing.module.ts', "{path: '**', redirectTo: 'unknown-route'}"));
 			tree = applyChanges(tree, routingModulePath, changes);
+		}
+		return tree;
+	};
+}
+
+function addDefaultComponentRouteToAppRoutingModule(): Rule {
+	return (tree: Tree, _context: SchematicContext) => {
+		if (tree.exists(routingModulePath)) {
+			const sourceFileText: any = tree.read(routingModulePath);
+			const sourceFile = ts.createSourceFile(routingModulePath, sourceFileText.toString('utf-8'), ts.ScriptTarget.Latest, true);
+			const changes: Change[] = [];
+
+			changes.push(insertImport(sourceFile, routingModulePath, 'HomeComponent', './home/home.component'));
+			changes.push(addRouteDeclarationToModule(sourceFile, 'app-routing.module.ts', "{path: 'home', component: HomeComponent}"));
+
+			tree = applyChanges(tree, routingModulePath, changes);
+		}
+		return tree;
+	};
+}
+
+function addDefaultComponent(prefix: string): Rule {
+	return (tree: Tree, _context: SchematicContext) => {
+		if (tree.exists(routingModulePath)) {
+			const path = 'src/app/home';
+			if (!fs.existsSync(path)) {
+				fs.mkdirSync(path, {recursive: true});
+            }
+            addFile(tree, 'src/app/home/home.component.html', getTemplate('home.component.html'));
+            addFile(tree, 'src/app/home/home.component.ts', getTemplate('home.component.ts.config').replace('_APP_PREFIX_PLACEHOLDER_-', prefix));
 		}
 		return tree;
 	};
