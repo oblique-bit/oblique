@@ -23,10 +23,10 @@ export class ObUnsavedChangesService {
 	}
 
 	canDeactivate(): boolean {
-		return this.hasPendingChanges() ? this.popUpService.confirm(this.message()) : true;
+		return this.ignoreChanges();
 	}
 
-	ignoreChanges(formIds: string[]): boolean {
+	ignoreChanges(formIds?: string[]): boolean {
 		return this.hasPendingChanges(formIds) ? this.popUpService.confirm(this.message()) : true;
 	}
 
