@@ -39,7 +39,7 @@ export class ObNavTreeComponent extends ObUnsubscribable {
 	@Input()
 	patternMatcher(item: ObNavTreeItemModel, pattern = ''): boolean {
 		pattern = pattern.replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
-		const label = this.translate.instant(item.label);
+		const label = this.translate.instant(item.label, item.labelParams);
 		const match = new RegExp(pattern, 'gi').test(label);
 		const childMatch = (item.items || []).some(subItem => {
 			const subMatch = this.patternMatcher(subItem, pattern.replace(/\\/g, ''));
@@ -92,7 +92,7 @@ export function defaultLabelFormatterFactory(translate: TranslateService) {
 	// noinspection UnnecessaryLocalVariableJS because this will result in a build error
 	const formatter = (item: ObNavTreeItemModel, filterPattern: string) => {
 		filterPattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
-		const label = translate.instant(item.label);
+		const label = translate.instant(item.label, item.labelParams);
 		return !filterPattern
 			? label
 			: label.replace(new RegExp(filterPattern, 'ig'), text => `<span class="${ObNavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`);

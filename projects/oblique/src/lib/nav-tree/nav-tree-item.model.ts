@@ -7,6 +7,8 @@ export class ObNavTreeItemModel {
 	id: string;
 	label: string;
 
+	labelParams?: {[key: string]: string | number};
+
 	items?: ObNavTreeItemModel[];
 
 	path?: string; // See `routerLink` docs under https://angular.io/api/router/RouterLink
