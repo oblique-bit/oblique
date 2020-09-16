@@ -44,6 +44,12 @@ export interface ObINavigationLink {
 	active?: boolean;
 }
 
+export interface ObIJumpLink {
+	label: string;
+	url: string | 'current';
+	fragment?: string;
+}
+
 export interface ObIMasterLayoutEvent {
 	name: ObEMasterLayoutEventValues;
 	value?: boolean;

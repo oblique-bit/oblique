@@ -23,7 +23,7 @@ import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {appVersion} from '../../version';
 import {WINDOW} from '../../utilities';
-import {ObEMasterLayoutEventValues, ObINavigationLink} from '../master-layout.datatypes';
+import {ObEMasterLayoutEventValues, ObINavigationLink, ObIJumpLink} from '../master-layout.datatypes';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 
 @Component({
@@ -44,6 +44,7 @@ export class ObMasterLayoutComponent extends ObUnsubscribable implements OnInit 
 	home = this.config.homePageRoute;
 	url: string;
 	@Input() navigation: ObINavigationLink[] = [];
+	@Input() jumpLinks: ObIJumpLink[] = [];
 	@HostBinding('class.application-fixed') isFixed = this.masterLayout.layout.isFixed;
 	@HostBinding('class.has-cover') hasCover = this.masterLayout.layout.hasCover;
 	@HostBinding('class.has-layout') hasLayout = this.masterLayout.layout.hasLayout;
