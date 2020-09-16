@@ -13,7 +13,7 @@
 		</li>
 		<li *ngFor="let jumpLink of jumpLinks; let i = index">
 			<a class="accessible" [attr.accesskey]="i + 3" [routerLink]="jumpLink.url == 'current' ? url : jumpLink.url" [fragment]="jumpLink.fragment">
-				{{ jumpLink.label | translate }} [{{i + 3}}]
+				{{ jumpLink.label | translate }} [{{ i + 3 }}]
 			</a>
 		</li>
 	</ul>

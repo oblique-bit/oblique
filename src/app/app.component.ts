@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FONTS, ObINavigationLink, ObISearchWidgetItem, THEMES, ObThemeService} from 'oblique';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import {ObIJumpLink} from 'projects/oblique/src/lib/master-layout/master-layout.datatypes';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
@@ -92,6 +93,12 @@ export class AppComponent {
 				{url: 'tooltip', label: 'Tooltip'}
 			]
 		}
+	];
+	jumpLinks: ObIJumpLink[] = [
+		{url: 'current', fragment: 'fragment', label: 'i18n.application.jumplinks.custom'},
+		{url: 'current', label: 'current without fragment'},
+		{url: '../samples', fragment: 'fragment', label: 'samples with fragment'},
+		{url: '../samples', label: 'samples without fragment'}
 	];
 	searchItems: ObISearchWidgetItem[] = [];
 
