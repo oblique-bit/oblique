@@ -1,6 +1,6 @@
 <p>
 	A loader for the <code>TranslateService</code> that handles multiple translation files. It automatically loads Oblique's own translations and all additional
-	files defined by the project, by default <code>./assets/i18n/&lt;lang&lt&gt;.json</code>.
+	files defined by the project, by default <code>./assets/i18n/&lt;lang&gt;.json</code>.
 </p>
 <p class="list">There are 3 possibilities to use it, ordered by simplicity:</p>
 <ol>
@@ -18,10 +18,10 @@ TranslateModule.forRoot(&lcub;
 		</pre>
 	</li>
 	<li>
-		Using <code>MultiTranslateLoader</code> class:
+		Using <code>ObMultiTranslateLoader</code> class:
 		<pre>
 export function yourOwnFactory() &lcub;
-	return new MultiTranslateLoader(http, [
+	return new ObMultiTranslateLoader(http, [
 		&lcub;prefix: './assets/styles/i18n/', suffix: '.json'},
 		&lcub;prefix: './assets/i18n/', suffix: '.json'}
 	]);
