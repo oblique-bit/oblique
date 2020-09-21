@@ -2,8 +2,6 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {ObUnsavedChangesDirective} from './unsaved-changes.directive';
-import {ObUnsavedChangesService} from './unsaved-changes.service';
-import {ObUnsavedChangesGuard} from './unsaved-changes.guard';
 import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';

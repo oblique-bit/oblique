@@ -39,13 +39,12 @@ export class ObMasterLayoutService extends ObUnsubscribable {
 
 	private static getLangToken(): string {
 		let langToken = localStorage.getItem(ObMasterLayoutService.token);
+		const token = Math.random()
+			.toString(36)
+			.replace(/[^a-z]+/g, '')
+			.substr(0, 5);
 		if (!langToken) {
-			langToken =
-				'_' +
-				Math.random()
-					.toString(36)
-					.replace(/[^a-z]+/g, '')
-					.substr(0, 5);
+			langToken = `_${token}`;
 			localStorage.setItem(ObMasterLayoutService.token, langToken);
 		}
 

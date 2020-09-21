@@ -7,7 +7,9 @@ import {ObISearchWidgetItem} from './search-box.component';
 	exportAs: 'obSearchBoxResults',
 	templateUrl: './search-box-results.component.html',
 	styleUrls: ['./search-box-results.component.scss', '../nav-tree/nav-tree.component.scss'],
-	encapsulation: ViewEncapsulation.None
+	encapsulation: ViewEncapsulation.None,
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
+	host: {class: 'ob-search-box-results'}
 })
 export class ObSearchBoxResultsComponent implements OnDestroy {
 	@Input() input: ElementRef;

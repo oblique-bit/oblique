@@ -11,16 +11,13 @@ import {ObThemeService} from '../theme/theme.service';
 import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {ObMasterLayoutComponent} from './master-layout/master-layout.component';
-import {ObMasterLayoutService} from './master-layout.service';
 import {ObMasterLayoutHeaderComponent} from './master-layout-header/master-layout-header.component';
 import {ObMasterLayoutHeaderToggleDirective} from './master-layout-header/master-layout-header-toggle.directive';
 import {ObMasterLayoutFooterComponent} from './master-layout-footer/master-layout-footer.component';
-import {ObMasterLayoutNavigationService} from './master-layout-navigation/master-layout-navigation.service';
 import {ObMasterLayoutNavigationComponent} from './master-layout-navigation/master-layout-navigation.component';
 import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation/master-layout-navigation-item.directive';
 import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
-import {ObMasterLayoutConfig} from './master-layout.config';
 import {obliqueProviders} from '../utilities';
 import {ObAriaMenuButtonDirective} from './aria-menu-button.directive';
 

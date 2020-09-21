@@ -1,7 +1,7 @@
 @import "../../styles/scss/core/variables";
 @import "../../styles/scss/core/mixins/toggle";
 
-ob-multiselect {
+.ob-multiselect {
 	&[readonly],
 	&.readonly {
 		border: none;

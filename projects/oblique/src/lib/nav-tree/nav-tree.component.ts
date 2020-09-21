@@ -87,7 +87,6 @@ export class ObNavTreeComponent extends ObUnsubscribable {
 	}
 }
 
-// FIXME: refactor this when https://github.com/angular/angular/issues/14485
 export function defaultLabelFormatterFactory(translate: TranslateService) {
 	// noinspection UnnecessaryLocalVariableJS because this will result in a build error
 	const formatter = (item: ObNavTreeItemModel, filterPattern: string) => {

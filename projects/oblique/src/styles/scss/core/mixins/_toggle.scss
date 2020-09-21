@@ -18,7 +18,7 @@
 		&::before {
 			content: fa-content($toggle-icon);
 		}
-	};
+	}
 	&::before {
 		width: $fa-fw-width;
 	}
@@ -31,7 +31,7 @@
 			content: fa-content($toggle-icon);
 			width: $fa-fw-width;
 		}
-	};
+	}
 	&::after {
 		width: $fa-fw-width;
 	}
@@ -46,7 +46,7 @@
 		&::before {
 			content: fa-content($toggle-icon);
 		}
-	};
+	}
 }
 
 @mixin toggle-icon-after($default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show) {
@@ -58,7 +58,7 @@
 		&::after {
 			content: fa-content($toggle-icon);
 		}
-	};
+	}
 }
 
 @mixin add-toggle($default-icon, $toggle-icon) {

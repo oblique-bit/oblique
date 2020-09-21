@@ -5,9 +5,7 @@ import {TranslateModule} from '@ngx-translate/core';
 
 import {ObFilterBoxModule} from '../filter-box/filter-box.module';
 import {ObMultiselectComponent} from './multiselect.component';
-import {ObMultiselectConfig} from './multiselect.config';
 import {ObMultiselectSearchPipe} from './multiselect-search.pipe';
-import {ObMultiselectTexts} from './multiselect.texts';
 import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';

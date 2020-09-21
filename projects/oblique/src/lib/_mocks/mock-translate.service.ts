@@ -12,7 +12,7 @@ export class ObMockTranslateService {
 	langs = ['en'];
 	currentLang = 'en';
 
-	setTranslation(lang: string, translations: Object, shouldMerge?: boolean): void {}
+	setTranslation(lang: string, translations: Object, shouldMerge = false): void {}
 
 	getStreamOnTranslationChange(key: string | string[], interpolateParams?: Object): Observable<any> {
 		return EMPTY;

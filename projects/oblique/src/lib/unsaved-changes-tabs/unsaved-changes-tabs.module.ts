@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {ObUnsavedChangesTabsDirective} from './unsaved-changes-tabs.directive';
-import {ObUnsavedChangesTabsService} from './unsaved-changes-tabs.service';
 import {ObUnsavedChangesModule} from '../unsaved-changes/unsaved-changes.module';
 import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';

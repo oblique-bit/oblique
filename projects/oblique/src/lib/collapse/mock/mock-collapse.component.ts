@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, TemplateRef} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
 	selector: 'ob-collapse',

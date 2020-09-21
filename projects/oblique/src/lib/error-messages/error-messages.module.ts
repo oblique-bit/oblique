@@ -8,7 +8,6 @@ import {ObErrorMessagesDirective} from './error-messages.directive';
 import {ObTranslateParamsModule} from '../translate-params/translate-params.module';
 import {ObFormControlStateModule} from '../form-control-state/form-control-state.module';
 import {ObErrorMessagesComponent} from './error-messages.component';
-import {ObErrorMessagesService} from './error-messages.service';
 import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';

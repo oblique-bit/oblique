@@ -42,7 +42,9 @@ import {ObThemeService} from '../theme/theme.service';
 	],
 	styleUrls: ['./multiselect.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	templateUrl: './multiselect.component.html'
+	templateUrl: './multiselect.component.html',
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
+	host: {class: 'ob-multiselect'}
 })
 export class ObMultiselectComponent implements OnInit, OnDestroy, DoCheck, ControlValueAccessor {
 	@Input() options: any[] = [];
