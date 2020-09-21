@@ -70,7 +70,6 @@
 		padding: 0;
 		background-color: inherit;
 		border-bottom: $brand-line-width solid $brand-accent;
-		overflow: hidden;
 
 		@include layout-collapse-up() {
 			display: flex;
@@ -132,12 +131,14 @@
 	}
 
 	.application-header-title {
+        position: relative;
 		display: flex;
 		flex: 1;
 		flex-direction: row;
 		flex-wrap: nowrap;
 		margin-right: auto; // Ensure controls get pushed to the right
-		min-width: 0; // Important, for text ellipsis of app title (cf. https://css-tricks.com/flexbox-truncated-text/)!
+        min-width: 0; // Important, for text ellipsis of app title (cf. https://css-tricks.com/flexbox-truncated-text/)!
+        overflow: hidden;
 	}
 
 	.application-brand {
@@ -147,7 +148,7 @@
 		align-items: center;
 		min-width: 0; // Important, for text ellipsis of app title (cf. https://css-tricks.com/flexbox-truncated-text/)!
 		padding: 8px $spacing-default;
-		transition: padding $duration-default ease-in-out;
+        transition: padding $duration-default ease-in-out;
 
 		@include layout-collapse-up() {
 			@at-root #{selector-append(":not(.application-header-md)", &)} {
