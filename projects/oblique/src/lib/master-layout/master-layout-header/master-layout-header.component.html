@@ -7,6 +7,7 @@
 		</div>
 		<div class="application-header-title">
 			<div class="application-brand">
+				<aside *ngIf="banner.text" [style.color]="banner.color" [style.backgroundColor]="banner.bgColor">{{ banner.text }}</aside>
 				<a class="application-brand-logo" [routerLink]="home" tabindex="-1">
 					<ng-container [ngTemplateOutlet]="obLogo"></ng-container>
 				</a>
@@ -63,7 +64,6 @@
 			</ul>
 		</div>
 	</ng-container>
-	<aside *ngIf="banner.text" [style.color]="banner.color" [style.backgroundColor]="banner.bgColor">{{ banner.text }}</aside>
 </div>
 <ob-master-layout-navigation [links]="navigation">
 	<ng-content select="[obNavigation]"></ng-content>

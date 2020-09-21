@@ -1,4 +1,10 @@
-# [5.1.0](https://github.com/oblique-bit/oblique/compare/5.1.0-RC.3...5.1.0) (2020-08-21)
+# [5.1.1](https://github.com/oblique-bit/oblique/compare/5.1.0...5.1.1) (2020-09-21)
+
+## Bug Fixes
+* **master-layout:** fix dropdown content not visible in header ([d78557e](https://github.com/oblique-bit/oblique/commit/d78557e53effb35d8e3439c717533feac744b1c1))
+
+
+# [5.1.0](https://github.com/oblique-bit/oblique/compare/5.0.5...5.1.0) (2020-08-21)
 
 ## Bug Fixes
 * **input-clear:** add `MatDatepicker` input ([105838d](https://github.com/oblique-bit/oblique/commit/105838d71c8198b585c68e7e48eb7da8287248e5))
