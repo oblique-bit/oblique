@@ -1,7 +1,7 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {addPackageJsonDependency} from '@schematics/angular/utility/dependencies';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
-import {addImportToModule, addProviderToModule, addRouteDeclarationToModule, insertImport} from '@schematics/angular/utility/ast-utils';
+import {addDeclarationToModule, addImportToModule, addProviderToModule, addRouteDeclarationToModule, insertImport} from '@schematics/angular/utility/ast-utils';
 import {
 	angularJsonConfigPath,
 	applyChanges,
@@ -16,15 +16,15 @@ import {
 	getTemplate
 } from '../../ng-add-utils';
 import * as ts from 'typescript';
-import * as fs from 'fs';
 
 export function obliqueFeatures(options: any): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
 		chain([
 			addAjv(options.ajv),
 			addUnknownRoute(options.unknownRoute),
+			addDefaultComponent(options.theme, options.prefix),
+			addDefaultComponentToAppModule(options.theme),
 			addDefaultComponentRouteToAppRoutingModule(),
-            addDefaultComponent(options.prefix),
 			addInterceptors(options.httpInterceptors),
 			addBanner(options.banner)
 		])(tree, _context);
@@ -66,31 +66,46 @@ function addUnknownRoute(unknownRoute: boolean): Rule {
 	};
 }
 
-function addDefaultComponentRouteToAppRoutingModule(): Rule {
+function addDefaultComponent(theme: string, prefix: string): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		if (tree.exists(routingModulePath)) {
-			const sourceFileText: any = tree.read(routingModulePath);
-			const sourceFile = ts.createSourceFile(routingModulePath, sourceFileText.toString('utf-8'), ts.ScriptTarget.Latest, true);
-			const changes: Change[] = [];
+		addFile(tree, 'src/app/home/home.component.html', getTemplate(`home-${theme}.component.html`));
+		addFile(tree, 'src/app/home/home.component.scss', getTemplate(`home.component.scss.config`));
+		addFile(tree, 'src/app/home/home.component.ts', getTemplate('home.component.ts.config').replace('_APP_PREFIX_PLACEHOLDER_', prefix));
+		return tree;
+	};
+}
 
-			changes.push(insertImport(sourceFile, routingModulePath, 'HomeComponent', './home/home.component'));
-			changes.push(addRouteDeclarationToModule(sourceFile, 'app-routing.module.ts', "{path: 'home', component: HomeComponent}"));
+function addDefaultComponentToAppModule(theme: string): Rule {
+	return (tree: Tree, _context: SchematicContext) => {
+		if (tree.exists(appModulePath)) {
+			const sourceFileText: any = tree.read(appModulePath);
+			const sourceFile = ts.createSourceFile(appModulePath, sourceFileText.toString('utf-8'), ts.ScriptTarget.Latest, true);
+			const changes: Change[] = addDeclarationToModule(sourceFile, appModulePath, 'HomeComponent', './home/home.component');
+			const routingModule = tree.exists(routingModulePath) ? routingModulePath : appModulePath;
 
-			tree = applyChanges(tree, routingModulePath, changes);
+			if (theme === 'material') {
+				changes.push(...addImportToModule(sourceFile, routingModule, 'MatButtonModule', '@angular/material/button'));
+				changes.push(...addImportToModule(sourceFile, routingModule, 'MatCardModule', '@angular/material/card'));
+			}
+
+			tree = applyChanges(tree, appModulePath, changes);
 		}
 		return tree;
 	};
 }
 
-function addDefaultComponent(prefix: string): Rule {
+function addDefaultComponentRouteToAppRoutingModule(): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		if (tree.exists(routingModulePath)) {
-			const path = 'src/app/home';
-			if (!fs.existsSync(path)) {
-				fs.mkdirSync(path, {recursive: true});
-            }
-            addFile(tree, 'src/app/home/home.component.html', getTemplate('home.component.html'));
-            addFile(tree, 'src/app/home/home.component.ts', getTemplate('home.component.ts.config').replace('_APP_PREFIX_PLACEHOLDER_-', prefix));
+		const routingModule = tree.exists(routingModulePath) ? routingModulePath : appModulePath;
+		if (tree.exists(routingModule)) {
+			const sourceFileText: any = tree.read(routingModule);
+			const sourceFile = ts.createSourceFile(routingModule, sourceFileText.toString('utf-8'), ts.ScriptTarget.Latest, true);
+			const changes: Change[] = [];
+			const fileName = routingModule.split('/').pop() as string;
+			changes.push(insertImport(sourceFile, routingModule, 'HomeComponent', './home/home.component'));
+			changes.push(addRouteDeclarationToModule(sourceFile, fileName, "{path: '', redirectTo: 'home', pathMatch: 'full'}"));
+			changes.push(addRouteDeclarationToModule(sourceFile, fileName, "{path: 'home', component: HomeComponent}"));
+			tree = applyChanges(tree, routingModule, changes);
 		}
 		return tree;
 	};
