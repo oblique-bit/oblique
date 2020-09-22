@@ -11,7 +11,7 @@ export {ObNavigableDirective, ObNavigableOnChangeEvent, ObNavigableOnMoveEvent, 
 export {ObNavigableGroupComponent} from './navigable-group.component';
 
 /**
- * @deprecated since version 5.0.0. This module is complex, buggy and never used as intended. It will be removed without replacement in future version.
+ * @deprecated since version 5.0.0. This module is complex, buggy and never used as intended. It will be removed without replacement in Oblique 6.
  * If you have a use case for it, please contact oblique@bit.admin.ch.
  * * to use the keyboard navigation, add a <code>tabindex</code> on each element and navigate with <kbd>tab</tbd> or <kbd>shift</tbd> + <kbd>tab</tbd>
  * * to use the hover effect on buttons use the <code>hover-visible</code> class.

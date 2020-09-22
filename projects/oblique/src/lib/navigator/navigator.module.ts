@@ -9,7 +9,7 @@ import {obliqueProviders} from '../utilities';
 export {ObNavigatorComponent} from './navigator.component';
 
 /**
- * @deprecated since version 4.0.0. This module is neither useful nor used and will be removed in future versions
+ * @deprecated since version 4.0.0. This module is neither useful nor used and will be removed without replacement in Oblique 6
  */
 @NgModule({
 	imports: [RouterModule],
