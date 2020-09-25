@@ -86,58 +86,99 @@
 
 	&.mat-step-header {
 		cursor: default;
+
 		&:hover {
 			background-color: inherit;
 		}
 	}
 }
 
-.mat-stepper-lg {
-	.mat-vertical-stepper-header,
-	.mat-horizontal-stepper-header,
-	&.mat-stepper-label-position-bottom .mat-horizontal-stepper-header {
-		padding: 32px;
+$padding-sm: 20px;
+$padding-md: 24px;
+$padding-lg: 32px;
+$offset-sm: 28px;
+$offset-md: 36px;
+$offset-lg: 51px;
+.mat-stepper-horizontal {
+	@at-root #{selector-append(".mat-stepper-label-position-bottom", &)},
+	& {
+		.mat-horizontal-stepper-header {
+			padding: $padding-md;
+
+			@at-root #{selector-append(".mat-stepper-lg", &)} {
+				padding: $padding-lg;
+			}
+
+			@at-root #{selector-append(".mat-stepper-sm", &)} {
+				padding: $padding-sm;
+			}
+		}
+	}
+
+	&.mat-stepper-label-position-bottom {
+		.mat-stepper-horizontal-line,
+		.mat-horizontal-stepper-header:not(:last-child)::after,
+		.mat-horizontal-stepper-header:not(:first-child)::before {
+			top: $offset-md;
+
+			@at-root #{selector-append(".mat-stepper-lg", &)} {
+				top: $offset-lg;
+			}
+			@at-root #{selector-append(".mat-stepper-sm", &)} {
+				top: $offset-sm;
+			}
+		}
+
+		.mat-horizontal-stepper-header {
+			&:not(:first-child)::before,
+			&:not(:last-child)::after {
+				@at-root #{selector-append(".mat-stepper-lg", &)} {
+					width: calc(50% - 26px);
+				}
+				@at-root #{selector-append(".mat-stepper-sm", &)} {
+					width: calc(50% - 15px);
+				}
+			}
+		}
 	}
 }
 
-.mat-stepper-sm {
-	.mat-vertical-stepper-header,
-	.mat-horizontal-stepper-header,
-	&.mat-stepper-label-position-bottom .mat-horizontal-stepper-header {
-		padding: 20px;
-	}
+.mat-stepper-vertical-line::before {
+	top: -16px;
+	bottom: -16px;
 }
 
-.mat-stepper-label-position-bottom .mat-horizontal-stepper-header {
-	&:not(:first-child)::before,
-	&:not(:last-child)::after {
-		@at-root #{selector-append(".mat-stepper-lg", &)} {
-			top: 51px;
-			width: calc(50% - 26px);
-		}
-		@at-root #{selector-append(".mat-stepper-sm", &)} {
-			top: 28px;
-			width: calc(50% - 15px);
-		}
+.mat-vertical-stepper-header {
+	padding: $padding-md;
+
+	.mat-stepper-lg & {
+		padding: $padding-lg;
+	}
+
+	.mat-stepper-sm & {
+		padding: $padding-sm;
 	}
 }
 
 .mat-vertical-content-container {
+	margin-left: $offset-md;
+
 	.mat-stepper-lg & {
-		margin-left: 50px;
+		margin-left: $offset-lg;
 	}
 
 	.mat-stepper-sm & {
-		margin-left: 28px;
+		margin-left: $offset-sm;
 	}
 }
 
 .mat-vertical-content {
 	.mat-stepper-lg & {
-		padding: 0 32px 32px 32px;
+		padding: 0 $padding-lg $padding-lg $padding-lg;
 	}
 
 	.mat-stepper-sm & {
-		padding: 0 20px 20px 20px;
+		padding: 0 $padding-sm $padding-sm $padding-sm;
 	}
 }
+
