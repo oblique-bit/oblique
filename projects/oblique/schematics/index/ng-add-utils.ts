@@ -96,7 +96,7 @@ export function getJson(tree: any, path: string) {
 }
 
 export function getJsonProperty(json: any, propertyPath: string): string {
-	return propertyPath.split(';').reduce((obj, property) => obj[property], json);
+	return propertyPath.split(';').reduce((obj, property) => (obj ? obj[property] : undefined), json);
 }
 
 export function addPreconditions(): Rule {
