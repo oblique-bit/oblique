@@ -1,5 +1,5 @@
 @import "projects/oblique/src/styles/scss/core/variables";
-@import '../../core/mixins/typography';
+@import "../../core/mixins/typography";
 
 .mat-card {
 	.mat-card-header {
@@ -34,7 +34,6 @@
 	.mat-card-subtitle,
 	.mat-card-content {
 		@include body2;
-		color: $gray-dark;
 	}
 
 	.mat-card-actions {

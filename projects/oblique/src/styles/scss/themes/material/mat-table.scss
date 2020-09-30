@@ -45,11 +45,15 @@
 		border-color: $gray;
 
 		.mat-cell {
-			color: $gray-dark;
+			color: $brand-default;
 		}
 	}
 
 	.mat-row:hover {
 		background-color: $brand-extra-light;
+	}
+
+	.mat-sort-header {
+		cursor: pointer;
 	}
 }

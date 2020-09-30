@@ -31,3 +31,12 @@
 		margin-right: $spacing-sm;
 	}
 }
+
+.application {
+	.mat-button,
+	.mat-icon-button,
+	.mat-stroked-button,
+	.mat-flat-button {
+		border-radius: 2px;
+	}
+}

@@ -50,6 +50,15 @@
 			animation: notification-slideBottom $duration-default;
 		}
 
+		.close {
+			float: none;
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: $spacing-default;
+			line-height: 0.75;
+		}
+
 		.notification-title {
 			font-weight: 600;
 			margin-bottom: 0.5em;
