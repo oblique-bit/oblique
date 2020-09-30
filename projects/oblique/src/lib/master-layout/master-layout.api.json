@@ -8,8 +8,15 @@
       "type": "component",
       "usage": "This component takes care of the structure of the application and should be used in <code>app.component.html</code>",
       "since": "2.0.0",
-      "updated": "5.1.0",
+      "updated": "5.2.0",
       "inputs": [
+        {
+          "name": "jumplinks",
+          "text": "A List of Links to be used as jumplinks in order to improve accessibility.",
+          "type": "ObIJumpLink[]",
+          "default": "[]",
+          "since": "5.2.0"
+        },
         {
           "name": "navigation",
           "text": "A list of links to populate the primary navigation. If more control on the navigation is needed, use <code>[obNavigation]</code> content projection (see below) instead",
@@ -546,6 +553,33 @@
           "type": "ObINavigationLink[]",
           "isOptional": true,
           "since": "4.0.0"
+        }
+      ]
+    },
+    {
+      "name": "ObIJumpLink",
+      "type": "interface",
+      "usage": "The structure of a custom jumplink",
+      "since": "5.2.0",
+      "variables": [
+        {
+          "name": "label",
+          "text": "An i18n key that will be translated and used as Label for this jumplink",
+          "type": "string",
+          "since": "5.2.0"
+        },
+        {
+          "name": "url",
+          "text": "Url to navigate when clicking the link. When typed 'current', the link points to the current Route.",
+          "type": "string",
+          "since": "5.2.0"
+        },
+        {
+          "name": "fragment",
+          "text": "Link Fragment",
+          "type": "string",
+          "isOptional": true,
+          "since": "5.2.0"
         }
       ]
     },

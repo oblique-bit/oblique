@@ -20,7 +20,6 @@
 }
 
 .accessible {
-	width: 250px;
 	height: 1px;
 	display: block;
 	clip: rect(0, 0, 0, 0);
@@ -35,10 +34,13 @@
 	@include alert-variant($brand-warning-light, $fa-var-universal-access, $brand-warning);
 	position: absolute; // has to come after alert-base to override its position setting
 
+	&::before {
+		line-height: 1
+	}
+
 	&:active,
 	&:focus {
 		position: static;
-		width: auto;
 		height: auto;
 		transform: translateY(0);
 		opacity: 1;
