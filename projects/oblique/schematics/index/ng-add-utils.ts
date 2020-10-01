@@ -7,7 +7,6 @@ import {getWorkspace} from '@schematics/angular/utility/config';
 import {addPackageJsonDependency, NodeDependency, NodeDependencyType} from '@schematics/angular/utility/dependencies';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {execSync} from 'child_process';
-import * as fs from 'fs';
 
 export const OBLIQUE_PACKAGE = '@oblique/oblique';
 export const appModulePath = 'src/app/app.module.ts';
@@ -120,12 +119,8 @@ export function installDependencies(): Rule {
 	};
 }
 
-export function getTemplate(file: string): string {
-	return fs.readFileSync(`${pathToTemplates}/${file}`).toString();
-}
-
-export function listFiles(dir: string): string[] {
-	return fs.readdirSync(dir);
+export function getTemplate(tree: Tree, file: string): string {
+	return getFileContent(tree, `${pathToTemplates}/${file}`);
 }
 
 export function deleteFile(tree: Tree, filename: string): void {
@@ -141,5 +136,5 @@ export function addFile(tree: Tree, filename: string, content: string): void {
 }
 
 export function isAngular10(tree: Tree): boolean {
-	return getFileContent(tree, './package.json').match(/@angular\/core":\s*"[~,^]?(?<version>\d).\d.\d.*/)?.groups?.version === '10';
+	return getFileContent(tree, './package.json').match(/@angular\/core":\s*"[~,^]?(?<version>\d+)\.\d+\.\d+"/)?.groups?.version === '10';
 }

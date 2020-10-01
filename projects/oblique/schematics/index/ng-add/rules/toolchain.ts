@@ -37,7 +37,7 @@ export function toolchain(options: any): Rule {
 function addNpmrc(add: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (add) {
-			addFile(tree, '.npmrc', getTemplate('default-npmrc.config'));
+			addFile(tree, '.npmrc', getTemplate(tree, 'default-npmrc.config'));
 		}
 		return tree;
 	};
@@ -99,7 +99,7 @@ function removeUnusedScripts() {
 function addProxy(port: number): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (port >= 0 && !tree.exists('proxy.conf.json')) {
-			tree.create('proxy.conf.json', getTemplate('default-proxy.conf.json.config').replace('PORT', port.toString()));
+			tree.create('proxy.conf.json', getTemplate(tree, 'default-proxy.conf.json.config').replace('PORT', port.toString()));
 			const json = getJson(tree, angularJsonConfigPath);
 			const defaultProjectName = getJsonProperty(json, 'defaultProject');
 			json.projects[defaultProjectName].architect.serve.options.proxyConfig = 'proxy.conf.json';
@@ -112,7 +112,7 @@ function addProxy(port: number): Rule {
 function addSonar(sonar: boolean, jest: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (sonar) {
-			addFile(tree, 'sonar-project.properties', getTemplate('default-sonar-project.properties.config'));
+			addFile(tree, 'sonar-project.properties', getTemplate(tree, 'default-sonar-project.properties.config'));
 			if (jest) {
 				const packageJson = getJson(tree, packageJsonConfigPath);
 				packageJson.jestSonar = {
@@ -143,10 +143,10 @@ function addEslint(eslint: boolean, prefix: string): Rule {
 			json.scripts.format = 'npm run lint:fix && npm run prettier';
 			tree.overwrite(packageJsonConfigPath, JSON.stringify(json, null, 2));
 
-			const prettier = getTemplate('default-prettierrc.config');
+			const prettier = getTemplate(tree, 'default-prettierrc.config');
 			tree.create('.prettierrc', prettier);
 
-			let eslintFile = getTemplate('default-eslintrc.js.config').replace(/APP_PREFIX/g, prefix);
+			let eslintFile = getTemplate(tree, 'default-eslintrc.js.config').replace(/APP_PREFIX/g, prefix);
 			if (tree.exists('tsconfig.base.json')) {
 				eslintFile.replace('tsconfig.json', 'tsconfig.base.json');
 			}
@@ -203,10 +203,9 @@ function addHusky(husky: boolean): Rule {
 function addIE11Support(ie11: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (ie11) {
-			const tsConfigName = tree.exists('tsconfig.json') ? 'tsconfig.json' : 'tsconfig.base.json';
-			const tsConfig = getJson(tree, tsConfigName);
-			tsConfig.compilerOptions.target = 'es5';
-			tree.overwrite(tsConfigName, JSON.stringify(tsConfig, null, 2));
+			const tsConfigName = tree.exists('tsconfig.base.json') ? 'tsconfig.base.json' : 'tsconfig.json';
+			const tsConfig = getFileContent(tree, tsConfigName).replace(/"target"\s*:\s*"[^"]*"/, '"target": "es5"');
+			tree.overwrite(tsConfigName, tsConfig);
 
 			const browserslist = tree.exists('.browserslistrc') ? '.browserslistrc' : 'browserslist';
 			const content = tree.read(browserslist) || '';

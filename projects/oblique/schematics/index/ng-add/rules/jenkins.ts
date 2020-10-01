@@ -29,7 +29,7 @@ function addDevEnv(dev: boolean): Rule {
 function addJenkins(useJenkins: boolean, jest: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (useJenkins) {
-			let jenkinsFile = getTemplate('default-Jenkinsfile.config');
+			let jenkinsFile = getTemplate(tree, 'default-Jenkinsfile.config');
 			if (!jest) {
 				jenkinsFile = jenkinsFile.replace("\n\ttestEngine = 'jest'", '');
 			}
@@ -43,7 +43,7 @@ function addCF(config: string, staticBuild: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (config.includes(';')) {
 			const [orgName, appName] = config.split(';');
-			let manifestDev = getTemplate('default-manifest-dev.yml.config')
+			let manifestDev = getTemplate(tree, 'default-manifest-dev.yml.config')
 				.replace('ORG_NAME', orgName)
 				.replace(/APP_NAME/g, appName);
 			if (!staticBuild) {
@@ -58,7 +58,7 @@ function addCF(config: string, staticBuild: boolean): Rule {
 function addStaticBuildPack(staticBuildPack: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (staticBuildPack) {
-			const staticFile = getTemplate('default-Staticfile.config');
+			const staticFile = getTemplate(tree, 'default-Staticfile.config');
 			tree.create('src/Staticfile', staticFile);
 			const json = getJson(tree, angularJsonConfigPath);
 			const defaultProjectName = getJsonProperty(json, 'defaultProject');

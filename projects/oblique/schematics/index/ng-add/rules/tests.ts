@@ -33,7 +33,7 @@ function removeJasmine() {
 	return (tree: Tree, _context: SchematicContext) => {
 		let jasmineTsConfigJson = getJson(tree, 'src/tsconfig.spec.json');
 		if (!jasmineTsConfigJson) {
-			const tpl = getTemplate('default-tsconfig.spec.json');
+			const tpl = getTemplate(tree, 'default-tsconfig.spec.json');
 
 			if (tree.exists('tsconfig.base.json')) {
 				tpl.replace('tsconfig.json', 'tsconfig.base.json');
@@ -80,9 +80,9 @@ function addJestDependencies() {
 
 function createJestConfigFiles() {
 	return (tree: Tree, _context: SchematicContext) => {
-		addFile(tree, 'tests/jest.config.js', getTemplate('default-jest.config'));
+		addFile(tree, 'tests/jest.config.js', getTemplate(tree, 'default-jest.config'));
 		addFile(tree, 'tests/setupJest.ts', "import 'jest-preset-angular';\nimport './jestGlobalMocks'; // browser mocks globally available for every test");
-		addFile(tree, 'tests/jestGlobalMocks.ts', getTemplate('default-jestGlobalMocks.config'));
+		addFile(tree, 'tests/jestGlobalMocks.ts', getTemplate(tree, 'default-jestGlobalMocks.config'));
 	};
 }
 

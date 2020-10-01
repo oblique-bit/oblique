@@ -11,6 +11,7 @@ import {
 	createDependency,
 	getJson,
 	getJsonProperty,
+	getTemplate,
 	importModule,
 	isAngular10,
 	OBLIQUE_PACKAGE,
@@ -56,12 +57,11 @@ function addFavIcon(): Rule {
 }
 
 function embedMasterLayout(title: string): Rule {
-	const filePath = 'node_modules/@oblique/oblique/schematics/index/ng-add/templates/default-master-layout.html';
 	const path = 'src/app/app.component.html';
 
 	return (tree: Tree, _context: SchematicContext) => {
 		if (tree.exists(path)) {
-			const layoutContent = getFileContent(tree, filePath);
+			const layoutContent = getTemplate(tree, 'default-master-layout.html');
 			const masterLayoutContent = layoutContent.replace(/_APP_TITLE_PLACEHOLDER_/, title);
 			tree.overwrite(path, masterLayoutContent);
 		}

@@ -12,7 +12,6 @@ import {
 	getJsonProperty,
 	getTemplate,
 	isAngular10,
-	listFiles,
 	OBLIQUE_PACKAGE,
 	routingModulePath
 } from '../../ng-add-utils';
@@ -67,9 +66,9 @@ function addUnknownRoute(unknownRoute: boolean): Rule {
 
 function addDefaultComponent(theme: string, prefix: string): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		addFile(tree, 'src/app/home/home.component.html', getTemplate(`home-${theme}.component.html`));
-		addFile(tree, 'src/app/home/home.component.scss', getTemplate(`home.component.scss.config`));
-		addFile(tree, 'src/app/home/home.component.ts', getTemplate('home.component.ts.config').replace('_APP_PREFIX_PLACEHOLDER_', prefix));
+		addFile(tree, 'src/app/home/home.component.html', getTemplate(tree, `home-${theme}.component.html`));
+		addFile(tree, 'src/app/home/home.component.scss', getTemplate(tree, `home.component.scss.config`));
+		addFile(tree, 'src/app/home/home.component.ts', getTemplate(tree, 'home.component.ts.config').replace('_APP_PREFIX_PLACEHOLDER_', prefix));
 		return tree;
 	};
 }
@@ -140,8 +139,8 @@ function addBanner(banner: boolean): Rule {
 
 function addBannerData(tree: Tree): void {
 	const src = 'src/environments';
-	listFiles(src)
-		.filter(file => file.indexOf('prod') === -1)
+	tree.getDir(src)
+		.subfiles.filter(file => file.indexOf('prod') === -1)
 		.map(file => `${src}/${file}`)
 		.forEach(file => {
 			const env = file.match(/environment\.(?<env>.*)\.ts/)?.groups?.env || 'local';
