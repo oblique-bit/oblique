@@ -1,5 +1,4 @@
 import {Directive, HostListener} from '@angular/core';
-
 import {ObOffCanvasService} from './off-canvas.service';
 
 @Directive({
@@ -12,6 +11,7 @@ export class ObOffCanvasToggleDirective {
 	@HostListener('click')
 	@HostListener('keyup.Enter')
 	toggle() {
-		this.offCanvas.open = !this.offCanvas.open;
+		// delay the toggle so that any other feature that relies on click has time to update its status
+		setTimeout(() => (this.offCanvas.open = !this.offCanvas.open));
 	}
 }
