@@ -23,6 +23,7 @@ import yellow = colors.yellow;
 export function oblique(options: any): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
 		chain([
+			addFavIcon(),
 			importModule('ObMasterLayoutModule', OBLIQUE_PACKAGE),
 			importModule('BrowserAnimationsModule', '@angular/platform-browser/animations'),
 			embedMasterLayout(options.title),
@@ -33,6 +34,25 @@ export function oblique(options: any): Rule {
 			addFontInjectionToken(options.font.toUpperCase() || 'NONE'),
 			addLocales(options.langs.split(' '))
 		])(tree, _context);
+}
+
+function addFavIcon(): Rule {
+	return (tree: Tree, _context: SchematicContext) => {
+		const json = getJson(tree, angularJsonConfigPath);
+		const defaultProjectName = getJsonProperty(json, 'defaultProject');
+		const index = getJsonProperty(json, `projects;${defaultProjectName};architect;build;options;index`);
+
+		if (tree.exists(index)) {
+			tree.overwrite(
+				index,
+				getFileContent(tree, index).replace(
+					'<link rel="icon" type="image/x-icon" href="favicon.ico">',
+					'<link href="assets/styles/images/favicon.png" rel="shortcut icon"/>'
+				)
+			);
+		}
+		return tree;
+	};
 }
 
 function embedMasterLayout(title: string): Rule {
