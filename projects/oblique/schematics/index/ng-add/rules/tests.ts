@@ -1,14 +1,16 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {addPackageJsonDependency, NodeDependency, removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
+import {removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
 import {
+	addDevDependency,
 	addFile,
-	angularJsonConfigPath,
-	createDevDependency,
 	deleteFile,
+	getAngularConfig,
 	getJson,
-	getJsonProperty,
 	getTemplate,
-	packageJsonConfigPath
+	infoMigration,
+	packageJsonConfigPath,
+	removeAngularConfig,
+	setAngularConfig
 } from '../../ng-add-utils';
 
 export function addJest(jest: boolean): Rule {
@@ -16,6 +18,8 @@ export function addJest(jest: boolean): Rule {
 		if (!jest) {
 			return tree;
 		}
+
+		infoMigration(_context, 'Toolchain: Replacing karma/jasmine with jest');
 		return chain([removeJasmine(), addJestDependencies(), createJestConfigFiles(), referToJest()])(tree, _context);
 	};
 }
@@ -25,6 +29,7 @@ export function addProtractor(protractor: boolean, jest: boolean): Rule {
 		if (protractor) {
 			return tree;
 		}
+		infoMigration(_context, 'Toolchain: Remove protractor and everything related to e2e tests');
 		return chain([removeE2eFolder(), removeE2eFromAngularJson(), removeE2eFromPackage(jest)])(tree, _context);
 	};
 }
@@ -61,14 +66,8 @@ function removeJasmine() {
 
 function addJestDependencies() {
 	return (tree: Tree, _context: SchematicContext) => {
-		const dependencies: NodeDependency[] = [
-			createDevDependency('jest'),
-			createDevDependency('@types/jest'),
-			createDevDependency('jest-sonar-reporter'),
-			createDevDependency('@angular-builders/jest')
-		];
+		['jest', '@types/jest', 'jest-sonar-reporter', '@angular-builders/jest'].forEach(dependency => addDevDependency(tree, dependency));
 
-		dependencies.forEach(dependency => addPackageJsonDependency(tree, dependency));
 		const json = getJson(tree, packageJsonConfigPath);
 		Object.keys(json.devDependencies)
 			.filter((dep: string) => dep.indexOf('karma') > -1)
@@ -83,14 +82,14 @@ function createJestConfigFiles() {
 		addFile(tree, 'tests/jest.config.js', getTemplate(tree, 'default-jest.config'));
 		addFile(tree, 'tests/setupJest.ts', "import 'jest-preset-angular';\nimport './jestGlobalMocks'; // browser mocks globally available for every test");
 		addFile(tree, 'tests/jestGlobalMocks.ts', getTemplate(tree, 'default-jestGlobalMocks.config'));
+
+		return tree;
 	};
 }
 
 function referToJest() {
-	return (tree: Tree, _context: SchematicContext) => {
-		const json = getJson(tree, angularJsonConfigPath);
-		const defaultProjectName = getJsonProperty(json, 'defaultProject');
-		json.projects[defaultProjectName].architect.test = {
+	return (tree: Tree, _context: SchematicContext) =>
+		setAngularConfig(tree, ['architect', 'test'], {
 			builder: '@angular-builders/jest:run',
 			options: {
 				configPath: './tests/jest.config.js',
@@ -103,34 +102,20 @@ function referToJest() {
 					verbose: false
 				}
 			}
-		};
-		tree.overwrite(angularJsonConfigPath, JSON.stringify(json, null, 2));
-
-		return tree;
-	};
+		});
 }
 
 function removeE2eFolder(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
-		if (tree.exists('e2e')) {
-			tree.delete('e2e');
-		}
-		return tree;
-	};
+	return (tree: Tree, _context: SchematicContext) => deleteFile(tree, 'e2e');
 }
 
 function removeE2eFromAngularJson() {
 	return (tree: Tree, _context: SchematicContext) => {
-		const json = getJson(tree, angularJsonConfigPath);
-		const defaultProjectName = getJsonProperty(json, 'defaultProject');
-		delete json.projects[defaultProjectName].architect.e2e;
-		json.projects[defaultProjectName].architect.lint.options.tsConfig = json.projects[defaultProjectName].architect.lint.options.tsConfig.filter(
-			(config: string) => config.indexOf('e2e') === -1
-		);
+		tree = removeAngularConfig(tree, ['architect', 'e2e']);
 
-		tree.overwrite(angularJsonConfigPath, JSON.stringify(json, null, 2));
-
-		return tree;
+		const path = ['architect', 'lint', 'options', 'tsConfig'];
+		const tcConfig = (getAngularConfig(tree, path) || []).filter((config: string) => config.indexOf('e2e') === -1);
+		return setAngularConfig(tree, path, tcConfig);
 	};
 }
 

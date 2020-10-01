@@ -1,19 +1,28 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {insertImport} from '@angular/cdk/schematics';
-import {getFileContent} from '@schematics/angular/utility/test';
-import {addProviderToModule} from '@schematics/angular/utility/ast-utils';
-import {InsertChange} from '@schematics/angular/utility/change';
-import {applyChanges, appModulePath, OBLIQUE_PACKAGE} from '../../ng-add-utils';
-import * as ts from 'typescript';
+import {addImportToModule, addProviderToModule} from '@schematics/angular/utility/ast-utils';
+import {Change, InsertChange} from '@schematics/angular/utility/change';
+import {
+	applyChanges,
+	appModulePath,
+	OBLIQUE_PACKAGE,
+	createSrcFile,
+	readFile,
+	infoMigration,
+	addDevDependency,
+	addFile,
+	importModule
+} from '../../ng-add-utils';
 
 export function addLocales(langs: string[]): Rule {
-	return (tree: Tree, _context: SchematicContext) => chain([importLocales(langs), registerLocales(langs), configureLocales(langs)])(tree, _context);
+	return (tree: Tree, _context: SchematicContext) =>
+		chain([importLocales(langs), registerLocales(langs), configureLocales(langs), addTranslation(langs)])(tree, _context);
 }
 
 function importLocales(langs: string[]): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		const appModuleContent = getFileContent(tree, appModulePath);
-		const sourceFile = ts.createSourceFile(appModulePath, appModuleContent, ts.ScriptTarget.Latest, true);
+		infoMigration(_context, 'Oblique: Adding locale management & translations');
+		const sourceFile = createSrcFile(tree, appModulePath);
 		const file = 'app.module.ts';
 		const locales = langToLocale(langs);
 		const changes = [
@@ -28,8 +37,7 @@ function importLocales(langs: string[]): Rule {
 				changes.push(change);
 			});
 
-		tree = applyChanges(tree, appModulePath, changes);
-		return tree;
+		return applyChanges(tree, appModulePath, changes);
 	};
 }
 
@@ -41,8 +49,7 @@ function registerLocales(langs: string[]): Rule {
 			.reduce((rep, locale) => [...rep, locale], [])
 			.concat('\n@NgModule')
 			.join('\n');
-		let appModuleContent = getFileContent(tree, appModulePath);
-
+		const appModuleContent = readFile(tree, appModulePath);
 		tree.overwrite(appModulePath, appModuleContent.replace(/@NgModule/, replacement));
 		return tree;
 	};
@@ -51,26 +58,50 @@ function registerLocales(langs: string[]): Rule {
 function configureLocales(langs: string[]): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (langs.join('_') !== ['de', 'fr', 'it'].join('_')) {
-			const appModuleContent = getFileContent(tree, appModulePath);
-			tree.overwrite(
-				appModulePath,
-				appModuleContent.replace(
-					'AppModule { }',
-					`AppModule { 
+			const appModuleContent = readFile(tree, appModulePath).replace(
+				'AppModule { }',
+				`AppModule { 
 	constructor(config: ObMasterLayoutConfig) {
 		config.locale.locales = ['${langs.join("', '")}'];
 	}
 }`
-				)
 			);
+			tree.overwrite(appModulePath, appModuleContent);
 
-			const sourceFile = ts.createSourceFile(appModulePath, appModuleContent, ts.ScriptTarget.Latest, true);
-			const file = 'app.module.ts';
-			const changes = [insertImport(sourceFile, file, 'ObMasterLayoutConfig', OBLIQUE_PACKAGE)];
+			const sourceFile = createSrcFile(tree, appModulePath);
+			const changes = [insertImport(sourceFile, 'app.module.ts', 'ObMasterLayoutConfig', OBLIQUE_PACKAGE)];
 			tree = applyChanges(tree, appModulePath, changes);
 		}
 		return tree;
 	};
+}
+
+function addTranslation(langs: string[]): Rule {
+	return (tree: Tree, _context: SchematicContext) => {
+		addDevDependency(tree, '@ngx-translate/core');
+		langs.forEach((lang: string) => addFile(tree, `src/assets/i18n/${lang}.json`, '{}'));
+		addTranslationToImports(tree);
+		return chain([importModule('HttpClientModule', '@angular/common/http')])(tree, _context);
+	};
+}
+
+function addTranslationToImports(tree: Tree): Tree {
+	const translateModuleName = ' TranslateModule ';
+	const translateSource = '@ngx-translate/core';
+	const translateModuleImport = 'TranslateModule.forRoot(multiTranslateLoader())';
+	const appModule = readFile(tree, appModulePath);
+	const sourceFile = createSrcFile(tree, appModulePath);
+	const changes: Change[] = [];
+
+	if (!appModule.split('@NgModule')[1].includes(translateModuleName)) {
+		addImportToModule(sourceFile, appModulePath, translateModuleImport, translateSource).forEach((change: Change) => changes.push(change));
+		if (changes.length > 1) {
+			(changes[1] as InsertChange).toAdd = `; \nimport {${translateModuleName}} from '${translateSource}'`;
+		}
+	}
+
+	changes.push(insertImport(sourceFile, appModulePath, 'multiTranslateLoader', OBLIQUE_PACKAGE));
+	return applyChanges(tree, appModulePath, changes);
 }
 
 function langToLocale(langs: string[]): {locale: string; variable: string}[] {
