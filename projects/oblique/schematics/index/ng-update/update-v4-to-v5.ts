@@ -1,8 +1,8 @@
 import {execSync} from 'child_process';
-import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
+import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {IMigratable} from './update-schema';
 import {colors} from '@angular-devkit/core/src/terminal';
-import {PROJECT_PACKAGE_JSON, OB_PACKAGE, PROJECT_ROOT_DIR, PROJECT_ANGULAR_JSON, SchematicsUtil, OB_PACKAGE_JSON} from '../ng-update-utils';
+import {OB_PACKAGE, OB_PACKAGE_JSON, PROJECT_ANGULAR_JSON, PROJECT_PACKAGE_JSON, PROJECT_ROOT_DIR, SchematicsUtil} from '../ng-update-utils';
 
 export class UpdateV4toV5 implements IMigratable {
 	static util: SchematicsUtil = SchematicsUtil.getInstance();
@@ -465,31 +465,41 @@ export class UpdateV4toV5 implements IMigratable {
 			_context.logger.info(colors.blue('- Prefixes in HTML') + colors.green(' ✔'));
 			const srcRoot = UpdateV4toV5.util.getJSONProperty('sourceRoot', UpdateV4toV5.util.getFile(tree, PROJECT_ANGULAR_JSON));
 			const toApply = (filePath: string) => {
-				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/<or-/g), '<ob-');
-				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/<\/or-/g), '</ob-');
-				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/\s+#or/g), ' #ob');
-				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/\s+\[or/g), ' [ob');
-				const matches = UpdateV4toV5.util.getFile(tree, filePath).match(/\s+or([^\s])/g) || [];
-				matches.forEach(match => {
-					const content = UpdateV4toV5.util.getFile(tree, filePath);
-					tree.overwrite(filePath, content.replace(match, match.replace('or', 'ob')));
-				});
-				const variableMatches = UpdateV4toV5.util.getFile(tree, filePath).match(/#(\w)*=(\"|\')(or(\w)*)(\"|\')/g) || [];
-				variableMatches.forEach(match => {
-					const variable = match.split('=')[1];
-					const newContent = match.replace(variable, variable.replace('or', 'ob'));
-					const content = UpdateV4toV5.util.getFile(tree, filePath);
-					tree.overwrite(filePath, content.replace(match, newContent));
-				});
-				const eventMatches = UpdateV4toV5.util.getFile(tree, filePath).match(/\((\w)+\)=(("|')or)/g) || [];
-				eventMatches.forEach(match => {
-					const newContent = match.replace('or', 'ob');
-					const content = UpdateV4toV5.util.getFile(tree, filePath);
-					tree.overwrite(filePath, content.replace(match, newContent));
-				});
+				this.transformTags(tree, filePath);
+				this.transformDirectives(tree, filePath);
+				this.transformVariables(tree, filePath);
 			};
 			return chain([UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + srcRoot, toApply, '.html')])(tree, _context);
 		};
+	}
+
+	private transformTags(tree: Tree, filePath: string): void {
+		UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/<or-/g), '<ob-');
+		UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/<\/or-/g), '</ob-');
+	}
+
+	private transformDirectives(tree: Tree, filePath: string): void {
+		UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/\s+\[or/g), ' [ob');
+
+		// orPi_cker2 (with leading whitespace/tab/line break):
+		const matches = UpdateV4toV5.util.getFile(tree, filePath).match(/\s+or[A-Z0-9_]+(\w)*/g) || [];
+		matches.forEach(match => {
+			const content = UpdateV4toV5.util.getFile(tree, filePath);
+			tree.overwrite(filePath, content.replace(match, match.replace('or', 'ob')));
+		});
+	}
+
+	private transformVariables(tree: Tree, filePath: string): void {
+		UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/\s+#or/g), ' #ob');
+
+		//#oneOr_MoreWords="orWords_3" matches double or single quotes:
+		const variableMatches = UpdateV4toV5.util.getFile(tree, filePath).match(/#(\w)*=(\"|')(or[A-Z0-9_]+(\w)*)(\"|\')/g) || [];
+		variableMatches.forEach(match => {
+			const variable = match.split('=')[1];
+			const newContent = match.replace(variable, variable.replace('or', 'ob'));
+			const content = UpdateV4toV5.util.getFile(tree, filePath);
+			tree.overwrite(filePath, content.replace(match, newContent));
+		});
 	}
 
 	private checkPreconditions(): Rule {
