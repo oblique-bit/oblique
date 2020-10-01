@@ -141,5 +141,5 @@ export function addFile(tree: Tree, filename: string, content: string): void {
 }
 
 export function isAngular10(tree: Tree): boolean {
-	return !!getJson(tree, 'tsconfig.base.json');
+	return getFileContent(tree, './package.json').match(/@angular\/core":\s*"[~,^]?(?<version>\d).\d.\d.*/)?.groups?.version === '10';
 }

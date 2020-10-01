@@ -35,9 +35,7 @@ function removeJasmine() {
 		if (!jasmineTsConfigJson) {
 			const tpl = getTemplate('default-tsconfig.spec.json');
 
-			const tsConfig = getJson(tree, 'tsconfig.base.json');
-			if (tsConfig) {
-				// Angular 10
+			if (tree.exists('tsconfig.base.json')) {
 				tpl.replace('tsconfig.json', 'tsconfig.base.json');
 			}
 			addFile(tree, 'src/tsconfig.spec.json', tpl);

@@ -3,17 +3,18 @@ import {addPackageJsonDependency} from '@schematics/angular/utility/dependencies
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {addDeclarationToModule, addImportToModule, addProviderToModule, addRouteDeclarationToModule, insertImport} from '@schematics/angular/utility/ast-utils';
 import {
+	addFile,
 	angularJsonConfigPath,
 	applyChanges,
 	appModulePath,
 	createDevDependency,
 	getJson,
 	getJsonProperty,
+	getTemplate,
+	isAngular10,
 	listFiles,
 	OBLIQUE_PACKAGE,
-	routingModulePath,
-	addFile,
-	getTemplate
+	routingModulePath
 } from '../../ng-add-utils';
 import * as ts from 'typescript';
 
@@ -35,9 +36,7 @@ function addAjv(ajv: boolean): Rule {
 		if (ajv) {
 			addPackageJsonDependency(tree, createDevDependency('ajv'));
 
-			let tsConfig = getJson(tree, 'tsconfig.base.json');
-			if (tsConfig) {
-				// Angular 10
+			if (isAngular10(tree)) {
 				const json = getJson(tree, angularJsonConfigPath);
 				const defaultProjectName = getJsonProperty(json, 'defaultProject');
 				if (!json.projects[defaultProjectName].architect.build.options.allowedCommonJsDependencies) {
