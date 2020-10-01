@@ -63,7 +63,7 @@ export class ObMasterLayoutService extends ObUnsubscribable {
 		}
 		const langToken = ObMasterLayoutService.getLangToken();
 		const lang = this.getCurrentLang(langToken);
-		this.translate.setDefaultLang(lang);
+		this.translate.setDefaultLang(this.getDefaultLang());
 		this.translate.use(lang);
 		this.translate.addLangs(
 			this.config.locale.locales.reduce((languages, language) => languages.concat([(language as ObILocaleObject).locale || language]), [])
@@ -74,11 +74,19 @@ export class ObMasterLayoutService extends ObUnsubscribable {
 		});
 	}
 
+	private getDefaultLang(): string {
+		const firstLocale = this.config.locale.locales[0];
+		// prettier-ignore
+		return this.getSupportedLang(this.translate.getDefaultLang())
+			|| this.getSupportedLang(this.config.locale.default)
+			|| (firstLocale as ObILocaleObject).locale
+			|| (firstLocale as string);
+	}
+
 	private getCurrentLang(langToken: string): string {
 		const firstLocale = this.config.locale.locales[0];
 		// prettier-ignore
-		const lang =
-			this.getSupportedLang(localStorage.getItem(ObMasterLayoutService.token + langToken))
+		const lang = this.getSupportedLang(localStorage.getItem(ObMasterLayoutService.token + langToken))
 			|| this.getSupportedLang(this.translate.getBrowserLang())
 			|| this.getSupportedLang(this.config.locale.default)
 			|| (firstLocale as ObILocaleObject).locale
