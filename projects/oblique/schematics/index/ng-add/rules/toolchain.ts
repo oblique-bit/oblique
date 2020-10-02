@@ -96,10 +96,10 @@ function removeUnusedScripts() {
 	};
 }
 
-function addProxy(port: number): Rule {
+function addProxy(port: string): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		if (port >= 0 && !tree.exists('proxy.conf.json')) {
-			addFile(tree, 'proxy.conf.json', getTemplate(tree, 'default-proxy.conf.json.config').replace('PORT', port.toString()));
+		if (port.match(/^\d+$/) && !tree.exists('proxy.conf.json')) {
+			addFile(tree, 'proxy.conf.json', getTemplate(tree, 'default-proxy.conf.json.config').replace('PORT', port));
 			const json = getJson(tree, angularJsonConfigPath);
 			const defaultProjectName = getJsonProperty(json, 'defaultProject');
 			json.projects[defaultProjectName].architect.serve.options.proxyConfig = 'proxy.conf.json';
