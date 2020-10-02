@@ -98,19 +98,6 @@ export function getJsonProperty(json: any, propertyPath: string): string {
 	return propertyPath.split(';').reduce((obj, property) => (obj ? obj[property] : undefined), json);
 }
 
-export function addPreconditions(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
-		if (!getFileContent(tree, './package.json').includes('"@angular/localize"')) {
-			_context.logger.info(colors.blue('- Seems there is no @localize, will add it for you...'));
-			execSync('ng add @angular/localize');
-		}
-
-		_context.logger.info(colors.black(colors.bold(`\nTHANK YOU FOR USING OBLIQUE! STARTING ADDING OBLIQUE TO YOUR PROJECT 💙 \n`)));
-
-		return tree;
-	};
-}
-
 export function installDependencies(): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		_context.addTask(new NodePackageInstallTask());
