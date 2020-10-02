@@ -52,13 +52,15 @@ function addAjv(ajv: boolean): Rule {
 
 function addUnknownRoute(unknownRoute: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		if (unknownRoute && tree.exists(routingModulePath)) {
-			const sourceFileText: any = tree.read(routingModulePath);
-			const sourceFile = ts.createSourceFile(routingModulePath, sourceFileText.toString('utf-8'), ts.ScriptTarget.Latest, true);
-			const changes: Change[] = addImportToModule(sourceFile, routingModulePath, 'ObUnknownRouteModule', OBLIQUE_PACKAGE);
+		const routingModule = tree.exists(routingModulePath) ? routingModulePath : appModulePath;
+		if (unknownRoute && tree.exists(routingModule)) {
+			const sourceFileText: any = tree.read(routingModule);
+			const sourceFile = ts.createSourceFile(routingModule, sourceFileText.toString('utf-8'), ts.ScriptTarget.Latest, true);
+			const changes: Change[] = addImportToModule(sourceFile, routingModule, 'ObUnknownRouteModule', OBLIQUE_PACKAGE);
+			const fileName = routingModule.split('/').pop() as string;
 
-			changes.push(addRouteDeclarationToModule(sourceFile, 'app-routing.module.ts', "{path: '**', redirectTo: 'unknown-route'}"));
-			tree = applyChanges(tree, routingModulePath, changes);
+			changes.push(addRouteDeclarationToModule(sourceFile, fileName, "{path: '**', redirectTo: 'unknown-route'}"));
+			tree = applyChanges(tree, routingModule, changes);
 		}
 		return tree;
 	};
