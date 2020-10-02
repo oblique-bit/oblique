@@ -33,7 +33,9 @@ function addScssImport(stylesPath: string): Rule {
 		if (tree.exists(angularJsonConfigPath)) {
 			const json = getJson(tree, angularJsonConfigPath);
 			const defaultProjectName = getJsonProperty(json, 'defaultProject');
-			const styleExt = getJsonProperty(json, `projects;${defaultProjectName};schematics;@schematics/angular:component;style`);
+			// prettier-ignore
+			const styleExt = getJsonProperty(json, `projects;${defaultProjectName};schematics;@schematics/angular:component;style`)
+				|| getJsonProperty(json, `schematics;@schematics/angular:component;style`);
 
 			if (styleExt !== 'scss' || !tree.exists(stylesPath)) {
 				return tree;
