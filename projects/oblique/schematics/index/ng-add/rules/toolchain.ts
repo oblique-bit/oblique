@@ -48,8 +48,8 @@ function moveStyles(): Rule {
 		if (!tree.exists('src/styles/styles.scss')) {
 			const stylesContent = tree.read('src/styles.scss') || '';
 			const comment = '// this file should contain only imports. Rules should be grouped by features and placed into the corresponding file';
-			tree.create('src/styles/styles.scss', `${comment}\n${stylesContent.toString()}`);
-			tree.delete('src/styles.scss');
+			addFile(tree, 'src/styles/styles.scss', `${comment}\n${stylesContent.toString()}`);
+			deleteFile(tree, 'src/styles.scss');
 			const content = tree.read('angular.json') || '';
 			tree.overwrite('angular.json', content.toString().replace(/"src\/styles\.scss"/g, '"src/styles/styles.scss"'));
 		}
@@ -99,7 +99,7 @@ function removeUnusedScripts() {
 function addProxy(port: number): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (port >= 0 && !tree.exists('proxy.conf.json')) {
-			tree.create('proxy.conf.json', getTemplate(tree, 'default-proxy.conf.json.config').replace('PORT', port.toString()));
+			addFile(tree, 'proxy.conf.json', getTemplate(tree, 'default-proxy.conf.json.config').replace('PORT', port.toString()));
 			const json = getJson(tree, angularJsonConfigPath);
 			const defaultProjectName = getJsonProperty(json, 'defaultProject');
 			json.projects[defaultProjectName].architect.serve.options.proxyConfig = 'proxy.conf.json';
@@ -144,7 +144,7 @@ function addEslint(eslint: boolean, prefix: string): Rule {
 			tree.overwrite(packageJsonConfigPath, JSON.stringify(json, null, 2));
 
 			const prettier = getTemplate(tree, 'default-prettierrc.config');
-			tree.create('.prettierrc', prettier);
+			addFile(tree, '.prettierrc', prettier);
 
 			let eslintFile = getTemplate(tree, 'default-eslintrc.js.config').replace(/APP_PREFIX/g, prefix);
 			if (tree.exists('tsconfig.base.json')) {
@@ -154,7 +154,7 @@ function addEslint(eslint: boolean, prefix: string): Rule {
 				eslintFile = eslintFile.replace(`'@angular-eslint/component-selector': ["error"`, `'@angular-eslint/component-selector': ["off"`);
 				eslintFile = eslintFile.replace(`'@angular-eslint/directive-selector': ["error"`, `'@angular-eslint/directive-selector': ["off"`);
 			}
-			tree.create('.eslintrc.js', eslintFile);
+			addFile(tree, '.eslintrc.js', eslintFile);
 		}
 		return tree;
 	};

@@ -1,5 +1,5 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {angularJsonConfigPath, getJson, getJsonProperty, getTemplate} from '../../ng-add-utils';
+import {addFile, angularJsonConfigPath, getJson, getJsonProperty, getTemplate} from '../../ng-add-utils';
 
 export function jenkins(config: string, staticBuild: boolean, jest: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
@@ -33,7 +33,7 @@ function addJenkins(useJenkins: boolean, jest: boolean): Rule {
 			if (!jest) {
 				jenkinsFile = jenkinsFile.replace("\n\ttestEngine = 'jest'", '');
 			}
-			tree.create('Jenkinsfile', jenkinsFile);
+			addFile(tree, 'Jenkinsfile', jenkinsFile);
 		}
 		return tree;
 	};
@@ -49,7 +49,7 @@ function addCF(config: string, staticBuild: boolean): Rule {
 			if (!staticBuild) {
 				manifestDev = manifestDev.replace('\n  buildpack: staticfile_buildpack', '');
 			}
-			tree.create('manifest-dev.yml', manifestDev);
+			addFile(tree, 'manifest-dev.yml', manifestDev);
 		}
 		return tree;
 	};
@@ -59,7 +59,7 @@ function addStaticBuildPack(staticBuildPack: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (staticBuildPack) {
 			const staticFile = getTemplate(tree, 'default-Staticfile.config');
-			tree.create('src/Staticfile', staticFile);
+			addFile(tree, 'src/Staticfile', staticFile);
 			const json = getJson(tree, angularJsonConfigPath);
 			const defaultProjectName = getJsonProperty(json, 'defaultProject');
 			json.projects[defaultProjectName].architect.build.options.assets.push('src/Staticfile');

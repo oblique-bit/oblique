@@ -112,7 +112,9 @@ function referToJest() {
 
 function removeE2eFolder(): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		tree.delete('e2e');
+		if (tree.exists('e2e')) {
+			tree.delete('e2e');
+		}
 		return tree;
 	};
 }
