@@ -50,7 +50,7 @@ function registerLocales(langs: string[]): Rule {
 
 function configureLocales(langs: string[]): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		if (langs === ['de', 'fr', 'it']) {
+		if (langs.join('_') !== ['de', 'fr', 'it'].join('_')) {
 			const appModuleContent = getFileContent(tree, appModulePath);
 			tree.overwrite(
 				appModulePath,
