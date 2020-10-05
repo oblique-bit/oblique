@@ -39,6 +39,8 @@ export interface ObILocaleObject {
 export interface ObINavigationLink {
 	label: string;
 	url: string;
+	fragment?: string;
+	queryParams?: {[key: string]: string};
 	children?: ObINavigationLink[];
 	id?: string;
 	active?: boolean;

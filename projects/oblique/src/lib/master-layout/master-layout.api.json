@@ -527,6 +527,7 @@
       "type": "interface",
       "usage": "The structure of a link in navigation area",
       "since": "4.0.0",
+      "updated": "5.2.0",
       "variables": [
         {
           "name": "label",
@@ -539,6 +540,20 @@
           "text": "Url to navigate when clicking the link",
           "type": "string",
           "since": "4.0.0"
+        },
+        {
+          "name": "fragment",
+          "text": "Optional fragment to add to the URL",
+          "type": "string",
+          "isOptional": true,
+          "since": "5.2.0"
+        },
+        {
+          "name": "queryParams",
+          "text": "Optional query parameters to add to the URL",
+          "type": "{[key: string]: string}",
+          "isOptional": true,
+          "since": "5.2.0"
         },
         {
           "name": "id",
