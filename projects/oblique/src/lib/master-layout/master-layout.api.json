@@ -556,6 +556,14 @@
           "since": "5.2.0"
         },
         {
+          "name": "sameTarget",
+          "text": "Optional setting to open external links in the same window",
+          "type": "boolean",
+          "default": "false",
+          "isOptional": true,
+          "since": "5.2.0"
+        },
+        {
           "name": "id",
           "text": "Id of the link",
           "type": "string",
