@@ -39,7 +39,7 @@ export class ObMasterLayoutNavigationComponent extends ObUnsubscribable implemen
 	}
 
 	ngOnInit() {
-		this.links = this.links.length ? this.links : this.config.navigation.links;
+		this.links = this.checkForExternalLinks(this.links.length ? this.links : this.config.navigation.links);
 		this.router.events
 			.pipe(
 				takeUntil(this.unsubscribe),
@@ -108,5 +108,11 @@ export class ObMasterLayoutNavigationComponent extends ObUnsubscribable implemen
 		this.currentScroll = Math.max(0, this.currentScroll);
 		this.currentScroll = Math.min(this.currentScroll, this.maxScroll);
 		this.renderer.setStyle(this.nav.children[0], 'margin-left', `-${this.currentScroll}px`);
+	}
+
+	private checkForExternalLinks(links: ObINavigationLink[]): ObINavigationLink[] {
+		return !links
+			? undefined
+			: links.map(link => ({...link, children: this.checkForExternalLinks(link.children), isExternal: link.url.indexOf('http') === 0}));
 	}
 }

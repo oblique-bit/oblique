@@ -20,16 +20,31 @@
 		tabindex="-1"
 	>
 		<li class="main-nav-item" obMasterLayoutNavigationItem *ngFor="let link of links">
-			<a
-				[attr.id]="link.id"
-				[routerLink]="link.url"
-				[routerLinkActive]="activeClass"
-				[attr.aria-current]="link.active ? 'page' : undefined"
-				obMasterLayoutNavigationToggle
-				*ngIf="!link.children"
-			>
-				{{ link.label | translate }}
-			</a>
+			<ng-container *ngIf="!link.isExternal">
+				<a
+					[attr.id]="link.id"
+					[routerLink]="link.url"
+					[routerLinkActive]="activeClass"
+					[fragment]="link.fragment"
+					[queryParams]="link.queryParams"
+					[attr.aria-current]="link.active ? 'page' : undefined"
+					obMasterLayoutNavigationToggle
+					*ngIf="!link.children"
+				>
+					{{ link.label | translate }}
+				</a>
+			</ng-container>
+			<ng-container *ngIf="link.isExternal">
+				<a
+					[attr.id]="link.id"
+					[href]="link.url"
+					[attr.target]="!link.sameTarget ? '_blank' : undefined"
+					[attr.rel]="!link.sameTarget ? 'noopener noreferrer' : undefined"
+					*ngIf="!link.children"
+				>
+					{{ link.label | translate }}
+				</a>
+			</ng-container>
 			<ng-container *ngIf="link.children">
 				<button
 					type="button"
@@ -52,11 +67,23 @@
 						</li>
 						<li obMasterLayoutNavigationItem *ngFor="let child of link.children">
 							<a
+								*ngIf="!child.isExternal"
 								[attr.id]="child.id"
 								[routerLink]="link.url + '/' + child.url"
 								[routerLinkActive]="activeClass"
+								[fragment]="child.fragment"
+								[queryParams]="child.queryParams"
 								[attr.aria-current]="link.active ? 'page' : undefined"
 								obMasterLayoutNavigationToggle
+							>
+								{{ child.label | translate }}
+							</a>
+							<a
+								*ngIf="child.isExternal"
+								[attr.id]="child.id"
+								[href]="child.url"
+								[attr.target]="!child.sameTarget ? '_blank' : undefined"
+								[attr.rel]="!child.sameTarget ? 'noopener noreferrer' : undefined"
 							>
 								{{ child.label | translate }}
 							</a>

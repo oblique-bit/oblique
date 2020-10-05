@@ -21,7 +21,9 @@ export class AppComponent {
 	theme$: Observable<string>;
 	font$: Observable<string>;
 	navigation: ObINavigationLink[] = [
-		{url: 'home', label: 'i18n.routes.home.title'},
+		{url: 'home', label: 'i18n.routes.home.title', fragment: 'test', queryParams: {a: 'a', b: 'b'}},
+		{url: 'http://www.google.ch', label: 'Google'},
+		{url: 'http://www.google.ch', label: 'Google 2', sameTarget: true},
 		{
 			url: 'samples',
 			label: 'i18n.routes.samples.title',
@@ -72,7 +74,9 @@ export class AppComponent {
 			label: 'Bootstrap',
 			children: [
 				{url: 'list-group', label: 'List group'},
-				{url: 'tabs', label: 'Tabs'}
+				{url: 'http://www.google.ch', label: 'Google'},
+				{url: 'http://www.google.ch', label: 'Google 2', sameTarget: true},
+				{url: 'tabs', label: 'Tabs', fragment: 'test', queryParams: {a: 'a', b: 'b'}}
 			]
 		},
 		{
