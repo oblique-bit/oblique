@@ -1,5 +1,5 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {angularJsonConfigPath, getJson, getJsonProperty, getTemplate} from '../../ng-add-utils';
+import {addAngularConfig, addFile, getAngularConfig, getTemplate, infoMigration, setAngularConfig} from '../../ng-add-utils';
 
 export function jenkins(config: string, staticBuild: boolean, jest: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
@@ -11,29 +11,27 @@ export function jenkins(config: string, staticBuild: boolean, jest: boolean): Ru
 
 function addDevEnv(dev: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		if (dev) {
-			const json = getJson(tree, angularJsonConfigPath);
-			const defaultProjectName = getJsonProperty(json, 'defaultProject');
-			const devConfig = JSON.parse(JSON.stringify(json.projects[defaultProjectName].architect.build.configurations.production));
-			devConfig.fileReplacements[0].with = devConfig.fileReplacements[0].with.replace('prod', 'dev');
-			devConfig.optimization = false;
-			devConfig.sourceMap = true;
-
-			json.projects[defaultProjectName].architect.build.configurations.dev = devConfig;
-			tree.overwrite(angularJsonConfigPath, JSON.stringify(json, null, 2));
+		if (!dev) {
+			return tree;
 		}
-		return tree;
+		const path = ['architect', 'build', 'configurations'];
+		const devConfig = {...(getAngularConfig(tree, [...path, 'production']) || {})};
+		devConfig.fileReplacements[0].with = devConfig.fileReplacements[0].with.replace('prod', 'dev');
+		devConfig.optimization = false;
+		devConfig.sourceMap = true;
+		return setAngularConfig(tree, [...path, 'dev'], devConfig);
 	};
 }
 
 function addJenkins(useJenkins: boolean, jest: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (useJenkins) {
-			let jenkinsFile = getTemplate('default-Jenkinsfile.config');
+			infoMigration(_context, 'Toolchain: Adding Jenkins configuration');
+			let jenkinsFile = getTemplate(tree, 'default-Jenkinsfile.config');
 			if (!jest) {
 				jenkinsFile = jenkinsFile.replace("\n\ttestEngine = 'jest'", '');
 			}
-			tree.create('Jenkinsfile', jenkinsFile);
+			addFile(tree, 'Jenkinsfile', jenkinsFile);
 		}
 		return tree;
 	};
@@ -42,14 +40,15 @@ function addJenkins(useJenkins: boolean, jest: boolean): Rule {
 function addCF(config: string, staticBuild: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (config.includes(';')) {
+			infoMigration(_context, 'Toolchain: Adding Cloud Foundry configuration');
 			const [orgName, appName] = config.split(';');
-			let manifestDev = getTemplate('default-manifest-dev.yml.config')
+			let manifestDev = getTemplate(tree, 'default-manifest-dev.yml.config')
 				.replace('ORG_NAME', orgName)
 				.replace(/APP_NAME/g, appName);
 			if (!staticBuild) {
 				manifestDev = manifestDev.replace('\n  buildpack: staticfile_buildpack', '');
 			}
-			tree.create('manifest-dev.yml', manifestDev);
+			addFile(tree, 'manifest-dev.yml', manifestDev);
 		}
 		return tree;
 	};
@@ -57,14 +56,11 @@ function addCF(config: string, staticBuild: boolean): Rule {
 
 function addStaticBuildPack(staticBuildPack: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		if (staticBuildPack) {
-			const staticFile = getTemplate('default-Staticfile.config');
-			tree.create('src/Staticfile', staticFile);
-			const json = getJson(tree, angularJsonConfigPath);
-			const defaultProjectName = getJsonProperty(json, 'defaultProject');
-			json.projects[defaultProjectName].architect.build.options.assets.push('src/Staticfile');
-			tree.overwrite(angularJsonConfigPath, JSON.stringify(json, null, 2));
+		if (!staticBuildPack) {
+			return tree;
 		}
-		return tree;
+		infoMigration(_context, 'Toolchain: Adding Static build pack');
+		addFile(tree, 'src/Staticfile', getTemplate(tree, 'default-Staticfile.config'));
+		return addAngularConfig(tree, ['architect', 'build', 'options', 'assets'], 'src/Staticfile');
 	};
 }
