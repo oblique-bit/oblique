@@ -1,34 +1,17 @@
-import {Tree, Rule, SchematicContext} from '@angular-devkit/schematics';
-import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
-import {addPackageJsonDependency, NodeDependency, NodeDependencyType, removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
-import {colors} from '@angular-devkit/core/src/terminal';
+import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {Project, SyntaxKind} from 'ts-morph';
-const fs = require('fs');
+import {error, readFile} from './ng-utils';
+
 const glob = require('glob');
 
 export const NODE_MODULES = './node_modules';
 
-export const OB_VERSION = {
-	'version-5': {
-		LATEST: 'next',
-		'5_0_1': '5.0.1'
-	},
-	'version-6': {
-		LATEST: '6.0.0-alpha'
-	}
-};
-export const OB_LATEST = OB_VERSION['version-6'].LATEST;
-export const OB_LAST_MAJOR_SUPPORT_VERSION = 4;
 export const OB_PACKAGE = '@oblique/oblique';
 export const OB_PACKAGE_JSON = NODE_MODULES + '/' + OB_PACKAGE + '/package.json';
 export const OB_TESTING_MODULE = NODE_MODULES + '/' + OB_PACKAGE + '/lib/oblique-testing.module.d.ts';
 export const OB_PUBLIC_API = NODE_MODULES + '/' + OB_PACKAGE + '/public_api.d.ts';
 
 export const PROJECT_ROOT_DIR = './';
-export const PROJECT_SRC_DIR = './src';
-export const PROJECT_APP_MODULE = PROJECT_SRC_DIR + '/app.module.ts';
-export const PROJECT_ROUTING_MODULE = PROJECT_SRC_DIR + '/app/app-routing.module.ts';
-export const PROJECT_ANGULAR_JSON = './angular.json';
 export const PROJECT_PACKAGE_JSON = './package.json';
 export const PROJECT_FORCE_IMPLEMENTATION = PROJECT_ROOT_DIR + 'custom-implementation.migration';
 
@@ -70,44 +53,12 @@ export class SchematicsUtil {
 		return SchematicsUtil.instance;
 	}
 
-	getCurrentObliqueVersion(tree: Tree): string {
-		const projectPackageJSON = JSON.parse(this.getFile(tree, PROJECT_PACKAGE_JSON));
-		if (!projectPackageJSON.dependencies.hasOwnProperty(OB_PACKAGE)) {
-			throw new Error('[ERROR] no installation found, abort migration');
-		}
-		const packageVersion = projectPackageJSON.dependencies[OB_PACKAGE];
-		return packageVersion === 'next' ? '100' : `${packageVersion}` || '100';
-	}
-
 	getFile(tree: Tree, path: string) {
 		const content = tree.read(path);
 		if (!content) {
 			throw new Error(`[ERROR] unable to read '${path}, abort migration'`);
 		}
 		return content.toString('utf-8');
-	}
-
-	installDependencies(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			_context.addTask(new NodePackageInstallTask());
-			_context.logger.debug('Dependencies installed');
-			return tree;
-		};
-	}
-
-	updatePackageJSONDependency(name: string, version: string): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			removePackageJsonDependency(tree, name);
-			const nodeDependency: NodeDependency = {
-				type: NodeDependencyType.Default,
-				name: name,
-				version: version,
-				overwrite: true
-			};
-			addPackageJsonDependency(tree, nodeDependency);
-			_context.logger.info(colors.blue(`- ${name}@${version}`) + colors.green(' ✔'));
-			return tree;
-		};
 	}
 
 	applyInTree(root: string, toApply: Function, extension = '.ts'): Rule {
@@ -339,7 +290,7 @@ export class SchematicsUtil {
 		const newProperties: string[] = [];
 		if (array) {
 			array.getExpression().forEachChild(child => {
-				const literalSymbol = this.getLiteralSymbol(child);
+				const literalSymbol = this.getLiteralSymbol(tree, child);
 				if (literalSymbol) {
 					newProperties.push(literalSymbol);
 				}
@@ -365,16 +316,16 @@ export class SchematicsUtil {
 					this.forceCustomImplentations.push(customImplementation);
 				});
 		}
-		this.loadPublicApi();
+		this.loadPublicApi(tree);
 	}
 
-	isObliqueSymbol(symbol: string): boolean {
+	isObliqueSymbol(tree: Tree, symbol: string): boolean {
 		// always remove translation implementations
 		if (this.forceObliqueImplentations.includes(symbol)) {
 			return true;
 		}
 
-		if (this.getObliqueModules().includes(symbol)) {
+		if (this.getObliqueModules(tree).includes(symbol)) {
 			// check if it's a wrapper or a completely separate implementation
 			const counterPart = symbol.indexOf('Mock') === -1 ? `Mock${symbol}` : symbol.replace('Mock', '');
 			const hasCustomImplemntation = this.customImplentations.includes(symbol) || this.customImplentations.includes(counterPart);
@@ -474,9 +425,9 @@ export class SchematicsUtil {
 			});
 	}
 
-	private loadPublicApi(): void {
-		if (!fs.existsSync(OB_PUBLIC_API)) {
-			throw new Error('[ERROR] no public api found, abort migration');
+	private loadPublicApi(tree: Tree): void {
+		if (!tree.exists(OB_PUBLIC_API)) {
+			error('No public api found, abort migration');
 		}
 		const notRenamedSymbols = [
 			'CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE',
@@ -493,7 +444,7 @@ export class SchematicsUtil {
 			'ObliqueModule',
 			'ObliqueTestingModule'
 		];
-		const moduleContent = fs.readFileSync(OB_PUBLIC_API, 'utf8');
+		const moduleContent = readFile(tree, OB_PUBLIC_API);
 		const timeStamp = Date.now() + '-migration';
 		let exported: string[] = [];
 		moduleContent.split(';').forEach((line: string) => {
@@ -528,13 +479,13 @@ export class SchematicsUtil {
 			.substr(1);
 	}
 
-	private getLiteralSymbol(child: any): string | undefined {
+	private getLiteralSymbol(tree: Tree, child: any): string | undefined {
 		const literalSymbol = child.getText().trim();
 
 		if (literalSymbol.indexOf('MockComponent(') !== -1 || literalSymbol.indexOf('MockPipe(') !== -1) {
-			// special useage of ng-mock class wrappers
+			// special usage of ng-mock class wrappers
 			const mockedSymbol = this.extractFromBrackets('()', literalSymbol);
-			if (!this.getObliqueModules().includes(mockedSymbol)) {
+			if (!this.getObliqueModules(tree).includes(mockedSymbol)) {
 				return literalSymbol;
 			}
 			if (this.forceCustomImplentations.includes(mockedSymbol)) {
@@ -555,7 +506,7 @@ export class SchematicsUtil {
 
 		switch (child.getKind()) {
 			case SyntaxKind.Identifier:
-				if (!this.isObliqueSymbol(literalSymbol)) {
+				if (!this.isObliqueSymbol(tree, literalSymbol)) {
 					// not implicit given through testing module
 					return literalSymbol;
 				}
@@ -570,7 +521,7 @@ export class SchematicsUtil {
 							propertyAssignment.getChildrenOfKind(SyntaxKind.Identifier).map((identifier: any) => identifier.getText().trim())
 						);
 					});
-					const amount = assignments.reduce((occurences, className) => occurences + (this.isObliqueSymbol(className) ? 1 : 0), 0);
+					const amount = assignments.reduce((occurences, className) => occurences + (this.isObliqueSymbol(tree, className) ? 1 : 0), 0);
 					if (amount === 0) {
 						// not implicit given through testing module
 						return literalSymbol;
@@ -604,11 +555,11 @@ export class SchematicsUtil {
 		});
 	}
 
-	private getObliqueModules(): string[] {
-		if (!fs.existsSync(OB_TESTING_MODULE)) {
-			throw new Error('[ERROR] no testing module found, abort migration');
+	private getObliqueModules(tree: Tree): string[] {
+		if (!tree.exists(OB_TESTING_MODULE)) {
+			error('No testing module found, abort migration');
 		}
-		const moduleContent = fs.readFileSync(OB_TESTING_MODULE, 'utf8');
+		const moduleContent = readFile(tree, OB_TESTING_MODULE);
 		let exported: string[] = [];
 		moduleContent.split(';').forEach((line: string) => {
 			exported = exported.concat(

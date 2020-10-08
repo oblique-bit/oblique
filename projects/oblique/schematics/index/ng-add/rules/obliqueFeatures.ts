@@ -2,7 +2,6 @@ import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {addDeclarationToModule, addImportToModule, addProviderToModule, addRouteDeclarationToModule, insertImport} from '@schematics/angular/utility/ast-utils';
 import {
-	addAngularConfig,
 	addDevDependency,
 	addFile,
 	applyChanges,
@@ -10,11 +9,10 @@ import {
 	createSrcFile,
 	getAngularVersion,
 	getTemplate,
-	infoMigration,
 	OBLIQUE_PACKAGE,
-	readFile,
 	routingModulePath
 } from '../../ng-add-utils';
+import {addAngularConfig, infoMigration, readFile} from '../../ng-utils';
 
 export function obliqueFeatures(options: any): Rule {
 	return (tree: Tree, _context: SchematicContext) =>

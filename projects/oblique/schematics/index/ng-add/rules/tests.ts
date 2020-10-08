@@ -1,17 +1,7 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
-import {
-	addDevDependency,
-	addFile,
-	deleteFile,
-	getAngularConfig,
-	getJson,
-	getTemplate,
-	infoMigration,
-	packageJsonConfigPath,
-	removeAngularConfig,
-	setAngularConfig
-} from '../../ng-add-utils';
+import {addDevDependency, addFile, deleteFile, getTemplate, removeDevDependencies, removeScript} from '../../ng-add-utils';
+import {getAngularConfig, getJson, infoMigration, removeAngularConfig, setAngularConfig} from '../../ng-utils';
 
 export function addJest(jest: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
@@ -68,12 +58,7 @@ function addJestDependencies() {
 	return (tree: Tree, _context: SchematicContext) => {
 		['jest', '@types/jest', 'jest-sonar-reporter', '@angular-builders/jest'].forEach(dependency => addDevDependency(tree, dependency));
 
-		const json = getJson(tree, packageJsonConfigPath);
-		Object.keys(json.devDependencies)
-			.filter((dep: string) => dep.indexOf('karma') > -1)
-			.forEach((dep: string) => removePackageJsonDependency(tree, dep));
-
-		return tree;
+		return removeDevDependencies(tree, 'karma');
 	};
 }
 
@@ -121,17 +106,11 @@ function removeE2eFromAngularJson() {
 
 function removeE2eFromPackage(jest: boolean) {
 	return (tree: Tree, _context: SchematicContext) => {
-		const packageJson = getJson(tree, packageJsonConfigPath);
 		removePackageJsonDependency(tree, 'protractor');
 		if (jest) {
-			Object.keys(packageJson.devDependencies)
-				.filter((dep: string) => dep.indexOf('jasmine') > -1)
-				.forEach((dep: string) => removePackageJsonDependency(tree, dep));
+			removeDevDependencies(tree, 'jasmine');
 		}
 
-		delete packageJson.scripts.e2e;
-		tree.overwrite(packageJsonConfigPath, JSON.stringify(packageJson, null, 2));
-
-		return tree;
+		return removeScript(tree, 'e2e');
 	};
 }

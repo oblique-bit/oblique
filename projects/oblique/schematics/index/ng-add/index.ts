@@ -1,5 +1,6 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {checkPrecondition, getDepVersion, installDependencies, infoText, infoMigration, warn, success} from '../ng-add-utils';
+import {checkPrecondition, getDepVersion} from '../ng-add-utils';
+import {infoMigration, infoText, installDependencies, success, warn} from '../ng-utils';
 import {obliqueFeatures} from './rules/obliqueFeatures';
 import {toolchain} from './rules/toolchain';
 import {oblique} from './rules/oblique';

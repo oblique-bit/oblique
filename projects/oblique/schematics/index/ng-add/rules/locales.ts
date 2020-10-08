@@ -2,17 +2,8 @@ import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {insertImport} from '@angular/cdk/schematics';
 import {addImportToModule, addProviderToModule} from '@schematics/angular/utility/ast-utils';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
-import {
-	applyChanges,
-	appModulePath,
-	OBLIQUE_PACKAGE,
-	createSrcFile,
-	readFile,
-	infoMigration,
-	addDevDependency,
-	addFile,
-	importModule
-} from '../../ng-add-utils';
+import {applyChanges, appModulePath, OBLIQUE_PACKAGE, createSrcFile, addDevDependency, addFile, importModule} from '../../ng-add-utils';
+import {infoMigration, readFile} from '../../ng-utils';
 
 export function addLocales(langs: string[]): Rule {
 	return (tree: Tree, _context: SchematicContext) =>

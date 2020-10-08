@@ -1,19 +1,6 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
-import {
-	addDevDependency,
-	addFile,
-	deleteFile,
-	getTemplate,
-	packageJsonConfigPath,
-	removeAngularConfig,
-	setAngularConfig,
-	getAngularConfig,
-	getJson,
-	readFile,
-	infoMigration,
-	setRootAngularConfig
-} from '../../ng-add-utils';
+import {addDevDependency, addFile, addRootProperty, addScript, deleteFile, getTemplate, removeDevDependencies, removeScript} from '../../ng-add-utils';
+import {getAngularConfig, infoMigration, readFile, removeAngularConfig, setAngularConfig, setRootAngularConfig} from '../../ng-utils';
 import {addJest, addProtractor} from './tests';
 import {jenkins} from './jenkins';
 
@@ -83,13 +70,7 @@ function removeI18nFromAngularJson() {
 function removeUnusedScripts() {
 	return (tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Toolchain: Removing unused script');
-		const json = getJson(tree, packageJsonConfigPath);
-		delete json.scripts.e2e;
-		delete json.scripts.ng;
-
-		tree.overwrite(packageJsonConfigPath, JSON.stringify(json, null, 2));
-
-		return tree;
+		return removeScript(tree, 'ng');
 	};
 }
 
@@ -127,14 +108,12 @@ function addSonar(sonar: boolean, jest: boolean): Rule {
 			infoMigration(_context, 'Toolchain: Adding Sonar configuration');
 			addFile(tree, 'sonar-project.properties', getTemplate(tree, 'default-sonar-project.properties.config'));
 			if (jest) {
-				const packageJson = getJson(tree, packageJsonConfigPath);
-				packageJson.jestSonar = {
+				addRootProperty(tree, 'jestSonar', {
 					reportPath: './coverage/sonarQube',
 					reportFile: 'sqr.xml',
 					indent: 4,
 					sonar56x: true
-				};
-				tree.overwrite(packageJsonConfigPath, JSON.stringify(packageJson, null, 2));
+				});
 			}
 		} else if (jest) {
 			const lines = readFile(tree, './tests/jest.config.js').split('\n');
@@ -149,13 +128,10 @@ function addEslint(eslint: boolean, prefix: string): Rule {
 		if (eslint) {
 			infoMigration(_context, 'Toolchain: Replacing "tslint" with "eslint"');
 			deleteFile(tree, 'tslint.json');
-			const json = getJson(tree, packageJsonConfigPath);
-
-			json.scripts.lint = "eslint 'src/**/*.ts'";
-			json.scripts['lint:fix'] = 'npm run lint -- --fix';
-			json.scripts.prettier = "node_modules/prettier/bin-prettier.js --write 'src/**/{*.ts,*.html}'";
-			json.scripts.format = 'npm run lint:fix && npm run prettier';
-			tree.overwrite(packageJsonConfigPath, JSON.stringify(json, null, 2));
+			addScript(tree, 'lint', "eslint 'src/**/*.ts'");
+			addScript(tree, 'lint:fix', 'npm run lint -- --fix');
+			addScript(tree, 'prettier', "node_modules/prettier/bin-prettier.js --write 'src/**/{*.ts,*.html}'");
+			addScript(tree, 'format', 'npm run lint:fix && npm run prettier');
 
 			const prettier = getTemplate(tree, 'default-prettierrc.config');
 			addFile(tree, '.prettierrc', prettier);
@@ -177,10 +153,7 @@ function addEslint(eslint: boolean, prefix: string): Rule {
 function addLintDeps(eslint: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (eslint) {
-			const json = getJson(tree, packageJsonConfigPath);
-			Object.keys(json.devDependencies)
-				.filter((dep: string) => dep.indexOf('lint') > -1)
-				.forEach((dep: string) => removePackageJsonDependency(tree, dep));
+			removeDevDependencies(tree, 'lint');
 
 			[
 				'@angular-eslint/builder',
@@ -203,13 +176,11 @@ function addHusky(husky: boolean): Rule {
 		if (husky) {
 			infoMigration(_context, 'Toolchain: Adding git hooks for code auto-formatting');
 			addDevDependency(tree, 'husky');
-			const packageJson = getJson(tree, packageJsonConfigPath);
-			packageJson.husky = {
+			addRootProperty(tree, 'husky', {
 				hooks: {
 					'pre-push': 'npm run format'
 				}
-			};
-			tree.overwrite(packageJsonConfigPath, JSON.stringify(packageJson, null, 2));
+			});
 		}
 		return tree;
 	};

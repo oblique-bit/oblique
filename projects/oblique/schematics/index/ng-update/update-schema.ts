@@ -5,7 +5,5 @@ export interface IUpdateSchema {
 }
 
 export interface IMigratable {
-	updateToLatest(_options: any, latestVersion: string): Rule;
-	updatePeerDependencies(_options: any): Rule;
 	applyMigrations(_options: any): Rule;
 }

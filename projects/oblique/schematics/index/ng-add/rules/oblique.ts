@@ -1,22 +1,8 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {addProviderToModule} from '@schematics/angular/utility/ast-utils';
-import {
-	addAngularConfig,
-	addDependency,
-	applyChanges,
-	appModulePath,
-	createSrcFile,
-	getAngularConfig,
-	getRootAngularConfig,
-	getTemplate,
-	importModule,
-	infoMigration,
-	OBLIQUE_PACKAGE,
-	obliqueCssPath,
-	readFile,
-	setAngularConfig
-} from '../../ng-add-utils';
+import {addDependency, applyChanges, appModulePath, createSrcFile, getTemplate, importModule, OBLIQUE_PACKAGE, obliqueCssPath} from '../../ng-add-utils';
+import {addAngularConfig, getAngularConfig, getRootAngularConfig, infoMigration, readFile, setAngularConfig} from '../../ng-utils';
 import {addLocales} from './locales';
 
 export function oblique(options: any): Rule {
