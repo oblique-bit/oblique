@@ -309,7 +309,9 @@ export class UpdateV4toV5 implements IMigratable {
 							obliqueStyleOrder.push(`${obliqueStyleLocation}/oblique-components.css`);
 						}
 
-						const projectStyles = config.architect.build.options.styles.filter((styleUrl: string) => !obliqueStyleOrder.includes(styleUrl));
+						const projectStyles = config.architect.build.options.styles
+							.filter((styleUrl: string) => !obliqueStyleOrder.includes(styleUrl))
+							.filter((styleUrl: string) => !obliqueStyleOrder.includes(styleUrl.replace('.css', '.scss')));
 
 						config.architect.build.options.styles = [...obliqueStyleOrder, ...projectStyles];
 					}

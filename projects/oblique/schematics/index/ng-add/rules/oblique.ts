@@ -69,6 +69,10 @@ function addMainCSS(): Rule {
 		infoMigration(_context, 'Oblique: Adding main CSS');
 		const path = ['architect', 'build', 'options', 'styles'];
 		const styles = getAngularConfig(tree, path);
+		const index = styles.indexOf(obliqueCssPath.replace('oblique-core.css', 'oblique-core.scss'));
+		if (index > -1) {
+			styles[index] = styles[index].replace('oblique-core.scss', 'oblique-core.css');
+		}
 		if (!styles.includes(obliqueCssPath)) {
 			styles.unshift(obliqueCssPath);
 		}
@@ -145,6 +149,10 @@ function addThemeCSS(tree: Tree, theme: string): Tree {
 	const styleSheet = `node_modules/@oblique/oblique/styles/css/oblique-${theme}.css`;
 	const path = ['architect', 'build', 'options', 'styles'];
 	const styles = getAngularConfig(tree, path);
+	const index = styles.indexOf(styleSheet.replace(`oblique-${theme}.css`, `oblique-${theme}.scss`));
+	if (index > -1) {
+		styles[index] = styles[index].replace(`oblique-${theme}.scss`, `oblique-${theme}.css`);
+	}
 	if (!styles.includes(styleSheet)) {
 		styles.splice(styles.indexOf(obliqueCssPath) + 1, 0, styleSheet);
 	}
