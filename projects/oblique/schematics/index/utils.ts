@@ -3,6 +3,7 @@ import {colors} from '@angular-devkit/core/src/terminal';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 
 const angularJsonConfigPath = './angular.json/';
+export const packageJsonConfigPath = './package.json';
 
 export function error(msg: string): void {
 	throw new Error(`✖ Migration failed: ${msg}\n`);

@@ -1,11 +1,19 @@
-import {execSync} from 'child_process';
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {IMigrations, OB_PACKAGE, OB_PACKAGE_JSON, PROJECT_PACKAGE_JSON, PROJECT_ROOT_DIR, SchematicsUtil} from './ng-update-utils';
-import {error, getAngularConfigs, getJson, infoMigration, readFile, setAngularProjectsConfig} from '../utils';
+import {IMigrations, OB_PACKAGE, PROJECT_ROOT_DIR, SchematicsUtil} from './ng-update-utils';
+import {getAngularConfigs, infoMigration, readFile, setAngularProjectsConfig} from '../utils';
 
 export interface IUpdateV4Schema {}
 
 export class UpdateV4toV5 implements IMigrations {
+	dependencies = {
+		'@angular/core': [9, 10],
+		'@angular/router': (angular: number) => angular,
+		'@ngx-translate/core': (angular: number) => (angular === 9 ? 12 : angular === 10 ? 13 : [12, 13]),
+		'@ng-bootstrap/ng-bootstrap': (angular: number) => (angular === 9 ? [6, 0] : angular === 10 ? [7, 0] : [6, 7]),
+		'@angular/material': (angular: number) => [angular, 0],
+		ajv: [6, 0]
+	};
+
 	private static readonly util: SchematicsUtil = SchematicsUtil.getInstance();
 	private static hasTranslateMultiLoader = false;
 
@@ -15,7 +23,6 @@ export class UpdateV4toV5 implements IMigrations {
 			UpdateV4toV5.util.loadBusinessSymbols(tree);
 
 			return chain([
-				this.checkPreconditions(),
 				this.migrateColorPalette(),
 				this.migrateAutomaticTheming(),
 				this.migratePopUpService(),
@@ -441,52 +448,6 @@ export class UpdateV4toV5 implements IMigrations {
 			const content = readFile(tree, filePath);
 			tree.overwrite(filePath, content.replace(match, newContent));
 		});
-	}
-
-	private checkPreconditions(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Checking preconditions');
-			const projectPackageJSON = getJson(tree, PROJECT_PACKAGE_JSON);
-			const obPackageJSON = getJson(tree, OB_PACKAGE_JSON);
-			const dependencies = Object.keys(projectPackageJSON.dependencies);
-
-			if (!dependencies.includes('@angular/localize')) {
-				infoMigration(_context, 'Installing missing peer dependency "@angular/localize"');
-				execSync('ng add @angular/localize');
-			}
-
-			Object.keys(obPackageJSON.peerDependencies)
-				.filter(packageName => packageName !== '@angular/localize')
-				.forEach(packageName => {
-					const peerPackage = this.getPackage(obPackageJSON, 'peerDependencies', packageName).match(/\d+/) || ['0'];
-					const dependencyPackage = this.getPackage(projectPackageJSON, 'dependencies', packageName).match(/\d+/) || ['0'];
-					const peerDependencyMajorVersion = parseInt(peerPackage[0], 10);
-					const dependecyMajorVersion = parseInt(dependencyPackage[0], 10);
-					if (!dependencies.includes(packageName) || dependecyMajorVersion < peerDependencyMajorVersion) {
-						const peer = `${packageName}@${peerDependencyMajorVersion}`;
-						error(`Oblique requires a peer of ${peer} but none is installed. You must install peer dependencies yourself.`);
-					}
-				});
-
-			Object.keys(obPackageJSON.optionalDependencies).forEach(packageName => {
-				const peerPackage = this.getPackage(obPackageJSON, 'optionalDependencies', packageName).match(/\d+/) || ['0'];
-				const dependencyPackage = this.getPackage(projectPackageJSON, 'dependencies', packageName).match(/\d+/) || ['0'];
-				const peerDependencyMajorVersion = parseInt(peerPackage[0], 10);
-				const dependecyMajorVersion = parseInt(dependencyPackage[0], 10);
-				if (dependencies.includes(packageName) && dependecyMajorVersion < peerDependencyMajorVersion) {
-					const peer = `${packageName}@${peerDependencyMajorVersion}`;
-					error(`Oblique requires a peer of ${peer} but none is installed. You must install peer dependencies yourself.`);
-				}
-			});
-		};
-	}
-
-	private getPackage(list: any, property: string, packageName: string): string {
-		const packageFound = list[property][packageName];
-		if (!packageFound) {
-			return '0'; // nothing there
-		}
-		return packageFound;
 	}
 
 	private cleanUp(): Rule {

@@ -1,21 +1,24 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {Project, SyntaxKind} from 'ts-morph';
-import {error, readFile} from '../utils';
+import {error, packageJsonConfigPath, readFile, warn} from '../utils';
 
 const glob = require('glob');
 
 export const NODE_MODULES = './node_modules';
 
 export const OB_PACKAGE = '@oblique/oblique';
-export const OB_PACKAGE_JSON = NODE_MODULES + '/' + OB_PACKAGE + '/package.json';
 export const OB_TESTING_MODULE = NODE_MODULES + '/' + OB_PACKAGE + '/lib/oblique-testing.module.d.ts';
 export const OB_PUBLIC_API = NODE_MODULES + '/' + OB_PACKAGE + '/public_api.d.ts';
 
 export const PROJECT_ROOT_DIR = './';
-export const PROJECT_PACKAGE_JSON = './package.json';
 export const PROJECT_FORCE_IMPLEMENTATION = PROJECT_ROOT_DIR + 'custom-implementation.migration';
 
+type versionFunc = (version: number) => number | number[];
+export interface IDependencies {
+	[key: string]: number | number[] | versionFunc;
+}
 export interface IMigrations {
+	dependencies: IDependencies;
 	applyMigrations(_options: {[key: string]: any}): Rule;
 }
 
@@ -603,4 +606,46 @@ interface IConfigureTestingModuleCall {
 	oldOptions: string;
 	isEmptyOptions: boolean;
 	needsMigration: boolean;
+}
+
+export function checkDependencies(tree: Tree, _context: SchematicContext, deps: IDependencies): void {
+	const angular = getDepVersion(tree, '@angular/core');
+	const warnings = Object.keys(deps)
+		.reduce((warns, dep) => [...warns, checkDependency(tree, _context, dep, getVersions(deps[dep], angular))], [])
+		.filter(warning => !!warning)
+		.map(warning => `\n    • ${warning}`)
+		.join('');
+	if (warnings.length) {
+		warn(
+			_context,
+			`Unmet peer dependencies.\n  Following peers are required by Oblique but were not found:${warnings}.` +
+				`\n  You must install peer dependencies yourself.`
+		);
+	}
+}
+
+function checkDependency(tree: Tree, _context: SchematicContext, dependency: string, versions: number[]): string {
+	const currentVersion = getDepVersion(tree, dependency);
+	return versions.includes(currentVersion)
+		? ''
+		: `"${dependency}" at version ${versions
+				.filter(version => version > 0)
+				.reduce((supportedVersions, version) => [...supportedVersions, version], [])
+				.join(' or ')}`;
+}
+
+function getVersions(versions: number | number[] | versionFunc, angular: number): number[] {
+	if (versions instanceof Function) {
+		versions = versions(angular);
+	}
+	if (!Array.isArray(versions)) {
+		versions = [versions as number];
+	}
+	return versions;
+}
+
+function getDepVersion(tree: Tree, dep: string): number {
+	const pattern = new RegExp(`"${dep}":\\s*"[~,^]?(?<version>\\d+)\\.\\d+\\.\\d+"`);
+	const version = readFile(tree, packageJsonConfigPath).match(pattern)?.groups?.version;
+	return version ? parseInt(version, 10) : 0;
 }

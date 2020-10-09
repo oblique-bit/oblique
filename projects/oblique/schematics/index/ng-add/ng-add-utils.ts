@@ -4,7 +4,7 @@ import {getWorkspace} from '@schematics/angular/utility/config';
 import {addPackageJsonDependency, NodeDependency, NodeDependencyType, removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {SourceFile} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
-import {error, getJson, readFile} from '../utils';
+import {error, getJson, packageJsonConfigPath, readFile} from '../utils';
 import * as ts from 'typescript';
 
 export const OBLIQUE_PACKAGE = '@oblique/oblique';
@@ -43,7 +43,6 @@ interface Version {
 
 type versionFunc = (version: number) => string;
 
-const packageJsonConfigPath = './package.json';
 const versions: {[key: string]: string | versionFunc} = {
 	// eslint-disable-next-line prettier/prettier
 	ajv: '^6.0.0',

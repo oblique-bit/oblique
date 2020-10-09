@@ -1,7 +1,7 @@
 import {execSync} from 'child_process';
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {infoHighlights, infoMigration, installDependencies, success} from '../utils';
-import {IMigrations} from './ng-update-utils';
+import {IMigrations, checkDependencies, IDependencies} from './ng-update-utils';
 import {UpdateV4toV5} from './update-v4-to-v5';
 
 export function upgradeToV5(_options: {[key: string]: any}): Rule {
@@ -17,11 +17,11 @@ function startup(migrations: IMigrations, _options: {[key: string]: any}): Rule 
 		infoMigration(_context, 'Preparing tools for migration');
 		execSync('npm i --no-save --silent ts-morph');
 
-		return chain([migrations.applyMigrations(_options), installDependencies(), finalize()])(tree, _context);
+		return chain([migrations.applyMigrations(_options), installDependencies(), finalize(migrations.dependencies)])(tree, _context);
 	};
 }
 
-export function finalize(): Rule {
+export function finalize(deps: IDependencies): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		success(_context, 'Oblique has been successfully migrated. Please review the changes.');
 		infoHighlights(
@@ -31,5 +31,6 @@ run %c to update the dependencies to their latest compatible versions and %c to 
 			'npm update',
 			'npm outdated'
 		);
+		checkDependencies(tree, _context, deps);
 	};
 }
