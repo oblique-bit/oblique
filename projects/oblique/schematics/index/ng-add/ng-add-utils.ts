@@ -7,7 +7,6 @@ import {SourceFile} from '@schematics/angular/third_party/github.com/Microsoft/T
 import {error, getJson, packageJsonConfigPath, readFile} from '../utils';
 import * as ts from 'typescript';
 
-export const OBLIQUE_PACKAGE = '@oblique/oblique';
 export const appModulePath = 'src/app/app.module.ts';
 export const routingModulePath = 'src/app/app-routing.module.ts';
 export const pathToTemplates = './node_modules/@oblique/oblique/schematics/index/ng-add/templates';

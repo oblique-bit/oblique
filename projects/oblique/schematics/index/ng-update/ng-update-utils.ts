@@ -1,17 +1,12 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {Project, SyntaxKind} from 'ts-morph';
-import {error, packageJsonConfigPath, readFile, warn} from '../utils';
+import {error, ObliquePackage, packageJsonConfigPath, readFile, warn} from '../utils';
 
 const glob = require('glob');
-
-export const NODE_MODULES = './node_modules';
-
-export const OB_PACKAGE = '@oblique/oblique';
-export const OB_TESTING_MODULE = NODE_MODULES + '/' + OB_PACKAGE + '/lib/oblique-testing.module.d.ts';
-export const OB_PUBLIC_API = NODE_MODULES + '/' + OB_PACKAGE + '/public_api.d.ts';
-
-export const PROJECT_ROOT_DIR = './';
-export const PROJECT_FORCE_IMPLEMENTATION = PROJECT_ROOT_DIR + 'custom-implementation.migration';
+const nodeModules = './node_modules';
+const ProjectForceImplementation = './custom-implementation.migration';
+const ObTestingModule = `${nodeModules}/${ObliquePackage}/lib/oblique-testing.module.d.ts`;
+const ObPublicAPI = `${nodeModules}/${ObliquePackage}/public_api.d.ts`;
 
 type versionFunc = (version: number) => number | number[];
 export interface IDependencies {
@@ -25,7 +20,7 @@ export interface IMigrations {
 export class SchematicsUtil {
 	static instance: SchematicsUtil;
 
-	private readonly forceObliqueImplentations: string[] = [
+	private readonly forceObliqueImplementations: string[] = [
 		'TranslatePipe',
 		'TranslateService',
 		'TranslateParamsPipe',
@@ -33,9 +28,9 @@ export class SchematicsUtil {
 		'MockTranslateService',
 		'MockTranslateParamsPipe'
 	];
-	private readonly customImplentations: string[] = [];
+	private readonly customImplementations: string[] = [];
 	private readonly publicExports: string[] = [];
-	private readonly forceCustomImplentations: string[] = [];
+	private readonly forceCustomImplementations: string[] = [];
 	private readonly obliqueEnumsAndInterfaces: string[] = [
 		'ObIDatepickerOptions',
 		'ObIHttpApiRequest',
@@ -303,15 +298,15 @@ export class SchematicsUtil {
 		files.forEach((file: string) => {
 			const sourceFile = this.getProject().createSourceFile(file, this.getFile(tree, file));
 			sourceFile.getChildrenOfKind(SyntaxKind.ClassDeclaration).forEach((classDeclaration: any) => {
-				this.customImplentations.push(classDeclaration.getFirstChildByKind(SyntaxKind.Identifier).getText());
+				this.customImplementations.push(classDeclaration.getFirstChildByKind(SyntaxKind.Identifier).getText());
 			});
 		});
-		if (tree.exists(PROJECT_FORCE_IMPLEMENTATION)) {
-			this.getFile(tree, PROJECT_FORCE_IMPLEMENTATION)
+		if (tree.exists(ProjectForceImplementation)) {
+			this.getFile(tree, ProjectForceImplementation)
 				.split('\n')
 				.map((customImplementation: string) => customImplementation.trim())
 				.forEach((customImplementation: string) => {
-					this.forceCustomImplentations.push(customImplementation);
+					this.forceCustomImplementations.push(customImplementation);
 				});
 		}
 		this.loadPublicApi(tree);
@@ -319,14 +314,14 @@ export class SchematicsUtil {
 
 	isObliqueSymbol(tree: Tree, symbol: string): boolean {
 		// always remove translation implementations
-		if (this.forceObliqueImplentations.includes(symbol)) {
+		if (this.forceObliqueImplementations.includes(symbol)) {
 			return true;
 		}
 
 		if (this.getObliqueModules(tree).includes(symbol)) {
 			// check if it's a wrapper or a completely separate implementation
 			const counterPart = symbol.indexOf('Mock') === -1 ? `Mock${symbol}` : symbol.replace('Mock', '');
-			const hasCustomImplemntation = this.customImplentations.includes(symbol) || this.customImplentations.includes(counterPart);
+			const hasCustomImplemntation = this.customImplementations.includes(symbol) || this.customImplementations.includes(counterPart);
 			return !hasCustomImplemntation;
 		}
 		return false;
@@ -375,7 +370,7 @@ export class SchematicsUtil {
 			const name = identifier.getText();
 			if (this.publicExports.includes(name)) {
 				// don't do anything if it's custom (as long it's not forced from oblique)
-				if (!this.customImplentations.includes(name) || this.forceObliqueImplentations.includes(name)) {
+				if (!this.customImplementations.includes(name) || this.forceObliqueImplementations.includes(name)) {
 					replaceTasks.push({
 						start: identifier.getStart(),
 						oldContent: name,
@@ -424,7 +419,7 @@ export class SchematicsUtil {
 	}
 
 	private loadPublicApi(tree: Tree): void {
-		if (!tree.exists(OB_PUBLIC_API)) {
+		if (!tree.exists(ObPublicAPI)) {
 			error('No public api found, abort migration');
 		}
 		const notRenamedSymbols = [
@@ -442,7 +437,7 @@ export class SchematicsUtil {
 			'ObliqueModule',
 			'ObliqueTestingModule'
 		];
-		const moduleContent = readFile(tree, OB_PUBLIC_API);
+		const moduleContent = readFile(tree, ObPublicAPI);
 		const timeStamp = Date.now() + '-migration';
 		let exported: string[] = [];
 		moduleContent.split(';').forEach((line: string) => {
@@ -486,13 +481,13 @@ export class SchematicsUtil {
 			if (!this.getObliqueModules(tree).includes(mockedSymbol)) {
 				return literalSymbol;
 			}
-			if (this.forceCustomImplentations.includes(mockedSymbol)) {
+			if (this.forceCustomImplementations.includes(mockedSymbol)) {
 				// project wants to keep this symbol
 				return literalSymbol;
 			}
 		}
 
-		if (this.forceCustomImplentations.includes(literalSymbol)) {
+		if (this.forceCustomImplementations.includes(literalSymbol)) {
 			// project wants to keep this symbol
 			return literalSymbol;
 		}
@@ -554,10 +549,10 @@ export class SchematicsUtil {
 	}
 
 	private getObliqueModules(tree: Tree): string[] {
-		if (!tree.exists(OB_TESTING_MODULE)) {
+		if (!tree.exists(ObTestingModule)) {
 			error('No testing module found, abort migration');
 		}
-		const moduleContent = readFile(tree, OB_TESTING_MODULE);
+		const moduleContent = readFile(tree, ObTestingModule);
 		let exported: string[] = [];
 		moduleContent.split(';').forEach((line: string) => {
 			exported = exported.concat(
@@ -568,7 +563,7 @@ export class SchematicsUtil {
 			);
 		});
 		exported = exported.concat(exported.map((symbol: string) => symbol.replace('Mock', '')));
-		exported = exported.concat(this.forceObliqueImplentations);
+		exported = exported.concat(this.forceObliqueImplementations);
 		return exported;
 	}
 

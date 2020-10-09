@@ -1,6 +1,6 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {IMigrations, OB_PACKAGE, PROJECT_ROOT_DIR, SchematicsUtil} from './ng-update-utils';
-import {getAngularConfigs, infoMigration, readFile, setAngularProjectsConfig} from '../utils';
+import {IMigrations, SchematicsUtil} from './ng-update-utils';
+import {getAngularConfigs, infoMigration, ObliquePackage, readFile, setAngularProjectsConfig} from '../utils';
 
 export interface IUpdateV4Schema {}
 
@@ -56,7 +56,7 @@ export class UpdateV4toV5 implements IMigrations {
 				const prompt = UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/window\.prompt/g), 'this.popUpService.prompt');
 				if (confirm || alert || prompt) {
 					UpdateV4toV5.util.addToConstructor(tree, filePath, toInject);
-					UpdateV4toV5.util.addImport(tree, filePath, 'PopUpService', OB_PACKAGE);
+					UpdateV4toV5.util.addImport(tree, filePath, 'PopUpService', ObliquePackage);
 				}
 			};
 			return this.apply(tree, _context, toApply, 'component.ts');
@@ -71,8 +71,8 @@ export class UpdateV4toV5 implements IMigrations {
 				const alert = UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/window\.alert/g), 'this.popUpService.alert');
 				const prompt = UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/window\.prompt/g), 'this.popUpService.prompt');
 				if (confirm || alert || prompt) {
-					UpdateV4toV5.util.addImport(tree, filePath, 'PopUpService', OB_PACKAGE);
-					UpdateV4toV5.util.addImport(tree, filePath, 'MockPopUpService', OB_PACKAGE);
+					UpdateV4toV5.util.addImport(tree, filePath, 'PopUpService', ObliquePackage);
+					UpdateV4toV5.util.addImport(tree, filePath, 'MockPopUpService', ObliquePackage);
 					UpdateV4toV5.util.addToTestBedConfig(tree, filePath, '{provide: PopUpService, useClass: MockPopUpService }', 'providers');
 				}
 			};
@@ -102,8 +102,8 @@ export class UpdateV4toV5 implements IMigrations {
 			const toApply = (filePath: string) => {
 				if (readFile(tree, filePath).indexOf('configureTestingModule') !== -1) {
 					UpdateV4toV5.util.removeImport(tree, filePath, 'MockTranslateService');
-					UpdateV4toV5.util.addImport(tree, filePath, 'ObliqueTestingModule', OB_PACKAGE);
-					UpdateV4toV5.util.addImport(tree, filePath, 'MockTranslateService', OB_PACKAGE);
+					UpdateV4toV5.util.addImport(tree, filePath, 'ObliqueTestingModule', ObliquePackage);
+					UpdateV4toV5.util.addImport(tree, filePath, 'MockTranslateService', ObliquePackage);
 					UpdateV4toV5.util.addImport(tree, filePath, 'TranslateService', '@ngx-translate/core');
 					UpdateV4toV5.util.addToTestBedConfig(tree, filePath, 'ObliqueTestingModule', 'imports');
 					UpdateV4toV5.util.removeFromTestBedConfig(tree, filePath, 'ObliqueModule', 'imports');
@@ -121,7 +121,7 @@ export class UpdateV4toV5 implements IMigrations {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Migrating date picker');
 			const toApply = (filePath: string) => {
-				if (UpdateV4toV5.util.hasImport(tree, filePath, 'DatepickerModule', OB_PACKAGE)) {
+				if (UpdateV4toV5.util.hasImport(tree, filePath, 'DatepickerModule', ObliquePackage)) {
 					UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('DatepickerModule\\.forRoot\\(\\)', 'g'), 'DatepickerModule');
 				}
 			};
@@ -188,7 +188,7 @@ export class UpdateV4toV5 implements IMigrations {
 					const window = UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/window\./g), 'this.window.');
 					if (window) {
 						UpdateV4toV5.util.addImport(tree, filePath, 'Inject', '@angular/core');
-						UpdateV4toV5.util.addImport(tree, filePath, 'WINDOW', OB_PACKAGE);
+						UpdateV4toV5.util.addImport(tree, filePath, 'WINDOW', ObliquePackage);
 						UpdateV4toV5.util.addToConstructor(tree, filePath, toInject);
 					}
 				}
@@ -241,13 +241,13 @@ export class UpdateV4toV5 implements IMigrations {
 
 				if (usingFrutiger === 'false') {
 					tree.overwrite(filePath, oldContent.replace(frutigerConfig, '{ provide: OBLIQUE_FONT, useValue: FONTS.ROBOTO }'));
-					UpdateV4toV5.util.addImport(tree, filePath, 'OBLIQUE_FONT', OB_PACKAGE);
+					UpdateV4toV5.util.addImport(tree, filePath, 'OBLIQUE_FONT', ObliquePackage);
 				}
 
 				tree.overwrite(filePath, readFile(tree, filePath).replace(obliqueTheme, ''));
 				tree.overwrite(filePath, readFile(tree, filePath).replace('FONTS.ARIAL', 'FONTS.NONE'));
 				tree.overwrite(filePath, readFile(tree, filePath).replace('FRUTIGER', 'FONTS.FRUTIGER'));
-				UpdateV4toV5.util.addImport(tree, filePath, 'FONTS', OB_PACKAGE);
+				UpdateV4toV5.util.addImport(tree, filePath, 'FONTS', ObliquePackage);
 
 				const obliqueStyleKind = usedTheme === 'THEMES.BOOTSTRAP' ? 'oblique-bootstrap.css' : 'oblique-material.css';
 				const obliqueStyleLocation = 'node_modules/@oblique/oblique/styles/css';
@@ -464,7 +464,7 @@ export class UpdateV4toV5 implements IMigrations {
 	private apply(tree: Tree, _context: SchematicContext, toApply: Function, ext?: string): any {
 		return chain(
 			getAngularConfigs(tree, ['sourceRoot']).reduce(
-				(functions, project) => [...functions, UpdateV4toV5.util.applyInTree(PROJECT_ROOT_DIR + project.config, toApply, ext)],
+				(functions, project) => [...functions, UpdateV4toV5.util.applyInTree(`./${project.config}`, toApply, ext)],
 				[]
 			)
 		)(tree, _context);

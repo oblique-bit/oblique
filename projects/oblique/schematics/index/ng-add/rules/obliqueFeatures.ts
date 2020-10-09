@@ -10,10 +10,9 @@ import {
 	getAngularVersion,
 	getTemplate,
 	IOptionsSchema,
-	OBLIQUE_PACKAGE,
 	routingModulePath
 } from '../ng-add-utils';
-import {addAngularConfigInList, infoMigration, readFile} from '../../utils';
+import {addAngularConfigInList, infoMigration, ObliquePackage, readFile} from '../../utils';
 
 export function obliqueFeatures(options: IOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
@@ -45,7 +44,7 @@ function addUnknownRoute(unknownRoute: boolean): Rule {
 		if (unknownRoute && tree.exists(routingModule)) {
 			infoMigration(_context, 'Oblique feature: Adding unknown route');
 			const sourceFile = createSrcFile(tree, routingModule);
-			const changes: Change[] = addImportToModule(sourceFile, routingModule, 'ObUnknownRouteModule', OBLIQUE_PACKAGE);
+			const changes: Change[] = addImportToModule(sourceFile, routingModule, 'ObUnknownRouteModule', ObliquePackage);
 			const fileName = routingModule.split('/').pop() as string;
 
 			changes.push(addRouteDeclarationToModule(sourceFile, fileName, "{path: '**', redirectTo: 'unknown-route'}"));
@@ -62,7 +61,7 @@ function addInterceptors(httpInterceptors: boolean): Rule {
 			const obliqueInterceptorModuleName = 'ObHttpApiInterceptor';
 			const obliqueInterceptorProvider = '{provide: HTTP_INTERCEPTORS, useClass: ObHttpApiInterceptor, multi: true}';
 			const sourceFile = createSrcFile(tree, appModulePath);
-			const changes: Change[] = addProviderToModule(sourceFile, appModulePath, obliqueInterceptorProvider, OBLIQUE_PACKAGE);
+			const changes: Change[] = addProviderToModule(sourceFile, appModulePath, obliqueInterceptorProvider, ObliquePackage);
 			if (changes.length > 1) {
 				(changes[1] as InsertChange).toAdd = (changes[1] as InsertChange).toAdd.replace(obliqueInterceptorProvider, obliqueInterceptorModuleName);
 			}
@@ -101,7 +100,7 @@ function addBannerData(tree: Tree): void {
 function provideBanner(tree: Tree): Tree {
 	const provider = "{provide: OB_BANNER, useValue: environment['banner']}";
 	const sourceFile = createSrcFile(tree, appModulePath);
-	const changes: Change[] = addProviderToModule(sourceFile, appModulePath, provider, OBLIQUE_PACKAGE);
+	const changes: Change[] = addProviderToModule(sourceFile, appModulePath, provider, ObliquePackage);
 	if (changes.length > 1) {
 		(changes[1] as InsertChange).toAdd = (changes[1] as InsertChange).toAdd.replace(provider, 'OB_BANNER');
 	}

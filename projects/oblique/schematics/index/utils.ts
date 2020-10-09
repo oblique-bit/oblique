@@ -2,8 +2,10 @@ import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {colors} from '@angular-devkit/core/src/terminal';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 
-const angularJsonConfigPath = './angular.json/';
 export const packageJsonConfigPath = './package.json';
+export const ObliquePackage = '@oblique/oblique';
+
+const angularJsonConfigPath = './angular.json/';
 
 export function error(msg: string): void {
 	throw new Error(`✖ Migration failed: ${msg}\n`);
@@ -38,10 +40,6 @@ export function readFile(tree: Tree, filename: string): string {
 export function getJson(tree: any, path: string) {
 	const json = readFile(tree, path);
 	return json ? JSON.parse(json.toString()) : undefined;
-}
-
-function getJsonProperty(json: any, propertyPath: string): string {
-	return propertyPath.split(';').reduce((obj, property) => (obj ? obj[property] : undefined), json);
 }
 
 export function getAngularConfigs(tree: Tree, path: string[]): {project: string; config: any}[] {
@@ -80,13 +78,25 @@ export function addAngularConfigInList(tree: Tree, path: string[], value: any): 
 	return tree;
 }
 
-function removeAngularConfig(tree: Tree, path: string[], project: string): Tree {
-	return alterAngularConfig(tree, path, project);
-}
-
 export function removeAngularProjectsConfig(tree: Tree, path: string[]): Tree {
 	getAngularConfigs(tree, path).forEach(project => removeAngularConfig(tree, path, project.project));
 	return tree;
+}
+
+export function installDependencies(): Rule {
+	return (tree: Tree, _context: SchematicContext) => {
+		_context.addTask(new NodePackageInstallTask());
+		_context.logger.debug('Dependencies installed');
+		return tree;
+	};
+}
+
+function getJsonProperty(json: any, propertyPath: string): string {
+	return propertyPath.split(';').reduce((obj, property) => (obj ? obj[property] : undefined), json);
+}
+
+function removeAngularConfig(tree: Tree, path: string[], project: string): Tree {
+	return alterAngularConfig(tree, path, project);
 }
 
 function alterAngularConfig(tree: Tree, path: string[], project: string, value?: any): Tree {
@@ -110,12 +120,4 @@ function setOption(json: any, path: string[], value?: any) {
 			delete json[option];
 		}
 	}
-}
-
-export function installDependencies(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
-		_context.addTask(new NodePackageInstallTask());
-		_context.logger.debug('Dependencies installed');
-		return tree;
-	};
 }
