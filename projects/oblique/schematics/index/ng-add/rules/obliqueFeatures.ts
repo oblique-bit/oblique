@@ -12,7 +12,7 @@ import {
 	OBLIQUE_PACKAGE,
 	routingModulePath
 } from '../../ng-add-utils';
-import {addAngularConfig, infoMigration, readFile} from '../../ng-utils';
+import {addAngularConfigInList, infoMigration, readFile} from '../../ng-utils';
 
 export function obliqueFeatures(options: any): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
@@ -31,7 +31,7 @@ function addAjv(ajv: boolean): Rule {
 			infoMigration(_context, 'Oblique feature: Adding schema validation');
 			addDevDependency(tree, 'ajv');
 			if (getAngularVersion(tree) >= 10) {
-				addAngularConfig(tree, ['architect', 'build', 'options', 'allowedCommonJsDependencies'], 'ajv');
+				addAngularConfigInList(tree, ['architect', 'build', 'options', 'allowedCommonJsDependencies'], 'ajv');
 			}
 		}
 		return tree;

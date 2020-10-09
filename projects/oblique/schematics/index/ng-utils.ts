@@ -39,19 +39,21 @@ export function getJson(tree: any, path: string) {
 	return json ? JSON.parse(json.toString()) : undefined;
 }
 
-export function getJsonProperty(json: any, propertyPath: string): string {
+function getJsonProperty(json: any, propertyPath: string): string {
 	return propertyPath.split(';').reduce((obj, property) => (obj ? obj[property] : undefined), json);
 }
 
-export function getAngularConfig(tree: Tree, path: string[]): any {
+export function getAngularConfigs(tree: Tree, path: string[]): {project: string; config: any}[] {
+	const json = getJson(tree, angularJsonConfigPath);
+	return Object.keys(getJsonProperty(json, 'projects'))
+		.reduce((config, project) => [...config, {project, config: getJsonProperty(json, ['projects', project, ...path].join(';'))}], [])
+		.filter(project => project.config);
+}
+
+export function getDefaultAngularConfig(tree: Tree, path: string[]): any {
 	const json = getJson(tree, angularJsonConfigPath);
 	const defaultProjectName = getJsonProperty(json, 'defaultProject');
 	return getJsonProperty(json, ['projects', defaultProjectName, ...path].join(';'));
-}
-
-export function getRootAngularConfig(tree: Tree, path: string[]): any {
-	const json = getJson(tree, angularJsonConfigPath);
-	return getJsonProperty(json, path.join(';'));
 }
 
 export function setRootAngularConfig(tree: Tree, path: string[], value: any): Tree {
@@ -61,22 +63,34 @@ export function setRootAngularConfig(tree: Tree, path: string[], value: any): Tr
 	return tree;
 }
 
-export function setAngularConfig(tree: Tree, path: string[], value: any): Tree {
-	return alterAngularConfig(tree, path, value);
+export function setAngularConfig(tree: Tree, path: string[], value: {project: string; config: any}): Tree {
+	return alterAngularConfig(tree, path, value.project, value.config);
 }
 
-export function addAngularConfig(tree: Tree, path: string[], value: any): Tree {
-	return setAngularConfig(tree, path, [...(getAngularConfig(tree, path) || []), value]);
+export function setAngularProjectsConfig(tree: Tree, path: string[], config: any): Tree {
+	getAngularConfigs(tree, path).forEach(project => {
+		setAngularConfig(tree, path, {project: project.project, config: config instanceof Function ? config(project.config) : config});
+	});
+	return tree;
 }
 
-export function removeAngularConfig(tree: Tree, path: string[]): Tree {
-	return alterAngularConfig(tree, path);
+export function addAngularConfigInList(tree: Tree, path: string[], value: any): Tree {
+	getAngularConfigs(tree, path).forEach(project => setAngularConfig(tree, path, {project: project.project, config: [...(project.config || []), value]}));
+	return tree;
 }
 
-function alterAngularConfig(tree: Tree, path: string[], value?: any): Tree {
+function removeAngularConfig(tree: Tree, path: string[], project: string): Tree {
+	return alterAngularConfig(tree, path, project);
+}
+
+export function removeAngularProjectsConfig(tree: Tree, path: string[]): Tree {
+	getAngularConfigs(tree, path).forEach(project => removeAngularConfig(tree, path, project.project));
+	return tree;
+}
+
+function alterAngularConfig(tree: Tree, path: string[], project: string, value?: any): Tree {
 	const json = getJson(tree, angularJsonConfigPath);
-	const defaultProjectName = getJsonProperty(json, 'defaultProject');
-	setOption(json, ['projects', defaultProjectName, ...path], value);
+	setOption(json, ['projects', project, ...path], value);
 	tree.overwrite(angularJsonConfigPath, JSON.stringify(json, null, 2));
 	return tree;
 }

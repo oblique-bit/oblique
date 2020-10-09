@@ -1,6 +1,6 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {addDevDependency, addFile, addRootProperty, addScript, deleteFile, getTemplate, removeDevDependencies, removeScript} from '../../ng-add-utils';
-import {getAngularConfig, infoMigration, readFile, removeAngularConfig, setAngularConfig, setRootAngularConfig} from '../../ng-utils';
+import {infoMigration, readFile, removeAngularProjectsConfig, setAngularProjectsConfig, setRootAngularConfig} from '../../ng-utils';
 import {addJest, addProtractor} from './tests';
 import {jenkins} from './jenkins';
 
@@ -54,16 +54,16 @@ function removeFavicon(): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, "Toolchain: Removing Angular's favicon");
 		deleteFile(tree, 'src/favicon.ico');
-		const path = ['architect', 'build', 'options', 'assets'];
-		const assets = (getAngularConfig(tree, path) || []).filter((config: string) => !config.indexOf || config.indexOf('favicon') === -1);
-		return setAngularConfig(tree, path, assets);
+		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) =>
+			(config || []).filter((conf: string) => !conf.indexOf || conf.indexOf('favicon') === -1)
+		);
 	};
 }
 
 function removeI18nFromAngularJson() {
 	return (tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, "Toolchain: Removing Angular's i18n");
-		return removeAngularConfig(tree, ['architect', 'extract-i18n']);
+		return removeAngularProjectsConfig(tree, ['architect', 'extract-i18n']);
 	};
 }
 
@@ -87,7 +87,7 @@ function addPrefix(prefix: string): Rule {
 			}
 		});
 
-		return setAngularConfig(tree, ['prefix'], prefix);
+		return setAngularProjectsConfig(tree, ['prefix'], prefix);
 	};
 }
 
@@ -96,7 +96,7 @@ function addProxy(port: string): Rule {
 		if (port.match(/^\d+$/) && !tree.exists('proxy.conf.json')) {
 			infoMigration(_context, 'Toolchain: Adding proxy configuration');
 			addFile(tree, 'proxy.conf.json', getTemplate(tree, 'default-proxy.conf.json.config').replace('PORT', port));
-			setAngularConfig(tree, ['architect', 'serve', 'options', 'proxyConfig'], 'proxy.conf.json');
+			setAngularProjectsConfig(tree, ['architect', 'serve', 'options', 'proxyConfig'], 'proxy.conf.json');
 		}
 		return tree;
 	};

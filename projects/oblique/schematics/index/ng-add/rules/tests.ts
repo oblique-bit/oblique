@@ -1,7 +1,7 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
 import {addDevDependency, addFile, deleteFile, getTemplate, removeDevDependencies, removeScript} from '../../ng-add-utils';
-import {getAngularConfig, getJson, infoMigration, removeAngularConfig, setAngularConfig} from '../../ng-utils';
+import {getJson, infoMigration, removeAngularProjectsConfig, setAngularProjectsConfig} from '../../ng-utils';
 
 export function addJest(jest: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
@@ -74,7 +74,7 @@ function createJestConfigFiles() {
 
 function referToJest() {
 	return (tree: Tree, _context: SchematicContext) =>
-		setAngularConfig(tree, ['architect', 'test'], {
+		setAngularProjectsConfig(tree, ['architect', 'test'], {
 			builder: '@angular-builders/jest:run',
 			options: {
 				configPath: './tests/jest.config.js',
@@ -96,11 +96,11 @@ function removeE2eFolder(): Rule {
 
 function removeE2eFromAngularJson() {
 	return (tree: Tree, _context: SchematicContext) => {
-		tree = removeAngularConfig(tree, ['architect', 'e2e']);
+		removeAngularProjectsConfig(tree, ['architect', 'e2e']);
 
-		const path = ['architect', 'lint', 'options', 'tsConfig'];
-		const tcConfig = (getAngularConfig(tree, path) || []).filter((config: string) => config.indexOf('e2e') === -1);
-		return setAngularConfig(tree, path, tcConfig);
+		return setAngularProjectsConfig(tree, ['architect', 'lint', 'options', 'tsConfig'], (config: any) =>
+			(config || []).filter((conf: string) => conf.indexOf('e2e') === -1)
+		);
 	};
 }
 
