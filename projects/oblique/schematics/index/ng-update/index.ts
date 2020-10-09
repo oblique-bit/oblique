@@ -3,13 +3,14 @@ import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {infoHighlights, infoMigration, installDependencies, success} from '../utils';
 import {IMigrations, checkDependencies, IDependencies} from './ng-update-utils';
 import {UpdateV4toV5} from './update-v4-to-v5';
+import {UpdateV5toV6} from './update-v5-to-v6';
 
 export function upgradeToV5(_options: {[key: string]: any}): Rule {
 	return (tree: Tree, _context: SchematicContext) => startup(new UpdateV4toV5(), _options);
 }
 
 export function upgradeToV6(_options: {[key: string]: any}): Rule {
-	return (tree: Tree, _context: SchematicContext) => startup(new UpdateV4toV5(), _options);
+	return (tree: Tree, _context: SchematicContext) => startup(new UpdateV5toV6(), _options);
 }
 
 function startup(migrations: IMigrations, _options: {[key: string]: any}): Rule {
