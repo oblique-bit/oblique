@@ -1,18 +1,18 @@
 import {execSync} from 'child_process';
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {IMigratable, IUpdateSchema} from './update-schema';
-import {infoHighlights, infoMigration, installDependencies, success} from '../ng-utils';
+import {infoHighlights, infoMigration, installDependencies, success} from '../utils';
+import {IMigrations} from './ng-update-utils';
 import {UpdateV4toV5} from './update-v4-to-v5';
 
-export function upgradeToV5(_options: IUpdateSchema): Rule {
+export function upgradeToV5(_options: {[key: string]: any}): Rule {
 	return (tree: Tree, _context: SchematicContext) => startup(new UpdateV4toV5(), _options);
 }
 
-export function upgradeToV6(_options: IUpdateSchema): Rule {
+export function upgradeToV6(_options: {[key: string]: any}): Rule {
 	return (tree: Tree, _context: SchematicContext) => startup(new UpdateV4toV5(), _options);
 }
 
-function startup(migrations: IMigratable, _options: IUpdateSchema): Rule {
+function startup(migrations: IMigrations, _options: {[key: string]: any}): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Preparing tools for migration');
 		execSync('npm i --no-save --silent ts-morph');

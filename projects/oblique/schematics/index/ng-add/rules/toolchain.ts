@@ -1,10 +1,20 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {addDevDependency, addFile, addRootProperty, addScript, deleteFile, getTemplate, removeDevDependencies, removeScript} from '../../ng-add-utils';
-import {infoMigration, readFile, removeAngularProjectsConfig, setAngularProjectsConfig, setRootAngularConfig} from '../../ng-utils';
+import {
+	addDevDependency,
+	addFile,
+	addRootProperty,
+	addScript,
+	deleteFile,
+	getTemplate,
+	IOptionsSchema,
+	removeDevDependencies,
+	removeScript
+} from '../ng-add-utils';
+import {infoMigration, readFile, removeAngularProjectsConfig, setAngularProjectsConfig, setRootAngularConfig} from '../../utils';
 import {addJest, addProtractor} from './tests';
 import {jenkins} from './jenkins';
 
-export function toolchain(options: any): Rule {
+export function toolchain(options: IOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
 		chain([
 			moveStyles(),

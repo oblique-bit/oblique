@@ -2,8 +2,8 @@ import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {insertImport} from '@angular/cdk/schematics';
 import {addImportToModule, addProviderToModule} from '@schematics/angular/utility/ast-utils';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
-import {applyChanges, appModulePath, OBLIQUE_PACKAGE, createSrcFile, addDevDependency, addFile, importModule} from '../../ng-add-utils';
-import {infoMigration, readFile} from '../../ng-utils';
+import {applyChanges, appModulePath, OBLIQUE_PACKAGE, createSrcFile, addDevDependency, addFile, importModule} from '../ng-add-utils';
+import {infoMigration, readFile} from '../../utils';
 
 export function addLocales(langs: string[]): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
@@ -51,7 +51,7 @@ function configureLocales(langs: string[]): Rule {
 		if (langs.join('_') !== ['de', 'fr', 'it'].join('_')) {
 			const appModuleContent = readFile(tree, appModulePath).replace(
 				'AppModule { }',
-				`AppModule { 
+				`AppModule {
 	constructor(config: ObMasterLayoutConfig) {
 		config.locale.locales = ['${langs.join("', '")}'];
 	}

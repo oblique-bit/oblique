@@ -4,7 +4,7 @@ import {getWorkspace} from '@schematics/angular/utility/config';
 import {addPackageJsonDependency, NodeDependency, NodeDependencyType, removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {SourceFile} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
-import {error, getJson, readFile} from './ng-utils';
+import {error, getJson, readFile} from '../utils';
 import * as ts from 'typescript';
 
 export const OBLIQUE_PACKAGE = '@oblique/oblique';
@@ -12,6 +12,28 @@ export const appModulePath = 'src/app/app.module.ts';
 export const routingModulePath = 'src/app/app-routing.module.ts';
 export const pathToTemplates = './node_modules/@oblique/oblique/schematics/index/ng-add/templates';
 export const obliqueCssPath = 'node_modules/@oblique/oblique/styles/css/oblique-core.css';
+
+export interface IOptionsSchema {
+	ajv: boolean;
+	banner: boolean;
+	eslint: boolean;
+	font: string;
+	httpInterceptors: boolean;
+	husky: boolean;
+	ie11: boolean;
+	jenkins: string;
+	jest: boolean;
+	langs: string;
+	npmrc: boolean;
+	prefix: string;
+	protractor: boolean;
+	proxy: string;
+	sonar: boolean;
+	static: boolean;
+	theme: string;
+	title: string;
+	unknownRoute: boolean;
+}
 
 interface Version {
 	major: number;

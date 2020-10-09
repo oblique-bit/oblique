@@ -1,6 +1,6 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {Project, SyntaxKind} from 'ts-morph';
-import {error, readFile} from './ng-utils';
+import {error, readFile} from '../utils';
 
 const glob = require('glob');
 
@@ -14,6 +14,10 @@ export const OB_PUBLIC_API = NODE_MODULES + '/' + OB_PACKAGE + '/public_api.d.ts
 export const PROJECT_ROOT_DIR = './';
 export const PROJECT_PACKAGE_JSON = './package.json';
 export const PROJECT_FORCE_IMPLEMENTATION = PROJECT_ROOT_DIR + 'custom-implementation.migration';
+
+export interface IMigrations {
+	applyMigrations(_options: {[key: string]: any}): Rule;
+}
 
 export class SchematicsUtil {
 	static instance: SchematicsUtil;
@@ -67,15 +71,6 @@ export class SchematicsUtil {
 			files.forEach((file: string) => toApply(file));
 			return tree;
 		};
-	}
-
-	getJSONProperty(property: string, serializedJSON: string): string {
-		const regex = new RegExp(`"${property}":"((\\w)|(\\/)|(\\.))*"{1}`);
-		const result = serializedJSON.replace(/\s/g, '').match(regex);
-		if (!result || !result[0]) {
-			throw new Error(`[ERROR] unable to get ${property}, abort migration`);
-		}
-		return result[0].replace(property, '').replace(/"/g, '').replace(':', '');
 	}
 
 	replaceInFile(tree: Tree, path: string, pattern: RegExp, replacement: string): boolean {

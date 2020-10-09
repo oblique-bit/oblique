@@ -1,14 +1,15 @@
 import {execSync} from 'child_process';
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {IMigratable} from './update-schema';
-import {OB_PACKAGE, OB_PACKAGE_JSON, PROJECT_PACKAGE_JSON, PROJECT_ROOT_DIR, SchematicsUtil} from '../ng-update-utils';
-import {error, getAngularConfigs, getJson, infoMigration, setAngularProjectsConfig} from '../ng-utils';
+import {IMigrations, OB_PACKAGE, OB_PACKAGE_JSON, PROJECT_PACKAGE_JSON, PROJECT_ROOT_DIR, SchematicsUtil} from './ng-update-utils';
+import {error, getAngularConfigs, getJson, infoMigration, readFile, setAngularProjectsConfig} from '../utils';
 
-export class UpdateV4toV5 implements IMigratable {
+export interface IUpdateV4Schema {}
+
+export class UpdateV4toV5 implements IMigrations {
 	private static readonly util: SchematicsUtil = SchematicsUtil.getInstance();
 	private static hasTranslateMultiLoader = false;
 
-	applyMigrations(_options: any): Rule {
+	applyMigrations(_options: IUpdateV4Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Analyzing project');
 			UpdateV4toV5.util.loadBusinessSymbols(tree);
@@ -92,7 +93,7 @@ export class UpdateV4toV5 implements IMigratable {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Migrating testing module');
 			const toApply = (filePath: string) => {
-				if (UpdateV4toV5.util.getFile(tree, filePath).indexOf('configureTestingModule') !== -1) {
+				if (readFile(tree, filePath).indexOf('configureTestingModule') !== -1) {
 					UpdateV4toV5.util.removeImport(tree, filePath, 'MockTranslateService');
 					UpdateV4toV5.util.addImport(tree, filePath, 'ObliqueTestingModule', OB_PACKAGE);
 					UpdateV4toV5.util.addImport(tree, filePath, 'MockTranslateService', OB_PACKAGE);
@@ -124,7 +125,7 @@ export class UpdateV4toV5 implements IMigratable {
 	private migrateDatePickerHTML(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			const toApply = (filePath: string) => {
-				let html = UpdateV4toV5.util.getFile(tree, filePath);
+				let html = readFile(tree, filePath);
 				if (html.indexOf('</or-date-picker>') !== -1) {
 					const projections = UpdateV4toV5.util.extractProjections('or-date-picker', html);
 					const classRegex = /(class=("|')(\w|-|_)*("|'))/g;
@@ -193,7 +194,7 @@ export class UpdateV4toV5 implements IMigratable {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Migrating nav tree');
 			const toApply = (filePath: string) => {
-				let html = UpdateV4toV5.util.getFile(tree, filePath);
+				let html = readFile(tree, filePath);
 				if (html.indexOf('</or-nav-tree>') !== -1) {
 					const projections = UpdateV4toV5.util.extractProjections('or-nav-tree', html);
 					projections.forEach((projection: string) => {
@@ -225,7 +226,7 @@ export class UpdateV4toV5 implements IMigratable {
 			const toApply = (filePath: string) => {
 				UpdateV4toV5.util.removeImport(tree, filePath, 'OBLIQUE_THEME');
 				UpdateV4toV5.util.removeImport(tree, filePath, 'FRUTIGER');
-				const oldContent = UpdateV4toV5.util.getFile(tree, filePath);
+				const oldContent = readFile(tree, filePath);
 				const obliqueTheme = UpdateV4toV5.util.readSymbolInNgModule(tree, filePath, 'OBLIQUE_THEME');
 				const frutigerConfig = UpdateV4toV5.util.readSymbolInNgModule(tree, filePath, 'FRUTIGER');
 				const usedTheme = UpdateV4toV5.util.extractFromBrackets('{}', obliqueTheme).replace(/\s/g, '').split('useValue:')[1];
@@ -236,9 +237,9 @@ export class UpdateV4toV5 implements IMigratable {
 					UpdateV4toV5.util.addImport(tree, filePath, 'OBLIQUE_FONT', OB_PACKAGE);
 				}
 
-				tree.overwrite(filePath, UpdateV4toV5.util.getFile(tree, filePath).replace(obliqueTheme, ''));
-				tree.overwrite(filePath, UpdateV4toV5.util.getFile(tree, filePath).replace('FONTS.ARIAL', 'FONTS.NONE'));
-				tree.overwrite(filePath, UpdateV4toV5.util.getFile(tree, filePath).replace('FRUTIGER', 'FONTS.FRUTIGER'));
+				tree.overwrite(filePath, readFile(tree, filePath).replace(obliqueTheme, ''));
+				tree.overwrite(filePath, readFile(tree, filePath).replace('FONTS.ARIAL', 'FONTS.NONE'));
+				tree.overwrite(filePath, readFile(tree, filePath).replace('FRUTIGER', 'FONTS.FRUTIGER'));
 				UpdateV4toV5.util.addImport(tree, filePath, 'FONTS', OB_PACKAGE);
 
 				const obliqueStyleKind = usedTheme === 'THEMES.BOOTSTRAP' ? 'oblique-bootstrap.css' : 'oblique-material.css';
@@ -268,7 +269,7 @@ export class UpdateV4toV5 implements IMigratable {
 				});
 
 				// ... and check for multi translate loader!
-				if (UpdateV4toV5.util.getFile(tree, filePath).indexOf('new MultiTranslateLoader') !== -1) {
+				if (readFile(tree, filePath).indexOf('new MultiTranslateLoader') !== -1) {
 					UpdateV4toV5.hasTranslateMultiLoader = true;
 				}
 			};
@@ -422,9 +423,9 @@ export class UpdateV4toV5 implements IMigratable {
 		UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/\s+\[or/g), ' [ob');
 
 		// orPi_cker2 (with leading whitespace/tab/line break):
-		const matches = UpdateV4toV5.util.getFile(tree, filePath).match(/\s+or[A-Z0-9_]+(\w)*/g) || [];
+		const matches = readFile(tree, filePath).match(/\s+or[A-Z0-9_]+(\w)*/g) || [];
 		matches.forEach(match => {
-			const content = UpdateV4toV5.util.getFile(tree, filePath);
+			const content = readFile(tree, filePath);
 			tree.overwrite(filePath, content.replace(match, match.replace('or', 'ob')));
 		});
 	}
@@ -433,11 +434,11 @@ export class UpdateV4toV5 implements IMigratable {
 		UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/\s+#or/g), ' #ob');
 
 		//#oneOr_MoreWords="orWords_3" matches double or single quotes:
-		const variableMatches = UpdateV4toV5.util.getFile(tree, filePath).match(/#(\w)*=(\"|')(or[A-Z0-9_]+(\w)*)(\"|\')/g) || [];
+		const variableMatches = readFile(tree, filePath).match(/#(\w)*=(\"|')(or[A-Z0-9_]+(\w)*)(\"|\')/g) || [];
 		variableMatches.forEach(match => {
 			const variable = match.split('=')[1];
 			const newContent = match.replace(variable, variable.replace('or', 'ob'));
-			const content = UpdateV4toV5.util.getFile(tree, filePath);
+			const content = readFile(tree, filePath);
 			tree.overwrite(filePath, content.replace(match, newContent));
 		});
 	}
