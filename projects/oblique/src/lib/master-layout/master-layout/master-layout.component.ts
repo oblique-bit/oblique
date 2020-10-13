@@ -23,7 +23,7 @@ import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {appVersion} from '../../version';
 import {WINDOW} from '../../utilities';
-import {ObEMasterLayoutEventValues, ObINavigationLink, ObIJumpLink} from '../master-layout.datatypes';
+import {ObEMasterLayoutEventValues, ObIDynamicJumpLink, ObINavigationLink} from '../master-layout.datatypes';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 
 @Component({
@@ -44,7 +44,7 @@ export class ObMasterLayoutComponent extends ObUnsubscribable implements OnInit 
 	home = this.config.homePageRoute;
 	url: string;
 	@Input() navigation: ObINavigationLink[] = [];
-	@Input() jumpLinks: ObIJumpLink[] = [];
+	@Input() jumpLinks: ObIDynamicJumpLink[] = [];
 	@HostBinding('class.application-fixed') isFixed = this.masterLayout.layout.isFixed;
 	@HostBinding('class.has-cover') hasCover = this.masterLayout.layout.hasCover;
 	@HostBinding('class.has-layout') hasLayout = this.masterLayout.layout.hasLayout;
@@ -88,14 +88,26 @@ export class ObMasterLayoutComponent extends ObUnsubscribable implements OnInit 
 	}
 
 	@HostListener('window:scroll')
-	ngOnInit(): void {
+	scrollTop() {
 		const scrollTop = this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
 		this.scrollEvents.hasScrolled(scrollTop);
 		if (this.isScrolling !== scrollTop > 0) {
 			this.isScrolling = scrollTop > 0;
 			this.scrollEvents.scrolling(this.isScrolling);
 		}
+	}
+
+	ngOnInit(): void {
 		this.masterLayout.footer.configEvents.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.SMALL)).subscribe(evt => (this.footerSm = evt.value));
+		this.masterLayout.layout.configEvents
+			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.MAIN_NAVIGATION))
+			.subscribe(evt => this.updateJumpLinks(evt.value));
+		this.updateJumpLinks(!this.noNavigation);
+	}
+
+	private updateJumpLinks(hasNavigation: boolean): void {
+		const staticJumpLinks = hasNavigation && this.navigation.length ? 3 : 2;
+		this.jumpLinks = this.jumpLinks.map((jumpLink, i) => ({...jumpLink, accessKey: i + staticJumpLinks}));
 	}
 
 	private propertyChanges() {

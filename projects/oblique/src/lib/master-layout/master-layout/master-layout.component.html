@@ -6,14 +6,19 @@
 		<li>
 			<a class="accessible" accesskey="1" [routerLink]="home">{{ "i18n.oblique.master-layout.accesskey.homepage" | translate }}</a>
 		</li>
-		<li>
-			<a class="accessible" accesskey="2" [routerLink]="url" fragment="navigation" *ngIf="!noNavigation && navigation.length">
+		<li *ngIf="!noNavigation && navigation.length">
+			<a class="accessible" accesskey="2" [routerLink]="url" fragment="navigation">
 				{{ "i18n.oblique.master-layout.accesskey.navigation" | translate }}</a
 			>
 		</li>
 		<li *ngFor="let jumpLink of jumpLinks; let i = index">
-			<a class="accessible" [attr.accesskey]="i + 3" [routerLink]="jumpLink.url == 'current' ? url : jumpLink.url" [fragment]="jumpLink.fragment">
-				{{ jumpLink.label | translate }} [{{ i + 3 }}]
+			<a
+				class="accessible"
+				[attr.accesskey]="jumpLink.accessKey"
+				[routerLink]="jumpLink.url == 'current' ? url : jumpLink.url"
+				[fragment]="jumpLink.fragment"
+			>
+				{{ jumpLink.label | translate }} [{{ jumpLink.accessKey }}]
 			</a>
 		</li>
 	</ul>
