@@ -44,7 +44,7 @@
     "lint:fix": "npm run lint:oblique -- --fix && npm run lint:showcase -- --fix",
     "lint:oblique": "eslint projects/oblique/**/*.ts",
     "lint:showcase": "eslint src/**/*.ts",
-    "prettier": "node_modules/prettier/bin-prettier.js --write 'projects/**/{*.ts,*.html}' 'src/**/{*.ts,*.html}'",
+    "prettier": "./node_modules/.bin/prettier --write projects/**/{*.ts,*.html} src/**/{*.ts,*.html}",
     "format": "npm run lint:fix && npm run prettier",
     "themes": "npm run gulp -- themes",
     "e2e": "ng e2e",
