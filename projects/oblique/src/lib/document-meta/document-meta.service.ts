@@ -61,14 +61,15 @@ export class ObDocumentMetaService extends ObUnsubscribable {
 	}
 
 	public setTitle(title: string, separator: string = this.titleSeparator, suffix: string = this.titleSuffix) {
-		if (title && title !== '') {
+		if (title) {
 			this.translate
 				.get([title, suffix])
-				.pipe(takeUntil(this.unsubscribe))
-				.subscribe(translation => {
-					this.titleService.setTitle(`${translation[title]}${separator}${translation[suffix]}`);
-				});
-		} else {
+				.pipe(
+					takeUntil(this.unsubscribe),
+					map(translation => (translation[suffix] ? `${translation[title]}${separator}${translation[suffix]}` : translation[title]))
+				)
+				.subscribe(text => this.titleService.setTitle(text));
+		} else if (suffix) {
 			this.titleService.setTitle(this.translate.instant(suffix));
 		}
 	}
