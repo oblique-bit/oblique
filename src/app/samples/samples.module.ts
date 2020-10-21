@@ -61,6 +61,7 @@ import {
 	ObSchemaValidationModule,
 	ObSearchBoxModule,
 	ObSelectableModule,
+	ObSpinnerModule,
 	ObStickyModule,
 	ObUnknownRouteModule,
 	ObUnsavedChangesModule,
@@ -74,6 +75,7 @@ import {NestedFormChildTDSampleComponent} from './nested-form/nested-form-child-
 import {NestedFormGrandChildTDSampleComponent} from './nested-form/nested-form-grandchild-td-sample.component';
 import {MultiTranslateLoaderSampleComponent} from './multi-tranlsate-loader/multi-translate-loader-sample.component';
 import {ObSelectableSampleComponent} from './selectable/selectable-sample.component';
+import {SpinnerSampleComponent} from './spinner-sample/spinner-sample.component';
 
 @NgModule({
 	imports: [
@@ -93,6 +95,7 @@ import {ObSelectableSampleComponent} from './selectable/selectable-sample.compon
 		ObSchemaValidationModule,
 		ObSearchBoxModule,
 		ObSelectableModule,
+		ObSpinnerModule,
 		ObStickyModule,
 		ObInputClearModule,
 		ObUnknownRouteModule,
@@ -152,7 +155,8 @@ import {ObSelectableSampleComponent} from './selectable/selectable-sample.compon
 		ObApiElementComponent,
 		ObDescriptionComponent,
 		ObPopUpSampleComponent,
-		MultiTranslateLoaderSampleComponent
+		MultiTranslateLoaderSampleComponent,
+		SpinnerSampleComponent
 	],
 	exports: [RouterModule, ObApiComponent],
 	providers: [SampleDataResolver],

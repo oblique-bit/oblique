@@ -47,6 +47,7 @@ export class AppComponent {
 				{url: 'pop-up', label: 'Pop-up'},
 				{url: 'schema-validation', label: 'i18n.routes.samples.schema-validation.title'},
 				{url: 'selectable', label: 'Selectable'},
+				{url: 'spinner', label: 'Spinner'},
 				{url: 'sticky', label: 'Sticky'},
 				{url: 'unknown-route-sample', label: 'Unknown route'},
 				{url: 'unsaved-changes', label: 'Unsaved changes'},
