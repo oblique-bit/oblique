@@ -10,7 +10,7 @@
       "inputs": [
         {
           "name": "channel",
-          "text": "The channel name where spinner events will be retrieved from. If not specified, component will listen to the default channel.",
+          "text": "The channel name where spinner events will be retrieved from. If not specified, component will listen to the default channel which displays the spinner over the whole Master Layout content.",
           "type": "string",
           "default": "default",
           "since": "2.0.0"
