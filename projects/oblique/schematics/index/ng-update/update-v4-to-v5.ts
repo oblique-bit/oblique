@@ -65,7 +65,6 @@ export class UpdateV4toV5 implements IMigrations {
 
 	private migratePopUpServiceSpecs(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Migrating PopUpService');
 			const toApply = (filePath: string) => {
 				const confirm = UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/window\.confirm/g), 'this.popUpService.confirm');
 				const alert = UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/window\.alert/g), 'this.popUpService.alert');
