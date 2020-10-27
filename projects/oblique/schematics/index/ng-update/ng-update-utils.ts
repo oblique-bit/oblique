@@ -1,5 +1,5 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {Project, SyntaxKind} from 'ts-morph';
+import {Project, SourceFile, SyntaxKind} from 'ts-morph';
 import {error, ObliquePackage, packageJsonConfigPath, readFile, warn} from '../utils';
 
 const glob = require('glob');
@@ -37,7 +37,6 @@ export class SchematicsUtil {
 		'ObILocaleObject ',
 		'ObIMasterLayoutEvent',
 		'ObITranslationFile',
-		'ObINotification',
 		'ObINotification',
 		'ObISearchWidgetItem',
 		'ObISelectableCollectionChanged',
@@ -355,46 +354,25 @@ export class SchematicsUtil {
 	}
 
 	updateClassIdentifiers(tree: Tree, filePath: string): void {
+		interface Task {
+			from: string;
+			to: string;
+		}
 		const sourceFile = this.getProject().createSourceFile(filePath, this.getFile(tree, filePath));
-		const callback: Function = (node: any) => {
-			if (!node.getText()) {
-				return;
-			}
-			return node.getKind() === SyntaxKind.Identifier && node.getText()[0].toUpperCase() === node.getText()[0];
-		};
-		const results: any[] = [];
-		this.walkFunctional(sourceFile, callback, results);
-		const replaceTasks: {start: number; oldContent: string; newContent: string}[] = [];
-		results.forEach((identifier: any) => {
-			// found class that changed it's class name prefix
-			const name = identifier.getText();
-			if (this.publicExports.includes(name)) {
-				// don't do anything if it's custom (as long it's not forced from oblique)
-				if (!this.customImplementations.includes(name) || this.forceObliqueImplementations.includes(name)) {
-					replaceTasks.push({
-						start: identifier.getStart(),
-						oldContent: name,
-						newContent: `Ob${name}`
-					});
-				}
-			}
-			if (this.obliqueEnumsAndInterfaces.map((symbol: string) => symbol.substr(3)).includes(name)) {
-				const enumOrInterface = this.obliqueEnumsAndInterfaces.find((symbol: string) => symbol.substr(3) === name);
-				replaceTasks.push({
-					start: identifier.getStart(),
-					oldContent: name,
-					newContent: `${enumOrInterface}`
-				});
-			}
-		});
-		replaceTasks.reverse(); // positioning based on start, reverse to keep deterministic!
-		replaceTasks.forEach((replaceTask: any) => {
-			const temporarySrc = this.getProject().createSourceFile(filePath, this.getFile(tree, filePath));
-			const partContent = temporarySrc.getFullText().substr(replaceTask.start);
-			const updatedContent = partContent.replace(replaceTask.oldContent, replaceTask.newContent);
-			const newContent = temporarySrc.getFullText().replace(partContent, updatedContent);
-			tree.overwrite(filePath, newContent);
-		});
+		const results = this.collectSymbols(sourceFile);
+		const interfacesAndEnums = this.obliqueEnumsAndInterfaces.map((symbol: string) => symbol.substr(3));
+		const tasksTmp = results
+			.filter(name => this.publicExports.includes(name)) // found a class that changed its class name prefix
+			.filter(name => !this.customImplementations.includes(name) || this.forceObliqueImplementations.includes(name))
+			.reduce((array, name) => array.concat({from: name, to: `Ob${name}`}), [] as Task[]);
+		const tasks = results
+			.filter(name => interfacesAndEnums.includes(name))
+			.reduce((array, name) => array.concat({from: name, to: this.getInterfaceOrEnumName(name)}), tasksTmp as Task[]);
+
+		tree.overwrite(
+			filePath,
+			tasks.reduce((str: string, task: any) => str.replace(new RegExp(task.from, 'g'), task.to), sourceFile.getFullText())
+		);
 	}
 
 	cleanUp(tree: Tree, filePath: string): void {
@@ -403,6 +381,18 @@ export class SchematicsUtil {
 		const content = cleanSourceFile.getFullText();
 		this.removeEmptyImports(tree, filePath);
 		tree.overwrite(filePath, content);
+	}
+
+	private getInterfaceOrEnumName(name: string): string {
+		return `Ob${this.obliqueEnumsAndInterfaces.find((symbol: string) => symbol.substr(3) === name)}`;
+	}
+
+	private collectSymbols(file: SourceFile): string[] {
+		const results = file
+			.getDescendantsOfKind(SyntaxKind.Identifier)
+			.map(node => node.getText())
+			.filter(text => text[0].toUpperCase() === text[0]);
+		return [...new Set(results)];
 	}
 
 	private removeEmptyImports(tree: Tree, filePath: string): void {
@@ -536,15 +526,6 @@ export class SchematicsUtil {
 		}
 		node.getChildren().map((child: any) => {
 			this.walk(child, identifier, results);
-		});
-	}
-
-	private walkFunctional(node: any, callback: Function, results: any[]): void {
-		if (callback(node)) {
-			results.push(node);
-		}
-		node.getChildren().map((child: any) => {
-			this.walkFunctional(child, callback, results);
 		});
 	}
 
