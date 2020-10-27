@@ -271,6 +271,7 @@
 * **http-interceptor:** `ObliqueRequest` has been renamed to `HttpApiRequest` (solved with schematics)
 * **input-clear:** `orTextControlClear` has been renamed to `orInputClear` (solved with schematics)
 * **master-layout:** `default-layout` class has been dropped in favor of oblique's default padding
+* **master-layout:** `isScrollable` configuration has been replaced with `scrollMode`
 * **multiselect:** id of `or-multiselect` component has been changed to `<idPrefix>-container` instead of `<idPrefix>`
 * **multiselect:** id of multiselect toggle has been changed to `<idPrefix>` instead of `<idPrefix>-toggle`
 * **multiselect:** `id` property has been removed in favor of `idPrefix`
