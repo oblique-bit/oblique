@@ -243,7 +243,8 @@ export class UpdateV4toV5 implements IMigrations {
 					UpdateV4toV5.util.addImport(tree, filePath, 'OBLIQUE_FONT', ObliquePackage);
 				}
 
-				tree.overwrite(filePath, readFile(tree, filePath).replace(obliqueTheme, ''));
+				const regexp = new RegExp(`[ \\t]*${obliqueTheme},?(\\r\\n|\\n|\\r)?`);
+				tree.overwrite(filePath, readFile(tree, filePath).replace(regexp, ''));
 				tree.overwrite(filePath, readFile(tree, filePath).replace('FONTS.ARIAL', 'FONTS.NONE'));
 				tree.overwrite(filePath, readFile(tree, filePath).replace('FRUTIGER', 'FONTS.FRUTIGER'));
 				UpdateV4toV5.util.addImport(tree, filePath, 'FONTS', ObliquePackage);
