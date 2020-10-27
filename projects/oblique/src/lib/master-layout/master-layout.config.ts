@@ -40,7 +40,7 @@ export class ObMasterLayoutConfig {
 		isFixed: false,
 		hasCover: false,
 		hasMainNavigation: true,
-		hasOffCanvas: true,
+		hasOffCanvas: false,
 		hasLayout: true
 	};
 
