@@ -158,7 +158,7 @@ export class UpdateV4toV5 implements IMigrations {
 					htmlSnippets.forEach((snippet: string, index: number) => {
 						if (projections[index].trim() !== '') {
 							const attributeList = UpdateV4toV5.util.extractFromBrackets('<>', snippet);
-							const newSnippet = snippet.replace(`<${attributeList}>`, '').replace(/<\/or-date-picker>/, '');
+							const newSnippet = snippet.replace(`<${attributeList}>`, '');
 							html = html.replace(snippet, newSnippet);
 						}
 					});
