@@ -7,7 +7,7 @@ import {Component, ElementRef, HostBinding, HostListener, Input, ViewEncapsulati
 	styleUrls: ['./dropdown.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
-	host: {class: 'dropdown'}
+	host: {class: 'ob-dropdown'}
 })
 export class ObDropdownComponent {
 	@HostBinding('class.open') isOpen = false;
