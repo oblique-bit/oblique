@@ -54,6 +54,10 @@ export interface ObIJumpLink {
 	fragment?: string;
 }
 
+export interface ObIDynamicJumpLink extends ObIJumpLink {
+	accessKey: number;
+}
+
 export interface ObIMasterLayoutEvent {
 	name: ObEMasterLayoutEventValues;
 	value?: boolean;
