@@ -1,11 +1,12 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {checkPrecondition, getDepVersion, installDependencies, infoText, infoMigration, warn, success} from '../ng-add-utils';
+import {checkPrecondition, getDepVersion, IOptionsSchema} from './ng-add-utils';
+import {infoMigration, infoText, installDependencies, success, warn} from '../utils';
 import {obliqueFeatures} from './rules/obliqueFeatures';
 import {toolchain} from './rules/toolchain';
 import {oblique} from './rules/oblique';
 import {execSync} from 'child_process';
 
-export function addOblique(_options: any): Rule {
+export function addOblique(_options: IOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
 		chain([preconditions(), oblique(_options), obliqueFeatures(_options), toolchain(_options), installDependencies(), finalize(_options)])(tree, _context);
 }
@@ -24,7 +25,7 @@ function preconditions(): Rule {
 	};
 }
 
-function finalize(options: any): Rule {
+function finalize(options: IOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		/* eslint-disable max-len */
 		const text =

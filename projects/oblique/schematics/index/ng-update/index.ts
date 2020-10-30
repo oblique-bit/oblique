@@ -1,58 +1,37 @@
 import {execSync} from 'child_process';
-// install ts-morph tools as dev dependency
-console.info('Preparing tools for migration, please wait...');
-execSync('npm i -D --silent ts-morph');
-execSync('npm i -D --silent @ts-morph/common');
-import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
-import {IUpdateSchema, IMigratable} from './update-schema';
+import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {infoHighlights, infoMigration, installDependencies, success} from '../utils';
+import {IMigrations, checkDependencies, IDependencies} from './ng-update-utils';
 import {UpdateV4toV5} from './update-v4-to-v5';
-import {colors} from '@angular-devkit/core/src/terminal';
-import {OB_VERSION, OB_LATEST, OB_LAST_MAJOR_SUPPORT_VERSION, SchematicsUtil} from '../ng-update-utils';
+import {UpdateV5toV6} from './update-v5-to-v6';
 
-export function initalize(_options: IUpdateSchema): Rule {
+export function upgradeToV5(_options: {[key: string]: any}): Rule {
+	return (tree: Tree, _context: SchematicContext) => startup(new UpdateV4toV5(), _options);
+}
+
+export function upgradeToV6(_options: {[key: string]: any}): Rule {
+	return (tree: Tree, _context: SchematicContext) => startup(new UpdateV5toV6(), _options);
+}
+
+function startup(migrations: IMigrations, _options: {[key: string]: any}): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		const util: SchematicsUtil = SchematicsUtil.getInstance();
-		const readVersion = util.getCurrentObliqueVersion(tree) || '100';
-		const match = readVersion.match(/\d+/);
-		const numericObVersion = match && match.length > 0 ? match[0] : '100';
+		infoMigration(_context, 'Preparing tools for migration');
+		execSync('npm i --no-save --silent ts-morph');
 
-		if (parseInt(numericObVersion, 10) < OB_LAST_MAJOR_SUPPORT_VERSION) {
-			throw new Error(`[ERROR] Oblique Major ${numericObVersion} is not supported anymore - no migration possible. Sorry.`);
-		}
-
-		let migratable: IMigratable = {} as IMigratable;
-		let latestVersion = OB_LATEST;
-
-		switch (_options.targetVersion) {
-			case '5':
-				migratable = new UpdateV4toV5();
-				latestVersion = OB_VERSION['version-5'].LATEST;
-				break;
-			case '6':
-				_context.logger.info(colors.red('\nNOT SUPPORTED YET, TRY VERSION 5 - ABORTING\n'));
-				return tree;
-			default:
-		}
-
-		_context.logger.info(colors.black(colors.bold(`\nTHANK YOU FOR USING OBLIQUE! STARTING MIGRATION TO OBLIQUE V${_options.targetVersion} 💙 \n`)));
-
-		return chain([
-			migratable.applyMigrations(_options),
-			migratable.updateToLatest(_options, latestVersion),
-			migratable.updatePeerDependencies(_options),
-			finish(),
-			util.installDependencies()
-		])(tree, _context);
+		return chain([migrations.applyMigrations(_options), installDependencies(), finalize(migrations.dependencies)])(tree, _context);
 	};
 }
 
-export function finish(): Rule {
+export function finalize(deps: IDependencies): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		_context.logger.info(colors.black(colors.bold("\n WE'RE DONE WITH OBLIQUE MIGRATIONS 👌 !")));
-		_context.logger.info(colors.black(colors.bold('LET US JUST UPDATE OTHER PACKAGES TO CONCLUDE.')));
-		_context.logger.info(colors.black(colors.bold('run ng update and npm outdated to discover the concerned packages \n')));
-		_context.logger.info(colors.black(colors.bold('\n NOTE: Please check that the changes are correct')));
-		_context.logger.info(colors.black(colors.bold("especially it's possible that some word containing 'or' have been wrongly changed")));
-		_context.logger.info(colors.black(colors.bold('or if you have implementations that are named the same as in Oblique!')));
+		success(_context, 'Oblique has been successfully migrated. Please review the changes.');
+		infoHighlights(
+			_context,
+			`Let us update other dependencies to conclude.
+run %c to update the dependencies to their latest compatible versions and %c to discover other updatable packages.`,
+			'npm update',
+			'npm outdated'
+		);
+		checkDependencies(tree, _context, deps);
 	};
 }

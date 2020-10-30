@@ -2,17 +2,8 @@ import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {insertImport} from '@angular/cdk/schematics';
 import {addImportToModule, addProviderToModule} from '@schematics/angular/utility/ast-utils';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
-import {
-	applyChanges,
-	appModulePath,
-	OBLIQUE_PACKAGE,
-	createSrcFile,
-	readFile,
-	infoMigration,
-	addDevDependency,
-	addFile,
-	importModule
-} from '../../ng-add-utils';
+import {applyChanges, appModulePath, createSrcFile, addDevDependency, addFile, importModule} from '../ng-add-utils';
+import {infoMigration, ObliquePackage, readFile} from '../../utils';
 
 export function addLocales(langs: string[]): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
@@ -60,7 +51,7 @@ function configureLocales(langs: string[]): Rule {
 		if (langs.join('_') !== ['de', 'fr', 'it'].join('_')) {
 			const appModuleContent = readFile(tree, appModulePath).replace(
 				'AppModule { }',
-				`AppModule { 
+				`AppModule {
 	constructor(config: ObMasterLayoutConfig) {
 		config.locale.locales = ['${langs.join("', '")}'];
 	}
@@ -69,7 +60,7 @@ function configureLocales(langs: string[]): Rule {
 			tree.overwrite(appModulePath, appModuleContent);
 
 			const sourceFile = createSrcFile(tree, appModulePath);
-			const changes = [insertImport(sourceFile, 'app.module.ts', 'ObMasterLayoutConfig', OBLIQUE_PACKAGE)];
+			const changes = [insertImport(sourceFile, 'app.module.ts', 'ObMasterLayoutConfig', ObliquePackage)];
 			tree = applyChanges(tree, appModulePath, changes);
 		}
 		return tree;
@@ -100,7 +91,7 @@ function addTranslationToImports(tree: Tree): Tree {
 		}
 	}
 
-	changes.push(insertImport(sourceFile, appModulePath, 'multiTranslateLoader', OBLIQUE_PACKAGE));
+	changes.push(insertImport(sourceFile, appModulePath, 'multiTranslateLoader', ObliquePackage));
 	return applyChanges(tree, appModulePath, changes);
 }
 

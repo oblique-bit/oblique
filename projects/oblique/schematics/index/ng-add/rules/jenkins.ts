@@ -1,5 +1,6 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {addAngularConfig, addFile, getAngularConfig, getTemplate, infoMigration, setAngularConfig} from '../../ng-add-utils';
+import {addFile, getTemplate} from '../ng-add-utils';
+import {addAngularConfigInList, infoMigration, setAngularProjectsConfig} from '../../utils';
 
 export function jenkins(config: string, staticBuild: boolean, jest: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
@@ -10,17 +11,20 @@ export function jenkins(config: string, staticBuild: boolean, jest: boolean): Ru
 }
 
 function addDevEnv(dev: boolean): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
-		if (!dev) {
-			return tree;
-		}
-		const path = ['architect', 'build', 'configurations'];
-		const devConfig = {...(getAngularConfig(tree, [...path, 'production']) || {})};
-		devConfig.fileReplacements[0].with = devConfig.fileReplacements[0].with.replace('prod', 'dev');
-		devConfig.optimization = false;
-		devConfig.sourceMap = true;
-		return setAngularConfig(tree, [...path, 'dev'], devConfig);
-	};
+	return (tree: Tree, _context: SchematicContext) =>
+		!dev
+			? tree
+			: setAngularProjectsConfig(tree, ['architect', 'build', 'configurations'], (config: any) => {
+					if (!config.dev && config.production) {
+						config.dev = JSON.parse(JSON.stringify(config.production));
+						if (config.dev.fileReplacements) {
+							config.dev.fileReplacements[0].with = config.dev.fileReplacements[0].with.replace('prod', 'dev');
+						}
+						config.dev.optimization = false;
+						config.dev.sourceMap = true;
+					}
+					return config;
+			  });
 }
 
 function addJenkins(useJenkins: boolean, jest: boolean): Rule {
@@ -61,6 +65,6 @@ function addStaticBuildPack(staticBuildPack: boolean): Rule {
 		}
 		infoMigration(_context, 'Toolchain: Adding Static build pack');
 		addFile(tree, 'src/Staticfile', getTemplate(tree, 'default-Staticfile.config'));
-		return addAngularConfig(tree, ['architect', 'build', 'options', 'assets'], 'src/Staticfile');
+		return addAngularConfigInList(tree, ['architect', 'build', 'options', 'assets'], 'src/Staticfile');
 	};
 }

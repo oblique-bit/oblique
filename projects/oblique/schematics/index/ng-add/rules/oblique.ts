@@ -1,25 +1,11 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {addProviderToModule} from '@schematics/angular/utility/ast-utils';
-import {
-	addAngularConfig,
-	addDependency,
-	applyChanges,
-	appModulePath,
-	createSrcFile,
-	getAngularConfig,
-	getRootAngularConfig,
-	getTemplate,
-	importModule,
-	infoMigration,
-	OBLIQUE_PACKAGE,
-	obliqueCssPath,
-	readFile,
-	setAngularConfig
-} from '../../ng-add-utils';
+import {addDependency, applyChanges, appModulePath, createSrcFile, getTemplate, importModule, IOptionsSchema, obliqueCssPath} from '../ng-add-utils';
+import {addAngularConfigInList, getDefaultAngularConfig, infoMigration, ObliquePackage, readFile, setAngularProjectsConfig} from '../../utils';
 import {addLocales} from './locales';
 
-export function oblique(options: any): Rule {
+export function oblique(options: IOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
 		chain([
 			addFavIcon(),
@@ -37,7 +23,10 @@ export function oblique(options: any): Rule {
 function addFavIcon(): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Embedding favicon');
-		const index = getAngularConfig(tree, ['architect', 'build', 'options', 'index']);
+		let index = getDefaultAngularConfig(tree, ['architect', 'build', 'options', 'index']);
+		if (!tree.exists(index)) {
+			index = './index.html';
+		}
 		if (tree.exists(index)) {
 			tree.overwrite(
 				index,
@@ -57,7 +46,7 @@ function embedMasterLayout(title: string): Rule {
 		addMasterLayout(tree, title);
 		addComment(tree);
 
-		return chain([importModule('ObMasterLayoutModule', OBLIQUE_PACKAGE), importModule('BrowserAnimationsModule', '@angular/platform-browser/animations')])(
+		return chain([importModule('ObMasterLayoutModule', ObliquePackage), importModule('BrowserAnimationsModule', '@angular/platform-browser/animations')])(
 			tree,
 			_context
 		);
@@ -67,12 +56,16 @@ function embedMasterLayout(title: string): Rule {
 function addMainCSS(): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Adding main CSS');
-		const path = ['architect', 'build', 'options', 'styles'];
-		const styles = getAngularConfig(tree, path);
-		if (!styles.includes(obliqueCssPath)) {
-			styles.unshift(obliqueCssPath);
-		}
-		return setAngularConfig(tree, path, styles);
+		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) => {
+			const index = config.indexOf(obliqueCssPath.replace('css/oblique-core.css', 'scss/oblique-core.scss'));
+			if (index > -1) {
+				config[index] = config[index].replace('scss/oblique-core.scss', 'css/oblique-core.css');
+			}
+			if (!config.includes(obliqueCssPath)) {
+				config.unshift(obliqueCssPath);
+			}
+			return config;
+		});
 	};
 }
 
@@ -87,7 +80,7 @@ function addTheme(theme: string): Rule {
 function addObliqueAssets(): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Adding assets');
-		return addAngularConfig(tree, ['architect', 'build', 'options', 'assets'], {
+		return addAngularConfigInList(tree, ['architect', 'build', 'options', 'assets'], {
 			glob: '**/*',
 			input: 'node_modules/@oblique/oblique/styles',
 			output: '/assets/styles'
@@ -101,7 +94,7 @@ function addFontInjectionToken(font: string): Rule {
 			infoMigration(_context, 'Oblique: Adding font');
 			const providerToAdd = `{ provide: OBLIQUE_FONT, useValue: FONTS.${font} }`;
 			const sourceFile = createSrcFile(tree, appModulePath);
-			const changes: Change[] = addProviderToModule(sourceFile, appModulePath, providerToAdd, OBLIQUE_PACKAGE);
+			const changes: Change[] = addProviderToModule(sourceFile, appModulePath, providerToAdd, ObliquePackage);
 			if (changes.length > 1) {
 				(changes[1] as InsertChange).toAdd = (changes[1] as InsertChange).toAdd.replace(
 					'{ provide: OBLIQUE_FONT, useValue: FONTS',
@@ -116,17 +109,13 @@ function addFontInjectionToken(font: string): Rule {
 
 function addScssImport(stylesPath: string): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		const path = ['schematics', '@schematics/angular:component', 'style'];
-		const styleExt = getAngularConfig(tree, path) || getRootAngularConfig(tree, path);
-		if (styleExt !== 'scss' || !tree.exists(stylesPath)) {
-			return tree;
-		}
-
-		infoMigration(_context, 'Oblique: Importing variables into main SCSS file');
-		const layoutContent = readFile(tree, stylesPath);
-		const scssImport = `@import '~@oblique/oblique/styles/scss/core/variables';`;
-		if (!layoutContent.includes(scssImport)) {
-			tree.overwrite(stylesPath, scssImport.concat('\n', layoutContent));
+		if (tree.exists(stylesPath)) {
+			infoMigration(_context, 'Oblique: Importing variables into main SCSS file');
+			const layoutContent = readFile(tree, stylesPath);
+			const scssImport = `@import '~@oblique/oblique/styles/scss/core/variables';`;
+			if (!layoutContent.includes(scssImport)) {
+				tree.overwrite(stylesPath, scssImport.concat('\n', layoutContent));
+			}
 		}
 		return tree;
 	};
@@ -143,12 +132,16 @@ function addThemeDependencies(tree: Tree, theme: string): void {
 
 function addThemeCSS(tree: Tree, theme: string): Tree {
 	const styleSheet = `node_modules/@oblique/oblique/styles/css/oblique-${theme}.css`;
-	const path = ['architect', 'build', 'options', 'styles'];
-	const styles = getAngularConfig(tree, path);
-	if (!styles.includes(styleSheet)) {
-		styles.splice(styles.indexOf(obliqueCssPath) + 1, 0, styleSheet);
-	}
-	return setAngularConfig(tree, path, styles);
+	return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) => {
+		const index = config.indexOf(styleSheet.replace(`oblique-${theme}.css`, `oblique-${theme}.scss`));
+		if (index > -1) {
+			config[index] = config[index].replace(`oblique-${theme}.scss`, `oblique-${theme}.css`);
+		}
+		if (!config.includes(styleSheet)) {
+			config.splice(config.indexOf(obliqueCssPath) + 1, 0, styleSheet);
+		}
+		return config;
+	});
 }
 
 function addMasterLayout(tree: Tree, title: string): void {
