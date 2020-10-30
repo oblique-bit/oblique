@@ -18,6 +18,7 @@ const scopes = [
 	'column-layout',
 	'datepicker',
 	'document-meta',
+	'dropdown',
 	'error-messages',
 	'filter-box',
 	'form-control-state',
