@@ -1,16 +1,15 @@
-import {AfterViewInit, Component, ElementRef, HostListener, Input, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 import {takeUntil} from 'rxjs/operators';
 
 import {ObSpinnerService} from './spinner.service';
 import {ObISpinnerEvent} from './spinner-event';
 import {ObUnsubscribable} from '../unsubscribe.class';
-import {ObMasterLayoutComponentService} from '../master-layout/master-layout/master-layout.component.service';
 
 @Component({
 	selector: 'ob-spinner',
 	exportAs: 'obSpinner',
-	template: ` <div class="overlay" [class.overlay-fixed]="fixed" [@inOut]="$state">
+	template: `<div class="overlay" [class.overlay-fixed]="fixed" [@inOut]="$state">
 		<div class="spinner-viewport" #spinnerContainer>
 			<span class="fa fa-spinner fa-spin fa-4x"></span>
 		</div>
@@ -31,23 +30,13 @@ import {ObMasterLayoutComponentService} from '../master-layout/master-layout/mas
 		])
 	]
 })
-export class ObSpinnerComponent extends ObUnsubscribable implements OnInit, AfterViewInit {
-	@Input()
-	channel: string = ObSpinnerService.CHANNEL;
-
-	@Input()
-	fixed = false;
-
+export class ObSpinnerComponent extends ObUnsubscribable implements OnInit {
+	@Input() channel: string = ObSpinnerService.CHANNEL;
+	@Input() fixed = false;
 	@ViewChild('spinnerContainer') spinnerContainer: ElementRef;
-
-	// Animation state:
 	$state = 'out';
 
-	constructor(
-		private readonly spinnerService: ObSpinnerService,
-		private readonly element: ElementRef,
-		private readonly masterLayoutComponentService: ObMasterLayoutComponentService
-	) {
+	constructor(private readonly spinnerService: ObSpinnerService, private readonly element: ElementRef) {
 		super();
 		spinnerService.events.pipe(takeUntil(this.unsubscribe)).subscribe((event: ObISpinnerEvent) => {
 			if (event.channel === this.channel) {
@@ -59,18 +48,5 @@ export class ObSpinnerComponent extends ObUnsubscribable implements OnInit, Afte
 
 	ngOnInit() {
 		this.element.nativeElement.parentElement.classList.add('has-overlay');
-	}
-
-	ngAfterViewInit(): void {
-		this.calculateSpinnerPosition();
-	}
-
-	@HostListener('window:scroll')
-	@HostListener('window:resize')
-	calculateSpinnerPosition(): void {
-		if (!this.masterLayoutComponentService.isFixed) {
-			// no fixed layout, calculate manually
-			this.spinnerContainer.nativeElement.style.top = `${+(window.innerHeight / 2 + window.scrollY)}px`;
-		}
 	}
 }

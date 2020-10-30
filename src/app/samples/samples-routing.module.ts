@@ -27,6 +27,7 @@ import {ObUnknownRouteSampleComponent} from './unknown-route/unknown-route-sampl
 import {ObPopUpSampleComponent} from './pop-up/pop-up-sample.component';
 import {MultiTranslateLoaderSampleComponent} from './multi-tranlsate-loader/multi-translate-loader-sample.component';
 import {ObSelectableSampleComponent} from './selectable/selectable-sample.component';
+import {SpinnerSampleComponent} from './spinner-sample/spinner-sample.component';
 
 const samplesRoutes: Routes = [
 	{path: 'collapse', component: CollapseSampleComponent},
@@ -60,6 +61,7 @@ const samplesRoutes: Routes = [
 	{path: 'schema-validation', component: SchemaValidationSampleComponent},
 	{path: 'selectable', component: ObSelectableSampleComponent},
 	{path: 'sticky', component: ObStickySampleComponent},
+	{path: 'spinner', component: SpinnerSampleComponent},
 	{path: 'unknown-route-sample', component: ObUnknownRouteSampleComponent},
 	{path: 'unsaved-changes', component: UnsavedChangesSampleComponent, canDeactivate: [ObUnsavedChangesGuard]},
 	{path: 'form', component: ObFormComponent},
