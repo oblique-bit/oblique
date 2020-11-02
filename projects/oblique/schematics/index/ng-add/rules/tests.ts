@@ -1,7 +1,7 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
 import {addDevDependency, addFile, deleteFile, getTemplate, removeDevDependencies, removeScript} from '../ng-add-utils';
-import {getJson, infoMigration, removeAngularProjectsConfig, setAngularProjectsConfig} from '../../utils';
+import {getJson, infoMigration, readFile, removeAngularProjectsConfig, setAngularProjectsConfig} from '../../utils';
 
 export function addJest(jest: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
@@ -10,7 +10,7 @@ export function addJest(jest: boolean): Rule {
 		}
 
 		infoMigration(_context, 'Toolchain: Replacing karma/jasmine with jest');
-		return chain([removeJasmine(), addJestDependencies(), createJestConfigFiles(), referToJest()])(tree, _context);
+		return chain([removeJasmine(), addJestDependencies(), createJestConfigFiles(), referToJest(), adaptTsConfig(), adaptTsConfigSpec()])(tree, _context);
 	};
 }
 
@@ -112,5 +112,28 @@ function removeE2eFromPackage(jest: boolean) {
 		}
 
 		return removeScript(tree, 'e2e');
+	};
+}
+
+function adaptTsConfig() {
+	return (tree: Tree, _context: SchematicContext) => {
+		const tsConfigName = tree.exists('tsconfig.base.json') ? 'tsconfig.base.json' : 'tsconfig.json';
+		let tsConfig = readFile(tree, tsConfigName);
+		if (tsConfig.indexOf('emitDecoratorMetadata') > -1) {
+			tsConfig = tsConfig.replace(/"emitDecoratorMetadata"\s*:\s*false/, '"emitDecoratorMetadata": true');
+		} else {
+			tsConfig = tsConfig.replace(/"experimentalDecorators"\s*:\s*true,/, '"experimentalDecorators": true,\n    "emitDecoratorMetadata": true,');
+		}
+		tree.overwrite(tsConfigName, tsConfig);
+	};
+}
+
+function adaptTsConfigSpec() {
+	return (tree: Tree, _context: SchematicContext) => {
+		const tsConfigName = 'tsconfig.spec.json';
+		if (tree.exists(tsConfigName)) {
+			const tsConfig = readFile(tree, tsConfigName).replace(/("types"\s*:\s*\[\s*)"jasmine"(\s*])/, '$1"node", "jest"$2');
+			tree.overwrite(tsConfigName, tsConfig);
+		}
 	};
 }
