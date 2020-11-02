@@ -1,4 +1,13 @@
-<p class="material-only">The angular material Datepicker has been slightly restyled to match Oblique's look & feel.</p>
+<div class="material-only">
+	<p>The angular material Datepicker has been slightly restyled to match Oblique's look & feel.</p>
+	<div class="alert alert-warning">
+		<strong>IE11 & Edge</strong>
+		<p>
+			For the datepicker to be correctly displayed on both IE11 and Edge 44 (the one without Chromium), the <code>ms-fix</code> class has to be added to
+			the <code>mat-form-field</code> element. Without this class, the datepicker's height will be too large.
+		</p>
+	</div>
+</div>
 <p class="bootstrap-only">
 	Wrapper for the <a href="https://ng-bootstrap.github.io/#/components/datepicker">ng-bootstrap Datepicker</a>
 	component with some controls (clear, open & close). The validation is left to the containing form.

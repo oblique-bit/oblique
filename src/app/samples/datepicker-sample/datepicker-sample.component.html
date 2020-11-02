@@ -3,7 +3,7 @@
 <ob-column-layout [left]="false" [right]="true">
 	<form novalidate column-main-content>
 		<ng-container *ngIf="material | async; else bootstrap">
-			<mat-form-field>
+			<mat-form-field class="ms-fix">
 				<mat-label>Datepicker</mat-label>
 				<input matInput [matDatepicker]="picker" />
 				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
