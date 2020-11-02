@@ -1,7 +1,17 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {addProviderToModule} from '@schematics/angular/utility/ast-utils';
-import {addDependency, applyChanges, appModulePath, createSrcFile, getTemplate, importModule, IOptionsSchema, obliqueCssPath} from '../ng-add-utils';
+import {
+	adaptInsertChange,
+	addDependency,
+	applyChanges,
+	appModulePath,
+	createSrcFile,
+	getTemplate,
+	importModule,
+	IOptionsSchema,
+	obliqueCssPath
+} from '../ng-add-utils';
 import {addAngularConfigInList, getDefaultAngularConfig, infoMigration, ObliquePackage, readFile, setAngularProjectsConfig} from '../../utils';
 import {addLocales} from './locales';
 
@@ -94,13 +104,10 @@ function addFontInjectionToken(font: string): Rule {
 			infoMigration(_context, 'Oblique: Adding font');
 			const providerToAdd = `{ provide: OBLIQUE_FONT, useValue: FONTS.${font} }`;
 			const sourceFile = createSrcFile(tree, appModulePath);
-			const changes: Change[] = addProviderToModule(sourceFile, appModulePath, providerToAdd, ObliquePackage);
-			if (changes.length > 1) {
-				(changes[1] as InsertChange).toAdd = (changes[1] as InsertChange).toAdd.replace(
-					'{ provide: OBLIQUE_FONT, useValue: FONTS',
-					'OBLIQUE_FONT, FONTS'
-				);
-			}
+			const changes = addProviderToModule(sourceFile, appModulePath, providerToAdd, ObliquePackage)
+				.filter((change: Change) => change instanceof InsertChange)
+				.map((change: InsertChange) => adaptInsertChange(tree, change, '{ provide: OBLIQUE_FONT, useValue: FONTS', 'OBLIQUE_FONT, FONTS'));
+
 			return applyChanges(tree, appModulePath, changes);
 		}
 		return tree;

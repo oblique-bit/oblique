@@ -2,7 +2,7 @@ import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {insertImport} from '@angular/cdk/schematics';
 import {addImportToModule, addProviderToModule} from '@schematics/angular/utility/ast-utils';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
-import {applyChanges, appModulePath, createSrcFile, addDevDependency, addFile, importModule} from '../ng-add-utils';
+import {applyChanges, appModulePath, createSrcFile, addDevDependency, addFile, importModule, adaptInsertChange} from '../ng-add-utils';
 import {infoMigration, ObliquePackage, readFile} from '../../utils';
 
 export function addLocales(langs: string[]): Rule {
@@ -20,14 +20,16 @@ function importLocales(langs: string[]): Rule {
 			...addProviderToModule(sourceFile, appModulePath, `{provide: LOCALE_ID, useValue: '${locales[0].locale}'}`, 'TEMP'),
 			insertImport(sourceFile, file, 'registerLocaleData', '@angular/common'),
 			insertImport(sourceFile, file, 'LOCALE_ID', '@angular/core')
-		].filter(change => (change as InsertChange).toAdd.indexOf('TEMP') === -1);
-		locales
-			.map(locale => insertImport(sourceFile, file, locale.variable, `@angular/common/locales/${locale.locale}`))
-			.forEach(change => {
-				(change as InsertChange).toAdd = (change as InsertChange).toAdd.replace('{', '').replace('}', '');
-				changes.push(change);
-			});
+		]
+			.filter((change: Change) => change instanceof InsertChange)
+			.filter((change: InsertChange) => change.toAdd.indexOf('TEMP') === -1);
 
+		locales
+			.filter(locale => filterLocale(tree, locale))
+			.map(locale => insertImport(sourceFile, file, locale.variable, `@angular/common/locales/${locale.locale}`))
+			.filter((change: Change) => change instanceof InsertChange)
+			.map((change: InsertChange) => adaptInsertChange(tree, change, /(?:{\s*)|(?:\s*})/g, ''))
+			.forEach((change: InsertChange) => changes.push(change));
 		return applyChanges(tree, appModulePath, changes);
 	};
 }
@@ -36,12 +38,12 @@ function registerLocales(langs: string[]): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		const locales = langToLocale(langs);
 		const replacement = locales
+			.filter(locale => filterLocale(tree, locale))
 			.map(locale => `registerLocaleData(${locale.variable});`)
 			.reduce((rep, locale) => [...rep, locale], [])
 			.concat('\n@NgModule')
 			.join('\n');
-		const appModuleContent = readFile(tree, appModulePath);
-		tree.overwrite(appModulePath, appModuleContent.replace(/@NgModule/, replacement));
+		tree.overwrite(appModulePath, readFile(tree, appModulePath).replace('@NgModule', replacement));
 		return tree;
 	};
 }
@@ -77,21 +79,13 @@ function addTranslation(langs: string[]): Rule {
 }
 
 function addTranslationToImports(tree: Tree): Tree {
-	const translateModuleName = ' TranslateModule ';
 	const translateSource = '@ngx-translate/core';
 	const translateModuleImport = 'TranslateModule.forRoot(multiTranslateLoader())';
-	const appModule = readFile(tree, appModulePath);
 	const sourceFile = createSrcFile(tree, appModulePath);
-	const changes: Change[] = [];
+	const changes = addImportToModule(sourceFile, appModulePath, translateModuleImport, translateSource)
+		.concat(insertImport(sourceFile, appModulePath, 'multiTranslateLoader', ObliquePackage))
+		.filter((change: Change) => change instanceof InsertChange);
 
-	if (!appModule.split('@NgModule')[1].includes(translateModuleName)) {
-		addImportToModule(sourceFile, appModulePath, translateModuleImport, translateSource).forEach((change: Change) => changes.push(change));
-		if (changes.length > 1) {
-			(changes[1] as InsertChange).toAdd = `; \nimport {${translateModuleName}} from '${translateSource}'`;
-		}
-	}
-
-	changes.push(insertImport(sourceFile, appModulePath, 'multiTranslateLoader', ObliquePackage));
 	return applyChanges(tree, appModulePath, changes);
 }
 
@@ -109,4 +103,8 @@ function langToLocale(langs: string[]): {locale: string; variable: string}[] {
 			};
 		}
 	});
+}
+
+function filterLocale(tree: Tree, locale: {locale: string; variable: string}): boolean {
+	return !readFile(tree, appModulePath).match(new RegExp(`registerLocaleData\\(${locale.variable}\\)`, 'i'));
 }

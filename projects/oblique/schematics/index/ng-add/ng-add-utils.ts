@@ -193,3 +193,12 @@ export function addScript(tree: Tree, name: string, content: any): Tree {
 export function createSrcFile(tree: Tree, source: string): SourceFile {
 	return ts.createSourceFile(source, readFile(tree, source), ts.ScriptTarget.Latest, true);
 }
+
+export function adaptInsertChange(tree: Tree, change: InsertChange, search: string | RegExp, replace: string): InsertChange {
+	const pos = readFile(tree, appModulePath).indexOf('@NgModule');
+	if (change.pos < pos) {
+		change.toAdd = change.toAdd.replace(search, replace);
+		change.description = change.description.replace(search, replace);
+	}
+	return change;
+}
