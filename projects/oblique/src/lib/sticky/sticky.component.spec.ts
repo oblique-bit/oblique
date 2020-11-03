@@ -6,16 +6,10 @@ import {ObStickyComponent} from './sticky.component';
 
 @Component({
 	template: ` <ob-sticky [headerSize]="headerSize" [footerSize]="footerSize">
-		<ng-template #obStickyHeader *ngIf="stickyHeader">
-			test
-		</ng-template>
-		<ng-template #obStickyMain>
-			test
-		</ng-template>
+		<ng-template #obStickyHeader *ngIf="stickyHeader">test</ng-template>
+		<ng-template #obStickyMain>test</ng-template>
 		<ng-template #obStickyFooter *ngIf="stickyFooter">
-			<div class="sticky-actions">
-				sdfsdfsdf
-			</div>
+			<div class="sticky-actions">sdfsdfsdf</div>
 		</ng-template>
 	</ob-sticky>`
 })
