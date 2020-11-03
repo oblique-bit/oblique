@@ -2,6 +2,7 @@ import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {addDeclarationToModule, addImportToModule, addProviderToModule, addRouteDeclarationToModule, insertImport} from '@schematics/angular/utility/ast-utils';
 import {
+	adaptInsertChange,
 	addDevDependency,
 	addFile,
 	applyChanges,
@@ -61,11 +62,11 @@ function addInterceptors(httpInterceptors: boolean): Rule {
 			const obliqueInterceptorModuleName = 'ObHttpApiInterceptor';
 			const obliqueInterceptorProvider = '{provide: HTTP_INTERCEPTORS, useClass: ObHttpApiInterceptor, multi: true}';
 			const sourceFile = createSrcFile(tree, appModulePath);
-			const changes: Change[] = addProviderToModule(sourceFile, appModulePath, obliqueInterceptorProvider, ObliquePackage);
-			if (changes.length > 1) {
-				(changes[1] as InsertChange).toAdd = (changes[1] as InsertChange).toAdd.replace(obliqueInterceptorProvider, obliqueInterceptorModuleName);
-			}
-			changes.push(insertImport(sourceFile, appModulePath, 'HTTP_INTERCEPTORS', '@angular/common/http'));
+			const changes = addProviderToModule(sourceFile, appModulePath, obliqueInterceptorProvider, ObliquePackage)
+				.concat(insertImport(sourceFile, appModulePath, 'HTTP_INTERCEPTORS', '@angular/common/http'))
+				.filter((change: Change) => change instanceof InsertChange)
+				.map((change: InsertChange) => adaptInsertChange(tree, change, obliqueInterceptorProvider, obliqueInterceptorModuleName));
+
 			tree = applyChanges(tree, appModulePath, changes);
 		}
 		return tree;
@@ -100,11 +101,11 @@ function addBannerData(tree: Tree): void {
 function provideBanner(tree: Tree): Tree {
 	const provider = "{provide: OB_BANNER, useValue: environment['banner']}";
 	const sourceFile = createSrcFile(tree, appModulePath);
-	const changes: Change[] = addProviderToModule(sourceFile, appModulePath, provider, ObliquePackage);
-	if (changes.length > 1) {
-		(changes[1] as InsertChange).toAdd = (changes[1] as InsertChange).toAdd.replace(provider, 'OB_BANNER');
-	}
-	changes.push(insertImport(sourceFile, appModulePath, 'environment', '../environments/environment'));
+	const changes: Change[] = addProviderToModule(sourceFile, appModulePath, provider, ObliquePackage)
+		.concat(insertImport(sourceFile, appModulePath, 'environment', '../environments/environment'))
+		.filter((change: Change) => change instanceof InsertChange)
+		.map((change: InsertChange) => adaptInsertChange(tree, change, provider, 'OB_BANNER'));
+
 	return applyChanges(tree, appModulePath, changes);
 }
 
