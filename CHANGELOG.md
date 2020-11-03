@@ -1,3 +1,25 @@
+# [5.2.1](https://github.com/oblique-bit/oblique/compare/5.2.0...5.2.1) (2020-11-03)
+
+## Bug Fixes
+* **datepicker:** ensure consistent height for Edge and IE11 ([bc9fa01](https://github.com/oblique-bit/oblique/commit/bc9fa01101d8a4d606faa941be27224487f3f313))
+* **document-meta:** ensure the title is being set correctly ([ad129e7](https://github.com/oblique-bit/oblique/commit/ad129e756a04f00f26d91d3a6a50ae497f5c9f37))
+* **master-layout:** ensure `accesskey`s numbering consistency ([7c0e114](https://github.com/oblique-bit/oblique/commit/7c0e1142ce71e9d24cbb7ef81ea74b0eefefe388))
+* **master-layout:** improve accessibility by not using out of context headings ([cad3d31](https://github.com/oblique-bit/oblique/commit/cad3d31b2950f91e33ab3ea3f8901cbb37d7354c))
+* **master-layout:** let default `spinner` be fixed ([2b56043](https://github.com/oblique-bit/oblique/commit/2b56043405d899d47d7404316525896bc19dcba7))
+* **spinner:** not reposition spinner container ([becb894](https://github.com/oblique-bit/oblique/commit/becb894ff734c913dfcb9d571cd4d9aea8b692e3))
+* **toolchain:** apply schematics to all projects ([6ab6121](https://github.com/oblique-bit/oblique/commit/6ab612169d9925f8070a449999dddd5bd48f3797))
+* **toolchain:** ensure `angular.json` do load `css` files ([1ee0d14](https://github.com/oblique-bit/oblique/commit/1ee0d1481a9664b67489359744856e716bfb37a6))
+* **toolchain:** ensure `ng-add` doesn't try to add something already present ([c9d2e91](https://github.com/oblique-bit/oblique/commit/c9d2e912e9c9ff0556ac2f67b9d8b7957175b27a))
+* **toolchain:** ensure that `ng-update` correctly removes providers ([8fce7ea](https://github.com/oblique-bit/oblique/commit/8fce7ea37fe645b8c137c2eabc2c1d350eeea6e2))
+* **toolchain:** install deps directly from npm ([97b147f](https://github.com/oblique-bit/oblique/commit/97b147fef1799b6e84c85343beee0576d25c1174))
+* **toolchain:** let `ng-add` adapt `tsconfig` for jest ([632e1ec](https://github.com/oblique-bit/oblique/commit/632e1ec88d36adb3f25600e7abb47c698afcf871))
+* **toolchain:** let `ng-update` keep closing datepicker tag ([af2f3f9](https://github.com/oblique-bit/oblique/commit/af2f3f98cc22486942b999595efe60f7ad00b1fc))
+* **toolchain:** let prettier work on Windows ([b5074e9](https://github.com/oblique-bit/oblique/commit/b5074e96bfe09862f496b7e6bdf133dca256f8e9))
+* **toolchain:** make `ng-add` add Windows compatible linting scripts ([cbce6b1](https://github.com/oblique-bit/oblique/commit/cbce6b1a399599d0fa0c9b3dcb85a0b0fb3421f5))
+* **toolchain:** not make `ng-update` fail on unmet peer dependencies ([1870deb](https://github.com/oblique-bit/oblique/commit/1870deb4c415f97b7e3b0bf437923c935a39714f))
+* **toolchain:** remove misleading infoLog with `ng-update` ([a8a8e0b](https://github.com/oblique-bit/oblique/commit/a8a8e0b3b40bfd6ebea9aab37818ab6c4263c19d))
+
+
 # [5.2.0](https://github.com/oblique-bit/oblique/compare/5.1.1...5.2.0) (2020-10-05)
 
 ## Bug Fixes
