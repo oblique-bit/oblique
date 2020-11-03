@@ -4,12 +4,8 @@
 		<mat-accordion [multi]="multi" [displayMode]="displayMode">
 			<mat-expansion-panel [hideToggle]="!toggleVisible" [togglePosition]="togglePosition">
 				<mat-expansion-panel-header>
-					<mat-panel-title>
-						Personal data
-					</mat-panel-title>
-					<mat-panel-description>
-						Type your name and age
-					</mat-panel-description>
+					<mat-panel-title>Personal data</mat-panel-title>
+					<mat-panel-description>Type your name and age</mat-panel-description>
 				</mat-expansion-panel-header>
 
 				<mat-form-field>
@@ -33,9 +29,7 @@
 				(closed)="panelOpenState = false"
 			>
 				<mat-expansion-panel-header>
-					<mat-panel-title>
-						Self aware panel
-					</mat-panel-title>
+					<mat-panel-title>Self aware panel</mat-panel-title>
 					<mat-panel-description> Currently I am {{ panelOpenState ? "open" : "closed" }} </mat-panel-description>
 				</mat-expansion-panel-header>
 				<p>I'm visible because I am open</p>
@@ -56,14 +50,10 @@
 					</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle (click)="toggleActionRowVisibility()" matTooltip="Toggle action row-visibility">
-						Action row
-					</mat-slide-toggle>
+					<mat-slide-toggle (click)="toggleActionRowVisibility()" matTooltip="Toggle action row-visibility">Action row</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle [checked]="true" (click)="toggleToggleVisibility()" matTooltip="Toggle toggle-visibility">
-						Show toggle
-					</mat-slide-toggle>
+					<mat-slide-toggle [checked]="true" (click)="toggleToggleVisibility()" matTooltip="Toggle toggle-visibility">Show toggle</mat-slide-toggle>
 				</mat-list-item>
 			</fieldset>
 			<fieldset>

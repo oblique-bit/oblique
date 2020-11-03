@@ -59,24 +59,16 @@
 			<fieldset>
 				<legend>Toggle features</legend>
 				<mat-list-item *ngIf="!showAutocompleteForm">
-					<mat-slide-toggle (click)="toggleStacked()" matTooltip="Toggle stacked">
-						Stack
-					</mat-slide-toggle>
+					<mat-slide-toggle (click)="toggleStacked()" matTooltip="Toggle stacked">Stack</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle (click)="toggleAutocompleteForm()" matTooltip="Toggle autocomplete">
-						Autocomplete form
-					</mat-slide-toggle>
+					<mat-slide-toggle (click)="toggleAutocompleteForm()" matTooltip="Toggle autocomplete">Autocomplete form</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle (click)="disabled = !disabled">
-						Disabled
-					</mat-slide-toggle>
+					<mat-slide-toggle (click)="disabled = !disabled">Disabled</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle (click)="selected = !selected">
-						Selected
-					</mat-slide-toggle>
+					<mat-slide-toggle (click)="selected = !selected">Selected</mat-slide-toggle>
 				</mat-list-item>
 			</fieldset>
 		</mat-list>
