@@ -2,7 +2,9 @@
 @import "../../styles/scss/core/mixins/layout";
 @import "../../styles/scss/core/mixins/bubble-tail";
 
-.dropdown {
+$arrow-size: 16px;
+$arrow-lg-size: 14px;
+.ob-dropdown {
 	position: relative;
 
 	button[dropdown-toggle] {
@@ -30,16 +32,27 @@
 		z-index: 1;
 
 		&.middle {
-			transform: translateX(-50%);
+			transform: translateX(calc(-50% + 8px));
+
+			.control-item & {
+				transform: translateX(calc(-50% + 19px));
+			}
 		}
 
 		&.right {
-			transform: translateX(-$spacing-default);
+			transform: translateX(-11px);
+
+			.control-item & {
+				transform: translateX(-1px);
+			}
 		}
 
 		&.left {
-			transform: translateX(calc(-100% + 2 * #{$spacing-default}));
-			margin-left: 50%;
+			transform: translateX(calc(-100% + 43px));
+
+			.control-item & {
+				transform: translateX(calc(-100% + 54px));
+			}
 		}
 	}
 
@@ -59,39 +72,39 @@
 		}
 
 		&::before {
-			top: -$spacing-default;
-			border-width: 0 $spacing-default $spacing-default;
+			top: -$arrow-size;
+			border-width: 0 $arrow-size $arrow-size;
 			border-color: $gray-light transparent;
 		}
 
 		&.middle::before {
-			left: 50%;
+			left: calc(50% - #{$arrow-size / 2});
 		}
 
 		&.right::before {
-			left: $spacing-default;
+			left: 10px;
 		}
 
 		&.left::before {
-			right: $spacing-default;
+			right: 10px;
 		}
 
 		&::after {
-			top: -14px;
-			border-width: 0 14px 14px;
+			top: -$arrow-lg-size;
+			border-width: 0 $arrow-lg-size $arrow-lg-size;
 			border-color: white transparent;
 		}
 
 		&.middle::after {
-			left: calc(50% + 1px);
+			left: calc(50% - #{$arrow-size / 2} + 2px);
 		}
 
 		&.right::after {
-			left: 16px;
+			left: 12px;
 		}
 
 		&.left::after {
-			right: 16px;
+			right: 12px;
 		}
 	}
 
