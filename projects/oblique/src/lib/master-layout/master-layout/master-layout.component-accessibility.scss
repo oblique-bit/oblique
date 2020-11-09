@@ -50,11 +50,3 @@
 		white-space: normal;
 	}
 }
-
-.alert-compatibility {
-	display: none;
-
-	.lt-ie10 & {
-		display: block;
-	}
-}
