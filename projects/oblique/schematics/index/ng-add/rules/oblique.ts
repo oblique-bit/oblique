@@ -20,6 +20,7 @@ export function oblique(options: IOptionsSchema): Rule {
 		chain([
 			addFavIcon(),
 			embedMasterLayout(options.title),
+			addFeatureDetection(),
 			addMainCSS(),
 			addTheme(options.theme),
 			addObliqueAssets(),
@@ -60,6 +61,20 @@ function embedMasterLayout(title: string): Rule {
 			tree,
 			_context
 		);
+	};
+}
+
+function addFeatureDetection(): Rule {
+	return (tree: Tree, _context: SchematicContext) => {
+		infoMigration(_context, 'Oblique: Adding browser compatibility check');
+		let index = getDefaultAngularConfig(tree, ['architect', 'build', 'options', 'index']);
+		if (!tree.exists(index)) {
+			index = './index.html';
+		}
+		if (tree.exists(index)) {
+			tree.overwrite(index, readFile(tree, index).replace('<body>\n', '<body>\n' + getTemplate(tree, 'default-index.html')));
+		}
+		return addAngularConfigInList(tree, ['architect', 'build', 'options', 'scripts'], 'node_modules/@oblique/oblique/ob-features.js');
 	};
 }
 

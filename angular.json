@@ -40,7 +40,7 @@
               "projects/oblique/src/styles/scss/oblique-core.scss",
               "src/scss/styles.scss"
             ],
-            "scripts": []
+            "scripts": ["projects/oblique/src/ob-features.js"]
           },
           "configurations": {
             "production": {
