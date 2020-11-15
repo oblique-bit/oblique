@@ -37,6 +37,12 @@ export function readFile(tree: Tree, filename: string): string {
 	return src ? src.toString() : '';
 }
 
+export function addFile(tree: Tree, filename: string, content: string | Buffer | null): void {
+	if (!tree.exists(filename) && content) {
+		tree.create(filename, content);
+	}
+}
+
 export function getJson(tree: any, path: string) {
 	const json = readFile(tree, path);
 	return json ? JSON.parse(json.toString()) : undefined;

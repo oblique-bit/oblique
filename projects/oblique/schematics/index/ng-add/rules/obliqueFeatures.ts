@@ -4,7 +4,6 @@ import {addDeclarationToModule, addImportToModule, addProviderToModule, addRoute
 import {
 	adaptInsertChange,
 	addDevDependency,
-	addFile,
 	applyChanges,
 	appModulePath,
 	createSrcFile,
@@ -13,7 +12,7 @@ import {
 	IOptionsSchema,
 	routingModulePath
 } from '../ng-add-utils';
-import {addAngularConfigInList, infoMigration, ObliquePackage, readFile} from '../../utils';
+import {addAngularConfigInList, addFile, infoMigration, ObliquePackage, readFile} from '../../utils';
 
 export function obliqueFeatures(options: IOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>

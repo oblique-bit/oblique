@@ -1,6 +1,6 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {addFile, getTemplate} from '../ng-add-utils';
-import {addAngularConfigInList, infoMigration, setAngularProjectsConfig} from '../../utils';
+import {getTemplate} from '../ng-add-utils';
+import {addAngularConfigInList, addFile, infoMigration, setAngularProjectsConfig} from '../../utils';
 
 export function jenkins(config: string, staticBuild: boolean, jest: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
