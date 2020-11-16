@@ -26,13 +26,18 @@
               },
               {
                 "glob": "**/*",
-                "input": "projects/oblique/src/styles",
-                "output": "/assets/styles"
+                "input": "projects/oblique/src/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/oblique/src/styles/fonts",
+                "output": "/assets/fonts"
               },
               {
                 "glob": "**/*",
                 "input": "dist/oblique/styles/css",
-                "output": "/assets/styles/css"
+                "output": "/assets/css"
               },
               "src/Staticfile"
             ],
