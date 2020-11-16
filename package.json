@@ -49,12 +49,12 @@
     "format": "npm run lint:fix && npm run prettier",
     "themes": "npm run gulp -- themes",
     "e2e": "ng e2e",
-    "patch": "npm version patch",
-    "minor": "npm version minor",
-    "major": "npm version major",
-    "release": "npm run gulp -- publish",
-    "preversion": "npm run lint && npm test -- --prod && npm run dist",
-    "postversion": "node scripts/changelog.js && node scripts/version.js $npm_package_version",
+    "release": "node scripts/release.js",
+    "alpha": "npm run release -- alpha",
+    "beta": "npm run release -- beta",
+    "rc": "npm run release -- RC",
+    "commit": "npm run gulp -- publish",
+    "prerelease": "npm run lint && npm test -- --prod && npm run dist",
     "gulp": "./node_modules/.bin/gulp"
   },
   "jestSonar": {

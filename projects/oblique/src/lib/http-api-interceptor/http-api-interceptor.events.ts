@@ -26,14 +26,14 @@ export class ObHttpApiInterceptorEvents {
 	private readonly sessionExpired$ = this.expired.asObservable();
 
 	/**
-	 * This will be feed with `requested` events
+	 * This will be fed with `requested` events
 	 */
 	get requestIntercepted(): Observable<ObIHttpApiRequest> {
 		return this.requestIntercepted$;
 	}
 
 	/**
-	 * This will be feed with `expired` events
+	 * This will be fed with `expired` events
 	 */
 	get sessionExpired(): Observable<void> {
 		return this.sessionExpired$;
