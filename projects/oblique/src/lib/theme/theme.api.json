@@ -6,6 +6,7 @@
       "usage": "Allows live changing to the theme and font",
       "type": "service",
       "since": "4.0.0",
+      "updated": "6.0.0",
       "variables": [
         {
           "name": "theme$",
@@ -44,20 +45,6 @@
           "text": "Returns <code>true</code> if the current theme is Material, and <code>false</code> otherwise.",
           "returns": "boolean",
           "since": "4.0.0"
-        }
-      ],
-      "tokens": [
-        {
-          "name": "OBLIQUE_FONT",
-          "text": "Defines the font to use",
-          "type": "FONTS",
-          "values": [
-            "FONTS.FRUTIGER",
-            "FONTS.ROBOTO",
-            "FONTS.NONE"
-          ],
-          "default": "FONTS.FRUTIGER",
-          "since": "5.0.0"
         }
       ]
     }

@@ -1,4 +1,4 @@
-import {Inject, Injectable, InjectionToken, Optional, Renderer2, RendererFactory2} from '@angular/core';
+import {Inject, Injectable, Renderer2, RendererFactory2} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {Observable, ReplaySubject} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
@@ -13,8 +13,6 @@ export enum FONTS {
 	ROBOTO = 'roboto',
 	NONE = 'none'
 }
-
-export const OBLIQUE_FONT = new InjectionToken<THEMES>('OBLIQUE_FONT');
 
 @Injectable({
 	providedIn: 'root'
@@ -33,8 +31,7 @@ export class ObThemeService {
 
 	constructor(
 		rendererFactory: RendererFactory2,
-		@Inject(DOCUMENT) document: any, // NOTE: do not set type, it will break AOT
-		@Optional() @Inject(OBLIQUE_FONT) private readonly font: any
+		@Inject(DOCUMENT) document: any // NOTE: do not set type, it will break AOT
 	) {
 		this.head = document.head;
 		this.renderer = rendererFactory.createRenderer(null, null);
@@ -70,10 +67,6 @@ export class ObThemeService {
 		}
 	}
 
-	setDefaultFont(): void {
-		this.setFont(this.font || FONTS.FRUTIGER);
-	}
-
 	private static isInEnum(value, enumName): boolean {
 		return Object.values(enumName).includes(value);
 	}
@@ -90,7 +83,7 @@ export class ObThemeService {
 	private initTheme(): void {
 		this.themeLink = this.createAndAddEmptyLink();
 		this.theme$
-			.pipe(map(theme => (ObThemeService.isInEnum(theme, THEMES) ? `assets/styles/css/${theme}.css` : theme)))
+			.pipe(map(theme => (ObThemeService.isInEnum(theme, THEMES) ? `assets/css/${theme}.css` : theme)))
 			.subscribe(path => this.renderer.setAttribute(this.themeLink, 'href', path));
 	}
 
@@ -99,7 +92,7 @@ export class ObThemeService {
 		this.font$
 			.pipe(
 				tap(font => this.addWarning(font === FONTS.FRUTIGER)),
-				map(font => ([FONTS.FRUTIGER, FONTS.ROBOTO].includes(font) ? `assets/styles/css/${font}.css` : ''))
+				map(font => ([FONTS.FRUTIGER, FONTS.ROBOTO].includes(font) ? `assets/css/${font}.css` : ''))
 			)
 			.subscribe(path => this.renderer.setAttribute(this.fontLink, 'href', path));
 	}

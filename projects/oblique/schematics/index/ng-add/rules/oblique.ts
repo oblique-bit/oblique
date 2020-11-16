@@ -24,7 +24,8 @@ export function oblique(options: IOptionsSchema): Rule {
 			addMainCSS(),
 			addTheme(options.theme),
 			addObliqueAssets(),
-			addFontInjectionToken(options.font.toUpperCase() || 'NONE'),
+			addFontStyle(options.font || 'none'),
+			addFontFiles(options.font || 'none'),
 			addLocales(options.langs.split(' ')),
 			addScssImport('src/scss/styles.scss'),
 			addScssImport('src/styles.scss')
@@ -43,7 +44,7 @@ function addFavIcon(): Rule {
 				index,
 				readFile(tree, index).replace(
 					'<link rel="icon" type="image/x-icon" href="favicon.ico">',
-					'<link href="assets/styles/images/favicon.png" rel="shortcut icon"/>'
+					'<link href="assets/images/favicon.png" rel="shortcut icon"/>'
 				)
 			);
 		}
@@ -105,25 +106,40 @@ function addTheme(theme: string): Rule {
 function addObliqueAssets(): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Adding assets');
-		return addAngularConfigInList(tree, ['architect', 'build', 'options', 'assets'], {
-			glob: '**/*',
-			input: 'node_modules/@oblique/oblique/styles',
-			output: '/assets/styles'
-		});
+		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => [
+			{
+				glob: '**/*',
+				input: 'node_modules/@oblique/oblique/assets',
+				output: 'assets'
+			},
+			...config
+		]);
 	};
 }
 
-function addFontInjectionToken(font: string): Rule {
+function addFontStyle(font: string): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		if (font !== 'FRUTIGER') {
+		if (font !== 'none') {
 			infoMigration(_context, 'Oblique: Adding font');
-			const providerToAdd = `{ provide: OBLIQUE_FONT, useValue: FONTS.${font} }`;
-			const sourceFile = createSrcFile(tree, appModulePath);
-			const changes = addProviderToModule(sourceFile, appModulePath, providerToAdd, ObliquePackage)
-				.filter((change: Change) => change instanceof InsertChange)
-				.map((change: InsertChange) => adaptInsertChange(tree, change, '{ provide: OBLIQUE_FONT, useValue: FONTS', 'OBLIQUE_FONT, FONTS'));
+			const styleSheet = `node_modules/@oblique/oblique/styles/css/${font}.css`;
+			setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) => {
+				if (!config.includes(styleSheet)) {
+					config.splice(config.indexOf(obliqueCssPath) + 1, 0, styleSheet);
+				}
+				return config;
+			});
+		}
+		return tree;
+	};
+}
 
-			return applyChanges(tree, appModulePath, changes);
+function addFontFiles(font: string): Rule {
+	return (tree: Tree, _context: SchematicContext) => {
+		if (font === 'roboto') {
+			setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => {
+				config.splice(1, 0, {glob: '*/**', input: 'node_modules/@oblique/oblique/styles/fonts', output: 'assets/fonts'});
+				return config;
+			});
 		}
 		return tree;
 	};

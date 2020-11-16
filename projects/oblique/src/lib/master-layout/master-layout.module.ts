@@ -7,7 +7,6 @@ import {ObNotificationModule} from '../notification/notification.module';
 import {ObSpinnerModule} from '../spinner/spinner.module';
 import {ObScrollingModule} from '../scrolling/scrolling.module';
 import {ObOffCanvasModule} from '../off-canvas/off-canvas.module';
-import {ObThemeService} from '../theme/theme.service';
 import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {ObMasterLayoutComponent} from './master-layout/master-layout.component';
@@ -63,8 +62,7 @@ export {ObINavigationLink, ObEScrollMode, ObIMasterLayoutEvent, ObEMasterLayoutE
 	]
 })
 export class ObMasterLayoutModule {
-	constructor(theme: ObThemeService, telemetry: ObTelemetryService) {
-		theme.setDefaultFont();
+	constructor(telemetry: ObTelemetryService) {
 		requireAndRecordTelemetry(telemetry, ObMasterLayoutModule);
 	}
 }

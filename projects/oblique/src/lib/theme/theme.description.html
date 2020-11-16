@@ -3,17 +3,15 @@
 	service and should just stick to the configuration options.
 </p>
 <p>
-	The desired theme, either <code>oblique-material</code> or <code>oblique-bootstrap</code>, should simply be set in <code>angular.json</code>, after
-	<code>oblique-core.css</code>. To avoid theme conflicts, either define a theme in <code>angular.json</code> or set it through the
-	<code>setTheme</code> method. Doing both will lead to load 2 separate themes simultaneously which will lead to unpredictable results.
+	The desired theme, either <code>oblique-material.css</code> or <code>oblique-bootstrap.css</code>, should simply be loaded in <code>angular.json</code>'s
+	assets array, after <code>oblique-core.css</code>. Alternatively, it could also be defined through the <code>setTheme</code> method of the
+	<code>ObThemeService</code>. But do not use both ways together as it will lead to 2 separate themes being loaded simultaneously which will yield
+	unpredictable results.
 </p>
-
-<p></p>
 <p>
-	The theme service tries to load the <strong>Frutiger</strong> font per default. This can be altered by injecting the <code>OBLIQUE_FONT</code> token with
-	the desired font into the providers array of <code>app.module.ts</code>. Both <code>Frutiger</code> and <code>Roboto</code> are served statically, which
-	means a reference to its definition will be automatically loaded and injected into the <code>HEAD</code> of the HTML document. If
-	<code>OBLIOQUE.FONT</code> is set to <code>FONTS.NONE</code>, no font definition will be loaded, which results in <code>Arial</code> being used.
+	The desired font, either <code>frutiger.css</code> or <code>roboto.css</code>, should simply be loaded in <code>angular.json</code>'s assets array.
+	Alternatively, it could also be defined through the <code>setFont</code> method of the <code>ObThemeService</code>. But do not use both ways together as it
+	will lead to the font being loaded twice which will yield unpredictable results.
 </p>
 <p>
 	Because of licence restrictions, the <code>Frutiger</code> font files cannot be delivered with Oblique. Each project has to obtain the font files itself

@@ -144,12 +144,15 @@ gulp.task(
 );
 
 gulp.task('themes',
-	gulp.series(
-		distStyles,
-		gulp.parallel(
-			distMaterialCss,
-			distBootstrapCss,
-			distCompatCss
+	gulp.parallel(
+		distAssets,
+		gulp.series(
+			distStyles,
+			gulp.parallel(
+				distMaterialCss,
+				distBootstrapCss,
+				distCompatCss
+			)
 		)
 	)
 );
