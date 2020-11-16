@@ -1,5 +1,5 @@
 @import "~@fortawesome/fontawesome-free/scss/variables";
-@import "projects/oblique/src/styles/scss/core/mixins/icon";
+@import "icon";
 
 @mixin toggle-state($state: show) {
 	&.#{$state},

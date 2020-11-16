@@ -27,18 +27,6 @@ const distUtilCss = (done) => transpile('utilities', '', done);
 const distCompatCss = (done) => transpile('compat', '', done);
 const distComponentsCss = (done) => transpileComponents(`${paths.src}/lib`, done);
 
-const distStylesThemeRename = () => gulp.src(`${paths.dist}/styles/scss/**/*.scss`)
-	.pipe(replace('projects/oblique/src', paths.dist))
-	.pipe(gulp.dest(`${paths.dist}/styles/scss`));
-
-const distStylesDistRename = () => gulp.src(`${paths.dist}/styles/scss/**/*.scss`)
-	.pipe(replace(paths.dist, '~@oblique/oblique'))
-	.pipe(gulp.dest(`${paths.dist}/styles/scss`));
-
-const distCompatRename = () => gulp.src(`${paths.dist}/styles/css/oblique-compat.css`)
-	.pipe(replace('~@oblique/oblique/styles/', '../'))
-	.pipe(gulp.dest(`${paths.dist}/styles/css`));
-
 const addBanner = () => gulp.src([`${paths.dist}/**/*.js`, `${paths.dist}/**/*.css`])
 	.pipe(header(
 		`/**
@@ -126,7 +114,6 @@ gulp.task(
 		distAssets,
 		gulp.series(
 			distStyles,
-			distStylesThemeRename,
 			gulp.parallel(
 				distMaterialCss,
 				distBootstrapCss,
@@ -135,7 +122,6 @@ gulp.task(
 				distCompatCss,
 				distComponentsCss
 			),
-			distCompatRename,
 			distScss,
 			distCss,
 			distRename,
@@ -145,7 +131,6 @@ gulp.task(
 				addBanner,
 				distMap
 			),
-			distStylesDistRename,
 			clean
 		)
 	)

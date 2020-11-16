@@ -1,6 +1,6 @@
-@import "projects/oblique/src/styles/scss/core/variables";
-@import "projects/oblique/src/styles/scss/themes/bootstrap/variables";
-@import "projects/oblique/src/styles/scss/themes/bootstrap/mixins/table";
+@import "../../core/variables";
+@import "variables";
+@import "mixins/table";
 
 @include table-variant('table-active', $brand-light, $brand-default);
 @include table-variant('table-primary', $brand-primary, $white);

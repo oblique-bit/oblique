@@ -1,6 +1,6 @@
 @import "~@fortawesome/fontawesome-free/scss/variables";
-@import "projects/oblique/src/styles/scss/core/variables";
-@import "projects/oblique/src/styles/scss/core/mixins/icon";
+@import "../../core/variables";
+@import "../../core/mixins/icon";
 
 $small: .875rem;
 $large: 1.25rem;

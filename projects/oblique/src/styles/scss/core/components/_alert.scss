@@ -1,6 +1,6 @@
 @import "~@fortawesome/fontawesome-free/scss/variables";
-@import "projects/oblique/src/styles/scss/core/variables";
-@import "projects/oblique/src/styles/scss/core/mixins/alert";
+@import "../variables";
+@import "../mixins/alert";
 
 .application .alert {
 	@include alert-base();

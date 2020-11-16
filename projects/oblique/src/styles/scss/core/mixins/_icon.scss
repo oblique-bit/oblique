@@ -1,5 +1,5 @@
 @import "~@fortawesome/fontawesome-free/scss/variables";
-@import "projects/oblique/src/styles/scss/core/mixins/layout";
+@import "layout";
 
 @mixin icon-base($icon, $pack) {
 	content: fa-content($icon);

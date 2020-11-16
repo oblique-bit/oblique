@@ -1,6 +1,6 @@
-@import "projects/oblique/src/styles/scss/core/variables";
-@import "projects/oblique/src/styles/scss/themes/bootstrap/variables";
-@import "projects/oblique/src/styles/scss/themes/bootstrap/mixins/badge";
+@import "../../core/variables";
+@import "variables";
+@import "mixins/badge";
 
 .badge {
 	border: 1px solid transparent;

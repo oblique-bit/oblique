@@ -1,7 +1,7 @@
-@import "projects/oblique/src/styles/scss/themes/bootstrap/mixins/form";
-@import "projects/oblique/src/styles/scss/themes/bootstrap/variables";
-@import "projects/oblique/src/styles/scss/core/variables";
-@import "projects/oblique/src/styles/scss/core/mixins/browser";
+@import "mixins/form";
+@import "variables";
+@import "../../core/variables";
+@import "../../core/mixins/browser";
 
 @include form-control-validation($gray, $secondary, $secondary, $gray-dark);
 
