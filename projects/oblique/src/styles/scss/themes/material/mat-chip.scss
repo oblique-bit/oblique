@@ -1,10 +1,16 @@
-@import "projects/oblique/src/styles/scss/core/variables";
+@import "../../core/variables";
+@import "../../core/palette";
 @import "../../core/mixins/typography";
+
+.mat-chip-list-stacked {
+	margin-top: $spacing-lg;
+}
 
 .mat-chip.mat-standard-chip {
 	@include caption;
-	border: 1px solid $gray;
-	background-color: $white;
+	background-color: $primary-100;
+	border-color: $primary-500;
+	color: $primary-500;
 
 	&.mat-chip-selected,
 	&.warning,
