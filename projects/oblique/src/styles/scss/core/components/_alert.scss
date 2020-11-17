@@ -2,7 +2,7 @@
 @import "projects/oblique/src/styles/scss/core/variables";
 @import "projects/oblique/src/styles/scss/core/mixins/alert";
 
-.alert {
+.application .alert {
 	@include alert-base();
 	margin-bottom: $spacing-default;
 
@@ -33,22 +33,22 @@
 			margin-bottom: 0;
 		}
 	}
-}
 
-.alert-info {
-	@include alert-variant($brand-info-light, $fa-var-info, $brand-info);
-}
+	&.alert-info {
+		@include alert-variant($brand-info-light, $fa-var-info, $brand-info);
+	}
 
-.alert-success {
-	@include alert-variant($brand-success-light, $fa-var-check, $brand-success);
-}
+	&.alert-success {
+		@include alert-variant($brand-success-light, $fa-var-check, $brand-success);
+	}
 
-.alert-warning {
-	@include alert-variant($brand-warning-light, $fa-var-exclamation, $brand-warning);
-}
+	&.alert-warning {
+		@include alert-variant($brand-warning-light, $fa-var-exclamation, $brand-warning);
+	}
 
-.alert-error {
-	@include alert-variant($brand-error-light, $fa-var-times, $brand-error);
+	&.alert-error {
+		@include alert-variant($brand-error-light, $fa-var-times, $brand-error);
+	}
 }
 
 // have to come last to take precedence

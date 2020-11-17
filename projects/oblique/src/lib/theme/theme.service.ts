@@ -82,7 +82,7 @@ export class ObThemeService {
 		const el = this.renderer.createElement('link');
 		this.renderer.setAttribute(el, 'rel', 'stylesheet');
 		this.renderer.setAttribute(el, 'type', 'text/css');
-		const style = this.head.querySelector('style');
+		const style = this.head.querySelector('head base ~ style ~style');
 		this.renderer.insertBefore(this.head, el, style);
 		return el;
 	}
