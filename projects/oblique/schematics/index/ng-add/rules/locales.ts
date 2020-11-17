@@ -2,7 +2,7 @@ import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {insertImport} from '@angular/cdk/schematics';
 import {addImportToModule, addProviderToModule} from '@schematics/angular/utility/ast-utils';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
-import {applyChanges, appModulePath, createSrcFile, addDevDependency, importModule, adaptInsertChange} from '../ng-add-utils';
+import {applyChanges, appModulePath, createSrcFile, importModule, adaptInsertChange, addDependency} from '../ng-add-utils';
 import {addFile, infoMigration, ObliquePackage, readFile} from '../../utils';
 
 export function addLocales(langs: string[]): Rule {
@@ -71,7 +71,7 @@ function configureLocales(langs: string[]): Rule {
 
 function addTranslation(langs: string[]): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		addDevDependency(tree, '@ngx-translate/core');
+		addDependency(tree, '@ngx-translate/core');
 		langs.forEach((lang: string) => addFile(tree, `src/assets/i18n/${lang}.json`, '{}'));
 		addTranslationToImports(tree);
 		return chain([importModule('HttpClientModule', '@angular/common/http')])(tree, _context);
