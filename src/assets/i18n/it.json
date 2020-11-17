@@ -41,5 +41,11 @@
   "i18n.routes.samples.selected.title": "Selected",
   "i18n.routes.samples.toggle.title": "Toggles",
   "i18n.routes.samples.ui-scroll.title": "UI Scroll",
-  "i18n.routes.samples.unsaved-changes.title": "Unsaved Changes"
+  "i18n.routes.samples.unsaved-changes.title": "Unsaved Changes",
+  "i18n.oblique.chips.it": "IT",
+  "i18n.oblique.chips.sales": "Vendita",
+  "i18n.oblique.chips.marketing": "Marketing",
+  "i18n.oblique.chips.management": "Gestione",
+  "i18n.oblique.chips.hr": "HR",
+  "i18n.oblique.chips.cleaning": "Pulizia"
 }
