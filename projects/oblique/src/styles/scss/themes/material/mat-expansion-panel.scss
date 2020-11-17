@@ -1,0 +1,16 @@
+@import '../../core/_variables';
+
+.mat-expansion-panel-header {
+	height: 48px;
+
+	&:hover,
+	&.mat-expanded:hover:not([aria-disabled="true"]) {
+		background: $gray-lighter;
+	}
+
+	&:hover:not([aria-disabled="true"]) {
+		 .mat-expansion-panel:not(.mat-expanded) & {
+			 background: $gray-lighter;
+		 }
+	}
+}
