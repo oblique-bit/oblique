@@ -4,6 +4,7 @@
 
 import {ObNestedFormComponent} from './lib/nested-form/nested-form.component';
 
+export {ObButtonDirective, ObButtonModule} from './lib/button/button.module';
 export {ObCollapseComponent, ObCollapseModule, OBLIQUE_COLLAPSE_ACTIVE} from './lib/collapse/collapse.module';
 export {ObColumnLayoutModule, ObColumnLayoutComponent, ObColumnToggleDirective, ObColumnPanelDirective} from './lib/column-layout/column-layout.module';
 export {

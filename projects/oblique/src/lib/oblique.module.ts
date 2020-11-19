@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-
+import {ObButtonModule} from './button/button.module';
 import {ObCollapseModule} from './collapse/collapse.module';
 import {ObColumnLayoutModule} from './column-layout/column-layout.module';
 import {ObDocumentMetaModule} from './document-meta/document-meta.module';
@@ -32,6 +32,7 @@ import {requireAndRecordTelemetry} from './telemetry/telemetry-require';
 import {obliqueProviders} from './utilities';
 
 const OBLIQUE_MODULES = [
+	ObButtonModule,
 	ObCollapseModule,
 	ObColumnLayoutModule,
 	ObDocumentMetaModule,
