@@ -32,7 +32,7 @@ export function multiTranslateLoader(config: TranslateModuleConfig = {}): Transl
 export function getTranslateLoader(http: HttpClient, files: ObITranslationFile[]): ObMultiTranslateLoader {
 	return new ObMultiTranslateLoader(http, [
 		{
-			prefix: './assets/styles/i18n/',
+			prefix: './assets/i18n/oblique-',
 			suffix: '.json'
 		},
 		...(files || [{prefix: './assets/i18n/', suffix: '.json'}])

@@ -1,4 +1,4 @@
-@import "projects/oblique/src/styles/scss/core/variables";
+@import "../../../core/variables";
 
 @mixin text-control-clear-position($offset) {
 	width: calc(#{$spacing-default} + #{$offset});

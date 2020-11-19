@@ -32,16 +32,6 @@ describe('ThemeService', () => {
 		});
 	});
 
-	describe('setDefaultFont', () => {
-		it('font$ should emit frutiger', done => {
-			service.setDefaultFont();
-			service.font$.subscribe(font => {
-				expect(font).toBe(FONTS.FRUTIGER);
-				done();
-			});
-		});
-	});
-
 	describe('setFont', () => {
 		it('font$ should emit the last given font', done => {
 			service.setFont(FONTS.ROBOTO);

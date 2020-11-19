@@ -19,24 +19,13 @@ const fs = require('fs'),
 	pkg = require('./package.json');
 
 const distStyles = () => gulp.src([`${paths.src}/styles/**/*`]).pipe(gulp.dest(`${paths.dist}/styles`));
+const distAssets = () => gulp.src([`${paths.src}/assets/**/*`]).pipe(gulp.dest(`${paths.dist}/assets`));
 const distMaterialCss = (done) => transpile('material', 'themes', done);
 const distBootstrapCss = (done) => transpile('bootstrap', 'themes', done);
 const distCoreCss = (done) => transpile('core', '', done);
 const distUtilCss = (done) => transpile('utilities', '', done);
 const distCompatCss = (done) => transpile('compat', '', done);
 const distComponentsCss = (done) => transpileComponents(`${paths.src}/lib`, done);
-
-const distStylesThemeRename = () => gulp.src(`${paths.dist}/styles/scss/**/*.scss`)
-	.pipe(replace('projects/oblique/src', paths.dist))
-	.pipe(gulp.dest(`${paths.dist}/styles/scss`));
-
-const distStylesDistRename = () => gulp.src(`${paths.dist}/styles/scss/**/*.scss`)
-	.pipe(replace(paths.dist, '~@oblique/oblique'))
-	.pipe(gulp.dest(`${paths.dist}/styles/scss`));
-
-const distCompatRename = () => gulp.src(`${paths.dist}/styles/css/oblique-compat.css`)
-	.pipe(replace('~@oblique/oblique/styles/', '../'))
-	.pipe(gulp.dest(`${paths.dist}/styles/css`));
 
 const addBanner = () => gulp.src([`${paths.dist}/**/*.js`, `${paths.dist}/**/*.css`])
 	.pipe(header(
@@ -63,8 +52,11 @@ const distMeta = () => {
 
 const distCss = () => gulp.src(`${paths.dist}/styles/css/*`)
 	.pipe(replace(`${paths.fa}/webfonts`, `${paths.oblique}/fonts`))
-	.pipe(replace('../../../styles/images/cover-background.jpg', '../images/cover-background.jpg'))
 	.pipe(gulp.dest(`${paths.dist}/styles/css`));
+
+const distBgImage = () => gulp.src(`${paths.dist}/*.*`)
+	.pipe(replace('/src/assets/cover-background.jpg', 'assets/cover-background.jpg'))
+	.pipe(gulp.dest(`${paths.dist}`));
 
 const distFonts = () => gulp.src(['./node_modules/@fortawesome/fontawesome-free/webfonts/*', './node_modules/font-awesome/fonts/*', `${paths.src}/styles/fonts/*`])
 	.pipe(gulp.dest(`${paths.dist}/styles/fonts`));
@@ -119,9 +111,9 @@ gulp.task(
 		distDocs,
 		distFontAwesome,
 		distBundles,
+		distAssets,
 		gulp.series(
 			distStyles,
-			distStylesThemeRename,
 			gulp.parallel(
 				distMaterialCss,
 				distBootstrapCss,
@@ -130,16 +122,15 @@ gulp.task(
 				distCompatCss,
 				distComponentsCss
 			),
-			distCompatRename,
 			distScss,
 			distCss,
 			distRename,
+			distBgImage,
 			telemetryPostLib,
 			gulp.parallel(
 				addBanner,
 				distMap
 			),
-			distStylesDistRename,
 			clean
 		)
 	)
@@ -153,13 +144,15 @@ gulp.task(
 );
 
 gulp.task('themes',
-	gulp.series(
-		distStyles,
-		distStylesThemeRename,
-		gulp.parallel(
-			distMaterialCss,
-			distBootstrapCss,
-			distCompatCss
+	gulp.parallel(
+		distAssets,
+		gulp.series(
+			distStyles,
+			gulp.parallel(
+				distMaterialCss,
+				distBootstrapCss,
+				distCompatCss
+			)
 		)
 	)
 );

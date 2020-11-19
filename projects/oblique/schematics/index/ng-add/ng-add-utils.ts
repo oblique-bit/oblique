@@ -145,12 +145,6 @@ export function deleteFile(tree: Tree, filename: string): Tree {
 	return tree;
 }
 
-export function addFile(tree: Tree, filename: string, content: string): void {
-	if (!tree.exists(filename)) {
-		tree.create(filename, content);
-	}
-}
-
 export function getAngularVersion(tree: Tree): number {
 	return parseInt(readFile(tree, packageJsonConfigPath).match(/@angular\/core":\s*"[~,^]?(?<version>\d+)\.\d+\.\d+"/)?.groups?.version || '0', 10);
 }

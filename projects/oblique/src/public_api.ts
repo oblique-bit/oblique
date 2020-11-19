@@ -123,6 +123,6 @@ export {ObMultiTranslateLoader, TRANSLATION_FILES, ObITranslationFile} from './l
 export {ObPopUpService} from './lib/pop-up/pop-up.service';
 export {ObUnsubscribable} from './lib/unsubscribe.class';
 export {ObliqueModule} from './lib/oblique.module';
-export {OBLIQUE_FONT, FONTS, THEMES, ObThemeService} from './lib/theme/theme.service';
+export {FONTS, THEMES, ObThemeService} from './lib/theme/theme.service';
 
 export * from './lib/oblique-testing.module';

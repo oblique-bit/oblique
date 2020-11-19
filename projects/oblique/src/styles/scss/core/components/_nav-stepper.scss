@@ -1,7 +1,7 @@
 @import "~@fortawesome/fontawesome-free/scss/variables";
-@import "projects/oblique/src/styles/scss/core/variables";
-@import "projects/oblique/src/styles/scss/core/mixins/layout";
-@import "projects/oblique/src/styles/scss/core/mixins/stepper";
+@import "../variables";
+@import "../mixins/layout";
+@import "../mixins/stepper";
 
 .nav-stepper {
 	display: flex;

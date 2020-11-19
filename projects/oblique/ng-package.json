@@ -2,6 +2,11 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/oblique",
   "lib": {
-    "entryFile": "src/public_api.ts"
+    "entryFile": "src/public_api.ts",
+    "umdModuleIds": {
+      "@ngx-translate/core": "ngx-translate",
+      "@ng-bootstrap/ng-bootstrap": "ngb",
+      "ajv": "ajv"
+    }
   }
 }

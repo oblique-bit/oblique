@@ -1,5 +1,5 @@
-@import "projects/oblique/src/styles/scss/core/mixins/icon";
-@import "projects/oblique/src/styles/scss/core/variables";
+@import "icon";
+@import "../variables";
 
 @mixin alert-variant($bg, $icon, $icon-bg, $icon-color: $white) {
 	@include icon($icon: $icon);

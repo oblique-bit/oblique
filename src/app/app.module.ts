@@ -22,7 +22,6 @@ import {
 	ObHttpApiInterceptorConfig,
 	ObHttpApiInterceptorModule,
 	ObInputClearModule,
-	OBLIQUE_FONT,
 	ObMasterLayoutConfig,
 	ObMasterLayoutModule,
 	ObMultiselectModule,
@@ -76,7 +75,6 @@ import {environment} from '../environments/environment';
 		ObInputClearModule
 	],
 	providers: [
-		{provide: OBLIQUE_FONT, useValue: FONTS.ROBOTO},
 		// eslint-disable-next-line dot-notation
 		{provide: OB_BANNER, useValue: environment['banner']},
 		{provide: HTTP_INTERCEPTORS, useClass: ObHttpApiInterceptor, multi: true},
@@ -107,5 +105,6 @@ export class AppModule {
 		interceptorConfig.api.url = HttpInterceptorSampleComponent.API_URL;
 		config.locale.locales = ['en', 'fr'];
 		theme.setTheme(THEMES.BOOTSTRAP);
+		theme.setFont(FONTS.FRUTIGER);
 	}
 }

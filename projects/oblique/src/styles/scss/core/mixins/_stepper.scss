@@ -1,5 +1,5 @@
-@import "projects/oblique/src/styles/scss/core/variables";
-@import "projects/oblique/src/styles/scss/core/mixins/icon";
+@import "../variables";
+@import "icon";
 
 @mixin stepper-state($bullet-color, $bullet-bg, $bullet-border, $bg-color: false, $feedback-icon: false) {
 	&::before {

@@ -4,14 +4,14 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "~@fortawesome/fontawesome-free/scss/regular";
 @import "~@fortawesome/fontawesome-free/scss/brands";
 
-@import "projects/oblique/src/styles/scss/core/components/alert";
-@import "projects/oblique/src/styles/scss/core/components/form";
-@import "projects/oblique/src/styles/scss/core/components/nav-stepper";
-@import "projects/oblique/src/styles/scss/core/components/tabs";
-@import "projects/oblique/src/styles/scss/core/components/overlay";
-@import "projects/oblique/src/styles/scss/core/components/table";
-@import "projects/oblique/src/styles/scss/core/components/text-control";
-@import "projects/oblique/src/styles/scss/core/components/type";
+@import "core/components/alert";
+@import "core/components/form";
+@import "core/components/nav-stepper";
+@import "core/components/tabs";
+@import "core/components/overlay";
+@import "core/components/table";
+@import "core/components/text-control";
+@import "core/components/type";
 
-@import "projects/oblique/src/styles/scss/core/layouts";
-@import "projects/oblique/src/styles/scss/core/print";
+@import "core/layouts";
+@import "core/print";

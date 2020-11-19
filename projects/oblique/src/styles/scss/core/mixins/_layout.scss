@@ -1,4 +1,4 @@
-@import "projects/oblique/src/styles/scss/core/variables";
+@import "../variables";
 
 @mixin layout-collapse-down() {
 	@media (max-width: $layout-collapse) {
