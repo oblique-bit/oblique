@@ -35,7 +35,7 @@
 	}
 
 	&.alert-info {
-		@include alert-variant($brand-info-light, $fa-var-info, $brand-info);
+		@include alert-variant($brand-light, $fa-var-info, $brand-primary);
 	}
 
 	&.alert-success {

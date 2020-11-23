@@ -1,8 +1,7 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {IMigrations} from './ng-update-utils';
-import {addAngularConfigInList, getDefaultAngularConfig, infoMigration, readFile, setAngularProjectsConfig} from '../utils';
-import {appModulePath, obliqueCssPath} from '../ng-add/ng-add-utils';
-import {getTemplate} from '../ng-add/ng-add-utils';
+import {addAngularConfigInList, getDefaultAngularConfig, infoMigration, readFile, replaceInFile, setAngularProjectsConfig, applyInTree} from '../utils';
+import {appModulePath, getTemplate, obliqueCssPath} from '../ng-add/ng-add-utils';
 
 export interface IUpdateV5Schema {}
 
@@ -23,7 +22,8 @@ export class UpdateV5toV6 implements IMigrations {
 			return chain([
 				this.migrateFont(),
 				this.migrateAssets(),
-				this.addFeatureDetection()
+				this.addFeatureDetection(),
+				this.changeColorPalette()
 				/* banner */
 			])(tree, _context);
 		};
@@ -122,6 +122,18 @@ export class UpdateV5toV6 implements IMigrations {
 				);
 			}
 			return addAngularConfigInList(tree, ['architect', 'build', 'options', 'scripts'], 'node_modules/@oblique/oblique/ob-features.js');
+		};
+	}
+
+	private changeColorPalette(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Change color palette');
+			const apply = (filePath: string) => {
+				replaceInFile(tree, filePath, new RegExp(/\$brand-info-light/g), '$brand-light');
+				replaceInFile(tree, filePath, new RegExp(/\$brand-info/g), '$brand-primary');
+				replaceInFile(tree, filePath, new RegExp(/\$brand-info-dark/g), '$brand-dark');
+			};
+			return applyInTree(tree, apply, '.scss');
 		};
 	}
 }
