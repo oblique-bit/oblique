@@ -61,14 +61,6 @@ export class SchematicsUtil {
 		return content.toString('utf-8');
 	}
 
-	applyInTree(root: string, toApply: Function, extension = '.ts'): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			const files = glob.sync(`${root}/**/*${extension}`, {});
-			files.forEach((file: string) => toApply(file));
-			return tree;
-		};
-	}
-
 	replaceInFile(tree: Tree, path: string, pattern: RegExp, replacement: string): boolean {
 		const fileContent = this.getFile(tree, path);
 		if (pattern.test(fileContent)) {

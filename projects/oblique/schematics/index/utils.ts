@@ -4,6 +4,7 @@ import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 
 export const packageJsonConfigPath = './package.json';
 export const ObliquePackage = '@oblique/oblique';
+const glob = require('glob');
 
 const angularJsonConfigPath = './angular.json/';
 
@@ -99,6 +100,14 @@ export function installDependencies(): Rule {
 
 export function replaceInFile(tree: Tree, path: string, pattern: string | RegExp, replacement: string): void {
 	tree.overwrite(path, readFile(tree, path).replace(pattern, replacement));
+}
+
+export function applyInTree(tree: Tree, toApply: Function, pattern = '*'): Tree {
+	getAngularConfigs(tree, ['sourceRoot'])
+		.map(project => project.config)
+		.reduce((files, root) => [...files, ...glob.sync(`${root}/**/${pattern}`, {})], [])
+		.forEach((file: string) => toApply(file));
+	return tree;
 }
 
 function getJsonProperty(json: any, propertyPath: string): string {
