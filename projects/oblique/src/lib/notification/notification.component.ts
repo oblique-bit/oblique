@@ -116,8 +116,8 @@ export class ObNotificationComponent implements OnInit {
 
 	private selfClose(notification: ObINotification): void {
 		notification.timer = setTimeout(() => {
+			notification.occurrences = Math.max(0, notification.occurrences - 1);
 			if (notification.occurrences) {
-				notification.occurrences--;
 				this.selfClose(notification);
 			} else {
 				this.close(notification);
