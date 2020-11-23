@@ -97,6 +97,10 @@ export function installDependencies(): Rule {
 	};
 }
 
+export function replaceInFile(tree: Tree, path: string, pattern: string | RegExp, replacement: string): void {
+	tree.overwrite(path, readFile(tree, path).replace(pattern, replacement));
+}
+
 function getJsonProperty(json: any, propertyPath: string): string {
 	return propertyPath.split(';').reduce((obj, property) => (obj ? obj[property] : undefined), json);
 }
