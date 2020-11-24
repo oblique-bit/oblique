@@ -5,10 +5,15 @@ import {Directive, Input} from '@angular/core';
 	exportAs: 'obSelectable'
 })
 export class ObMockSelectableDirective {
-	@Input() collection = 'unnamed';
 	@Input() selected = false;
 	@Input() tabindex = 0;
 	@Input() value: any;
+	cursor = 'pointer';
+	role = 'checkbox';
 
-	onClick($event: MouseEvent): void {}
+	onClick($event: KeyboardEvent | MouseEvent): void {}
+
+	onFocus(): void {}
+
+	focus(): void {}
 }

@@ -39,7 +39,6 @@ export class SchematicsUtil {
 		'ObITranslationFile',
 		'ObINotification',
 		'ObISearchWidgetItem',
-		'ObISelectableCollectionChanged',
 		'ObISpinnerEvent',
 		'ObITelemetryMessage',
 		'ObEScrollMode',

@@ -1,41 +1,44 @@
-import {Directive, HostBinding, HostListener, Input, OnInit} from '@angular/core';
-import {filter, map} from 'rxjs/operators';
-import {ObSelectableService} from './selectable.service';
+import {Directive, ElementRef, HostBinding, HostListener, Input, OnInit, Optional} from '@angular/core';
+import {ObSelectableGroupDirective} from './selectable-group.directive';
 
 @Directive({
 	selector: '[obSelectable]',
 	exportAs: 'obSelectable'
 })
 export class ObSelectableDirective implements OnInit {
-	@Input() collection = 'unnamed';
 	@Input() value: any;
-	@Input() @HostBinding('class.ob-selected') selected = false;
+	@Input() @HostBinding('class.ob-selected') @HostBinding('attr.aria-checked') selected = false;
+	@HostBinding('class.ob-selectable') readonly selectable = true;
 	@Input() @HostBinding('attr.tabindex') tabindex = 0;
 	@HostBinding('style.cursor') readonly cursor = 'pointer';
+	@HostBinding('attr.role') role = 'checkbox';
 
-	constructor(private readonly selectableService: ObSelectableService) {
-		selectableService.collectionChange$
-			.pipe(
-				filter(event => !event.collection || event.collection === this.collection),
-				map(event => event.value || [])
-			)
-			.subscribe(values => {
-				this.selected = values.includes(this.value);
-			});
+	constructor(private readonly element: ElementRef, @Optional() private readonly group: ObSelectableGroupDirective) {
+		if (!group) {
+			throw new Error('The ObSelectableDirectives need to be wrapped in an ObSelectableGroupDirective. Please consult the documentation for more info');
+		}
 	}
 
 	ngOnInit(): void {
-		if (this.selected) {
-			this.selectableService.addValue(this.value, this.collection);
-		}
+		this.group.register(this);
+		this.group.mode$.subscribe(mode => (this.role = mode === 'windows' ? undefined : mode));
 	}
 
-	@HostListener('click')
+	@HostListener('click', ['$event'])
 	@HostListener('keydown.space', ['$event'])
-	onClick($event?: Event): void {
-		this.selectableService.toggleValue(this.value, this.collection);
-		if ($event) {
-			$event.preventDefault();
-		}
+	@HostListener('keydown.shift.space', ['$event'])
+	@HostListener('keydown.control.space', ['$event'])
+	onClick($event: KeyboardEvent | MouseEvent): void {
+		$event.preventDefault();
+		this.group.toggle(this, $event.ctrlKey, $event.shiftKey);
+	}
+
+	@HostListener('focus')
+	onFocus(): void {
+		this.group.focus(this);
+	}
+
+	public focus(): void {
+		this.element.nativeElement.focus();
 	}
 }

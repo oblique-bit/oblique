@@ -111,7 +111,7 @@ export {
 	ObMockSchemaValidationDirective,
 	ObMockSchemaValidationService
 } from './schema-validation/mock/mock-schema-validation.module';
-export {ObMockSelectableDirective, ObMockSelectableService} from './selectable/mock/mock-selectable.module';
+export {ObMockSelectableDirective, ObMockSelectableGroupDirective} from './selectable/mock/mock-selectable.module';
 export {ObMockScrollingModule, ObMockScrollingEvents, ObMockTopControlComponent} from './scrolling/mock/mock-scrolling.module';
 export {ObMockSpinnerModule, ObMockSpinnerComponent, ObMockSpinnerService} from './spinner/mock/mock-spinner.module';
 export {ObMockStickyModule, ObMockStickyComponent} from './sticky/mock/mock-sticky.module';

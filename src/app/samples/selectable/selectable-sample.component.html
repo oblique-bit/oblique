@@ -2,35 +2,30 @@
 <ob-description component="selectable"></ob-description>
 <ob-column-layout [left]="false" [right]="true">
 	<section column-main-content>
-		<h3>Default selectable</h3>
-		<div class="selectable-div-example" obSelectable [value]="'div'">a selectable div</div>
-		<p obSelectable [value]="'p'">a selectable p</p>
-		values of 'unnamed' collection:
+		<div obSelectableGroup [mode]="mode" #group="obSelectableGroup">
+			<div obSelectable value="cat" [selected]="true">a preselected cat</div>
+			<div obSelectable value="bird" [selected]="true">a preselected bird</div>
+			<div obSelectable value="dog" [selected]="false">a selectable dog</div>
+			<div obSelectable value="horse" [selected]="false">a selectable horse</div>
+			<div obSelectable value="cow" [selected]="false">a selectable cow</div>
+		</div>
+		<br />
+		Selected values:
 		<ul>
-			<li *ngFor="let item of unnamedCollection">{{ item }}</li>
+			<li *ngFor="let item of group.selected$ | async">{{ item.value }}</li>
 		</ul>
-
-		<h3>Preselection</h3>
-		<div obSelectable value="cat" [selected]="true" collection="preselection">a preselected cat</div>
-		<div obSelectable value="bird" [selected]="true" collection="preselection">a preselected bird</div>
-		<div obSelectable value="dog" [selected]="false" collection="preselection">a selectable dog</div>
-		values of 'preselection' collection:
-		<ul>
-			<li *ngFor="let item of preselectionCollection">{{ item }}</li>
-		</ul>
-
-		<h3>Collections</h3>
-		<pre>{{ collections | json }}</pre>
 	</section>
 	<section column-right-content>
-		<button mat-flat-button color="primary" (click)="clearCollection('unnamed')">clear default collection</button>
-		<button mat-flat-button color="primary" (click)="removeCollection('unnamed')">remove default collection</button>
-		<button mat-flat-button color="primary" (click)="clearCollection('preselection')">clear preselection collection</button>
-		<button mat-flat-button color="primary" (click)="removeCollection('preselection')">remove preselection collection</button>
-		<button mat-flat-button color="primary" (click)="clearCollections()">clear all collections</button>
+		<mat-radio-group aria-label="Select an option" [(ngModel)]="mode">
+			<mat-radio-button value="checkbox">Checkbox</mat-radio-button>
+			<br />
+			<mat-radio-button value="radio">Radio</mat-radio-button>
+			<br />
+			<mat-radio-button value="windows">Windows</mat-radio-button>
+		</mat-radio-group>
 		<div>
-			<h3>last event</h3>
-			<pre>{{ event | json }}</pre>
+			<button mat-flat-button color="primary" (click)="group.selectAll()">Select all</button>
+			<button mat-flat-button color="primary" (click)="group.deselectAll()">Deselect all</button>
 		</div>
 	</section>
 </ob-column-layout>

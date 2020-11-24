@@ -109,7 +109,7 @@ export {
 	ObSearchBoxResultsComponent,
 	ObSearchBoxModule
 } from './lib/search-box/search-box.module';
-export {ObSelectableDirective, ObSelectableService, ObSelectableModule} from './lib/selectable/selectable.module';
+export {ObSelectableDirective, ObSelectableModule, ObSelectableGroupDirective} from './lib/selectable/selectable.module';
 export {ObISpinnerEvent, ObSpinnerComponent, ObSpinnerModule, ObSpinnerService} from './lib/spinner/spinner.module';
 export {ObStickyComponent, ObStickyModule} from './lib/sticky/sticky.module';
 export {ObInputClearDirective, ObInputClearModule} from './lib/input-clear/input-clear.module';
