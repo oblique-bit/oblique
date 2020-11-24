@@ -101,8 +101,8 @@
 				display: block;
 				top: 0;
 				bottom: 0;
-				right: -100%;
-				left: -100%;
+				right: -100px;
+				left: -100px;
 				background-color: inherit;
 				z-index: -1;
 			}
@@ -222,21 +222,19 @@
 		}
 	}
 
-	.condensed & {
-		&:not(.application-fixed):not(.application-header-sticky) {
-			position: static;
+	&:not(.application-fixed):not(.application-header-sticky) {
+		position: static;
 
-			&::before {
-				content: '';
-				display: block;
-				position: fixed;
-				top: 0;
-				left: 0;
-				right: 0;
-				height: $brand-line-width;
-				background-color: $brand-accent;
-				z-index: 5;
-			}
+		&::before {
+			content: '';
+			display: block;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: $brand-line-width;
+			background-color: $brand-accent;
+			z-index: 5;
 		}
 	}
 }
