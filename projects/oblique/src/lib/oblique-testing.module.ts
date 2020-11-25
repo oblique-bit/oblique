@@ -4,7 +4,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslateService} from './_mocks/mock-translate.service';
 import {ObMockTranslatePipe} from './_mocks/mock-translate.pipe';
 
-import {MockCollapseModule} from './collapse/mock/mock-collapse.module';
+import {ObMockCollapseModule} from './collapse/mock/mock-collapse.module';
 import {ObMockColumnLayoutModule} from './column-layout/mock/mock-column-layout.module';
 import {ObMockSearchBoxModule} from './search-box/mock/mock-search-box.module';
 import {ObMockDocumentMetaModule} from './document-meta/mock/mock-document-meta.module';
@@ -35,7 +35,7 @@ import {ObMockUnknownRouteModule} from './unknown-route/mock/mock-unknown-route.
 import {ObMockUnsavedChangesModule} from './unsaved-changes/mock/mock-unsaved-changes.module';
 import {WINDOW, windowProvider} from './utilities';
 
-export {MockCollapseModule, MockCollapseComponent} from './collapse/mock/mock-collapse.module';
+export {ObMockCollapseModule, ObMockCollapseComponent} from './collapse/mock/mock-collapse.module';
 export {ObMockColumnLayoutComponent, ObMockColumnLayoutModule} from './column-layout/mock/mock-column-layout.module';
 export {
 	ObMockDateFormatterPipe,
@@ -129,7 +129,7 @@ export {
 export {ObMockTranslateService};
 
 const MOCK_OBLIQUE_MODULES = [
-	MockCollapseModule,
+	ObMockCollapseModule,
 	ObMockColumnLayoutModule,
 	ObMockDocumentMetaModule,
 	ObMockDropdownModule,

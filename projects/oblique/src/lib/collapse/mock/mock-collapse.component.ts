@@ -5,7 +5,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 	exportAs: 'orCollapse',
 	template: ''
 })
-export class MockCollapseComponent {
+export class ObMockCollapseComponent {
 	@Input() active: false;
 	@Input() iconPosition: 'left' | 'right' | 'justified' = 'left';
 	@Input() direction:

@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 
-import {MockCollapseComponent} from './mock-collapse.component';
-export {MockCollapseComponent} from './mock-collapse.component';
+import {ObMockCollapseComponent} from './mock-collapse.component';
+export {ObMockCollapseComponent} from './mock-collapse.component';
 
 @NgModule({
-	declarations: [MockCollapseComponent],
-	exports: [MockCollapseComponent]
+	declarations: [ObMockCollapseComponent],
+	exports: [ObMockCollapseComponent]
 })
-export class MockCollapseModule {}
+export class ObMockCollapseModule {}
