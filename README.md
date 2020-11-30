@@ -16,13 +16,13 @@ Oblique uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.angular.io/
     * optionally configure Jenkins & Cloud Foundry
     * optionally replace `tslint` with `eslint` and `prettier`
     * optionally add a git hook to auto format files before push
-    * optionally add IE11 support 
+    * optionally add IE11 support
 
 ## Checking for updates
 - Bump dependencies through Angular cli first: `ng update`
-- Then update oblique: `ng update @oblique/oblique` 
+- Then update oblique: `ng update @oblique/oblique`
 - Finally update the dependencies without build-in schematics: `npm update`
-- New major versions can be discovered through `npm outdated` 
+- New major versions can be discovered through `npm outdated`
 
 ## Contribute to Oblique
 
@@ -39,35 +39,35 @@ Oblique uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.angular.io/
 - start the tests: `npm test`
 
 
-### Commit message 
-We have very precise rules over how our git commit messages can be formatted. This leads to more readable messages that are easy to follow when looking 
+### Commit message
+We have very precise rules over how our git commit messages can be formatted. This leads to more readable messages that are easy to follow when looking
 through the project history. The git commit messages will also be used to generate Oblique's change log.
 
 For better readability, please follow the following rules:
- * 1 commit per change, fixes have to be squashed together. 
- * A change includes its tests, mocks, documentation and schematics. 
+ * 1 commit per change, fixes have to be squashed together.
+ * A change includes its tests, mocks, documentation and schematics.
  * 1 commit concerns 1 scope (see below), if a commit spans multiple scopes, split it into several commits. **Exception**: changes that spans most of the library can be grouped together. In that case, there is no scope
  * no line of the commit message can be longer than 100 characters.
  * changes to the showcase should NEVER come with another type (see below) as __showcase__. All showcase changes of an issue should be squashed together
 
-#### Format 
-Each commit message consists of a **header**, a **body** and a **footer**. The header has a special format that includes a **type**, a **scope** and a 
+#### Format
+Each commit message consists of a **header**, a **body** and a **footer**. The header has a special format that includes a **type**, a **scope** and a
 **subject**:
 
 	<type>(<scope>): <subject>
-	
+
 	<body>
-	
+
 	<footer>
 
 ##### Header
-The header is mandatory and lowercase only. The scope of the header is optional. There no space between **type** and **scope**. 
+The header is mandatory and lowercase only. The scope of the header is optional. There no space between **type** and **scope**.
 
 ###### Type
 The type is mandatory and must be one of the following:
 * **feat**: Changes that creates, improves or removes a feature
 * **fix**: Changes that fixes a bug
-* **refactor**: Changes to a feature that neither adds, removes nor fixes a behavior 
+* **refactor**: Changes to a feature that neither adds, removes nor fixes a behavior
 * **test**: Changes that affect tests and their configuration only
 * **docs**: Changes that affect the documentation only
 * **showcase**: Changes that affect the showcase only
@@ -111,7 +111,8 @@ The scope is optional and should be the name of the Oblique feature affected:
 * **unsaved-changes**
 * **unsubscribe**
 * **utilities** (for utilities.ts)
-* **toolchain** (for configuration, build, releases, schematics,...)
+* **toolchain** (for configuration, build, releases...)
+* **schematics**
 
 ###### Subject
 The subject is mandatory and contains a **succinct** description of the change:
