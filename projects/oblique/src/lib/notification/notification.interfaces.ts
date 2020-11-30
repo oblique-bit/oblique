@@ -10,9 +10,12 @@ export interface ObINotification {
 	channel?: string;
 	sticky?: boolean;
 	timeout?: number;
+	groupSimilar?: boolean;
+}
+
+export interface ObINotificationPrivate extends ObINotification {
 	$state?: string;
 	occurrences?: number;
-	groupSimilar?: boolean;
 	timer?: Timer;
 }
 

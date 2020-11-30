@@ -1,7 +1,7 @@
 import {Component, HostBinding, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 
-import {ObINotification} from './notification.interfaces';
+import {ObINotification, ObINotificationPrivate} from './notification.interfaces';
 import {ObNotificationService} from './notification.service';
 
 @Component({
@@ -54,7 +54,7 @@ export class ObNotificationComponent implements OnInit {
 	public static REMOVE_DELAY = 350;
 	@Input() channel: string;
 	@HostBinding('class.custom') customChannel = false;
-	public notifications: ObINotification[] = [];
+	public notifications: ObINotificationPrivate[] = [];
 	public variant: {[type: string]: string} = {};
 
 	constructor(private readonly notificationService: ObNotificationService) {}
@@ -75,7 +75,7 @@ export class ObNotificationComponent implements OnInit {
 	/**
 	 * Adds & opens the specified notification.
 	 */
-	public open(notification: ObINotification): void {
+	public open(notification: ObINotificationPrivate): void {
 		notification.occurrences = 1;
 		const existingNotification = this.notifications.find(notif => notif.idPrefix === notification.idPrefix);
 		if (existingNotification && notification.groupSimilar) {
@@ -114,7 +114,7 @@ export class ObNotificationComponent implements OnInit {
 		this.notifications.length = 0;
 	}
 
-	private selfClose(notification: ObINotification): void {
+	private selfClose(notification: ObINotificationPrivate): void {
 		notification.timer = setTimeout(() => {
 			notification.occurrences = Math.max(0, notification.occurrences - 1);
 			if (notification.occurrences) {
