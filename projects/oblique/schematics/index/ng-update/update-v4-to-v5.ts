@@ -59,7 +59,7 @@ export class UpdateV4toV5 implements IMigrations {
 					UpdateV4toV5.util.addImport(tree, filePath, 'PopUpService', ObliquePackage);
 				}
 			};
-			return applyInTree(tree, toApply, 'component.ts');
+			return applyInTree(tree, toApply, '*.ts');
 		};
 	}
 
@@ -75,7 +75,7 @@ export class UpdateV4toV5 implements IMigrations {
 					UpdateV4toV5.util.addToTestBedConfig(tree, filePath, '{provide: PopUpService, useClass: MockPopUpService }', 'providers');
 				}
 			};
-			return applyInTree(tree, toApply, '.spec.ts');
+			return applyInTree(tree, toApply, '*.spec.ts');
 		};
 	}
 
@@ -91,7 +91,7 @@ export class UpdateV4toV5 implements IMigrations {
 				);
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/MasterLayoutConfig\.isScrollable/g), 'MasterLayoutConfig.scrollMode');
 			};
-			return applyInTree(tree, toApply);
+			return applyInTree(tree, toApply, '*.ts');
 		};
 	}
 
@@ -112,7 +112,7 @@ export class UpdateV4toV5 implements IMigrations {
 					UpdateV4toV5.util.addToTestBedConfig(tree, filePath, '{ provide: TranslateService, useClass: MockTranslateService }', 'providers');
 				}
 			};
-			return applyInTree(tree, toApply, '.spec.ts');
+			return applyInTree(tree, toApply, '*.spec.ts');
 		};
 	}
 
@@ -124,7 +124,7 @@ export class UpdateV4toV5 implements IMigrations {
 					UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('DatepickerModule\\.forRoot\\(\\)', 'g'), 'DatepickerModule');
 				}
 			};
-			return applyInTree(tree, toApply, '..ts');
+			return applyInTree(tree, toApply, '*.ts');
 		};
 	}
 
@@ -174,7 +174,7 @@ export class UpdateV4toV5 implements IMigrations {
 					tree.overwrite(filePath, html);
 				}
 			};
-			return applyInTree(tree, toApply, '.html');
+			return applyInTree(tree, toApply, '*.html');
 		};
 	}
 
@@ -192,7 +192,7 @@ export class UpdateV4toV5 implements IMigrations {
 					}
 				}
 			};
-			return applyInTree(tree, toApply, '.ts');
+			return applyInTree(tree, toApply, '*.ts');
 		};
 	}
 
@@ -222,7 +222,7 @@ export class UpdateV4toV5 implements IMigrations {
 					tree.overwrite(filePath, html);
 				}
 			};
-			return applyInTree(tree, toApply, '.html');
+			return applyInTree(tree, toApply, '*.html');
 		};
 	}
 
@@ -297,7 +297,7 @@ export class UpdateV4toV5 implements IMigrations {
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/\_nav-tabs.scss/g), '_tabs.scss');
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/\$spacing-md/g), '$spacing-sm');
 			};
-			return applyInTree(tree, toApply, '.scss');
+			return applyInTree(tree, toApply, '*.scss');
 		};
 	}
 
@@ -307,7 +307,7 @@ export class UpdateV4toV5 implements IMigrations {
 			const toApply = (filePath: string) => {
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/orTextControlClear/g), 'orInputClear');
 			};
-			return applyInTree(tree, toApply, '.html');
+			return applyInTree(tree, toApply, '*.html');
 		};
 	}
 
@@ -321,7 +321,7 @@ export class UpdateV4toV5 implements IMigrations {
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/\/text-control-clear\//g), '/input-clear/');
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/text-control-clear\.module/g), 'input-clear.module');
 			};
-			return applyInTree(tree, toApply, '.ts');
+			return applyInTree(tree, toApply, '*.ts');
 		};
 	}
 
@@ -335,7 +335,7 @@ export class UpdateV4toV5 implements IMigrations {
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/ObliqueHttpInterceptor/g), 'HttpApiInterceptor');
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/ObliqueRequest/g), 'HttpApiRequest');
 			};
-			return applyInTree(tree, toApply, '.ts');
+			return applyInTree(tree, toApply, '*.ts');
 		};
 	}
 
@@ -344,7 +344,7 @@ export class UpdateV4toV5 implements IMigrations {
 			const toApply = (filePath: string) => {
 				this.migrateTranslationKeys(tree, filePath);
 			};
-			return applyInTree(tree, toApply, '.json');
+			return applyInTree(tree, toApply, '*.json');
 		};
 	}
 
@@ -354,7 +354,7 @@ export class UpdateV4toV5 implements IMigrations {
 			const toApply = (filePath: string) => {
 				this.migrateTranslationKeys(tree, filePath);
 			};
-			return applyInTree(tree, toApply, '.ts');
+			return applyInTree(tree, toApply, '*.ts');
 		};
 	}
 
@@ -363,7 +363,7 @@ export class UpdateV4toV5 implements IMigrations {
 			const toApply = (filePath: string) => {
 				this.migrateTranslationKeys(tree, filePath);
 			};
-			return applyInTree(tree, toApply, '.html');
+			return applyInTree(tree, toApply, '*.html');
 		};
 	}
 
@@ -406,7 +406,7 @@ export class UpdateV4toV5 implements IMigrations {
 				// clean up since it's not always deterministic
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('ObOb', 'g'), 'Ob');
 			};
-			return applyInTree(tree, toApply, '.ts');
+			return applyInTree(tree, toApply, '*.ts');
 		};
 	}
 
@@ -417,7 +417,7 @@ export class UpdateV4toV5 implements IMigrations {
 				this.transformDirectives(tree, filePath);
 				this.transformVariables(tree, filePath);
 			};
-			return applyInTree(tree, toApply, '.html');
+			return applyInTree(tree, toApply, '*.html');
 		};
 	}
 
@@ -457,7 +457,7 @@ export class UpdateV4toV5 implements IMigrations {
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('this.this.', 'g'), 'this.');
 				UpdateV4toV5.util.cleanUp(tree, filePath);
 			};
-			return applyInTree(tree, toApply, '.ts');
+			return applyInTree(tree, toApply, '*.ts');
 		};
 	}
 }

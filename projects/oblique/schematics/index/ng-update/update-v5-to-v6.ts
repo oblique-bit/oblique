@@ -133,7 +133,7 @@ export class UpdateV5toV6 implements IMigrations {
 				replaceInFile(tree, filePath, new RegExp(/\$brand-info/g), '$brand-primary');
 				replaceInFile(tree, filePath, new RegExp(/\$brand-info-dark/g), '$brand-dark');
 			};
-			return applyInTree(tree, apply, '.scss');
+			return applyInTree(tree, apply, '*.scss');
 		};
 	}
 }
