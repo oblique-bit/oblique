@@ -405,6 +405,7 @@ export class UpdateV4toV5 implements IMigrations {
 				UpdateV4toV5.util.updateClassIdentifiers(tree, filePath);
 				// clean up since it's not always deterministic
 				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('ObOb', 'g'), 'Ob');
+				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp('NgbOb', 'g'), 'Ngb');
 			};
 			return applyInTree(tree, toApply, '*.ts');
 		};
