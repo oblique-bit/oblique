@@ -81,15 +81,14 @@ export class UpdateV4toV5 implements IMigrations {
 
 	private migrateMasterLayout(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Migrating master layout');
+			infoMigration(_context, 'Migrating scroll mode');
+			const comment = `// TODO: The isScrollable property has been replaced by the scrollMode property that accepts 3 values:
+//	* ObEScrollMode.AUTO (default value), that makes the navigation scrollable only when necessary
+//	* ObEScrollMode.ENABLED, that always makes the navigation scrollable
+//	* ObEScrollMode.DISABLED, that never makes the navigation scrollable
+// As we cannot guess your use case, you have to adapt it yourself according to your needs.`;
 			const toApply = (filePath: string) => {
-				UpdateV4toV5.util.replaceInFile(
-					tree,
-					filePath,
-					new RegExp(/MasterLayoutNavigationService\.isScrollable/g),
-					'MasterLayoutNavigationService.scrollMode'
-				);
-				UpdateV4toV5.util.replaceInFile(tree, filePath, new RegExp(/MasterLayoutConfig\.isScrollable/g), 'MasterLayoutConfig.scrollMode');
+				UpdateV4toV5.util.replaceInFile(tree, filePath, /(.*.navigation\.isScrollable)/gm, `${comment}\n$1`);
 			};
 			return applyInTree(tree, toApply, '*.ts');
 		};
