@@ -23,7 +23,8 @@ export class UpdateV5toV6 implements IMigrations {
 				this.migrateFont(),
 				this.migrateAssets(),
 				this.addFeatureDetection(),
-				this.changeColorPalette()
+				this.changeColorPalette(),
+				this.renameMockCollapseComponent()
 				/* banner */
 			])(tree, _context);
 		};
@@ -134,6 +135,17 @@ export class UpdateV5toV6 implements IMigrations {
 				replaceInFile(tree, filePath, new RegExp(/\$brand-info-dark/g), '$brand-dark');
 			};
 			return applyInTree(tree, apply, '*.scss');
+		};
+	}
+
+	private renameMockCollapseComponent(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Renaming MockCollapseComponent');
+			const toApply = (filePath: string) => {
+				replaceInFile(tree, filePath, /MockCollapseComponent/g, 'ObMockCollapseComponent');
+				replaceInFile(tree, filePath, /MockCollapseModule/g, 'ObMockCollapseModule');
+			};
+			return applyInTree(tree, toApply, '*.ts');
 		};
 	}
 }
