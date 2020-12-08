@@ -23,10 +23,11 @@ html {
 }
 
 body {
-	min-width: 320px;
+	min-width: $body-width;
 	margin: 0;
 	font-family: $font;
 	font-size: $font-size-base;
+	word-break: break-word;
 	color: $brand-default;
 }
 
