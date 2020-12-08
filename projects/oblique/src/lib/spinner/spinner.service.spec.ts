@@ -1,4 +1,4 @@
-import {inject, TestBed} from '@angular/core/testing';
+import {fakeAsync, inject, TestBed, tick} from '@angular/core/testing';
 import {first} from 'rxjs/operators';
 import {ObISpinnerEvent} from './spinner-event';
 import {ObSpinnerService} from './spinner.service';
@@ -46,5 +46,31 @@ describe('SpinnerService', () => {
 			expect(event).toBe({active: false, channel: channel});
 		});
 		service.deactivate(channel);
+	}));
+
+	it('should not emit if there more activations than deactivation', fakeAsync(
+		inject([ObSpinnerService], (service: ObSpinnerService) => {
+			service.activate();
+			service.activate();
+			let emitted = false;
+			service.events.subscribe(() => {
+				emitted = true;
+			});
+			service.deactivate();
+			tick(1000);
+			expect(emitted).toBe(false);
+		})
+	));
+
+	it('should emit deactivate event when activate and deactivate are called equally', inject([ObSpinnerService], (service: ObSpinnerService) => {
+		service.activate();
+		service.activate();
+
+		service.events.pipe().subscribe((event: ObISpinnerEvent) => {
+			expect(event).toBe({active: false, channel: ObSpinnerService.CHANNEL});
+		});
+
+		service.deactivate();
+		service.deactivate(); //Only now, deactivate event is emitted.
 	}));
 });

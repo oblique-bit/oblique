@@ -28,6 +28,7 @@
       "name": "SpinnerService",
       "type": "service",
       "since": "2.0.0",
+      "updated": "6.0.0",
       "variables": [
         {
           "name": "events",
@@ -46,7 +47,7 @@
       "methods": [
         {
           "name": "activate",
-          "text": "Shows the spinner.",
+          "text": "Shows the spinner in the given channel.",
           "returns": "void",
           "arguments": [
             "channel: string"
@@ -55,12 +56,13 @@
         },
         {
           "name": "deactivate",
-          "text": "Hides the spinner.",
+          "text": "Hides the spinner in the given channel, but only when it has been called as many times as the <code>activate</code> method.",
           "returns": "void",
           "arguments": [
             "channel: string"
           ],
-          "since": "2.0.0"
+          "since": "2.0.0",
+          "updated": "6.0.0"
         }
       ]
     },

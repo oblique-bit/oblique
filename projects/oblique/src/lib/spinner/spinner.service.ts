@@ -17,24 +17,37 @@ export class ObSpinnerService {
 		return this.events$;
 	}
 
+	private calls: {[key: string]: number} = {};
 	private readonly eventSubject: Subject<ObISpinnerEvent> = new Subject<ObISpinnerEvent>();
 	private readonly events$ = this.eventSubject.asObservable();
 
-	public activate(channel: string = ObSpinnerService.CHANNEL) {
-		this.broadcast({
-			active: true,
-			channel
-		});
+	public activate(channel = ObSpinnerService.CHANNEL) {
+		if (this.increase(channel) === 1) {
+			this.broadcast({
+				active: true,
+				channel
+			});
+		}
 	}
 
-	public deactivate(channel: string = ObSpinnerService.CHANNEL) {
-		this.broadcast({
-			active: false,
-			channel
-		});
+	public deactivate(channel = ObSpinnerService.CHANNEL) {
+		if (this.decrease(channel) === 0) {
+			this.broadcast({
+				active: false,
+				channel
+			});
+		}
 	}
 
 	private broadcast(event: ObISpinnerEvent) {
 		this.eventSubject.next(event);
+	}
+
+	private increase(channel: string = ObSpinnerService.CHANNEL): number {
+		return (this.calls[channel] = (this.calls[channel] || 0) + 1);
+	}
+
+	private decrease(channel: string = ObSpinnerService.CHANNEL): number {
+		return (this.calls[channel] = (this.calls[channel] || 1) - 1);
 	}
 }
