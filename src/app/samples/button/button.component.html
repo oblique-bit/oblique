@@ -1,3 +1,4 @@
+<ob-description component="button"></ob-description>
 <table class="table">
 	<ng-container *ngIf="material | async; else bootstrap">
 		<thead>
@@ -14,13 +15,13 @@
 					<label>Default</label>
 				</td>
 				<td>
-					<button mat-flat-button color="primary">Primary</button>
+					<button mat-button obButton="primary">Primary</button>
 				</td>
 				<td>
-					<button mat-stroked-button color="primary">Secondary</button>
+					<button mat-button obButton="secondary">Secondary</button>
 				</td>
 				<td>
-					<button mat-button color="primary">Tertiary</button>
+					<button mat-button obButton="tertiary">Tertiary</button>
 				</td>
 			</tr>
 			<tr>
@@ -28,13 +29,13 @@
 					<label>Icon</label>
 				</td>
 				<td>
-					<button mat-flat-button color="primary"><span class="fas fa-sign-in-alt"></span>Primary</button>
+					<button mat-button obButton="primary"><span class="fas fa-sign-in-alt"></span>Primary</button>
 				</td>
 				<td>
-					<button mat-stroked-button color="primary"><span class="fas fa-sign-in-alt"></span>Secondary</button>
+					<button mat-button obButton="secondary"><span class="fas fa-sign-in-alt"></span>Secondary</button>
 				</td>
 				<td>
-					<button mat-button color="primary"><span class="fas fa-sign-in-alt"></span>Tertiary</button>
+					<button mat-button obButton="tertiary"><span class="fas fa-sign-in-alt"></span>Tertiary</button>
 				</td>
 			</tr>
 			<tr>
@@ -42,13 +43,13 @@
 					<label>Disabled</label>
 				</td>
 				<td>
-					<button mat-flat-button color="primary" disabled>Primary</button>
+					<button mat-button obButton="primary" disabled>Primary</button>
 				</td>
 				<td>
-					<button mat-stroked-button color="primary" disabled>Secondary</button>
+					<button mat-button obButton="secondary" disabled>Secondary</button>
 				</td>
 				<td>
-					<button mat-button color="primary" disabled>Tertiary</button>
+					<button mat-button obButton="tertiary" disabled>Tertiary</button>
 				</td>
 			</tr>
 		</tbody>
@@ -169,3 +170,4 @@
 		</tbody>
 	</ng-template>
 </table>
+<ob-api component="button"></ob-api>
