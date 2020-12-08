@@ -31,10 +31,11 @@
       "updated": "6.0.0",
       "variables": [
         {
-          "name": "events",
+          "name": "events$",
           "text": "An observable that emits every time the spinner is triggered or canceled",
           "type": "Observable<SpinnerEvent>",
-          "since": "2.0.0"
+          "since": "2.0.0",
+          "updated": "6.0.0"
         },
         {
           "name": "CHANNEL",

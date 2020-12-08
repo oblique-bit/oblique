@@ -19,7 +19,7 @@ describe('SpinnerService', () => {
 	});
 
 	it('should emit a SpinnerEvent if activated', inject([ObSpinnerService], (service: ObSpinnerService) => {
-		service.events.pipe(first()).subscribe((event: ObISpinnerEvent) => {
+		service.events$.pipe(first()).subscribe((event: ObISpinnerEvent) => {
 			expect(event).toBe({active: true, channel: ObSpinnerService.CHANNEL});
 		});
 		service.activate();
@@ -27,14 +27,14 @@ describe('SpinnerService', () => {
 
 	it('should emit a SpinnerEvent on a custom channel if activated', inject([ObSpinnerService], (service: ObSpinnerService) => {
 		const channel = 'CUSTOM';
-		service.events.pipe(first()).subscribe((event: ObISpinnerEvent) => {
+		service.events$.pipe(first()).subscribe((event: ObISpinnerEvent) => {
 			expect(event).toBe({active: true, channel: channel});
 		});
 		service.activate(channel);
 	}));
 
 	it('should emit a SpinnerEvent if deactivated', inject([ObSpinnerService], (service: ObSpinnerService) => {
-		service.events.pipe(first()).subscribe((event: ObISpinnerEvent) => {
+		service.events$.pipe(first()).subscribe((event: ObISpinnerEvent) => {
 			expect(event).toBe({active: false, channel: ObSpinnerService.CHANNEL});
 		});
 		service.deactivate();
@@ -42,7 +42,7 @@ describe('SpinnerService', () => {
 
 	it('should emit a SpinnerEvent on a custom channel if deactivated', inject([ObSpinnerService], (service: ObSpinnerService) => {
 		const channel = 'CUSTOM';
-		service.events.pipe(first()).subscribe((event: ObISpinnerEvent) => {
+		service.events$.pipe(first()).subscribe((event: ObISpinnerEvent) => {
 			expect(event).toBe({active: false, channel: channel});
 		});
 		service.deactivate(channel);
@@ -66,7 +66,7 @@ describe('SpinnerService', () => {
 		service.activate();
 		service.activate();
 
-		service.events.pipe().subscribe((event: ObISpinnerEvent) => {
+		service.events$.pipe().subscribe((event: ObISpinnerEvent) => {
 			expect(event).toBe({active: false, channel: ObSpinnerService.CHANNEL});
 		});
 
@@ -78,7 +78,7 @@ describe('SpinnerService', () => {
 		service.activate();
 		service.activate();
 
-		service.events.pipe().subscribe((event: ObISpinnerEvent) => {
+		service.events$.pipe().subscribe((event: ObISpinnerEvent) => {
 			expect(event).toBe({active: false, channel: ObSpinnerService.CHANNEL});
 		});
 
