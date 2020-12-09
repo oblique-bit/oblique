@@ -65,7 +65,8 @@ import {
 	ObStickyModule,
 	ObUnknownRouteModule,
 	ObUnsavedChangesModule,
-	ObUnsavedChangesTabsModule
+	ObUnsavedChangesTabsModule,
+	ObButtonModule
 } from 'oblique';
 import {ObApiComponent} from '../api/api.component';
 import {ObDescriptionComponent} from '../description/description.component';
@@ -101,6 +102,7 @@ import {SpinnerSampleComponent} from './spinner-sample/spinner-sample.component'
 		ObUnknownRouteModule,
 		ObUnsavedChangesModule,
 		ObUnsavedChangesTabsModule,
+		ObButtonModule,
 
 		TranslateModule,
 		FormsModule,

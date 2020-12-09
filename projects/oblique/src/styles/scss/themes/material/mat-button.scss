@@ -1,6 +1,8 @@
 @import "../../core/variables";
 
 .mat-button-base.mat-primary:not([disabled]) {
+	border-color: $brand-primary;
+
 	&:hover {
 		background-color: $brand-light;
 		color: $brand-primary;

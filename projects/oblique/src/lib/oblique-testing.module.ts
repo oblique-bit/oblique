@@ -34,7 +34,9 @@ import {ObMockTranslateParamsModule} from './translate-params/mock/mock-translat
 import {ObMockUnknownRouteModule} from './unknown-route/mock/mock-unknown-route.module';
 import {ObMockUnsavedChangesModule} from './unsaved-changes/mock/mock-unsaved-changes.module';
 import {WINDOW, windowProvider} from './utilities';
+import {ObMockButtonModule} from './button/mock/mock-button.module';
 
+export {ObMockButtonModule, ObMockButtonDirective} from './button/mock/mock-button.module';
 export {ObMockCollapseModule, ObMockCollapseComponent} from './collapse/mock/mock-collapse.module';
 export {ObMockColumnLayoutComponent, ObMockColumnLayoutModule} from './column-layout/mock/mock-column-layout.module';
 export {
@@ -129,6 +131,7 @@ export {
 export {ObMockTranslateService};
 
 const MOCK_OBLIQUE_MODULES = [
+	ObMockButtonModule,
 	ObMockCollapseModule,
 	ObMockColumnLayoutModule,
 	ObMockDocumentMetaModule,
