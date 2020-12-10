@@ -9,6 +9,11 @@ interface Direction {
 	viewValue: string;
 }
 
+interface Duration {
+	value: 'slow' | 'fast' | number;
+	viewValue: string;
+}
+
 interface IconPosition {
 	value: string;
 	viewValue: string;
@@ -21,7 +26,8 @@ interface IconPosition {
 export class CollapseSampleComponent {
 	collapseTitle = 'Collapse title here ';
 	material: Observable<boolean>;
-	direction = new FormControl('down-Up');
+	direction = new FormControl('down-up');
+	duration = new FormControl('fast');
 	iconPosition = new FormControl('left');
 	active = false;
 
@@ -38,6 +44,16 @@ export class CollapseSampleComponent {
 		{value: 'left-right ', viewValue: 'Toggle Left-Right'},
 		{value: 'left-down ', viewValue: 'Toggle Left-Down'},
 		{value: 'left-up ', viewValue: 'Toggle Left-Up'}
+	];
+
+	durations: Duration[] = [
+		{value: 'slow', viewValue: 'Slow'},
+		{value: 'fast', viewValue: 'Fast'},
+		{value: 100, viewValue: '100 ms'},
+		{value: 500, viewValue: '500 ms'},
+		{value: 1000, viewValue: '1000 ms'},
+		{value: 1500, viewValue: '1500 ms'},
+		{value: 2000, viewValue: '2000 ms'}
 	];
 
 	iconPositions: IconPosition[] = [

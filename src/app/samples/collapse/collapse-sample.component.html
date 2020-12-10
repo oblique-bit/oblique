@@ -2,7 +2,7 @@
 	<h2 class="page-header">Collapse</h2>
 	<ob-description component="collapse"></ob-description>
 	<ob-column-layout [left]="false">
-		<ob-collapse [(active)]="active" [direction]="direction.value" column-main-content [iconPosition]="iconPosition.value">
+		<ob-collapse [(active)]="active" [direction]="direction.value" [duration]="duration.value" column-main-content [iconPosition]="iconPosition.value">
 			<span id="{{ collapseTitle }}_title" obCollapseHeader>
 				{{ collapseTitle }}
 			</span>
@@ -28,6 +28,15 @@
 				</mat-form-field>
 
 				<mat-form-field>
+					<mat-label>animate duration</mat-label>
+					<mat-select [(value)]="duration">
+						<mat-option *ngFor="let variant of durations" [value]="variant">
+							{{ variant.viewValue }}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+
+				<mat-form-field>
 					<mat-label>iconPositions</mat-label>
 					<mat-select [(value)]="iconPosition">
 						<mat-option *ngFor="let variant of iconPositions" [value]="variant">
@@ -47,6 +56,13 @@
 						<option *ngFor="let variant of directions" [ngValue]="variant.value">{{ variant.viewValue }}</option>
 					</select>
 				</div>
+				<div class="form-group">
+					<label class="form-control-label">Direction</label>
+					<select [formControl]="duration" class="form-control">
+						<option *ngFor="let variant of durations" [ngValue]="variant.value">{{ variant.viewValue }}</option>
+					</select>
+				</div>
+
 				<div class="form-group">
 					<label class="form-control-label">iconPositions</label>
 					<select [formControl]="iconPosition" class="form-control">
