@@ -2,18 +2,24 @@
 @import "../variables";
 
 @mixin alert-variant($bg, $icon, $icon-bg, $icon-color: $white) {
-	@include icon($icon: $icon);
+	@include media-breakpoint-up(sm) {
+		@include icon($icon: $icon);
+	}
 	background-color: $bg;
 
 	&::before {
 		background-color: $icon-bg;
 		color: $icon-color;
+		line-height: 1; // to override icon's mixin line-height
 	}
 }
 
 @mixin alert-base() {
 	position: relative;
-	padding: $spacing-default $spacing-default $spacing-default $alert-symbol-width + $spacing-default;
+	padding: $spacing-default;
+	@include media-breakpoint-up(sm) {
+		padding-left: $alert-symbol-width + $spacing-default;
+	}
 	color: $brand-default;
 
 	&::before {
@@ -22,8 +28,11 @@
 		top: 0;
 		left: 0;
 		height: 100%;
-		width: $alert-symbol-width;
-		padding: $spacing-default;
+		width: $spacing-sm;
+		@include media-breakpoint-up(sm) {
+			width: $alert-symbol-width;
+			padding: $spacing-default;
+		}
 		font-size: 1.5rem !important;
 		text-align: center;
 		vertical-align: middle;

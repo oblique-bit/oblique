@@ -50,8 +50,3 @@
 		@include alert-variant($brand-error-light, $fa-var-times, $brand-error);
 	}
 }
-
-// have to come last to take precedence
-.alert::before {
-	line-height: 1;
-}
