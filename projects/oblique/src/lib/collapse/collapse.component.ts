@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Inject, InjectionToken, Input, Optional, Output, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Inject, InjectionToken, Input, OnChanges, Optional, Output, ViewEncapsulation} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 export const OBLIQUE_COLLAPSE_ACTIVE = new InjectionToken<boolean>('OBLIQUE_COLLAPSE_STATUS');
@@ -24,11 +24,11 @@ export const OBLIQUE_COLLAPSE_ACTIVE = new InjectionToken<boolean>('OBLIQUE_COLL
 					overflow: 'hidden'
 				})
 			),
-			transition('open <=> close', animate('600ms ease-in-out'))
+			transition('open <=> close', animate('{{ time }}ms ease-in-out'))
 		])
 	]
 })
-export class ObCollapseComponent {
+export class ObCollapseComponent implements OnChanges {
 	@Input() set active(active: boolean) {
 		this.isActive = active;
 		this.activeChange.emit(active);
@@ -38,6 +38,8 @@ export class ObCollapseComponent {
 		return this.isActive;
 	}
 
+	@Input() duration: 'slow' | 'fast' | number = 'slow';
+	time: number;
 	@Input() iconPosition: 'left' | 'right' | 'justified' = 'left';
 	@Input() direction:
 		| 'down-up'
@@ -56,5 +58,20 @@ export class ObCollapseComponent {
 
 	constructor(@Optional() @Inject(OBLIQUE_COLLAPSE_ACTIVE) private isActive: boolean) {
 		this.isActive = !!this.isActive;
+	}
+
+	ngOnChanges() {
+		this.time = ObCollapseComponent.getDuration(this.duration);
+	}
+
+	private static getDuration(duration: 'slow' | 'fast' | number): number {
+		switch (duration) {
+			case 'slow':
+				return 600;
+			case 'fast':
+				return 250;
+			default:
+				return duration as number;
+		}
 	}
 }
