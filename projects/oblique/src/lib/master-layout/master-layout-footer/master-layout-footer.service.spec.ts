@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
-import {ObMasterLayoutFooterService} from './master-layout-footer.service';
-import {ObMasterLayoutEvent} from '../master-layout.utility';
 import {Observable, Subject} from 'rxjs';
+import {ObMasterLayoutFooterService} from './master-layout-footer.service';
+import {ObIMasterLayoutEvent} from '../master-layout.datatypes';
 
 describe('MasterLayoutFooterService', () => {
 	let masterLayoutFooterService: ObMasterLayoutFooterService;
@@ -20,7 +20,7 @@ describe('MasterLayoutFooterService', () => {
 	describe('test configEvents', () => {
 		it('should get configEvents  when true', () => {
 			const spy = jest.spyOn(masterLayoutFooterService, 'configEvents', 'get');
-			let newValue: Observable<ObMasterLayoutEvent> = new Subject<ObMasterLayoutEvent>();
+			let newValue: Observable<ObIMasterLayoutEvent> = new Subject<ObIMasterLayoutEvent>();
 			newValue = masterLayoutFooterService.configEvents;
 			const mockResult = masterLayoutFooterService.configEvents;
 			expect(spy).toHaveBeenCalled();
