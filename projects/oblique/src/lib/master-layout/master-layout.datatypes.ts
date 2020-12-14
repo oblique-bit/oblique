@@ -29,6 +29,7 @@ export interface ObILocale {
 	locales: (string | ObILocaleObject)[];
 	default: string;
 	disabled: boolean;
+	display: boolean;
 }
 
 export interface ObILocaleObject {

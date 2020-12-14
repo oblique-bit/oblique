@@ -30,7 +30,8 @@ export class ObMasterLayoutConfig {
 	locale: ObILocale = {
 		locales: ['de', 'fr', 'it'],
 		default: 'de',
-		disabled: false
+		disabled: false,
+		display: true
 	};
 
 	/**
