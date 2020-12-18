@@ -77,7 +77,7 @@
 		<ng-content select="[obOffCanvasContent]"></ng-content>
 	</div>
 </div>
-<div class="modal-backdrop offcanvas-backdrop show" *ngIf="hasOffCanvas"></div>
+<div class="offcanvas-backdrop" *ngIf="hasOffCanvas"></div>
 <ob-spinner [fixed]="true"></ob-spinner>
 <ng-template #logo>
 	<img alt="{{ 'i18n.oblique.header.logo' | translate }}" src="assets/images/logo.svg" />
