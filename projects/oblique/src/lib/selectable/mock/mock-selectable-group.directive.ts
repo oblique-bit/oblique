@@ -1,6 +1,6 @@
 import {Directive} from '@angular/core';
 import {ObSelectableDirective} from '../selectable.directive';
-import {Observable, of} from 'rxjs';
+import {of} from 'rxjs';
 
 @Directive({
 	selector: '[obSelectableGroup]',
@@ -8,7 +8,7 @@ import {Observable, of} from 'rxjs';
 })
 export class ObMockSelectableGroupDirective {
 	role = 'group';
-	selected$: Observable<ObSelectableDirective[]>;
+	selected$ = of([] as ObSelectableDirective[]);
 	mode$ = of('checkbox');
 	mode = 'checkbox';
 
