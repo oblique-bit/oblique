@@ -30,7 +30,7 @@
 				display: inline-block;
 				background-color: $gray-extra-light;
 				text-align: center;
-				z-index: 1;
+				z-index: $z-index-controls;
 				// Hack to simulate inner bottom shadow on the back
 				box-shadow: 0 -1px 0 #eaeaea inset,
 				0 -2px 0 #ebebeb inset,

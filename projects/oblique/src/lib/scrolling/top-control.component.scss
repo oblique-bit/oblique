@@ -4,7 +4,7 @@
 .top-control {
 	visibility: hidden; // A11y: ensure element is not reachable when tabbing.
 	position: fixed;
-	z-index: 9000;
+	z-index: $z-index-widget;
 	opacity: 0;
 	white-space: nowrap;
 	width: 200px;
