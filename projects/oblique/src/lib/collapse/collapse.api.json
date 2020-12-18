@@ -7,6 +7,7 @@
       "exported": "obCollapse",
       "type": "component",
       "since": "5.0.0",
+      "updated": "6.0.0",
       "inputs": [
         {
           "name": "active",
@@ -47,6 +48,13 @@
             "justified"
           ],
           "since": "5.0.0"
+        },
+        {
+          "name": "duration",
+          "text": "Defines the animation speed for the collapse motion. <code>slow</code> and <code>fast</code> refer to Oblique's predefined speeds of 250 and 600 milliseconds respectively. Alternatively, a duration in milliseconds can be specified.",
+          "type": "'slow' | 'fast' | number ",
+          "default": "slow",
+          "since": "6.0.0"
         }
       ],
       "outputs": [

@@ -7,6 +7,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 })
 export class ObMockCollapseComponent {
 	@Input() active: false;
+	@Input() duration: 'slow' | 'fast' | number = 'slow';
 	@Input() iconPosition: 'left' | 'right' | 'justified' = 'left';
 	@Input() direction:
 		| 'down-up'
