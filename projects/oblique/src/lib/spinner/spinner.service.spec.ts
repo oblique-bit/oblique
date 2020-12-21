@@ -73,4 +73,15 @@ describe('SpinnerService', () => {
 		service.deactivate();
 		service.deactivate(); //Only now, deactivate event is emitted.
 	}));
+
+	it('should deactivate immediately, when forceDeactivate is called.', inject([ObSpinnerService], (service: ObSpinnerService) => {
+		service.activate();
+		service.activate();
+
+		service.events.pipe().subscribe((event: ObISpinnerEvent) => {
+			expect(event).toBe({active: false, channel: ObSpinnerService.CHANNEL});
+		});
+
+		service.forceDeactivate();
+	}));
 });

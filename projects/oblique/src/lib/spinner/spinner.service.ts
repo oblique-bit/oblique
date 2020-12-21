@@ -39,6 +39,11 @@ export class ObSpinnerService {
 		}
 	}
 
+	public forceDeactivate(channel = ObSpinnerService.CHANNEL) {
+		this.calls[channel] = 0;
+		this.deactivate(channel);
+	}
+
 	private broadcast(event: ObISpinnerEvent) {
 		this.eventSubject.next(event);
 	}

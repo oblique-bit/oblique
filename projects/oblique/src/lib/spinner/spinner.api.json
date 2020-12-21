@@ -63,6 +63,15 @@
           ],
           "since": "2.0.0",
           "updated": "6.0.0"
+        },
+        {
+          "name": "forceDeactivate",
+          "text": "Hides the spinner in the given channel, no matter how many times <code>activate</code> method has been called.",
+          "returns": "void",
+          "arguments": [
+            "channel: string"
+          ],
+          "since": "6.0.0"
         }
       ]
     },
