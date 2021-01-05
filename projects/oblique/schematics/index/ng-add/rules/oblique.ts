@@ -26,7 +26,7 @@ export function oblique(options: IOptionsSchema): Rule {
 			addObliqueAssets(),
 			addFontStyle(options.font || 'none'),
 			addFontFiles(options.font || 'none'),
-			addLocales(options.langs.split(' ')),
+			addLocales(options.locales.split(' ')),
 			addScssImport('src/scss/styles.scss'),
 			addScssImport('src/styles.scss')
 		])(tree, _context);

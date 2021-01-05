@@ -5,19 +5,18 @@ import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {applyChanges, appModulePath, createSrcFile, importModule, adaptInsertChange, addDependency} from '../ng-add-utils';
 import {addFile, infoMigration, ObliquePackage, readFile} from '../../utils';
 
-export function addLocales(langs: string[]): Rule {
+export function addLocales(locales: string[]): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
-		chain([importLocales(langs), registerLocales(langs), configureLocales(langs), addTranslation(langs)])(tree, _context);
+		chain([importLocales(locales), registerLocales(locales), configureLocales(locales), addTranslation(locales)])(tree, _context);
 }
 
-function importLocales(langs: string[]): Rule {
+function importLocales(locales: string[]): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Adding locale management & translations');
 		const sourceFile = createSrcFile(tree, appModulePath);
 		const file = 'app.module.ts';
-		const locales = langToLocale(langs);
 		const changes = [
-			...addProviderToModule(sourceFile, appModulePath, `{provide: LOCALE_ID, useValue: '${locales[0].locale}'}`, 'TEMP'),
+			...addProviderToModule(sourceFile, appModulePath, `{provide: LOCALE_ID, useValue: '${locales[0]}'}`, 'TEMP'),
 			insertImport(sourceFile, file, 'registerLocaleData', '@angular/common'),
 			insertImport(sourceFile, file, 'LOCALE_ID', '@angular/core')
 		]
@@ -26,7 +25,7 @@ function importLocales(langs: string[]): Rule {
 
 		locales
 			.filter(locale => filterLocale(tree, locale))
-			.map(locale => insertImport(sourceFile, file, locale.variable, `@angular/common/locales/${locale.locale}`))
+			.map(locale => insertImport(sourceFile, file, getLocaleVariable(locale), `@angular/common/locales/${locale}`))
 			.filter((change: Change) => change instanceof InsertChange)
 			.map((change: InsertChange) => adaptInsertChange(tree, change, /(?:{\s*)|(?:\s*})/g, ''))
 			.forEach((change: InsertChange) => changes.push(change));
@@ -34,12 +33,11 @@ function importLocales(langs: string[]): Rule {
 	};
 }
 
-function registerLocales(langs: string[]): Rule {
+function registerLocales(locales: string[]): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		const locales = langToLocale(langs);
 		const replacement = locales
 			.filter(locale => filterLocale(tree, locale))
-			.map(locale => `registerLocaleData(${locale.variable});`)
+			.map(locale => `registerLocaleData(${getLocaleVariable(locale)});`)
 			.reduce((rep, locale) => [...rep, locale], [])
 			.concat('\n@NgModule')
 			.join('\n');
@@ -48,14 +46,14 @@ function registerLocales(langs: string[]): Rule {
 	};
 }
 
-function configureLocales(langs: string[]): Rule {
+function configureLocales(locales: string[]): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		if (langs.join('_') !== ['de', 'fr', 'it'].join('_')) {
+		if (locales.join('_') !== ['de-CH', 'fr-CH', 'it-CH'].join('_')) {
 			const appModuleContent = readFile(tree, appModulePath).replace(
 				'AppModule { }',
 				`AppModule {
 	constructor(config: ObMasterLayoutConfig) {
-		config.locale.locales = ['${langs.join("', '")}'];
+		config.locale.locales = ['${locales.join("', '")}'];
 	}
 }`
 			);
@@ -69,10 +67,10 @@ function configureLocales(langs: string[]): Rule {
 	};
 }
 
-function addTranslation(langs: string[]): Rule {
+function addTranslation(locales: string[]): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		addDependency(tree, '@ngx-translate/core');
-		langs.forEach((lang: string) => addFile(tree, `src/assets/i18n/${lang}.json`, '{}'));
+		locales.map(locale => locale.split('-')[0]).forEach((lang: string) => addFile(tree, `src/assets/i18n/${lang}.json`, '{}'));
 		addTranslationToImports(tree);
 		return chain([importModule('HttpClientModule', '@angular/common/http')])(tree, _context);
 	};
@@ -89,22 +87,10 @@ function addTranslationToImports(tree: Tree): Tree {
 	return applyChanges(tree, appModulePath, changes);
 }
 
-function langToLocale(langs: string[]): {locale: string; variable: string}[] {
-	return langs.map(lang => {
-		if (['de', 'fr', 'it', 'en'].includes(lang.toLowerCase())) {
-			return {
-				locale: `${lang.toLowerCase()}-CH`,
-				variable: `locale${lang.toUpperCase()}CH`
-			};
-		} else {
-			return {
-				locale: lang.toLowerCase(),
-				variable: `locale${lang.toUpperCase()}`
-			};
-		}
-	});
+function getLocaleVariable(locale: string): string {
+	return `locale${locale.replace('-', '').toUpperCase()}`;
 }
 
-function filterLocale(tree: Tree, locale: {locale: string; variable: string}): boolean {
-	return !readFile(tree, appModulePath).match(new RegExp(`registerLocaleData\\(${locale.variable}\\)`, 'i'));
+function filterLocale(tree: Tree, locale: string): boolean {
+	return !readFile(tree, appModulePath).match(new RegExp(`registerLocaleData\\(${getLocaleVariable(locale)}\\)`, 'i'));
 }

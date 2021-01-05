@@ -36,11 +36,11 @@
       "description": "Application's font",
       "x-prompt": "[3 / 19] Choose a font. Please note: Frutiger is mandatory for CI/CD conformity. \"none\" option will not include any external font, meaning Arial will be used."
     },
-    "langs": {
+    "locales": {
       "type": "string",
-      "default": "de fr it",
-      "description": "Supported languages",
-      "x-prompt": "[4 / 19] Choose the supported languages. Use a whitespace separated list."
+      "default": "de-CH fr-CH it-CH",
+      "description": "Supported locales",
+      "x-prompt": "[4 / 19] Choose the supported locales. Use a whitespace separated list."
     },
     "ajv": {
       "type": "boolean",
