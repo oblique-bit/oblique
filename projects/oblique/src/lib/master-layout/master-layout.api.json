@@ -8,7 +8,7 @@
       "type": "component",
       "usage": "This component takes care of the structure of the application and should be used in <code>app.component.html</code>",
       "since": "2.0.0",
-      "updated": "5.2.0",
+      "updated": "6.0.0",
       "inputs": [
         {
           "name": "jumplinks",
@@ -133,8 +133,8 @@
           "since": "3.0.0"
         },
         {
-          "name": "locale.default",
-          "text": "The default locale, used when none is actually chosen of if the chosen one is not valid.",
+          "name": "locale.defaultLanguage",
+          "text": "The default language, used when none is actually chosen or if the chosen one is not valid.",
           "type": "string",
           "default": "de",
           "since": "3.0.0"

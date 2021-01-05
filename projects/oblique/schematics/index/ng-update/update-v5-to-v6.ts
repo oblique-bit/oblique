@@ -24,7 +24,8 @@ export class UpdateV5toV6 implements IMigrations {
 				this.migrateAssets(),
 				this.addFeatureDetection(),
 				this.changeColorPalette(),
-				this.renameMockCollapseComponent()
+				this.renameMockCollapseComponent(),
+				this.renameDefaultLanguage()
 				/* banner */
 			])(tree, _context);
 		};
@@ -144,6 +145,19 @@ export class UpdateV5toV6 implements IMigrations {
 			const toApply = (filePath: string) => {
 				replaceInFile(tree, filePath, /MockCollapseComponent/g, 'ObMockCollapseComponent');
 				replaceInFile(tree, filePath, /MockCollapseModule/g, 'ObMockCollapseModule');
+			};
+			return applyInTree(tree, toApply, '*.ts');
+		};
+	}
+
+	private renameDefaultLanguage(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Renaming locale.default into locale.defaultLanguage');
+			const toApply = (filePath: string) => {
+				const config = readFile(tree, filePath).match(/(?<config>\w*):\s*ObMasterLayoutConfig/)?.groups?.config;
+				if (config) {
+					replaceInFile(tree, filePath, new RegExp(`${config}.locale.default`, 'g'), `${config}.locale.defaultLanguage`);
+				}
 			};
 			return applyInTree(tree, toApply, '*.ts');
 		};

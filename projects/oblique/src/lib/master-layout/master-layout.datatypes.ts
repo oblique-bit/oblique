@@ -27,7 +27,7 @@ export interface ObIMasterLayoutNavigation {
 
 export interface ObILocale {
 	locales: (string | ObILocaleObject)[];
-	default: string;
+	defaultLanguage: string;
 	disabled: boolean;
 	display: boolean;
 }
