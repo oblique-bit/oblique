@@ -13,28 +13,47 @@ export class ObSpinnerService {
 	 */
 	public static CHANNEL = 'default';
 
-	public get events(): Observable<ObISpinnerEvent> {
-		return this.events$;
+	public readonly events$: Observable<ObISpinnerEvent>;
+
+	private calls: {[key: string]: number} = {};
+	private readonly events: Subject<ObISpinnerEvent> = new Subject<ObISpinnerEvent>();
+
+	constructor() {
+		this.events$ = this.events.asObservable();
 	}
 
-	private readonly eventSubject: Subject<ObISpinnerEvent> = new Subject<ObISpinnerEvent>();
-	private readonly events$ = this.eventSubject.asObservable();
-
-	public activate(channel: string = ObSpinnerService.CHANNEL) {
-		this.broadcast({
-			active: true,
-			channel
-		});
+	public activate(channel = ObSpinnerService.CHANNEL) {
+		if (this.increase(channel) === 1) {
+			this.broadcast({
+				active: true,
+				channel
+			});
+		}
 	}
 
-	public deactivate(channel: string = ObSpinnerService.CHANNEL) {
-		this.broadcast({
-			active: false,
-			channel
-		});
+	public deactivate(channel = ObSpinnerService.CHANNEL) {
+		if (this.decrease(channel) === 0) {
+			this.broadcast({
+				active: false,
+				channel
+			});
+		}
+	}
+
+	public forceDeactivate(channel = ObSpinnerService.CHANNEL) {
+		this.calls[channel] = 0;
+		this.deactivate(channel);
 	}
 
 	private broadcast(event: ObISpinnerEvent) {
-		this.eventSubject.next(event);
+		this.events.next(event);
+	}
+
+	private increase(channel: string = ObSpinnerService.CHANNEL): number {
+		return (this.calls[channel] = (this.calls[channel] || 0) + 1);
+	}
+
+	private decrease(channel: string = ObSpinnerService.CHANNEL): number {
+		return (this.calls[channel] = (this.calls[channel] || 1) - 1);
 	}
 }

@@ -1,1 +1,12 @@
-<p>This component shows a spinner within an overlay</p>
+<p>
+	This component is part of the master layout and shows a spinner within an overlay that covers the whole application. Other instances can be used throughout
+	the application to block specific parts instead of it all. In this case, a <code>channel</code> has to be provided and the <strong>parent</strong> of the
+	<code>ob-spinner-component</code> will receive the overlay.
+</p>
+
+<p>
+	The spinner can be activated and deactivated through the <code>ObSpinnerService</code>'s corresponding functions. Starting from Oblique 6, the
+	<code>deactivate</code> method only deactivates the spinner if it has been called as many times as the <code>activate</code>
+	one. The
+	<code>forceDeactivate</code> method allows to override this limitation.
+</p>

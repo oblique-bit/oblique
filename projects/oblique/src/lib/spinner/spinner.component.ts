@@ -38,7 +38,7 @@ export class ObSpinnerComponent extends ObUnsubscribable implements OnInit {
 
 	constructor(private readonly spinnerService: ObSpinnerService, private readonly element: ElementRef) {
 		super();
-		spinnerService.events.pipe(takeUntil(this.unsubscribe)).subscribe((event: ObISpinnerEvent) => {
+		spinnerService.events$.pipe(takeUntil(this.unsubscribe)).subscribe((event: ObISpinnerEvent) => {
 			if (event.channel === this.channel) {
 				// TODO: Workaround until https://github.com/angular/angular/issues/28801 is solved
 				setTimeout(() => (this.$state = event.active ? 'in' : 'out'));
