@@ -127,9 +127,9 @@
         },
         {
           "name": "locale.locales",
-          "text": "A list of supported locales.",
+          "text": "A list of supported locales, conforming to the ISO 639-1 standard. An optional country code conforming to the ISO 3166-1 alpha-2 standard can be appended with a hyphen.",
           "type": "(string | LocaleObject)[]",
-          "default": "['de', 'fr', 'it']",
+          "default": "['de-CH', 'fr-CH', 'it-CH']",
           "since": "3.0.0"
         },
         {
@@ -145,6 +145,13 @@
           "type": "boolean",
           "default": false,
           "since": "3.0.0"
+        },
+        {
+          "name": "locale.display",
+          "text": "Show Oblique's buttons for language selection or not",
+          "type": "boolean",
+          "default": true,
+          "since": "6.0.0"
         },
         {
           "name": "layout.isFixed",

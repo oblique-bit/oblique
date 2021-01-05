@@ -36,9 +36,8 @@ import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 })
 export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements AfterViewInit {
 	home = this.config.homePageRoute;
-	locales: ObILocaleObject[];
+	languages: {code: string; id?: string}[];
 	isCustom = this.masterLayout.header.isCustom;
-	disabledLang = this.config.locale.disabled;
 	banner: ObIBanner;
 	@Input() navigation: ObINavigationLink[];
 	@HostBinding('class.application-header-animate') isAnimated = this.masterLayout.header.isAnimated;
@@ -63,7 +62,7 @@ export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements A
 	) {
 		super();
 		this.window = window; // because AoT don't accept interfaces as DI
-		this.locales = this.formatLocales();
+		this.languages = this.formatLanguages();
 		this.propertyChanges();
 		this.reduceOnScroll();
 		this.banner = {color: '#000', bgColor: '#0f0', ...bannerToken};
@@ -144,21 +143,13 @@ export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements A
 			});
 	}
 
-	private formatLocales(): ObILocaleObject[] {
-		const locales: ObILocaleObject[] = [];
-		if (!this.config.locale.disabled) {
-			this.config.locale.locales.forEach(loc => {
-				const locale: ObILocaleObject = {
-					locale: (loc as ObILocaleObject).locale || (loc as string)
-				};
-				if ((loc as ObILocaleObject).id) {
-					locale.id = (loc as ObILocaleObject).id;
-				}
-				locales.push(locale);
-			});
-		}
-
-		return locales;
+	private formatLanguages(): {code: string; id?: string}[] {
+		return this.config.locale.disabled || !this.config.locale.display
+			? []
+			: this.config.locale.locales.map(locale => ({
+					code: ((locale as ObILocaleObject).locale || (locale as string)).split('-')[0],
+					id: (locale as ObILocaleObject).id
+			  }));
 	}
 
 	private setFocusable(isMenuOpened: boolean): void {

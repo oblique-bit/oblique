@@ -39,19 +39,19 @@
 		</div>
 		<div class="application-header-controls">
 			<h2 class="sr-only" id="ob-language-change">{{ "i18n.oblique.header.languages.title" | translate }}</h2>
-			<ng-content select="[obLocales]" *ngIf="disabledLang"></ng-content>
-			<ul class="header-controls header-locale" *ngIf="locales.length > 1 && !disabledLang">
-				<li class="control-item" *ngFor="let locale of locales">
+			<ng-content select="[obLocales]" *ngIf="!languages.length"></ng-content>
+			<ul class="header-controls header-locale" *ngIf="languages.length > 1">
+				<li class="control-item" *ngFor="let language of languages">
 					<button
 						class="control-locale"
 						obMasterLayoutHeaderToggle
-						(click)="changeLang(locale.locale)"
-						[class.active]="isLangActive(locale.locale)"
-						[attr.id]="locale.id"
-						[attr.aria-current]="isLangActive(locale.locale) ? 'page' : undefined"
+						(click)="changeLang(language.code)"
+						[class.active]="isLangActive(language.code)"
+						[attr.id]="language.id"
+						[attr.aria-current]="isLangActive(language.code) ? 'page' : undefined"
 						aria-labelledby="ob-language-change"
 					>
-						<span class="control-label">{{ locale.locale.toUpperCase() }}</span>
+						<span class="control-label">{{ language.code.toUpperCase() }}</span>
 					</button>
 				</li>
 			</ul>
