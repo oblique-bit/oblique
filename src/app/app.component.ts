@@ -36,6 +36,7 @@ export class AppComponent {
 				{url: 'form-control-state', label: 'i18n.routes.samples.form-control-state.title'},
 				{url: 'http-interceptor', label: 'i18n.routes.samples.http-interceptor.title'},
 				{url: 'input-clear', label: 'Input clear'},
+				{url: 'language', label: 'Language'},
 				{url: 'master-layout', label: 'i18n.routes.samples.master-layout.title'},
 				{url: 'multi-translate-loader', label: 'Multi translate loader'},
 				{url: 'multiselect', label: 'i18n.routes.samples.multiselect.title'},
