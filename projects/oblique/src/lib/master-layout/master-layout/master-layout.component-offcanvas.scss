@@ -35,7 +35,7 @@
 		visibility: hidden; // A11y: ensure tabbing does not focus an offcanvas sidebar element when hidden.
 		overflow-y: auto;
 		box-sizing: content-box; // Fix scrollbar in IE9
-		z-index: 1050;
+		z-index: $z-index-overlay-top;
 		transition-property: transform, left, width, visibility;
 		transition-duration: $duration-default;
 		transition-timing-function: ease;
@@ -120,6 +120,14 @@
 		@at-root #{selector-append(".offcanvas-in", &)} {
 			@include layout-collapse-down {
 				display: block;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				background-color: $black;
+				opacity: 0.5;
+				z-index: $z-index-overlay;
 			}
 		}
 	}

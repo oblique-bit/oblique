@@ -1,6 +1,9 @@
 @import "../../styles/scss/core/variables";
 @import "../../styles/scss/core/mixins/layout";
 
+.ob-search-box-results {
+	z-index: $z-index-widget;
+}
 .search-results-list {
 	top: $header-height-md;
 	left: 0;
@@ -52,7 +55,7 @@
 		box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
 		transition-property: max-height, padding-top, padding-bottom;
 		transition-duration: $duration-default;
-		z-index: 1;
+		z-index: $z-index-widget;
 
 		.control-item & {
 			position: absolute;

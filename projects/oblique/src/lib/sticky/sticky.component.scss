@@ -23,7 +23,6 @@
 
 .sticky-header,
 .sticky-footer {
-	z-index: 1;
 	position: relative;
 	padding: 13px 0;
 	display: flex;
@@ -48,20 +47,17 @@
 
 	@include layout-collapse-up() {
 		height: $sticky-element-height;
-
-		&:not(.sticky-header-no-shadow):not(.sticky-footer-no-shadow) {
-			z-index: 5;
-			box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.08),
-			0 -2px 0 rgba(0, 0, 0, 0.06),
-			0 -3px 0 rgba(0, 0, 0, 0.04),
-			0 -4px 0 rgba(0, 0, 0, 0.02),
-			0 -5px 0 rgba(0, 0, 0, 0.01),
-			0 1px 0 rgba(0, 0, 0, 0.08),
-			0 2px 0 rgba(0, 0, 0, 0.06),
-			0 3px 0 rgba(0, 0, 0, 0.04),
-			0 4px 0 rgba(0, 0, 0, 0.02),
-			0 5px 0 rgba(0, 0, 0, 0.01);
-		}
+		z-index: $z-index-controls;
+		box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.08),
+		0 -2px 0 rgba(0, 0, 0, 0.06),
+		0 -3px 0 rgba(0, 0, 0, 0.04),
+		0 -4px 0 rgba(0, 0, 0, 0.02),
+		0 -5px 0 rgba(0, 0, 0, 0.01),
+		0 1px 0 rgba(0, 0, 0, 0.08),
+		0 2px 0 rgba(0, 0, 0, 0.06),
+		0 3px 0 rgba(0, 0, 0, 0.04),
+		0 4px 0 rgba(0, 0, 0, 0.02),
+		0 5px 0 rgba(0, 0, 0, 0.01);
 	}
 }
 

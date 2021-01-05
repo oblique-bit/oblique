@@ -4,10 +4,10 @@
 .notification-container {
 	position: fixed;
 	display: block;
-	z-index: 99999;
 	perspective: 80px;
 	overflow-x: hidden;
 	right: 0; // Note: do not specify `top` attribute!
+	z-index: $z-index-widget;
 
 	&.custom {
 		position: absolute;

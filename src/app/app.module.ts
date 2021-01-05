@@ -104,6 +104,7 @@ export class AppModule {
 
 		interceptorConfig.api.url = HttpInterceptorSampleComponent.API_URL;
 		config.locale.locales = ['en', 'fr'];
+		config.layout.hasOffCanvas = true;
 		theme.setTheme(THEMES.BOOTSTRAP);
 		theme.setFont(FONTS.FRUTIGER);
 	}

@@ -67,6 +67,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		white-space: nowrap;
 
 		@include layout-collapse-down() {
 			visibility: hidden; // Avoids keyboard navigation when collapsed

@@ -73,7 +73,7 @@
 		.column-toggle-right {
 			display: block;
 			position: absolute;
-			z-index: 1;
+			z-index: $z-index-controls;
 			top: 50%;
 			margin-top: -$column-layout-toggle-height / 2;
 			width: $column-layout-toggle-width;
