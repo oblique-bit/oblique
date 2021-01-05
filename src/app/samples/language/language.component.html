@@ -1,0 +1,21 @@
+<h2 class="page-header">Language</h2>
+<ob-description component="language"></ob-description>
+<ob-column-layout [left]="false" [right]="true">
+	<div column-main-content>
+		{{ 0 | obDate: format:timezone }}
+		<ng-container *ngIf="material | async">
+			<mat-form-field class="ms-fix">
+				<mat-label>Datepicker</mat-label>
+				<input matInput [matDatepicker]="picker" [value]="today" />
+				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker #picker></mat-datepicker>
+			</mat-form-field>
+		</ng-container>
+	</div>
+	<div column-right-content>
+		<h2>Controls</h2>
+		<input [(ngModel)]="format" />
+		<input [(ngModel)]="timezone" />
+	</div>
+</ob-column-layout>
+<ob-api component="language"></ob-api>

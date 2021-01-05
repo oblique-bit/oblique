@@ -30,6 +30,8 @@ import {ObUnknownRouteModule} from './unknown-route/unknown-route.module';
 import {ObTelemetryService} from './telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from './telemetry/telemetry-require';
 import {obliqueProviders} from './utilities';
+import {ObLanguageService} from './language/language.service';
+import {ObLanguageModule} from './language/language.module';
 
 const OBLIQUE_MODULES = [
 	ObButtonModule,
@@ -40,6 +42,7 @@ const OBLIQUE_MODULES = [
 	ObErrorMessagesModule,
 	ObFilterBoxModule,
 	ObFormControlStateModule,
+	ObLanguageModule,
 	ObMasterLayoutModule,
 	ObMultiselectModule,
 	ObNavigableModule,
