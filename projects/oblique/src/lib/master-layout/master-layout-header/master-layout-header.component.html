@@ -56,12 +56,14 @@
 				</li>
 			</ul>
 			<ng-content select="[obHeaderCustomControl]"></ng-content>
-			<h2 class="sr-only">{{ "i18n.oblique.header.controls.title" | translate }}</h2>
-			<ul class="header-controls" *ngIf="templates.length">
-				<li class="control-item" *ngFor="let template of templates" #headerControl>
-					<ng-container [ngTemplateOutlet]="template"></ng-container>
-				</li>
-			</ul>
+			<ng-container *ngIf="templates.length">
+				<h2 class="sr-only">{{ "i18n.oblique.header.controls.title" | translate }}</h2>
+				<ul class="header-controls">
+					<li class="control-item" *ngFor="let template of templates" #headerControl>
+						<ng-container [ngTemplateOutlet]="template"></ng-container>
+					</li>
+				</ul>
+			</ng-container>
 		</div>
 	</ng-container>
 </div>
