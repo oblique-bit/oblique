@@ -87,6 +87,7 @@ The scope is optional and should be the name of the Oblique feature affected:
 * **filter-box**
 * **form-control-state**
 * **http-interceptor**
+* **language**
 * **master-layout**
 * **multi-translate-loader**
 * **multiselect**

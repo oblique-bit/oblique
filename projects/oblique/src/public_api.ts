@@ -35,6 +35,7 @@ export {
 	ObHttpApiInterceptorModule,
 	ObIHttpApiRequest
 } from './lib/http-api-interceptor/http-api-interceptor.module';
+export {ObLanguageModule, ObDatePipe} from './lib/language/language.module';
 export {
 	ObMasterLayoutComponent,
 	ObMasterLayoutComponentService,

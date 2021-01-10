@@ -28,6 +28,7 @@ import {ObPopUpSampleComponent} from './pop-up/pop-up-sample.component';
 import {MultiTranslateLoaderSampleComponent} from './multi-tranlsate-loader/multi-translate-loader-sample.component';
 import {ObSelectableSampleComponent} from './selectable/selectable-sample.component';
 import {SpinnerSampleComponent} from './spinner-sample/spinner-sample.component';
+import {LanguageComponent} from './language/language.component';
 
 const samplesRoutes: Routes = [
 	{path: 'collapse', component: CollapseSampleComponent},
@@ -38,6 +39,7 @@ const samplesRoutes: Routes = [
 	{path: 'form-control-state', component: FormControlStateSampleComponent},
 	{path: 'http-interceptor', component: HttpInterceptorSampleComponent},
 	{path: 'input-clear', component: InputClearComponent},
+	{path: 'language', component: LanguageComponent},
 	{path: 'master-layout', component: MasterLayoutSampleComponent},
 	{path: 'multi-translate-loader', component: MultiTranslateLoaderSampleComponent},
 	{path: 'multiselect', component: MultiselectSampleComponent},

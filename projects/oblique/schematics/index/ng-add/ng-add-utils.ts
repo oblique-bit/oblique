@@ -22,7 +22,7 @@ export interface IOptionsSchema {
 	ie11: boolean;
 	jenkins: string;
 	jest: boolean;
-	langs: string;
+	locales: string;
 	npmrc: boolean;
 	prefix: string;
 	protractor: boolean;

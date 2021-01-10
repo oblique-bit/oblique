@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObLanguageService",
+      "type": "service",
+      "usage": "This service is automatically instantiated by the <code>ObMasterLayoutService</code>. Each module where the <code>MatDatePicker</code> is used should call its <code>setLocaleOnAdapter</code> to ensure the date picker uses the correct locale.",
+      "since": "6.0.0",
+      "variables": [
+        {
+          "name": "locale$",
+          "text": "Emits the current locale when the language changes",
+          "type": "Observable<string>",
+          "since": "6.0.0"
+        }
+      ],
+      "methods": [
+        {
+          "name": "setLocaleOnAdapter",
+          "text": "Automatically sets the current locale to the given date adapter. Used to define the locale for the Datepicker.",
+          "returns": "void",
+          "arguments": ["adapter: DateAdapter"],
+          "since": "6.0.0"
+        }
+      ]
+    },
+    {
+      "name": "ObDate",
+      "type": "pipe",
+      "usage": "This pipe automatically listens to locale changes and formats the date accordingly",
+      "since": "6.0.0",
+      "methods": [
+        {
+          "name": "transform",
+          "text": "Formats a date according to current locale and given format and timezone.",
+          "returns": "string",
+          "arguments": ["value: string | number | Date", "format = 'datetime'", "timezone?: string"],
+          "since": "6.0.0"
+        }
+      ]
+    }
+  ]
+}

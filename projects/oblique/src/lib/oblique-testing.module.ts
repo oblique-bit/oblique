@@ -58,6 +58,7 @@ export {
 } from './error-messages/mock/mock-error-messages.module';
 export {ObMockFilterBoxModule, ObMockFilterBoxComponent} from './filter-box/mock/mock-filter-box.module';
 export {ObMockFormControlStateModule, ObMockFormControlStateDirective} from './form-control-state/mock/mock-form-control-state.module';
+export {ObMockDatePipe, ObMockLanguageModule} from './language/mock/mock-language.module';
 export {
 	ObMockMasterLayoutModule,
 	ObMockMasterLayoutConfig,

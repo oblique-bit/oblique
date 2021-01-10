@@ -66,7 +66,8 @@ import {
 	ObUnknownRouteModule,
 	ObUnsavedChangesModule,
 	ObUnsavedChangesTabsModule,
-	ObButtonModule
+	ObButtonModule,
+	ObLanguageModule
 } from 'oblique';
 import {ObApiComponent} from '../api/api.component';
 import {ObDescriptionComponent} from '../description/description.component';
@@ -77,6 +78,7 @@ import {NestedFormGrandChildTDSampleComponent} from './nested-form/nested-form-g
 import {MultiTranslateLoaderSampleComponent} from './multi-tranlsate-loader/multi-translate-loader-sample.component';
 import {ObSelectableSampleComponent} from './selectable/selectable-sample.component';
 import {SpinnerSampleComponent} from './spinner-sample/spinner-sample.component';
+import {LanguageComponent} from './language/language.component';
 
 @NgModule({
 	imports: [
@@ -87,6 +89,7 @@ import {SpinnerSampleComponent} from './spinner-sample/spinner-sample.component'
 		ObFilterBoxModule,
 		ObErrorMessagesModule,
 		ObFormControlStateModule,
+		ObLanguageModule,
 		ObMultiselectModule,
 		ObNavigableModule,
 		ObNavTreeModule,
@@ -134,6 +137,7 @@ import {SpinnerSampleComponent} from './spinner-sample/spinner-sample.component'
 		FilterBoxSampleComponent,
 		HttpInterceptorSampleComponent,
 		InputClearComponent,
+		LanguageComponent,
 		PatternFilterPipe,
 		MasterLayoutSampleComponent,
 		MultiselectSampleComponent,

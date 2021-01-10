@@ -43,6 +43,10 @@ import {HomePageComponent} from './home/home.page';
 import {HttpMockErrorInterceptor} from './samples/http-interceptor/http-mock-error.interceptor';
 import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
 import {environment} from '../environments/environment';
+import {registerLocaleData} from '@angular/common';
+
+import localeFR from '@angular/common/locales/fr-CH';
+registerLocaleData(localeFR);
 
 @NgModule({
 	declarations: [AppComponent, HomePageComponent],
@@ -103,7 +107,7 @@ export class AppModule {
 		datepickerConfig.navigation = 'arrows';
 
 		interceptorConfig.api.url = HttpInterceptorSampleComponent.API_URL;
-		config.locale.locales = ['en', 'fr'];
+		config.locale.locales = ['en-GB', 'fr-CH'];
 		config.layout.hasOffCanvas = true;
 		theme.setTheme(THEMES.BOOTSTRAP);
 		theme.setFont(FONTS.FRUTIGER);
