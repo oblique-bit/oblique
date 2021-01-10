@@ -4,6 +4,7 @@ import {EMPTY, fromEvent, race} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {ObITelemetryMessage} from './telemetry-message';
 import {WINDOW} from '../utilities';
+import {ObThemeService} from '../theme/theme.service';
 
 export const TELEMETRY_DISABLE = new InjectionToken<boolean>('TELEMETRY_DISABLE');
 
@@ -24,7 +25,12 @@ export class ObTelemetryService {
 	private readonly window: Window;
 	private readonly headers = new HttpHeaders().set('telemetry-api-key', '4E28E649-C2B2-4985-9409-CFC905A34E92');
 
-	constructor(private readonly http: HttpClient, @Optional() @Inject(TELEMETRY_DISABLE) private readonly isDisabled: boolean, @Inject(WINDOW) window) {
+	constructor(
+		private readonly http: HttpClient,
+		@Optional() @Inject(TELEMETRY_DISABLE) private readonly isDisabled: boolean,
+		@Inject(WINDOW) window,
+		private readonly theme: ObThemeService
+	) {
 		this.window = window; // because AoT don't accept interfaces as DI // because AoT don't accept interfaces as DI
 		if (isDisabled) {
 			console.info('Oblique Telemetry is disabled by injection token.');
@@ -39,7 +45,7 @@ export class ObTelemetryService {
 			return;
 		}
 
-		this.storeMessage(ObTelemetryService.createMessage(mod, ObTelemetryService.readPackageJson()));
+		this.storeMessage(ObTelemetryService.createMessage(mod, ObTelemetryService.readPackageJson(), this.theme.isMaterial()));
 	}
 
 	private static readPackageJson(): Object {
@@ -53,26 +59,43 @@ export class ObTelemetryService {
 		}
 	}
 
+	private static readObliqueVersion(): any {
+		try {
+			return require('package-lock.json').dependencies['@oblique/oblique'].version;
+		} catch (e) {
+			return undefined;
+		}
+	}
+
 	private static areEqual(msg1: ObITelemetryMessage, msg2: ObITelemetryMessage): boolean {
 		return (
 			msg1.applicationName === msg2.applicationName &&
+			msg1.applicationTitle === msg2.applicationTitle &&
 			msg1.applicationVersion === msg2.applicationVersion &&
+			msg1.applicationHomepage === msg2.applicationHomepage &&
 			msg1.obliqueModuleName === msg2.obliqueModuleName &&
-			msg1.obliqueVersion === msg2.obliqueVersion
+			msg1.obliqueVersion === msg2.obliqueVersion &&
+			msg1.obliqueTheme === msg2.obliqueTheme
 		);
 	}
 
-	private static createMessage(mod: any, pkg: any): ObITelemetryMessage {
+	private static createMessage(mod: any, pkg: any, material: boolean): ObITelemetryMessage {
 		const obliqueModuleName = mod ? mod.name : 'Unknown Module';
-		const obliqueVersion = pkg.dependencies['@oblique/oblique'];
+		const obliqueVersion = (pkg.dependencies['@oblique/oblique'] || '').replace(/[^~]/, '');
 		const name = pkg ? pkg.name : 'Unknown package name';
+		const title = pkg && pkg.title ? pkg.title : null;
 		const version = pkg ? pkg.version : 'Unknown package version';
+		const homepage = pkg && pkg.homepage ? pkg.homepage : null;
+		const realObliqueVersion = ObTelemetryService.readObliqueVersion();
 
 		return {
 			obliqueModuleName: obliqueModuleName,
-			obliqueVersion: obliqueVersion,
+			obliqueVersion: realObliqueVersion || obliqueVersion,
+			obliqueTheme: material ? 'Material' : 'Bootstrap',
 			applicationName: name,
-			applicationVersion: version
+			applicationTitle: title,
+			applicationVersion: version,
+			applicationHomepage: homepage
 		};
 	}
 
