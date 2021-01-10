@@ -18,7 +18,7 @@ interface ObIModuleList {
 export class ObTelemetryService {
 	private static readonly telemetryToken = 'OBLIQUE_TELEMETRY';
 	private static readonly oneDay = 60 * 60 * 24 * 1000;
-	private readonly TELEMETRY_URL = 'https://oblique-telemetry.bit.admin.ch/api/v1/telemetry';
+	private readonly TELEMETRY_URL = 'https://oblique-telemetry.bit.admin.ch/api/v2/telemetry';
 	private readonly telemetryRecords: Array<ObITelemetryMessage> = new Array<ObITelemetryMessage>();
 	private readonly disableTokenValue: boolean;
 	private readonly window: Window;
