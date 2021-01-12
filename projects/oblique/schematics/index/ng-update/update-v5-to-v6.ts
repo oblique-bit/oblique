@@ -39,7 +39,8 @@ export class UpdateV5toV6 implements IMigrations {
 				this.changeColorPalette(),
 				this.renameMockCollapseComponent(),
 				this.renameDefaultLanguage(),
-				this.adaptDependencies()
+				this.adaptDependencies(),
+				this.migrateDropdown()
 				/* banner */
 			])(tree, _context);
 		};
@@ -233,5 +234,16 @@ export class UpdateV5toV6 implements IMigrations {
 		if (!hasCoreJsBeenImported) {
 			removePackageJsonDependency(tree, 'core-js');
 		}
+	}
+
+	private migrateDropdown(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Migrate ObDropdownComponent');
+			const toApply = (filePath: string) => {
+				replaceInFile(tree, filePath, /<button dropdown-toggle>(<[^\s]*)(.*)<\/button>/g, '$1 dropdown-toggle$2');
+				replaceInFile(tree, filePath, /<button dropdown-toggle>(\w*)<\/button>/g, '<ng-container dropdown-toggle>$1</ng-container>');
+			};
+			return applyInTree(tree, toApply, '*.html');
+		};
 	}
 }
