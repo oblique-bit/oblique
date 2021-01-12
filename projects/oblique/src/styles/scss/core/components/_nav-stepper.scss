@@ -3,7 +3,7 @@
 @import "../mixins/layout";
 @import "../mixins/stepper";
 
-.nav-stepper {
+.ob-nav-stepper {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
@@ -12,7 +12,7 @@
 	padding-left: 0;
 	counter-reset: li-counter;
 
-	.nav-step {
+	.ob-nav-step {
 		flex-basis: auto;
 		flex-grow: 1;
 		position: relative;
@@ -58,7 +58,7 @@
 		&.disabled {
 			@include stepper-state($gray-dark, $white, $gray-dark);
 
-			.step-link {
+			.ob-step-link {
 				color: $gray-dark;
 				cursor: default;
 			}
@@ -73,24 +73,24 @@
 		}
 	}
 
-	.step-link {
+	.ob-step-link {
 		display: block;
 		text-decoration: none;
 	}
 
-	&:not(.nav-stepper-sm):not(.nav-stepper-lg) {
+	&:not(.ob-nav-stepper-sm):not(.ob-nav-stepper-lg) {
 		@include stepper-variant($stepper-font-size, $stepper-size);
 	}
 
-	&.nav-stepper-sm {
+	&.ob-nav-stepper-sm {
 		@include stepper-variant($stepper-sm-font-size, $stepper-size-sm);
 	}
 
-	&.nav-stepper-lg {
+	&.ob-nav-stepper-lg {
 		@include stepper-variant($stepper-lg-font-size, $stepper-size-lg);
 	}
 
-	&:not(.nav-horizontal) .nav-step {
+	&:not(.ob-nav-horizontal) .ob-nav-step {
 		&::before {
 			position: absolute;
 			left: 0;
@@ -109,11 +109,11 @@
 		}
 	}
 
-	&.nav-horizontal {
+	&.ob-nav-horizontal {
 		flex-direction: row;
 		text-align: center;
 
-		.nav-step {
+		.ob-nav-step {
 			flex-grow: 0;
 
 			&:not(:first-child) {
@@ -143,8 +143,8 @@
 			}
 		}
 
-		&.full-width {
-			.nav-step {
+		&.ob-full-width {
+			.ob-nav-step {
 				flex-grow: 1;
 			}
 		}

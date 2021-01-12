@@ -1,7 +1,7 @@
 @import "../../../styles/scss/core/variables";
 @import "../../../styles/scss/core/mixins/layout";
 
-.application-footer {
+.ob-master-layout-footer {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
@@ -18,12 +18,12 @@
 		flex-direction: row;
 		height: $footer-height-md;
 
-		.application-fixed & {
+		.ob-master-layout-fixed & {
 			position: relative;
 		}
 	}
 
-	.footer-item {
+	.ob-footer-item {
 		padding: $spacing-xs 0;
 		white-space: nowrap;
 		overflow: hidden;
@@ -46,7 +46,7 @@
 		}
 	}
 
-	.application-brand-logo {
+	.ob-master-layout-logo {
 		display: inline-block;
 
 		img {
@@ -57,41 +57,41 @@
 	}
 
 	@include layout-collapse-up() {
-		.footer-item-logo {
+		.ob-footer-item-logo {
 			margin-right: $spacing-default;
 
-			.application:not(.application-scrolling) &,
-			.application.application-fixed & {
+			.ob-master-layout:not(.ob-master-layout-scrolling) &,
+			.ob-master-layout.ob-master-layout-fixed & {
 				display: none;
 			}
 		}
 
-		.application.application-scrolling &.application-footer-sm .footer-item-logo {
+		.ob-master-layout.ob-master-layout-scrolling &.ob-master-layout-footer-sm .ob-footer-item-logo {
 			display: none;
 		}
 
-		.footer-item-info {
+		.ob-footer-item-info {
 			margin-right: $spacing-default;
 			flex: 1; // Variable width.
 			overflow: hidden;
 		}
 
-		&.application-footer-sm {
+		&.ob-master-layout-footer-sm {
 			height: $footer-height-sm;
 			padding-top: $spacing-xs;
 			padding-bottom: $spacing-xs;
 
-			.footer-item {
+			.ob-footer-item {
 				padding: 0;
 			}
 		}
 
-		.application-scrolling &:not(.application-footer-sm) {
+		.ob-master-layout-scrolling &:not(.ob-master-layout-footer-sm) {
 			height: $footer-height;
 		}
 	}
 
-	.footer-item-links {
+	.ob-footer-item-links {
 		display: flex;
 		list-style: none;
 		margin: 0;

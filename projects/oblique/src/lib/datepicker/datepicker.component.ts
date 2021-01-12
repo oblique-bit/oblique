@@ -26,7 +26,7 @@ import {ObDatepickerConfigService, ObIDatepickerOptions} from './datepicker-conf
 		}
 	],
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
-	host: {class: 'datepicker input-group'}
+	host: {class: 'ob-date-picker datepicker input-group'}
 })
 export class ObDatepickerComponent implements OnInit, ControlValueAccessor, Validator {
 	datePicker = new FormControl();

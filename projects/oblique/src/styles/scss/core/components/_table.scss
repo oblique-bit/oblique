@@ -7,12 +7,12 @@ table {
 	border-collapse: collapse; // Prevent double borders
 }
 
-.table {
+.ob-table {
 	width: 100%;
 	color: $brand-default;
 	@include body2;
 
-	&.table-cicd {
+	&.ob-table-cicd {
 		thead,
 		tfoot {
 			background-color: $gray-lighter;
@@ -43,41 +43,41 @@ table {
 		}
 	}
 
-	&:not(.table-cicd) thead tr:first-child th {
+	&:not(.ob-table-cicd) thead tr:first-child th {
 		border-top: none;
 	}
 
-	&:not(.table-plain) {
+	&:not(.ob-table-plain) {
 		tbody tr:nth-child(odd) {
 			background-color: $gray-extra-light;
 		}
 	}
 
-	&.table-collapse {
+	&.ob-table-collapse {
 		@include layout-collapse-down() {
 			@include table-collapse();
 		}
 	}
 
-	&.table-collapse-sm {
+	&.ob-table-collapse-sm {
 		@include media-breakpoint-down(sm) {
 			@include table-collapse();
 		}
 	}
 
-	&.table-collapse-md {
+	&.ob-table-collapse-md {
 		@include media-breakpoint-down(md) {
 			@include table-collapse();
 		}
 	}
 
-	&.table-hover tbody tr:hover,
-	tr.active {
+	&.ob-table-hover tbody tr:hover,
+	tr.ob-active {
 		background-color: $brand-extra-light;
 	}
 }
 
-.table-scrollable {
+.ob-table-scrollable {
 	overflow-x: auto;
 }
 

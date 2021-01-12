@@ -9,8 +9,8 @@ import {Subject} from 'rxjs';
 @Component({
 	selector: 'ob-spinner',
 	exportAs: 'obSpinner',
-	template: `<div class="overlay" [class.overlay-fixed]="fixed" [@inOut]="$state">
-		<div class="spinner-viewport" #spinnerContainer>
+	template: `<div class="ob-overlay" [class.ob-overlay-fixed]="fixed" [@inOut]="$state">
+		<div class="ob-spinner-viewport" #spinnerContainer>
 			<span class="fa fa-spinner fa-spin fa-4x"></span>
 		</div>
 	</div>`,
@@ -28,7 +28,9 @@ import {Subject} from 'rxjs';
 				animate('250ms ease-in-out', keyframes([style({offset: 0, opacity: 1, display: 'block'}), style({offset: 1, opacity: 0, display: 'block'})]))
 			])
 		])
-	]
+	],
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
+	host: {class: 'ob-spinner'}
 })
 export class ObSpinnerComponent implements OnInit, OnDestroy {
 	@Input() channel: string = ObSpinnerService.CHANNEL;
@@ -47,7 +49,7 @@ export class ObSpinnerComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit() {
-		this.element.nativeElement.parentElement.classList.add('has-overlay');
+		this.element.nativeElement.parentElement.classList.add('ob-has-overlay');
 	}
 
 	ngOnDestroy(): void {

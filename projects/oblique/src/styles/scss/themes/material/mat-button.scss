@@ -12,7 +12,7 @@
 		outline: none;
 	}
 
-	.outline &:focus {
+	.ob-outline &:focus {
 		outline: 2px solid $brand-primary;
 		outline-offset: -4px;
 		box-shadow: 0 0 $spacing-xs 0 $brand-default;
@@ -34,7 +34,7 @@
 	}
 }
 
-.application {
+.ob-master-layout {
 	.mat-button,
 	.mat-icon-button,
 	.mat-stroked-button,

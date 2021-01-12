@@ -5,7 +5,8 @@
       "name": "ObUnknownRouteComponent",
       "selector": "ob-unknown-route",
       "type": "component",
-      "since": "5.0.0"
+      "since": "5.0.0",
+      "updated": "6.0.0"
     }
   ]
 }

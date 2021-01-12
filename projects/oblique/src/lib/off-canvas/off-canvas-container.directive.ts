@@ -6,10 +6,10 @@ import {Subject} from 'rxjs';
 
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
-	selector: '.offcanvas, ob-master-layout'
+	selector: '.ob-off-canvas, ob-master-layout'
 })
 export class ObOffCanvasContainerDirective implements OnDestroy {
-	@HostBinding('class.offcanvas-in') open = false;
+	@HostBinding('class.ob-off-canvas-in') open = false;
 	private readonly unsubscribe = new Subject();
 
 	constructor(offCanvas: ObOffCanvasService) {

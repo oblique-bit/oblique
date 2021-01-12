@@ -2,7 +2,10 @@ import {Directive, HostListener, OnDestroy} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 
 @Directive({
-	selector: '[obParentFormDirective]'
+	selector: '[obParentFormDirective]',
+	exportAs: 'obParentFormDirective',
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
+	host: {class: 'ob-parent-form-directive'}
 })
 export class ObParentFormDirective implements OnDestroy {
 	public readonly submit$: Observable<void>;

@@ -9,7 +9,7 @@
 			[class.disabled]="item.disabled === true || null"
 		>
 			<a
-				class="nav-link"
+				class="ob-nav-link"
 				role="treeitem"
 				aria-selected="false"
 				[routerLink]="item.routes"
@@ -30,9 +30,9 @@
 			</a>
 			<div id="#{{ itemKey(item) }}" class="collapse" *ngIf="item.items" [ngbCollapse]="item.collapsed">
 				<ul
-					class="nav-tree"
+					class="ob-nav-tree"
 					[ngClass]="variant"
-					[class.expanded]="parentExpanded && !item.collapsed"
+					[class.ob-expanded]="parentExpanded && !item.collapsed"
 					[class.disabled]="item.disabled === true || null"
 					role="tree"
 				>
@@ -43,6 +43,6 @@
 		</li>
 	</ng-template>
 </ng-template>
-<ul #root class="nav-tree nav-indent nav-toggle expanded" role="tree" [ngClass]="variant">
+<ul #root class="ob-nav-tree ob-nav-indent ob-nav-toggle ob-expanded" role="tree" [ngClass]="variant">
 	<ng-container *ngTemplateOutlet="itemList; context: { $implicit: items, parentExpanded: true }"></ng-container>
 </ul>

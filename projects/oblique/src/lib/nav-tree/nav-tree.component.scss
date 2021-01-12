@@ -3,14 +3,14 @@
 @import "../../styles/scss/core/mixins/nav";
 @import "../../styles/scss/core/mixins/icon";
 
-.nav-tree {
+.ob-nav-tree {
 	display: flex;
 	flex-direction: column;
 	list-style: none;
 	margin-bottom: 0;
 	padding: 0;
 
-	.nav-link {
+	.ob-nav-link {
 		display: block;
 		padding: $spacing-xs $spacing-default;
 		text-decoration: none;
@@ -24,34 +24,34 @@
 		}
 	}
 
-	&.nav-indent {
+	&.ob-nav-indent {
 		@include nav-indent();
 	}
 
-	&.nav-bordered .nav-link {
+	&.ob-nav-bordered .ob-nav-link {
 		border-bottom: 1px solid $gray-light;
 	}
 
-	&.nav-hover.nav-bordered .nav-link {
+	&.ob-nav-hover.ob-nav-bordered .ob-nav-link {
 		@include nav-hover(-1);
 	}
 
-	&.nav-hover:not(.nav-bordered) .nav-link {
+	&.ob-nav-hover:not(.ob-nav-bordered) .ob-nav-link {
 		@include nav-hover();
 	}
 
-	&.nav-toggle {
+	&.ob-nav-toggle {
 		$fa-fw-width-px: 20px;
-		&.nav-indent {
+		&.ob-nav-indent {
 			$indent: $fa-fw-width-px + $spacing-sm;
-			.nav-link {
+			.ob-nav-link {
 				padding-left: $indent;
 			}
 
 			@include nav-indent($indent);
 		}
 
-		.nav-link.has-child {
+		.ob-nav-link.has-child {
 			@include icon($fa-var-angle-down);
 
 			&.collapsed::before {
@@ -69,7 +69,7 @@
 		}
 	}
 
-	.pattern-highlight {
+	.ob-pattern-highlight {
 		font-weight: bold;
 		text-decoration: underline;
 	}

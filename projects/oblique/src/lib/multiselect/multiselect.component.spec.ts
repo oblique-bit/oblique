@@ -43,9 +43,9 @@ describe('MultiselectComponent', () => {
 	});
 
 	describe('toggleDropdown', () => {
-		it('should be triggered by a click on the .multiselect-toggle button', () => {
+		it('should be triggered by a click on the .ob-multiselect-toggle button', () => {
 			spyOn(component, 'toggleDropdown').and.callThrough();
-			const button = fixture.debugElement.query(By.css('.multiselect-toggle'));
+			const button = fixture.debugElement.query(By.css('.ob-multiselect-toggle'));
 
 			button.nativeElement.click();
 
@@ -249,12 +249,12 @@ describe('MultiselectComponent', () => {
 			component.options = stringOptions;
 		});
 
-		it('should be triggered by a click on .multiselect-control-check button', () => {
+		it('should be triggered by a click on .ob-multiselect-control-check button', () => {
 			spyOn(component, 'checkAll').and.callThrough();
 			component.isVisible = true;
 			fixture.detectChanges();
 
-			const button = fixture.debugElement.query(By.css('button.multiselect-control-check'));
+			const button = fixture.debugElement.query(By.css('button.ob-multiselect-control-check'));
 
 			button.nativeElement.click();
 
@@ -289,12 +289,12 @@ describe('MultiselectComponent', () => {
 			component.options = stringOptions;
 		});
 
-		it('should be triggered by a click on .multiselect-control-uncheck button', () => {
+		it('should be triggered by a click on .ob-multiselect-control-uncheck button', () => {
 			spyOn(component, 'uncheckAll').and.callThrough();
 			component.isVisible = true;
 			fixture.detectChanges();
 
-			const button = fixture.debugElement.query(By.css('button.multiselect-control-uncheck'));
+			const button = fixture.debugElement.query(By.css('button.ob-multiselect-control-uncheck'));
 
 			button.nativeElement.click();
 

@@ -60,6 +60,6 @@ describe('ColumnLayoutComponent', () => {
 	}));
 
 	it('should contain columnLayout class', async(() => {
-		expect(fixture.debugElement.query(By.css('ob-column-layout')).nativeElement.classList).toContain('column-layout');
+		expect(fixture.debugElement.query(By.css('ob-column-layout')).nativeElement.classList).toContain('ob-column-layout');
 	}));
 });

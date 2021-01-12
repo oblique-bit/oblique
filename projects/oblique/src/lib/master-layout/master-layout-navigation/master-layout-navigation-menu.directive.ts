@@ -4,7 +4,9 @@ import {Subject} from 'rxjs';
 
 @Directive({
 	selector: '[obMasterLayoutNavigationMenu]',
-	exportAs: 'obMasterLayoutNavigationMenu'
+	exportAs: 'obMasterLayoutNavigationMenu',
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
+	host: {class: 'ob-master-layout-navigation-menu'}
 })
 export class ObMasterLayoutNavigationMenuDirective implements AfterViewInit, OnDestroy {
 	@Output()

@@ -1,5 +1,5 @@
-.nav-stepper {
-	.nav-step::before {
+.ob-nav-stepper {
+	.ob-nav-step::before {
 		font-size: .85rem;
 		width: 30px;
 		height: 30px;
@@ -7,14 +7,14 @@
 		border-width: 3px;
 	}
 
-	.step-link,
-	.step-title {
+	.ob-step-link,
+	.ob-step-title {
 		line-height: 30px;
 		font-size: 1rem;
 	}
 
-	&:not(.nav-horizontal) {
-		.nav-step {
+	&:not(.ob-nav-horizontal) {
+		.ob-nav-step {
 			padding-left: 36px !important;
 
 			&:not(:first-child) {
@@ -32,8 +32,8 @@
 		}
 	}
 
-	&.nav-horizontal {
-		.nav-step {
+	&.ob-nav-horizontal {
+		.ob-nav-step {
 			&:not(:first-child) {
 				padding-left: 15px;
 			}
@@ -50,8 +50,8 @@
 	}
 
 
-	&.nav-stepper-sm {
-		.nav-step::before {
+	&.ob-nav-stepper-sm {
+		.ob-nav-step::before {
 			font-size: .725rem;
 			width: 24px;
 			height: 24px;
@@ -59,14 +59,14 @@
 			border-width: 2px;
 		}
 
-		.step-link,
-		.step-title {
+		.ob-step-link,
+		.ob-step-title {
 			line-height: 24px;
 			font-size: 0.875rem;
 		}
 
-		&:not(.nav-horizontal) {
-			.nav-step {
+		&:not(.ob-nav-horizontal) {
+			.ob-nav-step {
 				padding-left: 29px !important;
 
 				&:not(:first-child) {
@@ -84,8 +84,8 @@
 			}
 		}
 
-		&.nav-horizontal {
-			.nav-step {
+		&.ob-nav-horizontal {
+			.ob-nav-step {
 				&:not(:first-child) {
 					padding-left: 12px;
 				}
@@ -103,8 +103,8 @@
 	}
 
 
-	&.nav-stepper-lg {
-		.nav-step::before {
+	&.ob-nav-stepper-lg {
+		.ob-nav-step::before {
 			font-size: 1.5rem;
 			width: 80px;
 			height: 80px;
@@ -112,14 +112,14 @@
 			border-width: 4px;
 		}
 
-		.step-link,
-		.step-title {
+		.ob-step-link,
+		.ob-step-title {
 			line-height: 80px;
 			font-size: 1.65rem;
 		}
 
-		&:not(.nav-horizontal) {
-			.nav-step {
+		&:not(.ob-nav-horizontal) {
+			.ob-nav-step {
 				padding-left: 96px !important;
 
 				&:not(:first-child) {
@@ -137,8 +137,8 @@
 			}
 		}
 
-		&.nav-horizontal {
-			.nav-step {
+		&.ob-nav-horizontal {
+			.ob-nav-step {
 				&:not(:first-child) {
 					padding-left: 30px;
 				}

@@ -7,7 +7,7 @@ import {AfterViewInit, Component, ContentChild, HostBinding, Input, OnChanges, T
 	styleUrls: ['./sticky.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
-	host: {class: 'sticky'}
+	host: {class: 'ob-sticky'}
 })
 export class ObStickyComponent implements OnChanges, AfterViewInit {
 	@ContentChild('obStickyHeader') readonly stickyHeaderTemplate: TemplateRef<any>;
@@ -15,9 +15,9 @@ export class ObStickyComponent implements OnChanges, AfterViewInit {
 	@ContentChild('obStickyFooter') readonly stickyFooterTemplate: TemplateRef<any>;
 	@Input() headerSize: string;
 	@Input() footerSize: string;
-	@Input() @HostBinding('class.no-layout') noLayout = false;
-	@HostBinding('class.sticky-lg') isMainStickyLarge = false;
-	@HostBinding('class.sticky-sm') isMainStickySmall = false;
+	@Input() @HostBinding('class.ob-no-layout') noLayout = false;
+	@HostBinding('class.ob-sticky-lg') isMainStickyLarge = false;
+	@HostBinding('class.ob-sticky-sm') isMainStickySmall = false;
 	nestedStickySize: string;
 
 	private static readonly SIZES = ['sm', 'md', 'lg'];

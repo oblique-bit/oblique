@@ -26,13 +26,13 @@ import {ObEMasterLayoutEventValues} from '../master-layout/master-layout.datatyp
 	styleUrls: ['./column-layout.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
-	host: {class: 'column-layout'}
+	host: {class: 'ob-column-layout'}
 })
 export class ObColumnLayoutComponent implements AfterViewInit {
 	@Input() left = true;
 	@Input() right = true;
-	@Input() @HostBinding('class.wider-columns') wider = false;
-	@Input() @HostBinding('class.no-layout') noLayout = false;
+	@Input() @HostBinding('class.ob-wider-columns') wider = false;
+	@Input() @HostBinding('class.ob-no-layout') noLayout = false;
 	@ViewChild('columnLeft') private readonly columnLeft: ObColumnPanelDirective;
 	@ViewChild('columnRight') private readonly columnRight: ObColumnPanelDirective;
 	@ViewChildren('columnToggle') private readonly toggles: QueryList<ElementRef>;

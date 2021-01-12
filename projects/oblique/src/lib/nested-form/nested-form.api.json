@@ -5,8 +5,10 @@
       "name": "ObParentFormDirective",
       "usage": "Should be applied to the root element with a <code>formGroup</code> directive. It will simply forward its <code>submit</code> and <code>reset</code> events.",
       "selector": "obParentForm",
+      "exported": "obParentFormDirective",
       "type": "directive",
       "since": "5.0.0",
+      "updated": "6.0.0",
       "variables": [
         {
           "name": "submit$",

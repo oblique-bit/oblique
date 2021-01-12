@@ -2,7 +2,7 @@ import {Directive} from '@angular/core';
 
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
-	selector: '.offcanvas-backdrop'
+	selector: '.ob-off-canvas-backdrop'
 })
 export class ObMockOffCanvasBackdropDirective {
 	close(): void {}

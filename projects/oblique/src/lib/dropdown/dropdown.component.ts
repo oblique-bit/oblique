@@ -16,7 +16,7 @@ export class ObDropdownComponent implements OnInit {
 	@HostBinding('attr.aria-owns') @HostBinding('attr.aria-controls') idContent: string;
 
 	//Dropdown features
-	@HostBinding('class.open') isOpen = false;
+	@HostBinding('class.ob-expanded') isOpen = false;
 	@Input() position = 'middle';
 	@Input() @HostBinding('id') id: string;
 

@@ -4,7 +4,9 @@ import {ObSchemaValidationDirective} from './schema-validation.directive';
 
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
-	selector: '[ngModel]'
+	selector: '[ngModel]',
+	exportAs: 'obSchemaRequiredValidation',
+	host: {class: 'ob-schema-required-validation'}
 })
 export class ObSchemaRequiredDirective implements OnInit {
 	@HostBinding('attr.required') required: boolean;

@@ -18,7 +18,7 @@
 		}
 	}
 	@if $feedback-icon {
-		&.feedback {
+		&.ob-feedback {
 			&::before {
 				content: fa-content($feedback-icon);
 				font-family: $icon-font-family;
@@ -31,7 +31,7 @@
 }
 
 @mixin stepper-variant($node-font-size, $node-step-size) {
-	.nav-step {
+	.ob-nav-step {
 		&::before {
 			font-size: $node-font-size;
 			width: $node-step-size;
@@ -40,13 +40,13 @@
 		}
 	}
 
-	.step-link,
-	.step-title {
+	.ob-step-link,
+	.ob-step-title {
 		font-size: $node-font-size;
 		line-height: $node-step-size + 2px;
 	}
 
-	&:not(.nav-horizontal) .nav-step {
+	&:not(.ob-nav-horizontal) .ob-nav-step {
 		padding-left: $node-step-size * 1.2;
 
 		&::after {
@@ -54,7 +54,7 @@
 		}
 	}
 
-	&.nav-horizontal .nav-step::after {
+	&.ob-nav-horizontal .ob-nav-step::after {
 		top: $node-step-size / 2 - 1px;
 	}
 }

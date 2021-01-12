@@ -4,10 +4,10 @@
 	display: none;
 }
 
-.text-control {
+.ob-text-control {
 	display: flex !important;
 
-	.text-control-clear {
+	.ob-text-control-clear {
 		z-index: 3;
 		background-color: transparent;
 		border: none;
@@ -25,14 +25,14 @@
 		}
 	}
 
-	&:hover .text-control-clear,
-	input:focus + .text-control-clear,
-	.text-control-clear:focus {
+	&:hover .ob-text-control-clear,
+	input:focus + .ob-text-control-clear,
+	.ob-text-control-clear:focus {
 		opacity: 1;
 	}
 
-	input[disabled] + .text-control-clear,
-	input[readonly] + .text-control-clear {
+	input[disabled] + .ob-text-control-clear,
+	input[readonly] + .ob-text-control-clear {
 		display: none;
 	}
 }

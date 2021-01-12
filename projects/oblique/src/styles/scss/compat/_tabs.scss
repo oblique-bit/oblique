@@ -1,15 +1,15 @@
 @import "../core/variables";
 @import "../core/mixins/typography";
 
-.application {
-	.tabs {
+.ob-master-layout {
+	.ob-tabs {
 		border-bottom: 1px solid $gray-light;
 
-		.tab-item {
+		.ob-tab-item {
 			margin-bottom: -1px;
 		}
 
-		.tab-link {
+		.ob-tab-link {
 			position: relative;
 			padding: $spacing-xs $spacing-default;
 			font-size: 1rem;
@@ -23,7 +23,7 @@
 			border-top-left-radius: $border-radius-base;
 			border-top-right-radius: $border-radius-base;
 
-			&.active {
+			&.ob-active {
 				font-weight: bold;
 			}
 

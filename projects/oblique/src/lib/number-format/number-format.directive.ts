@@ -3,7 +3,9 @@ import {NgControl} from '@angular/forms';
 
 @Directive({
 	selector: '[obNumberFormat]',
-	exportAs: 'obNumberFormat'
+	exportAs: 'obNumberFormat',
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
+	host: {class: 'ob-number-format'}
 })
 export class ObNumberFormatDirective implements OnInit {
 	@Input() decimals = 2;

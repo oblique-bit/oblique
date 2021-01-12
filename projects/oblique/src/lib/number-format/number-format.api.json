@@ -7,6 +7,7 @@
       "exported": "obNumberFormat",
       "type": "directive",
       "since": "2.0.0",
+      "updated": "6.0.0",
       "inputs": [
         {
           "name": "decimals",

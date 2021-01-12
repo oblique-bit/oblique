@@ -13,7 +13,7 @@ import {Subject} from 'rxjs';
 	styleUrls: ['./master-layout-navigation.component.scss', './master-layout-navigation.component-scrollable.scss'],
 	encapsulation: ViewEncapsulation.None,
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
-	host: {class: 'application-navigation'}
+	host: {class: 'ob-master-layout-navigation'}
 })
 export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit {
 	isFullWidth = this.masterLayout.navigation.isFullWidth;
@@ -48,7 +48,7 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit 
 	}
 
 	ngAfterViewInit() {
-		this.nav = this.el.nativeElement.querySelector('.main-nav:not(.sub-nav)');
+		this.nav = this.el.nativeElement.querySelector('.ob-main-nav:not(.ob-sub-nav)');
 		this.masterLayout.navigation.scrolled.pipe(takeUntil(this.unsubscribe)).subscribe(offset => this.updateScroll(offset));
 	}
 

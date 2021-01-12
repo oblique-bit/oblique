@@ -13,7 +13,8 @@ import {Subject} from 'rxjs';
  * ></or-nav-tree>
  */
 @Directive({
-	selector: '[obNavTreeFakeFocus]'
+	selector: '[obNavTreeFakeFocus]',
+	exportAs: 'obNavTreeFakeFocus'
 })
 export class ObNavTreeFakeFocusDirective implements OnDestroy {
 	public static readonly EVENT_TOGGLE_COLLAPSED = 'ob.navTree.item.toggleCollapsed';
@@ -41,8 +42,8 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 	public static readonly CSS_SELECTORS = {
 		LINK_ACTIVE: `.${ObNavTreeFakeFocusDirective.CSS_CLASSES.LINK_ACTIVE}`,
 		FAKE_FOCUS: `.${ObNavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS}`,
-		ITEM_LINK: '.nav-link',
-		ITEM_WRAPPER: '.nav-tree.expanded:not(.disabled) > li:not(.nav-header):not(.disabled)'
+		ITEM_LINK: '.ob-nav-link',
+		ITEM_WRAPPER: '.ob-nav-tree.ob-expanded:not(.disabled) > li:not(.ob-nav-header):not(.disabled)'
 	};
 
 	@Input('obNavTreeFakeFocus')

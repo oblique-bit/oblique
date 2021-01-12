@@ -44,7 +44,8 @@ export class UpdateV5toV6 implements IMigrations {
 				this.renameDefaultLanguage(),
 				this.adaptDependencies(),
 				this.migrateDropdown(),
-				this.removeUnsubscribe()
+				this.removeUnsubscribe(),
+				this.adaptCssClassNaming()
 			])(tree, _context);
 		};
 	}
@@ -280,5 +281,72 @@ export class UpdateV5toV6 implements IMigrations {
 				'\n$1ngOnDestroy() {\n$1$1this.unsubscribe.next();\n$1$1this.unsubscribe.complete();\n$1}\n\n$1constructor('
 			);
 		}
+	}
+
+	private addPrefixMatchExactOrSuffix(tree: Tree, filePath: string, target: string, suffix: string[]) {
+		replaceInFile(tree, filePath, new RegExp(`\\.(${target}(?:[\\s{]|(?:-(?:${suffix.join('|')}))))`, 'g'), '.ob-$1');
+	}
+
+	private addPrefixMatchSuffix(tree: Tree, filePath: string, target: string, suffix: string[]) {
+		replaceInFile(tree, filePath, new RegExp(`\\.(${target}-(?:${suffix.join('|')})[\\s{])`, 'g'), '.ob-$1');
+	}
+
+	private addPrefixMatchExact(tree: Tree, filePath: string, targets: string[]) {
+		replaceInFile(tree, filePath, new RegExp(`\\.(${targets.join('|')}[\\s{])`, 'g'), '.ob-$1');
+	}
+
+	private renameExactOrSuffix(tree: Tree, filePath: string, target: string, suffix: string[], result: string) {
+		replaceInFile(tree, filePath, new RegExp(`\\.${target}([\\s{]|(?:-(?:${suffix.join('|')})))`, 'g'), `.${result}$1`);
+	}
+
+	private adaptCssClassNaming(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Adapt naming of oblique css classes');
+			const apply = (filePath: string) => {
+				this.addPrefixMatchExactOrSuffix(tree, filePath, 'toggle', ['after', 'before', 'justified', 'down', 'up', 'right', 'left']);
+				this.addPrefixMatchExactOrSuffix(tree, filePath, 'notification', ['container', 'title']);
+				this.addPrefixMatchExactOrSuffix(tree, filePath, 'alert', ['nfo', 'success', 'warning', 'error', 'link']);
+				this.addPrefixMatchExactOrSuffix(tree, filePath, 'search-box', ['input']);
+				this.addPrefixMatchExactOrSuffix(tree, filePath, 'text-control', ['clear']);
+				this.addPrefixMatchExactOrSuffix(tree, filePath, 'sticky', ['content', 'main', 'header', 'footer', 'title', 'actions', 'sm', 'lg', 'layout']);
+				this.addPrefixMatchExactOrSuffix(tree, filePath, 'nav-stepper', ['sm', 'lg']);
+				this.addPrefixMatchExactOrSuffix(tree, filePath, 'table', ['cicd', 'plain', 'collapse', 'hover', 'scrollable']);
+				this.addPrefixMatchSuffix(tree, filePath, 'column', ['layout', 'toggle', 'right', 'left', 'main', 'content']);
+				this.addPrefixMatchSuffix(tree, filePath, 'cover', ['layout', 'viewport', 'header', 'alert']);
+				this.addPrefixMatchSuffix(tree, filePath, 'control', ['link', 'item', 'icon', 'label', 'toggle', 'locale']);
+				this.addPrefixMatchSuffix(tree, filePath, 'multiselect', ['toggle', 'label', 'control']);
+				this.addPrefixMatchSuffix(tree, filePath, 'nav', ['tree', 'link', 'indent', 'bordered', 'hover', 'toggle', 'step', 'horizontal']);
+				this.addPrefixMatchSuffix(tree, filePath, 'tab', ['item', 'link']);
+				this.addPrefixMatchSuffix(tree, filePath, 'search', ['results-list', 'dropdown']);
+				this.addPrefixMatchExact(tree, filePath, [
+					'navigation-scrollable(?:-(?:control(?:-(?:left|right))?|content))?',
+					'main-layout',
+					'assess-keys',
+					'accessible',
+					'header-(?:locale|controls)',
+					'main-nav',
+					'sub-nav(?:-item)?',
+					'sub-menu(?:-back)?',
+					'tabs',
+					'step-link',
+					'spinner-viewport',
+					'dropdown-content',
+					'pattern-highlight',
+					'custom',
+					'top-control',
+					'highlight',
+					'slide-control'
+				]);
+				this.renameExactOrSuffix(
+					tree,
+					filePath,
+					'application',
+					['navigation', 'header', 'fixed', 'brand', 'footer', 'scrolling', 'content'],
+					'ob-master-layout'
+				);
+				this.renameExactOrSuffix(tree, filePath, 'offcanvas', ['sidebar', 'main', 'in', 'header', 'content', 'backdrop'], 'ob-off-canvas');
+			};
+			return applyInTree(tree, apply, '*.scss');
+		};
 	}
 }

@@ -3,7 +3,9 @@ import {ObSelectableDirective} from './selectable.directive';
 
 @Directive({
 	selector: '[obSelectableGroup]',
-	exportAs: 'obSelectableGroup'
+	exportAs: 'obSelectableGroup',
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
+	host: {class: 'ob-selectable-group'}
 })
 export class ObSelectableGroupDirective {
 	@HostBinding('attr.role') role = 'group';

@@ -1,7 +1,8 @@
 import {Directive, ElementRef, Input} from '@angular/core';
 
 @Directive({
-	selector: '[obNavTreeFakeFocus]'
+	selector: '[obNavTreeFakeFocus]',
+	exportAs: 'obNavTreeFakeFocus'
 })
 export class ObMockNavTreeFakeFocusDirective {
 	static readonly EVENT_TOGGLE_COLLAPSED = 'ob.navTree.item.toggleCollapsed';
@@ -28,7 +29,7 @@ export class ObMockNavTreeFakeFocusDirective {
 		LINK_ACTIVE: 'active',
 		FAKE_FOCUS: 'nav-tree-fake-focus',
 		ITEM_LINK: '.nav-link',
-		ITEM_WRAPPER: '.nav-tree.expanded:not(.disabled) > li:not(.nav-header):not(.disabled)'
+		ITEM_WRAPPER: '.ob-nav-tree.ob-expanded:not(.disabled) > li:not(.ob-nav-header):not(.disabled)'
 	};
 
 	@Input('obNavTreeFakeFocus')

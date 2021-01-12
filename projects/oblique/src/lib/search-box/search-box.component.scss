@@ -1,23 +1,23 @@
 @import "../../styles/scss/core/variables";
 @import "../../styles/scss/core/mixins/layout";
 
-.search-box .ob-dropdown {
+.ob-search-box .ob-dropdown {
 	position: absolute;
 
-	.dropdown-content {
+	.ob-dropdown-content {
 		top: $spacing-sm;
 
 		&.right {
 			transform: translateX(-$spacing-default);
 
-			.control-item & {
+			.ob-control-item & {
 				transform: translateX(-$spacing-default);
 			}
 		}
 	}
 }
 
-.noResult {
+.ob-no-result {
 	padding: $spacing-sm $spacing-default;
 
 	&:not(:only-child) {
@@ -25,7 +25,7 @@
 	}
 }
 
-.search-results-list {
+.ob-search-results-list {
 	top: $header-height-md;
 	left: 0;
 	background-color: $white;
@@ -33,7 +33,7 @@
 	transition: height $duration-default;
 	padding-left: 0.65em;
 
-	.highlight {
+	.ob-highlight {
 		font-weight: bold;
 		text-decoration: underline;
 	}
@@ -44,23 +44,23 @@
 	}
 }
 
-.search-box {
+.ob-search-box {
 	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
 	flex-wrap: wrap;
 
-	.control-toggle {
+	.ob-control-toggle {
 		margin: 0;
 		display: inline;
 	}
 
-	.control-icon {
+	.ob-control-icon {
 		font-size: 1.65em;
 	}
 
-	.search-box-input {
+	.ob-search-box-input {
 		overflow: hidden;
 		padding: 0;
 		display: inline-block;
@@ -87,8 +87,8 @@
 		transition: border-color $duration-default;
 	}
 
-	&.slide-control {
-		.search-box-input {
+	&.ob-slide-control {
+		.ob-search-box-input {
 			max-width: 0;
 			transition: max-width $duration-default, padding-left $duration-default / 3 * 2;
 
@@ -98,7 +98,7 @@
 			}
 		}
 
-		.search-dropdown{
+		.ob-search-dropdown{
 			max-height: 0;
 			overflow: hidden;
 			transition: max-height $duration-default;
@@ -108,25 +108,25 @@
 		&:focus-within,
 		&:active,
 		&:hover {
-			.search-box-input {
+			.ob-search-box-input {
 				max-width: 400px;
 				padding-left: 0.65em;
 			}
-			.search-dropdown{
+			.ob-search-dropdown{
 				overflow: inherit;
 				max-height: inherit;
 			}
 		}
 	}
 
-	&:not(.slide-control)::before,
-	&.slide-control:focus-within::before,
-	&.slide-control:hover::before {
+	&:not(.ob-slide-control)::before,
+	&.ob-slide-control:focus-within::before,
+	&.ob-slide-control:hover::before {
 		border-color: $gray;
 	}
 }
 
-.control-item .search-box {
+.ob-control-item .ob-search-box {
 	color: $gray-dark;
 
 	&:hover,

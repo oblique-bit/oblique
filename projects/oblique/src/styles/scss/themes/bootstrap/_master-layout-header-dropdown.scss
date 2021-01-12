@@ -2,11 +2,11 @@
 @import "../../core/mixins/bubble-tail";
 @import "../../core/mixins/layout";
 
-.application-header {
-	.header-controls {
-		.control-item {
+.ob-master-layout-header {
+	.ob-header-controls {
+		.ob-control-item {
 			> .tooltip,
-			> .control-link > .tooltip {
+			> .ob-control-link > .tooltip {
 				white-space: nowrap;
 
 				&.top {
@@ -54,7 +54,7 @@
 						height: 100%;
 						overflow-y: auto;
 
-						.nav-link {
+						.ob-nav-link {
 							margin-bottom: 0;
 							text-overflow: ellipsis;
 							white-space: nowrap;
@@ -95,7 +95,7 @@
 			@include layout-collapse-down() {
 				// Don't display control tooltips on small viewports:
 				> .tooltip,
-				> .control-link > .tooltip {
+				> .ob-control-link > .tooltip {
 					display: none !important;
 				}
 			}

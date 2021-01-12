@@ -4,6 +4,7 @@ import {ObILocaleObject} from '../master-layout.datatypes';
 
 @Component({
 	selector: 'ob-master-layout-header',
+	exportAs: 'obMasterLayoutHeader',
 	template: ''
 })
 export class ObMockMasterLayoutHeaderComponent {

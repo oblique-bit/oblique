@@ -1,12 +1,12 @@
 <div [ngClass]="{ dropdown: !dropup, dropup: dropup }">
-	<button type="button" class="multiselect-toggle btn btn-secondary" (click)="toggleDropdown()" [disabled]="disabled" [id]="idPrefix">
-		<span class="multiselect-label">
+	<button type="button" class="ob-multiselect-toggle btn btn-secondary" (click)="toggleDropdown()" [disabled]="disabled" [id]="idPrefix">
+		<span class="ob-multiselect-label">
 			<span role="list" [class.sr-only]="model.length > dynamicTitleMaxItems" *ngIf="model.length">
 				<span class="list-item" role="listitem" *ngFor="let option of model">{{ formatOptionForTitle(option) }}</span>
 			</span>
 			{{ title | translate: titleTranslateParams }}
 		</span>
-		<span class="toggle" [class.show]="isVisible"></span>
+		<span class="ob-toggle" [class.show]="isVisible"></span>
 	</button>
 	<div
 		*ngIf="isVisible"
@@ -31,13 +31,18 @@
 			</div>
 		</div>
 		<div class="dropdown-divider divider" *ngIf="enableSearch"></div>
-		<button [id]="idPrefix + '-check_all'" class="dropdown-item multiselect-control multiselect-control-check" *ngIf="showCheckAll" (click)="checkAll()">
+		<button
+			[id]="idPrefix + '-check_all'"
+			class="dropdown-item ob-multiselect-control ob-multiselect-control-check"
+			*ngIf="showCheckAll"
+			(click)="checkAll()"
+		>
 			<span class="fa fa-fw fa-check"></span>
 			{{ texts.checkAll | translate }}
 		</button>
 		<button
 			[id]="idPrefix + '-uncheck_all'"
-			class="dropdown-item multiselect-control multiselect-control-uncheck"
+			class="dropdown-item ob-multiselect-control ob-multiselect-control-uncheck"
 			*ngIf="showUncheckAll"
 			(click)="uncheckAll()"
 		>

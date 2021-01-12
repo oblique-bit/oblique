@@ -3,7 +3,9 @@ import {ObMasterLayoutComponentService} from '../master-layout/master-layout.com
 
 @Directive({
 	selector: '[obMasterLayoutHeaderToggle]',
-	exportAs: 'obMasterLayoutHeaderToggle'
+	exportAs: 'obMasterLayoutHeaderToggle',
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
+	host: {class: 'ob-master-layout-header-toggle'}
 })
 export class ObMasterLayoutHeaderToggleDirective {
 	constructor(private readonly masterLayout: ObMasterLayoutComponentService) {}

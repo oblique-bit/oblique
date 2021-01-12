@@ -1,6 +1,6 @@
 <h2 class="sr-only" *ngIf="links.length">{{ "i18n.oblique.header.navigation.title" | translate }}</h2>
 <button
-	class="navigation-scrollable-control navigation-scrollable-control-left"
+	class="ob-navigation-scrollable-control ob-navigation-scrollable-control-left"
 	type="button"
 	(click)="scrollLeft()"
 	*ngIf="isScrollable"
@@ -14,12 +14,12 @@
 	<ul
 		id="navigation"
 		*ngIf="links.length"
-		class="main-nav"
-		[class.navigation-scrollable-content]="isScrollable"
-		[class.main-nav-fw]="isFullWidth"
+		class="ob-main-nav"
+		[class.ob-navigation-scrollable-content]="isScrollable"
+		[class.ob-main-nav-fw]="isFullWidth"
 		tabindex="-1"
 	>
-		<li class="main-nav-item" obMasterLayoutNavigationItem *ngFor="let link of links">
+		<li class="ob-main-nav-item" obMasterLayoutNavigationItem *ngFor="let link of links">
 			<ng-container *ngIf="!link.isExternal">
 				<a
 					[attr.id]="link.id"
@@ -55,14 +55,14 @@
 					obAriaMenuButton="menu-{{ link.id || link.url }}"
 				>
 					<span>{{ link.label | translate }}</span>
-					<span class="toggle" aria-hidden="true"></span>
+					<span class="ob-toggle" aria-hidden="true"></span>
 				</button>
-				<div class="sub-menu" id="menu-{{ link.id || link.url }}" obMasterLayoutNavigationMenu>
-					<ul class="main-nav sub-nav">
+				<div class="ob-sub-menu" id="menu-{{ link.id || link.url }}" obMasterLayoutNavigationMenu>
+					<ul class="ob-main-nav ob-sub-nav">
 						<li>
-							<button class="sub-menu-back" type="button" obMasterLayoutNavigationToggle>
-								<span class="toggle" aria-hidden="true"></span>
-								<span class="label">{{ link.label | translate }}</span>
+							<button class="ob-sub-menu-back" type="button" obMasterLayoutNavigationToggle>
+								<span class="ob-toggle" aria-hidden="true"></span>
+								<span class="ob-label">{{ link.label | translate }}</span>
 							</button>
 						</li>
 						<li obMasterLayoutNavigationItem *ngFor="let child of link.children">
@@ -95,7 +95,7 @@
 	</ul>
 </nav>
 <button
-	class="navigation-scrollable-control navigation-scrollable-control-right"
+	class="ob-navigation-scrollable-control ob-navigation-scrollable-control-right"
 	(click)="scrollRight()"
 	type="button"
 	*ngIf="isScrollable"

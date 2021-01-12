@@ -20,14 +20,14 @@ let nextId = 0;
 	styleUrls: ['./search-box.component.scss', '../nav-tree/nav-tree.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
-	host: {class: 'search-box', role: 'search'}
+	host: {class: 'ob-search-box', role: 'search'}
 })
 export class ObSearchBoxComponent implements OnInit {
 	@Input() items: ObISearchWidgetItem[] = [];
 	@Input() placeholder = 'i18n.oblique.search.placeholder';
 	@Input() minPatternLength = 1;
 	@Input() maxResults = 10;
-	@Input() @HostBinding('class.slide-control') slide = true;
+	@Input() @HostBinding('class.ob-slide-control') slide = true;
 	filteredItems: ObISearchWidgetItem[] = [];
 	isOpened = false;
 	id = `search-input-${nextId++}`;

@@ -8,6 +8,7 @@
       "exported": "obButton",
       "type": "directive",
       "since": "6.0.0",
+      "updated": "6.0.0",
       "inputs": [
         {
           "name": "obButton",

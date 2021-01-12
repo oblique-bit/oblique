@@ -50,7 +50,7 @@ describe('NotificationComponent', () => {
 			fixture.detectChanges();
 
 			// Retrieve notifications form the component template view:
-			htmlNotifications = fixture.debugElement.queryAll(By.css('.notification'));
+			htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		});
 
 		it('', () => {
@@ -58,10 +58,10 @@ describe('NotificationComponent', () => {
 		});
 
 		it('with matching ObENotificationType CSS classes', () => {
-			const notificationAlerts = fixture.debugElement.queryAll(By.css('.notification.alert'));
-			expect(notificationAlerts[0].classes).toEqual(jasmine.objectContaining({alert: true}));
-			expect(notificationAlerts[0].classes).toEqual(jasmine.objectContaining({'alert-success': true}));
-			expect(notificationAlerts[0].classes).not.toEqual(jasmine.objectContaining({'alert-info': true}));
+			const notificationAlerts = fixture.debugElement.queryAll(By.css('.ob-notification.ob-alert'));
+			expect(notificationAlerts[0].classes).toEqual(jasmine.objectContaining({'ob-alert': true}));
+			expect(notificationAlerts[0].classes).toEqual(jasmine.objectContaining({'ob-alert-success': true}));
+			expect(notificationAlerts[0].classes).not.toEqual(jasmine.objectContaining({'ob-alert-info': true}));
 		});
 	});
 
@@ -69,7 +69,7 @@ describe('NotificationComponent', () => {
 		component.open({message, title, sticky: true});
 		fixture.detectChanges();
 
-		const button = fixture.debugElement.query(By.css('button.close'));
+		const button = fixture.debugElement.query(By.css('button.ob-close'));
 		button.triggerEventHandler('click', null);
 
 		// Wait for animation completion:
@@ -87,7 +87,7 @@ describe('NotificationComponent', () => {
 		fixture.detectChanges();
 
 		expect(component.notifications.length).toBe(3);
-		let htmlNotifications = fixture.debugElement.queryAll(By.css('.notification'));
+		let htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		expect(htmlNotifications.length).toBe(3);
 
 		component.clear();
@@ -95,7 +95,7 @@ describe('NotificationComponent', () => {
 
 		expect(component.notifications.length).toBe(0);
 
-		htmlNotifications = fixture.debugElement.queryAll(By.css('.notification'));
+		htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		expect(htmlNotifications.length).toBe(0);
 	});
 
@@ -107,7 +107,7 @@ describe('NotificationComponent', () => {
 		fixture.detectChanges();
 
 		expect(component.notifications.length).toBe(1);
-		const htmlNotifications = fixture.debugElement.queryAll(By.css('.notification'));
+		const htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		expect(htmlNotifications.length).toBe(1);
 	});
 
@@ -119,7 +119,7 @@ describe('NotificationComponent', () => {
 		fixture.detectChanges();
 
 		expect(component.notifications.length).toBe(3);
-		const htmlNotifications = fixture.debugElement.queryAll(By.css('.notification'));
+		const htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		expect(htmlNotifications.length).toBe(3);
 	});
 
@@ -137,7 +137,7 @@ describe('NotificationComponent', () => {
 		expect(component.close).toHaveBeenCalledWith(notification);
 		expect(component.notifications.length).toBe(0);
 
-		const htmlNotifications = fixture.debugElement.queryAll(By.css('.notification'));
+		const htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		expect(htmlNotifications.length).toBe(0);
 	}));
 
@@ -153,7 +153,7 @@ describe('NotificationComponent', () => {
 		expect(component.close).not.toHaveBeenCalled();
 		expect(component.notifications.length).toBe(1);
 
-		const htmlNotifications = fixture.debugElement.queryAll(By.css('.notification'));
+		const htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		expect(htmlNotifications.length).toBe(1);
 	}));
 

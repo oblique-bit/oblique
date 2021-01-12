@@ -11,7 +11,9 @@ import {ObParentFormDirective} from '../nested-form/parent-form.directive';
  */
 @Directive({
 	selector: '[obFormControlState]',
-	exportAs: 'obFormControlState'
+	exportAs: 'obFormControlState',
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
+	host: {class: 'ob-form-control-state'}
 })
 export class ObFormControlStateDirective implements AfterViewInit, OnDestroy {
 	@Input() pristineValidation = false;

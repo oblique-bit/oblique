@@ -14,12 +14,12 @@ import {Subject} from 'rxjs';
 	styleUrls: ['./master-layout-footer.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
-	host: {class: 'application-footer'}
+	host: {class: 'ob-master-layout-footer'}
 })
 export class ObMasterLayoutFooterComponent implements OnDestroy {
 	home = this.config.homePageRoute;
 	isCustom = this.masterLayout.footer.isCustom;
-	@HostBinding('class.application-footer-sm') isSmall = this.masterLayout.footer.isSmall;
+	@HostBinding('class.ob-master-layout-footer-sm') isSmall = this.masterLayout.footer.isSmall;
 	@ContentChildren('obFooterLink') readonly templates: QueryList<TemplateRef<any>>;
 	private readonly unsubscribe = new Subject();
 
