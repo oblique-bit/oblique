@@ -7,10 +7,10 @@ import {Subject} from 'rxjs';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'nav-tree-sample',
+	selector: 'ob-nav-tree-sample',
 	templateUrl: './nav-tree-sample.component.html'
 })
-export class NavTreeSampleComponent implements OnInit, OnDestroy {
+export class ObNavTreeSampleComponent implements OnInit, OnDestroy {
 	public items: Array<ObNavTreeItemModel>;
 	public variant = ObNavTreeComponent.DEFAULTS.VARIANT;
 	public activateAncestors = true;
@@ -40,7 +40,7 @@ export class NavTreeSampleComponent implements OnInit, OnDestroy {
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'nav-tree-detail-sample',
+	selector: 'ob-nav-tree-detail-sample',
 	template: ` <div *ngIf="routing" class="card">
 		<div class="card-header">
 			<h3 class="card-title">Output</h3>
@@ -52,7 +52,7 @@ export class NavTreeSampleComponent implements OnInit, OnDestroy {
 		</div>
 	</div>`
 })
-export class NavTreeDetailSampleComponent implements OnInit, OnDestroy {
+export class ObNavTreeDetailSampleComponent implements OnInit, OnDestroy {
 	routing: string;
 	private readonly unsubscribe = new Subject();
 

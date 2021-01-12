@@ -41,7 +41,7 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HomePageComponent} from './home/home.page';
 import {HttpMockErrorInterceptor} from './samples/http-interceptor/http-mock-error.interceptor';
-import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
+import {ObHttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
 import {environment} from '../environments/environment';
 import {registerLocaleData} from '@angular/common';
 
@@ -106,7 +106,7 @@ export class AppModule {
 		tooltipConfig.container = 'body';
 		datepickerConfig.navigation = 'arrows';
 
-		interceptorConfig.api.url = HttpInterceptorSampleComponent.API_URL;
+		interceptorConfig.api.url = ObHttpInterceptorSampleComponent.API_URL;
 		config.locale.locales = ['en-GB', 'fr-CH'];
 		config.layout.hasOffCanvas = true;
 		theme.setTheme(THEMES.BOOTSTRAP);

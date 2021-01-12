@@ -6,12 +6,12 @@ import {ObThemeService} from 'oblique';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'app-nested-form-child-td-sample',
+	selector: 'ob-nested-form-child-td-sample',
 	exportAs: 'childTD',
 	templateUrl: './nested-form-child-td-sample.component.html',
 	styleUrls: ['./mandatory.scss']
 })
-export class NestedFormChildTDSampleComponent {
+export class ObNestedFormChildTDSampleComponent {
 	@ViewChild(NgForm, {static: true}) ngForm;
 	field1 = '';
 	field2 = '';

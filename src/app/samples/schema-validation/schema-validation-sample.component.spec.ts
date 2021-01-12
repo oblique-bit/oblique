@@ -2,12 +2,12 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {SchemaValidationSampleComponent} from './schema-validation-sample.component';
+import {ObSchemaValidationSampleComponent} from './schema-validation-sample.component';
 import {ObliqueTestingModule} from 'projects/oblique/src/lib/oblique-testing.module';
 
-describe('SchemaValidationSampleComponent', () => {
-	let component: SchemaValidationSampleComponent;
-	let fixture: ComponentFixture<SchemaValidationSampleComponent>;
+describe('ObSchemaValidationSampleComponent', () => {
+	let component: ObSchemaValidationSampleComponent;
+	let fixture: ComponentFixture<ObSchemaValidationSampleComponent>;
 	let mockNotificationService;
 
 	beforeEach(() => {
@@ -20,13 +20,13 @@ describe('SchemaValidationSampleComponent', () => {
 
 		TestBed.configureTestingModule({
 			imports: [FormsModule, ReactiveFormsModule, NgbModule, ObliqueTestingModule],
-			declarations: [SchemaValidationSampleComponent],
+			declarations: [ObSchemaValidationSampleComponent],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
 	});
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(SchemaValidationSampleComponent);
+		fixture = TestBed.createComponent(ObSchemaValidationSampleComponent);
 		component = fixture.componentInstance;
 		// Initialize the component to avoid async failure:
 		component.ngOnInit();

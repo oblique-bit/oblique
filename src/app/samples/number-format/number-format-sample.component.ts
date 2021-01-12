@@ -3,10 +3,10 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'app-number-format',
+	selector: 'ob-number-format',
 	templateUrl: './number-format-sample.component.html'
 })
-export class NumberFormatSampleComponent {
+export class ObNumberFormatSampleComponent {
 	number1 = 5.236548;
 	number2 = 5.236548;
 

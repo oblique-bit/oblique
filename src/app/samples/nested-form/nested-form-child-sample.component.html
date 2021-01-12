@@ -11,7 +11,7 @@
 			<mat-error></mat-error>
 		</mat-form-field>
 		<ob-nested-form formControlName="grandchild" [nestedForm]="grandChild.grandChildForm">
-			<app-nested-form-grandchild-sample #grandChild></app-nested-form-grandchild-sample>
+			<ob-nested-form-grandchild-sample #grandChild></ob-nested-form-grandchild-sample>
 		</ob-nested-form>
 	</ng-container>
 	<ng-template #bootstrap>
@@ -26,7 +26,7 @@
 			<ob-error-messages></ob-error-messages>
 		</div>
 		<ob-nested-form formControlName="grandchild" [nestedForm]="grandChildB.grandChildForm">
-			<app-nested-form-grandchild-sample #grandChildB="grandChild"></app-nested-form-grandchild-sample>
+			<ob-nested-form-grandchild-sample #grandChildB="grandChild"></ob-nested-form-grandchild-sample>
 		</ob-nested-form>
 	</ng-template>
 </div>

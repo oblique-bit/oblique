@@ -6,10 +6,10 @@ import {DateAdapter} from '@angular/material/core';
 import {ObLanguageService} from '../../../../projects/oblique/src/lib/language/language.service';
 
 @Component({
-	selector: 'ob-language',
-	templateUrl: './language.component.html'
+	selector: 'ob-language-sample',
+	templateUrl: './language-sample.component.html'
 })
-export class LanguageComponent {
+export class ObLanguageSampleComponent {
 	material: Observable<boolean>;
 	today = new Date();
 	format = 'datetime';

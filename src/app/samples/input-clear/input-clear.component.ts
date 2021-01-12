@@ -4,4 +4,4 @@ import {Component} from '@angular/core';
 	selector: 'ob-input-clear',
 	templateUrl: './input-clear.component.html'
 })
-export class InputClearComponent {}
+export class ObInputClearSampleComponent {}

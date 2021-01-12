@@ -6,10 +6,10 @@ import {map} from 'rxjs/operators';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'app-datepicker',
+	selector: 'ob-datepicker-sample',
 	templateUrl: './datepicker-sample.component.html'
 })
-export class DatepickerSampleComponent {
+export class ObDatepickerSampleComponent {
 	material: Observable<boolean>;
 
 	isDatepickerDisabled = true;
@@ -24,24 +24,24 @@ export class DatepickerSampleComponent {
 	constructor(masterLayout: ObMasterLayoutService, theme: ObThemeService) {
 		this.material = theme.theme$.pipe(map(() => theme.isMaterial()));
 		const today = new Date();
-		this.minDate = DatepickerSampleComponent.dateToNgbDateStruct(new Date(new Date().setDate(today.getDate() - 7)));
-		this.maxDate = DatepickerSampleComponent.dateToNgbDateStruct(new Date(new Date().setDate(today.getDate() + 7)));
+		this.minDate = ObDatepickerSampleComponent.dateToNgbDateStruct(new Date(new Date().setDate(today.getDate() - 7)));
+		this.maxDate = ObDatepickerSampleComponent.dateToNgbDateStruct(new Date(new Date().setDate(today.getDate() + 7)));
 	}
 
 	setToday() {
-		this.model.date = DatepickerSampleComponent.dateToNgbDateStruct(new Date());
+		this.model.date = ObDatepickerSampleComponent.dateToNgbDateStruct(new Date());
 	}
 
 	min() {
-		const underMinDate = DatepickerSampleComponent.ngbDateStructToDate(this.minDate);
+		const underMinDate = ObDatepickerSampleComponent.ngbDateStructToDate(this.minDate);
 		underMinDate.setDate(underMinDate.getDate() - 1);
-		this.model.minMax = DatepickerSampleComponent.dateToNgbDateStruct(underMinDate);
+		this.model.minMax = ObDatepickerSampleComponent.dateToNgbDateStruct(underMinDate);
 	}
 
 	max() {
-		const overMaxDate = DatepickerSampleComponent.ngbDateStructToDate(this.maxDate);
+		const overMaxDate = ObDatepickerSampleComponent.ngbDateStructToDate(this.maxDate);
 		overMaxDate.setDate(overMaxDate.getDate() + 1);
-		this.model.minMax = DatepickerSampleComponent.dateToNgbDateStruct(overMaxDate);
+		this.model.minMax = ObDatepickerSampleComponent.dateToNgbDateStruct(overMaxDate);
 	}
 
 	private static dateToNgbDateStruct(date: Date) {

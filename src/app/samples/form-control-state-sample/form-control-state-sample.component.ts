@@ -4,7 +4,7 @@ import {ObNotificationService} from 'oblique';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'app-form-control-state-sample',
+	selector: 'ob-form-control-state-sample',
 	templateUrl: './form-control-state-sample.component.html',
 	styles: [
 		`
@@ -18,7 +18,7 @@ import {ObNotificationService} from 'oblique';
 		`
 	]
 })
-export class FormControlStateSampleComponent {
+export class ObFormControlStateSampleComponent {
 	formData: FormGroup;
 
 	constructor(private readonly notificationService: ObNotificationService, formBuilder: FormBuilder) {

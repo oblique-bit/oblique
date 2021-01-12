@@ -3,10 +3,10 @@ import {ObMasterLayoutService, ObEScrollMode} from 'oblique';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'master-layout-sample',
+	selector: 'ob-master-layout-sample',
 	templateUrl: './master-layout-sample.component.html'
 })
-export class MasterLayoutSampleComponent {
+export class ObMasterLayoutSampleComponent {
 	coverLayout = false;
 	scrollMode = ObEScrollMode;
 

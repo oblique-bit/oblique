@@ -6,7 +6,7 @@ import {ObMasterLayoutService, ObSpinnerService} from 'oblique';
 	templateUrl: './spinner-sample.component.html',
 	styleUrls: ['./spinner-sample.component.scss']
 })
-export class SpinnerSampleComponent implements OnInit {
+export class ObSpinnerSampleComponent implements OnInit {
 	spinnerVisible = false;
 	channel: string = 'demo';
 	constructor(private readonly masterLayoutService: ObMasterLayoutService, private readonly spinnerService: ObSpinnerService) {}

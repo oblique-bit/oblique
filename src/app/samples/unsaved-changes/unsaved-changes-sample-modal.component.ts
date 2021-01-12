@@ -6,7 +6,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 	selector: 'ngbd-modal-content',
 	templateUrl: './unsaved-changes-sample-modal.component.html'
 })
-export class UnsavedChangesSampleModalComponent {
+export class ObUnsavedChangesSampleModalComponent {
 	data: any = {};
 
 	constructor(public activeModal: NgbActiveModal) {}
