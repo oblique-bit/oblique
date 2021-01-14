@@ -71,6 +71,10 @@ export class ObSelectableGroupDirective {
 		}
 	}
 
+	sort(sortFunction: (a: ObSelectableDirective, b: ObSelectableDirective) => number): void {
+		this.selectables.sort(sortFunction);
+	}
+
 	@HostListener('keydown.arrowDown', ['$event'])
 	@HostListener('keydown.arrowRight', ['$event'])
 	onArrowDown($event: KeyboardEvent): void {
