@@ -1,9 +1,0 @@
-<ul class="search-results-list nav-tree nav-bordered nav-hover" [class.hasResults]="showResults">
-	<li *ngFor="let item of filteredItems">
-		<a [routerLink]="item.routes" [fragment]="item.fragment" class="nav-link" #link (click)="close()">
-			<span [innerHTML]="formatter(item.label | translate, pattern)"></span>
-			<small *ngIf="item.description">{{ item.description }}</small>
-		</a>
-	</li>
-	<li class="noResult">{{ "i18n.oblique.search.noResults" | translate }}</li>
-</ul>
