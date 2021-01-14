@@ -6,6 +6,7 @@ import {Component, Input} from '@angular/core';
 	template: ''
 })
 export class ObMockDropdownComponent {
+	id: string;
 	isOpen = false;
 	@Input() position = 'middle';
 

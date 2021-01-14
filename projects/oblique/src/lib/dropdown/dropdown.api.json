@@ -7,6 +7,7 @@
       "exported": "obDropdown",
       "type": "component",
       "since": "2.0.0",
+      "updated": "6.0.0",
       "inputs": [
         {
           "name": "position",
@@ -19,6 +20,14 @@
           "type": "string",
           "default": "middle",
           "since": "4.0.0"
+        },
+        {
+          "name": "id",
+          "isOptional": true,
+          "text": "Defines the <code>id</code> attribute. It will also be used on the dropdown's content with the suffix <code>-content</code>.",
+          "type": "string",
+          "default": "dropdown-0",
+          "since": "6.0.0"
         }
       ],
       "methods": [
