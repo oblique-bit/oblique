@@ -90,16 +90,19 @@ const distRename = () => gulp.src(`${paths.dist}/**/oblique-oblique*`)
 
 const clean = () => del(`${paths.dist}/**/oblique-oblique*`);
 
-const telemetryPre = () => gulp.src(`${paths.src}/lib/telemetry/telemetry.service.ts`)
-	.pipe(replace('require(\'package.json\')', '\'_REQUIRE_PLACEHOLDER_\''))
+const telemetryPre = () => gulp.src(`${paths.src}/lib/telemetry/telemetry-record.ts`)
+	.pipe(replace('require(\'package.json\')', '\'_REQUIRE_PACKAGE_PLACEHOLDER_\''))
+	.pipe(replace('require(\'package-lock.json\').dependencies[\'@oblique/oblique\'].version', '\'_OBLIQUE_VERSION_PLACEHOLDER_\''))
 	.pipe(gulp.dest(`${paths.src}/lib/telemetry`));
 
-const telemetryPost = () => gulp.src(`${paths.src}/lib/telemetry/telemetry.service.ts`)
-	.pipe(replace('\'_REQUIRE_PLACEHOLDER_\'', 'require(\'package.json\')'))
+const telemetryPost = () => gulp.src(`${paths.src}/lib/telemetry/telemetry-record.ts`)
+	.pipe(replace('\'_REQUIRE_PACKAGE_PLACEHOLDER_\'', 'require(\'package.json\')'))
+	.pipe(replace('\'_OBLIQUE_VERSION_PLACEHOLDER_\'', 'require(\'package-lock.json\').dependencies[\'@oblique/oblique\'].version'))
 	.pipe(gulp.dest(`${paths.src}/lib/telemetry`));
 
 const telemetryPostLib = () => gulp.src(`${paths.dist}/**/*.js`)
-	.pipe(replace('\'_REQUIRE_PLACEHOLDER_\'', 'require(\'package.json\')'))
+	.pipe(replace('\'_REQUIRE_PACKAGE_PLACEHOLDER_\'', 'require(\'package.json\')'))
+	.pipe(replace('\'_OBLIQUE_VERSION_PLACEHOLDER_\'', 'require(\'package-lock.json\').dependencies[\'@oblique/oblique\'].version'))
 	.pipe(gulp.dest(paths.dist));
 
 gulp.task(
