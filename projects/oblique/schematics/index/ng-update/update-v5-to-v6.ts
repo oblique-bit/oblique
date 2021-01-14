@@ -1,7 +1,20 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {IMigrations} from './ng-update-utils';
-import {addAngularConfigInList, getDefaultAngularConfig, infoMigration, readFile, replaceInFile, setAngularProjectsConfig, applyInTree} from '../utils';
-import {appModulePath, getTemplate, obliqueCssPath} from '../ng-add/ng-add-utils';
+import {
+	addAngularConfigInList,
+	getDefaultAngularConfig,
+	infoMigration,
+	readFile,
+	replaceInFile,
+	setAngularProjectsConfig,
+	applyInTree,
+	getAngularConfigs,
+	checkIfAngularConfigExists,
+	packageJsonConfigPath,
+	getJson
+} from '../utils';
+import {appModulePath, createSrcFile, getTemplate, obliqueCssPath} from '../ng-add/ng-add-utils';
+import {getPackageJsonDependency, removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
 
 export interface IUpdateV5Schema {}
 
@@ -25,7 +38,8 @@ export class UpdateV5toV6 implements IMigrations {
 				this.addFeatureDetection(),
 				this.changeColorPalette(),
 				this.renameMockCollapseComponent(),
-				this.renameDefaultLanguage()
+				this.renameDefaultLanguage(),
+				this.adaptDependencies()
 				/* banner */
 			])(tree, _context);
 		};
@@ -161,5 +175,63 @@ export class UpdateV5toV6 implements IMigrations {
 			};
 			return applyInTree(tree, toApply, '*.ts');
 		};
+	}
+
+	private adaptDependencies(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Adapting dependencies');
+			this.adaptTranslationDependencies(tree);
+			this.adaptCoreJsDependency(tree);
+			this.adaptTestDependencies(tree);
+			if (!getPackageJsonDependency(tree, '@angular-builders/jest')) {
+				removePackageJsonDependency(tree, 'jest-preset-angular');
+				removePackageJsonDependency(tree, 'ts-jest');
+			}
+			removePackageJsonDependency(tree, 'ts-morph');
+			removePackageJsonDependency(tree, '@ts-morph/common');
+		};
+	}
+
+	private adaptTestDependencies(tree: Tree): void {
+		const usesProtractor = checkIfAngularConfigExists(tree, ['architect', 'e2e', 'builder'], '@angular-devkit/build-angular:protractor');
+		const usesJest = checkIfAngularConfigExists(tree, ['architect', 'test', 'builder'], '@angular-builders/jest:run');
+		const deps = Object.keys(getJson(tree, packageJsonConfigPath)?.devDependencies || {});
+		deps.filter(dep => dep.indexOf(usesJest ? 'karma' : 'jest') > -1).forEach(dep => removePackageJsonDependency(tree, dep));
+		if (usesJest && !usesProtractor) {
+			deps.filter(dep => dep.indexOf('jasmine') > -1).forEach(dep => removePackageJsonDependency(tree, dep));
+		}
+	}
+
+	private adaptTranslationDependencies(tree: Tree): void {
+		const file = readFile(tree, appModulePath);
+		const factory = file.match(/TranslateModule.forRoot\({.*useFactory\s*:\s*(?<factory>\w*)\s*,[^}]*}\s*}\s*\)/s)?.groups?.factory;
+		const loader = file.match(new RegExp(`export function ${factory}\\(.*new (?<loader>[^(]*)`, 's'))?.groups?.loader;
+		const hasObMultiLoader = /TranslateModule.forRoot\(\s*multiTranslateLoader\(/.test(file);
+		if (hasObMultiLoader || loader !== 'TranslateHttpLoader') {
+			this.removeTranslateLoader(tree, '@ngx-translate/http-loader', 'TranslateHttpLoader');
+		}
+		if (hasObMultiLoader || loader !== 'MultiTranslateHttpLoader') {
+			this.removeTranslateLoader(tree, 'ngx-translate-multi-http-loader', 'MultiTranslateHttpLoader');
+		}
+	}
+
+	private removeTranslateLoader(tree: Tree, dep: string, className: string) {
+		const file = readFile(tree, appModulePath);
+		removePackageJsonDependency(tree, dep);
+		tree.overwrite(
+			appModulePath,
+			file
+				.replace(new RegExp(`\\nexport function .*\\(.*new ${className}[^;]*;\\s*}`, 's'), '')
+				.replace(new RegExp(`\\nimport\\s*{\\s*${className}\\s*}\\s*from\\s*['"]${dep}['"]\\s*;`), '')
+		);
+	}
+
+	private adaptCoreJsDependency(tree: Tree): void {
+		const hasCoreJsBeenImported = getAngularConfigs(tree, ['architect', 'build', 'options', 'polyfills'])
+			.map(polyfill => createSrcFile(tree, polyfill.config))
+			.filter(sourceFile => /import 'core-js';/.test(sourceFile.getText())).length;
+		if (!hasCoreJsBeenImported) {
+			removePackageJsonDependency(tree, 'core-js');
+		}
 	}
 }

@@ -56,6 +56,10 @@ export function getAngularConfigs(tree: Tree, path: string[]): {project: string;
 		.filter(project => project.config);
 }
 
+export function checkIfAngularConfigExists(tree: Tree, path: string[], config: string): boolean {
+	return getAngularConfigs(tree, path).reduce((exists, conf) => exists || conf.config === config, false);
+}
+
 export function getDefaultAngularConfig(tree: Tree, path: string[]): any {
 	const json = getJson(tree, angularJsonConfigPath);
 	const defaultProjectName = getJsonProperty(json, 'defaultProject');
