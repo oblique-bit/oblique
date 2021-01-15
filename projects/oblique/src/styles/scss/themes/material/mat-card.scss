@@ -40,22 +40,45 @@
 		text-align: right;
 	}
 
-	&.ob-selected {
-		background-color: $brand-extra-light;
+	&.ob-selectable {
+		&.ob-selected {
+			background-color: $brand-extra-light;
+		}
 
 		&::before {
-			content: '\f00c';
 			position: absolute;
 			top: $spacing-sm;
 			right: $spacing-sm;
-			padding: $spacing-xs;
 			line-height: 1;
-			font-size: 16px;
 			font-family: $icon-font-family;
 			font-weight: 800;
-			color: $white;
-			background-color: $brand-primary;
-			border-radius: 50%;
+			border: 3px solid $brand-primary;
+		}
+
+		&[role="checkbox"] {
+			&::before {
+				content: '\f00c';
+				font-size: 13px;
+				padding: 2px;
+				color: $white;
+			}
+			&.ob-selected::before {
+				background-color: $brand-primary;
+			}
+		}
+
+		&[role="radio"] {
+			&::before {
+				content: '\f111';
+				font-size: 11px;
+				padding: 3px;
+				color: $white;
+				border-radius: 50%;
+			}
+
+			&.ob-selected::before {
+				color: $brand-primary;
+			}
 		}
 	}
 }

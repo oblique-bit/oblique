@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {ObSelectableGroupDirective} from 'oblique';
 
 @Component({
 	selector: 'ob-card',
@@ -6,6 +7,7 @@ import {Component} from '@angular/core';
 	styleUrls: ['./card.component.scss']
 })
 export class ObCardComponent {
+	@ViewChild(ObSelectableGroupDirective) selectableGroup: ObSelectableGroupDirective;
 	avatarVisible = true;
 	titleVisible = true;
 	subtitleVisible = true;
@@ -13,6 +15,7 @@ export class ObCardComponent {
 	pictureVisible = true;
 	contentVisible = true;
 	actionsVisible = true;
+	checkboxMode = true;
 
 	toggleAvatarVisibility(): void {
 		this.avatarVisible = !this.avatarVisible;
@@ -40,5 +43,14 @@ export class ObCardComponent {
 
 	toggleActionsVisibility(): void {
 		this.actionsVisible = !this.actionsVisible;
+	}
+
+	toggleCheckboxMode(): void {
+		this.checkboxMode = !this.checkboxMode;
+		this.selectableGroup.mode = this.getSelectMode();
+	}
+
+	getSelectMode(): 'checkbox' | 'radio' {
+		return this.checkboxMode ? 'checkbox' : 'radio';
 	}
 }
