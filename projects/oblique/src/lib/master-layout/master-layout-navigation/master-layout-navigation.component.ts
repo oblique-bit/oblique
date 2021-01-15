@@ -113,6 +113,6 @@ export class ObMasterLayoutNavigationComponent extends ObUnsubscribable implemen
 	private checkForExternalLinks(links: ObINavigationLink[]): ObINavigationLink[] {
 		return !links
 			? undefined
-			: links.map(link => ({...link, children: this.checkForExternalLinks(link.children), isExternal: link.url.indexOf('http') === 0}));
+			: links.map(link => ({...link, children: this.checkForExternalLinks(link.children), isExternal: /^https?:\/\//.test(link.url)}));
 	}
 }
