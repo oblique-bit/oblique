@@ -9,7 +9,7 @@
 		[filterPattern]="filter.pattern"
 		[activateAncestors]="activateAncestors"
 		[variant]="variant"
-		[obNavTreeFakeFocus]="useFakeFocus ? obFilterBox.filterControl : null"
+		[obNavTreeFakeFocus]="useFakeFocus ? obFilterBox : null"
 	>
 		<li class="nav-item nav-header" role="presentation">
 			<h3 class="nav-header-title" *ngIf="!filter.pattern">Menu Sample</h3>
@@ -21,7 +21,7 @@
 		<div class="form-group row">
 			<label class="col-3 col-form-label">Filter</label>
 			<div class="col-9">
-				<ob-filter-box [(pattern)]="filter.pattern" #obFilterBox></ob-filter-box>
+				<input class="form-control" [(ngModel)]="filter.pattern" #obFilterBox />
 			</div>
 		</div>
 		<div class="form-group row">

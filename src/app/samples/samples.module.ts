@@ -23,13 +23,9 @@ import {ObColumnLayoutSampleComponent} from './column-layout/column-layout-sampl
 import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {ErrorMessagesSampleComponent} from './error-messages-sample/error-messages-sample.component';
 import {FormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
-import {FilterBoxSampleComponent, PatternFilterPipe} from './filter-box-sample/filter-box-sample.component';
 import {InputClearComponent} from './input-clear/input-clear.component';
 import {MasterLayoutSampleComponent} from './master-layout/master-layout-sample.component';
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
-import {NavigableSampleComponent} from './navigable/navigable-sample.component';
-import {NavigatorSampleModule} from './navigator-sample/navigator-sample.module';
-import {NavigatorSampleRoutingModule} from './navigator-sample/navigator-sample-routing.module';
 import {NavTreeDetailSampleComponent, NavTreeSampleComponent} from './nav-tree/nav-tree-sample.component';
 import {NestedFormSampleComponent} from './nested-form/nested-form-sample.component';
 import {NestedFormChildSampleComponent} from './nested-form/nested-form-child-sample.component';
@@ -49,11 +45,9 @@ import {
 	ObColumnLayoutModule,
 	ObDatepickerModule,
 	ObErrorMessagesModule,
-	ObFilterBoxModule,
 	ObFormControlStateModule,
 	ObInputClearModule,
 	ObMultiselectModule,
-	ObNavigableModule,
 	ObNavTreeModule,
 	ObNestedFormModule,
 	ObNotificationModule,
@@ -86,12 +80,10 @@ import {LanguageComponent} from './language/language.component';
 		ObCollapseModule,
 		ObColumnLayoutModule,
 		ObDatepickerModule,
-		ObFilterBoxModule,
 		ObErrorMessagesModule,
 		ObFormControlStateModule,
 		ObLanguageModule,
 		ObMultiselectModule,
-		ObNavigableModule,
 		ObNavTreeModule,
 		ObNestedFormModule,
 		ObNumberFormatModule,
@@ -112,8 +104,6 @@ import {LanguageComponent} from './language/language.component';
 		NgbModule,
 		RouterModule,
 		SamplesRoutingModule,
-		NavigatorSampleModule,
-		NavigatorSampleRoutingModule,
 		ReactiveFormsModule,
 		MatMenuModule,
 		MatIconModule,
@@ -134,14 +124,11 @@ import {LanguageComponent} from './language/language.component';
 		ErrorMessagesSampleComponent,
 		ObFormComponent,
 		FormControlStateSampleComponent,
-		FilterBoxSampleComponent,
 		HttpInterceptorSampleComponent,
 		InputClearComponent,
 		LanguageComponent,
-		PatternFilterPipe,
 		MasterLayoutSampleComponent,
 		MultiselectSampleComponent,
-		NavigableSampleComponent,
 		NavTreeSampleComponent,
 		NavTreeDetailSampleComponent,
 		NestedFormSampleComponent,

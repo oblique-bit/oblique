@@ -1,15 +1,16 @@
 //TODO: remove if codelyzer 4 is out
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {merge, takeUntil} from 'rxjs/operators';
-import {ObNavTreeComponent, ObNavTreeItemModel, ObUnsubscribable} from 'oblique';
+import {ObNavTreeComponent, ObNavTreeItemModel} from 'oblique';
+import {Subject} from 'rxjs';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'nav-tree-sample',
 	templateUrl: './nav-tree-sample.component.html'
 })
-export class NavTreeSampleComponent extends ObUnsubscribable implements OnInit {
+export class NavTreeSampleComponent implements OnInit, OnDestroy {
 	public items: Array<ObNavTreeItemModel>;
 	public variant = ObNavTreeComponent.DEFAULTS.VARIANT;
 	public activateAncestors = true;
@@ -21,15 +22,19 @@ export class NavTreeSampleComponent extends ObUnsubscribable implements OnInit {
 			this.filter.pattern = null;
 		}
 	};
+	private readonly unsubscribe = new Subject();
 
-	constructor(private readonly route: ActivatedRoute) {
-		super();
-	}
+	constructor(private readonly route: ActivatedRoute) {}
 
 	ngOnInit() {
 		this.route.data.pipe(takeUntil(this.unsubscribe)).subscribe((data: {sample: any}) => {
 			this.items = data.sample.navTree.items.map((item: any) => new ObNavTreeItemModel(item));
 		});
+	}
+
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 }
 
@@ -47,16 +52,20 @@ export class NavTreeSampleComponent extends ObUnsubscribable implements OnInit {
 		</div>
 	</div>`
 })
-export class NavTreeDetailSampleComponent extends ObUnsubscribable implements OnInit {
+export class NavTreeDetailSampleComponent implements OnInit, OnDestroy {
 	routing: string;
+	private readonly unsubscribe = new Subject();
 
-	constructor(private readonly route: ActivatedRoute, private readonly router: Router) {
-		super();
-	}
+	constructor(private readonly route: ActivatedRoute, private readonly router: Router) {}
 
 	ngOnInit() {
 		this.route.params.pipe(merge(this.route.fragment), takeUntil(this.unsubscribe)).subscribe(() => {
 			this.routing = this.router.routerState.snapshot.url;
 		});
+	}
+
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 }
