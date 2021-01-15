@@ -92,7 +92,6 @@ The scope is optional and should be the name of the Oblique feature affected:
 * **multi-translate-loader**
 * **multiselect**
 * **nav-tree**
-* **navigable**
 * **nested-form**
 * **navigator**
 * **notification**
