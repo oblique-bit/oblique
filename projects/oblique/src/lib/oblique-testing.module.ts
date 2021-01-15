@@ -10,7 +10,6 @@ import {ObMockSearchBoxModule} from './search-box/mock/mock-search-box.module';
 import {ObMockDocumentMetaModule} from './document-meta/mock/mock-document-meta.module';
 import {ObMockDropdownModule} from './dropdown/mock/mock-dropdown.module';
 import {ObMockErrorMessagesModule} from './error-messages/mock/mock-error-messages.module';
-import {ObMockFilterBoxModule} from './filter-box/mock/mock-filter-box.module';
 import {ObMockFormControlStateModule} from './form-control-state/mock/mock-form-control-state.module';
 import {ObMockMasterLayoutModule} from './master-layout/mock/mock-master-layout.module';
 import {ObMockMultiselectModule} from './multiselect/mock/mock-multiselect.module';
@@ -54,7 +53,6 @@ export {
 	ObMockErrorMessagesDirective,
 	ObMockMatErrorDirective
 } from './error-messages/mock/mock-error-messages.module';
-export {ObMockFilterBoxModule, ObMockFilterBoxComponent} from './filter-box/mock/mock-filter-box.module';
 export {ObMockFormControlStateModule, ObMockFormControlStateDirective} from './form-control-state/mock/mock-form-control-state.module';
 export {ObMockDatePipe, ObMockLanguageModule} from './language/mock/mock-language.module';
 export {
@@ -134,7 +132,6 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockDocumentMetaModule,
 	ObMockDropdownModule,
 	ObMockErrorMessagesModule,
-	ObMockFilterBoxModule,
 	ObMockFormControlStateModule,
 	ObMockHttpApiInterceptorModule,
 	ObMockMasterLayoutModule,

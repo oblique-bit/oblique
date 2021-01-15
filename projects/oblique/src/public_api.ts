@@ -26,7 +26,6 @@ export {
 	ObErrorMessagesModule,
 	ObErrorMessagesService
 } from './lib/error-messages/error-messages.module';
-export {ObFilterBoxComponent, ObFilterBoxModule} from './lib/filter-box/filter-box.module';
 export {ObFormControlStateDirective, ObFormControlStateModule} from './lib/form-control-state/form-control-state.module';
 export {
 	ObHttpApiInterceptor,
