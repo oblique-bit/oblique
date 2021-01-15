@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
 
-import {ObFilterBoxModule} from '../filter-box/filter-box.module';
 import {ObMultiselectComponent} from './multiselect.component';
 import {ObMultiselectSearchPipe} from './multiselect-search.pipe';
 import {ObTelemetryService} from '../telemetry/telemetry.service';
@@ -16,7 +15,7 @@ export {ObMultiselectSearchPipe} from './multiselect-search.pipe';
 export {ObMultiselectTexts} from './multiselect.texts';
 
 @NgModule({
-	imports: [CommonModule, FormsModule, TranslateModule, ObFilterBoxModule],
+	imports: [CommonModule, FormsModule, TranslateModule],
 	exports: [ObMultiselectComponent, ObMultiselectSearchPipe],
 	providers: obliqueProviders(),
 	declarations: [ObMultiselectComponent, ObMultiselectSearchPipe]
