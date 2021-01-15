@@ -137,6 +137,14 @@ describe('SelectableGroupDirective', () => {
 			});
 		});
 
+		describe('sort', () => {
+			it('should sort directives', () => {
+				directive.sort((a, b) => b.value - a.value);
+				// @ts-ignore
+				expect(directive.selectables[0].value).toBe(4);
+			});
+		});
+
 		describe('arrows', () => {
 			it('onArrowUp should do nothing', () => {
 				directive.onArrowUp(event);

@@ -18,6 +18,8 @@ export class ObMockSelectableGroupDirective {
 
 	focus(directive: ObSelectableDirective): void {}
 
+	sort(sortFunction: Function): void {}
+
 	onArrowDown($event: KeyboardEvent): void {}
 
 	onArrowUp($event: KeyboardEvent): void {}

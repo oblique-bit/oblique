@@ -80,6 +80,15 @@
           "text": "Deselects all registered <code>ObSelectableDirective</code>s but does nothing in <code>radio</code> mode",
           "returns": "void",
           "since": "6.0.0"
+        },
+        {
+          "name": "sort",
+          "text": "Sorts the registered <code>ObSelectableDirective</code>s according to the given function.",
+          "returns": "void",
+          "arguments": [
+            "sortFunction: (a: ObSelectableDirective, b: ObSelectableDirective) => number"
+          ],
+          "since": "6.0.0"
         }
       ]
     }
