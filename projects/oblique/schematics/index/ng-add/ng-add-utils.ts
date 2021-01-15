@@ -51,6 +51,7 @@ const versions: {[key: string]: string | versionFunc} = {
 	'@angular/material': version => `^${version}.0.0`,
 	'@angular/core': `^9.0.0`,
 	'@angular/router': version => `^${version}.0.0`,
+	'@angular/localize': version => `^${version}.0.0`,
 
 	// eslint-disable-next-line prettier/prettier
 	jest: '^25.0.0',
@@ -70,6 +71,12 @@ const versions: {[key: string]: string | versionFunc} = {
 	// eslint-disable-next-line prettier/prettier
 	husky: '^4.0.0'
 };
+
+export function getPreconditionVersion(tree: Tree, pkg: string): string {
+	const current = extractVersion(getDepVersion(tree, pkg) || '');
+	const target = extractVersion(getDepVersion(tree, '@angular/core') || '') || ({} as Version);
+	return !current || current.major !== target.major || current.minor !== target.minor ? `${target.major}.${target.minor}` : '';
+}
 
 export function checkPrecondition(tree: Tree, pkg: string) {
 	const current = extractVersion(getDepVersion(tree, pkg) || '');
