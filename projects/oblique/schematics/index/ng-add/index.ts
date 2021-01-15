@@ -1,5 +1,5 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {checkPrecondition, getDepVersion, IOptionsSchema} from './ng-add-utils';
+import {checkPrecondition, getPreconditionVersion, IOptionsSchema} from './ng-add-utils';
 import {infoMigration, infoText, installDependencies, success, warn} from '../utils';
 import {obliqueFeatures} from './rules/obliqueFeatures';
 import {toolchain} from './rules/toolchain';
@@ -16,9 +16,10 @@ function preconditions(): Rule {
 		infoText(_context, 'Executing migrations of package "@oblique/oblique"');
 		checkPrecondition(tree, '@angular/core');
 		checkPrecondition(tree, '@angular/router');
-		if (!getDepVersion(tree, '@angular/localize')) {
+		const version = getPreconditionVersion(tree, '@angular/localize');
+		if (version) {
 			infoMigration(_context, 'Installing missing peer dependency "@angular/localize"');
-			execSync('ng add @angular/localize');
+			execSync(`ng add @angular/localize@${version}`);
 		}
 
 		return tree;
