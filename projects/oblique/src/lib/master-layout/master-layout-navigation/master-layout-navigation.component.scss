@@ -64,7 +64,7 @@
 
 			@include layout-collapse-up() {
 				border: 0 none;
-				padding: $spacing-sm 0 $spacing-sm $spacing-default;
+				padding: $spacing-sm $spacing-default;
 
 				&.active,
 				&:active,
