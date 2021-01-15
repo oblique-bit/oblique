@@ -14,7 +14,6 @@ import {ObMockFilterBoxModule} from './filter-box/mock/mock-filter-box.module';
 import {ObMockFormControlStateModule} from './form-control-state/mock/mock-form-control-state.module';
 import {ObMockMasterLayoutModule} from './master-layout/mock/mock-master-layout.module';
 import {ObMockMultiselectModule} from './multiselect/mock/mock-multiselect.module';
-import {ObMockNavigatorModule} from './navigator/mock/mock-navigator.module';
 import {ObMockNavTreeModule} from './nav-tree/mock/mock-nav-tree.module';
 import {ObMockNotificationModule} from './notification/mock/mock-notification.module';
 import {ObMockNumberFormatModule} from './number-format/mock/mock-number-format.module';
@@ -82,7 +81,6 @@ export {
 	ObMockMultiselectComponent,
 	ObMockMultiselectSearchPipe
 } from './multiselect/mock/mock-multiselect.module';
-export {ObMockNavigatorModule, ObMockNavigatorComponent} from './navigator/mock/mock-navigator.module';
 export {ObMockNavTreeModule, ObMockNavTreeComponent, ObMockNavTreeFakeFocusDirective} from './nav-tree/mock/mock-nav-tree.module';
 export {
 	ObMockNotificationModule,
@@ -141,7 +139,6 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockHttpApiInterceptorModule,
 	ObMockMasterLayoutModule,
 	ObMockMultiselectModule,
-	ObMockNavigatorModule,
 	ObMockNavTreeModule,
 	ObMockNotificationModule,
 	ObMockNumberFormatModule,

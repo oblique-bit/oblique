@@ -65,7 +65,6 @@ export {
 	ObMultiselectTexts
 } from './lib/multiselect/multiselect.module';
 export {ObNavTreeComponent, ObNavTreeFakeFocusDirective, ObNavTreeModule, ObNavTreeItemModel} from './lib/nav-tree/nav-tree.module';
-export {ObNavigatorComponent, ObNavigatorModule} from './lib/navigator/navigator.module';
 export {ObNestedFormModule, ObNestedFormComponent, ObParentFormDirective} from './lib/nested-form/nested-form.module';
 export {
 	CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE,

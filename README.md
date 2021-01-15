@@ -93,7 +93,6 @@ The scope is optional and should be the name of the Oblique feature affected:
 * **multiselect**
 * **nav-tree**
 * **nested-form**
-* **navigator**
 * **notification**
 * **number-format**
 * **off-canvas**

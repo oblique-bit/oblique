@@ -9,7 +9,6 @@ import {ObFilterBoxModule} from './filter-box/filter-box.module';
 import {ObFormControlStateModule} from './form-control-state/form-control-state.module';
 import {ObMasterLayoutModule} from './master-layout/master-layout.module';
 import {ObMultiselectModule} from './multiselect/multiselect.module';
-import {ObNavigatorModule} from './navigator/navigator.module';
 import {ObNavTreeModule} from './nav-tree/nav-tree.module';
 import {ObNestedFormModule} from './nested-form/nested-form.module';
 import {ObNotificationModule} from './notification/notification.module';
@@ -44,7 +43,6 @@ const OBLIQUE_MODULES = [
 	ObLanguageModule,
 	ObMasterLayoutModule,
 	ObMultiselectModule,
-	ObNavigatorModule,
 	ObNavTreeModule,
 	ObNestedFormModule,
 	ObNotificationModule,
