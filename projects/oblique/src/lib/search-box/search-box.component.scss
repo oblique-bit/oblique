@@ -1,6 +1,49 @@
 @import "../../styles/scss/core/variables";
 @import "../../styles/scss/core/mixins/layout";
 
+.search-box .ob-dropdown {
+	position: absolute;
+
+	.dropdown-content {
+		top: $spacing-sm;
+
+		&.right {
+			transform: translateX(-$spacing-default);
+
+			.control-item & {
+				transform: translateX(-$spacing-default);
+			}
+		}
+	}
+}
+
+.noResult {
+	padding: $spacing-sm $spacing-default;
+
+	&:not(:only-child) {
+		display: none;
+	}
+}
+
+.search-results-list {
+	top: $header-height-md;
+	left: 0;
+	background-color: $white;
+	overflow: hidden;
+	transition: height $duration-default;
+	padding-left: 0.65em;
+
+	.highlight {
+		font-weight: bold;
+		text-decoration: underline;
+	}
+
+	small {
+		color: $gray-dark;
+		display: block;
+	}
+}
+
 .search-box {
 	position: relative;
 	display: flex;
@@ -44,10 +87,6 @@
 		transition: border-color $duration-default;
 	}
 
-	&.open::before {
-		border-color: $gray;
-	}
-
 	&.slide-control {
 		.search-box-input {
 			max-width: 0;
@@ -59,14 +98,23 @@
 			}
 		}
 
+		.search-dropdown{
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height $duration-default;
+		}
+
 		&:focus,
 		&:focus-within,
 		&:active,
-		&:hover,
-		&.open {
+		&:hover {
 			.search-box-input {
 				max-width: 400px;
 				padding-left: 0.65em;
+			}
+			.search-dropdown{
+				overflow: inherit;
+				max-height: inherit;
 			}
 		}
 	}
