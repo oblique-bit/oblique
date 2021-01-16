@@ -1,10 +1,10 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnDestroy, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, RouterLinkActive} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
 
-import {ObUnsubscribable} from '../unsubscribe.class';
 import {ObNavTreeItemModel} from './nav-tree-item.model';
+import {Subject} from 'rxjs';
 
 @Component({
 	selector: 'ob-nav-tree',
@@ -13,7 +13,7 @@ import {ObNavTreeItemModel} from './nav-tree-item.model';
 	styleUrls: ['./nav-tree.component.scss'],
 	encapsulation: ViewEncapsulation.None
 })
-export class ObNavTreeComponent extends ObUnsubscribable {
+export class ObNavTreeComponent implements OnDestroy {
 	static DEFAULTS = {
 		VARIANT: 'nav-bordered nav-hover',
 		HIGHLIGHT: 'pattern-highlight',
@@ -27,13 +27,18 @@ export class ObNavTreeComponent extends ObUnsubscribable {
 	@Input() labelFormatter: (item: ObNavTreeItemModel, filterPattern?: string) => string = ObNavTreeComponent.DEFAULTS.LABEL_FORMATTER(this.translate);
 	@Input() variant = ObNavTreeComponent.DEFAULTS.VARIANT;
 	@Input() activateAncestors = true;
+	private readonly unsubscribe = new Subject();
 
 	// TODO: remove when https://github.com/angular/angular/issues/13205
 	constructor(private readonly route: ActivatedRoute, private readonly translate: TranslateService) {
-		super();
 		this.route.fragment.pipe(takeUntil(this.unsubscribe)).subscribe(fragment => {
 			this.activeFragment = fragment;
 		});
+	}
+
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 
 	@Input()

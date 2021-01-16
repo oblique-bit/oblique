@@ -1,10 +1,10 @@
-import {Component, ElementRef, Input, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 import {takeUntil} from 'rxjs/operators';
 
 import {ObSpinnerService} from './spinner.service';
 import {ObISpinnerEvent} from './spinner-event';
-import {ObUnsubscribable} from '../unsubscribe.class';
+import {Subject} from 'rxjs';
 
 @Component({
 	selector: 'ob-spinner',
@@ -30,14 +30,14 @@ import {ObUnsubscribable} from '../unsubscribe.class';
 		])
 	]
 })
-export class ObSpinnerComponent extends ObUnsubscribable implements OnInit {
+export class ObSpinnerComponent implements OnInit, OnDestroy {
 	@Input() channel: string = ObSpinnerService.CHANNEL;
 	@Input() fixed = false;
 	@ViewChild('spinnerContainer') spinnerContainer: ElementRef;
 	$state = 'out';
+	private readonly unsubscribe = new Subject();
 
 	constructor(private readonly spinnerService: ObSpinnerService, private readonly element: ElementRef) {
-		super();
 		spinnerService.events$.pipe(takeUntil(this.unsubscribe)).subscribe((event: ObISpinnerEvent) => {
 			if (event.channel === this.channel) {
 				// TODO: Workaround until https://github.com/angular/angular/issues/28801 is solved
@@ -48,5 +48,10 @@ export class ObSpinnerComponent extends ObUnsubscribable implements OnInit {
 
 	ngOnInit() {
 		this.element.nativeElement.parentElement.classList.add('has-overlay');
+	}
+
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 }

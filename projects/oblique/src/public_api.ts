@@ -107,7 +107,6 @@ export {ObTelemetryService, TELEMETRY_DISABLE} from './lib/telemetry/telemetry.s
 export {OB_BANNER, ObIBanner, OB_MATERIAL_CONFIG, ObIMaterialConfig, getTranslateLoader, multiTranslateLoader, WINDOW} from './lib/utilities';
 export {ObMultiTranslateLoader, TRANSLATION_FILES, ObITranslationFile} from './lib/multi-translate-loader/multi-translate-loader';
 export {ObPopUpService} from './lib/pop-up/pop-up.service';
-export {ObUnsubscribable} from './lib/unsubscribe.class';
 export {ObliqueModule} from './lib/oblique.module';
 export {FONTS, THEMES, ObThemeService} from './lib/theme/theme.service';
 

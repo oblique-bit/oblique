@@ -1,16 +1,14 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
 import {TranslateService} from '@ngx-translate/core';
 
-import {ObUnsubscribable} from '../../unsubscribe.class';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues, ObEScrollMode} from '../master-layout.datatypes';
 
 @Injectable({
 	providedIn: 'root'
 })
-export class ObMasterLayoutNavigationService extends ObUnsubscribable {
+export class ObMasterLayoutNavigationService {
 	private readonly _events = new Subject<ObIMasterLayoutEvent>();
 	private readonly eventsS = this._events.asObservable();
 	private readonly _scrolled: Subject<number> = new Subject<number>();
@@ -21,8 +19,7 @@ export class ObMasterLayoutNavigationService extends ObUnsubscribable {
 	private _scrollMode = this.config.navigation.scrollMode;
 
 	constructor(private readonly config: ObMasterLayoutConfig, translate: TranslateService) {
-		super();
-		translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.refresh());
+		translate.onLangChange.subscribe(() => this.refresh());
 	}
 
 	get isFullWidth() {

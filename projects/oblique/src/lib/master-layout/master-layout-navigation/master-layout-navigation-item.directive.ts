@@ -1,26 +1,37 @@
-import {AfterViewInit, ContentChild, ContentChildren, Directive, ElementRef, EventEmitter, HostBinding, HostListener, Output, QueryList} from '@angular/core';
+import {
+	AfterViewInit,
+	ContentChild,
+	ContentChildren,
+	Directive,
+	ElementRef,
+	EventEmitter,
+	HostBinding,
+	HostListener,
+	OnDestroy,
+	Output,
+	QueryList
+} from '@angular/core';
 import {filter, takeUntil} from 'rxjs/operators';
 
-import {ObUnsubscribable} from '../../unsubscribe.class';
 import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation-toggle.directive';
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
 import {ObEMasterLayoutEventValues} from '../master-layout.datatypes';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
+import {Subject} from 'rxjs';
 
 @Directive({
 	selector: '[obMasterLayoutNavigationItem]',
 	exportAs: 'obMasterLayoutNavigationItem'
 })
-export class ObMasterLayoutNavigationItemDirective extends ObUnsubscribable implements AfterViewInit {
+export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnDestroy {
 	@HostBinding('class.show') public show = false;
 	@Output() onClose = new EventEmitter<void>();
 	@ContentChildren(ObMasterLayoutNavigationToggleDirective, {descendants: true}) $toggles: QueryList<ObMasterLayoutNavigationToggleDirective>;
 	@ContentChild(ObMasterLayoutNavigationMenuDirective) $menu: ObMasterLayoutNavigationMenuDirective;
 	@ContentChildren(ObMasterLayoutNavigationItemDirective, {descendants: true}) $items: QueryList<ObMasterLayoutNavigationItemDirective>;
+	private readonly unsubscribe = new Subject();
 
-	constructor(private readonly masterLayout: ObMasterLayoutComponentService, private readonly element: ElementRef) {
-		super();
-	}
+	constructor(private readonly masterLayout: ObMasterLayoutComponentService, private readonly element: ElementRef) {}
 
 	ngAfterViewInit() {
 		this.$toggles.forEach($toggle => {
@@ -47,6 +58,11 @@ export class ObMasterLayoutNavigationItemDirective extends ObUnsubscribable impl
 		this.$items.forEach($item => {
 			$item.onClose.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.close());
 		});
+	}
+
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 
 	open() {

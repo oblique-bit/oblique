@@ -2,10 +2,10 @@ import {AfterViewInit, Component, ElementRef, HostBinding, HostListener, Input, 
 import {NavigationEnd, Router} from '@angular/router';
 import {filter, takeUntil} from 'rxjs/operators';
 
-import {ObUnsubscribable} from '../../unsubscribe.class';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObINavigationLink, ObEScrollMode, ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.datatypes';
+import {Subject} from 'rxjs';
 
 @Component({
 	selector: 'ob-master-layout-navigation',
@@ -15,7 +15,7 @@ import {ObINavigationLink, ObEScrollMode, ObEMasterLayoutEventValues, ObIMasterL
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'application-navigation'}
 })
-export class ObMasterLayoutNavigationComponent extends ObUnsubscribable implements OnInit, AfterViewInit {
+export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit {
 	isFullWidth = this.masterLayout.navigation.isFullWidth;
 	activeClass = this.config.navigation.activeClass;
 	currentScroll = 0;
@@ -24,6 +24,7 @@ export class ObMasterLayoutNavigationComponent extends ObUnsubscribable implemen
 	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') isScrollable: boolean;
 	private static readonly buttonWidth = 30;
 	private nav: HTMLElement;
+	private unsubscribe: Subject<any> = new Subject();
 
 	constructor(
 		private readonly router: Router,
@@ -32,8 +33,6 @@ export class ObMasterLayoutNavigationComponent extends ObUnsubscribable implemen
 		private readonly renderer: Renderer2,
 		private readonly el: ElementRef
 	) {
-		super();
-
 		this.masterLayout.navigation.refreshed.pipe(takeUntil(this.unsubscribe)).subscribe(this.refresh.bind(this));
 		this.propertyChanges();
 	}

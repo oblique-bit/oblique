@@ -4,21 +4,20 @@ import {FormGroupDirective, NgForm, ValidationErrors} from '@angular/forms';
 import {MatSelect} from '@angular/material/select';
 import {merge, Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {ObUnsubscribable} from '../unsubscribe.class';
 
 @Directive({
 	selector: '[obErrorMessages]',
 	exportAs: 'obErrorMessages'
 })
-export class ObErrorMessagesDirective extends ObUnsubscribable implements AfterViewInit, OnDestroy {
+export class ObErrorMessagesDirective implements AfterViewInit, OnDestroy {
 	@ContentChild(MatInput) matInput;
 	@ContentChild(MatSelect) matSelect;
 	readonly errors$: Observable<ValidationErrors>;
 	private readonly errors = new Subject<ValidationErrors>();
 	private readonly form: NgForm | FormGroupDirective;
+	private readonly unsubscribe = new Subject();
 
 	constructor(@Optional() ngForm: NgForm, @Optional() formGroupDirective: FormGroupDirective) {
-		super();
 		this.errors$ = this.errors.asObservable();
 		this.form = ngForm || formGroupDirective;
 
@@ -41,5 +40,7 @@ export class ObErrorMessagesDirective extends ObUnsubscribable implements AfterV
 
 	ngOnDestroy(): void {
 		this.errors.complete();
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 }

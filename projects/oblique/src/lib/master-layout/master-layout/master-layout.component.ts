@@ -1,4 +1,5 @@
 import {
+	AfterViewInit,
 	Component,
 	ContentChild,
 	ContentChildren,
@@ -7,6 +8,7 @@ import {
 	HostListener,
 	Inject,
 	Input,
+	OnDestroy,
 	OnInit,
 	QueryList,
 	TemplateRef,
@@ -17,7 +19,6 @@ import {NavigationEnd, Router} from '@angular/router';
 import {DOCUMENT} from '@angular/common';
 import {filter, map, takeUntil} from 'rxjs/operators';
 
-import {ObUnsubscribable} from '../../unsubscribe.class';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
@@ -25,6 +26,7 @@ import {appVersion} from '../../version';
 import {WINDOW} from '../../utilities';
 import {ObEMasterLayoutEventValues, ObIDynamicJumpLink, ObINavigationLink} from '../master-layout.datatypes';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
+import {Subject} from 'rxjs';
 
 @Component({
 	selector: 'ob-master-layout',
@@ -40,7 +42,7 @@ import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'application', 'ob-version': appVersion}
 })
-export class ObMasterLayoutComponent extends ObUnsubscribable implements OnInit {
+export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 	home = this.config.homePageRoute;
 	url: string;
 	@Input() navigation: ObINavigationLink[] = [];
@@ -60,6 +62,7 @@ export class ObMasterLayoutComponent extends ObUnsubscribable implements OnInit 
 	@ContentChildren('obFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<any>>;
 	@ViewChild('offCanvasClose') readonly offCanvasClose: ElementRef<HTMLElement>;
 	private readonly window: Window;
+	private readonly unsubscribe = new Subject();
 
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,
@@ -70,7 +73,6 @@ export class ObMasterLayoutComponent extends ObUnsubscribable implements OnInit 
 		@Inject(DOCUMENT) private readonly document: any,
 		@Inject(WINDOW) window
 	) {
-		super();
 		this.window = window; // because AoT don't accept interfaces as DI
 		this.propertyChanges();
 		this.focusFragment();
@@ -103,6 +105,11 @@ export class ObMasterLayoutComponent extends ObUnsubscribable implements OnInit 
 			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.MAIN_NAVIGATION))
 			.subscribe(evt => this.updateJumpLinks(evt.value));
 		this.updateJumpLinks(!this.noNavigation);
+	}
+
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 
 	private updateJumpLinks(hasNavigation: boolean): void {

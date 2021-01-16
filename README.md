@@ -108,7 +108,6 @@ The scope is optional and should be the name of the Oblique feature affected:
 * **translate-params**
 * **unknown-route**
 * **unsaved-changes**
-* **unsubscribe**
 * **utilities** (for utilities.ts)
 * **toolchain** (for configuration, build, releases...)
 * **schematics**
