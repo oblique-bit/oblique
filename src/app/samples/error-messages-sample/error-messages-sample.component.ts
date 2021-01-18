@@ -7,6 +7,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 	templateUrl: './error-messages-sample.component.html'
 })
 export class ErrorMessagesSampleComponent {
+	select = new FormControl('', [Validators.required]);
+	checkbox = new FormControl('', [Validators.required]);
+	radio = new FormControl('', [Validators.required]);
 	email = new FormControl('', [Validators.required, Validators.email, Validators.minLength(5)]);
-	form = new FormGroup({email: this.email});
+	form = new FormGroup({email: this.email, select: this.select});
 }
