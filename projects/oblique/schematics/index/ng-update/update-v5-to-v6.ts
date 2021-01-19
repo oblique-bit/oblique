@@ -205,7 +205,7 @@ export class UpdateV5toV6 implements IMigrations {
 
 	private adaptTranslationDependencies(tree: Tree): void {
 		const file = readFile(tree, appModulePath);
-		const factory = file.match(/TranslateModule.forRoot\({.*useFactory\s*:\s*(?<factory>\w*)\s*,[^}]*}\s*}\s*\)/s)?.groups?.factory;
+		const factory = file.match(/TranslateModule\.forRoot\({.*?useFactory\s*:\s*(?<factory>\w*)/s)?.groups?.factory;
 		const loader = file.match(new RegExp(`export function ${factory}\\(.*new (?<loader>[^(]*)`, 's'))?.groups?.loader;
 		const hasObMultiLoader = /TranslateModule.forRoot\(\s*multiTranslateLoader\(/.test(file);
 		if (hasObMultiLoader || loader !== 'TranslateHttpLoader') {
@@ -230,7 +230,7 @@ export class UpdateV5toV6 implements IMigrations {
 	private adaptCoreJsDependency(tree: Tree): void {
 		const hasCoreJsBeenImported = getAngularConfigs(tree, ['architect', 'build', 'options', 'polyfills'])
 			.map(polyfill => createSrcFile(tree, polyfill.config))
-			.filter(sourceFile => /import 'core-js';/.test(sourceFile.getText())).length;
+			.filter(sourceFile => /import 'core-js/.test(sourceFile.getText())).length;
 		if (!hasCoreJsBeenImported) {
 			removePackageJsonDependency(tree, 'core-js');
 		}
