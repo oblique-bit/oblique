@@ -16,8 +16,10 @@ export class ObMatErrorDirective extends ObUnsubscribable implements OnInit {
 
 	constructor(@Optional() private readonly control: ObErrorMessagesDirective, private readonly el: ElementRef, translate: TranslateService) {
 		super();
-		this.pipe = new ObTranslateParamsPipe(translate);
-		translate.onLangChange.subscribe(() => this.showErrors(this.errors || {}));
+		if (this.control) {
+			this.pipe = new ObTranslateParamsPipe(translate);
+			translate.onLangChange.subscribe(() => this.showErrors(this.errors || {}));
+		}
 	}
 
 	ngOnInit() {

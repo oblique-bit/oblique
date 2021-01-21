@@ -7,6 +7,14 @@
 		<input matInput ngModel name="text" required />
 		<mat-error></mat-error>
 	</mat-form-field>
+	<mat-form-field class="form-element" obErrorMessages>
+		<mat-label>Select</mat-label>
+		<mat-select ngModel name="select" required>
+			<mat-option>1</mat-option>
+			<mat-option>2</mat-option>
+		</mat-select>
+		<mat-error></mat-error>
+	</mat-form-field>
 	<div class="form-element form-actions">
 		<button mat-raised-button type="reset">Cancel</button>
 		<button mat-raised-button color="primary" type="submit">Check</button>
@@ -15,16 +23,19 @@
 <form [formGroup]="form">
 	<h3>Reactive</h3>
 	<mat-form-field class="form-element" obErrorMessages>
-		<mat-label>Text</mat-label>
-		<input matInput formControlName="email" />
-		<mat-error></mat-error>
-	</mat-form-field>
-	<mat-form-field class="form-element mat-form-field-sm" obErrorMessages>
-		<mat-label>Text</mat-label>
-		<input matInput formControlName="email" />
+		<mat-label>Select</mat-label>
+		<mat-select formControlName="select">
+			<mat-option>1</mat-option>
+			<mat-option>2</mat-option>
+		</mat-select>
 		<mat-error></mat-error>
 	</mat-form-field>
 	<mat-form-field class="form-element mat-form-field-lg" obErrorMessages>
+		<mat-label>Text</mat-label>
+		<input matInput formControlName="email" />
+		<mat-error></mat-error>
+	</mat-form-field>
+	<mat-form-field class="form-element mat-form-field-lg">
 		<mat-label>Text</mat-label>
 		<input matInput formControlName="email" />
 		<mat-error></mat-error>
