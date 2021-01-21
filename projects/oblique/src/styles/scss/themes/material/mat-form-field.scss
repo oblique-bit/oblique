@@ -8,12 +8,17 @@ $large: 1.25rem;
 .mat-form-field {
 	width: 100%;
 
+	.mat-form-field-outline {
+		background-color: $white;
+	}
+
 	&.mat-form-field-invalid .mat-form-field-flex {
 		@include icon($fa-var-exclamation-circle, after);
 
 		&::after {
 			color: $brand-error;
-			margin-left: $spacing-xs
+			margin-left: $spacing-xs;
+			z-index: $z-index-controls;
 		}
 	}
 
