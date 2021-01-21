@@ -50,7 +50,7 @@ export class UpdateV5toV6 implements IMigrations {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Migrating font');
 			const module = readFile(tree, appModulePath);
-			const match = module.match(/(?<full>{\s*provide\s*:\s*OBLIQUE_FONT\s*,\s*useValue\s*:\s*(?:FONTS\.)?['"]?(?<font>[^"'}]*)['"]?\s*},?\s?)/);
+			const match = module.match(/(?<full>\s*{\s*provide\s*:\s*OBLIQUE_FONT\s*,\s*useValue\s*:\s*(?:FONTS\.)?['"]?(?<font>[^"'\s}]*)['"]?\s*},?)/);
 			const full = match?.groups?.full;
 			const font = match?.groups?.font;
 			if (full && font) {
