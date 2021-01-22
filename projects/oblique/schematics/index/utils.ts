@@ -114,6 +114,46 @@ export function applyInTree(tree: Tree, toApply: Function, pattern = '*'): Tree 
 	return tree;
 }
 
+export function addInterface(tree: Tree, fileName: string, name: string): void {
+	let content = readFile(tree, fileName);
+	if (!new RegExp(`export class\\s*\\w*\\s*implements.*${name}`, 'm').test(content)) {
+		tree.overwrite(
+			fileName,
+			content
+				.replace(/(export class\s*\w*(?:\s*extends \w*)?)(?:\s*implements\s*)?(\w*(?:,\s*\w*)*)\s*{/, `$1 implements $2, ${name} {`)
+				.replace('implements ,', 'implements')
+		);
+	}
+}
+
+export function addImport(tree: Tree, fileName: string, name: string, pkg: string): void {
+	let content = readFile(tree, fileName);
+	if (!hasImport(content, name, pkg)) {
+		tree.overwrite(
+			fileName,
+			new RegExp(`import\\s*{.*}\\s*from\\s*['"]${pkg}['"]`, 'm').test(content)
+				? content.replace(new RegExp(`import\\s*{(.*)}\\s*from\\s*['"]${pkg}['"]`), `import {$1, ${name}} from '${pkg}'`)
+				: `import {${name}} from '${pkg}';\n` + content
+		);
+	}
+}
+
+export function removeImport(tree: Tree, fileName: string, name: string, pkg: string): void {
+	let content = readFile(tree, fileName);
+	if (hasImport(content, name, pkg)) {
+		tree.overwrite(
+			fileName,
+			new RegExp(`import\\s*{\\s*${name}\\s*}\\s*from\\s*['"]${pkg}['"]`, 'm').test(content)
+				? content.replace(new RegExp(`import\\s*{\\s*${name}\\s*}\\s*from\\s*['"]${pkg}['"]\\s*;\\s*`), '')
+				: content.replace(new RegExp(`(import\\s*{\\s*.*)${name}(?:,\\s*)?(.*\\s*}\\s*from\\s*['"]${pkg}['"]\\s*;\\s*)`), '$1$2').replace(/,\s*}/, '}')
+		);
+	}
+}
+
+function hasImport(content: string, name: string, pkg: string): boolean {
+	return new RegExp(`import\\s*{\\s*.*${name}.*from\\s*['"]${pkg}['"]`, 'm').test(content);
+}
+
 function getJsonProperty(json: any, propertyPath: string): string {
 	return propertyPath.split(';').reduce((obj, property) => (obj ? obj[property] : undefined), json);
 }

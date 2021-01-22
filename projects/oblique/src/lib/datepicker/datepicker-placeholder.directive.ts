@@ -1,7 +1,7 @@
 import {Directive, HostBinding, OnInit, OnDestroy, Input} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
-import {ObUnsubscribable} from '../unsubscribe.class';
+import {Subject} from 'rxjs';
 
 const I18N_PLACEHOLDERS = {
 	en: 'dd.mm.yyyy',
@@ -14,14 +14,13 @@ const I18N_PLACEHOLDERS = {
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'input[ngbDatepicker]'
 })
-export class ObDatepickerPlaceholderDirective extends ObUnsubscribable implements OnInit, OnDestroy {
+export class ObDatepickerPlaceholderDirective implements OnInit, OnDestroy {
 	@Input()
 	@HostBinding()
 	placeholder;
+	private readonly unsubscribe = new Subject();
 
-	constructor(private readonly translateService: TranslateService) {
-		super();
-	}
+	constructor(private readonly translateService: TranslateService) {}
 
 	ngOnInit() {
 		if (!this.placeholder) {
@@ -31,6 +30,11 @@ export class ObDatepickerPlaceholderDirective extends ObUnsubscribable implement
 				this.setPlaceholder(lang);
 			});
 		}
+	}
+
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 
 	private setPlaceholder(lang: string) {

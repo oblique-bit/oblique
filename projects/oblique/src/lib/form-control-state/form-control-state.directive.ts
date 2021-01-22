@@ -1,9 +1,8 @@
-import {AfterViewInit, ContentChild, Directive, ElementRef, HostBinding, Input, Optional, Renderer2} from '@angular/core';
+import {AfterViewInit, ContentChild, Directive, ElementRef, HostBinding, Input, OnDestroy, Optional, Renderer2} from '@angular/core';
 import {FormGroupDirective, FormGroupName, NgControl, NgForm, NgModelGroup} from '@angular/forms';
-import {merge} from 'rxjs';
+import {merge, Subject} from 'rxjs';
 import {delay, takeUntil} from 'rxjs/operators';
 
-import {ObUnsubscribable} from '../unsubscribe.class';
 import {ObThemeService} from '../theme/theme.service';
 import {ObParentFormDirective} from '../nested-form/parent-form.directive';
 
@@ -14,7 +13,7 @@ import {ObParentFormDirective} from '../nested-form/parent-form.directive';
 	selector: '[obFormControlState]',
 	exportAs: 'obFormControlState'
 })
-export class ObFormControlStateDirective extends ObUnsubscribable implements AfterViewInit {
+export class ObFormControlStateDirective implements AfterViewInit, OnDestroy {
 	@Input() pristineValidation = false;
 	@Input() mandatory;
 
@@ -26,6 +25,7 @@ export class ObFormControlStateDirective extends ObUnsubscribable implements Aft
 	private readonly group: NgModelGroup | FormGroupName;
 	private inputContainer;
 	private inputElement;
+	private readonly unsubscribe = new Subject();
 
 	constructor(
 		@Optional() ngForm: NgForm,
@@ -37,7 +37,6 @@ export class ObFormControlStateDirective extends ObUnsubscribable implements Aft
 		private readonly elementRef: ElementRef,
 		private readonly renderer: Renderer2
 	) {
-		super();
 		theme.deprecated('form control state', 'form-field/overview#error-messages');
 		this.form = ngForm || formGroupDirective;
 		this.group = modelGroup || formGroupName;
@@ -71,6 +70,11 @@ export class ObFormControlStateDirective extends ObUnsubscribable implements Aft
 		}
 
 		this.delayStateGenerationForReactiveForms();
+	}
+
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 
 	private delayStateGenerationForReactiveForms(): void {

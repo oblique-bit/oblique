@@ -16,13 +16,11 @@ import {
 	IterableDiffers,
 	OnInit,
 	Output,
-	ViewChild,
 	ViewEncapsulation,
 	OnDestroy
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
-import {ObFilterBoxComponent} from '../filter-box/filter-box.component';
 import {ObMultiselectConfig} from './multiselect.config';
 import {ObMultiselectTexts} from './multiselect.texts';
 import {ObThemeService} from '../theme/theme.service';
@@ -71,7 +69,6 @@ export class ObMultiselectComponent implements OnInit, OnDestroy, DoCheck, Contr
 	@Output() onAdded = new EventEmitter<any>();
 	@Output() onRemoved = new EventEmitter<any>();
 
-	@ViewChild('obFilterBox') filterBox: ObFilterBoxComponent;
 	@HostBinding('attr.count') get count(): number {
 		return this.options.length;
 	}
@@ -174,12 +171,6 @@ export class ObMultiselectComponent implements OnInit, OnDestroy, DoCheck, Contr
 		this.isVisible = !this.isVisible;
 		if (!this.isVisible) {
 			this.dropdownClosed.emit();
-		} else if (this.enableSearch) {
-			setTimeout(() => {
-				// WAI-ARIA: describe inner filter box input:
-				// TODO: create a ngAria-like directive
-				this.filterBox.filterControl.nativeElement.setAttribute('aria-describedby', `${this.idPrefix}-search`);
-			}, 0);
 		}
 	}
 

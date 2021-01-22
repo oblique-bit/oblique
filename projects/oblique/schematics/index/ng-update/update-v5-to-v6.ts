@@ -11,7 +11,10 @@ import {
 	getAngularConfigs,
 	checkIfAngularConfigExists,
 	packageJsonConfigPath,
-	getJson
+	getJson,
+	addInterface,
+	addImport,
+	removeImport
 } from '../utils';
 import {appModulePath, createSrcFile, getTemplate, obliqueCssPath} from '../ng-add/ng-add-utils';
 import {getPackageJsonDependency, removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
@@ -40,8 +43,8 @@ export class UpdateV5toV6 implements IMigrations {
 				this.renameMockCollapseComponent(),
 				this.renameDefaultLanguage(),
 				this.adaptDependencies(),
-				this.migrateDropdown()
-				/* banner */
+				this.migrateDropdown(),
+				this.removeUnsubscribe()
 			])(tree, _context);
 		};
 	}
@@ -245,5 +248,37 @@ export class UpdateV5toV6 implements IMigrations {
 			};
 			return applyInTree(tree, toApply, '*.html');
 		};
+	}
+
+	private removeUnsubscribe(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Migrate Unsubscribe class');
+			const toApply = (filePath: string) => {
+				const content = readFile(tree, filePath);
+				if (content.indexOf('extends ObUnsubscribable') > -1) {
+					tree.overwrite(filePath, content.replace(/extends\s+ObUnsubscribable\s?/, '').replace(/\s*super\(\);/, ''));
+					addInterface(tree, filePath, 'OnDestroy');
+					addImport(tree, filePath, 'OnDestroy', '@angular/core');
+					addImport(tree, filePath, 'Subject', 'rxjs');
+					removeImport(tree, filePath, 'ObUnsubscribable', '@oblique/oblique');
+					replaceInFile(tree, filePath, /\n([\t ]*)constructor\(/, '$1private readonly unsubscribe = new Subject();\n\n$1constructor(');
+					this.addNgOnDestroy(tree, filePath, /ngOnDestroy/.test(content));
+				}
+			};
+			return applyInTree(tree, toApply, '*.ts');
+		};
+	}
+
+	private addNgOnDestroy(tree: Tree, filePath: string, extend: boolean): void {
+		if (extend) {
+			replaceInFile(tree, filePath, /ngOnDestroy\(.*{\s*\n(\s*)/, 'ngOnDestroy() {\n$1this.unsubscribe.next();\n$1this.unsubscribe.complete();\n$1');
+		} else {
+			replaceInFile(
+				tree,
+				filePath,
+				/\n([\t ]*)constructor\(/,
+				'\n$1ngOnDestroy() {\n$1$1this.unsubscribe.next();\n$1$1this.unsubscribe.complete();\n$1}\n\n$1constructor('
+			);
+		}
 	}
 }

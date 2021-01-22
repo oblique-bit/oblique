@@ -1,9 +1,8 @@
-import {AfterViewInit, Component, Input, Optional} from '@angular/core';
+import {AfterViewInit, Component, Input, OnDestroy, Optional} from '@angular/core';
 import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
-import {merge as observableMerge} from 'rxjs';
+import {merge as observableMerge, Subject} from 'rxjs';
 import {delay, takeUntil} from 'rxjs/operators';
 
-import {ObUnsubscribable} from '../unsubscribe.class';
 import {ObFormControlStateDirective} from '../form-control-state/form-control-state.directive';
 import {ObErrorMessagesService} from './error-messages.service';
 import {ObThemeService} from '../theme/theme.service';
@@ -17,12 +16,13 @@ import {ObParentFormDirective} from '../nested-form/parent-form.directive';
 	exportAs: 'obErrorMessages',
 	templateUrl: './error-messages.component.html'
 })
-export class ObErrorMessagesComponent extends ObUnsubscribable implements AfterViewInit {
+export class ObErrorMessagesComponent implements AfterViewInit, OnDestroy {
 	@Input() control: NgControl;
 
 	errors: {key: string; params: {[param: string]: any}}[] = [];
 
 	private readonly form: NgForm | FormGroupDirective;
+	private readonly unsubscribe = new Subject();
 
 	constructor(
 		private readonly errorMessagesService: ObErrorMessagesService,
@@ -32,7 +32,6 @@ export class ObErrorMessagesComponent extends ObUnsubscribable implements AfterV
 		@Optional() formGroupDirective: FormGroupDirective,
 		@Optional() private readonly parent: ObParentFormDirective
 	) {
-		super();
 		theme.deprecated('error messages', 'form-field/overview#error-messages');
 		this.form = ngForm || formGroupDirective;
 
@@ -54,6 +53,11 @@ export class ObErrorMessagesComponent extends ObUnsubscribable implements AfterV
 		}
 
 		this.delayMessageGenerationForReactiveForms();
+	}
+
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 
 	private generateErrorMessages(submitted = false) {

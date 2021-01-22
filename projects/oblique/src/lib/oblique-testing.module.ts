@@ -10,12 +10,9 @@ import {ObMockSearchBoxModule} from './search-box/mock/mock-search-box.module';
 import {ObMockDocumentMetaModule} from './document-meta/mock/mock-document-meta.module';
 import {ObMockDropdownModule} from './dropdown/mock/mock-dropdown.module';
 import {ObMockErrorMessagesModule} from './error-messages/mock/mock-error-messages.module';
-import {ObMockFilterBoxModule} from './filter-box/mock/mock-filter-box.module';
 import {ObMockFormControlStateModule} from './form-control-state/mock/mock-form-control-state.module';
 import {ObMockMasterLayoutModule} from './master-layout/mock/mock-master-layout.module';
 import {ObMockMultiselectModule} from './multiselect/mock/mock-multiselect.module';
-import {ObMockNavigableModule} from './navigable/mock/mock-navigable.module';
-import {ObMockNavigatorModule} from './navigator/mock/mock-navigator.module';
 import {ObMockNavTreeModule} from './nav-tree/mock/mock-nav-tree.module';
 import {ObMockNotificationModule} from './notification/mock/mock-notification.module';
 import {ObMockNumberFormatModule} from './number-format/mock/mock-number-format.module';
@@ -56,7 +53,6 @@ export {
 	ObMockErrorMessagesDirective,
 	ObMockMatErrorDirective
 } from './error-messages/mock/mock-error-messages.module';
-export {ObMockFilterBoxModule, ObMockFilterBoxComponent} from './filter-box/mock/mock-filter-box.module';
 export {ObMockFormControlStateModule, ObMockFormControlStateDirective} from './form-control-state/mock/mock-form-control-state.module';
 export {ObMockDatePipe, ObMockLanguageModule} from './language/mock/mock-language.module';
 export {
@@ -83,8 +79,6 @@ export {
 	ObMockMultiselectComponent,
 	ObMockMultiselectSearchPipe
 } from './multiselect/mock/mock-multiselect.module';
-export {ObMockNavigableModule, ObMockNavigableDirective, ObMockNavigableGroupComponent} from './navigable/mock/mock-navigable.module';
-export {ObMockNavigatorModule, ObMockNavigatorComponent} from './navigator/mock/mock-navigator.module';
 export {ObMockNavTreeModule, ObMockNavTreeComponent, ObMockNavTreeFakeFocusDirective} from './nav-tree/mock/mock-nav-tree.module';
 export {
 	ObMockNotificationModule,
@@ -138,13 +132,10 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockDocumentMetaModule,
 	ObMockDropdownModule,
 	ObMockErrorMessagesModule,
-	ObMockFilterBoxModule,
 	ObMockFormControlStateModule,
 	ObMockHttpApiInterceptorModule,
 	ObMockMasterLayoutModule,
 	ObMockMultiselectModule,
-	ObMockNavigableModule,
-	ObMockNavigatorModule,
 	ObMockNavTreeModule,
 	ObMockNotificationModule,
 	ObMockNumberFormatModule,

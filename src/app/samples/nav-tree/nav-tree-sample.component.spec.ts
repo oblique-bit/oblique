@@ -8,7 +8,7 @@ import {of} from 'rxjs';
 import {NgbButtonsModule, NgbCollapseModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {NavTreeSampleComponent} from './nav-tree-sample.component';
 import {ObliqueTestingModule} from 'oblique/lib/oblique-testing.module';
-import {ObNavTreeComponent} from 'oblique/src/lib/nav-tree/nav-tree.component';
+import {ObNavTreeComponent} from 'oblique/lib/nav-tree/nav-tree.component';
 
 describe('NavTreeSampleComponent', () => {
 	let component: NavTreeSampleComponent;

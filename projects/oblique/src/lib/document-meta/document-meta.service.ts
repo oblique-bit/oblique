@@ -1,11 +1,10 @@
-import {Inject, Injectable} from '@angular/core';
+import {Inject, Injectable, OnDestroy} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {DOCUMENT} from '@angular/common';
 import {TranslateService} from '@ngx-translate/core';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
-
-import {ObUnsubscribable} from '../unsubscribe.class';
+import {Subject} from 'rxjs';
 
 /**
  * DocumentMetaService - Service for updating document metadata
@@ -13,7 +12,7 @@ import {ObUnsubscribable} from '../unsubscribe.class';
  * Inspired & adapted from: https://gist.github.com/LA1CH3/718588765d56a8932de52c64c3561dcf
  */
 @Injectable({providedIn: 'root'})
-export class ObDocumentMetaService extends ObUnsubscribable {
+export class ObDocumentMetaService implements OnDestroy {
 	public titleSeparator = ' · ';
 	public titleSuffix = '';
 	public description = '';
@@ -24,6 +23,7 @@ export class ObDocumentMetaService extends ObUnsubscribable {
 		title: '',
 		description: ''
 	};
+	private readonly unsubscribe = new Subject();
 
 	constructor(
 		private readonly router: Router,
@@ -32,8 +32,6 @@ export class ObDocumentMetaService extends ObUnsubscribable {
 		private readonly translate: TranslateService,
 		@Inject(DOCUMENT) private readonly document: any
 	) {
-		super();
-
 		this.headElement = this.document.querySelector('head');
 		this.metaDescription = this.getOrCreateMetaElement('description');
 		this.translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe(this.updateMetaInformation.bind(this));
@@ -58,6 +56,11 @@ export class ObDocumentMetaService extends ObUnsubscribable {
 				this.currentMetaInformation.description = data.description || this.description;
 				this.updateMetaInformation();
 			});
+	}
+
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 
 	public setTitle(title: string, separator: string = this.titleSeparator, suffix: string = this.titleSuffix) {

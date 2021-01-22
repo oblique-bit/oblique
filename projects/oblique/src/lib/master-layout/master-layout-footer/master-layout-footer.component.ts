@@ -1,12 +1,12 @@
-import {Component, ContentChildren, HostBinding, QueryList, TemplateRef, ViewEncapsulation} from '@angular/core';
+import {Component, ContentChildren, HostBinding, OnDestroy, QueryList, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {filter, takeUntil} from 'rxjs/operators';
 
-import {ObUnsubscribable} from '../../unsubscribe.class';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {scrollEnabled} from '../master-layout.utility';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.datatypes';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
+import {Subject} from 'rxjs';
 
 @Component({
 	selector: 'ob-master-layout-footer',
@@ -16,21 +16,25 @@ import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'application-footer'}
 })
-export class ObMasterLayoutFooterComponent extends ObUnsubscribable {
+export class ObMasterLayoutFooterComponent implements OnDestroy {
 	home = this.config.homePageRoute;
 	isCustom = this.masterLayout.footer.isCustom;
 	@HostBinding('class.application-footer-sm') isSmall = this.masterLayout.footer.isSmall;
 	@ContentChildren('obFooterLink') readonly templates: QueryList<TemplateRef<any>>;
+	private readonly unsubscribe = new Subject();
 
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,
 		private readonly config: ObMasterLayoutConfig,
 		private readonly scrollEvents: ObScrollingEvents
 	) {
-		super();
-
 		this.propertyChanges();
 		this.reduceOnScroll();
+	}
+
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 
 	private propertyChanges() {

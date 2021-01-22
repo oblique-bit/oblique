@@ -84,7 +84,6 @@ The scope is optional and should be the name of the Oblique feature affected:
 * **document-meta**
 * **dropdown**
 * **error-messages**
-* **filter-box**
 * **form-control-state**
 * **http-interceptor**
 * **language**
@@ -92,9 +91,7 @@ The scope is optional and should be the name of the Oblique feature affected:
 * **multi-translate-loader**
 * **multiselect**
 * **nav-tree**
-* **navigable**
 * **nested-form**
-* **navigator**
 * **notification**
 * **number-format**
 * **off-canvas**
@@ -111,7 +108,6 @@ The scope is optional and should be the name of the Oblique feature affected:
 * **translate-params**
 * **unknown-route**
 * **unsaved-changes**
-* **unsubscribe**
 * **utilities** (for utilities.ts)
 * **toolchain** (for configuration, build, releases...)
 * **schematics**

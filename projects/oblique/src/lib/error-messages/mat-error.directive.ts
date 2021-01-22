@@ -1,21 +1,21 @@
-import {Directive, ElementRef, OnInit, Optional} from '@angular/core';
+import {Directive, ElementRef, OnDestroy, OnInit, Optional} from '@angular/core';
 import {ValidationErrors} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {filter, takeUntil, tap} from 'rxjs/operators';
 import {ObTranslateParamsPipe} from '../translate-params/translate-params.module';
-import {ObUnsubscribable} from '../unsubscribe.class';
 import {ObErrorMessagesDirective} from './error-messages.directive';
+import {Subject} from 'rxjs';
 
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'mat-error'
 })
-export class ObMatErrorDirective extends ObUnsubscribable implements OnInit {
+export class ObMatErrorDirective implements OnInit, OnDestroy {
 	private readonly pipe: ObTranslateParamsPipe;
 	private errors: ValidationErrors = {};
+	private readonly unsubscribe = new Subject();
 
 	constructor(@Optional() private readonly control: ObErrorMessagesDirective, private readonly el: ElementRef, translate: TranslateService) {
-		super();
 		if (this.control) {
 			this.pipe = new ObTranslateParamsPipe(translate);
 			translate.onLangChange.subscribe(() => this.showErrors(this.errors || {}));
@@ -32,6 +32,11 @@ export class ObMatErrorDirective extends ObUnsubscribable implements OnInit {
 				)
 				.subscribe(errors => this.showErrors(errors));
 		}
+	}
+
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 
 	private showErrors(errors: ValidationErrors): void {

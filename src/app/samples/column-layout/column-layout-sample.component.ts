@@ -19,11 +19,9 @@ export class ObColumnLayoutSampleComponent {
 			children: [
 				{url: '/column-layout', label: 'i18n.routes.samples.column-layout.title'},
 				{url: '/datepicker', label: 'i18n.routes.samples.datepicker.title'},
-				{url: '/filter-box', label: 'i18n.routes.samples.filter-box.title'},
 				{url: '/http-interceptor', label: 'i18n.routes.samples.http-interceptor.title'},
 				{url: '/master-layout', label: 'i18n.routes.samples.master-layout.title'},
 				{url: '/multiselect', label: 'i18n.routes.samples.multiselect.title'},
-				{url: '/navigable', label: 'i18n.routes.samples.navigable.title'},
 				{url: '/nav-tree', label: 'i18n.routes.samples.nav-tree.title'},
 				{url: '/notification', label: 'i18n.routes.samples.notification.title'},
 				{url: '/number-format', label: 'i18n.routes.samples.number-format.title'},

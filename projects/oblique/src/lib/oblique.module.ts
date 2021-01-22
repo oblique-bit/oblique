@@ -5,12 +5,9 @@ import {ObColumnLayoutModule} from './column-layout/column-layout.module';
 import {ObDocumentMetaModule} from './document-meta/document-meta.module';
 import {ObDropdownModule} from './dropdown/dropdown.module';
 import {ObErrorMessagesModule} from './error-messages/error-messages.module';
-import {ObFilterBoxModule} from './filter-box/filter-box.module';
 import {ObFormControlStateModule} from './form-control-state/form-control-state.module';
 import {ObMasterLayoutModule} from './master-layout/master-layout.module';
 import {ObMultiselectModule} from './multiselect/multiselect.module';
-import {ObNavigatorModule} from './navigator/navigator.module';
-import {ObNavigableModule} from './navigable/navigable.module';
 import {ObNavTreeModule} from './nav-tree/nav-tree.module';
 import {ObNestedFormModule} from './nested-form/nested-form.module';
 import {ObNotificationModule} from './notification/notification.module';
@@ -40,13 +37,10 @@ const OBLIQUE_MODULES = [
 	ObDocumentMetaModule,
 	ObDropdownModule,
 	ObErrorMessagesModule,
-	ObFilterBoxModule,
 	ObFormControlStateModule,
 	ObLanguageModule,
 	ObMasterLayoutModule,
 	ObMultiselectModule,
-	ObNavigableModule,
-	ObNavigatorModule,
 	ObNavTreeModule,
 	ObNestedFormModule,
 	ObNotificationModule,

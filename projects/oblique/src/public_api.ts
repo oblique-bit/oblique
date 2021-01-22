@@ -26,7 +26,6 @@ export {
 	ObErrorMessagesModule,
 	ObErrorMessagesService
 } from './lib/error-messages/error-messages.module';
-export {ObFilterBoxComponent, ObFilterBoxModule} from './lib/filter-box/filter-box.module';
 export {ObFormControlStateDirective, ObFormControlStateModule} from './lib/form-control-state/form-control-state.module';
 export {
 	ObHttpApiInterceptor,
@@ -65,15 +64,6 @@ export {
 	ObMultiselectTexts
 } from './lib/multiselect/multiselect.module';
 export {ObNavTreeComponent, ObNavTreeFakeFocusDirective, ObNavTreeModule, ObNavTreeItemModel} from './lib/nav-tree/nav-tree.module';
-export {
-	ObNavigableDirective,
-	ObNavigableGroupComponent,
-	ObNavigableModule,
-	ObNavigableOnMoveEvent,
-	ObPreventableEvent,
-	ObNavigableOnChangeEvent
-} from './lib/navigable/navigable.module';
-export {ObNavigatorComponent, ObNavigatorModule} from './lib/navigator/navigator.module';
 export {ObNestedFormModule, ObNestedFormComponent, ObParentFormDirective} from './lib/nested-form/nested-form.module';
 export {
 	CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE,
@@ -117,7 +107,6 @@ export {ObTelemetryService, TELEMETRY_DISABLE} from './lib/telemetry/telemetry.s
 export {OB_BANNER, ObIBanner, OB_MATERIAL_CONFIG, ObIMaterialConfig, getTranslateLoader, multiTranslateLoader, WINDOW} from './lib/utilities';
 export {ObMultiTranslateLoader, TRANSLATION_FILES, ObITranslationFile} from './lib/multi-translate-loader/multi-translate-loader';
 export {ObPopUpService} from './lib/pop-up/pop-up.service';
-export {ObUnsubscribable} from './lib/unsubscribe.class';
 export {ObliqueModule} from './lib/oblique.module';
 export {FONTS, THEMES, ObThemeService} from './lib/theme/theme.service';
 

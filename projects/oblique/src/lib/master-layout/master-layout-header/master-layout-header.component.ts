@@ -8,6 +8,7 @@ import {
 	HostListener,
 	Inject,
 	Input,
+	OnDestroy,
 	Optional,
 	QueryList,
 	Renderer2,
@@ -18,13 +19,13 @@ import {
 import {TranslateService} from '@ngx-translate/core';
 import {filter, takeUntil} from 'rxjs/operators';
 
-import {ObUnsubscribable} from '../../unsubscribe.class';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {scrollEnabled} from '../master-layout.utility';
 import {OB_BANNER, ObIBanner, WINDOW} from '../../utilities';
 import {ObEMasterLayoutEventValues, ObILocaleObject, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.datatypes';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
+import {Subject} from 'rxjs';
 
 @Component({
 	selector: 'ob-master-layout-header',
@@ -34,7 +35,7 @@ import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'application-header'}
 })
-export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements AfterViewInit {
+export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	home = this.config.homePageRoute;
 	languages: {code: string; id?: string}[];
 	isCustom = this.masterLayout.header.isCustom;
@@ -49,6 +50,7 @@ export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements A
 	@ViewChildren('headerControl') readonly headerControl: QueryList<ElementRef>;
 	@ViewChildren('headerMobileControl') readonly headerMobileControl: QueryList<ElementRef>;
 	private readonly window: Window;
+	private readonly unsubscribe = new Subject();
 
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,
@@ -60,7 +62,6 @@ export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements A
 		@Inject(WINDOW) window,
 		@Inject(OB_BANNER) @Optional() bannerToken
 	) {
-		super();
 		this.window = window; // because AoT don't accept interfaces as DI
 		this.languages = this.formatLanguages();
 		this.propertyChanges();
@@ -77,6 +78,11 @@ export class ObMasterLayoutHeaderComponent extends ObUnsubscribable implements A
 			.toArray()
 			.concat(this.headerMobileControl.toArray())
 			.forEach(elt => this.addActionClass(elt));
+	}
+
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 
 	@HostListener('window:resize')

@@ -6,12 +6,10 @@ import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 import {CollapseSampleComponent} from './collapse/collapse-sample.component';
 import {ObColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
 import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
-import {FilterBoxSampleComponent} from './filter-box-sample/filter-box-sample.component';
 import {FormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
 import {InputClearComponent} from './input-clear/input-clear.component';
 import {MasterLayoutSampleComponent} from './master-layout/master-layout-sample.component';
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
-import {NavigableSampleComponent} from './navigable/navigable-sample.component';
 import {NavTreeDetailSampleComponent, NavTreeSampleComponent} from './nav-tree/nav-tree-sample.component';
 import {NestedFormSampleComponent} from './nested-form/nested-form-sample.component';
 import {NotificationSampleComponent} from './notification/notification-sample.component';
@@ -35,7 +33,6 @@ const samplesRoutes: Routes = [
 	{path: 'column-layout', component: ObColumnLayoutSampleComponent},
 	{path: 'datepicker', component: DatepickerSampleComponent},
 	{path: 'error-messages', component: ErrorMessagesSampleComponent},
-	{path: 'filter-box', component: FilterBoxSampleComponent},
 	{path: 'form-control-state', component: FormControlStateSampleComponent},
 	{path: 'http-interceptor', component: HttpInterceptorSampleComponent},
 	{path: 'input-clear', component: InputClearComponent},
@@ -55,7 +52,6 @@ const samplesRoutes: Routes = [
 			{path: ':section/:subsection/:subsubsection', component: NavTreeDetailSampleComponent}
 		]
 	},
-	{path: 'navigable', component: NavigableSampleComponent, data: {title: 'Navigable Sample'}},
 	{path: 'nested-form', component: NestedFormSampleComponent},
 	{path: 'notification', component: NotificationSampleComponent},
 	{path: 'number-format', component: NumberFormatSampleComponent},

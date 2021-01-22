@@ -1,21 +1,20 @@
-import {AfterViewInit, ContentChildren, Directive, ElementRef, EventEmitter, Output, QueryList} from '@angular/core';
+import {AfterViewInit, ContentChildren, Directive, ElementRef, EventEmitter, OnDestroy, Output, QueryList} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
-import {ObUnsubscribable} from '../../unsubscribe.class';
+import {Subject} from 'rxjs';
 
 @Directive({
 	selector: '[obMasterLayoutNavigationMenu]',
 	exportAs: 'obMasterLayoutNavigationMenu'
 })
-export class ObMasterLayoutNavigationMenuDirective extends ObUnsubscribable implements AfterViewInit {
+export class ObMasterLayoutNavigationMenuDirective implements AfterViewInit, OnDestroy {
 	@Output()
 	onShow = new EventEmitter<boolean>();
 
 	@ContentChildren(ObMasterLayoutNavigationMenuDirective, {descendants: true})
 	$menus: QueryList<ObMasterLayoutNavigationMenuDirective>;
+	private readonly unsubscribe = new Subject();
 
-	constructor(private readonly element: ElementRef) {
-		super();
-	}
+	constructor(private readonly element: ElementRef) {}
 
 	ngAfterViewInit() {
 		this.$menus.forEach($menu => {
@@ -34,6 +33,11 @@ export class ObMasterLayoutNavigationMenuDirective extends ObUnsubscribable impl
 				});
 			}
 		});
+	}
+
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 
 	show() {
