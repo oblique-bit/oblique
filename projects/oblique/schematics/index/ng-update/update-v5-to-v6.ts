@@ -50,7 +50,7 @@ export class UpdateV5toV6 implements IMigrations {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Migrating font');
 			const module = readFile(tree, appModulePath);
-			const match = module.match(/(?<full>{\s*provide\s*:\s*OBLIQUE_FONT\s*,\s*useValue\s*:\s*(?:FONTS\.)?['"]?(?<font>[^"'}]*)['"]?\s*},?\s?)/);
+			const match = module.match(/(?<full>\s*{\s*provide\s*:\s*OBLIQUE_FONT\s*,\s*useValue\s*:\s*(?:FONTS\.)?['"]?(?<font>[^"'\s}]*)['"]?\s*},?)/);
 			const full = match?.groups?.full;
 			const font = match?.groups?.font;
 			if (full && font) {
@@ -205,7 +205,7 @@ export class UpdateV5toV6 implements IMigrations {
 
 	private adaptTranslationDependencies(tree: Tree): void {
 		const file = readFile(tree, appModulePath);
-		const factory = file.match(/TranslateModule.forRoot\({.*useFactory\s*:\s*(?<factory>\w*)\s*,[^}]*}\s*}\s*\)/s)?.groups?.factory;
+		const factory = file.match(/TranslateModule\.forRoot\({.*?useFactory\s*:\s*(?<factory>\w*)/s)?.groups?.factory;
 		const loader = file.match(new RegExp(`export function ${factory}\\(.*new (?<loader>[^(]*)`, 's'))?.groups?.loader;
 		const hasObMultiLoader = /TranslateModule.forRoot\(\s*multiTranslateLoader\(/.test(file);
 		if (hasObMultiLoader || loader !== 'TranslateHttpLoader') {
@@ -230,7 +230,7 @@ export class UpdateV5toV6 implements IMigrations {
 	private adaptCoreJsDependency(tree: Tree): void {
 		const hasCoreJsBeenImported = getAngularConfigs(tree, ['architect', 'build', 'options', 'polyfills'])
 			.map(polyfill => createSrcFile(tree, polyfill.config))
-			.filter(sourceFile => /import 'core-js';/.test(sourceFile.getText())).length;
+			.filter(sourceFile => /import 'core-js/.test(sourceFile.getText())).length;
 		if (!hasCoreJsBeenImported) {
 			removePackageJsonDependency(tree, 'core-js');
 		}

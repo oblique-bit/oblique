@@ -130,7 +130,7 @@ function addEslint(eslint: boolean, prefix: string): Rule {
 			deleteFile(tree, 'tslint.json');
 			addScript(tree, 'lint', 'eslint src/**/*.ts');
 			addScript(tree, 'lint:fix', 'npm run lint -- --fix');
-			addScript(tree, 'prettier', './node_modules/.bin/prettier --write projects/**/{*.ts,*.html} src/**/{*.ts,*.html}');
+			addScript(tree, 'prettier', './node_modules/.bin/prettier --write src/**/{*.ts,*.html}');
 			addScript(tree, 'format', 'npm run lint:fix && npm run prettier');
 
 			const prettier = getTemplate(tree, 'default-prettierrc.config');
