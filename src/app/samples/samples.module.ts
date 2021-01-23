@@ -152,7 +152,6 @@ import {ObLanguageSampleComponent} from './language/language-sample.component';
 		ObSpinnerSampleComponent
 	],
 	exports: [RouterModule, ObApiComponent],
-	providers: [SampleDataResolver],
-	entryComponents: [ObUnsavedChangesSampleModalComponent]
+	providers: [SampleDataResolver]
 })
 export class SamplesModule {}

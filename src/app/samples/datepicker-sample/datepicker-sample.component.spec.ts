@@ -1,6 +1,6 @@
 import {FormsModule} from '@angular/forms';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {NgbDatepickerModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {ObDatepickerSampleComponent} from './datepicker-sample.component';
@@ -11,21 +11,23 @@ describe('ObDatepickerSampleComponent', () => {
 	let component: ObDatepickerSampleComponent;
 	let fixture: ComponentFixture<ObDatepickerSampleComponent>;
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			declarations: [ObDatepickerSampleComponent],
-			imports: [ObDatepickerModule, NgbDatepickerModule, NgbTooltipModule, FormsModule, ObliqueTestingModule],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA]
-		})
-			.overrideModule(ObDatepickerModule, {
-				//We don't need this directive in this test
-				remove: {
-					declarations: [ObDatepickerPlaceholderDirective],
-					exports: [ObDatepickerPlaceholderDirective]
-				}
+	beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [ObDatepickerSampleComponent],
+				imports: [ObDatepickerModule, NgbDatepickerModule, NgbTooltipModule, FormsModule, ObliqueTestingModule],
+				schemas: [CUSTOM_ELEMENTS_SCHEMA]
 			})
-			.compileComponents();
-	}));
+				.overrideModule(ObDatepickerModule, {
+					//We don't need this directive in this test
+					remove: {
+						declarations: [ObDatepickerPlaceholderDirective],
+						exports: [ObDatepickerPlaceholderDirective]
+					}
+				})
+				.compileComponents();
+		})
+	);
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObDatepickerSampleComponent);

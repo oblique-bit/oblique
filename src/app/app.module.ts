@@ -1,9 +1,8 @@
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {BrowserModule, HAMMER_GESTURE_CONFIG} from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {GestureConfig} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
@@ -82,10 +81,8 @@ registerLocaleData(localeFR);
 		// eslint-disable-next-line dot-notation
 		{provide: OB_BANNER, useValue: environment['banner']},
 		{provide: HTTP_INTERCEPTORS, useClass: ObHttpApiInterceptor, multi: true},
-		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
-		{provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig}
+		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true}
 	],
-	entryComponents: [AppComponent],
 	bootstrap: [AppComponent]
 })
 export class AppModule {

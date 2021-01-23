@@ -14,7 +14,7 @@ const appRoutes: Routes = [
 	{path: '**', redirectTo: 'unknown-route'}
 ];
 @NgModule({
-	imports: [RouterModule.forRoot(appRoutes), ObUnknownRouteModule],
+	imports: [RouterModule.forRoot(appRoutes, {relativeLinkResolution: 'legacy'}), ObUnknownRouteModule],
 	exports: [RouterModule]
 })
 export class AppRoutingModule {}
