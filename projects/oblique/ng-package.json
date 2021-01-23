@@ -8,5 +8,6 @@
       "@ng-bootstrap/ng-bootstrap": "ngb",
       "ajv": "ajv"
     }
-  }
+  },
+  "whitelistedNonPeerDependencies": ["@schematics/angular", "ansi-colors", "ts-morph"]
 }

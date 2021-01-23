@@ -1,4 +1,3 @@
-import {execSync} from 'child_process';
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {infoHighlights, infoMigration, installDependencies, success} from '../utils';
 import {IMigrations, checkDependencies, IDependencies} from './ng-update-utils';
@@ -15,8 +14,7 @@ export function upgradeToV6(_options: {[key: string]: any}): Rule {
 
 function startup(migrations: IMigrations, _options: {[key: string]: any}): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Preparing tools for migration');
-		execSync('npm i --no-save --silent ts-morph');
+		infoMigration(_context, 'Starting migrations');
 
 		return chain([migrations.applyMigrations(_options), installDependencies(), finalize(migrations.dependencies)])(tree, _context);
 	};

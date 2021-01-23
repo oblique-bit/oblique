@@ -1,16 +1,20 @@
 @import "../../core/variables";
 
-.nav-tabs > .nav-item > .ob-nav-link.active {
-	position: relative;
+.nav-tabs > .nav-item > .nav-link{
+	color: $brand-default;
 
-	&::before {
-		content: "";
-		border-radius: 3px 3px 0 0;
-		background-color: $brand-accent;
-		height: 3px;
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
+	&.active {
+		position: relative;
+
+		&::before {
+			content: "";
+			border-radius: 3px 3px 0 0;
+			background-color: $brand-accent;
+			height: 3px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+		}
 	}
 }

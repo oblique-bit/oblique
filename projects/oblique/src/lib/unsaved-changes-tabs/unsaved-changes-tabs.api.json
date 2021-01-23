@@ -5,8 +5,9 @@
       "name": "ObUnsavedChangesTabsDirective",
       "selector": "[obUnsavedChangesTabs]",
       "type": "directive",
-      "usage": "Applied on a <code>&gt;form&lt;</code> or any element with <code>ngModelGroup</code> directive. The host element needs either an <code>id</code> or be wrapped int a <code>NgbTab</code> component.",
-      "since": "2.0.0"
+      "usage": "Applied on a <code>&gt;form&lt;</code> or any element with <code>ngModelGroup</code> directive. The host element needs either an <code>id</code> or be wrapped int a <code>NgbNavItem</code> component.",
+      "since": "2.0.0",
+      "updated": "6.0.0"
     },
     {
       "name": "UnsavedChangesGuard",
