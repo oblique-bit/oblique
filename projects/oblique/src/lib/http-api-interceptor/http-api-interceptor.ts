@@ -25,7 +25,7 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 		const timer = this.setTimer();
 		this.activateSpinner(obliqueRequest.spinner, request.url);
 
-		return next.handle(request.clone(this.isApiCall(request.url) ? {headers: request.headers.set('X-Requested-With', 'XMLHttpRequest')} : undefined)).pipe(
+		return next.handle(this.setupHeader(request)).pipe(
 			catchError(error => {
 				if (error instanceof HttpErrorResponse) {
 					if (error.status === 401) {
@@ -43,6 +43,10 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 				this.deactivateSpinner(obliqueRequest.spinner, request.url);
 			})
 		);
+	}
+
+	private setupHeader(request: HttpRequest<any>): HttpRequest<any> {
+		return request.clone(this.isApiCall(request.url) ? { headers: request.headers.set('X-Requested-With', 'XMLHttpRequest') } : undefined);
 	}
 
 	private setTimer(): Timer {
