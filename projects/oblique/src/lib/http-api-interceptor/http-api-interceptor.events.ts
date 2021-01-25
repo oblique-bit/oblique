@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {take} from 'rxjs/operators';
 import {ObENotificationType} from '../notification/notification.interfaces';
+import {HttpErrorResponse} from '@angular/common/http';
 
 export interface ObIHttpApiRequest {
 	notification: ObIHttpApiRequestNotification;
@@ -14,6 +15,11 @@ export interface ObIHttpApiRequestNotification {
 	title: string;
 	text: string;
 	sticky: boolean;
+}
+
+export interface ObIObliqueHttpErrorResponse {
+	error: HttpErrorResponse;
+	handled: boolean;
 }
 
 /**
