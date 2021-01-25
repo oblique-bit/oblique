@@ -1,17 +1,17 @@
 @import "../../../styles/scss/core/variables";
 @import "../../../styles/scss/core/mixins/layout";
 
-.application {
+.ob-master-layout {
 	display: block;
 	position: relative;
 	min-height: 100%;
 	padding-bottom: $footer-height-collapsed; // sticky footer in continuous mode:
 
-	&.header-open {
+	&.ob-header-expanded {
 		overflow: hidden;
 	}
 
-	&.has-layout .main-layout {
+	&.ob-has-layout .ob-main-layout {
 		padding: $spacing-default;
 
 		@include layout-collapse-up {
@@ -23,7 +23,7 @@
 		padding-bottom: $footer-height-md;
 		transition: padding-bottom $duration-default;
 
-		&.application-fixed {
+		&.ob-master-layout-fixed {
 			display: flex;
 			flex-direction: column;
 			overflow: hidden;
@@ -31,78 +31,78 @@
 			padding-bottom: 0;
 		}
 
-		&.application-scrolling {
+		&.ob-master-layout-scrolling {
 			padding-bottom: $footer-height;
 
-			&.footer-sm {
+			&.ob-footer-sm {
 				padding-bottom: $footer-height-sm;
 			}
 		}
 	}
 
-	.application-content {
+	.ob-master-layout-content {
 		@include layout-collapse-down() {
 			padding-top: $header-height-collapsed;
 		}
 
-		.no-navigation & {
+		.ob-no-navigation & {
 			transition: padding $duration-default;
 		}
 	}
 
 	@include layout-collapse-down() {
-		&.no-navigation.header-open .application-content {
+		&.ob-no-navigation.ob-header-expanded .ob-master-layout-content {
 			padding-top: $header-height-md;
 		}
 	}
 
 	@include layout-collapse-up() {
-		&.application-fixed .application-content {
+		&.ob-master-layout-fixed .ob-master-layout-content {
 			flex: 2; // Fill vertical space!
 			overflow-y: auto;
 
-			.application-content-viewport {
+			.ob-master-layout-content-viewport {
 				position: relative;
 				height: 100%;
 
-				> .main-layout {
+				> .ob-main-layout {
 					overflow-y: auto;
 					height: 100%;
 				}
 			}
 		}
 
-		&:not(.application-fixed) {
-			& .application-header-sticky {
-				& + .application-content {
+		&:not(.ob-master-layout-fixed) {
+			& .ob-master-layout-header-sticky {
+				& + .ob-master-layout-content {
 					padding-top: $header-height;
 				}
 
-				&.application-header-md + .application-content {
+				&.ob-master-layout-header-md + .ob-master-layout-content {
 					padding-top: $header-height-md;
 				}
 
-				&.application-header-animate + .application-content {
+				&.ob-master-layout-header-animate + .ob-master-layout-content {
 					transition: padding-top $duration-default ease-in-out;
 				}
 			}
 
-			&.no-navigation .application-header-sticky {
-				& + .application-content {
+			&.ob-no-navigation .ob-master-layout-header-sticky {
+				& + .ob-master-layout-content {
 					padding-top: $header-height-no-navigation;
 				}
 
-				&.application-header-md + .application-content {
+				&.ob-master-layout-header-md + .ob-master-layout-content {
 					padding-top: $header-height-no-navigation - ($header-height - $header-height-md);
 				}
 			}
 
-			&.application-scrolling {
-				.application-header-sticky.application-header-md + .application-content {
+			&.ob-master-layout-scrolling {
+				.ob-master-layout-header-sticky.ob-master-layout-header-md + .ob-master-layout-content {
 					padding-top: $header-height;
 				}
 
-				&.no-navigation .application-header-sticky.application-header-md + .application-content {
+				&.ob-no-navigation .ob-master-layout-header-sticky.ob-master-layout-header-md + .ob-master-layout-content {
 					padding-top: $header-height-no-navigation;
 				}
 			}

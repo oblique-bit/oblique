@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup, NgModelGroup, Validators} from '@angular/forms';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {UnsavedChangesSampleModalComponent} from './unsaved-changes-sample-modal.component';
+import {ObUnsavedChangesSampleModalComponent} from './unsaved-changes-sample-modal.component';
 import {ObUnsavedChangesService} from 'oblique';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'app-unsaved-changes',
+	selector: 'ob-unsaved-changes',
 	templateUrl: 'unsaved-changes-sample.component.html',
 	styles: [
 		`
@@ -25,7 +25,7 @@ import {ObUnsavedChangesService} from 'oblique';
 	encapsulation: ViewEncapsulation.None,
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UnsavedChangesSampleComponent implements OnInit {
+export class ObUnsavedChangesSampleComponent implements OnInit {
 	standAloneReactive: FormGroup;
 	nestedReactive: FormGroup;
 	tabForm8Reactive: FormGroup;
@@ -60,7 +60,7 @@ export class UnsavedChangesSampleComponent implements OnInit {
 	}
 
 	modal() {
-		this.modalService.open(UnsavedChangesSampleModalComponent, {
+		this.modalService.open(ObUnsavedChangesSampleModalComponent, {
 			beforeDismiss: () => this.unsavedChangesService.ignoreChanges(['template'])
 		});
 	}

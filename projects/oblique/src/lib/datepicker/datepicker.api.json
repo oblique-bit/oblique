@@ -7,6 +7,7 @@
       "selector": "ob-date-picker",
       "type": "component",
       "since": "2.0.0",
+      "updated": "6.0.0",
       "inputs": [
         {
           "name": "size",

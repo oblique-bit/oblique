@@ -3,7 +3,7 @@
 <form [formGroup]="parentForm" (submit)="validateForm(parentForm.valid)" (reset)="resetForm()" obParentFormDirective>
 	<h3>Reactive form</h3>
 	<ob-nested-form formControlName="child" [nestedForm]="child.nestedForm">
-		<app-nested-form-child-sample #child></app-nested-form-child-sample>
+		<ob-nested-form-child-sample #child></ob-nested-form-child-sample>
 	</ob-nested-form>
 	<ng-container *ngIf="material | async; else bootstrap">
 		<mat-form-field obErrorMessages>
@@ -36,7 +36,7 @@
 <form #ngForm (submit)="validateForm(ngForm.valid)" obParentFormDirective>
 	<h3>Template driven form</h3>
 	<ob-nested-form [(ngModel)]="model.child" name="child" [nestedForm]="childTD.ngForm.control">
-		<app-nested-form-child-td-sample #childTD></app-nested-form-child-td-sample>
+		<ob-nested-form-child-td-sample #childTD></ob-nested-form-child-td-sample>
 	</ob-nested-form>
 	<ng-container *ngIf="material | async; else bootstrapTD">
 		<mat-form-field obErrorMessages>

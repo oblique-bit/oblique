@@ -2,7 +2,8 @@ import {Directive} from '@angular/core';
 import {ValidationErrors} from '@angular/forms';
 
 @Directive({
-	selector: '[obSchemaValidation]'
+	selector: '[obSchemaValidation]',
+	exportAs: 'obSchemaValidation'
 })
 export class ObMockSchemaValidationDirective {
 	isRequired(propertyName: string, path: string[]): boolean {

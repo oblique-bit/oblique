@@ -5,7 +5,7 @@ import {of} from 'rxjs';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'app-schema-validation',
+	selector: 'ob-schema-validation',
 	templateUrl: './schema-validation-sample.component.html',
 	styles: [
 		`
@@ -15,7 +15,7 @@ import {of} from 'rxjs';
 		`
 	]
 })
-export class SchemaValidationSampleComponent implements OnInit {
+export class ObSchemaValidationSampleComponent implements OnInit {
 	formData: FormGroup;
 	schema$ = of({
 		title: 'SampleSchemaSampleValidation',

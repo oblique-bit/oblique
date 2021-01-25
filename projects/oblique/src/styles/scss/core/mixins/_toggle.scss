@@ -61,12 +61,12 @@
 	}
 }
 
-@mixin add-toggle($default-icon, $toggle-icon) {
-	&:not(.toggle-after) {
-		@include toggle-icon-before($default-icon, $toggle-icon);
+@mixin add-toggle($default-icon, $toggle-icon, $state: show) {
+	&:not(.ob-toggle-after) {
+		@include toggle-icon-before($default-icon, $toggle-icon, $state);
 	}
 
-	&.toggle-after {
-		@include toggle-icon-after($default-icon, $toggle-icon);
+	&.ob-toggle-after {
+		@include toggle-icon-after($default-icon, $toggle-icon, $state);
 	}
 }

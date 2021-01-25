@@ -1,7 +1,7 @@
 @import "../../styles/scss/core/variables";
 @import "../../styles/scss/core/mixins/layout";
 
-.top-control {
+.ob-top-control {
 	visibility: hidden; // A11y: ensure element is not reachable when tabbing.
 	position: fixed;
 	z-index: $z-index-widget;
@@ -18,14 +18,14 @@
 	background-color: rgba(red($gray-light), green($gray-light), blue($gray-light), 0.65);
 	transition: all $duration-default ease-in-out;
 
-	.control-icon {
+	.ob-control-icon {
 		float: left;
 		font-size: 36px;
 		line-height: 28px;
 		margin-right: 15px;
 	}
 
-	.control-label {
+	.ob-control-label {
 		float: left;
 		line-height: 20px;
 		vertical-align: top;
@@ -41,7 +41,7 @@
 		box-shadow:  0 3px 1px fade-out($gray-extra-light, 0.3), 0 0 1px 1px fade($gray-extra-light, 0.30);
 	}
 
-	.application-scrolling & {
+	.ob-master-layout-scrolling & {
 		visibility: visible; // A11y: ensure element is reachable again when tabbing.
 		opacity: 0.85;
 		bottom: 15px;
@@ -56,7 +56,7 @@
 		}
 	}
 
-	.header-open & {
+	.ob-header-expanded & {
 		@include layout-collapse-down() {
 			display: none;
 		}

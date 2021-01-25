@@ -4,18 +4,18 @@
 @import "../../styles/scss/core/mixins/layout";
 @import "../../styles/scss/core/mixins/column-layout";
 
-.column-layout {
+.ob-column-layout {
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;	// cannot set overflow-x as it will add a vertical scrollbar
 
-	.column-toggle-left,
-	.column-toggle-right {
+	.ob-column-toggle-left,
+	.ob-column-toggle-right {
 		display: none;
 	}
 
-	.column-left,
-	.column-right {
+	.ob-column-left,
+	.ob-column-right {
 		order: 1;
 	}
 
@@ -23,44 +23,44 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 
-		.column-main,
-		.column-left,
-		.column-right {
+		.ob-column-main,
+		.ob-column-left,
+		.ob-column-right {
 			flex-grow: 1;
 		}
 
-		.application.has-layout &:not(.no-layout) {
-			> .column-left,
-			> .column-main:not(:last-child) {
-				> .column-content {
+		.ob-master-layout.ob-has-layout &:not(.ob-no-layout) {
+			> .ob-column-left,
+			> .ob-column-main:not(:last-child) {
+				> .ob-column-content {
 					padding-right: $spacing-default;
 				}
 			}
 
-			> .column-right,
-			> .column-main:not(:first-child) {
-				> .column-content {
+			> .ob-column-right,
+			> .ob-column-main:not(:first-child) {
+				> .ob-column-content {
 					padding-left: $spacing-default;
 				}
 			}
 		}
 
-		.application:not(.has-layout) &:not(.no-layout) {
-			> .column-left,
-			> .column-right,
-			> .column-main {
-				> .column-content {
+		.ob-master-layout:not(.ob-has-layout) &:not(.ob-no-layout) {
+			> .ob-column-left,
+			> .ob-column-right,
+			> .ob-column-main {
+				> .ob-column-content {
 					padding-right: $spacing-default;
 					padding-left: $spacing-default;
 				}
 			}
 		}
 
-		.column-main {
+		.ob-column-main {
 			flex: 1 1 100%;
 		}
 
-		.column-content {
+		.ob-column-content {
 			height: 100%;
 		}
 	}
@@ -69,8 +69,8 @@
 		min-height: $column-layout-toggle-height;
 		flex-wrap: nowrap;
 
-		.column-toggle-left,
-		.column-toggle-right {
+		.ob-column-toggle-left,
+		.ob-column-toggle-right {
 			display: block;
 			position: absolute;
 			z-index: $z-index-controls;
@@ -96,7 +96,7 @@
 			}
 		}
 
-		.column-toggle-left {
+		.ob-column-toggle-left {
 			transform-origin: 100% 50%;
 			right: 0;
 			margin-left: -$column-layout-toggle-width;
@@ -106,7 +106,7 @@
 			@include icon($fa-var-angle-left);
 		}
 
-		.column-toggle-right {
+		.ob-column-toggle-right {
 			transform-origin: 0 50%;
 			left: 0;
 			margin-right: -$column-layout-toggle-width;
@@ -116,34 +116,34 @@
 			@include icon($fa-var-angle-right);
 		}
 
-		.column-main {
+		.ob-column-main {
 			position: relative;
 		}
 
-		.column-left,
-		.column-right {
+		.ob-column-left,
+		.ob-column-right {
 			position: relative;
 			flex: 0 0 $column-width;
 			order: 0;
 			max-width: $column-width; // Ensure columns keep shrinking even if text content may overflow.
 
-			@at-root #{selector-append(".wider-columns", &)} {
+			@at-root #{selector-append(".ob-wider-columns", &)} {
 				flex-basis: 2 * $column-width;
 				max-width: 2 * $column-width;
 			}
 		}
 
-		.column-left {
+		.ob-column-left {
 			transition: margin-left $duration-default;
 
-			&.collapsed {
+			&.ob-collapsed {
 				margin-left: -$column-width;
 
-				@at-root #{selector-append(".wider-columns", &)} {
+				@at-root #{selector-append(".ob-wider-columns", &)} {
 					margin-left: - 2 * $column-width;
 				}
 
-				.column-toggle-left {
+				.ob-column-toggle-left {
 					transform-origin: 0 50%;
 					margin-left: 0;
 					margin-right: -$column-layout-toggle-width;
@@ -162,17 +162,17 @@
 			}
 		}
 
-		.column-right {
+		.ob-column-right {
 			transition: margin-right $duration-default;
 
-			&.collapsed {
+			&.ob-collapsed {
 				margin-right: -$column-width;
 
-				@at-root #{selector-append(".wider-columns", &)} {
+				@at-root #{selector-append(".ob-wider-columns", &)} {
 					margin-right: - 2 *$column-width;
 				}
 
-				.column-toggle-right {
+				.ob-column-toggle-right {
 					transform-origin: 100% 50%;
 					margin-right: 0;
 					margin-left: -$column-layout-toggle-width;
@@ -192,11 +192,11 @@
 		}
 	}
 
-	.application-fixed & {
+	.ob-master-layout-fixed & {
 		height: 100%;
 
-		.column-main,
-		.column-content {
+		.ob-column-main,
+		.ob-column-content {
 			overflow-y: auto;
 			overflow-x: hidden;
 		}

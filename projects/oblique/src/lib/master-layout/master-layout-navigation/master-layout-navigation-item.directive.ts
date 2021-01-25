@@ -21,10 +21,12 @@ import {Subject} from 'rxjs';
 
 @Directive({
 	selector: '[obMasterLayoutNavigationItem]',
-	exportAs: 'obMasterLayoutNavigationItem'
+	exportAs: 'obMasterLayoutNavigationItem',
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
+	host: {class: 'ob-master-layout-navigation-item'}
 })
 export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnDestroy {
-	@HostBinding('class.show') public show = false;
+	@HostBinding('class.ob-expanded') public show = false;
 	@Output() onClose = new EventEmitter<void>();
 	@ContentChildren(ObMasterLayoutNavigationToggleDirective, {descendants: true}) $toggles: QueryList<ObMasterLayoutNavigationToggleDirective>;
 	@ContentChild(ObMasterLayoutNavigationMenuDirective) $menu: ObMasterLayoutNavigationMenuDirective;

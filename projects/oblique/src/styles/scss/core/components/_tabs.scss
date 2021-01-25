@@ -1,19 +1,19 @@
 @import "../variables";
 @import "../mixins/typography";
 
-.application {
-	.tabs {
+.ob-master-layout {
+	.ob-tabs {
 		display: flex;
 		flex-wrap: wrap;
 		padding: 0;
 		margin: 0;
 		list-style: none;
 
-		.tab-item + .tab-item {
+		.ob-tab-item + .ob-tab-item {
 			margin-left: 2px;
 		}
 
-		.tab-link {
+		.ob-tab-link {
 			display: block;
 			padding: 14px 28px;
 			border-bottom: 2px solid transparent;
@@ -28,7 +28,7 @@
 				background-color: $brand-extra-light;
 			}
 
-			&.active,
+			&.ob-active,
 			&:active {
 				color: $brand-primary;
 				border-color: $brand-primary;

@@ -1,4 +1,4 @@
-.table {
+.ob-table {
 	thead {
 		border-top: 1px solid #dee2e6;
 		border-bottom: 2px solid #dee2e6;
@@ -18,15 +18,15 @@
 		border-right: 0;
 	}
 
-	&:not(.table-plain) tbody tr:nth-child(odd) {
+	&:not(.ob-table-plain) tbody tr:nth-child(odd) {
 		background-color: transparent;
 	}
 
-	&.table-striped tbody tr:nth-of-type(odd) {
+	&.ob-table-striped tbody tr:nth-of-type(odd) {
 		background-color: rgba(0, 0, 0, 0.05);
 	}
 
-	&.table-hover tbody tr:hover,
+	&.ob-table-hover tbody tr:hover,
 	.active {
 		background-color: rgba(0, 0, 0, 0.075);
 	}

@@ -1,21 +1,21 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NumberFormatSampleComponent} from './number-format-sample.component';
+import {ObNumberFormatSampleComponent} from './number-format-sample.component';
 import {ObliqueTestingModule} from 'projects/oblique/src/lib/oblique-testing.module';
 
-describe('NumberFormatSampleComponent', () => {
-	let component: NumberFormatSampleComponent;
-	let fixture: ComponentFixture<NumberFormatSampleComponent>;
+describe('ObNumberFormatSampleComponent', () => {
+	let component: ObNumberFormatSampleComponent;
+	let fixture: ComponentFixture<ObNumberFormatSampleComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [FormsModule, ReactiveFormsModule, ObliqueTestingModule],
-			declarations: [NumberFormatSampleComponent]
+			declarations: [ObNumberFormatSampleComponent]
 		}).compileComponents();
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(NumberFormatSampleComponent);
+		fixture = TestBed.createComponent(ObNumberFormatSampleComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

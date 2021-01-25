@@ -1,14 +1,14 @@
 <div
-	class="notification show"
+	class="ob-notification"
 	[id]="notification.idPrefix + 'container'"
-	[ngClass]="'alert alert-' + [notification.type]"
+	[ngClass]="'ob-alert ob-alert-' + [notification.type]"
 	*ngFor="let notification of notifications"
 	[@inOut]="notification.$state"
 	role="alert"
 >
-	<span class="occurrence" title="{{ 'i18n.oblique.occurrences' | translate }}" *ngIf="notification.occurrences > 1">{{ notification.occurrences }}</span>
-	<button [id]="notification.idPrefix + 'close_button'" (click)="close(notification)" type="button" class="close">&times;</button>
-	<div [id]="notification.idPrefix + 'title'" class="notification-title">
+	<span class="ob-occurrence" title="{{ 'i18n.oblique.occurrences' | translate }}" *ngIf="notification.occurrences > 1">{{ notification.occurrences }}</span>
+	<button [id]="notification.idPrefix + 'close_button'" (click)="close(notification)" type="button" class="ob-close">&times;</button>
+	<div [id]="notification.idPrefix + 'title'" class="ob-notification-title">
 		{{ notification.title | translate: notification.titleParams }}
 	</div>
 	<p [id]="notification.idPrefix + 'text'">{{ notification.message | translate: notification.messageParams }}</p>

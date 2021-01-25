@@ -3,6 +3,7 @@ import {ObINavigationLink} from '../master-layout.module';
 
 @Component({
 	selector: 'ob-master-layout-navigation',
+	exportAs: 'obMasterLayoutNavigation',
 	template: ''
 })
 export class ObMockMasterLayoutNavigationComponent {

@@ -1,22 +1,22 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
-import {MultiselectSampleComponent} from './multiselect-sample.component';
+import {ObMultiselectSampleComponent} from './multiselect-sample.component';
 import {ObMultiselectModule} from 'projects/oblique/src/lib/multiselect/multiselect.module';
 
-describe('MultiselectSampleComponent', () => {
-	let component: MultiselectSampleComponent;
-	let fixture: ComponentFixture<MultiselectSampleComponent>;
+describe('ObMultiselectSampleComponent', () => {
+	let component: ObMultiselectSampleComponent;
+	let fixture: ComponentFixture<ObMultiselectSampleComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [MultiselectSampleComponent],
+			declarations: [ObMultiselectSampleComponent],
 			imports: [FormsModule, TranslateModule.forRoot(), ObMultiselectModule]
 		}).compileComponents();
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(MultiselectSampleComponent);
+		fixture = TestBed.createComponent(ObMultiselectSampleComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

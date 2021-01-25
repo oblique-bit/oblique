@@ -2,14 +2,14 @@
 @import "../../../styles/scss/core/mixins/bubble-tail";
 @import "../../../styles/scss/core/mixins/layout";
 
-.application-header {
+.ob-master-layout-header {
 	position: relative;
 	background-color: $white;
 	background-clip: content-box;
 	z-index: $z-index-layout;
 	transition: height $duration-default ease-in-out;
 
-	.application:not(.application-fixed) &.application-header-sticky {
+	.ob-master-layout:not(.ob-master-layout-fixed) &.ob-master-layout-header-sticky {
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -27,11 +27,11 @@
 		width: 100%;
 		height: $header-height-collapsed;
 
-		.header-open & {
+		.ob-header-expanded & {
 			height: 100%;
 		}
 
-		.header-open.no-navigation & {
+		.ob-header-expanded.ob-no-navigation & {
 			height: $header-height-md;
 		}
 	}
@@ -39,29 +39,29 @@
 	@include layout-collapse-up() {
 		height: $header-height;
 
-		&.application-header-md {
+		&.ob-master-layout-header-md {
 			height: $header-height-md;
 		}
 
-		&.application-header-animate {
+		&.ob-master-layout-header-animate {
 			padding: 0;
 			margin: 0;
 		}
 
-		.application.no-navigation & {
+		.ob-master-layout.ob-no-navigation & {
 			height: $header-height-no-navigation;
 
-			&.application-header-md {
+			&.ob-master-layout-header-md {
 				height: $header-height-no-navigation - ($header-height - $header-height-md);
 			}
 		}
 
-		.application-fixed & {
+		.ob-master-layout-fixed & {
 			flex-shrink: 0;
 		}
 	}
 
-	.header {
+	.ob-header {
 		position: relative;
 		display: block;
 		width: 100%;
@@ -78,7 +78,7 @@
 			height: $header-height-collapsed;
 			transition: height $duration-default ease-in-out;
 
-			.header-open & {
+			.ob-header-expanded & {
 				height: $header-height-md;
 			}
 		}
@@ -106,7 +106,7 @@
 		}
 	}
 
-	.application-header-action {
+	.ob-master-layout-header-action {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -127,7 +127,7 @@
 		}
 	}
 
-	.application-header-title {
+	.ob-master-layout-header-title {
         position: relative;
 		display: flex;
 		flex: 1;
@@ -138,7 +138,7 @@
         overflow: hidden;
 	}
 
-	.application-brand {
+	.ob-master-layout-brand {
 		display: flex;
 		flex: auto;
 		flex-direction: row;
@@ -148,20 +148,20 @@
         transition: padding $duration-default ease-in-out;
 
 		@include layout-collapse-up() {
-			@at-root #{selector-append(":not(.application-header-md)", &)} {
+			@at-root #{selector-append(":not(.ob-master-layout-header-md)", &)} {
 				padding: $spacing-default;
 			}
 		}
 	}
 
-	.application-brand-logo {
+	.ob-master-layout-logo {
 		overflow: hidden;
 		width: $brand-logo-width-collapsed;
 		height: $brand-logo-height-collapsed;
 		margin-right: $spacing-default;
 
 		@include layout-collapse-up() {
-			@at-root #{selector-append(":not(.application-header-md)", &)} {
+			@at-root #{selector-append(":not(.ob-master-layout-header-md)", &)} {
 				width: $brand-logo-width;
 				height: $brand-logo-height;
 				margin-top: 0;
@@ -174,7 +174,7 @@
 		}
 	}
 
-	.application-brand-app-title {
+	.ob-master-layout-brand-app-title {
 		display: block;
 		flex: 1;
 		font-size: $font-size-xl;
@@ -187,27 +187,27 @@
 		white-space: nowrap;
 
 		@include layout-collapse-up() {
-			@at-root #{selector-append(":not(.application-header-md)", &)} {
+			@at-root #{selector-append(":not(.ob-master-layout-header-md)", &)} {
 				font-size: $font-size-xl;
 				max-height: $brand-logo-height;
 			}
 		}
 	}
 
-	.application-brand-link {
-		.application & {
+	.ob-master-layout-brand-link {
+		.ob-master-layout & {
 			color: $brand-default;
 			text-decoration: none;
 		}
 	}
 
-	:not(.application-fixed) &.application-header-animate {
-		.application-brand-logo, .application-brand-app-title {
+	:not(.ob-master-layout-fixed) &.ob-master-layout-header-animate {
+		.ob-master-layout-logo, .ob-master-layout-brand-app-title {
 			transition: all $duration-default ease-in-out;
 		}
 	}
 
-	.header-toggle {
+	.ob-header-toggle {
 		border: none;
 
 		@include layout-collapse-down() {
@@ -219,7 +219,7 @@
 		}
 	}
 
-	&:not(.application-fixed):not(.application-header-sticky) {
+	&:not(.ob-master-layout-fixed):not(.ob-master-layout-header-sticky) {
 		position: static;
 
 		&::before {

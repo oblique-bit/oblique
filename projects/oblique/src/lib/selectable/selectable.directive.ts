@@ -3,7 +3,9 @@ import {ObSelectableGroupDirective} from './selectable-group.directive';
 
 @Directive({
 	selector: '[obSelectable]',
-	exportAs: 'obSelectable'
+	exportAs: 'obSelectable',
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
+	host: {class: 'ob-selectable'}
 })
 export class ObSelectableDirective implements OnInit {
 	@Input() value: any;

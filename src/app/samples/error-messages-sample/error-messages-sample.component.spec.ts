@@ -1,19 +1,19 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {ErrorMessagesSampleComponent} from './error-messages-sample.component';
+import {ObErrorMessagesSampleComponent} from './error-messages-sample.component';
 
-describe('ErrorMessagesSampleComponent', () => {
-	let component: ErrorMessagesSampleComponent;
-	let fixture: ComponentFixture<ErrorMessagesSampleComponent>;
+describe('ObErrorMessagesSampleComponent', () => {
+	let component: ObErrorMessagesSampleComponent;
+	let fixture: ComponentFixture<ObErrorMessagesSampleComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [ErrorMessagesSampleComponent]
+			declarations: [ObErrorMessagesSampleComponent]
 		}).compileComponents();
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(ErrorMessagesSampleComponent);
+		fixture = TestBed.createComponent(ObErrorMessagesSampleComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

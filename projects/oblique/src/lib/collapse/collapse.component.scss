@@ -1,67 +1,67 @@
 @import "../../styles/scss/core/mixins/toggle";
 @import "~@fortawesome/fontawesome-free/scss/variables";
 
-.toggle {
+.ob-toggle {
 	display: flex;
 	cursor: pointer;
 
-	&:not(.toggle-after) {
-		@include toggle-before();
+	&:not(.ob-toggle-after) {
+		@include toggle-before($state: ob-expanded);
 	}
 
-	&.toggle-after {
-		@include toggle-after();
+	&.ob-toggle-after {
+		@include toggle-after($state: ob-expanded);
 
-		&.toggle-justified {
+		&.ob-toggle-justified {
 			justify-content: space-between;
 		}
 	}
 
-	&.toggle-down-up {
-		@include add-toggle($fa-var-angle-down, $fa-var-angle-up);
+	&.ob-toggle-down-up {
+		@include add-toggle($fa-var-angle-down, $fa-var-angle-up, ob-expanded);
 	}
 
-	&.toggle-down-right {
-		@include add-toggle($fa-var-angle-down, $fa-var-angle-right);
+	&.ob-toggle-down-right {
+		@include add-toggle($fa-var-angle-down, $fa-var-angle-right, ob-expanded);
 	}
 
-	&.toggle-down-left {
-		@include add-toggle($fa-var-angle-down, $fa-var-angle-left);
+	&.ob-toggle-down-left {
+		@include add-toggle($fa-var-angle-down, $fa-var-angle-left, ob-expanded);
 	}
 
-	&.toggle-up-down {
-		@include add-toggle($fa-var-angle-up, $fa-var-angle-down);
+	&.ob-toggle-up-down {
+		@include add-toggle($fa-var-angle-up, $fa-var-angle-down, ob-expanded);
 	}
 
-	&.toggle-up-right {
-		@include add-toggle($fa-var-angle-up, $fa-var-angle-right);
+	&.ob-toggle-up-right {
+		@include add-toggle($fa-var-angle-up, $fa-var-angle-right, ob-expanded);
 	}
 
-	&.toggle-up-left {
-		@include add-toggle($fa-var-angle-up, $fa-var-angle-left);
+	&.ob-toggle-up-left {
+		@include add-toggle($fa-var-angle-up, $fa-var-angle-left, ob-expanded);
 	}
 
-	&.toggle-right-left {
-		@include add-toggle($fa-var-angle-right, $fa-var-angle-left);
+	&.ob-toggle-right-left {
+		@include add-toggle($fa-var-angle-right, $fa-var-angle-left, ob-expanded);
 	}
 
-	&.toggle-right-down {
-		@include add-toggle($fa-var-angle-right, $fa-var-angle-down);
+	&.ob-toggle-right-down {
+		@include add-toggle($fa-var-angle-right, $fa-var-angle-down, ob-expanded);
 	}
 
-	&.toggle-right-up {
-		@include add-toggle($fa-var-angle-right, $fa-var-angle-up);
+	&.ob-toggle-right-up {
+		@include add-toggle($fa-var-angle-right, $fa-var-angle-up, ob-expanded);
 	}
 
-	&.toggle-left-right {
-		@include add-toggle($fa-var-angle-left, $fa-var-angle-right);
+	&.ob-toggle-left-right {
+		@include add-toggle($fa-var-angle-left, $fa-var-angle-right, ob-expanded);
 	}
 
-	&.toggle-left-down {
-		@include add-toggle($fa-var-angle-left, $fa-var-angle-down);
+	&.ob-toggle-left-down {
+		@include add-toggle($fa-var-angle-left, $fa-var-angle-down, ob-expanded);
 	}
 
-	&.toggle-left-up {
-		@include add-toggle($fa-var-angle-left, $fa-var-angle-up);
+	&.ob-toggle-left-up {
+		@include add-toggle($fa-var-angle-left, $fa-var-angle-up, ob-expanded);
 	}
 }

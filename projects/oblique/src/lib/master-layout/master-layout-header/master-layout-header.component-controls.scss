@@ -1,8 +1,8 @@
 @import "../../../styles/scss/core/variables";
 @import "../../../styles/scss/core/mixins/layout";
 
-.application-header {
-	.header-toggle {
+.ob-master-layout-header {
+	.ob-header-toggle {
 		border: none;
 
 		@include layout-collapse-down() {
@@ -14,7 +14,7 @@
 		}
 	}
 
-	.application-header-toggle {
+	.ob-master-layout-header-toggle {
 		position: relative;
 
 		.first-line,
@@ -42,13 +42,13 @@
 		.first-line {
 			margin-bottom: 5px;
 
-			.header-open & {
+			.ob-header-expanded & {
 				transform: rotate(45deg) translate(8px, 5px) scale(1.1);
 			}
 		}
 
 		.second-line {
-			.header-open & {
+			.ob-header-expanded & {
 				opacity: 0;
 				transform: scale(0);
 			}
@@ -57,13 +57,13 @@
 		.third-line {
 			margin-top: 5px;
 
-			.header-open & {
+			.ob-header-expanded & {
 				transform: rotate(-45deg) translate(8px, -5px) scale(1.1);
 			}
 		}
 	}
 
-	.application-header-controls {
+	.ob-master-layout-header-controls {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -73,13 +73,13 @@
 			visibility: hidden; // Avoids keyboard navigation when collapsed
 			transition: visibility $duration-default; // Ensure element keeps visible when header is closing
 
-			.header-open & {
+			.ob-header-expanded & {
 				visibility: visible; // Restores keyboard navigation
 			}
 		}
 	}
 
-	.control-locale {
+	.ob-control-locale {
 		padding: 0.375rem 0.75rem;
 		color: $brand-default;
 		background-color: transparent;
@@ -95,11 +95,11 @@
 		}
 	}
 
-	.header-locale + .header-controls {
+	.ob-header-locale + .ob-header-controls {
 		margin-left: 1rem;
 	}
 
-	.header-controls {
+	.ob-header-controls {
 		display: inline-flex;
 		flex-direction: row;
 		align-items: center;
@@ -108,23 +108,23 @@
 		padding: 0;
 		list-style: none;
 
-		&:not(.header-locale) .control-item {
+		&:not(.ob-header-locale) .ob-control-item {
 			padding-right: $spacing-default;
 			padding-left: $spacing-default;
 		}
 	}
 
-	.control-item {
+	.ob-control-item {
 		@include layout-collapse-up() {
 			justify-content: flex-end;
 
-			@at-root :not(.application-fixed) #{selector-append(".application-header-animate", &)} {
+			@at-root :not(.ob-master-layout-fixed) #{selector-append(".ob-master-layout-header-animate", &)} {
 				transition: margin-top $duration-default ease-in-out;
 			}
 		}
 	}
 
-	.control-link {
+	.ob-control-link {
 		padding: 0;
 		border: none;
 		background-color: transparent;
@@ -138,7 +138,7 @@
 		}
 	}
 
-	.control-icon {
+	.ob-control-icon {
 		margin: 0;
 		vertical-align: middle;
 		font-size: $font-size-xl;

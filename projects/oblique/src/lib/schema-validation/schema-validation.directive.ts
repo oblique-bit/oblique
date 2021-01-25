@@ -4,7 +4,10 @@ import {ObSchemaValidationService} from './schema-validation.service';
 
 @Directive({
 	selector: '[obSchemaValidation]',
-	providers: [ObSchemaValidationService]
+	exportAs: 'obSchemaValidation',
+	providers: [ObSchemaValidationService],
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
+	host: {class: 'ob-schema-validation'}
 })
 export class ObSchemaValidationDirective implements OnInit {
 	@Input('obSchemaValidation') private readonly schema: any;

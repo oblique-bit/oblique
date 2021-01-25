@@ -26,7 +26,9 @@ export const OBLIQUE_COLLAPSE_ACTIVE = new InjectionToken<boolean>('OBLIQUE_COLL
 			),
 			transition('open <=> close', animate('{{ time }}ms ease-in-out'))
 		])
-	]
+	],
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
+	host: {class: 'ob-collapse'}
 })
 export class ObCollapseComponent implements OnChanges {
 	@Input() set active(active: boolean) {

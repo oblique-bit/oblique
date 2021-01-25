@@ -1,35 +1,35 @@
 <div
 	*ngIf="left"
-	class="column-left"
+	class="ob-column-left"
 	role="complementary"
 	attr.aria-label="{{ 'i18n.oblique.column.left.title' | translate }}"
 	obColumnPanel
 	#columnLeft="obColumnPanel"
 >
-	<button type="button" class="column-toggle-left" obColumnToggle #columnToggle>
+	<button type="button" class="ob-column-toggle-left" obColumnToggle #columnToggle>
 		<span class="sr-only">{{ "i18n.oblique.column.left.toggle" | translate }}</span>
 	</button>
-	<div class="column-content">
+	<div class="ob-column-content">
 		<ng-content select="[column-left-content]"></ng-content>
 	</div>
 </div>
-<div class="column-main">
-	<div class="column-content">
+<div class="ob-column-main">
+	<div class="ob-column-content">
 		<ng-content select="[column-main-content]"></ng-content>
 	</div>
 </div>
 <div
 	*ngIf="right"
-	class="column-right"
+	class="ob-column-right"
 	role="complementary"
 	attr.aria-label="{{ 'i18n.oblique.column.right.title' | translate }}"
 	obColumnPanel
 	#columnRight="obColumnPanel"
 >
-	<button type="button" class="column-toggle-right" obColumnToggle #columnToggle>
+	<button type="button" class="ob-column-toggle-right" obColumnToggle #columnToggle>
 		<span class="sr-only">{{ "i18n.oblique.column.right.toggle" | translate }}</span>
 	</button>
-	<div class="column-content">
+	<div class="ob-column-content">
 		<ng-content select="[column-right-content]"></ng-content>
 	</div>
 </div>

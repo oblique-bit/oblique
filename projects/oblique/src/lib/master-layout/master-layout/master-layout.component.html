@@ -1,19 +1,21 @@
-<nav class="access-keys" role="navigation" aria-label="Access keys">
+<nav class="ob-access-keys" role="navigation" aria-label="Access keys">
 	<ul>
 		<li>
-			<a class="accessible" accesskey="0" [routerLink]="url" fragment="content">{{ "i18n.oblique.master-layout.accesskey.mainContent" | translate }}</a>
+			<a class="ob-accessible" accesskey="0" [routerLink]="url" fragment="content">{{
+				"i18n.oblique.master-layout.accesskey.mainContent" | translate
+			}}</a>
 		</li>
 		<li>
-			<a class="accessible" accesskey="1" [routerLink]="home">{{ "i18n.oblique.master-layout.accesskey.homepage" | translate }}</a>
+			<a class="ob-accessible" accesskey="1" [routerLink]="home">{{ "i18n.oblique.master-layout.accesskey.homepage" | translate }}</a>
 		</li>
 		<li *ngIf="!noNavigation && navigation.length">
-			<a class="accessible" accesskey="2" [routerLink]="url" fragment="navigation">
+			<a class="ob-accessible" accesskey="2" [routerLink]="url" fragment="navigation">
 				{{ "i18n.oblique.master-layout.accesskey.navigation" | translate }}</a
 			>
 		</li>
 		<li *ngFor="let jumpLink of jumpLinks; let i = index">
 			<a
-				class="accessible"
+				class="ob-accessible"
 				[attr.accesskey]="jumpLink.accessKey"
 				[routerLink]="jumpLink.url == 'current' ? url : jumpLink.url"
 				[fragment]="jumpLink.fragment"
@@ -23,7 +25,7 @@
 		</li>
 	</ul>
 </nav>
-<ob-master-layout-header [class.offcanvas-main]="hasOffCanvas" [navigation]="navigation">
+<ob-master-layout-header [class.ob-off-canvas-main]="hasOffCanvas" [navigation]="navigation">
 	<ng-content select="[obHeader]" obHeader></ng-content>
 	<ng-content select="[obHeaderAction]" obHeaderAction></ng-content>
 	<ng-content select="[obLocales]" obLocales></ng-content>
@@ -40,44 +42,44 @@
 		<ng-container [ngTemplateOutlet]="obLogo || logo"></ng-container>
 	</ng-template>
 </ob-master-layout-header>
-<div id="content" class="application-content" role="main" [class.offcanvas-main]="hasOffCanvas" tabindex="-1">
-	<div class="application-content-viewport">
+<div id="content" class="ob-master-layout-content" role="main" [class.ob-off-canvas-main]="hasOffCanvas" tabindex="-1">
+	<div class="ob-master-layout-content-viewport">
 		<ob-notification channel="oblique"></ob-notification>
-		<div class="cover-layout" *ngIf="hasCover; else normalLayout">
-			<div class="cover-viewport">
+		<div class="ob-cover-layout" *ngIf="hasCover; else normalLayout">
+			<div class="ob-cover-viewport">
 				<ng-container *ngTemplateOutlet="normalLayout"></ng-container>
 			</div>
 		</div>
 		<ng-template #normalLayout>
-			<main class="main-layout">
+			<main class="ob-main-layout">
 				<router-outlet></router-outlet>
 			</main>
 		</ng-template>
 	</div>
 </div>
 <ob-top-control></ob-top-control>
-<ob-master-layout-footer [class.offcanvas-main]="hasOffCanvas">
+<ob-master-layout-footer [class.ob-off-canvas-main]="hasOffCanvas">
 	<ng-content select="[obFooter]" obFooter></ng-content>
 	<ng-content select="[obFooterInfo]" obFooterInfo></ng-content>
 	<ng-template #obFooterLink *ngFor="let template of footerLinkTemplates">
 		<ng-container [ngTemplateOutlet]="template"></ng-container>
 	</ng-template>
 </ob-master-layout-footer>
-<div class="offcanvas-sidebar" *ngIf="hasOffCanvas">
-	<header class="offcanvas-header">
+<div class="ob-off-canvas-sidebar" *ngIf="hasOffCanvas">
+	<header class="ob-off-canvas-header">
 		<h2>
 			<ng-content select="[obOffCanvasTitle]"></ng-content>
 		</h2>
-		<button type="button" obOffCanvasToggle class="close-button" #offCanvasClose>
+		<button type="button" obOffCanvasToggle class="ob-close" #offCanvasClose>
 			<span class="fa fa-lg fa-times" aria-hidden="true"></span>
 			<span class="sr-only">{{ "i18n.oblique.offCanvas.close" | translate }}</span>
 		</button>
 	</header>
-	<div class="offcanvas-content">
+	<div class="ob-off-canvas-content">
 		<ng-content select="[obOffCanvasContent]"></ng-content>
 	</div>
 </div>
-<div class="offcanvas-backdrop" *ngIf="hasOffCanvas"></div>
+<div class="ob-off-canvas-backdrop" *ngIf="hasOffCanvas"></div>
 <ob-spinner [fixed]="true"></ob-spinner>
 <ng-template #logo>
 	<img alt="{{ 'i18n.oblique.header.logo' | translate }}" src="assets/images/logo.svg" />

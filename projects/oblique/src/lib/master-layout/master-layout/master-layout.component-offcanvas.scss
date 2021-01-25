@@ -2,20 +2,20 @@
 @import "../../../styles/scss/core/mixins/layout";
 @import "../../../styles/scss/core/mixins/button";
 
-.offcanvas-sidebar {
+.ob-off-canvas-sidebar {
 	display: none; // only show if offcanvas is enable, i.e. parent has .offcanvas class
 	color: $white;
 	background-color: $gray-darker;
 }
 
-.offcanvas {
-	.offcanvas-main {
+.ob-off-canvas {
+	.ob-off-canvas-main {
 		width: 100%;
 		transition-property: transform, width, height;
 		transition-duration: $duration-default;
 		transition-timing-function: ease;
 
-		@at-root #{selector-append(".offcanvas-in", &)} {
+		@at-root #{selector-append(".ob-off-canvas-in", &)} {
 			transform: translateX(-$off-canvas-sidebar-collapsed-width);
 
 			@include media-breakpoint-up(lg) {
@@ -25,7 +25,7 @@
 		}
 	}
 
-	.offcanvas-sidebar {
+	.ob-off-canvas-sidebar {
 		position: fixed;
 		top: 0;
 		left: 100%;
@@ -48,7 +48,7 @@
 			width: $off-canvas-sidebar-width;
 		}
 
-		@at-root #{selector-append(".offcanvas-in", &)} {
+		@at-root #{selector-append(".ob-off-canvas-in", &)} {
 			visibility: visible; // A11y: ensure tabbing can focus again an offcanvas sidebar element when visible.
 			transform: translateX(-100%);
 
@@ -59,7 +59,7 @@
 		}
 	}
 
-	.offcanvas-header {
+	.ob-off-canvas-header {
 		height: $header-height-no-navigation;
 		border-bottom: $brand-line-width solid $gray;
 		display: flex;
@@ -72,7 +72,7 @@
 			margin: 0;
 		}
 
-		.close-button {
+		.ob-close {
 			@include link-btn;
 			padding: $spacing-xs;
 			line-height: 1;
@@ -82,13 +82,13 @@
 		@include layout-collapse-down() {
 			height: $header-height-collapsed;
 
-			@at-root #{selector-append(".header-open", &)} {
+			@at-root #{selector-append(".ob-header-expanded", &)} {
 				height: $header-height-md;
 			}
 		}
 	}
 
-	.offcanvas-content {
+	.ob-off-canvas-content {
 		height: calc(100vh - #{$header-height-no-navigation});
 		padding: $spacing-default;
 		overflow-y: auto;
@@ -96,28 +96,28 @@
 		@include layout-collapse-down() {
 			height: calc(100vh - #{$header-height-collapsed});
 
-			@at-root #{selector-append(".header-open", &)} {
+			@at-root #{selector-append(".ob-header-expanded", &)} {
 				height: calc(100vh - #{$header-height-md});
 			}
 		}
 	}
 
 	@include layout-collapse-up() {
-		.application-header-md ~ .offcanvas-sidebar {
-			.offcanvas-header {
+		.ob-master-layout-header-md ~ .ob-off-canvas-sidebar {
+			.ob-off-canvas-header {
 				height: $header-height-collapsed;
 			}
 
-			.offcanvas-content {
+			.ob-off-canvas-content {
 				height: calc(100vh - #{$header-height-collapsed});
 			}
 		}
 	}
 
-	.offcanvas-backdrop {
+	.ob-off-canvas-backdrop {
 		display: none;
 
-		@at-root #{selector-append(".offcanvas-in", &)} {
+		@at-root #{selector-append(".ob-off-canvas-in", &)} {
 			@include layout-collapse-down {
 				display: block;
 				position: fixed;

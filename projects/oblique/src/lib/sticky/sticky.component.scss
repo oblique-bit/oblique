@@ -1,17 +1,17 @@
 @import "../../styles/scss/core/variables";
 @import "../../styles/scss/core/mixins/layout";
 
-.sticky {
+.ob-sticky {
 	display: block;
 	height: 100%;
 	overflow: hidden;
 
-	&:not(.no-layout) .sticky-content {
+	&:not(.no-layout) .ob-sticky-content {
 		padding: $spacing-default 0;
 	}
 }
 
-.sticky-main {
+.ob-sticky-main {
 	@include layout-collapse-up() {
 		overflow-y: auto;
 		height: calc(100% - #{$sticky-element-height}); // is it really needed?
@@ -21,14 +21,14 @@
 	}
 }
 
-.sticky-header,
-.sticky-footer {
+.ob-sticky-header,
+.ob-sticky-footer {
 	position: relative;
 	padding: 13px 0;
 	display: flex;
 	min-width: 0; // Important, for text ellipsis of .sticky-title (cf. https://css-tricks.com/flexbox-truncated-text/)!
 
-	.sticky-title {
+	.ob-sticky-title {
 		margin: 0;
 		padding: 0;
 
@@ -41,7 +41,7 @@
 		overflow: hidden;
 	}
 
-	.sticky-actions {
+	.ob-sticky-actions {
 		margin-left: auto;
 	}
 
@@ -61,20 +61,20 @@
 	}
 }
 
-.sticky-actions {
+.ob-sticky-actions {
 	display: flex;
 	justify-content: flex-end;
 }
 
-.sticky-sm {
-	> .sticky-main {
+.ob-sticky-sm {
+	> .ob-sticky-main {
 		@include layout-collapse-up() {
 			height: calc(100% - #{$sticky-element-height-sm});
 		}
 	}
 
-	> .sticky-header,
-	> .sticky-footer {
+	> .ob-sticky-header,
+	> .ob-sticky-footer {
 		padding-top: 7px;
 		padding-bottom: 7px;
 
@@ -84,15 +84,15 @@
 	}
 }
 
-.sticky-lg {
-	> .sticky-main {
+.ob-sticky-lg {
+	> .ob-sticky-main {
 		@include layout-collapse-up() {
 			height: calc(100% - #{$sticky-element-height-lg});
 		}
 	}
 
-	> .sticky-header,
-	> .sticky-footer {
+	> .ob-sticky-header,
+	> .ob-sticky-footer {
 		padding-top: 24px;
 		padding-bottom: 24px;
 
@@ -105,16 +105,16 @@
 			line-height: 50px;
 		}
 
-		.sticky-actions {
+		.ob-sticky-actions {
 			line-height: 50px;
 		}
 	}
 }
 
-.application:not(.has-layout) .main-layout > .sticky {
-	.sticky-header,
-	.sticky-footer,
-	.sticky-content {
+.ob-master-layout:not(.ob-has-layout) .ob-main-layout > .ob-sticky {
+	.ob-sticky-header,
+	.ob-sticky-footer,
+	.ob-sticky-content {
 		padding-left: $spacing-default;
 		padding-right: $spacing-default;
 	}

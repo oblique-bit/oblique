@@ -4,8 +4,10 @@
     {
       "name": "ObSchemaValidationDirective",
       "selector": "[obSchemaValidation]",
+      "exported": "obSchemaValidation",
       "type": "directive",
       "since": "2.0.0",
+      "updated": "6.0.0",
       "inputs": [
         {
           "name": "obSchemaValidation",

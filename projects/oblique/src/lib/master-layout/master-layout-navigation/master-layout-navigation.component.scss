@@ -6,7 +6,7 @@
 @import "../../../styles/scss/core/mixins/toggle";
 @import "../../../styles/scss/core/mixins/button";
 
-.application-navigation {
+.ob-master-layout-navigation {
 	display: block;
 
 	@include layout-collapse-down() {
@@ -17,16 +17,16 @@
 		overflow: hidden;
 		background-color: $white;
 
-		.header-open & {
+		.ob-header-expanded & {
 			visibility: visible; // Restores keyboard navigation
 		}
 	}
 
-	.application.no-navigation & {
+	.ob-master-layout.ob-no-navigation & {
 		display: none;
 	}
 
-	.main-nav {
+	.ob-main-nav {
 		display: flex;
 		flex-direction: column;
 		flex-wrap: nowrap;
@@ -37,7 +37,7 @@
 		background-color: $gray-extra-light;
 		box-shadow: inset 0 -4px 14px -4px rgba(0, 0, 0, 0.1);
 
-		&:not(.sub-nav) {
+		&:not(.ob-sub-nav) {
 			@include layout-collapse-up() {
 				flex-direction: row;
 				padding-left: $spacing-default;
@@ -79,7 +79,7 @@
 		}
 
 		// First level only:
-		> .main-nav-item {
+		> .ob-main-nav-item {
 			@include layout-collapse-up() {
 				> a,
 				> button {
@@ -106,10 +106,10 @@
 			}
 		}
 
-		.toggle {
+		.ob-toggle {
 			margin-left: $spacing-sm;
 			min-width: 0;
-			@include toggle-before();
+			@include toggle-before($state: ob-expanded);
 
 			@include layout-collapse-down() {
 				&::before {
@@ -118,11 +118,11 @@
 			}
 		}
 
-		.show .toggle::before {
+		.ob-expanded .ob-toggle::before {
 			content: fa-content($fa-var-angle-up);
 		}
 
-		.sub-menu {
+		.ob-sub-menu {
 			visibility: hidden; // Do not use `display: none` to avoid reflow & transition issues!
 			position: fixed;
 			top: $header-height-md;
@@ -165,11 +165,11 @@
 		}
 
 		@include layout-collapse-up() {
-			&.main-nav-fw .sub-menu {
+			&.ob-main-nav-fw .ob-sub-menu {
 				left: 0;
 				right: 0;
 
-				.sub-nav {
+				.ob-sub-nav {
 					display: block;
 					column-width: $layout-collapse / 2;
 
@@ -180,13 +180,13 @@
 			}
 		}
 
-		.sub-nav {
+		.ob-sub-nav {
 			@include layout-collapse-up() {
 				background-color: $white;
 			}
 		}
 
-		& .show > .sub-menu {
+		& .ob-expanded > .ob-sub-menu {
 			visibility: visible;
 
 			@include layout-collapse-down() {
@@ -194,7 +194,7 @@
 			}
 		}
 
-		.sub-menu-back {
+		.ob-sub-menu-back {
 			text-align: center;
 			font-weight: 600;
 			overflow: hidden;
@@ -206,7 +206,7 @@
 				display: none;
 			}
 
-			.toggle {
+			.ob-toggle {
 				margin: 0;
 
 				@include layout-collapse-up() {
@@ -218,7 +218,7 @@
 				}
 			}
 
-			.label {
+			.ob-label {
 				flex: 1
 			}
 		}

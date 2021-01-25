@@ -40,22 +40,22 @@ import {Subject} from 'rxjs';
 	],
 	encapsulation: ViewEncapsulation.None,
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
-	host: {class: 'application', 'ob-version': appVersion}
+	host: {class: 'ob-master-layout', 'ob-version': appVersion}
 })
 export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 	home = this.config.homePageRoute;
 	url: string;
 	@Input() navigation: ObINavigationLink[] = [];
 	@Input() jumpLinks: ObIDynamicJumpLink[] = [];
-	@HostBinding('class.application-fixed') isFixed = this.masterLayout.layout.isFixed;
-	@HostBinding('class.has-cover') hasCover = this.masterLayout.layout.hasCover;
-	@HostBinding('class.has-layout') hasLayout = this.masterLayout.layout.hasLayout;
-	@HostBinding('class.header-open') isMenuCollapsed = this.masterLayout.layout.isMenuOpened;
-	@HostBinding('class.no-navigation') noNavigation = !this.masterLayout.layout.hasMainNavigation;
-	@HostBinding('class.offcanvas') hasOffCanvas = this.masterLayout.layout.hasOffCanvas;
-	@HostBinding('class.footer-sm') footerSm = this.masterLayout.footer.isSmall;
-	@HostBinding('class.application-scrolling') isScrolling = false;
-	@HostBinding('class.outline') outline = true;
+	@HostBinding('class.ob-master-layout-fixed') isFixed = this.masterLayout.layout.isFixed;
+	@HostBinding('class.ob-has-cover') hasCover = this.masterLayout.layout.hasCover;
+	@HostBinding('class.ob-has-layout') hasLayout = this.masterLayout.layout.hasLayout;
+	@HostBinding('class.ob-header-expanded') isMenuCollapsed = this.masterLayout.layout.isMenuOpened;
+	@HostBinding('class.ob-no-navigation') noNavigation = !this.masterLayout.layout.hasMainNavigation;
+	@HostBinding('class.ob-off-canvas') hasOffCanvas = this.masterLayout.layout.hasOffCanvas;
+	@HostBinding('class.ob-footer-sm') footerSm = this.masterLayout.footer.isSmall;
+	@HostBinding('class.ob-master-layout-scrolling') isScrolling = false;
+	@HostBinding('class.ob-outline') outline = true;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<any>;
 	@ContentChildren('obHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('obHeaderMobileControl') readonly headerMobileControlTemplates: QueryList<TemplateRef<any>>;

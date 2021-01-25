@@ -11,7 +11,7 @@ import {ObNotificationService} from './notification.service';
 	styleUrls: ['./notification.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
-	host: {class: 'notification-container'},
+	host: {class: 'ob-notification-container'},
 	animations: [
 		trigger('inOut', [
 			state('in', style({opacity: 1})),
@@ -53,7 +53,7 @@ import {ObNotificationService} from './notification.service';
 export class ObNotificationComponent implements OnInit {
 	public static REMOVE_DELAY = 350;
 	@Input() channel: string;
-	@HostBinding('class.custom') customChannel = false;
+	@HostBinding('class.ob-custom') customChannel = false;
 	public notifications: ObINotificationPrivate[] = [];
 	public variant: {[type: string]: string} = {};
 

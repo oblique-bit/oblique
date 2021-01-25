@@ -2,11 +2,11 @@
 @import "~bootstrap/scss/variables";
 @import "mixins/text-control";
 
-.text-control {
+.ob-text-control {
 	.form-control {
 		padding-right: calc(#{$spacing-default} + #{$input-padding-x});
 
-		+ .text-control-clear {
+		+ .ob-text-control-clear {
 			@include text-control-clear-position($input-padding-x);
 		}
 	}
@@ -15,8 +15,8 @@
 		padding-right: calc(#{$spacing-default} + #{$input-padding-x-sm});
 	}
 
-	&.input-group-sm > .text-control-clear,
-	.form-control-sm + .text-control-clear {
+	&.input-group-sm > .ob-text-control-clear,
+	.form-control-sm + .ob-text-control-clear {
 		@include text-control-clear-position($input-padding-x-sm);
 	}
 
@@ -24,8 +24,8 @@
 		padding-right: calc(#{$spacing-default} + #{$input-padding-x-lg});
 	}
 
-	&.input-group-lg > .text-control-clear,
-	.form-control-lg + .text-control-clear {
+	&.input-group-lg > .ob-text-control-clear,
+	.form-control-lg + .ob-text-control-clear {
 		@include text-control-clear-position($input-padding-x-lg);
 	}
 }

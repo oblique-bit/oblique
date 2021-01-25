@@ -17,7 +17,9 @@ import {ObParentFormDirective} from './parent-form.directive';
 			multi: true,
 			useExisting: forwardRef(() => ObNestedFormComponent)
 		}
-	]
+	],
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
+	host: {class: 'ob-nested-form'}
 })
 export class ObNestedFormComponent implements ControlValueAccessor, Validator, AfterViewInit {
 	@Input() nestedForm: FormGroup;

@@ -6,11 +6,11 @@ import {ObNotificationService, ObThemeService} from 'oblique';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'app-nested-form-sample',
+	selector: 'ob-nested-form-sample',
 	templateUrl: './nested-form-sample.component.html',
 	styleUrls: ['./mandatory.scss']
 })
-export class NestedFormSampleComponent {
+export class ObNestedFormSampleComponent {
 	parentForm: FormGroup;
 	model = {
 		parent: '',

@@ -1,17 +1,17 @@
 @import "../core/variables";
 
-.nav-header {
+.ob-nav-header {
 	position: relative;
 	color: $brand-default;
 	font-size: $font-size-base;
 	border: none;
 
-	.nav-item + & {
+	.ob-nav-item + & {
 		margin-top: $spacing-sm;
 	}
 }
 
-.nav-header-title {
+.ob-nav-header-title {
 	display: block;
 	font-size: inherit;
 	font-weight: bold;

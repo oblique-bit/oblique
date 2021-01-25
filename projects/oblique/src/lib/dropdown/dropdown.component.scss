@@ -7,14 +7,14 @@ $arrow-lg-size: 14px;
 .ob-dropdown {
 	position: relative;
 
-	button[dropdown-toggle] {
+	.ob-dropdown-toggle {
 		margin: 0;
 		padding: 0;
 		background-color: transparent;
 		border: 0;
 	}
 
-	.dropdown-content {
+	.ob-dropdown-content {
 		display: block;
 		position: absolute;
 		left: 0;
@@ -34,7 +34,7 @@ $arrow-lg-size: 14px;
 		&.middle {
 			transform: translateX(calc(-50% + 8px));
 
-			.control-item & {
+			.ob-control-item & {
 				transform: translateX(calc(-50% + 19px));
 			}
 		}
@@ -42,7 +42,7 @@ $arrow-lg-size: 14px;
 		&.right {
 			transform: translateX(-11px);
 
-			.control-item & {
+			.ob-control-item & {
 				transform: translateX(-1px);
 			}
 		}
@@ -50,13 +50,13 @@ $arrow-lg-size: 14px;
 		&.left {
 			transform: translateX(calc(-100% + 43px));
 
-			.control-item & {
+			.ob-control-item & {
 				transform: translateX(calc(-100% + 54px));
 			}
 		}
 	}
 
-	&.open .dropdown-content {
+	&.ob-expanded .ob-dropdown-content {
 		max-height: calc(100vh - 200px);
 		padding: $spacing-default;
 		border: 1px solid $gray-light;
@@ -109,10 +109,10 @@ $arrow-lg-size: 14px;
 	}
 
 	@include layout-collapse-down() {
-		&.control-link {
+		&.ob-control-link {
 			position: relative;
 
-			.dropdown-content {
+			.ob-dropdown-content {
 				position: fixed;
 				top: $header-height-md;
 				height: 0;
@@ -131,7 +131,7 @@ $arrow-lg-size: 14px;
 					$direction: top
 				);
 
-				.dropdown-content {
+				.ob-dropdown-content {
 					height: auto;
 					padding: $spacing-default;
 					border-color: transparent transparent transparent $gray-light;

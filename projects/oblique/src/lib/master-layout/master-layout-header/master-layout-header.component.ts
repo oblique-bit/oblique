@@ -33,7 +33,7 @@ import {Subject} from 'rxjs';
 	styleUrls: ['./master-layout-header.component.scss', './master-layout-header.component-controls.scss'],
 	encapsulation: ViewEncapsulation.None,
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
-	host: {class: 'application-header'}
+	host: {class: 'ob-master-layout-header'}
 })
 export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	home = this.config.homePageRoute;
@@ -41,9 +41,9 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	isCustom = this.masterLayout.header.isCustom;
 	banner: ObIBanner;
 	@Input() navigation: ObINavigationLink[];
-	@HostBinding('class.application-header-animate') isAnimated = this.masterLayout.header.isAnimated;
-	@HostBinding('class.application-header-sticky') isSticky = this.masterLayout.header.isSticky;
-	@HostBinding('class.application-header-md') isMedium = this.masterLayout.header.isMedium;
+	@HostBinding('class.ob-master-layout-header-animate') isAnimated = this.masterLayout.header.isAnimated;
+	@HostBinding('class.ob-master-layout-header-sticky') isSticky = this.masterLayout.header.isSticky;
+	@HostBinding('class.ob-master-layout-header-md') isMedium = this.masterLayout.header.isMedium;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<any>;
 	@ContentChildren('obHeaderControl') readonly templates: QueryList<TemplateRef<any>>;
 	@ContentChildren('obHeaderMobileControl') readonly mobileTemplates: QueryList<TemplateRef<any>>;
@@ -101,15 +101,15 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	private addActionClass(elt: ElementRef) {
 		const actionable = ['a', 'button'];
 		if (actionable.indexOf(elt.nativeElement.nodeName.toLowerCase()) > -1) {
-			this.renderer.addClass(elt.nativeElement, 'control-link');
+			this.renderer.addClass(elt.nativeElement, 'ob-control-link');
 		} else {
 			const el = elt.nativeElement.querySelector('a, button');
 			if (el) {
-				this.renderer.addClass(el, 'control-link');
+				this.renderer.addClass(el, 'ob-control-link');
 			}
 		}
-		Array.from(elt.nativeElement.querySelectorAll('.control-link .fa, .control-link .fab')).forEach((item: HTMLElement) => {
-			this.renderer.addClass(item, 'control-icon');
+		Array.from(elt.nativeElement.querySelectorAll('.ob-control-link .fa, .ob-control-link .fab')).forEach((item: HTMLElement) => {
+			this.renderer.addClass(item, 'ob-control-icon');
 		});
 	}
 
@@ -162,7 +162,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		// these elements must not be focusable during the closing animation. Otherwise, the focused element will be scrolled into view
 		// and the header will appear empty.
 		const isFocusable = this.window.innerWidth > 991 || !isMenuOpened;
-		Array.from(this.el.nativeElement.querySelectorAll('.application-header-controls a.control-link')).forEach(el => {
+		Array.from(this.el.nativeElement.querySelectorAll('.ob-master-layout-header-controls a.ob-control-link')).forEach(el => {
 			this.renderer.setAttribute(el, 'tabindex', isFocusable ? '0' : '-1');
 		});
 	}

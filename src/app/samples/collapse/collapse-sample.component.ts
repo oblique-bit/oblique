@@ -23,7 +23,7 @@ interface IconPosition {
 	selector: 'ob-collapse-sample',
 	templateUrl: './collapse-sample.component.html'
 })
-export class CollapseSampleComponent {
+export class ObCollapseSampleComponent {
 	collapseTitle = 'Collapse title here ';
 	material: Observable<boolean>;
 	direction = new FormControl('down-up');

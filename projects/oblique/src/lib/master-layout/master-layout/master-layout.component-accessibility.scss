@@ -2,7 +2,7 @@
 @import "../../../styles/scss/core/variables";
 @import "../../../styles/scss/core/mixins/alert";
 
-.access-keys {
+.ob-access-keys {
 	position: fixed;
 	top: 0;
 	width: 100%;
@@ -19,7 +19,7 @@
 	}
 }
 
-.accessible {
+.ob-accessible {
 	height: 1px;
 	display: block;
 	clip: rect(0, 0, 0, 0);

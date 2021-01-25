@@ -3,17 +3,17 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {NgbDatepickerModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 
-import {DatepickerSampleComponent} from './datepicker-sample.component';
+import {ObDatepickerSampleComponent} from './datepicker-sample.component';
 import {ObliqueTestingModule} from 'oblique/lib/oblique-testing.module';
 import {ObDatepickerModule, ObDatepickerPlaceholderDirective} from 'oblique/lib/datepicker/datepicker.module';
 
-describe('DatepickerSampleComponent', () => {
-	let component: DatepickerSampleComponent;
-	let fixture: ComponentFixture<DatepickerSampleComponent>;
+describe('ObDatepickerSampleComponent', () => {
+	let component: ObDatepickerSampleComponent;
+	let fixture: ComponentFixture<ObDatepickerSampleComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [DatepickerSampleComponent],
+			declarations: [ObDatepickerSampleComponent],
 			imports: [ObDatepickerModule, NgbDatepickerModule, NgbTooltipModule, FormsModule, ObliqueTestingModule],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		})
@@ -28,7 +28,7 @@ describe('DatepickerSampleComponent', () => {
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(DatepickerSampleComponent);
+		fixture = TestBed.createComponent(ObDatepickerSampleComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

@@ -1,11 +1,11 @@
-ob-spinner {
+.ob-spinner {
 	&,
-	.overlay {
+	.ob-overlay {
 		border-radius: inherit;
 	}
 }
 
-.spinner-viewport {
+.ob-spinner-viewport {
 	position: absolute;
 	top: 50%;
 	left: 50%;

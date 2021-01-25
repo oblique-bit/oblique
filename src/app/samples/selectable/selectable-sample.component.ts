@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-	selector: 'ob-selected',
+	selector: 'ob-selectable-sample',
 	templateUrl: './selectable-sample.component.html',
 	styleUrls: ['./selectable-sample.component.scss']
 })

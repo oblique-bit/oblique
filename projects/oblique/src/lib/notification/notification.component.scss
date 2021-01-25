@@ -1,7 +1,7 @@
 @import "../../styles/scss/core/variables";
 @import "../../styles/scss/core/mixins/alert";
 
-.notification-container {
+.ob-notification-container {
 	position: fixed;
 	display: block;
 	perspective: 80px;
@@ -9,22 +9,17 @@
 	right: 0; // Note: do not specify `top` attribute!
 	z-index: $z-index-widget;
 
-	&.custom {
+	&.ob-custom {
 		position: absolute;
 	}
 
-	.notification {
-		display: none;
+	.ob-notification {
 		width: 65vw;
 		margin: 5px; // Reserve spacing for box shadow!
 		box-shadow: 0 0 6px gray;
 
 		@include layout-collapse-up() {
 			width: 380px;
-		}
-
-		&.show {
-			display: block;
 		}
 
 		&.fadeLeft {
@@ -50,7 +45,7 @@
 			animation: notification-slideBottom $duration-default;
 		}
 
-		.close {
+		.ob-close {
 			float: none;
 			position: absolute;
 			top: 0;
@@ -59,13 +54,13 @@
 			line-height: 0.75;
 		}
 
-		.notification-title {
+		.ob-notification-title {
 			font-weight: 600;
 			margin-bottom: 0.5em;
 		}
 	}
 
-	.occurrence {
+	.ob-occurrence {
 		display: inline-block;
 		position: absolute;
 		bottom: -$spacing-xs;
@@ -77,19 +72,19 @@
 		border-radius: 50%;
 	}
 
-	.alert-info .occurrence {
+	.ob-alert-info .ob-occurrence {
 		background-color: $brand-dark;
 	}
 
-	.alert-success .occurrence {
+	.ob-alert-success .ob-occurrence {
 		background-color: $brand-success-dark;
 	}
 
-	.alert-warning .occurrence {
+	.ob-alert-warning .ob-occurrence {
 		background-color: $brand-warning-dark;
 	}
 
-	.alert-error .occurrence {
+	.ob-alert-error .ob-occurrence {
 		background-color: $brand-error-dark;
 	}
 

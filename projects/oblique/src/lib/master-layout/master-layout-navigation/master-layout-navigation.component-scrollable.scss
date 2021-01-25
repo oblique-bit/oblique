@@ -1,7 +1,7 @@
 @import "../../../styles/scss/core/variables";
 @import "../../../styles/scss/core/mixins/layout";
 
-.application-navigation  {
+.ob-master-layout-navigation  {
 	> ul {
 		transition: padding $duration-default;	// because navigation-scrollable-* classes are dynamic
 	}
@@ -9,19 +9,19 @@
 	&.navigation-scrollable  {
 		position: relative;
 
-		.navigation-scrollable-control {
+		.ob-navigation-scrollable-control {
 			display: none;
 		}
 
 		@include layout-collapse-down() {
-			.navigation-scrollable-content > li {
+			.ob-navigation-scrollable-content > li {
 				// Ensure navigation scrolling is disabled on small viewports:
 				margin-left: 0 !important;
 			}
 		}
 
 		@include layout-collapse-up() {
-			.navigation-scrollable-control {
+			.ob-navigation-scrollable-control {
 				position: absolute;
 				top: 0;
 				width: $navigation-scrollable-padding;
@@ -59,15 +59,15 @@
 				}
 			}
 
-			.navigation-scrollable-control-left {
+			.ob-navigation-scrollable-control-left {
 				left: 0;
 			}
 
-			.navigation-scrollable-control-right {
+			.ob-navigation-scrollable-control-right {
 				right: 0;
 			}
 
-			.navigation-scrollable-content {
+			.ob-navigation-scrollable-content {
 				display: block;
 				vertical-align: bottom;
 				white-space: nowrap;

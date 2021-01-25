@@ -3,10 +3,10 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'app-error-messages-sample',
+	selector: 'ob-error-messages-sample',
 	templateUrl: './error-messages-sample.component.html'
 })
-export class ErrorMessagesSampleComponent {
+export class ObErrorMessagesSampleComponent {
 	select = new FormControl('', [Validators.required]);
 	checkbox = new FormControl('', [Validators.required]);
 	radio = new FormControl('', [Validators.required]);

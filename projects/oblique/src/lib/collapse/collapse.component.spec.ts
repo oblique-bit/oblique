@@ -90,14 +90,14 @@ describe('CollapseComponent', () => {
 
 		describe('direction should set a class', () => {
 			it('without direction', () => {
-				const div = fixture.debugElement.query(By.css('.toggle')).nativeElement;
-				expect(div.classList.contains('toggle-down-up')).toBe(true);
+				const div = fixture.debugElement.query(By.css('.ob-toggle')).nativeElement;
+				expect(div.classList.contains('ob-toggle-down-up')).toBe(true);
 			});
 			it('with left-right direction', () => {
 				component.direction = 'left-right';
 				fixture.detectChanges();
-				const div = fixture.debugElement.query(By.css('.toggle')).nativeElement;
-				expect(div.classList.contains('toggle-left-right')).toBe(true);
+				const div = fixture.debugElement.query(By.css('.ob-toggle')).nativeElement;
+				expect(div.classList.contains('ob-toggle-left-right')).toBe(true);
 			});
 		});
 
@@ -105,20 +105,20 @@ describe('CollapseComponent', () => {
 			it('right', () => {
 				component.iconPosition = 'right';
 				fixture.detectChanges();
-				const div = fixture.debugElement.query(By.css('.toggle')).nativeElement;
-				expect(div.classList.contains('toggle-after')).toBe(true);
+				const div = fixture.debugElement.query(By.css('.ob-toggle')).nativeElement;
+				expect(div.classList.contains('ob-toggle-after')).toBe(true);
 			});
 			it('left', () => {
 				component.iconPosition = 'left';
 				fixture.detectChanges();
-				const div = fixture.debugElement.query(By.css('.toggle')).nativeElement;
-				expect(div.classList.contains('toggle-after')).toBe(false);
+				const div = fixture.debugElement.query(By.css('.ob-toggle')).nativeElement;
+				expect(div.classList.contains('ob-toggle-after')).toBe(false);
 			});
 			it('justified', () => {
 				component.iconPosition = 'justified';
 				fixture.detectChanges();
-				const div = fixture.debugElement.query(By.css('.toggle')).nativeElement;
-				expect(div.classList.contains('toggle-justified')).toBe(true);
+				const div = fixture.debugElement.query(By.css('.ob-toggle')).nativeElement;
+				expect(div.classList.contains('ob-toggle-justified')).toBe(true);
 			});
 		});
 

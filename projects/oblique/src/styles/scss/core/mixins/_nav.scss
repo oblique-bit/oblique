@@ -29,26 +29,26 @@
 @mixin nav-indent($base: 0px) {
 	$base: $base + $spacing-default;
 
-	.nav-tree > li > .nav-link {
+	.ob-nav-tree > li > .ob-nav-link {
 		padding-left: $base;
 	}
 
-	.nav-tree .nav-tree > li > .nav-link {
+	.ob-nav-tree .ob-ob-nav-tree > li > .ob-nav-link {
 		padding-left: $base + $spacing-default;
 		font-size: 90%;
 	}
 
-	.nav-tree .nav-tree .nav-tree > li > .nav-link {
+	.ob-nav-tree .ob-nav-tree .ob-nav-tree > li > .ob-nav-link {
 		padding-left: $base + $spacing-default + $spacing-sm;
 		font-size: 85%;
 	}
 
-	.nav-tree .nav-tree .nav-tree .nav-tree > li > .nav-link {
+	.ob-nav-tree .ob-nav-tree .ob-nav-tree .ob-nav-tree > li > .ob-nav-link {
 		padding-left: $base + $spacing-default + 2 * $spacing-sm;
 		font-size: 80%;
 	}
 
-	.nav-tree .nav-tree .nav-tree .nav-tree .nav-tree > li > .nav-link {
+	.ob-nav-tree .ob-nav-tree .ob-nav-tree .ob-nav-tree .ob-nav-tree > li > .ob-nav-link {
 		padding-left: $base + $spacing-default + 3 * $spacing-sm;
 		font-size: 75%;
 	}

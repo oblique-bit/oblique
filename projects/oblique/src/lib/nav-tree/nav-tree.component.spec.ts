@@ -105,10 +105,10 @@ describe('NavTreeComponent', () => {
 	});
 
 	it('should add a variant CSS class to the navigation trees', () => {
-		testComponent.variant = 'nav-custom';
+		testComponent.variant = 'ob-nav-custom';
 		fixture.detectChanges();
 
-		const navTrees = fixture.debugElement.queryAll(By.css('.nav-tree.nav-custom'));
+		const navTrees = fixture.debugElement.queryAll(By.css('.ob-nav-tree.ob-nav-custom'));
 		expect(navTrees.length).toBe(4);
 	});
 
@@ -131,7 +131,7 @@ describe('NavTreeComponent', () => {
 		const fragment = '#' + testComponent.items[0].fragment;
 
 		// [routerLink] directive adds `[href]` attribute to nav item links:
-		const firstNavItem = fixture.debugElement.query(By.css('a.nav-link'));
+		const firstNavItem = fixture.debugElement.query(By.css('a.ob-nav-link'));
 		expect(firstNavItem.nativeElement.attributes.getNamedItem('href')).toBeDefined();
 		expect(firstNavItem.nativeElement.attributes.getNamedItem('href').value).toContain(fragment);
 	});
@@ -140,7 +140,7 @@ describe('NavTreeComponent', () => {
 		const urlQueryParams = 'foo=' + testComponent.items[0].queryParams.foo;
 
 		// [routerLink] directive adds `[href]` attribute to nav item links:
-		const firstNavItem = fixture.debugElement.query(By.css('a.nav-link'));
+		const firstNavItem = fixture.debugElement.query(By.css('a.ob-nav-link'));
 		expect(firstNavItem.nativeElement.attributes.getNamedItem('href')).toBeDefined();
 		expect(firstNavItem.nativeElement.attributes.getNamedItem('href').value).toContain(urlQueryParams);
 	});

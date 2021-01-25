@@ -2,17 +2,17 @@
 <h1 class="sr-only">{{ "i18n.oblique.footer.title" | translate }}</h1>
 <ng-content select="[orFooter]" *ngIf="isCustom"></ng-content>
 <ng-container *ngIf="!isCustom">
-	<div class="footer-item footer-item-logo footer-sm-collapse">
-		<a [routerLink]="home" class="application-brand-logo">
+	<div class="ob-footer-item ob-footer-item-logo ob-footer-sm-collapse">
+		<a [routerLink]="home" class="ob-master-layout-logo">
 			<img src="./assets/images/logo.svg" alt="{{ 'i18n.application.organization.name' | translate }}" />
 		</a>
 	</div>
 	<h2 class="sr-only">{{ "i18n.oblique.footer.info.title" | translate }}</h2>
-	<div class="footer-item footer-item-info">
+	<div class="ob-footer-item ob-footer-item-info">
 		<ng-content select="[obFooterInfo]"></ng-content>
 	</div>
 	<h2 class="sr-only">{{ "i18n.oblique.footer.links.title" | translate }}</h2>
-	<ul class="footer-item footer-item-links" *ngIf="templates.length">
+	<ul class="ob-footer-item ob-footer-item-links" *ngIf="templates.length">
 		<li *ngFor="let template of templates">
 			<ng-container [ngTemplateOutlet]="template"></ng-container>
 		</li>

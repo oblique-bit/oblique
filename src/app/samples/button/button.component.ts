@@ -4,11 +4,11 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
-	selector: 'ob-button',
+	selector: 'ob-button-sample',
 	templateUrl: './button.component.html',
 	styleUrls: ['./button.component.scss']
 })
-export class ObButtonComponent {
+export class ObButtonSampleComponent {
 	material: Observable<boolean>;
 
 	constructor(masterLayout: ObMasterLayoutService, theme: ObThemeService) {

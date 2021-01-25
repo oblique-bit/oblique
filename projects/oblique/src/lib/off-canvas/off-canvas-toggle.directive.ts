@@ -3,7 +3,9 @@ import {ObOffCanvasService} from './off-canvas.service';
 
 @Directive({
 	selector: '[obOffCanvasToggle]',
-	exportAs: 'obOffCanvasToggle'
+	exportAs: 'obOffCanvasToggle',
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
+	host: {class: 'ob-off-canvas-toggle'}
 })
 export class ObOffCanvasToggleDirective {
 	constructor(private readonly offCanvas: ObOffCanvasService) {}

@@ -14,16 +14,16 @@
 <p>To adapt the column width to your needs, overwrite following CSS rules:</p>
 <pre>
 @media (min-width: 992px) &lcub;
-	.column-layout &lcub;
-		.column-left,
-		.column-right &lcub;
+	.ob-column-layout &lcub;
+		.ob-column-left,
+		.ob-column-right &lcub;
 			flex-basis: $column-width;
 			max-width: $column-width;
 		}
-		.column-left.collapsed &lcub;
+		.ob-column-left.ob-collapsed &lcub;
 			margin-left: -$column-width;
 		}
-		.column-right.collapsed &lcub;
+		.ob-column-right.ob-collapsed &lcub;
 			margin-right: -$column-width;
 		}
 	}

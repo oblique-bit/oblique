@@ -7,7 +7,7 @@
 		border: none;
 	}
 
-	.multiselect-toggle {
+	.ob-multiselect-toggle {
 		display: flex;
 		background-color: $white;
 		border-radius: 0;
@@ -21,7 +21,7 @@
 			border: 1px solid #f4f4f4;
 		}
 
-		& .toggle {
+		& .ob-toggle {
 			display: flex;
 			cursor: pointer;
 			margin-left: auto;
@@ -34,7 +34,7 @@
 		}
 	}
 
-	.multiselect-label .list-item + .list-item::before {
+	.ob-multiselect-label .list-item + .list-item::before {
 		content: ', ';
 	}
 
@@ -57,7 +57,7 @@
 		border-bottom: none;
 	}
 
-	.multiselect-control {
+	.ob-multiselect-control {
 		font-size: small;
 	}
 

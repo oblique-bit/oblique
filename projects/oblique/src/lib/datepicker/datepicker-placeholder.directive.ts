@@ -12,7 +12,10 @@ const I18N_PLACEHOLDERS = {
 
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
-	selector: 'input[ngbDatepicker]'
+	selector: 'input[ngbDatepicker]',
+	exportAs: 'obDatepickerPlaceholder',
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
+	host: {class: 'ob-datepicker-placeholder'}
 })
 export class ObDatepickerPlaceholderDirective implements OnInit, OnDestroy {
 	@Input()

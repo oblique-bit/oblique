@@ -7,6 +7,7 @@
       "exported": "obSticky",
       "type": "component",
       "since": "4.0.0",
+      "updated": "6.0.0",
       "inputs": [
         {
           "name": "headerSize",

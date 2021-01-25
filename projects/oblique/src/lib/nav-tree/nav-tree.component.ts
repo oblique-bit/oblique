@@ -15,8 +15,8 @@ import {Subject} from 'rxjs';
 })
 export class ObNavTreeComponent implements OnDestroy {
 	static DEFAULTS = {
-		VARIANT: 'nav-bordered nav-hover',
-		HIGHLIGHT: 'pattern-highlight',
+		VARIANT: 'ob-nav-bordered ob-nav-hover',
+		HIGHLIGHT: 'ob-pattern-highlight',
 		LABEL_FORMATTER: defaultLabelFormatterFactory
 	};
 
