@@ -47,7 +47,7 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 	}
 
 	private handleHttpError(error: ObIObliqueHttpErrorResponse, obliqueRequest: ObIHttpApiRequest): Observable<never> {
-		return this.handleError(error, true, () => this.notify(obliqueRequest.notification, error.error));
+		return this.handleError(error, obliqueRequest.notification.active, () => this.notify(obliqueRequest.notification, error.error));
 	}
 
 	private handleError(error: ObIObliqueHttpErrorResponse, hasError: boolean, action: Function) {
@@ -99,14 +99,12 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 	}
 
 	private notify(notification: ObIHttpApiRequestNotification, error: HttpErrorResponse): void {
-		if (notification.active || error.status >= 500 || error.status === 0) {
-			this.notificationService.send({
-				message: notification.text || `i18n.oblique.http.error.status.${error.status}`,
-				title: notification.title || error.statusText,
-				type: notification.severity,
-				sticky: notification.sticky
-			});
-		}
+		this.notificationService.send({
+			message: notification.text || `i18n.oblique.http.error.status.${error.status}`,
+			title: notification.title || error.statusText,
+			type: notification.severity,
+			sticky: notification.sticky
+		});
 	}
 
 	private isApiCall(url: string): boolean {
