@@ -6,7 +6,7 @@ import {catchError, finalize} from 'rxjs/operators';
 import {ObNotificationService} from '../notification/notification.module';
 import {ObSpinnerService} from '../spinner/spinner.module';
 import {ObHttpApiInterceptorConfig} from './http-api-interceptor.config';
-import {ObHttpApiInterceptorEvents, ObIHttpApiRequest} from './http-api-interceptor.events';
+import {ObHttpApiInterceptorEvents, ObIHttpApiRequest, ObIHttpApiRequestNotification} from './http-api-interceptor.events';
 import Timer = NodeJS.Timer;
 
 @Injectable({providedIn: 'root'})
@@ -81,7 +81,7 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 		}
 	}
 
-	private notify(notification: ObIHttpApiRequest['notification'], error: HttpErrorResponse): void {
+	private notify(notification: ObIHttpApiRequestNotification, error: HttpErrorResponse): void {
 		if (notification.active || error.status >= 500 || error.status === 0) {
 			this.notificationService.send({
 				message: notification.text || `i18n.oblique.http.error.status.${error.status}`,

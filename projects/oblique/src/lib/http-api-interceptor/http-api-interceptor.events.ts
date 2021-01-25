@@ -4,14 +4,16 @@ import {take} from 'rxjs/operators';
 import {ObENotificationType} from '../notification/notification.interfaces';
 
 export interface ObIHttpApiRequest {
-	notification: {
-		active: boolean;
-		severity: ObENotificationType;
-		title: string;
-		text: string;
-		sticky: boolean;
-	};
+	notification: ObIHttpApiRequestNotification;
 	spinner: boolean;
+}
+
+export interface ObIHttpApiRequestNotification {
+	active: boolean;
+	severity: ObENotificationType;
+	title: string;
+	text: string;
+	sticky: boolean;
 }
 
 /**
