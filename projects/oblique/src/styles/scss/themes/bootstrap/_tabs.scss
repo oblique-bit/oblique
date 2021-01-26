@@ -1,7 +1,8 @@
 @import "../../core/variables";
 
-.nav-tabs > .nav-item > .nav-link{
+.nav-tabs > .nav-item > .nav-link {
 	color: $brand-default;
+	text-decoration: none;
 
 	&.active {
 		position: relative;
