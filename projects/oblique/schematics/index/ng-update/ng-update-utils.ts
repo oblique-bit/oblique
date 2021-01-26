@@ -591,6 +591,12 @@ export function checkDependencies(tree: Tree, _context: SchematicContext, deps: 
 	}
 }
 
+export function minAngularVersion(tree: Tree, _context: SchematicContext, oblique: number, angular: number): void {
+	if (getDepVersion(tree, '@angular/core') < angular) {
+		warn(_context, `Oblique ${oblique} is designed to work with Angular ${angular}. If the update fails, try to update angular first.`);
+	}
+}
+
 function checkDependency(tree: Tree, _context: SchematicContext, dependency: string, versions: number[]): string {
 	const currentVersion = getDepVersion(tree, dependency);
 	return versions.includes(currentVersion)

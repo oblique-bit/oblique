@@ -1,5 +1,5 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {IMigrations} from './ng-update-utils';
+import {IMigrations, minAngularVersion} from './ng-update-utils';
 import {
 	addAngularConfigInList,
 	getDefaultAngularConfig,
@@ -25,8 +25,8 @@ export class UpdateV5toV6 implements IMigrations {
 	dependencies = {
 		'@angular/core': 11,
 		'@angular/router': (angular: number) => angular,
-		'@ngx-translate/core': 14,
-		'@ng-bootstrap/ng-bootstrap': [8, 0],
+		'@ngx-translate/core': 13,
+		'@ng-bootstrap/ng-bootstrap': [9, 0],
 		'@angular/material': (angular: number) => [angular, 0],
 		ajv: [6, 0]
 	};
@@ -34,6 +34,7 @@ export class UpdateV5toV6 implements IMigrations {
 	applyMigrations(_options: IUpdateV5Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Analyzing project');
+			minAngularVersion(tree, _context, 6, 11);
 
 			return chain([
 				this.migrateFont(),
@@ -45,6 +46,7 @@ export class UpdateV5toV6 implements IMigrations {
 				this.adaptDependencies(),
 				this.migrateDropdown(),
 				this.removeUnsubscribe(),
+				this.adaptHtmlToCss(),
 				this.adaptCssClassNaming()
 			])(tree, _context);
 		};
@@ -283,6 +285,19 @@ export class UpdateV5toV6 implements IMigrations {
 		}
 	}
 
+	private addClassesPrefix(tree: Tree, filePath: string, target: string, suffixes?: string[]) {
+		replaceInFile(tree, filePath, new RegExp(`class="((?:[\\w-]*\\s)*|)(${target})(\\s.*|)"`, 'g'), `class="$1ob-$2$3"`);
+		if (suffixes) {
+			this.addClassPrefix(tree, filePath, target, suffixes);
+		}
+	}
+
+	private addClassPrefix(tree: Tree, filePath: string, target: string, suffixes: string[]) {
+		suffixes.forEach(suffix => {
+			replaceInFile(tree, filePath, new RegExp(`class="((?:[\\w-]*\\s)*|)(${target}-${suffix})(\\s.*|)"`, 'g'), `class="$1ob-$2$3"`);
+		});
+	}
+
 	private addPrefixMatchExactOrSuffix(tree: Tree, filePath: string, target: string, suffix: string[]) {
 		replaceInFile(tree, filePath, new RegExp(`\\.(${target}(?:[\\s{]|(?:-(?:${suffix.join('|')}))))`, 'g'), '.ob-$1');
 	}
@@ -299,13 +314,34 @@ export class UpdateV5toV6 implements IMigrations {
 		replaceInFile(tree, filePath, new RegExp(`\\.${target}([\\s{]|(?:-(?:${suffix.join('|')})))`, 'g'), `.${result}$1`);
 	}
 
+	private adaptHtmlToCss(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, "Prefix Oblique's classes in HTML");
+			const apply = (filePath: string) => {
+				this.addClassesPrefix(tree, filePath, 'alert', ['info', 'success', 'warning', 'error', 'link']);
+				this.addClassesPrefix(tree, filePath, 'sticky', ['sm', 'lg']);
+				this.addClassesPrefix(tree, filePath, 'nav-stepper', ['sm', 'lg']);
+				this.addClassesPrefix(tree, filePath, 'table', ['cicd', 'plain', 'collapse', 'hover', 'scrollable']);
+				this.addClassesPrefix(tree, filePath, 'no-layout');
+				this.addClassesPrefix(tree, filePath, 'expanded');
+				this.addClassesPrefix(tree, filePath, 'close');
+				this.addClassPrefix(tree, filePath, 'sticky', ['content', 'main', 'header', 'footer', 'title', 'actions', 'layout']);
+				this.addClassPrefix(tree, filePath, 'control', ['link', 'item', 'icon', 'label', 'toggle', 'locale']);
+				this.addClassPrefix(tree, filePath, 'multiselect', ['toggle', 'label', 'control']);
+				this.addClassPrefix(tree, filePath, 'nav', ['tree', 'link', 'indent', 'bordered', 'hover', 'toggle', 'step', 'horizontal']);
+				this.addClassPrefix(tree, filePath, 'tab', ['item', 'link']);
+			};
+			return applyInTree(tree, apply, '*.html');
+		};
+	}
+
 	private adaptCssClassNaming(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Adapt naming of oblique css classes');
+			infoMigration(_context, "Prefix Oblique's classes in SCSS");
 			const apply = (filePath: string) => {
 				this.addPrefixMatchExactOrSuffix(tree, filePath, 'toggle', ['after', 'before', 'justified', 'down', 'up', 'right', 'left']);
 				this.addPrefixMatchExactOrSuffix(tree, filePath, 'notification', ['container', 'title']);
-				this.addPrefixMatchExactOrSuffix(tree, filePath, 'alert', ['nfo', 'success', 'warning', 'error', 'link']);
+				this.addPrefixMatchExactOrSuffix(tree, filePath, 'alert', ['info', 'success', 'warning', 'error', 'link']);
 				this.addPrefixMatchExactOrSuffix(tree, filePath, 'search-box', ['input']);
 				this.addPrefixMatchExactOrSuffix(tree, filePath, 'text-control', ['clear']);
 				this.addPrefixMatchExactOrSuffix(tree, filePath, 'sticky', ['content', 'main', 'header', 'footer', 'title', 'actions', 'sm', 'lg', 'layout']);

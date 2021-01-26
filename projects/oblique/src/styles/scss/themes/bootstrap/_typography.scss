@@ -1,0 +1,261 @@
+@import "../../core/variables";
+@import "../../core/mixins/typography";
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0 0 0.5em 0;
+	color: $black;
+}
+
+h1 {
+	@include h1;
+}
+
+h2 {
+	@include h2;
+}
+
+h3 {
+	@include h3;
+}
+
+h4 {
+	@include h4;
+}
+
+h5 {
+	@include h5;
+}
+
+h6 {
+	@include h6;
+}
+
+// inline elements
+a {
+	color: $brand-primary;
+	text-decoration: underline;
+
+	&:hover,
+	&:visited {
+		color: $brand-dark;
+	}
+
+	&:not([href]):not([tabindex]),
+	&[tabindex="-1"] {
+		color: inherit;
+
+		&:hover {
+			color: inherit;
+		}
+
+		&:focus {
+			outline: 0;
+		}
+	}
+}
+
+abbr {
+	text-decoration: underline dotted;
+	border-bottom: 0; // Chrome 57-
+	text-decoration-skip-ink: none;
+
+	&[title] {
+		cursor: help;
+	}
+}
+
+b,
+strong {
+	font-weight: 700;
+}
+
+cite, dfn, em, i, q, var {
+	font-weight: normal;
+	font-style: italic;
+}
+
+mark, ins {
+	padding: 0;
+	text-decoration: none;
+}
+
+mark {
+	background-color: $brand-warning-light;
+}
+
+ins {
+	background-color: $brand-light;
+}
+
+pre, code, kbd, samp {
+	font-family: monospace;
+	font-size: $font-size-normal;
+}
+
+code, kbd {
+	border-radius: $border-radius-base;
+	padding: 2px 4px;
+}
+
+code, pre {
+	border: 1px solid $gray-light;
+	background-color: $gray-extra-light;
+	color: $brand-default;
+}
+
+pre {
+	overflow: auto;
+	padding: $spacing-sm;
+	border-radius: $border-radius-base;
+	code {
+		border: none;
+		padding: 0;
+	}
+}
+
+kbd {
+	background-color: $brand-default;
+	color: $gray-extra-light;
+}
+
+small {
+	font-size: $font-size-smaller;
+}
+
+s, del {
+	text-decoration: line-through;
+}
+
+output {
+	display: inline-block;
+}
+
+u {
+	text-decoration: underline;
+}
+
+// prevent `sub` and `sup` elements from affecting the line height
+sub,
+sup {
+	font-size: $font-size-smaller;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -.25em;
+}
+
+sup {
+	top: -.5em;
+}
+
+label {
+	font-weight: 600;
+	display: inline;
+}
+
+// lists
+ol,
+ul,
+dl {
+	margin-top: 0;
+	margin-bottom: $spacing-default;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+	margin-bottom: 0;
+}
+
+dt {
+	font-weight: 700;
+}
+
+dd {
+	margin-bottom: 0;
+	margin-left: 0;
+
+	+ dt {
+		margin-top: $spacing-sm;
+	}
+}
+
+// block elements
+p {
+	margin-top: 0;
+	margin-bottom: $spacing-default;
+}
+
+blockquote {
+	margin: 0 0 $spacing-default;
+	font-size: 1em;
+}
+
+address {
+	margin-bottom: $spacing-default;
+	font-style: normal;
+	line-height: inherit;
+}
+
+// misc elements
+[tabindex="-1"]:focus {
+	outline: 0 !important;
+}
+
+[hidden] {
+	display: none !important;
+}
+
+hr {
+	box-sizing: content-box; // Firefox
+	height: 0; // Firefox
+	overflow: visible; // IE / Edge
+}
+
+img {
+	vertical-align: middle;
+}
+
+svg {
+	// Workaround for the SVG overflow bug in IE10/11 is still required.
+	// See https://github.com/twbs/bootstrap/issues/26878
+	overflow: hidden;
+	vertical-align: middle;
+}
+
+progress {
+	vertical-align: baseline; // Chrome, Firefox, and Opera.
+}
+
+summary {
+	display: list-item;
+	cursor: pointer;
+}
+
+template {
+	display: none; // IE
+}
+fieldset {
+	min-width: 0;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+legend {
+	display: block; // IE
+	width: 100%;
+	max-width: 100%; // IE
+	padding: 0;
+	margin-bottom: $spacing-sm;
+	border-bottom: 1px dotted $gray;
+	font-size: $font-size-bigger;
+	font-weight: 600;
+	line-height: inherit;
+	color: inherit; // IE
+	white-space: normal; // IE
+}

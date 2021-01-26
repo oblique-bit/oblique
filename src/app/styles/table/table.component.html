@@ -1,119 +1,53 @@
 <h1>Table</h1>
-<h2>Standard tables</h2>
-<table class="ob-table ob-table-hover ob-table-plain ob-table-sm ob-table-collapse-sm">
-	<caption>
-		Table caption
-	</caption>
-	<thead>
-		<tr>
-			<th>Table header 1</th>
-			<th class="active">Table header 2</th>
-			<th>Table header 3</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td title="table header 1">Table cell</td>
-			<td title="table header 2">Table cell</td>
-			<td title="table header 3">Table cell</td>
-		</tr>
-		<tr>
-			<td title="table header 1">Table cell</td>
-			<td title="table header 2">Table cell</td>
-			<td title="table header 3">Table cell</td>
-		</tr>
-		<tr>
-			<td title="table header 1">Table cell</td>
-			<td title="table header 2">Table cell</td>
-			<td title="table header 3">Table cell</td>
-		</tr>
-	</tbody>
-</table>
-<table class="ob-table ob-table-hover ob-table-plain ob-table-collapse-sm">
-	<caption>
-		Table caption
-	</caption>
-	<thead>
-		<tr>
-			<th>Table header 1</th>
-			<th class="active">Table header 2</th>
-			<th>Table header 3</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td title="table header 1">Table cell</td>
-			<td title="table header 2">Table cell</td>
-			<td title="table header 3">Table cell</td>
-		</tr>
-		<tr>
-			<td title="table header 1">Table cell</td>
-			<td title="table header 2">Table cell</td>
-			<td title="table header 3">Table cell</td>
-		</tr>
-		<tr>
-			<td title="table header 1">Table cell</td>
-			<td title="table header 2">Table cell</td>
-			<td title="table header 3">Table cell</td>
-		</tr>
-	</tbody>
-</table>
-<table class="ob-table ob-table-hover ob-table-plain ob-table-lg ob-table-collapse-sm">
-	<caption>
-		Table caption
-	</caption>
-	<thead>
-		<tr>
-			<th>Table header 1</th>
-			<th class="active">Table header 2</th>
-			<th>Table header 3</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td title="table header 1">Table cell</td>
-			<td title="table header 2">Table cell</td>
-			<td title="table header 3">Table cell</td>
-		</tr>
-		<tr>
-			<td title="table header 1">Table cell</td>
-			<td title="table header 2">Table cell</td>
-			<td title="table header 3">Table cell</td>
-		</tr>
-		<tr>
-			<td title="table header 1">Table cell</td>
-			<td title="table header 2">Table cell</td>
-			<td title="table header 3">Table cell</td>
-		</tr>
-	</tbody>
-</table>
-<h2>CI/CD ob-table</h2>
-<table class="ob-table ob-table-cicd ob-table-hover ob-table-collapse-sm">
-	<caption>
-		Table caption
-	</caption>
-	<thead>
-		<tr>
-			<th>Table header 1</th>
-			<th class="active">Table header 2</th>
-			<th>Table header 3</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td title="table header 1">Table cell</td>
-			<td title="table header 2">Table cell</td>
-			<td title="table header 3">Table cell</td>
-		</tr>
-		<tr>
-			<td title="table header 1">Table cell</td>
-			<td title="table header 2">Table cell</td>
-			<td title="table header 3">Table cell</td>
-		</tr>
-		<tr>
-			<td title="table header 1">Table cell</td>
-			<td title="table header 2">Table cell</td>
-			<td title="table header 3">Table cell</td>
-		</tr>
-	</tbody>
-</table>
+
+<ob-column-layout [left]="false">
+	<table
+		column-main-content
+		class="table"
+		[class.ob-table]="oblique"
+		[class.ob-table-hover]="hover"
+		[class.ob-table-plain]="plain"
+		[class.ob-table-cicd]="cicd"
+		[class.ob-table-collapse]="collapse"
+		[class.ob-table-sm]="size == 'small'"
+		[class.ob-table-lg]="size == 'large'"
+	>
+		<caption>
+			Table caption
+		</caption>
+		<thead>
+			<tr>
+				<th>Table header 1</th>
+				<th class="active">Table header 2</th>
+				<th>Table header 3</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td title="table header 1">Table cell</td>
+				<td title="table header 2">Table cell</td>
+				<td title="table header 3">Table cell</td>
+			</tr>
+			<tr>
+				<td title="table header 1">Table cell</td>
+				<td title="table header 2">Table cell</td>
+				<td title="table header 3">Table cell</td>
+			</tr>
+			<tr>
+				<td title="table header 1">Table cell</td>
+				<td title="table header 2">Table cell</td>
+				<td title="table header 3">Table cell</td>
+			</tr>
+		</tbody>
+	</table>
+	<ng-container column-right-content>
+		<h3>Controls</h3>
+		<input type="checkbox" [(ngModel)]="oblique" /> Oblique<br />
+		<input type="checkbox" [(ngModel)]="hover" /> Hover<br />
+		<input type="checkbox" [(ngModel)]="plain" /> Plain<br />
+		<input type="checkbox" [(ngModel)]="cicd" /> CI/CD<br />
+		<input type="checkbox" [(ngModel)]="collapse" /> Collapse<br />
+		<input type="radio" [(ngModel)]="size" name="size" value="small" /> SM <input type="radio" [(ngModel)]="size" name="size" value="medium" /> MD
+		<input type="radio" [(ngModel)]="size" name="size" value="large" /> LG
+	</ng-container>
+</ob-column-layout>

@@ -1,9 +1,7 @@
-import {SchematicContext, Tree} from '@angular-devkit/schematics';
-import {addModuleImportToRootModule, getProjectFromWorkspace, hasNgModuleImport} from '@angular/cdk/schematics';
-import {getWorkspace} from '@schematics/angular/utility/config';
+import {Tree} from '@angular-devkit/schematics';
+import {addModuleImportToModule, hasNgModuleImport} from '@angular/cdk/schematics';
 import {addPackageJsonDependency, NodeDependency, NodeDependencyType, removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
-import {SourceFile} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import {error, getJson, packageJsonConfigPath, readFile} from '../utils';
 import * as ts from 'typescript';
 
@@ -45,26 +43,26 @@ type versionFunc = (version: number) => string;
 const versions: {[key: string]: string | versionFunc} = {
 	// eslint-disable-next-line prettier/prettier
 	ajv: '^6.0.0',
-	'@ngx-translate/core': version => (version >= 10 ? '^13.0.0' : '^12.0.0'),
-	'@ng-bootstrap/ng-bootstrap': version => (version >= 10 ? '^7.0.0' : '^6.0.0'),
+	'@ngx-translate/core': '^13.0.0',
+	'@ng-bootstrap/ng-bootstrap': '^9.0.0',
 	'@angular/cdk': version => `^${version}.0.0`,
 	'@angular/material': version => `^${version}.0.0`,
-	'@angular/core': `^9.0.0`,
+	'@angular/core': `^11.0.0`,
 	'@angular/router': version => `^${version}.0.0`,
 	'@angular/localize': version => `^${version}.0.0`,
 
 	// eslint-disable-next-line prettier/prettier
-	jest: '^25.0.0',
-	'@types/jest': '^25.0.0',
-	'@angular-builders/jest': '^9.0.0',
+	jest: '^26.0.0',
+	'@types/jest': '^26.0.0',
+	'@angular-builders/jest': '^11.0.0',
 	'jest-sonar-reporter': '2.0.0',
-	'@angular-eslint/builder': '0.0.1-alpha.27',
-	'@angular-eslint/eslint-plugin': '0.0.1-alpha.27',
-	'@typescript-eslint/eslint-plugin': '^2.0.0',
-	'@typescript-eslint/parser': '^2.0.0',
+	'@angular-eslint/builder': '^1.0.0',
+	'@angular-eslint/eslint-plugin': '^1.0.0',
+	'@typescript-eslint/eslint-plugin': '^4.0.0',
+	'@typescript-eslint/parser': '^4.0.0',
 	// eslint-disable-next-line prettier/prettier
-	eslint: '^6.0.0',
-	'eslint-config-prettier': '^6.0.0',
+	eslint: '^7.0.0',
+	'eslint-config-prettier': '^7.0.0',
 	'eslint-plugin-prettier': '^3.0.0',
 	// eslint-disable-next-line prettier/prettier
 	prettier: '^2.0.0',
@@ -122,16 +120,10 @@ function createDep(tree: Tree, type: NodeDependencyType, name: string): NodeDepe
 	return {type, version, name};
 }
 
-export function importModule(moduleName: string, src: string) {
-	return (tree: Tree, _context: SchematicContext) => {
-		const workspace = getWorkspace(tree);
-		const project = getProjectFromWorkspace(workspace);
-		if (!hasNgModuleImport(tree, appModulePath, moduleName)) {
-			addModuleImportToRootModule(tree, moduleName, src, project);
-		}
-
-		return tree;
-	};
+export function importModuleInRoot(tree: Tree, moduleName: string, src: string): void {
+	if (!hasNgModuleImport(tree, appModulePath, moduleName)) {
+		addModuleImportToModule(tree, appModulePath, moduleName, src);
+	}
 }
 
 export function applyChanges(tree: Tree, filePath: string, changes: Change[]) {
@@ -191,7 +183,7 @@ export function addScript(tree: Tree, name: string, content: any): Tree {
 	return tree;
 }
 
-export function createSrcFile(tree: Tree, source: string): SourceFile {
+export function createSrcFile(tree: Tree, source: string): any {
 	return ts.createSourceFile(source, readFile(tree, source), ts.ScriptTarget.Latest, true);
 }
 

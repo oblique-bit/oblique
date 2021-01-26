@@ -2,7 +2,7 @@ import {async, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {Component, ViewChild} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
-import {NgbTabsetModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
 import {ObUnsavedChangesTabsDirective} from './unsaved-changes-tabs.directive';
 import {ObUnsavedChangesTabsService} from './unsaved-changes-tabs.service';
 
@@ -22,13 +22,15 @@ class TestComponent {
 }
 
 @Component({
-	template: ` <ngb-tabset>
-		<ngb-tab id="tab" title="tab1">
-			<ng-template ngbTabContent>
-				<form obUnsavedChangesTabs></form>
-			</ng-template>
-		</ngb-tab>
-	</ngb-tabset>`
+	template: ` <ul ngbNav #nav1="ngbNav">
+			<li ngbNavItem="" id="tab" title="tab1">
+				<a ngbNavLink>Link</a>
+				<ng-template ngbNavContent>
+					<form obUnsavedChangesTabs></form>
+				</ng-template>
+			</li>
+		</ul>
+		<div [ngbNavOutlet]="nav1" class="mt-2"></div>`
 })
 class TabsTestComponent {
 	//noinspection JSUnusedGlobalSymbols
@@ -59,7 +61,7 @@ describe('UnsavedChangesTabsDirective', () => {
 		TestBed.configureTestingModule({
 			declarations: [FaultyTestComponent, TestComponent, TabsTestComponent, ObUnsavedChangesTabsDirective],
 			providers: [ControlContainer, {provide: ObUnsavedChangesTabsService, useValue: unsavedChangesServiceMock}],
-			imports: [CommonModule, NgbTabsetModule]
+			imports: [CommonModule, NgbNavModule]
 		}).compileComponents();
 	}));
 

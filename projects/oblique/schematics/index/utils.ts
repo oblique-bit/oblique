@@ -1,6 +1,6 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {colors} from '@angular-devkit/core/src/terminal';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
+import * as colors from 'ansi-colors';
 
 export const packageJsonConfigPath = './package.json';
 export const ObliquePackage = '@oblique/oblique';

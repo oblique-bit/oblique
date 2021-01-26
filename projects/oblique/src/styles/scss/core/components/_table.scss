@@ -29,16 +29,16 @@ table {
 		padding: $spacing-sm;
 		text-align: inherit;
 
-		@at-root #{selector-append(".table-cicd", &)} {
+		@at-root #{selector-append(".ob-table-cicd", &)} {
 			border-right: 1px solid $gray-light;
 			border-left: 1px solid $gray-light;
 		}
 
-		@at-root #{selector-append(".table-sm", &)} {
+		@at-root #{selector-append(".ob-table-sm", &)} {
 			padding: $spacing-xs;
 		}
 
-		@at-root #{selector-append(".table-lg", &)} {
+		@at-root #{selector-append(".ob-table-lg", &)} {
 			padding: $spacing-default;
 		}
 	}

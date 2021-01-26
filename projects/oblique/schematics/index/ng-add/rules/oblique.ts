@@ -1,17 +1,5 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {Change, InsertChange} from '@schematics/angular/utility/change';
-import {addProviderToModule} from '@schematics/angular/utility/ast-utils';
-import {
-	adaptInsertChange,
-	addDependency,
-	applyChanges,
-	appModulePath,
-	createSrcFile,
-	getTemplate,
-	importModule,
-	IOptionsSchema,
-	obliqueCssPath
-} from '../ng-add-utils';
+import {addDependency, appModulePath, getTemplate, importModuleInRoot, IOptionsSchema, obliqueCssPath} from '../ng-add-utils';
 import {addAngularConfigInList, getDefaultAngularConfig, infoMigration, ObliquePackage, readFile, setAngularProjectsConfig} from '../../utils';
 import {addLocales} from './locales';
 
@@ -55,13 +43,12 @@ function addFavIcon(): Rule {
 function embedMasterLayout(title: string): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Embedding Master Layout');
+		importModuleInRoot(tree, 'ObMasterLayoutModule', ObliquePackage);
+		importModuleInRoot(tree, 'BrowserAnimationsModule', '@angular/platform-browser/animations');
 		addMasterLayout(tree, title);
 		addComment(tree);
 
-		return chain([importModule('ObMasterLayoutModule', ObliquePackage), importModule('BrowserAnimationsModule', '@angular/platform-browser/animations')])(
-			tree,
-			_context
-		);
+		return tree;
 	};
 }
 
@@ -137,7 +124,11 @@ function addFontFiles(font: string): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (font === 'roboto') {
 			setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => {
-				config.splice(1, 0, {glob: '*/**', input: 'node_modules/@oblique/oblique/styles/fonts', output: 'assets/fonts'});
+				config.splice(1, 0, {
+					glob: '*/**',
+					input: 'node_modules/@oblique/oblique/styles/fonts',
+					output: 'assets/fonts'
+				});
 				return config;
 			});
 		}

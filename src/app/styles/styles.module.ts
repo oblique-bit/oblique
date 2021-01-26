@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
+import {FormsModule} from '@angular/forms';
+import {ObColumnLayoutModule} from 'oblique';
 import {ObTypographyComponent} from './typography/typography.component';
 import {ObBlockElementsComponent} from './block-elements/block-elements.component';
 import {ObInlineElementComponent} from './inline-element/inline-element.component';
@@ -25,7 +27,9 @@ import {ObAlertComponent} from './alert/alert.component';
 			{path: 'tabs', component: ObTabsComponent},
 			{path: 'alert', component: ObAlertComponent},
 			{path: '', redirectTo: 'typography', pathMatch: 'full'}
-		])
+		]),
+		ObColumnLayoutModule,
+		FormsModule
 	],
 	declarations: [
 		ObTypographyComponent,

@@ -1,8 +1,8 @@
 import {TestBed} from '@angular/core/testing';
 import {EventEmitter} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
-import {NgbTabChangeEvent, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateService} from '@ngx-translate/core';
+import {NgbNav, NgbNavChangeEvent} from '@ng-bootstrap/ng-bootstrap';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 import {ObMockUnsavedChangesService} from '../unsaved-changes/mock/mock-unsaved-changes.service';
 import {ObUnsavedChangesTabsService} from './unsaved-changes-tabs.service';
@@ -24,26 +24,26 @@ describe('UnsavedChangesTabsService', () => {
 	});
 
 	describe('listenTo()', () => {
-		let evtEmitter: EventEmitter<NgbTabChangeEvent>;
-		let evt: NgbTabChangeEvent;
-		let tabSet: NgbTabset;
+		let evtEmitter: EventEmitter<NgbNavChangeEvent>;
+		let evt: NgbNavChangeEvent;
+		let tabSet: NgbNav;
 
 		beforeEach(() => {
 			spyOn(unsavedChangesService, 'watch');
-			evtEmitter = new EventEmitter<NgbTabChangeEvent>();
+			evtEmitter = new EventEmitter<NgbNavChangeEvent>();
 			evt = {
 				activeId: 'tab_1',
 				nextId: '',
 				preventDefault: jest.fn()
 			};
 			tabSet = {
-				tabs: {first: {id: 'tab_1'}, last: {id: 'tab_2'}, length: 2},
+				items: {first: {id: 'tab_1'}, last: {id: 'tab_2'}, length: 2},
 				select: id => {
 					evt.nextId = id;
 					evtEmitter.emit(evt);
 				},
-				tabChange: evtEmitter
-			} as NgbTabset;
+				navChange: evtEmitter
+			} as NgbNav;
 		});
 
 		describe('with no watched form', () => {

@@ -1,6 +1,6 @@
 import {AfterContentInit, Directive, Input, OnDestroy, OnInit, Optional} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
-import {NgbTab, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
+import {NgbNav, NgbNavItem} from '@ng-bootstrap/ng-bootstrap';
 import {ObUnsavedChangesTabsService} from './unsaved-changes-tabs.service';
 
 @Directive({
@@ -12,28 +12,28 @@ export class ObUnsavedChangesTabsDirective implements OnDestroy, OnInit, AfterCo
 	constructor(
 		private readonly unsavedChangesService: ObUnsavedChangesTabsService,
 		private readonly form: ControlContainer,
-		@Optional() private readonly ngbTab: NgbTab,
-		@Optional() private readonly ngbTabset: NgbTabset
+		@Optional() private readonly ngbNavItem: NgbNavItem,
+		@Optional() private readonly ngbNav: NgbNav
 	) {}
 
 	ngOnInit() {
-		const id = this.ngbTab ? this.ngbTab.id : this.id;
+		const id = this.ngbNavItem ? this.ngbNavItem.id : this.id;
 		if (!id) {
-			throw new Error('obUnsavedChanges directive needs either to be within a NgbTab directive or to have an "id" attribute.');
+			throw new Error('obUnsavedChanges directive needs either to be within a NgbNavItem directive or to have an "id" attribute.');
 		}
 		this.unsavedChangesService.watch(id, this.form);
 	}
 
 	ngAfterContentInit() {
-		if (this.ngbTab) {
-			this.ngbTabset.destroyOnHide = false;
-			this.unsavedChangesService.listenTo(this.ngbTabset);
+		if (this.ngbNavItem) {
+			this.ngbNav.destroyOnHide = false;
+			this.unsavedChangesService.listenTo(this.ngbNav);
 		}
 	}
 
 	ngOnDestroy() {
-		const id = this.ngbTab ? this.ngbTab.id : this.id;
+		const id = this.ngbNavItem ? this.ngbNavItem.id : this.id;
 		this.unsavedChangesService.unWatch(id);
-		this.unsavedChangesService.unListenTo(this.ngbTabset);
+		this.unsavedChangesService.unListenTo(this.ngbNav);
 	}
 }

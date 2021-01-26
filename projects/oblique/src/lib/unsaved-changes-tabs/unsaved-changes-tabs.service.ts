@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
-import {NgbTabChangeEvent, NgbTabset} from '@ng-bootstrap/ng-bootstrap';
+import {NgbNav, NgbNavChangeEvent} from '@ng-bootstrap/ng-bootstrap';
 import {Subscription} from 'rxjs';
 import {ObUnsavedChangesService} from '../unsaved-changes/unsaved-changes.service';
 
@@ -20,10 +20,10 @@ export class ObUnsavedChangesTabsService {
 		this.unsavedChanges.unWatch(formId);
 	}
 
-	listenTo(ngbTabset: NgbTabset): void {
-		const id = ngbTabset.tabs.first.id;
+	listenTo(ngbNav: NgbNav): void {
+		const id = ngbNav.items.first.id;
 		if (!this.listener[id]) {
-			this.listener[id] = ngbTabset.tabChange.subscribe((event: NgbTabChangeEvent): void => {
+			this.listener[id] = ngbNav.navChange.subscribe((event: NgbNavChangeEvent): void => {
 				if (!this.ignoreChanges([event.activeId])) {
 					event.preventDefault();
 				}
@@ -31,8 +31,8 @@ export class ObUnsavedChangesTabsService {
 		}
 	}
 
-	unListenTo(ngbTabset: NgbTabset): void {
-		const id = ngbTabset && ngbTabset.tabs.first.id;
+	unListenTo(ngbNav: NgbNav): void {
+		const id = ngbNav && ngbNav.items.first.id;
 		if (this.listener[id]) {
 			this.listener[id].unsubscribe();
 			delete this.listener[id];

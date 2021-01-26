@@ -9,6 +9,24 @@
 @include table-variant('table-warning', $brand-warning-light, $brand-default);
 @include table-variant('table-danger', $brand-error-light, $brand-default);
 
-.table thead th {
-	border-bottom: 1px solid $gray-light;
+.table {
+	thead th {
+		border-bottom: 1px solid $gray-light;
+	}
+
+	td, th {
+		border-top: 1px solid $gray-light;
+		border-bottom: 1px solid $gray-light;
+		padding: $spacing-sm;
+		text-align: inherit;
+	}
+}
+
+caption {
+	padding-top: $spacing-sm;
+	padding-bottom: $spacing-sm;
+	color: $gray-dark;
+	font-weight: 700;
+	text-align: left;
+	caption-side: top;
 }

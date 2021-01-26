@@ -1,7 +1,7 @@
 @import "../../core/variables";
 
 .mat-table {
-	&.table {
+	&.ob-table {
 		.mat-row,
 		.mat-header-row,
 		.mat-footer-row {
@@ -15,11 +15,11 @@
 			font-size: inherit;
 			padding: $spacing-sm;
 
-			@at-root #{selector-append(".table-sm", &)} {
+			@at-root #{selector-append(".ob-table-sm", &)} {
 				padding: $spacing-xs;
 			}
 
-			@at-root #{selector-append(".table-lg", &)} {
+			@at-root #{selector-append(".ob-table-lg", &)} {
 				padding: $spacing-default;
 			}
 		}
