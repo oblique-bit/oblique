@@ -39,12 +39,12 @@ export class ObTableComponent implements OnInit {
 	readonly COLUMN_NAME_SYMBOL = 'symbol';
 	readonly COLUMN_NAME_SELECT = 'select';
 
-	readonly OBLIQUE_CLASS_TABLE = 'table';
-	readonly OBLIQUE_CLASS_TABLE_CICD = 'table-cicd';
-	readonly OBLIQUE_CLASS_TABLE_SM = 'table-sm';
-	readonly OBLIQUE_CLASS_TABLE_LG = 'table-lg';
-	readonly OBLIQUE_CLASS_TABLE_PLAIN = 'table-plain';
-	readonly OBLIQUE_CLASS_TABLE_COLLAPSE = 'table-collapse';
+	readonly OBLIQUE_CLASS_TABLE = 'ob-table';
+	readonly OBLIQUE_CLASS_TABLE_CICD = 'ob-table-cicd';
+	readonly OBLIQUE_CLASS_TABLE_SM = 'ob-table-sm';
+	readonly OBLIQUE_CLASS_TABLE_LG = 'ob-table-lg';
+	readonly OBLIQUE_CLASS_TABLE_PLAIN = 'ob-table-plain';
+	readonly OBLIQUE_CLASS_TABLE_COLLAPSE = 'ob-table-collapse';
 
 	private readonly selection = new SelectionModel<ObIPeriodicElement>(true, []);
 	private totalWeight: number;
