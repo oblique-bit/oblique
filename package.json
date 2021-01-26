@@ -12,17 +12,20 @@
   "contributors": [
     "René Giller <rene.giller@bit.admin.ch>",
     "Paulo Lopes <paulo.lopes@bit.admin.ch>",
-    "Tanner Stefan <stefan.tanner@bit.admin.ch>",
+    "Nina Egger <nina.egger@bit.admin.ch>",
+    "Nicole Widmer <nicole.widmer@bit.admin.ch>",
     "Louis Bernath <louis.bernath@bit.admin.ch>",
     "Michael Jehle <michael.jehle@bit.admin.ch>",
     "Quinavuidi Camilo <quinavuidi.camilo@bit.admin.ch>",
-    "Nina Egger <nina.egger@bit.admin.ch>",
     "Philippe Krüttli <philippe.kruttli@bit.admin.ch>",
     "Cédric Tristan Schweizer <cedrictristan.schweizer@bit.admin.ch>",
     "Yanis Noa Weibel <yanisnoa.weibel@bit.admin.ch>",
     "Habegger Michèle <michele.habegger@bit.admin.ch>",
+    "Nicolas Müller <nicolas.mueller@bit.admin.ch>",
+    "Debora Mittner <debora.mittner@bit.admin.ch>",
     "Pedro De Almeida",
-    "Christian Ulmann"
+    "Christian Ulmann",
+    "Tanner Stefan"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
