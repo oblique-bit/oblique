@@ -1,3 +1,105 @@
+# [6.0.0-RC.1](https://github.com/oblique-bit/oblique/compare/5.2.1...6.0.0-RC.1) (2021-01-26)
+
+## Bug Fixes
+* **dropdown:** align dropdown arrow ([3d5aed3](https://github.com/oblique-bit/oblique/commit/3d5aed339af482df21f16ceec39fcb5ec7b271c3))
+* **dropdown:** prefix the component class with `ob` ([83d4312](https://github.com/oblique-bit/oblique/commit/83d4312dd44e806c9f276e40c608591d71125514))
+* **error-messages:** let the `mat-error` component be used without a `ObErrorMessagesDirective` ([563ef0f](https://github.com/oblique-bit/oblique/commit/563ef0f44ff44719d4719f03b2a6e4b599f64165))
+* **master-layout:** add padding on all sides of sub-navigation items ([bd3fbf6](https://github.com/oblique-bit/oblique/commit/bd3fbf605e89d8a11c9e6382bdc6147e41e20d16))
+* **master-layout:** correctly identify external links ([5be630a](https://github.com/oblique-bit/oblique/commit/5be630a277eecd291774eb24456d99a93f308fa6))
+* **master-layout:** ensure `offCanvas` do not rely on bootstrap ([95be171](https://github.com/oblique-bit/oblique/commit/95be1719d8ade185e49ae874f0e34a107ebba3be))
+* **master-layout:** ensure the banner is long enough ([8676a59](https://github.com/oblique-bit/oblique/commit/8676a59ddedc112a1ae94db0859001fd4ff92412))
+* **master-layout:** remove the header controls title if there's no control (accessibility) ([6394297](https://github.com/oblique-bit/oblique/commit/639429789f98d2e61fcee658576c773429b8533d))
+* **notification:** close non sticky notifications after the specified timeout is expired ([6ac7c4a](https://github.com/oblique-bit/oblique/commit/6ac7c4aa8b6261f37b729c47864003b728296bc1))
+* **schematics:** add a comment before uses of `isScrollable` to help migrate it ([62886af](https://github.com/oblique-bit/oblique/commit/62886af6dd17ac658eda07504f3d8c85d2d0e420))
+* **schematics:** ensure `localize` has the same version as angular ([6f95af5](https://github.com/oblique-bit/oblique/commit/6f95af53cc881112c9d026941a55db39accfa468))
+* **schematics:** let `format` script added by `ng-add` lint only the `src` folder ([e0fc3d7](https://github.com/oblique-bit/oblique/commit/e0fc3d78a41e5d27f9a2f64e8ac96c6b3d03b6b5))
+* **spinner:** let the overlay inherit the `border-radius` property ([f0bc884](https://github.com/oblique-bit/oblique/commit/f0bc884cec91260982d16a50fb38c4f532841ed3))
+* **theme:** add a `background-color` to material's inputs ([88a27f5](https://github.com/oblique-bit/oblique/commit/88a27f50431c79a0dca7d0cb77dde73aeb1e3912))
+* **theme:** ensure `alert`'s icon is vertically centered ([952eaeb](https://github.com/oblique-bit/oblique/commit/952eaeb7f7608df2e8d40df8e448d203c779f0b4))
+* **theme:** fix alert styling when `oblique-core` is loaded before `oblique-bootstrap` ([30324cc](https://github.com/oblique-bit/oblique/commit/30324cc8b54ca6517a6b7611b62442635d4902da))
+* **theme:** insert dynamic theme link right after oblique-core ([f1b5c7c](https://github.com/oblique-bit/oblique/commit/f1b5c7c10db23806347adf4a16ee63f823a42934))
+* **theme:** update expansion panel's height and color ([16277b5](https://github.com/oblique-bit/oblique/commit/16277b554a57e18491dceb8c0ffa65d141756510))
+* **theme:** update style of `mat-chips` ([27e772e](https://github.com/oblique-bit/oblique/commit/27e772eb90757e3a100c7e5c0211d1760df77643))
+* **toolchain:** add `umdModuleIds` ([bf76ae8](https://github.com/oblique-bit/oblique/commit/bf76ae8ab88ef3084108cb364a64122276f814e3))
+* **toolchain:** do no generate themes before build ([aa15a3f](https://github.com/oblique-bit/oblique/commit/aa15a3f2d88a9c1e6a6f981d28ffbb2815794661))
+* **toolchain:** let `ng-add` add `ngx-translate` as dependency instead of devDependency ([d41a128](https://github.com/oblique-bit/oblique/commit/d41a128237e6e49e4967c8aa57b7a0aa9905e7be))
+* **toolchain:** replace require statements during build ([31b8caa](https://github.com/oblique-bit/oblique/commit/31b8caa0f85f95f125bebfc04d38a723611ab1d4))
+* **toolchain:** use relative paths for SCSS imports in global styles ([bbbebf1](https://github.com/oblique-bit/oblique/commit/bbbebf1e82be5db4a852ae1fde0c9b59b7abbcaf))
+
+## chore
+* **toolchain:** update dependencies and refactor accordingly ([e5db59d](https://github.com/oblique-bit/oblique/commit/e5db59d49354c0e84b404b457dc4849bc7b41652))
+
+## Code Refactoring
+* **multiselect:** replace the `filter-box` with a regular input ([3696d03](https://github.com/oblique-bit/oblique/commit/3696d03dead038b75aec3ded6a07218d9939d1a0))
+* **search-box:** use the `ob-dropdown` component to show the results ([98a487f](https://github.com/oblique-bit/oblique/commit/98a487f7cb55adc59dfc2864162d8221e1f53ec0))
+* **theme:** harmonize class names and selectors ([8b55ea2](https://github.com/oblique-bit/oblique/commit/8b55ea2bd466141e3162f161bae5118cc3fdf798))
+
+## Features
+* **button:** add a `brand-primary` border ([b10254c](https://github.com/oblique-bit/oblique/commit/b10254c690b93444867600f8538496aae94b361f))
+* **button:** add button directive to enforce oblique's variants ([75d8c36](https://github.com/oblique-bit/oblique/commit/75d8c36224f8ed723cee4e9754fc2f7fb8974f19))
+* **collapse:** add an input to configure the animation speed ([f0fb3ee](https://github.com/oblique-bit/oblique/commit/f0fb3eed15612a2b7c789347300e7f0062dab6bb))
+* **dropdown:** make the dropdown accessible ([3ecd88b](https://github.com/oblique-bit/oblique/commit/3ecd88b0ee20c790838fa73404705b85ff754915))
+* **error-messages:** add `MatSelect` support for `ObErrorMessagesDirective` ([ce7ff72](https://github.com/oblique-bit/oblique/commit/ce7ff7249e6f5ed0df9e3fcbc86a8fb87a5de473))
+* **filter-box:** remove feature ([eca9372](https://github.com/oblique-bit/oblique/commit/eca93726b85217fd618be706c65c21e55ca243c8))
+* **language:** add the language feature ([0b01bdc](https://github.com/oblique-bit/oblique/commit/0b01bdcccfae6788b41333e36596f6c26bc913a9))
+* **master-layout:** add new `display` property to locale configuration ([80c2fca](https://github.com/oblique-bit/oblique/commit/80c2fca5ae4225037868f174da35ed7b86a9dced))
+* **master-layout:** disable off-canvas per default ([251bbac](https://github.com/oblique-bit/oblique/commit/251bbacdd31f28fe98e995c3fb49dbfd40423d15))
+* **master-layout:** improve responsiveness on small viewports ([8a04f96](https://github.com/oblique-bit/oblique/commit/8a04f96373b07cb715eeb6e0bb0298add2206446))
+* **master-layout:** make the header's red line sticky on a continuous layout without a sticky header ([39633cd](https://github.com/oblique-bit/oblique/commit/39633cd4dd0d497633d4cb108dcc51d517af601d))
+* **navigable:** remove feature ([bcb6ea7](https://github.com/oblique-bit/oblique/commit/bcb6ea7d3cfb343f87fb326f00ecd96aa5389edc))
+* **navigator:** remove feature ([330717b](https://github.com/oblique-bit/oblique/commit/330717bccf8110049cfbd1c5661965f19b94c70f))
+* **schematics:** make `ng-update` remove unnecessary dependencies ([e19e779](https://github.com/oblique-bit/oblique/commit/e19e779cf8e42df25b545d3119896700a0df6ce3))
+* **selectable:** add sort function ([a4edecb](https://github.com/oblique-bit/oblique/commit/a4edecb0f14a77f41c00b338cfce845fb6fdb8d8))
+* **selectable:** rework feature and add selection modes ([dc920de](https://github.com/oblique-bit/oblique/commit/dc920de74947c08b9d11ad036a2819a3aeb9bff4))
+* **spinner:** add `forceDeactivate` method ([3855dfd](https://github.com/oblique-bit/oblique/commit/3855dfd267da4d08a30cb82976e483919b246b47))
+* **spinner:** hide the spinner only when `deactivate` has been called as many times as `activate` ([b099a2f](https://github.com/oblique-bit/oblique/commit/b099a2f782ba1ef19e21510e4bb719c06bdba8f8))
+* **theme:** adapt color palette ([6c92252](https://github.com/oblique-bit/oblique/commit/6c922522efc6441debf24ef8c04af181cdc04080))
+* **theme:** add a `z-index` system with variables ([b573b50](https://github.com/oblique-bit/oblique/commit/b573b50179458843b7575f8ecd7524d85f3ed057))
+* **theme:** add CSS for selectable cards ([1d0a9ab](https://github.com/oblique-bit/oblique/commit/1d0a9ab26c8f3dfb646d7b183ff6095d396a0180))
+* **theme:** improve `alert`'s responsiveness on small viewports ([3002bac](https://github.com/oblique-bit/oblique/commit/3002bac6ddbb8b43b877e2a39d1c97de4f990e41))
+* **theme:** set the font through `angular.json` instead of an injection token ([7094a95](https://github.com/oblique-bit/oblique/commit/7094a95dd66f501d54512ebba16486c3aa5aab06))
+* **toolchain:** add missing translations ([2350cfc](https://github.com/oblique-bit/oblique/commit/2350cfc6e2c8dce43ac41da005762201339feb59))
+* **toolchain:** optimize performance of font-loading ([e898854](https://github.com/oblique-bit/oblique/commit/e89885497fa82fe2d25c582ccdddbbff26416abe))
+* **toolchain:** rework browser compatibility and noscript features ([f69b6eb](https://github.com/oblique-bit/oblique/commit/f69b6eb90b4435c09772d462b3d5f31540a125f4))
+* **toolchain:** split oblique's assets in 2 folders ([330783f](https://github.com/oblique-bit/oblique/commit/330783f34efcacab70601adc393e5a8473c956d2))
+* **unsubscribe:** remove feature ([f058959](https://github.com/oblique-bit/oblique/commit/f058959fbc425975351cbbf1bdb714830c753d3e))
+* **utilities:** add some utility functions to schematics ([2de1cdb](https://github.com/oblique-bit/oblique/commit/2de1cdb54d7f9fb865ade7ffa0178e1d94e8bf6e))
+* **utilities:** enhance telemetry with more info ([70678d1](https://github.com/oblique-bit/oblique/commit/70678d1adb224b0896e121c7a02f8c84a19c0539))
+* **utilities:** use API v2 for `telemetry` ([53ad6d6](https://github.com/oblique-bit/oblique/commit/53ad6d603c872a36e79075242ce293e3ce836281))
+
+## Tests
+* **collapse:** prefix MockCollapse classes with Ob ([927465c](https://github.com/oblique-bit/oblique/commit/927465c6f6609f3cb7821a551339c175014330a4))
+
+## BREAKING CHANGES
+* **toolchain:** Support for Angular below 11 has been dropped
+* **master-layout:** Off-canvas has been deactivated by default in the Master Layout config. It now needs to be explicitly activated when needed
+* **unsubscribe:** The `unsubscribe` feature has been removed with no replacement (solved by schematics)
+* **filter-box:** The `filter-box` feature has been removed with no replacement
+* **multiselect:** The `multiselect` doesn't use the `filter-box` component anymore
+* **navigator:** The `navigator` feature has been removed with no replacement
+* **navigable:** The `navigable` feature has been removed with no replacement
+  * the item selection has been replaced with `ObSelectable`
+  * the keyboard navigation has been replaced with `ObSelectable`
+  * the hover effect on buttons has been replaced by the `hover-visible` class
+  * the items reordering feature has been lost but was incomplete anyway
+* **search-box:** `ObSearchBoxResultsComponent` and `ObSearchBoxDirective` have been removed in favor of `ObDropdown` (should be transparent for the applications)
+* **theme:** almost all Oblique's classes have been prefixed with `ob` (solved with schematics)
+* **master-layout:**  Master layout classes have been renamed from `application-*` to `ob-master-layout-*` (solved with schematics)
+* **offcanvas:**  Off-canvas classes have been renamed from `offcanvas-*` to `ob-off-canvas-*` (solved with schematics)
+* **spinner:** the spinner will be hidden only when the `deactivate` method has been called as many times as the `activate` one. The old behavior can still be achieved with `forceDeactivate`
+* **collapse:** `MockCollapseComponent` has been renamed into `ObMockCollapseComponent` (solved with schematics)
+* **collapse:** `MockCollapseModule` has been renamed into `ObMockCollapseModule` (solved with schematics)
+* **master-layout:** with the continuous layout and no sticky header, the red line under the header becomes sticky
+* **theme:** `OBLIQUE_FONT` injection token has been removed in favor of inserting the font in `angular.json`'s styles array (solved with schematics)
+* **toolchain:** the translation files have been prefixed with `oblique-` (should be transparent for the applications)
+* **toolchain:** the translation files have been moved in the `assets` folder (should be transparent for the applications)
+* **toolchain:** `favicon.png` and `logo.svg` have been moved in the `assets` folder (should be transparent for the applications)
+* **toolchain:** `favicon.ico` and `logo_small.jpg` have been removed (should be transparent for the applications)
+* **toolchain:**  Oblique's assets have been split in 2 folders, meaning that the `assets` property in angular.json have to be adapted (solved with schematics)
+* **dropdown:** `dropdown` class has been changed to `ob-dropdown` (should be transparent for the applications)
+* **dropdown:** The trigger button is now part of the component and must not be specified in the template anymore(solved by schematics)
+
+
 # [5.2.1](https://github.com/oblique-bit/oblique/compare/5.2.0...5.2.1) (2020-11-03)
 
 ## Bug Fixes
