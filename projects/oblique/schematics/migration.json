@@ -1,5 +1,5 @@
 {
-  "$schema": "./node_modules/@angular-devkit/schematics/collection-schema.json",
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
     "migrate-4-to-5": {
       "description": "Upgrade Oblique to version 5",
