@@ -18,4 +18,8 @@
 			right: 0;
 		}
 	}
+
+	&.disabled {
+		color: $gray;
+	}
 }
