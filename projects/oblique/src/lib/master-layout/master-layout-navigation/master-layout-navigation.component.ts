@@ -24,7 +24,7 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit 
 	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') isScrollable: boolean;
 	private static readonly buttonWidth = 30;
 	private nav: HTMLElement;
-	private unsubscribe: Subject<any> = new Subject();
+	private readonly unsubscribe: Subject<any> = new Subject();
 
 	constructor(
 		private readonly router: Router,
