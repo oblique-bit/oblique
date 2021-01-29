@@ -13,4 +13,6 @@ export class ObMockSpinnerService {
 	activate(channel?: string) {}
 
 	deactivate(channel?: string) {}
+
+	forceDeactivate(channel?: string) {}
 }
