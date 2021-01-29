@@ -112,7 +112,7 @@ export class UpdateV5toV6 implements IMigrations {
 			tree.overwrite(
 				index,
 				readFile(tree, index).replace(
-					'<link href="assets/styles/images/favicon.png" rel="shortcut icon"/>',
+					/<link .*?href="assets\/styles\/images\/favicon\.(?:ico|png)".*?>/,
 					'<link href="assets/images/favicon.png" rel="shortcut icon"/>'
 				)
 			);
