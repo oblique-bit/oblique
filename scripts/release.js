@@ -8,6 +8,8 @@ const execSync = require('child_process').execSync,
 const newVersion = computeVersion(splitVersion(require('../package.json').version), process.argv[2]);
 execSync(`npm version ${newVersion}`);
 bumpVersion(newVersion);
+bumpPackageVersion(newVersion, 'package.json');
+bumpPackageVersion(newVersion, 'package-lock.json');
 writeChangelog();
 
 function computeVersion(currentVersion, preVersion) {
@@ -64,4 +66,10 @@ function bumpVersion(version) {
 		`export const appVersion = '${version}';\n`,
 		{flag: 'w'},
 		err => console.log(err || 'Version patched'));
+}
+
+function bumpPackageVersion(version, file) {
+	const fileName = path.join('projects', 'oblique', 'schematics', file);
+	const pkg = fs.readFileSync(fileName).toString().replace(/"version": "[^"]*",/, `"version": "${version}",`);
+	fs.writeFileSync(fileName, pkg);
 }
