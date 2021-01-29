@@ -112,7 +112,7 @@ export class UpdateV5toV6 implements IMigrations {
 			tree.overwrite(
 				index,
 				readFile(tree, index).replace(
-					/<link .*?href="assets\/styles\/images\/favicon\.(?:ico|png)".*?>/,
+					/<link .*?href="(?:\.\/)?assets\/styles\/images\/favicon\.(?:ico|png)".*?>/,
 					'<link href="assets/images/favicon.png" rel="shortcut icon"/>'
 				)
 			);
@@ -246,7 +246,7 @@ export class UpdateV5toV6 implements IMigrations {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Migrate ObDropdownComponent');
 			const toApply = (filePath: string) => {
-				replaceInFile(tree, filePath, /<button dropdown-toggle>(<[^\s]*)(.*)<\/button>/g, '$1 dropdown-toggle$2');
+				replaceInFile(tree, filePath, /<button(.*?) dropdown-toggle[^>]*>\s*(<[^\s]*)(.*)\s*<\/button>/g, '$2 dropdown-toggle$1$2');
 				replaceInFile(tree, filePath, /<button dropdown-toggle>(\w*)<\/button>/g, '<ng-container dropdown-toggle>$1</ng-container>');
 			};
 			return applyInTree(tree, toApply, '*.html');

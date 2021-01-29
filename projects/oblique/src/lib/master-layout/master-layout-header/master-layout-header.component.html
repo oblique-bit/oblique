@@ -48,7 +48,7 @@
 						(click)="changeLang(language.code)"
 						[class.active]="isLangActive(language.code)"
 						[attr.id]="language.id"
-						[attr.aria-current]="isLangActive(language.code) ? 'page' : undefined"
+						[attr.aria-current]="isLangActive(language.code) ? true : undefined"
 						aria-labelledby="ob-language-change"
 					>
 						{{ language.code.toUpperCase() }}
