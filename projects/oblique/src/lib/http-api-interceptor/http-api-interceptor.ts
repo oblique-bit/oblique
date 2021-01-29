@@ -76,7 +76,7 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 				this.activeRequestUrls.splice(this.activeRequestUrls.indexOf(request), 1);
 			}
 			if (!this.activeRequestUrls.length) {
-				this.spinner.deactivate();
+				this.spinner.forceDeactivate();
 			}
 		}
 	}
