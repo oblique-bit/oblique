@@ -1,3 +1,16 @@
+# [6.0.0-RC.2](https://github.com/oblique-bit/oblique/compare/6.0.0-RC.1...6.0.0-RC.2) (2021-01-29)
+
+## Bug Fixes
+* **http-interceptor:** use `forceDeactivate` to cancel the spinner ([f5f2626](https://github.com/oblique-bit/oblique/commit/f5f262668f1f18b4aaca3c92a3b3fde490433b86))
+* **master-layout:** improve accessibility ([f6487f7](https://github.com/oblique-bit/oblique/commit/f6487f704550dd5a414a477099363b83602c85b5))
+* **schematics:** ensure `ng-update` correctly matches the favicon ([ce0cad8](https://github.com/oblique-bit/oblique/commit/ce0cad8ad8ce58baace37c629d012a3dd85ebe6b))
+* **schematics:** ensure `ng-update` correctly updates favicon and dropdown ([89dcd2f](https://github.com/oblique-bit/oblique/commit/89dcd2f49627a6dedbaf654648e16da9c3f02b11))
+* **schematics:** ensure `ng-update`correctly matches the target version ([0a20fe7](https://github.com/oblique-bit/oblique/commit/0a20fe738cec59e3a9a8a48dc3e0ab52883f6eec))
+* **theme:** fix `disabled` tabs with bootstrap ([66022db](https://github.com/oblique-bit/oblique/commit/66022db30846e48703128855ac461552182199ad))
+* **theme:** hide icon on unselected cards ([9e0f759](https://github.com/oblique-bit/oblique/commit/9e0f75927311107ee96b39dc3e1cbc317a28a4dd))
+* **toolchain:** fix typo in german language ([c4e74b1](https://github.com/oblique-bit/oblique/commit/c4e74b1f4bebb5935834a4ea071e0b773d693f38))
+
+
 # [6.0.0-RC.1](https://github.com/oblique-bit/oblique/compare/5.2.1...6.0.0-RC.1) (2021-01-26)
 
 ## Bug Fixes
