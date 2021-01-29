@@ -52,6 +52,7 @@
 			line-height: 1;
 			font-family: $icon-font-family;
 			font-weight: 800;
+			color: transparent;
 			border: 3px solid $brand-primary;
 		}
 
@@ -60,9 +61,9 @@
 				content: '\f00c';
 				font-size: 13px;
 				padding: 2px;
-				color: $white;
 			}
 			&.ob-selected::before {
+				color: $white;
 				background-color: $brand-primary;
 			}
 		}
@@ -72,7 +73,6 @@
 				content: '\f111';
 				font-size: 11px;
 				padding: 3px;
-				color: $white;
 				border-radius: 50%;
 			}
 
