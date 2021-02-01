@@ -85,7 +85,9 @@ export function setAngularProjectsConfig(tree: Tree, path: string[], config: any
 }
 
 export function addAngularConfigInList(tree: Tree, path: string[], value: any): Tree {
-	getAngularConfigs(tree, path).forEach(project => setAngularConfig(tree, path, {project: project.project, config: [...(project.config || []), value]}));
+	getAngularConfigs(tree, path).forEach(project =>
+		setAngularConfig(tree, path, {project: project.project, config: [...(project.config || []).filter((v: any) => v !== value), value]})
+	);
 	return tree;
 }
 
