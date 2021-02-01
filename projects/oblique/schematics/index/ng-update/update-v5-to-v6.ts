@@ -248,7 +248,7 @@ export class UpdateV5toV6 implements IMigrations {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Migrate ObDropdownComponent');
 			const toApply = (filePath: string) => {
-				replaceInFile(tree, filePath, /<button(.*?) dropdown-toggle[^>]*>\s*(<[^\s]*)(.*)\s*<\/button>/g, '$2 dropdown-toggle$1$2');
+				replaceInFile(tree, filePath, /<button(.*?) dropdown-toggle[^>]*>\s*(<[^\s]*)(.*)\s*<\/button>/g, '$2 dropdown-toggle$1$3');
 				replaceInFile(tree, filePath, /<button dropdown-toggle>(\w*)<\/button>/g, '<ng-container dropdown-toggle>$1</ng-container>');
 			};
 			return applyInTree(tree, toApply, '*.html');
@@ -349,6 +349,7 @@ export class UpdateV5toV6 implements IMigrations {
 				this.addPrefixMatchExactOrSuffix(tree, filePath, 'sticky', ['content', 'main', 'header', 'footer', 'title', 'actions', 'sm', 'lg', 'layout']);
 				this.addPrefixMatchExactOrSuffix(tree, filePath, 'nav-stepper', ['sm', 'lg']);
 				this.addPrefixMatchExactOrSuffix(tree, filePath, 'table', ['cicd', 'plain', 'collapse', 'hover', 'scrollable']);
+				this.addPrefixMatchExactOrSuffix(tree, filePath, 'dropdown', ['content']);
 				this.addPrefixMatchSuffix(tree, filePath, 'column', ['layout', 'toggle', 'right', 'left', 'main', 'content']);
 				this.addPrefixMatchSuffix(tree, filePath, 'cover', ['layout', 'viewport', 'header', 'alert']);
 				this.addPrefixMatchSuffix(tree, filePath, 'control', ['link', 'item', 'icon', 'label', 'toggle', 'locale']);
@@ -368,7 +369,6 @@ export class UpdateV5toV6 implements IMigrations {
 					'tabs',
 					'step-link',
 					'spinner-viewport',
-					'dropdown-content',
 					'pattern-highlight',
 					'custom',
 					'top-control',
