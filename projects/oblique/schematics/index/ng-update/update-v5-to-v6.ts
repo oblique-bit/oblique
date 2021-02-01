@@ -143,7 +143,7 @@ export class UpdateV5toV6 implements IMigrations {
 						.replace(/<div class="ob-compatibility" .*?<\/div>\s/s, '')
 						.replace(/<!--\[if lt.*?endif]-->\s/s, '')
 						.replace(/<!--\[if gte.*(<html.*?>).*endif]-->\s/s, '$1')
-						.replace('<body>\n', '<body>\n' + getTemplate(tree, 'default-index.html'))
+						.replace(/<body([^>]*)>\n/, '<body$1>\n' + getTemplate(tree, 'default-index.html'))
 				);
 			}
 			return addAngularConfigInList(tree, ['architect', 'build', 'options', 'scripts'], 'node_modules/@oblique/oblique/ob-features.js');
