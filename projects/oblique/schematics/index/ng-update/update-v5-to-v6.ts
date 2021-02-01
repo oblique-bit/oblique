@@ -122,7 +122,8 @@ export class UpdateV5toV6 implements IMigrations {
 	private adaptAssets(tree: Tree): Tree {
 		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => [
 			{glob: '**/*', input: 'node_modules/@oblique/oblique/assets', output: 'assets'},
-			...config.filter((asset: any) => asset.input && asset.input !== 'node_modules/@oblique/oblique/styles'),
+			...config.filter((asset: any) => asset?.input !== 'node_modules/@oblique/oblique/assets'),
+			...config.filter((asset: any) => asset?.input !== 'node_modules/@oblique/oblique/styles'),
 			...config.filter((asset: any) => !asset.input)
 		]);
 	}
@@ -139,6 +140,7 @@ export class UpdateV5toV6 implements IMigrations {
 					index,
 					readFile(tree, index)
 						.replace(/<noscript.*<\/noscript>\s/s, '')
+						.replace(/<div class="ob-compatibility" .*?<\/div>\s/s, '')
 						.replace(/<!--\[if lt.*?endif]-->\s/s, '')
 						.replace(/<!--\[if gte.*(<html.*?>).*endif]-->\s/s, '$1')
 						.replace('<body>\n', '<body>\n' + getTemplate(tree, 'default-index.html'))
