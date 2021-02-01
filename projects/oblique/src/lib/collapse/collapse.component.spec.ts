@@ -126,24 +126,21 @@ describe('CollapseComponent', () => {
 			expect(component.active).toBe(false);
 		}));
 
-		describe('ngOnChanges', () => {
-			it('let default duration', () => {
-				component.ngOnChanges();
+		describe('duration', () => {
+			it('keep default duration', () => {
+				component.duration = undefined;
 				expect(component.time).toBe(600);
 			});
 			it('set slow duration', () => {
 				component.duration = 'slow';
-				component.ngOnChanges();
 				expect(component.time).toBe(600);
 			});
 			it('set fast duration', () => {
 				component.duration = 'fast';
-				component.ngOnChanges();
 				expect(component.time).toBe(250);
 			});
 			it('set custom duration', () => {
 				component.duration = 120;
-				component.ngOnChanges();
 				expect(component.time).toBe(120);
 			});
 		});

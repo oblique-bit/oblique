@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Inject, InjectionToken, Input, OnChanges, Optional, Output, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Inject, InjectionToken, Input, Optional, Output, ViewEncapsulation} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 export const OBLIQUE_COLLAPSE_ACTIVE = new InjectionToken<boolean>('OBLIQUE_COLLAPSE_STATUS');
@@ -30,18 +30,8 @@ export const OBLIQUE_COLLAPSE_ACTIVE = new InjectionToken<boolean>('OBLIQUE_COLL
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-collapse'}
 })
-export class ObCollapseComponent implements OnChanges {
-	@Input() set active(active: boolean) {
-		this.isActive = active;
-		this.activeChange.emit(active);
-	}
-
-	get active() {
-		return this.isActive;
-	}
-
-	@Input() duration: 'slow' | 'fast' | number = 'slow';
-	time: number;
+export class ObCollapseComponent {
+	time = ObCollapseComponent.getDuration('slow');
 	@Input() iconPosition: 'left' | 'right' | 'justified' = 'left';
 	@Input() direction:
 		| 'down-up'
@@ -58,12 +48,21 @@ export class ObCollapseComponent implements OnChanges {
 		| 'left-down' = 'down-up';
 	@Output() activeChange = new EventEmitter<boolean>();
 
-	constructor(@Optional() @Inject(OBLIQUE_COLLAPSE_ACTIVE) private isActive: boolean) {
-		this.isActive = !!this.isActive;
+	get active() {
+		return this.isActive;
 	}
 
-	ngOnChanges() {
-		this.time = ObCollapseComponent.getDuration(this.duration);
+	@Input() set active(active: boolean) {
+		this.isActive = active;
+		this.activeChange.emit(active);
+	}
+
+	@Input() set duration(duration: 'slow' | 'fast' | number) {
+		this.time = ObCollapseComponent.getDuration(duration || 'slow');
+	}
+
+	constructor(@Optional() @Inject(OBLIQUE_COLLAPSE_ACTIVE) private isActive: boolean) {
+		this.isActive = !!this.isActive;
 	}
 
 	private static getDuration(duration: 'slow' | 'fast' | number): number {
