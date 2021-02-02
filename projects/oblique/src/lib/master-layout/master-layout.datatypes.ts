@@ -47,6 +47,7 @@ export interface ObINavigationLink {
 	isExternal?: boolean;
 	id?: string;
 	active?: boolean;
+	pathMatch?: 'prefix' | 'full';
 }
 
 export interface ObIJumpLink {

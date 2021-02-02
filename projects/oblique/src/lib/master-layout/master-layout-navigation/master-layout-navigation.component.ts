@@ -44,7 +44,9 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit 
 				takeUntil(this.unsubscribe),
 				filter(evt => evt instanceof NavigationEnd)
 			)
-			.subscribe(() => (this.links = this.links.map(link => ({...link, active: this.router.isActive(link.url, false)}))));
+			.subscribe(
+				() => (this.links = this.links.map(link => ({...link, active: this.router.isActive(link.url, link.pathMatch && link.pathMatch === 'full')})))
+			);
 	}
 
 	ngAfterViewInit() {

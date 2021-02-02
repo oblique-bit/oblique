@@ -534,7 +534,7 @@
       "type": "interface",
       "usage": "The structure of a link in navigation area",
       "since": "4.0.0",
-      "updated": "5.2.0",
+      "updated": "6.1.0",
       "variables": [
         {
           "name": "label",
@@ -583,6 +583,14 @@
           "type": "ObINavigationLink[]",
           "isOptional": true,
           "since": "4.0.0"
+        },
+        {
+          "name": "pathMatch",
+          "text": "Optional setting to change the path-matching strategy to either 'prefix' or 'full'",
+          "type": "'prefix' | 'full'",
+          "default": "'prefix'",
+          "isOptional": true,
+          "since": "6.1.0"
         }
       ]
     },
