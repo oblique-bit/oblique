@@ -108,7 +108,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 				this.renderer.addClass(el, 'ob-control-link');
 			}
 		}
-		Array.from(elt.nativeElement.querySelectorAll('.ob-control-link .fa, .ob-control-link .fab')).forEach((item: HTMLElement) => {
+		Array.from(elt.nativeElement.querySelectorAll('.ob-control-link .fa, .ob-control-link .fas, .ob-control-link .fab')).forEach((item: HTMLElement) => {
 			this.renderer.addClass(item, 'ob-control-icon');
 		});
 	}

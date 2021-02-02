@@ -135,6 +135,7 @@
 		&:active,
 		&:focus {
 			color: $brand-default;
+			cursor: pointer;
 		}
 	}
 

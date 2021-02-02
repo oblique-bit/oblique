@@ -122,7 +122,8 @@ export class UpdateV5toV6 implements IMigrations {
 	private adaptAssets(tree: Tree): Tree {
 		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => [
 			{glob: '**/*', input: 'node_modules/@oblique/oblique/assets', output: 'assets'},
-			...config.filter((asset: any) => asset.input && asset.input !== 'node_modules/@oblique/oblique/styles'),
+			...config.filter((asset: any) => asset?.input !== 'node_modules/@oblique/oblique/assets'),
+			...config.filter((asset: any) => asset?.input !== 'node_modules/@oblique/oblique/styles'),
 			...config.filter((asset: any) => !asset.input)
 		]);
 	}
@@ -139,9 +140,10 @@ export class UpdateV5toV6 implements IMigrations {
 					index,
 					readFile(tree, index)
 						.replace(/<noscript.*<\/noscript>\s/s, '')
+						.replace(/<div class="ob-compatibility" .*?<\/div>\s/s, '')
 						.replace(/<!--\[if lt.*?endif]-->\s/s, '')
 						.replace(/<!--\[if gte.*(<html.*?>).*endif]-->\s/s, '$1')
-						.replace('<body>\n', '<body>\n' + getTemplate(tree, 'default-index.html'))
+						.replace(/<body([^>]*)>\n/, '<body$1>\n' + getTemplate(tree, 'default-index.html'))
 				);
 			}
 			return addAngularConfigInList(tree, ['architect', 'build', 'options', 'scripts'], 'node_modules/@oblique/oblique/ob-features.js');
@@ -246,7 +248,7 @@ export class UpdateV5toV6 implements IMigrations {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Migrate ObDropdownComponent');
 			const toApply = (filePath: string) => {
-				replaceInFile(tree, filePath, /<button(.*?) dropdown-toggle[^>]*>\s*(<[^\s]*)(.*)\s*<\/button>/g, '$2 dropdown-toggle$1$2');
+				replaceInFile(tree, filePath, /<button(.*?) dropdown-toggle[^>]*>\s*(<[^\s]*)(.*)\s*<\/button>/g, '$2 dropdown-toggle$1$3');
 				replaceInFile(tree, filePath, /<button dropdown-toggle>(\w*)<\/button>/g, '<ng-container dropdown-toggle>$1</ng-container>');
 			};
 			return applyInTree(tree, toApply, '*.html');
@@ -347,6 +349,7 @@ export class UpdateV5toV6 implements IMigrations {
 				this.addPrefixMatchExactOrSuffix(tree, filePath, 'sticky', ['content', 'main', 'header', 'footer', 'title', 'actions', 'sm', 'lg', 'layout']);
 				this.addPrefixMatchExactOrSuffix(tree, filePath, 'nav-stepper', ['sm', 'lg']);
 				this.addPrefixMatchExactOrSuffix(tree, filePath, 'table', ['cicd', 'plain', 'collapse', 'hover', 'scrollable']);
+				this.addPrefixMatchExactOrSuffix(tree, filePath, 'dropdown', ['content']);
 				this.addPrefixMatchSuffix(tree, filePath, 'column', ['layout', 'toggle', 'right', 'left', 'main', 'content']);
 				this.addPrefixMatchSuffix(tree, filePath, 'cover', ['layout', 'viewport', 'header', 'alert']);
 				this.addPrefixMatchSuffix(tree, filePath, 'control', ['link', 'item', 'icon', 'label', 'toggle', 'locale']);
@@ -366,7 +369,6 @@ export class UpdateV5toV6 implements IMigrations {
 					'tabs',
 					'step-link',
 					'spinner-viewport',
-					'dropdown-content',
 					'pattern-highlight',
 					'custom',
 					'top-control',
