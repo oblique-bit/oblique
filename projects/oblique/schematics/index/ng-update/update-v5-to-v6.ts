@@ -122,9 +122,9 @@ export class UpdateV5toV6 implements IMigrations {
 	private adaptAssets(tree: Tree): Tree {
 		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => [
 			{glob: '**/*', input: 'node_modules/@oblique/oblique/assets', output: 'assets'},
-			...config.filter((asset: any) => asset?.input !== 'node_modules/@oblique/oblique/assets'),
-			...config.filter((asset: any) => asset?.input !== 'node_modules/@oblique/oblique/styles'),
-			...config.filter((asset: any) => !asset.input)
+			...config
+				.filter((asset: any) => asset?.input !== 'node_modules/@oblique/oblique/assets')
+				.filter((asset: any) => asset?.input !== 'node_modules/@oblique/oblique/styles')
 		]);
 	}
 
