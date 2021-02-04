@@ -86,6 +86,7 @@ The scope is optional and should be the name of the Oblique feature affected:
 * **error-messages**
 * **form-control-state**
 * **http-interceptor**
+* **input-clear**
 * **language**
 * **master-layout**
 * **multi-translate-loader**
@@ -102,15 +103,17 @@ The scope is optional and should be the name of the Oblique feature affected:
 * **selectable**
 * **spinner**
 * **sticky**
-* **input-clear**
-* **theme** (for either the theme service or global css)
-* **toggle**
 * **translate-params**
 * **unknown-route**
 * **unsaved-changes**
+* **bootstrap** (for bootstrap components or styles)
+* **material** (for material design components or styles)
+* **schematics** (for the schematics not directly linked to a feature)
+* **styles** (for the global CSS)
+* **theme** (for the theme service)
+* **toolchain** (for the configuration, build, releases...)
+* **translation** (for the translations not directly linked to a feature)
 * **utilities** (for utilities.ts)
-* **toolchain** (for configuration, build, releases...)
-* **schematics**
 
 ###### Subject
 The subject is mandatory and contains a **succinct** description of the change:
