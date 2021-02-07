@@ -69,11 +69,6 @@ strong {
 	font-weight: 700;
 }
 
-cite, dfn, em, i, q, var {
-	font-weight: normal;
-	font-style: italic;
-}
-
 mark, ins {
 	padding: 0;
 	text-decoration: none;
@@ -132,28 +127,6 @@ output {
 
 u {
 	text-decoration: underline;
-}
-
-// prevent `sub` and `sup` elements from affecting the line height
-sub,
-sup {
-	font-size: $font-size-smaller;
-	line-height: 0;
-	position: relative;
-	vertical-align: baseline;
-}
-
-sub {
-	bottom: -.25em;
-}
-
-sup {
-	top: -.5em;
-}
-
-label {
-	font-weight: 600;
-	display: inline;
 }
 
 // lists
