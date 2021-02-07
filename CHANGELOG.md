@@ -16,7 +16,7 @@
 * **notification:** close non sticky notifications after the specified timeout has expired ([6ac7c4a](https://github.com/oblique-bit/oblique/commit/6ac7c4aa8b6261f37b729c47864003b728296bc1))
 * **schematics:** add a comment before uses of `isScrollable` to help migrate it ([62886af](https://github.com/oblique-bit/oblique/commit/62886af6dd17ac658eda07504f3d8c85d2d0e420))
 * **schematics:** ensure `localize` has the same version as angular ([6f95af5](https://github.com/oblique-bit/oblique/commit/6f95af53cc881112c9d026941a55db39accfa468))
-* **schematics:** ensure the  `format` script added by `ng-add` only lints the `src` folder ([e0fc3d7](https://github.com/oblique-bit/oblique/commit/e0fc3d78a41e5d27f9a2f64e8ac96c6b3d03b6b5))
+* **schematics:** ensure the `format` script added by `ng-add` only lints the `src` folder ([e0fc3d7](https://github.com/oblique-bit/oblique/commit/e0fc3d78a41e5d27f9a2f64e8ac96c6b3d03b6b5))
 * **schematics:** ensure `addAngularConfigInList` doesn't add a config already there ([27f18a5](https://github.com/oblique-bit/oblique/commit/27f18a5af06df3f50d4205e3aaa9987fc980f23d))
 * **schematics:** ensure `ng-update`correctly matches the target version ([0a20fe7](https://github.com/oblique-bit/oblique/commit/0a20fe738cec59e3a9a8a48dc3e0ab52883f6eec))
 * **spinner:** ensure the overlay inherits the `border-radius` property ([f0bc884](https://github.com/oblique-bit/oblique/commit/f0bc884cec91260982d16a50fb38c4f532841ed3))
@@ -77,22 +77,22 @@
 * **dropdown:** For accessibility reasons, the trigger button is now part of the component and must not be specified in the template anymore (solved by schematics)
 * **filter-box:** The `filter-box` feature has been removed with no replacement
 * **master-layout:** the off-canvas has been deactivated by default in the Master Layout config, it now needs to be explicitly activated when needed
-* **master-layout:**  Master layout classes have been renamed from `application-*` to `ob-master-layout-*` (solved with schematics)
+* **master-layout:** Master layout classes have been renamed from `application-*` to `ob-master-layout-*` (solved with schematics)
 * **master-layout:** With the continuous layout and no sticky header, the red line under the header becomes sticky
 * **multiselect:** The `multiselect` doesn't use the `filter-box` component anymore
 * **navigator:** The `navigator` feature has been removed with no replacement
 * **navigable:** The `navigable` feature has been removed with no replacement
-  * the item selection has been replaced with `ObSelectable`
-  * the keyboard navigation has been replaced with `ObSelectable`
-  * the hover effect on buttons has been replaced by the `hover-visible` class
-  * the items reordering feature has been lost but was incomplete anyway
-* **offcanvas:**  The off-canvas classes have been renamed from `offcanvas-*` to `ob-off-canvas-*` (solved with schematics)
+	* the item selection has been replaced with `ObSelectable`
+	* the keyboard navigation has been replaced with `ObSelectable`
+	* the hover effect on buttons has been replaced by the `hover-visible` class
+	* the items reordering feature has been lost but was incomplete anyway
+* **offcanvas:** The off-canvas classes have been renamed from `offcanvas-*` to `ob-off-canvas-*` (solved with schematics)
 * **search-box:** `ObSearchBoxResultsComponent` and `ObSearchBoxDirective` have been removed in favor of `ObDropdown` (should be transparent for the applications)
 * **spinner:** the spinner will be hidden only when the `deactivate` method has been called as many times as the `activate` one. The old behavior can still be achieved with `forceDeactivate`
 * **theme:** almost all Oblique's css classes have been prefixed with `ob` (solved with schematics)
 * **theme:** `OBLIQUE_FONT` injection token has been removed in favor of inserting the font in `angular.json`'s styles array (solved with schematics)
 * **toolchain:** Support for Angular below 11 has been dropped
-* **toolchain:**  Oblique's assets have been split in 2 folders, meaning the `assets` property in angular.json have to be adapted (solved with schematics)
+* **toolchain:** Oblique's assets have been split in 2 folders, meaning the `assets` property in angular.json have to be adapted (solved with schematics)
 * **toolchain:** the translation files have been prefixed with `oblique-` (should be transparent for the applications)
 * **toolchain:** the translation files have been moved into the new `assets` folder (should be transparent for the applications)
 * **toolchain:** `favicon.png` and `logo.svg` have been moved into the new `assets` folder (should be transparent for the applications)
@@ -453,7 +453,7 @@
 * **error-messages:** add directive to show errors with MD ([f58bbb5](https://bitbucket.bit.admin.ch/projects/OUI/repos/oblique/commits/f58bbb5))
 * **http-interceptor:** add helper functions to tweak the interceptor ([2dd5a89](https://bitbucket.bit.admin.ch/projects/OUI/repos/oblique/commits/2dd5a89))
 * **multiselect:** add `count` property ([bd9b7a1](https://bitbucket.bit.admin.ch/projects/OUI/repos/oblique/commits/bd9b7a1))
-* **multiselect:** add `titleProperty` and  `titleFormater` ([29ac09c](https://bitbucket.bit.admin.ch/projects/OUI/repos/oblique/commits/29ac09c))
+* **multiselect:** add `titleProperty` and `titleFormater` ([29ac09c](https://bitbucket.bit.admin.ch/projects/OUI/repos/oblique/commits/29ac09c))
 * **multiselect:** add selected items list for accessibility ([ebf2ec4](https://bitbucket.bit.admin.ch/projects/OUI/repos/oblique/commits/ebf2ec4))
 * **notification:** can clear all notifications on navigate ([7a80920](https://bitbucket.bit.admin.ch/projects/OUI/repos/oblique/commits/7a80920))
 * **notification:** can group similar notifications ([1b7e408](https://bitbucket.bit.admin.ch/projects/OUI/repos/oblique/commits/1b7e408))
@@ -563,7 +563,7 @@
 * **theme:** extract alert into a standalone css component ([bbab6cc](https://bitbucket.bit.admin.ch/projects/OUI/repos/oblique/commits/bbab6cc))
 * **theme:** remove callout css component ([23be35e](https://bitbucket.bit.admin.ch/projects/OUI/repos/oblique/commits/23be35e))
 * **theme:** add `oblique-utilities` ([82c5a3e](https://bitbucket.bit.admin.ch/projects/OUI/repos/oblique/commits/82c5a3e))
-* **theme:** add `angular material` variant  ([cce3b02](https://bitbucket.bit.admin.ch/projects/OUI/repos/oblique/commits/cce3b02))
+* **theme:** add `angular material` variant ([cce3b02](https://bitbucket.bit.admin.ch/projects/OUI/repos/oblique/commits/cce3b02))
 * **theme:** force `outline` input variant for all Oblique modules ([fb28717](https://bitbucket.bit.admin.ch/projects/OUI/repos/oblique/commits/fb28717))
 * **theme:** `OBLIQUE_THEME` can be used to change the main theme ([a76fc208c78](https://bitbucket.bit.admin.ch/projects/OUI/repos/oblique/commits/a76fc208c78))
 * **theme:** `FRUTIGER` can be used to disable `frutiger` font ([a76fc208c78](https://bitbucket.bit.admin.ch/projects/OUI/repos/oblique/commits/a76fc208c78))
@@ -604,20 +604,20 @@
 	* `coverLayoutChanged` (`MasterLayoutEventValues.COVER`)
 	* `noNavigationChanged` (`MasterLayoutEventValues.MAIN_NAVIGATION`)
 	* `offCanvasChanged` (`MasterLayoutEventValues.OFF_CANVAS`)
-* **master-layout:**  following observables have been replaced by the `configEvents` observable of `MasterLayoutHeaderService`
+* **master-layout:** following observables have been replaced by the `configEvents` observable of `MasterLayoutHeaderService`
 	* `headerCustomChanged` (`MasterLayoutEventValues.CUSTOM`)
 	* `headerMediumChanged` (`MasterLayoutEventValues.MEDIUM`)
 	* `headerAnimateChanged` (`MasterLayoutEventValues.ANIMATE`)
 	* `headerStickyChanged` (`MasterLayoutEventValues.STICKY`)
 	* `headerScrollTransitionChanged` (`MasterLayoutEventValues.SCROLL_TRANSITION`)
-* **master-layout:**  following observables have been replaced by the `configEvents` observable of `MasterLayoutNavigationService`
+* **master-layout:** following observables have been replaced by the `configEvents` observable of `MasterLayoutNavigationService`
 	* `navigationFullWidthChanged` (`MasterLayoutEventValues.FULL_WIDTH`)
 	* `navigationScrollableChanged` (`MasterLayoutEventValues.SCROLLABLE`)
-* **master-layout:**  following observables have been replaced by the `configEvents` observable of `MasterLayoutFooterService`
+* **master-layout:** following observables have been replaced by the `configEvents` observable of `MasterLayoutFooterService`
 	* `footerCustomChanged` (`MasterLayoutEventValues.CUSTOM`)
 	* `footerSmallChanged` (`MasterLayoutEventValues.SMALL`)
 	* `footerScrollTransitionChanged` (`MasterLayoutEventValues.SCROLL_TRANSITION`)
-* **master-layout:**  all properties defined in `MasterLayoutService` have been moved into the relevant service:
+* **master-layout:** all properties defined in `MasterLayoutService` have been moved into the relevant service:
 	* `menuCollapsed` has become `layout.isMenuOpened`
 	* `applicationFixed` has become `layout.isFixed`
 	* `coverLayout` has become `layout.hasCover`
@@ -633,7 +633,7 @@
 	* `customFooter` has become `footer.isCustom`
 	* `smallFooter` has become `footer.isSmall`
 	* `scrollTransitionFooter` has become `footer.hasScrollTransition`
-* **master-layout:**  several `MasterLayoutConfig` properties have been renamed:
+* **master-layout:** several `MasterLayoutConfig` properties have been renamed:
 	* `layout.fixed` has become `layout.isFixed`
 	* `layout.cover` has become `layout.hasCover`
 	* `layout.mainNavigation` has become `layout.hasMainNavigation`
@@ -648,20 +648,20 @@
 	* `footer.scrollTransitions` has become `footer.hasScrollTransitions`
 	* `navigation.fullWidth` has become `navigation.isFullWidth`
 	* `navigation.scrollable` has become `navigation.isScrollable`
-* **master-layout:**  `scrolledLeft` and `scrolledRight` observables from `MasterLayoutNavigationService` have been grouped into a new `scrolled` observable that provides a positive offset for right scroll and a negative one for left scroll
+* **master-layout:** `scrolledLeft` and `scrolledRight` observables from `MasterLayoutNavigationService` have been grouped into a new `scrolled` observable that provides a positive offset for right scroll and a negative one for left scroll
 * **master-layout:** `MasterLayoutConfig.navigation.fullWidth` is set to `false` by default
 * **multiselect:** `orId` has been renamed into `idPrefix`
 * **http-interceptor:** only notification's `title`, `text` and `type` can be configured
-* **notification:**  remove `timeout` `@input`. Use notification's configuration instead
-* **notification:**  remove `Notification` class in favor of `INotification` interface
-* **notification:**  remove `NotificationEvent` interface in favor of `INotification` interface
-* **notification:**  rename `ANIMATION_OUT_DURATION` into `REMOVE_DELAY`
-* **notification:**  `default` notification has been removed
-* **notification:**  `info`, `success`, `warning`, `error` and `send` functions have new signature
-* **notification:**  `broadcast` function is now private, use `send` instead
+* **notification:** remove `timeout` `@input`. Use notification's configuration instead
+* **notification:** remove `Notification` class in favor of `INotification` interface
+* **notification:** remove `NotificationEvent` interface in favor of `INotification` interface
+* **notification:** rename `ANIMATION_OUT_DURATION` into `REMOVE_DELAY`
+* **notification:** `default` notification has been removed
+* **notification:** `info`, `success`, `warning`, `error` and `send` functions have new signature
+* **notification:** `broadcast` function is now private, use `send` instead
 * **toggle:** `activate` function has been renamed into `toggle`
-* **toggle:**  `toggle` class is set automatically by the directive and shouldn't be manually specified
-* **toggle:**  `toggle-*-*` direction classes have been removed in favor of values passed to the `orToggle` directive:
+* **toggle:** `toggle` class is set automatically by the directive and shouldn't be manually specified
+* **toggle:** `toggle-*-*` direction classes have been removed in favor of values passed to the `orToggle` directive:
 	* `down-up` (default)
 	* `down-right`
 	* `down-left`
@@ -677,8 +677,8 @@
 * **theme:** `$brand-warning-semilight` has been removed, use `$brand-warning-light` instead
 * **theme:** `$brand-danger` SCSS variable has been renamed into `$brand-error`
 * **theme:** `callout` have been removed in favor of `alert`
-* **theme:**  default material theme does not provide bootstrap's SCSS variables anymore
-* **theme:**  following CSS classes have been dropped with no replacement:
+* **theme:** default material theme does not provide bootstrap's SCSS variables anymore
+* **theme:** following CSS classes have been dropped with no replacement:
 	* `smaller`
 	* `text-description`
 	* `page-header`
@@ -809,13 +809,13 @@
 
 
 ## BREAKING CHANGES
-* **architecture**: `Subject` replace `EventEmitter`  
+* **architecture**: `Subject` replace `EventEmitter`
 	* public event API from `MasterLayoutService` is renamed from `*Emitter` to `*Changed`
 	* all subjects are encapsulated and only an observable is provided on the public API.
 	* `emit` is no longer accessible, use dedicated function instead.
 * **http-interceptor**: `ObliqueHttpInterceptorConfig` has been renamed to `ObliqueHttpInterceptorEvents` 
 * **scrolling**: `ScrollingConfig` has been renamed to `ScrollingEvents` 
-* **master-layout:** scroll duration  is accessible through `MasterLayoutConfig.scrollToTopDuration` instead of `ScrollingConfig.scrollDuration`
+* **master-layout:** scroll duration is accessible through `MasterLayoutConfig.scrollToTopDuration` instead of `ScrollingConfig.scrollDuration`
 * **master-layout:** the content of the main off-canvas cannot be projected with `[orOffCanvas]` anymore. Use `[orOffCanvasTitle]` and `[orOffCanvasContent]` instead.
 * **master-layout:** `defaultLocale` property has been renamed to `default` and is accessible through `MasterLayoutConfig.locale` instead of `MasterLayoutConfig`
 * **master-layout:** `locales` property is accessible through `MasterLayoutConfig.locale` instead of `MasterLayoutConfig`
@@ -1024,7 +1024,7 @@
 * **oblique-ui:** 1.3.4
 
 ## Bug Fixes
-* **multiselect**: remove custom `checkboxes`  
+* **multiselect**: remove custom `checkboxes`
 
 
 <a name="1.4.0"></a>
@@ -1124,7 +1124,7 @@
 Can be globally configured like this:
 
 ```
-   angular.module('appModule').config((uibDatepickerPopupConfig:DatepickerPopupConfig) => {
+  angular.module('appModule').config((uibDatepickerPopupConfig:DatepickerPopupConfig) => {
         uibDatepickerPopupConfig.showErrorMessages = false;
     });
 ```
