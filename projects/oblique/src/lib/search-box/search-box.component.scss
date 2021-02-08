@@ -73,6 +73,10 @@
 		width: calc(100% - 1.65em);
 	}
 
+	&:not(.ob-slide-control) .ob-search-box-input {
+		padding-left: 0.65em;
+	}
+
 	&::before {
 		content: '';
 		position: absolute;
