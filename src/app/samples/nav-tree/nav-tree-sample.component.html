@@ -42,10 +42,10 @@
 			<div class="col-9">
 				<div [(ngModel)]="variant" ngbRadioGroup name="variant" class="btn-group-toggle">
 					<!-- TODO: remove `(click)` when https://github.com/ng-bootstrap/ng-bootstrap/issues/1125 -->
-					<label class="btn btn-secondary" ngbTooltip=".ob-nav-bordered.nav-hover" (click)="variant = 'ob-nav-bordered nav-hover'">
+					<label class="btn btn-secondary" ngbTooltip=".ob-nav-bordered.ob-nav-hover" (click)="variant = 'ob-nav-bordered ob-nav-hover'">
 						<input type="radio" value="ob-nav-bordered ob-nav-hover" /> Default
 					</label>
-					<label class="btn btn-secondary" ngbTooltip=".ob-nav-hover" (click)="variant = 'nav-hover'">
+					<label class="btn btn-secondary" ngbTooltip=".ob-nav-hover" (click)="variant = 'ob-nav-hover'">
 						<input type="radio" value="nav-hover" /> Hover only
 					</label>
 					<label class="btn btn-secondary" ngbTooltip=".ob-nav-bordered" (click)="variant = 'ob-nav-bordered'">
