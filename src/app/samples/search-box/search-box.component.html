@@ -1,0 +1,13 @@
+<h2>Search-Box</h2>
+<ob-description component="search-box"></ob-description>
+<ob-column-layout [left]="false" [right]="true">
+	<div column-main-content>
+		<ob-search-box [items]="searchItems" [slide]="slide"></ob-search-box>
+	</div>
+
+	<ng-container column-right-content>
+		<h3>Controls</h3>
+		<input type="checkbox" [(ngModel)]="slide" /> Activate slide
+	</ng-container>
+</ob-column-layout>
+<ob-api component="search-box"></ob-api>
