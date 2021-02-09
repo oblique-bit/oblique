@@ -54,9 +54,9 @@ const distCss = () => gulp.src(`${paths.dist}/styles/css/*`)
 	.pipe(replace(`${paths.fa}/webfonts`, `${paths.oblique}/fonts`))
 	.pipe(gulp.dest(`${paths.dist}/styles/css`));
 
-const distBgImage = () => gulp.src(`${paths.dist}/*.*`)
-	.pipe(replace('/src/assets/cover-background.jpg', 'assets/cover-background.jpg'))
-	.pipe(gulp.dest(`${paths.dist}`));
+const distBgImage = () => gulp.src(`${paths.dist}/styles/css/oblique-components.css`)
+	.pipe(replace('../../../assets/images/cover-background.jpg', 'assets/images/cover-background.jpg'))
+	.pipe(gulp.dest(`${paths.dist}/styles/css`));
 
 const distFonts = () => gulp.src(['./node_modules/@fortawesome/fontawesome-free/webfonts/*', './node_modules/font-awesome/fonts/*', `${paths.src}/styles/fonts/*`])
 	.pipe(gulp.dest(`${paths.dist}/styles/fonts`));

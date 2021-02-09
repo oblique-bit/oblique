@@ -1,7 +1,7 @@
 @import "../../styles/scss/core/variables";
 @import "../../styles/scss/core/mixins/layout";
 
-.ob-top-control {
+.ob-top-control-btn {
 	visibility: hidden; // A11y: ensure element is not reachable when tabbing.
 	position: fixed;
 	z-index: $z-index-widget;
