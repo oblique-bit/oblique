@@ -41,12 +41,14 @@ import {ObStickySampleComponent} from './sticky/sticky-sample.component';
 import {ObFormSampleComponent} from './form/form.component';
 import {ObButtonSampleComponent} from './button/button.component';
 import {
+	ObButtonModule,
 	ObCollapseModule,
 	ObColumnLayoutModule,
 	ObDatepickerModule,
 	ObErrorMessagesModule,
 	ObFormControlStateModule,
 	ObInputClearModule,
+	ObLanguageModule,
 	ObMultiselectModule,
 	ObNavTreeModule,
 	ObNestedFormModule,
@@ -59,9 +61,7 @@ import {
 	ObStickyModule,
 	ObUnknownRouteModule,
 	ObUnsavedChangesModule,
-	ObUnsavedChangesTabsModule,
-	ObButtonModule,
-	ObLanguageModule
+	ObUnsavedChangesTabsModule
 } from 'oblique';
 import {ObApiComponent} from '../api/api.component';
 import {ObDescriptionComponent} from '../description/description.component';
@@ -73,6 +73,7 @@ import {ObMultiTranslateLoaderSampleComponent} from './multi-translate-loader/mu
 import {ObSelectableSampleComponent} from './selectable/selectable-sample.component';
 import {ObSpinnerSampleComponent} from './spinner-sample/spinner-sample.component';
 import {ObLanguageSampleComponent} from './language/language-sample.component';
+import {ObSearchBoxSampleComponent} from './search-box/search-box.component';
 
 @NgModule({
 	imports: [
@@ -149,7 +150,8 @@ import {ObLanguageSampleComponent} from './language/language-sample.component';
 		ObDescriptionComponent,
 		ObPopUpSampleComponent,
 		ObMultiTranslateLoaderSampleComponent,
-		ObSpinnerSampleComponent
+		ObSpinnerSampleComponent,
+		ObSearchBoxSampleComponent
 	],
 	exports: [RouterModule, ObApiComponent],
 	providers: [SampleDataResolver]

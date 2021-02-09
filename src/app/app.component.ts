@@ -45,6 +45,7 @@ export class AppComponent {
 				{url: 'number-format', label: 'i18n.routes.samples.number-format.title'},
 				{url: 'pop-up', label: 'Pop-up'},
 				{url: 'schema-validation', label: 'i18n.routes.samples.schema-validation.title'},
+				{url: 'search-box', label: 'Search Box'},
 				{url: 'selectable', label: 'Selectable'},
 				{url: 'spinner', label: 'Spinner'},
 				{url: 'sticky', label: 'Sticky'},
