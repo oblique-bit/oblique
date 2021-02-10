@@ -84,7 +84,7 @@ export class ObSearchBoxComponent implements OnInit {
 
 	formatter(label: string, filterPattern?: string): string {
 		filterPattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
-		return !filterPattern ? label : label.replace(new RegExp(filterPattern, 'ig'), text => `<span class="highlight">${text}</span>`);
+		return !filterPattern ? label : label.replace(new RegExp(filterPattern, 'ig'), text => `<span class="ob-highlight">${text}</span>`);
 	}
 
 	private filterItems(item: ObISearchWidgetItem): boolean {
