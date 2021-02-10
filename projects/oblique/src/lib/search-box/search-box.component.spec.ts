@@ -23,7 +23,8 @@ describe('SearchBoxComponent', () => {
 		fixture = TestBed.createComponent(ObSearchBoxComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
-
+		// @ts-ignore
+		component.dropdown = {};
 		component.items = [
 			{id: 'a', label: 'a', routes: []},
 			{id: 'b', label: 'b', routes: []},
@@ -46,17 +47,18 @@ describe('SearchBoxComponent', () => {
 	});
 
 	describe('open', () => {
-		it('should set the isOpened property to false if slide is enabled', () => {
-			component.slide = true;
+		it('should set the isOpened property to true', () => {
+			component.isOpened = false;
 			component.open();
+			expect(component.isOpened).toBe(true);
+		});
+	});
+
+	describe('close', () => {
+		it('should set the isOpened property to false', () => {
+			component.isOpened = true;
 			component.close();
 			expect(component.isOpened).toBe(false);
-		});
-		it('should let the isOpened property on true if slide is disabled', () => {
-			component.slide = false;
-			component.open();
-			component.close();
-			expect(component.isOpened).toBe(true);
 		});
 	});
 
@@ -182,7 +184,32 @@ describe('SearchBoxComponent', () => {
 			expect(component.formatter('test', 'x')).toBe('test');
 		});
 		it('should inject html in the label where the pattern match', () => {
-			expect(component.formatter('test', 't')).toBe('<span class="highlight">t</span>es<span class="highlight">t</span>');
+			expect(component.formatter('test', 't')).toBe('<span class="ob-highlight">t</span>es<span class="ob-highlight">t</span>');
+		});
+	});
+
+	describe('focus', () => {
+		it('should open the dropdown if the pattern is long enough', () => {
+			component.minPatternLength = 1;
+			component.pattern = 't';
+			component.isOpened = false;
+			component.focus();
+			expect(component.isOpened).toBe(true);
+		});
+		it('should not open the dropdown if the pattern is too short', () => {
+			component.minPatternLength = 2;
+			component.pattern = 't';
+			component.isOpened = false;
+			component.focus();
+			expect(component.isOpened).toBe(false);
+		});
+	});
+
+	describe('click', () => {
+		it('should call stopPropagation', () => {
+			const mock = ({stopPropagation: jest.fn()} as unknown) as MouseEvent;
+			component.click(mock);
+			expect(mock.stopPropagation).toHaveBeenCalled();
 		});
 	});
 });

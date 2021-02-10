@@ -1,6 +1,17 @@
-import {ElementRef, HostListener, QueryList, ViewChildren} from '@angular/core';
-import {ChangeDetectionStrategy, Component, HostBinding, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	ElementRef,
+	HostBinding,
+	HostListener,
+	Input,
+	QueryList,
+	ViewChild,
+	ViewChildren,
+	ViewEncapsulation
+} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
+import {ObDropdownComponent} from '../dropdown/dropdown.component';
 
 export interface ObISearchWidgetItem {
 	id: string;
@@ -12,6 +23,9 @@ export interface ObISearchWidgetItem {
 
 let nextId = 0;
 
+/**
+ * TODO this really needs some refactoring, but until Oblique 7, this is the only solution to avoid a breaking change
+ */
 @Component({
 	selector: 'ob-search-box',
 	exportAs: 'obSearchBox',
@@ -22,7 +36,7 @@ let nextId = 0;
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-search-box', role: 'search'}
 })
-export class ObSearchBoxComponent implements OnInit {
+export class ObSearchBoxComponent {
 	@Input() items: ObISearchWidgetItem[] = [];
 	@Input() placeholder = 'i18n.oblique.search.placeholder';
 	@Input() minPatternLength = 1;
@@ -35,21 +49,16 @@ export class ObSearchBoxComponent implements OnInit {
 	private _pattern: string;
 
 	@ViewChildren('link') private readonly links: QueryList<ElementRef>;
+	@ViewChild(ObDropdownComponent) private readonly dropdown: ObDropdownComponent;
 
 	constructor(private readonly translate: TranslateService) {}
 
-	ngOnInit() {
-		this.isOpened = !this.slide;
-	}
-
 	open(): void {
-		this.isOpened = true;
+		this.toggle(true);
 	}
 
 	close(): void {
-		if (this.slide) {
-			this.isOpened = false;
-		}
+		this.toggle(false);
 	}
 
 	get pattern(): string {
@@ -59,7 +68,7 @@ export class ObSearchBoxComponent implements OnInit {
 	@Input() set pattern(pattern: string) {
 		this._pattern = pattern;
 		this.filteredItems = this.items.filter(this.filterItems.bind(this)).slice(0, this.maxResults);
-		this.isOpened = this.pattern.length >= this.minPatternLength;
+		this.toggle(this.pattern.length >= this.minPatternLength);
 	}
 
 	@HostListener('keydown.arrowdown', ['$event']) navigateDown($event: KeyboardEvent) {
@@ -85,6 +94,23 @@ export class ObSearchBoxComponent implements OnInit {
 	formatter(label: string, filterPattern?: string): string {
 		filterPattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
 		return !filterPattern ? label : label.replace(new RegExp(filterPattern, 'ig'), text => `<span class="ob-highlight">${text}</span>`);
+	}
+
+	focus(): void {
+		if (this.pattern?.length >= this.minPatternLength) {
+			this.toggle(true);
+		}
+	}
+
+	click(evt: MouseEvent): void {
+		// avoid to trigger a toggle on the dropdown component
+		evt.stopPropagation();
+	}
+
+	private toggle(state: boolean): void {
+		this.isOpened = state;
+		this.dropdown.expandedOrUndefined = state;
+		this.dropdown.isOpen = state;
 	}
 
 	private filterItems(item: ObISearchWidgetItem): boolean {

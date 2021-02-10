@@ -2,8 +2,17 @@
 	<span class="ob-control-icon fa fa-search"></span>
 	<span class="ob-control-label sr-only">{{ "i18n.oblique.search.title" | translate }}</span>
 </label>
-<input [id]="id" class="ob-search-box-input" type="search" placeholder="{{ placeholder | translate }}" role="searchbox" [(ngModel)]="pattern" />
-<ob-dropdown position="right" [class.ob-expanded]="isOpened">
+<input
+	[id]="id"
+	class="ob-search-box-input"
+	type="search"
+	placeholder="{{ placeholder | translate }}"
+	role="searchbox"
+	[(ngModel)]="pattern"
+	(focus)="focus()"
+	(click)="click($event)"
+/>
+<ob-dropdown position="right">
 	<ul dropdown-content class="ob-search-results-list ob-nav-tree ob-nav-bordered ob-nav-hover">
 		<li *ngFor="let item of filteredItems">
 			<a [routerLink]="item.routes" [fragment]="item.fragment" class="ob-nav-link" #link (click)="close()">
