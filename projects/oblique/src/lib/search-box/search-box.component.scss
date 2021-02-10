@@ -4,6 +4,10 @@
 .ob-search-box .ob-dropdown {
 	position: absolute;
 
+	.ob-dropdown-toggle {
+		display: none;
+	}
+
 	.ob-dropdown-content {
 		top: $spacing-sm;
 
