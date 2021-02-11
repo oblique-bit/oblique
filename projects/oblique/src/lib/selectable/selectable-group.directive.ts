@@ -1,4 +1,4 @@
-import {Directive, EventEmitter, HostBinding, HostListener, Input, Output} from '@angular/core';
+import {AfterContentInit, Directive, EventEmitter, HostBinding, HostListener, Input, Output} from '@angular/core';
 import {ObSelectableDirective} from './selectable.directive';
 
 @Directive({
@@ -7,7 +7,7 @@ import {ObSelectableDirective} from './selectable.directive';
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-selectable-group'}
 })
-export class ObSelectableGroupDirective {
+export class ObSelectableGroupDirective implements AfterContentInit {
 	@HostBinding('attr.role') role = 'group';
 	@HostBinding('class.ob-selectable-group') readonly selectable = true;
 	@Output() selected$ = new EventEmitter<ObSelectableDirective[]>();
@@ -34,6 +34,11 @@ export class ObSelectableGroupDirective {
 			}
 		});
 		this.updateSelection();
+	}
+
+	ngAfterContentInit() {
+		// because we don't want every consumer to pipe defer to avoid an ExpressionChangedAfterItHasBeenCheckedError
+		setTimeout(() => this.updateSelection());
 	}
 
 	get mode(): 'checkbox' | 'radio' | 'windows' {
