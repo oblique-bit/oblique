@@ -4,6 +4,10 @@
 .ob-search-box .ob-dropdown {
 	position: absolute;
 
+	.ob-dropdown-toggle {
+		display: none;
+	}
+
 	.ob-dropdown-content {
 		top: $spacing-sm;
 
@@ -98,7 +102,7 @@
 
 			&:focus,
 			&:active {
-				max-width: 400px;
+				max-width: 100%;
 			}
 		}
 
@@ -113,7 +117,7 @@
 		&:active,
 		&:hover {
 			.ob-search-box-input {
-				max-width: 400px;
+				max-width: 100%;
 				padding-left: 0.65em;
 			}
 			.ob-search-dropdown{
