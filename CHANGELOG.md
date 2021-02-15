@@ -1,3 +1,23 @@
+## [6.0.1](https://github.com/oblique-bit/oblique/compare/6.0.0...6.0.1) (2021-02-15)
+
+## Bug Fixes
+* **bootstrap:** only override necessary typography styles ([079fdda](https://github.com/oblique-bit/oblique/commit/079fddae20fe09b4448a94884a0846d1405cfb78))
+* **http-interceptor:** show `notification` only if activated ([91e3ea0](https://github.com/oblique-bit/oblique/commit/91e3ea0643e85e4ee5afbef0614abaa44041cef4))
+* **language:** export `ObLanguageService` ([20471e4](https://github.com/oblique-bit/oblique/commit/20471e484e52cacd217faed9b8a50e78b6c56578))
+* **master-layout:** correctly sets the url for the `cover-background` image ([8851a78](https://github.com/oblique-bit/oblique/commit/8851a78a11829331bfc9b0e2b7cb6fa8c4fa7737))
+* **master-layout:** ensure the top control button do not have the same class as its component ([c1fa76d](https://github.com/oblique-bit/oblique/commit/c1fa76de9a55f09b44157157d8c3a7c1a7949d07))
+* **schematics:** ensure `ng-update` correctly migrates assets ([dac0e55](https://github.com/oblique-bit/oblique/commit/dac0e5548f41399baf2947981cca1dd7ab9278b4))
+* **schematics:** improve `ng-update` prefix addition ([99e9e7a](https://github.com/oblique-bit/oblique/commit/99e9e7ad65fecbcfb2cf4d874365c14540cebd71))
+* **search-box:** ensure the `input` uses all the available space ([625884d](https://github.com/oblique-bit/oblique/commit/625884d38d4de81797fed49beca114f83219dcfc))
+* **search-box:** ensure the filter pattern is properly highlighted ([7b24296](https://github.com/oblique-bit/oblique/commit/7b24296324e170ddee507b2287e47426c5ba63f3))
+* **search-box:** ensure the input's padding is consistent ([58eaacd](https://github.com/oblique-bit/oblique/commit/58eaacdfe2fb85910f40316cc74e0c1519a5f607))
+* **search-box:** ensure the result are shown when the input has the focus ([1c62fd1](https://github.com/oblique-bit/oblique/commit/1c62fd19e5780989e609355ab47bc393945c0e21))
+* **search-box:** hide the dropdown's toggle ([1fe249f](https://github.com/oblique-bit/oblique/commit/1fe249fe6e12b9470cfae452ae09d4f47f9fd6d7))
+* **selectable:** ensure preselected values are emitted ([de3c2d6](https://github.com/oblique-bit/oblique/commit/de3c2d6344bc605b3de209ed481cf1882ecfa708))
+* **sticky:** ensure the footer's size is set correctly ([fa09925](https://github.com/oblique-bit/oblique/commit/fa09925b1425c5d278d26bcbfd2addbc469c3910))
+* **toolchain:** ensure the `CHANGELOG`'s format is correct ([265538c](https://github.com/oblique-bit/oblique/commit/265538c8cb10cc07a67de16001d57ab889055606))
+
+
 # [6.0.0](https://github.com/oblique-bit/oblique/compare/5.2.1...6.0.0) (2021-02-02)
 
 ## Bug Fixes
