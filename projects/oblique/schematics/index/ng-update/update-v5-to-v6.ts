@@ -301,19 +301,19 @@ export class UpdateV5toV6 implements IMigrations {
 	}
 
 	private addPrefixMatchExactOrSuffix(tree: Tree, filePath: string, target: string, suffix: string[]) {
-		replaceInFile(tree, filePath, new RegExp(`\\.(${target}(?:[\\s{]|(?:-(?:${suffix.join('|')}))))`, 'g'), '.ob-$1');
+		replaceInFile(tree, filePath, new RegExp(`\\.(${target}(?:[:\\.\\s{]|(?:-(?:${suffix.join('|')}))))`, 'g'), '.ob-$1');
 	}
 
 	private addPrefixMatchSuffix(tree: Tree, filePath: string, target: string, suffix: string[]) {
-		replaceInFile(tree, filePath, new RegExp(`\\.(${target}-(?:${suffix.join('|')})[\\s{])`, 'g'), '.ob-$1');
+		replaceInFile(tree, filePath, new RegExp(`\\.(${target}-(?:${suffix.join('|')})[:\\.\\s{])`, 'g'), '.ob-$1');
 	}
 
 	private addPrefixMatchExact(tree: Tree, filePath: string, targets: string[]) {
-		replaceInFile(tree, filePath, new RegExp(`\\.(${targets.join('|')}[\\s{])`, 'g'), '.ob-$1');
+		replaceInFile(tree, filePath, new RegExp(`\\.(${targets.join('|')}[:\\.\\s{])`, 'g'), '.ob-$1');
 	}
 
 	private renameExactOrSuffix(tree: Tree, filePath: string, target: string, suffix: string[], result: string) {
-		replaceInFile(tree, filePath, new RegExp(`\\.${target}([\\s{]|(?:-(?:${suffix.join('|')})))`, 'g'), `.${result}$1`);
+		replaceInFile(tree, filePath, new RegExp(`\\.${target}([:\\.\\s{]|(?:-(?:${suffix.join('|')})))`, 'g'), `.${result}$1`);
 	}
 
 	private adaptHtmlToCss(): Rule {
@@ -327,6 +327,7 @@ export class UpdateV5toV6 implements IMigrations {
 				this.addClassesPrefix(tree, filePath, 'no-layout');
 				this.addClassesPrefix(tree, filePath, 'expanded');
 				this.addClassesPrefix(tree, filePath, 'close');
+				this.addClassesPrefix(tree, filePath, 'main-nav', ['item']);
 				this.addClassPrefix(tree, filePath, 'sticky', ['content', 'main', 'header', 'footer', 'title', 'actions', 'layout']);
 				this.addClassPrefix(tree, filePath, 'control', ['link', 'item', 'icon', 'label', 'toggle', 'locale']);
 				this.addClassPrefix(tree, filePath, 'multiselect', ['toggle', 'label', 'control']);
@@ -350,6 +351,8 @@ export class UpdateV5toV6 implements IMigrations {
 				this.addPrefixMatchExactOrSuffix(tree, filePath, 'nav-stepper', ['sm', 'lg']);
 				this.addPrefixMatchExactOrSuffix(tree, filePath, 'table', ['cicd', 'plain', 'collapse', 'hover', 'scrollable']);
 				this.addPrefixMatchExactOrSuffix(tree, filePath, 'dropdown', ['content']);
+				this.addPrefixMatchExactOrSuffix(tree, filePath, 'main-nav', ['item']);
+				this.addPrefixMatchSuffix(tree, filePath, 'sub', ['nav', 'nav-item', 'menu', 'menu-back']);
 				this.addPrefixMatchSuffix(tree, filePath, 'column', ['layout', 'toggle', 'right', 'left', 'main', 'content']);
 				this.addPrefixMatchSuffix(tree, filePath, 'cover', ['layout', 'viewport', 'header', 'alert']);
 				this.addPrefixMatchSuffix(tree, filePath, 'control', ['link', 'item', 'icon', 'label', 'toggle', 'locale']);
@@ -357,15 +360,12 @@ export class UpdateV5toV6 implements IMigrations {
 				this.addPrefixMatchSuffix(tree, filePath, 'nav', ['tree', 'link', 'indent', 'bordered', 'hover', 'toggle', 'step', 'horizontal']);
 				this.addPrefixMatchSuffix(tree, filePath, 'tab', ['item', 'link']);
 				this.addPrefixMatchSuffix(tree, filePath, 'search', ['results-list', 'dropdown']);
+				this.addPrefixMatchSuffix(tree, filePath, 'header', ['locale', 'controls']);
 				this.addPrefixMatchExact(tree, filePath, [
 					'navigation-scrollable(?:-(?:control(?:-(?:left|right))?|content))?',
 					'main-layout',
 					'assess-keys',
 					'accessible',
-					'header-(?:locale|controls)',
-					'main-nav',
-					'sub-nav(?:-item)?',
-					'sub-menu(?:-back)?',
 					'tabs',
 					'step-link',
 					'spinner-viewport',
