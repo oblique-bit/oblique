@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import {RouterModule} from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -49,6 +49,7 @@ import {
 	ObFormControlStateModule,
 	ObInputClearModule,
 	ObLanguageModule,
+	ObLanguageService,
 	ObMultiselectModule,
 	ObNavTreeModule,
 	ObNestedFormModule,
@@ -74,6 +75,7 @@ import {ObSelectableSampleComponent} from './selectable/selectable-sample.compon
 import {ObSpinnerSampleComponent} from './spinner-sample/spinner-sample.component';
 import {ObLanguageSampleComponent} from './language/language-sample.component';
 import {ObSearchBoxSampleComponent} from './search-box/search-box.component';
+import {DateAdapter} from '@angular/material/core';
 
 @NgModule({
 	imports: [
@@ -115,7 +117,7 @@ import {ObSearchBoxSampleComponent} from './search-box/search-box.component';
 		MatCheckboxModule,
 		MatRadioModule,
 		MatDatepickerModule,
-		MatNativeDateModule
+		MatMomentDateModule
 	],
 	declarations: [
 		ObButtonSampleComponent,
@@ -156,4 +158,8 @@ import {ObSearchBoxSampleComponent} from './search-box/search-box.component';
 	exports: [RouterModule, ObApiComponent],
 	providers: [SampleDataResolver]
 })
-export class SamplesModule {}
+export class SamplesModule {
+	constructor(language: ObLanguageService, adapter: DateAdapter<any>) {
+		language.setLocaleOnAdapter(adapter);
+	}
+}

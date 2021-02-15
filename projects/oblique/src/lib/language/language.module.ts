@@ -5,6 +5,7 @@ import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 
 export {ObDatePipe} from './date.pipe';
+export {ObLanguageService} from './language.service';
 
 @NgModule({
 	declarations: [ObDatePipe],

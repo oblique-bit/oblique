@@ -104,7 +104,7 @@ export class AppModule {
 		datepickerConfig.navigation = 'arrows';
 
 		interceptorConfig.api.url = ObHttpInterceptorSampleComponent.API_URL;
-		config.locale.locales = ['en-GB', 'fr-CH'];
+		config.locale.locales = ['en-us', 'fr-CH'];
 		config.layout.hasOffCanvas = true;
 		theme.setTheme(THEMES.BOOTSTRAP);
 		theme.setFont(FONTS.FRUTIGER);

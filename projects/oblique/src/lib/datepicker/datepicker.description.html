@@ -1,5 +1,36 @@
 <div class="material-only">
 	<p>The angular material Datepicker has been slightly restyled to match Oblique's look & feel.</p>
+	<p>
+		Working with different locales is not straightforward. First, you have to register the locales you wish to use so that the datepicker know how to format
+		a date. Then the <code>MatMomentDateModule</code> have to be preferred over the <s><code>MatNativeDateModule</code></s> because the native solution
+		can't deal with alternate formats. Finally, the current locale has to be given to the date adapter so that the datepicker can format its date. This all
+		can be achieved through the following code:
+	</p>
+	<pre>
+// app.module.ts
+
+import &lbrace;registerLocaleData} from '@angular/common';
+import localeFR from '@angular/common/locales/fr-CH';
+registerLocaleData(localeFR);</pre
+	>
+	<pre>
+// every module using the DatePicker
+
+import &lbrace;MatDatepickerModule} from '@angular/material/datepicker';
+import &lbrace;DateAdapter} from '@angular/material/core';
+import &lbrace;ObLanguageService} from '@oblique/oblique';
+
+@NgModule(&lbrace;
+	imports: [MatDatepickerModule, MatMomentDateModule, ...],
+	...
+}
+export class MyModule &lbrace;
+	constructor(language: ObLanguageService, adapter: DateAdapter&lt;any>) &lbrace;
+		language.setLocaleOnAdapter(adapter);
+	}
+}</pre
+	>
+
 	<div class="ob-alert ob-alert-warning">
 		<strong>IE11 & Edge</strong>
 		<p>
