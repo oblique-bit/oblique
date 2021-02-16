@@ -49,6 +49,7 @@
     "prettier": "./node_modules/.bin/prettier --write projects/**/{*.ts,*.html} src/**/{*.ts,*.html}",
     "format": "npm run lint:fix && npm run prettier",
     "themes": "npm run gulp -- themes",
+    "icons": "node scripts/icons.js",
     "e2e": "ng e2e",
     "release": "node scripts/release.js",
     "alpha": "npm run release -- alpha",

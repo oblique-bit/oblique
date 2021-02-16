@@ -1,0 +1,84 @@
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObIconService",
+      "usage": "This service automatically registers icon sets to be used with the <code>mat-icon</code> component. It is called by the <code>forRoot</code> of the <code>ObIconModule</code> module.",
+      "type": "service",
+      "since": "6.1.0",
+      "methods": [
+        {
+          "name": "registerOnAppInit",
+          "text": "Called on app initialization, it registers and inlines the defined icon sets.",
+          "returns": "void",
+          "since": "6.1.0"
+        },
+        {
+          "name": "registerIconSetsAsync",
+          "text": "Called on run time, it requests and registers the given icon sets.",
+          "arguments": [
+            "...urls: string[]"
+          ],
+          "returns": "void",
+          "since": "6.1.0"
+        },
+        {
+          "name": "registerIconsAsync",
+          "text": "Called on run time, it requests and registers the given icons.",
+          "arguments": [
+            "...icons: {name: string, url: string}[]"
+          ],
+          "returns": "void",
+          "since": "6.1.0"
+        },
+        {
+          "name": "registerIconSets",
+          "text": "Called on run time, it registers the given serialized icon sets.",
+          "arguments": [
+            "...iconSets: string[]"
+          ],
+          "returns": "void",
+          "since": "6.1.0"
+        },
+        {
+          "name": "registerIcons",
+          "text": "Called on run time, it registers the given serialized icons.",
+          "arguments": [
+            "...icons: {name: string, svg: string}[]"
+          ],
+          "returns": "void",
+          "since": "6.1.0"
+        }
+      ]
+    },
+    {
+      "name": "ObIconsConfig",
+      "usage": "The default configuration for <code>mat-icon</code> components.",
+      "type": "interface",
+      "variables": [
+        {
+          "name": "registerObliqueIcons",
+          "text": "Defines if Oblique's icons have to be registered.",
+          "type": "boolean",
+          "default": true,
+          "since": "6.1.0"
+        },
+        {
+          "name": "additionalIcons",
+          "text": "Additional icon sets, in string format, to register.",
+          "type": "string[]",
+          "default": "undefined",
+          "since": "6.1.0"
+        },
+        {
+          "name": "fontClass",
+          "text": "Defines the default class that is applied to the <code>mat-icon</code> component with <code>fontIcon</code> input.",
+          "type": "string",
+          "default": "fa",
+          "since": "6.1.0"
+        }
+      ],
+      "since": "6.1.0"
+    }
+  ]
+}

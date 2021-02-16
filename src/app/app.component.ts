@@ -101,7 +101,8 @@ export class AppComponent {
 				{url: 'stepper-vertical', label: 'Stepper vertical'},
 				{url: 'table', label: 'Table'},
 				{url: 'tabs', label: 'Tabs'},
-				{url: 'tooltip', label: 'Tooltip'}
+				{url: 'tooltip', label: 'Tooltip'},
+				{url: 'icon', label: 'Icons'}
 			]
 		}
 	];

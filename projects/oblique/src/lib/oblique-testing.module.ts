@@ -12,6 +12,7 @@ import {ObMockDropdownModule} from './dropdown/mock/mock-dropdown.module';
 import {ObMockErrorMessagesModule} from './error-messages/mock/mock-error-messages.module';
 import {ObMockExternalLinkModule} from './external-link/mock/mock-external-link.module';
 import {ObMockFormControlStateModule} from './form-control-state/mock/mock-form-control-state.module';
+import {ObMockIconModule} from './icon/_mock/mock-icon.module';
 import {ObMockMasterLayoutModule} from './master-layout/mock/mock-master-layout.module';
 import {ObMockMultiselectModule} from './multiselect/mock/mock-multiselect.module';
 import {ObMockNavTreeModule} from './nav-tree/mock/mock-nav-tree.module';
@@ -58,6 +59,8 @@ export {
 export {ObMockExternalLinkDirective, ObMockExternalLinkModule} from './external-link/mock/mock-external-link.module';
 export {ObMockFormControlStateModule, ObMockFormControlStateDirective} from './form-control-state/mock/mock-form-control-state.module';
 export {ObMockDatePipe, ObMockLanguageModule} from './language/mock/mock-language.module';
+export {ObMockIconModule, ObMockIconService} from './icon/_mock/mock-icon.module';
+export {ObMockInputClearModule, ObMockInputClearDirective} from './input-clear/mock/mock-input-clear.module';
 export {
 	ObMockMasterLayoutModule,
 	ObMockMasterLayoutConfig,
@@ -116,7 +119,6 @@ export {ObMockScrollingModule, ObMockScrollingEvents, ObMockTopControlComponent}
 export {ObMockSpinnerModule, ObMockSpinnerComponent, ObMockSpinnerService} from './spinner/mock/mock-spinner.module';
 export {ObMockStickyModule, ObMockStickyComponent} from './sticky/mock/mock-sticky.module';
 export {ObMockTelemetryModule, ObMockTelemetryService} from './telemetry/_mock/mock-telemetry.module';
-export {ObMockInputClearModule, ObMockInputClearDirective} from './input-clear/mock/mock-input-clear.module';
 export {ObMockThemeService, ObMockThemeModule} from './theme/mock/mock-theme.module';
 export {ObMockTranslateParamsModule, ObMockTranslateParamsPipe} from './translate-params/mock/mock-translate-params.module';
 export {ObMockUnknownRouteModule, ObMockUnknownRouteComponent} from './unknown-route/mock/mock-unknown-route.module';
@@ -142,6 +144,7 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockExternalLinkModule,
 	ObMockFormControlStateModule,
 	ObMockHttpApiInterceptorModule,
+	ObMockIconModule,
 	ObMockMasterLayoutModule,
 	ObMockMultiselectModule,
 	ObMockNavTreeModule,
