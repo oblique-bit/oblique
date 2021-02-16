@@ -104,7 +104,9 @@ export class ObNotificationComponent implements OnInit {
 	 * Removes the specified notification without triggering a _close_ animation.
 	 */
 	public remove(notification: ObINotificationPrivate): void {
-		this.notifications.splice(this.notifications.indexOf(notification), 1);
+		// don't use idPrefix, because multiple notifications could share the same one
+		notification.$state = 'remove';
+		this.notifications = this.notifications.filter(notif => notif.$state !== 'remove');
 	}
 
 	/**
