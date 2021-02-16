@@ -27,7 +27,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatTabsModule} from '@angular/material/tabs';
-import {ObColumnLayoutModule, ObSelectableModule, ObInputClearModule, ObButtonModule} from 'oblique';
+import {ObColumnLayoutModule, ObSelectableModule, ObInputClearModule, ObButtonModule, ObIconModule} from 'oblique';
 import {ObButtonComponent} from './button/button.component';
 import {ObCardComponent} from './card/card.component';
 import {ObChipsComponent} from './chips/chips.component';
@@ -42,6 +42,8 @@ import {ObTooltipComponent} from './tooltip/tooltip.component';
 import {ObStepperVerticalComponent} from './stepper-vertical/stepper-vertical.component';
 import {ObStepperHorizontalComponent} from './stepper-horizontal/stepper-horizontal.component';
 import {ObTabsComponent} from './tabs/tabs.component';
+import {ObIconSampleComponent} from './icon/icon.sample.component';
+import {SamplesModule} from '../samples/samples.module';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: ObBadgeComponent},
@@ -50,6 +52,7 @@ const appRoutes: Routes = [
 	{path: 'chips', component: ObChipsComponent},
 	{path: 'dialog', component: ObDialogComponent},
 	{path: 'expansion-panel', component: ObExpansionPanelComponent},
+	{path: 'icon', component: ObIconSampleComponent},
 	{path: 'progress-bar', component: ObProgressBarComponent},
 	{path: 'slider', component: ObSliderComponent},
 	{path: 'stepper-horizontal', component: ObStepperHorizontalComponent},
@@ -63,12 +66,13 @@ const appRoutes: Routes = [
 @NgModule({
 	declarations: [
 		ObBadgeComponent,
+		ObButtonComponent,
 		ObCardComponent,
 		ObChipsComponent,
 		ObDialogComponent,
 		ObExampleDialogComponent,
 		ObExpansionPanelComponent,
-		ObButtonComponent,
+		ObIconSampleComponent,
 		ObProgressBarComponent,
 		ObSliderComponent,
 		ObStepperHorizontalComponent,
@@ -82,6 +86,7 @@ const appRoutes: Routes = [
 		ObButtonModule,
 		ObColumnLayoutModule,
 		ObInputClearModule,
+		ObIconModule,
 		ReactiveFormsModule,
 		ObSelectableModule,
 		FormsModule,
@@ -110,7 +115,8 @@ const appRoutes: Routes = [
 		MatTableModule,
 		MatTabsModule,
 		MatTooltipModule,
-		CdkTableModule
+		CdkTableModule,
+		SamplesModule
 	]
 })
 export class MaterialModule {}

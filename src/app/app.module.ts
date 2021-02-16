@@ -35,23 +35,26 @@ import {
 	ObSpinnerModule,
 	ObThemeService,
 	ObUnsavedChangesModule,
-	THEMES
+	THEMES,
+	ObIconModule
 } from 'oblique';
 // App:
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HomePageComponent} from './home/home.page';
 import {HttpMockErrorInterceptor} from './samples/http-interceptor/http-mock-error.interceptor';
-import {ObHttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
 import {environment} from '../environments/environment';
 import {registerLocaleData} from '@angular/common';
 
 import localeFR from '@angular/common/locales/fr-CH';
+import {ObHttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
+
 registerLocaleData(localeFR);
 
 @NgModule({
 	declarations: [AppComponent, HomePageComponent],
 	imports: [
+		ObIconModule.forRoot(),
 		BrowserModule,
 		BrowserAnimationsModule,
 		FormsModule,
