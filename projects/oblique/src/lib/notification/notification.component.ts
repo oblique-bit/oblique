@@ -111,7 +111,7 @@ export class ObNotificationComponent implements OnInit {
 	 * Closes all notifications in the current subscribed channel.
 	 */
 	public clear(): void {
-		this.notifications.length = 0;
+		this.notifications.forEach(notification => this.close(notification));
 	}
 
 	private selfClose(notification: ObINotificationPrivate): void {
