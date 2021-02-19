@@ -1,5 +1,7 @@
 <input
 	class="form-control"
+	[class.form-control-sm]="size === 'sm'"
+	[class.form-control-lg]="size === 'lg'"
 	[formControl]="datePicker"
 	[placeholder]="placeholder"
 	[minDate]="minDate"
