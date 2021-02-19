@@ -79,7 +79,7 @@ describe('NotificationComponent', () => {
 		expect(component.notifications.length).toBe(0);
 	}));
 
-	it('should clear all notification', () => {
+	it('should clear all notification', fakeAsync(() => {
 		// Send multiple notifications:
 		component.open({message: 'message 1'});
 		component.open({message: 'message 2'});
@@ -91,13 +91,14 @@ describe('NotificationComponent', () => {
 		expect(htmlNotifications.length).toBe(3);
 
 		component.clear();
+		tick(ObNotificationComponent.REMOVE_DELAY);
 		fixture.detectChanges();
 
 		expect(component.notifications.length).toBe(0);
 
 		htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		expect(htmlNotifications.length).toBe(0);
-	});
+	}));
 
 	it('should have only 1 message if same message is send multiple times with groupSimilar enabled', () => {
 		// Send multiple notifications:

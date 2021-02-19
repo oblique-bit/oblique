@@ -94,7 +94,7 @@ export class ObNotificationComponent implements OnInit {
 	 *
 	 * @see remove
 	 */
-	public close(notification): void {
+	public close(notification: ObINotificationPrivate): void {
 		notification.$state = 'out';
 		clearTimeout(notification.timer);
 		setTimeout(() => this.remove(notification), ObNotificationComponent.REMOVE_DELAY);
@@ -103,15 +103,17 @@ export class ObNotificationComponent implements OnInit {
 	/**
 	 * Removes the specified notification without triggering a _close_ animation.
 	 */
-	public remove(notification: Notification): void {
-		this.notifications.splice(this.notifications.indexOf(notification), 1);
+	public remove(notification: ObINotificationPrivate): void {
+		// don't use idPrefix, because multiple notifications could share the same one
+		notification.$state = 'remove';
+		this.notifications = this.notifications.filter(notif => notif.$state !== 'remove');
 	}
 
 	/**
 	 * Closes all notifications in the current subscribed channel.
 	 */
 	public clear(): void {
-		this.notifications.length = 0;
+		this.notifications.forEach(notification => this.close(notification));
 	}
 
 	private selfClose(notification: ObINotificationPrivate): void {
