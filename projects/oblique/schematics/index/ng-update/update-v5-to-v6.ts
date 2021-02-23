@@ -179,7 +179,7 @@ export class UpdateV5toV6 implements IMigrations {
 			const toApply = (filePath: string) => {
 				const config = readFile(tree, filePath).match(/(?<config>\w*):\s*ObMasterLayoutConfig/)?.groups?.config;
 				if (config) {
-					replaceInFile(tree, filePath, new RegExp(`${config}.locale.default`, 'g'), `${config}.locale.defaultLanguage`);
+					replaceInFile(tree, filePath, new RegExp(`${config}\\.locale\\.default([\\s=])`, 'g'), `${config}.locale.defaultLanguage$1`);
 				}
 			};
 			return applyInTree(tree, toApply, '*.ts');
