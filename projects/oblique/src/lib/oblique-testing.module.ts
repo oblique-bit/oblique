@@ -123,7 +123,8 @@ export {
 	ObMockUnsavedChangesDirective,
 	ObMockUnsavedChangesService
 } from './unsaved-changes/mock/mock-unsaved-changes.module';
-export {ObMockTranslateService};
+export {ObMockTranslateService} from './_mocks/mock-translate.service';
+export {ObMockTranslatePipe} from './_mocks/mock-translate.pipe';
 
 const MOCK_OBLIQUE_MODULES = [
 	ObMockButtonModule,
