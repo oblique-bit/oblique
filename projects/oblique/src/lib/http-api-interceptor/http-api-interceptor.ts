@@ -6,7 +6,8 @@ import {catchError, finalize} from 'rxjs/operators';
 import {ObNotificationService} from '../notification/notification.module';
 import {ObSpinnerService} from '../spinner/spinner.module';
 import {ObHttpApiInterceptorConfig} from './http-api-interceptor.config';
-import {ObHttpApiInterceptorEvents, ObIHttpApiRequest, ObIHttpApiRequestNotification, ObIObliqueHttpErrorResponse} from './http-api-interceptor.events';
+import {ObHttpApiInterceptorEvents} from './http-api-interceptor.events';
+import {ObIHttpApiRequest, ObIHttpApiRequestNotification, ObIObliqueHttpErrorResponse} from './http-api-interceptor.model';
 import Timer = NodeJS.Timer;
 
 @Injectable({providedIn: 'root'})

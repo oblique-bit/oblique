@@ -12,14 +12,7 @@ import {
 } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {ObDropdownComponent} from '../dropdown/dropdown.component';
-
-export interface ObISearchWidgetItem {
-	id: string;
-	label: string;
-	routes: string[];
-	fragment?: string;
-	description?: string;
-}
+import {ObISearchWidgetItem} from './search-box.model';
 
 let nextId = 0;
 

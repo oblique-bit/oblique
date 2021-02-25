@@ -1,5 +1,6 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {IMigrations, SchematicsUtil} from './ng-update-utils';
+import {SchematicsUtil} from './ng-update-utils';
+import {IMigrations} from './ng-update.model';
 import {applyInTree, infoMigration, ObliquePackage, readFile, setAngularProjectsConfig} from '../utils';
 
 export interface IUpdateV4Schema {}

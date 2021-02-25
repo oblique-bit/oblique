@@ -4,7 +4,7 @@ import {filter, takeUntil} from 'rxjs/operators';
 
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {ObINavigationLink, ObEScrollMode, ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.datatypes';
+import {ObINavigationLink, ObEScrollMode, ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
 import {Subject} from 'rxjs';
 
 @Component({

@@ -4,39 +4,12 @@ import {addPackageJsonDependency, NodeDependency, NodeDependencyType, removePack
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {error, getJson, packageJsonConfigPath, readFile} from '../utils';
 import * as ts from 'typescript';
+import {IOptionsSchema, Version} from './ng-add.model';
 
 export const appModulePath = 'src/app/app.module.ts';
 export const routingModulePath = 'src/app/app-routing.module.ts';
 export const pathToTemplates = './node_modules/@oblique/oblique/schematics/index/ng-add/templates';
 export const obliqueCssPath = 'node_modules/@oblique/oblique/styles/css/oblique-core.css';
-
-export interface IOptionsSchema {
-	ajv: boolean;
-	banner: boolean;
-	eslint: boolean;
-	font: string;
-	httpInterceptors: boolean;
-	husky: boolean;
-	ie11: boolean;
-	jenkins: string;
-	jest: boolean;
-	locales: string;
-	npmrc: boolean;
-	prefix: string;
-	protractor: boolean;
-	proxy: string;
-	sonar: boolean;
-	static: boolean;
-	theme: string;
-	title: string;
-	unknownRoute: boolean;
-}
-
-interface Version {
-	major: number;
-	minor: number;
-	patch: number;
-}
 
 type versionFunc = (version: number) => string;
 

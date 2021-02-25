@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {ObINotification} from '../notification.interfaces';
+import {ObINotification} from '../notification.model';
 
 @Component({
 	selector: 'ob-notification',

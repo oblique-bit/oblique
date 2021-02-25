@@ -1,6 +1,7 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {infoHighlights, infoMigration, installDependencies, success} from '../utils';
-import {IMigrations, checkDependencies, IDependencies} from './ng-update-utils';
+import {checkDependencies} from './ng-update-utils';
+import {IMigrations, IDependencies} from './ng-update.model';
 import {UpdateV4toV5} from './update-v4-to-v5';
 import {UpdateV5toV6} from './update-v5-to-v6';
 

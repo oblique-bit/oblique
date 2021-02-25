@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ObISpinnerEvent} from './spinner-event';
+import {ObISpinnerEvent} from './spinner.model';
 import {Subject, Observable} from 'rxjs';
 
 /**

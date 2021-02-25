@@ -4,7 +4,7 @@ import {DOCUMENT} from '@angular/common';
 import {TranslateService} from '@ngx-translate/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {ObILocaleObject} from '../master-layout/master-layout.datatypes';
+import {ObILocaleObject} from '../master-layout/master-layout.model';
 import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
 
 @Injectable({

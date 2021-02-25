@@ -34,7 +34,7 @@ export {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation/
 export {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
 export {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
 export {ObMasterLayoutConfig} from './master-layout.config';
-export {ObINavigationLink, ObEScrollMode, ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from './master-layout.datatypes';
+export {ObINavigationLink, ObEScrollMode, ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from './master-layout.model';
 
 @NgModule({
 	imports: [CommonModule, TranslateModule, RouterModule, ObNotificationModule, ObSpinnerModule, ObScrollingModule, ObOffCanvasModule],

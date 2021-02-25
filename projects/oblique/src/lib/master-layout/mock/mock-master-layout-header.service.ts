@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {ObIMasterLayoutEvent} from '../master-layout.datatypes';
+import {ObIMasterLayoutEvent} from '../master-layout.model';
 
 @Injectable()
 export class ObMockMasterLayoutHeaderService {

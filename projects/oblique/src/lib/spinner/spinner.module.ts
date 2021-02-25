@@ -8,7 +8,7 @@ import {obliqueProviders} from '../utilities';
 
 export {ObSpinnerComponent} from './spinner.component';
 export {ObSpinnerService} from './spinner.service';
-export {ObISpinnerEvent} from './spinner-event';
+export {ObISpinnerEvent} from './spinner.model';
 
 @NgModule({
 	imports: [CommonModule],

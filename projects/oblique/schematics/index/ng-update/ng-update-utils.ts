@@ -1,21 +1,13 @@
-import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {SchematicContext, Tree} from '@angular-devkit/schematics';
 import {Project, SourceFile, SyntaxKind} from 'ts-morph';
 import {error, ObliquePackage, packageJsonConfigPath, readFile, warn} from '../utils';
+import {versionFunc, IDependencies, IMigrations, Task, IConfigureTestingModuleCall} from './ng-update.model';
 
 const glob = require('glob');
 const nodeModules = './node_modules';
 const ProjectForceImplementation = './custom-implementation.migration';
 const ObTestingModule = `${nodeModules}/${ObliquePackage}/lib/oblique-testing.module.d.ts`;
 const ObPublicAPI = `${nodeModules}/${ObliquePackage}/public_api.d.ts`;
-
-type versionFunc = (version: number) => number | number[];
-export interface IDependencies {
-	[key: string]: number | number[] | versionFunc;
-}
-export interface IMigrations {
-	dependencies: IDependencies;
-	applyMigrations(_options: {[key: string]: any}): Rule;
-}
 
 export class SchematicsUtil {
 	static instance: SchematicsUtil;
@@ -345,10 +337,6 @@ export class SchematicsUtil {
 	}
 
 	updateClassIdentifiers(tree: Tree, filePath: string): void {
-		interface Task {
-			from: string;
-			to: string;
-		}
 		const sourceFile = this.getProject().createSourceFile(filePath, this.getFile(tree, filePath));
 		const results = this.collectSymbols(sourceFile);
 		const interfacesAndEnums = this.obliqueEnumsAndInterfaces.map((symbol: string) => symbol.substr(3));
@@ -564,15 +552,6 @@ export class SchematicsUtil {
 			needsMigration: true
 		};
 	}
-}
-
-interface IConfigureTestingModuleCall {
-	content: string;
-	oldContent: string;
-	oldProperties: string;
-	oldOptions: string;
-	isEmptyOptions: boolean;
-	needsMigration: boolean;
 }
 
 export function checkDependencies(tree: Tree, _context: SchematicContext, deps: IDependencies): void {

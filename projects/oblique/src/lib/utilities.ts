@@ -1,15 +1,11 @@
 import {HttpClient} from '@angular/common/http';
 import {InjectionToken, Optional, Provider} from '@angular/core';
 import {TranslateLoader, TranslateModuleConfig} from '@ngx-translate/core';
-import {ObITranslationFile, ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
+import {ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
+import {ObITranslationFile} from './multi-translate-loader/multi-translate-loader.model';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions} from '@angular/material/form-field';
 import {STEPPER_GLOBAL_OPTIONS, StepperOptions} from '@angular/cdk/stepper';
-
-export interface ObIBanner {
-	text: string;
-	color?: string;
-	bgColor?: string;
-}
+import {ObIBanner, ObIMaterialConfig} from './utilities.model';
 
 export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
@@ -45,11 +41,6 @@ export function matFormFieldDefaultOptionsProvider(config?: ObIMaterialConfig): 
 
 export function stepperOptionsOptionsProvider(config?: ObIMaterialConfig): StepperOptions {
 	return config?.STEPPER_GLOBAL_OPTIONS || {displayDefaultIndicatorType: false};
-}
-
-export interface ObIMaterialConfig {
-	MAT_FORM_FIELD_DEFAULT_OPTIONS?: MatFormFieldDefaultOptions;
-	STEPPER_GLOBAL_OPTIONS?: StepperOptions;
 }
 
 export const OB_MATERIAL_CONFIG = new InjectionToken<ObIMaterialConfig>('ObIMaterialConfig');

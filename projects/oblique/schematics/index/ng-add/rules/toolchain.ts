@@ -1,5 +1,6 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {addDevDependency, addRootProperty, addScript, deleteFile, getTemplate, IOptionsSchema, removeDevDependencies, removeScript} from '../ng-add-utils';
+import {IOptionsSchema} from '../ng-add.model';
+import {addDevDependency, addRootProperty, addScript, deleteFile, getTemplate, removeDevDependencies, removeScript} from '../ng-add-utils';
 import {
 	addFile,
 	getAngularConfigs,

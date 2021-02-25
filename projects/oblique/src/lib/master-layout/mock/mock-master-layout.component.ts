@@ -1,5 +1,5 @@
 import {Component, ElementRef, Input, QueryList, TemplateRef} from '@angular/core';
-import {ObINavigationLink} from '../master-layout.datatypes';
+import {ObINavigationLink} from '../master-layout.model';
 
 @Component({
 	selector: 'ob-master-layout',

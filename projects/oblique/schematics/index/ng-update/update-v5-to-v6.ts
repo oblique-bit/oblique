@@ -1,5 +1,6 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {IMigrations, minAngularVersion} from './ng-update-utils';
+import {minAngularVersion} from './ng-update-utils';
+import {IMigrations} from './ng-update.model';
 import {
 	addAngularConfigInList,
 	getDefaultAngularConfig,

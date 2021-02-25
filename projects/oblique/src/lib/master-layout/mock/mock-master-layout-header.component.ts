@@ -1,6 +1,6 @@
 import {Component, ElementRef, Input, QueryList, TemplateRef} from '@angular/core';
 import {ObINavigationLink} from '../master-layout.module';
-import {ObILocaleObject} from '../master-layout.datatypes';
+import {ObILocaleObject} from '../master-layout.model';
 
 @Component({
 	selector: 'ob-master-layout-header',

@@ -1,18 +1,4 @@
-export interface ObITelemetryRecord {
-	applicationName: string;
-	applicationTitle: string;
-	applicationVersion: string;
-	applicationHomepage: string;
-	obliqueTheme: string;
-	obliqueVersion: string;
-	obliqueModuleNames: string[];
-}
-
-interface ObIModuleList {
-	timestamp: number;
-	modules: string[];
-}
-
+import {ObITelemetryRecord, ObIModuleList} from './telemetry.model';
 export class ObTelemetryRecord {
 	readonly record: ObITelemetryRecord;
 	private static readonly TELEMETRY_TOKEN = 'OBLIQUE_TELEMETRY';

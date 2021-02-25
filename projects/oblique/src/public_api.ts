@@ -104,8 +104,10 @@ export {ObUnknownRouteModule, ObUnknownRouteComponent} from './lib/unknown-route
 export {ObUnsavedChangesDirective, ObUnsavedChangesGuard, ObUnsavedChangesModule, ObUnsavedChangesService} from './lib/unsaved-changes/unsaved-changes.module';
 export {ObUnsavedChangesTabsDirective, ObUnsavedChangesTabsModule, ObUnsavedChangesTabsService} from './lib/unsaved-changes-tabs/unsaved-changes-tabs.module';
 export {ObTelemetryService, TELEMETRY_DISABLE} from './lib/telemetry/telemetry.service';
-export {OB_BANNER, ObIBanner, OB_MATERIAL_CONFIG, ObIMaterialConfig, getTranslateLoader, multiTranslateLoader, WINDOW} from './lib/utilities';
-export {ObMultiTranslateLoader, TRANSLATION_FILES, ObITranslationFile} from './lib/multi-translate-loader/multi-translate-loader';
+export {OB_BANNER, OB_MATERIAL_CONFIG, getTranslateLoader, multiTranslateLoader, WINDOW} from './lib/utilities';
+export {ObIBanner, ObIMaterialConfig} from './lib/utilities.model';
+export {ObMultiTranslateLoader, TRANSLATION_FILES} from './lib/multi-translate-loader/multi-translate-loader';
+export {ObITranslationFile} from './lib/multi-translate-loader/multi-translate-loader.model';
 export {ObPopUpService} from './lib/pop-up/pop-up.service';
 export {ObliqueModule} from './lib/oblique.module';
 export {FONTS, THEMES, ObThemeService} from './lib/theme/theme.service';

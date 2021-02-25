@@ -1,5 +1,5 @@
 import {Inject, Injectable, InjectionToken, Optional} from '@angular/core';
-import {ObINotificationConfig} from './notification.interfaces';
+import {ObINotificationConfig} from './notification.model';
 
 export const CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE = new InjectionToken<boolean>('CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE');
 export const GROUP_SIMILAR_NOTIFICATIONS = new InjectionToken<boolean>('GROUP_SIMILAR_NOTIFICATIONS');
