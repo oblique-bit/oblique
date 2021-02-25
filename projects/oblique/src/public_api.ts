@@ -76,6 +76,7 @@ export {
 	ObINotificationConfig,
 	ObINotification
 } from './lib/notification/notification.module';
+export {ObAlertComponent, ObIAlertType, ObAlertModule} from './lib/alert/alert.module';
 export {ObNumberFormatDirective, ObNumberFormatModule} from './lib/number-format/number-format.module';
 export {
 	ObOffCanvasBackdropDirective,
