@@ -84,6 +84,7 @@ export {
 	ObOffCanvasService,
 	ObOffCanvasToggleDirective
 } from './lib/off-canvas/off-canvas.module';
+export {ObPopoverModule, ObPopoverDirective} from './lib/popover/popover.module';
 export {
 	draft06,
 	ObSchemaRequiredDirective,
