@@ -28,6 +28,7 @@ import {ObSelectableSampleComponent} from './selectable/selectable-sample.compon
 import {ObSpinnerSampleComponent} from './spinner-sample/spinner-sample.component';
 import {ObLanguageSampleComponent} from './language/language-sample.component';
 import {ObSearchBoxSampleComponent} from './search-box/search-box.component';
+import {ObPopoverComponent} from './popover/popover.component';
 
 const samplesRoutes: Routes = [
 	{path: 'collapse', component: ObCollapseSampleComponent},
@@ -57,6 +58,7 @@ const samplesRoutes: Routes = [
 	{path: 'notification', component: ObNotificationSampleComponent},
 	{path: 'number-format', component: ObNumberFormatSampleComponent},
 	{path: 'pop-up', component: ObPopUpSampleComponent},
+	{path: 'popover', component: ObPopoverComponent},
 	{path: 'schema-validation', component: ObSchemaValidationSampleComponent},
 	{path: 'search-box', component: ObSearchBoxSampleComponent},
 	{path: 'selectable', component: ObSelectableSampleComponent},
