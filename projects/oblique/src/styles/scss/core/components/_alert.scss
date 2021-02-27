@@ -2,7 +2,7 @@
 @import "../variables";
 @import "../mixins/alert";
 
-.ob-master-layout .ob-alert {
+.ob-alert {
 	@include alert-base();
 	margin-bottom: $spacing-default;
 
