@@ -34,11 +34,11 @@
 	}
 }
 
-.ob-master-layout {
-	.mat-button,
-	.mat-icon-button,
-	.mat-stroked-button,
-	.mat-flat-button {
+.mat-button-base {
+	&.mat-button,
+	&.mat-stroked-button,
+	&.mat-flat-button,
+	&.mat-raised-button {
 		border-radius: 2px;
 	}
 }
