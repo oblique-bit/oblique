@@ -1,6 +1,15 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {addDevDependency, addRootProperty, addScript, deleteFile, getTemplate, IOptionsSchema, removeDevDependencies, removeScript} from '../ng-add-utils';
-import {addFile, infoMigration, readFile, removeAngularProjectsConfig, setAngularProjectsConfig, setRootAngularConfig} from '../../utils';
+import {
+	addFile,
+	getAngularConfigs,
+	infoMigration,
+	readFile,
+	removeAngularProjectsConfig,
+	setAngularConfig,
+	setAngularProjectsConfig,
+	setRootAngularConfig
+} from '../../utils';
 import {addJest, addProtractor} from './tests';
 import {jenkins} from './jenkins';
 
@@ -128,15 +137,14 @@ function addEslint(eslint: boolean, prefix: string): Rule {
 		if (eslint) {
 			infoMigration(_context, 'Toolchain: Replacing "tslint" with "eslint"');
 			deleteFile(tree, 'tslint.json');
-			addScript(tree, 'lint', 'eslint src/**/*.ts');
-			addScript(tree, 'lint:fix', 'npm run lint -- --fix');
+			addScript(tree, 'lint', 'ng lint');
 			addScript(tree, 'prettier', './node_modules/.bin/prettier --write src/**/{*.ts,*.html}');
-			addScript(tree, 'format', 'npm run lint:fix && npm run prettier');
+			addScript(tree, 'format', 'npm run lint -- --fix && npm run prettier');
 
 			const prettier = getTemplate(tree, 'default-prettierrc.config');
 			addFile(tree, '.prettierrc', prettier);
 
-			let eslintFile = getTemplate(tree, 'default-eslintrc.js.config').replace(/APP_PREFIX/g, prefix);
+			let eslintFile = getTemplate(tree, 'default-eslintrc.json.config').replace(/APP_PREFIX/g, prefix);
 			if (tree.exists('tsconfig.base.json')) {
 				eslintFile.replace('tsconfig.json', 'tsconfig.base.json');
 			}
@@ -144,7 +152,17 @@ function addEslint(eslint: boolean, prefix: string): Rule {
 				eslintFile = eslintFile.replace(`'@angular-eslint/component-selector': ["error"`, `'@angular-eslint/component-selector': ["off"`);
 				eslintFile = eslintFile.replace(`'@angular-eslint/directive-selector': ["error"`, `'@angular-eslint/directive-selector': ["off"`);
 			}
-			addFile(tree, '.eslintrc.js', eslintFile);
+			addFile(tree, '.eslintrc.json', eslintFile);
+			const path = ['architect', 'lint'];
+			getAngularConfigs(tree, path).forEach(project => {
+				setAngularConfig(tree, path, {
+					project: project.project,
+					config: {
+						builder: '@angular-eslint/builder:lint',
+						options: {lintFilePatterns: ['src/**/*.ts']}
+					}
+				});
+			});
 		}
 		return tree;
 	};
