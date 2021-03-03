@@ -1,0 +1,9 @@
+<p>
+	This is a simple service that acts as a proxy for some of the most used global events. It replaces the use of <code>@HostListener</code> for events
+	triggered on <code>Document</code> or <code>Window</code>. Its goal is to reduce the number of listeners on global events and to provide a way to register
+	those events only when necessary. For instance, one could listen to a <code>Document</code> click only when an element is in a given state.
+</p>
+<p>
+	It also provides a function named <code>outsideClick$</code> that returns an observable that emits when a click is performed outside a given array of HTML
+	elements.
+</p>

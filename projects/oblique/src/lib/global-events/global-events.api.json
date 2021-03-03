@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObGlobalEventsService",
+      "usage": "This service serves as a single entry point for global events, so that there is only 1 registered listener per event.",
+      "type": "service",
+      "since": "6.1.0",
+      "variables": [
+        {
+          "name": "click$",
+          "text": "Emits when the mouse's left button is clicked.",
+          "type": "Observable<MouseEvent>",
+          "since": "6.1.0"
+        },
+        {
+          "name": "mouseDown$",
+          "text": "Emits when any mouse button is pressed and before it is released.",
+          "type": "Observable<MouseEvent>",
+          "since": "6.1.0"
+        },
+        {
+          "name": "mouseMove$",
+          "text": "Emits the mouse moves.",
+          "type": "Observable<MouseEvent>",
+          "since": "6.1.0"
+        },
+        {
+          "name": "keyDown$",
+          "text": "Emits when any key is pressed and before it is released.",
+          "type": "Observable<KeyboardEvent>",
+          "since": "6.1.0"
+        },
+        {
+          "name": "keyUp$",
+          "text": "Emits when any key is released.",
+          "type": "Observable<KeyboardEvent>",
+          "since": "6.1.0"
+        },
+        {
+          "name": "scroll$",
+          "text": "Emits when the <code>Document</code> is scrolled.",
+          "type": "Observable<Event>",
+          "since": "6.1.0"
+        },
+        {
+          "name": "resize$",
+          "text": "Emits when the <code>Window</code> is resized.",
+          "type": "Observable<UIEvent>",
+          "since": "6.1.0"
+        }
+      ],
+      "methods": [
+        {
+          "name": "outsideClick$",
+          "text": "Emits when any element, except the targets and their descendent, is clicked",
+          "returns": "Observable<MouseEvent>",
+          "arguments": ["...targets: HTMLElement[]"],
+          "since": "6.1.0"
+        }
+      ]
+    }
+  ]
+}
