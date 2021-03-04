@@ -53,7 +53,7 @@ describe('SpinnerService', () => {
 			service.activate();
 			service.activate();
 			let emitted = false;
-			service.events.subscribe(() => {
+			service.events$.subscribe(() => {
 				emitted = true;
 			});
 			service.deactivate();
