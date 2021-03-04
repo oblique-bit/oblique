@@ -25,6 +25,7 @@
 					[attr.id]="link.id"
 					[routerLink]="link.url"
 					[routerLinkActive]="activeClass"
+					[routerLinkActiveOptions]="{ exact: link.pathMatch === 'full' }"
 					[fragment]="link.fragment"
 					[queryParams]="link.queryParams"
 					[attr.aria-current]="link.active ? 'page' : undefined"
@@ -72,6 +73,7 @@
 								[routerLink]="link.url + '/' + child.url"
 								[routerLinkActive]="activeClass"
 								[fragment]="child.fragment"
+								[routerLinkActiveOptions]="{ exact: link.pathMatch === 'full' }"
 								[queryParams]="child.queryParams"
 								[attr.aria-current]="link.active ? 'page' : undefined"
 								obMasterLayoutNavigationToggle

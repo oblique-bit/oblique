@@ -10,7 +10,7 @@ import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues, ObEScrollMode} from '.
 })
 export class ObMasterLayoutNavigationService {
 	private readonly _events = new Subject<ObIMasterLayoutEvent>();
-	private readonly eventsS = this._events.asObservable();
+	private readonly events$ = this._events.asObservable();
 	private readonly _scrolled: Subject<number> = new Subject<number>();
 	private readonly scrolled$ = this._scrolled.asObservable();
 	private readonly _refreshed: Subject<void> = new Subject<void>();
@@ -47,7 +47,7 @@ export class ObMasterLayoutNavigationService {
 	}
 
 	get configEvents(): Observable<ObIMasterLayoutEvent> {
-		return this.eventsS;
+		return this.events$;
 	}
 
 	get scrolled(): Observable<number> {
