@@ -2,9 +2,11 @@
 @import "../../core/mixins/typography";
 
 .mat-card {
-	.mat-card-header {
-		min-height: 70px;
+	&:not([class*='mat-elevation-z']) {
+		box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
+	}
 
+	.mat-card-header {
 		&:first-child {
 			padding-top: $spacing-xs;
 		}
@@ -34,6 +36,10 @@
 	.mat-card-subtitle,
 	.mat-card-content {
 		@include body2;
+	}
+
+	.mat-card-header + .mat-card-content {
+		margin-top: $spacing-default;
 	}
 
 	.mat-card-actions {

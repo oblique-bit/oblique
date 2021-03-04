@@ -179,7 +179,7 @@ export class UpdateV5toV6 implements IMigrations {
 			const toApply = (filePath: string) => {
 				const config = readFile(tree, filePath).match(/(?<config>\w*):\s*ObMasterLayoutConfig/)?.groups?.config;
 				if (config) {
-					replaceInFile(tree, filePath, new RegExp(`${config}.locale.default`, 'g'), `${config}.locale.defaultLanguage`);
+					replaceInFile(tree, filePath, new RegExp(`${config}\\.locale\\.default([\\s=])`, 'g'), `${config}.locale.defaultLanguage$1`);
 				}
 			};
 			return applyInTree(tree, toApply, '*.ts');
@@ -349,7 +349,7 @@ export class UpdateV5toV6 implements IMigrations {
 				this.addPrefixMatchExactOrSuffix(tree, filePath, 'text-control', ['clear']);
 				this.addPrefixMatchExactOrSuffix(tree, filePath, 'sticky', ['content', 'main', 'header', 'footer', 'title', 'actions', 'sm', 'lg', 'layout']);
 				this.addPrefixMatchExactOrSuffix(tree, filePath, 'nav-stepper', ['sm', 'lg']);
-				this.addPrefixMatchExactOrSuffix(tree, filePath, 'table', ['cicd', 'plain', 'collapse', 'hover', 'scrollable']);
+				this.addPrefixMatchExactOrSuffix(tree, filePath, 'table', ['cicd', 'plain', 'collapse', 'hover', 'scrollable', 'sm', 'lg']);
 				this.addPrefixMatchExactOrSuffix(tree, filePath, 'dropdown', ['content']);
 				this.addPrefixMatchExactOrSuffix(tree, filePath, 'main-nav', ['item']);
 				this.addPrefixMatchSuffix(tree, filePath, 'sub', ['nav', 'nav-item', 'menu', 'menu-back']);
