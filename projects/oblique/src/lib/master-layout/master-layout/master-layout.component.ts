@@ -1,5 +1,4 @@
 import {
-	AfterViewInit,
 	Component,
 	ContentChild,
 	ContentChildren,
@@ -27,6 +26,7 @@ import {WINDOW} from '../../utilities';
 import {ObEMasterLayoutEventValues, ObIDynamicJumpLink, ObINavigationLink} from '../master-layout.model';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 import {Subject} from 'rxjs';
+import {ObGlobalEventsService} from '../../global-events/global-events.service';
 
 @Component({
 	selector: 'ob-master-layout',
@@ -70,6 +70,7 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 		readonly offCanvasService: ObOffCanvasService,
 		private readonly router: Router,
 		private readonly scrollEvents: ObScrollingEvents,
+		private readonly globalEventsService: ObGlobalEventsService,
 		@Inject(DOCUMENT) private readonly document: any,
 		@Inject(WINDOW) window
 	) {
@@ -89,7 +90,6 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 		this.outline = true;
 	}
 
-	@HostListener('window:scroll')
 	scrollTop() {
 		const scrollTop = this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
 		this.scrollEvents.hasScrolled(scrollTop);
@@ -100,6 +100,7 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit(): void {
+		this.globalEventsService.scroll$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.scrollTop());
 		this.masterLayout.footer.configEvents.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.SMALL)).subscribe(evt => (this.footerSm = evt.value));
 		this.masterLayout.layout.configEvents
 			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.MAIN_NAVIGATION))

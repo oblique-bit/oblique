@@ -3,10 +3,12 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 
-import {ObMasterLayoutHeaderComponent} from './master-layout-header.component';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
-import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {WINDOW, windowProvider} from '../../utilities';
+import {ObMockGlobalEventsService} from '../../global-events/mock/mock-global-events.service';
+import {ObMasterLayoutHeaderComponent} from './master-layout-header.component';
+import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
+import {ObGlobalEventsService} from '../../global-events/global-events.service';
 
 describe('MasterLayoutHeaderComponent', () => {
 	let component: ObMasterLayoutHeaderComponent;
@@ -18,7 +20,8 @@ describe('MasterLayoutHeaderComponent', () => {
 			declarations: [ObMasterLayoutHeaderComponent, ObMockTranslatePipe],
 			providers: [
 				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useValue: windowProvider}
+				{provide: WINDOW, useValue: windowProvider},
+				{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();

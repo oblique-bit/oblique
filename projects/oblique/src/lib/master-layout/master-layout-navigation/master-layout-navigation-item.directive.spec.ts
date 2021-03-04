@@ -1,6 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
-import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
+import {ObGlobalEventsService, ObMasterLayoutNavigationItemDirective} from 'oblique';
+import {ObMockGlobalEventsService} from '../../global-events/mock/mock-global-events.service';
 
 @Component({
 	template: '<li role="presentation" obMasterLayoutNavigationItem > test </li>'
@@ -12,7 +13,8 @@ describe('MasterLayoutNavigationItemDirective', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			declarations: [TestComponent, ObMasterLayoutNavigationItemDirective]
+			declarations: [TestComponent, ObMasterLayoutNavigationItemDirective],
+			providers: [{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService}]
 		});
 
 		fixture = TestBed.createComponent(TestComponent);
