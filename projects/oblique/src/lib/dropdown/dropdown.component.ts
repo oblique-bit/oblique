@@ -1,4 +1,7 @@
-import {Component, ElementRef, HostBinding, HostListener, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, HostBinding, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {ObGlobalEventsService} from '../global-events/global-events.service';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
 	selector: 'ob-dropdown',
@@ -9,7 +12,7 @@ import {Component, ElementRef, HostBinding, HostListener, Input, OnInit, ViewEnc
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-dropdown'}
 })
-export class ObDropdownComponent implements OnInit {
+export class ObDropdownComponent implements OnInit, OnDestroy {
 	//Accessibility features
 	@HostBinding('attr.aria-expanded') expandedOrUndefined = undefined;
 	@HostBinding('attr.aria-haspopup') popup = true;
@@ -21,10 +24,12 @@ export class ObDropdownComponent implements OnInit {
 	@Input() @HostBinding('id') id: string;
 
 	private static idCount = 0;
+	private readonly unsubscribe = new Subject();
 
-	constructor(private readonly element: ElementRef) {}
+	constructor(private readonly element: ElementRef, private readonly globalEventsService: ObGlobalEventsService) {}
 
 	ngOnInit(): void {
+		this.globalEventsService.click$.pipe(takeUntil(this.unsubscribe)).subscribe(event => this.toggle(event));
 		if (!this.id) {
 			ObDropdownComponent.idCount++;
 			this.id = 'dropdown-' + ObDropdownComponent.idCount;
@@ -32,7 +37,11 @@ export class ObDropdownComponent implements OnInit {
 		this.idContent = `${this.id}-content`;
 	}
 
-	@HostListener('document:click', ['$event'])
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
+	}
+
 	toggle($event?: MouseEvent) {
 		this.isOpen = !$event || this.isSelf($event.target as Element) ? !this.isOpen : false;
 		this.expandedOrUndefined = this.isOpen ? true : undefined;
