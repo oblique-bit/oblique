@@ -20,6 +20,7 @@
   "i18n.oblique.http.error.status.501": "The server either does not recognize the request method, or it lacks the ability to fulfil the request. Usually this implies future availability (e.g., a new feature of a web-service API).",
   "i18n.oblique.http.error.status.502": "The server was acting as a gateway or proxy and received an invalid response from the upstream server.",
   "i18n.oblique.http.error.status.503": "The server cannot handle the request (because it is overloaded or down for maintenance). Generally, this is a temporary state.",
+  "i18n.oblique.http.error.status.504": "The server was acting as a gateway or proxy and did not receive a timely response from the upstream server.",
   "i18n.oblique.http.error.timeout": "The server is taking too long to respond. Please try again later or contact the support.",
   "i18n.oblique.master-layout.accesskey.mainContent": "Skip to main content [0]",
   "i18n.oblique.master-layout.accesskey.homepage": "Homepage [1]",

@@ -20,6 +20,7 @@
   "i18n.oblique.http.error.status.501": "Fonctionnalité réclamée non supportée par le serveur.",
   "i18n.oblique.http.error.status.502": "En agissant en tant que serveur proxy ou passerelle, le serveur a reçu une réponse invalide depuis le serveur distant.",
   "i18n.oblique.http.error.status.503": "Service temporairement indisponible ou en maintenance.",
+  "i18n.oblique.http.error.status.504": "Temps d’attente d’une réponse d’un serveur à un serveur intermédiaire écoulé.",
   "i18n.oblique.http.error.timeout": "Le serveur met trop de temps à répondre. Prière de réessayer plus tard ou de contacter le support.",
   "i18n.oblique.master-layout.accesskey.mainContent": "Sauter au contenu principal [0]",
   "i18n.oblique.master-layout.accesskey.homepage": "Page d'accueil [1]",

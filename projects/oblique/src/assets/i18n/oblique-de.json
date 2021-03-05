@@ -20,6 +20,7 @@
   "i18n.oblique.http.error.status.501": "Die Funktionalität, um die Anfrage zu bearbeiten, wird von diesem Server nicht bereitgestellt. Ursache ist zum Beispiel eine unbekannte oder nicht unterstützte HTTP-Methode.",
   "i18n.oblique.http.error.status.502": "Der Server konnte seine Funktion als Gateway oder Proxy nicht erfüllen, weil er seinerseits eine ungültige Antwort erhalten hat.",
   "i18n.oblique.http.error.status.503": "Der Server steht temporär nicht zur Verfügung, zum Beispiel wegen Überlastung oder Wartungsarbeiten. Ein „Retry-After“-Header-Feld in der Antwort kann den Client auf einen Zeitpunkt hinweisen, zu dem die Anfrage eventuell bearbeitet werden könnte.",
+  "i18n.oblique.http.error.status.504": "Der Server konnte seine Funktion als Gateway oder Proxy nicht erfüllen, weil er innerhalb einer festgelegten Zeitspanne keine Antwort von seinerseits benutzten Servern oder Diensten erhalten hat.",
   "i18n.oblique.http.error.timeout": "Server hat nicht zu lange reagiert. Versuchen Sie es später noch einmal oder kontaktieren Sie den Support.",
   "i18n.oblique.master-layout.accesskey.mainContent": "Springe zum Hauptteil [0]",
   "i18n.oblique.master-layout.accesskey.homepage": "Hauptseite [1]",
