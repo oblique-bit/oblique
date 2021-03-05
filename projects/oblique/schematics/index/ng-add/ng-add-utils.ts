@@ -99,7 +99,7 @@ export function getDepVersion(tree: Tree, dep: string): string | undefined {
 export function removeDevDependencies(tree: Tree, dependency: string): Tree {
 	const json = getJson(tree, packageJsonConfigPath);
 	Object.keys(json.devDependencies)
-		.filter((dep: string) => dep.indexOf('karma') > -1)
+		.filter((dep: string) => dep.indexOf(dependency) > -1)
 		.forEach((dep: string) => removePackageJsonDependency(tree, dep));
 
 	return tree;
