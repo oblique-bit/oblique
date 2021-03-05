@@ -2,7 +2,7 @@ import {SchematicContext, Tree} from '@angular-devkit/schematics';
 import {removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
 import {Project, SourceFile, SyntaxKind} from 'ts-morph';
 import {createSrcFile} from '../ng-add/ng-add-utils';
-import {error, getAngularConfigs, ObliquePackage, packageJsonConfigPath, readFile, warn} from '../utils';
+import {error, getAngularConfigs, ObliquePackage, packageJsonConfigPath, readFile, replaceInFile, warn} from '../utils';
 import {versionFunc, ObIDependencies, ObITask, ObIConfigureTestingModuleCall} from './ng-update.model';
 
 const glob = require('glob');
@@ -576,6 +576,35 @@ export function minAngularVersion(tree: Tree, _context: SchematicContext, obliqu
 	if (getDepVersion(tree, '@angular/core') < angular) {
 		warn(_context, `Oblique ${oblique} is designed to work with Angular ${angular}. If the update fails, try to update angular first.`);
 	}
+}
+
+export function addClassesPrefix(tree: Tree, filePath: string, target: string, suffixes?: string[]) {
+	replaceInFile(tree, filePath, new RegExp(`class="((?:[\\w-]*\\s)*|)(${target})(\\s.*|)"`, 'g'), `class="$1ob-$2$3"`);
+	if (suffixes) {
+		addClassPrefix(tree, filePath, target, suffixes);
+	}
+}
+
+export function addClassPrefix(tree: Tree, filePath: string, target: string, suffixes: string[]) {
+	suffixes.forEach(suffix => {
+		replaceInFile(tree, filePath, new RegExp(`class="((?:[\\w-]*\\s)*|)(${target}-${suffix})(\\s.*|)"`, 'g'), `class="$1ob-$2$3"`);
+	});
+}
+
+export function addPrefixMatchExactOrSuffix(tree: Tree, filePath: string, target: string, suffix: string[]) {
+	replaceInFile(tree, filePath, new RegExp(`\\.(${target}(?:[:\\.\\s{]|(?:-(?:${suffix.join('|')}))))`, 'g'), '.ob-$1');
+}
+
+export function addPrefixMatchSuffix(tree: Tree, filePath: string, target: string, suffix: string[]) {
+	replaceInFile(tree, filePath, new RegExp(`\\.(${target}-(?:${suffix.join('|')})[:\\.\\s{])`, 'g'), '.ob-$1');
+}
+
+export function addPrefixMatchExact(tree: Tree, filePath: string, targets: string[]) {
+	replaceInFile(tree, filePath, new RegExp(`\\.(${targets.join('|')}[:\\.\\s{])`, 'g'), '.ob-$1');
+}
+
+export function renameExactOrSuffix(tree: Tree, filePath: string, target: string, suffix: string[], result: string) {
+	replaceInFile(tree, filePath, new RegExp(`\\.${target}([:\\.\\s{]|(?:-(?:${suffix.join('|')})))`, 'g'), `.${result}$1`);
 }
 
 function checkDependency(tree: Tree, _context: SchematicContext, dependency: string, versions: number[]): string {
