@@ -1,0 +1,33 @@
+{
+    "$schema": "../../../schema.json",
+    "api": [
+      {
+        "name": "ObPopoverDirective",
+        "usage": "This directive renders a template in a container that is inserted at the end of the body.",
+        "type": "directive",
+        "since": "6.1.0",
+        "inputs": [
+          {
+            "name": "obPopover",
+            "text": "The template to be rendered inside the popover.",
+            "type": "TemplateRef",
+            "since": "6.1.0"
+          },
+          {
+            "name": "alignment",
+            "text": "Defines the alignment of the popover relative to its toggle.",
+            "type": "'auto' | 'auto-start' | 'auto-end' | 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'right' | 'right-start' | 'right-end' | 'left' | 'left-start' | 'left-end'",
+            "default": "auto",
+            "since": "6.1.0"
+          },
+          {
+            "name": "popperOptions",
+            "text": "The native options of Popper.js.",
+            "type": "Options",
+            "see": "https://popper.js.org/docs/v2/constructors/",
+            "since": "6.1.0"
+          }
+        ]
+      }
+    ]
+  }

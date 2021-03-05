@@ -96,6 +96,7 @@ The scope is optional and should be the name of the Oblique feature affected:
 * **notification**
 * **number-format**
 * **off-canvas**
+* **popover**
 * **pop-up**
 * **schema-validation**
 * **scrolling**

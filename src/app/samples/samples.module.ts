@@ -55,6 +55,7 @@ import {
 	ObNestedFormModule,
 	ObNotificationModule,
 	ObNumberFormatModule,
+	ObPopoverModule,
 	ObSchemaValidationModule,
 	ObSearchBoxModule,
 	ObSelectableModule,
@@ -76,6 +77,7 @@ import {ObSpinnerSampleComponent} from './spinner-sample/spinner-sample.componen
 import {ObLanguageSampleComponent} from './language/language-sample.component';
 import {ObSearchBoxSampleComponent} from './search-box/search-box.component';
 import {DateAdapter} from '@angular/material/core';
+import {ObPopoverComponent} from './popover/popover.component';
 
 @NgModule({
 	imports: [
@@ -91,6 +93,7 @@ import {DateAdapter} from '@angular/material/core';
 		ObNestedFormModule,
 		ObNumberFormatModule,
 		ObNotificationModule,
+		ObPopoverModule,
 		ObSchemaValidationModule,
 		ObSearchBoxModule,
 		ObSelectableModule,
@@ -151,11 +154,12 @@ import {DateAdapter} from '@angular/material/core';
 		ObApiElementComponent,
 		ObDescriptionComponent,
 		ObPopUpSampleComponent,
+		ObPopoverComponent,
 		ObMultiTranslateLoaderSampleComponent,
 		ObSpinnerSampleComponent,
 		ObSearchBoxSampleComponent
 	],
-	exports: [RouterModule, ObApiComponent],
+	exports: [RouterModule, ObApiComponent, ObDescriptionComponent],
 	providers: [SampleDataResolver]
 })
 export class SamplesModule {
