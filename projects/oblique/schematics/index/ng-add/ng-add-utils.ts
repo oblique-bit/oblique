@@ -4,7 +4,7 @@ import {addPackageJsonDependency, NodeDependency, NodeDependencyType, removePack
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {error, getJson, packageJsonConfigPath, readFile} from '../utils';
 import * as ts from 'typescript';
-import {ObIOptionsSchema, ObIVersion} from './ng-add.model';
+import {ObIVersion} from './ng-add.model';
 
 export const appModulePath = 'src/app/app.module.ts';
 export const routingModulePath = 'src/app/app-routing.module.ts';
@@ -62,36 +62,12 @@ You must install peer dependencies yourself."`
 	}
 }
 
-function extractVersion(version: string): ObIVersion | undefined {
-	const hit = version.match(/(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)/);
-	return hit?.groups
-		? {
-				major: parseInt(hit.groups.major, 10),
-				minor: parseInt(hit.groups.minor, 10),
-				patch: parseInt(hit.groups.patch, 10)
-		  }
-		: undefined;
-}
-
 export function addDevDependency(tree: Tree, name: string): void {
 	addPackageJsonDependency(tree, createDep(tree, NodeDependencyType.Dev, name));
 }
 
 export function addDependency(tree: Tree, name: string): void {
 	addPackageJsonDependency(tree, createDep(tree, NodeDependencyType.Default, name));
-}
-
-function getTargetDepVersion(tree: Tree, name: string): string {
-	let version = versions[name];
-	if (!version) {
-		error(`Unknown dependency: ${name}`);
-	}
-	return version instanceof Function ? version(getAngularVersion(tree)) : (version as string);
-}
-
-function createDep(tree: Tree, type: NodeDependencyType, name: string): NodeDependency {
-	const version = getTargetDepVersion(tree, name);
-	return {type, version, name};
 }
 
 export function importModuleInRoot(tree: Tree, moduleName: string, src: string): void {
@@ -109,13 +85,6 @@ export function applyChanges(tree: Tree, filePath: string, changes: Change[]) {
 
 export function getTemplate(tree: Tree, file: string): string {
 	return readFile(tree, `${pathToTemplates}/${file}`);
-}
-
-export function deleteFile(tree: Tree, filename: string): Tree {
-	if (tree.exists(filename)) {
-		tree.delete(filename);
-	}
-	return tree;
 }
 
 export function getAngularVersion(tree: Tree): number {
@@ -168,4 +137,28 @@ export function adaptInsertChange(tree: Tree, change: InsertChange, search: stri
 		change.description = change.description.replace(search, replace);
 	}
 	return change;
+}
+
+function extractVersion(version: string): ObIVersion | undefined {
+	const hit = version.match(/(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)/);
+	return hit?.groups
+		? {
+				major: parseInt(hit.groups.major, 10),
+				minor: parseInt(hit.groups.minor, 10),
+				patch: parseInt(hit.groups.patch, 10)
+		  }
+		: undefined;
+}
+
+function getTargetDepVersion(tree: Tree, name: string): string {
+	let version = versions[name];
+	if (!version) {
+		error(`Unknown dependency: ${name}`);
+	}
+	return version instanceof Function ? version(getAngularVersion(tree)) : (version as string);
+}
+
+function createDep(tree: Tree, type: NodeDependencyType, name: string): NodeDependency {
+	const version = getTargetDepVersion(tree, name);
+	return {type, version, name};
 }

@@ -44,6 +44,17 @@ export function addFile(tree: Tree, filename: string, content: string | Buffer |
 	}
 }
 
+export function deleteFile(tree: Tree, filename: string): Tree {
+	if (tree.exists(filename)) {
+		tree.delete(filename);
+	}
+	return tree;
+}
+
+export function replaceInFile(tree: Tree, path: string, pattern: string | RegExp, replacement: string): void {
+	tree.overwrite(path, readFile(tree, path).replace(pattern, replacement));
+}
+
 export function getJson(tree: any, path: string) {
 	const json = readFile(tree, path);
 	return json ? JSON.parse(json.toString()) : undefined;
@@ -102,10 +113,6 @@ export function installDependencies(): Rule {
 		_context.logger.debug('Dependencies installed');
 		return tree;
 	};
-}
-
-export function replaceInFile(tree: Tree, path: string, pattern: string | RegExp, replacement: string): void {
-	tree.overwrite(path, readFile(tree, path).replace(pattern, replacement));
 }
 
 export function applyInTree(tree: Tree, toApply: Function, pattern = '*'): Tree {
