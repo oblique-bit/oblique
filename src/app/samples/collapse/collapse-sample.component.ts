@@ -3,21 +3,7 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ObThemeService} from 'oblique';
-
-interface Direction {
-	value: string;
-	viewValue: string;
-}
-
-interface Duration {
-	value: 'slow' | 'fast' | number;
-	viewValue: string;
-}
-
-interface IconPosition {
-	value: string;
-	viewValue: string;
-}
+import {Direction, Duration, IconPosition} from './collapse-sample.model';
 
 @Component({
 	selector: 'ob-collapse-sample',

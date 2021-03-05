@@ -1,10 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-
-export interface ObIDialogData {
-	animal: string;
-	name: string;
-}
+import {ObIDialogData} from '../dialog.model';
 
 @Component({
 	selector: 'ob-example-dialog',

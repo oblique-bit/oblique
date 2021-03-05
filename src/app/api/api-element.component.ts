@@ -1,5 +1,5 @@
 import {Component, Input, OnChanges} from '@angular/core';
-import {ObIAPIelement} from './api.component';
+import {ObIAPIelement} from './api.model';
 
 @Component({
 	selector: 'ob-api-element',
