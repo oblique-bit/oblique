@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {ObISpinnerEvent} from '../spinner-event';
+import {ObISpinnerEvent} from '../spinner.model';
 
 @Injectable()
 export class ObMockSpinnerService {

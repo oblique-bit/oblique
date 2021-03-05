@@ -4,39 +4,12 @@ import {addPackageJsonDependency, NodeDependency, NodeDependencyType, removePack
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {error, getJson, packageJsonConfigPath, readFile} from '../utils';
 import * as ts from 'typescript';
+import {ObIOptionsSchema, ObIVersion} from './ng-add.model';
 
 export const appModulePath = 'src/app/app.module.ts';
 export const routingModulePath = 'src/app/app-routing.module.ts';
 export const pathToTemplates = './node_modules/@oblique/oblique/schematics/index/ng-add/templates';
 export const obliqueCssPath = 'node_modules/@oblique/oblique/styles/css/oblique-core.css';
-
-export interface IOptionsSchema {
-	ajv: boolean;
-	banner: boolean;
-	eslint: boolean;
-	font: string;
-	httpInterceptors: boolean;
-	husky: boolean;
-	ie11: boolean;
-	jenkins: string;
-	jest: boolean;
-	locales: string;
-	npmrc: boolean;
-	prefix: string;
-	protractor: boolean;
-	proxy: string;
-	sonar: boolean;
-	static: boolean;
-	theme: string;
-	title: string;
-	unknownRoute: boolean;
-}
-
-interface Version {
-	major: number;
-	minor: number;
-	patch: number;
-}
 
 type versionFunc = (version: number) => string;
 
@@ -72,13 +45,13 @@ const versions: {[key: string]: string | versionFunc} = {
 
 export function getPreconditionVersion(tree: Tree, pkg: string): string {
 	const current = extractVersion(getDepVersion(tree, pkg) || '');
-	const target = extractVersion(getDepVersion(tree, '@angular/core') || '') || ({} as Version);
+	const target = extractVersion(getDepVersion(tree, '@angular/core') || '') || ({} as ObIVersion);
 	return !current || current.major !== target.major || current.minor !== target.minor ? `${target.major}.${target.minor}` : '';
 }
 
 export function checkPrecondition(tree: Tree, pkg: string) {
 	const current = extractVersion(getDepVersion(tree, pkg) || '');
-	const target = extractVersion(getTargetDepVersion(tree, pkg) || '') || ({} as Version);
+	const target = extractVersion(getTargetDepVersion(tree, pkg) || '') || ({} as ObIVersion);
 
 	if (!current || current.major < target.major || current.minor < target.minor || current.patch < target.patch) {
 		error(
@@ -88,7 +61,7 @@ You must install peer dependencies yourself."`
 	}
 }
 
-function extractVersion(version: string): Version | undefined {
+function extractVersion(version: string): ObIVersion | undefined {
 	const hit = version.match(/(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)/);
 	return hit?.groups
 		? {

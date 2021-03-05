@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {ObMasterLayoutHeaderService} from './master-layout-header.service';
-import {ObIMasterLayoutEvent} from '../master-layout.datatypes';
+import {ObIMasterLayoutEvent} from '../master-layout.model';
 import {Observable, Subject} from 'rxjs';
 
 describe('MasterLayoutHeaderService', () => {

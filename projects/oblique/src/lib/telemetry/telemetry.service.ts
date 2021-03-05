@@ -2,7 +2,8 @@ import {Inject, Injectable, InjectionToken, isDevMode, Optional} from '@angular/
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {EMPTY, fromEvent, race} from 'rxjs';
 import {catchError} from 'rxjs/operators';
-import {ObTelemetryRecord, ObITelemetryRecord} from './telemetry-record';
+import {ObTelemetryRecord} from './telemetry-record';
+import {ObITelemetryRecord} from './telemetry.model';
 import {WINDOW} from '../utilities';
 import {ObThemeService} from '../theme/theme.service';
 

@@ -9,12 +9,12 @@ import {
 	createSrcFile,
 	getAngularVersion,
 	getTemplate,
-	IOptionsSchema,
 	routingModulePath
 } from '../ng-add-utils';
+import {ObIOptionsSchema} from '../ng-add.model';
 import {addAngularConfigInList, addFile, infoMigration, ObliquePackage, readFile} from '../../utils';
 
-export function obliqueFeatures(options: IOptionsSchema): Rule {
+export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
 		chain([
 			addAjv(options.ajv),

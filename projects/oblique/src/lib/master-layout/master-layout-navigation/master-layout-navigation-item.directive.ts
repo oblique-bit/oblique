@@ -15,7 +15,7 @@ import {filter, takeUntil} from 'rxjs/operators';
 
 import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation-toggle.directive';
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
-import {ObEMasterLayoutEventValues} from '../master-layout.datatypes';
+import {ObEMasterLayoutEventValues} from '../master-layout.model';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 import {Subject} from 'rxjs';
 

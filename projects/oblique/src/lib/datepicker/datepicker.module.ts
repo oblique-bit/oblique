@@ -18,8 +18,9 @@ export {ObDatepickerI18nService} from './datepicker-i18n.service';
 export {ObDateDMYParserFormatter} from './date-parser-formatter';
 export {ObDatepickerPlaceholderDirective} from './datepicker-placeholder.directive';
 export {ObDateFormatterPipe} from './date-formatter.pipe';
-export {ObIDatepickerOptions, ObDatepickerConfigService} from './datepicker-config.service';
+export {ObDatepickerConfigService} from './datepicker-config.service';
 export {ObDatepickerComponent} from './datepicker.component';
+export {ObIDatepickerOptions} from './datepicker.model';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular material datepicker instead

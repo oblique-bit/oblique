@@ -1,7 +1,7 @@
 import {Component, HostBinding, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 
-import {ObINotification, ObINotificationPrivate} from './notification.interfaces';
+import {ObINotification, ObINotificationPrivate} from './notification.model';
 import {ObNotificationService} from './notification.service';
 
 @Component({

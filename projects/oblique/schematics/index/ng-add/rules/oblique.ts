@@ -1,9 +1,10 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {addDependency, appModulePath, getTemplate, importModuleInRoot, IOptionsSchema, obliqueCssPath} from '../ng-add-utils';
+import {addDependency, appModulePath, getTemplate, importModuleInRoot, obliqueCssPath} from '../ng-add-utils';
+import {ObIOptionsSchema} from '../ng-add.model';
 import {addAngularConfigInList, getDefaultAngularConfig, infoMigration, ObliquePackage, readFile, setAngularProjectsConfig} from '../../utils';
 import {addLocales} from './locales';
 
-export function oblique(options: IOptionsSchema): Rule {
+export function oblique(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
 		chain([
 			addFavIcon(),

@@ -22,8 +22,9 @@ import {filter, takeUntil} from 'rxjs/operators';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {scrollEnabled} from '../master-layout.utility';
-import {OB_BANNER, ObIBanner, WINDOW} from '../../utilities';
-import {ObEMasterLayoutEventValues, ObILocaleObject, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.datatypes';
+import {OB_BANNER, WINDOW} from '../../utilities';
+import {ObIBanner} from '../../utilities.model';
+import {ObEMasterLayoutEventValues, ObILocaleObject, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {Subject} from 'rxjs';
 

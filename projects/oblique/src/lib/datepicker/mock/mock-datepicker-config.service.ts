@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ObIDatepickerOptions} from '../datepicker-config.service';
+import {ObIDatepickerOptions} from '../datepicker.model';
 
 @Injectable()
 export class ObMockDatepickerConfigService {

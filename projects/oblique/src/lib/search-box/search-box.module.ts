@@ -10,7 +10,8 @@ import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';
 import {ObDropdownModule} from '../dropdown/dropdown.module';
 
-export {ObSearchBoxComponent, ObISearchWidgetItem} from './search-box.component';
+export {ObSearchBoxComponent} from './search-box.component';
+export {ObISearchWidgetItem} from './search-box.model';
 
 @NgModule({
 	imports: [CommonModule, FormsModule, ObNavTreeModule, TranslateModule, RouterModule, ObDropdownModule],

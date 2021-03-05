@@ -1,26 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {take} from 'rxjs/operators';
-import {ObENotificationType} from '../notification/notification.interfaces';
-import {HttpErrorResponse} from '@angular/common/http';
-
-export interface ObIHttpApiRequest {
-	notification: ObIHttpApiRequestNotification;
-	spinner: boolean;
-}
-
-export interface ObIHttpApiRequestNotification {
-	active: boolean;
-	severity: ObENotificationType;
-	title: string;
-	text: string;
-	sticky: boolean;
-}
-
-export interface ObIObliqueHttpErrorResponse {
-	error: HttpErrorResponse;
-	handled: boolean;
-}
+import {ObIHttpApiRequest, ObIHttpApiRequestNotification, ObIObliqueHttpErrorResponse} from './http-api-interceptor.model';
 
 /**
  * Provides access to the Oblique HTTP Interceptor events.

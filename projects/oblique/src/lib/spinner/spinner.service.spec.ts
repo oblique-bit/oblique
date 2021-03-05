@@ -1,6 +1,6 @@
 import {fakeAsync, inject, TestBed, tick} from '@angular/core/testing';
 import {first} from 'rxjs/operators';
-import {ObISpinnerEvent} from './spinner-event';
+import {ObISpinnerEvent} from './spinner.model';
 import {ObSpinnerService} from './spinner.service';
 
 describe('SpinnerService', () => {

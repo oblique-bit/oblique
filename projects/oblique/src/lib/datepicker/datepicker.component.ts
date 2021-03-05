@@ -2,7 +2,8 @@ import {Component, ElementRef, forwardRef, HostListener, Input, OnInit, ViewChil
 import {AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
 import {NgbDateStruct, NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 import {ObThemeService} from '../theme/theme.service';
-import {ObDatepickerConfigService, ObIDatepickerOptions} from './datepicker-config.service';
+import {ObDatepickerConfigService} from './datepicker-config.service';
+import {ObIDatepickerOptions} from './datepicker.model';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular material datepicker instead

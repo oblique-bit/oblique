@@ -8,7 +8,7 @@ import {Subject} from 'rxjs';
 import {ObNotificationComponent} from './notification.component';
 import {ObNotificationConfig} from './notification.config';
 import {ObNotificationService} from './notification.service';
-import {ObENotificationType, ObINotification} from './notification.interfaces';
+import {ObENotificationType, ObINotification} from './notification.model';
 import {ObMockNotificationConfig} from './mock/mock-notification.config';
 import {ObMockNotificationService} from './mock/mock-notification.service';
 

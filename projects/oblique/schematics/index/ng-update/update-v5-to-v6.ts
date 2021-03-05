@@ -1,5 +1,6 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {IMigrations, minAngularVersion} from './ng-update-utils';
+import {minAngularVersion} from './ng-update-utils';
+import {ObIMigrations} from './ng-update.model';
 import {
 	addAngularConfigInList,
 	getDefaultAngularConfig,
@@ -21,7 +22,7 @@ import {getPackageJsonDependency, removePackageJsonDependency} from '@schematics
 
 export interface IUpdateV5Schema {}
 
-export class UpdateV5toV6 implements IMigrations {
+export class UpdateV5toV6 implements ObIMigrations {
 	dependencies = {
 		'@angular/core': 11,
 		'@angular/router': (angular: number) => angular,

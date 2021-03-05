@@ -4,11 +4,12 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {of} from 'rxjs';
 import {finalize} from 'rxjs/operators';
-import {ObIHttpApiRequest, ObHttpApiInterceptorEvents} from './http-api-interceptor.events';
+import {ObHttpApiInterceptorEvents} from './http-api-interceptor.events';
 import {ObHttpApiInterceptorConfig} from './http-api-interceptor.config';
+import {ObIHttpApiRequest} from './http-api-interceptor.model';
 import {ObSpinnerService} from '../spinner/spinner.service';
 import {ObNotificationService} from '../notification/notification.service';
-import {ObENotificationType} from '../notification/notification.interfaces';
+import {ObENotificationType} from '../notification/notification.model';
 
 @Injectable()
 class DataService {

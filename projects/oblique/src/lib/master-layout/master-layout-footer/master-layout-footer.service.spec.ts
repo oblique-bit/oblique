@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 import {Observable, Subject} from 'rxjs';
 import {ObMasterLayoutFooterService} from './master-layout-footer.service';
-import {ObIMasterLayoutEvent} from '../master-layout.datatypes';
+import {ObIMasterLayoutEvent} from '../master-layout.model';
 
 describe('MasterLayoutFooterService', () => {
 	let masterLayoutFooterService: ObMasterLayoutFooterService;

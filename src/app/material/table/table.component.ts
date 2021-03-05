@@ -3,6 +3,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import {ObIPeriodicElement} from './table.model';
 
 @Component({
 	selector: 'ob-table',
@@ -165,11 +166,4 @@ export class ObTableComponent implements OnInit {
 			return -1;
 		}
 	}
-}
-
-export interface ObIPeriodicElement {
-	name: string;
-	position: number;
-	weight: number;
-	symbol: string;
 }

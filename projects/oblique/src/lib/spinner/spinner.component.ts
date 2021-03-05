@@ -3,7 +3,7 @@ import {animate, keyframes, state, style, transition, trigger} from '@angular/an
 import {takeUntil} from 'rxjs/operators';
 
 import {ObSpinnerService} from './spinner.service';
-import {ObISpinnerEvent} from './spinner-event';
+import {ObISpinnerEvent} from './spinner.model';
 import {Subject} from 'rxjs';
 
 @Component({

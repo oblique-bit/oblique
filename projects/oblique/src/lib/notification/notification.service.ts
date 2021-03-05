@@ -3,7 +3,7 @@ import {NavigationEnd, Router} from '@angular/router';
 import {Observable, Subject} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
-import {ObINotification, ObENotificationType} from './notification.interfaces';
+import {ObINotification, ObENotificationType} from './notification.model';
 import {ObNotificationConfig} from './notification.config';
 
 /**

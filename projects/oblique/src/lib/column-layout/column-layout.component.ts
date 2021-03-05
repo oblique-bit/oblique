@@ -17,7 +17,7 @@ import {ObColumnPanelDirective} from './column-panel.directive';
 import {ObScrollingEvents} from '../scrolling/scrolling-events';
 import {ObMasterLayoutService} from '../master-layout/master-layout.service';
 import {WINDOW} from '../utilities';
-import {ObEMasterLayoutEventValues} from '../master-layout/master-layout.datatypes';
+import {ObEMasterLayoutEventValues} from '../master-layout/master-layout.model';
 
 @Component({
 	selector: 'ob-column-layout',

@@ -1,6 +1,7 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {infoHighlights, infoMigration, installDependencies, success} from '../utils';
-import {IMigrations, checkDependencies, IDependencies} from './ng-update-utils';
+import {checkDependencies} from './ng-update-utils';
+import {ObIMigrations, ObIDependencies} from './ng-update.model';
 import {UpdateV4toV5} from './update-v4-to-v5';
 import {UpdateV5toV6} from './update-v5-to-v6';
 
@@ -12,7 +13,7 @@ export function upgradeToV6(_options: {[key: string]: any}): Rule {
 	return (tree: Tree, _context: SchematicContext) => startup(new UpdateV5toV6(), _options);
 }
 
-function startup(migrations: IMigrations, _options: {[key: string]: any}): Rule {
+function startup(migrations: ObIMigrations, _options: {[key: string]: any}): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Starting migrations');
 
@@ -20,7 +21,7 @@ function startup(migrations: IMigrations, _options: {[key: string]: any}): Rule 
 	};
 }
 
-export function finalize(deps: IDependencies): Rule {
+export function finalize(deps: ObIDependencies): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		success(_context, 'Oblique has been successfully migrated. Please review the changes.');
 		infoHighlights(

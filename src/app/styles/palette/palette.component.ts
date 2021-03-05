@@ -1,14 +1,5 @@
 import {Component} from '@angular/core';
-
-interface ObIColors {
-	name: string;
-	colors: {
-		name: string;
-		color: string;
-		contrast: string;
-		details?: string;
-	}[];
-}
+import {ObIColors} from './palette.model';
 
 @Component({
 	selector: 'ob-palette',
