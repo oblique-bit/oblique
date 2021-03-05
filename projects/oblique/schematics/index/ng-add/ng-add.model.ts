@@ -1,4 +1,4 @@
-export interface IOptionsSchema {
+export interface ObIOptionsSchema {
 	ajv: boolean;
 	banner: boolean;
 	eslint: boolean;
@@ -20,7 +20,7 @@ export interface IOptionsSchema {
 	unknownRoute: boolean;
 }
 
-export interface Version {
+export interface ObIVersion {
 	major: number;
 	minor: number;
 	patch: number;

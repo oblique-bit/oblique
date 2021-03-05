@@ -1,5 +1,5 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {IOptionsSchema} from '../ng-add.model';
+import {ObIOptionsSchema} from '../ng-add.model';
 import {addDevDependency, addRootProperty, addScript, deleteFile, getTemplate, removeDevDependencies, removeScript} from '../ng-add-utils';
 import {
 	addFile,
@@ -14,7 +14,7 @@ import {
 import {addJest, addProtractor} from './tests';
 import {jenkins} from './jenkins';
 
-export function toolchain(options: IOptionsSchema): Rule {
+export function toolchain(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
 		chain([
 			moveStyles(),

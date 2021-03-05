@@ -1,11 +1,11 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {SchematicsUtil} from './ng-update-utils';
-import {IMigrations} from './ng-update.model';
+import {ObIMigrations} from './ng-update.model';
 import {applyInTree, infoMigration, ObliquePackage, readFile, setAngularProjectsConfig} from '../utils';
 
 export interface IUpdateV4Schema {}
 
-export class UpdateV4toV5 implements IMigrations {
+export class UpdateV4toV5 implements ObIMigrations {
 	dependencies = {
 		'@angular/core': [9, 10],
 		'@angular/router': (angular: number) => angular,

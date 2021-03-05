@@ -2,20 +2,20 @@ import {Rule} from '@angular-devkit/schematics';
 
 export type versionFunc = (version: number) => number | number[];
 
-export interface IDependencies {
+export interface ObIDependencies {
 	[key: string]: number | number[] | versionFunc;
 }
-export interface IMigrations {
-	dependencies: IDependencies;
+export interface ObIMigrations {
+	dependencies: ObIDependencies;
 	applyMigrations(_options: {[key: string]: any}): Rule;
 }
 
-export interface Task {
+export interface ObITask {
 	from: string;
 	to: string;
 }
 
-export interface IConfigureTestingModuleCall {
+export interface ObIConfigureTestingModuleCall {
 	content: string;
 	oldContent: string;
 	oldProperties: string;

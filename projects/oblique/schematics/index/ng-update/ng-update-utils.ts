@@ -1,7 +1,7 @@
 import {SchematicContext, Tree} from '@angular-devkit/schematics';
 import {Project, SourceFile, SyntaxKind} from 'ts-morph';
 import {error, ObliquePackage, packageJsonConfigPath, readFile, warn} from '../utils';
-import {versionFunc, IDependencies, IMigrations, Task, IConfigureTestingModuleCall} from './ng-update.model';
+import {versionFunc, ObIDependencies, ObITask, ObIConfigureTestingModuleCall} from './ng-update.model';
 
 const glob = require('glob');
 const nodeModules = './node_modules';
@@ -209,7 +209,7 @@ export class SchematicsUtil {
 	}
 
 	addToTestBedConfig(tree: Tree, filePath: string, symbol: string, property: 'providers' | 'declarations' | 'schemas' | 'imports'): void {
-		const call: IConfigureTestingModuleCall = this.getConfigurationCall(tree, filePath, property);
+		const call: ObIConfigureTestingModuleCall = this.getConfigurationCall(tree, filePath, property);
 		if (!call.needsMigration) {
 			// nothing to do
 			return;
@@ -239,7 +239,7 @@ export class SchematicsUtil {
 	}
 
 	removeFromTestBedConfig(tree: Tree, filePath: string, symbol: string, property: 'providers' | 'declarations' | 'schemas' | 'imports'): void {
-		const call: IConfigureTestingModuleCall = this.getConfigurationCall(tree, filePath, property);
+		const call: ObIConfigureTestingModuleCall = this.getConfigurationCall(tree, filePath, property);
 		if (!call.needsMigration) {
 			// nothing to do
 			return;
@@ -254,7 +254,7 @@ export class SchematicsUtil {
 	}
 
 	removeImplicitDeclarations(tree: Tree, filePath: string, property: 'providers' | 'declarations' | 'schemas' | 'imports'): void {
-		const call: IConfigureTestingModuleCall = this.getConfigurationCall(tree, filePath, property);
+		const call: ObIConfigureTestingModuleCall = this.getConfigurationCall(tree, filePath, property);
 		if (!call.needsMigration) {
 			// nothing to do
 			return;
@@ -343,10 +343,10 @@ export class SchematicsUtil {
 		const tasksTmp = results
 			.filter(name => this.publicExports.includes(name)) // found a class that changed its class name prefix
 			.filter(name => !this.customImplementations.includes(name) || this.forceObliqueImplementations.includes(name))
-			.reduce((array, name) => array.concat({from: name, to: `Ob${name}`}), [] as Task[]);
+			.reduce((array, name) => array.concat({from: name, to: `Ob${name}`}), [] as ObITask[]);
 		const tasks = results
 			.filter(name => interfacesAndEnums.includes(name))
-			.reduce((array, name) => array.concat({from: name, to: this.getInterfaceOrEnumName(name)}), tasksTmp as Task[]);
+			.reduce((array, name) => array.concat({from: name, to: this.getInterfaceOrEnumName(name)}), tasksTmp as ObITask[]);
 
 		tree.overwrite(
 			filePath,
@@ -527,14 +527,14 @@ export class SchematicsUtil {
 		return exported;
 	}
 
-	private getConfigurationCall(tree: Tree, filePath: string, property: string): IConfigureTestingModuleCall {
+	private getConfigurationCall(tree: Tree, filePath: string, property: string): ObIConfigureTestingModuleCall {
 		const sourceFile = this.getProject().createSourceFile(filePath, this.getFile(tree, filePath));
 		const content = sourceFile.getFullText();
 		const configurationCalls: any[] = [];
 		this.walk(sourceFile, 'configureTestingModule', configurationCalls);
 
 		if (configurationCalls.length === 0) {
-			return {needsMigration: false} as IConfigureTestingModuleCall;
+			return {needsMigration: false} as ObIConfigureTestingModuleCall;
 		}
 
 		const start = configurationCalls[0].getStart();
@@ -554,7 +554,7 @@ export class SchematicsUtil {
 	}
 }
 
-export function checkDependencies(tree: Tree, _context: SchematicContext, deps: IDependencies): void {
+export function checkDependencies(tree: Tree, _context: SchematicContext, deps: ObIDependencies): void {
 	const angular = getDepVersion(tree, '@angular/core');
 	const warnings = Object.keys(deps)
 		.reduce((warns, dep) => [...warns, checkDependency(tree, _context, dep, getVersions(deps[dep], angular))], [])
