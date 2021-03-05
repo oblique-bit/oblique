@@ -111,3 +111,4 @@ export {ObliqueModule} from './lib/oblique.module';
 export {FONTS, THEMES, ObThemeService} from './lib/theme/theme.service';
 
 export * from './lib/oblique-testing.module';
+export {ObMockMatElement, ObMockModule} from './lib/_mocks/mock-module';
