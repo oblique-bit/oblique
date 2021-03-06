@@ -29,8 +29,10 @@ import {ObSpinnerSampleComponent} from './spinner-sample/spinner-sample.componen
 import {ObLanguageSampleComponent} from './language/language-sample.component';
 import {ObSearchBoxSampleComponent} from './search-box/search-box.component';
 import {ObPopoverComponent} from './popover/popover.component';
+import {ObAlertSampleComponent} from './alert/alert.component';
 
 const samplesRoutes: Routes = [
+	{path: 'alert', component: ObAlertSampleComponent},
 	{path: 'collapse', component: ObCollapseSampleComponent},
 	{path: 'column-layout', component: ObColumnLayoutSampleComponent},
 	{path: 'datepicker', component: ObDatepickerSampleComponent},

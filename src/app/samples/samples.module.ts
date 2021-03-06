@@ -41,6 +41,7 @@ import {ObStickySampleComponent} from './sticky/sticky-sample.component';
 import {ObFormSampleComponent} from './form/form.component';
 import {ObButtonSampleComponent} from './button/button.component';
 import {
+	ObAlertModule,
 	ObButtonModule,
 	ObCollapseModule,
 	ObColumnLayoutModule,
@@ -78,10 +79,13 @@ import {ObLanguageSampleComponent} from './language/language-sample.component';
 import {ObSearchBoxSampleComponent} from './search-box/search-box.component';
 import {DateAdapter} from '@angular/material/core';
 import {ObPopoverComponent} from './popover/popover.component';
+import {ObAlertSampleComponent} from './alert/alert.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
 	imports: [
 		CommonModule,
+		ObAlertModule,
 		ObCollapseModule,
 		ObColumnLayoutModule,
 		ObDatepickerModule,
@@ -120,9 +124,11 @@ import {ObPopoverComponent} from './popover/popover.component';
 		MatCheckboxModule,
 		MatRadioModule,
 		MatDatepickerModule,
-		MatMomentDateModule
+		MatMomentDateModule,
+		MatSlideToggleModule
 	],
 	declarations: [
+		ObAlertSampleComponent,
 		ObButtonSampleComponent,
 		ObCollapseSampleComponent,
 		ObColumnLayoutSampleComponent,

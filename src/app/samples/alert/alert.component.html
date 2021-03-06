@@ -1,0 +1,21 @@
+<h2>ObAlert</h2>
+<ob-description component="alert"></ob-description>
+<ob-column-layout [left]="false" [right]="true">
+	<ng-container column-main-content>
+		<ob-alert [type]="type">
+			<strong>Alert's title</strong>
+			<p>This is an example with an external link: <a href="www.google.com">www.google.com</a>.</p>
+			<p>Another paragraph with an internal link: <a routerLink="home">home</a></p>
+			<p>A third on with a link that is not wrapped in an anchor: www.google.com</p>
+		</ob-alert>
+	</ng-container>
+	<ng-container column-right-content>
+		<mat-radio-group [(ngModel)]="type">
+			<mat-radio-button value="info" checked>info</mat-radio-button>
+			<mat-radio-button value="success">success</mat-radio-button>
+			<mat-radio-button value="warning">warning</mat-radio-button>
+			<mat-radio-button value="error">error</mat-radio-button>
+		</mat-radio-group>
+	</ng-container>
+</ob-column-layout>
+<ob-api component="alert"></ob-api>
