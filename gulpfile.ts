@@ -10,6 +10,7 @@ const fs = require('fs'),
 	sass = require('node-sass'),
 	del = require('del'),
 	path = require('path'),
+	childProcess = require('child_process'),
 	paths = {
 		dist: './dist/oblique',
 		src: './projects/oblique/src',
@@ -27,15 +28,23 @@ const distUtilCss = (done) => transpile('utilities', '', done);
 const distCompatCss = (done) => transpile('compat', '', done);
 const distComponentsCss = (done) => transpileComponents(`${paths.src}/lib`, done);
 
-const addBanner = () => gulp.src([`${paths.dist}/**/*.js`, `${paths.dist}/**/*.css`])
-	.pipe(header(
-		`/**
-* @license Oblique - v${pkg.version}
-* Copyright (c) 2020-${new Date().getFullYear()} The Swiss Confederation, represented by the Federal Office of Information Technology, Systems and Telecommunication FOITT http://oblique.bit.oblique.ch
-* License: MIT (https://oblique.bit.admin.ch/license)
+const addBanner = () => {
+	const releaseDate = childProcess.execSync(`git show -s --format=%ci ${pkg.version}`).toString().split(' ')[0];
+	const endOfLifeDate = getEndOfLifeDate(`${pkg.version.split('.')[0]}.0.0`);
+
+	return gulp.src([`${paths.dist}/**/*.js`, `${paths.dist}/**/*.css`])
+		.pipe(header(
+			`/**
+* @file Oblique, The front-end framework for your Swiss branded UI.
+* @copyright 2020 - ${new Date().getFullYear()} Federal Office of Information Technology, Systems and Telecommunication FOITT {@link http://www.bit.admin.ch}
+* @version ${pkg.version} (released on ${releaseDate}, supported at least until ${endOfLifeDate})
+* @author ObliqueTeam, BIT-BS-PAC-EWM <oblique@bit.admin.ch>
+* @license MIT {@link https://oblique.bit.admin.ch/license}
+* @see http://oblique.bit.oblique.ch
 */
 `))
-	.pipe(gulp.dest(paths.dist));
+		.pipe(gulp.dest(paths.dist));
+}
 
 const distMeta = () => {
 	const output = require(`${paths.dist}/package.json`);
@@ -146,7 +155,6 @@ gulp.task(
 	'publish',
 	gulp.series(commit)
 );
-gulp.task('test', postLib);
 
 gulp.task('themes',
 	gulp.parallel(
@@ -244,4 +252,11 @@ function transpileComponents(dir: string, cb): void {
 		deleteFile(component);
 		cb();
 	});
+}
+
+function getEndOfLifeDate(version) {
+	const versionReleaseDate = childProcess.execSync(`git show -s --format=%ci ${version}`).toString().split(' ')[0];
+	const endOfLifeDate = new Date(versionReleaseDate);
+	endOfLifeDate.setFullYear(endOfLifeDate.getFullYear() + 1, endOfLifeDate.getMonth() + 1, 0);
+	return endOfLifeDate.toISOString().split('T')[0];
 }
