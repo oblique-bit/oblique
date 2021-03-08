@@ -20,6 +20,7 @@
   "i18n.oblique.http.error.status.501": "Il server non è in grado di soddisfare il metodo della richiesta.",
   "i18n.oblique.http.error.status.502": "Il server si sta comportando come un gateway o un proxy e ha ricevuto una risposta invalida dal server di upstream.",
   "i18n.oblique.http.error.status.503": "Il server non è al momento disponibile. Generalmente è una condizione temporanea.",
+  "i18n.oblique.http.error.status.504": "Il server si sta comportando come un gateway o un proxy e non ha ricevuto una risposta tempestiva dal server di upstream.",
   "i18n.oblique.http.error.timeout": "Il server non risponde da troppo tempo. Riprovare più tardi o contattare il servizio di supporto.",
   "i18n.oblique.master-layout.accesskey.mainContent": "Skip to main content [0]",
   "i18n.oblique.master-layout.accesskey.homepage": "Homepage [1]",
