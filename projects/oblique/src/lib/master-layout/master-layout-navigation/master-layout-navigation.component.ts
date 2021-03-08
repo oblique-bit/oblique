@@ -42,15 +42,8 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 	ngOnInit() {
 		this.closeOnEscape();
 		this.refreshOnWindowResize();
+		this.markActiveLink();
 		this.links = this.checkForExternalLinks(this.links.length ? this.links : this.config.navigation.links);
-		this.router.events
-			.pipe(
-				takeUntil(this.unsubscribe),
-				filter(evt => evt instanceof NavigationEnd)
-			)
-			.subscribe(
-				() => (this.links = this.links.map(link => ({...link, active: this.router.isActive(link.url, link.pathMatch && link.pathMatch === 'full')})))
-			);
 	}
 
 	ngAfterViewInit() {
@@ -109,6 +102,17 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 
 	private refreshOnWindowResize(): void {
 		this.globalEventsService.resize$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.onResize());
+	}
+
+	private markActiveLink(): void {
+		this.router.events
+			.pipe(
+				takeUntil(this.unsubscribe),
+				filter(evt => evt instanceof NavigationEnd)
+			)
+			.subscribe(
+				() => (this.links = this.links.map(link => ({...link, active: this.router.isActive(link.url, link.pathMatch && link.pathMatch === 'full')})))
+			);
 	}
 
 	private refresh(): void {
