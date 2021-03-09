@@ -7,6 +7,8 @@ import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMultiselectComponent} from './multiselect.component';
 import {ObMultiselectConfig} from './multiselect.config';
 import {ObMultiselectTexts} from './multiselect.texts';
+import {ObGlobalEventsService} from '../global-events/global-events.service';
+import {ObMockGlobalEventsService} from '../global-events/mock/mock-global-events.service';
 
 @Pipe({
 	name: 'searchFilter'
@@ -31,7 +33,7 @@ describe('MultiselectComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [ObMultiselectComponent, MockSearchPipe, ObMockTranslatePipe],
 			imports: [FormsModule],
-			providers: [ObMultiselectConfig, ObMultiselectTexts],
+			providers: [ObMultiselectConfig, ObMultiselectTexts, {provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService}],
 			schemas: [NO_ERRORS_SCHEMA]
 		}).compileComponents();
 	}));

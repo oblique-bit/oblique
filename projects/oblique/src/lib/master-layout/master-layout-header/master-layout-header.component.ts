@@ -5,7 +5,6 @@ import {
 	ContentChildren,
 	ElementRef,
 	HostBinding,
-	HostListener,
 	Inject,
 	Input,
 	OnDestroy,
@@ -27,6 +26,7 @@ import {ObIBanner} from '../../utilities.model';
 import {ObEMasterLayoutEventValues, ObILocaleObject, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {Subject} from 'rxjs';
+import {ObGlobalEventsService} from '../../global-events/global-events.service';
 
 @Component({
 	selector: 'ob-master-layout-header',
@@ -60,6 +60,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		private readonly scrollEvents: ObScrollingEvents,
 		private readonly el: ElementRef,
 		private readonly renderer: Renderer2,
+		private readonly globalEventsService: ObGlobalEventsService,
 		@Inject(WINDOW) window,
 		@Inject(OB_BANNER) @Optional() bannerToken
 	) {
@@ -71,6 +72,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	}
 
 	ngAfterViewInit() {
+		this.globalEventsService.resize$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.onResize());
 		this.setFocusable(this.masterLayout.layout.isMenuOpened);
 		this.masterLayout.layout.configEvents
 			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.COLLAPSE))
@@ -86,7 +88,6 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		this.unsubscribe.complete();
 	}
 
-	@HostListener('window:resize')
 	onResize() {
 		this.setFocusable(this.masterLayout.layout.isMenuOpened);
 	}

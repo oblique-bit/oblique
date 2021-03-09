@@ -5,6 +5,7 @@
  * https://github.com/softsimon/angular-2-dropdown-multiselect
  */
 import {
+	AfterViewInit,
 	Component,
 	DoCheck,
 	ElementRef,
@@ -14,16 +15,19 @@ import {
 	HostListener,
 	Input,
 	IterableDiffers,
+	OnDestroy,
 	OnInit,
 	Output,
-	ViewEncapsulation,
-	OnDestroy
+	ViewEncapsulation
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {filter, takeUntil} from 'rxjs/operators';
 
 import {ObMultiselectConfig} from './multiselect.config';
 import {ObMultiselectTexts} from './multiselect.texts';
 import {ObThemeService} from '../theme/theme.service';
+import {ObGlobalEventsService} from '../global-events/global-events.service';
+import {Subject} from 'rxjs';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular material select instead
@@ -44,7 +48,7 @@ import {ObThemeService} from '../theme/theme.service';
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-multiselect'}
 })
-export class ObMultiselectComponent implements OnInit, OnDestroy, DoCheck, ControlValueAccessor {
+export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy, DoCheck, ControlValueAccessor {
 	@Input() options: any[] = [];
 	@Input() texts: ObMultiselectTexts;
 	@Input() dropup = false;
@@ -80,11 +84,13 @@ export class ObMultiselectComponent implements OnInit, OnDestroy, DoCheck, Contr
 	isVisible = false;
 	searchFilterText = '';
 	disabled = false;
+	private readonly unsubscribe = new Subject();
 
 	constructor(
 		private readonly element: ElementRef,
 		private readonly multiselectTexts: ObMultiselectTexts,
 		private readonly multiselectConfig: ObMultiselectConfig,
+		private readonly globalEventsService: ObGlobalEventsService,
 		theme: ObThemeService,
 		differs: IterableDiffers
 	) {
@@ -100,8 +106,6 @@ export class ObMultiselectComponent implements OnInit, OnDestroy, DoCheck, Contr
 		theme.deprecated('multiselect', 'select/overview#multiple-selection');
 	}
 
-	//TODO: only apply this listener if the popup is open and remove it as soon as it's closed
-	@HostListener('document:click', ['$event.target'])
 	onClick(target: HTMLElement) {
 		if (this.isVisible) {
 			let parentFound = false;
@@ -138,8 +142,20 @@ export class ObMultiselectComponent implements OnInit, OnDestroy, DoCheck, Contr
 		this.multiselectConfig.isIdUnique(this.idPrefix);
 	}
 
+	ngAfterViewInit() {
+		this.globalEventsService
+			.outsideClick$(this.element.nativeElement)
+			.pipe(
+				filter(() => this.isVisible),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(event => this.onClick(event.target as HTMLElement));
+	}
+
 	ngOnDestroy() {
 		this.multiselectConfig.clearId(this.idPrefix);
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 
 	writeValue(value: any): void {

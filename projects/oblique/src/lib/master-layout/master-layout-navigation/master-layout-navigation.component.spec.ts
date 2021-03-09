@@ -8,6 +8,8 @@ import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObMasterLayoutNavigationComponent} from '../master-layout-navigation/master-layout-navigation.component';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
+import {ObMockGlobalEventsService} from '../../global-events/mock/mock-global-events.service';
+import {ObGlobalEventsService} from '../../global-events/global-events.service';
 
 @Component({template: ''})
 class DummyFullPathComponent {}
@@ -45,7 +47,10 @@ describe('MasterLayoutNavigationComponent', () => {
 					])
 				],
 				schemas: [NO_ERRORS_SCHEMA],
-				providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+				providers: [
+					{provide: TranslateService, useClass: ObMockTranslateService},
+					{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService}
+				]
 			}).compileComponents();
 		})
 	);

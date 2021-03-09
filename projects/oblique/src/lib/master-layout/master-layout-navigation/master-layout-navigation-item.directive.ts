@@ -1,23 +1,12 @@
-import {
-	AfterViewInit,
-	ContentChild,
-	ContentChildren,
-	Directive,
-	ElementRef,
-	EventEmitter,
-	HostBinding,
-	HostListener,
-	OnDestroy,
-	Output,
-	QueryList
-} from '@angular/core';
+import {AfterViewInit, ContentChild, ContentChildren, Directive, ElementRef, EventEmitter, HostBinding, OnDestroy, Output, QueryList} from '@angular/core';
 import {filter, takeUntil} from 'rxjs/operators';
 
 import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation-toggle.directive';
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
 import {ObEMasterLayoutEventValues} from '../master-layout.model';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
-import {Subject} from 'rxjs';
+import {merge, Subject} from 'rxjs';
+import {ObGlobalEventsService} from '../../global-events/global-events.service';
 
 @Directive({
 	selector: '[obMasterLayoutNavigationItem]',
@@ -33,9 +22,19 @@ export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnD
 	@ContentChildren(ObMasterLayoutNavigationItemDirective, {descendants: true}) $items: QueryList<ObMasterLayoutNavigationItemDirective>;
 	private readonly unsubscribe = new Subject();
 
-	constructor(private readonly masterLayout: ObMasterLayoutComponentService, private readonly element: ElementRef) {}
+	constructor(
+		private readonly masterLayout: ObMasterLayoutComponentService,
+		private readonly element: ElementRef,
+		private readonly globalEventsService: ObGlobalEventsService
+	) {}
 
 	ngAfterViewInit() {
+		merge(this.globalEventsService.outsideClick$(this.element.nativeElement), this.globalEventsService.keyUp$.pipe(filter(event => event.key === 'Escape')))
+			.pipe(
+				filter(() => this.show),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(event => this.onClick(event.target));
 		this.$toggles.forEach($toggle => {
 			$toggle.onToggle
 				.pipe(
@@ -83,9 +82,7 @@ export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnD
 		}
 	}
 
-	@HostListener('document:click', ['$event.target'])
-	@HostListener('document:keyup.escape')
-	onClick(targetElement?) {
+	onClick(targetElement?: EventTarget) {
 		if (this.show && !this.element.nativeElement.contains(targetElement)) {
 			this.close();
 		}
