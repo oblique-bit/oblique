@@ -27,6 +27,8 @@ export class ObNavTreeComponent implements OnDestroy {
 	@Input() labelFormatter: (item: ObNavTreeItemModel, filterPattern?: string) => string = ObNavTreeComponent.DEFAULTS.LABEL_FORMATTER(this.translate);
 	@Input() variant = ObNavTreeComponent.DEFAULTS.VARIANT;
 	@Input() activateAncestors = true;
+	@Input() treeAriaLabelledBy: string;
+	@Input() treeAriaLabel: string;
 	private readonly unsubscribe = new Subject();
 
 	// TODO: remove when https://github.com/angular/angular/issues/13205

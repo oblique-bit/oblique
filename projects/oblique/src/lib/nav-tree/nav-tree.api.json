@@ -7,6 +7,7 @@
       "exported": "obNavTree",
       "type": "component",
       "since": "2.0.0",
+      "updated": "6.1.0",
       "inputs": [
         {
           "name": "items",
@@ -55,6 +56,20 @@
           "type": "boolean",
           "default": true,
           "since": "2.0.0"
+        },
+        {
+          "name": "treeAriaLabelledBy",
+          "text": "The ID of the element that labels the purpose of the nav-tree.<br/>If there is no visible text labeling the nav-tree, use <code>aria-label</code> instead.<br/>When both attributes are defined, <code>aria-labelledby</code> takes precedence.",
+          "type": "string",
+          "default": "undefined",
+          "since": "6.1.0"
+        },
+        {
+          "name": "treeAriaLabel",
+          "text": "Defines a string that labels the purpose of the nav-tree.<br/>If there is a visible text labeling the nav-tree, use <code>aria-labelledby</code> instead.<br/>When both attributes are defined, <code>aria-labelledby</code> takes precedence.",
+          "type": "string",
+          "default": "undefined",
+          "since": "6.1.0"
         }
       ],
       "methods": [

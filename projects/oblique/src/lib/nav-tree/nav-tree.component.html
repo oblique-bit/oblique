@@ -24,7 +24,7 @@
 				[class.active]="isLinkActive(rla, item)"
 				[attr.data-toggle]="item.items && !filterPattern ? 'collapse' : null"
 				[attr.disabled]="item.disabled === true || null"
-				[attr.aria-controls]="item.items ? itemKey(item) : null"
+				[attr.aria-expanded]="item.items ? parentExpanded && !item.collapsed : undefined"
 			>
 				<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
 			</a>
@@ -34,7 +34,7 @@
 					[ngClass]="variant"
 					[class.ob-expanded]="parentExpanded && !item.collapsed"
 					[class.disabled]="item.disabled === true || null"
-					role="tree"
+					role="group"
 				>
 					<ng-container *ngTemplateOutlet="itemList; context: { $implicit: item.items, parentExpanded: parentExpanded && !item.collapsed }">
 					</ng-container>
@@ -43,6 +43,13 @@
 		</li>
 	</ng-template>
 </ng-template>
-<ul #root class="ob-nav-tree ob-nav-indent ob-nav-toggle ob-expanded" role="tree" [ngClass]="variant">
+<ul
+	#root
+	class="ob-nav-tree ob-nav-indent ob-nav-toggle ob-expanded"
+	role="tree"
+	[ngClass]="variant"
+	[attr.aria-labelledby]="treeAriaLabelledBy"
+	[attr.aria-label]="treeAriaLabel"
+>
 	<ng-container *ngTemplateOutlet="itemList; context: { $implicit: items, parentExpanded: true }"></ng-container>
 </ul>
