@@ -1,9 +1,10 @@
-<h2 class="page-header">{{ "i18n.routes.samples.nav-tree.title" | translate }}</h2>
+<h2 id="navTreeSampleTitle" class="page-header">{{ "i18n.routes.samples.nav-tree.title" | translate }}</h2>
 <ob-description component="nav-tree"></ob-description>
 <ob-column-layout [left]="false" [right]="true">
 	<ob-nav-tree
 		#obNavTree
 		column-main-content
+		[treeAriaLabelledBy]="'navTreeSampleTitle'"
 		[items]="items"
 		[prefix]="'nav-tree-sample'"
 		[filterPattern]="filter.pattern"
