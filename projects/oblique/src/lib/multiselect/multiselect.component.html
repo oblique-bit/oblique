@@ -51,6 +51,7 @@
 		</button>
 		<div *ngIf="showCheckAll || showUncheckAll" class="dropdown-divider divider"></div>
 		<button
+			type="button"
 			[id]="idPrefix + '-option-' + i"
 			class="dropdown-item"
 			*ngFor="let option of options | searchFilter: searchFilterText; let i = index"
