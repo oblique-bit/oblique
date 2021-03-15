@@ -1015,6 +1015,20 @@
 * **toolchain:** ObliqueReactive has been migrated to Angular 4. This of course breaks all compatibility to any previous release of ObliqueReactive. 
 
 
+<a name="1.5.2"></a>
+# [1.5.2](https://bitbucket.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.5.2) (2021-03-05)
+
+## Bug fixes
+* **multiselect:** fix wiring for `disabled` and `id` attributes ([e7a9279](http://stash.eap.bit.admin.ch/scm/oui/oblique-reactive/commits/e7a9279))
+
+
+<a name="1.5.1"></a>
+# [1.5.1](https://bitbucket.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.5.1) (2020-09-25)
+
+## Refactor
+* update `angularJS`, `oblique-ui` and `Bootstrap` to fix a security issue ([95ef8c6](https://stash.eap.bit.admin.ch/scm/oui/oblique-ui/commits/95ef8c6))
+
+
 <a name="1.5.0"></a>
 # [1.5.0](https://bitbucket.bit.admin.ch/projects/OUI/repos/oblique-reactive/browse?at=1.5.0) (2019-03-20)
 
