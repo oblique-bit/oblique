@@ -131,7 +131,7 @@ describe('SchemaValidation', () => {
 
 					expect(controls.string.errors).not.toBeNull();
 					expect(controls.string.errors).toEqual({
-						maxLength: {
+						'ajv.maxLength': {
 							limit: 10
 						}
 					});
@@ -154,7 +154,7 @@ describe('SchemaValidation', () => {
 
 					expect(subproperties.subproperty.errors).not.toBeNull();
 					expect(subproperties.subproperty.errors).toEqual({
-						type: {
+						'ajv.type': {
 							type: 'number'
 						}
 					});
