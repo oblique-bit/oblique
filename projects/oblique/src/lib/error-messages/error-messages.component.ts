@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Inject, Input, OnDestroy, Optional} from '@angular/core';
+import {AfterViewInit, Component, Inject, Input, InjectionToken, OnDestroy, Optional} from '@angular/core';
 import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
 import {merge as observableMerge, Subject} from 'rxjs';
 import {delay, takeUntil} from 'rxjs/operators';
@@ -8,6 +8,8 @@ import {ObErrorMessagesService} from './error-messages.service';
 import {ObThemeService} from '../theme/theme.service';
 import {ObParentFormDirective} from '../nested-form/parent-form.directive';
 import {WINDOW} from '../utilities';
+
+export const DISABLE_NGB_ERRORS = new InjectionToken<boolean>('ENABLE_NGB_ERRORS');
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular material mat-error instead
@@ -19,6 +21,7 @@ import {WINDOW} from '../utilities';
 })
 export class ObErrorMessagesComponent implements AfterViewInit, OnDestroy {
 	@Input() control: NgControl;
+	@Input() disableNgb: boolean;
 
 	errors: {key: string; params: {[param: string]: any}}[] = [];
 
@@ -33,9 +36,11 @@ export class ObErrorMessagesComponent implements AfterViewInit, OnDestroy {
 		@Optional() ngForm: NgForm,
 		@Optional() formGroupDirective: FormGroupDirective,
 		@Optional() private readonly parent: ObParentFormDirective,
-		@Inject(WINDOW) window: any
+		@Inject(WINDOW) window: any,
+		@Optional() @Inject(DISABLE_NGB_ERRORS) disableNgb: boolean
 	) {
 		this.window = window; // because AoT don't accept interfaces as DI
+		this.disableNgb = this.disableNgb ?? disableNgb ?? false;
 		theme.deprecated('error messages', 'form-field/overview#error-messages');
 		this.form = ngForm || formGroupDirective;
 
@@ -67,7 +72,7 @@ export class ObErrorMessagesComponent implements AfterViewInit, OnDestroy {
 	private generateErrorMessages(submitted = false) {
 		const pristineValidation = this.formGroup ? this.formGroup.pristineValidation : false;
 		if (this.control.invalid && (submitted || this.form.submitted || !this.control.pristine || pristineValidation)) {
-			this.errors = this.errorMessagesService.createMessages(this.control);
+			this.errors = this.errorMessagesService.createMessages(this.control, this.disableNgb);
 		} else {
 			this.errors = [];
 		}
