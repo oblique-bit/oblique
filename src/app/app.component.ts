@@ -33,6 +33,7 @@ export class AppComponent {
 				{url: 'column-layout', label: 'i18n.routes.samples.column-layout.title'},
 				{url: 'datepicker', label: 'i18n.routes.samples.datepicker.title'},
 				{url: 'error-messages', label: 'Error messages'},
+				{url: 'external-link', label: 'External-link'},
 				{url: 'form-control-state', label: 'i18n.routes.samples.form-control-state.title'},
 				{url: 'http-interceptor', label: 'i18n.routes.samples.http-interceptor.title'},
 				{url: 'input-clear', label: 'Input clear'},

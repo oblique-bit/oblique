@@ -1,0 +1,14 @@
+<h2 class="page-header">External Link</h2>
+<ob-description component="external-link"></ob-description>
+<ob-column-layout [left]="false">
+	<ng-container column-main-content>
+		<a href="http://www.google.ch" [icon]="iconPosition">External Link</a>
+	</ng-container>
+
+	<div column-right-content>
+		<mat-radio-group [(ngModel)]="iconPosition">
+			<mat-radio-button *ngFor="let variant of iconPositions" [value]="variant.value">{{ variant.viewValue }}</mat-radio-button>
+		</mat-radio-group>
+	</div>
+</ob-column-layout>
+<ob-api component="external-link"></ob-api>

@@ -12,6 +12,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
+import {DateAdapter} from '@angular/material/core';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -22,6 +23,7 @@ import {ObCollapseSampleComponent} from './collapse/collapse-sample.component';
 import {ObColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
 import {ObDatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {ObErrorMessagesSampleComponent} from './error-messages-sample/error-messages-sample.component';
+import {ObExternalLinkComponent} from './external-link/external-link.component';
 import {ObFormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
 import {ObInputClearSampleComponent} from './input-clear/input-clear.component';
 import {ObMasterLayoutSampleComponent} from './master-layout/master-layout-sample.component';
@@ -47,6 +49,7 @@ import {
 	ObColumnLayoutModule,
 	ObDatepickerModule,
 	ObErrorMessagesModule,
+	ObExternalLinkModule,
 	ObFormControlStateModule,
 	ObInputClearModule,
 	ObLanguageModule,
@@ -77,7 +80,6 @@ import {ObSelectableSampleComponent} from './selectable/selectable-sample.compon
 import {ObSpinnerSampleComponent} from './spinner-sample/spinner-sample.component';
 import {ObLanguageSampleComponent} from './language/language-sample.component';
 import {ObSearchBoxSampleComponent} from './search-box/search-box.component';
-import {DateAdapter} from '@angular/material/core';
 import {ObPopoverComponent} from './popover/popover.component';
 import {ObAlertSampleComponent} from './alert/alert.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
@@ -108,6 +110,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 		ObUnsavedChangesModule,
 		ObUnsavedChangesTabsModule,
 		ObButtonModule,
+		ObExternalLinkModule,
 
 		TranslateModule,
 		FormsModule,
@@ -163,7 +166,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 		ObPopoverComponent,
 		ObMultiTranslateLoaderSampleComponent,
 		ObSpinnerSampleComponent,
-		ObSearchBoxSampleComponent
+		ObSearchBoxSampleComponent,
+		ObExternalLinkComponent
 	],
 	exports: [RouterModule, ObApiComponent, ObDescriptionComponent],
 	providers: [SampleDataResolver]
