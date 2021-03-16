@@ -32,6 +32,7 @@
 		</div>
 		<div class="dropdown-divider divider" *ngIf="enableSearch"></div>
 		<button
+			type="button"
 			[id]="idPrefix + '-check_all'"
 			class="dropdown-item ob-multiselect-control ob-multiselect-control-check"
 			*ngIf="showCheckAll"
@@ -41,6 +42,7 @@
 			{{ texts.checkAll | translate }}
 		</button>
 		<button
+			type="button"
 			[id]="idPrefix + '-uncheck_all'"
 			class="dropdown-item ob-multiselect-control ob-multiselect-control-uncheck"
 			*ngIf="showUncheckAll"
