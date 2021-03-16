@@ -43,6 +43,7 @@
 			<ul class="ob-header-controls ob-header-locale" *ngIf="languages.length > 1">
 				<li class="ob-control-item" *ngFor="let language of languages">
 					<button
+						type="button"
 						class="ob-control-locale"
 						obMasterLayoutHeaderToggle
 						(click)="changeLang(language.code)"
