@@ -17,6 +17,7 @@ export class ObSelectableGroupDirective implements AfterContentInit {
 	private focused: number;
 	private prevFocused: number;
 	private startFocused: number;
+	private readonly window: Window;
 	private readonly modeToggle = {
 		checkbox: this.checkboxSelect.bind(this),
 		radio: this.radioSelect.bind(this),
@@ -24,6 +25,7 @@ export class ObSelectableGroupDirective implements AfterContentInit {
 	};
 
 	constructor() {
+		this.window = window; // because AoT don't accept interfaces as DI
 		this.mode$.subscribe(mode => {
 			this.role = mode === 'radio' ? 'radiogroup' : 'group';
 			if (mode === 'radio') {
@@ -38,7 +40,7 @@ export class ObSelectableGroupDirective implements AfterContentInit {
 
 	ngAfterContentInit() {
 		// because we don't want every consumer to pipe defer to avoid an ExpressionChangedAfterItHasBeenCheckedError
-		setTimeout(() => this.updateSelection());
+		this.window.setTimeout(() => this.updateSelection());
 	}
 
 	get mode(): 'checkbox' | 'radio' | 'windows' {

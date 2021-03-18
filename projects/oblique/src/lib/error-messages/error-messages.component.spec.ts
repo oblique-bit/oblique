@@ -6,6 +6,7 @@ import {ObMockTranslateParamsModule} from '../translate-params/mock/mock-transla
 import {ObErrorMessagesComponent} from './error-messages.component';
 import {ObErrorMessagesService} from './error-messages.service';
 import {ObFormControlStateDirective} from '../form-control-state/form-control-state.directive';
+import {WINDOW} from '../utilities';
 
 @Component({
 	template: `
@@ -44,7 +45,8 @@ describe('ErrorMessagesComponent', () => {
 			imports: [FormsModule, ObMockTranslateParamsModule],
 			providers: [
 				{provide: ObErrorMessagesService, useValue: errorMessagesServiceMock},
-				{provide: ObFormControlStateDirective, useValue: formControlStateDirectiveMock}
+				{provide: ObFormControlStateDirective, useValue: formControlStateDirectiveMock},
+				{provide: WINDOW, useValue: window}
 			]
 		}).compileComponents();
 	}));

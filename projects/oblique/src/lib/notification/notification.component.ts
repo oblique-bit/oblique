@@ -1,7 +1,8 @@
-import {Component, HostBinding, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, HostBinding, Inject, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 
-import {ObINotification, ObINotificationPrivate} from './notification.model';
+import {WINDOW} from '../utilities';
+import {ObINotificationPrivate} from './notification.model';
 import {ObNotificationService} from './notification.service';
 
 @Component({
@@ -56,8 +57,11 @@ export class ObNotificationComponent implements OnInit {
 	@HostBinding('class.ob-custom') customChannel = false;
 	public notifications: ObINotificationPrivate[] = [];
 	public variant: {[type: string]: string} = {};
+	private readonly window: Window;
 
-	constructor(private readonly notificationService: ObNotificationService) {}
+	constructor(private readonly notificationService: ObNotificationService, @Inject(WINDOW) window: any) {
+		this.window = window; // because AoT don't accept interfaces as DI
+	}
 
 	ngOnInit(): void {
 		this.channel = this.channel || this.notificationService.config.channel;
@@ -97,7 +101,7 @@ export class ObNotificationComponent implements OnInit {
 	public close(notification: ObINotificationPrivate): void {
 		notification.$state = 'out';
 		clearTimeout(notification.timer);
-		setTimeout(() => this.remove(notification), ObNotificationComponent.REMOVE_DELAY);
+		this.window.setTimeout(() => this.remove(notification), ObNotificationComponent.REMOVE_DELAY);
 	}
 
 	/**
@@ -117,7 +121,7 @@ export class ObNotificationComponent implements OnInit {
 	}
 
 	private selfClose(notification: ObINotificationPrivate): void {
-		notification.timer = setTimeout(() => {
+		notification.timer = this.window.setTimeout(() => {
 			notification.occurrences = Math.max(0, notification.occurrences - 1);
 			if (notification.occurrences) {
 				this.selfClose(notification);

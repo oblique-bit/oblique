@@ -1,9 +1,10 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {TranslateService} from '@ngx-translate/core';
 
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues, ObEScrollMode} from '../master-layout.model';
+import {WINDOW} from '../../utilities';
 
 @Injectable({
 	providedIn: 'root'
@@ -15,10 +16,12 @@ export class ObMasterLayoutNavigationService {
 	private readonly scrolled$ = this._scrolled.asObservable();
 	private readonly _refreshed: Subject<void> = new Subject<void>();
 	private readonly refreshed$ = this._refreshed.asObservable();
+	private readonly window: Window;
 	private _isFullWidth = this.config.navigation.isFullWidth;
 	private _scrollMode = this.config.navigation.scrollMode;
 
-	constructor(private readonly config: ObMasterLayoutConfig, translate: TranslateService) {
+	constructor(private readonly config: ObMasterLayoutConfig, translate: TranslateService, @Inject(WINDOW) window: any) {
+		this.window = window; // because AoT don't accept interfaces as DI
 		translate.onLangChange.subscribe(() => this.refresh());
 	}
 
@@ -60,16 +63,16 @@ export class ObMasterLayoutNavigationService {
 
 	refresh() {
 		// postpone the event emission so that Angular has time to apply changes to the DOM
-		setTimeout(() => this._refreshed.next());
+		this.window.setTimeout(() => this._refreshed.next());
 	}
 
 	scrollLeft(offset?: number): void {
 		// postpone the event emission so that Angular has time to apply changes to the DOM
-		setTimeout(() => this._scrolled.next(-(offset || this.config.navigation.scrollDelta)));
+		this.window.setTimeout(() => this._scrolled.next(-(offset || this.config.navigation.scrollDelta)));
 	}
 
 	scrollRight(offset?: number): void {
 		// postpone the event emission so that Angular has time to apply changes to the DOM
-		setTimeout(() => this._scrolled.next(offset || this.config.navigation.scrollDelta));
+		this.window.setTimeout(() => this._scrolled.next(offset || this.config.navigation.scrollDelta));
 	}
 }

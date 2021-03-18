@@ -1,5 +1,3 @@
-import Timer = NodeJS.Timer;
-
 export interface ObINotification {
 	idPrefix?: string;
 	type?: ObENotificationType;
@@ -16,7 +14,7 @@ export interface ObINotification {
 export interface ObINotificationPrivate extends ObINotification {
 	$state?: string;
 	occurrences?: number;
-	timer?: Timer;
+	timer?: number;
 }
 
 export interface ObINotificationConfig {

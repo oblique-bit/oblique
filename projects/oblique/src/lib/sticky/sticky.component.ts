@@ -21,9 +21,14 @@ export class ObStickyComponent implements OnChanges, AfterViewInit {
 	nestedStickySize: string;
 
 	private static readonly SIZES = ['sm', 'md', 'lg'];
+	private readonly window: Window;
+
+	constructor() {
+		this.window = window; // because AoT don't accept interfaces as DI
+	}
 
 	ngAfterViewInit() {
-		setTimeout(() => this.ngOnChanges()); // so that initial values are taken into account
+		this.window.setTimeout(() => this.ngOnChanges()); // so that initial values are taken into account
 	}
 
 	ngOnChanges(): void {

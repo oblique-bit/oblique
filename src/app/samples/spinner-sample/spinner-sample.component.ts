@@ -9,7 +9,11 @@ import {ObMasterLayoutService, ObSpinnerService} from 'oblique';
 export class ObSpinnerSampleComponent implements OnInit {
 	spinnerVisible = false;
 	channel: string = 'demo';
-	constructor(private readonly masterLayoutService: ObMasterLayoutService, private readonly spinnerService: ObSpinnerService) {}
+	private readonly window: Window;
+
+	constructor(private readonly masterLayoutService: ObMasterLayoutService, private readonly spinnerService: ObSpinnerService) {
+		this.window = window; // because AoT don't accept interfaces as DI
+	}
 
 	ngOnInit(): void {
 		//this.masterLayoutService.layout.isFixed = true;
@@ -29,7 +33,7 @@ export class ObSpinnerSampleComponent implements OnInit {
 				break;
 		}
 		if (this.channel === 'default') {
-			setTimeout(() => this.spinnerService.deactivate(this.channel), 5000);
+			this.window.setTimeout(() => this.spinnerService.deactivate(this.channel), 5000);
 		}
 		this.spinnerVisible = !this.spinnerVisible;
 	}

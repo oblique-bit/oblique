@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnDestroy, Optional} from '@angular/core';
+import {AfterViewInit, Component, Inject, Input, OnDestroy, Optional} from '@angular/core';
 import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
 import {merge as observableMerge, Subject} from 'rxjs';
 import {delay, takeUntil} from 'rxjs/operators';
@@ -7,6 +7,7 @@ import {ObFormControlStateDirective} from '../form-control-state/form-control-st
 import {ObErrorMessagesService} from './error-messages.service';
 import {ObThemeService} from '../theme/theme.service';
 import {ObParentFormDirective} from '../nested-form/parent-form.directive';
+import {WINDOW} from '../utilities';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular material mat-error instead
@@ -23,6 +24,7 @@ export class ObErrorMessagesComponent implements AfterViewInit, OnDestroy {
 
 	private readonly form: NgForm | FormGroupDirective;
 	private readonly unsubscribe = new Subject();
+	private readonly window: Window;
 
 	constructor(
 		private readonly errorMessagesService: ObErrorMessagesService,
@@ -30,8 +32,10 @@ export class ObErrorMessagesComponent implements AfterViewInit, OnDestroy {
 		@Optional() private readonly formGroup: ObFormControlStateDirective,
 		@Optional() ngForm: NgForm,
 		@Optional() formGroupDirective: FormGroupDirective,
-		@Optional() private readonly parent: ObParentFormDirective
+		@Optional() private readonly parent: ObParentFormDirective,
+		@Inject(WINDOW) window: any
 	) {
+		this.window = window; // because AoT don't accept interfaces as DI
 		theme.deprecated('error messages', 'form-field/overview#error-messages');
 		this.form = ngForm || formGroupDirective;
 
@@ -73,7 +77,7 @@ export class ObErrorMessagesComponent implements AfterViewInit, OnDestroy {
 		// Reactive forms instantiate the view only after the model is ready. Thus modifying this.errors in the same
 		// tick as ngAfterViewInit will trigger an ExpressionChangedAfterItHasBeenCheckedError
 		if (this.form instanceof FormGroupDirective) {
-			setTimeout(() => this.generateErrorMessages(), 0);
+			this.window.setTimeout(() => this.generateErrorMessages(), 0);
 		}
 	}
 }

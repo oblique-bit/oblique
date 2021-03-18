@@ -1,25 +1,29 @@
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {Observable, throwError} from 'rxjs';
 import {catchError, finalize} from 'rxjs/operators';
 
+import {WINDOW} from '../utilities';
 import {ObNotificationService} from '../notification/notification.module';
 import {ObSpinnerService} from '../spinner/spinner.module';
 import {ObHttpApiInterceptorConfig} from './http-api-interceptor.config';
 import {ObHttpApiInterceptorEvents} from './http-api-interceptor.events';
 import {ObIHttpApiRequest, ObIHttpApiRequestNotification, ObIObliqueHttpErrorResponse} from './http-api-interceptor.model';
-import Timer = NodeJS.Timer;
 
 @Injectable({providedIn: 'root'})
 export class ObHttpApiInterceptor implements HttpInterceptor {
 	private readonly activeRequestUrls: string[] = [];
+	private readonly window: Window;
 
 	constructor(
 		private readonly config: ObHttpApiInterceptorConfig,
 		private readonly interceptorEvents: ObHttpApiInterceptorEvents,
 		private readonly spinner: ObSpinnerService,
-		private readonly notificationService: ObNotificationService
-	) {}
+		private readonly notificationService: ObNotificationService,
+		@Inject(WINDOW) window: any
+	) {
+		this.window = window; // because AoT don't accept interfaces as DI
+	}
 
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		const obliqueRequest = this.broadcast();
@@ -63,11 +67,11 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 		return request.clone(this.isApiCall(request.url) ? {headers: request.headers.set('X-Requested-With', 'XMLHttpRequest')} : undefined);
 	}
 
-	private setTimer(): Timer {
+	private setTimer(): number {
 		// prettier-ignore
 		return !this.config.timeout
 			? undefined
-			: setTimeout(() => this.notificationService.warning('i18n.oblique.http.error.timeout'), this.config.timeout);
+			: this.window.setTimeout(() => this.notificationService.warning('i18n.oblique.http.error.timeout'), this.config.timeout);
 	}
 
 	private broadcast(): ObIHttpApiRequest {

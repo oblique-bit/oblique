@@ -167,7 +167,7 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 				filter(value => value)
 			)
 			.subscribe(() => {
-				setTimeout(() => this.offCanvasClose.nativeElement.focus(), 600);
+				this.window.setTimeout(() => this.offCanvasClose.nativeElement.focus(), 600);
 			});
 	}
 }
