@@ -3,6 +3,7 @@
 @import "../mixins/alert";
 
 .ob-alert {
+	display: block;
 	@include alert-base();
 	margin-bottom: $spacing-default;
 

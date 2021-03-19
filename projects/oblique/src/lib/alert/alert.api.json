@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObAlertComponent",
+      "selector": "ob-alert",
+      "exported": "obAlert",
+      "type": "component",
+      "usage": "This component renders an alert",
+      "since": "6.1.0",
+      "inputs": [
+        {
+          "name": "type",
+          "text": "The type of the alert.",
+          "type": "ObIAlertType",
+          "default": "info",
+          "values": [
+            "success",
+            "info",
+            "warning",
+            "error"
+          ],
+          "since": "6.1.0"
+        }
+      ],
+      "methods": [
+        {
+          "name": "close",
+          "text": "Close the alert",
+          "returns": "void",
+          "since": "6.1.0"
+        }
+      ]
+    }
+  ]
+}
