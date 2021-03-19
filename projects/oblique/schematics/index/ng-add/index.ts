@@ -1,5 +1,5 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {checkPrecondition, getPreconditionVersion} from './ng-add-utils';
+import {addDependency, checkPrecondition, getPreconditionVersion} from './ng-add-utils';
 import {ObIOptionsSchema} from './ng-add.model';
 import {infoMigration, infoText, installDependencies, success, warn} from '../utils';
 import {obliqueFeatures} from './rules/obliqueFeatures';
@@ -15,16 +15,33 @@ export function addOblique(_options: ObIOptionsSchema): Rule {
 function preconditions(): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		infoText(_context, 'Executing migrations of package "@oblique/oblique"');
+
 		checkPrecondition(tree, '@angular/core');
 		checkPrecondition(tree, '@angular/router');
-		const version = getPreconditionVersion(tree, '@angular/localize');
-		if (version) {
-			infoMigration(_context, 'Installing missing peer dependency "@angular/localize"');
-			execSync(`ng add @angular/localize@${version}`);
-		}
+
+		installAngularLocalizeIfMissing(tree, _context);
+		installPopperjsIfMissing(tree, _context);
 
 		return tree;
 	};
+}
+
+function installAngularLocalizeIfMissing(tree: Tree, context: SchematicContext): void {
+	const angularLocalizeVersion = getPreconditionVersion(tree, '@angular/localize');
+
+	if (angularLocalizeVersion) {
+		infoMigration(context, 'Installing missing peer dependency "@angular/localize"');
+		execSync(`ng add @angular/localize@${angularLocalizeVersion}`);
+	}
+}
+
+function installPopperjsIfMissing(tree: Tree, context: SchematicContext): void {
+	const popperjsVersion = getPreconditionVersion(tree, '@popperjs/core');
+
+	if (popperjsVersion) {
+		infoMigration(context, 'Installing missing peer dependency "@popperjs/core"');
+		addDependency(tree, '@popperjs/core');
+	}
 }
 
 function finalize(options: ObIOptionsSchema): Rule {

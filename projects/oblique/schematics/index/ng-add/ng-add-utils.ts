@@ -23,6 +23,7 @@ const versions: {[key: string]: string | versionFunc} = {
 	'@angular/core': `^11.0.0`,
 	'@angular/router': version => `^${version}.0.0`,
 	'@angular/localize': version => `^${version}.0.0`,
+	'@popperjs/core': '^2.5.3',
 
 	// eslint-disable-next-line prettier/prettier
 	jest: '^26.0.0',
