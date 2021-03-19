@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {async, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {AbstractControl, FormBuilder, FormGroup, FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
+import {WINDOW} from '../utilities';
 import {ObSchemaValidationService} from './schema-validation.service';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 import {ObSchemaValidateDirective} from './schema-validator';
@@ -97,7 +98,8 @@ describe('SchemaValidation', () => {
 			beforeEach(async(() => {
 				TestBed.configureTestingModule({
 					declarations: [CONFIG.testComponent, ObSchemaValidationDirective, ObSchemaValidateDirective],
-					imports: [CONFIG.formModule]
+					imports: [CONFIG.formModule],
+					providers: [{provide: WINDOW, useValue: window}]
 				}).compileComponents();
 			}));
 

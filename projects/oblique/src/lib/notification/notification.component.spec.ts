@@ -11,6 +11,7 @@ import {ObNotificationService} from './notification.service';
 import {ObENotificationType, ObINotification} from './notification.model';
 import {ObMockNotificationConfig} from './mock/mock-notification.config';
 import {ObMockNotificationService} from './mock/mock-notification.service';
+import {WINDOW} from '../utilities';
 
 describe('NotificationComponent', () => {
 	let component: ObNotificationComponent;
@@ -27,7 +28,8 @@ describe('NotificationComponent', () => {
 			imports: [CommonModule, NoopAnimationsModule, RouterTestingModule],
 			providers: [
 				{provide: ObNotificationConfig, useClass: ObMockNotificationConfig},
-				{provide: ObNotificationService, useClass: ObMockNotificationService}
+				{provide: ObNotificationService, useClass: ObMockNotificationService},
+				{provide: WINDOW, useValue: window}
 			]
 		}).compileComponents();
 	}));

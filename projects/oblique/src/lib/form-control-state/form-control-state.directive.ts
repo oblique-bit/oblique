@@ -1,10 +1,11 @@
-import {AfterViewInit, ContentChild, Directive, ElementRef, HostBinding, Input, OnDestroy, Optional, Renderer2} from '@angular/core';
+import {AfterViewInit, ContentChild, Directive, ElementRef, HostBinding, Inject, Input, OnDestroy, Optional, Renderer2} from '@angular/core';
 import {FormGroupDirective, FormGroupName, NgControl, NgForm, NgModelGroup} from '@angular/forms';
 import {merge, Subject} from 'rxjs';
 import {delay, takeUntil} from 'rxjs/operators';
 
 import {ObThemeService} from '../theme/theme.service';
 import {ObParentFormDirective} from '../nested-form/parent-form.directive';
+import {WINDOW} from '../utilities';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular default material behavior for both mandatory and error states instead
@@ -28,6 +29,7 @@ export class ObFormControlStateDirective implements AfterViewInit, OnDestroy {
 	private inputContainer;
 	private inputElement;
 	private readonly unsubscribe = new Subject();
+	private readonly window: Window;
 
 	constructor(
 		@Optional() ngForm: NgForm,
@@ -35,10 +37,12 @@ export class ObFormControlStateDirective implements AfterViewInit, OnDestroy {
 		@Optional() formGroupName: FormGroupName,
 		@Optional() modelGroup: NgModelGroup,
 		@Optional() private readonly parent: ObParentFormDirective,
+		@Inject(WINDOW) window: any,
 		theme: ObThemeService,
 		private readonly elementRef: ElementRef,
 		private readonly renderer: Renderer2
 	) {
+		this.window = window; // because AoT don't accept interfaces as DI
 		theme.deprecated('form control state', 'form-field/overview#error-messages');
 		this.form = ngForm || formGroupDirective;
 		this.group = modelGroup || formGroupName;
@@ -83,7 +87,7 @@ export class ObFormControlStateDirective implements AfterViewInit, OnDestroy {
 		// Reactive forms instantiate the view only after the model is ready. Thus modifying this.errors in the same
 		// tick as ngAfterViewInit will trigger an ExpressionChangedAfterItHasBeenCheckedError
 		if (this.form instanceof FormGroupDirective) {
-			setTimeout(() => this.generateState(), 0);
+			this.window.setTimeout(() => this.generateState(), 0);
 		}
 	}
 

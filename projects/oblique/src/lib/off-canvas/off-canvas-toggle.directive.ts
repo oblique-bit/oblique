@@ -1,5 +1,6 @@
-import {Directive, HostListener} from '@angular/core';
+import {Directive, HostListener, Inject} from '@angular/core';
 import {ObOffCanvasService} from './off-canvas.service';
+import {WINDOW} from '../utilities';
 
 @Directive({
 	selector: '[obOffCanvasToggle]',
@@ -8,12 +9,15 @@ import {ObOffCanvasService} from './off-canvas.service';
 	host: {class: 'ob-off-canvas-toggle'}
 })
 export class ObOffCanvasToggleDirective {
-	constructor(private readonly offCanvas: ObOffCanvasService) {}
+	private readonly window: Window;
+	constructor(private readonly offCanvas: ObOffCanvasService, @Inject(WINDOW) window: any) {
+		this.window = window; // because AoT don't accept interfaces as DI
+	}
 
 	@HostListener('click')
 	@HostListener('keyup.Enter')
 	toggle() {
 		// delay the toggle so that any other feature that relies on click has time to update its status
-		setTimeout(() => (this.offCanvas.open = !this.offCanvas.open));
+		this.window.setTimeout(() => (this.offCanvas.open = !this.offCanvas.open));
 	}
 }

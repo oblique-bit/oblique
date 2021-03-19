@@ -2,6 +2,7 @@ import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {of} from 'rxjs';
 
+import {WINDOW} from '../../utilities';
 import {ObMasterLayoutNavigationService} from './master-layout-navigation.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 
@@ -17,7 +18,8 @@ describe('MasterLayoutNavigationService', () => {
 		TestBed.configureTestingModule({
 			providers: [
 				{provide: TranslateService, useValue: translateMock},
-				{provide: ObMasterLayoutConfig, useValue: mockMasterLayout}
+				{provide: ObMasterLayoutConfig, useValue: mockMasterLayout},
+				{provide: WINDOW, useValue: window}
 			]
 		})
 	);

@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {of} from 'rxjs';
 import {finalize} from 'rxjs/operators';
+import {WINDOW} from '../utilities';
 import {ObHttpApiInterceptorEvents} from './http-api-interceptor.events';
 import {ObHttpApiInterceptorConfig} from './http-api-interceptor.config';
 import {ObIHttpApiRequest} from './http-api-interceptor.model';
@@ -69,7 +70,8 @@ describe('HttpApiInterceptor', () => {
 				DataService,
 				{provide: ObHttpApiInterceptorEvents, useClass: MockHttpApiInterceptorEvents},
 				{provide: ObSpinnerService, useClass: MockSpinnerService},
-				{provide: ObNotificationService, useClass: MockNotificationService}
+				{provide: ObNotificationService, useClass: MockNotificationService},
+				{provide: WINDOW, useValue: window}
 			]
 		});
 

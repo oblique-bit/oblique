@@ -12,6 +12,7 @@ import {WINDOW} from '../utilities';
 })
 export class ObTopControlComponent {
 	private readonly window: Window;
+
 	constructor(private readonly config: ObMasterLayoutConfig, @Inject(WINDOW) window) {
 		this.window = window; // because AoT don't accept interfaces as DI
 	}
@@ -24,7 +25,7 @@ export class ObTopControlComponent {
 	private scrollToTop(scrollStep: number): void {
 		if (this.window.scrollY) {
 			this.window.scrollBy(0, -scrollStep);
-			setTimeout(() => this.scrollToTop(scrollStep), 15);
+			this.window.setTimeout(() => this.scrollToTop(scrollStep), 15);
 		}
 	}
 }

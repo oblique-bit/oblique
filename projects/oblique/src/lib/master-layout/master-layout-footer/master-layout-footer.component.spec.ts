@@ -4,6 +4,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObMasterLayoutFooterComponent} from './master-layout-footer.component';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
+import {WINDOW} from '../../utilities';
 
 describe('MasterLayoutFooterComponent', () => {
 	let component: ObMasterLayoutFooterComponent;
@@ -13,7 +14,10 @@ describe('MasterLayoutFooterComponent', () => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
 			declarations: [ObMasterLayoutFooterComponent, ObMockTranslatePipe],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			providers: [
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: WINDOW, useValue: window}
+			]
 		}).compileComponents();
 	}));
 

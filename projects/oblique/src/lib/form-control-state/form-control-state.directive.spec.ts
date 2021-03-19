@@ -2,6 +2,7 @@ import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/t
 import {FormBuilder, FormControlName, FormsModule, NgModel, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {By} from '@angular/platform-browser';
+import {WINDOW} from '../utilities';
 import {ObFormControlStateDirective} from './form-control-state.directive';
 
 @Component({
@@ -69,7 +70,8 @@ describe('ObFormControlStateDirective', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [ObFormControlStateDirective, TestWithPristineValidationComponent, TestComponent, ReactiveTestComponent],
-			imports: [FormsModule, ReactiveFormsModule]
+			imports: [FormsModule, ReactiveFormsModule],
+			providers: [{provide: WINDOW, useValue: window}]
 		}).compileComponents();
 	}));
 
