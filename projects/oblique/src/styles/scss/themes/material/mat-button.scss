@@ -1,31 +1,18 @@
 @import "../../core/variables";
+@import "./mixins/mat-button";
 
-.mat-button-base.mat-primary:not([disabled]) {
-	border-color: $brand-primary;
-
-	&:hover {
-		background-color: $brand-light;
-		color: $brand-primary;
+.mat-button-base:not([disabled]) {
+	&:not(.mat-primary):not(.mat-accent):not(.mat-warn) {
+		@include button-styles($brand-default, $gray-lighter);
 	}
-
-	&:focus {
-		outline: none;
+	&.mat-primary {
+		@include button-styles($brand-primary, $brand-light);
 	}
-
-	.ob-outline &:focus {
-		box-shadow: 0 0 $spacing-xs 0 $brand-primary;
-
-		&:not(.mat-icon-button):not(.mat-fab):not(.mat-mini-fab) {
-			outline: 2px solid $brand-primary;
-			outline-offset: -4px;
-
-			&.mat-flat-button,
-			&.mat-raised-button {
-				&[color] {
-					outline-color: $brand-light;
-				}
-			}
-		}
+	&.mat-accent {
+		@include button-styles($brand-primary, $brand-light);
+	}
+	&.mat-warn {
+		@include button-styles($brand-error, $brand-error-light);
 	}
 }
 
