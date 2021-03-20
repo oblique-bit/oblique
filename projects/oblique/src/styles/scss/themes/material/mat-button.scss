@@ -16,7 +16,7 @@
 	}
 }
 
-.mat-button-wrapper {
+.mat-button-base:not(.mat-icon-button):not(.mat-fab):not(.mat-mini-fab) .mat-button-wrapper {
 	.fa,
 	.fas,
 	.far,
@@ -33,5 +33,13 @@
 	&.mat-flat-button,
 	&.mat-raised-button {
 		border-radius: 2px;
+	}
+}
+
+.mat-fab,
+.mat-mini-fab {
+	.mat-icon.fa::before {
+		position: relative;
+		top: 5px;
 	}
 }
