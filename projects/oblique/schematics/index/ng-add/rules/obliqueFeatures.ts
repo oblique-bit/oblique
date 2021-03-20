@@ -21,7 +21,8 @@ export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 			addUnknownRoute(options.unknownRoute),
 			addInterceptors(options.httpInterceptors),
 			addBanner(options.banner),
-			addDefaultHomeComponent(options.theme, options.prefix)
+			addDefaultHomeComponent(options.theme, options.prefix),
+			addExternalLink(options.externalLink)
 		])(tree, _context);
 }
 
@@ -149,4 +150,15 @@ function addDefaultComponentRouteToAppRoutingModule(tree: Tree): void {
 		changes.push(addRouteDeclarationToModule(sourceFile, fileName, "{path: 'home', component: HomeComponent}"));
 		applyChanges(tree, routingModule, changes);
 	}
+}
+
+function addExternalLink(externalLink: boolean): Rule {
+	return (tree: Tree, _context: SchematicContext) => {
+		if (externalLink) {
+			const sourceFile = createSrcFile(tree, appModulePath);
+			const changes: Change[] = addImportToModule(sourceFile, appModulePath, 'ObExternalLinkModule', ObliquePackage);
+			return applyChanges(tree, appModulePath, changes);
+		}
+		return tree;
+	};
 }

@@ -26,6 +26,7 @@ export {
 	ObErrorMessagesModule,
 	ObErrorMessagesService
 } from './lib/error-messages/error-messages.module';
+export {ObExternalLinkModule, ObExternalLinkDirective, EXTERNAL_LINK, ObIExternalLink, ObEExternalLinkIcon} from './lib/external-link/external-link.module';
 export {ObFormControlStateDirective, ObFormControlStateModule} from './lib/form-control-state/form-control-state.module';
 export {
 	ObHttpApiInterceptor,

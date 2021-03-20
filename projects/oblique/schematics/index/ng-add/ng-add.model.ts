@@ -2,6 +2,7 @@ export interface ObIOptionsSchema {
 	ajv: boolean;
 	banner: boolean;
 	eslint: boolean;
+	externalLink: boolean;
 	font: string;
 	httpInterceptors: boolean;
 	husky: boolean;

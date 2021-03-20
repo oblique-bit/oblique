@@ -6,6 +6,7 @@ import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 import {ObCollapseSampleComponent} from './collapse/collapse-sample.component';
 import {ObColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
 import {ObDatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
+import {ObExternalLinkComponent} from './external-link/external-link.component';
 import {ObFormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
 import {ObInputClearSampleComponent} from './input-clear/input-clear.component';
 import {ObMasterLayoutSampleComponent} from './master-layout/master-layout-sample.component';
@@ -37,6 +38,7 @@ const samplesRoutes: Routes = [
 	{path: 'column-layout', component: ObColumnLayoutSampleComponent},
 	{path: 'datepicker', component: ObDatepickerSampleComponent},
 	{path: 'error-messages', component: ObErrorMessagesSampleComponent},
+	{path: 'external-link', component: ObExternalLinkComponent},
 	{path: 'form-control-state', component: ObFormControlStateSampleComponent},
 	{path: 'http-interceptor', component: ObHttpInterceptorSampleComponent},
 	{path: 'input-clear', component: ObInputClearSampleComponent},
