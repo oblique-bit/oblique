@@ -27,7 +27,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatTabsModule} from '@angular/material/tabs';
-import {ObColumnLayoutModule, ObSelectableModule, ObInputClearModule} from 'oblique';
+import {ObColumnLayoutModule, ObSelectableModule, ObInputClearModule, ObButtonModule} from 'oblique';
+import {ObButtonComponent} from './button/button.component';
 import {ObCardComponent} from './card/card.component';
 import {ObChipsComponent} from './chips/chips.component';
 import {ObSliderComponent} from './slider/slider.component';
@@ -44,6 +45,7 @@ import {ObTabsComponent} from './tabs/tabs.component';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: ObBadgeComponent},
+	{path: 'button', component: ObButtonComponent},
 	{path: 'card', component: ObCardComponent},
 	{path: 'chips', component: ObChipsComponent},
 	{path: 'dialog', component: ObDialogComponent},
@@ -66,6 +68,7 @@ const appRoutes: Routes = [
 		ObDialogComponent,
 		ObExampleDialogComponent,
 		ObExpansionPanelComponent,
+		ObButtonComponent,
 		ObProgressBarComponent,
 		ObSliderComponent,
 		ObStepperHorizontalComponent,
@@ -76,6 +79,7 @@ const appRoutes: Routes = [
 	],
 	imports: [
 		CommonModule,
+		ObButtonModule,
 		ObColumnLayoutModule,
 		ObInputClearModule,
 		ReactiveFormsModule,
