@@ -13,12 +13,18 @@
 	}
 
 	.ob-outline &:focus {
-		outline: 2px solid $brand-primary;
-		outline-offset: -4px;
-		box-shadow: 0 0 $spacing-xs 0 $brand-default;
+		box-shadow: 0 0 $spacing-xs 0 $brand-primary;
 
-		&.mat-flat-button {
-			outline-color: $brand-light;
+		&:not(.mat-icon-button):not(.mat-fab):not(.mat-mini-fab) {
+			outline: 2px solid $brand-primary;
+			outline-offset: -4px;
+
+			&.mat-flat-button,
+			&.mat-raised-button {
+				&[color] {
+					outline-color: $brand-light;
+				}
+			}
 		}
 	}
 }
