@@ -49,15 +49,6 @@
           "type": "Observable<UIEvent>",
           "since": "6.1.0"
         }
-      ],
-      "methods": [
-        {
-          "name": "outsideClick$",
-          "text": "Emits when any element, except the targets and their descendent, is clicked",
-          "returns": "Observable<MouseEvent>",
-          "arguments": ["...targets: HTMLElement[]"],
-          "since": "6.1.0"
-        }
       ]
     },
     {
