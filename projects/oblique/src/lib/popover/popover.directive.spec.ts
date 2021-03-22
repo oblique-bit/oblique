@@ -1,6 +1,7 @@
 import {Component, NO_ERRORS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
+import {WINDOW} from '../utilities';
 import {ObPopoverDirective} from './popover.directive';
 
 @Component({
@@ -22,6 +23,7 @@ describe('Popover', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			declarations: [TestPopoverComponent, ObPopoverDirective],
+			providers: [{provide: WINDOW, useValue: window}],
 			schemas: [NO_ERRORS_SCHEMA]
 		});
 		fixture = TestBed.createComponent(TestPopoverComponent);
