@@ -35,6 +35,7 @@ export class AppComponent {
 				{url: 'error-messages', label: 'Error messages'},
 				{url: 'external-link', label: 'External-link'},
 				{url: 'form-control-state', label: 'i18n.routes.samples.form-control-state.title'},
+				{url: 'global-events', label: 'Global events'},
 				{url: 'http-interceptor', label: 'i18n.routes.samples.http-interceptor.title'},
 				{url: 'input-clear', label: 'Input clear'},
 				{url: 'language', label: 'Language'},

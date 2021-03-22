@@ -38,6 +38,7 @@ import {ObSchemaValidationSampleComponent} from './schema-validation/schema-vali
 import {ObUnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
 import {ObUnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {ObUnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
+import {ObGlobalEventsSampleComponent} from './global-events/global-events-sample.component';
 import {ObHttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
 import {ObStickySampleComponent} from './sticky/sticky-sample.component';
 import {ObFormSampleComponent} from './form/form.component';
@@ -139,6 +140,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 		ObErrorMessagesSampleComponent,
 		ObFormSampleComponent,
 		ObFormControlStateSampleComponent,
+		ObGlobalEventsSampleComponent,
 		ObHttpInterceptorSampleComponent,
 		ObInputClearSampleComponent,
 		ObLanguageSampleComponent,
