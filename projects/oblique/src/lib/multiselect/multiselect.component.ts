@@ -22,12 +22,12 @@ import {
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {filter, takeUntil} from 'rxjs/operators';
-
+import {Subject} from 'rxjs';
 import {ObMultiselectConfig} from './multiselect.config';
 import {ObMultiselectTexts} from './multiselect.texts';
 import {ObThemeService} from '../theme/theme.service';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
-import {Subject} from 'rxjs';
+import {obOutsideFilter} from '../global-events/outsideFilter';
 
 /**
  * @deprecated with material theme since version 4.0.0. Use angular material select instead
@@ -143,9 +143,9 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 	}
 
 	ngAfterViewInit() {
-		this.globalEventsService
-			.outsideClick$(this.element.nativeElement)
+		this.globalEventsService.click$
 			.pipe(
+				obOutsideFilter(this.element.nativeElement),
 				filter(() => this.isVisible),
 				takeUntil(this.unsubscribe)
 			)
