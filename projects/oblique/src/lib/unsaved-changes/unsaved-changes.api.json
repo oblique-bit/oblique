@@ -5,15 +5,65 @@
       "name": "ObUnsavedChangesDirective",
       "selector": "[obUnsavedChanges]",
       "type": "directive",
-      "usage": "Applied on a <code>&lt;form&gt;</code> or any element with <code>ngModelGroup</code> directive. The host element needs an <code>id</code>.",
+      "usage": "It should be applied on a <code>&lt;form&gt;</code> or any element with <code>ngModelGroup</code> directive. The host element needs an <code>id</code>.",
       "since": "2.0.0",
-      "updated": "6.0.0"
+      "inputs": [
+        {
+          "name": "id",
+          "text": "The HTML <code>id</code> attribute. It is mandatory for the directive to work.",
+          "type": "string",
+          "default": "undefined",
+          "since": "2.0.0"
+        }
+      ]
     },
     {
-      "name": "UnsavedChangesGuard",
-      "usage": "Apply to routes that have to be protected",
+      "name": "ObUnsavedChangesGuard",
+      "usage": "It have to be applied to each route that have to be protected. It will check for changes in each element marked with <code>ObUnsavedChangesDirective</code>.",
       "type": "injectable(guard)",
       "since": "2.0.0"
+    },
+    {
+      "name": "ObUnsavedChangesService",
+      "usage": "This service handles the unsaved changes monitored by the <code>ObUnsavedChangesDirective</code>. It should only be accessed through the <code>ObUnsavedChangesGuard</code> or the <code>ObUnsavedChangesDirective</code>",
+      "type": "service",
+      "since": "2.0.0",
+      "methods": [
+        {
+          "name": "watch",
+          "text": "Starts watching the given form for changes.",
+          "returns": "void",
+          "arguments": [
+            "formId: string",
+            "form: ControlContainer"
+          ],
+          "since": "2.0.0"
+        },
+        {
+          "name": "unWatch",
+          "text": "Stops watching the given form for changes.",
+          "returns": "void",
+          "arguments": [
+            "formId: string"
+          ],
+          "since": "2.0.0"
+        },
+        {
+          "name": "canDeactivate",
+          "text": "Checks if there are unsaved changes in the watched forms and ask for confirmation if there are.",
+          "returns": "boolean",
+          "since": "2.0.0"
+        },
+        {
+          "name": "ignoreChanges",
+          "text": "Same as <code>canDeactivate</code> but limited to the given form",
+          "returns": "boolean",
+          "arguments": [
+            "formsIds: string[]"
+          ],
+          "since": "2.0.0"
+        }
+      ]
     }
   ]
 }
