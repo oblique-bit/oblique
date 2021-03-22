@@ -1,6 +1,6 @@
 import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Inject, Input, Output} from '@angular/core';
 import {MatDatepicker} from '@angular/material/datepicker';
-import {FormControl} from '@angular/forms';
+import {FormControl, NgModel} from '@angular/forms';
 import {WINDOW} from '../utilities';
 
 @Directive({
@@ -10,7 +10,7 @@ import {WINDOW} from '../utilities';
 	host: {class: 'ob-input-clear'}
 })
 export class ObInputClearDirective {
-	@Input('obInputClear') control: HTMLInputElement | FormControl;
+	@Input('obInputClear') control: HTMLInputElement | FormControl | NgModel;
 	@Input() focusOnClear = true;
 	@Input() datePickerRef: MatDatepicker<any>;
 	@Output() onClear = new EventEmitter<MouseEvent>();
@@ -44,12 +44,19 @@ export class ObInputClearDirective {
 
 	private clearInputField(): void {
 		this.clearReactiveForm();
+		this.clearTemplateDrivenForm();
 		this.clearHtmlInput();
 	}
 
 	private clearReactiveForm(): void {
 		if (this.control instanceof FormControl) {
 			this.control.patchValue(null);
+		}
+	}
+
+	private clearTemplateDrivenForm(): void {
+		if (this.control instanceof NgModel) {
+			this.control.control.patchValue(null);
 		}
 	}
 

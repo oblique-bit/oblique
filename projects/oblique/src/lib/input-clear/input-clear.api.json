@@ -12,8 +12,8 @@
       "inputs": [
         {
           "name": "obInputClear",
-          "text": "Reference to the HTML input element or the <code>FormControl</code> to be cleared.",
-          "type": "ElementRef | FormControl",
+          "text": "Reference to the HTML input element, the <code>NgModel</code> or the <code>FormControl</code> to be cleared.",
+          "type": "ElementRef | FormControl | NgModel",
           "default": "undefined",
           "since": "2.0.0",
           "updated": "6.1.0"
