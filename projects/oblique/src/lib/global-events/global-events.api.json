@@ -59,6 +59,21 @@
           "since": "6.1.0"
         }
       ]
+    },
+    {
+      "name": "obOutsideFilter",
+      "type": "function",
+      "usage": "This function is a custom rxjs operator and is meant to be used with <code>ObGlobalEventsService</code> mouse and keyboard events: <code>obGlobalEventsService.click$.pipe(obOutsideFilter(HTMLElement))</code>",
+      "since": "6.1.0",
+      "methods": [
+        {
+          "name": "obOutsideFilter",
+          "text": "Filters out events whose target is one of the provided elements or their descendents",
+          "since": "6.1.0",
+          "returns": "Observable<Event>",
+          "arguments": ["...elements: HTMLElement[]"]
+        }
+      ]
     }
   ]
 }
