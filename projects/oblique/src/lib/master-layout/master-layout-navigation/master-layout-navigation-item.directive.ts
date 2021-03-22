@@ -7,6 +7,7 @@ import {ObEMasterLayoutEventValues} from '../master-layout.model';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 import {merge, Subject} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
+import {obOutsideFilter} from '../../global-events/outsideFilter';
 
 @Directive({
 	selector: '[obMasterLayoutNavigationItem]',
@@ -29,7 +30,10 @@ export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnD
 	) {}
 
 	ngAfterViewInit() {
-		merge(this.globalEventsService.outsideClick$(this.element.nativeElement), this.globalEventsService.keyUp$.pipe(filter(event => event.key === 'Escape')))
+		merge(
+			this.globalEventsService.click$.pipe(obOutsideFilter(this.element.nativeElement)),
+			this.globalEventsService.keyUp$.pipe(filter(event => event.key === 'Escape'))
+		)
 			.pipe(
 				filter(() => this.show),
 				takeUntil(this.unsubscribe)
