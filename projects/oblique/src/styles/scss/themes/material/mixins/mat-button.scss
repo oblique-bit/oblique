@@ -1,0 +1,30 @@
+@import "../../../core/variables";
+
+@mixin button-styles($color, $color-light) {
+	border-color: $color;
+
+	&:hover {
+		background-color: $color-light;
+		color: $color;
+	}
+
+	&:focus {
+		outline: none;
+	}
+
+	.ob-outline &:focus {
+		box-shadow: 0 0 $spacing-xs 0 $color;
+
+		&:not(.mat-icon-button):not(.mat-fab):not(.mat-mini-fab) {
+			outline: 2px solid $color;
+			outline-offset: -4px;
+
+			&.mat-flat-button,
+			&.mat-raised-button {
+				&[color] {
+					outline-color: $color-light;
+				}
+			}
+		}
+	}
+}
