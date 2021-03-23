@@ -1,7 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {fromEvent, Observable} from 'rxjs';
-import {filter} from 'rxjs/operators';
 import {WINDOW} from '../utilities';
 
 @Injectable({
@@ -24,11 +23,5 @@ export class ObGlobalEventsService {
 		this.keyUp$ = fromEvent(document, 'keyup');
 		this.scroll$ = fromEvent(window, 'scroll');
 		this.resize$ = fromEvent(window, 'resize');
-	}
-
-	public outsideClick$(...targets: HTMLElement[]): Observable<MouseEvent> {
-		return this.click$.pipe(
-			filter(event => targets.reduce((outsideClick: boolean, target: HTMLElement) => outsideClick && !target.contains(event.target as Node), true))
-		);
 	}
 }

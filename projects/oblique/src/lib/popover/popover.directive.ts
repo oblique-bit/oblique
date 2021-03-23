@@ -1,9 +1,11 @@
 import {Directive, ElementRef, HostBinding, HostListener, Inject, Input, OnChanges, OnDestroy, OnInit, Renderer2, TemplateRef} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {createPopper, Instance, Options, Placement} from '@popperjs/core';
-import {filter, map, takeUntil} from 'rxjs/operators';
-import {fromEvent, Subject} from 'rxjs';
+import {filter, takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 import {defaultConfig} from './popover.model';
+import {ObGlobalEventsService} from '../global-events/global-events.service';
+import {obOutsideFilter} from '../global-events/outsideFilter';
 
 @Directive({
 	selector: '[obPopover]',
@@ -25,7 +27,12 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	private isDisplayed = false;
 	private popover: HTMLDivElement;
 
-	constructor(el: ElementRef, private readonly renderer: Renderer2, @Inject(DOCUMENT) private readonly document: any) {
+	constructor(
+		el: ElementRef,
+		private readonly renderer: Renderer2,
+		@Inject(DOCUMENT) document: any,
+		private readonly globalEventsService: ObGlobalEventsService
+	) {
 		this.body = document.body;
 		this.host = el.nativeElement;
 	}
@@ -76,7 +83,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 
 	private buildPopover(): void {
 		this.popover = this.renderer.createElement('div');
-		this.target.createEmbeddedView(this.document.body).rootNodes.forEach(node => this.renderer.appendChild(this.popover, node));
+		this.target.createEmbeddedView(this.body).rootNodes.forEach(node => this.renderer.appendChild(this.popover, node));
 		this.renderer.addClass(this.popover, 'ob-popover-content');
 		this.renderer.setAttribute(this.popover, 'role', 'tooltip');
 		this.renderer.setAttribute(this.popover, 'id', this.idContent);
@@ -86,11 +93,9 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	}
 
 	private outsideClick(): void {
-		fromEvent(this.document, 'click')
+		this.globalEventsService.click$
 			.pipe(
-				map((event: MouseEvent) => event.target as Node),
-				filter(target => !this.host.contains(target)),
-				filter(target => !this.popover.contains(target)),
+				obOutsideFilter(this.host, this.popover),
 				filter(() => this.isDisplayed),
 				takeUntil(this.unsubscribe)
 			)

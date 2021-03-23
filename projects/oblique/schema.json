@@ -47,7 +47,8 @@
               "injectable(other)",
               "enum",
               "interface",
-              "type"
+              "type",
+              "function"
             ]
           },
           "variables": {

@@ -31,6 +31,7 @@ import {ObLanguageSampleComponent} from './language/language-sample.component';
 import {ObSearchBoxSampleComponent} from './search-box/search-box.component';
 import {ObPopoverComponent} from './popover/popover.component';
 import {ObAlertSampleComponent} from './alert/alert.component';
+import {ObGlobalEventsSampleComponent} from './global-events/global-events-sample.component';
 
 const samplesRoutes: Routes = [
 	{path: 'alert', component: ObAlertSampleComponent},
@@ -40,6 +41,7 @@ const samplesRoutes: Routes = [
 	{path: 'error-messages', component: ObErrorMessagesSampleComponent},
 	{path: 'external-link', component: ObExternalLinkComponent},
 	{path: 'form-control-state', component: ObFormControlStateSampleComponent},
+	{path: 'global-events', component: ObGlobalEventsSampleComponent},
 	{path: 'http-interceptor', component: ObHttpInterceptorSampleComponent},
 	{path: 'input-clear', component: ObInputClearSampleComponent},
 	{path: 'language', component: ObLanguageSampleComponent},
