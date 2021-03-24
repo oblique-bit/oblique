@@ -7,6 +7,7 @@ import {WINDOW} from '../utilities';
 @Injectable({providedIn: 'root'})
 export class ObUnsavedChangesService {
 	private readonly controlContainer: {[key: string]: ControlContainer} = {};
+	public isActive = true;
 
 	constructor(private readonly translateService: TranslateService, private readonly popUpService: ObPopUpService, @Inject(WINDOW) window) {
 		window.addEventListener('beforeunload', e => this.onUnload(e));
@@ -21,10 +22,12 @@ export class ObUnsavedChangesService {
 		delete this.controlContainer[formId];
 	}
 
+	// Todo: remove. because: ignoreChanges has the same job
 	canDeactivate(): boolean {
 		return this.ignoreChanges();
 	}
 
+	// Todo: (because of return type of boolean) rename method e.g is...() has...() to predicate as a question or use the predicate as an assertion. @see also https://dev.to/michi/tips-on-naming-boolean-variables-cleaner-code-35ig
 	ignoreChanges(formIds?: string[]): boolean {
 		return this.hasPendingChanges(formIds) ? this.popUpService.confirm(this.message()) : true;
 	}
@@ -33,15 +36,15 @@ export class ObUnsavedChangesService {
 		if (this.hasPendingChanges()) {
 			const confirmationMessage = this.message();
 			event.returnValue = confirmationMessage;
-
 			return confirmationMessage;
 		}
-
 		return null;
 	}
 
 	private hasPendingChanges(ids: string[] = Object.keys(this.controlContainer)): boolean {
-		return Object.keys(this.controlContainer).filter(formId => ids.indexOf(formId) > -1 && this.controlContainer[formId].dirty).length > 0;
+		const includesPendingChanges =
+			Object.keys(this.controlContainer).filter(formId => ids.indexOf(formId) > -1 && this.controlContainer[formId].dirty).length > 0;
+		return this.isActive && includesPendingChanges;
 	}
 
 	private message(): string {

@@ -14,6 +14,14 @@
           "type": "string",
           "default": "undefined",
           "since": "2.0.0"
+        },
+        {
+          "name": "isActive",
+          "text": "Controls activation of the directive. When false, then changes on the linked form are not monitored anymore.",
+          "type": "boolean",
+          "default": true,
+          "isOptional": true,
+          "since": "6.1.0"
         }
       ]
     },
@@ -28,6 +36,16 @@
       "usage": "This service handles the unsaved changes monitored by the <code>ObUnsavedChangesDirective</code>. It should only be accessed through the <code>ObUnsavedChangesGuard</code> or the <code>ObUnsavedChangesDirective</code>",
       "type": "service",
       "since": "2.0.0",
+      "variables": [
+        {
+          "name": "isActive",
+          "text": "Controls activation of the feature. When false, then changes are globally not monitored anymore.",
+          "type": "boolean",
+          "default": true,
+          "isOptional": true,
+          "since": "6.1.0"
+        }
+      ],
       "methods": [
         {
           "name": "watch",

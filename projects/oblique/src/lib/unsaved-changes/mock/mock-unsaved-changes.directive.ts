@@ -6,4 +6,5 @@ import {Directive, Input} from '@angular/core';
 })
 export class ObMockUnsavedChangesDirective {
 	@Input() id;
+	@Input() isActive = true;
 }
