@@ -1,4 +1,4 @@
-import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Inject, Input, Output} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Inject, Input, OnInit, Output} from '@angular/core';
 import {MatDatepicker} from '@angular/material/datepicker';
 import {FormControl, NgModel} from '@angular/forms';
 import {WINDOW} from '../utilities';
@@ -9,7 +9,7 @@ import {WINDOW} from '../utilities';
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-input-clear'}
 })
-export class ObInputClearDirective {
+export class ObInputClearDirective implements OnInit {
 	@Input('obInputClear') control: HTMLInputElement | FormControl | NgModel;
 	@Input() focusOnClear = true;
 	@Input() datePickerRef: MatDatepicker<any>;
@@ -26,6 +26,14 @@ export class ObInputClearDirective {
 				parent.classList.add('ob-text-control');
 			}
 		});
+	}
+
+	ngOnInit() {
+		if (!(this.control instanceof HTMLInputElement) && !(this.control instanceof FormControl) && !(this.control instanceof NgModel)) {
+			console.warn(
+				'ObInputClearDirective: illegal value for obInputClear Input, please use one of the following: HTMLInputElement, FormControl or NgModel.'
+			);
+		}
 	}
 
 	@HostListener('click', ['$event'])

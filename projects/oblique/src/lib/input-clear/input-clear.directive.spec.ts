@@ -223,6 +223,7 @@ describe('InputClear', () => {
 		});
 
 		beforeEach(() => {
+			jest.spyOn(console, 'warn');
 			fixture = TestBed.createComponent(WrongConfigurationTestComponent);
 			component = fixture.componentInstance;
 			fixture.detectChanges();
@@ -239,6 +240,12 @@ describe('InputClear', () => {
 
 			it('should not clear the input field', () => {
 				expect(input.value).toEqual('testInput');
+			});
+
+			it('should write an warn message in the console', () => {
+				expect(console.warn).toHaveBeenCalledWith(
+					'ObInputClearDirective: illegal value for obInputClear Input, please use one of the following: HTMLInputElement, FormControl or NgModel.'
+				);
 			});
 		});
 	});
