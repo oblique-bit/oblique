@@ -44,7 +44,8 @@
   "i18n.oblique.chips.marketing": "Marketing",
   "i18n.oblique.chips.management": "Management",
   "i18n.oblique.chips.hr": "HR",
-  "i18n.oblique.chips.cleaning": "Cleaning"
+  "i18n.oblique.chips.cleaning": "Cleaning",
+  "i18n.validation.invalidDateMin": "Date must be after: {{value}}"
 }
 
 
