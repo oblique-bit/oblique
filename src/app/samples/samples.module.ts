@@ -84,6 +84,7 @@ import {ObSearchBoxSampleComponent} from './search-box/search-box.component';
 import {ObPopoverComponent} from './popover/popover.component';
 import {ObAlertSampleComponent} from './alert/alert.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {ObHorizontalFormsSampleComponent} from './horizontal-forms/horizontal-forms.component';
 
 @NgModule({
 	imports: [
@@ -141,6 +142,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 		ObFormSampleComponent,
 		ObFormControlStateSampleComponent,
 		ObGlobalEventsSampleComponent,
+		ObHorizontalFormsSampleComponent,
 		ObHttpInterceptorSampleComponent,
 		ObInputClearSampleComponent,
 		ObLanguageSampleComponent,

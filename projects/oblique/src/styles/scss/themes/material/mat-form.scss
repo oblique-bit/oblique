@@ -1,0 +1,14 @@
+.ob-inline-form {
+	> label {
+		margin-top: 10px;
+	}
+
+	.mat-form-field {
+		width: auto;
+	}
+
+	.mat-radio-button,
+	.mat-checkbox {
+		margin-top: 8px;
+	}
+}

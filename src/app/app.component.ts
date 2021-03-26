@@ -36,6 +36,7 @@ export class AppComponent {
 				{url: 'external-link', label: 'External-link'},
 				{url: 'form-control-state', label: 'i18n.routes.samples.form-control-state.title'},
 				{url: 'global-events', label: 'Global events'},
+				{url: 'horizontal-forms', label: 'Horizontal Forms'},
 				{url: 'http-interceptor', label: 'i18n.routes.samples.http-interceptor.title'},
 				{url: 'input-clear', label: 'Input clear'},
 				{url: 'language', label: 'Language'},

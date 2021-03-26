@@ -123,3 +123,11 @@ textarea {
 .form-actions {
 	text-align: right;
 }
+
+.ob-inline-form {
+	display: flex;
+
+	> * + * {
+		margin-left: $spacing-default;
+	}
+}

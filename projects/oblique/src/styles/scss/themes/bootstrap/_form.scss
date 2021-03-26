@@ -106,3 +106,13 @@ a.form-control-plaintext {
 		}
 	}
 }
+
+.ob-inline-form {
+	label {
+		word-break: normal;
+	}
+
+	> label {
+		margin-top: 8px;
+	}
+}
