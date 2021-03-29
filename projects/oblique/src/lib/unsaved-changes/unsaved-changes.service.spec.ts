@@ -4,7 +4,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {ObPopUpService} from '../pop-up/pop-up.service';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 import {ObMockPopUpModule} from '../pop-up/_mock/mock-pop-up.module';
-import {windowProvider, WINDOW} from '../utilities';
+import {WINDOW, windowProvider} from '../utilities';
 import {ObUnsavedChangesService} from './unsaved-changes.service';
 
 describe('UnsavedChangesService', () => {
@@ -92,6 +92,32 @@ describe('UnsavedChangesService', () => {
 			it('should return true, if confirmed', () => {
 				jest.spyOn(popUpService, 'confirm').mockImplementation(() => true);
 				expect(unsavedChangesService.canDeactivate()).toBeTruthy();
+			});
+		});
+	});
+
+	describe('dirty form', () => {
+		describe('with isActive = false', () => {
+			beforeEach(() => {
+				unsavedChangesService.isActive = false;
+				const form: ControlContainer = {dirty: true} as ControlContainer;
+				unsavedChangesService.watch('tab_1', form);
+			});
+
+			it('should ignore changes  because of isActive = false', () => {
+				expect(unsavedChangesService.ignoreChanges()).toBe(true);
+			});
+		});
+		describe('with isActive = true', () => {
+			beforeEach(() => {
+				unsavedChangesService.isActive = true;
+				const form: ControlContainer = {dirty: true} as ControlContainer;
+				unsavedChangesService.watch('tab_1', form);
+			});
+
+			it('should NOT ignore changes', () => {
+				jest.spyOn(popUpService, 'confirm').mockImplementation(() => false);
+				expect(unsavedChangesService.ignoreChanges()).toBe(false);
 			});
 		});
 	});

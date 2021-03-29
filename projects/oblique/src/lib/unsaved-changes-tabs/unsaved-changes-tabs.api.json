@@ -5,15 +5,77 @@
       "name": "ObUnsavedChangesTabsDirective",
       "selector": "[obUnsavedChangesTabs]",
       "type": "directive",
-      "usage": "Applied on a <code>&lt;form&gt;</code> or any element with <code>ngModelGroup</code> directive. The host element needs either an <code>id</code> or be wrapped int a <code>ngbNavItem</code> directive.",
+      "usage": "Applied on a <code>&lt;form&gt;</code> or any element with <code>ngModelGroup</code> directive. The host element needs either an <code>id</code> or be wrapped in a <code>ngbNavItem</code> directive.",
       "since": "2.0.0",
-      "updated": "6.0.0"
+      "inputs": [
+        {
+          "name": "id",
+          "text": "The HTML <code>id</code> attribute.",
+          "type": "string",
+          "default": "undefined",
+          "since": "2.0.0"
+        }
+      ]
     },
     {
-      "name": "UnsavedChangesGuard",
-      "usage": "Apply to routes that have to be protected",
-      "type": "injectable(guard)",
-      "since": "2.0.0"
+      "name": "ObUnsavedChangesTabService",
+      "usage": "This service handles the unsaved changes monitored by the <code>ObUnsavedChangesTabsDirective</code>. It should only be accessed through the <code>ObUnsavedChangesGuard</code> or the <code>ObUnsavedChangesTabsDirective</code>",
+      "type": "service",
+      "since": "2.0.0",
+      "methods": [
+        {
+          "name": "watch",
+          "text": "Starts watching the given form for changes.",
+          "returns": "void",
+          "arguments": [
+            "formId: string",
+            "form: ControlContainer"
+          ],
+          "since": "2.0.0"
+        },
+        {
+          "name": "unWatch",
+          "text": "Stops watching the given form for changes",
+          "returns": "void",
+          "arguments": [
+            "formId: string"
+          ],
+          "since": "2.0.0"
+        },
+        {
+          "name": "canDeactivate",
+          "text": "Checks if there are unsaved changes in the watched forms and ask for confirmation if there are.",
+          "returns": "boolean",
+          "since": "2.0.0"
+        },
+        {
+          "name": "ignoreChanges",
+          "text": "Same as <code>canDeactivate</code> but limited to the given form",
+          "returns": "boolean",
+          "arguments": [
+            "formsIds: string[]"
+          ],
+          "since": "2.0.0"
+        },
+        {
+          "name": "listenTo",
+          "text": "Starts listening on the given <code>NgbNav</code>.",
+          "returns": "void",
+          "arguments": [
+            "ngbNav: NgbNav"
+          ],
+          "since": "2.0.0"
+        },
+        {
+          "name": "unListenTo",
+          "text": "Stops listening on the given <code>NgbNav</code>.",
+          "returns": "void",
+          "arguments": [
+            "ngbNav: NgbNav"
+          ],
+          "since": "2.0.0"
+        }
+      ]
     }
   ]
 }
