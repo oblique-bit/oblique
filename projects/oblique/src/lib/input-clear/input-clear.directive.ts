@@ -1,5 +1,6 @@
-import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Inject, Input, Output} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Inject, Input, OnInit, Output} from '@angular/core';
 import {MatDatepicker} from '@angular/material/datepicker';
+import {FormControl, NgModel} from '@angular/forms';
 import {WINDOW} from '../utilities';
 
 @Directive({
@@ -8,8 +9,8 @@ import {WINDOW} from '../utilities';
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-input-clear'}
 })
-export class ObInputClearDirective {
-	@Input('obInputClear') control: HTMLInputElement;
+export class ObInputClearDirective implements OnInit {
+	@Input('obInputClear') control: HTMLInputElement | FormControl | NgModel;
 	@Input() focusOnClear = true;
 	@Input() datePickerRef: MatDatepicker<any>;
 	@Output() onClear = new EventEmitter<MouseEvent>();
@@ -27,15 +28,55 @@ export class ObInputClearDirective {
 		});
 	}
 
+	ngOnInit() {
+		if (!(this.control instanceof HTMLInputElement) && !(this.control instanceof FormControl) && !(this.control instanceof NgModel)) {
+			console.warn(
+				'ObInputClearDirective: illegal value for obInputClear Input, please use one of the following: HTMLInputElement, FormControl or NgModel.'
+			);
+		}
+	}
+
 	@HostListener('click', ['$event'])
 	onClick($event: MouseEvent) {
+		this.clearDatePicker();
+		this.clearInputField();
+		this.setFocus();
+		this.onClear.next($event);
+	}
+
+	private clearDatePicker(): void {
 		if (this.datePickerRef) {
 			this.datePickerRef.select(undefined);
 		}
-		this.control.value = '';
-		if (this.focusOnClear) {
+	}
+
+	private clearInputField(): void {
+		this.clearReactiveForm();
+		this.clearTemplateDrivenForm();
+		this.clearHtmlInput();
+	}
+
+	private clearReactiveForm(): void {
+		if (this.control instanceof FormControl) {
+			this.control.patchValue(null);
+		}
+	}
+
+	private clearTemplateDrivenForm(): void {
+		if (this.control instanceof NgModel) {
+			this.control.control.patchValue(null);
+		}
+	}
+
+	private clearHtmlInput(): void {
+		if (this.control instanceof HTMLInputElement) {
+			this.control.value = '';
+		}
+	}
+
+	private setFocus(): void {
+		if (this.control instanceof HTMLInputElement && this.focusOnClear) {
 			this.control.focus();
 		}
-		this.onClear.next($event);
 	}
 }

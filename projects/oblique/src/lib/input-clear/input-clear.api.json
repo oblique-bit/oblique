@@ -3,17 +3,20 @@
   "api": [
     {
       "name": "ObInputClearDirective",
+      "usage": "This directive is to be put on a button and will clear the configured input field.",
       "selector": "[obInputClear]",
       "exported": "obInputClear",
       "type": "directive",
       "since": "2.0.0",
-      "updated": "6.0.0",
+      "updated": "6.1.0",
       "inputs": [
         {
           "name": "obInputClear",
-          "text": "Reference to the input element to be cleared.",
-          "type": "ElementRef",
-          "since": "2.0.0"
+          "text": "Reference to the HTML input element, the <code>NgModel</code> or the <code>FormControl</code> to be cleared.",
+          "type": "ElementRef | FormControl | NgModel",
+          "default": "undefined",
+          "since": "2.0.0",
+          "updated": "6.1.0"
         },
         {
           "name": "focusOnClear",

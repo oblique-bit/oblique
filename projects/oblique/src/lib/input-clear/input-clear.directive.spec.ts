@@ -1,36 +1,252 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, Pipe, PipeTransform} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {Component} from '@angular/core';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {By} from '@angular/platform-browser';
+import {WINDOW} from '../utilities';
+import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {ObInputClearDirective} from './input-clear.directive';
 
-@Pipe({name: 'translate'})
-class MockTranslatePipe implements PipeTransform {
-	transform(value: string): string {
-		return value;
+@Component({
+	template: ` <div [formGroup]="testForm">
+		<mat-form-field>
+			<mat-label>Test input</mat-label>
+			<input type="text" matInput formControlName="field1" />
+			<button type="button" role="button" [obInputClear]="testForm.get('field1')">
+				<span class="fa fa-times-circle"></span>
+				<span class="sr-only">{{ 'i18n.common.clear' | translate }}</span>
+			</button>
+		</mat-form-field>
+	</div>`
+})
+class ReactiveFormTestComponent {
+	testForm: FormGroup;
+
+	constructor(private readonly formBuilder: FormBuilder) {
+		this.testForm = this.formBuilder.group({
+			field1: ['']
+		});
 	}
 }
 
 @Component({
-	template: ` TODO `
+	template: ` <div>
+		<mat-form-field>
+			<mat-label>Mandatory</mat-label>
+			<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel" #control="ngModel" />
+			<button type="button" role="button" [obInputClear]="control">
+				<span class="fa fa-times-circle"></span>
+				<span class="sr-only">{{ 'i18n.common.clear' | translate }}</span>
+			</button>
+		</mat-form-field>
+	</div>`
 })
-class TestComponent {}
+class TemplateDrivenFormTestComponent {
+	testModel: string;
+}
 
-describe('TextControlClear', () => {
-	let component: TestComponent;
-	let fixture: ComponentFixture<TestComponent>;
+@Component({
+	template: ` <div>
+		<mat-form-field>
+			<mat-label>Mandatory</mat-label>
+			<input type="text" matInput placeholder="Mandatory" required #control />
+			<button type="button" role="button" [obInputClear]="control">
+				<span class="fa fa-times-circle"></span>
+				<span class="sr-only">{{ 'i18n.common.clear' | translate }}</span>
+			</button>
+		</mat-form-field>
+	</div>`
+})
+class HtmlInputTestComponent {}
 
-	beforeEach(async(() =>
-		TestBed.configureTestingModule({
-			declarations: [TestComponent, MockTranslatePipe],
-			imports: [FormsModule]
-		}).compileComponents()));
+@Component({
+	template: ` <div>
+		<mat-form-field>
+			<mat-label>Mandatory</mat-label>
+			<input type="text" matInput placeholder="Mandatory" required />
+			<button type="button" role="button" [obInputClear]="testModel">
+				<span class="fa fa-times-circle"></span>
+				<span class="sr-only">{{ 'i18n.common.clear' | translate }}</span>
+			</button>
+		</mat-form-field>
+	</div>`
+})
+class WrongConfigurationTestComponent {
+	testModel: string;
+}
 
-	beforeEach(async(() => {
-		fixture = TestBed.createComponent(TestComponent);
-		component = fixture.componentInstance;
-		fixture.detectChanges();
-	}));
+describe('InputClear', () => {
+	describe('with reactive forms', () => {
+		let component: ReactiveFormTestComponent;
+		let fixture: ComponentFixture<ReactiveFormTestComponent>;
+		let input: HTMLInputElement;
+		let directive: ObInputClearDirective;
 
-	it('should be created', () => {
-		expect(component).toBeTruthy();
+		beforeEach(
+			waitForAsync(() => {
+				TestBed.configureTestingModule({
+					declarations: [ReactiveFormTestComponent, ObMockTranslatePipe, ObInputClearDirective],
+					imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, NoopAnimationsModule],
+					providers: [{provide: WINDOW, useValue: window}]
+				}).compileComponents();
+			})
+		);
+
+		beforeEach(() => {
+			fixture = TestBed.createComponent(ReactiveFormTestComponent);
+			component = fixture.componentInstance;
+			directive = fixture.debugElement.query(By.directive(ObInputClearDirective)).injector.get(ObInputClearDirective);
+			fixture.detectChanges();
+		});
+
+		describe('onClick', () => {
+			beforeEach(() => {
+				input = fixture.nativeElement.querySelector('input');
+				input.value = 'testInput';
+				input.dispatchEvent(new Event('input'));
+				spyOn(directive, 'onClick').and.callThrough();
+				fixture.nativeElement.querySelector('button').click();
+				fixture.detectChanges();
+			});
+
+			it('should call the directive on button click', () => {
+				expect(directive.onClick).toHaveBeenCalled();
+			});
+
+			it('should clear the FormControl', () => {
+				expect(component.testForm.get('field1').value).toBeNull();
+			});
+
+			it('should clear the input field', () => {
+				expect(input.value).toBe('');
+			});
+		});
+	});
+
+	describe('with template-driven forms', () => {
+		let component: TemplateDrivenFormTestComponent;
+		let fixture: ComponentFixture<TemplateDrivenFormTestComponent>;
+		let input: HTMLInputElement;
+		let directive: ObInputClearDirective;
+
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
+				declarations: [TemplateDrivenFormTestComponent, ObMockTranslatePipe, ObInputClearDirective],
+				imports: [FormsModule, MatFormFieldModule, MatInputModule, NoopAnimationsModule],
+				providers: [{provide: WINDOW, useValue: window}]
+			}).compileComponents();
+		});
+
+		beforeEach(() => {
+			fixture = TestBed.createComponent(TemplateDrivenFormTestComponent);
+			component = fixture.componentInstance;
+			directive = fixture.debugElement.query(By.directive(ObInputClearDirective)).injector.get(ObInputClearDirective);
+			fixture.detectChanges();
+		});
+
+		beforeEach(() => {
+			input = <HTMLInputElement>fixture.nativeElement.querySelector('input');
+			input.value = 'testInput';
+			fixture.detectChanges();
+			input.dispatchEvent(new Event('input'));
+			spyOn(directive, 'onClick').and.callThrough();
+			fixture.nativeElement.querySelector('button').click();
+		});
+
+		it('should call the directive on button click', () => {
+			expect(directive.onClick).toHaveBeenCalled();
+		});
+
+		it('should clear the input field', () => {
+			expect(input.value).toBe('');
+		});
+
+		it('should clear the model', () => {
+			expect(component.testModel).toBeNull();
+		});
+	});
+
+	describe('with html input only', () => {
+		let component: HtmlInputTestComponent;
+		let fixture: ComponentFixture<HtmlInputTestComponent>;
+		let input: HTMLInputElement;
+		let directive: ObInputClearDirective;
+
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
+				declarations: [HtmlInputTestComponent, ObMockTranslatePipe, ObInputClearDirective],
+				imports: [FormsModule, MatFormFieldModule, MatInputModule, NoopAnimationsModule],
+				providers: [{provide: WINDOW, useValue: window}]
+			}).compileComponents();
+		});
+
+		beforeEach(() => {
+			fixture = TestBed.createComponent(HtmlInputTestComponent);
+			component = fixture.componentInstance;
+			directive = fixture.debugElement.query(By.directive(ObInputClearDirective)).injector.get(ObInputClearDirective);
+			fixture.detectChanges();
+		});
+
+		describe('onClick', () => {
+			beforeEach(() => {
+				input = <HTMLInputElement>fixture.nativeElement.querySelector('input');
+				input.value = 'testInput';
+				input.dispatchEvent(new Event('input'));
+				spyOn(directive, 'onClick').and.callThrough();
+				fixture.nativeElement.querySelector('button').click();
+				fixture.detectChanges();
+			});
+
+			it('should call the directive on button click', () => {
+				expect(directive.onClick).toHaveBeenCalled();
+			});
+
+			it('should clear the input field', () => {
+				expect(input.value).toBe('');
+			});
+		});
+	});
+
+	describe('with wrong configuration', () => {
+		let component: WrongConfigurationTestComponent;
+		let fixture: ComponentFixture<WrongConfigurationTestComponent>;
+		let input: HTMLInputElement;
+
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
+				declarations: [WrongConfigurationTestComponent, ObMockTranslatePipe, ObInputClearDirective],
+				imports: [FormsModule, MatFormFieldModule, MatInputModule, NoopAnimationsModule],
+				providers: [{provide: WINDOW, useValue: window}]
+			}).compileComponents();
+		});
+
+		beforeEach(() => {
+			jest.spyOn(console, 'warn');
+			fixture = TestBed.createComponent(WrongConfigurationTestComponent);
+			component = fixture.componentInstance;
+			fixture.detectChanges();
+		});
+
+		describe('onClick', () => {
+			beforeEach(() => {
+				input = fixture.nativeElement.querySelector('input');
+				input.value = 'testInput';
+				fixture.detectChanges();
+				input.dispatchEvent(new Event('input'));
+				fixture.nativeElement.querySelector('button').click();
+			});
+
+			it('should not clear the input field', () => {
+				expect(input.value).toEqual('testInput');
+			});
+
+			it('should write an warn message in the console', () => {
+				expect(console.warn).toHaveBeenCalledWith(
+					'ObInputClearDirective: illegal value for obInputClear Input, please use one of the following: HTMLInputElement, FormControl or NgModel.'
+				);
+			});
+		});
 	});
 });

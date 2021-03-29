@@ -1,3 +1,5 @@
+<h2>Template-driven form</h2>
+
 <mat-form-field>
 	<mat-label>Mandatory</mat-label>
 	<input type="text" matInput placeholder="Mandatory" required ngModel />
@@ -5,7 +7,7 @@
 
 <mat-form-field>
 	<mat-label>Mandatory</mat-label>
-	<input type="text" matInput placeholder="Mandatory" required ngModel #control />
+	<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel1" #control="ngModel" />
 	<button type="button" role="button" [obInputClear]="control">
 		<span class="fa fa-times-circle"></span>
 		<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
@@ -19,7 +21,7 @@
 
 <mat-form-field class="mat-form-field-lg">
 	<mat-label>Mandatory</mat-label>
-	<input type="text" matInput placeholder="Mandatory" required ngModel #controlLG />
+	<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel2" #controlLG="ngModel" />
 	<button type="button" role="button" [obInputClear]="controlLG">
 		<span class="fa fa-times-circle"></span>
 		<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
@@ -33,7 +35,7 @@
 
 <mat-form-field class="mat-form-field-sm">
 	<mat-label>Mandatory</mat-label>
-	<input type="text" matInput placeholder="Mandatory" required ngModel #controlSM />
+	<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel3" #controlSM="ngModel" />
 	<button type="button" role="button" [obInputClear]="controlSM">
 		<span class="fa fa-times-circle"></span>
 		<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
@@ -42,7 +44,7 @@
 
 <mat-form-field>
 	<mat-label>Datepicker</mat-label>
-	<input matInput [matDatepicker]="picker" #controlD />
+	<input matInput [matDatepicker]="picker" #controlD="ngModel" [(ngModel)]="testModel4" />
 	<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 	<mat-datepicker #picker></mat-datepicker>
 	<button type="button" role="button" [obInputClear]="controlD" [datePickerRef]="picker">
@@ -57,3 +59,29 @@
 	<mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
 	<mat-datepicker #picker2></mat-datepicker>
 </mat-form-field>
+
+<h2>Reactive form</h2>
+<div [formGroup]="testForm">
+	<mat-form-field>
+		<mat-label>Test input</mat-label>
+		<input type="text" matInput formControlName="field1" />
+		<button type="button" role="button" [obInputClear]="testForm.get('field1')">
+			<span class="fa fa-times-circle"></span>
+			<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
+		</button>
+	</mat-form-field>
+</div>
+
+<h2>HTML input only</h2>
+<div>
+	<mat-form-field>
+		<mat-label>Test input</mat-label>
+		<input type="text" matInput #htmlControl />
+		<button type="button" role="button" [obInputClear]="htmlControl">
+			<span class="fa fa-times-circle"></span>
+			<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
+		</button>
+	</mat-form-field>
+</div>
+
+<ob-api component="input-clear"></ob-api>
