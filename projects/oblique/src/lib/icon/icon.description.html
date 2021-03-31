@@ -1,0 +1,139 @@
+<p>
+	Starting from version 6.1, Oblique provides its own SVG icons. They are meant to be used with Angular Material's <code>mat-icon</code> component, meaning
+	that Bootstrap's users need to stick to FontAwesome's icons. As registering custom icons for the <code>mat-icon</code> component is not really
+	straightforward, Oblique provides the <code>ObIconService</code> to greatly simplify this process. Of course, Angular's <code>MatIconRegistry</code> can
+	still be used directly, see <a href="https://material.angular.io/components/icon/api">MatIconModule</a> for more information.
+</p>
+<p>
+	For performance reasons, Oblique packs all icons in a single file called an icon set. It then extracts the SVGs and inlines them directly in the code on
+	build time.
+</p>
+<p>
+	Oblique's icons are opt-in, meaning <code>ObIconModule.forRoot()</code> has to be explicitly imported in the applications' root module. And to avoid a
+	breaking change, the <code>mat-icon</code> component needs the <code>ob-icon</code> class to be properly styled. The <code>forRoot</code> method is
+	mandatory, as it will take care of the icons registration. It accepts an optional configuration that allows the registration of additional icon sets as well
+	as the default class to be applied to font icons. Per default, the Oblique's icon set is loaded and FontAwesome is defined as the default font library.
+</p>
+
+<h3>How to use Oblique's icons?</h3>
+<p>First, the <code>ObIconModule</code> has to be imported in the root module, usually <code>app.module.ts</code></p>
+<pre>
+@NgModule(&lcub;
+	imports: [
+		...
+		ObIconModule.forRoot().
+		...
+	],
+	...
+}
+</pre>
+<p>
+	Then the <code>mat-icon</code> component can be used with the <code>ob-icon</code> class and either the <code>svgIcon</code> or the
+	<code>fontIcon</code> input.
+</p>
+<pre>
+&lt;mat-icon svgIcon="calendar" class="ob-icon">&lt;/mat-icon>      // Oblique icon
+&lt;mat-icon fontIcon="fa-calendar" class="ob-icon">&lt;/mat-icon>  // FA icon
+</pre>
+
+<h3>How to use an alternate font library?</h3>
+<p>Simply provide the <code>forRoot</code> method with the needed class.</p>
+<pre>
+@NgModule(&lcub;
+	imports: [
+		...
+		ObIconModule.forRoot(&lcub;fontClass: 'fas'})
+		...
+	],
+	...
+}
+</pre>
+
+<h3>How to register additional icons on build time?</h3>
+<p>
+	First the icon set has to be loaded, then the serialized icon set has to be passed to the <code>additionalIcons</code> property of the
+	<code>forRoot</code> method.
+</p>
+<pre>
+const iconSet = require('!!raw-loader!path/to/iconSet.svg').default;  // alternatively, the constant can hold the serialized icon set directly
+
+@NgModule(&lcub;
+	imports: [
+		...
+		ObIconModule.forRoot(&lcub;additionalIcons: iconSet})
+		...
+	],
+	...
+}
+</pre>
+
+<h3>How to register additional icons on run time?</h3>
+<p>
+	The <code>ObIconService</code> provides 4 handy methods to registers icons on the fly. Please note that two of them will trigger one or more HTTP requests.
+</p>
+<dl>
+	<dt><code>registerIconSetsAsync</code></dt>
+	<dd>It accepts a variable number of urls that are asynchronously loaded per HTTP requests and registered.</dd>
+	<dt><code>registerIconsAsync</code></dt>
+	<dd>
+		It accepts a variable number of icons defined by a name and an url. Each url is asynchronously loaded per HTTP request and registered under the given
+		name.
+	</dd>
+	<dt><code>registerIconSets</code></dt>
+	<dd>It accepts a variable number of serialized icon sets that are registered.</dd>
+	<dt><code>registerIconsAsync</code></dt>
+	<dd>It accepts a variable number of icons defined by a name and a serialized icon. Each icon is registered under the given name.</dd>
+</dl>
+<pre>
+const iconSet = require('!!raw-loader!path/to/iconSet.svg').default;  // alternatively, the constant can hold the serialized icon set directly
+
+@NgModule(&lcub;
+	...
+}
+export class AppModule &lcub;
+	constructor(icon: ObIconService) &lcub;
+		icon.registerIconSetsAsync('assets/my-icon-set-1.svg', 'assets/my-icon-set-2.svg');
+		icon.registerIconsAsync(&lcub;name:'my-icon-1', url: 'assets/my-icon-1.svg'}, &lcub;name:'my-icon-2', url: 'assets/my-icon-2.svg'});
+		icon.registerIconSets('&lt;svg>&lt;defs>...&lt;/defs>&lt;/svg>);
+		icon.registerIcons(&lcub;name: 'my-icon', svg:'&lt;svg>...&lt;/svg>});
+	}
+}
+</pre>
+
+<h3>What is an icon set?</h3>
+<p>
+	An icon set is a single SVG file that wraps multiple SVG icons identified by an <code>id</code>. Individuals SVG are wrapped in a <code>defs</code> tag and
+	can be rendered by passing their <code>id</code> to the <code>svgIcon</code> input.
+</p>
+<pre>
+&lt;svg>
+    &lt;defs>
+        &lt;svg id="icon-1">some svg paths&lt;/svg>
+        &lt;svg id="icon-2">some svg paths&lt;/svg>
+        &lt;svg id="icon-3">some svg paths&lt;/svg>
+    &lt;/defs>
+&lt;/svg>
+</pre>
+<p>An icon set can be generated from single SVG files through the following node script:</p>
+<pre>
+const fs = require('fs'),
+	path = require('path');
+
+const iconsPath = path.join('path', 'to', 'icons', 'folder');
+const iconSetPath = path.join('path', 'to', 'iconSet.svg');
+
+fs.writeFileSync(iconSetPath, '&lt;svg>\n\t&lt;defs>\n');
+fs.readdirSync(iconsPath).forEach(file => &lcub;
+	const id = file.toLowerCase().replace('.svg', '');
+	const icon = fs.readFileSync(path.join(iconsPath, file)).toString().replace('&lt;svg ', `&lt;svg id="$&lcub;id}" `);
+	fs.appendFileSync(iconSetPath, `\t\t$&lcub;icon}`);
+});
+fs.appendFileSync(iconSetPath, '\t&lt;/defs>\n&lt;/svg>');
+</pre>
+
+<h3>Do the registering order matter?</h3>
+<p>
+	Yes it does. In case of name conflict, icons registered later do override the previous ones. This allows effectively to override specific icons by simply
+	re-register them. When there are multiple concurrent asynchronous requests, there's no telling which one comes first. In that case, async function should be
+	avoided.
+</p>

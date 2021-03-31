@@ -95,6 +95,7 @@ export class AppComponent {
 				{url: 'chips', label: 'Chips'},
 				{url: 'dialog', label: 'Dialog'},
 				{url: 'expansion-panel', label: 'Expansion Panel'},
+				{url: 'icon', label: 'Icons'},
 				{url: 'progress-bar', label: 'Progress bar'},
 				{url: 'slider', label: 'Slider'},
 				{url: 'stepper-horizontal', label: 'Stepper horizontal'},

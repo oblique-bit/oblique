@@ -100,9 +100,10 @@ const telemetryPost = () => gulp.src(`${paths.src}/lib/telemetry/telemetry-recor
 	.pipe(replace('\'_OBLIQUE_VERSION_PLACEHOLDER_\'', 'require(\'package-lock.json\').dependencies[\'@oblique/oblique\'].version'))
 	.pipe(gulp.dest(`${paths.src}/lib/telemetry`));
 
-const telemetryPostLib = () => gulp.src(`${paths.dist}/**/*.js`)
+const postLib = () => gulp.src(`${paths.dist}/**/*.js`)
 	.pipe(replace('\'_REQUIRE_PACKAGE_PLACEHOLDER_\'', 'require(\'package.json\')'))
 	.pipe(replace('\'_OBLIQUE_VERSION_PLACEHOLDER_\'', 'require(\'package-lock.json\').dependencies[\'@oblique/oblique\'].version'))
+	.pipe(replace('require(\'!!raw-loader!../../assets/obliqueIcons.svg\')', 'require(\'!!raw-loader!../assets/obliqueIcons.svg\')'))
 	.pipe(gulp.dest(paths.dist));
 
 gulp.task(
@@ -129,7 +130,7 @@ gulp.task(
 			distCss,
 			distRename,
 			distBgImage,
-			telemetryPostLib,
+			postLib,
 			gulp.parallel(
 				addBanner,
 				distMap
@@ -145,6 +146,7 @@ gulp.task(
 	'publish',
 	gulp.series(commit)
 );
+gulp.task('test', postLib);
 
 gulp.task('themes',
 	gulp.parallel(

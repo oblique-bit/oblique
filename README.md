@@ -90,6 +90,7 @@ The scope is optional and should be the name of the Oblique feature affected:
 * **global-events**
 * **http-interceptor**
 * **input-clear**
+* **icon**
 * **language**
 * **master-layout**
 * **multi-translate-loader**
