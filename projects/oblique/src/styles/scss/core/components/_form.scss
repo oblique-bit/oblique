@@ -126,6 +126,7 @@ textarea {
 
 .ob-inline-form {
 	display: flex;
+	word-break: normal;
 
 	> * + * {
 		margin-left: $spacing-default;
