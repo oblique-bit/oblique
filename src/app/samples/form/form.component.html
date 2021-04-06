@@ -1,4 +1,4 @@
-<table class="table">
+<table class="ob-table">
 	<thead>
 		<tr>
 			<th></th>
@@ -400,7 +400,7 @@
 				<td>N / A</td>
 				<td>N / A</td>
 				<td>
-					<mat-form-field>
+					<mat-form-field class="mat-form-field-lg">
 						<mat-label>Multiline</mat-label>
 						<mat-select required ngModel>
 							<mat-option [value]=""></mat-option>
@@ -418,7 +418,53 @@
 					</mat-form-field>
 				</td>
 				<td>
-					<mat-form-field>
+					<mat-form-field class="mat-form-field-lg">
+						<mat-label>Multiline</mat-label>
+						<textarea matInput placeholder="Mandatory" required ngModel></textarea>
+						<mat-hint>Trigger an error by setting a value and deleting it</mat-hint>
+						<mat-error
+							>A really loooooooooong error message that will span over multiple rows. This demonstrate how the message remains readable without
+							breaking the layout.</mat-error
+						>
+					</mat-form-field>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Multiline small</label>
+				</td>
+				<td>
+					<mat-form-field class="mat-form-field-sm">
+						<mat-label>Multiline</mat-label>
+						<input type="text" matInput placeholder="Multiline" required ngModel />
+						<mat-hint>Trigger an error by setting a value and deleting it</mat-hint>
+						<mat-error
+							>A really loooooooooong lllllllllllllll<br />llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll</mat-error
+						>
+					</mat-form-field>
+				</td>
+				<td>N / A</td>
+				<td>N / A</td>
+				<td>
+					<mat-form-field class="mat-form-field-sm">
+						<mat-label>Multiline</mat-label>
+						<mat-select required ngModel>
+							<mat-option [value]=""></mat-option>
+							<mat-option [value]="1">One</mat-option>
+							<mat-option [value]="2">Two</mat-option>
+							<mat-option [value]="3">Three</mat-option>
+							<mat-option [value]="4">Four</mat-option>
+							<mat-option [value]="5">Five</mat-option>
+						</mat-select>
+						<mat-hint>Trigger an error by setting a value and deleting it</mat-hint>
+						<mat-error
+							>A really loooooooooong error message that will span over multiple rows. This demonstrate how the message remains readable without
+							breaking the layout.</mat-error
+						>
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-form-field class="mat-form-field-sm">
 						<mat-label>Multiline</mat-label>
 						<textarea matInput placeholder="Mandatory" required ngModel></textarea>
 						<mat-hint>Trigger an error by setting a value and deleting it</mat-hint>
