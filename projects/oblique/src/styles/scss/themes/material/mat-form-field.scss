@@ -72,7 +72,7 @@ $large: 1.25rem;
 				opacity: 0.75;
 				z-index: -1;
 
-				.table:not(.table-plain) tbody tr:nth-child(odd) & {
+				.ob-table:not(.ob-table-plain) tbody tr:nth-child(odd) & {
 					background-color: $gray-extra-light;
 				}
 			}
