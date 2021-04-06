@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, NgForm} from '@angular/forms';
-import {ObNotificationService, ObSchemaValidationService} from 'oblique';
-import {of} from 'rxjs';
+import {AbstractControl, FormBuilder, FormGroup, NgForm, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
+import {ObNotificationService, ObSchemaValidationService, ObThemeService} from 'oblique';
+import {Observable, of} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
@@ -16,6 +17,9 @@ import {of} from 'rxjs';
 	]
 })
 export class ObSchemaValidationSampleComponent implements OnInit {
+	material: Observable<boolean>;
+	materialTestForm: FormGroup;
+
 	formData: FormGroup;
 	schema$ = of({
 		title: 'SampleSchemaSampleValidation',
@@ -105,7 +109,8 @@ export class ObSchemaValidationSampleComponent implements OnInit {
 	constructor(
 		private readonly schemaValidation: ObSchemaValidationService,
 		private readonly notification: ObNotificationService,
-		private readonly formBuilder: FormBuilder
+		private readonly formBuilder: FormBuilder,
+		private readonly theme: ObThemeService
 	) {}
 
 	ngOnInit(): void {
@@ -125,6 +130,9 @@ export class ObSchemaValidationSampleComponent implements OnInit {
 				})
 			})
 		});
+
+		this.material = this.theme.theme$.pipe(map(() => this.theme.isMaterial()));
+		this.initMaterialForm();
 	}
 
 	check(form?: NgForm): void {
@@ -137,5 +145,26 @@ export class ObSchemaValidationSampleComponent implements OnInit {
 
 	reset(form?: NgForm): void {
 		(form || this.formData).reset();
+	}
+
+	private initMaterialForm(): void {
+		this.schema$.subscribe(schema => {
+			const schemaValidatorInstance = this.schemaValidation.compileSchema(schema);
+
+			this.materialTestForm = this.formBuilder.group({
+				dateField: undefined,
+				textField: ''
+			});
+
+			this.materialTestForm.get('dateField').setValidators([schemaValidatorInstance.getValidator('date'), this.dateBeforeNowValidator()]);
+
+			this.materialTestForm.get('textField').setValidators([schemaValidatorInstance.getValidator('text')]);
+		});
+	}
+
+	private dateBeforeNowValidator(): ValidatorFn {
+		return (control: AbstractControl): ValidationErrors => {
+			return new Date(control.value).getTime() < Date.now() ? {invalidDateMin: {value: new Date().toDateString()}} : null;
+		};
 	}
 }
