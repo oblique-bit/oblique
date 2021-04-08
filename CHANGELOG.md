@@ -1,3 +1,12 @@
+## [6.1.1](https://github.com/oblique-bit/oblique/compare/6.1.0...6.1.1) (2021-04-08)
+
+## Bug Fixes
+* **icon:** use an absolute path for the SVG icon set due to issues with Ivy ([598eb84](https://github.com/oblique-bit/oblique/commit/598eb84f87a2dc0d945f587be83c6f690991a05c))
+* **material:** ensure `mat-error` and `mat-hint` height consistency in all 3 size variants ([41613d7](https://github.com/oblique-bit/oblique/commit/41613d793627931051fe037d35007beca2089f2d))
+* **material:** ensure the background color is correct for `mat-error` and `mat-hint` in tables ([f082908](https://github.com/oblique-bit/oblique/commit/f082908365d59aecc40b3530b6b44519b2202eb0))
+* **styles:** avoid word break in inline forms ([61249c4](https://github.com/oblique-bit/oblique/commit/61249c4f9749ba5ba7d86035eb680e87ff6f6e52))
+
+
 # [6.1.0](https://github.com/oblique-bit/oblique/compare/6.0.1...6.1.0) (2021-03-31)
 
 ## Bug Fixes
