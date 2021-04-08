@@ -14,8 +14,8 @@
             "since": "6.1.0"
           },
           {
-            "name": "alignment",
-            "text": "Defines the alignment of the popover relative to its toggle.",
+            "name": "placement",
+            "text": "Defines the position of the popover relative to its toggle.",
             "type": "'auto' | 'auto-start' | 'auto-end' | 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'right' | 'right-start' | 'right-end' | 'left' | 'left-start' | 'left-end'",
             "default": "auto",
             "since": "6.1.0"
