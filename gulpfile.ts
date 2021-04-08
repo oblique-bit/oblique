@@ -103,7 +103,7 @@ const telemetryPost = () => gulp.src(`${paths.src}/lib/telemetry/telemetry-recor
 const postLib = () => gulp.src(`${paths.dist}/**/*.js`)
 	.pipe(replace('\'_REQUIRE_PACKAGE_PLACEHOLDER_\'', 'require(\'package.json\')'))
 	.pipe(replace('\'_OBLIQUE_VERSION_PLACEHOLDER_\'', 'require(\'package-lock.json\').dependencies[\'@oblique/oblique\'].version'))
-	.pipe(replace('require(\'!!raw-loader!../../assets/obliqueIcons.svg\')', 'require(\'!!raw-loader!../assets/obliqueIcons.svg\')'))
+	.pipe(replace('require(\'!!raw-loader!../../assets/obliqueIcons.svg\')', 'require(\'!!raw-loader!@oblique/oblique/assets/obliqueIcons.svg\')'))
 	.pipe(gulp.dest(paths.dist));
 
 gulp.task(
