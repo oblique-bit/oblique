@@ -5,8 +5,14 @@
 </p>
 <p>
 	It comes with preconfigured padding which can be canceled with the <code>noLayout</code> input. On smaller viewports, both side columns are moved below the
-	main one. This behavior can be tweaked by altering their <code>order</code> property.
+	main one. This behavior can be tweaked by altering their <code>order</code> property:
 </p>
+<pre>
+.ob-column-left,
+.ob-column-right &lcub;
+	order: 0;
+}
+</pre>
 <p>
 	If the <code>ObColumnLayout</code> is set to a specific <code>height</code>, then it's <code>overflow</code> property has to be set to <code>auto</code> for
 	it to work properly.
