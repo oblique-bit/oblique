@@ -1,6 +1,8 @@
 import {SchematicContext, Tree} from '@angular-devkit/schematics';
+import {removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
 import {Project, SourceFile, SyntaxKind} from 'ts-morph';
-import {error, ObliquePackage, packageJsonConfigPath, readFile, warn} from '../utils';
+import {createSrcFile} from '../ng-add/ng-add-utils';
+import {error, getAngularConfigs, ObliquePackage, packageJsonConfigPath, readFile, warn} from '../utils';
 import {versionFunc, ObIDependencies, ObITask, ObIConfigureTestingModuleCall} from './ng-update.model';
 
 const glob = require('glob');
@@ -600,4 +602,13 @@ function getDepVersion(tree: Tree, dep: string): number {
 	const pattern = new RegExp(`"${dep}":\\s*"[~,^]?(?<version>\\d+)\\.\\d+\\.\\d+"`);
 	const version = readFile(tree, packageJsonConfigPath).match(pattern)?.groups?.version;
 	return version ? parseInt(version, 10) : 0;
+}
+
+export function removePolyFill(tree: Tree, polyfillName: string, importPattern: RegExp) {
+	const hasPolyfillImported = getAngularConfigs(tree, ['architect', 'build', 'options', 'polyfills'])
+		.map(polyfill => createSrcFile(tree, polyfill.config))
+		.filter(sourceFile => importPattern.test(sourceFile.getText())).length;
+	if (hasPolyfillImported) {
+		removePackageJsonDependency(tree, polyfillName);
+	}
 }

@@ -30,8 +30,7 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 			jenkins(options.jenkins, options.static, options.jest),
 			addLintDeps(options.eslint),
 			addEslint(options.eslint, options.prefix),
-			addHusky(options.husky),
-			addIE11Support(options.ie11)
+			addHusky(options.husky)
 		])(tree, _context);
 }
 
@@ -200,24 +199,6 @@ function addHusky(husky: boolean): Rule {
 					'pre-push': 'npm run format'
 				}
 			});
-		}
-		return tree;
-	};
-}
-
-function addIE11Support(ie11: boolean): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
-		if (ie11) {
-			infoMigration(_context, 'Toolchain: Adding IE11 support');
-			const tsConfigName = tree.exists('tsconfig.base.json') ? 'tsconfig.base.json' : 'tsconfig.json';
-			const tsConfig = readFile(tree, tsConfigName).replace(/"target"\s*:\s*"[^"]*"/, '"target": "es5"');
-			tree.overwrite(tsConfigName, tsConfig);
-
-			const browserslist = tree.exists('.browserslistrc') ? '.browserslistrc' : 'browserslist';
-			const content = readFile(tree, browserslist) || '';
-			const newContent = content.split('\n').reverse();
-			newContent[0] = "IE 11\nnot IE 9-10 # For IE 9-11 support, remove 'not'";
-			tree.overwrite(browserslist, newContent.reverse().join('\n'));
 		}
 		return tree;
 	};
