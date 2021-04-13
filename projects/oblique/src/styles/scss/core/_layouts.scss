@@ -31,10 +31,6 @@ body {
 	color: $brand-default;
 }
 
-main {
-	display: block; // IE
-}
-
 .bg-secondary {
 	background-color: $brand-extra-light !important;
 	height: 100%;

@@ -34,7 +34,6 @@
 		display: block;
 		visibility: hidden; // A11y: ensure tabbing does not focus an offcanvas sidebar element when hidden.
 		overflow-y: auto;
-		box-sizing: content-box; // Fix scrollbar in IE9
 		z-index: $z-index-overlay-top;
 		transition-property: transform, left, width, visibility;
 		transition-duration: $duration-default;
