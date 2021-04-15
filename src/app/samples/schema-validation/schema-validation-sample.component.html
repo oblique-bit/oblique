@@ -110,7 +110,7 @@
 							<div class="col-8">
 								<select id="templateSelect" name="select" class="form-control" ngModel obSchemaValidate>
 									<option value="">Select</option>
-									<option *ngFor="let item of schema.properties.select.options" value="{{ item.value }}">{{ item.label }}</option>
+									<option *ngFor="let item of selectOptions" value="{{ item.value }}">{{ item.label }}</option>
 								</select>
 								<ob-error-messages></ob-error-messages>
 							</div>
@@ -310,7 +310,7 @@
 							<div class="col-8">
 								<select id="reactiveSelect" formControlName="select" class="form-control" obSchemaValidate>
 									<option value="">Select</option>
-									<option *ngFor="let item of schema.properties.select.options" value="{{ item.value }}">{{ item.label }}</option>
+									<option *ngFor="let item of selectOptions" value="{{ item.value }}">{{ item.label }}</option>
 								</select>
 								<ob-error-messages></ob-error-messages>
 							</div>
