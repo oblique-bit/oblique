@@ -26,7 +26,8 @@
     "@ng-bootstrap/ng-bootstrap": "^9.0.0",
     "bootstrap": "^4.6.0",
     "font-awesome": "^4.7.0",
-    "ajv": "^6.0.0"
+    "ajv": "^8.0.0",
+    "ajv-formats": "^2.0.0"
   },
   "schematics": "./schematics/collection.json",
   "ng-update": {

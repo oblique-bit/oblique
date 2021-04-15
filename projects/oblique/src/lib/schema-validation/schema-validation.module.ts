@@ -13,7 +13,7 @@ export {ObSchemaValidateDirective} from './schema-validator';
 export {ObSchemaRequiredDirective} from './schema-required.directive';
 export {ObSchemaValidationService} from './schema-validation.service';
 export {ObSchemaValidatorInstance} from './schema-validator.instance';
-export {draft06} from './draft06.decorator';
+export {draft07Convert} from './draft07-converter.decorator';
 
 @NgModule({
 	imports: [CommonModule],

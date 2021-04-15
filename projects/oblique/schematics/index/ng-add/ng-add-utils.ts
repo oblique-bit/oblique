@@ -15,7 +15,8 @@ type versionFunc = (version: number) => string;
 
 const versions: {[key: string]: string | versionFunc} = {
 	// eslint-disable-next-line prettier/prettier
-	ajv: '^6.0.0',
+	ajv: '^8.0.0',
+	'ajv-formats': '^2.0.0',
 	'@ngx-translate/core': '^13.0.0',
 	'@ng-bootstrap/ng-bootstrap': '^9.0.0',
 	'@angular/cdk': version => `^${version}.0.0`,

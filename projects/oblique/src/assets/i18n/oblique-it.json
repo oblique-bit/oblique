@@ -54,6 +54,7 @@
   "i18n.oblique.search.title": "Cercare",
   "i18n.oblique.search.placeholder": "Termine di ricerca",
   "i18n.oblique.search.noResults": "Nessuna operazione trovata per il filtro attivato",
+  "i18n.validation.ajv.enum.allowedValues": "Il valore selezionato non è valido",
   "i18n.validation.ajv.exclusiveMaximum": "Inserire un numero più piccolo {{limit}}",
   "i18n.validation.ajv.exclusiveMinimum": "Inserire un numero maggiore {{limit}}",
   "i18n.validation.ajv.format.date": "Formato della data non valido, \"gg.mm.aaaa\" è atteso",

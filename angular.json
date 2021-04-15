@@ -14,6 +14,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "ajv"
+            ],
             "aot": true,
             "outputPath": "target",
             "index": "src/index.html",
