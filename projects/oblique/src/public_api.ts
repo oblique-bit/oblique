@@ -76,6 +76,7 @@ export {
 	ObNotificationModule,
 	ObNotificationService,
 	ObENotificationType,
+	ObENotificationPlacement,
 	ObINotificationConfig,
 	ObINotification
 } from './lib/notification/notification.module';

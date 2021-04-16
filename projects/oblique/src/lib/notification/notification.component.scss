@@ -6,8 +6,22 @@
 	display: block;
 	perspective: 80px;
 	overflow-x: hidden;
-	right: 0; // Note: do not specify `top` attribute!
 	z-index: $z-index-widget;
+
+	&.ob-bottom-left,
+	&.ob-bottom-right {
+		bottom: $spacing-default;
+	}
+
+	&.ob-top-left,
+	&.ob-bottom-left {
+		left: 0;
+	}
+
+	&.ob-top-right,
+	&.ob-bottom-right {
+		right: 0;
+	}
 
 	&.ob-custom {
 		position: absolute;

@@ -2,7 +2,7 @@ import {Component, HostBinding, Inject, Input, OnInit, ViewEncapsulation} from '
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 
 import {WINDOW} from '../utilities';
-import {ObINotificationPrivate} from './notification.model';
+import {ObENotificationPlacement, ObINotificationPrivate} from './notification.model';
 import {ObNotificationService} from './notification.service';
 
 @Component({
@@ -30,11 +30,33 @@ import {ObNotificationService} from './notification.service';
 				],
 				{params: {translateX: '15%'}}
 			),
+			state('in-left', style({opacity: 1})),
+			transition(
+				'* => in-left',
+				[
+					animate(
+						'650ms ease-in-out',
+						keyframes([
+							style({offset: 0, opacity: 0, maxHeight: 0, transform: 'translateX({{translateX}})', overflow: 'hidden'}),
+							style({offset: 0.6, opacity: 0, maxHeight: '500px', transform: 'translateX({{translateX}})', overflow: 'hidden'}),
+							style({offset: 1, opacity: 1, maxHeight: 'none', transform: 'translateX(0)', overflow: 'hidden'})
+						])
+					)
+				],
+				{params: {translateX: '-15%'}}
+			),
 			state('in-first', style({opacity: 1})),
 			transition('* => in-first', [
 				animate(
 					'350ms ease-in-out',
 					keyframes([style({offset: 0, opacity: 0, transform: 'translateX(15%)'}), style({offset: 1, opacity: 1, transform: 'translateX(0)'})])
+				)
+			]),
+			state('in-first-left', style({opacity: 1})),
+			transition('* => in-first-left', [
+				animate(
+					'350ms ease-in-out',
+					keyframes([style({offset: 0, opacity: 0, transform: 'translateX(-15%)'}), style({offset: 1, opacity: 1, transform: 'translateX(0)'})])
 				)
 			]),
 			state('out', style({opacity: 0, maxHeight: 0, overflow: 'hidden', display: 'none'})),
@@ -55,6 +77,9 @@ export class ObNotificationComponent implements OnInit {
 	public static REMOVE_DELAY = 350;
 	@Input() channel: string;
 	@HostBinding('class.ob-custom') customChannel = false;
+	@HostBinding('class') get getPlacement() {
+		return this.notificationService.placement;
+	}
 	public notifications: ObINotificationPrivate[] = [];
 	public variant: {[type: string]: string} = {};
 	private readonly window: Window;
@@ -86,7 +111,7 @@ export class ObNotificationComponent implements OnInit {
 			existingNotification.occurrences++;
 		} else {
 			this.notifications.unshift(notification);
-			notification.$state = this.notifications.length ? 'in' : 'in-first';
+			notification.$state = this.getOpenState();
 			if (!notification.sticky) {
 				this.selfClose(notification);
 			}
@@ -118,6 +143,18 @@ export class ObNotificationComponent implements OnInit {
 	 */
 	public clear(): void {
 		this.notifications.forEach(notification => this.close(notification));
+	}
+
+	private getOpenState(): string {
+		const postfix = this.isPlacementOnLeft() ? '-left' : '';
+		return this.notifications.length ? `in${postfix}` : `in-first${postfix}`;
+	}
+
+	private isPlacementOnLeft(): boolean {
+		return (
+			this.notificationService.placement == ObENotificationPlacement.BOTTOM_LEFT ||
+			this.notificationService.placement == ObENotificationPlacement.TOP_LEFT
+		);
 	}
 
 	private selfClose(notification: ObINotificationPrivate): void {

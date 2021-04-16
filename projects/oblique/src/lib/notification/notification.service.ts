@@ -3,7 +3,7 @@ import {NavigationEnd, Router} from '@angular/router';
 import {Observable, Subject} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
-import {ObINotification, ObENotificationType} from './notification.model';
+import {ObINotification, ObENotificationType, ObENotificationPlacement} from './notification.model';
 import {ObNotificationConfig} from './notification.config';
 
 /**
@@ -15,6 +15,7 @@ import {ObNotificationConfig} from './notification.config';
 @Injectable({providedIn: 'root'})
 export class ObNotificationService {
 	clearAllOnNavigate = this.config.clearAllOnNavigate;
+	placement: ObENotificationPlacement = this.config.placement;
 	private readonly eventSubject: Subject<ObINotification> = new Subject<ObINotification>();
 	private readonly events$ = this.eventSubject.asObservable();
 

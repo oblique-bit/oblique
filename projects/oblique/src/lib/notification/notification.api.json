@@ -7,11 +7,11 @@
       "exported": "obNotification",
       "type": "component",
       "since": "2.0.0",
-      "updated": "6.0.0",
+      "updated": "7.0.0",
       "inputs": [
         {
           "name": "channel",
-          "text": "The channel name where notifications will be retrieved from. If not specified, component will listen to the default channel.",
+          "text": "The channel name where notifications will be retrieved from. If not specified, the component will listen to the default channel.",
           "type": "string",
           "default": "oblique",
           "since": "2.0.0"
@@ -58,7 +58,21 @@
       "usage": "Should by injected, typically in the AppModule, to customize the values of its properties in order to provide alternate default values for the <code>NotificationComponent</code>.",
       "type": "injectable(config)",
       "since": "2.0.0",
+      "updated": "7.0.0",
       "variables": [
+        {
+          "name": "placement",
+          "text": "Defines the position of the notifications in its containing block.",
+          "type": "ObENotificationPlacement",
+          "values": [
+            "ObENotificationPlacement.BOTTOM_LEFT",
+            "ObENotificationPlacement.BOTTOM_RIGHT",
+            "ObENotificationPlacement.TOP_LEFT",
+            "ObENotificationPlacement.TOP_RIGHT"
+          ],
+          "default": "ObENotificationPlacement.TOP_RIGHT",
+          "since": "7.0.0"
+        },
         {
           "name": "sticky",
           "text": "Defines if notifications should be manually closed or if they should auto-close after some timeout.",

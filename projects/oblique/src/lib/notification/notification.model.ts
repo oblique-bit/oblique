@@ -31,3 +31,10 @@ export enum ObENotificationType {
 	WARNING = 'warning',
 	ERROR = 'error'
 }
+
+export enum ObENotificationPlacement {
+	BOTTOM_LEFT = 'ob-bottom-left',
+	BOTTOM_RIGHT = 'ob-bottom-right',
+	TOP_LEFT = 'ob-top-left',
+	TOP_RIGHT = 'ob-top-right'
+}
