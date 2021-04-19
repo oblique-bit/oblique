@@ -14,7 +14,7 @@
   "i18n.oblique.column.left.title": "Left column",
   "i18n.oblique.column.right.toggle": "Toggle right column",
   "i18n.oblique.column.right.title": "Right column",
-  "i18n.oblique.http.error.general": "An error has occurred. Please try again later or contact the support.",
+  "i18n.oblique.http.error.general": "An unknown error has occurred. Please try again later.",
   "i18n.oblique.http.error.status.0": "The server cannot handle the request (because it is overloaded or down for maintenance). Generally, this is a temporary state.",
   "i18n.oblique.http.error.status.400": "The server cannot or will not process the request due to an apparent client error (e.g., malformed request syntax, size too large, invalid request message framing, or deceptive request routing).",
   "i18n.oblique.http.error.status.404": "The requested resource could not be found but may be available in the future. Subsequent requests by the client are permissible.",
