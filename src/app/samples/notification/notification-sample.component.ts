@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ObNotificationService, ObENotificationType} from 'oblique';
+import {ObNotificationService, ObENotificationType, ObENotificationPlacement} from 'oblique';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
@@ -12,6 +12,7 @@ export class ObNotificationSampleComponent {
 	appChannel = 'oblique';
 	sampleChannel = 'demo';
 	variants = ObENotificationType;
+	placements = ObENotificationPlacement;
 
 	// Selection:
 	channel = this.sampleChannel;
@@ -40,6 +41,14 @@ export class ObNotificationSampleComponent {
 
 	set clearAllOnNavigate(value: boolean) {
 		this.notificationService.clearAllOnNavigate = value;
+	}
+
+	get placement() {
+		return this.notificationService.placement;
+	}
+
+	set placement(value: ObENotificationPlacement) {
+		this.notificationService.placement = value;
 	}
 
 	send() {
