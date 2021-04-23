@@ -1,3 +1,12 @@
+## [6.1.2](https://github.com/oblique-bit/oblique/compare/6.1.1...6.1.2) (2021-04-23)
+
+## Bug Fixes
+* **icon:** add missing icons ([863883b](https://github.com/oblique-bit/oblique/commit/863883b2e1b0048de27e259854e50f22269215b3))
+* **icon:** remove borders from the icons and clean them up ([dc6f2f7](https://github.com/oblique-bit/oblique/commit/dc6f2f783befa1d79834b0017c4fd16602fab587))
+* **language:** update error message for unknown http errors ([487d341](https://github.com/oblique-bit/oblique/commit/487d34100d67a7abd5f0c02b12721cd1420491e5))
+* **toolchain:** add @popperjs/core as dependency ([aa2b12b](https://github.com/oblique-bit/oblique/commit/aa2b12bd4f86a17ea6a98d4e1be2701d51e4827b))
+
+
 ## [6.1.1](https://github.com/oblique-bit/oblique/compare/6.1.0...6.1.1) (2021-04-08)
 
 ## Bug Fixes
