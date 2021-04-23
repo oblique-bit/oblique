@@ -21,12 +21,12 @@
     "Philippe Krüttli <philippe.kruttli@bit.admin.ch>",
     "Cédric Tristan Schweizer <cedrictristan.schweizer@bit.admin.ch>",
     "Yanis Noa Weibel <yanisnoa.weibel@bit.admin.ch>",
-    "Habegger Michèle <michele.habegger@bit.admin.ch>",
+    "Michèle Habegger <michele.habegger@bit.admin.ch>",
     "Nicolas Müller <nicolas.mueller@bit.admin.ch>",
     "Debora Mittner <debora.mittner@bit.admin.ch>",
     "Pedro De Almeida",
     "Christian Ulmann",
-    "Tanner Stefan"
+    "Stefan Tanner"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
