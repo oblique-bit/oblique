@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.75 24.75"><defs><style>.cls-1{fill:none;stroke:#171717;stroke-miterlimit:10;stroke-width:0.75px;}</style></defs><title>Mobile</title><g id="Ebene_2" data-name="Ebene 2"><g id="Ebene_1-2" data-name="Ebene 1"><rect class="cls-1" x="0.375" y="0.375" width="24" height="24"/><path d="M7.101,4.05615v16.583H17.64888V4.05615Zm9.79785.75v1.707H7.851v-1.707Zm0,2.457V17.43213H7.851V7.26319ZM7.851,19.88916v-1.707h9.04785v1.707Z"/><rect x="11.99996" y="18.66065" width="0.75" height="0.75"/><rect x="10.37838" y="5.28467" width="3.99365" height="0.75"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10.54785 16.58301"><title>Mobile</title>
+	<path d="M0,0V16.583H10.54785V0ZM9.79785.75V2.457H.75V.75Zm0,2.457V13.376H.75V3.207ZM.75,15.833V14.126H9.79785v1.707Z" fill="#171717"/>
+	<rect x="4.89893" y="14.60449" width="0.75" height="0.75" fill="#171717"/>
+	<rect x="3.27734" y="1.22852" width="3.99365" height="0.75" fill="#171717"/>
+</svg>

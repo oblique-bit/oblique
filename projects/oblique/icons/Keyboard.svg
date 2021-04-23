@@ -1,1 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.75 24.75"><defs><style>.cls-1{fill:none;stroke:#171717;stroke-miterlimit:10;stroke-width:0.75px;}</style></defs><title>Keyboard</title><g id="Ebene_2" data-name="Ebene 2"><g id="Ebene_1-2" data-name="Ebene 1"><rect class="cls-1" x="0.375" y="0.375" width="24" height="24"/><path d="M4.095,8.06006v9.04785H20.679V8.06006Zm15.834,8.29785H4.845V8.81006H19.929Z"/><polygon points="16.418 15.25 16.418 14.5 8.326 14.5 8.326 15.26 16.043 15.26 16.418 15.25"/><rect x="5.43386" y="9.93799" width="0.75" height="0.69727"/><rect x="7.07839" y="9.93799" width="0.75" height="0.69727"/><rect x="8.72292" y="9.93799" width="0.75" height="0.69727"/><rect x="10.36746" y="9.93799" width="0.75" height="0.69727"/><rect x="12.01199" y="9.93799" width="0.75" height="0.69727"/><rect x="13.65652" y="9.93799" width="0.75" height="0.69727"/><rect x="15.30105" y="9.93799" width="0.75" height="0.69727"/><rect x="16.94558" y="9.93799" width="0.75" height="0.69727"/><rect x="18.59011" y="9.93799" width="0.75" height="0.69727"/><rect x="5.43386" y="11.46924" width="0.75" height="0.69727"/><rect x="7.07839" y="11.46924" width="0.75" height="0.69727"/><rect x="8.72292" y="11.46924" width="0.75" height="0.69727"/><rect x="10.36746" y="11.46924" width="0.75" height="0.69727"/><rect x="12.01199" y="11.46924" width="0.75" height="0.69727"/><rect x="13.65652" y="11.46924" width="0.75" height="0.69727"/><rect x="15.30105" y="11.46924" width="0.75" height="0.69727"/><rect x="16.94558" y="11.46924" width="0.75" height="0.69727"/><rect x="18.59011" y="11.46924" width="0.75" height="0.69727"/><rect x="5.43386" y="13.00049" width="0.75" height="0.69727"/><rect x="7.07839" y="13.00049" width="0.75" height="0.69727"/><rect x="8.72292" y="13.00049" width="0.75" height="0.69727"/><rect x="10.36746" y="13.00049" width="0.75" height="0.69727"/><rect x="12.01199" y="13.00049" width="0.75" height="0.69727"/><rect x="13.65652" y="13.00049" width="0.75" height="0.69727"/><rect x="15.30105" y="13.00049" width="0.75" height="0.69727"/><rect x="16.94558" y="13.00049" width="0.75" height="0.69727"/><rect x="18.59011" y="13.00049" width="0.75" height="0.69727"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.58398 9.04785"><title>Keyboard</title>
+	<path d="M0,0V9.04785H16.584V0ZM15.834,8.29785H.75V.75H15.834Z" fill="#171717"/>
+	<polygon points="12.323 7.19 12.323 6.44 4.231 6.44 4.231 7.2 11.948 7.2 12.323 7.19" fill="#171717"/>
+	<rect x="1.33887" y="1.87793" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="2.9834" y="1.87793" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="4.62793" y="1.87793" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="6.27246" y="1.87793" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="7.91699" y="1.87793" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="9.56152" y="1.87793" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="11.20605" y="1.87793" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="12.85059" y="1.87793" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="14.49512" y="1.87793" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="1.33887" y="3.40918" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="2.9834" y="3.40918" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="4.62793" y="3.40918" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="6.27246" y="3.40918" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="7.91699" y="3.40918" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="9.56152" y="3.40918" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="11.20605" y="3.40918" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="12.85059" y="3.40918" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="14.49512" y="3.40918" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="1.33887" y="4.94043" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="2.9834" y="4.94043" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="4.62793" y="4.94043" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="6.27246" y="4.94043" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="7.91699" y="4.94043" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="9.56152" y="4.94043" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="11.20605" y="4.94043" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="12.85059" y="4.94043" width="0.75" height="0.69727" fill="#171717"/>
+	<rect x="14.49512" y="4.94043" width="0.75" height="0.69727" fill="#171717"/>
+</svg>

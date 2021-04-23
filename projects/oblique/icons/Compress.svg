@@ -1,1 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.75 24.75"><defs><style>.cls-1{fill:none;stroke:#171717;stroke-miterlimit:10;stroke-width:0.75px;}</style></defs><title>Compress</title><g id="Ebene_2" data-name="Ebene 2"><g id="Ebene_1-2" data-name="Ebene 1"><polygon points="6.624 11.143 6.43 11.868 11.1 13.12 5.472 18.749 6.002 19.279 11.631 13.65 12.882 18.321 13.607 18.126 12.131 12.62 6.624 11.143"/><polygon points="19.278 6.001 18.748 5.471 13.118 11.101 11.866 6.43 11.142 6.625 12.618 12.131 18.125 13.607 18.319 12.882 13.649 11.631 19.278 6.001"/><rect class="cls-1" x="0.375" y="0.375" width="24" height="24"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.80664 13.80762"><title>Compress</title>
+	<polygon points="1.152 5.672 0.958 6.396 5.629 7.648 0 13.277 0.53 13.808 6.159 8.179 7.411 12.85 8.135 12.655 6.659 7.148 1.152 5.672" fill="#171717"/>
+	<polygon points="13.807 0.53 13.276 0 7.646 5.63 6.395 0.959 5.67 1.153 7.146 6.66 12.653 8.136 12.847 7.411 8.177 6.16 13.807 0.53" fill="#171717"/>
+</svg>

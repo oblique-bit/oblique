@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.75 24.75"><defs><style>.cls-1{fill:none;stroke:#171717;stroke-miterlimit:10;stroke-width:0.75px;}</style></defs><title>Home</title><g id="Ebene_2" data-name="Ebene 2"><g id="Ebene_1-2" data-name="Ebene 1"><path d="M12.38948,4.02393,4.84114,8.38916V19.94483H19.90852V8.36572ZM10.8426,19.19483V12.61865h3.05567v6.57618Zm8.31592,0H14.64827V11.86865H10.0926v7.32618H5.59114V8.82276l6.79834-3.93262,6.769,3.90918Z"/><rect class="cls-1" x="0.375" y="0.375" width="24" height="24"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.06738 15.9209"><title>Home</title>
+	<path
+		d="M7.54834,0,0,4.36523V15.9209H15.06738V4.3418ZM6.00146,15.1709V8.59473H9.05713V15.1709Zm8.31592,0H9.80713V7.84473H5.25146V15.1709H.75V4.79883L7.54834.86621l6.769,3.90918Z"
+		fill="#171717"/>
+</svg>

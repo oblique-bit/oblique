@@ -1,1 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.75 24.75"><defs><style>.cls-1{fill:none;stroke:#171717;stroke-miterlimit:10;stroke-width:0.75px;}</style></defs><title>FileCheckmark</title><g id="Ebene_2" data-name="Ebene 2"><g id="Ebene_1-2" data-name="Ebene 1"><rect class="cls-1" x="0.375" y="0.375" width="24" height="24"/><path d="M6.4388,10.54639h4.15479V4.84326h7.86377V12.981h.75V4.09326H9.84359L5.71126,9.79639,5.6888,20.67676h5.85108v-.75H6.4388ZM9.84359,5.38526V9.79639H6.63851Z"/><polygon points="21.035 14.469 15.92 19.583 13.637 17.3 13.107 17.831 15.92 20.644 21.566 15 21.035 14.469"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.87695 16.5835"><title>FileCheckmark</title>
+	<path d="M.75,6.45313H4.90479V.75h7.86376V8.8877h.75V0H4.15479L.02246,5.70313,0,16.5835H5.85107v-.75H.75ZM4.15479,1.292V5.70313H.94971Z" fill="#171717"/>
+	<polygon points="15.346 10.376 10.231 15.49 7.948 13.207 7.418 13.737 10.231 16.551 15.877 10.906 15.346 10.376" fill="#171717"/>
+</svg>

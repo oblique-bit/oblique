@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.75 24.75"><defs><style>.cls-1{fill:none;stroke:#171717;stroke-miterlimit:10;stroke-width:0.75px;}.cls-2{fill:#171717;}</style></defs><title>Plus</title><g id="Ebene_2" data-name="Ebene 2"><g id="Ebene_1-2" data-name="Ebene 1"><rect class="cls-1" x="0.375" y="0.375" width="24" height="24"/><polygon class="cls-2" points="19.508 12 12.719 12 12.719 5.242 11.969 5.242 11.969 12 5.242 12 5.242 12.75 11.969 12.75 11.969 19.508 12.719 19.508 12.719 12.75 19.508 12.75 19.508 12"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.26563 14.26563"><title>Plus</title>
+	<polygon
+		points="14.266 6.758 7.477 6.758 7.477 0 6.727 0 6.727 6.758 0 6.758 0 7.508 6.727 7.508 6.727 14.266 7.477 14.266 7.477 7.508 14.266 7.508 14.266 6.758"
+		fill="#171717"/>
+</svg>
