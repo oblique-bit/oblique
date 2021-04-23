@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.75 24.75"><defs><style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:0.75px;}</style></defs><title>Tablet</title><g id="Ebene_2" data-name="Ebene 2"><g id="Ebene_1-2" data-name="Ebene 1"><rect class="cls-1" x="0.375" y="0.375" width="24" height="24"/><rect x="11.98333" y="18.68791" width="0.75" height="0.75"/><rect x="10.36175" y="5.31193" width="3.99365" height="0.75"/><path d="M5.59906,4.08342v16.583H19.11761V4.08342Zm12.76855.75v1.707H6.34906v-1.707Zm0,2.457V17.45939H6.34906V7.29045ZM6.34906,19.91642v-1.707H18.36761v1.707Z"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.51855 16.58301"><title>Tablet</title>
+	<rect x="6.38428" y="14.60449" width="0.75" height="0.75" fill="#171717"/>
+	<rect x="4.7627" y="1.22852" width="3.99365" height="0.75" fill="#171717"/>
+	<path d="M0,0V16.583H13.51855V0ZM12.76855.75V2.457H.75V.75Zm0,2.457V13.376H.75V3.207ZM.75,15.833V14.126H12.76855v1.707Z" fill="#171717"/>
+</svg>

@@ -1,1 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.75 24.75"><defs><style>.cls-1{fill:none;stroke:#171717;stroke-miterlimit:10;stroke-width:0.75px;}.cls-2{fill:#171717;}</style></defs><title>Upload</title><g id="Ebene_2" data-name="Ebene 2"><g id="Ebene_1-2" data-name="Ebene 1"><rect class="cls-1" x="0.375" y="0.375" width="24" height="24" transform="translate(24.75 24.75) rotate(180)"/><polygon class="cls-2" points="12.441 4.167 5.397 8.234 5.772 8.884 12.066 5.249 12.066 17.477 12.816 17.477 12.816 5.249 19.11 8.884 19.485 8.234 12.441 4.167"/><rect class="cls-2" x="6.07178" y="20.06201" width="12.76855" height="0.75"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.08789 16.64453"><title>Upload</title>
+	<polygon points="7.044 0 0 4.066 0.375 4.717 6.669 1.082 6.669 13.31 7.419 13.31 7.419 1.082 13.713 4.717 14.088 4.066 7.044 0" fill="#171717"/>
+	<rect x="0.6748" y="15.89453" width="12.76855" height="0.75" fill="#171717"/>
+</svg>

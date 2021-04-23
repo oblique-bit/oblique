@@ -1,1 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.75 24.75"><defs><style>.cls-1{fill:none;stroke:#171717;stroke-miterlimit:10;stroke-width:0.75px;}</style></defs><title>Expand</title><g id="Ebene_2" data-name="Ebene 2"><g id="Ebene_1-2" data-name="Ebene 1"><polygon points="20.795 10.925 19.319 5.418 13.813 3.942 13.618 4.667 18.291 5.919 12.64 11.569 13.17 12.1 18.82 6.45 20.07 11.119 20.795 10.925"/><polygon points="11.58 12.63 5.929 18.281 4.676 13.604 3.951 13.798 5.427 19.305 10.934 20.781 11.128 20.057 6.464 18.807 12.11 13.16 11.58 12.63"/><rect class="cls-1" x="0.375" y="0.375" width="24" height="24"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.84375 16.83936"><title>Expand</title>
+	<polygon points="16.844 6.983 15.368 1.476 9.861 0 9.667 0.725 14.34 1.977 8.689 7.627 9.219 8.158 14.868 2.508 16.119 7.177 16.844 6.983" fill="#171717"/>
+	<polygon points="7.628 8.688 1.978 14.339 0.725 9.662 0 9.856 1.476 15.363 6.983 16.839 7.177 16.115 2.513 14.865 8.159 9.218 7.628 8.688" fill="#171717"/>
+</svg>

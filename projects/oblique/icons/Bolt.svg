@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.75 24.75"><defs><style>.cls-1{fill:none;stroke:#171717;stroke-miterlimit:10;stroke-width:0.75px;}.cls-2{fill:#171717;}</style></defs><title>Bolt</title><g id="Ebene_2" data-name="Ebene 2"><g id="Ebene_1-2" data-name="Ebene 1"><rect class="cls-1" x="0.375" y="0.375" width="24" height="24"/><polygon class="cls-2" points="16.5 17.315 13.796 18.876 13.796 8.15 10.551 11.394 10.566 4.892 9.816 4.89 9.797 13.208 13.046 9.96 13.046 18.876 10.341 17.315 9.966 17.964 13.421 19.958 16.875 17.964 16.5 17.315"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.07764 15.06836"><title>Bolt</title>
+	<polygon
+		points="6.703 12.425 3.999 13.986 3.999 3.26 0.754 6.504 0.769 0.002 0.019 0 0 8.318 3.249 5.07 3.249 13.986 0.544 12.425 0.169 13.074 3.624 15.068 7.078 13.074 6.703 12.425"
+		fill="#171717"/>
+</svg>

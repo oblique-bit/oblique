@@ -1,1 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.75 24.75"><defs><style>.cls-1{fill:none;stroke:#171717;stroke-miterlimit:10;stroke-width:0.75px;}.cls-2{fill:#171717;}</style></defs><title>ChevronSmallDown</title><g id="Ebene_2" data-name="Ebene 2"><g id="Ebene_1-2" data-name="Ebene 1"><rect class="cls-1" x="0.375" y="0.375" width="24" height="24"/><polygon class="cls-2" points="7.813 10.633 12.375 13.267 16.938 10.633 17.313 11.282 12.375 14.134 7.438 11.282 7.813 10.633"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9.875 3.50049"><title>ChevronSmallDown</title>
+	<polygon points="0.375 0 4.938 2.634 9.5 0 9.875 0.649 4.938 3.5 0 0.649 0.375 0" fill="#171717"/>
+</svg>

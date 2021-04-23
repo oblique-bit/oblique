@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.75 24.75"><defs><style>.cls-1{fill:none;stroke:#171717;stroke-miterlimit:10;stroke-width:0.75px;}.cls-2{fill:#171717;}</style></defs><title>CreditCard</title><g id="Ebene_2" data-name="Ebene 2"><g id="Ebene_1-2" data-name="Ebene 1"><rect class="cls-1" x="0.375" y="0.375" width="24" height="24"/><path class="cls-2" d="M4.06634,5.61572V19.13428h16.583V5.61572Zm.75.75h15.0835v1.25H4.81634Zm0,12.01856V10.62451h15.0835v7.75977Z"/><rect class="cls-2" x="5.43109" y="16.38428" width="4.54883" height="0.75"/><rect class="cls-2" x="10.7055" y="16.38428" width="2.27441" height="0.75"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.58301 13.51855"><title>CreditCard</title>
+	<path d="M0,0V13.51855H16.583V0ZM.75.75H15.8335V2H.75Zm0,12.01855V5.00879H15.8335v7.75976Z" fill="#171717"/>
+	<rect x="1.36475" y="10.76855" width="4.54883" height="0.75" fill="#171717"/>
+	<rect x="6.63916" y="10.76855" width="2.27441" height="0.75" fill="#171717"/>
+</svg>

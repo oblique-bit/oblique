@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.75 24.75"><defs><style>.cls-1{fill:none;stroke:#171717;stroke-miterlimit:10;stroke-width:0.75px;}</style></defs><title>FolderOpen</title><g id="Ebene_2" data-name="Ebene 2"><g id="Ebene_1-2" data-name="Ebene 1"><rect class="cls-1" x="0.375" y="0.375" width="24" height="24"/><path d="M19.27051,8.71436V7.36475H7.82568v-1.749H4.083V18.84229l-.05713.40039H19.2207L20.72363,8.71436ZM4.833,6.36572H7.07568v1.749H18.52051v.59961H5.5293l-.69629,4.876ZM18.58582,18.38428H4.90564l1.274-8.91992H19.85938Z"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.69775 13.62695"><title>FolderOpen</title>
+	<path
+		d="M15.24463,3.09863V1.749H3.7998V0H.05713V13.22656L0,13.627H15.19482L16.69775,3.09863ZM.80713.75H3.0498V2.499H14.49463v.59961H1.50342l-.69629,4.876ZM14.55994,12.76855H.87976l1.274-8.91992H15.8335Z"
+		fill="#171717"/>
+</svg>

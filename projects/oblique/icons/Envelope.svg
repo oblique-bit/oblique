@@ -1,1 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.75 24.75"><defs><style>.cls-1{fill:none;stroke:#171717;stroke-miterlimit:10;stroke-width:0.75px;}.cls-2{fill:#171717;}</style></defs><title>Envelope</title><g id="Ebene_2" data-name="Ebene 2"><g id="Ebene_1-2" data-name="Ebene 1"><rect class="cls-1" x="0.375" y="0.375" width="24" height="24"/><path class="cls-2" d="M4.08325,5.61572V19.13477h16.5835V5.61572Zm15.42951.75-7.138,4.12061L5.23718,6.36572ZM4.83325,18.38477V6.99854l7.54151,4.354,7.542-4.35449V18.38477Z"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.5835 13.51904"><title>Envelope</title>
+	<path d="M0,0V13.519H16.5835V0ZM15.4295.75,8.2915,4.87061,1.15393.75ZM.75,12.769V1.38281l7.5415,4.354,7.542-4.3545V12.769Z" fill="#171717"/>
+</svg>

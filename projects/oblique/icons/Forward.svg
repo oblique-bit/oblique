@@ -1,1 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.75 24.75"><defs><style>.cls-1{fill:none;stroke:#171717;stroke-miterlimit:10;stroke-width:0.75px;}.cls-2{fill:#171717;}</style></defs><title>Forward</title><g id="Ebene_2" data-name="Ebene 2"><g id="Ebene_1-2" data-name="Ebene 1"><rect class="cls-1" x="0.375" y="0.375" width="24" height="24"/><polygon class="cls-2" points="14.858 5.803 14.208 6.178 16.626 10.365 4.066 10.365 4.066 18.76 4.816 18.76 4.816 11.115 16.626 11.115 14.208 15.303 14.858 15.678 17.708 10.74 14.858 5.803"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.64209 12.95703"><title>Forward</title>
+	<polygon points="10.792 0 10.142 0.375 12.559 4.563 0 4.563 0 12.957 0.75 12.957 0.75 5.313 12.559 5.313 10.142 9.5 10.792 9.875 13.642 4.938 10.792 0"
+			 fill="#171717"/>
+</svg>

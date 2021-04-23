@@ -1,1 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.76052 24.75"><defs><style>.cls-1{fill:none;stroke:#171717;stroke-miterlimit:10;stroke-width:0.75px;}.cls-2{fill:#171717;}</style></defs><title>Eraser</title><g id="Ebene_2" data-name="Ebene 2"><g id="Ebene_1-2" data-name="Ebene 1"><rect class="cls-1" x="0.38552" y="0.375" width="24" height="24"/><rect class="cls-1" x="0.375" y="0.375" width="24" height="24"/><path class="cls-2" d="M8.017,4.0835,6.10516,16.60645H6.10492l-.61817,4.05078H16.707L19.23724,4.0835Zm.64454.75h9.70263L16.55163,16.70313l-9.6889-.08985Z"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.75049 16.57373"><title>Eraser</title>
+	<path d="M2.53027,0,.61841,12.523H.61816L0,16.57373H11.22021L13.75049,0ZM3.1748.75h9.70264L11.06488,12.61963,1.376,12.52979Z" fill="#171717"/>
+</svg>

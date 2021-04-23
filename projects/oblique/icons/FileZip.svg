@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.75 24.75"><defs><style>.cls-1{fill:none;stroke:#171717;stroke-miterlimit:10;stroke-width:0.75px;}.cls-2{fill:#171717;}</style></defs><title>FileZip</title><g id="Ebene_2" data-name="Ebene 2"><g id="Ebene_1-2" data-name="Ebene 1"><rect class="cls-1" x="0.375" y="0.375" width="24" height="24"/><path class="cls-2" d="M9.7431,4.0835v.0166L5.61145,9.78662H5.58831V20.66651H19.10736V4.0835Zm0,1.293V9.78662H6.53863Zm8.61426,14.54H6.33831V10.53662H10.4931V4.8335h7.86426Z"/><path class="cls-2" d="M13.48919,16.42822h-.7666v-.375h-.75v.375h-.76611V19.8335h2.28271Zm-.75,2.65528h-.78271V17.17822h.78271Z"/><rect class="cls-2" x="11.97259" y="5.55322" width="0.75" height="0.75"/><rect class="cls-2" x="11.97259" y="7.05322" width="0.75" height="0.75"/><rect class="cls-2" x="11.97259" y="8.55322" width="0.75" height="0.75"/><rect class="cls-2" x="11.97259" y="10.05322" width="0.75" height="0.75"/><rect class="cls-2" x="11.97259" y="11.55322" width="0.75" height="0.75"/><rect class="cls-2" x="11.97259" y="13.05322" width="0.75" height="0.75"/><rect class="cls-2" x="11.97259" y="14.55322" width="0.75" height="0.75"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.51904 16.58301"><title>FileZip</title>
+	<path d="M4.15479,0V.0166L.02313,5.70313H0V16.583H13.519V0Zm0,1.293V5.70313H.95032ZM12.769,15.833H.75V6.45313H4.90479V.75H12.769Z" fill="#171717"/>
+	<path d="M7.90088,12.34473h-.7666v-.375h-.75v.375H5.61816V15.75H7.90088ZM7.15088,15H6.36816V13.09473h.78272Z" fill="#171717"/>
+	<rect x="6.38428" y="1.46973" width="0.75" height="0.75" fill="#171717"/>
+	<rect x="6.38428" y="2.96973" width="0.75" height="0.75" fill="#171717"/>
+	<rect x="6.38428" y="4.46973" width="0.75" height="0.75" fill="#171717"/>
+	<rect x="6.38428" y="5.96973" width="0.75" height="0.75" fill="#171717"/>
+	<rect x="6.38428" y="7.46973" width="0.75" height="0.75" fill="#171717"/>
+	<rect x="6.38428" y="8.96973" width="0.75" height="0.75" fill="#171717"/>
+	<rect x="6.38428" y="10.46973" width="0.75" height="0.75" fill="#171717"/>
+</svg>

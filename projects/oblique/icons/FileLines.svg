@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.75 24.75"><defs><style>.cls-1{fill:none;stroke:#171717;stroke-miterlimit:10;stroke-width:0.75px;}</style></defs><title>FileLines</title><g id="Ebene_2" data-name="Ebene 2"><g id="Ebene_1-2" data-name="Ebene 1"><rect class="cls-1" x="0.375" y="0.375" width="24" height="24"/><path d="M9.77067,4.0835v.01709L5.6389,9.78662h-.023V20.667H19.13444V4.0835Zm0,1.292V9.78662H6.56535ZM18.38444,19.917H6.36589V10.53662h4.15478V4.8335h7.86377Z"/><rect x="7.44792" y="12.39307" width="9.8335" height="0.75"/><rect x="7.44792" y="14.85156" width="9.8335" height="0.75"/><rect x="7.44792" y="17.31006" width="9.8335" height="0.75"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.51855 16.5835"><title>FileLines</title>
+	<path d="M4.15479,0V.01709L.023,5.70313H0V16.5835H13.51855V0Zm0,1.292V5.70313H.94946ZM12.76855,15.8335H.75V6.45313H4.90479V.75h7.86376Z" fill="#171717"/>
+	<rect x="1.83203" y="8.30957" width="9.8335" height="0.75" fill="#171717"/>
+	<rect x="1.83203" y="10.76807" width="9.8335" height="0.75" fill="#171717"/>
+	<rect x="1.83203" y="13.22656" width="9.8335" height="0.75" fill="#171717"/>
+</svg>

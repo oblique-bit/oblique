@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.75 24.75"><defs><style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:0.75px;}</style></defs><title>Trash</title><g id="Ebene_2" data-name="Ebene 2"><g id="Ebene_1-2" data-name="Ebene 1"><rect class="cls-1" x="0.375" y="0.375" width="24" height="24"/><path d="M15.20188,5.61579,13.89194,4.08356H10.89145L9.58151,5.61579h-5.149v.75h1.1831V20.66657h13.519V6.36579h1.13086v-.75Zm-3.96473-.78223h2.30909l.66894.78223h-3.647Zm7.14746,15.083H6.36557V6.36579h12.019Z"/><rect x="7.39585" y="7.83356" width="0.75" height="10.92578"/><rect x="9.68491" y="7.83356" width="0.75" height="10.92578"/><rect x="11.97397" y="7.83356" width="0.75" height="10.92578"/><rect x="14.26303" y="7.83356" width="0.75" height="10.92578"/><rect x="16.5521" y="7.83356" width="0.75" height="10.92578"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.83301 16.58301"><title>Trash</title>
+	<path
+		d="M10.76941,1.53223,9.45947,0H6.459L5.14905,1.53223H0v.75H1.18311V16.583h13.519V2.28223H15.833v-.75ZM6.80469.75H9.11377l.66894.78223h-3.647Zm7.14746,15.083H1.93311V2.28223h12.019Z"
+		fill="#171717"/>
+	<rect x="2.96338" y="3.75" width="0.75" height="10.92578" fill="#171717"/>
+	<rect x="5.25244" y="3.75" width="0.75" height="10.92578" fill="#171717"/>
+	<rect x="7.5415" y="3.75" width="0.75" height="10.92578" fill="#171717"/>
+	<rect x="9.83057" y="3.75" width="0.75" height="10.92578" fill="#171717"/>
+	<rect x="12.11963" y="3.75" width="0.75" height="10.92578" fill="#171717"/>
+</svg>
