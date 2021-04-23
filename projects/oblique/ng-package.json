@@ -9,5 +9,5 @@
       "ajv": "ajv"
     }
   },
-  "whitelistedNonPeerDependencies": ["@schematics/angular", "ansi-colors", "ts-morph"]
+  "whitelistedNonPeerDependencies": ["@schematics/angular", "ansi-colors", "@popperjs/core", "ts-morph"]
 }

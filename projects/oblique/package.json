@@ -12,12 +12,12 @@
     "@angular/platform-browser-dynamic": "^11.0.0",
     "@angular/router": "^11.0.0",
     "@ngx-translate/core": "^13.0.0",
-    "@popperjs/core": "^2.5.3",
     "rxjs": "^6.0.0"
   },
   "dependencies": {
     "@schematics/angular": "^11.0.0",
     "ansi-colors": "^4.1.1",
+    "@popperjs/core": "^2.5.3",
     "ts-morph": "^9.1.0"
   },
   "optionalDependencies": {
