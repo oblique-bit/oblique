@@ -9,6 +9,7 @@ export interface ObIOptionsSchema {
 	jenkins: string;
 	jest: boolean;
 	locales: string;
+	mandatory: boolean;
 	npmrc: boolean;
 	prefix: string;
 	protractor: boolean;
