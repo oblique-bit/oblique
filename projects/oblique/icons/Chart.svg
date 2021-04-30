@@ -1,8 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.20801 13.14355"><title>Chart</title>
-	<polygon points="0.75 12.394 0.75 0 0 0 0 13.144 16.208 13.144 16.208 12.394 0.75 12.394" fill="#171717"/>
-	<rect x="3.3125" y="8.31348" width="0.75" height="3.18652" fill="#171717"/>
-	<rect x="5.60156" y="6.38477" width="0.75" height="5.11523" fill="#171717"/>
-	<rect x="7.89063" y="4.46777" width="0.75" height="7.03223" fill="#171717"/>
-	<rect x="10.17969" y="7.11523" width="0.75" height="4.38477" fill="#171717"/>
-	<rect x="12.46875" y="5.12695" width="0.75" height="6.37305" fill="#171717"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Chart</title><polygon points="4.458 18.009 4.458 5.616 3.708 5.616 3.708 18.759 19.917 18.759 19.917 18.009 4.458 18.009" fill="#171717"/><rect x="7.021" y="13.9292" width="0.75" height="3.18652" fill="#171717"/><rect x="9.31006" y="12.00049" width="0.75" height="5.11523" fill="#171717"/><rect x="11.59912" y="10.0835" width="0.75" height="7.03223" fill="#171717"/><rect x="13.88818" y="12.73096" width="0.75" height="4.38477" fill="#171717"/><rect x="16.17725" y="10.74268" width="0.75" height="6.37305" fill="#171717"/></svg>

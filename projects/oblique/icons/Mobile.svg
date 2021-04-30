@@ -1,5 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10.54785 16.58301"><title>Mobile</title>
-	<path d="M0,0V16.583H10.54785V0ZM9.79785.75V2.457H.75V.75Zm0,2.457V13.376H.75V3.207ZM.75,15.833V14.126H9.79785v1.707Z" fill="#171717"/>
-	<rect x="4.89893" y="14.60449" width="0.75" height="0.75" fill="#171717"/>
-	<rect x="3.27734" y="1.22852" width="3.99365" height="0.75" fill="#171717"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Mobile</title><path d="M6.72607,3.68115v16.583H17.27393V3.68115Zm9.79786.75v1.707H7.47607v-1.707Zm0,2.457V17.05713H7.47607V6.88819Zm-9.04786,12.626v-1.707h9.04786v1.707Z" fill="#171717"/><rect x="11.625" y="18.28565" width="0.75" height="0.75" fill="#171717"/><rect x="10.00342" y="4.90967" width="3.99365" height="0.75" fill="#171717"/></svg>
