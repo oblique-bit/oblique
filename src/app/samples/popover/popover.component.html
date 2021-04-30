@@ -5,7 +5,7 @@
 		<div class="large-popover">
 			<button mat-raised-button [ngClass]="this.openPopoverPosition" [obPopover]="popover" [placement]="placement" id="poptest">Open Popover</button>
 			<ng-template #popover>
-				<p>Popover example. Here goes your content!</p>
+				<p>Popover example. Here goes your content! {{ param }}</p>
 				<button mat-button>Click me!</button>
 			</ng-template>
 		</div>
