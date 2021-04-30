@@ -1,3 +1,11 @@
+## [6.1.3](https://github.com/oblique-bit/oblique/compare/6.1.2...6.1.3) (2021-04-30)
+
+## Bug Fixes
+* **icon:** center font-awesome icons embedded in `mat-icon` ([0852343](https://github.com/oblique-bit/oblique/commit/08523438e2ab7c2618974d2993ecbbf16f3f332d))
+* **icon:** correctly size and center the icons ([2ef4115](https://github.com/oblique-bit/oblique/commit/2ef4115c1c5bf9bf63204867b433304633a98468))
+* **popover:** support interpolation in the template ([e4d6edd](https://github.com/oblique-bit/oblique/commit/e4d6edd54fb0469e995da21b8d6e7b6e04682757))
+
+
 ## [6.1.2](https://github.com/oblique-bit/oblique/compare/6.1.1...6.1.2) (2021-04-23)
 
 ## Bug Fixes
