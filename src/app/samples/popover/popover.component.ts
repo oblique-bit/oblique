@@ -7,6 +7,7 @@ import {Placement} from '@popperjs/core';
 	styleUrls: ['./popover.component.scss']
 })
 export class ObPopoverComponent {
+	param = 'This is a param.';
 	placement: Placement = 'top';
 	openPopoverPosition = 'center';
 }

@@ -1,4 +1,17 @@
-import {Directive, ElementRef, HostBinding, HostListener, Inject, Input, OnChanges, OnDestroy, OnInit, Renderer2, TemplateRef} from '@angular/core';
+import {
+	Directive,
+	ElementRef,
+	HostBinding,
+	HostListener,
+	Inject,
+	Input,
+	OnChanges,
+	OnDestroy,
+	OnInit,
+	Renderer2,
+	TemplateRef,
+	ViewContainerRef
+} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {createPopper, Instance, Options, Placement} from '@popperjs/core';
 import {filter, takeUntil} from 'rxjs/operators';
@@ -31,7 +44,8 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 		el: ElementRef,
 		private readonly renderer: Renderer2,
 		@Inject(DOCUMENT) document: any,
-		private readonly globalEventsService: ObGlobalEventsService
+		private readonly globalEventsService: ObGlobalEventsService,
+		private readonly viewContainerRef: ViewContainerRef
 	) {
 		this.body = document.body;
 		this.host = el.nativeElement;
@@ -83,7 +97,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 
 	private buildPopover(): void {
 		this.popover = this.renderer.createElement('div');
-		this.target.createEmbeddedView(this.body).rootNodes.forEach(node => this.renderer.appendChild(this.popover, node));
+		this.viewContainerRef.createEmbeddedView<HTMLElement>(this.target).rootNodes.forEach(node => this.renderer.appendChild(this.popover, node));
 		this.renderer.addClass(this.popover, 'ob-popover-content');
 		this.renderer.setAttribute(this.popover, 'role', 'tooltip');
 		this.renderer.setAttribute(this.popover, 'id', this.idContent);
