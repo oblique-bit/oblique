@@ -1,8 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.20801 13.14355"><title>ChartBar</title>
-	<polygon points="0.75 12.394 0.75 0 0 0 0 13.144 16.208 13.144 16.208 12.394 0.75 12.394" fill="#171717"/>
-	<rect x="1.37305" y="1.43164" width="5.21094" height="0.75" fill="#171717"/>
-	<rect x="1.37305" y="3.7207" width="8.36523" height="0.75" fill="#171717"/>
-	<rect x="1.37305" y="6.00977" width="11.5" height="0.75" fill="#171717"/>
-	<rect x="1.37305" y="8.29883" width="7.17041" height="0.75" fill="#171717"/>
-	<rect x="1.37305" y="10.58789" width="10.42188" height="0.75" fill="#171717"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>ChartBar</title><polygon points="4.458 18.009 4.458 5.616 3.708 5.616 3.708 18.759 19.917 18.759 19.917 18.009 4.458 18.009" fill="#171717"/><rect x="5.08154" y="7.04737" width="5.21094" height="0.75" fill="#171717"/><rect x="5.08154" y="9.33643" width="8.36523" height="0.75" fill="#171717"/><rect x="5.08154" y="11.62549" width="11.5" height="0.75" fill="#171717"/><rect x="5.08154" y="13.91455" width="7.17041" height="0.75" fill="#171717"/><rect x="5.08154" y="16.20362" width="10.42188" height="0.75" fill="#171717"/></svg>

@@ -1,5 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.58301 13.51855"><title>CreditCard</title>
-	<path d="M0,0V13.51855H16.583V0ZM.75.75H15.8335V2H.75Zm0,12.01855V5.00879H15.8335v7.75976Z" fill="#171717"/>
-	<rect x="1.36475" y="10.76855" width="4.54883" height="0.75" fill="#171717"/>
-	<rect x="6.63916" y="10.76855" width="2.27441" height="0.75" fill="#171717"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>CreditCard</title><path d="M3.708,5.24072V18.75928H20.291V5.24072Zm.75.75H19.5415v1.25H4.458Zm0,12.01856V10.24951H19.5415v7.75977Z" fill="#171717"/><rect x="5.07275" y="16.00928" width="4.54883" height="0.75" fill="#171717"/><rect x="10.34717" y="16.00928" width="2.27441" height="0.75" fill="#171717"/></svg>
