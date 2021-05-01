@@ -18,7 +18,6 @@ Oblique uses [npm](https://www.npmjs.com/), [AngularCLI](https://cli.angular.io/
     * optionally configure Jenkins & Cloud Foundry
     * optionally replace `tslint` with `eslint` and `prettier`
     * optionally add a git hook to auto format files before push
-    * optionally add IE11 support
 
 ## Checking for updates
 - Bump dependencies through Angular cli first: `ng update`

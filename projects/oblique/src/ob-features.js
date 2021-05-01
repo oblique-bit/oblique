@@ -14,8 +14,4 @@
 	) {
 		document.querySelector('.ob-compatibility').removeAttribute('hidden');
 	}
-
-	if (window.MSInputMethodContext) {
-		console.warn('Deprecated browser. Please note that IE 11 is deprecated and will not be supported anymore starting from Oblique 7');
-	}
 })();

@@ -3,14 +3,3 @@
 		@content;
 	}
 }
-
-@mixin ms() {
-	// Edge
-	@supports (-ms-ime-align:auto) {
-		@content;
-	}
-	// IE
-	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-		@content;
-	}
-}

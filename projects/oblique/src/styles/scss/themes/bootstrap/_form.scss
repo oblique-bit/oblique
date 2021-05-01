@@ -92,19 +92,6 @@ a.form-control-plaintext {
 			top: 2px;
 		}
 	}
-
-	@include ms() {
-		&.form-check::before,
-		&.form-check.form-check-lg::before {
-			top: 3px;
-		}
-		&.form-check.mandatory-radio::before {
-			top: 2px;
-		}
-		&.form-check.form-check-lg.mandatory-radio::before {
-			top: 4px;
-		}
-	}
 }
 
 .ob-inline-form {

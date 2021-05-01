@@ -6,7 +6,6 @@ export interface ObIOptionsSchema {
 	font: string;
 	httpInterceptors: boolean;
 	husky: boolean;
-	ie11: boolean;
 	jenkins: string;
 	jest: boolean;
 	locales: string;

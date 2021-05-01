@@ -13,7 +13,7 @@
       "type": "string",
       "default": "Title",
       "description": "Application's title",
-      "x-prompt": "[1 / 20] What is the title of the application?"
+      "x-prompt": "[1 / 19] What is the title of the application?"
     },
     "theme": {
       "type": "string",
@@ -23,7 +23,7 @@
       ],
       "default": "material",
       "description": "Main Oblique theme",
-      "x-prompt": "[2 / 20] Choose a theme. Please note: Material is advised, Bootstrap is only there for backward compatibility."
+      "x-prompt": "[2 / 19] Choose a theme. Please note: Material is advised, Bootstrap is only there for backward compatibility."
     },
     "font": {
       "type": "string",
@@ -34,109 +34,103 @@
       ],
       "default": "frutiger",
       "description": "Application's font",
-      "x-prompt": "[3 / 20] Choose a font. Please note: Frutiger is mandatory for CI/CD conformity. \"none\" option will not include any external font, meaning Arial will be used."
+      "x-prompt": "[3 / 19] Choose a font. Please note: Frutiger is mandatory for CI/CD conformity. \"none\" option will not include any external font, meaning Arial will be used."
     },
     "locales": {
       "type": "string",
       "default": "de-CH fr-CH it-CH",
       "description": "Supported locales",
-      "x-prompt": "[4 / 20] Choose the supported locales. Use a whitespace separated list."
+      "x-prompt": "[4 / 19] Choose the supported locales. Use a whitespace separated list."
     },
     "ajv": {
       "type": "boolean",
       "default": true,
       "description": "Add Ajv dependency",
-      "x-prompt": "[5 / 20] Add schema validation? This enables form validation based on a schema delivered by the server."
+      "x-prompt": "[5 / 19] Add schema validation? This enables form validation based on a schema delivered by the server."
     },
     "unknownRoute": {
       "type": "boolean",
       "default": true,
       "description": "Unknown route management",
-      "x-prompt": "[6 / 20] Add the ObUnknownRouteModule? It will display custom 404 pages instead of redirecting to the home page?"
+      "x-prompt": "[6 / 19] Add the ObUnknownRouteModule? It will display custom 404 pages instead of redirecting to the home page?"
     },
     "httpInterceptors": {
       "type": "boolean",
       "default": true,
       "description": "Http interceptor",
-      "x-prompt": "[7 / 20] Add the ObHttpApiInterceptor? It will show a spinner and handles errors on API calls"
+      "x-prompt": "[7 / 19] Add the ObHttpApiInterceptor? It will show a spinner and handles errors on API calls"
     },
     "banner": {
       "type": "boolean",
       "default": false,
       "description": "Banner to show current environment",
-      "x-prompt": "[8 / 20] Add the ObBanner? It will show the current environment in the header."
+      "x-prompt": "[8 / 19] Add the ObBanner? It will show the current environment in the header."
     },
     "externalLink": {
       "type": "boolean",
       "default": true,
       "description": "External link",
-      "x-prompt": "[9 / 20] Add the ObExternalLinkModule? It will transparently and automatically enhance external links."
+      "x-prompt": "[9 / 19] Add the ObExternalLinkModule? It will transparently and automatically enhance external links."
     },
     "prefix": {
       "type": "string",
       "default": "app",
       "description": "Prefix configuration",
-      "x-prompt": "[10 / 20] Choose a prefix for components and directives's selectors? Leave empty for no prefix)"
+      "x-prompt": "[10 / 19] Choose a prefix for components and directives's selectors? Leave empty for no prefix)"
     },
     "jest": {
       "type": "boolean",
       "default": true,
       "description": "Jest for unit tests",
-      "x-prompt": "[11 / 20] Replace Karma / Jasmine with Jest as the application's testing framework?"
+      "x-prompt": "[11 / 19] Replace Karma / Jasmine with Jest as the application's testing framework?"
     },
     "protractor": {
       "type": "boolean",
       "default": false,
       "description": "Protractor for end to end tests",
-      "x-prompt": "[12 / 20] Would you like to keep Protractor for e2e tests? Warning: If not, whole e2e folder will be removed!"
+      "x-prompt": "[12 / 19] Would you like to keep Protractor for e2e tests? Warning: If not, whole e2e folder will be removed!"
     },
     "npmrc": {
       "type": "boolean",
       "default": true,
       "description": "Create .npmrc",
-      "x-prompt": "[13 / 20] Is the project located within confederation / federal network? It will add an .npmrc file."
+      "x-prompt": "[13 / 19] Is the project located within confederation / federal network? It will add an .npmrc file."
     },
     "proxy": {
       "type": "string",
       "default": "",
       "description": "Proxy configuration",
-      "x-prompt": "[14 / 20] Choose a port for the proxy configuration for server connection? Leave empty for no proxy configuration."
+      "x-prompt": "[14 / 19] Choose a port for the proxy configuration for server connection? Leave empty for no proxy configuration."
     },
     "sonar": {
       "type": "boolean",
       "default": true,
       "description": "Sonar configuration",
-      "x-prompt": "[15 / 20] Add Sonar configuration?"
+      "x-prompt": "[15 / 19] Add Sonar configuration?"
     },
     "jenkins": {
       "type": "string",
       "default": "ORG;APP",
       "description": "Jenkins configuration",
-      "x-prompt": "[16 / 20] Choose the organization and application names for Cloud Foundry? Leave empty for no Jenkins / CF configuration"
+      "x-prompt": "[16 / 19] Choose the organization and application names for Cloud Foundry? Leave empty for no Jenkins / CF configuration"
     },
     "static": {
       "type": "boolean",
       "default": true,
       "description": "Cloud foundry static build pack",
-      "x-prompt": "[17 / 20] Use the static build pack for CF?"
+      "x-prompt": "[17 / 19] Use the static build pack for CF?"
     },
     "eslint": {
       "type": "boolean",
       "default": true,
       "description": "ESLint & Prettier",
-      "x-prompt": "[18 / 20] Replace deprecated tslint with eslint & prettier?"
+      "x-prompt": "[18 / 19] Replace deprecated tslint with eslint & prettier?"
     },
     "husky": {
       "type": "boolean",
       "default": true,
       "description": "Husky configuration",
-      "x-prompt": "[19 / 20] Add git hooks to automatically format changed files?"
-    },
-    "ie11": {
-      "type": "boolean",
-      "default": false,
-      "description": "IE11 support",
-      "x-prompt": "[20 / 20] Enable IE 11 support?"
+      "x-prompt": "[19 / 19] Add git hooks to automatically format changed files?"
     }
   }
 }

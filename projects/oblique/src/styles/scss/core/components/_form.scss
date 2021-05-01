@@ -8,23 +8,19 @@ fieldset {
 }
 
 legend {
-	display: block; // IE
 	width: 100%;
-	max-width: 100%; // IE
 	padding: 0;
 	margin-bottom: $spacing-sm;
 	border-bottom: 1px dotted $gray;
 	font-size: $font-size-bigger;
 	font-weight: 600;
 	line-height: inherit;
-	color: inherit; // IE
-	white-space: normal; // IE
 }
 
 button {
 	border-radius: 0; // macOS Chrome
 
-	&:focus { // firefox / IE
+	&:focus { // firefox
 		outline: 1px dotted;
 		outline: 5px auto -webkit-focus-ring-color;
 	}
@@ -87,7 +83,6 @@ input[type="month"] {
 }
 
 textarea {
-	overflow: auto; // IE.
 	resize: vertical;
 }
 
