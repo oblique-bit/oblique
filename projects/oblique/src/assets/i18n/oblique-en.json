@@ -71,7 +71,7 @@
   "i18n.validation.ngbDate": "Incorrect date format, \"dd.mm.yyyy\" is expected",
   "i18n.validation.ngbDate.minDate": "Date needs to be after {{minDate.day}}.{{minDate.month}}.{{minDate.year}}",
   "i18n.validation.ngbDate.maxDate": "Date needs to be before {{maxDate.day}}.{{maxDate.month}}.{{maxDate.year}}",
-  "i18n.validation.pattern":"Please enter characters matching the pattern.",
+  "i18n.validation.pattern":"Please enter characters matching the pattern",
   "i18n.validation.required": "This field is required",
   "i18n.validation.unsavedChanges": "Pending changes have been detected, do you really want to continue?",
   "i18n.validation.url": "Bad format: please enter a valid URL"

@@ -71,7 +71,7 @@
   "i18n.validation.ngbDate": "Formato della data non valido, \"gg.mm.aaaa\" è atteso",
   "i18n.validation.ngbDate.minDate": "La data deve essere successiva a {{maxDate.day}}.{{maxDate.month}}.{{maxDate.year}}",
   "i18n.validation.ngbDate.maxDate": "La data deve essere prima di {{maxDate.day}}.{{maxDate.month}}.{{maxDate.year}}",
-  "i18n.validation.pattern":"Si prega di inserire i caratteri corrispondenti allo schema.",
+  "i18n.validation.pattern":"Si prega di inserire i caratteri corrispondenti allo schema",
   "i18n.validation.required": "Campo obbligatorio",
   "i18n.validation.unsavedChanges": "Alcuni cambiamenti non sono stati salvati, continuare?",
   "i18n.validation.url": "Formato non valido, inserire un indirizzo URL valido"
