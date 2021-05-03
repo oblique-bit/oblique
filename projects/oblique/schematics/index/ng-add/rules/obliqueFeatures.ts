@@ -156,6 +156,7 @@ function addDefaultComponentRouteToAppRoutingModule(tree: Tree): void {
 function addExternalLink(externalLink: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (externalLink) {
+			infoMigration(_context, 'Oblique feature: Adding external link module');
 			const sourceFile = createSrcFile(tree, appModulePath);
 			const changes: Change[] = addImportToModule(sourceFile, appModulePath, 'ObExternalLinkModule', ObliquePackage);
 			return applyChanges(tree, appModulePath, changes);
