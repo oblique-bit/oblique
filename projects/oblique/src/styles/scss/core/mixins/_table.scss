@@ -1,7 +1,7 @@
 @import "../variables";
 
 @mixin table-collapse() {
-	&, thead, tbody, th, td, tr {
+	&, thead, tbody, th, td, tr, caption {
 		display: block;
 	}
 
