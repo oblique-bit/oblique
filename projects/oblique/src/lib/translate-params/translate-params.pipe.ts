@@ -14,7 +14,7 @@ export class ObTranslateParamsPipe implements PipeTransform {
 
 	private translateParams(params: Object): Object {
 		return Object.keys(params)
-			.filter(key => params[key])
+			.filter(key => params[key] || params[key] === 0)
 			.reduce((parameters, key) => ({...parameters, [key]: typeof params[key] === 'string' ? this.translate.instant(params[key]) : params[key]}), {});
 	}
 }

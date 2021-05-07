@@ -1,3 +1,12 @@
+## [6.1.4](https://github.com/oblique-bit/oblique/compare/6.1.3...6.1.4) (2021-05-07)
+
+## Bug Fixes
+* **popover:** export directive ([4769e2b](https://github.com/oblique-bit/oblique/commit/4769e2b4df2a4b2b9eaf0695856ec06235855ce2))
+* **styles:** ensure table caption is displayed correctly in collapsed mode ([3abeb95](https://github.com/oblique-bit/oblique/commit/3abeb95b898d9be88ad91c603668d3b10a4ad44f))
+* **styles:** ensure table height is correct in collapsed mode ([7d9baa2](https://github.com/oblique-bit/oblique/commit/7d9baa211b6cb39f447ab14889c9b0584f70c7b4))
+* **translate-params:** support zero (number) as parameter ([daa1ad1](https://github.com/oblique-bit/oblique/commit/daa1ad1712daea9fca6c0650f997c622ebc2005f))
+
+
 ## [6.1.3](https://github.com/oblique-bit/oblique/compare/6.1.2...6.1.3) (2021-04-30)
 
 ## Bug Fixes
