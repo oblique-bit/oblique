@@ -1,7 +1,7 @@
 @import "../variables";
 
 @mixin table-collapse() {
-	&, thead, tbody, th, td, tr {
+	&, thead, tbody, th, td, tr, caption {
 		display: block;
 	}
 
@@ -14,6 +14,7 @@
 	td {
 		position: relative;
 		margin-left: $table-collapsed-header-width;
+		min-height: calc(1.42857em + 2 * #{$spacing-sm} + 1px); // line-height + padding + border
 
 		+ td {
 			border-top: 0;
