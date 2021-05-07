@@ -3,9 +3,12 @@
     "api": [
       {
         "name": "ObPopoverDirective",
+        "selector": "[obPopover]",
+        "exported": "obPopover",
         "usage": "This directive renders a template in a container that is inserted at the end of the body.",
         "type": "directive",
         "since": "6.1.0",
+        "updated": "6.1.4",
         "inputs": [
           {
             "name": "obPopover",

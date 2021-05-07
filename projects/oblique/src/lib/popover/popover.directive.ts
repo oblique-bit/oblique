@@ -22,6 +22,7 @@ import {obOutsideFilter} from '../global-events/outsideFilter';
 
 @Directive({
 	selector: '[obPopover]',
+	exportAs: 'obPopover',
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-popover'}
 })
