@@ -10,6 +10,7 @@ export class ObErrorMessagesSampleComponent {
 	select = new FormControl('', [Validators.required]);
 	checkbox = new FormControl('', [Validators.required]);
 	radio = new FormControl('', [Validators.required]);
+	numberInput = new FormControl('', [Validators.required, Validators.min(0), Validators.max(31)]);
 	email = new FormControl('', [Validators.required, Validators.email, Validators.minLength(5)]);
-	form = new FormGroup({email: this.email, select: this.select});
+	form = new FormGroup({email: this.email, select: this.select, numberInput: this.numberInput});
 }
