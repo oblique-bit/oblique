@@ -36,7 +36,8 @@ import {
 	ObThemeService,
 	ObUnsavedChangesModule,
 	THEMES,
-	ObIconModule
+	ObIconModule,
+	ObBreadcrumbModule
 } from 'oblique';
 // App:
 import {AppComponent} from './app.component';

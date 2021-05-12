@@ -29,6 +29,7 @@ export class AppComponent {
 			label: 'i18n.routes.samples.title',
 			children: [
 				{url: 'alert', label: 'Alert'},
+				{url: 'breadcrumb', label: 'Breadcrumb'},
 				{url: 'collapse', label: 'Collapse'},
 				{url: 'column-layout', label: 'i18n.routes.samples.column-layout.title'},
 				{url: 'datepicker', label: 'i18n.routes.samples.datepicker.title'},

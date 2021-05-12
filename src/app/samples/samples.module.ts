@@ -45,6 +45,7 @@ import {ObFormSampleComponent} from './form/form.component';
 import {ObButtonSampleComponent} from './button/button.component';
 import {
 	ObAlertModule,
+	ObBreadcrumbModule,
 	ObButtonModule,
 	ObCollapseModule,
 	ObColumnLayoutModule,
@@ -85,11 +86,13 @@ import {ObPopoverComponent} from './popover/popover.component';
 import {ObAlertSampleComponent} from './alert/alert.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {ObHorizontalFormsSampleComponent} from './horizontal-forms/horizontal-forms.component';
+import {ObBreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		ObAlertModule,
+		ObBreadcrumbModule.forRoot({}),
 		ObCollapseModule,
 		ObColumnLayoutModule,
 		ObDatepickerModule,
@@ -134,6 +137,7 @@ import {ObHorizontalFormsSampleComponent} from './horizontal-forms/horizontal-fo
 	],
 	declarations: [
 		ObAlertSampleComponent,
+		ObBreadcrumbSampleComponent,
 		ObButtonSampleComponent,
 		ObCollapseSampleComponent,
 		ObColumnLayoutSampleComponent,
