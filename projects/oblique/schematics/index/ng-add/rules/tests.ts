@@ -1,7 +1,7 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
-import {addDevDependency, deleteFile, getTemplate, removeDevDependencies, removeScript} from '../ng-add-utils';
-import {addFile, getJson, infoMigration, readFile, removeAngularProjectsConfig, setAngularProjectsConfig} from '../../utils';
+import {addDevDependency, getTemplate, removeDevDependencies, removeScript} from '../ng-add-utils';
+import {addFile, deleteFile, getJson, infoMigration, readFile, removeAngularProjectsConfig, setAngularProjectsConfig} from '../../utils';
 
 export function addJest(jest: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
