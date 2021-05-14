@@ -93,6 +93,7 @@ The scope is optional and should be the name of the Oblique feature affected:
 * **input-clear**
 * **icon**
 * **language**
+* **mandatory**
 * **master-layout**
 * **multi-translate-loader**
 * **multiselect**

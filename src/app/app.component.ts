@@ -96,6 +96,7 @@ export class AppComponent {
 				{url: 'dialog', label: 'Dialog'},
 				{url: 'expansion-panel', label: 'Expansion Panel'},
 				{url: 'icon', label: 'Icons'},
+				{url: 'mandatory', label: 'Mandatory'},
 				{url: 'progress-bar', label: 'Progress bar'},
 				{url: 'slider', label: 'Slider'},
 				{url: 'stepper-horizontal', label: 'Stepper horizontal'},

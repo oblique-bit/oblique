@@ -15,7 +15,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatOptionModule} from '@angular/material/core';
+import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -27,7 +27,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatTabsModule} from '@angular/material/tabs';
-import {ObColumnLayoutModule, ObSelectableModule, ObInputClearModule, ObButtonModule, ObIconModule} from 'oblique';
+import {ObColumnLayoutModule, ObSelectableModule, ObInputClearModule, ObButtonModule, ObIconModule, ObMandatoryModule} from 'oblique';
 import {ObButtonComponent} from './button/button.component';
 import {ObCardComponent} from './card/card.component';
 import {ObChipsComponent} from './chips/chips.component';
@@ -44,6 +44,8 @@ import {ObStepperHorizontalComponent} from './stepper-horizontal/stepper-horizon
 import {ObTabsComponent} from './tabs/tabs.component';
 import {ObIconSampleComponent} from './icon/icon.sample.component';
 import {SamplesModule} from '../samples/samples.module';
+import {ObMandatorySampleComponent} from './mandatory/mandatory.sample.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: ObBadgeComponent},
@@ -53,6 +55,7 @@ const appRoutes: Routes = [
 	{path: 'dialog', component: ObDialogComponent},
 	{path: 'expansion-panel', component: ObExpansionPanelComponent},
 	{path: 'icon', component: ObIconSampleComponent},
+	{path: 'mandatory', component: ObMandatorySampleComponent},
 	{path: 'progress-bar', component: ObProgressBarComponent},
 	{path: 'slider', component: ObSliderComponent},
 	{path: 'stepper-horizontal', component: ObStepperHorizontalComponent},
@@ -73,6 +76,7 @@ const appRoutes: Routes = [
 		ObExampleDialogComponent,
 		ObExpansionPanelComponent,
 		ObIconSampleComponent,
+		ObMandatorySampleComponent,
 		ObProgressBarComponent,
 		ObSliderComponent,
 		ObStepperHorizontalComponent,
@@ -97,12 +101,14 @@ const appRoutes: Routes = [
 		MatCardModule,
 		MatCheckboxModule,
 		MatChipsModule,
+		MatDatepickerModule,
 		MatDialogModule,
 		MatExpansionModule,
 		MatFormFieldModule,
 		MatIconModule,
 		MatInputModule,
 		MatListModule,
+		MatNativeDateModule,
 		MatOptionModule,
 		MatPaginatorModule,
 		MatProgressBarModule,
@@ -115,6 +121,7 @@ const appRoutes: Routes = [
 		MatTableModule,
 		MatTabsModule,
 		MatTooltipModule,
+		ObMandatoryModule,
 		CdkTableModule,
 		SamplesModule
 	]

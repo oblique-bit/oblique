@@ -28,10 +28,10 @@ import {ObUnknownRouteModule} from './unknown-route/unknown-route.module';
 import {ObTelemetryService} from './telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from './telemetry/telemetry-require';
 import {obliqueProviders} from './utilities';
-import {ObLanguageService} from './language/language.service';
 import {ObLanguageModule} from './language/language.module';
 import {ObExternalLinkModule} from './external-link/external-link.module';
 import {ObAlertModule} from './alert/alert.module';
+import {ObMandatoryModule} from './mandatory/mandatory.module';
 
 const OBLIQUE_MODULES = [
 	ObAlertModule,
@@ -43,6 +43,7 @@ const OBLIQUE_MODULES = [
 	ObErrorMessagesModule,
 	ObFormControlStateModule,
 	ObLanguageModule,
+	ObMandatoryModule,
 	ObMasterLayoutModule,
 	ObMultiselectModule,
 	ObNavTreeModule,
