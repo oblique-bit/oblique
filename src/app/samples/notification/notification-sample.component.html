@@ -108,6 +108,12 @@
 					<option value="{{ appChannel }}">{{ appChannel }} (from NotificationConfig)</option>
 				</select>
 			</div>
+			<div class="form-group">
+				<label for="or-notification-placement" class="form-control-label">Placement</label>
+				<select [(ngModel)]="placement" class="form-control" id="or-notification-placement">
+					<option *ngFor="let placement of placements | keyvalue" [ngValue]="placement.value">{{ placement.key }}</option>
+				</select>
+			</div>
 			<div [(ngModel)]="clearAllOnNavigate" ngbRadioGroup class="btn-group btn-group-toggle">
 				<label>ClearAll on navigate</label>
 				<label ngbButtonLabel class="btn-secondary"> <input ngbButton type="radio" [value]="true" /> Yes </label>

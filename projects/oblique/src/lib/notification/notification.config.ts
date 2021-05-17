@@ -1,5 +1,5 @@
 import {Inject, Injectable, InjectionToken, Optional} from '@angular/core';
-import {ObINotificationConfig} from './notification.model';
+import {ObENotificationPlacement, ObINotificationConfig} from './notification.model';
 
 export const CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE = new InjectionToken<boolean>('CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE');
 export const GROUP_SIMILAR_NOTIFICATIONS = new InjectionToken<boolean>('GROUP_SIMILAR_NOTIFICATIONS');
@@ -11,6 +11,7 @@ export class ObNotificationConfig {
 	channel = 'oblique';
 	clearAllOnNavigate: boolean;
 	groupSimilar: boolean;
+	placement: ObENotificationPlacement = ObENotificationPlacement.TOP_RIGHT;
 
 	info = {
 		title: 'i18n.oblique.notification.type.info'

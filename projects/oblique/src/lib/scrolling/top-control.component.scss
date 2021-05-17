@@ -47,7 +47,7 @@
 		bottom: 15px;
 
 		@include layout-collapse-up() {
-			bottom: $footer-height + 6;
+			bottom: $footer-height - 30;
 		}
 
 		&:hover, &:focus {
