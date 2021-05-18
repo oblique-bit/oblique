@@ -80,6 +80,7 @@ The type is mandatory and must be one of the following:
 The scope is optional and should be the name of the Oblique feature affected:
 * **alert**
 * **button**
+* **breadcrumb**
 * **collapse**
 * **column-layout**
 * **datepicker**
@@ -145,4 +146,3 @@ Breaking Changes have to start with the words `BREAKING CHANGE:` followed by a n
     * function `funcA` has been removed in favor of `funcB`
     * property `prop` has been removed with no replacement
     * file `fileName` has been renamed into `myFile`
-

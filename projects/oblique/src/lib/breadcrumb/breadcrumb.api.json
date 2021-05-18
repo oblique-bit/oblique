@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObBreadcrumbComponent",
+      "selector": "ob-breadcrumb",
+      "exported": "obBreadcrumb",
+      "type": "component",
+      "since": "7.0.0",
+      "inputs": [
+        {
+          "name": "maxWidth",
+          "text": "Defines a maximum width for each breadcrumb item. Overflowing text is hidden and an ellipsis is displayed.",
+          "type": "string",
+          "default": "32ch",
+          "since": "7.0.0"
+        },
+        {
+          "name": "separator",
+          "text": "Defines a separator, which is inserted between <code>/</code> separated parts of a route in the label. Example: the route <code>user/:id</code> will be displayed with the label <code>User - U1234</code>. The separator is ignored for routes with a breadcrumb label.",
+          "type": "string",
+          "default": "' – '",
+          "since": "7.0.0"
+        },
+        {
+          "name": "beautifyUrl",
+          "text": "If there's no breadcrumb label defined for a route, the url will be used as label. If this option is set to true, the url will be beautified by splitting on <code>-</code>, uppercasing the first letter and joining with <code>' '</code> (<code>custom-page</code> becomes <code>Custom Page</code>).",
+          "type": "boolean",
+          "default": true,
+          "since": "7.0.0"
+        }
+      ]
+    },
+    {
+      "name": "ObBreadcrumbConfig",
+      "usage": "The default configuration for <code>ob-breadcrumb</code> components.",
+      "type": "interface",
+      "since": "7.0.0",
+      "variables": [
+        {
+          "name": "maxWidth",
+          "text": "Defines a maximum width for each breadcrumb item. Overflowing text is hidden and an ellipsis is displayed.",
+          "type": "string",
+          "default": "32ch",
+          "since": "7.0.0"
+        },
+        {
+          "name": "separator",
+          "text": "Defines a separator, which is inserted between '/' separated parts of a route in the label. Example: the route 'user/:id' will be displayed with the label 'User - U1234'. The separator is ignored for routes with a breadcrumb label.",
+          "type": "string",
+          "default": "' – '",
+          "since": "7.0.0"
+        },
+        {
+          "name": "beautifyUrl",
+          "text": "If there's no breadcrumb label defined for a route, the url will be used as label. If this option is set to true, the url will be beautified by splitting on '-', uppercasing the first letter and joining with ' ' ('custom-page' becomes 'Custom Page').",
+          "type": "boolean",
+          "default": true,
+          "since": "7.0.0"
+        }
+      ]
+    }
+  ]
+}

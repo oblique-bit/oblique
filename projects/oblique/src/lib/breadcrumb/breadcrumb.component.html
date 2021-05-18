@@ -1,0 +1,21 @@
+<nav>
+	<ol class="ob-breadcrumbs">
+		<li *ngFor="let crumb of breadcrumbs$ | async; last as isLast">
+			<ng-container *ngIf="!isLast">
+				<a
+					#element
+					[routerLink]="crumb.url"
+					[style.max-width]="maxWidth"
+					[matTooltip]="crumb.label | translate"
+					[matTooltipDisabled]="!showTooltip(element)"
+				>
+					{{ crumb.label | translate }}
+				</a>
+
+				<mat-icon svgIcon="chevron-small-right" class="ob-icon ob-breadcrumb-separator"></mat-icon>
+			</ng-container>
+
+			<span *ngIf="isLast">{{ crumb.label | translate }}</span>
+		</li>
+	</ol>
+</nav>
