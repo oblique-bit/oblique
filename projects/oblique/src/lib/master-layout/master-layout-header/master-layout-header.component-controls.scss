@@ -95,10 +95,6 @@
 		}
 	}
 
-	.ob-header-locale + .ob-header-controls {
-		margin-left: 1rem;
-	}
-
 	.ob-header-controls {
 		display: inline-flex;
 		flex-direction: row;
@@ -112,7 +108,12 @@
 			padding-right: $spacing-default;
 			padding-left: $spacing-default;
 		}
+
+		&.ob-header-locale {
+			margin-right: $spacing-default;
+		}
 	}
+
 
 	.ob-control-item {
 		@include layout-collapse-up() {
