@@ -1,4 +1,5 @@
-organization: BIT-Oblique
+organization: bit-oblique
+caasp_version: 4
 applications:
 - name: oblique-docs
   path: ./target
@@ -7,4 +8,4 @@ applications:
   instances: 1
   memory: 128M
   routes:
-  - route: oblique-docs-dev.app.cfap01.atlantica.admin.ch
+  - route: oblique-docs-dev.app.cfap02.atlantica.admin.ch
