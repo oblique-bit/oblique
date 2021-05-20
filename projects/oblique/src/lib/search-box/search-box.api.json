@@ -26,8 +26,8 @@
         {
           "name": "minPatternLength",
           "text": "The minimum length of the pattern for a search to occur.",
-          "type": "string",
-          "default": "i18n.oblique.search.placeholder",
+          "type": "number",
+          "default": "1",
           "since": "3.0.0"
         },
         {
