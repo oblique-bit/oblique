@@ -15,9 +15,10 @@
 	as the default class to be applied to font icons. Per default, the Oblique's icon set is loaded and FontAwesome is defined as the default font library.
 </p>
 
-<h3>How to use Oblique's icons?</h3>
-<p>First, the <code>ObIconModule</code> has to be imported in the root module, usually <code>app.module.ts</code></p>
-<pre>
+<details>
+	<summary>How to use Oblique's icons?</summary>
+	<p>First, the <code>ObIconModule</code> has to be imported in the root module, usually <code>app.module.ts</code></p>
+	<pre>
 @NgModule(&lcub;
 	imports: [
 		...
@@ -26,19 +27,22 @@
 	],
 	...
 }
-</pre>
-<p>
-	Then the <code>mat-icon</code> component can be used with the <code>ob-icon</code> class and either the <code>svgIcon</code> or the
-	<code>fontIcon</code> input.
-</p>
-<pre>
+</pre
+	>
+	<p>
+		Then the <code>mat-icon</code> component can be used with the <code>ob-icon</code> class and either the <code>svgIcon</code> or the
+		<code>fontIcon</code> input.
+	</p>
+	<pre>
 &lt;mat-icon svgIcon="calendar" class="ob-icon">&lt;/mat-icon>      // Oblique icon
 &lt;mat-icon fontIcon="fa-calendar" class="ob-icon">&lt;/mat-icon>  // FA icon
-</pre>
-
-<h3>How to use an alternate font library?</h3>
-<p>Simply provide the <code>forRoot</code> method with the needed class.</p>
-<pre>
+</pre
+	>
+</details>
+<details>
+	<summary>How to use an alternate font library?</summary>
+	<p>Simply provide the <code>forRoot</code> method with the needed class.</p>
+	<pre>
 @NgModule(&lcub;
 	imports: [
 		...
@@ -47,14 +51,15 @@
 	],
 	...
 }
-</pre>
+</pre
+	>
 
-<h3>How to register additional icons on build time?</h3>
-<p>
-	First the icon set has to be loaded, then the serialized icon set has to be passed to the <code>additionalIcons</code> property of the
-	<code>forRoot</code> method.
-</p>
-<pre>
+	<h3>How to register additional icons on build time?</h3>
+	<p>
+		First the icon set has to be loaded, then the serialized icon set has to be passed to the <code>additionalIcons</code> property of the
+		<code>forRoot</code> method.
+	</p>
+	<pre>
 const iconSet = require('!!raw-loader!path/to/iconSet.svg').default;  // alternatively, the constant can hold the serialized icon set directly
 
 @NgModule(&lcub;
@@ -65,26 +70,29 @@ const iconSet = require('!!raw-loader!path/to/iconSet.svg').default;  // alterna
 	],
 	...
 }
-</pre>
-
-<h3>How to register additional icons on run time?</h3>
-<p>
-	The <code>ObIconService</code> provides 4 handy methods to registers icons on the fly. Please note that two of them will trigger one or more HTTP requests.
-</p>
-<dl>
-	<dt><code>registerIconSetsAsync</code></dt>
-	<dd>It accepts a variable number of urls that are asynchronously loaded per HTTP requests and registered.</dd>
-	<dt><code>registerIconsAsync</code></dt>
-	<dd>
-		It accepts a variable number of icons defined by a name and an url. Each url is asynchronously loaded per HTTP request and registered under the given
-		name.
-	</dd>
-	<dt><code>registerIconSets</code></dt>
-	<dd>It accepts a variable number of serialized icon sets that are registered.</dd>
-	<dt><code>registerIconsAsync</code></dt>
-	<dd>It accepts a variable number of icons defined by a name and a serialized icon. Each icon is registered under the given name.</dd>
-</dl>
-<pre>
+</pre
+	>
+</details>
+<details>
+	<summary>How to register additional icons on run time?</summary>
+	<p>
+		The <code>ObIconService</code> provides 4 handy methods to register icons on the fly. Please note that two of them will trigger one or more HTTP
+		requests.
+	</p>
+	<dl>
+		<dt><code>registerIconSetsAsync</code></dt>
+		<dd>It accepts a variable number of urls that are asynchronously loaded per HTTP requests and registered.</dd>
+		<dt><code>registerIconsAsync</code></dt>
+		<dd>
+			It accepts a variable number of icons defined by a name and an url. Each url is asynchronously loaded per HTTP request and registered under the
+			given name.
+		</dd>
+		<dt><code>registerIconSets</code></dt>
+		<dd>It accepts a variable number of serialized icon sets that are registered.</dd>
+		<dt><code>registerIconsAsync</code></dt>
+		<dd>It accepts a variable number of icons defined by a name and a serialized icon. Each icon is registered under the given name.</dd>
+	</dl>
+	<pre>
 const iconSet = require('!!raw-loader!path/to/iconSet.svg').default;  // alternatively, the constant can hold the serialized icon set directly
 
 @NgModule(&lcub;
@@ -98,14 +106,16 @@ export class AppModule &lcub;
 		icon.registerIcons(&lcub;name: 'my-icon', svg:'&lt;svg>...&lt;/svg>});
 	}
 }
-</pre>
-
-<h3>What is an icon set?</h3>
-<p>
-	An icon set is a single SVG file that wraps multiple SVG icons identified by an <code>id</code>. Individuals SVG are wrapped in a <code>defs</code> tag and
-	can be rendered by passing their <code>id</code> to the <code>svgIcon</code> input.
-</p>
-<pre>
+</pre
+	>
+</details>
+<details>
+	<summary>What is an icon set?</summary>
+	<p>
+		An icon set is a single SVG file that wraps multiple SVG icons identified by an <code>id</code>. Individual SVGs are wrapped in a <code>defs</code> tag
+		and can be rendered by passing their <code>id</code> to the <code>svgIcon</code> input.
+	</p>
+	<pre>
 &lt;svg>
     &lt;defs>
         &lt;svg id="icon-1">some svg paths&lt;/svg>
@@ -113,9 +123,10 @@ export class AppModule &lcub;
         &lt;svg id="icon-3">some svg paths&lt;/svg>
     &lt;/defs>
 &lt;/svg>
-</pre>
-<p>An icon set can be generated from single SVG files through the following node script:</p>
-<pre>
+</pre
+	>
+	<p>An icon set can be generated from single SVG files through the following node script:</p>
+	<pre>
 const fs = require('fs'),
 	path = require('path');
 
@@ -129,11 +140,14 @@ fs.readdirSync(iconsPath).forEach(file => &lcub;
 	fs.appendFileSync(iconSetPath, `\t\t$&lcub;icon}`);
 });
 fs.appendFileSync(iconSetPath, '\t&lt;/defs>\n&lt;/svg>');
-</pre>
-
-<h3>Does the registering order matter?</h3>
-<p>
-	Yes it does. In case of name conflict, icons registered later do override the previous ones. This allows effectively to override specific icons by simply
-	re-register them. When there are multiple concurrent asynchronous requests, there's no telling which one comes first. In that case, async function should be
-	avoided.
-</p>
+</pre
+	>
+</details>
+<details>
+	<summary>Does the registering order matter?</summary>
+	<p>
+		Yes it does. In case of name conflict, icons registered later do override the previous ones. This allows effectively to override specific icons by
+		simply re-register them. When there are multiple concurrent asynchronous requests, there's no telling which one comes first. In that case, async
+		function should be avoided.
+	</p>
+</details>
