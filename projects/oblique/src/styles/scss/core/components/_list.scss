@@ -1,0 +1,16 @@
+@import "../variables";
+@import "../mixins/layout";
+@import "../mixins/list";
+
+@include layout-collapse-up() {
+	dl.ob-horizontal {
+		@include horizontal-description-list();
+
+		&.ob-horizontal-large {
+			@include horizontal-description-list(250px);
+		}
+		&.ob-horizontal-small {
+			@include horizontal-description-list(50px);
+		}
+	}
+}
