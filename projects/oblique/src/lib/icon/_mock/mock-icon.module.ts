@@ -1,6 +1,6 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {ObMockIconService} from './mock-icon.service';
-import {ObIconModule, ObIconsConfig} from '../icon.module';
+import {ObIconModule, ObIconConfig} from '../icon.module';
 
 export {ObMockIconService} from './mock-icon.service';
 
@@ -8,7 +8,7 @@ export {ObMockIconService} from './mock-icon.service';
 	providers: [{provide: ObMockIconService, useClass: ObMockIconService}]
 })
 export class ObMockIconModule {
-	static forRoot(config?: ObIconsConfig): ModuleWithProviders<ObIconModule> {
+	static forRoot(config?: ObIconConfig): ModuleWithProviders<ObIconModule> {
 		return {
 			ngModule: ObIconModule
 		};

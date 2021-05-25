@@ -5,10 +5,10 @@ import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';
 import {ObIconService} from './icon.service';
-import {defaultIconConfig, ObTIconConfig, ObIconsConfig, iconFactory} from './icon.model';
+import {defaultIconConfig, ObTIconConfig, ObIconConfig, iconFactory} from './icon.model';
 
 export {ObIconService} from './icon.service';
-export {ObIconsConfig, ObTIconConfig} from './icon.model';
+export {ObIconConfig, ObTIconConfig} from './icon.model';
 
 @NgModule({
 	imports: [MatIconModule, CommonModule],
@@ -19,7 +19,7 @@ export class ObIconModule {
 		requireAndRecordTelemetry(telemetry, ObIconModule);
 	}
 
-	static forRoot(config?: ObIconsConfig): ModuleWithProviders<ObIconModule> {
+	static forRoot(config?: ObIconConfig): ModuleWithProviders<ObIconModule> {
 		return {
 			ngModule: ObIconModule,
 			providers: [
