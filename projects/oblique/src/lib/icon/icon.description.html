@@ -131,7 +131,7 @@ fs.readdirSync(iconsPath).forEach(file => &lcub;
 fs.appendFileSync(iconSetPath, '\t&lt;/defs>\n&lt;/svg>');
 </pre>
 
-<h3>Do the registering order matter?</h3>
+<h3>Does the registering order matter?</h3>
 <p>
 	Yes it does. In case of name conflict, icons registered later do override the previous ones. This allows effectively to override specific icons by simply
 	re-register them. When there are multiple concurrent asynchronous requests, there's no telling which one comes first. In that case, async function should be
