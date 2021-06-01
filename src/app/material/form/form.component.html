@@ -1,0 +1,47 @@
+<ob-column-layout [left]="false">
+	<ng-container column-main-content>
+		<form [ngClass]="size" [class.ob-inline-form]="inline">
+			<label>Label</label>
+			<mat-form-field>
+				<mat-label>Default</mat-label>
+				<input type="text" matInput placeholder="Default" />
+				<mat-hint>test</mat-hint>
+			</mat-form-field>
+			<mat-form-field>
+				<mat-label>Default</mat-label>
+				<mat-select>
+					<mat-option [value]="1">One</mat-option>
+					<mat-option [value]="2">Two</mat-option>
+					<mat-option [value]="3">Three</mat-option>
+					<mat-option [value]="4">Four</mat-option>
+					<mat-option [value]="5">Five</mat-option>
+				</mat-select>
+			</mat-form-field>
+			<mat-form-field class="ms-fix">
+				<mat-label>Datepicker</mat-label>
+				<input matInput [matDatepicker]="picker" />
+				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker #picker></mat-datepicker>
+			</mat-form-field>
+			<mat-form-field>
+				<mat-label>Default</mat-label>
+				<textarea matInput placeholder="Default"></textarea>
+			</mat-form-field>
+			<mat-checkbox>Default</mat-checkbox>
+			<mat-radio-group>
+				<mat-radio-button value="1">Default</mat-radio-button>
+			</mat-radio-group>
+		</form>
+	</ng-container>
+	<ng-container column-right-content>
+		<mat-form-field>
+			<mat-label>Size</mat-label>
+			<mat-select [(ngModel)]="size">
+				<mat-option value="ob-form-sm">Small</mat-option>
+				<mat-option value="">Default</mat-option>
+				<mat-option value="ob-form-lg">large</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<mat-slide-toggle [(ngModel)]="inline">Inline</mat-slide-toggle>
+	</ng-container>
+</ob-column-layout>
