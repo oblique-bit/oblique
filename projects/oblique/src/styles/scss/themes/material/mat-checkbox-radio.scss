@@ -23,3 +23,8 @@ $large: 1.25rem;
 .mat-radio-group.control-mandatory::before {
 	top: -1px;
 }
+
+.mat-checkbox-label,
+.mat-radio-label-content {
+	padding-top: 2px;
+}
