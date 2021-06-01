@@ -1,19 +1,6 @@
-$small: .875rem;
-$large: 1.25rem;
-
-.mat-checkbox, .mat-radio-group, .mat-radio-button {
-	&.mat-form-field-sm {
-		font-size: $small;
-	}
-
-	&.mat-form-field-lg {
-		font-size: $large;
-	}
-
-	.mat-radio-label,
-	.mat-checkbox-layout {
-		font-weight: 400;
-	}
+.mat-radio-label,
+.mat-checkbox-layout {
+	font-weight: 400;
 }
 
 .mat-checkbox.control-mandatory::before {

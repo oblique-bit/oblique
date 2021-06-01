@@ -1,15 +1,57 @@
 @import "~@fortawesome/fontawesome-free/scss/variables";
+@import "variables";
+@import "mixins/mat-form-field";
 @import "../../core/variables";
 @import "../../core/mixins/icon";
-
-$small: .875rem;
-$large: 1.25rem;
 
 .mat-form-field {
 	width: 100%;
 
 	.mat-form-field-outline {
 		background-color: $white;
+	}
+
+	&.mat-form-field-appearance-outline {
+		.mat-form-field-wrapper {
+			margin: $form-field-margin 0;
+			padding-bottom: 1.2em;
+		}
+
+		.mat-form-field-flex {
+			margin-top: -$form-field-margin;
+		}
+
+		.mat-form-field-outline {
+			top: $form-field-margin;
+		}
+
+		.mat-form-field-label {
+			margin-top: 0;
+			line-height: 1;
+		}
+
+		.mat-form-field-suffix .mat-datepicker-toggle .mat-button-wrapper {
+			margin-top: 2px;
+		}
+
+		.mat-form-field-prefix,
+		.mat-form-field-suffix {
+			top: 0.33em;
+		}
+
+		.mat-form-field-subscript-wrapper {
+			margin-top: $form-field-margin;
+		}
+
+		@include form-field-size($form-field-padding-top, 0.5em, 2em);
+
+		.ob-form-sm & {
+			@include form-field-size($form-field-padding-top-sm, 0.25em, 1.8em);
+		}
+
+		.ob-form-lg & {
+			@include form-field-size($form-field-padding-top-lg, 1em, 2.5em);
+		}
 	}
 
 	&.mat-form-field-invalid .mat-form-field-flex {
@@ -20,21 +62,6 @@ $large: 1.25rem;
 			margin-left: $spacing-xs;
 			z-index: $z-index-controls;
 		}
-	}
-
-	.mat-form-field-prefix,
-	.mat-form-field-suffix {
-		> .mat-button-base {
-			top: -2px;
-		}
-	}
-
-	.mat-form-field-prefix > * {
-		margin-right: $spacing-xs;
-	}
-
-	.mat-form-field-suffix > *:not(.mat-datepicker-toggle) {
-		margin-left: $spacing-xs;
 	}
 
 	.mat-error,
@@ -76,48 +103,6 @@ $large: 1.25rem;
 					background-color: $gray-extra-light;
 				}
 			}
-		}
-	}
-
-	&.mat-form-field-sm {
-		font-size: $small;
-	}
-
-	&.mat-form-field-lg {
-		font-size: $large;
-	}
-
-	&.mat-form-field-appearance-outline {
-		.mat-form-field-wrapper {
-			margin: 0.2em 0;
-			padding-bottom: 1.2em;
-		}
-
-		.mat-form-field-subscript-wrapper {
-			margin-top: 6px;
-		}
-
-		.mat-form-field-infix {
-			padding: 0.25em 0 0.5em 0;
-		}
-
-		.mat-form-field-label {
-			margin-bottom: 0;
-			top: 1.09375em;
-		}
-
-		&.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
-			top: 1.84375em;
-		}
-
-		.mat-form-field-prefix,
-		.mat-form-field-suffix {
-			top: 0.05em; // TODO https://github.com/angular/material2/issues/12803
-		}
-
-		.mat-datepicker-toggle {
-			position: relative;
-			top: 0.25em;
 		}
 	}
 }
