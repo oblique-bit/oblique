@@ -1,3 +1,10 @@
+## [6.1.5](https://github.com/oblique-bit/oblique/compare/6.1.4...6.1.5) (2021-06-01)
+
+## Bug Fixes
+* **toolchain:** reference `popperjs` from npmjs.org ([66546f4](https://github.com/oblique-bit/oblique/commit/66546f44d9a2f3804db8410248fbc48b6a5bac59))
+* **toolchain:** wrap `cpx`'s blobs in quotes for iOS compatibility ([6d8aa9e](https://github.com/oblique-bit/oblique/commit/6d8aa9e9e6f327c2127358414cd258760bf975d8))
+
+
 ## [6.1.4](https://github.com/oblique-bit/oblique/compare/6.1.3...6.1.4) (2021-05-07)
 
 ## Bug Fixes
