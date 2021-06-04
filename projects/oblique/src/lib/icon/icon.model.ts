@@ -5,15 +5,15 @@ export function iconFactory(iconService: ObIconService): () => void {
 	return () => iconService.registerOnAppInit();
 }
 
-export const ObTIconConfig = new InjectionToken<ObIconsConfig>('Oblique icon configuration');
+export const ObTIconConfig = new InjectionToken<ObIconConfig>('Oblique icon configuration');
 
-export interface ObIconsConfig {
+export interface ObIconConfig {
 	registerObliqueIcons?: boolean;
 	additionalIcons?: string[];
 	fontClass?: string;
 }
 
-export const defaultIconConfig: ObIconsConfig = {
+export const defaultIconConfig: ObIconConfig = {
 	registerObliqueIcons: true,
 	fontClass: 'fa'
 };

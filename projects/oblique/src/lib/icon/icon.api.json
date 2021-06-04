@@ -52,7 +52,7 @@
       ]
     },
     {
-      "name": "ObIconsConfig",
+      "name": "ObIconConfig",
       "usage": "The default configuration for <code>mat-icon</code> components.",
       "type": "interface",
       "variables": [

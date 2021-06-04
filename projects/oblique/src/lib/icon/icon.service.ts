@@ -1,7 +1,7 @@
 import {Inject, Injectable, Optional} from '@angular/core';
 import {MatIconRegistry} from '@angular/material/icon';
 import {DomSanitizer} from '@angular/platform-browser';
-import {ObIconsConfig, ObTIconConfig} from './icon.model';
+import {ObIconConfig, ObTIconConfig} from './icon.model';
 
 @Injectable({
 	providedIn: 'root'
@@ -10,7 +10,7 @@ export class ObIconService {
 	constructor(
 		private readonly registry: MatIconRegistry,
 		private readonly domSanitizer: DomSanitizer,
-		@Optional() @Inject(ObTIconConfig) private readonly config: ObIconsConfig
+		@Optional() @Inject(ObTIconConfig) private readonly config: ObIconConfig
 	) {}
 
 	registerOnAppInit(): void {
@@ -34,7 +34,7 @@ export class ObIconService {
 		icons.forEach(icon => this.registry.addSvgIconLiteral(icon.name, this.domSanitizer.bypassSecurityTrustHtml(icon.svg)));
 	}
 
-	private getIconSets(config: ObIconsConfig): string[] {
+	private getIconSets(config: ObIconConfig): string[] {
 		const iconSets = config?.additionalIcons || [];
 		if (config.registerObliqueIcons) {
 			iconSets.unshift(require('!!raw-loader!../../assets/obliqueIcons.svg').default);
