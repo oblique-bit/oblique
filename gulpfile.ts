@@ -29,7 +29,7 @@ const distCompatCss = (done) => transpile('compat', '', done);
 const distComponentsCss = (done) => transpileComponents(`${paths.src}/lib`, done);
 
 const addBanner = () => {
-	const releaseDate = childProcess.execSync(`git show -s --format=%ci ${pkg.version}`).toString().split(' ')[0];
+	const releaseDate = getTagDate(pkg.version);
 	const endOfLifeDate = getEndOfLifeDate(`${pkg.version.split('.')[0]}.0.0`);
 
 	return gulp.src([`${paths.dist}/**/*.js`, `${paths.dist}/**/*.css`])
@@ -255,8 +255,16 @@ function transpileComponents(dir: string, cb): void {
 }
 
 function getEndOfLifeDate(version) {
-	const versionReleaseDate = childProcess.execSync(`git show -s --format=%ci ${version}`).toString().split(' ')[0];
+	const versionReleaseDate = getTagDate(version);
 	const endOfLifeDate = new Date(versionReleaseDate);
 	endOfLifeDate.setFullYear(endOfLifeDate.getFullYear() + 1, endOfLifeDate.getMonth() + 1, 0);
 	return endOfLifeDate.toISOString().split('T')[0];
+}
+
+function getTagDate(tag: string): string {
+	if (childProcess.execSync(`git tag -l "${tag}"`).toString()) {
+		return childProcess.execSync(`git show -s --format=%ci ${tag}`).toString().split(' ')[0];
+	} else {
+		return '1970-01-01';
+	}
 }
