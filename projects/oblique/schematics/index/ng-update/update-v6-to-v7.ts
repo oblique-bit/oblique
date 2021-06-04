@@ -15,7 +15,7 @@ export class UpdateV6toV7 implements ObIMigrations {
 		};
 	}
 
-	adaptPolyfills(): Rule {
+	private adaptPolyfills(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Removing IE 11 polyfills');
 			removePolyFill(tree, 'web-animations-js', /import\s+['"]web-animations-js['"];/);
