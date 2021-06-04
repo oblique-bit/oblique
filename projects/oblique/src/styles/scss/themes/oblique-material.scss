@@ -1,5 +1,6 @@
 @import "../core/variables";
 @import "~@angular/material/theming";
+@import "material/variables";
 @import "material/material-palette";
 
 @include mat-core(mat-typography-config($font-family: $font));

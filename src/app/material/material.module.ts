@@ -27,7 +27,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatTabsModule} from '@angular/material/tabs';
-import {ObColumnLayoutModule, ObSelectableModule, ObInputClearModule, ObButtonModule, ObIconModule, ObMandatoryModule} from 'oblique';
+import {ObButtonModule, ObColumnLayoutModule, ObIconModule, ObInputClearModule, ObMandatoryModule, ObSelectableModule} from 'oblique';
 import {ObButtonComponent} from './button/button.component';
 import {ObCardComponent} from './card/card.component';
 import {ObChipsComponent} from './chips/chips.component';
@@ -46,6 +46,7 @@ import {ObIconSampleComponent} from './icon/icon.sample.component';
 import {SamplesModule} from '../samples/samples.module';
 import {ObMandatorySampleComponent} from './mandatory/mandatory.sample.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {FormComponent} from './form/form.component';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: ObBadgeComponent},
@@ -54,6 +55,7 @@ const appRoutes: Routes = [
 	{path: 'chips', component: ObChipsComponent},
 	{path: 'dialog', component: ObDialogComponent},
 	{path: 'expansion-panel', component: ObExpansionPanelComponent},
+	{path: 'form2', component: FormComponent},
 	{path: 'icon', component: ObIconSampleComponent},
 	{path: 'mandatory', component: ObMandatorySampleComponent},
 	{path: 'progress-bar', component: ObProgressBarComponent},
@@ -83,7 +85,8 @@ const appRoutes: Routes = [
 		ObStepperVerticalComponent,
 		ObTabsComponent,
 		ObTableComponent,
-		ObTooltipComponent
+		ObTooltipComponent,
+		FormComponent
 	],
 	imports: [
 		CommonModule,

@@ -1,0 +1,32 @@
+@import "../variables";
+
+@mixin form-field-size($padding-top, $padding-bottom, $icon-size) {
+	$label-padding: $form-field-label-height+$padding-top;
+	.mat-form-field-infix {
+		padding: $padding-top 0 $padding-bottom 0;
+		border-top-width: $form-field-label-height;
+	}
+
+	.mat-form-field-label-wrapper {
+		top: -$form-field-label-height;
+		padding-top: $label-padding;
+	}
+
+	.mat-form-field-label {
+		top: $label-padding;
+	}
+
+	&.mat-form-field-can-float {
+		&.mat-form-field-should-float,
+		.mat-input-server:focus + .mat-form-field-label-wrapper {
+			.mat-form-field-label {
+				transform: translateY(-$label-padding) scale(.75);
+			}
+		}
+	}
+
+	.mat-form-field-suffix .mat-datepicker-toggle .mat-icon-button {
+		height: $icon-size;
+		width: $icon-size;
+	}
+}

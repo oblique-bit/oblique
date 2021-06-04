@@ -121,6 +121,7 @@ textarea {
 
 .ob-inline-form {
 	display: flex;
+	flex-wrap: wrap;
 	word-break: normal;
 
 	> * + * {
