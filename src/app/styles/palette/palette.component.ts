@@ -31,11 +31,11 @@ export class ObPaletteComponent {
 			]
 		},
 		{
-			name: 'Primary & accent',
+			name: 'Primary',
 			colors: [
 				{name: '$primary-50', color: '#f2f7fa', contrast: '#171717'},
 				{name: '$primary-100', color: '#cce0eb', contrast: '#171717'},
-				{name: '$primary-300', color: '#99c2d6', contrast: '#171717'},
+				{name: '$primary-200', color: '#99c2d6', contrast: '#171717'},
 				{name: '$primary-300', color: '#66a3c2', contrast: '#171717'},
 				{name: '$primary-400', color: '#267da8', contrast: '#ffffff'},
 				{name: '$primary-500', color: '#006699', contrast: '#ffffff', details: '$ceruelan'},
@@ -47,6 +47,25 @@ export class ObPaletteComponent {
 				{name: '$primary-a200', color: '#5da3ff', contrast: '#171717'},
 				{name: '$primary-a400', color: '#2a85ff', contrast: '#ffffff'},
 				{name: '$primary-a700', color: '#1077ff', contrast: '#ffffff'}
+			]
+		},
+		{
+			name: 'Accent',
+			colors: [
+				{name: '$accent-50', color: '#eff7fc', contrast: '#171717'},
+				{name: '$accent-100', color: '#d1e7f8', contrast: '#171717'},
+				{name: '$accent-200', color: '#b2d7f4', contrast: '#171717'},
+				{name: '$accent-300', color: '#9bcbf0', contrast: '#171717'},
+				{name: '$accent-400', color: '#66afe9', contrast: '#171717', details: '$malibu'},
+				{name: '$accent-500', color: '#60a2d6', contrast: '#ffffff'},
+				{name: '$accent-600', color: '#5990bb', contrast: '#ffffff'},
+				{name: '$accent-700', color: '#517d9f', contrast: '#ffffff'},
+				{name: '$accent-800', color: '#47657c', contrast: '#ffffff'},
+				{name: '$accent-900', color: '#3d5c57', contrast: '#ffffff'},
+				{name: '$accent-a100', color: '#90c0ff', contrast: '#171717'},
+				{name: '$accent-a200', color: '#5da3ff', contrast: '#171717'},
+				{name: '$accent-a400', color: '#2a85ff', contrast: '#ffffff'},
+				{name: '$accent-a700', color: '#1077ff', contrast: '#ffffff'}
 			]
 		},
 		{
