@@ -30,8 +30,8 @@ export class ObMandatoryDirective implements AfterContentInit, AfterContentCheck
 	}
 
 	ngAfterContentChecked() {
-		const control: AbstractControl = this.formFieldControl.ngControl?.control;
-		if (this.formFieldControl && control) {
+		const control: AbstractControl = this.formFieldControl?.ngControl?.control;
+		if (control) {
 			// Note: this is a workaround for: https://github.com/angular/angular/issues/13461
 			// noinspection JSConstantReassignment
 			this.formFieldControl.required = control.validator?.({} as AbstractControl)?.required;
