@@ -34,7 +34,40 @@ $oblique-primary: (
 	)
 ) !default;
 
-$oblique-accent: $oblique-primary !default;
+$oblique-accent: (
+	50 : #eff7fc,
+	100 : #d1e7f8,
+	200 : #b2d7f4,
+	300 : #9bcbf0,
+	400 : $malibu,
+	500 : #60a2d6,
+	600 : #5990bb,
+	700 : #517d9f,
+	800 : #47657c,
+	900 : #3d5c57,
+	A100 : #ffffff,
+	A200 : #f0f7ff,
+	A400 : #bddcff,
+	A700 : #a3ceff,
+	contrast: (
+		50 : $brand-default,
+		100 : $brand-default,
+		200 : $brand-default,
+		300 : $brand-default,
+		400 : $brand-default,
+		500 : $white,
+		600 : $white,
+		700 : $white,
+		800 : $white,
+		900 : $white,
+		A100 : $brand-default,
+		A200 : $brand-default,
+		A400 : $brand-default,
+		A700 : $brand-default,
+	)
+);
+
+
 
 $oblique-warn: (
 	50 : $error-50,
