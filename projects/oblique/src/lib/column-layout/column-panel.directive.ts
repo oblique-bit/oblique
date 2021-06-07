@@ -1,4 +1,4 @@
-import {Directive, HostBinding} from '@angular/core';
+import {Directive, EventEmitter, HostBinding, Output} from '@angular/core';
 
 @Directive({
 	selector: '[obColumnPanel]',
@@ -8,8 +8,10 @@ import {Directive, HostBinding} from '@angular/core';
 })
 export class ObColumnPanelDirective {
 	@HostBinding('class.ob-collapsed') public collapsed = false;
+	@Output() toggled = new EventEmitter<boolean>();
 
 	toggle(): void {
 		this.collapsed = !this.collapsed;
+		this.toggled.emit(this.collapsed);
 	}
 }
