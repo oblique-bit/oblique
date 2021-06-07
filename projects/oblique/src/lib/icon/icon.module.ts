@@ -6,13 +6,16 @@ import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';
 import {ObIconService} from './icon.service';
 import {defaultIconConfig, ObTIconConfig, ObIconConfig, iconFactory} from './icon.model';
+import {ObIconComponent} from './ob-icon.component';
 
 export {ObIconService} from './icon.service';
-export {ObIconConfig, ObTIconConfig} from './icon.model';
+export {ObIconConfig, ObTIconConfig, ObUseObliqueIcons} from './icon.model';
 
 @NgModule({
 	imports: [MatIconModule, CommonModule],
-	providers: [...obliqueProviders()]
+	providers: [...obliqueProviders()],
+	declarations: [ObIconComponent],
+	exports: [ObIconComponent]
 })
 export class ObIconModule {
 	constructor(telemetry: ObTelemetryService) {
