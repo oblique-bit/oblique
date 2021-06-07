@@ -1,4 +1,5 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
@@ -12,6 +13,7 @@ describe('TopControlComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [ObTopControlComponent, ObMockTranslatePipe],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA],
 			providers: [
 				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: WINDOW, useValue: windowProvider}

@@ -6,12 +6,13 @@ import {ObTopControlComponent} from './top-control.component';
 import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';
+import {ObIconModule} from '../icon/icon.module';
 
 export {ObTopControlComponent} from './top-control.component';
 export {ObScrollingEvents} from './scrolling-events';
 
 @NgModule({
-	imports: [CommonModule, TranslateModule],
+	imports: [CommonModule, TranslateModule, ObIconModule],
 	declarations: [ObTopControlComponent],
 	providers: obliqueProviders(),
 	exports: [ObTopControlComponent]

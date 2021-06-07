@@ -1,6 +1,7 @@
-import {Component, Inject, ViewEncapsulation} from '@angular/core';
+import {Component, HostBinding, Inject, Optional, ViewEncapsulation} from '@angular/core';
 import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
 import {WINDOW} from '../utilities';
+import {ObUseObliqueIcons} from '../icon/icon.model';
 
 @Component({
 	selector: 'ob-top-control',
@@ -12,9 +13,11 @@ import {WINDOW} from '../utilities';
 })
 export class ObTopControlComponent {
 	private readonly window: Window;
+	@HostBinding('class.ob-font-awesome') useFontAwesomeIcon: boolean;
 
-	constructor(private readonly config: ObMasterLayoutConfig, @Inject(WINDOW) window) {
+	constructor(private readonly config: ObMasterLayoutConfig, @Inject(WINDOW) window, @Optional() @Inject(ObUseObliqueIcons) useObliqueIcon) {
 		this.window = window; // because AoT don't accept interfaces as DI
+		this.useFontAwesomeIcon = !useObliqueIcon;
 	}
 
 	public scrollTop(): void {
