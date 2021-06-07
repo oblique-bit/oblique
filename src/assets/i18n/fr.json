@@ -39,6 +39,7 @@
   "i18n.routes.samples.toggle.title": "Toggles",
   "i18n.routes.samples.ui-scroll.title": "UI Scroll",
   "i18n.routes.samples.unsaved-changes.title": "Unsaved Changes",
+  "i18n.routes.samples.breadcrumb.label-with-params": "Label avec param: [:param]",
   "i18n.oblique.chips.it": "IT",
   "i18n.oblique.chips.sales": "Vente",
   "i18n.oblique.chips.marketing": "Marketing",

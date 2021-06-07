@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
 	selector: 'ob-collapse',
-	exportAs: 'orCollapse',
+	exportAs: 'obCollapse',
 	template: ''
 })
 export class ObMockCollapseComponent {

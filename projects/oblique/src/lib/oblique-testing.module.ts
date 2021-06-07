@@ -36,7 +36,9 @@ import {WINDOW, windowProvider} from './utilities';
 import {ObMockButtonModule} from './button/mock/mock-button.module';
 import {ObMockAlertModule} from './alert/mock/mock-alert.module';
 import {ObMockMandatoryModule} from './mandatory/mock/mock-mandatory.module';
+import {ObMockBreadcrumbModule} from './breadcrumb/mock/mock-breadcrumb.module';
 
+export {ObMockBreadcrumbModule} from './breadcrumb/mock/mock-breadcrumb.module';
 export {ObMockButtonModule, ObMockButtonDirective} from './button/mock/mock-button.module';
 export {ObMockCollapseModule, ObMockCollapseComponent} from './collapse/mock/mock-collapse.module';
 export {ObMockColumnLayoutComponent, ObMockColumnLayoutModule} from './column-layout/mock/mock-column-layout.module';
@@ -137,6 +139,7 @@ export {ObMockAlertModule, ObMockAlertComponent} from './alert/mock/mock-alert.m
 
 const MOCK_OBLIQUE_MODULES = [
 	ObMockAlertModule,
+	ObMockBreadcrumbModule,
 	ObMockButtonModule,
 	ObMockCollapseModule,
 	ObMockColumnLayoutModule,

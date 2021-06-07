@@ -1,0 +1,22 @@
+<p>
+	This component supports wayfinding by including breadcrumbs that reflect the information hierarchy of your site. The route configuration is used to discover
+	the current page hierarchy. The breadcrumb property of the route data (<code>&lcub;path:..., data: &lcub;breadcrumb: 'Label'}}</code>) will be used as
+	label. If no label is provided, the url is used as fallback. Dynamic routes are supported as well. The component will try to replace the parameter key
+	(including <code>:</code>, i.e. <code>:id</code>) with the parameter value in the label of a dynamic route. URLs and parameter values displayed in a label
+	are beautified, unless the input <code>beautifyUrls</code> is set to <code>false</code>. If a breadcrumb is cut off by the <code>maxWidth</code> input, a
+	tooltip with the entire text is shown on hover.
+</p>
+
+<p>
+	The root route ('/') will not be included in the breadcrumbs. The federal logo or application title should be used to navigate to the root page. The current
+	page is displayed but not clickable, since there's no point in navigating to the current location. Other mechanisms should be used for reloading.
+</p>
+
+<p>
+	Good to know: The breadcrumbs follows the route definition and creates only one breadcrumb per route. That means, if you have one route with the path
+	<code>user/:userId/profile</code>, only one breadcrumb (not three) will be displayed. E.g. the default configuration applied to the route
+	<code>user/123/profile</code> will yield the label <code>User - 123 - Profile</code>. If you want separate breadcrumbs, you need to define separate routes:
+	<code>&lcub;path: 'user', children: [&lcub;path: ':id', children: [&lcub;path: 'profile'}]}]}</code>.
+</p>
+
+<div class="ob-alert ob-alert-warning bootstrap-only">This component is designed to be used with Angular Material.</div>
