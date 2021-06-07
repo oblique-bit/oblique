@@ -1,7 +1,14 @@
+@import "../../styles/scss/core/variables";
+
 .ob-spinner {
 	&,
 	.ob-overlay {
 		border-radius: inherit;
+	}
+
+	ob-icon > * {
+		font-size: 4em;
+		animation: ob-spin $duration-default * 2 infinite linear;
 	}
 }
 
@@ -11,4 +18,13 @@
 	left: 50%;
 	margin: auto;
 	transform: translate(-50%, -50%);
+}
+
+@keyframes ob-spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(359deg);
+	}
 }
