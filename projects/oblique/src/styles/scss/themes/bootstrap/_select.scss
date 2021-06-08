@@ -18,9 +18,16 @@
 	}
 
 	&:not([disabled]):not(.select-disabled) {
-		@include icon($fa-var-chevron-down, after);
-
 		&::after {
+			content: fa-content($fa-var-chevron-down);
+			-webkit-font-smoothing: antialiased;
+			font-family: 'Font Awesome 5 Free';
+			font-weight: 900;
+			font-style: normal;
+			font-variant: normal;
+			text-rendering: auto;
+			line-height: inherit;
+			text-align: center;
 			display: flex;
 			position: absolute;
 			right: 2px;
