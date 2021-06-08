@@ -1,0 +1,66 @@
+@import "../../styles/scss/core/variables";
+
+.ob-alert.ob-angular {
+	display: flex;
+	margin-bottom: $spacing-default;
+
+	.ob-alert-icon {
+		font-size: 2em;
+		padding-top: $spacing-sm;
+		text-align: center;
+		color: $white;
+
+		@at-root #{selector-append(".ob-alert-info", &)} {
+			background-color: $brand-primary;
+		}
+
+		@at-root #{selector-append(".ob-alert-success", &)} {
+			background-color: $brand-success;
+		}
+
+		@at-root #{selector-append(".ob-alert-warning", &)} {
+			background-color: $brand-warning;
+		}
+
+		@at-root #{selector-append(".ob-alert-error", &)} {
+			background-color: $brand-error;
+		}
+	}
+
+	.ob-alert-content {
+		padding: $spacing-default;
+
+		.ob-alert-link {
+			color: $brand-default;
+			text-decoration: underline;
+		}
+
+		p, ul {
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		@at-root #{selector-append(".ob-alert-info", &)} {
+			background-color: $brand-light;
+		}
+
+		@at-root #{selector-append(".ob-alert-success", &)} {
+			background-color: $brand-success-light;
+		}
+
+		@at-root #{selector-append(".ob-alert-warning", &)} {
+			background-color: $brand-warning-light;
+		}
+
+		@at-root #{selector-append(".ob-alert-error", &)} {
+			background-color: $brand-error-light;
+		}
+	}
+}
+
+.bootstrap .ob-alert .ob-alert-icon {
+	font-size: 1.5em;
+	width: $alert-symbol-width;
+	padding: $spacing-default;
+}
