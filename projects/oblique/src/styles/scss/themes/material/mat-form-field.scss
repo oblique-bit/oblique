@@ -2,7 +2,6 @@
 @import "variables";
 @import "mixins/mat-form-field";
 @import "../../core/variables";
-@import "../../core/mixins/icon";
 
 .mat-form-field {
 	width: 100%;
@@ -54,14 +53,15 @@
 		}
 	}
 
-	&.mat-form-field-invalid .mat-form-field-flex {
-		@include icon($fa-var-exclamation-circle, after);
-
-		&::after {
-			color: $brand-error;
-			margin-left: $spacing-xs;
-			z-index: $z-index-controls;
-		}
+	&.mat-form-field-invalid .mat-form-field-label-wrapper::after {
+		content: '!';
+		position: absolute;
+		right: 0;
+		padding: 0 0.4em;
+		border-radius: 50%;
+		background-color: $brand-error;
+		color: $white;
+		z-index: $z-index-controls;
 	}
 
 	.mat-error,
@@ -74,7 +74,7 @@
 
 	&:hover,
 	&:focus-within {
-		z-index: 1;	// so that multilines hints & errors are above next elements
+		z-index: 1; // so that multilines hints & errors are above next elements
 
 		.mat-form-field-subscript-wrapper {
 			overflow: visible;
