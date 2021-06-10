@@ -50,7 +50,7 @@ import {FormComponent} from './form/form.component';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: ObBadgeComponent},
-	{path: 'button', component: ObButtonComponent},
+	{path: 'button2', component: ObButtonComponent},
 	{path: 'card', component: ObCardComponent},
 	{path: 'chips', component: ObChipsComponent},
 	{path: 'dialog', component: ObDialogComponent},
