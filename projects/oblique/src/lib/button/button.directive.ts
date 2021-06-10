@@ -1,4 +1,4 @@
-import {Directive, HostBinding, Input, OnInit} from '@angular/core';
+import {Directive, HostBinding, Input, OnChanges, OnInit} from '@angular/core';
 import {MatButton} from '@angular/material/button';
 
 @Directive({
@@ -7,7 +7,7 @@ import {MatButton} from '@angular/material/button';
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-button'}
 })
-export class ObButtonDirective implements OnInit {
+export class ObButtonDirective implements OnInit, OnChanges {
 	@Input() obButton: 'primary' | 'secondary' | 'tertiary' = 'primary';
 	@HostBinding('class.mat-flat-button') primaryClass: boolean;
 	@HostBinding('class.mat-stroked-button') secondaryClass: boolean;
@@ -17,6 +17,14 @@ export class ObButtonDirective implements OnInit {
 	}
 
 	ngOnInit() {
+		this.setButtonClass();
+	}
+
+	ngOnChanges() {
+		this.setButtonClass();
+	}
+
+	private setButtonClass() {
 		this.obButton = this.obButton || 'primary';
 		this.primaryClass = this.obButton === 'primary';
 		this.secondaryClass = this.obButton === 'secondary';
