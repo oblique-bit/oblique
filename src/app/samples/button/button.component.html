@@ -1,18 +1,36 @@
 <ob-description component="button"></ob-description>
+<ng-container *ngIf="material | async">
+	<mat-form-field style="width: fit-content">
+		<mat-label>Dynamic Type Change</mat-label>
+		<mat-select [(value)]="obButton">
+			<mat-option value="primary">Primary</mat-option>
+			<mat-option value="secondary">Secondary</mat-option>
+			<mat-option value="tertiary">Tertiary</mat-option>
+		</mat-select>
+	</mat-form-field>
+</ng-container>
 <table class="table">
 	<ng-container *ngIf="material | async; else bootstrap">
 		<thead>
 			<tr>
 				<th></th>
-				<th>Primary</th>
-				<th>Secondary</th>
-				<th>Tertiary</th>
+				<th>Dynamic<br />Button</th>
+				<th>Dynamic<br />Link</th>
+				<th>Static<br />Primary</th>
+				<th>Static<br />Secondary</th>
+				<th>Static<br />Tertiary</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td>
 					<label>Default</label>
+				</td>
+				<td>
+					<a mat-button [obButton]="obButton">{{ obButton }}</a>
+				</td>
+				<td>
+					<button mat-button [obButton]="obButton">{{ obButton }}</button>
 				</td>
 				<td>
 					<button mat-button obButton="primary">Primary</button>
@@ -29,6 +47,12 @@
 					<label>Icon</label>
 				</td>
 				<td>
+					<a mat-button [obButton]="obButton"><span class="fas fa-sign-in-alt"></span>{{ obButton }}</a>
+				</td>
+				<td>
+					<button mat-button [obButton]="obButton"><span class="fas fa-sign-in-alt"></span>{{ obButton }}</button>
+				</td>
+				<td>
 					<button mat-button obButton="primary"><span class="fas fa-sign-in-alt"></span>Primary</button>
 				</td>
 				<td>
@@ -41,6 +65,12 @@
 			<tr>
 				<td>
 					<label>Disabled</label>
+				</td>
+				<td>
+					<a mat-button [obButton]="obButton" disabled>{{ obButton }}</a>
+				</td>
+				<td>
+					<button mat-button [obButton]="obButton" disabled>{{ obButton }}</button>
 				</td>
 				<td>
 					<button mat-button obButton="primary" disabled>Primary</button>

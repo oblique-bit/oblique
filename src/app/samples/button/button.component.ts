@@ -10,6 +10,7 @@ import {map} from 'rxjs/operators';
 })
 export class ObButtonSampleComponent {
 	material: Observable<boolean>;
+	obButton: 'primary' | 'secondary' | 'tertiary' = 'primary';
 
 	constructor(masterLayout: ObMasterLayoutService, theme: ObThemeService) {
 		this.material = theme.theme$.pipe(map(() => theme.isMaterial()));
