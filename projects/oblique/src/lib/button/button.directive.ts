@@ -1,5 +1,5 @@
-import {Directive, HostBinding, Input, OnChanges, OnInit} from '@angular/core';
-import {MatButton} from '@angular/material/button';
+import {Directive, HostBinding, Input, OnChanges, OnInit, Optional} from '@angular/core';
+import {MatAnchor, MatButton} from '@angular/material/button';
 
 @Directive({
 	selector: '[obButton]',
@@ -12,8 +12,8 @@ export class ObButtonDirective implements OnInit, OnChanges {
 	@HostBinding('class.mat-flat-button') primaryClass: boolean;
 	@HostBinding('class.mat-stroked-button') secondaryClass: boolean;
 
-	constructor(btn: MatButton) {
-		btn.color = 'primary';
+	constructor(@Optional() btn: MatButton, @Optional() link: MatAnchor) {
+		(btn || link).color = 'primary';
 	}
 
 	ngOnInit() {

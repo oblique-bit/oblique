@@ -36,17 +36,30 @@ class TestDynamicComponent {
 	obButton: 'primary' | 'secondary' | 'tertiary' = 'primary';
 }
 
+@Component({
+	template: '<a mat-button obButton="primary">Link</a>'
+})
+class TestLinkComponent {}
+
 describe('ButtonDirective', () => {
 	let name: string;
 	let directive: ObButtonDirective;
-	let component: TestPrimaryComponent | TestSecondaryComponent | TestTertiaryComponent | TestDefaultComponent | TestIllegalComponent | TestDynamicComponent;
+	let component:
+		| TestPrimaryComponent
+		| TestSecondaryComponent
+		| TestTertiaryComponent
+		| TestDefaultComponent
+		| TestIllegalComponent
+		| TestDynamicComponent
+		| TestLinkComponent;
 	let fixture:
 		| ComponentFixture<TestPrimaryComponent>
 		| ComponentFixture<TestSecondaryComponent>
 		| ComponentFixture<TestTertiaryComponent>
 		| ComponentFixture<TestDefaultComponent>
 		| ComponentFixture<TestIllegalComponent>
-		| ComponentFixture<TestDynamicComponent>;
+		| ComponentFixture<TestDynamicComponent>
+		| ComponentFixture<TestLinkComponent>;
 
 	beforeEach(
 		waitForAsync(() => {
@@ -58,6 +71,7 @@ describe('ButtonDirective', () => {
 					TestDefaultComponent,
 					TestIllegalComponent,
 					TestDynamicComponent,
+					TestLinkComponent,
 					ObButtonDirective
 				],
 				imports: [MatButtonModule]
