@@ -35,11 +35,27 @@
 		border-radius: 2px;
 	}
 
-	&.mat-fab,
-	&.mat-mini-fab {
-		.mat-icon.fa::before {
-			position: relative;
-			top: 5px;
+	:not(.mat-icon-button) .mat-icon {
+		&.fa,
+		&.fas,
+		&.far,
+		&.fal,
+		&.fad,
+		&.fab,
+		&.fa .fa,
+		&.fas .fas,
+		&.far .far,
+		&.fal .fal,
+		&.fad .fad,
+		&.fab .fab {
+			&::before {
+				position: relative;
+				top: 5px;
+			}
 		}
+	}
+
+	.mat-icon {
+		margin-top: -2px;
 	}
 }
