@@ -17,17 +17,6 @@
 		}
 	}
 
-	&:not(.mat-icon-button):not(.mat-fab):not(.mat-mini-fab) .mat-button-wrapper {
-		.fa,
-		.fas,
-		.far,
-		.fal,
-		.fad,
-		.fab {
-			margin-right: $spacing-sm;
-		}
-	}
-
 	&.mat-button,
 	&.mat-stroked-button,
 	&.mat-flat-button,
