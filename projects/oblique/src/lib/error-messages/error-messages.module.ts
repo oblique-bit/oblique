@@ -12,7 +12,7 @@ import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';
 
-export {ObErrorMessagesComponent} from './error-messages.component';
+export {ObErrorMessagesComponent, DISABLE_NGB_ERRORS} from './error-messages.component';
 export {ObErrorMessagesService} from './error-messages.service';
 export {ObMatErrorDirective} from './mat-error.directive';
 export {ObErrorMessagesDirective} from './error-messages.directive';

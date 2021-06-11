@@ -2,8 +2,370 @@
 	This feature offers a nice way to display error messages related to a form element. The <strong>directive</strong> is meant for Material Design while the
 	<strong>component</strong> is meant for Bootstrap.
 </p>
+<h3>Error messages</h3>
+<p>
+	Oblique provides default error messages for common validation errors that can be overwritten in the project's translation file when necessary. All error
+	messages defined in Oblique are described below. When available, the parameters that are passed on to the component are also given. These parameters can be
+	used in the translation through interpolation.
+</p>
+<h4>Angular Validators</h4>
+<details>
+	<summary>email</summary>
+	<dl class="ob-horizontal">
+		<dt>Key</dt>
+		<dd>i18n.validation.email</dd>
+		<dt>DE</dt>
+		<dd>Ungültiges Format, bitte geben Sie eine gültige E-Mail Adresse an</dd>
+		<dt>FR</dt>
+		<dd>Erreur de format : merci de saisir un e-mail valide</dd>
+		<dt>IT</dt>
+		<dd>Formato non valido. Inserire un indirizzo e-mail valido</dd>
+		<dt>EN</dt>
+		<dd>Bad format: please enter a valid e-mail address</dd>
+	</dl>
+</details>
+<details>
+	<summary>max</summary>
+	<dl class="ob-horizontal">
+		<dt>Key</dt>
+		<dd>i18n.validation.max</dd>
+		<dt>DE</dt>
+		<dd>Bitte geben Sie eine Zahl kleiner oder gleich &lcub;&lcub;max}} ein</dd>
+		<dt>FR</dt>
+		<dd>La valeur doit être inférieure ou égale à &lcub;&lcub;max}}</dd>
+		<dt>IT</dt>
+		<dd>Inserire un numero più piccolo o uguale &lcub;&lcub;max}}</dd>
+		<dt>EN</dt>
+		<dd>The value has to be less or equal to &lcub;&lcub;max}}</dd>
+		<dt>Parameters</dt>
+		<dd>
+			<dl class="ob-horizontal">
+				<dt>actual</dt>
+				<dd>The actual value</dd>
+				<dt>max</dt>
+				<dd>The greatest allowed value</dd>
+			</dl>
+		</dd>
 
-<div class="material-only">
+		<dd></dd>
+	</dl>
+</details>
+<details>
+	<summary>maxLength</summary>
+	<dl class="ob-horizontal">
+		<dt>Key</dt>
+		<dd>i18n.validation.maxlength</dd>
+		<dt>DE</dt>
+		<dd>Bitte geben Sie höchstens &lcub;&lcub;requiredLength}} Zeichen ein</dd>
+		<dt>FR</dt>
+		<dd>La longueur maximale est de &lcub;&lcub;requiredLength}} caractères</dd>
+		<dt>IT</dt>
+		<dd>Inserire al massimo &lcub;&lcub;requiredLength}} caratteri</dd>
+		<dt>EN</dt>
+		<dd>At most &lcub;&lcub;requiredLength}} characters are supported</dd>
+		<dt>Parameters</dt>
+		<dd>
+			<dl class="ob-horizontal">
+				<dt>actualLength</dt>
+				<dd>The actual length</dd>
+				<dt>requiredLength</dt>
+				<dd>The greatest allowed length</dd>
+			</dl>
+		</dd>
+
+		<dd></dd>
+	</dl>
+</details>
+<details>
+	<summary>min</summary>
+	<dl class="ob-horizontal">
+		<dt>Key</dt>
+		<dd>i18n.validation.min</dd>
+		<dt>DE</dt>
+		<dd>Bitte geben Sie eine Zahl grösser oder gleich &lcub;&lcub;min}} ein</dd>
+		<dt>FR</dt>
+		<dd>La valeur doit être supérieure ou égale à &lcub;&lcub;min}}</dd>
+		<dt>IT</dt>
+		<dd>Inserire un numero maggiore o uguale &lcub;&lcub;min}}</dd>
+		<dt>EN</dt>
+		<dd>The value has to be greater or equal to &lcub;&lcub;min}}</dd>
+		<dt>Parameters</dt>
+		<dd>
+			<dl class="ob-horizontal">
+				<dt>actual</dt>
+				<dd>The actual value</dd>
+				<dt>min</dt>
+				<dd>The smallest allowed value</dd>
+			</dl>
+		</dd>
+	</dl>
+</details>
+<details>
+	<summary>minLength</summary>
+	<dl class="ob-horizontal">
+		<dt>Key</dt>
+		<dd>i18n.validation.minlength</dd>
+		<dt>DE</dt>
+		<dd>Bitte geben Sie mindestens &lcub;&lcub;requiredLength}} Zeichen ein</dd>
+		<dt>FR</dt>
+		<dd>La longueur minimale est de &lcub;&lcub;requiredLength}} caractères</dd>
+		<dt>IT</dt>
+		<dd>Inserire almeno &lcub;&lcub;requiredLength}} caratteri</dd>
+		<dt>EN</dt>
+		<dd>At least &lcub;&lcub;requiredLength}} characters are needed</dd>
+		<dt>Parameters</dt>
+		<dd>
+			<dl class="ob-horizontal">
+				<dt>actualLength</dt>
+				<dd>The actual length</dd>
+				<dt>requiredLength</dt>
+				<dd>The smallest allowed length</dd>
+			</dl>
+		</dd>
+	</dl>
+</details>
+<details>
+	<summary>pattern</summary>
+	<dl class="ob-horizontal">
+		<dt>Key</dt>
+		<dd>i18n.validation.pattern</dd>
+		<dt>DE</dt>
+		<dd>Bitte geben Sie Zeichen ein, die dem Muster entsprechen</dd>
+		<dt>FR</dt>
+		<dd>Veuillez entrer des caractères respectant le modèle donné</dd>
+		<dt>IT</dt>
+		<dd>Si prega di inserire i caratteri corrispondenti allo schema</dd>
+		<dt>EN</dt>
+		<dd>Please enter characters matching the pattern</dd>
+		<dt>Parameters</dt>
+		<dd>
+			<dl class="ob-horizontal">
+				<dt>actualValue</dt>
+				<dd>The actual value</dd>
+				<dt>requiredPattern</dt>
+				<dd>The pattern that has to be matched</dd>
+			</dl>
+		</dd>
+	</dl>
+</details>
+<details>
+	<summary>required, requiredTrue</summary>
+	<p>As Angular returns the same error for both validators, they cannot be differentiated.</p>
+	<dl class="ob-horizontal">
+		<dt>Key</dt>
+		<dd>i18n.validation.required</dd>
+		<dt>DE</dt>
+		<dd>Diese Feld wird benötigt</dd>
+		<dt>FR</dt>
+		<dd>Ce champ est requis</dd>
+		<dt>IT</dt>
+		<dd>Campo obbligatorio</dd>
+		<dt>EN</dt>
+		<dd>This field is required</dd>
+	</dl>
+</details>
+<h4 style="margin-top: 32px">Schema validation with AJV</h4>
+<details>
+	<summary>exclusiveMaximum</summary>
+	<dl class="ob-horizontal">
+		<dt>Key</dt>
+		<dd>i18n.validation.ajv.exclusiveMaximum</dd>
+		<dt>DE</dt>
+		<dd>Bitte geben Sie eine Zahl grösser &lcub;&lcub;limit}} ein</dd>
+		<dt>FR</dt>
+		<dd>La valeur doit être inférieure à &lcub;&lcub;limit}}</dd>
+		<dt>IT</dt>
+		<dd>Inserire un numero più piccolo &lcub;&lcub;limit}}</dd>
+		<dt>EN</dt>
+		<dd>The value has to be less than &lcub;&lcub;limit}}</dd>
+		<dt>Parameters</dt>
+		<dd>
+			<dl class="ob-horizontal">
+				<dt>comparison</dt>
+				<dd>"<", the comparator used</dd>
+				<dt>exclusive</dt>
+				<dd>"true", the given limit is not allowed</dd>
+				<dt>limit</dt>
+				<dd>The first value that is considered too big</dd>
+			</dl>
+		</dd>
+	</dl>
+</details>
+<details>
+	<summary>exclusiveMinimum</summary>
+	<dl class="ob-horizontal">
+		<dt>Key</dt>
+		<dd>i18n.validation.ajv.exclusiveMinimum</dd>
+		<dt>DE</dt>
+		<dd>Bitte geben Sie eine Zahl kleiner &lcub;&lcub;limit}} ein</dd>
+		<dt>FR</dt>
+		<dd>La valeur doit être inférieure à &lcub;&lcub;limit}}</dd>
+		<dt>IT</dt>
+		<dd>Inserire un numero maggiore &lcub;&lcub;limit}}</dd>
+		<dt>EN</dt>
+		<dd>The value has to be greater than &lcub;&lcub;limit}}</dd>
+		<dt>Parameters</dt>
+		<dd>
+			<dl class="ob-horizontal">
+				<dt>comparison</dt>
+				<dd>">", the comparator used</dd>
+				<dt>exclusive</dt>
+				<dd>"true", the given limit is not allowed</dd>
+				<dt>limit</dt>
+				<dd>The first value that is considered too small</dd>
+			</dl>
+		</dd>
+	</dl>
+</details>
+<details>
+	<summary>format date-time</summary>
+	<dl class="ob-horizontal">
+		<dt>Key</dt>
+		<dd>i18n.validation.ajv.format.date</dd>
+		<dt>DE</dt>
+		<dd>Falsches Format, bitte geben sie ein valides Datum im "tt.mm.jjjj" Format ein</dd>
+		<dt>FR</dt>
+		<dd>La date doit être au format "dd.mm.yyyy"</dd>
+		<dt>IT</dt>
+		<dd>Formato della data non valido, "gg.mm.aaaa" è atteso</dd>
+		<dt>EN</dt>
+		<dd>Incorrect date format, "dd.mm.yyyy" is expected</dd>
+	</dl>
+</details>
+<details>
+	<summary>maximum</summary>
+	<dl class="ob-horizontal">
+		<dt>Key</dt>
+		<dd>i18n.validation.ajv.maximum</dd>
+		<dt>DE</dt>
+		<dd>Bitte geben Sie eine Zahl kleiner oder gleich &lcub;&lcub;limit}} ein</dd>
+		<dt>FR</dt>
+		<dd>La valeur doit être inférieure ou égale à &lcub;&lcub;limit}}</dd>
+		<dt>IT</dt>
+		<dd>Inserire un numero più piccolo o uguale &lcub;&lcub;limit}}</dd>
+		<dt>EN</dt>
+		<dd>The value has to be less or equal to &lcub;&lcub;limit}}</dd>
+		<dt>Parameters</dt>
+		<dd>
+			<dl class="ob-horizontal">
+				<dt>comparison</dt>
+				<dd>"<=", the comparator used</dd>
+				<dt>exclusive</dt>
+				<dd>"false", the given limit is allowed</dd>
+				<dt>limit</dt>
+				<dd>The greatest allowed value</dd>
+			</dl>
+		</dd>
+	</dl>
+</details>
+<details>
+	<summary>maxLength</summary>
+	<dl class="ob-horizontal">
+		<dt>Key</dt>
+		<dd>i18n.validation.ajv.maxLength</dd>
+		<dt>DE</dt>
+		<dd>Bitte geben Sie höchstens &lcub;&lcub;limit}} Zeichen ein</dd>
+		<dt>FR</dt>
+		<dd>La longueur maximale est de &lcub;&lcub;limit}} caractères</dd>
+		<dt>IT</dt>
+		<dd>Inserire al massimo &lcub;&lcub;limit}} caratteri</dd>
+		<dt>EN</dt>
+		<dd>At most &lcub;&lcub;limit}} characters are supported</dd>
+		<dt>Parameters</dt>
+		<dd>
+			<dl class="ob-horizontal">
+				<dt>limit</dt>
+				<dd>The greatest allowed length</dd>
+			</dl>
+		</dd>
+	</dl>
+</details>
+<details>
+	<summary>minimum</summary>
+	<dl class="ob-horizontal">
+		<dt>Key</dt>
+		<dd>i18n.validation.ajv.minimum</dd>
+		<dt>DE</dt>
+		<dd>Bitte geben Sie eine Zahl grösser oder gleich &lcub;&lcub;limit}} ein</dd>
+		<dt>FR</dt>
+		<dd>La valeur doit être supérieure ou égale à &lcub;&lcub;limit}}</dd>
+		<dt>IT</dt>
+		<dd>Inserire un numero maggiore o uguale &lcub;&lcub;limit}}</dd>
+		<dt>EN</dt>
+		<dd>The value has to be greater or equal to &lcub;&lcub;limit}}</dd>
+		<dt>Parameters</dt>
+		<dd>
+			<dl class="ob-horizontal">
+				<dt>comparison</dt>
+				<dd>">=", the comparator used</dd>
+				<dt>exclusive</dt>
+				<dd>"false", the given limit is allowed</dd>
+				<dt>limit</dt>
+				<dd>The smallest allowed value</dd>
+			</dl>
+		</dd>
+	</dl>
+</details>
+<details>
+	<summary>minLength</summary>
+	<dl class="ob-horizontal">
+		<dt>Key</dt>
+		<dd>i18n.validation.ajv.minLength</dd>
+		<dt>DE</dt>
+		<dd>Bitte geben Sie mindestens &lcub;&lcub;limit}} Zeichen ein</dd>
+		<dt>FR</dt>
+		<dd>La longueur minimale est de &lcub;&lcub;limit}} caractères</dd>
+		<dt>IT</dt>
+		<dd>Inserire almeno &lcub;&lcub;limit}} caratteri</dd>
+		<dt>EN</dt>
+		<dd>At least &lcub;&lcub;limit}} characters are needed</dd>
+		<dt>Parameters</dt>
+		<dd>
+			<dl class="ob-horizontal">
+				<dt>limit</dt>
+				<dd>The smallest allowed length</dd>
+			</dl>
+		</dd>
+	</dl>
+</details>
+<details>
+	<summary>required</summary>
+	<dl class="ob-horizontal">
+		<dt>Key</dt>
+		<dd>i18n.validation.ajv.required</dd>
+		<dt>DE</dt>
+		<dd>Diese Feld wird benötigt</dd>
+		<dt>FR</dt>
+		<dd>Ce champ est requis</dd>
+		<dt>IT</dt>
+		<dd>Campo obbligatorio</dd>
+		<dt>EN</dt>
+		<dd>This field is required</dd>
+	</dl>
+</details>
+<details>
+	<summary>type</summary>
+	<dl class="ob-horizontal">
+		<dt>Key</dt>
+		<dd>i18n.validation.ajv.type</dd>
+		<dt>DE</dt>
+		<dd>Falsches Typ, "&lcub;&lcub;type}}" ist erwartet</dd>
+		<dt>FR</dt>
+		<dd>La valeur erronné doit être de type "&lcub;&lcub;type}}"</dd>
+		<dt>IT</dt>
+		<dd>tipo di valore errato, "&lcub;&lcub;type}}" è prevista</dd>
+		<dt>EN</dt>
+		<dd>Bad value type, "&lcub;&lcub;type}}" is expected</dd>
+		<dt>Parameters</dt>
+		<dd>
+			<dl class="ob-horizontal">
+				<dt>type</dt>
+				<dd>The expected value type</dd>
+			</dl>
+		</dd>
+	</dl>
+</details>
+<div class="material-only" style="margin-top: 16px">
 	<p>
 		The <code>ErrorMessages</code> directive should be put on a <code>mat-form-field</code> component and works in conjunction with a
 		<code>mat-error</code> component, both from Angular. The <code>mat-error</code> component has to be present through empty and will be automatically
@@ -22,6 +384,110 @@
 	</div>
 </div>
 <div class="bootstrap-only">
+	<h4 style="margin-top: 32px">ng-boostrap datepicker</h4>
+	<details>
+		<summary>ngbDate</summary>
+		<dl class="ob-horizontal">
+			<dt>Key</dt>
+			<dd>i18n.validation.ngbDate</dd>
+			<dt>DE</dt>
+			<dd>Falsches Format, bitte geben sie ein valides Datum im TT.MM.JJJJ Format ein</dd>
+			<dt>FR</dt>
+			<dd>La date doit être au format "dd.mm.yyyy"</dd>
+			<dt>IT</dt>
+			<dd>Formato della data non valido, "gg.mm.aaaa" è atteso</dd>
+			<dt>EN</dt>
+			<dd>Incorrect date format, "dd.mm.yyyy" is expected</dd>
+		</dl>
+	</details>
+	<details>
+		<summary>maxDate</summary>
+		<dl class="ob-horizontal">
+			<dt>Key</dt>
+			<dd>i18n.validation.ngbDate.maxDate</dd>
+			<dt>DE</dt>
+			<dd>Das Datum überschreitet das max. zulässige Datum &lcub;&lcub;maxDate.day}}.&lcub;&lcub;maxDate.month}}.&lcub;&lcub;maxDate.year}}</dd>
+			<dt>FR</dt>
+			<dd>La date doit être antérieure au &lcub;&lcub;maxDate.day}}.&lcub;&lcub;maxDate.month}}.&lcub;&lcub;maxDate.year}}</dd>
+			<dt>IT</dt>
+			<dd>La data deve essere successiva a &lcub;&lcub;maxDate.day}}.&lcub;&lcub;maxDate.month}}.&lcub;&lcub;maxDate.year}}</dd>
+			<dt>EN</dt>
+			<dd>Date needs to be before &lcub;&lcub;maxDate.day}}.&lcub;&lcub;maxDate.month}}.&lcub;&lcub;maxDate.year}}</dd>
+			<dt>Parameters</dt>
+			<dd>
+				<dl class="ob-horizontal">
+					<dt>actual</dt>
+					<dd>The actual date</dd>
+					<dd>
+						<dl class="ob-horizontal">
+							<dt>day</dt>
+							<dd>1 - 31</dd>
+							<dt>month</dt>
+							<dd>1 - 31</dd>
+							<dt>year</dt>
+							<dd>yyyy</dd>
+						</dl>
+					</dd>
+					<dt>maxDate</dt>
+					<dd>The greatest allowed date</dd>
+					<dd>
+						<dl class="ob-horizontal">
+							<dt>day</dt>
+							<dd>1 - 31</dd>
+							<dt>month</dt>
+							<dd>1 - 31</dd>
+							<dt>year</dt>
+							<dd>yyyy</dd>
+						</dl>
+					</dd>
+				</dl>
+			</dd>
+		</dl>
+	</details>
+	<details>
+		<summary>minDate</summary>
+		<dl class="ob-horizontal">
+			<dt>Key</dt>
+			<dd>i18n.validation.ngbDate.minDate</dd>
+			<dt>DE</dt>
+			<dd>Das Datum unterschreitet das min. zulässige Datum &lcub;&lcub;minDate.day}}.&lcub;&lcub;minDate.month}}.&lcub;&lcub;minDate.year}}</dd>
+			<dt>FR</dt>
+			<dd>La date doit être postérieure au &lcub;&lcub;minDate.day}}.&lcub;&lcub;minDate.month}}.&lcub;&lcub;minDate.year}}</dd>
+			<dt>IT</dt>
+			<dd>La data deve essere prima di &lcub;&lcub;minDate.day}}.&lcub;&lcub;minDate.month}}.&lcub;&lcub;minDate.year}}</dd>
+			<dt>EN</dt>
+			<dd>Date needs to be after &lcub;&lcub;minDate.day}}.&lcub;&lcub;minDate.month}}.&lcub;&lcub;minDate.year}}</dd>
+			<dt>Parameters</dt>
+			<dd>
+				<dl class="ob-horizontal">
+					<dt>actual</dt>
+					<dd>The actual date</dd>
+					<dd>
+						<dl class="ob-horizontal">
+							<dt>day</dt>
+							<dd>1 - 31</dd>
+							<dt>month</dt>
+							<dd>1 - 31</dd>
+							<dt>year</dt>
+							<dd>yyyy</dd>
+						</dl>
+					</dd>
+					<dt>maxDate</dt>
+					<dd>The greatest allowed date</dd>
+					<dd>
+						<dl class="ob-horizontal">
+							<dt>day</dt>
+							<dd>1 - 31</dd>
+							<dt>month</dt>
+							<dd>1 - 31</dd>
+							<dt>year</dt>
+							<dd>yyyy</dd>
+						</dl>
+					</dd>
+				</dl>
+			</dd>
+		</dl>
+	</details>
 	<p>
 		If used within the <code>orFormControlState</code> directive, the component will automatically display the errors of the related control. In that case,
 		the errors will be displayed in red, thanks to the <code>has-error</code> class set by the directive.

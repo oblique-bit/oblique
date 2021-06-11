@@ -12,14 +12,15 @@ export class ObSchemaValidatorInstance {
 
 	validate(propertyPath = '', value: any): ValidationErrors {
 		if (this.hasRequiredError(propertyPath.split('.'), value)) {
-			return {required: true};
+			return {'ajv.required': true};
 		}
 
 		if (this.ajv.getSchema(propertyPath)) {
 			this.ajv.validate(propertyPath, value);
 			if (this.ajv.errors && value != null && value !== '') {
 				// when a value is empty, do not check its type
-				return {[this.ajv.errors[0].keyword]: this.ajv.errors[0].params};
+				const key = this.ajv.errors[0].keyword === 'format' && this.ajv.errors[0].params['format'] === 'date-time' ? '.date' : '';
+				return {[`ajv.${this.ajv.errors[0].keyword}${key}`]: this.ajv.errors[0].params};
 			}
 		}
 

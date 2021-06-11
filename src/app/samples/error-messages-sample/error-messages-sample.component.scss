@@ -1,0 +1,14 @@
+:host::ng-deep .ob-horizontal .ob-horizontal {
+	dt {
+		width: 125px;
+	}
+
+	dd {
+		width: calc(100% - 125px);
+
+		& + dd {
+			width: 100%;
+			padding-left: calc(125px + 16px);
+		}
+	}
+}

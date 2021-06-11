@@ -24,6 +24,7 @@
       "usage": "Meant for Bootstrap.",
       "type": "component",
       "since": "2.0.0",
+      "updated": "7.0.0",
       "inputs": [
         {
           "name": "control",
@@ -31,6 +32,22 @@
           "default": "ObFormControlStateDirective.ngControl",
           "type": "NgControl",
           "since": "2.0.0"
+        },
+        {
+          "name": "disableNgb",
+          "text": "Hides ng-bootstrap errors. Useful when another mechanism, as schema validation for instance, is already responsible for the validation.",
+          "default": "false",
+          "type": "Boolean",
+          "since": "7.0.0"
+        }
+      ],
+      "tokens": [
+        {
+          "name": "DISABLE_NGB_ERRORS",
+          "text": "The default value for the <code>disableNgb</code> property that will be applied to all <code>ObErrorMessagesComponent</code> throughout the application.",
+          "type": "boolean",
+          "default": "false",
+          "since": "7.0.0"
         }
       ]
     }

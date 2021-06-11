@@ -43,14 +43,14 @@ describe('SchemaValidationService', () => {
 
 		it('should return angular2 conform error objects', () => {
 			expect(validator.validate('someProperty', 4)).toEqual({
-				type: {
+				'ajv.type': {
 					//error type (in this case a type Issue)
 					type: 'string' //The required type
 				}
 			});
 
 			expect(validator.validate('someProperty', 'fuu')).toEqual({
-				minLength: {
+				'ajv.minLength': {
 					//error type (in this case a type Issue)
 					limit: 4 //The required type
 				}
@@ -67,7 +67,7 @@ describe('SchemaValidationService', () => {
 
 		it('should return angular conform error objects if subproperties are validated', () => {
 			expect(validator.validate('object.subproperty', 'string')).toEqual({
-				type: {
+				'ajv.type': {
 					type: 'number'
 				}
 			});
