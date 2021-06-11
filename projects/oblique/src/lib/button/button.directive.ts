@@ -1,5 +1,5 @@
-import {Directive, ElementRef, Input, OnInit, Renderer2} from '@angular/core';
-import {MatButton} from '@angular/material/button';
+import {Directive, HostBinding, Input, OnChanges, OnInit, Optional} from '@angular/core';
+import {MatAnchor, MatButton} from '@angular/material/button';
 
 @Directive({
 	selector: '[obButton]',
@@ -7,23 +7,26 @@ import {MatButton} from '@angular/material/button';
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-button'}
 })
-export class ObButtonDirective implements OnInit {
+export class ObButtonDirective implements OnInit, OnChanges {
 	@Input() obButton: 'primary' | 'secondary' | 'tertiary' = 'primary';
+	@HostBinding('class.mat-flat-button') primaryClass: boolean;
+	@HostBinding('class.mat-stroked-button') secondaryClass: boolean;
 
-	private static readonly classes = {
-		primary: 'mat-flat-button',
-		secondary: 'mat-stroked-button'
-	};
-
-	constructor(private readonly el: ElementRef, private readonly renderer: Renderer2, btn: MatButton) {
-		btn.color = 'primary';
+	constructor(@Optional() btn: MatButton, @Optional() link: MatAnchor) {
+		(btn || link).color = 'primary';
 	}
 
 	ngOnInit() {
+		this.setButtonClass();
+	}
+
+	ngOnChanges() {
+		this.setButtonClass();
+	}
+
+	private setButtonClass() {
 		this.obButton = this.obButton || 'primary';
-		const buttonClass = ObButtonDirective.classes[this.obButton];
-		if (buttonClass) {
-			this.renderer.addClass(this.el.nativeElement, buttonClass);
-		}
+		this.primaryClass = this.obButton === 'primary';
+		this.secondaryClass = this.obButton === 'secondary';
 	}
 }
