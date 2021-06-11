@@ -22,7 +22,7 @@
 	}
 
 	td:before {
-		content: attr(title);
+		content: attr(data-title);
 		position: absolute;
 		top: -1px;
 		bottom: -1px;

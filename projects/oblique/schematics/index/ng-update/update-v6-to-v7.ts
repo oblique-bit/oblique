@@ -11,11 +11,11 @@ export class UpdateV6toV7 implements ObIMigrations {
 	applyMigrations(_options: IUpdateV7Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Analyzing project');
-			return chain([this.adaptPolyfills(), this.renameObIconsConfig()])(tree, _context);
+			return chain([this.adaptPolyfills(), this.renameObIconsConfig(), this.renameSpacingLg(), this.renameTableTitleAttribute()])(tree, _context);
 		};
 	}
 
-	adaptPolyfills(): Rule {
+	private adaptPolyfills(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Removing IE 11 polyfills');
 			removePolyFill(tree, 'web-animations-js', /import\s+['"]web-animations-js['"];/);
@@ -40,6 +40,16 @@ export class UpdateV6toV7 implements ObIMigrations {
 				replaceInFile(tree, filePath, new RegExp('\\$spacing-lg', 'g'), '$spacing-xl');
 			};
 			return applyInTree(tree, toApply, '*.scss');
+		};
+	}
+
+	private renameTableTitleAttribute(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Renaming title attribute into data-title for tables');
+			const toApply = (filePath: string) => {
+				replaceInFile(tree, filePath, new RegExp('(?<=<table.*?class=".*?ob-table-collapse.*?".*?<td.*?)(?<!data-)title="', 'gs'), 'data-title="');
+			};
+			return applyInTree(tree, toApply, '*.html');
 		};
 	}
 }
