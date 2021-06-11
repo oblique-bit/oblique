@@ -32,4 +32,14 @@ export class UpdateV6toV7 implements ObIMigrations {
 			return applyInTree(tree, toApply, '*.ts');
 		};
 	}
+
+	private renameSpacingLg(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Renaming $spacing-lg into $spacing-xl');
+			const toApply = (filePath: string) => {
+				replaceInFile(tree, filePath, new RegExp('\\$spacing-lg', 'g'), '$spacing-xl');
+			};
+			return applyInTree(tree, toApply, '*.scss');
+		};
+	}
 }
