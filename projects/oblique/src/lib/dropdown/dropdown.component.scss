@@ -25,6 +25,7 @@ $arrow-lg-size: 14px;
 		margin-top: $spacing-default;
 		margin-left: -50%;
 		overflow: hidden;
+		white-space: normal;	// to cancel "nowrap" value from .ob-master-layout-header-controls
 		background-color: $white;
 		box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
 		transition-property: max-height, padding;
