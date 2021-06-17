@@ -14,7 +14,8 @@ fs.readdirSync(iconsPath)
 		const icon = fs.readFileSync(path.join(iconsPath, file)).toString()
 			.replace(/\n*/g, '')
 			.replace(/#171717/g, 'currentColor')
-			.replace('<svg ', `<svg id="${id}" `);
+			.replace('<svg ', `<svg id="${id}" `)
+			.replace(/<title>.+?<\/title>/g, '');
 		fs.appendFileSync(iconSetPath, `\n\t\t${icon}`);
 	});
 fs.appendFileSync(iconSetPath, '\t</defs>\n</svg>');
