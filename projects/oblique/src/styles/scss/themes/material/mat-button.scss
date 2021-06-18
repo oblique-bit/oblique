@@ -2,29 +2,33 @@
 @import "./mixins/mat-button";
 
 .mat-button-base {
-	&:not([disabled]) {
-		&:not(.mat-primary):not(.mat-accent):not(.mat-warn) {
-			@include button-styles($brand-default, $gray-lighter);
-		}
-		&.mat-primary {
-			@include button-styles($brand-primary, $brand-light);
-		}
-		&.mat-accent {
-			@include button-styles($brand-primary, $brand-light);
-		}
-		&.mat-warn {
-			@include button-styles($brand-error, $brand-error-light);
-		}
-	}
+	&.ob-button.mat-primary {
+		&.mat-flat-button {
+			@include ob-button($gray-extra-light);
+			background-color: $brand-primary;
 
-	&:not(.mat-icon-button):not(.mat-fab):not(.mat-mini-fab) .mat-button-wrapper {
-		.fa,
-		.fas,
-		.far,
-		.fal,
-		.fad,
-		.fab {
-			margin-right: $spacing-sm;
+			&.mat-button-disabled {
+				color: $gray-600;
+				background-color: $gray-lighter;
+			}
+		}
+
+		&.mat-stroked-button {
+			@include ob-button($brand-primary);
+			border-color: $brand-primary;
+
+			&.mat-button-disabled {
+				color: $gray-500;
+				border-color: $gray-500;
+			}
+		}
+
+		&:not(.mat-flat-button):not(.mat-stroked-button) {
+			@include ob-button($brand-primary);
+
+			&.mat-button-disabled {
+				color: $gray-500;
+			}
 		}
 	}
 
@@ -35,11 +39,27 @@
 		border-radius: 2px;
 	}
 
-	&.mat-fab,
-	&.mat-mini-fab {
-		.mat-icon.fa::before {
-			position: relative;
-			top: 5px;
+	:not(.mat-icon-button) .mat-icon {
+		&.fa,
+		&.fas,
+		&.far,
+		&.fal,
+		&.fad,
+		&.fab,
+		&.fa .fa,
+		&.fas .fas,
+		&.far .far,
+		&.fal .fal,
+		&.fad .fad,
+		&.fab .fab {
+			&::before {
+				position: relative;
+				top: 5px;
+			}
 		}
+	}
+
+	.mat-icon {
+		margin-top: -2px;
 	}
 }

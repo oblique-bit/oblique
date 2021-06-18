@@ -47,19 +47,59 @@
 					<label>Icon</label>
 				</td>
 				<td>
-					<a mat-button [obButton]="obButton"><span class="fas fa-sign-in-alt"></span>{{ obButton }}</a>
+					<a mat-button [obButton]="obButton"><span class="fas fa-sign-in-alt"></span> {{ obButton }}</a>
 				</td>
 				<td>
-					<button mat-button [obButton]="obButton"><span class="fas fa-sign-in-alt"></span>{{ obButton }}</button>
+					<button mat-button [obButton]="obButton"><span class="fas fa-sign-in-alt"></span> {{ obButton }}</button>
 				</td>
 				<td>
-					<button mat-button obButton="primary"><span class="fas fa-sign-in-alt"></span>Primary</button>
+					<button mat-button obButton="primary"><span class="fas fa-sign-in-alt"></span> Primary</button>
 				</td>
 				<td>
-					<button mat-button obButton="secondary"><span class="fas fa-sign-in-alt"></span>Secondary</button>
+					<button mat-button obButton="secondary"><span class="fas fa-sign-in-alt"></span> Secondary</button>
 				</td>
 				<td>
-					<button mat-button obButton="tertiary"><span class="fas fa-sign-in-alt"></span>Tertiary</button>
+					<button mat-button obButton="tertiary"><span class="fas fa-sign-in-alt"></span> Tertiary</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Mat Icon</label>
+				</td>
+				<td>
+					<a mat-button [obButton]="obButton"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> {{ obButton }}</a>
+				</td>
+				<td>
+					<button mat-button [obButton]="obButton"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> {{ obButton }}</button>
+				</td>
+				<td>
+					<button mat-button obButton="primary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Primary</button>
+				</td>
+				<td>
+					<button mat-button obButton="secondary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Secondary</button>
+				</td>
+				<td>
+					<button mat-button obButton="tertiary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Tertiary</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Oblique Icon</label>
+				</td>
+				<td>
+					<a mat-button [obButton]="obButton"><mat-icon svgIcon="logout"></mat-icon> {{ obButton }}</a>
+				</td>
+				<td>
+					<button mat-button [obButton]="obButton"><mat-icon svgIcon="logout"></mat-icon> {{ obButton }}</button>
+				</td>
+				<td>
+					<button mat-button obButton="primary"><mat-icon svgIcon="logout"></mat-icon> Primary</button>
+				</td>
+				<td>
+					<button mat-button obButton="secondary"><mat-icon svgIcon="logout"></mat-icon> Secondary</button>
+				</td>
+				<td>
+					<button mat-button obButton="tertiary"><mat-icon svgIcon="logout"></mat-icon>Tertiary</button>
 				</td>
 			</tr>
 			<tr>

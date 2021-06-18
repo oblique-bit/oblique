@@ -91,7 +91,7 @@ export class AppComponent {
 			label: 'Material',
 			children: [
 				{url: 'badge', label: 'Badge'},
-				{url: 'button', label: 'Button'},
+				{url: 'button2', label: 'Button'},
 				{url: 'card', label: 'Card'},
 				{url: 'chips', label: 'Chips'},
 				{url: 'dialog', label: 'Dialog'},

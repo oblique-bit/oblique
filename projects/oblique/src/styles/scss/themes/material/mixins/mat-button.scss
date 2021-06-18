@@ -1,30 +1,29 @@
 @import "../../../core/variables";
 
-@mixin button-styles($color, $color-light) {
-	border-color: $color;
+@mixin ob-button($color) {
+	line-height: 34px;
+	color: $color;
+	border: 1px solid transparent;
 
-	&:hover {
-		background-color: $color-light;
-		color: $color;
-	}
+	&:not(.mat-button-disabled) {
+		&:hover {
+			color: $primary-700;
+			background-color: $primary-200;
+		}
 
-	&:focus {
-		outline: none;
-	}
+		&:focus {
+			outline: none;
+		}
 
-	.ob-outline &:focus {
-		box-shadow: 0 0 $spacing-xs 0 $color;
+		.ob-outline &:focus {
+			border-color: $brand-default;
+			box-shadow: 0 0 $spacing-xs 0 $brand-default;
+			outline: 1px solid $color;
+			outline-offset: -3px;
+		}
 
-		&:not(.mat-icon-button):not(.mat-fab):not(.mat-mini-fab) {
-			outline: 2px solid $color;
-			outline-offset: -4px;
-
-			&.mat-flat-button,
-			&.mat-raised-button {
-				&[color] {
-					outline-color: $color-light;
-				}
-			}
+		.mat-ripple-element {
+			background-color: $primary-900;
 		}
 	}
 }
