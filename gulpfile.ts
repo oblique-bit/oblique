@@ -61,6 +61,7 @@ const distMeta = () => {
 
 const distCss = () => gulp.src(`${paths.dist}/styles/css/*`)
 	.pipe(replace(`${paths.fa}/webfonts`, `${paths.oblique}/fonts`))
+	.pipe(replace(`../../fonts/`, `../fonts/`))
 	.pipe(gulp.dest(`${paths.dist}/styles/css`));
 
 const distBgImage = () => gulp.src(`${paths.dist}/styles/css/oblique-components.css`)
