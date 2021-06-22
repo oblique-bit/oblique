@@ -586,7 +586,7 @@
         },
         {
           "name": "pathMatch",
-          "text": "Optional setting to change the path-matching strategy to either 'prefix' or 'full'",
+          "text": "Sets angular path-matching strategy to mark link as the active one.",
           "type": "'prefix' | 'full'",
           "default": "'prefix'",
           "isOptional": true,

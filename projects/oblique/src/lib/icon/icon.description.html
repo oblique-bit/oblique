@@ -151,3 +151,18 @@ fs.appendFileSync(iconSetPath, '\t&lt;/defs>\n&lt;/svg>');
 		function should be avoided.
 	</p>
 </details>
+
+<div class="ob-alert ob-alert-warning">
+	<strong>By default, screen readers will ignore icons</strong>
+	<p>This is fine with typical decorative icons that do not convey meaning. Purely cosmetic icons should not be read out loud.</p>
+	<p>
+		This is also the correct configuration for interactive icons that triggers an action. In that case, the icon should be the child of a button or a link
+		that is responsible to provide an accessible text either through a meaningful label, an <code>aria-label</code> or
+		<code>aria-labelledby</code> attribute.
+	</p>
+	<p>
+		On the other hand, indicator icons, where the icon communicates some status without a labeling text should be made accessible. The easiest way is to
+		simply add
+		<code>&lt;span class="sr-only">Some meaningful label&lt;/span></code> as an adjacent sibling to the icon.
+	</p>
+</div>
