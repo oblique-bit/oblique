@@ -42,7 +42,7 @@
           "since": "5.1.0"
         },
         {
-          "name": "[obHeaderLogo]",
+          "name": "<ng-template #obHeaderLogo>",
           "text": "Content that will be projected as the application's logo (an <code>img</code> is expected) within the main header. It will replace the default Confederation logo.",
           "since": "5.1.0"
         },
