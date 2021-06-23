@@ -37,6 +37,7 @@ __ngcc_entry_points__.json
 /libpeerconnection.log
 npm-debug.log
 testem.log
+/jest-report/*
 
 # e2e
 /e2e/*.js
