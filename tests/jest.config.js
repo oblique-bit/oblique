@@ -8,30 +8,16 @@ module.exports = {
 	},
 	globals: {
 		'ts-jest': {
-			diagnostics: false
+			diagnostics: {
+				pathRegex: /\.(spec|test)\.ts$/
+			}
 		}
 	},
+	coveragePathIgnorePatterns: [
+		"jestGlobalMocks.ts"
+	],
+
 	coverageDirectory: '<rootDir>/coverage/sonarQube',
 	testResultsProcessor: 'jest-sonar-reporter',
-	collectCoverage: true,
-	forceCoverageMatch: [
-		'**/projects/oblique/src/lib/**/*.ts',
-		'**/projects/oblique/src/lib/**/*.html'
-	],
-	reporters: [
-		'default',
-		[
-			'jest-html-reporters',
-			{
-				publicPath: './jest-report',
-				outputPath: './jest-report',
-				filename: 'jest-reporter.html',
-				pageTitle: 'Oblique',
-				expand: false,
-				openReport: true,
-				failureMessageOnly: false,
-				includeConsoleLog: true
-			}
-		]
-	],
+	collectCoverage: true
 };
