@@ -49,6 +49,8 @@
             ],
             "styles": [
               "projects/oblique/src/styles/scss/oblique-core.scss",
+              "projects/oblique/src/styles/scss/oblique-icons.scss",
+              "projects/oblique/src/styles/scss/oblique-alert.scss",
               "src/scss/styles.scss"
             ],
             "scripts": ["projects/oblique/src/ob-features.js"]

@@ -12,6 +12,7 @@ import {ObTableComponent} from './table/table.component';
 import {ObStepperComponent} from './stepper/stepper.component';
 import {ObTabsComponent} from './tabs/tabs.component';
 import {ObAlertComponent} from './alert/alert.component';
+import {ObIconSampleComponent} from './icon/icon.component';
 
 @NgModule({
 	imports: [
@@ -19,6 +20,7 @@ import {ObAlertComponent} from './alert/alert.component';
 		RouterModule.forChild([
 			{path: 'typography', component: ObTypographyComponent},
 			{path: 'block', component: ObBlockElementsComponent},
+			{path: 'icon', component: ObIconSampleComponent},
 			{path: 'inline', component: ObInlineElementComponent},
 			{path: 'lists', component: ObListsComponent},
 			{path: 'palette', component: ObPaletteComponent},
@@ -34,6 +36,7 @@ import {ObAlertComponent} from './alert/alert.component';
 	declarations: [
 		ObTypographyComponent,
 		ObBlockElementsComponent,
+		ObIconSampleComponent,
 		ObInlineElementComponent,
 		ObListsComponent,
 		ObTableComponent,
