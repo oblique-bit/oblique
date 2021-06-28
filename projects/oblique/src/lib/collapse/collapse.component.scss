@@ -2,26 +2,26 @@
 @import "~@fortawesome/fontawesome-free/scss/variables";
 
 .ob-collapse {
+	.ob-toggle {
+		display: flex;
+		cursor: pointer;
+
+		&:not(.ob-toggle-after) {
+			@include toggle-before($state: ob-expanded);
+		}
+
+		&.ob-toggle-after {
+			@include toggle-after($state: ob-expanded);
+
+			&.ob-toggle-justified {
+				justify-content: space-between;
+			}
+		}
+
+		@include add-toggle($fa-var-angle-down, $fa-var-angle-up, ob-expanded);
+	}
+
 	.ob-collapse-content {
 		overflow: hidden;
 	}
-}
-
-.ob-toggle {
-	display: flex;
-	cursor: pointer;
-
-	&:not(.ob-toggle-after) {
-		@include toggle-before($state: ob-expanded);
-	}
-
-	&.ob-toggle-after {
-		@include toggle-after($state: ob-expanded);
-
-		&.ob-toggle-justified {
-			justify-content: space-between;
-		}
-	}
-
-	@include add-toggle($fa-var-angle-down, $fa-var-angle-up, ob-expanded);
 }
