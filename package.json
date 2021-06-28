@@ -51,6 +51,7 @@
     "format": "npm run lint:fix && npm run prettier",
     "themes": "npm run gulp -- themes",
     "icons": "node scripts/icons.js",
+    "copy-error-messages": "node scripts/copy-error-messages.js",
     "e2e": "ng e2e",
     "release": "node scripts/release.js",
     "alpha": "npm run release -- alpha",
