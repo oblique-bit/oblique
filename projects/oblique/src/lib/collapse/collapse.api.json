@@ -53,6 +53,20 @@
           "type": "boolean",
           "default": "false",
           "since": "5.0.0"
+        },
+        {
+          "name": "OBLIQUE_COLLAPSE_ICON_POSITION",
+          "text": "The default value for <code>iconPosition</code> property that will be applied to all <code>ObCollapseComponent</code> throughout the application.",
+          "type": "left, right, justified, none",
+          "default": "'left'",
+          "since": "7.0.0"
+        },
+        {
+          "name": "OBLIQUE_COLLAPSE_DURATION",
+          "text": "The default value for <code>duration</code> property that will be applied to all <code>ObCollapseComponent</code> throughout the application.",
+          "type": "'slow' | 'fast' | number",
+          "default": "'slow'",
+          "since": "7.0.0"
         }
       ],
       "projection": [
