@@ -20,8 +20,7 @@ export const OBLIQUE_COLLAPSE_ACTIVE = new InjectionToken<boolean>('OBLIQUE_COLL
 			state(
 				'close',
 				style({
-					height: 0,
-					overflow: 'hidden'
+					height: 0
 				})
 			),
 			transition('open <=> close', animate('{{ time }}ms ease-in-out'))
