@@ -1,5 +1,4 @@
 @import "../variables";
-@import "icon";
 
 @mixin stepper-state($bullet-color, $bullet-bg, $bullet-border, $bg-color: false, $feedback-icon: false) {
 	&::before {
