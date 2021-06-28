@@ -17,8 +17,8 @@
 		}
 	}
 	@if $feedback-icon {
-		&.ob-feedback {
-			&::before {
+		&.ob-feedback::before {
+			@at-root #{selector-append(".ob-font-awesome", &)} {
 				content: fa-content($feedback-icon);
 				font-family: $icon-font-family;
 				font-weight: 900;
@@ -56,4 +56,8 @@
 	&.ob-nav-horizontal .ob-nav-step::after {
 		top: $node-step-size / 2 - 1px;
 	}
+}
+
+.ob-nav-stepper .ob-nav-step.success.ob-feedback::before {
+	content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBvbHlnb24gcG9pbnRzPSI5LjUgMTcuMzU0IDQuNTg3IDEyLjQ0MiA1LjExOCAxMS45MTEgOS41IDE2LjI5NCAxOC44ODIgNi45MTEgMTkuNDEzIDcuNDQyIDkuNSAxNy4zNTQiIGZpbGw9IiMwMDgxM2EiLz48L3N2Zz4=');
 }
