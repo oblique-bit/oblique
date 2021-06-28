@@ -7,34 +7,13 @@
       "exported": "obCollapse",
       "type": "component",
       "since": "5.0.0",
-      "updated": "6.0.0",
+      "updated": "7.0.0",
       "inputs": [
         {
           "name": "active",
           "text": "Defines the status of the collapse component: opened or closed.",
           "type": "boolean",
           "default": false,
-          "since": "5.0.0"
-        },
-        {
-          "name": "direction",
-          "text": "Defines the directions that the icon faces when active or not",
-          "type": "string",
-          "default": "down-up",
-          "values": [
-            "down-up",
-            "down-right",
-            "down-left",
-            "up-down",
-            "up-right",
-            "up-left",
-            "right-left",
-            "right-up",
-            "right-down",
-            "left-right",
-            "left-up",
-            "left-down"
-          ],
           "since": "5.0.0"
         },
         {
