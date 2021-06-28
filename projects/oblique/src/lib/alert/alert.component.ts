@@ -1,4 +1,4 @@
-import {Component, ElementRef, HostBinding, Input, Renderer2, ViewEncapsulation} from '@angular/core';
+import {Component, HostBinding, Input, ViewEncapsulation} from '@angular/core';
 import {ObIAlertType} from './alert.model';
 
 @Component({
@@ -17,11 +17,7 @@ export class ObAlertComponent {
 	icon = 'info';
 
 	private currentType: ObIAlertType = 'info';
-	constructor(private readonly content: ElementRef, private readonly renderer: Renderer2) {}
 
-	ngOnInit(): void {
-		this.content.nativeElement.querySelectorAll('a').forEach(anchor => this.renderer.addClass(anchor, 'ob-alert-link'));
-	}
 	get type(): ObIAlertType {
 		return this.currentType;
 	}

@@ -63,11 +63,6 @@ describe('ObAlertComponent', () => {
 			expect(debugElement.nativeElement.classList.contains('ob-angular')).toBe(true);
 		});
 
-		it('should add class ob-alert-link', () => {
-			const anchor: HTMLElement = debugElement.query(By.css('a')).nativeElement;
-			expect(anchor.classList.contains('ob-alert-link')).toBe(true);
-		});
-
 		describe('type', () => {
 			describe('with default type', () => {
 				it('should have type info ', () => {
