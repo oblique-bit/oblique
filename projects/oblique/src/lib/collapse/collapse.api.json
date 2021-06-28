@@ -24,9 +24,11 @@
           "values": [
             "left",
             "right",
-            "justified"
+            "justified",
+            "none"
           ],
-          "since": "5.0.0"
+          "since": "5.0.0",
+          "updated": "7.0.0"
         },
         {
           "name": "duration",

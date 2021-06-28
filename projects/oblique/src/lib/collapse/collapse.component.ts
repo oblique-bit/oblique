@@ -32,7 +32,7 @@ export const OBLIQUE_COLLAPSE_ACTIVE = new InjectionToken<boolean>('OBLIQUE_COLL
 })
 export class ObCollapseComponent {
 	time = ObCollapseComponent.getDuration('slow');
-	@Input() iconPosition: 'left' | 'right' | 'justified' = 'left';
+	@Input() iconPosition: 'left' | 'right' | 'justified' | 'none' = 'left';
 	@Output() activeChange = new EventEmitter<boolean>();
 
 	get active() {
