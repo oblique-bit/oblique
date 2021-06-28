@@ -6,7 +6,10 @@ import {ObIMigrations} from './ng-update.model';
 export interface IUpdateV7Schema {}
 
 export class UpdateV6toV7 implements ObIMigrations {
-	dependencies = {};
+	dependencies = {
+		ajv: 8,
+		'ajv-formats': 2
+	};
 
 	applyMigrations(_options: IUpdateV7Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) => {

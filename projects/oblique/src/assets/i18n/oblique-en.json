@@ -54,6 +54,7 @@
   "i18n.oblique.search.title": "Search",
   "i18n.oblique.search.placeholder": "Search term",
   "i18n.oblique.search.noResults": "No results...",
+  "i18n.validation.ajv.enum.allowedValues": "The selected value is not allowed",
   "i18n.validation.ajv.exclusiveMaximum": "The value has to be less than {{limit}}",
   "i18n.validation.ajv.exclusiveMinimum": "The value has to be greater than {{limit}}",
   "i18n.validation.ajv.format.date": "Incorrect date format, \"dd.mm.yyyy\" is expected",

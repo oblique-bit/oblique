@@ -93,7 +93,7 @@ export {
 } from './lib/off-canvas/off-canvas.module';
 export {ObPopoverModule, ObPopoverDirective} from './lib/popover/popover.module';
 export {
-	draft06,
+	draft07Convert,
 	ObSchemaRequiredDirective,
 	ObSchemaValidateDirective,
 	ObSchemaValidationDirective,

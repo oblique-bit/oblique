@@ -54,6 +54,7 @@
   "i18n.oblique.search.title": "Suchen",
   "i18n.oblique.search.placeholder": "Suchbegriff",
   "i18n.oblique.search.noResults": "Keine Resultate",
+  "i18n.validation.ajv.enum.allowedValues": "Der ausgewählte Wert ist nicht gültig",
   "i18n.validation.ajv.exclusiveMaximum": "Bitte geben Sie eine Zahl kleiner {{limit}} ein",
   "i18n.validation.ajv.exclusiveMinimum": "Bitte geben Sie eine Zahl grösser {{limit}} ein",
   "i18n.validation.ajv.format.date": "Falsches Format, bitte geben sie ein valides Datum im \"tt.mm.jjjj\" Format ein",

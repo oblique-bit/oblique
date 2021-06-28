@@ -1,11 +1,13 @@
 import {AbstractControl, ValidationErrors} from '@angular/forms';
-import * as Ajv from 'ajv';
+import Ajv from 'ajv';
+import addFormats from 'ajv-formats';
 
 export class ObSchemaValidatorInstance {
-	private readonly ajv = new Ajv({allErrors: true});
+	private readonly ajv = new Ajv({allErrors: true, allowUnionTypes: true});
 	private readonly schema;
 
 	constructor(schema) {
+		addFormats(this.ajv);
 		this.addSchema(schema);
 		this.schema = schema;
 	}

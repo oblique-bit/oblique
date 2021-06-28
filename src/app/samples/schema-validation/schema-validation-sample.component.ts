@@ -20,6 +20,17 @@ export class ObSchemaValidationSampleComponent implements OnInit {
 	material: Observable<boolean>;
 	materialTestForm: FormGroup;
 
+	selectOptions = [
+		{label: 'Aaa', value: 'aaa'},
+		{label: 'Bbb', value: 'bbb'},
+		{label: 'Ccc', value: 'ccc'},
+		{label: 'Ddd', value: 'ddd'},
+		{label: 'Eee', value: 'eee'},
+		{label: 'Invalid-1', value: 'invalid-1'},
+		{label: 'Invalid-2', value: 'invalid-2'},
+		{label: 'Invalid-3', value: 'invalid-3'}
+	];
+
 	formData: FormGroup;
 	schema$ = of({
 		title: 'SampleSchemaSampleValidation',
@@ -34,14 +45,12 @@ export class ObSchemaValidationSampleComponent implements OnInit {
 			number: {
 				type: 'number',
 				minimum: 1,
-				maximum: 10000000,
-				exclusiveMinimum: 1
+				maximum: 10000000
 			},
 			integer: {
 				type: 'integer',
-				minimum: 0,
-				maximum: 100,
-				exclusiveMaximum: 100
+				minimum: 1,
+				maximum: 100
 			},
 			date: {
 				type: ['object', 'string', 'number'],
@@ -53,28 +62,7 @@ export class ObSchemaValidationSampleComponent implements OnInit {
 			},
 			select: {
 				type: 'string',
-				options: [
-					{label: 'Aaa', value: 'aaa'},
-					{label: 'Bbb', value: 'bbb'},
-					{label: 'Ccc', value: 'ccc'},
-					{label: 'Ddd', value: 'ddd'},
-					{label: 'Eee', value: 'eee'}
-				]
-			},
-			multiselect: {
-				type: 'array',
-				items: {
-					type: 'object'
-				},
-				minItems: 1,
-				maxItems: 4,
-				options: [
-					{label: 'Aaa', value: 'aaa'},
-					{label: 'Bbb', value: 'bbb'},
-					{label: 'Ccc', value: 'ccc'},
-					{label: 'Ddd', value: 'ddd'},
-					{label: 'Eee', value: 'eee'}
-				]
+				enum: ['aaa', 'bbb', 'ccc', 'ddd', 'eee']
 			},
 			textarea: {
 				type: 'string',
