@@ -14,10 +14,14 @@ export class UpdateV6toV7 implements ObIMigrations {
 	applyMigrations(_options: IUpdateV7Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Analyzing project');
-			return chain([this.adaptPolyfills(), this.renameObIconsConfig(), this.renameSpacingLg(), this.renameTableTitleAttribute(), this.removeDirection()])(
-				tree,
-				_context
-			);
+			return chain([
+				this.adaptPolyfills(),
+				this.renameObIconsConfig(),
+				this.renameSpacingLg(),
+				this.renameTableTitleAttribute(),
+				this.removeDirection(),
+				this.migrateAlerts()
+			])(tree, _context);
 		};
 	}
 
@@ -69,6 +73,21 @@ export class UpdateV6toV7 implements ObIMigrations {
 			infoMigration(_context, 'Removing direction input on collapse');
 			const toApply = (filePath: string) => {
 				replaceInFile(tree, filePath, /(<ob-collapse\s.*?)\[?direction]?=".*?"\s?(.*?>)/g, '$1$2');
+			};
+			return applyInTree(tree, toApply, '*.html');
+		};
+	}
+
+	private migrateAlerts(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Use ob-alert instead of alert classes');
+			const toApply = (filePath: string) => {
+				replaceInFile(
+					tree,
+					filePath,
+					/<div class="ob-alert ob-alert-(?<type>[a-z]+)"(?: role="alert")?>(?<content>.*?)<\/div>/gs,
+					'<ob-alert type="$1">$2</ob-alert>'
+				);
 			};
 			return applyInTree(tree, toApply, '*.html');
 		};
