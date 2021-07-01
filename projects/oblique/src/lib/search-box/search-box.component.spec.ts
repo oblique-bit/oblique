@@ -96,7 +96,7 @@ describe('SearchBoxComponent', () => {
 		});
 
 		it('should prevent default event action', () => {
-			const mock = ({preventDefault: jest.fn()} as unknown) as KeyboardEvent;
+			const mock = {preventDefault: jest.fn()} as unknown as KeyboardEvent;
 			component.navigateDown(mock);
 			expect(mock.preventDefault).toHaveBeenCalled();
 		});
@@ -133,7 +133,7 @@ describe('SearchBoxComponent', () => {
 		});
 
 		it('should prevent default event action', () => {
-			const mock = ({preventDefault: jest.fn()} as unknown) as KeyboardEvent;
+			const mock = {preventDefault: jest.fn()} as unknown as KeyboardEvent;
 			component.navigateUp(mock);
 			expect(mock.preventDefault).toHaveBeenCalled();
 		});
@@ -207,7 +207,7 @@ describe('SearchBoxComponent', () => {
 
 	describe('click', () => {
 		it('should call stopPropagation', () => {
-			const mock = ({stopPropagation: jest.fn()} as unknown) as MouseEvent;
+			const mock = {stopPropagation: jest.fn()} as unknown as MouseEvent;
 			component.click(mock);
 			expect(mock.stopPropagation).toHaveBeenCalled();
 		});

@@ -6,8 +6,9 @@
     "umdModuleIds": {
       "@ngx-translate/core": "ngx-translate",
       "@ng-bootstrap/ng-bootstrap": "ngb",
-      "ajv": "ajv"
+      "ajv": "ajv",
+      "@popperjs/core": "core"
     }
   },
-  "whitelistedNonPeerDependencies": ["@schematics/angular", "ansi-colors", "ts-morph"]
+  "allowedNonPeerDependencies": ["@schematics/angular", "ansi-colors", "ts-morph"]
 }

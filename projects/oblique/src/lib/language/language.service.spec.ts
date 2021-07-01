@@ -11,14 +11,14 @@ describe('LanguageService', () => {
 
 	describe('with invalid locales', () => {
 		const mock = {} as TranslateService;
-		const config = ({
+		const config = {
 			locale: {
 				locales: [],
 				default: 'de',
 				disabled: false,
 				display: true
 			}
-		} as unknown) as ObMasterLayoutConfig;
+		} as unknown as ObMasterLayoutConfig;
 
 		it('should throw', () => {
 			expect(() => new ObLanguageService(mock, null, config, null)).toThrow(
@@ -105,7 +105,7 @@ describe('LanguageService', () => {
 			});
 
 			it('should set the locale on the adapter', () => {
-				const adapter = ({setLocale: jest.fn()} as unknown) as DateAdapter<any>;
+				const adapter = {setLocale: jest.fn()} as unknown as DateAdapter<any>;
 				service.setLocaleOnAdapter(adapter);
 				expect(adapter.setLocale).toHaveBeenCalled();
 			});

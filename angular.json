@@ -15,9 +15,9 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "allowedCommonJsDependencies": [
-              "ajv"
+              "ajv",
+              "ajv-formats"
             ],
-            "aot": true,
             "outputPath": "target",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -53,7 +53,13 @@
               "projects/oblique/src/styles/scss/oblique-alert.scss",
               "src/scss/styles.scss"
             ],
-            "scripts": ["projects/oblique/src/ob-features.js"]
+            "scripts": ["projects/oblique/src/ob-features.js"],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -74,7 +80,6 @@
               "sourceMap": false,
               "extractCss": false,
               "namedChunks": false,
-              "aot": true,
               "vendorChunk": false,
               "buildOptimizer": true,
               "progress": false,

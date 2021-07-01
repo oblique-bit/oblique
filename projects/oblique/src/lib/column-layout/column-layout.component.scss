@@ -73,7 +73,7 @@
 			position: absolute;
 			z-index: $z-index-controls;
 			top: 50%;
-			margin-top: -$column-layout-toggle-height / 2;
+			margin-top: -$column-layout-toggle-height * 0.5;
 			width: $column-layout-toggle-width;
 			height: $column-layout-toggle-height;
 			font-size: 17px;

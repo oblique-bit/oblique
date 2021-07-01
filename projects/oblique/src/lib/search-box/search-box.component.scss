@@ -1,3 +1,4 @@
+@use "sass:math";
 @import "../../styles/scss/core/variables";
 @import "../../styles/scss/core/mixins/layout";
 
@@ -102,7 +103,7 @@
 	&.ob-slide-control {
 		.ob-search-box-input {
 			max-width: 0;
-			transition: max-width $duration-default, padding-left $duration-default / 3 * 2;
+			transition: max-width $duration-default, padding-left math.div($duration-default, 3) * 2;
 
 			&:focus,
 			&:active {

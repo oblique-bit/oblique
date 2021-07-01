@@ -11,7 +11,7 @@ export class ObDatepickerConfigService {
 		navigation: 'select',
 		outsideDays: 'visible',
 		appendToBody: true,
-		showWeekdays: false,
+		weekdays: false,
 		showWeekNumbers: false,
 		icon: 'fa-calendar-alt'
 	};

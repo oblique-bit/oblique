@@ -111,7 +111,11 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 				filter(evt => evt instanceof NavigationEnd)
 			)
 			.subscribe(
-				() => (this.links = this.links.map(link => ({...link, active: this.router.isActive(link.url, link.pathMatch && link.pathMatch === 'full')})))
+				() =>
+					(this.links = this.links.map(link => ({
+						...link,
+						active: this.router.isActive(link.url, {matrixParams: 'exact', queryParams: 'exact', paths: 'exact', fragment: 'exact'})
+					})))
 			);
 	}
 

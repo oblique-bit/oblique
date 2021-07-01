@@ -61,9 +61,9 @@ describe('NotificationComponent', () => {
 
 		it('with matching ObENotificationType CSS classes', () => {
 			const notificationAlerts = fixture.debugElement.queryAll(By.css('.ob-notification.ob-alert'));
-			expect(notificationAlerts[0].classes).toEqual(jasmine.objectContaining({'ob-alert': true}));
-			expect(notificationAlerts[0].classes).toEqual(jasmine.objectContaining({'ob-alert-success': true}));
-			expect(notificationAlerts[0].classes).not.toEqual(jasmine.objectContaining({'ob-alert-info': true}));
+			expect(notificationAlerts[0].classes['ob-alert']).toEqual(true);
+			expect(notificationAlerts[0].classes['ob-alert-success']).toEqual(true);
+			expect(notificationAlerts[0].classes['ob-alert-info']).toBeUndefined();
 		});
 	});
 

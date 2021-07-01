@@ -7,7 +7,7 @@
       "selector": "ob-date-picker",
       "type": "component",
       "since": "2.0.0",
-      "updated": "6.0.0",
+      "updated": "7.0.0",
       "inputs": [
         {
           "name": "size",
@@ -119,11 +119,12 @@
           "since": "5.0.0"
         },
         {
-          "name": "options.showWeekdays",
+          "name": "options.weekdays",
           "text": "Should the week day names be shown",
-          "type": "boolean",
+          "type": "boolean | TranslationWidth",
           "default": false,
-          "since": "5.0.0"
+          "since": "5.0.0",
+          "updated": "7.0.0"
         },
         {
           "name": "options.showWeekNumbers",

@@ -15,19 +15,19 @@ describe('PopUpService', () => {
 	});
 
 	it('should call window.alert', function () {
-		spyOn(window, 'alert');
+		jest.spyOn(window, 'alert');
 		service.alert();
 		expect(window.alert).toHaveBeenCalled();
 	});
 
 	it('should call window.confirm', function () {
-		spyOn(window, 'confirm');
+		jest.spyOn(window, 'confirm');
 		service.confirm();
 		expect(window.confirm).toHaveBeenCalled();
 	});
 
 	it('should call window.prompt', function () {
-		spyOn(window, 'prompt');
+		jest.spyOn(window, 'prompt');
 		service.prompt();
 		expect(window.prompt).toHaveBeenCalled();
 	});

@@ -115,8 +115,8 @@ describe('NavTreeFakeFocusDirective', () => {
 	it('should click the link of the fake focused item', () => {
 		const targetElement = element.query(CSS_QUERIES.ITEM_BY_ID('B-1'));
 		const targetLink = targetElement.query(By.css('a')).nativeElement;
-		spyOn(targetElement.nativeElement, 'querySelector').and.returnValue(targetLink);
-		spyOn(targetLink, 'click').and.returnValue(false);
+		jest.spyOn(targetElement.nativeElement, 'querySelector').mockReturnValue(targetLink);
+		jest.spyOn(targetLink, 'click').mockReturnValue(false);
 
 		directive.fakeFocus(targetElement);
 		expect(targetLink.click).toHaveBeenCalledTimes(0);

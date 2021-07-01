@@ -106,7 +106,7 @@ describe('InputClear', () => {
 				input = fixture.nativeElement.querySelector('input');
 				input.value = 'testInput';
 				input.dispatchEvent(new Event('input'));
-				spyOn(directive, 'onClick').and.callThrough();
+				jest.spyOn(directive, 'onClick');
 				fixture.nativeElement.querySelector('button').click();
 				fixture.detectChanges();
 			});
@@ -151,7 +151,7 @@ describe('InputClear', () => {
 			input.value = 'testInput';
 			fixture.detectChanges();
 			input.dispatchEvent(new Event('input'));
-			spyOn(directive, 'onClick').and.callThrough();
+			jest.spyOn(directive, 'onClick');
 			fixture.nativeElement.querySelector('button').click();
 		});
 
@@ -194,7 +194,7 @@ describe('InputClear', () => {
 				input = <HTMLInputElement>fixture.nativeElement.querySelector('input');
 				input.value = 'testInput';
 				input.dispatchEvent(new Event('input'));
-				spyOn(directive, 'onClick').and.callThrough();
+				jest.spyOn(directive, 'onClick');
 				fixture.nativeElement.querySelector('button').click();
 				fixture.detectChanges();
 			});

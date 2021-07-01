@@ -15,7 +15,7 @@ describe('OffcanvasToggleDirective', () => {
 
 	it('should create an instance', () => {
 		const mockService = jest.fn();
-		const directive = new ObOffCanvasToggleDirective((mockService as unknown) as ObOffCanvasService, window);
+		const directive = new ObOffCanvasToggleDirective(mockService as unknown as ObOffCanvasService, window);
 		expect(directive).toBeTruthy();
 	});
 });

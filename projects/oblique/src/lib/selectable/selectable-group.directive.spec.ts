@@ -1,7 +1,7 @@
 import {Component, DebugElement} from '@angular/core';
 import {async, ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {skip} from 'rxjs/operators';
+import {first, skip} from 'rxjs/operators';
 import {ObSelectableGroupDirective} from './selectable-group.directive';
 import {ObMockSelectableDirective} from './mock/mock-selectable.directive';
 
@@ -90,7 +90,7 @@ describe('SelectableGroupDirective', () => {
 			directive.toggle(items[4]);
 			directive.focus(items[2]);
 			directive.toggle(items[2]);
-			event = ({preventDefault: jest.fn()} as unknown) as KeyboardEvent;
+			event = {preventDefault: jest.fn()} as unknown as KeyboardEvent;
 		});
 
 		describe('mode', () => {
@@ -111,7 +111,7 @@ describe('SelectableGroupDirective', () => {
 
 		describe('toggle', () => {
 			it('should check all called items', done => {
-				directive.selected$.subscribe(selection => {
+				directive.selected$.pipe(first()).subscribe(selection => {
 					expect(selection).toEqual([items[2], items[3], items[4]]);
 					done();
 				});
@@ -121,7 +121,7 @@ describe('SelectableGroupDirective', () => {
 
 		describe('selectAll', () => {
 			it('should check all items', () => {
-				directive.selected$.subscribe(selection => {
+				directive.selected$.pipe(first()).subscribe(selection => {
 					expect(selection).toEqual(items);
 				});
 				directive.selectAll();
@@ -130,7 +130,7 @@ describe('SelectableGroupDirective', () => {
 
 		describe('deselectAll', () => {
 			it('should uncheck all items', () => {
-				directive.selected$.subscribe(selection => {
+				directive.selected$.pipe(first()).subscribe(selection => {
 					expect(selection).toEqual([]);
 				});
 				directive.deselectAll();
@@ -187,7 +187,7 @@ describe('SelectableGroupDirective', () => {
 			directive.toggle(items[4]);
 			directive.focus(items[2]);
 			directive.toggle(items[2]);
-			event = ({preventDefault: jest.fn()} as unknown) as KeyboardEvent;
+			event = {preventDefault: jest.fn()} as unknown as KeyboardEvent;
 		});
 		describe('mode', () => {
 			it('should emit on set', () => {
@@ -198,7 +198,7 @@ describe('SelectableGroupDirective', () => {
 				directive.mode = 'checkbox';
 				directive.toggle(items[0]);
 				directive.toggle(items[1]);
-				directive.selected$.subscribe(selection => {
+				directive.selected$.pipe(first()).subscribe(selection => {
 					expect(selection).toEqual([items[0]]);
 					done();
 				});
@@ -253,7 +253,7 @@ describe('SelectableGroupDirective', () => {
 			});
 
 			it('onArrowUp should emit', done => {
-				directive.selected$.subscribe(sel => {
+				directive.selected$.pipe(first()).subscribe(sel => {
 					expect(sel).toEqual([items[1]]);
 					done();
 				});
@@ -266,7 +266,7 @@ describe('SelectableGroupDirective', () => {
 			});
 
 			it('onArrowDown should emit', done => {
-				directive.selected$.subscribe(sel => {
+				directive.selected$.pipe(first()).subscribe(sel => {
 					expect(sel).toEqual([items[3]]);
 					done();
 				});
@@ -304,7 +304,7 @@ describe('SelectableGroupDirective', () => {
 			directive.toggle(items[4]);
 			directive.focus(items[2]);
 			directive.toggle(items[2]);
-			event = ({preventDefault: jest.fn()} as unknown) as KeyboardEvent;
+			event = {preventDefault: jest.fn()} as unknown as KeyboardEvent;
 		});
 		describe('mode', () => {
 			it('should emit on set', () => {
@@ -323,7 +323,7 @@ describe('SelectableGroupDirective', () => {
 
 		describe('toggle', () => {
 			it('without ctrl and shift, should check only check last called item', done => {
-				directive.selected$.subscribe(selection => {
+				directive.selected$.pipe(first()).subscribe(selection => {
 					expect(selection).toEqual([items[1]]);
 					done();
 				});
@@ -335,14 +335,14 @@ describe('SelectableGroupDirective', () => {
 					directive.toggle(items[1]);
 				});
 				it('should not empty selection', done => {
-					directive.selected$.subscribe(selection => {
+					directive.selected$.pipe(first()).subscribe(selection => {
 						expect(selection).toEqual([items[1]]);
 						done();
 					});
 					directive.toggle(items[1], true);
 				});
 				it('should add elements', done => {
-					directive.selected$.subscribe(selection => {
+					directive.selected$.pipe(first()).subscribe(selection => {
 						expect(selection).toEqual([items[1], items[3]]);
 						done();
 					});
@@ -352,7 +352,7 @@ describe('SelectableGroupDirective', () => {
 
 			describe('with shift', () => {
 				it('should add a range', done => {
-					directive.selected$.subscribe(selection => {
+					directive.selected$.pipe(first()).subscribe(selection => {
 						expect(selection).toEqual([items[0], items[1], items[2]]);
 						done();
 					});
@@ -364,7 +364,7 @@ describe('SelectableGroupDirective', () => {
 
 		describe('selectAll', () => {
 			it('should check all items', () => {
-				directive.selected$.subscribe(selection => {
+				directive.selected$.pipe(first()).subscribe(selection => {
 					expect(selection).toEqual(items);
 				});
 				directive.selectAll();
@@ -373,7 +373,7 @@ describe('SelectableGroupDirective', () => {
 
 		describe('deselectAll', () => {
 			it('should uncheck all items', () => {
-				directive.selected$.subscribe(selection => {
+				directive.selected$.pipe(first()).subscribe(selection => {
 					expect(selection).toEqual([]);
 				});
 				directive.deselectAll();
@@ -387,7 +387,7 @@ describe('SelectableGroupDirective', () => {
 			});
 
 			it('onArrowUp should emit', done => {
-				directive.selected$.subscribe(sel => {
+				directive.selected$.pipe(first()).subscribe(sel => {
 					expect(sel).toEqual([items[1]]);
 					done();
 				});
@@ -400,7 +400,7 @@ describe('SelectableGroupDirective', () => {
 			});
 
 			it('onArrowDown should emit', done => {
-				directive.selected$.subscribe(sel => {
+				directive.selected$.pipe(first()).subscribe(sel => {
 					expect(sel).toEqual([items[3]]);
 					done();
 				});
@@ -413,7 +413,7 @@ describe('SelectableGroupDirective', () => {
 			});
 
 			it('onShiftArrowUp should emit', done => {
-				directive.selected$.subscribe(sel => {
+				directive.selected$.pipe(first()).subscribe(sel => {
 					expect(sel).toEqual([items[1], items[2]]);
 					done();
 				});
@@ -430,7 +430,7 @@ describe('SelectableGroupDirective', () => {
 				directive.focus(items[3]);
 				directive.onShiftArrowDown(event);
 				directive.focus(items[4]);
-				directive.selected$.subscribe(sel => {
+				directive.selected$.pipe(first()).subscribe(sel => {
 					expect(sel).toEqual([items[2], items[3]]);
 					done();
 				});

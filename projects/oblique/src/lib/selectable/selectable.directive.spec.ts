@@ -176,12 +176,12 @@ describe('SelectableDirective', () => {
 
 	describe('onclick', () => {
 		it('should call preventDefault on passed event', () => {
-			const event = ({preventDefault: jest.fn()} as unknown) as MouseEvent;
+			const event = {preventDefault: jest.fn()} as unknown as MouseEvent;
 			directive.onClick(event);
 			expect(event.preventDefault).toHaveBeenCalled();
 		});
 		it('should call toggle on group', () => {
-			const event = ({preventDefault: jest.fn()} as unknown) as MouseEvent;
+			const event = {preventDefault: jest.fn()} as unknown as MouseEvent;
 			directive.onClick(event);
 			expect(group.toggle).toHaveBeenCalledWith(directive, undefined, undefined);
 		});

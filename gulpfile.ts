@@ -7,7 +7,7 @@ const fs = require('fs'),
 	header = require('gulp-header'),
 	rename = require('gulp-rename'),
 	replace = require('gulp-replace'),
-	sass = require('node-sass'),
+	sass = require('sass'),
 	del = require('del'),
 	path = require('path'),
 	childProcess = require('child_process'),
@@ -21,14 +21,14 @@ const fs = require('fs'),
 
 const distStyles = () => gulp.src([`${paths.src}/styles/**/*`]).pipe(gulp.dest(`${paths.dist}/styles`));
 const distAssets = () => gulp.src([`${paths.src}/assets/**/*`]).pipe(gulp.dest(`${paths.dist}/assets`));
-const distMaterialCss = (done) => transpile('material', 'themes', done);
-const distBootstrapCss = (done) => transpile('bootstrap', 'themes', done);
-const distCoreCss = (done) => transpile('core', '', done);
-const distUtilCss = (done) => transpile('utilities', '', done);
-const distCompatCss = (done) => transpile('compat', '', done);
-const distComponentsCss = (done) => transpileComponents(`${paths.src}/lib`, done);
-const distAlertCss = (done) => transpileFile(['dist', 'oblique', 'styles', 'scss', 'oblique-alert.scss'], 'alert', true, done);
-const distIconCss = (done) => transpileFile(['dist', 'oblique', 'styles', 'scss', 'oblique-icons.scss'], 'icons', true, done);
+const distMaterialCss = async (done) => transpile('material', 'themes', done);
+const distBootstrapCss = async (done) => transpile('bootstrap', 'themes', done);
+const distCoreCss = async (done) => transpile('core', '', done);
+const distUtilCss = async (done) => transpile('utilities', '', done);
+const distCompatCss = async (done) => transpile('compat', '', done);
+const distComponentsCss = async (done) => transpileComponents(`${paths.src}/lib`, done);
+const distAlertCss = async (done) => transpileFile(['dist', 'oblique', 'styles', 'scss', 'oblique-alert.scss'], 'alert', true, done);
+const distIconCss = async (done) => transpileFile(['dist', 'oblique', 'styles', 'scss', 'oblique-icons.scss'], 'icons', true, done);
 
 const addBanner = () => {
 	const releaseDate = getTagDate(pkg.version);
@@ -53,7 +53,7 @@ const distMeta = () => {
 
 	['version', 'description', 'keywords', 'author', 'contributors', 'homepage', 'repository', 'license', 'bugs', 'publishConfig']
 		.forEach(field => output[field] = pkg[field]);
-	['main', 'module', 'es2015', 'esm2015', 'fesm2015', 'typings', 'metadata']
+	['main', 'module', 'es2015', 'esm2015', 'fesm2015', 'typings']
 		.forEach(field => output[field] = output[field].replace('oblique-oblique', 'oblique'));
 
 	return gulp.src(['README.md', 'CHANGELOG.md', 'LICENSE'])
@@ -206,7 +206,8 @@ function transpileFile(file: string[], target: string, relative: boolean, cb): v
 		},
 		outputStyle: 'compressed',
 		sourceMap: false, // doesn't get generated correctly
-		outFile: `dist/oblique/styles/css/oblique-${target}.css`
+		outFile: `dist/oblique/styles/css/oblique-${target}.css`,
+		quietDeps: true
 	}, (error, result) => {
 		if (error) {
 			console.log(error.message);

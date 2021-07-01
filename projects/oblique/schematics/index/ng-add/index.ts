@@ -31,7 +31,7 @@ function installAngularLocalizeIfMissing(tree: Tree, context: SchematicContext):
 
 	if (angularLocalizeVersion) {
 		infoMigration(context, 'Installing missing peer dependency "@angular/localize"');
-		execSync(`ng add @angular/localize@${angularLocalizeVersion}`);
+		execSync(`ng add @angular/localize@${angularLocalizeVersion} --skip-confirmation`);
 	}
 }
 
