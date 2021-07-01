@@ -13,6 +13,7 @@ describe('CollapseComponent', () => {
 			TestBed.configureTestingModule({
 				declarations: [ObCollapseComponent],
 				imports: [NoopAnimationsModule],
+				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				providers: [{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: 'yes'}]
 			}).compileComponents();
 		}));
@@ -37,6 +38,7 @@ describe('CollapseComponent', () => {
 			TestBed.configureTestingModule({
 				declarations: [ObCollapseComponent],
 				imports: [NoopAnimationsModule],
+				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				providers: [{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: false}]
 			}).compileComponents();
 		}));
@@ -88,23 +90,21 @@ describe('CollapseComponent', () => {
 			}));
 		});
 
-		describe('iconPosition should set a class', () => {
+		describe('iconPosition should add the icon', () => {
 			it('right', () => {
 				component.iconPosition = 'right';
 				fixture.detectChanges();
-				const div = fixture.debugElement.query(By.css('.ob-toggle')).nativeElement;
-				expect(div.classList.contains('ob-toggle-after')).toBe(true);
+				expect(fixture.debugElement.query(By.css('ob-icon:first-child'))).toBeTruthy();
 			});
 			it('left', () => {
 				component.iconPosition = 'left';
 				fixture.detectChanges();
-				const div = fixture.debugElement.query(By.css('.ob-toggle')).nativeElement;
-				expect(div.classList.contains('ob-toggle-after')).toBe(false);
+				expect(fixture.debugElement.query(By.css('ob-icon:last-child'))).toBeTruthy();
 			});
 			it('justified', () => {
 				component.iconPosition = 'justified';
 				fixture.detectChanges();
-				const div = fixture.debugElement.query(By.css('.ob-toggle')).nativeElement;
+				const div = fixture.debugElement.query(By.css('.ob-collapse-toggle')).nativeElement;
 				expect(div.classList.contains('ob-toggle-justified')).toBe(true);
 			});
 		});

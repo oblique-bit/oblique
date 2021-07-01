@@ -20,18 +20,26 @@
 
 	.ob-control-icon {
 		float: left;
-		font-size: 36px;
-		line-height: 28px;
-		margin-right: 15px;
+		font-size: $font-size-lg;
+
+		.ob-font-awesome & {
+			font-size: 36px;
+			line-height: 28px;
+			margin-right: 15px;
+		}
 	}
 
 	.ob-control-label {
 		float: left;
-		line-height: 20px;
 		vertical-align: top;
 		white-space: normal;
 		width: calc(100% - 40px);
-		padding: 6px 0;
+		padding: 3px 0;
+
+		.ob-font-awesome & {
+			padding: 6px 0;
+			line-height: 20px;
+		}
 	}
 
 	&:hover, &:focus {

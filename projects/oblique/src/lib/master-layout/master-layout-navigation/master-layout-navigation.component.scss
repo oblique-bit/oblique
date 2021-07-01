@@ -1,9 +1,6 @@
-@import "~@fortawesome/fontawesome-free/scss/variables";
 @import "../../../styles/scss/core/variables";
-@import "../../../styles/scss/core/mixins/icon";
 @import "../../../styles/scss/core/mixins/layout";
 @import "../../../styles/scss/core/mixins/nav";
-@import "../../../styles/scss/core/mixins/toggle";
 @import "../../../styles/scss/core/mixins/button";
 
 .ob-master-layout-navigation {
@@ -106,20 +103,31 @@
 			}
 		}
 
-		.ob-toggle {
-			margin-left: $spacing-sm;
-			min-width: 0;
-			@include toggle-before($state: ob-expanded);
-
-			@include layout-collapse-down() {
-				&::before {
-					content: fa-content($fa-var-angle-right);
-				}
+		.ob-toggle-layout-collapsed {
+			@include layout-collapse-up() {
+				display: none;
 			}
 		}
 
-		.ob-expanded .ob-toggle::before {
-			content: fa-content($fa-var-angle-up);
+		.ob-toggle-collapsed,
+		.ob-toggle-expanded {
+			margin-left: $spacing-sm;
+			@include layout-collapse-down() {
+				display: none;
+			}
+		}
+
+		@include layout-collapse-up() {
+			.ob-master-layout-navigation-toggle {
+				&[aria-expanded] .ob-toggle-collapsed,
+				&:not([aria-expanded]) .ob-toggle-expanded {
+					display: none;
+				}
+				&[aria-expanded] .ob-toggle-expanded,
+				&:not([aria-expanded]) .ob-toggle-collapsed {
+					display: inline;
+				}
+			}
 		}
 
 		.ob-sub-menu {
@@ -204,18 +212,6 @@
 
 			@include layout-collapse-up() {
 				display: none;
-			}
-
-			.ob-toggle {
-				margin: 0;
-
-				@include layout-collapse-up() {
-					display: none;
-				}
-
-				&::before {
-					content: fa-content($fa-var-angle-left);
-				}
 			}
 
 			.ob-label {

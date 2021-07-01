@@ -4,7 +4,9 @@ import {
 	ElementRef,
 	HostBinding,
 	HostListener,
+	Inject,
 	Input,
+	Optional,
 	QueryList,
 	ViewChild,
 	ViewChildren,
@@ -13,6 +15,7 @@ import {
 import {TranslateService} from '@ngx-translate/core';
 import {ObDropdownComponent} from '../dropdown/dropdown.component';
 import {ObISearchWidgetItem} from './search-box.model';
+import {ObUseObliqueIcons} from '../icon/icon.model';
 
 let nextId = 0;
 
@@ -39,20 +42,11 @@ export class ObSearchBoxComponent {
 	isOpened = false;
 	id = `search-input-${nextId++}`;
 	private active: number;
-	private _pattern: string;
-
+	@HostBinding('class.ob-font-awesome') useFontAwesomeIcon: boolean;
 	@ViewChildren('link') private readonly links: QueryList<ElementRef>;
 	@ViewChild(ObDropdownComponent) private readonly dropdown: ObDropdownComponent;
 
-	constructor(private readonly translate: TranslateService) {}
-
-	open(): void {
-		this.toggle(true);
-	}
-
-	close(): void {
-		this.toggle(false);
-	}
+	private _pattern: string;
 
 	get pattern(): string {
 		return this._pattern;
@@ -62,6 +56,18 @@ export class ObSearchBoxComponent {
 		this._pattern = pattern;
 		this.filteredItems = this.items.filter(this.filterItems.bind(this)).slice(0, this.maxResults);
 		this.toggle(this.pattern.length >= this.minPatternLength);
+	}
+
+	constructor(private readonly translate: TranslateService, @Optional() @Inject(ObUseObliqueIcons) useObliqueIcon) {
+		this.useFontAwesomeIcon = !useObliqueIcon;
+	}
+
+	open(): void {
+		this.toggle(true);
+	}
+
+	close(): void {
+		this.toggle(false);
 	}
 
 	@HostListener('keydown.arrowdown', ['$event']) navigateDown($event: KeyboardEvent) {

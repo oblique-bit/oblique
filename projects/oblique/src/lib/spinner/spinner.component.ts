@@ -11,7 +11,7 @@ import {Subject} from 'rxjs';
 	exportAs: 'obSpinner',
 	template: `<div class="ob-overlay" [class.ob-overlay-fixed]="fixed" [@inOut]="$state">
 		<div class="ob-spinner-viewport" #spinnerContainer>
-			<span class="fa fa-spinner fa-spin fa-4x"></span>
+			<ob-icon icon="refresh"></ob-icon>
 		</div>
 	</div>`,
 	styleUrls: ['spinner.component.scss'],

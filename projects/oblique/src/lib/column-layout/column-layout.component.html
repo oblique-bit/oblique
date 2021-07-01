@@ -6,7 +6,8 @@
 	obColumnPanel
 	#columnLeft="obColumnPanel"
 >
-	<button type="button" class="ob-column-toggle-left" obColumnToggle #columnToggle>
+	<button type="button" class="ob-column-toggle-left" obColumnToggle #columnToggle *ngIf="toggleLeftIcon$ | async as direction">
+		<ob-icon icon="chevron-{{ direction }}"></ob-icon>
 		<span class="sr-only">{{ "i18n.oblique.column.left.toggle" | translate }}</span>
 	</button>
 	<div class="ob-column-content">
@@ -26,7 +27,8 @@
 	obColumnPanel
 	#columnRight="obColumnPanel"
 >
-	<button type="button" class="ob-column-toggle-right" obColumnToggle #columnToggle>
+	<button type="button" class="ob-column-toggle-right" obColumnToggle #columnToggle *ngIf="toggleRightIcon$ | async as direction">
+		<ob-icon icon="chevron-{{ direction }}"></ob-icon>
 		<span class="sr-only">{{ "i18n.oblique.column.right.toggle" | translate }}</span>
 	</button>
 	<div class="ob-column-content">

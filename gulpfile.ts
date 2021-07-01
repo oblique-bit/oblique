@@ -27,6 +27,8 @@ const distCoreCss = (done) => transpile('core', '', done);
 const distUtilCss = (done) => transpile('utilities', '', done);
 const distCompatCss = (done) => transpile('compat', '', done);
 const distComponentsCss = (done) => transpileComponents(`${paths.src}/lib`, done);
+const distAlertCss = (done) => transpileFile(['dist', 'oblique', 'styles', 'scss', 'oblique-alert.scss'], 'alert', true, done);
+const distIconCss = (done) => transpileFile(['dist', 'oblique', 'styles', 'scss', 'oblique-icons.scss'], 'icons', true, done);
 
 const addBanner = () => {
 	const releaseDate = getTagDate(pkg.version);
@@ -134,7 +136,9 @@ gulp.task(
 				distCoreCss,
 				distUtilCss,
 				distCompatCss,
-				distComponentsCss
+				distComponentsCss,
+				distIconCss,
+				distAlertCss
 			),
 			distScss,
 			distCss,

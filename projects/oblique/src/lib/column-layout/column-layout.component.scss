@@ -1,6 +1,4 @@
-@import "~@fortawesome/fontawesome-free/scss/variables";
 @import "../../styles/scss/core/variables";
-@import "../../styles/scss/core/mixins/icon";
 @import "../../styles/scss/core/mixins/layout";
 @import "../../styles/scss/core/mixins/column-layout";
 
@@ -85,7 +83,11 @@
 			background-color: $white;
 
 			transition: all $duration-default;
-			color: $gray-light;
+			color: $gray-dark;
+
+			.ob-font-awesome & {
+				color: $gray-light;
+			}
 
 			&:hover,
 			&:focus {
@@ -103,7 +105,10 @@
 			border-radius: $column-layout-toggle-radius 0 0 $column-layout-toggle-radius;
 			border-right-width: 0;
 			box-shadow: -2px 0 4px 0px rgba(0, 0, 0, 0.1);
-			@include icon($fa-var-angle-left);
+
+			.ob-icon {
+				margin-left: -4px;
+			}
 		}
 
 		.ob-column-toggle-right {
@@ -113,7 +118,10 @@
 			border-radius: 0 $column-layout-toggle-radius $column-layout-toggle-radius 0;
 			border-left-width: 0;
 			box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.1);
-			@include icon($fa-var-angle-right);
+
+			.ob-icon {
+				margin-left: -5px;
+			}
 		}
 
 		.ob-column-main {
@@ -151,7 +159,6 @@
 					border-right-width: 1px;
 					border-left-width: 0;
 					box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.1);
-					@include icon($fa-var-angle-right);
 				}
 			}
 
@@ -180,7 +187,6 @@
 					border-right-width: 0;
 					border-left-width: 1px;
 					box-shadow: -2px 0 4px 0px rgba(0, 0, 0, 0.1);
-					@include icon($fa-var-angle-left);
 				}
 			}
 

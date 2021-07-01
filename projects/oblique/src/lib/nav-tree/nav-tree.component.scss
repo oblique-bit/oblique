@@ -1,7 +1,5 @@
-@import "~@fortawesome/fontawesome-free/scss/variables";
 @import "../../styles/scss/core/variables";
 @import "../../styles/scss/core/mixins/nav";
-@import "../../styles/scss/core/mixins/icon";
 
 .ob-nav-tree {
 	display: flex;
@@ -42,27 +40,40 @@
 
 	&.ob-nav-toggle {
 		$fa-fw-width-px: 20px;
+		$icon-width: 24px;
+		$indentMaterial: $icon-width + $spacing-default;
 		&.ob-nav-indent {
-			$indent: $fa-fw-width-px + $spacing-sm;
 			.ob-nav-link {
-				padding-left: $indent;
+				padding-left: $indentMaterial;
 			}
+			@include nav-indent($indentMaterial);
 
-			@include nav-indent($indent);
+			.ob-font-awesome & {
+				$indentBootstrap: $fa-fw-width-px + $spacing-sm;
+				.ob-nav-link {
+					padding-left: $indentBootstrap;
+				}
+
+				@include nav-indent($indentBootstrap);
+			}
+		}
+
+		ob-icon .fa::before {
+			display: inline-block;
+			width: $fa-fw-width-px;
+			margin-left: -$fa-fw-width-px;
+			text-align: center;
+		}
+
+		ob-icon {
+			display: inline-block;
+		}
+
+		.ob-icon {
+			margin-left: -$indentMaterial + 5px + $spacing-sm;
 		}
 
 		.ob-nav-link.has-child {
-			@include icon($fa-var-angle-down);
-
-			&.collapsed::before {
-				content: fa-content($fa-var-angle-right);
-			}
-
-			&:before {
-				margin-left: -$fa-fw-width-px;
-				width: $fa-fw-width-px;
-			}
-
 			+ .collapse:not(.show) {
 				display: none;
 			}

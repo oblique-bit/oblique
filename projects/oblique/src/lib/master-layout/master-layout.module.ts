@@ -19,6 +19,7 @@ import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigatio
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
 import {obliqueProviders} from '../utilities';
 import {ObAriaMenuButtonDirective} from './aria-menu-button.directive';
+import {ObIconModule} from '../icon/icon.module';
 
 export {ObMasterLayoutComponent} from './master-layout/master-layout.component';
 export {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
@@ -37,7 +38,7 @@ export {ObMasterLayoutConfig} from './master-layout.config';
 export {ObINavigationLink, ObEScrollMode, ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from './master-layout.model';
 
 @NgModule({
-	imports: [CommonModule, TranslateModule, RouterModule, ObNotificationModule, ObSpinnerModule, ObScrollingModule, ObOffCanvasModule],
+	imports: [CommonModule, TranslateModule, RouterModule, ObNotificationModule, ObSpinnerModule, ObScrollingModule, ObOffCanvasModule, ObIconModule],
 	declarations: [
 		ObMasterLayoutComponent,
 		ObMasterLayoutHeaderComponent,

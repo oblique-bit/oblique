@@ -7,7 +7,7 @@
 	[disabled]="!currentScroll"
 	aria-hidden="true"
 >
-	<span class="fa fa-angle-left"></span>
+	<ob-icon icon="chevron-left"></ob-icon>
 </button>
 <ng-content *ngIf="!links.length"></ng-content>
 <nav>
@@ -56,13 +56,15 @@
 					obAriaMenuButton="menu-{{ link.id || link.url }}"
 				>
 					<span>{{ link.label | translate }}</span>
-					<span class="ob-toggle" aria-hidden="true"></span>
+					<ob-icon icon="chevron-down" class="ob-toggle-collapsed"></ob-icon>
+					<ob-icon icon="chevron-up" class="ob-toggle-expanded"></ob-icon>
+					<ob-icon icon="chevron-right" class="ob-toggle-layout-collapsed"></ob-icon>
 				</button>
 				<div class="ob-sub-menu" id="menu-{{ link.id || link.url }}" obMasterLayoutNavigationMenu>
 					<ul class="ob-main-nav ob-sub-nav">
 						<li>
 							<button class="ob-sub-menu-back" type="button" obMasterLayoutNavigationToggle>
-								<span class="ob-toggle" aria-hidden="true"></span>
+								<ob-icon icon="chevron-left"></ob-icon>
 								<span class="ob-label">{{ link.label | translate }}</span>
 							</button>
 						</li>
@@ -104,5 +106,5 @@
 	[disabled]="currentScroll === maxScroll"
 	aria-hidden="true"
 >
-	<span class="fa fa-angle-right"></span>
+	<ob-icon icon="chevron-right"></ob-icon>
 </button>

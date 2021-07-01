@@ -1,17 +1,22 @@
 <nav class="ob-access-keys" role="navigation" aria-label="Access keys">
 	<ul>
 		<li>
-			<a class="ob-accessible" accesskey="0" [routerLink]="url" fragment="content">{{
-				"i18n.oblique.master-layout.accesskey.mainContent" | translate
-			}}</a>
+			<a class="ob-accessible" accesskey="0" [routerLink]="url" fragment="content">
+				<ob-icon icon="wheelchair"></ob-icon>
+				{{ "i18n.oblique.master-layout.accesskey.mainContent" | translate }}
+			</a>
 		</li>
 		<li>
-			<a class="ob-accessible" accesskey="1" [routerLink]="home">{{ "i18n.oblique.master-layout.accesskey.homepage" | translate }}</a>
+			<a class="ob-accessible" accesskey="1" [routerLink]="home">
+				<ob-icon icon="wheelchair"></ob-icon>
+				{{ "i18n.oblique.master-layout.accesskey.homepage" | translate }}
+			</a>
 		</li>
 		<li *ngIf="!noNavigation && navigation.length">
 			<a class="ob-accessible" accesskey="2" [routerLink]="url" fragment="navigation">
-				{{ "i18n.oblique.master-layout.accesskey.navigation" | translate }}</a
-			>
+				<ob-icon icon="wheelchair"></ob-icon>
+				{{ "i18n.oblique.master-layout.accesskey.navigation" | translate }}
+			</a>
 		</li>
 		<li *ngFor="let jumpLink of jumpLinks; let i = index">
 			<a
@@ -20,6 +25,7 @@
 				[routerLink]="jumpLink.url == 'current' ? url : jumpLink.url"
 				[fragment]="jumpLink.fragment"
 			>
+				<ob-icon icon="wheelchair"></ob-icon>
 				{{ jumpLink.label | translate }} [{{ jumpLink.accessKey }}]
 			</a>
 		</li>
@@ -71,7 +77,7 @@
 			<ng-content select="[obOffCanvasTitle]"></ng-content>
 		</h2>
 		<button type="button" obOffCanvasToggle class="ob-close" #offCanvasClose>
-			<span class="fa fa-lg fa-times" aria-hidden="true"></span>
+			<ob-icon icon="cancel"></ob-icon>
 			<span class="sr-only">{{ "i18n.oblique.offCanvas.close" | translate }}</span>
 		</button>
 	</header>

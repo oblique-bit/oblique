@@ -73,8 +73,8 @@
 
 		.ob-close {
 			@include link-btn;
-			padding: $spacing-xs;
-			line-height: 1;
+			font-size: $font-size-biggest;
+			padding: 0;
 			color: $white;
 		}
 

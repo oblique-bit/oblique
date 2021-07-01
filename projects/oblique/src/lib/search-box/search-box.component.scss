@@ -74,7 +74,11 @@
 		font-weight: normal;
 		vertical-align: middle;
 		background-color: transparent;
-		width: calc(100% - 1.65em);
+		width: calc(100% - (24 * 1.65em));
+
+		.ob-font-awesome & {
+			width: calc(100% - 1.65em);
+		}
 	}
 
 	&:not(.ob-slide-control) .ob-search-box-input {

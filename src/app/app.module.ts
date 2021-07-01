@@ -48,6 +48,7 @@ import {environment} from '../environments/environment';
 import {registerLocaleData} from '@angular/common';
 
 import localeFR from '@angular/common/locales/fr-CH';
+import {ObUseObliqueIcons} from 'oblique';
 import {ObHttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
 
 registerLocaleData(localeFR);
@@ -89,7 +90,8 @@ registerLocaleData(localeFR);
 		// eslint-disable-next-line dot-notation
 		{provide: OB_BANNER, useValue: environment['banner']},
 		{provide: HTTP_INTERCEPTORS, useClass: ObHttpApiInterceptor, multi: true},
-		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true}
+		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
+		{provide: ObUseObliqueIcons, useValue: true}
 	],
 	bootstrap: [AppComponent]
 })
