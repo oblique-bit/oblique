@@ -58,6 +58,7 @@
     "beta": "npm run release -- beta",
     "rc": "npm run release -- RC",
     "commit": "npm run gulp -- publish",
+    "postinstall": "node scripts/sanitize-package-lock.js",
     "gulp": "./node_modules/.bin/gulp"
   },
   "jestSonar": {
