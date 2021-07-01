@@ -82,10 +82,12 @@ function getDepVersion(tree: Tree, dep: string): number {
 }
 
 export function removePolyFill(tree: Tree, polyfillName: string, importPattern: RegExp) {
-	const hasPolyfillImported = getAngularConfigs(tree, ['architect', 'build', 'options', 'polyfills'])
-		.map(polyfill => createSrcFile(tree, polyfill.config))
-		.filter(sourceFile => importPattern.test(sourceFile.getText())).length;
-	if (hasPolyfillImported) {
+	const polyfills = getAngularConfigs(tree, ['architect', 'build', 'options', 'polyfills'])
+		.map(polyfill => ({name: polyfill.config, file: createSrcFile(tree, polyfill.config).getText()}))
+		.filter(polyfill => importPattern.test(polyfill.file));
+
+	if (polyfills.length) {
+		polyfills.forEach(polyfill => tree.overwrite(polyfill.name, polyfill.file.replace(importPattern, '')));
 		removePackageJsonDependency(tree, polyfillName);
 	}
 }
