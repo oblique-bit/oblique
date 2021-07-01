@@ -38,7 +38,7 @@ import {ObMockAlertModule} from './alert/mock/mock-alert.module';
 import {ObMockMandatoryModule} from './mandatory/mock/mock-mandatory.module';
 import {ObMockBreadcrumbModule} from './breadcrumb/mock/mock-breadcrumb.module';
 
-export {ObMockBreadcrumbModule} from './breadcrumb/mock/mock-breadcrumb.module';
+export {ObMockBreadcrumbModule, ObMockBreadcrumbComponent} from './breadcrumb/mock/mock-breadcrumb.module';
 export {ObMockButtonModule, ObMockButtonDirective} from './button/mock/mock-button.module';
 export {ObMockCollapseModule, ObMockCollapseComponent} from './collapse/mock/mock-collapse.module';
 export {ObMockColumnLayoutComponent, ObMockColumnLayoutModule} from './column-layout/mock/mock-column-layout.module';
@@ -62,7 +62,7 @@ export {
 export {ObMockExternalLinkDirective, ObMockExternalLinkModule} from './external-link/mock/mock-external-link.module';
 export {ObMockFormControlStateModule, ObMockFormControlStateDirective} from './form-control-state/mock/mock-form-control-state.module';
 export {ObMockDatePipe, ObMockLanguageModule} from './language/mock/mock-language.module';
-export {ObMockIconModule, ObMockIconService} from './icon/_mock/mock-icon.module';
+export {ObMockIconModule, ObMockIconService, ObMockIconComponent} from './icon/_mock/mock-icon.module';
 export {ObMockInputClearModule, ObMockInputClearDirective} from './input-clear/mock/mock-input-clear.module';
 export {ObMockMandatoryModule, ObMockMandatoryDirective} from './mandatory/mock/mock-mandatory.module';
 export {
@@ -80,7 +80,8 @@ export {
 	ObMockMasterLayoutNavigationMenuDirective,
 	ObMockMasterLayoutNavigationToggleDirective,
 	ObMockMasterLayoutService,
-	ObMockMasterLayoutComponentService
+	ObMockMasterLayoutComponentService,
+	ObMockAriaMenuButtonDirective
 } from './master-layout/mock/mock-master-layout.module';
 export {
 	ObMockMultiselectModule,
@@ -111,6 +112,7 @@ export {
 	ObMockOffCanvasService,
 	ObMockOffCanvasToggleDirective
 } from './off-canvas/mock/mock-off-canvas.module';
+export {ObMockSearchBoxComponent, ObMockSearchBoxModule, ObMockSearchBoxDirective} from './search-box/mock/mock-search-box.module';
 export {
 	ObMockSchemaValidationModule,
 	ObMockSchemaRequiredDirective,
@@ -118,7 +120,7 @@ export {
 	ObMockSchemaValidationDirective,
 	ObMockSchemaValidationService
 } from './schema-validation/mock/mock-schema-validation.module';
-export {ObMockSelectableDirective, ObMockSelectableGroupDirective} from './selectable/mock/mock-selectable.module';
+export {ObMockSelectableDirective, ObMockSelectableGroupDirective, ObMockObSelectableModule} from './selectable/mock/mock-selectable.module';
 export {ObMockScrollingModule, ObMockScrollingEvents, ObMockTopControlComponent} from './scrolling/mock/mock-scrolling.module';
 export {ObMockSpinnerModule, ObMockSpinnerComponent, ObMockSpinnerService} from './spinner/mock/mock-spinner.module';
 export {ObMockStickyModule, ObMockStickyComponent} from './sticky/mock/mock-sticky.module';
