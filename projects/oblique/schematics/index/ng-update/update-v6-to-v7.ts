@@ -53,7 +53,12 @@ export class UpdateV6toV7 implements ObIMigrations {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Renaming title attribute into data-title for tables');
 			const toApply = (filePath: string) => {
-				replaceInFile(tree, filePath, new RegExp('(?<=<table.*?class=".*?ob-table-collapse.*?".*?<td.*?)(?<!data-)title="', 'gs'), 'data-title="');
+				replaceInFile(
+					tree,
+					filePath,
+					new RegExp('(?<=<table[^>]*?class=".*?ob-table-collapse.*?".*?<td[^>]*?)(?<!data-)title="', 'gs'),
+					'data-title="'
+				);
 			};
 			return applyInTree(tree, toApply, '*.html');
 		};
