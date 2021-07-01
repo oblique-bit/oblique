@@ -4,6 +4,7 @@ import {By} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
+import {ObUseObliqueIcons} from '../icon/icon.model';
 import {ObAlertComponent} from './alert.component';
 
 @Component({
@@ -55,12 +56,16 @@ describe('ObAlertComponent', () => {
 			expect(obAlertComponent).toBeTruthy();
 		});
 
-		it('should hav ob-alert class', () => {
+		it('should have ob-alert class', () => {
 			expect(debugElement.nativeElement.classList.contains('ob-alert')).toBe(true);
 		});
 
-		it('should hav ob-angular class', () => {
+		it('should have ob-angular class', () => {
 			expect(debugElement.nativeElement.classList.contains('ob-angular')).toBe(true);
+		});
+
+		it('should have ob-font-awesome class', () => {
+			expect(debugElement.nativeElement.classList.contains('ob-font-awesome')).toBe(true);
 		});
 
 		describe('type', () => {
@@ -133,7 +138,7 @@ describe('ObAlertComponent', () => {
 					expect(obAlertComponent.icon).toBe('');
 				});
 				it('should have class ob-alert-success', () => {
-					expect(Object.keys(debugElement.nativeElement.classList).length).toBe(2);
+					expect(debugElement.nativeElement.classList['ob-alert-success']).toBeUndefined();
 				});
 			});
 		});
@@ -174,6 +179,34 @@ describe('ObAlertComponent', () => {
 
 		it('should have icon success ', () => {
 			expect(obAlertComponent.icon).toBe('checkmark');
+		});
+	});
+
+	describe('with Oblique icons', () => {
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
+				declarations: [DefaultTestComponent, ObMockTranslatePipe, ObAlertComponent],
+				providers: [
+					{provide: TranslateService, useClass: ObMockTranslateService},
+					{provide: ObUseObliqueIcons, useValue: true}
+				],
+				schemas: [CUSTOM_ELEMENTS_SCHEMA]
+			}).compileComponents();
+		});
+
+		beforeEach(() => {
+			fixture = TestBed.createComponent(DefaultTestComponent);
+			testComponent = fixture.componentInstance;
+			fixture.detectChanges();
+			debugElement = fixture.debugElement.query(By.directive(ObAlertComponent));
+		});
+
+		it('should create', () => {
+			expect(testComponent).toBeTruthy();
+		});
+
+		it('should not have ob-font-awesome class', () => {
+			expect(debugElement.nativeElement.classList.contains('ob-font-awesome')).toBe(false);
 		});
 	});
 });
