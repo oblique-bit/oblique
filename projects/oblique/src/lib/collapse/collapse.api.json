@@ -7,34 +7,13 @@
       "exported": "obCollapse",
       "type": "component",
       "since": "5.0.0",
-      "updated": "6.0.0",
+      "updated": "7.0.0",
       "inputs": [
         {
           "name": "active",
           "text": "Defines the status of the collapse component: opened or closed.",
           "type": "boolean",
           "default": false,
-          "since": "5.0.0"
-        },
-        {
-          "name": "direction",
-          "text": "Defines the directions that the icon faces when active or not",
-          "type": "string",
-          "default": "down-up",
-          "values": [
-            "down-up",
-            "down-right",
-            "down-left",
-            "up-down",
-            "up-right",
-            "up-left",
-            "right-left",
-            "right-up",
-            "right-down",
-            "left-right",
-            "left-up",
-            "left-down"
-          ],
           "since": "5.0.0"
         },
         {
@@ -45,9 +24,11 @@
           "values": [
             "left",
             "right",
-            "justified"
+            "justified",
+            "none"
           ],
-          "since": "5.0.0"
+          "since": "5.0.0",
+          "updated": "7.0.0"
         },
         {
           "name": "duration",
@@ -72,6 +53,20 @@
           "type": "boolean",
           "default": "false",
           "since": "5.0.0"
+        },
+        {
+          "name": "OBLIQUE_COLLAPSE_ICON_POSITION",
+          "text": "The default value for <code>iconPosition</code> property that will be applied to all <code>ObCollapseComponent</code> throughout the application.",
+          "type": "left, right, justified, none",
+          "default": "'left'",
+          "since": "7.0.0"
+        },
+        {
+          "name": "OBLIQUE_COLLAPSE_DURATION",
+          "text": "The default value for <code>duration</code> property that will be applied to all <code>ObCollapseComponent</code> throughout the application.",
+          "type": "'slow' | 'fast' | number",
+          "default": "'slow'",
+          "since": "7.0.0"
         }
       ],
       "projection": [

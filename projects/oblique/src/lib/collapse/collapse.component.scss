@@ -1,67 +1,27 @@
 @import "../../styles/scss/core/mixins/toggle";
 @import "~@fortawesome/fontawesome-free/scss/variables";
 
-.ob-toggle {
-	display: flex;
-	cursor: pointer;
+.ob-collapse {
+	.ob-toggle {
+		display: flex;
+		cursor: pointer;
 
-	&:not(.ob-toggle-after) {
-		@include toggle-before($state: ob-expanded);
-	}
-
-	&.ob-toggle-after {
-		@include toggle-after($state: ob-expanded);
-
-		&.ob-toggle-justified {
-			justify-content: space-between;
+		&:not(.ob-toggle-after) {
+			@include toggle-before($state: ob-expanded);
 		}
-	}
 
-	&.ob-toggle-down-up {
+		&.ob-toggle-after {
+			@include toggle-after($state: ob-expanded);
+
+			&.ob-toggle-justified {
+				justify-content: space-between;
+			}
+		}
+
 		@include add-toggle($fa-var-angle-down, $fa-var-angle-up, ob-expanded);
 	}
 
-	&.ob-toggle-down-right {
-		@include add-toggle($fa-var-angle-down, $fa-var-angle-right, ob-expanded);
-	}
-
-	&.ob-toggle-down-left {
-		@include add-toggle($fa-var-angle-down, $fa-var-angle-left, ob-expanded);
-	}
-
-	&.ob-toggle-up-down {
-		@include add-toggle($fa-var-angle-up, $fa-var-angle-down, ob-expanded);
-	}
-
-	&.ob-toggle-up-right {
-		@include add-toggle($fa-var-angle-up, $fa-var-angle-right, ob-expanded);
-	}
-
-	&.ob-toggle-up-left {
-		@include add-toggle($fa-var-angle-up, $fa-var-angle-left, ob-expanded);
-	}
-
-	&.ob-toggle-right-left {
-		@include add-toggle($fa-var-angle-right, $fa-var-angle-left, ob-expanded);
-	}
-
-	&.ob-toggle-right-down {
-		@include add-toggle($fa-var-angle-right, $fa-var-angle-down, ob-expanded);
-	}
-
-	&.ob-toggle-right-up {
-		@include add-toggle($fa-var-angle-right, $fa-var-angle-up, ob-expanded);
-	}
-
-	&.ob-toggle-left-right {
-		@include add-toggle($fa-var-angle-left, $fa-var-angle-right, ob-expanded);
-	}
-
-	&.ob-toggle-left-down {
-		@include add-toggle($fa-var-angle-left, $fa-var-angle-down, ob-expanded);
-	}
-
-	&.ob-toggle-left-up {
-		@include add-toggle($fa-var-angle-left, $fa-var-angle-up, ob-expanded);
+	.ob-collapse-content {
+		overflow: hidden;
 	}
 }

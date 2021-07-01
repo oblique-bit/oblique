@@ -14,7 +14,10 @@ export class UpdateV6toV7 implements ObIMigrations {
 	applyMigrations(_options: IUpdateV7Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Analyzing project');
-			return chain([this.adaptPolyfills(), this.renameObIconsConfig(), this.renameSpacingLg(), this.renameTableTitleAttribute()])(tree, _context);
+			return chain([this.adaptPolyfills(), this.renameObIconsConfig(), this.renameSpacingLg(), this.renameTableTitleAttribute(), this.removeDirection()])(
+				tree,
+				_context
+			);
 		};
 	}
 
@@ -51,6 +54,16 @@ export class UpdateV6toV7 implements ObIMigrations {
 			infoMigration(_context, 'Renaming title attribute into data-title for tables');
 			const toApply = (filePath: string) => {
 				replaceInFile(tree, filePath, new RegExp('(?<=<table.*?class=".*?ob-table-collapse.*?".*?<td.*?)(?<!data-)title="', 'gs'), 'data-title="');
+			};
+			return applyInTree(tree, toApply, '*.html');
+		};
+	}
+
+	private removeDirection(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Removing direction input on collapse');
+			const toApply = (filePath: string) => {
+				replaceInFile(tree, filePath, /(<ob-collapse\s.*?)\[?direction]?=".*?"\s?(.*?>)/g, '$1$2');
 			};
 			return applyInTree(tree, toApply, '*.html');
 		};

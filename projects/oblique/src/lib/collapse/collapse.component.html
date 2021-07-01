@@ -1,14 +1,15 @@
 <div
-	class="ob-toggle ob-toggle-{{ direction }}"
-	[class.ob-expanded]="active"
 	role="button"
-	(click)="active = !active"
+	[class.ob-toggle]="iconPosition != 'none'"
 	[class.ob-toggle-after]="iconPosition != 'left'"
 	[class.ob-toggle-justified]="iconPosition == 'justified'"
+	[class.ob-expanded]="active"
+	(click)="active = !active"
 >
 	<ng-content select="[obCollapseHeader]"></ng-content>
 </div>
 <div
+	class="ob-collapse-content"
 	[@expandCollapse]="{
 		value: active ? 'open' : 'close',
 		params: { time: time }

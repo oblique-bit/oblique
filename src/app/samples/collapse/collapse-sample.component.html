@@ -2,7 +2,7 @@
 	<h2 class="page-header">Collapse</h2>
 	<ob-description component="collapse"></ob-description>
 	<ob-column-layout [left]="false">
-		<ob-collapse [(active)]="active" [direction]="direction.value" [duration]="duration.value" column-main-content [iconPosition]="iconPosition.value">
+		<ob-collapse [(active)]="active" [duration]="duration.value" column-main-content [iconPosition]="iconPosition.value">
 			<span id="{{ collapseTitle }}_title" obCollapseHeader>
 				{{ collapseTitle }}
 			</span>
@@ -18,15 +18,6 @@
 		</ob-collapse>
 		<div column-right-content>
 			<ng-container *ngIf="material | async; else bootstrap">
-				<mat-form-field>
-					<mat-label>Direction</mat-label>
-					<mat-select [(value)]="direction">
-						<mat-option *ngFor="let variant of directions" [value]="variant">
-							{{ variant.viewValue }}
-						</mat-option>
-					</mat-select>
-				</mat-form-field>
-
 				<mat-form-field>
 					<mat-label>animate duration</mat-label>
 					<mat-select [(value)]="duration">
@@ -51,13 +42,7 @@
 			</ng-container>
 			<ng-template #bootstrap>
 				<div class="form-group">
-					<label class="form-control-label">Direction</label>
-					<select [formControl]="direction" class="form-control">
-						<option *ngFor="let variant of directions" [ngValue]="variant.value">{{ variant.viewValue }}</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label class="form-control-label">Direction</label>
+					<label class="form-control-label">Duration</label>
 					<select [formControl]="duration" class="form-control">
 						<option *ngFor="let variant of durations" [ngValue]="variant.value">{{ variant.viewValue }}</option>
 					</select>

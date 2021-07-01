@@ -3,7 +3,7 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ObThemeService} from 'oblique';
-import {Direction, Duration, IconPosition} from './collapse-sample.model';
+import {Duration, IconPosition} from './collapse-sample.model';
 
 @Component({
 	selector: 'ob-collapse-sample',
@@ -12,25 +12,9 @@ import {Direction, Duration, IconPosition} from './collapse-sample.model';
 export class ObCollapseSampleComponent {
 	collapseTitle = 'Collapse title here ';
 	material: Observable<boolean>;
-	direction = new FormControl('down-up');
 	duration = new FormControl('fast');
 	iconPosition = new FormControl('left');
 	active = false;
-
-	directions: Direction[] = [
-		{value: 'down-up', viewValue: 'default'},
-		{value: 'down-right', viewValue: 'Toggle Down-Right'},
-		{value: 'down-left', viewValue: 'Toggle Down-Left'},
-		{value: 'up-down', viewValue: 'Toggle Up-Down'},
-		{value: 'up-right', viewValue: 'Toggle Up-Right'},
-		{value: 'up-left', viewValue: 'Toggle Up-Left'},
-		{value: 'right-left', viewValue: 'Toggle Right-Left'},
-		{value: 'right-down', viewValue: 'Toggle Right-Down'},
-		{value: 'right-up', viewValue: 'Toggle Right-Up'},
-		{value: 'left-right ', viewValue: 'Toggle Left-Right'},
-		{value: 'left-down ', viewValue: 'Toggle Left-Down'},
-		{value: 'left-up ', viewValue: 'Toggle Left-Up'}
-	];
 
 	durations: Duration[] = [
 		{value: 'slow', viewValue: 'Slow'},
@@ -45,7 +29,8 @@ export class ObCollapseSampleComponent {
 	iconPositions: IconPosition[] = [
 		{value: 'left', viewValue: 'Move the icon to the left'},
 		{value: 'right', viewValue: 'Move the icon to the right'},
-		{value: 'justified', viewValue: 'Move the icon to the right'}
+		{value: 'justified', viewValue: 'Justify the icon to the right'},
+		{value: 'none', viewValue: 'Do not show the icon'}
 	];
 
 	constructor(theme: ObThemeService) {

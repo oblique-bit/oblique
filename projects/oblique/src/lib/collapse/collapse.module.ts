@@ -5,7 +5,7 @@ import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {ObCollapseComponent} from './collapse.component';
 import {obliqueProviders} from '../utilities';
 
-export {ObCollapseComponent, OBLIQUE_COLLAPSE_ACTIVE} from './collapse.component';
+export {ObCollapseComponent, OBLIQUE_COLLAPSE_ACTIVE, OBLIQUE_COLLAPSE_ICON_POSITION, OBLIQUE_COLLAPSE_DURATION} from './collapse.component';
 
 @NgModule({
 	imports: [CommonModule],

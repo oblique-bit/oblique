@@ -88,19 +88,6 @@ describe('CollapseComponent', () => {
 			}));
 		});
 
-		describe('direction should set a class', () => {
-			it('without direction', () => {
-				const div = fixture.debugElement.query(By.css('.ob-toggle')).nativeElement;
-				expect(div.classList.contains('ob-toggle-down-up')).toBe(true);
-			});
-			it('with left-right direction', () => {
-				component.direction = 'left-right';
-				fixture.detectChanges();
-				const div = fixture.debugElement.query(By.css('.ob-toggle')).nativeElement;
-				expect(div.classList.contains('ob-toggle-left-right')).toBe(true);
-			});
-		});
-
 		describe('iconPosition should set a class', () => {
 			it('right', () => {
 				component.iconPosition = 'right';
