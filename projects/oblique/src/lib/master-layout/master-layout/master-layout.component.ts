@@ -9,6 +9,7 @@ import {
 	Input,
 	OnDestroy,
 	OnInit,
+	Optional,
 	QueryList,
 	TemplateRef,
 	ViewChild,
@@ -27,6 +28,7 @@ import {ObEMasterLayoutEventValues, ObIDynamicJumpLink, ObINavigationLink} from 
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 import {Subject} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
+import {ObUseObliqueIcons} from '../../icon/icon.model';
 
 @Component({
 	selector: 'ob-master-layout',
@@ -71,6 +73,7 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 		private readonly router: Router,
 		private readonly scrollEvents: ObScrollingEvents,
 		private readonly globalEventsService: ObGlobalEventsService,
+		@Optional() @Inject(ObUseObliqueIcons) public readonly useObliqueIcons: boolean,
 		@Inject(DOCUMENT) private readonly document: any,
 		@Inject(WINDOW) window
 	) {

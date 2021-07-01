@@ -46,10 +46,10 @@
 		line-height: 1;
 		background-color: $brand-warning;
 		color: $white;
+	}
 
-		.bootstrap & {
-			padding: 0 $spacing-default;
-		}
+	&.ob-font-awesome ob-icon {
+		padding: 0 $spacing-default;
 	}
 
 
