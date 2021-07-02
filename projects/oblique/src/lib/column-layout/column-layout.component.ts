@@ -73,8 +73,8 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 			this.master.layout.configEvents.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.FIXED))
 		).subscribe(() => this.center());
 
-		this.toggleLeftIcon$ = this.getToggleDirection(this.columnLeft, 'right', 'left');
-		this.toggleRightIcon$ = this.getToggleDirection(this.columnRight, 'left', 'right');
+		this.toggleLeftIcon$ = this.getToggleDirection(this.columnLeft, 'left', 'right');
+		this.toggleRightIcon$ = this.getToggleDirection(this.columnRight, 'right', 'left');
 	}
 
 	toggleLeft(): void {

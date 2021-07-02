@@ -85,7 +85,7 @@
 			transition: all $duration-default;
 			color: $gray-dark;
 
-			.ob-font-awesome & {
+			@at-root #{selector-append(".ob-font-awesome", &)} {
 				color: $gray-light;
 			}
 
@@ -106,8 +106,10 @@
 			border-right-width: 0;
 			box-shadow: -2px 0 4px 0px rgba(0, 0, 0, 0.1);
 
-			.ob-icon {
-				margin-left: -4px;
+			@at-root #{selector-append(":not(.ob-font-awesome)", &)} {
+				ob-icon {
+					margin-left: -4px;
+				}
 			}
 		}
 
@@ -119,8 +121,10 @@
 			border-left-width: 0;
 			box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.1);
 
-			.ob-icon {
-				margin-left: -5px;
+			@at-root #{selector-append(":not(.ob-font-awesome)", &)} {
+				ob-icon {
+					margin-left: -5px;
+				}
 			}
 		}
 
