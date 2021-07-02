@@ -9,11 +9,11 @@
 			justify-content: space-between;
 		}
 
-		ob-icon:first-child {
+		.ob-icon-wrapper:first-child {
 			margin-right: $spacing-sm;
 		}
 
-		ob-icon:last-child {
+		.ob-icon-wrapper:last-child {
 			margin-left: $spacing-sm;
 		}
 	}

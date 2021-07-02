@@ -58,14 +58,14 @@
 			}
 		}
 
-		ob-icon .fa::before {
+		.ob-icon-wrapper .fa::before {
 			display: inline-block;
 			width: $fa-fw-width-px;
 			margin-left: -$fa-fw-width-px;
 			text-align: center;
 		}
 
-		ob-icon {
+		.ob-icon-wrapper {
 			display: inline-block;
 		}
 

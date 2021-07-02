@@ -107,7 +107,7 @@
 			box-shadow: -2px 0 4px 0px rgba(0, 0, 0, 0.1);
 
 			@at-root #{selector-append(":not(.ob-font-awesome)", &)} {
-				ob-icon {
+				.ob-icon-wrapper {
 					margin-left: -4px;
 				}
 			}
@@ -122,7 +122,7 @@
 			box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.1);
 
 			@at-root #{selector-append(":not(.ob-font-awesome)", &)} {
-				ob-icon {
+				.ob-icon-wrapper {
 					margin-left: -5px;
 				}
 			}
