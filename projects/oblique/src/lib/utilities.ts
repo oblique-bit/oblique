@@ -6,6 +6,7 @@ import {ObITranslationFile} from './multi-translate-loader/multi-translate-loade
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions} from '@angular/material/form-field';
 import {MAT_CHECKBOX_DEFAULT_OPTIONS, MatCheckboxDefaultOptions} from '@angular/material/checkbox';
 import {MAT_RADIO_DEFAULT_OPTIONS, MatRadioDefaultOptions} from '@angular/material/radio';
+import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, MatSlideToggleDefaultOptions} from '@angular/material/slide-toggle';
 import {STEPPER_GLOBAL_OPTIONS, StepperOptions} from '@angular/cdk/stepper';
 import {ObIBanner, ObIMaterialConfig} from './utilities.model';
 
@@ -53,6 +54,10 @@ export function radioOptionsProvider(config?: ObIMaterialConfig): MatRadioDefaul
 	return config?.MAT_RADIO_OPTIONS || {color: 'primary'};
 }
 
+export function slideToggleOptionsProvider(config?: ObIMaterialConfig): MatSlideToggleDefaultOptions {
+	return config?.MAT_SLIDE_TOGGLE_OPTIONS || {color: 'primary'};
+}
+
 export const OB_MATERIAL_CONFIG = new InjectionToken<ObIMaterialConfig>('ObIMaterialConfig');
 
 export function obliqueProviders(): Provider[] {
@@ -61,7 +66,7 @@ export function obliqueProviders(): Provider[] {
 		{provide: STEPPER_GLOBAL_OPTIONS, useFactory: stepperOptionsOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
 		{provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useFactory: checkboxOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
 		{provide: MAT_RADIO_DEFAULT_OPTIONS, useFactory: radioOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
-		// TODO add slideToggle with Angular 12
+		{provide: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, useFactory: slideToggleOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
 		{provide: WINDOW, useFactory: windowProvider}
 	];
 }
