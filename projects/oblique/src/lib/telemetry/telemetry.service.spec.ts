@@ -105,7 +105,7 @@ describe('TelemetryService', () => {
 				});
 
 				it('should send data to the backend', () => {
-					spyOn(http, 'post').and.returnValue(EMPTY);
+					jest.spyOn(http, 'post').mockReturnValue(EMPTY);
 					// @ts-ignore
 					service.sendRecord();
 					expect(http.post).toHaveBeenCalled();
@@ -149,7 +149,7 @@ describe('TelemetryService', () => {
 			});
 
 			it('should not send data to the backend', () => {
-				spyOn(http, 'post').and.returnValue(EMPTY);
+				jest.spyOn(http, 'post').mockReturnValue(EMPTY);
 				// @ts-ignore
 				service.sendRecord();
 				expect(http.post).not.toHaveBeenCalled();

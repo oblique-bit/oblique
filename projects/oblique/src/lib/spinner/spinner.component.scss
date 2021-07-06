@@ -6,7 +6,7 @@
 		border-radius: inherit;
 	}
 
-	ob-icon > * {
+	.ob-icon-wrapper > * {
 		font-size: 4em;
 		animation: ob-spin $duration-default * 2 infinite linear;
 	}

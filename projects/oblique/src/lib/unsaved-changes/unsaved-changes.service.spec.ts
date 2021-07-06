@@ -20,7 +20,7 @@ describe('UnsavedChangesService', () => {
 
 	beforeEach(() => {
 		//This prevents the opening of a confirmation dialog if the cli reloads the tests
-		spyOn(window, 'addEventListener');
+		jest.spyOn(window, 'addEventListener');
 	});
 
 	beforeEach(inject([ObUnsavedChangesService], (service: ObUnsavedChangesService) => {

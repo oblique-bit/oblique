@@ -1,5 +1,6 @@
-import {Component, HostBinding, Input, ViewEncapsulation} from '@angular/core';
+import {Component, HostBinding, Inject, Input, Optional, ViewEncapsulation} from '@angular/core';
 import {ObIAlertType} from './alert.model';
+import {ObUseObliqueIcons} from '../icon/icon.model';
 
 @Component({
 	selector: 'ob-alert',
@@ -14,9 +15,14 @@ export class ObAlertComponent {
 	@HostBinding('class.ob-alert-success') success = false;
 	@HostBinding('class.ob-alert-warning') warning = false;
 	@HostBinding('class.ob-alert-error') error = false;
+	@HostBinding('class.ob-font-awesome') useFontAwesomeIcons: boolean;
 	icon = 'info';
 
 	private currentType: ObIAlertType = 'info';
+
+	constructor(@Optional() @Inject(ObUseObliqueIcons) private readonly useObliqueIcons: boolean) {
+		this.useFontAwesomeIcons = !useObliqueIcons;
+	}
 
 	get type(): ObIAlertType {
 		return this.currentType;

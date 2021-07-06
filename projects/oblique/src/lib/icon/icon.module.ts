@@ -10,6 +10,7 @@ import {ObIconComponent} from './ob-icon.component';
 
 export {ObIconService} from './icon.service';
 export {ObIconConfig, ObTIconConfig, ObUseObliqueIcons, ObEIcon} from './icon.model';
+export {ObIconComponent} from './ob-icon.component';
 
 @NgModule({
 	imports: [MatIconModule, CommonModule],

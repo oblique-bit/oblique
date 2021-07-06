@@ -33,7 +33,7 @@
 	transform: translateY(-100%);
 	transition: transform $duration-default cubic-bezier(0.7, 0, 0.3, 1), opacity $duration-default ease-in-out;
 
-	ob-icon {
+	.ob-icon-wrapper {
 		position: absolute;
 		left: 0;
 		top: 0;
@@ -46,10 +46,10 @@
 		line-height: 1;
 		background-color: $brand-warning;
 		color: $white;
+	}
 
-		.bootstrap & {
-			padding: 0 $spacing-default;
-		}
+	&.ob-font-awesome .ob-icon-wrapper {
+		padding: 0 $spacing-default;
 	}
 
 

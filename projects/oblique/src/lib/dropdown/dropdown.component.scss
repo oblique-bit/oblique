@@ -79,7 +79,7 @@ $arrow-lg-size: 14px;
 		}
 
 		&.middle::before {
-			left: calc(50% - #{$arrow-size / 2});
+			left: calc(50% - #{$arrow-size * 0.5});
 		}
 
 		&.right::before {
@@ -97,7 +97,7 @@ $arrow-lg-size: 14px;
 		}
 
 		&.middle::after {
-			left: calc(50% - #{$arrow-size / 2} + 2px);
+			left: calc(50% - #{$arrow-size * 0.5} + 2px);
 		}
 
 		&.right::after {

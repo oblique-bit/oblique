@@ -29,7 +29,7 @@ describe('UnsavedChangesTabsService', () => {
 		let tabSet: NgbNav;
 
 		beforeEach(() => {
-			spyOn(unsavedChangesService, 'watch');
+			jest.spyOn(unsavedChangesService, 'watch');
 			evtEmitter = new EventEmitter<NgbNavChangeEvent>();
 			evt = {
 				activeId: 'tab_1',
@@ -48,7 +48,7 @@ describe('UnsavedChangesTabsService', () => {
 
 		describe('with no watched form', () => {
 			beforeEach(() => {
-				spyOn(unsavedChangesService, 'ignoreChanges').and.returnValue(true);
+				jest.spyOn(unsavedChangesService, 'ignoreChanges').mockReturnValue(true);
 				unsavedChangesTabService.listenTo(tabSet);
 				tabSet.select('tab_2');
 			});
@@ -68,7 +68,7 @@ describe('UnsavedChangesTabsService', () => {
 
 		describe('with no dirty form', () => {
 			beforeEach(() => {
-				spyOn(unsavedChangesService, 'ignoreChanges').and.returnValue(true);
+				jest.spyOn(unsavedChangesService, 'ignoreChanges').mockReturnValue(true);
 				unsavedChangesTabService.watch('tab_1', {} as ControlContainer);
 				unsavedChangesTabService.listenTo(tabSet);
 				tabSet.select('tab_2');
@@ -89,7 +89,7 @@ describe('UnsavedChangesTabsService', () => {
 
 		describe('with dirty form', () => {
 			beforeEach(() => {
-				spyOn(unsavedChangesService, 'ignoreChanges').and.returnValue(false);
+				jest.spyOn(unsavedChangesService, 'ignoreChanges').mockReturnValue(false);
 				unsavedChangesTabService.watch('tab_1', {} as ControlContainer);
 				unsavedChangesTabService.listenTo(tabSet);
 				tabSet.select('tab_2');
@@ -110,7 +110,7 @@ describe('UnsavedChangesTabsService', () => {
 
 		describe('unListenTo()', () => {
 			beforeEach(() => {
-				spyOn(unsavedChangesService, 'ignoreChanges').and.returnValue(false);
+				jest.spyOn(unsavedChangesService, 'ignoreChanges').mockReturnValue(false);
 				unsavedChangesTabService.watch('tab_1', {} as ControlContainer);
 				unsavedChangesTabService.listenTo(tabSet);
 				unsavedChangesTabService.unListenTo(tabSet);

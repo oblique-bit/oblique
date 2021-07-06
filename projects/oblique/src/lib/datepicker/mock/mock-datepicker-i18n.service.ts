@@ -15,7 +15,7 @@ export class ObMockDatepickerI18nService extends NgbDatepickerI18n {
 		return '';
 	}
 
-	getWeekdayShortName(weekday: number): string {
+	getWeekdayLabel(weekday: number): string {
 		return '';
 	}
 }

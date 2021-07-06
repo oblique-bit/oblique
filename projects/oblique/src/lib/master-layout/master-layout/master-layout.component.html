@@ -1,19 +1,19 @@
 <nav class="ob-access-keys" role="navigation" aria-label="Access keys">
 	<ul>
 		<li>
-			<a class="ob-accessible" accesskey="0" [routerLink]="url" fragment="content">
+			<a class="ob-accessible" [class.ob-font-awesome]="!useObliqueIcons" accesskey="0" [routerLink]="url" fragment="content">
 				<ob-icon icon="wheelchair"></ob-icon>
 				{{ "i18n.oblique.master-layout.accesskey.mainContent" | translate }}
 			</a>
 		</li>
 		<li>
-			<a class="ob-accessible" accesskey="1" [routerLink]="home">
+			<a class="ob-accessible" [class.ob-font-awesome]="!useObliqueIcons" accesskey="1" [routerLink]="home">
 				<ob-icon icon="wheelchair"></ob-icon>
 				{{ "i18n.oblique.master-layout.accesskey.homepage" | translate }}
 			</a>
 		</li>
 		<li *ngIf="!noNavigation && navigation.length">
-			<a class="ob-accessible" accesskey="2" [routerLink]="url" fragment="navigation">
+			<a class="ob-accessible" [class.ob-font-awesome]="!useObliqueIcons" accesskey="2" [routerLink]="url" fragment="navigation">
 				<ob-icon icon="wheelchair"></ob-icon>
 				{{ "i18n.oblique.master-layout.accesskey.navigation" | translate }}
 			</a>
@@ -21,6 +21,7 @@
 		<li *ngFor="let jumpLink of jumpLinks; let i = index">
 			<a
 				class="ob-accessible"
+				[class.ob-font-awesome]="!useObliqueIcons"
 				[attr.accesskey]="jumpLink.accessKey"
 				[routerLink]="jumpLink.url == 'current' ? url : jumpLink.url"
 				[fragment]="jumpLink.fragment"

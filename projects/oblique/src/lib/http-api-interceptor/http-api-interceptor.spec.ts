@@ -96,41 +96,41 @@ describe('HttpApiInterceptor', () => {
 	});
 
 	// it('should emit a sessionExpired event in case of 401', () => {
-	// 	spyOn(events.expired_exported, 'next');
+	// 	jest.spyOn(events.expired_exported, 'next');
 	// 	getError(401, () => expect(events.expired_exported.next).toHaveBeenCalled());
 	// });
 
 	xit('should activate spinner with spinner enabled', () => {
 		config.api.spinner = true;
-		spyOn(spinner, 'activate');
-		spyOn(spinner, 'deactivate');
+		jest.spyOn(spinner, 'activate');
+		jest.spyOn(spinner, 'deactivate');
 		getUsers(() => expect(spinner.deactivate).toHaveBeenCalled());
 		expect(spinner.activate).toHaveBeenCalled();
 	});
 
 	xit('should not activate spinner when spinner is disabled', () => {
 		config.api.spinner = false;
-		spyOn(spinner, 'activate');
-		spyOn(spinner, 'deactivate');
+		jest.spyOn(spinner, 'activate');
+		jest.spyOn(spinner, 'deactivate');
 		getUsers(() => expect(spinner.deactivate).not.toHaveBeenCalled());
 		expect(spinner.activate).not.toHaveBeenCalled();
 	});
 
 	xit('should not display a notification on success when notification is enabled', () => {
 		config.api.notification.active = true;
-		spyOn(notification, 'send');
+		jest.spyOn(notification, 'send');
 		getUsers(() => expect(notification.send).not.toHaveBeenCalled());
 	});
 
 	xit('should display a notification on error when notification is enabled', () => {
 		config.api.notification.active = true;
-		spyOn(notification, 'send');
+		jest.spyOn(notification, 'send');
 		getError(404, () => expect(notification.send).toHaveBeenCalled());
 	});
 
 	xit('should not display a notification on error when notification is disabled', () => {
 		config.api.notification.active = false;
-		spyOn(notification, 'send');
+		jest.spyOn(notification, 'send');
 		getError(404, () => expect(notification.send).not.toHaveBeenCalled());
 	});
 
@@ -139,7 +139,7 @@ describe('HttpApiInterceptor', () => {
 		config.api.notification.title = 'test';
 		config.api.notification.text = 'test';
 		config.api.notification.severity = ObENotificationType.ERROR;
-		spyOn(notification, 'send');
+		jest.spyOn(notification, 'send');
 		getError(500, () => expect(notification.send).toHaveBeenCalledWith('test', 'test', ObENotificationType.ERROR));
 	});
 
@@ -148,13 +148,13 @@ describe('HttpApiInterceptor', () => {
 		config.api.notification.title = 'test';
 		config.api.notification.text = 'test';
 		config.api.notification.severity = ObENotificationType.ERROR;
-		spyOn(notification, 'send');
+		jest.spyOn(notification, 'send');
 		getError(0, () => expect(notification.send).toHaveBeenCalledWith('test', 'test', ObENotificationType.ERROR));
 	});
 
 	xit('should display a notification after timeout is expired', done => {
 		config.timeout = 1;
-		spyOn(notification, 'warning');
+		jest.spyOn(notification, 'warning');
 		getAsyncUsers(() => {
 			expect(notification.warning).toHaveBeenCalledWith('i18n.error.other.timeout');
 			done();

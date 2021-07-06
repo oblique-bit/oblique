@@ -31,7 +31,7 @@ export class ObDatepickerI18nService extends NgbDatepickerI18n {
 		super();
 	}
 
-	getWeekdayShortName(weekday: number): string {
+	getWeekdayLabel(weekday: number): string {
 		return I18N_VALUES[this.translateService.currentLang].weekdays[weekday - 1];
 	}
 

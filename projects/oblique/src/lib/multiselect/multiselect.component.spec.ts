@@ -46,7 +46,7 @@ describe('MultiselectComponent', () => {
 
 	describe('toggleDropdown', () => {
 		it('should be triggered by a click on the .ob-multiselect-toggle button', () => {
-			spyOn(component, 'toggleDropdown').and.callThrough();
+			jest.spyOn(component, 'toggleDropdown');
 			const button = fixture.debugElement.query(By.css('.ob-multiselect-toggle'));
 
 			button.nativeElement.click();
@@ -55,7 +55,7 @@ describe('MultiselectComponent', () => {
 		});
 
 		it('should emit dropdownClosed, if dropdown was already open', () => {
-			spyOn(component.dropdownClosed, 'emit').and.callThrough();
+			jest.spyOn(component.dropdownClosed, 'emit');
 			component.isVisible = true;
 
 			component.toggleDropdown();
@@ -98,7 +98,7 @@ describe('MultiselectComponent', () => {
 		});
 
 		it('should be triggered by a click on a .dropdown-item button', () => {
-			spyOn(component, 'toggleSelection').and.callThrough();
+			jest.spyOn(component, 'toggleSelection');
 			component.isVisible = true;
 			fixture.detectChanges();
 
@@ -118,7 +118,7 @@ describe('MultiselectComponent', () => {
 		});
 
 		it("should emit onAdded, if option isn't already selected", () => {
-			spyOn(component.onAdded, 'emit');
+			jest.spyOn(component.onAdded, 'emit');
 
 			component.toggleSelection(stringOption1);
 
@@ -136,7 +136,7 @@ describe('MultiselectComponent', () => {
 
 		it('should emit onRemoved, if option is already selected', () => {
 			component.model.push(stringOption1);
-			spyOn(component.onRemoved, 'emit');
+			jest.spyOn(component.onRemoved, 'emit');
 
 			component.toggleSelection(stringOption1);
 
@@ -151,7 +151,7 @@ describe('MultiselectComponent', () => {
 			});
 
 			it('should emit selectionLimitReached, if there are already enough selected options', () => {
-				spyOn(component.selectionLimitReached, 'emit');
+				jest.spyOn(component.selectionLimitReached, 'emit');
 
 				component.toggleSelection(stringOption3);
 
@@ -159,7 +159,7 @@ describe('MultiselectComponent', () => {
 			});
 
 			it("shouldn't add item to model, if there are already enough selected options", () => {
-				spyOn(component.selectionLimitReached, 'emit');
+				jest.spyOn(component.selectionLimitReached, 'emit');
 
 				component.toggleSelection(stringOption3);
 
@@ -245,14 +245,14 @@ describe('MultiselectComponent', () => {
 
 	describe('checkAll()', () => {
 		beforeEach(() => {
-			spyOn(component.onAdded, 'emit').and.callThrough();
+			jest.spyOn(component.onAdded, 'emit');
 
 			component.showCheckAll = true;
 			component.options = stringOptions;
 		});
 
 		it('should be triggered by a click on .ob-multiselect-control-check button', () => {
-			spyOn(component, 'checkAll').and.callThrough();
+			jest.spyOn(component, 'checkAll');
 			component.isVisible = true;
 			fixture.detectChanges();
 
@@ -285,14 +285,14 @@ describe('MultiselectComponent', () => {
 
 	describe('uncheckAll()', () => {
 		beforeEach(() => {
-			spyOn(component.onRemoved, 'emit').and.callThrough();
+			jest.spyOn(component.onRemoved, 'emit');
 
 			component.showUncheckAll = true;
 			component.options = stringOptions;
 		});
 
 		it('should be triggered by a click on .ob-multiselect-control-uncheck button', () => {
-			spyOn(component, 'uncheckAll').and.callThrough();
+			jest.spyOn(component, 'uncheckAll');
 			component.isVisible = true;
 			fixture.detectChanges();
 

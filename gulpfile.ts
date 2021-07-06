@@ -7,7 +7,7 @@ const fs = require('fs'),
 	header = require('gulp-header'),
 	rename = require('gulp-rename'),
 	replace = require('gulp-replace'),
-	sass = require('node-sass'),
+	sass = require('sass'),
 	del = require('del'),
 	path = require('path'),
 	childProcess = require('child_process'),
@@ -21,14 +21,14 @@ const fs = require('fs'),
 
 const distStyles = () => gulp.src([`${paths.src}/styles/**/*`]).pipe(gulp.dest(`${paths.dist}/styles`));
 const distAssets = () => gulp.src([`${paths.src}/assets/**/*`]).pipe(gulp.dest(`${paths.dist}/assets`));
-const distMaterialCss = (done) => transpile('material', 'themes', done);
-const distBootstrapCss = (done) => transpile('bootstrap', 'themes', done);
-const distCoreCss = (done) => transpile('core', '', done);
-const distUtilCss = (done) => transpile('utilities', '', done);
-const distCompatCss = (done) => transpile('compat', '', done);
-const distComponentsCss = (done) => transpileComponents(`${paths.src}/lib`, done);
-const distAlertCss = (done) => transpileFile(['dist', 'oblique', 'styles', 'scss', 'oblique-alert.scss'], 'alert', true, done);
-const distIconCss = (done) => transpileFile(['dist', 'oblique', 'styles', 'scss', 'oblique-icons.scss'], 'icons', true, done);
+const distMaterialCss = async (done) => transpile('material', 'themes', done);
+const distBootstrapCss = async (done) => transpile('bootstrap', 'themes', done);
+const distCoreCss = async (done) => transpile('core', '', done);
+const distUtilCss = async (done) => transpile('utilities', '', done);
+const distCompatCss = async (done) => transpile('compat', '', done);
+const distComponentsCss = async (done) => transpileComponents(`${paths.src}/lib`, done);
+const distAlertCss = async (done) => transpileFile(['dist', 'oblique', 'styles', 'scss', 'oblique-alert.scss'], 'alert', done);
+const distIconCss = async (done) => transpileFile(['dist', 'oblique', 'styles', 'scss', 'oblique-icons.scss'], 'icons', done);
 
 const addBanner = () => {
 	const releaseDate = getTagDate(pkg.version);
@@ -53,7 +53,7 @@ const distMeta = () => {
 
 	['version', 'description', 'keywords', 'author', 'contributors', 'homepage', 'repository', 'license', 'bugs', 'publishConfig']
 		.forEach(field => output[field] = pkg[field]);
-	['main', 'module', 'es2015', 'esm2015', 'fesm2015', 'typings', 'metadata']
+	['main', 'module', 'es2015', 'esm2015', 'fesm2015', 'typings']
 		.forEach(field => output[field] = output[field].replace('oblique-oblique', 'oblique'));
 
 	return gulp.src(['README.md', 'CHANGELOG.md', 'LICENSE'])
@@ -175,38 +175,23 @@ gulp.task('themes',
 	)
 );
 
-function fixPath(url: string, prev: string, relative: boolean): string {
-	if (!url.startsWith('~')) {
-		return url;
-	}
-
-	if (!relative) {
-		return url.replace('~', 'node_modules/');
-	}
-
-	const level = prev.split('/').reverse().indexOf('scss');
-	const base = ['..', '..', '..', 'node_modules', ''];
-	for (let i = 0; i < level; i++) {
-		base.unshift('..');
-	}
-	return url.replace('~', base.join('/'));
-
-}
-
 function transpile(target: string, dir: string, cb): void {
-	transpileFile(['dist', 'oblique', 'styles', 'scss', dir, `oblique-${target}.scss`], target, true, cb);
+	transpileFile(['dist', 'oblique', 'styles', 'scss', dir, `oblique-${target}.scss`], target, cb);
 }
 
-function transpileFile(file: string[], target: string, relative: boolean, cb): void {
+function transpileFile(file: string[], target: string, cb): void {
 	const distCssPath = path.join('dist', 'oblique', 'styles', 'css');
 	sass.render({
 		file: path.join(...file),
 		importer: (url, prev, cbb) => {
-			cbb({file: fixPath(url, prev, relative)});
+			cbb({
+				file: url.replace('~', 'node_modules/')
+			});
 		},
 		outputStyle: 'compressed',
 		sourceMap: false, // doesn't get generated correctly
-		outFile: `dist/oblique/styles/css/oblique-${target}.css`
+		outFile: `dist/oblique/styles/css/oblique-${target}.css`,
+		quietDeps: true
 	}, (error, result) => {
 		if (error) {
 			console.log(error.message);
@@ -253,7 +238,7 @@ function transpileComponents(dir: string, cb): void {
 	const component = 'components.scss';
 	deleteFile(component);
 	generateComponentsStyles(dir.split('/'), component);
-	transpileFile(['components.scss'], 'components', false, () => {
+	transpileFile(['components.scss'], 'components', () => {
 		deleteFile(component);
 		cb();
 	});

@@ -1,10 +1,11 @@
+@use '~@angular/material' as mat;
 @import "../core/variables";
 @import "~@angular/material/theming";
 @import "material/variables";
 @import "material/material-palette";
 
-@include mat-core(mat-typography-config($font-family: $font));
-@include angular-material-theme(mat-light-theme(mat-palette($oblique-primary), mat-palette($oblique-accent), mat-palette($oblique-warn)));
+@include mat.core(mat.define-typography-config($font-family: $font));
+@include mat.all-component-themes(mat.define-light-theme(mat.define-palette($oblique-primary), mat.define-palette($oblique-accent), mat.define-palette($oblique-warn)));
 
 @import "material/mat-button";
 @import "material/mat-card";

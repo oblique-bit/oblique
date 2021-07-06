@@ -49,12 +49,12 @@
 		padding-left: $node-step-size * 1.2;
 
 		&::after {
-			left: $node-step-size / 2 - 1px;
+			left: $node-step-size * 0.5 - 1px;
 		}
 	}
 
 	&.ob-nav-horizontal .ob-nav-step::after {
-		top: $node-step-size / 2 - 1px;
+		top: $node-step-size * 0.5 - 1px;
 	}
 }
 

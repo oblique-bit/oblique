@@ -35,7 +35,7 @@ describe('DatepickerComponent', () => {
 	});
 
 	it('should toggle the NgbDatepicker on button click', () => {
-		spyOn(datepicker.ngbDatePicker, 'toggle').and.callThrough();
+		jest.spyOn(datepicker.ngbDatePicker, 'toggle');
 
 		button.nativeElement.click();
 

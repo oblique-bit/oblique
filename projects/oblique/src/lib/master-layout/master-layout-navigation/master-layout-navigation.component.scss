@@ -179,7 +179,7 @@
 
 				.ob-sub-nav {
 					display: block;
-					column-width: $layout-collapse / 2;
+					column-width: $layout-collapse * 0.5;
 
 					li {
 						break-inside: avoid-column;
