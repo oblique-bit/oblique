@@ -42,6 +42,7 @@
     "schematics": "npm run dist --prefix projects/oblique/schematics",
     "predist": "npm run gulp pre-dist",
     "dist": "npm run build -- oblique && npm run schematics",
+    "distiOS": "npm run gulp pre-dist && npm run build -- oblique && npm run distiOS --prefix projects/oblique/schematics && npm run minify && npm run gulp -- dist",
     "postdist": "npm run minify && npm run gulp -- dist",
     "minify": "minify projects/oblique/src/ob-features.js --out-file dist/oblique/ob-features.js",
     "test": "ng test oblique",
