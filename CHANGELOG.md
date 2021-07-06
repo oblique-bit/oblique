@@ -1,3 +1,125 @@
+# [7.0.0-RC.1](https://github.com/oblique-bit/oblique/compare/6.1.5...7.0.0-RC.1) (2021-07-06)
+
+## Bug Fixes
+* **button:** fix icon vertical alignment ([104bc5e](https://github.com/oblique-bit/oblique/commit/104bc5e293b722ee959c2dba37e24838ec43b89d))
+* **collapse:** ensure the content does not overflow while expanding ([0ca5373](https://github.com/oblique-bit/oblique/commit/0ca5373dc064a86ae42012ecd5d84e0757a0e94b))
+* **collapse:** ensure the styling only applies to the collapse feature ([1281a1c](https://github.com/oblique-bit/oblique/commit/1281a1c1790d208af89a043caaf585a998d02216))
+* **collapse:** fix typo ([da87971](https://github.com/oblique-bit/oblique/commit/da87971eea04e4378458bc3f0baeb8b43dc3ab1d))
+* **dropdown:** ensure the content wraps normally ([4f0fec1](https://github.com/oblique-bit/oblique/commit/4f0fec14ab55d64091f5a7bef4cd3fdee1408e36))
+* **error-messages:** differentiate between ajv and other messages ([8c2de60](https://github.com/oblique-bit/oblique/commit/8c2de60864cf4e07778365fa555438c15f3bd324))
+* **error-messages:** fix typo in german ([323dd4a](https://github.com/oblique-bit/oblique/commit/323dd4a8ee1d02e1e6670d81ba115080568f7fa2))
+* **error-messages:** fix typos in translations ([e5fe7db](https://github.com/oblique-bit/oblique/commit/e5fe7dba16c0de8a1bb1c2719d09655510893c7c))
+* **icon:** add `ob-icon-wrapper` class to `ob-icon` component and use it as a selector ([0e3f460](https://github.com/oblique-bit/oblique/commit/0e3f460baabc17600d7304ef7fcda9e90f66b91b))
+* **mandatory:** ensure the form field exists before accessing its control ([0548b4f](https://github.com/oblique-bit/oblique/commit/0548b4f74d9ba1ac944f8216ef7a20f53e44e07a))
+* **mandatory:** only check for required status if a control is defined ([d05e7e3](https://github.com/oblique-bit/oblique/commit/d05e7e38286c8753d0b2ebf507f42595c256f66d))
+* **master-layout:** ensure the locale selection has a right margin ([7cc46b5](https://github.com/oblique-bit/oblique/commit/7cc46b52abd4ac957dc9fdbfa7405e9c06cb59d6))
+* **material:** display `mat-slide-toggle` with `brand-primary` color ([c53c275](https://github.com/oblique-bit/oblique/commit/c53c275f181938d03a9c609f8b8ce13d95ed0b3e))
+* **material:** improve the alignment of the label of checkboxes and radio buttons ([b93236d](https://github.com/oblique-bit/oblique/commit/b93236da355571c3d5c472f176415f3b5bb6d020))
+* **material:** rework `mat-form-field`'s sizing ([e5ee9d6](https://github.com/oblique-bit/oblique/commit/e5ee9d634252f570330c9cbd79740c021d0fe498))
+* **material:** avoid circular dependency ([8e2979e0](https://github.com/oblique-bit/oblique/commit/e5ee9d634252f570330c9cbd79740c021d0fe498))
+* **schematics:** fix `removeDevDependencies` ignoring the dependency ([83850bb](https://github.com/oblique-bit/oblique/commit/83850bb8ff7a63a577e7708c24a90cc65dca0738))
+* **schematics:** fix performance issue for `renameTableTitleAttribute` ([76cf36e](https://github.com/oblique-bit/oblique/commit/76cf36e06db400a8a39ce7bee90ed1b8c870830b))
+* **schematics:** remove unnecessary polyfills ([1d89765](https://github.com/oblique-bit/oblique/commit/1d897657065b616201c4fb17a8d3601cc8ef8d4a))
+* **styles:** automatically wrap inline forms if necessary ([5e08833](https://github.com/oblique-bit/oblique/commit/5e08833b55a660427b2d026285199560073dd769))
+* **styles:** ensure font paths referenced in `oblique-compat.scss` are correct ([502e2ce](https://github.com/oblique-bit/oblique/commit/502e2ce01b9c5e5fd630cb346b2983f172920876))
+* **styles:** halve the `margin-bottom` on headings ([50b1e49](https://github.com/oblique-bit/oblique/commit/50b1e49a6bff30605508c5124395caefbb8c0ce7))
+* **toolchain:** ensure the git tag exists before querying its date ([465b4a0](https://github.com/oblique-bit/oblique/commit/465b4a0ee81e027697c055856e6f6e6d3223d000))
+* **toolchain:** ensure the icon order remains the same ([ebe56d3](https://github.com/oblique-bit/oblique/commit/ebe56d34a37ae5ecddcb9a34b0796d2a693205a2))
+* **toolchain:** fix scss paths in gulp for windows ([e2478b2](https://github.com/oblique-bit/oblique/commit/e2478b21bfdb939f816bb49a87ba467f53bfb8f1))
+* **toolchain:** use a separate `distiOS` script for iOS ([41350df](https://github.com/oblique-bit/oblique/commit/41350df69e48d75af8cae5a81fad9732ecd6ad5e))
+* **toolchain:** fix module naming collision ([9507b5c](https://github.com/oblique-bit/oblique/commit/9507b5c89935385f142b54cb45018eed9a254e33))
+* **toolchain:** remove node 16 build as it's not yet compatible ([bac87f0](https://github.com/oblique-bit/oblique/commit/bac87f0ad72dbd83b66360a25e0adce3d19ab842))
+* **translation:** fix `ngbDatePicker` messages ([291697f](https://github.com/oblique-bit/oblique/commit/291697f06b105cc59e895e672b86d2898fa69b3f))
+* **translation:** remove the dot at the end of error messages ([956c821](https://github.com/oblique-bit/oblique/commit/956c821b48a904f7e979f8fe57554c26e18449c3))
+* export missing mocks ([b4531e1](https://github.com/oblique-bit/oblique/commit/b4531e15767e6bb11da2877be65a3d43da00a9e6))
+
+## chore
+* **toolchain:** list `@popperjs/core` as a peer dependency ([f4a14ac](https://github.com/oblique-bit/oblique/commit/f4a14ac8cf086dca15b16731d91a5f79e73e8792))
+* **toolchain:** update dependencies and refactor accordingly ([86ea6c8](https://github.com/oblique-bit/oblique/commit/86ea6c8b1103011136ba23589cbcc9fbc95f18e2))
+
+## Code Refactoring
+* **alert:** automatically format links, without resorting to `ob-alert-link` class ([9e02f5e](https://github.com/oblique-bit/oblique/commit/9e02f5e513ee766352fb30f7c2aae528e6ee2d64))
+* **icon:** rename `ObIconsConfig` into `ObIconConfig` ([357bbb0](https://github.com/oblique-bit/oblique/commit/357bbb09adcee72d37c190346bbdaa6425a6ead8))
+* **styles:** move `icon` and `toggle` mixins to bootstrap's theme ([9078796](https://github.com/oblique-bit/oblique/commit/9078796bb61813b0057144d60a0d18ac9d6d75cd))
+
+## Documentation
+* **icon:** remove SVG's titles ([7355b23](https://github.com/oblique-bit/oblique/commit/7355b231e94b0dc32df8eace3667a46b282ceb57))
+
+## Features
+* **alert:** add schematics to migrate alerts ([54e02c4](https://github.com/oblique-bit/oblique/commit/54e02c4961ca23ac91a0ec4a933fc7224dc7fe51))
+* **alert:** add the possibility to use either Oblique or FontAwesome icons ([82ad2f6](https://github.com/oblique-bit/oblique/commit/82ad2f6ed5cd829c2967d4e56ecd25978aad4cce))
+* **breadcrumb:** add feature ([e68501e](https://github.com/oblique-bit/oblique/commit/e68501ec45c74fd24c144b1570b42da12f515290))
+* **button:** the directive can also be added on links ([dc0753d](https://github.com/oblique-bit/oblique/commit/dc0753de3a0eb48a381055367c7bfda5acd8184e))
+* **button:** button type can be dynamically changed ([dfd15bf](https://github.com/oblique-bit/oblique/commit/dfd15bf2f08dda918969e8e121d2dac217c0cb58))
+* **button:** remove icon margin ([3531535](https://github.com/oblique-bit/oblique/commit/35315359371b79831c149ce17da311d4f947f6e8))
+* **button:** restyle Oblique's buttons ([5ae49aa](https://github.com/oblique-bit/oblique/commit/5ae49aae77b8b574cf8ca110e79253dfae159851))
+* **collapse:** add `none` as option for `iconPosition` ([91c6c99](https://github.com/oblique-bit/oblique/commit/91c6c999273f10f8a882a242d45cffd31ae388f0))
+* **collapse:** add an injection tokens to configure `duration` and `iconPosition` ([f4848dc](https://github.com/oblique-bit/oblique/commit/f4848dc466c9e57981cf2e325e3cf9aa24e62701))
+* **collapse:** add the possibility to use either Oblique or FontAwesome icons ([4c89d17](https://github.com/oblique-bit/oblique/commit/4c89d1786044fd293e0e8205eb3260729b71dca9))
+* **collapse:** remove `direction` input ([dd51955](https://github.com/oblique-bit/oblique/commit/dd519556436c54261ca89807040c2e9a68ceea22))
+* **column-layout:** add the possibility to use either Oblique or FontAwesome icons ([325f6b6](https://github.com/oblique-bit/oblique/commit/325f6b663bdeb4ff7916d20b3c234dc70c6a4fc7))
+* **error-messages:** add a configuration option to ignore ng-bootstrap validations errors ([fb9bccf](https://github.com/oblique-bit/oblique/commit/fb9bccf61d2023a77dc750750a346d9669c1fc07))
+* **external-link:** add the possibility to use either Oblique or FontAwesome icons ([e908bce](https://github.com/oblique-bit/oblique/commit/e908bce21a643b930c34e64eadbda462a47a0147))
+* **icon:** add `ob-icon` component for internal use ([35fc3f7](https://github.com/oblique-bit/oblique/commit/35fc3f722d885c6686e69e15199bb3e3f50b6a2f))
+* **icon:** add new icons ([ef103df](https://github.com/oblique-bit/oblique/commit/ef103df2246cc51218570575272b20bac219e09a))
+* **icon:** add the `ObEIcon` enum to list all Oblique's icons ([c7ddbe5](https://github.com/oblique-bit/oblique/commit/c7ddbe52f63ea280ebd9b7060108528bc7c1ef87))
+* **icon:** provide an `oblique-icons` CSS to allow icons to be embedded with a class ([49a3627](https://github.com/oblique-bit/oblique/commit/49a36278994de26c44b3d3b92967561cae676244))
+* **mandatory:** add feature ([10dbec7](https://github.com/oblique-bit/oblique/commit/10dbec7af6972788ed9b2c9408081bf5d38f95fe))
+* **master-layout:** add the possibility to use either Oblique or FontAwesome icons ([456ef57](https://github.com/oblique-bit/oblique/commit/456ef579b66ef2b4ef9fb8d6186e2e73cd1ba842))
+* **material:** defined an alternate color for `accent` ([d8e9933](https://github.com/oblique-bit/oblique/commit/d8e99331070473c2ec73d94c96e7ead506ea8edd))
+* **material:** let radio buttons and checkboxes use `primary` color per default ([e4739e2](https://github.com/oblique-bit/oblique/commit/e4739e24dff2f00b168987f00775ba19b718917b))
+* **nav-tree:** add the possibility to use either Oblique or FontAwesome icons ([9a33d06](https://github.com/oblique-bit/oblique/commit/9a33d06778566cd0c6ee8c59518d6c40bdf95816))
+* **notification:** add different placement possibilities ([af3a1a2](https://github.com/oblique-bit/oblique/commit/af3a1a2dda6d54e617f1c7cc7010dee0dbf392e6))
+* **schema-validation:** update ajv to version 8 ([c712c19](https://github.com/oblique-bit/oblique/commit/c712c195fc2a787ca6d8c9cbcefbd192988455e2))
+* **schematics:** remove support for IE 11 ([0792654](https://github.com/oblique-bit/oblique/commit/0792654145a1284f7f38fd6a2f10354432c5bb4b))
+* **scrolling:** add the possibility to use either Oblique or FontAwesome icons ([bed01a9](https://github.com/oblique-bit/oblique/commit/bed01a934d4288a2ccf796ff339257216048dffa))
+* **scrolling:** move the ObTopControl downwards ([03e3418](https://github.com/oblique-bit/oblique/commit/03e341892dee1175eb1dad4a9b205bec3ad097ea))
+* **search-box:** add the possibility to use either Oblique or FontAwesome icons ([a62e594](https://github.com/oblique-bit/oblique/commit/a62e594fedab84c083cd8e39d381de5654da57d8))
+* **spinner:** add the possibility to use either Oblique or FontAwesome icons ([c33b225](https://github.com/oblique-bit/oblique/commit/c33b225f95c44b40e0075d03f38ef6b13af4726a))
+* **styles:** add am `ob-horizontal` class for an alternate `dl` presentation ([da2470b](https://github.com/oblique-bit/oblique/commit/da2470b0e46a449286443b0962972779927ac08e))
+* **styles:** add the possibility to use either Oblique or FontAwesome icons for the HTML stepper ([5e60c9a](https://github.com/oblique-bit/oblique/commit/5e60c9aa1a9493df4310c7d115da4c271cd2397e))
+* **styles:** rename `$spacing-lg` into `$spacing-xl` and add a new 24px `$spading-lg` ([7b35caf](https://github.com/oblique-bit/oblique/commit/7b35caf607f052735b07c6f97e1992f5ec637902))
+* **styles:** use `data-title` instead of `title` for collapsed tables ([2714b00](https://github.com/oblique-bit/oblique/commit/2714b0025888495e42f80601ea6134166f22498c))
+* **toolchain:** add the banner to `ob-features.js` ([530643b](https://github.com/oblique-bit/oblique/commit/530643b53aa5a7598c1cd3c6844f96c4d2f9ce09))
+* **toolchain:** ensure all dependencies points to npm's official repo on install ([d3bfb60](https://github.com/oblique-bit/oblique/commit/d3bfb60b424993d36c9adbf3221af44ee3c4a9eb))
+* **toolchain:** improve banner for Js / Css files ([62df98a](https://github.com/oblique-bit/oblique/commit/62df98ab32d18b11ccc54e77056a556ee5f3a6f0))
+* **toolchain:** remove support for IE 11 ([9dee0bf](https://github.com/oblique-bit/oblique/commit/9dee0bfa9badc2c5c7d4d57b1d79b54070ca7213))
+* **toolchain:** Oblique is compiled in partial-Ivy mode meaning projects using it must have Ivy enabled
+
+## BREAKING CHANGES
+* **toolchain:** `dist` script does not work on iOS, use `distiOS` instead
+* **toolchain:** Oblique 7 needs Angular12
+* **toolchain:** Oblique 7 needs ng-bootstrap 10
+* **styles:** Per default, the HTML stepper shows Oblique's icons. The `ob-font-awesome` class has to be added to display it with FontAwesome icons.
+* **styles:** All SCSS mixins related to icons and toggles are only available with the Bootstrap theme
+* **alert:** `ob-alert-link` class has been removed in favor of styling the links directly
+* **alert:** `alert-base` and `alert-variant` mixins have been removed with no replacement
+* **alert:** Without Angular, the `oblique-alert.css` class has to be loaded
+* **master-layout:** When used without Angular, toggling the `ob-expanded` class on a main menu item not not sufficient anymore. The icon must be explicitly set according to the navigation's current state.
+* **collapse:** When used without Angular, an icon has to be added into the markup.
+* **nav-tree:** When used without Angular, an icon has to be added into the markup. FontAwesome icons also need the <code>ob-font-awesome</code> class to be applied to the `<ob-nav-tree>` component.
+* **column-layout:** When used without Angular, an icon has to be added into the markup. FontAwesome icons also need the <code>ob-font-awesome</code> class to be applied to the `<ob-column-layout>` component.
+* **search-box:** When used without Angular, the markup has to be adapted. Either the `ob-font-awesome` class has to be added to the `<ob-search-box>` component, or an alternate icon has to be provided
+* **scrolling:** When used without Angular, the markup has to be adapted. Either the `ob-font-awesome` class has to be added to the `<ob-top-control>` component, or an alternate icon has to be provided
+* **collapse:** The `direction` input has been removed with no replacement, `down-up` is the only remaining option. (solved with schematics)
+* **schema-validation:** Support for JSON-Schema draft-04 has been removed in favor of JSON-Schema draft-07
+* **schema-validation:** `draft06` decorator has been renamed into `draft07convert`
+* **icon:** Oblique's icons don't have a `title` element anymore. The name can be read from the `id` attribute instead.
+* **button:** Button styling has slightly been adapted
+* **button:** Only Oblique buttons are styled, regular Material Design buttons reverts to their default styles
+* **button:** Icons within a button don't have a `margin` anymore. A whitespace should be added between the icon and the text.
+* **styles:** HTML tables with the `ob-table-collapse` class must use a `date-title` attribute instead of `title` to specify a cell's title (solved with schematics)
+* **error-messages:** translation key for ajv validation errors have been changed form `i18n.validation.*` to `i18n.validation.ajv.*` translation key for ajv date validation errors have been changed form `i18n.validation.format` to `i18n.validation.ajv.date`
+* **material:** `accent` color now has its own color scheme and doesn't use `primary` anymore
+* **styles:** `$spacing-lg` has been renamed into `$spacing-xl` (solved with schematics)
+* **material:** The appearance of `mat-form-field`s has been slightly adapted
+* **material:** Small and large variants only applies to paddings and margins, the font size remains constant
+* **material:** `mat-form-field-sm` and `mat-form-field-lg` classes have been removed in favor of `ob-form-sm` and `ob-form-lg` respectively. Both classes are meant to be applied to an ancestor of a `mat-form-field`
+* **icon:** `ObIconsConfig` interface has been renamed into `ObIconConfig` (solved with schematics)
+* **toolchain:** `@popperjs/core` is now a peer dependency
+* **toolchain:** Drop IE11 support. Oblique 6 is the last version to support IE.
+
+
 ## [6.1.5](https://github.com/oblique-bit/oblique/compare/6.1.4...6.1.5) (2021-06-01)
 
 ## Bug Fixes
