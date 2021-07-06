@@ -16,7 +16,7 @@
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
     "enableResourceInlining": true,
-    "enableIvy": true
+    "compilationMode": "partial"
   },
   "exclude": [
     "src/test.ts",
