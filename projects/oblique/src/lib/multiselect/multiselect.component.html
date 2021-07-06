@@ -56,7 +56,7 @@
 			type="button"
 			[id]="idPrefix + '-option-' + i"
 			class="dropdown-item"
-			*ngFor="let option of options | searchFilter: searchFilterText; let i = index"
+			*ngFor="let option of search(options, searchFilterText); let i = index"
 			(click)="toggleSelection(option)"
 		>
 			<div class="form-check">

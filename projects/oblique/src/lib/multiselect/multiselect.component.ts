@@ -262,6 +262,11 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 		return this.formatOptionForLabel(item);
 	}
 
+	search(options: any[], searchString: string): any[] {
+		searchString = searchString || '';
+		return options.filter(option => this.formatOptionForLabel(option).toLowerCase().indexOf(searchString.toLowerCase()) > -1);
+	}
+
 	private emitModelChange() {
 		this.onModelChange(this.model);
 		this.onModelTouched();
