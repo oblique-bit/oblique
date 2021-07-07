@@ -44,7 +44,7 @@
     "dist": "npm run build -- oblique && npm run schematics",
     "distiOS": "npm run gulp pre-dist && npm run build -- oblique && npm run distiOS --prefix projects/oblique/schematics && npm run minify && npm run gulp -- dist",
     "postdist": "npm run minify && npm run gulp -- dist",
-    "minify": "minify projects/oblique/src/ob-features.js --out-file dist/oblique/ob-features.js",
+    "minify": "uglifyjs --compress --mangle --output dist/oblique/ob-features.js -- projects/oblique/src/ob-features.js",
     "test": "ng test oblique --prod",
     "lint": "ng lint oblique && ng lint oblique-showcase",
     "lint:fix": "ng lint oblique --fix && ng lint oblique-showcase --fix",
@@ -113,7 +113,6 @@
     "@typescript-eslint/eslint-plugin": "^4.28.1",
     "@typescript-eslint/parser": "^4.28.1",
     "ansi-colors": "^4.1.1",
-    "babel-minify": "^0.5.1",
     "bootstrap": "^4.6.0",
     "conventional-changelog": "^3.1.24",
     "cpx": "^1.5.0",
@@ -137,6 +136,7 @@
     "sass": "^1.35.1",
     "ts-morph": "^9.1.0",
     "ts-node": "^10.0.0",
-    "typescript": "~4.2.4"
+    "typescript": "~4.2.4",
+    "uglify-js": "^3.13.10"
   }
 }
