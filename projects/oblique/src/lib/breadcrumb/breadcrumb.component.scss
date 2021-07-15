@@ -1,22 +1,22 @@
+@import "../../styles/scss/core/variables";
+
 .ob-breadcrumbs {
 	display: flex;
 	flex-wrap: wrap;
+	font-size: $font-size-smallest;
 	margin: 0;
 	padding: 0;
 
 	li {
 		list-style: none;
 
-		.ob-breadcrumb-separator {
-			margin: auto 0.75em;
-			font-size: 0.5em;
-		}
-
-		a {
-			display: inline-block;
+		.ob-breadcrumb-label {
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
+		}
+
+		a {
 			text-decoration: none;
 
 			&:hover {
@@ -24,9 +24,8 @@
 			}
 		}
 
-		a,
 		.ob-breadcrumb-separator {
-			vertical-align: middle;
+			margin: auto $spacing-xs;
 		}
 	}
 }
