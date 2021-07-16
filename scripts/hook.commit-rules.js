@@ -8,7 +8,7 @@ try {
 	checkHeader(message[0]);
 	checkBreakingChanges(message);
 } catch (err) {
-	console.error(`\nInvalid commit message:\n${err.message}.\n\nSee details in README.md.\n`);
+	console.error(`\nInvalid commit message:\n${err.message}.\n\nSee details in CONTRIBUTING.md.\n`);
 	process.exit(1);
 }
 
@@ -32,9 +32,9 @@ function checkEmptyLine(lines) {
 
 function checkHeader(header) {
 	const {type, scope, subject} = checkFormat(header);
-	const readme = fs.readFileSync('README.md', 'utf8');
-	const types = extractList(readme, 'Type');
-	const scopes = extractList(readme, 'Scope');
+	const contributing = fs.readFileSync('CONTRIBUTING.md', 'utf8');
+	const types = extractList(contributing, 'Type');
+	const scopes = extractList(contributing, 'Scope');
 	checkType(type, types);
 	checkScope(scope, scopes);
 	checkSubject(subject);
@@ -110,8 +110,8 @@ function numeral(i) {
 	}
 }
 
-function extractList(readme, type) {
-	const start = readme.indexOf(`# ${type}`);
-	const chunk = readme.substring(readme.indexOf('*', start), readme.indexOf('#', start + 1));
+function extractList(contributing, type) {
+	const start = contributing.indexOf(`# ${type}`);
+	const chunk = contributing.substring(contributing.indexOf('*', start), contributing.indexOf('#', start + 1));
 	return chunk.match(/\*\*.*\*\*/g).map(res => res.replace(/\*\*/g, ''));
 }
