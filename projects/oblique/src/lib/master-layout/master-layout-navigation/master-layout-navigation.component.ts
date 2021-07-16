@@ -1,10 +1,10 @@
-import {AfterViewInit, Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, DoCheck, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation} from '@angular/core';
 import {IsActiveMatchOptions, NavigationEnd, Router} from '@angular/router';
 import {filter, takeUntil} from 'rxjs/operators';
 
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {ObINavigationLink, ObEScrollMode, ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
+import {ObEMasterLayoutEventValues, ObEScrollMode, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {Subject} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 
@@ -16,7 +16,7 @@ import {ObGlobalEventsService} from '../../global-events/global-events.service';
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-master-layout-navigation'}
 })
-export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, AfterViewInit, OnDestroy {
 	isFullWidth = this.masterLayout.navigation.isFullWidth;
 	activeClass = this.config.navigation.activeClass;
 	currentScroll = 0;
@@ -26,6 +26,7 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 	routerLinkActiveOptions: IsActiveMatchOptions = {paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'};
 	private static readonly buttonWidth = 30;
 	private nav: HTMLElement;
+	private linksLength: number;
 	private readonly unsubscribe: Subject<any> = new Subject();
 
 	constructor(
@@ -44,7 +45,14 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 		this.closeOnEscape();
 		this.refreshOnWindowResize();
 		this.markActiveLink();
-		this.links = this.checkForExternalLinks(this.links.length ? this.links : this.config.navigation.links);
+	}
+
+	ngDoCheck() {
+		if (this.links?.length && this.links.length !== this.linksLength) {
+			this.checkForExternalLinks(this.links);
+			this.linksLength = this.links.length;
+			this.refresh();
+		}
 	}
 
 	ngAfterViewInit() {
@@ -71,6 +79,15 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 
 	scrollRight(): void {
 		this.masterLayout.navigation.scrollRight();
+	}
+
+	private checkForExternalLinks(links: ObINavigationLink[]): void {
+		if (links && links.length) {
+			links.forEach(link => {
+				link.isExternal = link.isExternal ?? /^https?:\/\//.test(link.url);
+				this.checkForExternalLinks(link.children);
+			});
+		}
 	}
 
 	private propertyChanges() {
@@ -111,13 +128,12 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 				takeUntil(this.unsubscribe),
 				filter(evt => evt instanceof NavigationEnd)
 			)
-			.subscribe(
-				() =>
-					(this.links = this.links.map(link => ({
-						...link,
-						active: this.router.isActive(link.url, link.routerLinkActiveOptions || this.routerLinkActiveOptions)
-					})))
-			);
+			.subscribe(() => {
+				// do not use map so that the reference to the links array remains the same. This allows the navigation to be dynamic
+				this.links.forEach(link => {
+					link.active = this.router.isActive(link.url, link.routerLinkActiveOptions || this.routerLinkActiveOptions);
+				});
+			});
 	}
 
 	private refresh(): void {
@@ -139,11 +155,5 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 		this.currentScroll = Math.max(0, this.currentScroll);
 		this.currentScroll = Math.min(this.currentScroll, this.maxScroll);
 		this.renderer.setStyle(this.nav.children[0], 'margin-left', `-${this.currentScroll}px`);
-	}
-
-	private checkForExternalLinks(links: ObINavigationLink[]): ObINavigationLink[] {
-		return !links
-			? undefined
-			: links.map(link => ({...link, children: this.checkForExternalLinks(link.children), isExternal: /^https?:\/\//.test(link.url)}));
 	}
 }

@@ -2,6 +2,17 @@
 	<h1 translate>i18n.routes.samples.master-layout.title</h1>
 </div>
 <ob-description component="master-layout"></ob-description>
+
+<h4>Dynamic navigation</h4>
+<button type="button" (click)="addItem()">
+	<span class="fa fa-plus"></span>
+	Add a main navigation item
+</button>
+<button type="button" (click)="removeItem()">
+	<span class="fa fa-plus"></span>
+	remove last main navigation item
+</button>
+
 <h4>Master Layout</h4>
 <div [(ngModel)]="applicationFixed" ngbRadioGroup class="btn-group btn-group-toggle">
 	<label ngbButtonLabel class="btn-secondary"> <input ngbButton type="radio" [value]="false" /> Continuous </label>

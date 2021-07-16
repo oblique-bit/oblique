@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {ObMasterLayoutService, ObEScrollMode} from 'oblique';
+import {ObEScrollMode, ObMasterLayoutService} from 'oblique';
+import {DynamicNavigationService} from './dynamic-navigation.service';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
@@ -9,6 +10,10 @@ import {ObMasterLayoutService, ObEScrollMode} from 'oblique';
 export class ObMasterLayoutSampleComponent {
 	coverLayout = false;
 	scrollMode = ObEScrollMode;
+
+	constructor(private readonly masterLayout: ObMasterLayoutService, private readonly dynamicNavigationService: DynamicNavigationService) {
+		this.coverLayout = this.masterLayout.layout.hasCover;
+	}
 
 	get applicationFixed() {
 		return this.masterLayout.layout.isFixed;
@@ -106,7 +111,14 @@ export class ObMasterLayoutSampleComponent {
 		this.masterLayout.layout.hasCover = value;
 	}
 
-	constructor(private readonly masterLayout: ObMasterLayoutService) {
-		this.coverLayout = this.masterLayout.layout.hasCover;
+	addItem() {
+		this.dynamicNavigationService.addLink({
+			label: 'test',
+			url: 'urlTest'
+		});
+	}
+
+	removeItem() {
+		this.dynamicNavigationService.removeLastLink();
 	}
 }
