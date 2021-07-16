@@ -26,29 +26,16 @@ export function addProtractor(protractor: boolean, jest: boolean): Rule {
 
 function removeJasmine() {
 	return (tree: Tree, _context: SchematicContext) => {
-		let jasmineTsConfigJson = getJson(tree, 'src/tsconfig.spec.json');
-		if (!jasmineTsConfigJson) {
-			const tpl = getTemplate(tree, 'default-tsconfig.spec.json');
-
-			if (tree.exists('tsconfig.base.json')) {
-				tpl.replace('tsconfig.json', 'tsconfig.base.json');
-			}
-			addFile(tree, 'src/tsconfig.spec.json', tpl);
-			jasmineTsConfigJson = getJson(tree, 'src/tsconfig.spec.json');
+		const tsConfigSpec = 'tsconfig.spec.json';
+		const tpl = getTemplate(tree, 'default-tsconfig.spec.json');
+		if (tree.exists(tsConfigSpec)) {
+			tree.overwrite(tsConfigSpec, tpl);
+		} else {
+			tree.create(tsConfigSpec, tpl);
 		}
 
-		const types: string[] = jasmineTsConfigJson.compilerOptions.types;
-		if (types.includes('jasmine')) {
-			jasmineTsConfigJson.compilerOptions.types.splice(types.indexOf('jasmine'), 1);
-		}
-
-		if (!types.includes('jest')) {
-			jasmineTsConfigJson.compilerOptions.types.push('jest');
-		}
-
-		deleteFile(tree, 'src/tests.ts');
+		deleteFile(tree, 'src/test.ts');
 		deleteFile(tree, 'karma.conf.js');
-		tree.overwrite('src/tsconfig.spec.json', JSON.stringify(jasmineTsConfigJson, null, 2));
 
 		return tree;
 	};
