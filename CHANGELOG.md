@@ -1,3 +1,16 @@
+# [7.0.0-RC.2](https://github.com/oblique-bit/oblique/compare/7.0.0-RC.1...7.0.0-RC.2) (2021-07-16)
+
+## Bug Fixes
+* **breadcrumb:** check for config existence before accessing it ([30bad08](https://github.com/oblique-bit/oblique/commit/30bad088167db5263928191f59d90080fe513aaf))
+* **breadcrumb:** improve appearance ([d47832b](https://github.com/oblique-bit/oblique/commit/d47832b29457c17ed2de86a1400166efa122e32a))
+* **master-layout:** let `navigation` be dynamic ([6c699b0](https://github.com/oblique-bit/oblique/commit/6c699b0dc7b70a2083f6ce91ec685473e64f52df))
+* **master-layout:** mark main navigation item as active when 1 of its child is the active route ([8a4ea15](https://github.com/oblique-bit/oblique/commit/8a4ea151de49cca89f0f3521f27a2baa743501bc))
+* **schematics:** fix test configuration for `ng-add` ([6071369](https://github.com/oblique-bit/oblique/commit/60713695ad3e63431ed1430ceea1b0638d93a85c))
+
+## BREAKING CHANGES
+* **master-layout:** `ObINavigationLink`.`pathMatch` has been replaced with `ObINavigationLink`.`routerLinkActiveOptions` (solved with schematics)
+
+
 # [7.0.0-RC.1](https://github.com/oblique-bit/oblique/compare/6.1.5...7.0.0-RC.1) (2021-07-06)
 
 ## Bug Fixes
