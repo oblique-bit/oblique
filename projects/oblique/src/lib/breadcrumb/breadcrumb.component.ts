@@ -27,7 +27,7 @@ export class ObBreadcrumbComponent implements OnInit {
 	}
 
 	private get beautifyUrls(): boolean {
-		return this.beautifyUrlsInput ?? this.config.beautifyUrls ?? false;
+		return this.beautifyUrlsInput ?? this.config?.beautifyUrls ?? false;
 	}
 
 	constructor(
