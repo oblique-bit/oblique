@@ -62,9 +62,24 @@ describe('MasterLayoutNavigationComponent', () => {
 		component = fixture.componentInstance;
 		component.links = [
 			{url: 'defaultPathMatch', label: 'default', id: 'default'},
-			{url: 'prefix/1/users', label: 'ItemPrefix', pathMatch: 'prefix', id: 'prefix'},
-			{url: 'prefix/2/users', label: 'ItemPrefix2', pathMatch: 'prefix', id: 'prefix'},
-			{url: 'full/2/users', label: 'ItemFull', pathMatch: 'full', id: 'full'}
+			{
+				url: 'prefix/1/users',
+				label: 'ItemPrefix',
+				id: 'prefix',
+				routerLinkActiveOptions: {paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'}
+			},
+			{
+				url: 'prefix/2/users',
+				label: 'ItemPrefix2',
+				id: 'prefix',
+				routerLinkActiveOptions: {paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'}
+			},
+			{
+				url: 'full/2/users',
+				label: 'ItemFull',
+				id: 'full',
+				routerLinkActiveOptions: {paths: 'exact', queryParams: 'exact', fragment: 'ignored', matrixParams: 'ignored'}
+			}
 		];
 		router = TestBed.inject(Router);
 		location = TestBed.inject(Location);
