@@ -20,7 +20,8 @@ export class UpdateV6toV7 implements ObIMigrations {
 				this.renameSpacingLg(),
 				this.renameTableTitleAttribute(),
 				this.removeDirection(),
-				this.migrateAlerts()
+				this.migrateAlerts(),
+				this.migrateNavigationPathMatch()
 			])(tree, _context);
 		};
 	}
@@ -90,6 +91,27 @@ export class UpdateV6toV7 implements ObIMigrations {
 				);
 			};
 			return applyInTree(tree, toApply, '*.html');
+		};
+	}
+
+	private migrateNavigationPathMatch(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Migrate pathMatch to routerLinkActiveOptions');
+			const toApply = (filePath: string) => {
+				replaceInFile(
+					tree,
+					filePath,
+					/(?<={.*)pathMatch\s*:\s*['"]full['"](?=.*})/g,
+					"routerLinkActiveOptions: {paths: 'exact', queryParams: 'exact', fragment: 'ignored', matrixParams: 'ignored'}"
+				);
+				replaceInFile(
+					tree,
+					filePath,
+					/(?<={.*)pathMatch\s*:\s*['"]prefix['"](?=.*})/g,
+					"routerLinkActiveOptions: {paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'}"
+				);
+			};
+			return applyInTree(tree, toApply, '*.ts');
 		};
 	}
 }

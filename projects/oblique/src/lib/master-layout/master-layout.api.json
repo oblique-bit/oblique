@@ -534,7 +534,7 @@
       "type": "interface",
       "usage": "The structure of a link in navigation area",
       "since": "4.0.0",
-      "updated": "6.1.0",
+      "updated": "7.0.0",
       "variables": [
         {
           "name": "label",
@@ -585,12 +585,12 @@
           "since": "4.0.0"
         },
         {
-          "name": "pathMatch",
+          "name": "routerLinkActiveOptions",
           "text": "Sets angular path-matching strategy to mark link as the active one.",
-          "type": "'prefix' | 'full'",
-          "default": "'prefix'",
+          "type": "IsActiveMatchOptions",
+          "default": "{paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'}",
           "isOptional": true,
-          "since": "6.1.0"
+          "since": "7.0.0"
         }
       ]
     },

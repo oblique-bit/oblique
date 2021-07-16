@@ -1,3 +1,5 @@
+import {IsActiveMatchOptions} from '@angular/router';
+
 export enum ObEScrollMode {
 	AUTO,
 	ENABLED,
@@ -47,7 +49,7 @@ export interface ObINavigationLink {
 	isExternal?: boolean;
 	id?: string;
 	active?: boolean;
-	pathMatch?: 'prefix' | 'full';
+	routerLinkActiveOptions?: IsActiveMatchOptions;
 }
 
 export interface ObIJumpLink {

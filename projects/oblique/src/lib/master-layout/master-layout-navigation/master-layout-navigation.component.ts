@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation} from '@angular/core';
-import {NavigationEnd, Router} from '@angular/router';
+import {IsActiveMatchOptions, NavigationEnd, Router} from '@angular/router';
 import {filter, takeUntil} from 'rxjs/operators';
 
 import {ObMasterLayoutService} from '../master-layout.service';
@@ -23,6 +23,7 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 	maxScroll = 0;
 	@Input() links: ObINavigationLink[] = [];
 	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') isScrollable: boolean;
+	routerLinkActiveOptions: IsActiveMatchOptions = {paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'};
 	private static readonly buttonWidth = 30;
 	private nav: HTMLElement;
 	private readonly unsubscribe: Subject<any> = new Subject();
@@ -114,7 +115,7 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 				() =>
 					(this.links = this.links.map(link => ({
 						...link,
-						active: this.router.isActive(link.url, {matrixParams: 'exact', queryParams: 'exact', paths: 'exact', fragment: 'exact'})
+						active: this.router.isActive(link.url, link.routerLinkActiveOptions || this.routerLinkActiveOptions)
 					})))
 			);
 	}
