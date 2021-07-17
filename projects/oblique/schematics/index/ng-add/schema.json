@@ -116,9 +116,9 @@
     },
     "jenkins": {
       "type": "string",
-      "default": "ORG;APP",
+      "default": "",
       "description": "Jenkins configuration",
-      "x-prompt": "[17 / 20] Choose the organization and application names for Cloud Foundry? Leave empty for no Jenkins / CF configuration"
+      "x-prompt": "[17 / 20] Choose the organization and application names (ORG;APP) to deploy on Cloud Foundry. Leave empty for no Jenkins / CF configuration"
     },
     "static": {
       "type": "boolean",
