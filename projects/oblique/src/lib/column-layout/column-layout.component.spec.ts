@@ -3,7 +3,7 @@ import {Component, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core
 import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TranslateService} from '@ngx-translate/core';
-import {ObMockColumnPanelDirective} from './mock/mock-column-panel.directive';
+import {ObMockColumnPanelDirective} from './_mocks/mock-column-panel.directive';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 import {windowProvider, WINDOW} from '../utilities';

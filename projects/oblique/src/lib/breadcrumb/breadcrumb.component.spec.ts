@@ -7,7 +7,7 @@ import {ActivatedRoute} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {isObservable, of} from 'rxjs';
-import {ObMockIconModule} from '../icon/_mock/mock-icon.module';
+import {ObMockIconModule} from '../icon/_mocks/mock-icon.module';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObBreadcrumbComponent} from './breadcrumb.component';
 import {ObBreadcrumbConfig, ObIBreadcrumb, ObTBreadcrumbConfig} from './breadcrumb.model';

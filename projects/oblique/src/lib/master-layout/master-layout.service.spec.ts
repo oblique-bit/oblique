@@ -5,17 +5,17 @@ import {ObMasterLayoutHeaderService} from './master-layout-header/master-layout-
 import {ObMasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
 import {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
-import {ObMockMasterLayoutConfig} from './mock/mock-master-layout.config';
+import {ObMockMasterLayoutConfig} from './_mocks/mock-master-layout.config';
 import {ObMasterLayoutService} from './master-layout.service';
 import {ObMasterLayoutConfig} from './master-layout.config';
 import {ObMasterLayoutNavigationService} from './master-layout-navigation/master-layout-navigation.service';
-import {ObMockMasterLayoutHeaderService} from './mock/mock-master-layout-header.service';
-import {ObMockMasterLayoutFooterService} from './mock/mock-master-layout-footer.service';
-import {ObMockMasterLayoutNavigationService} from './mock/mock-master-layout-navigation.service';
-import {ObMockMasterLayoutComponentService} from './mock/mock-master-layout.component.service';
-import {ObMockMasterLayoutService} from './mock/mock-master-layout.service';
+import {ObMockMasterLayoutHeaderService} from './_mocks/mock-master-layout-header.service';
+import {ObMockMasterLayoutFooterService} from './_mocks/mock-master-layout-footer.service';
+import {ObMockMasterLayoutNavigationService} from './_mocks/mock-master-layout-navigation.service';
+import {ObMockMasterLayoutComponentService} from './_mocks/mock-master-layout.component.service';
+import {ObMockMasterLayoutService} from './_mocks/mock-master-layout.service';
 import {ObLanguageService} from '../language/language.service';
-import {ObMockLanguageService} from '../language/mock/mock-language.service';
+import {ObMockLanguageService} from '../language/_mocks/mock-language.service';
 
 describe('MasterLayoutService', () => {
 	let masterLayoutService: ObMasterLayoutService;
