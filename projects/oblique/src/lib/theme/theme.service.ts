@@ -13,7 +13,10 @@ export enum FONTS {
 	ROBOTO = 'roboto',
 	NONE = 'none'
 }
-
+/**
+ * @deprecated since version 7.0.0. It will be removed in Oblique 8.
+ * Theme and Font should be configured by including the relevant CSS files in Angular.json
+ */
 @Injectable({
 	providedIn: 'root'
 })
