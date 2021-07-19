@@ -16,6 +16,7 @@ import {ObMockIconModule} from './icon/_mocks/mock-icon.module';
 import {ObMockMasterLayoutModule} from './master-layout/_mocks/mock-master-layout.module';
 import {ObMockMultiselectModule} from './multiselect/_mocks/mock-multiselect.module';
 import {ObMockNavTreeModule} from './nav-tree/_mocks/mock-nav-tree.module';
+import {ObMockParentFormDirective, ObMockNestedFormModule, ObMockNestedFormComponent} from './nested-form/_mocks/mock-nested-form.module';
 import {ObMockNotificationModule} from './notification/_mocks/mock-notification.module';
 import {ObMockNumberFormatModule} from './number-format/_mocks/mock-number-format.module';
 import {ObMockHttpApiInterceptorModule} from './http-api-interceptor/_mocks/mock-http-api-interceptor.module';
@@ -92,6 +93,7 @@ export {
 	ObMockMultiselectSearchPipe
 } from './multiselect/_mocks/mock-multiselect.module';
 export {ObMockNavTreeModule, ObMockNavTreeComponent, ObMockNavTreeFakeFocusDirective} from './nav-tree/_mocks/mock-nav-tree.module';
+export {ObMockParentFormDirective, ObMockNestedFormModule, ObMockNestedFormComponent} from './nested-form/_mocks/mock-nested-form.module';
 export {
 	ObMockNotificationModule,
 	ObMockNotificationService,
@@ -158,6 +160,7 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockMasterLayoutModule,
 	ObMockMultiselectModule,
 	ObMockNavTreeModule,
+	ObMockNestedFormModule,
 	ObMockNotificationModule,
 	ObMockNumberFormatModule,
 	ObMockOffCanvasModule,
