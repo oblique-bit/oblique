@@ -111,7 +111,6 @@ export enum ObEIcon {
 	FILE_CHECKMARK = 'file-checkmark',
 	FILE_CODE = 'file-code',
 	FILE_CSV = 'file-csv',
-	FILE_DATABASE = 'file-database',
 	FILE_EPUB = 'file-epub',
 	FILE_EXCEL = 'file-excel',
 	FILE_FORWARD = 'file-forward',
