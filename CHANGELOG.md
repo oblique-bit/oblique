@@ -1,19 +1,7 @@
-# [7.0.0-RC.2](https://github.com/oblique-bit/oblique/compare/7.0.0-RC.1...7.0.0-RC.2) (2021-07-16)
+# [7.0.0](https://github.com/oblique-bit/oblique/compare/7.0.0-RC.2...7.0.0) (2021-07-20)
 
 ## Bug Fixes
-* **breadcrumb:** check for config existence before accessing it ([30bad08](https://github.com/oblique-bit/oblique/commit/30bad088167db5263928191f59d90080fe513aaf))
-* **breadcrumb:** improve appearance ([d47832b](https://github.com/oblique-bit/oblique/commit/d47832b29457c17ed2de86a1400166efa122e32a))
-* **master-layout:** let `navigation` be dynamic ([6c699b0](https://github.com/oblique-bit/oblique/commit/6c699b0dc7b70a2083f6ce91ec685473e64f52df))
-* **master-layout:** mark main navigation item as active when 1 of its child is the active route ([8a4ea15](https://github.com/oblique-bit/oblique/commit/8a4ea151de49cca89f0f3521f27a2baa743501bc))
-* **schematics:** fix test configuration for `ng-add` ([6071369](https://github.com/oblique-bit/oblique/commit/60713695ad3e63431ed1430ceea1b0638d93a85c))
-
-## BREAKING CHANGES
-* **master-layout:** `ObINavigationLink`.`pathMatch` has been replaced with `ObINavigationLink`.`routerLinkActiveOptions` (solved with schematics)
-
-
-# [7.0.0-RC.1](https://github.com/oblique-bit/oblique/compare/6.1.5...7.0.0-RC.1) (2021-07-06)
-
-## Bug Fixes
+* **alert:** improve icon alignment ([1bc4435](https://github.com/oblique-bit/oblique/commit/1bc4435fdb6bc7020fa0205700809c6a2baed3df))
 * **button:** fix icon vertical alignment ([104bc5e](https://github.com/oblique-bit/oblique/commit/104bc5e293b722ee959c2dba37e24838ec43b89d))
 * **collapse:** ensure the content does not overflow while expanding ([0ca5373](https://github.com/oblique-bit/oblique/commit/0ca5373dc064a86ae42012ecd5d84e0757a0e94b))
 * **collapse:** ensure the styling only applies to the collapse feature ([1281a1c](https://github.com/oblique-bit/oblique/commit/1281a1c1790d208af89a043caaf585a998d02216))
@@ -23,19 +11,30 @@
 * **error-messages:** fix typo in german ([323dd4a](https://github.com/oblique-bit/oblique/commit/323dd4a8ee1d02e1e6670d81ba115080568f7fa2))
 * **error-messages:** fix typos in translations ([e5fe7db](https://github.com/oblique-bit/oblique/commit/e5fe7dba16c0de8a1bb1c2719d09655510893c7c))
 * **icon:** add `ob-icon-wrapper` class to `ob-icon` component and use it as a selector ([0e3f460](https://github.com/oblique-bit/oblique/commit/0e3f460baabc17600d7304ef7fcda9e90f66b91b))
-* **mandatory:** ensure the form field exists before accessing its control ([0548b4f](https://github.com/oblique-bit/oblique/commit/0548b4f74d9ba1ac944f8216ef7a20f53e44e07a))
-* **mandatory:** only check for required status if a control is defined ([d05e7e3](https://github.com/oblique-bit/oblique/commit/d05e7e38286c8753d0b2ebf507f42595c256f66d))
 * **master-layout:** ensure the locale selection has a right margin ([7cc46b5](https://github.com/oblique-bit/oblique/commit/7cc46b52abd4ac957dc9fdbfa7405e9c06cb59d6))
+* **master-layout:** let `navigation` be dynamic ([6c699b0](https://github.com/oblique-bit/oblique/commit/6c699b0dc7b70a2083f6ce91ec685473e64f52df))
+* **master-layout:** mark main navigation item as active when 1 of its child is the active route ([8a4ea15](https://github.com/oblique-bit/oblique/commit/8a4ea151de49cca89f0f3521f27a2baa743501bc))
+* **master-layout:** use universal-access icon instead of wheelchair ([c53f5ad](https://github.com/oblique-bit/oblique/commit/c53f5ad4b31ea54155978d84d22c808faa30d3af))
 * **material:** display `mat-slide-toggle` with `brand-primary` color ([c53c275](https://github.com/oblique-bit/oblique/commit/c53c275f181938d03a9c609f8b8ce13d95ed0b3e))
 * **material:** improve the alignment of the label of checkboxes and radio buttons ([b93236d](https://github.com/oblique-bit/oblique/commit/b93236da355571c3d5c472f176415f3b5bb6d020))
 * **material:** rework `mat-form-field`'s sizing ([e5ee9d6](https://github.com/oblique-bit/oblique/commit/e5ee9d634252f570330c9cbd79740c021d0fe498))
 * **material:** avoid circular dependency ([8e2979e0](https://github.com/oblique-bit/oblique/commit/e5ee9d634252f570330c9cbd79740c021d0fe498))
+* **material:** support the Oblique icons ([64b32cd](https://github.com/oblique-bit/oblique/commit/64b32cdaaa9518693270722a2869c3bc97ef8d72))
+* **nested-form:** add missing mocks ([6b7684e](https://github.com/oblique-bit/oblique/commit/6b7684e184a0d8a025ac5cf1c2d93bd60824e9c9))
+* **notification:** correct the rendering of the close button ([0f7808e](https://github.com/oblique-bit/oblique/commit/0f7808e59ef83b29eb186682cd6c0e67e4fdf297))
+* **popover:** add missing mocks ([b4d63fc](https://github.com/oblique-bit/oblique/commit/b4d63fce6a798b4cfd07554c1dfe8f1cdf7d014e))
+* **schematics:** embed the banner in a resilient way ([9b78cf8](https://github.com/oblique-bit/oblique/commit/9b78cf8d6faa8e1cd3038023591c89f0edd1a33a))
+* **schematics:** fix test configuration for `ng-add` ([6071369](https://github.com/oblique-bit/oblique/commit/60713695ad3e63431ed1430ceea1b0638d93a85c))
+* **schematics:** ng add creates a manifest that uses caasp 4 ([02f7c68](https://github.com/oblique-bit/oblique/commit/02f7c68f77ebd583a198407aae4332fe6413e52c))
+* **schematics:** ng add do not create a CF configuration if nighter ORG nor APP is provided ([20d4d39](https://github.com/oblique-bit/oblique/commit/20d4d39df487c467a8026b207992a38cf78ffc1c))
 * **schematics:** fix `removeDevDependencies` ignoring the dependency ([83850bb](https://github.com/oblique-bit/oblique/commit/83850bb8ff7a63a577e7708c24a90cc65dca0738))
 * **schematics:** fix performance issue for `renameTableTitleAttribute` ([76cf36e](https://github.com/oblique-bit/oblique/commit/76cf36e06db400a8a39ce7bee90ed1b8c870830b))
 * **schematics:** remove unnecessary polyfills ([1d89765](https://github.com/oblique-bit/oblique/commit/1d897657065b616201c4fb17a8d3601cc8ef8d4a))
+* **stepper:** correct the rendering of the icons ([8d7dfad](https://github.com/oblique-bit/oblique/commit/8d7dfadabe3523c4297b4da043b79e9f4eeefcf1))
 * **styles:** automatically wrap inline forms if necessary ([5e08833](https://github.com/oblique-bit/oblique/commit/5e08833b55a660427b2d026285199560073dd769))
 * **styles:** ensure font paths referenced in `oblique-compat.scss` are correct ([502e2ce](https://github.com/oblique-bit/oblique/commit/502e2ce01b9c5e5fd630cb346b2983f172920876))
 * **styles:** halve the `margin-bottom` on headings ([50b1e49](https://github.com/oblique-bit/oblique/commit/50b1e49a6bff30605508c5124395caefbb8c0ce7))
+* **toolchain:** fix typo in npm registry ([eaf9e5e](https://github.com/oblique-bit/oblique/commit/eaf9e5e0a300c2bda6dff2910e677ae0299d7376))
 * **toolchain:** ensure the git tag exists before querying its date ([465b4a0](https://github.com/oblique-bit/oblique/commit/465b4a0ee81e027697c055856e6f6e6d3223d000))
 * **toolchain:** ensure the icon order remains the same ([ebe56d3](https://github.com/oblique-bit/oblique/commit/ebe56d34a37ae5ecddcb9a34b0796d2a693205a2))
 * **toolchain:** fix scss paths in gulp for windows ([e2478b2](https://github.com/oblique-bit/oblique/commit/e2478b21bfdb939f816bb49a87ba467f53bfb8f1))
@@ -46,17 +45,10 @@
 * **translation:** remove the dot at the end of error messages ([956c821](https://github.com/oblique-bit/oblique/commit/956c821b48a904f7e979f8fe57554c26e18449c3))
 * export missing mocks ([b4531e1](https://github.com/oblique-bit/oblique/commit/b4531e15767e6bb11da2877be65a3d43da00a9e6))
 
-## chore
-* **toolchain:** list `@popperjs/core` as a peer dependency ([f4a14ac](https://github.com/oblique-bit/oblique/commit/f4a14ac8cf086dca15b16731d91a5f79e73e8792))
-* **toolchain:** update dependencies and refactor accordingly ([86ea6c8](https://github.com/oblique-bit/oblique/commit/86ea6c8b1103011136ba23589cbcc9fbc95f18e2))
-
 ## Code Refactoring
 * **alert:** automatically format links, without resorting to `ob-alert-link` class ([9e02f5e](https://github.com/oblique-bit/oblique/commit/9e02f5e513ee766352fb30f7c2aae528e6ee2d64))
 * **icon:** rename `ObIconsConfig` into `ObIconConfig` ([357bbb0](https://github.com/oblique-bit/oblique/commit/357bbb09adcee72d37c190346bbdaa6425a6ead8))
 * **styles:** move `icon` and `toggle` mixins to bootstrap's theme ([9078796](https://github.com/oblique-bit/oblique/commit/9078796bb61813b0057144d60a0d18ac9d6d75cd))
-
-## Documentation
-* **icon:** remove SVG's titles ([7355b23](https://github.com/oblique-bit/oblique/commit/7355b231e94b0dc32df8eace3667a46b282ceb57))
 
 ## Features
 * **alert:** add schematics to migrate alerts ([54e02c4](https://github.com/oblique-bit/oblique/commit/54e02c4961ca23ac91a0ec4a933fc7224dc7fe51))
@@ -77,6 +69,7 @@
 * **icon:** add new icons ([ef103df](https://github.com/oblique-bit/oblique/commit/ef103df2246cc51218570575272b20bac219e09a))
 * **icon:** add the `ObEIcon` enum to list all Oblique's icons ([c7ddbe5](https://github.com/oblique-bit/oblique/commit/c7ddbe52f63ea280ebd9b7060108528bc7c1ef87))
 * **icon:** provide an `oblique-icons` CSS to allow icons to be embedded with a class ([49a3627](https://github.com/oblique-bit/oblique/commit/49a36278994de26c44b3d3b92967561cae676244))
+* **icon:** remove deprecated icon file-database ([371b176](https://github.com/oblique-bit/oblique/commit/371b17647af26cab8b90116b249b8e3d025cef2a))
 * **mandatory:** add feature ([10dbec7](https://github.com/oblique-bit/oblique/commit/10dbec7af6972788ed9b2c9408081bf5d38f95fe))
 * **master-layout:** add the possibility to use either Oblique or FontAwesome icons ([456ef57](https://github.com/oblique-bit/oblique/commit/456ef579b66ef2b4ef9fb8d6186e2e73cd1ba842))
 * **material:** defined an alternate color for `accent` ([d8e9933](https://github.com/oblique-bit/oblique/commit/d8e99331070473c2ec73d94c96e7ead506ea8edd))
@@ -100,35 +93,37 @@
 * **toolchain:** Oblique is compiled in partial-Ivy mode meaning projects using it must have Ivy enabled
 
 ## BREAKING CHANGES
-* **toolchain:** `dist` script does not work on iOS, use `distiOS` instead
-* **toolchain:** Oblique 7 needs Angular12
-* **toolchain:** Oblique 7 needs ng-bootstrap 10
-* **styles:** Per default, the HTML stepper shows Oblique's icons. The `ob-font-awesome` class has to be added to display it with FontAwesome icons.
-* **styles:** All SCSS mixins related to icons and toggles are only available with the Bootstrap theme
 * **alert:** `ob-alert-link` class has been removed in favor of styling the links directly
 * **alert:** `alert-base` and `alert-variant` mixins have been removed with no replacement
 * **alert:** Without Angular, the `oblique-alert.css` class has to be loaded
-* **master-layout:** When used without Angular, toggling the `ob-expanded` class on a main menu item not not sufficient anymore. The icon must be explicitly set according to the navigation's current state.
-* **collapse:** When used without Angular, an icon has to be added into the markup.
-* **nav-tree:** When used without Angular, an icon has to be added into the markup. FontAwesome icons also need the <code>ob-font-awesome</code> class to be applied to the `<ob-nav-tree>` component.
-* **column-layout:** When used without Angular, an icon has to be added into the markup. FontAwesome icons also need the <code>ob-font-awesome</code> class to be applied to the `<ob-column-layout>` component.
-* **search-box:** When used without Angular, the markup has to be adapted. Either the `ob-font-awesome` class has to be added to the `<ob-search-box>` component, or an alternate icon has to be provided
-* **scrolling:** When used without Angular, the markup has to be adapted. Either the `ob-font-awesome` class has to be added to the `<ob-top-control>` component, or an alternate icon has to be provided
-* **collapse:** The `direction` input has been removed with no replacement, `down-up` is the only remaining option. (solved with schematics)
-* **schema-validation:** Support for JSON-Schema draft-04 has been removed in favor of JSON-Schema draft-07
-* **schema-validation:** `draft06` decorator has been renamed into `draft07convert`
-* **icon:** Oblique's icons don't have a `title` element anymore. The name can be read from the `id` attribute instead.
 * **button:** Button styling has slightly been adapted
 * **button:** Only Oblique buttons are styled, regular Material Design buttons reverts to their default styles
 * **button:** Icons within a button don't have a `margin` anymore. A whitespace should be added between the icon and the text.
-* **styles:** HTML tables with the `ob-table-collapse` class must use a `date-title` attribute instead of `title` to specify a cell's title (solved with schematics)
+* **collapse:** The `direction` input has been removed with no replacement, `down-up` is the only remaining option. (solved with schematics)
+* **collapse:** When used without Angular, an icon has to be added into the markup.
+* **column-layout:** When used without Angular, an icon has to be added into the markup. FontAwesome icons also need the <code>ob-font-awesome</code> class to be applied to the `<ob-column-layout>` component.
 * **error-messages:** translation key for ajv validation errors have been changed form `i18n.validation.*` to `i18n.validation.ajv.*` translation key for ajv date validation errors have been changed form `i18n.validation.format` to `i18n.validation.ajv.date`
+* **icon:** deprecated icon `file-database` removed in favor of `file-server`
+* **icon:** Oblique's icons don't have a `title` element anymore. The name can be read from the `id` attribute instead.
+* **icon:** `ObIconsConfig` interface has been renamed into `ObIconConfig` (solved with schematics)
+* **master-layout:** `ObINavigationLink`.`pathMatch` has been replaced with `ObINavigationLink`.`routerLinkActiveOptions` (solved with schematics)
+* **master-layout:** When used without Angular, toggling the `ob-expanded` class on a main menu item not not sufficient anymore. The icon must be explicitly set according to the navigation's current state.
 * **material:** `accent` color now has its own color scheme and doesn't use `primary` anymore
-* **styles:** `$spacing-lg` has been renamed into `$spacing-xl` (solved with schematics)
 * **material:** The appearance of `mat-form-field`s has been slightly adapted
 * **material:** Small and large variants only applies to paddings and margins, the font size remains constant
 * **material:** `mat-form-field-sm` and `mat-form-field-lg` classes have been removed in favor of `ob-form-sm` and `ob-form-lg` respectively. Both classes are meant to be applied to an ancestor of a `mat-form-field`
-* **icon:** `ObIconsConfig` interface has been renamed into `ObIconConfig` (solved with schematics)
+* **nav-tree:** When used without Angular, an icon has to be added into the markup. FontAwesome icons also need the <code>ob-font-awesome</code> class to be applied to the `<ob-nav-tree>` component.
+* **schema-validation:** Support for JSON-Schema draft-04 has been removed in favor of JSON-Schema draft-07
+* **schema-validation:** `draft06` decorator has been renamed into `draft07convert`
+* **scrolling:** When used without Angular, the markup has to be adapted. Either the `ob-font-awesome` class has to be added to the `<ob-top-control>` component, or an alternate icon has to be provided
+* **search-box:** When used without Angular, the markup has to be adapted. Either the `ob-font-awesome` class has to be added to the `<ob-search-box>` component, or an alternate icon has to be provided
+* **styles:** Per default, the HTML stepper shows Oblique's icons. The `ob-font-awesome` class has to be added to display it with FontAwesome icons.
+* **styles:** All SCSS mixins related to icons and toggles are only available with the Bootstrap theme
+* **styles:** HTML tables with the `ob-table-collapse` class must use a `date-title` attribute instead of `title` to specify a cell's title (solved with schematics)
+* **styles:** `$spacing-lg` has been renamed into `$spacing-xl` (solved with schematics)
+* **toolchain:** `dist` script does not work on iOS, use `distiOS` instead
+* **toolchain:** Oblique 7 needs Angular12
+* **toolchain:** Oblique 7 needs ng-bootstrap 10
 * **toolchain:** `@popperjs/core` is now a peer dependency
 * **toolchain:** Drop IE11 support. Oblique 6 is the last version to support IE.
 
