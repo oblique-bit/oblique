@@ -115,7 +115,7 @@ export class AppModule {
 		interceptorConfig.api.url = ObHttpInterceptorSampleComponent.API_URL;
 		config.locale.locales = ['en-us', 'fr-CH'];
 		config.layout.hasOffCanvas = true;
-		theme.setTheme(THEMES.BOOTSTRAP);
+		theme.setTheme(THEMES.MATERIAL);
 		theme.setFont(FONTS.FRUTIGER);
 	}
 }
