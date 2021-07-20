@@ -21,6 +21,22 @@
 		border-color: inherit;
 	}
 
+	&.mat-chip-with-trailing-icon {
+		padding-right: 0;
+
+		> .ob-icon {
+			font-size: $font-size-xl;
+			margin-left: 0;
+			width: 1.5em;
+			height: 1.5em;
+
+			&.fa::before {
+				height: unset;
+				width: unset;
+			}
+		}
+	}
+
 	&.success {
 		&,
 		&.mat-chip-selected {
