@@ -40,7 +40,7 @@ const addBanner = () => {
 * @file Oblique, The front-end framework for your Swiss branded UI.
 * @copyright 2020 - ${new Date().getFullYear()} Federal Office of Information Technology, Systems and Telecommunication FOITT {@link http://www.bit.admin.ch}
 * @version ${pkg.version} (released on ${releaseDate}, supported at least until ${endOfLifeDate})
-* @author ObliqueTeam, BIT-BS-PAC-EWM <oblique@bit.admin.ch>
+* @author Oblique team, FOITT, BS-BSC-EN4 <oblique@bit.admin.ch>
 * @license MIT {@link https://oblique.bit.admin.ch/license}
 * @see http://oblique.bit.oblique.ch
 */

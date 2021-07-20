@@ -1,3 +1,9 @@
+/*!
+ * @deprecated since version 7.0.0. It will be removed in Oblique 8.
+ * This files has been added to make Oblique 4 look like Oblique 3. This feature has become very hard
+ * to maintain and its utility is less relevant as Oblique drifted away from Bootstrap.
+ */
+
 @import "core/variables";
 @import "compat/font";
 @import "compat/font-awesome";
