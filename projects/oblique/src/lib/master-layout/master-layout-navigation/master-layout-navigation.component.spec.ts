@@ -8,7 +8,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObMasterLayoutNavigationComponent} from '../master-layout-navigation/master-layout-navigation.component';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
-import {ObMockGlobalEventsService} from '../../global-events/mock/mock-global-events.service';
+import {ObMockGlobalEventsService} from '../../global-events/_mocks/mock-global-events.service';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {WINDOW} from '../../utilities';
 

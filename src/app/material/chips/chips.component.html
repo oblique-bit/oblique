@@ -3,17 +3,19 @@
 	<ng-container column-main-content>
 		<mat-list *ngIf="!showAutocompleteForm">
 			<mat-list-item>
-				<mat-chip-list [ngClass]="{ 'mat-chip-list-stacked': stacked }">
-					<mat-chip [ngClass]="variant" [disabled]="disabled" [class.ob-selected]="selected">Default</mat-chip>
-					<mat-chip [color]="color" selected [ngClass]="variant" [disabled]="disabled" [class.ob-selected]="selected">Selected</mat-chip>
-				</mat-chip-list>
+				<mat-form-field>
+					<mat-chip-list [ngClass]="{ 'mat-chip-list-stacked': stacked }">
+						<mat-chip [ngClass]="variant" [disabled]="disabled" [class.ob-selected]="selected">Default</mat-chip>
+						<mat-chip [color]="color" selected [ngClass]="variant" [disabled]="disabled" [class.ob-selected]="selected">Selected</mat-chip>
+					</mat-chip-list>
+				</mat-form-field>
 			</mat-list-item>
 		</mat-list>
 		<mat-form-field *ngIf="showAutocompleteForm">
 			<mat-chip-list #chipList>
 				<mat-chip *ngFor="let tag of tags" [selectable]="true" [removable]="true" (removed)="remove(tag)">
 					{{ tag }}
-					<mat-icon class="fas fa-times-circle" matChipRemove></mat-icon>
+					<mat-icon svgIcon="cancel-circle" class="ob-icon" matChipRemove></mat-icon>
 				</mat-chip>
 				<input
 					placeholder="New tag..."

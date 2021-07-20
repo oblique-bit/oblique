@@ -87,8 +87,7 @@ registerLocaleData(localeFR);
 		ObInputClearModule
 	],
 	providers: [
-		// eslint-disable-next-line dot-notation
-		{provide: OB_BANNER, useValue: environment['banner']},
+		{provide: OB_BANNER, useValue: environment.banner},
 		{provide: HTTP_INTERCEPTORS, useClass: ObHttpApiInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
 		{provide: ObUseObliqueIcons, useValue: true}
@@ -116,7 +115,7 @@ export class AppModule {
 		interceptorConfig.api.url = ObHttpInterceptorSampleComponent.API_URL;
 		config.locale.locales = ['en-us', 'fr-CH'];
 		config.layout.hasOffCanvas = true;
-		theme.setTheme(THEMES.BOOTSTRAP);
+		theme.setTheme(THEMES.MATERIAL);
 		theme.setFont(FONTS.FRUTIGER);
 	}
 }

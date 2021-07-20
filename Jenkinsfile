@@ -14,7 +14,7 @@ nodejsPipelineTemplate {
 		'tags': ['master']
 	]
 	npmRepository = [
-		'repository': 'registry.npmjs.com/',
+		'repository': 'registry.npmjs.com',
 		'email': 'oblique@bit.admin.ch',
 		'userNamePasswordCredentialId': 'obliqueDeploymentUnamePassword',
 		'npmCredentialId': 'npmDeploymentTokenOblique'

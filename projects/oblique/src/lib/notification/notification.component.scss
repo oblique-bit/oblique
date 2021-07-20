@@ -65,7 +65,17 @@
 			top: 0;
 			right: 0;
 			padding: $spacing-default;
+			font-size: $font-size-biggest;
+			font-weight: 700;
 			line-height: 0.75;
+			background-color: transparent;
+			border: 0;
+			opacity: .5;
+			cursor: pointer;
+
+			&:hover {
+				opacity: 1;
+			}
 		}
 
 		.ob-notification-title {

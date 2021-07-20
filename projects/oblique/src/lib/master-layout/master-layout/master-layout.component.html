@@ -2,19 +2,19 @@
 	<ul>
 		<li>
 			<a class="ob-accessible" [class.ob-font-awesome]="!useObliqueIcons" accesskey="0" [routerLink]="url" fragment="content">
-				<ob-icon icon="wheelchair"></ob-icon>
+				<ob-icon icon="universal-access"></ob-icon>
 				{{ "i18n.oblique.master-layout.accesskey.mainContent" | translate }}
 			</a>
 		</li>
 		<li>
 			<a class="ob-accessible" [class.ob-font-awesome]="!useObliqueIcons" accesskey="1" [routerLink]="home">
-				<ob-icon icon="wheelchair"></ob-icon>
+				<ob-icon icon="universal-access"></ob-icon>
 				{{ "i18n.oblique.master-layout.accesskey.homepage" | translate }}
 			</a>
 		</li>
 		<li *ngIf="!noNavigation && navigation.length">
 			<a class="ob-accessible" [class.ob-font-awesome]="!useObliqueIcons" accesskey="2" [routerLink]="url" fragment="navigation">
-				<ob-icon icon="wheelchair"></ob-icon>
+				<ob-icon icon="universal-access"></ob-icon>
 				{{ "i18n.oblique.master-layout.accesskey.navigation" | translate }}
 			</a>
 		</li>
@@ -26,7 +26,7 @@
 				[routerLink]="jumpLink.url == 'current' ? url : jumpLink.url"
 				[fragment]="jumpLink.fragment"
 			>
-				<ob-icon icon="wheelchair"></ob-icon>
+				<ob-icon icon="universal-access"></ob-icon>
 				{{ jumpLink.label | translate }} [{{ jumpLink.accessKey }}]
 			</a>
 		</li>

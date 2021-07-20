@@ -88,19 +88,19 @@ function addBanner(banner: boolean): Rule {
 function addBannerData(tree: Tree): void {
 	const src = 'src/environments';
 	tree.getDir(src)
-		.subfiles.filter(file => file.indexOf('prod') === -1)
-		.map(file => `${src}/${file}`)
+		.subfiles.map(file => `${src}/${file}`)
 		.forEach(file => {
 			const env = file.match(/environment\.(?<env>.*)\.ts/)?.groups?.env || 'local';
 			const content = readFile(tree, file);
+			const banner = env === 'prod' ? 'undefined' : `{text: '${env}'}`;
 			if (content) {
-				tree.overwrite(file, content.replace('\n};', `,\n  banner: {text: '${env}'}\n};`));
+				tree.overwrite(file, content.replace('\n};', `,\n  banner: ${banner}\n};`));
 			}
 		});
 }
 
 function provideBanner(tree: Tree): Tree {
-	const provider = "{provide: OB_BANNER, useValue: environment['banner']}";
+	const provider = '{provide: OB_BANNER, useValue: environment.banner}';
 	const sourceFile = createSrcFile(tree, appModulePath);
 	const changes: Change[] = addProviderToModule(sourceFile, appModulePath, provider, ObliquePackage)
 		.concat(insertImport(sourceFile, appModulePath, 'environment', '../environments/environment'))
