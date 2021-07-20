@@ -9,6 +9,14 @@
 			[class.mat-stepper-lg]="isLarge"
 			[class.mat-stepper-sm]="isSmall"
 		>
+			<ng-template matStepperIcon="edit">
+				<mat-icon svgIcon="pen" class="ob-icon"></mat-icon>
+			</ng-template>
+
+			<ng-template matStepperIcon="done">
+				<mat-icon svgIcon="checkmark" class="ob-icon"></mat-icon>
+			</ng-template>
+
 			<mat-step [stepControl]="firstFormGroup">
 				<form [formGroup]="firstFormGroup">
 					<ng-template matStepLabel>Fill out your name</ng-template>
