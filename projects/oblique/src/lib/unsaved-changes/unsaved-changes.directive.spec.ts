@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {ObUnsavedChangesDirective} from './unsaved-changes.directive';
 import {ObUnsavedChangesService} from './unsaved-changes.service';
-import {ObMockUnsavedChangesService} from './mock/mock-unsaved-changes.service';
+import {ObMockUnsavedChangesService} from './_mocks/mock-unsaved-changes.service';
 import {By} from '@angular/platform-browser';
 
 @Component({

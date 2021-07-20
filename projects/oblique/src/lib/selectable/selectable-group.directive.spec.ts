@@ -3,7 +3,7 @@ import {async, ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing
 import {By} from '@angular/platform-browser';
 import {first, skip} from 'rxjs/operators';
 import {ObSelectableGroupDirective} from './selectable-group.directive';
-import {ObMockSelectableDirective} from './mock/mock-selectable.directive';
+import {ObMockSelectableDirective} from './_mocks/mock-selectable.directive';
 
 @Component({
 	template: ` <div obSelectableGroup>

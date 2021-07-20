@@ -3,7 +3,7 @@ import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {ObPopUpService} from '../pop-up/pop-up.service';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
-import {ObMockPopUpModule} from '../pop-up/_mock/mock-pop-up.module';
+import {ObMockPopUpModule} from '../pop-up/_mocks/mock-pop-up.module';
 import {WINDOW, windowProvider} from '../utilities';
 import {ObUnsavedChangesService} from './unsaved-changes.service';
 

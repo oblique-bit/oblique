@@ -4,7 +4,7 @@ import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {NgbNav, NgbNavChangeEvent} from '@ng-bootstrap/ng-bootstrap';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
-import {ObMockUnsavedChangesService} from '../unsaved-changes/mock/mock-unsaved-changes.service';
+import {ObMockUnsavedChangesService} from '../unsaved-changes/_mocks/mock-unsaved-changes.service';
 import {ObUnsavedChangesTabsService} from './unsaved-changes-tabs.service';
 import {ObUnsavedChangesService} from '../unsaved-changes/unsaved-changes.service';
 

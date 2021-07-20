@@ -8,7 +8,7 @@ import {ObMultiselectComponent} from './multiselect.component';
 import {ObMultiselectConfig} from './multiselect.config';
 import {ObMultiselectTexts} from './multiselect.texts';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
-import {ObMockGlobalEventsService} from '../global-events/mock/mock-global-events.service';
+import {ObMockGlobalEventsService} from '../global-events/_mocks/mock-global-events.service';
 
 @Pipe({
 	name: 'searchFilter'

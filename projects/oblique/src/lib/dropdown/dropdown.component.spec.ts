@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {ObDropdownComponent} from './dropdown.component';
 
-import {ObMockGlobalEventsService} from '../global-events/mock/mock-global-events.service';
+import {ObMockGlobalEventsService} from '../global-events/_mocks/mock-global-events.service';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 describe('DropdownComponent', () => {
 	let component: ObDropdownComponent;
