@@ -50,8 +50,8 @@ function writeChangelog() {
 	const stream = fs.createWriteStream('CHANGELOG.md');
 	stream.on('finish', () => {
 		const newLog = fs.readFileSync('CHANGELOG.md').toString()
-			.replace(/\n###(.*)\n/g, '##$1')
-			.replace('\n\n\n', '\n\n');
+			.replace(/##(.*)\n/g, '#$1')
+			.replace(/\n\n\n/g, '\n\n');
 		fs.writeFileSync('CHANGELOG.md', newLog + changelog);
 	});
 	conventionalChangelog({
