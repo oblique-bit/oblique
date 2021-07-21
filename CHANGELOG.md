@@ -128,14 +128,14 @@
 * **toolchain:** Drop IE11 support. Oblique 6 is the last version to support IE.
 
 
-## [6.1.5](https://github.com/oblique-bit/oblique/compare/6.1.4...6.1.5) (2021-06-01)
+# [6.1.5](https://github.com/oblique-bit/oblique/compare/6.1.4...6.1.5) (2021-06-01)
 
 ## Bug Fixes
 * **toolchain:** reference `popperjs` from npmjs.org ([66546f4](https://github.com/oblique-bit/oblique/commit/66546f44d9a2f3804db8410248fbc48b6a5bac59))
 * **toolchain:** wrap `cpx`'s globs in quotes for iOS compatibility ([6d8aa9e](https://github.com/oblique-bit/oblique/commit/6d8aa9e9e6f327c2127358414cd258760bf975d8))
 
 
-## [6.1.4](https://github.com/oblique-bit/oblique/compare/6.1.3...6.1.4) (2021-05-07)
+# [6.1.4](https://github.com/oblique-bit/oblique/compare/6.1.3...6.1.4) (2021-05-07)
 
 ## Bug Fixes
 * **popover:** export directive ([4769e2b](https://github.com/oblique-bit/oblique/commit/4769e2b4df2a4b2b9eaf0695856ec06235855ce2))
@@ -144,7 +144,7 @@
 * **translate-params:** support zero (number) as parameter ([daa1ad1](https://github.com/oblique-bit/oblique/commit/daa1ad1712daea9fca6c0650f997c622ebc2005f))
 
 
-## [6.1.3](https://github.com/oblique-bit/oblique/compare/6.1.2...6.1.3) (2021-04-30)
+# [6.1.3](https://github.com/oblique-bit/oblique/compare/6.1.2...6.1.3) (2021-04-30)
 
 ## Bug Fixes
 * **icon:** center font-awesome icons embedded in `mat-icon` ([0852343](https://github.com/oblique-bit/oblique/commit/08523438e2ab7c2618974d2993ecbbf16f3f332d))
@@ -152,7 +152,7 @@
 * **popover:** support interpolation in the template ([e4d6edd](https://github.com/oblique-bit/oblique/commit/e4d6edd54fb0469e995da21b8d6e7b6e04682757))
 
 
-## [6.1.2](https://github.com/oblique-bit/oblique/compare/6.1.1...6.1.2) (2021-04-23)
+# [6.1.2](https://github.com/oblique-bit/oblique/compare/6.1.1...6.1.2) (2021-04-23)
 
 ## Bug Fixes
 * **icon:** add missing icons ([863883b](https://github.com/oblique-bit/oblique/commit/863883b2e1b0048de27e259854e50f22269215b3))
@@ -161,7 +161,7 @@
 * **toolchain:** add @popperjs/core as dependency ([aa2b12b](https://github.com/oblique-bit/oblique/commit/aa2b12bd4f86a17ea6a98d4e1be2701d51e4827b))
 
 
-## [6.1.1](https://github.com/oblique-bit/oblique/compare/6.1.0...6.1.1) (2021-04-08)
+# [6.1.1](https://github.com/oblique-bit/oblique/compare/6.1.0...6.1.1) (2021-04-08)
 
 ## Bug Fixes
 * **icon:** use an absolute path for the SVG icon set due to issues with Ivy ([598eb84](https://github.com/oblique-bit/oblique/commit/598eb84f87a2dc0d945f587be83c6f690991a05c))
@@ -218,7 +218,7 @@
 * **unsaved-changes:** add `isActive` property to dynamically enable or disable the feature ([9bd0e7d](https://github.com/oblique-bit/oblique/commit/9bd0e7d88987c202613aa07babfe441d65cfd8a5))
 
 
-## [6.0.1](https://github.com/oblique-bit/oblique/compare/6.0.0...6.0.1) (2021-02-15)
+# [6.0.1](https://github.com/oblique-bit/oblique/compare/6.0.0...6.0.1) (2021-02-15)
 
 ## Bug Fixes
 * **bootstrap:** only override necessary typography styles ([079fdda](https://github.com/oblique-bit/oblique/commit/079fddae20fe09b4448a94884a0846d1405cfb78))
