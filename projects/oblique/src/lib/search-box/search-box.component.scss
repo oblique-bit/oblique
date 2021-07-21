@@ -10,13 +10,13 @@
 	}
 
 	.ob-dropdown-content {
-		top: $spacing-sm;
+		top: $spacing-default;
 
 		&.right {
-			transform: translateX(-$spacing-default);
+			transform: translateX(-12px); // empiric number
 
 			.ob-control-item & {
-				transform: translateX(-$spacing-default);
+				transform: translateX(-12px); // empiric number
 			}
 		}
 	}
@@ -36,7 +36,6 @@
 	background-color: $white;
 	overflow: hidden;
 	transition: height $duration-default;
-	padding-left: 0.65em;
 
 	.ob-highlight {
 		font-weight: bold;
@@ -75,15 +74,15 @@
 		font-weight: normal;
 		vertical-align: middle;
 		background-color: transparent;
-		width: calc(100% - (24 * 1.65em));
-
-		.ob-font-awesome & {
-			width: calc(100% - 1.65em);
-		}
+		width: calc(100% - (24px * 1.65)); // icon width * font-size
 	}
 
 	&:not(.ob-slide-control) .ob-search-box-input {
-		padding-left: 0.65em;
+		padding: 0 $spacing-sm;
+
+		@at-root #{selector-append(".ob-font-awesome", &)} {
+			padding-left: $spacing-sm + $spacing-xs; // actual padding + icon margin
+		}
 	}
 
 	&::before {
@@ -91,7 +90,7 @@
 		position: absolute;
 		right: 0;
 		bottom: 0;
-		left: 2em;
+		left: calc(1.65 * 1.5em); // font-size * icon width
 		height: 4px;
 		display: block;
 		border-bottom: 1px solid transparent;
@@ -100,10 +99,18 @@
 		transition: border-color $duration-default;
 	}
 
+	&.ob-font-awesome::before {
+		left: calc(1.65em + #{$spacing-xs}); // font-size + spacing
+	}
+
 	&.ob-slide-control {
 		.ob-search-box-input {
 			max-width: 0;
 			transition: max-width $duration-default, padding-left math.div($duration-default, 3) * 2;
+
+			@at-root #{selector-append(".ob-font-awesome", &)} {
+				width: calc(100% - 1.65em); // - font-size (icon size is 1em)
+			}
 
 			&:focus,
 			&:active {
@@ -123,7 +130,12 @@
 		&:hover {
 			.ob-search-box-input {
 				max-width: 100%;
-				padding-left: 0.65em;
+				padding: 0 $spacing-sm;
+
+				@at-root #{selector-append(".ob-font-awesome", &)} {
+					width: calc(100% - 1.65em); // - font-size (icon size is 1em)
+					padding-left: $spacing-sm + $spacing-xs; // actual padding + icon margin
+				}
 			}
 			.ob-search-dropdown{
 				overflow: inherit;
