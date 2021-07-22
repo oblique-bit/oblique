@@ -1,4 +1,4 @@
-import {AfterContentChecked, AfterContentInit, Directive} from '@angular/core';
+import {AfterContentChecked, AfterContentInit, Directive, Optional} from '@angular/core';
 import {MatFormField} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {AbstractControl} from '@angular/forms';
@@ -11,19 +11,19 @@ import {MatChipList} from '@angular/material/chips';
  */
 @Directive({
 	selector:
-		'mat-form-field:has(input:not([required])),' +
-		'mat-form-field:has(mat-select:not([required]),' +
-		'mat-form-field:has(select:not([required]),' +
-		'mat-form-field:has(textarea:not([required])),' +
-		'mat-form-field:has(mat-chip-list:not([required]))'
+		'input:not([required]),' +
+		'mat-select:not([required),' +
+		'select:not([required]),' +
+		'textarea:not([required]),' +
+		'mat-chip-list:not([required])'
 })
 export class ObMandatoryDirective implements AfterContentInit, AfterContentChecked {
 	private formFieldControl: MatInput | MatSelect | MatChipList;
 
-	constructor(private matFormField: MatFormField) {}
+	constructor(@Optional() private matFormField: MatFormField) {}
 
 	ngAfterContentInit() {
-		const formFieldControlTemp: MatFormFieldControl<any> = this.matFormField._control;
+		const formFieldControlTemp: MatFormFieldControl<any> = this.matFormField?._control;
 		if (formFieldControlTemp instanceof MatInput || formFieldControlTemp instanceof MatSelect || formFieldControlTemp instanceof MatChipList) {
 			this.formFieldControl = formFieldControlTemp;
 		}
