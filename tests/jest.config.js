@@ -17,5 +17,21 @@ module.exports = {
 	forceCoverageMatch: [
 		'**/projects/oblique/src/lib/**/*.ts',
 		'**/projects/oblique/src/lib/**/*.html'
-	]
+	],
+	reporters: [
+		'default',
+		[
+			'jest-html-reporters',
+			{
+				publicPath: './jest-report',
+				outputPath: './jest-report',
+				filename: 'jest-reporter.html',
+				pageTitle: 'Oblique',
+				expand: false,
+				openReport: true,
+				failureMessageOnly: false,
+				includeConsoleLog: true
+			}
+		]
+	],
 };
