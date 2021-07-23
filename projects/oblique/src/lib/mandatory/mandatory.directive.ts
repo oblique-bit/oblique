@@ -10,12 +10,7 @@ import {MatChipList} from '@angular/material/chips';
  * Note: this is a workaround for: https://github.com/angular/components/issues/2574
  */
 @Directive({
-	selector:
-		'input:not([required]),' +
-		'mat-select:not([required),' +
-		'select:not([required]),' +
-		'textarea:not([required]),' +
-		'mat-chip-list:not([required])'
+	selector: 'input:not([required]), mat-select:not([required), select:not([required]), textarea:not([required]), mat-chip-list:not([required])'
 })
 export class ObMandatoryDirective implements AfterContentInit, AfterContentChecked {
 	private formFieldControl: MatInput | MatSelect | MatChipList;
