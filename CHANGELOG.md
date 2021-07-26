@@ -1,3 +1,13 @@
+# [7.0.1](https://github.com/oblique-bit/oblique/compare/7.0.0-RC.2...7.0.1) (2021-07-26)
+
+## Bug Fixes
+* **mandatory:** handle absence of `mat-form-field` ([e43a0ad](https://github.com/oblique-bit/oblique/commit/e43a0ada68b8b7fac0b11ab18ba6dd0066f74eab))
+* **search-box:** correct width and alignment ([34d1fd5](https://github.com/oblique-bit/oblique/commit/34d1fd5e0a3ac9e95c689f86bf4413af028acec5))
+* **toolchain:** check for `package-lock.json` existence before modifying it ([46a01ed](https://github.com/oblique-bit/oblique/commit/46a01ed73220bebe29f15e57d6210eddad239e40))
+* **toolchain:** fix layout issues in changelog with the release script ([c681222](https://github.com/oblique-bit/oblique/commit/c681222e348e584fa49d237064c63108b0b3c714))
+* **toolchain:** use titles consistently with 1 hash in CHANGELOG ([a6267ea](https://github.com/oblique-bit/oblique/commit/a6267eacbe3c3019143b966c3521524dc2e6ed05))
+
+
 # [7.0.0](https://github.com/oblique-bit/oblique/compare/7.0.0-RC.2...7.0.0) (2021-07-20)
 
 ## Bug Fixes
