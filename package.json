@@ -1,7 +1,7 @@
 {
   "title": "Oblique",
   "name": "oblique",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "license": "MIT",
   "organization": {
     "name": "Federal Office of Information Technology, Systems and Telecommunication FOITT",
@@ -91,6 +91,7 @@
     "@popperjs/core": "^2.9.2",
     "ajv": "^8.1.0",
     "ajv-formats": "^2.1.0",
+    "jest-html-reporters": "^2.1.6",
     "rxjs": "^6.6.7",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

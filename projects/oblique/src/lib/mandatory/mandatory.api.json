@@ -4,9 +4,10 @@
       {
         "name": "ObMandatoryDirective",
         "usage": "This is a transparent directive. In reactive forms using material design, it automatically enhances input fields with the required asterisk if a required validator is defined. It is applied by importing the <code>ObMandatoryModule</code>.",
-        "selector": "mat-form-field:has(input:not([required])), mat-form-field:has(mat-select:not([required]), mat-form-field:has(select:not([required]), mat-form-field:has(textarea:not([required])), mat-form-field:has(mat-chip-list:not([required]))",
+        "selector": "input:not([required]), mat-select:not([required]), select:not([required]), textarea:not([required]), mat-chip-list:not([required])",
         "type": "directive",
-        "since": "7.0.0"
+        "since": "7.0.0",
+        "updated": "7.0.1"
       }
     ]
   }
