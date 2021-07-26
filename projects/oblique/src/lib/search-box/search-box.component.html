@@ -10,6 +10,7 @@
 	role="searchbox"
 	[(ngModel)]="pattern"
 	(focus)="focus()"
+	(blur)="blur()"
 	(click)="click($event)"
 />
 <ob-dropdown position="right">

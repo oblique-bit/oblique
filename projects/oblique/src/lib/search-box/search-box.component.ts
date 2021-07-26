@@ -101,6 +101,10 @@ export class ObSearchBoxComponent {
 		}
 	}
 
+	blur(): void {
+		this.toggle(false);
+	}
+
 	click(evt: MouseEvent): void {
 		// avoid to trigger a toggle on the dropdown component
 		evt.stopPropagation();
