@@ -105,7 +105,7 @@ function provideBanner(tree: Tree): Tree {
 	const changes: Change[] = addProviderToModule(sourceFile, appModulePath, provider, ObliquePackage)
 		.concat(insertImport(sourceFile, appModulePath, 'environment', '../environments/environment'))
 		.filter((change: Change) => change instanceof InsertChange)
-		.map((change: InsertChange) => adaptInsertChange(tree, change, provider, 'OB_BANNER'));
+		.map((change: InsertChange) => adaptInsertChange(tree, change, provider.replace(/\..*$/, ''), 'OB_BANNER'));
 
 	return applyChanges(tree, appModulePath, changes);
 }
