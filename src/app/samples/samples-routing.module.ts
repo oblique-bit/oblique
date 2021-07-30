@@ -34,6 +34,7 @@ import {ObSpinnerSampleComponent} from './spinner-sample/spinner-sample.componen
 import {ObStickySampleComponent} from './sticky/sticky-sample.component';
 import {ObUnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
 import {ObUnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
+import {ObDropdownSampleComponent} from './dropdown/dropdown.component';
 
 const samplesRoutes: Routes = [
 	{path: 'alert', component: ObAlertSampleComponent},
@@ -99,6 +100,7 @@ const samplesRoutes: Routes = [
 	{path: 'collapse', component: ObCollapseSampleComponent},
 	{path: 'column-layout', component: ObColumnLayoutSampleComponent},
 	{path: 'datepicker', component: ObDatepickerSampleComponent},
+	{path: 'dropdown', component: ObDropdownSampleComponent},
 	{path: 'error-messages', component: ObErrorMessagesSampleComponent},
 	{path: 'external-link', component: ObExternalLinkComponent},
 	{path: 'file-upload', component: ObFileUploadSampleComponent},

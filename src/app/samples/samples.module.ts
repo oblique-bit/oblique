@@ -54,6 +54,7 @@ import {
 	ObCollapseModule,
 	ObColumnLayoutModule,
 	ObDatepickerModule,
+	ObDropdownModule,
 	ObErrorMessagesModule,
 	ObExternalLinkModule,
 	ObFileUploadModule,
@@ -90,6 +91,7 @@ import {ObHorizontalFormsSampleComponent} from './horizontal-forms/horizontal-fo
 import {ObBreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
 import {ObFileUploadSampleComponent} from './file-upload-sample/file-upload-sample.component';
 import {SharedModule} from '../common/shared.module';
+import {ObDropdownSampleComponent} from './dropdown/dropdown.component';
 
 @NgModule({
 	imports: [
@@ -99,6 +101,7 @@ import {SharedModule} from '../common/shared.module';
 		ObCollapseModule,
 		ObColumnLayoutModule,
 		ObDatepickerModule,
+		ObDropdownModule,
 		ObErrorMessagesModule,
 		ObFileUploadModule,
 		ObFormControlStateModule,
@@ -151,6 +154,7 @@ import {SharedModule} from '../common/shared.module';
 		ObCollapseSampleComponent,
 		ObColumnLayoutSampleComponent,
 		ObDatepickerSampleComponent,
+		ObDropdownSampleComponent,
 		ObErrorMessagesSampleComponent,
 		ObFormSampleComponent,
 		ObFormControlStateSampleComponent,
