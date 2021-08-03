@@ -205,6 +205,24 @@ describe('SearchBoxComponent', () => {
 		});
 	});
 
+	describe('blur', () => {
+		beforeEach(() => {
+			component.minPatternLength = 1;
+			component.pattern = 't';
+			component.isOpened = false;
+			component.focus();
+		});
+
+		it('the dropdown should remain opened if nothing is done', () => {
+			expect(component.isOpened).toBe(true);
+		});
+
+		it('should close the dropdown when blur is called', () => {
+			component.blur();
+			expect(component.isOpened).toBe(false);
+		});
+	});
+
 	describe('click', () => {
 		it('should call stopPropagation', () => {
 			const mock = {stopPropagation: jest.fn()} as unknown as MouseEvent;
