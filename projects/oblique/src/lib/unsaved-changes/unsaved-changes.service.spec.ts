@@ -4,7 +4,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {ObPopUpService} from '../pop-up/pop-up.service';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 import {ObMockPopUpModule} from '../pop-up/_mocks/mock-pop-up.module';
-import {WINDOW, windowProvider} from '../utilities';
+import {WINDOW} from '../utilities';
 import {ObUnsavedChangesService} from './unsaved-changes.service';
 
 describe('UnsavedChangesService', () => {
@@ -13,7 +13,7 @@ describe('UnsavedChangesService', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [ObMockPopUpModule],
-			providers: [ObUnsavedChangesService, {provide: TranslateService, useClass: ObMockTranslateService}, {provide: WINDOW, useFactory: windowProvider}]
+			providers: [ObUnsavedChangesService, {provide: TranslateService, useClass: ObMockTranslateService}, {provide: WINDOW, useValue: window}]
 		});
 		popUpService = TestBed.inject(ObPopUpService);
 	});

@@ -3,7 +3,7 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
-import {windowProvider, WINDOW} from '../utilities';
+import {WINDOW} from '../utilities';
 import {ObTopControlComponent} from './top-control.component';
 
 describe('TopControlComponent', () => {
@@ -16,7 +16,7 @@ describe('TopControlComponent', () => {
 			schemas: [CUSTOM_ELEMENTS_SCHEMA],
 			providers: [
 				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useValue: windowProvider}
+				{provide: WINDOW, useValue: window}
 			]
 		}).compileComponents();
 	}));
