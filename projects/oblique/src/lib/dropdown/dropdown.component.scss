@@ -33,7 +33,7 @@ $arrow-lg-size: 14px;
 		z-index: $z-index-widget;
 
 		&.middle {
-			transform: translateX(calc(-50% + 8px));
+			transform: translateX(calc(-50% + 13px)); //empiric value
 
 			.ob-control-item & {
 				transform: translateX(calc(-50% + 19px));
@@ -41,18 +41,20 @@ $arrow-lg-size: 14px;
 		}
 
 		&.right {
-			transform: translateX(-11px);
+			margin: $spacing-default 0 0 0;
+			transform: translateX(-17px); // empiric value
 
 			.ob-control-item & {
-				transform: translateX(-1px);
+				transform: translateX(-13px); // empiric value
 			}
 		}
 
 		&.left {
-			transform: translateX(calc(-100% + 43px));
+			transform: translateX(calc(-100% + 37px)); // empiric value
+			margin: $spacing-default 0 0 0;
 
 			.ob-control-item & {
-				transform: translateX(calc(-100% + 54px));
+				transform: translateX(calc(-100% + 41px)); // empiric value
 			}
 		}
 	}
