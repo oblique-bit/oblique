@@ -45,7 +45,7 @@
     "distiOS": "npm run gulp pre-dist && npm run build -- oblique && npm run distiOS --prefix projects/oblique/schematics && npm run minify && npm run gulp -- dist",
     "postdist": "npm run minify && npm run gulp -- dist",
     "minify": "minify projects/oblique/src/ob-features.js --out-file dist/oblique/ob-features.js",
-    "test": "ng test oblique",
+    "test": "ng test oblique --prod",
     "lint": "ng lint oblique && ng lint oblique-showcase",
     "lint:fix": "ng lint oblique --fix && ng lint oblique-showcase --fix",
     "prettier": "./node_modules/.bin/prettier --write projects/**/{*.ts,*.html} src/**/{*.ts,*.html}",
