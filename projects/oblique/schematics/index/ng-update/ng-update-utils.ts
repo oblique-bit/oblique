@@ -371,7 +371,7 @@ export class SchematicsUtil {
 
 		tree.overwrite(
 			filePath,
-			tasks.reduce((str: string, task: any) => str.replace(new RegExp(task.from, 'g'), task.to), sourceFile.getFullText())
+			tasks.reduce((str: string, task: any) => str.replace(new RegExp(`\\b${task.from}\\b`, 'g'), task.to), sourceFile.getFullText())
 		);
 	}
 
