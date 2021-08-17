@@ -51,7 +51,7 @@
     "prettier": "./node_modules/.bin/prettier --write projects/**/{*.ts,*.html} src/**/{*.ts,*.html}",
     "format": "npm run lint:fix && npm run prettier",
     "themes": "npm run gulp -- themes",
-    "icons": "node scripts/icons.js",
+    "icons": "ts-node scripts/icons.ts",
     "copy-error-messages": "node scripts/copy-error-messages.js",
     "e2e": "ng e2e",
     "release": "node scripts/release.js",
