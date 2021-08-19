@@ -132,6 +132,7 @@
     "moment": "^2.29.1",
     "ng-packagr": "^12.1.0",
     "prettier": "^2.3.2",
+    "raw-loader": "^4.0.2",
     "sass": "^1.35.1",
     "ts-morph": "^9.1.0",
     "ts-node": "^10.0.0",
