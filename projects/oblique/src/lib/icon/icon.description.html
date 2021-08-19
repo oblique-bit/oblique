@@ -57,11 +57,11 @@
 <details>
 	<summary>How to register additional icons on build time?</summary>
 	<p>
-		First the icon set has to be loaded, then the serialized icon set has to be passed to the <code>additionalIcons</code> property of the
-		<code>forRoot</code> method.
+		A serialized icon set (see below) can be passed on to the <code>ObIconModule</code>'s configuration. The module's <code>forRoot</code> method accepts a
+		<code>config</code> parameter whose <code>additionalIcons</code> property serves that purpose.
 	</p>
 	<pre>
-const iconSet = require('!!raw-loader!path/to/iconSet.svg').default;  // alternatively, the constant can hold the serialized icon set directly
+const iconSet = '&lt;svg>&lt;defs>&lt;svg id="my-icon">...&lt;/svg>...&lt;/defs>&lt;/svg>';
 
 @NgModule(&lcub;
 	imports: [

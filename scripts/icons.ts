@@ -7,6 +7,7 @@
 	function manageIcons() {
 		const SVGs = getSVGs(path.join('projects', 'oblique', 'icons'));
 		writeIconSet(path.join('projects', 'oblique', 'src', 'assets', 'obliqueIcons.svg'), SVGs);
+		writeIconSetTS(path.join('projects', 'oblique', 'src', 'assets', 'oblique-icons.ts'), SVGs);
 		writeIconCSS(path.join('projects', 'oblique', 'src', 'styles', 'scss', 'oblique-icons.scss'), SVGs);
 		writeIconEnum(path.join('projects', 'oblique', 'src', 'lib', 'icon', 'icon.model.ts'), SVGs);
 	}
@@ -35,6 +36,11 @@
 	function writeIconSet(file: string, SVGs: string[]): void {
 		const iconSet = ['<svg>', '\t<defs>', ...SVGs.map(svg => `\t\t${svg}`), '\t</defs>', '</svg>'];
 		fs.writeFileSync(file, iconSet.join('\n'));
+	}
+
+	function writeIconSetTS(file: string, SVGs: string[]): void {
+		const iconSet = ['<svg>', '<defs>', ...SVGs, '</defs>', '</svg>'];
+		fs.writeFileSync(file, `export const iconSet = '${iconSet.join('')}';`);
 	}
 
 	function writeIconCSS(file: string, SVGs: string[]): void {
