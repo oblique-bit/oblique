@@ -17,6 +17,7 @@
   "i18n.oblique.http.error.general": "Es ist ein unbekannter Fehler aufgetreten. Versuchen Sie es später noch einmal.",
   "i18n.oblique.http.error.status.0": "Der Server steht temporär nicht zur Verfügung, zum Beispiel wegen Überlastung oder Wartungsarbeiten. Ein „Retry-After“-Header-Feld in der Antwort kann den Client auf einen Zeitpunkt hinweisen, zu dem die Anfrage eventuell bearbeitet werden könnte.",
   "i18n.oblique.http.error.status.400": "Die Anfrage-Nachricht war fehlerhaft aufgebaut.",
+  "i18n.oblique.http.error.status.403": "Der Client hat keine Zugriffsrechte auf den Inhalt, daher verweigert der Server eine ordnungsgemäße Antwort.",
   "i18n.oblique.http.error.status.404": "Die angeforderte Ressource wurde nicht gefunden. Dieser Statuscode kann ebenfalls verwendet werden, um eine Anfrage ohne näheren Grund abzuweisen. Links, welche auf solche Fehlerseiten verweisen, werden auch als Tote Links bezeichnet.",
   "i18n.oblique.http.error.status.500": "Dies ist ein „Sammel-Statuscode“ für unerwartete Serverfehler.",
   "i18n.oblique.http.error.status.501": "Die Funktionalität, um die Anfrage zu bearbeiten, wird von diesem Server nicht bereitgestellt. Ursache ist zum Beispiel eine unbekannte oder nicht unterstützte HTTP-Methode.",

@@ -17,6 +17,7 @@
   "i18n.oblique.http.error.general": "An unknown error has occurred. Please try again later.",
   "i18n.oblique.http.error.status.0": "The server cannot handle the request (because it is overloaded or down for maintenance). Generally, this is a temporary state.",
   "i18n.oblique.http.error.status.400": "The server cannot or will not process the request due to an apparent client error (e.g., malformed request syntax, size too large, invalid request message framing, or deceptive request routing).",
+  "i18n.oblique.http.error.status.403": "The client does not have access rights to the content. The request is unauthorized because the server is refusing to give the requested resource. Unlike 401, the client's identity is known to the server.",
   "i18n.oblique.http.error.status.404": "The requested resource could not be found but may be available in the future. Subsequent requests by the client are permissible.",
   "i18n.oblique.http.error.status.500": "A generic error message, given when an unexpected condition was encountered and no more specific message is suitable.",
   "i18n.oblique.http.error.status.501": "The server either does not recognize the request method, or it lacks the ability to fulfil the request. Usually this implies future availability (e.g., a new feature of a web-service API).",
