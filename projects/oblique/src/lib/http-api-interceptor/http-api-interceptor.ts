@@ -105,7 +105,7 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 
 	private notify(notification: ObIHttpApiRequestNotification, error: HttpErrorResponse): void {
 		this.notificationService.send({
-			message: notification.text || `i18n.oblique.http.error.status.${error.status}`,
+			message: notification.text || `i18n.oblique.http.error.status.${error.status || 503}`,
 			title: notification.title || error.statusText,
 			type: notification.severity,
 			sticky: notification.sticky

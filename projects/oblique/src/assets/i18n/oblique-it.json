@@ -15,7 +15,6 @@
   "i18n.oblique.column.right.toggle": "Toggle right column",
   "i18n.oblique.column.right.title": "Colonna a destra",
   "i18n.oblique.http.error.general": "Si è verificato un errore sconosciuto. Riprovare più tardi.",
-  "i18n.oblique.http.error.status.0": "Il server non è al momento disponibile. Generalmente è una condizione temporanea.",
   "i18n.oblique.http.error.status.400": "La richiesta non può essere soddisfatta a causa di errori di sintassi.",
   "i18n.oblique.http.error.status.403": "Il cliente non ha i diritti di accesso al contenuto, quindi il server si rifiuta di dare la vera risposta.",
   "i18n.oblique.http.error.status.404": "La risorsa richiesta non è stata trovata ma in futuro potrebbe essere disponibile.",
