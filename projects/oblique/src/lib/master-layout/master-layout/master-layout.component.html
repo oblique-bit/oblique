@@ -1,19 +1,33 @@
 <nav class="ob-access-keys" role="navigation" aria-label="Access keys">
 	<ul>
 		<li>
-			<a class="ob-accessible" [class.ob-font-awesome]="!useObliqueIcons" accesskey="0" [routerLink]="url" fragment="content">
+			<a
+				class="ob-accessible"
+				[class.ob-font-awesome]="!useObliqueIcons"
+				accesskey="0"
+				[routerLink]="route.path"
+				[queryParams]="route.params"
+				fragment="content"
+			>
 				<ob-icon icon="universal-access"></ob-icon>
 				{{ "i18n.oblique.master-layout.accesskey.mainContent" | translate }}
 			</a>
 		</li>
 		<li>
-			<a class="ob-accessible" [class.ob-font-awesome]="!useObliqueIcons" accesskey="1" [routerLink]="home">
+			<a class="ob-accessible" [class.ob-font-awesome]="!useObliqueIcons" accesskey="1" [routerLink]="home" [queryParams]="route.params">
 				<ob-icon icon="universal-access"></ob-icon>
 				{{ "i18n.oblique.master-layout.accesskey.homepage" | translate }}
 			</a>
 		</li>
 		<li *ngIf="!noNavigation && navigation.length">
-			<a class="ob-accessible" [class.ob-font-awesome]="!useObliqueIcons" accesskey="2" [routerLink]="url" fragment="navigation">
+			<a
+				class="ob-accessible"
+				[class.ob-font-awesome]="!useObliqueIcons"
+				accesskey="2"
+				[routerLink]="route.path"
+				[queryParams]="route.params"
+				fragment="navigation"
+			>
 				<ob-icon icon="universal-access"></ob-icon>
 				{{ "i18n.oblique.master-layout.accesskey.navigation" | translate }}
 			</a>
@@ -23,7 +37,8 @@
 				class="ob-accessible"
 				[class.ob-font-awesome]="!useObliqueIcons"
 				[attr.accesskey]="jumpLink.accessKey"
-				[routerLink]="jumpLink.url == 'current' ? url : jumpLink.url"
+				[routerLink]="jumpLink.url == 'current' ? route.path : jumpLink.url"
+				[queryParams]="route.params"
 				[fragment]="jumpLink.fragment"
 			>
 				<ob-icon icon="universal-access"></ob-icon>
