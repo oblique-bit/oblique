@@ -1,4 +1,4 @@
-# [7.0.1](https://github.com/oblique-bit/oblique/compare/7.0.0-RC.2...7.0.1) (2021-07-26)
+# [7.0.1](https://github.com/oblique-bit/oblique/compare/7.0.0...7.0.1) (2021-07-26)
 
 ## Bug Fixes
 * **mandatory:** handle absence of `mat-form-field` ([e43a0ad](https://github.com/oblique-bit/oblique/commit/e43a0ada68b8b7fac0b11ab18ba6dd0066f74eab))
@@ -8,7 +8,7 @@
 * **toolchain:** use titles consistently with 1 hash in CHANGELOG ([a6267ea](https://github.com/oblique-bit/oblique/commit/a6267eacbe3c3019143b966c3521524dc2e6ed05))
 
 
-# [7.0.0](https://github.com/oblique-bit/oblique/compare/7.0.0-RC.2...7.0.0) (2021-07-20)
+# [7.0.0](https://github.com/oblique-bit/oblique/compare/6.1.5...7.0.0) (2021-07-20)
 
 ## Bug Fixes
 * **alert:** improve icon alignment ([1bc4435](https://github.com/oblique-bit/oblique/commit/1bc4435fdb6bc7020fa0205700809c6a2baed3df))
