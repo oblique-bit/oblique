@@ -106,13 +106,20 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 	}
 
 	private notify(notification: ObIHttpApiRequestNotification, error: HttpErrorResponse): void {
-		const errorKey = `i18n.oblique.http.error.status.${error.status}`;
-		this.translate.get(errorKey)
-			.pipe(map(text => text !== errorKey ? errorKey : 'i18n.oblique.http.error.general'))
-			.subscribe(key =>
+		const textKey = `i18n.oblique.http.error.status.${error.status}`;
+		const titleKey = `i18n.oblique.http.error.status.${error.status}.title`;
+		this.translate
+			.get([textKey, titleKey])
+			.pipe(
+				map(texts => ({
+					text: texts[textKey] !== textKey ? textKey : 'i18n.oblique.http.error.general',
+					title: texts[titleKey] !== titleKey ? titleKey : error.statusText
+				}))
+			)
+			.subscribe(keys =>
 				this.notificationService.send({
-					message: notification.text || key,
-					title: notification.title || error.statusText,
+					message: notification.text || keys.text,
+					title: notification.title || keys.title,
 					type: notification.severity,
 					sticky: notification.sticky
 				})
