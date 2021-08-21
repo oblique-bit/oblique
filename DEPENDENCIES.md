@@ -1,0 +1,68 @@
+# Oblique Dependencies
+
+##  Dependencies
+|       Name         | Used by              | Relevant script              |  Description    |      NPM      |     Documentation |
+|----------------|-------------------------------|-------------------------------|-----------------------------| -----------------------------|-----------------------------|
+|@angular/animations| Angular animations || Implements a domain-specific language (DSL) for defining web animation sequences for HTML elements as multiple transformations over time.| https://www.npmjs.com/package/@angular/animations | https://angular.io/api/animations|
+|@angular/cdk | Angular Material ||The Component Dev Kit (CDK) is a set of behavior primitives for building UI components. |https://www.npmjs.com/package/@angular/cdk| https://material.angular.io/cdk/categories
+|@angular/common| Angular ||Implements fundamental Angular framework functionality, including directives and pipes, location services used in routing, HTTP services, localization support, and so on.| https://www.npmjs.com/package/@angular/common |https://angular.io/api/common|
+|@angular/compiler| Angular | || https://www.npmjs.com/package/@angular/compiler | https://angular.io/docs |
+|@angular/core| Angular || Implements Angular's core functionality, low-level services, and utilities.|https://www.npmjs.com/package/@angular/core|https://angular.io/api/core|
+|@angular/forms| Angular || Implements a set of directives and providers to communicate with native DOM elements when building forms to capture user input. |https://www.npmjs.com/package/@angular/forms | https://angular.io/api/forms|
+|@angular/localize| Angular || The @angular/localize package contains helpers and tools for localizing your application. | https://www.npmjs.com/package/@angular/localize |https://angular.io/api/localize|
+|@angular/material| Angular Material || Material Design components for Angular | https://www.npmjs.com/package/@angular/material |https://material.angular.io/|
+|@angular/material-moment-adapter| Angular material ||The Angular team builds and maintains both common UI components and tools to help you build your own custom components. The team maintains several npm packages.|https://www.npmjs.com/package/@angular/material-moment-adapter|https://github.com/angular/components#readme|
+|@angular/platform-browser| Angular || Supports execution of Angular apps on different supported browsers. | https://www.npmjs.com/package/@angular/platform-browser |https://angular.io/api/platform-browser|
+|@angular/platform-browser-dynamic| Angular || Supports JIT compilation and execution of Angular apps on different supported browsers|https://www.npmjs.com/package/@angular/platform-browser-dynamic|https://angular.io/api/platform-browser-dynamic|
+|@angular/router| Angular ||Implements the Angular Router service , which enables navigation from one view to the next as users perform application tasks. |https://www.npmjs.com/package/@angular/router |https://angular.io/api/router|
+|@ng-bootstrap/ng-bootstrap"| Oblique ||Angular widgets built from the ground up using only Bootstrap 4 CSS with APIs designed for the Angular ecosystem. No dependencies on 3rd party JavaScript.|https://www.npmjs.com/package/@ng-bootstrap/ng-bootstrap |https://ng-bootstrap.github.io/|
+|@ngx-translate/core| Oblique ||The internationalization (i18n) library for Angular.|https://www.npmjs.com/package/@ngx-translate/core |https://www.npmjs.com/package/@ngx-translate/core|
+|@popperjs/core| ObPopover ||Tooltip & Popover Positioning Engine|https://www.npmjs.com/package/@popperjs/core| https://popper.js.org/docs/v2/| 
+|ajv| ObSchemaValidation ||Ajv JSON schema validator| | https://www.npmjs.com/package/ajv |https://ajv.js.org/|
+|ajv-formats| AJV ||JSON Schema formats for Ajv |https://www.npmjs.com/package/ajv-formats||https://www.npmjs.com/package/ajv-formats|
+|rxjs| Angular & Oblique ||Reactive Extensions Library for JavaScript. This is a rewrite of Reactive-Extensions/RxJS and is the latest production-ready version of RxJS. This rewrite is meant to have better performance, better modularity, better debuggable call stacks, while staying mostly backwards compatible, with some breaking changes that reduce the API surface|https://www.npmjs.com/package/rxjs|https://angular.io/guide/rx-library https://rxjs.dev/guide/overview|
+|tslib|||This is a runtime library for TypeScript that contains all of the TypeScript helper
+|zone.js| Angular ||Implements Zones for JavaScript, inspired by Dart|https://www.npmjs.com/package/zone.js|https://github.com/angular/angular/blob/HEAD/packages/zone.js/lib/zone.ts|
+
+##  DevDependencies
+|       Name         | Used by              | Relevant script              |  Description    |      NPM      |     Documentation |
+|----------------|-------------------------------|-------------------------------|-----------------------------| -----------------------------|-----------------------------|
+|@angular-builders/jest| Angular CLI & jest |tests|Allows running ng test with Jest instead of Karma & Jasmine.|https://www.npmjs.com/package/@angular-builders/jest|https://www.npmjs.com/package/@angular-builders/jest|
+|@angular-devkit/build-angular|Angular CLI |build, dist|This package contains Architect builders used to build and test Angular applications and libraries.|https://www.npmjs.com/package/@angular-devkit/build-angular|https://angular.io/guide/cli-builder|
+|@angular-devkit/build-ng-packagr|Angular CLI |dist| Compile and package Angular libraries in Angular Package Format  |https://www.npmjs.com/package/@angular-devkit/build-ng-packagr| |
+|@angular-eslint/builder|Angular CLI |lint|An Angular CLI Builder which is used to execute ESLint on your Angular projects using standard commands such as ng lint|https://www.npmjs.com/package/@angular-eslint/builder|https://github.com/angular-eslint/angular-eslint|
+|@angular-eslint/eslint-plugin|Angular CLI |lint|An ESLint-specific plugin that contains rules which are specific to Angular projects. It can be combined with any other ESLint plugins in the normal way. |https://www.npmjs.com/package/@angular-eslint/eslint-plugin|https://github.com/angular-eslint/angular-eslint#readme|
+|@angular/cli| Angular CLI|all|The Angular CLI is a command-line interface tool that you use to initialize, develop, scaffold, and maintain Angular applications directly from a command shell.|https://www.npmjs.com/package/@angular/cli | https://angular.io/cli|
+|@angular/compiler-cli| Angular CLI|build, dist|The compiler CLI for Node.js |https://www.npmjs.com/package/@angular/compiler-cli|https://github.com/angular/angular/tree/master/packages/compiler-cli|
+|@fortawesome/fontawesome-free| Oblique icons| ||https://www.npmjs.com/package/@fortawesome/fontawesome-free|https://fontawesome.com/|
+|@schematics/angular| Oblique schematics |dist|This package contains a collection of schematics for generating an Angular application|https://www.npmjs.com/package/@schematics/angular| https://angular.io/guide/schematics|
+|@types/jest|Jest|test |This package contains type definitions for Jest (https://jestjs.io/).|https://www.npmjs.com/package/@types/jest| https://www.npmjs.com/package/@types/jest|
+|@types/node| NodeJS scripts ||This package contains type definitions for Node.js |https://www.npmjs.com/package/@types/node|https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node|
+|@typescript-eslint/eslint-plugin|Angular CLI |lint|An ESLint plugin which provides lint rules for TypeScript codebases.|https://www.npmjs.com/package/@typescript-eslint/eslint-plugin| https://github.com/typescript-eslint/typescript-eslint#readme|
+|@typescript-eslint/parser|Angular CLI |lint|An ESLint parser which leverages TypeScript ESTree to allow for ESLint to lint TypeScript source code.|https://www.npmjs.com/package/@typescript-eslint/parser|https://github.com/typescript-eslint/typescript-eslint#readme|
+|ansi-colors|Oblique schematics ||Easily add ANSI colors to your text and symbols in the terminal. A faster drop-in replacement for chalk, kleur and turbocolor (without the dependencies and rendering bugs).|https://www.npmjs.com/package/ansi-colors|https://www.npmjs.com/package/ansi-colors|
+|bootstrap| Oblique ||Sleek, intuitive, and powerful front-end framework for faster and easier web development.|https://www.npmjs.com/package/bootstrap|https://www.npmjs.com/package/bootstrap#documentation https://getbootstrap.com/ https://getbootstrap.com/docs/5.0/getting-started/introduction/|
+|conventional-changelog| Oblique |dist|Generate a changelog from git metadata|https://www.npmjs.com/package/conventional-changelog|https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog#readme|
+|cpx| Oblique schematics|dist|Copy file globs, watching for changes. This module provides a CLI tool like cp, but with watching.|https://www.npmjs.com/package/cpx|https://www.npmjs.com/package/cpx|
+|del| Oblique & Gulp |dist| Similar to rimraf, but with a Promise API and support for multiple files and globbing. It also
+|eslint| Oblique |lint|ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.|https://www.npmjs.com/package/eslint| https://eslint.org/|
+|eslint-config-prettier|Oblique|lint |Turns off all rules that are unnecessary or might conflict with Prettier. This lets you use your favorite shareable config without letting its stylistic choices get in the way when using Prettier. Note that this config only turns rules off, so it only makes sense using it together with some other config.|https://www.npmjs.com/package/eslint-config-prettier|https://github.com/prettier/eslint-config-prettier/|
+|eslint-plugin-prettier| Oblique |lint|Runs Prettier as an ESLint rule and reports differences as individual ESLint issues.|https://www.npmjs.com/package/eslint-plugin-prettier|https://www.npmjs.com/package/eslint-plugin-prettier|
+|font-awesome|Oblique icons ||Font Awesome is a full suite of 675 pictographic icons for easy scalable vector graphics on websites, created and maintained by Dave Gandy. |https://www.npmjs.com/package/font-awesome|https://fontawesome.com/v5.15/how-to-use/on-the-web/referencing-icons/basic-use|
+|gulp| Oblique|dist| Gulp is a toolkit that helps you automate painful or time-consuming tasks in your development workflow.|https://www.npmjs.com/package/gulp|https://gulpjs.com/|
+|gulp-file|Oblique & Gulp |dist|Create vinyl files from a string or buffer and insert into the Gulp pipeline|https://www.npmjs.com/package/gulp-file|https://github.com/alexmingoia/gulp-file|
+|gulp-git|Oblique & Gulp |dist|Git plugin for gulp (gulpjs.com)|https://www.npmjs.com/package/gulp-git|https://github.com/stevelacy/gulp-git|
+|gulp-header|Oblique & Gulp |dist |gulp-header is a Gulp extension to add a header to file(s) in the pipeline. Gulp is a streaming build system utilizing node.js|https://www.npmjs.com/package/gulp-header|https://github.com/gulp-community/gulp-header#readme|
+|gulp-rename|Oblique & Gulp |dist|gulp-rename is a gulp plugin to rename files easily.|https://www.npmjs.com/package/gulp-rename|https://github.com/hparra/gulp-rename|
+|gulp-replace|Oblique & Gulp |dist|A string replace plugin for gulp|https://www.npmjs.com/package/gulp-replace|https://github.com/lazd/gulp-replace#readme|
+|husky|Oblique git hooks |git commit & git push|Modern native Git hooks made easy, Husky improves your commits and more 🐶 woof!|https://www.npmjs.com/package/husky|https://typicode.github.io/husky/#/|
+|jest| Angular CLI|test|Jest is a delightful JavaScript Testing Framework with a focus on simplicity.|https://www.npmjs.com/package/jest|https://jestjs.io/docs/getting-started|
+|jest-sonar-reporter| Oblique & Sonar ||jest-sonar-reporter is a custom results processor for Jest. The processor converts Jest's output into Sonar's generic test data format.|https://www.npmjs.com/package/jest-sonar-reporter|https://github.com/3dmind/jest-sonar-reporter#readme|
+|moment|Angular Material ||A JavaScript date library for parsing, validating, manipulating, and formatting dates.|https://www.npmjs.com/package/moment|https://momentjs.com/|
+|ng-packagr| Angular CLI|dist|Compile and package Angular libraries in Angular Package Format (APF)|https://www.npmjs.com/package/ng-packagr|https://github.com/ng-packagr/ng-packagr|
+|prettier| Oblique|lint|Prettier is an opinionated code formatter. It enforces a consistent style by parsing your code and re-printing it with its own rules that take the maximum line length into account, wrapping code when necessary.|https://www.npmjs.com/package/prettier|https://prettier.io/|
+|sass| Oblique & Gulp |dist|A pure JavaScript implementation of Sass. Sass makes CSS fun again. | https://www.npmjs.com/package/sass | |
+|ts-morph| Oblique schematics|dist|TypeScript Compiler API wrapper. Provides an easier way to programmatically navigate and manipulate TypeScript and JavaScript code.|https://www.npmjs.com/package/ts-morph|https://github.com/dsherret/ts-morph#readme|
+|ts-node| ||TypeScript execution and REPL for node.js, with source map support|https://www.npmjs.com/package/ts-node| https://typestrong.org/ts-node|
+|typescript|| |TypeScript is a language for application-scale JavaScript. TypeScript adds optional types to JavaScript that support tools for large-scale JavaScript applications for any browser, for any host, on any OS|https://www.npmjs.com/package/typescript|www.typescriptlang.org/|
+|uglify-js|Oblique |dist|UglifyJS is a JavaScript parser, minifier, compressor and beautifier toolkit.|https://www.npmjs.com/package/uglify-js|https://github.com/mishoo/UglifyJS#readme|

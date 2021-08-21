@@ -2,6 +2,7 @@ import {Inject, Injectable, Optional} from '@angular/core';
 import {MatIconRegistry} from '@angular/material/icon';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ObIconConfig, ObTIconConfig} from './icon.model';
+import {iconSet} from '../../assets/oblique-icons';
 
 @Injectable({
 	providedIn: 'root'
@@ -37,7 +38,7 @@ export class ObIconService {
 	private getIconSets(config: ObIconConfig): string[] {
 		const iconSets = config?.additionalIcons || [];
 		if (config.registerObliqueIcons) {
-			iconSets.unshift(require('!!raw-loader!../../assets/obliqueIcons.svg').default);
+			iconSets.unshift(iconSet);
 		}
 
 		return iconSets;

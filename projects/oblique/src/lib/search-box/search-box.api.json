@@ -7,7 +7,7 @@
       "exported": "obSearchBox",
       "type": "component",
       "since": "3.0.0",
-      "updated": "6.0.0",
+      "updated": "7.0.2",
       "inputs": [
         {
           "name": "slide",
