@@ -15,9 +15,9 @@ import {
 	ViewChild,
 	ViewEncapsulation
 } from '@angular/core';
-import {NavigationEnd, Router} from '@angular/router';
+import {NavigationEnd, Params, Router} from '@angular/router';
 import {DOCUMENT} from '@angular/common';
-import {filter, map, takeUntil} from 'rxjs/operators';
+import {filter, map, takeUntil, tap} from 'rxjs/operators';
 
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
@@ -46,7 +46,7 @@ import {ObUseObliqueIcons} from '../../icon/icon.model';
 })
 export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 	home = this.config.homePageRoute;
-	url: string;
+	route = {path: '', params: undefined};
 	@Input() navigation: ObINavigationLink[] = [];
 	@Input() jumpLinks: ObIDynamicJumpLink[] = [];
 	@HostBinding('class.ob-master-layout-fixed') isFixed = this.masterLayout.layout.isFixed;
@@ -150,17 +150,20 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 		this.router.events
 			.pipe(
 				filter(evt => evt instanceof NavigationEnd),
-				map(() => this.router.url.split('#'))
+				map((evt: NavigationEnd) => evt.url),
+				tap(url => (this.route.path = (url.match(/^[^?&#]*/) || [])[0])),
+				tap(url => (this.route.params = this.formatQueryParameters((url.match(/(?<=[?&])[^#]*/) || [])[0]))),
+				map(url => (url.match(/(?<=#)[^?&]*/) || [])[0]),
+				filter(fragment => this.config.focusableFragments.indexOf(fragment) > -1)
 			)
-			.subscribe(route => {
-				this.url = route[0];
-				if (route[1] && this.config.focusableFragments.indexOf(route[1]) > -1) {
-					const el = document.getElementById(route[1]);
-					if (el) {
-						el.focus();
-					}
-				}
-			});
+			.subscribe(fragment => this.document.nativeElement.querySelector(`#${fragment}`)?.focus());
+	}
+
+	private formatQueryParameters(parameters: string): Params {
+		return parameters
+			?.split('&')
+			.map(parameters => parameters.split('='))
+			.reduce((params, parameter) => ({...params, [parameter[0]]: parameter[1]}), {});
 	}
 
 	private focusOffCanvasClose() {
