@@ -1,7 +1,8 @@
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Inject, Injectable} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
 import {Observable, throwError} from 'rxjs';
-import {catchError, finalize} from 'rxjs/operators';
+import {catchError, finalize, map} from 'rxjs/operators';
 
 import {WINDOW} from '../utilities';
 import {ObNotificationService} from '../notification/notification.module';
@@ -20,6 +21,7 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 		private readonly interceptorEvents: ObHttpApiInterceptorEvents,
 		private readonly spinner: ObSpinnerService,
 		private readonly notificationService: ObNotificationService,
+		private readonly translate: TranslateService,
 		@Inject(WINDOW) window: any
 	) {
 		this.window = window; // because AoT don't accept interfaces as DI
@@ -104,12 +106,17 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 	}
 
 	private notify(notification: ObIHttpApiRequestNotification, error: HttpErrorResponse): void {
-		this.notificationService.send({
-			message: notification.text || `i18n.oblique.http.error.status.${error.status || 503}`,
-			title: notification.title || error.statusText,
-			type: notification.severity,
-			sticky: notification.sticky
-		});
+		const errorKey = `i18n.oblique.http.error.status.${error.status}`;
+		this.translate.get(errorKey)
+			.pipe(map(text => text !== errorKey ? errorKey : 'i18n.oblique.http.error.general'))
+			.subscribe(key =>
+				this.notificationService.send({
+					message: notification.text || key,
+					title: notification.title || error.statusText,
+					type: notification.severity,
+					sticky: notification.sticky
+				})
+			);
 	}
 
 	private isApiCall(url: string): boolean {
