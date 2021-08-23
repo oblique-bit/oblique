@@ -7,7 +7,7 @@
       "exported": "obAlert",
       "type": "component",
       "usage": "This component renders an alert",
-      "since": "6.1.0",
+      "since": "7.0.3",
       "inputs": [
         {
           "name": "type",
@@ -20,14 +20,6 @@
             "warning",
             "error"
           ],
-          "since": "6.1.0"
-        }
-      ],
-      "methods": [
-        {
-          "name": "close",
-          "text": "Close the alert",
-          "returns": "void",
           "since": "6.1.0"
         }
       ]
