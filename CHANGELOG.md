@@ -115,7 +115,8 @@
 ## BREAKING CHANGES
 * **alert:** `ob-alert-link` class has been removed in favor of styling the links directly
 * **alert:** `alert-base` and `alert-variant` mixins have been removed with no replacement
-* **alert:** Alerts build without the `ob-alert` component need the `oblique-alert.css` file to be displayed correctly 
+* **alert:** Alerts build without the `ob-alert` component need the `oblique-alert.css` file to be displayed correctly
+* **alert:** Alerts are not closable anymore, if this feature really is needed, please do consider using notifications instead.
 * **button:** Button styling has slightly been adapted
 * **button:** Only Oblique buttons are styled, regular Material Design buttons reverts to their default styles
 * **button:** Icons within a button don't have a `margin` anymore. A whitespace should be added between the icon and the text.
