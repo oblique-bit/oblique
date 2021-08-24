@@ -76,7 +76,7 @@ function checkSubject(subject) {
 
 function checkBreakingChanges(lines) {
 	const breakingLineIndex = lines.findIndex(line => line.toLowerCase().includes('breaking change'));
-	if (breakingLineIndex > -1) {
+	if (breakingLineIndex > 0) { // skip 1st line as it may contain the "breaking change" string
 		const breaking = lines[breakingLineIndex];
 		const start = `${numeral(breakingLineIndex)} line doesn't follow "BREAKING CHANGE:" format,`;
 		if(!/^BREAKING CHANGE/i.test(breaking)) {
