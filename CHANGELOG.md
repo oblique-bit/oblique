@@ -1,3 +1,17 @@
+# [7.0.3](https://github.com/oblique-bit/oblique/compare/7.0.2...7.0.3) (2021-08-27)
+
+## Bug Fixes
+* **alert:** add `ob-close` CSS to `oblique-alert` ([cef601c](https://github.com/oblique-bit/oblique/commit/cef601cd2616c4bf3c7cb22ad048fc416c4b81dd))
+* **alert:** ensure the alert's type is provided to screen readers ([cbdc446](https://github.com/oblique-bit/oblique/commit/cbdc446347a7a9c869d51ade62a7a1d92370e530))
+* **master-layout:** ensure the footer don't cause an unwanted vertical scrollbar on the body ([f45a336](https://github.com/oblique-bit/oblique/commit/f45a33613ec38c4e90ba8a40176a1817b80f757b))
+* **notification:** ensure the notification's type is provided to screen readers ([8514e20](https://github.com/oblique-bit/oblique/commit/8514e20d28cb4e7fea74f4595a75a9f7869c486f))
+* **schematics:** fix schematics migrating pathMatch on `Routes` instead of `ObINavigationLink` ([e596d62](https://github.com/oblique-bit/oblique/commit/e596d62975de155a714eab0736ef4fa2168a37b1))
+* **spinner:** remove the `setTimeout` before changing the spinner's state ([93cf326](https://github.com/oblique-bit/oblique/commit/93cf326e957dd815513d45a72e4189d8461b1b00))
+* **toolchain:** enhance the CHANGELOG with a missing `breaking change` regarding `alert` ([f9f2a9d](https://github.com/oblique-bit/oblique/commit/f9f2a9d8f583577c73b39ee46c5ad9b42c6c1c20))
+* **toolchain:** the string "breaking change" is allowed on the 1st line of a commit ([b74fa84](https://github.com/oblique-bit/oblique/commit/b74fa847c75719ca51c4bdc5c6b966ab6aef9319))
+* **translation:** ensure `ObMockTranslateService.get` returns correctly when fed an array of keys ([f9d0b91](https://github.com/oblique-bit/oblique/commit/f9d0b914d9eba0afcc5c569bb14deee3bf68d06a))
+
+
 # [7.0.2](https://github.com/oblique-bit/oblique/compare/7.0.1...7.0.2) (2021-08-21)
 
 ## Bug Fixes
