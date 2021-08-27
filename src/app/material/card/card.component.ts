@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {ObSelectableGroupDirective} from 'oblique';
+import {ObSelectableGroupDirective} from '@oblique/oblique';
 
 @Component({
 	selector: 'ob-card',

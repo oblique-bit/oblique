@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
-import {ObGlobalEventsService, obOutsideFilter} from 'oblique';
+import {ObGlobalEventsService, obOutsideFilter} from '@oblique/oblique';
 
 @Component({
 	selector: 'ob-utilities-sample',

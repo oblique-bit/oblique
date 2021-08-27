@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ObMasterLayoutService, ObThemeService} from 'oblique';
+import {ObMasterLayoutService, ObThemeService} from '@oblique/oblique';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 

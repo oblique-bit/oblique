@@ -37,8 +37,8 @@ import {
 	ObUnsavedChangesModule,
 	THEMES,
 	ObIconModule,
-	ObBreadcrumbModule
-} from 'oblique';
+	ObUseObliqueIcons
+} from '@oblique/oblique';
 // App:
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -48,7 +48,6 @@ import {environment} from '../environments/environment';
 import {registerLocaleData} from '@angular/common';
 
 import localeFR from '@angular/common/locales/fr-CH';
-import {ObUseObliqueIcons} from 'oblique';
 import {ObHttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
 
 registerLocaleData(localeFR);

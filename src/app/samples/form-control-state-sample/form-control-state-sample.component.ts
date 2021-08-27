@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, NgForm, Validators, ValidationErrors} from '@angular/forms';
-import {ObNotificationService} from 'oblique';
+import {ObNotificationService} from '@oblique/oblique';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector

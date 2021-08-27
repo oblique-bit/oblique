@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, NgForm, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
-import {ObNotificationService, ObSchemaValidationService, ObThemeService} from 'oblique';
+import {ObNotificationService, ObSchemaValidationService, ObThemeService} from '@oblique/oblique';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 

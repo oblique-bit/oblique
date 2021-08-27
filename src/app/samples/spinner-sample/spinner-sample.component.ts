@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ObMasterLayoutService, ObSpinnerService} from 'oblique';
+import {ObMasterLayoutService, ObSpinnerService} from '@oblique/oblique';
 
 @Component({
 	selector: 'ob-spinner-sample',

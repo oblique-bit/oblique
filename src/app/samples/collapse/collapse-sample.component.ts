@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {ObThemeService} from 'oblique';
+import {ObThemeService} from '@oblique/oblique';
 import {Duration, IconPosition} from './collapse-sample.model';
 
 @Component({

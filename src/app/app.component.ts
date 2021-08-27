@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FONTS, ObINavigationLink, ObISearchWidgetItem, THEMES, ObThemeService} from 'oblique';
+import {FONTS, ObINavigationLink, ObISearchWidgetItem, THEMES, ObThemeService} from '@oblique/oblique';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {ObIJumpLink} from 'projects/oblique/src/lib/master-layout/master-layout.model';

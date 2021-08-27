@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, OnInit, ViewChild, ViewEncapsulation
 import {FormBuilder, FormGroup, NgModelGroup, Validators} from '@angular/forms';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ObUnsavedChangesSampleModalComponent} from './unsaved-changes-sample-modal.component';
-import {ObUnsavedChangesService} from 'oblique';
+import {ObUnsavedChangesService} from '@oblique/oblique';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
