@@ -1,10 +1,9 @@
 import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
-import {takeUntil} from 'rxjs/operators';
-
+import {filter, takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 import {ObSpinnerService} from './spinner.service';
 import {ObISpinnerEvent} from './spinner.model';
-import {Subject} from 'rxjs';
 
 @Component({
 	selector: 'ob-spinner',
@@ -40,11 +39,9 @@ export class ObSpinnerComponent implements OnInit, OnDestroy {
 
 	constructor(private readonly spinnerService: ObSpinnerService, private readonly element: ElementRef) {
 		this.window = window; // because AoT don't accept interfaces as DI
-		spinnerService.events$.pipe(takeUntil(this.unsubscribe)).subscribe((event: ObISpinnerEvent) => {
-			if (event.channel === this.channel) {
+		spinnerService.events$.pipe(takeUntil(this.unsubscribe), filter(event => event.channel === this.channel)).subscribe((event: ObISpinnerEvent) => {
 				// TODO: Workaround until https://github.com/angular/angular/issues/28801 is solved
 				this.window.setTimeout(() => (this.$state = event.active ? 'in' : 'out'));
-			}
 		});
 	}
 
