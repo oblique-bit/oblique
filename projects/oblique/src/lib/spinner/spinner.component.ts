@@ -35,14 +35,16 @@ export class ObSpinnerComponent implements OnInit, OnDestroy {
 	@ViewChild('spinnerContainer') spinnerContainer: ElementRef;
 	$state = 'out';
 	private readonly unsubscribe = new Subject();
-	private readonly window: Window;
 
 	constructor(private readonly spinnerService: ObSpinnerService, private readonly element: ElementRef) {
-		this.window = window; // because AoT don't accept interfaces as DI
-		spinnerService.events$.pipe(takeUntil(this.unsubscribe), filter(event => event.channel === this.channel)).subscribe((event: ObISpinnerEvent) => {
-				// TODO: Workaround until https://github.com/angular/angular/issues/28801 is solved
-				this.window.setTimeout(() => (this.$state = event.active ? 'in' : 'out'));
-		});
+		spinnerService.events$
+			.pipe(
+				takeUntil(this.unsubscribe),
+				filter(event => event.channel === this.channel)
+			)
+			.subscribe((event: ObISpinnerEvent) => {
+				this.$state = event.active ? 'in' : 'out';
+			});
 	}
 
 	ngOnInit() {
