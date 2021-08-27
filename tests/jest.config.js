@@ -19,5 +19,21 @@ module.exports = {
 
 	coverageDirectory: '<rootDir>/coverage/sonarQube',
 	testResultsProcessor: 'jest-sonar-reporter',
-	collectCoverage: true
+	collectCoverage: true,
+	reporters: [
+		'default',
+		[
+			'jest-html-reporters',
+			{
+				publicPath: './jest-report',
+				outputPath: './jest-report',
+				filename: 'jest-reporter.html',
+				pageTitle: 'Oblique',
+				expand: false,
+				openReport: true,
+				failureMessageOnly: false,
+				includeConsoleLog: true
+			}
+		]
+	],
 };
