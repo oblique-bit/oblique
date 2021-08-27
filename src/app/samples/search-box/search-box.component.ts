@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ObINavigationLink, ObISearchWidgetItem} from 'oblique';
+import {ObINavigationLink, ObISearchWidgetItem} from '@oblique/oblique';
 
 @Component({
 	selector: 'ob-search-box-sample',

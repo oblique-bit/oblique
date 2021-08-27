@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ObNotificationService, ObENotificationType, ObENotificationPlacement} from 'oblique';
+import {ObNotificationService, ObENotificationType, ObENotificationPlacement} from '@oblique/oblique';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector

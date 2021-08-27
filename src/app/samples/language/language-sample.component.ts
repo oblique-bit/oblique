@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Observable} from 'rxjs';
-import {ObThemeService} from 'oblique';
+import {ObThemeService} from '@oblique/oblique';
 import {map} from 'rxjs/operators';
 import {DateAdapter} from '@angular/material/core';
 import {ObLanguageService} from '../../../../projects/oblique/src/lib/language/language.service';

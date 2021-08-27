@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ObEIcon} from 'oblique';
+import {ObEIcon} from '@oblique/oblique';
 
 @Component({
 	selector: 'ob-icon-sample',

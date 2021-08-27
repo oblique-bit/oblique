@@ -2,7 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
-import {ObNotificationService, ObThemeService} from 'oblique';
+import {ObNotificationService, ObThemeService} from '@oblique/oblique';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector

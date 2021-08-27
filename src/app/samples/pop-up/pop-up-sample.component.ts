@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ObNotificationService, ObPopUpService} from 'oblique';
+import {ObNotificationService, ObPopUpService} from '@oblique/oblique';
 
 @Component({
 	selector: 'ob-pop-up-sample',

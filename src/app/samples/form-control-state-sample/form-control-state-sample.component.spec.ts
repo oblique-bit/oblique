@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ObFormControlStateSampleComponent} from './form-control-state-sample.component';
-import {ObliqueTestingModule} from 'oblique/lib/oblique-testing.module';
+import {ObliqueTestingModule} from '@oblique/oblique';
 
 describe('ObFormControlStateSampleComponent', () => {
 	let component: ObFormControlStateSampleComponent;

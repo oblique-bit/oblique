@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ObEScrollMode, ObMasterLayoutService} from 'oblique';
+import {ObEScrollMode, ObMasterLayoutService} from '@oblique/oblique';
 import {DynamicNavigationService} from './dynamic-navigation.service';
 
 @Component({

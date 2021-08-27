@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {ObINavigationLink} from 'oblique';
+import {ObINavigationLink} from '@oblique/oblique';
 
 @Injectable({
 	providedIn: 'root'

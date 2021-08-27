@@ -4,8 +4,8 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {NgbDatepickerModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {ObDatepickerSampleComponent} from './datepicker-sample.component';
-import {ObliqueTestingModule} from 'oblique/lib/oblique-testing.module';
-import {ObDatepickerModule, ObDatepickerPlaceholderDirective} from 'oblique/lib/datepicker/datepicker.module';
+import {ObliqueTestingModule} from '@oblique/oblique';
+import {ObDatepickerModule, ObDatepickerPlaceholderDirective} from '@oblique/oblique';
 
 describe('ObDatepickerSampleComponent', () => {
 	let component: ObDatepickerSampleComponent;

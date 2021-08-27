@@ -27,7 +27,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatTabsModule} from '@angular/material/tabs';
-import {ObButtonModule, ObColumnLayoutModule, ObIconModule, ObInputClearModule, ObMandatoryModule, ObSelectableModule} from 'oblique';
+import {ObButtonModule, ObColumnLayoutModule, ObIconModule, ObInputClearModule, ObMandatoryModule, ObSelectableModule} from '@oblique/oblique';
 import {ObButtonComponent} from './button/button.component';
 import {ObCardComponent} from './card/card.component';
 import {ObChipsComponent} from './chips/chips.component';

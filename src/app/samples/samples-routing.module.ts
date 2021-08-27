@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {ObUnsavedChangesGuard} from 'oblique';
+import {ObUnsavedChangesGuard} from '@oblique/oblique';
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 import {ObAlertSampleComponent} from './alert/alert.component';
 import {ObBreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
