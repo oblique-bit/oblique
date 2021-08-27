@@ -1,7 +1,8 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
-import {ObGlobalEventsService, ObMasterLayoutNavigationItemDirective} from 'oblique';
 import {ObMockGlobalEventsService} from '../../global-events/_mocks/mock-global-events.service';
+import {ObGlobalEventsService} from '../../global-events/global-events.service';
+import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
 
 @Component({
 	template: '<li role="presentation" obMasterLayoutNavigationItem > test </li>'
