@@ -31,7 +31,7 @@ const distAlertCss = async (done) => transpileFile(['dist', 'oblique', 'styles',
 const distIconCss = async (done) => transpileFile(['dist', 'oblique', 'styles', 'scss', 'oblique-icons.scss'], 'icons', done);
 
 const addBanner = () => {
-	const releaseDate = getTagDate(pkg.version);
+	const releaseDate = getTodayDate();
 	const endOfLifeDate = getEndOfLifeDate(`${pkg.version.split('.')[0]}.0.0`);
 
 	return gulp.src([`${paths.dist}/**/*.js`, `${paths.dist}/**/*.css`])
@@ -254,6 +254,10 @@ function getTagDate(tag: string): string {
 	if (childProcess.execSync(`git tag -l "${tag}"`).toString()) {
 		return childProcess.execSync(`git show -s --format=%ci ${tag}`).toString().split(' ')[0];
 	} else {
-		return '1970-01-01';
+		return getTodayDate();
 	}
+}
+
+function getTodayDate(): string {
+	return new Date().toISOString().split('T')[0];
 }

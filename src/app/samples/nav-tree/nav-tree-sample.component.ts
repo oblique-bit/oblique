@@ -2,7 +2,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {merge, takeUntil} from 'rxjs/operators';
-import {ObNavTreeComponent, ObNavTreeItemModel} from 'oblique';
+import {ObNavTreeComponent, ObNavTreeItemModel} from '@oblique/oblique';
 import {Subject} from 'rxjs';
 
 @Component({

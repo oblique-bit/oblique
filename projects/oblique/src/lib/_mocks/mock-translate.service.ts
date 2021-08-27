@@ -32,8 +32,8 @@ export class ObMockTranslateService {
 
 	setDefaultLang(lang: string): void {}
 
-	get(key: string | Array<string>, interpolateParams?: Object): Observable<string | string[]> {
-		return of(key);
+	get(key: string | Array<string>, interpolateParams?: Object): Observable<string | any> {
+		return of(typeof key === 'string' ? key : key.map(str => ({[str]: str})));
 	}
 
 	use(lang: string): Observable<any> {

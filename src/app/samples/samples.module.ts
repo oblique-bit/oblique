@@ -70,7 +70,7 @@ import {
 	ObUnknownRouteModule,
 	ObUnsavedChangesModule,
 	ObUnsavedChangesTabsModule
-} from 'oblique';
+} from '@oblique/oblique';
 import {ObApiComponent} from '../api/api.component';
 import {ObDescriptionComponent} from '../description/description.component';
 import {ObApiElementComponent} from '../api/api-element.component';

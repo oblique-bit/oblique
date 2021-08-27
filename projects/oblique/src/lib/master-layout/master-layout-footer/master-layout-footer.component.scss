@@ -13,6 +13,7 @@
 	background-color: $gray-extra-light;
 	border-top: 1px solid $gray-light;
 	padding: $spacing-xs $spacing-default;
+	overflow: hidden;
 
 	@include layout-collapse-up() {
 		flex-direction: row;
@@ -26,7 +27,6 @@
 	.ob-footer-item {
 		padding: $spacing-xs 0;
 		white-space: nowrap;
-		overflow: hidden;
 		@include layout-collapse-down() {
 			&:not(:last-child) {
 				border-bottom: 1px solid $gray-light;

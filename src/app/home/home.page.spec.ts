@@ -2,7 +2,7 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {HomePageComponent} from './home.page';
-import {ObliqueTestingModule} from 'oblique/lib/oblique-testing.module';
+import {ObliqueTestingModule} from '@oblique/oblique';
 
 describe('HomePageComponent', () => {
 	let component: HomePageComponent;

@@ -101,13 +101,13 @@ export class UpdateV6toV7 implements ObIMigrations {
 				replaceInFile(
 					tree,
 					filePath,
-					/(?<={.*)pathMatch\s*:\s*['"]full['"](?=.*})/g,
+					/(?:(?<={.*(url|label).*)|(?=.*(url|label).*}))pathMatch\s*:\s*['"]full['"]/g,
 					"routerLinkActiveOptions: {paths: 'exact', queryParams: 'exact', fragment: 'ignored', matrixParams: 'ignored'}"
 				);
 				replaceInFile(
 					tree,
 					filePath,
-					/(?<={.*)pathMatch\s*:\s*['"]prefix['"](?=.*})/g,
+					/(?:(?<={.*(url|label).*)|(?=.*(url|label).*}))pathMatch\s*:\s*['"]prefix['"]/g,
 					"routerLinkActiveOptions: {paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'}"
 				);
 			};

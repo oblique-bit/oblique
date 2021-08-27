@@ -1,4 +1,3 @@
-import {ObMandatoryDirective} from 'oblique';
 import {Component, DebugElement} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
@@ -13,6 +12,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {ObMandatoryDirective} from './mandatory.directive';
 
 @Component({
 	template: ` <div [formGroup]="testForm">

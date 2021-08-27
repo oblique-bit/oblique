@@ -5,6 +5,23 @@
 	padding: $spacing-default $spacing-default $spacing-default (calc(2 * 1.5em + #{$spacing-default})); // icon font-size * icon width + text padding; icon means the ::before pseudo element
 	margin-bottom: $spacing-default;
 
+	.ob-close {
+		float: right;
+		padding: 0;
+		font-size: 1.5rem;
+		font-weight: 700;
+		line-height: 1;
+		border: 0;
+		color: inherit;
+		background-color: transparent;
+		opacity: .5;
+		cursor: pointer;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+
 	a {
 		color: $brand-default;
 		text-decoration: underline;

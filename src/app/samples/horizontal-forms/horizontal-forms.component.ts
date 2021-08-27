@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {ObMasterLayoutService, ObThemeService} from 'oblique';
+import {ObMasterLayoutService, ObThemeService} from '@oblique/oblique';
 
 @Component({
 	selector: 'ob-horizontal-forms-sample',

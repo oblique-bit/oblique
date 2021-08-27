@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
-import {ObColumnLayoutModule} from 'oblique';
+import {ObColumnLayoutModule} from '@oblique/oblique';
 import {ObTypographyComponent} from './typography/typography.component';
 import {ObBlockElementsComponent} from './block-elements/block-elements.component';
 import {ObInlineElementComponent} from './inline-element/inline-element.component';

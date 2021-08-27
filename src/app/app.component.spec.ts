@@ -1,7 +1,7 @@
 import {TestBed, waitForAsync} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {ObliqueTestingModule} from 'oblique/lib/oblique-testing.module';
+import {ObliqueTestingModule} from '@oblique/oblique';
 import {AppComponent} from './app.component';
 
 describe('AppComponent', () => {
