@@ -34,6 +34,9 @@ For questions and support please contact us by [email](mailto:Oblique@bit.admin.
 ## Contribute to Oblique
 If you'd like to contribute, please follow our [contributing guidelines](CONTRIBUTING.md).
 
+## Code of Conduct
+Help us keep Oblique open and inclusive. Please read and follow our [Code of Conduct](CODE_OF_CONDUCT.md).
+
 ## License
 Copyright (c) The Swiss Confederation, represented by the Federal Office of Information Technology, Systems and Telecommunication FOITT.
 
