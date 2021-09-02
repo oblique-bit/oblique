@@ -6,6 +6,7 @@ import {ObNotificationComponent} from './notification.component';
 import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';
+import {ObAlertModule} from '../alert/alert.module';
 
 export {ObNotificationComponent} from './notification.component';
 export {ObNotificationService} from './notification.service';
@@ -13,7 +14,7 @@ export {ObNotificationConfig, CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE, GROUP_SIMILAR
 export {ObINotification, ObINotificationConfig, ObENotificationType, ObENotificationPlacement} from './notification.model';
 
 @NgModule({
-	imports: [CommonModule, TranslateModule],
+	imports: [CommonModule, TranslateModule, ObAlertModule],
 	declarations: [ObNotificationComponent],
 	providers: obliqueProviders(),
 	exports: [ObNotificationComponent]

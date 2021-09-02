@@ -3,14 +3,16 @@ import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterTestingModule} from '@angular/router/testing';
-import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {DebugElement} from '@angular/core';
 import {Subject} from 'rxjs';
+import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObNotificationComponent} from './notification.component';
 import {ObNotificationConfig} from './notification.config';
 import {ObNotificationService} from './notification.service';
 import {ObENotificationType, ObINotification} from './notification.model';
 import {ObMockNotificationConfig} from './_mocks/mock-notification.config';
 import {ObMockNotificationService} from './_mocks/mock-notification.service';
+import {ObMockAlertComponent} from '../alert/_mocks/mock-alert.component';
 import {WINDOW} from '../utilities';
 
 describe('NotificationComponent', () => {
@@ -24,7 +26,7 @@ describe('NotificationComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [ObNotificationComponent, ObMockTranslatePipe],
+			declarations: [ObNotificationComponent, ObMockTranslatePipe, ObMockAlertComponent],
 			imports: [CommonModule, NoopAnimationsModule, RouterTestingModule],
 			providers: [
 				{provide: ObNotificationConfig, useClass: ObMockNotificationConfig},
@@ -44,10 +46,10 @@ describe('NotificationComponent', () => {
 	});
 
 	describe('should display notifications via NotificationService', () => {
-		let htmlNotifications;
+		let htmlNotifications: DebugElement[];
 
 		beforeEach(() => {
-			component.open({message: 'Notification 1'});
+			component.open({message: 'Notification 1', type: ObENotificationType.INFO});
 			component.open({message: 'Notification 2', title: 'Title 2', type: ObENotificationType.SUCCESS});
 			fixture.detectChanges();
 
@@ -55,15 +57,27 @@ describe('NotificationComponent', () => {
 			htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		});
 
-		it('', () => {
+		it('should have 2 notifications', () => {
 			expect(htmlNotifications.length).toBe(2);
 		});
 
-		it('with matching ObENotificationType CSS classes', () => {
-			const notificationAlerts = fixture.debugElement.queryAll(By.css('.ob-notification.ob-alert'));
-			expect(notificationAlerts[0].classes['ob-alert']).toEqual(true);
-			expect(notificationAlerts[0].classes['ob-alert-success']).toEqual(true);
-			expect(notificationAlerts[0].classes['ob-alert-info']).toBeUndefined();
+		describe('notification should be alerts', () => {
+			let alerts: DebugElement[];
+			beforeEach(() => {
+				alerts = fixture.debugElement.queryAll(By.directive(ObMockAlertComponent));
+			});
+
+			it('should have 2 alerts', () => {
+				expect(alerts.length).toBe(2);
+			});
+
+			it('1st alert should be success', () => {
+				expect(alerts[0].componentInstance.type).toEqual('success');
+			});
+
+			it('2nd alert should be undefined', () => {
+				expect(alerts[1].componentInstance.type).toEqual('info');
+			});
 		});
 	});
 
