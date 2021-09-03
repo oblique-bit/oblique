@@ -27,6 +27,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import {ObButtonModule, ObColumnLayoutModule, ObIconModule, ObInputClearModule, ObMandatoryModule, ObSelectableModule} from '@oblique/oblique';
 import {ObButtonComponent} from './button/button.component';
 import {ObCardComponent} from './card/card.component';
@@ -43,19 +44,18 @@ import {ObStepperVerticalComponent} from './stepper-vertical/stepper-vertical.co
 import {ObStepperHorizontalComponent} from './stepper-horizontal/stepper-horizontal.component';
 import {ObTabsComponent} from './tabs/tabs.component';
 import {ObIconSampleComponent} from './icon/icon.sample.component';
-import {SamplesModule} from '../samples/samples.module';
 import {ObMandatorySampleComponent} from './mandatory/mandatory.sample.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import {SharedModule} from '../common/shared.module';
 import {FormComponent} from './form/form.component';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: ObBadgeComponent},
-	{path: 'button2', component: ObButtonComponent},
+	{path: 'button', component: ObButtonComponent},
 	{path: 'card', component: ObCardComponent},
 	{path: 'chips', component: ObChipsComponent},
 	{path: 'dialog', component: ObDialogComponent},
 	{path: 'expansion-panel', component: ObExpansionPanelComponent},
-	{path: 'form2', component: FormComponent},
+	{path: 'form', component: FormComponent},
 	{path: 'icon', component: ObIconSampleComponent},
 	{path: 'mandatory', component: ObMandatorySampleComponent},
 	{path: 'progress-bar', component: ObProgressBarComponent},
@@ -126,7 +126,7 @@ const appRoutes: Routes = [
 		MatTooltipModule,
 		ObMandatoryModule,
 		CdkTableModule,
-		SamplesModule
+		SharedModule
 	]
 })
 export class MaterialModule {}
