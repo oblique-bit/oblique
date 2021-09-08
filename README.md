@@ -41,3 +41,10 @@ Help us keep Oblique open and inclusive. Please read and follow our [Code of Con
 Copyright (c) The Swiss Confederation, represented by the Federal Office of Information Technology, Systems and Telecommunication FOITT.
 
 Licensed under the [MIT](LICENSE) license.
+
+## Telemetry
+The Oblique front-end framework includes a telemetry feature that collects usage information about its modules and versions.
+It's important that the Oblique team understands which modules are used, so it can be decided on where to invest its limited resources.
+The collected data are linked to the project name and version configured in the `package.json` file. Only the Oblique team has access to the collected data.
+
+You will find more information about the telemetry in the [documentation](https://oblique.bit.admin.ch/components/telemetry).
