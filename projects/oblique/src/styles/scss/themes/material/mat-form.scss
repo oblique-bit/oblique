@@ -2,6 +2,7 @@
 
 .ob-inline-form {
 	.mat-checkbox-layout .mat-checkbox-label {
+		padding-top: -1px; //empiric value
 		line-height: inherit;
 	}
 
@@ -13,7 +14,7 @@
 	}
 
 	> label {
-		padding-top: $form-field-padding-top;
+		padding-top: $form-field-label-padding-top;
 	}
 
 	.mat-checkbox,
@@ -23,21 +24,31 @@
 
 	&.ob-form-sm {
 		> label {
-			padding-top: $form-field-padding-top-sm;
+			padding-top: $form-field-label-padding-top-sm;
 		}
 
 		.mat-checkbox,
 		.mat-radio-group {
 			padding-top: calc(#{$form-field-padding-top-sm} - 2px);
 		}
+
+		.mat-checkbox-label {
+			padding-top: 1px; //empiric value
+		}
+		.mat-radio-label-content {
+			padding-top: 0px; //empiric value
+		}
 	}
 
 	&.ob-form-lg {
 		> label {
-			padding-top: $form-field-padding-top-lg;
+			padding-top: $form-field-label-padding-top-lg;
 		}
 
-		.mat-checkbox,
+		.mat-checkbox {
+			padding-top: calc(#{$form-field-padding-top-lg} - 1px);
+		}
+
 		.mat-radio-group {
 			padding-top: calc(#{$form-field-padding-top-lg} - 2px);
 		}
