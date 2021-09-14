@@ -152,11 +152,15 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 				filter(evt => evt instanceof NavigationEnd),
 				map((evt: NavigationEnd) => evt.url),
 				tap(url => (this.route.path = (url.match(/^[^?&#]*/) || [])[0])),
-				tap(url => (this.route.params = this.formatQueryParameters((url.match(/(?<=[?&])[^#]*/) || [])[0]))),
-				map(url => (url.match(/(?<=#)[^?&]*/) || [])[0]),
+				tap(url => (this.route.params = this.formatQueryParameters(this.extractUrlPart(url, /[?&][^#]*/)))),
+				map(url => this.extractUrlPart(url, /#[^?&]*/)),
 				filter(fragment => this.config.focusableFragments.indexOf(fragment) > -1)
 			)
 			.subscribe(fragment => this.document.nativeElement.querySelector(`#${fragment}`)?.focus());
+	}
+
+	private extractUrlPart(url: string, regex: RegExp): string {
+		return (url.match(regex) || [])[0]?.substr(1);
 	}
 
 	private formatQueryParameters(parameters: string): Params {
