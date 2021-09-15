@@ -1,3 +1,13 @@
+# [7.0.4](https://github.com/oblique-bit/oblique/compare/7.0.3...7.0.4) (2021-09-15)
+
+## Bug Fixes
+* **alert:** add content projection in the mock component ([f6be89b](https://github.com/oblique-bit/oblique/commit/f6be89b07a57a5658dd7fe4d66e388d2a2b2daac))
+* **master-layout:** avoid double vertical scrollbars ([1e65143](https://github.com/oblique-bit/oblique/commit/1e65143bd7af03fe03a28097fab115e135f10075))
+* **master-layout:** avoid using lookbehind in regexes ([1261ee0](https://github.com/oblique-bit/oblique/commit/1261ee048d959ddf9bf1f84861463e277b222477))
+* **notification:** ensure the notifications are styled without embedding `oblique-alerts.css` ([af132a5](https://github.com/oblique-bit/oblique/commit/af132a5ddabd875777476c80bca17a0d1e329d03))
+* **spinner:** ensure the spinner's overlay comes below any widget outside its container ([0ca6cda](https://github.com/oblique-bit/oblique/commit/0ca6cda49f9ff2a30dedbf372dda2eedca506fe8))
+
+
 # [7.0.3](https://github.com/oblique-bit/oblique/compare/7.0.2...7.0.3) (2021-08-27)
 
 ## Bug Fixes
