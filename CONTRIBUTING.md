@@ -1,6 +1,9 @@
 # Contributing to Oblique
 Welcome, and thank you for your interest in contributing to Oblique.
 
+## Code of conduct
+This project and everyone participating in it is governed by the [Oblique code of conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
+
 ## Providing Feedback & asking questions
 Your comments, feedbacks and questions are welcome. 
 The development team is available by [email](mailto:Oblique@bit.admin.ch).

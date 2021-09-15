@@ -28,6 +28,7 @@
 	}
 
 	.ob-notification {
+		position: relative; // so that the close button is correctly positioned
 		width: 65vw;
 		margin: 5px; // Reserve spacing for box shadow!
 		box-shadow: 0 0 6px gray;
