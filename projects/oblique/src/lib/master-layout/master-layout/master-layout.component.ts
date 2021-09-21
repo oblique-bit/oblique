@@ -160,6 +160,7 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 	}
 
 	private extractUrlPart(url: string, regex: RegExp): string {
+		// substr remove the leading #, ? or & character
 		return (url.match(regex) || [])[0]?.substr(1);
 	}
 
