@@ -14,6 +14,9 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {DateAdapter} from '@angular/material/core';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatListModule} from '@angular/material/list';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -53,6 +56,7 @@ import {
 	ObDatepickerModule,
 	ObErrorMessagesModule,
 	ObExternalLinkModule,
+	ObFileUploadModule,
 	ObFormControlStateModule,
 	ObInputClearModule,
 	ObLanguageModule,
@@ -84,6 +88,7 @@ import {ObPopoverComponent} from './popover/popover.component';
 import {ObAlertSampleComponent} from './alert/alert.component';
 import {ObHorizontalFormsSampleComponent} from './horizontal-forms/horizontal-forms.component';
 import {ObBreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
+import {ObFileUploadSampleComponent} from './file-upload-sample/file-upload-sample.component';
 import {SharedModule} from '../common/shared.module';
 
 @NgModule({
@@ -95,6 +100,7 @@ import {SharedModule} from '../common/shared.module';
 		ObColumnLayoutModule,
 		ObDatepickerModule,
 		ObErrorMessagesModule,
+		ObFileUploadModule,
 		ObFormControlStateModule,
 		ObLanguageModule,
 		ObMultiselectModule,
@@ -114,6 +120,7 @@ import {SharedModule} from '../common/shared.module';
 		ObUnsavedChangesTabsModule,
 		ObButtonModule,
 		ObExternalLinkModule,
+
 		TranslateModule,
 		FormsModule,
 		NgbModule,
@@ -128,9 +135,13 @@ import {SharedModule} from '../common/shared.module';
 		MatSelectModule,
 		MatCheckboxModule,
 		MatRadioModule,
+		MatTooltipModule,
 		MatDatepickerModule,
 		MatMomentDateModule,
 		MatSlideToggleModule,
+		MatSlideToggleModule,
+		MatListModule,
+		MatDialogModule,
 		SharedModule
 	],
 	declarations: [
@@ -170,7 +181,8 @@ import {SharedModule} from '../common/shared.module';
 		ObMultiTranslateLoaderSampleComponent,
 		ObSpinnerSampleComponent,
 		ObSearchBoxSampleComponent,
-		ObExternalLinkComponent
+		ObExternalLinkComponent,
+		ObFileUploadSampleComponent
 	],
 	exports: [RouterModule],
 	providers: [SampleDataResolver]

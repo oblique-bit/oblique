@@ -36,6 +36,7 @@ export class AppComponent {
 				{url: 'datepicker', label: 'i18n.routes.samples.datepicker.title'},
 				{url: 'error-messages', label: 'Error messages'},
 				{url: 'external-link', label: 'External-link'},
+				{url: 'file-upload', label: 'File Upload'},
 				{url: 'form-control-state', label: 'i18n.routes.samples.form-control-state.title'},
 				{url: 'global-events', label: 'Global events'},
 				{url: 'horizontal-forms', label: 'Horizontal Forms'},
@@ -107,7 +108,8 @@ export class AppComponent {
 				{url: 'stepper-vertical', label: 'Stepper vertical'},
 				{url: 'table', label: 'Table'},
 				{url: 'tabs', label: 'Tabs'},
-				{url: 'tooltip', label: 'Tooltip'}
+				{url: 'tooltip', label: 'Tooltip'},
+				{url: 'file-upload', label: 'File Upload'}
 			]
 		}
 	];

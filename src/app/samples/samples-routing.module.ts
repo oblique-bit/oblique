@@ -10,6 +10,7 @@ import {ObColumnLayoutSampleComponent} from './column-layout/column-layout-sampl
 import {ObDatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {ObErrorMessagesSampleComponent} from './error-messages-sample/error-messages-sample.component';
 import {ObExternalLinkComponent} from './external-link/external-link.component';
+import {ObFileUploadSampleComponent} from './file-upload-sample/file-upload-sample.component';
 import {ObFormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
 import {ObFormSampleComponent} from './form/form.component';
 import {ObGlobalEventsSampleComponent} from './global-events/global-events-sample.component';
@@ -100,6 +101,7 @@ const samplesRoutes: Routes = [
 	{path: 'datepicker', component: ObDatepickerSampleComponent},
 	{path: 'error-messages', component: ObErrorMessagesSampleComponent},
 	{path: 'external-link', component: ObExternalLinkComponent},
+	{path: 'file-upload', component: ObFileUploadSampleComponent},
 	{path: 'form-control-state', component: ObFormControlStateSampleComponent},
 	{path: 'global-events', component: ObGlobalEventsSampleComponent},
 	{path: 'horizontal-forms', component: ObHorizontalFormsSampleComponent},
