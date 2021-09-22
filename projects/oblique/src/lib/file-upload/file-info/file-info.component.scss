@@ -1,0 +1,14 @@
+@import "../../../styles/scss/core/variables";
+
+.ob-file-info {
+	.ob-table .mat-button-base.ob-button {
+		width: $spacing-xl;
+		height: $spacing-xl;
+		line-height: $spacing-xl;
+		font-size: $font-size-base;
+	}
+
+	tbody tr:not(:hover) .mat-column-action .ob-button:not(:focus) {
+		opacity: 0;
+	}
+}
