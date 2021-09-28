@@ -14,8 +14,7 @@ import {
 } from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {createPopper, Instance, Options, Placement} from '@popperjs/core';
-import {filter, takeUntil} from 'rxjs/operators';
-import {Subject} from 'rxjs';
+import {Subscription} from 'rxjs';
 import {defaultConfig} from './popover.model';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {obOutsideFilter} from '../global-events/outsideFilter';
@@ -34,11 +33,10 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	@HostBinding('attr.aria-describedby') idContent: string;
 
 	private static idCount = 0;
-	private readonly unsubscribe = new Subject();
 	private readonly body: HTMLBodyElement;
 	private readonly host: HTMLElement;
+	private subscription: Subscription;
 	private instance: Instance;
-	private isDisplayed = false;
 	private popover: HTMLDivElement;
 
 	constructor(
@@ -55,8 +53,6 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	ngOnInit(): void {
 		this.id = this.id || `popover-${ObPopoverDirective.idCount++}`;
 		this.idContent = `${this.id}-content`;
-		this.buildPopover();
-		this.outsideClick();
 	}
 
 	ngOnChanges(): void {
@@ -64,14 +60,15 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	}
 
 	ngOnDestroy(): void {
-		this.popover.remove();
+		this.popover?.remove();
+		this.popover = undefined;
 		this.instance?.destroy();
-		this.unsubscribe.next();
-		this.unsubscribe.complete();
+		this.instance = undefined;
+		this.subscription?.unsubscribe();
 	}
 
 	@HostListener('click') toggle(): void {
-		if (!this.isDisplayed) {
+		if (!this.popover) {
 			this.open();
 		} else {
 			this.close();
@@ -79,16 +76,18 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	}
 
 	@HostListener('window:keydown.escape') close(): void {
-		this.popover.remove();
-		this.instance?.destroy();
-		this.isDisplayed = false;
+		this.ngOnDestroy();
 	}
 
 	open(): void {
-		this.renderer.appendChild(this.body, this.popover);
-		this.instance = createPopper(this.host, this.popover, defaultConfig);
-		this.setPopperOptionsAndUpdate();
-		this.isDisplayed = true;
+		this.buildPopover();
+		this.outsideClick();
+		// without the setTimeout, the options aren't applied
+		setTimeout(() => {
+			this.renderer.appendChild(this.body, this.popover);
+			this.instance = createPopper(this.host, this.popover, defaultConfig);
+			this.setPopperOptionsAndUpdate();
+		});
 	}
 
 	private setPopperOptionsAndUpdate(): void {
@@ -108,12 +107,8 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	}
 
 	private outsideClick(): void {
-		this.globalEventsService.click$
-			.pipe(
-				obOutsideFilter(this.host, this.popover),
-				filter(() => this.isDisplayed),
-				takeUntil(this.unsubscribe)
-			)
+		this.subscription = this.globalEventsService.click$
+			.pipe(obOutsideFilter(this.host, this.popover))
 			.subscribe(() => this.close());
 	}
 }
