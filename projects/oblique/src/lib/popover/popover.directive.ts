@@ -60,27 +60,27 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	}
 
 	ngOnDestroy(): void {
+		this.close();
+	}
+
+	@HostListener('click') toggle(): void {
+		if (this.popover) {
+			this.close();
+		} else {
+			this.open();
+		}
+	}
+
+	close(): void {
 		this.popover?.remove();
 		this.popover = undefined;
 		this.instance?.destroy();
 		this.instance = undefined;
 	}
 
-	@HostListener('click') toggle(): void {
-		if (!this.popover) {
-			this.open();
-		} else {
-			this.close();
-		}
-	}
-
-	close(): void {
-		this.ngOnDestroy();
-	}
-
 	open(): void {
-		this.buildPopover();
-		this.outsideClick();
+		this.popover = this.buildPopover();
+		this.listenForCloseEvent();
 		// without the setTimeout, the options aren't applied
 		setTimeout(() => {
 			this.renderer.appendChild(this.body, this.popover);
@@ -94,18 +94,21 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 		this.instance?.update();
 	}
 
-	private buildPopover(): void {
-		this.popover = this.renderer.createElement('div');
-		this.viewContainerRef.createEmbeddedView<HTMLElement>(this.target).rootNodes.forEach(node => this.renderer.appendChild(this.popover, node));
-		this.renderer.addClass(this.popover, 'ob-popover-content');
-		this.renderer.setAttribute(this.popover, 'role', 'tooltip');
-		this.renderer.setAttribute(this.popover, 'id', this.idContent);
+	private buildPopover(): HTMLDivElement {
+		const popover = this.renderer.createElement('div');
+		this.viewContainerRef.createEmbeddedView<HTMLElement>(this.target).rootNodes.forEach(node => this.renderer.appendChild(popover, node));
+		this.renderer.addClass(popover, 'ob-popover-content');
+		this.renderer.setAttribute(popover, 'role', 'tooltip');
+		this.renderer.setAttribute(popover, 'id', this.idContent);
+
 		const arrow = this.renderer.createElement('div');
 		this.renderer.addClass(arrow, 'ob-popover-arrow');
-		this.renderer.appendChild(this.popover, arrow);
+		this.renderer.appendChild(popover, arrow);
+
+		return popover;
 	}
 
-	private outsideClick(): void {
+	private listenForCloseEvent(): void {
 		race(
 			this.globalEventsService.click$.pipe(obOutsideFilter(this.host, this.popover)),
 			this.globalEventsService.keyDown$.pipe(filter(evt => evt.key === 'Escape'))
