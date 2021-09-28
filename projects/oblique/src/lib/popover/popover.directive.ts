@@ -14,7 +14,8 @@ import {
 } from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {createPopper, Instance, Options, Placement} from '@popperjs/core';
-import {Subscription} from 'rxjs';
+import {race} from 'rxjs';
+import {filter, first} from 'rxjs/operators';
 import {defaultConfig} from './popover.model';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {obOutsideFilter} from '../global-events/outsideFilter';
@@ -35,7 +36,6 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	private static idCount = 0;
 	private readonly body: HTMLBodyElement;
 	private readonly host: HTMLElement;
-	private subscription: Subscription;
 	private instance: Instance;
 	private popover: HTMLDivElement;
 
@@ -64,7 +64,6 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 		this.popover = undefined;
 		this.instance?.destroy();
 		this.instance = undefined;
-		this.subscription?.unsubscribe();
 	}
 
 	@HostListener('click') toggle(): void {
@@ -75,7 +74,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 		}
 	}
 
-	@HostListener('window:keydown.escape') close(): void {
+	close(): void {
 		this.ngOnDestroy();
 	}
 
@@ -107,8 +106,11 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	}
 
 	private outsideClick(): void {
-		this.subscription = this.globalEventsService.click$
-			.pipe(obOutsideFilter(this.host, this.popover))
+		race(
+			this.globalEventsService.click$.pipe(obOutsideFilter(this.host, this.popover)),
+			this.globalEventsService.keyDown$.pipe(filter(evt => evt.key === 'Escape'))
+		)
+			.pipe(first())
 			.subscribe(() => this.close());
 	}
 }
