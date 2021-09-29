@@ -15,3 +15,8 @@
 .mat-radio-label-content {
 	padding-top: 2px;
 }
+
+.mat-checkbox.mat-checkbox-disabled,
+.mat-radio-button.mat-radio-disabled .mat-radio-label {
+	cursor: not-allowed;
+}

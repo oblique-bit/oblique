@@ -6,6 +6,10 @@
 .mat-form-field {
 	width: 100%;
 
+	&.mat-form-field-type-mat-select.mat-form-field-disabled .mat-select-trigger {
+		cursor: not-allowed;
+	}
+
 	.mat-form-field-outline {
 		background-color: $white;
 	}
