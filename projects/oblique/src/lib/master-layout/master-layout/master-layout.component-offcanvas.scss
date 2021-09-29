@@ -4,8 +4,7 @@
 
 .ob-off-canvas-sidebar {
 	display: none; // only show if offcanvas is enable, i.e. parent has .offcanvas class
-	color: $white;
-	background-color: $gray-darker;
+	background-color: $gray-extra-light;
 }
 
 .ob-off-canvas {
@@ -40,7 +39,7 @@
 		transition-timing-function: ease;
 
 		h1, h2, h3, h4, h5, h6 {
-			color: $white;
+			color: $brand-default;
 		}
 
 		@include media-breakpoint-up(lg) {
@@ -60,7 +59,7 @@
 
 	.ob-off-canvas-header {
 		height: $header-height-no-navigation;
-		border-bottom: $brand-line-width solid $gray;
+		border-bottom: $brand-line-width solid $gray-dark;
 		display: flex;
 		padding: $spacing-default;
 		justify-content: space-between;
@@ -75,7 +74,7 @@
 			@include link-btn;
 			font-size: $font-size-biggest;
 			padding: 0;
-			color: $white;
+			color: $gray-dark;
 		}
 
 		@include layout-collapse-down() {
