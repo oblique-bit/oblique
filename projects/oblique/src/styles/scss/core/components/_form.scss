@@ -39,6 +39,10 @@ textarea {
 	font-family: inherit;
 	font-size: inherit;
 	line-height: inherit;
+
+	&[disabled] {
+		cursor: not-allowed !important;
+	}
 }
 
 button,
