@@ -92,7 +92,7 @@
 		<h2>
 			<ng-content select="[obOffCanvasTitle]"></ng-content>
 		</h2>
-		<button type="button" obOffCanvasToggle class="ob-close" #offCanvasClose>
+		<button type="button" mat-icon-button obButton="secondary" obOffCanvasToggle class="ob-close" #offCanvasClose>
 			<ob-icon icon="cancel"></ob-icon>
 			<span class="sr-only">{{ "i18n.oblique.offCanvas.close" | translate }}</span>
 		</button>

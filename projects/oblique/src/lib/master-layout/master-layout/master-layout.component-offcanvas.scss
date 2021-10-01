@@ -75,6 +75,18 @@
 			font-size: $font-size-biggest;
 			padding: 0;
 			color: $gray-dark;
+
+			/* temporary alignment until https://jira.bit.admin.ch/browse/OUI-1454 is integrated, then this block should be removed */
+			position: relative;
+			height: 34px; // button height;
+			width: 34px;
+
+			.mat-icon > svg {
+				position: absolute;
+				top: 3.8px;
+				left: 3.8px;
+			}
+			/* End of temporary block */
 		}
 
 		@include layout-collapse-down() {
