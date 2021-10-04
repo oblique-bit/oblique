@@ -13,6 +13,7 @@ import {ObStepperComponent} from './stepper/stepper.component';
 import {ObTabsComponent} from './tabs/tabs.component';
 import {ObAlertComponent} from './alert/alert.component';
 import {ObIconSampleComponent} from './icon/icon.component';
+import {SharedModule} from '../common/shared.module';
 
 @NgModule({
 	imports: [
@@ -31,7 +32,8 @@ import {ObIconSampleComponent} from './icon/icon.component';
 			{path: '', redirectTo: 'typography', pathMatch: 'full'}
 		]),
 		ObColumnLayoutModule,
-		FormsModule
+		FormsModule,
+		SharedModule
 	],
 	declarations: [
 		ObTypographyComponent,

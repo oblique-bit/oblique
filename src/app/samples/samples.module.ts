@@ -13,6 +13,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {DateAdapter} from '@angular/material/core';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -71,9 +72,6 @@ import {
 	ObUnsavedChangesModule,
 	ObUnsavedChangesTabsModule
 } from '@oblique/oblique';
-import {ObApiComponent} from '../api/api.component';
-import {ObDescriptionComponent} from '../description/description.component';
-import {ObApiElementComponent} from '../api/api-element.component';
 import {ObPopUpSampleComponent} from './pop-up/pop-up-sample.component';
 import {ObNestedFormChildTDSampleComponent} from './nested-form/nested-form-child-td-sample.component';
 import {ObNestedFormGrandChildTDSampleComponent} from './nested-form/nested-form-grandchild-td-sample.component';
@@ -84,9 +82,9 @@ import {ObLanguageSampleComponent} from './language/language-sample.component';
 import {ObSearchBoxSampleComponent} from './search-box/search-box.component';
 import {ObPopoverComponent} from './popover/popover.component';
 import {ObAlertSampleComponent} from './alert/alert.component';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {ObHorizontalFormsSampleComponent} from './horizontal-forms/horizontal-forms.component';
 import {ObBreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
+import {SharedModule} from '../common/shared.module';
 
 @NgModule({
 	imports: [
@@ -116,7 +114,6 @@ import {ObBreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
 		ObUnsavedChangesTabsModule,
 		ObButtonModule,
 		ObExternalLinkModule,
-
 		TranslateModule,
 		FormsModule,
 		NgbModule,
@@ -133,7 +130,8 @@ import {ObBreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
 		MatRadioModule,
 		MatDatepickerModule,
 		MatMomentDateModule,
-		MatSlideToggleModule
+		MatSlideToggleModule,
+		SharedModule
 	],
 	declarations: [
 		ObAlertSampleComponent,
@@ -167,9 +165,6 @@ import {ObBreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
 		ObUnknownRouteSampleComponent,
 		ObUnsavedChangesSampleComponent,
 		ObUnsavedChangesSampleModalComponent,
-		ObApiComponent,
-		ObApiElementComponent,
-		ObDescriptionComponent,
 		ObPopUpSampleComponent,
 		ObPopoverComponent,
 		ObMultiTranslateLoaderSampleComponent,
@@ -177,7 +172,7 @@ import {ObBreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
 		ObSearchBoxSampleComponent,
 		ObExternalLinkComponent
 	],
-	exports: [RouterModule, ObApiComponent, ObDescriptionComponent],
+	exports: [RouterModule],
 	providers: [SampleDataResolver]
 })
 export class SamplesModule {
