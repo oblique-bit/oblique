@@ -27,7 +27,6 @@ export class ObErrorMessagesComponent implements AfterViewInit, OnDestroy {
 
 	private readonly form: NgForm | FormGroupDirective;
 	private readonly unsubscribe = new Subject();
-	private readonly window: Window;
 
 	constructor(
 		private readonly errorMessagesService: ObErrorMessagesService,
@@ -36,10 +35,9 @@ export class ObErrorMessagesComponent implements AfterViewInit, OnDestroy {
 		@Optional() ngForm: NgForm,
 		@Optional() formGroupDirective: FormGroupDirective,
 		@Optional() private readonly parent: ObParentFormDirective,
-		@Inject(WINDOW) window: any,
+		@Inject(WINDOW) private readonly window: Window,
 		@Optional() @Inject(DISABLE_NGB_ERRORS) disableNgb: boolean
 	) {
-		this.window = window; // because AoT don't accept interfaces as DI
 		this.disableNgb = this.disableNgb ?? disableNgb ?? false;
 		theme.deprecated('error messages', 'form-field/overview#error-messages');
 		this.form = ngForm || formGroupDirective;

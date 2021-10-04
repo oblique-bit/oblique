@@ -82,11 +82,8 @@ export class ObNotificationComponent implements OnInit {
 	}
 	public notifications: ObINotificationPrivate[] = [];
 	public variant: {[type: string]: string} = {};
-	private readonly window: Window;
 
-	constructor(private readonly notificationService: ObNotificationService, @Inject(WINDOW) window: any) {
-		this.window = window; // because AoT don't accept interfaces as DI
-	}
+	constructor(private readonly notificationService: ObNotificationService, @Inject(WINDOW) private readonly window: Window) {}
 
 	ngOnInit(): void {
 		this.channel = this.channel || this.notificationService.config.channel;

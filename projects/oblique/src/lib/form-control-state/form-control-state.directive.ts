@@ -29,7 +29,6 @@ export class ObFormControlStateDirective implements AfterViewInit, OnDestroy {
 	private inputContainer;
 	private inputElement;
 	private readonly unsubscribe = new Subject();
-	private readonly window: Window;
 
 	constructor(
 		@Optional() ngForm: NgForm,
@@ -37,12 +36,11 @@ export class ObFormControlStateDirective implements AfterViewInit, OnDestroy {
 		@Optional() formGroupName: FormGroupName,
 		@Optional() modelGroup: NgModelGroup,
 		@Optional() private readonly parent: ObParentFormDirective,
-		@Inject(WINDOW) window: any,
+		@Inject(WINDOW) private readonly window: Window,
 		theme: ObThemeService,
 		private readonly elementRef: ElementRef,
 		private readonly renderer: Renderer2
 	) {
-		this.window = window; // because AoT don't accept interfaces as DI
 		theme.deprecated('form control state', 'form-field/overview#error-messages');
 		this.form = ngForm || formGroupDirective;
 		this.group = modelGroup || formGroupName;

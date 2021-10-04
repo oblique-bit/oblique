@@ -14,7 +14,6 @@ import {ObIHttpApiRequest, ObIHttpApiRequestNotification, ObIObliqueHttpErrorRes
 @Injectable({providedIn: 'root'})
 export class ObHttpApiInterceptor implements HttpInterceptor {
 	private readonly activeRequestUrls: string[] = [];
-	private readonly window: Window;
 
 	constructor(
 		private readonly config: ObHttpApiInterceptorConfig,
@@ -22,10 +21,8 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 		private readonly spinner: ObSpinnerService,
 		private readonly notificationService: ObNotificationService,
 		private readonly translate: TranslateService,
-		@Inject(WINDOW) window: any
-	) {
-		this.window = window; // because AoT don't accept interfaces as DI
-	}
+		@Inject(WINDOW) private readonly window: Window
+	) {}
 
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		const obliqueRequest = this.broadcast();

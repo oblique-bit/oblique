@@ -30,7 +30,7 @@ export class ObDocumentMetaService implements OnDestroy {
 		private readonly activatedRoute: ActivatedRoute,
 		private readonly titleService: Title,
 		private readonly translate: TranslateService,
-		@Inject(DOCUMENT) private readonly document: any
+		@Inject(DOCUMENT) private readonly document: Document
 	) {
 		this.headElement = this.document.querySelector('head');
 		this.metaDescription = this.getOrCreateMetaElement('description');

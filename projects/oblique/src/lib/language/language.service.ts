@@ -19,7 +19,7 @@ export class ObLanguageService {
 		private readonly translate: TranslateService,
 		rendererFactory: RendererFactory2,
 		config: ObMasterLayoutConfig,
-		@Inject(DOCUMENT) document: any // NOTE: do not set type, it will break AOT
+		@Inject(DOCUMENT) document: Document
 	) {
 		if (!config.locale.disabled) {
 			const locales = config.locale.locales.map(locale => (locale as ObILocaleObject).locale || locale) as string[];
