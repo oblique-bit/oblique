@@ -156,7 +156,7 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 				map(url => this.extractUrlPart(url, /#[^?&]*/)),
 				filter(fragment => this.config.focusableFragments.indexOf(fragment) > -1)
 			)
-			.subscribe(fragment => this.document.nativeElement.querySelector(`#${fragment}`)?.focus());
+			.subscribe(fragment => this.document.querySelector(`#${fragment}`)?.focus());
 	}
 
 	private extractUrlPart(url: string, regex: RegExp): string {
