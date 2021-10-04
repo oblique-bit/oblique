@@ -1,5 +1,6 @@
 @import "../../styles/scss/core/variables";
 @import "../../styles/scss/core/mixins/layout";
+@import "../../styles/scss/core/mixins/shadow";
 
 .ob-notification-container {
 	position: fixed;
@@ -31,7 +32,7 @@
 		position: relative; // so that the close button is correctly positioned
 		width: 65vw;
 		margin: 5px; // Reserve spacing for box shadow!
-		box-shadow: 0 0 6px gray;
+		@include dropShadow();
 
 		@include layout-collapse-up() {
 			width: 380px;

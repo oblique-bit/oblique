@@ -1,11 +1,12 @@
 @import "../variables";
+@import "../mixins/shadow";
 
 .ob-popover-content {
 	padding: $spacing-default;
 	max-width: 40%;  // empiric value
 	background: $white;
-	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
 	z-index: $z-index-widget;
+	@include dropShadow();
 
 	.ob-popover-arrow {
 		border-width: $spacing-sm;
@@ -16,28 +17,24 @@
 	&[data-popper-placement^="top"] .ob-popover-arrow {
 		bottom: 0;
 		border-color: transparent transparent $white $white;
-		box-shadow: -2px 2px 2px 0 rgba(0, 0, 0, 0.3);
 		transform: translate(0, 50%) rotate(-45deg);
 	}
 
 	&[data-popper-placement^="bottom"] .ob-popover-arrow {
 		top: 0;
 		border-color: $white $white transparent transparent;
-		box-shadow: 2px -2px 2px 0 rgba(0, 0, 0, 0.1);
 		transform: translate(0, -50%) rotate(-45deg);
 	}
 
 	&[data-popper-placement^="right"] .ob-popover-arrow {
 		left: 0;
 		border-color: $white transparent transparent $white;
-		box-shadow: -2px -2px 2px 0 rgba(0, 0, 0, 0.2);
 		transform: translate(-50%, 0) rotate(-45deg);
 	}
 
 	&[data-popper-placement^="left"] .ob-popover-arrow {
 		right: 0;
 		border-color: transparent $white $white transparent;
-		box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
 		transform: translate(50%, 0) rotate(-45deg);
 	}
 }

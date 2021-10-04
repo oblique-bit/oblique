@@ -1,8 +1,10 @@
 @import "../../core/variables";
 @import "../../core/mixins/typography";
+@import "../../core/mixins/shadow";
 
 .mat-tooltip {
 	@include caption;
 	background-color: $gray-darker;
 	padding: 6px 7px 4px;
+	@include dropShadow();
 }

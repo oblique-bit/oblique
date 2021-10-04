@@ -1,5 +1,6 @@
 @import "../../styles/scss/core/variables";
 @import "../../styles/scss/core/mixins/layout";
+@import "../../styles/scss/core/mixins/shadow";
 
 .ob-sticky {
 	display: block;
@@ -47,17 +48,18 @@
 
 	@include layout-collapse-up() {
 		height: $sticky-element-height;
+		background-color: $white;
 		z-index: $z-index-controls;
-		box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.08),
-		0 -2px 0 rgba(0, 0, 0, 0.06),
-		0 -3px 0 rgba(0, 0, 0, 0.04),
-		0 -4px 0 rgba(0, 0, 0, 0.02),
-		0 -5px 0 rgba(0, 0, 0, 0.01),
-		0 1px 0 rgba(0, 0, 0, 0.08),
-		0 2px 0 rgba(0, 0, 0, 0.06),
-		0 3px 0 rgba(0, 0, 0, 0.04),
-		0 4px 0 rgba(0, 0, 0, 0.02),
-		0 5px 0 rgba(0, 0, 0, 0.01);
+	}
+}
+
+@include layout-collapse-up() {
+	.ob-sticky-header {
+		@include dropShadow(down);
+	}
+
+	.ob-sticky-footer {
+		@include dropShadow(up);
 	}
 }
 
