@@ -33,20 +33,20 @@ export function infoHighlights(context: SchematicContext, msg: string, ...highli
 	context.logger.info(colors.black(`${message}\n`));
 }
 
-export function readFile(tree: Tree, filename: string): string {
-	const src = tree.read(filename);
+export function readFile(tree: Tree, fileName: string): string {
+	const src = tree.read(fileName);
 	return src ? src.toString() : '';
 }
 
-export function addFile(tree: Tree, filename: string, content: string | Buffer | null): void {
-	if (!tree.exists(filename) && content) {
-		tree.create(filename, content);
+export function addFile(tree: Tree, fileName: string, content: string | Buffer | null): void {
+	if (!tree.exists(fileName) && content) {
+		tree.create(fileName, content);
 	}
 }
 
-export function deleteFile(tree: Tree, filename: string): Tree {
-	if (tree.exists(filename)) {
-		tree.delete(filename);
+export function deleteFile(tree: Tree, fileName: string): Tree {
+	if (tree.exists(fileName)) {
+		tree.delete(fileName);
 	}
 	return tree;
 }
