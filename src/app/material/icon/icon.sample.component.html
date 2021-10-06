@@ -31,7 +31,13 @@
 		</section>
 		<section>
 			<h3>Icon list</h3>
-			<mat-icon [svgIcon]="icon" class="ob-icon" *ngFor="let icon of icons" [style.color]="color" [style.font-size]="fontSize + 'px'"></mat-icon>
+			<mat-icon
+				[svgIcon]="icon"
+				class="ob-icon icon-list"
+				*ngFor="let icon of icons"
+				[style.color]="color"
+				[style.font-size]="fontSize + 'px'"
+			></mat-icon>
 		</section>
 	</ng-container>
 	<ng-container column-right-content>
