@@ -201,7 +201,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 	}
 
 	private extractAllListElements(): any[] {
-		return [].slice.call(Array.from(this.element.nativeElement.querySelectorAll(ObNavTreeFakeFocusDirective.CSS_SELECTORS.ITEM_WRAPPER)));
+		return Array.from(this.element.nativeElement.querySelectorAll(ObNavTreeFakeFocusDirective.CSS_SELECTORS.ITEM_WRAPPER));
 	}
 
 	private ensureInView(): void {
