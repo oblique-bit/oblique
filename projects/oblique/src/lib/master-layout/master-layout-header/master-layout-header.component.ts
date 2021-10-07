@@ -111,7 +111,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 				this.renderer.addClass(el, 'ob-control-link');
 			}
 		}
-		Array.from(elt.nativeElement.querySelectorAll('.ob-control-link .fa, .ob-control-link .fas, .ob-control-link .fab')).forEach((item: HTMLElement) => {
+		elt.nativeElement.querySelectorAll('.ob-control-link .fa, .ob-control-link .fas, .ob-control-link .fab').forEach((item: HTMLElement) => {
 			this.renderer.addClass(item, 'ob-control-icon');
 		});
 	}
@@ -165,7 +165,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		// these elements must not be focusable during the closing animation. Otherwise, the focused element will be scrolled into view
 		// and the header will appear empty.
 		const isFocusable = this.window.innerWidth > 991 || !isMenuOpened;
-		Array.from(this.el.nativeElement.querySelectorAll('.ob-master-layout-header-controls a.ob-control-link')).forEach(el => {
+		this.el.nativeElement.querySelectorAll('.ob-master-layout-header-controls a.ob-control-link').forEach(el => {
 			this.renderer.setAttribute(el, 'tabindex', isFocusable ? '0' : '-1');
 		});
 	}
