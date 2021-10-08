@@ -33,7 +33,7 @@ describe('Popover', () => {
 		toggle = element.nativeElement;
 	});
 
-	it('should create a fixture', () => {
+	it('should create an instance', () => {
 		expect(fixture.componentInstance).toBeTruthy();
 	});
 
@@ -45,29 +45,40 @@ describe('Popover', () => {
 		expect(toggle.classList.contains('ob-popover')).toBe(true);
 	});
 
-	it('should be hidden on start', () => {
+	it('should not be present in the DOM on start', () => {
 		popover = document.querySelector('.ob-popover-content');
 		expect(popover).toBeNull();
 	});
 
 	describe('toggle', () => {
-		it('should show the popover', () => {
+		it("should call open if there's no popover", () => {
+			jest.spyOn(directive, 'open');
+			directive.close();
 			toggle.click();
-			popover = document.querySelector('.ob-popover-content');
-			expect(popover).toBeTruthy();
+			expect(directive.open).toHaveBeenCalled();
 		});
-		it('should hide the popover', () => {
+		it("should call close if there's a popover", () => {
+			jest.spyOn(directive, 'close');
+			directive.open();
 			toggle.click();
-			toggle.click();
-			popover = document.querySelector('.ob-popover-content');
-			expect(popover).toBeNull();
+			expect(directive.close).toHaveBeenCalled();
 		});
 	});
 
 	describe('open', () => {
 		beforeEach(() => {
+			jest.useFakeTimers();
 			directive.open();
+			jest.runOnlyPendingTimers();
 			popover = document.querySelector('.ob-popover-content');
+		});
+
+		afterEach(() => {
+			jest.useRealTimers();
+		});
+
+		it('should insert the popover', () => {
+			expect(popover).toBeTruthy();
 		});
 
 		it('should have an id', () => {
@@ -88,28 +99,68 @@ describe('Popover', () => {
 			directive.close();
 			expect(true).toBe(true);
 		});
+
+		it('should remove the popover from the DOM', () => {
+			jest.useFakeTimers();
+			directive.open();
+			jest.runOnlyPendingTimers();
+			directive.close();
+			// fixture.detectChanges();
+			popover = document.querySelector('.ob-popover-content');
+			expect(popover).toBeNull();
+			jest.useRealTimers();
+		});
 	});
 
-	describe('outsideClick', () => {
+	describe('ngOnDestroy', () => {
+		it('should close the popover', () => {
+			jest.spyOn(directive, 'close');
+			directive.ngOnDestroy();
+			expect(directive.close).toHaveBeenCalled();
+		});
+	});
+
+	describe('events', () => {
 		beforeEach(() => {
+			jest.spyOn(directive, 'close');
+			jest.useFakeTimers();
 			directive.open();
+			jest.runOnlyPendingTimers();
 			popover = document.querySelector('.ob-popover-content');
 		});
-		it('should not close the popover upon click', () => {
-			popover.click();
-			expect(popover).toBeTruthy();
+
+		afterEach(() => {
+			jest.useRealTimers();
 		});
-		it('should not close the popover upon click', () => {
+
+		it('should not close the popover upon click on the popover', () => {
+			popover.click();
+			expect(directive.close).not.toHaveBeenCalled();
+		});
+
+		it('should close the popover upon click on body', () => {
 			document.querySelector('body').click();
-			expect(popover.querySelector('.ob-popover-arrow')).toBeTruthy();
+			expect(directive.close).toHaveBeenCalled();
+		});
+
+		it('should close the popover on Escape hit', () => {
+			document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
+			expect(directive.close).toHaveBeenCalled();
+		});
+
+		it('should not close the popover on Enter hit', () => {
+			document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter'}));
+			expect(directive.close).not.toHaveBeenCalled();
 		});
 	});
 
-	describe('with id', () => {
+	describe('with a custom id', () => {
 		it('should add the same id', () => {
 			directive.id = 'popover';
 			directive.ngOnInit();
+			jest.useFakeTimers();
 			directive.open();
+			jest.runOnlyPendingTimers();
 			popover = document.querySelector('.ob-popover-content');
 			expect(popover.getAttribute('id')).toBe('popover-content');
 		});
