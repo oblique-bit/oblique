@@ -1,15 +1,13 @@
 .mat-icon.ob-icon {
-	vertical-align: bottom;
 
 	&,
 	svg {
-		width: 1.5em;
-		height: 1.5em;
-		line-height: 1.5;
+		width: 1em;
+		height: 1em;
 	}
 
 	svg {
-		vertical-align: baseline;
+		vertical-align: middle;
 	}
 
 	&.fa {

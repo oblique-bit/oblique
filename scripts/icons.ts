@@ -43,7 +43,7 @@ class Icons {
 
 	private static writeIconCSS(filePath: string, SVGs: string[]): void {
 		const iconCSS = [
-			`.ob-icon::before {\n\tdisplay: inline-block;\n\twidth: 1.5em;\n\theight: 1.5em;\n\tline-height: 1.5;\n}`,
+			`.ob-icon::before {\n\tdisplay: inline-block;\n\twidth: 1em;\n\theight: 1em;\n}`,
 			...SVGs.map(
 				svg =>
 					`.ob-${/(?<=id=")[a-z-]*(?=")/.exec(svg)}::before {\n\tcontent: url('data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}');\n}`
