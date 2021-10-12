@@ -293,6 +293,18 @@
       "since": "2.0.0",
       "variables": [
         {
+          "name": "homePageRouteChange$",
+          "text": "Emits every time the <code>homePageRoute</code> property changes.",
+          "type": "Observable<string>",
+          "since": "7.1.0"
+        },
+        {
+          "name": "homePageRoute",
+          "text": "The route to the home page that is used in the header and footer.",
+          "type": "string",
+          "since": "7.1.0"
+        },
+        {
           "name": "header",
           "text": "A reference to the service that configures the header(see below)",
           "type": "ObMasterLayoutHeaderService",

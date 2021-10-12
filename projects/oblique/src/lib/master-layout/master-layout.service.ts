@@ -1,18 +1,24 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
-
+import {filter, map, mergeMap} from 'rxjs/operators';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {ObMasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
 import {ObMasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
 import {ObMasterLayoutNavigationService} from './master-layout-navigation/master-layout-navigation.service';
 import {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
 import {ObLanguageService} from '../language/language.service';
+import {ObMasterLayoutConfig} from './master-layout.config';
 
 @Injectable({providedIn: 'root'})
 export class ObMasterLayoutService {
+	public readonly homePageRouteChange$: Observable<string>;
+	private _homePageRoute = this.config.homePageRoute;
+	private readonly homePageRouteChange = new BehaviorSubject<string>(this.config.homePageRoute);
+
 	constructor(
 		private readonly router: Router,
 		private readonly activatedRoute: ActivatedRoute,
+		private readonly config: ObMasterLayoutConfig,
 		public readonly header: ObMasterLayoutHeaderService,
 		public readonly footer: ObMasterLayoutFooterService,
 		public readonly navigation: ObMasterLayoutNavigationService,
@@ -20,6 +26,16 @@ export class ObMasterLayoutService {
 		language: ObLanguageService // ObLanguageService needs to be there to be instantiated
 	) {
 		this.routeChange();
+		this.homePageRouteChange$ = this.homePageRouteChange.asObservable();
+	}
+
+	public set homePageRoute(homePageRoute: string) {
+		this._homePageRoute = homePageRoute;
+		this.homePageRouteChange.next(homePageRoute);
+	}
+
+	public get homePageRoute(): string {
+		return this._homePageRoute;
 	}
 
 	private routeChange(): void {
