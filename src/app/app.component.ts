@@ -34,6 +34,7 @@ export class AppComponent {
 				{url: 'collapse', label: 'Collapse'},
 				{url: 'column-layout', label: 'i18n.routes.samples.column-layout.title'},
 				{url: 'datepicker', label: 'i18n.routes.samples.datepicker.title'},
+				{url: 'dropdown', label: 'Dropdown'},
 				{url: 'error-messages', label: 'Error messages'},
 				{url: 'external-link', label: 'External-link'},
 				{url: 'file-upload', label: 'File Upload'},
