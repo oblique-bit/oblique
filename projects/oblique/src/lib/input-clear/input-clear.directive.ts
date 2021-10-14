@@ -15,10 +15,8 @@ export class ObInputClearDirective implements OnInit {
 	@Input() datePickerRef: MatDatepicker<any>;
 	@Output() onClear = new EventEmitter<MouseEvent>();
 	@HostBinding('class.ob-text-control-clear') cssClass = true;
-	private readonly window: Window;
 
-	constructor(private readonly element: ElementRef, @Inject(WINDOW) window: any) {
-		this.window = window; // because AoT don't accept interfaces as DI
+	constructor(private readonly element: ElementRef, @Inject(WINDOW) private readonly window: Window) {
 		// ensure matInput got resolved beforehand
 		this.window.setTimeout(() => {
 			const parent = this.element.nativeElement.parentElement;

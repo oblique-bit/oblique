@@ -32,10 +32,7 @@ export class ObThemeService {
 	private fontLink: HTMLElement;
 	private currentTheme: THEMES | string;
 
-	constructor(
-		rendererFactory: RendererFactory2,
-		@Inject(DOCUMENT) document: any // NOTE: do not set type, it will break AOT
-	) {
+	constructor(rendererFactory: RendererFactory2, @Inject(DOCUMENT) document: Document) {
 		this.head = document.head;
 		this.renderer = rendererFactory.createRenderer(null, null);
 		this.theme$ = this.mainTheme.asObservable();

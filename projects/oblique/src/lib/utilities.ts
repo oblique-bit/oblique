@@ -1,5 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {InjectionToken, Optional, Provider} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
 import {TranslateLoader, TranslateModuleConfig} from '@ngx-translate/core';
 import {ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
 import {ObITranslationFile} from './multi-translate-loader/multi-translate-loader.model';
@@ -13,8 +14,8 @@ import {ObIBanner, ObIMaterialConfig} from './utilities.model';
 export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
 
-export function windowProvider(): Window {
-	return window || ({} as Window);
+export function windowProvider(doc: Document): Window {
+	return doc.defaultView || ({} as Window);
 }
 
 export function multiTranslateLoader(config: TranslateModuleConfig = {}): TranslateModuleConfig {
@@ -67,6 +68,6 @@ export function obliqueProviders(): Provider[] {
 		{provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useFactory: checkboxOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
 		{provide: MAT_RADIO_DEFAULT_OPTIONS, useFactory: radioOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
 		{provide: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, useFactory: slideToggleOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
-		{provide: WINDOW, useFactory: windowProvider}
+		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]}
 	];
 }

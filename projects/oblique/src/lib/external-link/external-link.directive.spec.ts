@@ -2,8 +2,8 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
-import {of, Subject} from 'rxjs';
-import {WINDOW, windowProvider} from '../utilities';
+import {Subject} from 'rxjs';
+import {WINDOW} from '../utilities';
 import {ObExternalLinkDirective} from './external-link.directive';
 import {EXTERNAL_LINK} from './external-link.model';
 
@@ -25,7 +25,7 @@ describe('ExternalLink', () => {
 				TestBed.configureTestingModule({
 					declarations: [TestComponent, ObExternalLinkDirective],
 					providers: [
-						{provide: WINDOW, useFactory: windowProvider},
+						{provide: WINDOW, useValue: window},
 						{provide: TranslateService, useValue: {onLangChange: lang, instant: mock.mockReturnValue('Opens in new tab')}}
 					]
 				});
@@ -300,7 +300,7 @@ describe('ExternalLink', () => {
 				TestBed.configureTestingModule({
 					declarations: [TestComponent, ObExternalLinkDirective],
 					providers: [
-						{provide: WINDOW, useFactory: windowProvider},
+						{provide: WINDOW, useValue: window},
 						{provide: TranslateService, useValue: {onLangChange: lang, instant: mock.mockReturnValue('Opens in new tab')}},
 						{provide: EXTERNAL_LINK, useValue: {rel: 'custom rel', target: 'custom target', icon: 'left'}}
 					]

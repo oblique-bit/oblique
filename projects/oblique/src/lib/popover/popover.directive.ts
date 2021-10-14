@@ -34,7 +34,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	@HostBinding('attr.aria-describedby') idContent: string;
 
 	private static idCount = 0;
-	private readonly body: HTMLBodyElement;
+	private readonly body: HTMLElement;
 	private readonly host: HTMLElement;
 	private instance: Instance;
 	private popover: HTMLDivElement;
@@ -42,7 +42,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	constructor(
 		el: ElementRef,
 		private readonly renderer: Renderer2,
-		@Inject(DOCUMENT) document: any,
+		@Inject(DOCUMENT) document: Document,
 		private readonly globalEventsService: ObGlobalEventsService,
 		private readonly viewContainerRef: ViewContainerRef
 	) {

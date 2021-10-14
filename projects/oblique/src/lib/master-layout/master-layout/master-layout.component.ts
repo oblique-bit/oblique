@@ -63,7 +63,6 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 	@ContentChildren('obHeaderMobileControl') readonly headerMobileControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('obFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<any>>;
 	@ViewChild('offCanvasClose') readonly offCanvasClose: ElementRef<HTMLElement>;
-	private readonly window: Window;
 	private readonly unsubscribe = new Subject();
 
 	constructor(
@@ -75,9 +74,8 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 		private readonly globalEventsService: ObGlobalEventsService,
 		@Optional() @Inject(ObUseObliqueIcons) public readonly useObliqueIcons: boolean,
 		@Inject(DOCUMENT) private readonly document: any,
-		@Inject(WINDOW) window
+		@Inject(WINDOW) private readonly window: Window
 	) {
-		this.window = window; // because AoT don't accept interfaces as DI
 		this.propertyChanges();
 		this.focusFragment();
 		this.focusOffCanvasClose();
