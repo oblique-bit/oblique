@@ -7,7 +7,7 @@ import {MatFormFieldControl} from '@angular/material/form-field/form-field-contr
 import {MatChipList} from '@angular/material/chips';
 
 /**
- * Note: this is a workaround for: https://github.com/angular/components/issues/2574
+ * @deprecated since version 7.1.0. Should be removed with the version 8.0.0 as it has been directly fixed in Angular (https://github.com/angular/components/pull/23362)
  */
 @Directive({
 	selector: 'input:not([required]), mat-select:not([required), select:not([required]), textarea:not([required]), mat-chip-list:not([required])'
