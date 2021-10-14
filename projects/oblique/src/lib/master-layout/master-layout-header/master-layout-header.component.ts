@@ -16,6 +16,7 @@ import {
 	ViewEncapsulation
 } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
+import {Observable, Subject} from 'rxjs';
 import {filter, takeUntil} from 'rxjs/operators';
 
 import {ObMasterLayoutService} from '../master-layout.service';
@@ -25,7 +26,6 @@ import {OB_BANNER, WINDOW} from '../../utilities';
 import {ObIBanner} from '../../utilities.model';
 import {ObEMasterLayoutEventValues, ObILocaleObject, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
-import {Subject} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 
 @Component({
@@ -37,7 +37,7 @@ import {ObGlobalEventsService} from '../../global-events/global-events.service';
 	host: {class: 'ob-master-layout-header'}
 })
 export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
-	home = this.config.homePageRoute;
+	home$: Observable<string>;
 	languages: {code: string; id?: string}[];
 	isCustom = this.masterLayout.header.isCustom;
 	banner: ObIBanner;
@@ -69,6 +69,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		this.propertyChanges();
 		this.reduceOnScroll();
 		this.banner = {color: '#000', bgColor: '#0f0', ...bannerToken};
+		this.home$ = this.masterLayout.homePageRouteChange$;
 	}
 
 	ngAfterViewInit() {

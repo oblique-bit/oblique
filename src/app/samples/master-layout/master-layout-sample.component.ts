@@ -15,6 +15,14 @@ export class ObMasterLayoutSampleComponent {
 		this.coverLayout = this.masterLayout.layout.hasCover;
 	}
 
+	get homePageRoute() {
+		return this.masterLayout.homePageRoute;
+	}
+
+	set homePageRoute(value: string) {
+		this.masterLayout.homePageRoute = value;
+	}
+
 	get applicationFixed() {
 		return this.masterLayout.layout.isFixed;
 	}
