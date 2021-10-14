@@ -1,0 +1,29 @@
+<div obDragDrop tabindex="0" (click)="fileInput.click()" (keydown.enter)="fileInput.click()" (onFileDropped)="addFiles($event)">
+	<div class="ob-drop-zone-text">
+		<input
+			tabindex="-1"
+			class="sr-only"
+			type="file"
+			aria-labelledby="ob-file-upload-caption"
+			[multiple]="multiple"
+			[accept]="accept"
+			(change)="addFiles($event.target.files)"
+			#fileInput
+		/>
+		<p class="ob-drop-zone-heading">
+			<mat-icon svgIcon="cloud-upload" class="ob-icon ob-upload-icon"></mat-icon>
+			<span id="ob-file-upload-caption">{{ "i18n.oblique.file-upload.caption" | translate }}</span>
+		</p>
+		<p class="ob-drop-zone-hints">
+			<ng-container *ngIf="!(accept | obAcceptAll)">
+				{{ "i18n.oblique.file-upload.hint.type" | translate }}
+				<ng-container *ngFor="let extension of accept; last as isLast">
+					<code>{{ extension }}</code>
+					<ng-container *ngIf="!isLast">,</ng-container>
+				</ng-container>
+				.
+			</ng-container>
+			{{ "i18n.oblique.file-upload.hint.size" | translate: { size: maxFileSize } }}
+		</p>
+	</div>
+</div>

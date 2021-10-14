@@ -1,0 +1,8 @@
+@import "../../../../projects/oblique/src/styles/scss/core/variables";
+
+.ob-drop-zone,
+.ob-file-upload,
+.ob-file-info {
+	display: block;
+	margin-bottom: $spacing-default;
+}

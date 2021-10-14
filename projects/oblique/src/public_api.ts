@@ -35,6 +35,16 @@ export {
 	ObErrorMessagesService
 } from './lib/error-messages/error-messages.module';
 export {ObExternalLinkModule, ObExternalLinkDirective, EXTERNAL_LINK, ObIExternalLink, ObEExternalLinkIcon} from './lib/external-link/external-link.module';
+export {
+	ObDropZoneComponent,
+	ObEUploadEventType,
+	ObFileUploadModule,
+	ObFileUploadService,
+	ObFileUploadComponent,
+	ObFileInfoComponent,
+	ObIUploadEvent,
+	ObIFileDescription
+} from './lib/file-upload/file-upload.module';
 export {ObFormControlStateDirective, ObFormControlStateModule} from './lib/form-control-state/form-control-state.module';
 export {
 	ObHttpApiInterceptor,
