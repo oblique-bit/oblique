@@ -62,4 +62,8 @@
 	.mat-icon {
 		margin-top: -2px;
 	}
+
+	 &.ob-button.mat-button-disabled {
+		 cursor: not-allowed;
+	 }
 }

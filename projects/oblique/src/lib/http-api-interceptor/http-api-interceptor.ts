@@ -1,7 +1,8 @@
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Inject, Injectable} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
 import {Observable, throwError} from 'rxjs';
-import {catchError, finalize} from 'rxjs/operators';
+import {catchError, finalize, map} from 'rxjs/operators';
 
 import {WINDOW} from '../utilities';
 import {ObNotificationService} from '../notification/notification.module';
@@ -13,17 +14,15 @@ import {ObIHttpApiRequest, ObIHttpApiRequestNotification, ObIObliqueHttpErrorRes
 @Injectable({providedIn: 'root'})
 export class ObHttpApiInterceptor implements HttpInterceptor {
 	private readonly activeRequestUrls: string[] = [];
-	private readonly window: Window;
 
 	constructor(
 		private readonly config: ObHttpApiInterceptorConfig,
 		private readonly interceptorEvents: ObHttpApiInterceptorEvents,
 		private readonly spinner: ObSpinnerService,
 		private readonly notificationService: ObNotificationService,
-		@Inject(WINDOW) window: any
-	) {
-		this.window = window; // because AoT don't accept interfaces as DI
-	}
+		private readonly translate: TranslateService,
+		@Inject(WINDOW) private readonly window: Window
+	) {}
 
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		const obliqueRequest = this.broadcast();
@@ -104,12 +103,24 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 	}
 
 	private notify(notification: ObIHttpApiRequestNotification, error: HttpErrorResponse): void {
-		this.notificationService.send({
-			message: notification.text || `i18n.oblique.http.error.status.${error.status}`,
-			title: notification.title || error.statusText,
-			type: notification.severity,
-			sticky: notification.sticky
-		});
+		const textKey = `i18n.oblique.http.error.status.${error.status}`;
+		const titleKey = `i18n.oblique.http.error.status.${error.status}.title`;
+		this.translate
+			.get([textKey, titleKey])
+			.pipe(
+				map(texts => ({
+					text: texts[textKey] !== textKey ? textKey : 'i18n.oblique.http.error.general',
+					title: texts[titleKey] !== titleKey ? titleKey : error.statusText
+				}))
+			)
+			.subscribe(keys =>
+				this.notificationService.send({
+					message: notification.text || keys.text,
+					title: notification.title || keys.title,
+					type: notification.severity,
+					sticky: notification.sticky
+				})
+			);
 	}
 
 	private isApiCall(url: string): boolean {

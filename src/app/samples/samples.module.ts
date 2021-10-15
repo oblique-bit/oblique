@@ -13,6 +13,10 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {DateAdapter} from '@angular/material/core';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatListModule} from '@angular/material/list';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -50,8 +54,10 @@ import {
 	ObCollapseModule,
 	ObColumnLayoutModule,
 	ObDatepickerModule,
+	ObDropdownModule,
 	ObErrorMessagesModule,
 	ObExternalLinkModule,
+	ObFileUploadModule,
 	ObFormControlStateModule,
 	ObInputClearModule,
 	ObLanguageModule,
@@ -71,9 +77,6 @@ import {
 	ObUnsavedChangesModule,
 	ObUnsavedChangesTabsModule
 } from '@oblique/oblique';
-import {ObApiComponent} from '../api/api.component';
-import {ObDescriptionComponent} from '../description/description.component';
-import {ObApiElementComponent} from '../api/api-element.component';
 import {ObPopUpSampleComponent} from './pop-up/pop-up-sample.component';
 import {ObNestedFormChildTDSampleComponent} from './nested-form/nested-form-child-td-sample.component';
 import {ObNestedFormGrandChildTDSampleComponent} from './nested-form/nested-form-grandchild-td-sample.component';
@@ -84,9 +87,11 @@ import {ObLanguageSampleComponent} from './language/language-sample.component';
 import {ObSearchBoxSampleComponent} from './search-box/search-box.component';
 import {ObPopoverComponent} from './popover/popover.component';
 import {ObAlertSampleComponent} from './alert/alert.component';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {ObHorizontalFormsSampleComponent} from './horizontal-forms/horizontal-forms.component';
 import {ObBreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
+import {ObFileUploadSampleComponent} from './file-upload-sample/file-upload-sample.component';
+import {SharedModule} from '../common/shared.module';
+import {ObDropdownSampleComponent} from './dropdown/dropdown.component';
 
 @NgModule({
 	imports: [
@@ -96,7 +101,9 @@ import {ObBreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
 		ObCollapseModule,
 		ObColumnLayoutModule,
 		ObDatepickerModule,
+		ObDropdownModule,
 		ObErrorMessagesModule,
+		ObFileUploadModule,
 		ObFormControlStateModule,
 		ObLanguageModule,
 		ObMultiselectModule,
@@ -131,9 +138,14 @@ import {ObBreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
 		MatSelectModule,
 		MatCheckboxModule,
 		MatRadioModule,
+		MatTooltipModule,
 		MatDatepickerModule,
 		MatMomentDateModule,
-		MatSlideToggleModule
+		MatSlideToggleModule,
+		MatSlideToggleModule,
+		MatListModule,
+		MatDialogModule,
+		SharedModule
 	],
 	declarations: [
 		ObAlertSampleComponent,
@@ -142,6 +154,7 @@ import {ObBreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
 		ObCollapseSampleComponent,
 		ObColumnLayoutSampleComponent,
 		ObDatepickerSampleComponent,
+		ObDropdownSampleComponent,
 		ObErrorMessagesSampleComponent,
 		ObFormSampleComponent,
 		ObFormControlStateSampleComponent,
@@ -167,17 +180,15 @@ import {ObBreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
 		ObUnknownRouteSampleComponent,
 		ObUnsavedChangesSampleComponent,
 		ObUnsavedChangesSampleModalComponent,
-		ObApiComponent,
-		ObApiElementComponent,
-		ObDescriptionComponent,
 		ObPopUpSampleComponent,
 		ObPopoverComponent,
 		ObMultiTranslateLoaderSampleComponent,
 		ObSpinnerSampleComponent,
 		ObSearchBoxSampleComponent,
-		ObExternalLinkComponent
+		ObExternalLinkComponent,
+		ObFileUploadSampleComponent
 	],
-	exports: [RouterModule, ObApiComponent, ObDescriptionComponent],
+	exports: [RouterModule],
 	providers: [SampleDataResolver]
 })
 export class SamplesModule {

@@ -9,11 +9,12 @@ import {WINDOW} from '../utilities';
 })
 export class ObSchemaValidateDirective implements AfterViewInit, Validator {
 	private propertyName: string;
-	private readonly window: Window;
 
-	constructor(private readonly schemaDirective: ObSchemaValidationDirective, private readonly injector: Injector, @Inject(WINDOW) window: any) {
-		this.window = window; // because AoT don't accept interfaces as DI
-	}
+	constructor(
+		private readonly schemaDirective: ObSchemaValidationDirective,
+		private readonly injector: Injector,
+		@Inject(WINDOW) private readonly window: Window
+	) {}
 
 	ngAfterViewInit(): void {
 		//TODO: this is a workaround: if NgControl is required in the constructor, we have cyclic dependencies

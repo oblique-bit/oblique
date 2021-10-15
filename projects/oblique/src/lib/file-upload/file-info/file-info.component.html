@@ -1,0 +1,45 @@
+<ob-alert *ngIf="!dataSource.data.length">{{ "i18n.oblique.file-upload.empty" | translate }}</ob-alert>
+<table *ngIf="dataSource.data.length" mat-table matSort [dataSource]="dataSource" class="ob-table ob-table-plain">
+	<ng-container [matColumnDef]="field" *ngFor="let field of fields">
+		<th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header>{{ "i18n.file-upload." + field | translate }}</th>
+		<td mat-cell *matCellDef="let file">{{ file[field] }}</td>
+	</ng-container>
+
+	<ng-container [matColumnDef]="COLUMN_SELECT">
+		<th scope="col" mat-header-cell *matHeaderCellDef>
+			<mat-checkbox
+				(change)="$event ? selectOrUnselectAllItems() : null"
+				[checked]="selection.hasValue() && areAllItemsSelected()"
+				[indeterminate]="selection.hasValue() && !areAllItemsSelected()"
+			>
+			</mat-checkbox>
+		</th>
+		<td mat-cell *matCellDef="let row">
+			<mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? toggle(row) : null" [checked]="selection.isSelected(row)"> </mat-checkbox>
+		</td>
+	</ng-container>
+
+	<ng-container [matColumnDef]="COLUMN_ACTION">
+		<th class="ob-actions" scope="col" mat-header-cell *matHeaderCellDef>
+			<button
+				[disabled]="!selection.hasValue()"
+				mat-icon-button
+				obButton="secondary"
+				matTooltip="{{ 'i18n.oblique.file-upload.selected.remove' | translate }}"
+				(click)="delete(selection.selected)"
+			>
+				<mat-icon svgIcon="trash" class="ob-icon"></mat-icon>
+				<span class="sr-only">{{ "i18n.oblique.file-upload.selected.remove" | translate }}</span>
+			</button>
+		</th>
+		<td mat-cell *matCellDef="let file">
+			<button mat-icon-button obButton="secondary" matTooltip="{{ 'i18n.oblique.file-upload.remove' | translate }}" (click)="delete([file])">
+				<mat-icon svgIcon="trash" class="ob-icon"></mat-icon>
+				<span class="sr-only">{{ "i18n.oblique.file-upload.remove" | translate }}</span>
+			</button>
+		</td>
+	</ng-container>
+
+	<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+	<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

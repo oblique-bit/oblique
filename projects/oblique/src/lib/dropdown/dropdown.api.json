@@ -7,7 +7,7 @@
       "exported": "obDropdown",
       "type": "component",
       "since": "2.0.0",
-      "updated": "6.0.0",
+      "updated": "7.1.0",
       "inputs": [
         {
           "name": "position",

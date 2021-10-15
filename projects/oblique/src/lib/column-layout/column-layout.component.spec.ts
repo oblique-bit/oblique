@@ -6,7 +6,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {ObMockColumnPanelDirective} from './_mocks/mock-column-panel.directive';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
-import {windowProvider, WINDOW} from '../utilities';
+import {WINDOW} from '../utilities';
 import {ObColumnLayoutComponent} from './column-layout.component';
 
 @Component({
@@ -43,7 +43,7 @@ describe('ColumnLayoutComponent', () => {
 			imports: [RouterTestingModule],
 			providers: [
 				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useFactory: windowProvider}
+				{provide: WINDOW, useValue: window}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 		}).compileComponents();

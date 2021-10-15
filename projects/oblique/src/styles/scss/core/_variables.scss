@@ -57,8 +57,8 @@ $z-index-default:                 0 !default;
 $z-index-controls:               10 !default;
 $z-index-layout:                101 !default;
 $z-index-widget:                200 !default;
-$z-index-overlay:               300 !default;
-$z-index-overlay-top:           400 !default;
+$z-index-overlay:               1005 !default;	// because material overlay is 1000
+$z-index-overlay-top:           1010 !default;
 
 $brand-logo-width:            216px !default;
 $brand-logo-height:            55px !default;

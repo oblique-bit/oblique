@@ -34,8 +34,10 @@ export class AppComponent {
 				{url: 'collapse', label: 'Collapse'},
 				{url: 'column-layout', label: 'i18n.routes.samples.column-layout.title'},
 				{url: 'datepicker', label: 'i18n.routes.samples.datepicker.title'},
+				{url: 'dropdown', label: 'Dropdown'},
 				{url: 'error-messages', label: 'Error messages'},
 				{url: 'external-link', label: 'External-link'},
+				{url: 'file-upload', label: 'File Upload'},
 				{url: 'form-control-state', label: 'i18n.routes.samples.form-control-state.title'},
 				{url: 'global-events', label: 'Global events'},
 				{url: 'horizontal-forms', label: 'Horizontal Forms'},
@@ -93,12 +95,12 @@ export class AppComponent {
 			label: 'Material',
 			children: [
 				{url: 'badge', label: 'Badge'},
-				{url: 'button2', label: 'Button'},
+				{url: 'button', label: 'Button'},
 				{url: 'card', label: 'Card'},
 				{url: 'chips', label: 'Chips'},
 				{url: 'dialog', label: 'Dialog'},
 				{url: 'expansion-panel', label: 'Expansion Panel'},
-				{url: 'form2', label: 'Forms'},
+				{url: 'form', label: 'Forms'},
 				{url: 'icon', label: 'Icons'},
 				{url: 'mandatory', label: 'Mandatory'},
 				{url: 'progress-bar', label: 'Progress bar'},
@@ -107,7 +109,8 @@ export class AppComponent {
 				{url: 'stepper-vertical', label: 'Stepper vertical'},
 				{url: 'table', label: 'Table'},
 				{url: 'tabs', label: 'Tabs'},
-				{url: 'tooltip', label: 'Tooltip'}
+				{url: 'tooltip', label: 'Tooltip'},
+				{url: 'file-upload', label: 'File Upload'}
 			]
 		}
 	];

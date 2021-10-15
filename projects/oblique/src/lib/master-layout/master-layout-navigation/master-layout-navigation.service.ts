@@ -16,12 +16,10 @@ export class ObMasterLayoutNavigationService {
 	private readonly scrolled$ = this._scrolled.asObservable();
 	private readonly _refreshed: Subject<void> = new Subject<void>();
 	private readonly refreshed$ = this._refreshed.asObservable();
-	private readonly window: Window;
 	private _isFullWidth = this.config.navigation.isFullWidth;
 	private _scrollMode = this.config.navigation.scrollMode;
 
-	constructor(private readonly config: ObMasterLayoutConfig, translate: TranslateService, @Inject(WINDOW) window: any) {
-		this.window = window; // because AoT don't accept interfaces as DI
+	constructor(private readonly config: ObMasterLayoutConfig, translate: TranslateService, @Inject(WINDOW) private readonly window: Window) {
 		translate.onLangChange.subscribe(() => this.refresh());
 	}
 

@@ -5,6 +5,7 @@ import {ObColumnLayoutModule} from './column-layout/column-layout.module';
 import {ObDocumentMetaModule} from './document-meta/document-meta.module';
 import {ObDropdownModule} from './dropdown/dropdown.module';
 import {ObErrorMessagesModule} from './error-messages/error-messages.module';
+import {ObFileUploadModule} from './file-upload/file-upload.module';
 import {ObFormControlStateModule} from './form-control-state/form-control-state.module';
 import {ObMasterLayoutModule} from './master-layout/master-layout.module';
 import {ObMultiselectModule} from './multiselect/multiselect.module';
@@ -43,6 +44,7 @@ const OBLIQUE_MODULES = [
 	ObDocumentMetaModule,
 	ObDropdownModule,
 	ObErrorMessagesModule,
+	ObFileUploadModule,
 	ObFormControlStateModule,
 	ObLanguageModule,
 	ObMandatoryModule,

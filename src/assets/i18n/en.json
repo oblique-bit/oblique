@@ -46,5 +46,8 @@
   "i18n.oblique.chips.management": "Management",
   "i18n.oblique.chips.hr": "HR",
   "i18n.oblique.chips.cleaning": "Cleaning",
-  "i18n.validation.invalidDateMin": "Date must be after: {{value}}"
+  "i18n.validation.invalidDateMin": "Date must be after: {{value}}",
+  "i18n.file-upload.name": "File name",
+  "i18n.file-upload.url": "File url",
+  "i18n.file-upload.test": "Test"
 }

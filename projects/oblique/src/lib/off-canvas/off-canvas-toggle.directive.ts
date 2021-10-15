@@ -9,10 +9,7 @@ import {WINDOW} from '../utilities';
 	host: {class: 'ob-off-canvas-toggle'}
 })
 export class ObOffCanvasToggleDirective {
-	private readonly window: Window;
-	constructor(private readonly offCanvas: ObOffCanvasService, @Inject(WINDOW) window: any) {
-		this.window = window; // because AoT don't accept interfaces as DI
-	}
+	constructor(private readonly offCanvas: ObOffCanvasService, @Inject(WINDOW) private readonly window: Window) {}
 
 	@HostListener('click')
 	@HostListener('keyup.Enter')

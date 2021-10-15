@@ -2,7 +2,7 @@ import {TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {HttpClient} from '@angular/common/http';
 import {EMPTY} from 'rxjs';
-import {WINDOW, windowProvider} from '../utilities';
+import {WINDOW} from '../utilities';
 import {ObThemeService} from '../theme/theme.service';
 import {ObTelemetryService, TELEMETRY_DISABLE} from './telemetry.service';
 
@@ -16,7 +16,7 @@ describe('TelemetryService', () => {
 			TestBed.configureTestingModule({
 				imports: [HttpClientTestingModule],
 				providers: [
-					{provide: WINDOW, useFactory: windowProvider},
+					{provide: WINDOW, useValue: window},
 					{provide: TELEMETRY_DISABLE, useValue: true},
 					{provide: ObThemeService, useValue: {isMaterial: jest.fn()}}
 				]
@@ -52,7 +52,7 @@ describe('TelemetryService', () => {
 			TestBed.configureTestingModule({
 				imports: [HttpClientTestingModule],
 				providers: [
-					{provide: WINDOW, useFactory: windowProvider},
+					{provide: WINDOW, useValue: window},
 					{provide: ObThemeService, useValue: {isMaterial: jest.fn().mockReturnValue(true)}}
 				]
 			});
@@ -171,7 +171,7 @@ describe('TelemetryService', () => {
 			TestBed.configureTestingModule({
 				imports: [HttpClientTestingModule],
 				providers: [
-					{provide: WINDOW, useFactory: windowProvider},
+					{provide: WINDOW, useValue: window},
 					{provide: ObThemeService, useValue: {isMaterial: jest.fn().mockReturnValue(false)}}
 				]
 			});

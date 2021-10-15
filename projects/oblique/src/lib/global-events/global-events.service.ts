@@ -15,13 +15,13 @@ export class ObGlobalEventsService {
 	public readonly scroll$: Observable<Event>;
 	public readonly resize$: Observable<UIEvent>;
 
-	constructor(@Inject(DOCUMENT) document: any, @Inject(WINDOW) window: any) {
-		this.click$ = fromEvent(document, 'click');
-		this.mouseDown$ = fromEvent(document, 'mousedown');
-		this.mouseMove$ = fromEvent(document, 'mousemove');
-		this.keyDown$ = fromEvent(document, 'keydown');
-		this.keyUp$ = fromEvent(document, 'keyup');
-		this.scroll$ = fromEvent(window, 'scroll');
-		this.resize$ = fromEvent(window, 'resize');
+	constructor(@Inject(DOCUMENT) document: Document, @Inject(WINDOW) window: Window) {
+		this.click$ = fromEvent<MouseEvent>(document, 'click');
+		this.mouseDown$ = fromEvent<MouseEvent>(document, 'mousedown');
+		this.mouseMove$ = fromEvent<MouseEvent>(document, 'mousemove');
+		this.keyDown$ = fromEvent<KeyboardEvent>(document, 'keydown');
+		this.keyUp$ = fromEvent<KeyboardEvent>(document, 'keyup');
+		this.scroll$ = fromEvent<Event>(window, 'scroll');
+		this.resize$ = fromEvent<UIEvent>(window, 'resize');
 	}
 }

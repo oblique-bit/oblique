@@ -4,7 +4,7 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
-import {windowProvider, WINDOW} from '../../utilities';
+import {WINDOW} from '../../utilities';
 import {ObMockGlobalEventsService} from '../../global-events/_mocks/mock-global-events.service';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObMasterLayoutComponent} from './master-layout.component';
@@ -20,7 +20,7 @@ describe('MasterLayoutComponent', () => {
 			declarations: [ObMasterLayoutComponent, ObMockTranslatePipe],
 			providers: [
 				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useClass: windowProvider},
+				{provide: WINDOW, useValue: window},
 				{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]

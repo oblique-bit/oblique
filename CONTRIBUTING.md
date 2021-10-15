@@ -71,6 +71,7 @@ The scope is optional and should be the name of the Oblique feature affected:
 * **dropdown**
 * **error-messages**
 * **external-link**
+* **file-upload**
 * **form-control-state**
 * **global-events**
 * **http-interceptor**

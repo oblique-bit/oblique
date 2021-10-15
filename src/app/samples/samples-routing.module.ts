@@ -10,6 +10,7 @@ import {ObColumnLayoutSampleComponent} from './column-layout/column-layout-sampl
 import {ObDatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {ObErrorMessagesSampleComponent} from './error-messages-sample/error-messages-sample.component';
 import {ObExternalLinkComponent} from './external-link/external-link.component';
+import {ObFileUploadSampleComponent} from './file-upload-sample/file-upload-sample.component';
 import {ObFormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
 import {ObFormSampleComponent} from './form/form.component';
 import {ObGlobalEventsSampleComponent} from './global-events/global-events-sample.component';
@@ -33,6 +34,7 @@ import {ObSpinnerSampleComponent} from './spinner-sample/spinner-sample.componen
 import {ObStickySampleComponent} from './sticky/sticky-sample.component';
 import {ObUnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
 import {ObUnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
+import {ObDropdownSampleComponent} from './dropdown/dropdown.component';
 
 const samplesRoutes: Routes = [
 	{path: 'alert', component: ObAlertSampleComponent},
@@ -98,8 +100,10 @@ const samplesRoutes: Routes = [
 	{path: 'collapse', component: ObCollapseSampleComponent},
 	{path: 'column-layout', component: ObColumnLayoutSampleComponent},
 	{path: 'datepicker', component: ObDatepickerSampleComponent},
+	{path: 'dropdown', component: ObDropdownSampleComponent},
 	{path: 'error-messages', component: ObErrorMessagesSampleComponent},
 	{path: 'external-link', component: ObExternalLinkComponent},
+	{path: 'file-upload', component: ObFileUploadSampleComponent},
 	{path: 'form-control-state', component: ObFormControlStateSampleComponent},
 	{path: 'global-events', component: ObGlobalEventsSampleComponent},
 	{path: 'horizontal-forms', component: ObHorizontalFormsSampleComponent},
