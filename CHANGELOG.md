@@ -1,3 +1,26 @@
+# [7.1.0](https://github.com/oblique-bit/oblique/compare/7.0.4...7.1.0) (2021-10-15)
+
+## Bug Fixes
+* **button:** show `not-allowed` cursor on disabled buttons and links that look like buttons ([c297b4a](https://github.com/oblique-bit/oblique/commit/c297b4a3fbbbccc80a1aeb34edfdef84b4944e52))
+* **dropdown:** correct alignment ([1482813](https://github.com/oblique-bit/oblique/commit/148281341d9243a9ab8347b467f99c7ada840326))
+* **master-layout:** correctly focus fragment from jump links ([6df6178](https://github.com/oblique-bit/oblique/commit/6df6178e6d705b2c1d04bcacc33d271edfd16aca))
+* **material:** show `not-allowed` cursor on disabled form elements ([db4c676](https://github.com/oblique-bit/oblique/commit/db4c6764c1518b4f79c463e26472c624b169133b))
+* **popover:** limit its width to 40% ([f1e0fb6](https://github.com/oblique-bit/oblique/commit/f1e0fb6191220681f0cfc028e05efab00261740a))
+* **styles:** increase value of `$z-index-overlay` and `$z-index-overlay-top` ([4227123](https://github.com/oblique-bit/oblique/commit/4227123aa4194ef437642fa4a2f8bba504eca2f3))
+* **styles:** show `not-allowed` cursor on disabled form elements ([4194729](https://github.com/oblique-bit/oblique/commit/4194729b08fb7a67b650a4dd76084c9cdae781f7))
+* **utilities:** make `windowProvider` SSR compatible ([b04d8f5](https://github.com/oblique-bit/oblique/commit/b04d8f5a6eccf7c4af31c498ec79a1a37c10d309))
+
+## Features
+* **file-upload:** add feature ([27b3e46](https://github.com/oblique-bit/oblique/commit/27b3e464af1fa0244b6207ff9a6e1979649923d6))
+* **http-interceptor:** add 403 error translations ([6ecc2c8](https://github.com/oblique-bit/oblique/commit/6ecc2c8e1fa98ec33de3702f6f9d38c04381fad9))
+* **http-interceptor:** fallback to general error message for untranslated status code ([2ea6efe](https://github.com/oblique-bit/oblique/commit/2ea6efe9bcc571d4bd920c50fc39fbb030ca9abf))
+* **http-interceptor:** translate message titles ([e8999ce](https://github.com/oblique-bit/oblique/commit/e8999ceea9d4c837ba6610d1b94c2d6cd4aebac5))
+* **icon:** update icons with less spacing and increased line strength ([042d752](https://github.com/oblique-bit/oblique/commit/042d752ede0c29f20063c558b61a1abcc70a4da8))
+* **master-layout:** add `homePageRoute` and `homePageRouteChange$` properties ([44c353f](https://github.com/oblique-bit/oblique/commit/44c353fe08278dabe007ef7c093a37149c4be161))
+* **master-layout:** let the route to the home page be dynamic ([00dd59c](https://github.com/oblique-bit/oblique/commit/00dd59c85a475f4ad2579b2e4eed0b24d15dd499))
+* **toolchain:** provide a script to deprecate old Oblique versions ([96c1f1d](https://github.com/oblique-bit/oblique/commit/96c1f1d0ec2a0b8ef6a5cfa33574fc11e06bb3d4))
+
+
 # [7.0.4](https://github.com/oblique-bit/oblique/compare/7.0.3...7.0.4) (2021-09-15)
 
 ## Bug Fixes
