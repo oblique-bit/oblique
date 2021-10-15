@@ -7,6 +7,7 @@ nodejsPipelineTemplate {
 	nodeJsVersion = 14
 	singleCFConfig = true
 	fetchTags = true
+	safeModeWhitelist = ['esbuild']
 	gitPush = [
 		'credentialId': 'githubObliqueCredentials',
 		'repository': 'https://github.com/oblique-bit/oblique.git',
