@@ -1,7 +1,48 @@
 <h2 class="page-header">Card</h2>
 <ob-column-layout [left]="false">
 	<ng-container column-main-content>
-		<div obSelectableGroup>
+		<div class="container" obSelectableGroup>
+			<mat-card>
+				<img *ngIf="pictureVisible" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu" />
+				<mat-card-header *ngIf="headerVisible">
+					<div *ngIf="avatarVisible" mat-card-avatar></div>
+					<mat-card-title *ngIf="titleVisible">Default Card</mat-card-title>
+					<mat-card-subtitle *ngIf="subtitleVisible">Subtitle</mat-card-subtitle>
+				</mat-card-header>
+				<mat-card-content *ngIf="contentVisible">
+					<p>The default card is only a presentational artifact, without any form of interaction except for eventual buttons inside.</p>
+				</mat-card-content>
+				<mat-card-actions *ngIf="actionsVisible">
+					<button mat-stroked-button>Like</button>
+					<button mat-stroked-button>Share</button>
+				</mat-card-actions>
+			</mat-card>
+			<button mat-button obButton="primary" class="ob-button-card">
+				<mat-card>
+					<img *ngIf="pictureVisible" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu" />
+					<mat-card-header *ngIf="headerVisible">
+						<div *ngIf="avatarVisible" mat-card-avatar></div>
+						<mat-card-title *ngIf="titleVisible">Button Card</mat-card-title>
+						<mat-card-subtitle *ngIf="subtitleVisible">Subtitle</mat-card-subtitle>
+					</mat-card-header>
+					<mat-card-content *ngIf="contentVisible">
+						<p>The Button Card is a card wrapped in a button. The Whole card is clickable</p>
+					</mat-card-content>
+				</mat-card>
+			</button>
+			<a href="/material/card" class="ob-link-card">
+				<mat-card>
+					<img *ngIf="pictureVisible" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu" />
+					<mat-card-header *ngIf="headerVisible">
+						<div *ngIf="avatarVisible" mat-card-avatar></div>
+						<mat-card-title *ngIf="titleVisible">Link Card</mat-card-title>
+						<mat-card-subtitle *ngIf="subtitleVisible">Subtitle</mat-card-subtitle>
+					</mat-card-header>
+					<mat-card-content *ngIf="contentVisible">
+						<p>Same concept as the Button Card, but wrapped in a link.</p>
+					</mat-card-content>
+				</mat-card>
+			</a>
 			<mat-card obSelectable>
 				<img *ngIf="pictureVisible" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu" />
 				<mat-card-header *ngIf="headerVisible">
@@ -15,10 +56,6 @@
 						with mountainous terrain, the Shiba Inu was originally bred for hunting.
 					</p>
 				</mat-card-content>
-				<mat-card-actions *ngIf="actionsVisible">
-					<button mat-stroked-button>Like</button>
-					<button mat-stroked-button>Share</button>
-				</mat-card-actions>
 			</mat-card>
 			<mat-card obSelectable>
 				<img *ngIf="pictureVisible" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu" />
@@ -33,10 +70,6 @@
 						with mountainous terrain, the Shiba Inu was originally bred for hunting.
 					</p>
 				</mat-card-content>
-				<mat-card-actions *ngIf="actionsVisible">
-					<button mat-stroked-button>Like</button>
-					<button mat-stroked-button>Share</button>
-				</mat-card-actions>
 			</mat-card>
 		</div>
 	</ng-container>
