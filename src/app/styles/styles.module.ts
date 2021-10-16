@@ -13,6 +13,7 @@ import {ObStepperComponent} from './stepper/stepper.component';
 import {ObTabsComponent} from './tabs/tabs.component';
 import {ObAlertComponent} from './alert/alert.component';
 import {ObIconSampleComponent} from './icon/icon.component';
+import {GridComponent} from './grid/grid.component';
 import {SharedModule} from '../common/shared.module';
 
 @NgModule({
@@ -21,6 +22,7 @@ import {SharedModule} from '../common/shared.module';
 		RouterModule.forChild([
 			{path: 'typography', component: ObTypographyComponent},
 			{path: 'block', component: ObBlockElementsComponent},
+			{path: 'grid', component: GridComponent},
 			{path: 'icon', component: ObIconSampleComponent},
 			{path: 'inline', component: ObInlineElementComponent},
 			{path: 'lists', component: ObListsComponent},
@@ -45,7 +47,8 @@ import {SharedModule} from '../common/shared.module';
 		ObPaletteComponent,
 		ObStepperComponent,
 		ObTabsComponent,
-		ObAlertComponent
+		ObAlertComponent,
+		GridComponent
 	]
 })
 export class StylesModule {}
