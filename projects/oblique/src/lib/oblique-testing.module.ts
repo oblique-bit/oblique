@@ -35,7 +35,7 @@ import {ObMockThemeModule} from './theme/_mocks/mock-theme.module';
 import {ObMockTranslateParamsModule} from './translate-params/_mocks/mock-translate-params.module';
 import {ObMockUnknownRouteModule} from './unknown-route/_mocks/mock-unknown-route.module';
 import {ObMockUnsavedChangesModule} from './unsaved-changes/_mocks/mock-unsaved-changes.module';
-import {WINDOW, windowProvider} from './utilities';
+import {WINDOW} from './utilities';
 import {ObMockButtonModule} from './button/_mocks/mock-button.module';
 import {ObMockAlertModule} from './alert/_mocks/mock-alert.module';
 import {ObMockMandatoryModule} from './mandatory/_mocks/mock-mandatory.module';
@@ -195,7 +195,7 @@ const MOCK_OBLIQUE_MODULES = [
 	declarations: [ObMockTranslatePipe],
 	providers: [
 		{provide: TranslateService, useClass: ObMockTranslateService},
-		{provide: WINDOW, useFactory: windowProvider}
+		{provide: WINDOW, useValue: window}
 	]
 })
 export class ObliqueTestingModule {}
