@@ -1,3 +1,9 @@
+# [7.1.1](https://github.com/oblique-bit/oblique/compare/7.1.0...7.1.1) (2021-10-20)
+
+## Bug Fixes
+* **toolchain:** remove usage of `windowProvider` in `ObliqueTestingModule` ([0d4c314](https://github.com/oblique-bit/oblique/commit/0d4c31490b851ca4663c196c2fe457feeea36448))
+
+
 # [7.1.0](https://github.com/oblique-bit/oblique/compare/7.0.4...7.1.0) (2021-10-15)
 
 ## Bug Fixes
