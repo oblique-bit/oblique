@@ -414,6 +414,12 @@
 * **unsubscribe:** The `unsubscribe` feature has been removed with no replacement (solved by schematics)
 
 
+# [5.2.2](https://github.com/oblique-bit/oblique/compare/5.2.1...5.2.2) (2021-10-04)
+
+## Bug Fixes
+* **toolchain:** fix class identifier update not working in the 4 to 5 upgrade ([ae5dba4](https://github.com/oblique-bit/oblique/commit/ae5dba4bbd418b1e7869b120e06aef5fe9291320))
+
+
 # [5.2.1](https://github.com/oblique-bit/oblique/compare/5.2.0...5.2.1) (2020-11-03)
 
 ## Bug Fixes
