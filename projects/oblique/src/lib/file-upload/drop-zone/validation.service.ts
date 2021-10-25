@@ -48,11 +48,7 @@ export class ObValidationService {
 	}
 
 	private isFileTypeValid(filename: string, accept: string[]): boolean {
-		if (this.areAllTypesAllowed(accept)) {
-			return true;
-		}
-
-		return this.hasValidMimeType(filename, accept) || this.hasValidExtension(filename, accept);
+		return this.areAllTypesAllowed(accept) || this.hasValidMimeType(filename, accept) || this.hasValidExtension(filename, accept);
 	}
 
 	private hasValidMimeType(filename: string, accept: string[]): boolean {
