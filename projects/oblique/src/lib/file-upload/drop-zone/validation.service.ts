@@ -11,9 +11,9 @@ export class ObValidationService {
 
 	public filterInvalidFiles(files: File[], accept: string[] = ['*'], maxSize: number, multiple: boolean): File[] {
 		const dispatchedFiles: ObIFileValidation = this.dispatchFiles(files, accept, maxSize, multiple);
-		this.notifyErrors('i18n.oblique.file-upload.error.single', dispatchedFiles.overflowing);
-		this.notifyErrors('i18n.oblique.file-upload.error.type', dispatchedFiles.invalid, accept.join(', '));
-		this.notifyErrors('i18n.oblique.file-upload.error.size', dispatchedFiles.tooLarge, maxSize);
+		this.notifyErrors('i18n.oblique.file-upload.error.single', {ignoredFiles: dispatchedFiles.overflowing});
+		this.notifyErrors('i18n.oblique.file-upload.error.type', {ignoredFiles: dispatchedFiles.invalid, supportedTypes: accept.join(', ')});
+		this.notifyErrors('i18n.oblique.file-upload.error.size', {ignoredFiles: dispatchedFiles.tooLarge, maxSize});
 
 		return dispatchedFiles.valid;
 	}
@@ -37,12 +37,12 @@ export class ObValidationService {
 		);
 	}
 
-	private notifyErrors(message: string, errors: string[], parameter?: any): void {
-		if (errors.length) {
-			const params = {errors: errors.join(', ')} as {errors: string; parameter: any};
-			if (parameter) {
-				params.parameter = parameter;
-			}
+	private notifyErrors(message: string, parameters: {ignoredFiles: string[]; [key: string]: any}): void {
+		if (parameters.ignoredFiles.length) {
+			const params = {
+				...parameters,
+				ignoredFiles: parameters.ignoredFiles.join(', ')
+			};
 			this.notification.error({message: message, messageParams: params, title: 'i18n.oblique.file-upload.error.title'});
 		}
 	}
