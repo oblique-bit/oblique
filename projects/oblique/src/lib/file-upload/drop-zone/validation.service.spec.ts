@@ -126,7 +126,7 @@ describe('ObValidationService', () => {
 			it('should display error', () => {
 				expect(notification.error).toHaveBeenCalledWith({
 					message: 'i18n.oblique.file-upload.error.size',
-					messageParams: {errors: 'sample.jpg (5.00 MB)', parameter: 0.000004},
+					messageParams: {errors: 'sample.jpg (0.00 MB)', parameter: 0.000004},
 					title: 'i18n.oblique.file-upload.error.title'
 				});
 			});
