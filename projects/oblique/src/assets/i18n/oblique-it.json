@@ -14,7 +14,7 @@
   "i18n.oblique.file-upload.empty": "Niente da mostrare",
   "i18n.oblique.file-upload.error.failed": "The following files could not be uploaded: {{ errors }}",
   "i18n.oblique.file-upload.error.single": "Il caricamento di più file non è consentito. I seguenti file sono ignorati: {{ errors }}.",
-  "i18n.oblique.file-upload.error.size": "La dimensione massima di file è {{ parametro }} MB. I seguenti file sono ignorati: {{ errors }}.",
+  "i18n.oblique.file-upload.error.size": "La dimensione massima di file è {{ parameter }} MB. I seguenti file sono ignorati: {{ errors }}.",
   "i18n.oblique.file-upload.error.title": "Errore di caricamento",
   "i18n.oblique.file-upload.error.type": "Sono supportati solo i seguenti formati di file: {{ parameter }}. I seguenti file sono ignorati: {{ errors }}.",
   "i18n.oblique.file-upload.hint.size": "Maximum {{ size }} MB",
