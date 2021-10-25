@@ -24,7 +24,7 @@ export class ObValidationService {
 				const size = file.size / 1024 / 1024;
 				if (index > 0 && !multiple) {
 					result.overflowing.push(file.name);
-				} else if (!this.isFileTypeValid(file.name, accept)) {
+				} else if (!this.isFileTypeValid(file.name.toLowerCase(), accept)) {
 					result.invalid.push(file.name);
 				} else if (size > maxSize) {
 					result.tooLarge.push(`${file.name} (${size.toFixed(2)} MB)`);
