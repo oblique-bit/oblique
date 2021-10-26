@@ -12,10 +12,10 @@ $oblique-primary: (
 	700 : $primary-700,	// darker
 	800 : $primary-800,
 	900 : $primary-900,
-	A100 : $primary-a100,
-	A200 : $primary-a200,
-	A400 : $primary-a400,
-	A700 : $primary-a700,
+	A100 : #90c0ff,		// this color has been generated and is not provided by the UX team
+	A200 : #5da3ff,		// this color has been generated and is not provided by the UX team
+	A400 : #2a85ff,		// this color has been generated and is not provided by the UX team
+	A700 : #1077ff,		// this color has been generated and is not provided by the UX team
 	contrast: (
 		50 : $brand-default,
 		100 : $brand-default,
@@ -45,10 +45,10 @@ $oblique-accent: (
 	700 : #517d9f,
 	800 : #47657c,
 	900 : #3d5c57,
-	A100 : #ffffff,
-	A200 : #f0f7ff,
-	A400 : #bddcff,
-	A700 : #a3ceff,
+	A100 : #ffffff,		// this color has been generated and is not provided by the UX team
+	A200 : #f0f7ff,		// this color has been generated and is not provided by the UX team
+	A400 : #bddcff,		// this color has been generated and is not provided by the UX team
+	A700 : #a3ceff,		// this color has been generated and is not provided by the UX team
 	contrast: (
 		50 : $brand-default,
 		100 : $brand-default,
@@ -67,8 +67,6 @@ $oblique-accent: (
 	)
 );
 
-
-
 $oblique-warn: (
 	50 : $error-50,
 	100 : $error-100,
@@ -80,10 +78,10 @@ $oblique-warn: (
 	700 : $error-700,
 	800 : $error-800,
 	900 : $error-900,
-	A100 : $error-a100,
-	A200 : $error-a200,
-	A400 : $error-a400,
-	A700 : $error-a700,
+	A100 : #ffb3b6,		// this color has been generated and is not provided by the UX team
+	A200 : #ff8085,		// this color has been generated and is not provided by the UX team
+	A400 : #ff4d53,		// this color has been generated and is not provided by the UX team
+	A700 : #ff343b,		// this color has been generated and is not provided by the UX team
 	contrast: (
 		50 : $brand-default,
 		100 : $brand-default,
