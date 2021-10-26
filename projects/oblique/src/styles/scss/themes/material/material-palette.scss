@@ -1,21 +1,21 @@
-// http://mcg.mbitson.com/#!?mcgpalette0=%23ffc81b&themename=mcgtheme
 @import "../../core/variables";
+// Some colors have been generated with the help of: http://mcg.mbitson.com/#!?mcgpalette0=%23ffc81b&themename=mcgtheme
 
 $oblique-primary: (
 	50 : $primary-50,
-	100 : $primary-100,	// lighter
+	100 : $primary-100,	// this is the lighter color
 	200 : $primary-200,
 	300 : $primary-300,
 	400 : $primary-400,
-	500 : $primary-500,
+	500 : $primary-500,	// this is the default color
 	600 : $primary-600,
-	700 : $primary-700,	// darker
+	700 : $primary-700,	// this is the darker color
 	800 : $primary-800,
 	900 : $primary-900,
-	A100 : #90c0ff,		// this color has been generated and is not provided by the UX team
-	A200 : #5da3ff,		// this color has been generated and is not provided by the UX team
-	A400 : #2a85ff,		// this color has been generated and is not provided by the UX team
-	A700 : #1077ff,		// this color has been generated and is not provided by the UX team
+	A100 : #90c0ff,		// this color has not been provided by the UX team
+	A200 : #5da3ff,		// this color has not been provided by the UX team
+	A400 : #2a85ff,		// this color has not been provided by the UX team
+	A700 : #1077ff,		// this color has not been provided by the UX team
 	contrast: (
 		50 : $brand-default,
 		100 : $brand-default,
@@ -34,21 +34,22 @@ $oblique-primary: (
 	)
 ) !default;
 
+// accent colors are based on the secondary color scheme from the UX team: https://www.sketch.com/s/8ca1c363-8e0d-49c0-8f63-fb363cc27664/a/R8dmEe
 $oblique-accent: (
 	50 : #eff7fc,
-	100 : #d1e7f8,
+	100 : #d1e7f8,	// this is the lighter color
 	200 : #b2d7f4,
 	300 : #9bcbf0,
 	400 : $malibu,
-	500 : #60a2d6,
+	500 : #60a2d6,	// this is the default color
 	600 : #5990bb,
-	700 : #517d9f,
+	700 : #517d9f,	// this is the darker color
 	800 : #47657c,
 	900 : #3d5c57,
-	A100 : #ffffff,		// this color has been generated and is not provided by the UX team
-	A200 : #f0f7ff,		// this color has been generated and is not provided by the UX team
-	A400 : #bddcff,		// this color has been generated and is not provided by the UX team
-	A700 : #a3ceff,		// this color has been generated and is not provided by the UX team
+	A100 : #ffffff,		// this color has not been provided by the UX team
+	A200 : #f0f7ff,		// this color has not been provided by the UX team
+	A400 : #bddcff,		// this color has not been provided by the UX team
+	A700 : #a3ceff,		// this color has not been provided by the UX team
 	contrast: (
 		50 : $brand-default,
 		100 : $brand-default,
@@ -69,19 +70,19 @@ $oblique-accent: (
 
 $oblique-warn: (
 	50 : $error-50,
-	100 : $error-100,
+	100 : $error-100,	// this is the lighter color
 	200 : $error-200,
 	300 : $error-300,
 	400 : $error-400,
-	500 : $error-500,
+	500 : $error-500,	// this is the default color
 	600 : $error-600,
-	700 : $error-700,
+	700 : $error-700,	// this is the darker color
 	800 : $error-800,
 	900 : $error-900,
-	A100 : #ffb3b6,		// this color has been generated and is not provided by the UX team
-	A200 : #ff8085,		// this color has been generated and is not provided by the UX team
-	A400 : #ff4d53,		// this color has been generated and is not provided by the UX team
-	A700 : #ff343b,		// this color has been generated and is not provided by the UX team
+	A100 : #ffb3b6,		// this color has not been provided by the UX team
+	A200 : #ff8085,		// this color has not been provided by the UX team
+	A400 : #ff4d53,		// this color has not been provided by the UX team
+	A700 : #ff343b,		// this color has not been provided by the UX team
 	contrast: (
 		50 : $brand-default,
 		100 : $brand-default,
