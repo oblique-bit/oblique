@@ -1,11 +1,11 @@
 import {Inject, Injectable, InjectionToken, isDevMode, Optional} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {DOCUMENT} from '@angular/common';
 import {EMPTY, fromEvent, race} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {ObTelemetryRecord} from './telemetry-record';
 import {ObITelemetryRecord} from './telemetry.model';
 import {WINDOW} from '../utilities';
-import {ObThemeService} from '../theme/theme.service';
 
 export const TELEMETRY_DISABLE = new InjectionToken<boolean>('TELEMETRY_DISABLE');
 
@@ -18,13 +18,18 @@ export class ObTelemetryService {
 	private readonly telemetryRecord: ObTelemetryRecord;
 	private readonly headers = new HttpHeaders().set('telemetry-api-key', '4E28E649-C2B2-4985-9409-CFC905A34E92');
 
-	constructor(private readonly http: HttpClient, @Optional() @Inject(TELEMETRY_DISABLE) isDisabled: boolean, @Inject(WINDOW) window, theme: ObThemeService) {
+	constructor(
+		private readonly http: HttpClient,
+		@Optional() @Inject(TELEMETRY_DISABLE) isDisabled: boolean,
+		@Inject(WINDOW) window: Window,
+		@Inject(DOCUMENT) document: Document
+	) {
 		if (isDisabled) {
 			console.info('Oblique Telemetry is disabled by injection token.');
 		}
 		this.isDisabled = !isDevMode() || isDisabled;
 		if (!this.isDisabled) {
-			this.telemetryRecord = new ObTelemetryRecord(theme.isMaterial() ? 'Material' : 'Bootstrap');
+			this.telemetryRecord = new ObTelemetryRecord(this.getTheme(document));
 			race(fromEvent(window, 'beforeunload'), fromEvent(window, 'unload')).subscribe(() => this.sendRecord());
 		}
 	}
@@ -33,6 +38,18 @@ export class ObTelemetryService {
 		if (!this.isDisabled) {
 			this.telemetryRecord.addModule(module);
 		}
+	}
+
+	private getTheme(document: Document): string {
+		const styleSheet = Array.from(document.styleSheets).filter(sheet => /^styles\.[\w]{20}\.css$/.test(sheet.href))[0];
+		const rules = Array.from(styleSheet?.rules || []) as CSSPageRule[];
+		if (rules.some(rule => rule.selectorText === '.ob-material-telemetry')) {
+			return 'Material';
+		}
+		if (rules.some(rule => rule.selectorText === '.ob-bootstrap-telemetry')) {
+			return 'Bootstrap';
+		}
+		return 'Unknown';
 	}
 
 	private sendRecord(): void {
