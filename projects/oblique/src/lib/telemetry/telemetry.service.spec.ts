@@ -3,8 +3,8 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {HttpClient} from '@angular/common/http';
 import {EMPTY} from 'rxjs';
 import {WINDOW} from '../utilities';
-import {ObThemeService} from '../theme/theme.service';
 import {ObTelemetryService, TELEMETRY_DISABLE} from './telemetry.service';
+import {DOCUMENT} from '@angular/common';
 
 describe('TelemetryService', () => {
 	let service: ObTelemetryService;
@@ -17,8 +17,7 @@ describe('TelemetryService', () => {
 				imports: [HttpClientTestingModule],
 				providers: [
 					{provide: WINDOW, useValue: window},
-					{provide: TELEMETRY_DISABLE, useValue: true},
-					{provide: ObThemeService, useValue: {isMaterial: jest.fn()}}
+					{provide: TELEMETRY_DISABLE, useValue: true}
 				]
 			});
 
@@ -53,7 +52,7 @@ describe('TelemetryService', () => {
 				imports: [HttpClientTestingModule],
 				providers: [
 					{provide: WINDOW, useValue: window},
-					{provide: ObThemeService, useValue: {isMaterial: jest.fn().mockReturnValue(true)}}
+					{provide: DOCUMENT, useValue: {styleSheets: [{href: 'styles.asdfghjklqwertzuiopy.css', rules: [{selectorText: '.ob-material-telemetry'}]}]}}
 				]
 			});
 
@@ -172,7 +171,10 @@ describe('TelemetryService', () => {
 				imports: [HttpClientTestingModule],
 				providers: [
 					{provide: WINDOW, useValue: window},
-					{provide: ObThemeService, useValue: {isMaterial: jest.fn().mockReturnValue(false)}}
+					{
+						provide: DOCUMENT,
+						useValue: {styleSheets: [{href: 'styles.asdfghjklqwertzuiopy.css', rules: [{selectorText: '.ob-bootstrap-telemetry'}]}]}
+					}
 				]
 			});
 
@@ -187,6 +189,31 @@ describe('TelemetryService', () => {
 			it('should have Material theme', () => {
 				// @ts-ignore
 				expect(service.telemetryRecord.record.obliqueTheme).toBe('Bootstrap');
+			});
+		});
+	});
+
+	describe('when enabled without a theme', () => {
+		beforeEach(() => {
+			TestBed.configureTestingModule({
+				imports: [HttpClientTestingModule],
+				providers: [
+					{provide: WINDOW, useValue: window},
+					{provide: DOCUMENT, useValue: {styleSheets: [{href: 'some.random.file.css', rules: [{selectorText: '.ob-material-telemetry'}]}]}}
+				]
+			});
+
+			service = TestBed.inject(ObTelemetryService);
+		});
+
+		describe('telemetryRecord', () => {
+			it('should be defined', () => {
+				// @ts-ignore
+				expect(service.telemetryRecord).toBeDefined();
+			});
+			it('should have an unknown theme', () => {
+				// @ts-ignore
+				expect(service.telemetryRecord.record.obliqueTheme).toBe('Unknown');
 			});
 		});
 	});
