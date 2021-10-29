@@ -4,7 +4,7 @@
 
 @mixin ob-gridTemplate($columns, $gap) {
 	$gapsSpace: ($columns - 1) * $gap;
-	$columnsSpace: 100% / $columns;
+	$columnsSpace: math.div(100%, $columns);
 	grid-template-columns: repeat($columns, minmax(calc(#{$columnsSpace} - #{$gapsSpace}), 1fr));
 }
 

@@ -34,7 +34,10 @@ describe('ObThemeService', () => {
 				providers: [
 					{
 						provide: DOCUMENT,
-						useValue: {styleSheets: [{href: 'styles.asdfghjklqwertzuiopy.css', cssRules: [{selectorText: '.ob-material-telemetry'}]}]}
+						useValue: {
+							querySelectorAll: () => [],
+							styleSheets: [{href: 'styles.asdfghjklqwertzuiopy.css', cssRules: [{selectorText: '.ob-material-telemetry'}]}]
+						}
 					}
 				]
 			});
@@ -72,7 +75,10 @@ describe('ObThemeService', () => {
 				providers: [
 					{
 						provide: DOCUMENT,
-						useValue: {styleSheets: [{href: 'styles.asdfghjklqwertzuiopy.css', cssRules: [{selectorText: '.ob-bootstrap-telemetry'}]}]}
+						useValue: {
+							querySelectorAll: () => [],
+							styleSheets: [{href: 'styles.asdfghjklqwertzuiopy.css', cssRules: [{selectorText: '.ob-bootstrap-telemetry'}]}]
+						}
 					}
 				]
 			});
@@ -99,7 +105,12 @@ describe('ObThemeService', () => {
 	describe('With bad css name', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				providers: [{provide: DOCUMENT, useValue: {styleSheets: [{href: 'styles.css', cssRules: [{selectorText: '.ob-bootstrap-telemetry'}]}]}}]
+				providers: [
+					{
+						provide: DOCUMENT,
+						useValue: {querySelectorAll: () => [], styleSheets: [{href: 'styles.css', cssRules: [{selectorText: '.ob-bootstrap-telemetry'}]}]}
+					}
+				]
 			});
 
 			service = TestBed.inject(ObThemeService);

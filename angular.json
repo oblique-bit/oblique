@@ -90,15 +90,11 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "oblique-showcase:build",
-            "port": 3001,
-            "sourceMap": true
+            "port": 3001
           },
           "configurations": {
             "production": {
-              "browserTarget": "oblique-showcase:build:prod",
-              "aot": true,
-              "optimization": true,
-              "sourceMap": true
+              "browserTarget": "oblique-showcase:build:prod"
             }
           }
         },
