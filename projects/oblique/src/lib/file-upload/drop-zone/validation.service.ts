@@ -21,12 +21,13 @@ export class ObValidationService {
 	private dispatchFiles(files: File[], accept: string[], maxSize: number, multiple: boolean): ObIFileValidation {
 		return files.reduce(
 			(result, file, index) => {
+				const size = file.size / 1024 / 1024;
 				if (index > 0 && !multiple) {
 					result.overflowing.push(file.name);
 				} else if (!this.isFileTypeValid(file.name, accept)) {
 					result.invalid.push(file.name);
-				} else if (file.size / 1024 / 1024 > maxSize) {
-					result.tooLarge.push(`${file.name} (${file.size.toFixed(2)} MB)`);
+				} else if (size > maxSize) {
+					result.tooLarge.push(`${file.name} (${size.toFixed(2)} MB)`);
 				} else {
 					result.valid.push(file);
 				}
