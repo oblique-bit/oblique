@@ -25,6 +25,12 @@ describe('ObValidationService', () => {
 			expect(service.filterInvalidFiles(files, undefined, 50, true)).toEqual(files);
 		});
 
+		it('should accept uppercase types', () => {
+			const files = [new File(['text'], 'sample.TXT', {type: 'text/plain'})];
+			const filteredFiles = service.filterInvalidFiles(files, ['.txt'], 50, true);
+			expect(filteredFiles[0]?.name).toBe('sample.TXT');
+		});
+
 		describe('overflowing', () => {
 			let filteredFiles;
 			beforeEach(() => {
