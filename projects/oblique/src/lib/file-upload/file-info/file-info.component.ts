@@ -27,7 +27,7 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	}
 	dataSource = new MatTableDataSource<ObIFileDescription>([]);
 	displayedColumns: string[];
-	fields: string[];
+	fields = ['name'];
 	readonly selection = new SelectionModel<ObIFileDescription>(true, []);
 	readonly COLUMN_SELECT = 'select';
 	readonly COLUMN_ACTION = 'action';
@@ -42,6 +42,7 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	@Input() mapFunction = (files: ObIFileDescription[]): ObIFileDescription[] => files;
 
 	ngOnInit(): void {
+		this.setTableHeaders(this.fields);
 		this.loadData();
 		this.subscription = this.fileUploadService.uploadComplete$.subscribe(() => this.loadData());
 	}
@@ -89,12 +90,16 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 			.subscribe(
 				files => {
 					this.dataSource.data = files;
-					this.fields = files.length ? Object.keys(files[0]) : ['name'];
-					this.displayedColumns = this.deleteUrl ? [this.COLUMN_SELECT, ...this.fields, this.COLUMN_ACTION] : [this.COLUMN_SELECT, ...this.fields];
+					this.setTableHeaders(files.length ? Object.keys(files[0]) : this.fields);
 				},
 				error => {
 					this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: [], error});
 				}
 			);
+	}
+
+	private setTableHeaders(headers: string[]) {
+		this.fields = headers;
+		this.displayedColumns = this.deleteUrl ? [this.COLUMN_SELECT, ...this.fields, this.COLUMN_ACTION] : [this.COLUMN_SELECT, ...this.fields];
 	}
 }
