@@ -1,18 +1,13 @@
 .mat-icon.ob-icon {
 
-	&,
-	svg {
+	& {
 		width: 1em;
 		height: 1em;
-	}
 
-	svg {
-		vertical-align: middle;
-	}
-
-	&.fa {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
+		&:not(.fa) {
+			position: relative;
+			top: 0.15em; // empiric value
+			line-height: 1;
+		}
 	}
 }
