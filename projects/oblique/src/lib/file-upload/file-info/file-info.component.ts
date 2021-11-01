@@ -89,7 +89,7 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 			.subscribe(
 				files => {
 					this.dataSource.data = files;
-					this.fields = Object.keys(files[0]);
+					this.fields = files.length ? Object.keys(files[0]) : ['name'];
 					this.displayedColumns = this.deleteUrl ? [this.COLUMN_SELECT, ...this.fields, this.COLUMN_ACTION] : [this.COLUMN_SELECT, ...this.fields];
 				},
 				error => {
