@@ -14,33 +14,37 @@
 	</button>
 </mat-form-field>
 
-<mat-form-field class="mat-form-field-lg">
-	<mat-label>Mandatory</mat-label>
-	<input type="text" matInput placeholder="Mandatory" required ngModel />
-</mat-form-field>
+<div class="ob-form-lg">
+	<mat-form-field>
+		<mat-label>Mandatory LG</mat-label>
+		<input type="text" matInput placeholder="Mandatory" required ngModel />
+	</mat-form-field>
 
-<mat-form-field class="mat-form-field-lg">
-	<mat-label>Mandatory</mat-label>
-	<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel2" #controlLG="ngModel" />
-	<button type="button" role="button" [obInputClear]="controlLG">
-		<mat-icon svgIcon="cancel-circle" class="ob-icon"></mat-icon>
-		<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
-	</button>
-</mat-form-field>
+	<mat-form-field>
+		<mat-label>Mandatory LG</mat-label>
+		<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel2" #controlLG="ngModel" />
+		<button type="button" role="button" [obInputClear]="controlLG">
+			<mat-icon svgIcon="cancel-circle" class="ob-icon"></mat-icon>
+			<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
+		</button>
+	</mat-form-field>
+</div>
 
-<mat-form-field class="mat-form-field-sm">
-	<mat-label>Mandatory</mat-label>
-	<input type="text" matInput placeholder="Mandatory" required ngModel />
-</mat-form-field>
+<div class="ob-form-sm">
+	<mat-form-field>
+		<mat-label>Mandatory SM</mat-label>
+		<input type="text" matInput placeholder="Mandatory" required ngModel />
+	</mat-form-field>
 
-<mat-form-field class="mat-form-field-sm">
-	<mat-label>Mandatory</mat-label>
-	<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel3" #controlSM="ngModel" />
-	<button type="button" role="button" [obInputClear]="controlSM">
-		<mat-icon svgIcon="cancel-circle" class="ob-icon"></mat-icon>
-		<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
-	</button>
-</mat-form-field>
+	<mat-form-field>
+		<mat-label>Mandatory SM</mat-label>
+		<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel3" #controlSM="ngModel" />
+		<button type="button" role="button" [obInputClear]="controlSM">
+			<mat-icon svgIcon="cancel-circle" class="ob-icon"></mat-icon>
+			<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
+		</button>
+	</mat-form-field>
+</div>
 
 <mat-form-field>
 	<mat-label>Datepicker</mat-label>
