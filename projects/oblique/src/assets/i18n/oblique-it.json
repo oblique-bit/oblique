@@ -80,7 +80,7 @@
   "i18n.validation.ajv.exclusiveMinimum": "Inserire un numero maggiore {{limit}}",
   "i18n.validation.ajv.format.date": "Formato della data non valido, \"gg.mm.aaaa\" è atteso",
   "i18n.validation.ajv.maximum": "Inserire un numero più piccolo o uguale {{limit}}",
-  "i18n.validation.ajv.maxlength": "Inserire al massimo {{limit}} caratteri",
+  "i18n.validation.ajv.maxLength": "Inserire al massimo {{limit}} caratteri",
   "i18n.validation.ajv.minimum": "Inserire un numero maggiore o uguale {{limit}}",
   "i18n.validation.ajv.minLength": "Inserire almeno {{limit}} caratteri",
   "i18n.validation.ajv.required": "Campo obbligatorio",

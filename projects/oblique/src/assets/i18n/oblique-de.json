@@ -80,7 +80,7 @@
   "i18n.validation.ajv.exclusiveMinimum": "Bitte geben Sie eine Zahl grösser {{limit}} ein",
   "i18n.validation.ajv.format.date": "Falsches Format, bitte geben sie ein valides Datum im \"tt.mm.jjjj\" Format ein",
   "i18n.validation.ajv.maximum": "Bitte geben Sie eine Zahl kleiner oder gleich {{limit}} ein",
-  "i18n.validation.ajv.maxlength": "Bitte geben Sie höchstens {{limit}} Zeichen ein",
+  "i18n.validation.ajv.maxLength": "Bitte geben Sie höchstens {{limit}} Zeichen ein",
   "i18n.validation.ajv.minimum": "Bitte geben Sie eine Zahl grösser oder gleich {{limit}} ein",
   "i18n.validation.ajv.minLength": "Bitte geben Sie mindestens {{limit}} Zeichen ein",
   "i18n.validation.ajv.required": "Dieses Feld wird benötigt",
