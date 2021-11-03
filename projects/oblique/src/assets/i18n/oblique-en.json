@@ -80,7 +80,7 @@
   "i18n.validation.ajv.exclusiveMinimum": "The value has to be greater than {{limit}}",
   "i18n.validation.ajv.format.date": "Incorrect date format, \"dd.mm.yyyy\" is expected",
   "i18n.validation.ajv.maximum": "The value has to be less or equal to {{limit}}",
-  "i18n.validation.ajv.maxlength": "At most {{limit}} characters are supported",
+  "i18n.validation.ajv.maxLength": "At most {{limit}} characters are supported",
   "i18n.validation.ajv.minimum": "The value has to be greater or equal to {{limit}}",
   "i18n.validation.ajv.minLength": "At least {{limit}} characters are needed",
   "i18n.validation.ajv.required": "This field is required",
