@@ -23,10 +23,12 @@
     "Yanis Noa Weibel <yanisnoa.weibel@bit.admin.ch>",
     "Michèle Habegger <michele.habegger@bit.admin.ch>",
     "Nicolas Müller <nicolas.mueller@bit.admin.ch>",
-    "Debora Mittner <debora.mittner@bit.admin.ch>",
+    "Arkadiusz Bojarowicz <arkadiusz.bojarowicz@bit.admin.ch>",
+    "Maya Hartmeier <maya.hartmeier@bit.admin.ch>",
     "Pedro De Almeida",
     "Christian Ulmann",
-    "Stefan Tanner"
+    "Stefan Tanner",
+    "Debora Mittner"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
