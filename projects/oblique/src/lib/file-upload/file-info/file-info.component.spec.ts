@@ -115,8 +115,8 @@ describe('ObFileInfoComponent', () => {
 					expect(el).toBeNull();
 				});
 
-				it('should have a table', () => {
-					const el = fixture.debugElement.query(By.css('.ob-table'));
+				it('should have a table with data', () => {
+					const el = fixture.debugElement.query(By.css('.ob-table tbody > tr'));
 					expect(el).toBeDefined();
 				});
 			});
@@ -132,8 +132,8 @@ describe('ObFileInfoComponent', () => {
 					expect(el).toBeDefined();
 				});
 
-				it('should not have a table', () => {
-					const el = fixture.debugElement.query(By.css('.ob-table'));
+				it('should have a table with no data', () => {
+					const el = fixture.debugElement.query(By.css('.ob-table tbody > tr'));
 					expect(el).toBeNull();
 				});
 			});

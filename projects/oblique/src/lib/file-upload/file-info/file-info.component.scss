@@ -6,6 +6,10 @@
 		height: $spacing-xl;
 		line-height: $spacing-xl;
 		font-size: $font-size-base;
+
+		.ob-icon {
+			position: static;
+		}
 	}
 
 	tbody tr:not(:hover) .mat-column-action .ob-button:not(:focus) {

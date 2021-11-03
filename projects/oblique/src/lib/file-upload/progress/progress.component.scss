@@ -45,5 +45,9 @@
 
 	.mat-icon-button {
 		margin-left: $spacing-sm;
+
+		.ob-icon {
+			position: static;
+		}
 	}
 }
