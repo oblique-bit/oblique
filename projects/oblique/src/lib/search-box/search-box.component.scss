@@ -56,6 +56,7 @@
 	flex-wrap: wrap;
 
 	.ob-control-toggle {
+		line-height: 1;
 		margin: 0;
 		display: inline;
 	}
@@ -90,7 +91,7 @@
 		position: absolute;
 		right: 0;
 		bottom: 0;
-		left: calc(1.65 * 1.5em); // font-size * icon width
+		left: calc(1.65 * 1em + #{$spacing-xs}); // font-size * icon width + some padding
 		height: 4px;
 		display: block;
 		border-bottom: 1px solid transparent;

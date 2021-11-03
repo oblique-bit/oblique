@@ -21,12 +21,13 @@ export class ObValidationService {
 	private dispatchFiles(files: File[], accept: string[], maxSize: number, multiple: boolean): ObIFileValidation {
 		return files.reduce(
 			(result, file, index) => {
+				const size = file.size / 1024 / 1024;
 				if (index > 0 && !multiple) {
 					result.overflowing.push(file.name);
-				} else if (!this.isFileTypeValid(file.name, accept)) {
+				} else if (!this.isFileTypeValid(file.name.toLowerCase(), accept)) {
 					result.invalid.push(file.name);
-				} else if (file.size / 1024 / 1024 > maxSize) {
-					result.tooLarge.push(`${file.name} (${file.size.toFixed(2)} MB)`);
+				} else if (size > maxSize) {
+					result.tooLarge.push(`${file.name} (${size.toFixed(2)} MB)`);
 				} else {
 					result.valid.push(file);
 				}
@@ -47,11 +48,7 @@ export class ObValidationService {
 	}
 
 	private isFileTypeValid(filename: string, accept: string[]): boolean {
-		if (this.areAllTypesAllowed(accept)) {
-			return true;
-		}
-
-		return this.hasValidMimeType(filename, accept) || this.hasValidExtension(filename, accept);
+		return this.areAllTypesAllowed(accept) || this.hasValidMimeType(filename, accept) || this.hasValidExtension(filename, accept);
 	}
 
 	private hasValidMimeType(filename: string, accept: string[]): boolean {

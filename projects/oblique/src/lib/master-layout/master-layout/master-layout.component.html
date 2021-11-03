@@ -64,7 +64,7 @@
 		<ng-container [ngTemplateOutlet]="obLogo || logo"></ng-container>
 	</ng-template>
 </ob-master-layout-header>
-<div id="content" class="ob-master-layout-content" role="main" [class.ob-off-canvas-main]="hasOffCanvas" tabindex="-1">
+<main id="content" class="ob-master-layout-content" [class.ob-off-canvas-main]="hasOffCanvas" tabindex="-1">
 	<div class="ob-master-layout-content-viewport">
 		<ob-notification channel="oblique"></ob-notification>
 		<div class="ob-cover-layout" *ngIf="hasCover; else normalLayout">
@@ -73,12 +73,12 @@
 			</div>
 		</div>
 		<ng-template #normalLayout>
-			<main class="ob-main-layout">
+			<div class="ob-main-layout">
 				<router-outlet></router-outlet>
-			</main>
+			</div>
 		</ng-template>
 	</div>
-</div>
+</main>
 <ob-top-control></ob-top-control>
 <ob-master-layout-footer [class.ob-off-canvas-main]="hasOffCanvas">
 	<ng-content select="[obFooter]" obFooter></ng-content>

@@ -144,5 +144,9 @@
 		margin: 0;
 		vertical-align: middle;
 		font-size: $font-size-xl;
+
+		&.mat-icon.ob-icon:not(.fa) {
+			top: 0.03em;	// empiric value
+		}
 	}
 }

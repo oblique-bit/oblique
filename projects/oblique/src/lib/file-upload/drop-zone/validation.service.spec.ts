@@ -25,6 +25,12 @@ describe('ObValidationService', () => {
 			expect(service.filterInvalidFiles(files, undefined, 50, true)).toEqual(files);
 		});
 
+		it('should accept uppercase types', () => {
+			const files = [new File(['text'], 'sample.TXT', {type: 'text/plain'})];
+			const filteredFiles = service.filterInvalidFiles(files, ['.txt'], 50, true);
+			expect(filteredFiles[0]?.name).toBe('sample.TXT');
+		});
+
 		describe('overflowing', () => {
 			let filteredFiles;
 			beforeEach(() => {
@@ -126,7 +132,7 @@ describe('ObValidationService', () => {
 			it('should display error', () => {
 				expect(notification.error).toHaveBeenCalledWith({
 					message: 'i18n.oblique.file-upload.error.size',
-					messageParams: {errors: 'sample.jpg (5.00 MB)', parameter: 0.000004},
+					messageParams: {errors: 'sample.jpg (0.00 MB)', parameter: 0.000004},
 					title: 'i18n.oblique.file-upload.error.title'
 				});
 			});

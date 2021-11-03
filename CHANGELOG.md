@@ -1,3 +1,26 @@
+# [7.1.2](https://github.com/oblique-bit/oblique/compare/7.1.1...7.1.2) (2021-11-03)
+
+## Bug Fixes
+* **alert:** add some padding around the icons ([243b593](https://github.com/oblique-bit/oblique/commit/243b593fdc5681a9c149a318837cc2a50a7b1d11))
+* **alert:** alerts without Angular use white icons for `success`, `info` and `error` ([fc7632e](https://github.com/oblique-bit/oblique/commit/fc7632e2ae72acc3d563e36e04247dcc0bd8dd52))
+* **file-upload:** `ObFileInfoComponent` shows a `name` column when there's no uploaded files ([8686924](https://github.com/oblique-bit/oblique/commit/8686924e9181838ea20fa262a18a164921dfa0e7))
+* **file-upload:** file sizes that are too big are shown in MB instead of Bytes ([cd31b1d](https://github.com/oblique-bit/oblique/commit/cd31b1d26db208648f200f8057221e6382a9d293))
+* **file-upload:** fix icons position ([8ebd919](https://github.com/oblique-bit/oblique/commit/8ebd919310b812023fd22e93fbccdaa6590b5fd5))
+* **file-upload:** fix parameter's names in German and Italian ([91d663e](https://github.com/oblique-bit/oblique/commit/91d663e446f9dddc9fa4b62af99a730d9e358960))
+* **file-upload:** make file type validation case-insensitive ([8aae08b](https://github.com/oblique-bit/oblique/commit/8aae08b62bb071cd8b8ebc80500ecc0512f9854b))
+* **file-upload:** the table headers in `ObFileInfoComponent` is still show when there's no data ([19238c8](https://github.com/oblique-bit/oblique/commit/19238c86a0d5fd0305366379d7c1ba1424cbb8ad))
+* **icon:** fix vertical icon alignment ([62164f3](https://github.com/oblique-bit/oblique/commit/62164f39b07316cb21f9339b7cdb911416edbd32))
+* **input-clear:** fix vertical alignment with Oblique icons ([7ebef66](https://github.com/oblique-bit/oblique/commit/7ebef663948534fa8004dacf95053695a106fc78))
+* **master-layout:** ensure there's only one `main` landmark ([1004980](https://github.com/oblique-bit/oblique/commit/1004980ee4b5a9883c5e7071e3f0c891427a28b2))
+* **master-layout:** fix vertical header-controls with Oblique icons' alignment ([cb60405](https://github.com/oblique-bit/oblique/commit/cb604057bf7f349f72871c1be3743a806b364727))
+* **material:** fix label not aligned with text ([3760a42](https://github.com/oblique-bit/oblique/commit/3760a4245276553c08d62063d857f569f907b34b))
+* **schema-validation:** correctly translate `maxLength` validation error ([97467f7](https://github.com/oblique-bit/oblique/commit/97467f790cd5cb58229287088fd017ffe6e8d05d))
+* **search-box:** fix icon alignment ([4ae2d5f](https://github.com/oblique-bit/oblique/commit/4ae2d5f7eebd862b7045433a34c82ef0e1c84cc7))
+* **telemetry:** add `telemetry` scope ([9b0b3c9](https://github.com/oblique-bit/oblique/commit/9b0b3c96bb907f70a8d839cbc086842fc559e72c))
+* **telemetry:** read the theme correctly ([a4e0717](https://github.com/oblique-bit/oblique/commit/a4e07175ca1906777a66477a63ecc75a39011dfa))
+* **toolchain:** add missing `5.2.2` version in CHANGELOG ([ceb4033](https://github.com/oblique-bit/oblique/commit/ceb403348314b44fdd1af8d59539f760f217600d))
+
+
 # [7.1.1](https://github.com/oblique-bit/oblique/compare/7.1.0...7.1.1) (2021-10-20)
 
 ## Bug Fixes
@@ -412,6 +435,12 @@
 * **toolchain:** `favicon.png` and `logo.svg` have been moved into the new `assets` folder (should be transparent for the applications)
 * **toolchain:** `favicon.ico` and `logo_small.jpg` have been removed (should be transparent for the applications)
 * **unsubscribe:** The `unsubscribe` feature has been removed with no replacement (solved by schematics)
+
+
+# [5.2.2](https://github.com/oblique-bit/oblique/compare/5.2.1...5.2.2) (2021-10-04)
+
+## Bug Fixes
+* **toolchain:** fix class identifier update not working in the 4 to 5 upgrade ([ae5dba4](https://github.com/oblique-bit/oblique/commit/ae5dba4bbd418b1e7869b120e06aef5fe9291320))
 
 
 # [5.2.1](https://github.com/oblique-bit/oblique/compare/5.2.0...5.2.1) (2020-11-03)

@@ -6,6 +6,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
 import {NgbDatepickerConfig, NgbModule, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule} from '@ngx-translate/core';
 
@@ -82,6 +83,7 @@ registerLocaleData(localeFR);
 		ObMasterLayoutModule,
 		MatFormFieldModule,
 		MatInputModule,
+		MatIconModule,
 		MatCardModule,
 		ObInputClearModule
 	],

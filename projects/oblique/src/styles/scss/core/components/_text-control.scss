@@ -8,12 +8,17 @@
 	display: flex !important;
 
 	.ob-text-control-clear {
+		height: 18px;	// the input height according to material design
 		z-index: 3;
 		background-color: transparent;
 		border: none;
 		padding: 0;
 		opacity: 0;
 		transition: opacity $duration-fast;
+
+		.mat-icon.ob-icon:not(.fa) {
+			position: static;
+		}
 
 		.fa {
 			color: $gray;

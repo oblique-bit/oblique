@@ -95,6 +95,7 @@ The scope is optional and should be the name of the Oblique feature affected:
 * **selectable**
 * **spinner**
 * **sticky**
+* **telemetry**
 * **translate-params**
 * **unknown-route**
 * **unsaved-changes**

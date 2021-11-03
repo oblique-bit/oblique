@@ -38,7 +38,7 @@ class Icons {
 
 	private static writeIconSetTS(filePath: string, SVGs: string[]): void {
 		const iconSet = ['<svg>', '<defs>', ...SVGs, '</defs>', '</svg>'];
-		Icons.fs.writeFileSync(filePath, `export const iconSet = '${iconSet.join('')}';`);
+		Icons.fs.writeFileSync(filePath, `export const iconSet =\n\t'${iconSet.join('')}';\n`);
 	}
 
 	private static writeIconCSS(filePath: string, SVGs: string[]): void {
