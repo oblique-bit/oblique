@@ -3,21 +3,21 @@
 @import "../../core/mixins/typography";
 
 .mat-chip-list-stacked {
-	margin-top: $spacing-lg;
+	margin-top: $ob-spacing-lg;
 }
 
 .mat-chip.mat-standard-chip {
-	@include caption;
-	background-color: $primary-100;
-	border-color: $primary-500;
-	color: $primary-500;
+	@include ob-caption;
+	background-color: $ob-primary-100;
+	border-color: $ob-primary-500;
+	color: $ob-primary-500;
 
 	&.mat-chip-selected,
 	&.warning,
 	&.success,
 	&.info,
 	&.error {
-		color: $white;
+		color: $ob-white;
 		border-color: inherit;
 	}
 
@@ -25,7 +25,7 @@
 		padding-right: 0;
 
 		> .ob-icon {
-			font-size: $font-size-xl;
+			font-size: $ob-font-size-xl;
 			margin-left: 0;
 			width: 1.5em;
 			height: 1.5em;
@@ -40,37 +40,37 @@
 	&.success {
 		&,
 		&.mat-chip-selected {
-			background-color: $success-500;
+			background-color: $ob-success-500;
 		}
 	}
 
 	&.info {
 		&,
 		&.mat-chip-selected {
-			background-color: $primary-500;
+			background-color: $ob-primary-500;
 		}
 	}
 
 	&.warning {
 		&,
 		&.mat-chip-selected {
-			background-color: $warning-500;
+			background-color: $ob-warning-500;
 		}
 	}
 
 	&.error {
 		&,
 		&.mat-chip-selected {
-			background-color: $error-500;
+			background-color: $ob-error-500;
 		}
 	}
 
 	&.ob-selected {
 		&,
 		&.mat-chip-selected {
-			background-color: $primary-100;
-			border-color: $primary-500;
-			color: $primary-500;
+			background-color: $ob-primary-100;
+			border-color: $ob-primary-500;
+			color: $ob-primary-500;
 		}
 	}
 }

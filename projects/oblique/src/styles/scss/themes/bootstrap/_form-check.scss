@@ -45,18 +45,18 @@ $smallSize: 1.7273em;	//19px with a 11px basis
 			width: $size;
 			height: $size;
 			margin-left: -$size;
-			border: 1px solid $input-border-color;
-			background-color: $white;
+			border: 1px solid $ob-input-border-color;
+			background-color: $ob-white;
 			transition-property: border-radius, color;
 			transition-timing-function: ease-in-out;
-			transition-duration: $duration-fast;
+			transition-duration: $ob-duration-fast;
 		}
 
 		&::after {
 			width: $smallSize;
 			height: $smallSize;
 			margin-left: -$smallSize;
-			color: $input-color;
+			color: $ob-input-color;
 			font-size: $small;
 
 			text-align: center;
@@ -100,7 +100,7 @@ $smallSize: 1.7273em;	//19px with a 11px basis
 				opacity: 0.65;
 
 				&::before {
-					background-color: $gray-extra-light;
+					background-color: $ob-gray-extra-light;
 				}
 
 				&::before,
@@ -133,7 +133,7 @@ $smallSize: 1.7273em;	//19px with a 11px basis
 		}
 
 		&:checked + .form-check-label::after {
-			font-family: $icon-font-family;
+			font-family: $ob-icon-font-family;
 			font-weight: 900;
 			content: fa-content($fa-var-check);
 		}
@@ -152,24 +152,24 @@ $smallSize: 1.7273em;	//19px with a 11px basis
 			height: $outer;
 			left: $inner;
 			top: $inner;
-			background-color: $input-color;
+			background-color: $ob-input-color;
 		}
 	}
 
 	&.form-check-primary {
-		@include checkbox-variant($brand-primary);
-		@include radio-variant($brand-primary);
+		@include ob-checkbox-variant($ob-primary);
+		@include ob-radio-variant($ob-primary);
 	}
 	&.form-check-success {
-		@include checkbox-variant($brand-success);
-		@include radio-variant($brand-success);
+		@include ob-checkbox-variant($ob-success);
+		@include ob-radio-variant($ob-success);
 	}
 	&.form-check-warning {
-		@include checkbox-variant($brand-warning);
-		@include radio-variant($brand-warning);
+		@include ob-checkbox-variant($ob-warning);
+		@include ob-radio-variant($ob-warning);
 	}
 	&.form-check-danger {
-		@include checkbox-variant($brand-error);
-		@include radio-variant($brand-error);
+		@include ob-checkbox-variant($ob-error);
+		@include ob-radio-variant($ob-error);
 	}
 }

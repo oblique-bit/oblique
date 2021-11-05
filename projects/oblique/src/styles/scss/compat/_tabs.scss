@@ -3,7 +3,7 @@
 
 .ob-master-layout {
 	.ob-tabs {
-		border-bottom: 1px solid $gray-light;
+		border-bottom: 1px solid $ob-gray-light;
 
 		.ob-tab-item {
 			margin-bottom: -1px;
@@ -11,17 +11,17 @@
 
 		.ob-tab-link {
 			position: relative;
-			padding: $spacing-xs $spacing-default;
+			padding: $ob-spacing-xs $ob-spacing-default;
 			font-size: 1rem;
 			line-height: 1.5;
 			letter-spacing: 0;
-			color: $brand-default;
-			background-color: $white;
+			color: $ob-default;
+			background-color: $ob-white;
 			text-decoration: none;
 			border: 1px solid transparent;
-			border-bottom-color: $gray-light;
-			border-top-left-radius: $border-radius-base;
-			border-top-right-radius: $border-radius-base;
+			border-bottom-color: $ob-gray-light;
+			border-top-left-radius: $ob-border-radius-base;
+			border-top-right-radius: $ob-border-radius-base;
 
 			&.ob-active {
 				font-weight: bold;
@@ -33,7 +33,7 @@
 			&:active {
 				background-color: inherit;
 				color: inherit;
-				border-color: $gray-light $gray-light $white;
+				border-color: $ob-gray-light $ob-gray-light $ob-white;
 			}
 
 			&:hover:before,
@@ -44,12 +44,12 @@
 				top: 0;
 				left: 0;
 				right: 0;
-				background-color: $brand-accent;
-				border-radius: $border-radius-base $border-radius-base 0 0;
+				background-color: $ob-accent;
+				border-radius: $ob-border-radius-base $ob-border-radius-base 0 0;
 			}
 
 			&:not(.active):hover:before {
-				background-color: $gray-light;
+				background-color: $ob-gray-light;
 			}
 		}
 	}

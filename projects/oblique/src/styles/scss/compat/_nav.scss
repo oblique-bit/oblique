@@ -2,12 +2,12 @@
 
 .ob-nav-header {
 	position: relative;
-	color: $brand-default;
-	font-size: $font-size-base;
+	color: $ob-default;
+	font-size: $ob-font-size-base;
 	border: none;
 
 	.ob-nav-item + & {
-		margin-top: $spacing-sm;
+		margin-top: $ob-spacing-sm;
 	}
 }
 
@@ -15,13 +15,13 @@
 	display: block;
 	font-size: inherit;
 	font-weight: bold;
-	color: $brand-default;
-	border-bottom: 1px solid $gray-light;
-	padding: $spacing-default - 5 $spacing-default $spacing-default - 5 0;
+	color: $ob-default;
+	border-bottom: 1px solid $ob-gray-light;
+	padding: $ob-spacing-default - 5 $ob-spacing-default $ob-spacing-default - 5 0;
 	margin: 0;
 
 	&:hover {
-		color: $brand-default;
+		color: $ob-default;
 		text-decoration: none;
 	}
 }

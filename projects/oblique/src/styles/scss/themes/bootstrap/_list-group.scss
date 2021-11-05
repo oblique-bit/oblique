@@ -1,32 +1,32 @@
 @import "../../core/variables";
 
 .list-group-item-primary {
-	background-color: $brand-light;
-	color: $brand-dark;
+	background-color: $ob-light;
+	color: $ob-dark;
 }
 .list-group-item-secondary {
-	background-color: $brand-extra-light;
-	color: $brand-primary;
+	background-color: $ob-extra-light;
+	color: $ob-primary;
 }
 .list-group-item-success {
-	background-color: $brand-success-light;
-	color: $brand-success-dark;
+	background-color: $ob-success-light;
+	color: $ob-success-dark;
 }
 .list-group-item-danger {
-	background-color: $brand-error-light;
-	color: $brand-error-dark;
+	background-color: $ob-error-light;
+	color: $ob-error-dark;
 }
 .list-group-item-warning {
-	background-color: $brand-warning-light;
-	color: $brand-warning-dark;
+	background-color: $ob-warning-light;
+	color: $ob-warning-dark;
 }
 .list-group-item-info {
-	background-color: $brand-light;
-	color: $brand-dark;
+	background-color: $ob-light;
+	color: $ob-dark;
 }
 .list-group-item-light {
-	color: $brand-default;
+	color: $ob-default;
 }
 .list-group-item-dark {
-	color: $white;
+	color: $ob-white;
 }

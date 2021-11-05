@@ -11,7 +11,7 @@ html,
 body {
 	height: 100%;
 
-	@include layout-collapse-down() {
+	@include ob-layout-collapse-down() {
 		// Ensure fixed elements keep scrolling smoothly on iOS:
 		-webkit-overflow-scrolling: touch;
 	}
@@ -23,16 +23,16 @@ html {
 }
 
 body {
-	min-width: $body-width;
+	min-width: $ob-body-width;
 	margin: 0;
-	font-family: $font;
-	font-size: $font-size-base;
+	font-family: $ob-font;
+	font-size: $ob-font-size-base;
 	word-break: break-word;
-	color: $brand-default;
+	color: $ob-default;
 }
 
 .bg-secondary {
-	background-color: $brand-extra-light !important;
+	background-color: $ob-extra-light !important;
 	height: 100%;
 }
 
@@ -40,9 +40,9 @@ body {
 	visibility: hidden;
 	opacity: 0;
 	transition-property: opacity, visibility;
-	transition-duration: $duration-fast, 0s;
+	transition-duration: $ob-duration-fast, 0s;
 	transition-timing-function: ease-in-out;
-	transition-delay: 0s, $duration-fast;
+	transition-delay: 0s, $ob-duration-fast;
 
 	*:hover > & {
 		visibility: visible;

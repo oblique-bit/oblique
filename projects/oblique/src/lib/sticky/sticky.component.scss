@@ -8,14 +8,14 @@
 	overflow: hidden;
 
 	&:not(.no-layout) .ob-sticky-content {
-		padding: $spacing-default 0;
+		padding: $ob-spacing-default 0;
 	}
 }
 
 .ob-sticky-main {
-	@include layout-collapse-up() {
+	@include ob-layout-collapse-up() {
 		overflow-y: auto;
-		height: calc(100% - #{$sticky-element-height}); // is it really needed?
+		height: calc(100% - #{$ob-sticky-element-height}); // is it really needed?
 		// Restrict container width to avoid unwanted horizontal scrollbar
 		// when elements are injected to container or when viewport is resized:
 		width: 100%;
@@ -33,7 +33,7 @@
 		margin: 0;
 		padding: 0;
 
-		color: $gray-darker;
+		color: $ob-gray-darker;
 		font-size: 22px;
 		line-height: 38px;
 
@@ -46,20 +46,20 @@
 		margin-left: auto;
 	}
 
-	@include layout-collapse-up() {
-		height: $sticky-element-height;
-		background-color: $white;
-		z-index: $z-index-controls;
+	@include ob-layout-collapse-up() {
+		height: $ob-sticky-element-height;
+		background-color: $ob-white;
+		z-index: $ob-z-index-controls;
 	}
 }
 
-@include layout-collapse-up() {
+@include ob-layout-collapse-up() {
 	.ob-sticky-header {
-		@include dropShadow(down);
+		@include ob-dropShadow(down);
 	}
 
 	.ob-sticky-footer {
-		@include dropShadow(up);
+		@include ob-dropShadow(up);
 	}
 }
 
@@ -70,8 +70,8 @@
 
 .ob-sticky-sm {
 	> .ob-sticky-main {
-		@include layout-collapse-up() {
-			height: calc(100% - #{$sticky-element-height-sm});
+		@include ob-layout-collapse-up() {
+			height: calc(100% - #{$ob-sticky-element-height-sm});
 		}
 	}
 
@@ -80,16 +80,16 @@
 		padding-top: 7px;
 		padding-bottom: 7px;
 
-		@include layout-collapse-up() {
-			height: $sticky-element-height-sm;
+		@include ob-layout-collapse-up() {
+			height: $ob-sticky-element-height-sm;
 		}
 	}
 }
 
 .ob-sticky-lg {
 	> .ob-sticky-main {
-		@include layout-collapse-up() {
-			height: calc(100% - #{$sticky-element-height-lg});
+		@include ob-layout-collapse-up() {
+			height: calc(100% - #{$ob-sticky-element-height-lg});
 		}
 	}
 
@@ -98,8 +98,8 @@
 		padding-top: 24px;
 		padding-bottom: 24px;
 
-		@include layout-collapse-up() {
-			height: $sticky-element-height-lg;
+		@include ob-layout-collapse-up() {
+			height: $ob-sticky-element-height-lg;
 		}
 
 		h1, h2, h3, h4, h5, h6 {
@@ -117,7 +117,7 @@
 	.ob-sticky-header,
 	.ob-sticky-footer,
 	.ob-sticky-content {
-		padding-left: $spacing-default;
-		padding-right: $spacing-default;
+		padding-left: $ob-spacing-default;
+		padding-right: $ob-spacing-default;
 	}
 }

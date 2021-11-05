@@ -1,39 +1,39 @@
 @import "../../core/variables";
 
-$primary: $brand-primary !default;
-$secondary: $malibu !default;
-$success: $brand-success !default;
-$info: $brand-light !default;
-$warning: $brand-warning !default;
-$danger: $brand-error !default;
+$ob-primary: $ob-primary !default;
+$ob-secondary: $ob-malibu !default;
+$ob-success: $ob-success !default;
+$ob-info: $ob-light !default;
+$ob-warning: $ob-warning !default;
+$ob-danger: $ob-error !default;
 
-$body-color: $brand-default !default;
+$ob-body-color: $ob-default !default;
 
-$link-color: $brand-primary !default;
-$link-hover-color: $brand-primary !default;
+$ob-link-color: $ob-primary !default;
+$ob-link-hover-color: $ob-primary !default;
 
-$theme-color-interval: 0 !default;
+$ob-theme-color-interval: 0 !default;
 
-$font-family-sans-serif: $font;
+$ob-font-family-sans-serif: $ob-font;
 
-$input-color: $brand-default !default;
-$input-border-color: $gray !default;
-$input-border-radius: 0 !default;
-$input-border-radius-lg: 0 !default;
-$input-border-radius-sm: 0 !default;
+$ob-input-color: $ob-default !default;
+$ob-input-border-color: $ob-gray !default;
+$ob-input-border-radius: 0 !default;
+$ob-input-border-radius-lg: 0 !default;
+$ob-input-border-radius-sm: 0 !default;
 
-$dropdown-border-color: $gray-light !default;
-$dropdown-link-color: $brand-default !default;
-$dropdown-link-hover-color: $brand-default !default;
+$ob-dropdown-border-color: $ob-gray-light !default;
+$ob-dropdown-link-color: $ob-default !default;
+$ob-dropdown-link-hover-color: $ob-default !default;
 
-$nav-link-disabled-color: $gray-light !default;
-$nav-tabs-link-hover-border-color: $gray-light !default;
-$nav-pills-border-radius: 0 !default;
+$ob-nav-link-disabled-color: $ob-gray-light !default;
+$ob-nav-tabs-link-hover-border-color: $ob-gray-light !default;
+$ob-nav-pills-border-radius: 0 !default;
 
-$list-group-border-radius: 0 !default;
-$list-group-item-padding-x: .75rem !default;
+$ob-list-group-border-radius: 0 !default;
+$ob-list-group-item-padding-x: .75rem !default;
 
-$modal-content-border-color: $gray-extra-light !default;
+$ob-modal-content-border-color: $ob-gray-extra-light !default;
 
-$alert-border-radius: none !default;
-$alert-border-width: 0 !default;
+$ob-alert-border-radius: none !default;
+$ob-alert-border-width: 0 !default;

@@ -4,7 +4,7 @@
 
 .ob-master-layout-navigation  {
 	> ul {
-		transition: padding $duration-default;	// because navigation-scrollable-* classes are dynamic
+		transition: padding $ob-duration-default;	// because navigation-scrollable-* classes are dynamic
 	}
 
 	&.navigation-scrollable  {
@@ -14,41 +14,41 @@
 			display: none;
 		}
 
-		@include layout-collapse-down() {
+		@include ob-layout-collapse-down() {
 			.ob-navigation-scrollable-content > li {
 				// Ensure navigation scrolling is disabled on small viewports:
 				margin-left: 0 !important;
 			}
 		}
 
-		@include layout-collapse-up() {
+		@include ob-layout-collapse-up() {
 			.ob-navigation-scrollable-control {
 				position: absolute;
 				top: 0;
-				width: $navigation-scrollable-padding;
+				width: $ob-navigation-scrollable-padding;
 				height: 100%;
 				border: none;
 				display: inline-block;
-				background-color: $gray-extra-light;
+				background-color: $ob-gray-extra-light;
 				text-align: center;
-				z-index: $z-index-controls;
+				z-index: $ob-z-index-controls;
 
 				&.ob-navigation-scrollable-control-left {
-					@include innerBottomShadow();
+					@include ob-innerBottomShadow();
 				}
 				&.ob-navigation-scrollable-control-right {
-					@include innerBottomShadow();
+					@include ob-innerBottomShadow();
 				}
 
 				> span {
-					transition: transform $duration-fast ease-in-out;
+					transition: transform $ob-duration-fast ease-in-out;
 				}
 
 				&:hover,
 				&:focus,
 				&:active {
 					cursor: pointer;
-					background-color: $gray-light;
+					background-color: $ob-gray-light;
 					box-shadow: none;
 
 					> span {
@@ -71,14 +71,14 @@
 				white-space: nowrap;
 				margin-left: 0;
 				margin-right: 0;
-				padding-right: $navigation-scrollable-padding;
-				padding-left: $navigation-scrollable-padding;
+				padding-right: $ob-navigation-scrollable-padding;
+				padding-left: $ob-navigation-scrollable-padding;
 
 				> li {
 					display: inline-block;
 					white-space: normal;
 					// Animating list item with a negative margin ensures parent menu keeps the original width:
-					transition: margin $duration-default;
+					transition: margin $ob-duration-default;
 				}
 			}
 		}

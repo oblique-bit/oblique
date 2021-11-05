@@ -9,7 +9,7 @@
 
 	.ob-multiselect-toggle {
 		display: flex;
-		background-color: $white;
+		background-color: $ob-white;
 		border-radius: 0;
 		text-align: left;
 		white-space: normal;
@@ -25,11 +25,11 @@
 			display: flex;
 			cursor: pointer;
 			margin-left: auto;
-			@include toggle-before();
-			@include add-toggle($fa-var-angle-down, $fa-var-angle-up);
+			@include ob-toggle-before();
+			@include ob-add-toggle($fa-var-angle-down, $fa-var-angle-up);
 
 			&::before {
-				margin-left: $spacing-xs;
+				margin-left: $ob-spacing-xs;
 			}
 		}
 	}
@@ -62,8 +62,8 @@
 	}
 
 	.dropdown-item:active {
-		color: $brand-default;
-		background-color: $brand-extra-light;
+		color: $ob-default;
+		background-color: $ob-extra-light;
 	}
 
 	button.dropdown-item {

@@ -11,21 +11,21 @@
 	}
 
 	.mat-form-field-outline {
-		background-color: $white;
+		background-color: $ob-white;
 	}
 
 	&.mat-form-field-appearance-outline {
 		.mat-form-field-wrapper {
-			margin: $form-field-margin 0;
+			margin: $ob-form-field-margin 0;
 			padding-bottom: 1.2em;
 		}
 
 		.mat-form-field-flex {
-			margin-top: -$form-field-margin;
+			margin-top: -$ob-form-field-margin;
 		}
 
 		.mat-form-field-outline {
-			top: $form-field-margin;
+			top: $ob-form-field-margin;
 		}
 
 		.mat-form-field-label {
@@ -43,17 +43,17 @@
 		}
 
 		.mat-form-field-subscript-wrapper {
-			margin-top: $form-field-margin;
+			margin-top: $ob-form-field-margin;
 		}
 
-		@include form-field-size($form-field-padding-top, 0.5em, 2em);
+		@include ob-form-field-size($ob-form-field-padding-top, 0.5em, 2em);
 
 		.ob-form-sm & {
-			@include form-field-size($form-field-padding-top-sm, 0.25em, 1.8em);
+			@include ob-form-field-size($ob-form-field-padding-top-sm, 0.25em, 1.8em);
 		}
 
 		.ob-form-lg & {
-			@include form-field-size($form-field-padding-top-lg, 1em, 2.5em);
+			@include ob-form-field-size($ob-form-field-padding-top-lg, 1em, 2.5em);
 		}
 	}
 
@@ -63,9 +63,9 @@
 		right: 0;
 		padding: 0 0.4em;
 		border-radius: 50%;
-		background-color: $brand-error;
-		color: $white;
-		z-index: $z-index-controls;
+		background-color: $ob-error;
+		color: $ob-white;
+		z-index: $ob-z-index-controls;
 	}
 
 	.mat-error,
@@ -98,13 +98,13 @@
 				right: -12px;
 				left: -12px;
 				top: 0;
-				bottom: -$spacing-xs;
-				background-color: $white;
+				bottom: -$ob-spacing-xs;
+				background-color: $ob-white;
 				opacity: 0.75;
 				z-index: -1;
 
 				.ob-table:not(.ob-table-plain) tbody tr:nth-child(odd) & {
-					background-color: $gray-extra-light;
+					background-color: $ob-gray-extra-light;
 				}
 			}
 		}

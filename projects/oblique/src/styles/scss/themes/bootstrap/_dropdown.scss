@@ -8,8 +8,8 @@
 
 	.dropdown-header {
 		font-weight: bold;
-		font-size: $font-size-base * 0.95;
-		color: $brand-default;
+		font-size: $ob-font-size-base * 0.95;
+		color: $ob-default;
 	}
 }
 
@@ -22,7 +22,7 @@
 		margin-left: 0;
 		vertical-align: baseline;
 	}
-	@include toggle-after($state: show);
+	@include ob-toggle-after($state: show);
 
 	.dropup &::after {
 		content: fa-content($fa-var-angle-up);
@@ -33,6 +33,6 @@
 	}
 
 	@at-root .show > #{selector-append(".btn-secondary", &)} {
-		@include btn-variant($brand-default, $gray-extra-light, $gray, $brand-default, $gray-lighter, $gray-darker, $brand-default);
+		@include ob-btn-variant($ob-default, $ob-gray-extra-light, $ob-gray, $ob-default, $ob-gray-lighter, $ob-gray-darker, $ob-default);
 	}
 }

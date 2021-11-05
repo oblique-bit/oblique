@@ -3,41 +3,41 @@
 
 h1, h2, h3, h4, h5, h6 {
 	margin: 0 0 0.25em 0;
-	color: $black;
+	color: $ob-black;
 }
 
 h1 {
-	@include h1;
+	@include ob-h1;
 }
 
 h2 {
-	@include h2;
+	@include ob-h2;
 }
 
 h3 {
-	@include h3;
+	@include ob-h3;
 }
 
 h4 {
-	@include h4;
+	@include ob-h4;
 }
 
 h5 {
-	@include h5;
+	@include ob-h5;
 }
 
 h6 {
-	@include h6;
+	@include ob-h6;
 }
 
 // inline elements
 a {
-	color: $brand-primary;
+	color: $ob-primary;
 	text-decoration: underline;
 
 	&:hover,
 	&:visited {
-		color: $brand-dark;
+		color: $ob-dark;
 	}
 
 	&:not([href]):not([tabindex]),
@@ -75,33 +75,33 @@ mark, ins {
 }
 
 mark {
-	background-color: $brand-warning-light;
+	background-color: $ob-warning-light;
 }
 
 ins {
-	background-color: $brand-light;
+	background-color: $ob-light;
 }
 
 pre, code, kbd, samp {
 	font-family: monospace;
-	font-size: $font-size-normal;
+	font-size: $ob-font-size-normal;
 }
 
 code, kbd {
-	border-radius: $border-radius-base;
+	border-radius: $ob-border-radius-base;
 	padding: 2px 4px;
 }
 
 code, pre {
-	border: 1px solid $gray-light;
-	background-color: $gray-extra-light;
-	color: $brand-default;
+	border: 1px solid $ob-gray-light;
+	background-color: $ob-gray-extra-light;
+	color: $ob-default;
 }
 
 pre {
 	overflow: auto;
-	padding: $spacing-sm;
-	border-radius: $border-radius-base;
+	padding: $ob-spacing-sm;
+	border-radius: $ob-border-radius-base;
 	code {
 		border: none;
 		padding: 0;
@@ -109,12 +109,12 @@ pre {
 }
 
 kbd {
-	background-color: $brand-default;
-	color: $gray-extra-light;
+	background-color: $ob-default;
+	color: $ob-gray-extra-light;
 }
 
 small {
-	font-size: $font-size-smaller;
+	font-size: $ob-font-size-smaller;
 }
 
 s, del {
@@ -134,7 +134,7 @@ ol,
 ul,
 dl {
 	margin-top: 0;
-	margin-bottom: $spacing-default;
+	margin-bottom: $ob-spacing-default;
 }
 
 ol ol,
@@ -153,23 +153,23 @@ dd {
 	margin-left: 0;
 
 	+ dt {
-		margin-top: $spacing-sm;
+		margin-top: $ob-spacing-sm;
 	}
 }
 
 // block elements
 p {
 	margin-top: 0;
-	margin-bottom: $spacing-default;
+	margin-bottom: $ob-spacing-default;
 }
 
 blockquote {
-	margin: 0 0 $spacing-default;
+	margin: 0 0 $ob-spacing-default;
 	font-size: 1em;
 }
 
 address {
-	margin-bottom: $spacing-default;
+	margin-bottom: $ob-spacing-default;
 	font-style: normal;
 	line-height: inherit;
 }
@@ -212,9 +212,9 @@ fieldset {
 legend {
 	width: 100%;
 	padding: 0;
-	margin-bottom: $spacing-sm;
-	border-bottom: 1px dotted $gray;
-	font-size: $font-size-bigger;
+	margin-bottom: $ob-spacing-sm;
+	border-bottom: 1px dotted $ob-gray;
+	font-size: $ob-font-size-bigger;
 	font-weight: 600;
 	line-height: inherit;
 }

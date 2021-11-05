@@ -3,26 +3,26 @@
 @import "../../core/variables";
 @import "../../core/mixins/browser";
 
-@include form-control-validation($gray, $secondary, $secondary, $gray-dark);
+@include ob-form-control-validation($ob-gray, $ob-secondary, $ob-secondary, $ob-gray-dark);
 
 .has-success {
-	@include form-control-validation($brand-success, $brand-success-dark, $brand-success, $brand-success-dark);
+	@include ob-form-control-validation($ob-success, $ob-success-dark, $ob-success, $ob-success-dark);
 }
 
 .has-warning {
-	@include form-control-validation($brand-warning, $brand-warning-dark, $brand-warning, $brand-warning-dark);
+	@include ob-form-control-validation($ob-warning, $ob-warning-dark, $ob-warning, $ob-warning-dark);
 }
 
 .has-error {
-	@include form-control-validation($brand-error, $brand-error-dark, $brand-error, $brand-error-dark);
+	@include ob-form-control-validation($ob-error, $ob-error-dark, $ob-error, $ob-error-dark);
 }
 
 a.form-control-plaintext {
 	display: inline-block;
-	color: $gray-dark;
+	color: $ob-gray-dark;
 
 	&:hover {
-		color: $brand-default;
+		color: $ob-default;
 		text-decoration: none;
 	}
 }
@@ -55,7 +55,7 @@ a.form-control-plaintext {
 		height: 0;
 		border-style: solid;
 		border-width: 8px 8px 0 0;
-		border-color: $brand-primary transparent transparent transparent;
+		border-color: $ob-primary transparent transparent transparent;
 
 		@at-root #{selector-append('.row:not(.no-gutters) [class*="col-"]', &)} {
 			left: 15px;
@@ -79,7 +79,7 @@ a.form-control-plaintext {
 		left: -1px;
 	}
 
-	@include firefox() {
+	@include ob-firefox() {
 		&.form-check:not(.form-check-sm)::before {
 			top: 2px;
 		}

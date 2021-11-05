@@ -5,19 +5,19 @@
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	height: $footer-height-collapsed;
+	height: $ob-footer-height-collapsed;
 	display: flex;
 	flex-direction: column;
-	color: $gray-darker;
-	font-size: $font-size-xs;
-	background-color: $gray-extra-light;
-	border-top: 1px solid $gray-light;
-	padding: $spacing-xs $spacing-default;
+	color: $ob-gray-darker;
+	font-size: $ob-font-size-xs;
+	background-color: $ob-gray-extra-light;
+	border-top: 1px solid $ob-gray-light;
+	padding: $ob-spacing-xs $ob-spacing-default;
 	overflow: hidden;
 
-	@include layout-collapse-up() {
+	@include ob-layout-collapse-up() {
 		flex-direction: row;
-		height: $footer-height-md;
+		height: $ob-footer-height-md;
 
 		.ob-master-layout-fixed & {
 			position: relative;
@@ -25,15 +25,15 @@
 	}
 
 	.ob-footer-item {
-		padding: $spacing-xs 0;
+		padding: $ob-spacing-xs 0;
 		white-space: nowrap;
-		@include layout-collapse-down() {
+		@include ob-layout-collapse-down() {
 			&:not(:last-child) {
-				border-bottom: 1px solid $gray-light;
+				border-bottom: 1px solid $ob-gray-light;
 			}
 		}
 
-		@include layout-collapse-up() {
+		@include ob-layout-collapse-up() {
 			max-height: 100%;
 		}
 
@@ -51,14 +51,14 @@
 
 		img {
 			float: left;
-			width: $brand-logo-width;
-			height: $brand-logo-height;
+			width: $ob-logo-width;
+			height: $ob-logo-height;
 		}
 	}
 
-	@include layout-collapse-up() {
+	@include ob-layout-collapse-up() {
 		.ob-footer-item-logo {
-			margin-right: $spacing-default;
+			margin-right: $ob-spacing-default;
 
 			.ob-master-layout:not(.ob-master-layout-scrolling) &,
 			.ob-master-layout.ob-master-layout-fixed & {
@@ -71,15 +71,15 @@
 		}
 
 		.ob-footer-item-info {
-			margin-right: $spacing-default;
+			margin-right: $ob-spacing-default;
 			flex: 1; // Variable width.
 			overflow: hidden;
 		}
 
 		&.ob-master-layout-footer-sm {
-			height: $footer-height-sm;
-			padding-top: $spacing-xs;
-			padding-bottom: $spacing-xs;
+			height: $ob-footer-height-sm;
+			padding-top: $ob-spacing-xs;
+			padding-bottom: $ob-spacing-xs;
 
 			.ob-footer-item {
 				padding: 0;
@@ -87,7 +87,7 @@
 		}
 
 		.ob-master-layout-scrolling &:not(.ob-master-layout-footer-sm) {
-			height: $footer-height;
+			height: $ob-footer-height;
 		}
 	}
 
@@ -98,7 +98,7 @@
 		padding-left: 0;
 
 		li + li {
-			padding-left: $spacing-sm;
+			padding-left: $ob-spacing-sm;
 		}
 	}
 }

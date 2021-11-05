@@ -4,10 +4,10 @@
 
 .ob-master-layout-header {
 	position: relative;
-	background-color: $white;
+	background-color: $ob-white;
 	background-clip: content-box;
-	z-index: $z-index-layout;
-	transition: height $duration-default ease-in-out;
+	z-index: $ob-z-index-layout;
+	transition: height $ob-duration-default ease-in-out;
 
 	.ob-master-layout:not(.ob-master-layout-fixed) &.ob-master-layout-header-sticky {
 		position: fixed;
@@ -16,7 +16,7 @@
 		right: 0;
 	}
 
-	@include layout-collapse-down() {
+	@include ob-layout-collapse-down() {
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -25,22 +25,22 @@
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		height: $header-height-collapsed;
+		height: $ob-header-height-collapsed;
 
 		.ob-header-expanded & {
 			height: 100%;
 		}
 
 		.ob-header-expanded.ob-no-navigation & {
-			height: $header-height-md;
+			height: $ob-header-height-md;
 		}
 	}
 
-	@include layout-collapse-up() {
-		height: $header-height;
+	@include ob-layout-collapse-up() {
+		height: $ob-header-height;
 
 		&.ob-master-layout-header-md {
-			height: $header-height-md;
+			height: $ob-header-height-md;
 		}
 
 		&.ob-master-layout-header-animate {
@@ -49,10 +49,10 @@
 		}
 
 		.ob-master-layout.ob-no-navigation & {
-			height: $header-height-no-navigation;
+			height: $ob-header-height-no-navigation;
 
 			&.ob-master-layout-header-md {
-				height: $header-height-no-navigation - ($header-height - $header-height-md);
+				height: $ob-header-height-no-navigation - ($ob-header-height - $ob-header-height-md);
 			}
 		}
 
@@ -67,26 +67,26 @@
 		width: 100%;
 		padding: 0;
 		background-color: inherit;
-		border-bottom: $brand-line-width solid $brand-accent;
+		border-bottom: $ob-line-width solid $ob-accent;
 
-		@include layout-collapse-up() {
+		@include ob-layout-collapse-up() {
 			display: flex;
 			flex-direction: row;
 		}
 
-		@include layout-collapse-down() {
-			height: $header-height-collapsed;
-			transition: height $duration-default ease-in-out;
+		@include ob-layout-collapse-down() {
+			height: $ob-header-height-collapsed;
+			transition: height $ob-duration-default ease-in-out;
 
 			.ob-header-expanded & {
-				height: $header-height-md;
+				height: $ob-header-height-md;
 			}
 		}
 
 		aside {
 			position: absolute;
 			top: 0.5em;
-			font-size: $font-size-bigger;
+			font-size: $ob-font-size-bigger;
 			line-height: 1.5;
 			text-align: center;
 			transform: rotate(-45deg);
@@ -110,17 +110,17 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin-top: $spacing-sm;
-		margin-bottom: $spacing-sm;
-		padding-left: $spacing-default;
-		padding-right: $spacing-default;
-		border-right: 1px solid $gray-lighter;
+		margin-top: $ob-spacing-sm;
+		margin-bottom: $ob-spacing-sm;
+		padding-left: $ob-spacing-default;
+		padding-right: $ob-spacing-default;
+		border-right: 1px solid $ob-gray-lighter;
 
 		&:empty {
 			display: none;
 		}
 
-		@include layout-collapse-down() {
+		@include ob-layout-collapse-down() {
 			float: left;
 			margin-top: 13px;
 			margin-bottom: 13px;
@@ -144,77 +144,77 @@
 		flex-direction: row;
 		align-items: center;
 		min-width: 0; // Important, for text ellipsis of app title (cf. https://css-tricks.com/flexbox-truncated-text/)!
-		padding: 8px $spacing-default;
-        transition: padding $duration-default ease-in-out;
+		padding: 8px $ob-spacing-default;
+        transition: padding $ob-duration-default ease-in-out;
 
-		@include layout-collapse-up() {
+		@include ob-layout-collapse-up() {
 			@at-root #{selector-append(":not(.ob-master-layout-header-md)", &)} {
-				padding: $spacing-default;
+				padding: $ob-spacing-default;
 			}
 		}
 	}
 
 	.ob-master-layout-logo {
 		overflow: hidden;
-		width: $brand-logo-width-collapsed;
-		height: $brand-logo-height-collapsed;
-		margin-right: $spacing-default;
+		width: $ob-logo-width-collapsed;
+		height: $ob-logo-height-collapsed;
+		margin-right: $ob-spacing-default;
 
-		@include layout-collapse-up() {
+		@include ob-layout-collapse-up() {
 			@at-root #{selector-append(":not(.ob-master-layout-header-md)", &)} {
-				width: $brand-logo-width;
-				height: $brand-logo-height;
+				width: $ob-logo-width;
+				height: $ob-logo-height;
 				margin-top: 0;
 			}
 		}
 
 		img {
-			width: $brand-logo-width;
-			height: $brand-logo-height;
+			width: $ob-logo-width;
+			height: $ob-logo-height;
 		}
 	}
 
 	.ob-master-layout-brand-app-title {
 		display: block;
 		flex: 1;
-		font-size: $font-size-xl;
+		font-size: $ob-font-size-xl;
 		font-weight: 300;
-		padding-left: $spacing-default;
-		border-left: 1px solid $gray-lighter;
-		max-height: $brand-logo-height-collapsed;
+		padding-left: $ob-spacing-default;
+		border-left: 1px solid $ob-gray-lighter;
+		max-height: $ob-logo-height-collapsed;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 
-		@include layout-collapse-up() {
+		@include ob-layout-collapse-up() {
 			@at-root #{selector-append(":not(.ob-master-layout-header-md)", &)} {
-				font-size: $font-size-xl;
-				max-height: $brand-logo-height;
+				font-size: $ob-font-size-xl;
+				max-height: $ob-logo-height;
 			}
 		}
 	}
 
 	.ob-master-layout-brand-link {
 		.ob-master-layout & {
-			color: $brand-default;
+			color: $ob-default;
 			text-decoration: none;
 		}
 	}
 
 	:not(.ob-master-layout-fixed) &.ob-master-layout-header-animate {
 		.ob-master-layout-logo, .ob-master-layout-brand-app-title {
-			transition: all $duration-default ease-in-out;
+			transition: all $ob-duration-default ease-in-out;
 		}
 	}
 
 	.ob-header-toggle {
 		border: none;
 
-		@include layout-collapse-down() {
+		@include ob-layout-collapse-down() {
 			flex-wrap: nowrap;
 		}
 
-		@include layout-collapse-up() {
+		@include ob-layout-collapse-up() {
 			display: none !important;
 		}
 	}
@@ -229,8 +229,8 @@
 			top: 0;
 			left: 0;
 			right: 0;
-			height: $brand-line-width;
-			background-color: $brand-accent;
+			height: $ob-line-width;
+			background-color: $ob-accent;
 		}
 	}
 }

@@ -1,7 +1,7 @@
 @import "~@fortawesome/fontawesome-free/scss/variables";
 @import "icon";
 
-@mixin toggle-state($state: show) {
+@mixin ob-toggle-state($state: show) {
 	&.#{$state},
 	.#{$state} > &,
 	.#{$state} > a &,
@@ -12,9 +12,9 @@
 	}
 }
 
-@mixin toggle-before($default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show) {
-	@include icon($default-icon);
-	@include toggle-state($state) {
+@mixin ob-toggle-before($ob-default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show) {
+	@include ob-icon($ob-default-icon);
+	@include ob-toggle-state($state) {
 		&::before {
 			content: fa-content($toggle-icon);
 		}
@@ -24,9 +24,9 @@
 	}
 }
 
-@mixin toggle-after($default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show) {
-	@include icon($default-icon, after);
-	@include toggle-state($state) {
+@mixin ob-toggle-after($ob-default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show) {
+	@include ob-icon($ob-default-icon, after);
+	@include ob-toggle-state($state) {
 		&::after {
 			content: fa-content($toggle-icon);
 			width: $fa-fw-width;
@@ -37,36 +37,36 @@
 	}
 }
 
-@mixin toggle-icon-before($default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show) {
+@mixin ob-toggle-icon-before($ob-default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show) {
 	&::before {
-		content: fa-content($default-icon);
+		content: fa-content($ob-default-icon);
 	}
 
-	@include toggle-state($state) {
+	@include ob-toggle-state($state) {
 		&::before {
 			content: fa-content($toggle-icon);
 		}
 	}
 }
 
-@mixin toggle-icon-after($default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show) {
+@mixin ob-toggle-icon-after($ob-default-icon: $fa-var-angle-down, $toggle-icon: $fa-var-angle-up, $state: show) {
 	&::after {
-		content: fa-content($default-icon);
+		content: fa-content($ob-default-icon);
 	}
 
-	@include toggle-state($state) {
+	@include ob-toggle-state($state) {
 		&::after {
 			content: fa-content($toggle-icon);
 		}
 	}
 }
 
-@mixin add-toggle($default-icon, $toggle-icon, $state: show) {
+@mixin ob-add-toggle($ob-default-icon, $toggle-icon, $state: show) {
 	&:not(.ob-toggle-after) {
-		@include toggle-icon-before($default-icon, $toggle-icon, $state);
+		@include ob-toggle-icon-before($ob-default-icon, $toggle-icon, $state);
 	}
 
 	&.ob-toggle-after {
-		@include toggle-icon-after($default-icon, $toggle-icon, $state);
+		@include ob-toggle-icon-after($ob-default-icon, $toggle-icon, $state);
 	}
 }

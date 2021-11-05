@@ -5,51 +5,51 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: $spacing-lg;
-	border: 1px dashed $primary-700;
-	border-radius: $border-radius-base;
-	background-color: $gray-100;
-	transition: background-color $duration-fast;
+	padding: $ob-spacing-lg;
+	border: 1px dashed $ob-primary-700;
+	border-radius: $ob-border-radius-base;
+	background-color: $ob-gray-100;
+	transition: background-color $ob-duration-fast;
 
 	&:focus {
 		outline: none;
 
 		.ob-outline & {
-			border-color: $brand-default;
-			background-color: $primary-50;
-			box-shadow: 0 0 $spacing-xs 0 $brand-default;
-			outline: 1px solid $brand-primary;
+			border-color: $ob-default;
+			background-color: $ob-primary-50;
+			box-shadow: 0 0 $ob-spacing-xs 0 $ob-default;
+			outline: 1px solid $ob-primary;
 			outline-offset: -3px;
 		}
 	}
 
 	.ob-drop-zone-heading {
-		font-size: $font-size-bigger;
+		font-size: $ob-font-size-bigger;
 		margin-bottom: 0;
-		color: $primary-500;
+		color: $ob-primary-500;
 	}
 
 	&:hover,
 	&:hover:focus,
 	&.ob-dragging {
 		cursor: pointer;
-		background-color: $primary-200;
+		background-color: $ob-primary-200;
 
 		.ob-drop-zone-heading {
-			color: $brand-dark;
+			color: $ob-dark;
 		}
 	}
 
 	.mat-icon.ob-upload-icon {
 		position: static;
 		font-size: 42.666px; // empiric number
-		margin-right: $spacing-default;
+		margin-right: $ob-spacing-default;
 		vertical-align: middle;
 	}
 
 	.ob-drop-zone-hints {
 		text-align: center;
-		margin-left: calc(#{$spacing-default} + 42.666px * 1.5); // icon margin + icon font-size * icon size
+		margin-left: calc(#{$ob-spacing-default} + 42.666px * 1.5); // icon margin + icon font-size * icon size
 		margin-bottom: 0;
 	}
 }

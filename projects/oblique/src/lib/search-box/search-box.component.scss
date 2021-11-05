@@ -10,7 +10,7 @@
 	}
 
 	.ob-dropdown-content {
-		top: $spacing-default;
+		top: $ob-spacing-default;
 
 		&.right {
 			transform: translateX(-12px); // empiric number
@@ -23,7 +23,7 @@
 }
 
 .ob-no-result {
-	padding: $spacing-sm $spacing-default;
+	padding: $ob-spacing-sm $ob-spacing-default;
 
 	&:not(:only-child) {
 		display: none;
@@ -31,11 +31,11 @@
 }
 
 .ob-search-results-list {
-	top: $header-height-md;
+	top: $ob-header-height-md;
 	left: 0;
-	background-color: $white;
+	background-color: $ob-white;
 	overflow: hidden;
-	transition: height $duration-default;
+	transition: height $ob-duration-default;
 
 	.ob-highlight {
 		font-weight: bold;
@@ -43,7 +43,7 @@
 	}
 
 	small {
-		color: $gray-dark;
+		color: $ob-gray-dark;
 		display: block;
 	}
 }
@@ -79,10 +79,10 @@
 	}
 
 	&:not(.ob-slide-control) .ob-search-box-input {
-		padding: 0 $spacing-sm;
+		padding: 0 $ob-spacing-sm;
 
 		@at-root #{selector-append(".ob-font-awesome", &)} {
-			padding-left: $spacing-sm + $spacing-xs; // actual padding + icon margin
+			padding-left: $ob-spacing-sm + $ob-spacing-xs; // actual padding + icon margin
 		}
 	}
 
@@ -91,23 +91,23 @@
 		position: absolute;
 		right: 0;
 		bottom: 0;
-		left: calc(1.65 * 1em + #{$spacing-xs}); // font-size * icon width + some padding
+		left: calc(1.65 * 1em + #{$ob-spacing-xs}); // font-size * icon width + some padding
 		height: 4px;
 		display: block;
 		border-bottom: 1px solid transparent;
 		border-left: 1px solid transparent;
 		border-right: 1px solid transparent;
-		transition: border-color $duration-default;
+		transition: border-color $ob-duration-default;
 	}
 
 	&.ob-font-awesome::before {
-		left: calc(1.65em + #{$spacing-xs}); // font-size + spacing
+		left: calc(1.65em + #{$ob-spacing-xs}); // font-size + spacing
 	}
 
 	&.ob-slide-control {
 		.ob-search-box-input {
 			max-width: 0;
-			transition: max-width $duration-default, padding-left math.div($duration-default, 3) * 2;
+			transition: max-width $ob-duration-default, padding-left math.div($ob-duration-default, 3) * 2;
 
 			@at-root #{selector-append(".ob-font-awesome", &)} {
 				width: calc(100% - 1.65em); // - font-size (icon size is 1em)
@@ -122,7 +122,7 @@
 		.ob-search-dropdown{
 			max-height: 0;
 			overflow: hidden;
-			transition: max-height $duration-default;
+			transition: max-height $ob-duration-default;
 		}
 
 		&:focus,
@@ -131,11 +131,11 @@
 		&:hover {
 			.ob-search-box-input {
 				max-width: 100%;
-				padding: 0 $spacing-sm;
+				padding: 0 $ob-spacing-sm;
 
 				@at-root #{selector-append(".ob-font-awesome", &)} {
 					width: calc(100% - 1.65em); // - font-size (icon size is 1em)
-					padding-left: $spacing-sm + $spacing-xs; // actual padding + icon margin
+					padding-left: $ob-spacing-sm + $ob-spacing-xs; // actual padding + icon margin
 				}
 			}
 			.ob-search-dropdown{
@@ -148,16 +148,16 @@
 	&:not(.ob-slide-control)::before,
 	&.ob-slide-control:focus-within::before,
 	&.ob-slide-control:hover::before {
-		border-color: $gray;
+		border-color: $ob-gray;
 	}
 }
 
 .ob-control-item .ob-search-box {
-	color: $gray-dark;
+	color: $ob-gray-dark;
 
 	&:hover,
 	&:active,
 	&:focus {
-		color: $brand-default;
+		color: $ob-default;
 	}
 }

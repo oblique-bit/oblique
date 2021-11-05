@@ -4,30 +4,30 @@
 .mat-button-base {
 	&.ob-button.mat-primary {
 		&.mat-flat-button {
-			@include ob-button($gray-extra-light);
-			background-color: $brand-primary;
+			@include ob-button($ob-gray-extra-light);
+			background-color: $ob-primary;
 
 			&.mat-button-disabled {
-				color: $gray-600;
-				background-color: $gray-lighter;
+				color: $ob-gray-600;
+				background-color: $ob-gray-lighter;
 			}
 		}
 
 		&.mat-stroked-button {
-			@include ob-button($brand-primary);
-			border-color: $brand-primary;
+			@include ob-button($ob-primary);
+			border-color: $ob-primary;
 
 			&.mat-button-disabled {
-				color: $gray-500;
-				border-color: $gray-500;
+				color: $ob-gray-500;
+				border-color: $ob-gray-500;
 			}
 		}
 
 		&:not(.mat-flat-button):not(.mat-stroked-button) {
-			@include ob-button($brand-primary);
+			@include ob-button($ob-primary);
 
 			&.mat-button-disabled {
-				color: $gray-500;
+				color: $ob-gray-500;
 			}
 		}
 	}

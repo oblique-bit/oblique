@@ -6,8 +6,8 @@
 }
 
 .mat-tab-label {
-	color: $brand-default;
-	background-color: $smoke;
+	color: $ob-default;
+	background-color: $ob-smoke;
 
 	+ .mat-tab-label {
 		margin-left: 2px;
@@ -15,14 +15,14 @@
 
 	&:hover,
 	&:focus {
-		color: $brand-primary;
-		background-color: $brand-extra-light;
+		color: $ob-primary;
+		background-color: $ob-extra-light;
 	}
 
 	&.mat-tab-label-active,
 	&:active {
-		color: $brand-primary;
-		border-color: $brand-primary;
-		background-color: $brand-light;
+		color: $ob-primary;
+		border-color: $ob-primary;
+		background-color: $ob-light;
 	}
 }

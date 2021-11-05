@@ -4,9 +4,9 @@
 	height: 26px;
 	width: 26px;
 	font-size: 12px;
-	color: $brand-primary;
-	background-color: $white;
-	border: 1px solid $brand-primary;
+	color: $ob-primary;
+	background-color: $ob-white;
+	border: 1px solid $ob-primary;
 
 	& .ob-icon {
 		height: 1.5em;
@@ -18,20 +18,20 @@
 	}
 
 	&:hover {
-		background-color: $brand-light;
+		background-color: $ob-light;
 	}
 
 	&.mat-step-icon-selected {
-		color: $white;
-		background-color: $brand-primary;
+		color: $ob-white;
+		background-color: $ob-primary;
 	}
 
 	&.mat-step-icon-state-done {
-		color: $brand-success;
-		border-color: $brand-success;
+		color: $ob-success;
+		border-color: $ob-success;
 
 		&:hover {
-			background-color: $brand-success-light;
+			background-color: $ob-success-light;
 		}
 	}
 
@@ -66,11 +66,11 @@
 	}
 
 	@at-root #{selector-append("[ng-reflect-active=false]", &)} {
-		border-color: $gray-dark;
-		color: $gray-dark;
+		border-color: $ob-gray-dark;
+		color: $ob-gray-dark;
 
 		&:hover {
-			background-color: $white;
+			background-color: $ob-white;
 		}
 	}
 }
@@ -79,7 +79,7 @@
 .mat-horizontal-stepper-header::after,
 .mat-stepper-horizontal-line,
 .mat-stepper-vertical-line::before {
-	border-color: $brand-primary;
+	border-color: $ob-primary;
 }
 
 [ng-reflect-state=done] {
@@ -87,7 +87,7 @@
 	&.mat-horizontal-stepper-header::after,
 	& ~ .mat-stepper-horizontal-line,
 	& ~ .mat-stepper-vertical-line::before {
-		border-color: $brand-success;
+		border-color: $ob-success;
 	}
 }
 
@@ -96,7 +96,7 @@
 	&.mat-horizontal-stepper-header::after,
 	& ~ .mat-stepper-horizontal-line,
 	& ~ .mat-stepper-vertical-line::before {
-		border-color: $gray-dark;
+		border-color: $ob-gray-dark;
 	}
 
 	&.mat-step-header {

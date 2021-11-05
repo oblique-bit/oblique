@@ -4,21 +4,21 @@
 
 .ob-off-canvas-sidebar {
 	display: none; // only show if offcanvas is enable, i.e. parent has .offcanvas class
-	background-color: $gray-extra-light;
+	background-color: $ob-gray-extra-light;
 }
 
 .ob-off-canvas {
 	.ob-off-canvas-main {
 		width: 100%;
 		transition-property: transform, width, height;
-		transition-duration: $duration-default;
+		transition-duration: $ob-duration-default;
 		transition-timing-function: ease;
 
 		@at-root #{selector-append(".ob-off-canvas-in", &)} {
-			transform: translateX(-$off-canvas-sidebar-collapsed-width);
+			transform: translateX(-$ob-off-canvas-sidebar-collapsed-width);
 
-			@include media-breakpoint-up(lg) {
-				width: 100% - $off-canvas-sidebar-width;
+			@include ob-media-breakpoint-up(lg) {
+				width: 100% - $ob-off-canvas-sidebar-width;
 				transform: translateX(0);
 			}
 		}
@@ -29,52 +29,52 @@
 		top: 0;
 		left: 100%;
 		height: 100%;
-		width: $off-canvas-sidebar-collapsed-width;
+		width: $ob-off-canvas-sidebar-collapsed-width;
 		display: block;
 		visibility: hidden; // A11y: ensure tabbing does not focus an offcanvas sidebar element when hidden.
 		overflow-y: auto;
-		z-index: $z-index-overlay-top;
+		z-index: $ob-z-index-overlay-top;
 		transition-property: transform, left, width, visibility;
-		transition-duration: $duration-default;
+		transition-duration: $ob-duration-default;
 		transition-timing-function: ease;
 
 		h1, h2, h3, h4, h5, h6 {
-			color: $brand-default;
+			color: $ob-default;
 		}
 
-		@include media-breakpoint-up(lg) {
-			width: $off-canvas-sidebar-width;
+		@include ob-media-breakpoint-up(lg) {
+			width: $ob-off-canvas-sidebar-width;
 		}
 
 		@at-root #{selector-append(".ob-off-canvas-in", &)} {
 			visibility: visible; // A11y: ensure tabbing can focus again an offcanvas sidebar element when visible.
 			transform: translateX(-100%);
 
-			@include media-breakpoint-up(lg) {
-				left: 100% - $off-canvas-sidebar-width;
+			@include ob-media-breakpoint-up(lg) {
+				left: 100% - $ob-off-canvas-sidebar-width;
 				transform: translateX(0);
 			}
 		}
 	}
 
 	.ob-off-canvas-header {
-		height: $header-height-no-navigation;
-		border-bottom: $brand-line-width solid $gray-dark;
+		height: $ob-header-height-no-navigation;
+		border-bottom: $ob-line-width solid $ob-gray-dark;
 		display: flex;
-		padding: $spacing-default;
+		padding: $ob-spacing-default;
 		justify-content: space-between;
 		align-items: center;
-		transition: height $duration-default ease-in-out;
+		transition: height $ob-duration-default ease-in-out;
 
 		h2 {
 			margin: 0;
 		}
 
 		.ob-close {
-			@include link-btn;
-			font-size: $font-size-biggest;
+			@include ob-link-btn;
+			font-size: $ob-font-size-biggest;
 			padding: 0;
-			color: $gray-dark;
+			color: $ob-gray-dark;
 
 			/* temporary alignment until https://jira.bit.admin.ch/browse/OUI-1454 is integrated, then this block should be removed */
 			position: relative;
@@ -89,37 +89,37 @@
 			/* End of temporary block */
 		}
 
-		@include layout-collapse-down() {
-			height: $header-height-collapsed;
+		@include ob-layout-collapse-down() {
+			height: $ob-header-height-collapsed;
 
 			@at-root #{selector-append(".ob-header-expanded", &)} {
-				height: $header-height-md;
+				height: $ob-header-height-md;
 			}
 		}
 	}
 
 	.ob-off-canvas-content {
-		height: calc(100vh - #{$header-height-no-navigation});
-		padding: $spacing-default;
+		height: calc(100vh - #{$ob-header-height-no-navigation});
+		padding: $ob-spacing-default;
 		overflow-y: auto;
 
-		@include layout-collapse-down() {
-			height: calc(100vh - #{$header-height-collapsed});
+		@include ob-layout-collapse-down() {
+			height: calc(100vh - #{$ob-header-height-collapsed});
 
 			@at-root #{selector-append(".ob-header-expanded", &)} {
-				height: calc(100vh - #{$header-height-md});
+				height: calc(100vh - #{$ob-header-height-md});
 			}
 		}
 	}
 
-	@include layout-collapse-up() {
+	@include ob-layout-collapse-up() {
 		.ob-master-layout-header-md ~ .ob-off-canvas-sidebar {
 			.ob-off-canvas-header {
-				height: $header-height-collapsed;
+				height: $ob-header-height-collapsed;
 			}
 
 			.ob-off-canvas-content {
-				height: calc(100vh - #{$header-height-collapsed});
+				height: calc(100vh - #{$ob-header-height-collapsed});
 			}
 		}
 	}
@@ -128,16 +128,16 @@
 		display: none;
 
 		@at-root #{selector-append(".ob-off-canvas-in", &)} {
-			@include layout-collapse-down {
+			@include ob-layout-collapse-down {
 				display: block;
 				position: fixed;
 				top: 0;
 				left: 0;
 				width: 100vw;
 				height: 100vh;
-				background-color: $black;
+				background-color: $ob-black;
 				opacity: 0.5;
-				z-index: $z-index-overlay;
+				z-index: $ob-z-index-overlay;
 			}
 		}
 	}

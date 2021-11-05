@@ -1,88 +1,88 @@
-@mixin h1 {
+@mixin ob-h1 {
 	font-size: 3rem;
 	font-weight: 300;
 	line-height: 1.25;
 	letter-spacing: -0.5px;
 }
 
-@mixin h2 {
+@mixin ob-h2 {
 	font-size: 2.5rem;
 	font-weight: 300;
 	line-height: 1.2;
 	letter-spacing: -0.5px;
 }
 
-@mixin h3 {
+@mixin ob-h3 {
 	font-size: 2rem;
 	font-weight: 400;
 	line-height: 1.375;
 	letter-spacing: 0.18px;
 }
 
-@mixin h4 {
+@mixin ob-h4 {
 	font-size: 1.75rem;
 	font-weight: 400;
 	line-height: 1.285715;
 	letter-spacing: 0.1px;
 }
 
-@mixin h5 {
+@mixin ob-h5 {
 	font-size: 1.25rem;
 	font-weight: 500;
 	line-height: 1.4;
 	letter-spacing: 0.2px;
 }
 
-@mixin h6 {
+@mixin ob-h6 {
 	font-size: 1.125rem;
 	font-weight: 500;
 	line-height: 1.333333;
 	letter-spacing: 0.2px;
 }
 
-@mixin subtitle1 {
+@mixin ob-subtitle1 {
 	font-size: 1rem;
 	font-weight: 400;
 	line-height: 1.5;
 	letter-spacing: 0.15px;
 }
 
-@mixin subtitle2 {
+@mixin ob-subtitle2 {
 	font-size: 0.875rem;
 	font-weight: 500;
 	line-height: 1.42857;
 	letter-spacing: 0.1px;
 }
 
-@mixin body1 {
+@mixin ob-body1 {
 	font-size: 1rem;
 	font-weight: 400;
 	line-height: 1.5;
 	letter-spacing: 0.5px;
 }
 
-@mixin body2 {
+@mixin ob-body2 {
 	font-size: 0.875rem;
 	font-weight: 400;
 	line-height: 1.42857;
 	letter-spacing: 0.25px;
 }
 
-@mixin button {
+@mixin ob-button {
 	font-size: 0.875rem;
 	font-weight: 500;
 	line-height: 1.42857;
 	letter-spacing: 0.25px;
 }
 
-@mixin caption {
+@mixin ob-caption {
 	font-size: 0.75rem;
 	font-weight: 400;
 	line-height: 1.333333;
 	letter-spacing: 0.4px;
 }
 
-@mixin overline {
+@mixin ob-overline {
 	font-size: 0.75rem;
 	font-weight: 500;
 	line-height: 1.333333;

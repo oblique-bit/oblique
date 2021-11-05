@@ -17,21 +17,21 @@
 		padding: 14px 28px;
 		border-bottom: 2px solid transparent;
 		text-decoration: none;
-		color: $brand-default;
-		background-color: $smoke;
-		@include body2;
+		color: $ob-default;
+		background-color: $ob-smoke;
+		@include ob-body2;
 
 		&:hover,
 		&:focus {
-			color: $brand-primary;
-			background-color: $brand-extra-light;
+			color: $ob-primary;
+			background-color: $ob-extra-light;
 		}
 
 		&.ob-active,
 		&:active {
-			color: $brand-primary;
-			border-color: $brand-primary;
-			background-color: $brand-light;
+			color: $ob-primary;
+			border-color: $ob-primary;
+			background-color: $ob-light;
 		}
 	}
 }

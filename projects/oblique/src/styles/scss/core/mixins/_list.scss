@@ -1,6 +1,6 @@
 @import "../variables";
 
-@mixin horizontal-description-list($label-width: 100px) {
+@mixin ob-horizontal-description-list($label-width: 100px) {
 	display: flex;
 	flex-flow: row wrap;
 
@@ -19,7 +19,7 @@
 		&:not(:first-child) {
 			&,
 			& + dd {
-				padding-top: $spacing-xs;
+				padding-top: $ob-spacing-xs;
 			}
 		}
 	}
@@ -29,16 +29,16 @@
 	}
 
 	dd {
-		padding-left: $spacing-default;
+		padding-left: $ob-spacing-default;
 		width: calc(100% - #{$label-width});
 
 		+ dd {
 			width: 100%;
-			padding-left: calc(#{$label-width} + #{$spacing-default});
+			padding-left: calc(#{$label-width} + #{$ob-spacing-default});
 		}
 	}
 }
 
-@mixin list-title ($margin: $spacing-sm) {
+@mixin ob-list-title ($margin: $ob-spacing-sm) {
     margin-bottom: $margin;
 }

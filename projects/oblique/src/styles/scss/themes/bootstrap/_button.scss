@@ -3,28 +3,28 @@
 @import "mixins/button";
 
 .btn-primary {
-	@include btn-variant($white, $brand-primary, $brand-primary, $white, $brand-dark, $brand-dark, $gray-lighter);
+	@include ob-btn-variant($ob-white, $ob-primary, $ob-primary, $ob-white, $ob-dark, $ob-dark, $ob-gray-lighter);
 }
 
 .btn-secondary {
-	@include btn-variant($brand-default, $gray-extra-light, $gray, $brand-default, $gray-lighter, $gray-darker, $brand-default);
-	@include box-shadow-secondary();
+	@include ob-btn-variant($ob-default, $ob-gray-extra-light, $ob-gray, $ob-default, $ob-gray-lighter, $ob-gray-darker, $ob-default);
+	@include ob-box-shadow-secondary();
 }
 
 .btn-success {
-	@include btn-variant($white, $brand-success, $brand-success, $white, $brand-success-dark, $brand-success-dark, $gray-lighter);
+	@include ob-btn-variant($ob-white, $ob-success, $ob-success, $ob-white, $ob-success-dark, $ob-success-dark, $ob-gray-lighter);
 }
 
 .btn-warning {
-	@include btn-variant($white, $brand-warning, $brand-warning, $white, $brand-warning-dark, $brand-warning-dark, $gray-lighter);
+	@include ob-btn-variant($ob-white, $ob-warning, $ob-warning, $ob-white, $ob-warning-dark, $ob-warning-dark, $ob-gray-lighter);
 }
 
 .btn-danger {
-	@include btn-variant($white, $brand-error, $brand-error, $white, $brand-error-dark, $brand-error-dark, $gray-lighter);
+	@include ob-btn-variant($ob-white, $ob-error, $ob-error, $ob-white, $ob-error-dark, $ob-error-dark, $ob-gray-lighter);
 }
 
 .btn-link {
-	@include btn-variant($link-color, transparent, transparent, $link-hover-color, $gray-lighter, $gray-darker, $link-hover-color);
-	@include box-shadow-secondary();
-	border-radius: $border-radius-base;
+	@include ob-btn-variant($ob-link-color, transparent, transparent, $ob-link-hover-color, $ob-gray-lighter, $ob-gray-darker, $ob-link-hover-color);
+	@include ob-box-shadow-secondary();
+	border-radius: $ob-border-radius-base;
 }

@@ -7,8 +7,8 @@
 
 	&:not(.mat-button-disabled) {
 		&:hover {
-			color: $primary-700;
-			background-color: $primary-200;
+			color: $ob-primary-700;
+			background-color: $ob-primary-200;
 		}
 
 		&:focus {
@@ -16,14 +16,14 @@
 		}
 
 		.ob-outline &:focus {
-			border-color: $brand-default;
-			box-shadow: 0 0 $spacing-xs 0 $brand-default;
+			border-color: $ob-default;
+			box-shadow: 0 0 $ob-spacing-xs 0 $ob-default;
 			outline: 1px solid $color;
 			outline-offset: -3px;
 		}
 
 		.mat-ripple-element {
-			background-color: $primary-900;
+			background-color: $ob-primary-900;
 		}
 	}
 }

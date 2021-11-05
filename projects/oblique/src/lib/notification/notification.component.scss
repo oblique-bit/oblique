@@ -7,11 +7,11 @@
 	display: block;
 	perspective: 80px;
 	overflow-x: hidden;
-	z-index: $z-index-widget;
+	z-index: $ob-z-index-widget;
 
 	&.ob-bottom-left,
 	&.ob-bottom-right {
-		bottom: $spacing-default;
+		bottom: $ob-spacing-default;
 	}
 
 	&.ob-top-left,
@@ -32,33 +32,33 @@
 		position: relative; // so that the close button is correctly positioned
 		width: 65vw;
 		margin: 5px; // Reserve spacing for box shadow!
-		@include dropShadow();
+		@include ob-dropShadow();
 
-		@include layout-collapse-up() {
+		@include ob-layout-collapse-up() {
 			width: 380px;
 		}
 
 		&.fadeLeft {
-			animation: notification-fadeLeft $duration-default;
+			animation: notification-fadeLeft $ob-duration-default;
 		}
 
 		&.fadeLeft-delayed {
-			animation: notification-fadeLeft $duration-default;
-			animation-delay: $duration-default;
+			animation: notification-fadeLeft $ob-duration-default;
+			animation-delay: $ob-duration-default;
 			animation-fill-mode: backwards;
 		}
 
 		&.fadeOut {
-			animation: notification-fadeOut $duration-default;
+			animation: notification-fadeOut $ob-duration-default;
 		}
 
 		&.slideTop {
-			animation: notification-slideTop $duration-default;
-			animation-delay: $duration-default;
+			animation: notification-slideTop $ob-duration-default;
+			animation-delay: $ob-duration-default;
 		}
 
 		&.slideBottom {
-			animation: notification-slideBottom $duration-default;
+			animation: notification-slideBottom $ob-duration-default;
 		}
 
 		.ob-close {
@@ -66,8 +66,8 @@
 			position: absolute;
 			top: 0;
 			right: 0;
-			padding: $spacing-default;
-			font-size: $font-size-biggest;
+			padding: $ob-spacing-default;
+			font-size: $ob-font-size-biggest;
 			font-weight: 700;
 			line-height: 0.75;
 			background-color: transparent;
@@ -89,29 +89,29 @@
 	.ob-occurrence {
 		display: inline-block;
 		position: absolute;
-		bottom: -$spacing-xs;
-		right: -$spacing-xs;
-		padding: $spacing-xs;
+		bottom: -$ob-spacing-xs;
+		right: -$ob-spacing-xs;
+		padding: $ob-spacing-xs;
 		line-height: 1;
 		text-align: right;
-		color: $white;
+		color: $ob-white;
 		border-radius: 50%;
 	}
 
 	.ob-alert-info .ob-occurrence {
-		background-color: $brand-dark;
+		background-color: $ob-dark;
 	}
 
 	.ob-alert-success .ob-occurrence {
-		background-color: $brand-success-dark;
+		background-color: $ob-success-dark;
 	}
 
 	.ob-alert-warning .ob-occurrence {
-		background-color: $brand-warning-dark;
+		background-color: $ob-warning-dark;
 	}
 
 	.ob-alert-error .ob-occurrence {
-		background-color: $brand-error-dark;
+		background-color: $ob-error-dark;
 	}
 
 	@keyframes notification-fadeOut {
