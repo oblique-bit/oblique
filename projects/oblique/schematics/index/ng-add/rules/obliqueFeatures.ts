@@ -32,8 +32,10 @@ function addAjv(ajv: boolean): Rule {
 		if (ajv) {
 			infoMigration(_context, 'Oblique feature: Adding schema validation');
 			addDevDependency(tree, 'ajv');
+			addDevDependency(tree, 'ajv-formats');
 			if (getAngularVersion(tree) >= 10) {
 				addAngularConfigInList(tree, ['architect', 'build', 'options', 'allowedCommonJsDependencies'], 'ajv');
+				addAngularConfigInList(tree, ['architect', 'build', 'options', 'allowedCommonJsDependencies'], 'ajv-formats');
 			}
 		}
 		return tree;
