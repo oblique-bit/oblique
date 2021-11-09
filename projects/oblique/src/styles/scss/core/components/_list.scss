@@ -4,13 +4,21 @@
 
 @include ob-media-breakpoint-up(md) {
 	dl.ob-horizontal {
-		@include ob-horizontal-description-list();
+		display: grid;
+		grid-template-columns: auto 1fr;
+		column-gap: $ob-spacing-default;
 
-		&.ob-horizontal-large {
-			@include ob-horizontal-description-list(250px);
+		&.ob-right-aligned dt {
+			justify-self: end;
 		}
-		&.ob-horizontal-small {
-			@include ob-horizontal-description-list(50px);
+
+		dd, dt {
+			margin: 0;
+		}
+
+		dd + dd {
+			grid-column-start: 2;
+			grid-column-end: 3;
 		}
 	}
 }

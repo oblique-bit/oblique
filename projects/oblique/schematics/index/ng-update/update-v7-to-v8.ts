@@ -10,7 +10,10 @@ export class UpdateV7toV8 implements ObIMigrations {
 	applyMigrations(_options: IUpdateV8Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Analyzing project');
-			return chain([this.prefixScssVariableNames(), this.prefixMixinNames(), this.removeLayoutCollapse()])(tree, _context);
+			return chain([this.prefixScssVariableNames(), this.prefixMixinNames(), this.removeLayoutCollapse(), this.removeDlHorizontalVariants()])(
+				tree,
+				_context
+			);
 		};
 	}
 
@@ -228,6 +231,16 @@ export class UpdateV7toV8 implements ObIMigrations {
 				replaceInFile(tree, filePath, /(?:ob-)?layout-collapse-(up|down)(?:\(\))?/g, `ob-media-breakpoint-$1(md)`);
 			};
 			return applyInTree(tree, apply, '*.scss');
+		};
+	}
+
+	private removeDlHorizontalVariants(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove .ob-horizontal-* classes');
+			const apply = (filePath: string) => {
+				replaceInFile(tree, filePath, new RegExp(/\s?ob-horizontal-(?:large|small)/g), '');
+			};
+			return applyInTree(tree, apply, '*.html');
 		};
 	}
 }
