@@ -20,6 +20,7 @@
 		}
 
 		@at-root #{selector-append(".ob-alert-warning", &)} {
+			color: $brand-default;
 			background-color: $brand-warning;
 		}
 
