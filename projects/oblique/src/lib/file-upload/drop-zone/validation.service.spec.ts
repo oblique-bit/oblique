@@ -45,7 +45,7 @@ describe('ObValidationService', () => {
 			it('should display error', () => {
 				expect(notification.error).toHaveBeenCalledWith({
 					message: 'i18n.oblique.file-upload.error.single',
-					messageParams: {errors: 'sample.jpg'},
+					messageParams: {ignoredFiles: 'sample.jpg'},
 					title: 'i18n.oblique.file-upload.error.title'
 				});
 			});
@@ -65,7 +65,7 @@ describe('ObValidationService', () => {
 			it('should display error', () => {
 				expect(notification.error).toHaveBeenCalledWith({
 					message: 'i18n.oblique.file-upload.error.type',
-					messageParams: {errors: 'sample.jpg', parameter: '.txt'},
+					messageParams: {ignoredFiles: 'sample.jpg', supportedTypes: '.txt'},
 					title: 'i18n.oblique.file-upload.error.title'
 				});
 			});
@@ -85,7 +85,7 @@ describe('ObValidationService', () => {
 				service.filterInvalidFiles(files, ['text/plain'], 50, true);
 				expect(notification.error).toHaveBeenCalledWith({
 					message: 'i18n.oblique.file-upload.error.type',
-					messageParams: {errors: 'sample.jpg', parameter: 'text/plain'},
+					messageParams: {ignoredFiles: 'sample.jpg', supportedTypes: 'text/plain'},
 					title: 'i18n.oblique.file-upload.error.title'
 				});
 			});
@@ -94,7 +94,7 @@ describe('ObValidationService', () => {
 				service.filterInvalidFiles(files, ['text/*'], 50, true);
 				expect(notification.error).toHaveBeenCalledWith({
 					message: 'i18n.oblique.file-upload.error.type',
-					messageParams: {errors: 'sample.jpg', parameter: 'text/*'},
+					messageParams: {ignoredFiles: 'sample.jpg', supportedTypes: 'text/*'},
 					title: 'i18n.oblique.file-upload.error.title'
 				});
 			});
@@ -103,7 +103,7 @@ describe('ObValidationService', () => {
 				service.filterInvalidFiles(files, ['text/unknown'], 50, true);
 				expect(notification.error).toHaveBeenCalledWith({
 					message: 'i18n.oblique.file-upload.error.type',
-					messageParams: {errors: 'sample.txt, sample.jpg', parameter: 'text/unknown'},
+					messageParams: {ignoredFiles: 'sample.txt, sample.jpg', supportedTypes: 'text/unknown'},
 					title: 'i18n.oblique.file-upload.error.title'
 				});
 			});
@@ -112,7 +112,7 @@ describe('ObValidationService', () => {
 				service.filterInvalidFiles(files, ['unknown/*'], 50, true);
 				expect(notification.error).toHaveBeenCalledWith({
 					message: 'i18n.oblique.file-upload.error.type',
-					messageParams: {errors: 'sample.txt, sample.jpg', parameter: 'unknown/*'},
+					messageParams: {ignoredFiles: 'sample.txt, sample.jpg', supportedTypes: 'unknown/*'},
 					title: 'i18n.oblique.file-upload.error.title'
 				});
 			});
@@ -132,7 +132,7 @@ describe('ObValidationService', () => {
 			it('should display error', () => {
 				expect(notification.error).toHaveBeenCalledWith({
 					message: 'i18n.oblique.file-upload.error.size',
-					messageParams: {errors: 'sample.jpg (0.00 MB)', parameter: 0.000004},
+					messageParams: {ignoredFiles: 'sample.jpg (0.00 MB)', maxSize: 0.000004},
 					title: 'i18n.oblique.file-upload.error.title'
 				});
 			});
