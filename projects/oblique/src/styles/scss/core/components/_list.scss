@@ -14,3 +14,7 @@
 		}
 	}
 }
+
+.ob-list-title {
+	@include list-title();
+}

@@ -38,3 +38,7 @@
 		}
 	}
 }
+
+@mixin list-title ($margin: $spacing-sm) {
+    margin-bottom: $margin;
+}
