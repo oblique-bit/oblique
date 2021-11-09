@@ -21,7 +21,7 @@ export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 			addUnknownRoute(options.unknownRoute),
 			addInterceptors(options.httpInterceptors),
 			addBanner(options.banner),
-			addDefaultHomeComponent(options.theme, options.prefix),
+			addDefaultHomeComponent(options.prefix),
 			addExternalLink(options.externalLink),
 			addMandatory(options.mandatory)
 		])(tree, _context);
@@ -112,31 +112,29 @@ function provideBanner(tree: Tree): Tree {
 	return applyChanges(tree, appModulePath, changes);
 }
 
-function addDefaultHomeComponent(theme: string, prefix: string): Rule {
+function addDefaultHomeComponent(prefix: string): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique feature: Adding default home component');
-		addDefaultComponent(tree, theme, prefix);
-		addDefaultComponentToAppModule(tree, theme);
+		addDefaultComponent(tree, prefix);
+		addDefaultComponentToAppModule(tree);
 		addDefaultComponentRouteToAppRoutingModule(tree);
 	};
 }
 
-function addDefaultComponent(tree: Tree, theme: string, prefix: string): void {
-	addFile(tree, 'src/app/home/home.component.html', getTemplate(tree, `home-${theme}.component.html`));
+function addDefaultComponent(tree: Tree, prefix: string): void {
+	addFile(tree, 'src/app/home/home.component.html', getTemplate(tree, `home.component.html`));
 	addFile(tree, 'src/app/home/home.component.scss', getTemplate(tree, `home.component.scss.config`));
 	addFile(tree, 'src/app/home/home.component.ts', getTemplate(tree, 'home.component.ts.config').replace('_APP_PREFIX_PLACEHOLDER_', prefix));
 }
 
-function addDefaultComponentToAppModule(tree: Tree, theme: string): void {
+function addDefaultComponentToAppModule(tree: Tree): void {
 	if (tree.exists(appModulePath)) {
 		const sourceFile = createSrcFile(tree, appModulePath);
 		const changes: Change[] = addDeclarationToModule(sourceFile, appModulePath, 'HomeComponent', './home/home.component');
 		const routingModule = tree.exists(routingModulePath) ? routingModulePath : appModulePath;
 
-		if (theme === 'material') {
-			changes.push(...addImportToModule(sourceFile, routingModule, 'MatButtonModule', '@angular/material/button'));
-			changes.push(...addImportToModule(sourceFile, routingModule, 'MatCardModule', '@angular/material/card'));
-		}
+		changes.push(...addImportToModule(sourceFile, routingModule, 'MatButtonModule', '@angular/material/button'));
+		changes.push(...addImportToModule(sourceFile, routingModule, 'MatCardModule', '@angular/material/card'));
 
 		applyChanges(tree, appModulePath, changes);
 	}

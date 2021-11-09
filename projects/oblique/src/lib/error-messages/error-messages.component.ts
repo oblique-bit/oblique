@@ -12,7 +12,8 @@ import {WINDOW} from '../utilities';
 export const DISABLE_NGB_ERRORS = new InjectionToken<boolean>('ENABLE_NGB_ERRORS');
 
 /**
- * @deprecated with material theme since version 4.0.0. Use angular material mat-error instead
+ * @deprecated with material theme since version 4.0.0. Use angular material mat-error instead.
+ * Deprecated with bootstrap theme since version 8.0.0. Will be removed with version 10.0.0.
  */
 @Component({
 	selector: 'ob-error-messages',

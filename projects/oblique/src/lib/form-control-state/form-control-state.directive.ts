@@ -8,7 +8,8 @@ import {ObParentFormDirective} from '../nested-form/parent-form.directive';
 import {WINDOW} from '../utilities';
 
 /**
- * @deprecated with material theme since version 4.0.0. Use angular default material behavior for both mandatory and error states instead
+ * @deprecated with material theme since version 4.0.0. Use angular default material behavior for both mandatory and error states instead.
+ * Deprecated with bootstrap theme since version 8.0.0. Will be removed with version 10.0.0.
  */
 @Directive({
 	selector: '[obFormControlState]',
