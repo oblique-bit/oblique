@@ -15,7 +15,7 @@
 	padding: $ob-spacing-xs $ob-spacing-default;
 	overflow: hidden;
 
-	@include ob-layout-collapse-up() {
+	@include ob-media-breakpoint-up(md) {
 		flex-direction: row;
 		height: $ob-footer-height-md;
 
@@ -27,13 +27,13 @@
 	.ob-footer-item {
 		padding: $ob-spacing-xs 0;
 		white-space: nowrap;
-		@include ob-layout-collapse-down() {
+		@include ob-media-breakpoint-down(md) {
 			&:not(:last-child) {
 				border-bottom: 1px solid $ob-gray-light;
 			}
 		}
 
-		@include ob-layout-collapse-up() {
+		@include ob-media-breakpoint-up(md) {
 			max-height: 100%;
 		}
 
@@ -56,7 +56,7 @@
 		}
 	}
 
-	@include ob-layout-collapse-up() {
+	@include ob-media-breakpoint-up(md) {
 		.ob-footer-item-logo {
 			margin-right: $ob-spacing-default;
 

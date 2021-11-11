@@ -25,7 +25,7 @@
 			}
 
 			.dropdown {
-				@include ob-layout-collapse-down() {
+				@include ob-media-breakpoint-down(md) {
 					&.show {
 						@include ob-bubble-tail-border(
 								$ob-accent,
@@ -42,7 +42,7 @@
 				.dropdown-menu {
 					border-radius: 0;
 
-					@include ob-layout-collapse-down() {
+					@include ob-media-breakpoint-down(md) {
 						position: fixed !important;
 						top: $ob-header-height-md !important;
 						left: 0;
@@ -63,7 +63,7 @@
 						}
 					}
 
-					@include ob-layout-collapse-up() {
+					@include ob-media-breakpoint-up(md) {
 						position: absolute;
 						left: $ob-spacing-default !important;
 						top: $ob-spacing-default !important;
@@ -92,7 +92,7 @@
 				}
 			}
 
-			@include ob-layout-collapse-down() {
+			@include ob-media-breakpoint-down(md) {
 				// Don't display control tooltips on small viewports:
 				> .tooltip,
 				> .ob-control-link > .tooltip {

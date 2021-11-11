@@ -112,7 +112,7 @@ $arrow-lg-size: 14px;
 		}
 	}
 
-	@include ob-layout-collapse-down() {
+	@include ob-media-breakpoint-down(md) {
 		&.ob-control-link {
 			position: relative;
 

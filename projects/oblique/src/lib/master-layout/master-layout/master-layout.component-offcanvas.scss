@@ -89,7 +89,7 @@
 			/* End of temporary block */
 		}
 
-		@include ob-layout-collapse-down() {
+		@include ob-media-breakpoint-down(md) {
 			height: $ob-header-height-collapsed;
 
 			@at-root #{selector-append(".ob-header-expanded", &)} {
@@ -103,7 +103,7 @@
 		padding: $ob-spacing-default;
 		overflow-y: auto;
 
-		@include ob-layout-collapse-down() {
+		@include ob-media-breakpoint-down(md) {
 			height: calc(100vh - #{$ob-header-height-collapsed});
 
 			@at-root #{selector-append(".ob-header-expanded", &)} {
@@ -112,7 +112,7 @@
 		}
 	}
 
-	@include ob-layout-collapse-up() {
+	@include ob-media-breakpoint-up(md) {
 		.ob-master-layout-header-md ~ .ob-off-canvas-sidebar {
 			.ob-off-canvas-header {
 				height: $ob-header-height-collapsed;
@@ -128,7 +128,7 @@
 		display: none;
 
 		@at-root #{selector-append(".ob-off-canvas-in", &)} {
-			@include ob-layout-collapse-down {
+			@include ob-media-breakpoint-down(md) {
 				display: block;
 				position: fixed;
 				top: 0;

@@ -64,7 +64,7 @@
 		}
 	}
 
-	@include ob-layout-collapse-up() {
+	@include ob-media-breakpoint-up(md) {
 		min-height: $ob-column-layout-toggle-height;
 		flex-wrap: nowrap;
 
