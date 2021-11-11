@@ -8,18 +8,6 @@
 	}
 }
 
-@mixin ob-layout-collapse-down() {
-	@media (max-width: $ob-layout-collapse) {
-		@content;
-	}
-}
-
-@mixin ob-layout-collapse-up() {
-	@media (min-width: $ob-layout-collapse) {
-		@content;
-	}
-}
-
 @mixin ob-media-breakpoint-up($name) {
 	@include ob-map-error($ob-grid-breakpoints, $name) {
 		@media (min-width: map-get($ob-grid-breakpoints, $name)) {
