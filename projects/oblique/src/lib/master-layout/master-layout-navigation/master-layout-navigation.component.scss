@@ -154,7 +154,7 @@
 				bottom: auto;
 				left: auto;
 				right: auto;
-				min-width: 280px;
+				min-width: 30ch;	// empiric number
 				max-height: 60vh;
 				overflow-x: hidden;
 				overflow-y: auto;
@@ -180,7 +180,7 @@
 
 				.ob-sub-nav {
 					display: block;
-					column-width: $ob-layout-collapse * 0.5;
+					column-width: 30ch; // empiric value
 
 					li {
 						break-inside: avoid-column;
