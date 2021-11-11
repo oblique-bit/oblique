@@ -42,7 +42,8 @@ export class ObMasterLayoutConfig {
 		hasCover: false,
 		hasMainNavigation: true,
 		hasOffCanvas: false,
-		hasLayout: true
+		hasLayout: true,
+		hasMaxWidth: false
 	};
 
 	/**

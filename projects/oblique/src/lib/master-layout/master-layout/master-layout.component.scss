@@ -19,6 +19,17 @@
 		}
 	}
 
+	&.ob-has-max-width {
+		.ob-master-layout-content-viewport {
+			display: flex;
+			justify-content: center;
+		}
+
+		.ob-main-layout {
+			max-width: map-get($ob-grid-breakpoints, xl);
+		}
+	}
+
 	@include ob-media-breakpoint-up(md) {
 		padding-bottom: $ob-footer-height-md;
 		transition: padding-bottom $ob-duration-default;
