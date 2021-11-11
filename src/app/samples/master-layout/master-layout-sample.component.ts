@@ -39,6 +39,14 @@ export class ObMasterLayoutSampleComponent {
 		this.masterLayout.layout.hasLayout = value;
 	}
 
+	get hasMaxWidth() {
+		return this.masterLayout.layout.hasMaxWidth;
+	}
+
+	set hasMaxWidth(value: boolean) {
+		this.masterLayout.layout.hasMaxWidth = value;
+	}
+
 	get footerSM() {
 		return this.masterLayout.footer.isSmall;
 	}
