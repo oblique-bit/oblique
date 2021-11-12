@@ -44,7 +44,6 @@
 |bootstrap| Oblique ||Sleek, intuitive, and powerful front-end framework for faster and easier web development.|https://www.npmjs.com/package/bootstrap|https://www.npmjs.com/package/bootstrap#documentation https://getbootstrap.com/ https://getbootstrap.com/docs/5.0/getting-started/introduction/|
 |conventional-changelog| Oblique |dist|Generate a changelog from git metadata|https://www.npmjs.com/package/conventional-changelog|https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog#readme|
 |cpx| Oblique schematics|dist|Copy file globs, watching for changes. This module provides a CLI tool like cp, but with watching.|https://www.npmjs.com/package/cpx|https://www.npmjs.com/package/cpx|
-|del| Oblique & Gulp |dist| Similar to rimraf, but with a Promise API and support for multiple files and globbing. It also
 |eslint| Oblique |lint|ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.|https://www.npmjs.com/package/eslint| https://eslint.org/|
 |eslint-config-prettier|Oblique|lint |Turns off all rules that are unnecessary or might conflict with Prettier. This lets you use your favorite shareable config without letting its stylistic choices get in the way when using Prettier. Note that this config only turns rules off, so it only makes sense using it together with some other config.|https://www.npmjs.com/package/eslint-config-prettier|https://github.com/prettier/eslint-config-prettier/|
 |eslint-plugin-prettier| Oblique |lint|Runs Prettier as an ESLint rule and reports differences as individual ESLint issues.|https://www.npmjs.com/package/eslint-plugin-prettier|https://www.npmjs.com/package/eslint-plugin-prettier|
@@ -53,7 +52,6 @@
 |gulp-file|Oblique & Gulp |dist|Create vinyl files from a string or buffer and insert into the Gulp pipeline|https://www.npmjs.com/package/gulp-file|https://github.com/alexmingoia/gulp-file|
 |gulp-git|Oblique & Gulp |dist|Git plugin for gulp (gulpjs.com)|https://www.npmjs.com/package/gulp-git|https://github.com/stevelacy/gulp-git|
 |gulp-header|Oblique & Gulp |dist |gulp-header is a Gulp extension to add a header to file(s) in the pipeline. Gulp is a streaming build system utilizing node.js|https://www.npmjs.com/package/gulp-header|https://github.com/gulp-community/gulp-header#readme|
-|gulp-rename|Oblique & Gulp |dist|gulp-rename is a gulp plugin to rename files easily.|https://www.npmjs.com/package/gulp-rename|https://github.com/hparra/gulp-rename|
 |gulp-replace|Oblique & Gulp |dist|A string replace plugin for gulp|https://www.npmjs.com/package/gulp-replace|https://github.com/lazd/gulp-replace#readme|
 |husky|Oblique git hooks |git commit & git push|Modern native Git hooks made easy, Husky improves your commits and more 🐶 woof!|https://www.npmjs.com/package/husky|https://typicode.github.io/husky/#/|
 |jest| Angular CLI|test|Jest is a delightful JavaScript Testing Framework with a focus on simplicity.|https://www.npmjs.com/package/jest|https://jestjs.io/docs/getting-started|
