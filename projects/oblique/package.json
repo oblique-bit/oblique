@@ -17,8 +17,7 @@
   },
   "dependencies": {
     "@schematics/angular": "^12.0.0",
-    "ansi-colors": "^4.1.1",
-    "ts-morph": "^9.1.0"
+    "ansi-colors": "^4.1.1"
   },
   "optionalDependencies": {
     "@angular/cdk": "^12.0.0",
