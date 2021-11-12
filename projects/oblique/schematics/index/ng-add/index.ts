@@ -50,7 +50,7 @@ function finalize(options: ObIOptionsSchema): Rule {
 		const text =
 			options.font === 'frutiger'
 				? 'Due to licence restrictions, Frutiger font files cannot be delivered with Oblique. \nThey can either be obtained from the federal chancellery intranet\n(https://intranet.bk.admin.ch/bk-intra/de/home/dl-koordination-bund/kommunikation/webforum-bund/Downloads.html) or requested from webforum@bk.admin.ch. Moreover, each project is responsible for the font protection according to its licence. (https://github.com/swiss/styleguide/blob/master/src/assets/fonts/LICENSE). The proposed solution consist of only delivering the font if the Referer Http header is whitelisted.'
-				: 'Furtiger is mandatory for CI/CD conformity';
+				: 'Frutiger is mandatory for CI/CD conformity';
 		/* eslint-enable max-len */
 
 		warn(_context, text);
