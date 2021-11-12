@@ -1,6 +1,7 @@
 @import "../../styles/scss/core/variables";
 @import "../../styles/scss/core/mixins/layout";
 @import "../../styles/scss/core/mixins/column-layout";
+@import "../../styles/scss/core/mixins/shadow";
 
 .ob-column-layout {
 	display: flex;
@@ -104,7 +105,7 @@
 			margin-left: -$column-layout-toggle-width;
 			border-radius: $column-layout-toggle-radius 0 0 $column-layout-toggle-radius;
 			border-right-width: 0;
-			box-shadow: -2px 0 4px 0px rgba(0, 0, 0, 0.1);
+			@include dropShadow(down-left);
 
 			@at-root #{selector-append(":not(.ob-font-awesome)", &)} {
 				.ob-icon-wrapper {
@@ -119,7 +120,7 @@
 			margin-right: -$column-layout-toggle-width;
 			border-radius: 0 $column-layout-toggle-radius $column-layout-toggle-radius 0;
 			border-left-width: 0;
-			box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.1);
+			@include dropShadow();
 
 			@at-root #{selector-append(":not(.ob-font-awesome)", &)} {
 				.ob-icon-wrapper {
@@ -162,7 +163,7 @@
 					border-radius: 0 $column-layout-toggle-radius $column-layout-toggle-radius 0;
 					border-right-width: 1px;
 					border-left-width: 0;
-					box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.1);
+					@include dropShadow();
 				}
 			}
 
@@ -190,7 +191,7 @@
 					border-radius: $column-layout-toggle-radius 0 0 $column-layout-toggle-radius;
 					border-right-width: 0;
 					border-left-width: 1px;
-					box-shadow: -2px 0 4px 0px rgba(0, 0, 0, 0.1);
+					@include dropShadow(down-left);
 				}
 			}
 

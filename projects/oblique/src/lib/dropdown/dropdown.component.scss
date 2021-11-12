@@ -1,6 +1,7 @@
 @import "../../styles/scss/core/variables";
 @import "../../styles/scss/core/mixins/layout";
 @import "../../styles/scss/core/mixins/bubble-tail";
+@import "../../styles/scss/core/mixins/shadow";
 
 $arrow-size: 16px;
 $arrow-lg-size: 14px;
@@ -27,10 +28,10 @@ $arrow-lg-size: 14px;
 		overflow: hidden;
 		white-space: normal;	// to cancel "nowrap" value from .ob-master-layout-header-controls
 		background-color: $white;
-		box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
 		transition-property: max-height, padding;
 		transition-duration: $duration-default;
 		z-index: $z-index-widget;
+		@include dropShadow();
 
 		&.middle {
 			transform: translateX(calc(-50% + 13px)); //empiric value

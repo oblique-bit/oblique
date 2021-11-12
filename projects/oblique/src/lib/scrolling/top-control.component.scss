@@ -1,5 +1,6 @@
 @import "../../styles/scss/core/variables";
 @import "../../styles/scss/core/mixins/layout";
+@import "../../styles/scss/core/mixins/shadow";
 
 .ob-top-control-btn {
 	visibility: hidden; // A11y: ensure element is not reachable when tabbing.
@@ -46,7 +47,7 @@
 		text-decoration: none;
 		color: $brand-default;
 		background-color: $gray-light;
-		box-shadow:  0 3px 1px fade-out($gray-extra-light, 0.3), 0 0 1px 1px fade($gray-extra-light, 0.30);
+		@include dropShadow();
 	}
 
 	.ob-master-layout-scrolling & {
