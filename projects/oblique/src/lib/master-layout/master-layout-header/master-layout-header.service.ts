@@ -25,7 +25,7 @@ export class ObMasterLayoutHeaderService {
 	set isCustom(value: boolean) {
 		this._isCustom = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.CUSTOM,
+			name: ObEMasterLayoutEventValues.HEADER_IS_CUSTOM,
 			value: value
 		});
 	}

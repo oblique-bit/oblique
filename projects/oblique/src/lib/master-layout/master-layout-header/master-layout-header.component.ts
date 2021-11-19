@@ -122,7 +122,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	}
 
 	private propertyChanges() {
-		const events = [ObEMasterLayoutEventValues.CUSTOM, ObEMasterLayoutEventValues.MEDIUM, ObEMasterLayoutEventValues.STICKY];
+		const events = [ObEMasterLayoutEventValues.HEADER_IS_CUSTOM, ObEMasterLayoutEventValues.MEDIUM, ObEMasterLayoutEventValues.STICKY];
 		this.masterLayout.header.configEvents
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
@@ -130,7 +130,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 			)
 			.subscribe(event => {
 				switch (event.name) {
-					case ObEMasterLayoutEventValues.CUSTOM:
+					case ObEMasterLayoutEventValues.HEADER_IS_CUSTOM:
 						this.isCustom = event.value;
 						break;
 					case ObEMasterLayoutEventValues.MEDIUM:

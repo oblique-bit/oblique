@@ -67,9 +67,10 @@ export interface ObIMasterLayoutEvent {
 }
 
 export enum ObEMasterLayoutEventValues {
+	FOOTER_IS_CUSTOM,
+	HEADER_IS_CUSTOM,
 	COLLAPSE,
 	COVER,
-	CUSTOM,
 	FIXED,
 	FULL_WIDTH,
 	OFF_CANVAS,

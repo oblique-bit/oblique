@@ -26,7 +26,7 @@ export class ObMasterLayoutFooterService {
 	set isCustom(value: boolean) {
 		this._isCustom = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.CUSTOM,
+			name: ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM,
 			value: value
 		});
 	}

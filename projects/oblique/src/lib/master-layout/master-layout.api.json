@@ -634,9 +634,10 @@
           "text": "Name of the event",
           "type": "ObEMasterLayoutEventValues",
           "values":[
+            "ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM",
+            "ObEMasterLayoutEventValues.HEADER_IS_CUSTOM",
             "ObEMasterLayoutEventValues.COLLAPSE",
             "ObEMasterLayoutEventValues.COVER",
-            "ObEMasterLayoutEventValues.CUSTOM",
             "ObEMasterLayoutEventValues.FIXED",
             "ObEMasterLayoutEventValues.FULL_WIDTH",
             "ObEMasterLayoutEventValues.OFF_CANVAS",
