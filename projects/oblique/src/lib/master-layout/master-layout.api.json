@@ -198,7 +198,7 @@
         },
         {
           "name": "header.isSticky",
-          "text": "The header is always shown on top of the content is continuous mode (true) or normally hidden when scrolled away (false).",
+          "text": "The header is always shown above the content (true) or hidden when scrolled away (false).",
           "type": "boolean",
           "default": true,
           "since": "4.0.0"
@@ -636,6 +636,7 @@
           "values":[
             "ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM",
             "ObEMasterLayoutEventValues.HEADER_IS_CUSTOM",
+            "ObEMasterLayoutEventValues.HEADER_IS_STICKY",
             "ObEMasterLayoutEventValues.COLLAPSE",
             "ObEMasterLayoutEventValues.COVER",
             "ObEMasterLayoutEventValues.FIXED",
@@ -645,7 +646,6 @@
             "ObEMasterLayoutEventValues.MAIN_NAVIGATION",
             "ObEMasterLayoutEventValues.SCROLL_TRANSITION",
             "ObEMasterLayoutEventValues.SCROLLABLE",
-            "ObEMasterLayoutEventValues.STICKY",
             "ObEMasterLayoutEventValues.LAYOUT",
             "ObEMasterLayoutEventValues.MAX_WIDTH"
           ],

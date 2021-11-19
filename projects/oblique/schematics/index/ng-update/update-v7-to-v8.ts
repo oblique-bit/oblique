@@ -17,7 +17,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 				this.removeDlHorizontalVariants(),
 				this.removeCompatCss(),
 				this.removeThemeService(),
-				this.migrateMasterLayoutProperties()
+				this.migrateMasterLayoutProperties(),
+				this.migrateObEMasterLayoutEventValues()
 			])(tree, _context);
 		};
 	}
@@ -315,6 +316,20 @@ export class UpdateV7toV8 implements ObIMigrations {
 				replacement = this.migrateMasterLayoutConfig(replacement);
 				replacement = this.removeProperty(replacement, 'header', 'isAnimated');
 				replacement = this.removeProperty(replacement, 'footer', 'isSmall');
+				if (fileContent !== replacement) {
+					tree.overwrite(filePath, replacement);
+				}
+			};
+			return applyInTree(tree, toApply, '*.ts');
+		};
+	}
+
+	private migrateObEMasterLayoutEventValues(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Replacing ObEMasterLayoutEventValues values');
+			const toApply = (filePath: string) => {
+				const fileContent = readFile(tree, filePath);
+				const replacement = fileContent.replace(/ObEMasterLayoutEventValues\.STICKY\b/g, 'ObEMasterLayoutEventValues.HEADER_IS_STICKY');
 				if (fileContent !== replacement) {
 					tree.overwrite(filePath, replacement);
 				}

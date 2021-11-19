@@ -69,6 +69,7 @@ export interface ObIMasterLayoutEvent {
 export enum ObEMasterLayoutEventValues {
 	FOOTER_IS_CUSTOM,
 	HEADER_IS_CUSTOM,
+	HEADER_IS_STICKY,
 	COLLAPSE,
 	COVER,
 	FIXED,
@@ -78,7 +79,6 @@ export enum ObEMasterLayoutEventValues {
 	MAIN_NAVIGATION,
 	SCROLL_TRANSITION,
 	SCROLLABLE,
-	STICKY,
 	LAYOUT,
 	MAX_WIDTH
 }

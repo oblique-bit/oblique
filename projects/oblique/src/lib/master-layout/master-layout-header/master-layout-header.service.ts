@@ -49,7 +49,7 @@ export class ObMasterLayoutHeaderService {
 	set isSticky(value: boolean) {
 		this._isSticky = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.STICKY,
+			name: ObEMasterLayoutEventValues.HEADER_IS_STICKY,
 			value: value
 		});
 	}
