@@ -74,14 +74,6 @@ export class ObMasterLayoutSampleComponent {
 		this.masterLayout.header.isMedium = value;
 	}
 
-	get isAnimated() {
-		return this.masterLayout.header.isAnimated;
-	}
-
-	set isAnimated(value: boolean) {
-		this.masterLayout.header.isAnimated = value;
-	}
-
 	// Layout
 	get isFixed(): boolean {
 		return this.masterLayout.layout.isFixed;
