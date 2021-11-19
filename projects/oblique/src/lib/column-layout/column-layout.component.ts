@@ -12,13 +12,11 @@ import {
 	ViewChildren,
 	ViewEncapsulation
 } from '@angular/core';
-import {delay, filter, map, startWith} from 'rxjs/operators';
-import {merge, Observable} from 'rxjs';
+import {delay, map, startWith} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 import {ObColumnPanelDirective} from './column-panel.directive';
 import {ObScrollingEvents} from '../scrolling/scrolling-events';
-import {ObMasterLayoutService} from '../master-layout/master-layout.service';
 import {WINDOW} from '../utilities';
-import {ObEMasterLayoutEventValues} from '../master-layout/master-layout.model';
 import {ObIToggleDirection} from './column-layout.model';
 import {ObUseObliqueIcons} from '../icon/icon.model';
 
@@ -49,7 +47,6 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 		private readonly el: ElementRef,
 		private readonly renderer: Renderer2,
 		private readonly scroll: ObScrollingEvents,
-		private readonly master: ObMasterLayoutService,
 		@Inject(WINDOW) window,
 		@Optional() @Inject(ObUseObliqueIcons) useObliqueIcon
 	) {
@@ -68,11 +65,7 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 	}
 
 	ngAfterViewInit() {
-		merge(
-			this.scroll.scrolled.pipe(filter(() => !this.master.layout.isFixed)),
-			this.master.layout.configEvents.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.FIXED))
-		).subscribe(() => this.center());
-
+		this.scroll.scrolled.subscribe(() => this.center());
 		this.toggleLeftIcon$ = this.getToggleDirection(this.columnLeft, 'left', 'right');
 		this.toggleRightIcon$ = this.getToggleDirection(this.columnRight, 'right', 'left');
 	}
@@ -106,7 +99,7 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 	private center(): void {
 		const dimension = this.el.nativeElement.getBoundingClientRect();
 		const middle = ObColumnLayoutComponent.visibleHeight(dimension, this.window) / 2;
-		const top = this.master.layout.isFixed || this.window.innerHeight > dimension.height ? '50%' : `${middle}px`;
+		const top = this.window.innerHeight > dimension.height ? '50%' : `${middle}px`;
 		this.toggles.forEach(toggle => this.renderer.setStyle(toggle.nativeElement, 'top', top));
 	}
 }
