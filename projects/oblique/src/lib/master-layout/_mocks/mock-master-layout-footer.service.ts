@@ -5,7 +5,6 @@ import {ObIMasterLayoutEvent} from '../master-layout.model';
 @Injectable()
 export class ObMockMasterLayoutFooterService {
 	isCustom = true;
-	isSmall = true;
 	hasScrollTransition = true;
 
 	get configEvents(): Observable<ObIMasterLayoutEvent> {

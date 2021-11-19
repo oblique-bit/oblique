@@ -1,11 +1,9 @@
-import {Component, ContentChildren, HostBinding, OnDestroy, QueryList, TemplateRef, ViewEncapsulation} from '@angular/core';
+import {Component, ContentChildren, OnDestroy, QueryList, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {filter, takeUntil} from 'rxjs/operators';
 
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {scrollEnabled} from '../master-layout.utility';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
-import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {Subject} from 'rxjs';
 
 @Component({
@@ -19,17 +17,11 @@ import {Subject} from 'rxjs';
 export class ObMasterLayoutFooterComponent implements OnDestroy {
 	home = this.config.homePageRoute;
 	isCustom = this.masterLayout.footer.isCustom;
-	@HostBinding('class.ob-master-layout-footer-sm') isSmall = this.masterLayout.footer.isSmall;
 	@ContentChildren('obFooterLink') readonly templates: QueryList<TemplateRef<any>>;
 	private readonly unsubscribe = new Subject();
 
-	constructor(
-		private readonly masterLayout: ObMasterLayoutService,
-		private readonly config: ObMasterLayoutConfig,
-		private readonly scrollEvents: ObScrollingEvents
-	) {
+	constructor(private readonly masterLayout: ObMasterLayoutService, private readonly config: ObMasterLayoutConfig) {
 		this.propertyChanges();
-		this.reduceOnScroll();
 	}
 
 	ngOnDestroy(): void {
@@ -38,7 +30,7 @@ export class ObMasterLayoutFooterComponent implements OnDestroy {
 	}
 
 	private propertyChanges() {
-		const events = [ObEMasterLayoutEventValues.SMALL, ObEMasterLayoutEventValues.CUSTOM];
+		const events = [ObEMasterLayoutEventValues.CUSTOM];
 		this.masterLayout.footer.configEvents
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
@@ -46,19 +38,10 @@ export class ObMasterLayoutFooterComponent implements OnDestroy {
 			)
 			.subscribe(event => {
 				switch (event.name) {
-					case ObEMasterLayoutEventValues.SMALL:
-						this.isSmall = event.value;
-						break;
 					case ObEMasterLayoutEventValues.CUSTOM:
 						this.isCustom = event.value;
 						break;
 				}
 			});
-	}
-
-	private reduceOnScroll() {
-		this.scrollEvents.isScrolled
-			.pipe(takeUntil(this.unsubscribe), scrollEnabled(this.masterLayout.footer))
-			.subscribe(isScrolling => (this.masterLayout.footer.isSmall = !isScrolling));
 	}
 }

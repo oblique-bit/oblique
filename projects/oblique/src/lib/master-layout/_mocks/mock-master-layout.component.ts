@@ -16,7 +16,6 @@ export class ObMockMasterLayoutComponent {
 	isMenuCollapsed = true;
 	noNavigation = true;
 	hasOffCanvas = true;
-	footerSm = true;
 	isScrolling = false;
 	readonly headerControlTemplates: QueryList<TemplateRef<any>>;
 	readonly footerLinkTemplates: QueryList<TemplateRef<any>>;

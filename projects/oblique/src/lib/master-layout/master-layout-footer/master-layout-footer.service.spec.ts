@@ -69,46 +69,6 @@ describe('MasterLayoutFooterService', () => {
 		});
 	});
 
-	describe('test isSmall', () => {
-		it('should set isSmall to true', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'isSmall', 'set');
-			const newValue = true;
-			masterLayoutFooterService.isSmall = newValue;
-			expect(spy).toHaveBeenCalled();
-			expect(masterLayoutFooterService.isSmall).toBeTruthy();
-			spy.mockRestore();
-		});
-
-		it('should set isSmall to false', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'isSmall', 'set');
-			const newValue = false;
-			masterLayoutFooterService.isSmall = newValue;
-			expect(spy).toHaveBeenCalled();
-			expect(masterLayoutFooterService.isSmall).toBeFalsy();
-			spy.mockRestore();
-		});
-
-		it('should get isSmall  when true', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'isSmall', 'get');
-			const newValue = true;
-			masterLayoutFooterService.isSmall = newValue;
-			const mockResult = masterLayoutFooterService.isSmall;
-			expect(spy).toHaveBeenCalled();
-			expect(mockResult).toEqual(newValue);
-			spy.mockRestore();
-		});
-
-		it('should get isSmall  when false', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'isSmall', 'get');
-			const newValue = false;
-			masterLayoutFooterService.isSmall = newValue;
-			const mockResult = masterLayoutFooterService.isSmall;
-			expect(spy).toHaveBeenCalled();
-			expect(mockResult).toEqual(newValue);
-			spy.mockRestore();
-		});
-	});
-
 	describe('test hasScrollTransition', () => {
 		it('should set hasScrollTransition to true', () => {
 			const spy = jest.spyOn(masterLayoutFooterService, 'hasScrollTransition', 'set');

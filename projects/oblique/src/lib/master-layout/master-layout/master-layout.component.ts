@@ -56,7 +56,6 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 	@HostBinding('class.ob-header-expanded') isMenuCollapsed = this.masterLayout.layout.isMenuOpened;
 	@HostBinding('class.ob-no-navigation') noNavigation = !this.masterLayout.layout.hasMainNavigation;
 	@HostBinding('class.ob-off-canvas') hasOffCanvas = this.masterLayout.layout.hasOffCanvas;
-	@HostBinding('class.ob-footer-sm') footerSm = this.masterLayout.footer.isSmall;
 	@HostBinding('class.ob-master-layout-scrolling') isScrolling = false;
 	@HostBinding('class.ob-outline') outline = true;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<any>;
@@ -103,7 +102,6 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 
 	ngOnInit(): void {
 		this.globalEventsService.scroll$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.scrollTop());
-		this.masterLayout.footer.configEvents.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.SMALL)).subscribe(evt => (this.footerSm = evt.value));
 		this.masterLayout.layout.configEvents
 			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.MAIN_NAVIGATION))
 			.subscribe(evt => this.updateJumpLinks(evt.value));

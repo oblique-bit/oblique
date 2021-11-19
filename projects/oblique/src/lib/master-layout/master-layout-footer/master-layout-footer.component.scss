@@ -76,17 +76,7 @@
 			overflow: hidden;
 		}
 
-		&.ob-master-layout-footer-sm {
-			height: $ob-footer-height-sm;
-			padding-top: $ob-spacing-xs;
-			padding-bottom: $ob-spacing-xs;
-
-			.ob-footer-item {
-				padding: 0;
-			}
-		}
-
-		.ob-master-layout-scrolling &:not(.ob-master-layout-footer-sm) {
+		.ob-master-layout-scrolling {
 			height: $ob-footer-height;
 		}
 	}

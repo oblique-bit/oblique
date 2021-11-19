@@ -265,13 +265,6 @@
           "since": "4.0.0"
         },
         {
-          "name": "footer.isSmall",
-          "text": "Keep default, small footer size (true) or forces large size (false).",
-          "type": "boolean",
-          "default": true,
-          "since": "4.0.0"
-        },
-        {
           "name": "footer.isCustom",
           "text": "Use Oblique's default footer (false) or a custom one (true). The custom footer has to be provided through <code>[obFooter]</code>.",
           "type": "boolean",
@@ -453,13 +446,6 @@
         {
           "name": "isCustom",
           "text": "Controls <code>ObMasterLayoutConfig.footer.isCustom</code> property.",
-          "type": "boolean",
-          "default": false,
-          "since": "4.0.0"
-        },
-        {
-          "name": "isSmall",
-          "text": "Controls <code>ObMasterLayoutConfig.footer.isSmall</code> property.",
           "type": "boolean",
           "default": false,
           "since": "4.0.0"
@@ -656,7 +642,6 @@
             "ObEMasterLayoutEventValues.OFF_CANVAS",
             "ObEMasterLayoutEventValues.MEDIUM",
             "ObEMasterLayoutEventValues.MAIN_NAVIGATION",
-            "ObEMasterLayoutEventValues.SMALL",
             "ObEMasterLayoutEventValues.SCROLL_TRANSITION",
             "ObEMasterLayoutEventValues.SCROLLABLE",
             "ObEMasterLayoutEventValues.STICKY",

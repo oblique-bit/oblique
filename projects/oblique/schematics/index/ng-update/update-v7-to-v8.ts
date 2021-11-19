@@ -308,12 +308,13 @@ export class UpdateV7toV8 implements ObIMigrations {
 
 	private migrateMasterLayoutProperties(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Replacing master Layout properties: header.isAnimated');
+			infoMigration(_context, 'Replacing master Layout properties: header.isAnimated, footer.isSmall');
 			const toApply = (filePath: string) => {
 				const fileContent = readFile(tree, filePath);
 				let replacement = fileContent;
 				replacement = this.migrateMasterLayoutConfig(replacement);
 				replacement = this.removeProperty(replacement, 'header', 'isAnimated');
+				replacement = this.removeProperty(replacement, 'footer', 'isSmall');
 				if (fileContent !== replacement) {
 					tree.overwrite(filePath, replacement);
 				}
@@ -324,7 +325,12 @@ export class UpdateV7toV8 implements ObIMigrations {
 
 	private migrateMasterLayoutConfig(fileContent: string): string {
 		const service = /(?<service>\w+)\s*:\s*ObMasterLayoutConfig/.exec(fileContent)?.groups?.service;
-		return !service ? fileContent : fileContent.replace(new RegExp(`^\\s*${service}\\.header\\.isAnimated\\s*=\\s*\\w*\\s*;$`, 'm'), '');
+		return !service ? fileContent : fileContent.replace(new RegExp(`^\\s*${service}\.header\\.isAnimated\\s*=\\s*\\w*\\s*;$`, 'm'), '');
+		return !service
+			? fileContent
+			: fileContent
+					.replace(new RegExp(`^\\s*${service}\\.header\\.isAnimated\\s*=\\s*\\w*\\s*;$`, 'm'), '')
+					.replace(new RegExp(`^\\s*${service}\\.footer\\.isSmall\\s*=\\s*\\w*\\s*;$`, 'm'), '');
 	}
 
 	private removeProperty(fileContent: string, service: string, name: string): string {

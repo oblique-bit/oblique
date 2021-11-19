@@ -11,7 +11,6 @@ export class ObMasterLayoutFooterService {
 	private readonly _events = new Subject<ObIMasterLayoutEvent>();
 	private readonly eventsS = this._events.asObservable();
 	private _isCustom = this.config.footer.isCustom;
-	private _isSmall = this.config.footer.isSmall;
 	private _hasScrollTransition = this.config.footer.hasScrollTransitions;
 
 	constructor(private readonly config: ObMasterLayoutConfig) {}
@@ -28,18 +27,6 @@ export class ObMasterLayoutFooterService {
 		this._isCustom = value;
 		this._events.next({
 			name: ObEMasterLayoutEventValues.CUSTOM,
-			value: value
-		});
-	}
-
-	get isSmall(): boolean {
-		return this._isSmall;
-	}
-
-	set isSmall(value: boolean) {
-		this._isSmall = value;
-		this._events.next({
-			name: ObEMasterLayoutEventValues.SMALL,
 			value: value
 		});
 	}

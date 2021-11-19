@@ -13,7 +13,6 @@ export interface ObIMasterLayoutHeader {
 	hasScrollTransitions: boolean;
 }
 export interface ObIMasterLayoutFooter {
-	isSmall: boolean;
 	isCustom: boolean;
 	hasScrollTransitions: boolean;
 }
@@ -76,7 +75,6 @@ export enum ObEMasterLayoutEventValues {
 	OFF_CANVAS,
 	MEDIUM,
 	MAIN_NAVIGATION,
-	SMALL,
 	SCROLL_TRANSITION,
 	SCROLLABLE,
 	STICKY,
