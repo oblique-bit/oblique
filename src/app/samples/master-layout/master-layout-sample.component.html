@@ -2,81 +2,62 @@
 	<h1 translate>i18n.routes.samples.master-layout.title</h1>
 </div>
 <ob-description component="master-layout"></ob-description>
-
-<h4>Dynamic navigation</h4>
-<button type="button" (click)="addItem()">
-	<span class="fa fa-plus"></span>
-	Add a main navigation item
-</button>
-<button type="button" (click)="removeItem()">
-	<span class="fa fa-plus"></span>
-	remove last main navigation item
-</button>
-<h4>Home page route</h4>
-<div>
-	<label class="control-label">Home page route</label>
-	<input class="form-control" type="text" [(ngModel)]="homePageRoute" />
-</div>
-
-<h4>Master Layout</h4>
-<div [(ngModel)]="applicationFixed" ngbRadioGroup class="btn-group btn-group-toggle">
-	<label ngbButtonLabel class="btn-secondary"> <input ngbButton type="radio" [value]="false" /> Continuous </label>
-	<label ngbButtonLabel class="btn-secondary"> <input ngbButton type="radio" [value]="true" /> Fixed </label>
-</div>
-<h4>Content Disposition</h4>
-<div [(ngModel)]="cover" ngbRadioGroup class="btn-group btn-group-toggle">
-	<label ngbButtonLabel class="btn-secondary"> <input ngbButton type="radio" [value]="false" /> Default </label>
-	<label ngbButtonLabel class="btn-secondary active"> <input ngbButton type="radio" [value]="true" /> Cover </label>
-</div>
-<h4>Main layout</h4>
-<div [(ngModel)]="hasLayout" ngbRadioGroup class="btn-group btn-group-toggle">
-	<label ngbButtonLabel class="btn-secondary"> <input ngbButton type="radio" [value]="true" /> Yes </label>
-	<label ngbButtonLabel class="btn-secondary active"> <input ngbButton type="radio" [value]="false" /> No </label>
-</div>
-<h4>Max width layout</h4>
-<div [(ngModel)]="hasMaxWidth" ngbRadioGroup class="btn-group btn-group-toggle">
-	<label ngbButtonLabel class="btn-secondary active"> <input ngbButton type="radio" [value]="true" /> Yes </label>
-	<label ngbButtonLabel class="btn-secondary"> <input ngbButton type="radio" [value]="false" /> No </label>
-</div>
-<h4>Primary Navigation</h4>
-<div [(ngModel)]="navigation" ngbRadioGroup class="btn-group btn-group-toggle">
-	<label ngbButtonLabel class="btn-secondary active"> <input ngbButton type="radio" [value]="true" /> Yes </label>
-	<label ngbButtonLabel class="btn-secondary"> <input ngbButton type="radio" [value]="false" /> No </label>
-</div>
-<h4>Footer</h4>
-<div [(ngModel)]="footerSM" ngbRadioGroup class="btn-group btn-group-toggle">
-	<label ngbButtonLabel class="btn-secondary active"> <input ngbButton type="radio" [value]="false" /> Default </label>
-	<label ngbButtonLabel class="btn-secondary"> <input ngbButton type="radio" [value]="true" /> Small </label>
-</div>
-<h4>Footer transition</h4>
-<div [(ngModel)]="footerTransition" ngbRadioGroup class="btn-group btn-group-toggle">
-	<label ngbButtonLabel class="btn-secondary active"> <input ngbButton type="radio" [value]="true" /> Yes </label>
-	<label ngbButtonLabel class="btn-secondary"> <input ngbButton type="radio" [value]="false" /> No </label>
-</div>
-<h4>Header size</h4>
-<div [(ngModel)]="headerMD" ngbRadioGroup class="btn-group btn-group-toggle">
-	<label ngbButtonLabel class="btn-secondary active"> <input ngbButton type="radio" [value]="false" /> Default </label>
-	<label ngbButtonLabel class="btn-secondary"> <input ngbButton type="radio" [value]="true" /> Medium </label>
-</div>
-<h4>Header sticky</h4>
-<div [(ngModel)]="headerSticky" ngbRadioGroup class="btn-group btn-group-toggle">
-	<label ngbButtonLabel class="btn-secondary active"> <input ngbButton type="radio" [value]="true" /> Yes </label>
-	<label ngbButtonLabel class="btn-secondary"> <input ngbButton type="radio" [value]="false" /> No </label>
-</div>
-<h4>Header animate</h4>
-<div [(ngModel)]="headerAnimate" ngbRadioGroup class="btn-group btn-group-toggle">
-	<label ngbButtonLabel class="btn-secondary active"> <input ngbButton type="radio" [value]="true" /> Yes </label>
-	<label ngbButtonLabel class="btn-secondary"> <input ngbButton type="radio" [value]="false" /> No </label>
-</div>
-<h4>Full width navigation</h4>
-<div [(ngModel)]="navigationFW" ngbRadioGroup class="btn-group btn-group-toggle">
-	<label ngbButtonLabel class="btn-secondary active"> <input ngbButton type="radio" [value]="true" /> Yes </label>
-	<label ngbButtonLabel class="btn-secondary"> <input ngbButton type="radio" [value]="false" /> No </label>
-</div>
-<h4>Scrollable navigation</h4>
-<div [(ngModel)]="navigationScrollMode" ngbRadioGroup class="btn-group btn-group-toggle">
-	<label ngbButtonLabel class="btn-secondary active"> <input ngbButton type="radio" [value]="scrollMode.AUTO" /> Auto </label>
-	<label ngbButtonLabel class="btn-secondary"> <input ngbButton type="radio" [value]="scrollMode.ENABLED" /> Enabled </label>
-	<label ngbButtonLabel class="btn-secondary"> <input ngbButton type="radio" [value]="scrollMode.DISABLED" /> Disabled </label>
+<div class="card-wrapper">
+	<mat-card>
+		<mat-card-title>Layout</mat-card-title>
+		<mat-card-content>
+			<mat-slide-toggle [(ngModel)]="isFixed">is fixed</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="hasCover">has cover</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="hasLayout">has default layout</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="hasMaxWidth">has max width</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="hasMainNavigation">has main navigation</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="hasOffCanvas">has off-canvas</mat-slide-toggle>
+			<mat-form-field>
+				<mat-label>home page route</mat-label>
+				<input matInput type="text" [(ngModel)]="homePageRoute" />
+			</mat-form-field>
+		</mat-card-content>
+	</mat-card>
+	<mat-card>
+		<mat-card-title>Header</mat-card-title>
+		<mat-card-content>
+			<mat-slide-toggle [(ngModel)]="isHeaderSticky">is sticky</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="isAnimated">is animated</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="isHeaderSmall">is small</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="reduceOnScroll">reduce on scroll</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="isHeaderCustom">is custom</mat-slide-toggle>
+		</mat-card-content>
+	</mat-card>
+	<mat-card>
+		<mat-card-title>Footer</mat-card-title>
+		<mat-card-content>
+			<mat-slide-toggle [(ngModel)]="hasLogoOnScroll">has logo on scroll</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="isFooterCustom">is custom</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="isFooterSmall">is small</mat-slide-toggle>
+		</mat-card-content>
+	</mat-card>
+	<mat-card>
+		<mat-card-title>Navigation</mat-card-title>
+		<mat-card-content>
+			<mat-slide-toggle [(ngModel)]="isNavigationFullWidth">is full width</mat-slide-toggle>
+			<div class="form-element">
+				<label class="button-group-label">scroll mode</label>
+				<mat-button-toggle-group [(ngModel)]="navigationScrollMode">
+					<mat-button-toggle [value]="scrollMode.AUTO">Auto</mat-button-toggle>
+					<mat-button-toggle [value]="scrollMode.ENABLED">Enabled</mat-button-toggle>
+					<mat-button-toggle [value]="scrollMode.DISABLED">Disabled</mat-button-toggle>
+				</mat-button-toggle-group>
+			</div>
+			<button mat-button obButton (click)="addItem()">
+				<mat-icon obIcon svgIcon="plus"></mat-icon>
+				Add a main navigation item
+			</button>
+			<button mat-button obButton (click)="removeItem()"><mat-icon obIcon svgIcon="minus"></mat-icon> Remove the last navigation item</button>
+			<mat-form-field>
+				<mat-label>home page route</mat-label>
+				<input matInput type="text" [(ngModel)]="homePageRoute" />
+			</mat-form-field>
+		</mat-card-content>
+	</mat-card>
 </div>
 <ob-api component="master-layout"></ob-api>
