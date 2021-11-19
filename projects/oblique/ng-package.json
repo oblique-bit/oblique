@@ -10,5 +10,5 @@
       "@popperjs/core": "core"
     }
   },
-  "allowedNonPeerDependencies": ["@schematics/angular", "ansi-colors", "ts-morph"]
+  "allowedNonPeerDependencies": ["@schematics/angular", "ansi-colors"]
 }
