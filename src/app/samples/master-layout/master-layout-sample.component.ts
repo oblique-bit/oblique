@@ -33,14 +33,6 @@ export class ObMasterLayoutSampleComponent {
 		this.masterLayout.footer.hasScrollTransition = value;
 	}
 
-	get isFooterSmall() {
-		return this.masterLayout.footer.isSmall;
-	}
-
-	set isFooterSmall(value: boolean) {
-		this.masterLayout.footer.isSmall = value;
-	}
-
 	// Header
 	get isHeaderCustom() {
 		return this.masterLayout.header.isCustom;
