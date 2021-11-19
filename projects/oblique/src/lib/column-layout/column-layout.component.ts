@@ -12,7 +12,7 @@ import {
 	ViewChildren,
 	ViewEncapsulation
 } from '@angular/core';
-import {delay, map, startWith} from 'rxjs/operators';
+import {delay, map, mergeMap, startWith} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {ObColumnPanelDirective} from './column-panel.directive';
 import {ObScrollingEvents} from '../scrolling/scrolling-events';
@@ -65,7 +65,7 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 	}
 
 	ngAfterViewInit() {
-		this.scroll.scrolled.subscribe(() => this.center());
+		this.toggles.changes.pipe(mergeMap(() => this.scroll.scrolled)).subscribe(() => this.center());
 		this.toggleLeftIcon$ = this.getToggleDirection(this.columnLeft, 'left', 'right');
 		this.toggleRightIcon$ = this.getToggleDirection(this.columnRight, 'right', 'left');
 	}
