@@ -50,7 +50,6 @@ export class ObMasterLayoutConfig {
 	 * Controls the application's header
 	 */
 	header: ObIMasterLayoutHeader = {
-		isAnimated: true,
 		isSticky: true,
 		isMedium: false,
 		isCustom: false,

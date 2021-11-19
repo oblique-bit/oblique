@@ -6,7 +6,6 @@ import {ObIMasterLayoutEvent} from '../master-layout.model';
 export class ObMockMasterLayoutHeaderService {
 	isCustom = true;
 	isMedium = true;
-	isAnimated = true;
 	isSticky = true;
 	hasScrollTransition = true;
 

@@ -42,7 +42,6 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	isCustom = this.masterLayout.header.isCustom;
 	banner: ObIBanner;
 	@Input() navigation: ObINavigationLink[];
-	@HostBinding('class.ob-master-layout-header-animate') isAnimated = this.masterLayout.header.isAnimated;
 	@HostBinding('class.ob-master-layout-header-sticky') isSticky = this.masterLayout.header.isSticky;
 	@HostBinding('class.ob-master-layout-header-md') isMedium = this.masterLayout.header.isMedium;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<any>;
@@ -123,12 +122,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	}
 
 	private propertyChanges() {
-		const events = [
-			ObEMasterLayoutEventValues.ANIMATE,
-			ObEMasterLayoutEventValues.CUSTOM,
-			ObEMasterLayoutEventValues.MEDIUM,
-			ObEMasterLayoutEventValues.STICKY
-		];
+		const events = [ObEMasterLayoutEventValues.CUSTOM, ObEMasterLayoutEventValues.MEDIUM, ObEMasterLayoutEventValues.STICKY];
 		this.masterLayout.header.configEvents
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
@@ -136,9 +130,6 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 			)
 			.subscribe(event => {
 				switch (event.name) {
-					case ObEMasterLayoutEventValues.ANIMATE:
-						this.isAnimated = event.value;
-						break;
 					case ObEMasterLayoutEventValues.CUSTOM:
 						this.isCustom = event.value;
 						break;

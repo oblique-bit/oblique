@@ -16,7 +16,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 				this.removeLayoutCollapse(),
 				this.removeDlHorizontalVariants(),
 				this.removeCompatCss(),
-				this.removeThemeService()
+				this.removeThemeService(),
+				this.migrateMasterLayoutProperties()
 			])(tree, _context);
 		};
 	}
@@ -272,7 +273,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 					tree.overwrite(
 						filePath,
 						fileContent
-							.replace(/(?:THEMES|FONTS),?(?!\.)\s*/g, '')	// remove imports of THEMES and FONTS
+							.replace(/(?:THEMES|FONTS),?(?!\.)\s*/g, '') // remove imports of THEMES and FONTS
 							.replace(/[\w ]*\s*:\s*ObThemeService,?\s*/, '') // remove service injection in constructor
 							.replace(/ObThemeService,?\s*/, '') // remove service import
 							.replace(new RegExp(`(?:this\.)?${service}\\.set(?:Theme|Font)\\(.*\\);\s*`, 'g'), '') // remove call to setTheme / setFont
@@ -303,5 +304,43 @@ export class UpdateV7toV8 implements ObIMigrations {
 			default:
 				return undefined;
 		}
+	}
+
+	private migrateMasterLayoutProperties(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Replacing master Layout properties: header.isAnimated');
+			const toApply = (filePath: string) => {
+				const fileContent = readFile(tree, filePath);
+				let replacement = fileContent;
+				replacement = this.migrateMasterLayoutConfig(replacement);
+				replacement = this.removeProperty(replacement, 'header', 'isAnimated');
+				if (fileContent !== replacement) {
+					tree.overwrite(filePath, replacement);
+				}
+			};
+			return applyInTree(tree, toApply, '*.ts');
+		};
+	}
+
+	private migrateMasterLayoutConfig(fileContent: string): string {
+		const service = /(?<service>\w+)\s*:\s*ObMasterLayoutConfig/.exec(fileContent)?.groups?.service;
+		return !service ? fileContent : fileContent.replace(new RegExp(`^\\s*${service}\\.header\\.isAnimated\\s*=\\s*\\w*\\s*;$`, 'm'), '');
+	}
+
+	private removeProperty(fileContent: string, service: string, name: string): string {
+		const serviceName = this.getServiceName(fileContent, service);
+		return serviceName
+			? fileContent.replace(new RegExp(`^\\s*(?:return\\s*)?(?:this\\.)?${serviceName}\\.${name}(?:\\s*=\\s*(\\w*))?;$`, 'gm'), '')
+			: fileContent;
+	}
+
+	private getServiceName(fileContent: string, serviceName: string): string | undefined {
+		const serviceClass = serviceName.charAt(0).toUpperCase() + serviceName.slice(1);
+		let service = new RegExp(`(?<service>\\w+)\\s*:\\s*ObMasterLayout${serviceClass}Service`).exec(fileContent)?.groups?.service;
+		if (!service) {
+			service = /(?<service>\w+)\s*:\s*ObMasterLayoutService/.exec(fileContent)?.groups?.service;
+			service = service ? `${service}\.${serviceName}` : undefined;
+		}
+		return service;
 	}
 }

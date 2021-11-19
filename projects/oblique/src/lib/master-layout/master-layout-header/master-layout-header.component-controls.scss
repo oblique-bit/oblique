@@ -117,10 +117,6 @@
 	.ob-control-item {
 		@include ob-media-breakpoint-up(md) {
 			justify-content: flex-end;
-
-			@at-root :not(.ob-master-layout-fixed) #{selector-append(".ob-master-layout-header-animate", &)} {
-				transition: margin-top $ob-duration-default ease-in-out;
-			}
 		}
 	}
 

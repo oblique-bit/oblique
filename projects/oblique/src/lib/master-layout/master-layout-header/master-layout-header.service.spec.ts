@@ -109,46 +109,6 @@ describe('MasterLayoutHeaderService', () => {
 		});
 	});
 
-	describe('test isAnimated', () => {
-		it('should set isAnimated to true', () => {
-			const spy = jest.spyOn(masterLayoutHeaderService, 'isAnimated', 'set');
-			const newValue = true;
-			masterLayoutHeaderService.isAnimated = newValue;
-			expect(spy).toHaveBeenCalled();
-			expect(masterLayoutHeaderService.isAnimated).toBeTruthy();
-			spy.mockRestore();
-		});
-
-		it('should set isAnimated to false', () => {
-			const spy = jest.spyOn(masterLayoutHeaderService, 'isAnimated', 'set');
-			const newValue = false;
-			masterLayoutHeaderService.isAnimated = newValue;
-			expect(spy).toHaveBeenCalled();
-			expect(masterLayoutHeaderService.isAnimated).toBeFalsy();
-			spy.mockRestore();
-		});
-
-		it('should get isAnimated  when true', () => {
-			const spy = jest.spyOn(masterLayoutHeaderService, 'isAnimated', 'get');
-			const newValue = true;
-			masterLayoutHeaderService.isAnimated = newValue;
-			const mockResult = masterLayoutHeaderService.isAnimated;
-			expect(spy).toHaveBeenCalled();
-			expect(mockResult).toEqual(newValue);
-			spy.mockRestore();
-		});
-
-		it('should get isAnimated  when false', () => {
-			const spy = jest.spyOn(masterLayoutHeaderService, 'isAnimated', 'get');
-			const newValue = false;
-			masterLayoutHeaderService.isAnimated = newValue;
-			const mockResult = masterLayoutHeaderService.isAnimated;
-			expect(spy).toHaveBeenCalled();
-			expect(mockResult).toEqual(newValue);
-			spy.mockRestore();
-		});
-	});
-
 	describe('test isSticky', () => {
 		it('should set isSticky to true', () => {
 			const spy = jest.spyOn(masterLayoutHeaderService, 'isSticky', 'set');

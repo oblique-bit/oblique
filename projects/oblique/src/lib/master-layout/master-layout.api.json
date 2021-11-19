@@ -8,7 +8,7 @@
       "type": "component",
       "usage": "This component takes care of the structure of the application and should be used in <code>app.component.html</code>",
       "since": "2.0.0",
-      "updated": "6.0.0",
+      "updated": "8.0.0",
       "inputs": [
         {
           "name": "jumplinks",
@@ -195,13 +195,6 @@
           "type": "boolean",
           "default": false,
           "since": "8.0.0"
-        },
-        {
-          "name": "header.isAnimated",
-          "text": "Add animations to header size changes (true) or not (false).",
-          "type": "boolean",
-          "default": true,
-          "since": "4.0.0"
         },
         {
           "name": "header.isSticky",
@@ -407,6 +400,7 @@
       "usage": "A service to configure the master layout header. The changes are live.",
       "type": "service",
       "since": "4.0.0",
+      "updated": "8.0.0",
       "variables": [
         {
           "name": "configEvents",
@@ -426,13 +420,6 @@
           "text": "Controls <code>ObMasterLayoutConfig.header.isMedium</code> property.",
           "type": "boolean",
           "default": false,
-          "since": "4.0.0"
-        },
-        {
-          "name": "isAnimated",
-          "text": "Controls <code>ObMasterLayoutConfig.header.isAnimated</code> property.",
-          "type": "boolean",
-          "default": true,
           "since": "4.0.0"
         },
         {
@@ -661,7 +648,6 @@
           "text": "Name of the event",
           "type": "ObEMasterLayoutEventValues",
           "values":[
-            "ObEMasterLayoutEventValues.ANIMATE",
             "ObEMasterLayoutEventValues.COLLAPSE",
             "ObEMasterLayoutEventValues.COVER",
             "ObEMasterLayoutEventValues.CUSTOM",
@@ -677,7 +663,8 @@
             "ObEMasterLayoutEventValues.LAYOUT",
             "ObEMasterLayoutEventValues.MAX_WIDTH"
           ],
-          "since": "4.0.0"
+          "since": "4.0.0",
+          "updated": "8.0.0"
         },
         {
           "name": "value",

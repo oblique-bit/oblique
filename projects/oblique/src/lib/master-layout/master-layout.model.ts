@@ -7,7 +7,6 @@ export enum ObEScrollMode {
 }
 
 export interface ObIMasterLayoutHeader {
-	isAnimated: boolean;
 	isSticky: boolean;
 	isMedium: boolean;
 	isCustom: boolean;
@@ -69,7 +68,6 @@ export interface ObIMasterLayoutEvent {
 }
 
 export enum ObEMasterLayoutEventValues {
-	ANIMATE,
 	COLLAPSE,
 	COVER,
 	CUSTOM,

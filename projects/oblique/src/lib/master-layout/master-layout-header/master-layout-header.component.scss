@@ -43,11 +43,6 @@
 			height: $ob-header-height-md;
 		}
 
-		&.ob-master-layout-header-animate {
-			padding: 0;
-			margin: 0;
-		}
-
 		.ob-master-layout.ob-no-navigation & {
 			height: $ob-header-height-no-navigation;
 
@@ -201,10 +196,8 @@
 		}
 	}
 
-	:not(.ob-master-layout-fixed) &.ob-master-layout-header-animate {
-		.ob-master-layout-logo, .ob-master-layout-brand-app-title {
-			transition: all $ob-duration-default ease-in-out;
-		}
+	:not(.ob-master-layout-fixed) .ob-master-layout-logo, .ob-master-layout-brand-app-title {
+		transition: all $ob-duration-default ease-in-out;
 	}
 
 	.ob-header-toggle {

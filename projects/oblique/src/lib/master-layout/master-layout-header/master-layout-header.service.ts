@@ -9,7 +9,6 @@ export class ObMasterLayoutHeaderService {
 	private readonly eventsS = this._events.asObservable();
 	private _isCustom = this.config.header.isCustom;
 	private _isMedium = this.config.header.isMedium;
-	private _isAnimated = this.config.header.isAnimated;
 	private _isSticky = this.config.header.isSticky;
 	private _hasScrollTransition = this.config.header.hasScrollTransitions;
 
@@ -39,18 +38,6 @@ export class ObMasterLayoutHeaderService {
 		this._isMedium = value;
 		this._events.next({
 			name: ObEMasterLayoutEventValues.MEDIUM,
-			value: value
-		});
-	}
-
-	get isAnimated(): boolean {
-		return this._isAnimated;
-	}
-
-	set isAnimated(value: boolean) {
-		this._isAnimated = value;
-		this._events.next({
-			name: ObEMasterLayoutEventValues.ANIMATE,
 			value: value
 		});
 	}

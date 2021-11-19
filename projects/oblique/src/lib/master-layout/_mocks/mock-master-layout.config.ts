@@ -19,7 +19,6 @@ export class ObMockMasterLayoutConfig {
 		hasLayout: true
 	};
 	header = {
-		isAnimated: true,
 		isSticky: true,
 		isMedium: false,
 		isCustom: false,
