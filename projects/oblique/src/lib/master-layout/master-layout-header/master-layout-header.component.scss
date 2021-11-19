@@ -3,79 +3,19 @@
 @import "../../../styles/scss/core/mixins/layout";
 
 .ob-master-layout-header {
-	position: relative;
+	display: flex;
+	flex-direction: column;
 	background-color: $ob-white;
-	background-clip: content-box;
 	z-index: $ob-z-index-layout;
-	transition: height $ob-duration-default ease-in-out;
-
-	.ob-master-layout:not(.ob-master-layout-fixed) &.ob-master-layout-header-sticky {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-	}
-
-	@include ob-media-breakpoint-down(md) {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		overflow: hidden;
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-		height: $ob-header-height-collapsed;
-
-		.ob-header-expanded & {
-			height: 100%;
-		}
-
-		.ob-header-expanded.ob-no-navigation & {
-			height: $ob-header-height-md;
-		}
-	}
-
-	@include ob-media-breakpoint-up(md) {
-		height: $ob-header-height;
-
-		&.ob-master-layout-header-md {
-			height: $ob-header-height-md;
-		}
-
-		.ob-master-layout.ob-no-navigation & {
-			height: $ob-header-height-no-navigation;
-
-			&.ob-master-layout-header-md {
-				height: $ob-header-height-no-navigation - ($ob-header-height - $ob-header-height-md);
-			}
-		}
-
-		.ob-master-layout-fixed & {
-			flex-shrink: 0;
-		}
-	}
 
 	.ob-header {
 		position: relative;
-		display: block;
 		width: 100%;
-		padding: 0;
 		background-color: inherit;
 		border-bottom: $ob-line-width solid $ob-accent;
 
 		@include ob-media-breakpoint-up(md) {
 			display: flex;
-			flex-direction: row;
-		}
-
-		@include ob-media-breakpoint-down(md) {
-			height: $ob-header-height-collapsed;
-			transition: height $ob-duration-default ease-in-out;
-
-			.ob-header-expanded & {
-				height: $ob-header-height-md;
-			}
 		}
 
 		aside {
@@ -84,6 +24,7 @@
 			font-size: $ob-font-size-bigger;
 			line-height: 1.5;
 			text-align: center;
+			word-break: normal;
 			transform: rotate(-45deg);
 			transform-origin: center;
 
@@ -123,14 +64,14 @@
 	}
 
 	.ob-master-layout-header-title {
-        position: relative;
+		position: relative;
 		display: flex;
 		flex: 1;
 		flex-direction: row;
 		flex-wrap: nowrap;
 		margin-right: auto; // Ensure controls get pushed to the right
-        min-width: 0; // Important, for text ellipsis of app title (cf. https://css-tricks.com/flexbox-truncated-text/)!
-        overflow: hidden;
+		min-width: 0; // Important, for text ellipsis of app title (cf. https://css-tricks.com/flexbox-truncated-text/)!
+		overflow: hidden;
 	}
 
 	.ob-master-layout-brand {
@@ -140,7 +81,7 @@
 		align-items: center;
 		min-width: 0; // Important, for text ellipsis of app title (cf. https://css-tricks.com/flexbox-truncated-text/)!
 		padding: 8px $ob-spacing-default;
-        transition: padding $ob-duration-default ease-in-out;
+		transition: padding $ob-duration-default ease-in-out;
 
 		@include ob-media-breakpoint-up(md) {
 			@at-root #{selector-append(":not(.ob-master-layout-header-md)", &)} {
@@ -159,7 +100,6 @@
 			@at-root #{selector-append(":not(.ob-master-layout-header-md)", &)} {
 				width: $ob-logo-width;
 				height: $ob-logo-height;
-				margin-top: 0;
 			}
 		}
 
@@ -176,54 +116,23 @@
 		font-weight: 300;
 		padding-left: $ob-spacing-default;
 		border-left: 1px solid $ob-gray-lighter;
-		max-height: $ob-logo-height-collapsed;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-
-		@include ob-media-breakpoint-up(md) {
-			@at-root #{selector-append(":not(.ob-master-layout-header-md)", &)} {
-				font-size: $ob-font-size-xl;
-				max-height: $ob-logo-height;
-			}
-		}
 	}
 
 	.ob-master-layout-brand-link {
-		.ob-master-layout & {
-			color: $ob-default;
-			text-decoration: none;
-		}
+		color: $ob-default;
+		text-decoration: none;
 	}
 
-	:not(.ob-master-layout-fixed) .ob-master-layout-logo, .ob-master-layout-brand-app-title {
-		transition: all $ob-duration-default ease-in-out;
+	.ob-master-layout-logo {
+		transition: width $ob-duration-default ease-in-out, height $ob-duration-default ease-in-out;
 	}
 
 	.ob-header-toggle {
-		border: none;
-
-		@include ob-media-breakpoint-down(md) {
-			flex-wrap: nowrap;
-		}
-
 		@include ob-media-breakpoint-up(md) {
 			display: none !important;
-		}
-	}
-
-	&:not(.ob-master-layout-fixed):not(.ob-master-layout-header-sticky) {
-		position: static;
-
-		&::before {
-			content: '';
-			display: block;
-			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			height: $ob-line-width;
-			background-color: $ob-accent;
 		}
 	}
 }

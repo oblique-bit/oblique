@@ -68,7 +68,7 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,
 		private readonly config: ObMasterLayoutConfig,
-		readonly offCanvasService: ObOffCanvasService,
+		private readonly offCanvasService: ObOffCanvasService,
 		private readonly router: Router,
 		private readonly scrollEvents: ObScrollingEvents,
 		private readonly globalEventsService: ObGlobalEventsService,

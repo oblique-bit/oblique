@@ -5,18 +5,18 @@
 @import "../../../styles/scss/core/mixins/shadow";
 
 .ob-master-layout-navigation {
-	display: block;
+	flex-grow: 1;
 
 	@include ob-media-breakpoint-down(md) {
-		flex: 2; // Variable fluid height
-		visibility: hidden; // Avoids keyboard navigation when collapsed
-		transition: visibility $ob-duration-default; // Ensure element keeps visible when header is closing
-		position: relative;
-		overflow: hidden;
-		background-color: $ob-white;
+		display: none;
 
 		.ob-header-expanded & {
-			visibility: visible; // Restores keyboard navigation
+			display: block;
+		}
+
+		> nav {
+			height: 100%;
+			overflow: hidden;
 		}
 	}
 
@@ -25,6 +25,7 @@
 	}
 
 	.ob-main-nav {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		flex-wrap: nowrap;
@@ -39,7 +40,6 @@
 			@include ob-media-breakpoint-up(md) {
 				flex-direction: row;
 				padding-left: $ob-spacing-default;
-				height: $ob-navigation-height;
 			}
 		}
 
@@ -133,8 +133,8 @@
 
 		.ob-sub-menu {
 			visibility: hidden; // Do not use `display: none` to avoid reflow & transition issues!
-			position: fixed;
-			top: $ob-header-height-md;
+			position: absolute;
+			top: 0;
 			bottom: 0;
 			left: 0;
 			right: 0;

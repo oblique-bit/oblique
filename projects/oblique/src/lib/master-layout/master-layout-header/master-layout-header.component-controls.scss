@@ -15,8 +15,6 @@
 	}
 
 	.ob-master-layout-header-toggle {
-		position: relative;
-
 		.first-line,
 		.second-line,
 		.third-line {
@@ -67,14 +65,17 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		flex-wrap: wrap;
 		white-space: nowrap;
 
 		@include ob-media-breakpoint-down(md) {
-			visibility: hidden; // Avoids keyboard navigation when collapsed
-			transition: visibility $ob-duration-default; // Ensure element keeps visible when header is closing
+			padding-bottom: $ob-spacing-sm;
+			transition: padding-bottom $ob-duration-default;
 
-			.ob-header-expanded & {
-				visibility: visible; // Restores keyboard navigation
+			@at-root .ob-master-layout:not(.ob-header-expanded) & {
+				height: 0;
+				overflow: hidden;
+				padding-bottom: 0;
 			}
 		}
 	}

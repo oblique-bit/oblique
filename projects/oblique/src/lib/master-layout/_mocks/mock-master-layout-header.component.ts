@@ -13,7 +13,6 @@ export class ObMockMasterLayoutHeaderComponent {
 	isCustom = true;
 	disabledLang = true;
 	@Input() navigation: ObINavigationLink[];
-	isSticky = true;
 	isMedium = true;
 	readonly templates: QueryList<TemplateRef<any>>;
 	readonly headerControl: QueryList<ElementRef>;

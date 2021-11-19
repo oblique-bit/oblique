@@ -42,7 +42,6 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	isCustom = this.masterLayout.header.isCustom;
 	banner: ObIBanner;
 	@Input() navigation: ObINavigationLink[];
-	@HostBinding('class.ob-master-layout-header-sticky') isSticky = this.masterLayout.header.isSticky;
 	@HostBinding('class.ob-master-layout-header-md') isMedium = this.masterLayout.header.isMedium;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<any>;
 	@ContentChildren('obHeaderControl') readonly templates: QueryList<TemplateRef<any>>;
@@ -122,7 +121,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	}
 
 	private propertyChanges() {
-		const events = [ObEMasterLayoutEventValues.HEADER_IS_CUSTOM, ObEMasterLayoutEventValues.MEDIUM, ObEMasterLayoutEventValues.STICKY];
+		const events = [ObEMasterLayoutEventValues.HEADER_IS_CUSTOM, ObEMasterLayoutEventValues.MEDIUM];
 		this.masterLayout.header.configEvents
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
@@ -135,9 +134,6 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 						break;
 					case ObEMasterLayoutEventValues.MEDIUM:
 						this.isMedium = event.value;
-						break;
-					case ObEMasterLayoutEventValues.STICKY:
-						this.isSticky = event.value;
 						break;
 				}
 			});

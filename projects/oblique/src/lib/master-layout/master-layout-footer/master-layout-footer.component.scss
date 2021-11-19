@@ -2,39 +2,26 @@
 @import "../../../styles/scss/core/mixins/layout";
 
 .ob-master-layout-footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: $ob-footer-height-collapsed;
+	position: relative;
 	display: flex;
 	flex-direction: column;
+	flex-wrap: wrap;
 	color: $ob-gray-darker;
 	font-size: $ob-font-size-xs;
 	background-color: $ob-gray-extra-light;
 	border-top: 1px solid $ob-gray-light;
 	padding: $ob-spacing-xs $ob-spacing-default;
-	overflow: hidden;
 
 	@include ob-media-breakpoint-up(md) {
 		flex-direction: row;
-		height: $ob-footer-height-md;
-
-		.ob-master-layout-fixed & {
-			position: relative;
-		}
 	}
 
 	.ob-footer-item {
 		padding: $ob-spacing-xs 0;
-		white-space: nowrap;
 		@include ob-media-breakpoint-down(md) {
 			&:not(:last-child) {
 				border-bottom: 1px solid $ob-gray-light;
 			}
-		}
-
-		@include ob-media-breakpoint-up(md) {
-			max-height: 100%;
 		}
 
 		p {
@@ -74,10 +61,6 @@
 			margin-right: $ob-spacing-default;
 			flex: 1; // Variable width.
 			overflow: hidden;
-		}
-
-		.ob-master-layout-scrolling {
-			height: $ob-footer-height;
 		}
 	}
 
