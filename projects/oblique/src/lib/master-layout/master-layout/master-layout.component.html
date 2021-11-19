@@ -48,24 +48,9 @@
 	</ul>
 </nav>
 <div class="ob-viewport" [class.ob-off-canvas-main]="hasOffCanvas">
+	<ng-container *ngIf="isHeaderSticky" [ngTemplateOutlet]="header"></ng-container>
 	<div class="ob-master-layout-wrapper">
-		<ob-master-layout-header [navigation]="navigation">
-			<ng-content select="[obHeader]" obHeader></ng-content>
-			<ng-content select="[obHeaderAction]" obHeaderAction></ng-content>
-			<ng-content select="[obLocales]" obLocales></ng-content>
-			<ng-content select="[obHeaderTitle]" obHeaderTitle></ng-content>
-			<ng-content select="[obNavigation]" obNavigation></ng-content>
-			<ng-content select="[obHeaderCustomControl]" obHeaderCustomControl></ng-content>
-			<ng-template #obHeaderControl *ngFor="let template of headerControlTemplates">
-				<ng-container [ngTemplateOutlet]="template"></ng-container>
-			</ng-template>
-			<ng-template #obHeaderMobileControl *ngFor="let template of headerMobileControlTemplates">
-				<ng-container [ngTemplateOutlet]="template"></ng-container>
-			</ng-template>
-			<ng-template #obHeaderLogo>
-				<ng-container [ngTemplateOutlet]="obLogo || logo"></ng-container>
-			</ng-template>
-		</ob-master-layout-header>
+		<ng-container *ngIf="!isHeaderSticky" [ngTemplateOutlet]="header"></ng-container>
 		<main id="content" class="ob-master-layout-content" tabindex="-1">
 			<ob-notification channel="oblique"></ob-notification>
 			<div class="ob-cover-layout" *ngIf="hasCover; else normalLayout">
@@ -87,6 +72,26 @@
 			</ng-template>
 		</ob-master-layout-footer>
 	</div>
+
+	<ng-template #header>
+		<ob-master-layout-header [navigation]="navigation">
+			<ng-content select="[obHeader]" obHeader></ng-content>
+			<ng-content select="[obHeaderAction]" obHeaderAction></ng-content>
+			<ng-content select="[obLocales]" obLocales></ng-content>
+			<ng-content select="[obHeaderTitle]" obHeaderTitle></ng-content>
+			<ng-content select="[obNavigation]" obNavigation></ng-content>
+			<ng-content select="[obHeaderCustomControl]" obHeaderCustomControl></ng-content>
+			<ng-template #obHeaderControl *ngFor="let template of headerControlTemplates">
+				<ng-container [ngTemplateOutlet]="template"></ng-container>
+			</ng-template>
+			<ng-template #obHeaderMobileControl *ngFor="let template of headerMobileControlTemplates">
+				<ng-container [ngTemplateOutlet]="template"></ng-container>
+			</ng-template>
+			<ng-template #obHeaderLogo>
+				<ng-container [ngTemplateOutlet]="obLogo || logo"></ng-container>
+			</ng-template>
+		</ob-master-layout-header>
+	</ng-template>
 </div>
 <ob-top-control></ob-top-control>
 <div class="ob-off-canvas-sidebar" *ngIf="hasOffCanvas">

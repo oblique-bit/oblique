@@ -26,7 +26,7 @@ import {appVersion} from '../../version';
 import {WINDOW} from '../../utilities';
 import {ObEMasterLayoutEventValues, ObIDynamicJumpLink, ObINavigationLink} from '../master-layout.model';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
-import {Subject} from 'rxjs';
+import {merge, Subject} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {ObUseObliqueIcons} from '../../icon/icon.model';
 
@@ -58,6 +58,7 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 	@HostBinding('class.ob-off-canvas') hasOffCanvas = this.masterLayout.layout.hasOffCanvas;
 	@HostBinding('class.ob-master-layout-scrolling') isScrolling = false;
 	@HostBinding('class.ob-outline') outline = true;
+	isHeaderSticky = this.masterLayout.header.isSticky;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<any>;
 	@ContentChildren('obHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('obHeaderMobileControl') readonly headerMobileControlTemplates: QueryList<TemplateRef<any>>;
@@ -119,31 +120,36 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 	}
 
 	private propertyChanges() {
-		this.masterLayout.layout.configEvents.pipe(takeUntil(this.unsubscribe)).subscribe(event => {
-			switch (event.name) {
-				case ObEMasterLayoutEventValues.MAIN_NAVIGATION:
-					this.noNavigation = !event.value;
-					break;
-				case ObEMasterLayoutEventValues.FIXED:
-					this.isFixed = event.value;
-					break;
-				case ObEMasterLayoutEventValues.COVER:
-					this.hasCover = event.value;
-					break;
-				case ObEMasterLayoutEventValues.OFF_CANVAS:
-					this.hasOffCanvas = event.value;
-					break;
-				case ObEMasterLayoutEventValues.COLLAPSE:
-					this.isMenuCollapsed = event.value;
-					break;
-				case ObEMasterLayoutEventValues.LAYOUT:
-					this.hasLayout = event.value;
-					break;
-				case ObEMasterLayoutEventValues.MAX_WIDTH:
-					this.hasMaxWidth = event.value;
-					break;
-			}
-		});
+		merge(this.masterLayout.layout.configEvents, this.masterLayout.header.configEvents)
+			.pipe(takeUntil(this.unsubscribe))
+			.subscribe(event => {
+				switch (event.name) {
+					case ObEMasterLayoutEventValues.MAIN_NAVIGATION:
+						this.noNavigation = !event.value;
+						break;
+					case ObEMasterLayoutEventValues.FIXED:
+						this.isFixed = event.value;
+						break;
+					case ObEMasterLayoutEventValues.COVER:
+						this.hasCover = event.value;
+						break;
+					case ObEMasterLayoutEventValues.OFF_CANVAS:
+						this.hasOffCanvas = event.value;
+						break;
+					case ObEMasterLayoutEventValues.COLLAPSE:
+						this.isMenuCollapsed = event.value;
+						break;
+					case ObEMasterLayoutEventValues.LAYOUT:
+						this.hasLayout = event.value;
+						break;
+					case ObEMasterLayoutEventValues.MAX_WIDTH:
+						this.hasMaxWidth = event.value;
+						break;
+					case ObEMasterLayoutEventValues.HEADER_IS_STICKY:
+						this.isHeaderSticky = event.value;
+						break;
+				}
+			});
 	}
 
 	private focusFragment() {
