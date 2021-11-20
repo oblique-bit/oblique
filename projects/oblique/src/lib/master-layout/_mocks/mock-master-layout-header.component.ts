@@ -1,6 +1,7 @@
 import {Component, ElementRef, Input, QueryList, TemplateRef} from '@angular/core';
 import {ObINavigationLink} from '../master-layout.module';
 import {ObILocaleObject} from '../master-layout.model';
+import {of} from 'rxjs';
 
 @Component({
 	selector: 'ob-master-layout-header',
@@ -8,10 +9,10 @@ import {ObILocaleObject} from '../master-layout.model';
 	template: ''
 })
 export class ObMockMasterLayoutHeaderComponent {
-	home = '';
-	locales: ObILocaleObject[];
+	home$ = of('');
+	languages: ObILocaleObject[];
 	isCustom = true;
-	disabledLang = true;
+	banner = {};
 	@Input() navigation: ObINavigationLink[];
 	isMedium = true;
 	readonly templates: QueryList<TemplateRef<any>>;
