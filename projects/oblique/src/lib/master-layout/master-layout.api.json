@@ -265,11 +265,11 @@
           "since": "4.0.0"
         },
         {
-          "name": "footer.hasScrollTransitions",
-          "text": "Resize the footer to large when the page is scrolled with continuous layout (true) or keep the footer to its defined size (false) ",
+          "name": "footer.hasLogoOnScroll",
+          "text": "Show the Confederation's logo in the footer when the page is scrolled.",
           "type": "boolean",
           "default": true,
-          "since": "4.0.0"
+          "since": "8.0.0"
         }
       ]
     },
@@ -445,11 +445,11 @@
           "since": "4.0.0"
         },
         {
-          "name": "hasScrollTransition",
-          "text": "Controls <code>ObMasterLayoutConfig.footer.hasScrollTransition</code> property.",
+          "name": "hasLogoOnScroll",
+          "text": "Controls <code>ObMasterLayoutConfig.footer.hasLogoOnScroll</code> property.",
           "type": "boolean",
           "default": true,
-          "since": "4.0.0"
+          "since": "8.0.0"
         }
       ]
     },
@@ -628,6 +628,7 @@
           "text": "Name of the event",
           "type": "ObEMasterLayoutEventValues",
           "values":[
+            "ObEMasterLayoutEventValues.FOOTER_HAS_LOGO_ON_SCROLL",
             "ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM",
             "ObEMasterLayoutEventValues.FOOTER_IS_STICKY",
             "ObEMasterLayoutEventValues.HEADER_IS_CUSTOM",

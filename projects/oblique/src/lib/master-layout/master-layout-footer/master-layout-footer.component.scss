@@ -40,26 +40,30 @@
 			float: left;
 			width: $ob-logo-width;
 			height: $ob-logo-height;
+			transition: width $ob-duration-fast, height $ob-duration-fast;
 		}
 	}
 
 	@include ob-media-breakpoint-up(md) {
 		.ob-footer-item-logo {
 			margin-right: $ob-spacing-default;
-
-			.ob-master-layout:not(.ob-master-layout-scrolling) & {
-				display: none;
-			}
 		}
 
-		.ob-master-layout.ob-master-layout-scrolling &.ob-master-layout-footer-sm .ob-footer-item-logo {
-			display: none;
+		.ob-master-layout:not(.ob-master-layout-scrolling) &,
+		&:not(.ob-logo-on-scroll) {
+			.ob-footer-item-logo {
+				margin-right: 0;
+
+				img {
+					height: 0;
+					width: 0;
+				}
+			}
 		}
 
 		.ob-footer-item-info {
 			margin-right: $ob-spacing-default;
 			flex: 1; // Variable width.
-			overflow: hidden;
 		}
 	}
 

@@ -12,7 +12,7 @@ export class ObMasterLayoutFooterService {
 	private readonly eventsS = this._events.asObservable();
 	private _isCustom = this.config.footer.isCustom;
 	private _isSticky = this.config.footer.isSticky;
-	private _hasScrollTransition = this.config.footer.hasScrollTransitions;
+	private _hasLogoOnScroll = this.config.footer.hasLogoOnScroll;
 
 	constructor(private readonly config: ObMasterLayoutConfig) {}
 
@@ -44,14 +44,14 @@ export class ObMasterLayoutFooterService {
 		});
 	}
 
-	get hasScrollTransition(): boolean {
-		return this._hasScrollTransition;
+	get hasLogoOnScroll(): boolean {
+		return this._hasLogoOnScroll;
 	}
 
-	set hasScrollTransition(value: boolean) {
-		this._hasScrollTransition = value;
+	set hasLogoOnScroll(value: boolean) {
+		this._hasLogoOnScroll = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.SCROLL_TRANSITION,
+			name: ObEMasterLayoutEventValues.FOOTER_HAS_LOGO_ON_SCROLL,
 			value: value
 		});
 	}

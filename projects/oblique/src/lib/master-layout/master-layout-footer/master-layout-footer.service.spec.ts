@@ -69,40 +69,38 @@ describe('MasterLayoutFooterService', () => {
 		});
 	});
 
-	describe('test hasScrollTransition', () => {
-		it('should set hasScrollTransition to true', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'hasScrollTransition', 'set');
-			const newValue = true;
-			masterLayoutFooterService.hasScrollTransition = newValue;
+	describe('test hasLogoOnScroll', () => {
+		it('should set hasLogoOnScroll to true', () => {
+			const spy = jest.spyOn(masterLayoutFooterService, 'hasLogoOnScroll', 'set');
+			masterLayoutFooterService.hasLogoOnScroll = true;
 			expect(spy).toHaveBeenCalled();
-			expect(masterLayoutFooterService.hasScrollTransition).toBeTruthy();
+			expect(masterLayoutFooterService.hasLogoOnScroll).toBeTruthy();
 			spy.mockRestore();
 		});
 
-		it('should set hasScrollTransition to false', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'hasScrollTransition', 'set');
-			const newValue = false;
-			masterLayoutFooterService.hasScrollTransition = newValue;
+		it('should set hasLogoOnScroll to false', () => {
+			const spy = jest.spyOn(masterLayoutFooterService, 'hasLogoOnScroll', 'set');
+			masterLayoutFooterService.hasLogoOnScroll = false;
 			expect(spy).toHaveBeenCalled();
-			expect(masterLayoutFooterService.hasScrollTransition).toBeFalsy();
+			expect(masterLayoutFooterService.hasLogoOnScroll).toBeFalsy();
 			spy.mockRestore();
 		});
 
-		it('should get hasScrollTransition  when true', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'hasScrollTransition', 'get');
+		it('should get hasLogoOnScroll  when true', () => {
+			const spy = jest.spyOn(masterLayoutFooterService, 'hasLogoOnScroll', 'get');
 			const newValue = true;
-			masterLayoutFooterService.hasScrollTransition = newValue;
-			const mockResult = masterLayoutFooterService.hasScrollTransition;
+			masterLayoutFooterService.hasLogoOnScroll = newValue;
+			const mockResult = masterLayoutFooterService.hasLogoOnScroll;
 			expect(spy).toHaveBeenCalled();
 			expect(mockResult).toEqual(newValue);
 			spy.mockRestore();
 		});
 
-		it('should get hasScrollTransition  when false', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'hasScrollTransition', 'get');
+		it('should get hasLogoOnScroll  when false', () => {
+			const spy = jest.spyOn(masterLayoutFooterService, 'hasLogoOnScroll', 'get');
 			const newValue = false;
-			masterLayoutFooterService.hasScrollTransition = newValue;
-			const mockResult = masterLayoutFooterService.hasScrollTransition;
+			masterLayoutFooterService.hasLogoOnScroll = newValue;
+			const mockResult = masterLayoutFooterService.hasLogoOnScroll;
 			expect(spy).toHaveBeenCalled();
 			expect(mockResult).toEqual(newValue);
 			spy.mockRestore();

@@ -54,7 +54,7 @@
 	[class.ob-off-canvas-main]="hasOffCanvas"
 >
 	<ng-container *ngIf="isHeaderSticky && !isFooterSticky" [ngTemplateOutlet]="header"></ng-container>
-	<div class="ob-master-layout-wrapper">
+	<div class="ob-master-layout-wrapper" (scroll)="scrollTop(wrapper)" #wrapper>
 		<ng-container *ngIf="!isHeaderSticky || isFooterSticky" [ngTemplateOutlet]="header"></ng-container>
 		<div class="ob-cover-layout" *ngIf="hasCover; else normalLayout">
 			<div class="ob-cover-viewport">
@@ -62,7 +62,7 @@
 			</div>
 		</div>
 		<ng-template #normalLayout>
-			<main id="content" class="ob-main-layout" tabindex="-1">
+			<main id="content" class="ob-main-layout" tabindex="-1" (scroll)="scrollTop(main)" #main>
 				<ob-notification channel="oblique"></ob-notification>
 				<router-outlet></router-outlet>
 			</main>
