@@ -340,7 +340,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 					.replace(/ObEMasterLayoutEventValues\.COVER\b/g, 'ObEMasterLayoutEventValues.LAYOUT_HAS_COVER')
 					.replace(/ObEMasterLayoutEventValues\.OFF_CANVAS\b/g, 'ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS')
 					.replace(/ObEMasterLayoutEventValues\.MAIN_NAVIGATION\b/g, 'ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION')
-					.replace(/ObEMasterLayoutEventValues\.LAYOUT\b/g, 'ObEMasterLayoutEventValues.LAYOUT_HAS_DEFAULT_LAYOUT');
+					.replace(/ObEMasterLayoutEventValues\.LAYOUT\b/g, 'ObEMasterLayoutEventValues.LAYOUT_HAS_DEFAULT_LAYOUT')
+					.replace(/ObEMasterLayoutEventValues\.COLLAPSE\b/g, 'ObEMasterLayoutEventValues.IS_MENU_OPENED');
 				if (fileContent !== replacement) {
 					tree.overwrite(filePath, replacement);
 				}

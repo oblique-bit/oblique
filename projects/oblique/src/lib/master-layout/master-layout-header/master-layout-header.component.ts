@@ -74,7 +74,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		this.globalEventsService.resize$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.onResize());
 		this.setFocusable(this.masterLayout.layout.isMenuOpened);
 		this.masterLayout.layout.configEvents
-			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.COLLAPSE))
+			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.IS_MENU_OPENED))
 			.subscribe(value => this.setFocusable(!value));
 		this.headerControl
 			.toArray()

@@ -635,11 +635,11 @@
             "ObEMasterLayoutEventValues.HEADER_IS_SMALL,",
             "ObEMasterLayoutEventValues.HEADER_IS_STICKY",
             "ObEMasterLayoutEventValues.HEADER_REDUCE_ON_SCROLL",
+            "ObEMasterLayoutEventValues.IS_MENU_OPENED",
             "ObEMasterLayoutEventValues.LAYOUT_HAS_COVER",
             "ObEMasterLayoutEventValues.LAYOUT_HAS_DEFAULT_LAYOUT",
             "ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION",
             "ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS",
-            "ObEMasterLayoutEventValues.COLLAPSE",
             "ObEMasterLayoutEventValues.FULL_WIDTH",
             "ObEMasterLayoutEventValues.SCROLLABLE",
             "ObEMasterLayoutEventValues.MAX_WIDTH"

@@ -30,7 +30,7 @@ export class ObMasterLayoutComponentService {
 	set isMenuOpened(value: boolean) {
 		this._isMenuOpened = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.COLLAPSE,
+			name: ObEMasterLayoutEventValues.IS_MENU_OPENED,
 			value: value
 		});
 	}
