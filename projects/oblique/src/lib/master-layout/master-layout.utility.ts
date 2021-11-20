@@ -8,11 +8,11 @@ export function scrollEnabled(service: ObMasterLayoutHeaderService): <T>(source:
 		merge(
 			service.configEvents,
 			of({
-				name: ObEMasterLayoutEventValues.SCROLL_TRANSITION,
-				value: service.hasScrollTransition
+				name: ObEMasterLayoutEventValues.HEADER_REDUCE_ON_SCROLL,
+				value: service.reduceOnScroll
 			})
 		).pipe(
-			filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.SCROLL_TRANSITION),
+			filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_REDUCE_ON_SCROLL),
 			shareReplay({refCount: true, bufferSize: 1})
 		),
 		(evt: ObIMasterLayoutEvent) => evt.value === true

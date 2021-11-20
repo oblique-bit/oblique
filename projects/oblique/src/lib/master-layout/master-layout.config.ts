@@ -52,7 +52,7 @@ export class ObMasterLayoutConfig {
 		isSticky: true,
 		isMedium: false,
 		isCustom: false,
-		hasScrollTransitions: true // indicates if the header should be resized when scrolling
+		reduceOnScroll: true
 	};
 
 	/**

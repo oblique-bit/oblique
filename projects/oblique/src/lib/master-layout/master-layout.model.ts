@@ -10,7 +10,7 @@ export interface ObIMasterLayoutHeader {
 	isSticky: boolean;
 	isMedium: boolean;
 	isCustom: boolean;
-	hasScrollTransitions: boolean;
+	reduceOnScroll: boolean;
 }
 export interface ObIMasterLayoutFooter {
 	isSticky: boolean;
@@ -73,13 +73,13 @@ export enum ObEMasterLayoutEventValues {
 	FOOTER_IS_STICKY,
 	HEADER_IS_CUSTOM,
 	HEADER_IS_STICKY,
+	HEADER_REDUCE_ON_SCROLL,
 	COLLAPSE,
 	COVER,
 	FULL_WIDTH,
 	OFF_CANVAS,
 	MEDIUM,
 	MAIN_NAVIGATION,
-	SCROLL_TRANSITION,
 	SCROLLABLE,
 	LAYOUT,
 	MAX_WIDTH

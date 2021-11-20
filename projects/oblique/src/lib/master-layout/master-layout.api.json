@@ -211,11 +211,11 @@
           "since": "4.0.0"
         },
         {
-          "name": "header.hasScrollTransitions",
-          "text": "Resize the header to medium when the page is scrolled with continuous layout (true) or keep the header to its defined size (false) ",
+          "name": "header.reduceOnScroll",
+          "text": "Reduce the header's size when the page is scrolled (true) or keep the header to its default size (false).",
           "type": "boolean",
           "default": true,
-          "since": "4.0.0"
+          "since": "8.0.0"
         },
         {
           "name": "navigation.isFullWidth",
@@ -409,11 +409,11 @@
           "since": "4.0.0"
         },
         {
-          "name": "hasScrollTransition",
-          "text": "Controls <code>ObMasterLayoutConfig.header.hasScrollTransition</code> property.",
+          "name": "reduceOnScroll",
+          "text": "Controls <code>ObMasterLayoutConfig.header.reduceOnScroll</code> property.",
           "type": "boolean",
           "default": true,
-          "since": "4.0.0"
+          "since": "8.0.0"
         }
       ]
     },
@@ -633,13 +633,13 @@
             "ObEMasterLayoutEventValues.FOOTER_IS_STICKY",
             "ObEMasterLayoutEventValues.HEADER_IS_CUSTOM",
             "ObEMasterLayoutEventValues.HEADER_IS_STICKY",
+            "ObEMasterLayoutEventValues.HEADER_REDUCE_ON_SCROLL",
             "ObEMasterLayoutEventValues.COLLAPSE",
             "ObEMasterLayoutEventValues.COVER",
             "ObEMasterLayoutEventValues.FULL_WIDTH",
             "ObEMasterLayoutEventValues.OFF_CANVAS",
             "ObEMasterLayoutEventValues.MEDIUM",
             "ObEMasterLayoutEventValues.MAIN_NAVIGATION",
-            "ObEMasterLayoutEventValues.SCROLL_TRANSITION",
             "ObEMasterLayoutEventValues.SCROLLABLE",
             "ObEMasterLayoutEventValues.LAYOUT",
             "ObEMasterLayoutEventValues.MAX_WIDTH"

@@ -10,7 +10,7 @@ export class ObMasterLayoutHeaderService {
 	private _isCustom = this.config.header.isCustom;
 	private _isMedium = this.config.header.isMedium;
 	private _isSticky = this.config.header.isSticky;
-	private _hasScrollTransition = this.config.header.hasScrollTransitions;
+	private _reduceOnScroll = this.config.header.reduceOnScroll;
 
 	constructor(private readonly config: ObMasterLayoutConfig) {}
 
@@ -54,14 +54,14 @@ export class ObMasterLayoutHeaderService {
 		});
 	}
 
-	get hasScrollTransition(): boolean {
-		return this._hasScrollTransition;
+	get reduceOnScroll(): boolean {
+		return this._reduceOnScroll;
 	}
 
-	set hasScrollTransition(value: boolean) {
-		this._hasScrollTransition = value;
+	set reduceOnScroll(value: boolean) {
+		this._reduceOnScroll = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.SCROLL_TRANSITION,
+			name: ObEMasterLayoutEventValues.HEADER_REDUCE_ON_SCROLL,
 			value: value
 		});
 	}
