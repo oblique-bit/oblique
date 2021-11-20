@@ -30,7 +30,7 @@ export class ObMasterLayoutNavigationService {
 	set isFullWidth(value: boolean) {
 		this._isFullWidth = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.FULL_WIDTH,
+			name: ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH,
 			value: value
 		});
 	}

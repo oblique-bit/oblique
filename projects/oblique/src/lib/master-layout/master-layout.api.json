@@ -640,7 +640,7 @@
             "ObEMasterLayoutEventValues.LAYOUT_HAS_DEFAULT_LAYOUT",
             "ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION",
             "ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS",
-            "ObEMasterLayoutEventValues.FULL_WIDTH",
+            "ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH",
             "ObEMasterLayoutEventValues.SCROLLABLE",
             "ObEMasterLayoutEventValues.MAX_WIDTH"
           ],
