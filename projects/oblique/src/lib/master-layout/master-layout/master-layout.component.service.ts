@@ -78,7 +78,7 @@ export class ObMasterLayoutComponentService {
 	set hasLayout(value: boolean) {
 		this._hasLayout = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.LAYOUT,
+			name: ObEMasterLayoutEventValues.LAYOUT_HAS_DEFAULT_LAYOUT,
 			value: value
 		});
 	}

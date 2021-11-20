@@ -157,7 +157,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 					case ObEMasterLayoutEventValues.COLLAPSE:
 						this.isMenuCollapsed = event.value;
 						break;
-					case ObEMasterLayoutEventValues.LAYOUT:
+					case ObEMasterLayoutEventValues.LAYOUT_HAS_DEFAULT_LAYOUT:
 						this.hasLayout = event.value;
 						break;
 					case ObEMasterLayoutEventValues.MAX_WIDTH:
