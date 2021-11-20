@@ -59,11 +59,11 @@ export class ObMasterLayoutSampleComponent {
 	}
 
 	get reduceOnScroll() {
-		return this.masterLayout.header.hasScrollTransition;
+		return this.masterLayout.header.reduceOnScroll;
 	}
 
 	set reduceOnScroll(value: boolean) {
-		this.masterLayout.header.hasScrollTransition = value;
+		this.masterLayout.header.reduceOnScroll = value;
 	}
 
 	get isHeaderSmall() {
