@@ -66,7 +66,7 @@ export class ObMasterLayoutComponentService {
 	set hasMainNavigation(value: boolean) {
 		this._hasMainNavigation = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.MAIN_NAVIGATION,
+			name: ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION,
 			value: value
 		});
 	}

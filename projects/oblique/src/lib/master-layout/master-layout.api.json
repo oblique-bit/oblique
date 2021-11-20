@@ -636,10 +636,10 @@
             "ObEMasterLayoutEventValues.HEADER_IS_STICKY",
             "ObEMasterLayoutEventValues.HEADER_REDUCE_ON_SCROLL",
             "ObEMasterLayoutEventValues.LAYOUT_HAS_COVER",
+            "ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION",
             "ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS",
             "ObEMasterLayoutEventValues.COLLAPSE",
             "ObEMasterLayoutEventValues.FULL_WIDTH",
-            "ObEMasterLayoutEventValues.MAIN_NAVIGATION",
             "ObEMasterLayoutEventValues.SCROLLABLE",
             "ObEMasterLayoutEventValues.LAYOUT",
             "ObEMasterLayoutEventValues.MAX_WIDTH"
