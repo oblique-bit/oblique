@@ -641,7 +641,7 @@
             "ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION",
             "ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS",
             "ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH",
-            "ObEMasterLayoutEventValues.SCROLLABLE",
+            "ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE",
             "ObEMasterLayoutEventValues.MAX_WIDTH"
           ],
           "since": "4.0.0",

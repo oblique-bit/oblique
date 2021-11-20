@@ -42,7 +42,7 @@ export class ObMasterLayoutNavigationService {
 	set scrollMode(value: ObEScrollMode) {
 		this._scrollMode = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.SCROLLABLE,
+			name: ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE,
 			mode: value
 		});
 	}

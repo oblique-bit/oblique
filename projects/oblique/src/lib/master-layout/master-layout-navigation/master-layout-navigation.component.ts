@@ -91,7 +91,7 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 	}
 
 	private propertyChanges() {
-		const events = [ObEMasterLayoutEventValues.SCROLLABLE, ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH];
+		const events = [ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE, ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH];
 		this.masterLayout.navigation.configEvents
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
@@ -99,7 +99,7 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 			)
 			.subscribe(event => {
 				switch (event.name) {
-					case ObEMasterLayoutEventValues.SCROLLABLE:
+					case ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE:
 						this.masterLayout.navigation.refresh();
 						break;
 					case ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH:
