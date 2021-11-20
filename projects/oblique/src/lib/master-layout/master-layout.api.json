@@ -278,6 +278,7 @@
       "usage": "A service to configure the master layout. The changes are live.",
       "type": "service",
       "since": "2.0.0",
+      "updated": "7.1.0",
       "variables": [
         {
           "name": "homePageRouteChange$",
@@ -619,13 +620,13 @@
     {
       "name": "ObIMasterLayoutEvent",
       "type": "interface",
-      "usage": "The event emitted by master layout",
+      "usage": "The event emitted by the master layout",
       "since": "4.0.0",
       "updated": "8.0.0",
       "variables": [
         {
           "name": "name",
-          "text": "Name of the event",
+          "text": "The name of the event",
           "type": "ObEMasterLayoutEventValues",
           "values":[
             "ObEMasterLayoutEventValues.FOOTER_HAS_LOGO_ON_SCROLL",
