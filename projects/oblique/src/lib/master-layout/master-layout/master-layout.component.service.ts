@@ -42,7 +42,7 @@ export class ObMasterLayoutComponentService {
 	set hasCover(value: boolean) {
 		this._hasCover = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.COVER,
+			name: ObEMasterLayoutEventValues.LAYOUT_HAS_COVER,
 			value: value
 		});
 	}

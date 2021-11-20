@@ -336,7 +336,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 				const fileContent = readFile(tree, filePath);
 				const replacement = fileContent
 					.replace(/ObEMasterLayoutEventValues\.STICKY\b/g, 'ObEMasterLayoutEventValues.HEADER_IS_STICKY')
-					.replace(/ObEMasterLayoutEventValues\.MEDIUM\b/g, 'ObEMasterLayoutEventValues.HEADER_IS_SMALL');
+					.replace(/ObEMasterLayoutEventValues\.MEDIUM\b/g, 'ObEMasterLayoutEventValues.HEADER_IS_SMALL')
+					.replace(/ObEMasterLayoutEventValues\.COVER\b/g, 'ObEMasterLayoutEventValues.LAYOUT_HAS_COVER');
 				if (fileContent !== replacement) {
 					tree.overwrite(filePath, replacement);
 				}
