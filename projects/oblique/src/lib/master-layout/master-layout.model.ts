@@ -74,7 +74,6 @@ export enum ObEMasterLayoutEventValues {
 	HEADER_IS_STICKY,
 	COLLAPSE,
 	COVER,
-	FIXED,
 	FULL_WIDTH,
 	OFF_CANVAS,
 	MEDIUM,

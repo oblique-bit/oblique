@@ -47,8 +47,7 @@
 		.ob-footer-item-logo {
 			margin-right: $ob-spacing-default;
 
-			.ob-master-layout:not(.ob-master-layout-scrolling) &,
-			.ob-master-layout.ob-master-layout-fixed & {
+			.ob-master-layout:not(.ob-master-layout-scrolling) & {
 				display: none;
 			}
 		}

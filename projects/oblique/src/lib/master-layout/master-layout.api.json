@@ -155,13 +155,6 @@
           "since": "6.0.0"
         },
         {
-          "name": "layout.isFixed",
-          "text": "Use continuous layout (false) or fixed layout (true). With fixed layout, header and footer are always shown and scrolling applies only to main content.",
-          "type": "boolean",
-          "default": false,
-          "since": "4.0.0"
-        },
-        {
           "name": "layout.hasCover",
           "text": "Use regular layout (false) or cover layout (true). The cover layout uses only part of the available width and displays a background image on the unused space.",
           "type": "boolean",
@@ -340,13 +333,6 @@
         {
           "name": "isMenuOpened",
           "text": "In collapsed mode, closes the hamburger menu (false) or opens it (true).",
-          "type": "boolean",
-          "default": false,
-          "since": "4.0.0"
-        },
-        {
-          "name": "isFixed",
-          "text": "Controls <code>ObMasterLayoutConfig.layout.isFixed</code> property.",
           "type": "boolean",
           "default": false,
           "since": "4.0.0"
@@ -648,7 +634,6 @@
             "ObEMasterLayoutEventValues.HEADER_IS_STICKY",
             "ObEMasterLayoutEventValues.COLLAPSE",
             "ObEMasterLayoutEventValues.COVER",
-            "ObEMasterLayoutEventValues.FIXED",
             "ObEMasterLayoutEventValues.FULL_WIDTH",
             "ObEMasterLayoutEventValues.OFF_CANVAS",
             "ObEMasterLayoutEventValues.MEDIUM",

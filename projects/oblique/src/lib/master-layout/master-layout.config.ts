@@ -38,7 +38,6 @@ export class ObMasterLayoutConfig {
 	 *  Controls the application's layout
 	 */
 	layout = {
-		isFixed: false,
 		hasCover: false,
 		hasMainNavigation: true,
 		hasOffCanvas: false,

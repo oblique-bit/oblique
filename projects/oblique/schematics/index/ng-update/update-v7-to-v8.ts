@@ -309,13 +309,15 @@ export class UpdateV7toV8 implements ObIMigrations {
 
 	private migrateMasterLayoutProperties(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Replacing master Layout properties: header.isAnimated, footer.isSmall');
+			infoMigration(_context, 'Replacing master Layout properties: header.isAnimated, footer.isSmall, layout.isFixed');
 			const toApply = (filePath: string) => {
 				const fileContent = readFile(tree, filePath);
 				let replacement = fileContent;
 				replacement = this.migrateMasterLayoutConfig(replacement);
 				replacement = this.removeProperty(replacement, 'header', 'isAnimated');
 				replacement = this.removeProperty(replacement, 'footer', 'isSmall');
+				replacement = this.migrateMasterLayoutIsFixed(replacement);	// migrate the setter
+				replacement = this.removeProperty(replacement, 'layout', 'isFixed');	// remove the getter
 				if (fileContent !== replacement) {
 					tree.overwrite(filePath, replacement);
 				}
@@ -345,7 +347,41 @@ export class UpdateV7toV8 implements ObIMigrations {
 			? fileContent
 			: fileContent
 					.replace(new RegExp(`^\\s*${service}\\.header\\.isAnimated\\s*=\\s*\\w*\\s*;$`, 'm'), '')
-					.replace(new RegExp(`^\\s*${service}\\.footer\\.isSmall\\s*=\\s*\\w*\\s*;$`, 'm'), '');
+					.replace(new RegExp(`^\\s*${service}\\.footer\\.isSmall\\s*=\\s*\\w*\\s*;$`, 'm'), '')
+					.replace(
+						new RegExp(`^(\\s*${service})\\.layout\\.isFixed\\s*=\\s*(\\w*)\\s*;$`, 'm'),
+						`$1.header.isSticky = $2;\n$1.footer.isSticky = $2;`
+					);
+	}
+
+	private migrateMasterLayoutIsFixed(fileContent: string): string {
+		const service = /(?<service>\w+)\s*:\s*ObMasterLayoutService/.exec(fileContent)?.groups?.service;
+		return service ? this.migrateObMasterLayoutServiceIsFixed(fileContent, service) : this.migrateObMasterLayoutComponentServiceIsFixed(fileContent);
+	}
+
+	private migrateObMasterLayoutServiceIsFixed(fileContent: string, service: string): string {
+		return fileContent.replace(
+			new RegExp(`^(\\s*(?:this\.)?${service})\.layout\.isFixed\\s+=\\s+(\\w*);$`, 'm'),
+			`$1.header.isSticky = $2;\n$1.footer.isSticky = $2;`
+		);
+	}
+
+	private migrateObMasterLayoutComponentServiceIsFixed(fileContent: string): string {
+		const service = /(?<service>\w+)\s*:\s*ObMasterLayoutComponentService/.exec(fileContent)?.groups?.service;
+		if (service) {
+			let masterLayoutService = /(?<service>\w+)\s*:\s*ObMasterLayoutService/.exec(fileContent)?.groups?.service;
+			if (!masterLayoutService) {
+				fileContent = fileContent
+					.replace(/(constructor\s*\()(\s*)/, '$1$2private readonly masterLayout: ObMasterLayoutService,$2')
+					.replace(new RegExp(`import\\s*{(.*)}\\s*from\\s*['"]@oblique/oblique['"]`), `import {$1, ObMasterLayoutService} from '@oblique/oblique'`);
+				masterLayoutService = 'masterLayout';
+			}
+			return fileContent.replace(
+				new RegExp(`^(\\s*this\.)?${service}\.isFixed\\s*=\\s*(\\w*)\\s*;$`, 'm'),
+				`$1${masterLayoutService}.header.isSticky = $2;\n$1${masterLayoutService}.footer.isSticky = $2;`
+			);
+		}
+		return fileContent;
 	}
 
 	private removeProperty(fileContent: string, service: string, name: string): string {

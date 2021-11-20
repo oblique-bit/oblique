@@ -10,7 +10,6 @@ export class ObMockMasterLayoutComponent {
 	home = '';
 	url: string;
 	@Input() navigation: ObINavigationLink[] = [];
-	isFixed = true;
 	hasCover = true;
 	hasLayout = true;
 	isMenuCollapsed = true;

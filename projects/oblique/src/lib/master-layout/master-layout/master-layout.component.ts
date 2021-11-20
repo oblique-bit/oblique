@@ -49,7 +49,6 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 	route = {path: '', params: undefined};
 	@Input() navigation: ObINavigationLink[] = [];
 	@Input() jumpLinks: ObIDynamicJumpLink[] = [];
-	@HostBinding('class.ob-master-layout-fixed') isFixed = this.masterLayout.layout.isFixed;
 	@HostBinding('class.ob-has-cover') hasCover = this.masterLayout.layout.hasCover;
 	@HostBinding('class.ob-has-layout') hasLayout = this.masterLayout.layout.hasLayout;
 	@HostBinding('class.ob-has-max-width') hasMaxWidth = this.masterLayout.layout.hasMaxWidth;
@@ -127,9 +126,6 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 				switch (event.name) {
 					case ObEMasterLayoutEventValues.MAIN_NAVIGATION:
 						this.noNavigation = !event.value;
-						break;
-					case ObEMasterLayoutEventValues.FIXED:
-						this.isFixed = event.value;
 						break;
 					case ObEMasterLayoutEventValues.COVER:
 						this.hasCover = event.value;

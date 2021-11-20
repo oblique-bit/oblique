@@ -11,7 +11,6 @@ export class ObMasterLayoutComponentService {
 	private readonly _events = new Subject<ObIMasterLayoutEvent>();
 	private readonly eventsS = this._events.asObservable();
 	private _isMenuOpened = false;
-	private _isFixed = this.config.layout.isFixed;
 	private _hasCover = this.config.layout.hasCover;
 	private _hasOffCanvas = this.config.layout.hasOffCanvas;
 	private _hasMainNavigation = this.config.layout.hasMainNavigation;
@@ -32,18 +31,6 @@ export class ObMasterLayoutComponentService {
 		this._isMenuOpened = value;
 		this._events.next({
 			name: ObEMasterLayoutEventValues.COLLAPSE,
-			value: value
-		});
-	}
-
-	get isFixed() {
-		return this._isFixed;
-	}
-
-	set isFixed(value: boolean) {
-		this._isFixed = value;
-		this._events.next({
-			name: ObEMasterLayoutEventValues.FIXED,
 			value: value
 		});
 	}

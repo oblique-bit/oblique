@@ -62,14 +62,4 @@
 			max-width: map-get($ob-grid-breakpoints, xl);
 		}
 	}
-
-	@include ob-media-breakpoint-up(md) {
-		&.ob-master-layout-fixed {
-			display: flex;
-			flex-direction: column;
-			overflow: hidden;
-			height: 100%;
-			padding-bottom: 0;
-		}
-	}
 }
