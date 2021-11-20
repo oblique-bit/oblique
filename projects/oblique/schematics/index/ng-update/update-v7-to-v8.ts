@@ -309,7 +309,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 
 	private migrateMasterLayoutProperties(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Replacing master Layout properties: header.isAnimated, footer.isSmall, layout.isFixed, hasScrollTransition');
+			infoMigration(_context, 'Replacing master Layout properties: header.isAnimated, footer.isSmall, layout.isFixed, hasScrollTransition, isMedium');
 			const toApply = (filePath: string) => {
 				const fileContent = readFile(tree, filePath);
 				let replacement = fileContent;
@@ -320,6 +320,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 				replacement = this.removeProperty(replacement, 'layout', 'isFixed');	// remove the getter
 				replacement = this.migrateProperty(replacement, 'footer', 'hasScrollTransition', 'hasLogoOnScroll');
 				replacement = this.migrateProperty(replacement, 'header', 'hasScrollTransition', 'reduceOnScroll');
+				replacement = this.migrateProperty(replacement, 'header', 'isMedium', 'isSmall');
 				if (fileContent !== replacement) {
 					tree.overwrite(filePath, replacement);
 				}
@@ -333,7 +334,9 @@ export class UpdateV7toV8 implements ObIMigrations {
 			infoMigration(_context, 'Replacing ObEMasterLayoutEventValues values');
 			const toApply = (filePath: string) => {
 				const fileContent = readFile(tree, filePath);
-				const replacement = fileContent.replace(/ObEMasterLayoutEventValues\.STICKY\b/g, 'ObEMasterLayoutEventValues.HEADER_IS_STICKY');
+				const replacement = fileContent
+					.replace(/ObEMasterLayoutEventValues\.STICKY\b/g, 'ObEMasterLayoutEventValues.HEADER_IS_STICKY')
+					.replace(/ObEMasterLayoutEventValues\.MEDIUM\b/g, 'ObEMasterLayoutEventValues.HEADER_IS_SMALL');
 				if (fileContent !== replacement) {
 					tree.overwrite(filePath, replacement);
 				}
@@ -352,7 +355,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 					.replace(new RegExp(`^\\s*${service}\\.footer\\.isSmall\\s*=\\s*\\w*\\s*;$`, 'm'), '')
 					.replace(new RegExp(`^(\\s*${service})\\.layout\\.isFixed\\s*=\\s*(\\w*)\\s*;$`, 'm'), `$1.header.isSticky = $2;\n$1.footer.isSticky = $2;`)
 					.replace(new RegExp(`^(\\s*${service}\\.footer)\\.hasScrollTransitions\\s*=\\s*(\\w*)\\s*;$`, 'm'), '$1.hasLogoOnScroll = $2;')
-					.replace(new RegExp(`^(\\s*${service}\\.header)\\.hasScrollTransitions\\s*=\\s*(\\w*)\\s*;$`, 'm'), '$1.reduceOnScroll = $2;');
+					.replace(new RegExp(`^(\\s*${service}\\.header)\\.hasScrollTransitions\\s*=\\s*(\\w*)\\s*;$`, 'm'), '$1.reduceOnScroll = $2;')
+					.replace(new RegExp(`^(\\s*${service}\\.header)\\.isMedium\\s*=\\s*(\\w*)\\s*;$`, 'm'), '$1.isSmall = $2;');
 	}
 
 	private migrateMasterLayoutIsFixed(fileContent: string): string {

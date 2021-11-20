@@ -42,7 +42,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	isCustom = this.masterLayout.header.isCustom;
 	banner: ObIBanner;
 	@Input() navigation: ObINavigationLink[];
-	@HostBinding('class.ob-master-layout-header-md') isMedium = this.masterLayout.header.isMedium;
+	@HostBinding('class.ob-master-layout-header-small') isSmall = this.masterLayout.header.isSmall;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<any>;
 	@ContentChildren('obHeaderControl') readonly templates: QueryList<TemplateRef<any>>;
 	@ContentChildren('obHeaderMobileControl') readonly mobileTemplates: QueryList<TemplateRef<any>>;
@@ -116,12 +116,12 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 
 	private reduceOnScroll() {
 		this.scrollEvents.isScrolled.pipe(takeUntil(this.unsubscribe), scrollEnabled(this.masterLayout.header)).subscribe(isScrolling => {
-			this.isMedium = isScrolling;
+			this.isSmall = isScrolling;
 		});
 	}
 
 	private propertyChanges() {
-		const events = [ObEMasterLayoutEventValues.HEADER_IS_CUSTOM, ObEMasterLayoutEventValues.MEDIUM];
+		const events = [ObEMasterLayoutEventValues.HEADER_IS_CUSTOM, ObEMasterLayoutEventValues.HEADER_IS_SMALL];
 		this.masterLayout.header.configEvents
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
@@ -132,8 +132,8 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 					case ObEMasterLayoutEventValues.HEADER_IS_CUSTOM:
 						this.isCustom = event.value;
 						break;
-					case ObEMasterLayoutEventValues.MEDIUM:
-						this.isMedium = event.value;
+					case ObEMasterLayoutEventValues.HEADER_IS_SMALL:
+						this.isSmall = event.value;
 						break;
 				}
 			});

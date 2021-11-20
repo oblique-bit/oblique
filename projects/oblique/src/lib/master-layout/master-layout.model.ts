@@ -8,7 +8,7 @@ export enum ObEScrollMode {
 
 export interface ObIMasterLayoutHeader {
 	isSticky: boolean;
-	isMedium: boolean;
+	isSmall: boolean;
 	isCustom: boolean;
 	reduceOnScroll: boolean;
 }
@@ -72,13 +72,13 @@ export enum ObEMasterLayoutEventValues {
 	FOOTER_IS_CUSTOM,
 	FOOTER_IS_STICKY,
 	HEADER_IS_CUSTOM,
+	HEADER_IS_SMALL,
 	HEADER_IS_STICKY,
 	HEADER_REDUCE_ON_SCROLL,
 	COLLAPSE,
 	COVER,
 	FULL_WIDTH,
 	OFF_CANVAS,
-	MEDIUM,
 	MAIN_NAVIGATION,
 	SCROLLABLE,
 	LAYOUT,

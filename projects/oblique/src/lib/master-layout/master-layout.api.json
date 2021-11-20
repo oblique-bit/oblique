@@ -197,11 +197,11 @@
           "since": "4.0.0"
         },
         {
-          "name": "header.isMedium",
-          "text": "Keep default, large header size (false) or forces medium size (true).",
+          "name": "header.isSmall",
+          "text": "Forces the small variant of the header.",
           "type": "boolean",
           "default": false,
-          "since": "4.0.0"
+          "since": "8.0.0"
         },
         {
           "name": "header.isCustom",
@@ -395,11 +395,11 @@
           "since": "4.0.0"
         },
         {
-          "name": "isMedium",
-          "text": "Controls <code>ObMasterLayoutConfig.header.isMedium</code> property.",
+          "name": "isSmall",
+          "text": "Controls <code>ObMasterLayoutConfig.header.isSmall</code> property.",
           "type": "boolean",
           "default": false,
-          "since": "4.0.0"
+          "since": "8.0.0"
         },
         {
           "name": "isSticky",
@@ -632,13 +632,13 @@
             "ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM",
             "ObEMasterLayoutEventValues.FOOTER_IS_STICKY",
             "ObEMasterLayoutEventValues.HEADER_IS_CUSTOM",
+            "ObEMasterLayoutEventValues.HEADER_IS_SMALL,",
             "ObEMasterLayoutEventValues.HEADER_IS_STICKY",
             "ObEMasterLayoutEventValues.HEADER_REDUCE_ON_SCROLL",
             "ObEMasterLayoutEventValues.COLLAPSE",
             "ObEMasterLayoutEventValues.COVER",
             "ObEMasterLayoutEventValues.FULL_WIDTH",
             "ObEMasterLayoutEventValues.OFF_CANVAS",
-            "ObEMasterLayoutEventValues.MEDIUM",
             "ObEMasterLayoutEventValues.MAIN_NAVIGATION",
             "ObEMasterLayoutEventValues.SCROLLABLE",
             "ObEMasterLayoutEventValues.LAYOUT",

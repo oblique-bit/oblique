@@ -8,7 +8,7 @@ export class ObMasterLayoutHeaderService {
 	private readonly _events = new Subject<ObIMasterLayoutEvent>();
 	private readonly eventsS = this._events.asObservable();
 	private _isCustom = this.config.header.isCustom;
-	private _isMedium = this.config.header.isMedium;
+	private _isSmall = this.config.header.isSmall;
 	private _isSticky = this.config.header.isSticky;
 	private _reduceOnScroll = this.config.header.reduceOnScroll;
 
@@ -30,14 +30,14 @@ export class ObMasterLayoutHeaderService {
 		});
 	}
 
-	get isMedium(): boolean {
-		return this._isMedium;
+	get isSmall(): boolean {
+		return this._isSmall;
 	}
 
-	set isMedium(value: boolean) {
-		this._isMedium = value;
+	set isSmall(value: boolean) {
+		this._isSmall = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.MEDIUM,
+			name: ObEMasterLayoutEventValues.HEADER_IS_SMALL,
 			value: value
 		});
 	}

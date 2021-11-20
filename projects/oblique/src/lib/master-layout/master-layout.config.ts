@@ -50,7 +50,7 @@ export class ObMasterLayoutConfig {
 	 */
 	header: ObIMasterLayoutHeader = {
 		isSticky: true,
-		isMedium: false,
+		isSmall: false,
 		isCustom: false,
 		reduceOnScroll: true
 	};

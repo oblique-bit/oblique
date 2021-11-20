@@ -84,7 +84,7 @@
 		transition: padding $ob-duration-default ease-in-out;
 
 		@include ob-media-breakpoint-up(md) {
-			@at-root #{selector-append(":not(.ob-master-layout-header-md)", &)} {
+			@at-root #{selector-append(":not(.ob-master-layout-header-small)", &)} {
 				padding: $ob-spacing-default;
 			}
 		}
@@ -97,7 +97,7 @@
 		margin-right: $ob-spacing-default;
 
 		@include ob-media-breakpoint-up(md) {
-			@at-root #{selector-append(":not(.ob-master-layout-header-md)", &)} {
+			@at-root #{selector-append(":not(.ob-master-layout-header-small)", &)} {
 				width: $ob-logo-width;
 				height: $ob-logo-height;
 			}

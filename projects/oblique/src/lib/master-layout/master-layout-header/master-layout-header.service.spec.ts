@@ -71,38 +71,38 @@ describe('MasterLayoutHeaderService', () => {
 
 	describe('test isMedium', () => {
 		it('should set isMedium to true', () => {
-			const spy = jest.spyOn(masterLayoutHeaderService, 'isMedium', 'set');
+			const spy = jest.spyOn(masterLayoutHeaderService, 'isSmall', 'set');
 			const newValue = true;
-			masterLayoutHeaderService.isMedium = newValue;
+			masterLayoutHeaderService.isSmall = newValue;
 			expect(spy).toHaveBeenCalled();
-			expect(masterLayoutHeaderService.isMedium).toBeTruthy();
+			expect(masterLayoutHeaderService.isSmall).toBeTruthy();
 			spy.mockRestore();
 		});
 
 		it('should set isMedium to false', () => {
-			const spy = jest.spyOn(masterLayoutHeaderService, 'isMedium', 'set');
+			const spy = jest.spyOn(masterLayoutHeaderService, 'isSmall', 'set');
 			const newValue = false;
-			masterLayoutHeaderService.isMedium = newValue;
+			masterLayoutHeaderService.isSmall = newValue;
 			expect(spy).toHaveBeenCalled();
-			expect(masterLayoutHeaderService.isMedium).toBeFalsy();
+			expect(masterLayoutHeaderService.isSmall).toBeFalsy();
 			spy.mockRestore();
 		});
 
 		it('should get isMedium  when true', () => {
-			const spy = jest.spyOn(masterLayoutHeaderService, 'isMedium', 'get');
+			const spy = jest.spyOn(masterLayoutHeaderService, 'isSmall', 'get');
 			const newValue = true;
-			masterLayoutHeaderService.isMedium = newValue;
-			const mockResult = masterLayoutHeaderService.isMedium;
+			masterLayoutHeaderService.isSmall = newValue;
+			const mockResult = masterLayoutHeaderService.isSmall;
 			expect(spy).toHaveBeenCalled();
 			expect(mockResult).toEqual(newValue);
 			spy.mockRestore();
 		});
 
 		it('should get isMedium  when false', () => {
-			const spy = jest.spyOn(masterLayoutHeaderService, 'isMedium', 'get');
+			const spy = jest.spyOn(masterLayoutHeaderService, 'isSmall', 'get');
 			const newValue = false;
-			masterLayoutHeaderService.isMedium = newValue;
-			const mockResult = masterLayoutHeaderService.isMedium;
+			masterLayoutHeaderService.isSmall = newValue;
+			const mockResult = masterLayoutHeaderService.isSmall;
 			expect(spy).toHaveBeenCalled();
 			expect(mockResult).toEqual(newValue);
 			spy.mockRestore();
