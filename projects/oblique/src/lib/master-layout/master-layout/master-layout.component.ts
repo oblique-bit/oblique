@@ -151,7 +151,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 					case ObEMasterLayoutEventValues.LAYOUT_HAS_COVER:
 						this.hasCover = event.value;
 						break;
-					case ObEMasterLayoutEventValues.OFF_CANVAS:
+					case ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS:
 						this.hasOffCanvas = event.value;
 						break;
 					case ObEMasterLayoutEventValues.COLLAPSE:

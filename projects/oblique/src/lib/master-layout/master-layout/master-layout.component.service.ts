@@ -54,7 +54,7 @@ export class ObMasterLayoutComponentService {
 	set hasOffCanvas(value: boolean) {
 		this._hasOffCanvas = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.OFF_CANVAS,
+			name: ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS,
 			value: value
 		});
 	}
