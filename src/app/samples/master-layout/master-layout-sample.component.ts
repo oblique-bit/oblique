@@ -75,13 +75,6 @@ export class ObMasterLayoutSampleComponent {
 	}
 
 	// Layout
-	get isFixed(): boolean {
-		return this.masterLayout.layout.isFixed;
-	}
-
-	set isFixed(value: boolean) {
-		this.masterLayout.layout.isFixed = value;
-	}
 	get hasCover(): boolean {
 		return this.masterLayout.layout.hasCover;
 	}
