@@ -67,11 +67,11 @@ export class ObMasterLayoutSampleComponent {
 	}
 
 	get isHeaderSmall() {
-		return this.masterLayout.header.isMedium;
+		return this.masterLayout.header.isSmall;
 	}
 
 	set isHeaderSmall(value: boolean) {
-		this.masterLayout.header.isMedium = value;
+		this.masterLayout.header.isSmall = value;
 	}
 
 	// Layout
