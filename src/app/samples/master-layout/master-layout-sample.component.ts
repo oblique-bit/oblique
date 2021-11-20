@@ -26,11 +26,11 @@ export class ObMasterLayoutSampleComponent {
 	}
 
 	get hasLogoOnScroll() {
-		return this.masterLayout.footer.hasScrollTransition;
+		return this.masterLayout.footer.hasLogoOnScroll;
 	}
 
 	set hasLogoOnScroll(value: boolean) {
-		this.masterLayout.footer.hasScrollTransition = value;
+		this.masterLayout.footer.hasLogoOnScroll = value;
 	}
 
 	get isFooterSticky() {
