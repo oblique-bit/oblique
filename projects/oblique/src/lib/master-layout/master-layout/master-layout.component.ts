@@ -59,6 +59,7 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 	@HostBinding('class.ob-master-layout-scrolling') isScrolling = false;
 	@HostBinding('class.ob-outline') outline = true;
 	isHeaderSticky = this.masterLayout.header.isSticky;
+	isFooterSticky = this.masterLayout.footer.isSticky;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<any>;
 	@ContentChildren('obHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('obHeaderMobileControl') readonly headerMobileControlTemplates: QueryList<TemplateRef<any>>;
@@ -120,7 +121,7 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 	}
 
 	private propertyChanges() {
-		merge(this.masterLayout.layout.configEvents, this.masterLayout.header.configEvents)
+		merge(this.masterLayout.layout.configEvents, this.masterLayout.header.configEvents, this.masterLayout.footer.configEvents)
 			.pipe(takeUntil(this.unsubscribe))
 			.subscribe(event => {
 				switch (event.name) {
@@ -147,6 +148,9 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 						break;
 					case ObEMasterLayoutEventValues.HEADER_IS_STICKY:
 						this.isHeaderSticky = event.value;
+						break;
+					case ObEMasterLayoutEventValues.FOOTER_IS_STICKY:
+						this.isFooterSticky = event.value;
 						break;
 				}
 			});

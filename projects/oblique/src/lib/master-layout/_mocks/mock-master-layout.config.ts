@@ -32,6 +32,7 @@ export class ObMockMasterLayoutConfig {
 		links: []
 	};
 	footer = {
+		isSticky: false,
 		isCustom: false,
 		hasScrollTransitions: true
 	};

@@ -47,31 +47,29 @@
 		</li>
 	</ul>
 </nav>
-<div class="ob-viewport" [class.ob-off-canvas-main]="hasOffCanvas">
-	<ng-container *ngIf="isHeaderSticky" [ngTemplateOutlet]="header"></ng-container>
+<div
+	class="ob-viewport"
+	[class.ob-fixed-layout]="isFooterSticky && isHeaderSticky"
+	[class.ob-continuous-layout]="!isFooterSticky && !isHeaderSticky"
+	[class.ob-off-canvas-main]="hasOffCanvas"
+>
+	<ng-container *ngIf="isHeaderSticky && !isFooterSticky" [ngTemplateOutlet]="header"></ng-container>
 	<div class="ob-master-layout-wrapper">
-		<ng-container *ngIf="!isHeaderSticky" [ngTemplateOutlet]="header"></ng-container>
-		<main id="content" class="ob-master-layout-content" tabindex="-1">
-			<ob-notification channel="oblique"></ob-notification>
-			<div class="ob-cover-layout" *ngIf="hasCover; else normalLayout">
-				<div class="ob-cover-viewport">
-					<ng-container *ngTemplateOutlet="normalLayout"></ng-container>
-				</div>
+		<ng-container *ngIf="!isHeaderSticky || isFooterSticky" [ngTemplateOutlet]="header"></ng-container>
+		<div class="ob-cover-layout" *ngIf="hasCover; else normalLayout">
+			<div class="ob-cover-viewport">
+				<ng-container *ngTemplateOutlet="normalLayout"></ng-container>
 			</div>
-			<ng-template #normalLayout>
-				<div class="ob-main-layout">
-					<router-outlet></router-outlet>
-				</div>
-			</ng-template>
-		</main>
-		<ob-master-layout-footer>
-			<ng-content select="[obFooter]" obFooter></ng-content>
-			<ng-content select="[obFooterInfo]" obFooterInfo></ng-content>
-			<ng-template #obFooterLink *ngFor="let template of footerLinkTemplates">
-				<ng-container [ngTemplateOutlet]="template"></ng-container>
-			</ng-template>
-		</ob-master-layout-footer>
+		</div>
+		<ng-template #normalLayout>
+			<main id="content" class="ob-main-layout" tabindex="-1">
+				<ob-notification channel="oblique"></ob-notification>
+				<router-outlet></router-outlet>
+			</main>
+		</ng-template>
+		<ng-container *ngIf="!isFooterSticky || isHeaderSticky" [ngTemplateOutlet]="footer"></ng-container>
 	</div>
+	<ng-container *ngIf="isFooterSticky && !isHeaderSticky" [ngTemplateOutlet]="footer"></ng-container>
 
 	<ng-template #header>
 		<ob-master-layout-header [navigation]="navigation">
@@ -91,6 +89,16 @@
 				<ng-container [ngTemplateOutlet]="obLogo || logo"></ng-container>
 			</ng-template>
 		</ob-master-layout-header>
+	</ng-template>
+
+	<ng-template #footer>
+		<ob-master-layout-footer>
+			<ng-content select="[obFooter]" obFooter></ng-content>
+			<ng-content select="[obFooterInfo]" obFooterInfo></ng-content>
+			<ng-template #obFooterLink *ngFor="let template of footerLinkTemplates">
+				<ng-container [ngTemplateOutlet]="template"></ng-container>
+			</ng-template>
+		</ob-master-layout-footer>
 	</ng-template>
 </div>
 <ob-top-control></ob-top-control>

@@ -13,6 +13,7 @@ export interface ObIMasterLayoutHeader {
 	hasScrollTransitions: boolean;
 }
 export interface ObIMasterLayoutFooter {
+	isSticky: boolean;
 	isCustom: boolean;
 	hasScrollTransitions: boolean;
 }
@@ -68,6 +69,7 @@ export interface ObIMasterLayoutEvent {
 
 export enum ObEMasterLayoutEventValues {
 	FOOTER_IS_CUSTOM,
+	FOOTER_IS_STICKY,
 	HEADER_IS_CUSTOM,
 	HEADER_IS_STICKY,
 	COLLAPSE,

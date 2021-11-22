@@ -436,12 +436,20 @@
       "usage": "A service to configure the master layout footer. The changes are live.",
       "type": "service",
       "since": "4.0.0",
+      "updated": "8.0.0",
       "variables": [
         {
           "name": "configEvents",
           "text": "Emits every time one of its property is changed",
           "type": "Observable<ObIMasterLayoutEvent>",
           "since": "4.0.0"
+        },
+        {
+          "name": "isSticky",
+          "text": "Controls <code>ObMasterLayoutConfig.footer.isSticky</code> property.",
+          "type": "boolean",
+          "default": false,
+          "since": "8.0.0"
         },
         {
           "name": "isCustom",
@@ -635,6 +643,7 @@
           "type": "ObEMasterLayoutEventValues",
           "values":[
             "ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM",
+            "ObEMasterLayoutEventValues.FOOTER_IS_STICKY",
             "ObEMasterLayoutEventValues.HEADER_IS_CUSTOM",
             "ObEMasterLayoutEventValues.HEADER_IS_STICKY",
             "ObEMasterLayoutEventValues.COLLAPSE",

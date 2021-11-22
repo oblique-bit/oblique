@@ -6,15 +6,27 @@
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		height: 100vh;
-		overflow: hidden;
+
+		&:not(.ob-continuous-layout) {
+			height: 100vh;
+
+			&:not(.ob-fixed-layout) {
+				overflow-x: hidden;
+			}
+		}
+
+		&.ob-continuous,
+		&.ob-fixed-layout {
+			.ob-master-layout-wrapper {
+				overflow: hidden;
+			}
+		}
 	}
 
 	.ob-master-layout-wrapper {
 		display: flex;
 		flex-direction: column;
 		flex: 1 1 auto;
-		overflow: auto;
 	}
 
 	.ob-main-layout {
@@ -27,6 +39,10 @@
 				padding: $ob-spacing-default $ob-spacing-lg;
 			}
 		}
+	}
+
+	.ob-viewport.ob-fixed-layout .ob-main-layout {
+		overflow-y: auto;
 	}
 
 	@include ob-media-breakpoint-down(md) {
@@ -54,11 +70,6 @@
 			overflow: hidden;
 			height: 100%;
 			padding-bottom: 0;
-
-			.ob-master-layout-content {
-				flex: 2; // Fill vertical space!
-				overflow-y: auto;
-			}
 		}
 	}
 }

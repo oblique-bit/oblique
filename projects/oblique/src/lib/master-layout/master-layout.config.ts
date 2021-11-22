@@ -71,6 +71,7 @@ export class ObMasterLayoutConfig {
 	 * Controls the applications's footer
 	 */
 	footer: ObIMasterLayoutFooter = {
+		isSticky: false,
 		isCustom: false,
 		hasScrollTransitions: true // indicates if the footer should be resized when scrolling
 	};

@@ -108,4 +108,42 @@ describe('MasterLayoutFooterService', () => {
 			spy.mockRestore();
 		});
 	});
+
+	describe('test isSticky', () => {
+		it('should set isSticky to true', () => {
+			const spy = jest.spyOn(masterLayoutFooterService, 'isSticky', 'set');
+			masterLayoutFooterService.isSticky = true;
+			expect(spy).toHaveBeenCalled();
+			expect(masterLayoutFooterService.isSticky).toBeTruthy();
+			spy.mockRestore();
+		});
+
+		it('should set isSticky to false', () => {
+			const spy = jest.spyOn(masterLayoutFooterService, 'isSticky', 'set');
+			masterLayoutFooterService.isSticky = false;
+			expect(spy).toHaveBeenCalled();
+			expect(masterLayoutFooterService.isSticky).toBeFalsy();
+			spy.mockRestore();
+		});
+
+		it('should get isSticky  when true', () => {
+			const spy = jest.spyOn(masterLayoutFooterService, 'isSticky', 'get');
+			const newValue = true;
+			masterLayoutFooterService.isSticky = newValue;
+			const mockResult = masterLayoutFooterService.isSticky;
+			expect(spy).toHaveBeenCalled();
+			expect(mockResult).toEqual(newValue);
+			spy.mockRestore();
+		});
+
+		it('should get isSticky  when false', () => {
+			const spy = jest.spyOn(masterLayoutFooterService, 'isSticky', 'get');
+			const newValue = false;
+			masterLayoutFooterService.isSticky = newValue;
+			const mockResult = masterLayoutFooterService.isSticky;
+			expect(spy).toHaveBeenCalled();
+			expect(mockResult).toEqual(newValue);
+			spy.mockRestore();
+		});
+	});
 });
