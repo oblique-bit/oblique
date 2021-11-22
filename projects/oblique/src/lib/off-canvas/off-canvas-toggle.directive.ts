@@ -11,10 +11,12 @@ import {WINDOW} from '../utilities';
 export class ObOffCanvasToggleDirective {
 	constructor(private readonly offCanvas: ObOffCanvasService, @Inject(WINDOW) private readonly window: Window) {}
 
-	@HostListener('click')
-	@HostListener('keyup.Enter')
-	toggle() {
-		// delay the toggle so that any other feature that relies on click has time to update its status
-		this.window.setTimeout(() => (this.offCanvas.open = !this.offCanvas.open));
+	@HostListener('keyup.Enter', ['$event'])
+	@HostListener('click', ['$evenẗ́'])
+	toggle(event?: KeyboardEvent | MouseEvent) {
+		if (!event || event instanceof MouseEvent || (event.target as HTMLElement).nodeName !== 'BUTTON') {
+			// delay the toggle so that any other feature that relies on click has time to update its status
+			this.window.setTimeout(() => (this.offCanvas.open = !this.offCanvas.open));
+		}
 	}
 }

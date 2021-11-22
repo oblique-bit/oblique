@@ -62,7 +62,7 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 	@ContentChildren('obHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('obHeaderMobileControl') readonly headerMobileControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('obFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<any>>;
-	@ViewChild('offCanvasClose') readonly offCanvasClose: ElementRef<HTMLElement>;
+	@ViewChild('offCanvasClose', {read: ElementRef}) readonly offCanvasClose: ElementRef<HTMLElement>;
 	private readonly unsubscribe = new Subject();
 
 	constructor(
