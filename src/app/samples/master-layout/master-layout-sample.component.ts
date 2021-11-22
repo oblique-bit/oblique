@@ -33,6 +33,14 @@ export class ObMasterLayoutSampleComponent {
 		this.masterLayout.footer.hasScrollTransition = value;
 	}
 
+	get isFooterSticky() {
+		return this.masterLayout.footer.isSticky;
+	}
+
+	set isFooterSticky(value: boolean) {
+		this.masterLayout.footer.isSticky = value;
+	}
+
 	// Header
 	get isHeaderCustom() {
 		return this.masterLayout.header.isCustom;
