@@ -10,8 +10,8 @@ import {WINDOW} from '../../utilities';
 	providedIn: 'root'
 })
 export class ObMasterLayoutNavigationService {
+	readonly configEvents$: Observable<ObIMasterLayoutEvent>;
 	private readonly _events = new Subject<ObIMasterLayoutEvent>();
-	private readonly events$ = this._events.asObservable();
 	private readonly _scrolled: Subject<number> = new Subject<number>();
 	private readonly scrolled$ = this._scrolled.asObservable();
 	private readonly _refreshed: Subject<void> = new Subject<void>();
@@ -21,6 +21,7 @@ export class ObMasterLayoutNavigationService {
 
 	constructor(private readonly config: ObMasterLayoutConfig, translate: TranslateService, @Inject(WINDOW) private readonly window: Window) {
 		translate.onLangChange.subscribe(() => this.refresh());
+		this.configEvents$ = this._events.asObservable();
 	}
 
 	get isFullWidth() {
@@ -45,10 +46,6 @@ export class ObMasterLayoutNavigationService {
 			name: ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE,
 			mode: value
 		});
-	}
-
-	get configEvents$(): Observable<ObIMasterLayoutEvent> {
-		return this.events$;
 	}
 
 	get scrolled(): Observable<number> {

@@ -8,16 +8,14 @@ import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from '../master-layout
 	providedIn: 'root'
 })
 export class ObMasterLayoutFooterService {
+	readonly configEvents$: Observable<ObIMasterLayoutEvent>;
 	private readonly _events = new Subject<ObIMasterLayoutEvent>();
-	private readonly eventsS = this._events.asObservable();
 	private _isCustom = this.config.footer.isCustom;
 	private _isSticky = this.config.footer.isSticky;
 	private _hasLogoOnScroll = this.config.footer.hasLogoOnScroll;
 
-	constructor(private readonly config: ObMasterLayoutConfig) {}
-
-	get configEvents$(): Observable<ObIMasterLayoutEvent> {
-		return this.eventsS;
+	constructor(private readonly config: ObMasterLayoutConfig) {
+		this.configEvents$ = this._events.asObservable();
 	}
 
 	get isCustom() {

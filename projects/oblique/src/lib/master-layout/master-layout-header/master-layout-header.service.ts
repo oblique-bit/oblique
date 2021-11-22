@@ -5,17 +5,15 @@ import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from '../master-layout
 
 @Injectable({providedIn: 'root'})
 export class ObMasterLayoutHeaderService {
+	readonly configEvents$: Observable<ObIMasterLayoutEvent>;
 	private readonly _events = new Subject<ObIMasterLayoutEvent>();
-	private readonly eventsS = this._events.asObservable();
 	private _isCustom = this.config.header.isCustom;
 	private _isSmall = this.config.header.isSmall;
 	private _isSticky = this.config.header.isSticky;
 	private _reduceOnScroll = this.config.header.reduceOnScroll;
 
-	constructor(private readonly config: ObMasterLayoutConfig) {}
-
-	get configEvents$(): Observable<ObIMasterLayoutEvent> {
-		return this.eventsS;
+	constructor(private readonly config: ObMasterLayoutConfig) {
+		this.configEvents$ = this._events.asObservable();
 	}
 
 	get isCustom() {

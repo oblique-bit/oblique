@@ -8,8 +8,8 @@ import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from '../master-layout
 	providedIn: 'root'
 })
 export class ObMasterLayoutComponentService {
+	readonly configEvents$: Observable<ObIMasterLayoutEvent>;
 	private readonly _events = new Subject<ObIMasterLayoutEvent>();
-	private readonly eventsS = this._events.asObservable();
 	private _isMenuOpened = false;
 	private _hasCover = this.config.layout.hasCover;
 	private _hasOffCanvas = this.config.layout.hasOffCanvas;
@@ -17,10 +17,8 @@ export class ObMasterLayoutComponentService {
 	private _hasLayout = this.config.layout.hasLayout;
 	private _hasMaxWidth = this.config.layout.hasMaxWidth;
 
-	constructor(private readonly config: ObMasterLayoutConfig) {}
-
-	get configEvents$(): Observable<ObIMasterLayoutEvent> {
-		return this.eventsS;
+	constructor(private readonly config: ObMasterLayoutConfig) {
+		this.configEvents$ = this._events.asObservable();
 	}
 
 	get isMenuOpened() {
