@@ -6,7 +6,7 @@ import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from './master-layout.
 export function scrollEnabled(service: ObMasterLayoutHeaderService): <T>(source: Observable<T>) => Observable<T> {
 	const [enabled$, disabled$] = partition(
 		merge(
-			service.configEvents,
+			service.configEvents$,
 			of({
 				name: ObEMasterLayoutEventValues.HEADER_REDUCE_ON_SCROLL,
 				value: service.reduceOnScroll

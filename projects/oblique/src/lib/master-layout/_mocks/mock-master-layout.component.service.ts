@@ -10,7 +10,7 @@ export class ObMockMasterLayoutComponentService {
 	hasMainNavigation = true;
 	hasLayout = true;
 
-	get configEvents(): Observable<ObIMasterLayoutEvent> {
+	get configEvents$(): Observable<ObIMasterLayoutEvent> {
 		return of();
 	}
 }

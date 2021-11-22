@@ -9,7 +9,7 @@ export class ObMockMasterLayoutHeaderService {
 	isSticky = true;
 	reduceOnScroll = true;
 
-	get configEvents(): Observable<ObIMasterLayoutEvent> {
+	get configEvents$(): Observable<ObIMasterLayoutEvent> {
 		return of({} as ObIMasterLayoutEvent);
 	}
 }

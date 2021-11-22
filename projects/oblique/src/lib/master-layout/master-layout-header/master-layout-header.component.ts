@@ -73,7 +73,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	ngAfterViewInit() {
 		this.globalEventsService.resize$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.onResize());
 		this.setFocusable(this.masterLayout.layout.isMenuOpened);
-		this.masterLayout.layout.configEvents
+		this.masterLayout.layout.configEvents$
 			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.IS_MENU_OPENED))
 			.subscribe(value => this.setFocusable(!value));
 		this.headerControl
@@ -122,7 +122,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 
 	private propertyChanges() {
 		const events = [ObEMasterLayoutEventValues.HEADER_IS_CUSTOM, ObEMasterLayoutEventValues.HEADER_IS_SMALL];
-		this.masterLayout.header.configEvents
+		this.masterLayout.header.configEvents$
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
 				takeUntil(this.unsubscribe)

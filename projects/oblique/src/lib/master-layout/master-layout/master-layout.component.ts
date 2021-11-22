@@ -107,7 +107,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 
 	ngOnInit(): void {
 		this.globalEventsService.scroll$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.scrollTop());
-		this.masterLayout.layout.configEvents
+		this.masterLayout.layout.configEvents$
 			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION))
 			.subscribe(evt => this.updateJumpLinks(evt.value));
 		this.updateJumpLinks(!this.noNavigation);
@@ -141,7 +141,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 	}
 
 	private propertyChanges() {
-		merge(this.masterLayout.layout.configEvents, this.masterLayout.header.configEvents, this.masterLayout.footer.configEvents)
+		merge(this.masterLayout.layout.configEvents$, this.masterLayout.header.configEvents$, this.masterLayout.footer.configEvents$)
 			.pipe(takeUntil(this.unsubscribe))
 			.subscribe(event => {
 				switch (event.name) {

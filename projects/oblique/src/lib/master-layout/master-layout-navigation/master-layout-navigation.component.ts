@@ -92,7 +92,7 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 
 	private propertyChanges() {
 		const events = [ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE, ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH];
-		this.masterLayout.navigation.configEvents
+		this.masterLayout.navigation.configEvents$
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
 				takeUntil(this.unsubscribe)

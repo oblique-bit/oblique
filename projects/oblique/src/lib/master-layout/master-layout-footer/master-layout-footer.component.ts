@@ -30,7 +30,7 @@ export class ObMasterLayoutFooterComponent implements OnDestroy {
 	}
 
 	private propertyChanges() {
-		this.masterLayout.footer.configEvents.pipe(takeUntil(this.unsubscribe)).subscribe(event => {
+		this.masterLayout.footer.configEvents$.pipe(takeUntil(this.unsubscribe)).subscribe(event => {
 			switch (event.name) {
 				case ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM:
 					this.isCustom = event.value;

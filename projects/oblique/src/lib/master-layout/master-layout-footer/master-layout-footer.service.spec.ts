@@ -17,12 +17,12 @@ describe('MasterLayoutFooterService', () => {
 		expect(masterLayoutFooterService).toBeTruthy();
 	});
 
-	describe('test configEvents', () => {
+	describe('test configEvents$', () => {
 		it('should get configEvents  when true', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'configEvents', 'get');
+			const spy = jest.spyOn(masterLayoutFooterService, 'configEvents$', 'get');
 			let newValue: Observable<ObIMasterLayoutEvent> = new Subject<ObIMasterLayoutEvent>();
-			newValue = masterLayoutFooterService.configEvents;
-			const mockResult = masterLayoutFooterService.configEvents;
+			newValue = masterLayoutFooterService.configEvents$;
+			const mockResult = masterLayoutFooterService.configEvents$;
 			expect(spy).toHaveBeenCalled();
 			expect(mockResult).toEqual(newValue);
 			spy.mockRestore();

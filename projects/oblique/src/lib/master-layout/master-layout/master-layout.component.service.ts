@@ -19,7 +19,7 @@ export class ObMasterLayoutComponentService {
 
 	constructor(private readonly config: ObMasterLayoutConfig) {}
 
-	get configEvents(): Observable<ObIMasterLayoutEvent> {
+	get configEvents$(): Observable<ObIMasterLayoutEvent> {
 		return this.eventsS;
 	}
 

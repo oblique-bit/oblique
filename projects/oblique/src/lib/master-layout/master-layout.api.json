@@ -326,7 +326,7 @@
       "updated": "8.0.0",
       "variables": [
         {
-          "name": "configEvents",
+          "name": "configEvents$",
           "text": "Emits every time one of its property is changed",
           "type": "Observable<ObIMasterLayoutEvent>",
           "since": "4.0.0"
@@ -383,7 +383,7 @@
       "updated": "8.0.0",
       "variables": [
         {
-          "name": "configEvents",
+          "name": "configEvents$",
           "text": "Emits every time one of its property is changed",
           "type": "Observable<ObIMasterLayoutEvent>",
           "since": "4.0.0"
@@ -426,7 +426,7 @@
       "updated": "8.0.0",
       "variables": [
         {
-          "name": "configEvents",
+          "name": "configEvents$",
           "text": "Emits every time one of its property is changed",
           "type": "Observable<ObIMasterLayoutEvent>",
           "since": "4.0.0"
@@ -461,7 +461,7 @@
       "since": "4.0.0",
       "variables": [
         {
-          "name": "configEvents",
+          "name": "configEvents$",
           "text": "Emits every time one of its property is changed",
           "type": "Observable<ObIMasterLayoutEvent>",
           "since": "4.0.0"

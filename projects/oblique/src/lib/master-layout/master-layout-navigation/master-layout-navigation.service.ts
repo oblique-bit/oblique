@@ -47,7 +47,7 @@ export class ObMasterLayoutNavigationService {
 		});
 	}
 
-	get configEvents(): Observable<ObIMasterLayoutEvent> {
+	get configEvents$(): Observable<ObIMasterLayoutEvent> {
 		return this.events$;
 	}
 

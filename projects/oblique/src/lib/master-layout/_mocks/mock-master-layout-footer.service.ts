@@ -8,7 +8,7 @@ export class ObMockMasterLayoutFooterService {
 	isSticky = false;
 	hasLogoOnScroll = true;
 
-	get configEvents(): Observable<ObIMasterLayoutEvent> {
+	get configEvents$(): Observable<ObIMasterLayoutEvent> {
 		return of({} as ObIMasterLayoutEvent);
 	}
 }

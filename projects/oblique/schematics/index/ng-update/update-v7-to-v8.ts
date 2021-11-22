@@ -18,7 +18,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 				this.removeCompatCss(),
 				this.removeThemeService(),
 				this.migrateMasterLayoutProperties(),
-				this.migrateObEMasterLayoutEventValues()
+				this.migrateObEMasterLayoutEventValues(),
+				this.migrateConfigEvents()
 			])(tree, _context);
 		};
 	}
@@ -344,6 +345,20 @@ export class UpdateV7toV8 implements ObIMigrations {
 					.replace(/ObEMasterLayoutEventValues\.COLLAPSE\b/g, 'ObEMasterLayoutEventValues.IS_MENU_OPENED')
 					.replace(/ObEMasterLayoutEventValues\.FULL_WIDTH\b/g, 'ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH')
 					.replace(/ObEMasterLayoutEventValues\.SCROLLABLE\b/g, 'ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE');
+				if (fileContent !== replacement) {
+					tree.overwrite(filePath, replacement);
+				}
+			};
+			return applyInTree(tree, toApply, '*.ts');
+		};
+	}
+
+	private migrateConfigEvents(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Replacing configEvents');
+			const toApply = (filePath: string) => {
+				const fileContent = readFile(tree, filePath);
+				const replacement = fileContent.replace(/\.configEvents(?!\$)/g, '.configEvents$');
 				if (fileContent !== replacement) {
 					tree.overwrite(filePath, replacement);
 				}
