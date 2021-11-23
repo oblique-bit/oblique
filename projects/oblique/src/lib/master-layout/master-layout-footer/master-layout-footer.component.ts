@@ -15,7 +15,7 @@ import {ObEMasterLayoutEventValues} from '../master-layout.model';
 })
 export class ObMasterLayoutFooterComponent implements OnDestroy {
 	home = this.config.homePageRoute;
-	isCustom = this.masterLayout.footer.isCustom;
+	isCustom = this.config.footer.isCustom;
 	@ContentChildren('obFooterLink') readonly templates: QueryList<TemplateRef<any>>;
 	@HostBinding('class.ob-logo-on-scroll') hasLogoOnScroll = this.config.footer.hasLogoOnScroll;
 	private readonly unsubscribe = new Subject();
