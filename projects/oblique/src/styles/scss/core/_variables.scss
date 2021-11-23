@@ -1,112 +1,112 @@
 @import "palette";
 
-$gray-extra-light:          $gray-100 !default;
-$gray-lighter:              $gray-200 !default;
-$gray-light:                $gray-300 !default;
-$gray:                      $gray-400 !default;
-$gray-dark:                 $gray-500 !default;
-$gray-darker:               $gray-700 !default;
+$ob-gray-extra-light:          $ob-gray-100 !default;
+$ob-gray-lighter:              $ob-gray-200 !default;
+$ob-gray-light:                $ob-gray-300 !default;
+$ob-gray:                      $ob-gray-400 !default;
+$ob-gray-dark:                 $ob-gray-500 !default;
+$ob-gray-darker:               $ob-gray-700 !default;
 
-$brand-default:             $gray-800 !default;
-$brand-accent:              $venetian-red !default;
+$ob-default:             $ob-gray-800 !default;
+$ob-accent:              $ob-venetian-red !default;
 
-$brand-extra-light:         $primary-50 !default;
-$brand-light:               $primary-100 !default;
-$brand-primary:             $primary-500 !default;
-$brand-dark:                $primary-700 !default;
+$ob-extra-light:         $ob-primary-50 !default;
+$ob-light:               $ob-primary-100 !default;
+$ob-primary:             $ob-primary-500 !default;
+$ob-dark:                $ob-primary-700 !default;
 
-$brand-success-light:       $success-100 !default;
-$brand-success:             $success-800 !default;
-$brand-success-dark:        $success-900 !default;
+$ob-success-light:       $ob-success-100 !default;
+$ob-success:             $ob-success-800 !default;
+$ob-success-dark:        $ob-success-900 !default;
 
-$brand-warning-light:       $warning-50 !default;
-$brand-warning:             $warning-500 !default;
-$brand-warning-dark:        $warning-700 !default;
+$ob-warning-light:       $ob-warning-50 !default;
+$ob-warning:             $ob-warning-500 !default;
+$ob-warning-dark:        $ob-warning-700 !default;
 
-$brand-error-light:         $error-100 !default;
-$brand-error:               $error-500 !default;
-$brand-error-dark:          $error-700 !default;
+$ob-error-light:         $ob-error-100 !default;
+$ob-error:               $ob-error-500 !default;
+$ob-error-dark:          $ob-error-700 !default;
 
-$duration-default:              .6s !default;
-$duration-fast:                .25s !default;
+$ob-duration-default:              .6s !default;
+$ob-duration-fast:                .25s !default;
 
-$smaller:                       .875 !default;
-$smallest:                      .8 !default;
-$bigger:                        1.25 !default;
-$biggest:                       1.65 !default;
-$font-size-base:                1rem !default;
-$font-size-xl:                  $font-size-base * $biggest !default;
-$font-size-lg:                  $font-size-base * $bigger !default;
-$font-size-sm:                  $font-size-base * $smaller !default;
-$font-size-xs:                  $font-size-base * $smallest !default;
-$font-size-normal:              1em !default;
-$font-size-biggest:             $font-size-normal * $biggest !default;
-$font-size-bigger:              $font-size-normal * $bigger !default;
-$font-size-smaller:             $font-size-normal * $smaller !default;
-$font-size-smallest:            $font-size-normal * $smallest !default;
+$ob-smaller:                       .875 !default;
+$ob-smallest:                      .8 !default;
+$ob-bigger:                        1.25 !default;
+$ob-biggest:                       1.65 !default;
+$ob-font-size-base:                1rem !default;
+$ob-font-size-xl:                  $ob-font-size-base * $ob-biggest !default;
+$ob-font-size-lg:                  $ob-font-size-base * $ob-bigger !default;
+$ob-font-size-sm:                  $ob-font-size-base * $ob-smaller !default;
+$ob-font-size-xs:                  $ob-font-size-base * $ob-smallest !default;
+$ob-font-size-normal:              1em !default;
+$ob-font-size-biggest:             $ob-font-size-normal * $ob-biggest !default;
+$ob-font-size-bigger:              $ob-font-size-normal * $ob-bigger !default;
+$ob-font-size-smaller:             $ob-font-size-normal * $ob-smaller !default;
+$ob-font-size-smallest:            $ob-font-size-normal * $ob-smallest !default;
 
-$spacing-xl:                   32px !default;
-$spacing-lg:                   24px !default;
-$spacing-default:              16px !default;
-$spacing-sm:                    8px !default;
-$spacing-xs:                    4px !default;
+$ob-spacing-xl:                   32px !default;
+$ob-spacing-lg:                   24px !default;
+$ob-spacing-default:              16px !default;
+$ob-spacing-sm:                    8px !default;
+$ob-spacing-xs:                    4px !default;
 
-$body-width:                  248px !default;
+$ob-body-width:                  248px !default;
 
-$z-index-default:                 0 !default;
-$z-index-controls:               10 !default;
-$z-index-layout:                101 !default;
-$z-index-widget:                200 !default;
-$z-index-overlay:               1005 !default;	// because material overlay is 1000
-$z-index-overlay-top:           1010 !default;
+$ob-z-index-defaul:                 0 !default;
+$ob-z-index-controls:               10 !default;
+$ob-z-index-layout:                101 !default;
+$ob-z-index-widget:                200 !default;
+$ob-z-index-overlay:               1005 !default;	// because material overlay is 1000
+$ob-z-index-overlay-top:           1010 !default;
 
-$brand-logo-width:            216px !default;
-$brand-logo-height:            55px !default;
-$brand-logo-height-collapsed:  34px !default;
-$brand-logo-width-collapsed:   30px !default;
+$ob-logo-width:            216px !default;
+$ob-logo-height:            55px !default;
+$ob-logo-height-collapsed:  34px !default;
+$ob-logo-width-collapsed:   30px !default;
 
-$header-height:               145px !default;
-$header-height-md:            108px !default;
-$header-height-no-navigation:  92px !default;
-$header-height-collapsed:      55px !default;
-$brand-line-width:              5px !default;
-$navigation-height:            53px !default;
+$ob-header-height:               145px !default;
+$ob-header-height-md:            108px !default;
+$ob-header-height-no-navigation:  92px !default;
+$ob-header-height-collapsed:      55px !default;
+$ob-line-width:                    5px !default;
+$ob-navigation-height:            53px !default;
 
-$footer-height:                75px !default;
-$footer-height-md:             60px !default;
-$footer-height-sm:             28px !default;
-$footer-height-collapsed:     151px !default;
+$ob-footer-height:                75px !default;
+$ob-footer-height-md:             60px !default;
+$ob-footer-height-sm:             28px !default;
+$ob-footer-height-collapsed:     151px !default;
 
-$layout-collapse:               992px !default; // Breakpoint at which the layout becomes expanded.
+$ob-layout-collapse:               992px !default; // Breakpoint at which the layout becomes expanded.
 
-$border-radius-base:            4px !default;
+$ob-border-radius-base:            4px !default;
 
-$navigation-scrollable-padding: 2 * $spacing-default !default;
+$ob-navigation-scrollable-padding: 2 * $ob-spacing-default !default;
 
-$column-width: 20% !default;
+$ob-column-width: 20% !default;
 
-$off-canvas-sidebar-width: 40% !default;
-$off-canvas-sidebar-collapsed-width: 80% !default;
+$ob-off-canvas-sidebar-width: 40% !default;
+$ob-off-canvas-sidebar-collapsed-width: 80% !default;
 
-$alert-symbol-width: 54px !default;
-$column-layout-toggle-height: 60px !default;
-$column-layout-toggle-width: $spacing-default !default;
-$column-layout-toggle-radius: $spacing-default !default;
+$ob-alert-symbol-width: 54px !default;
+$ob-column-layout-toggle-height: 60px !default;
+$ob-column-layout-toggle-width: $ob-spacing-default !default;
+$ob-column-layout-toggle-radius: $ob-spacing-default !default;
 
-$sticky-element-height: 64px !default;
-$sticky-element-height-sm: 45px !default;
-$sticky-element-height-lg: 98px !default;
+$ob-sticky-element-height: 64px !default;
+$ob-sticky-element-height-sm: 45px !default;
+$ob-sticky-element-height-lg: 98px !default;
 
-$stepper-size: 26px !default;
-$stepper-size-sm: 16px !default;
-$stepper-size-lg: 38px !default;
-$stepper-font-size: 12px !default;
-$stepper-sm-font-size: 10px !default;
-$stepper-lg-font-size: 16px !default;
+$ob-stepper-size: 26px !default;
+$ob-stepper-size-sm: 16px !default;
+$ob-stepper-size-lg: 38px !default;
+$ob-stepper-font-size: 12px !default;
+$ob-stepper-sm-font-size: 10px !default;
+$ob-stepper-lg-font-size: 16px !default;
 
-$table-collapsed-header-width: 150px !default;
+$ob-table-collapsed-header-width: 150px !default;
 
-$grid-breakpoints: (
+$ob-grid-breakpoints: (
 	xs: 0,
 	sm: 576px,
 	md: 768px,
@@ -114,5 +114,5 @@ $grid-breakpoints: (
 	xl: 1200px
 ) !default;
 
-$font: 'Frutiger Neue', Roboto, Arial, system-ui, -apple-system, BlinkMacSystemFont, sans-serif !default;
-$icon-font-family: 'Font Awesome 5 Free' !default;
+$ob-font: 'Frutiger Neue', Roboto, Arial, system-ui, -apple-system, BlinkMacSystemFont, sans-serif !default;
+$ob-icon-font-family: 'Font Awesome 5 Free' !default;

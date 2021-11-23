@@ -2,10 +2,10 @@
 
 .ob-file-info {
 	.ob-table .mat-button-base.ob-button {
-		width: $spacing-xl;
-		height: $spacing-xl;
-		line-height: $spacing-xl;
-		font-size: $font-size-base;
+		width: $ob-spacing-xl;
+		height: $ob-spacing-xl;
+		line-height: $ob-spacing-xl;
+		font-size: $ob-font-size-base;
 
 		.ob-icon {
 			position: static;

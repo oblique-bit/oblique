@@ -4,12 +4,12 @@
 
 .mat-dialog-container {
 	box-shadow: none;
-	@include dropShadow($color: $gray-500);
+	@include ob-dropShadow($color: $ob-gray-500);
 
 	.mat-dialog-title {
-		@include h6;
+		@include ob-h6;
 		position: relative;
-		margin-bottom: $spacing-default + $spacing-sm;
+		margin-bottom: $ob-spacing-default + $ob-spacing-sm;
 	}
 	.mat-button.close {
 		position: absolute;
@@ -29,7 +29,7 @@
 			left: 11px;
 			height: 14px;
 			width: 2px;
-			background-color: $black;
+			background-color: $ob-black;
 		}
 		&::before {
 			transform: rotate(45deg);
@@ -39,14 +39,14 @@
 		}
 	}
 	.mat-dialog-content {
-		@include body1;
+		@include ob-body1;
 	}
 	.mat-dialog-actions {
-		margin-top: $spacing-default + $spacing-sm;
+		margin-top: $ob-spacing-default + $ob-spacing-sm;
 		justify-content: flex-end;
 
 		.mat-button + .mat-button {
-			margin-left: $spacing-default;
+			margin-left: $ob-spacing-default;
 		}
 	}
 }

@@ -15,19 +15,19 @@
 }
 
 .d-layout-collapsed {
-	@include layout-collapse-up() {
+	@include ob-layout-collapse-up() {
 		display: none;
 	}
 }
 
 .d-layout-expanded {
-	@include layout-collapse-down() {
+	@include ob-layout-collapse-down() {
 		display: none;
 	}
 }
 
 .hover-effect {
 	> * {
-		@include nav-hover();
+		@include ob-nav-hover();
 	}
 }

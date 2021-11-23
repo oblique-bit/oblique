@@ -11,9 +11,9 @@
 }
 
 // If dropdown toggle button variant is different from main button variant, remove shared border:
-@include mixed-dropdown-btn-group(default);
-@include mixed-dropdown-btn-group(primary);
-@include mixed-dropdown-btn-group(success);
-@include mixed-dropdown-btn-group(info);
-@include mixed-dropdown-btn-group(warning);
-@include mixed-dropdown-btn-group(danger);
+@include ob-mixed-dropdown-btn-group(default);
+@include ob-mixed-dropdown-btn-group(primary);
+@include ob-mixed-dropdown-btn-group(success);
+@include ob-mixed-dropdown-btn-group(info);
+@include ob-mixed-dropdown-btn-group(warning);
+@include ob-mixed-dropdown-btn-group(danger);

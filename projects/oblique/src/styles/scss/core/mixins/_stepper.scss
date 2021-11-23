@@ -1,6 +1,6 @@
 @import "../variables";
 
-@mixin stepper-state($bullet-color, $bullet-bg, $bullet-border, $bg-color: false, $feedback-icon: false) {
+@mixin ob-stepper-state($bullet-color, $bullet-bg, $bullet-border, $bg-color: false, $feedback-icon: false) {
 	&::before {
 		color: $bullet-color;
 		background-color: $bullet-bg;
@@ -20,7 +20,7 @@
 		&.ob-feedback::before {
 			@at-root #{selector-append(".ob-font-awesome", &)} {
 				content: fa-content($feedback-icon);
-				font-family: $icon-font-family;
+				font-family: $ob-icon-font-family;
 				font-weight: 900;
 				-webkit-font-smoothing: antialiased;
 				-moz-osx-font-smoothing: grayscale;
@@ -29,7 +29,7 @@
 	}
 }
 
-@mixin stepper-variant($node-font-size, $node-step-size) {
+@mixin ob-stepper-variant($node-font-size, $node-step-size) {
 	.ob-nav-step {
 		&::before {
 			font-size: $node-font-size;

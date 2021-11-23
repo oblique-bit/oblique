@@ -5,23 +5,23 @@
 .ob-top-control-btn {
 	visibility: hidden; // A11y: ensure element is not reachable when tabbing.
 	position: fixed;
-	z-index: $z-index-widget;
+	z-index: $ob-z-index-widget;
 	opacity: 0;
 	white-space: nowrap;
 	width: 200px;
 	padding: 8px 14px;
 	bottom: -52px;
 	right: -150px;
-	color: $gray-dark;
+	color: $ob-gray-dark;
 	border: none;
-	border-bottom-left-radius: $border-radius-base;
-	border-top-left-radius: $border-radius-base;
-	background-color: rgba(red($gray-light), green($gray-light), blue($gray-light), 0.65);
-	transition: all $duration-default ease-in-out;
+	border-bottom-left-radius: $ob-border-radius-base;
+	border-top-left-radius: $ob-border-radius-base;
+	background-color: rgba(red($ob-gray-light), green($ob-gray-light), blue($ob-gray-light), 0.65);
+	transition: all $ob-duration-default ease-in-out;
 
 	.ob-control-icon {
 		float: left;
-		font-size: $font-size-lg;
+		font-size: $ob-font-size-lg;
 
 		.ob-font-awesome & {
 			font-size: 36px;
@@ -45,9 +45,9 @@
 
 	&:hover, &:focus {
 		text-decoration: none;
-		color: $brand-default;
-		background-color: $gray-light;
-		@include dropShadow();
+		color: $ob-default;
+		background-color: $ob-gray-light;
+		@include ob-dropShadow();
 	}
 
 	.ob-master-layout-scrolling & {
@@ -55,8 +55,8 @@
 		opacity: 0.85;
 		bottom: 15px;
 
-		@include layout-collapse-up() {
-			bottom: $footer-height - 30;
+		@include ob-layout-collapse-up() {
+			bottom: $ob-footer-height - 30;
 		}
 
 		&:hover, &:focus {
@@ -66,7 +66,7 @@
 	}
 
 	.ob-header-expanded & {
-		@include layout-collapse-down() {
+		@include ob-layout-collapse-down() {
 			display: none;
 		}
 	}

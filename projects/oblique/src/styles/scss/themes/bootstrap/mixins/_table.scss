@@ -1,11 +1,11 @@
-@mixin table-variant($name, $bg-color, $font-color) {
+@mixin ob-table-variant($name, $bg-color, $ob-font-color) {
 	.#{$name},
 	.table-hover tbody.#{$name}:hover, // cancels bootstrap rule
 	.table-striped.#{$name} tbody tr:nth-of-type(odd), // table
 	.table-striped tbody.#{$name} tr:nth-of-type(odd), // tbody
 	.table-striped tbody tr:nth-of-type(odd).#{$name} {
 		background-color: $bg-color;
-		color: $font-color;
+		color: $ob-font-color;
 	}
 
 	// cancels bootstrap rule
@@ -21,6 +21,6 @@
 	.table-hover tbody tr.#{$name}:hover, // tr
 	.table-hover tbody tr:hover .#{$name} { // td, th
 		background-color: darken($bg-color, 11%);
-		color: $font-color;
+		color: $ob-font-color;
 	}
 }

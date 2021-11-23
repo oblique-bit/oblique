@@ -2,30 +2,30 @@
 @import "variables";
 @import "mixins/table";
 
-@include table-variant('table-active', $brand-light, $brand-default);
-@include table-variant('table-primary', $brand-primary, $white);
-@include table-variant('table-secondary', $secondary, $white);
-@include table-variant('table-success', $brand-success-light, $brand-default);
-@include table-variant('table-warning', $brand-warning-light, $brand-default);
-@include table-variant('table-danger', $brand-error-light, $brand-default);
+@include ob-table-variant('table-active', $ob-light, $ob-default);
+@include ob-table-variant('table-primary', $ob-primary, $ob-white);
+@include ob-table-variant('table-secondary', $ob-secondary, $ob-white);
+@include ob-table-variant('table-success', $ob-success-light, $ob-default);
+@include ob-table-variant('table-warning', $ob-warning-light, $ob-default);
+@include ob-table-variant('table-danger', $ob-error-light, $ob-default);
 
 .table {
 	thead th {
-		border-bottom: 1px solid $gray-light;
+		border-bottom: 1px solid $ob-gray-light;
 	}
 
 	td, th {
-		border-top: 1px solid $gray-light;
-		border-bottom: 1px solid $gray-light;
-		padding: $spacing-sm;
+		border-top: 1px solid $ob-gray-light;
+		border-bottom: 1px solid $ob-gray-light;
+		padding: $ob-spacing-sm;
 		text-align: inherit;
 	}
 }
 
 caption {
-	padding-top: $spacing-sm;
-	padding-bottom: $spacing-sm;
-	color: $gray-dark;
+	padding-top: $ob-spacing-sm;
+	padding-bottom: $ob-spacing-sm;
+	color: $ob-gray-dark;
 	font-weight: 700;
 	text-align: left;
 	caption-side: top;

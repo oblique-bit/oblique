@@ -22,16 +22,16 @@ $arrow-lg-size: 14px;
 		right: 0;
 		min-width: 300px;
 		max-height: 0;
-		padding: 0 $spacing-default;
-		margin-top: $spacing-default;
+		padding: 0 $ob-spacing-default;
+		margin-top: $ob-spacing-default;
 		margin-left: -50%;
 		overflow: hidden;
 		white-space: normal;	// to cancel "nowrap" value from .ob-master-layout-header-controls
-		background-color: $white;
+		background-color: $ob-white;
 		transition-property: max-height, padding;
-		transition-duration: $duration-default;
-		z-index: $z-index-widget;
-		@include dropShadow();
+		transition-duration: $ob-duration-default;
+		z-index: $ob-z-index-widget;
+		@include ob-dropShadow();
 
 		&.middle {
 			transform: translateX(calc(-50% + 13px)); //empiric value
@@ -42,7 +42,7 @@ $arrow-lg-size: 14px;
 		}
 
 		&.right {
-			margin: $spacing-default 0 0 0;
+			margin: $ob-spacing-default 0 0 0;
 			transform: translateX(-17px); // empiric value
 
 			.ob-control-item & {
@@ -52,7 +52,7 @@ $arrow-lg-size: 14px;
 
 		&.left {
 			transform: translateX(calc(-100% + 37px)); // empiric value
-			margin: $spacing-default 0 0 0;
+			margin: $ob-spacing-default 0 0 0;
 
 			.ob-control-item & {
 				transform: translateX(calc(-100% + 41px)); // empiric value
@@ -62,8 +62,8 @@ $arrow-lg-size: 14px;
 
 	&.ob-expanded .ob-dropdown-content {
 		max-height: calc(100vh - 200px);
-		padding: $spacing-default;
-		border: 1px solid $gray-light;
+		padding: $ob-spacing-default;
+		border: 1px solid $ob-gray-light;
 		overflow: visible;
 
 		&::before,
@@ -72,13 +72,13 @@ $arrow-lg-size: 14px;
 			display: block;
 			position: absolute;
 			border-style: solid;
-			transition: right $duration-default, left $duration-default;
+			transition: right $ob-duration-default, left $ob-duration-default;
 		}
 
 		&::before {
 			top: -$arrow-size;
 			border-width: 0 $arrow-size $arrow-size;
-			border-color: $gray-light transparent;
+			border-color: $ob-gray-light transparent;
 		}
 
 		&.middle::before {
@@ -112,22 +112,22 @@ $arrow-lg-size: 14px;
 		}
 	}
 
-	@include layout-collapse-down() {
+	@include ob-layout-collapse-down() {
 		&.ob-control-link {
 			position: relative;
 
 			.ob-dropdown-content {
 				position: fixed;
-				top: $header-height-md;
+				top: $ob-header-height-md;
 				height: 0;
 				margin: 0;
 				transform: none;
 			}
 
 			&.open {
-				@include bubble-tail-border(
-						$brand-accent,
-						$brand-accent,
+				@include ob-bubble-tail-border(
+						$ob-accent,
+						$ob-accent,
 					$width: 8px,
 					$align: left,
 					$align-value: 20px,
@@ -137,8 +137,8 @@ $arrow-lg-size: 14px;
 
 				.ob-dropdown-content {
 					height: auto;
-					padding: $spacing-default;
-					border-color: transparent transparent transparent $gray-light;
+					padding: $ob-spacing-default;
+					border-color: transparent transparent transparent $ob-gray-light;
 
 					&::after,
 					&::before {

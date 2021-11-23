@@ -8,11 +8,11 @@
 
 	.mat-card-header {
 		&:first-child {
-			padding-top: $spacing-xs;
+			padding-top: $ob-spacing-xs;
 		}
 
 		.mat-card-title {
-			@include h5;
+			@include ob-h5;
 			margin-bottom: 0;
 		}
 
@@ -25,7 +25,7 @@
 	}
 
 	.mat-card-avatar {
-		margin-top: $spacing-xs;
+		margin-top: $ob-spacing-xs;
 		border-radius: 4px;
 	}
 
@@ -35,11 +35,11 @@
 
 	.mat-card-subtitle,
 	.mat-card-content {
-		@include body2;
+		@include ob-body2;
 	}
 
 	.mat-card-header + .mat-card-content {
-		margin-top: $spacing-default;
+		margin-top: $ob-spacing-default;
 	}
 
 	.mat-card-actions {
@@ -48,18 +48,18 @@
 
 	&.ob-selectable {
 		&.ob-selected {
-			background-color: $brand-extra-light;
+			background-color: $ob-extra-light;
 		}
 
 		&::before {
 			position: absolute;
-			top: $spacing-sm;
-			right: $spacing-sm;
+			top: $ob-spacing-sm;
+			right: $ob-spacing-sm;
 			line-height: 1;
-			font-family: $icon-font-family;
+			font-family: $ob-icon-font-family;
 			font-weight: 800;
 			color: transparent;
-			border: 3px solid $brand-primary;
+			border: 3px solid $ob-primary;
 		}
 
 		&[role="checkbox"] {
@@ -69,8 +69,8 @@
 				padding: 2px;
 			}
 			&.ob-selected::before {
-				color: $white;
-				background-color: $brand-primary;
+				color: $ob-white;
+				background-color: $ob-primary;
 			}
 		}
 
@@ -83,7 +83,7 @@
 			}
 
 			&.ob-selected::before {
-				color: $brand-primary;
+				color: $ob-primary;
 			}
 		}
 	}

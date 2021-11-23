@@ -21,15 +21,15 @@
 			.dropdown-item.active,
 			.dropdown-item:active {
 				background-color: #f8f9fa;
-				color: $brand-default;
+				color: $ob-default;
 			}
 
 			.dropdown {
-				@include layout-collapse-down() {
+				@include ob-layout-collapse-down() {
 					&.show {
-						@include bubble-tail-border(
-								$brand-accent,
-								$brand-accent,
+						@include ob-bubble-tail-border(
+								$ob-accent,
+								$ob-accent,
 							$width: 8px,
 							$align: left,
 							$align-value: 18px,
@@ -42,13 +42,13 @@
 				.dropdown-menu {
 					border-radius: 0;
 
-					@include layout-collapse-down() {
+					@include ob-layout-collapse-down() {
 						position: fixed !important;
-						top: $header-height-md !important;
+						top: $ob-header-height-md !important;
 						left: 0;
 						right: 0;
 						bottom: 0;
-						padding: $spacing-default;
+						padding: $ob-spacing-default;
 						margin: 0;
 						transform: none !important;
 						height: 100%;
@@ -63,18 +63,18 @@
 						}
 					}
 
-					@include layout-collapse-up() {
+					@include ob-layout-collapse-up() {
 						position: absolute;
-						left: $spacing-default !important;
-						top: $spacing-default !important;
+						left: $ob-spacing-default !important;
+						top: $ob-spacing-default !important;
 						min-width: 260px;
-						padding: $spacing-default;
+						padding: $ob-spacing-default;
 						margin-top: -2px;
-						max-height: calc(100vh - #{$header-height});
+						max-height: calc(100vh - #{$ob-header-height});
 
-						@include bubble-tail-border(
-								$white,
-								$gray-light,
+						@include ob-bubble-tail-border(
+								$ob-white,
+								$ob-gray-light,
 							$align: right,
 							$align-value: 14px,
 							$position: absolute
@@ -92,7 +92,7 @@
 				}
 			}
 
-			@include layout-collapse-down() {
+			@include ob-layout-collapse-down() {
 				// Don't display control tooltips on small viewports:
 				> .tooltip,
 				> .ob-control-link > .tooltip {

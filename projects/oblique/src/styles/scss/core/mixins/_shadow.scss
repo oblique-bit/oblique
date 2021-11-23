@@ -1,6 +1,6 @@
 @import "../variables";
 
-@mixin dropShadow($direction: down-right, $color: $gray-400) {
+@mixin ob-dropShadow($direction: down-right, $color: $ob-gray-400) {
 	$x-offset: 2px;
 	$y-offset: 4px;
 	@if $direction == down-left {
@@ -16,6 +16,6 @@
 	filter: drop-shadow($x-offset $y-offset 4px $color);
 }
 
-@mixin innerBottomShadow() {
-	box-shadow: inset 0 -10px 10px -10px $gray-300;
+@mixin ob-innerBottomShadow() {
+	box-shadow: inset 0 -10px 10px -10px $ob-gray-300;
 }

@@ -2,7 +2,7 @@
 @import "../themes/bootstrap/variables";
 
 // Mixin for generating new callout styles:
-@mixin callout-styles($text, $bg, $border) {
+@mixin ob-callout-styles($text, $bg, $border) {
 	background-color: $bg;
 	border-color: $border;
 
@@ -17,7 +17,7 @@
 
 .callout {
 	padding: 1.25rem;
-	margin-bottom: $spacing-default;
+	margin-bottom: $ob-spacing-default;
 	border-left: 3px solid transparent;
 
 	h2, h3, h4 {
@@ -44,28 +44,28 @@
 	}
 
 	.callout-link {
-		color: $brand-default;
+		color: $ob-default;
 		text-decoration: underline;
 		font-weight: 700;
 	}
 }
 
 .callout-default {
-	@include callout-styles($brand-light, $gray-extra-light, $secondary);
+	@include ob-callout-styles($ob-light, $ob-gray-extra-light, $ob-secondary);
 }
 
 .callout-success {
-	@include callout-styles($brand-success-dark, $brand-success-light, $brand-success);
+	@include ob-callout-styles($ob-success-dark, $ob-success-light, $ob-success);
 }
 
 .callout-info {
-	@include callout-styles($secondary, $brand-light, $secondary);
+	@include ob-callout-styles($ob-secondary, $ob-light, $ob-secondary);
 }
 
 .callout-warning {
-	@include callout-styles($brand-warning-dark, $brand-warning-light, $brand-warning);
+	@include ob-callout-styles($ob-warning-dark, $ob-warning-light, $ob-warning);
 }
 
 .callout-danger {
-	@include callout-styles($brand-error-dark, $brand-error-light, $brand-error);
+	@include ob-callout-styles($ob-error-dark, $ob-error-light, $ob-error);
 }

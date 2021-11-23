@@ -5,20 +5,20 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: $spacing-lg;
-	border: 1px dashed $primary-700;
-	border-radius: $border-radius-base;
-	background-color: $primary-50;
+	padding: $ob-spacing-lg;
+	border: 1px dashed $ob-primary-700;
+	border-radius: $ob-border-radius-base;
+	background-color: $ob-primary-50;
 
 	.ob-progress-heading {
-		color: $primary-500;
+		color: $ob-primary-500;
 	}
 
 	.ob-file-progress {
 		width: 100%;
 
 		+ .ob-file-progress {
-			margin-top: $spacing-sm;
+			margin-top: $ob-spacing-sm;
 		}
 	}
 
@@ -26,25 +26,25 @@
 		width: 100%;
 
 		+ .ob-file-progress-bar {
-			margin-top: -$spacing-sm;
+			margin-top: -$ob-spacing-sm;
 		}
 	}
 
 	.ob-file-progress-bar {
 		display: flex;
 		align-items: center;
-		height: $spacing-xl;
+		height: $ob-spacing-xl;
 
 		.mat-button-base.ob-button {
-			width: $spacing-xl;
-			height: $spacing-xl;
-			line-height: $spacing-xl;
-			font-size: $font-size-base;
+			width: $ob-spacing-xl;
+			height: $ob-spacing-xl;
+			line-height: $ob-spacing-xl;
+			font-size: $ob-font-size-base;
 		}
 	}
 
 	.mat-icon-button {
-		margin-left: $spacing-sm;
+		margin-left: $ob-spacing-sm;
 
 		.ob-icon {
 			position: static;

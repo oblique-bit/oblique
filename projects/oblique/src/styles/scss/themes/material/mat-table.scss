@@ -13,25 +13,25 @@
 		.mat-footer-cell,
 		.mat-header-cell {
 			font-size: inherit;
-			padding: $spacing-sm;
+			padding: $ob-spacing-sm;
 
 			@at-root #{selector-append(".ob-table-sm", &)} {
-				padding: $spacing-xs;
+				padding: $ob-spacing-xs;
 			}
 
 			@at-root #{selector-append(".ob-table-lg", &)} {
-				padding: $spacing-default;
+				padding: $ob-spacing-default;
 			}
 		}
 
 		@at-root #{selector-append("mat-table", &)}:not(.table-plain) .mat-row:nth-child(odd) {
-			background-color: $gray-extra-light;
+			background-color: $ob-gray-extra-light;
 		}
 	}
 
 	.mat-header-row {
 		button, .mat-sort-header-arrow {
-			color: $black;
+			color: $ob-black;
 			font-size: 14px;
 		}
 	}
@@ -42,15 +42,15 @@
 	.mat-row,
 	.mat-header-row,
 	.mat-footer-row {
-		border-color: $gray;
+		border-color: $ob-gray;
 
 		.mat-cell {
-			color: $brand-default;
+			color: $ob-default;
 		}
 	}
 
 	.mat-row:hover {
-		background-color: $brand-extra-light;
+		background-color: $ob-extra-light;
 	}
 
 	.mat-sort-header {

@@ -1,4 +1,4 @@
-@mixin badge-styles($bg-color, $font-color) {
+@mixin ob-badge-styles($bg-color, $ob-font-color) {
 	background-color: $bg-color;
-	color: $font-color;
+	color: $ob-font-color;
 }

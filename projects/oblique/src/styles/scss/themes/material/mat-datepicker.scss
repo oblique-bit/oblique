@@ -2,5 +2,5 @@
 
 .mat-datepicker-content {
 	box-shadow: none;
-	@include dropShadow();
+	@include ob-dropShadow();
 }

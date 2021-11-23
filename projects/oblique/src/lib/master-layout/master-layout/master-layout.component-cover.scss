@@ -18,24 +18,24 @@
 			height: 100%;
 			overflow-y: auto;
 			overflow-x: hidden;
-			background-color: rgba(red($white), green($white), blue($white), 0.9);
+			background-color: rgba(red($ob-white), green($ob-white), blue($ob-white), 0.9);
 
-			@include layout-collapse-up() {
-				min-height: calc(100vh - #{$header-height} - #{$footer-height-md});
+			@include ob-layout-collapse-up() {
+				min-height: calc(100vh - #{$ob-header-height} - #{$ob-footer-height-md});
 				margin-left: 35%;
 				width: 45%;
 
 				@at-root #{selector-append(".ob-no-navigation", &)} {
-					min-height: calc(100vh - #{$header-height-no-navigation} - #{$footer-height-md});
+					min-height: calc(100vh - #{$ob-header-height-no-navigation} - #{$ob-footer-height-md});
 				}
 			}
 
-			@include media-breakpoint-up(lg) {
+			@include ob-media-breakpoint-up(lg) {
 				margin-left: 45%;
 				width: 38%;
 			}
 
-			@include media-breakpoint-up(xl) {
+			@include ob-media-breakpoint-up(xl) {
 				margin-left: 50%;
 				width: 33%;
 			}
@@ -45,17 +45,17 @@
 		.ob-cover-alert {
 			display: flex;
 			flex-wrap: wrap;
-			margin-right: -$spacing-default;
-			margin-left: -$spacing-default;
-			margin-bottom: $spacing-lg;
+			margin-right: -$ob-spacing-default;
+			margin-left: -$ob-spacing-default;
+			margin-bottom: $ob-spacing-lg;
 			border: none;
 		}
 
 		.ob-cover-header {
-			padding: 0 $spacing-default;
+			padding: 0 $ob-spacing-default;
 
-			@include layout-collapse-up() {
-				background-color: $white;
+			@include ob-layout-collapse-up() {
+				background-color: $ob-white;
 			}
 		}
 	}

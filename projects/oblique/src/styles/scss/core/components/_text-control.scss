@@ -14,19 +14,19 @@
 		border: none;
 		padding: 0;
 		opacity: 0;
-		transition: opacity $duration-fast;
+		transition: opacity $ob-duration-fast;
 
 		.mat-icon.ob-icon:not(.fa) {
 			position: static;
 		}
 
 		.fa {
-			color: $gray;
-			transition: color $duration-fast;
+			color: $ob-gray;
+			transition: color $ob-duration-fast;
 		}
 
 		&:hover .fa {
-			color: $gray-darker;
+			color: $ob-gray-darker;
 		}
 	}
 

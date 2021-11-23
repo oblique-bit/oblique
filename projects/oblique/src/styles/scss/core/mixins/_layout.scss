@@ -1,25 +1,25 @@
 @import "../variables";
 
-@mixin layout-collapse-down() {
-	@media (max-width: $layout-collapse) {
+@mixin ob-layout-collapse-down() {
+	@media (max-width: $ob-layout-collapse) {
 		@content;
 	}
 }
 
-@mixin layout-collapse-up() {
-	@media (min-width: $layout-collapse) {
+@mixin ob-layout-collapse-up() {
+	@media (min-width: $ob-layout-collapse) {
 		@content;
 	}
 }
 
-@mixin media-breakpoint-up($name) {
-	@media (min-width: map-get($grid-breakpoints, $name)) {
+@mixin ob-media-breakpoint-up($name) {
+	@media (min-width: map-get($ob-grid-breakpoints, $name)) {
 		@content;
 	}
 }
 
-@mixin media-breakpoint-down($name) {
-	@media (max-width: map-get($grid-breakpoints, $name)) {
+@mixin ob-media-breakpoint-down($name) {
+	@media (max-width: map-get($ob-grid-breakpoints, $name)) {
 		@content;
 	}
 }

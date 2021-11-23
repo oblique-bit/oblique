@@ -8,21 +8,21 @@
 }
 
 .badge-default {
-	@include badge-styles($white, $brand-default);
-	border-color: $gray;
+	@include ob-badge-styles($ob-white, $ob-default);
+	border-color: $ob-gray;
 }
 .badge-primary {
-	@include badge-styles($brand-primary, $white);
+	@include ob-badge-styles($ob-primary, $ob-white);
 }
 .badge-secondary {
-	@include badge-styles($secondary, $white);
+	@include ob-badge-styles($ob-secondary, $ob-white);
 }
 .badge-success {
-	@include badge-styles($brand-success, $white);
+	@include ob-badge-styles($ob-success, $ob-white);
 }
 .badge-warning {
-	@include badge-styles($brand-warning, $white);
+	@include ob-badge-styles($ob-warning, $ob-white);
 }
 .badge-danger {
-	@include badge-styles($brand-error, $white);
+	@include ob-badge-styles($ob-error, $ob-white);
 }

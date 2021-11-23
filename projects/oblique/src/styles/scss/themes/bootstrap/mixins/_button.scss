@@ -1,4 +1,4 @@
-@mixin btn-variant(
+@mixin ob-btn-variant(
 	$color, $background, $border,
 	$selected-color, $selected-background, $selected-border,
 	$active-color) {
@@ -56,21 +56,21 @@
 	}
 }
 
-@mixin mixed-dropdown-btn-group($variant) {
+@mixin ob-mixed-dropdown-btn-group($variant) {
 	.btn-group > .btn-#{$variant} + .dropdown-toggle:not(.btn-#{$variant}) {
 		margin-left: 0;
 		border-left: none;
 	}
 }
 
-@mixin box-shadow-secondary() {
+@mixin ob-box-shadow-secondary() {
 	box-shadow: none;
 
 	&,
 	&:not(:disabled):not(.disabled).active {
 		&:focus,
 		&.focus {
-			box-shadow: 0 0 0 0.2rem $gray-light;
+			box-shadow: 0 0 0 0.2rem $ob-gray-light;
 		}
 	}
 }

@@ -5,12 +5,12 @@
 
 	&:hover,
 	&.mat-expanded:hover:not([aria-disabled="true"]) {
-		background: $gray-lighter;
+		background: $ob-gray-lighter;
 	}
 
 	&:hover:not([aria-disabled="true"]) {
 		 .mat-expansion-panel:not(.mat-expanded) & {
-			 background: $gray-lighter;
+			 background: $ob-gray-lighter;
 		 }
 	}
 }

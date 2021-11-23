@@ -9,13 +9,13 @@ table {
 
 .ob-table {
 	width: 100%;
-	color: $brand-default;
-	@include body2;
+	color: $ob-default;
+	@include ob-body2;
 
 	&.ob-table-cicd {
 		thead,
 		tfoot {
-			background-color: $gray-lighter;
+			background-color: $ob-gray-lighter;
 		}
 
 		th {
@@ -24,22 +24,22 @@ table {
 	}
 
 	td, th {
-		border-top: 1px solid $gray-light;
-		border-bottom: 1px solid $gray-light;
-		padding: $spacing-sm;
+		border-top: 1px solid $ob-gray-light;
+		border-bottom: 1px solid $ob-gray-light;
+		padding: $ob-spacing-sm;
 		text-align: inherit;
 
 		@at-root #{selector-append(".ob-table-cicd", &)} {
-			border-right: 1px solid $gray-light;
-			border-left: 1px solid $gray-light;
+			border-right: 1px solid $ob-gray-light;
+			border-left: 1px solid $ob-gray-light;
 		}
 
 		@at-root #{selector-append(".ob-table-sm", &)} {
-			padding: $spacing-xs;
+			padding: $ob-spacing-xs;
 		}
 
 		@at-root #{selector-append(".ob-table-lg", &)} {
-			padding: $spacing-default;
+			padding: $ob-spacing-default;
 		}
 	}
 
@@ -49,31 +49,31 @@ table {
 
 	&:not(.ob-table-plain) {
 		tbody tr:nth-child(odd) {
-			background-color: $gray-extra-light;
+			background-color: $ob-gray-extra-light;
 		}
 	}
 
 	&.ob-table-collapse {
-		@include layout-collapse-down() {
-			@include table-collapse();
+		@include ob-layout-collapse-down() {
+			@include ob-table-collapse();
 		}
 	}
 
 	&.ob-table-collapse-sm {
-		@include media-breakpoint-down(sm) {
-			@include table-collapse();
+		@include ob-media-breakpoint-down(sm) {
+			@include ob-table-collapse();
 		}
 	}
 
 	&.ob-table-collapse-md {
-		@include media-breakpoint-down(md) {
-			@include table-collapse();
+		@include ob-media-breakpoint-down(md) {
+			@include ob-table-collapse();
 		}
 	}
 
 	&.ob-table-hover tbody tr:hover,
 	tr.ob-active {
-		background-color: $brand-extra-light;
+		background-color: $ob-extra-light;
 	}
 }
 
@@ -82,9 +82,9 @@ table {
 }
 
 caption {
-	padding-top: $spacing-sm;
-	padding-bottom: $spacing-sm;
-	color: $gray-dark;
+	padding-top: $ob-spacing-sm;
+	padding-bottom: $ob-spacing-sm;
+	color: $ob-gray-dark;
 	font-weight: 700;
 	text-align: left;
 	caption-side: top;

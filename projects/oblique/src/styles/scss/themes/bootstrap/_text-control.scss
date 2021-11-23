@@ -4,28 +4,28 @@
 
 .ob-text-control {
 	.form-control {
-		padding-right: calc(#{$spacing-default} + #{$input-padding-x});
+		padding-right: calc(#{$ob-spacing-default} + #{$input-padding-x});
 
 		+ .ob-text-control-clear {
-			@include text-control-clear-position($input-padding-x);
+			@include ob-text-control-clear-position($input-padding-x);
 		}
 	}
 
 	.form-control-sm {
-		padding-right: calc(#{$spacing-default} + #{$input-padding-x-sm});
+		padding-right: calc(#{$ob-spacing-default} + #{$input-padding-x-sm});
 	}
 
 	&.input-group-sm > .ob-text-control-clear,
 	.form-control-sm + .ob-text-control-clear {
-		@include text-control-clear-position($input-padding-x-sm);
+		@include ob-text-control-clear-position($input-padding-x-sm);
 	}
 
 	.form-control-lg {
-		padding-right: calc(#{$spacing-default} + #{$input-padding-x-lg});
+		padding-right: calc(#{$ob-spacing-default} + #{$input-padding-x-lg});
 	}
 
 	&.input-group-lg > .ob-text-control-clear,
 	.form-control-lg + .ob-text-control-clear {
-		@include text-control-clear-position($input-padding-x-lg);
+		@include ob-text-control-clear-position($input-padding-x-lg);
 	}
 }

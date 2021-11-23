@@ -2,39 +2,39 @@
 
 .ob-alert.ob-angular {
 	display: flex;
-	margin-bottom: $spacing-default;
+	margin-bottom: $ob-spacing-default;
 
 	.ob-alert-icon {
 		font-size: 2em;
-		padding-right: $spacing-sm;
-		padding-left: $spacing-sm;
+		padding-right: $ob-spacing-sm;
+		padding-left: $ob-spacing-sm;
 		text-align: center;
-		color: $white;
+		color: $ob-white;
 
 		@at-root #{selector-append(".ob-alert-info", &)} {
-			background-color: $brand-primary;
+			background-color: $ob-primary;
 		}
 
 		@at-root #{selector-append(".ob-alert-success", &)} {
-			background-color: $brand-success;
+			background-color: $ob-success;
 		}
 
 		@at-root #{selector-append(".ob-alert-warning", &)} {
-			color: $brand-default;
-			background-color: $brand-warning;
+			color: $ob-default;
+			background-color: $ob-warning;
 		}
 
 		@at-root #{selector-append(".ob-alert-error", &)} {
-			background-color: $brand-error;
+			background-color: $ob-error;
 		}
 	}
 
 	.ob-alert-content {
-		padding: $spacing-default;
+		padding: $ob-spacing-default;
 		flex-grow: 1;
 
 		a {
-			color: $brand-default;
+			color: $ob-default;
 			text-decoration: underline;
 		}
 
@@ -45,25 +45,25 @@
 		}
 
 		@at-root #{selector-append(".ob-alert-info", &)} {
-			background-color: $brand-light;
+			background-color: $ob-light;
 		}
 
 		@at-root #{selector-append(".ob-alert-success", &)} {
-			background-color: $brand-success-light;
+			background-color: $ob-success-light;
 		}
 
 		@at-root #{selector-append(".ob-alert-warning", &)} {
-			background-color: $brand-warning-light;
+			background-color: $ob-warning-light;
 		}
 
 		@at-root #{selector-append(".ob-alert-error", &)} {
-			background-color: $brand-error-light;
+			background-color: $ob-error-light;
 		}
 	}
 }
 
 .ob-alert.ob-font-awesome .ob-alert-icon {
 	font-size: 1.5em;
-	width: $alert-symbol-width;
-	padding: $spacing-default;
+	width: $ob-alert-symbol-width;
+	padding: $ob-spacing-default;
 }

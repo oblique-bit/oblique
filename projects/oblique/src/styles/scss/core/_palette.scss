@@ -1,74 +1,74 @@
 // CI/CD colors
-$venetian-red: #dc0018;
-$red: #f7001d;	// unused
-$cerulean: #006699;
-$malibu: #66afe9;	// used only for bootstrap
-$pattens-blue: #d8e8ef;	// unused
-$solitude: #e7edef;		// unused
-$clear-day: #f2f7f9;	// unused
-$mocassin: #fffab2;	// unused
-$white: #ffffff;
-$smoke: #f5f5f5;
-$gainsboro: #e5e5e5;
-$light-gray: #d5d5d5;
-$silver: #cccccc;	// unused
-$empress: #757575;
-$coal: #454545;
-$night-rider: #333333;
-$black: #000000;
+$ob-venetian-red: #dc0018;
+$ob-red: #f7001d;	// unused
+$ob-cerulean: #006699;
+$ob-malibu: #66afe9;	// used only for bootstrap
+$ob-pattens-blue: #d8e8ef;	// unused
+$ob-solitude: #e7edef;		// unused
+$ob-clear-day: #f2f7f9;	// unused
+$ob-mocassin: #fffab2;	// unused
+$ob-white: #ffffff;
+$ob-smoke: #f5f5f5;
+$ob-gainsboro: #e5e5e5;
+$ob-light-gray: #d5d5d5;
+$ob-silver: #cccccc;	// unused
+$ob-empress: #757575;
+$ob-coal: #454545;
+$ob-night-rider: #333333;
+$ob-black: #000000;
 
 // Oblique colors
-$primary-50: #f2f7fa;	// use $brand-default as contrast color
-$primary-100: #cce0eb;	// use $brand-default as contrast color
-$primary-200: #99c2d6;	// use $brand-default as contrast color
-$primary-300: #66a3c2;	// use $brand-default as contrast color
-$primary-400: #267da8;	// use $white as contrast color
-$primary-500: $cerulean;// use $white as contrast color
-$primary-600: #0a5b84;	// use $white as contrast color
-$primary-700: #14516f;	// use $white as contrast color
-$primary-800: #214456;	// use $white as contrast color
-$primary-900: #293d47;	// use $white as contrast color
+$ob-primary-50: #f2f7fa;	// use $ob-default as contrast color
+$ob-primary-100: #cce0eb;	// use $ob-default as contrast color
+$ob-primary-200: #99c2d6;	// use $ob-default as contrast color
+$ob-primary-300: #66a3c2;	// use $ob-default as contrast color
+$ob-primary-400: #267da8;	// use $ob-white as contrast color
+$ob-primary-500: $ob-cerulean;// use $ob-white as contrast color
+$ob-primary-600: #0a5b84;	// use $ob-white as contrast color
+$ob-primary-700: #14516f;	// use $ob-white as contrast color
+$ob-primary-800: #214456;	// use $ob-white as contrast color
+$ob-primary-900: #293d47;	// use $ob-white as contrast color
 
-$error-50: #fdeaee;		// use $brand-default as contrast color
-$error-100: #fbcad2;	// use $brand-default as contrast color
-$error-200: #ea959b;	// use $brand-default as contrast color
-$error-300: #de6c74;	// use $white as contrast color
-$error-400: #de2839;	// use $white as contrast color
-$error-500: #b00020;	// use $white as contrast color
-$error-600: #a31a17;	// use $white as contrast color
-$error-700: #931012;	// use $white as contrast color
-$error-800: #86090c;	// use $white as contrast color
-$error-900: #630012;	// use $white as contrast color
+$ob-error-50: #fdeaee;		// use $ob-default as contrast color
+$ob-error-100: #fbcad2;	// use $ob-default as contrast color
+$ob-error-200: #ea959b;	// use $ob-default as contrast color
+$ob-error-300: #de6c74;	// use $ob-white as contrast color
+$ob-error-400: #de2839;	// use $ob-white as contrast color
+$ob-error-500: #b00020;	// use $ob-white as contrast color
+$ob-error-600: #a31a17;	// use $ob-white as contrast color
+$ob-error-700: #931012;	// use $ob-white as contrast color
+$ob-error-800: #86090c;	// use $ob-white as contrast color
+$ob-error-900: #630012;	// use $ob-white as contrast color
 
-$gray-50: $white;		// use $brand-default as contrast color
-$gray-100: $smoke;		// use $brand-default as contrast color
-$gray-200: $gainsboro;	// use $brand-default as contrast color
-$gray-300: $light-gray;	// use $brand-default as contrast color
-$gray-400: #b4b4b4;		// use $brand-default as contrast color
-$gray-500: $empress;	// use $white as contrast color
-$gray-600: $coal;		// use $white as contrast color
-$gray-700: $night-rider;// use $white as contrast color
-$gray-800: #171717;		// use $white as contrast color
-$gray-900: $black;		// use $white as contrast color
+$ob-gray-50: $ob-white;		// use $ob-default as contrast color
+$ob-gray-100: $ob-smoke;		// use $ob-default as contrast color
+$ob-gray-200: $ob-gainsboro;	// use $ob-default as contrast color
+$ob-gray-300: $ob-light-gray;	// use $ob-default as contrast color
+$ob-gray-400: #b4b4b4;		// use $ob-default as contrast color
+$ob-gray-500: $ob-empress;	// use $ob-white as contrast color
+$ob-gray-600: $ob-coal;		// use $ob-white as contrast color
+$ob-gray-700: $ob-night-rider;// use $ob-white as contrast color
+$ob-gray-800: #171717;		// use $ob-white as contrast color
+$ob-gray-900: $ob-black;		// use $ob-white as contrast color
 
-$success-50: #e6f6eb;	// use $brand-default as contrast color
-$success-100: #c3e8cd;	// use $brand-default as contrast color
-$success-200: #9cd9ad;	// use $brand-default as contrast color
-$success-300: #72cb8c;	// use $brand-default as contrast color
-$success-400: #50bf73;	// use $white as contrast color
-$success-500: #27b45b;	// use $white as contrast color
-$success-600: #1da451;	// use $white as contrast color
-$success-700: #0f9245;	// use $white as contrast color
-$success-800: #00813a;	// use $white as contrast color
-$success-900: #006226;	// use $white as contrast color
+$ob-success-50: #e6f6eb;	// use $ob-default as contrast color
+$ob-success-100: #c3e8cd;	// use $ob-default as contrast color
+$ob-success-200: #9cd9ad;	// use $ob-default as contrast color
+$ob-success-300: #72cb8c;	// use $ob-default as contrast color
+$ob-success-400: #50bf73;	// use $ob-white as contrast color
+$ob-success-500: #27b45b;	// use $ob-white as contrast color
+$ob-success-600: #1da451;	// use $ob-white as contrast color
+$ob-success-700: #0f9245;	// use $ob-white as contrast color
+$ob-success-800: #00813a;	// use $ob-white as contrast color
+$ob-success-900: #006226;	// use $ob-white as contrast color
 
-$warning-50: #fee3b5;	// use $brand-default as contrast color
-$warning-100: #fed284;	// use $brand-default as contrast color
-$warning-200: #ffbf52;	// use $brand-default as contrast color
-$warning-300: #fb970b;	// use $brand-default as contrast color
-$warning-400: #f07703;	// use $brand-default as contrast color
-$warning-500: #e75e00;	// use $brand-default as contrast color
-$warning-600: #af4600;	// use $white as contrast color
-$warning-700: #80310d;	// use $white as contrast color
-$warning-800: #5f1a00;	// use $white as contrast color
-$warning-900: #501900;	// use $white as contrast color
+$ob-warning-50: #fee3b5;	// use $ob-default as contrast color
+$ob-warning-100: #fed284;	// use $ob-default as contrast color
+$ob-warning-200: #ffbf52;	// use $ob-default as contrast color
+$ob-warning-300: #fb970b;	// use $ob-default as contrast color
+$ob-warning-400: #f07703;	// use $ob-default as contrast color
+$ob-warning-500: #e75e00;	// use $ob-default as contrast color
+$ob-warning-600: #af4600;	// use $ob-white as contrast color
+$ob-warning-700: #80310d;	// use $ob-white as contrast color
+$ob-warning-800: #5f1a00;	// use $ob-white as contrast color
+$ob-warning-900: #501900;	// use $ob-white as contrast color
