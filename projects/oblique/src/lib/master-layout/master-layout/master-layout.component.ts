@@ -18,7 +18,7 @@ import {
 } from '@angular/core';
 import {NavigationEnd, Params, Router} from '@angular/router';
 import {DOCUMENT} from '@angular/common';
-import {filter, map, takeUntil, tap} from 'rxjs/operators';
+import {delay, filter, map, takeUntil, tap} from 'rxjs/operators';
 
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
@@ -204,10 +204,10 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 		this.offCanvasService.opened
 			.pipe(
 				takeUntil(this.unsubscribe),
-				filter(value => value)
+				filter(() => this.hasOffCanvas),
+				filter(value => value),
+				delay(600) // duration of the open animation
 			)
-			.subscribe(() => {
-				this.window.setTimeout(() => this.offCanvasClose.nativeElement.focus(), 600);
-			});
+			.subscribe(() => this.offCanvasClose.nativeElement.focus());
 	}
 }
