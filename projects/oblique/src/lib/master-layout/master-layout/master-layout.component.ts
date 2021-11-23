@@ -57,7 +57,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 	@HostBinding('class.ob-no-navigation') noNavigation = !this.masterLayout.layout.hasMainNavigation;
 	@HostBinding('class.ob-off-canvas') hasOffCanvas = this.masterLayout.layout.hasOffCanvas;
 	@HostBinding('class.ob-master-layout-scrolling') isScrolling = false;
-	@HostBinding('class.ob-outline') outline = true;
+	@HostBinding('class.ob-outline') outline = false;
 	isHeaderSticky = this.masterLayout.header.isSticky;
 	isFooterSticky = this.masterLayout.footer.isSticky;
 	scrollTarget: HTMLElement | Window;
