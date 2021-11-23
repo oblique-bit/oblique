@@ -48,7 +48,6 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	@ContentChildren('obHeaderMobileControl') readonly mobileTemplates: QueryList<TemplateRef<any>>;
 	@ViewChildren('headerControl') readonly headerControl: QueryList<ElementRef>;
 	@ViewChildren('headerMobileControl') readonly headerMobileControl: QueryList<ElementRef>;
-	private readonly window: Window;
 	private readonly unsubscribe = new Subject();
 
 	constructor(
@@ -59,10 +58,9 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		private readonly el: ElementRef,
 		private readonly renderer: Renderer2,
 		private readonly globalEventsService: ObGlobalEventsService,
-		@Inject(WINDOW) window,
+		@Inject(WINDOW) private readonly window: Window,
 		@Inject(OB_BANNER) @Optional() bannerToken
 	) {
-		this.window = window; // because AoT don't accept interfaces as DI
 		this.languages = this.formatLanguages();
 		this.propertyChanges();
 		this.reduceOnScroll();
