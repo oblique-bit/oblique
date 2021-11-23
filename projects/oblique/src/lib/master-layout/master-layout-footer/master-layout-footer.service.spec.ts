@@ -1,147 +1,69 @@
 import {TestBed} from '@angular/core/testing';
 import {Observable, Subject} from 'rxjs';
 import {ObMasterLayoutFooterService} from './master-layout-footer.service';
-import {ObIMasterLayoutEvent} from '../master-layout.model';
+import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
+import {ObMasterLayoutConfig} from '../master-layout.config';
+import {first} from 'rxjs/operators';
 
-describe('MasterLayoutFooterService', () => {
-	let masterLayoutFooterService: ObMasterLayoutFooterService;
+describe('ObMasterLayoutFooterService', () => {
+	let service: ObMasterLayoutFooterService;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [ObMasterLayoutFooterService]
+			providers: [
+				ObMasterLayoutFooterService,
+				{
+					provide: ObMasterLayoutConfig,
+					useValue: {
+						footer: {
+							isCustom: false,
+							isSticky: false,
+							hasLogoOnScroll: false
+						}
+					}
+				}
+			]
 		});
-		masterLayoutFooterService = TestBed.inject(ObMasterLayoutFooterService);
+		service = TestBed.inject(ObMasterLayoutFooterService);
 	});
 
 	it('should be created', () => {
-		expect(masterLayoutFooterService).toBeTruthy();
+		expect(service).toBeTruthy();
 	});
 
-	describe('test configEvents$', () => {
-		it('should get configEvents  when true', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'configEvents$', 'get');
-			let newValue: Observable<ObIMasterLayoutEvent> = new Subject<ObIMasterLayoutEvent>();
-			newValue = masterLayoutFooterService.configEvents$;
-			const mockResult = masterLayoutFooterService.configEvents$;
-			expect(spy).toHaveBeenCalled();
-			expect(mockResult).toEqual(newValue);
-			spy.mockRestore();
+	describe('configEvents$', () => {
+		it('should expose a configEvents$ observable', () => {
+			expect(service.configEvents$ instanceof Observable).toBe(true);
 		});
 	});
+	testSetter('isCustom', 'FOOTER_IS_CUSTOM');
+	testSetter('isSticky', 'FOOTER_IS_STICKY');
+	testSetter('hasLogoOnScroll', 'FOOTER_HAS_LOGO_ON_SCROLL');
 
-	describe('test isCustom', () => {
-		it('should set custom to true', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'isCustom', 'set');
-			const newValue = true;
-			masterLayoutFooterService.isCustom = newValue;
-			expect(spy).toHaveBeenCalled();
-			expect(masterLayoutFooterService.isCustom).toBeTruthy();
-			spy.mockRestore();
-		});
+	function testSetter(property: string, enumValue: string): void {
+		describe(property, () => {
+			it('should return false', () => {
+				expect(service[property]).toBe(false);
+			});
 
-		it('should set custom to false', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'isCustom', 'set');
-			const newValue = false;
-			masterLayoutFooterService.isCustom = newValue;
-			expect(spy).toHaveBeenCalled();
-			expect(masterLayoutFooterService.isCustom).toBeFalsy();
-			spy.mockRestore();
-		});
+			describe('when given a value', () => {
+				let event: ObIMasterLayoutEvent;
+				beforeEach(done => {
+					service.configEvents$.pipe(first()).subscribe(evt => {
+						event = evt;
+						done();
+					});
+					service[property] = true;
+				});
 
-		it('should get custom  when true', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'isCustom', 'get');
-			const newValue = true;
-			masterLayoutFooterService.isCustom = newValue;
-			const mockResult = masterLayoutFooterService.isCustom;
-			expect(spy).toHaveBeenCalled();
-			expect(mockResult).toEqual(newValue);
-			spy.mockRestore();
-		});
+				it(`should emit a ${enumValue} event`, () => {
+					expect(event.name).toBe(ObEMasterLayoutEventValues[enumValue]);
+				});
 
-		it('should get custom  when false', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'isCustom', 'get');
-			const newValue = false;
-			masterLayoutFooterService.isCustom = newValue;
-			const mockResult = masterLayoutFooterService.isCustom;
-			expect(spy).toHaveBeenCalled();
-			expect(mockResult).toEqual(newValue);
-			spy.mockRestore();
+				it('should emit a value', () => {
+					expect(event.value).toBe(true);
+				});
+			});
 		});
-	});
-
-	describe('test hasLogoOnScroll', () => {
-		it('should set hasLogoOnScroll to true', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'hasLogoOnScroll', 'set');
-			masterLayoutFooterService.hasLogoOnScroll = true;
-			expect(spy).toHaveBeenCalled();
-			expect(masterLayoutFooterService.hasLogoOnScroll).toBeTruthy();
-			spy.mockRestore();
-		});
-
-		it('should set hasLogoOnScroll to false', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'hasLogoOnScroll', 'set');
-			masterLayoutFooterService.hasLogoOnScroll = false;
-			expect(spy).toHaveBeenCalled();
-			expect(masterLayoutFooterService.hasLogoOnScroll).toBeFalsy();
-			spy.mockRestore();
-		});
-
-		it('should get hasLogoOnScroll  when true', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'hasLogoOnScroll', 'get');
-			const newValue = true;
-			masterLayoutFooterService.hasLogoOnScroll = newValue;
-			const mockResult = masterLayoutFooterService.hasLogoOnScroll;
-			expect(spy).toHaveBeenCalled();
-			expect(mockResult).toEqual(newValue);
-			spy.mockRestore();
-		});
-
-		it('should get hasLogoOnScroll  when false', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'hasLogoOnScroll', 'get');
-			const newValue = false;
-			masterLayoutFooterService.hasLogoOnScroll = newValue;
-			const mockResult = masterLayoutFooterService.hasLogoOnScroll;
-			expect(spy).toHaveBeenCalled();
-			expect(mockResult).toEqual(newValue);
-			spy.mockRestore();
-		});
-	});
-
-	describe('test isSticky', () => {
-		it('should set isSticky to true', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'isSticky', 'set');
-			masterLayoutFooterService.isSticky = true;
-			expect(spy).toHaveBeenCalled();
-			expect(masterLayoutFooterService.isSticky).toBeTruthy();
-			spy.mockRestore();
-		});
-
-		it('should set isSticky to false', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'isSticky', 'set');
-			masterLayoutFooterService.isSticky = false;
-			expect(spy).toHaveBeenCalled();
-			expect(masterLayoutFooterService.isSticky).toBeFalsy();
-			spy.mockRestore();
-		});
-
-		it('should get isSticky  when true', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'isSticky', 'get');
-			const newValue = true;
-			masterLayoutFooterService.isSticky = newValue;
-			const mockResult = masterLayoutFooterService.isSticky;
-			expect(spy).toHaveBeenCalled();
-			expect(mockResult).toEqual(newValue);
-			spy.mockRestore();
-		});
-
-		it('should get isSticky  when false', () => {
-			const spy = jest.spyOn(masterLayoutFooterService, 'isSticky', 'get');
-			const newValue = false;
-			masterLayoutFooterService.isSticky = newValue;
-			const mockResult = masterLayoutFooterService.isSticky;
-			expect(spy).toHaveBeenCalled();
-			expect(mockResult).toEqual(newValue);
-			spy.mockRestore();
-		});
-	});
+	}
 });

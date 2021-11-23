@@ -1,31 +1,24 @@
 import {TestBed} from '@angular/core/testing';
-import {ObMasterLayoutHeaderService} from './master-layout-header.service';
-import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
 import {Observable} from 'rxjs';
 import {first} from 'rxjs/operators';
+import {ObMasterLayoutComponentService} from './master-layout.component.service';
+import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 
-describe('ObMasterLayoutHeaderService', () => {
-	let service: ObMasterLayoutHeaderService;
+describe('ObMasterLayoutComponentService', () => {
+	let service: ObMasterLayoutComponentService;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			providers: [
-				ObMasterLayoutHeaderService,
+				ObMasterLayoutComponentService,
 				{
 					provide: ObMasterLayoutConfig,
-					useValue: {
-						header: {
-							isCustom: false,
-							isSmall: false,
-							isSticky: false,
-							reduceOnScroll: false
-						}
-					}
+					useValue: {layout: {hasCover: false, hasOffCanvas: false, hasMainNavigation: false, hasLayout: false, hasMaxWidth: false}}
 				}
 			]
 		});
-		service = TestBed.inject(ObMasterLayoutHeaderService);
+		service = TestBed.inject(ObMasterLayoutComponentService);
 	});
 
 	it('should be created', () => {
@@ -38,10 +31,12 @@ describe('ObMasterLayoutHeaderService', () => {
 		});
 	});
 
-	testSetter('isCustom', 'HEADER_IS_CUSTOM');
-	testSetter('isSmall', 'HEADER_IS_SMALL');
-	testSetter('isSticky', 'HEADER_IS_STICKY');
-	testSetter('reduceOnScroll', 'HEADER_REDUCE_ON_SCROLL');
+	testSetter('isMenuOpened', 'IS_MENU_OPENED');
+	testSetter('hasCover', 'LAYOUT_HAS_COVER');
+	testSetter('hasOffCanvas', 'LAYOUT_HAS_OFF_CANVAS');
+	testSetter('hasMainNavigation', 'LAYOUT_HAS_MAIN_NAVIGATION');
+	testSetter('hasLayout', 'LAYOUT_HAS_DEFAULT_LAYOUT');
+	testSetter('hasMaxWidth', 'LAYOUT_HAS_MAX_WIDTH');
 
 	function testSetter(property: string, enumValue: string): void {
 		describe(property, () => {
