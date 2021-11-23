@@ -1,5 +1,5 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {applyInTree, infoMigration, replaceInFile} from '../utils';
+import {applyInTree, infoMigration, replaceInFile, setAngularProjectsConfig} from '../utils';
 import {ObIDependencies, ObIMigrations} from './ng-update.model';
 
 export interface IUpdateV8Schema {}
@@ -10,10 +10,13 @@ export class UpdateV7toV8 implements ObIMigrations {
 	applyMigrations(_options: IUpdateV8Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Analyzing project');
-			return chain([this.prefixScssVariableNames(), this.prefixMixinNames(), this.removeLayoutCollapse(), this.removeDlHorizontalVariants()])(
-				tree,
-				_context
-			);
+			return chain([
+				this.prefixScssVariableNames(),
+				this.prefixMixinNames(),
+				this.removeLayoutCollapse(),
+				this.removeDlHorizontalVariants(),
+				this.removeCompatCss()
+			])(tree, _context);
 		};
 	}
 
@@ -241,6 +244,15 @@ export class UpdateV7toV8 implements ObIMigrations {
 				replaceInFile(tree, filePath, new RegExp(/\s?ob-horizontal-(?:large|small)/g), '');
 			};
 			return applyInTree(tree, apply, '*.html');
+		};
+	}
+
+	private removeCompatCss(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Removing compat styles');
+			return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) =>
+				(config || []).filter((style: string) => !/node_modules\/@oblique\/oblique\/styles\/css\/oblique-compat\.s?css/.test(style))
+			);
 		};
 	}
 }
