@@ -17,7 +17,7 @@
 		@at-root #{selector-append(".ob-off-canvas-in", &)} {
 			transform: translateX(-$ob-off-canvas-sidebar-collapsed-width);
 
-			@include ob-media-breakpoint-up(lg) {
+			@include ob-media-breakpoint-up(md) {
 				width: 100% - $ob-off-canvas-sidebar-width;
 				transform: translateX(0);
 			}
@@ -42,7 +42,7 @@
 			color: $ob-default;
 		}
 
-		@include ob-media-breakpoint-up(lg) {
+		@include ob-media-breakpoint-up(md) {
 			width: $ob-off-canvas-sidebar-width;
 		}
 
@@ -50,7 +50,7 @@
 			visibility: visible; // A11y: ensure tabbing can focus again an offcanvas sidebar element when visible.
 			transform: translateX(-100%);
 
-			@include ob-media-breakpoint-up(lg) {
+			@include ob-media-breakpoint-up(md) {
 				left: 100% - $ob-off-canvas-sidebar-width;
 				transform: translateX(0);
 			}
