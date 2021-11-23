@@ -8,10 +8,10 @@
 	}
 
 	div + div {
-		margin-left: 2 * $spacing-default;
+		margin-left: 2 * $ob-spacing-default;
 	}
 }
 
 ol + ol {
-	margin-top: $spacing-default;
+	margin-top: $ob-spacing-default;
 }

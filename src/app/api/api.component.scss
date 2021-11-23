@@ -3,28 +3,28 @@
 
 $label-width: 25%;
 :host::ng-deep {
-	@include layout-collapse-down() {
+	@include ob-layout-collapse-down() {
 		dt {
-			border-top: 1px solid $gray;
-			padding-top: $spacing-xs;
+			border-top: 1px solid $ob-gray;
+			padding-top: $ob-spacing-xs;
 		}
 
 		dd {
-			padding-left: $spacing-default;
+			padding-left: $ob-spacing-default;
 			margin-bottom: 0;
 
 			+ dt {
-				margin-top: $spacing-default;
+				margin-top: $ob-spacing-default;
 			}
 		}
 	}
 
-	@include layout-collapse-up() {
+	@include ob-layout-collapse-up() {
 		dl {
 			display: flex;
 			flex-flow: row wrap;
-			margin-top: -$spacing-default;
-			margin-bottom: 2 * $spacing-default;
+			margin-top: -$ob-spacing-default;
+			margin-bottom: 2 * $ob-spacing-default;
 		}
 		dt,
 		dd {
@@ -40,19 +40,19 @@ $label-width: 25%;
 
 			&,
 			& + dd {
-				margin-top: $spacing-default;
-				padding-top: $spacing-xs;
-				border-top: 1px solid $gray;
+				margin-top: $ob-spacing-default;
+				padding-top: $ob-spacing-xs;
+				border-top: 1px solid $ob-gray;
 			}
 		}
 
 		dd {
-			padding-left: $spacing-default;
+			padding-left: $ob-spacing-default;
 			width: calc(100% - #{$label-width});
 
 			+ dd {
 				width: 100%;
-				padding-left: calc(#{$label-width} + #{$spacing-default});
+				padding-left: calc(#{$label-width} + #{$ob-spacing-default});
 			}
 		}
 	}
