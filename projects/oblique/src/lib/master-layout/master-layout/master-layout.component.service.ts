@@ -90,7 +90,7 @@ export class ObMasterLayoutComponentService {
 	set hasMaxWidth(value: boolean) {
 		this._hasMaxWidth = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.MAX_WIDTH,
+			name: ObEMasterLayoutEventValues.LAYOUT_HAS_MAX_WIDTH,
 			value: value
 		});
 	}

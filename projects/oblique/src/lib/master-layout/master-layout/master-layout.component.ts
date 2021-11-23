@@ -160,7 +160,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 					case ObEMasterLayoutEventValues.LAYOUT_HAS_DEFAULT_LAYOUT:
 						this.hasLayout = event.value;
 						break;
-					case ObEMasterLayoutEventValues.MAX_WIDTH:
+					case ObEMasterLayoutEventValues.LAYOUT_HAS_MAX_WIDTH:
 						this.hasMaxWidth = event.value;
 						break;
 					case ObEMasterLayoutEventValues.HEADER_IS_STICKY:

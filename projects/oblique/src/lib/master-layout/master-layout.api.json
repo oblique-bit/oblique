@@ -639,10 +639,10 @@
             "ObEMasterLayoutEventValues.LAYOUT_HAS_COVER",
             "ObEMasterLayoutEventValues.LAYOUT_HAS_DEFAULT_LAYOUT",
             "ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION",
+            "ObEMasterLayoutEventValues.LAYOUT_HAS_MAX_WIDTH",
             "ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS",
             "ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH",
-            "ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE",
-            "ObEMasterLayoutEventValues.MAX_WIDTH"
+            "ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE"
           ],
           "since": "4.0.0",
           "updated": "8.0.0"
