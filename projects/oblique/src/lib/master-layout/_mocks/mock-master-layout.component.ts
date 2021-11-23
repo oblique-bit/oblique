@@ -12,7 +12,7 @@ export class ObMockMasterLayoutComponent {
 	@Input() navigation: ObINavigationLink[] = [];
 	hasCover = true;
 	hasLayout = true;
-	isMenuCollapsed = true;
+	isMenuOpened = true;
 	noNavigation = true;
 	hasOffCanvas = true;
 	isScrolling = false;

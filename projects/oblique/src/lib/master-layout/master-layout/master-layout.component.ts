@@ -53,7 +53,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 	@HostBinding('class.ob-has-cover') hasCover = this.masterLayout.layout.hasCover;
 	@HostBinding('class.ob-has-layout') hasLayout = this.masterLayout.layout.hasLayout;
 	@HostBinding('class.ob-has-max-width') hasMaxWidth = this.masterLayout.layout.hasMaxWidth;
-	@HostBinding('class.ob-header-expanded') isMenuCollapsed = this.masterLayout.layout.isMenuOpened;
+	@HostBinding('class.ob-header-expanded') isMenuOpened = this.masterLayout.layout.isMenuOpened;
 	@HostBinding('class.ob-no-navigation') noNavigation = !this.masterLayout.layout.hasMainNavigation;
 	@HostBinding('class.ob-off-canvas') hasOffCanvas = this.masterLayout.layout.hasOffCanvas;
 	@HostBinding('class.ob-master-layout-scrolling') isScrolling = false;
@@ -155,7 +155,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 						this.hasOffCanvas = event.value;
 						break;
 					case ObEMasterLayoutEventValues.IS_MENU_OPENED:
-						this.isMenuCollapsed = event.value;
+						this.isMenuOpened = event.value;
 						break;
 					case ObEMasterLayoutEventValues.LAYOUT_HAS_DEFAULT_LAYOUT:
 						this.hasLayout = event.value;
