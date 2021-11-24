@@ -2,7 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {ObThemeService} from '@oblique/oblique';
+import {ThemeService} from '../../common/theme.service';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
@@ -18,7 +18,7 @@ export class ObNestedFormChildTDSampleComponent {
 	grandchild;
 	material: Observable<boolean>;
 
-	constructor(theme: ObThemeService) {
+	constructor(theme: ThemeService) {
 		this.material = theme.theme$.pipe(map(() => theme.isMaterial()));
 	}
 }

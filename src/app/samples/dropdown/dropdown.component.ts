@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Observable} from 'rxjs';
-import {ObThemeService} from '@oblique/oblique';
 import {map} from 'rxjs/operators';
+import {ThemeService} from '../../common/theme.service';
 
 @Component({
 	selector: 'ob-dropdown-sample',
@@ -10,7 +10,7 @@ import {map} from 'rxjs/operators';
 export class ObDropdownSampleComponent {
 	material: Observable<boolean>;
 
-	constructor(theme: ObThemeService) {
+	constructor(theme: ThemeService) {
 		this.material = theme.theme$.pipe(map(() => theme.isMaterial()));
 	}
 }

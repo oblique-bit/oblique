@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {ObThemeService} from '@oblique/oblique';
+import {ThemeService} from '../../common/theme.service';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
@@ -15,7 +15,7 @@ export class ObNestedFormGrandChildSampleComponent {
 	grandChildForm: FormGroup;
 	material: Observable<boolean>;
 
-	constructor(private readonly fb: FormBuilder, theme: ObThemeService) {
+	constructor(private readonly fb: FormBuilder, theme: ThemeService) {
 		this.grandChildForm = this.fb.group({
 			field1: ['', [Validators.required]],
 			field2: ['', Validators.minLength(5)]

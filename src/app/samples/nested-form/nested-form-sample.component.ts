@@ -2,7 +2,8 @@ import {Component, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
-import {ObNotificationService, ObThemeService} from '@oblique/oblique';
+import {ObNotificationService} from '@oblique/oblique';
+import {ThemeService} from '../../common/theme.service';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
@@ -20,7 +21,7 @@ export class ObNestedFormSampleComponent {
 	@ViewChild(FormGroupDirective) reactiveForm: FormGroupDirective;
 	@ViewChild(NgForm) templateForm: NgForm;
 
-	constructor(private readonly fb: FormBuilder, private readonly notification: ObNotificationService, theme: ObThemeService) {
+	constructor(private readonly fb: FormBuilder, private readonly notification: ObNotificationService, theme: ThemeService) {
 		this.parentForm = this.fb.group({
 			child: [''],
 			parent: ['', [Validators.required]]

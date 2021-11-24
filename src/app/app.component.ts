@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
-import {FONTS, ObINavigationLink, ObISearchWidgetItem, THEMES, ObThemeService} from '@oblique/oblique';
+import {ObINavigationLink, ObISearchWidgetItem} from '@oblique/oblique';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {ObIJumpLink} from 'projects/oblique/src/lib/master-layout/master-layout.model';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
+import {FONTS, THEMES, ThemeService} from './common/theme.service';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
@@ -123,7 +124,7 @@ export class AppComponent {
 	];
 	searchItems: ObISearchWidgetItem[] = [];
 
-	constructor(private readonly theme: ObThemeService, nav: DynamicNavigationService) {
+	constructor(private readonly theme: ThemeService, nav: DynamicNavigationService) {
 		this.populateSearchItems(this.navigation);
 		this.theme$ = this.theme.theme$.pipe(map(() => (theme.isMaterial() ? 'material' : 'bootstrap')));
 		this.font$ = this.theme.font$;
