@@ -136,7 +136,6 @@ export {ObPopUpService} from './lib/pop-up/pop-up.service';
 export {ObGlobalEventsService} from './lib/global-events/global-events.service';
 export {obOutsideFilter} from './lib/global-events/outsideFilter';
 export {ObliqueModule} from './lib/oblique.module';
-export {FONTS, THEMES, ObThemeService} from './lib/theme/theme.service';
 
 export * from './lib/oblique-testing.module';
 export {ObMockMatElement, ObMockModule} from './lib/_mocks/mock-module';

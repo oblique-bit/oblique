@@ -1,8 +1,9 @@
 import {TestBed} from '@angular/core/testing';
-import {FONTS, ObThemeService, THEMES} from './theme.service';
 import {DOCUMENT} from '@angular/common';
+import {ObThemeService} from './theme.service';
 
 describe('ObThemeService', () => {
+	jest.spyOn(console, 'warn');
 	let service: ObThemeService;
 
 	describe('With neither Material nor Bootstrap CSS', () => {
@@ -19,43 +20,11 @@ describe('ObThemeService', () => {
 			expect(service.theme).toBe('Unknown');
 		});
 
-		describe('setTheme', () => {
-			it('isMaterial should be true if fed with material', () => {
-				service.setTheme(THEMES.MATERIAL);
-				expect(service.isMaterial()).toBe(true);
+		describe('deprecated', () => {
+			it('should do nothing', () => {
+				service.deprecated('', '');
+				expect(console.warn).not.toHaveBeenCalled();
 			});
-
-			it('isMaterial should be false if fed with BOOTSTRAP', () => {
-				service.setTheme(THEMES.BOOTSTRAP);
-				expect(service.isMaterial()).toBe(false);
-			});
-
-			it('theme$ should emit the last given theme', done => {
-				service.setTheme(THEMES.MATERIAL);
-				service.theme$.subscribe(theme => {
-					expect(theme).toBe(THEMES.MATERIAL);
-					done();
-				});
-			});
-		});
-
-		describe('setFont', () => {
-			it('font$ should emit the last given font', done => {
-				service.setFont(FONTS.ROBOTO);
-				service.font$.subscribe(font => {
-					expect(font).toBe(FONTS.ROBOTO);
-					done();
-				});
-			});
-		});
-
-		it('should be composant is deprecated', () => {
-			const component = 'datepicker';
-			const target = 'datepicker';
-
-			service.setTheme(THEMES.MATERIAL);
-			service.deprecated(component, target);
-			expect(service.isMaterial()).toBeTruthy();
 		});
 	});
 
@@ -76,6 +45,21 @@ describe('ObThemeService', () => {
 
 		it('should provide "Material" as current theme', () => {
 			expect(service.theme).toBe('Material');
+		});
+
+		describe('deprecated', () => {
+			it('should show a warning', () => {
+				service.deprecated('component', 'target');
+				expect(console.warn).toHaveBeenCalledWith(
+					`Oblique's "component" should not be used with Material Design, prefer the Angular implementation:\n\t\t\thttps://material.angular.io/components/target.`
+				);
+			});
+
+			it('should show a warning only once', () => {
+				service.deprecated('component', 'target');
+				service.deprecated('component', 'target');
+				expect(console.warn).toHaveBeenCalledTimes(1);
+			});
 		});
 	});
 
@@ -100,14 +84,19 @@ describe('ObThemeService', () => {
 		it('should provide "Bootstrap" as current theme', () => {
 			expect(service.theme).toBe('Bootstrap');
 		});
+
+		describe('deprecated', () => {
+			it('should do nothing', () => {
+				service.deprecated('', '');
+				expect(console.warn).not.toHaveBeenCalled();
+			});
+		});
 	});
 
 	describe('With bad css name', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				providers: [
-					{provide: DOCUMENT, useValue: {styleSheets: [{href: 'styles.css', rules: [{selectorText: '.ob-bootstrap-telemetry'}]}]}}
-				]
+				providers: [{provide: DOCUMENT, useValue: {styleSheets: [{href: 'styles.css', rules: [{selectorText: '.ob-bootstrap-telemetry'}]}]}}]
 			});
 
 			service = TestBed.inject(ObThemeService);
@@ -120,5 +109,16 @@ describe('ObThemeService', () => {
 		it('should provide "Unknown" as current theme', () => {
 			expect(service.theme).toBe('Unknown');
 		});
+
+		describe('deprecated', () => {
+			it('should do nothing', () => {
+				service.deprecated('', '');
+				expect(console.warn).not.toHaveBeenCalled();
+			});
+		});
+	});
+
+	afterEach(() => {
+		jest.clearAllMocks();
 	});
 });

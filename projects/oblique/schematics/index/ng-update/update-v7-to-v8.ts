@@ -1,5 +1,5 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {applyInTree, infoMigration, replaceInFile, setAngularProjectsConfig} from '../utils';
+import {addAngularConfigInList, applyInTree, infoMigration, readFile, replaceInFile, setAngularProjectsConfig} from '../utils';
 import {ObIDependencies, ObIMigrations} from './ng-update.model';
 
 export interface IUpdateV8Schema {}
@@ -15,7 +15,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 				this.prefixMixinNames(),
 				this.removeLayoutCollapse(),
 				this.removeDlHorizontalVariants(),
-				this.removeCompatCss()
+				this.removeCompatCss(),
+				this.removeThemeService()
 			])(tree, _context);
 		};
 	}
@@ -254,5 +255,53 @@ export class UpdateV7toV8 implements ObIMigrations {
 				(config || []).filter((style: string) => !/node_modules\/@oblique\/oblique\/styles\/css\/oblique-compat\.s?css/.test(style))
 			);
 		};
+	}
+
+	private removeThemeService(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove ObThemeService');
+			const apply = (filePath: string) => {
+				const fileContent = readFile(tree, filePath);
+				if (/ObThemeService/.test(fileContent)) {
+					const service = fileContent.match(/(?<service>\w*)\s*:\s*ObThemeService,?/)?.groups?.service;
+					const theme = this.getCSSPath(fileContent.match(new RegExp(`${service}\\.setTheme\\((?<theme>.*)\\)`))?.groups?.theme || '');
+					const font = this.getCSSPath(fileContent.match(new RegExp(`${service}\\.setFont\\((?<font>.*)\\)`))?.groups?.font || '');
+					const stylesPath = ['architect', 'build', 'options', 'styles'];
+					[theme, font].filter(property => !!property).forEach(property => addAngularConfigInList(tree, stylesPath, property));
+
+					tree.overwrite(
+						filePath,
+						fileContent
+							.replace(/(?:THEMES|FONTS),?(?!\.)\s*/g, '')	// remove imports of THEMES and FONTS
+							.replace(/[\w ]*\s*:\s*ObThemeService,?\s*/, '') // remove service injection in constructor
+							.replace(/ObThemeService,?\s*/, '') // remove service import
+							.replace(new RegExp(`(?:this\.)?${service}\\.set(?:Theme|Font)\\(.*\\);\s*`, 'g'), '') // remove call to setTheme / setFont
+							.replace(/,(\s*(?:\)|}))/g, '$1') // remove eventual trailing commas im imports
+							.replace(/import\s*{\s*}\s*from\s*['"]@oblique\/oblique['"]\s*;\s*/g, '') // remove empty imports
+							.replace(/constructor\s*\(\s*\)\s*{\s*}/g, '') // remove empty imports
+					);
+				}
+			};
+			return applyInTree(tree, apply, '*.ts');
+		};
+	}
+
+	private getCSSPath(themeOrFont: string): string | undefined {
+		switch (themeOrFont) {
+			case 'oblique-material':
+			case 'THEMES.MATERIAL':
+				return 'node_modules/@oblique/oblique/styles/css/oblique-material.css';
+			case 'oblique-bootstrap':
+			case 'THEMES.BOOTSTRAP':
+				return 'node_modules/@oblique/oblique/styles/css/oblique-bootstrap.css';
+			case 'frutiger':
+			case 'FONTS.FRUTIGER':
+				return 'node_modules/@oblique/oblique/styles/css/frutiger.css';
+			case 'roboto':
+			case 'FONTS.ROBOTO':
+				return 'node_modules/@oblique/oblique/styles/css/roboto.css';
+			default:
+				return undefined;
+		}
 	}
 }
