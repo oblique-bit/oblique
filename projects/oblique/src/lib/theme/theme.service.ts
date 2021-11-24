@@ -1,4 +1,4 @@
-import {Inject, Injectable, Renderer2, RendererFactory2} from '@angular/core';
+import {Inject, Injectable, OnInit, Renderer2, RendererFactory2} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {Observable, ReplaySubject} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
@@ -21,6 +21,7 @@ export enum FONTS {
 	providedIn: 'root'
 })
 export class ObThemeService {
+	readonly theme: string;
 	theme$: Observable<THEMES | string>;
 	font$: Observable<FONTS>;
 	private readonly mainTheme = new ReplaySubject<THEMES | string>(1);
@@ -32,12 +33,13 @@ export class ObThemeService {
 	private fontLink: HTMLElement;
 	private currentTheme: THEMES | string;
 
-	constructor(rendererFactory: RendererFactory2, @Inject(DOCUMENT) document: Document) {
+	constructor(rendererFactory: RendererFactory2, @Inject(DOCUMENT) private readonly document: Document) {
 		this.head = document.head;
 		this.renderer = rendererFactory.createRenderer(null, null);
 		this.theme$ = this.mainTheme.asObservable();
 		this.mainTheme.next(THEMES.MATERIAL);
 		this.font$ = this.mainFont.asObservable();
+		this.theme = this.getEmbeddedTheme(this.document);
 	}
 
 	setTheme(theme: THEMES | string): void {
@@ -65,6 +67,18 @@ export class ObThemeService {
 			console.warn(`Oblique's "${component}" should not be used with Material Design, prefer the Angular implementation:
 			https://material.angular.io/components/${target}.`);
 		}
+	}
+
+	private getEmbeddedTheme(document: Document): string {
+		const styleSheet = Array.from(document.styleSheets).filter(sheet => /^styles\.[\w]{20}\.css$/.test(sheet.href))[0];
+		const rules = Array.from(styleSheet?.rules || []) as CSSPageRule[];
+		if (rules.some(rule => rule.selectorText === '.ob-material-telemetry')) {
+			return 'Material';
+		}
+		if (rules.some(rule => rule.selectorText === '.ob-bootstrap-telemetry')) {
+			return 'Bootstrap';
+		}
+		return 'Unknown';
 	}
 
 	private static isInEnum(value, enumName): boolean {
