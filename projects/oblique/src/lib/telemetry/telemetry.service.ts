@@ -1,11 +1,11 @@
 import {Inject, Injectable, InjectionToken, isDevMode, Optional} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {DOCUMENT} from '@angular/common';
 import {EMPTY, fromEvent, race} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {ObTelemetryRecord} from './telemetry-record';
 import {ObITelemetryRecord} from './telemetry.model';
 import {WINDOW} from '../utilities';
+import {ObThemeService} from '../theme/theme.service';
 
 export const TELEMETRY_DISABLE = new InjectionToken<boolean>('TELEMETRY_DISABLE');
 
@@ -20,16 +20,16 @@ export class ObTelemetryService {
 
 	constructor(
 		private readonly http: HttpClient,
+		theme: ObThemeService,
 		@Optional() @Inject(TELEMETRY_DISABLE) isDisabled: boolean,
-		@Inject(WINDOW) window: Window,
-		@Inject(DOCUMENT) document: Document
+		@Inject(WINDOW) window: Window
 	) {
 		if (isDisabled) {
 			console.info('Oblique Telemetry is disabled by injection token.');
 		}
 		this.isDisabled = !isDevMode() || isDisabled;
 		if (!this.isDisabled) {
-			this.telemetryRecord = new ObTelemetryRecord(this.getTheme(document));
+			this.telemetryRecord = new ObTelemetryRecord(theme.theme);
 			race(fromEvent(window, 'beforeunload'), fromEvent(window, 'unload')).subscribe(() => this.sendRecord());
 		}
 	}
@@ -38,18 +38,6 @@ export class ObTelemetryService {
 		if (!this.isDisabled) {
 			this.telemetryRecord.addModule(module);
 		}
-	}
-
-	private getTheme(document: Document): string {
-		const styleSheet = Array.from(document.styleSheets).filter(sheet => /^styles\.[\w]{20}\.css$/.test(sheet.href))[0];
-		const rules = Array.from(styleSheet?.rules || []) as CSSPageRule[];
-		if (rules.some(rule => rule.selectorText === '.ob-material-telemetry')) {
-			return 'Material';
-		}
-		if (rules.some(rule => rule.selectorText === '.ob-bootstrap-telemetry')) {
-			return 'Bootstrap';
-		}
-		return 'Unknown';
 	}
 
 	private sendRecord(): void {
