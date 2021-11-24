@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {EMPTY} from 'rxjs';
 import {WINDOW} from '../utilities';
 import {ObTelemetryService, TELEMETRY_DISABLE} from './telemetry.service';
-import {ObThemeService} from '../theme/theme.service';
+import {ObThemeService} from '../theme.service';
 
 describe('ObTelemetryService', () => {
 	let service: ObTelemetryService;

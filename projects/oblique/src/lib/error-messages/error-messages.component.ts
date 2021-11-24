@@ -5,7 +5,7 @@ import {delay, takeUntil} from 'rxjs/operators';
 
 import {ObFormControlStateDirective} from '../form-control-state/form-control-state.directive';
 import {ObErrorMessagesService} from './error-messages.service';
-import {ObThemeService} from '../theme/theme.service';
+import {ObThemeService} from '../theme.service';
 import {ObParentFormDirective} from '../nested-form/parent-form.directive';
 import {WINDOW} from '../utilities';
 

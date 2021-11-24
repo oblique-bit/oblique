@@ -25,7 +25,7 @@ import {filter, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {ObMultiselectConfig} from './multiselect.config';
 import {ObMultiselectTexts} from './multiselect.texts';
-import {ObThemeService} from '../theme/theme.service';
+import {ObThemeService} from '../theme.service';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {obOutsideFilter} from '../global-events/outsideFilter';
 

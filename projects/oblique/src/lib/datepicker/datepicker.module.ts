@@ -11,7 +11,7 @@ import {ObDateFormatterPipe} from './date-formatter.pipe';
 import {ObDatepickerComponent} from './datepicker.component';
 import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
-import {ObThemeService} from '../theme/theme.service';
+import {ObThemeService} from '../theme.service';
 import {obliqueProviders} from '../utilities';
 
 export {ObDatepickerI18nService} from './datepicker-i18n.service';

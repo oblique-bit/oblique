@@ -5,7 +5,7 @@ import {catchError} from 'rxjs/operators';
 import {ObTelemetryRecord} from './telemetry-record';
 import {ObITelemetryRecord} from './telemetry.model';
 import {WINDOW} from '../utilities';
-import {ObThemeService} from '../theme/theme.service';
+import {ObThemeService} from '../theme.service';
 
 export const TELEMETRY_DISABLE = new InjectionToken<boolean>('TELEMETRY_DISABLE');
 

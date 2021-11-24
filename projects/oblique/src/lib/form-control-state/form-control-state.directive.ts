@@ -3,7 +3,7 @@ import {FormGroupDirective, FormGroupName, NgControl, NgForm, NgModelGroup} from
 import {merge, Subject} from 'rxjs';
 import {delay, takeUntil} from 'rxjs/operators';
 
-import {ObThemeService} from '../theme/theme.service';
+import {ObThemeService} from '../theme.service';
 import {ObParentFormDirective} from '../nested-form/parent-form.directive';
 import {WINDOW} from '../utilities';
 
