@@ -104,7 +104,6 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	private createIconElement(svg?: SVGElement): HTMLSpanElement {
 		const span = this.renderer.createElement('span');
 		if (this.useObliqueIcons) {
-			this.renderer.addClass(span, 'ob-icon');
 			this.renderer.addClass(span, 'mat-icon');
 			this.renderer.appendChild(span, svg);
 		} else {
