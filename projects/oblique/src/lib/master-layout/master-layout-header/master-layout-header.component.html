@@ -40,7 +40,7 @@
 		<div class="ob-master-layout-header-controls">
 			<h2 class="ob-screen-reader-only" id="ob-language-change">{{ "i18n.oblique.header.languages.title" | translate }}</h2>
 			<ng-content select="[obLocales]" *ngIf="!languages.length"></ng-content>
-			<ul class="ob-header-controls ob-header-locale" *ngIf="languages.length > 1">
+			<ul aria-labelledby="ob-language-change" class="ob-header-controls ob-header-locale" *ngIf="languages.length > 1">
 				<li class="ob-control-item" *ngFor="let language of languages">
 					<button
 						type="button"
@@ -50,7 +50,6 @@
 						[class.active]="isLangActive(language.code)"
 						[attr.id]="language.id"
 						[attr.aria-current]="isLangActive(language.code) ? true : undefined"
-						aria-labelledby="ob-language-change"
 					>
 						{{ language.code.toUpperCase() }}
 					</button>
