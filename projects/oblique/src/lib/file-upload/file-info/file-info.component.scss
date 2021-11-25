@@ -1,15 +1,8 @@
 @import "../../../styles/scss/core/variables";
 
 .ob-file-info {
-	.ob-table .mat-button-base.ob-button {
-		width: $ob-spacing-xl;
-		height: $ob-spacing-xl;
-		line-height: $ob-spacing-xl;
-		font-size: $ob-font-size-base;
-
-		.ob-icon {
-			position: static;
-		}
+	.ob-table .ob-button {
+		font-size: $ob-font-size-smallest;
 	}
 
 	tbody tr:not(:hover) .mat-column-action .ob-button:not(:focus) {
