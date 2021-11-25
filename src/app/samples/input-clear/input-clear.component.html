@@ -9,7 +9,7 @@
 	<mat-label>Mandatory</mat-label>
 	<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel1" #control="ngModel" />
 	<button type="button" role="button" [obInputClear]="control">
-		<mat-icon svgIcon="cancel-circle" class="ob-icon"></mat-icon>
+		<mat-icon svgIcon="cancel-circle"></mat-icon>
 		<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
 	</button>
 </mat-form-field>
@@ -24,7 +24,7 @@
 		<mat-label>Mandatory LG</mat-label>
 		<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel2" #controlLG="ngModel" />
 		<button type="button" role="button" [obInputClear]="controlLG">
-			<mat-icon svgIcon="cancel-circle" class="ob-icon"></mat-icon>
+			<mat-icon svgIcon="cancel-circle"></mat-icon>
 			<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
 		</button>
 	</mat-form-field>
@@ -40,7 +40,7 @@
 		<mat-label>Mandatory SM</mat-label>
 		<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel3" #controlSM="ngModel" />
 		<button type="button" role="button" [obInputClear]="controlSM">
-			<mat-icon svgIcon="cancel-circle" class="ob-icon"></mat-icon>
+			<mat-icon svgIcon="cancel-circle"></mat-icon>
 			<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
 		</button>
 	</mat-form-field>
@@ -52,7 +52,7 @@
 	<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 	<mat-datepicker #picker></mat-datepicker>
 	<button type="button" role="button" [obInputClear]="controlD" [datePickerRef]="picker">
-		<mat-icon svgIcon="cancel-circle" class="ob-icon"></mat-icon>
+		<mat-icon svgIcon="cancel-circle"></mat-icon>
 		<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
 	</button>
 </mat-form-field>
@@ -70,7 +70,7 @@
 		<mat-label>Test input</mat-label>
 		<input type="text" matInput formControlName="field1" />
 		<button type="button" role="button" [obInputClear]="testForm.get('field1')">
-			<mat-icon svgIcon="cancel-circle" class="ob-icon"></mat-icon>
+			<mat-icon svgIcon="cancel-circle"></mat-icon>
 			<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
 		</button>
 	</mat-form-field>
@@ -82,7 +82,7 @@
 		<mat-label>Test input</mat-label>
 		<input type="text" matInput #htmlControl />
 		<button type="button" role="button" [obInputClear]="htmlControl">
-			<mat-icon svgIcon="cancel-circle" class="ob-icon"></mat-icon>
+			<mat-icon svgIcon="cancel-circle"></mat-icon>
 			<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
 		</button>
 	</mat-form-field>

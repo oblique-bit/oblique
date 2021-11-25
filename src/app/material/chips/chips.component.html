@@ -13,7 +13,7 @@
 			<mat-chip-list #chipList>
 				<mat-chip *ngFor="let tag of tags" [selectable]="true" [removable]="true" (removed)="remove(tag)">
 					{{ tag }}
-					<mat-icon svgIcon="cancel-circle" class="ob-icon" matChipRemove></mat-icon>
+					<mat-icon svgIcon="cancel-circle" matChipRemove></mat-icon>
 				</mat-chip>
 				<input
 					placeholder="New tag..."
