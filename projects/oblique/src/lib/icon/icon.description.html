@@ -10,9 +10,10 @@
 </p>
 <p>
 	Oblique's icons are opt-in, meaning <code>ObIconModule.forRoot()</code> has to be explicitly imported in the applications' root module. And to avoid a
-	breaking change, the <code>mat-icon</code> component needs the <code>ob-icon</code> class to be properly styled. The <code>forRoot</code> method is
-	mandatory, as it will take care of the icons registration. It accepts an optional configuration that allows the registration of additional icon sets as well
-	as the default class to be applied to font icons. Per default, the Oblique's icon set is loaded and FontAwesome is defined as the default font library.
+	breaking change, the <code>mat-icon</code> component needs the <code>ob-icon</code> class to be properly styled. Furthermore, The
+	<code>ob-icon-text</code> class is also needed to correctly align the icon vertically with text. The <code>forRoot</code> method is mandatory, as it will
+	take care of the icons registration. It accepts an optional configuration that allows the registration of additional icon sets as well as the default class
+	to be applied to font icons. Per default, the Oblique's icon set is loaded and FontAwesome is defined as the default font library.
 </p>
 
 <details>
