@@ -59,8 +59,9 @@
 		}
 	}
 
-	.mat-icon {
-		margin-top: -2px;
+	.mat-icon[data-mat-icon-type="svg"] {
+		font-size: 1.5em;
+		line-height: 1;
 	}
 
 	 &.ob-button.mat-button-disabled {
