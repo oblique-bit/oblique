@@ -1,12 +1,9 @@
 .mat-icon[data-mat-icon-type="svg"] {
+	width: 1em;
+	height: 1em;
 
-	& {
-		width: 1em;
-		height: 1em;
-
-		&.ob-icon-text {
-			position: relative;
-			top: 0.15em; // empiric value
-		}
+	&.ob-icon-text {
+		position: relative;
+		top: 0.15em; // empiric value
 	}
 }
