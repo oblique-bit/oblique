@@ -40,8 +40,16 @@
 	&.mat-button,
 	&.mat-stroked-button,
 	&.mat-flat-button,
-	&.mat-raised-button {
+	&.mat-raised-button,
+	&.mat-icon-button {
 		border-radius: 2px;
+	}
+
+	&.mat-icon-button {
+		height: unset;
+		width: unset;
+		padding: 0.4643em;
+		line-height: 1;
 	}
 
 	:not(.mat-icon-button) .mat-icon {
