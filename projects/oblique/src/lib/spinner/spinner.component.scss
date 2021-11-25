@@ -9,10 +9,10 @@
 	.ob-icon-wrapper > * {
 		font-size: 4em;
 		animation: ob-spin $ob-duration-default * 2 infinite linear;
-	}
 
-	.ob-icon svg {
-		vertical-align: top;
+		svg {
+			vertical-align: top;
+		}
 	}
 }
 
