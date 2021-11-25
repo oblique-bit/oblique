@@ -8,15 +8,6 @@
 	background-color: $ob-white;
 	border: 1px solid $ob-primary;
 
-	& .ob-icon {
-		height: 1.5em;
-		width: 1.5em;
-
-		&::before {
-			width: 0.9em;
-		}
-	}
-
 	&:hover {
 		background-color: $ob-light;
 	}

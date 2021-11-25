@@ -24,11 +24,11 @@
 	&.mat-chip-with-trailing-icon {
 		padding-right: 0;
 
-		> .ob-icon {
-			font-size: $ob-font-size-xl;
-			margin-left: 0;
-			width: 1.5em;
-			height: 1.5em;
+		> .mat-icon {
+			font-size: $ob-font-size-biggest;
+			margin: 0 $ob-spacing-xs;
+			width: 1em;
+			height: 1em;
 
 			&.fa::before {
 				height: unset;
