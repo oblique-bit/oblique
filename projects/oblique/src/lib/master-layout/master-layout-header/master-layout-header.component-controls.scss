@@ -144,8 +144,8 @@
 		vertical-align: middle;
 		font-size: $ob-font-size-xl;
 
-		&.mat-icon.ob-icon:not(.fa) {
-			top: 0.03em;	// empiric value
+		&.mat-icon[data-mat-icon-type="svg"] {
+			margin-top: -7px;  // empiric value
 		}
 	}
 }
