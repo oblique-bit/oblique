@@ -1,5 +1,6 @@
 import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {addAngularConfigInList, applyInTree, infoMigration, readFile, replaceInFile, setAngularProjectsConfig} from '../utils';
+import {getTemplate} from '../ng-add/ng-add-utils';
+import {addAngularConfigInList, applyInTree, getDefaultAngularConfig, infoMigration, readFile, replaceInFile, setAngularProjectsConfig} from '../utils';
 import {ObIDependencies, ObIMigrations} from './ng-update.model';
 
 export interface IUpdateV8Schema {}
@@ -19,7 +20,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 				this.removeThemeService(),
 				this.migrateMasterLayoutProperties(),
 				this.migrateObEMasterLayoutEventValues(),
-				this.migrateConfigEvents()
+				this.migrateConfigEvents(),
+				this.updateBrowserCompatibilityMessage()
 			])(tree, _context);
 		};
 	}
@@ -317,8 +319,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 				replacement = this.migrateMasterLayoutConfig(replacement);
 				replacement = this.removeProperty(replacement, 'header', 'isAnimated');
 				replacement = this.removeProperty(replacement, 'footer', 'isSmall');
-				replacement = this.migrateMasterLayoutIsFixed(replacement);	// migrate the setter
-				replacement = this.removeProperty(replacement, 'layout', 'isFixed');	// remove the getter
+				replacement = this.migrateMasterLayoutIsFixed(replacement); // migrate the setter
+				replacement = this.removeProperty(replacement, 'layout', 'isFixed'); // remove the getter
 				replacement = this.migrateProperty(replacement, 'footer', 'hasScrollTransition', 'hasLogoOnScroll');
 				replacement = this.migrateProperty(replacement, 'header', 'hasScrollTransition', 'reduceOnScroll');
 				replacement = this.migrateProperty(replacement, 'header', 'isMedium', 'isSmall');
@@ -431,5 +433,24 @@ export class UpdateV7toV8 implements ObIMigrations {
 			service = service ? `${service}\.${serviceName}` : undefined;
 		}
 		return service;
+	}
+
+	private updateBrowserCompatibilityMessage(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Oblique: Updating browser compatibility check message');
+			let index = getDefaultAngularConfig(tree, ['architect', 'build', 'options', 'index']);
+			if (!tree.exists(index)) {
+				index = './index.html';
+			}
+			if (tree.exists(index)) {
+				tree.overwrite(
+					index,
+					readFile(tree, index).replace(
+						new RegExp(/(<noscript style="display: table; height: 98vh; width: 98vw">)((.|\r?\n)*)(<\/div>)/gm),
+						getTemplate(tree, 'default-index.html')
+					)
+				);
+			}
+		};
 	}
 }
