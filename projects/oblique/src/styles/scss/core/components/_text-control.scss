@@ -16,10 +16,6 @@
 		opacity: 0;
 		transition: opacity $ob-duration-fast;
 
-		.mat-icon.ob-icon:not(.fa) {
-			position: static;
-		}
-
 		.fa {
 			color: $ob-gray;
 			transition: color $ob-duration-fast;
