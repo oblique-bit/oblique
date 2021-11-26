@@ -52,6 +52,7 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 	@HostBinding('class.ob-master-layout-fixed') isFixed = this.masterLayout.layout.isFixed;
 	@HostBinding('class.ob-has-cover') hasCover = this.masterLayout.layout.hasCover;
 	@HostBinding('class.ob-has-layout') hasLayout = this.masterLayout.layout.hasLayout;
+	@HostBinding('class.ob-has-max-width') hasMaxWidth = this.masterLayout.layout.hasMaxWidth;
 	@HostBinding('class.ob-header-expanded') isMenuCollapsed = this.masterLayout.layout.isMenuOpened;
 	@HostBinding('class.ob-no-navigation') noNavigation = !this.masterLayout.layout.hasMainNavigation;
 	@HostBinding('class.ob-off-canvas') hasOffCanvas = this.masterLayout.layout.hasOffCanvas;
@@ -139,6 +140,9 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 					break;
 				case ObEMasterLayoutEventValues.LAYOUT:
 					this.hasLayout = event.value;
+					break;
+				case ObEMasterLayoutEventValues.MAX_WIDTH:
+					this.hasMaxWidth = event.value;
 					break;
 			}
 		});

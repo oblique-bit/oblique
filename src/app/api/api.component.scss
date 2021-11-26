@@ -3,7 +3,7 @@
 
 $label-width: 25%;
 :host::ng-deep {
-	@include ob-layout-collapse-down() {
+	@include ob-media-breakpoint-down(md) {
 		dt {
 			border-top: 1px solid $ob-gray;
 			padding-top: $ob-spacing-xs;
@@ -19,7 +19,7 @@ $label-width: 25%;
 		}
 	}
 
-	@include ob-layout-collapse-up() {
+	@include ob-media-breakpoint-up(md) {
 		dl {
 			display: flex;
 			flex-flow: row wrap;

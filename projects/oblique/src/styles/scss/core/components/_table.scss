@@ -54,7 +54,7 @@ table {
 	}
 
 	&.ob-table-collapse {
-		@include ob-layout-collapse-down() {
+		@include ob-media-breakpoint-down(md) {
 			@include ob-table-collapse();
 		}
 	}

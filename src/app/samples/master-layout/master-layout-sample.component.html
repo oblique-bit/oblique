@@ -33,6 +33,11 @@
 	<label ngbButtonLabel class="btn-secondary"> <input ngbButton type="radio" [value]="true" /> Yes </label>
 	<label ngbButtonLabel class="btn-secondary active"> <input ngbButton type="radio" [value]="false" /> No </label>
 </div>
+<h4>Max width layout</h4>
+<div [(ngModel)]="hasMaxWidth" ngbRadioGroup class="btn-group btn-group-toggle">
+	<label ngbButtonLabel class="btn-secondary active"> <input ngbButton type="radio" [value]="true" /> Yes </label>
+	<label ngbButtonLabel class="btn-secondary"> <input ngbButton type="radio" [value]="false" /> No </label>
+</div>
 <h4>Primary Navigation</h4>
 <div [(ngModel)]="navigation" ngbRadioGroup class="btn-group btn-group-toggle">
 	<label ngbButtonLabel class="btn-secondary active"> <input ngbButton type="radio" [value]="true" /> Yes </label>

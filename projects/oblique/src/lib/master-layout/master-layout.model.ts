@@ -82,5 +82,6 @@ export enum ObEMasterLayoutEventValues {
 	SCROLL_TRANSITION,
 	SCROLLABLE,
 	STICKY,
-	LAYOUT
+	LAYOUT,
+	MAX_WIDTH
 }

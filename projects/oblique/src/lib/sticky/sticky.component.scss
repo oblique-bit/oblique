@@ -13,7 +13,7 @@
 }
 
 .ob-sticky-main {
-	@include ob-layout-collapse-up() {
+	@include ob-media-breakpoint-up(md) {
 		overflow-y: auto;
 		height: calc(100% - #{$ob-sticky-element-height}); // is it really needed?
 		// Restrict container width to avoid unwanted horizontal scrollbar
@@ -46,14 +46,14 @@
 		margin-left: auto;
 	}
 
-	@include ob-layout-collapse-up() {
+	@include ob-media-breakpoint-up(md) {
 		height: $ob-sticky-element-height;
 		background-color: $ob-white;
 		z-index: $ob-z-index-controls;
 	}
 }
 
-@include ob-layout-collapse-up() {
+@include ob-media-breakpoint-up(md) {
 	.ob-sticky-header {
 		@include ob-dropShadow(down);
 	}
@@ -70,7 +70,7 @@
 
 .ob-sticky-sm {
 	> .ob-sticky-main {
-		@include ob-layout-collapse-up() {
+		@include ob-media-breakpoint-up(md) {
 			height: calc(100% - #{$ob-sticky-element-height-sm});
 		}
 	}
@@ -80,7 +80,7 @@
 		padding-top: 7px;
 		padding-bottom: 7px;
 
-		@include ob-layout-collapse-up() {
+		@include ob-media-breakpoint-up(md) {
 			height: $ob-sticky-element-height-sm;
 		}
 	}
@@ -88,7 +88,7 @@
 
 .ob-sticky-lg {
 	> .ob-sticky-main {
-		@include ob-layout-collapse-up() {
+		@include ob-media-breakpoint-up(md) {
 			height: calc(100% - #{$ob-sticky-element-height-lg});
 		}
 	}
@@ -98,7 +98,7 @@
 		padding-top: 24px;
 		padding-bottom: 24px;
 
-		@include ob-layout-collapse-up() {
+		@include ob-media-breakpoint-up(md) {
 			height: $ob-sticky-element-height-lg;
 		}
 

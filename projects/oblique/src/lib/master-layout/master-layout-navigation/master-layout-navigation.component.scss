@@ -7,7 +7,7 @@
 .ob-master-layout-navigation {
 	display: block;
 
-	@include ob-layout-collapse-down() {
+	@include ob-media-breakpoint-down(md) {
 		flex: 2; // Variable fluid height
 		visibility: hidden; // Avoids keyboard navigation when collapsed
 		transition: visibility $ob-duration-default; // Ensure element keeps visible when header is closing
@@ -36,7 +36,7 @@
 		@include ob-innerBottomShadow();
 
 		&:not(.ob-sub-nav) {
-			@include ob-layout-collapse-up() {
+			@include ob-media-breakpoint-up(md) {
 				flex-direction: row;
 				padding-left: $ob-spacing-default;
 				height: $ob-navigation-height;
@@ -60,7 +60,7 @@
 			cursor: pointer;
 			@include ob-nav-hover(-1);
 
-			@include ob-layout-collapse-up() {
+			@include ob-media-breakpoint-up(md) {
 				border: 0 none;
 				padding: $ob-spacing-sm $ob-spacing-default;
 
@@ -78,7 +78,7 @@
 
 		// First level only:
 		> .ob-main-nav-item {
-			@include ob-layout-collapse-up() {
+			@include ob-media-breakpoint-up(md) {
 				> a,
 				> button {
 					display: inline-flex;
@@ -105,7 +105,7 @@
 		}
 
 		.ob-toggle-layout-collapsed {
-			@include ob-layout-collapse-up() {
+			@include ob-media-breakpoint-up(md) {
 				display: none;
 			}
 		}
@@ -113,12 +113,12 @@
 		.ob-toggle-collapsed,
 		.ob-toggle-expanded {
 			margin-left: $ob-spacing-sm;
-			@include ob-layout-collapse-down() {
+			@include ob-media-breakpoint-down(md) {
 				display: none;
 			}
 		}
 
-		@include ob-layout-collapse-up() {
+		@include ob-media-breakpoint-up(md) {
 			.ob-master-layout-navigation-toggle {
 				&[aria-expanded] .ob-toggle-collapsed,
 				&:not([aria-expanded]) .ob-toggle-expanded {
@@ -148,13 +148,13 @@
 			transform: translateX(105%);
 			transition: visibility $ob-duration-default, transform $ob-duration-default;
 
-			@include ob-layout-collapse-up() {
+			@include ob-media-breakpoint-up(md) {
 				position: absolute;
 				top: 100%;
 				bottom: auto;
 				left: auto;
 				right: auto;
-				min-width: 280px;
+				min-width: 30ch;	// empiric number
 				max-height: 60vh;
 				overflow-x: hidden;
 				overflow-y: auto;
@@ -165,7 +165,7 @@
 				@include ob-dropShadow();
 			}
 
-			@include ob-layout-collapse-down() {
+			@include ob-media-breakpoint-down(md) {
 				> ul > li:last-child {
 					// [iOS only] Simulate a bottom spacing to ensure that last item is reachable when scrolling the menu and does not display under the MobileSafari tools menu:
 					margin-bottom: 70px;
@@ -173,14 +173,14 @@
 			}
 		}
 
-		@include ob-layout-collapse-up() {
+		@include ob-media-breakpoint-up(md) {
 			&.ob-main-nav-fw .ob-sub-menu {
 				left: 0;
 				right: 0;
 
 				.ob-sub-nav {
 					display: block;
-					column-width: $ob-layout-collapse * 0.5;
+					column-width: 30ch; // empiric value
 
 					li {
 						break-inside: avoid-column;
@@ -190,7 +190,7 @@
 		}
 
 		.ob-sub-nav {
-			@include ob-layout-collapse-up() {
+			@include ob-media-breakpoint-up(md) {
 				background-color: $ob-white;
 			}
 		}
@@ -198,7 +198,7 @@
 		& .ob-expanded > .ob-sub-menu {
 			visibility: visible;
 
-			@include ob-layout-collapse-down() {
+			@include ob-media-breakpoint-down(md) {
 				transform: translateX(0%);
 			}
 		}
@@ -211,7 +211,7 @@
 			white-space: nowrap;
 			background-color: $ob-white;
 
-			@include ob-layout-collapse-up() {
+			@include ob-media-breakpoint-up(md) {
 				display: none;
 			}
 

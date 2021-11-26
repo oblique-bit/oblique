@@ -15,13 +15,13 @@
 }
 
 .d-layout-collapsed {
-	@include ob-layout-collapse-up() {
+	@include ob-media-breakpoint-up(md) {
 		display: none;
 	}
 }
 
 .d-layout-expanded {
-	@include ob-layout-collapse-down() {
+	@include ob-media-breakpoint-down(md) {
 		display: none;
 	}
 }

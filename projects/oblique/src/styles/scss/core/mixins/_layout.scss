@@ -1,25 +1,25 @@
 @import "../variables";
 
-@mixin ob-layout-collapse-down() {
-	@media (max-width: $ob-layout-collapse) {
+@mixin ob-map-error($map, $key) {
+	@if map-has-key($map, $key) {
 		@content;
-	}
-}
-
-@mixin ob-layout-collapse-up() {
-	@media (min-width: $ob-layout-collapse) {
-		@content;
+	} @else {
+		@warn "Unknown breakpoint name: #{$key}.";
 	}
 }
 
 @mixin ob-media-breakpoint-up($name) {
-	@media (min-width: map-get($ob-grid-breakpoints, $name)) {
-		@content;
+	@include ob-map-error($ob-grid-breakpoints, $name) {
+		@media (min-width: map-get($ob-grid-breakpoints, $name)) {
+			@content;
+		}
 	}
 }
 
 @mixin ob-media-breakpoint-down($name) {
-	@media (max-width: map-get($ob-grid-breakpoints, $name)) {
-		@content;
+	@include ob-map-error($ob-grid-breakpoints, $name) {
+		@media (max-width: map-get($ob-grid-breakpoints, $name)) {
+			@content
+		}
 	}
 }

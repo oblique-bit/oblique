@@ -16,7 +16,7 @@
 		right: 0;
 	}
 
-	@include ob-layout-collapse-down() {
+	@include ob-media-breakpoint-down(md) {
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -36,7 +36,7 @@
 		}
 	}
 
-	@include ob-layout-collapse-up() {
+	@include ob-media-breakpoint-up(md) {
 		height: $ob-header-height;
 
 		&.ob-master-layout-header-md {
@@ -69,12 +69,12 @@
 		background-color: inherit;
 		border-bottom: $ob-line-width solid $ob-accent;
 
-		@include ob-layout-collapse-up() {
+		@include ob-media-breakpoint-up(md) {
 			display: flex;
 			flex-direction: row;
 		}
 
-		@include ob-layout-collapse-down() {
+		@include ob-media-breakpoint-down(md) {
 			height: $ob-header-height-collapsed;
 			transition: height $ob-duration-default ease-in-out;
 
@@ -120,7 +120,7 @@
 			display: none;
 		}
 
-		@include ob-layout-collapse-down() {
+		@include ob-media-breakpoint-down(md) {
 			float: left;
 			margin-top: 13px;
 			margin-bottom: 13px;
@@ -147,7 +147,7 @@
 		padding: 8px $ob-spacing-default;
         transition: padding $ob-duration-default ease-in-out;
 
-		@include ob-layout-collapse-up() {
+		@include ob-media-breakpoint-up(md) {
 			@at-root #{selector-append(":not(.ob-master-layout-header-md)", &)} {
 				padding: $ob-spacing-default;
 			}
@@ -160,7 +160,7 @@
 		height: $ob-logo-height-collapsed;
 		margin-right: $ob-spacing-default;
 
-		@include ob-layout-collapse-up() {
+		@include ob-media-breakpoint-up(md) {
 			@at-root #{selector-append(":not(.ob-master-layout-header-md)", &)} {
 				width: $ob-logo-width;
 				height: $ob-logo-height;
@@ -186,7 +186,7 @@
 		text-overflow: ellipsis;
 		white-space: nowrap;
 
-		@include ob-layout-collapse-up() {
+		@include ob-media-breakpoint-up(md) {
 			@at-root #{selector-append(":not(.ob-master-layout-header-md)", &)} {
 				font-size: $ob-font-size-xl;
 				max-height: $ob-logo-height;
@@ -210,11 +210,11 @@
 	.ob-header-toggle {
 		border: none;
 
-		@include ob-layout-collapse-down() {
+		@include ob-media-breakpoint-down(md) {
 			flex-wrap: nowrap;
 		}
 
-		@include ob-layout-collapse-up() {
+		@include ob-media-breakpoint-up(md) {
 			display: none !important;
 		}
 	}

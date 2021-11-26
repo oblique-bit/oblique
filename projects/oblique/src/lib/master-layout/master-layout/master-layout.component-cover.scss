@@ -20,7 +20,7 @@
 			overflow-x: hidden;
 			background-color: rgba(red($ob-white), green($ob-white), blue($ob-white), 0.9);
 
-			@include ob-layout-collapse-up() {
+			@include ob-media-breakpoint-up(md) {
 				min-height: calc(100vh - #{$ob-header-height} - #{$ob-footer-height-md});
 				margin-left: 35%;
 				width: 45%;
@@ -54,7 +54,7 @@
 		.ob-cover-header {
 			padding: 0 $ob-spacing-default;
 
-			@include ob-layout-collapse-up() {
+			@include ob-media-breakpoint-up(md) {
 				background-color: $ob-white;
 			}
 		}

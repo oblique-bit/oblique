@@ -11,7 +11,7 @@ html,
 body {
 	height: 100%;
 
-	@include ob-layout-collapse-down() {
+	@include ob-media-breakpoint-down(md) {
 		// Ensure fixed elements keep scrolling smoothly on iOS:
 		-webkit-overflow-scrolling: touch;
 	}

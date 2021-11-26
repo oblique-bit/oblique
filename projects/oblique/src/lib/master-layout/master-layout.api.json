@@ -103,6 +103,7 @@
       "type": "injectable(config)",
       "usage": "This is the default configuration of the master layout. Values can be tweaked by injecting this service into <code>app.module.ts</code> to customize the global structure of the application.",
       "since": "2.0.0",
+      "updated": "8.0.0",
       "variables": [
         {
           "name": "homePageRoute",
@@ -187,6 +188,13 @@
           "type": "boolean",
           "default": true,
           "since": "4.0.0"
+        },
+        {
+          "name": "layout.hasMaxWidth",
+          "text": "Limit the width of the <code>main</code> element on very big screens.",
+          "type": "boolean",
+          "default": false,
+          "since": "8.0.0"
         },
         {
           "name": "header.isAnimated",
@@ -335,6 +343,7 @@
       "usage": "A service to configure the master layout component. The changes are live.",
       "type": "service",
       "since": "4.0.0",
+      "updated": "8.0.0",
       "variables": [
         {
           "name": "configEvents",
@@ -383,6 +392,13 @@
           "type": "boolean",
           "default": true,
           "since": "4.0.0"
+        },
+        {
+          "name": "hasMaxWidth",
+          "text": "Controls <code>ObMasterLayoutConfig.layout.hasMaxWidth</code> property.",
+          "type": "boolean",
+          "default": false,
+          "since": "8.0.0"
         }
       ]
     },
@@ -638,6 +654,7 @@
       "type": "interface",
       "usage": "The event emitted by master layout",
       "since": "4.0.0",
+      "updated": "8.0.0",
       "variables": [
         {
           "name": "name",
@@ -657,7 +674,8 @@
             "ObEMasterLayoutEventValues.SCROLL_TRANSITION",
             "ObEMasterLayoutEventValues.SCROLLABLE",
             "ObEMasterLayoutEventValues.STICKY",
-            "ObEMasterLayoutEventValues.LAYOUT"
+            "ObEMasterLayoutEventValues.LAYOUT",
+            "ObEMasterLayoutEventValues.MAX_WIDTH"
           ],
           "since": "4.0.0"
         },

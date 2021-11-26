@@ -34,7 +34,7 @@
 		margin: 5px; // Reserve spacing for box shadow!
 		@include ob-dropShadow();
 
-		@include ob-layout-collapse-up() {
+		@include ob-media-breakpoint-up(md) {
 			width: 380px;
 		}
 

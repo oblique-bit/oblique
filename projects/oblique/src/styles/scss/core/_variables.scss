@@ -77,8 +77,6 @@ $ob-footer-height-md:             60px !default;
 $ob-footer-height-sm:             28px !default;
 $ob-footer-height-collapsed:     151px !default;
 
-$ob-layout-collapse:               992px !default; // Breakpoint at which the layout becomes expanded.
-
 $ob-border-radius-base:            4px !default;
 
 $ob-navigation-scrollable-padding: 2 * $ob-spacing-default !default;
@@ -108,10 +106,10 @@ $ob-table-collapsed-header-width: 150px !default;
 
 $ob-grid-breakpoints: (
 	xs: 0,
-	sm: 576px,
-	md: 768px,
-	lg: 992px,
-	xl: 1200px
+	sm: 600px,
+	md: 905px,
+	lg: 1240px,
+	xl: 1440px
 ) !default;
 
 $ob-font: 'Frutiger Neue', Roboto, Arial, system-ui, -apple-system, BlinkMacSystemFont, sans-serif !default;

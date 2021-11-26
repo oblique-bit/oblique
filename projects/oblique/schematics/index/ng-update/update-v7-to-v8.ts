@@ -10,7 +10,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	applyMigrations(_options: IUpdateV8Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Analyzing project');
-			return chain([this.prefixScssVariableNames(), this.prefixMixinNames()])(tree, _context);
+			return chain([this.prefixScssVariableNames(), this.prefixMixinNames(), this.removeLayoutCollapse()])(tree, _context);
 		};
 	}
 
@@ -216,6 +216,16 @@ export class UpdateV7toV8 implements ObIMigrations {
 					'innerBottomShadow',
 					'list-title'
 				].forEach(mixin => replaceInFile(tree, filePath, new RegExp(`\\@include ${mixin}`, 'g'), `@include ob-${mixin}`));
+			};
+			return applyInTree(tree, apply, '*.scss');
+		};
+	}
+
+	private removeLayoutCollapse(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Replacing layout-collapse mixins');
+			const apply = (filePath: string) => {
+				replaceInFile(tree, filePath, /(?:ob-)?layout-collapse-(up|down)(?:\(\))?/g, `ob-media-breakpoint-$1(md)`);
 			};
 			return applyInTree(tree, apply, '*.scss');
 		};

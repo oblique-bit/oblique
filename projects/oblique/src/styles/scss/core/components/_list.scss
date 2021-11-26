@@ -2,7 +2,7 @@
 @import "../mixins/layout";
 @import "../mixins/list";
 
-@include ob-layout-collapse-up() {
+@include ob-media-breakpoint-up(md) {
 	dl.ob-horizontal {
 		@include ob-horizontal-description-list();
 

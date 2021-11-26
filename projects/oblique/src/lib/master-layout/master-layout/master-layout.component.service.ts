@@ -16,6 +16,7 @@ export class ObMasterLayoutComponentService {
 	private _hasOffCanvas = this.config.layout.hasOffCanvas;
 	private _hasMainNavigation = this.config.layout.hasMainNavigation;
 	private _hasLayout = this.config.layout.hasLayout;
+	private _hasMaxWidth = this.config.layout.hasMaxWidth;
 
 	constructor(private readonly config: ObMasterLayoutConfig) {}
 
@@ -91,6 +92,18 @@ export class ObMasterLayoutComponentService {
 		this._hasLayout = value;
 		this._events.next({
 			name: ObEMasterLayoutEventValues.LAYOUT,
+			value: value
+		});
+	}
+
+	get hasMaxWidth(): boolean {
+		return this._hasMaxWidth;
+	}
+
+	set hasMaxWidth(value: boolean) {
+		this._hasMaxWidth = value;
+		this._events.next({
+			name: ObEMasterLayoutEventValues.MAX_WIDTH,
 			value: value
 		});
 	}
