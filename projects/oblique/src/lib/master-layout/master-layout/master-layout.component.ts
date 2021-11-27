@@ -1,4 +1,5 @@
 import {
+	AfterViewInit,
 	Component,
 	ContentChild,
 	ContentChildren,
@@ -44,7 +45,7 @@ import {ObUseObliqueIcons} from '../../icon/icon.model';
 	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-master-layout', 'ob-version': appVersion}
 })
-export class ObMasterLayoutComponent implements OnInit, OnDestroy {
+export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
 	home = this.config.homePageRoute;
 	route = {path: '', params: undefined};
 	@Input() navigation: ObINavigationLink[] = [];
@@ -59,11 +60,14 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 	@HostBinding('class.ob-outline') outline = true;
 	isHeaderSticky = this.masterLayout.header.isSticky;
 	isFooterSticky = this.masterLayout.footer.isSticky;
+	scrollTarget: HTMLElement | Window;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<any>;
 	@ContentChildren('obHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('obHeaderMobileControl') readonly headerMobileControlTemplates: QueryList<TemplateRef<any>>;
 	@ContentChildren('obFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<any>>;
 	@ViewChild('offCanvasClose', {read: ElementRef}) readonly offCanvasClose: ElementRef<HTMLElement>;
+	@ViewChild('main') readonly main: ElementRef<HTMLElement>;
+	@ViewChild('wrapper') readonly wrapper: ElementRef<HTMLElement>;
 	private readonly unsubscribe = new Subject();
 
 	constructor(
@@ -109,9 +113,26 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 		this.updateJumpLinks(!this.noNavigation);
 	}
 
+	ngAfterViewInit() {
+		// to avoid a ExpressionHasBeenChangedAfterItHasBeenCheckedError
+		setTimeout(() => (this.scrollTarget = this.getScrollTarget()));
+	}
+
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
+	}
+
+	private getScrollTarget(): HTMLElement | Window {
+		if (this.isHeaderSticky && this.isFooterSticky) {
+			return this.main.nativeElement;
+		}
+		if (this.isHeaderSticky !== this.isFooterSticky) {
+			return this.wrapper.nativeElement;
+		}
+		if (!this.isHeaderSticky && !this.isFooterSticky) {
+			return this.window;
+		}
 	}
 
 	private updateJumpLinks(hasNavigation: boolean): void {
@@ -144,9 +165,11 @@ export class ObMasterLayoutComponent implements OnInit, OnDestroy {
 						break;
 					case ObEMasterLayoutEventValues.HEADER_IS_STICKY:
 						this.isHeaderSticky = event.value;
+						this.scrollTarget = this.getScrollTarget();
 						break;
 					case ObEMasterLayoutEventValues.FOOTER_IS_STICKY:
 						this.isFooterSticky = event.value;
+						this.scrollTarget = this.getScrollTarget();
 						break;
 				}
 			});
