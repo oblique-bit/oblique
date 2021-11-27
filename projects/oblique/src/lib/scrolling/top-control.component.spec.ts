@@ -3,25 +3,27 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
-import {WINDOW} from '../utilities';
 import {ObTopControlComponent} from './top-control.component';
 import {ObUseObliqueIcons} from '../icon/icon.model';
+import {WINDOW} from '../utilities';
 
 describe('ObTopControlComponent', () => {
 	let fixture: ComponentFixture<ObTopControlComponent>;
 	let topControlComponent: ObTopControlComponent;
 
-	describe('with Window un-scrolled', () => {
-		beforeEach(waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [ObTopControlComponent, ObMockTranslatePipe],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA],
-				providers: [
-					{provide: TranslateService, useClass: ObMockTranslateService},
-					{provide: WINDOW, useValue: {scrollY: 0, scrollTo: jest.fn()}}
-				]
-			}).compileComponents();
-		}));
+	describe('without a scrollTarget', () => {
+		beforeEach(
+			waitForAsync(() => {
+				TestBed.configureTestingModule({
+					declarations: [ObTopControlComponent, ObMockTranslatePipe],
+					schemas: [CUSTOM_ELEMENTS_SCHEMA],
+					providers: [
+						{provide: TranslateService, useClass: ObMockTranslateService},
+						{provide: WINDOW, useValue: window}
+					]
+				}).compileComponents();
+			})
+		);
 
 		beforeEach(() => {
 			fixture = TestBed.createComponent(ObTopControlComponent);
@@ -42,29 +44,31 @@ describe('ObTopControlComponent', () => {
 		});
 
 		describe('scrollTop', () => {
-			it('should not scroll to top', () => {
-				const window = TestBed.inject(WINDOW);
+			it('should do nothing', () => {
 				topControlComponent.scrollTop();
-				expect(window.scrollTo).not.toHaveBeenCalled();
+				expect(topControlComponent.scrollTarget).toBeUndefined();
 			});
 		});
 	});
 
-	describe('with Window scrolled', () => {
-		beforeEach(waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [ObTopControlComponent, ObMockTranslatePipe],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA],
-				providers: [
-					{provide: TranslateService, useClass: ObMockTranslateService},
-					{provide: WINDOW, useValue: {scrollY: 10, scrollTo: jest.fn()}}
-				]
-			}).compileComponents();
-		}));
+	describe('with a scrollTarget', () => {
+		beforeEach(
+			waitForAsync(() => {
+				TestBed.configureTestingModule({
+					declarations: [ObTopControlComponent, ObMockTranslatePipe],
+					schemas: [CUSTOM_ELEMENTS_SCHEMA],
+					providers: [
+						{provide: TranslateService, useClass: ObMockTranslateService},
+						{provide: WINDOW, useValue: window}
+					]
+				}).compileComponents();
+			})
+		);
 
 		beforeEach(() => {
 			fixture = TestBed.createComponent(ObTopControlComponent);
 			topControlComponent = fixture.componentInstance;
+			topControlComponent.scrollTarget = {scrollTo: jest.fn()} as unknown as HTMLElement;
 			fixture.detectChanges();
 		});
 
@@ -73,26 +77,28 @@ describe('ObTopControlComponent', () => {
 		});
 
 		describe('scrollTop', () => {
-			it('should scroll to top', () => {
-				const window = TestBed.inject(WINDOW);
+			it('should call target.scrollTo', () => {
 				topControlComponent.scrollTop();
-				expect(window.scrollTo).toHaveBeenCalled();
+				// @ts-ignore because TS don't see the scrollTo function on Window
+				expect(topControlComponent.scrollTarget.scrollTo).toHaveBeenCalledWith({top: 0, behavior: 'smooth'});
 			});
 		});
 	});
 
 	describe('with ObUseObliqueIcons', () => {
-		beforeEach(waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [ObTopControlComponent, ObMockTranslatePipe],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA],
-				providers: [
-					{provide: TranslateService, useClass: ObMockTranslateService},
-					{provide: ObUseObliqueIcons, useValue: true},
-					{provide: WINDOW, useValue: window}
-				]
-			}).compileComponents();
-		}));
+		beforeEach(
+			waitForAsync(() => {
+				TestBed.configureTestingModule({
+					declarations: [ObTopControlComponent, ObMockTranslatePipe],
+					schemas: [CUSTOM_ELEMENTS_SCHEMA],
+					providers: [
+						{provide: TranslateService, useClass: ObMockTranslateService},
+						{provide: WINDOW, useValue: window},
+						{provide: ObUseObliqueIcons, useValue: true}
+					]
+				}).compileComponents();
+			})
+		);
 
 		beforeEach(() => {
 			fixture = TestBed.createComponent(ObTopControlComponent);

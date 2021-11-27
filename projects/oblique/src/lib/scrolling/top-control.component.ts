@@ -1,6 +1,6 @@
-import {Component, HostBinding, Inject, Optional, ViewEncapsulation} from '@angular/core';
-import {WINDOW} from '../utilities';
+import {Component, HostBinding, Inject, Input, Optional, ViewEncapsulation} from '@angular/core';
 import {ObUseObliqueIcons} from '../icon/icon.model';
+import {WINDOW} from '../utilities';
 
 @Component({
 	selector: 'ob-top-control',
@@ -12,14 +12,13 @@ import {ObUseObliqueIcons} from '../icon/icon.model';
 })
 export class ObTopControlComponent {
 	@HostBinding('class.ob-font-awesome') useFontAwesomeIcon: boolean;
+	@Input() scrollTarget: HTMLElement | Window;
 
-	constructor(@Inject(WINDOW) private readonly window, @Optional() @Inject(ObUseObliqueIcons) useObliqueIcon) {
+	constructor(@Inject(WINDOW) private readonly window: Window, @Optional() @Inject(ObUseObliqueIcons) useObliqueIcon) {
 		this.useFontAwesomeIcon = !useObliqueIcon;
 	}
 
 	public scrollTop(): void {
-		if (this.window.scrollY) {
-			this.window.scrollTo({top: 0, behavior: 'smooth'});
-		}
+		(this.scrollTarget || this.window).scrollTo({top: 0, behavior: 'smooth'});
 	}
 }
