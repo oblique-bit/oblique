@@ -1,11 +1,13 @@
 import {Inject, Injectable} from '@angular/core';
 import {merge, Observable, Subject} from 'rxjs';
 import {TranslateService} from '@ngx-translate/core';
-import {delay} from 'rxjs/operators';
+import {delay, filter} from 'rxjs/operators';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObEMasterLayoutEventValues, ObEScrollMode, ObIMasterLayoutEvent} from '../master-layout.model';
 import {WINDOW} from '../../utilities';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
+import {ObGlobalEventsService} from '../../global-events/global-events.service';
+import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 
 @Injectable({
 	providedIn: 'root'
@@ -20,14 +22,19 @@ export class ObMasterLayoutNavigationService {
 
 	constructor(
 		private readonly config: ObMasterLayoutConfig,
+		layoutService: ObMasterLayoutComponentService,
+		globalEventsService: ObGlobalEventsService,
 		offCanvas: ObOffCanvasService,
 		translate: TranslateService,
 		@Inject(WINDOW) private readonly window: Window
 	) {
 		merge(
 			translate.onLangChange,
-			offCanvas.opened.pipe(delay(600)) // delay for the animation duration
-		).subscribe(() => this.refresh());
+			offCanvas.opened.pipe(delay(600)), // delay for the animation duration
+			globalEventsService.resize$
+		)
+			.pipe(filter(() => layoutService.hasMainNavigation && this.scrollMode !== ObEScrollMode.DISABLED))
+			.subscribe(() => this.refresh());
 		this.configEvents$ = this._events.asObservable();
 	}
 

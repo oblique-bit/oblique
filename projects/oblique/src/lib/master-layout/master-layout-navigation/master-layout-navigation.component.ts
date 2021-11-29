@@ -43,7 +43,6 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 
 	ngOnInit() {
 		this.closeOnEscape();
-		this.refreshOnWindowResize();
 		this.markActiveLink();
 	}
 
@@ -63,10 +62,6 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 	ngOnDestroy() {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
-	}
-
-	onResize() {
-		this.masterLayout.navigation.refresh();
 	}
 
 	close(): void {
@@ -116,10 +111,6 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe(() => this.close());
-	}
-
-	private refreshOnWindowResize(): void {
-		this.globalEventsService.resize$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.onResize());
 	}
 
 	private markActiveLink(): void {
