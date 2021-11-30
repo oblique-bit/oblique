@@ -70,6 +70,7 @@ export class AppComponent {
 			children: [
 				{url: 'typography', label: 'Typography'},
 				{url: 'block', label: 'Block elements'},
+				{url: 'grid', label: 'Grid system'},
 				{url: 'icon', label: 'Icons as class'},
 				{url: 'inline', label: 'Inline elements'},
 				{url: 'lists', label: 'Lists'},
