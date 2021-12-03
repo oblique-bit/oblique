@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
-import {ObMasterLayoutService, ObThemeService} from '@oblique/oblique';
+import {ObMasterLayoutService} from '@oblique/oblique';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {ThemeService} from '../../common/theme.service';
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
@@ -21,7 +22,7 @@ export class ObDatepickerSampleComponent {
 		range: {}
 	};
 
-	constructor(masterLayout: ObMasterLayoutService, theme: ObThemeService) {
+	constructor(masterLayout: ObMasterLayoutService, theme: ThemeService) {
 		this.material = theme.theme$.pipe(map(() => theme.isMaterial()));
 		const today = new Date();
 		this.minDate = ObDatepickerSampleComponent.dateToNgbDateStruct(new Date(new Date().setDate(today.getDate() - 7)));

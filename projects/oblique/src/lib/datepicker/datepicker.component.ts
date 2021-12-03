@@ -1,7 +1,7 @@
 import {Component, ElementRef, forwardRef, HostListener, Input, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
 import {NgbDateStruct, NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
-import {ObThemeService} from '../theme/theme.service';
+import {ObThemeService} from '../theme.service';
 import {ObDatepickerConfigService} from './datepicker-config.service';
 import {ObIDatepickerOptions} from './datepicker.model';
 

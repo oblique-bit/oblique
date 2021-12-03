@@ -11,7 +11,6 @@ import {NgbDatepickerConfig, NgbModule, NgbTooltipConfig} from '@ng-bootstrap/ng
 import {TranslateModule} from '@ngx-translate/core';
 
 import {
-	FONTS,
 	multiTranslateLoader,
 	OB_BANNER,
 	ObAlertModule,
@@ -34,9 +33,7 @@ import {
 	ObSearchBoxModule,
 	ObSelectableModule,
 	ObSpinnerModule,
-	ObThemeService,
 	ObUnsavedChangesModule,
-	THEMES,
 	ObIconModule,
 	ObUseObliqueIcons
 } from '@oblique/oblique';
@@ -50,6 +47,7 @@ import {registerLocaleData} from '@angular/common';
 
 import localeFR from '@angular/common/locales/fr-CH';
 import {ObHttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
+import {FONTS, THEMES, ThemeService} from './common/theme.service';
 
 registerLocaleData(localeFR);
 
@@ -102,7 +100,7 @@ export class AppModule {
 		private readonly documentMetaService: ObDocumentMetaService,
 		interceptorConfig: ObHttpApiInterceptorConfig,
 		config: ObMasterLayoutConfig,
-		theme: ObThemeService
+		theme: ThemeService
 	) {
 		// As the HEAD `title` element and the `description` meta element are outside any
 		// Angular entry component, we use a service to update these element values:

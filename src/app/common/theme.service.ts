@@ -3,31 +3,30 @@ import {DOCUMENT} from '@angular/common';
 import {Observable, ReplaySubject} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 
+// NOTE: deactivate no-shadow because EsLint incorrectly report the enum as erroneous
+// eslint-disable-next-line no-shadow
 export enum THEMES {
 	MATERIAL = 'oblique-material',
 	BOOTSTRAP = 'oblique-bootstrap'
 }
 
+// eslint-disable-next-line no-shadow
 export enum FONTS {
 	FRUTIGER = 'frutiger',
 	ROBOTO = 'roboto',
 	NONE = 'none'
 }
-/**
- * @deprecated since version 7.0.0. It will be removed in Oblique 8.
- * Theme and Font should be configured by including the relevant CSS files in Angular.json
- */
+
 @Injectable({
 	providedIn: 'root'
 })
-export class ObThemeService {
+export class ThemeService {
 	theme$: Observable<THEMES | string>;
 	font$: Observable<FONTS>;
 	private readonly mainTheme = new ReplaySubject<THEMES | string>(1);
 	private readonly mainFont = new ReplaySubject<FONTS>(1);
 	private readonly renderer: Renderer2;
 	private readonly head: HTMLElement;
-	private readonly warned = [];
 	private themeLink: HTMLElement;
 	private fontLink: HTMLElement;
 	private currentTheme: THEMES | string;
@@ -59,14 +58,6 @@ export class ObThemeService {
 		return this.currentTheme === THEMES.MATERIAL;
 	}
 
-	deprecated(component: string, target: string): void {
-		if (this.isMaterial() && !this.warned.includes(component)) {
-			this.warned.push(component);
-			console.warn(`Oblique's "${component}" should not be used with Material Design, prefer the Angular implementation:
-			https://material.angular.io/components/${target}.`);
-		}
-	}
-
 	private static isInEnum(value, enumName): boolean {
 		return Object.values(enumName).includes(value);
 	}
@@ -83,7 +74,7 @@ export class ObThemeService {
 	private initTheme(): void {
 		this.themeLink = this.createAndAddEmptyLink();
 		this.theme$
-			.pipe(map(theme => (ObThemeService.isInEnum(theme, THEMES) ? `assets/css/${theme}.css` : theme)))
+			.pipe(map(theme => (ThemeService.isInEnum(theme, THEMES) ? `assets/css/${theme}.css` : theme)))
 			.subscribe(path => this.renderer.setAttribute(this.themeLink, 'href', path));
 	}
 

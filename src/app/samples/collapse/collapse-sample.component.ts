@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {ObThemeService} from '@oblique/oblique';
 import {Duration, IconPosition} from './collapse-sample.model';
+import {ThemeService} from '../../common/theme.service';
 
 @Component({
 	selector: 'ob-collapse-sample',
@@ -33,7 +33,7 @@ export class ObCollapseSampleComponent {
 		{value: 'none', viewValue: 'Do not show the icon'}
 	];
 
-	constructor(theme: ObThemeService) {
+	constructor(theme: ThemeService) {
 		this.material = theme.theme$.pipe(map(() => theme.isMaterial()));
 	}
 }

@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {ObMasterLayoutService, ObThemeService} from '@oblique/oblique';
+import {ObMasterLayoutService} from '@oblique/oblique';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {ThemeService} from '../../common/theme.service';
 
 @Component({
 	selector: 'ob-button-sample',
@@ -12,7 +13,7 @@ export class ObButtonSampleComponent {
 	material: Observable<boolean>;
 	obButton: 'primary' | 'secondary' | 'tertiary' = 'primary';
 
-	constructor(masterLayout: ObMasterLayoutService, theme: ObThemeService) {
+	constructor(masterLayout: ObMasterLayoutService, theme: ThemeService) {
 		this.material = theme.theme$.pipe(map(() => theme.isMaterial()));
 	}
 }
