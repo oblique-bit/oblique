@@ -11,7 +11,7 @@ export function oblique(options: ObIOptionsSchema): Rule {
 			embedMasterLayout(options.title),
 			addFeatureDetection(),
 			addMainCSS(),
-			addTheme(options.theme),
+			addTheme(),
 			addObliqueAssets(),
 			addFontStyle(options.font || 'none'),
 			addFontFiles(options.font || 'none'),
@@ -83,11 +83,11 @@ function addMainCSS(): Rule {
 	};
 }
 
-function addTheme(theme: string): Rule {
+function addTheme(): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Adding theme CSS');
-		addThemeDependencies(tree, theme);
-		return addThemeCSS(tree, theme);
+		addThemeDependencies(tree);
+		return addThemeCSS(tree);
 	};
 }
 
@@ -151,21 +151,17 @@ function addScssImport(stylesPath: string): Rule {
 	};
 }
 
-function addThemeDependencies(tree: Tree, theme: string): void {
-	if (theme === 'material') {
-		addDependency(tree, '@angular/cdk');
-		addDependency(tree, '@angular/material');
-	} else {
-		addDependency(tree, '@ng-bootstrap/ng-bootstrap');
-	}
+function addThemeDependencies(tree: Tree): void {
+	addDependency(tree, '@angular/cdk');
+	addDependency(tree, '@angular/material');
 }
 
-function addThemeCSS(tree: Tree, theme: string): Tree {
-	const styleSheet = `node_modules/@oblique/oblique/styles/css/oblique-${theme}.css`;
+function addThemeCSS(tree: Tree): Tree {
+	const styleSheet = `node_modules/@oblique/oblique/styles/css/oblique-material.css`;
 	return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) => {
-		const index = config.indexOf(styleSheet.replace(`oblique-${theme}.css`, `oblique-${theme}.scss`));
+		const index = config.indexOf(styleSheet.replace(`oblique-material.css`, `oblique-material.scss`));
 		if (index > -1) {
-			config[index] = config[index].replace(`oblique-${theme}.scss`, `oblique-${theme}.css`);
+			config[index] = config[index].replace(`oblique-material.scss`, `oblique-material.css`);
 		}
 		if (!config.includes(styleSheet)) {
 			config.splice(config.indexOf(obliqueCssPath) + 1, 0, styleSheet);

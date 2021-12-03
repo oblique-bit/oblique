@@ -23,7 +23,8 @@ export {ObDatepickerComponent} from './datepicker.component';
 export {ObIDatepickerOptions} from './datepicker.model';
 
 /**
- * @deprecated with material theme since version 4.0.0. Use angular material datepicker instead
+ * @deprecated with material theme since version 4.0.0. Use angular material datepicker instead.
+ * Deprecated with bootstrap theme since version 8.0.0. Will be removed with version 10.0.0.
  */
 @NgModule({
 	imports: [CommonModule, NgbModule, TranslateModule, ReactiveFormsModule],
