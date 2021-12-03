@@ -31,6 +31,7 @@ export class AppComponent {
 			label: 'i18n.routes.samples.title',
 			children: [
 				{url: 'alert', label: 'Alert'},
+				{url: 'button', label: 'Buttons'},
 				{url: 'breadcrumb', label: 'Breadcrumb'},
 				{url: 'collapse', label: 'Collapse'},
 				{url: 'column-layout', label: 'i18n.routes.samples.column-layout.title'},
@@ -61,8 +62,7 @@ export class AppComponent {
 				{url: 'sticky', label: 'Sticky'},
 				{url: 'unknown-route-sample', label: 'Unknown route'},
 				{url: 'unsaved-changes', label: 'Unsaved changes'},
-				{url: 'form', label: 'Forms'},
-				{url: 'button', label: 'Buttons'}
+				{url: 'form', label: 'Forms'}
 			]
 		},
 		{

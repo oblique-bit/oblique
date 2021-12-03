@@ -9,8 +9,8 @@
 	build time.
 </p>
 <p>
-	Oblique's icons are opt-in, meaning <code>ObIconModule.forRoot()</code> has to be explicitly imported in the applications' root module. And to avoid a
-	breaking change, the <code>mat-icon</code> component needs the <code>ob-icon</code> class to be properly styled. The <code>forRoot</code> method is
+	Oblique's icons are opt-in, meaning <code>ObIconModule.forRoot()</code> has to be explicitly imported in the applications' root module. To properly handle
+	the icon's vertical alignment with text, the <code>mat-icon</code> component needs the <code>ob-icon-text</code> class. The <code>forRoot</code> method is
 	mandatory, as it will take care of the icons registration. It accepts an optional configuration that allows the registration of additional icon sets as well
 	as the default class to be applied to font icons. Per default, the Oblique's icon set is loaded and FontAwesome is defined as the default font library.
 </p>
@@ -29,13 +29,10 @@
 }
 </pre
 	>
-	<p>
-		Then the <code>mat-icon</code> component can be used with the <code>ob-icon</code> class and either the <code>svgIcon</code> or the
-		<code>fontIcon</code> input.
-	</p>
+	<p>Then the <code>mat-icon</code> component can be used with either the <code>svgIcon</code> or the <code>fontIcon</code> input.</p>
 	<pre>
-&lt;mat-icon svgIcon="calendar" class="ob-icon">&lt;/mat-icon>      // Oblique icon
-&lt;mat-icon fontIcon="fa-calendar" class="ob-icon">&lt;/mat-icon>  // FA icon
+&lt;mat-icon svgIcon="calendar">&lt;/mat-icon>      // Oblique icon
+&lt;mat-icon fontIcon="fa-calendar">&lt;/mat-icon>  // FA icon
 </pre
 	>
 </details>

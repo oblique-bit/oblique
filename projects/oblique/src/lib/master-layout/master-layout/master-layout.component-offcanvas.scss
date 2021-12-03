@@ -71,22 +71,8 @@
 		}
 
 		.ob-close {
-			@include ob-link-btn;
-			font-size: $ob-font-size-biggest;
-			padding: 0;
-			color: $ob-gray-dark;
-
-			/* temporary alignment until https://jira.bit.admin.ch/browse/OUI-1454 is integrated, then this block should be removed */
-			position: relative;
-			height: 34px; // button height;
-			width: 34px;
-
-			.mat-icon > svg {
-				position: absolute;
-				top: 3.8px;
-				left: 3.8px;
-			}
-			/* End of temporary block */
+			font-size: $ob-font-size-bigger;
+			height: 16px * 2.5 * 1.2;	// base font-size * h2 font-size * h2 line-height
 		}
 
 		@include ob-media-breakpoint-down(md) {

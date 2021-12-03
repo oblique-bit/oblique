@@ -41,10 +41,9 @@
 	}
 
 	.mat-icon.ob-upload-icon {
-		position: static;
 		font-size: 42.666px; // empiric number
 		margin-right: $ob-spacing-default;
-		vertical-align: middle;
+		vertical-align: bottom;
 	}
 
 	.ob-drop-zone-hints {

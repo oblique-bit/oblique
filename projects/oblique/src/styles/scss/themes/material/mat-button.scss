@@ -2,32 +2,37 @@
 @import "./mixins/mat-button";
 
 .mat-button-base {
-	&.ob-button.mat-primary {
-		&.mat-flat-button {
-			@include ob-button($ob-gray-extra-light);
-			background-color: $ob-primary;
+	&.ob-button {
+		line-height: 34px;	// material design height
+		border: 1px solid transparent;
 
-			&.mat-button-disabled {
-				color: $ob-gray-600;
-				background-color: $ob-gray-lighter;
+		&.mat-primary {
+			&.mat-flat-button {
+				@include ob-button($ob-gray-extra-light);
+				background-color: $ob-primary;
+
+				&.mat-button-disabled {
+					color: $ob-gray-600;
+					background-color: $ob-gray-lighter;
+				}
 			}
-		}
 
-		&.mat-stroked-button {
-			@include ob-button($ob-primary);
-			border-color: $ob-primary;
+			&.mat-stroked-button {
+				@include ob-button($ob-primary);
+				border-color: $ob-primary;
 
-			&.mat-button-disabled {
-				color: $ob-gray-500;
-				border-color: $ob-gray-500;
+				&.mat-button-disabled {
+					color: $ob-gray-500;
+					border-color: $ob-gray-500;
+				}
 			}
-		}
 
-		&:not(.mat-flat-button):not(.mat-stroked-button) {
-			@include ob-button($ob-primary);
+			&:not(.mat-flat-button):not(.mat-stroked-button) {
+				@include ob-button($ob-primary);
 
-			&.mat-button-disabled {
-				color: $ob-gray-500;
+				&.mat-button-disabled {
+					color: $ob-gray-500;
+				}
 			}
 		}
 	}
@@ -35,8 +40,16 @@
 	&.mat-button,
 	&.mat-stroked-button,
 	&.mat-flat-button,
-	&.mat-raised-button {
+	&.mat-raised-button,
+	&.mat-icon-button {
 		border-radius: 2px;
+	}
+
+	&.mat-icon-button {
+		height: unset;
+		width: unset;
+		padding: 0.4643em;
+		line-height: 1;
 	}
 
 	:not(.mat-icon-button) .mat-icon {
@@ -59,11 +72,12 @@
 		}
 	}
 
-	.mat-icon {
-		margin-top: -2px;
+	.mat-icon[data-mat-icon-type="svg"] {
+		font-size: 1.5em;
+		line-height: 1;
 	}
 
-	 &.ob-button.mat-button-disabled {
-		 cursor: not-allowed;
-	 }
+	&.ob-button.mat-button-disabled {
+		cursor: not-allowed;
+	}
 }
