@@ -23,7 +23,6 @@ const distMaterialCss = async (done) => transpile('material', 'themes', done);
 const distBootstrapCss = async (done) => transpile('bootstrap', 'themes', done);
 const distCoreCss = async (done) => transpile('core', '', done);
 const distUtilCss = async (done) => transpile('utilities', '', done);
-const distCompatCss = async (done) => transpile('compat', '', done);
 const distComponentsCss = async (done) => transpileComponents(`${paths.src}/lib`, done);
 const distAlertCss = async (done) => transpileFile(['dist', 'oblique', 'styles', 'scss', 'oblique-alert.scss'], 'alert', done);
 const distIconCss = async (done) => transpileFile(['dist', 'oblique', 'styles', 'scss', 'oblique-icons.scss'], 'icons', done);
@@ -115,7 +114,6 @@ gulp.task(
 				distBootstrapCss,
 				distCoreCss,
 				distUtilCss,
-				distCompatCss,
 				distComponentsCss,
 				distIconCss,
 				distAlertCss
@@ -143,8 +141,7 @@ gulp.task('themes',
 			distStyles,
 			gulp.parallel(
 				distMaterialCss,
-				distBootstrapCss,
-				distCompatCss
+				distBootstrapCss
 			)
 		)
 	)
