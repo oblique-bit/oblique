@@ -22,7 +22,7 @@ export class ObThemeService {
 
 	private getEmbeddedTheme(document: Document): string {
 		const styleSheet = Array.from(document.styleSheets).filter(sheet => /^styles\.[\w]{20}\.css$/.test(sheet.href))[0];
-		const rules = Array.from(styleSheet?.rules || []) as CSSPageRule[];
+		const rules = Array.from(styleSheet?.cssRules || []) as CSSPageRule[];
 		if (rules.some(rule => rule.selectorText === '.ob-material-telemetry')) {
 			return 'Material';
 		}
