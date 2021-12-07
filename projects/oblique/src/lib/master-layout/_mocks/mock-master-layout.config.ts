@@ -19,7 +19,6 @@ export class ObMockMasterLayoutConfig {
 		hasLayout: true
 	};
 	header = {
-		isAnimated: true,
 		isSticky: true,
 		isMedium: false,
 		isCustom: false,
@@ -33,7 +32,7 @@ export class ObMockMasterLayoutConfig {
 		links: []
 	};
 	footer = {
-		isSmall: true,
+		isSticky: false,
 		isCustom: false,
 		hasScrollTransitions: true
 	};

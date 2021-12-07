@@ -43,7 +43,6 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 
 	ngOnInit() {
 		this.closeOnEscape();
-		this.refreshOnWindowResize();
 		this.markActiveLink();
 	}
 
@@ -63,10 +62,6 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 	ngOnDestroy() {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
-	}
-
-	onResize() {
-		this.masterLayout.navigation.refresh();
 	}
 
 	close(): void {
@@ -91,18 +86,18 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 	}
 
 	private propertyChanges() {
-		const events = [ObEMasterLayoutEventValues.SCROLLABLE, ObEMasterLayoutEventValues.FULL_WIDTH];
-		this.masterLayout.navigation.configEvents
+		const events = [ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE, ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH];
+		this.masterLayout.navigation.configEvents$
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe(event => {
 				switch (event.name) {
-					case ObEMasterLayoutEventValues.SCROLLABLE:
+					case ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE:
 						this.masterLayout.navigation.refresh();
 						break;
-					case ObEMasterLayoutEventValues.FULL_WIDTH:
+					case ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH:
 						this.isFullWidth = event.value;
 						break;
 				}
@@ -116,10 +111,6 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe(() => this.close());
-	}
-
-	private refreshOnWindowResize(): void {
-		this.globalEventsService.resize$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.onResize());
 	}
 
 	private markActiveLink(): void {

@@ -10,14 +10,13 @@ export class ObMockMasterLayoutComponent {
 	home = '';
 	url: string;
 	@Input() navigation: ObINavigationLink[] = [];
-	isFixed = true;
 	hasCover = true;
 	hasLayout = true;
-	isMenuCollapsed = true;
+	isMenuOpened = true;
 	noNavigation = true;
 	hasOffCanvas = true;
-	footerSm = true;
 	isScrolling = false;
+	isFooterSticky = false;
 	readonly headerControlTemplates: QueryList<TemplateRef<any>>;
 	readonly footerLinkTemplates: QueryList<TemplateRef<any>>;
 	readonly offCanvasClose: ElementRef<HTMLElement>;

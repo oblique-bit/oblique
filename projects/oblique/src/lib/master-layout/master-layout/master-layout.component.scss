@@ -2,120 +2,64 @@
 @import "../../../styles/scss/core/mixins/layout";
 
 .ob-master-layout {
-	display: block;
-	position: relative;
-	min-height: 100%;
-	padding-bottom: $ob-footer-height-collapsed; // sticky footer in continuous mode:
+	.ob-viewport {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
 
-	&.ob-header-expanded {
-		overflow: hidden;
-	}
+		&:not(.ob-continuous-layout) {
+			height: 100vh;
 
-	&.ob-has-layout .ob-main-layout {
-		padding: $ob-spacing-default;
-
-		@include ob-media-breakpoint-up(md) {
-			padding: $ob-spacing-default $ob-spacing-lg;
-		}
-	}
-
-	&.ob-has-max-width {
-		.ob-master-layout-content-viewport {
-			display: flex;
-			justify-content: center;
+			&:not(.ob-fixed-layout) {
+				overflow-x: hidden;
+			}
 		}
 
-		.ob-main-layout {
-			max-width: map-get($ob-grid-breakpoints, xl);
-		}
-	}
-
-	@include ob-media-breakpoint-up(md) {
-		padding-bottom: $ob-footer-height-md;
-		transition: padding-bottom $ob-duration-default;
-
-		&.ob-master-layout-fixed {
-			display: flex;
-			flex-direction: column;
-			overflow: hidden;
-			height: 100%;
-			padding-bottom: 0;
-		}
-
-		&.ob-master-layout-scrolling {
-			padding-bottom: $ob-footer-height;
-
-			&.ob-footer-sm {
-				padding-bottom: $ob-footer-height-sm;
+		&.ob-continuous,
+		&.ob-fixed-layout {
+			.ob-master-layout-wrapper {
+				overflow: hidden;
 			}
 		}
 	}
 
-	.ob-master-layout-content {
-		@include ob-media-breakpoint-down(md) {
-			padding-top: $ob-header-height-collapsed;
-		}
+	.ob-master-layout-wrapper {
+		display: flex;
+		flex-direction: column;
+		flex: 1 1 auto;
+	}
 
-		.ob-no-navigation & {
-			transition: padding $ob-duration-default;
+	.ob-main-layout {
+		flex: 1 1 auto;
+
+		@at-root #{selector-append(".ob-has-layout", &)} {
+			padding: $ob-spacing-default;
+
+			@include ob-media-breakpoint-up(md) {
+				padding: $ob-spacing-default $ob-spacing-lg;
+			}
 		}
+	}
+
+	.ob-viewport.ob-fixed-layout .ob-main-layout {
+		overflow-y: auto;
 	}
 
 	@include ob-media-breakpoint-down(md) {
-		&.ob-no-navigation.ob-header-expanded .ob-master-layout-content {
-			padding-top: $ob-header-height-md;
+		&.ob-header-expanded {
+			.ob-main-layout,
+			.ob-master-layout-footer {
+				display: none;
+			}
 		}
 	}
 
-	@include ob-media-breakpoint-up(md) {
-		&.ob-master-layout-fixed .ob-master-layout-content {
-			flex: 2; // Fill vertical space!
-			overflow-y: auto;
+	&.ob-has-max-width .ob-main-layout {
+		display: flex;
+		justify-content: center;
 
-			.ob-master-layout-content-viewport {
-				position: relative;
-				height: 100%;
-
-				> .ob-main-layout {
-					height: 100%;
-				}
-			}
-		}
-
-		&:not(.ob-master-layout-fixed) {
-			& .ob-master-layout-header-sticky {
-				& + .ob-master-layout-content {
-					padding-top: $ob-header-height;
-				}
-
-				&.ob-master-layout-header-md + .ob-master-layout-content {
-					padding-top: $ob-header-height-md;
-				}
-
-				&.ob-master-layout-header-animate + .ob-master-layout-content {
-					transition: padding-top $ob-duration-default ease-in-out;
-				}
-			}
-
-			&.ob-no-navigation .ob-master-layout-header-sticky {
-				& + .ob-master-layout-content {
-					padding-top: $ob-header-height-no-navigation;
-				}
-
-				&.ob-master-layout-header-md + .ob-master-layout-content {
-					padding-top: $ob-header-height-no-navigation - ($ob-header-height - $ob-header-height-md);
-				}
-			}
-
-			&.ob-master-layout-scrolling {
-				.ob-master-layout-header-sticky.ob-master-layout-header-md + .ob-master-layout-content {
-					padding-top: $ob-header-height;
-				}
-
-				&.ob-no-navigation .ob-master-layout-header-sticky.ob-master-layout-header-md + .ob-master-layout-content {
-					padding-top: $ob-header-height-no-navigation;
-				}
-			}
+		> * {
+			max-width: map-get($ob-grid-breakpoints, xl);
 		}
 	}
 }

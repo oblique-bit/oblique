@@ -5,7 +5,8 @@ import {DynamicNavigationService} from './dynamic-navigation.service';
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'ob-master-layout-sample',
-	templateUrl: './master-layout-sample.component.html'
+	templateUrl: './master-layout-sample.component.html',
+	styleUrls: ['./master-layout-sample.component.scss']
 })
 export class ObMasterLayoutSampleComponent {
 	coverLayout = false;
@@ -15,20 +16,71 @@ export class ObMasterLayoutSampleComponent {
 		this.coverLayout = this.masterLayout.layout.hasCover;
 	}
 
-	get homePageRoute() {
-		return this.masterLayout.homePageRoute;
+	// Footer
+	get isFooterCustom() {
+		return this.masterLayout.footer.isCustom;
 	}
 
-	set homePageRoute(value: string) {
-		this.masterLayout.homePageRoute = value;
+	set isFooterCustom(value: boolean) {
+		this.masterLayout.footer.isCustom = value;
 	}
 
-	get applicationFixed() {
-		return this.masterLayout.layout.isFixed;
+	get hasLogoOnScroll() {
+		return this.masterLayout.footer.hasLogoOnScroll;
 	}
 
-	set applicationFixed(value: boolean) {
-		this.masterLayout.layout.isFixed = value;
+	set hasLogoOnScroll(value: boolean) {
+		this.masterLayout.footer.hasLogoOnScroll = value;
+	}
+
+	get isFooterSticky() {
+		return this.masterLayout.footer.isSticky;
+	}
+
+	set isFooterSticky(value: boolean) {
+		this.masterLayout.footer.isSticky = value;
+	}
+
+	// Header
+	get isHeaderCustom() {
+		return this.masterLayout.header.isCustom;
+	}
+
+	set isHeaderCustom(value: boolean) {
+		this.masterLayout.header.isCustom = value;
+	}
+
+	get isHeaderSticky() {
+		return this.masterLayout.header.isSticky;
+	}
+
+	set isHeaderSticky(value: boolean) {
+		this.masterLayout.header.isSticky = value;
+	}
+
+	get reduceOnScroll() {
+		return this.masterLayout.header.reduceOnScroll;
+	}
+
+	set reduceOnScroll(value: boolean) {
+		this.masterLayout.header.reduceOnScroll = value;
+	}
+
+	get isHeaderSmall() {
+		return this.masterLayout.header.isSmall;
+	}
+
+	set isHeaderSmall(value: boolean) {
+		this.masterLayout.header.isSmall = value;
+	}
+
+	// Layout
+	get hasCover(): boolean {
+		return this.masterLayout.layout.hasCover;
+	}
+
+	set hasCover(value: boolean) {
+		this.masterLayout.layout.hasCover = value;
 	}
 
 	get hasLayout() {
@@ -47,67 +99,35 @@ export class ObMasterLayoutSampleComponent {
 		this.masterLayout.layout.hasMaxWidth = value;
 	}
 
-	get footerSM() {
-		return this.masterLayout.footer.isSmall;
-	}
-
-	set footerSM(value: boolean) {
-		this.masterLayout.footer.isSmall = value;
-	}
-
-	get footerTransition() {
-		return this.masterLayout.footer.hasScrollTransition;
-	}
-
-	set footerTransition(value: boolean) {
-		this.masterLayout.footer.hasScrollTransition = value;
-	}
-
-	get headerMD() {
-		return this.masterLayout.header.isMedium;
-	}
-
-	set headerMD(value: boolean) {
-		this.masterLayout.header.isMedium = value;
-	}
-
-	get headerSticky() {
-		return this.masterLayout.header.isSticky;
-	}
-
-	set headerSticky(value: boolean) {
-		this.masterLayout.header.isSticky = value;
-	}
-
-	get headerAnimate() {
-		return this.masterLayout.header.isAnimated;
-	}
-
-	set headerAnimate(value: boolean) {
-		this.masterLayout.header.isAnimated = value;
-	}
-
-	get headerTransition() {
-		return this.masterLayout.header.hasScrollTransition;
-	}
-
-	set headerTransition(value: boolean) {
-		this.masterLayout.header.hasScrollTransition = value;
-	}
-
-	get navigation() {
+	get hasMainNavigation() {
 		return this.masterLayout.layout.hasMainNavigation;
 	}
 
-	set navigation(value: boolean) {
+	set hasMainNavigation(value: boolean) {
 		this.masterLayout.layout.hasMainNavigation = value;
 	}
 
-	get navigationFW() {
+	get hasOffCanvas() {
+		return this.masterLayout.layout.hasOffCanvas;
+	}
+
+	set hasOffCanvas(value: boolean) {
+		this.masterLayout.layout.hasOffCanvas = value;
+	}
+
+	get homePageRoute() {
+		return this.masterLayout.homePageRoute;
+	}
+
+	set homePageRoute(value: string) {
+		this.masterLayout.homePageRoute = value;
+	}
+
+	get isNavigationFullWidth() {
 		return this.masterLayout.navigation.isFullWidth;
 	}
 
-	set navigationFW(value: boolean) {
+	set isNavigationFullWidth(value: boolean) {
 		this.masterLayout.navigation.isFullWidth = value;
 	}
 
@@ -117,14 +137,6 @@ export class ObMasterLayoutSampleComponent {
 
 	set navigationScrollMode(value: ObEScrollMode) {
 		this.masterLayout.navigation.scrollMode = value;
-	}
-
-	get cover(): boolean {
-		return this.masterLayout.layout.hasCover;
-	}
-
-	set cover(value: boolean) {
-		this.masterLayout.layout.hasCover = value;
 	}
 
 	addItem() {

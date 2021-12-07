@@ -7,7 +7,7 @@ export class ObMockMasterLayoutNavigationService {
 	isFullWidth = true;
 	scrollMode = ObEScrollMode.AUTO;
 
-	get configEvents(): Observable<ObIMasterLayoutEvent> {
+	get configEvents$(): Observable<ObIMasterLayoutEvent> {
 		return of({} as ObIMasterLayoutEvent);
 	}
 

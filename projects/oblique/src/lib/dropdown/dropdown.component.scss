@@ -111,41 +111,4 @@ $arrow-lg-size: 14px;
 			right: 12px;
 		}
 	}
-
-	@include ob-media-breakpoint-down(md) {
-		&.ob-control-link {
-			position: relative;
-
-			.ob-dropdown-content {
-				position: fixed;
-				top: $ob-header-height-md;
-				height: 0;
-				margin: 0;
-				transform: none;
-			}
-
-			&.open {
-				@include ob-bubble-tail-border(
-						$ob-accent,
-						$ob-accent,
-					$width: 8px,
-					$align: left,
-					$align-value: 20px,
-					$placement: bottom,
-					$direction: top
-				);
-
-				.ob-dropdown-content {
-					height: auto;
-					padding: $ob-spacing-default;
-					border-color: transparent transparent transparent $ob-gray-light;
-
-					&::after,
-					&::before {
-						display: none;
-					}
-				}
-			}
-		}
-	}
 }

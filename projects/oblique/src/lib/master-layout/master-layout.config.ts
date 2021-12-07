@@ -38,7 +38,6 @@ export class ObMasterLayoutConfig {
 	 *  Controls the application's layout
 	 */
 	layout = {
-		isFixed: false,
 		hasCover: false,
 		hasMainNavigation: true,
 		hasOffCanvas: false,
@@ -50,11 +49,10 @@ export class ObMasterLayoutConfig {
 	 * Controls the application's header
 	 */
 	header: ObIMasterLayoutHeader = {
-		isAnimated: true,
 		isSticky: true,
-		isMedium: false,
+		isSmall: false,
 		isCustom: false,
-		hasScrollTransitions: true // indicates if the header should be resized when scrolling
+		reduceOnScroll: true
 	};
 
 	/**
@@ -72,8 +70,8 @@ export class ObMasterLayoutConfig {
 	 * Controls the applications's footer
 	 */
 	footer: ObIMasterLayoutFooter = {
-		isSmall: true,
+		isSticky: false,
 		isCustom: false,
-		hasScrollTransitions: true // indicates if the footer should be resized when scrolling
+		hasLogoOnScroll: true
 	};
 }

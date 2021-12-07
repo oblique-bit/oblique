@@ -56,7 +56,7 @@
 		bottom: 15px;
 
 		@include ob-media-breakpoint-up(md) {
-			bottom: $ob-footer-height - 30;
+			bottom: 10%; //empiric value
 		}
 
 		&:hover, &:focus {

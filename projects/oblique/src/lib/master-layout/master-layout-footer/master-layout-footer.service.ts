@@ -8,16 +8,14 @@ import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from '../master-layout
 	providedIn: 'root'
 })
 export class ObMasterLayoutFooterService {
+	readonly configEvents$: Observable<ObIMasterLayoutEvent>;
 	private readonly _events = new Subject<ObIMasterLayoutEvent>();
-	private readonly eventsS = this._events.asObservable();
 	private _isCustom = this.config.footer.isCustom;
-	private _isSmall = this.config.footer.isSmall;
-	private _hasScrollTransition = this.config.footer.hasScrollTransitions;
+	private _isSticky = this.config.footer.isSticky;
+	private _hasLogoOnScroll = this.config.footer.hasLogoOnScroll;
 
-	constructor(private readonly config: ObMasterLayoutConfig) {}
-
-	get configEvents(): Observable<ObIMasterLayoutEvent> {
-		return this.eventsS;
+	constructor(private readonly config: ObMasterLayoutConfig) {
+		this.configEvents$ = this._events.asObservable();
 	}
 
 	get isCustom() {
@@ -27,31 +25,31 @@ export class ObMasterLayoutFooterService {
 	set isCustom(value: boolean) {
 		this._isCustom = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.CUSTOM,
+			name: ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM,
 			value: value
 		});
 	}
 
-	get isSmall(): boolean {
-		return this._isSmall;
+	get isSticky(): boolean {
+		return this._isSticky;
 	}
 
-	set isSmall(value: boolean) {
-		this._isSmall = value;
+	set isSticky(value: boolean) {
+		this._isSticky = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.SMALL,
+			name: ObEMasterLayoutEventValues.FOOTER_IS_STICKY,
 			value: value
 		});
 	}
 
-	get hasScrollTransition(): boolean {
-		return this._hasScrollTransition;
+	get hasLogoOnScroll(): boolean {
+		return this._hasLogoOnScroll;
 	}
 
-	set hasScrollTransition(value: boolean) {
-		this._hasScrollTransition = value;
+	set hasLogoOnScroll(value: boolean) {
+		this._hasLogoOnScroll = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.SCROLL_TRANSITION,
+			name: ObEMasterLayoutEventValues.FOOTER_HAS_LOGO_ON_SCROLL,
 			value: value
 		});
 	}

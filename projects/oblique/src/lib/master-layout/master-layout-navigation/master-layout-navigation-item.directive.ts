@@ -58,7 +58,7 @@ export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnD
 				});
 		});
 
-		this.masterLayout.configEvents.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.COLLAPSE && evt.value)).subscribe(() => this.close());
+		this.masterLayout.configEvents$.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.IS_MENU_OPENED && evt.value)).subscribe(() => this.close());
 
 		this.$items.forEach($item => {
 			$item.onClose.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.close());

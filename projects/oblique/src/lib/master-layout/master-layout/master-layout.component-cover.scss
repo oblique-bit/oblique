@@ -1,62 +1,55 @@
 @import "../../../styles/scss/core/variables";
 @import "../../../styles/scss/core/mixins/layout";
 
-.ob-master-layout {
-	&.ob-has-cover {
+.ob-master-layout.ob-has-cover {
+	.ob-cover-layout {
+		flex: 1 1 auto;
 		background-image: url('../../../assets/images/cover-background.jpg');
 		background-position: 50% 50%;
 		background-size: cover;
 		background-repeat: no-repeat;
+	}
 
-		.ob-cover-layout {
-			width: 100%;
-			height: 100%;
+	.ob-viewport.ob-fixed-layout .ob-cover-layout {
+		overflow-y: auto;
+	}
+
+	.ob-cover-viewport {
+		overflow-y: auto;
+		overflow-x: hidden;
+		background-color: rgba(red($ob-white), green($ob-white), blue($ob-white), 0.9);
+
+		@include ob-media-breakpoint-up(md) {
+			margin-left: 35%;
+			width: 45%;
 		}
 
-		.ob-cover-viewport {
-			width: 100%;
-			height: 100%;
-			overflow-y: auto;
-			overflow-x: hidden;
-			background-color: rgba(red($ob-white), green($ob-white), blue($ob-white), 0.9);
-
-			@include ob-media-breakpoint-up(md) {
-				min-height: calc(100vh - #{$ob-header-height} - #{$ob-footer-height-md});
-				margin-left: 35%;
-				width: 45%;
-
-				@at-root #{selector-append(".ob-no-navigation", &)} {
-					min-height: calc(100vh - #{$ob-header-height-no-navigation} - #{$ob-footer-height-md});
-				}
-			}
-
-			@include ob-media-breakpoint-up(lg) {
-				margin-left: 45%;
-				width: 38%;
-			}
-
-			@include ob-media-breakpoint-up(xl) {
-				margin-left: 50%;
-				width: 33%;
-			}
+		@include ob-media-breakpoint-up(lg) {
+			margin-left: 45%;
+			width: 38%;
 		}
 
-		.ob-cover-header,
-		.ob-cover-alert {
-			display: flex;
-			flex-wrap: wrap;
-			margin-right: -$ob-spacing-default;
-			margin-left: -$ob-spacing-default;
-			margin-bottom: $ob-spacing-lg;
-			border: none;
+		@include ob-media-breakpoint-up(xl) {
+			margin-left: 50%;
+			width: 33%;
 		}
+	}
 
-		.ob-cover-header {
-			padding: 0 $ob-spacing-default;
+	.ob-cover-header,
+	.ob-cover-alert {
+		display: flex;
+		flex-wrap: wrap;
+		margin-right: -$ob-spacing-default;
+		margin-left: -$ob-spacing-default;
+		margin-bottom: $ob-spacing-lg;
+		border: none;
+	}
 
-			@include ob-media-breakpoint-up(md) {
-				background-color: $ob-white;
-			}
+	.ob-cover-header {
+		padding: 0 $ob-spacing-default;
+
+		@include ob-media-breakpoint-up(md) {
+			background-color: $ob-white;
 		}
 	}
 }

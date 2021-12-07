@@ -5,18 +5,15 @@ import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from '../master-layout
 
 @Injectable({providedIn: 'root'})
 export class ObMasterLayoutHeaderService {
+	readonly configEvents$: Observable<ObIMasterLayoutEvent>;
 	private readonly _events = new Subject<ObIMasterLayoutEvent>();
-	private readonly eventsS = this._events.asObservable();
 	private _isCustom = this.config.header.isCustom;
-	private _isMedium = this.config.header.isMedium;
-	private _isAnimated = this.config.header.isAnimated;
+	private _isSmall = this.config.header.isSmall;
 	private _isSticky = this.config.header.isSticky;
-	private _hasScrollTransition = this.config.header.hasScrollTransitions;
+	private _reduceOnScroll = this.config.header.reduceOnScroll;
 
-	constructor(private readonly config: ObMasterLayoutConfig) {}
-
-	get configEvents(): Observable<ObIMasterLayoutEvent> {
-		return this.eventsS;
+	constructor(private readonly config: ObMasterLayoutConfig) {
+		this.configEvents$ = this._events.asObservable();
 	}
 
 	get isCustom() {
@@ -26,31 +23,19 @@ export class ObMasterLayoutHeaderService {
 	set isCustom(value: boolean) {
 		this._isCustom = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.CUSTOM,
+			name: ObEMasterLayoutEventValues.HEADER_IS_CUSTOM,
 			value: value
 		});
 	}
 
-	get isMedium(): boolean {
-		return this._isMedium;
+	get isSmall(): boolean {
+		return this._isSmall;
 	}
 
-	set isMedium(value: boolean) {
-		this._isMedium = value;
+	set isSmall(value: boolean) {
+		this._isSmall = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.MEDIUM,
-			value: value
-		});
-	}
-
-	get isAnimated(): boolean {
-		return this._isAnimated;
-	}
-
-	set isAnimated(value: boolean) {
-		this._isAnimated = value;
-		this._events.next({
-			name: ObEMasterLayoutEventValues.ANIMATE,
+			name: ObEMasterLayoutEventValues.HEADER_IS_SMALL,
 			value: value
 		});
 	}
@@ -62,19 +47,19 @@ export class ObMasterLayoutHeaderService {
 	set isSticky(value: boolean) {
 		this._isSticky = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.STICKY,
+			name: ObEMasterLayoutEventValues.HEADER_IS_STICKY,
 			value: value
 		});
 	}
 
-	get hasScrollTransition(): boolean {
-		return this._hasScrollTransition;
+	get reduceOnScroll(): boolean {
+		return this._reduceOnScroll;
 	}
 
-	set hasScrollTransition(value: boolean) {
-		this._hasScrollTransition = value;
+	set reduceOnScroll(value: boolean) {
+		this._reduceOnScroll = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.SCROLL_TRANSITION,
+			name: ObEMasterLayoutEventValues.HEADER_REDUCE_ON_SCROLL,
 			value: value
 		});
 	}

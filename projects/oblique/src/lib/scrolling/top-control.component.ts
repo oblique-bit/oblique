@@ -1,7 +1,6 @@
-import {Component, HostBinding, Inject, Optional, ViewEncapsulation} from '@angular/core';
-import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
-import {WINDOW} from '../utilities';
+import {Component, HostBinding, Inject, Input, Optional, ViewEncapsulation} from '@angular/core';
 import {ObUseObliqueIcons} from '../icon/icon.model';
+import {WINDOW} from '../utilities';
 
 @Component({
 	selector: 'ob-top-control',
@@ -12,23 +11,14 @@ import {ObUseObliqueIcons} from '../icon/icon.model';
 	host: {class: 'ob-top-control'}
 })
 export class ObTopControlComponent {
-	private readonly window: Window;
 	@HostBinding('class.ob-font-awesome') useFontAwesomeIcon: boolean;
+	@Input() scrollTarget: HTMLElement | Window;
 
-	constructor(private readonly config: ObMasterLayoutConfig, @Inject(WINDOW) window, @Optional() @Inject(ObUseObliqueIcons) useObliqueIcon) {
-		this.window = window; // because AoT don't accept interfaces as DI
+	constructor(@Inject(WINDOW) private readonly window: Window, @Optional() @Inject(ObUseObliqueIcons) useObliqueIcon) {
 		this.useFontAwesomeIcon = !useObliqueIcon;
 	}
 
 	public scrollTop(): void {
-		const scrollStep = this.window.scrollY / (this.config.scrollToTopDuration / 15);
-		this.scrollToTop(scrollStep);
-	}
-
-	private scrollToTop(scrollStep: number): void {
-		if (this.window.scrollY) {
-			this.window.scrollBy(0, -scrollStep);
-			this.window.setTimeout(() => this.scrollToTop(scrollStep), 15);
-		}
+		(this.scrollTarget || this.window).scrollTo({top: 0, behavior: 'smooth'});
 	}
 }

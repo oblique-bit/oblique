@@ -16,7 +16,10 @@ export class UpdateV7toV8 implements ObIMigrations {
 				this.removeLayoutCollapse(),
 				this.removeDlHorizontalVariants(),
 				this.removeCompatCss(),
-				this.removeThemeService()
+				this.removeThemeService(),
+				this.migrateMasterLayoutProperties(),
+				this.migrateObEMasterLayoutEventValues(),
+				this.migrateConfigEvents()
 			])(tree, _context);
 		};
 	}
@@ -272,7 +275,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 					tree.overwrite(
 						filePath,
 						fileContent
-							.replace(/(?:THEMES|FONTS),?(?!\.)\s*/g, '')	// remove imports of THEMES and FONTS
+							.replace(/(?:THEMES|FONTS),?(?!\.)\s*/g, '') // remove imports of THEMES and FONTS
 							.replace(/[\w ]*\s*:\s*ObThemeService,?\s*/, '') // remove service injection in constructor
 							.replace(/ObThemeService,?\s*/, '') // remove service import
 							.replace(new RegExp(`(?:this\.)?${service}\\.set(?:Theme|Font)\\(.*\\);\s*`, 'g'), '') // remove call to setTheme / setFont
@@ -303,5 +306,130 @@ export class UpdateV7toV8 implements ObIMigrations {
 			default:
 				return undefined;
 		}
+	}
+
+	private migrateMasterLayoutProperties(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Replacing master Layout properties: header.isAnimated, footer.isSmall, layout.isFixed, hasScrollTransition, isMedium');
+			const toApply = (filePath: string) => {
+				const fileContent = readFile(tree, filePath);
+				let replacement = fileContent;
+				replacement = this.migrateMasterLayoutConfig(replacement);
+				replacement = this.removeProperty(replacement, 'header', 'isAnimated');
+				replacement = this.removeProperty(replacement, 'footer', 'isSmall');
+				replacement = this.migrateMasterLayoutIsFixed(replacement);	// migrate the setter
+				replacement = this.removeProperty(replacement, 'layout', 'isFixed');	// remove the getter
+				replacement = this.migrateProperty(replacement, 'footer', 'hasScrollTransition', 'hasLogoOnScroll');
+				replacement = this.migrateProperty(replacement, 'header', 'hasScrollTransition', 'reduceOnScroll');
+				replacement = this.migrateProperty(replacement, 'header', 'isMedium', 'isSmall');
+				if (fileContent !== replacement) {
+					tree.overwrite(filePath, replacement);
+				}
+			};
+			return applyInTree(tree, toApply, '*.ts');
+		};
+	}
+
+	private migrateObEMasterLayoutEventValues(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Replacing ObEMasterLayoutEventValues values');
+			const toApply = (filePath: string) => {
+				const fileContent = readFile(tree, filePath);
+				const replacement = fileContent
+					.replace(/ObEMasterLayoutEventValues\.STICKY\b/g, 'ObEMasterLayoutEventValues.HEADER_IS_STICKY')
+					.replace(/ObEMasterLayoutEventValues\.MEDIUM\b/g, 'ObEMasterLayoutEventValues.HEADER_IS_SMALL')
+					.replace(/ObEMasterLayoutEventValues\.COVER\b/g, 'ObEMasterLayoutEventValues.LAYOUT_HAS_COVER')
+					.replace(/ObEMasterLayoutEventValues\.OFF_CANVAS\b/g, 'ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS')
+					.replace(/ObEMasterLayoutEventValues\.MAIN_NAVIGATION\b/g, 'ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION')
+					.replace(/ObEMasterLayoutEventValues\.LAYOUT\b/g, 'ObEMasterLayoutEventValues.LAYOUT_HAS_DEFAULT_LAYOUT')
+					.replace(/ObEMasterLayoutEventValues\.COLLAPSE\b/g, 'ObEMasterLayoutEventValues.IS_MENU_OPENED')
+					.replace(/ObEMasterLayoutEventValues\.FULL_WIDTH\b/g, 'ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH')
+					.replace(/ObEMasterLayoutEventValues\.SCROLLABLE\b/g, 'ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE');
+				if (fileContent !== replacement) {
+					tree.overwrite(filePath, replacement);
+				}
+			};
+			return applyInTree(tree, toApply, '*.ts');
+		};
+	}
+
+	private migrateConfigEvents(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Replacing configEvents');
+			const toApply = (filePath: string) => {
+				const fileContent = readFile(tree, filePath);
+				const replacement = fileContent.replace(/\.configEvents(?!\$)/g, '.configEvents$');
+				if (fileContent !== replacement) {
+					tree.overwrite(filePath, replacement);
+				}
+			};
+			return applyInTree(tree, toApply, '*.ts');
+		};
+	}
+
+	private migrateMasterLayoutConfig(fileContent: string): string {
+		const service = /(?<service>\w+)\s*:\s*ObMasterLayoutConfig/.exec(fileContent)?.groups?.service;
+		return !service ? fileContent : fileContent.replace(new RegExp(`^\\s*${service}\.header\\.isAnimated\\s*=\\s*\\w*\\s*;$`, 'm'), '');
+		return !service
+			? fileContent
+			: fileContent
+					.replace(new RegExp(`^\\s*${service}\\.header\\.isAnimated\\s*=\\s*\\w*\\s*;$`, 'm'), '')
+					.replace(new RegExp(`^\\s*${service}\\.footer\\.isSmall\\s*=\\s*\\w*\\s*;$`, 'm'), '')
+					.replace(new RegExp(`^(\\s*${service})\\.layout\\.isFixed\\s*=\\s*(\\w*)\\s*;$`, 'm'), `$1.header.isSticky = $2;\n$1.footer.isSticky = $2;`)
+					.replace(new RegExp(`^(\\s*${service}\\.footer)\\.hasScrollTransitions\\s*=\\s*(\\w*)\\s*;$`, 'm'), '$1.hasLogoOnScroll = $2;')
+					.replace(new RegExp(`^(\\s*${service}\\.header)\\.hasScrollTransitions\\s*=\\s*(\\w*)\\s*;$`, 'm'), '$1.reduceOnScroll = $2;')
+					.replace(new RegExp(`^(\\s*${service}\\.header)\\.isMedium\\s*=\\s*(\\w*)\\s*;$`, 'm'), '$1.isSmall = $2;');
+	}
+
+	private migrateMasterLayoutIsFixed(fileContent: string): string {
+		const service = /(?<service>\w+)\s*:\s*ObMasterLayoutService/.exec(fileContent)?.groups?.service;
+		return service ? this.migrateObMasterLayoutServiceIsFixed(fileContent, service) : this.migrateObMasterLayoutComponentServiceIsFixed(fileContent);
+	}
+
+	private migrateObMasterLayoutServiceIsFixed(fileContent: string, service: string): string {
+		return fileContent.replace(
+			new RegExp(`^(\\s*(?:this\.)?${service})\.layout\.isFixed\\s+=\\s+(\\w*);$`, 'm'),
+			`$1.header.isSticky = $2;\n$1.footer.isSticky = $2;`
+		);
+	}
+
+	private migrateObMasterLayoutComponentServiceIsFixed(fileContent: string): string {
+		const service = /(?<service>\w+)\s*:\s*ObMasterLayoutComponentService/.exec(fileContent)?.groups?.service;
+		if (service) {
+			let masterLayoutService = /(?<service>\w+)\s*:\s*ObMasterLayoutService/.exec(fileContent)?.groups?.service;
+			if (!masterLayoutService) {
+				fileContent = fileContent
+					.replace(/(constructor\s*\()(\s*)/, '$1$2private readonly masterLayout: ObMasterLayoutService,$2')
+					.replace(new RegExp(`import\\s*{(.*)}\\s*from\\s*['"]@oblique/oblique['"]`), `import {$1, ObMasterLayoutService} from '@oblique/oblique'`);
+				masterLayoutService = 'masterLayout';
+			}
+			return fileContent.replace(
+				new RegExp(`^(\\s*this\.)?${service}\.isFixed\\s*=\\s*(\\w*)\\s*;$`, 'm'),
+				`$1${masterLayoutService}.header.isSticky = $2;\n$1${masterLayoutService}.footer.isSticky = $2;`
+			);
+		}
+		return fileContent;
+	}
+
+	private removeProperty(fileContent: string, service: string, name: string): string {
+		const serviceName = this.getServiceName(fileContent, service);
+		return serviceName
+			? fileContent.replace(new RegExp(`^\\s*(?:return\\s*)?(?:this\\.)?${serviceName}\\.${name}(?:\\s*=\\s*(\\w*))?;$`, 'gm'), '')
+			: fileContent;
+	}
+
+	private migrateProperty(fileContent: string, service: string, name: string, newName: string): string {
+		const serviceName = this.getServiceName(fileContent, service);
+		return serviceName ? fileContent.replace(new RegExp(`(?<=${serviceName}\\.)${name}`, 'gm'), newName) : fileContent;
+	}
+
+	private getServiceName(fileContent: string, serviceName: string): string | undefined {
+		const serviceClass = serviceName.charAt(0).toUpperCase() + serviceName.slice(1);
+		let service = new RegExp(`(?<service>\\w+)\\s*:\\s*ObMasterLayout${serviceClass}Service`).exec(fileContent)?.groups?.service;
+		if (!service) {
+			service = /(?<service>\w+)\s*:\s*ObMasterLayoutService/.exec(fileContent)?.groups?.service;
+			service = service ? `${service}\.${serviceName}` : undefined;
+		}
+		return service;
 	}
 }

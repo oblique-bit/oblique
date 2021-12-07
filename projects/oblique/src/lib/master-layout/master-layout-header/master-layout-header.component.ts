@@ -42,15 +42,12 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	isCustom = this.masterLayout.header.isCustom;
 	banner: ObIBanner;
 	@Input() navigation: ObINavigationLink[];
-	@HostBinding('class.ob-master-layout-header-animate') isAnimated = this.masterLayout.header.isAnimated;
-	@HostBinding('class.ob-master-layout-header-sticky') isSticky = this.masterLayout.header.isSticky;
-	@HostBinding('class.ob-master-layout-header-md') isMedium = this.masterLayout.header.isMedium;
+	@HostBinding('class.ob-master-layout-header-small') isSmall = this.masterLayout.header.isSmall;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<any>;
 	@ContentChildren('obHeaderControl') readonly templates: QueryList<TemplateRef<any>>;
 	@ContentChildren('obHeaderMobileControl') readonly mobileTemplates: QueryList<TemplateRef<any>>;
 	@ViewChildren('headerControl') readonly headerControl: QueryList<ElementRef>;
 	@ViewChildren('headerMobileControl') readonly headerMobileControl: QueryList<ElementRef>;
-	private readonly window: Window;
 	private readonly unsubscribe = new Subject();
 
 	constructor(
@@ -61,10 +58,9 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		private readonly el: ElementRef,
 		private readonly renderer: Renderer2,
 		private readonly globalEventsService: ObGlobalEventsService,
-		@Inject(WINDOW) window,
+		@Inject(WINDOW) private readonly window: Window,
 		@Inject(OB_BANNER) @Optional() bannerToken
 	) {
-		this.window = window; // because AoT don't accept interfaces as DI
 		this.languages = this.formatLanguages();
 		this.propertyChanges();
 		this.reduceOnScroll();
@@ -75,8 +71,8 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	ngAfterViewInit() {
 		this.globalEventsService.resize$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.onResize());
 		this.setFocusable(this.masterLayout.layout.isMenuOpened);
-		this.masterLayout.layout.configEvents
-			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.COLLAPSE))
+		this.masterLayout.layout.configEvents$
+			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.IS_MENU_OPENED))
 			.subscribe(value => this.setFocusable(!value));
 		this.headerControl
 			.toArray()
@@ -118,35 +114,24 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 
 	private reduceOnScroll() {
 		this.scrollEvents.isScrolled.pipe(takeUntil(this.unsubscribe), scrollEnabled(this.masterLayout.header)).subscribe(isScrolling => {
-			this.isMedium = isScrolling;
+			this.isSmall = isScrolling;
 		});
 	}
 
 	private propertyChanges() {
-		const events = [
-			ObEMasterLayoutEventValues.ANIMATE,
-			ObEMasterLayoutEventValues.CUSTOM,
-			ObEMasterLayoutEventValues.MEDIUM,
-			ObEMasterLayoutEventValues.STICKY
-		];
-		this.masterLayout.header.configEvents
+		const events = [ObEMasterLayoutEventValues.HEADER_IS_CUSTOM, ObEMasterLayoutEventValues.HEADER_IS_SMALL];
+		this.masterLayout.header.configEvents$
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe(event => {
 				switch (event.name) {
-					case ObEMasterLayoutEventValues.ANIMATE:
-						this.isAnimated = event.value;
-						break;
-					case ObEMasterLayoutEventValues.CUSTOM:
+					case ObEMasterLayoutEventValues.HEADER_IS_CUSTOM:
 						this.isCustom = event.value;
 						break;
-					case ObEMasterLayoutEventValues.MEDIUM:
-						this.isMedium = event.value;
-						break;
-					case ObEMasterLayoutEventValues.STICKY:
-						this.isSticky = event.value;
+					case ObEMasterLayoutEventValues.HEADER_IS_SMALL:
+						this.isSmall = event.value;
 						break;
 				}
 			});
