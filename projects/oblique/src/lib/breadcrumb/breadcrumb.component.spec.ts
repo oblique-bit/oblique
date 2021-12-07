@@ -12,7 +12,7 @@ import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObBreadcrumbComponent} from './breadcrumb.component';
 import {ObBreadcrumbConfig, ObIBreadcrumb, ObTBreadcrumbConfig} from './breadcrumb.model';
 
-describe('BreadcrumbComponent', () => {
+describe('ObBreadcrumbComponent', () => {
 	let component: ObBreadcrumbComponent;
 	let fixture: ComponentFixture<ObBreadcrumbComponent>;
 
@@ -109,7 +109,7 @@ describe('BreadcrumbComponent', () => {
 			expect(el.nativeElement.innerHTML.trim()).toBe('Path with Label');
 		});
 
-		it('should apply the seperator to routes with more than one path', () => {
+		it('should apply the separator to routes with more than one path', () => {
 			component.ngOnInit();
 
 			const el = fixture.debugElement.queryAll(By.css('li'))[3];
