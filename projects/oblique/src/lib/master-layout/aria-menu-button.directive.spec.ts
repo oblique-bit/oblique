@@ -8,10 +8,10 @@ import {ObAriaMenuButtonDirective} from './aria-menu-button.directive';
 })
 class TestComponent {}
 
-describe('AriaMenuButtonDirective', () => {
+describe('ObAriaMenuButtonDirective', () => {
 	let component: TestComponent;
 	let fixture: ComponentFixture<TestComponent>;
-	let element;
+	let element: HTMLElement;
 	let directive: ObAriaMenuButtonDirective;
 
 	beforeEach(() => {
@@ -22,8 +22,9 @@ describe('AriaMenuButtonDirective', () => {
 		fixture = TestBed.createComponent(TestComponent);
 		fixture.detectChanges();
 		component = fixture.componentInstance;
-		element = fixture.debugElement.query(By.directive(ObAriaMenuButtonDirective));
-		directive = element.injector.get(ObAriaMenuButtonDirective) as ObAriaMenuButtonDirective;
+		const debugElement = fixture.debugElement.query(By.directive(ObAriaMenuButtonDirective));
+		element = debugElement.nativeElement;
+		directive = debugElement.injector.get(ObAriaMenuButtonDirective);
 	});
 
 	describe('component', () => {
@@ -32,25 +33,25 @@ describe('AriaMenuButtonDirective', () => {
 		});
 
 		it('should have an aria-popup property', () => {
-			expect(element.attributes['aria-haspopup']).toBe('true');
+			expect(element.getAttribute('aria-haspopup')).toBe('true');
 		});
 
 		it('should have an aria-expanded property', () => {
-			expect(element.attributes['aria-expanded']).toBe(null);
+			expect(element.getAttribute('aria-expanded')).toBe(null);
 		});
 
 		it('should have an aria-controls property', () => {
-			expect(element.attributes['aria-controls']).toBe('test');
+			expect(element.getAttribute('aria-controls')).toBe('test');
 		});
 
 		it('should have an aria-owns property', () => {
-			expect(element.attributes['aria-owns']).toBe('test');
+			expect(element.getAttribute('aria-owns')).toBe('test');
 		});
 
 		it('should expand on click', () => {
-			element.nativeElement.click();
+			element.click();
 			fixture.detectChanges();
-			expect(element.attributes['aria-expanded']).toBe('true');
+			expect(element.getAttribute('aria-expanded')).toBe('true');
 		});
 	});
 
