@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
-import {Component, DebugElement} from '@angular/core';
+import {Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject} from 'rxjs';
@@ -15,7 +15,7 @@ class TestComponent {}
 describe('ExternalLink', () => {
 	let directive: ObExternalLinkDirective;
 	let fixture: ComponentFixture<TestComponent>;
-	let element: DebugElement;
+	let element: HTMLElement;
 	const lang = new Subject<void>();
 	const mock = jest.fn();
 
@@ -26,7 +26,10 @@ describe('ExternalLink', () => {
 					declarations: [TestComponent, ObExternalLinkDirective],
 					providers: [
 						{provide: WINDOW, useValue: window},
-						{provide: TranslateService, useValue: {onLangChange: lang, instant: mock.mockReturnValue('Opens in new tab')}}
+						{
+							provide: TranslateService,
+							useValue: {onLangChange: lang, instant: mock.mockReturnValue('Opens in new tab')}
+						}
 					]
 				});
 			})
@@ -35,8 +38,9 @@ describe('ExternalLink', () => {
 		beforeEach(() => {
 			fixture = TestBed.createComponent(TestComponent);
 			fixture.detectChanges();
-			element = fixture.debugElement.query(By.directive(ObExternalLinkDirective));
-			directive = element.injector.get(ObExternalLinkDirective);
+			const debugElement = fixture.debugElement.query(By.directive(ObExternalLinkDirective));
+			directive = debugElement.injector.get(ObExternalLinkDirective);
+			element = debugElement.nativeElement;
 		});
 
 		describe('external link', () => {
@@ -45,11 +49,11 @@ describe('ExternalLink', () => {
 			});
 
 			it('should have a class', () => {
-				expect(element.classes['ob-external-link']).toBe(true);
+				expect(element.classList.contains('ob-external-link')).toBe(true);
 			});
 
 			it('should have an aria-label', () => {
-				expect(element.attributes['aria-label']).toBe('External Link - Opens in new tab');
+				expect(element.getAttribute('aria-label')).toBe('External Link - Opens in new tab');
 			});
 
 			it('should translate the aria-label on lang change', () => {
@@ -62,25 +66,25 @@ describe('ExternalLink', () => {
 					directive.rel = undefined;
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.attributes.rel).toBe('noopener noreferrer');
+					expect(element.getAttribute('rel')).toBe('noopener noreferrer');
 				});
 				it('should be nooper norefer when null', () => {
 					directive.rel = null;
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.attributes.rel).toBe('noopener noreferrer');
+					expect(element.getAttribute('rel')).toBe('noopener noreferrer');
 				});
 				it('should not be present if empty', () => {
 					directive.rel = '';
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.attributes.rel).toBe(null);
+					expect(element.getAttribute('rel')).toBe(null);
 				});
 				it('should be the given value', () => {
 					directive.rel = 'test';
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.attributes.rel).toBe('test');
+					expect(element.getAttribute('rel')).toBe('test');
 				});
 			});
 
@@ -89,25 +93,25 @@ describe('ExternalLink', () => {
 					directive.target = undefined;
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.attributes.target).toBe('_blank');
+					expect(element.getAttribute('target')).toBe('_blank');
 				});
 				it('should be _blank when null', () => {
 					directive.target = null;
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.attributes.target).toBe('_blank');
+					expect(element.getAttribute('target')).toBe('_blank');
 				});
 				it('should not be present if empty', () => {
 					directive.target = '';
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.attributes.target).toBe(null);
+					expect(element.getAttribute('target')).toBe(null);
 				});
 				it('should be the given value', () => {
 					directive.target = 'test';
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.attributes.target).toBe('test');
+					expect(element.getAttribute('target')).toBe('test');
 				});
 			});
 
@@ -116,7 +120,7 @@ describe('ExternalLink', () => {
 					directive.icon = 'none';
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.nativeElement.children.length).toBe(0);
+					expect(element.children.length).toBe(0);
 				});
 
 				describe('left', () => {
@@ -125,11 +129,11 @@ describe('ExternalLink', () => {
 						directive.icon = 'left';
 						directive.ngOnChanges();
 						fixture.detectChanges();
-						span = element.nativeElement.firstChild;
+						span = element.firstChild as HTMLSpanElement;
 					});
 
 					it('should have children', () => {
-						expect(element.nativeElement.children.length).toBe(1);
+						expect(element.children.length).toBe(1);
 					});
 
 					it('should have a span as first child', () => {
@@ -155,11 +159,11 @@ describe('ExternalLink', () => {
 						directive.icon = 'right';
 						directive.ngOnChanges();
 						fixture.detectChanges();
-						span = element.nativeElement.lastChild;
+						span = element.lastChild as HTMLSpanElement;
 					});
 
 					it('should have children', () => {
-						expect(element.nativeElement.children.length).toBe(1);
+						expect(element.children.length).toBe(1);
 					});
 
 					it('should have a span as first child', () => {
@@ -186,7 +190,7 @@ describe('ExternalLink', () => {
 						directive.icon = 'none';
 						directive.ngOnChanges();
 						fixture.detectChanges();
-						expect(element.nativeElement.children.length).toBe(0);
+						expect(element.children.length).toBe(0);
 					});
 				});
 			});
@@ -205,11 +209,11 @@ describe('ExternalLink', () => {
 			});
 
 			it('should not have a class', () => {
-				expect(element.classes['ob-external-link']).toBe(false);
+				expect(element.classList.contains('ob-external-link')).toBe(false);
 			});
 
 			it('should not have an aria-label', () => {
-				expect(element.attributes['aria-label']).toBeUndefined();
+				expect(element.getAttribute('aria-label')).toBe('undefined');
 			});
 
 			it('should not translate the aria-label on lang change', () => {
@@ -222,25 +226,25 @@ describe('ExternalLink', () => {
 					directive.rel = undefined;
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.attributes.rel).toBe(null);
+					expect(element.getAttribute('rel')).toBe(null);
 				});
 				it('should be null when null', () => {
 					directive.rel = null;
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.attributes.rel).toBe(null);
+					expect(element.getAttribute('rel')).toBe(null);
 				});
 				it('should be empty when empty', () => {
 					directive.rel = '';
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.attributes.rel).toBe('');
+					expect(element.getAttribute('rel')).toBe('');
 				});
 				it('should be the given value', () => {
 					directive.rel = 'test';
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.attributes.rel).toBe('test');
+					expect(element.getAttribute('rel')).toBe('test');
 				});
 			});
 
@@ -249,25 +253,25 @@ describe('ExternalLink', () => {
 					directive.target = undefined;
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.attributes.target).toBe(null);
+					expect(element.getAttribute('target')).toBe(null);
 				});
 				it('should be null when null', () => {
 					directive.target = null;
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.attributes.target).toBe(null);
+					expect(element.getAttribute('target')).toBe(null);
 				});
 				it('should not be empty if empty', () => {
 					directive.target = '';
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.attributes.target).toBe('');
+					expect(element.getAttribute('target')).toBe('');
 				});
 				it('should be the given value', () => {
 					directive.target = 'test';
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.attributes.target).toBe('test');
+					expect(element.getAttribute('target')).toBe('test');
 				});
 			});
 
@@ -276,19 +280,19 @@ describe('ExternalLink', () => {
 					directive.icon = 'none';
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.nativeElement.children.length).toBe(0);
+					expect(element.children.length).toBe(0);
 				});
 				it('should not be added if set on left', () => {
 					directive.icon = 'left';
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.nativeElement.children.length).toBe(0);
+					expect(element.children.length).toBe(0);
 				});
 				it('should not be added if set on right', () => {
 					directive.icon = 'right';
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.nativeElement.children.length).toBe(0);
+					expect(element.children.length).toBe(0);
 				});
 			});
 		});
@@ -301,7 +305,10 @@ describe('ExternalLink', () => {
 					declarations: [TestComponent, ObExternalLinkDirective],
 					providers: [
 						{provide: WINDOW, useValue: window},
-						{provide: TranslateService, useValue: {onLangChange: lang, instant: mock.mockReturnValue('Opens in new tab')}},
+						{
+							provide: TranslateService,
+							useValue: {onLangChange: lang, instant: mock.mockReturnValue('Opens in new tab')}
+						},
 						{provide: EXTERNAL_LINK, useValue: {rel: 'custom rel', target: 'custom target', icon: 'left'}}
 					]
 				});
@@ -311,20 +318,19 @@ describe('ExternalLink', () => {
 		beforeEach(() => {
 			fixture = TestBed.createComponent(TestComponent);
 			fixture.detectChanges();
-			element = fixture.debugElement.query(By.directive(ObExternalLinkDirective));
-			directive = element.injector.get(ObExternalLinkDirective);
+			element = fixture.debugElement.query(By.directive(ObExternalLinkDirective)).nativeElement;
 		});
 
 		it('should have a rel attribute', () => {
-			expect(element.attributes.rel).toBe('custom rel');
+			expect(element.getAttribute('rel')).toBe('custom rel');
 		});
 
 		it('should have a target attribute', () => {
-			expect(element.attributes.target).toBe('custom target');
+			expect(element.getAttribute('target')).toBe('custom target');
 		});
 
 		it('should have the icon on the left', () => {
-			expect(element.nativeElement.firstChild instanceof HTMLSpanElement).toBe(true);
+			expect(element.firstChild instanceof HTMLSpanElement).toBe(true);
 		});
 	});
 });
