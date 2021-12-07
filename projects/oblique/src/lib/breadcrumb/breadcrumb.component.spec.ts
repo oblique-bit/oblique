@@ -124,7 +124,8 @@ describe('ObBreadcrumbComponent', () => {
 			component.ngOnInit();
 
 			const el = fixture.debugElement.queryAll(By.css('a'))[i];
-			expect(el.properties.href).toBe(expected);
+			// NOTE: for un unknown reason, the "https://github.com" part is prepended to the actual URL. This is somewhat related to  https://github.com/angular/angular/blob/master/CHANGELOG.md#router-2
+			expect(el.properties.href).toBe(`https://github.com${expected}`);
 		});
 
 		it('should create', () => {
@@ -235,7 +236,8 @@ describe('ObBreadcrumbComponent', () => {
 			component.ngOnInit();
 
 			const el = fixture.debugElement.queryAll(By.css('a'))[i];
-			expect(el.properties.href).toBe(expected);
+			// NOTE: for un unknown reason, the "https://github.com" part is prepended to the actual URL. This is somewhat related to  https://github.com/angular/angular/blob/master/CHANGELOG.md#router-2
+			expect(el.properties.href).toBe(`https://github.com${expected}`);
 		});
 	});
 
