@@ -5,9 +5,8 @@ import {WINDOW} from '../utilities';
 @Component({
 	selector: 'ob-top-control',
 	templateUrl: './top-control.component.html',
-	styleUrls: ['top-control.component.scss'],
+	styleUrls: ['./top-control.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-top-control'}
 })
 export class ObTopControlComponent {

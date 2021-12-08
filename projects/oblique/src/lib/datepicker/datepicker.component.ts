@@ -1,4 +1,4 @@
-import {Component, ElementRef, forwardRef, HostListener, Input, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, HostListener, Input, OnInit, ViewChild, ViewEncapsulation, forwardRef} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
 import {NgbDateStruct, NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 import {ObThemeService} from '../theme.service';
@@ -27,7 +27,6 @@ import {ObIDatepickerOptions} from './datepicker.model';
 			useExisting: forwardRef(() => ObDatepickerComponent)
 		}
 	],
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-date-picker datepicker input-group'}
 })
 export class ObDatepickerComponent implements OnInit, ControlValueAccessor, Validator {
@@ -64,6 +63,7 @@ export class ObDatepickerComponent implements OnInit, ControlValueAccessor, Vali
 		this.datePicker.valueChanges.subscribe(fn);
 	}
 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
 	registerOnTouched(fn: any): void {}
 
 	setDisabledState(isDisabled: boolean): void {
@@ -71,6 +71,7 @@ export class ObDatepickerComponent implements OnInit, ControlValueAccessor, Vali
 		isDisabled ? this.datePicker.disable() : this.datePicker.enable();
 	}
 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	validate(control: AbstractControl): ValidationErrors | null {
 		return this.datePicker.valid ? null : this.datePicker.errors;
 	}

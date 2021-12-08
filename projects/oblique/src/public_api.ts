@@ -2,8 +2,6 @@
  * Public API Surface of oblique
  */
 
-import {ObNestedFormComponent} from './lib/nested-form/nested-form.component';
-
 export {ObBreadcrumbModule, ObBreadcrumbComponent, ObTBreadcrumbConfig, ObBreadcrumbConfig} from './lib/breadcrumb/breadcrumb.module';
 export {ObButtonDirective, ObButtonModule} from './lib/button/button.module';
 export {

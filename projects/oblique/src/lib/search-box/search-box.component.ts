@@ -29,7 +29,6 @@ let nextId = 0;
 	templateUrl: './search-box.component.html',
 	styleUrls: ['./search-box.component.scss', '../nav-tree/nav-tree.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-search-box', role: 'search'}
 })
 export class ObSearchBoxComponent {
@@ -41,8 +40,8 @@ export class ObSearchBoxComponent {
 	filteredItems: ObISearchWidgetItem[] = [];
 	isOpened = false;
 	id = `search-input-${nextId++}`;
-	private active: number;
 	@HostBinding('class.ob-font-awesome') useFontAwesomeIcon: boolean;
+	private active: number;
 	@ViewChildren('link') private readonly links: QueryList<ElementRef>;
 	@ViewChild(ObDropdownComponent) private readonly dropdown: ObDropdownComponent;
 

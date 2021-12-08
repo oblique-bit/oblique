@@ -1,6 +1,6 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {ObMockIconService} from './mock-icon.service';
-import {ObIconModule, ObIconConfig} from '../icon.module';
+import {ObIconConfig, ObIconModule} from '../icon.module';
 import {ObMockIconComponent} from './mock-icon.component';
 
 export {ObMockIconService} from './mock-icon.service';

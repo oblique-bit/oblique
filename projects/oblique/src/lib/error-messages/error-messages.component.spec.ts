@@ -1,4 +1,4 @@
-import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async, fakeAsync, tick} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import {Component, ViewChild} from '@angular/core';
 import {By} from '@angular/platform-browser';
@@ -28,7 +28,7 @@ describe('ErrorMessagesComponent', () => {
 	let errorMessagesServiceMock;
 	let submitButton;
 
-	//TODO: change this to a cleaner solution
+	// TODO: change this to a cleaner solution
 	beforeAll(() => {
 		formControlStateDirectiveMock = {
 			pristineValidation: false

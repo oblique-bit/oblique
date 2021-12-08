@@ -9,6 +9,7 @@ export class ObValidationService {
 
 	constructor(private readonly notification: ObNotificationService) {}
 
+	// eslint-disable-next-line @typescript-eslint/default-param-last
 	public filterInvalidFiles(files: File[], accept: string[] = ['*'], maxSize: number, multiple: boolean): File[] {
 		const dispatchedFiles: ObIFileValidation = this.dispatchFiles(files, accept, maxSize, multiple);
 		this.notifyErrors('i18n.oblique.file-upload.error.single', {ignoredFiles: dispatchedFiles.overflowing});
@@ -43,7 +44,7 @@ export class ObValidationService {
 				...parameters,
 				ignoredFiles: parameters.ignoredFiles.join(', ')
 			};
-			this.notification.error({message: message, messageParams: params, title: 'i18n.oblique.file-upload.error.title'});
+			this.notification.error({message, messageParams: params, title: 'i18n.oblique.file-upload.error.title'});
 		}
 	}
 

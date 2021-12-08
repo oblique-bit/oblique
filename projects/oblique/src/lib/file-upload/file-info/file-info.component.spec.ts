@@ -4,7 +4,7 @@ import {By} from '@angular/platform-browser';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
 import {TranslateService} from '@ngx-translate/core';
-import {of, Subject} from 'rxjs';
+import {Subject, of} from 'rxjs';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObPopUpService} from '../../pop-up/pop-up.service';

@@ -1,8 +1,9 @@
-import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {applyInTree, infoMigration, replaceInFile} from '../utils';
 import {removePolyFill} from './ng-update-utils';
 import {ObIMigrations} from './ng-update.model';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IUpdateV7Schema {}
 
 export class UpdateV6toV7 implements ObIMigrations {
@@ -11,6 +12,7 @@ export class UpdateV6toV7 implements ObIMigrations {
 		'ajv-formats': 2
 	};
 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	applyMigrations(_options: IUpdateV7Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Analyzing project');
@@ -38,7 +40,7 @@ export class UpdateV6toV7 implements ObIMigrations {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Renaming ObIconsConfig into ObIconConfig');
 			const toApply = (filePath: string) => {
-				replaceInFile(tree, filePath, new RegExp('ObIconsConfig', 'g'), 'ObIconConfig');
+				replaceInFile(tree, filePath, /ObIconsConfig/g, 'ObIconConfig');
 			};
 			return applyInTree(tree, toApply, '*.ts');
 		};
@@ -48,7 +50,7 @@ export class UpdateV6toV7 implements ObIMigrations {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Renaming $spacing-lg into $spacing-xl');
 			const toApply = (filePath: string) => {
-				replaceInFile(tree, filePath, new RegExp('\\$spacing-lg', 'g'), '$spacing-xl');
+				replaceInFile(tree, filePath, /\$spacing-lg/g, '$spacing-xl');
 			};
 			return applyInTree(tree, toApply, '*.scss');
 		};
@@ -58,12 +60,7 @@ export class UpdateV6toV7 implements ObIMigrations {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Renaming title attribute into data-title for tables');
 			const toApply = (filePath: string) => {
-				replaceInFile(
-					tree,
-					filePath,
-					new RegExp('(?<=<table[^>]*?class=".*?ob-table-collapse.*?".*?<td[^>]*?)(?<!data-)title="', 'gs'),
-					'data-title="'
-				);
+				replaceInFile(tree, filePath, /(?<=<table[^>]*?class=".*?ob-table-collapse.*?".*?<td[^>]*?)(?<!data-)title="/gs, 'data-title="');
 			};
 			return applyInTree(tree, toApply, '*.html');
 		};

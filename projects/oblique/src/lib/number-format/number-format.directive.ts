@@ -4,7 +4,6 @@ import {NgControl} from '@angular/forms';
 @Directive({
 	selector: '[obNumberFormat]',
 	exportAs: 'obNumberFormat',
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-number-format'}
 })
 export class ObNumberFormatDirective implements OnInit {
@@ -47,7 +46,7 @@ export class ObNumberFormatDirective implements OnInit {
 	}
 
 	private static toFixedNumber(number: number, decimals: number): number {
-		const pow = Math.pow(10, decimals);
+		const pow = 10 ** decimals;
 		return +(Math.round(number * pow) / pow);
 	}
 

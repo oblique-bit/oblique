@@ -6,6 +6,6 @@ import {Directive, Input} from '@angular/core';
 	exportAs: 'ngModel'
 })
 export class ObMockSchemaRequiredDirective {
-	@Input('name') name: string;
+	@Input() name: string;
 	required = true;
 }

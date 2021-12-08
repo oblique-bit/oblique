@@ -5,7 +5,6 @@ import {ObUnsavedChangesService} from './unsaved-changes.service';
 @Directive({
 	selector: '[obUnsavedChanges]',
 	exportAs: 'obUnsavedChanges',
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-unsaved-changes'}
 })
 export class ObUnsavedChangesDirective implements OnChanges, OnInit, OnDestroy {
@@ -14,7 +13,7 @@ export class ObUnsavedChangesDirective implements OnChanges, OnInit, OnDestroy {
 
 	constructor(private readonly unsavedChangesService: ObUnsavedChangesService, private readonly form: ControlContainer) {}
 
-	ngOnChanges() {
+	ngOnChanges(): void {
 		if (this.id) {
 			if (this.isActive) {
 				this.unsavedChangesService.watch(this.id, this.form);
@@ -24,13 +23,13 @@ export class ObUnsavedChangesDirective implements OnChanges, OnInit, OnDestroy {
 		}
 	}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		if (!this.id) {
 			throw new Error('obUnsavedChanges directive needs an "id" attribute.');
 		}
 	}
 
-	ngOnDestroy() {
+	ngOnDestroy(): void {
 		this.unsavedChangesService.unWatch(this.id);
 	}
 }

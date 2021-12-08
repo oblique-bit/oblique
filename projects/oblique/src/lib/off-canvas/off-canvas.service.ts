@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Subject, Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 
 /**
  * Service for controlling ObliqueUI offcanvas composite features.

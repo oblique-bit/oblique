@@ -33,7 +33,6 @@ import {ObGlobalEventsService} from '../../global-events/global-events.service';
 	templateUrl: './master-layout-header.component.html',
 	styleUrls: ['./master-layout-header.component.scss', './master-layout-header.component-controls.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-master-layout-header'}
 })
 export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
@@ -99,7 +98,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 
 	private addActionClass(elt: ElementRef) {
 		const actionable = ['a', 'button'];
-		if (actionable.indexOf(elt.nativeElement.nodeName.toLowerCase()) > -1) {
+		if (actionable.includes(elt.nativeElement.nodeName.toLowerCase())) {
 			this.renderer.addClass(elt.nativeElement, 'ob-control-link');
 		} else {
 			const el = elt.nativeElement.querySelector('a, button');

@@ -101,7 +101,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 			return;
 		}
 		if (!this.inputElement.nativeElement || !this.inputElement.nativeElement.tagName) {
-			throw new Error('The given value for [obNavTreeFakeFocus] is invalid. ' + 'It must be a valid native DOM element or ElementRef.');
+			throw new Error('The given value for [obNavTreeFakeFocus] is invalid. It must be a valid native DOM element or ElementRef.');
 		}
 		this.unsubscribeInputListeners();
 		this.inputElement.nativeElement.setAttribute('autocomplete', 'off');
@@ -120,7 +120,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 	}
 
 	private onKeyDown(event: KeyboardEvent) {
-		if (this.keyHandlers.hasOwnProperty(event.code)) {
+		if (Object.prototype.hasOwnProperty.call(this.keyHandlers, event.code)) {
 			this.keyHandlers[event.code](event);
 		}
 	}
@@ -148,7 +148,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 
 	private accept() {
 		const link = this.findLink();
-		if (link && link.nativeElement) {
+		if (link?.nativeElement) {
 			this.renderer.removeClass(link.nativeElement, ObNavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS);
 			this.focusedElement = null;
 			link.nativeElement.click();
@@ -206,7 +206,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 
 	private ensureInView(): void {
 		const link = this.findLink();
-		if (link && link.nativeElement) {
+		if (link?.nativeElement) {
 			link.nativeElement.scrollIntoView(ObNavTreeFakeFocusDirective.SCROLL_OPTIONS);
 		}
 	}

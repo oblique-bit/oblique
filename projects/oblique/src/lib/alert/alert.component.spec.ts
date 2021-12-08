@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';

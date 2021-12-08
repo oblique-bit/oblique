@@ -8,12 +8,11 @@ import {ObMasterLayoutComponentService} from '../master-layout/master-layout.com
 import {ObMockMasterLayoutComponentService} from '../_mocks/mock-master-layout.component.service';
 
 @Component({
-	template: '<li role="presentation" obMasterLayoutNavigationItem > test </li>'
+	template: '<li role="presentation" obMasterLayoutNavigationItem> test </li>'
 })
 class TestComponent {}
 describe('ObMasterLayoutNavigationItemDirective', () => {
 	let component: TestComponent;
-	let directive: ObMasterLayoutNavigationItemDirective;
 	let element: DebugElement;
 	let fixture: ComponentFixture<TestComponent>;
 
@@ -29,7 +28,6 @@ describe('ObMasterLayoutNavigationItemDirective', () => {
 		fixture = TestBed.createComponent(TestComponent);
 		component = fixture.componentInstance;
 		element = fixture.debugElement.query(By.directive(ObMasterLayoutNavigationItemDirective));
-		directive = element.injector.get(ObMasterLayoutNavigationItemDirective);
 	});
 
 	it('should create component', () => {

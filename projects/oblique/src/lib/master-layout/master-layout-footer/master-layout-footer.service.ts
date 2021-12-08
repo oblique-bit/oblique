@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from '../master-layout.model';
+import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
 
 @Injectable({
 	providedIn: 'root'
@@ -26,7 +26,7 @@ export class ObMasterLayoutFooterService {
 		this._isCustom = value;
 		this._events.next({
 			name: ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM,
-			value: value
+			value
 		});
 	}
 
@@ -38,7 +38,7 @@ export class ObMasterLayoutFooterService {
 		this._isSticky = value;
 		this._events.next({
 			name: ObEMasterLayoutEventValues.FOOTER_IS_STICKY,
-			value: value
+			value
 		});
 	}
 
@@ -50,7 +50,7 @@ export class ObMasterLayoutFooterService {
 		this._hasLogoOnScroll = value;
 		this._events.next({
 			name: ObEMasterLayoutEventValues.FOOTER_HAS_LOGO_ON_SCROLL,
-			value: value
+			value
 		});
 	}
 }

@@ -1,4 +1,4 @@
-import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {addDependency, checkPrecondition, getPreconditionVersion} from './ng-add-utils';
 import {ObIOptionsSchema} from './ng-add.model';
 import {infoMigration, infoText, installDependencies, success, warn} from '../utils';

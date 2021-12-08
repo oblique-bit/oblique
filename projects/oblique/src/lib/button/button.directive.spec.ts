@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonDirective} from './button.directive';
@@ -413,7 +413,7 @@ describe('ButtonDirective', () => {
 			beforeEach(() => {
 				fixture = TestBed.createComponent(TestDynamicComponent);
 				component = fixture.componentInstance;
-				(component as TestDynamicComponent).obButton = parameter.obButtonBeforeChange as 'primary' | 'secondary' | 'tertiary';
+				component.obButton = parameter.obButtonBeforeChange as 'primary' | 'secondary' | 'tertiary';
 				fixture.detectChanges();
 				const element = fixture.debugElement.query(By.directive(ObButtonDirective));
 				name = fixture.debugElement.query(By.all()).name;
@@ -430,11 +430,11 @@ describe('ButtonDirective', () => {
 				expect(directive).toBeTruthy();
 			});
 
-			it('should be ' + parameter.expectedButtonBeforeChange + ' obButton', () => {
+			it(`should be ${parameter.expectedButtonBeforeChange} obButton`, () => {
 				expect(directive.obButton).toBe(parameter.expectedButtonBeforeChange);
 			});
 
-			it('should ' + (parameter.expectedButtonClassBeforeChange.primary ? 'have ' : 'not have ') + ' `.mat-primary` class', () => {
+			it(`should ${parameter.expectedButtonClassBeforeChange.primary ? 'have ' : 'not have '} \`.mat-primary\` class`, () => {
 				const selectableElement = fixture.debugElement.query(By.css('.mat-primary'));
 				if (parameter.expectedButtonClassBeforeChange.primary) {
 					expect(selectableElement).toBeTruthy();
@@ -443,7 +443,7 @@ describe('ButtonDirective', () => {
 				}
 			});
 
-			it('should ' + (parameter.expectedButtonClassBeforeChange.flat ? 'have ' : 'not have ') + '`.mat-flat-button` class', () => {
+			it(`should ${parameter.expectedButtonClassBeforeChange.flat ? 'have ' : 'not have '}\`.mat-flat-button\` class`, () => {
 				const selectableElement = fixture.debugElement.query(By.css('.mat-flat-button'));
 				if (parameter.expectedButtonClassBeforeChange.flat) {
 					expect(selectableElement).toBeTruthy();
@@ -452,7 +452,7 @@ describe('ButtonDirective', () => {
 				}
 			});
 
-			it('should ' + (parameter.expectedButtonClassBeforeChange.stroked ? 'have ' : 'not have ') + '`.mat-stroked-button` class', () => {
+			it(`should ${parameter.expectedButtonClassBeforeChange.stroked ? 'have ' : 'not have '}\`.mat-stroked-button\` class`, () => {
 				const selectableElement = fixture.debugElement.query(By.css('.mat-stroked-button'));
 				if (parameter.expectedButtonClassBeforeChange.stroked) {
 					expect(selectableElement).toBeTruthy();
@@ -463,20 +463,20 @@ describe('ButtonDirective', () => {
 
 			// AFTER CHANGE TEST
 			it('should create an instance', () => {
-				(component as TestDynamicComponent).obButton = parameter.obButtonAfterChange as 'primary' | 'secondary' | 'tertiary';
+				component.obButton = parameter.obButtonAfterChange as 'primary' | 'secondary' | 'tertiary';
 				fixture.detectChanges();
 				expect(component).toBeTruthy();
 				expect(directive).toBeTruthy();
 			});
 
-			it('should be ' + parameter.expectedButtonAfterChange + ' obButton', () => {
-				(component as TestDynamicComponent).obButton = parameter.obButtonAfterChange as 'primary' | 'secondary' | 'tertiary';
+			it(`should be ${parameter.expectedButtonAfterChange} obButton`, () => {
+				component.obButton = parameter.obButtonAfterChange as 'primary' | 'secondary' | 'tertiary';
 				fixture.detectChanges();
 				expect(directive.obButton).toBe(parameter.expectedButtonAfterChange);
 			});
 
-			it('should ' + (parameter.expectedButtonClassAfterChange.primary ? 'have ' : 'not have ') + ' `.mat-primary` class', () => {
-				(component as TestDynamicComponent).obButton = parameter.obButtonAfterChange as 'primary' | 'secondary' | 'tertiary';
+			it(`should ${parameter.expectedButtonClassAfterChange.primary ? 'have ' : 'not have '} \`.mat-primary\` class`, () => {
+				component.obButton = parameter.obButtonAfterChange as 'primary' | 'secondary' | 'tertiary';
 				fixture.detectChanges();
 				const selectableElement = fixture.debugElement.query(By.css('.mat-primary'));
 				if (parameter.expectedButtonClassAfterChange.primary) {
@@ -486,8 +486,8 @@ describe('ButtonDirective', () => {
 				}
 			});
 
-			it('should ' + (parameter.expectedButtonClassAfterChange.flat ? 'have ' : 'not have ') + '`.mat-flat-button` class', () => {
-				(component as TestDynamicComponent).obButton = parameter.obButtonAfterChange as 'primary' | 'secondary' | 'tertiary';
+			it(`should ${parameter.expectedButtonClassAfterChange.flat ? 'have ' : 'not have '}\`.mat-flat-button\` class`, () => {
+				component.obButton = parameter.obButtonAfterChange as 'primary' | 'secondary' | 'tertiary';
 				fixture.detectChanges();
 				const selectableElement = fixture.debugElement.query(By.css('.mat-flat-button'));
 				if (parameter.expectedButtonClassAfterChange.flat) {
@@ -497,8 +497,8 @@ describe('ButtonDirective', () => {
 				}
 			});
 
-			it('should ' + (parameter.expectedButtonClassAfterChange.stroked ? 'have ' : 'not have ') + '`.mat-stroked-button` class', () => {
-				(component as TestDynamicComponent).obButton = parameter.obButtonAfterChange as 'primary' | 'secondary' | 'tertiary';
+			it(`should ${parameter.expectedButtonClassAfterChange.stroked ? 'have ' : 'not have '}\`.mat-stroked-button\` class`, () => {
+				component.obButton = parameter.obButtonAfterChange as 'primary' | 'secondary' | 'tertiary';
 				fixture.detectChanges();
 				const selectableElement = fixture.debugElement.query(By.css('.mat-stroked-button'));
 				if (parameter.expectedButtonClassAfterChange.stroked) {

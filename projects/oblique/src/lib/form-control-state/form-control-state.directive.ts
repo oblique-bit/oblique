@@ -1,6 +1,6 @@
 import {AfterViewInit, ContentChild, Directive, ElementRef, HostBinding, Inject, Input, OnDestroy, Optional, Renderer2} from '@angular/core';
 import {FormGroupDirective, FormGroupName, NgControl, NgForm, NgModelGroup} from '@angular/forms';
-import {merge, Subject} from 'rxjs';
+import {Subject, merge} from 'rxjs';
 import {delay, takeUntil} from 'rxjs/operators';
 
 import {ObThemeService} from '../theme.service';
@@ -14,7 +14,6 @@ import {WINDOW} from '../utilities';
 @Directive({
 	selector: '[obFormControlState]',
 	exportAs: 'obFormControlState',
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-form-control-state'}
 })
 export class ObFormControlStateDirective implements AfterViewInit, OnDestroy {
@@ -91,7 +90,7 @@ export class ObFormControlStateDirective implements AfterViewInit, OnDestroy {
 	}
 
 	private isMandatory(): boolean {
-		return this.mandatory || this.inputElement.hasAttribute('required') || (this.ngControl.errors && this.ngControl.errors.required);
+		return this.mandatory || this.inputElement.hasAttribute('required') || this.ngControl.errors?.required;
 	}
 
 	private generateState(submitted = false): void {

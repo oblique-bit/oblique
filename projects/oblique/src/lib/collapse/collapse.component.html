@@ -1,7 +1,7 @@
-<div class="ob-collapse-toggle" role="button" [class.ob-toggle-justified]="iconPosition == 'justified'" (click)="active = !active">
-	<ob-icon icon="chevron-{{ active ? 'up' : 'down' }}" *ngIf="iconPosition == 'left'"></ob-icon>
+<div class="ob-collapse-toggle" role="button" [class.ob-toggle-justified]="iconPosition === 'justified'" (click)="active = !active">
+	<ob-icon icon="chevron-{{ active ? 'up' : 'down' }}" *ngIf="iconPosition === 'left'"></ob-icon>
 	<ng-content select="[obCollapseHeader]"></ng-content>
-	<ob-icon icon="chevron-{{ active ? 'up' : 'down' }}" *ngIf="iconPosition == 'right' || iconPosition == 'justified'"></ob-icon>
+	<ob-icon icon="chevron-{{ active ? 'up' : 'down' }}" *ngIf="iconPosition === 'right' || iconPosition === 'justified'"></ob-icon>
 </div>
 <div
 	class="ob-collapse-content"

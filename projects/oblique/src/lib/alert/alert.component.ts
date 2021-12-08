@@ -7,7 +7,6 @@ import {ObUseObliqueIcons} from '../icon/icon.model';
 	templateUrl: './alert.component.html',
 	styleUrls: ['./alert.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-alert ob-angular'}
 })
 export class ObAlertComponent {

@@ -2,7 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {TranslateLoader} from '@ngx-translate/core';
 import {InjectionToken} from '@angular/core';
 import {catchError, map} from 'rxjs/operators';
-import {forkJoin, Observable, of} from 'rxjs';
+import {Observable, forkJoin, of} from 'rxjs';
 import {ObITranslationFile} from './multi-translate-loader.model';
 
 export const TRANSLATION_FILES = new InjectionToken('TRANSLATION_FILES');

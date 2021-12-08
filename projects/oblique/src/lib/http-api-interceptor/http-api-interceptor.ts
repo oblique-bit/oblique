@@ -124,6 +124,6 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 	}
 
 	private isApiCall(url: string): boolean {
-		return url.indexOf(this.config.api.url) > -1;
+		return url.includes(this.config.api.url);
 	}
 }

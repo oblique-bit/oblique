@@ -1,5 +1,5 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {CUSTOM_ELEMENTS_SCHEMA, Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
 
 import {ObStickyComponent} from './sticky.component';
@@ -41,32 +41,32 @@ describe('StickyComponent', () => {
 		expect(testComponent).toBeTruthy();
 	}));
 
-	it('should contain sticky class', async(() => {
+	it('should contain sticky class', () => {
 		expect(fixture.debugElement.query(By.css('ob-sticky')).nativeElement.classList).toContain('ob-sticky');
-	}));
+	});
 
-	it('should contain sticky-sm and not sticky-lg class with small header', async () => {
+	it('should contain sticky-sm and not sticky-lg class with small header', () => {
 		testComponent.headerSize = 'sm';
 		fixture.detectChanges();
 		expect(fixture.debugElement.query(By.css('ob-sticky')).nativeElement.classList).toContain('ob-sticky-sm');
 		expect(fixture.debugElement.query(By.css('ob-sticky')).nativeElement.classList).not.toContain('ob-sticky-lg');
 	});
 
-	it('should contain sticky-lg and not sticky-sm class with large header', async () => {
+	it('should contain sticky-lg and not sticky-sm class with large header', () => {
 		testComponent.headerSize = 'lg';
 		fixture.detectChanges();
 		expect(fixture.debugElement.query(By.css('ob-sticky')).nativeElement.classList).not.toContain('ob-sticky-sm');
 		expect(fixture.debugElement.query(By.css('ob-sticky')).nativeElement.classList).toContain('ob-sticky-lg');
 	});
 
-	it('should not contain neither sticky-lg nor sticky-sm with medium (default) header', async () => {
+	it('should not contain neither sticky-lg nor sticky-sm with medium (default) header', () => {
 		testComponent.headerSize = 'md';
 		fixture.detectChanges();
 		expect(fixture.debugElement.query(By.css('ob-sticky')).nativeElement.classList).not.toContain('ob-sticky-sm');
 		expect(fixture.debugElement.query(By.css('ob-sticky')).nativeElement.classList).not.toContain('ob-sticky-lg');
 	});
 
-	it('should throw an error with illegal size', async () => {
+	it('should throw an error with illegal size', () => {
 		const comp = fixture.debugElement.query(By.css('ob-sticky')).componentInstance;
 		comp.headerSize = 'testSize';
 		expect(comp.ngOnChanges.bind(comp)).toThrowError('"testSize" is not a valid size.Only "lg", "md" and "sm" are acceptable alternatives.');

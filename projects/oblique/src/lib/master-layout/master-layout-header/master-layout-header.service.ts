@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from '../master-layout.model';
+import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
 
 @Injectable({providedIn: 'root'})
 export class ObMasterLayoutHeaderService {
@@ -24,7 +24,7 @@ export class ObMasterLayoutHeaderService {
 		this._isCustom = value;
 		this._events.next({
 			name: ObEMasterLayoutEventValues.HEADER_IS_CUSTOM,
-			value: value
+			value
 		});
 	}
 
@@ -36,7 +36,7 @@ export class ObMasterLayoutHeaderService {
 		this._isSmall = value;
 		this._events.next({
 			name: ObEMasterLayoutEventValues.HEADER_IS_SMALL,
-			value: value
+			value
 		});
 	}
 
@@ -48,7 +48,7 @@ export class ObMasterLayoutHeaderService {
 		this._isSticky = value;
 		this._events.next({
 			name: ObEMasterLayoutEventValues.HEADER_IS_STICKY,
-			value: value
+			value
 		});
 	}
 
@@ -60,7 +60,7 @@ export class ObMasterLayoutHeaderService {
 		this._reduceOnScroll = value;
 		this._events.next({
 			name: ObEMasterLayoutEventValues.HEADER_REDUCE_ON_SCROLL,
-			value: value
+			value
 		});
 	}
 }

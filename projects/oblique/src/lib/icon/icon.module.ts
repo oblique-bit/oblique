@@ -5,7 +5,7 @@ import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';
 import {ObIconService} from './icon.service';
-import {defaultIconConfig, ObTIconConfig, ObIconConfig, iconFactory} from './icon.model';
+import {ObIconConfig, ObTIconConfig, defaultIconConfig, iconFactory} from './icon.model';
 import {ObIconComponent} from './ob-icon.component';
 
 export {ObIconService} from './icon.service';

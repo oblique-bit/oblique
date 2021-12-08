@@ -1,7 +1,7 @@
 import {ObAcceptAllPipe} from './accept-all.pipe';
 
 describe('ObAcceptAllPipe', () => {
-	let pipe = new ObAcceptAllPipe();
+	const pipe = new ObAcceptAllPipe();
 
 	it('create an instance', () => {
 		expect(pipe).toBeTruthy();

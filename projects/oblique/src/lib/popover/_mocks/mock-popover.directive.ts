@@ -4,7 +4,6 @@ import {Options, Placement} from '@popperjs/core';
 @Directive({
 	selector: '[obPopover]',
 	exportAs: 'obPopover',
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-popover'}
 })
 export class ObMockPopoverDirective {

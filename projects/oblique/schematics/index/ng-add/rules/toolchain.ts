@@ -1,4 +1,4 @@
-import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {ObIOptionsSchema} from '../ng-add.model';
 import {addDevDependency, addRootProperty, addScript, getTemplate, removeDevDependencies, removeScript} from '../ng-add-utils';
 import {
@@ -14,6 +14,7 @@ import {
 } from '../../utils';
 import {addJest, addProtractor} from './tests';
 import {jenkins} from './jenkins';
+import {execSync} from 'child_process';
 
 export function toolchain(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
@@ -65,7 +66,7 @@ function removeFavicon(): Rule {
 		infoMigration(_context, "Toolchain: Removing Angular's favicon");
 		deleteFile(tree, 'src/favicon.ico');
 		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) =>
-			(config || []).filter((conf: string) => !conf.indexOf || conf.indexOf('favicon') === -1)
+			(config || []).filter((conf: string) => !conf.indexOf || !conf.includes('favicon'))
 		);
 	};
 }
@@ -89,11 +90,11 @@ function addPrefix(prefix: string): Rule {
 		infoMigration(_context, "Toolchain: Setting application's prefix");
 		tree = setRootAngularConfig(tree, ['schematics'], {
 			'@schematics/angular:component': {
-				prefix: prefix,
+				prefix,
 				style: 'scss'
 			},
 			'@schematics/angular:directive': {
-				prefix: prefix
+				prefix
 			}
 		});
 
@@ -103,7 +104,7 @@ function addPrefix(prefix: string): Rule {
 
 function addProxy(port: string): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		if (port.match(/^\d+$/) && !tree.exists('proxy.conf.json')) {
+		if (/^\d+$/.test(port) && !tree.exists('proxy.conf.json')) {
 			infoMigration(_context, 'Toolchain: Adding proxy configuration');
 			addFile(tree, 'proxy.conf.json', getTemplate(tree, 'default-proxy.conf.json.config').replace('PORT', port));
 			setAngularProjectsConfig(tree, ['architect', 'serve', 'options', 'proxyConfig'], 'proxy.conf.json');
@@ -127,7 +128,7 @@ function addSonar(sonar: boolean, jest: boolean): Rule {
 			}
 		} else if (jest) {
 			const lines = readFile(tree, './tests/jest.config.js').split('\n');
-			tree.overwrite('./tests/jest.config.js', lines.filter((line: string) => line.indexOf('sonar') === -1).join('\n'));
+			tree.overwrite('./tests/jest.config.js', lines.filter((line: string) => !line.includes('sonar')).join('\n'));
 		}
 		return tree;
 	};
@@ -170,6 +171,7 @@ function addEslint(eslint: boolean, prefix: string): Rule {
 }
 
 function addLintDeps(eslint: boolean): Rule {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, _context: SchematicContext) => {
 		if (eslint) {
 			removeDevDependencies(tree, 'lint');

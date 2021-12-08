@@ -13,7 +13,7 @@ import {ObISpinnerEvent} from './spinner.model';
 			<ob-icon icon="refresh"></ob-icon>
 		</div>
 	</div>`,
-	styleUrls: ['spinner.component.scss'],
+	styleUrls: ['./spinner.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	animations: [
 		trigger('inOut', [
@@ -26,7 +26,6 @@ import {ObISpinnerEvent} from './spinner.model';
 			transition('* => out', [animate('250ms ease-in-out', keyframes([style({offset: 0, opacity: 1}), style({offset: 1, opacity: 0})]))])
 		])
 	],
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-spinner'}
 })
 export class ObSpinnerComponent implements OnInit, OnDestroy {

@@ -1,18 +1,18 @@
-import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {addDeclarationToModule, addImportToModule, addProviderToModule, addRouteDeclarationToModule, insertImport} from '@schematics/angular/utility/ast-utils';
 import {
 	adaptInsertChange,
 	addDevDependency,
-	applyChanges,
 	appModulePath,
+	applyChanges,
 	createSrcFile,
 	getAngularVersion,
 	getTemplate,
 	routingModulePath
 } from '../ng-add-utils';
 import {ObIOptionsSchema} from '../ng-add.model';
-import {addAngularConfigInList, addFile, infoMigration, ObliquePackage, readFile} from '../../utils';
+import {ObliquePackage, addAngularConfigInList, addFile, infoMigration, readFile} from '../../utils';
 
 export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
@@ -49,9 +49,10 @@ function addUnknownRoute(unknownRoute: boolean): Rule {
 			infoMigration(_context, 'Oblique feature: Adding unknown route');
 			const sourceFile = createSrcFile(tree, routingModule);
 			const changes: Change[] = addImportToModule(sourceFile, routingModule, 'ObUnknownRouteModule', ObliquePackage);
-			const fileName = routingModule.split('/').pop() as string;
-
-			changes.push(addRouteDeclarationToModule(sourceFile, fileName, "{path: '**', redirectTo: 'unknown-route'}"));
+			const fileName = routingModule.split('/').pop();
+			if (fileName) {
+				changes.push(addRouteDeclarationToModule(sourceFile, fileName, "{path: '**', redirectTo: 'unknown-route'}"));
+			}
 			tree = applyChanges(tree, routingModule, changes);
 		}
 		return tree;
@@ -92,7 +93,7 @@ function addBannerData(tree: Tree): void {
 	tree.getDir(src)
 		.subfiles.map(file => `${src}/${file}`)
 		.forEach(file => {
-			const env = file.match(/environment\.(?<env>.*)\.ts/)?.groups?.env || 'local';
+			const env = /environment\.(?<env>.*)\.ts/.exec(file)?.groups?.env || 'local';
 			const content = readFile(tree, file);
 			const banner = env === 'prod' ? 'undefined' : `{text: '${env}'}`;
 			if (content) {
@@ -145,10 +146,12 @@ function addDefaultComponentRouteToAppRoutingModule(tree: Tree): void {
 	if (tree.exists(routingModule)) {
 		const sourceFile = createSrcFile(tree, routingModule);
 		const changes: Change[] = [];
-		const fileName = routingModule.split('/').pop() as string;
-		changes.push(insertImport(sourceFile, routingModule, 'HomeComponent', './home/home.component'));
-		changes.push(addRouteDeclarationToModule(sourceFile, fileName, "{path: '', redirectTo: 'home', pathMatch: 'full'}"));
-		changes.push(addRouteDeclarationToModule(sourceFile, fileName, "{path: 'home', component: HomeComponent}"));
+		const fileName = routingModule.split('/').pop();
+		if (fileName) {
+			changes.push(insertImport(sourceFile, routingModule, 'HomeComponent', './home/home.component'));
+			changes.push(addRouteDeclarationToModule(sourceFile, fileName, "{path: '', redirectTo: 'home', pathMatch: 'full'}"));
+			changes.push(addRouteDeclarationToModule(sourceFile, fileName, "{path: 'home', component: HomeComponent}"));
+		}
 		applyChanges(tree, routingModule, changes);
 	}
 }

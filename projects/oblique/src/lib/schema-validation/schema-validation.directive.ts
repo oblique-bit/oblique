@@ -6,7 +6,6 @@ import {ObSchemaValidationService} from './schema-validation.service';
 	selector: '[obSchemaValidation]',
 	exportAs: 'obSchemaValidation',
 	providers: [ObSchemaValidationService],
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-schema-validation'}
 })
 export class ObSchemaValidationDirective implements OnInit {

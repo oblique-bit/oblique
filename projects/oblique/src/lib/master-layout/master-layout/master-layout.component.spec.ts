@@ -23,7 +23,6 @@ import {appVersion} from '../../version';
 describe('ObMasterLayoutComponent', () => {
 	let component: ObMasterLayoutComponent;
 	let fixture: ComponentFixture<ObMasterLayoutComponent>;
-	let service: ObMasterLayoutService;
 	const mockMasterLayoutService = {
 		layout: {
 			configEvents$: new Subject(),
@@ -59,7 +58,6 @@ describe('ObMasterLayoutComponent', () => {
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObMasterLayoutComponent);
-		service = TestBed.inject(ObMasterLayoutService);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

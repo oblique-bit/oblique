@@ -3,13 +3,14 @@ import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {ObPopUpService} from '../pop-up/pop-up.service';
 import {WINDOW} from '../utilities';
+import {Window} from '@popperjs/core';
 
 @Injectable({providedIn: 'root'})
 export class ObUnsavedChangesService {
-	private readonly controlContainer: {[key: string]: ControlContainer} = {};
 	public isActive = true;
+	private readonly controlContainer: {[key: string]: ControlContainer} = {};
 
-	constructor(private readonly translateService: TranslateService, private readonly popUpService: ObPopUpService, @Inject(WINDOW) window) {
+	constructor(private readonly translateService: TranslateService, private readonly popUpService: ObPopUpService, @Inject(WINDOW) window: Window) {
 		window.addEventListener('beforeunload', e => this.onUnload(e));
 		window.addEventListener('unload', e => this.onUnload(e));
 	}
@@ -27,7 +28,8 @@ export class ObUnsavedChangesService {
 		return this.ignoreChanges();
 	}
 
-	// Todo: (because of return type of boolean) rename method e.g is...() has...() to predicate as a question or use the predicate as an assertion. @see also https://dev.to/michi/tips-on-naming-boolean-variables-cleaner-code-35ig
+	// Todo: (because of return type of boolean) rename method e.g is...() has...() to predicate as a question or use
+	//  the predicate as an assertion. @see also https://dev.to/michi/tips-on-naming-boolean-variables-cleaner-code-35ig
 	ignoreChanges(formIds?: string[]): boolean {
 		return this.hasPendingChanges(formIds) ? this.popUpService.confirm(this.message()) : true;
 	}
@@ -43,7 +45,7 @@ export class ObUnsavedChangesService {
 
 	private hasPendingChanges(ids: string[] = Object.keys(this.controlContainer)): boolean {
 		const includesPendingChanges =
-			Object.keys(this.controlContainer).filter(formId => ids.indexOf(formId) > -1 && this.controlContainer[formId].dirty).length > 0;
+			Object.keys(this.controlContainer).filter(formId => ids.includes(formId) && this.controlContainer[formId].dirty).length > 0;
 		return this.isActive && includesPendingChanges;
 	}
 

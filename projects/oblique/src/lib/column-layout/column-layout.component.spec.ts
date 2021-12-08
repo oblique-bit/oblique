@@ -1,5 +1,5 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {CUSTOM_ELEMENTS_SCHEMA, Component, NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TranslateService} from '@ngx-translate/core';

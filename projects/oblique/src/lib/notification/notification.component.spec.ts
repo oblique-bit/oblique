@@ -1,4 +1,4 @@
-import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async, fakeAsync, tick} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -118,9 +118,9 @@ describe('NotificationComponent', () => {
 
 	it('should have only 1 message if same message is send multiple times with groupSimilar enabled', () => {
 		// Send multiple notifications:
-		component.open({message: message, groupSimilar: true});
-		component.open({message: message, groupSimilar: true});
-		component.open({message: message, groupSimilar: true});
+		component.open({message, groupSimilar: true});
+		component.open({message, groupSimilar: true});
+		component.open({message, groupSimilar: true});
 		fixture.detectChanges();
 
 		expect(component.notifications.length).toBe(1);
@@ -130,9 +130,9 @@ describe('NotificationComponent', () => {
 
 	it('should have multiple messages if same message is send multiple times with groupSimilar disabled', () => {
 		// Send multiple notifications:
-		component.open({message: message, groupSimilar: false});
-		component.open({message: message, groupSimilar: false});
-		component.open({message: message, groupSimilar: false});
+		component.open({message, groupSimilar: false});
+		component.open({message, groupSimilar: false});
+		component.open({message, groupSimilar: false});
 		fixture.detectChanges();
 
 		expect(component.notifications.length).toBe(3);
@@ -142,8 +142,8 @@ describe('NotificationComponent', () => {
 
 	it('should close a _non-sticky_ notification after `timeout` is reached', fakeAsync(() => {
 		const notification = {
-			message: message,
-			title: title,
+			message,
+			title,
 			sticky: false
 		};
 		component.open(notification);
@@ -160,8 +160,8 @@ describe('NotificationComponent', () => {
 
 	it('should *not* close a _sticky_ notification after `timeout` is reached', fakeAsync(() => {
 		component.open({
-			message: message,
-			title: title,
+			message,
+			title,
 			sticky: true
 		});
 		tick(notificationConfig.timeout + ObNotificationComponent.REMOVE_DELAY);

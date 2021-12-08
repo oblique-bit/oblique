@@ -1,4 +1,4 @@
-import {Inject, Injectable, InjectionToken, isDevMode, Optional} from '@angular/core';
+import {Inject, Injectable, InjectionToken, Optional, isDevMode} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {EMPTY, fromEvent, race} from 'rxjs';
 import {catchError} from 'rxjs/operators';

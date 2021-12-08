@@ -63,7 +63,16 @@ export function getJson(tree: any, path: string) {
 export function getAngularConfigs(tree: Tree, path: string[]): {project: string; config: any}[] {
 	const json = getJson(tree, angularJsonConfigPath);
 	return Object.keys(getJsonProperty(json, 'projects'))
-		.reduce((config, project) => [...config, {project, config: getJsonProperty(json, ['projects', project, ...path].join(';'))}], [])
+		.reduce(
+			(config, project) => [
+				...config,
+				{
+					project,
+					config: getJsonProperty(json, ['projects', project, ...path].join(';'))
+				}
+			],
+			[]
+		)
 		.filter(project => project.config);
 }
 
@@ -90,14 +99,20 @@ export function setAngularConfig(tree: Tree, path: string[], value: {project: st
 
 export function setAngularProjectsConfig(tree: Tree, path: string[], config: any): Tree {
 	getAngularConfigs(tree, path).forEach(project => {
-		setAngularConfig(tree, path, {project: project.project, config: config instanceof Function ? config(project.config) : config});
+		setAngularConfig(tree, path, {
+			project: project.project,
+			config: config instanceof Function ? config(project.config) : config
+		});
 	});
 	return tree;
 }
 
 export function addAngularConfigInList(tree: Tree, path: string[], value: any): Tree {
 	getAngularConfigs(tree, path).forEach(project =>
-		setAngularConfig(tree, path, {project: project.project, config: [...(project.config || []).filter((v: any) => v !== value), value]})
+		setAngularConfig(tree, path, {
+			project: project.project,
+			config: [...(project.config || []).filter((v: any) => v !== value), value]
+		})
 	);
 	return tree;
 }
@@ -124,7 +139,7 @@ export function applyInTree(tree: Tree, toApply: Function, pattern = '*'): Tree 
 }
 
 export function addInterface(tree: Tree, fileName: string, name: string): void {
-	let content = readFile(tree, fileName);
+	const content = readFile(tree, fileName);
 	if (!new RegExp(`export class\\s*\\w*\\s*implements.*${name}`, 'm').test(content)) {
 		tree.overwrite(
 			fileName,
@@ -136,19 +151,19 @@ export function addInterface(tree: Tree, fileName: string, name: string): void {
 }
 
 export function addImport(tree: Tree, fileName: string, name: string, pkg: string): void {
-	let content = readFile(tree, fileName);
+	const content = readFile(tree, fileName);
 	if (!hasImport(content, name, pkg)) {
 		tree.overwrite(
 			fileName,
 			new RegExp(`import\\s*{.*}\\s*from\\s*['"]${pkg}['"]`, 'm').test(content)
 				? content.replace(new RegExp(`import\\s*{(.*)}\\s*from\\s*['"]${pkg}['"]`), `import {$1, ${name}} from '${pkg}'`)
-				: `import {${name}} from '${pkg}';\n` + content
+				: `import {${name}} from '${pkg}';\n${content}`
 		);
 	}
 }
 
 export function removeImport(tree: Tree, fileName: string, name: string, pkg: string): void {
-	let content = readFile(tree, fileName);
+	const content = readFile(tree, fileName);
 	if (hasImport(content, name, pkg)) {
 		tree.overwrite(
 			fileName,
@@ -179,17 +194,19 @@ function alterAngularConfig(tree: Tree, path: string[], project: string, value?:
 }
 
 function setOption(json: any, path: string[], value?: any) {
-	const option = path.shift() as string;
-	if (path.length) {
-		if (!json[option]) {
-			json[option] = {};
-		}
-		setOption(json[option], path, value);
-	} else {
-		if (value) {
-			json[option] = value;
+	const option = path.shift();
+	if (option) {
+		if (path.length) {
+			if (!json[option]) {
+				json[option] = {};
+			}
+			setOption(json[option], path, value);
 		} else {
-			delete json[option];
+			if (value) {
+				json[option] = value;
+			} else {
+				delete json[option];
+			}
 		}
 	}
 }

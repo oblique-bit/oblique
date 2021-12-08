@@ -1,4 +1,4 @@
-import {inject, TestBed} from '@angular/core/testing';
+import {TestBed, inject} from '@angular/core/testing';
 import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {ObPopUpService} from '../pop-up/pop-up.service';
@@ -19,7 +19,7 @@ describe('UnsavedChangesService', () => {
 	});
 
 	beforeEach(() => {
-		//This prevents the opening of a confirmation dialog if the cli reloads the tests
+		// This prevents the opening of a confirmation dialog if the cli reloads the tests
 		jest.spyOn(window, 'addEventListener');
 	});
 

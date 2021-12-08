@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {NO_ERRORS_SCHEMA, QueryList} from '@angular/core';

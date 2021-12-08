@@ -1,7 +1,6 @@
-import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed, fakeAsync, tick, waitForAsync} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Component, NO_ERRORS_SCHEMA} from '@angular/core';
-import {Location} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
@@ -22,7 +21,6 @@ class DummyPrefixPathComponent {}
 class DummyDefaultPathComponent {}
 
 describe('MasterLayoutNavigationComponent', () => {
-	let location: Location;
 	let router: Router;
 	let component: ObMasterLayoutNavigationComponent;
 	let fixture: ComponentFixture<ObMasterLayoutNavigationComponent>;
@@ -82,7 +80,6 @@ describe('MasterLayoutNavigationComponent', () => {
 			}
 		];
 		router = TestBed.inject(Router);
-		location = TestBed.inject(Location);
 		router.initialNavigation();
 		fixture.detectChanges();
 	});
@@ -170,8 +167,8 @@ describe('MasterLayoutNavigationComponent', () => {
 			}));
 		});
 		describe('to DummyPrefixPathComponent', () => {
-			let prefixPathUser2 = 'prefix/2/users';
-			let prefixPathUser3 = 'prefix/3/users';
+			const prefixPathUser2 = 'prefix/2/users';
+			const prefixPathUser3 = 'prefix/3/users';
 			it('should have only one class active after routing', fakeAsync(() => {
 				router.navigate([prefixPathUser2]);
 				tick();
@@ -192,7 +189,7 @@ describe('MasterLayoutNavigationComponent', () => {
 			}));
 		});
 		describe('to DummyFullPathComponent', () => {
-			let fullPathUser2 = 'full/2/users';
+			const fullPathUser2 = 'full/2/users';
 			it('shouldnt have class active after routing', fakeAsync(() => {
 				router.navigate(['full/1']);
 				tick();
