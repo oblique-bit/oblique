@@ -11,10 +11,6 @@
 			"arrowParens": "avoid",
 			"endOfLine": "auto"
 		}
-	  },
-	  {
-		"files": "*.html",
-		"options": { "parser": "angular" }
 	  }
 	]
 }
