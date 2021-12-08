@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-	selector: 'ob-button-sample',
+	selector: 'sc-button-sample',
 	templateUrl: './button.component.html'
 })
-export class ObButtonComponent {}
+export class ButtonComponent {}

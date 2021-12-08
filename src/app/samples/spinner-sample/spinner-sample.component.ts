@@ -2,13 +2,13 @@ import {Component} from '@angular/core';
 import {ObSpinnerService} from '@oblique/oblique';
 
 @Component({
-	selector: 'ob-spinner-sample',
+	selector: 'sc-spinner-sample',
 	templateUrl: './spinner-sample.component.html',
 	styleUrls: ['./spinner-sample.component.scss']
 })
-export class ObSpinnerSampleComponent {
+export class SpinnerSampleComponent {
 	spinnerVisible = false;
-	channel: string = 'demo';
+	channel = 'demo';
 	private readonly window: Window;
 
 	constructor(private readonly spinnerService: ObSpinnerService) {

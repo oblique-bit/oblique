@@ -1,5 +1,5 @@
 <h2 class="page-header">{{ "i18n.routes.samples.sticky.title" | translate }}</h2>
-<ob-description component="sticky"></ob-description>
+<sc-description component="sticky"></sc-description>
 <ob-column-layout [left]="false">
 	<ob-sticky [headerSize]="headerSize" [footerSize]="footerSize" [noLayout]="noLayout" column-main-content>
 		<ng-template #obStickyHeader *ngIf="stickyHeader">
@@ -59,4 +59,4 @@
 		</div>
 	</div>
 </ob-column-layout>
-<ob-api component="sticky"></ob-api>
+<sc-api component="sticky"></sc-api>

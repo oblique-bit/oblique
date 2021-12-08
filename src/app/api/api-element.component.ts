@@ -2,10 +2,10 @@ import {Component, Input, OnChanges} from '@angular/core';
 import {ObIAPIelement} from './api.model';
 
 @Component({
-	selector: 'ob-api-element',
+	selector: 'sc-api-element',
 	templateUrl: './api-element.component.html'
 })
-export class ObApiElementComponent implements OnChanges {
+export class ApiElementComponent implements OnChanges {
 	@Input() elements: ObIAPIelement[];
 
 	ngOnChanges() {

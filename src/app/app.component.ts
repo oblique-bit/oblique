@@ -7,8 +7,7 @@ import {DynamicNavigationService} from './samples/master-layout/dynamic-navigati
 import {FONTS, THEMES, ThemeService} from './common/theme.service';
 
 @Component({
-	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'app-root',
+	selector: 'sc-root',
 	templateUrl: './app.component.html',
 	styles: [
 		`

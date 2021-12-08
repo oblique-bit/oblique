@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import {ObIFileDescription, ObIUploadEvent} from '@oblique/oblique';
 
 @Component({
-	selector: 'ob-file-upload-sample',
+	selector: 'sc-file-upload-sample',
 	templateUrl: './file-upload-sample.component.html',
 	styleUrls: ['./file-upload-sample.component.scss']
 })
-export class ObFileUploadSampleComponent {
+export class FileUploadSampleComponent {
 	uploadUrl: string;
 	deleteUrl = 'http://localhost:8080/delete';
 	getUrl = 'http://localhost:8080/files';

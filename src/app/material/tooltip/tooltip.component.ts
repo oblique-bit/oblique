@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import {TooltipPosition} from '@angular/material/tooltip';
 
 @Component({
-	selector: 'ob-tooltip',
+	selector: 'sc-tooltip',
 	templateUrl: './tooltip.component.html',
 	styleUrls: ['./tooltip.component.scss']
 })
-export class ObTooltipComponent {
+export class TooltipComponent {
 	message = 'Tooltip information text';
 	positionOptions: TooltipPosition[];
 	position: TooltipPosition;

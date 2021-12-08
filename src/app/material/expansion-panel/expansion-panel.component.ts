@@ -2,10 +2,10 @@ import {Component} from '@angular/core';
 import {MatAccordionDisplayMode, MatAccordionTogglePosition} from '@angular/material/expansion';
 
 @Component({
-	selector: 'ob-expansion-panel',
+	selector: 'sc-expansion-panel',
 	templateUrl: './expansion-panel.component.html'
 })
-export class ObExpansionPanelComponent {
+export class ExpansionPanelComponent {
 	panelOpenState = false;
 	multi = false;
 	actionRowVisible = false;

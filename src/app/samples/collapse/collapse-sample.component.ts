@@ -6,10 +6,10 @@ import {Duration, IconPosition} from './collapse-sample.model';
 import {ThemeService} from '../../common/theme.service';
 
 @Component({
-	selector: 'ob-collapse-sample',
+	selector: 'sc-collapse-sample',
 	templateUrl: './collapse-sample.component.html'
 })
-export class ObCollapseSampleComponent {
+export class CollapseSampleComponent {
 	collapseTitle = 'Collapse title here ';
 	material: Observable<boolean>;
 	duration = new FormControl('fast');

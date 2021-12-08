@@ -2,55 +2,55 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {ObUnsavedChangesGuard} from '@oblique/oblique';
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
-import {ObAlertSampleComponent} from './alert/alert.component';
-import {ObBreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
-import {ObButtonSampleComponent} from './button/button.component';
-import {ObCollapseSampleComponent} from './collapse/collapse-sample.component';
-import {ObColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
-import {ObDatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
-import {ObErrorMessagesSampleComponent} from './error-messages-sample/error-messages-sample.component';
-import {ObExternalLinkComponent} from './external-link/external-link.component';
-import {ObFileUploadSampleComponent} from './file-upload-sample/file-upload-sample.component';
-import {ObFormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
-import {ObFormSampleComponent} from './form/form.component';
-import {ObGlobalEventsSampleComponent} from './global-events/global-events-sample.component';
-import {ObHorizontalFormsSampleComponent} from './horizontal-forms/horizontal-forms.component';
-import {ObHttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
-import {ObInputClearSampleComponent} from './input-clear/input-clear.component';
-import {ObLanguageSampleComponent} from './language/language-sample.component';
-import {ObMasterLayoutSampleComponent} from './master-layout/master-layout-sample.component';
-import {ObMultiTranslateLoaderSampleComponent} from './multi-translate-loader/multi-translate-loader-sample.component';
-import {ObMultiselectSampleComponent} from './multiselect/multiselect-sample.component';
-import {ObNavTreeDetailSampleComponent, ObNavTreeSampleComponent} from './nav-tree/nav-tree-sample.component';
-import {ObNestedFormSampleComponent} from './nested-form/nested-form-sample.component';
-import {ObNotificationSampleComponent} from './notification/notification-sample.component';
-import {ObNumberFormatSampleComponent} from './number-format/number-format-sample.component';
-import {ObPopUpSampleComponent} from './pop-up/pop-up-sample.component';
-import {ObPopoverComponent} from './popover/popover.component';
-import {ObSchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
-import {ObSearchBoxSampleComponent} from './search-box/search-box.component';
-import {ObSelectableSampleComponent} from './selectable/selectable-sample.component';
-import {ObSpinnerSampleComponent} from './spinner-sample/spinner-sample.component';
-import {ObStickySampleComponent} from './sticky/sticky-sample.component';
-import {ObUnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
-import {ObUnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
-import {ObDropdownSampleComponent} from './dropdown/dropdown.component';
+import {AlertSampleComponent} from './alert/alert.component';
+import {BreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
+import {ButtonSampleComponent} from './button/button.component';
+import {CollapseSampleComponent} from './collapse/collapse-sample.component';
+import {ColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
+import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
+import {ErrorMessagesSampleComponent} from './error-messages-sample/error-messages-sample.component';
+import {ExternalLinkComponent} from './external-link/external-link.component';
+import {FileUploadSampleComponent} from './file-upload-sample/file-upload-sample.component';
+import {FormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
+import {FormSampleComponent} from './form/form.component';
+import {GlobalEventsSampleComponent} from './global-events/global-events-sample.component';
+import {HorizontalFormsSampleComponent} from './horizontal-forms/horizontal-forms.component';
+import {HttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
+import {InputClearSampleComponent} from './input-clear/input-clear.component';
+import {LanguageSampleComponent} from './language/language-sample.component';
+import {MasterLayoutSampleComponent} from './master-layout/master-layout-sample.component';
+import {MultiTranslateLoaderSampleComponent} from './multi-translate-loader/multi-translate-loader-sample.component';
+import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
+import {NavTreeDetailSampleComponent, NavTreeSampleComponent} from './nav-tree/nav-tree-sample.component';
+import {NestedFormSampleComponent} from './nested-form/nested-form-sample.component';
+import {NotificationSampleComponent} from './notification/notification-sample.component';
+import {NumberFormatSampleComponent} from './number-format/number-format-sample.component';
+import {PopUpSampleComponent} from './pop-up/pop-up-sample.component';
+import {PopoverComponent} from './popover/popover.component';
+import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
+import {SearchBoxSampleComponent} from './search-box/search-box.component';
+import {SelectableSampleComponent} from './selectable/selectable-sample.component';
+import {SpinnerSampleComponent} from './spinner-sample/spinner-sample.component';
+import {StickySampleComponent} from './sticky/sticky-sample.component';
+import {UnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
+import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
+import {DropdownSampleComponent} from './dropdown/dropdown.component';
 
 const samplesRoutes: Routes = [
-	{path: 'alert', component: ObAlertSampleComponent},
+	{path: 'alert', component: AlertSampleComponent},
 	{
 		path: 'breadcrumb',
-		component: ObBreadcrumbSampleComponent,
+		component: BreadcrumbSampleComponent,
 		data: {breadcrumb: 'Breadcrumb Sample'},
 		children: [
 			{
 				path: 'some-page',
-				component: ObBreadcrumbSampleComponent,
+				component: BreadcrumbSampleComponent,
 				data: {breadcrumb: 'First Level'},
 				children: [
 					{
 						path: 'some-sub-page',
-						component: ObBreadcrumbSampleComponent,
+						component: BreadcrumbSampleComponent,
 						data: {breadcrumb: 'Sub-Page'},
 						children: []
 					}
@@ -58,34 +58,34 @@ const samplesRoutes: Routes = [
 			},
 			{
 				path: 'missing-label',
-				component: ObBreadcrumbSampleComponent
+				component: BreadcrumbSampleComponent
 			},
 			{
 				path: 'i18n-label',
-				component: ObBreadcrumbSampleComponent,
+				component: BreadcrumbSampleComponent,
 				data: {breadcrumb: 'i18n.oblique.header.navigation.title'}
 			},
 			{
 				path: 'with-params/:param',
-				component: ObBreadcrumbSampleComponent
+				component: BreadcrumbSampleComponent
 			},
 			{
 				path: 'with-params-and-label/:param',
-				component: ObBreadcrumbSampleComponent,
+				component: BreadcrumbSampleComponent,
 				data: {breadcrumb: 'i18n.routes.samples.breadcrumb.label-with-params'}
 			},
 			{
 				path: ':param/details',
-				component: ObBreadcrumbSampleComponent,
+				component: BreadcrumbSampleComponent,
 				data: {breadcrumb: ':param / Details'},
 				children: [
 					{
 						path: 'missing-label',
-						component: ObBreadcrumbSampleComponent,
+						component: BreadcrumbSampleComponent,
 						children: [
 							{
 								path: 'missing-label',
-								component: ObBreadcrumbSampleComponent
+								component: BreadcrumbSampleComponent
 							}
 						]
 					}
@@ -93,52 +93,52 @@ const samplesRoutes: Routes = [
 			},
 			{
 				path: ':param',
-				component: ObBreadcrumbSampleComponent
+				component: BreadcrumbSampleComponent
 			}
 		]
 	},
-	{path: 'collapse', component: ObCollapseSampleComponent},
-	{path: 'column-layout', component: ObColumnLayoutSampleComponent},
-	{path: 'datepicker', component: ObDatepickerSampleComponent},
-	{path: 'dropdown', component: ObDropdownSampleComponent},
-	{path: 'error-messages', component: ObErrorMessagesSampleComponent},
-	{path: 'external-link', component: ObExternalLinkComponent},
-	{path: 'file-upload', component: ObFileUploadSampleComponent},
-	{path: 'form-control-state', component: ObFormControlStateSampleComponent},
-	{path: 'global-events', component: ObGlobalEventsSampleComponent},
-	{path: 'horizontal-forms', component: ObHorizontalFormsSampleComponent},
-	{path: 'http-interceptor', component: ObHttpInterceptorSampleComponent},
-	{path: 'input-clear', component: ObInputClearSampleComponent},
-	{path: 'language', component: ObLanguageSampleComponent},
-	{path: 'master-layout', component: ObMasterLayoutSampleComponent},
-	{path: 'multi-translate-loader', component: ObMultiTranslateLoaderSampleComponent},
-	{path: 'multiselect', component: ObMultiselectSampleComponent},
+	{path: 'collapse', component: CollapseSampleComponent},
+	{path: 'column-layout', component: ColumnLayoutSampleComponent},
+	{path: 'datepicker', component: DatepickerSampleComponent},
+	{path: 'dropdown', component: DropdownSampleComponent},
+	{path: 'error-messages', component: ErrorMessagesSampleComponent},
+	{path: 'external-link', component: ExternalLinkComponent},
+	{path: 'file-upload', component: FileUploadSampleComponent},
+	{path: 'form-control-state', component: FormControlStateSampleComponent},
+	{path: 'global-events', component: GlobalEventsSampleComponent},
+	{path: 'horizontal-forms', component: HorizontalFormsSampleComponent},
+	{path: 'http-interceptor', component: HttpInterceptorSampleComponent},
+	{path: 'input-clear', component: InputClearSampleComponent},
+	{path: 'language', component: LanguageSampleComponent},
+	{path: 'master-layout', component: MasterLayoutSampleComponent},
+	{path: 'multi-translate-loader', component: MultiTranslateLoaderSampleComponent},
+	{path: 'multiselect', component: MultiselectSampleComponent},
 	{
 		path: 'nav-tree',
-		component: ObNavTreeSampleComponent,
+		component: NavTreeSampleComponent,
 		resolve: {
 			sample: SampleDataResolver
 		},
 		children: [
-			{path: ':section', component: ObNavTreeDetailSampleComponent},
-			{path: ':section/:subsection', component: ObNavTreeDetailSampleComponent},
-			{path: ':section/:subsection/:subsubsection', component: ObNavTreeDetailSampleComponent}
+			{path: ':section', component: NavTreeDetailSampleComponent},
+			{path: ':section/:subsection', component: NavTreeDetailSampleComponent},
+			{path: ':section/:subsection/:subsubsection', component: NavTreeDetailSampleComponent}
 		]
 	},
-	{path: 'nested-form', component: ObNestedFormSampleComponent},
-	{path: 'notification', component: ObNotificationSampleComponent},
-	{path: 'number-format', component: ObNumberFormatSampleComponent},
-	{path: 'pop-up', component: ObPopUpSampleComponent},
-	{path: 'popover', component: ObPopoverComponent},
-	{path: 'schema-validation', component: ObSchemaValidationSampleComponent},
-	{path: 'search-box', component: ObSearchBoxSampleComponent},
-	{path: 'selectable', component: ObSelectableSampleComponent},
-	{path: 'sticky', component: ObStickySampleComponent},
-	{path: 'spinner', component: ObSpinnerSampleComponent},
-	{path: 'unknown-route-sample', component: ObUnknownRouteSampleComponent},
-	{path: 'unsaved-changes', component: ObUnsavedChangesSampleComponent, canDeactivate: [ObUnsavedChangesGuard]},
-	{path: 'form', component: ObFormSampleComponent},
-	{path: 'button', component: ObButtonSampleComponent}
+	{path: 'nested-form', component: NestedFormSampleComponent},
+	{path: 'notification', component: NotificationSampleComponent},
+	{path: 'number-format', component: NumberFormatSampleComponent},
+	{path: 'pop-up', component: PopUpSampleComponent},
+	{path: 'popover', component: PopoverComponent},
+	{path: 'schema-validation', component: SchemaValidationSampleComponent},
+	{path: 'search-box', component: SearchBoxSampleComponent},
+	{path: 'selectable', component: SelectableSampleComponent},
+	{path: 'sticky', component: StickySampleComponent},
+	{path: 'spinner', component: SpinnerSampleComponent},
+	{path: 'unknown-route-sample', component: UnknownRouteSampleComponent},
+	{path: 'unsaved-changes', component: UnsavedChangesSampleComponent, canDeactivate: [ObUnsavedChangesGuard]},
+	{path: 'form', component: FormSampleComponent},
+	{path: 'button', component: ButtonSampleComponent}
 ];
 
 @NgModule({

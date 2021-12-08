@@ -25,30 +25,30 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 import {SamplesRoutingModule} from './samples-routing.module';
 
-import {ObCollapseSampleComponent} from './collapse/collapse-sample.component';
-import {ObColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
-import {ObDatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
-import {ObErrorMessagesSampleComponent} from './error-messages-sample/error-messages-sample.component';
-import {ObExternalLinkComponent} from './external-link/external-link.component';
-import {ObFormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
-import {ObInputClearSampleComponent} from './input-clear/input-clear.component';
-import {ObMasterLayoutSampleComponent} from './master-layout/master-layout-sample.component';
-import {ObMultiselectSampleComponent} from './multiselect/multiselect-sample.component';
-import {ObNavTreeDetailSampleComponent, ObNavTreeSampleComponent} from './nav-tree/nav-tree-sample.component';
-import {ObNestedFormSampleComponent} from './nested-form/nested-form-sample.component';
-import {ObNestedFormChildSampleComponent} from './nested-form/nested-form-child-sample.component';
-import {ObNestedFormGrandChildSampleComponent} from './nested-form/nested-form-grandchild-sample.component';
-import {ObNotificationSampleComponent} from './notification/notification-sample.component';
-import {ObNumberFormatSampleComponent} from './number-format/number-format-sample.component';
-import {ObSchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
-import {ObUnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
-import {ObUnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
-import {ObUnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
-import {ObGlobalEventsSampleComponent} from './global-events/global-events-sample.component';
-import {ObHttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
-import {ObStickySampleComponent} from './sticky/sticky-sample.component';
-import {ObFormSampleComponent} from './form/form.component';
-import {ObButtonSampleComponent} from './button/button.component';
+import {CollapseSampleComponent} from './collapse/collapse-sample.component';
+import {ColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
+import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
+import {ErrorMessagesSampleComponent} from './error-messages-sample/error-messages-sample.component';
+import {ExternalLinkComponent} from './external-link/external-link.component';
+import {FormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
+import {InputClearSampleComponent} from './input-clear/input-clear.component';
+import {MasterLayoutSampleComponent} from './master-layout/master-layout-sample.component';
+import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
+import {NavTreeDetailSampleComponent, NavTreeSampleComponent} from './nav-tree/nav-tree-sample.component';
+import {NestedFormSampleComponent} from './nested-form/nested-form-sample.component';
+import {NestedFormChildSampleComponent} from './nested-form/nested-form-child-sample.component';
+import {NestedFormGrandChildSampleComponent} from './nested-form/nested-form-grandchild-sample.component';
+import {NotificationSampleComponent} from './notification/notification-sample.component';
+import {NumberFormatSampleComponent} from './number-format/number-format-sample.component';
+import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
+import {UnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
+import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
+import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
+import {GlobalEventsSampleComponent} from './global-events/global-events-sample.component';
+import {HttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
+import {StickySampleComponent} from './sticky/sticky-sample.component';
+import {FormSampleComponent} from './form/form.component';
+import {ButtonSampleComponent} from './button/button.component';
 import {
 	ObAlertModule,
 	ObBreadcrumbModule,
@@ -79,21 +79,21 @@ import {
 	ObUnsavedChangesModule,
 	ObUnsavedChangesTabsModule
 } from '@oblique/oblique';
-import {ObPopUpSampleComponent} from './pop-up/pop-up-sample.component';
-import {ObNestedFormChildTDSampleComponent} from './nested-form/nested-form-child-td-sample.component';
-import {ObNestedFormGrandChildTDSampleComponent} from './nested-form/nested-form-grandchild-td-sample.component';
-import {ObMultiTranslateLoaderSampleComponent} from './multi-translate-loader/multi-translate-loader-sample.component';
-import {ObSelectableSampleComponent} from './selectable/selectable-sample.component';
-import {ObSpinnerSampleComponent} from './spinner-sample/spinner-sample.component';
-import {ObLanguageSampleComponent} from './language/language-sample.component';
-import {ObSearchBoxSampleComponent} from './search-box/search-box.component';
-import {ObPopoverComponent} from './popover/popover.component';
-import {ObAlertSampleComponent} from './alert/alert.component';
-import {ObHorizontalFormsSampleComponent} from './horizontal-forms/horizontal-forms.component';
-import {ObBreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
-import {ObFileUploadSampleComponent} from './file-upload-sample/file-upload-sample.component';
+import {PopUpSampleComponent} from './pop-up/pop-up-sample.component';
+import {NestedFormChildTDSampleComponent} from './nested-form/nested-form-child-td-sample.component';
+import {NestedFormGrandChildTDSampleComponent} from './nested-form/nested-form-grandchild-td-sample.component';
+import {MultiTranslateLoaderSampleComponent} from './multi-translate-loader/multi-translate-loader-sample.component';
+import {SelectableSampleComponent} from './selectable/selectable-sample.component';
+import {SpinnerSampleComponent} from './spinner-sample/spinner-sample.component';
+import {LanguageSampleComponent} from './language/language-sample.component';
+import {SearchBoxSampleComponent} from './search-box/search-box.component';
+import {PopoverComponent} from './popover/popover.component';
+import {AlertSampleComponent} from './alert/alert.component';
+import {HorizontalFormsSampleComponent} from './horizontal-forms/horizontal-forms.component';
+import {BreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
+import {FileUploadSampleComponent} from './file-upload-sample/file-upload-sample.component';
 import {SharedModule} from '../common/shared.module';
-import {ObDropdownSampleComponent} from './dropdown/dropdown.component';
+import {DropdownSampleComponent} from './dropdown/dropdown.component';
 
 @NgModule({
 	imports: [
@@ -152,45 +152,45 @@ import {ObDropdownSampleComponent} from './dropdown/dropdown.component';
 		SharedModule
 	],
 	declarations: [
-		ObAlertSampleComponent,
-		ObBreadcrumbSampleComponent,
-		ObButtonSampleComponent,
-		ObCollapseSampleComponent,
-		ObColumnLayoutSampleComponent,
-		ObDatepickerSampleComponent,
-		ObDropdownSampleComponent,
-		ObErrorMessagesSampleComponent,
-		ObFormSampleComponent,
-		ObFormControlStateSampleComponent,
-		ObGlobalEventsSampleComponent,
-		ObHorizontalFormsSampleComponent,
-		ObHttpInterceptorSampleComponent,
-		ObInputClearSampleComponent,
-		ObLanguageSampleComponent,
-		ObMasterLayoutSampleComponent,
-		ObMultiselectSampleComponent,
-		ObNavTreeSampleComponent,
-		ObNavTreeDetailSampleComponent,
-		ObNestedFormSampleComponent,
-		ObNestedFormChildSampleComponent,
-		ObNestedFormChildTDSampleComponent,
-		ObNestedFormGrandChildSampleComponent,
-		ObNestedFormGrandChildTDSampleComponent,
-		ObNotificationSampleComponent,
-		ObNumberFormatSampleComponent,
-		ObSchemaValidationSampleComponent,
-		ObSelectableSampleComponent,
-		ObStickySampleComponent,
-		ObUnknownRouteSampleComponent,
-		ObUnsavedChangesSampleComponent,
-		ObUnsavedChangesSampleModalComponent,
-		ObPopUpSampleComponent,
-		ObPopoverComponent,
-		ObMultiTranslateLoaderSampleComponent,
-		ObSpinnerSampleComponent,
-		ObSearchBoxSampleComponent,
-		ObExternalLinkComponent,
-		ObFileUploadSampleComponent
+		AlertSampleComponent,
+		BreadcrumbSampleComponent,
+		ButtonSampleComponent,
+		CollapseSampleComponent,
+		ColumnLayoutSampleComponent,
+		DatepickerSampleComponent,
+		DropdownSampleComponent,
+		ErrorMessagesSampleComponent,
+		FormSampleComponent,
+		FormControlStateSampleComponent,
+		GlobalEventsSampleComponent,
+		HorizontalFormsSampleComponent,
+		HttpInterceptorSampleComponent,
+		InputClearSampleComponent,
+		LanguageSampleComponent,
+		MasterLayoutSampleComponent,
+		MultiselectSampleComponent,
+		NavTreeSampleComponent,
+		NavTreeDetailSampleComponent,
+		NestedFormSampleComponent,
+		NestedFormChildSampleComponent,
+		NestedFormChildTDSampleComponent,
+		NestedFormGrandChildSampleComponent,
+		NestedFormGrandChildTDSampleComponent,
+		NotificationSampleComponent,
+		NumberFormatSampleComponent,
+		SchemaValidationSampleComponent,
+		SelectableSampleComponent,
+		StickySampleComponent,
+		UnknownRouteSampleComponent,
+		UnsavedChangesSampleComponent,
+		UnsavedChangesSampleModalComponent,
+		PopUpSampleComponent,
+		PopoverComponent,
+		MultiTranslateLoaderSampleComponent,
+		SpinnerSampleComponent,
+		SearchBoxSampleComponent,
+		ExternalLinkComponent,
+		FileUploadSampleComponent
 	],
 	exports: [RouterModule],
 	providers: [SampleDataResolver]

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-	selector: 'ob-alert',
+	selector: 'sc-alert',
 	templateUrl: './alert.component.html'
 })
-export class ObAlertComponent {}
+export class AlertComponent {}

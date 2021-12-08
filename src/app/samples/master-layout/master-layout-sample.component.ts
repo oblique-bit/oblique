@@ -3,12 +3,11 @@ import {ObEScrollMode, ObMasterLayoutService} from '@oblique/oblique';
 import {DynamicNavigationService} from './dynamic-navigation.service';
 
 @Component({
-	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'ob-master-layout-sample',
+	selector: 'sc-master-layout-sample',
 	templateUrl: './master-layout-sample.component.html',
 	styleUrls: ['./master-layout-sample.component.scss']
 })
-export class ObMasterLayoutSampleComponent {
+export class MasterLayoutSampleComponent {
 	coverLayout = false;
 	scrollMode = ObEScrollMode;
 

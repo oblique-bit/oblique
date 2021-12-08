@@ -6,10 +6,10 @@ interface IconPosition {
 }
 
 @Component({
-	selector: 'ob-external-link',
+	selector: 'sc-external-link',
 	templateUrl: './external-link.component.html'
 })
-export class ObExternalLinkComponent {
+export class ExternalLinkComponent {
 	iconPosition = 'left';
 
 	iconPositions: IconPosition[] = [

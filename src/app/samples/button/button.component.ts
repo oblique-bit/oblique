@@ -5,11 +5,11 @@ import {map} from 'rxjs/operators';
 import {ThemeService} from '../../common/theme.service';
 
 @Component({
-	selector: 'ob-button-sample',
+	selector: 'sc-button-sample',
 	templateUrl: './button.component.html',
 	styleUrls: ['./button.component.scss']
 })
-export class ObButtonSampleComponent {
+export class ButtonSampleComponent {
 	material: Observable<boolean>;
 	obButton: 'primary' | 'secondary' | 'tertiary' = 'primary';
 

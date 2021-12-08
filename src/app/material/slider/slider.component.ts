@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import {ThemePalette} from '@angular/material/core';
 
 @Component({
-	selector: 'ob-slider',
+	selector: 'sc-slider',
 	templateUrl: './slider.component.html',
 	styleUrls: ['./slider.component.scss']
 })
-export class ObSliderComponent {
+export class SliderComponent {
 	value = 20;
 	min = 0;
 	max = 100;

@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'app-home',
+	selector: 'sc-home',
 	templateUrl: './home.page.html',
 	styleUrls: ['./home.page.scss']
 })

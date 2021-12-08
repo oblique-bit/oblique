@@ -1,9 +1,9 @@
 <h2 class="page-header">Nested form</h2>
-<ob-description component="nested-form"></ob-description>
+<sc-description component="nested-form"></sc-description>
 <form [formGroup]="parentForm" (submit)="validateForm(parentForm.valid)" (reset)="resetForm()" obParentFormDirective>
 	<h3>Reactive form</h3>
 	<ob-nested-form formControlName="child" [nestedForm]="child.nestedForm">
-		<ob-nested-form-child-sample #child></ob-nested-form-child-sample>
+		<sc-nested-form-child-sample #child></sc-nested-form-child-sample>
 	</ob-nested-form>
 	<ng-container *ngIf="material | async; else bootstrap">
 		<mat-form-field obErrorMessages>
@@ -36,7 +36,7 @@
 <form #ngForm (submit)="validateForm(ngForm.valid)" obParentFormDirective>
 	<h3>Template driven form</h3>
 	<ob-nested-form [(ngModel)]="model.child" name="child" [nestedForm]="childTD.ngForm.control">
-		<ob-nested-form-child-td-sample #childTD></ob-nested-form-child-td-sample>
+		<sc-nested-form-child-td-sample #childTD></sc-nested-form-child-td-sample>
 	</ob-nested-form>
 	<ng-container *ngIf="material | async; else bootstrapTD">
 		<mat-form-field obErrorMessages>
@@ -65,4 +65,4 @@
 </form>
 <h4>Form value</h4>
 <pre>{{ model | json }}</pre>
-<ob-api component="nested-form"></ob-api>
+<sc-api component="nested-form"></sc-api>

@@ -1,13 +1,12 @@
 import {ChangeDetectionStrategy, Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup, NgModelGroup, Validators} from '@angular/forms';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {ObUnsavedChangesSampleModalComponent} from './unsaved-changes-sample-modal.component';
+import {UnsavedChangesSampleModalComponent} from './unsaved-changes-sample-modal.component';
 import {ObUnsavedChangesService} from '@oblique/oblique';
 
 @Component({
-	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'ob-unsaved-changes',
-	templateUrl: 'unsaved-changes-sample.component.html',
+	selector: 'sc-unsaved-changes',
+	templateUrl: './unsaved-changes-sample.component.html',
 	styles: [
 		`
 			.unsaved-changes .form-horizontal label {
@@ -25,7 +24,7 @@ import {ObUnsavedChangesService} from '@oblique/oblique';
 	encapsulation: ViewEncapsulation.None,
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ObUnsavedChangesSampleComponent implements OnInit {
+export class UnsavedChangesSampleComponent implements OnInit {
 	standAloneReactive: FormGroup;
 	nestedReactive: FormGroup;
 	tabForm8Reactive: FormGroup;
@@ -38,9 +37,9 @@ export class ObUnsavedChangesSampleComponent implements OnInit {
 		tabForm1: {number: null, text: null, integer: null, date: null}
 	};
 
-	@ViewChild('form1') form1 = <NgModelGroup>{};
-	@ViewChild('form3') form3 = <NgModelGroup>{};
-	@ViewChild('form7') form7 = <NgModelGroup>{};
+	@ViewChild('form1') form1 = {} as NgModelGroup;
+	@ViewChild('form3') form3 = {} as NgModelGroup;
+	@ViewChild('form7') form7 = {} as NgModelGroup;
 
 	constructor(
 		private readonly modalService: NgbModal,
@@ -60,7 +59,7 @@ export class ObUnsavedChangesSampleComponent implements OnInit {
 	}
 
 	modal() {
-		this.modalService.open(ObUnsavedChangesSampleModalComponent, {
+		this.modalService.open(UnsavedChangesSampleModalComponent, {
 			beforeDismiss: () => this.unsavedChangesService.ignoreChanges(['template'])
 		});
 	}

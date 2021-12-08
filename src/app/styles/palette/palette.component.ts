@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
-import {ObIColors} from './palette.model';
+import {Colors} from './palette.model';
 
 @Component({
-	selector: 'ob-palette',
+	selector: 'sc-palette',
 	templateUrl: './palette.component.html',
 	styleUrls: ['./palette.component.scss']
 })
-export class ObPaletteComponent {
-	colorGroups: ObIColors[] = [
+export class PaletteComponent {
+	colorGroups: Colors[] = [
 		{
 			name: 'CI / CD',
 			colors: [

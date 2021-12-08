@@ -30,30 +30,30 @@
 	</dl>
 	<ng-container *ngIf="component.variables">
 		<h5>Variables</h5>
-		<ob-api-element [elements]="component.variables"></ob-api-element>
+		<sc-api-element [elements]="component.variables"></sc-api-element>
 	</ng-container>
 	<ng-container *ngIf="component.inputs">
 		<h5>Inputs</h5>
-		<ob-api-element [elements]="component.inputs"></ob-api-element>
+		<sc-api-element [elements]="component.inputs"></sc-api-element>
 	</ng-container>
 	<ng-container *ngIf="component.outputs">
 		<h5>Outputs</h5>
-		<ob-api-element [elements]="component.outputs"></ob-api-element>
+		<sc-api-element [elements]="component.outputs"></sc-api-element>
 	</ng-container>
 	<ng-container *ngIf="component.methods">
 		<h5>Methods</h5>
-		<ob-api-element [elements]="component.methods"></ob-api-element>
+		<sc-api-element [elements]="component.methods"></sc-api-element>
 	</ng-container>
 	<ng-container *ngIf="component.projection">
 		<h5>Content projection</h5>
-		<ob-api-element [elements]="component.projection"></ob-api-element>
+		<sc-api-element [elements]="component.projection"></sc-api-element>
 	</ng-container>
 	<ng-container *ngIf="component.internationalization">
 		<h5>Internationalization</h5>
-		<ob-api-element [elements]="component.internationalization"></ob-api-element>
+		<sc-api-element [elements]="component.internationalization"></sc-api-element>
 	</ng-container>
 	<ng-container *ngIf="component.tokens">
 		<h5>Injection tokens</h5>
-		<ob-api-element [elements]="component.tokens"></ob-api-element>
+		<sc-api-element [elements]="component.tokens"></sc-api-element>
 	</ng-container>
 </ng-container>

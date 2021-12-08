@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-	selector: 'ob-list-group',
+	selector: 'sc-list-group',
 	templateUrl: './list-group.component.html'
 })
-export class ObListGroupComponent {}
+export class ListGroupComponent {}
