@@ -3,15 +3,15 @@ import {MatIconRegistry} from '@angular/material/icon';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject} from 'rxjs';
 import {first, takeUntil, tap} from 'rxjs/operators';
-import {WINDOW} from '../utilities';
 import {EXTERNAL_LINK, ObEExternalLinkIcon} from './external-link.model';
 import {ObUseObliqueIcons} from '../icon/icon.model';
 
 @Directive({
-	selector: 'a[href]'
+	selector: 'a[href]',
+	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
+	host: {class: 'ob-external-link'}
 })
 export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
-	@HostBinding('class.ob-external-link') isExternal = false;
 	@Input() @HostBinding('attr.rel') rel: string;
 	@Input() @HostBinding('attr.target') target: string;
 	@Input() @HostBinding('attr.href') href: string;
@@ -23,7 +23,6 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	private hasIcon = false;
 
 	constructor(
-		@Inject(WINDOW) private readonly window,
 		@Optional() @Inject(EXTERNAL_LINK) private readonly config,
 		@Optional() @Inject(ObUseObliqueIcons) private readonly useObliqueIcons: boolean,
 		private readonly renderer: Renderer2,
@@ -34,6 +33,10 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 		this.host = elRef.nativeElement;
 		this.icon = this.icon || this.config?.icon || 'left';
 		translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.addAriaLabel());
+	}
+
+	private static initializeAttribute(currentValue: string, defaultValue: string): string {
+		return currentValue === '' ? undefined : currentValue ?? defaultValue;
 	}
 
 	ngOnInit(): void {
@@ -52,14 +55,11 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	}
 
 	ngOnChanges(): void {
-		this.isExternal = this.isLinkExternal();
 		this.removeIcon();
 		this.addAriaLabel();
-		if (this.isExternal) {
-			this.rel = ObExternalLinkDirective.initializeAttribute(this.rel, this.config?.rel || 'noopener noreferrer');
-			this.target = ObExternalLinkDirective.initializeAttribute(this.target, this.config?.target || '_blank');
-			this.addIcon();
-		}
+		this.rel = ObExternalLinkDirective.initializeAttribute(this.rel, this.config?.rel || 'noopener noreferrer');
+		this.target = ObExternalLinkDirective.initializeAttribute(this.target, this.config?.target || '_blank');
+		this.addIcon();
 	}
 
 	ngOnDestroy(): void {
@@ -67,17 +67,8 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 		this.unsubscribe.complete();
 	}
 
-	private static initializeAttribute(currentValue: string, defaultValue: string): string {
-		return currentValue === '' ? undefined : currentValue ?? defaultValue;
-	}
-
 	private addAriaLabel(): void {
-		const label = this.isExternal ? `${this.host.text} - ${this.translate.instant('i18n.oblique.external')}` : undefined;
-		this.renderer.setAttribute(this.host, 'aria-label', label);
-	}
-
-	private isLinkExternal(): boolean {
-		return this.href.indexOf(this.window.location.hostname) !== 0;
+		this.renderer.setAttribute(this.host, 'aria-label', `${this.host.text} - ${this.translate.instant('i18n.oblique.external')}`);
 	}
 
 	private addIcon(): void {
