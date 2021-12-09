@@ -17,7 +17,7 @@ class TestInternalComponent {}
 })
 class TestComponent {}
 
-describe('ExternalLink', () => {
+describe('ObExternalLink', () => {
 	let directive: ObExternalLinkDirective;
 	let fixture: ComponentFixture<TestComponent | TestInternalComponent>;
 	let element: HTMLElement;
@@ -67,13 +67,13 @@ describe('ExternalLink', () => {
 		});
 
 		describe('rel attribute', () => {
-			it('should be nooper norefer when undefined', () => {
+			it('should be noopener noreferrer when undefined', () => {
 				directive.rel = undefined;
 				directive.ngOnChanges();
 				fixture.detectChanges();
 				expect(element.getAttribute('rel')).toBe('noopener noreferrer');
 			});
-			it('should be nooper norefer when null', () => {
+			it('should be noopener noreferrer when null', () => {
 				directive.rel = null;
 				directive.ngOnChanges();
 				fixture.detectChanges();
@@ -189,7 +189,7 @@ describe('ExternalLink', () => {
 			});
 
 			describe('remove', () => {
-				it('should', () => {
+				it('should not have children', () => {
 					directive.icon = 'right';
 					directive.ngOnChanges();
 					directive.icon = 'none';
