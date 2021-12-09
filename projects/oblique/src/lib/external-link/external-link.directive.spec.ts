@@ -21,8 +21,8 @@ describe('ExternalLink', () => {
 	let directive: ObExternalLinkDirective;
 	let fixture: ComponentFixture<TestComponent | TestInternalComponent>;
 	let element: HTMLElement;
+	let translate: TranslateService;
 	const lang = new Subject<void>();
-	const mock = jest.fn();
 
 	describe('With default config', () => {
 		beforeEach(
@@ -33,7 +33,7 @@ describe('ExternalLink', () => {
 						{provide: WINDOW, useValue: window},
 						{
 							provide: TranslateService,
-							useValue: {onLangChange: lang, instant: mock.mockReturnValue('Opens in new tab')}
+							useValue: {onLangChange: lang, instant: jest.fn().mockReturnValue('Opens in new tab')}
 						}
 					]
 				});
@@ -46,6 +46,7 @@ describe('ExternalLink', () => {
 			const debugElement = fixture.debugElement.query(By.directive(ObExternalLinkDirective));
 			directive = debugElement.injector.get(ObExternalLinkDirective);
 			element = debugElement.nativeElement;
+			translate = TestBed.inject(TranslateService);
 		});
 
 		it('should have ob-external-link class', () => {
@@ -62,7 +63,7 @@ describe('ExternalLink', () => {
 
 		it('should translate the aria-label on lang change', () => {
 			lang.next();
-			expect(mock).toHaveBeenCalled();
+			expect(translate.instant).toHaveBeenCalled();
 		});
 
 		describe('rel attribute', () => {
@@ -209,7 +210,7 @@ describe('ExternalLink', () => {
 						{provide: WINDOW, useValue: window},
 						{
 							provide: TranslateService,
-							useValue: {onLangChange: lang, instant: mock.mockReturnValue('Opens in new tab')}
+							useValue: {onLangChange: lang, instant: jest.fn().mockReturnValue('Opens in new tab')}
 						},
 						{provide: EXTERNAL_LINK, useValue: {rel: 'custom rel', target: 'custom target', icon: 'left'}}
 					]
@@ -218,7 +219,6 @@ describe('ExternalLink', () => {
 		);
 
 		beforeEach(() => {
-			mock.mockReset();
 			fixture = TestBed.createComponent(TestComponent);
 			fixture.detectChanges();
 			element = fixture.debugElement.query(By.directive(ObExternalLinkDirective)).nativeElement;
@@ -246,7 +246,7 @@ describe('ExternalLink', () => {
 						{provide: WINDOW, useValue: window},
 						{
 							provide: TranslateService,
-							useValue: {onLangChange: lang, instant: mock.mockReturnValue('Opens in new tab')}
+							useValue: {onLangChange: lang, instant: jest.fn().mockReturnValue('Opens in new tab')}
 						}
 					]
 				});
@@ -254,12 +254,12 @@ describe('ExternalLink', () => {
 		);
 
 		beforeEach(() => {
-			mock.mockReset();
 			fixture = TestBed.createComponent(TestInternalComponent);
 			fixture.detectChanges();
 			const debugElement = fixture.debugElement.query(By.css('a'));
 			directive = debugElement.injector.get(ObExternalLinkDirective, null);
 			element = debugElement.nativeElement;
+			translate = TestBed.inject(TranslateService);
 		});
 
 		it('should not have ob-external-link class', () => {
@@ -275,7 +275,7 @@ describe('ExternalLink', () => {
 		});
 
 		it('should not translate', () => {
-			expect(mock).not.toHaveBeenCalled();
+			expect(translate.instant).not.toHaveBeenCalled();
 		});
 
 		it('should not have an aria-label attribute', () => {
