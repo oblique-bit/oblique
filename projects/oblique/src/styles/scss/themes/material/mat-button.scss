@@ -2,7 +2,7 @@
 @import "./mixins/mat-button";
 
 .mat-button-base {
-	&.ob-button {
+	&.ob-button:not(.ob-button-card) {
 		line-height: 34px;	// material design height
 		border: 1px solid transparent;
 

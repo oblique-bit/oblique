@@ -109,3 +109,19 @@
 	@include ob-tab-outline('.mat-card');
 }
 
+.ob-button-card {
+	&,
+	&.mat-button {
+		padding: 0;
+		text-align: unset;
+		white-space: unset;
+		border: 0 none;
+		background-color: unset;
+		box-shadow: none;
+
+		&:not(.mat-button-disabled) {
+			@include ob-tab-outline('.mat-card');
+		}
+	}
+}
+
