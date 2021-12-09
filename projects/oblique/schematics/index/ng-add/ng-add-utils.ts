@@ -31,14 +31,8 @@ const versions: {[key: string]: string | versionFunc} = {
 	'@types/jest': '^27.0.0',
 	'@angular-builders/jest': '^13.0.0',
 	'jest-sonar-reporter': '2.0.0',
-	'@angular-eslint/builder': '^1.0.0',
-	'@angular-eslint/eslint-plugin': '^1.0.0',
-	'@typescript-eslint/eslint-plugin': '^4.0.0',
-	'@typescript-eslint/parser': '^4.0.0',
-	// eslint-disable-next-line prettier/prettier
-	eslint: '^7.0.0',
-	'eslint-config-prettier': '^7.0.0',
-	'eslint-plugin-prettier': '^3.0.0',
+	'eslint-config-prettier': '^8.0.0',
+	'eslint-plugin-prettier': '^4.0.0',
 	// eslint-disable-next-line prettier/prettier
 	prettier: '^2.0.0',
 	// eslint-disable-next-line prettier/prettier

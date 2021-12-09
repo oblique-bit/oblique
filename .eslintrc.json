@@ -40,7 +40,9 @@
             ]
           }
         ],
+        "@angular-eslint/no-host-metadata-property": ["error", { "allowStatic": true }],
         "@angular-eslint/no-pipe-impure": "error",
+        "@angular-eslint/prefer-output-readonly": "error",
         "@angular-eslint/relative-url-prefix": "error",
         "@angular-eslint/use-component-selector": "error",
         "@typescript-eslint/array-type": "error",
@@ -61,6 +63,12 @@
         "dot-notation": "error",
         "eqeqeq": ["error", "smart"],
         "guard-for-in": "error",
+        "max-lines": ["error", {
+          "max": 300
+        }],
+        "max-lines-per-function": ["error", {
+          "max": 35
+        }],
         "no-bitwise": "error",
         "no-caller": "error",
         "no-console": [
@@ -81,7 +89,9 @@
         "no-undef-init": "error",
         "no-unused-expressions": "error",
         "no-useless-concat": "error",
+        "no-useless-escape": "error",
         "object-shorthand": "error",
+        "prefer-exponentiation-operator": "error",
         "prefer-object-spread": "error",
         "prefer-regex-literals": "error",
         "prefer-template": "error",
@@ -90,13 +100,7 @@
           "ignoreDeclarationSort": true
         }],
         "spaced-comment": "error",
-
-        "prefer-exponentiation-operator": "off",
-        "@angular-eslint/prefer-output-readonly": "off",
-        "no-useless-escape": "off",
-
         "id-length": "off",
-        "max-lines": "off",
         "no-param-reassign": "off",
         "prefer-rest-params": "off",
         "no-underscore-dangle": "off",
@@ -123,17 +127,32 @@
       }
     },
     {
-      "files": ["polyfills.ts"],
-      "rules": {
-        "spaced-comment": "off"
-      }
-    },
-    {
       "files": ["*.spec.ts"],
       "rules": {
         "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/no-floating-promises": "off",
-        "@angular-eslint/use-component-selector": "off"
+        "@angular-eslint/use-component-selector": "off",
+        "max-lines-per-function": "off",
+        "max-lines": "off"
+      }
+    },
+    {
+      "files": ["schematics/**/*.ts"],
+      "rules": {
+        "max-lines": "off",
+        "max-lines-per-function": "off"
+      }
+    },
+    {
+      "files": ["*.decorator.ts"],
+      "rules": {
+        "max-lines-per-function": "off"
+      }
+    },
+    {
+      "files": ["polyfills.ts"],
+      "rules": {
+        "spaced-comment": "off"
       }
     },
     {
