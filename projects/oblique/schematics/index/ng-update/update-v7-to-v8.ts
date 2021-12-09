@@ -280,7 +280,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 							.replace(/(?:THEMES|FONTS),?(?!\.)\s*/g, '') // remove imports of THEMES and FONTS
 							.replace(/[\w ]*\s*:\s*ObThemeService,?\s*/, '') // remove service injection in constructor
 							.replace(/ObThemeService,?\s*/, '') // remove service import
-							.replace(new RegExp(`(?:this\.)?${service}\\.set(?:Theme|Font)\\(.*\\);\s*`, 'g'), '') // remove call to setTheme / setFont
+							.replace(new RegExp(`(?:this\\.)?${service}\\.set(?:Theme|Font)\\(.*\\);\\s*`, 'g'), '') // remove call to setTheme / setFont
 							.replace(/,(\s*(?:\)|}))/g, '$1') // remove eventual trailing commas im imports
 							.replace(/import\s*{\s*}\s*from\s*['"]@oblique\/oblique['"]\s*;\s*/g, '') // remove empty imports
 							.replace(/constructor\s*\(\s*\)\s*{\s*}/g, '') // remove empty imports
@@ -390,7 +390,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 
 	private migrateObMasterLayoutServiceIsFixed(fileContent: string, service: string): string {
 		return fileContent.replace(
-			new RegExp(`^(\\s*(?:this\.)?${service})\.layout\.isFixed\\s+=\\s+(\\w*);$`, 'm'),
+			new RegExp(`^(\\s*(?:this\\.)?${service})\\.layout\\.isFixed\\s+=\\s+(\\w*);$`, 'm'),
 			`$1.header.isSticky = $2;\n$1.footer.isSticky = $2;`
 		);
 	}
@@ -406,7 +406,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 				masterLayoutService = 'masterLayout';
 			}
 			return fileContent.replace(
-				new RegExp(`^(\\s*this\.)?${service}\.isFixed\\s*=\\s*(\\w*)\\s*;$`, 'm'),
+				new RegExp(`^(\\s*this\\.)?${service}\\.isFixed\\s*=\\s*(\\w*)\\s*;$`, 'm'),
 				`$1${masterLayoutService}.header.isSticky = $2;\n$1${masterLayoutService}.footer.isSticky = $2;`
 			);
 		}
