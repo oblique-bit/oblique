@@ -57,35 +57,44 @@
 			position: absolute;
 			top: $ob-spacing-sm;
 			right: $ob-spacing-sm;
-			line-height: 1;
-			font-family: $ob-icon-font-family;
-			font-weight: 800;
-			color: transparent;
-			border: 3px solid $ob-primary;
+			width: $ob-spacing-lg;
+			height: $ob-spacing-lg;
+			background-color: $ob-white;
+			border: 3px solid $ob-default;
 		}
 
 		&[role="checkbox"] {
 			&::before {
-				content: '\f00c';
-				font-size: 13px;
-				padding: 2px;
+				content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHRpdGxlPkNoZWNrbWFyazwvdGl0bGU+PHBvbHlnb24gcG9pbnRzPSIyMC40NyA1LjM5MSA4Ljg0MiAxNy4wMTkgMy41MyAxMS43MDYgMi40NyAxMi43NjcgOC44NDIgMTkuMTQgMjEuNTMgNi40NTEgMjAuNDcgNS4zOTEiIGZpbGw9IiNmZmYiLz48L3N2Zz4=');
+				border-radius: $ob-border-radius-base;
 			}
+
 			&.ob-selected::before {
-				color: $ob-white;
 				background-color: $ob-primary;
+				border-color: $ob-primary;
+				border-width: 1px;
 			}
 		}
 
 		&[role="radio"] {
 			&::before {
-				content: '\f111';
-				font-size: 11px;
-				padding: 3px;
+				content: '';
 				border-radius: 50%;
 			}
 
 			&.ob-selected::before {
-				color: $ob-primary;
+				border-color: $ob-primary;
+			}
+
+			&.ob-selected::after {
+				content: '';
+				position: absolute;
+				top: 14px;
+				right: 14px;
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+				background-color: $ob-primary;
 			}
 		}
 	}
