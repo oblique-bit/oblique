@@ -2,6 +2,8 @@
 @import "../../core/mixins/typography";
 
 .mat-card {
+	border: 1px solid $ob-default;
+
 	&:not([class*='mat-elevation-z']) {
 		box-shadow: none;
 	}
