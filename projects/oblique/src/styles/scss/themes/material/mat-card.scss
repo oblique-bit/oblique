@@ -28,7 +28,7 @@
 
 	.mat-card-avatar {
 		margin-top: $ob-spacing-xs;
-		border-radius: 4px;
+		border-radius: $ob-border-radius-base;
 	}
 
 	.mat-card-header-text:first-child {
