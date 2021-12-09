@@ -371,7 +371,6 @@ export class UpdateV7toV8 implements ObIMigrations {
 
 	private migrateMasterLayoutConfig(fileContent: string): string {
 		const service = /(?<service>\w+)\s*:\s*ObMasterLayoutConfig/.exec(fileContent)?.groups?.service;
-		return !service ? fileContent : fileContent.replace(new RegExp(`^\\s*${service}\.header\\.isAnimated\\s*=\\s*\\w*\\s*;$`, 'm'), '');
 		return !service
 			? fileContent
 			: fileContent
