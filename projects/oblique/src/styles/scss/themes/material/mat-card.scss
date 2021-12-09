@@ -1,5 +1,6 @@
 @import "../../core/variables";
 @import "../../core/mixins/typography";
+@import "../../core/mixins/tab-outline";
 
 .mat-card {
 	border: 1px solid $ob-default;
@@ -52,6 +53,8 @@
 		&.ob-selected {
 			background-color: $ob-light;
 		}
+
+		@include ob-tab-outline();
 
 		&::before {
 			position: absolute;
