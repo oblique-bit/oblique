@@ -102,3 +102,10 @@
 		}
 	}
 }
+
+.ob-link-card {
+	text-decoration: none;
+
+	@include ob-tab-outline('.mat-card');
+}
+
