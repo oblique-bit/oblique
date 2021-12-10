@@ -10,6 +10,7 @@ class AdaptPackageJson {
 		const filePath = AdaptPackageJson.path.join('dist', 'oblique', 'package.json');
 		let distPackage = AdaptPackageJson.getDistPackage(filePath);
 		let adaptedDistPackage = AdaptPackageJson.removeExports(distPackage);
+		adaptedDistPackage = AdaptPackageJson.addProperties(adaptedDistPackage);
 
 		AdaptPackageJson.fs.writeFileSync(filePath, JSON.stringify(adaptedDistPackage, null, 2));
 	}
@@ -20,6 +21,15 @@ class AdaptPackageJson {
 
 	private static removeExports(distPackage: Json): Json {
 		delete distPackage.exports;
+		return distPackage;
+	}
+
+	private static addProperties(distPackage: Json): Json {
+		const rootPackage = JSON.parse(AdaptPackageJson.fs.readFileSync('package.json'));
+		['version', 'description', 'keywords', 'author', 'contributors', 'homepage', 'repository', 'license', 'bugs', 'publishConfig'].forEach(
+			field => (distPackage[field] = rootPackage[field])
+		);
+
 		return distPackage;
 	}
 }

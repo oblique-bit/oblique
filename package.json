@@ -120,7 +120,6 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.1",
     "gulp": "^4.0.0",
-    "gulp-file": "^0.4.0",
     "gulp-git": "^2.10.0",
     "gulp-header": "^2.0.9",
     "gulp-replace": "^1.1.3",
