@@ -45,7 +45,7 @@
     "predist": "npm run gulp pre-dist",
     "dist": "npm run build -- oblique && npm run schematics",
     "distiOS": "npm run gulp pre-dist && npm run build -- oblique && npm run distiOS --prefix projects/oblique/schematics && npm run minify && npm run gulp -- dist",
-    "postdist": "npm run minify && npm run gulp -- dist && npm run findAndReplace",
+    "postdist": "npm run minify && npm run gulp -- dist && ts-node scripts/post-dist.ts",
     "minify": "uglifyjs --compress --mangle --output dist/oblique/ob-features.js -- projects/oblique/src/ob-features.js",
     "test": "ng test oblique --configuration production",
     "lint": "ng lint oblique && ng lint oblique-showcase",
@@ -62,8 +62,7 @@
     "rc": "npm run release -- RC",
     "commit": "npm run gulp -- publish",
     "postinstall": "node scripts/sanitize-package-lock.js",
-    "gulp": "./node_modules/.bin/gulp",
-    "findAndReplace": "ts-node scripts/find-and-replace.ts"
+    "gulp": "./node_modules/.bin/gulp"
   },
   "jestSonar": {
     "reportPath": "./coverage/sonarQube",
