@@ -7,6 +7,7 @@ export const ObliquePackage = '@oblique/oblique';
 const glob = require('glob');
 
 const angularJsonConfigPath = './angular.json/';
+export let isSuccessful = true;
 
 export function error(msg: string): void {
 	throw new Error(`${colors.symbols.cross} Migration failed: ${msg}\n`);
@@ -26,6 +27,24 @@ export function success(context: SchematicContext, msg: string): void {
 
 export function warn(context: SchematicContext, msg: string): void {
 	context.logger.info(colors.yellowBright(`\n${colors.symbols.warning} ${msg}\n`));
+}
+
+export function createSafeRule(callback: (tree: Tree, context: SchematicContext) => Rule | Tree): Rule {
+	return (tree: Tree, context: SchematicContext) => {
+		try {
+			return callback(tree, context);
+		} catch (error) {
+			isSuccessful = false;
+			const groups = /@oblique[/\\]oblique[/\\]schematics[/\\].*[/\\](?<file>\w*\.js):(?<line>\d*)/.exec(error.stack || '')?.groups || {};
+			warn(
+				context,
+				`The previous task failed and the change needs to be done manually.\nPlease inform the Oblique team (oblique@bit.admin.ch) of the following error:\n\t${
+					error.message || error
+				}, in "${groups.file}" on line ${groups.line}`
+			);
+			return tree;
+		}
+	};
 }
 
 export function infoHighlights(context: SchematicContext, msg: string, ...highlights: string[]): void {
@@ -123,11 +142,11 @@ export function removeAngularProjectsConfig(tree: Tree, path: string[]): Tree {
 }
 
 export function installDependencies(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		_context.addTask(new NodePackageInstallTask());
 		_context.logger.debug('Dependencies installed');
 		return tree;
-	};
+	});
 }
 
 export function applyInTree(tree: Tree, toApply: Function, pattern = '*'): Tree {

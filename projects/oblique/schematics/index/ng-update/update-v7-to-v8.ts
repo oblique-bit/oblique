@@ -4,6 +4,7 @@ import {
 	addAngularConfigInList,
 	addFile,
 	applyInTree,
+	createSafeRule,
 	getDefaultAngularConfig,
 	infoMigration,
 	readFile,
@@ -39,7 +40,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	}
 
 	private prefixScssVariableNames(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Prefix scss variable names');
 			const apply = (filePath: string) => {
 				[
@@ -181,11 +182,11 @@ export class UpdateV7toV8 implements ObIMigrations {
 				replaceInFile(tree, filePath, new RegExp(/\$(primary|error|gray|success|warning)-(\d00?)/g), '$ob-$1-$2');
 			};
 			return applyInTree(tree, apply, '*.scss');
-		};
+		});
 	}
 
 	private prefixMixinNames(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Prefix mixin names');
 			const apply = (filePath: string) => {
 				[
@@ -242,40 +243,40 @@ export class UpdateV7toV8 implements ObIMigrations {
 				].forEach(mixin => replaceInFile(tree, filePath, new RegExp(`\\@include ${mixin}`, 'g'), `@include ob-${mixin}`));
 			};
 			return applyInTree(tree, apply, '*.scss');
-		};
+		});
 	}
 
 	private removeLayoutCollapse(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Replacing layout-collapse mixins');
 			const apply = (filePath: string) => {
 				replaceInFile(tree, filePath, /(?:ob-)?layout-collapse-(up|down)(?:\(\))?/g, `ob-media-breakpoint-$1(md)`);
 			};
 			return applyInTree(tree, apply, '*.scss');
-		};
+		});
 	}
 
 	private removeDlHorizontalVariants(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Remove .ob-horizontal-* classes');
 			const apply = (filePath: string) => {
 				replaceInFile(tree, filePath, new RegExp(/\s?ob-horizontal-(?:large|small)/g), '');
 			};
 			return applyInTree(tree, apply, '*.html');
-		};
+		});
 	}
 
 	private removeCompatCss(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Removing compat styles');
 			return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) =>
 				(config || []).filter((style: string) => !/node_modules\/@oblique\/oblique\/styles\/css\/oblique-compat\.s?css/.test(style))
 			);
-		};
+		});
 	}
 
 	private removeThemeService(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Remove ObThemeService');
 			const apply = (filePath: string) => {
 				const fileContent = readFile(tree, filePath);
@@ -300,7 +301,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 				}
 			};
 			return applyInTree(tree, apply, '*.ts');
-		};
+		});
 	}
 
 	private getCSSPath(themeOrFont: string): string | undefined {
@@ -323,7 +324,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	}
 
 	private migrateMasterLayoutProperties(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Replacing master Layout properties: header.isAnimated, footer.isSmall, layout.isFixed, hasScrollTransition, isMedium');
 			const toApply = (filePath: string) => {
 				const fileContent = readFile(tree, filePath);
@@ -341,11 +342,11 @@ export class UpdateV7toV8 implements ObIMigrations {
 				}
 			};
 			return applyInTree(tree, toApply, '*.ts');
-		};
+		});
 	}
 
 	private migrateObEMasterLayoutEventValues(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Replacing ObEMasterLayoutEventValues values');
 			const toApply = (filePath: string) => {
 				const fileContent = readFile(tree, filePath);
@@ -364,11 +365,11 @@ export class UpdateV7toV8 implements ObIMigrations {
 				}
 			};
 			return applyInTree(tree, toApply, '*.ts');
-		};
+		});
 	}
 
 	private migrateConfigEvents(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Replacing configEvents');
 			const toApply = (filePath: string) => {
 				const fileContent = readFile(tree, filePath);
@@ -378,7 +379,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 				}
 			};
 			return applyInTree(tree, toApply, '*.ts');
-		};
+		});
 	}
 
 	private migrateMasterLayoutConfig(fileContent: string): string {
@@ -447,7 +448,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	}
 
 	private updateBrowserCompatibilityMessage(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Oblique: Updating browser compatibility check message');
 			let index = getDefaultAngularConfig(tree, ['architect', 'build', 'options', 'index']);
 			if (!tree.exists(index)) {
@@ -462,11 +463,12 @@ export class UpdateV7toV8 implements ObIMigrations {
 					)
 				);
 			}
-		};
+			return tree;
+		});
 	}
 
 	private migrateExistingEslint(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			if (tree.exists('.eslintrc.json') && tree.exists('.prettierrc')) {
 				infoMigration(_context, 'Toolchain: update linting to Oblique standards');
 				const prefix =
@@ -475,11 +477,11 @@ export class UpdateV7toV8 implements ObIMigrations {
 				return chain([this.removeCurrentObliqueLinting(), this.addEslint(), this.addPrettier(), this.overwriteEslintRC(prefix), this.lintHTML()]);
 			}
 			return tree;
-		};
+		});
 	}
 
 	private removeCurrentObliqueLinting(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Toolchain: Removing the actual linting script and dependencies');
 			removeDevDependencies(tree, 'lint');
 			removeScript(tree, 'prettier');
@@ -487,39 +489,39 @@ export class UpdateV7toV8 implements ObIMigrations {
 			removeScript(tree, 'lint:fix');
 			removeScript(tree, 'format');
 			return tree;
-		};
+		});
 	}
 
 	private addEslint(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Toolchain: Adding "eslint"');
 			return externalSchematic('@angular-eslint/schematics', 'ng-add', {});
-		};
+		});
 	}
 
 	private addPrettier(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Toolchain: Adding "prettier"');
 			['prettier', 'eslint-config-prettier', 'eslint-plugin-prettier'].forEach(dependency => addDevDependency(tree, dependency));
 			addScript(tree, 'format', 'npm run lint -- --fix');
 			addFile(tree, '.prettierrc', getTemplate(tree, 'default-prettierrc.config'));
 			return tree;
-		};
+		});
 	}
 
 	private overwriteEslintRC(prefix: string): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Toolchain: overwrite ".eslintrc.json"');
 			tree.overwrite('.eslintrc.json', this.formatEsLintRC(tree, prefix));
 			return tree;
-		};
+		});
 	}
 
 	private lintHTML(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Toolchain: ensure html files are linted');
 			return addAngularConfigInList(tree, ['architect', 'lint', 'options', 'lintFilePatterns'], 'src/**/*.html');
-		};
+		});
 	}
 
 	private formatEsLintRC(tree: Tree, prefix: string): string {

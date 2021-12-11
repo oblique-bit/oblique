@@ -1,7 +1,16 @@
 import {Rule, SchematicContext, Tree, chain, externalSchematic} from '@angular-devkit/schematics';
 import {ObIOptionsSchema} from '../ng-add.model';
 import {addDevDependency, addRootProperty, addScript, getTemplate, removeScript} from '../ng-add-utils';
-import {addFile, deleteFile, infoMigration, readFile, removeAngularProjectsConfig, setAngularProjectsConfig, setRootAngularConfig} from '../../utils';
+import {
+	addFile,
+	createSafeRule,
+	deleteFile,
+	infoMigration,
+	readFile,
+	removeAngularProjectsConfig,
+	setAngularProjectsConfig,
+	setRootAngularConfig
+} from '../../utils';
 import {addJest, addProtractor} from './tests';
 import {jenkins} from './jenkins';
 
@@ -27,7 +36,7 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 }
 
 function moveStyles(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (!tree.exists('src/styles/styles.scss')) {
 			infoMigration(_context, 'Toolchain: Moving style sheets into "styles" directory');
 			const stylesContent = readFile(tree, 'src/styles.scss') || '';
@@ -38,45 +47,45 @@ function moveStyles(): Rule {
 			tree.overwrite('angular.json', content.replace(/"src\/styles\.scss"/g, '"src/styles/styles.scss"'));
 		}
 		return tree;
-	};
+	});
 }
 
 function addNpmrc(add: boolean): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (add) {
 			infoMigration(_context, 'Toolchain: Adding .npmrc');
 			addFile(tree, '.npmrc', getTemplate(tree, 'default-npmrc.config'));
 		}
 		return tree;
-	};
+	});
 }
 
 function removeFavicon(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, "Toolchain: Removing Angular's favicon");
 		deleteFile(tree, 'src/favicon.ico');
 		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) =>
 			(config || []).filter((conf: string) => !conf.indexOf || !conf.includes('favicon'))
 		);
-	};
+	});
 }
 
 function removeI18nFromAngularJson() {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, "Toolchain: Removing Angular's i18n");
 		return removeAngularProjectsConfig(tree, ['architect', 'extract-i18n']);
-	};
+	});
 }
 
 function removeUnusedScripts() {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Toolchain: Removing unused script');
 		return removeScript(tree, 'ng');
-	};
+	});
 }
 
 function addPrefix(prefix: string): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, "Toolchain: Setting application's prefix");
 		tree = setRootAngularConfig(tree, ['schematics'], {
 			'@schematics/angular:component': {
@@ -89,22 +98,22 @@ function addPrefix(prefix: string): Rule {
 		});
 
 		return setAngularProjectsConfig(tree, ['prefix'], prefix);
-	};
+	});
 }
 
 function addProxy(port: string): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (/^\d+$/.test(port) && !tree.exists('proxy.conf.json')) {
 			infoMigration(_context, 'Toolchain: Adding proxy configuration');
 			addFile(tree, 'proxy.conf.json', getTemplate(tree, 'default-proxy.conf.json.config').replace('PORT', port));
 			setAngularProjectsConfig(tree, ['architect', 'serve', 'options', 'proxyConfig'], 'proxy.conf.json');
 		}
 		return tree;
-	};
+	});
 }
 
 function addSonar(sonar: boolean, jest: boolean): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (sonar) {
 			infoMigration(_context, 'Toolchain: Adding Sonar configuration');
 			addFile(tree, 'sonar-project.properties', getTemplate(tree, 'default-sonar-project.properties.config'));
@@ -121,21 +130,21 @@ function addSonar(sonar: boolean, jest: boolean): Rule {
 			tree.overwrite('./tests/jest.config.js', lines.filter((line: string) => !line.includes('sonar')).join('\n'));
 		}
 		return tree;
-	};
+	});
 }
 
 function addEslint(eslint: boolean): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (eslint) {
 			infoMigration(_context, 'Toolchain: Adding "eslint"');
 			return externalSchematic('@angular-eslint/schematics', 'ng-add', {});
 		}
 		return tree;
-	};
+	});
 }
 
 function addPrettier(eslint: boolean): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (eslint) {
 			infoMigration(_context, 'Toolchain: Adding "prettier"');
 			['prettier', 'eslint-config-prettier', 'eslint-plugin-prettier'].forEach(dependency => addDevDependency(tree, dependency));
@@ -143,17 +152,17 @@ function addPrettier(eslint: boolean): Rule {
 			addFile(tree, '.prettierrc', getTemplate(tree, 'default-prettierrc.config'));
 		}
 		return tree;
-	};
+	});
 }
 
 function overwriteEslintRC(eslint: boolean, prefix: string): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (eslint) {
 			infoMigration(_context, 'Toolchain: overwrite ".eslintrc.json"');
 			tree.overwrite('.eslintrc.json', formatEsLintRC(tree, prefix));
 		}
 		return tree;
-	};
+	});
 }
 
 function formatEsLintRC(tree: Tree, prefix: string): string {
@@ -162,7 +171,7 @@ function formatEsLintRC(tree: Tree, prefix: string): string {
 }
 
 function addHusky(husky: boolean): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (husky) {
 			infoMigration(_context, 'Toolchain: Adding git hooks for code auto-formatting');
 			addDevDependency(tree, 'husky');
@@ -173,5 +182,5 @@ function addHusky(husky: boolean): Rule {
 			});
 		}
 		return tree;
-	};
+	});
 }
