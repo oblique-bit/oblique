@@ -18,7 +18,7 @@ const versions: {[key: string]: string | versionFunc} = {
 	ajv: '^8.0.0',
 	'ajv-formats': '^2.0.0',
 	'@ngx-translate/core': '^14.0.0',
-	'@ng-bootstrap/ng-bootstrap': '^11.0.0-rc.0',
+	'@ng-bootstrap/ng-bootstrap': '^12.0.0-beta.4',
 	'@angular/cdk': version => `^${version}.0.0`,
 	'@angular/material': version => `^${version}.0.0`,
 	'@angular/core': `^13.0.0`,
