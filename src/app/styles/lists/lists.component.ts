@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-	selector: 'ob-lists',
+	selector: 'sc-lists',
 	templateUrl: './lists.component.html'
 })
-export class ObListsComponent {}
+export class ListsComponent {}

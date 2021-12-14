@@ -1,6 +1,6 @@
-import {AfterViewInit, Component, Inject, Input, InjectionToken, OnDestroy, Optional} from '@angular/core';
+import {AfterViewInit, Component, Inject, InjectionToken, Input, OnDestroy, Optional} from '@angular/core';
 import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
-import {merge as observableMerge, Subject} from 'rxjs';
+import {Subject, merge as observableMerge} from 'rxjs';
 import {delay, takeUntil} from 'rxjs/operators';
 
 import {ObFormControlStateDirective} from '../form-control-state/form-control-state.directive';

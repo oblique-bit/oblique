@@ -1,11 +1,10 @@
 import {Component} from '@angular/core';
-import {ObINavigationLink, ObISearchWidgetItem} from '@oblique/oblique';
 
 @Component({
-	selector: 'ob-column-layout-sample',
-	templateUrl: 'column-layout-sample.component.html'
+	selector: 'sc-column-layout-sample',
+	templateUrl: './column-layout-sample.component.html'
 })
-export class ObColumnLayoutSampleComponent {
+export class ColumnLayoutSampleComponent {
 	left = true;
 	right = true;
 	noLayout = false;

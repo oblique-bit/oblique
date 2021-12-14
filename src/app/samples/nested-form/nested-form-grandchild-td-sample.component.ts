@@ -5,13 +5,12 @@ import {Observable} from 'rxjs';
 import {ThemeService} from '../../common/theme.service';
 
 @Component({
-	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'ob-nested-form-grandchild-td-sample',
+	selector: 'sc-nested-form-grandchild-td-sample',
 	exportAs: 'grandChildTD',
 	templateUrl: './nested-form-grandchild-td-sample.component.html',
 	styleUrls: ['./mandatory.scss']
 })
-export class ObNestedFormGrandChildTDSampleComponent {
+export class NestedFormGrandChildTDSampleComponent {
 	@ViewChild(NgForm, {static: true}) ngForm;
 	field1 = '';
 	field2 = '';

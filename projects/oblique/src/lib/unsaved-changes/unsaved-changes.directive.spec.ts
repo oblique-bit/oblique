@@ -19,14 +19,12 @@ class TestComponent {}
 
 describe('UnsavedChangesDirective', () => {
 	let fixture;
-	let testComponent: FaultyTestComponent | TestComponent;
 	let directive: ObUnsavedChangesDirective;
 	let unsavedChangesServiceMock: ObMockUnsavedChangesService;
 	const initFixture = (component: any): void => {
 		fixture = TestBed.createComponent(component);
 		fixture.detectChanges();
 		directive = fixture.debugElement.query(By.directive(ObUnsavedChangesDirective)).injector.get(ObUnsavedChangesDirective);
-		testComponent = fixture.componentInstance;
 	};
 
 	beforeEach(
@@ -39,7 +37,7 @@ describe('UnsavedChangesDirective', () => {
 				ignoreChanges: jest.fn()
 			};
 
-			//noinspection JSIgnoredPromiseFromCall
+			// noinspection JSIgnoredPromiseFromCall
 			TestBed.configureTestingModule({
 				declarations: [FaultyTestComponent, TestComponent, ObUnsavedChangesDirective],
 				providers: [ControlContainer, {provide: ObUnsavedChangesService, useValue: unsavedChangesServiceMock}],

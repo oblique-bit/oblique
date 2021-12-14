@@ -6,7 +6,8 @@ import {ObMasterLayoutNavigationMenuDirective} from '../master-layout.module';
 	exportAs: 'obMasterLayoutNavigationMenu'
 })
 export class ObMockMasterLayoutNavigationMenuDirective {
-	@Output() onShow = new EventEmitter<boolean>();
+	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
+	@Output() readonly onShow = new EventEmitter<boolean>();
 	$menus: QueryList<ObMasterLayoutNavigationMenuDirective>;
 
 	show(): void {}

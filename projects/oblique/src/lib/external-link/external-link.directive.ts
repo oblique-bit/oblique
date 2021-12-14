@@ -7,8 +7,8 @@ import {EXTERNAL_LINK, ObEExternalLinkIcon} from './external-link.model';
 import {ObUseObliqueIcons} from '../icon/icon.model';
 
 @Directive({
+	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'a[href]',
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-external-link'}
 })
 export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
@@ -19,7 +19,7 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 
 	private readonly unsubscribe = new Subject<void>();
 	private iconElement: HTMLSpanElement;
-	private host: HTMLAnchorElement;
+	private readonly host: HTMLAnchorElement;
 	private hasIcon = false;
 
 	constructor(
@@ -33,10 +33,6 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 		this.host = elRef.nativeElement;
 		this.icon = this.icon || this.config?.icon || 'left';
 		translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.addAriaLabel());
-	}
-
-	private static initializeAttribute(currentValue: string, defaultValue: string): string {
-		return currentValue === '' ? undefined : currentValue ?? defaultValue;
 	}
 
 	ngOnInit(): void {
@@ -67,6 +63,10 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 		this.unsubscribe.complete();
 	}
 
+	private static initializeAttribute(currentValue: string, defaultValue: string): string {
+		return currentValue === '' ? undefined : currentValue ?? defaultValue;
+	}
+
 	private addAriaLabel(): void {
 		this.renderer.setAttribute(this.host, 'aria-label', `${this.host.text} - ${this.translate.instant('i18n.oblique.external')}`);
 	}
@@ -74,7 +74,7 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	private addIcon(): void {
 		if (this.icon !== 'none' && this.iconElement) {
 			const marginPosition = this.icon === 'left' ? 'right' : 'left';
-			this.renderer.setProperty(this.iconElement, 'style', `margin-${marginPosition}: 4px`); //$spacing-xs
+			this.renderer.setProperty(this.iconElement, 'style', `margin-${marginPosition}: 4px`); // $spacing-xs
 
 			if (this.icon === 'left') {
 				this.renderer.insertBefore(this.host, this.iconElement, this.host.firstChild);

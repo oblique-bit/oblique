@@ -5,13 +5,12 @@ import {map} from 'rxjs/operators';
 import {ThemeService} from '../../common/theme.service';
 
 @Component({
-	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'ob-nested-form-child-sample',
+	selector: 'sc-nested-form-child-sample',
 	exportAs: 'child',
 	templateUrl: './nested-form-child-sample.component.html',
 	styleUrls: ['./mandatory.scss']
 })
-export class ObNestedFormChildSampleComponent {
+export class NestedFormChildSampleComponent {
 	nestedForm: FormGroup;
 	material: Observable<boolean>;
 

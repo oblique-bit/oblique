@@ -37,7 +37,7 @@
 				class="ob-accessible"
 				[class.ob-font-awesome]="!useObliqueIcons"
 				[attr.accesskey]="jumpLink.accessKey"
-				[routerLink]="jumpLink.url == 'current' ? route.path : jumpLink.url"
+				[routerLink]="jumpLink.url === 'current' ? route.path : jumpLink.url"
 				[queryParams]="route.params"
 				[fragment]="jumpLink.fragment"
 			>

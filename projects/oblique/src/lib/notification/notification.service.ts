@@ -3,7 +3,7 @@ import {NavigationEnd, Router} from '@angular/router';
 import {Observable, Subject} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
-import {ObINotification, ObENotificationType, ObENotificationPlacement} from './notification.model';
+import {ObENotificationPlacement, ObENotificationType, ObINotification} from './notification.model';
 import {ObNotificationConfig} from './notification.config';
 
 /**
@@ -81,7 +81,7 @@ export class ObNotificationService {
 		}
 		const notification = {
 			idPrefix: config.idPrefix || `notification-${type}-${this.formatMessage(config.message, config.messageParams)}-`,
-			type: type,
+			type,
 			message: config.message,
 			messageParams: config.messageParams,
 			title: config.title || this.config[type].title,

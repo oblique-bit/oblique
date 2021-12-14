@@ -1,7 +1,7 @@
 import {Component, Inject, Input, OnInit, Optional} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
-import {merge, Observable, of} from 'rxjs';
+import {Observable, merge, of} from 'rxjs';
 import {distinctUntilChanged, filter, map, switchMap} from 'rxjs/operators';
 import {ObBreadcrumbConfig, ObIBreadcrumb, ObTBreadcrumbConfig} from './breadcrumb.model';
 
@@ -12,9 +12,11 @@ import {ObBreadcrumbConfig, ObIBreadcrumb, ObTBreadcrumbConfig} from './breadcru
 	styleUrls: ['./breadcrumb.component.scss']
 })
 export class ObBreadcrumbComponent implements OnInit {
+	/* eslint-disable @angular-eslint/no-input-rename */
 	@Input('maxWidth') maxWidthInput?: string;
 	@Input('parameterSeparator') separatorInput?: string;
 	@Input('beautifyUrls') beautifyUrlsInput?: boolean;
+	/* eslint-enable @angular-eslint/no-input-rename */
 
 	breadcrumbs$: Observable<ObIBreadcrumb[]>;
 
@@ -50,7 +52,7 @@ export class ObBreadcrumbComponent implements OnInit {
 		return e.offsetWidth < e.scrollWidth;
 	}
 
-	getCrumbs(route: ActivatedRoute, crumbs: ObIBreadcrumb[] = [], currentUrl: string = ''): Observable<ObIBreadcrumb[]> {
+	getCrumbs(route: ActivatedRoute, crumbs: ObIBreadcrumb[] = [], currentUrl = ''): Observable<ObIBreadcrumb[]> {
 		if (!route) {
 			return of(crumbs);
 		}

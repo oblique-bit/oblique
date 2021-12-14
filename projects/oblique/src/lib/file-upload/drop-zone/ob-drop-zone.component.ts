@@ -9,13 +9,12 @@ import {ObEUploadEventType, ObIUploadEvent} from '../file-upload.model';
 	styleUrls: ['./ob-drop-zone.component.scss'],
 	providers: [ObValidationService],
 	encapsulation: ViewEncapsulation.None,
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-drop-zone'}
 })
 export class ObDropZoneComponent {
-	@Output() uploadEvent = new EventEmitter<ObIUploadEvent>();
+	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
 	@Input() accept = ['*'];
-	@Input() maxFileSize: number = 5;
+	@Input() maxFileSize = 5;
 	@Input() multiple = true;
 
 	constructor(private readonly validationService: ObValidationService) {}

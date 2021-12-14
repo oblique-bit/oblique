@@ -5,7 +5,6 @@ import {WINDOW} from '../utilities';
 @Directive({
 	selector: '[obOffCanvasToggle]',
 	exportAs: 'obOffCanvasToggle',
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-off-canvas-toggle'}
 })
 export class ObOffCanvasToggleDirective {

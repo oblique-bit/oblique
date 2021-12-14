@@ -5,11 +5,11 @@ import {map} from 'rxjs/operators';
 import {ThemeService} from '../../common/theme.service';
 
 @Component({
-	selector: 'ob-form-sample',
+	selector: 'sc-form-sample',
 	templateUrl: './form.component.html',
 	styleUrls: ['./form.component.scss']
 })
-export class ObFormSampleComponent {
+export class FormSampleComponent {
 	material: Observable<boolean>;
 
 	constructor(masterLayout: ObMasterLayoutService, theme: ThemeService) {

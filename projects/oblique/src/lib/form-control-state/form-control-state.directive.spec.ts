@@ -1,4 +1,4 @@
-import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async, fakeAsync, tick} from '@angular/core/testing';
 import {FormBuilder, FormControlName, FormsModule, NgModel, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {By} from '@angular/platform-browser';
@@ -99,11 +99,11 @@ describe('ObFormControlStateDirective', () => {
 			fixture.detectChanges();
 			component.model = '1';
 
-			//Triggers statusChange
+			// Triggers statusChange
 			fixture.detectChanges();
-			//Executes the subscribes
+			// Executes the subscribes
 			tick();
-			//Ensures the binding
+			// Ensures the binding
 			fixture.detectChanges();
 
 			expect(fixture.debugElement.query(By.css('.has-error'))).toBeTruthy();
@@ -127,11 +127,11 @@ describe('ObFormControlStateDirective', () => {
 		it('should remove has-error on statusChange', fakeAsync(() => {
 			component.model = 'A valid Value';
 
-			//Triggers statusChange
+			// Triggers statusChange
 			fixture.detectChanges();
-			//Executes the subscribes
+			// Executes the subscribes
 			tick();
-			//Ensures the binding
+			// Ensures the binding
 			fixture.detectChanges();
 
 			expect(fixture.debugElement.query(By.css('.has-error'))).toBeFalsy();
@@ -158,11 +158,11 @@ describe('ObFormControlStateDirective', () => {
 		it('should remove has-error on statusChange', fakeAsync(() => {
 			component.model.value.name = 'A valid Value';
 
-			//Triggers statusChange
+			// Triggers statusChange
 			fixture.detectChanges();
-			//Executes the subscribes
+			// Executes the subscribes
 			tick();
-			//Ensures the binding
+			// Ensures the binding
 			fixture.detectChanges();
 
 			expect(fixture.debugElement.query(By.css('.has-error'))).toBeFalsy();

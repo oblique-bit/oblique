@@ -1,17 +1,17 @@
 import {HttpClient, HttpEvent, HttpEventType, HttpRequest, HttpUserEvent} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Observable, of, Subject} from 'rxjs';
+import {Observable, Subject, of} from 'rxjs';
 import {catchError, filter} from 'rxjs/operators';
 import {ObNotificationService} from '../notification/notification.service';
-import {ObTEventType, ObIFileDescription} from './file-upload.model';
+import {ObIFileDescription, ObTEventType} from './file-upload.model';
 
 @Injectable({providedIn: 'root'})
 export class ObFileUploadService {
 	public uploadComplete$: Observable<void>;
-	private uploadComplete = new Subject<void>();
-	private events = [HttpEventType.UploadProgress, HttpEventType.Response];
+	private readonly uploadComplete = new Subject<void>();
+	private readonly events = [HttpEventType.UploadProgress, HttpEventType.Response];
 
-	constructor(private httpClient: HttpClient, private readonly notification: ObNotificationService) {
+	constructor(private readonly httpClient: HttpClient, private readonly notification: ObNotificationService) {
 		this.uploadComplete$ = this.uploadComplete.asObservable();
 	}
 

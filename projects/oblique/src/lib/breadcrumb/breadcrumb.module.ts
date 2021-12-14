@@ -9,7 +9,7 @@ import {ObIconModule} from '../icon/icon.module';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {obliqueProviders} from '../utilities';
-import {defaultBreadcrumbConfig, ObBreadcrumbConfig, ObTBreadcrumbConfig} from './breadcrumb.model';
+import {ObBreadcrumbConfig, ObTBreadcrumbConfig, defaultBreadcrumbConfig} from './breadcrumb.model';
 
 export {ObBreadcrumbConfig, ObTBreadcrumbConfig} from './breadcrumb.model';
 export {ObBreadcrumbComponent} from './breadcrumb.component';

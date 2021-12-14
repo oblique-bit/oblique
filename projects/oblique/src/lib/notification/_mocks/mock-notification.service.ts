@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
-import {ObINotification, ObENotificationType} from '../notification.model';
+import {ObENotificationType, ObINotification} from '../notification.model';
 import {ObNotificationConfig} from '../notification.config';
 
 @Injectable()

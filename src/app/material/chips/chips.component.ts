@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {COMMA, ENTER, SEMICOLON} from '@angular/cdk/keycodes';
 import {FormControl} from '@angular/forms';
 import {ThemePalette} from '@angular/material/core';
@@ -8,10 +8,10 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
-	selector: 'ob-chips',
+	selector: 'sc-chips',
 	templateUrl: './chips.component.html'
 })
-export class ObChipsComponent implements OnInit {
+export class ChipsComponent implements OnInit {
 	showAutocompleteForm = false;
 	color: ThemePalette = null;
 	variant: string = null;
@@ -73,10 +73,10 @@ export class ObChipsComponent implements OnInit {
 	private _filter(value: string): string[] {
 		const filterValue = value.toLowerCase();
 
-		return this.allTags.filter(tag => tag.toLowerCase().indexOf(filterValue) === 0);
+		return this.allTags.filter(tag => tag.toLowerCase().startsWith(filterValue));
 	}
 
 	private _remainingTags() {
-		return this.allTags.filter(tag => this.tags.indexOf(tag) < 0);
+		return this.allTags.filter(tag => !this.tags.includes(tag));
 	}
 }

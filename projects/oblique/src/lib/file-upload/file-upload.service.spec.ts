@@ -1,6 +1,6 @@
-import {HttpClient, HttpEvent, HttpEventType, HttpUserEvent} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpEventType} from '@angular/common/http';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {Observable, of, throwError} from 'rxjs';
 import {ObFileUploadService} from './file-upload.service';
 import {ObMockNotificationService} from '../notification/_mocks/mock-notification.service';

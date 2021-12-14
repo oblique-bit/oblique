@@ -1,8 +1,8 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {By} from '@angular/platform-browser';
-import {ObCollapseComponent, OBLIQUE_COLLAPSE_ACTIVE} from './collapse.component';
+import {OBLIQUE_COLLAPSE_ACTIVE, ObCollapseComponent} from './collapse.component';
 
 describe('CollapseComponent', () => {
 	let fixture: ComponentFixture<ObCollapseComponent>;

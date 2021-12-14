@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 
 @Component({
-	selector: 'ob-sticky-sample',
+	selector: 'sc-sticky-sample',
 	templateUrl: './sticky-sample.component.html'
 })
-export class ObStickySampleComponent {
+export class StickySampleComponent {
 	stickyHeader = true;
 	stickyFooter = true;
 	noLayout = false;

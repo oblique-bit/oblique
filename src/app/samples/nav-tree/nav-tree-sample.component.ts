@@ -1,4 +1,3 @@
-//TODO: remove if codelyzer 4 is out
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {merge, takeUntil} from 'rxjs/operators';
@@ -6,12 +5,11 @@ import {ObNavTreeComponent, ObNavTreeItemModel} from '@oblique/oblique';
 import {Subject} from 'rxjs';
 
 @Component({
-	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'ob-nav-tree-sample',
+	selector: 'sc-nav-tree-sample',
 	templateUrl: './nav-tree-sample.component.html'
 })
-export class ObNavTreeSampleComponent implements OnInit, OnDestroy {
-	public items: Array<ObNavTreeItemModel>;
+export class NavTreeSampleComponent implements OnInit, OnDestroy {
+	public items: ObNavTreeItemModel[];
 	public variant = ObNavTreeComponent.DEFAULTS.VARIANT;
 	public activateAncestors = true;
 	public useFakeFocus = false;
@@ -39,8 +37,7 @@ export class ObNavTreeSampleComponent implements OnInit, OnDestroy {
 }
 
 @Component({
-	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'ob-nav-tree-detail-sample',
+	selector: 'sc-nav-tree-detail-sample',
 	template: ` <div *ngIf="routing" class="card">
 		<div class="card-header">
 			<h3 class="card-title">Output</h3>
@@ -52,7 +49,7 @@ export class ObNavTreeSampleComponent implements OnInit, OnDestroy {
 		</div>
 	</div>`
 })
-export class ObNavTreeDetailSampleComponent implements OnInit, OnDestroy {
+export class NavTreeDetailSampleComponent implements OnInit, OnDestroy {
 	routing: string;
 	private readonly unsubscribe = new Subject();
 

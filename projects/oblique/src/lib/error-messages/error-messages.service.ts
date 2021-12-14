@@ -5,7 +5,7 @@ import {NgControl} from '@angular/forms';
 export class ObErrorMessagesService {
 	createMessages(control: NgControl, disableNgb: boolean): {key: string; params: {[param: string]: any}}[] {
 		return Object.keys(control.errors)
-			.filter(key => key.indexOf('ngb') !== 0 || !disableNgb)
+			.filter(key => !key.startsWith('ngb') || !disableNgb)
 			.map(key => {
 				const subkeys = Object.keys(control.errors[key]);
 				// If the subproperty is an object, it has to be the error

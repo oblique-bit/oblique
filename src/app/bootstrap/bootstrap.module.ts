@@ -2,15 +2,15 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
-import {ObListGroupComponent} from './list-group/list-group.component';
+import {ListGroupComponent} from './list-group/list-group.component';
 import {TabsComponent} from './tabs/tabs.component';
 
 @NgModule({
-	declarations: [ObListGroupComponent, TabsComponent],
+	declarations: [ListGroupComponent, TabsComponent],
 	imports: [
 		CommonModule,
 		RouterModule.forChild([
-			{path: 'list-group', component: ObListGroupComponent},
+			{path: 'list-group', component: ListGroupComponent},
 			{path: 'tabs', component: TabsComponent}
 		]),
 		NgbNavModule

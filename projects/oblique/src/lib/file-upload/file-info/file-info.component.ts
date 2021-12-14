@@ -15,11 +15,10 @@ import {ObEUploadEventType, ObIFileDescription, ObIUploadEvent} from '../file-up
 	templateUrl: './file-info.component.html',
 	styleUrls: ['./file-info.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-file-info'}
 })
 export class ObFileInfoComponent implements OnInit, OnDestroy {
-	@Output() uploadEvent = new EventEmitter<ObIUploadEvent>();
+	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
 	@Input() deleteUrl: string;
 	@Input() getUploadedFilesUrl: string;
 	@ViewChild(MatSort) set sorting(sort: MatSort) {
@@ -58,6 +57,7 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	}
 
 	selectOrUnselectAllItems(): void {
+		// eslint-disable-next-line no-unused-expressions
 		this.areAllItemsSelected() ? this.selection.clear() : this.dataSource.data.forEach(row => this.selection.select(row));
 		this.uploadEvent.emit({type: ObEUploadEventType.SELECTED, files: this.selection.selected.map(file => file.name)});
 	}

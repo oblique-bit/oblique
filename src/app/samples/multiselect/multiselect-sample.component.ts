@@ -1,11 +1,10 @@
 import {Component} from '@angular/core';
 
 @Component({
-	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'ob-multiselect-sample',
+	selector: 'sc-multiselect-sample',
 	templateUrl: './multiselect-sample.component.html'
 })
-export class ObMultiselectSampleComponent {
+export class MultiselectSampleComponent {
 	model = [];
 	labelModel = [];
 	formatterModel = [];

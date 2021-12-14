@@ -4,10 +4,10 @@ import {map} from 'rxjs/operators';
 import {ThemeService} from '../../common/theme.service';
 
 @Component({
-	selector: 'ob-dropdown-sample',
+	selector: 'sc-dropdown-sample',
 	templateUrl: './dropdown.component.html'
 })
-export class ObDropdownSampleComponent {
+export class DropdownSampleComponent {
 	material: Observable<boolean>;
 
 	constructor(theme: ThemeService) {

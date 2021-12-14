@@ -1,6 +1,6 @@
 import {ObTranslateParamsPipe} from './translate-params.pipe';
 import {TranslateService} from '@ngx-translate/core';
-import {inject, TestBed} from '@angular/core/testing';
+import {TestBed, inject} from '@angular/core/testing';
 
 describe('TranslateParamsPipe', () => {
 	beforeEach(() => {

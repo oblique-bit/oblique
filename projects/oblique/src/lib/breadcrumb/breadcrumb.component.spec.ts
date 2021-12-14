@@ -16,30 +16,13 @@ describe('ObBreadcrumbComponent', () => {
 	let component: ObBreadcrumbComponent;
 	let fixture: ComponentFixture<ObBreadcrumbComponent>;
 
-	let mockBreadcrumbConfig: ObBreadcrumbConfig = {
+	const mockBreadcrumbConfig: ObBreadcrumbConfig = {
 		beautifyUrls: true,
 		parameterSeparator: ' - ',
 		maxWidth: '4ch'
 	};
 
-	let routeMock = {
-		root: createRoute({
-			path: 'path',
-			firstChild: createRoute({
-				path: 'current-page/:param',
-				params: {param: 'my-param-value'}
-			})
-		}),
-		...createRoute({
-			path: 'path',
-			firstChild: createRoute({
-				path: 'current-page/:param',
-				params: {param: 'my-param-value'}
-			})
-		})
-	};
-
-	let translateServiceMock = {
+	const translateServiceMock = {
 		get: jest.fn((key: string) => of(key.includes('param') ? 'Translated Label with :param' : 'Translated Label')),
 		onLangChange: of({})
 	};

@@ -70,7 +70,7 @@ function getVersions(versions: number | number[] | versionFunc, angular: number)
 		versions = versions(angular);
 	}
 	if (!Array.isArray(versions)) {
-		versions = [versions as number];
+		versions = [versions];
 	}
 	return versions;
 }

@@ -1,17 +1,7 @@
-import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {Rule, SchematicContext, Tree, chain, externalSchematic} from '@angular-devkit/schematics';
 import {ObIOptionsSchema} from '../ng-add.model';
-import {addDevDependency, addRootProperty, addScript, getTemplate, removeDevDependencies, removeScript} from '../ng-add-utils';
-import {
-	addFile,
-	deleteFile,
-	getAngularConfigs,
-	infoMigration,
-	readFile,
-	removeAngularProjectsConfig,
-	setAngularConfig,
-	setAngularProjectsConfig,
-	setRootAngularConfig
-} from '../../utils';
+import {addDevDependency, addRootProperty, addScript, getTemplate, removeScript} from '../ng-add-utils';
+import {addFile, deleteFile, infoMigration, readFile, removeAngularProjectsConfig, setAngularProjectsConfig, setRootAngularConfig} from '../../utils';
 import {addJest, addProtractor} from './tests';
 import {jenkins} from './jenkins';
 
@@ -29,8 +19,9 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 			addProtractor(options.protractor, options.jest),
 			addSonar(options.sonar, options.jest),
 			jenkins(options.jenkins, options.static, options.jest),
-			addLintDeps(options.eslint),
-			addEslint(options.eslint, options.prefix),
+			addEslint(options.eslint),
+			addPrettier(options.eslint),
+			overwriteEslintRC(options.eslint, options.prefix),
 			addHusky(options.husky)
 		])(tree, _context);
 }
@@ -65,7 +56,7 @@ function removeFavicon(): Rule {
 		infoMigration(_context, "Toolchain: Removing Angular's favicon");
 		deleteFile(tree, 'src/favicon.ico');
 		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) =>
-			(config || []).filter((conf: string) => !conf.indexOf || conf.indexOf('favicon') === -1)
+			(config || []).filter((conf: string) => !conf.indexOf || !conf.includes('favicon'))
 		);
 	};
 }
@@ -89,11 +80,11 @@ function addPrefix(prefix: string): Rule {
 		infoMigration(_context, "Toolchain: Setting application's prefix");
 		tree = setRootAngularConfig(tree, ['schematics'], {
 			'@schematics/angular:component': {
-				prefix: prefix,
+				prefix,
 				style: 'scss'
 			},
 			'@schematics/angular:directive': {
-				prefix: prefix
+				prefix
 			}
 		});
 
@@ -103,7 +94,7 @@ function addPrefix(prefix: string): Rule {
 
 function addProxy(port: string): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		if (port.match(/^\d+$/) && !tree.exists('proxy.conf.json')) {
+		if (/^\d+$/.test(port) && !tree.exists('proxy.conf.json')) {
 			infoMigration(_context, 'Toolchain: Adding proxy configuration');
 			addFile(tree, 'proxy.conf.json', getTemplate(tree, 'default-proxy.conf.json.config').replace('PORT', port));
 			setAngularProjectsConfig(tree, ['architect', 'serve', 'options', 'proxyConfig'], 'proxy.conf.json');
@@ -127,67 +118,47 @@ function addSonar(sonar: boolean, jest: boolean): Rule {
 			}
 		} else if (jest) {
 			const lines = readFile(tree, './tests/jest.config.js').split('\n');
-			tree.overwrite('./tests/jest.config.js', lines.filter((line: string) => line.indexOf('sonar') === -1).join('\n'));
+			tree.overwrite('./tests/jest.config.js', lines.filter((line: string) => !line.includes('sonar')).join('\n'));
 		}
 		return tree;
 	};
 }
 
-function addEslint(eslint: boolean, prefix: string): Rule {
+function addEslint(eslint: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (eslint) {
-			infoMigration(_context, 'Toolchain: Replacing "tslint" with "eslint"');
-			deleteFile(tree, 'tslint.json');
-			addScript(tree, 'lint', 'ng lint');
-			addScript(tree, 'prettier', './node_modules/.bin/prettier --write src/**/{*.ts,*.html}');
-			addScript(tree, 'format', 'npm run lint -- --fix && npm run prettier');
-
-			const prettier = getTemplate(tree, 'default-prettierrc.config');
-			addFile(tree, '.prettierrc', prettier);
-
-			let eslintFile = getTemplate(tree, 'default-eslintrc.json.config').replace(/APP_PREFIX/g, prefix);
-			if (tree.exists('tsconfig.base.json')) {
-				eslintFile.replace('tsconfig.json', 'tsconfig.base.json');
-			}
-			if (prefix === '') {
-				eslintFile = eslintFile.replace(`'@angular-eslint/component-selector': ["error"`, `'@angular-eslint/component-selector': ["off"`);
-				eslintFile = eslintFile.replace(`'@angular-eslint/directive-selector': ["error"`, `'@angular-eslint/directive-selector': ["off"`);
-			}
-			addFile(tree, '.eslintrc.json', eslintFile);
-			const path = ['architect', 'lint'];
-			getAngularConfigs(tree, path).forEach(project => {
-				setAngularConfig(tree, path, {
-					project: project.project,
-					config: {
-						builder: '@angular-eslint/builder:lint',
-						options: {lintFilePatterns: ['src/**/*.ts']}
-					}
-				});
-			});
+			infoMigration(_context, 'Toolchain: Adding "eslint"');
+			return externalSchematic('@angular-eslint/schematics', 'ng-add', {});
 		}
 		return tree;
 	};
 }
 
-function addLintDeps(eslint: boolean): Rule {
+function addPrettier(eslint: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		if (eslint) {
-			removeDevDependencies(tree, 'lint');
-
-			[
-				'@angular-eslint/builder',
-				'@angular-eslint/eslint-plugin',
-				'@typescript-eslint/eslint-plugin',
-				'@typescript-eslint/parser',
-				'eslint',
-				'eslint-config-prettier',
-				'eslint-plugin-prettier',
-				'prettier'
-			].forEach(dependency => addDevDependency(tree, dependency));
+			infoMigration(_context, 'Toolchain: Adding "prettier"');
+			['prettier', 'eslint-config-prettier', 'eslint-plugin-prettier'].forEach(dependency => addDevDependency(tree, dependency));
+			addScript(tree, 'format', 'npm run lint -- --fix');
+			addFile(tree, '.prettierrc', getTemplate(tree, 'default-prettierrc.config'));
 		}
-
 		return tree;
 	};
+}
+
+function overwriteEslintRC(eslint: boolean, prefix: string): Rule {
+	return (tree: Tree, _context: SchematicContext) => {
+		if (eslint) {
+			infoMigration(_context, 'Toolchain: overwrite ".eslintrc.json"');
+			tree.overwrite('.eslintrc.json', formatEsLintRC(tree, prefix));
+		}
+		return tree;
+	};
+}
+
+function formatEsLintRC(tree: Tree, prefix: string): string {
+	const eslintFile = getTemplate(tree, 'default-eslintrc.json.config');
+	return prefix ? eslintFile.replace(/APP_PREFIX/g, prefix) : eslintFile.replace(/\s*"@angular-eslint\/(?:component|directive)-selector": \[.*?],/gs, '');
 }
 
 function addHusky(husky: boolean): Rule {

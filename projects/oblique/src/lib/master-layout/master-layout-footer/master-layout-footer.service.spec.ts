@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {Observable, Subject} from 'rxjs';
+import {Observable} from 'rxjs';
 import {ObMasterLayoutFooterService} from './master-layout-footer.service';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
 import {ObMasterLayoutConfig} from '../master-layout.config';

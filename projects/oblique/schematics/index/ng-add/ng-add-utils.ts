@@ -1,6 +1,6 @@
 import {Tree} from '@angular-devkit/schematics';
 import {addModuleImportToModule, hasNgModuleImport} from '@angular/cdk/schematics';
-import {addPackageJsonDependency, NodeDependency, NodeDependencyType, removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
+import {NodeDependency, NodeDependencyType, addPackageJsonDependency, removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {error, getJson, packageJsonConfigPath, readFile} from '../utils';
 import * as ts from 'typescript';
@@ -31,14 +31,8 @@ const versions: {[key: string]: string | versionFunc} = {
 	'@types/jest': '^27.0.0',
 	'@angular-builders/jest': '^13.0.0',
 	'jest-sonar-reporter': '2.0.0',
-	'@angular-eslint/builder': '^1.0.0',
-	'@angular-eslint/eslint-plugin': '^1.0.0',
-	'@typescript-eslint/eslint-plugin': '^4.0.0',
-	'@typescript-eslint/parser': '^4.0.0',
-	// eslint-disable-next-line prettier/prettier
-	eslint: '^7.0.0',
-	'eslint-config-prettier': '^7.0.0',
-	'eslint-plugin-prettier': '^3.0.0',
+	'eslint-config-prettier': '^8.0.0',
+	'eslint-plugin-prettier': '^4.0.0',
 	// eslint-disable-next-line prettier/prettier
 	prettier: '^2.0.0',
 	// eslint-disable-next-line prettier/prettier
@@ -89,7 +83,7 @@ export function getTemplate(tree: Tree, file: string): string {
 }
 
 export function getAngularVersion(tree: Tree): number {
-	return parseInt(readFile(tree, packageJsonConfigPath).match(/@angular\/core":\s*"[~,^]?(?<version>\d+)\.\d+\.\d+"/)?.groups?.version || '0', 10);
+	return parseInt(/@angular\/core":\s*"[~,^]?(?<version>\d+)\.\d+\.\d+"/.exec(readFile(tree, packageJsonConfigPath))?.groups?.version || '0', 10);
 }
 
 export function getDepVersion(tree: Tree, dep: string): string | undefined {
@@ -100,7 +94,7 @@ export function getDepVersion(tree: Tree, dep: string): string | undefined {
 export function removeDevDependencies(tree: Tree, dependency: string): Tree {
 	const json = getJson(tree, packageJsonConfigPath);
 	Object.keys(json.devDependencies)
-		.filter((dep: string) => dep.indexOf(dependency) > -1)
+		.filter((dep: string) => dep.includes(dependency))
 		.forEach((dep: string) => removePackageJsonDependency(tree, dep));
 
 	return tree;
@@ -141,7 +135,7 @@ export function adaptInsertChange(tree: Tree, change: InsertChange, search: stri
 }
 
 function extractVersion(version: string): ObIVersion | undefined {
-	const hit = version.match(/(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)/);
+	const hit = /(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)/.exec(version);
 	return hit?.groups
 		? {
 				major: parseInt(hit.groups.major, 10),
@@ -152,11 +146,11 @@ function extractVersion(version: string): ObIVersion | undefined {
 }
 
 function getTargetDepVersion(tree: Tree, name: string): string {
-	let version = versions[name];
+	const version = versions[name];
 	if (!version) {
 		error(`Unknown dependency: ${name}`);
 	}
-	return version instanceof Function ? version(getAngularVersion(tree)) : (version as string);
+	return version instanceof Function ? version(getAngularVersion(tree)) : version;
 }
 
 function createDep(tree: Tree, type: NodeDependencyType, name: string): NodeDependency {

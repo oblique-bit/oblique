@@ -7,12 +7,13 @@ import {MatFormFieldControl} from '@angular/material/form-field/form-field-contr
 import {MatChipList} from '@angular/material/chips';
 
 @Directive({
+	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'input:not([required]), mat-select:not([required]), select:not([required]), textarea:not([required]), mat-chip-list:not([required])'
 })
 export class ObMandatoryDirective implements AfterContentInit, AfterContentChecked {
 	private formFieldControl: MatInput | MatSelect | MatChipList;
 
-	constructor(@Optional() private matFormField: MatFormField) {}
+	constructor(@Optional() private readonly matFormField: MatFormField) {}
 
 	ngAfterContentInit() {
 		const formFieldControlTemp: MatFormFieldControl<any> = this.matFormField?._control;

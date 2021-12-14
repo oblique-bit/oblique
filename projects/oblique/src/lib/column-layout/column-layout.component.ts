@@ -26,7 +26,6 @@ import {ObUseObliqueIcons} from '../icon/icon.model';
 	templateUrl: './column-layout.component.html',
 	styleUrls: ['./column-layout.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-column-layout'}
 })
 export class ObColumnLayoutComponent implements AfterViewInit {
@@ -36,12 +35,12 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 	@Input() @HostBinding('class.ob-no-layout') noLayout = false;
 	toggleLeftIcon$: Observable<ObIToggleDirection>;
 	toggleRightIcon$: Observable<ObIToggleDirection>;
+	@HostBinding('class.ob-font-awesome') useFontAwesomeIcon: boolean;
 	@ViewChild('columnLeft') private readonly columnLeft: ObColumnPanelDirective;
 	@ViewChild('columnRight') private readonly columnRight: ObColumnPanelDirective;
 	@ViewChildren('columnToggle') private readonly toggles: QueryList<ElementRef>;
-	private readonly window: Window;
 
-	@HostBinding('class.ob-font-awesome') useFontAwesomeIcon: boolean;
+	private readonly window: Window;
 
 	constructor(
 		private readonly el: ElementRef,
@@ -52,16 +51,6 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 	) {
 		this.window = window; // because AoT don't accept interfaces as DI
 		this.useFontAwesomeIcon = !useObliqueIcon;
-	}
-
-	private static visibleHeight(dimension: ClientRect, window: Window): number {
-		if (dimension.top < 0 && dimension.top + dimension.height > window.innerHeight) {
-			return window.innerHeight;
-		} else if (dimension.top < 0) {
-			return dimension.height - dimension.top;
-		} else {
-			return window.innerHeight - dimension.top;
-		}
 	}
 
 	ngAfterViewInit() {
@@ -80,6 +69,15 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 		if (this.columnRight) {
 			this.columnRight.toggle();
 		}
+	}
+
+	private static visibleHeight(dimension: ClientRect, window: Window): number {
+		if (dimension.top < 0 && dimension.top + dimension.height > window.innerHeight) {
+			return window.innerHeight;
+		} else if (dimension.top < 0) {
+			return dimension.height - dimension.top;
+		}
+		return window.innerHeight - dimension.top;
 	}
 
 	private getToggleDirection(

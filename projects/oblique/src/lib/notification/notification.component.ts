@@ -11,7 +11,6 @@ import {ObNotificationService} from './notification.service';
 	templateUrl: './notification.component.html',
 	styleUrls: ['./notification.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-notification-container'},
 	animations: [
 		trigger('inOut', [
@@ -149,8 +148,8 @@ export class ObNotificationComponent implements OnInit {
 
 	private isPlacementOnLeft(): boolean {
 		return (
-			this.notificationService.placement == ObENotificationPlacement.BOTTOM_LEFT ||
-			this.notificationService.placement == ObENotificationPlacement.TOP_LEFT
+			this.notificationService.placement === ObENotificationPlacement.BOTTOM_LEFT ||
+			this.notificationService.placement === ObENotificationPlacement.TOP_LEFT
 		);
 	}
 

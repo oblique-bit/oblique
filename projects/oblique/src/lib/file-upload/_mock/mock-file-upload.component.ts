@@ -5,11 +5,10 @@ import {ObIUploadEvent} from '../file-upload.model';
 	selector: 'ob-file-upload',
 	exportAs: 'obFileUpload',
 	template: '',
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-file-upload'}
 })
 export class ObMockFileUploadComponent {
-	@Output() uploadEvent = new EventEmitter<ObIUploadEvent>();
+	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
 	@Input() accept: string[];
 	@Input() multiple = true;
 	@Input() singleRequest = true;

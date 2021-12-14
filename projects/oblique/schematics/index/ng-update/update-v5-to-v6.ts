@@ -1,8 +1,8 @@
-import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {ObIMigrations} from './ng-update.model';
 import {
-	addClassesPrefix,
 	addClassPrefix,
+	addClassesPrefix,
 	addPrefixMatchExact,
 	addPrefixMatchExactOrSuffix,
 	addPrefixMatchSuffix,
@@ -11,23 +11,24 @@ import {
 } from './ng-update-utils';
 import {
 	addAngularConfigInList,
-	getDefaultAngularConfig,
-	infoMigration,
-	readFile,
-	replaceInFile,
-	setAngularProjectsConfig,
-	applyInTree,
-	getAngularConfigs,
-	checkIfAngularConfigExists,
-	packageJsonConfigPath,
-	getJson,
-	addInterface,
 	addImport,
-	removeImport
+	addInterface,
+	applyInTree,
+	checkIfAngularConfigExists,
+	getAngularConfigs,
+	getDefaultAngularConfig,
+	getJson,
+	infoMigration,
+	packageJsonConfigPath,
+	readFile,
+	removeImport,
+	replaceInFile,
+	setAngularProjectsConfig
 } from '../utils';
 import {appModulePath, createSrcFile, getTemplate, obliqueCssPath} from '../ng-add/ng-add-utils';
 import {getPackageJsonDependency, removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IUpdateV5Schema {}
 
 export class UpdateV5toV6 implements ObIMigrations {
@@ -40,6 +41,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 		ajv: [6, 0]
 	};
 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	applyMigrations(_options: IUpdateV5Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Analyzing project');
@@ -65,7 +67,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Migrating font');
 			const module = readFile(tree, appModulePath);
-			const match = module.match(/(?<full>\s*{\s*provide\s*:\s*OBLIQUE_FONT\s*,\s*useValue\s*:\s*(?:FONTS\.)?['"]?(?<font>[^"'\s}]*)['"]?\s*},?)/);
+			const match = /(?<full>\s*{\s*provide\s*:\s*OBLIQUE_FONT\s*,\s*useValue\s*:\s*(?:FONTS\.)?['"]?(?<font>[^"'\s}]*)['"]?\s*},?)/.exec(module);
 			const full = match?.groups?.full;
 			const font = match?.groups?.font;
 			if (full && font) {
@@ -152,7 +154,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 						.replace(/<div class="ob-compatibility" .*?<\/div>\s/s, '')
 						.replace(/<!--\[if lt.*?endif]-->\s/s, '')
 						.replace(/<!--\[if gte.*(<html.*?>).*endif]-->\s/s, '$1')
-						.replace(/<body([^>]*)>\n/, '<body$1>\n' + getTemplate(tree, 'default-index.html'))
+						.replace(/<body([^>]*)>\n/, `<body$1>\n${getTemplate(tree, 'default-index.html')}`)
 				);
 			}
 			return addAngularConfigInList(tree, ['architect', 'build', 'options', 'scripts'], 'node_modules/@oblique/oblique/ob-features.js');
@@ -186,7 +188,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Renaming locale.default into locale.defaultLanguage');
 			const toApply = (filePath: string) => {
-				const config = readFile(tree, filePath).match(/(?<config>\w*):\s*ObMasterLayoutConfig/)?.groups?.config;
+				const config = /(?<config>\w*):\s*ObMasterLayoutConfig/.exec(readFile(tree, filePath))?.groups?.config;
 				if (config) {
 					replaceInFile(tree, filePath, new RegExp(`${config}\\.locale\\.default([\\s=])`, 'g'), `${config}.locale.defaultLanguage$1`);
 				}
@@ -214,16 +216,16 @@ export class UpdateV5toV6 implements ObIMigrations {
 		const usesProtractor = checkIfAngularConfigExists(tree, ['architect', 'e2e', 'builder'], '@angular-devkit/build-angular:protractor');
 		const usesJest = checkIfAngularConfigExists(tree, ['architect', 'test', 'builder'], '@angular-builders/jest:run');
 		const deps = Object.keys(getJson(tree, packageJsonConfigPath)?.devDependencies || {});
-		deps.filter(dep => dep.indexOf(usesJest ? 'karma' : 'jest') > -1).forEach(dep => removePackageJsonDependency(tree, dep));
+		deps.filter(dep => dep.includes(usesJest ? 'karma' : 'jest')).forEach(dep => removePackageJsonDependency(tree, dep));
 		if (usesJest && !usesProtractor) {
-			deps.filter(dep => dep.indexOf('jasmine') > -1).forEach(dep => removePackageJsonDependency(tree, dep));
+			deps.filter(dep => dep.includes('jasmine')).forEach(dep => removePackageJsonDependency(tree, dep));
 		}
 	}
 
 	private adaptTranslationDependencies(tree: Tree): void {
 		const file = readFile(tree, appModulePath);
-		const factory = file.match(/TranslateModule\.forRoot\({.*?useFactory\s*:\s*(?<factory>\w*)/s)?.groups?.factory;
-		const loader = file.match(new RegExp(`export function ${factory}\\(.*new (?<loader>[^(]*)`, 's'))?.groups?.loader;
+		const factory = /TranslateModule\.forRoot\({.*?useFactory\s*:\s*(?<factory>\w*)/s.exec(file)?.groups?.factory;
+		const loader = new RegExp(`export function ${factory}\\(.*new (?<loader>[^(]*)`, 's').exec(file)?.groups?.loader;
 		const hasObMultiLoader = /TranslateModule.forRoot\(\s*multiTranslateLoader\(/.test(file);
 		if (hasObMultiLoader || loader !== 'TranslateHttpLoader') {
 			this.removeTranslateLoader(tree, '@ngx-translate/http-loader', 'TranslateHttpLoader');
@@ -269,14 +271,14 @@ export class UpdateV5toV6 implements ObIMigrations {
 			infoMigration(_context, 'Migrate Unsubscribe class');
 			const toApply = (filePath: string) => {
 				const content = readFile(tree, filePath);
-				if (content.indexOf('extends ObUnsubscribable') > -1) {
+				if (content.includes('extends ObUnsubscribable')) {
 					tree.overwrite(filePath, content.replace(/extends\s+ObUnsubscribable\s?/, '').replace(/\s*super\(\);/, ''));
 					addInterface(tree, filePath, 'OnDestroy');
 					addImport(tree, filePath, 'OnDestroy', '@angular/core');
 					addImport(tree, filePath, 'Subject', 'rxjs');
 					removeImport(tree, filePath, 'ObUnsubscribable', '@oblique/oblique');
 					replaceInFile(tree, filePath, /\n([\t ]*)constructor\(/, '$1private readonly unsubscribe = new Subject();\n\n$1constructor(');
-					this.addNgOnDestroy(tree, filePath, /ngOnDestroy/.test(content));
+					this.addNgOnDestroy(tree, filePath, content.includes('ngOnDestroy'));
 				}
 			};
 			return applyInTree(tree, toApply, '*.ts');

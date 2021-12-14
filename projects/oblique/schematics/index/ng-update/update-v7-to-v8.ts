@@ -1,13 +1,24 @@
-import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {getTemplate} from '../ng-add/ng-add-utils';
-import {addAngularConfigInList, applyInTree, getDefaultAngularConfig, infoMigration, readFile, replaceInFile, setAngularProjectsConfig} from '../utils';
+import {Rule, SchematicContext, Tree, chain, externalSchematic} from '@angular-devkit/schematics';
+import {addDevDependency, addScript, getTemplate, removeDevDependencies, removeScript} from '../ng-add/ng-add-utils';
+import {
+	addAngularConfigInList,
+	addFile,
+	applyInTree,
+	getDefaultAngularConfig,
+	infoMigration,
+	readFile,
+	replaceInFile,
+	setAngularProjectsConfig
+} from '../utils';
 import {ObIDependencies, ObIMigrations} from './ng-update.model';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IUpdateV8Schema {}
 
 export class UpdateV7toV8 implements ObIMigrations {
 	dependencies: ObIDependencies = {};
 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	applyMigrations(_options: IUpdateV8Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Analyzing project');
@@ -21,7 +32,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 				this.migrateMasterLayoutProperties(),
 				this.migrateObEMasterLayoutEventValues(),
 				this.migrateConfigEvents(),
-				this.updateBrowserCompatibilityMessage()
+				this.updateBrowserCompatibilityMessage(),
+				this.migrateExistingEslint()
 			])(tree, _context);
 		};
 	}
@@ -31,7 +43,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 			infoMigration(_context, 'Prefix scss variable names');
 			const apply = (filePath: string) => {
 				[
-					//Palette CI-CD colors
+					// Palette CI-CD colors
 					'venetian-red',
 					'red',
 					'cerulean',
@@ -55,7 +67,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 					'gray',
 					'gray-dark',
 					'gray-darker',
-					//Bootstrap
+					// Bootstrap
 					'secondary',
 					'info',
 					'body-width',
@@ -80,7 +92,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 					'modal-content-border-color',
 					'alert-border-radius',
 					'alert-border-width',
-					//Variables
+					// Variables
 					'duration-default',
 					'duration-fast',
 					'smaller',
@@ -142,7 +154,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 				].forEach(scssVariable => replaceInFile(tree, filePath, new RegExp(`\\$${scssVariable}`, 'g'), `$ob-${scssVariable}`));
 
 				[
-					//Brand
+					// Brand
 					'default',
 					'accent',
 					'extra-light',
@@ -165,7 +177,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 					'line-width'
 				].forEach(scssVariable => replaceInFile(tree, filePath, new RegExp(`\\$brand-${scssVariable}`, 'g'), `$ob-${scssVariable}`));
 
-				//Palette Oblique colors
+				// Palette Oblique colors
 				replaceInFile(tree, filePath, new RegExp(/\$(primary|error|gray|success|warning)-(\d00?)/g), '$ob-$1-$2');
 			};
 			return applyInTree(tree, apply, '*.scss');
@@ -267,10 +279,10 @@ export class UpdateV7toV8 implements ObIMigrations {
 			infoMigration(_context, 'Remove ObThemeService');
 			const apply = (filePath: string) => {
 				const fileContent = readFile(tree, filePath);
-				if (/ObThemeService/.test(fileContent)) {
-					const service = fileContent.match(/(?<service>\w*)\s*:\s*ObThemeService,?/)?.groups?.service;
-					const theme = this.getCSSPath(fileContent.match(new RegExp(`${service}\\.setTheme\\((?<theme>.*)\\)`))?.groups?.theme || '');
-					const font = this.getCSSPath(fileContent.match(new RegExp(`${service}\\.setFont\\((?<font>.*)\\)`))?.groups?.font || '');
+				if (fileContent.includes('ObThemeService')) {
+					const service = /(?<service>\w*)\s*:\s*ObThemeService,?/.exec(fileContent)?.groups?.service;
+					const theme = this.getCSSPath(new RegExp(`${service}\\.setTheme\\((?<theme>.*)\\)`).exec(fileContent)?.groups?.theme || '');
+					const font = this.getCSSPath(new RegExp(`${service}\\.setFont\\((?<font>.*)\\)`).exec(fileContent)?.groups?.font || '');
 					const stylesPath = ['architect', 'build', 'options', 'styles'];
 					[theme, font].filter(property => !!property).forEach(property => addAngularConfigInList(tree, stylesPath, property));
 
@@ -401,7 +413,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 			if (!masterLayoutService) {
 				fileContent = fileContent
 					.replace(/(constructor\s*\()(\s*)/, '$1$2private readonly masterLayout: ObMasterLayoutService,$2')
-					.replace(new RegExp(`import\\s*{(.*)}\\s*from\\s*['"]@oblique/oblique['"]`), `import {$1, ObMasterLayoutService} from '@oblique/oblique'`);
+					.replace(/import\s*{(.*)}\s*from\s*['"]@oblique\/oblique['"]/, `import {$1, ObMasterLayoutService} from '@oblique/oblique'`);
 				masterLayoutService = 'masterLayout';
 			}
 			return fileContent.replace(
@@ -429,7 +441,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 		let service = new RegExp(`(?<service>\\w+)\\s*:\\s*ObMasterLayout${serviceClass}Service`).exec(fileContent)?.groups?.service;
 		if (!service) {
 			service = /(?<service>\w+)\s*:\s*ObMasterLayoutService/.exec(fileContent)?.groups?.service;
-			service = service ? `${service}\.${serviceName}` : undefined;
+			service = service ? `${service}.${serviceName}` : undefined;
 		}
 		return service;
 	}
@@ -451,5 +463,67 @@ export class UpdateV7toV8 implements ObIMigrations {
 				);
 			}
 		};
+	}
+
+	private migrateExistingEslint(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			if (tree.exists('.eslintrc.json') && tree.exists('.prettierrc')) {
+				infoMigration(_context, 'Toolchain: update linting to Oblique standards');
+				const prefix =
+					/\s*"@angular-eslint\/(?:component|directive)-selector"\s*:\s*\[.*?"prefix"\s*:\s*"(?<prefix>.*?)"/s.exec(readFile(tree, '.eslintrc.json'))
+						?.groups?.prefix || '';
+				return chain([this.removeCurrentObliqueLinting(), this.addEslint(), this.addPrettier(), this.overwriteEslintRC(prefix), this.lintHTML()]);
+			}
+			return tree;
+		};
+	}
+
+	private removeCurrentObliqueLinting(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Toolchain: Removing the actual linting script and dependencies');
+			removeDevDependencies(tree, 'lint');
+			removeScript(tree, 'prettier');
+			removeScript(tree, 'lint');
+			removeScript(tree, 'lint:fix');
+			removeScript(tree, 'format');
+			return tree;
+		};
+	}
+
+	private addEslint(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Toolchain: Adding "eslint"');
+			return externalSchematic('@angular-eslint/schematics', 'ng-add', {});
+		};
+	}
+
+	private addPrettier(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Toolchain: Adding "prettier"');
+			['prettier', 'eslint-config-prettier', 'eslint-plugin-prettier'].forEach(dependency => addDevDependency(tree, dependency));
+			addScript(tree, 'format', 'npm run lint -- --fix');
+			addFile(tree, '.prettierrc', getTemplate(tree, 'default-prettierrc.config'));
+			return tree;
+		};
+	}
+
+	private overwriteEslintRC(prefix: string): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Toolchain: overwrite ".eslintrc.json"');
+			tree.overwrite('.eslintrc.json', this.formatEsLintRC(tree, prefix));
+			return tree;
+		};
+	}
+
+	private lintHTML(): Rule {
+		return (tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Toolchain: ensure html files are linted');
+			return addAngularConfigInList(tree, ['architect', 'lint', 'options', 'lintFilePatterns'], 'src/**/*.html');
+		};
+	}
+
+	private formatEsLintRC(tree: Tree, prefix: string): string {
+		const eslintFile = getTemplate(tree, 'default-eslintrc.json.config');
+		return prefix ? eslintFile.replace(/APP_PREFIX/g, prefix) : eslintFile.replace(/\s*"@angular-eslint\/(?:component|directive)-selector": \[.*?],/gs, '');
 	}
 }

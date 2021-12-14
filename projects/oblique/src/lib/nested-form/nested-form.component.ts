@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, forwardRef, Input} from '@angular/core';
+import {AfterViewInit, Component, Input, forwardRef} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
 import {ObParentFormDirective} from './parent-form.directive';
 
@@ -18,7 +18,6 @@ import {ObParentFormDirective} from './parent-form.directive';
 			useExisting: forwardRef(() => ObNestedFormComponent)
 		}
 	],
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-nested-form'}
 })
 export class ObNestedFormComponent implements ControlValueAccessor, Validator, AfterViewInit {
@@ -35,6 +34,7 @@ export class ObNestedFormComponent implements ControlValueAccessor, Validator, A
 		this.nestedForm.valueChanges.subscribe(val => fn(val));
 	}
 
+	// eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
 	registerOnTouched(fn: any): void {}
 
 	setDisabledState(isDisabled: boolean): void {
@@ -47,6 +47,7 @@ export class ObNestedFormComponent implements ControlValueAccessor, Validator, A
 		obj ? this.nestedForm.patchValue(obj) : this.nestedForm.reset();
 	}
 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	validate(control: AbstractControl): ValidationErrors | null {
 		return this.nestedForm.valid ? null : this.formatErrors(this.nestedForm);
 	}

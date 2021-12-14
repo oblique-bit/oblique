@@ -5,7 +5,8 @@ import {Directive, EventEmitter, Output} from '@angular/core';
 	exportAs: 'obMasterLayoutNavigationToggle'
 })
 export class ObMockMasterLayoutNavigationToggleDirective {
-	@Output() onToggle = new EventEmitter<MouseEvent>();
+	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
+	@Output() readonly onToggle = new EventEmitter<MouseEvent>();
 	back = false;
 
 	onClick($event): void {}

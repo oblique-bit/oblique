@@ -2,7 +2,7 @@
 	<h2 class="page-header">
 		{{ "i18n.routes.samples.schema-validation.title" | translate }}
 	</h2>
-	<ob-description component="schema-validation"></ob-description>
+	<sc-description component="schema-validation"></sc-description>
 	<ng-container *ngIf="material | async; else bootstrap">
 		<form [formGroup]="materialTestForm">
 			<mat-form-field class="mat-form-field-sm" obErrorMessages>
@@ -429,5 +429,5 @@
 			</div>
 		</div>
 	</ng-template>
-	<ob-api component="schema-validation"></ob-api>
+	<sc-api component="schema-validation"></sc-api>
 </ng-container>

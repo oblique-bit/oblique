@@ -1,5 +1,5 @@
 import {Inject, Injectable} from '@angular/core';
-import {merge, Observable, Subject} from 'rxjs';
+import {Observable, Subject, merge} from 'rxjs';
 import {TranslateService} from '@ngx-translate/core';
 import {delay, filter} from 'rxjs/operators';
 import {ObMasterLayoutConfig} from '../master-layout.config';
@@ -19,6 +19,8 @@ export class ObMasterLayoutNavigationService {
 	private readonly scrolled$ = this._scrolled.asObservable();
 	private readonly _refreshed: Subject<void> = new Subject<void>();
 	private readonly refreshed$ = this._refreshed.asObservable();
+	private _isFullWidth = this.config.navigation.isFullWidth;
+	private _scrollMode = this.config.navigation.scrollMode;
 
 	constructor(
 		private readonly config: ObMasterLayoutConfig,
@@ -38,8 +40,6 @@ export class ObMasterLayoutNavigationService {
 		this.configEvents$ = this._events.asObservable();
 	}
 
-	private _isFullWidth = this.config.navigation.isFullWidth;
-
 	get isFullWidth() {
 		return this._isFullWidth;
 	}
@@ -48,11 +48,9 @@ export class ObMasterLayoutNavigationService {
 		this._isFullWidth = value;
 		this._events.next({
 			name: ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH,
-			value: value
+			value
 		});
 	}
-
-	private _scrollMode = this.config.navigation.scrollMode;
 
 	get scrollMode() {
 		return this._scrollMode;

@@ -1,28 +1,23 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ObFormControlStateSampleComponent} from './form-control-state-sample.component';
+import {FormControlStateSampleComponent} from './form-control-state-sample.component';
 import {ObliqueTestingModule} from '@oblique/oblique';
 
 describe('ObFormControlStateSampleComponent', () => {
-	let component: ObFormControlStateSampleComponent;
-	let fixture: ComponentFixture<ObFormControlStateSampleComponent>;
-	let schemaValidationService;
+	let component: FormControlStateSampleComponent;
+	let fixture: ComponentFixture<FormControlStateSampleComponent>;
 
 	beforeEach(
 		waitForAsync(() => {
-			schemaValidationService = {
-				isRequired: jest.fn()
-			};
-
 			TestBed.configureTestingModule({
-				declarations: [ObFormControlStateSampleComponent],
+				declarations: [FormControlStateSampleComponent],
 				imports: [FormsModule, ReactiveFormsModule, ObliqueTestingModule]
 			}).compileComponents();
 		})
 	);
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(ObFormControlStateSampleComponent);
+		fixture = TestBed.createComponent(FormControlStateSampleComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

@@ -1,4 +1,4 @@
-import {ObITelemetryRecord, ObIModuleList} from './telemetry.model';
+import {ObIModuleList, ObITelemetryRecord} from './telemetry.model';
 export class ObTelemetryRecord {
 	readonly record: ObITelemetryRecord;
 	private static readonly TELEMETRY_TOKEN = 'OBLIQUE_TELEMETRY';
@@ -19,7 +19,7 @@ export class ObTelemetryRecord {
 	}
 
 	addModule(module: string): void {
-		if (this.record.obliqueModuleNames.indexOf(module) === -1) {
+		if (!this.record.obliqueModuleNames.includes(module)) {
 			this.record.obliqueModuleNames.push(module);
 		}
 	}
@@ -33,7 +33,7 @@ export class ObTelemetryRecord {
 			|| this.record.obliqueModuleNames.reduce((missing, name) => missing || !moduleList.modules.includes(name), false);
 	}
 
-	storeRecord() {
+	storeRecord(): void {
 		localStorage.setItem(
 			ObTelemetryRecord.TELEMETRY_TOKEN,
 			JSON.stringify({

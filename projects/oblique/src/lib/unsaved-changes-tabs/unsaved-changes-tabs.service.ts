@@ -5,7 +5,7 @@ import {NgbNav, NgbNavChangeEvent} from '@ng-bootstrap/ng-bootstrap';
 import {Subscription} from 'rxjs';
 import {ObUnsavedChangesService} from '../unsaved-changes/unsaved-changes.service';
 
-//TODO: Handle modals
+// TODO: Handle modals
 @Injectable({providedIn: 'root'})
 export class ObUnsavedChangesTabsService {
 	private readonly listener: {[key: string]: Subscription} = {};
@@ -32,7 +32,7 @@ export class ObUnsavedChangesTabsService {
 	}
 
 	unListenTo(ngbNav: NgbNav): void {
-		const id = ngbNav && ngbNav.items.first.id;
+		const id = ngbNav?.items.first.id;
 		if (this.listener[id]) {
 			this.listener[id].unsubscribe();
 			delete this.listener[id];

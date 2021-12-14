@@ -23,6 +23,7 @@ export class ObMasterLayoutService {
 		public readonly footer: ObMasterLayoutFooterService,
 		public readonly navigation: ObMasterLayoutNavigationService,
 		public readonly layout: ObMasterLayoutComponentService,
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		language: ObLanguageService // ObLanguageService needs to be there to be instantiated
 	) {
 		this.routeChange();

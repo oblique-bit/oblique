@@ -7,7 +7,8 @@ import {ObMasterLayoutNavigationItemDirective, ObMasterLayoutNavigationMenuDirec
 })
 export class ObMockMasterLayoutNavigationItemDirective {
 	show = false;
-	@Output() onClose = new EventEmitter<void>();
+	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
+	@Output() readonly onClose = new EventEmitter<void>();
 	$toggles: QueryList<ObMasterLayoutNavigationToggleDirective>;
 	$menu: ObMasterLayoutNavigationMenuDirective;
 	$items: QueryList<ObMasterLayoutNavigationItemDirective>;

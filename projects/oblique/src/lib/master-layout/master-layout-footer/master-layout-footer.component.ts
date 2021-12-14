@@ -10,7 +10,6 @@ import {ObEMasterLayoutEventValues} from '../master-layout.model';
 	templateUrl: './master-layout-footer.component.html',
 	styleUrls: ['./master-layout-footer.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-master-layout-footer'}
 })
 export class ObMasterLayoutFooterComponent implements OnDestroy {

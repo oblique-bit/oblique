@@ -1,4 +1,4 @@
-import {Component, DebugElement} from '@angular/core';
+import {Component, DebugElement, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
@@ -123,7 +123,7 @@ import {ObMandatoryDirective} from './mandatory.directive';
 		</mat-form-field>
 	</div>`
 })
-class TestComponent {
+class TestComponent implements OnInit {
 	testForm: FormGroup;
 
 	constructor(private readonly formBuilder: FormBuilder) {}

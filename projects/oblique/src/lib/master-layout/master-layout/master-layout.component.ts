@@ -27,7 +27,7 @@ import {appVersion} from '../../version';
 import {WINDOW} from '../../utilities';
 import {ObEMasterLayoutEventValues, ObIDynamicJumpLink, ObINavigationLink} from '../master-layout.model';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
-import {merge, Subject} from 'rxjs';
+import {Subject, merge} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {ObUseObliqueIcons} from '../../icon/icon.model';
 
@@ -42,7 +42,6 @@ import {ObUseObliqueIcons} from '../../icon/icon.model';
 		'./master-layout.component-accessibility.scss'
 	],
 	encapsulation: ViewEncapsulation.None,
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-master-layout', 'ob-version': appVersion}
 })
 export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -180,10 +179,10 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 			.pipe(
 				filter(evt => evt instanceof NavigationEnd),
 				map((evt: NavigationEnd) => evt.url),
-				tap(url => (this.route.path = (url.match(/^[^?&#]*/) || [])[0])),
+				tap(url => (this.route.path = (/^[^?&#]*/.exec(url) || [])[0])),
 				tap(url => (this.route.params = this.formatQueryParameters(this.extractUrlPart(url, /[?&][^#]*/)))),
 				map(url => this.extractUrlPart(url, /#[^?&]*/)),
-				filter(fragment => this.config.focusableFragments.indexOf(fragment) > -1)
+				filter(fragment => this.config.focusableFragments.includes(fragment))
 			)
 			.subscribe(fragment => this.document.querySelector(`#${fragment}`)?.focus());
 	}

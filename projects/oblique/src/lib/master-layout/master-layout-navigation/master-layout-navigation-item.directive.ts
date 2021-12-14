@@ -5,19 +5,19 @@ import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigatio
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
 import {ObEMasterLayoutEventValues} from '../master-layout.model';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
-import {merge, Subject} from 'rxjs';
+import {Subject, merge} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {obOutsideFilter} from '../../global-events/outsideFilter';
 
 @Directive({
 	selector: '[obMasterLayoutNavigationItem]',
 	exportAs: 'obMasterLayoutNavigationItem',
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-master-layout-navigation-item'}
 })
 export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnDestroy {
 	@HostBinding('class.ob-expanded') public show = false;
-	@Output() onClose = new EventEmitter<void>();
+	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
+	@Output() readonly onClose = new EventEmitter<void>();
 	@ContentChildren(ObMasterLayoutNavigationToggleDirective, {descendants: true}) $toggles: QueryList<ObMasterLayoutNavigationToggleDirective>;
 	@ContentChild(ObMasterLayoutNavigationMenuDirective) $menu: ObMasterLayoutNavigationMenuDirective;
 	@ContentChildren(ObMasterLayoutNavigationItemDirective, {descendants: true}) $items: QueryList<ObMasterLayoutNavigationItemDirective>;

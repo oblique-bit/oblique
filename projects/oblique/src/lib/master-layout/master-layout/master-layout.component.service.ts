@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from '../master-layout.model';
+import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
 
 @Injectable({
 	providedIn: 'root'
@@ -29,7 +29,7 @@ export class ObMasterLayoutComponentService {
 		this._isMenuOpened = value;
 		this._events.next({
 			name: ObEMasterLayoutEventValues.IS_MENU_OPENED,
-			value: value
+			value
 		});
 	}
 
@@ -41,7 +41,7 @@ export class ObMasterLayoutComponentService {
 		this._hasCover = value;
 		this._events.next({
 			name: ObEMasterLayoutEventValues.LAYOUT_HAS_COVER,
-			value: value
+			value
 		});
 	}
 
@@ -53,7 +53,7 @@ export class ObMasterLayoutComponentService {
 		this._hasOffCanvas = value;
 		this._events.next({
 			name: ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS,
-			value: value
+			value
 		});
 	}
 
@@ -65,7 +65,7 @@ export class ObMasterLayoutComponentService {
 		this._hasMainNavigation = value;
 		this._events.next({
 			name: ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION,
-			value: value
+			value
 		});
 	}
 
@@ -77,7 +77,7 @@ export class ObMasterLayoutComponentService {
 		this._hasLayout = value;
 		this._events.next({
 			name: ObEMasterLayoutEventValues.LAYOUT_HAS_DEFAULT_LAYOUT,
-			value: value
+			value
 		});
 	}
 
@@ -89,7 +89,7 @@ export class ObMasterLayoutComponentService {
 		this._hasMaxWidth = value;
 		this._events.next({
 			name: ObEMasterLayoutEventValues.LAYOUT_HAS_MAX_WIDTH,
-			value: value
+			value
 		});
 	}
 }

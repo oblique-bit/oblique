@@ -6,12 +6,11 @@ import {ObNotificationService} from '@oblique/oblique';
 import {ThemeService} from '../../common/theme.service';
 
 @Component({
-	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'ob-nested-form-sample',
+	selector: 'sc-nested-form-sample',
 	templateUrl: './nested-form-sample.component.html',
 	styleUrls: ['./mandatory.scss']
 })
-export class ObNestedFormSampleComponent {
+export class NestedFormSampleComponent {
 	parentForm: FormGroup;
 	model = {
 		parent: '',
@@ -28,7 +27,8 @@ export class ObNestedFormSampleComponent {
 		});
 		this.material = theme.theme$.pipe(
 			map(() => theme.isMaterial()),
-			tap(() => (this.templateForm && this.templateForm.resetForm(), this.templateForm && this.reactiveForm.resetForm()))
+			tap(() => this.templateForm?.resetForm()),
+			tap(() => this.reactiveForm?.resetForm())
 		);
 	}
 

@@ -1,4 +1,4 @@
-import {DebugElement, Component, EventEmitter} from '@angular/core';
+import {Component, DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {ObDragDropDirective} from './drag-and-drop.directive';
@@ -16,14 +16,12 @@ class TestDropDirectiveComponent {
 describe('ObDragDropDirective', () => {
 	let fixture: ComponentFixture<TestDropDirectiveComponent>;
 	let input: DebugElement;
-	let inputEl: DebugElement;
 	beforeEach(() => {
 		fixture = TestBed.configureTestingModule({
 			declarations: [ObDragDropDirective, TestDropDirectiveComponent]
 		}).createComponent(TestDropDirectiveComponent);
 		input = fixture.debugElement.query(By.directive(ObDragDropDirective));
 		fixture.detectChanges();
-		inputEl = fixture.debugElement.query(By.css('div'));
 		fixture.detectChanges();
 	});
 

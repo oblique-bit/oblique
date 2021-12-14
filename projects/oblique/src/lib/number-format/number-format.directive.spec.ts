@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, DebugElement} from '@angular/core';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {ObNumberFormatDirective} from './number-format.directive';
@@ -22,7 +22,6 @@ class TestNonPersistentComponent {
 
 describe('NumberFormatDirective', () => {
 	let testComponent: TestDefaultComponent | TestNonPersistentComponent;
-	let directive: ObNumberFormatDirective;
 	let fixture: ComponentFixture<TestDefaultComponent>;
 	let element: DebugElement;
 
@@ -31,7 +30,6 @@ describe('NumberFormatDirective', () => {
 		testComponent = fixture.componentInstance;
 		fixture.detectChanges();
 		element = fixture.debugElement.query(By.directive(ObNumberFormatDirective));
-		directive = element.injector.get(ObNumberFormatDirective);
 	}
 
 	beforeEach(async(() => {

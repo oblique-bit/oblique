@@ -1,7 +1,7 @@
-import {TestBed, ComponentFixture, async, inject} from '@angular/core/testing';
-import {Component, EventEmitter, DebugElement} from '@angular/core';
+import {ComponentFixture, TestBed, async, inject} from '@angular/core/testing';
+import {Component, DebugElement, EventEmitter} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {TranslateService, LangChangeEvent} from '@ngx-translate/core';
+import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 import {ObDatepickerPlaceholderDirective} from './datepicker-placeholder.directive';
 
 @Component({
@@ -10,8 +10,6 @@ import {ObDatepickerPlaceholderDirective} from './datepicker-placeholder.directi
 class TestComponent {}
 
 describe('DatepickerPlaceholderDirective', () => {
-	let testComponent: TestComponent;
-	let directive: ObDatepickerPlaceholderDirective;
 	let fixture: ComponentFixture<TestComponent>;
 	let element: DebugElement;
 
@@ -24,10 +22,8 @@ describe('DatepickerPlaceholderDirective', () => {
 
 	function createFixture() {
 		fixture = TestBed.createComponent(TestComponent);
-		testComponent = fixture.componentInstance;
 		fixture.detectChanges();
 		element = fixture.debugElement.query(By.directive(ObDatepickerPlaceholderDirective));
-		directive = element.injector.get(ObDatepickerPlaceholderDirective);
 	}
 
 	beforeEach(async(() => {

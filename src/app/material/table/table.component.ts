@@ -6,11 +6,11 @@ import {MatTableDataSource} from '@angular/material/table';
 import {ObIPeriodicElement} from './table.model';
 
 @Component({
-	selector: 'ob-table',
+	selector: 'sc-table',
 	templateUrl: './table.component.html',
 	styleUrls: ['./table.component.scss']
 })
-export class ObTableComponent implements OnInit {
+export class TableComponent implements OnInit {
 	@ViewChild(MatSort, {static: true}) sort: MatSort;
 	@ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
@@ -152,9 +152,8 @@ export class ObTableComponent implements OnInit {
 			return 1;
 		} else if (left[sortColumn] === right[sortColumn]) {
 			return 0;
-		} else {
-			return -1;
 		}
+		return -1;
 	}
 
 	private sortDescending(left: ObIPeriodicElement, right: ObIPeriodicElement, sortColumn: string): number {
@@ -162,8 +161,7 @@ export class ObTableComponent implements OnInit {
 			return 1;
 		} else if (left[sortColumn] === right[sortColumn]) {
 			return 0;
-		} else {
-			return -1;
 		}
+		return -1;
 	}
 }

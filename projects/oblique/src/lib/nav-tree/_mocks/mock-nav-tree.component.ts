@@ -5,7 +5,6 @@ import {ObNavTreeItemModel} from '../nav-tree-item.model';
 @Component({
 	selector: 'ob-nav-tree',
 	exportAs: 'obNavTree',
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-nav-tree'},
 	template: ''
 })

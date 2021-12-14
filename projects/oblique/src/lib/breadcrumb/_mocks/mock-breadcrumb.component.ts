@@ -13,9 +13,11 @@ export class ObMockBreadcrumbComponent {
 		maxWidth: '32ch'
 	};
 
+	/* eslint-disable @angular-eslint/no-input-rename	*/
 	@Input('maxWidth') maxWidthInput?: string;
 	@Input('parameterSeparator') separatorInput?: string;
 	@Input('beautifyUrls') beautifyUrlsInput?: boolean;
+	/* eslint-enable @angular-eslint/no-input-rename	*/
 
 	get maxWidth() {
 		return this.maxWidthInput ?? ObMockBreadcrumbComponent.DEFAULTS.maxWidth;
@@ -25,7 +27,7 @@ export class ObMockBreadcrumbComponent {
 		return true;
 	}
 
-	getCrumbs(route: ActivatedRoute, crumbs: ObIBreadcrumb[] = [], currentUrl: string = ''): Observable<ObIBreadcrumb[]> {
+	getCrumbs(route: ActivatedRoute, crumbs: ObIBreadcrumb[] = [], currentUrl = ''): Observable<ObIBreadcrumb[]> {
 		return of([]);
 	}
 }

@@ -1,18 +1,17 @@
 import {Component} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {ObNotificationService, ObENotificationType, ObHttpApiInterceptorEvents, ObIHttpApiRequest} from '@oblique/oblique';
+import {ObENotificationType, ObHttpApiInterceptorEvents, ObIHttpApiRequest, ObNotificationService} from '@oblique/oblique';
 import {delay, mergeMap, take, tap} from 'rxjs/operators';
-import {from, Observable} from 'rxjs';
+import {Observable, from} from 'rxjs';
 import {HttpMockErrorInterceptor} from './http-mock-error.interceptor';
 
 let requestId = 0;
 
 @Component({
-	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'ob-http-api-interceptor-sample',
+	selector: 'sc-http-api-interceptor-sample',
 	templateUrl: './http-interceptor-sample.component.html'
 })
-export class ObHttpInterceptorSampleComponent {
+export class HttpInterceptorSampleComponent {
 	static readonly API_URL = 'https://jsonplaceholder.typicode.com';
 	logs = [];
 	notification = {
@@ -45,7 +44,7 @@ export class ObHttpInterceptorSampleComponent {
 
 	parallelRequest() {
 		this.configInterceptor();
-		const arrayOfObservables: Array<Observable<any>> = [];
+		const arrayOfObservables: Observable<any>[] = [];
 		for (let index = 0; index < this.parallelRequests; index++) {
 			arrayOfObservables.push(this.createSampleRequest(200));
 		}
@@ -61,13 +60,13 @@ export class ObHttpInterceptorSampleComponent {
 
 	private static getUrl(code: number): string {
 		if (code === 200) {
-			return ObHttpInterceptorSampleComponent.API_URL + '/users';
+			return `${HttpInterceptorSampleComponent.API_URL}/users`;
 		}
-		return ObHttpInterceptorSampleComponent.API_URL + '/' + code;
+		return `${HttpInterceptorSampleComponent.API_URL}/${code}`;
 	}
 
 	private createSampleRequest(code: number): Observable<any> {
-		const url = ObHttpInterceptorSampleComponent.getUrl(code);
+		const url = HttpInterceptorSampleComponent.getUrl(code);
 		this.log(`${++requestId} - GET ${url}, expecting: ${code} ${HttpMockErrorInterceptor.getStatusText(code)}...`);
 		return this.createRequest(url, requestId);
 	}

@@ -6,10 +6,10 @@ import {ObLanguageService} from '../../../../projects/oblique/src/lib/language/l
 import {ThemeService} from '../../common/theme.service';
 
 @Component({
-	selector: 'ob-language-sample',
+	selector: 'sc-language-sample',
 	templateUrl: './language-sample.component.html'
 })
-export class ObLanguageSampleComponent {
+export class LanguageSampleComponent {
 	material: Observable<boolean>;
 	today = new Date();
 	format = 'datetime';

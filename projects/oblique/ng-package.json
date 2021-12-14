@@ -4,5 +4,5 @@
   "lib": {
     "entryFile": "src/public_api.ts"
   },
-  "allowedNonPeerDependencies": ["@schematics/angular", "ansi-colors"]
+  "allowedNonPeerDependencies": ["@angular-eslint/schematics", "@schematics/angular", "ansi-colors"]
 }

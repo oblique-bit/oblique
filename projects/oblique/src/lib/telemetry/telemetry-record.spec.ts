@@ -18,7 +18,7 @@ describe('TelemetryRecord', () => {
 	describe('addModule', () => {
 		it('should add the module', () => {
 			record.addModule('test');
-			expect(record.record.obliqueModuleNames.indexOf('test') > -1).toBe(true);
+			expect(record.record.obliqueModuleNames.includes('test')).toBe(true);
 		});
 		it('should not add the same module twice', () => {
 			record.addModule('test');
@@ -48,7 +48,7 @@ describe('TelemetryRecord', () => {
 		});
 		it('should return false if there are no changes', () => {
 			const ts = +new Date() - 10;
-			jest.spyOn(localStorage, 'getItem').mockReturnValue(`{"timestamp": ${ts}, "modules": [\"test\"]}`);
+			jest.spyOn(localStorage, 'getItem').mockReturnValue(`{"timestamp": ${ts}, "modules": ["test"]}`);
 			record.addModule('test');
 			expect(record.isRecordToBeSent()).toBe(false);
 		});

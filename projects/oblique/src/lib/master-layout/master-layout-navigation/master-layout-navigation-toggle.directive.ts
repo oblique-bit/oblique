@@ -3,12 +3,11 @@ import {Directive, ElementRef, EventEmitter, HostListener, Output} from '@angula
 @Directive({
 	selector: '[obMasterLayoutNavigationToggle]',
 	exportAs: 'obMasterLayoutNavigationToggle',
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-master-layout-navigation-toggle'}
 })
 export class ObMasterLayoutNavigationToggleDirective {
-	@Output()
-	onToggle = new EventEmitter<MouseEvent>();
+	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
+	@Output() readonly onToggle = new EventEmitter<MouseEvent>();
 
 	public back = false;
 

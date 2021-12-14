@@ -10,7 +10,6 @@ import {
 	DoCheck,
 	ElementRef,
 	EventEmitter,
-	forwardRef,
 	HostBinding,
 	HostListener,
 	Input,
@@ -18,7 +17,8 @@ import {
 	OnDestroy,
 	OnInit,
 	Output,
-	ViewEncapsulation
+	ViewEncapsulation,
+	forwardRef
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {filter, takeUntil} from 'rxjs/operators';
@@ -46,7 +46,6 @@ import {obOutsideFilter} from '../global-events/outsideFilter';
 	styleUrls: ['./multiselect.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	templateUrl: './multiselect.component.html',
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-multiselect'}
 })
 export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy, DoCheck, ControlValueAccessor {
@@ -60,7 +59,7 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 	@Input() idPrefix = 'multiselect';
 	@HostBinding('id') idContainer = `${this.idPrefix}-container`;
 
-	//Inputs that are initialized by the config
+	// Inputs that are initialized by the config
 	@Input() enableAllSelectedText;
 	@Input() dynamicTitleMaxItems;
 	@Input() enableSearch;
@@ -69,10 +68,12 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 	@Input() showCheckAll;
 	@Input() showUncheckAll;
 
-	@Output() selectionLimitReached = new EventEmitter<number>();
-	@Output() dropdownClosed = new EventEmitter();
-	@Output() onAdded = new EventEmitter<any>();
-	@Output() onRemoved = new EventEmitter<any>();
+	@Output() readonly selectionLimitReached = new EventEmitter<number>();
+	@Output() readonly dropdownClosed = new EventEmitter();
+	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
+	@Output() readonly onAdded = new EventEmitter<any>();
+	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
+	@Output() readonly onRemoved = new EventEmitter<any>();
 
 	@HostBinding('attr.count') get count(): number {
 		return this.options.length;
@@ -130,6 +131,7 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 		}
 	}
 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	onModelChange: (_: any) => void = (_: any) => {
 		//
 	};
@@ -138,7 +140,7 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 	};
 
 	ngOnInit() {
-		this.texts = Object.assign({}, this.multiselectTexts, this.texts);
+		this.texts = {...this.multiselectTexts, ...this.texts};
 		this.title = this.texts.defaultTitle || '';
 		this.multiselectConfig.isIdUnique(this.idPrefix);
 	}
@@ -192,7 +194,7 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 	}
 
 	isSelected(option): boolean {
-		return this.model.indexOf(option) > -1;
+		return this.model.includes(option);
 	}
 
 	toggleSelection(option) {
@@ -226,7 +228,7 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 
 	checkAll() {
 		this.model = this.options.map(option => {
-			if (this.model.indexOf(option) === -1) {
+			if (!this.model.includes(option)) {
 				this.onAdded.emit(option);
 			}
 			return option;
@@ -265,7 +267,7 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 
 	search(options: any[], searchString: string): any[] {
 		searchString = searchString || '';
-		return options.filter(option => this.formatOptionForLabel(option).toLowerCase().indexOf(searchString.toLowerCase()) > -1);
+		return options.filter(option => this.formatOptionForLabel(option).toLowerCase().includes(searchString.toLowerCase()));
 	}
 
 	private emitModelChange() {

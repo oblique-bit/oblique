@@ -1,7 +1,7 @@
-import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
 import {addDevDependency, getTemplate, removeDevDependencies, removeScript} from '../ng-add-utils';
-import {addFile, deleteFile, getJson, infoMigration, readFile, removeAngularProjectsConfig, setAngularProjectsConfig} from '../../utils';
+import {addFile, deleteFile, infoMigration, readFile, removeAngularProjectsConfig, setAngularProjectsConfig} from '../../utils';
 
 export function addJest(jest: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
@@ -25,6 +25,7 @@ export function addProtractor(protractor: boolean, jest: boolean): Rule {
 }
 
 function removeJasmine() {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, _context: SchematicContext) => {
 		const tsConfigSpec = 'tsconfig.spec.json';
 		const tpl = getTemplate(tree, 'default-tsconfig.spec.json');
@@ -42,6 +43,7 @@ function removeJasmine() {
 }
 
 function addJestDependencies() {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, _context: SchematicContext) => {
 		['jest', '@types/jest', 'jest-sonar-reporter', '@angular-builders/jest'].forEach(dependency => addDevDependency(tree, dependency));
 
@@ -50,6 +52,7 @@ function addJestDependencies() {
 }
 
 function createJestConfigFiles() {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, _context: SchematicContext) => {
 		addFile(tree, 'tests/jest.config.js', getTemplate(tree, 'default-jest.config'));
 		addFile(tree, 'tests/setupJest.ts', "import 'jest-preset-angular';\nimport './jestGlobalMocks'; // browser mocks globally available for every test");
@@ -60,6 +63,7 @@ function createJestConfigFiles() {
 }
 
 function referToJest() {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, _context: SchematicContext) =>
 		setAngularProjectsConfig(tree, ['architect', 'test'], {
 			builder: '@angular-builders/jest:run',
@@ -78,20 +82,23 @@ function referToJest() {
 }
 
 function removeE2eFolder(): Rule {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, _context: SchematicContext) => deleteFile(tree, 'e2e');
 }
 
 function removeE2eFromAngularJson() {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, _context: SchematicContext) => {
 		removeAngularProjectsConfig(tree, ['architect', 'e2e']);
 
 		return setAngularProjectsConfig(tree, ['architect', 'lint', 'options', 'tsConfig'], (config: any) =>
-			(config || []).filter((conf: string) => conf.indexOf('e2e') === -1)
+			(config || []).filter((conf: string) => !conf.includes('e2e'))
 		);
 	};
 }
 
 function removeE2eFromPackage(jest: boolean) {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, _context: SchematicContext) => {
 		removePackageJsonDependency(tree, 'protractor');
 		if (jest) {
@@ -103,10 +110,11 @@ function removeE2eFromPackage(jest: boolean) {
 }
 
 function adaptTsConfig() {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, _context: SchematicContext) => {
 		const tsConfigName = tree.exists('tsconfig.base.json') ? 'tsconfig.base.json' : 'tsconfig.json';
 		let tsConfig = readFile(tree, tsConfigName);
-		if (tsConfig.indexOf('emitDecoratorMetadata') > -1) {
+		if (tsConfig.includes('emitDecoratorMetadata')) {
 			tsConfig = tsConfig.replace(/"emitDecoratorMetadata"\s*:\s*false/, '"emitDecoratorMetadata": true');
 		} else {
 			tsConfig = tsConfig.replace(/"experimentalDecorators"\s*:\s*true,/, '"experimentalDecorators": true,\n    "emitDecoratorMetadata": true,');
@@ -116,6 +124,7 @@ function adaptTsConfig() {
 }
 
 function adaptTsConfigSpec() {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, _context: SchematicContext) => {
 		const tsConfigName = 'tsconfig.spec.json';
 		if (tree.exists(tsConfigName)) {

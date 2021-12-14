@@ -147,7 +147,7 @@ describe('InputClear', () => {
 		});
 
 		beforeEach(() => {
-			input = <HTMLInputElement>fixture.nativeElement.querySelector('input');
+			input = fixture.nativeElement.querySelector('input');
 			input.value = 'testInput';
 			fixture.detectChanges();
 			input.dispatchEvent(new Event('input'));
@@ -169,7 +169,6 @@ describe('InputClear', () => {
 	});
 
 	describe('with html input only', () => {
-		let component: HtmlInputTestComponent;
 		let fixture: ComponentFixture<HtmlInputTestComponent>;
 		let input: HTMLInputElement;
 		let directive: ObInputClearDirective;
@@ -184,14 +183,13 @@ describe('InputClear', () => {
 
 		beforeEach(() => {
 			fixture = TestBed.createComponent(HtmlInputTestComponent);
-			component = fixture.componentInstance;
 			directive = fixture.debugElement.query(By.directive(ObInputClearDirective)).injector.get(ObInputClearDirective);
 			fixture.detectChanges();
 		});
 
 		describe('onClick', () => {
 			beforeEach(() => {
-				input = <HTMLInputElement>fixture.nativeElement.querySelector('input');
+				input = fixture.nativeElement.querySelector('input');
 				input.value = 'testInput';
 				input.dispatchEvent(new Event('input'));
 				jest.spyOn(directive, 'onClick');
@@ -210,7 +208,6 @@ describe('InputClear', () => {
 	});
 
 	describe('with wrong configuration', () => {
-		let component: WrongConfigurationTestComponent;
 		let fixture: ComponentFixture<WrongConfigurationTestComponent>;
 		let input: HTMLInputElement;
 
@@ -225,7 +222,6 @@ describe('InputClear', () => {
 		beforeEach(() => {
 			jest.spyOn(console, 'warn');
 			fixture = TestBed.createComponent(WrongConfigurationTestComponent);
-			component = fixture.componentInstance;
 			fixture.detectChanges();
 		});
 

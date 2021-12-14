@@ -1,7 +1,7 @@
-import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {addDependency, appModulePath, getTemplate, importModuleInRoot, obliqueCssPath} from '../ng-add-utils';
 import {ObIOptionsSchema} from '../ng-add.model';
-import {addAngularConfigInList, getDefaultAngularConfig, infoMigration, ObliquePackage, readFile, setAngularProjectsConfig} from '../../utils';
+import {ObliquePackage, addAngularConfigInList, getDefaultAngularConfig, infoMigration, readFile, setAngularProjectsConfig} from '../../utils';
 import {addLocales} from './locales';
 
 export function oblique(options: ObIOptionsSchema): Rule {
@@ -61,7 +61,7 @@ function addFeatureDetection(): Rule {
 			index = './index.html';
 		}
 		if (tree.exists(index)) {
-			tree.overwrite(index, readFile(tree, index).replace('<body>\n', '<body>\n' + getTemplate(tree, 'default-index.html')));
+			tree.overwrite(index, readFile(tree, index).replace('<body>\n', `<body>\n${getTemplate(tree, 'default-index.html')}`));
 		}
 		return addAngularConfigInList(tree, ['architect', 'build', 'options', 'scripts'], 'node_modules/@oblique/oblique/ob-features.js');
 	};
@@ -122,6 +122,7 @@ function addFontStyle(font: string): Rule {
 }
 
 function addFontFiles(font: string): Rule {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, _context: SchematicContext) => {
 		if (font === 'roboto') {
 			setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => {

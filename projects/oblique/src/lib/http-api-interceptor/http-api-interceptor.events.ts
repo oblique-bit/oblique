@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {take} from 'rxjs/operators';
-import {ObIHttpApiRequest, ObIHttpApiRequestNotification, ObIObliqueHttpErrorResponse} from './http-api-interceptor.model';
+import {ObIHttpApiRequest} from './http-api-interceptor.model';
 
 /**
  * Provides access to the Oblique HTTP Interceptor events.

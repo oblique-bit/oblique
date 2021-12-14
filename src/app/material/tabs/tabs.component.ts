@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-	selector: 'ob-tabs',
+	selector: 'sc-tabs',
 	templateUrl: './tabs.component.html'
 })
-export class ObTabsComponent {}
+export class TabsComponent {}

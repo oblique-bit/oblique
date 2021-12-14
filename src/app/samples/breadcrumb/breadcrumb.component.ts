@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-	selector: 'ob-breadcrumb-sample',
+	selector: 'sc-breadcrumb-sample',
 	templateUrl: './breadcrumb.component.html'
 })
-export class ObBreadcrumbSampleComponent {}
+export class BreadcrumbSampleComponent {}

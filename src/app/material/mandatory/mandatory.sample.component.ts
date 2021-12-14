@@ -2,10 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-	selector: 'ob-mandatory.sample',
+	selector: 'sc-mandatory.sample',
 	templateUrl: './mandatory.sample.component.html'
 })
-export class ObMandatorySampleComponent implements OnInit {
+export class MandatorySampleComponent implements OnInit {
 	testForm: FormGroup;
 
 	constructor(private readonly formBuilder: FormBuilder) {}

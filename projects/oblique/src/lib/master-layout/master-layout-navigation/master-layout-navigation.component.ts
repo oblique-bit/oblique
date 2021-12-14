@@ -13,7 +13,6 @@ import {ObGlobalEventsService} from '../../global-events/global-events.service';
 	templateUrl: './master-layout-navigation.component.html',
 	styleUrls: ['./master-layout-navigation.component.scss', './master-layout-navigation.component-scrollable.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-master-layout-navigation'}
 })
 export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, AfterViewInit, OnDestroy {
@@ -77,7 +76,7 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 	}
 
 	private checkForExternalLinks(links: ObINavigationLink[]): void {
-		if (links && links.length) {
+		if (links?.length) {
 			links.forEach(link => {
 				link.isExternal = link.isExternal ?? /^https?:\/\//.test(link.url);
 				this.checkForExternalLinks(link.children);

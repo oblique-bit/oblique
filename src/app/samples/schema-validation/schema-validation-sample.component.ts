@@ -6,8 +6,7 @@ import {map} from 'rxjs/operators';
 import {ThemeService} from '../../common/theme.service';
 
 @Component({
-	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'ob-schema-validation',
+	selector: 'sc-schema-validation',
 	templateUrl: './schema-validation-sample.component.html',
 	styles: [
 		`
@@ -17,7 +16,7 @@ import {ThemeService} from '../../common/theme.service';
 		`
 	]
 })
-export class ObSchemaValidationSampleComponent implements OnInit {
+export class SchemaValidationSampleComponent implements OnInit {
 	material: Observable<boolean>;
 	materialTestForm: FormGroup;
 

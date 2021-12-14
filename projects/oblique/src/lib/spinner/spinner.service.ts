@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ObISpinnerEvent} from './spinner.model';
-import {Subject, Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 
 /**
  * SpinnerService (TODO: Rethink this concept)
@@ -40,12 +40,12 @@ export class ObSpinnerService {
 		}
 	}
 
-	public forceDeactivate(channel = ObSpinnerService.CHANNEL) {
+	public forceDeactivate(channel = ObSpinnerService.CHANNEL): void {
 		this.calls[channel] = 0;
 		this.deactivate(channel);
 	}
 
-	private broadcast(event: ObISpinnerEvent) {
+	private broadcast(event: ObISpinnerEvent): void {
 		this.events.next(event);
 	}
 
