@@ -28,6 +28,7 @@ __ngcc_entry_points__.json
 !.vscode/extensions.json
 
 # misc
+/.angular/cache
 /.sass-cache
 /connect.lock
 /coverage/*

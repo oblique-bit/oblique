@@ -3,7 +3,6 @@ delete require.cache[require.resolve('./package.json')];
 const fs = require('fs'),
 	gulp = require('gulp'),
 	git = require('gulp-git'),
-	gulpFile = require('gulp-file'),
 	header = require('gulp-header'),
 	replace = require('gulp-replace'),
 	sass = require('sass'),
@@ -45,16 +44,7 @@ const addBanner = () => {
 		.pipe(gulp.dest(paths.dist));
 }
 
-const distMeta = () => {
-	const output = require(`${paths.dist}/package.json`);
-
-	['version', 'description', 'keywords', 'author', 'contributors', 'homepage', 'repository', 'license', 'bugs', 'publishConfig']
-		.forEach(field => output[field] = pkg[field]);
-
-	return gulp.src(['README.md', 'CHANGELOG.md', 'LICENSE'])
-		.pipe(gulpFile('package.json', JSON.stringify(output, null, 2)))
-		.pipe(gulp.dest(paths.dist));
-};
+const distMeta = () => gulp.src(['README.md', 'CHANGELOG.md', 'LICENSE']).pipe(gulp.dest(paths.dist));
 
 const distCss = () => gulp.src(`${paths.dist}/styles/css/*`)
 	.pipe(replace(`${paths.fa}/webfonts`, `${paths.oblique}/fonts`))

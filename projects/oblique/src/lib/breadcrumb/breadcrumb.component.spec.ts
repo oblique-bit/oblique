@@ -12,7 +12,7 @@ import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObBreadcrumbComponent} from './breadcrumb.component';
 import {ObBreadcrumbConfig, ObIBreadcrumb, ObTBreadcrumbConfig} from './breadcrumb.model';
 
-describe('BreadcrumbComponent', () => {
+describe('ObBreadcrumbComponent', () => {
 	let component: ObBreadcrumbComponent;
 	let fixture: ComponentFixture<ObBreadcrumbComponent>;
 
@@ -109,7 +109,7 @@ describe('BreadcrumbComponent', () => {
 			expect(el.nativeElement.innerHTML.trim()).toBe('Path with Label');
 		});
 
-		it('should apply the seperator to routes with more than one path', () => {
+		it('should apply the separator to routes with more than one path', () => {
 			component.ngOnInit();
 
 			const el = fixture.debugElement.queryAll(By.css('li'))[3];
@@ -124,7 +124,8 @@ describe('BreadcrumbComponent', () => {
 			component.ngOnInit();
 
 			const el = fixture.debugElement.queryAll(By.css('a'))[i];
-			expect(el.properties.href).toBe(expected);
+			// NOTE: for un unknown reason, the "https://github.com" part is prepended to the actual URL. This is somewhat related to  https://github.com/angular/angular/blob/master/CHANGELOG.md#router-2
+			expect(el.properties.href).toBe(`https://github.com${expected}`);
 		});
 
 		it('should create', () => {
@@ -235,7 +236,8 @@ describe('BreadcrumbComponent', () => {
 			component.ngOnInit();
 
 			const el = fixture.debugElement.queryAll(By.css('a'))[i];
-			expect(el.properties.href).toBe(expected);
+			// NOTE: for un unknown reason, the "https://github.com" part is prepended to the actual URL. This is somewhat related to  https://github.com/angular/angular/blob/master/CHANGELOG.md#router-2
+			expect(el.properties.href).toBe(`https://github.com${expected}`);
 		});
 	});
 

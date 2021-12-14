@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "oblique-ng-add-schema",
+  "$id": "oblique-ng-add-schema",
   "title": "Oblique ng-add schema",
   "type": "object",
   "project": {
