@@ -1,8 +1,18 @@
-.mat-card {
-	max-width: 400px;
-	margin-bottom: 50px;
+@import '../../../../projects/oblique/src/styles/scss/core/variables';
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: $ob-spacing-sm;
+	align-items: flex-start;
+
+	> * {
+		flex: 1 1 400px;
+		max-width: 50%;
+	}
 }
+
 .mat-card-avatar {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
+	background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+	background-size: cover;
 }
