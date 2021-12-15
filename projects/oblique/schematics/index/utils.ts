@@ -9,28 +9,28 @@ const glob = require('glob');
 const angularJsonConfigPath = './angular.json/';
 
 export function error(msg: string): void {
-	throw new Error(`✖ Migration failed: ${msg}\n`);
+	throw new Error(`${colors.symbols.cross} Migration failed: ${msg}\n`);
 }
 
 export function infoText(context: SchematicContext, msg: string): void {
-	context.logger.info(colors.cyan(`** ${msg} **\n`));
+	context.logger.info(colors.cyanBright(`\n${colors.symbols.info} ${msg}\n`));
 }
 
 export function infoMigration(context: SchematicContext, msg: string): void {
-	context.logger.info(colors.black(`▸ ${msg}`));
+	context.logger.info(`${colors.symbols.pointer} ${msg}`);
 }
 
 export function success(context: SchematicContext, msg: string): void {
-	context.logger.info(colors.green(`\n✔ ${msg}\n`));
+	context.logger.info(colors.greenBright(`\n${colors.symbols.check} ${msg}\n`));
 }
 
 export function warn(context: SchematicContext, msg: string): void {
-	context.logger.info(colors.yellow(`\n! ${msg}\n`));
+	context.logger.info(colors.yellowBright(`\n${colors.symbols.warning} ${msg}\n`));
 }
 
 export function infoHighlights(context: SchematicContext, msg: string, ...highlights: string[]): void {
 	const message = highlights.reduce((text, highlight) => text.replace('%c', colors.bold(highlight)), msg);
-	context.logger.info(colors.black(`${message}\n`));
+	context.logger.info(`${message}\n`);
 }
 
 export function readFile(tree: Tree, fileName: string): string {
