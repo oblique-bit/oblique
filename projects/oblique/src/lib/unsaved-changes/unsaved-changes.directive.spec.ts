@@ -37,7 +37,6 @@ describe('UnsavedChangesDirective', () => {
 				ignoreChanges: jest.fn()
 			};
 
-			// noinspection JSIgnoredPromiseFromCall
 			TestBed.configureTestingModule({
 				declarations: [FaultyTestComponent, TestComponent, ObUnsavedChangesDirective],
 				providers: [ControlContainer, {provide: ObUnsavedChangesService, useValue: unsavedChangesServiceMock}],
