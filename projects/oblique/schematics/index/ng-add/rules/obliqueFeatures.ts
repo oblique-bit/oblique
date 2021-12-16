@@ -12,7 +12,7 @@ import {
 	routingModulePath
 } from '../ng-add-utils';
 import {ObIOptionsSchema} from '../ng-add.model';
-import {ObliquePackage, addAngularConfigInList, addFile, infoMigration, readFile} from '../../utils';
+import {ObliquePackage, addAngularConfigInList, addFile, createSafeRule, infoMigration, readFile} from '../../utils';
 
 export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
@@ -28,7 +28,7 @@ export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 }
 
 function addAjv(ajv: boolean): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (ajv) {
 			infoMigration(_context, 'Oblique feature: Adding schema validation');
 			addDevDependency(tree, 'ajv');
@@ -39,11 +39,11 @@ function addAjv(ajv: boolean): Rule {
 			}
 		}
 		return tree;
-	};
+	});
 }
 
 function addUnknownRoute(unknownRoute: boolean): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		const routingModule = tree.exists(routingModulePath) ? routingModulePath : appModulePath;
 		if (unknownRoute && tree.exists(routingModule)) {
 			infoMigration(_context, 'Oblique feature: Adding unknown route');
@@ -56,11 +56,11 @@ function addUnknownRoute(unknownRoute: boolean): Rule {
 			tree = applyChanges(tree, routingModule, changes);
 		}
 		return tree;
-	};
+	});
 }
 
 function addInterceptors(httpInterceptors: boolean): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (httpInterceptors) {
 			infoMigration(_context, 'Oblique feature: Adding http interceptor');
 			const obliqueInterceptorModuleName = 'ObHttpApiInterceptor';
@@ -74,18 +74,18 @@ function addInterceptors(httpInterceptors: boolean): Rule {
 			tree = applyChanges(tree, appModulePath, changes);
 		}
 		return tree;
-	};
+	});
 }
 
 function addBanner(banner: boolean): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (banner) {
 			infoMigration(_context, 'Oblique feature: Adding environment banner');
 			addBannerData(tree);
 			tree = provideBanner(tree);
 		}
 		return tree;
-	};
+	});
 }
 
 function addBannerData(tree: Tree): void {
@@ -114,12 +114,14 @@ function provideBanner(tree: Tree): Tree {
 }
 
 function addDefaultHomeComponent(prefix: string): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique feature: Adding default home component');
 		addDefaultComponent(tree, prefix);
 		addDefaultComponentToAppModule(tree);
 		addDefaultComponentRouteToAppRoutingModule(tree);
-	};
+
+		return tree;
+	});
 }
 
 function addDefaultComponent(tree: Tree, prefix: string): void {
@@ -157,7 +159,7 @@ function addDefaultComponentRouteToAppRoutingModule(tree: Tree): void {
 }
 
 function addExternalLink(externalLink: boolean): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (externalLink) {
 			infoMigration(_context, 'Oblique feature: Adding external link module');
 			const sourceFile = createSrcFile(tree, appModulePath);
@@ -165,11 +167,11 @@ function addExternalLink(externalLink: boolean): Rule {
 			return applyChanges(tree, appModulePath, changes);
 		}
 		return tree;
-	};
+	});
 }
 
 function addMandatory(mandatory: boolean): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (mandatory) {
 			infoMigration(_context, 'Oblique feature: Adding mandatory module');
 			const sourceFile = createSrcFile(tree, appModulePath);
@@ -177,5 +179,5 @@ function addMandatory(mandatory: boolean): Rule {
 			return applyChanges(tree, appModulePath, changes);
 		}
 		return tree;
-	};
+	});
 }

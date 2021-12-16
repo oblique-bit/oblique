@@ -1,7 +1,7 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {addDependency, appModulePath, getTemplate, importModuleInRoot, obliqueCssPath} from '../ng-add-utils';
 import {ObIOptionsSchema} from '../ng-add.model';
-import {ObliquePackage, addAngularConfigInList, getDefaultAngularConfig, infoMigration, readFile, setAngularProjectsConfig} from '../../utils';
+import {ObliquePackage, addAngularConfigInList, createSafeRule, getDefaultAngularConfig, infoMigration, readFile, setAngularProjectsConfig} from '../../utils';
 import {addLocales} from './locales';
 
 export function oblique(options: ObIOptionsSchema): Rule {
@@ -22,7 +22,7 @@ export function oblique(options: ObIOptionsSchema): Rule {
 }
 
 function addFavIcon(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Embedding favicon');
 		let index = getDefaultAngularConfig(tree, ['architect', 'build', 'options', 'index']);
 		if (!tree.exists(index)) {
@@ -38,11 +38,11 @@ function addFavIcon(): Rule {
 			);
 		}
 		return tree;
-	};
+	});
 }
 
 function embedMasterLayout(title: string): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Embedding Master Layout');
 		importModuleInRoot(tree, 'ObMasterLayoutModule', ObliquePackage);
 		importModuleInRoot(tree, 'BrowserAnimationsModule', '@angular/platform-browser/animations');
@@ -50,11 +50,11 @@ function embedMasterLayout(title: string): Rule {
 		addComment(tree);
 
 		return tree;
-	};
+	});
 }
 
 function addFeatureDetection(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Adding browser compatibility check');
 		let index = getDefaultAngularConfig(tree, ['architect', 'build', 'options', 'index']);
 		if (!tree.exists(index)) {
@@ -64,11 +64,11 @@ function addFeatureDetection(): Rule {
 			tree.overwrite(index, readFile(tree, index).replace('<body>\n', `<body>\n${getTemplate(tree, 'default-index.html')}`));
 		}
 		return addAngularConfigInList(tree, ['architect', 'build', 'options', 'scripts'], 'node_modules/@oblique/oblique/ob-features.js');
-	};
+	});
 }
 
 function addMainCSS(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Adding main CSS');
 		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) => {
 			const index = config.indexOf(obliqueCssPath.replace('css/oblique-core.css', 'scss/oblique-core.scss'));
@@ -80,19 +80,19 @@ function addMainCSS(): Rule {
 			}
 			return config;
 		});
-	};
+	});
 }
 
 function addTheme(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Adding theme CSS');
 		addThemeDependencies(tree);
 		return addThemeCSS(tree);
-	};
+	});
 }
 
 function addObliqueAssets(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Adding assets');
 		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => [
 			{
@@ -102,11 +102,11 @@ function addObliqueAssets(): Rule {
 			},
 			...config
 		]);
-	};
+	});
 }
 
 function addFontStyle(font: string): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (font !== 'none') {
 			infoMigration(_context, 'Oblique: Adding font');
 			const styleSheet = `node_modules/@oblique/oblique/styles/css/${font}.css`;
@@ -118,12 +118,12 @@ function addFontStyle(font: string): Rule {
 			});
 		}
 		return tree;
-	};
+	});
 }
 
 function addFontFiles(font: string): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (font === 'roboto') {
 			setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => {
 				config.splice(1, 0, {
@@ -135,11 +135,11 @@ function addFontFiles(font: string): Rule {
 			});
 		}
 		return tree;
-	};
+	});
 }
 
 function addScssImport(stylesPath: string): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (tree.exists(stylesPath)) {
 			infoMigration(_context, 'Oblique: Importing variables into main SCSS file');
 			const layoutContent = readFile(tree, stylesPath);
@@ -149,7 +149,7 @@ function addScssImport(stylesPath: string): Rule {
 			}
 		}
 		return tree;
-	};
+	});
 }
 
 function addThemeDependencies(tree: Tree): void {

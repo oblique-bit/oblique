@@ -1,7 +1,7 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {addDependency, checkPrecondition, getPreconditionVersion} from './ng-add-utils';
 import {ObIOptionsSchema} from './ng-add.model';
-import {infoMigration, infoText, installDependencies, success, warn} from '../utils';
+import {createSafeRule, infoMigration, infoText, installDependencies, isSuccessful, success, warn} from '../utils';
 import {obliqueFeatures} from './rules/obliqueFeatures';
 import {toolchain} from './rules/toolchain';
 import {oblique} from './rules/oblique';
@@ -45,7 +45,7 @@ function installPopperjsIfMissing(tree: Tree, context: SchematicContext): void {
 }
 
 function finalize(options: ObIOptionsSchema): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		/* eslint-disable max-len */
 		const text =
 			options.font === 'frutiger'
@@ -54,7 +54,12 @@ function finalize(options: ObIOptionsSchema): Rule {
 		/* eslint-enable max-len */
 
 		warn(_context, text);
-		success(_context, 'Oblique has been successfully integrated. Please review the changes.');
+		if (isSuccessful) {
+			success(_context, 'Oblique has been successfully integrated. Please review the changes.');
+		} else {
+			warn(_context, 'Oblique has only been partially integrated. Please check for warnings in the console and review the changes.');
+		}
+
 		return tree;
-	};
+	});
 }
