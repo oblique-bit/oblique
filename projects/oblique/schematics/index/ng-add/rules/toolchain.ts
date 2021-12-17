@@ -9,7 +9,8 @@ import {
 	readFile,
 	removeAngularProjectsConfig,
 	setAngularProjectsConfig,
-	setRootAngularConfig
+	setRootAngularConfig,
+	writeFile
 } from '../../utils';
 import {addJest, addProtractor} from './tests';
 import {jenkins} from './jenkins';
@@ -28,6 +29,7 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 			addProtractor(options.protractor, options.jest),
 			addSonar(options.sonar, options.jest),
 			jenkins(options.jenkins, options.static, options.jest),
+			updateEditorConfig(options.eslint),
 			addEslint(options.eslint),
 			addPrettier(options.eslint),
 			overwriteEslintRC(options.eslint, options.prefix),
@@ -133,6 +135,16 @@ function addSonar(sonar: boolean, jest: boolean): Rule {
 	});
 }
 
+function updateEditorConfig(eslint: boolean): Rule {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+		if (eslint) {
+			infoMigration(_context, 'Toolchain: update ".editorconfig"');
+			writeFile(tree, '.editorconfig', getTemplate(tree, 'default-editorconfig.config'));
+		}
+		return tree;
+	});
+}
+
 function addEslint(eslint: boolean): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (eslint) {
@@ -149,7 +161,7 @@ function addPrettier(eslint: boolean): Rule {
 			infoMigration(_context, 'Toolchain: Adding "prettier"');
 			['prettier', 'eslint-config-prettier', 'eslint-plugin-prettier'].forEach(dependency => addDevDependency(tree, dependency));
 			addScript(tree, 'format', 'npm run lint -- --fix');
-			addFile(tree, '.prettierrc', getTemplate(tree, 'default-prettierrc.config'));
+			writeFile(tree, '.prettierrc', getTemplate(tree, 'default-prettierrc.config'));
 		}
 		return tree;
 	});
@@ -159,7 +171,7 @@ function overwriteEslintRC(eslint: boolean, prefix: string): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (eslint) {
 			infoMigration(_context, 'Toolchain: overwrite ".eslintrc.json"');
-			tree.overwrite('.eslintrc.json', formatEsLintRC(tree, prefix));
+			writeFile(tree, '.eslintrc.json', formatEsLintRC(tree, prefix));
 		}
 		return tree;
 	});
