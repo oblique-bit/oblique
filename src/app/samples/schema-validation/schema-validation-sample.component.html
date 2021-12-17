@@ -36,12 +36,7 @@
 						<h3 class="card-title d-flex justify-content-between">
 							Preview with template driven form
 							<span class="fa fa-check text-success" ngbTooltip="Form is valid" placement="bottom" *ngIf="templateForm.valid"></span>
-							<span
-								class="fa fa-exclamation-triangle text-danger"
-								ngbTooltip="Form is not valid"
-								placement="bottom"
-								*ngIf="!templateForm.valid"
-							></span>
+							<span class="fa fa-exclamation-triangle text-danger" ngbTooltip="Form is not valid" placement="bottom" *ngIf="!templateForm.valid"></span>
 						</h3>
 					</div>
 					<div class="card-body">
@@ -236,24 +231,12 @@
 				<pre>{{ templateForm.value | json }}</pre>
 			</div>
 			<div class="col">
-				<form
-					class="form-horizontal has-validation card"
-					role="form"
-					[obSchemaValidation]="schema"
-					[formGroup]="formData"
-					(submit)="check()"
-					(reset)="reset()"
-				>
+				<form class="form-horizontal has-validation card" role="form" [obSchemaValidation]="schema" [formGroup]="formData" (submit)="check()" (reset)="reset()">
 					<div class="card-header">
 						<h3 class="card-title d-flex justify-content-between">
 							Preview with reactive form
 							<span class="fa fa-check text-success" ngbTooltip="Form is valid" placement="bottom" *ngIf="formData.valid"></span>
-							<span
-								class="fa fa-exclamation-triangle text-danger"
-								ngbTooltip="Form is not valid"
-								placement="bottom"
-								*ngIf="!formData.valid"
-							></span>
+							<span class="fa fa-exclamation-triangle text-danger" ngbTooltip="Form is not valid" placement="bottom" *ngIf="!formData.valid"></span>
 						</h3>
 					</div>
 					<div class="card-body">
@@ -323,14 +306,7 @@
 						<div obFormControlState class="row form-group">
 							<label class="col-3 col-form-label">Textarea</label>
 							<div class="col-8">
-								<textarea
-									formControlName="textarea"
-									type="text"
-									class="form-control"
-									placeholder="Textarea"
-									rows="1"
-									obSchemaValidate
-								></textarea>
+								<textarea formControlName="textarea" type="text" class="form-control" placeholder="Textarea" rows="1" obSchemaValidate></textarea>
 								<ob-error-messages></ob-error-messages>
 							</div>
 							<div class="col-1">

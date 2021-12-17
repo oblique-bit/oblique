@@ -19,14 +19,7 @@
 			<div *ngIf="messageWithParams" class="row">
 				<div class="form-group col-12">
 					<label for="or-notification-translation-key" class="form-control-label">Message key</label>
-					<input
-						[(ngModel)]="messageKey"
-						type="text"
-						disabled
-						id="or-notification-translation-key"
-						class="form-control"
-						placeholder="Notification title..."
-					/>
+					<input [(ngModel)]="messageKey" type="text" disabled id="or-notification-translation-key" class="form-control" placeholder="Notification title..." />
 					<p class="help-block" ngNonBindable>This {{ message }} do accepts 2 {{ parameters }} .</p>
 				</div>
 				<div class="form-group col">
