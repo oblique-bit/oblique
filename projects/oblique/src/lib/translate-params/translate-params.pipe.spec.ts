@@ -5,9 +5,7 @@ import {TestBed, inject} from '@angular/core/testing';
 describe('TranslateParamsPipe', () => {
 	beforeEach(() => {
 		const mockTranslate = {
-			instant: jest
-				.fn()
-				.mockImplementation((value: string, arg?: {value: string}) => (typeof arg === 'object' ? value.replace('{{value}}', arg.value) : value))
+			instant: jest.fn().mockImplementation((value: string, arg?: {value: string}) => (typeof arg === 'object' ? value.replace('{{value}}', arg.value) : value))
 		};
 		TestBed.configureTestingModule({
 			providers: [{provide: TranslateService, useValue: mockTranslate}]

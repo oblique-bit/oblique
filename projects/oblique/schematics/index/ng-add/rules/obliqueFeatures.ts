@@ -90,7 +90,8 @@ function addBanner(banner: boolean): Rule {
 
 function addBannerData(tree: Tree): void {
 	const src = 'src/environments';
-	tree.getDir(src)
+	tree
+		.getDir(src)
 		.subfiles.map(file => `${src}/${file}`)
 		.forEach(file => {
 			const env = /environment\.(?<env>.*)\.ts/.exec(file)?.groups?.env || 'local';

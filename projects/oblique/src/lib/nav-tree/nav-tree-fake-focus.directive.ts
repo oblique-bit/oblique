@@ -63,9 +63,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 
 	public constructor(private readonly element: ElementRef, private readonly renderer: Renderer2) {
 		if (this.element.nativeElement.localName !== 'ob-nav-tree') {
-			throw new Error(
-				`Directive nav-tree-selector can only be used on ob-nav-tree elements. Current element is: '${this.element.nativeElement.localName}'`
-			);
+			throw new Error(`Directive nav-tree-selector can only be used on ob-nav-tree elements. Current element is: '${this.element.nativeElement.localName}'`);
 		}
 		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.DOWN] = () => this.focusNext();
 		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.UP] = event => this.focusPrevious(event);
@@ -114,9 +112,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 		this.eventSubscriptions.push(
 			this.renderer.listen(this.inputElement.nativeElement, ObNavTreeFakeFocusDirective.INPUT_EVENTS.KEY_DOWN, event => debouncer.next(event))
 		);
-		this.eventSubscriptions.push(
-			this.renderer.listen(this.inputElement.nativeElement, ObNavTreeFakeFocusDirective.INPUT_EVENTS.BLUR, () => this.onBlur(true))
-		);
+		this.eventSubscriptions.push(this.renderer.listen(this.inputElement.nativeElement, ObNavTreeFakeFocusDirective.INPUT_EVENTS.BLUR, () => this.onBlur(true)));
 	}
 
 	private onKeyDown(event: KeyboardEvent) {

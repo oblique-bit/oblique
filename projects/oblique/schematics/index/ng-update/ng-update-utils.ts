@@ -14,8 +14,7 @@ export function checkDependencies(tree: Tree, _context: SchematicContext, deps: 
 	if (warnings.length) {
 		warn(
 			_context,
-			`Unmet peer dependencies.\n  Following peers are required by Oblique but were not found:${warnings}.` +
-				`\n  You must install peer dependencies yourself.`
+			`Unmet peer dependencies.\n  Following peers are required by Oblique but were not found:${warnings}.\n  You must install peer dependencies yourself.`
 		);
 	}
 }

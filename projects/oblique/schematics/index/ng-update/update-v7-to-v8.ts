@@ -1,4 +1,4 @@
-import {chain, externalSchematic, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {Rule, SchematicContext, Tree, chain, externalSchematic} from '@angular-devkit/schematics';
 import {addDevDependency, addScript, getTemplate, removeDevDependencies, removeScript} from '../ng-add/ng-add-utils';
 import {
 	addAngularConfigInList,
@@ -486,7 +486,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 			const prefix =
 				/\s*"@angular-eslint\/(?:component|directive)-selector"\s*:\s*\[.*?"prefix"\s*:\s*"(?<prefix>.*?)"/s.exec(readFile(tree, '.eslintrc.json'))?.groups
 					?.prefix || '';
-			return chain([this.removeCurrentLinter(), this.addEslint(), this.addEslintConfiguration() , this.addPrettier(), this.overwriteEslintRC(prefix)]);
+			return chain([this.removeCurrentLinter(), this.addEslint(), this.addEslintConfiguration(), this.addPrettier(), this.overwriteEslintRC(prefix)]);
 		});
 	}
 
@@ -522,7 +522,6 @@ export class UpdateV7toV8 implements ObIMigrations {
 			// and prior to Angular 13, an e2e projects was always created.
 			infoMigration(_context, 'Toolchain: add "@angular-eslint" configuration');
 			getAngularConfigs(tree, []).forEach(project => {
-				console.log(project);
 				const rootPath = project.config.root || project.config.sourceRoot;
 				setAngularConfig(tree, ['architect', 'lint'], {
 					project: project.project,
