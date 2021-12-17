@@ -28,9 +28,7 @@ export class ObInputClearDirective implements OnInit {
 
 	ngOnInit() {
 		if (!(this.control instanceof HTMLInputElement) && !(this.control instanceof FormControl) && !(this.control instanceof NgModel)) {
-			console.warn(
-				'ObInputClearDirective: illegal value for obInputClear Input, please use one of the following: HTMLInputElement, FormControl or NgModel.'
-			);
+			console.warn('ObInputClearDirective: illegal value for obInputClear Input, please use one of the following: HTMLInputElement, FormControl or NgModel.');
 		}
 	}
 

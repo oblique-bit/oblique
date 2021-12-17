@@ -116,7 +116,7 @@
       "type": "boolean",
       "default": true,
       "description": "ESLint & Prettier",
-      "x-prompt": "[18 / 19] Add eslint & prettier and configure them as the Oblique team?"
+      "x-prompt": "[18 / 19] Add eslint & prettier and configure them like the Oblique team?"
     },
     "husky": {
       "type": "boolean",

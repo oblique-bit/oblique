@@ -2,14 +2,18 @@ import {Rule, SchematicContext, Tree, chain, externalSchematic} from '@angular-d
 import {addDevDependency, addScript, getTemplate, removeDevDependencies, removeScript} from '../ng-add/ng-add-utils';
 import {
 	addAngularConfigInList,
-	addFile,
 	applyInTree,
 	createSafeRule,
+	deleteFile,
+	getAngularConfigs,
 	getDefaultAngularConfig,
 	infoMigration,
 	readFile,
+	removeAngularProjectsConfig,
 	replaceInFile,
-	setAngularProjectsConfig
+	setAngularConfig,
+	setAngularProjectsConfig,
+	writeFile
 } from '../utils';
 import {ObIDependencies, ObIMigrations} from './ng-update.model';
 
@@ -34,7 +38,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 				this.migrateObEMasterLayoutEventValues(),
 				this.migrateConfigEvents(),
 				this.updateBrowserCompatibilityMessage(),
-				this.migrateExistingEslint()
+				this.migrateEditorConfig(),
+				this.migrateLinting()
 			])(tree, _context);
 		};
 	}
@@ -467,44 +472,78 @@ export class UpdateV7toV8 implements ObIMigrations {
 		});
 	}
 
-	private migrateExistingEslint(): Rule {
+	private migrateEditorConfig(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			if (tree.exists('.eslintrc.json') && tree.exists('.prettierrc')) {
-				infoMigration(_context, 'Toolchain: update linting to Oblique standards');
-				const prefix =
-					/\s*"@angular-eslint\/(?:component|directive)-selector"\s*:\s*\[.*?"prefix"\s*:\s*"(?<prefix>.*?)"/s.exec(readFile(tree, '.eslintrc.json'))
-						?.groups?.prefix || '';
-				return chain([this.removeCurrentObliqueLinting(), this.addEslint(), this.addPrettier(), this.overwriteEslintRC(prefix), this.lintHTML()]);
-			}
+			infoMigration(_context, 'Toolchain: update or integrate "editorconfig" to Oblique standards"');
+			writeFile(tree, '.editorconfig', getTemplate(tree, 'default-editorconfig.config'));
 			return tree;
 		});
 	}
 
-	private removeCurrentObliqueLinting(): Rule {
+	private migrateLinting(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Toolchain: Removing the actual linting script and dependencies');
+			infoMigration(_context, 'Toolchain: update or integrate linting to Oblique standards');
+			const prefix =
+				/\s*"@angular-eslint\/(?:component|directive)-selector"\s*:\s*\[.*?"prefix"\s*:\s*"(?<prefix>.*?)"/s.exec(readFile(tree, '.eslintrc.json'))?.groups
+					?.prefix || '';
+			return chain([this.removeCurrentLinter(), this.addEslint(), this.addEslintConfiguration(), this.addPrettier(), this.overwriteEslintRC(prefix)]);
+		});
+	}
+
+	private removeCurrentLinter(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Toolchain: remove the current linting solution if any');
 			removeDevDependencies(tree, 'lint');
 			removeScript(tree, 'prettier');
 			removeScript(tree, 'lint');
 			removeScript(tree, 'lint:fix');
 			removeScript(tree, 'format');
+			deleteFile(tree, '.eslintrc.json');
+			deleteFile(tree, '.prettierrc');
+			removeAngularProjectsConfig(tree, ['architect', 'lint']);
+
+			// remove eventual leftover
+			removeDevDependencies(tree, 'codelyzer');
+			tree.delete('tslint.json');
 			return tree;
 		});
 	}
 
 	private addEslint(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Toolchain: Adding "eslint"');
+			infoMigration(_context, 'Toolchain: add "eslint"');
 			return externalSchematic('@angular-eslint/schematics', 'ng-add', {});
+		});
+	}
+
+	private addEslintConfiguration(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			// this step is only necessary because "ng add @angular-eslint" won't do it if there are more than one projects
+			// and prior to Angular 13, an e2e projects was always created.
+			infoMigration(_context, 'Toolchain: add "@angular-eslint" configuration');
+			getAngularConfigs(tree, []).forEach(project => {
+				const rootPath = project.config.root || project.config.sourceRoot;
+				setAngularConfig(tree, ['architect', 'lint'], {
+					project: project.project,
+					config: {
+						builder: '@angular-eslint/builder:lint',
+						options: {
+							lintFilePatterns: [`${rootPath}/**/*.ts`, `${rootPath}/**/*.html`]
+						}
+					}
+				});
+			});
+
+			return tree;
 		});
 	}
 
 	private addPrettier(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Toolchain: Adding "prettier"');
+			infoMigration(_context, 'Toolchain: add "prettier"');
 			['prettier', 'eslint-config-prettier', 'eslint-plugin-prettier'].forEach(dependency => addDevDependency(tree, dependency));
 			addScript(tree, 'format', 'npm run lint -- --fix');
-			addFile(tree, '.prettierrc', getTemplate(tree, 'default-prettierrc.config'));
+			writeFile(tree, '.prettierrc', getTemplate(tree, 'default-prettierrc.config'));
 			return tree;
 		});
 	}
@@ -512,15 +551,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private overwriteEslintRC(prefix: string): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Toolchain: overwrite ".eslintrc.json"');
-			tree.overwrite('.eslintrc.json', this.formatEsLintRC(tree, prefix));
+			writeFile(tree, '.eslintrc.json', this.formatEsLintRC(tree, prefix));
 			return tree;
-		});
-	}
-
-	private lintHTML(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Toolchain: ensure html files are linted');
-			return addAngularConfigInList(tree, ['architect', 'lint', 'options', 'lintFilePatterns'], 'src/**/*.html');
 		});
 	}
 

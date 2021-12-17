@@ -32,11 +32,7 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	readonly COLUMN_ACTION = 'action';
 	private subscription: Subscription;
 
-	constructor(
-		private readonly fileUploadService: ObFileUploadService,
-		private readonly popup: ObPopUpService,
-		private readonly translate: TranslateService
-	) {}
+	constructor(private readonly fileUploadService: ObFileUploadService, private readonly popup: ObPopUpService, private readonly translate: TranslateService) {}
 
 	@Input() mapFunction = (files: ObIFileDescription[]): ObIFileDescription[] => files;
 

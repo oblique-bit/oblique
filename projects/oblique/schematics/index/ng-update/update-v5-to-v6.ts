@@ -357,13 +357,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 					'highlight',
 					'slide-control'
 				]);
-				renameExactOrSuffix(
-					tree,
-					filePath,
-					'application',
-					['navigation', 'header', 'fixed', 'brand', 'footer', 'scrolling', 'content'],
-					'ob-master-layout'
-				);
+				renameExactOrSuffix(tree, filePath, 'application', ['navigation', 'header', 'fixed', 'brand', 'footer', 'scrolling', 'content'], 'ob-master-layout');
 				renameExactOrSuffix(tree, filePath, 'offcanvas', ['sidebar', 'main', 'in', 'header', 'content', 'backdrop'], 'ob-off-canvas');
 			};
 			return applyInTree(tree, apply, '*.scss');
