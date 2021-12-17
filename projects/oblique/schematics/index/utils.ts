@@ -63,6 +63,16 @@ export function addFile(tree: Tree, fileName: string, content: string | Buffer |
 	}
 }
 
+export function writeFile(tree: Tree, fileName: string, content: string | Buffer | null): void {
+	if (content) {
+		if (tree.exists(fileName) && content) {
+			tree.overwrite(fileName, content);
+		} else {
+			tree.create(fileName, content);
+		}
+	}
+}
+
 export function deleteFile(tree: Tree, fileName: string): Tree {
 	if (tree.exists(fileName)) {
 		tree.delete(fileName);
