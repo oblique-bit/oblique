@@ -34,6 +34,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 				this.removeDlHorizontalVariants(),
 				this.removeCompatCss(),
 				this.removeThemeService(),
+				this.removeObMandatory(),
 				this.migrateMasterLayoutProperties(),
 				this.migrateObEMasterLayoutEventValues(),
 				this.migrateConfigEvents(),
@@ -258,6 +259,16 @@ export class UpdateV7toV8 implements ObIMigrations {
 				replaceInFile(tree, filePath, /(?:ob-)?layout-collapse-(up|down)(?:\(\))?/g, `ob-media-breakpoint-$1(md)`);
 			};
 			return applyInTree(tree, apply, '*.scss');
+		});
+	}
+
+	private removeObMandatory(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove ObMandatoryModule, ObMandatoryDirective and their Testing-Mocks');
+			const apply = (filePath: string) => {
+				replaceInFile(tree, filePath, new RegExp(/\s?(Ob(?:Mock)?Mandatory(?:Module|Directive),?)/g), '');
+			};
+			return applyInTree(tree, apply, '*.ts');
 		});
 	}
 

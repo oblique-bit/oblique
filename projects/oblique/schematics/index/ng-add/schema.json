@@ -58,12 +58,6 @@
       "description": "External link",
       "x-prompt": "[8 / 19] Add the ObExternalLinkModule? It will transparently and automatically enhance external links."
     },
-    "mandatory": {
-      "type": "boolean",
-      "default": true,
-      "description": "Mandatory",
-      "x-prompt": "[9 / 19] Add the ObMandatoryModule? It will transparently and automatically enhance input fields from reactive forms with material design with the required asterisk."
-    },
     "prefix": {
       "type": "string",
       "default": "app",

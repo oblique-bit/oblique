@@ -37,7 +37,6 @@ import {ObMockUnsavedChangesModule} from './unsaved-changes/_mocks/mock-unsaved-
 import {WINDOW} from './utilities';
 import {ObMockButtonModule} from './button/_mocks/mock-button.module';
 import {ObMockAlertModule} from './alert/_mocks/mock-alert.module';
-import {ObMockMandatoryModule} from './mandatory/_mocks/mock-mandatory.module';
 import {ObMockBreadcrumbModule} from './breadcrumb/_mocks/mock-breadcrumb.module';
 
 export {ObMockBreadcrumbModule, ObMockBreadcrumbComponent} from './breadcrumb/_mocks/mock-breadcrumb.module';
@@ -73,7 +72,6 @@ export {ObMockFormControlStateModule, ObMockFormControlStateDirective} from './f
 export {ObMockDatePipe, ObMockLanguageModule} from './language/_mocks/mock-language.module';
 export {ObMockIconModule, ObMockIconService, ObMockIconComponent} from './icon/_mocks/mock-icon.module';
 export {ObMockInputClearModule, ObMockInputClearDirective} from './input-clear/_mocks/mock-input-clear.module';
-export {ObMockMandatoryModule, ObMockMandatoryDirective} from './mandatory/_mocks/mock-mandatory.module';
 export {
 	ObMockMasterLayoutModule,
 	ObMockMasterLayoutConfig,
@@ -163,7 +161,6 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockFormControlStateModule,
 	ObMockHttpApiInterceptorModule,
 	ObMockIconModule,
-	ObMockMandatoryModule,
 	ObMockMasterLayoutModule,
 	ObMockMultiselectModule,
 	ObMockNavTreeModule,
