@@ -2,7 +2,6 @@
 @use "../core/variables" as core-variables;
 @use "material/material-palette";
 @use "material/variables";
-@import "~@angular/material/theming";
 
 @include mat.core(mat.define-typography-config($font-family: core-variables.$ob-font));
 @include mat.all-component-themes(
