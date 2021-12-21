@@ -1,5 +1,5 @@
-@import "../../core/variables";
-@import "./mixins/mat-button";
+@use "../../core/variables" as core-variables;
+@use "mixins/mat-button";
 
 .mat-button-base {
 	&.ob-button:not(.ob-button-card) {
@@ -8,30 +8,30 @@
 
 		&.mat-primary {
 			&.mat-flat-button {
-				@include ob-button($ob-gray-extra-light);
-				background-color: $ob-primary;
+				@include mat-button.ob-button(core-variables.$ob-gray-extra-light);
+				background-color: core-variables.$ob-primary;
 
 				&.mat-button-disabled {
-					color: $ob-gray-600;
-					background-color: $ob-gray-lighter;
+					color: core-variables.$ob-gray-600;
+					background-color: core-variables.$ob-gray-lighter;
 				}
 			}
 
 			&.mat-stroked-button {
-				@include ob-button($ob-primary);
-				border-color: $ob-primary;
+				@include mat-button.ob-button(core-variables.$ob-primary);
+				border-color: core-variables.$ob-primary;
 
 				&.mat-button-disabled {
-					color: $ob-gray-500;
-					border-color: $ob-gray-500;
+					color: core-variables.$ob-gray-500;
+					border-color: core-variables.$ob-gray-500;
 				}
 			}
 
 			&:not(.mat-flat-button):not(.mat-stroked-button) {
-				@include ob-button($ob-primary);
+				@include mat-button.ob-button(core-variables.$ob-primary);
 
 				&.mat-button-disabled {
-					color: $ob-gray-500;
+					color: core-variables.$ob-gray-500;
 				}
 			}
 		}

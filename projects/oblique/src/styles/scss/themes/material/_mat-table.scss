@@ -1,4 +1,5 @@
-@import "../../core/variables";
+@use "sass:selector";
+@use "../../core";
 
 .mat-table {
 	&.ob-table {
@@ -13,25 +14,25 @@
 		.mat-footer-cell,
 		.mat-header-cell {
 			font-size: inherit;
-			padding: $ob-spacing-sm;
+			padding: core.$ob-spacing-sm;
 
-			@at-root #{selector-append(".ob-table-sm", &)} {
-				padding: $ob-spacing-xs;
+			@at-root #{selector.append(".ob-table-sm", &)} {
+				padding: core.$ob-spacing-xs;
 			}
 
-			@at-root #{selector-append(".ob-table-lg", &)} {
-				padding: $ob-spacing-default;
+			@at-root #{selector.append(".ob-table-lg", &)} {
+				padding: core.$ob-spacing-default;
 			}
 		}
 
-		@at-root #{selector-append("mat-table", &)}:not(.table-plain) .mat-row:nth-child(odd) {
-			background-color: $ob-gray-extra-light;
+		@at-root #{selector.append("mat-table", &)}:not(.table-plain) .mat-row:nth-child(odd) {
+			background-color: core.$ob-gray-extra-light;
 		}
 	}
 
 	.mat-header-row {
 		button, .mat-sort-header-arrow {
-			color: $ob-black;
+			color: core.$ob-black;
 			font-size: 14px;
 		}
 	}
@@ -42,15 +43,15 @@
 	.mat-row,
 	.mat-header-row,
 	.mat-footer-row {
-		border-color: $ob-gray;
+		border-color: core.$ob-gray;
 
 		.mat-cell {
-			color: $ob-default;
+			color: core.$ob-default;
 		}
 	}
 
 	.mat-row:hover {
-		background-color: $ob-extra-light;
+		background-color: core.$ob-extra-light;
 	}
 
 	.mat-sort-header {

@@ -1,13 +1,13 @@
-@import "../../../styles/scss/core/variables";
-@import "../../../styles/scss/core/mixins/layout";
-@import "../../../styles/scss/core/mixins/nav";
-@import "../../../styles/scss/core/mixins/button";
-@import "../../../styles/scss/core/mixins/shadow";
+@use "../../../styles/scss/core/variables";
+@use "../../../styles/scss/core/mixins/layout";
+@use "../../../styles/scss/core/mixins/nav";
+@use "../../../styles/scss/core/mixins/button";
+@use "../../../styles/scss/core/mixins/shadow";
 
 .ob-master-layout-navigation {
 	flex-grow: 1;
 
-	@include ob-media-breakpoint-down(md) {
+	@include layout.ob-media-breakpoint-down(md) {
 		display: none;
 
 		.ob-header-expanded & {
@@ -33,18 +33,18 @@
 		margin: 0;
 		padding: 0;
 		list-style: none;
-		background-color: $ob-gray-extra-light;
-		@include ob-innerBottomShadow();
+		background-color: variables.$ob-gray-extra-light;
+		@include shadow.ob-innerBottomShadow();
 
 		&:not(.ob-sub-nav) {
-			@include ob-media-breakpoint-up(md) {
+			@include layout.ob-media-breakpoint-up(md) {
 				flex-direction: row;
-				padding-left: $ob-spacing-default;
+				padding-left: variables.$ob-spacing-default;
 			}
 		}
 
 		button {
-			@include ob-link-btn;
+			@include button.ob-link-btn;
 		}
 
 		a, button {
@@ -52,17 +52,17 @@
 			justify-content: space-between;
 			width: 100%;
 			margin: 0;
-			padding: $ob-spacing-sm $ob-spacing-default;
-			border-bottom: 1px solid $ob-gray-light;
-			color: $ob-default;
-			background-color: $ob-white;
+			padding: variables.$ob-spacing-sm variables.$ob-spacing-default;
+			border-bottom: 1px solid variables.$ob-gray-light;
+			color: variables.$ob-default;
+			background-color: variables.$ob-white;
 			text-decoration: none;
 			cursor: pointer;
-			@include ob-nav-hover(-1);
+			@include nav.ob-nav-hover(-1);
 
-			@include ob-media-breakpoint-up(md) {
+			@include layout.ob-media-breakpoint-up(md) {
 				border: 0 none;
-				padding: $ob-spacing-sm $ob-spacing-default;
+				padding: variables.$ob-spacing-sm variables.$ob-spacing-default;
 
 				&.active,
 				&:active,
@@ -78,23 +78,23 @@
 
 		// First level only:
 		> .ob-main-nav-item {
-			@include ob-media-breakpoint-up(md) {
+			@include layout.ob-media-breakpoint-up(md) {
 				> a,
 				> button {
 					display: inline-flex;
-					padding: $ob-spacing-default;
+					padding: variables.$ob-spacing-default;
 					white-space: nowrap;
-					font-size: $ob-font-size-sm;
+					font-size: variables.$ob-font-size-sm;
 					background-color: transparent;
 
 					&.active {
-						background-color: $ob-white;
+						background-color: variables.$ob-white;
 					}
 
 					&:active,
 					&:hover,
 					&:focus {
-						background-color: $ob-gray-light;
+						background-color: variables.$ob-gray-light;
 					}
 
 					&::after {
@@ -105,20 +105,20 @@
 		}
 
 		.ob-toggle-layout-collapsed {
-			@include ob-media-breakpoint-up(md) {
+			@include layout.ob-media-breakpoint-up(md) {
 				display: none;
 			}
 		}
 
 		.ob-toggle-collapsed,
 		.ob-toggle-expanded {
-			margin-left: $ob-spacing-sm;
-			@include ob-media-breakpoint-down(md) {
+			margin-left: variables.$ob-spacing-sm;
+			@include layout.ob-media-breakpoint-down(md) {
 				display: none;
 			}
 		}
 
-		@include ob-media-breakpoint-up(md) {
+		@include layout.ob-media-breakpoint-up(md) {
 			.ob-master-layout-navigation-toggle {
 				&[aria-expanded] .ob-toggle-collapsed,
 				&:not([aria-expanded]) .ob-toggle-expanded {
@@ -144,11 +144,11 @@
 			border: none;
 			overflow-y: auto;
 			overflow-x: hidden;
-			z-index: $ob-z-index-controls;
+			z-index: variables.$ob-z-index-controls;
 			transform: translateX(105%);
-			transition: visibility $ob-duration-default, transform $ob-duration-default;
+			transition: visibility variables.$ob-duration-default, transform variables.$ob-duration-default;
 
-			@include ob-media-breakpoint-up(md) {
+			@include layout.ob-media-breakpoint-up(md) {
 				position: absolute;
 				top: 100%;
 				bottom: auto;
@@ -158,14 +158,14 @@
 				max-height: 60vh;
 				overflow-x: hidden;
 				overflow-y: auto;
-				background-color: $ob-white;
+				background-color: variables.$ob-white;
 				transform: none;
 				transition: none;
 				display: block;
-				@include ob-dropShadow();
+				@include shadow.ob-dropShadow();
 			}
 
-			@include ob-media-breakpoint-down(md) {
+			@include layout.ob-media-breakpoint-down(md) {
 				> ul > li:last-child {
 					// [iOS only] Simulate a bottom spacing to ensure that last item is reachable when scrolling the menu and does not display under the MobileSafari tools menu:
 					margin-bottom: 70px;
@@ -173,7 +173,7 @@
 			}
 		}
 
-		@include ob-media-breakpoint-up(md) {
+		@include layout.ob-media-breakpoint-up(md) {
 			&.ob-main-nav-fw .ob-sub-menu {
 				left: 0;
 				right: 0;
@@ -190,15 +190,15 @@
 		}
 
 		.ob-sub-nav {
-			@include ob-media-breakpoint-up(md) {
-				background-color: $ob-white;
+			@include layout.ob-media-breakpoint-up(md) {
+				background-color: variables.$ob-white;
 			}
 		}
 
 		& .ob-expanded > .ob-sub-menu {
 			visibility: visible;
 
-			@include ob-media-breakpoint-down(md) {
+			@include layout.ob-media-breakpoint-down(md) {
 				transform: translateX(0%);
 			}
 		}
@@ -209,9 +209,9 @@
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
-			background-color: $ob-white;
+			background-color: variables.$ob-white;
 
-			@include ob-media-breakpoint-up(md) {
+			@include layout.ob-media-breakpoint-up(md) {
 				display: none;
 			}
 

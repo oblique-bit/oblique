@@ -1,5 +1,5 @@
-@import "../variables";
-@import "../mixins/typography";
+@use "../variables";
+@use "../mixins/typography";
 
 .ob-tabs {
 	display: flex;
@@ -17,21 +17,21 @@
 		padding: 14px 28px;
 		border-bottom: 2px solid transparent;
 		text-decoration: none;
-		color: $ob-default;
-		background-color: $ob-smoke;
-		@include ob-body2;
+		color: variables.$ob-default;
+		background-color: variables.$ob-smoke;
+		@include typography.ob-body2;
 
 		&:hover,
 		&:focus {
-			color: $ob-primary;
-			background-color: $ob-extra-light;
+			color: variables.$ob-primary;
+			background-color: variables.$ob-extra-light;
 		}
 
 		&.ob-active,
 		&:active {
-			color: $ob-primary;
-			border-color: $ob-primary;
-			background-color: $ob-light;
+			color: variables.$ob-primary;
+			border-color: variables.$ob-primary;
+			background-color: variables.$ob-light;
 		}
 	}
 }

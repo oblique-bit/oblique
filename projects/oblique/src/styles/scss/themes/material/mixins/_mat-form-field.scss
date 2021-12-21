@@ -1,14 +1,14 @@
-@import "../variables";
+@use "../variables";
 
 @mixin ob-form-field-size($padding-top, $padding-bottom, $icon-size) {
-	$label-padding: $ob-form-field-label-height+$padding-top;
+	$label-padding: variables.$ob-form-field-label-height+$padding-top;
 	.mat-form-field-infix {
 		padding: $padding-top 0 $padding-bottom 0;
-		border-top-width: $ob-form-field-label-height;
+		border-top-width: variables.$ob-form-field-label-height;
 	}
 
 	.mat-form-field-label-wrapper {
-		top: -$ob-form-field-label-height;
+		top: -(variables.$ob-form-field-label-height);
 		padding-top: $label-padding;
 	}
 

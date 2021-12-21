@@ -1,5 +1,6 @@
-@import "../../styles/scss/core/variables";
-@import "../../styles/scss/themes/bootstrap/mixins/toggle";
+@use "../../styles/scss/core/variables";
+@use "../../styles/scss/themes/bootstrap/mixins/toggle";
+@import "~@fortawesome/fontawesome-free/scss/variables";
 
 .ob-multiselect {
 	&[readonly],
@@ -9,7 +10,7 @@
 
 	.ob-multiselect-toggle {
 		display: flex;
-		background-color: $ob-white;
+		background-color: variables.$ob-white;
 		border-radius: 0;
 		text-align: left;
 		white-space: normal;
@@ -25,11 +26,11 @@
 			display: flex;
 			cursor: pointer;
 			margin-left: auto;
-			@include ob-toggle-before();
-			@include ob-add-toggle($fa-var-angle-down, $fa-var-angle-up);
+			@include toggle.ob-toggle-before();
+			@include toggle.ob-add-toggle($fa-var-angle-down, $fa-var-angle-up);
 
 			&::before {
-				margin-left: $ob-spacing-xs;
+				margin-left: variables.$ob-spacing-xs;
 			}
 		}
 	}
@@ -62,8 +63,8 @@
 	}
 
 	.dropdown-item:active {
-		color: $ob-default;
-		background-color: $ob-extra-light;
+		color: variables.$ob-default;
+		background-color: variables.$ob-extra-light;
 	}
 
 	button.dropdown-item {

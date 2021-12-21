@@ -1,15 +1,16 @@
-@import "../../../styles/scss/core/variables";
-@import "../../../styles/scss/core/mixins/layout";
+@use "sass:selector";
+@use "../../../styles/scss/core/variables";
+@use "../../../styles/scss/core/mixins/layout";
 
 .ob-master-layout-header {
 	.ob-header-toggle {
 		border: none;
 
-		@include ob-media-breakpoint-down(md) {
+		@include layout.ob-media-breakpoint-down(md) {
 			flex-wrap: nowrap;
 		}
 
-		@include ob-media-breakpoint-up(md) {
+		@include layout.ob-media-breakpoint-up(md) {
 			display: none !important;
 		}
 	}
@@ -21,7 +22,7 @@
 			display: block;
 			width: 25px;
 			height: 4px;
-			background-color: $ob-gray-dark;
+			background-color: variables.$ob-gray-dark;
 			background-clip: border-box;
 			border-radius: 2px;
 			transition: .25s transform, .15s opacity, .25s border-color;
@@ -33,7 +34,7 @@
 			.first-line,
 			.second-line,
 			.third-line {
-				background-color: $ob-default;
+				background-color: variables.$ob-default;
 			}
 		}
 
@@ -68,9 +69,9 @@
 		flex-wrap: wrap;
 		white-space: nowrap;
 
-		@include ob-media-breakpoint-down(md) {
-			padding-bottom: $ob-spacing-sm;
-			transition: padding-bottom $ob-duration-default;
+		@include layout.ob-media-breakpoint-down(md) {
+			padding-bottom: variables.$ob-spacing-sm;
+			transition: padding-bottom variables.$ob-duration-default;
 
 			@at-root .ob-master-layout:not(.ob-header-expanded) & {
 				height: 0;
@@ -82,16 +83,16 @@
 
 	.ob-control-locale {
 		padding: 0.375rem 0.75rem;
-		color: $ob-default;
+		color: variables.$ob-default;
 		background-color: transparent;
 		border: none transparent;
 		border-radius: 0;
 		user-select: none;
-		transition: background-color $ob-duration-fast ease-in-out;
+		transition: background-color variables.$ob-duration-fast ease-in-out;
 
 		&:hover,
 		&.active {
-			background-color: $ob-gray-lighter;
+			background-color: variables.$ob-gray-lighter;
 		}
 	}
 
@@ -105,18 +106,18 @@
 		list-style: none;
 
 		&:not(.ob-header-locale) .ob-control-item {
-			padding-right: $ob-spacing-default;
-			padding-left: $ob-spacing-default;
+			padding-right: variables.$ob-spacing-default;
+			padding-left: variables.$ob-spacing-default;
 		}
 
 		&.ob-header-locale {
-			margin-right: $ob-spacing-default;
+			margin-right: variables.$ob-spacing-default;
 		}
 	}
 
 
 	.ob-control-item {
-		@include ob-media-breakpoint-up(md) {
+		@include layout.ob-media-breakpoint-up(md) {
 			justify-content: flex-end;
 		}
 	}
@@ -125,13 +126,13 @@
 		padding: 0;
 		border: none;
 		background-color: transparent;
-		color: $ob-gray-dark;
-		transition: color $ob-duration-fast ease-in-out;
+		color: variables.$ob-gray-dark;
+		transition: color variables.$ob-duration-fast ease-in-out;
 
 		&:hover,
 		&:active,
 		&:focus {
-			color: $ob-default;
+			color: variables.$ob-default;
 			cursor: pointer;
 		}
 	}
@@ -139,7 +140,7 @@
 	.ob-control-icon {
 		margin: 0;
 		vertical-align: middle;
-		font-size: $ob-font-size-xl;
+		font-size: variables.$ob-font-size-xl;
 
 		&.mat-icon[data-mat-icon-type="svg"] {
 			margin-top: -7px;  // empiric value

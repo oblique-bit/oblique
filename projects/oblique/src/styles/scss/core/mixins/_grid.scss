@@ -1,6 +1,5 @@
 @use "sass:math";
-@import "../variables";
-@import "layout";
+@use "layout";
 
 @mixin ob-gridTemplate($columns, $gap) {
 	$gapsSpace: ($columns - 1) * $gap;
@@ -12,15 +11,15 @@
 	.ob-span-#{$span} {
 		grid-column: span math.min(2, $span);
 
-		@include ob-media-breakpoint-up(xs) {
+		@include layout.ob-media-breakpoint-up(xs) {
 			grid-column: span math.min(4, $span);
 		}
 
-		@include ob-media-breakpoint-up(sm) {
+		@include layout.ob-media-breakpoint-up(sm) {
 			grid-column: span math.min(8, $span);
 		}
 
-		@include ob-media-breakpoint-up(lg) {
+		@include layout.ob-media-breakpoint-up(lg) {
 			grid-column: span $span;
 		}
 	}
@@ -29,15 +28,15 @@
 @mixin ob-gridWidth($span4, $span8, $span12) {
 	grid-column: span 1;
 
-	@include ob-media-breakpoint-up(xs) {
+	@include layout.ob-media-breakpoint-up(xs) {
 		grid-column: span $span4;
 	}
 
-	@include ob-media-breakpoint-up(sm) {
+	@include layout.ob-media-breakpoint-up(sm) {
 		grid-column: span $span8;
 	}
 
-	@include ob-media-breakpoint-up(lg) {
+	@include layout.ob-media-breakpoint-up(lg) {
 		grid-column: span $span12;
 	}
 }

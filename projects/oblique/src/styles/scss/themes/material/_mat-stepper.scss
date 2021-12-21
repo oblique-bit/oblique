@@ -1,28 +1,29 @@
-@import "../../core/variables";
+@use "sass:selector";
+@use "../../core/variables";
 
 .mat-step-header .mat-step-icon {
 	height: 26px;
 	width: 26px;
 	font-size: 12px;
-	color: $ob-primary;
-	background-color: $ob-white;
-	border: 1px solid $ob-primary;
+	color: variables.$ob-primary;
+	background-color: variables.$ob-white;
+	border: 1px solid variables.$ob-primary;
 
 	&:hover {
-		background-color: $ob-light;
+		background-color: variables.$ob-light;
 	}
 
 	&.mat-step-icon-selected {
-		color: $ob-white;
-		background-color: $ob-primary;
+		color: variables.$ob-white;
+		background-color: variables.$ob-primary;
 	}
 
 	&.mat-step-icon-state-done {
-		color: $ob-success;
-		border-color: $ob-success;
+		color: variables.$ob-success;
+		border-color: variables.$ob-success;
 
 		&:hover {
-			background-color: $ob-success-light;
+			background-color: variables.$ob-success-light;
 		}
 	}
 
@@ -56,12 +57,12 @@
 		}
 	}
 
-	@at-root #{selector-append("[ng-reflect-active=false]", &)} {
-		border-color: $ob-gray-dark;
-		color: $ob-gray-dark;
+	@at-root #{selector.append("[ng-reflect-active=false]", &)} {
+		border-color: variables.$ob-gray-dark;
+		color: variables.$ob-gray-dark;
 
 		&:hover {
-			background-color: $ob-white;
+			background-color: variables.$ob-white;
 		}
 	}
 }
@@ -70,7 +71,7 @@
 .mat-horizontal-stepper-header::after,
 .mat-stepper-horizontal-line,
 .mat-stepper-vertical-line::before {
-	border-color: $ob-primary;
+	border-color: variables.$ob-primary;
 }
 
 [ng-reflect-state=done] {
@@ -78,7 +79,7 @@
 	&.mat-horizontal-stepper-header::after,
 	& ~ .mat-stepper-horizontal-line,
 	& ~ .mat-stepper-vertical-line::before {
-		border-color: $ob-success;
+		border-color: variables.$ob-success;
 	}
 }
 
@@ -87,7 +88,7 @@
 	&.mat-horizontal-stepper-header::after,
 	& ~ .mat-stepper-horizontal-line,
 	& ~ .mat-stepper-vertical-line::before {
-		border-color: $ob-gray-dark;
+		border-color: variables.$ob-gray-dark;
 	}
 
 	&.mat-step-header {
@@ -106,16 +107,16 @@ $offset-sm: 28px;
 $offset-md: 36px;
 $offset-lg: 51px;
 .mat-stepper-horizontal {
-	@at-root #{selector-append(".mat-stepper-label-position-bottom", &)},
+	@at-root #{selector.append(".mat-stepper-label-position-bottom", &)},
 	& {
 		.mat-horizontal-stepper-header {
 			padding: $padding-md;
 
-			@at-root #{selector-append(".mat-stepper-lg", &)} {
+			@at-root #{selector.append(".mat-stepper-lg", &)} {
 				padding: $padding-lg;
 			}
 
-			@at-root #{selector-append(".mat-stepper-sm", &)} {
+			@at-root #{selector.append(".mat-stepper-sm", &)} {
 				padding: $padding-sm;
 			}
 		}
@@ -127,10 +128,10 @@ $offset-lg: 51px;
 		.mat-horizontal-stepper-header:not(:first-child)::before {
 			top: $offset-md;
 
-			@at-root #{selector-append(".mat-stepper-lg", &)} {
+			@at-root #{selector.append(".mat-stepper-lg", &)} {
 				top: $offset-lg;
 			}
-			@at-root #{selector-append(".mat-stepper-sm", &)} {
+			@at-root #{selector.append(".mat-stepper-sm", &)} {
 				top: $offset-sm;
 			}
 		}
@@ -138,10 +139,10 @@ $offset-lg: 51px;
 		.mat-horizontal-stepper-header {
 			&:not(:first-child)::before,
 			&:not(:last-child)::after {
-				@at-root #{selector-append(".mat-stepper-lg", &)} {
+				@at-root #{selector.append(".mat-stepper-lg", &)} {
 					width: calc(50% - 26px);
 				}
-				@at-root #{selector-append(".mat-stepper-sm", &)} {
+				@at-root #{selector.append(".mat-stepper-sm", &)} {
 					width: calc(50% - 15px);
 				}
 			}

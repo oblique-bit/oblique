@@ -1,5 +1,6 @@
-@import "../../../styles/scss/core/variables";
-@import "../../../styles/scss/core/mixins/layout";
+@use "sass:selector";
+@use "../../../styles/scss/core/variables";
+@use "../../../styles/scss/core/mixins/layout";
 
 .ob-master-layout {
 	.ob-viewport {
@@ -32,11 +33,11 @@
 	.ob-main-layout {
 		flex: 1 1 auto;
 
-		@at-root #{selector-append(".ob-has-layout", &)} {
-			padding: $ob-spacing-default;
+		@at-root #{selector.append(".ob-has-layout", &)} {
+			padding: variables.$ob-spacing-default;
 
-			@include ob-media-breakpoint-up(md) {
-				padding: $ob-spacing-default $ob-spacing-lg;
+			@include layout.ob-media-breakpoint-up(md) {
+				padding: variables.$ob-spacing-default variables.$ob-spacing-lg;
 			}
 		}
 	}
@@ -45,7 +46,7 @@
 		overflow-y: auto;
 	}
 
-	@include ob-media-breakpoint-down(md) {
+	@include layout.ob-media-breakpoint-down(md) {
 		&.ob-header-expanded {
 			.ob-main-layout,
 			.ob-master-layout-footer {
@@ -59,7 +60,7 @@
 		justify-content: center;
 
 		> * {
-			max-width: map-get($ob-grid-breakpoints, xl);
+			max-width: map-get(variables.$ob-grid-breakpoints, xl);
 		}
 	}
 }

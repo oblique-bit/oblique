@@ -1,43 +1,43 @@
-@import "../../core/variables";
-@import "../../core/mixins/typography";
+@use "../../core/variables" as core-variables;
+@use "../../core/mixins/typography";
 
 h1, h2, h3, h4, h5, h6 {
 	margin: 0 0 0.25em 0;
-	color: $ob-black;
+	color: core-variables.$ob-black;
 }
 
 h1 {
-	@include ob-h1;
+	@include typography.ob-h1;
 }
 
 h2 {
-	@include ob-h2;
+	@include typography.ob-h2;
 }
 
 h3 {
-	@include ob-h3;
+	@include typography.ob-h3;
 }
 
 h4 {
-	@include ob-h4;
+	@include typography.ob-h4;
 }
 
 h5 {
-	@include ob-h5;
+	@include typography.ob-h5;
 }
 
 h6 {
-	@include ob-h6;
+	@include typography.ob-h6;
 }
 
 // inline elements
 a {
-	color: $ob-primary;
+	color: core-variables.$ob-primary;
 	text-decoration: underline;
 
 	&:hover,
 	&:visited {
-		color: $ob-dark;
+		color: core-variables.$ob-dark;
 	}
 
 	&:not([href]):not([tabindex]),
@@ -75,33 +75,34 @@ mark, ins {
 }
 
 mark {
-	background-color: $ob-warning-light;
+	background-color: core-variables.$ob-warning-light;
 }
 
 ins {
-	background-color: $ob-light;
+	background-color: core-variables.$ob-light;
 }
 
 pre, code, kbd, samp {
 	font-family: monospace;
-	font-size: $ob-font-size-normal;
+	font-size: core-variables.$ob-font-size-normal;
 }
 
 code, kbd {
-	border-radius: $ob-border-radius-base;
+	border-radius: core-variables.$ob-border-radius-base;
 	padding: 2px 4px;
 }
 
 code, pre {
-	border: 1px solid $ob-gray-light;
-	background-color: $ob-gray-extra-light;
-	color: $ob-default;
+	border: 1px solid core-variables.$ob-gray-light;
+	background-color: core-variables.$ob-gray-extra-light;
+	color: core-variables.$ob-default;
 }
 
 pre {
 	overflow: auto;
-	padding: $ob-spacing-sm;
-	border-radius: $ob-border-radius-base;
+	padding: core-variables.$ob-spacing-sm;
+	border-radius: core-variables.$ob-border-radius-base;
+
 	code {
 		border: none;
 		padding: 0;
@@ -109,12 +110,12 @@ pre {
 }
 
 kbd {
-	background-color: $ob-default;
-	color: $ob-gray-extra-light;
+	background-color: core-variables.$ob-default;
+	color: core-variables.$ob-gray-extra-light;
 }
 
 small {
-	font-size: $ob-font-size-smaller;
+	font-size: core-variables.$ob-font-size-smaller;
 }
 
 s, del {
@@ -134,7 +135,7 @@ ol,
 ul,
 dl {
 	margin-top: 0;
-	margin-bottom: $ob-spacing-default;
+	margin-bottom: core-variables.$ob-spacing-default;
 }
 
 ol ol,
@@ -153,23 +154,23 @@ dd {
 	margin-left: 0;
 
 	+ dt {
-		margin-top: $ob-spacing-sm;
+		margin-top: core-variables.$ob-spacing-sm;
 	}
 }
 
 // block elements
 p {
 	margin-top: 0;
-	margin-bottom: $ob-spacing-default;
+	margin-bottom: core-variables.$ob-spacing-default;
 }
 
 blockquote {
-	margin: 0 0 $ob-spacing-default;
+	margin: 0 0 core-variables.$ob-spacing-default;
 	font-size: 1em;
 }
 
 address {
-	margin-bottom: $ob-spacing-default;
+	margin-bottom: core-variables.$ob-spacing-default;
 	font-style: normal;
 	line-height: inherit;
 }
@@ -212,9 +213,9 @@ fieldset {
 legend {
 	width: 100%;
 	padding: 0;
-	margin-bottom: $ob-spacing-sm;
-	border-bottom: 1px dotted $ob-gray;
-	font-size: $ob-font-size-bigger;
+	margin-bottom: core-variables.$ob-spacing-sm;
+	border-bottom: 1px dotted core-variables.$ob-gray;
+	font-size: core-variables.$ob-font-size-bigger;
 	font-weight: 600;
 	line-height: inherit;
 }

@@ -1,9 +1,11 @@
+@use "sass:color";
+
 @mixin ob-form-control-validation($color, $focus-color, $shadow-color, $help-color) {
 	.form-control {
 		border-color: $color;
 		&:focus {
 			border-color: $focus-color;
-			box-shadow: 0 0 6px 1px fade-out($shadow-color, 0.60);
+			box-shadow: 0 0 6px 1px color.adjust($shadow-color, $alpha: -0.60);
 		}
 	}
 	.form-control-feedback {

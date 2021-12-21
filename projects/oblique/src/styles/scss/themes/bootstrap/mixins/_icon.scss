@@ -1,8 +1,7 @@
-@import "~@fortawesome/fontawesome-free/scss/variables";
-@import "../../../core/mixins/layout";
+@use "~@fortawesome/fontawesome-free/scss/variables";
 
 @mixin ob-icon-base($icon, $pack) {
-	content: fa-content($icon);
+	content: variables.fa-content($icon);
 	-webkit-font-smoothing: antialiased;
 	display: inline-block;
 	font-family: 'Font Awesome 5 ' + $pack;

@@ -1,4 +1,4 @@
-@import "mixins/button";
+@use "mixins/button";
 
 // Give the line between buttons some depth
 .btn-group > .dropdown-toggle + .btn {
@@ -11,9 +11,9 @@
 }
 
 // If dropdown toggle button variant is different from main button variant, remove shared border:
-@include ob-mixed-dropdown-btn-group(default);
-@include ob-mixed-dropdown-btn-group(primary);
-@include ob-mixed-dropdown-btn-group(success);
-@include ob-mixed-dropdown-btn-group(info);
-@include ob-mixed-dropdown-btn-group(warning);
-@include ob-mixed-dropdown-btn-group(danger);
+@include button.ob-mixed-dropdown-btn-group(default);
+@include button.ob-mixed-dropdown-btn-group(primary);
+@include button.ob-mixed-dropdown-btn-group(success);
+@include button.ob-mixed-dropdown-btn-group(info);
+@include button.ob-mixed-dropdown-btn-group(warning);
+@include button.ob-mixed-dropdown-btn-group(danger);

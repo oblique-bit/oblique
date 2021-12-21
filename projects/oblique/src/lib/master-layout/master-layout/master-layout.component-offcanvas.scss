@@ -1,24 +1,25 @@
-@import "../../../styles/scss/core/variables";
-@import "../../../styles/scss/core/mixins/layout";
-@import "../../../styles/scss/core/mixins/button";
+@use "sass:selector";
+@use "../../../styles/scss/core/variables";
+@use "../../../styles/scss/core/mixins/layout";
+@use "../../../styles/scss/core/mixins/button";
 
 .ob-off-canvas-sidebar {
 	display: none; // only show if offcanvas is enable, i.e. parent has .offcanvas class
-	background-color: $ob-gray-extra-light;
+	background-color: variables.$ob-gray-extra-light;
 }
 
 .ob-off-canvas {
 	.ob-off-canvas-main {
 		width: 100%;
 		transition-property: transform, width, height;
-		transition-duration: $ob-duration-default;
+		transition-duration: variables.$ob-duration-default;
 		transition-timing-function: ease;
 
-		@at-root #{selector-append(".ob-off-canvas-in", &)} {
-			transform: translateX(-$ob-off-canvas-sidebar-collapsed-width);
+		@at-root #{selector.append(".ob-off-canvas-in", &)} {
+			transform: translateX(-(variables.$ob-off-canvas-sidebar-collapsed-width));
 
-			@include ob-media-breakpoint-up(md) {
-				width: 100% - $ob-off-canvas-sidebar-width;
+			@include layout.ob-media-breakpoint-up(md) {
+				width: 100% - variables.$ob-off-canvas-sidebar-width;
 				transform: translateX(0);
 			}
 		}
@@ -29,29 +30,29 @@
 		top: 0;
 		left: 100%;
 		height: 100%;
-		width: $ob-off-canvas-sidebar-collapsed-width;
+		width: variables.$ob-off-canvas-sidebar-collapsed-width;
 		display: block;
 		visibility: hidden; // A11y: ensure tabbing does not focus an offcanvas sidebar element when hidden.
 		overflow-y: auto;
-		z-index: $ob-z-index-overlay-top;
+		z-index: variables.$ob-z-index-overlay-top;
 		transition-property: transform, left, width, visibility;
-		transition-duration: $ob-duration-default;
+		transition-duration: variables.$ob-duration-default;
 		transition-timing-function: ease;
 
 		h1, h2, h3, h4, h5, h6 {
-			color: $ob-default;
+			color: variables.$ob-default;
 		}
 
-		@include ob-media-breakpoint-up(md) {
-			width: $ob-off-canvas-sidebar-width;
+		@include layout.ob-media-breakpoint-up(md) {
+			width: variables.$ob-off-canvas-sidebar-width;
 		}
 
-		@at-root #{selector-append(".ob-off-canvas-in", &)} {
+		@at-root #{selector.append(".ob-off-canvas-in", &)} {
 			visibility: visible; // A11y: ensure tabbing can focus again an offcanvas sidebar element when visible.
 			transform: translateX(-100%);
 
-			@include ob-media-breakpoint-up(md) {
-				left: 100% - $ob-off-canvas-sidebar-width;
+			@include layout.ob-media-breakpoint-up(md) {
+				left: 100% - variables.$ob-off-canvas-sidebar-width;
 				transform: translateX(0);
 			}
 		}
@@ -59,42 +60,42 @@
 
 	.ob-off-canvas-header {
 		display: flex;
-		padding: $ob-spacing-default;
+		padding: variables.$ob-spacing-default;
 		justify-content: space-between;
 		align-items: center;
-		transition: height $ob-duration-default ease-in-out;
+		transition: height variables.$ob-duration-default ease-in-out;
 
 		h2 {
 			margin: 0;
 		}
 
 		.ob-close {
-			@include ob-link-btn;
-			font-size: $ob-font-size-biggest;
+			@include button.ob-link-btn;
+			font-size: variables.$ob-font-size-biggest;
 			padding: 0;
-			color: $ob-gray-dark;
+			color: variables.$ob-gray-dark;
 		}
 	}
 
 	.ob-off-canvas-content {
-		padding: $ob-spacing-default;
+		padding: variables.$ob-spacing-default;
 		overflow-y: auto;
 	}
 
 	.ob-off-canvas-backdrop {
 		display: none;
 
-		@at-root #{selector-append(".ob-off-canvas-in", &)} {
-			@include ob-media-breakpoint-down(md) {
+		@at-root #{selector.append(".ob-off-canvas-in", &)} {
+			@include layout.ob-media-breakpoint-down(md) {
 				display: block;
 				position: fixed;
 				top: 0;
 				left: 0;
 				width: 100vw;
 				height: 100vh;
-				background-color: $ob-black;
+				background-color: variables.$ob-black;
 				opacity: 0.5;
-				z-index: $ob-z-index-overlay;
+				z-index: variables.$ob-z-index-overlay;
 			}
 		}
 	}

@@ -1,4 +1,5 @@
-@import "../variables";
+@use "sass:map";
+@use "../variables";
 
 @mixin ob-map-error($map, $key) {
 	@if map-has-key($map, $key) {
@@ -9,16 +10,16 @@
 }
 
 @mixin ob-media-breakpoint-up($name) {
-	@include ob-map-error($ob-grid-breakpoints, $name) {
-		@media (min-width: map-get($ob-grid-breakpoints, $name)) {
+	@include ob-map-error(variables.$ob-grid-breakpoints, $name) {
+		@media (min-width: map.get(variables.$ob-grid-breakpoints, $name)) {
 			@content;
 		}
 	}
 }
 
 @mixin ob-media-breakpoint-down($name) {
-	@include ob-map-error($ob-grid-breakpoints, $name) {
-		@media (max-width: map-get($ob-grid-breakpoints, $name)) {
+	@include ob-map-error(variables.$ob-grid-breakpoints, $name) {
+		@media (max-width: map.get(variables.$ob-grid-breakpoints, $name)) {
 			@content
 		}
 	}

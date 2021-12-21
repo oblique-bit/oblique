@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "../../../core/variables";
+
 @mixin ob-btn-variant(
 	$color, $background, $border,
 	$selected-color, $selected-background, $selected-border,
@@ -29,8 +32,8 @@
 		&.active {
 			// FIXME:.open .dropdown-toggle& {
 			background-image: none;
-			background-color: darken($selected-background, 4%);
-			border-color: darken($selected-border, 4%);
+			background-color: color.adjust($selected-background, $lightness: -4%);
+			border-color: color.adjust($selected-border, $lightness: -4%);
 			color: $active-color;
 		}
 	}
@@ -70,7 +73,7 @@
 	&:not(:disabled):not(.disabled).active {
 		&:focus,
 		&.focus {
-			box-shadow: 0 0 0 0.2rem $ob-gray-light;
+			box-shadow: 0 0 0 0.2rem variables.$ob-gray-light;
 		}
 	}
 }

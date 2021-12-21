@@ -1,15 +1,15 @@
-@import "../../core/variables";
-@import "../../core/mixins/shadow";
-@import "../../core/mixins/typography";
+@use "../../core/variables" as core-variables;
+@use "../../core/mixins/shadow";
+@use "../../core/mixins/typography";
 
 .mat-dialog-container {
 	box-shadow: none;
-	@include ob-dropShadow($color: $ob-gray-500);
+	@include shadow.ob-dropShadow($color: core-variables.$ob-gray-dark);
 
 	.mat-dialog-title {
-		@include ob-h6;
+		@include typography.ob-h6;
 		position: relative;
-		margin-bottom: $ob-spacing-default + $ob-spacing-sm;
+		margin-bottom: core-variables.$ob-spacing-default + core-variables.$ob-spacing-sm;
 	}
 	.mat-button.close {
 		position: absolute;
@@ -29,7 +29,7 @@
 			left: 11px;
 			height: 14px;
 			width: 2px;
-			background-color: $ob-black;
+			background-color:  core-variables.$ob-black;
 		}
 		&::before {
 			transform: rotate(45deg);
@@ -39,14 +39,14 @@
 		}
 	}
 	.mat-dialog-content {
-		@include ob-body1;
+		@include typography.ob-body1;
 	}
 	.mat-dialog-actions {
-		margin-top: $ob-spacing-default + $ob-spacing-sm;
+		margin-top: core-variables.$ob-spacing-default + core-variables.$ob-spacing-sm;
 		justify-content: flex-end;
 
 		.mat-button + .mat-button {
-			margin-left: $ob-spacing-default;
+			margin-left: core-variables.$ob-spacing-default;
 		}
 	}
 }

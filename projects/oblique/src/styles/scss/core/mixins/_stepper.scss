@@ -1,4 +1,6 @@
-@import "../variables";
+@use "sass:selector";
+@use "../variables";
+@use "~@fortawesome/fontawesome-free/scss/fontawesome";
 
 @mixin ob-stepper-state($bullet-color, $bullet-bg, $bullet-border, $bg-color: false, $feedback-icon: false) {
 	&::before {
@@ -18,9 +20,9 @@
 	}
 	@if $feedback-icon {
 		&.ob-feedback::before {
-			@at-root #{selector-append(".ob-font-awesome", &)} {
-				content: fa-content($feedback-icon);
-				font-family: $ob-icon-font-family;
+			@at-root #{selector.append(".ob-font-awesome", &)} {
+				content: fontawesome.fa-content($feedback-icon);
+				font-family: variables.$ob-icon-font-family;
 				font-weight: 900;
 				-webkit-font-smoothing: antialiased;
 				-moz-osx-font-smoothing: grayscale;

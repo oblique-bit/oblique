@@ -1,5 +1,5 @@
-@import "variables";
-@import "mixins/layout";
+@use "variables";
+@use "mixins/layout";
 
 *,
 *::before,
@@ -9,7 +9,7 @@
 
 html,
 body {
-	@include ob-media-breakpoint-down(md) {
+	@include layout.ob-media-breakpoint-down(md) {
 		// Ensure fixed elements keep scrolling smoothly on iOS:
 		-webkit-overflow-scrolling: touch;
 	}
@@ -21,16 +21,16 @@ html {
 }
 
 body {
-	min-width: $ob-body-width;
+	min-width: variables.$ob-body-width;
 	margin: 0;
-	font-family: $ob-font;
-	font-size: $ob-font-size-base;
+	font-family: variables.$ob-font;
+	font-size: variables.$ob-font-size-base;
 	word-break: break-word;
-	color: $ob-default;
+	color: variables.$ob-default;
 }
 
 .bg-secondary {
-	background-color: $ob-extra-light !important;
+	background-color: variables.$ob-extra-light !important;
 	height: 100%;
 }
 
@@ -38,9 +38,9 @@ body {
 	visibility: hidden;
 	opacity: 0;
 	transition-property: opacity, visibility;
-	transition-duration: $ob-duration-fast, 0s;
+	transition-duration: variables.$ob-duration-fast, 0s;
 	transition-timing-function: ease-in-out;
-	transition-delay: 0s, $ob-duration-fast;
+	transition-delay: 0s, variables.$ob-duration-fast;
 
 	*:hover > & {
 		visibility: visible;
