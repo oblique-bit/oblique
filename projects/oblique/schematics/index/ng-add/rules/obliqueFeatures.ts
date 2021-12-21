@@ -22,8 +22,7 @@ export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 			addInterceptors(options.httpInterceptors),
 			addBanner(options.banner),
 			addDefaultHomeComponent(options.prefix),
-			addExternalLink(options.externalLink),
-			addMandatory(options.mandatory)
+			addExternalLink(options.externalLink)
 		])(tree, _context);
 }
 
@@ -165,18 +164,6 @@ function addExternalLink(externalLink: boolean): Rule {
 			infoMigration(_context, 'Oblique feature: Adding external link module');
 			const sourceFile = createSrcFile(tree, appModulePath);
 			const changes: Change[] = addImportToModule(sourceFile, appModulePath, 'ObExternalLinkModule', ObliquePackage);
-			return applyChanges(tree, appModulePath, changes);
-		}
-		return tree;
-	});
-}
-
-function addMandatory(mandatory: boolean): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		if (mandatory) {
-			infoMigration(_context, 'Oblique feature: Adding mandatory module');
-			const sourceFile = createSrcFile(tree, appModulePath);
-			const changes: Change[] = addImportToModule(sourceFile, appModulePath, 'ObMandatoryModule', ObliquePackage);
 			return applyChanges(tree, appModulePath, changes);
 		}
 		return tree;

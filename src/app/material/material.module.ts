@@ -28,7 +28,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {ObButtonModule, ObColumnLayoutModule, ObIconModule, ObInputClearModule, ObMandatoryModule, ObSelectableModule} from '@oblique/oblique';
+import {ObButtonModule, ObColumnLayoutModule, ObIconModule, ObInputClearModule, ObSelectableModule} from '@oblique/oblique';
 import {ButtonComponent} from './button/button.component';
 import {CardComponent} from './card/card.component';
 import {ChipsComponent} from './chips/chips.component';
@@ -124,7 +124,6 @@ const appRoutes: Routes = [
 		MatTableModule,
 		MatTabsModule,
 		MatTooltipModule,
-		ObMandatoryModule,
 		CdkTableModule,
 		SharedModule
 	]
