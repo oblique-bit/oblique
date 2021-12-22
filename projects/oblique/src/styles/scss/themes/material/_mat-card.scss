@@ -1,9 +1,9 @@
-@import "../../core/variables";
-@import "../../core/mixins/typography";
-@import "../../core/mixins/tab-outline";
+@use "../../core/variables";
+@use "../../core/mixins/typography";
+@use "../../core/mixins/tab-outline";
 
 .mat-card {
-	border: 1px solid $ob-default;
+	border: 1px solid variables.$ob-default;
 
 	&:not([class*='mat-elevation-z']) {
 		box-shadow: none;
@@ -11,11 +11,11 @@
 
 	.mat-card-header {
 		&:first-child {
-			padding-top: $ob-spacing-xs;
+			padding-top: variables.$ob-spacing-xs;
 		}
 
 		.mat-card-title {
-			@include ob-h5;
+			@include typography.ob-h5;
 			margin-bottom: 0;
 		}
 
@@ -28,8 +28,8 @@
 	}
 
 	.mat-card-avatar {
-		margin-top: $ob-spacing-xs;
-		border-radius: $ob-border-radius-base;
+		margin-top: variables.$ob-spacing-xs;
+		border-radius: variables.$ob-border-radius-base;
 	}
 
 	.mat-card-header-text:first-child {
@@ -38,11 +38,11 @@
 
 	.mat-card-subtitle,
 	.mat-card-content {
-		@include ob-body2;
+		@include typography.ob-body2;
 	}
 
 	.mat-card-header + .mat-card-content {
-		margin-top: $ob-spacing-default;
+		margin-top: variables.$ob-spacing-default;
 	}
 
 	.mat-card-actions {
@@ -51,30 +51,30 @@
 
 	&.ob-selectable {
 		&.ob-selected {
-			background-color: $ob-light;
+			background-color: variables.$ob-light;
 		}
 
-		@include ob-tab-outline();
+		@include tab-outline.ob-tab-outline();
 
 		&::before {
 			position: absolute;
-			top: $ob-spacing-sm;
-			right: $ob-spacing-sm;
-			width: $ob-spacing-lg;
-			height: $ob-spacing-lg;
-			background-color: $ob-white;
-			border: 3px solid $ob-default;
+			top: variables.$ob-spacing-sm;
+			right: variables.$ob-spacing-sm;
+			width: variables.$ob-spacing-lg;
+			height: variables.$ob-spacing-lg;
+			background-color: variables.$ob-white;
+			border: 3px solid variables.$ob-default;
 		}
 
 		&[role="checkbox"] {
 			&::before {
 				content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHRpdGxlPkNoZWNrbWFyazwvdGl0bGU+PHBvbHlnb24gcG9pbnRzPSIyMC40NyA1LjM5MSA4Ljg0MiAxNy4wMTkgMy41MyAxMS43MDYgMi40NyAxMi43NjcgOC44NDIgMTkuMTQgMjEuNTMgNi40NTEgMjAuNDcgNS4zOTEiIGZpbGw9IiNmZmYiLz48L3N2Zz4=');
-				border-radius: $ob-border-radius-base;
+				border-radius: variables.$ob-border-radius-base;
 			}
 
 			&.ob-selected::before {
-				background-color: $ob-primary;
-				border-color: $ob-primary;
+				background-color: variables.$ob-primary;
+				border-color: variables.$ob-primary;
 				border-width: 1px;
 			}
 		}
@@ -86,7 +86,7 @@
 			}
 
 			&.ob-selected::before {
-				border-color: $ob-primary;
+				border-color: variables.$ob-primary;
 			}
 
 			&.ob-selected::after {
@@ -97,7 +97,7 @@
 				width: 12px;
 				height: 12px;
 				border-radius: 50%;
-				background-color: $ob-primary;
+				background-color: variables.$ob-primary;
 			}
 		}
 	}
@@ -106,7 +106,7 @@
 .ob-link-card {
 	text-decoration: none;
 
-	@include ob-tab-outline('.mat-card');
+	@include tab-outline.ob-tab-outline('.mat-card');
 }
 
 .ob-button-card {
@@ -120,7 +120,7 @@
 		box-shadow: none;
 
 		&:not(.mat-button-disabled) {
-			@include ob-tab-outline('.mat-card');
+			@include tab-outline.ob-tab-outline('.mat-card');
 		}
 	}
 }

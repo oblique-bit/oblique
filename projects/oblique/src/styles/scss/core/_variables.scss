@@ -1,31 +1,32 @@
-@import "palette";
+@use "palette";
+@forward "palette";
 
-$ob-gray-extra-light:          $ob-gray-100 !default;
-$ob-gray-lighter:              $ob-gray-200 !default;
-$ob-gray-light:                $ob-gray-300 !default;
-$ob-gray:                      $ob-gray-400 !default;
-$ob-gray-dark:                 $ob-gray-500 !default;
-$ob-gray-darker:               $ob-gray-700 !default;
+$ob-gray-extra-light:          palette.$ob-gray-100 !default;
+$ob-gray-lighter:              palette.$ob-gray-200 !default;
+$ob-gray-light:                palette.$ob-gray-300 !default;
+$ob-gray:                      palette.$ob-gray-400 !default;
+$ob-gray-dark:                 palette.$ob-gray-500 !default;
+$ob-gray-darker:               palette.$ob-gray-700 !default;
 
-$ob-default:             $ob-gray-800 !default;
-$ob-accent:              $ob-venetian-red !default;
+$ob-default:             palette.$ob-gray-800 !default;
+$ob-accent:              palette.$ob-venetian-red !default;
 
-$ob-extra-light:         $ob-primary-50 !default;
-$ob-light:               $ob-primary-100 !default;
-$ob-primary:             $ob-primary-500 !default;
-$ob-dark:                $ob-primary-700 !default;
+$ob-extra-light:         palette.$ob-primary-50 !default;
+$ob-light:               palette.$ob-primary-100 !default;
+$ob-primary:             palette.$ob-primary-500 !default;
+$ob-dark:                palette.$ob-primary-700 !default;
 
-$ob-success-light:       $ob-success-100 !default;
-$ob-success:             $ob-success-800 !default;
-$ob-success-dark:        $ob-success-900 !default;
+$ob-success-light:       palette.$ob-success-100 !default;
+$ob-success:             palette.$ob-success-800 !default;
+$ob-success-dark:        palette.$ob-success-900 !default;
 
-$ob-warning-light:       $ob-warning-50 !default;
-$ob-warning:             $ob-warning-500 !default;
-$ob-warning-dark:        $ob-warning-700 !default;
+$ob-warning-light:       palette.$ob-warning-50 !default;
+$ob-warning:             palette.$ob-warning-500 !default;
+$ob-warning-dark:        palette.$ob-warning-700 !default;
 
-$ob-error-light:         $ob-error-100 !default;
-$ob-error:               $ob-error-500 !default;
-$ob-error-dark:          $ob-error-700 !default;
+$ob-error-light:         palette.$ob-error-100 !default;
+$ob-error:               palette.$ob-error-500 !default;
+$ob-error-dark:          palette.$ob-error-700 !default;
 
 $ob-duration-default:              .6s !default;
 $ob-duration-fast:                .25s !default;

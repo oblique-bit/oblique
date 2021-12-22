@@ -1,12 +1,18 @@
 @use '~@angular/material' as mat;
-@import "../core/variables";
-@import "~@angular/material/theming";
-@import "material/variables";
-@import "material/material-palette";
+@use "../core/variables" as core-variables;
+@use "material/material-palette";
+@use "material/variables";
 
-@include mat.core(mat.define-typography-config($font-family: $ob-font));
-@include mat.all-component-themes(mat.define-light-theme(mat.define-palette($oblique-primary), mat.define-palette($oblique-accent), mat.define-palette($oblique-warn)));
+@include mat.core(mat.define-typography-config($font-family: core-variables.$ob-font));
+@include mat.all-component-themes(
+	mat.define-light-theme(
+    	mat.define-palette(material-palette.$oblique-primary),
+		mat.define-palette(material-palette.$oblique-accent),
+        mat.define-palette(material-palette.$oblique-warn)
+	)
+);
 
+// import to overwrite mat-component-specifics
 @import "material/mat-button";
 @import "material/mat-card";
 @import "material/mat-checkbox-radio";

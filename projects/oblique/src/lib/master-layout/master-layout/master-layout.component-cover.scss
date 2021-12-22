@@ -1,5 +1,6 @@
-@import "../../../styles/scss/core/variables";
-@import "../../../styles/scss/core/mixins/layout";
+@use "sass:color";
+@use "../../../styles/scss/core/variables";
+@use "../../../styles/scss/core/mixins/layout";
 
 .ob-master-layout.ob-has-cover {
 	.ob-cover-layout {
@@ -17,19 +18,19 @@
 	.ob-cover-viewport {
 		overflow-y: auto;
 		overflow-x: hidden;
-		background-color: rgba(red($ob-white), green($ob-white), blue($ob-white), 0.9);
+		background-color: rgba(color.red(variables.$ob-white), color.green(variables.$ob-white), color.blue(variables.$ob-white), 0.9);
 
-		@include ob-media-breakpoint-up(md) {
+		@include layout.ob-media-breakpoint-up(md) {
 			margin-left: 35%;
 			width: 45%;
 		}
 
-		@include ob-media-breakpoint-up(lg) {
+		@include layout.ob-media-breakpoint-up(lg) {
 			margin-left: 45%;
 			width: 38%;
 		}
 
-		@include ob-media-breakpoint-up(xl) {
+		@include layout.ob-media-breakpoint-up(xl) {
 			margin-left: 50%;
 			width: 33%;
 		}
@@ -39,17 +40,17 @@
 	.ob-cover-alert {
 		display: flex;
 		flex-wrap: wrap;
-		margin-right: -$ob-spacing-default;
-		margin-left: -$ob-spacing-default;
-		margin-bottom: $ob-spacing-lg;
+		margin-right: -(variables.$ob-spacing-default);
+		margin-left: -(variables.$ob-spacing-default);
+		margin-bottom: variables.$ob-spacing-lg;
 		border: none;
 	}
 
 	.ob-cover-header {
-		padding: 0 $ob-spacing-default;
+		padding: 0 variables.$ob-spacing-default;
 
-		@include ob-media-breakpoint-up(md) {
-			background-color: $ob-white;
+		@include layout.ob-media-breakpoint-up(md) {
+			background-color: variables.$ob-white;
 		}
 	}
 }

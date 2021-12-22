@@ -1,26 +1,26 @@
-@import "../../../styles/scss/core/variables";
-@import "../../../styles/scss/core/mixins/layout";
+@use "../../../styles/scss/core/variables";
+@use "../../../styles/scss/core/mixins/layout";
 
 .ob-master-layout-footer {
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-	color: $ob-gray-darker;
-	font-size: $ob-font-size-xs;
-	background-color: $ob-gray-extra-light;
-	border-top: 1px solid $ob-gray-light;
-	padding: $ob-spacing-xs $ob-spacing-default;
+	color: variables.$ob-gray-darker;
+	font-size: variables.$ob-font-size-xs;
+	background-color: variables.$ob-gray-extra-light;
+	border-top: 1px solid variables.$ob-gray-light;
+	padding: variables.$ob-spacing-xs variables.$ob-spacing-default;
 
-	@include ob-media-breakpoint-up(md) {
+	@include layout.ob-media-breakpoint-up(md) {
 		flex-direction: row;
 	}
 
 	.ob-footer-item {
-		padding: $ob-spacing-xs 0;
-		@include ob-media-breakpoint-down(md) {
+		padding: variables.$ob-spacing-xs 0;
+		@include layout.ob-media-breakpoint-down(md) {
 			&:not(:last-child) {
-				border-bottom: 1px solid $ob-gray-light;
+				border-bottom: 1px solid variables.$ob-gray-light;
 			}
 		}
 
@@ -38,15 +38,15 @@
 
 		img {
 			float: left;
-			width: $ob-logo-width;
-			height: $ob-logo-height;
-			transition: width $ob-duration-fast, height $ob-duration-fast;
+			width: variables.$ob-logo-width;
+			height: variables.$ob-logo-height;
+			transition: width variables.$ob-duration-fast, height variables.$ob-duration-fast;
 		}
 	}
 
-	@include ob-media-breakpoint-up(md) {
+	@include layout.ob-media-breakpoint-up(md) {
 		.ob-footer-item-logo {
-			margin-right: $ob-spacing-default;
+			margin-right: variables.$ob-spacing-default;
 		}
 
 		.ob-master-layout:not(.ob-master-layout-scrolling) &,
@@ -62,7 +62,7 @@
 		}
 
 		.ob-footer-item-info {
-			margin-right: $ob-spacing-default;
+			margin-right: variables.$ob-spacing-default;
 			flex: 1; // Variable width.
 		}
 	}
@@ -74,7 +74,7 @@
 		padding-left: 0;
 
 		li + li {
-			padding-left: $ob-spacing-sm;
+			padding-left: variables.$ob-spacing-sm;
 		}
 	}
 }

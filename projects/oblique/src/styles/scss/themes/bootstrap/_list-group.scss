@@ -1,32 +1,32 @@
-@import "../../core/variables";
+@use "../../core/variables";
 
 .list-group-item-primary {
-	background-color: $ob-light;
-	color: $ob-dark;
+	background-color: variables.$ob-light;
+	color: variables.$ob-dark;
 }
 .list-group-item-secondary {
-	background-color: $ob-extra-light;
-	color: $ob-primary;
+	background-color: variables.$ob-extra-light;
+	color: variables.$ob-primary;
 }
 .list-group-item-success {
-	background-color: $ob-success-light;
-	color: $ob-success-dark;
+	background-color: variables.$ob-success-light;
+	color: variables.$ob-success-dark;
 }
 .list-group-item-danger {
-	background-color: $ob-error-light;
-	color: $ob-error-dark;
+	background-color: variables.$ob-error-light;
+	color: variables.$ob-error-dark;
 }
 .list-group-item-warning {
-	background-color: $ob-warning-light;
-	color: $ob-warning-dark;
+	background-color: variables.$ob-warning-light;
+	color: variables.$ob-warning-dark;
 }
 .list-group-item-info {
-	background-color: $ob-light;
-	color: $ob-dark;
+	background-color: variables.$ob-light;
+	color: variables.$ob-dark;
 }
 .list-group-item-light {
-	color: $ob-default;
+	color: variables.$ob-default;
 }
 .list-group-item-dark {
-	color: $ob-white;
+	color: variables.$ob-white;
 }

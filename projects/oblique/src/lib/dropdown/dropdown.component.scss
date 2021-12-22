@@ -1,7 +1,5 @@
-@import "../../styles/scss/core/variables";
-@import "../../styles/scss/core/mixins/layout";
-@import "../../styles/scss/core/mixins/bubble-tail";
-@import "../../styles/scss/core/mixins/shadow";
+@use "../../styles/scss/core/variables";
+@use "../../styles/scss/core/mixins/shadow";
 
 $arrow-size: 16px;
 $arrow-lg-size: 14px;
@@ -22,16 +20,16 @@ $arrow-lg-size: 14px;
 		right: 0;
 		min-width: 300px;
 		max-height: 0;
-		padding: 0 $ob-spacing-default;
-		margin-top: $ob-spacing-default;
+		padding: 0 variables.$ob-spacing-default;
+		margin-top: variables.$ob-spacing-default;
 		margin-left: -50%;
 		overflow: hidden;
 		white-space: normal;	// to cancel "nowrap" value from .ob-master-layout-header-controls
-		background-color: $ob-white;
+		background-color: variables.$ob-white;
 		transition-property: max-height, padding;
-		transition-duration: $ob-duration-default;
-		z-index: $ob-z-index-widget;
-		@include ob-dropShadow();
+		transition-duration: variables.$ob-duration-default;
+		z-index: variables.$ob-z-index-widget;
+		@include shadow.ob-dropShadow();
 
 		&.middle {
 			transform: translateX(calc(-50% + 13px)); //empiric value
@@ -42,7 +40,7 @@ $arrow-lg-size: 14px;
 		}
 
 		&.right {
-			margin: $ob-spacing-default 0 0 0;
+			margin: variables.$ob-spacing-default 0 0 0;
 			transform: translateX(-17px); // empiric value
 
 			.ob-control-item & {
@@ -52,7 +50,7 @@ $arrow-lg-size: 14px;
 
 		&.left {
 			transform: translateX(calc(-100% + 37px)); // empiric value
-			margin: $ob-spacing-default 0 0 0;
+			margin: variables.$ob-spacing-default 0 0 0;
 
 			.ob-control-item & {
 				transform: translateX(calc(-100% + 41px)); // empiric value
@@ -62,8 +60,8 @@ $arrow-lg-size: 14px;
 
 	&.ob-expanded .ob-dropdown-content {
 		max-height: calc(100vh - 200px);
-		padding: $ob-spacing-default;
-		border: 1px solid $ob-gray-light;
+		padding: variables.$ob-spacing-default;
+		border: 1px solid variables.$ob-gray-light;
 		overflow: visible;
 
 		&::before,
@@ -72,13 +70,13 @@ $arrow-lg-size: 14px;
 			display: block;
 			position: absolute;
 			border-style: solid;
-			transition: right $ob-duration-default, left $ob-duration-default;
+			transition: right variables.$ob-duration-default, left variables.$ob-duration-default;
 		}
 
 		&::before {
 			top: -$arrow-size;
 			border-width: 0 $arrow-size $arrow-size;
-			border-color: $ob-gray-light transparent;
+			border-color: variables.$ob-gray-light transparent;
 		}
 
 		&.middle::before {

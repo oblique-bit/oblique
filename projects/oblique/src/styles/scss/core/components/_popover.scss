@@ -1,40 +1,40 @@
-@import "../variables";
-@import "../mixins/shadow";
+@use "../variables";
+@use "../mixins/shadow";
 
 .ob-popover-content {
-	padding: $ob-spacing-default;
+	padding: variables.$ob-spacing-default;
 	max-width: 40%;  // empiric value
-	background: $ob-white;
-	z-index: $ob-z-index-widget;
-	@include ob-dropShadow();
+	background: variables.$ob-white;
+	z-index: variables.$ob-z-index-widget;
+	@include shadow.ob-dropShadow();
 
 	.ob-popover-arrow {
-		border-width: $ob-spacing-sm;
+		border-width: variables.$ob-spacing-sm;
 		border-style: solid;
 		transform-origin: center;
 	}
 
 	&[data-popper-placement^="top"] .ob-popover-arrow {
 		bottom: 0;
-		border-color: transparent transparent $ob-white $ob-white;
+		border-color: transparent transparent variables.$ob-white variables.$ob-white;
 		transform: translate(0, 50%) rotate(-45deg);
 	}
 
 	&[data-popper-placement^="bottom"] .ob-popover-arrow {
 		top: 0;
-		border-color: $ob-white $ob-white transparent transparent;
+		border-color: variables.$ob-white variables.$ob-white transparent transparent;
 		transform: translate(0, -50%) rotate(-45deg);
 	}
 
 	&[data-popper-placement^="right"] .ob-popover-arrow {
 		left: 0;
-		border-color: $ob-white transparent transparent $ob-white;
+		border-color: variables.$ob-white transparent transparent variables.$ob-white;
 		transform: translate(-50%, 0) rotate(-45deg);
 	}
 
 	&[data-popper-placement^="left"] .ob-popover-arrow {
 		right: 0;
-		border-color: transparent $ob-white $ob-white transparent;
+		border-color: transparent variables.$ob-white variables.$ob-white transparent;
 		transform: translate(50%, 0) rotate(-45deg);
 	}
 }

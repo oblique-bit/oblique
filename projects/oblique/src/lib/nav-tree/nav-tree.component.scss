@@ -1,5 +1,5 @@
-@import "../../styles/scss/core/variables";
-@import "../../styles/scss/core/mixins/nav";
+@use "../../styles/scss/core/variables";
+@use "../../styles/scss/core/mixins/nav";
 
 .ob-nav-tree {
 	display: flex;
@@ -10,51 +10,51 @@
 
 	.ob-nav-link {
 		display: block;
-		padding: $ob-spacing-xs $ob-spacing-default;
+		padding: variables.$ob-spacing-xs variables.$ob-spacing-default;
 		text-decoration: none;
-		color: $ob-default;
+		color: variables.$ob-default;
 
 		&.disabled,
 		&[disabled],
 		.disabled > & {
-			color: $ob-gray-dark;
+			color: variables.$ob-gray-dark;
 			cursor: not-allowed;
 		}
 	}
 
 	&.ob-nav-indent {
-		@include ob-nav-indent();
+		@include nav.ob-nav-indent();
 	}
 
 	&.ob-nav-bordered .ob-nav-link {
-		border-bottom: 1px solid $ob-gray-light;
+		border-bottom: 1px solid variables.$ob-gray-light;
 	}
 
 	&.ob-nav-hover.ob-nav-bordered .ob-nav-link {
-		@include ob-nav-hover(-1);
+		@include nav.ob-nav-hover(-1);
 	}
 
 	&.ob-nav-hover:not(.ob-nav-bordered) .ob-nav-link {
-		@include ob-nav-hover();
+		@include nav.ob-nav-hover();
 	}
 
 	&.ob-nav-toggle {
 		$fa-fw-width-px: 20px;
 		$icon-width: 24px;
-		$indentMaterial: $icon-width + $ob-spacing-default;
+		$indentMaterial: $icon-width + variables.$ob-spacing-default;
 		&.ob-nav-indent {
 			.ob-nav-link {
 				padding-left: $indentMaterial;
 			}
-			@include ob-nav-indent($indentMaterial);
+			@include nav.ob-nav-indent($indentMaterial);
 
 			.ob-font-awesome & {
-				$indentBootstrap: $fa-fw-width-px + $ob-spacing-sm;
+				$indentBootstrap: $fa-fw-width-px + variables.$ob-spacing-sm;
 				.ob-nav-link {
 					padding-left: $indentBootstrap;
 				}
 
-				@include ob-nav-indent($indentBootstrap);
+				@include nav.ob-nav-indent($indentBootstrap);
 			}
 		}
 
@@ -70,7 +70,7 @@
 		}
 
 		.mat-icon {
-			margin-left: -$indentMaterial + 5px + $ob-spacing-sm;
+			margin-left: -$indentMaterial + 5px + variables.$ob-spacing-sm;
 		}
 
 		.ob-nav-link.has-child {

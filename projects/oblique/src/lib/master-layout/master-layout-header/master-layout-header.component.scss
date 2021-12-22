@@ -1,27 +1,27 @@
-@import "../../../styles/scss/core/variables";
-@import "../../../styles/scss/core/mixins/bubble-tail";
-@import "../../../styles/scss/core/mixins/layout";
+@use "sass:selector";
+@use "../../../styles/scss/core/variables";
+@use "../../../styles/scss/core/mixins/layout";
 
 .ob-master-layout-header {
 	display: flex;
 	flex-direction: column;
-	background-color: $ob-white;
-	z-index: $ob-z-index-layout;
+	background-color: variables.$ob-white;
+	z-index: variables.$ob-z-index-layout;
 
 	.ob-header {
 		position: relative;
 		width: 100%;
 		background-color: inherit;
-		border-bottom: $ob-line-width solid $ob-accent;
+		border-bottom: variables.$ob-line-width solid variables.$ob-accent;
 
-		@include ob-media-breakpoint-up(md) {
+		@include layout.ob-media-breakpoint-up(md) {
 			display: flex;
 		}
 
 		aside {
 			position: absolute;
 			top: 0.5em;
-			font-size: $ob-font-size-bigger;
+			font-size: variables.$ob-font-size-bigger;
 			line-height: 1.5;
 			text-align: center;
 			word-break: normal;
@@ -46,17 +46,17 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin-top: $ob-spacing-sm;
-		margin-bottom: $ob-spacing-sm;
-		padding-left: $ob-spacing-default;
-		padding-right: $ob-spacing-default;
-		border-right: 1px solid $ob-gray-lighter;
+		margin-top: variables.$ob-spacing-sm;
+		margin-bottom: variables.$ob-spacing-sm;
+		padding-left: variables.$ob-spacing-default;
+		padding-right: variables.$ob-spacing-default;
+		border-right: 1px solid variables.$ob-gray-lighter;
 
 		&:empty {
 			display: none;
 		}
 
-		@include ob-media-breakpoint-down(md) {
+		@include layout.ob-media-breakpoint-down(md) {
 			float: left;
 			margin-top: 13px;
 			margin-bottom: 13px;
@@ -80,58 +80,58 @@
 		flex-direction: row;
 		align-items: center;
 		min-width: 0; // Important, for text ellipsis of app title (cf. https://css-tricks.com/flexbox-truncated-text/)!
-		padding: 8px $ob-spacing-default;
-		transition: padding $ob-duration-default ease-in-out;
+		padding: 8px variables.$ob-spacing-default;
+		transition: padding variables.$ob-duration-default ease-in-out;
 
-		@include ob-media-breakpoint-up(md) {
-			@at-root #{selector-append(":not(.ob-master-layout-header-small)", &)} {
-				padding: $ob-spacing-default;
+		@include layout.ob-media-breakpoint-up(md) {
+			@at-root #{selector.append(":not(.ob-master-layout-header-small)", &)} {
+				padding: variables.$ob-spacing-default;
 			}
 		}
 	}
 
 	.ob-master-layout-logo {
 		overflow: hidden;
-		width: $ob-logo-width-collapsed;
-		height: $ob-logo-height-collapsed;
-		margin-right: $ob-spacing-default;
+		width: variables.$ob-logo-width-collapsed;
+		height: variables.$ob-logo-height-collapsed;
+		margin-right: variables.$ob-spacing-default;
 
-		@include ob-media-breakpoint-up(md) {
-			@at-root #{selector-append(":not(.ob-master-layout-header-small)", &)} {
-				width: $ob-logo-width;
-				height: $ob-logo-height;
+		@include layout.ob-media-breakpoint-up(md) {
+			@at-root #{selector.append(":not(.ob-master-layout-header-small)", &)} {
+				width: variables.$ob-logo-width;
+				height: variables.$ob-logo-height;
 			}
 		}
 
 		img {
-			width: $ob-logo-width;
-			height: $ob-logo-height;
+			width: variables.$ob-logo-width;
+			height: variables.$ob-logo-height;
 		}
 	}
 
 	.ob-master-layout-brand-app-title {
 		display: block;
 		flex: 1;
-		font-size: $ob-font-size-xl;
+		font-size: variables.$ob-font-size-xl;
 		font-weight: 300;
-		padding-left: $ob-spacing-default;
-		border-left: 1px solid $ob-gray-lighter;
+		padding-left: variables.$ob-spacing-default;
+		border-left: 1px solid variables.$ob-gray-lighter;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 	}
 
 	.ob-master-layout-brand-link {
-		color: $ob-default;
+		color: variables.$ob-default;
 		text-decoration: none;
 	}
 
 	.ob-master-layout-logo {
-		transition: width $ob-duration-default ease-in-out, height $ob-duration-default ease-in-out;
+		transition: width variables.$ob-duration-default ease-in-out, height variables.$ob-duration-default ease-in-out;
 	}
 
 	.ob-header-toggle {
-		@include ob-media-breakpoint-up(md) {
+		@include layout.ob-media-breakpoint-up(md) {
 			display: none !important;
 		}
 	}

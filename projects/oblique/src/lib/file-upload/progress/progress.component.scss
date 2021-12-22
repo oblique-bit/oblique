@@ -1,24 +1,24 @@
-@import "../../../styles/scss/core/variables";
+@use "../../../styles/scss/core/variables";
 
 .ob-progress {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: $ob-spacing-lg;
-	border: 1px dashed $ob-primary-700;
-	border-radius: $ob-border-radius-base;
-	background-color: $ob-primary-50;
+	padding: variables.$ob-spacing-lg;
+	border: 1px dashed variables.$ob-primary-700;
+	border-radius: variables.$ob-border-radius-base;
+	background-color: variables.$ob-primary-50;
 
 	.ob-progress-heading {
-		color: $ob-primary-500;
+		color: variables.$ob-primary-500;
 	}
 
 	.ob-file-progress {
 		width: 100%;
 
 		+ .ob-file-progress {
-			margin-top: $ob-spacing-sm;
+			margin-top: variables.$ob-spacing-sm;
 		}
 	}
 
@@ -26,18 +26,18 @@
 		width: 100%;
 
 		+ .ob-file-progress-bar {
-			margin-top: -$ob-spacing-sm;
+			margin-top: -(variables.$ob-spacing-sm);
 		}
 	}
 
 	.ob-file-progress-bar {
 		display: flex;
 		align-items: center;
-		height: $ob-spacing-xl;
+		height: variables.$ob-spacing-xl;
 	}
 
 	.ob-button {
-		font-size: $ob-font-size-smallest;
-		margin-left: $ob-spacing-sm;
+		font-size: variables.$ob-font-size-smallest;
+		margin-left: variables.$ob-spacing-sm;
 	}
 }

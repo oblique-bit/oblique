@@ -1,6 +1,6 @@
-@import "../../styles/scss/core/variables";
-@import "../../styles/scss/core/mixins/layout";
-@import "../../styles/scss/core/mixins/shadow";
+@use "../../styles/scss/core/variables";
+@use "../../styles/scss/core/mixins/layout";
+@use "../../styles/scss/core/mixins/shadow";
 
 .ob-sticky {
 	display: block;
@@ -8,14 +8,14 @@
 	overflow: hidden;
 
 	&:not(.no-layout) .ob-sticky-content {
-		padding: $ob-spacing-default 0;
+		padding: variables.$ob-spacing-default 0;
 	}
 }
 
 .ob-sticky-main {
-	@include ob-media-breakpoint-up(md) {
+	@include layout.ob-media-breakpoint-up(md) {
 		overflow-y: auto;
-		height: calc(100% - #{$ob-sticky-element-height}); // is it really needed?
+		height: calc(100% - #{variables.$ob-sticky-element-height}); // is it really needed?
 		// Restrict container width to avoid unwanted horizontal scrollbar
 		// when elements are injected to container or when viewport is resized:
 		width: 100%;
@@ -33,7 +33,7 @@
 		margin: 0;
 		padding: 0;
 
-		color: $ob-gray-darker;
+		color: variables.$ob-gray-darker;
 		font-size: 22px;
 		line-height: 38px;
 
@@ -46,20 +46,20 @@
 		margin-left: auto;
 	}
 
-	@include ob-media-breakpoint-up(md) {
-		height: $ob-sticky-element-height;
-		background-color: $ob-white;
-		z-index: $ob-z-index-controls;
+	@include layout.ob-media-breakpoint-up(md) {
+		height: variables.$ob-sticky-element-height;
+		background-color: variables.$ob-white;
+		z-index: variables.$ob-z-index-controls;
 	}
 }
 
-@include ob-media-breakpoint-up(md) {
+@include layout.ob-media-breakpoint-up(md) {
 	.ob-sticky-header {
-		@include ob-dropShadow(down);
+		@include shadow.ob-dropShadow(down);
 	}
 
 	.ob-sticky-footer {
-		@include ob-dropShadow(up);
+		@include shadow.ob-dropShadow(up);
 	}
 }
 
@@ -70,8 +70,8 @@
 
 .ob-sticky-sm {
 	> .ob-sticky-main {
-		@include ob-media-breakpoint-up(md) {
-			height: calc(100% - #{$ob-sticky-element-height-sm});
+		@include layout.ob-media-breakpoint-up(md) {
+			height: calc(100% - #{variables.$ob-sticky-element-height-sm});
 		}
 	}
 
@@ -80,16 +80,16 @@
 		padding-top: 7px;
 		padding-bottom: 7px;
 
-		@include ob-media-breakpoint-up(md) {
-			height: $ob-sticky-element-height-sm;
+		@include layout.ob-media-breakpoint-up(md) {
+			height: variables.$ob-sticky-element-height-sm;
 		}
 	}
 }
 
 .ob-sticky-lg {
 	> .ob-sticky-main {
-		@include ob-media-breakpoint-up(md) {
-			height: calc(100% - #{$ob-sticky-element-height-lg});
+		@include layout.ob-media-breakpoint-up(md) {
+			height: calc(100% - #{variables.$ob-sticky-element-height-lg});
 		}
 	}
 
@@ -98,8 +98,8 @@
 		padding-top: 24px;
 		padding-bottom: 24px;
 
-		@include ob-media-breakpoint-up(md) {
-			height: $ob-sticky-element-height-lg;
+		@include layout.ob-media-breakpoint-up(md) {
+			height: variables.$ob-sticky-element-height-lg;
 		}
 
 		h1, h2, h3, h4, h5, h6 {
@@ -117,7 +117,7 @@
 	.ob-sticky-header,
 	.ob-sticky-footer,
 	.ob-sticky-content {
-		padding-left: $ob-spacing-default;
-		padding-right: $ob-spacing-default;
+		padding-left: variables.$ob-spacing-default;
+		padding-right: variables.$ob-spacing-default;
 	}
 }

@@ -1,6 +1,6 @@
 @use "sass:math";
-@import "../../styles/scss/core/variables";
-@import "../../styles/scss/core/mixins/layout";
+@use "sass:selector";
+@use "../../styles/scss/core/variables";
 
 .ob-search-box .ob-dropdown {
 	position: absolute;
@@ -10,7 +10,7 @@
 	}
 
 	.ob-dropdown-content {
-		top: $ob-spacing-default;
+		top: variables.$ob-spacing-default;
 
 		&.right {
 			transform: translateX(-12px); // empiric number
@@ -23,7 +23,7 @@
 }
 
 .ob-no-result {
-	padding: $ob-spacing-sm $ob-spacing-default;
+	padding: variables.$ob-spacing-sm variables.$ob-spacing-default;
 
 	&:not(:only-child) {
 		display: none;
@@ -32,9 +32,9 @@
 
 .ob-search-results-list {
 	left: 0;
-	background-color: $ob-white;
+	background-color: variables.$ob-white;
 	overflow: hidden;
-	transition: height $ob-duration-default;
+	transition: height variables.$ob-duration-default;
 
 	.ob-highlight {
 		font-weight: bold;
@@ -42,7 +42,7 @@
 	}
 
 	small {
-		color: $ob-gray-dark;
+		color: variables.$ob-gray-dark;
 		display: block;
 	}
 }
@@ -78,10 +78,10 @@
 	}
 
 	&:not(.ob-slide-control) .ob-search-box-input {
-		padding: 0 $ob-spacing-sm;
+		padding: 0 variables.$ob-spacing-sm;
 
-		@at-root #{selector-append(".ob-font-awesome", &)} {
-			padding-left: $ob-spacing-sm + $ob-spacing-xs; // actual padding + icon margin
+		@at-root #{selector.append(".ob-font-awesome", &)} {
+			padding-left: variables.$ob-spacing-sm + variables.$ob-spacing-xs; // actual padding + icon margin
 		}
 	}
 
@@ -90,25 +90,25 @@
 		position: absolute;
 		right: 0;
 		bottom: 0;
-		left: calc(1.65 * 1em + #{$ob-spacing-xs}); // font-size * icon width + some padding
+		left: calc(1.65 * 1em + #{variables.$ob-spacing-xs}); // font-size * icon width + some padding
 		height: 4px;
 		display: block;
 		border-bottom: 1px solid transparent;
 		border-left: 1px solid transparent;
 		border-right: 1px solid transparent;
-		transition: border-color $ob-duration-default;
+		transition: border-color variables.$ob-duration-default;
 	}
 
 	&.ob-font-awesome::before {
-		left: calc(1.65em + #{$ob-spacing-xs}); // font-size + spacing
+		left: calc(1.65em + #{variables.$ob-spacing-xs}); // font-size + spacing
 	}
 
 	&.ob-slide-control {
 		.ob-search-box-input {
 			max-width: 0;
-			transition: max-width $ob-duration-default, padding-left math.div($ob-duration-default, 3) * 2;
+			transition: max-width variables.$ob-duration-default, padding-left math.div(variables.$ob-duration-default, 3) * 2;
 
-			@at-root #{selector-append(".ob-font-awesome", &)} {
+			@at-root #{selector.append(".ob-font-awesome", &)} {
 				width: calc(100% - 1.65em); // - font-size (icon size is 1em)
 			}
 
@@ -118,10 +118,10 @@
 			}
 		}
 
-		.ob-search-dropdown{
+		.ob-search-dropdown {
 			max-height: 0;
 			overflow: hidden;
-			transition: max-height $ob-duration-default;
+			transition: max-height variables.$ob-duration-default;
 		}
 
 		&:focus,
@@ -130,14 +130,15 @@
 		&:hover {
 			.ob-search-box-input {
 				max-width: 100%;
-				padding: 0 $ob-spacing-sm;
+				padding: 0 variables.$ob-spacing-sm;
 
-				@at-root #{selector-append(".ob-font-awesome", &)} {
+				@at-root #{selector.append(".ob-font-awesome", &)} {
 					width: calc(100% - 1.65em); // - font-size (icon size is 1em)
-					padding-left: $ob-spacing-sm + $ob-spacing-xs; // actual padding + icon margin
+					padding-left: variables.$ob-spacing-sm + variables.$ob-spacing-xs; // actual padding + icon margin
 				}
 			}
-			.ob-search-dropdown{
+
+			.ob-search-dropdown {
 				overflow: inherit;
 				max-height: inherit;
 			}
@@ -147,16 +148,16 @@
 	&:not(.ob-slide-control)::before,
 	&.ob-slide-control:focus-within::before,
 	&.ob-slide-control:hover::before {
-		border-color: $ob-gray;
+		border-color: variables.$ob-gray;
 	}
 }
 
 .ob-control-item .ob-search-box {
-	color: $ob-gray-dark;
+	color: variables.$ob-gray-dark;
 
 	&:hover,
 	&:active,
 	&:focus {
-		color: $ob-default;
+		color: variables.$ob-default;
 	}
 }

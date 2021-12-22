@@ -1,54 +1,54 @@
-@import "../../../styles/scss/core/variables";
+@use "../../../styles/scss/core/variables";
 
 .ob-drop-zone > div {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: $ob-spacing-lg;
-	border: 1px dashed $ob-primary-700;
-	border-radius: $ob-border-radius-base;
-	background-color: $ob-gray-100;
-	transition: background-color $ob-duration-fast;
+	padding: variables.$ob-spacing-lg;
+	border: 1px dashed variables.$ob-primary-700;
+	border-radius: variables.$ob-border-radius-base;
+	background-color: variables.$ob-gray-100;
+	transition: background-color variables.$ob-duration-fast;
 
 	&:focus {
 		outline: none;
 
 		.ob-outline & {
-			border-color: $ob-default;
-			background-color: $ob-primary-50;
-			box-shadow: 0 0 $ob-spacing-xs 0 $ob-default;
-			outline: 1px solid $ob-primary;
+			border-color: variables.$ob-default;
+			background-color: variables.$ob-primary-50;
+			box-shadow: 0 0 variables.$ob-spacing-xs 0 variables.$ob-default;
+			outline: 1px solid variables.$ob-primary;
 			outline-offset: -3px;
 		}
 	}
 
 	.ob-drop-zone-heading {
-		font-size: $ob-font-size-bigger;
+		font-size: variables.$ob-font-size-bigger;
 		margin-bottom: 0;
-		color: $ob-primary-500;
+		color: variables.$ob-primary-500;
 	}
 
 	&:hover,
 	&:hover:focus,
 	&.ob-dragging {
 		cursor: pointer;
-		background-color: $ob-primary-200;
+		background-color: variables.$ob-primary-200;
 
 		.ob-drop-zone-heading {
-			color: $ob-dark;
+			color: variables.$ob-dark;
 		}
 	}
 
 	.mat-icon.ob-upload-icon {
 		font-size: 42.666px; // empiric number
-		margin-right: $ob-spacing-default;
+		margin-right: variables.$ob-spacing-default;
 		vertical-align: bottom;
 	}
 
 	.ob-drop-zone-hints {
 		text-align: center;
-		margin-left: calc(#{$ob-spacing-default} + 42.666px * 1.5); // icon margin + icon font-size * icon size
+		margin-left: calc(#{variables.$ob-spacing-default} + 42.666px * 1.5); // icon margin + icon font-size * icon size
 		margin-bottom: 0;
 	}
 }

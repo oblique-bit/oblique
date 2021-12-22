@@ -1,31 +1,31 @@
-@import "../../core/variables";
-@import "variables";
-@import "mixins/table";
+@use "../../core/variables" as core-variables;
+@use "variables";
+@use "mixins/table";
 
-@include ob-table-variant('table-active', $ob-light, $ob-default);
-@include ob-table-variant('table-primary', $ob-primary, $ob-white);
-@include ob-table-variant('table-secondary', $ob-secondary, $ob-white);
-@include ob-table-variant('table-success', $ob-success-light, $ob-default);
-@include ob-table-variant('table-warning', $ob-warning-light, $ob-default);
-@include ob-table-variant('table-danger', $ob-error-light, $ob-default);
+@include table.ob-table-variant('table-active', core-variables.$ob-light, core-variables.$ob-default);
+@include table.ob-table-variant('table-primary', variables.$ob-primary, core-variables.$ob-white);
+@include table.ob-table-variant('table-secondary', variables.$ob-secondary, core-variables.$ob-white);
+@include table.ob-table-variant('table-success', core-variables.$ob-success-light, core-variables.$ob-default);
+@include table.ob-table-variant('table-warning', core-variables.$ob-warning-light, core-variables.$ob-default);
+@include table.ob-table-variant('table-danger', core-variables.$ob-error-light, core-variables.$ob-default);
 
 .table {
 	thead th {
-		border-bottom: 1px solid $ob-gray-light;
+		border-bottom: 1px solid core-variables.$ob-gray-light;
 	}
 
 	td, th {
-		border-top: 1px solid $ob-gray-light;
-		border-bottom: 1px solid $ob-gray-light;
-		padding: $ob-spacing-sm;
+		border-top: 1px solid core-variables.$ob-gray-light;
+		border-bottom: 1px solid core-variables.$ob-gray-light;
+		padding: core-variables.$ob-spacing-sm;
 		text-align: inherit;
 	}
 }
 
 caption {
-	padding-top: $ob-spacing-sm;
-	padding-bottom: $ob-spacing-sm;
-	color: $ob-gray-dark;
+	padding-top: core-variables.$ob-spacing-sm;
+	padding-bottom: core-variables.$ob-spacing-sm;
+	color: core-variables.$ob-gray-dark;
 	font-weight: 700;
 	text-align: left;
 	caption-side: top;

@@ -1,27 +1,28 @@
-@import "../../styles/scss/core/variables";
-@import "../../styles/scss/core/mixins/layout";
-@import "../../styles/scss/core/mixins/shadow";
+@use "sass:color";
+@use "../../styles/scss/core/variables";
+@use "../../styles/scss/core/mixins/layout";
+@use "../../styles/scss/core/mixins/shadow";
 
 .ob-top-control-btn {
 	visibility: hidden; // A11y: ensure element is not reachable when tabbing.
 	position: fixed;
-	z-index: $ob-z-index-widget;
+	z-index: variables.$ob-z-index-widget;
 	opacity: 0;
 	white-space: nowrap;
 	width: 200px;
 	padding: 8px 14px;
 	bottom: -52px;
 	right: -150px;
-	color: $ob-gray-dark;
+	color: variables.$ob-gray-dark;
 	border: none;
-	border-bottom-left-radius: $ob-border-radius-base;
-	border-top-left-radius: $ob-border-radius-base;
-	background-color: rgba(red($ob-gray-light), green($ob-gray-light), blue($ob-gray-light), 0.65);
-	transition: all $ob-duration-default ease-in-out;
+	border-bottom-left-radius: variables.$ob-border-radius-base;
+	border-top-left-radius: variables.$ob-border-radius-base;
+	background-color: rgba(color.red(variables.$ob-gray-light), color.green(variables.$ob-gray-light), color.blue(variables.$ob-gray-light), 0.65);
+	transition: all variables.$ob-duration-default ease-in-out;
 
 	.ob-control-icon {
 		float: left;
-		font-size: $ob-font-size-lg;
+		font-size: variables.$ob-font-size-lg;
 
 		.ob-font-awesome & {
 			font-size: 36px;
@@ -45,9 +46,9 @@
 
 	&:hover, &:focus {
 		text-decoration: none;
-		color: $ob-default;
-		background-color: $ob-gray-light;
-		@include ob-dropShadow();
+		color: variables.$ob-default;
+		background-color: variables.$ob-gray-light;
+		@include shadow.ob-dropShadow();
 	}
 
 	.ob-master-layout-scrolling & {
@@ -55,7 +56,7 @@
 		opacity: 0.85;
 		bottom: 15px;
 
-		@include ob-media-breakpoint-up(md) {
+		@include layout.ob-media-breakpoint-up(md) {
 			bottom: 10%; //empiric value
 		}
 
@@ -66,7 +67,7 @@
 	}
 
 	.ob-header-expanded & {
-		@include ob-media-breakpoint-down(md) {
+		@include layout.ob-media-breakpoint-down(md) {
 			display: none;
 		}
 	}

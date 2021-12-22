@@ -1,6 +1,6 @@
-@import "~@fortawesome/fontawesome-free/scss/variables";
-@import "../../core/variables";
-@import "mixins/icon";
+@use "../../core";
+@use "mixins/icon";
+@use "~@fortawesome/fontawesome-free/scss/variables";
 
 .select {
 	position: relative;
@@ -19,7 +19,7 @@
 
 	&:not([disabled]):not(.select-disabled) {
 		&::after {
-			content: fa-content($fa-var-chevron-down);
+			content: variables.fa-content(variables.$fa-var-chevron-down);
 			-webkit-font-smoothing: antialiased;
 			font-family: 'Font Awesome 5 Free';
 			font-weight: 900;

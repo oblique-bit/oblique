@@ -1,10 +1,10 @@
-@import "../../../styles/scss/core/variables";
-@import "../../../styles/scss/core/mixins/layout";
-@import "../../../styles/scss/core/mixins/shadow";
+@use "../../../styles/scss/core/variables";
+@use "../../../styles/scss/core/mixins/layout";
+@use "../../../styles/scss/core/mixins/shadow";
 
 .ob-master-layout-navigation  {
 	> ul {
-		transition: padding $ob-duration-default;	// because navigation-scrollable-* classes are dynamic
+		transition: padding variables.$ob-duration-default;	// because navigation-scrollable-* classes are dynamic
 	}
 
 	&.navigation-scrollable  {
@@ -14,41 +14,41 @@
 			display: none;
 		}
 
-		@include ob-media-breakpoint-down(md) {
+		@include layout.ob-media-breakpoint-down(md) {
 			.ob-navigation-scrollable-content > li {
 				// Ensure navigation scrolling is disabled on small viewports:
 				margin-left: 0 !important;
 			}
 		}
 
-		@include ob-media-breakpoint-up(md) {
+		@include layout.ob-media-breakpoint-up(md) {
 			.ob-navigation-scrollable-control {
 				position: absolute;
 				top: 0;
-				width: $ob-navigation-scrollable-padding;
+				width: variables.$ob-navigation-scrollable-padding;
 				height: 100%;
 				border: none;
 				display: inline-block;
-				background-color: $ob-gray-extra-light;
+				background-color: variables.$ob-gray-extra-light;
 				text-align: center;
-				z-index: $ob-z-index-controls;
+				z-index: variables.$ob-z-index-controls;
 
 				&.ob-navigation-scrollable-control-left {
-					@include ob-innerBottomShadow();
+					@include shadow.ob-innerBottomShadow();
 				}
 				&.ob-navigation-scrollable-control-right {
-					@include ob-innerBottomShadow();
+					@include shadow.ob-innerBottomShadow();
 				}
 
 				> span {
-					transition: transform $ob-duration-fast ease-in-out;
+					transition: transform variables.$ob-duration-fast ease-in-out;
 				}
 
 				&:hover,
 				&:focus,
 				&:active {
 					cursor: pointer;
-					background-color: $ob-gray-light;
+					background-color: variables.$ob-gray-light;
 					box-shadow: none;
 
 					> span {
@@ -71,14 +71,14 @@
 				white-space: nowrap;
 				margin-left: 0;
 				margin-right: 0;
-				padding-right: $ob-navigation-scrollable-padding;
-				padding-left: $ob-navigation-scrollable-padding;
+				padding-right: variables.$ob-navigation-scrollable-padding;
+				padding-left: variables.$ob-navigation-scrollable-padding;
 
 				> li {
 					display: inline-block;
 					white-space: normal;
 					// Animating list item with a negative margin ensures parent menu keeps the original width:
-					transition: margin $ob-duration-default;
+					transition: margin variables.$ob-duration-default;
 				}
 			}
 		}

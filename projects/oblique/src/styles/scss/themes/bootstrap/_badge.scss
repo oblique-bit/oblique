@@ -1,6 +1,6 @@
-@import "../../core/variables";
-@import "variables";
-@import "mixins/badge";
+@use "../../core/variables" as core-variables;
+@use "variables";
+@use "mixins/badge";
 
 .badge {
 	border: 1px solid transparent;
@@ -8,21 +8,26 @@
 }
 
 .badge-default {
-	@include ob-badge-styles($ob-white, $ob-default);
-	border-color: $ob-gray;
+	@include badge.ob-badge-styles(core-variables.$ob-white, core-variables.$ob-default);
+	border-color: core-variables.$ob-gray;
 }
+
 .badge-primary {
-	@include ob-badge-styles($ob-primary, $ob-white);
+	@include badge.ob-badge-styles(core-variables.$ob-primary, core-variables.$ob-white);
 }
+
 .badge-secondary {
-	@include ob-badge-styles($ob-secondary, $ob-white);
+	@include badge.ob-badge-styles(variables.$ob-secondary, core-variables.$ob-white);
 }
+
 .badge-success {
-	@include ob-badge-styles($ob-success, $ob-white);
+	@include badge.ob-badge-styles(core-variables.$ob-success, core-variables.$ob-white);
 }
+
 .badge-warning {
-	@include ob-badge-styles($ob-warning, $ob-white);
+	@include badge.ob-badge-styles(core-variables.$ob-warning, core-variables.$ob-white);
 }
+
 .badge-danger {
-	@include ob-badge-styles($ob-error, $ob-white);
+	@include badge.ob-badge-styles(core-variables.$ob-error, core-variables.$ob-white);
 }

@@ -1,5 +1,4 @@
-@import "../../core/variables";
-@import "variables";
+@use "variables";
 
 .input-group {
 	> .input-group-prepend > .input-group-text,
@@ -8,7 +7,7 @@
 	> .input-group-append > .btn,
 	> .input-group-prepend > .dropdown .dropdown-toggle,
 	> .input-group-append > .dropdown .dropdown-toggle {
-		border-radius: $ob-input-border-radius;
+		border-radius: variables.$ob-input-border-radius;
 	}
 
 	> .input-group-prepend,

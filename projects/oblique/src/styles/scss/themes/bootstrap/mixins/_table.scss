@@ -1,3 +1,5 @@
+@use "sass:color";
+
 @mixin ob-table-variant($name, $bg-color, $ob-font-color) {
 	.#{$name},
 	.table-hover tbody.#{$name}:hover, // cancels bootstrap rule
@@ -20,7 +22,7 @@
 	.table-hover tbody.#{$name} tr:hover, // tbody
 	.table-hover tbody tr.#{$name}:hover, // tr
 	.table-hover tbody tr:hover .#{$name} { // td, th
-		background-color: darken($bg-color, 11%);
+		background-color: color.adjust($bg-color, $lightness: -11%);
 		color: $ob-font-color;
 	}
 }
