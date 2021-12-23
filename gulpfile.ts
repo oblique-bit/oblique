@@ -124,19 +124,6 @@ gulp.task(
 	gulp.series(commit)
 );
 
-gulp.task('themes',
-	gulp.parallel(
-		distAssets,
-		gulp.series(
-			distStyles,
-			gulp.parallel(
-				distMaterialCss,
-				distBootstrapCss
-			)
-		)
-	)
-);
-
 function transpile(target: string, dir: string, cb): void {
 	transpileFile(['dist', 'oblique', 'styles', 'scss', dir, `oblique-${target}.scss`], target, cb);
 }

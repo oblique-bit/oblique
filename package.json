@@ -50,7 +50,6 @@
     "test": "ng test oblique --configuration production",
     "lint": "ng lint oblique && ng lint oblique-showcase",
     "format": "ng lint oblique --fix && ng lint oblique-showcase --fix",
-    "themes": "npm run gulp -- themes",
     "icons": "ts-node scripts/icons.ts",
     "copy-error-messages": "ts-node scripts/copy-error-messages.ts",
     "e2e": "ng e2e",

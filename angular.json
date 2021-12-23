@@ -40,15 +40,26 @@
                 "input": "projects/oblique/src/styles/fonts",
                 "output": "/assets/fonts"
               },
-              {
-                "glob": "**/*",
-                "input": "dist/oblique/styles/css",
-                "output": "/assets/css"
-              },
               "src/Staticfile"
             ],
             "styles": [
               "projects/oblique/src/styles/scss/oblique-core.scss",
+              {
+                "input": "projects/oblique/src/styles/scss/themes/oblique-material.scss",
+                "inject": false
+              },
+              {
+                "input": "projects/oblique/src/styles/scss/themes/oblique-bootstrap.scss",
+                "inject": false
+              },
+              {
+                "input": "projects/oblique/src/styles/css/frutiger.css",
+                "inject": false
+              },
+              {
+                "input": "projects/oblique/src/styles/css/roboto.css",
+                "inject": false
+              },
               "projects/oblique/src/styles/scss/oblique-icons.scss",
               "projects/oblique/src/styles/scss/oblique-alert.scss",
               "src/scss/styles.scss"
