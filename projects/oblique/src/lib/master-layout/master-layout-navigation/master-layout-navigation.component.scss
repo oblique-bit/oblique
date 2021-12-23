@@ -34,6 +34,10 @@
 		padding: 0;
 		list-style: none;
 		background-color: variables.$ob-gray-extra-light;
+
+		.ob-master-layout:not(.ob-fixed-layout):not(.ob-continuous-layout) &:not(.ob-has-opened-menu) {
+			overflow: hidden;
+		}
 		@include shadow.ob-innerBottomShadow();
 
 		&:not(.ob-sub-nav) {

@@ -20,6 +20,7 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 	activeClass = this.config.navigation.activeClass;
 	currentScroll = 0;
 	maxScroll = 0;
+	hasOpenedMenu = false;
 	@Input() links: ObINavigationLink[] = [];
 	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') isScrollable: boolean;
 	routerLinkActiveOptions: IsActiveMatchOptions = {paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'};
