@@ -57,7 +57,6 @@
 |moment|Angular Material ||A JavaScript date library for parsing, validating, manipulating, and formatting dates.|https://www.npmjs.com/package/moment|https://momentjs.com/|
 |ng-packagr| Angular CLI|dist|Compile and package Angular libraries in Angular Package Format (APF)|https://www.npmjs.com/package/ng-packagr|https://github.com/ng-packagr/ng-packagr|
 |prettier| Oblique|lint|Prettier is an opinionated code formatter. It enforces a consistent style by parsing your code and re-printing it with its own rules that take the maximum line length into account, wrapping code when necessary.|https://www.npmjs.com/package/prettier|https://prettier.io/|
-|sass| Oblique & Gulp |dist|A pure JavaScript implementation of Sass. Sass makes CSS fun again. | https://www.npmjs.com/package/sass | |
 |ts-morph| Oblique schematics|dist|TypeScript Compiler API wrapper. Provides an easier way to programmatically navigate and manipulate TypeScript and JavaScript code.|https://www.npmjs.com/package/ts-morph|https://github.com/dsherret/ts-morph#readme|
 |ts-node| ||TypeScript execution and REPL for node.js, with source map support|https://www.npmjs.com/package/ts-node| https://typestrong.org/ts-node|
 |typescript|| |TypeScript is a language for application-scale JavaScript. TypeScript adds optional types to JavaScript that support tools for large-scale JavaScript applications for any browser, for any host, on any OS|https://www.npmjs.com/package/typescript|www.typescriptlang.org/|

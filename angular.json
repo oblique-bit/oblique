@@ -137,6 +137,64 @@
         }
       }
     },
+    "oblique-styles": {
+      "root": "",
+      "sourceRoot": "projects/oblique/src/styles",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "projects/oblique/styles/css",
+            "tsConfig": "projects/stylesBuilder/tsconfig.styles.json",
+            "main": "projects/stylesBuilder/main.ts",
+            "index": "projects/stylesBuilder/index.html",
+            "styles": [
+              {
+                "input": "projects/oblique/src/styles/scss/oblique-core.scss",
+                "inject": false
+              },
+              {
+                "input": "projects/oblique/src/styles/scss/oblique-alert.scss",
+                "inject": false
+              },
+              {
+                "input": "projects/oblique/src/styles/scss/oblique-icons.scss",
+                "inject": false
+              },
+              {
+                "input": "projects/oblique/src/styles/scss/oblique-utilities.scss",
+                "inject": false
+              },
+              {
+                "input": "projects/stylesBuilder/oblique-components.scss",
+                "inject": false
+              },
+              {
+                "input": "projects/oblique/src/styles/scss/themes/oblique-material.scss",
+                "inject": false
+              },
+              {
+                "input": "projects/oblique/src/styles/scss/themes/oblique-bootstrap.scss",
+                "inject": false
+              }
+            ],
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "none",
+              "sourceMap": false,
+              "progress": false
+            }
+          }
+        }
+      }
+    },
     "oblique": {
       "root": "projects/oblique",
       "sourceRoot": "projects/oblique/src",

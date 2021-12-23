@@ -42,7 +42,7 @@
     "start": "ng serve",
     "build": "ng build",
     "schematics": "npm run dist --prefix projects/oblique/schematics",
-    "predist": "npm run gulp pre-dist",
+    "predist": "npm run gulp pre-dist && npm run build oblique-styles -- --configuration=production",
     "dist": "npm run build -- oblique && npm run schematics",
     "distiOS": "npm run gulp pre-dist && npm run build -- oblique && npm run distiOS --prefix projects/oblique/schematics && npm run minify && npm run gulp -- dist && ts-node scripts/post-dist.ts",
     "postdist": "npm run minify && npm run gulp -- dist && ts-node scripts/post-dist.ts",
@@ -131,7 +131,6 @@
     "ng-packagr": "^13.1.1",
     "prettier": "^2.5.1",
     "raw-loader": "^4.0.2",
-    "sass": "^1.44.0",
     "ts-node": "^10.4.0",
     "typescript": "~4.4.4",
     "uglify-js": "^3.14.4"

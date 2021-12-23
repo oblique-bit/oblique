@@ -5,7 +5,6 @@ const fs = require('fs'),
 	git = require('gulp-git'),
 	header = require('gulp-header'),
 	replace = require('gulp-replace'),
-	sass = require('sass'),
 	path = require('path'),
 	childProcess = require('child_process'),
 	paths = {
@@ -18,13 +17,6 @@ const fs = require('fs'),
 
 const distStyles = () => gulp.src([`${paths.src}/styles/**/*`]).pipe(gulp.dest(`${paths.dist}/styles`));
 const distAssets = () => gulp.src([`${paths.src}/assets/**/*`]).pipe(gulp.dest(`${paths.dist}/assets`));
-const distMaterialCss = async (done) => transpile('material', 'themes', done);
-const distBootstrapCss = async (done) => transpile('bootstrap', 'themes', done);
-const distCoreCss = async (done) => transpile('core', '', done);
-const distUtilCss = async (done) => transpile('utilities', '', done);
-const distComponentsCss = async (done) => transpileComponents(`${paths.src}/lib`, done);
-const distAlertCss = async (done) => transpileFile(['dist', 'oblique', 'styles', 'scss', 'oblique-alert.scss'], 'alert', done);
-const distIconCss = async (done) => transpileFile(['dist', 'oblique', 'styles', 'scss', 'oblique-icons.scss'], 'icons', done);
 
 const addBanner = () => {
 	const releaseDate = getTodayDate();
@@ -46,13 +38,12 @@ const addBanner = () => {
 
 const distMeta = () => gulp.src(['README.md', 'CHANGELOG.md', 'LICENSE']).pipe(gulp.dest(paths.dist));
 
-const distCss = () => gulp.src(`${paths.dist}/styles/css/*`)
-	.pipe(replace(`${paths.fa}/webfonts`, `${paths.oblique}/fonts`))
-	.pipe(replace(`../../fonts/`, `../fonts/`))
+const distCss = () => gulp.src(`${paths.dist}/styles/css/oblique-core.css`)
+	.pipe(replace(/(?<=url\()fa-/g, `~@oblique/oblique/styles/fonts/fa-`))
 	.pipe(gulp.dest(`${paths.dist}/styles/css`));
 
 const distBgImage = () => gulp.src(`${paths.dist}/styles/css/oblique-components.css`)
-	.pipe(replace('../../../assets/images/cover-background.jpg', '../../assets/images/cover-background.jpg'))
+	.pipe(replace('cover-background.jpg', '~@oblique/oblique/assets/images/cover-background.jpg'))
 	.pipe(gulp.dest(`${paths.dist}/styles/css`));
 
 const distFonts = () => gulp.src(['./node_modules/@fortawesome/fontawesome-free/webfonts/*', './node_modules/font-awesome/fonts/*', `${paths.src}/styles/fonts/*`])
@@ -99,15 +90,6 @@ gulp.task(
 		distAssets,
 		gulp.series(
 			distStyles,
-			gulp.parallel(
-				distMaterialCss,
-				distBootstrapCss,
-				distCoreCss,
-				distUtilCss,
-				distComponentsCss,
-				distIconCss,
-				distAlertCss
-			),
 			distScss,
 			distCss,
 			distBgImage,
@@ -123,75 +105,6 @@ gulp.task(
 	'publish',
 	gulp.series(commit)
 );
-
-function transpile(target: string, dir: string, cb): void {
-	transpileFile(['dist', 'oblique', 'styles', 'scss', dir, `oblique-${target}.scss`], target, cb);
-}
-
-function transpileFile(file: string[], target: string, cb): void {
-	const distCssPath = path.join('dist', 'oblique', 'styles', 'css');
-	sass.render({
-		file: path.join(...file),
-		importer: (url, prev, cbb) => {
-			cbb({
-				file: url.replace('~', 'node_modules/')
-			});
-		},
-		outputStyle: 'compressed',
-		sourceMap: false, // doesn't get generated correctly
-		outFile: `dist/oblique/styles/css/oblique-${target}.css`,
-		quietDeps: true
-	}, (error, result) => {
-		if (error) {
-			console.log(error.message);
-		} else {
-			if (!fs.existsSync(distCssPath)) {
-				fs.mkdirSync(distCssPath);
-			}
-			fs.writeFile(path.join('dist', 'oblique', 'styles', 'css', `oblique-${target}.css`), result.css, (err) => {
-				if (err) {
-					console.log(err);
-				}
-				cb();
-			});
-		}
-	});
-}
-
-function deleteFile(component: string): void {
-	if (fs.existsSync(component)) {
-		fs.unlinkSync(component);
-	}
-}
-
-function generateComponentsStyles(dir: string[], component: string): void {
-	fs.readdirSync(path.join(...dir)).forEach(file => {
-		if (fs.statSync(path.join(...dir, file)).isDirectory()) {
-			generateComponentsStyles([...dir, file], component);
-		} else if (file.endsWith('ts')) {
-			const content = fs.readFileSync(path.join(...dir, file), 'utf8').replace(/\s/g, '');
-			const stylePattern = /styleUrls:(\[(.*?)\]){1}/;
-			const result = content.match(stylePattern);
-			if (result) {
-				const styleUrls = JSON.parse(result[0].replace('styleUrls:', '').replace(/'/g, '"').trim());
-				styleUrls.filter(url => url.indexOf('..') === -1)
-					.map(url => url.replace(/.\//g, ''))
-					.map(url => `${dir.join('/')}/${url}`)
-					.forEach(stylePath => fs.appendFileSync(component, `@import "${stylePath}";\n`));
-			}
-		}
-	});
-}
-
-function transpileComponents(dir: string, cb): void {
-	const component = 'components.scss';
-	deleteFile(component);
-	generateComponentsStyles(dir.split('/'), component);
-	transpileFile(['components.scss'], 'components', () => {
-		deleteFile(component);
-		cb();
-	});
-}
 
 function getEndOfLifeDate(version) {
 	const versionReleaseDate = getTagDate(version);
