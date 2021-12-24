@@ -1,5 +1,6 @@
 import {Directive, HostListener} from '@angular/core';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
+import {isNotKeyboardEventOnButton} from '../../utilities';
 
 @Directive({
 	selector: '[obMasterLayoutHeaderToggle]',
@@ -11,10 +12,12 @@ export class ObMasterLayoutHeaderToggleDirective {
 
 	@HostListener('click', ['$event'])
 	@HostListener('keyup.enter', ['$event'])
-	toggle($event) {
-		// As ENTER keypress delegates to click events, let's ensure
-		// browser does not try to follow any empty link (ie `href=""`):
-		$event.preventDefault();
-		this.masterLayout.isMenuOpened = !this.masterLayout.isMenuOpened;
+	toggle(event?: KeyboardEvent | MouseEvent): void {
+		if (isNotKeyboardEventOnButton(event)) {
+			// As ENTER keypress delegates to click events, let's ensure
+			// browser does not try to follow any empty link (ie `href=""`):
+			event.preventDefault();
+			this.masterLayout.isMenuOpened = !this.masterLayout.isMenuOpened;
+		}
 	}
 }

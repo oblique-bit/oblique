@@ -1,6 +1,7 @@
 import {Directive, ElementRef, HostBinding, HostListener, Input, OnInit} from '@angular/core';
-import {ObGlobalEventsService} from "../global-events/global-events.service";
-import {obOutsideFilter} from "../global-events/outsideFilter";
+import {ObGlobalEventsService} from '../global-events/global-events.service';
+import {obOutsideFilter} from '../global-events/outsideFilter';
+import {isNotKeyboardEventOnButton} from '../utilities';
 
 @Directive({
 	selector: '[obAriaMenuButton]',
@@ -17,9 +18,11 @@ export class ObAriaMenuButtonDirective implements OnInit {
 		this.globalEvents.click$.pipe(obOutsideFilter(this.element.nativeElement)).subscribe(() => (this.active = undefined));
 	}
 
-	@HostListener('click')
-	@HostListener('keyup.enter')
-	onClick(): void {
-		this.active = this.active ? undefined : true;
+	@HostListener('click', ['$event'])
+	@HostListener('keyup.enter', ['$event'])
+	onClick(event?: KeyboardEvent | MouseEvent): void {
+		if (isNotKeyboardEventOnButton(event)) {
+			this.active = this.active ? undefined : true;
+		}
 	}
 }
