@@ -17,9 +17,10 @@
 		class="ob-main-nav"
 		[class.ob-navigation-scrollable-content]="isScrollable"
 		[class.ob-main-nav-fw]="isFullWidth"
+		[class.ob-has-opened-menu]="hasOpenedMenu"
 		tabindex="-1"
 	>
-		<li class="ob-main-nav-item" obMasterLayoutNavigationItem *ngFor="let link of links">
+		<li class="ob-main-nav-item" obMasterLayoutNavigationItem *ngFor="let link of links" (toggled)="hasOpenedMenu = $event">
 			<ng-container *ngIf="!link.isExternal">
 				<a
 					[attr.id]="link.id"

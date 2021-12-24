@@ -18,6 +18,7 @@ export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnD
 	@HostBinding('class.ob-expanded') public show = false;
 	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
 	@Output() readonly onClose = new EventEmitter<void>();
+	@Output() readonly toggled = new EventEmitter<boolean>();
 	@ContentChildren(ObMasterLayoutNavigationToggleDirective, {descendants: true}) $toggles: QueryList<ObMasterLayoutNavigationToggleDirective>;
 	@ContentChild(ObMasterLayoutNavigationMenuDirective) $menu: ObMasterLayoutNavigationMenuDirective;
 	@ContentChildren(ObMasterLayoutNavigationItemDirective, {descendants: true}) $items: QueryList<ObMasterLayoutNavigationItemDirective>;
@@ -72,6 +73,7 @@ export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnD
 
 	open() {
 		this.show = true;
+		this.toggled.emit(true);
 
 		if (this.$menu) {
 			this.$menu.show();
@@ -80,6 +82,7 @@ export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnD
 
 	close() {
 		this.show = false;
+		this.toggled.emit(false);
 
 		if (this.$menu) {
 			this.$menu.hide();
