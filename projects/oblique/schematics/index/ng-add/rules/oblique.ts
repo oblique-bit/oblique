@@ -1,7 +1,7 @@
-import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {addDependency, appModulePath, getTemplate, importModuleInRoot, obliqueCssPath} from '../ng-add-utils';
 import {ObIOptionsSchema} from '../ng-add.model';
-import {addAngularConfigInList, getDefaultAngularConfig, infoMigration, ObliquePackage, readFile, setAngularProjectsConfig} from '../../utils';
+import {ObliquePackage, addAngularConfigInList, createSafeRule, getDefaultAngularConfig, infoMigration, readFile, setAngularProjectsConfig} from '../../utils';
 import {addLocales} from './locales';
 
 export function oblique(options: ObIOptionsSchema): Rule {
@@ -11,7 +11,7 @@ export function oblique(options: ObIOptionsSchema): Rule {
 			embedMasterLayout(options.title),
 			addFeatureDetection(),
 			addMainCSS(),
-			addTheme(options.theme),
+			addTheme(),
 			addObliqueAssets(),
 			addFontStyle(options.font || 'none'),
 			addFontFiles(options.font || 'none'),
@@ -22,7 +22,7 @@ export function oblique(options: ObIOptionsSchema): Rule {
 }
 
 function addFavIcon(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Embedding favicon');
 		let index = getDefaultAngularConfig(tree, ['architect', 'build', 'options', 'index']);
 		if (!tree.exists(index)) {
@@ -38,11 +38,11 @@ function addFavIcon(): Rule {
 			);
 		}
 		return tree;
-	};
+	});
 }
 
 function embedMasterLayout(title: string): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Embedding Master Layout');
 		importModuleInRoot(tree, 'ObMasterLayoutModule', ObliquePackage);
 		importModuleInRoot(tree, 'BrowserAnimationsModule', '@angular/platform-browser/animations');
@@ -50,25 +50,25 @@ function embedMasterLayout(title: string): Rule {
 		addComment(tree);
 
 		return tree;
-	};
+	});
 }
 
 function addFeatureDetection(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Adding browser compatibility check');
 		let index = getDefaultAngularConfig(tree, ['architect', 'build', 'options', 'index']);
 		if (!tree.exists(index)) {
 			index = './index.html';
 		}
 		if (tree.exists(index)) {
-			tree.overwrite(index, readFile(tree, index).replace('<body>\n', '<body>\n' + getTemplate(tree, 'default-index.html')));
+			tree.overwrite(index, readFile(tree, index).replace('<body>\n', `<body>\n${getTemplate(tree, 'default-index.html')}`));
 		}
 		return addAngularConfigInList(tree, ['architect', 'build', 'options', 'scripts'], 'node_modules/@oblique/oblique/ob-features.js');
-	};
+	});
 }
 
 function addMainCSS(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Adding main CSS');
 		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) => {
 			const index = config.indexOf(obliqueCssPath.replace('css/oblique-core.css', 'scss/oblique-core.scss'));
@@ -80,19 +80,19 @@ function addMainCSS(): Rule {
 			}
 			return config;
 		});
-	};
+	});
 }
 
-function addTheme(theme: string): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+function addTheme(): Rule {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Adding theme CSS');
-		addThemeDependencies(tree, theme);
-		return addThemeCSS(tree, theme);
-	};
+		addThemeDependencies(tree);
+		return addThemeCSS(tree);
+	});
 }
 
 function addObliqueAssets(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Adding assets');
 		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => [
 			{
@@ -102,11 +102,11 @@ function addObliqueAssets(): Rule {
 			},
 			...config
 		]);
-	};
+	});
 }
 
 function addFontStyle(font: string): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (font !== 'none') {
 			infoMigration(_context, 'Oblique: Adding font');
 			const styleSheet = `node_modules/@oblique/oblique/styles/css/${font}.css`;
@@ -118,11 +118,12 @@ function addFontStyle(font: string): Rule {
 			});
 		}
 		return tree;
-	};
+	});
 }
 
 function addFontFiles(font: string): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (font === 'roboto') {
 			setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => {
 				config.splice(1, 0, {
@@ -134,11 +135,11 @@ function addFontFiles(font: string): Rule {
 			});
 		}
 		return tree;
-	};
+	});
 }
 
 function addScssImport(stylesPath: string): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (tree.exists(stylesPath)) {
 			infoMigration(_context, 'Oblique: Importing variables into main SCSS file');
 			const layoutContent = readFile(tree, stylesPath);
@@ -148,24 +149,20 @@ function addScssImport(stylesPath: string): Rule {
 			}
 		}
 		return tree;
-	};
+	});
 }
 
-function addThemeDependencies(tree: Tree, theme: string): void {
-	if (theme === 'material') {
-		addDependency(tree, '@angular/cdk');
-		addDependency(tree, '@angular/material');
-	} else {
-		addDependency(tree, '@ng-bootstrap/ng-bootstrap');
-	}
+function addThemeDependencies(tree: Tree): void {
+	addDependency(tree, '@angular/cdk');
+	addDependency(tree, '@angular/material');
 }
 
-function addThemeCSS(tree: Tree, theme: string): Tree {
-	const styleSheet = `node_modules/@oblique/oblique/styles/css/oblique-${theme}.css`;
+function addThemeCSS(tree: Tree): Tree {
+	const styleSheet = `node_modules/@oblique/oblique/styles/css/oblique-material.css`;
 	return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) => {
-		const index = config.indexOf(styleSheet.replace(`oblique-${theme}.css`, `oblique-${theme}.scss`));
+		const index = config.indexOf(styleSheet.replace(`oblique-material.css`, `oblique-material.scss`));
 		if (index > -1) {
-			config[index] = config[index].replace(`oblique-${theme}.scss`, `oblique-${theme}.css`);
+			config[index] = config[index].replace(`oblique-material.scss`, `oblique-material.css`);
 		}
 		if (!config.includes(styleSheet)) {
 			config.splice(config.indexOf(obliqueCssPath) + 1, 0, styleSheet);

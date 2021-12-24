@@ -4,14 +4,13 @@ import {ObSelectableDirective} from './selectable.directive';
 @Directive({
 	selector: '[obSelectableGroup]',
 	exportAs: 'obSelectableGroup',
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-selectable-group'}
 })
 export class ObSelectableGroupDirective implements AfterContentInit {
 	@HostBinding('attr.role') role = 'group';
 	@HostBinding('class.ob-selectable-group') readonly selectable = true;
-	@Output() selected$ = new EventEmitter<ObSelectableDirective[]>();
-	@Output() mode$ = new EventEmitter<'checkbox' | 'radio' | 'windows'>();
+	@Output() readonly selected$ = new EventEmitter<ObSelectableDirective[]>();
+	@Output() readonly mode$ = new EventEmitter<'checkbox' | 'radio' | 'windows'>();
 	private readonly selectables: ObSelectableDirective[] = [];
 	private modeValue: 'checkbox' | 'radio' | 'windows' = 'checkbox';
 	private focused: number;

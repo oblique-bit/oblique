@@ -2,7 +2,7 @@ import {AfterViewInit, ContentChild, Directive, OnDestroy, Optional} from '@angu
 import {MatInput} from '@angular/material/input';
 import {FormGroupDirective, NgForm, ValidationErrors} from '@angular/forms';
 import {MatSelect} from '@angular/material/select';
-import {merge, Observable, Subject} from 'rxjs';
+import {Observable, Subject, merge} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 @Directive({

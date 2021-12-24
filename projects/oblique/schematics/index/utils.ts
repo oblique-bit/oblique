@@ -7,30 +7,49 @@ export const ObliquePackage = '@oblique/oblique';
 const glob = require('glob');
 
 const angularJsonConfigPath = './angular.json/';
+export let isSuccessful = true;
 
 export function error(msg: string): void {
-	throw new Error(`✖ Migration failed: ${msg}\n`);
+	throw new Error(`${colors.symbols.cross} Migration failed: ${msg}\n`);
 }
 
 export function infoText(context: SchematicContext, msg: string): void {
-	context.logger.info(colors.cyan(`** ${msg} **\n`));
+	context.logger.info(colors.cyanBright(`\n${colors.symbols.info} ${msg}\n`));
 }
 
 export function infoMigration(context: SchematicContext, msg: string): void {
-	context.logger.info(colors.black(`▸ ${msg}`));
+	context.logger.info(`${colors.symbols.pointer} ${msg}`);
 }
 
 export function success(context: SchematicContext, msg: string): void {
-	context.logger.info(colors.green(`\n✔ ${msg}\n`));
+	context.logger.info(colors.greenBright(`\n${colors.symbols.check} ${msg}\n`));
 }
 
 export function warn(context: SchematicContext, msg: string): void {
-	context.logger.info(colors.yellow(`\n! ${msg}\n`));
+	context.logger.info(colors.yellowBright(`\n${colors.symbols.warning} ${msg}\n`));
+}
+
+export function createSafeRule(callback: (tree: Tree, context: SchematicContext) => Rule | Tree): Rule {
+	return (tree: Tree, context: SchematicContext) => {
+		try {
+			return callback(tree, context);
+		} catch (error) {
+			isSuccessful = false;
+			const groups = /@oblique[/\\]oblique[/\\]schematics[/\\].*[/\\](?<file>\w*\.js):(?<line>\d*)/.exec(error.stack || '')?.groups || {};
+			warn(
+				context,
+				`The previous task failed and the change needs to be done manually.\nPlease inform the Oblique team (oblique@bit.admin.ch) of the following error:\n\t${
+					error.message || error
+				}, in "${groups.file}" on line ${groups.line}`
+			);
+			return tree;
+		}
+	};
 }
 
 export function infoHighlights(context: SchematicContext, msg: string, ...highlights: string[]): void {
 	const message = highlights.reduce((text, highlight) => text.replace('%c', colors.bold(highlight)), msg);
-	context.logger.info(colors.black(`${message}\n`));
+	context.logger.info(`${message}\n`);
 }
 
 export function readFile(tree: Tree, fileName: string): string {
@@ -41,6 +60,16 @@ export function readFile(tree: Tree, fileName: string): string {
 export function addFile(tree: Tree, fileName: string, content: string | Buffer | null): void {
 	if (!tree.exists(fileName) && content) {
 		tree.create(fileName, content);
+	}
+}
+
+export function writeFile(tree: Tree, fileName: string, content: string | Buffer | null): void {
+	if (content) {
+		if (tree.exists(fileName) && content) {
+			tree.overwrite(fileName, content);
+		} else {
+			tree.create(fileName, content);
+		}
 	}
 }
 
@@ -63,7 +92,16 @@ export function getJson(tree: any, path: string) {
 export function getAngularConfigs(tree: Tree, path: string[]): {project: string; config: any}[] {
 	const json = getJson(tree, angularJsonConfigPath);
 	return Object.keys(getJsonProperty(json, 'projects'))
-		.reduce((config, project) => [...config, {project, config: getJsonProperty(json, ['projects', project, ...path].join(';'))}], [])
+		.reduce(
+			(config, project) => [
+				...config,
+				{
+					project,
+					config: getJsonProperty(json, ['projects', project, ...path].join(';'))
+				}
+			],
+			[]
+		)
 		.filter(project => project.config);
 }
 
@@ -90,14 +128,20 @@ export function setAngularConfig(tree: Tree, path: string[], value: {project: st
 
 export function setAngularProjectsConfig(tree: Tree, path: string[], config: any): Tree {
 	getAngularConfigs(tree, path).forEach(project => {
-		setAngularConfig(tree, path, {project: project.project, config: config instanceof Function ? config(project.config) : config});
+		setAngularConfig(tree, path, {
+			project: project.project,
+			config: config instanceof Function ? config(project.config) : config
+		});
 	});
 	return tree;
 }
 
 export function addAngularConfigInList(tree: Tree, path: string[], value: any): Tree {
 	getAngularConfigs(tree, path).forEach(project =>
-		setAngularConfig(tree, path, {project: project.project, config: [...(project.config || []).filter((v: any) => v !== value), value]})
+		setAngularConfig(tree, path, {
+			project: project.project,
+			config: [...(project.config || []).filter((v: any) => v !== value), value]
+		})
 	);
 	return tree;
 }
@@ -108,11 +152,11 @@ export function removeAngularProjectsConfig(tree: Tree, path: string[]): Tree {
 }
 
 export function installDependencies(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		_context.addTask(new NodePackageInstallTask());
 		_context.logger.debug('Dependencies installed');
 		return tree;
-	};
+	});
 }
 
 export function applyInTree(tree: Tree, toApply: Function, pattern = '*'): Tree {
@@ -124,7 +168,7 @@ export function applyInTree(tree: Tree, toApply: Function, pattern = '*'): Tree 
 }
 
 export function addInterface(tree: Tree, fileName: string, name: string): void {
-	let content = readFile(tree, fileName);
+	const content = readFile(tree, fileName);
 	if (!new RegExp(`export class\\s*\\w*\\s*implements.*${name}`, 'm').test(content)) {
 		tree.overwrite(
 			fileName,
@@ -136,19 +180,19 @@ export function addInterface(tree: Tree, fileName: string, name: string): void {
 }
 
 export function addImport(tree: Tree, fileName: string, name: string, pkg: string): void {
-	let content = readFile(tree, fileName);
+	const content = readFile(tree, fileName);
 	if (!hasImport(content, name, pkg)) {
 		tree.overwrite(
 			fileName,
 			new RegExp(`import\\s*{.*}\\s*from\\s*['"]${pkg}['"]`, 'm').test(content)
 				? content.replace(new RegExp(`import\\s*{(.*)}\\s*from\\s*['"]${pkg}['"]`), `import {$1, ${name}} from '${pkg}'`)
-				: `import {${name}} from '${pkg}';\n` + content
+				: `import {${name}} from '${pkg}';\n${content}`
 		);
 	}
 }
 
 export function removeImport(tree: Tree, fileName: string, name: string, pkg: string): void {
-	let content = readFile(tree, fileName);
+	const content = readFile(tree, fileName);
 	if (hasImport(content, name, pkg)) {
 		tree.overwrite(
 			fileName,
@@ -179,17 +223,19 @@ function alterAngularConfig(tree: Tree, path: string[], project: string, value?:
 }
 
 function setOption(json: any, path: string[], value?: any) {
-	const option = path.shift() as string;
-	if (path.length) {
-		if (!json[option]) {
-			json[option] = {};
-		}
-		setOption(json[option], path, value);
-	} else {
-		if (value) {
-			json[option] = value;
+	const option = path.shift();
+	if (option) {
+		if (path.length) {
+			if (!json[option]) {
+				json[option] = {};
+			}
+			setOption(json[option], path, value);
 		} else {
-			delete json[option];
+			if (value) {
+				json[option] = value;
+			} else {
+				delete json[option];
+			}
 		}
 	}
 }

@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {By} from '@angular/platform-browser';
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
@@ -61,7 +61,7 @@ describe('NavTreeFakeFocusDirective', () => {
 		inputElement.triggerEventHandler(ObNavTreeFakeFocusDirective.INPUT_EVENTS.KEY_DOWN, {
 			code,
 			// FIXME: remove when https://github.com/ariya/phantomjs/issues/11289
-			preventDefault: () => {} // tslint:disable-line
+			preventDefault: () => {} // eslint-disable-line @typescript-eslint/no-empty-function
 		});
 	};
 

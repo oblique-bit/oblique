@@ -1,4 +1,4 @@
-import {Directive, HostBinding, OnInit, OnDestroy, Input} from '@angular/core';
+import {Directive, HostBinding, Input, OnDestroy, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
@@ -14,7 +14,6 @@ const I18N_PLACEHOLDERS = {
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'input[ngbDatepicker]',
 	exportAs: 'obDatepickerPlaceholder',
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-datepicker-placeholder'}
 })
 export class ObDatepickerPlaceholderDirective implements OnInit, OnDestroy {

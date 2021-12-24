@@ -32,7 +32,6 @@ import {obliqueProviders} from './utilities';
 import {ObLanguageModule} from './language/language.module';
 import {ObExternalLinkModule} from './external-link/external-link.module';
 import {ObAlertModule} from './alert/alert.module';
-import {ObMandatoryModule} from './mandatory/mandatory.module';
 import {ObBreadcrumbModule} from './breadcrumb/breadcrumb.module';
 
 const OBLIQUE_MODULES = [
@@ -47,7 +46,6 @@ const OBLIQUE_MODULES = [
 	ObFileUploadModule,
 	ObFormControlStateModule,
 	ObLanguageModule,
-	ObMandatoryModule,
 	ObMasterLayoutModule,
 	ObMultiselectModule,
 	ObNavTreeModule,

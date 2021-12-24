@@ -1,8 +1,9 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import {TranslateModule} from '@ngx-translate/core';
+import {MatButtonModule} from '@angular/material/button';
 
+import {TranslateModule} from '@ngx-translate/core';
 import {ObNotificationModule} from '../notification/notification.module';
 import {ObSpinnerModule} from '../spinner/spinner.module';
 import {ObScrollingModule} from '../scrolling/scrolling.module';
@@ -20,6 +21,7 @@ import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation/
 import {obliqueProviders} from '../utilities';
 import {ObAriaMenuButtonDirective} from './aria-menu-button.directive';
 import {ObIconModule} from '../icon/icon.module';
+import {ObButtonModule} from '../button/button.module';
 
 export {ObMasterLayoutComponent} from './master-layout/master-layout.component';
 export {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
@@ -38,7 +40,18 @@ export {ObMasterLayoutConfig} from './master-layout.config';
 export {ObINavigationLink, ObEScrollMode, ObIMasterLayoutEvent, ObEMasterLayoutEventValues} from './master-layout.model';
 
 @NgModule({
-	imports: [CommonModule, TranslateModule, RouterModule, ObNotificationModule, ObSpinnerModule, ObScrollingModule, ObOffCanvasModule, ObIconModule],
+	imports: [
+		CommonModule,
+		TranslateModule,
+		RouterModule,
+		ObNotificationModule,
+		ObSpinnerModule,
+		ObScrollingModule,
+		ObOffCanvasModule,
+		ObIconModule,
+		ObButtonModule,
+		MatButtonModule
+	],
 	declarations: [
 		ObMasterLayoutComponent,
 		ObMasterLayoutHeaderComponent,

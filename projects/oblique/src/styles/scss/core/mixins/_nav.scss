@@ -1,13 +1,13 @@
-@import "../variables";
+@use "../variables";
 
-@mixin nav-hover($offset: 0) {
+@mixin ob-nav-hover($offset: 0) {
 	position: relative;
 
 	&.active,
 	&:active,
 	&:hover,
 	&:focus {
-		background-color: $gray-extra-light;
+		background-color: variables.$ob-gray-extra-light;
 		z-index: 1;
 
 		&:after {
@@ -16,40 +16,40 @@
 			top: #{$offset}px;
 			bottom: #{$offset}px;
 			left: 0;
-			border-left: $brand-line-width solid $brand-accent;
+			border-left: variables.$ob-line-width solid variables.$ob-accent;
 		}
 	}
 
 	&.active {
 		font-weight: 600;
-		background-color: $gray-light;
+		background-color: variables.$ob-gray-light;
 	}
 }
 
-@mixin nav-indent($base: 0px) {
-	$base: $base + $spacing-default;
+@mixin ob-nav-indent($base: 0px) {
+	$base: $base + variables.$ob-spacing-default;
 
 	.ob-nav-tree > li > .ob-nav-link {
 		padding-left: $base;
 	}
 
 	.ob-nav-tree .ob-nav-tree > li > .ob-nav-link {
-		padding-left: $base + $spacing-default;
+		padding-left: $base + variables.$ob-spacing-default;
 		font-size: 90%;
 	}
 
 	.ob-nav-tree .ob-nav-tree .ob-nav-tree > li > .ob-nav-link {
-		padding-left: $base + $spacing-default + $spacing-sm;
+		padding-left: $base + variables.$ob-spacing-default + variables.$ob-spacing-sm;
 		font-size: 85%;
 	}
 
 	.ob-nav-tree .ob-nav-tree .ob-nav-tree .ob-nav-tree > li > .ob-nav-link {
-		padding-left: $base + $spacing-default + 2 * $spacing-sm;
+		padding-left: $base + variables.$ob-spacing-default + 2 * variables.$ob-spacing-sm;
 		font-size: 80%;
 	}
 
 	.ob-nav-tree .ob-nav-tree .ob-nav-tree .ob-nav-tree .ob-nav-tree > li > .ob-nav-link {
-		padding-left: $base + $spacing-default + 3 * $spacing-sm;
+		padding-left: $base + variables.$ob-spacing-default + 3 * variables.$ob-spacing-sm;
 		font-size: 75%;
 	}
 }

@@ -1,0 +1,27 @@
+@import "../../../core/variables";
+
+@mixin ob-button($color) {
+	color: $color;
+
+	&:not(.mat-button-disabled) {
+		&:hover {
+			color: $ob-primary-700;
+			background-color: $ob-primary-200;
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		.ob-outline &:focus {
+			border-color: $ob-default;
+			box-shadow: 0 0 $ob-spacing-xs 0 $ob-default;
+			outline: 1px solid $color;
+			outline-offset: -3px;
+		}
+
+		.mat-ripple-element {
+			background-color: $ob-primary-900;
+		}
+	}
+}

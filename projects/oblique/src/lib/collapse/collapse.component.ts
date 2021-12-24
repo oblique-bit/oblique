@@ -28,13 +28,12 @@ export const OBLIQUE_COLLAPSE_DURATION = new InjectionToken<'slow' | 'fast' | nu
 			transition('open <=> close', animate('{{ time }}ms ease-in-out'))
 		])
 	],
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-collapse'}
 })
 export class ObCollapseComponent {
 	time: number;
 	@Input() iconPosition: 'left' | 'right' | 'justified' | 'none' = 'left';
-	@Output() activeChange = new EventEmitter<boolean>();
+	@Output() readonly activeChange = new EventEmitter<boolean>();
 
 	get active() {
 		return this.isActive;
@@ -66,7 +65,7 @@ export class ObCollapseComponent {
 			case 'fast':
 				return 250;
 			default:
-				return duration as number;
+				return duration;
 		}
 	}
 }

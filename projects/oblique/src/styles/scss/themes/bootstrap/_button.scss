@@ -1,30 +1,30 @@
-@import "../../core/variables";
-@import "variables";
-@import "mixins/button";
+@use "../../core/variables" as core-variables;
+@use "variables" as bootsrap-variables;
+@use "mixins/button";
 
 .btn-primary {
-	@include btn-variant($white, $brand-primary, $brand-primary, $white, $brand-dark, $brand-dark, $gray-lighter);
+	@include button.ob-btn-variant(core-variables.$ob-white, core-variables.$ob-primary, core-variables.$ob-primary, core-variables.$ob-white, core-variables.$ob-dark, core-variables.$ob-dark, core-variables.$ob-gray-lighter);
 }
 
 .btn-secondary {
-	@include btn-variant($brand-default, $gray-extra-light, $gray, $brand-default, $gray-lighter, $gray-darker, $brand-default);
-	@include box-shadow-secondary();
+	@include button.ob-btn-variant(core-variables.$ob-default, core-variables.$ob-gray-extra-light, core-variables.$ob-gray, core-variables.$ob-default, core-variables.$ob-gray-lighter, core-variables.$ob-gray-darker, core-variables.$ob-default);
+	@include button.ob-box-shadow-secondary();
 }
 
 .btn-success {
-	@include btn-variant($white, $brand-success, $brand-success, $white, $brand-success-dark, $brand-success-dark, $gray-lighter);
+	@include button.ob-btn-variant(core-variables.$ob-white, core-variables.$ob-success, core-variables.$ob-success, core-variables.$ob-white, core-variables.$ob-success-dark, core-variables.$ob-success-dark, core-variables.$ob-gray-lighter);
 }
 
 .btn-warning {
-	@include btn-variant($white, $brand-warning, $brand-warning, $white, $brand-warning-dark, $brand-warning-dark, $gray-lighter);
+	@include button.ob-btn-variant(core-variables.$ob-white, core-variables.$ob-warning, core-variables.$ob-warning, core-variables.$ob-white, core-variables.$ob-warning-dark, core-variables.$ob-warning-dark, core-variables.$ob-gray-lighter);
 }
 
 .btn-danger {
-	@include btn-variant($white, $brand-error, $brand-error, $white, $brand-error-dark, $brand-error-dark, $gray-lighter);
+	@include button.ob-btn-variant(core-variables.$ob-white, core-variables.$ob-error, core-variables.$ob-error, core-variables.$ob-white, core-variables.$ob-error-dark, core-variables.$ob-error-dark, core-variables.$ob-gray-lighter);
 }
 
 .btn-link {
-	@include btn-variant($link-color, transparent, transparent, $link-hover-color, $gray-lighter, $gray-darker, $link-hover-color);
-	@include box-shadow-secondary();
-	border-radius: $border-radius-base;
+	@include button.ob-btn-variant(bootsrap-variables.$ob-link-color, transparent, transparent, bootsrap-variables.$ob-link-hover-color, core-variables.$ob-gray-lighter, core-variables.$ob-gray-darker, bootsrap-variables.$ob-link-hover-color);
+	@include button.ob-box-shadow-secondary();
+	border-radius: core-variables.$ob-border-radius-base;
 }

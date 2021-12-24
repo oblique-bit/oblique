@@ -12,16 +12,15 @@ import {takeUntil} from 'rxjs/operators';
 	templateUrl: './dropdown.component.html',
 	styleUrls: ['./dropdown.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-dropdown'}
 })
 export class ObDropdownComponent implements OnInit, OnDestroy {
-	//Accessibility features
+	// Accessibility features
 	@HostBinding('attr.aria-expanded') expandedOrUndefined = undefined;
 	@HostBinding('attr.aria-haspopup') popup = true;
 	@HostBinding('attr.aria-owns') @HostBinding('attr.aria-controls') idContent: string;
 
-	//Dropdown features
+	// Dropdown features
 	@HostBinding('class.ob-expanded') isOpen = false;
 	@Input() position = 'middle';
 	@Input() @HostBinding('id') id: string;
@@ -35,7 +34,7 @@ export class ObDropdownComponent implements OnInit, OnDestroy {
 		this.globalEventsService.click$.pipe(takeUntil(this.unsubscribe)).subscribe(event => this.toggle(event));
 		if (!this.id) {
 			ObDropdownComponent.idCount++;
-			this.id = 'dropdown-' + ObDropdownComponent.idCount;
+			this.id = `dropdown-${ObDropdownComponent.idCount}`;
 		}
 		this.idContent = `${this.id}-content`;
 	}

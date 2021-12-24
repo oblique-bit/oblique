@@ -3,10 +3,9 @@ import {AfterViewInit, Component, ContentChild, HostBinding, Input, OnChanges, T
 @Component({
 	selector: 'ob-sticky',
 	exportAs: 'obSticky',
-	templateUrl: 'sticky.component.html',
+	templateUrl: './sticky.component.html',
 	styleUrls: ['./sticky.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-sticky'}
 })
 export class ObStickyComponent implements OnChanges, AfterViewInit {
@@ -27,7 +26,7 @@ export class ObStickyComponent implements OnChanges, AfterViewInit {
 		this.window = window; // because AoT don't accept interfaces as DI
 	}
 
-	ngAfterViewInit() {
+	ngAfterViewInit(): void {
 		this.window.setTimeout(() => this.ngOnChanges()); // so that initial values are taken into account
 	}
 
@@ -46,7 +45,7 @@ export class ObStickyComponent implements OnChanges, AfterViewInit {
 	}
 
 	private static validateSize(size: string): void {
-		if (size && ObStickyComponent.SIZES.indexOf(size) === -1) {
+		if (size && !ObStickyComponent.SIZES.includes(size)) {
 			throw new Error(`"${size}" is not a valid size.Only "lg", "md" and "sm" are acceptable alternatives.`);
 		}
 	}

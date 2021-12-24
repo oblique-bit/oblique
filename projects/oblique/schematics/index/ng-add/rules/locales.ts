@@ -1,9 +1,9 @@
-import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {insertImport} from '@angular/cdk/schematics';
 import {addImportToModule, addProviderToModule} from '@schematics/angular/utility/ast-utils';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
-import {applyChanges, appModulePath, createSrcFile, importModuleInRoot, adaptInsertChange, addDependency} from '../ng-add-utils';
-import {addFile, infoMigration, ObliquePackage, readFile} from '../../utils';
+import {adaptInsertChange, addDependency, appModulePath, applyChanges, createSrcFile, importModuleInRoot} from '../ng-add-utils';
+import {ObliquePackage, addFile, infoMigration, readFile} from '../../utils';
 
 export function addLocales(locales: string[]): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
@@ -21,7 +21,7 @@ function importLocales(locales: string[]): Rule {
 			insertImport(sourceFile, file, 'LOCALE_ID', '@angular/core')
 		]
 			.filter((change: Change) => change instanceof InsertChange)
-			.filter((change: InsertChange) => change.toAdd.indexOf('TEMP') === -1);
+			.filter((change: InsertChange) => !change.toAdd.includes('TEMP'));
 
 		locales
 			.filter(locale => filterLocale(tree, locale))
@@ -34,6 +34,7 @@ function importLocales(locales: string[]): Rule {
 }
 
 function registerLocales(locales: string[]): Rule {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, _context: SchematicContext) => {
 		const replacement = locales
 			.filter(locale => filterLocale(tree, locale))
@@ -47,6 +48,7 @@ function registerLocales(locales: string[]): Rule {
 }
 
 function configureLocales(locales: string[]): Rule {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, _context: SchematicContext) => {
 		if (locales.join('_') !== ['de-CH', 'fr-CH', 'it-CH'].join('_')) {
 			const appModuleContent = readFile(tree, appModulePath).replace(
@@ -68,6 +70,7 @@ function configureLocales(locales: string[]): Rule {
 }
 
 function addTranslation(locales: string[]): Rule {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, _context: SchematicContext) => {
 		addDependency(tree, '@ngx-translate/core');
 		importModuleInRoot(tree, 'HttpClientModule', '@angular/common/http');
@@ -93,5 +96,5 @@ function getLocaleVariable(locale: string): string {
 }
 
 function filterLocale(tree: Tree, locale: string): boolean {
-	return !readFile(tree, appModulePath).match(new RegExp(`registerLocaleData\\(${getLocaleVariable(locale)}\\)`, 'i'));
+	return !new RegExp(`registerLocaleData\\(${getLocaleVariable(locale)}\\)`, 'i').exec(readFile(tree, appModulePath));
 }

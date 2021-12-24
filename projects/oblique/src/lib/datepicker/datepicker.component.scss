@@ -1,27 +1,27 @@
-@import "../../styles/scss/core/variables";
+@use "../../styles/scss/core/variables";
 
 .ngb-dp-body.dropdown-menu{
 	margin-top: 0;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 	border-top: 0;
-	border-color: $gray;
+	border-color: variables.$ob-gray;
 }
 .ngb-dp-header {
 	padding-top: 0 !important;
 
 	.btn-link {
-		color: $gray;
+		color: variables.$ob-gray;
 		height: 2.25rem;
 		border-radius: 0;
 
 		&:hover {
-			color: $gray;
+			color: variables.$ob-gray;
 			border-color: transparent;
 		}
 
 		&:not([disabled]):hover {
-			color: $brand-default;
+			color: variables.$ob-default;
 		}
 	}
 }
@@ -31,7 +31,7 @@
 }
 
 .ngb-dp-weekday {
-	color: $gray-darker !important;
+	color: variables.$ob-gray-darker !important;
 	font-style: normal;
 	width: 2.5rem !important;
 }
@@ -54,7 +54,7 @@
 	line-height: 2.5rem;
 
 	&:not(.bg-primary) {
-		color: $gray-darker !important;
+		color: variables.$ob-gray-darker !important;
 	}
 
 	&:not(.bg-primary):hover {
@@ -62,7 +62,7 @@
 	}
 
 	&.bg-primary {
-		box-shadow: inset 0 0 7px -1px $brand-default;
+		box-shadow: inset 0 0 7px -1px variables.$ob-default;
 	}
 }
 
@@ -82,7 +82,7 @@
 	}
 
 	.has-error & {
-		border: 1px solid $brand-error;
+		border: 1px solid variables.$ob-error;
 
 		&:focus-within {
 			box-shadow: 0 0 6px 1px rgba(220, 0, 24, 0.4);

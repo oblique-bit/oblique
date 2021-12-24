@@ -1,4 +1,7 @@
-@mixin btn-variant(
+@use "sass:color";
+@use "../../../core/variables";
+
+@mixin ob-btn-variant(
 	$color, $background, $border,
 	$selected-color, $selected-background, $selected-border,
 	$active-color) {
@@ -29,8 +32,8 @@
 		&.active {
 			// FIXME:.open .dropdown-toggle& {
 			background-image: none;
-			background-color: darken($selected-background, 4%);
-			border-color: darken($selected-border, 4%);
+			background-color: color.adjust($selected-background, $lightness: -4%);
+			border-color: color.adjust($selected-border, $lightness: -4%);
 			color: $active-color;
 		}
 	}
@@ -56,21 +59,21 @@
 	}
 }
 
-@mixin mixed-dropdown-btn-group($variant) {
+@mixin ob-mixed-dropdown-btn-group($variant) {
 	.btn-group > .btn-#{$variant} + .dropdown-toggle:not(.btn-#{$variant}) {
 		margin-left: 0;
 		border-left: none;
 	}
 }
 
-@mixin box-shadow-secondary() {
+@mixin ob-box-shadow-secondary() {
 	box-shadow: none;
 
 	&,
 	&:not(:disabled):not(.disabled).active {
 		&:focus,
 		&.focus {
-			box-shadow: 0 0 0 0.2rem $gray-light;
+			box-shadow: 0 0 0 0.2rem variables.$ob-gray-light;
 		}
 	}
 }

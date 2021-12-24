@@ -17,13 +17,13 @@ import {ObMockIconModule} from './icon/_mocks/mock-icon.module';
 import {ObMockMasterLayoutModule} from './master-layout/_mocks/mock-master-layout.module';
 import {ObMockMultiselectModule} from './multiselect/_mocks/mock-multiselect.module';
 import {ObMockNavTreeModule} from './nav-tree/_mocks/mock-nav-tree.module';
-import {ObMockParentFormDirective, ObMockNestedFormModule, ObMockNestedFormComponent} from './nested-form/_mocks/mock-nested-form.module';
+import {ObMockNestedFormModule} from './nested-form/_mocks/mock-nested-form.module';
 import {ObMockNotificationModule} from './notification/_mocks/mock-notification.module';
 import {ObMockNumberFormatModule} from './number-format/_mocks/mock-number-format.module';
 import {ObMockHttpApiInterceptorModule} from './http-api-interceptor/_mocks/mock-http-api-interceptor.module';
 import {ObMockOffCanvasModule} from './off-canvas/_mocks/mock-off-canvas.module';
 import {ObMockPopUpModule} from './pop-up/_mocks/mock-pop-up.module';
-import {ObMockPopoverDirective, ObMockPopoverModule} from './popover/_mocks/mock-popover.module';
+import {ObMockPopoverModule} from './popover/_mocks/mock-popover.module';
 import {ObMockSchemaValidationModule} from './schema-validation/_mocks/mock-schema-validation.module';
 import {ObMockObSelectableModule} from './selectable/_mocks/mock-selectable.module';
 import {ObMockScrollingModule} from './scrolling/_mocks/mock-scrolling.module';
@@ -31,14 +31,12 @@ import {ObMockSpinnerModule} from './spinner/_mocks/mock-spinner.module';
 import {ObMockStickyModule} from './sticky/_mocks/mock-sticky.module';
 import {ObMockTelemetryModule} from './telemetry/_mocks/mock-telemetry.module';
 import {ObMockInputClearModule} from './input-clear/_mocks/mock-input-clear.module';
-import {ObMockThemeModule} from './theme/_mocks/mock-theme.module';
 import {ObMockTranslateParamsModule} from './translate-params/_mocks/mock-translate-params.module';
 import {ObMockUnknownRouteModule} from './unknown-route/_mocks/mock-unknown-route.module';
 import {ObMockUnsavedChangesModule} from './unsaved-changes/_mocks/mock-unsaved-changes.module';
 import {WINDOW} from './utilities';
 import {ObMockButtonModule} from './button/_mocks/mock-button.module';
 import {ObMockAlertModule} from './alert/_mocks/mock-alert.module';
-import {ObMockMandatoryModule} from './mandatory/_mocks/mock-mandatory.module';
 import {ObMockBreadcrumbModule} from './breadcrumb/_mocks/mock-breadcrumb.module';
 
 export {ObMockBreadcrumbModule, ObMockBreadcrumbComponent} from './breadcrumb/_mocks/mock-breadcrumb.module';
@@ -74,7 +72,6 @@ export {ObMockFormControlStateModule, ObMockFormControlStateDirective} from './f
 export {ObMockDatePipe, ObMockLanguageModule} from './language/_mocks/mock-language.module';
 export {ObMockIconModule, ObMockIconService, ObMockIconComponent} from './icon/_mocks/mock-icon.module';
 export {ObMockInputClearModule, ObMockInputClearDirective} from './input-clear/_mocks/mock-input-clear.module';
-export {ObMockMandatoryModule, ObMockMandatoryDirective} from './mandatory/_mocks/mock-mandatory.module';
 export {
 	ObMockMasterLayoutModule,
 	ObMockMasterLayoutConfig,
@@ -137,7 +134,6 @@ export {ObMockScrollingModule, ObMockScrollingEvents, ObMockTopControlComponent}
 export {ObMockSpinnerModule, ObMockSpinnerComponent, ObMockSpinnerService} from './spinner/_mocks/mock-spinner.module';
 export {ObMockStickyModule, ObMockStickyComponent} from './sticky/_mocks/mock-sticky.module';
 export {ObMockTelemetryModule, ObMockTelemetryService} from './telemetry/_mocks/mock-telemetry.module';
-export {ObMockThemeService, ObMockThemeModule} from './theme/_mocks/mock-theme.module';
 export {ObMockTranslateParamsModule, ObMockTranslateParamsPipe} from './translate-params/_mocks/mock-translate-params.module';
 export {ObMockUnknownRouteModule, ObMockUnknownRouteComponent} from './unknown-route/_mocks/mock-unknown-route.module';
 export {
@@ -165,7 +161,6 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockFormControlStateModule,
 	ObMockHttpApiInterceptorModule,
 	ObMockIconModule,
-	ObMockMandatoryModule,
 	ObMockMasterLayoutModule,
 	ObMockMultiselectModule,
 	ObMockNavTreeModule,
@@ -183,7 +178,6 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockStickyModule,
 	ObMockTelemetryModule,
 	ObMockInputClearModule,
-	ObMockThemeModule,
 	ObMockTranslateParamsModule,
 	ObMockUnknownRouteModule,
 	ObMockUnsavedChangesModule

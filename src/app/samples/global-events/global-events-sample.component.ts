@@ -2,10 +2,10 @@ import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {ObGlobalEventsService, obOutsideFilter} from '@oblique/oblique';
 
 @Component({
-	selector: 'ob-utilities-sample',
+	selector: 'sc-utilities-sample',
 	templateUrl: './global-events-sample.component.html'
 })
-export class ObGlobalEventsSampleComponent implements AfterViewInit {
+export class GlobalEventsSampleComponent implements AfterViewInit {
 	@ViewChild('outsideClick', {read: ElementRef}) button: ElementRef;
 	events = [];
 

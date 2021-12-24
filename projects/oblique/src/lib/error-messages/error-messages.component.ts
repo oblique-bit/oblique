@@ -1,18 +1,19 @@
-import {AfterViewInit, Component, Inject, Input, InjectionToken, OnDestroy, Optional} from '@angular/core';
+import {AfterViewInit, Component, Inject, InjectionToken, Input, OnDestroy, Optional} from '@angular/core';
 import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
-import {merge as observableMerge, Subject} from 'rxjs';
+import {Subject, merge as observableMerge} from 'rxjs';
 import {delay, takeUntil} from 'rxjs/operators';
 
 import {ObFormControlStateDirective} from '../form-control-state/form-control-state.directive';
 import {ObErrorMessagesService} from './error-messages.service';
-import {ObThemeService} from '../theme/theme.service';
+import {ObThemeService} from '../theme.service';
 import {ObParentFormDirective} from '../nested-form/parent-form.directive';
 import {WINDOW} from '../utilities';
 
 export const DISABLE_NGB_ERRORS = new InjectionToken<boolean>('ENABLE_NGB_ERRORS');
 
 /**
- * @deprecated with material theme since version 4.0.0. Use angular material mat-error instead
+ * @deprecated with material theme since version 4.0.0. Use angular material mat-error instead.
+ * Deprecated with bootstrap theme since version 8.0.0. Will be removed with version 10.0.0.
  */
 @Component({
 	selector: 'ob-error-messages',

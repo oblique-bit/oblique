@@ -1,17 +1,20 @@
 import {Inject, Injectable} from '@angular/core';
-import {Observable, Subject} from 'rxjs';
+import {Observable, Subject, merge} from 'rxjs';
 import {TranslateService} from '@ngx-translate/core';
-
+import {delay, filter} from 'rxjs/operators';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {ObIMasterLayoutEvent, ObEMasterLayoutEventValues, ObEScrollMode} from '../master-layout.model';
+import {ObEMasterLayoutEventValues, ObEScrollMode, ObIMasterLayoutEvent} from '../master-layout.model';
 import {WINDOW} from '../../utilities';
+import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
+import {ObGlobalEventsService} from '../../global-events/global-events.service';
+import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class ObMasterLayoutNavigationService {
+	readonly configEvents$: Observable<ObIMasterLayoutEvent>;
 	private readonly _events = new Subject<ObIMasterLayoutEvent>();
-	private readonly events$ = this._events.asObservable();
 	private readonly _scrolled: Subject<number> = new Subject<number>();
 	private readonly scrolled$ = this._scrolled.asObservable();
 	private readonly _refreshed: Subject<void> = new Subject<void>();
@@ -19,8 +22,22 @@ export class ObMasterLayoutNavigationService {
 	private _isFullWidth = this.config.navigation.isFullWidth;
 	private _scrollMode = this.config.navigation.scrollMode;
 
-	constructor(private readonly config: ObMasterLayoutConfig, translate: TranslateService, @Inject(WINDOW) private readonly window: Window) {
-		translate.onLangChange.subscribe(() => this.refresh());
+	constructor(
+		private readonly config: ObMasterLayoutConfig,
+		layoutService: ObMasterLayoutComponentService,
+		globalEventsService: ObGlobalEventsService,
+		offCanvas: ObOffCanvasService,
+		translate: TranslateService,
+		@Inject(WINDOW) private readonly window: Window
+	) {
+		merge(
+			translate.onLangChange,
+			offCanvas.opened.pipe(delay(600)), // delay for the animation duration
+			globalEventsService.resize$
+		)
+			.pipe(filter(() => layoutService.hasMainNavigation && this.scrollMode !== ObEScrollMode.DISABLED))
+			.subscribe(() => this.refresh());
+		this.configEvents$ = this._events.asObservable();
 	}
 
 	get isFullWidth() {
@@ -30,8 +47,8 @@ export class ObMasterLayoutNavigationService {
 	set isFullWidth(value: boolean) {
 		this._isFullWidth = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.FULL_WIDTH,
-			value: value
+			name: ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH,
+			value
 		});
 	}
 
@@ -42,13 +59,9 @@ export class ObMasterLayoutNavigationService {
 	set scrollMode(value: ObEScrollMode) {
 		this._scrollMode = value;
 		this._events.next({
-			name: ObEMasterLayoutEventValues.SCROLLABLE,
+			name: ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE,
 			mode: value
 		});
-	}
-
-	get configEvents(): Observable<ObIMasterLayoutEvent> {
-		return this.events$;
 	}
 
 	get scrolled(): Observable<number> {

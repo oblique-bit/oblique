@@ -25,9 +25,8 @@ export class ObDateDMYParserFormatter extends NgbDateParserFormatter {
 function padNumber(value: number) {
 	if (isNumber(value)) {
 		return `0${value}`.slice(-2);
-	} else {
-		return '';
 	}
+	return '';
 }
 
 function isNumber(value: any): value is number {

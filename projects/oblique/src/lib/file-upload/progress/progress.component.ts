@@ -11,11 +11,10 @@ import {ObFileUploadService} from '../file-upload.service';
 	templateUrl: './progress.component.html',
 	styleUrls: ['./progress.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-progress'}
 })
 export class ObProgressComponent implements OnDestroy {
-	@Output() uploadEvent = new EventEmitter<ObIUploadEvent>();
+	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
 	@Input() singleRequest: boolean;
 	@Input() uploadUrl: string;
 	uploadedFiles: ObIFileList = {} as ObIFileList;
@@ -81,7 +80,7 @@ export class ObProgressComponent implements OnDestroy {
 
 	private isUploadComplete(): void {
 		if (!this.uploadedFiles.files.some(file => !file.completed)) {
-			const completedFiles = this.uploadedFiles.files.reduce((files, file) => [...files, ...this.arrayifyFiles(file.binary)], [] as File[]);
+			const completedFiles = this.uploadedFiles.files.reduce((files, file) => [...files, ...this.arrayifyFiles(file.binary)], []);
 			this.uploadEvent.emit({type: ObEUploadEventType.UPLOADED, files: completedFiles});
 			this.fileUploadService.notifyUploadComplete();
 			// delay the reset to let users see what is happening

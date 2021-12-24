@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-	selector: 'ob-inline-element',
+	selector: 'sc-inline-element',
 	templateUrl: './inline-element.component.html'
 })
-export class ObInlineElementComponent {}
+export class InlineElementComponent {}

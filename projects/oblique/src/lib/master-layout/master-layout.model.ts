@@ -7,16 +7,15 @@ export enum ObEScrollMode {
 }
 
 export interface ObIMasterLayoutHeader {
-	isAnimated: boolean;
 	isSticky: boolean;
-	isMedium: boolean;
-	isCustom: boolean;
-	hasScrollTransitions: boolean;
-}
-export interface ObIMasterLayoutFooter {
 	isSmall: boolean;
 	isCustom: boolean;
-	hasScrollTransitions: boolean;
+	reduceOnScroll: boolean;
+}
+export interface ObIMasterLayoutFooter {
+	isSticky: boolean;
+	isCustom: boolean;
+	hasLogoOnScroll: boolean;
 }
 
 export interface ObIMasterLayoutNavigation {
@@ -69,18 +68,19 @@ export interface ObIMasterLayoutEvent {
 }
 
 export enum ObEMasterLayoutEventValues {
-	ANIMATE,
-	COLLAPSE,
-	COVER,
-	CUSTOM,
-	FIXED,
-	FULL_WIDTH,
-	OFF_CANVAS,
-	MEDIUM,
-	MAIN_NAVIGATION,
-	SMALL,
-	SCROLL_TRANSITION,
-	SCROLLABLE,
-	STICKY,
-	LAYOUT
+	FOOTER_HAS_LOGO_ON_SCROLL,
+	FOOTER_IS_CUSTOM,
+	FOOTER_IS_STICKY,
+	HEADER_IS_CUSTOM,
+	HEADER_IS_SMALL,
+	HEADER_IS_STICKY,
+	HEADER_REDUCE_ON_SCROLL,
+	IS_MENU_OPENED,
+	LAYOUT_HAS_COVER,
+	LAYOUT_HAS_DEFAULT_LAYOUT,
+	LAYOUT_HAS_MAIN_NAVIGATION,
+	LAYOUT_HAS_MAX_WIDTH,
+	LAYOUT_HAS_OFF_CANVAS,
+	NAVIGATION_IS_FULL_WIDTH,
+	NAVIGATION_SCROLL_MODE
 }

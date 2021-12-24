@@ -45,7 +45,7 @@ describe('ObFileUploadComponent', () => {
 
 	describe('processEvent', () => {
 		describe('chosen event', () => {
-			const chosenEvent = {type: ObEUploadEventType.CHOSEN, files: files};
+			const chosenEvent = {type: ObEUploadEventType.CHOSEN, files};
 
 			describe('with no uploadUrl', () => {
 				let event: ObIUploadEvent;
@@ -97,7 +97,7 @@ describe('ObFileUploadComponent', () => {
 		});
 
 		describe('uploaded event', () => {
-			const uploadedEvent = {type: ObEUploadEventType.UPLOADED, files: files};
+			const uploadedEvent = {type: ObEUploadEventType.UPLOADED, files};
 			let event: ObIUploadEvent;
 			beforeEach(done => {
 				component.uploadEvent.subscribe(evt => {
@@ -121,7 +121,7 @@ describe('ObFileUploadComponent', () => {
 		});
 
 		describe('other event', () => {
-			const uploadedEvent = {type: ObEUploadEventType.DELETED, files: files};
+			const uploadedEvent = {type: ObEUploadEventType.DELETED, files};
 			let event: ObIUploadEvent;
 			beforeEach(done => {
 				component.uploadEvent.subscribe(evt => {

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-	selector: 'ob-form',
+	selector: 'sc-form',
 	templateUrl: './form.component.html'
 })
 export class FormComponent {

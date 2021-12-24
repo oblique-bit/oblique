@@ -1,105 +1,106 @@
-@import "mixins/form";
-@import "variables";
-@import "../../core/variables";
-@import "../../core/mixins/browser";
+@use "sass:selector";
+@use "mixins/form";
+@use "variables";
+@use "../../core/variables" as core-variables;
+@use "../../core/mixins/browser";
 
-@include form-control-validation($gray, $secondary, $secondary, $gray-dark);
+@include form.ob-form-control-validation(core-variables.$ob-gray, variables.$ob-secondary, variables.$ob-secondary, core-variables.$ob-gray-dark);
 
 .has-success {
-	@include form-control-validation($brand-success, $brand-success-dark, $brand-success, $brand-success-dark);
+  @include form.ob-form-control-validation(core-variables.$ob-success, core-variables.$ob-success-dark, core-variables.$ob-success, core-variables.$ob-success-dark);
 }
 
 .has-warning {
-	@include form-control-validation($brand-warning, $brand-warning-dark, $brand-warning, $brand-warning-dark);
+  @include form.ob-form-control-validation(core-variables.$ob-warning, core-variables.$ob-warning-dark, core-variables.$ob-warning, core-variables.$ob-warning-dark);
 }
 
 .has-error {
-	@include form-control-validation($brand-error, $brand-error-dark, $brand-error, $brand-error-dark);
+  @include form.ob-form-control-validation(core-variables.$ob-error, core-variables.$ob-error-dark, core-variables.$ob-error, core-variables.$ob-error-dark);
 }
 
 a.form-control-plaintext {
-	display: inline-block;
-	color: $gray-dark;
+  display: inline-block;
+  color: core-variables.$ob-gray-dark;
 
-	&:hover {
-		color: $brand-default;
-		text-decoration: none;
-	}
+  &:hover {
+	color: core-variables.$ob-default;
+	text-decoration: none;
+  }
 }
 
 .form-actions .dropdown-menu {
-	text-align: left;
+  text-align: left;
 }
 
 .help-block {
-	font-size: 12px;
+  font-size: 12px;
 }
 
 .input-group .has-feedback .form-control-feedback {
-	z-index: 5;
-	top: 0;
-	font-size: 1.5em;
+  z-index: 5;
+  top: 0;
+  font-size: 1.5em;
 }
 
 .control-mandatory {
-	position: relative;
+  position: relative;
 
-	&::before {
-		z-index: 5;
-		content: "";
-		position: absolute;
-		top: 0;
-		left: 0;
-		display: inline;
-		width: 0;
-		height: 0;
-		border-style: solid;
-		border-width: 8px 8px 0 0;
-		border-color: $brand-primary transparent transparent transparent;
+  &::before {
+	z-index: 5;
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: inline;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 8px 8px 0 0;
+	border-color: core-variables.$ob-primary transparent transparent transparent;
 
-		@at-root #{selector-append('.row:not(.no-gutters) [class*="col-"]', &)} {
-			left: 15px;
-		}
-
-		@at-root #{selector-append('.form-row [class*="col-"]', &)} {
-			left: 5px;
-		}
+	@at-root #{selector.append('.row:not(.no-gutters) [class*="col-"]', &)} {
+	  left: 15px;
 	}
 
-	&.form-check::before {
-		top: 1px;
+	@at-root #{selector.append('.form-row [class*="col-"]', &)} {
+	  left: 5px;
+	}
+  }
+
+  &.form-check::before {
+	top: 1px;
+  }
+
+  &.form-check.form-check-lg::before {
+	top: 2px;
+  }
+
+  &.form-control::before {
+	top: -1px;
+	left: -1px;
+  }
+
+  @include browser.ob-firefox() {
+	&.form-check:not(.form-check-sm)::before {
+	  top: 2px;
 	}
 
 	&.form-check.form-check-lg::before {
-		top: 2px;
+	  top: 3px;
 	}
 
-	&.form-control::before {
-		top: -1px;
-		left: -1px;
+	&.form-check.form-check-lg.mandatory-radio::before {
+	  top: 2px;
 	}
-
-	@include firefox() {
-		&.form-check:not(.form-check-sm)::before {
-			top: 2px;
-		}
-
-		&.form-check.form-check-lg::before {
-			top: 3px;
-		}
-
-		&.form-check.form-check-lg.mandatory-radio::before {
-			top: 2px;
-		}
-	}
+  }
 }
 
 .ob-inline-form {
-	label {
-		word-break: normal;
-	}
+  label {
+	word-break: normal;
+  }
 
-	> label {
-		margin-top: 8px;
-	}
+  > label {
+	margin-top: 8px;
+  }
 }

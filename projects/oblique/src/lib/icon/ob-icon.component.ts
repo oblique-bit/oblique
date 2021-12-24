@@ -4,7 +4,6 @@ import {ObUseObliqueIcons} from './icon.model';
 @Component({
 	selector: 'ob-icon',
 	templateUrl: './ob-icon.component.html',
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-icon-wrapper'}
 })
 export class ObIconComponent {

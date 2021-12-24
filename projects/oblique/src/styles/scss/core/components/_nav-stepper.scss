@@ -1,7 +1,6 @@
-@import "~@fortawesome/fontawesome-free/scss/variables";
-@import "../variables";
-@import "../mixins/layout";
-@import "../mixins/stepper";
+@use "~@fortawesome/fontawesome-free/scss/variables" as scss-variables;
+@use "../variables";
+@use "../mixins/stepper";
 
 .ob-nav-stepper {
 	display: flex;
@@ -21,11 +20,11 @@
 			content: counter(li-counter);
 			counter-increment: li-counter;
 			text-align: center;
-			color: $brand-primary;
-			background-color: $white;
-			border: 1px solid $brand-primary;
+			color: variables.$ob-primary;
+			background-color: variables.$ob-white;
+			border: 1px solid variables.$ob-primary;
 			border-radius: 50%;
-			box-shadow: 0 0 2px 2px $white;
+			box-shadow: 0 0 2px 2px variables.$ob-white;
 			z-index: 1;
 		}
 
@@ -39,27 +38,27 @@
 			border-width: 0;
 			border-left-style: solid;
 			border-top-style: solid;
-			border-color: $brand-primary;
+			border-color: variables.$ob-primary;
 			z-index: -1;
 		}
 
 		&:hover::before {
-			background-color: $brand-light;
+			background-color: variables.$ob-light;
 		}
 
 		&.active {
-			@include stepper-state($white, $brand-primary, $brand-primary);
+			@include stepper.ob-stepper-state(variables.$ob-white, variables.$ob-primary, variables.$ob-primary);
 		}
 
 		&.success {
-			@include stepper-state($brand-success, $white, $brand-success, $brand-success-light, $fa-var-check);
+			@include stepper.ob-stepper-state(variables.$ob-success, variables.$ob-white, variables.$ob-success, variables.$ob-success-light, scss-variables.$fa-var-check);
 		}
 
 		&.disabled {
-			@include stepper-state($gray-dark, $white, $gray-dark);
+			@include stepper.ob-stepper-state(variables.$ob-gray-dark, variables.$ob-white, variables.$ob-gray-dark);
 
 			.ob-step-link {
-				color: $gray-dark;
+				color: variables.$ob-gray-dark;
 				cursor: default;
 			}
 		}
@@ -79,15 +78,15 @@
 	}
 
 	&:not(.ob-nav-stepper-sm):not(.ob-nav-stepper-lg) {
-		@include stepper-variant($stepper-font-size, $stepper-size);
+		@include stepper.ob-stepper-variant(variables.$ob-stepper-font-size, variables.$ob-stepper-size);
 	}
 
 	&.ob-nav-stepper-sm {
-		@include stepper-variant($stepper-sm-font-size, $stepper-size-sm);
+		@include stepper.ob-stepper-variant(variables.$ob-stepper-sm-font-size, variables.$ob-stepper-size-sm);
 	}
 
 	&.ob-nav-stepper-lg {
-		@include stepper-variant($stepper-lg-font-size, $stepper-size-lg);
+		@include stepper.ob-stepper-variant(variables.$ob-stepper-lg-font-size, variables.$ob-stepper-size-lg);
 	}
 
 	&:not(.ob-nav-horizontal) .ob-nav-step {
@@ -101,11 +100,11 @@
 		}
 
 		&:not(:first-child) {
-			padding-top: $spacing-default;
+			padding-top: variables.$ob-spacing-default;
 		}
 
 		&:not(:last-child) {
-			padding-bottom: $spacing-default;
+			padding-bottom: variables.$ob-spacing-default;
 		}
 	}
 
@@ -117,11 +116,11 @@
 			flex-grow: 0;
 
 			&:not(:first-child) {
-				padding-left: $spacing-default;
+				padding-left: variables.$ob-spacing-default;
 			}
 
 			&:not(:last-child) {
-				padding-right: $spacing-default;
+				padding-right: variables.$ob-spacing-default;
 			}
 
 			&::before {

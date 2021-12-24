@@ -8,7 +8,7 @@
       "type": "component",
       "usage": "This component takes care of the structure of the application and should be used in <code>app.component.html</code>",
       "since": "2.0.0",
-      "updated": "6.0.0",
+      "updated": "8.0.0",
       "inputs": [
         {
           "name": "jumplinks",
@@ -103,6 +103,7 @@
       "type": "injectable(config)",
       "usage": "This is the default configuration of the master layout. Values can be tweaked by injecting this service into <code>app.module.ts</code> to customize the global structure of the application.",
       "since": "2.0.0",
+      "updated": "8.0.0",
       "variables": [
         {
           "name": "homePageRoute",
@@ -154,13 +155,6 @@
           "since": "6.0.0"
         },
         {
-          "name": "layout.isFixed",
-          "text": "Use continuous layout (false) or fixed layout (true). With fixed layout, header and footer are always shown and scrolling applies only to main content.",
-          "type": "boolean",
-          "default": false,
-          "since": "4.0.0"
-        },
-        {
           "name": "layout.hasCover",
           "text": "Use regular layout (false) or cover layout (true). The cover layout uses only part of the available width and displays a background image on the unused space.",
           "type": "boolean",
@@ -189,25 +183,25 @@
           "since": "4.0.0"
         },
         {
-          "name": "header.isAnimated",
-          "text": "Add animations to header size changes (true) or not (false).",
+          "name": "layout.hasMaxWidth",
+          "text": "Limit the width of the <code>main</code> element on very big screens.",
           "type": "boolean",
-          "default": true,
-          "since": "4.0.0"
+          "default": false,
+          "since": "8.0.0"
         },
         {
           "name": "header.isSticky",
-          "text": "The header is always shown on top of the content is continuous mode (true) or normally hidden when scrolled away (false).",
+          "text": "The header is always shown above the content (true) or hidden when scrolled away (false).",
           "type": "boolean",
           "default": true,
           "since": "4.0.0"
         },
         {
-          "name": "header.isMedium",
-          "text": "Keep default, large header size (false) or forces medium size (true).",
+          "name": "header.isSmall",
+          "text": "Forces the small variant of the header.",
           "type": "boolean",
           "default": false,
-          "since": "4.0.0"
+          "since": "8.0.0"
         },
         {
           "name": "header.isCustom",
@@ -217,11 +211,11 @@
           "since": "4.0.0"
         },
         {
-          "name": "header.hasScrollTransitions",
-          "text": "Resize the header to medium when the page is scrolled with continuous layout (true) or keep the header to its defined size (false) ",
+          "name": "header.reduceOnScroll",
+          "text": "Reduce the header's size when the page is scrolled (true) or keep the header to its default size (false).",
           "type": "boolean",
           "default": true,
-          "since": "4.0.0"
+          "since": "8.0.0"
         },
         {
           "name": "navigation.isFullWidth",
@@ -264,13 +258,6 @@
           "since": "4.0.0"
         },
         {
-          "name": "footer.isSmall",
-          "text": "Keep default, small footer size (true) or forces large size (false).",
-          "type": "boolean",
-          "default": true,
-          "since": "4.0.0"
-        },
-        {
           "name": "footer.isCustom",
           "text": "Use Oblique's default footer (false) or a custom one (true). The custom footer has to be provided through <code>[obFooter]</code>.",
           "type": "boolean",
@@ -278,11 +265,11 @@
           "since": "4.0.0"
         },
         {
-          "name": "footer.hasScrollTransitions",
-          "text": "Resize the footer to large when the page is scrolled with continuous layout (true) or keep the footer to its defined size (false) ",
+          "name": "footer.hasLogoOnScroll",
+          "text": "Show the Confederation's logo in the footer when the page is scrolled.",
           "type": "boolean",
           "default": true,
-          "since": "4.0.0"
+          "since": "8.0.0"
         }
       ]
     },
@@ -291,6 +278,7 @@
       "usage": "A service to configure the master layout. The changes are live.",
       "type": "service",
       "since": "2.0.0",
+      "updated": "7.1.0",
       "variables": [
         {
           "name": "homePageRouteChange$",
@@ -335,9 +323,10 @@
       "usage": "A service to configure the master layout component. The changes are live.",
       "type": "service",
       "since": "4.0.0",
+      "updated": "8.0.0",
       "variables": [
         {
-          "name": "configEvents",
+          "name": "configEvents$",
           "text": "Emits every time one of its property is changed",
           "type": "Observable<ObIMasterLayoutEvent>",
           "since": "4.0.0"
@@ -345,13 +334,6 @@
         {
           "name": "isMenuOpened",
           "text": "In collapsed mode, closes the hamburger menu (false) or opens it (true).",
-          "type": "boolean",
-          "default": false,
-          "since": "4.0.0"
-        },
-        {
-          "name": "isFixed",
-          "text": "Controls <code>ObMasterLayoutConfig.layout.isFixed</code> property.",
           "type": "boolean",
           "default": false,
           "since": "4.0.0"
@@ -383,6 +365,13 @@
           "type": "boolean",
           "default": true,
           "since": "4.0.0"
+        },
+        {
+          "name": "hasMaxWidth",
+          "text": "Controls <code>ObMasterLayoutConfig.layout.hasMaxWidth</code> property.",
+          "type": "boolean",
+          "default": false,
+          "since": "8.0.0"
         }
       ]
     },
@@ -391,9 +380,10 @@
       "usage": "A service to configure the master layout header. The changes are live.",
       "type": "service",
       "since": "4.0.0",
+      "updated": "8.0.0",
       "variables": [
         {
-          "name": "configEvents",
+          "name": "configEvents$",
           "text": "Emits every time one of its property is changed",
           "type": "Observable<ObIMasterLayoutEvent>",
           "since": "4.0.0"
@@ -406,18 +396,11 @@
           "since": "4.0.0"
         },
         {
-          "name": "isMedium",
-          "text": "Controls <code>ObMasterLayoutConfig.header.isMedium</code> property.",
+          "name": "isSmall",
+          "text": "Controls <code>ObMasterLayoutConfig.header.isSmall</code> property.",
           "type": "boolean",
           "default": false,
-          "since": "4.0.0"
-        },
-        {
-          "name": "isAnimated",
-          "text": "Controls <code>ObMasterLayoutConfig.header.isAnimated</code> property.",
-          "type": "boolean",
-          "default": true,
-          "since": "4.0.0"
+          "since": "8.0.0"
         },
         {
           "name": "isSticky",
@@ -427,11 +410,11 @@
           "since": "4.0.0"
         },
         {
-          "name": "hasScrollTransition",
-          "text": "Controls <code>ObMasterLayoutConfig.header.hasScrollTransition</code> property.",
+          "name": "reduceOnScroll",
+          "text": "Controls <code>ObMasterLayoutConfig.header.reduceOnScroll</code> property.",
           "type": "boolean",
           "default": true,
-          "since": "4.0.0"
+          "since": "8.0.0"
         }
       ]
     },
@@ -440,12 +423,20 @@
       "usage": "A service to configure the master layout footer. The changes are live.",
       "type": "service",
       "since": "4.0.0",
+      "updated": "8.0.0",
       "variables": [
         {
-          "name": "configEvents",
+          "name": "configEvents$",
           "text": "Emits every time one of its property is changed",
           "type": "Observable<ObIMasterLayoutEvent>",
           "since": "4.0.0"
+        },
+        {
+          "name": "isSticky",
+          "text": "Controls <code>ObMasterLayoutConfig.footer.isSticky</code> property.",
+          "type": "boolean",
+          "default": false,
+          "since": "8.0.0"
         },
         {
           "name": "isCustom",
@@ -455,18 +446,11 @@
           "since": "4.0.0"
         },
         {
-          "name": "isSmall",
-          "text": "Controls <code>ObMasterLayoutConfig.footer.isSmall</code> property.",
-          "type": "boolean",
-          "default": false,
-          "since": "4.0.0"
-        },
-        {
-          "name": "hasScrollTransition",
-          "text": "Controls <code>ObMasterLayoutConfig.footer.hasScrollTransition</code> property.",
+          "name": "hasLogoOnScroll",
+          "text": "Controls <code>ObMasterLayoutConfig.footer.hasLogoOnScroll</code> property.",
           "type": "boolean",
           "default": true,
-          "since": "4.0.0"
+          "since": "8.0.0"
         }
       ]
     },
@@ -477,7 +461,7 @@
       "since": "4.0.0",
       "variables": [
         {
-          "name": "configEvents",
+          "name": "configEvents$",
           "text": "Emits every time one of its property is changed",
           "type": "Observable<ObIMasterLayoutEvent>",
           "since": "4.0.0"
@@ -636,30 +620,33 @@
     {
       "name": "ObIMasterLayoutEvent",
       "type": "interface",
-      "usage": "The event emitted by master layout",
+      "usage": "The event emitted by the master layout",
       "since": "4.0.0",
+      "updated": "8.0.0",
       "variables": [
         {
           "name": "name",
-          "text": "Name of the event",
+          "text": "The name of the event",
           "type": "ObEMasterLayoutEventValues",
           "values":[
-            "ObEMasterLayoutEventValues.ANIMATE",
-            "ObEMasterLayoutEventValues.COLLAPSE",
-            "ObEMasterLayoutEventValues.COVER",
-            "ObEMasterLayoutEventValues.CUSTOM",
-            "ObEMasterLayoutEventValues.FIXED",
-            "ObEMasterLayoutEventValues.FULL_WIDTH",
-            "ObEMasterLayoutEventValues.OFF_CANVAS",
-            "ObEMasterLayoutEventValues.MEDIUM",
-            "ObEMasterLayoutEventValues.MAIN_NAVIGATION",
-            "ObEMasterLayoutEventValues.SMALL",
-            "ObEMasterLayoutEventValues.SCROLL_TRANSITION",
-            "ObEMasterLayoutEventValues.SCROLLABLE",
-            "ObEMasterLayoutEventValues.STICKY",
-            "ObEMasterLayoutEventValues.LAYOUT"
+            "ObEMasterLayoutEventValues.FOOTER_HAS_LOGO_ON_SCROLL",
+            "ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM",
+            "ObEMasterLayoutEventValues.FOOTER_IS_STICKY",
+            "ObEMasterLayoutEventValues.HEADER_IS_CUSTOM",
+            "ObEMasterLayoutEventValues.HEADER_IS_SMALL,",
+            "ObEMasterLayoutEventValues.HEADER_IS_STICKY",
+            "ObEMasterLayoutEventValues.HEADER_REDUCE_ON_SCROLL",
+            "ObEMasterLayoutEventValues.IS_MENU_OPENED",
+            "ObEMasterLayoutEventValues.LAYOUT_HAS_COVER",
+            "ObEMasterLayoutEventValues.LAYOUT_HAS_DEFAULT_LAYOUT",
+            "ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION",
+            "ObEMasterLayoutEventValues.LAYOUT_HAS_MAX_WIDTH",
+            "ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS",
+            "ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH",
+            "ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE"
           ],
-          "since": "4.0.0"
+          "since": "4.0.0",
+          "updated": "8.0.0"
         },
         {
           "name": "value",

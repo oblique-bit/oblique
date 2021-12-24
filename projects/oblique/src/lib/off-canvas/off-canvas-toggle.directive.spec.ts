@@ -1,21 +1,50 @@
-import {async, TestBed} from '@angular/core/testing';
+import {waitForAsync} from '@angular/core/testing';
 import {ObOffCanvasToggleDirective} from './off-canvas-toggle.directive';
 import {ObOffCanvasService} from './off-canvas.service';
 
-describe('OffcanvasToggleDirective', () => {
-	let offCanvasService;
+describe('ObOffCanvasToggleDirective', () => {
+	let directive: ObOffCanvasToggleDirective;
+	let service: ObOffCanvasService;
 
-	beforeEach(async(() => {
-		offCanvasService = jest.fn();
-		TestBed.configureTestingModule({
-			declarations: [ObOffCanvasToggleDirective],
-			providers: [{provide: ObOffCanvasService, useValue: offCanvasService}]
-		}).compileComponents();
-	}));
+	beforeEach(
+		waitForAsync(() => {
+			service = {open: false} as ObOffCanvasService;
+			directive = new ObOffCanvasToggleDirective(service, window);
+		})
+	);
 
 	it('should create an instance', () => {
-		const mockService = jest.fn();
-		const directive = new ObOffCanvasToggleDirective(mockService as unknown as ObOffCanvasService, window);
 		expect(directive).toBeTruthy();
+	});
+
+	describe('toggle', () => {
+		beforeEach(() => {
+			jest.useFakeTimers();
+		});
+		afterEach(() => {
+			jest.useRealTimers();
+		});
+		it('should open with no event provided', () => {
+			directive.toggle();
+			jest.advanceTimersToNextTimer();
+			expect(service.open).toBe(true);
+		});
+		it('should open with a mouse click', () => {
+			directive.toggle(new MouseEvent('click'));
+			jest.advanceTimersToNextTimer();
+			expect(service.open).toBe(true);
+		});
+		it('should open with Enter key on a div', () => {
+			const event = {target: {nodeName: 'DIV'}} as unknown as KeyboardEvent;
+			directive.toggle(event);
+			jest.advanceTimersToNextTimer();
+			expect(service.open).toBe(true);
+		});
+		it('should not open with Enter key on a button', () => {
+			const event = {target: {nodeName: 'BUTTON'}} as unknown as KeyboardEvent;
+			directive.toggle(event);
+			jest.advanceTimersToNextTimer();
+			expect(service.open).toBe(false);
+		});
 	});
 });

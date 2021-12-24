@@ -2,10 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
-	selector: 'ob-input-clear',
+	selector: 'sc-input-clear',
 	templateUrl: './input-clear.component.html'
 })
-export class ObInputClearSampleComponent implements OnInit {
+export class InputClearSampleComponent implements OnInit {
 	testModel1: string;
 	testModel2: string;
 	testModel3: string;

@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {By} from '@angular/platform-browser';
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
@@ -128,7 +128,7 @@ describe('NavTreeComponent', () => {
 	});
 
 	it('should add URL fragment to `href` attribute', () => {
-		const fragment = '#' + testComponent.items[0].fragment;
+		const fragment = `#${testComponent.items[0].fragment}`;
 
 		// [routerLink] directive adds `[href]` attribute to nav item links:
 		const firstNavItem = fixture.debugElement.query(By.css('a.ob-nav-link'));
@@ -137,7 +137,7 @@ describe('NavTreeComponent', () => {
 	});
 
 	it('should add URL query params to `href` attribute', () => {
-		const urlQueryParams = 'foo=' + testComponent.items[0].queryParams.foo;
+		const urlQueryParams = `foo=${testComponent.items[0].queryParams.foo}`;
 
 		// [routerLink] directive adds `[href]` attribute to nav item links:
 		const firstNavItem = fixture.debugElement.query(By.css('a.ob-nav-link'));

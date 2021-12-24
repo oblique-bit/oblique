@@ -2,8 +2,6 @@
  * Public API Surface of oblique
  */
 
-import {ObNestedFormComponent} from './lib/nested-form/nested-form.component';
-
 export {ObBreadcrumbModule, ObBreadcrumbComponent, ObTBreadcrumbConfig, ObBreadcrumbConfig} from './lib/breadcrumb/breadcrumb.module';
 export {ObButtonDirective, ObButtonModule} from './lib/button/button.module';
 export {
@@ -55,7 +53,6 @@ export {
 } from './lib/http-api-interceptor/http-api-interceptor.module';
 export {ObTIconConfig, ObIconModule, ObIconService, ObIconConfig, ObUseObliqueIcons, ObEIcon, ObIconComponent} from './lib/icon/icon.module';
 export {ObLanguageModule, ObLanguageService, ObDatePipe} from './lib/language/language.module';
-export {ObMandatoryModule, ObMandatoryDirective} from './lib/mandatory/mandatory.module';
 export {
 	ObMasterLayoutComponent,
 	ObMasterLayoutComponentService,
@@ -136,7 +133,6 @@ export {ObPopUpService} from './lib/pop-up/pop-up.service';
 export {ObGlobalEventsService} from './lib/global-events/global-events.service';
 export {obOutsideFilter} from './lib/global-events/outsideFilter';
 export {ObliqueModule} from './lib/oblique.module';
-export {FONTS, THEMES, ObThemeService} from './lib/theme/theme.service';
 
 export * from './lib/oblique-testing.module';
 export {ObMockMatElement, ObMockModule} from './lib/_mocks/mock-module';

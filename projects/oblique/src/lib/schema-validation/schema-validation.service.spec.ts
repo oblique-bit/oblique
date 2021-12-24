@@ -1,4 +1,4 @@
-import {inject, TestBed} from '@angular/core/testing';
+import {TestBed, inject} from '@angular/core/testing';
 import {ObSchemaValidationService} from './schema-validation.service';
 
 describe('SchemaValidationService', () => {
@@ -44,15 +44,15 @@ describe('SchemaValidationService', () => {
 		it('should return angular2 conform error objects', () => {
 			expect(validator.validate('someProperty', 4)).toEqual({
 				'ajv.type': {
-					//error type (in this case a type Issue)
-					type: 'string' //The required type
+					// error type (in this case a type Issue)
+					type: 'string' // The required type
 				}
 			});
 
 			expect(validator.validate('someProperty', 'fuu')).toEqual({
 				'ajv.minLength': {
-					//error type (in this case a type Issue)
-					limit: 4 //The required type
+					// error type (in this case a type Issue)
+					limit: 4 // The required type
 				}
 			});
 		});

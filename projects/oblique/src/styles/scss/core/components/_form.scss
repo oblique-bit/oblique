@@ -1,4 +1,4 @@
-@import "../variables";
+@use "../variables";
 
 fieldset {
 	min-width: 0;
@@ -10,9 +10,9 @@ fieldset {
 legend {
 	width: 100%;
 	padding: 0;
-	margin-bottom: $spacing-sm;
-	border-bottom: 1px dotted $gray;
-	font-size: $font-size-bigger;
+	margin-bottom: variables.$ob-spacing-sm;
+	border-bottom: 1px dotted variables.$ob-gray;
+	font-size: variables.$ob-font-size-bigger;
 	font-weight: 600;
 	line-height: inherit;
 }
@@ -129,6 +129,6 @@ textarea {
 	word-break: normal;
 
 	> * + * {
-		margin-left: $spacing-default;
+		margin-left: variables.$ob-spacing-default;
 	}
 }

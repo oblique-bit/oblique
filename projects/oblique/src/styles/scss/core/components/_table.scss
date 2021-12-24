@@ -1,7 +1,8 @@
-@import "../variables";
-@import "../mixins/layout";
-@import "../mixins/table";
-@import "../mixins/typography";
+@use "sass:selector";
+@use "../variables";
+@use "../mixins/layout";
+@use "../mixins/table";
+@use "../mixins/typography";
 
 table {
 	border-collapse: collapse; // Prevent double borders
@@ -9,13 +10,13 @@ table {
 
 .ob-table {
 	width: 100%;
-	color: $brand-default;
-	@include body2;
+	color: variables.$ob-default;
+	@include typography.ob-body2;
 
 	&.ob-table-cicd {
 		thead,
 		tfoot {
-			background-color: $gray-lighter;
+			background-color: variables.$ob-gray-lighter;
 		}
 
 		th {
@@ -24,22 +25,22 @@ table {
 	}
 
 	td, th {
-		border-top: 1px solid $gray-light;
-		border-bottom: 1px solid $gray-light;
-		padding: $spacing-sm;
+		border-top: 1px solid variables.$ob-gray-light;
+		border-bottom: 1px solid variables.$ob-gray-light;
+		padding: variables.$ob-spacing-sm;
 		text-align: inherit;
 
-		@at-root #{selector-append(".ob-table-cicd", &)} {
-			border-right: 1px solid $gray-light;
-			border-left: 1px solid $gray-light;
+		@at-root #{selector.append(".ob-table-cicd", &)} {
+			border-right: 1px solid variables.$ob-gray-light;
+			border-left: 1px solid variables.$ob-gray-light;
 		}
 
-		@at-root #{selector-append(".ob-table-sm", &)} {
-			padding: $spacing-xs;
+		@at-root #{selector.append(".ob-table-sm", &)} {
+			padding: variables.$ob-spacing-xs;
 		}
 
-		@at-root #{selector-append(".ob-table-lg", &)} {
-			padding: $spacing-default;
+		@at-root #{selector.append(".ob-table-lg", &)} {
+			padding: variables.$ob-spacing-default;
 		}
 	}
 
@@ -49,31 +50,31 @@ table {
 
 	&:not(.ob-table-plain) {
 		tbody tr:nth-child(odd) {
-			background-color: $gray-extra-light;
+			background-color: variables.$ob-gray-extra-light;
 		}
 	}
 
 	&.ob-table-collapse {
-		@include layout-collapse-down() {
-			@include table-collapse();
+		@include layout.ob-media-breakpoint-down(md) {
+			@include table.ob-table-collapse();
 		}
 	}
 
 	&.ob-table-collapse-sm {
-		@include media-breakpoint-down(sm) {
-			@include table-collapse();
+		@include layout.ob-media-breakpoint-down(sm) {
+			@include table.ob-table-collapse();
 		}
 	}
 
 	&.ob-table-collapse-md {
-		@include media-breakpoint-down(md) {
-			@include table-collapse();
+		@include layout.ob-media-breakpoint-down(md) {
+			@include table.ob-table-collapse();
 		}
 	}
 
 	&.ob-table-hover tbody tr:hover,
 	tr.ob-active {
-		background-color: $brand-extra-light;
+		background-color: variables.$ob-extra-light;
 	}
 }
 
@@ -82,9 +83,9 @@ table {
 }
 
 caption {
-	padding-top: $spacing-sm;
-	padding-bottom: $spacing-sm;
-	color: $gray-dark;
+	padding-top: variables.$ob-spacing-sm;
+	padding-bottom: variables.$ob-spacing-sm;
+	color: variables.$ob-gray-dark;
 	font-weight: 700;
 	text-align: left;
 	caption-side: top;

@@ -1,29 +1,28 @@
-@import "../../../styles/scss/core/variables";
-@import "../../../styles/scss/core/mixins/layout";
+@use "sass:selector";
+@use "../../../styles/scss/core/variables";
+@use "../../../styles/scss/core/mixins/layout";
 
 .ob-master-layout-header {
 	.ob-header-toggle {
 		border: none;
 
-		@include layout-collapse-down() {
+		@include layout.ob-media-breakpoint-down(md) {
 			flex-wrap: nowrap;
 		}
 
-		@include layout-collapse-up() {
+		@include layout.ob-media-breakpoint-up(md) {
 			display: none !important;
 		}
 	}
 
 	.ob-master-layout-header-toggle {
-		position: relative;
-
 		.first-line,
 		.second-line,
 		.third-line {
 			display: block;
 			width: 25px;
 			height: 4px;
-			background-color: $gray-dark;
+			background-color: variables.$ob-gray-dark;
 			background-clip: border-box;
 			border-radius: 2px;
 			transition: .25s transform, .15s opacity, .25s border-color;
@@ -35,7 +34,7 @@
 			.first-line,
 			.second-line,
 			.third-line {
-				background-color: $brand-default;
+				background-color: variables.$ob-default;
 			}
 		}
 
@@ -67,31 +66,33 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		flex-wrap: wrap;
 		white-space: nowrap;
 
-		@include layout-collapse-down() {
-			visibility: hidden; // Avoids keyboard navigation when collapsed
-			transition: visibility $duration-default; // Ensure element keeps visible when header is closing
+		@include layout.ob-media-breakpoint-down(md) {
+			padding-bottom: variables.$ob-spacing-sm;
+			transition: padding-bottom variables.$ob-duration-default;
 
-			.ob-header-expanded & {
-				visibility: visible; // Restores keyboard navigation
+			@at-root .ob-master-layout:not(.ob-header-expanded) & {
+				height: 0;
+				overflow: hidden;
+				padding-bottom: 0;
 			}
 		}
 	}
 
 	.ob-control-locale {
 		padding: 0.375rem 0.75rem;
-		color: $brand-default;
+		color: variables.$ob-default;
 		background-color: transparent;
 		border: none transparent;
 		border-radius: 0;
 		user-select: none;
-		transition: background-color $duration-fast ease-in-out;
+		transition: background-color variables.$ob-duration-fast ease-in-out;
 
 		&:hover,
 		&.active {
-			background-color: $gray-lighter;
-			box-shadow: none;
+			background-color: variables.$ob-gray-lighter;
 		}
 	}
 
@@ -105,23 +106,19 @@
 		list-style: none;
 
 		&:not(.ob-header-locale) .ob-control-item {
-			padding-right: $spacing-default;
-			padding-left: $spacing-default;
+			padding-right: variables.$ob-spacing-default;
+			padding-left: variables.$ob-spacing-default;
 		}
 
 		&.ob-header-locale {
-			margin-right: $spacing-default;
+			margin-right: variables.$ob-spacing-default;
 		}
 	}
 
 
 	.ob-control-item {
-		@include layout-collapse-up() {
+		@include layout.ob-media-breakpoint-up(md) {
 			justify-content: flex-end;
-
-			@at-root :not(.ob-master-layout-fixed) #{selector-append(".ob-master-layout-header-animate", &)} {
-				transition: margin-top $duration-default ease-in-out;
-			}
 		}
 	}
 
@@ -129,13 +126,13 @@
 		padding: 0;
 		border: none;
 		background-color: transparent;
-		color: $gray-dark;
-		transition: color $duration-fast ease-in-out;
+		color: variables.$ob-gray-dark;
+		transition: color variables.$ob-duration-fast ease-in-out;
 
 		&:hover,
 		&:active,
 		&:focus {
-			color: $brand-default;
+			color: variables.$ob-default;
 			cursor: pointer;
 		}
 	}
@@ -143,10 +140,10 @@
 	.ob-control-icon {
 		margin: 0;
 		vertical-align: middle;
-		font-size: $font-size-xl;
+		font-size: variables.$ob-font-size-xl;
 
-		&.mat-icon.ob-icon:not(.fa) {
-			top: 0.03em;	// empiric value
+		&.mat-icon[data-mat-icon-type="svg"] {
+			margin-top: -7px;  // empiric value
 		}
 	}
 }

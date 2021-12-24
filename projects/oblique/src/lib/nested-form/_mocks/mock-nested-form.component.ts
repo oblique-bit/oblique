@@ -1,4 +1,4 @@
-import {Component, forwardRef, Input} from '@angular/core';
+import {Component, Input, forwardRef} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
 
 @Component({
@@ -17,7 +17,6 @@ import {AbstractControl, ControlValueAccessor, FormGroup, NG_VALIDATORS, NG_VALU
 			useExisting: forwardRef(() => ObMockNestedFormComponent)
 		}
 	],
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-nested-form'}
 })
 export class ObMockNestedFormComponent implements ControlValueAccessor, Validator {

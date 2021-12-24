@@ -5,11 +5,10 @@ import {ObEUploadEventType, ObIUploadEvent} from './file-upload.model';
 	selector: 'ob-file-upload',
 	exportAs: 'obFileUpload',
 	templateUrl: './file-upload.component.html',
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-file-upload'}
 })
 export class ObFileUploadComponent {
-	@Output() uploadEvent = new EventEmitter<ObIUploadEvent>();
+	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
 	@Input() accept = ['*'];
 	@Input() singleRequest = true;
 	@Input() maxFileSize = 5;

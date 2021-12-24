@@ -1,9 +1,10 @@
-@import "../../../styles/scss/core/variables";
-@import "../../../styles/scss/core/mixins/layout";
+@use "../../../styles/scss/core/variables";
+@use "../../../styles/scss/core/mixins/layout";
+@use "../../../styles/scss/core/mixins/shadow";
 
 .ob-master-layout-navigation  {
 	> ul {
-		transition: padding $duration-default;	// because navigation-scrollable-* classes are dynamic
+		transition: padding variables.$ob-duration-default;	// because navigation-scrollable-* classes are dynamic
 	}
 
 	&.navigation-scrollable  {
@@ -13,44 +14,41 @@
 			display: none;
 		}
 
-		@include layout-collapse-down() {
+		@include layout.ob-media-breakpoint-down(md) {
 			.ob-navigation-scrollable-content > li {
 				// Ensure navigation scrolling is disabled on small viewports:
 				margin-left: 0 !important;
 			}
 		}
 
-		@include layout-collapse-up() {
+		@include layout.ob-media-breakpoint-up(md) {
 			.ob-navigation-scrollable-control {
 				position: absolute;
 				top: 0;
-				width: $navigation-scrollable-padding;
+				width: variables.$ob-navigation-scrollable-padding;
 				height: 100%;
 				border: none;
 				display: inline-block;
-				background-color: $gray-extra-light;
+				background-color: variables.$ob-gray-extra-light;
 				text-align: center;
-				z-index: $z-index-controls;
-				// Hack to simulate inner bottom shadow on the back
-				box-shadow: 0 -1px 0 #eaeaea inset,
-				0 -2px 0 #ebebeb inset,
-				0 -3px 0 #ededed inset,
-				0 -4px 0 #eeeeee inset,
-				0 -5px 0 #f0f0f0 inset,
-				0 -6px 0 #f1f1f1 inset,
-				0 -7px 0 #f2f2f2 inset,
-				0 -8px 0 #f3f3f3 inset,
-				0 -9px 0 #f4f4f4 inset;
+				z-index: variables.$ob-z-index-controls;
+
+				&.ob-navigation-scrollable-control-left {
+					@include shadow.ob-innerBottomShadow();
+				}
+				&.ob-navigation-scrollable-control-right {
+					@include shadow.ob-innerBottomShadow();
+				}
 
 				> span {
-					transition: transform $duration-fast ease-in-out;
+					transition: transform variables.$ob-duration-fast ease-in-out;
 				}
 
 				&:hover,
 				&:focus,
 				&:active {
 					cursor: pointer;
-					background-color: $gray-light;
+					background-color: variables.$ob-gray-light;
 					box-shadow: none;
 
 					> span {
@@ -73,14 +71,14 @@
 				white-space: nowrap;
 				margin-left: 0;
 				margin-right: 0;
-				padding-right: $navigation-scrollable-padding;
-				padding-left: $navigation-scrollable-padding;
+				padding-right: variables.$ob-navigation-scrollable-padding;
+				padding-left: variables.$ob-navigation-scrollable-padding;
 
 				> li {
 					display: inline-block;
 					white-space: normal;
 					// Animating list item with a negative margin ensures parent menu keeps the original width:
-					transition: margin $duration-default;
+					transition: margin variables.$ob-duration-default;
 				}
 			}
 		}

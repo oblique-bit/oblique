@@ -1,9 +1,9 @@
-@import "../../styles/scss/core/variables";
+@use "../../styles/scss/core/variables";
 
 .ob-breadcrumbs {
 	display: flex;
 	flex-wrap: wrap;
-	font-size: $font-size-smallest;
+	font-size: variables.$ob-font-size-smallest;
 	margin: 0;
 	padding: 0;
 
@@ -25,7 +25,7 @@
 		}
 
 		.ob-breadcrumb-separator {
-			margin: auto $spacing-xs;
+			margin: auto variables.$ob-spacing-xs;
 		}
 	}
 }

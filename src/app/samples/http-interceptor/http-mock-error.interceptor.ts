@@ -28,7 +28,7 @@ export class HttpMockErrorInterceptor implements HttpInterceptor {
 		return of(null).pipe(
 			mergeMap(() => {
 				const code = request.url.split('/').pop();
-				if (HttpMockErrorInterceptor.errorCodes.indexOf(code) > -1) {
+				if (HttpMockErrorInterceptor.errorCodes.includes(code)) {
 					return throwError(
 						new HttpErrorResponse({
 							status: +code,

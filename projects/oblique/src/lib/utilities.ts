@@ -18,6 +18,16 @@ export function windowProvider(doc: Document): Window {
 	return doc.defaultView || ({} as Window);
 }
 
+export function getTranslateLoader(http: HttpClient, files: ObITranslationFile[]): ObMultiTranslateLoader {
+	return new ObMultiTranslateLoader(http, [
+		{
+			prefix: './assets/i18n/oblique-',
+			suffix: '.json'
+		},
+		...(files || [{prefix: './assets/i18n/', suffix: '.json'}])
+	]);
+}
+
 export function multiTranslateLoader(config: TranslateModuleConfig = {}): TranslateModuleConfig {
 	return {
 		...config,
@@ -27,16 +37,6 @@ export function multiTranslateLoader(config: TranslateModuleConfig = {}): Transl
 			deps: [HttpClient, [new Optional(), TRANSLATION_FILES]]
 		}
 	};
-}
-
-export function getTranslateLoader(http: HttpClient, files: ObITranslationFile[]): ObMultiTranslateLoader {
-	return new ObMultiTranslateLoader(http, [
-		{
-			prefix: './assets/i18n/oblique-',
-			suffix: '.json'
-		},
-		...(files || [{prefix: './assets/i18n/', suffix: '.json'}])
-	]);
 }
 
 export function matFormFieldDefaultOptionsProvider(config?: ObIMaterialConfig): MatFormFieldDefaultOptions {

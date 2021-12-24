@@ -1,8 +1,14 @@
-@import "core/variables";
-@import "core/mixins/layout";
-@import "core/mixins/nav";
+/*!
+ * @deprecated since version 8.0.0. It will be removed in Oblique 10, as by then Bootstrap will no longer be supported by Oblique.
+ */
+@use "core/mixins/layout";
+@use "core/mixins/nav";
+@forward "core";
+@forward "core/mixins/layout";
+@forward "core/mixins/nav";
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
+@import "core/variables";
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/utilities";
 @import "~bootstrap/scss/grid";
@@ -15,19 +21,19 @@
 }
 
 .d-layout-collapsed {
-	@include layout-collapse-up() {
+	@include layout.ob-media-breakpoint-up(md) {
 		display: none;
 	}
 }
 
 .d-layout-expanded {
-	@include layout-collapse-down() {
+	@include layout.ob-media-breakpoint-down(md) {
 		display: none;
 	}
 }
 
 .hover-effect {
 	> * {
-		@include nav-hover();
+		@include nav.ob-nav-hover();
 	}
 }

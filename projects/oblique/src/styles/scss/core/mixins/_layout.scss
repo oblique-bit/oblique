@@ -1,25 +1,26 @@
-@import "../variables";
+@use "sass:map";
+@use "../variables";
 
-@mixin layout-collapse-down() {
-	@media (max-width: $layout-collapse) {
+@mixin ob-map-error($map, $key) {
+	@if map-has-key($map, $key) {
 		@content;
+	} @else {
+		@warn "Unknown breakpoint name: #{$key}.";
 	}
 }
 
-@mixin layout-collapse-up() {
-	@media (min-width: $layout-collapse) {
-		@content;
+@mixin ob-media-breakpoint-up($name) {
+	@include ob-map-error(variables.$ob-grid-breakpoints, $name) {
+		@media (min-width: map.get(variables.$ob-grid-breakpoints, $name)) {
+			@content;
+		}
 	}
 }
 
-@mixin media-breakpoint-up($name) {
-	@media (min-width: map-get($grid-breakpoints, $name)) {
-		@content;
-	}
-}
-
-@mixin media-breakpoint-down($name) {
-	@media (max-width: map-get($grid-breakpoints, $name)) {
-		@content;
+@mixin ob-media-breakpoint-down($name) {
+	@include ob-map-error(variables.$ob-grid-breakpoints, $name) {
+		@media (max-width: map.get(variables.$ob-grid-breakpoints, $name)) {
+			@content
+		}
 	}
 }

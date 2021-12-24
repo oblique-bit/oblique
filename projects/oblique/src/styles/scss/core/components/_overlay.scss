@@ -1,4 +1,4 @@
-@import "../variables";
+@use "../variables";
 
 .ob-has-overlay {
 	position: relative;
@@ -9,17 +9,17 @@
 		right: 0;
 		bottom: 0;
 		left: 0;
-		z-index: $z-index-controls;
+		z-index: variables.$ob-z-index-controls;
 		padding: 15px;
 		opacity: 0;
 		text-align: center;
-		color: $brand-default;
+		color: variables.$ob-default;
 		background-color: rgba(255, 255, 255, 0.8);
-		transition: opacity $duration-fast ease-in;
+		transition: opacity variables.$ob-duration-fast ease-in;
 
 		&.ob-overlay-fixed {
 			position: fixed;
-			z-index: $z-index-overlay;
+			z-index: variables.$ob-z-index-overlay;
 		}
 
 		&.ob-overlay-in {

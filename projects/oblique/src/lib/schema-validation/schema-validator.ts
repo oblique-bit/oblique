@@ -1,4 +1,4 @@
-import {AfterViewInit, Directive, forwardRef, Inject, Injector} from '@angular/core';
+import {AfterViewInit, Directive, Inject, Injector, forwardRef} from '@angular/core';
 import {FormControl, NG_VALIDATORS, NgControl, ValidationErrors, Validator} from '@angular/forms';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 import {WINDOW} from '../utilities';
@@ -17,7 +17,7 @@ export class ObSchemaValidateDirective implements AfterViewInit, Validator {
 	) {}
 
 	ngAfterViewInit(): void {
-		//TODO: this is a workaround: if NgControl is required in the constructor, we have cyclic dependencies
+		// TODO: this is a workaround: if NgControl is required in the constructor, we have cyclic dependencies
 		const ngControl = this.injector.get(NgControl);
 		this.propertyName = ngControl.path.join('.');
 		// Force validation for reactive form, but delay it to avoid ExpressionChangedAfterItHasBeenCheckedError

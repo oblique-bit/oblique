@@ -5,12 +5,11 @@ import {Subject} from 'rxjs';
 @Directive({
 	selector: '[obMasterLayoutNavigationMenu]',
 	exportAs: 'obMasterLayoutNavigationMenu',
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-master-layout-navigation-menu'}
 })
 export class ObMasterLayoutNavigationMenuDirective implements AfterViewInit, OnDestroy {
-	@Output()
-	onShow = new EventEmitter<boolean>();
+	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
+	@Output() readonly onShow = new EventEmitter<boolean>();
 
 	@ContentChildren(ObMasterLayoutNavigationMenuDirective, {descendants: true})
 	$menus: QueryList<ObMasterLayoutNavigationMenuDirective>;

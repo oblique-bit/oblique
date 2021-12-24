@@ -63,9 +63,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 
 	public constructor(private readonly element: ElementRef, private readonly renderer: Renderer2) {
 		if (this.element.nativeElement.localName !== 'ob-nav-tree') {
-			throw new Error(
-				`Directive nav-tree-selector can only be used on ob-nav-tree elements. Current element is: '${this.element.nativeElement.localName}'`
-			);
+			throw new Error(`Directive nav-tree-selector can only be used on ob-nav-tree elements. Current element is: '${this.element.nativeElement.localName}'`);
 		}
 		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.DOWN] = () => this.focusNext();
 		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.UP] = event => this.focusPrevious(event);
@@ -101,7 +99,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 			return;
 		}
 		if (!this.inputElement.nativeElement || !this.inputElement.nativeElement.tagName) {
-			throw new Error('The given value for [obNavTreeFakeFocus] is invalid. ' + 'It must be a valid native DOM element or ElementRef.');
+			throw new Error('The given value for [obNavTreeFakeFocus] is invalid. It must be a valid native DOM element or ElementRef.');
 		}
 		this.unsubscribeInputListeners();
 		this.inputElement.nativeElement.setAttribute('autocomplete', 'off');
@@ -114,13 +112,11 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 		this.eventSubscriptions.push(
 			this.renderer.listen(this.inputElement.nativeElement, ObNavTreeFakeFocusDirective.INPUT_EVENTS.KEY_DOWN, event => debouncer.next(event))
 		);
-		this.eventSubscriptions.push(
-			this.renderer.listen(this.inputElement.nativeElement, ObNavTreeFakeFocusDirective.INPUT_EVENTS.BLUR, () => this.onBlur(true))
-		);
+		this.eventSubscriptions.push(this.renderer.listen(this.inputElement.nativeElement, ObNavTreeFakeFocusDirective.INPUT_EVENTS.BLUR, () => this.onBlur(true)));
 	}
 
 	private onKeyDown(event: KeyboardEvent) {
-		if (this.keyHandlers.hasOwnProperty(event.code)) {
+		if (Object.prototype.hasOwnProperty.call(this.keyHandlers, event.code)) {
 			this.keyHandlers[event.code](event);
 		}
 	}
@@ -148,7 +144,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 
 	private accept() {
 		const link = this.findLink();
-		if (link && link.nativeElement) {
+		if (link?.nativeElement) {
 			this.renderer.removeClass(link.nativeElement, ObNavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS);
 			this.focusedElement = null;
 			link.nativeElement.click();
@@ -201,12 +197,12 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 	}
 
 	private extractAllListElements(): any[] {
-		return [].slice.call(Array.from(this.element.nativeElement.querySelectorAll(ObNavTreeFakeFocusDirective.CSS_SELECTORS.ITEM_WRAPPER)));
+		return Array.from(this.element.nativeElement.querySelectorAll(ObNavTreeFakeFocusDirective.CSS_SELECTORS.ITEM_WRAPPER));
 	}
 
 	private ensureInView(): void {
 		const link = this.findLink();
-		if (link && link.nativeElement) {
+		if (link?.nativeElement) {
 			link.nativeElement.scrollIntoView(ObNavTreeFakeFocusDirective.SCROLL_OPTIONS);
 		}
 	}

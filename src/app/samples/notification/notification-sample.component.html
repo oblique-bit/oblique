@@ -1,5 +1,5 @@
 <h2 class="page-header">{{ "i18n.routes.samples.notification.title" | translate }}</h2>
-<ob-description component="notification"></ob-description>
+<sc-description component="notification"></sc-description>
 <ob-column-layout [left]="false">
 	<div column-main-content>
 		<ob-notification [channel]="sampleChannel"></ob-notification>
@@ -19,14 +19,7 @@
 			<div *ngIf="messageWithParams" class="row">
 				<div class="form-group col-12">
 					<label for="or-notification-translation-key" class="form-control-label">Message key</label>
-					<input
-						[(ngModel)]="messageKey"
-						type="text"
-						disabled
-						id="or-notification-translation-key"
-						class="form-control"
-						placeholder="Notification title..."
-					/>
+					<input [(ngModel)]="messageKey" type="text" disabled id="or-notification-translation-key" class="form-control" placeholder="Notification title..." />
 					<p class="help-block" ngNonBindable>This {{ message }} do accepts 2 {{ parameters }} .</p>
 				</div>
 				<div class="form-group col">
@@ -162,4 +155,4 @@
 		</div>
 	</div>
 </ob-column-layout>
-<ob-api component="notification"></ob-api>
+<sc-api component="notification"></sc-api>

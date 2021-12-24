@@ -1,5 +1,5 @@
 <h2 class="page-header">{{ "i18n.routes.samples.form-control-state.title" | translate }}</h2>
-<ob-description component="form-control-state"></ob-description>
+<sc-description component="form-control-state"></sc-description>
 <form class="form-horizontal has-validation" #formControlForm="ngForm" (submit)="check(formControlForm)" (reset)="reset(formControlForm)">
 	<h3>Preview with template driven form</h3>
 	<div>
@@ -19,14 +19,7 @@
 		<div class="form-group row" obFormControlState [pristineValidation]="true" mandatory="true">
 			<label class="col-sm-3 col-form-label">Number</label>
 			<div class="col-sm-9">
-				<input
-					name="numberRequiredPristine"
-					type="number"
-					class="form-control"
-					placeholder="This field is already in error on load..."
-					ngModel
-					required
-				/>
+				<input name="numberRequiredPristine" type="number" class="form-control" placeholder="This field is already in error on load..." ngModel required />
 				<ob-error-messages></ob-error-messages>
 			</div>
 		</div>
@@ -129,4 +122,4 @@
 		<button type="submit" class="btn btn-primary">Check</button>
 	</div>
 </form>
-<ob-api component="form-control-state"></ob-api>
+<sc-api component="form-control-state"></sc-api>

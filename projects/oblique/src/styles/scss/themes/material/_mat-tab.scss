@@ -1,0 +1,28 @@
+@import "../../core/variables";
+
+.mat-tab-nav-bar,
+.mat-tab-header {
+	border-bottom: none;
+}
+
+.mat-tab-label {
+	color: $ob-default;
+	background-color: $ob-smoke;
+
+	+ .mat-tab-label {
+		margin-left: 2px;
+	}
+
+	&:hover,
+	&:focus {
+		color: $ob-primary;
+		background-color: $ob-extra-light;
+	}
+
+	&.mat-tab-label-active,
+	&:active {
+		color: $ob-primary;
+		border-color: $ob-primary;
+		background-color: $ob-light;
+	}
+}

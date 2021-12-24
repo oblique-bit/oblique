@@ -14,8 +14,7 @@ export function checkDependencies(tree: Tree, _context: SchematicContext, deps: 
 	if (warnings.length) {
 		warn(
 			_context,
-			`Unmet peer dependencies.\n  Following peers are required by Oblique but were not found:${warnings}.` +
-				`\n  You must install peer dependencies yourself.`
+			`Unmet peer dependencies.\n  Following peers are required by Oblique but were not found:${warnings}.\n  You must install peer dependencies yourself.`
 		);
 	}
 }
@@ -70,7 +69,7 @@ function getVersions(versions: number | number[] | versionFunc, angular: number)
 		versions = versions(angular);
 	}
 	if (!Array.isArray(versions)) {
-		versions = [versions as number];
+		versions = [versions];
 	}
 	return versions;
 }

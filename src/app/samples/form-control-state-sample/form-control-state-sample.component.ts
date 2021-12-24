@@ -1,10 +1,9 @@
 import {Component} from '@angular/core';
-import {FormBuilder, FormGroup, NgForm, Validators, ValidationErrors} from '@angular/forms';
+import {FormBuilder, FormGroup, NgForm, ValidationErrors, Validators} from '@angular/forms';
 import {ObNotificationService} from '@oblique/oblique';
 
 @Component({
-	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'ob-form-control-state-sample',
+	selector: 'sc-form-control-state-sample',
 	templateUrl: './form-control-state-sample.component.html',
 	styles: [
 		`
@@ -18,7 +17,7 @@ import {ObNotificationService} from '@oblique/oblique';
 		`
 	]
 })
-export class ObFormControlStateSampleComponent {
+export class FormControlStateSampleComponent {
 	formData: FormGroup;
 
 	constructor(private readonly notificationService: ObNotificationService, formBuilder: FormBuilder) {
@@ -30,7 +29,7 @@ export class ObFormControlStateSampleComponent {
 				street: ['', [Validators.required, Validators.minLength(5)]],
 				number: ['', Validators.required]
 			}),
-			email: ['', Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]
+			email: ['', Validators.pattern(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/)]
 		});
 	}
 

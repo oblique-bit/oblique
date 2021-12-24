@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ObDescriptionComponent} from '../description/description.component';
-import {ObApiComponent} from '../api/api.component';
-import {ObApiElementComponent} from '../api/api-element.component';
+import {DescriptionComponent} from '../description/description.component';
+import {ApiComponent} from '../api/api.component';
+import {ApiElementComponent} from '../api/api-element.component';
 
 @NgModule({
-	declarations: [ObDescriptionComponent, ObApiComponent, ObApiElementComponent],
+	declarations: [DescriptionComponent, ApiComponent, ApiElementComponent],
 	imports: [CommonModule],
-	exports: [ObDescriptionComponent, ObApiComponent, ObApiElementComponent]
+	exports: [DescriptionComponent, ApiComponent, ApiElementComponent]
 })
 export class SharedModule {}

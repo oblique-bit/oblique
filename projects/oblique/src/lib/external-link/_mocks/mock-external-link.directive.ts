@@ -2,6 +2,7 @@ import {Directive, Input} from '@angular/core';
 import {ObEExternalLinkIcon} from '../external-link.model';
 
 @Directive({
+	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'a[href]'
 })
 export class ObMockExternalLinkDirective {

@@ -1,12 +1,11 @@
 import {Component} from '@angular/core';
-import {ObNotificationService, ObENotificationType, ObENotificationPlacement} from '@oblique/oblique';
+import {ObENotificationPlacement, ObENotificationType, ObNotificationService} from '@oblique/oblique';
 
 @Component({
-	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'ob-notification-sample',
+	selector: 'sc-notification-sample',
 	templateUrl: './notification-sample.component.html'
 })
-export class ObNotificationSampleComponent {
+export class NotificationSampleComponent {
 	messageWithParams = false;
 	titleWithParams = false;
 	appChannel = 'oblique';

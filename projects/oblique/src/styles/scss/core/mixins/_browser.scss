@@ -1,4 +1,4 @@
-@mixin firefox() {
+@mixin ob-firefox() {
 	@supports (-moz-appearance:none) {
 		@content;
 	}

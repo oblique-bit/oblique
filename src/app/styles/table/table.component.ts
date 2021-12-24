@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 
 @Component({
-	selector: 'ob-table',
+	selector: 'sc-table',
 	templateUrl: './table.component.html'
 })
-export class ObTableComponent {
+export class TableComponent {
 	oblique = true;
 	cicd = false;
 	hover = true;

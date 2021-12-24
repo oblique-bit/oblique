@@ -6,14 +6,14 @@ import {WINDOW} from '../utilities';
 @Directive({
 	selector: '[obInputClear]',
 	exportAs: 'obInputClear',
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-input-clear'}
 })
 export class ObInputClearDirective implements OnInit {
 	@Input('obInputClear') control: HTMLInputElement | FormControl | NgModel;
 	@Input() focusOnClear = true;
 	@Input() datePickerRef: MatDatepicker<any>;
-	@Output() onClear = new EventEmitter<MouseEvent>();
+	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
+	@Output() readonly onClear = new EventEmitter<MouseEvent>();
 	@HostBinding('class.ob-text-control-clear') cssClass = true;
 
 	constructor(private readonly element: ElementRef, @Inject(WINDOW) private readonly window: Window) {
@@ -28,9 +28,7 @@ export class ObInputClearDirective implements OnInit {
 
 	ngOnInit() {
 		if (!(this.control instanceof HTMLInputElement) && !(this.control instanceof FormControl) && !(this.control instanceof NgModel)) {
-			console.warn(
-				'ObInputClearDirective: illegal value for obInputClear Input, please use one of the following: HTMLInputElement, FormControl or NgModel.'
-			);
+			console.warn('ObInputClearDirective: illegal value for obInputClear Input, please use one of the following: HTMLInputElement, FormControl or NgModel.');
 		}
 	}
 

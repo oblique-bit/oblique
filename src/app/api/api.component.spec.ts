@@ -1,21 +1,21 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import {ObApiComponent} from './api.component';
+import {ApiComponent} from './api.component';
 
 describe('ApiComponent', () => {
-	let component: ObApiComponent;
-	let fixture: ComponentFixture<ObApiComponent>;
+	let component: ApiComponent;
+	let fixture: ComponentFixture<ApiComponent>;
 
 	beforeEach(
 		waitForAsync(() => {
 			TestBed.configureTestingModule({
-				declarations: [ObApiComponent]
+				declarations: [ApiComponent]
 			}).compileComponents();
 		})
 	);
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(ObApiComponent);
+		fixture = TestBed.createComponent(ApiComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

@@ -1,40 +1,27 @@
-@import "../../../styles/scss/core/variables";
-@import "../../../styles/scss/core/mixins/layout";
+@use "../../../styles/scss/core/variables";
+@use "../../../styles/scss/core/mixins/layout";
 
 .ob-master-layout-footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: $footer-height-collapsed;
+	position: relative;
 	display: flex;
 	flex-direction: column;
-	color: $gray-darker;
-	font-size: $font-size-xs;
-	background-color: $gray-extra-light;
-	border-top: 1px solid $gray-light;
-	padding: $spacing-xs $spacing-default;
-	overflow: hidden;
+	flex-wrap: wrap;
+	color: variables.$ob-gray-darker;
+	font-size: variables.$ob-font-size-xs;
+	background-color: variables.$ob-gray-extra-light;
+	border-top: 1px solid variables.$ob-gray-light;
+	padding: variables.$ob-spacing-xs variables.$ob-spacing-default;
 
-	@include layout-collapse-up() {
+	@include layout.ob-media-breakpoint-up(md) {
 		flex-direction: row;
-		height: $footer-height-md;
-
-		.ob-master-layout-fixed & {
-			position: relative;
-		}
 	}
 
 	.ob-footer-item {
-		padding: $spacing-xs 0;
-		white-space: nowrap;
-		@include layout-collapse-down() {
+		padding: variables.$ob-spacing-xs 0;
+		@include layout.ob-media-breakpoint-down(md) {
 			&:not(:last-child) {
-				border-bottom: 1px solid $gray-light;
+				border-bottom: 1px solid variables.$ob-gray-light;
 			}
-		}
-
-		@include layout-collapse-up() {
-			max-height: 100%;
 		}
 
 		p {
@@ -51,43 +38,32 @@
 
 		img {
 			float: left;
-			width: $brand-logo-width;
-			height: $brand-logo-height;
+			width: variables.$ob-logo-width;
+			height: variables.$ob-logo-height;
+			transition: width variables.$ob-duration-fast, height variables.$ob-duration-fast;
 		}
 	}
 
-	@include layout-collapse-up() {
+	@include layout.ob-media-breakpoint-up(md) {
 		.ob-footer-item-logo {
-			margin-right: $spacing-default;
-
-			.ob-master-layout:not(.ob-master-layout-scrolling) &,
-			.ob-master-layout.ob-master-layout-fixed & {
-				display: none;
-			}
+			margin-right: variables.$ob-spacing-default;
 		}
 
-		.ob-master-layout.ob-master-layout-scrolling &.ob-master-layout-footer-sm .ob-footer-item-logo {
-			display: none;
+		.ob-master-layout:not(.ob-master-layout-scrolling) &,
+		&:not(.ob-logo-on-scroll) {
+			.ob-footer-item-logo {
+				margin-right: 0;
+
+				img {
+					height: 0;
+					width: 0;
+				}
+			}
 		}
 
 		.ob-footer-item-info {
-			margin-right: $spacing-default;
+			margin-right: variables.$ob-spacing-default;
 			flex: 1; // Variable width.
-			overflow: hidden;
-		}
-
-		&.ob-master-layout-footer-sm {
-			height: $footer-height-sm;
-			padding-top: $spacing-xs;
-			padding-bottom: $spacing-xs;
-
-			.ob-footer-item {
-				padding: 0;
-			}
-		}
-
-		.ob-master-layout-scrolling &:not(.ob-master-layout-footer-sm) {
-			height: $footer-height;
 		}
 	}
 
@@ -98,7 +74,7 @@
 		padding-left: 0;
 
 		li + li {
-			padding-left: $spacing-sm;
+			padding-left: variables.$ob-spacing-sm;
 		}
 	}
 }

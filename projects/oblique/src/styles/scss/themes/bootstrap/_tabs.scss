@@ -1,7 +1,7 @@
-@import "../../core/variables";
+@use "../../core/variables" as core-variables;
 
 .nav-tabs > .nav-item > .nav-link {
-	color: $brand-default;
+	color: core-variables.$ob-default;
 	text-decoration: none;
 
 	&.active {
@@ -10,7 +10,7 @@
 		&::before {
 			content: "";
 			border-radius: 3px 3px 0 0;
-			background-color: $brand-accent;
+			background-color: core-variables.$ob-accent;
 			height: 3px;
 			position: absolute;
 			top: 0;
@@ -20,6 +20,6 @@
 	}
 
 	&.disabled {
-		color: $gray;
+		color: core-variables.$ob-gray;
 	}
 }

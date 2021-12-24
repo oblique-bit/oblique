@@ -1,0 +1,191 @@
+@use "sass:selector";
+@use "../../core/variables";
+
+.mat-step-header .mat-step-icon {
+	height: 26px;
+	width: 26px;
+	font-size: 12px;
+	color: variables.$ob-primary;
+	background-color: variables.$ob-white;
+	border: 1px solid variables.$ob-primary;
+
+	&:hover {
+		background-color: variables.$ob-light;
+	}
+
+	&.mat-step-icon-selected {
+		color: variables.$ob-white;
+		background-color: variables.$ob-primary;
+	}
+
+	&.mat-step-icon-state-done {
+		color: variables.$ob-success;
+		border-color: variables.$ob-success;
+
+		&:hover {
+			background-color: variables.$ob-success-light;
+		}
+	}
+
+	.mat-stepper-lg & {
+		height: 38px;
+		width: 38px;
+		font-size: 16px;
+
+		.mat-icon {
+			font-size: 22px;
+
+			&:not(.ob-icon) {
+				height: 22px;
+				width: 22px;
+			}
+		}
+	}
+
+	.mat-stepper-sm & {
+		height: 16px;
+		width: 16px;
+		font-size: 10px;
+
+		.mat-icon {
+			font-size: 10px;
+
+			&:not(.ob-icon) {
+				height: 10px;
+				width: 10px;
+			}
+		}
+	}
+
+	@at-root #{selector.append("[ng-reflect-active=false]", &)} {
+		border-color: variables.$ob-gray-dark;
+		color: variables.$ob-gray-dark;
+
+		&:hover {
+			background-color: variables.$ob-white;
+		}
+	}
+}
+
+.mat-horizontal-stepper-header::before,
+.mat-horizontal-stepper-header::after,
+.mat-stepper-horizontal-line,
+.mat-stepper-vertical-line::before {
+	border-color: variables.$ob-primary;
+}
+
+[ng-reflect-state=done] {
+	&.mat-horizontal-stepper-header::before,
+	&.mat-horizontal-stepper-header::after,
+	& ~ .mat-stepper-horizontal-line,
+	& ~ .mat-stepper-vertical-line::before {
+		border-color: variables.$ob-success;
+	}
+}
+
+[ng-reflect-active=false] {
+	&.mat-horizontal-stepper-header::before,
+	&.mat-horizontal-stepper-header::after,
+	& ~ .mat-stepper-horizontal-line,
+	& ~ .mat-stepper-vertical-line::before {
+		border-color: variables.$ob-gray-dark;
+	}
+
+	&.mat-step-header {
+		cursor: default;
+
+		&:hover {
+			background-color: inherit;
+		}
+	}
+}
+
+$padding-sm: 20px;
+$padding-md: 24px;
+$padding-lg: 32px;
+$offset-sm: 28px;
+$offset-md: 36px;
+$offset-lg: 51px;
+.mat-stepper-horizontal {
+	@at-root #{selector.append(".mat-stepper-label-position-bottom", &)},
+	& {
+		.mat-horizontal-stepper-header {
+			padding: $padding-md;
+
+			@at-root #{selector.append(".mat-stepper-lg", &)} {
+				padding: $padding-lg;
+			}
+
+			@at-root #{selector.append(".mat-stepper-sm", &)} {
+				padding: $padding-sm;
+			}
+		}
+	}
+
+	&.mat-stepper-label-position-bottom {
+		.mat-stepper-horizontal-line,
+		.mat-horizontal-stepper-header:not(:last-child)::after,
+		.mat-horizontal-stepper-header:not(:first-child)::before {
+			top: $offset-md;
+
+			@at-root #{selector.append(".mat-stepper-lg", &)} {
+				top: $offset-lg;
+			}
+			@at-root #{selector.append(".mat-stepper-sm", &)} {
+				top: $offset-sm;
+			}
+		}
+
+		.mat-horizontal-stepper-header {
+			&:not(:first-child)::before,
+			&:not(:last-child)::after {
+				@at-root #{selector.append(".mat-stepper-lg", &)} {
+					width: calc(50% - 26px);
+				}
+				@at-root #{selector.append(".mat-stepper-sm", &)} {
+					width: calc(50% - 15px);
+				}
+			}
+		}
+	}
+}
+
+.mat-stepper-vertical-line::before {
+	top: -16px;
+	bottom: -16px;
+}
+
+.mat-vertical-stepper-header {
+	padding: $padding-md;
+
+	.mat-stepper-lg & {
+		padding: $padding-lg;
+	}
+
+	.mat-stepper-sm & {
+		padding: $padding-sm;
+	}
+}
+
+.mat-vertical-content-container {
+	margin-left: $offset-md;
+
+	.mat-stepper-lg & {
+		margin-left: $offset-lg;
+	}
+
+	.mat-stepper-sm & {
+		margin-left: $offset-sm;
+	}
+}
+
+.mat-vertical-content {
+	.mat-stepper-lg & {
+		padding: 0 $padding-lg $padding-lg $padding-lg;
+	}
+
+	.mat-stepper-sm & {
+		padding: 0 $padding-sm $padding-sm $padding-sm;
+	}
+}
+

@@ -1,0 +1,83 @@
+@use "../../core/variables" as core-variables;
+@use "mixins/mat-button";
+
+.mat-button-base {
+	&.ob-button:not(.ob-button-card) {
+		line-height: 34px;	// material design height
+		border: 1px solid transparent;
+
+		&.mat-primary {
+			&.mat-flat-button {
+				@include mat-button.ob-button(core-variables.$ob-gray-extra-light);
+				background-color: core-variables.$ob-primary;
+
+				&.mat-button-disabled {
+					color: core-variables.$ob-gray-600;
+					background-color: core-variables.$ob-gray-lighter;
+				}
+			}
+
+			&.mat-stroked-button {
+				@include mat-button.ob-button(core-variables.$ob-primary);
+				border-color: core-variables.$ob-primary;
+
+				&.mat-button-disabled {
+					color: core-variables.$ob-gray-500;
+					border-color: core-variables.$ob-gray-500;
+				}
+			}
+
+			&:not(.mat-flat-button):not(.mat-stroked-button) {
+				@include mat-button.ob-button(core-variables.$ob-primary);
+
+				&.mat-button-disabled {
+					color: core-variables.$ob-gray-500;
+				}
+			}
+		}
+	}
+
+	&.mat-button,
+	&.mat-stroked-button,
+	&.mat-flat-button,
+	&.mat-raised-button,
+	&.mat-icon-button {
+		border-radius: 2px;
+	}
+
+	&.mat-icon-button {
+		height: unset;
+		width: unset;
+		padding: 0.4643em;
+		line-height: 1;
+	}
+
+	:not(.mat-icon-button) .mat-icon {
+		&.fa,
+		&.fas,
+		&.far,
+		&.fal,
+		&.fad,
+		&.fab,
+		&.fa .fa,
+		&.fas .fas,
+		&.far .far,
+		&.fal .fal,
+		&.fad .fad,
+		&.fab .fab {
+			&::before {
+				position: relative;
+				top: 5px;
+			}
+		}
+	}
+
+	.mat-icon[data-mat-icon-type="svg"] {
+		font-size: 1.5em;
+		line-height: 1;
+	}
+
+	&.ob-button.mat-button-disabled {
+		cursor: not-allowed;
+	}
+}

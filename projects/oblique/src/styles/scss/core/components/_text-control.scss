@@ -1,4 +1,4 @@
-@import "../variables";
+@use "../variables";
 
 *::-ms-clear {
 	display: none;
@@ -14,19 +14,15 @@
 		border: none;
 		padding: 0;
 		opacity: 0;
-		transition: opacity $duration-fast;
-
-		.mat-icon.ob-icon:not(.fa) {
-			position: static;
-		}
+		transition: opacity variables.$ob-duration-fast;
 
 		.fa {
-			color: $gray;
-			transition: color $duration-fast;
+			color: variables.$ob-gray;
+			transition: color variables.$ob-duration-fast;
 		}
 
 		&:hover .fa {
-			color: $gray-darker;
+			color: variables.$ob-gray-darker;
 		}
 	}
 

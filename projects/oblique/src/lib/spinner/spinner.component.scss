@@ -1,4 +1,4 @@
-@import "../../styles/scss/core/variables";
+@use "../../styles/scss/core/variables";
 
 .ob-spinner {
 	&,
@@ -8,11 +8,11 @@
 
 	.ob-icon-wrapper > * {
 		font-size: 4em;
-		animation: ob-spin $duration-default * 2 infinite linear;
-	}
+		animation: ob-spin variables.$ob-duration-default * 2 infinite linear;
 
-	.ob-icon svg {
-		vertical-align: top;
+		svg {
+			vertical-align: top;
+		}
 	}
 }
 

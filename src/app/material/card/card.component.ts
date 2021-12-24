@@ -2,11 +2,11 @@ import {Component, ViewChild} from '@angular/core';
 import {ObSelectableGroupDirective} from '@oblique/oblique';
 
 @Component({
-	selector: 'ob-card',
+	selector: 'sc-card',
 	templateUrl: './card.component.html',
 	styleUrls: ['./card.component.scss']
 })
-export class ObCardComponent {
+export class CardComponent {
 	@ViewChild(ObSelectableGroupDirective) selectableGroup: ObSelectableGroupDirective;
 	avatarVisible = true;
 	titleVisible = true;

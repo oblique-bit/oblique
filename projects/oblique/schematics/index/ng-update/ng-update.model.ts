@@ -7,7 +7,7 @@ export interface ObIDependencies {
 }
 export interface ObIMigrations {
 	dependencies: ObIDependencies;
-	applyMigrations(_options: {[key: string]: any}): Rule;
+	applyMigrations: (_options: {[key: string]: any}) => Rule;
 }
 
 export interface ObITask {

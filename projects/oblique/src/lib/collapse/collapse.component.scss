@@ -1,4 +1,4 @@
-@import "../../styles/scss/core/variables";
+@use "../../styles/scss/core/variables";
 
 .ob-collapse {
 	.ob-collapse-toggle {
@@ -10,11 +10,11 @@
 		}
 
 		.ob-icon-wrapper:first-child {
-			margin-right: $spacing-sm;
+			margin-right: variables.$ob-spacing-sm;
 		}
 
 		.ob-icon-wrapper:last-child {
-			margin-left: $spacing-sm;
+			margin-left: variables.$ob-spacing-sm;
 		}
 	}
 

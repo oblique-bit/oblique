@@ -1,19 +1,19 @@
 import {AfterViewInit, ContentChild, Directive, ElementRef, HostBinding, Inject, Input, OnDestroy, Optional, Renderer2} from '@angular/core';
 import {FormGroupDirective, FormGroupName, NgControl, NgForm, NgModelGroup} from '@angular/forms';
-import {merge, Subject} from 'rxjs';
+import {Subject, merge} from 'rxjs';
 import {delay, takeUntil} from 'rxjs/operators';
 
-import {ObThemeService} from '../theme/theme.service';
+import {ObThemeService} from '../theme.service';
 import {ObParentFormDirective} from '../nested-form/parent-form.directive';
 import {WINDOW} from '../utilities';
 
 /**
- * @deprecated with material theme since version 4.0.0. Use angular default material behavior for both mandatory and error states instead
+ * @deprecated with material theme since version 4.0.0. Use angular default material behavior for both mandatory and error states instead.
+ * Deprecated with bootstrap theme since version 8.0.0. Will be removed with version 10.0.0.
  */
 @Directive({
 	selector: '[obFormControlState]',
 	exportAs: 'obFormControlState',
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-form-control-state'}
 })
 export class ObFormControlStateDirective implements AfterViewInit, OnDestroy {
@@ -90,7 +90,7 @@ export class ObFormControlStateDirective implements AfterViewInit, OnDestroy {
 	}
 
 	private isMandatory(): boolean {
-		return this.mandatory || this.inputElement.hasAttribute('required') || (this.ngControl.errors && this.ngControl.errors.required);
+		return this.mandatory || this.inputElement.hasAttribute('required') || this.ngControl.errors?.required;
 	}
 
 	private generateState(submitted = false): void {

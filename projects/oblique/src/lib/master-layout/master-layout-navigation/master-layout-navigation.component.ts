@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, DoCheck, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, DoCheck, ElementRef, HostBinding, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation} from '@angular/core';
 import {IsActiveMatchOptions, NavigationEnd, Router} from '@angular/router';
 import {filter, takeUntil} from 'rxjs/operators';
 
@@ -13,7 +13,6 @@ import {ObGlobalEventsService} from '../../global-events/global-events.service';
 	templateUrl: './master-layout-navigation.component.html',
 	styleUrls: ['./master-layout-navigation.component.scss', './master-layout-navigation.component-scrollable.scss'],
 	encapsulation: ViewEncapsulation.None,
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-master-layout-navigation'}
 })
 export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, AfterViewInit, OnDestroy {
@@ -21,6 +20,7 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 	activeClass = this.config.navigation.activeClass;
 	currentScroll = 0;
 	maxScroll = 0;
+	hasOpenedMenu = false;
 	@Input() links: ObINavigationLink[] = [];
 	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') isScrollable: boolean;
 	routerLinkActiveOptions: IsActiveMatchOptions = {paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'};
@@ -43,7 +43,6 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 
 	ngOnInit() {
 		this.closeOnEscape();
-		this.refreshOnWindowResize();
 		this.markActiveLink();
 	}
 
@@ -65,10 +64,6 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 		this.unsubscribe.complete();
 	}
 
-	onResize() {
-		this.masterLayout.navigation.refresh();
-	}
-
 	close(): void {
 		this.masterLayout.layout.isMenuOpened = false;
 	}
@@ -82,7 +77,7 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 	}
 
 	private checkForExternalLinks(links: ObINavigationLink[]): void {
-		if (links && links.length) {
+		if (links?.length) {
 			links.forEach(link => {
 				link.isExternal = link.isExternal ?? /^https?:\/\//.test(link.url);
 				this.checkForExternalLinks(link.children);
@@ -91,18 +86,18 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 	}
 
 	private propertyChanges() {
-		const events = [ObEMasterLayoutEventValues.SCROLLABLE, ObEMasterLayoutEventValues.FULL_WIDTH];
-		this.masterLayout.navigation.configEvents
+		const events = [ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE, ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH];
+		this.masterLayout.navigation.configEvents$
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe(event => {
 				switch (event.name) {
-					case ObEMasterLayoutEventValues.SCROLLABLE:
+					case ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE:
 						this.masterLayout.navigation.refresh();
 						break;
-					case ObEMasterLayoutEventValues.FULL_WIDTH:
+					case ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH:
 						this.isFullWidth = event.value;
 						break;
 				}
@@ -116,10 +111,6 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe(() => this.close());
-	}
-
-	private refreshOnWindowResize(): void {
-		this.globalEventsService.resize$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.onResize());
 	}
 
 	private markActiveLink(): void {

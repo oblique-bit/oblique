@@ -63,7 +63,7 @@ export class ObLanguageService {
 	}
 
 	private getSupportedLang(languages: string[], lang: string): string {
-		return languages.indexOf(lang) > -1 ? lang : undefined;
+		return languages.includes(lang) ? lang : undefined;
 	}
 
 	private getCurrentLang(languages: string[], defaultLanguage: string): string {

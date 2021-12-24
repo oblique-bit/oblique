@@ -1,6 +1,6 @@
-@import "../../core/variables";
-@import "../../core/mixins/bubble-tail";
-@import "../../core/mixins/layout";
+@use "../../core/variables";
+@use "../../core/mixins/bubble-tail";
+@use "../../core/mixins/layout";
 
 .ob-master-layout-header {
 	.ob-header-controls {
@@ -21,15 +21,15 @@
 			.dropdown-item.active,
 			.dropdown-item:active {
 				background-color: #f8f9fa;
-				color: $brand-default;
+				color: variables.$ob-default;
 			}
 
 			.dropdown {
-				@include layout-collapse-down() {
+				@include layout.ob-media-breakpoint-down(md) {
 					&.show {
-						@include bubble-tail-border(
-								$brand-accent,
-								$brand-accent,
+						@include bubble-tail.ob-bubble-tail-border(
+							variables.$ob-accent,
+							variables.$ob-accent,
 							$width: 8px,
 							$align: left,
 							$align-value: 18px,
@@ -42,13 +42,13 @@
 				.dropdown-menu {
 					border-radius: 0;
 
-					@include layout-collapse-down() {
+					@include layout.ob-media-breakpoint-down(md) {
 						position: fixed !important;
-						top: $header-height-md !important;
+						top: 108px !important;	// empiric value
 						left: 0;
 						right: 0;
 						bottom: 0;
-						padding: $spacing-default;
+						padding: variables.$ob-spacing-default;
 						margin: 0;
 						transform: none !important;
 						height: 100%;
@@ -63,18 +63,18 @@
 						}
 					}
 
-					@include layout-collapse-up() {
+					@include layout.ob-media-breakpoint-up(md) {
 						position: absolute;
-						left: $spacing-default !important;
-						top: $spacing-default !important;
+						left: variables.$ob-spacing-default !important;
+						top: variables.$ob-spacing-default !important;
 						min-width: 260px;
-						padding: $spacing-default;
+						padding: variables.$ob-spacing-default;
 						margin-top: -2px;
-						max-height: calc(100vh - #{$header-height});
+						max-height: calc(100vh - 145px);	// empiric value
 
-						@include bubble-tail-border(
-								$white,
-								$gray-light,
+						@include bubble-tail.ob-bubble-tail-border(
+							variables.$ob-white,
+							variables.$ob-gray-light,
 							$align: right,
 							$align-value: 14px,
 							$position: absolute
@@ -92,7 +92,7 @@
 				}
 			}
 
-			@include layout-collapse-down() {
+			@include layout.ob-media-breakpoint-down(md) {
 				// Don't display control tooltips on small viewports:
 				> .tooltip,
 				> .ob-control-link > .tooltip {

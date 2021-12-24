@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {async, TestBed} from '@angular/core/testing';
+import {TestBed, async} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {AbstractControl, FormBuilder, FormGroup, FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
 import {WINDOW} from '../utilities';
@@ -88,10 +88,9 @@ describe('SchemaValidation', () => {
 			getControls: (fixture): {[key: string]: AbstractControl} => fixture.componentInstance.sampleForm.controls
 		}
 	].forEach(CONFIG => {
-		//TODO: add test for more complex types and required option
+		// TODO: add test for more complex types and required option
 		describe(`in a ${CONFIG.formType} driven form`, () => {
 			let fixture: any;
-			let component;
 			let controls: {[name: string]: AbstractControl};
 			let subproperties: {[name: string]: AbstractControl};
 
@@ -105,7 +104,6 @@ describe('SchemaValidation', () => {
 
 			beforeEach(async(() => {
 				fixture = TestBed.createComponent<any>(CONFIG.testComponent);
-				component = fixture.componentInstance;
 				fixture.detectChanges();
 
 				fixture.whenStable().then(() => {
@@ -126,7 +124,7 @@ describe('SchemaValidation', () => {
 			it('should add error object if input is invalid', async(() => {
 				fixture.whenStable().then(() => {
 					controls.string.setValue('wayTooLongStringForTheMaxLength10');
-					//ngControls['string'].valueAccessor.writeValue('wayTooLongStringForTheMaxLength10');
+					// ngControls['string'].valueAccessor.writeValue('wayTooLongStringForTheMaxLength10');
 					fixture.detectChanges();
 
 					expect(controls.string.errors).not.toBeNull();

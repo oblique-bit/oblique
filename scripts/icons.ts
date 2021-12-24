@@ -59,7 +59,7 @@ class Icons {
 			Icons.fs
 				.readFileSync(filePath)
 				.toString()
-				.replace(/(?<=export enum ObEIcon {\n).*(?=})/s, `${iconNames.map(name => `\t${name}`).join(',\n')}\n`)
+				.replace(/(?<=export enum ObEIcon {\r?\n).*(?=})/s, `${iconNames.map(name => `\t${name}`).join(',\n')}\n`)
 		);
 	}
 }

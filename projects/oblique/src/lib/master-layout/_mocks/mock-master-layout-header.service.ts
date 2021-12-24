@@ -6,11 +6,10 @@ import {ObIMasterLayoutEvent} from '../master-layout.model';
 export class ObMockMasterLayoutHeaderService {
 	isCustom = true;
 	isMedium = true;
-	isAnimated = true;
 	isSticky = true;
-	hasScrollTransition = true;
+	reduceOnScroll = true;
 
-	get configEvents(): Observable<ObIMasterLayoutEvent> {
+	get configEvents$(): Observable<ObIMasterLayoutEvent> {
 		return of({} as ObIMasterLayoutEvent);
 	}
 }

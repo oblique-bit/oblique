@@ -2,9 +2,9 @@ import {Component} from '@angular/core';
 import {ObIAlertType} from '@oblique/oblique';
 
 @Component({
-	selector: 'ob-alert-sample',
+	selector: 'sc-alert-sample',
 	templateUrl: './alert.component.html'
 })
-export class ObAlertSampleComponent {
+export class AlertSampleComponent {
 	type: ObIAlertType = 'info';
 }

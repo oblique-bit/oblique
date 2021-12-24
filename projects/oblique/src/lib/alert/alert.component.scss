@@ -1,39 +1,40 @@
-@import "../../styles/scss/core/variables";
+@use "sass:selector";
+@use "../../styles/scss/core/variables";
 
 .ob-alert.ob-angular {
 	display: flex;
-	margin-bottom: $spacing-default;
+	margin-bottom: variables.$ob-spacing-default;
 
 	.ob-alert-icon {
 		font-size: 2em;
-		padding-right: $spacing-sm;
-		padding-left: $spacing-sm;
+		padding: variables.$ob-spacing-sm variables.$ob-spacing-sm 0 variables.$ob-spacing-sm;
 		text-align: center;
-		color: $white;
+		color: variables.$ob-white;
 
-		@at-root #{selector-append(".ob-alert-info", &)} {
-			background-color: $brand-primary;
+		@at-root #{selector.append(".ob-alert-info", &)} {
+			background-color: variables.$ob-primary;
 		}
 
-		@at-root #{selector-append(".ob-alert-success", &)} {
-			background-color: $brand-success;
+		@at-root #{selector.append(".ob-alert-success", &)} {
+			background-color: variables.$ob-success;
 		}
 
-		@at-root #{selector-append(".ob-alert-warning", &)} {
-			background-color: $brand-warning;
+		@at-root #{selector.append(".ob-alert-warning", &)} {
+			color: variables.$ob-default;
+			background-color: variables.$ob-warning;
 		}
 
-		@at-root #{selector-append(".ob-alert-error", &)} {
-			background-color: $brand-error;
+		@at-root #{selector.append(".ob-alert-error", &)} {
+			background-color: variables.$ob-error;
 		}
 	}
 
 	.ob-alert-content {
-		padding: $spacing-default;
+		padding: variables.$ob-spacing-default;
 		flex-grow: 1;
 
 		a {
-			color: $brand-default;
+			color: variables.$ob-default;
 			text-decoration: underline;
 		}
 
@@ -43,26 +44,26 @@
 			}
 		}
 
-		@at-root #{selector-append(".ob-alert-info", &)} {
-			background-color: $brand-light;
+		@at-root #{selector.append(".ob-alert-info", &)} {
+			background-color: variables.$ob-light;
 		}
 
-		@at-root #{selector-append(".ob-alert-success", &)} {
-			background-color: $brand-success-light;
+		@at-root #{selector.append(".ob-alert-success", &)} {
+			background-color: variables.$ob-success-light;
 		}
 
-		@at-root #{selector-append(".ob-alert-warning", &)} {
-			background-color: $brand-warning-light;
+		@at-root #{selector.append(".ob-alert-warning", &)} {
+			background-color: variables.$ob-warning-light;
 		}
 
-		@at-root #{selector-append(".ob-alert-error", &)} {
-			background-color: $brand-error-light;
+		@at-root #{selector.append(".ob-alert-error", &)} {
+			background-color: variables.$ob-error-light;
 		}
 	}
 }
 
 .ob-alert.ob-font-awesome .ob-alert-icon {
 	font-size: 1.5em;
-	width: $alert-symbol-width;
-	padding: $spacing-default;
+	width: variables.$ob-alert-symbol-width;
+	padding: variables.$ob-spacing-default;
 }

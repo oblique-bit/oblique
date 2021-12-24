@@ -2,11 +2,11 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ObIAPI} from './api.model';
 
 @Component({
-	selector: 'ob-api',
+	selector: 'sc-api',
 	templateUrl: './api.component.html',
 	styleUrls: ['./api.component.scss']
 })
-export class ObApiComponent implements OnInit {
+export class ApiComponent implements OnInit {
 	@Input() component: string;
 	@Input() directory: string;
 	api: ObIAPI[];

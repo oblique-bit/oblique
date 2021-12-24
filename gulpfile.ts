@@ -3,12 +3,9 @@ delete require.cache[require.resolve('./package.json')];
 const fs = require('fs'),
 	gulp = require('gulp'),
 	git = require('gulp-git'),
-	gulpFile = require('gulp-file'),
 	header = require('gulp-header'),
-	rename = require('gulp-rename'),
 	replace = require('gulp-replace'),
 	sass = require('sass'),
-	del = require('del'),
 	path = require('path'),
 	childProcess = require('child_process'),
 	paths = {
@@ -25,7 +22,6 @@ const distMaterialCss = async (done) => transpile('material', 'themes', done);
 const distBootstrapCss = async (done) => transpile('bootstrap', 'themes', done);
 const distCoreCss = async (done) => transpile('core', '', done);
 const distUtilCss = async (done) => transpile('utilities', '', done);
-const distCompatCss = async (done) => transpile('compat', '', done);
 const distComponentsCss = async (done) => transpileComponents(`${paths.src}/lib`, done);
 const distAlertCss = async (done) => transpileFile(['dist', 'oblique', 'styles', 'scss', 'oblique-alert.scss'], 'alert', done);
 const distIconCss = async (done) => transpileFile(['dist', 'oblique', 'styles', 'scss', 'oblique-icons.scss'], 'icons', done);
@@ -48,18 +44,7 @@ const addBanner = () => {
 		.pipe(gulp.dest(paths.dist));
 }
 
-const distMeta = () => {
-	const output = require(`${paths.dist}/package.json`);
-
-	['version', 'description', 'keywords', 'author', 'contributors', 'homepage', 'repository', 'license', 'bugs', 'publishConfig']
-		.forEach(field => output[field] = pkg[field]);
-	['main', 'module', 'es2015', 'esm2015', 'fesm2015', 'typings']
-		.forEach(field => output[field] = output[field].replace('oblique-oblique', 'oblique'));
-
-	return gulp.src(['README.md', 'CHANGELOG.md', 'LICENSE'])
-		.pipe(gulpFile('package.json', JSON.stringify(output, null, 2)))
-		.pipe(gulp.dest(paths.dist));
-};
+const distMeta = () => gulp.src(['README.md', 'CHANGELOG.md', 'LICENSE']).pipe(gulp.dest(paths.dist));
 
 const distCss = () => gulp.src(`${paths.dist}/styles/css/*`)
 	.pipe(replace(`${paths.fa}/webfonts`, `${paths.oblique}/fonts`))
@@ -76,10 +61,6 @@ const distFonts = () => gulp.src(['./node_modules/@fortawesome/fontawesome-free/
 const distFontAwesome = () => gulp.src('./node_modules/@fortawesome/fontawesome-free/scss/*')
 	.pipe(gulp.dest(`${paths.dist}/styles/scss/fontawesome`));
 
-const distBundles = () => gulp.src([`${paths.dist}/bundles/*.js`, `${paths.dist}/fesm5/*.js`, `${paths.dist}/fesm2015/*.js`])
-	.pipe(replace('oblique-oblique', 'oblique'))
-	.pipe(gulp.dest(file => file.base));
-
 const distScss = () => gulp.src(`${paths.dist}/styles/scss/**/*.scss`)
 	.pipe(replace(`${paths.fa}/webfonts`, `${paths.oblique}/fonts`))
 	.pipe(replace(`${paths.fa}/scss`, `${paths.oblique}/scss/fontawesome`))
@@ -88,19 +69,9 @@ const distScss = () => gulp.src(`${paths.dist}/styles/scss/**/*.scss`)
 const distDocs = () => gulp.src([`${paths.src}/lib/**/*.description.html`, `${paths.src}/lib/**/*.api.json`])
 	.pipe(gulp.dest(`${paths.dist}/lib`));
 
-const distMap = () => gulp.src(`${paths.dist}/**/*.map`)
-	.pipe(replace('oblique-oblique', 'oblique'))
-	.pipe(gulp.dest(paths.dist));
-
 const commit = () => gulp.src('.')
 	.pipe(git.add())
 	.pipe(git.commit(`chore(toolchain): release version ${pkg.version}`));
-
-const distRename = () => gulp.src(`${paths.dist}/**/oblique-oblique*`)
-	.pipe(rename((fileName) => fileName.basename = fileName.basename.replace('oblique-oblique', 'oblique')))
-	.pipe(gulp.dest(paths.dist));
-
-const clean = () => del(`${paths.dist}/**/oblique-oblique*`);
 
 const telemetryPre = () => gulp.src(`${paths.src}/lib/telemetry/telemetry-record.ts`)
 	.pipe(replace('require(\'package.json\')', '\'_REQUIRE_PACKAGE_PLACEHOLDER_\''))
@@ -125,7 +96,6 @@ gulp.task(
 		distFonts,
 		distDocs,
 		distFontAwesome,
-		distBundles,
 		distAssets,
 		gulp.series(
 			distStyles,
@@ -134,21 +104,15 @@ gulp.task(
 				distBootstrapCss,
 				distCoreCss,
 				distUtilCss,
-				distCompatCss,
 				distComponentsCss,
 				distIconCss,
 				distAlertCss
 			),
 			distScss,
 			distCss,
-			distRename,
 			distBgImage,
 			postLib,
-			gulp.parallel(
-				addBanner,
-				distMap
-			),
-			clean
+			addBanner
 		)
 	)
 );
@@ -167,8 +131,7 @@ gulp.task('themes',
 			distStyles,
 			gulp.parallel(
 				distMaterialCss,
-				distBootstrapCss,
-				distCompatCss
+				distBootstrapCss
 			)
 		)
 	)

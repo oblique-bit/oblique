@@ -2,10 +2,10 @@ import {Component} from '@angular/core';
 import {ObNotificationService, ObPopUpService} from '@oblique/oblique';
 
 @Component({
-	selector: 'ob-pop-up-sample',
+	selector: 'sc-pop-up-sample',
 	templateUrl: './pop-up-sample.component.html'
 })
-export class ObPopUpSampleComponent {
+export class PopUpSampleComponent {
 	constructor(private readonly popup: ObPopUpService, private readonly notification: ObNotificationService) {}
 
 	confirm(text: string): void {

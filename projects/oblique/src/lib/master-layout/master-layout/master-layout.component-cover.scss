@@ -1,62 +1,56 @@
-@import "../../../styles/scss/core/variables";
-@import "../../../styles/scss/core/mixins/layout";
+@use "sass:color";
+@use "../../../styles/scss/core/variables";
+@use "../../../styles/scss/core/mixins/layout";
 
-.ob-master-layout {
-	&.ob-has-cover {
+.ob-master-layout.ob-has-cover {
+	.ob-cover-layout {
+		flex: 1 1 auto;
 		background-image: url('../../../assets/images/cover-background.jpg');
 		background-position: 50% 50%;
 		background-size: cover;
 		background-repeat: no-repeat;
+	}
 
-		.ob-cover-layout {
-			width: 100%;
-			height: 100%;
+	.ob-viewport.ob-fixed-layout .ob-cover-layout {
+		overflow-y: auto;
+	}
+
+	.ob-cover-viewport {
+		overflow-y: auto;
+		overflow-x: hidden;
+		background-color: rgba(color.red(variables.$ob-white), color.green(variables.$ob-white), color.blue(variables.$ob-white), 0.9);
+
+		@include layout.ob-media-breakpoint-up(md) {
+			margin-left: 35%;
+			width: 45%;
 		}
 
-		.ob-cover-viewport {
-			width: 100%;
-			height: 100%;
-			overflow-y: auto;
-			overflow-x: hidden;
-			background-color: rgba(red($white), green($white), blue($white), 0.9);
-
-			@include layout-collapse-up() {
-				min-height: calc(100vh - #{$header-height} - #{$footer-height-md});
-				margin-left: 35%;
-				width: 45%;
-
-				@at-root #{selector-append(".ob-no-navigation", &)} {
-					min-height: calc(100vh - #{$header-height-no-navigation} - #{$footer-height-md});
-				}
-			}
-
-			@include media-breakpoint-up(lg) {
-				margin-left: 45%;
-				width: 38%;
-			}
-
-			@include media-breakpoint-up(xl) {
-				margin-left: 50%;
-				width: 33%;
-			}
+		@include layout.ob-media-breakpoint-up(lg) {
+			margin-left: 45%;
+			width: 38%;
 		}
 
-		.ob-cover-header,
-		.ob-cover-alert {
-			display: flex;
-			flex-wrap: wrap;
-			margin-right: -$spacing-default;
-			margin-left: -$spacing-default;
-			margin-bottom: $spacing-lg;
-			border: none;
+		@include layout.ob-media-breakpoint-up(xl) {
+			margin-left: 50%;
+			width: 33%;
 		}
+	}
 
-		.ob-cover-header {
-			padding: 0 $spacing-default;
+	.ob-cover-header,
+	.ob-cover-alert {
+		display: flex;
+		flex-wrap: wrap;
+		margin-right: -(variables.$ob-spacing-default);
+		margin-left: -(variables.$ob-spacing-default);
+		margin-bottom: variables.$ob-spacing-lg;
+		border: none;
+	}
 
-			@include layout-collapse-up() {
-				background-color: $white;
-			}
+	.ob-cover-header {
+		padding: 0 variables.$ob-spacing-default;
+
+		@include layout.ob-media-breakpoint-up(md) {
+			background-color: variables.$ob-white;
 		}
 	}
 }

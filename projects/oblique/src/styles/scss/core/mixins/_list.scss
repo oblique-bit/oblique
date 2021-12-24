@@ -1,40 +1,5 @@
-@import "../variables";
+@use "../variables";
 
-@mixin horizontal-description-list($label-width: 100px) {
-	display: flex;
-	flex-flow: row wrap;
-
-	dt,
-	dd {
-		padding: 0;
-		margin: 0;
-		word-wrap: break-word;
-	}
-
-	dt {
-		width: $label-width;
-		display: flex;
-		align-items: baseline;
-
-		&:not(:first-child) {
-			&,
-			& + dd {
-				padding-top: $spacing-xs;
-			}
-		}
-	}
-
-	&.ob-right-align dt {
-		justify-content: flex-end;
-	}
-
-	dd {
-		padding-left: $spacing-default;
-		width: calc(100% - #{$label-width});
-
-		+ dd {
-			width: 100%;
-			padding-left: calc(#{$label-width} + #{$spacing-default});
-		}
-	}
+@mixin ob-list-title ($margin: variables.$ob-spacing-sm) {
+    margin-bottom: $margin;
 }

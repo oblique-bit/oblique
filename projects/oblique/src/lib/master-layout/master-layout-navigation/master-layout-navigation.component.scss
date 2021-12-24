@@ -1,21 +1,22 @@
-@import "../../../styles/scss/core/variables";
-@import "../../../styles/scss/core/mixins/layout";
-@import "../../../styles/scss/core/mixins/nav";
-@import "../../../styles/scss/core/mixins/button";
+@use "../../../styles/scss/core/variables";
+@use "../../../styles/scss/core/mixins/layout";
+@use "../../../styles/scss/core/mixins/nav";
+@use "../../../styles/scss/core/mixins/button";
+@use "../../../styles/scss/core/mixins/shadow";
 
 .ob-master-layout-navigation {
-	display: block;
+	flex-grow: 1;
 
-	@include layout-collapse-down() {
-		flex: 2; // Variable fluid height
-		visibility: hidden; // Avoids keyboard navigation when collapsed
-		transition: visibility $duration-default; // Ensure element keeps visible when header is closing
-		position: relative;
-		overflow: hidden;
-		background-color: $white;
+	@include layout.ob-media-breakpoint-down(md) {
+		display: none;
 
 		.ob-header-expanded & {
-			visibility: visible; // Restores keyboard navigation
+			display: block;
+		}
+
+		> nav {
+			height: 100%;
+			overflow: hidden;
 		}
 	}
 
@@ -24,6 +25,7 @@
 	}
 
 	.ob-main-nav {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		flex-wrap: nowrap;
@@ -31,19 +33,22 @@
 		margin: 0;
 		padding: 0;
 		list-style: none;
-		background-color: $gray-extra-light;
-		box-shadow: inset 0 -4px 14px -4px rgba(0, 0, 0, 0.1);
+		background-color: variables.$ob-gray-extra-light;
+
+		.ob-master-layout:not(.ob-fixed-layout):not(.ob-continuous-layout) &:not(.ob-has-opened-menu) {
+			overflow: hidden;
+		}
+		@include shadow.ob-innerBottomShadow();
 
 		&:not(.ob-sub-nav) {
-			@include layout-collapse-up() {
+			@include layout.ob-media-breakpoint-up(md) {
 				flex-direction: row;
-				padding-left: $spacing-default;
-				height: $navigation-height;
+				padding-left: variables.$ob-spacing-default;
 			}
 		}
 
 		button {
-			@include link-btn;
+			@include button.ob-link-btn;
 		}
 
 		a, button {
@@ -51,17 +56,17 @@
 			justify-content: space-between;
 			width: 100%;
 			margin: 0;
-			padding: $spacing-sm $spacing-default;
-			border-bottom: 1px solid $gray-light;
-			color: $brand-default;
-			background-color: $white;
+			padding: variables.$ob-spacing-sm variables.$ob-spacing-default;
+			border-bottom: 1px solid variables.$ob-gray-light;
+			color: variables.$ob-default;
+			background-color: variables.$ob-white;
 			text-decoration: none;
 			cursor: pointer;
-			@include nav-hover(-1);
+			@include nav.ob-nav-hover(-1);
 
-			@include layout-collapse-up() {
+			@include layout.ob-media-breakpoint-up(md) {
 				border: 0 none;
-				padding: $spacing-sm $spacing-default;
+				padding: variables.$ob-spacing-sm variables.$ob-spacing-default;
 
 				&.active,
 				&:active,
@@ -77,23 +82,23 @@
 
 		// First level only:
 		> .ob-main-nav-item {
-			@include layout-collapse-up() {
+			@include layout.ob-media-breakpoint-up(md) {
 				> a,
 				> button {
 					display: inline-flex;
-					padding: $spacing-default;
+					padding: variables.$ob-spacing-default;
 					white-space: nowrap;
-					font-size: $font-size-sm;
+					font-size: variables.$ob-font-size-sm;
 					background-color: transparent;
 
 					&.active {
-						background-color: $white;
+						background-color: variables.$ob-white;
 					}
 
 					&:active,
 					&:hover,
 					&:focus {
-						background-color: $gray-light;
+						background-color: variables.$ob-gray-light;
 					}
 
 					&::after {
@@ -104,20 +109,20 @@
 		}
 
 		.ob-toggle-layout-collapsed {
-			@include layout-collapse-up() {
+			@include layout.ob-media-breakpoint-up(md) {
 				display: none;
 			}
 		}
 
 		.ob-toggle-collapsed,
 		.ob-toggle-expanded {
-			margin-left: $spacing-sm;
-			@include layout-collapse-down() {
+			margin-left: variables.$ob-spacing-sm;
+			@include layout.ob-media-breakpoint-down(md) {
 				display: none;
 			}
 		}
 
-		@include layout-collapse-up() {
+		@include layout.ob-media-breakpoint-up(md) {
 			.ob-master-layout-navigation-toggle {
 				&[aria-expanded] .ob-toggle-collapsed,
 				&:not([aria-expanded]) .ob-toggle-expanded {
@@ -132,8 +137,8 @@
 
 		.ob-sub-menu {
 			visibility: hidden; // Do not use `display: none` to avoid reflow & transition issues!
-			position: fixed;
-			top: $header-height-md;
+			position: absolute;
+			top: 0;
 			bottom: 0;
 			left: 0;
 			right: 0;
@@ -143,28 +148,28 @@
 			border: none;
 			overflow-y: auto;
 			overflow-x: hidden;
-			z-index: $z-index-controls;
+			z-index: variables.$ob-z-index-controls;
 			transform: translateX(105%);
-			transition: visibility $duration-default, transform $duration-default;
+			transition: visibility variables.$ob-duration-default, transform variables.$ob-duration-default;
 
-			@include layout-collapse-up() {
+			@include layout.ob-media-breakpoint-up(md) {
 				position: absolute;
 				top: 100%;
 				bottom: auto;
 				left: auto;
 				right: auto;
-				min-width: 280px;
+				min-width: 30ch;	// empiric number
 				max-height: 60vh;
 				overflow-x: hidden;
 				overflow-y: auto;
-				background-color: $white;
-				box-shadow: 0 6px 12px 2px rgba(0, 0, 0, 0.175);
+				background-color: variables.$ob-white;
 				transform: none;
 				transition: none;
 				display: block;
+				@include shadow.ob-dropShadow();
 			}
 
-			@include layout-collapse-down() {
+			@include layout.ob-media-breakpoint-down(md) {
 				> ul > li:last-child {
 					// [iOS only] Simulate a bottom spacing to ensure that last item is reachable when scrolling the menu and does not display under the MobileSafari tools menu:
 					margin-bottom: 70px;
@@ -172,14 +177,14 @@
 			}
 		}
 
-		@include layout-collapse-up() {
+		@include layout.ob-media-breakpoint-up(md) {
 			&.ob-main-nav-fw .ob-sub-menu {
 				left: 0;
 				right: 0;
 
 				.ob-sub-nav {
 					display: block;
-					column-width: $layout-collapse * 0.5;
+					column-width: 30ch; // empiric value
 
 					li {
 						break-inside: avoid-column;
@@ -189,15 +194,15 @@
 		}
 
 		.ob-sub-nav {
-			@include layout-collapse-up() {
-				background-color: $white;
+			@include layout.ob-media-breakpoint-up(md) {
+				background-color: variables.$ob-white;
 			}
 		}
 
 		& .ob-expanded > .ob-sub-menu {
 			visibility: visible;
 
-			@include layout-collapse-down() {
+			@include layout.ob-media-breakpoint-down(md) {
 				transform: translateX(0%);
 			}
 		}
@@ -208,9 +213,9 @@
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
-			background-color: $white;
+			background-color: variables.$ob-white;
 
-			@include layout-collapse-up() {
+			@include layout.ob-media-breakpoint-up(md) {
 				display: none;
 			}
 

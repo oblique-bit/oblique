@@ -1,9 +1,10 @@
-@import "core/variables";
+@use "sass:selector";
+@use "core/variables";
 
 .ob-alert:not(.ob-angular) {
 	position: relative;
-	padding: $spacing-default $spacing-default $spacing-default (calc(2 * 1.5em + #{$spacing-default})); // icon font-size * icon width + text padding; icon means the ::before pseudo element
-	margin-bottom: $spacing-default;
+	padding: variables.$ob-spacing-default variables.$ob-spacing-default variables.$ob-spacing-default (calc(2 * 1.5em + #{variables.$ob-spacing-default})); // icon font-size * icon width + text padding; icon means the ::before pseudo element
+	margin-bottom: variables.$ob-spacing-default;
 
 	.ob-close {
 		float: right;
@@ -23,7 +24,7 @@
 	}
 
 	a {
-		color: $brand-default;
+		color: variables.$ob-default;
 		text-decoration: underline;
 	}
 
@@ -33,20 +34,20 @@
 		}
 	}
 
-	@at-root #{selector-append(".ob-alert-info", &)} {
-		background-color: $brand-light;
+	@at-root #{selector.append(".ob-alert-info", &)} {
+		background-color: variables.$ob-light;
 	}
 
-	@at-root #{selector-append(".ob-alert-success", &)} {
-		background-color: $brand-success-light;
+	@at-root #{selector.append(".ob-alert-success", &)} {
+		background-color: variables.$ob-success-light;
 	}
 
-	@at-root #{selector-append(".ob-alert-warning", &)} {
-		background-color: $brand-warning-light;
+	@at-root #{selector.append(".ob-alert-warning", &)} {
+		background-color: variables.$ob-warning-light;
 	}
 
-	@at-root #{selector-append(".ob-alert-error", &)} {
-		background-color: $brand-error-light;
+	@at-root #{selector.append(".ob-alert-error", &)} {
+		background-color: variables.$ob-error-light;
 	}
 
 	&::before {
@@ -55,28 +56,28 @@
 		left: 0;
 		top: 0;
 		bottom: 0;
-		padding: $spacing-sm;
+		padding: variables.$ob-spacing-sm;
 		width: 1.5em;
 		font-size: 2em;
 
-		@at-root #{selector-append(".ob-alert-info", &)} {
+		@at-root #{selector.append(".ob-alert-info", &)} {
 			content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHRpdGxlPkluZm88L3RpdGxlPjxyZWN0IHg9IjExLjI2NTM1IiB5PSI3LjY1NDEzIiB3aWR0aD0iMS40ODA0NyIgaGVpZ2h0PSIxMy4zNDU3IiBmaWxsPSIjZmZmZmZmIi8+PHBhdGggZD0iTTEyLjc2NDM3LDMuMDk0NTZhLjk4NzE3Ljk4NzE3LDAsMCwwLS43NDYwOS0uMjg4MDguOTY2NTQuOTY2NTQsMCwwLDAtLjc0MDIzLjI4ODA4Ljk4ODc2Ljk4ODc2LDAsMCwwLS4yNzE0OS43MDQxMS45NDgyNy45NDgyNywwLDAsMCwxLjAxMTcyLjk4MDQ2LDEuMDAxMzgsMS4wMDEzOCwwLDAsMCwuNzQ2MDktLjI4MTI1Ljk1OTU4Ljk1OTU4LDAsMCwwLC4yNzczNS0uNjk5MjFBLjk3NzMyLjk3NzMyLDAsMCwwLDEyLjc2NDM3LDMuMDk0NTZaIiBmaWxsPSIjZmZmZmZmIi8+PC9zdmc+');
-			background-color: $brand-primary;
+			background-color: variables.$ob-primary;
 		}
 
-		@at-root #{selector-append(".ob-alert-success", &)} {
+		@at-root #{selector.append(".ob-alert-success", &)} {
 			content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHRpdGxlPkNoZWNrbWFyazwvdGl0bGU+PHBvbHlnb24gcG9pbnRzPSIyMC40NyA1LjM5MSA4Ljg0MiAxNy4wMTkgMy41MyAxMS43MDYgMi40NyAxMi43NjcgOC44NDIgMTkuMTQgMjEuNTMgNi40NTEgMjAuNDcgNS4zOTEiIGZpbGw9IiNmZmZmZmYiLz48L3N2Zz4=');
-			background-color: $brand-success;
+			background-color: variables.$ob-success;
 		}
 
-		@at-root #{selector-append(".ob-alert-warning", &)} {
+		@at-root #{selector.append(".ob-alert-warning", &)} {
 			content: url('data:image/svg+xml;base64,PHN2ZyBpZD0id2FybmluZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwb2x5Z29uIHBvaW50cz0iMTIuNjUzIDE1Ljk5MiAxMi43NCAzLjA0IDExLjIxIDMuMDQgMTEuMjg0IDE1Ljk5MiAxMi42NTMgMTUuOTkyIiBmaWxsPSJjdXJyZW50Q29sb3IiLz48cGF0aCBkPSJNMTIuNzk0NjUsMTkuNDE3MzJhLjk3NzU1Ljk3NzU1LDAsMCwwLS43NDYxLS4yOTIuOTYwMDcuOTYwMDcsMCwwLDAtLjc0MDIzLjI5MiwxLjAwNzQxLDEuMDA3NDEsMCwwLDAtLjI3MDUxLjcxMjg5Ljk1MTgzLjk1MTgzLDAsMCwwLC4yNzA1MS42ODk0NS45ODguOTg4LDAsMCwwLC43NDAyMy4yNzkzLDEuMDA2MzEsMS4wMDYzMSwwLDAsMCwuNzQ2MS0uMjc5My45Mzg5NC45Mzg5NCwwLDAsMCwuMjc4MzItLjY4OTQ1QS45OTMwOC45OTMwOCwwLDAsMCwxMi43OTQ2NSwxOS40MTczMloiIGZpbGw9ImN1cnJlbnRDb2xvciIvPjwvc3ZnPg==');
-			background-color: $brand-warning;
+			background-color: variables.$ob-warning;
 		}
 
-		@at-root #{selector-append(".ob-alert-error", &)} {
+		@at-root #{selector.append(".ob-alert-error", &)} {
 			content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHRpdGxlPkNhbmNlbDwvdGl0bGU+PHBvbHlnb24gcG9pbnRzPSIxOS42MjYgNS40NzMgMTguNTY2IDQuNDEyIDEyLjAwNiAxMC45NzIgNS40NDYgNC40MTIgNC4zODYgNS40NzMgMTAuOTQ2IDEyLjAzMyA0LjQxOSAxOC41NiA1LjQ3OSAxOS42MiAxMi4wMDYgMTMuMDkzIDE4LjUyNyAxOS42MTQgMTkuNTg4IDE4LjU1NCAxMy4wNjcgMTIuMDMzIDE5LjYyNiA1LjQ3MyIgZmlsbD0iI2ZmZmZmZiIvPjwvc3ZnPg==');
-			background-color: $brand-error;
+			background-color: variables.$ob-error;
 		}
 	}
 }

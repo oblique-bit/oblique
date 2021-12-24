@@ -1,7 +1,7 @@
 <h2 class="page-header">
 	{{ "i18n.routes.samples.unsavedChanges.title" | translate }}
 </h2>
-<ob-description component="unsaved-changes"></ob-description>
+<sc-description component="unsaved-changes"></sc-description>
 <div class="row">
 	<div class="col">
 		<form class="card form-horizontal has-validation" id="templateForm" #standAloneTemplate="ngForm" role="form" obUnsavedChanges>
@@ -30,25 +30,13 @@
 				<div class="form-group row">
 					<label for="standAloneTemplate.number" class="col-sm-4 col-form-label">Number</label>
 					<div class="col-sm-8">
-						<input
-							name="number"
-							type="number"
-							class="form-control"
-							id="standAloneTemplate.number"
-							[(ngModel)]="tabModels.standAloneTemplate.number"
-						/>
+						<input name="number" type="number" class="form-control" id="standAloneTemplate.number" [(ngModel)]="tabModels.standAloneTemplate.number" />
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="standAloneTemplate.integer" class="col-sm-4 col-form-label">Integer</label>
 					<div class="col-sm-8">
-						<input
-							name="integer"
-							type="number"
-							class="form-control"
-							id="standAloneTemplate.integer"
-							[(ngModel)]="tabModels.standAloneTemplate.integer"
-						/>
+						<input name="integer" type="number" class="form-control" id="standAloneTemplate.integer" [(ngModel)]="tabModels.standAloneTemplate.integer" />
 					</div>
 				</div>
 				<div class="form-group row">
@@ -75,12 +63,7 @@
 		<form class="card form-horizontal has-validation" id="standAloneReactive" role="form" [formGroup]="standAloneReactive" obUnsavedChanges>
 			<div class="card-header d-flex justify-content-between">
 				<h3 class="card-title">Preview with standalone reactive form</h3>
-				<span
-					class="fa fa-check text-success"
-					ngbTooltip="Form does not contain unsaved changes"
-					placement="bottom"
-					*ngIf="!standAloneReactive.dirty"
-				></span>
+				<span class="fa fa-check text-success" ngbTooltip="Form does not contain unsaved changes" placement="bottom" *ngIf="!standAloneReactive.dirty"></span>
 				<span
 					class="fa fa-exclamation-triangle text-warning"
 					ngbTooltip="Form contains unsaved changes"
@@ -133,12 +116,7 @@
 		<form class="card form-horizontal has-validation" #parentForm="ngForm" role="form">
 			<div class="card-header d-flex justify-content-between">
 				<h3 class="card-title">Preview with nested template driven forms</h3>
-				<span
-					class="fa fa-check text-success"
-					ngbTooltip="Form does not contain unsaved changes"
-					placement="bottom"
-					*ngIf="!parentForm.form.dirty"
-				></span>
+				<span class="fa fa-check text-success" ngbTooltip="Form does not contain unsaved changes" placement="bottom" *ngIf="!parentForm.form.dirty"></span>
 				<span
 					class="fa fa-exclamation-triangle text-warning"
 					ngbTooltip="Form contains unsaved changes"
@@ -152,9 +130,7 @@
 						<a ngbNavLink>
 							<span>Form 1</span>
 							<span class="fa fa-check text-success" *ngIf="!form1?.dirty">&nbsp;</span>
-							<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes" placement="bottom" *ngIf="form1?.dirty"
-								>&nbsp;</span
-							>
+							<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes" placement="bottom" *ngIf="form1?.dirty">&nbsp;</span>
 						</a>
 						<ng-template ngbNavContent>
 							<fieldset ngModelGroup="form1" #form1="ngModelGroup" obUnsavedChangesTabs>
@@ -173,13 +149,7 @@
 								<div class="form-group row">
 									<label for="form1.integer" class="col-sm-4 col-form-label">Integer</label>
 									<div class="col-sm-8">
-										<input
-											name="integer"
-											type="number"
-											class="form-control"
-											id="form1.integer"
-											[(ngModel)]="tabModels.nestedForm1.integer"
-										/>
+										<input name="integer" type="number" class="form-control" id="form1.integer" [(ngModel)]="tabModels.nestedForm1.integer" />
 									</div>
 								</div>
 								<div class="form-group row">
@@ -216,13 +186,7 @@
 								<div class="form-group row">
 									<label for="form2.integer" class="col-sm-4 col-form-label">Integer</label>
 									<div class="col-sm-8">
-										<input
-											name="integer"
-											type="number"
-											class="form-control"
-											id="form2.integer"
-											[(ngModel)]="tabModels.nestedForm2.integer"
-										/>
+										<input name="integer" type="number" class="form-control" id="form2.integer" [(ngModel)]="tabModels.nestedForm2.integer" />
 									</div>
 								</div>
 								<div class="form-group row">
@@ -244,9 +208,7 @@
 						<a ngbNavLink>
 							<span>Form 3</span>
 							<span class="fa fa-check text-success" *ngIf="!form3?.dirty">&nbsp;</span>
-							<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes" placement="bottom" *ngIf="form3?.dirty"
-								>&nbsp;</span
-							>
+							<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes" placement="bottom" *ngIf="form3?.dirty">&nbsp;</span>
 						</a>
 						<ng-template ngbNavContent>
 							<fieldset ngModelGroup="form3" #form3="ngModelGroup" obUnsavedChangesTabs>
@@ -265,13 +227,7 @@
 								<div class="form-group row">
 									<label for="form3.integer" class="col-sm-4 col-form-label">Integer</label>
 									<div class="col-sm-8">
-										<input
-											name="integer"
-											type="number"
-											class="form-control"
-											id="form3.integer"
-											[(ngModel)]="tabModels.nestedForm3.integer"
-										/>
+										<input name="integer" type="number" class="form-control" id="form3.integer" [(ngModel)]="tabModels.nestedForm3.integer" />
 									</div>
 								</div>
 								<div class="form-group row">
@@ -309,18 +265,8 @@
 		<form class="card form-horizontal has-validation" role="form" [formGroup]="nestedReactive">
 			<div class="card-header d-flex justify-content-between">
 				<h3 class="card-title">Preview with nested reactive forms</h3>
-				<span
-					class="fa fa-check text-success"
-					ngbTooltip="Form does not contain unsaved changes"
-					placement="bottom"
-					*ngIf="!nestedReactive.dirty"
-				></span>
-				<span
-					class="fa fa-exclamation-triangle text-warning"
-					ngbTooltip="Form contains unsaved changes"
-					placement="bottom"
-					*ngIf="nestedReactive.dirty"
-				></span>
+				<span class="fa fa-check text-success" ngbTooltip="Form does not contain unsaved changes" placement="bottom" *ngIf="!nestedReactive.dirty"></span>
+				<span class="fa fa-exclamation-triangle text-warning" ngbTooltip="Form contains unsaved changes" placement="bottom" *ngIf="nestedReactive.dirty"></span>
 			</div>
 			<div class="card-body">
 				<ul ngbNav #nav2="ngbNav" class="nav-tabs">
@@ -328,11 +274,7 @@
 						<a ngbNavLink>
 							<span>Form 4</span>
 							<span class="fa fa-check text-success" *ngIf="!nestedReactive.value.form4.dirty">&nbsp;</span>
-							<span
-								class="fa fa-save text-warning"
-								ngbTooltip="Form tab contains unsaved changes"
-								placement="bottom"
-								*ngIf="nestedReactive.value.form4.dirty"
+							<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes" placement="bottom" *ngIf="nestedReactive.value.form4.dirty"
 								>&nbsp;</span
 							>
 						</a>
@@ -412,11 +354,7 @@
 						<a ngbNavLink>
 							<span>Form 6</span>
 							<span class="fa fa-check text-success" *ngIf="!nestedReactive.value.form6.dirty">&nbsp;</span>
-							<span
-								class="fa fa-save text-warning"
-								ngbTooltip="Form tab contains unsaved changes"
-								placement="bottom"
-								*ngIf="nestedReactive.value.form6.dirty"
+							<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes" placement="bottom" *ngIf="nestedReactive.value.form6.dirty"
 								>&nbsp;</span
 							>
 						</a>
@@ -495,9 +433,7 @@
 					<a ngbNavLink>
 						<span>Form 7 (template)</span>
 						<span class="fa fa-check text-success" *ngIf="!form7?.dirty">&nbsp;</span>
-						<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes" placement="bottom" *ngIf="form7?.dirty"
-							>&nbsp;</span
-						>
+						<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes" placement="bottom" *ngIf="form7?.dirty">&nbsp;</span>
 					</a>
 					<ng-template ngbNavContent>
 						<form class="form-horizontal has-validation" #form7="ngForm" role="form" obUnsavedChangesTabs>
@@ -581,9 +517,7 @@
 					<a ngbNavLink>
 						<span>Form 9 (reactive)</span>
 						<span class="fa fa-check text-success" *ngIf="!tabForm9Reactive.dirty">&nbsp;</span>
-						<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes" placement="bottom" *ngIf="tabForm9Reactive.dirty"
-							>&nbsp;</span
-						>
+						<span class="fa fa-save text-warning" ngbTooltip="Form tab contains unsaved changes" placement="bottom" *ngIf="tabForm9Reactive.dirty">&nbsp;</span>
 					</a>
 					<ng-template ngbNavContent>
 						<form class="form-horizontal has-validation" role="form" [formGroup]="tabForm9Reactive" UnsavedChangesTabsModule>
@@ -638,4 +572,4 @@
 		</div>
 	</div>
 </div>
-<ob-api component="unsaved-changes"></ob-api>
+<sc-api component="unsaved-changes"></sc-api>

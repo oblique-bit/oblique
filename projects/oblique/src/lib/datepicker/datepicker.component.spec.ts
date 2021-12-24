@@ -1,5 +1,5 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, CUSTOM_ELEMENTS_SCHEMA, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {CUSTOM_ELEMENTS_SCHEMA, Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
@@ -28,7 +28,6 @@ describe('DatepickerComponent', () => {
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(TestComponent);
-		component = fixture.componentInstance;
 		fixture.detectChanges();
 		button = fixture.debugElement.query(By.css('button'));
 		datepicker = fixture.debugElement.query(By.directive(ObDatepickerComponent)).injector.get(ObDatepickerComponent);

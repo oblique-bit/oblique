@@ -1,175 +1,180 @@
-@import "~@fortawesome/fontawesome-free/scss/variables";
+@use "~@fortawesome/fontawesome-free/scss/variables" as scss-variables;
+@use "../../core/variables" as core-variables;
+@use "../bootstrap/variables" as ob-bootstrap-variables;
+@use "mixins/form-check";
+@import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
-@import "../../core/variables";
-@import "mixins/form-check";
 
-$size: 1.1875em;		//19px with a 16px basis
-$small: 0.6875em;		//11px with a 16px basis
-$smallSize: 1.7273em;	//19px with a 11px basis
+$size: 1.1875em; //19px with a 16px basis
+$small: 0.6875em; //11px with a 16px basis
+$smallSize: 1.7273em; //19px with a 11px basis
 .form-check {
-	line-height: $size;
-	padding-left: $size;
-	margin-top: 0.5625em;
-	margin-bottom: 0.5626em;
+  line-height: $size;
+  padding-left: $size;
+  margin-top: 0.5625em;
+  margin-bottom: 0.5626em;
 
-	&.form-check-lg {
-		font-size: 1.25em;
+  &.form-check-lg {
+	font-size: 1.25em;
+  }
+
+  &.form-check-sm {
+	font-size: 0.875rem;
+  }
+
+  .form-check-label {
+	vertical-align: middle;
+	position: relative;
+	min-height: $size;
+	padding-left: 0.3em;
+	font-weight: normal;
+	cursor: pointer;
+
+	&:empty {
+	  padding-left: 0;
 	}
 
-	&.form-check-sm {
-		font-size: 0.875rem;
+	&::before,
+	&::after {
+	  content: "";
+	  display: block;
+	  position: absolute;
+	  top: 0;
+	  left: 0;
 	}
 
-	.form-check-label {
-		vertical-align: middle;
-		position: relative;
-		min-height: $size;
-		padding-left: 0.3em;
-		font-weight: normal;
-		cursor: pointer;
+	&::before {
+	  width: $size;
+	  height: $size;
+	  margin-left: -$size;
+	  border: 1px solid ob-bootstrap-variables.$ob-input-border-color;
+	  background-color: core-variables.$ob-white;
+	  transition-property: border-radius, color;
+	  transition-timing-function: ease-in-out;
+	  transition-duration: core-variables.$ob-duration-fast;
+	}
 
-		&:empty {
-			padding-left: 0;
+	&::after {
+	  width: $smallSize;
+	  height: $smallSize;
+	  margin-left: -$smallSize;
+	  color: ob-bootstrap-variables.$ob-input-color;
+	  font-size: $small;
+
+	  text-align: center;
+	  line-height: $smallSize;
+	  vertical-align: middle;
+
+	  transform: scale(0, 0);
+	  transition: transform .15s cubic-bezier(.8, -0.33, .2, 1.33);
+	  //curve - http://cubic-bezier.com/#.8,-0.33,.2,1.33
+	}
+  }
+
+  .form-check-input {
+	opacity: 0;
+	margin: 0;
+	z-index: -1;
+
+	&:checked + .form-check-label::after {
+	  transform: scale(1, 1);
+	}
+
+	&:focus + .form-check-label::before {
+	  color: $input-focus-color;
+	  background-color: $input-focus-bg;
+	  border-color: $input-focus-border-color;
+	  outline: 0;
+	  // Avoid using mixin so we can pass custom focus shadow properly
+	  @if $enable-shadows {
+		box-shadow: $input-box-shadow, $input-focus-box-shadow;
+	  } @else {
+		box-shadow: $input-focus-box-shadow;
+	  }
+	}
+
+	&:disabled,
+	fieldset:disabled & {
+	  cursor: not-allowed;
+
+	  + .form-check-label {
+		cursor: default;
+		opacity: 0.65;
+
+		&::before {
+		  background-color: core-variables.$ob-gray-extra-light;
 		}
 
 		&::before,
 		&::after {
-			content: "";
-			display: block;
-			position: absolute;
-			top: 0;
-			left: 0;
+		  cursor: not-allowed;
 		}
+	  }
+	}
+  }
 
-		&::before {
-			width: $size;
-			height: $size;
-			margin-left: -$size;
-			border: 1px solid $input-border-color;
-			background-color: $white;
-			transition-property: border-radius, color;
-			transition-timing-function: ease-in-out;
-			transition-duration: $duration-fast;
-		}
+  .form-inline & {
+	padding-left: $size;
+  }
 
-		&::after {
-			width: $smallSize;
-			height: $smallSize;
-			margin-left: -$smallSize;
-			color: $input-color;
-			font-size: $small;
+  &.form-check-inline {
+	display: inline-block;
 
-			text-align: center;
-			line-height: $smallSize;
-			vertical-align: middle;
-
-			transform: scale(0, 0);
-			transition: transform .15s cubic-bezier(.8, -0.33, .2, 1.33);
-			//curve - http://cubic-bezier.com/#.8,-0.33,.2,1.33
-		}
+	&:last-of-type {
+	  margin-right: 0;
 	}
 
 	.form-check-input {
-		opacity: 0;
-		margin: 0;
-		z-index: -1;
+	  position: absolute;
+	}
+  }
 
-		&:checked + .form-check-label::after {
-			transform: scale(1, 1);
-		}
-
-		&:focus + .form-check-label::before {
-			color: $input-focus-color;
-			background-color: $input-focus-bg;
-			border-color: $input-focus-border-color;
-			outline: 0;
-			// Avoid using mixin so we can pass custom focus shadow properly
-			@if $enable-shadows {
-				box-shadow: $input-box-shadow, $input-focus-box-shadow;
-			} @else {
-				box-shadow: $input-focus-box-shadow;
-			}
-		}
-
-		&:disabled,
-		fieldset:disabled & {
-			cursor: not-allowed;
-
-			+ .form-check-label {
-				cursor: default;
-				opacity: 0.65;
-
-				&::before {
-					background-color: $gray-extra-light;
-				}
-
-				&::before,
-				&::after {
-					cursor: not-allowed;
-				}
-			}
-		}
+  .form-check-input[type="checkbox"] {
+	& + .form-check-label::before {
+	  border-radius: 3px;
 	}
 
-	.form-inline & {
-		padding-left: $size;
+	&:checked + .form-check-label::after {
+	  font-family: core-variables.$ob-icon-font-family;
+	  font-weight: 900;
+	  content: scss-variables.fa-content(scss-variables.$fa-var-check);
+	}
+  }
+
+  .form-check-input[type="radio"] {
+	& + .form-check-label::before,
+	& + .form-check-label::after {
+	  border-radius: 50%;
 	}
 
-	&.form-check-inline {
-		display: inline-block;
-
-		&:last-of-type {
-			margin-right: 0;
-		}
-
-		.form-check-input {
-			position: absolute;
-		}
+	&:checked + .form-check-label::after {
+	  $outer: 1.18182em; //13px with a 16px basis
+	  $inner: 0.27273em; // 3px with a 16px basis
+	  width: $outer;
+	  height: $outer;
+	  left: $inner;
+	  top: $inner;
+	  background-color: ob-bootstrap-variables.$ob-input-color;
 	}
+  }
 
-	.form-check-input[type="checkbox"] {
-		& + .form-check-label::before {
-			border-radius: 3px;
-		}
+  &.form-check-primary {
+	@include form-check.ob-checkbox-variant(core-variables.$ob-primary);
+	@include form-check.ob-radio-variant(core-variables.$ob-primary);
+  }
 
-		&:checked + .form-check-label::after {
-			font-family: $icon-font-family;
-			font-weight: 900;
-			content: fa-content($fa-var-check);
-		}
-	}
+  &.form-check-success {
+	@include form-check.ob-checkbox-variant(core-variables.$ob-success);
+	@include form-check.ob-radio-variant(core-variables.$ob-success);
+  }
 
-	.form-check-input[type="radio"] {
-		& + .form-check-label::before,
-		& + .form-check-label::after {
-			border-radius: 50%;
-		}
+  &.form-check-warning {
+	@include form-check.ob-checkbox-variant(core-variables.$ob-warning);
+	@include form-check.ob-radio-variant(core-variables.$ob-warning);
+  }
 
-		&:checked + .form-check-label::after {
-			$outer: 1.18182em;  //13px with a 16px basis
-			$inner: 0.27273em;  // 3px with a 16px basis
-			width: $outer;
-			height: $outer;
-			left: $inner;
-			top: $inner;
-			background-color: $input-color;
-		}
-	}
-
-	&.form-check-primary {
-		@include checkbox-variant($brand-primary);
-		@include radio-variant($brand-primary);
-	}
-	&.form-check-success {
-		@include checkbox-variant($brand-success);
-		@include radio-variant($brand-success);
-	}
-	&.form-check-warning {
-		@include checkbox-variant($brand-warning);
-		@include radio-variant($brand-warning);
-	}
-	&.form-check-danger {
-		@include checkbox-variant($brand-error);
-		@include radio-variant($brand-error);
-	}
+  &.form-check-danger {
+	@include form-check.ob-checkbox-variant(core-variables.$ob-error);
+	@include form-check.ob-radio-variant(core-variables.$ob-error);
+  }
 }

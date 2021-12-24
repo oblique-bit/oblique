@@ -1,26 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-import {ObMasterLayoutService, ObSpinnerService} from '@oblique/oblique';
+import {Component} from '@angular/core';
+import {ObSpinnerService} from '@oblique/oblique';
 
 @Component({
-	selector: 'ob-spinner-sample',
+	selector: 'sc-spinner-sample',
 	templateUrl: './spinner-sample.component.html',
 	styleUrls: ['./spinner-sample.component.scss']
 })
-export class ObSpinnerSampleComponent implements OnInit {
+export class SpinnerSampleComponent {
 	spinnerVisible = false;
-	channel: string = 'demo';
+	channel = 'demo';
 	private readonly window: Window;
 
-	constructor(private readonly masterLayoutService: ObMasterLayoutService, private readonly spinnerService: ObSpinnerService) {
+	constructor(private readonly spinnerService: ObSpinnerService) {
 		this.window = window; // because AoT don't accept interfaces as DI
-	}
-
-	ngOnInit(): void {
-		//this.masterLayoutService.layout.isFixed = true;
-	}
-
-	setMasterLayout($event): void {
-		this.masterLayoutService.layout.isFixed = $event.value;
 	}
 
 	toggleSpinner() {

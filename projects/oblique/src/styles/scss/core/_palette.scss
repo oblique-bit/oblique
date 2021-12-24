@@ -1,83 +1,74 @@
 // CI/CD colors
-$venetian-red: #dc0018;
-$red: #f7001d;	// unused
-$cerulean: #006699;
-$malibu: #66afe9;	// used only for bootstrap
-$pattens-blue: #d8e8ef;	// unused
-$solitude: #e7edef;		// unused
-$clear-day: #f2f7f9;	// unused
-$mocassin: #fffab2;	// unused
-$white: #ffffff;
-$smoke: #f5f5f5;
-$gainsboro: #e5e5e5;
-$light-gray: #d5d5d5;
-$silver: #cccccc;	// unused
-$empress: #757575;
-$coal: #454545;
-$night-rider: #333333;
-$black: #000000;
+$ob-venetian-red: #dc0018;
+$ob-red: #f7001d;	// unused
+$ob-cerulean: #006699;
+$ob-malibu: #66afe9;	// used only for bootstrap
+$ob-pattens-blue: #d8e8ef;	// unused
+$ob-solitude: #e7edef;		// unused
+$ob-clear-day: #f2f7f9;	// unused
+$ob-mocassin: #fffab2;	// unused
+$ob-white: #ffffff;
+$ob-smoke: #f5f5f5;
+$ob-gainsboro: #e5e5e5;
+$ob-light-gray: #d5d5d5;
+$ob-silver: #cccccc;	// unused
+$ob-empress: #757575;
+$ob-coal: #454545;
+$ob-night-rider: #333333;
+$ob-black: #000000;
 
 // Oblique colors
-// http://mcg.mbitson.com/#!?mcgpalette0=%23ffc81b&themename=mcgtheme
-$primary-50: #f2f7fa;	// $brand-default
-$primary-100: #cce0eb;
-$primary-200: #99c2d6;
-$primary-300: #66a3c2;
-$primary-400: #267da8;	// $white
-$primary-500: $cerulean;
-$primary-600: #0a5b84;
-$primary-700: #14516f;
-$primary-800: #214456;
-$primary-900: #293d47;
-$primary-a100: #90c0ff;		// not from Fridolin
-$primary-a200: #5da3ff;		// not from Fridolin
-$primary-a400: #2a85ff;		// not from Fridolin
-$primary-a700: #1077ff;		// not from Fridolin
+$ob-primary-50: #f2f7fa;	// use $ob-default as contrast color
+$ob-primary-100: #cce0eb;	// use $ob-default as contrast color
+$ob-primary-200: #99c2d6;	// use $ob-default as contrast color
+$ob-primary-300: #66a3c2;	// use $ob-default as contrast color
+$ob-primary-400: #267da8;	// use $ob-white as contrast color
+$ob-primary-500: $ob-cerulean;// use $ob-white as contrast color
+$ob-primary-600: #0a5b84;	// use $ob-white as contrast color
+$ob-primary-700: #14516f;	// use $ob-white as contrast color
+$ob-primary-800: #214456;	// use $ob-white as contrast color
+$ob-primary-900: #293d47;	// use $ob-white as contrast color
 
-$error-50: #fdeaee;	// $brand-default
-$error-100: #fbcad2;
-$error-200: #ea959b;
-$error-300: #de6c74;	// $white
-$error-400: #de2839;
-$error-500: #b00020;
-$error-600: #a31a17;
-$error-700: #931012;
-$error-800: #86090c;
-$error-900: #630012;
-$error-a100: #ffb3b6;	// not from Fridolin
-$error-a200: #ff8085;	// not from Fridolin
-$error-a400: #ff4d53;	// not from Fridolin
-$error-a700: #ff343b;	// not from Fridolin
+$ob-error-50: #fdeaee;		// use $ob-default as contrast color
+$ob-error-100: #fbcad2;	// use $ob-default as contrast color
+$ob-error-200: #ea959b;	// use $ob-default as contrast color
+$ob-error-300: #de6c74;	// use $ob-white as contrast color
+$ob-error-400: #de2839;	// use $ob-white as contrast color
+$ob-error-500: #b00020;	// use $ob-white as contrast color
+$ob-error-600: #a31a17;	// use $ob-white as contrast color
+$ob-error-700: #931012;	// use $ob-white as contrast color
+$ob-error-800: #86090c;	// use $ob-white as contrast color
+$ob-error-900: #630012;	// use $ob-white as contrast color
 
-$gray-50: $white;	// $brand-default
-$gray-100: $smoke;
-$gray-200: $gainsboro;
-$gray-300: $light-gray;
-$gray-400: #b4b4b4;
-$gray-500: $empress;	// $white
-$gray-600: $coal;
-$gray-700: $night-rider;
-$gray-800: #171717;
-$gray-900: $black;
+$ob-gray-50: $ob-white;		// use $ob-default as contrast color
+$ob-gray-100: $ob-smoke;		// use $ob-default as contrast color
+$ob-gray-200: $ob-gainsboro;	// use $ob-default as contrast color
+$ob-gray-300: $ob-light-gray;	// use $ob-default as contrast color
+$ob-gray-400: #b4b4b4;		// use $ob-default as contrast color
+$ob-gray-500: $ob-empress;	// use $ob-white as contrast color
+$ob-gray-600: $ob-coal;		// use $ob-white as contrast color
+$ob-gray-700: $ob-night-rider;// use $ob-white as contrast color
+$ob-gray-800: #171717;		// use $ob-white as contrast color
+$ob-gray-900: $ob-black;		// use $ob-white as contrast color
 
-$success-50: #e6f6eb;	// $brand-default
-$success-100: #c3e8cd;
-$success-200: #9cd9ad;
-$success-300: #72cb8c;
-$success-400: #50bf73;	// $white
-$success-500: #27b45b;
-$success-600: #1da451;
-$success-700: #0f9245;
-$success-800: #00813a;
-$success-900: #006226;
+$ob-success-50: #e6f6eb;	// use $ob-default as contrast color
+$ob-success-100: #c3e8cd;	// use $ob-default as contrast color
+$ob-success-200: #9cd9ad;	// use $ob-default as contrast color
+$ob-success-300: #72cb8c;	// use $ob-default as contrast color
+$ob-success-400: #50bf73;	// use $ob-white as contrast color
+$ob-success-500: #27b45b;	// use $ob-white as contrast color
+$ob-success-600: #1da451;	// use $ob-white as contrast color
+$ob-success-700: #0f9245;	// use $ob-white as contrast color
+$ob-success-800: #00813a;	// use $ob-white as contrast color
+$ob-success-900: #006226;	// use $ob-white as contrast color
 
-$warning-50: #fee3b5;	// $brand-default
-$warning-100: #fed284;
-$warning-200: #ffbf52;
-$warning-300: #fb970b;
-$warning-400: #f07703;	// $white
-$warning-500: #e75e00;
-$warning-600: #af4600;
-$warning-700: #80310d;
-$warning-800: #5f1a00;
-$warning-900: #501900;
+$ob-warning-50: #fee3b5;	// use $ob-default as contrast color
+$ob-warning-100: #fed284;	// use $ob-default as contrast color
+$ob-warning-200: #ffbf52;	// use $ob-default as contrast color
+$ob-warning-300: #fb970b;	// use $ob-default as contrast color
+$ob-warning-400: #f07703;	// use $ob-default as contrast color
+$ob-warning-500: #e75e00;	// use $ob-default as contrast color
+$ob-warning-600: #af4600;	// use $ob-white as contrast color
+$ob-warning-700: #80310d;	// use $ob-white as contrast color
+$ob-warning-800: #5f1a00;	// use $ob-white as contrast color
+$ob-warning-900: #501900;	// use $ob-white as contrast color

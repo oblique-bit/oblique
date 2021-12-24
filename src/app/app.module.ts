@@ -11,8 +11,6 @@ import {NgbDatepickerConfig, NgbModule, NgbTooltipConfig} from '@ng-bootstrap/ng
 import {TranslateModule} from '@ngx-translate/core';
 
 import {
-	FONTS,
-	multiTranslateLoader,
 	OB_BANNER,
 	ObAlertModule,
 	ObDocumentMetaModule,
@@ -23,6 +21,7 @@ import {
 	ObHttpApiInterceptor,
 	ObHttpApiInterceptorConfig,
 	ObHttpApiInterceptorModule,
+	ObIconModule,
 	ObInputClearModule,
 	ObMasterLayoutConfig,
 	ObMasterLayoutModule,
@@ -34,11 +33,9 @@ import {
 	ObSearchBoxModule,
 	ObSelectableModule,
 	ObSpinnerModule,
-	ObThemeService,
 	ObUnsavedChangesModule,
-	THEMES,
-	ObIconModule,
-	ObUseObliqueIcons
+	ObUseObliqueIcons,
+	multiTranslateLoader
 } from '@oblique/oblique';
 // App:
 import {AppComponent} from './app.component';
@@ -49,7 +46,8 @@ import {environment} from '../environments/environment';
 import {registerLocaleData} from '@angular/common';
 
 import localeFR from '@angular/common/locales/fr-CH';
-import {ObHttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
+import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
+import {FONTS, THEMES, ThemeService} from './common/theme.service';
 
 registerLocaleData(localeFR);
 
@@ -102,7 +100,7 @@ export class AppModule {
 		private readonly documentMetaService: ObDocumentMetaService,
 		interceptorConfig: ObHttpApiInterceptorConfig,
 		config: ObMasterLayoutConfig,
-		theme: ObThemeService
+		theme: ThemeService
 	) {
 		// As the HEAD `title` element and the `description` meta element are outside any
 		// Angular entry component, we use a service to update these element values:
@@ -113,7 +111,7 @@ export class AppModule {
 		tooltipConfig.container = 'body';
 		datepickerConfig.navigation = 'arrows';
 
-		interceptorConfig.api.url = ObHttpInterceptorSampleComponent.API_URL;
+		interceptorConfig.api.url = HttpInterceptorSampleComponent.API_URL;
 		config.locale.locales = ['en-us', 'fr-CH'];
 		config.layout.hasOffCanvas = true;
 		theme.setTheme(THEMES.MATERIAL);

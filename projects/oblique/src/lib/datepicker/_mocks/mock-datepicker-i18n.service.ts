@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {NgbDatepickerI18n, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDateStruct, NgbDatepickerI18n} from '@ng-bootstrap/ng-bootstrap';
 
 @Injectable()
 export class ObMockDatepickerI18nService extends NgbDatepickerI18n {

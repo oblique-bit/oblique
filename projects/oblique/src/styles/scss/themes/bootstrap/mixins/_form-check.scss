@@ -1,4 +1,4 @@
-@mixin checkbox-variant($color) {
+@mixin ob-checkbox-variant($color) {
 	.form-check-input[type="checkbox"]:checked + .form-check-label {
 		&::before {
 			background-color: $color;
@@ -10,7 +10,7 @@
 	}
 }
 
-@mixin radio-variant($color) {
+@mixin ob-radio-variant($color) {
 	.form-check-input[type="radio"]:checked + .form-check-label {
 		&::before {
 			border-color: $color;

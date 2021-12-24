@@ -1,0 +1,76 @@
+@import "../../core/variables";
+@import "../../core/palette";
+@import "../../core/mixins/typography";
+
+.mat-chip-list-stacked {
+	margin-top: $ob-spacing-lg;
+}
+
+.mat-chip.mat-standard-chip {
+	@include ob-caption;
+	background-color: $ob-primary-100;
+	border-color: $ob-primary-500;
+	color: $ob-primary-500;
+
+	&.mat-chip-selected,
+	&.warning,
+	&.success,
+	&.info,
+	&.error {
+		color: $ob-white;
+		border-color: inherit;
+	}
+
+	&.mat-chip-with-trailing-icon {
+		padding-right: 0;
+
+		> .mat-icon {
+			font-size: $ob-font-size-biggest;
+			margin: 0 $ob-spacing-xs;
+			width: 1em;
+			height: 1em;
+
+			&.fa::before {
+				height: unset;
+				width: unset;
+			}
+		}
+	}
+
+	&.success {
+		&,
+		&.mat-chip-selected {
+			background-color: $ob-success-500;
+		}
+	}
+
+	&.info {
+		&,
+		&.mat-chip-selected {
+			background-color: $ob-primary-500;
+		}
+	}
+
+	&.warning {
+		&,
+		&.mat-chip-selected {
+			background-color: $ob-warning-500;
+		}
+	}
+
+	&.error {
+		&,
+		&.mat-chip-selected {
+			background-color: $ob-error-500;
+		}
+	}
+
+	&.ob-selected {
+		&,
+		&.mat-chip-selected {
+			background-color: $ob-primary-100;
+			border-color: $ob-primary-500;
+			color: $ob-primary-500;
+		}
+	}
+}

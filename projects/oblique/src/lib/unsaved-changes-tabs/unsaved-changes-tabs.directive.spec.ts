@@ -1,4 +1,4 @@
-import {async, TestBed} from '@angular/core/testing';
+import {TestBed, async} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {Component, ViewChild} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
@@ -17,7 +17,6 @@ class FaultyTestComponent {
 	template: ` <form id="test" obUnsavedChangesTabs></form>`
 })
 class TestComponent {
-	//noinspection JSUnusedGlobalSymbols
 	@ViewChild(ObUnsavedChangesTabsDirective, {static: false}) unsavedChangesDirective;
 }
 
@@ -33,7 +32,6 @@ class TestComponent {
 		<div [ngbNavOutlet]="nav1" class="mt-2"></div>`
 })
 class TabsTestComponent {
-	//noinspection JSUnusedGlobalSymbols
 	@ViewChild(ObUnsavedChangesTabsDirective, {static: false}) unsavedChangesDirective;
 }
 
@@ -57,7 +55,6 @@ describe('UnsavedChangesTabsDirective', () => {
 			unListenTo: jest.fn()
 		};
 
-		//noinspection JSIgnoredPromiseFromCall
 		TestBed.configureTestingModule({
 			declarations: [FaultyTestComponent, TestComponent, TabsTestComponent, ObUnsavedChangesTabsDirective],
 			providers: [ControlContainer, {provide: ObUnsavedChangesTabsService, useValue: unsavedChangesServiceMock}],

@@ -1,38 +1,40 @@
-@import "~@fortawesome/fontawesome-free/scss/variables";
-@import "../../core/variables";
-@import "mixins/toggle";
-@import "mixins/button";
+@use "sass:selector";
+@use "~@fortawesome/fontawesome-free/scss/variables";
+@use "../../core/variables" as core-variables;
+@use "mixins/toggle";
+@use "mixins/button";
 
 .dropdown-menu {
 	box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
 
 	.dropdown-header {
 		font-weight: bold;
-		font-size: $font-size-base * 0.95;
-		color: $brand-default;
+		font-size: core-variables.$ob-font-size-base * 0.95;
+		color: core-variables.$ob-default;
 	}
 }
 
 .dropdown-toggle {
 	&::after,
-	.dropup &::after{
+	.dropup &::after {
 		border: none;
 		width: auto;
 		height: auto;
 		margin-left: 0;
 		vertical-align: baseline;
 	}
-	@include toggle-after($state: show);
+
+	@include toggle.ob-toggle-after($state: show);
 
 	.dropup &::after {
-		content: fa-content($fa-var-angle-up);
+		content: variables.fa-content(variables.$fa-var-angle-up);
 
-		@at-root #{selector-append(".show", &)} {
-			content: fa-content($fa-var-angle-down);
+		@at-root #{selector.append(".show", &)} {
+			content: variables.fa-content(variables.$fa-var-angle-down);
 		}
 	}
 
-	@at-root .show > #{selector-append(".btn-secondary", &)} {
-		@include btn-variant($brand-default, $gray-extra-light, $gray, $brand-default, $gray-lighter, $gray-darker, $brand-default);
+	@at-root .show > #{selector.append(".btn-secondary", &)} {
+		@include button.ob-btn-variant(core-variables.$ob-default, core-variables.$ob-gray-extra-light, core-variables.$ob-gray, core-variables.$ob-default, core-variables.$ob-gray-lighter, core-variables.$ob-gray-darker, core-variables.$ob-default);
 	}
 }

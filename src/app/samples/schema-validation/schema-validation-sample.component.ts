@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, NgForm, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
-import {ObNotificationService, ObSchemaValidationService, ObThemeService} from '@oblique/oblique';
+import {AbstractControl, FormBuilder, FormGroup, NgForm, ValidationErrors, ValidatorFn} from '@angular/forms';
+import {ObNotificationService, ObSchemaValidationService} from '@oblique/oblique';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {ThemeService} from '../../common/theme.service';
 
 @Component({
-	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'ob-schema-validation',
+	selector: 'sc-schema-validation',
 	templateUrl: './schema-validation-sample.component.html',
 	styles: [
 		`
@@ -16,7 +16,7 @@ import {map} from 'rxjs/operators';
 		`
 	]
 })
-export class ObSchemaValidationSampleComponent implements OnInit {
+export class SchemaValidationSampleComponent implements OnInit {
 	material: Observable<boolean>;
 	materialTestForm: FormGroup;
 
@@ -98,7 +98,7 @@ export class ObSchemaValidationSampleComponent implements OnInit {
 		private readonly schemaValidation: ObSchemaValidationService,
 		private readonly notification: ObNotificationService,
 		private readonly formBuilder: FormBuilder,
-		private readonly theme: ObThemeService
+		private readonly theme: ThemeService
 	) {}
 
 	ngOnInit(): void {

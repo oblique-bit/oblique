@@ -1,5 +1,6 @@
+@use "../../../styles/scss/core/variables";
+@use "../../../styles/scss/core/mixins/shadow";
 @import "~@fortawesome/fontawesome-free/scss/variables";
-@import "../../../styles/scss/core/variables";
 
 .ob-access-keys {
 	position: fixed;
@@ -9,7 +10,7 @@
 	display: flex;
 	justify-content: center;
 	overflow: visible;
-	z-index: $z-index-overlay-top;
+	z-index: variables.$ob-z-index-overlay-top;
 
 	ul {
 		list-style: none;
@@ -26,12 +27,12 @@
 	overflow: hidden;
 	white-space: nowrap;
 	border: 0;
-	padding: $spacing-default $spacing-default $spacing-default calc(2 * #{$spacing-sm} + #{$spacing-default} + (1.5 * 1.5em)); // 2 x icon padding + text padding + font-size x icon width
-	background-color: $brand-warning-light;
-	box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2);
+	padding: variables.$ob-spacing-default variables.$ob-spacing-default variables.$ob-spacing-default calc(2 * #{variables.$ob-spacing-sm} + #{variables.$ob-spacing-default} + (1.5 * 1.5em)); // 2 x icon padding + text padding + font-size x icon width
+	background-color: variables.$ob-warning-light;
 	opacity: 0;
 	transform: translateY(-100%);
-	transition: transform $duration-default cubic-bezier(0.7, 0, 0.3, 1), opacity $duration-default ease-in-out;
+	transition: transform variables.$ob-duration-default cubic-bezier(0.7, 0, 0.3, 1), opacity variables.$ob-duration-default ease-in-out;
+	@include shadow.ob-dropShadow();
 
 	.ob-icon-wrapper {
 		position: absolute;
@@ -41,15 +42,15 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		padding: 0 $spacing-sm;
+		padding: 0 variables.$ob-spacing-sm;
 		font-size: 1.5em;
 		line-height: 1;
-		background-color: $brand-warning;
-		color: $white;
+		background-color: variables.$ob-warning;
+		color: variables.$ob-white;
 	}
 
 	&.ob-font-awesome .ob-icon-wrapper {
-		padding: 0 $spacing-default;
+		padding: 0 variables.$ob-spacing-default;
 	}
 
 

@@ -2,9 +2,9 @@ import {Component} from '@angular/core';
 import {ObEIcon} from '@oblique/oblique';
 
 @Component({
-	selector: 'ob-icon-sample',
+	selector: 'sc-icon-sample',
 	templateUrl: './icon.component.html'
 })
-export class ObIconSampleComponent {
+export class IconSampleComponent {
 	icons = Object.values(ObEIcon);
 }

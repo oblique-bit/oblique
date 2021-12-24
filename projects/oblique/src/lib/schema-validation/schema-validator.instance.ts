@@ -12,6 +12,7 @@ export class ObSchemaValidatorInstance {
 		this.schema = schema;
 	}
 
+	// eslint-disable-next-line @typescript-eslint/default-param-last
 	validate(propertyPath = '', value: any): ValidationErrors {
 		if (this.hasRequiredError(propertyPath.split('.'), value)) {
 			return {'ajv.required': true};
@@ -21,7 +22,7 @@ export class ObSchemaValidatorInstance {
 			this.ajv.validate(propertyPath, value);
 			if (this.ajv.errors && value != null && value !== '') {
 				// when a value is empty, do not check its type
-				const key = this.ajv.errors[0].keyword === 'format' && this.ajv.errors[0].params['format'] === 'date-time' ? '.date' : '';
+				const key = this.ajv.errors[0].keyword === 'format' && this.ajv.errors[0].params.format === 'date-time' ? '.date' : '';
 				return {[`ajv.${this.ajv.errors[0].keyword}${key}`]: this.ajv.errors[0].params};
 			}
 		}
@@ -36,7 +37,7 @@ export class ObSchemaValidatorInstance {
 	isRequired(property: string, path: string[]): boolean {
 		let schema = JSON.parse(JSON.stringify(this.schema));
 		path.forEach(name => {
-			if (schema.properties && schema.properties[name]) {
+			if (schema?.properties[name]) {
 				schema = schema.properties[name];
 			}
 		});

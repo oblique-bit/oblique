@@ -1,8 +1,7 @@
-@import "~@fortawesome/fontawesome-free/scss/variables";
-@import "../../../core/mixins/layout";
+@use "~@fortawesome/fontawesome-free/scss/variables";
 
-@mixin icon-base($icon, $pack) {
-	content: fa-content($icon);
+@mixin ob-icon-base($icon, $pack) {
+	content: variables.fa-content($icon);
 	-webkit-font-smoothing: antialiased;
 	display: inline-block;
 	font-family: 'Font Awesome 5 ' + $pack;
@@ -14,14 +13,14 @@
 	text-align: center;
 }
 
-@mixin icon($icon, $position: before, $pack: 'Free') {
+@mixin ob-icon($icon, $position: before, $pack: 'Free') {
 	@if $position == before {
 		&::before {
-			@include icon-base($icon, $pack);
+			@include ob-icon-base($icon, $pack);
 		}
 	} @else if $position == after {
 		&::after {
-			@include icon-base($icon, $pack);
+			@include ob-icon-base($icon, $pack);
 		}
 	}
 }

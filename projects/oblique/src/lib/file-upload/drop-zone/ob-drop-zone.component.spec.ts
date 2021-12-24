@@ -10,7 +10,7 @@ import {ObValidationService} from './validation.service';
 	name: 'obAcceptAll'
 })
 export class ObMockAreAllTypesAllowedPipe implements PipeTransform {
-	transform(allowedTypes: string[]): boolean {
+	transform(): boolean {
 		return true;
 	}
 }
@@ -18,7 +18,7 @@ export class ObMockAreAllTypesAllowedPipe implements PipeTransform {
 describe('DropZoneComponent', () => {
 	let component: ObDropZoneComponent;
 	let fixture: ComponentFixture<ObDropZoneComponent>;
-	let service = {filterInvalidFiles: jest.fn()} as unknown as ObValidationService;
+	const service = {filterInvalidFiles: jest.fn()} as unknown as ObValidationService;
 	const files = [new File(['text'], 'sample.txt', {type: 'text/plain'}), new File(['image'], 'sample.jpg', {type: 'text/plain'})] as unknown as FileList;
 
 	beforeEach(async () => {

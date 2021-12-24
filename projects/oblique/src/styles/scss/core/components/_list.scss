@@ -1,16 +1,28 @@
-@import "../variables";
-@import "../mixins/layout";
-@import "../mixins/list";
+@use "../variables";
+@use "../mixins/layout";
+@use "../mixins/list";
 
-@include layout-collapse-up() {
+@include layout.ob-media-breakpoint-up(md) {
 	dl.ob-horizontal {
-		@include horizontal-description-list();
+		display: grid;
+		grid-template-columns: auto 1fr;
+		column-gap: variables.$ob-spacing-default;
 
-		&.ob-horizontal-large {
-			@include horizontal-description-list(250px);
+		&.ob-right-aligned dt {
+			justify-self: end;
 		}
-		&.ob-horizontal-small {
-			@include horizontal-description-list(50px);
+
+		dd, dt {
+			margin: 0;
+		}
+
+		dd + dd {
+			grid-column-start: 2;
+			grid-column-end: 3;
 		}
 	}
+}
+
+.ob-list-title {
+	@include list.ob-list-title();
 }

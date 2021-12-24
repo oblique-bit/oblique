@@ -1,4 +1,4 @@
-import {async, TestBed} from '@angular/core/testing';
+import {TestBed, async} from '@angular/core/testing';
 import {HttpClientTestingModule, HttpTestingController, TestRequest} from '@angular/common/http/testing';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
@@ -180,6 +180,7 @@ describe('HttpApiInterceptor', () => {
 		// call success in `finalize` because `subscribe` is called before `complete` callback
 		service
 			.getUsers()
+			// eslint-disable-next-line @typescript-eslint/prefer-optional-chain
 			.pipe(finalize(() => success && success()))
 			.subscribe(response => {
 				expect(response).toBeTruthy();

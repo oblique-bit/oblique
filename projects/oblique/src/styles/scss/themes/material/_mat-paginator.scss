@@ -1,0 +1,8 @@
+@import "../../core/variables";
+
+.mat-paginator {
+	&,
+	& .mat-button-wrapper {
+		color: $ob-default;
+	}
+}

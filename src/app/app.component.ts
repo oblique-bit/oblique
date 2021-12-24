@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
-import {FONTS, ObINavigationLink, ObISearchWidgetItem, THEMES, ObThemeService} from '@oblique/oblique';
+import {ObINavigationLink, ObISearchWidgetItem} from '@oblique/oblique';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {ObIJumpLink} from 'projects/oblique/src/lib/master-layout/master-layout.model';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
+import {FONTS, THEMES, ThemeService} from './common/theme.service';
 
 @Component({
-	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'app-root',
+	selector: 'sc-root',
 	templateUrl: './app.component.html',
 	styles: [
 		`
@@ -30,6 +30,7 @@ export class AppComponent {
 			label: 'i18n.routes.samples.title',
 			children: [
 				{url: 'alert', label: 'Alert'},
+				{url: 'button', label: 'Buttons'},
 				{url: 'breadcrumb', label: 'Breadcrumb'},
 				{url: 'collapse', label: 'Collapse'},
 				{url: 'column-layout', label: 'i18n.routes.samples.column-layout.title'},
@@ -60,8 +61,7 @@ export class AppComponent {
 				{url: 'sticky', label: 'Sticky'},
 				{url: 'unknown-route-sample', label: 'Unknown route'},
 				{url: 'unsaved-changes', label: 'Unsaved changes'},
-				{url: 'form', label: 'Forms'},
-				{url: 'button', label: 'Buttons'}
+				{url: 'form', label: 'Forms'}
 			]
 		},
 		{
@@ -70,6 +70,7 @@ export class AppComponent {
 			children: [
 				{url: 'typography', label: 'Typography'},
 				{url: 'block', label: 'Block elements'},
+				{url: 'grid', label: 'Grid system'},
 				{url: 'icon', label: 'Icons as class'},
 				{url: 'inline', label: 'Inline elements'},
 				{url: 'lists', label: 'Lists'},
@@ -122,7 +123,7 @@ export class AppComponent {
 	];
 	searchItems: ObISearchWidgetItem[] = [];
 
-	constructor(private readonly theme: ObThemeService, nav: DynamicNavigationService) {
+	constructor(private readonly theme: ThemeService, nav: DynamicNavigationService) {
 		this.populateSearchItems(this.navigation);
 		this.theme$ = this.theme.theme$.pipe(map(() => (theme.isMaterial() ? 'material' : 'bootstrap')));
 		this.font$ = this.theme.font$;

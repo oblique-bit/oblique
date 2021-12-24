@@ -3,11 +3,11 @@
 	<ng-container column-main-content>
 		<mat-vertical-stepper [linear]="true" [disableRipple]="isRippleDisabled" #stepper [class.mat-stepper-lg]="isLarge" [class.mat-stepper-sm]="isSmall">
 			<ng-template matStepperIcon="edit">
-				<mat-icon svgIcon="pen" class="ob-icon"></mat-icon>
+				<mat-icon svgIcon="pen"></mat-icon>
 			</ng-template>
 
 			<ng-template matStepperIcon="done">
-				<mat-icon svgIcon="checkmark" class="ob-icon"></mat-icon>
+				<mat-icon svgIcon="checkmark"></mat-icon>
 			</ng-template>
 
 			<mat-step [stepControl]="firstFormGroup">

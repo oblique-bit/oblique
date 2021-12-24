@@ -1,13 +1,11 @@
 import {ObTranslateParamsPipe} from './translate-params.pipe';
 import {TranslateService} from '@ngx-translate/core';
-import {inject, TestBed} from '@angular/core/testing';
+import {TestBed, inject} from '@angular/core/testing';
 
 describe('TranslateParamsPipe', () => {
 	beforeEach(() => {
 		const mockTranslate = {
-			instant: jest
-				.fn()
-				.mockImplementation((value: string, arg?: {value: string}) => (typeof arg === 'object' ? value.replace('{{value}}', arg.value) : value))
+			instant: jest.fn().mockImplementation((value: string, arg?: {value: string}) => (typeof arg === 'object' ? value.replace('{{value}}', arg.value) : value))
 		};
 		TestBed.configureTestingModule({
 			providers: [{provide: TranslateService, useValue: mockTranslate}]

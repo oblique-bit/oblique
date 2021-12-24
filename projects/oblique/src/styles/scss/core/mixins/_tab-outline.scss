@@ -1,0 +1,19 @@
+@use "../variables";
+
+@mixin ob-tab-outline($innerSelector: '') {
+	&:focus {
+		outline: none;
+	}
+
+	&:hover #{$innerSelector} {
+		background-color: variables.$ob-primary-200;
+	}
+
+	.ob-outline &:focus #{$innerSelector} {
+		border-color: variables.$ob-default;
+		box-shadow: 0 0 variables.$ob-spacing-xs 0 variables.$ob-default;
+		outline: 2px solid variables.$ob-primary;
+		outline-offset: -5px;
+		background-color: variables.$ob-primary-100;
+	}
+}

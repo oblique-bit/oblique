@@ -4,9 +4,9 @@ import {HttpClient} from '@angular/common/http';
 import {EMPTY} from 'rxjs';
 import {WINDOW} from '../utilities';
 import {ObTelemetryService, TELEMETRY_DISABLE} from './telemetry.service';
-import {DOCUMENT} from '@angular/common';
+import {ObThemeService} from '../theme.service';
 
-describe('TelemetryService', () => {
+describe('ObTelemetryService', () => {
 	let service: ObTelemetryService;
 	let http: HttpClient;
 	jest.spyOn(console, 'info');
@@ -46,13 +46,13 @@ describe('TelemetryService', () => {
 		});
 	});
 
-	describe('when enabled with Material', () => {
+	describe('when enabled with Material theme', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
 				imports: [HttpClientTestingModule],
 				providers: [
 					{provide: WINDOW, useValue: window},
-					{provide: DOCUMENT, useValue: {styleSheets: [{href: 'styles.asdfghjklqwertzuiopy.css', rules: [{selectorText: '.ob-material-telemetry'}]}]}}
+					{provide: ObThemeService, useValue: {theme: 'Material'}}
 				]
 			});
 
@@ -165,16 +165,13 @@ describe('TelemetryService', () => {
 		});
 	});
 
-	describe('when enabled with Bootstrap', () => {
+	describe('when enabled with Bootstrap theme', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
 				imports: [HttpClientTestingModule],
 				providers: [
 					{provide: WINDOW, useValue: window},
-					{
-						provide: DOCUMENT,
-						useValue: {styleSheets: [{href: 'styles.asdfghjklqwertzuiopy.css', rules: [{selectorText: '.ob-bootstrap-telemetry'}]}]}
-					}
+					{provide: ObThemeService, useValue: {theme: 'Bootstrap'}}
 				]
 			});
 
@@ -193,13 +190,13 @@ describe('TelemetryService', () => {
 		});
 	});
 
-	describe('when enabled without a theme', () => {
+	describe('when enabled with Unknown theme', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
 				imports: [HttpClientTestingModule],
 				providers: [
 					{provide: WINDOW, useValue: window},
-					{provide: DOCUMENT, useValue: {styleSheets: [{href: 'some.random.file.css', rules: [{selectorText: '.ob-material-telemetry'}]}]}}
+					{provide: ObThemeService, useValue: {theme: 'Unknown'}}
 				]
 			});
 

@@ -1,3 +1,162 @@
+# [8.0.0-beta.1](https://github.com/oblique-bit/oblique/compare/7.1.2...8.0.0-beta.1) (2021-12-24)
+
+## Bug Fixes
+* **alert:** fix vertical alignment for the icon ([9de9fec](https://github.com/oblique-bit/oblique/commit/9de9fecc7363b2b14721c823bc2ecdc291b38ced))
+* **button:** ensure size and vertical alignment of icon with text buttons ([8ad141a](https://github.com/oblique-bit/oblique/commit/8ad141a754c483765a0d47827d9d13753c8aa45e))
+* **column-layout:** center the toggles on component initialization ([7cb1ddd](https://github.com/oblique-bit/oblique/commit/7cb1ddddf12a11d06462e7532de79d655dc2d38a))
+* **icon:** adapt the icons' script regex to support Windows line endings ([2e86136](https://github.com/oblique-bit/oblique/commit/2e861367e71696dd47fc4690349d05649e160ea8))
+* **master-layout:** ensure the off-canvas' resizes correctly ([e5f8e9c](https://github.com/oblique-bit/oblique/commit/e5f8e9cab00f7bbc7b12ff7dadd315f91e1aaabd))
+* **master-layout:** fix `ObMockMasterLayoutHeaderComponent` signature ([41516cb](https://github.com/oblique-bit/oblique/commit/41516cb4983932e87496c9a61d9c47f95c86e0bf))
+* **master-layout:** refresh the main navigation on off-canvas toggle ([95d1e2d](https://github.com/oblique-bit/oblique/commit/95d1e2d8bb675284e68877f75e0a6d2b8265151e))
+* **material:** add a border around cards ([1b747e0](https://github.com/oblique-bit/oblique/commit/1b747e06a3674e3d0038b9209f8d674e602047dd))
+* **material:** fix background color for selected cards ([91ec383](https://github.com/oblique-bit/oblique/commit/91ec383cbcb9897391f5446c8154151389daa059))
+* **material:** use a variable instead of a magic number ([e47df3c](https://github.com/oblique-bit/oblique/commit/e47df3c20f3b55f155bbcbc509709df11e8a4b3f))
+* **off-canvas:** let the toggle be serviceable with the keyboard ([75de696](https://github.com/oblique-bit/oblique/commit/75de696d7c8aeb0e2d79e82c94476712e84c3e74))
+* **schematics:** correctly escape characters in regexp ([309e083](https://github.com/oblique-bit/oblique/commit/309e083b858a0a909dc1e4358cf02ab980f1e915))
+* **schematics:** ensure the linting is correctly embedded with the updated rules ([a3a8d88](https://github.com/oblique-bit/oblique/commit/a3a8d888de7f47faf87380025211123e16a6d4b2))
+* **schematics:** fix `ajv-formats` not installed ([88378f6](https://github.com/oblique-bit/oblique/commit/88378f665b9d34484e4e99b7d1d546bf831df82e))
+* **schematics:** fix typo in "Furtiger" ([700d91c](https://github.com/oblique-bit/oblique/commit/700d91c2cdb3f484b3778e5b56e3557a17f83d73))
+* **schematics:** fix typo in prompt for lint ([bce9ee1](https://github.com/oblique-bit/oblique/commit/bce9ee1de14675f41a5d39a39778b921297fece9))
+* **schematics:** prefix oblique variables ([bec75a4](https://github.com/oblique-bit/oblique/commit/bec75a48f36eeeee5131d2a4924761f2c7ab0a5e))
+* **schematics:** remove superfluous `return` statement in ng-update schematics ([811988b](https://github.com/oblique-bit/oblique/commit/811988b6eea66ff3eb9d58fa027d438ab2c1b0a3))
+* **styles:** add missing trailing `t` in `$ob-z-index-default` ([d8daf43](https://github.com/oblique-bit/oblique/commit/d8daf43beb46c4608fa7423690579d7f52741f3e))
+* **styles:** change contrast color for warnings for improved accessibility ([63453b8](https://github.com/oblique-bit/oblique/commit/63453b804c9fda2a451dd5ad04a52d0c6ac02f5a))
+* **toolchain:** activate browser checks missing for all required features in ob-features.js ([1b8b276](https://github.com/oblique-bit/oblique/commit/1b8b276d48a2ee51394eb6df3f2ad95852e58dbd))
+* **toolchain:** add script to remove `exports` property from `package.json` ([3203306](https://github.com/oblique-bit/oblique/commit/3203306769531071ced7d665aebfef944eca5f89))
+* **toolchain:** also apply post processing to `distiOS` ([86bdb86](https://github.com/oblique-bit/oblique/commit/86bdb8650b7aadacb20a9672d50ed758ed83328e))
+* **toolchain:** disable indentation width from the linting rules ([8d06250](https://github.com/oblique-bit/oblique/commit/8d06250a492313523a96211af39dba277d443649))
+* **toolchain:** ensure the compatibilities of peer dependencies ([db293bb](https://github.com/oblique-bit/oblique/commit/db293bb0cf7cc8215f885504ca0178ee7582a361))
+* **toolchain:** ensure there's no conflict between `.editorconfig` and `.prettierrc` ([21301a9](https://github.com/oblique-bit/oblique/commit/21301a9be0b3463e80ab1c5f9ce1cbd19c3be313))
+* **toolchain:** update angular and exclude the version 13.1.0 from the peer dependencies ([2c10372](https://github.com/oblique-bit/oblique/commit/2c10372b9ea1987e7b70ae19906feac7bd8c61f8))
+* **translate-params:** do not remove falsy values ([ad33b98](https://github.com/oblique-bit/oblique/commit/ad33b98ffdd927053cebaf743b54a6d7f76dc675))
+
+## Code Refactoring
+* **file-upload:** make error messages parameters less generic ([02353af](https://github.com/oblique-bit/oblique/commit/02353af2c631555a5e4c3a42e5e40e4ae6cd0e7e))
+* **master-layout:** remove all hard-coded height values and refactor accordingly ([d2f415c](https://github.com/oblique-bit/oblique/commit/d2f415cce73f07bd1d0b89d5b240908d9ec13217))
+* **master-layout:** remove usage of `Array.from` ([488b0b8](https://github.com/oblique-bit/oblique/commit/488b0b8b09cd8bb0f84b74518c4547b71f6629ee))
+* **master-layout:** rename `configEvents` into `configEvents$` ([bdb203e](https://github.com/oblique-bit/oblique/commit/bdb203e0f5b63cc9b50eb7ac1243b9501f07674a))
+* **master-layout:** rename `isMenuCollapsed` into `isMenuOpened` ([0a47135](https://github.com/oblique-bit/oblique/commit/0a471354a0c600b831a47177fcac38bcd72e8c3f))
+* **nav-tree:** remove unnecessary code ([0d4a161](https://github.com/oblique-bit/oblique/commit/0d4a161a3fc9c9fdae76f836d4ed8fc74a3c4290))
+* **styles:** move material colors to material palette ([218ef4f](https://github.com/oblique-bit/oblique/commit/218ef4fe0ca8e8c00fc46150f8cd9089d9f781b3))
+* **styles:** prefix all partials with underscore ([566b965](https://github.com/oblique-bit/oblique/commit/566b965d1c1c9917fe7139065844258c14c1fbbe))
+
+## Features
+* **bootstrap:** add deprecation notice ([c6d77a7](https://github.com/oblique-bit/oblique/commit/c6d77a75783e33b33de76d9664ea5709561ebe69))
+* **button:** add styling for buttons without text ([014d3e0](https://github.com/oblique-bit/oblique/commit/014d3e0176d3ef6a6fc747764130ebf247287447))
+* **external-link:** don't check if a link is external of not ([095fa33](https://github.com/oblique-bit/oblique/commit/095fa3320647eda719f170b9657973a19b23bf4b))
+* **icon:** add `ob-icon-text` class to fix vertical alignment for icon within text ([e9d90d2](https://github.com/oblique-bit/oblique/commit/e9d90d225c7066da3889d54394d45d1742b964af))
+* **icon:** add new icons ([339be3a](https://github.com/oblique-bit/oblique/commit/339be3a44c14e1422ee4800e22f046219321e748))
+* **icon:** keep default `line-height` ([67c68b4](https://github.com/oblique-bit/oblique/commit/67c68b4442cbb2398dfaa857f9a913f1c665390b))
+* **icon:** restyle `mat-icon` based on icon type instead of `ob-icon` class ([8dd890f](https://github.com/oblique-bit/oblique/commit/8dd890f69b498551c38443eee6649455ea6bba06))
+* **mandatory:** remove `ObMandatory` from Oblique ([69165d0](https://github.com/oblique-bit/oblique/commit/69165d07cfada4cd6a128b7ff0276cb1c9d79f87))
+* **master-layout:** add an `isSticky` property for the footer ([c06da27](https://github.com/oblique-bit/oblique/commit/c06da27672458a04ce2d3fd532f5f1c95bd19118))
+* **master-layout:** add an optional maximum width on the main layout ([bec2188](https://github.com/oblique-bit/oblique/commit/bec2188d39db3bc2992acf723bc06c890bba5113))
+* **master-layout:** remove `isSmall` footer property ([2dc18ac](https://github.com/oblique-bit/oblique/commit/2dc18acbcb20cb2e00ada1ffbe745531ec82fc38))
+* **master-layout:** remove the `$layout-collapse` variable ([7bf1c85](https://github.com/oblique-bit/oblique/commit/7bf1c855d35b077ed3e45083e79c38db9ab0d504))
+* **master-layout:** remove the `isFixed` property ([ae5eb24](https://github.com/oblique-bit/oblique/commit/ae5eb24b8595cb4e84aff2fa3c18e8b6ea72af5d))
+* **master-layout:** remove the header's `isAnimated` property ([c7992f5](https://github.com/oblique-bit/oblique/commit/c7992f59e1ba2da6d514ecb05b3652dcc8fe88a8))
+* **master-layout:** rename `COLLAPSE` into `IS_MENU_OPENED` ([1ecdd74](https://github.com/oblique-bit/oblique/commit/1ecdd74e1758c12d13379964ff234f781a55d40f))
+* **master-layout:** rename `COVER` into `LAYOUT_HAS_COVER` ([bdfe7c1](https://github.com/oblique-bit/oblique/commit/bdfe7c164d864a55a9584bacaedd25a66ab305fe))
+* **master-layout:** rename `FULL_WIDTH` into `NAVIGATION_IS_FULL_WIDTH` ([f180bb3](https://github.com/oblique-bit/oblique/commit/f180bb3f0250d8826fc6bf05da7135e816d2497d))
+* **master-layout:** rename `hasScrollTransition` into `reduceOnScroll` ([b8c8a76](https://github.com/oblique-bit/oblique/commit/b8c8a767250dbf0b27ff4d46ccf4400cd3bd3809))
+* **master-layout:** rename `isMedium` into `isSmall` ([a8ff4c4](https://github.com/oblique-bit/oblique/commit/a8ff4c4e870350723203815ecd93a3c93b9bb037))
+* **master-layout:** rename `LAYOUT` into `LAYOUT_HAS_DEFAULT_LAYOUT` ([3c62c20](https://github.com/oblique-bit/oblique/commit/3c62c209368d824ef8e517d0b2a1a37efb1d5668))
+* **master-layout:** rename `MAIN_NAVIGATION` into `LAYOUT_HAS_MAIN_NAVIGATION` ([5c5656e](https://github.com/oblique-bit/oblique/commit/5c5656e4d04e42cf2c82bbdfb08a9beb621d0cb4))
+* **master-layout:** rename `MAX_WIDTH` into `LAYOUT_HAS_MAX_WIDTH` ([0f480e7](https://github.com/oblique-bit/oblique/commit/0f480e71af1921b8923488bd3f7f5bcfd946c8d9))
+* **master-layout:** rename `OFF_CANVAS` into `LAYOUT_HAS_OFF_CANVAS` ([48296ac](https://github.com/oblique-bit/oblique/commit/48296acc0d60fc1a2faa40ec0a256ee2dbc91b24))
+* **master-layout:** rename `SCROLLABLE` into `NAVIGATION_SCROLL_MODE` ([85bcb38](https://github.com/oblique-bit/oblique/commit/85bcb38c02e415830144f2905ccaf375cf80fafd))
+* **master-layout:** rename `STICKY` into `HEADER_IS_STICKY` ([07ebcbd](https://github.com/oblique-bit/oblique/commit/07ebcbd18926d41e254dfe0a654e063fd6eeed8b))
+* **master-layout:** use distinct values for custom footer and header ([0e975d9](https://github.com/oblique-bit/oblique/commit/0e975d92b4ee1c8f3a134084bfc95a38da6e64ab))
+* **material:** add styling for cards within buttons ([f911398](https://github.com/oblique-bit/oblique/commit/f91139866ebd74319b8af430a0eb94a5c21eceb4))
+* **material:** add styling for cards within links ([e6089b1](https://github.com/oblique-bit/oblique/commit/e6089b1a1f4bdab4375dcd869414fdbbc8c0d7ad))
+* **material:** add tab focus style for selectable cards ([d55a96a](https://github.com/oblique-bit/oblique/commit/d55a96ac18415151e4f78328c949e32d5cb24653))
+* **off-canvas:** change button style ([6138b19](https://github.com/oblique-bit/oblique/commit/6138b19671802a6f73c38c4f8bbe11df01c008f2))
+* **off-canvas:** use a lighter color for the background and a darker one for the foreground ([9d186f1](https://github.com/oblique-bit/oblique/commit/9d186f148f6076527a0eddfd777806c79e274475))
+* **schematics:** adapt lint configuration for `ng-add` and `ng-update` schematics ([3d64362](https://github.com/oblique-bit/oblique/commit/3d64362b2c65c26f0fc57cc47f003fc85d58a5a9))
+* **schematics:** add `writeFile` function that either creates or overwrites a file as necessary ([f6ea747](https://github.com/oblique-bit/oblique/commit/f6ea74788c7699b183bf79a8cd329628b7e9df84))
+* **schematics:** add translation for feature detection messages ([41942e2](https://github.com/oblique-bit/oblique/commit/41942e27f6e60f14032c5007fbc315438d2ec044))
+* **schematics:** improve log colors and symbols ([fd14b77](https://github.com/oblique-bit/oblique/commit/fd14b7717db7c85bcad7cee2fddffc9081b2bd4f))
+* **schematics:** let the schematics be fault tolerant ([e447aac](https://github.com/oblique-bit/oblique/commit/e447aac2bd3ab80a3e76a620a10cf7c1d2f08a4e))
+* **schematics:** remove 4 to 5 update schematics ([3cebcf7](https://github.com/oblique-bit/oblique/commit/3cebcf72d69041fb26cf435b7e63ba48bdf10483))
+* **scrolling:** add a `scrollTarget` input to allow scrolling on any HTML element ([bb2de45](https://github.com/oblique-bit/oblique/commit/bb2de454599d52c9ecfa5b4517f93a90bdcf26ad))
+* **styles:** add `ob-list-title` class and mixin ([c2ff9a1](https://github.com/oblique-bit/oblique/commit/c2ff9a1bdd8acda7d852acdf72b9bbc727f9bf65))
+* **styles:** add a `boxShadow` mixin to display `box-shadow` consistently ([3e7eff0](https://github.com/oblique-bit/oblique/commit/3e7eff05b38f4884f4068e151bf519b6cec5e271))
+* **styles:** add a `ob-tab-outline` mixin to correctly apply the tab focus ([c837a27](https://github.com/oblique-bit/oblique/commit/c837a2725a3243d26c95b45ac0eeddc9fbf07d88))
+* **styles:** add a warning when an unknown breakpoint is used in a mixin ([cbee09f](https://github.com/oblique-bit/oblique/commit/cbee09f256d617b03e036705e1ef480cab9dc159))
+* **styles:** add two grid systems with `ob-grid` and `ob-flex` ([641d435](https://github.com/oblique-bit/oblique/commit/641d435b34837c98571cdfc8333e089327b501bb))
+* **styles:** prefix scss variables and mixins and remove `brand` from the names ([7b2a883](https://github.com/oblique-bit/oblique/commit/7b2a8830098f1ad887cb01ebdcf1b0b7f9e073c3))
+* **styles:** remove `layout-collapse-up` and `layout-collapse-down` mixins ([4596e25](https://github.com/oblique-bit/oblique/commit/4596e25a45043f5acd1f16beef81c95e7fca15b7))
+* **styles:** remove `oblique-compat` styles and related files ([4a369a1](https://github.com/oblique-bit/oblique/commit/4a369a1da0d6f1dfe8232f6ac408d80315e64a70))
+* **styles:** remove WOFF fonts ([c958de3](https://github.com/oblique-bit/oblique/commit/c958de35e39d53c9504764d020cb53e65dc6bc62))
+* **styles:** rewrite `ob-horizontal` with grid ([c10a6b3](https://github.com/oblique-bit/oblique/commit/c10a6b32297cf74b7f99934e3f0f938056f4c889))
+* **styles:** use Material breakpoints values instead of Boostrap's ones ([adb6e73](https://github.com/oblique-bit/oblique/commit/adb6e73ca7fa927f872ad61886d9d9325c86c3cf))
+* **theme:** read currentTheme from the loaded CSS ([8a7444c](https://github.com/oblique-bit/oblique/commit/8a7444cfd085063fdbf0db2556a20f1f3a7343cf))
+* **theme:** remove `ObThemeService` as Oblique feature ([3b76503](https://github.com/oblique-bit/oblique/commit/3b76503bc4b2ef3c7efc5b79c77b3d975acb867f))
+
+## BREAKING CHANGES
+* **file-upload:** `i18n.oblique.file-upload.error.failed` parameter `errors` has been renamed `ignoredFiles`
+* **file-upload:** `i18n.oblique.file-upload.error.single` parameter `errors` has been renamed `ignoredFiles`
+* **file-upload:** `i18n.oblique.file-upload.error.size` parameter `errors` has been renamed `ignoredFiles`
+* **file-upload:** `i18n.oblique.file-upload.error.size` parameter `parameter` has been renamed `maxSize`
+* **file-upload:**  `i18n.oblique.file-upload.error.type` parameter `errors` has been renamed `ignoredFiles`
+* **file-upload:** `i18n.oblique.file-upload.error.type` parameter `parameter` has been renamed `supportedTypes`
+* **icon:** `ob-icon-text` class has to be added on `mat-icon` component to fix the vertical alignment of icons with text (i.e. icons within a paragraph)
+* **mandatory:** the `ObMandatory` feature has been removed (solved with schematics)
+* **master-layout:** `isMenuCollapsed` has been renamed into `isMenuOpened`
+* **master-layout:** `configEvents` has been renamed into `configEvents$` (Solved with Schematics)
+* **master-layout:** when `ObIMasterLayout.scrollMode` is toggled, an event of type `ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE` is emitted instead of `ObEMasterLayoutEventValues.SCROLLABLE` (Solved with Schematics)
+* **master-layout:** when `ObIMasterLayout.isFullWidth` is toggled, an event of type `ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH` is emitted instead of `ObEMasterLayoutEventValues.FULL_WIDTH` (Solved with Schematics)
+* **master-layout:** in mobile view, when the menu is opened, an event of type `ObEMasterLayoutEventValues.IS_MENU_OPENED` is emitted instead of `ObEMasterLayoutEventValues.COLLAPSE` (Solved with Schematics)
+* **master-layout:** when `ObIMasterLayout.hasLayout` is toggled, an event of type `ObEMasterLayoutEventValues.LAYOUT_HAS_DEFAULT_LAYOUT` is emitted instead of `ObEMasterLayoutEventValues.LAYOUT` (Solved with Schematics)
+* **master-layout:** when `ObIMasterLayout.hasMainNavigation` is toggled, an event of type `ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION` is emitted instead of `ObEMasterLayoutEventValues.MAIN_NAVIGATION` (Solved with Schematics)
+* **master-layout:** when `ObIMasterLayout.hasCover` is toggled, an event of type `ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS` is emitted instead of `ObEMasterLayoutEventValues.OFF_CANVAS` (Solved with Schematics)
+* **master-layout:** when `ObIMasterLayout.hasCover` is toggled, an event of type `ObEMasterLayoutEventValues.LAYOUT_HAS_COVER` is emitted instead of `ObEMasterLayoutEventValues.COVER` (Solved with Schematics)
+* **master-layout:** `ObIMasterLayoutHeader.isMedium` property has been renamed into `ObIMasterLayoutHeader.isSmall` (Solved with Schematics)
+* **master-layout:** when `ObIMasterLayoutHeader.isSmall` is toggled, an event of type `ObEMasterLayoutEventValues.HEADER_IS_SMALL` is emitted instead of `ObEMasterLayoutEventValues.MEDIUM` (Solved with Schematics)
+* **master-layout:** `ObIMasterLayoutHeader.hasScrollTransition` property has been renamed into `ObIMasterLayoutHeader.reduceOnScroll` (Solved with Schematics)
+* **master-layout:** when `ObIMasterLayoutHeader.reduceOnScroll` is toggled, an event of type `ObEMasterLayoutEventValues.HEADER_REDUCE_ON_SCROLL` is emitted instead of `ObEMasterLayoutEventValues.SCROLL_TRANSITION`
+* **master-layout:** `ObIMasterLayoutFooter.hasScrollTransition` property has been renamed into `ObIMasterLayoutFooter.hasLogoOnScroll` (Solved with Schematics)
+* **master-layout:** when `ObIMasterLayoutFooter.hasLogoOnScroll` is toggled, an event of type `ObEMasterLayoutEventValues.FOOTER_HAS_LOGO_ON_SCROLL` is emitted instead of `ObEMasterLayoutEventValues.SCROLL_TRANSITION`
+* **master-layout:** the `isFixed` property of the master layout has been removed. Use sticky footer and header  instead (solved with schematics)
+* **master-layout:** the `ObEMasterLayoutEventValues.STICKY` property has been renamed into `ObEMasterLayoutEventValues.HEADER_IS_STICKY` (Solved with Schematics)
+* **master-layout:** the master layout's internal structure have been completely reworked. If you relied on it, you will need to adapt your code.
+* **master-layout:** the `ObEMasterLayoutEventValues.CUSTOM` property has been replaced by either `ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM` or `ObEMasterLayoutEventValues.HEADER_IS_CUSTOM`
+* **master-layout:** the `isSmall` property of the master layout footer has been removed without replacement (solved with Schematics)
+* **master-layout:** the `isAnimated` property of the master layout has been removed without replacement (solved with Schematics)
+* **master-layout:** `$layout-collapse` variable has been removed in favor of `map-get($grid-breakpoints, md)`
+* **master-layout:** The master layout is not compatible with IE anymore
+* **nav-tree:** remove usage of `Array.from` from nav-tree
+* **schematics:** Schematics to update Oblique from version 4 to 5 have been removed. Manually update Oblique to version 5 beforehand.
+* **styles:** All partial SCSS files have been prefixed with an underscore. This should be transparent as SCSS should be imported neither with the underscore nor the file extension. e.g. `variables` instead of `_variables.scss`
+* **styles:** `oblique-compat` styles have been removed with no replacement (Solved with Schematics)
+* **styles:** `open-sans` font has been removed
+* **styles:** `FontAwesome` 4.7 has been removed
+* **styles:** `dt` are automatically sized according to the widest title of the list
+* **styles:** `ob-horizontal-large` has been removed with no replacement (solved with schematics)
+* **styles:** `ob-horizontal-small` has been removed with no replacement (solved with schematics)
+* **styles:** `layout-collapse-*` mixins have been removed in favor of `ob-media-breakpoint-*(md)` (solved with Schematics)
+* **styles:** `brand` has been removed from scss variable names
+* **styles:** all scss variables and mixins have been prefixed with `ob-`
+* **styles:** `brand` has been removed from scss variable names
+* **styles:** all scss variables and mixins have been prefixed with `ob-`
+* **styles:** `$primary-a100` color is only available with material theme
+* **styles:** `$primary-a200` color is only available with material theme
+* **styles:** `$primary-a400` color is only available with material theme
+* **styles:** `$primary-a700` color is only available with material theme
+* **styles:** `$error-a100` color is only available with material theme
+* **styles:** `$error-a200` color is only available with material theme
+* **styles:** `$error-a400` color is only available with material theme
+* **styles:** `$error-a700` color is only available with material theme
+* **styles:** Frutiger WOFF files aren't loaded anymore
+* **styles:** WOFF references in file `roboto.css` are removed
+* **styles:** Roboto WOFF files are neither provided nor loaded anymore
+* **theme:** `ObThemeService` has been removed with partial replacement
+* **theme:** the `theme$` and `font$` Observables as well as the `isMaterial` function have been removed with no replacement (See ObliqueDocs for an example on how to handle this)
+* **theme:** the `setTheme` and `setFont` functions have been removed in favor of injecting relevant theme and font CSS directly in the styles array of Angular.json (Solved with Schematics)
+* **toolchain:** with IE, and other browsers missing essential features, the application will be  replaced by the compatibility warning instead of throwing errors in the console
+* **translate-params:** falsy values are not filtered out anymore
+
+
 # [7.1.2](https://github.com/oblique-bit/oblique/compare/7.1.1...7.1.2) (2021-11-03)
 
 ## Bug Fixes

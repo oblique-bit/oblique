@@ -1,4 +1,4 @@
-export interface ObIColors {
+export interface Colors {
 	name: string;
 	colors: {
 		name: string;

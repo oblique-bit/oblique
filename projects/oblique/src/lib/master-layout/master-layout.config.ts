@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ObILocale, ObIMasterLayoutHeader, ObIMasterLayoutNavigation, ObEScrollMode, ObIMasterLayoutFooter} from './master-layout.model';
+import {ObEScrollMode, ObILocale, ObIMasterLayoutFooter, ObIMasterLayoutHeader, ObIMasterLayoutNavigation} from './master-layout.model';
 
 /**
  * Configuration service for the Master Layout component.
@@ -38,22 +38,21 @@ export class ObMasterLayoutConfig {
 	 *  Controls the application's layout
 	 */
 	layout = {
-		isFixed: false,
 		hasCover: false,
 		hasMainNavigation: true,
 		hasOffCanvas: false,
-		hasLayout: true
+		hasLayout: true,
+		hasMaxWidth: false
 	};
 
 	/**
 	 * Controls the application's header
 	 */
 	header: ObIMasterLayoutHeader = {
-		isAnimated: true,
 		isSticky: true,
-		isMedium: false,
+		isSmall: false,
 		isCustom: false,
-		hasScrollTransitions: true // indicates if the header should be resized when scrolling
+		reduceOnScroll: true
 	};
 
 	/**
@@ -71,8 +70,8 @@ export class ObMasterLayoutConfig {
 	 * Controls the applications's footer
 	 */
 	footer: ObIMasterLayoutFooter = {
-		isSmall: true,
+		isSticky: false,
 		isCustom: false,
-		hasScrollTransitions: true // indicates if the footer should be resized when scrolling
+		hasLogoOnScroll: true
 	};
 }

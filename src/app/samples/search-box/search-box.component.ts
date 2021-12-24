@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import {ObINavigationLink, ObISearchWidgetItem} from '@oblique/oblique';
 
 @Component({
-	selector: 'ob-search-box-sample',
+	selector: 'sc-search-box-sample',
 	templateUrl: './search-box.component.html',
 	styleUrls: ['./search-box.component.scss']
 })
-export class ObSearchBoxSampleComponent {
+export class SearchBoxSampleComponent {
 	searchItems: ObISearchWidgetItem[] = [];
 	slide = true;
 	private readonly navigation: ObINavigationLink[] = [

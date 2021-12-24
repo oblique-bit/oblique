@@ -17,7 +17,7 @@ import {ObMockMasterLayoutComponentService} from './_mocks/mock-master-layout.co
 import {ObLanguageService} from '../language/language.service';
 import {ObMockLanguageService} from '../language/_mocks/mock-language.service';
 
-describe('MasterLayoutService', () => {
+describe('ObMasterLayoutService', () => {
 	let masterLayoutService: ObMasterLayoutService;
 
 	beforeEach(() => {

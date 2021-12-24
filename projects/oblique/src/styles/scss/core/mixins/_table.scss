@@ -1,6 +1,6 @@
-@import "../variables";
+@use "../variables";
 
-@mixin table-collapse() {
+@mixin ob-table-collapse() {
 	&, thead, tbody, th, td, tr, caption {
 		display: block;
 	}
@@ -13,8 +13,8 @@
 
 	td {
 		position: relative;
-		margin-left: $table-collapsed-header-width;
-		min-height: calc(1.42857em + 2 * #{$spacing-sm} + 1px); // line-height + padding + border
+		margin-left: variables.$ob-table-collapsed-header-width;
+		min-height: calc(1.42857em + 2 * #{variables.$ob-spacing-sm} + 1px); // line-height + padding + border
 
 		+ td {
 			border-top: 0;
@@ -27,10 +27,10 @@
 		top: -1px;
 		bottom: -1px;
 		left: -1px;
-		width: $table-collapsed-header-width + 1px;
+		width: variables.$ob-table-collapsed-header-width + 1px;
 		padding: inherit;
-		margin-left: -$table-collapsed-header-width;
-		border: 1px solid $gray-light;
+		margin-left: -(variables.$ob-table-collapsed-header-width);
+		border: 1px solid variables.$ob-gray-light;
 		font-weight: 700;
 		white-space: nowrap;
 		overflow: hidden;

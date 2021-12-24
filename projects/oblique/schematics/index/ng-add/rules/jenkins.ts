@@ -1,4 +1,4 @@
-import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {getTemplate} from '../ng-add-utils';
 import {addAngularConfigInList, addFile, infoMigration, setAngularProjectsConfig} from '../../utils';
 
@@ -11,6 +11,7 @@ export function jenkins(config: string, staticBuild: boolean, jest: boolean): Ru
 }
 
 function addDevEnv(dev: boolean): Rule {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, _context: SchematicContext) =>
 		!dev
 			? tree

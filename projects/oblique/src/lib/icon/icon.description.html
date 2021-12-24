@@ -1,16 +1,16 @@
 <p>
-	Starting from version 6.1, Oblique provides its own SVG icons. They are meant to be used with Angular Material's <code>mat-icon</code> component, meaning
-	that Bootstrap's users need to stick to FontAwesome's icons. As registering custom icons for the <code>mat-icon</code> component is not really
-	straightforward, Oblique provides the <code>ObIconService</code> to greatly simplify this process. Of course, Angular's <code>MatIconRegistry</code> can
-	still be used directly, see <a href="https://material.angular.io/components/icon/api">MatIconModule</a> for more information.
+	Starting from version 6.1, Oblique provides its own SVG icons. They are meant to be used with Angular Material's <code>mat-icon</code> component, meaning that
+	Bootstrap's users need to stick to FontAwesome's icons. As registering custom icons for the <code>mat-icon</code> component is not really straightforward,
+	Oblique provides the <code>ObIconService</code> to greatly simplify this process. Of course, Angular's <code>MatIconRegistry</code> can still be used
+	directly, see <a href="https://material.angular.io/components/icon/api">MatIconModule</a> for more information.
 </p>
 <p>
-	For performance reasons, Oblique packs all icons in a single file called an icon set. It then extracts the SVGs and inlines them directly in the code on
-	build time.
+	For performance reasons, Oblique packs all icons in a single file called an icon set. It then extracts the SVGs and inlines them directly in the code on build
+	time.
 </p>
 <p>
-	Oblique's icons are opt-in, meaning <code>ObIconModule.forRoot()</code> has to be explicitly imported in the applications' root module. And to avoid a
-	breaking change, the <code>mat-icon</code> component needs the <code>ob-icon</code> class to be properly styled. The <code>forRoot</code> method is
+	Oblique's icons are opt-in, meaning <code>ObIconModule.forRoot()</code> has to be explicitly imported in the applications' root module. To properly handle the
+	icon's vertical alignment with text, the <code>mat-icon</code> component needs the <code>ob-icon-text</code> class. The <code>forRoot</code> method is
 	mandatory, as it will take care of the icons registration. It accepts an optional configuration that allows the registration of additional icon sets as well
 	as the default class to be applied to font icons. Per default, the Oblique's icon set is loaded and FontAwesome is defined as the default font library.
 </p>
@@ -29,13 +29,10 @@
 }
 </pre
 	>
-	<p>
-		Then the <code>mat-icon</code> component can be used with the <code>ob-icon</code> class and either the <code>svgIcon</code> or the
-		<code>fontIcon</code> input.
-	</p>
+	<p>Then the <code>mat-icon</code> component can be used with either the <code>svgIcon</code> or the <code>fontIcon</code> input.</p>
 	<pre>
-&lt;mat-icon svgIcon="calendar" class="ob-icon">&lt;/mat-icon>      // Oblique icon
-&lt;mat-icon fontIcon="fa-calendar" class="ob-icon">&lt;/mat-icon>  // FA icon
+&lt;mat-icon svgIcon="calendar">&lt;/mat-icon>      // Oblique icon
+&lt;mat-icon fontIcon="fa-calendar">&lt;/mat-icon>  // FA icon
 </pre
 	>
 </details>
@@ -77,16 +74,15 @@ const iconSet = '&lt;svg>&lt;defs>&lt;svg id="my-icon">...&lt;/svg>...&lt;/defs>
 <details>
 	<summary>How to register additional icons on run time?</summary>
 	<p>
-		The <code>ObIconService</code> provides 4 handy methods to register icons on the fly. Please note that two of them will trigger one or more HTTP
-		requests.
+		The <code>ObIconService</code> provides 4 handy methods to register icons on the fly. Please note that two of them will trigger one or more HTTP requests.
 	</p>
 	<dl>
 		<dt><code>registerIconSetsAsync</code></dt>
 		<dd>It accepts a variable number of urls that are asynchronously loaded per HTTP requests and registered.</dd>
 		<dt><code>registerIconsAsync</code></dt>
 		<dd>
-			It accepts a variable number of icons defined by a name and an url. Each url is asynchronously loaded per HTTP request and registered under the
-			given name.
+			It accepts a variable number of icons defined by a name and an url. Each url is asynchronously loaded per HTTP request and registered under the given
+			name.
 		</dd>
 		<dt><code>registerIconSets</code></dt>
 		<dd>It accepts a variable number of serialized icon sets that are registered.</dd>
@@ -113,8 +109,8 @@ export class AppModule &lcub;
 <details>
 	<summary>What is an icon set?</summary>
 	<p>
-		An icon set is a single SVG file that wraps multiple SVG icons identified by an <code>id</code>. Individual SVGs are wrapped in a <code>defs</code> tag
-		and can be rendered by passing their <code>id</code> to the <code>svgIcon</code> input.
+		An icon set is a single SVG file that wraps multiple SVG icons identified by an <code>id</code>. Individual SVGs are wrapped in a <code>defs</code> tag and
+		can be rendered by passing their <code>id</code> to the <code>svgIcon</code> input.
 	</p>
 	<pre>
 &lt;svg>
@@ -147,19 +143,19 @@ fs.appendFileSync(iconSetPath, '\t&lt;/defs>\n&lt;/svg>');
 <details>
 	<summary>Does the registering order matter?</summary>
 	<p>
-		Yes it does. In case of name conflict, icons registered later do override the previous ones. This allows effectively to override specific icons by
-		simply re-register them. When there are multiple concurrent asynchronous requests, there's no telling which one comes first. In that case, async
-		function should be avoided.
+		Yes it does. In case of name conflict, icons registered later do override the previous ones. This allows effectively to override specific icons by simply
+		re-register them. When there are multiple concurrent asynchronous requests, there's no telling which one comes first. In that case, async function should be
+		avoided.
 	</p>
 </details>
 
 <div class="ob-alert ob-alert-info">
 	<strong>Angular</strong>
 	<p>
-		Although the icon feature is built on top of Angular, it can still be used without it. First, the <code>oblique-icons.css</code> file needs to be
-		loaded, please note that this file weights 230kB, therefore it should only be used after careful considerations. Then the chosen icon can be displayed
-		by setting both the <code>ob-icon</code> and <code>ob-&lt;icon-name></code> classes. This will embed the corresponding Oblique SVG in a pseudo element.
-		Unfortunately, as the icon is rendered as an image, its color cannot be changed.
+		Although the icon feature is built on top of Angular, it can still be used without it. First, the <code>oblique-icons.css</code> file needs to be loaded,
+		please note that this file weights 230kB, therefore it should only be used after careful considerations. Then the chosen icon can be displayed by setting
+		both the <code>ob-icon</code> and <code>ob-&lt;icon-name></code> classes. This will embed the corresponding Oblique SVG in a pseudo element. Unfortunately,
+		as the icon is rendered as an image, its color cannot be changed.
 	</p>
 </div>
 
@@ -167,13 +163,12 @@ fs.appendFileSync(iconSetPath, '\t&lt;/defs>\n&lt;/svg>');
 	<strong>By default, screen readers will ignore icons</strong>
 	<p>This is fine with typical decorative icons that do not convey meaning. Purely cosmetic icons should not be read out loud.</p>
 	<p>
-		This is also the correct configuration for interactive icons that triggers an action. In that case, the icon should be the child of a button or a link
-		that is responsible to provide an accessible text either through a meaningful label, an <code>aria-label</code> or
-		<code>aria-labelledby</code> attribute.
+		This is also the correct configuration for interactive icons that triggers an action. In that case, the icon should be the child of a button or a link that
+		is responsible to provide an accessible text either through a meaningful label, an <code>aria-label</code> or <code>aria-labelledby</code> attribute.
 	</p>
 	<p>
-		On the other hand, indicator icons, where the icon communicates some status without a labeling text should be made accessible. The easiest way is to
-		simply add
+		On the other hand, indicator icons, where the icon communicates some status without a labeling text should be made accessible. The easiest way is to simply
+		add
 		<code>&lt;span class="sr-only">Some meaningful label&lt;/span></code> as an adjacent sibling to the icon.
 	</p>
 </div>

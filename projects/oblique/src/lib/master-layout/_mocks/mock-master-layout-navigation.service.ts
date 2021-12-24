@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {EMPTY, Observable, of} from 'rxjs';
-import {ObIMasterLayoutEvent, ObEScrollMode} from '../master-layout.model';
+import {ObEScrollMode, ObIMasterLayoutEvent} from '../master-layout.model';
 
 @Injectable()
 export class ObMockMasterLayoutNavigationService {
 	isFullWidth = true;
 	scrollMode = ObEScrollMode.AUTO;
 
-	get configEvents(): Observable<ObIMasterLayoutEvent> {
+	get configEvents$(): Observable<ObIMasterLayoutEvent> {
 		return of({} as ObIMasterLayoutEvent);
 	}
 

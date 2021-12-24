@@ -11,7 +11,7 @@ import {ObDateFormatterPipe} from './date-formatter.pipe';
 import {ObDatepickerComponent} from './datepicker.component';
 import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
-import {ObThemeService} from '../theme/theme.service';
+import {ObThemeService} from '../theme.service';
 import {obliqueProviders} from '../utilities';
 
 export {ObDatepickerI18nService} from './datepicker-i18n.service';
@@ -23,7 +23,8 @@ export {ObDatepickerComponent} from './datepicker.component';
 export {ObIDatepickerOptions} from './datepicker.model';
 
 /**
- * @deprecated with material theme since version 4.0.0. Use angular material datepicker instead
+ * @deprecated with material theme since version 4.0.0. Use angular material datepicker instead.
+ * Deprecated with bootstrap theme since version 8.0.0. Will be removed with version 10.0.0.
  */
 @NgModule({
 	imports: [CommonModule, NgbModule, TranslateModule, ReactiveFormsModule],

@@ -1,43 +1,37 @@
 <h2 class="page-header">Icon</h2>
-<ob-description component="icon"></ob-description>
+<sc-description component="icon"></sc-description>
 <ob-column-layout [left]="false">
 	<ng-container column-main-content>
 		<section>
 			<h3>Font awesome icons</h3>
-			Lorem ipsum <mat-icon fontIcon="fa-anchor" fontSet="fa" class="ob-icon" [style.color]="color" [style.font-size]="fontSize + 'px'"></mat-icon>,
+			Lorem ipsum <mat-icon fontIcon="fa-anchor" fontSet="fa" class="ob-icon-text" [style.color]="color" [style.font-size]="fontSize + 'px'"></mat-icon>,
 			consetetur sadipscing elitr
-			<mat-icon fontIcon="fa-cog" fontSet="fa" class="ob-icon" [style.color]="color" [style.font-size]="fontSize + 'px'"></mat-icon>. At vero eos et
+			<mat-icon fontIcon="fa-cog" fontSet="fa" class="ob-icon-text" [style.color]="color" [style.font-size]="fontSize + 'px'"></mat-icon>. At vero eos et
 			accusam et justo duo dolores et ea rebum. Another paragraph with text above and below the
 		</section>
 		<section>
 			<h3>Icons with text</h3>
 			<h4>
-				<mat-icon svgIcon="anchor" class="ob-icon"></mat-icon>
+				<mat-icon svgIcon="anchor" class="ob-icon-text"></mat-icon>
 				Some title
 			</h4>
 			<p>
 				A paragraph with an
-				<mat-icon svgIcon="anchor" class="ob-icon"></mat-icon>
+				<mat-icon svgIcon="anchor" class="ob-icon-text"></mat-icon>
 				icon within it.
 			</p>
 			<p>
-				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
-				diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Another paragraph with text above and below the
-				<mat-icon svgIcon="anchor" class="ob-icon"></mat-icon>
-				icon. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-				elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
-				dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+				voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Another paragraph with text above and below the
+				<mat-icon svgIcon="anchor" class="ob-icon-text"></mat-icon>
+				icon. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+				diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+				Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 			</p>
 		</section>
 		<section>
 			<h3>Icon list</h3>
-			<mat-icon
-				[svgIcon]="icon"
-				class="ob-icon icon-list"
-				*ngFor="let icon of icons"
-				[style.color]="color"
-				[style.font-size]="fontSize + 'px'"
-			></mat-icon>
+			<mat-icon *ngFor="let icon of icons" class="icon-list" [svgIcon]="icon" [style.color]="color" [style.font-size]="fontSize + 'px'"></mat-icon>
 		</section>
 	</ng-container>
 	<ng-container column-right-content>
@@ -57,4 +51,4 @@
 		</mat-form-field>
 	</ng-container>
 </ob-column-layout>
-<ob-api component="icon"></ob-api>
+<sc-api component="icon"></sc-api>

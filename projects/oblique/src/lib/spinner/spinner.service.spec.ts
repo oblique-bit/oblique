@@ -1,18 +1,10 @@
-import {fakeAsync, inject, TestBed, tick} from '@angular/core/testing';
+import {TestBed, fakeAsync, inject, tick} from '@angular/core/testing';
 import {first} from 'rxjs/operators';
 import {ObISpinnerEvent} from './spinner.model';
 import {ObSpinnerService} from './spinner.service';
 
 describe('SpinnerService', () => {
-	let mockNotificationService;
 	beforeEach(() => {
-		mockNotificationService = {
-			warning: jest.fn(),
-			error: jest.fn(),
-			success: jest.fn(),
-			info: jest.fn()
-		};
-
 		TestBed.configureTestingModule({
 			providers: [ObSpinnerService]
 		});
@@ -28,7 +20,7 @@ describe('SpinnerService', () => {
 	it('should emit a SpinnerEvent on a custom channel if activated', inject([ObSpinnerService], (service: ObSpinnerService) => {
 		const channel = 'CUSTOM';
 		service.events$.pipe(first()).subscribe((event: ObISpinnerEvent) => {
-			expect(event).toBe({active: true, channel: channel});
+			expect(event).toBe({active: true, channel});
 		});
 		service.activate(channel);
 	}));
@@ -43,7 +35,7 @@ describe('SpinnerService', () => {
 	it('should emit a SpinnerEvent on a custom channel if deactivated', inject([ObSpinnerService], (service: ObSpinnerService) => {
 		const channel = 'CUSTOM';
 		service.events$.pipe(first()).subscribe((event: ObISpinnerEvent) => {
-			expect(event).toBe({active: false, channel: channel});
+			expect(event).toBe({active: false, channel});
 		});
 		service.deactivate(channel);
 	}));
@@ -71,7 +63,7 @@ describe('SpinnerService', () => {
 		});
 
 		service.deactivate();
-		service.deactivate(); //Only now, deactivate event is emitted.
+		service.deactivate(); // Only now, deactivate event is emitted.
 	}));
 
 	it('should deactivate immediately, when forceDeactivate is called.', inject([ObSpinnerService], (service: ObSpinnerService) => {

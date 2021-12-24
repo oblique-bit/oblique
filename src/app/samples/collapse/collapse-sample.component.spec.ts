@@ -1,21 +1,21 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import {ObCollapseSampleComponent} from './collapse-sample.component';
+import {CollapseSampleComponent} from './collapse-sample.component';
 
 describe('ObCollapseSampleComponent', () => {
-	let component: ObCollapseSampleComponent;
-	let fixture: ComponentFixture<ObCollapseSampleComponent>;
+	let component: CollapseSampleComponent;
+	let fixture: ComponentFixture<CollapseSampleComponent>;
 
 	beforeEach(
 		waitForAsync(() => {
 			TestBed.configureTestingModule({
-				declarations: [ObCollapseSampleComponent]
+				declarations: [CollapseSampleComponent]
 			}).compileComponents();
 		})
 	);
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(ObCollapseSampleComponent);
+		fixture = TestBed.createComponent(CollapseSampleComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

@@ -9,5 +9,5 @@ export class ObMockCollapseComponent {
 	@Input() active: false;
 	@Input() duration: 'slow' | 'fast' | number = 'slow';
 	@Input() iconPosition: 'left' | 'right' | 'justified' | 'none' = 'left';
-	@Output() activeChange = new EventEmitter<boolean>();
+	@Output() readonly activeChange = new EventEmitter<boolean>();
 }

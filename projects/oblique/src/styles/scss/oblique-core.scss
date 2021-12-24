@@ -1,18 +1,6 @@
+@forward "core";
 $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/regular";
 @import "~@fortawesome/fontawesome-free/scss/brands";
-
-@import "core/components/form";
-@import "core/components/list";
-@import "core/components/nav-stepper";
-@import "core/components/tabs";
-@import "core/components/overlay";
-@import "core/components/table";
-@import "core/components/text-control";
-@import "core/components/type";
-@import "core/components/popover";
-
-@import "core/layouts";
-@import "core/print";

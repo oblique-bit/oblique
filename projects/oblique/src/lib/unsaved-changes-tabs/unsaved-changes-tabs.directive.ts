@@ -16,7 +16,7 @@ export class ObUnsavedChangesTabsDirective implements OnDestroy, OnInit, AfterCo
 		@Optional() private readonly ngbNav: NgbNav
 	) {}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		const id = this.ngbNavItem ? this.ngbNavItem.id : this.id;
 		if (!id) {
 			throw new Error('obUnsavedChanges directive needs either to be within a NgbNavItem directive or to have an "id" attribute.');
@@ -24,14 +24,14 @@ export class ObUnsavedChangesTabsDirective implements OnDestroy, OnInit, AfterCo
 		this.unsavedChangesService.watch(id, this.form);
 	}
 
-	ngAfterContentInit() {
+	ngAfterContentInit(): void {
 		if (this.ngbNavItem) {
 			this.ngbNav.destroyOnHide = false;
 			this.unsavedChangesService.listenTo(this.ngbNav);
 		}
 	}
 
-	ngOnDestroy() {
+	ngOnDestroy(): void {
 		const id = this.ngbNavItem ? this.ngbNavItem.id : this.id;
 		this.unsavedChangesService.unWatch(id);
 		this.unsavedChangesService.unListenTo(this.ngbNav);

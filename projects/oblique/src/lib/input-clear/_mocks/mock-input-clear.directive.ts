@@ -9,7 +9,8 @@ export class ObMockInputClearDirective {
 	@Input('obInputClear') control: HTMLInputElement;
 	@Input() focusOnClear = true;
 	@Input() datePickerRef: MatDatepicker<any>;
-	@Output() onClear = new EventEmitter<MouseEvent>();
+	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
+	@Output() readonly onClear = new EventEmitter<MouseEvent>();
 	cssClass = true;
 
 	onClick($event: MouseEvent): void {}

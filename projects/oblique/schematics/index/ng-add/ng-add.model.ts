@@ -16,7 +16,6 @@ export interface ObIOptionsSchema {
 	proxy: string;
 	sonar: boolean;
 	static: boolean;
-	theme: string;
 	title: string;
 	unknownRoute: boolean;
 }

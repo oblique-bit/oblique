@@ -4,7 +4,6 @@ import {MatAnchor, MatButton} from '@angular/material/button';
 @Directive({
 	selector: '[obButton]',
 	exportAs: 'obButton',
-	// eslint-disable-next-line @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-button'}
 })
 export class ObButtonDirective implements OnInit, OnChanges {

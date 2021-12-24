@@ -1,0 +1,261 @@
+<section>
+	<h2>Grid system</h2>
+	<p>
+		The <code>ob-grid</code> class will create a dynamic 12 columns system. The number of columns shrinks to 8 below the LG breakpoint (1240px), to 4 below the
+		SM breakpoint (600px) and to 2 below 360px. Items exceeding the column count will automatically be wrapped on a new line, so a single container suffices for
+		all rows, albeit having one container per row is also possible. All items will always be aligned on grid lines and any unused space will be left blank.
+	</p>
+	<p>
+		There are two possibilities to span multiple columns, either by specifying the number of columns to span or by specifying the relative width. Absolute spans
+		will span the exact number of columns given, trimmed to the maximum number of available ones, which can lead to empty space at a row's end. Relative spans
+		will, when adding up to one, always occupy the whole row. For this to work, spans of one third had to be tweaked to be uneven when there are 8 or 4 columns.
+		There's a caveat when 3 <code>ob-third</code> items have to span 4 columns, in this case, the <code>ob-third-flexible</code> class has to be manually set on
+		the second or third <code>ob-third</code> item.
+	</p>
+	<details>
+		<summary>Spanning multiple columns</summary>
+		<table class="ob-table">
+			<thead>
+				<tr>
+					<th>class</th>
+					<th>LG+</th>
+					<th>LG to SM</th>
+					<th>SM to 360px</th>
+					<th>360px-</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>ob-span-2</td>
+					<td>2</td>
+					<td>2</td>
+					<td>2</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>ob-span-3</td>
+					<td>3</td>
+					<td>3</td>
+					<td>3</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>ob-span-4</td>
+					<td>4</td>
+					<td>4</td>
+					<td>4</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>ob-span-5</td>
+					<td>5</td>
+					<td>5</td>
+					<td>4</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>ob-span-6</td>
+					<td>6</td>
+					<td>6</td>
+					<td>4</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>ob-span-7</td>
+					<td>7</td>
+					<td>7</td>
+					<td>4</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>ob-span-8</td>
+					<td>8</td>
+					<td>8</td>
+					<td>4</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>ob-span-9</td>
+					<td>9</td>
+					<td>8</td>
+					<td>4</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>ob-span-10</td>
+					<td>10</td>
+					<td>8</td>
+					<td>4</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>ob-span-11</td>
+					<td>11</td>
+					<td>8</td>
+					<td>4</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>ob-span-12</td>
+					<td>12</td>
+					<td>8</td>
+					<td>4</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>ob-full</td>
+					<td>12</td>
+					<td>8</td>
+					<td>4</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>ob-half</td>
+					<td>6</td>
+					<td>4</td>
+					<td>2</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>ob-quarter</td>
+					<td>3</td>
+					<td>2</td>
+					<td>1</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>ob-three-quarters</td>
+					<td>9</td>
+					<td>6</td>
+					<td>3</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>ob-third</td>
+					<td>4</td>
+					<td>2 / 3*</td>
+					<td>1 / 2*</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>ob-two-thirds</td>
+					<td>8</td>
+					<td>5</td>
+					<td>2</td>
+					<td>1</td>
+				</tr>
+			</tbody>
+			<caption>
+				* applies to
+				<code>ob-third</code>
+				that follows either another
+				<code>ob-third</code>
+				or an
+				<code>ob-two-thirds</code
+				>.
+			</caption>
+		</table>
+	</details>
+	<div class="ob-grid">
+		<div class="item ob-span-6">6</div>
+		<div class="item ob-span-6">6</div>
+		<div class="item ob-span-3">3</div>
+		<div class="item ob-span-3">3</div>
+		<div class="item ob-span-3">3</div>
+		<div class="item ob-span-3">3</div>
+		<div class="item ob-span-2">2</div>
+		<div class="item ob-span-5">5</div>
+		<div class="item ob-span-3">3</div>
+		<div class="item ob-span-2">2</div>
+		<div class="item ob-full">full</div>
+		<div class="item ob-half">half</div>
+		<div class="item ob-half">half</div>
+		<div class="item ob-third">third</div>
+		<div class="item ob-third ob-third-flexible">third</div>
+		<div class="item ob-third">third</div>
+		<div class="item ob-quarter">quarter</div>
+		<div class="item ob-quarter">quarter</div>
+		<div class="item ob-quarter">quarter</div>
+		<div class="item ob-quarter">quarter</div>
+		<div class="item ob-two-thirds">2 thirds</div>
+		<div class="item ob-third">third</div>
+		<div class="item ob-three-quarters">3 quarters</div>
+		<div class="item ob-quarter">quarter</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+	</div>
+</section>
+<section>
+	<h2>Flex system</h2>
+	<p>
+		The <code>ob-flex</code> class will create a dynamic 12 columns system. The number of columns shrinks to 8 below the LG breakpoint (1240px), to 4 below the
+		SM breakpoint (600px) and to 2 below 360px. Each row will be filled with the maximum number of items. The items exceeding the column count will be
+		automatically wrapped on a new line and the remaining space will be covered by evenly stretching all the items in the row. This behavior implies two things,
+		first the items will not be aligned on the grid lines. Second, while one container for all items is possible, one container per row is advised to actually
+		have some control over the number of items per row and their relative width.
+	</p>
+	<p>
+		Unlike with the <code>ob-grid</code> system, the items can't span multiple columns but they can be widened. The <code>ob-grow-2</code> to
+		<code>ob-grow-6</code> classes are defined to extend an item's width relative to its siblings. The higher the growth factor, the wider the column. The
+		actual width also depends on the number of other items in the row and their respective growth value. If there's enough space, <code>ob-grow-6</code> will
+		actually be 6 times wider than a default item. If not, then it will be as wide as possible.
+	</p>
+	<div class="ob-flex">
+		<div class="item">1</div>
+	</div>
+	<div class="ob-flex">
+		<div class="item">1</div>
+		<div class="item">1</div>
+	</div>
+	<div class="ob-flex">
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+	</div>
+	<div class="ob-flex">
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+	</div>
+	<div class="ob-flex">
+		<div class="item ob-grow-2">2</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+	</div>
+	<div class="ob-flex">
+		<div class="item ob-grow-2">2</div>
+		<div class="item">1</div>
+	</div>
+	<div class="ob-flex">
+		<div class="item ob-grow-3">3</div>
+		<div class="item">1</div>
+	</div>
+	<div class="ob-flex">
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item">1</div>
+		<div class="item ob-grow-6">6</div>
+		<div class="item">1</div>
+	</div>
+</section>

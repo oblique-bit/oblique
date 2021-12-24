@@ -1,0 +1,53 @@
+@use "sass:math";
+@use "layout";
+
+@mixin ob-gridTemplate($columns, $gap) {
+	$gapsSpace: ($columns - 1) * $gap;
+	$columnsSpace: math.div(100%, $columns);
+	grid-template-columns: repeat($columns, minmax(calc(#{$columnsSpace} - #{$gapsSpace}), 1fr));
+}
+
+@mixin ob-gridSpan($span) {
+	.ob-span-#{$span} {
+		grid-column: span math.min(2, $span);
+
+		@include layout.ob-media-breakpoint-up(xs) {
+			grid-column: span math.min(4, $span);
+		}
+
+		@include layout.ob-media-breakpoint-up(sm) {
+			grid-column: span math.min(8, $span);
+		}
+
+		@include layout.ob-media-breakpoint-up(lg) {
+			grid-column: span $span;
+		}
+	}
+}
+
+@mixin ob-gridWidth($span4, $span8, $span12) {
+	grid-column: span 1;
+
+	@include layout.ob-media-breakpoint-up(xs) {
+		grid-column: span $span4;
+	}
+
+	@include layout.ob-media-breakpoint-up(sm) {
+		grid-column: span $span8;
+	}
+
+	@include layout.ob-media-breakpoint-up(lg) {
+		grid-column: span $span12;
+	}
+}
+
+@mixin ob-flexBase($columns, $gap) {
+	$gapsSpace: ($gap * ($columns - 1));
+	flex-basis: calc((100% - #{$gapsSpace}) / #{$columns});
+}
+
+@mixin ob-flexGrow($span) {
+	.ob-grow-#{$span} {
+		flex-grow: $span;
+	}
+}

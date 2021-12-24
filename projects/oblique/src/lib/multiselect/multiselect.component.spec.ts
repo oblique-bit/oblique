@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {NO_ERRORS_SCHEMA, Pipe, PipeTransform} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
@@ -14,7 +14,7 @@ import {ObMockGlobalEventsService} from '../global-events/_mocks/mock-global-eve
 	name: 'searchFilter'
 })
 class MockSearchPipe implements PipeTransform {
-	transform(value: any, args: any): any {
+	transform(value: any): any {
 		return value;
 	}
 }

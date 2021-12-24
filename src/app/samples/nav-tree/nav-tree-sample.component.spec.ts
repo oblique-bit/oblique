@@ -1,4 +1,4 @@
-import {ComponentFixture, inject, TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed, inject, waitForAsync} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {CommonModule} from '@angular/common';
@@ -6,18 +6,17 @@ import {FormsModule} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {of} from 'rxjs';
 import {NgbButtonsModule, NgbCollapseModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
-import {ObNavTreeSampleComponent} from './nav-tree-sample.component';
-import {ObliqueTestingModule} from '@oblique/oblique';
-import {ObNavTreeComponent} from '@oblique/oblique';
+import {NavTreeSampleComponent} from './nav-tree-sample.component';
+import {ObNavTreeComponent, ObliqueTestingModule} from '@oblique/oblique';
 
 describe('ObNavTreeSampleComponent', () => {
-	let component: ObNavTreeSampleComponent;
-	let fixture: ComponentFixture<ObNavTreeSampleComponent>;
+	let component: NavTreeSampleComponent;
+	let fixture: ComponentFixture<NavTreeSampleComponent>;
 
 	beforeEach(
 		waitForAsync(() => {
 			TestBed.configureTestingModule({
-				declarations: [ObNavTreeSampleComponent, ObNavTreeComponent],
+				declarations: [NavTreeSampleComponent, ObNavTreeComponent],
 				imports: [CommonModule, FormsModule, RouterTestingModule, NgbCollapseModule, NgbButtonsModule, NgbTooltipModule, ObliqueTestingModule],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA]
 			}).compileComponents();
@@ -26,7 +25,7 @@ describe('ObNavTreeSampleComponent', () => {
 
 	beforeEach(inject([ActivatedRoute], (activatedRoute: ActivatedRoute) => {
 		activatedRoute.data = of({sample: {navTree: {items: []}}});
-		fixture = TestBed.createComponent(ObNavTreeSampleComponent);
+		fixture = TestBed.createComponent(NavTreeSampleComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	}));

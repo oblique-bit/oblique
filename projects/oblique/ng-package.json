@@ -2,13 +2,7 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/oblique",
   "lib": {
-    "entryFile": "src/public_api.ts",
-    "umdModuleIds": {
-      "@ngx-translate/core": "ngx-translate",
-      "@ng-bootstrap/ng-bootstrap": "ngb",
-      "ajv": "ajv",
-      "@popperjs/core": "core"
-    }
+    "entryFile": "src/public_api.ts"
   },
-  "allowedNonPeerDependencies": ["@schematics/angular", "ansi-colors", "ts-morph"]
+  "allowedNonPeerDependencies": ["@angular-eslint/schematics", "@schematics/angular", "ansi-colors"]
 }

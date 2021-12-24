@@ -1,5 +1,5 @@
 <h2 class="page-header">{{ "i18n.routes.samples.number-format.title" | translate }}</h2>
-<ob-description component="number-format"></ob-description>
+<sc-description component="number-format"></sc-description>
 <h3>Preview with template form</h3>
 <form>
 	<div class="form-group row">
@@ -46,15 +46,7 @@
 	</div>
 	<div class="form-group row">
 		<div class="col-sm-8">
-			<input
-				class="form-control"
-				type="number"
-				obNumberFormat
-				[decimals]="4"
-				[persistent]="false"
-				formControlName="number6"
-				aria-labelledby="number6Label"
-			/>
+			<input class="form-control" type="number" obNumberFormat [decimals]="4" [persistent]="false" formControlName="number6" aria-labelledby="number6Label" />
 			<span id="number6Label" class="form-text text-muted">4 decimals format without persistent change.</span>
 		</div>
 		<div class="col-sm-2 form-control-plaintext">{{ formData.value.number6 }}</div>
@@ -63,4 +55,4 @@
 		</div>
 	</div>
 </form>
-<ob-api component="number-format"></ob-api>
+<sc-api component="number-format"></sc-api>

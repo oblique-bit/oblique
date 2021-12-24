@@ -1,6 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
-import {fromEvent, Observable} from 'rxjs';
+import {Observable, fromEvent} from 'rxjs';
 import {WINDOW} from '../utilities';
 
 @Injectable({
