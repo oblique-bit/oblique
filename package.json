@@ -1,7 +1,7 @@
 {
   "title": "Oblique",
   "name": "oblique",
-  "version": "7.1.2",
+  "version": "8.0.0-beta.1",
   "license": "MIT",
   "organization": {
     "name": "Federal Office of Information Technology, Systems and Telecommunication FOITT",
@@ -52,14 +52,14 @@
     "format": "ng lint oblique --fix && ng lint oblique-showcase --fix",
     "themes": "npm run gulp -- themes",
     "icons": "ts-node scripts/icons.ts",
-    "copy-error-messages": "node scripts/copy-error-messages.js",
+    "copy-error-messages": "ts-node scripts/copy-error-messages.ts",
     "e2e": "ng e2e",
-    "release": "node scripts/release.js",
+    "release": "ts-node scripts/release.ts",
     "alpha": "npm run release -- alpha",
     "beta": "npm run release -- beta",
     "rc": "npm run release -- RC",
     "commit": "npm run gulp -- publish",
-    "postinstall": "node scripts/sanitize-package-lock.js",
+    "postinstall": "ts-node scripts/sanitize-package-lock.ts",
     "gulp": "./node_modules/.bin/gulp"
   },
   "jestSonar": {
