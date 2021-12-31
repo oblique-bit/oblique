@@ -1,5 +1,5 @@
 @use "sass:selector";
-@use "../../core";
+@use "../../core/variables";
 
 .mat-table {
 	&.ob-table {
@@ -14,25 +14,25 @@
 		.mat-footer-cell,
 		.mat-header-cell {
 			font-size: inherit;
-			padding: core.$ob-spacing-sm;
+			padding: variables.$ob-spacing-sm;
 
 			@at-root #{selector.append(".ob-table-sm", &)} {
-				padding: core.$ob-spacing-xs;
+				padding: variables.$ob-spacing-xs;
 			}
 
 			@at-root #{selector.append(".ob-table-lg", &)} {
-				padding: core.$ob-spacing-default;
+				padding: variables.$ob-spacing-default;
 			}
 		}
 
 		@at-root #{selector.append("mat-table", &)}:not(.table-plain) .mat-row:nth-child(odd) {
-			background-color: core.$ob-gray-extra-light;
+			background-color: variables.$ob-gray-extra-light;
 		}
 	}
 
 	.mat-header-row {
 		button, .mat-sort-header-arrow {
-			color: core.$ob-black;
+			color: variables.$ob-black;
 			font-size: 14px;
 		}
 	}
@@ -43,15 +43,15 @@
 	.mat-row,
 	.mat-header-row,
 	.mat-footer-row {
-		border-color: core.$ob-gray;
+		border-color: variables.$ob-gray;
 
 		.mat-cell {
-			color: core.$ob-default;
+			color: variables.$ob-default;
 		}
 	}
 
 	.mat-row:hover {
-		background-color: core.$ob-extra-light;
+		background-color: variables.$ob-extra-light;
 	}
 
 	.mat-sort-header {
