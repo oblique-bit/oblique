@@ -37,6 +37,7 @@
 	}
 
 	.ob-main-layout {
+		position: relative;	// to prevent a double scrollbar with an ob-screen-reader-only out of the visible area
 		flex: 1 1 auto;
 
 		@at-root #{selector.append(".ob-has-layout", &)} {
