@@ -79,7 +79,7 @@ export class AppComponent {
 				{url: 'tabs', label: 'HTML tabs'},
 				{url: 'alert', label: 'Alert'},
 				{url: 'palette', label: 'Palette'},
-				{url: 'sr-only', label: 'SR-only'}
+				{url: 'screen-reader-only', label: 'Screen reader only'}
 			]
 		},
 		{

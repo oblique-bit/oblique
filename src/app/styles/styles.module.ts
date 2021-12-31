@@ -15,7 +15,7 @@ import {TabsComponent} from './tabs/tabs.component';
 import {AlertComponent} from './alert/alert.component';
 import {IconSampleComponent} from './icon/icon.component';
 import {GridComponent} from './grid/grid.component';
-import {SrOnlyComponent} from './sr-only/sr-only.component';
+import {ScreenReaderOnlyComponent} from './screen-reader-only/screen-reader-only.component';
 import {SharedModule} from '../common/shared.module';
 
 @NgModule({
@@ -33,7 +33,7 @@ import {SharedModule} from '../common/shared.module';
 			{path: 'stepper', component: StepperComponent},
 			{path: 'tabs', component: TabsComponent},
 			{path: 'alert', component: AlertComponent},
-			{path: 'sr-only', component: SrOnlyComponent},
+			{path: 'screen-reader-only', component: ScreenReaderOnlyComponent},
 			{path: '', redirectTo: 'typography', pathMatch: 'full'}
 		]),
 		ObColumnLayoutModule,
@@ -54,7 +54,7 @@ import {SharedModule} from '../common/shared.module';
 		TabsComponent,
 		AlertComponent,
 		GridComponent,
-		SrOnlyComponent
+		ScreenReaderOnlyComponent
 	]
 })
 export class StylesModule {}

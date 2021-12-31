@@ -3,11 +3,11 @@ import {FormControl} from '@angular/forms';
 import {ObMasterLayoutService} from '@oblique/oblique';
 
 @Component({
-	selector: 'sc-sr-only',
-	templateUrl: './sr-only.component.html',
-	styleUrls: ['./sr-only.component.scss']
+	selector: 'sc-screen-reader-only',
+	templateUrl: './screen-reader-only.component.html',
+	styleUrls: ['./screen-reader-only.component.scss']
 })
-export class SrOnlyComponent implements OnInit {
+export class ScreenReaderOnlyComponent implements OnInit {
 	layout: FormControl;
 
 	constructor(private readonly masterLayout: ObMasterLayoutService) {}
