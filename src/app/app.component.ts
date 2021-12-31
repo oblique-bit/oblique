@@ -78,7 +78,8 @@ export class AppComponent {
 				{url: 'stepper', label: 'HTML Stepper'},
 				{url: 'tabs', label: 'HTML tabs'},
 				{url: 'alert', label: 'Alert'},
-				{url: 'palette', label: 'Palette'}
+				{url: 'palette', label: 'Palette'},
+				{url: 'sr-only', label: 'SR-only'}
 			]
 		},
 		{

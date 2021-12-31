@@ -1,7 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatRadioModule} from '@angular/material/radio';
 import {ObColumnLayoutModule} from '@oblique/oblique';
 import {TypographyComponent} from './typography/typography.component';
 import {BlockElementsComponent} from './block-elements/block-elements.component';
@@ -14,6 +15,7 @@ import {TabsComponent} from './tabs/tabs.component';
 import {AlertComponent} from './alert/alert.component';
 import {IconSampleComponent} from './icon/icon.component';
 import {GridComponent} from './grid/grid.component';
+import {SrOnlyComponent} from './sr-only/sr-only.component';
 import {SharedModule} from '../common/shared.module';
 
 @NgModule({
@@ -31,11 +33,14 @@ import {SharedModule} from '../common/shared.module';
 			{path: 'stepper', component: StepperComponent},
 			{path: 'tabs', component: TabsComponent},
 			{path: 'alert', component: AlertComponent},
+			{path: 'sr-only', component: SrOnlyComponent},
 			{path: '', redirectTo: 'typography', pathMatch: 'full'}
 		]),
 		ObColumnLayoutModule,
 		FormsModule,
-		SharedModule
+		SharedModule,
+		MatRadioModule,
+		ReactiveFormsModule
 	],
 	declarations: [
 		TypographyComponent,
@@ -48,7 +53,8 @@ import {SharedModule} from '../common/shared.module';
 		StepperComponent,
 		TabsComponent,
 		AlertComponent,
-		GridComponent
+		GridComponent,
+		SrOnlyComponent
 	]
 })
 export class StylesModule {}
