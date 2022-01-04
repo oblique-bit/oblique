@@ -11,11 +11,11 @@
 			(click)="retryUpload(file)"
 		>
 			<mat-icon svgIcon="repeat"></mat-icon>
-			<span class="sr-only">{{ "i18n.oblique.file-upload.retry" | translate }}</span>
+			<span class="ob-screen-reader-only">{{ "i18n.oblique.file-upload.retry" | translate }}</span>
 		</button>
 		<button *ngIf="!file.completed" mat-icon-button matTooltip="{{ 'i18n.common.cancel' | translate }}" obButton="secondary" (click)="cancelUpload(file)">
 			<mat-icon svgIcon="cancel"></mat-icon>
-			<span class="sr-only">{{ "i18n.common.cancel" | translate }}</span>
+			<span class="ob-screen-reader-only">{{ "i18n.common.cancel" | translate }}</span>
 		</button>
 	</div>
 </div>

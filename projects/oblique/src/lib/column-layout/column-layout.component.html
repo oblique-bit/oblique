@@ -8,7 +8,7 @@
 >
 	<button type="button" class="ob-column-toggle-left" obColumnToggle #columnToggle *ngIf="toggleLeftIcon$ | async as direction">
 		<ob-icon icon="chevron-{{ direction }}"></ob-icon>
-		<span class="sr-only">{{ "i18n.oblique.column.left.toggle" | translate }}</span>
+		<span class="ob-screen-reader-only">{{ "i18n.oblique.column.left.toggle" | translate }}</span>
 	</button>
 	<div class="ob-column-content">
 		<ng-content select="[column-left-content]"></ng-content>
@@ -29,7 +29,7 @@
 >
 	<button type="button" class="ob-column-toggle-right" obColumnToggle #columnToggle *ngIf="toggleRightIcon$ | async as direction">
 		<ob-icon icon="chevron-{{ direction }}"></ob-icon>
-		<span class="sr-only">{{ "i18n.oblique.column.right.toggle" | translate }}</span>
+		<span class="ob-screen-reader-only">{{ "i18n.oblique.column.right.toggle" | translate }}</span>
 	</button>
 	<div class="ob-column-content">
 		<ng-content select="[column-right-content]"></ng-content>

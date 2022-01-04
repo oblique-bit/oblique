@@ -1,6 +1,6 @@
 <div class="ob-header">
 	<ng-content select="[obHeader]" *ngIf="isCustom"></ng-content>
-	<h1 class="sr-only">{{ "i18n.oblique.header.title" | translate }}</h1>
+	<h1 class="ob-screen-reader-only">{{ "i18n.oblique.header.title" | translate }}</h1>
 	<ng-container *ngIf="!isCustom">
 		<div class="ob-master-layout-header-action">
 			<ng-content select="[obHeaderAction]"></ng-content>
@@ -32,13 +32,13 @@
 							<span class="second-line"></span>
 							<span class="third-line"></span>
 						</span>
-						<span class="sr-only">{{ "i18n.oblique.header.toggle" | translate }}</span>
+						<span class="ob-screen-reader-only">{{ "i18n.oblique.header.toggle" | translate }}</span>
 					</button>
 				</li>
 			</ul>
 		</div>
 		<div class="ob-master-layout-header-controls">
-			<h2 class="sr-only" id="ob-language-change">{{ "i18n.oblique.header.languages.title" | translate }}</h2>
+			<h2 class="ob-screen-reader-only" id="ob-language-change">{{ "i18n.oblique.header.languages.title" | translate }}</h2>
 			<ng-content select="[obLocales]" *ngIf="!languages.length"></ng-content>
 			<ul class="ob-header-controls ob-header-locale" *ngIf="languages.length > 1">
 				<li class="ob-control-item" *ngFor="let language of languages">
@@ -58,7 +58,7 @@
 			</ul>
 			<ng-content select="[obHeaderCustomControl]"></ng-content>
 			<ng-container *ngIf="templates.length">
-				<h2 class="sr-only">{{ "i18n.oblique.header.controls.title" | translate }}</h2>
+				<h2 class="ob-screen-reader-only">{{ "i18n.oblique.header.controls.title" | translate }}</h2>
 				<ul class="ob-header-controls">
 					<li class="ob-control-item" *ngFor="let template of templates" #headerControl>
 						<ng-container [ngTemplateOutlet]="template"></ng-container>
