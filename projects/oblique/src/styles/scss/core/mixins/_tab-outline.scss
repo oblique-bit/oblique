@@ -5,7 +5,8 @@
 	$outlineThickness: 1px,
 	$outlineOffset: -3px,
 	$outlineColor: variables.$ob-primary,
-	$bgColor: variables.$ob-light
+	$bgColor: variables.$ob-light,
+	$color: false
 ) {
 	&:focus {
 		outline: none;
@@ -16,6 +17,9 @@
 	}
 
 	.ob-outline &:focus #{$innerSelector} {
+		@if($color) {
+			color: $color;
+		}
 		border-color: variables.$ob-default;
 		box-shadow: 0 0 variables.$ob-spacing-xs 0 variables.$ob-default;
 		outline: $outlineThickness solid $outlineColor;
@@ -26,4 +30,8 @@
 
 @mixin ob-tab-outline-thick($innerSelector: '') {
 	@include ob-tab-outline-base($innerSelector, $outlineThickness: 2px, $outlineOffset: -5px);
+}
+
+@mixin ob-tab-outline() {
+	@include ob-tab-outline-base($color: variables.$ob-primary);
 }

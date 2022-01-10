@@ -1,4 +1,5 @@
 @use "../../core/variables" as core-variables;
+@use "../../core/mixins/tab-outline";
 @use "mixins/mat-button";
 
 .mat-button-base {
@@ -47,7 +48,7 @@
 			}
 
 			&:not(.mat-flat-button):not(.mat-stroked-button) {
-				@include mat-button.ob-button(core-variables.$ob-primary);
+				@include tab-outline.ob-tab-outline();
 
 				&.mat-button-disabled {
 					color: core-variables.$ob-gray-500;
