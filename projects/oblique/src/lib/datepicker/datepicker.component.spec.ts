@@ -14,7 +14,6 @@ class TestComponent {
 
 describe('DatepickerComponent', () => {
 	let fixture: ComponentFixture<TestComponent>;
-	let component: TestComponent;
 	let datepicker: ObDatepickerComponent;
 	let button: DebugElement;
 
