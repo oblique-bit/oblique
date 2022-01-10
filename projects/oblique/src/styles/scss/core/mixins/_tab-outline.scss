@@ -18,7 +18,7 @@
 	.ob-outline &:focus #{$innerSelector} {
 		border-color: variables.$ob-default;
 		box-shadow: 0 0 variables.$ob-spacing-xs 0 variables.$ob-default;
-		outline: 2px solid $outlineColor;
+		outline: $outlineThickness solid $outlineColor;
 		outline-offset: $outlineOffset;
 		background-color: $bgColor;
 	}
