@@ -35,3 +35,7 @@
 @mixin ob-tab-outline() {
 	@include ob-tab-outline-base($color: variables.$ob-primary);
 }
+
+@mixin ob-tab-outline-primary() {
+	@include ob-tab-outline-base($outlineColor: variables.$ob-light, $bgColor: variables.$ob-primary, $color: variables.$ob-white);
+}
