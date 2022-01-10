@@ -71,3 +71,8 @@ export function obliqueProviders(): Provider[] {
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]}
 	];
 }
+
+// as the Enter key on a button triggers both the click an keyup events, lets ensure the function is called only once
+export function isNotKeyboardEventOnButton(event: MouseEvent | KeyboardEvent): boolean {
+	return !event || event instanceof MouseEvent || (event.target as HTMLElement).nodeName !== 'BUTTON';
+}

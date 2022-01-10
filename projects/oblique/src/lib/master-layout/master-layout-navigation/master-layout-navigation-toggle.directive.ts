@@ -1,4 +1,5 @@
 import {Directive, ElementRef, EventEmitter, HostListener, Output} from '@angular/core';
+import {isNotKeyboardEventOnButton} from '../../utilities';
 
 @Directive({
 	selector: '[obMasterLayoutNavigationToggle]',
@@ -7,7 +8,7 @@ import {Directive, ElementRef, EventEmitter, HostListener, Output} from '@angula
 })
 export class ObMasterLayoutNavigationToggleDirective {
 	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
-	@Output() readonly onToggle = new EventEmitter<MouseEvent>();
+	@Output() readonly onToggle = new EventEmitter<MouseEvent | KeyboardEvent>();
 
 	public back = false;
 
@@ -17,12 +18,12 @@ export class ObMasterLayoutNavigationToggleDirective {
 
 	@HostListener('click', ['$event'])
 	@HostListener('keyup.enter', ['$event'])
-	onClick($event) {
-		// As ENTER keypress delegates to click events, let's ensure
-		// browser does not try to follow any empty link (ie `href=""`):
-		$event.preventDefault();
-
-		// Notify toggling:
-		this.onToggle.next($event);
+	onClick(event?: KeyboardEvent | MouseEvent): void {
+		if (isNotKeyboardEventOnButton(event)) {
+			// As ENTER keypress delegates to click events, let's ensure
+			// browser does not try to follow any empty link (ie `href=""`):
+			event.preventDefault();
+			this.onToggle.next(event);
+		}
 	}
 }
