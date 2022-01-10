@@ -37,21 +37,20 @@
 				}
 			}
 
-			&.mat-stroked-button {
-				@include mat-button.ob-button(core-variables.$ob-primary);
-				border-color: core-variables.$ob-primary;
-
-				&.mat-button-disabled {
-					color: core-variables.$ob-gray-500;
-					border-color: core-variables.$ob-gray-500;
-				}
-			}
-
+			&.mat-stroked-button,
 			&:not(.mat-flat-button):not(.mat-stroked-button) {
 				@include tab-outline.ob-tab-outline();
 
 				&.mat-button-disabled {
 					color: core-variables.$ob-gray-500;
+				}
+			}
+
+			&.mat-stroked-button {
+				border-color: core-variables.$ob-primary;
+
+				&.mat-button-disabled {
+					border-color: core-variables.$ob-gray-500;
 				}
 			}
 		}
