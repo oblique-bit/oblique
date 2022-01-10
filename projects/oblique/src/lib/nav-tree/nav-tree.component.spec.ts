@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {By} from '@angular/platform-browser';
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
@@ -65,14 +65,16 @@ describe('NavTreeComponent', () => {
 	let fixture: ComponentFixture<TestComponent>;
 	let element: DebugElement;
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			imports: [RouterTestingModule],
-			declarations: [TestComponent, ObNavTreeComponent, ObMockTranslatePipe],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
-			schemas: [NO_ERRORS_SCHEMA]
-		}).compileComponents();
-	}));
+	beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
+				imports: [RouterTestingModule],
+				declarations: [TestComponent, ObNavTreeComponent, ObMockTranslatePipe],
+				providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
+				schemas: [NO_ERRORS_SCHEMA]
+			}).compileComponents();
+		})
+	);
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(TestComponent);

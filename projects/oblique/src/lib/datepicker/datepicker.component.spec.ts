@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
@@ -14,17 +14,18 @@ class TestComponent {
 
 describe('DatepickerComponent', () => {
 	let fixture: ComponentFixture<TestComponent>;
-	let component: TestComponent;
 	let datepicker: ObDatepickerComponent;
 	let button: DebugElement;
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			declarations: [TestComponent, ObDatepickerComponent],
-			imports: [ReactiveFormsModule, NgbDatepickerModule],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
-		}).compileComponents();
-	}));
+	beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [TestComponent, ObDatepickerComponent],
+				imports: [ReactiveFormsModule, NgbDatepickerModule],
+				schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
+			}).compileComponents();
+		})
+	);
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(TestComponent);

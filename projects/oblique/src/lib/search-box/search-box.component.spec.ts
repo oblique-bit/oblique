@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {NO_ERRORS_SCHEMA, QueryList} from '@angular/core';
@@ -10,14 +10,16 @@ describe('SearchBoxComponent', () => {
 	let component: ObSearchBoxComponent;
 	let fixture: ComponentFixture<ObSearchBoxComponent>;
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			declarations: [ObSearchBoxComponent, ObMockTranslatePipe],
-			imports: [RouterTestingModule],
-			schemas: [NO_ERRORS_SCHEMA],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
-		}).compileComponents();
-	}));
+	beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [ObSearchBoxComponent, ObMockTranslatePipe],
+				imports: [RouterTestingModule],
+				schemas: [NO_ERRORS_SCHEMA],
+				providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			}).compileComponents();
+		})
+	);
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObSearchBoxComponent);

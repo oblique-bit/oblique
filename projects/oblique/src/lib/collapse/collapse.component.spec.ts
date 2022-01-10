@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {By} from '@angular/platform-browser';
@@ -9,85 +9,100 @@ describe('CollapseComponent', () => {
 	let component: ObCollapseComponent;
 
 	describe('with token set to something truthy', () => {
-		beforeEach(async(() => {
-			TestBed.configureTestingModule({
-				declarations: [ObCollapseComponent],
-				imports: [NoopAnimationsModule],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA],
-				providers: [{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: 'yes'}]
-			}).compileComponents();
-		}));
+		beforeEach(
+			waitForAsync(() => {
+				TestBed.configureTestingModule({
+					declarations: [ObCollapseComponent],
+					imports: [NoopAnimationsModule],
+					schemas: [CUSTOM_ELEMENTS_SCHEMA],
+					providers: [{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: 'yes'}]
+				}).compileComponents();
+			})
+		);
 
-		beforeEach(async(() => {
-			fixture = TestBed.createComponent(ObCollapseComponent);
-			fixture.detectChanges();
-			component = fixture.componentInstance;
-		}));
+		beforeEach(
+			waitForAsync(() => {
+				fixture = TestBed.createComponent(ObCollapseComponent);
+				fixture.detectChanges();
+				component = fixture.componentInstance;
+			})
+		);
 
-		it('should create ', async(() => {
+		it('should create ', () => {
 			expect(component).toBeTruthy();
-		}));
+		});
 
-		it('should have a true active property', async(() => {
+		it('should have a true active property', () => {
 			expect(component.active).toBe(true);
-		}));
+		});
 	});
 
 	describe('with token set to something falsy', () => {
-		beforeEach(async(() => {
-			TestBed.configureTestingModule({
-				declarations: [ObCollapseComponent],
-				imports: [NoopAnimationsModule],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA],
-				providers: [{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: false}]
-			}).compileComponents();
-		}));
+		beforeEach(
+			waitForAsync(() => {
+				TestBed.configureTestingModule({
+					declarations: [ObCollapseComponent],
+					imports: [NoopAnimationsModule],
+					schemas: [CUSTOM_ELEMENTS_SCHEMA],
+					providers: [{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: false}]
+				}).compileComponents();
+			})
+		);
 
-		beforeEach(async(() => {
-			fixture = TestBed.createComponent(ObCollapseComponent);
-			fixture.detectChanges();
-			component = fixture.componentInstance;
-		}));
+		beforeEach(
+			waitForAsync(() => {
+				fixture = TestBed.createComponent(ObCollapseComponent);
+				fixture.detectChanges();
+				component = fixture.componentInstance;
+			})
+		);
 
-		it('should create ', async(() => {
+		it('should create ', () => {
 			expect(component).toBeTruthy();
-		}));
+		});
 
-		it('should have a false active property ', async(() => {
+		it('should have a false active property ', () => {
 			expect(component.active).toBe(false);
-		}));
+		});
 	});
 
 	describe('without token', () => {
-		beforeEach(async(() => {
-			TestBed.configureTestingModule({
-				declarations: [ObCollapseComponent],
-				imports: [NoopAnimationsModule],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA],
-				providers: [{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: false}]
-			}).compileComponents();
-		}));
+		beforeEach(
+			waitForAsync(() => {
+				TestBed.configureTestingModule({
+					declarations: [ObCollapseComponent],
+					imports: [NoopAnimationsModule],
+					schemas: [CUSTOM_ELEMENTS_SCHEMA],
+					providers: [{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: false}]
+				}).compileComponents();
+			})
+		);
 
-		beforeEach(async(() => {
-			fixture = TestBed.createComponent(ObCollapseComponent);
-			fixture.detectChanges();
-			component = fixture.componentInstance;
-		}));
+		beforeEach(
+			waitForAsync(() => {
+				fixture = TestBed.createComponent(ObCollapseComponent);
+				fixture.detectChanges();
+				component = fixture.componentInstance;
+			})
+		);
 
-		it('should create', async(() => {
+		it('should create', () => {
 			expect(component).toBeTruthy();
-		}));
+		});
 
 		describe('active', () => {
-			it('should be false ', async(() => {
+			it('should be false ', () => {
 				expect(component.active).toBe(false);
-			}));
-			it('should emit ', async(() => {
-				component.active = true;
-				component.activeChange.subscribe(val => {
-					expect(val).toBe(true);
-				});
-			}));
+			});
+			it(
+				'should emit ',
+				waitForAsync(() => {
+					component.active = true;
+					component.activeChange.subscribe(val => {
+						expect(val).toBe(true);
+					});
+				})
+			);
 		});
 
 		describe('iconPosition should add the icon', () => {
@@ -109,9 +124,9 @@ describe('CollapseComponent', () => {
 			});
 		});
 
-		it('should set t', async(() => {
+		it('should set t', () => {
 			expect(component.active).toBe(false);
-		}));
+		});
 
 		describe('duration', () => {
 			it('keep default duration', () => {

@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {NO_ERRORS_SCHEMA, Pipe, PipeTransform} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
@@ -29,14 +29,16 @@ describe('MultiselectComponent', () => {
 
 	const stringOptions = [stringOption1, stringOption2, stringOption3];
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			declarations: [ObMultiselectComponent, MockSearchPipe, ObMockTranslatePipe],
-			imports: [FormsModule],
-			providers: [ObMultiselectConfig, ObMultiselectTexts, {provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService}],
-			schemas: [NO_ERRORS_SCHEMA]
-		}).compileComponents();
-	}));
+	beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [ObMultiselectComponent, MockSearchPipe, ObMockTranslatePipe],
+				imports: [FormsModule],
+				providers: [ObMultiselectConfig, ObMultiselectTexts, {provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService}],
+				schemas: [NO_ERRORS_SCHEMA]
+			}).compileComponents();
+		})
+	);
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObMultiselectComponent);

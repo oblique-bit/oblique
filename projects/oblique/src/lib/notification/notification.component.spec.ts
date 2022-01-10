@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, async, fakeAsync, tick} from '@angular/core/testing';
+import {ComponentFixture, TestBed, fakeAsync, tick, waitForAsync} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -24,17 +24,19 @@ describe('NotificationComponent', () => {
 	const message = 'myMessage';
 	const title = 'myTitle';
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			declarations: [ObNotificationComponent, ObMockTranslatePipe, ObMockAlertComponent],
-			imports: [CommonModule, NoopAnimationsModule, RouterTestingModule],
-			providers: [
-				{provide: ObNotificationConfig, useClass: ObMockNotificationConfig},
-				{provide: ObNotificationService, useClass: ObMockNotificationService},
-				{provide: WINDOW, useValue: window}
-			]
-		}).compileComponents();
-	}));
+	beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [ObNotificationComponent, ObMockTranslatePipe, ObMockAlertComponent],
+				imports: [CommonModule, NoopAnimationsModule, RouterTestingModule],
+				providers: [
+					{provide: ObNotificationConfig, useClass: ObMockNotificationConfig},
+					{provide: ObNotificationService, useClass: ObMockNotificationService},
+					{provide: WINDOW, useValue: window}
+				]
+			}).compileComponents();
+		})
+	);
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObNotificationComponent);
