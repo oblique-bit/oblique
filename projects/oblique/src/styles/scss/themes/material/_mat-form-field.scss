@@ -11,6 +11,14 @@
 
 	.mat-form-field-outline {
 		background-color: core-variables.$ob-white;
+		border-radius: core-variables.$ob-border-radius-base;
+
+		.mat-form-field-outline-start {
+			border-radius: core-variables.$ob-border-radius-base 0 0 core-variables.$ob-border-radius-base;
+		}
+		.mat-form-field-outline-end {
+			border-radius: 0 core-variables.$ob-border-radius-base core-variables.$ob-border-radius-base 0;
+		}
 	}
 
 	&.mat-form-field-appearance-outline {
