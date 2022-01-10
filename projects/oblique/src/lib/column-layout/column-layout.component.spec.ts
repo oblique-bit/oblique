@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, Component, NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
@@ -37,29 +37,33 @@ describe('ColumnLayoutComponent', () => {
 	let fixture: ComponentFixture<TestComponent>;
 	let testComponent: TestComponent;
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			declarations: [TestComponent, ObColumnLayoutComponent, ObMockColumnPanelDirective, ObMockTranslatePipe],
-			imports: [RouterTestingModule],
-			providers: [
-				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useValue: window}
-			],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
-		}).compileComponents();
-	}));
+	beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [TestComponent, ObColumnLayoutComponent, ObMockColumnPanelDirective, ObMockTranslatePipe],
+				imports: [RouterTestingModule],
+				providers: [
+					{provide: TranslateService, useClass: ObMockTranslateService},
+					{provide: WINDOW, useValue: window}
+				],
+				schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
+			}).compileComponents();
+		})
+	);
 
-	beforeEach(async(() => {
-		fixture = TestBed.createComponent(TestComponent);
-		testComponent = fixture.componentInstance;
-		fixture.detectChanges();
-	}));
+	beforeEach(
+		waitForAsync(() => {
+			fixture = TestBed.createComponent(TestComponent);
+			testComponent = fixture.componentInstance;
+			fixture.detectChanges();
+		})
+	);
 
-	it('should create', async(() => {
+	it('should create', () => {
 		expect(testComponent).toBeTruthy();
-	}));
+	});
 
-	it('should contain columnLayout class', async(() => {
+	it('should contain columnLayout class', () => {
 		expect(fixture.debugElement.query(By.css('ob-column-layout')).nativeElement.classList).toContain('ob-column-layout');
-	}));
+	});
 });

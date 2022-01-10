@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, async, inject} from '@angular/core/testing';
+import {ComponentFixture, TestBed, inject, waitForAsync} from '@angular/core/testing';
 import {Component, DebugElement, EventEmitter} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
@@ -26,21 +26,23 @@ describe('DatepickerPlaceholderDirective', () => {
 		element = fixture.debugElement.query(By.directive(ObDatepickerPlaceholderDirective));
 	}
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			declarations: [TestComponent, ObDatepickerPlaceholderDirective],
-			imports: [],
-			providers: [
-				{
-					provide: TranslateService,
-					useValue: {
-						currentLang: 'en',
-						onLangChange: new EventEmitter<LangChangeEvent>()
+	beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [TestComponent, ObDatepickerPlaceholderDirective],
+				imports: [],
+				providers: [
+					{
+						provide: TranslateService,
+						useValue: {
+							currentLang: 'en',
+							onLangChange: new EventEmitter<LangChangeEvent>()
+						}
 					}
-				}
-			]
-		});
-	}));
+				]
+			});
+		})
+	);
 
 	describe('without a custom placeholder', () => {
 		beforeEach(() => {
@@ -65,10 +67,12 @@ describe('DatepickerPlaceholderDirective', () => {
 	});
 
 	describe('with a custom placeholder', () => {
-		beforeEach(async(() => {
-			TestBed.overrideTemplate(TestComponent, '<input ngbDatepicker placeholder="custom"/>');
-			createFixture();
-		}));
+		beforeEach(
+			waitForAsync(() => {
+				TestBed.overrideTemplate(TestComponent, '<input ngbDatepicker placeholder="custom"/>');
+				createFixture();
+			})
+		);
 
 		it("shouldn't change the placeholder", () => {
 			expect(element.properties.placeholder).toBe('custom');

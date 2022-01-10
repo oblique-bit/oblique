@@ -1,5 +1,5 @@
 import {Component, DebugElement} from '@angular/core';
-import {ComponentFixture, TestBed, async, fakeAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed, fakeAsync, waitForAsync} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {first, skip} from 'rxjs/operators';
 import {ObSelectableGroupDirective} from './selectable-group.directive';
@@ -21,11 +21,13 @@ describe('SelectableGroupDirective', () => {
 	let element: DebugElement;
 	const items = [];
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			declarations: [TestComponent, ObMockSelectableDirective, ObSelectableGroupDirective]
-		});
-	}));
+	beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [TestComponent, ObMockSelectableDirective, ObSelectableGroupDirective]
+			});
+		})
+	);
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(TestComponent);

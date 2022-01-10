@@ -1,4 +1,4 @@
-import {TestBed, async} from '@angular/core/testing';
+import {TestBed, waitForAsync} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {Component, ViewChild} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
@@ -47,20 +47,22 @@ describe('UnsavedChangesTabsDirective', () => {
 		directive = testComponent.unsavedChangesDirective;
 	};
 
-	beforeEach(async(() => {
-		unsavedChangesServiceMock = {
-			watch: jest.fn(),
-			listenTo: jest.fn(),
-			unWatch: jest.fn(),
-			unListenTo: jest.fn()
-		};
+	beforeEach(
+		waitForAsync(() => {
+			unsavedChangesServiceMock = {
+				watch: jest.fn(),
+				listenTo: jest.fn(),
+				unWatch: jest.fn(),
+				unListenTo: jest.fn()
+			};
 
-		TestBed.configureTestingModule({
-			declarations: [FaultyTestComponent, TestComponent, TabsTestComponent, ObUnsavedChangesTabsDirective],
-			providers: [ControlContainer, {provide: ObUnsavedChangesTabsService, useValue: unsavedChangesServiceMock}],
-			imports: [CommonModule, NgbNavModule]
-		}).compileComponents();
-	}));
+			TestBed.configureTestingModule({
+				declarations: [FaultyTestComponent, TestComponent, TabsTestComponent, ObUnsavedChangesTabsDirective],
+				providers: [ControlContainer, {provide: ObUnsavedChangesTabsService, useValue: unsavedChangesServiceMock}],
+				imports: [CommonModule, NgbNavModule]
+			}).compileComponents();
+		})
+	);
 
 	it('with neither id nor ngbTab should throw an error', () => {
 		expect(() => initFixture(FaultyTestComponent)).toThrow();
