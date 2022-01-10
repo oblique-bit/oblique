@@ -54,7 +54,7 @@
 			background-color: variables.$ob-light;
 		}
 
-		@include tab-outline.ob-tab-outline();
+		@include tab-outline.ob-tab-outline-thick();
 
 		&::before {
 			position: absolute;
@@ -106,7 +106,7 @@
 .ob-link-card {
 	text-decoration: none;
 
-	@include tab-outline.ob-tab-outline('.mat-card');
+	@include tab-outline.ob-tab-outline-thick('.mat-card');
 }
 
 .ob-button-card {
@@ -120,7 +120,7 @@
 		box-shadow: none;
 
 		&:not(.mat-button-disabled) {
-			@include tab-outline.ob-tab-outline('.mat-card');
+			@include tab-outline.ob-tab-outline-thick('.mat-card');
 		}
 	}
 }

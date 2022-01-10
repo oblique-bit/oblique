@@ -1,6 +1,12 @@
 @use "../variables";
 
-@mixin ob-tab-outline($innerSelector: '') {
+@mixin ob-tab-outline-base(
+	$innerSelector: '',
+	$outlineThickness: 1px,
+	$outlineOffset: -3px,
+	$outlineColor: variables.$ob-primary,
+	$bgColor: variables.$ob-light
+) {
 	&:focus {
 		outline: none;
 	}
@@ -12,8 +18,12 @@
 	.ob-outline &:focus #{$innerSelector} {
 		border-color: variables.$ob-default;
 		box-shadow: 0 0 variables.$ob-spacing-xs 0 variables.$ob-default;
-		outline: 2px solid variables.$ob-primary;
-		outline-offset: -5px;
-		background-color: variables.$ob-primary-100;
+		outline: 2px solid $outlineColor;
+		outline-offset: $outlineOffset;
+		background-color: $bgColor;
 	}
+}
+
+@mixin ob-tab-outline-thick($innerSelector: '') {
+	@include ob-tab-outline-base($innerSelector, $outlineThickness: 2px, $outlineOffset: -5px);
 }
