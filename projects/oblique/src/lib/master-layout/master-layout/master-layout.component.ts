@@ -87,7 +87,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 
 	@HostListener('mousedown')
 	@HostListener('keydown')
-	mousedown() {
+	removeOutline() {
 		this.outline = false;
 	}
 
@@ -97,7 +97,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 	@HostListener('keydown.arrowDown')
 	@HostListener('keydown.arrowRight')
 	@HostListener('keydown.arrowLeft')
-	mouseup() {
+	addOutline() {
 		this.outline = true;
 	}
 
