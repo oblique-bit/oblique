@@ -16,6 +16,19 @@ describe('ObGlobalEventsService', () => {
 		expect(service).toBeTruthy();
 	});
 
+	describe('beforeUnload$', () => {
+		it('should be defined', () => {
+			expect(service.beforeUnload$).toBeTruthy();
+		});
+		it('should emit a BeforeUnloadEvent', done => {
+			service.beforeUnload$.subscribe(event => {
+				expect(event.type).toBe('beforeunload');
+				done();
+			});
+			window.dispatchEvent(new Event('beforeunload'));
+		});
+	});
+
 	describe('click$', () => {
 		it('should be defined', () => {
 			expect(service.click$).toBeTruthy();

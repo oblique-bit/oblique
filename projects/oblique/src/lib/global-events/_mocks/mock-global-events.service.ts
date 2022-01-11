@@ -5,6 +5,7 @@ import {Observable, of} from 'rxjs';
 	providedIn: 'root'
 })
 export class ObMockGlobalEventsService {
+	public readonly beforeUnload$ = of({} as BeforeUnloadEvent);
 	public readonly click$ = of({} as MouseEvent);
 	public readonly mouseMove$ = of({} as MouseEvent);
 	public readonly mouseDown$ = of({} as MouseEvent);
