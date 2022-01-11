@@ -86,11 +86,17 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 	}
 
 	@HostListener('mousedown')
+	@HostListener('keydown')
 	mousedown() {
 		this.outline = false;
 	}
 
-	@HostListener('keydown')
+	@HostListener('keydown.tab')
+	@HostListener('keydown.shift.tab')
+	@HostListener('keydown.arrowUp')
+	@HostListener('keydown.arrowDown')
+	@HostListener('keydown.arrowRight')
+	@HostListener('keydown.arrowLeft')
 	mouseup() {
 		this.outline = true;
 	}
