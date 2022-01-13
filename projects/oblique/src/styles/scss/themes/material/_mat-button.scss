@@ -1,15 +1,33 @@
 @use "../../core/variables" as core-variables;
-@use "mixins/mat-button";
+@use "../../core/mixins/tab-outline";
 
 .mat-button-base {
-	&.ob-button:not(.ob-button-card) {
+	&.ob-button {
 		line-height: 34px;	// material design height
 		border: 1px solid transparent;
 
-		&.mat-primary {
+		.mat-button-focus-overlay {
+			display: none;
+		}
+
+		&.mat-primary:not(.ob-button-card) {
+			&:hover {
+				color: core-variables.$ob-dark;
+			}
+
+			.mat-button-wrapper {
+				// so that it appears before the ripple effect
+				position: relative;
+				z-index: 1;
+			}
+
+			.mat-ripple-element {
+				background-color: core-variables.$ob-primary-300;
+				opacity: 1;
+			}
+
 			&.mat-flat-button {
-				@include mat-button.ob-button(core-variables.$ob-gray-extra-light);
-				background-color: core-variables.$ob-primary;
+				@include tab-outline.ob-tab-outline-primary();
 
 				&.mat-button-disabled {
 					color: core-variables.$ob-gray-600;
@@ -17,21 +35,20 @@
 				}
 			}
 
-			&.mat-stroked-button {
-				@include mat-button.ob-button(core-variables.$ob-primary);
-				border-color: core-variables.$ob-primary;
+			&.mat-stroked-button,
+			&:not(.mat-flat-button):not(.mat-stroked-button) {
+				@include tab-outline.ob-tab-outline();
 
 				&.mat-button-disabled {
 					color: core-variables.$ob-gray-500;
-					border-color: core-variables.$ob-gray-500;
 				}
 			}
 
-			&:not(.mat-flat-button):not(.mat-stroked-button) {
-				@include mat-button.ob-button(core-variables.$ob-primary);
+			&.mat-stroked-button {
+				border-color: core-variables.$ob-primary;
 
 				&.mat-button-disabled {
-					color: core-variables.$ob-gray-500;
+					border-color: core-variables.$ob-gray-500;
 				}
 			}
 		}

@@ -141,16 +141,16 @@ describe('ObMasterLayoutComponent', () => {
 		});
 	});
 
-	describe('mousedown', () => {
+	describe('removeOutline', () => {
 		it('should set outline to false', () => {
-			component.mousedown();
+			component.removeOutline();
 			expect(component.outline).toBe(false);
 		});
 	});
 
-	describe('mouseup', () => {
+	describe('addOutline', () => {
 		it('should set outline to true', () => {
-			component.mouseup();
+			component.addOutline();
 			expect(component.outline).toBe(true);
 		});
 	});

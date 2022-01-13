@@ -11,6 +11,14 @@
 
 	.mat-form-field-outline {
 		background-color: core-variables.$ob-white;
+		border-radius: core-variables.$ob-border-radius-base;
+
+		.mat-form-field-outline-start {
+			border-radius: core-variables.$ob-border-radius-base 0 0 core-variables.$ob-border-radius-base;
+		}
+		.mat-form-field-outline-end {
+			border-radius: 0 core-variables.$ob-border-radius-base core-variables.$ob-border-radius-base 0;
+		}
 	}
 
 	&.mat-form-field-appearance-outline {
@@ -104,6 +112,38 @@
 
 				.ob-table:not(.ob-table-plain) tbody tr:nth-child(odd) & {
 					background-color: core-variables.$ob-gray-extra-light;
+				}
+			}
+		}
+	}
+
+	&.mat-form-field-appearance-outline {
+		.ob-outline &.mat-focused {
+			.mat-form-field-outline {
+				box-shadow: 0 0 core-variables.$ob-spacing-xs 0 core-variables.$ob-default;
+				outline: 1px solid core-variables.$ob-primary;
+				outline-offset: -3px;
+				background-color: core-variables.$ob-light;
+
+				&.mat-form-field-outline-thick {
+					.mat-form-field-outline-start,
+					.mat-form-field-outline-end {
+						border-width: 1px;
+						border-color: core-variables.$ob-default;
+					}
+
+					.mat-form-field-outline-gap {
+						border-width: 1px;
+						border-bottom-color: core-variables.$ob-default;
+					}
+				}
+			}
+
+			.mat-form-field-label {
+				color: core-variables.$ob-default;
+
+				mat-label {
+					background-color: core-variables.$ob-white;
 				}
 			}
 		}
