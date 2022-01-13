@@ -41,6 +41,11 @@ class TestDynamicComponent {
 })
 class TestLinkComponent {}
 
+@Component({
+	template: '<button mat-raised-button obButton="primary">Raised button</button>'
+})
+class TestErrorComponent {}
+
 describe('ButtonDirective', () => {
 	let name: string;
 	let directive: ObButtonDirective;
@@ -51,7 +56,8 @@ describe('ButtonDirective', () => {
 		| TestDefaultComponent
 		| TestIllegalComponent
 		| TestDynamicComponent
-		| TestLinkComponent;
+		| TestLinkComponent
+		| TestErrorComponent;
 	let fixture:
 		| ComponentFixture<TestPrimaryComponent>
 		| ComponentFixture<TestSecondaryComponent>
@@ -59,7 +65,8 @@ describe('ButtonDirective', () => {
 		| ComponentFixture<TestDefaultComponent>
 		| ComponentFixture<TestIllegalComponent>
 		| ComponentFixture<TestDynamicComponent>
-		| ComponentFixture<TestLinkComponent>;
+		| ComponentFixture<TestLinkComponent>
+		| ComponentFixture<TestErrorComponent>;
 
 	beforeEach(
 		waitForAsync(() => {
@@ -72,6 +79,7 @@ describe('ButtonDirective', () => {
 					TestIllegalComponent,
 					TestDynamicComponent,
 					TestLinkComponent,
+					TestErrorComponent,
 					ObButtonDirective
 				],
 				imports: [MatButtonModule]
@@ -269,6 +277,60 @@ describe('ButtonDirective', () => {
 		});
 
 		it('should not have class `.mat-stroked-button`', () => {
+			const selectableElement = fixture.debugElement.query(By.css('.mat-stroked-button'));
+			expect(selectableElement).toBeNull();
+		});
+	});
+
+	describe('error button', () => {
+		beforeEach(() => {
+			jest.spyOn(console, 'error');
+			fixture = TestBed.createComponent(TestErrorComponent);
+			component = fixture.componentInstance;
+			fixture.detectChanges();
+			const element = fixture.debugElement.query(By.directive(ObButtonDirective));
+			name = fixture.debugElement.query(By.all()).name;
+			directive = element.injector.get(ObButtonDirective);
+		});
+
+		afterEach(() => {
+			jest.resetAllMocks();
+		});
+
+		it('should be button', () => {
+			expect(name).toBe('button');
+		});
+
+		it('should output an error message', () => {
+			expect(console.error).toHaveBeenCalledWith(
+				'The obButton directive is meant to be used with mat-button or mat-icon-button exclusively. An instance of mat-raised-button, which can lead to unexpected effects, has been detected, please change it to one of the supported variant.'
+			);
+		});
+
+		it('should output an error once', () => {
+			expect(console.error).toHaveBeenCalledTimes(1);
+		});
+
+		it('should create an instance', () => {
+			expect(component).toBeTruthy();
+			expect(directive).toBeTruthy();
+		});
+
+		it('should be primary obButton', () => {
+			expect(directive.obButton).toBe('primary');
+		});
+
+		it('should have `.mat-primary` class', () => {
+			const selectableElement = fixture.debugElement.query(By.css('.mat-primary'));
+			expect(selectableElement).toBeTruthy();
+		});
+
+		it('should have `.mat-raised-button` class', () => {
+			const selectableElement = fixture.debugElement.query(By.css('.mat-raised-button'));
+			expect(selectableElement).toBeTruthy();
+		});
+
+		it('should not have `.mat-stroked-button` class', () => {
 			const selectableElement = fixture.debugElement.query(By.css('.mat-stroked-button'));
 			expect(selectableElement).toBeNull();
 		});

@@ -1,4 +1,4 @@
-import {Directive, HostBinding, Input, OnChanges, OnInit, Optional} from '@angular/core';
+import {Directive, ElementRef, HostBinding, Input, OnChanges, OnInit, Optional} from '@angular/core';
 import {MatAnchor, MatButton} from '@angular/material/button';
 
 @Directive({
@@ -10,12 +10,14 @@ export class ObButtonDirective implements OnInit, OnChanges {
 	@Input() obButton: 'primary' | 'secondary' | 'tertiary' = 'primary';
 	@HostBinding('class.mat-flat-button') primaryClass: boolean;
 	@HostBinding('class.mat-stroked-button') secondaryClass: boolean;
+	private static readonly forbidden = ['mat-raised-button', 'mat-fab', 'mat-mini-fab', 'mat-stroked-button', 'mat-flat-button'];
 
-	constructor(@Optional() btn: MatButton, @Optional() link: MatAnchor) {
+	constructor(@Optional() btn: MatButton, @Optional() link: MatAnchor, private readonly element: ElementRef) {
 		(btn || link).color = 'primary';
 	}
 
 	ngOnInit() {
+		this.validateButtonVariant();
 		this.setButtonClass();
 	}
 
@@ -27,5 +29,14 @@ export class ObButtonDirective implements OnInit, OnChanges {
 		this.obButton = this.obButton || 'primary';
 		this.primaryClass = this.obButton === 'primary';
 		this.secondaryClass = this.obButton === 'secondary';
+	}
+
+	private validateButtonVariant(): void {
+		const attribute = ObButtonDirective.forbidden.find(attribute => this.element.nativeElement.hasAttribute(attribute));
+		if (attribute) {
+			console.error(
+				`The obButton directive is meant to be used with mat-button or mat-icon-button exclusively. An instance of ${attribute}, which can lead to unexpected effects, has been detected, please change it to one of the supported variant.`
+			);
+		}
 	}
 }
