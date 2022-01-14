@@ -19,7 +19,6 @@
     "Michael Jehle <michael.jehle@bit.admin.ch>",
     "Quinavuidi Camilo <quinavuidi.camilo@bit.admin.ch>",
     "Philippe Krüttli <philippe.kruttli@bit.admin.ch>",
-    "Cédric Tristan Schweizer <cedrictristan.schweizer@bit.admin.ch>",
     "Yanis Noa Weibel <yanisnoa.weibel@bit.admin.ch>",
     "Michèle Habegger <michele.habegger@bit.admin.ch>",
     "Nicolas Müller <nicolas.mueller@bit.admin.ch>",
@@ -28,7 +27,8 @@
     "Pedro De Almeida",
     "Christian Ulmann",
     "Stefan Tanner",
-    "Debora Mittner"
+    "Debora Mittner",
+    "Cédric Tristan Schweizer"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
