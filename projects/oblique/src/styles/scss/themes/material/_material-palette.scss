@@ -1,36 +1,36 @@
-@import "../../core/variables";
+@use "../../core/variables";
 // Some colors have been generated with the help of: http://mcg.mbitson.com/#!?mcgpalette0=%23ffc81b&themename=mcgtheme
 
 $oblique-primary: (
-	50 : $ob-primary-50,
-	100 : $ob-primary-100,	// this is the lighter color
-	200 : $ob-primary-200,
-	300 : $ob-primary-300,
-	400 : $ob-primary-400,
-	500 : $ob-primary-500,	// this is the default color
-	600 : $ob-primary-600,
-	700 : $ob-primary-700,	// this is the darker color
-	800 : $ob-primary-800,
-	900 : $ob-primary-900,
+	50 : variables.$ob-primary-50,
+	100 : variables.$ob-primary-100,	// this is the lighter color
+	200 : variables.$ob-primary-200,
+	300 : variables.$ob-primary-300,
+	400 : variables.$ob-primary-400,
+	500 : variables.$ob-primary-500,	// this is the default color
+	600 : variables.$ob-primary-600,
+	700 : variables.$ob-primary-700,	// this is the darker color
+	800 : variables.$ob-primary-800,
+	900 : variables.$ob-primary-900,
 	A100 : #90c0ff,		// this color has not been provided by the UX team
 	A200 : #5da3ff,		// this color has not been provided by the UX team
 	A400 : #2a85ff,		// this color has not been provided by the UX team
 	A700 : #1077ff,		// this color has not been provided by the UX team
 	contrast: (
-		50 : $ob-default,
-		100 : $ob-default,
-		200 : $ob-default,
-		300 : $ob-default,
-		400 : $ob-white,
-		500 : $ob-white,
-		600 : $ob-white,
-		700 : $ob-white,
-		800 : $ob-white,
-		900 : $ob-white,
-		A100 : $ob-default,
-		A200 : $ob-default,
-		A400 : $ob-white,
-		A700 : $ob-white
+		50 : variables.$ob-default,
+		100 : variables.$ob-default,
+		200 : variables.$ob-default,
+		300 : variables.$ob-default,
+		400 : variables.$ob-white,
+		500 : variables.$ob-white,
+		600 : variables.$ob-white,
+		700 : variables.$ob-white,
+		800 : variables.$ob-white,
+		900 : variables.$ob-white,
+		A100 : variables.$ob-default,
+		A200 : variables.$ob-default,
+		A400 : variables.$ob-white,
+		A700 : variables.$ob-white
 	)
 ) !default;
 
@@ -40,7 +40,7 @@ $oblique-accent: (
 	100 : #d1e7f8,	// this is the lighter color
 	200 : #b2d7f4,
 	300 : #9bcbf0,
-	400 : $ob-malibu,
+	400 : variables.$ob-malibu,
 	500 : #60a2d6,	// this is the default color
 	600 : #5990bb,
 	700 : #517d9f,	// this is the darker color
@@ -51,52 +51,52 @@ $oblique-accent: (
 	A400 : #bddcff,		// this color has not been provided by the UX team
 	A700 : #a3ceff,		// this color has not been provided by the UX team
 	contrast: (
-		50 : $ob-default,
-		100 : $ob-default,
-		200 : $ob-default,
-		300 : $ob-default,
-		400 : $ob-default,
-		500 : $ob-white,
-		600 : $ob-white,
-		700 : $ob-white,
-		800 : $ob-white,
-		900 : $ob-white,
-		A100 : $ob-default,
-		A200 : $ob-default,
-		A400 : $ob-default,
-		A700 : $ob-default,
+		50 : variables.$ob-default,
+		100 : variables.$ob-default,
+		200 : variables.$ob-default,
+		300 : variables.$ob-default,
+		400 : variables.$ob-default,
+		500 : variables.$ob-white,
+		600 : variables.$ob-white,
+		700 : variables.$ob-white,
+		800 : variables.$ob-white,
+		900 : variables.$ob-white,
+		A100 : variables.$ob-default,
+		A200 : variables.$ob-default,
+		A400 : variables.$ob-default,
+		A700 : variables.$ob-default,
 	)
 );
 
 $oblique-warn: (
-	50 : $ob-error-50,
-	100 : $ob-error-100,	// this is the lighter color
-	200 : $ob-error-200,
-	300 : $ob-error-300,
-	400 : $ob-error-400,
-	500 : $ob-error-500,	// this is the default color
-	600 : $ob-error-600,
-	700 : $ob-error-700,	// this is the darker color
-	800 : $ob-error-800,
-	900 : $ob-error-900,
+	50 : variables.$ob-error-50,
+	100 : variables.$ob-error-100,	// this is the lighter color
+	200 : variables.$ob-error-200,
+	300 : variables.$ob-error-300,
+	400 : variables.$ob-error-400,
+	500 : variables.$ob-error-500,	// this is the default color
+	600 : variables.$ob-error-600,
+	700 : variables.$ob-error-700,	// this is the darker color
+	800 : variables.$ob-error-800,
+	900 : variables.$ob-error-900,
 	A100 : #ffb3b6,		// this color has not been provided by the UX team
 	A200 : #ff8085,		// this color has not been provided by the UX team
 	A400 : #ff4d53,		// this color has not been provided by the UX team
 	A700 : #ff343b,		// this color has not been provided by the UX team
 	contrast: (
-		50 : $ob-default,
-		100 : $ob-default,
-		200 : $ob-default,
-		300 : $ob-white,
-		400 : $ob-white,
-		500 : $ob-white,
-		600 : $ob-white,
-		700 : $ob-white,
-		800 : $ob-white,
-		900 : $ob-white,
-		A100 : $ob-default,
-		A200 : $ob-default,
-		A400 : $ob-default,
-		A700 : $ob-default
+		50 : variables.$ob-default,
+		100 : variables.$ob-default,
+		200 : variables.$ob-default,
+		300 : variables.$ob-white,
+		400 : variables.$ob-white,
+		500 : variables.$ob-white,
+		600 : variables.$ob-white,
+		700 : variables.$ob-white,
+		800 : variables.$ob-white,
+		900 : variables.$ob-white,
+		A100 : variables.$ob-default,
+		A200 : variables.$ob-default,
+		A400 : variables.$ob-default,
+		A700 : variables.$ob-default
 	)
 ) !default;

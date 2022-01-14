@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {Component, DebugElement, Directive} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {BehaviorSubject} from 'rxjs';
@@ -37,11 +37,13 @@ describe('SelectableDirective', () => {
 	let element: DebugElement;
 
 	describe('without obSelectableGroup', () => {
-		beforeEach(async(() => {
-			TestBed.configureTestingModule({
-				declarations: [FaultyTestComponent, ObSelectableDirective]
-			});
-		}));
+		beforeEach(
+			waitForAsync(() => {
+				TestBed.configureTestingModule({
+					declarations: [FaultyTestComponent, ObSelectableDirective]
+				});
+			})
+		);
 
 		it('should throw an error', () => {
 			expect(() => TestBed.createComponent(FaultyTestComponent)).toThrowError();
@@ -49,12 +51,14 @@ describe('SelectableDirective', () => {
 	});
 
 	describe('with obSelectableGroup', () => {
-		beforeEach(async(() => {
-			TestBed.configureTestingModule({
-				declarations: [TestComponent, ObSelectableDirective, ObMockSelectableGroupDirective],
-				providers: [{provide: ObSelectableGroupDirective, useClass: ObMockSelectableGroupDirective}]
-			});
-		}));
+		beforeEach(
+			waitForAsync(() => {
+				TestBed.configureTestingModule({
+					declarations: [TestComponent, ObSelectableDirective, ObMockSelectableGroupDirective],
+					providers: [{provide: ObSelectableGroupDirective, useClass: ObMockSelectableGroupDirective}]
+				});
+			})
+		);
 
 		beforeEach(() => {
 			fixture = TestBed.createComponent(TestComponent);

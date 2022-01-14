@@ -10,7 +10,7 @@
 	<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel1" #control="ngModel" />
 	<button type="button" role="button" [obInputClear]="control">
 		<mat-icon svgIcon="cancel-circle"></mat-icon>
-		<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
+		<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 	</button>
 </mat-form-field>
 
@@ -25,7 +25,7 @@
 		<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel2" #controlLG="ngModel" />
 		<button type="button" role="button" [obInputClear]="controlLG">
 			<mat-icon svgIcon="cancel-circle"></mat-icon>
-			<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
+			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 		</button>
 	</mat-form-field>
 </div>
@@ -41,7 +41,7 @@
 		<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel3" #controlSM="ngModel" />
 		<button type="button" role="button" [obInputClear]="controlSM">
 			<mat-icon svgIcon="cancel-circle"></mat-icon>
-			<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
+			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 		</button>
 	</mat-form-field>
 </div>
@@ -53,7 +53,7 @@
 	<mat-datepicker #picker></mat-datepicker>
 	<button type="button" role="button" [obInputClear]="controlD" [datePickerRef]="picker">
 		<mat-icon svgIcon="cancel-circle"></mat-icon>
-		<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
+		<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 	</button>
 </mat-form-field>
 
@@ -71,7 +71,7 @@
 		<input type="text" matInput formControlName="field1" />
 		<button type="button" role="button" [obInputClear]="testForm.get('field1')">
 			<mat-icon svgIcon="cancel-circle"></mat-icon>
-			<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
+			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 		</button>
 	</mat-form-field>
 </div>
@@ -83,7 +83,7 @@
 		<input type="text" matInput #htmlControl />
 		<button type="button" role="button" [obInputClear]="htmlControl">
 			<mat-icon svgIcon="cancel-circle"></mat-icon>
-			<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
+			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 		</button>
 	</mat-form-field>
 </div>

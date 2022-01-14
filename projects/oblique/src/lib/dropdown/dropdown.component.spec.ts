@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {ObDropdownComponent} from './dropdown.component';
 
@@ -8,12 +8,14 @@ describe('DropdownComponent', () => {
 	let component: ObDropdownComponent;
 	let fixture: ComponentFixture<ObDropdownComponent>;
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			declarations: [ObDropdownComponent],
-			providers: [{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService}]
-		}).compileComponents();
-	}));
+	beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [ObDropdownComponent],
+				providers: [{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService}]
+			}).compileComponents();
+		})
+	);
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObDropdownComponent);

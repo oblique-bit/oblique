@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
+import {Subject} from 'rxjs';
+import {ObGlobalEventsService} from '@oblique/oblique';
 import {ObAriaMenuButtonDirective} from './aria-menu-button.directive';
 
 @Component({
@@ -13,10 +15,14 @@ describe('ObAriaMenuButtonDirective', () => {
 	let fixture: ComponentFixture<TestComponent>;
 	let element: HTMLElement;
 	let directive: ObAriaMenuButtonDirective;
+	const mock = {
+		click$: new Subject()
+	};
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			declarations: [TestComponent, ObAriaMenuButtonDirective]
+			declarations: [TestComponent, ObAriaMenuButtonDirective],
+			providers: [{provide: ObGlobalEventsService, useValue: mock}]
 		});
 
 		fixture = TestBed.createComponent(TestComponent);
@@ -72,11 +78,26 @@ describe('ObAriaMenuButtonDirective', () => {
 			expect(directive.active).toBe(undefined);
 		});
 
-		it('should toggle active on click', () => {
-			directive.onClick();
-			expect(directive.active).toBe(true);
-			directive.onClick();
-			expect(directive.active).toBe(undefined);
+		describe('should toggle active on click', () => {
+			beforeEach(() => {
+				directive.active = undefined;
+				directive.onClick();
+			});
+
+			it('should set active to true', () => {
+				expect(directive.active).toBe(true);
+			});
+
+			it('should set active to undefined with another click', () => {
+				directive.onClick();
+				expect(directive.active).toBe(undefined);
+			});
+
+			it('should set active to undefined with an outside click', () => {
+				mock.click$.next({});
+				fixture.detectChanges();
+				expect(directive.active).toBe(undefined);
+			});
 		});
 	});
 });

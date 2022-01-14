@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
 
@@ -24,22 +24,26 @@ describe('StickyComponent', () => {
 	let fixture: ComponentFixture<TestFirstCaseComponent>;
 	let testComponent: TestFirstCaseComponent;
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			declarations: [TestFirstCaseComponent, ObStickyComponent],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA]
-		}).compileComponents();
-	}));
+	beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [TestFirstCaseComponent, ObStickyComponent],
+				schemas: [CUSTOM_ELEMENTS_SCHEMA]
+			}).compileComponents();
+		})
+	);
 
-	beforeEach(async(() => {
-		fixture = TestBed.createComponent(TestFirstCaseComponent);
-		testComponent = fixture.componentInstance;
-		fixture.detectChanges();
-	}));
+	beforeEach(
+		waitForAsync(() => {
+			fixture = TestBed.createComponent(TestFirstCaseComponent);
+			testComponent = fixture.componentInstance;
+			fixture.detectChanges();
+		})
+	);
 
-	it('should create', async(() => {
+	it('should create', () => {
 		expect(testComponent).toBeTruthy();
-	}));
+	});
 
 	it('should contain sticky class', () => {
 		expect(fixture.debugElement.query(By.css('ob-sticky')).nativeElement.classList).toContain('ob-sticky');

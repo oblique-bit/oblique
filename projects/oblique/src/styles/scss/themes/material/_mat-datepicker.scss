@@ -1,6 +1,6 @@
-@import "../../core/mixins/shadow";
+@use "../../core/mixins/shadow";
 
 .mat-datepicker-content {
 	box-shadow: none;
-	@include ob-dropShadow();
+	@include shadow.ob-dropShadow();
 }

@@ -74,7 +74,7 @@ export class ThemeService {
 	private initTheme(): void {
 		this.themeLink = this.createAndAddEmptyLink();
 		this.theme$
-			.pipe(map(theme => (ThemeService.isInEnum(theme, THEMES) ? `assets/css/${theme}.css` : theme)))
+			.pipe(map(theme => (ThemeService.isInEnum(theme, THEMES) ? `${theme}.css` : theme)))
 			.subscribe(path => this.renderer.setAttribute(this.themeLink, 'href', path));
 	}
 
@@ -83,7 +83,7 @@ export class ThemeService {
 		this.font$
 			.pipe(
 				tap(font => this.addWarning(font === FONTS.FRUTIGER)),
-				map(font => ([FONTS.FRUTIGER, FONTS.ROBOTO].includes(font) ? `assets/css/${font}.css` : ''))
+				map(font => ([FONTS.FRUTIGER, FONTS.ROBOTO].includes(font) ? `${font}.css` : ''))
 			)
 			.subscribe(path => this.renderer.setAttribute(this.fontLink, 'href', path));
 	}

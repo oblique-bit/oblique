@@ -1,4 +1,4 @@
-import {TestBed, async} from '@angular/core/testing';
+import {TestBed, waitForAsync} from '@angular/core/testing';
 import {HttpClientTestingModule, HttpTestingController, TestRequest} from '@angular/common/http/testing';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
@@ -63,25 +63,27 @@ describe('HttpApiInterceptor', () => {
 	let spinner: ObSpinnerService;
 	let notification: ObNotificationService;
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			imports: [HttpClientTestingModule],
-			providers: [
-				DataService,
-				{provide: ObHttpApiInterceptorEvents, useClass: MockHttpApiInterceptorEvents},
-				{provide: ObSpinnerService, useClass: MockSpinnerService},
-				{provide: ObNotificationService, useClass: MockNotificationService},
-				{provide: WINDOW, useValue: window}
-			]
-		});
+	beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
+				imports: [HttpClientTestingModule],
+				providers: [
+					DataService,
+					{provide: ObHttpApiInterceptorEvents, useClass: MockHttpApiInterceptorEvents},
+					{provide: ObSpinnerService, useClass: MockSpinnerService},
+					{provide: ObNotificationService, useClass: MockNotificationService},
+					{provide: WINDOW, useValue: window}
+				]
+			});
 
-		service = TestBed.inject(DataService);
-		httpMock = TestBed.inject(HttpTestingController);
-		config = TestBed.inject(ObHttpApiInterceptorConfig);
-		events = TestBed.inject(ObHttpApiInterceptorEvents);
-		spinner = TestBed.inject(ObSpinnerService);
-		notification = TestBed.inject(ObNotificationService);
-	}));
+			service = TestBed.inject(DataService);
+			httpMock = TestBed.inject(HttpTestingController);
+			config = TestBed.inject(ObHttpApiInterceptorConfig);
+			events = TestBed.inject(ObHttpApiInterceptorEvents);
+			spinner = TestBed.inject(ObSpinnerService);
+			notification = TestBed.inject(ObNotificationService);
+		})
+	);
 
 	it('should add an X-Requested-With header', () => {
 		service = TestBed.inject(DataService);

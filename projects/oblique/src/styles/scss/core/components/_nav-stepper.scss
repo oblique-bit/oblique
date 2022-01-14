@@ -1,4 +1,3 @@
-@use "~@fortawesome/fontawesome-free/scss/variables" as scss-variables;
 @use "../variables";
 @use "../mixins/stepper";
 
@@ -51,7 +50,7 @@
 		}
 
 		&.success {
-			@include stepper.ob-stepper-state(variables.$ob-success, variables.$ob-white, variables.$ob-success, variables.$ob-success-light, scss-variables.$fa-var-check);
+			@include stepper.ob-stepper-state(variables.$ob-success, variables.$ob-white, variables.$ob-success, variables.$ob-success-light, true);
 		}
 
 		&.disabled {
