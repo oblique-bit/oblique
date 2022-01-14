@@ -1,3 +1,37 @@
+# [8.0.0-RC.1](https://github.com/oblique-bit/oblique/compare/8.0.0-beta.1...8.0.0-RC.1) (2022-01-14)
+
+## Bug Fixes
+* **bootstrap:** ensure `oblique-bootstrap.css` don't contain unintended code ([9fc787e](https://github.com/oblique-bit/oblique/commit/9fc787e5b7dc45bdde0b6e8e9e17bcde1afbeef4))
+* **master-layout:** ensure absolutely positioned hidden elements don't trigger an extra scrollbar ([f7995d4](https://github.com/oblique-bit/oblique/commit/f7995d4ec8c4acd30953b08a157b76644793ad74))
+* **master-layout:** ensure keyboard events don't trigger state toggling twice ([b63b7e1](https://github.com/oblique-bit/oblique/commit/b63b7e1914189f3f2feddab29b51d36fe804f590))
+* **master-layout:** ensure the `ob-outline` class is only added when navigation with the keyboard ([72c33c9](https://github.com/oblique-bit/oblique/commit/72c33c958e23228485610a9a8e182ef9f0780cc5))
+* **master-layout:** fix language selection for screen readers ([f7bc56c](https://github.com/oblique-bit/oblique/commit/f7bc56c34018eb55d4c6757b32c92646f66095a1))
+* **master-layout:** toggle `aria-expanded` on an outside click ([e02eb01](https://github.com/oblique-bit/oblique/commit/e02eb01695411c6e031a79967c6b00aa01bb82d7))
+* **material:** add tab focus for form fields ([fb81aef](https://github.com/oblique-bit/oblique/commit/fb81aefe8050b168b886c7101f55c735f788bc29))
+* **material:** ensure `oblique-material.css` don't contain unintended code ([b26120e](https://github.com/oblique-bit/oblique/commit/b26120e5bd10990199034168421fa9f727c9babb))
+* **material:** fix the ripple effect on Oblique buttons ([92f7aad](https://github.com/oblique-bit/oblique/commit/92f7aad15ece764347cfce729cd003361f20c0b3))
+* **material:** improve form fields appearance ([88f8660](https://github.com/oblique-bit/oblique/commit/88f8660e90de5e741c23a923983d49b9140ae84b))
+* **material:** vertically center stepper icons ([787d2a9](https://github.com/oblique-bit/oblique/commit/787d2a96e10a22ab300fc1072ddce13bb54a892e))
+* **translation:** fix typos & inconsistencies ([92a8803](https://github.com/oblique-bit/oblique/commit/92a8803208ed44afcdc2b66870e4f102989c9781))
+
+## Code Refactoring
+* **master-layout:** rename `mousedown` and `mouseup` functions ([403d894](https://github.com/oblique-bit/oblique/commit/403d8944a8b0132610983007d64c11adf6e96b62))
+* **material:** use `tab-outline` for Oblique's primary button ([6b0157d](https://github.com/oblique-bit/oblique/commit/6b0157d5ab2ab9870a97307a84b06816a88739c5))
+* **styles:** rename `sr-only` class into `ob-screen-reader-only` ([f4c33a7](https://github.com/oblique-bit/oblique/commit/f4c33a7342236b5ac2a6c82118b185d4082bff64))
+
+## Features
+* **button:** show error in console if used with an invalid variant ([4728d97](https://github.com/oblique-bit/oblique/commit/4728d9774dd0bc3cfd2b753a5537da75c864c87e))
+* **chore:** update contributors ([cceba1d](https://github.com/oblique-bit/oblique/commit/cceba1d0798d2cb12e3362b9e82990fac8dae5b8))
+* **chore:** update dependencies ([4f78faa](https://github.com/oblique-bit/oblique/commit/4f78faa20750fee7a6eab4828f6e193c5d0e7e46))
+* **utilities:** add `isNotKeyboardEventOnButton` function to filter out keyboard events on buttons ([8b08fa0](https://github.com/oblique-bit/oblique/commit/8b08fa058223b147de3e2934d1e61ee258d852a1))
+
+## BREAKING CHANGES
+* **master-layout:** `mousedown` function have been renamed `removeOutline`
+* **master-layout:** `mouseup` function have been renamed `addOutline`
+* **material:** `ob-button` mixin has been removed with no replacement
+* **styles:** `sr-only` class has been renamed into `ob-screen-reader-only`
+
+
 # [8.0.0-beta.1](https://github.com/oblique-bit/oblique/compare/7.1.2...8.0.0-beta.1) (2021-12-24)
 
 ## Bug Fixes
