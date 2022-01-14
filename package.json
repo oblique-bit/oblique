@@ -48,6 +48,7 @@
     "postdist": "npm run minify && npm run gulp -- dist && ts-node scripts/post-dist.ts",
     "minify": "uglifyjs --compress --mangle --output dist/oblique/ob-features.js -- projects/oblique/src/ob-features.js",
     "test": "node --expose-gc ./node_modules/@angular/cli/bin/ng test oblique --configuration production",
+    "test-debugging": "npm run test -- --run-in-band --log-heap-usage",
     "lint": "npm run eslint && npm run stylelint && npm run prettier -- --check",
     "format": "npm run eslint -- --fix && npm run stylelint -- --fix && npm run prettier -- --write",
     "eslint": "eslint \"{src,projects,scripts,tests}/**/*.{ts,js,html}\" \"*.{ts,js,html}\" --cache",
