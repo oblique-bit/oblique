@@ -34,7 +34,8 @@ import {FormControlStateSampleComponent} from './form-control-state-sample/form-
 import {InputClearSampleComponent} from './input-clear/input-clear.component';
 import {MasterLayoutSampleComponent} from './master-layout/master-layout-sample.component';
 import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
-import {NavTreeDetailSampleComponent, NavTreeSampleComponent} from './nav-tree/nav-tree-sample.component';
+import {NavTreeSampleComponent} from './nav-tree/nav-tree-sample.component';
+import {NavTreeDetailSampleComponent} from './nav-tree/nav-tree-detail-sample.component';
 import {NestedFormSampleComponent} from './nested-form/nested-form-sample.component';
 import {NestedFormChildSampleComponent} from './nested-form/nested-form-child-sample.component';
 import {NestedFormGrandChildSampleComponent} from './nested-form/nested-form-grandchild-sample.component';
