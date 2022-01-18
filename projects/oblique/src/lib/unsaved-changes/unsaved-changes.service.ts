@@ -1,18 +1,20 @@
-import {Inject, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {ObPopUpService} from '../pop-up/pop-up.service';
-import {WINDOW} from '../utilities';
-import {Window} from '@popperjs/core';
+import {ObGlobalEventsService} from '../global-events/global-events.service';
 
 @Injectable({providedIn: 'root'})
 export class ObUnsavedChangesService {
 	public isActive = true;
 	private readonly controlContainer: Record<string, ControlContainer> = {};
 
-	constructor(private readonly translateService: TranslateService, private readonly popUpService: ObPopUpService, @Inject(WINDOW) window: Window) {
-		window.addEventListener('beforeunload', event => this.onUnload(event));
-		window.addEventListener('unload', event => this.onUnload(event));
+	constructor(
+		private readonly obGlobalEventsService: ObGlobalEventsService,
+		private readonly translateService: TranslateService,
+		private readonly popUpService: ObPopUpService
+	) {
+		obGlobalEventsService.beforeUnload$.subscribe(event => this.onUnload(event));
 	}
 
 	watch(formId: string, form: ControlContainer): void {
