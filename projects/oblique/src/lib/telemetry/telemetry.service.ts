@@ -1,11 +1,11 @@
 import {Inject, Injectable, InjectionToken, Optional, isDevMode} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {EMPTY, fromEvent, race} from 'rxjs';
+import {EMPTY} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {ObTelemetryRecord} from './telemetry-record';
 import {ObITelemetryRecord} from './telemetry.model';
-import {WINDOW} from '../utilities';
 import {ObThemeService} from '../theme.service';
+import {ObGlobalEventsService} from '../global-events/global-events.service';
 
 export const TELEMETRY_DISABLE = new InjectionToken<boolean>('TELEMETRY_DISABLE');
 
@@ -21,8 +21,8 @@ export class ObTelemetryService {
 	constructor(
 		private readonly http: HttpClient,
 		theme: ObThemeService,
-		@Optional() @Inject(TELEMETRY_DISABLE) isDisabled: boolean,
-		@Inject(WINDOW) window: Window
+		obGlobalEventsService: ObGlobalEventsService,
+		@Optional() @Inject(TELEMETRY_DISABLE) isDisabled: boolean
 	) {
 		if (isDisabled) {
 			console.info('Oblique Telemetry is disabled by injection token.');
@@ -30,7 +30,7 @@ export class ObTelemetryService {
 		this.isDisabled = !isDevMode() || isDisabled;
 		if (!this.isDisabled) {
 			this.telemetryRecord = new ObTelemetryRecord(theme.theme);
-			race(fromEvent(window, 'beforeunload'), fromEvent(window, 'unload')).subscribe(() => this.sendRecord());
+			obGlobalEventsService.beforeUnload$.subscribe(() => this.sendRecord());
 		}
 	}
 
