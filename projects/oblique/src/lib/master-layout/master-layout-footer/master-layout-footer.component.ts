@@ -1,9 +1,9 @@
 import {Component, ContentChildren, HostBinding, OnDestroy, QueryList, TemplateRef, ViewEncapsulation} from '@angular/core';
-import {takeUntil} from 'rxjs/operators';
+import {filter, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {ObEMasterLayoutEventValues} from '../master-layout.model';
+import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
 
 @Component({
 	selector: 'ob-master-layout-footer',
@@ -20,7 +20,8 @@ export class ObMasterLayoutFooterComponent implements OnDestroy {
 	private readonly unsubscribe = new Subject();
 
 	constructor(private readonly masterLayout: ObMasterLayoutService, private readonly config: ObMasterLayoutConfig) {
-		this.propertyChanges();
+		this.customChange();
+		this.hasLogoChange();
 	}
 
 	ngOnDestroy(): void {
@@ -28,16 +29,21 @@ export class ObMasterLayoutFooterComponent implements OnDestroy {
 		this.unsubscribe.complete();
 	}
 
-	private propertyChanges(): void {
-		this.masterLayout.footer.configEvents$.pipe(takeUntil(this.unsubscribe)).subscribe(event => {
-			switch (event.name) {
-				case ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM:
-					this.isCustom = event.value;
-					break;
-				case ObEMasterLayoutEventValues.FOOTER_HAS_LOGO_ON_SCROLL:
-					this.hasLogoOnScroll = event.value;
-					break;
-			}
-		});
+	private customChange(): void {
+		this.masterLayout.footer.configEvents$
+			.pipe(
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(event => (this.isCustom = event.value));
+	}
+
+	private hasLogoChange(): void {
+		this.masterLayout.footer.configEvents$
+			.pipe(
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.FOOTER_HAS_LOGO_ON_SCROLL),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(event => (this.hasLogoOnScroll = event.value));
 	}
 }

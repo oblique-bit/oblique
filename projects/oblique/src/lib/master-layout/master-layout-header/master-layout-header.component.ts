@@ -61,7 +61,8 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		@Inject(OB_BANNER) @Optional() bannerToken
 	) {
 		this.languages = this.formatLanguages();
-		this.propertyChanges();
+		this.customChange();
+		this.smallChange();
 		this.reduceOnScroll();
 		this.banner = {color: '#000', bgColor: '#0f0', ...bannerToken};
 		this.home$ = this.masterLayout.homePageRouteChange$;
@@ -117,23 +118,22 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		});
 	}
 
-	private propertyChanges(): void {
-		const events = [ObEMasterLayoutEventValues.HEADER_IS_CUSTOM, ObEMasterLayoutEventValues.HEADER_IS_SMALL];
+	private customChange(): void {
 		this.masterLayout.header.configEvents$
 			.pipe(
-				filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_IS_CUSTOM),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => {
-				switch (event.name) {
-					case ObEMasterLayoutEventValues.HEADER_IS_CUSTOM:
-						this.isCustom = event.value;
-						break;
-					case ObEMasterLayoutEventValues.HEADER_IS_SMALL:
-						this.isSmall = event.value;
-						break;
-				}
-			});
+			.subscribe(event => (this.isCustom = event.value));
+	}
+
+	private smallChange(): void {
+		this.masterLayout.header.configEvents$
+			.pipe(
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_IS_SMALL),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(event => (this.isSmall = event.value));
 	}
 
 	private formatLanguages(): {code: string; id?: string}[] {

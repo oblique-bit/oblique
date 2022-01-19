@@ -38,7 +38,8 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 		private readonly globalEventsService: ObGlobalEventsService
 	) {
 		this.masterLayout.navigation.refreshed.pipe(takeUntil(this.unsubscribe)).subscribe(this.refresh.bind(this));
-		this.propertyChanges();
+		this.scrollModeChange();
+		this.fullWidthChange();
 	}
 
 	ngOnInit(): void {
@@ -85,23 +86,22 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 		}
 	}
 
-	private propertyChanges(): void {
-		const events = [ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE, ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH];
+	private scrollModeChange(): void {
 		this.masterLayout.navigation.configEvents$
 			.pipe(
-				filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => {
-				switch (event.name) {
-					case ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE:
-						this.masterLayout.navigation.refresh();
-						break;
-					case ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH:
-						this.isFullWidth = event.value;
-						break;
-				}
-			});
+			.subscribe(() => this.masterLayout.navigation.refresh());
+	}
+
+	private fullWidthChange(): void {
+		this.masterLayout.navigation.configEvents$
+			.pipe(
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(event => (this.isFullWidth = event.value));
 	}
 
 	private closeOnEscape(): void {
