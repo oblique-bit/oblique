@@ -70,7 +70,7 @@ overrides:
       "@angular-eslint/prefer-on-push-component-change-detection": off
       "@angular-eslint/sort-ngmodule-metadata-arrays": off # preferred order is 'imports', 'declarations', 'providers'
       "@angular-eslint/use-component-view-encapsulation": off # oblique uses ViewEncapsulation.NONE
-      "@angular-eslint/use-injectable-provided-in": off # mocks do not use providedIn
+      "@angular-eslint/use-injectable-provided-in": off # some specialized services are directly provided in a component
 
       # override default values
       "@angular-eslint/no-host-metadata-property":
@@ -79,7 +79,6 @@ overrides:
 
       # rules that need some refactoring to be enabled
       "@angular-eslint/component-max-inline-declarations": off
-      "@angular-eslint/no-forward-ref": off
       "@angular-eslint/no-lifecycle-call": off
 
       # other rules that will be processed later
