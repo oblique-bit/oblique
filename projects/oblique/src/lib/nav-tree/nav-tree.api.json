@@ -32,10 +32,7 @@
         {
           "name": "labelFormatter",
           "text": "A function to format each nav entry label.",
-          "arguments": [
-            "item: ObNavTreeItemModel",
-            "filterPattern: string"
-          ],
+          "arguments": ["item: ObNavTreeItemModel", "filterPattern: string"],
           "returns": "string",
           "since": "2.0.0"
         },
@@ -44,10 +41,7 @@
           "text": "Classes applied to the component to customize it.",
           "type": "string",
           "default": "nav-bordered nav-hover",
-          "values": [
-            "nav-bordered",
-            "nav-hover"
-          ],
+          "values": ["nav-bordered", "nav-hover"],
           "since": "2.0.0"
         },
         {

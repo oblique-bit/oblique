@@ -14,11 +14,7 @@
           "text": "Defines the size of panel's header.",
           "type": "string",
           "default": "md",
-          "values": [
-            "sm",
-            "md",
-            "lg"
-          ],
+          "values": ["sm", "md", "lg"],
           "since": "4.0.0"
         },
         {
@@ -26,11 +22,7 @@
           "text": "Defines the size of panel's footer.",
           "type": "string",
           "default": "md",
-          "values": [
-            "sm",
-            "md",
-            "lg"
-          ],
+          "values": ["sm", "md", "lg"],
           "since": "4.0.0"
         },
         {

@@ -1,7 +1,5 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {},
-  "files": [
-    "./main.ts"
-  ]
+  "files": ["./main.ts"]
 }

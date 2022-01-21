@@ -48,9 +48,7 @@
         },
         {
           "name": "setDescription",
-          "arguments": [
-            "description: string"
-          ],
+          "arguments": ["description: string"],
           "text": "Updates the document page description, i.e. the content of the <code>meta  type=\"description\"</code> tag",
           "returns": "string",
           "since": "2.0.0"

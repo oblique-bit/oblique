@@ -1,49 +1,45 @@
 {
-    "$schema": "../../../schema.json",
-    "api": [
-      {
-        "name": "ObExternalLinkDirective",
-        "usage": "This directive is transparent and automatically enhance external links. It is applied by importing the <code>ObExternalLinkModule</code>.",
-        "selector": "a[href]",
-        "type": "directive",
-        "since": "6.1.0",
-        "inputs": [
-          {
-            "name": "rel",
-            "text": "Defines the <code>rel</code> attribute value for external links.",
-            "type": "string",
-            "default": "noopener noreferrer",
-            "since": "6.1.0"
-          },
-          {
-            "name": "target",
-            "text": "Defines the <code>target</code> attribute value for external links.",
-            "type": "string",
-            "default": "_blank",
-            "since": "6.1.0"
-          },
-          {
-            "name": "icon",
-            "text": "Defines the presence and position of an additional icon that marks links as external.<br/>It is strongly recommended, for accessibility reasons, that the icon is present.",
-            "type": "string",
-            "since": "6.1.0",
-            "default": "left",
-            "values": [
-              "none",
-              "left",
-              "right"
-            ]
-          }
-        ],
-        "tokens": [
-          {
-            "name": "EXTERNAL_LINK",
-            "text": "The default external links configuration",
-            "type": "ObIExternalLink",
-            "default": "{rel: 'noopener noreferrer', target: '_blank', icon: 'right'}]",
-            "since": "6.1.0"
-          }
-        ]
-      }
-    ]
-  }
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObExternalLinkDirective",
+      "usage": "This directive is transparent and automatically enhance external links. It is applied by importing the <code>ObExternalLinkModule</code>.",
+      "selector": "a[href]",
+      "type": "directive",
+      "since": "6.1.0",
+      "inputs": [
+        {
+          "name": "rel",
+          "text": "Defines the <code>rel</code> attribute value for external links.",
+          "type": "string",
+          "default": "noopener noreferrer",
+          "since": "6.1.0"
+        },
+        {
+          "name": "target",
+          "text": "Defines the <code>target</code> attribute value for external links.",
+          "type": "string",
+          "default": "_blank",
+          "since": "6.1.0"
+        },
+        {
+          "name": "icon",
+          "text": "Defines the presence and position of an additional icon that marks links as external.<br/>It is strongly recommended, for accessibility reasons, that the icon is present.",
+          "type": "string",
+          "since": "6.1.0",
+          "default": "left",
+          "values": ["none", "left", "right"]
+        }
+      ],
+      "tokens": [
+        {
+          "name": "EXTERNAL_LINK",
+          "text": "The default external links configuration",
+          "type": "ObIExternalLink",
+          "default": "{rel: 'noopener noreferrer', target: '_blank', icon: 'right'}]",
+          "since": "6.1.0"
+        }
+      ]
+    }
+  ]
+}

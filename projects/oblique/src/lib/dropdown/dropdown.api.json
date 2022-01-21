@@ -12,11 +12,7 @@
         {
           "name": "position",
           "text": "Defines the position of the dropdown according to its toggle.",
-          "values": [
-            "right",
-            "middle",
-            "left"
-          ],
+          "values": ["right", "middle", "left"],
           "type": "string",
           "default": "middle",
           "since": "4.0.0"

@@ -21,12 +21,7 @@
           "text": "Defines the icon's position within the collapse's header",
           "type": "string",
           "default": "left",
-          "values": [
-            "left",
-            "right",
-            "justified",
-            "none"
-          ],
+          "values": ["left", "right", "justified", "none"],
           "since": "5.0.0",
           "updated": "7.0.0"
         },
