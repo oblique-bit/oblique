@@ -148,12 +148,10 @@ export class ObSelectableGroupDirective implements AfterContentInit {
 	private next(direction: number, $event: KeyboardEvent): void {
 		if (this.mode !== 'checkbox') {
 			$event.preventDefault();
-			/* eslint-disable prettier/prettier */
 			const index =
 				this.mode === 'radio'
 					? (this.focused + this.selectables.length + direction) % this.selectables.length
 					: Math.max(0, Math.min(this.selectables.length - 1, this.focused + direction));
-			/* eslint-enable prettier/prettier */
 			this.toggle(this.selectables[index]);
 			this.selectables[index].focus();
 			this.updateSelection();

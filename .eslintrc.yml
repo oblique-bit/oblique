@@ -12,7 +12,7 @@ overrides:
       - plugin:@typescript-eslint/eslint-plugin/recommended
       - plugin:@angular-eslint/recommended
       - plugin:@angular-eslint/template/process-inline-templates
-      - plugin:prettier/recommended
+      - prettier # this turns off all rules from eslint, @typescript-eslint and @angular-eslint that conflicts with prettier
     rules:
       "@typescript-eslint/member-ordering":
         - error
@@ -139,13 +139,3 @@ overrides:
       - "*.html"
     extends:
       - plugin:@angular-eslint/template/recommended
-  - files:
-      - "*.html"
-    excludedFiles:
-      - "*inline-template-*.component.html"
-    extends:
-      - plugin:prettier/recommended
-    rules:
-      prettier/prettier:
-        - error
-        - parser: angular
