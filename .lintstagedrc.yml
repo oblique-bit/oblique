@@ -1,2 +1,3 @@
 "*.{ts,js,html}": eslint --fix --cache
+"*.{css,scss}": stylelint --fix --cache
 "*.{ts,js,html,json,yml,md,css,scss}": prettier --fix

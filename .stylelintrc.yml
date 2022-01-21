@@ -1,0 +1,55 @@
+extends:
+  - stylelint-config-standard-scss
+  - stylelint-config-prettier-scss
+rules:
+  # override default values
+  color-function-notation: legacy #recommanded "modern" value leads to build errors
+  no-invalid-position-at-import-rule:
+    - true
+    - ignoreAtRules:
+        - use
+        - forward
+        - include
+  number-max-precision: 6
+  property-no-vendor-prefix:
+    - true
+    - ignoreProperties:
+        - appearance # experimental rule, that don't behave the same without prefix
+        - text-size-adjust # experimental rule, that don't behave the same without prefix
+  selector-pseudo-element-no-unknown:
+    - true
+    - ignorePseudoElements:
+        - ng-deep
+  value-keyword-case:
+    - lower
+    - ignoreKeywords:
+        - Arial
+        - Roboto
+        - BlinkMacSystemFont
+  # deactivate unwanted rules
+  font-family-no-missing-generic-family-keyword: null # could be reactivated once bootstrap in removed
+  scss/double-slash-comment-empty-line-before: null
+  # rules that implies breaking changes
+  keyframes-name-pattern: null
+  selector-class-pattern: null
+  selector-id-pattern: null
+  scss/at-mixin-pattern: null
+  scss/dollar-variable-pattern: null
+  # rules that need some refactoring to be enabled
+  alpha-value-notation: null
+  color-hex-length: null
+  comment-empty-line-before: null
+  declaration-block-no-redundant-longhand-properties: null
+  declaration-empty-line-before: null
+  font-family-name-quotes: null
+  length-zero-no-unit: null
+  no-descending-specificity: null
+  no-duplicate-selectors: null
+  rule-empty-line-before: null
+  selector-pseudo-element-colon-notation: null
+  scss/at-mixin-argumentless-call-parentheses: null
+  scss/at-rule-conditional-no-parentheses: null
+  scss/double-slash-comment-whitespace-inside: null
+  scss/dollar-variable-empty-line-before: null
+  scss/no-global-function-names: null
+  shorthand-property-no-redundant-values: null
