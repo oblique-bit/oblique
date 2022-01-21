@@ -37,14 +37,14 @@ class Release {
 		if (!preVersion) {
 			return currentVersion.version;
 		}
-		if (currentVersion.preVersionType != preVersion) {
+		if (currentVersion.preVersionType !== preVersion) {
 			return `${currentVersion.version}-${preVersion}.1`;
 		}
 		return `${currentVersion.version}-${currentVersion.preVersionType}.${currentVersion.preVersionNumber + 1}`;
 	}
 
 	private static getVersionFromGit(versionNbr: string): string {
-		const current = versionNbr.match(/(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)/).groups;
+		const current = /(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)/.exec(versionNbr).groups;
 		const commits = Release.execSync(`git log ${versionNbr}..HEAD --abbrev-commit`).toString();
 		return commits.indexOf('BREAKING CHANGE') > -1
 			? `${+current?.major + 1}.0.0`
