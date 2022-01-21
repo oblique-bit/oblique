@@ -14,12 +14,12 @@ Object.defineProperty(window, 'scrollIntoView', {value: mock()});
 Object.defineProperty(window, 'getComputedStyle', {
 	value: () => ['-webkit-appearance']
 });
-(window as any).HTMLElement.prototype.scrollIntoView = function() {};
+(window as any).HTMLElement.prototype.scrollIntoView = function () {};
 Object.defineProperty(document.body.style, 'transform', {
 	value: () => {
 		return {
 			enumerable: true,
-			configurable: true,
+			configurable: true
 		};
 	}
 });

@@ -50,7 +50,7 @@
     "test": "ng test oblique --configuration production",
     "lint": "ng lint oblique && ng lint oblique-showcase && npm run prettier -- --check",
     "format": "ng lint oblique --fix && ng lint oblique-showcase --fix && npm run prettier -- --write",
-    "prettier": "prettier '{src,projects/oblique}/**/*.{ts,html}' --loglevel warn",
+    "prettier": "prettier '{src,projects,scripts,tests}/**/*.{ts,html}' '*.{ts,html}' --loglevel warn",
     "icons": "ts-node scripts/icons.ts",
     "copy-error-messages": "ts-node scripts/copy-error-messages.ts",
     "e2e": "ng e2e",
