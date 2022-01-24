@@ -60,11 +60,9 @@ $smallSize: 1.7273em; //19px with a 11px basis
 			margin-left: -$smallSize;
 			color: ob-bootstrap-variables.$ob-input-color;
 			font-size: $small;
-
 			text-align: center;
 			line-height: $smallSize;
 			vertical-align: middle;
-
 			transform: scale(0, 0);
 			transition: transform 0.15s cubic-bezier(0.8, -0.33, 0.2, 1.33);
 			//curve - http://cubic-bezier.com/#.8,-0.33,.2,1.33

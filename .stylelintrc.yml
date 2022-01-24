@@ -9,6 +9,7 @@ rules:
     - true
     - ignoreShorthands:
         - transition #too many properties are summarised with this one
+  declaration-empty-line-before: never
   no-invalid-position-at-import-rule:
     - true
     - ignoreAtRules:
@@ -41,7 +42,6 @@ rules:
   scss/at-mixin-pattern: null
   scss/dollar-variable-pattern: null
   # rules that need some refactoring to be enabled
-  declaration-empty-line-before: null
   font-family-name-quotes: null
   length-zero-no-unit: null
   no-descending-specificity: null
