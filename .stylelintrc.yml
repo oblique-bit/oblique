@@ -5,6 +5,10 @@ rules:
   # override default values
   color-function-notation: legacy #recommanded "modern" value leads to build errors
   color-hex-length: long
+  declaration-block-no-redundant-longhand-properties:
+    - true
+    - ignoreShorthands:
+        - transition #too many properties are summarised with this one
   no-invalid-position-at-import-rule:
     - true
     - ignoreAtRules:
@@ -37,7 +41,6 @@ rules:
   scss/at-mixin-pattern: null
   scss/dollar-variable-pattern: null
   # rules that need some refactoring to be enabled
-  declaration-block-no-redundant-longhand-properties: null
   declaration-empty-line-before: null
   font-family-name-quotes: null
   length-zero-no-unit: null

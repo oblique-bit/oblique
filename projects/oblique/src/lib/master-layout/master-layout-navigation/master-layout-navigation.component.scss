@@ -27,8 +27,7 @@
 	.ob-main-nav {
 		position: relative;
 		display: flex;
-		flex-direction: column;
-		flex-wrap: nowrap;
+		flex-flow: column nowrap;
 		height: 100%;
 		margin: 0;
 		padding: 0;

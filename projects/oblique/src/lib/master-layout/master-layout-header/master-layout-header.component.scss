@@ -67,8 +67,7 @@
 		position: relative;
 		display: flex;
 		flex: 1;
-		flex-direction: row;
-		flex-wrap: nowrap;
+		flex-flow: row nowrap;
 		margin-right: auto; // Ensure controls get pushed to the right
 		min-width: 0; // Important, for text ellipsis of app title (cf. https://css-tricks.com/flexbox-truncated-text/)!
 		overflow: hidden;

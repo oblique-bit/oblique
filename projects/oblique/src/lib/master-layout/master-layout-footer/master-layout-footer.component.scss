@@ -4,8 +4,7 @@
 .ob-master-layout-footer {
 	position: relative;
 	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
+	flex-flow: column wrap;
 	color: variables.$ob-gray-darker;
 	font-size: variables.$ob-font-size-xs;
 	background-color: variables.$ob-gray-extra-light;
