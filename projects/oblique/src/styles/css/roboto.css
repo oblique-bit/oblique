@@ -1,6 +1,6 @@
 /* roboto-100 - latin */
 @font-face {
-	font-family: "Roboto";
+	font-family: Roboto;
 	font-style: normal;
 	font-weight: 100;
 	font-display: fallback;
@@ -10,7 +10,7 @@
 
 /* roboto-100italic - latin */
 @font-face {
-	font-family: "Roboto";
+	font-family: Roboto;
 	font-style: italic;
 	font-weight: 100;
 	font-display: fallback;
@@ -20,7 +20,7 @@
 
 /* roboto-300 - latin */
 @font-face {
-	font-family: "Roboto";
+	font-family: Roboto;
 	font-style: normal;
 	font-weight: 300;
 	font-display: fallback;
@@ -30,7 +30,7 @@
 
 /* roboto-300italic - latin */
 @font-face {
-	font-family: "Roboto";
+	font-family: Roboto;
 	font-style: italic;
 	font-weight: 300;
 	font-display: fallback;
@@ -40,7 +40,7 @@
 
 /* roboto-italic - latin */
 @font-face {
-	font-family: "Roboto";
+	font-family: Roboto;
 	font-style: italic;
 	font-weight: 400;
 	font-display: fallback;
@@ -50,17 +50,17 @@
 
 /* roboto-regular - latin */
 @font-face {
-	font-family: "Roboto";
+	font-family: Roboto;
 	font-style: normal;
 	font-weight: 400;
 	font-display: fallback;
-	src: local("Roboto"), local("Roboto-Regular"),
+	src: local(Roboto), local("Roboto-Regular"),
 		url("../fonts/roboto-v20-latin-regular.woff2") format("woff2");
 }
 
 /* roboto-500 - latin */
 @font-face {
-	font-family: "Roboto";
+	font-family: Roboto;
 	font-style: normal;
 	font-weight: 500;
 	font-display: fallback;
@@ -70,7 +70,7 @@
 
 /* roboto-500italic - latin */
 @font-face {
-	font-family: "Roboto";
+	font-family: Roboto;
 	font-style: italic;
 	font-weight: 500;
 	font-display: fallback;
@@ -80,7 +80,7 @@
 
 /* roboto-700 - latin */
 @font-face {
-	font-family: "Roboto";
+	font-family: Roboto;
 	font-style: normal;
 	font-weight: 700;
 	font-display: fallback;
@@ -90,7 +90,7 @@
 
 /* roboto-700italic - latin */
 @font-face {
-	font-family: "Roboto";
+	font-family: Roboto;
 	font-style: italic;
 	font-weight: 700;
 	font-display: fallback;
@@ -100,7 +100,7 @@
 
 /* roboto-900 - latin */
 @font-face {
-	font-family: "Roboto";
+	font-family: Roboto;
 	font-style: normal;
 	font-weight: 900;
 	font-display: fallback;
@@ -110,7 +110,7 @@
 
 /* roboto-900italic - latin */
 @font-face {
-	font-family: "Roboto";
+	font-family: Roboto;
 	font-style: italic;
 	font-weight: 900;
 	font-display: fallback;
