@@ -1,3 +1,0 @@
-{
-	"*.{ts,html}": "eslint --fix --cache"
-}
