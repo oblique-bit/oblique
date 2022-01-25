@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 const fs = require('fs');
 const message = fs.readFileSync('.git/COMMIT_EDITMSG').toString().split('\n');
 try {

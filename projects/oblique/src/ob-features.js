@@ -1,12 +1,11 @@
-/* eslint-disable */
 (function() {
 	'use strict';
 
 	var style = document.createElement('div').style;
 	if (
 		!window.localStorage
-		|| style.flex == undefined
-		|| style.grid == undefined
+		|| style.flex === undefined
+		|| style.grid === undefined
 		|| !''.startsWith
 		|| ![].includes
 		|| !Object.values
