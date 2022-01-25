@@ -3,9 +3,9 @@
 }
 
 :host::ng-deep {
-@media (max-width: 1450px) {
-	.mat-paginator-range-label{
-		display: none;
+	@media (max-width: 1450px) {
+		.mat-paginator-range-label {
+			display: none;
+		}
 	}
-}
 }
