@@ -35,6 +35,14 @@
 	}
 
 	@at-root .show > #{selector.append(".btn-secondary", &)} {
-		@include button.ob-btn-variant(core-variables.$ob-default, core-variables.$ob-gray-extra-light, core-variables.$ob-gray, core-variables.$ob-default, core-variables.$ob-gray-lighter, core-variables.$ob-gray-darker, core-variables.$ob-default);
+		@include button.ob-btn-variant(
+			core-variables.$ob-default,
+			core-variables.$ob-gray-extra-light,
+			core-variables.$ob-gray,
+			core-variables.$ob-default,
+			core-variables.$ob-gray-lighter,
+			core-variables.$ob-gray-darker,
+			core-variables.$ob-default
+		);
 	}
 }

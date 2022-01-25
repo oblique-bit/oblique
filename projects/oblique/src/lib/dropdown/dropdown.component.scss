@@ -24,7 +24,7 @@ $arrow-lg-size: 14px;
 		margin-top: variables.$ob-spacing-default;
 		margin-left: -50%;
 		overflow: hidden;
-		white-space: normal;	// to cancel "nowrap" value from .ob-master-layout-header-controls
+		white-space: normal; // to cancel "nowrap" value from .ob-master-layout-header-controls
 		background-color: variables.$ob-white;
 		transition-property: max-height, padding;
 		transition-duration: variables.$ob-duration-default;
@@ -66,7 +66,7 @@ $arrow-lg-size: 14px;
 
 		&::before,
 		&::after {
-			content: '';
+			content: "";
 			display: block;
 			position: absolute;
 			border-style: solid;

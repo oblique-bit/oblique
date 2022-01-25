@@ -53,19 +53,31 @@
 			margin-top: material-variables.$ob-form-field-margin;
 		}
 
-		@include mat-form-field.ob-form-field-size(material-variables.$ob-form-field-padding-top, 0.5em, 2em);
+		@include mat-form-field.ob-form-field-size(
+			material-variables.$ob-form-field-padding-top,
+			0.5em,
+			2em
+		);
 
 		.ob-form-sm & {
-			@include mat-form-field.ob-form-field-size(material-variables.$ob-form-field-padding-top-sm, 0.25em, 1.8em);
+			@include mat-form-field.ob-form-field-size(
+				material-variables.$ob-form-field-padding-top-sm,
+				0.25em,
+				1.8em
+			);
 		}
 
 		.ob-form-lg & {
-			@include mat-form-field.ob-form-field-size(material-variables.$ob-form-field-padding-top-lg, 1em, 2.5em);
+			@include mat-form-field.ob-form-field-size(
+				material-variables.$ob-form-field-padding-top-lg,
+				1em,
+				2.5em
+			);
 		}
 	}
 
 	&.mat-form-field-invalid .mat-form-field-label-wrapper::after {
-		content: '!';
+		content: "!";
 		position: absolute;
 		right: 0;
 		padding: 0 0.4em;
@@ -99,13 +111,13 @@
 			overflow: visible;
 
 			&::before {
-				content: '';
+				content: "";
 				position: absolute;
 				display: block;
 				right: -12px;
 				left: -12px;
 				top: 0;
-				bottom: - core-variables.$ob-spacing-xs;
+				bottom: -1 * core-variables.$ob-spacing-xs;
 				background-color: core-variables.$ob-white;
 				opacity: 0.75;
 				z-index: -1;

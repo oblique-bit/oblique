@@ -6,3 +6,8 @@ overrides:
       bracketSpacing: false
       trailingComma: none
       arrowParens: avoid
+  - files: "*.{css,scss}"
+    options:
+      semi: true
+      singleQuote: false
+      bracketSpacing: false

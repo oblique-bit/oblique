@@ -4,7 +4,7 @@
 	content: variables.fa-content($icon);
 	-webkit-font-smoothing: antialiased;
 	display: inline-block;
-	font-family: 'Font Awesome 5 ' + $pack;
+	font-family: "Font Awesome 5 " + $pack;
 	font-weight: 900;
 	font-style: normal;
 	font-variant: normal;
@@ -13,7 +13,7 @@
 	text-align: center;
 }
 
-@mixin ob-icon($icon, $position: before, $pack: 'Free') {
+@mixin ob-icon($icon, $position: before, $pack: "Free") {
 	@if $position == before {
 		&::before {
 			@include ob-icon-base($icon, $pack);
@@ -24,5 +24,3 @@
 		}
 	}
 }
-
-

@@ -22,14 +22,14 @@
 
 		&::before,
 		&::after {
-			content: '';
+			content: "";
 			display: block;
 			position: absolute;
 			top: 5px;
 			left: 11px;
 			height: 14px;
 			width: 2px;
-			background-color:  core-variables.$ob-black;
+			background-color: core-variables.$ob-black;
 		}
 		&::before {
 			transform: rotate(45deg);

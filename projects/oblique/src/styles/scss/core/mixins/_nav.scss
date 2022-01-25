@@ -11,7 +11,7 @@
 		z-index: 1;
 
 		&:after {
-			content: '';
+			content: "";
 			position: absolute;
 			top: #{$offset}px;
 			bottom: #{$offset}px;

@@ -1,6 +1,6 @@
 @use "../../styles/scss/core/variables";
 
-.ngb-dp-body.dropdown-menu{
+.ngb-dp-body.dropdown-menu {
 	margin-top: 0;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
@@ -36,7 +36,8 @@
 	width: 2.5rem !important;
 }
 
-.ngb-dp-day, .ngb-dp-week-number {
+.ngb-dp-day,
+.ngb-dp-week-number {
 	width: 2.5rem !important;
 	height: 2.5rem !important;
 

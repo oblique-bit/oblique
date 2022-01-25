@@ -25,7 +25,7 @@
 			background-color: variables.$ob-gray-dark;
 			background-clip: border-box;
 			border-radius: 2px;
-			transition: .25s transform, .15s opacity, .25s border-color;
+			transition: 0.25s transform, 0.15s opacity, 0.25s border-color;
 		}
 
 		&:focus,
@@ -115,7 +115,6 @@
 		}
 	}
 
-
 	.ob-control-item {
 		@include layout.ob-media-breakpoint-up(md) {
 			justify-content: flex-end;
@@ -143,7 +142,7 @@
 		font-size: variables.$ob-font-size-xl;
 
 		&.mat-icon[data-mat-icon-type="svg"] {
-			margin-top: -7px;  // empiric value
+			margin-top: -7px; // empiric value
 		}
 	}
 }

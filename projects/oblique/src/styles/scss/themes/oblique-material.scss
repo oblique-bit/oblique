@@ -1,4 +1,4 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 @use "../core/variables" as core-variables;
 @use "material/material-palette";
 @use "material/variables";
@@ -6,9 +6,9 @@
 @include mat.core(mat.define-typography-config($font-family: core-variables.$ob-font));
 @include mat.all-component-themes(
 	mat.define-light-theme(
-    	mat.define-palette(material-palette.$oblique-primary),
+		mat.define-palette(material-palette.$oblique-primary),
 		mat.define-palette(material-palette.$oblique-accent),
-        mat.define-palette(material-palette.$oblique-warn)
+		mat.define-palette(material-palette.$oblique-warn)
 	)
 );
 
@@ -29,4 +29,6 @@
 @import "material/mat-tab";
 @import "material/mat-tooltip";
 
-.ob-material-telemetry {/*! Keep me for Telemetry */}
+.ob-material-telemetry {
+	/*! Keep me for Telemetry */
+}

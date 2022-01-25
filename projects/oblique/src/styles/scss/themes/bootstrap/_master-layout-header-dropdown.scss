@@ -44,7 +44,7 @@
 
 					@include layout.ob-media-breakpoint-down(md) {
 						position: fixed !important;
-						top: 108px !important;	// empiric value
+						top: 108px !important; // empiric value
 						left: 0;
 						right: 0;
 						bottom: 0;
@@ -70,7 +70,7 @@
 						min-width: 260px;
 						padding: variables.$ob-spacing-default;
 						margin-top: -2px;
-						max-height: calc(100vh - 145px);	// empiric value
+						max-height: calc(100vh - 145px); // empiric value
 
 						@include bubble-tail.ob-bubble-tail-border(
 							variables.$ob-white,

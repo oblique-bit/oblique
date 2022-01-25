@@ -1,7 +1,12 @@
 @use "../../core/variables" as core-variables;
 @use "../../core/mixins/typography";
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	margin: 0 0 0.25em 0;
 	color: core-variables.$ob-black;
 }
@@ -69,7 +74,8 @@ strong {
 	font-weight: 700;
 }
 
-mark, ins {
+mark,
+ins {
 	padding: 0;
 	text-decoration: none;
 }
@@ -82,17 +88,22 @@ ins {
 	background-color: core-variables.$ob-light;
 }
 
-pre, code, kbd, samp {
+pre,
+code,
+kbd,
+samp {
 	font-family: monospace;
 	font-size: core-variables.$ob-font-size-normal;
 }
 
-code, kbd {
+code,
+kbd {
 	border-radius: core-variables.$ob-border-radius-base;
 	padding: 2px 4px;
 }
 
-code, pre {
+code,
+pre {
 	border: 1px solid core-variables.$ob-gray-light;
 	background-color: core-variables.$ob-gray-extra-light;
 	color: core-variables.$ob-default;
@@ -118,7 +129,8 @@ small {
 	font-size: core-variables.$ob-font-size-smaller;
 }
 
-s, del {
+s,
+del {
 	text-decoration: line-through;
 }
 

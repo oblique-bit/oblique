@@ -24,7 +24,8 @@ table {
 		}
 	}
 
-	td, th {
+	td,
+	th {
 		border-top: 1px solid variables.$ob-gray-light;
 		border-bottom: 1px solid variables.$ob-gray-light;
 		padding: variables.$ob-spacing-sm;
