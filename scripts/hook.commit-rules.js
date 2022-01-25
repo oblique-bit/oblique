@@ -12,11 +12,11 @@ try {
 
 function checkLineLength(lines, length) {
 	const error = lines
-		.map((line, i) => line.length > length ? numeral(i) : '')
+		.map((line, i) => (line.length > length ? numeral(i) : ''))
 		.filter(line => !!line)
 		.join(', ')
 		.replace(/,(?=[^,]*$)/, ' and');
-	const plural = error.indexOf(' and ' ) > -1;
+	const plural = error.indexOf(' and ') > -1;
 	if (error) {
 		throw new Error(`${error} line${plural ? 's' : ''} exceeds ${length} characters`);
 	}
@@ -51,45 +51,46 @@ function checkFormat(header) {
 }
 
 function checkType(type, types) {
-	if(!types.includes(type)){
+	if (!types.includes(type)) {
 		throw new Error(`1st line has an invalid type '${type}'. Allowed types are: ${types.join(', ').replace(/,(?=[^,]*$)/, ' and')}`);
 	}
 }
 
 function checkScope(scope, scopes) {
-	if(scope && !scopes.includes(scope)){
+	if (scope && !scopes.includes(scope)) {
 		throw new Error(`1st line has an invalid scope '${scope}'. Allowed types are: ${scopes.join(', ').replace(/,(?=[^,]*$)/, ' and')}`);
 	}
 }
 
 function checkSubject(subject) {
-	if(/^[A-Z]/.test(subject)) {
+	if (/^[A-Z]/.test(subject)) {
 		throw new Error(`1st line has an invalid subject, the first letter must be lower case`);
 	}
 
-	if(/\.$/.test(subject)) {
+	if (/\.$/.test(subject)) {
 		throw new Error('1st line has an invalid subject, it must not end with a dot "."');
 	}
 }
 
 function checkBreakingChanges(lines) {
 	const breakingLineIndex = lines.findIndex(line => line.toLowerCase().includes('breaking change'));
-	if (breakingLineIndex > 0) { // skip 1st line as it may contain the "breaking change" string
+	if (breakingLineIndex > 0) {
+		// skip 1st line as it may contain the "breaking change" string
 		const breaking = lines[breakingLineIndex];
 		const start = `${numeral(breakingLineIndex)} line doesn't follow "BREAKING CHANGE:" format,`;
-		if(!/^BREAKING CHANGE/i.test(breaking)) {
+		if (!/^BREAKING CHANGE/i.test(breaking)) {
 			throw new Error(`${start} it must start on a new line`);
 		}
-		if(!/^BREAKING CHANGE/.test(breaking)) {
+		if (!/^BREAKING CHANGE/.test(breaking)) {
 			throw new Error(`${start} it must be written in uppercase letter`);
 		}
-		if(!/^BREAKING CHANGE(?!S)/.test(breaking)) {
+		if (!/^BREAKING CHANGE(?!S)/.test(breaking)) {
 			throw new Error(`${start} it must not be plural`);
 		}
-		if(!/^BREAKING CHANGE(?!S):/.test(breaking)) {
+		if (!/^BREAKING CHANGE(?!S):/.test(breaking)) {
 			throw new Error(`${start} it must be terminated with a colon without a whitespace`);
 		}
-		if(!lines[breakingLineIndex + 1] || !lines[breakingLineIndex + 1].length) {
+		if (!lines[breakingLineIndex + 1] || !lines[breakingLineIndex + 1].length) {
 			throw new Error(`${numeral(breakingLineIndex + 1)} line cannot be empty as it follows a breaking change declaration`);
 		}
 	}
@@ -104,7 +105,7 @@ function numeral(i) {
 		case 3:
 			return '3rd';
 		default:
-			return  `${i + 1}th`
+			return `${i + 1}th`;
 	}
 }
 
