@@ -37,7 +37,6 @@ rules:
   scss/at-mixin-pattern: null
   scss/dollar-variable-pattern: null
   # rules that need some refactoring to be enabled
-  comment-empty-line-before: null
   declaration-block-no-redundant-longhand-properties: null
   declaration-empty-line-before: null
   font-family-name-quotes: null
