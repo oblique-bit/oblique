@@ -4,6 +4,7 @@ extends:
 rules:
   # override default values
   color-function-notation: legacy #recommanded "modern" value leads to build errors
+  color-hex-length: long
   no-invalid-position-at-import-rule:
     - true
     - ignoreAtRules:
@@ -36,7 +37,6 @@ rules:
   scss/at-mixin-pattern: null
   scss/dollar-variable-pattern: null
   # rules that need some refactoring to be enabled
-  color-hex-length: null
   comment-empty-line-before: null
   declaration-block-no-redundant-longhand-properties: null
   declaration-empty-line-before: null
