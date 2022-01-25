@@ -14,7 +14,6 @@ export const obliqueCssPath = 'node_modules/@oblique/oblique/styles/css/oblique-
 type versionFunc = (version: number) => string;
 
 const versions: {[key: string]: string | versionFunc} = {
-	// eslint-disable-next-line prettier/prettier
 	ajv: '^8.0.0',
 	'ajv-formats': '^2.0.0',
 	'@ngx-translate/core': '^14.0.0',
@@ -26,16 +25,13 @@ const versions: {[key: string]: string | versionFunc} = {
 	'@angular/localize': version => `^${version}.0.0`,
 	'@popperjs/core': '^2.0.0',
 
-	// eslint-disable-next-line prettier/prettier
 	jest: '^27.0.0',
 	'@types/jest': '^27.0.0',
 	'@angular-builders/jest': '^13.0.0',
 	'jest-sonar-reporter': '2.0.0',
 	'eslint-config-prettier': '^8.0.0',
 	'eslint-plugin-prettier': '^4.0.0',
-	// eslint-disable-next-line prettier/prettier
 	prettier: '^2.0.0',
-	// eslint-disable-next-line prettier/prettier
 	husky: '^4.0.0'
 };
 

@@ -34,7 +34,9 @@ class GenerateComponentStyles {
 			.filter(fileName => fileName.indexOf('mock') === -1)
 			.reduce(
 				(filePaths, filePath) =>
-					GenerateComponentStyles.fs.statSync(filePath).isDirectory() ? [...filePaths, ...GenerateComponentStyles.listFiles(filePath)] : [...filePaths, filePath],
+					GenerateComponentStyles.fs.statSync(filePath).isDirectory()
+						? [...filePaths, ...GenerateComponentStyles.listFiles(filePath)]
+						: [...filePaths, filePath],
 				[]
 			)
 			.filter(filePath => filePath.endsWith('.component.ts'));

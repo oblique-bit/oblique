@@ -1,1 +1,3 @@
-"*.{ts,html}": eslint --fix --cache
+"*.{ts,html}":
+  - eslint --fix --cache
+  - prettier --fix

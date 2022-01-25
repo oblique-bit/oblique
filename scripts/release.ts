@@ -1,7 +1,7 @@
 interface Version {
-	version: string,
-	preVersionType: string,
-	preVersionNumber: number
+	version: string;
+	preVersionType: string;
+	preVersionNumber: number;
 }
 
 class Release {
@@ -37,34 +37,32 @@ class Release {
 		if (!preVersion) {
 			return currentVersion.version;
 		}
-		if (currentVersion.preVersionType != preVersion) {
+		if (currentVersion.preVersionType !== preVersion) {
 			return `${currentVersion.version}-${preVersion}.1`;
 		}
 		return `${currentVersion.version}-${currentVersion.preVersionType}.${currentVersion.preVersionNumber + 1}`;
 	}
 
 	private static getVersionFromGit(versionNbr: string): string {
-		const current = versionNbr.match(/(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)/).groups;
+		const current = /(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)/.exec(versionNbr).groups;
 		const commits = Release.execSync(`git log ${versionNbr}..HEAD --abbrev-commit`).toString();
 		return commits.indexOf('BREAKING CHANGE') > -1
 			? `${+current?.major + 1}.0.0`
-			: (commits.indexOf('feat:') > -1 || commits.indexOf('feat(') > -1
-				? `${current?.major}.${+current?.minor + 1}.0`
-				: `${current?.major}.${current?.minor}.${+current?.patch + 1}`
-			);
+			: commits.indexOf('feat:') > -1 || commits.indexOf('feat(') > -1
+			? `${current?.major}.${+current?.minor + 1}.0`
+			: `${current?.major}.${current?.minor}.${+current?.patch + 1}`;
 	}
 
 	private static bumpVersion(version: string): void {
-		Release.fs.writeFileSync(
-			Release.path.join('projects', 'oblique', 'src', 'lib', 'version.ts'),
-			`export const appVersion = '${version}';\n`,
-			{flag: 'w'}
-		);
+		Release.fs.writeFileSync(Release.path.join('projects', 'oblique', 'src', 'lib', 'version.ts'), `export const appVersion = '${version}';\n`, {flag: 'w'});
 	}
 
 	private static bumpPackageVersion(version: string, fileName: string): void {
 		const filePath = Release.path.join('projects', 'oblique', 'schematics', fileName);
-		const pkg = Release.fs.readFileSync(filePath).toString().replace(/"version": "[^"]*",/, `"version": "${version}",`);
+		const pkg = Release.fs
+			.readFileSync(filePath)
+			.toString()
+			.replace(/"version": "[^"]*",/, `"version": "${version}",`);
 		Release.fs.writeFileSync(filePath, pkg);
 	}
 
@@ -72,7 +70,9 @@ class Release {
 		const changelog = Release.fs.readFileSync('CHANGELOG.md');
 		const stream = Release.fs.createWriteStream('CHANGELOG.md');
 		stream.on('finish', () => {
-			const newLog = Release.fs.readFileSync('CHANGELOG.md').toString()
+			const newLog = Release.fs
+				.readFileSync('CHANGELOG.md')
+				.toString()
 				.replace(/##(.*)\n/g, '#$1')
 				.replace(/\n\n\n/g, '\n\n');
 			Release.fs.writeFileSync('CHANGELOG.md', newLog + changelog);

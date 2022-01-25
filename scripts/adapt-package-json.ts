@@ -8,7 +8,7 @@ class AdaptPackageJson {
 
 	static perform(): void {
 		const filePath = AdaptPackageJson.path.join('dist', 'oblique', 'package.json');
-		let distPackage = AdaptPackageJson.getDistPackage(filePath);
+		const distPackage = AdaptPackageJson.getDistPackage(filePath);
 		let adaptedDistPackage = AdaptPackageJson.removeExports(distPackage);
 		adaptedDistPackage = AdaptPackageJson.addProperties(adaptedDistPackage);
 
