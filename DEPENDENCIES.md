@@ -54,6 +54,7 @@
 |husky|Oblique git hooks |git commit & git push|Modern native Git hooks made easy, Husky improves your commits and more 🐶 woof!|https://www.npmjs.com/package/husky|https://typicode.github.io/husky/#/|
 |jest| Angular CLI|test|Jest is a delightful JavaScript Testing Framework with a focus on simplicity.|https://www.npmjs.com/package/jest|https://jestjs.io/docs/getting-started|
 |jest-sonar-reporter| Oblique & Sonar ||jest-sonar-reporter is a custom results processor for Jest. The processor converts Jest's output into Sonar's generic test data format.|https://www.npmjs.com/package/jest-sonar-reporter|https://github.com/3dmind/jest-sonar-reporter#readme|
+|lint-staged| Oblique |Linting makes more sense when run before committing your code|https://www.npmjs.com/package/lint-staged
 |moment|Angular Material ||A JavaScript date library for parsing, validating, manipulating, and formatting dates.|https://www.npmjs.com/package/moment|https://momentjs.com/|
 |ng-packagr| Angular CLI|dist|Compile and package Angular libraries in Angular Package Format (APF)|https://www.npmjs.com/package/ng-packagr|https://github.com/ng-packagr/ng-packagr|
 |prettier| Oblique|lint|Prettier is an opinionated code formatter. It enforces a consistent style by parsing your code and re-printing it with its own rules that take the maximum line length into account, wrapping code when necessary.|https://www.npmjs.com/package/prettier|https://prettier.io/|
