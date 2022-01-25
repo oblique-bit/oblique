@@ -86,7 +86,7 @@
 		border: 1px solid variables.$ob-error;
 
 		&:focus-within {
-			box-shadow: 0 0 6px 1px rgba(220, 0, 24, 0.4);
+			box-shadow: 0 0 6px 1px rgba(220, 0, 24, 40%);
 		}
 
 		.calendar-toggle {

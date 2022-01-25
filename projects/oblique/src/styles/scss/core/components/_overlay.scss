@@ -14,7 +14,7 @@
 		opacity: 0;
 		text-align: center;
 		color: variables.$ob-default;
-		background-color: rgba(255, 255, 255, 0.8);
+		background-color: rgba(255, 255, 255, 80%);
 		transition: opacity variables.$ob-duration-fast ease-in;
 
 		&.ob-overlay-fixed {
