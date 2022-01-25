@@ -48,10 +48,10 @@ overrides:
         - error
         - ignoreDeclarationSort: true
       spaced-comment: error
-      id-length: 'off'
-      no-param-reassign: 'off'
-      prefer-rest-params: 'off'
-      no-underscore-dangle: 'off'
+      id-length: off
+      no-param-reassign: off
+      prefer-rest-params: off
+      no-underscore-dangle: off
   - files:
       - "*.ts"
     parser: "@typescript-eslint/parser"
@@ -144,49 +144,49 @@ overrides:
         - error
         - ignoreDeclarationSort: true
       spaced-comment: error
-      id-length: 'off'
-      no-param-reassign: 'off'
-      prefer-rest-params: 'off'
-      no-underscore-dangle: 'off'
-      "@typescript-eslint/no-explicit-any": 'off'
-      "@typescript-eslint/explicit-module-boundary-types": 'off'
-      "@typescript-eslint/ban-types": 'off'
-      "@typescript-eslint/no-var-requires": 'off'
-      "@typescript-eslint/explicit-function-return-type": 'off'
-      "@typescript-eslint/no-unsafe-member-access": 'off'
-      "@typescript-eslint/no-unsafe-assignment": 'off'
-      "@typescript-eslint/no-use-before-define": 'off'
-      "@typescript-eslint/restrict-template-expressions": 'off'
-      "@typescript-eslint/no-unused-expressions": 'off'
-      "@typescript-eslint/no-base-to-string": 'off'
-      "@typescript-eslint/restrict-plus-operands": 'off'
-      "@typescript-eslint/no-shadow": 'off'
+      id-length: off
+      no-param-reassign: off
+      prefer-rest-params: off
+      no-underscore-dangle: off
+      "@typescript-eslint/no-explicit-any": off
+      "@typescript-eslint/explicit-module-boundary-types": off
+      "@typescript-eslint/ban-types": off
+      "@typescript-eslint/no-var-requires": off
+      "@typescript-eslint/explicit-function-return-type": off
+      "@typescript-eslint/no-unsafe-member-access": off
+      "@typescript-eslint/no-unsafe-assignment": off
+      "@typescript-eslint/no-use-before-define": off
+      "@typescript-eslint/restrict-template-expressions": off
+      "@typescript-eslint/no-unused-expressions": off
+      "@typescript-eslint/no-base-to-string": off
+      "@typescript-eslint/restrict-plus-operands": off
+      "@typescript-eslint/no-shadow": off
   - files:
       - mock-*.ts
     rules:
-      "@typescript-eslint/no-unused-vars": 'off'
-      "@typescript-eslint/no-empty-function": 'off'
+      "@typescript-eslint/no-unused-vars": off
+      "@typescript-eslint/no-empty-function": off
   - files:
       - "*.spec.ts"
     rules:
-      "@typescript-eslint/ban-ts-comment": 'off'
-      "@typescript-eslint/no-floating-promises": 'off'
-      "@angular-eslint/use-component-selector": 'off'
-      max-lines-per-function: 'off'
-      max-lines: 'off'
+      "@typescript-eslint/ban-ts-comment": off
+      "@typescript-eslint/no-floating-promises": off
+      "@angular-eslint/use-component-selector": off
+      max-lines-per-function: off
+      max-lines: off
   - files:
       - "schematics/**/*.ts"
     rules:
-      max-lines: 'off'
-      max-lines-per-function: 'off'
+      max-lines: off
+      max-lines-per-function: off
   - files:
       - "*.decorator.ts"
     rules:
-      max-lines-per-function: 'off'
+      max-lines-per-function: off
   - files:
       - polyfills.ts
     rules:
-      spaced-comment: 'off'
+      spaced-comment: off
   - files:
       - "*.html"
     extends:

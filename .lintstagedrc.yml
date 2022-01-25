@@ -1,2 +1,2 @@
 "*.{ts,js,html}": eslint --fix --cache
-"*.{ts,js,html,json}": prettier --fix
+"*.{ts,js,html,json,yml}": prettier --fix

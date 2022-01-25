@@ -51,7 +51,7 @@
     "lint": "npm run eslint && npm run prettier -- --check",
     "format": "npm run eslint -- --fix && npm run prettier -- --write",
     "eslint": "eslint '{src,projects,scripts,tests}/**/*.{ts,js,html}' '*.{ts,js,html}' --cache",
-    "prettier": "prettier '{src,projects,scripts,tests}/**/*.{ts,js,html,json}' '*.{ts,js,html,json}' --loglevel warn",
+    "prettier": "prettier '{src,projects,scripts,tests}/**/*.{ts,js,html,json,yml}' '*.{ts,js,html,json,yml}' --loglevel warn",
     "icons": "ts-node scripts/icons.ts",
     "copy-error-messages": "ts-node scripts/copy-error-messages.ts",
     "e2e": "ng e2e",

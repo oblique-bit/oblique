@@ -3,19 +3,19 @@ ignorePatterns:
   - "!**/*"
 overrides:
   - files:
-    - "*.ts"
+      - "*.ts"
     parserOptions:
       project:
-      - projects/oblique/tsconfig.lib.json
-      - projects/oblique/tsconfig.spec.json
+        - projects/oblique/tsconfig.lib.json
+        - projects/oblique/tsconfig.spec.json
     rules:
       "@angular-eslint/directive-selector":
-      - error
-      - type: attribute
-        prefix: ob
-        style: camelCase
+        - error
+        - type: attribute
+          prefix: ob
+          style: camelCase
       "@angular-eslint/component-selector":
-      - error
-      - type: element
-        prefix: ob
-        style: kebab-case
+        - error
+        - type: element
+          prefix: ob
+          style: kebab-case
