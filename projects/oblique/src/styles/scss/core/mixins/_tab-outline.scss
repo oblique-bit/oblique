@@ -17,7 +17,7 @@
 	}
 
 	.ob-outline &:focus #{$innerSelector} {
-		@if ($color) {
+		@if $color {
 			color: $color;
 		}
 		border-color: variables.$ob-default;

@@ -6,7 +6,7 @@
 }
 
 .mat-chip.mat-standard-chip {
-	@include typography.ob-caption;
+	@include typography.ob-caption();
 	background-color: variables.$ob-primary-100;
 	border-color: variables.$ob-primary-500;
 	color: variables.$ob-primary-500;

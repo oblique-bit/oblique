@@ -5,9 +5,9 @@
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 
-$size: 1.1875em; //19px with a 16px basis
-$small: 0.6875em; //11px with a 16px basis
-$smallSize: 1.7273em; //19px with a 11px basis
+$size: 1.1875em; // 19px with a 16px basis
+$small: 0.6875em; // 11px with a 16px basis
+$smallSize: 1.7273em; // 19px with a 11px basis
 .form-check {
 	line-height: $size;
 	padding-left: $size;
@@ -60,14 +60,12 @@ $smallSize: 1.7273em; //19px with a 11px basis
 			margin-left: -$smallSize;
 			color: ob-bootstrap-variables.$ob-input-color;
 			font-size: $small;
-
 			text-align: center;
 			line-height: $smallSize;
 			vertical-align: middle;
-
 			transform: scale(0, 0);
 			transition: transform 0.15s cubic-bezier(0.8, -0.33, 0.2, 1.33);
-			//curve - http://cubic-bezier.com/#.8,-0.33,.2,1.33
+			// curve - http://cubic-bezier.com/#.8,-0.33,.2,1.33
 		}
 	}
 
@@ -148,7 +146,7 @@ $smallSize: 1.7273em; //19px with a 11px basis
 		}
 
 		&:checked + .form-check-label::after {
-			$outer: 1.18182em; //13px with a 16px basis
+			$outer: 1.18182em; // 13px with a 16px basis
 			$inner: 0.27273em; // 3px with a 16px basis
 			width: $outer;
 			height: $outer;

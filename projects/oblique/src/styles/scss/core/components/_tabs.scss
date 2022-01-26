@@ -19,7 +19,7 @@
 		text-decoration: none;
 		color: variables.$ob-default;
 		background-color: variables.$ob-smoke;
-		@include typography.ob-body2;
+		@include typography.ob-body2();
 
 		&:hover,
 		&:focus {

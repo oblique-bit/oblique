@@ -7,32 +7,32 @@ h3,
 h4,
 h5,
 h6 {
-	margin: 0 0 0.25em 0;
+	margin: 0 0 0.25em;
 	color: variables.$ob-black;
 }
 
 h1 {
-	@include typography.ob-h1;
+	@include typography.ob-h1();
 }
 
 h2 {
-	@include typography.ob-h2;
+	@include typography.ob-h2();
 }
 
 h3 {
-	@include typography.ob-h3;
+	@include typography.ob-h3();
 }
 
 h4 {
-	@include typography.ob-h4;
+	@include typography.ob-h4();
 }
 
 h5 {
-	@include typography.ob-h5;
+	@include typography.ob-h5();
 }
 
 h6 {
-	@include typography.ob-h6;
+	@include typography.ob-h6();
 }
 
 // inline elements
@@ -122,6 +122,7 @@ pre {
 	overflow: auto;
 	padding: variables.$ob-spacing-sm;
 	border-radius: variables.$ob-border-radius-base;
+
 	code {
 		border: none;
 		padding: 0;

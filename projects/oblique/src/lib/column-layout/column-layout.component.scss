@@ -20,8 +20,7 @@
 	}
 
 	@include layout.ob-media-breakpoint-up(sm) {
-		flex-direction: row;
-		flex-wrap: wrap;
+		flex-flow: row wrap;
 
 		.ob-column-main,
 		.ob-column-left,
@@ -83,7 +82,6 @@
 			padding: 0;
 			border: 1px solid variables.$ob-gray-light;
 			background-color: variables.$ob-white;
-
 			transition: all variables.$ob-duration-default;
 			color: variables.$ob-gray-dark;
 
@@ -171,8 +169,8 @@
 				}
 			}
 
-			&:after {
-				@include column-layout.ob-column-separator {
+			&::after {
+				@include column-layout.ob-column-separator() {
 					right: 0;
 				}
 			}
@@ -200,8 +198,8 @@
 				}
 			}
 
-			&:before {
-				@include column-layout.ob-column-separator {
+			&::before {
+				@include column-layout.ob-column-separator() {
 					left: 0;
 				}
 			}

@@ -15,7 +15,7 @@
 		}
 
 		.mat-card-title {
-			@include typography.ob-h5;
+			@include typography.ob-h5();
 			margin-bottom: 0;
 		}
 
@@ -39,7 +39,7 @@
 
 	.mat-card-subtitle,
 	.mat-card-content {
-		@include typography.ob-body2;
+		@include typography.ob-body2();
 	}
 
 	.mat-card-header + .mat-card-content {

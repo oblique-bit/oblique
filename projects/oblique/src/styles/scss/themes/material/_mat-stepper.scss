@@ -110,6 +110,7 @@ $padding-lg: 32px;
 $offset-sm: 28px;
 $offset-md: 36px;
 $offset-lg: 51px;
+
 .mat-stepper-horizontal {
 	@at-root #{selector.append(".mat-stepper-label-position-bottom", &)},
 		& {

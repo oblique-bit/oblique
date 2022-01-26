@@ -22,7 +22,7 @@
 			color.red(variables.$ob-white),
 			color.green(variables.$ob-white),
 			color.blue(variables.$ob-white),
-			0.9
+			90%
 		);
 
 		@include layout.ob-media-breakpoint-up(md) {

@@ -4,29 +4,36 @@
 	background-color: variables.$ob-light;
 	color: variables.$ob-dark;
 }
+
 .list-group-item-secondary {
 	background-color: variables.$ob-extra-light;
 	color: variables.$ob-primary;
 }
+
 .list-group-item-success {
 	background-color: variables.$ob-success-light;
 	color: variables.$ob-success-dark;
 }
+
 .list-group-item-danger {
 	background-color: variables.$ob-error-light;
 	color: variables.$ob-error-dark;
 }
+
 .list-group-item-warning {
 	background-color: variables.$ob-warning-light;
 	color: variables.$ob-warning-dark;
 }
+
 .list-group-item-info {
 	background-color: variables.$ob-light;
 	color: variables.$ob-dark;
 }
+
 .list-group-item-light {
 	color: variables.$ob-default;
 }
+
 .list-group-item-dark {
 	color: variables.$ob-white;
 }

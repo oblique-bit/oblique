@@ -21,7 +21,7 @@
 		color.red(variables.$ob-gray-light),
 		color.green(variables.$ob-gray-light),
 		color.blue(variables.$ob-gray-light),
-		0.65
+		65%
 	);
 	transition: all variables.$ob-duration-default ease-in-out;
 
@@ -63,7 +63,7 @@
 		bottom: 15px;
 
 		@include layout.ob-media-breakpoint-up(md) {
-			bottom: 10%; //empiric value
+			bottom: 10%; // empiric value
 		}
 
 		&:hover,

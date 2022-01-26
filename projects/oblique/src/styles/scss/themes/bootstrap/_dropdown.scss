@@ -5,7 +5,7 @@
 @use "mixins/button";
 
 .dropdown-menu {
-	box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 12px rgba(0, 0, 0, 10%);
 
 	.dropdown-header {
 		font-weight: bold;

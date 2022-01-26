@@ -23,6 +23,7 @@
 			content: variables.fa-content($toggle-icon);
 		}
 	}
+
 	&::before {
 		width: variables.$fa-fw-width;
 	}
@@ -40,6 +41,7 @@
 			width: variables.$fa-fw-width;
 		}
 	}
+
 	&::after {
 		width: variables.$fa-fw-width;
 	}

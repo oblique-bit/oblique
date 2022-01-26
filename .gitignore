@@ -41,6 +41,7 @@ npm-debug.log
 testem.log
 /jest-report/*
 .eslintcache
+.stylelintcache
 
 # e2e
 /e2e/*.js

@@ -1,13 +1,16 @@
 .left {
 	float: left;
 }
+
 .right {
 	float: right;
 }
+
 .center {
 	margin: auto;
 	display: block;
 }
+
 .large-popover {
 	overflow-y: scroll;
 	border-radius: 1em;
@@ -16,13 +19,15 @@
 	border: solid black 1px;
 	position: relative;
 }
-.large-popover:before {
+
+.large-popover::before {
 	height: 300px;
 	content: "";
 	width: 1px;
 	display: block;
 }
-.large-popover:after {
+
+.large-popover::after {
 	height: 600px;
 	content: "";
 	width: 1px;

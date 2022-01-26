@@ -27,8 +27,7 @@
 	.ob-main-nav {
 		position: relative;
 		display: flex;
-		flex-direction: column;
-		flex-wrap: nowrap;
+		flex-flow: column nowrap;
 		height: 100%;
 		margin: 0;
 		padding: 0;
@@ -48,7 +47,7 @@
 		}
 
 		button {
-			@include button.ob-link-btn;
+			@include button.ob-link-btn();
 		}
 
 		a,
@@ -129,6 +128,7 @@
 				&:not([aria-expanded]) .ob-toggle-expanded {
 					display: none;
 				}
+
 				&[aria-expanded] .ob-toggle-expanded,
 				&:not([aria-expanded]) .ob-toggle-collapsed {
 					display: inline;

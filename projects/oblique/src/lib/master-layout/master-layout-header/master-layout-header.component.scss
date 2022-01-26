@@ -67,8 +67,7 @@
 		position: relative;
 		display: flex;
 		flex: 1;
-		flex-direction: row;
-		flex-wrap: nowrap;
+		flex-flow: row nowrap;
 		margin-right: auto; // Ensure controls get pushed to the right
 		min-width: 0; // Important, for text ellipsis of app title (cf. https://css-tricks.com/flexbox-truncated-text/)!
 		overflow: hidden;
@@ -95,6 +94,8 @@
 		width: variables.$ob-logo-width-collapsed;
 		height: variables.$ob-logo-height-collapsed;
 		margin-right: variables.$ob-spacing-default;
+		transition: width variables.$ob-duration-default ease-in-out,
+			height variables.$ob-duration-default ease-in-out;
 
 		@include layout.ob-media-breakpoint-up(md) {
 			@at-root #{selector.append(":not(.ob-master-layout-header-small)", &)} {
@@ -124,11 +125,6 @@
 	.ob-master-layout-brand-link {
 		color: variables.$ob-default;
 		text-decoration: none;
-	}
-
-	.ob-master-layout-logo {
-		transition: width variables.$ob-duration-default ease-in-out,
-			height variables.$ob-duration-default ease-in-out;
 	}
 
 	.ob-header-toggle {
