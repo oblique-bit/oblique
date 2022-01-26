@@ -48,4 +48,3 @@ rules:
   scss/double-slash-comment-whitespace-inside: null
   scss/dollar-variable-empty-line-before: null
   scss/no-global-function-names: null
-  shorthand-property-no-redundant-values: null
