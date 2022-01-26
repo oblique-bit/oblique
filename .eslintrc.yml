@@ -73,12 +73,13 @@ overrides:
       "@angular-eslint/use-injectable-provided-in": off # some specialized services are directly provided in a component
 
       # override default values
+      "@angular-eslint/component-max-inline-declarations":
+        - error
+        - template: 0
+          styles: 0
       "@angular-eslint/no-host-metadata-property":
         - error
         - allowStatic: true
-
-      # rules that need some refactoring to be enabled
-      "@angular-eslint/component-max-inline-declarations": off
 
       # other rules that will be processed later
       "@typescript-eslint/member-ordering":
@@ -172,14 +173,16 @@ overrides:
   - files:
       - mock-*.ts
     rules:
+      "@angular-eslint/component-max-inline-declarations": off
       "@typescript-eslint/no-unused-vars": off
       "@typescript-eslint/no-empty-function": off
   - files:
       - "*.spec.ts"
     rules:
+      "@angular-eslint/component-max-inline-declarations": off
+      "@angular-eslint/use-component-selector": off
       "@typescript-eslint/ban-ts-comment": off
       "@typescript-eslint/no-floating-promises": off
-      "@angular-eslint/use-component-selector": off
       max-lines-per-function: off
       max-lines: off
   - files:
