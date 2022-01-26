@@ -38,16 +38,7 @@ export class NavTreeSampleComponent implements OnInit, OnDestroy {
 
 @Component({
 	selector: 'sc-nav-tree-detail-sample',
-	template: ` <div *ngIf="routing" class="card">
-		<div class="card-header">
-			<h3 class="card-title">Output</h3>
-		</div>
-		<div class="card-body">
-			<h4>RouterOutlet</h4>
-			<span class="fa fa-link"></span>
-			<code>{{ routing }}</code>
-		</div>
-	</div>`
+	templateUrl: './nav-tree-detail-sample.component.html'
 })
 export class NavTreeDetailSampleComponent implements OnInit, OnDestroy {
 	routing: string;

@@ -8,13 +8,7 @@ import {ThemeService} from '../../common/theme.service';
 @Component({
 	selector: 'sc-schema-validation',
 	templateUrl: './schema-validation-sample.component.html',
-	styles: [
-		`
-			.form-horizontal label {
-				text-align: right;
-			}
-		`
-	]
+	styleUrls: ['./schema-validation-sample.component.scss']
 })
 export class SchemaValidationSampleComponent implements OnInit {
 	material: Observable<boolean>;
