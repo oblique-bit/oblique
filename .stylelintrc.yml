@@ -43,7 +43,6 @@ rules:
   scss/dollar-variable-pattern: null
   # rules that need some refactoring to be enabled
   no-descending-specificity: null
-  rule-empty-line-before: null
   selector-pseudo-element-colon-notation: null
   scss/at-mixin-argumentless-call-parentheses: null
   scss/at-rule-conditional-no-parentheses: null

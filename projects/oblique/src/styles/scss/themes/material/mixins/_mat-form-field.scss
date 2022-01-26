@@ -2,6 +2,7 @@
 
 @mixin ob-form-field-size($padding-top, $padding-bottom, $icon-size) {
 	$label-padding: variables.$ob-form-field-label-height + $padding-top;
+
 	.mat-form-field-infix {
 		padding: $padding-top 0 $padding-bottom 0;
 		border-top-width: variables.$ob-form-field-label-height;

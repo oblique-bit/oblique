@@ -4,6 +4,7 @@
 			background-color: $color;
 			border-color: $color;
 		}
+
 		&::after {
 			color: #ffffff;
 		}
@@ -15,6 +16,7 @@
 		&::before {
 			border-color: $color;
 		}
+
 		&::after {
 			background-color: $color;
 		}

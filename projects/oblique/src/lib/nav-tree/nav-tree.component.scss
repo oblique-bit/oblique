@@ -42,6 +42,7 @@
 		$fa-fw-width-px: 20px;
 		$icon-width: 24px;
 		$indentMaterial: $icon-width + variables.$ob-spacing-default;
+
 		&.ob-nav-indent {
 			.ob-nav-link {
 				padding-left: $indentMaterial;
@@ -50,6 +51,7 @@
 
 			.ob-font-awesome & {
 				$indentBootstrap: $fa-fw-width-px + variables.$ob-spacing-sm;
+
 				.ob-nav-link {
 					padding-left: $indentBootstrap;
 				}
