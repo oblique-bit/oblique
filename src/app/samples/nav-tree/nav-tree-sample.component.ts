@@ -16,7 +16,7 @@ export class NavTreeSampleComponent implements OnInit, OnDestroy {
 
 	public filter = {
 		pattern: null,
-		clear: () => {
+		clear: (): void => {
 			this.filter.pattern = null;
 		}
 	};
@@ -24,7 +24,7 @@ export class NavTreeSampleComponent implements OnInit, OnDestroy {
 
 	constructor(private readonly route: ActivatedRoute) {}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.route.data.pipe(takeUntil(this.unsubscribe)).subscribe((data: {sample: any}) => {
 			this.items = data.sample.navTree.items.map((item: any) => new ObNavTreeItemModel(item));
 		});
@@ -46,7 +46,7 @@ export class NavTreeDetailSampleComponent implements OnInit, OnDestroy {
 
 	constructor(private readonly route: ActivatedRoute, private readonly router: Router) {}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.route.params.pipe(merge(this.route.fragment), takeUntil(this.unsubscribe)).subscribe(() => {
 			this.routing = this.router.routerState.snapshot.url;
 		});

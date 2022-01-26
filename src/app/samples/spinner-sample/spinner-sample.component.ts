@@ -15,7 +15,7 @@ export class SpinnerSampleComponent {
 		this.window = window; // because AoT don't accept interfaces as DI
 	}
 
-	toggleSpinner() {
+	toggleSpinner(): void {
 		switch (this.spinnerVisible) {
 			case false:
 				this.spinnerService.activate(this.channel);

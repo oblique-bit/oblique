@@ -8,7 +8,7 @@ import {ObIAPIelement} from './api.model';
 export class ApiElementComponent implements OnChanges {
 	@Input() elements: ObIAPIelement[];
 
-	ngOnChanges() {
+	ngOnChanges(): void {
 		this.elements.forEach(element => {
 			if (!element.default) {
 				element.default = '<i>empty string</i>';

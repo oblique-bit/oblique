@@ -128,7 +128,7 @@ export class AppComponent {
 		});
 	}
 
-	toggleTheme() {
+	toggleTheme(): void {
 		this.theme.setTheme(this.theme.isMaterial() ? THEMES.BOOTSTRAP : THEMES.MATERIAL);
 	}
 

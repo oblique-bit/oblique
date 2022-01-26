@@ -34,7 +34,7 @@ export class NotificationSampleComponent {
 
 	constructor(private readonly notificationService: ObNotificationService) {}
 
-	get clearAllOnNavigate() {
+	get clearAllOnNavigate(): boolean {
 		return this.notificationService.clearAllOnNavigate;
 	}
 
@@ -42,7 +42,7 @@ export class NotificationSampleComponent {
 		this.notificationService.clearAllOnNavigate = value;
 	}
 
-	get placement() {
+	get placement(): ObENotificationPlacement {
 		return this.notificationService.placement;
 	}
 
@@ -50,7 +50,7 @@ export class NotificationSampleComponent {
 		this.notificationService.placement = value;
 	}
 
-	send() {
+	send(): void {
 		this.notificationService.send({
 			message: this.messageWithParams ? this.messageKey : this.message,
 			messageParams: this.messageWithParams ? this.messageParams : undefined,
@@ -64,11 +64,11 @@ export class NotificationSampleComponent {
 		});
 	}
 
-	clear() {
+	clear(): void {
 		this.notificationService.clear(this.channel);
 	}
 
-	public clearAllChannels() {
+	public clearAllChannels(): void {
 		this.notificationService.clearAll();
 	}
 }

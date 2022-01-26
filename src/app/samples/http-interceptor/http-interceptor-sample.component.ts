@@ -42,7 +42,7 @@ export class HttpInterceptorSampleComponent {
 		this.createSampleRequest(code).subscribe();
 	}
 
-	parallelRequest() {
+	parallelRequest(): void {
 		this.configInterceptor();
 		const arrayOfObservables: Observable<any>[] = [];
 		for (let index = 0; index < this.parallelRequests; index++) {
@@ -54,7 +54,7 @@ export class HttpInterceptorSampleComponent {
 		mergedObservable.subscribe();
 	}
 
-	log(message: string) {
+	log(message: string): void {
 		this.logs.unshift(message);
 	}
 

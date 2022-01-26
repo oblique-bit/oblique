@@ -14,7 +14,7 @@ export class InputClearSampleComponent implements OnInit {
 
 	constructor(private readonly formBuilder: FormBuilder) {}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.testForm = this.formBuilder.group({
 			field1: ['']
 		});

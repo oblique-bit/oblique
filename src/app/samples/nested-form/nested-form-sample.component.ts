@@ -37,7 +37,7 @@ export class NestedFormSampleComponent {
 		valid ? this.notification.success('Form valid!') : this.notification.error('Form not valid!');
 	}
 
-	resetForm() {
+	resetForm(): void {
 		this.parentForm.reset();
 	}
 }
