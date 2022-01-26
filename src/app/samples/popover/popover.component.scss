@@ -20,14 +20,14 @@
 	position: relative;
 }
 
-.large-popover:before {
+.large-popover::before {
 	height: 300px;
 	content: "";
 	width: 1px;
 	display: block;
 }
 
-.large-popover:after {
+.large-popover::after {
 	height: 600px;
 	content: "";
 	width: 1px;
