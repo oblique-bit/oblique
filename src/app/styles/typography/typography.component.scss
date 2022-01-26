@@ -2,29 +2,29 @@
 @import "../../../../projects/oblique/src/styles/scss/core/variables";
 
 .subtitle1 {
-	@include ob-subtitle1;
+	@include ob-subtitle1();
 }
 
 .subtitle2 {
-	@include ob-subtitle2;
+	@include ob-subtitle2();
 }
 
 .body1 {
-	@include ob-body1;
+	@include ob-body1();
 }
 
 .body2 {
-	@include ob-body2;
+	@include ob-body2();
 }
 
 .overline {
-	@include ob-overline;
+	@include ob-overline();
 }
 
 .caption {
-	@include ob-caption;
+	@include ob-caption();
 }
 
 .button {
-	@include ob-button;
+	@include ob-button();
 }
