@@ -2,6 +2,7 @@
 @import "~projects/oblique/src/styles/scss/core/mixins/layout";
 
 $label-width: 25%;
+
 :host::ng-deep {
 	@include ob-media-breakpoint-down(md) {
 		dt {
@@ -26,12 +27,14 @@ $label-width: 25%;
 			margin-top: -$ob-spacing-default;
 			margin-bottom: 2 * $ob-spacing-default;
 		}
+
 		dt,
 		dd {
 			padding: 0;
 			margin: 0;
 			word-wrap: break-word;
 		}
+
 		dt {
 			width: $label-width;
 			display: flex;
