@@ -75,7 +75,7 @@
 		}
 
 		.ob-close {
-			@include button.ob-link-btn;
+			@include button.ob-link-btn();
 			font-size: variables.$ob-font-size-biggest;
 			padding: 0;
 			color: variables.$ob-gray-dark;

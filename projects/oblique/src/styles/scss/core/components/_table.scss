@@ -11,7 +11,7 @@ table {
 .ob-table {
 	width: 100%;
 	color: variables.$ob-default;
-	@include typography.ob-body2;
+	@include typography.ob-body2();
 
 	&.ob-table-cicd {
 		thead,

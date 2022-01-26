@@ -47,7 +47,7 @@
 		}
 
 		button {
-			@include button.ob-link-btn;
+			@include button.ob-link-btn();
 		}
 
 		a,

@@ -12,27 +12,27 @@ h6 {
 }
 
 h1 {
-	@include typography.ob-h1;
+	@include typography.ob-h1();
 }
 
 h2 {
-	@include typography.ob-h2;
+	@include typography.ob-h2();
 }
 
 h3 {
-	@include typography.ob-h3;
+	@include typography.ob-h3();
 }
 
 h4 {
-	@include typography.ob-h4;
+	@include typography.ob-h4();
 }
 
 h5 {
-	@include typography.ob-h5;
+	@include typography.ob-h5();
 }
 
 h6 {
-	@include typography.ob-h6;
+	@include typography.ob-h6();
 }
 
 // inline elements
