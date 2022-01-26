@@ -63,7 +63,7 @@
 		bottom: 15px;
 
 		@include layout.ob-media-breakpoint-up(md) {
-			bottom: 10%; //empiric value
+			bottom: 10%; // empiric value
 		}
 
 		&:hover,

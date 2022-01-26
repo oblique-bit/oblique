@@ -1,12 +1,12 @@
 /*!
  * @deprecated since version 8.0.0. It will be removed in Oblique 10, as by then Bootstrap will no longer be supported by Oblique.
  */
-//custom variables
+// custom variables
 @import "bootstrap/variables";
 @import "../core/variables";
 // import main boostrap SCSS
 @import "~bootstrap/scss/bootstrap";
-//bootstrap-overwrites
+// bootstrap-overwrites
 @import "bootstrap/badge";
 @import "bootstrap/button";
 @import "bootstrap/button-group";

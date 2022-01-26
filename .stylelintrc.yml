@@ -44,6 +44,5 @@ rules:
   scss/dollar-variable-pattern: null
   # rules that need some refactoring to be enabled
   no-descending-specificity: null
-  scss/double-slash-comment-whitespace-inside: null
   scss/dollar-variable-empty-line-before: null
   scss/no-global-function-names: null

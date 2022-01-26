@@ -33,7 +33,7 @@ $arrow-lg-size: 14px;
 		@include shadow.ob-dropShadow();
 
 		&.middle {
-			transform: translateX(calc(-50% + 13px)); //empiric value
+			transform: translateX(calc(-50% + 13px)); // empiric value
 
 			.ob-control-item & {
 				transform: translateX(calc(-50% + 19px));
