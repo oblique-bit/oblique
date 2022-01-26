@@ -79,7 +79,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 	public fakeFocus(element: ElementRef): void {
 		const link = this.findLink(element);
 		if (!link || !this.element.nativeElement.contains(link.nativeElement)) {
-			throw new Error(`Unable to fake focus element '${element}'. No valid DOM element or no valid child.`);
+			throw new Error(`Unable to fake focus element '${element.nativeElement}'. No valid DOM element or no valid child.`);
 		}
 		this.onBlur();
 
