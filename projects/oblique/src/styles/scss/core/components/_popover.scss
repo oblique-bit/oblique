@@ -3,7 +3,7 @@
 
 .ob-popover-content {
 	padding: variables.$ob-spacing-default;
-	max-width: 40%;  // empiric value
+	max-width: 40%; // empiric value
 	background: variables.$ob-white;
 	z-index: variables.$ob-z-index-widget;
 	@include shadow.ob-dropShadow();

@@ -14,12 +14,7 @@
           "text": "The type of the alert.",
           "type": "ObIAlertType",
           "default": "info",
-          "values": [
-            "success",
-            "info",
-            "warning",
-            "error"
-          ],
+          "values": ["success", "info", "warning", "error"],
           "since": "6.1.0"
         }
       ]

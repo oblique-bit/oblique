@@ -1,8 +1,17 @@
 @use "sass:meta";
-@mixin ob-bubble-tail($color: #efefef, $width: 12px, $align: none, $align-value: auto, $placement: top, $direction: top, $position: relative, $layer: after) {
+@mixin ob-bubble-tail(
+	$color: #efefef,
+	$width: 12px,
+	$align: none,
+	$align-value: auto,
+	$placement: top,
+	$direction: top,
+	$position: relative,
+	$layer: after
+) {
 	@if $layer == before {
 		&:before {
-			content: '';
+			content: "";
 			position: absolute;
 			border-style: solid;
 			display: block;
@@ -12,12 +21,14 @@
 			margin-right: auto;
 
 			// TODO: check below
-			@if meta.type-of($align-value) == 'string' { // CSS keyword
+			@if meta.type-of($align-value) == "string" {
+				// CSS keyword
 				left: 0;
 				right: 0;
 			}
 
-			@if meta.type-of($align-value) == 'number' { // CSS pixel, percent
+			@if meta.type-of($align-value) == "number" {
+				// CSS pixel, percent
 				#{$align}: $align-value;
 			}
 
@@ -55,7 +66,7 @@
 		}
 	} @else if $layer == after {
 		&:after {
-			content: '';
+			content: "";
 			position: absolute;
 			border-style: solid;
 			display: block;
@@ -64,12 +75,14 @@
 			margin-left: auto;
 			margin-right: auto;
 
-			@if meta.type-of($align-value) == 'string' { // CSS keyword
+			@if meta.type-of($align-value) == "string" {
+				// CSS keyword
 				left: 0;
 				right: 0;
 			}
 
-			@if meta.type-of($align-value) == 'number' { // CSS pixel, percent
+			@if meta.type-of($align-value) == "number" {
+				// CSS pixel, percent
 				#{$align}: $align-value;
 			}
 
@@ -108,7 +121,34 @@
 	}
 }
 
-@mixin ob-bubble-tail-border($bg: #efefef, $border: #666666, $width: 12px, $align: center, $align-value: auto, $placement: top, $direction: top, $position: relative) {
-	@include ob-bubble-tail($bg, $width, $align, $align-value, $placement: $placement, $direction: $direction, $position: $position, $layer: after);
-	@include ob-bubble-tail($border, $width + 1, $align, $align-value, $placement: $placement, $direction: $direction, $position: $position, $layer: before);
+@mixin ob-bubble-tail-border(
+	$bg: #efefef,
+	$border: #666666,
+	$width: 12px,
+	$align: center,
+	$align-value: auto,
+	$placement: top,
+	$direction: top,
+	$position: relative
+) {
+	@include ob-bubble-tail(
+		$bg,
+		$width,
+		$align,
+		$align-value,
+		$placement: $placement,
+		$direction: $direction,
+		$position: $position,
+		$layer: after
+	);
+	@include ob-bubble-tail(
+		$border,
+		$width + 1,
+		$align,
+		$align-value,
+		$placement: $placement,
+		$direction: $direction,
+		$position: $position,
+		$layer: before
+	);
 }

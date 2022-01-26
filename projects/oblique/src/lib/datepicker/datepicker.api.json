@@ -13,10 +13,7 @@
           "name": "size",
           "text": "The size of the date picker controls.",
           "type": "string",
-          "values": [
-            "sm",
-            "lg"
-          ],
+          "values": ["sm", "lg"],
           "default": "",
           "since": "5.0.0"
         },
@@ -91,11 +88,7 @@
           "name": "options.navigation",
           "text": "Navigation type, <code>select</code> show selection boxes for month and navigation arrows, <code>arrows</code> show only navigation arrows and <code>none</code> hides the navigation",
           "type": "string",
-          "values": [
-            "select",
-            "arrows",
-            "none"
-          ],
+          "values": ["select", "arrows", "none"],
           "default": "select",
           "since": "5.0.0"
         },
@@ -103,11 +96,7 @@
           "name": "options.outsideDays",
           "text": "Days outside of the current month",
           "type": "string",
-          "values": [
-            "visible",
-            "hidden",
-            "collapsed"
-          ],
+          "values": ["visible", "hidden", "collapsed"],
           "default": "visible",
           "since": "5.0.0"
         },

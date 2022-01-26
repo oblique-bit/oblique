@@ -1,8 +1,5 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {},
-  "files": [
-    "main.ts",
-    "polyfills.ts"
-  ]
+  "files": ["main.ts", "polyfills.ts"]
 }

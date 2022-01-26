@@ -1,6 +1,58 @@
 root: true
 overrides:
   - files:
+      - "*.js"
+    env:
+      es2020: true # first version to support lookbehind with regexp
+      node: true # so that "module" is defined
+      browser: true # so that "window" is defined
+    extends:
+      - eslint:recommended
+      - prettier # this turns off all rules from eslint, @typescript-eslint and @angular-eslint that conflicts with prettier
+    rules:
+      dot-notation: error
+      eqeqeq:
+        - error
+        - smart
+      guard-for-in: error
+      max-lines:
+        - error
+        - max: 300
+      max-lines-per-function:
+        - error
+        - max: 35
+      no-bitwise: error
+      no-caller: error
+      no-console:
+        - error
+        - allow:
+            - info
+            - warn
+            - error
+      no-else-return: error
+      no-eval: error
+      no-new-wrappers: error
+      no-sequences: error
+      no-throw-literal: error
+      no-undef-init: error
+      no-unused-expressions: error
+      no-useless-concat: error
+      no-useless-escape: error
+      object-shorthand: error
+      prefer-exponentiation-operator: error
+      prefer-object-spread: error
+      prefer-regex-literals: error
+      prefer-template: error
+      radix: error
+      sort-imports:
+        - error
+        - ignoreDeclarationSort: true
+      spaced-comment: error
+      id-length: off
+      no-param-reassign: off
+      prefer-rest-params: off
+      no-underscore-dangle: off
+  - files:
       - "*.ts"
     parser: "@typescript-eslint/parser"
     parserOptions:
@@ -92,49 +144,49 @@ overrides:
         - error
         - ignoreDeclarationSort: true
       spaced-comment: error
-      id-length: 'off'
-      no-param-reassign: 'off'
-      prefer-rest-params: 'off'
-      no-underscore-dangle: 'off'
-      "@typescript-eslint/no-explicit-any": 'off'
-      "@typescript-eslint/explicit-module-boundary-types": 'off'
-      "@typescript-eslint/ban-types": 'off'
-      "@typescript-eslint/no-var-requires": 'off'
-      "@typescript-eslint/explicit-function-return-type": 'off'
-      "@typescript-eslint/no-unsafe-member-access": 'off'
-      "@typescript-eslint/no-unsafe-assignment": 'off'
-      "@typescript-eslint/no-use-before-define": 'off'
-      "@typescript-eslint/restrict-template-expressions": 'off'
-      "@typescript-eslint/no-unused-expressions": 'off'
-      "@typescript-eslint/no-base-to-string": 'off'
-      "@typescript-eslint/restrict-plus-operands": 'off'
-      "@typescript-eslint/no-shadow": 'off'
+      id-length: off
+      no-param-reassign: off
+      prefer-rest-params: off
+      no-underscore-dangle: off
+      "@typescript-eslint/no-explicit-any": off
+      "@typescript-eslint/explicit-module-boundary-types": off
+      "@typescript-eslint/ban-types": off
+      "@typescript-eslint/no-var-requires": off
+      "@typescript-eslint/explicit-function-return-type": off
+      "@typescript-eslint/no-unsafe-member-access": off
+      "@typescript-eslint/no-unsafe-assignment": off
+      "@typescript-eslint/no-use-before-define": off
+      "@typescript-eslint/restrict-template-expressions": off
+      "@typescript-eslint/no-unused-expressions": off
+      "@typescript-eslint/no-base-to-string": off
+      "@typescript-eslint/restrict-plus-operands": off
+      "@typescript-eslint/no-shadow": off
   - files:
       - mock-*.ts
     rules:
-      "@typescript-eslint/no-unused-vars": 'off'
-      "@typescript-eslint/no-empty-function": 'off'
+      "@typescript-eslint/no-unused-vars": off
+      "@typescript-eslint/no-empty-function": off
   - files:
       - "*.spec.ts"
     rules:
-      "@typescript-eslint/ban-ts-comment": 'off'
-      "@typescript-eslint/no-floating-promises": 'off'
-      "@angular-eslint/use-component-selector": 'off'
-      max-lines-per-function: 'off'
-      max-lines: 'off'
+      "@typescript-eslint/ban-ts-comment": off
+      "@typescript-eslint/no-floating-promises": off
+      "@angular-eslint/use-component-selector": off
+      max-lines-per-function: off
+      max-lines: off
   - files:
       - "schematics/**/*.ts"
     rules:
-      max-lines: 'off'
-      max-lines-per-function: 'off'
+      max-lines: off
+      max-lines-per-function: off
   - files:
       - "*.decorator.ts"
     rules:
-      max-lines-per-function: 'off'
+      max-lines-per-function: off
   - files:
       - polyfills.ts
     rules:
-      spaced-comment: 'off'
+      spaced-comment: off
   - files:
       - "*.html"
     extends:

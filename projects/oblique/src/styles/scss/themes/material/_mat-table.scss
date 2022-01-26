@@ -31,7 +31,8 @@
 	}
 
 	.mat-header-row {
-		button, .mat-sort-header-arrow {
+		button,
+		.mat-sort-header-arrow {
 			color: variables.$ob-black;
 			font-size: 14px;
 		}

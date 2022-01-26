@@ -20,7 +20,7 @@
 @mixin ob-media-breakpoint-down($name) {
 	@include ob-map-error(variables.$ob-grid-breakpoints, $name) {
 		@media (max-width: map.get(variables.$ob-grid-breakpoints, $name)) {
-			@content
+			@content;
 		}
 	}
 }

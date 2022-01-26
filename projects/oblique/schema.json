@@ -109,17 +109,12 @@
           "additionalProperties": false
         },
         "additionalProperties": false,
-        "required": [
-          "name",
-          "since"
-        ]
+        "required": ["name", "since"]
       }
     }
   },
   "additionalProperties": false,
-  "required": [
-    "api"
-  ],
+  "required": ["api"],
   "definitions": {
     "elementPattern": {
       "type": "object",
@@ -148,8 +143,7 @@
         "see": {
           "type": "string"
         },
-        "default": {
-        },
+        "default": {},
         "since": {
           "type": "string"
         },
@@ -157,11 +151,7 @@
           "type": "boolean"
         }
       },
-      "required": [
-        "name",
-        "text",
-        "since"
-      ]
+      "required": ["name", "text", "since"]
     }
   }
 }

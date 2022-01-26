@@ -2,10 +2,14 @@
 @use "../../../core/variables";
 
 @mixin ob-btn-variant(
-	$color, $background, $border,
-	$selected-color, $selected-background, $selected-border,
-	$active-color) {
-
+	$color,
+	$background,
+	$border,
+	$selected-color,
+	$selected-background,
+	$selected-border,
+	$active-color
+) {
 	color: $color;
 	border-color: $border;
 	background-color: $background;
@@ -27,7 +31,8 @@
 		text-decoration: none;
 	}
 
-	&:not([disabled]):not(.disabled) {  // to cancel a bootstrap rule
+	&:not([disabled]):not(.disabled) {
+		// to cancel a bootstrap rule
 		&:active,
 		&.active {
 			// FIXME:.open .dropdown-toggle& {

@@ -1,7 +1,12 @@
 @use "../variables";
 @use "../mixins/typography";
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	margin: 0 0 0.25em 0;
 	color: variables.$ob-black;
 }
@@ -68,12 +73,18 @@ strong {
 	font-weight: 700;
 }
 
-cite, dfn, em, i, q, var {
+cite,
+dfn,
+em,
+i,
+q,
+var {
 	font-weight: normal;
 	font-style: italic;
 }
 
-mark, ins {
+mark,
+ins {
 	padding: 0;
 	text-decoration: none;
 }
@@ -86,17 +97,22 @@ ins {
 	background-color: variables.$ob-light;
 }
 
-pre, code, kbd, samp {
+pre,
+code,
+kbd,
+samp {
 	font-family: monospace;
 	font-size: variables.$ob-font-size-normal;
 }
 
-code, kbd {
+code,
+kbd {
 	border-radius: variables.$ob-border-radius-base;
 	padding: 2px 4px;
 }
 
-code, pre {
+code,
+pre {
 	border: 1px solid variables.$ob-gray-light;
 	background-color: variables.$ob-gray-extra-light;
 	color: variables.$ob-default;
@@ -121,7 +137,8 @@ small {
 	font-size: variables.$ob-font-size-smaller;
 }
 
-s, del {
+s,
+del {
 	text-decoration: line-through;
 }
 
@@ -143,11 +160,11 @@ sup {
 }
 
 sub {
-	bottom: -.25em;
+	bottom: -0.25em;
 }
 
 sup {
-	top: -.5em;
+	top: -0.5em;
 }
 
 label {

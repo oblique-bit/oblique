@@ -1,10 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": "tsconfig",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "lib": ["es2018", "dom"],
     "declaration": false,
     "module": "commonjs",
     "moduleResolution": "node",
@@ -20,15 +17,8 @@
     "sourceMap": false,
     "strictNullChecks": true,
     "target": "es6",
-    "types": [
-      "node"
-    ]
+    "types": ["node"]
   },
-  "include": [
-    "index/**/*"
-  ],
-  "exclude": [
-    "index/**/*.test.ts",
-    "index/**/files/**/*"
-  ]
+  "include": ["index/**/*"],
+  "exclude": ["index/**/*.test.ts", "index/**/files/**/*"]
 }

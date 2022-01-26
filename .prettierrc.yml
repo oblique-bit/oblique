@@ -1,8 +1,13 @@
 overrides:
-  - files: "*.ts"
+  - files: "*.{ts,js}"
     options:
       semi: true
       singleQuote: true
       bracketSpacing: false
       trailingComma: none
       arrowParens: avoid
+  - files: "*.{css,scss}"
+    options:
+      semi: true
+      singleQuote: false
+      bracketSpacing: false

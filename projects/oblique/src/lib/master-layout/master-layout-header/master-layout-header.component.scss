@@ -29,7 +29,7 @@
 			transform-origin: center;
 
 			&::before {
-				content: '';
+				content: "";
 				position: absolute;
 				display: block;
 				top: 0;
@@ -127,7 +127,8 @@
 	}
 
 	.ob-master-layout-logo {
-		transition: width variables.$ob-duration-default ease-in-out, height variables.$ob-duration-default ease-in-out;
+		transition: width variables.$ob-duration-default ease-in-out,
+			height variables.$ob-duration-default ease-in-out;
 	}
 
 	.ob-header-toggle {

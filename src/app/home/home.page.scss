@@ -1,4 +1,4 @@
-@import '~projects/oblique/src/styles/scss/core/variables';
+@import "~projects/oblique/src/styles/scss/core/variables";
 
 .content {
 	text-align: center;
@@ -20,185 +20,185 @@
 }
 
 .square {
-	animation: square_animation 2000ms linear 1 normal forwards
+	animation: square_animation 2000ms linear 1 normal forwards;
 }
 
 @keyframes square_animation {
 	0% {
-		opacity: 0
+		opacity: 0;
 	}
 	25% {
-		opacity: 1
+		opacity: 1;
 	}
 	100% {
-		opacity: 1
+		opacity: 1;
 	}
 }
 
 .big_line_position {
-	animation: big_line_position_animate 2000ms linear 1 normal forwards
+	animation: big_line_position_animate 2000ms linear 1 normal forwards;
 }
 
 @keyframes big_line_position_animate {
 	0% {
-		transform: translate(-65.802660px, 700.287892px)
+		transform: translate(-65.80266px, 700.287892px);
 	}
 	55% {
-		transform: translate(-65.802660px, 700.287892px)
+		transform: translate(-65.80266px, 700.287892px);
 	}
 	65% {
-		transform: translate(-124.200000px, 836.100000px)
+		transform: translate(-124.2px, 836.1px);
 	}
 	100% {
-		transform: translate(-124.200000px, 836.100000px)
+		transform: translate(-124.2px, 836.1px);
 	}
 }
 
 #big_line {
-	animation: big_line_animate 2000ms linear 1 normal forwards
+	animation: big_line_animate 2000ms linear 1 normal forwards;
 }
 
 @keyframes big_line_animate {
 	0% {
-		opacity: 0
+		opacity: 0;
 	}
 	55% {
-		opacity: 0
+		opacity: 0;
 	}
 	65% {
-		opacity: 1
+		opacity: 1;
 	}
 	100% {
-		opacity: 1
+		opacity: 1;
 	}
 }
 
 .medium_lin_position {
-	animation: medium_line_animate 2000ms linear 1 normal forwards
+	animation: medium_line_animate 2000ms linear 1 normal forwards;
 }
 
 @keyframes medium_line_animate {
 	0% {
-		transform: translate(-72.326608px, 663.786657px)
+		transform: translate(-72.326608px, 663.786657px);
 	}
 	65% {
-		transform: translate(-72.326608px, 663.786657px)
+		transform: translate(-72.326608px, 663.786657px);
 	}
 	75% {
-		transform: translate(-130.840000px, 797.760000px)
+		transform: translate(-130.84px, 797.76px);
 	}
 	100% {
-		transform: translate(-130.840000px, 797.760000px)
+		transform: translate(-130.84px, 797.76px);
 	}
 }
 
 .medium_line {
-	animation: medium_line_opacity 2000ms linear 1 normal forwards
+	animation: medium_line_opacity 2000ms linear 1 normal forwards;
 }
 
 @keyframes medium_line_opacity {
 	0% {
-		opacity: 0
+		opacity: 0;
 	}
 	65% {
-		opacity: 0
+		opacity: 0;
 	}
 	75% {
-		opacity: 1
+		opacity: 1;
 	}
 	100% {
-		opacity: 1
+		opacity: 1;
 	}
 }
 
 .small_line_to {
-	animation: small_line_animate 2000ms linear 1 normal forwards
+	animation: small_line_animate 2000ms linear 1 normal forwards;
 }
 
 @keyframes small_line_animate {
 	0% {
-		transform: translate(-72.104310px, 626.369708px)
+		transform: translate(-72.10431px, 626.369708px);
 	}
 	75% {
-		transform: translate(-72.104310px, 626.369708px)
+		transform: translate(-72.10431px, 626.369708px);
 	}
 	85% {
-		transform: translate(-132.760000px, 762.180000px)
+		transform: translate(-132.76px, 762.18px);
 	}
 	100% {
-		transform: translate(-132.760000px, 762.180000px)
+		transform: translate(-132.76px, 762.18px);
 	}
 }
 
 .small_line {
-	animation: small_line_opacity 2000ms linear 1 normal forwards
+	animation: small_line_opacity 2000ms linear 1 normal forwards;
 }
 
 @keyframes small_line_opacity {
 	0% {
-		opacity: 0
+		opacity: 0;
 	}
 	75% {
-		opacity: 0
+		opacity: 0;
 	}
 	85% {
-		opacity: 1
+		opacity: 1;
 	}
 	100% {
-		opacity: 1
+		opacity: 1;
 	}
 }
 
 .semicircle_animation {
-	animation: semicircle_animate 2000ms linear 1 normal forwards
+	animation: semicircle_animate 2000ms linear 1 normal forwards;
 }
 
 @keyframes semicircle_animate {
 	0% {
-		transform: translate(585.345000px, 516.954988px) rotate(0deg)
+		transform: translate(585.345px, 516.954988px) rotate(0deg);
 	}
 	55% {
-		transform: translate(585.345000px, 516.954988px) rotate(1080deg)
+		transform: translate(585.345px, 516.954988px) rotate(1080deg);
 	}
 	100% {
-		transform: translate(585.345000px, 516.954988px) rotate(1080deg)
+		transform: translate(585.345px, 516.954988px) rotate(1080deg);
 	}
 }
 
 .oblique_char_group_animation {
-	animation: oblique_char_group_animate 2000ms linear 1 normal forwards
+	animation: oblique_char_group_animate 2000ms linear 1 normal forwards;
 }
 
 @keyframes oblique_char_group_animate {
 	0% {
-		transform: translate(-761.905462px, 0px)
+		transform: translate(-761.905462px, 0px);
 	}
 	25% {
-		transform: translate(-761.905462px, 0px)
+		transform: translate(-761.905462px, 0px);
 	}
 	45% {
-		transform: translate(0px, 0px)
+		transform: translate(0px, 0px);
 	}
 	100% {
-		transform: translate(0px, 0px)
+		transform: translate(0px, 0px);
 	}
 }
 
 #oblique_char_group {
-	animation: oblique_char_opacity 2000ms linear 1 normal forwards
+	animation: oblique_char_opacity 2000ms linear 1 normal forwards;
 }
 
 @keyframes oblique_char_opacity {
 	0% {
-		opacity: 0
+		opacity: 0;
 	}
 	25% {
-		opacity: 0
+		opacity: 0;
 	}
 	45% {
-		opacity: 1
+		opacity: 1;
 	}
 	100% {
-		opacity: 1
+		opacity: 1;
 	}
 }
