@@ -14,7 +14,7 @@
 		flex-grow: 1;
 		position: relative;
 
-		&:before {
+		&::before {
 			content: counter(li-counter);
 			counter-increment: li-counter;
 			text-align: center;
@@ -26,7 +26,7 @@
 			z-index: 1;
 		}
 
-		&:after {
+		&::after {
 			content: "";
 			position: absolute;
 			top: 0;

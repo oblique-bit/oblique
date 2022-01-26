@@ -10,7 +10,7 @@
 		background-color: variables.$ob-gray-extra-light;
 		z-index: 1;
 
-		&:after {
+		&::after {
 			content: "";
 			position: absolute;
 			top: #{$offset}px;

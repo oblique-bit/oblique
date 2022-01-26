@@ -10,7 +10,7 @@
 	$layer: after
 ) {
 	@if $layer == before {
-		&:before {
+		&::before {
 			content: "";
 			position: absolute;
 			border-style: solid;
@@ -65,7 +65,7 @@
 			}
 		}
 	} @else if $layer == after {
-		&:after {
+		&::after {
 			content: "";
 			position: absolute;
 			border-style: solid;

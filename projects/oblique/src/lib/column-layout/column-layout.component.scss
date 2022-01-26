@@ -169,7 +169,7 @@
 				}
 			}
 
-			&:after {
+			&::after {
 				@include column-layout.ob-column-separator {
 					right: 0;
 				}
@@ -198,7 +198,7 @@
 				}
 			}
 
-			&:before {
+			&::before {
 				@include column-layout.ob-column-separator {
 					left: 0;
 				}
