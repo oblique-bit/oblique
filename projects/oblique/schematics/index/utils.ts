@@ -84,7 +84,7 @@ export function replaceInFile(tree: Tree, path: string, pattern: string | RegExp
 	tree.overwrite(path, readFile(tree, path).replace(pattern, replacement));
 }
 
-export function getJson(tree: any, path: string) {
+export function getJson(tree: any, path: string): any {
 	const json = readFile(tree, path);
 	return json ? JSON.parse(json.toString()) : undefined;
 }
@@ -222,7 +222,7 @@ function alterAngularConfig(tree: Tree, path: string[], project: string, value?:
 	return tree;
 }
 
-function setOption(json: any, path: string[], value?: any) {
+function setOption(json: any, path: string[], value?: any): void {
 	const option = path.shift();
 	if (option) {
 		if (path.length) {

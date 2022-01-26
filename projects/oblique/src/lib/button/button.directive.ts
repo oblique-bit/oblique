@@ -16,16 +16,16 @@ export class ObButtonDirective implements OnInit, OnChanges {
 		(btn || link).color = 'primary';
 	}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.validateButtonVariant();
 		this.setButtonClass();
 	}
 
-	ngOnChanges() {
+	ngOnChanges(): void {
 		this.setButtonClass();
 	}
 
-	private setButtonClass() {
+	private setButtonClass(): void {
 		this.obButton = this.obButton || 'primary';
 		this.primaryClass = this.obButton === 'primary';
 		this.secondaryClass = this.obButton === 'secondary';

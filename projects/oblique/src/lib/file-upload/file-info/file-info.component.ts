@@ -94,7 +94,7 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 			);
 	}
 
-	private setTableHeaders(headers: string[]) {
+	private setTableHeaders(headers: string[]): void {
 		this.fields = headers;
 		this.displayedColumns = this.deleteUrl ? [this.COLUMN_SELECT, ...this.fields, this.COLUMN_ACTION] : [this.COLUMN_SELECT, ...this.fields];
 	}

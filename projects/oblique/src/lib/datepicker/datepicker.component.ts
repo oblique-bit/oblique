@@ -33,7 +33,7 @@ export class ObDatepickerComponent implements OnInit, ControlValueAccessor, Vali
 	@Input() options = {} as ObIDatepickerOptions;
 	@ViewChild(NgbInputDatepicker, {static: true}) ngbDatePicker: NgbInputDatepicker;
 
-	get disabled() {
+	get disabled(): boolean {
 		return this.datePicker.disabled;
 	}
 
@@ -69,7 +69,7 @@ export class ObDatepickerComponent implements OnInit, ControlValueAccessor, Vali
 	}
 
 	@HostListener('keydown', ['$event'])
-	onKeydown($event) {
+	onKeydown($event): void {
 		if ($event.target.attributes.ngbdatepicker) {
 			if ($event.keyCode === 40) {
 				// 40: ArrowDown

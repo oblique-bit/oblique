@@ -37,7 +37,7 @@ export class ObSelectableGroupDirective implements AfterContentInit {
 		this.updateSelection();
 	}
 
-	ngAfterContentInit() {
+	ngAfterContentInit(): void {
 		// because we don't want every consumer to pipe defer to avoid an ExpressionChangedAfterItHasBeenCheckedError
 		this.window.setTimeout(() => this.updateSelection());
 	}

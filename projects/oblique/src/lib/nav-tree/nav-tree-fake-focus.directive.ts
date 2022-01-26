@@ -72,7 +72,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.RIGHT] = () => this.toggleCollapsed();
 	}
 
-	public ngOnDestroy() {
+	public ngOnDestroy(): void {
 		this.unsubscribeInputListeners();
 	}
 
@@ -93,7 +93,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 		this.ensureInView();
 	}
 
-	private initInputElement() {
+	private initInputElement(): void {
 		this.unsubscribeInputListeners();
 		if (!this.inputElement) {
 			return;
@@ -106,7 +106,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 		this.initEventListeners();
 	}
 
-	private initEventListeners() {
+	private initEventListeners(): void {
 		const debouncer: Subject<any> = new Subject<any>();
 		debouncer.pipe(throttleTime(ObNavTreeFakeFocusDirective.KEY_DOWN_DEBOUNCE_MILLIS)).subscribe(event => this.onKeyDown(event));
 		this.eventSubscriptions.push(
@@ -115,13 +115,13 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 		this.eventSubscriptions.push(this.renderer.listen(this.inputElement.nativeElement, ObNavTreeFakeFocusDirective.INPUT_EVENTS.BLUR, () => this.onBlur(true)));
 	}
 
-	private onKeyDown(event: KeyboardEvent) {
+	private onKeyDown(event: KeyboardEvent): void {
 		if (Object.prototype.hasOwnProperty.call(this.keyHandlers, event.code)) {
 			this.keyHandlers[event.code](event);
 		}
 	}
 
-	private onBlur(reset = false) {
+	private onBlur(reset = false): void {
 		if (this.focusedElement) {
 			const link = this.findLink(this.focusedElement);
 
@@ -137,12 +137,12 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 		}
 	}
 
-	private unsubscribeInputListeners() {
+	private unsubscribeInputListeners(): void {
 		this.eventSubscriptions.forEach((unsubscribe: () => void) => unsubscribe());
 		this.eventSubscriptions = [];
 	}
 
-	private accept() {
+	private accept(): void {
 		const link = this.findLink();
 		if (link?.nativeElement) {
 			this.renderer.removeClass(link.nativeElement, ObNavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS);
@@ -166,7 +166,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 		this.focusedElement.nativeElement.dispatchEvent(event);
 	}
 
-	private focusNext() {
+	private focusNext(): void {
 		const elements = this.extractAllListElements();
 		let nextIndex = 0;
 		if (this.focusedElement) {
@@ -175,7 +175,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 		this.fakeFocus(new ElementRef(elements[nextIndex < elements.length ? nextIndex : 0]));
 	}
 
-	private focusPrevious(event: Event) {
+	private focusPrevious(event: Event): void {
 		// Ensure cursor does not move back in the text field:
 		event.preventDefault();
 

@@ -61,7 +61,7 @@ describe('SchemaValidation', () => {
 			this.validator = schemaValidationService.compileSchema(schema);
 		}
 
-		ngOnInit() {
+		ngOnInit(): void {
 			this.sampleForm = this.formBuilder.group({
 				string: ['', this.validator.getValidator('string')],
 				object: this.formBuilder.group({

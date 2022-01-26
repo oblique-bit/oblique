@@ -1,7 +1,7 @@
 export function draft07Convert(target, propertyKey: string, descriptor: PropertyDescriptor): any {
 	const oldValue = descriptor.value;
 
-	descriptor.value = function () {
+	descriptor.value = function (): void {
 		const schema = JSON.parse(JSON.stringify(arguments[0])); // deep clone
 		convert(schema);
 		return oldValue.call(this, schema);

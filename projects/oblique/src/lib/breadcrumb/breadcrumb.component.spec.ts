@@ -349,7 +349,11 @@ describe('ObBreadcrumbComponent', () => {
 	});
 });
 
-function createRoute({path, label, params, firstChild}: {path: string; label?: string; firstChild?: any; params?: {[key: string]: string}}) {
+function createRoute({path, label, params, firstChild}: {path: string; label?: string; firstChild?: any; params?: {[key: string]: string}}): {
+	routeConfig: {path: string; data: {breadcrumb: string}};
+	snapshot: {params: {[key: string]: string}};
+	firstChild: any;
+} {
 	return {
 		routeConfig: {
 			path,

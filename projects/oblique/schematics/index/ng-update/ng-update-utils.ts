@@ -25,32 +25,32 @@ export function minAngularVersion(tree: Tree, _context: SchematicContext, obliqu
 	}
 }
 
-export function addClassesPrefix(tree: Tree, filePath: string, target: string, suffixes?: string[]) {
+export function addClassesPrefix(tree: Tree, filePath: string, target: string, suffixes?: string[]): void {
 	replaceInFile(tree, filePath, new RegExp(`class="((?:[\\w-]*\\s)*|)(${target})(\\s.*|)"`, 'g'), `class="$1ob-$2$3"`);
 	if (suffixes) {
 		addClassPrefix(tree, filePath, target, suffixes);
 	}
 }
 
-export function addClassPrefix(tree: Tree, filePath: string, target: string, suffixes: string[]) {
+export function addClassPrefix(tree: Tree, filePath: string, target: string, suffixes: string[]): void {
 	suffixes.forEach(suffix => {
 		replaceInFile(tree, filePath, new RegExp(`class="((?:[\\w-]*\\s)*|)(${target}-${suffix})(\\s.*|)"`, 'g'), `class="$1ob-$2$3"`);
 	});
 }
 
-export function addPrefixMatchExactOrSuffix(tree: Tree, filePath: string, target: string, suffix: string[]) {
+export function addPrefixMatchExactOrSuffix(tree: Tree, filePath: string, target: string, suffix: string[]): void {
 	replaceInFile(tree, filePath, new RegExp(`\\.(${target}(?:[:\\.\\s{]|(?:-(?:${suffix.join('|')}))))`, 'g'), '.ob-$1');
 }
 
-export function addPrefixMatchSuffix(tree: Tree, filePath: string, target: string, suffix: string[]) {
+export function addPrefixMatchSuffix(tree: Tree, filePath: string, target: string, suffix: string[]): void {
 	replaceInFile(tree, filePath, new RegExp(`\\.(${target}-(?:${suffix.join('|')})[:\\.\\s{])`, 'g'), '.ob-$1');
 }
 
-export function addPrefixMatchExact(tree: Tree, filePath: string, targets: string[]) {
+export function addPrefixMatchExact(tree: Tree, filePath: string, targets: string[]): void {
 	replaceInFile(tree, filePath, new RegExp(`\\.(${targets.join('|')}[:\\.\\s{])`, 'g'), '.ob-$1');
 }
 
-export function renameExactOrSuffix(tree: Tree, filePath: string, target: string, suffix: string[], result: string) {
+export function renameExactOrSuffix(tree: Tree, filePath: string, target: string, suffix: string[], result: string): void {
 	replaceInFile(tree, filePath, new RegExp(`\\.${target}([:\\.\\s{]|(?:-(?:${suffix.join('|')})))`, 'g'), `.${result}$1`);
 }
 
@@ -80,7 +80,7 @@ function getDepVersion(tree: Tree, dep: string): number {
 	return version ? parseInt(version, 10) : 0;
 }
 
-export function removePolyFill(tree: Tree, polyfillName: string, importPattern: RegExp) {
+export function removePolyFill(tree: Tree, polyfillName: string, importPattern: RegExp): void {
 	const polyfills = getAngularConfigs(tree, ['architect', 'build', 'options', 'polyfills'])
 		.map(polyfill => ({name: polyfill.config, file: createSrcFile(tree, polyfill.config).getText()}))
 		.filter(polyfill => importPattern.test(polyfill.file));

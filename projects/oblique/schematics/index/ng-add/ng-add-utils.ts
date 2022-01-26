@@ -41,7 +41,7 @@ export function getPreconditionVersion(tree: Tree, pkg: string): string {
 	return !current || current.major !== target.major || current.minor !== target.minor ? `${target.major}.${target.minor}` : '';
 }
 
-export function checkPrecondition(tree: Tree, pkg: string) {
+export function checkPrecondition(tree: Tree, pkg: string): void {
 	const current = extractVersion(getDepVersion(tree, pkg) || '');
 	const target = extractVersion(getTargetDepVersion(tree, pkg) || '') || ({} as ObIVersion);
 
@@ -67,7 +67,7 @@ export function importModuleInRoot(tree: Tree, moduleName: string, src: string):
 	}
 }
 
-export function applyChanges(tree: Tree, filePath: string, changes: Change[]) {
+export function applyChanges(tree: Tree, filePath: string, changes: Change[]): Tree {
 	const records = tree.beginUpdate(filePath);
 	changes.filter(change => change instanceof InsertChange).forEach((change: InsertChange) => records.insertLeft(change.pos, change.toAdd));
 	tree.commitUpdate(records);

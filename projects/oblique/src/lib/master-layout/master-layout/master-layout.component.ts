@@ -87,7 +87,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 
 	@HostListener('mousedown')
 	@HostListener('keydown')
-	removeOutline() {
+	removeOutline(): void {
 		this.outline = false;
 	}
 
@@ -97,7 +97,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 	@HostListener('keydown.arrowDown')
 	@HostListener('keydown.arrowRight')
 	@HostListener('keydown.arrowLeft')
-	addOutline() {
+	addOutline(): void {
 		this.outline = true;
 	}
 
@@ -118,7 +118,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 		this.updateJumpLinks(!this.noNavigation);
 	}
 
-	ngAfterViewInit() {
+	ngAfterViewInit(): void {
 		// to avoid a ExpressionHasBeenChangedAfterItHasBeenCheckedError
 		setTimeout(() => (this.scrollTarget = this.getScrollTarget()));
 	}
@@ -145,7 +145,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 		this.jumpLinks = this.jumpLinks.map((jumpLink, i) => ({...jumpLink, accessKey: i + staticJumpLinks}));
 	}
 
-	private propertyChanges() {
+	private propertyChanges(): void {
 		merge(this.masterLayout.layout.configEvents$, this.masterLayout.header.configEvents$, this.masterLayout.footer.configEvents$)
 			.pipe(takeUntil(this.unsubscribe))
 			.subscribe(event => {
@@ -180,7 +180,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 			});
 	}
 
-	private focusFragment() {
+	private focusFragment(): void {
 		this.router.events
 			.pipe(
 				filter(evt => evt instanceof NavigationEnd),
@@ -205,7 +205,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 			.reduce((params, parameter) => ({...params, [parameter[0]]: parameter[1]}), {});
 	}
 
-	private focusOffCanvasClose() {
+	private focusOffCanvasClose(): void {
 		this.offCanvasService.opened
 			.pipe(
 				takeUntil(this.unsubscribe),

@@ -30,7 +30,7 @@ export class ObMockNavTreeComponent {
 		return true;
 	}
 
-	itemKey(item: ObNavTreeItemModel) {
+	itemKey(item: ObNavTreeItemModel): string {
 		return `${this.prefix}-${item.id}`;
 	}
 

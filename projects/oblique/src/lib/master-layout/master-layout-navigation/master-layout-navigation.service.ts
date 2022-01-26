@@ -40,7 +40,7 @@ export class ObMasterLayoutNavigationService {
 		this.configEvents$ = this._events.asObservable();
 	}
 
-	get isFullWidth() {
+	get isFullWidth(): boolean {
 		return this._isFullWidth;
 	}
 
@@ -52,7 +52,7 @@ export class ObMasterLayoutNavigationService {
 		});
 	}
 
-	get scrollMode() {
+	get scrollMode(): ObEScrollMode {
 		return this._scrollMode;
 	}
 
@@ -72,7 +72,7 @@ export class ObMasterLayoutNavigationService {
 		return this.refreshed$;
 	}
 
-	refresh() {
+	refresh(): void {
 		// postpone the event emission so that Angular has time to apply changes to the DOM
 		this.window.setTimeout(() => this._refreshed.next());
 	}

@@ -41,7 +41,7 @@ class ReactiveTestComponent implements OnInit {
 
 	constructor(private readonly formBuilder: FormBuilder) {}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.model = this.formBuilder.group({name: ['', Validators.required]});
 	}
 }

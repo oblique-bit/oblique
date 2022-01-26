@@ -2,7 +2,7 @@ class Icons {
 	private static readonly fs = require('fs');
 	private static readonly path = require('path');
 
-	static perform() {
+	static perform(): void {
 		const SVGs = Icons.getSVGs(Icons.path.join('projects', 'oblique', 'icons'));
 		Icons.writeIconSet(Icons.path.join('projects', 'oblique', 'src', 'assets', 'obliqueIcons.svg'), SVGs);
 		Icons.writeIconSetTS(Icons.path.join('projects', 'oblique', 'src', 'assets', 'oblique-icons.ts'), SVGs);

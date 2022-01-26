@@ -26,14 +26,14 @@ export class ObInputClearDirective implements OnInit {
 		});
 	}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		if (!(this.control instanceof HTMLInputElement) && !(this.control instanceof FormControl) && !(this.control instanceof NgModel)) {
 			console.warn('ObInputClearDirective: illegal value for obInputClear Input, please use one of the following: HTMLInputElement, FormControl or NgModel.');
 		}
 	}
 
 	@HostListener('click', ['$event'])
-	onClick($event: MouseEvent) {
+	onClick($event: MouseEvent): void {
 		this.clearDatePicker();
 		this.clearInputField();
 		this.setFocus();

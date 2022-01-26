@@ -62,14 +62,14 @@ export class ObNotificationService {
 	/**
 	 * Broadcasts an event to clear all notifications from specified `channel`.
 	 */
-	public clear(channel = this.config.channel) {
+	public clear(channel = this.config.channel): void {
 		this.eventSubject.next({channel});
 	}
 
 	/**
 	 * Broadcasts an event to clear all notifications from any available.
 	 */
-	public clearAll() {
+	public clearAll(): void {
 		this.eventSubject.next(null);
 	}
 

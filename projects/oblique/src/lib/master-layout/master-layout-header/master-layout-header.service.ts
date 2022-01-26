@@ -16,7 +16,7 @@ export class ObMasterLayoutHeaderService {
 		this.configEvents$ = this._events.asObservable();
 	}
 
-	get isCustom() {
+	get isCustom(): boolean {
 		return this._isCustom;
 	}
 

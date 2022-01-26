@@ -10,7 +10,7 @@ export class ObColumnToggleDirective {
 	constructor(private readonly parent: ObColumnPanelDirective) {}
 
 	@HostListener('click')
-	onclick() {
+	onclick(): void {
 		this.parent.toggle();
 	}
 }

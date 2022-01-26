@@ -67,7 +67,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		this.home$ = this.masterLayout.homePageRouteChange$;
 	}
 
-	ngAfterViewInit() {
+	ngAfterViewInit(): void {
 		this.globalEventsService.resize$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.onResize());
 		this.setFocusable(this.masterLayout.layout.isMenuOpened);
 		this.masterLayout.layout.configEvents$
@@ -84,7 +84,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		this.unsubscribe.complete();
 	}
 
-	onResize() {
+	onResize(): void {
 		this.setFocusable(this.masterLayout.layout.isMenuOpened);
 	}
 
@@ -96,7 +96,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		this.translate.use(lang);
 	}
 
-	private addActionClass(elt: ElementRef) {
+	private addActionClass(elt: ElementRef): void {
 		const actionable = ['a', 'button'];
 		if (actionable.includes(elt.nativeElement.nodeName.toLowerCase())) {
 			this.renderer.addClass(elt.nativeElement, 'ob-control-link');
@@ -111,13 +111,13 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		});
 	}
 
-	private reduceOnScroll() {
+	private reduceOnScroll(): void {
 		this.scrollEvents.isScrolled.pipe(takeUntil(this.unsubscribe), scrollEnabled(this.masterLayout.header)).subscribe(isScrolling => {
 			this.isSmall = isScrolling;
 		});
 	}
 
-	private propertyChanges() {
+	private propertyChanges(): void {
 		const events = [ObEMasterLayoutEventValues.HEADER_IS_CUSTOM, ObEMasterLayoutEventValues.HEADER_IS_SMALL];
 		this.masterLayout.header.configEvents$
 			.pipe(

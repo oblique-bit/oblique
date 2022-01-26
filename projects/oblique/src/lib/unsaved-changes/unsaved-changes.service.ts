@@ -34,7 +34,7 @@ export class ObUnsavedChangesService {
 		return this.hasPendingChanges(formIds) ? this.popUpService.confirm(this.message()) : true;
 	}
 
-	private onUnload(event: BeforeUnloadEvent) {
+	private onUnload(event: BeforeUnloadEvent): string | null {
 		if (this.hasPendingChanges()) {
 			const confirmationMessage = this.message();
 			event.returnValue = confirmationMessage;

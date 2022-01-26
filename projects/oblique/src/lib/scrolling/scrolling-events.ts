@@ -20,7 +20,7 @@ export class ObScrollingEvents {
 		this._scrolling.next(isScrolling);
 	}
 
-	hasScrolled(offset: number) {
+	hasScrolled(offset: number): void {
 		this._scrolled.next(offset);
 	}
 }

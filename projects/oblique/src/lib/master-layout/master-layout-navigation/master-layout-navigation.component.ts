@@ -41,12 +41,12 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 		this.propertyChanges();
 	}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.closeOnEscape();
 		this.markActiveLink();
 	}
 
-	ngDoCheck() {
+	ngDoCheck(): void {
 		if (this.links?.length && this.links.length !== this.linksLength) {
 			this.checkForExternalLinks(this.links);
 			this.linksLength = this.links.length;
@@ -54,12 +54,12 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 		}
 	}
 
-	ngAfterViewInit() {
+	ngAfterViewInit(): void {
 		this.nav = this.el.nativeElement.querySelector('.ob-main-nav:not(.ob-sub-nav)');
 		this.masterLayout.navigation.scrolled.pipe(takeUntil(this.unsubscribe)).subscribe(offset => this.updateScroll(offset));
 	}
 
-	ngOnDestroy() {
+	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
 	}
@@ -85,7 +85,7 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 		}
 	}
 
-	private propertyChanges() {
+	private propertyChanges(): void {
 		const events = [ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE, ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH];
 		this.masterLayout.navigation.configEvents$
 			.pipe(

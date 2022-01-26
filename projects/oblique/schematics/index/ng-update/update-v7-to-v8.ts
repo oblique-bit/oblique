@@ -48,7 +48,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private prefixScssVariableNames(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Prefix scss variable names');
-			const apply = (filePath: string) => {
+			const apply = (filePath: string): void => {
 				[
 					// Palette CI-CD colors
 					'venetian-red',
@@ -194,7 +194,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private prefixMixinNames(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Prefix mixin names');
-			const apply = (filePath: string) => {
+			const apply = (filePath: string): void => {
 				[
 					'callout-styles',
 					'firefox',
@@ -255,7 +255,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private removeLayoutCollapse(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Replacing layout-collapse mixins');
-			const apply = (filePath: string) => {
+			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /(?:ob-)?layout-collapse-(up|down)(?:\(\))?/g, `ob-media-breakpoint-$1(md)`);
 			};
 			return applyInTree(tree, apply, '*.scss');
@@ -265,7 +265,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private removeObMandatory(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Remove ObMandatoryModule, ObMandatoryDirective and their Testing-Mocks');
-			const apply = (filePath: string) => {
+			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, new RegExp(/\s?(Ob(?:Mock)?Mandatory(?:Module|Directive),?)/g), '');
 			};
 			return applyInTree(tree, apply, '*.ts');
@@ -275,7 +275,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private removeDlHorizontalVariants(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Remove .ob-horizontal-* classes');
-			const apply = (filePath: string) => {
+			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, new RegExp(/\s?ob-horizontal-(?:large|small)/g), '');
 			};
 			return applyInTree(tree, apply, '*.html');
@@ -294,7 +294,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private removeThemeService(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Remove ObThemeService');
-			const apply = (filePath: string) => {
+			const apply = (filePath: string): void => {
 				const fileContent = readFile(tree, filePath);
 				if (fileContent.includes('ObThemeService')) {
 					const service = /(?<service>\w*)\s*:\s*ObThemeService,?/.exec(fileContent)?.groups?.service;
@@ -342,7 +342,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private migrateMasterLayoutProperties(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Replacing master Layout properties: header.isAnimated, footer.isSmall, layout.isFixed, hasScrollTransition, isMedium');
-			const toApply = (filePath: string) => {
+			const toApply = (filePath: string): void => {
 				const fileContent = readFile(tree, filePath);
 				let replacement = fileContent;
 				replacement = this.migrateMasterLayoutConfig(replacement);
@@ -364,7 +364,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private migrateObEMasterLayoutEventValues(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Replacing ObEMasterLayoutEventValues values');
-			const toApply = (filePath: string) => {
+			const toApply = (filePath: string): void => {
 				const fileContent = readFile(tree, filePath);
 				const replacement = fileContent
 					.replace(/ObEMasterLayoutEventValues\.STICKY\b/g, 'ObEMasterLayoutEventValues.HEADER_IS_STICKY')
@@ -387,7 +387,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private migrateConfigEvents(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Replacing configEvents');
-			const toApply = (filePath: string) => {
+			const toApply = (filePath: string): void => {
 				const fileContent = readFile(tree, filePath);
 				const replacement = fileContent.replace(/\.configEvents(?!\$)/g, '.configEvents$');
 				if (fileContent !== replacement) {

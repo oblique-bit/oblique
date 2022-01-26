@@ -48,7 +48,7 @@ export class ObErrorMessagesComponent implements AfterViewInit, OnDestroy {
 		}
 	}
 
-	ngAfterViewInit() {
+	ngAfterViewInit(): void {
 		this.control = this.control ? this.control : this.formGroup.ngControl;
 
 		observableMerge(this.control.statusChanges, this.form.ngSubmit)
@@ -68,7 +68,7 @@ export class ObErrorMessagesComponent implements AfterViewInit, OnDestroy {
 		this.unsubscribe.complete();
 	}
 
-	private generateErrorMessages(submitted = false) {
+	private generateErrorMessages(submitted = false): void {
 		const pristineValidation = this.formGroup ? this.formGroup.pristineValidation : false;
 		if (this.control.invalid && (submitted || this.form.submitted || !this.control.pristine || pristineValidation)) {
 			this.errors = this.errorMessagesService.createMessages(this.control, this.disableNgb);
@@ -77,7 +77,7 @@ export class ObErrorMessagesComponent implements AfterViewInit, OnDestroy {
 		}
 	}
 
-	private delayMessageGenerationForReactiveForms() {
+	private delayMessageGenerationForReactiveForms(): void {
 		// Reactive forms instantiate the view only after the model is ready. Thus modifying this.errors in the same
 		// tick as ngAfterViewInit will trigger an ExpressionChangedAfterItHasBeenCheckedError
 		if (this.form instanceof FormGroupDirective) {

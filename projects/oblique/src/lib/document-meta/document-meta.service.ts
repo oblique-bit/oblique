@@ -63,7 +63,7 @@ export class ObDocumentMetaService implements OnDestroy {
 		this.unsubscribe.complete();
 	}
 
-	public setTitle(title: string, separator: string = this.titleSeparator, suffix: string = this.titleSuffix) {
+	public setTitle(title: string, separator: string = this.titleSeparator, suffix: string = this.titleSuffix): void {
 		if (title) {
 			this.translate
 				.get([title, suffix])
@@ -81,7 +81,7 @@ export class ObDocumentMetaService implements OnDestroy {
 		return this.metaDescription.getAttribute('content');
 	}
 
-	public setDescription(description: string) {
+	public setDescription(description: string): void {
 		if (description && description !== '') {
 			this.translate
 				.get(description)
@@ -104,7 +104,7 @@ export class ObDocumentMetaService implements OnDestroy {
 		return meta;
 	}
 
-	private updateMetaInformation() {
+	private updateMetaInformation(): void {
 		this.setTitle(this.currentMetaInformation.title);
 		this.setDescription(this.currentMetaInformation.description);
 	}

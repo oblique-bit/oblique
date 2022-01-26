@@ -39,7 +39,7 @@ export class UpdateV6toV7 implements ObIMigrations {
 	private renameObIconsConfig(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Renaming ObIconsConfig into ObIconConfig');
-			const toApply = (filePath: string) => {
+			const toApply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /ObIconsConfig/g, 'ObIconConfig');
 			};
 			return applyInTree(tree, toApply, '*.ts');
@@ -49,7 +49,7 @@ export class UpdateV6toV7 implements ObIMigrations {
 	private renameSpacingLg(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Renaming $spacing-lg into $spacing-xl');
-			const toApply = (filePath: string) => {
+			const toApply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /\$spacing-lg/g, '$spacing-xl');
 			};
 			return applyInTree(tree, toApply, '*.scss');
@@ -59,7 +59,7 @@ export class UpdateV6toV7 implements ObIMigrations {
 	private renameTableTitleAttribute(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Renaming title attribute into data-title for tables');
-			const toApply = (filePath: string) => {
+			const toApply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /(?<=<table[^>]*?class=".*?ob-table-collapse.*?".*?<td[^>]*?)(?<!data-)title="/gs, 'data-title="');
 			};
 			return applyInTree(tree, toApply, '*.html');
@@ -69,7 +69,7 @@ export class UpdateV6toV7 implements ObIMigrations {
 	private removeDirection(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Removing direction input on collapse');
-			const toApply = (filePath: string) => {
+			const toApply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /(<ob-collapse\s.*?)\[?direction]?=".*?"\s?(.*?>)/g, '$1$2');
 			};
 			return applyInTree(tree, toApply, '*.html');
@@ -79,7 +79,7 @@ export class UpdateV6toV7 implements ObIMigrations {
 	private migrateAlerts(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Use ob-alert instead of alert classes');
-			const toApply = (filePath: string) => {
+			const toApply = (filePath: string): void => {
 				replaceInFile(
 					tree,
 					filePath,
@@ -94,7 +94,7 @@ export class UpdateV6toV7 implements ObIMigrations {
 	private migrateNavigationPathMatch(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Migrate pathMatch to routerLinkActiveOptions');
-			const toApply = (filePath: string) => {
+			const toApply = (filePath: string): void => {
 				replaceInFile(
 					tree,
 					filePath,

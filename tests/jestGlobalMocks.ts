@@ -1,4 +1,4 @@
-const mock = () => {
+const mock = (): Partial<Storage> => {
 	let storage: {[key: string]: string} = {};
 	return {
 		getItem: (key: string) => (key in storage ? storage[key] : null),

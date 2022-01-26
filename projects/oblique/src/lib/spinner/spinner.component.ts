@@ -42,7 +42,7 @@ export class ObSpinnerComponent implements OnInit, OnDestroy {
 			});
 	}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.element.nativeElement.parentElement.classList.add('ob-has-overlay');
 	}
 

@@ -35,7 +35,7 @@ export class ObMockMultiselectComponent implements ControlValueAccessor {
 	searchFilterText = '';
 	disabled = false;
 
-	onClick(target: HTMLElement) {}
+	onClick(target: HTMLElement): void {}
 
 	onKeyup($event: KeyboardEvent): void {}
 

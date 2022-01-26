@@ -50,7 +50,7 @@ export class ObFormControlStateDirective implements AfterViewInit, OnDestroy {
 		}
 	}
 
-	ngAfterViewInit() {
+	ngAfterViewInit(): void {
 		if (!this.ngControl) {
 			throw new Error('You need to provide an NgControl for the FormControlStateDirective!');
 		}

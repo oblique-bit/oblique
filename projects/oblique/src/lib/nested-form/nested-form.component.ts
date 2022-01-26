@@ -17,7 +17,7 @@ export class ObNestedFormComponent implements ControlValueAccessor, Validator, A
 
 	constructor(private readonly parent: ObParentFormDirective) {}
 
-	ngAfterViewInit() {
+	ngAfterViewInit(): void {
 		this.parent.submit$.subscribe(() => this.nestedForm.markAllAsTouched());
 		this.parent.reset$.subscribe(() => this.nestedForm.reset());
 	}

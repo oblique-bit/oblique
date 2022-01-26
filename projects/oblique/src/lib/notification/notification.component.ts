@@ -17,7 +17,7 @@ export class ObNotificationComponent implements OnInit {
 	public static REMOVE_DELAY = 350;
 	@Input() channel: string;
 	@HostBinding('class.ob-custom') customChannel = false;
-	@HostBinding('class') get getPlacement() {
+	@HostBinding('class') get getPlacement(): ObENotificationPlacement {
 		return this.notificationService.placement;
 	}
 	public notifications: ObINotificationPrivate[] = [];
