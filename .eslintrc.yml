@@ -79,7 +79,6 @@ overrides:
 
       # rules that need some refactoring to be enabled
       "@angular-eslint/component-max-inline-declarations": off
-      "@angular-eslint/no-lifecycle-call": off
 
       # other rules that will be processed later
       "@typescript-eslint/member-ordering":
