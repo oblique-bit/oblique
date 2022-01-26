@@ -96,6 +96,19 @@ overrides:
       "@angular-eslint/no-host-metadata-property":
         - error
         - allowStatic: true
+      "@typescript-eslint/member-ordering":
+        - error
+        - default:
+            - public-static-field
+            - public-instance-field
+            - protected-static-field
+            - protected-field
+            - public-constructor
+            - protected-constructor
+            - private-constructor
+            - public-method
+            - protected-method
+            - private-method
       "@typescript-eslint/no-extraneous-class":
         - error
         - allowWithDecorator: true
@@ -105,24 +118,6 @@ overrides:
         - functions: false
 
       # rules that need some refactoring to be enabled
-      "@typescript-eslint/member-ordering":
-        - error
-        - default:
-            - public-static-field
-            - public-instance-field
-            - protected-static-field
-            - protected-instance-field
-            - private-static-field
-            - private-instance-field
-            - public-constructor
-            - protected-constructor
-            - private-constructor
-            - public-static-method
-            - public-instance-method
-            - protected-static-method
-            - protected-instance-method
-            - private-static-method
-            - private-instance-method
       "@typescript-eslint/no-explicit-any": off
       "@typescript-eslint/explicit-module-boundary-types": off
       "@typescript-eslint/ban-types": off
