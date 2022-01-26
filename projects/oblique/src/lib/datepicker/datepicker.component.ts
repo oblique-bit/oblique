@@ -59,8 +59,11 @@ export class ObDatepickerComponent implements OnInit, ControlValueAccessor, Vali
 	registerOnTouched(fn: any): void {}
 
 	setDisabledState(isDisabled: boolean): void {
-		// eslint-disable-next-line no-unused-expressions
-		isDisabled ? this.datePicker.disable() : this.datePicker.enable();
+		if (isDisabled) {
+			this.datePicker.disable();
+		} else {
+			this.datePicker.enable();
+		}
 	}
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
