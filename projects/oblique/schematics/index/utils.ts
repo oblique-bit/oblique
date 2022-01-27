@@ -36,11 +36,10 @@ export function createSafeRule(callback: (tree: Tree, context: SchematicContext)
 		} catch (error) {
 			isSuccessful = false;
 			const groups = /@oblique[/\\]oblique[/\\]schematics[/\\].*[/\\](?<file>\w*\.js):(?<line>\d*)/.exec(error.stack || '')?.groups || {};
+			const errorMessage: string = error.message || error;
 			warn(
 				context,
-				`The previous task failed and the change needs to be done manually.\nPlease inform the Oblique team (oblique@bit.admin.ch) of the following error:\n\t${
-					error.message || error
-				}, in "${groups.file}" on line ${groups.line}`
+				`The previous task failed and the change needs to be done manually.\nPlease inform the Oblique team (oblique@bit.admin.ch) of the following error:\n\t${errorMessage}, in "${groups.file}" on line ${groups.line}`
 			);
 			return tree;
 		}
@@ -162,7 +161,7 @@ export function installDependencies(): Rule {
 export function applyInTree(tree: Tree, toApply: Function, pattern = '*'): Tree {
 	getAngularConfigs(tree, ['sourceRoot'])
 		.map(project => project.config)
-		.reduce((files, root) => [...files, ...glob.sync(`${root}/**/${pattern}`, {})], [])
+		.reduce<string[]>((files, root: string) => [...files, ...glob.sync(`${root}/**/${pattern}`, {})], [])
 		.forEach((file: string) => toApply(file));
 	return tree;
 }

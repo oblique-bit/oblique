@@ -62,8 +62,9 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 	private eventSubscriptions: (() => void)[] = [];
 
 	public constructor(private readonly element: ElementRef, private readonly renderer: Renderer2) {
-		if (this.element.nativeElement.localName !== 'ob-nav-tree') {
-			throw new Error(`Directive nav-tree-selector can only be used on ob-nav-tree elements. Current element is: '${this.element.nativeElement.localName}'`);
+		const name: string = this.element.nativeElement.localName;
+		if (name !== 'ob-nav-tree') {
+			throw new Error(`Directive nav-tree-selector can only be used on ob-nav-tree elements. Current element is: '${name}'`);
 		}
 		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.DOWN] = () => this.focusNext();
 		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.UP] = event => this.focusPrevious(event);
@@ -79,6 +80,8 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 	public fakeFocus(element: ElementRef): void {
 		const link = this.findLink(element);
 		if (!link || !this.element.nativeElement.contains(link.nativeElement)) {
+			// fixing this requires a breaking change
+			// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 			throw new Error(`Unable to fake focus element '${element.nativeElement}'. No valid DOM element or no valid child.`);
 		}
 		this.onBlur();

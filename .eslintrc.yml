@@ -122,6 +122,9 @@ overrides:
       "@typescript-eslint/no-use-before-define":
         - error
         - functions: false
+      "@typescript-eslint/restrict-template-expressions":
+        - error
+        - allowBoolean: true
       "@typescript-eslint/unbound-method":
         - error
         - ignoreStatic: true
@@ -133,7 +136,6 @@ overrides:
       "@typescript-eslint/no-var-requires": off
       "@typescript-eslint/no-unsafe-member-access": off
       "@typescript-eslint/no-unsafe-assignment": off
-      "@typescript-eslint/restrict-template-expressions": off
       "@typescript-eslint/no-shadow": off
       "@typescript-eslint/strict-boolean-expressions": off
       "@typescript-eslint/no-unnecessary-condition": off

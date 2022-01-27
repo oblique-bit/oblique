@@ -7,7 +7,7 @@ import {ObIDependencies, versionFunc} from './ng-update.model';
 export function checkDependencies(tree: Tree, _context: SchematicContext, deps: ObIDependencies): void {
 	const angular = getDepVersion(tree, '@angular/core');
 	const warnings = Object.keys(deps)
-		.reduce((warns, dep) => [...warns, checkDependency(tree, _context, dep, getVersions(deps[dep], angular))], [])
+		.reduce<string[]>((warns, dep) => [...warns, checkDependency(tree, _context, dep, getVersions(deps[dep], angular))], [])
 		.filter(warning => !!warning)
 		.map(warning => `\n    • ${warning}`)
 		.join('');

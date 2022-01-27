@@ -49,7 +49,7 @@ export class ObSchemaValidatorInstance {
 		return !value && this.isRequired(propertyName, path);
 	}
 
-	private addSchema(schema: any, parentPropertyName?): void {
+	private addSchema(schema: any, parentPropertyName?: string): void {
 		Object.keys(schema.properties || {}).forEach(propertyName => {
 			const propertyPath = parentPropertyName ? `${parentPropertyName}.${propertyName}` : propertyName;
 			if (schema.properties[propertyName].properties) {

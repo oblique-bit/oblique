@@ -533,7 +533,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 			// and prior to Angular 13, an e2e projects was always created.
 			infoMigration(_context, 'Toolchain: add "@angular-eslint" configuration');
 			getAngularConfigs(tree, []).forEach(project => {
-				const rootPath = project.config.root || project.config.sourceRoot;
+				const rootPath: string = project.config.root || project.config.sourceRoot;
 				setAngularConfig(tree, ['architect', 'lint'], {
 					project: project.project,
 					config: {

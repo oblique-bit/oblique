@@ -28,11 +28,11 @@ class NpmDeprecate {
 		}
 	}
 
-	private static deprecateMajorVersion(version: string, date): void {
+	private static deprecateMajorVersion(version: string, date: string): void {
 		NpmDeprecate.execSync(`npm deprecate @oblique/oblique@${version}.x "Oblique ${version} has reached its End Of Life on ${date}"`);
 	}
 
-	private static deprecateExactVersion(version: string, date): void {
+	private static deprecateExactVersion(version: string, date: string): void {
 		NpmDeprecate.execSync(`npm deprecate @oblique/oblique@${version} "Oblique ${version.split('.')[0]} has been released on ${date}"`);
 	}
 

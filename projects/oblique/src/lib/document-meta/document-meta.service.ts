@@ -69,7 +69,7 @@ export class ObDocumentMetaService implements OnDestroy {
 				.get([title, suffix])
 				.pipe(
 					takeUntil(this.unsubscribe),
-					map(translation => (translation[suffix] ? `${translation[title]}${separator}${translation[suffix]}` : translation[title]))
+					map((translation: Record<string, string>) => (translation[suffix] ? `${translation[title]}${separator}${translation[suffix]}` : translation[title]))
 				)
 				.subscribe(text => this.titleService.setTitle(text));
 		} else if (suffix) {
