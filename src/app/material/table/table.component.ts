@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatSort} from '@angular/material/sort';
-import {MatPaginator} from '@angular/material/paginator';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {ObIPeriodicElement} from './table.model';
 
@@ -66,7 +66,7 @@ export class TableComponent implements OnInit {
 		this.totalWeight = this.dataSource.data.map(x => x.weight).reduce((a, b) => a + b, 0);
 	}
 
-	updateFooterRowByPage(page: any): void {
+	updateFooterRowByPage(page: PageEvent): void {
 		const elementsCount = (page.pageIndex + 1) * page.pageSize;
 		const firstIndex = page.pageIndex * page.pageSize;
 		const visibleElements = this.dataSource.data.slice(firstIndex, firstIndex + elementsCount);
