@@ -18,7 +18,7 @@ export class ApiElementComponent implements OnChanges {
 		});
 	}
 
-	private hasHtmlContent(content: any): boolean {
+	private hasHtmlContent(content: string | boolean | number): boolean {
 		return typeof content === 'string' && /<[^>]*>/g.test(content);
 	}
 }

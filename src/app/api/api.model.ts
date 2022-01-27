@@ -23,7 +23,7 @@ export interface ObIAPIelement {
 	arguments?: string[];
 	returns?: string;
 	see?: string;
-	default?: any;
+	default?: string | boolean | number;
 	since: string;
 	updated?: string;
 	isOptional?: boolean;
