@@ -15,7 +15,7 @@ export class ObSpinnerService {
 
 	public readonly events$: Observable<ObISpinnerEvent>;
 
-	private calls: {[key: string]: number} = {};
+	private calls: Record<string, number> = {};
 	private readonly events: Subject<ObISpinnerEvent> = new Subject<ObISpinnerEvent>();
 
 	constructor() {

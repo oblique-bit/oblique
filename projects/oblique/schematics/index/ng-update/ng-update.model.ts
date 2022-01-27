@@ -2,12 +2,10 @@ import {Rule} from '@angular-devkit/schematics';
 
 export type versionFunc = (version: number) => number | number[];
 
-export interface ObIDependencies {
-	[key: string]: number | number[] | versionFunc;
-}
+export type ObIDependencies = Record<string, number | number[] | versionFunc>;
 export interface ObIMigrations {
 	dependencies: ObIDependencies;
-	applyMigrations: (_options: {[key: string]: any}) => Rule;
+	applyMigrations: (_options: Record<string, any>) => Rule;
 }
 
 export interface ObITask {

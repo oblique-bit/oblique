@@ -3,7 +3,7 @@ import {NgControl} from '@angular/forms';
 
 @Injectable({providedIn: 'root'})
 export class ObErrorMessagesService {
-	createMessages(control: NgControl, disableNgb: boolean): {key: string; params: {[param: string]: any}}[] {
+	createMessages(control: NgControl, disableNgb: boolean): {key: string; params: Record<string, any>}[] {
 		return Object.keys(control.errors)
 			.filter(key => !key.startsWith('ngb') || !disableNgb)
 			.map(key => {

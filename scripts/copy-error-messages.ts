@@ -11,7 +11,7 @@ class CopyErrorMessages {
 		);
 	}
 
-	private static adaptMessages(translations: {[key: string]: string}, messages: string): string {
+	private static adaptMessages(translations: Record<string, string>, messages: string): string {
 		return Object.keys(translations).reduce(
 			(outerMsg, lang) =>
 				Object.keys(translations[lang]).reduce(
@@ -22,7 +22,7 @@ class CopyErrorMessages {
 		);
 	}
 
-	private static getTranslations(basePath: string): {[key: string]: string} {
+	private static getTranslations(basePath: string): Record<string, string> {
 		const translations = {};
 		CopyErrorMessages.fs.readdirSync(basePath).forEach(file => {
 			const lang = /oblique-(?<lang>[a-z]{2})\.json/.exec(file)?.groups?.lang?.toUpperCase();

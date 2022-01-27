@@ -42,7 +42,7 @@ export interface ObINavigationLink {
 	label: string;
 	url: string;
 	fragment?: string;
-	queryParams?: {[key: string]: string};
+	queryParams?: Record<string, string>;
 	children?: ObINavigationLink[];
 	sameTarget?: boolean;
 	isExternal?: boolean;

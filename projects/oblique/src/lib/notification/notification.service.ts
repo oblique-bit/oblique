@@ -97,7 +97,7 @@ export class ObNotificationService {
 	}
 
 	// Do not make it static as it breaks the build
-	private formatMessage(message: string, messageParams: {[key: string]: any}): string {
+	private formatMessage(message: string, messageParams: Record<string, any>): string {
 		return Object.keys(messageParams || {})
 			.reduce((msg, key) => `${msg}-${messageParams[key].toString()}`, message.substr(0, 50))
 			.replace(/[^\w]/gi, '_')

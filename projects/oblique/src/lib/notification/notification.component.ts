@@ -21,7 +21,7 @@ export class ObNotificationComponent implements OnInit {
 		return this.notificationService.placement;
 	}
 	public notifications: ObINotificationPrivate[] = [];
-	public variant: {[type: string]: string} = {};
+	public variant: Record<string, string> = {};
 
 	constructor(private readonly notificationService: ObNotificationService, @Inject(WINDOW) private readonly window: Window) {}
 

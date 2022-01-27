@@ -1,6 +1,4 @@
-interface Json {
-	[key: string]: any;
-}
+type Json = Record<string, any>;
 
 class AdaptPackageJson {
 	private static readonly fs = require('fs');

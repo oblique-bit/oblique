@@ -131,7 +131,6 @@ overrides:
       "@typescript-eslint/no-shadow": off
       "@typescript-eslint/strict-boolean-expressions": off
       "@typescript-eslint/no-unnecessary-condition": off
-      "@typescript-eslint/consistent-indexed-object-style": off
       "@typescript-eslint/no-unsafe-argument": off
       "@typescript-eslint/no-magic-numbers": off
       "@typescript-eslint/unbound-method": off

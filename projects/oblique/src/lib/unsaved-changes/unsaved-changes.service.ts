@@ -8,7 +8,7 @@ import {Window} from '@popperjs/core';
 @Injectable({providedIn: 'root'})
 export class ObUnsavedChangesService {
 	public isActive = true;
-	private readonly controlContainer: {[key: string]: ControlContainer} = {};
+	private readonly controlContainer: Record<string, ControlContainer> = {};
 
 	constructor(private readonly translateService: TranslateService, private readonly popUpService: ObPopUpService, @Inject(WINDOW) window: Window) {
 		window.addEventListener('beforeunload', e => this.onUnload(e));

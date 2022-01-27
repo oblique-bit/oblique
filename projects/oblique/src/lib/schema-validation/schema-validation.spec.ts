@@ -79,20 +79,20 @@ describe('SchemaValidation', () => {
 			formType: 'template',
 			testComponent: TemplateFormTestComponent,
 			formModule: FormsModule,
-			getControls: (fixture): {[key: string]: AbstractControl} => fixture.debugElement.query(By.directive(NgForm)).injector.get(NgForm).controls
+			getControls: (fixture): Record<string, AbstractControl> => fixture.debugElement.query(By.directive(NgForm)).injector.get(NgForm).controls
 		},
 		{
 			formType: 'model',
 			testComponent: ModelFormTestComponent,
 			formModule: ReactiveFormsModule,
-			getControls: (fixture): {[key: string]: AbstractControl} => fixture.componentInstance.sampleForm.controls
+			getControls: (fixture): Record<string, AbstractControl> => fixture.componentInstance.sampleForm.controls
 		}
 	].forEach(CONFIG => {
 		// TODO: add test for more complex types and required option
 		describe(`in a ${CONFIG.formType} driven form`, () => {
 			let fixture: any;
-			let controls: {[name: string]: AbstractControl};
-			let subproperties: {[name: string]: AbstractControl};
+			let controls: Record<string, AbstractControl>;
+			let subproperties: Record<string, AbstractControl>;
 
 			beforeEach(
 				waitForAsync(() => {

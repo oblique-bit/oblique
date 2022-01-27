@@ -13,7 +13,7 @@ export const obliqueCssPath = 'node_modules/@oblique/oblique/styles/css/oblique-
 
 type versionFunc = (version: number) => string;
 
-const versions: {[key: string]: string | versionFunc} = {
+const versions: Record<string, string | versionFunc> = {
 	ajv: '^8.0.0',
 	'ajv-formats': '^2.0.0',
 	'@ngx-translate/core': '^14.0.0',
