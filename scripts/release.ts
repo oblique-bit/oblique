@@ -67,10 +67,10 @@ class Release {
 	}
 
 	private static writeChangelog(): void {
-		const changelog = Release.fs.readFileSync('CHANGELOG.md');
+		const changelog: string = Release.fs.readFileSync('CHANGELOG.md').toString();
 		const stream = Release.fs.createWriteStream('CHANGELOG.md');
 		stream.on('finish', () => {
-			const newLog = Release.fs
+			const newLog: string = Release.fs
 				.readFileSync('CHANGELOG.md')
 				.toString()
 				.replace(/##(.*)\n/g, '#$1')

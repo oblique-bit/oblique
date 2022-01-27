@@ -88,7 +88,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 	private addFontStyle(tree: Tree, font: string): void {
 		if (font !== 'none') {
 			const styleSheet = `node_modules/@oblique/oblique/styles/css/${font}.css`;
-			setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) => {
+			setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: string[]) => {
 				if (!config.includes(styleSheet)) {
 					config.splice(config.indexOf(obliqueCssPath) + 1, 0, styleSheet);
 				}
