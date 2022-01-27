@@ -116,9 +116,15 @@ overrides:
         - error
         - allowWithDecorator: true
           allowStaticOnly: true
+      "@typescript-eslint/no-invalid-void-type":
+        - error
+        - allowAsThisParameter: true
       "@typescript-eslint/no-use-before-define":
         - error
         - functions: false
+      "@typescript-eslint/unbound-method":
+        - error
+        - ignoreStatic: true
 
       # rules that need some refactoring to be enabled
       "@typescript-eslint/no-explicit-any": off
@@ -133,7 +139,6 @@ overrides:
       "@typescript-eslint/no-unnecessary-condition": off
       "@typescript-eslint/no-unsafe-argument": off
       "@typescript-eslint/no-magic-numbers": off
-      "@typescript-eslint/unbound-method": off
       "@typescript-eslint/no-unsafe-call": off
       "@typescript-eslint/naming-convention": off
       "@typescript-eslint/prefer-ts-expect-error": off
@@ -195,6 +200,7 @@ overrides:
       "@angular-eslint/use-component-selector": off
       "@typescript-eslint/ban-ts-comment": off
       "@typescript-eslint/no-floating-promises": off
+      "@typescript-eslint/unbound-method": off # because "expect" uses unbound methods
       max-lines-per-function: off
       max-lines: off
   - files:
