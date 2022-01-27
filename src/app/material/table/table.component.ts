@@ -90,8 +90,11 @@ export class TableComponent implements OnInit {
 	}
 
 	masterToggle(): void {
-		// eslint-disable-next-line no-unused-expressions
-		this.isAllSelected() ? this.selection.clear() : this.dataSource.data.forEach(row => this.selection.select(row));
+		if (this.isAllSelected()) {
+			this.selection.clear();
+		} else {
+			this.dataSource.data.forEach(row => this.selection.select(row));
+		}
 	}
 
 	toggleSelectionVisibility(): void {

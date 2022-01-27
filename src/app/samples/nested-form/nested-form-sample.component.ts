@@ -33,8 +33,11 @@ export class NestedFormSampleComponent {
 	}
 
 	validateForm(valid: boolean): void {
-		// eslint-disable-next-line no-unused-expressions
-		valid ? this.notification.success('Form valid!') : this.notification.error('Form not valid!');
+		if (valid) {
+			this.notification.success('Form valid!');
+		} else {
+			this.notification.error('Form not valid!');
+		}
 	}
 
 	resetForm(): void {
