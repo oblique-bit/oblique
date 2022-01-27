@@ -198,13 +198,13 @@ describe('ObProgressComponent', () => {
 			describe('retryUpload', () => {
 				beforeEach(() => {
 					component.uploadedFiles.files[0].hasError = true;
-					// @ts-ignore
+					// @ts-expect-error
 					jest.spyOn(component, 'uploadSingleFile');
 				});
 
 				it('should reupload erroneous file', () => {
 					component.retryUpload(component.uploadedFiles.files[0]);
-					// @ts-ignore
+					// @ts-expect-error
 					expect(component.uploadSingleFile).toHaveBeenCalledWith({
 						index: 0,
 						name: component.uploadedFiles.files[0].name,
@@ -218,7 +218,7 @@ describe('ObProgressComponent', () => {
 
 				it('should do nothing with file without error', () => {
 					component.retryUpload(component.uploadedFiles.files[1]);
-					// @ts-ignore
+					// @ts-expect-error
 					expect(component.uploadSingleFile).not.toHaveBeenCalled();
 				});
 			});
@@ -402,21 +402,21 @@ describe('ObProgressComponent', () => {
 
 			describe('retryUpload', () => {
 				beforeEach(() => {
-					// @ts-ignore
+					// @ts-expect-error
 					jest.spyOn(component, 'uploadFilesTogether');
 				});
 
 				it('should reupload erroneous file', () => {
 					component.uploadedFiles.files[0].hasError = true;
 					component.retryUpload(component.uploadedFiles.files[0]);
-					// @ts-ignore
+					// @ts-expect-error
 					expect(component.uploadFilesTogether).toHaveBeenCalledWith(component.uploadedFiles.files[0].binary);
 				});
 
 				it('should reupload erroneous file', () => {
 					component.uploadedFiles.files[0].hasError = false;
 					component.retryUpload(component.uploadedFiles.files[0]);
-					// @ts-ignore
+					// @ts-expect-error
 					expect(component.uploadFilesTogether).not.toHaveBeenCalledWith(component.uploadedFiles.files[0].binary);
 				});
 			});

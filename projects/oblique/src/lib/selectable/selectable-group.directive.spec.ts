@@ -63,7 +63,7 @@ describe('SelectableGroupDirective', () => {
 
 	describe('register', () => {
 		it('should store registered directives', () => {
-			// @ts-ignore
+			// @ts-expect-error
 			expect(directive.selectables).toEqual(items);
 		});
 	});
@@ -74,11 +74,11 @@ describe('SelectableGroupDirective', () => {
 			directive.focus(items[1]);
 		});
 		it('should store last focused item', () => {
-			// @ts-ignore
+			// @ts-expect-error
 			expect(directive.focused).toBe(1);
 		});
 		it('should store previous focused item', () => {
-			// @ts-ignore
+			// @ts-expect-error
 			expect(directive.prevFocused).toBe(0);
 		});
 	});
@@ -142,7 +142,7 @@ describe('SelectableGroupDirective', () => {
 		describe('sort', () => {
 			it('should sort directives', () => {
 				directive.sort((a, b) => b.value - a.value);
-				// @ts-ignore
+				// @ts-expect-error
 				expect(directive.selectables[0].value).toBe(4);
 			});
 		});

@@ -79,7 +79,6 @@ describe('ObTopControlComponent', () => {
 		describe('scrollTop', () => {
 			it('should call target.scrollTo', () => {
 				topControlComponent.scrollTop();
-				// @ts-ignore because TS don't see the scrollTo function on Window
 				expect(topControlComponent.scrollTarget.scrollTo).toHaveBeenCalledWith({top: 0, behavior: 'smooth'});
 			});
 		});

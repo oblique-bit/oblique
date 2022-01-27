@@ -87,7 +87,7 @@ describe('SelectableDirective', () => {
 		describe('role', () => {
 			describe('checkbox', () => {
 				beforeEach(() => {
-					// @ts-ignore
+					// @ts-expect-error
 					group.mode_.next('checkbox');
 					fixture.detectChanges();
 				});
@@ -100,7 +100,7 @@ describe('SelectableDirective', () => {
 			});
 			describe('radio', () => {
 				beforeEach(() => {
-					// @ts-ignore
+					// @ts-expect-error
 					group.mode_.next('radio');
 					fixture.detectChanges();
 				});
@@ -113,7 +113,7 @@ describe('SelectableDirective', () => {
 			});
 			describe('windows', () => {
 				beforeEach(() => {
-					// @ts-ignore
+					// @ts-expect-error
 					group.mode_.next('windows');
 					fixture.detectChanges();
 				});
@@ -193,10 +193,10 @@ describe('SelectableDirective', () => {
 
 	describe('focus', () => {
 		it('should set the focus', () => {
-			// @ts-ignore
+			// @ts-expect-error
 			jest.spyOn(directive.element.nativeElement, 'focus');
 			directive.focus();
-			// @ts-ignore
+			// @ts-expect-error
 			expect(directive.element.nativeElement.focus).toHaveBeenCalled();
 
 			// NOTE: this test should only consist of the following 2 lines, but for some reason, since Angular 13, the focused element is always null in the tests (it works fine in the browser)

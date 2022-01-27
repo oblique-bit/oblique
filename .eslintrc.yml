@@ -141,7 +141,6 @@ overrides:
       "@typescript-eslint/no-magic-numbers": off
       "@typescript-eslint/no-unsafe-call": off
       "@typescript-eslint/naming-convention": off
-      "@typescript-eslint/prefer-ts-expect-error": off
       "@typescript-eslint/switch-exhaustiveness-check": off
 
       # other rules that will be processed later
