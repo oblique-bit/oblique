@@ -5,6 +5,7 @@ import {DOCUMENT} from '@angular/common';
 import {TranslateService} from '@ngx-translate/core';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
+import {getRootRoute} from '../utilities';
 
 /**
  * DocumentMetaService - Service for updating document metadata
@@ -41,12 +42,7 @@ export class ObDocumentMetaService implements OnDestroy {
 			.pipe(
 				filter(event => event instanceof NavigationEnd),
 				map(() => this.activatedRoute),
-				map(route => {
-					while (route.firstChild) {
-						route = route.firstChild;
-					}
-					return route;
-				}),
+				map(route => getRootRoute(route)),
 				filter(route => route.outlet === 'primary'),
 				mergeMap(route => route.data),
 				takeUntil(this.unsubscribe)

@@ -90,8 +90,8 @@ export class ObSearchBoxComponent {
 	}
 
 	formatter(label: string, filterPattern?: string): string {
-		filterPattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
-		return filterPattern ? label.replace(new RegExp(filterPattern, 'ig'), text => `<span class="ob-highlight">${text}</span>`) : label;
+		const pattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
+		return pattern ? label.replace(new RegExp(pattern, 'ig'), text => `<span class="ob-highlight">${text}</span>`) : label;
 	}
 
 	focus(): void {

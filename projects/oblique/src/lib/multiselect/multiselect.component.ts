@@ -102,18 +102,9 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 	}
 
 	onClick(target: HTMLElement): void {
-		if (this.isVisible) {
-			let parentFound = false;
-			while (target && !parentFound) {
-				if (target === this.element.nativeElement) {
-					parentFound = true;
-				}
-				target = target.parentElement;
-			}
-			if (!parentFound) {
-				this.isVisible = false;
-				this.dropdownClosed.emit();
-			}
+		if (this.isVisible && !this.isSelf(target)) {
+			this.isVisible = false;
+			this.dropdownClosed.emit();
 		}
 	}
 
@@ -258,13 +249,22 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 		return this.formatOptionForLabel(item);
 	}
 
-	search(options: any[], searchString: string): any[] {
-		searchString = searchString || '';
+	search(options: any[], searchString = ''): any[] {
 		return options.filter(option => this.formatOptionForLabel(option).toLowerCase().includes(searchString.toLowerCase()));
 	}
 
 	private emitModelChange(): void {
 		this.onModelChange(this.model);
 		this.onModelTouched();
+	}
+
+	private isSelf(target: HTMLElement): boolean {
+		if (!target) {
+			return false;
+		}
+		if (target === this.element.nativeElement) {
+			return true;
+		}
+		return this.isSelf(target.parentElement);
 	}
 }

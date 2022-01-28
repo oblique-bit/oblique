@@ -175,7 +175,6 @@ overrides:
       prefer-named-capture-group: off
       no-nested-ternary: off
       no-warning-comments: off
-      no-param-reassign: off
       prefer-arrow-callback: off
       no-lonely-if: off
 
@@ -205,6 +204,7 @@ overrides:
       max-lines: off
       max-lines-per-function: off
       max-statements: off
+      no-param-reassign: off
 
   - files:
       - "*.decorator.ts"

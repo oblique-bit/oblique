@@ -1,6 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {InjectionToken, Optional, Provider} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
+import {ActivatedRoute} from '@angular/router';
 import {TranslateLoader, TranslateModuleConfig} from '@ngx-translate/core';
 import {ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
 import {ObITranslationFile} from './multi-translate-loader/multi-translate-loader.model';
@@ -75,4 +76,8 @@ export function obliqueProviders(): Provider[] {
 // as the Enter key on a button triggers both the click an keyup events, lets ensure the function is called only once
 export function isNotKeyboardEventOnButton(event: MouseEvent | KeyboardEvent): boolean {
 	return !event || event instanceof MouseEvent || (event.target as HTMLElement).nodeName !== 'BUTTON';
+}
+
+export function getRootRoute(route: ActivatedRoute): ActivatedRoute {
+	return route.firstChild ? getRootRoute(route.firstChild) : route;
 }
