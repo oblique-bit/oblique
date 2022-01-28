@@ -46,9 +46,10 @@ class Release {
 	private static getVersionFromGit(versionNbr: string): string {
 		const current = /(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)/.exec(versionNbr).groups;
 		const commits = Release.execSync(`git log ${versionNbr}..HEAD --abbrev-commit`).toString();
-		return commits.indexOf('BREAKING CHANGE') > -1
-			? `${+current?.major + 1}.0.0`
-			: commits.indexOf('feat:') > -1 || commits.indexOf('feat(') > -1
+		if (commits.indexOf('BREAKING CHANGE') > -1) {
+			return `${+current?.major + 1}.0.0`;
+		}
+		return commits.indexOf('feat:') > -1 || commits.indexOf('feat(') > -1
 			? `${current?.major}.${+current?.minor + 1}.0`
 			: `${current?.major}.${current?.minor}.${+current?.patch + 1}`;
 	}

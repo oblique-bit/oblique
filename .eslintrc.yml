@@ -173,7 +173,6 @@ overrides:
       "@typescript-eslint/naming-convention": off
       max-params: off
       prefer-named-capture-group: off
-      no-nested-ternary: off
       no-warning-comments: off
       prefer-arrow-callback: off
       no-lonely-if: off
