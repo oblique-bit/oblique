@@ -1,6 +1,6 @@
-(function () {
-	'use strict';
+'use strict';
 
+(function () {
 	var style = document.createElement('div').style;
 	if (
 		// prettier-ignore
