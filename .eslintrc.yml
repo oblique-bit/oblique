@@ -170,7 +170,6 @@ overrides:
       arrow-body-style: off
       default-case: off
       max-params: off
-      max-classes-per-file: off
       id-length: off
       prefer-named-capture-group: off
       prefer-destructuring: off
