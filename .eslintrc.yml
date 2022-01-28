@@ -171,7 +171,6 @@ overrides:
       "@typescript-eslint/no-magic-numbers": off
       "@typescript-eslint/no-unsafe-call": off
       "@typescript-eslint/naming-convention": off
-      default-case: off
       max-params: off
       prefer-named-capture-group: off
       no-nested-ternary: off
