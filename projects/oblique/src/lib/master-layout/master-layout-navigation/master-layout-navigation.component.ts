@@ -129,7 +129,7 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 
 	private refresh(): void {
 		if (this.nav) {
-			const scrollMode = this.masterLayout.navigation.scrollMode;
+			const {scrollMode} = this.masterLayout.navigation;
 			if (scrollMode === ObEScrollMode.DISABLED) {
 				this.isScrollable = false;
 			} else {

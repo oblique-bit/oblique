@@ -149,6 +149,10 @@ overrides:
             - info
             - warn
             - error
+      prefer-destructuring:
+        - error
+        - object: true
+        - enforceForRenamedProperties: false
       sort-imports:
         - error
         - ignoreDeclarationSort: true
@@ -170,7 +174,6 @@ overrides:
       default-case: off
       max-params: off
       prefer-named-capture-group: off
-      prefer-destructuring: off
       no-nested-ternary: off
       no-warning-comments: off
       no-param-reassign: off

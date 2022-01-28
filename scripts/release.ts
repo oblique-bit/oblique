@@ -21,7 +21,7 @@ class Release {
 	}
 
 	private static splitVersion(version): Version {
-		const groups = version.match(/(?<version>\d+\.\d+\.\d+)(?:-(?<type>[^.]+)\.(?<typeNbr>\d+))?/).groups;
+		const {groups} = version.match(/(?<version>\d+\.\d+\.\d+)(?:-(?<type>[^.]+)\.(?<typeNbr>\d+))?/);
 		return {
 			version: groups?.version,
 			preVersionType: groups?.type,
