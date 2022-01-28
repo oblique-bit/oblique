@@ -180,7 +180,6 @@ overrides:
       no-eq-null: off
       no-negated-condition: off
       no-param-reassign: off
-      prefer-rest-params: off
       prefer-arrow-callback: off
       consistent-return: off
       no-lonely-if: off
