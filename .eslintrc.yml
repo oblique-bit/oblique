@@ -171,7 +171,6 @@ overrides:
       max-params: off
       prefer-named-capture-group: off
       prefer-destructuring: off
-      no-underscore-dangle: off
       no-nested-ternary: off
       no-warning-comments: off
       no-param-reassign: off

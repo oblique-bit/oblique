@@ -12,7 +12,7 @@ import {ObMasterLayoutConfig} from './master-layout.config';
 @Injectable({providedIn: 'root'})
 export class ObMasterLayoutService {
 	public readonly homePageRouteChange$: Observable<string>;
-	private _homePageRoute = this.config.homePageRoute;
+	private homePageRouteInternal = this.config.homePageRoute;
 	private readonly homePageRouteChange = new BehaviorSubject<string>(this.config.homePageRoute);
 
 	constructor(
@@ -31,12 +31,12 @@ export class ObMasterLayoutService {
 	}
 
 	public set homePageRoute(homePageRoute: string) {
-		this._homePageRoute = homePageRoute;
+		this.homePageRouteInternal = homePageRoute;
 		this.homePageRouteChange.next(homePageRoute);
 	}
 
 	public get homePageRoute(): string {
-		return this._homePageRoute;
+		return this.homePageRouteInternal;
 	}
 
 	private routeChange(): void {

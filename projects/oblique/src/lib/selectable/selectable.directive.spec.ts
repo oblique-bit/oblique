@@ -22,8 +22,7 @@ class TestComponent {}
 	exportAs: 'obSelectableGroup'
 })
 export class ObMockSelectableGroupDirective {
-	mode_ = new BehaviorSubject<string>('checkbox');
-	mode$ = this.mode_.asObservable();
+	mode$ = new BehaviorSubject<string>('checkbox');
 	register = jest.fn();
 	toggle = jest.fn();
 	focus = jest.fn();
@@ -87,8 +86,7 @@ describe('SelectableDirective', () => {
 		describe('role', () => {
 			describe('checkbox', () => {
 				beforeEach(() => {
-					// @ts-expect-error
-					group.mode_.next('checkbox');
+					group.mode$.next('checkbox');
 					fixture.detectChanges();
 				});
 				it('should be defined as property', () => {
@@ -100,8 +98,7 @@ describe('SelectableDirective', () => {
 			});
 			describe('radio', () => {
 				beforeEach(() => {
-					// @ts-expect-error
-					group.mode_.next('radio');
+					group.mode$.next('radio');
 					fixture.detectChanges();
 				});
 				it('should be defined as property', () => {
@@ -113,8 +110,7 @@ describe('SelectableDirective', () => {
 			});
 			describe('windows', () => {
 				beforeEach(() => {
-					// @ts-expect-error
-					group.mode_.next('windows');
+					group.mode$.next('windows');
 					fixture.detectChanges();
 				});
 				it('should be defined as property', () => {

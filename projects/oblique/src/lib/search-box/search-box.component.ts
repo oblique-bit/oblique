@@ -45,14 +45,14 @@ export class ObSearchBoxComponent {
 	@ViewChildren('link') private readonly links: QueryList<ElementRef>;
 	@ViewChild(ObDropdownComponent) private readonly dropdown: ObDropdownComponent;
 
-	private _pattern: string;
+	private patternInternal: string;
 
 	get pattern(): string {
-		return this._pattern;
+		return this.patternInternal;
 	}
 
 	@Input() set pattern(pattern: string) {
-		this._pattern = pattern;
+		this.patternInternal = pattern;
 		this.filteredItems = this.items.filter(this.filterItems.bind(this)).slice(0, this.maxResults);
 		this.toggle(this.pattern.length >= this.minPatternLength);
 	}
