@@ -13,6 +13,7 @@ Object.defineProperty(window, 'scrollIntoView', {value: mock()});
 Object.defineProperty(window, 'getComputedStyle', {
 	value: () => ['-webkit-appearance']
 });
+// eslint-disable-next-line no-empty-function
 window.HTMLElement.prototype.scrollIntoView = function () {};
 Object.defineProperty(document.body.style, 'transform', {
 	value: () => {
