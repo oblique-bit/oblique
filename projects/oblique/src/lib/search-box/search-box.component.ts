@@ -70,14 +70,14 @@ export class ObSearchBoxComponent {
 	}
 
 	@HostListener('keydown.arrowdown', ['$event']) navigateDown($event: KeyboardEvent): void {
-		this.focusLink(this.active !== undefined ? (this.active + 1) % this.filteredItems.length : 0);
+		this.focusLink(this.active === undefined ? 0 : (this.active + 1) % this.filteredItems.length);
 		if ($event) {
 			$event.preventDefault();
 		}
 	}
 
 	@HostListener('keydown.arrowup', ['$event']) navigateUp($event: KeyboardEvent): void {
-		this.focusLink(this.active !== undefined ? (this.active - 1 + this.filteredItems.length) % this.filteredItems.length : this.filteredItems.length - 1);
+		this.focusLink(this.active === undefined ? this.filteredItems.length - 1 : (this.active - 1 + this.filteredItems.length) % this.filteredItems.length);
 		if ($event) {
 			$event.preventDefault();
 		}
@@ -91,7 +91,7 @@ export class ObSearchBoxComponent {
 
 	formatter(label: string, filterPattern?: string): string {
 		filterPattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
-		return !filterPattern ? label : label.replace(new RegExp(filterPattern, 'ig'), text => `<span class="ob-highlight">${text}</span>`);
+		return filterPattern ? label.replace(new RegExp(filterPattern, 'ig'), text => `<span class="ob-highlight">${text}</span>`) : label;
 	}
 
 	focus(): void {

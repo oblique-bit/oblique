@@ -13,9 +13,8 @@ export function jenkins(config: string, staticBuild: boolean, jest: boolean): Ru
 function addDevEnv(dev: boolean): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, _context: SchematicContext): Tree =>
-		!dev
-			? tree
-			: setAngularProjectsConfig(tree, ['architect', 'build', 'configurations'], (config: any) => {
+		dev
+			? setAngularProjectsConfig(tree, ['architect', 'build', 'configurations'], (config: any) => {
 					if (!config.dev && config.production) {
 						config.dev = JSON.parse(JSON.stringify(config.production));
 						if (config.dev.fileReplacements) {
@@ -25,7 +24,8 @@ function addDevEnv(dev: boolean): Rule {
 						config.dev.sourceMap = true;
 					}
 					return config;
-			  });
+			  })
+			: tree;
 }
 
 function addJenkins(useJenkins: boolean, jest: boolean): Rule {
