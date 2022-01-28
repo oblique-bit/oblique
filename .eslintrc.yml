@@ -167,7 +167,6 @@ overrides:
       "@typescript-eslint/no-magic-numbers": off
       "@typescript-eslint/no-unsafe-call": off
       "@typescript-eslint/naming-convention": off
-      arrow-body-style: off
       default-case: off
       max-params: off
       id-length: off

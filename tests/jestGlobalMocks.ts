@@ -17,10 +17,8 @@ Object.defineProperty(window, 'getComputedStyle', {
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 (window as any).HTMLElement.prototype.scrollIntoView = function () {};
 Object.defineProperty(document.body.style, 'transform', {
-	value: () => {
-		return {
-			enumerable: true,
-			configurable: true
-		};
-	}
+	value: () => ({
+		enumerable: true,
+		configurable: true
+	})
 });
