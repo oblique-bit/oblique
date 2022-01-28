@@ -13,7 +13,7 @@ class Icons {
 	private static getSVGs(iconsPath: string): string[] {
 		return Icons.fs
 			.readdirSync(iconsPath)
-			.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
+			.sort((first, second) => first.toLowerCase().localeCompare(second.toLowerCase()))
 			.map(fileName => Icons.readIconFile(fileName, iconsPath));
 	}
 

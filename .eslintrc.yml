@@ -169,7 +169,6 @@ overrides:
       "@typescript-eslint/naming-convention": off
       default-case: off
       max-params: off
-      id-length: off
       prefer-named-capture-group: off
       prefer-destructuring: off
       no-underscore-dangle: off

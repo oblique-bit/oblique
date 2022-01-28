@@ -23,7 +23,7 @@ export class ObMockBreadcrumbComponent {
 		return this.maxWidthInput ?? ObMockBreadcrumbComponent.DEFAULTS.maxWidth;
 	}
 
-	showTooltip(e: HTMLElement): boolean {
+	showTooltip(event: HTMLElement): boolean {
 		return true;
 	}
 

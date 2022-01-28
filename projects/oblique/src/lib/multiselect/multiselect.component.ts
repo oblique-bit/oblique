@@ -125,7 +125,7 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 	}
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	onModelChange: (_: any) => void = (_: any) => {
+	onModelChange: (value: any) => void = (value: any) => {
 		//
 	};
 	onModelTouched: () => void = () => {

@@ -37,9 +37,9 @@ describe('SelectableGroupDirective', () => {
 		directive = element.injector.get(ObSelectableGroupDirective);
 
 		items.length = 0;
-		for (let i = 0; i < 5; i++) {
-			items[i] = new ObMockSelectableDirective();
-			items[i].value = i;
+		for (let index = 0; index < 5; index++) {
+			items[index] = new ObMockSelectableDirective();
+			items[index].value = index;
 		}
 		items.forEach(item => directive.register(item));
 	});
@@ -87,7 +87,7 @@ describe('SelectableGroupDirective', () => {
 		let event: KeyboardEvent;
 		let mode;
 		beforeEach(() => {
-			directive.mode$.subscribe(m => (mode = m));
+			directive.mode$.subscribe(newMode => (mode = newMode));
 			directive.mode = 'checkbox';
 			directive.toggle(items[4]);
 			directive.focus(items[2]);
@@ -141,7 +141,7 @@ describe('SelectableGroupDirective', () => {
 
 		describe('sort', () => {
 			it('should sort directives', () => {
-				directive.sort((a, b) => b.value - a.value);
+				directive.sort((first, second) => second.value - first.value);
 				// @ts-expect-error
 				expect(directive.selectables[0].value).toBe(4);
 			});
@@ -184,7 +184,7 @@ describe('SelectableGroupDirective', () => {
 		let event: KeyboardEvent;
 		let mode;
 		beforeEach(() => {
-			directive.mode$.subscribe(m => (mode = m));
+			directive.mode$.subscribe(newMode => (mode = newMode));
 			directive.mode = 'radio';
 			directive.toggle(items[4]);
 			directive.focus(items[2]);
@@ -301,7 +301,7 @@ describe('SelectableGroupDirective', () => {
 		let event: KeyboardEvent;
 		let mode;
 		beforeEach(() => {
-			directive.mode$.subscribe(m => (mode = m));
+			directive.mode$.subscribe(newMode => (mode = newMode));
 			directive.mode = 'windows';
 			directive.toggle(items[4]);
 			directive.focus(items[2]);

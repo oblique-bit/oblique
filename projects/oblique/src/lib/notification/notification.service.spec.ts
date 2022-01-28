@@ -65,7 +65,7 @@ describe('NotificationService', () => {
 		});
 
 		it('should broadcast multiple notification events', () => {
-			for (let i = 0; i < count; i++) {
+			for (let index = 0; index < count; index++) {
 				notificationService.send(message);
 			}
 

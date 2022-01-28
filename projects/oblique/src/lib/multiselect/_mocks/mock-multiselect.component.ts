@@ -39,7 +39,7 @@ export class ObMockMultiselectComponent implements ControlValueAccessor {
 
 	onKeyup($event: KeyboardEvent): void {}
 
-	onModelChange: (_: any) => void = (_: any) => {};
+	onModelChange: (value: any) => void = (value: any) => {};
 
 	onModelTouched: () => void = () => {};
 
