@@ -12,7 +12,7 @@ try {
 
 function checkLineLength(lines, length) {
 	const error = lines
-		.map((line, i) => (line.length > length ? numeral(i) : ''))
+		.map((line, index) => (line.length > length ? numeral(index) : ''))
 		.filter(line => !!line)
 		.join(', ')
 		.replace(/,(?=[^,]*$)/, ' and');
@@ -96,8 +96,8 @@ function checkBreakingChanges(lines) {
 	}
 }
 
-function numeral(i) {
-	switch (i + 1) {
+function numeral(digit) {
+	switch (digit + 1) {
 		case 1:
 			return '1st';
 		case 2:
@@ -105,7 +105,7 @@ function numeral(i) {
 		case 3:
 			return '3rd';
 		default:
-			return `${i + 1}th`;
+			return `${digit + 1}th`;
 	}
 }
 

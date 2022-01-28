@@ -37,7 +37,6 @@ overrides:
         - ignoreDeclarationSort: true
 
       # rules that need some refactoring to be enabled
-      id-length: off
       no-empty-function: off
       strict: off
       no-var: off
