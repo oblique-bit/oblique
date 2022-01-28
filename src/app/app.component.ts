@@ -138,7 +138,7 @@ export class AppComponent {
 
 	populateSearchItems(items: ObINavigationLink[], base = ''): void {
 		items.forEach((item: ObINavigationLink) => {
-			const url = item.url;
+			const {url} = item;
 			if (item.children) {
 				this.populateSearchItems(item.children, url);
 			} else {

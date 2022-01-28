@@ -45,8 +45,7 @@ export class ChipsComponent implements OnInit {
 
 	add(event: MatChipInputEvent): void {
 		if (!this.matAutocomplete.isOpen) {
-			const value = event.value;
-			const input = event.input;
+			const {input, value} = event;
 
 			if ((value || '').trim()) {
 				this.tags.push(value.trim());
