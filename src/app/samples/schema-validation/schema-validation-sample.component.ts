@@ -145,8 +145,7 @@ export class SchemaValidationSampleComponent implements OnInit {
 	}
 
 	private dateBeforeNowValidator(): ValidatorFn {
-		return (control: AbstractControl): ValidationErrors => {
-			return new Date(control.value).getTime() < Date.now() ? {invalidDateMin: {value: new Date().toDateString()}} : null;
-		};
+		return (control: AbstractControl): ValidationErrors =>
+			new Date(control.value).getTime() < Date.now() ? {invalidDateMin: {value: new Date().toDateString()}} : null;
 	}
 }
