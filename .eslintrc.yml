@@ -62,10 +62,26 @@ overrides:
     extends:
       - eslint:recommended
       - plugin:@typescript-eslint/eslint-plugin/recommended
-      - plugin:@angular-eslint/recommended
+      - plugin:@angular-eslint/all
       - plugin:@angular-eslint/template/process-inline-templates
       - prettier # this turns off all rules from eslint, @typescript-eslint and @angular-eslint that conflicts with prettier
     rules:
+      # deactivate unwanted rules
+      "@angular-eslint/prefer-on-push-component-change-detection": off
+      "@angular-eslint/sort-ngmodule-metadata-arrays": off # preferred order is 'imports', 'declarations', 'providers'
+      "@angular-eslint/use-component-view-encapsulation": off # oblique uses ViewEncapsulation.NONE
+      "@angular-eslint/use-injectable-provided-in": off # some specialized services are directly provided in a component
+
+      # override default values
+      "@angular-eslint/component-max-inline-declarations":
+        - error
+        - template: 0
+          styles: 0
+      "@angular-eslint/no-host-metadata-property":
+        - error
+        - allowStatic: true
+
+      # other rules that will be processed later
       "@typescript-eslint/member-ordering":
         - error
         - default:
@@ -84,13 +100,6 @@ overrides:
             - protected-instance-method
             - private-static-method
             - private-instance-method
-      "@angular-eslint/no-host-metadata-property":
-        - error
-        - allowStatic: true
-      "@angular-eslint/no-pipe-impure": error
-      "@angular-eslint/prefer-output-readonly": error
-      "@angular-eslint/relative-url-prefix": error
-      "@angular-eslint/use-component-selector": error
       "@typescript-eslint/array-type": error
       "@typescript-eslint/ban-tslint-comment": error
       "@typescript-eslint/consistent-type-assertions": error
@@ -164,14 +173,16 @@ overrides:
   - files:
       - mock-*.ts
     rules:
+      "@angular-eslint/component-max-inline-declarations": off
       "@typescript-eslint/no-unused-vars": off
       "@typescript-eslint/no-empty-function": off
   - files:
       - "*.spec.ts"
     rules:
+      "@angular-eslint/component-max-inline-declarations": off
+      "@angular-eslint/use-component-selector": off
       "@typescript-eslint/ban-ts-comment": off
       "@typescript-eslint/no-floating-promises": off
-      "@angular-eslint/use-component-selector": off
       max-lines-per-function: off
       max-lines: off
   - files:

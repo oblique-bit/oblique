@@ -17,8 +17,7 @@ import {
 	OnDestroy,
 	OnInit,
 	Output,
-	ViewEncapsulation,
-	forwardRef
+	ViewEncapsulation
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {filter, takeUntil} from 'rxjs/operators';
@@ -36,13 +35,7 @@ import {obOutsideFilter} from '../global-events/outsideFilter';
 @Component({
 	selector: 'ob-multiselect',
 	exportAs: 'obMultiselect',
-	providers: [
-		{
-			provide: NG_VALUE_ACCESSOR,
-			useExisting: forwardRef(() => ObMultiselectComponent),
-			multi: true
-		}
-	],
+	providers: [{provide: NG_VALUE_ACCESSOR, useExisting: ObMultiselectComponent, multi: true}],
 	styleUrls: ['./multiselect.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	templateUrl: './multiselect.component.html',

@@ -9,13 +9,7 @@ import {FONTS, THEMES, ThemeService} from './common/theme.service';
 @Component({
 	selector: 'sc-root',
 	templateUrl: './app.component.html',
-	styles: [
-		`
-			.fa-sign-in-alt {
-				transition: transform 600ms;
-			}
-		`
-	]
+	styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
 	offCanvasOpen = false;

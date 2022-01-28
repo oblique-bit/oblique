@@ -7,20 +7,7 @@ import {ObUnsavedChangesService} from '@oblique/oblique';
 @Component({
 	selector: 'sc-unsaved-changes',
 	templateUrl: './unsaved-changes-sample.component.html',
-	styles: [
-		`
-			.unsaved-changes .form-horizontal label {
-				text-align: right;
-			}
-
-			/*noinspection CssUnusedSymbol*/
-			.unsaved-changes .tab-content {
-				padding: 15px;
-				border: 1px solid #ddd;
-				border-top-width: 0;
-			}
-		`
-	],
+	styleUrls: ['./unsaved-changes-sample.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	changeDetection: ChangeDetectionStrategy.OnPush
 })

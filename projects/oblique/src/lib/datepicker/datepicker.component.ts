@@ -1,4 +1,4 @@
-import {Component, ElementRef, HostListener, Input, OnInit, ViewChild, ViewEncapsulation, forwardRef} from '@angular/core';
+import {Component, ElementRef, HostListener, Input, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
 import {NgbDateStruct, NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 import {ObThemeService} from '../theme.service';
@@ -16,16 +16,8 @@ import {ObIDatepickerOptions} from './datepicker.model';
 	templateUrl: './datepicker.component.html',
 	encapsulation: ViewEncapsulation.None,
 	providers: [
-		{
-			provide: NG_VALUE_ACCESSOR,
-			multi: true,
-			useExisting: forwardRef(() => ObDatepickerComponent)
-		},
-		{
-			provide: NG_VALIDATORS,
-			multi: true,
-			useExisting: forwardRef(() => ObDatepickerComponent)
-		}
+		{provide: NG_VALUE_ACCESSOR, multi: true, useExisting: ObDatepickerComponent},
+		{provide: NG_VALIDATORS, multi: true, useExisting: ObDatepickerComponent}
 	],
 	host: {class: 'ob-date-picker datepicker input-group'}
 })
