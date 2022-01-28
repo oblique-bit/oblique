@@ -2,8 +2,9 @@
 
 const fs = require('fs');
 const message = fs.readFileSync('.git/COMMIT_EDITMSG').toString().split('\n');
+const maxLineLength = 100;
 try {
-	checkLineLength(message, 100);
+	checkLineLength(message, maxLineLength);
 	checkEmptyLine(message);
 	checkHeader(message[0]);
 	checkBreakingChanges(message);
@@ -102,9 +103,9 @@ function numeral(digit) {
 	switch (digit + 1) {
 		case 1:
 			return '1st';
-		case 2:
+		case 2: // eslint-disable-line no-magic-numbers
 			return '2nd';
-		case 3:
+		case 3: // eslint-disable-line no-magic-numbers
 			return '3rd';
 		default:
 			return `${digit + 1}th`;

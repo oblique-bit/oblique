@@ -32,12 +32,18 @@ overrides:
             - info
             - warn
             - error
+      no-magic-numbers:
+        - error
+        - ignore:
+            - -1
+            - 0
+            - 1
+          ignoreArrayIndexes: true
       sort-imports:
         - error
         - ignoreDeclarationSort: true
 
       # rules that need some refactoring to be enabled
-      no-magic-numbers: off
       prefer-named-capture-group: off
       arrow-body-style: off
 
