@@ -51,7 +51,7 @@ overrides:
         - tsconfig.json
       createDefaultProgram: true
     extends:
-      - eslint:recommended
+      - eslint:all
       - plugin:@typescript-eslint/eslint-plugin/all
       - plugin:@angular-eslint/all
       - plugin:@angular-eslint/template/process-inline-templates
@@ -78,6 +78,24 @@ overrides:
       "@typescript-eslint/prefer-readonly-parameter-types": off # forces "readonly" on functions where it is not allowed
       "@typescript-eslint/promise-function-async": off # no compatible with Angular's lazy loading
       "@typescript-eslint/sort-type-union-intersection-members": off
+      accessor-pairs: off
+      capitalized-comments: off
+      class-methods-use-this: off #ideally, this rule should be limited to private methods
+      func-names: off
+      func-style: off
+      line-comment-position: off
+      multiline-comment-style: off
+      new-cap: off
+      no-implicit-coercion: off
+      no-inline-comments: off
+      no-plusplus: off
+      no-ternary: off
+      no-undefined: off
+      no-void: off
+      prefer-object-has-own: off # could be activated with ES2022
+      one-var: off
+      require-unicode-regexp: off # forces to escape all special characters
+      sort-keys: off
 
       # override default values
       "@angular-eslint/component-max-inline-declarations":
@@ -119,6 +137,21 @@ overrides:
       "@typescript-eslint/unbound-method":
         - error
         - ignoreStatic: true
+      max-lines-per-function:
+        - error
+        - max: 35
+      max-statements:
+        - error
+        - 15
+      no-console:
+        - error
+        - allow:
+            - info
+            - warn
+            - error
+      sort-imports:
+        - error
+        - ignoreDeclarationSort: true
 
       # rules that need some refactoring to be enabled
       "@typescript-eslint/no-explicit-any": off
@@ -134,56 +167,32 @@ overrides:
       "@typescript-eslint/no-magic-numbers": off
       "@typescript-eslint/no-unsafe-call": off
       "@typescript-eslint/naming-convention": off
-
-      # other rules that will be processed later
-      dot-notation: error
-      eqeqeq:
-        - error
-        - smart
-      guard-for-in: error
-      max-lines:
-        - error
-        - max: 300
-      max-lines-per-function:
-        - error
-        - max: 35
-      no-bitwise: error
-      no-caller: error
-      no-console:
-        - error
-        - allow:
-            - info
-            - warn
-            - error
-      no-else-return: error
-      no-eval: error
-      no-new-wrappers: error
-      no-sequences: error
-      no-throw-literal: error
-      no-undef-init: error
-      no-unused-expressions: error
-      no-useless-concat: error
-      no-useless-escape: error
-      object-shorthand: error
-      prefer-exponentiation-operator: error
-      prefer-object-spread: error
-      prefer-regex-literals: error
-      prefer-template: error
-      radix: error
-      sort-imports:
-        - error
-        - ignoreDeclarationSort: true
-      spaced-comment: error
+      arrow-body-style: off
+      default-case: off
+      max-params: off
+      max-classes-per-file: off
       id-length: off
+      prefer-named-capture-group: off
+      prefer-destructuring: off
+      no-underscore-dangle: off
+      no-nested-ternary: off
+      no-warning-comments: off
+      eqeqeq: off
+      no-eq-null: off
+      no-negated-condition: off
       no-param-reassign: off
       prefer-rest-params: off
-      no-underscore-dangle: off
+      prefer-arrow-callback: off
+      consistent-return: off
+      no-lonely-if: off
+
   - files:
       - mock-*.ts
     rules:
       "@angular-eslint/component-max-inline-declarations": off
       "@typescript-eslint/no-unused-vars": off
       "@typescript-eslint/no-empty-function": off
+
   - files:
       - "*.spec.ts"
     rules:
@@ -192,21 +201,28 @@ overrides:
       "@typescript-eslint/ban-ts-comment": off
       "@typescript-eslint/no-floating-promises": off
       "@typescript-eslint/unbound-method": off # because "expect" uses unbound methods
-      max-lines-per-function: off
+      max-classes-per-file: off
       max-lines: off
+      max-lines-per-function: off
+      max-statements: off
+
   - files:
       - "schematics/**/*.ts"
     rules:
       max-lines: off
       max-lines-per-function: off
+      max-statements: off
+
   - files:
       - "*.decorator.ts"
     rules:
       max-lines-per-function: off
+
   - files:
       - polyfills.ts
     rules:
       spaced-comment: off
+
   - files:
       - "*.html"
     extends:
