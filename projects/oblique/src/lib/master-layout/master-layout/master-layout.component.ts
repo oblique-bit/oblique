@@ -142,9 +142,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 		if (this.isHeaderSticky !== this.isFooterSticky) {
 			return this.wrapper.nativeElement;
 		}
-		if (!this.isHeaderSticky && !this.isFooterSticky) {
-			return this.window;
-		}
+		return this.window;
 	}
 
 	private updateJumpLinks(hasNavigation: boolean): void {
