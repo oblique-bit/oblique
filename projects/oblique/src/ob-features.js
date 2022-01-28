@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-	const style = document.createElement('div').style;
+	const {style} = document.createElement('div');
 	if (
 		// prettier-ignore
 		!window.localStorage
