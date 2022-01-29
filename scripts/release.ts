@@ -74,7 +74,7 @@ class Release {
 			const newLog: string = Release.fs
 				.readFileSync('CHANGELOG.md')
 				.toString()
-				.replace(/##(.*)\n/g, '#$1')
+				.replace(/##(?<title>.*)\n/g, '#$<title>')
 				.replace(/\n\n\n/g, '\n\n');
 			Release.fs.writeFileSync('CHANGELOG.md', newLog + changelog);
 		});

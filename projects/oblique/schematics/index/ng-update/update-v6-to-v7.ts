@@ -1,3 +1,4 @@
+/* eslint-disable prefer-named-capture-group */
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {applyInTree, infoMigration, replaceInFile} from '../utils';
 import {removePolyFill} from './ng-update-utils';

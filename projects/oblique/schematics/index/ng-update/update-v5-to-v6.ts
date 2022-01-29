@@ -1,3 +1,4 @@
+/* eslint-disable prefer-named-capture-group */
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {ObIMigrations} from './ng-update.model';
 import {

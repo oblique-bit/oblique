@@ -128,7 +128,10 @@ function adaptTsConfigSpec() {
 	return (tree: Tree, _context: SchematicContext): void => {
 		const tsConfigName = 'tsconfig.spec.json';
 		if (tree.exists(tsConfigName)) {
-			const tsConfig = readFile(tree, tsConfigName).replace(/("types"\s*:\s*\[\s*)"jasmine"(\s*])/, '$1"node", "jest"$2');
+			const tsConfig = readFile(tree, tsConfigName).replace(
+				/(?<prefix>"types"\s*:\s*\[\s*)"jasmine"(?<suffix>\s*])/,
+				'$<prefix>"node", "jest"$<suffix></suffix>'
+			);
 			tree.overwrite(tsConfigName, tsConfig);
 		}
 	};

@@ -19,7 +19,7 @@ class Icons {
 
 	private static readIconFile(fileName: string, iconsPath: string): string {
 		const id = fileName
-			.replace(/([a-z])([A-Z])/g, '$1-$2')
+			.replace(/(?<first>[a-z])(?<second>[A-Z])/g, '$<first>-$<second>')
 			.toLowerCase()
 			.replace('.svg', '');
 		return Icons.fs

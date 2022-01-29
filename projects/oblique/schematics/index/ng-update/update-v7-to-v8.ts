@@ -1,3 +1,4 @@
+/* eslint-disable prefer-named-capture-group */
 import {Rule, SchematicContext, Tree, chain, externalSchematic} from '@angular-devkit/schematics';
 import {addDevDependency, addScript, getTemplate, removeDevDependencies, removeScript} from '../ng-add/ng-add-utils';
 import {
