@@ -34,7 +34,7 @@ export class UnsavedChangesSampleComponent implements OnInit {
 		private readonly unsavedChangesService: ObUnsavedChangesService
 	) {}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.standAloneReactive = this.formBuilder.group({text: '', number: '', integer: '', date: ['f', Validators.required]});
 		this.nestedReactive = this.formBuilder.group({
 			form4: this.formBuilder.group({text: '', number: '', integer: '', date: ''}),
@@ -45,7 +45,7 @@ export class UnsavedChangesSampleComponent implements OnInit {
 		this.tabForm9Reactive = this.formBuilder.group({text: '', number: '', integer: '', date: ''});
 	}
 
-	modal() {
+	modal(): void {
 		this.modalService.open(UnsavedChangesSampleModalComponent, {
 			beforeDismiss: () => this.unsavedChangesService.ignoreChanges(['template'])
 		});

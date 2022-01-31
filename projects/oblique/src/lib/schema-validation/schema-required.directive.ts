@@ -15,7 +15,7 @@ export class ObSchemaRequiredDirective implements OnInit {
 
 	constructor(@Optional() private readonly schemaValidation: ObSchemaValidationDirective, @Optional() private readonly modelGroup: NgModelGroup) {}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		if (this.schemaValidation) {
 			this.required = this.schemaValidation.isRequired(this.name, this.modelGroup ? this.modelGroup.path : []) || undefined;
 		}

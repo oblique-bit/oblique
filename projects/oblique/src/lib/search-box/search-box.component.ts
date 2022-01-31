@@ -69,14 +69,14 @@ export class ObSearchBoxComponent {
 		this.toggle(false);
 	}
 
-	@HostListener('keydown.arrowdown', ['$event']) navigateDown($event: KeyboardEvent) {
+	@HostListener('keydown.arrowdown', ['$event']) navigateDown($event: KeyboardEvent): void {
 		this.focusLink(this.active != null ? (this.active + 1) % this.filteredItems.length : 0);
 		if ($event) {
 			$event.preventDefault();
 		}
 	}
 
-	@HostListener('keydown.arrowup', ['$event']) navigateUp($event: KeyboardEvent) {
+	@HostListener('keydown.arrowup', ['$event']) navigateUp($event: KeyboardEvent): void {
 		this.focusLink(this.active != null ? (this.active - 1 + this.filteredItems.length) % this.filteredItems.length : this.filteredItems.length - 1);
 		if ($event) {
 			$event.preventDefault();

@@ -22,17 +22,16 @@ class GenerateComponentStyles {
 			.map(file => ({filePath: file.filePath, styleUrls: file.styleUrls.split(',')}))
 			.map(file => ({filePath: file.filePath, styleUrls: file.styleUrls.filter(url => !url.startsWith('.'))}))
 			.map(file => file.styleUrls.map(fileName => GenerateComponentStyles.path.join(file.filePath, fileName)))
-			.reduce((flatArray, current) => [...flatArray, ...current], [])
+			.reduce<string[]>((flatArray, current) => [...flatArray, ...current], [])
 			.map(styleUrl => `@import "${styleUrl}";`)
 			.join('\n');
 	}
 
 	private static listFiles(directory: string): string[] {
-		return GenerateComponentStyles.fs
-			.readdirSync(directory)
+		return (GenerateComponentStyles.fs.readdirSync(directory) as string[])
 			.map(fileName => GenerateComponentStyles.path.join(directory, fileName))
 			.filter(fileName => fileName.indexOf('mock') === -1)
-			.reduce(
+			.reduce<string[]>(
 				(filePaths, filePath) =>
 					GenerateComponentStyles.fs.statSync(filePath).isDirectory()
 						? [...filePaths, ...GenerateComponentStyles.listFiles(filePath)]

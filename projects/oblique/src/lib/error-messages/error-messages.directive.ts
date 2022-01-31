@@ -26,7 +26,7 @@ export class ObErrorMessagesDirective implements AfterViewInit, OnDestroy {
 		}
 	}
 
-	ngAfterViewInit() {
+	ngAfterViewInit(): void {
 		const ctrl = this.matInput?.ngControl || this.matSelect?.ngControl;
 		if (ctrl) {
 			this.errors.next(ctrl.errors); // because 1st statusChange occurs before ngAfterViewInit

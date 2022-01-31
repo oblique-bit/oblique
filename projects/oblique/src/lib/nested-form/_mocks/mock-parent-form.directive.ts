@@ -10,7 +10,7 @@ export class ObMockParentFormDirective {
 	public readonly submit$: Observable<void>;
 	public readonly reset$: Observable<void>;
 
-	submit() {}
+	submit(): void {}
 
-	reset() {}
+	reset(): void {}
 }

@@ -62,16 +62,16 @@ export class ObNavTreeComponent implements OnDestroy {
 		return match || childMatch;
 	}
 
-	visible(item: ObNavTreeItemModel) {
+	visible(item: ObNavTreeItemModel): boolean {
 		return !this.filterPattern || this.patternMatcher(item, this.filterPattern);
 	}
 
-	itemKey(item: ObNavTreeItemModel) {
+	itemKey(item: ObNavTreeItemModel): string {
 		return `${this.prefix}-${item.id}`;
 	}
 
 	// TODO: remove when https://github.com/angular/angular/issues/13205
-	isLinkActive(rla: RouterLinkActive, item: ObNavTreeItemModel) {
+	isLinkActive(rla: RouterLinkActive, item: ObNavTreeItemModel): boolean {
 		const isLinkActive = rla.isActive;
 		return item.fragment ? isLinkActive && this.activeFragment === item.fragment : isLinkActive;
 	}
@@ -88,20 +88,20 @@ export class ObNavTreeComponent implements OnDestroy {
 	}
 
 	// Public API:
-	public collapseAll() {
+	public collapseAll(): void {
 		this.changeCollapsed(this.items, true, true);
 	}
 
-	public expandAll() {
+	public expandAll(): void {
 		this.changeCollapsed(this.items, false, true);
 	}
 }
 
-export function defaultLabelFormatterFactory(translate: TranslateService) {
+export function defaultLabelFormatterFactory(translate: TranslateService): (item: ObNavTreeItemModel, filterPattern: string) => string {
 	// noinspection UnnecessaryLocalVariableJS because this will result in a build error
-	const formatter = (item: ObNavTreeItemModel, filterPattern: string) => {
+	const formatter = (item: ObNavTreeItemModel, filterPattern: string): string => {
 		filterPattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
-		const label = translate.instant(item.label, item.labelParams);
+		const label: string = translate.instant(item.label, item.labelParams);
 		return !filterPattern
 			? label
 			: label.replace(new RegExp(filterPattern, 'ig'), text => `<span class="${ObNavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`);

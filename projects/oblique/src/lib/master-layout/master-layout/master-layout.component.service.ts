@@ -21,7 +21,7 @@ export class ObMasterLayoutComponentService {
 		this.configEvents$ = this._events.asObservable();
 	}
 
-	get isMenuOpened() {
+	get isMenuOpened(): boolean {
 		return this._isMenuOpened;
 	}
 

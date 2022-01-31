@@ -18,11 +18,11 @@ export class NumberFormatSampleComponent {
 		});
 	}
 
-	setNumber5() {
+	setNumber5(): void {
 		this.formData.patchValue({number5: 6.2356487});
 	}
 
-	setNumber6() {
+	setNumber6(): void {
 		this.formData.patchValue({number6: 6.2356487});
 	}
 }

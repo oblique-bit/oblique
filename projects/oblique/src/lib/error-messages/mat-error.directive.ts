@@ -22,7 +22,7 @@ export class ObMatErrorDirective implements OnInit, OnDestroy {
 		}
 	}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		if (this.control) {
 			this.control.errors$
 				.pipe(

@@ -40,7 +40,7 @@ export class ObStickyComponent implements OnChanges, AfterViewInit {
 		}
 	}
 
-	private manageSizes() {
+	private manageSizes(): void {
 		ObStickyComponent.validateSize(this.headerSize);
 		ObStickyComponent.validateSize(this.footerSize);
 

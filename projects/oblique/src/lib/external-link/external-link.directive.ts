@@ -68,7 +68,7 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	}
 
 	private addAriaLabel(): void {
-		this.renderer.setAttribute(this.host, 'aria-label', `${this.host.text} - ${this.translate.instant('i18n.oblique.external')}`);
+		this.renderer.setAttribute(this.host, 'aria-label', `${this.host.text} - ${this.translate.instant('i18n.oblique.external') as string}`);
 	}
 
 	private addIcon(): void {

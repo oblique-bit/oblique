@@ -11,7 +11,7 @@ export function addLocales(locales: string[]): Rule {
 }
 
 function importLocales(locales: string[]): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return (tree: Tree, _context: SchematicContext): Tree => {
 		infoMigration(_context, 'Oblique: Adding locale management & translations');
 		const sourceFile = createSrcFile(tree, appModulePath);
 		const file = 'app.module.ts';
@@ -35,7 +35,7 @@ function importLocales(locales: string[]): Rule {
 
 function registerLocales(locales: string[]): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return (tree: Tree, _context: SchematicContext) => {
+	return (tree: Tree, _context: SchematicContext): Tree => {
 		const replacement = locales
 			.filter(locale => filterLocale(tree, locale))
 			.map(locale => `registerLocaleData(${getLocaleVariable(locale)});`)
@@ -49,7 +49,7 @@ function registerLocales(locales: string[]): Rule {
 
 function configureLocales(locales: string[]): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return (tree: Tree, _context: SchematicContext) => {
+	return (tree: Tree, _context: SchematicContext): Tree => {
 		if (locales.join('_') !== ['de-CH', 'fr-CH', 'it-CH'].join('_')) {
 			const appModuleContent = readFile(tree, appModulePath).replace(
 				'AppModule { }',
@@ -71,7 +71,7 @@ function configureLocales(locales: string[]): Rule {
 
 function addTranslation(locales: string[]): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return (tree: Tree, _context: SchematicContext) => {
+	return (tree: Tree, _context: SchematicContext): Tree => {
 		addDependency(tree, '@ngx-translate/core');
 		importModuleInRoot(tree, 'HttpClientModule', '@angular/common/http');
 		locales.map(locale => locale.split('-')[0]).forEach((lang: string) => addFile(tree, `src/assets/i18n/${lang}.json`, '{}'));

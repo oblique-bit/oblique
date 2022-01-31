@@ -39,7 +39,7 @@ export class MultiselectSampleComponent {
 		{id: 50, name: 'Wisconsin', region: 'Midwest'}, {id: 51, name: 'Wyoming', region: 'West'}
 	];
 
-	complexStateLabelFormatter(complexState) {
+	complexStateLabelFormatter(complexState: {id: number; name: string}): string {
 		return `${complexState.id}: ${complexState.name}`;
 	}
 }

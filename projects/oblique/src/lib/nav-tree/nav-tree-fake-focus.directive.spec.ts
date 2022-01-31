@@ -57,7 +57,7 @@ describe('NavTreeFakeFocusDirective', () => {
 	let directive: ObNavTreeFakeFocusDirective;
 	let inputElement: DebugElement;
 
-	const keydown = (code: string) => {
+	const keydown = (code: string): void => {
 		inputElement.triggerEventHandler(ObNavTreeFakeFocusDirective.INPUT_EVENTS.KEY_DOWN, {
 			code,
 			// FIXME: remove when https://github.com/ariya/phantomjs/issues/11289

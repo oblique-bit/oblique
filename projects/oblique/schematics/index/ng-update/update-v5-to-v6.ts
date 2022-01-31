@@ -88,7 +88,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 	private addFontStyle(tree: Tree, font: string): void {
 		if (font !== 'none') {
 			const styleSheet = `node_modules/@oblique/oblique/styles/css/${font}.css`;
-			setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) => {
+			setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: string[]) => {
 				if (!config.includes(styleSheet)) {
 					config.splice(config.indexOf(obliqueCssPath) + 1, 0, styleSheet);
 				}
@@ -164,7 +164,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 	private changeColorPalette(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Change color palette');
-			const apply = (filePath: string) => {
+			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, new RegExp(/\$brand-info-light/g), '$brand-light');
 				replaceInFile(tree, filePath, new RegExp(/\$brand-info/g), '$brand-primary');
 				replaceInFile(tree, filePath, new RegExp(/\$brand-info-dark/g), '$brand-dark');
@@ -176,7 +176,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 	private renameMockCollapseComponent(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Renaming MockCollapseComponent');
-			const toApply = (filePath: string) => {
+			const toApply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /MockCollapseComponent/g, 'ObMockCollapseComponent');
 				replaceInFile(tree, filePath, /MockCollapseModule/g, 'ObMockCollapseModule');
 			};
@@ -187,7 +187,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 	private renameDefaultLanguage(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Renaming locale.default into locale.defaultLanguage');
-			const toApply = (filePath: string) => {
+			const toApply = (filePath: string): void => {
 				const config = /(?<config>\w*):\s*ObMasterLayoutConfig/.exec(readFile(tree, filePath))?.groups?.config;
 				if (config) {
 					replaceInFile(tree, filePath, new RegExp(`${config}\\.locale\\.default([\\s=])`, 'g'), `${config}.locale.defaultLanguage$1`);
@@ -235,7 +235,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 		}
 	}
 
-	private removeTranslateLoader(tree: Tree, dep: string, className: string) {
+	private removeTranslateLoader(tree: Tree, dep: string, className: string): void {
 		const file = readFile(tree, appModulePath);
 		removePackageJsonDependency(tree, dep);
 		tree.overwrite(
@@ -258,7 +258,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 	private migrateDropdown(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Migrate ObDropdownComponent');
-			const toApply = (filePath: string) => {
+			const toApply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /<button(.*?) dropdown-toggle[^>]*>\s*(<[^\s]*)(.*)\s*<\/button>/g, '$2 dropdown-toggle$1$3');
 				replaceInFile(tree, filePath, /<button dropdown-toggle>(\w*)<\/button>/g, '<ng-container dropdown-toggle>$1</ng-container>');
 			};
@@ -269,7 +269,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 	private removeUnsubscribe(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Migrate Unsubscribe class');
-			const toApply = (filePath: string) => {
+			const toApply = (filePath: string): void => {
 				const content = readFile(tree, filePath);
 				if (content.includes('extends ObUnsubscribable')) {
 					tree.overwrite(filePath, content.replace(/extends\s+ObUnsubscribable\s?/, '').replace(/\s*super\(\);/, ''));
@@ -287,13 +287,13 @@ export class UpdateV5toV6 implements ObIMigrations {
 
 	private addNgOnDestroy(tree: Tree, filePath: string, extend: boolean): void {
 		if (extend) {
-			replaceInFile(tree, filePath, /ngOnDestroy\(.*{\s*\n(\s*)/, 'ngOnDestroy() {\n$1this.unsubscribe.next();\n$1this.unsubscribe.complete();\n$1');
+			replaceInFile(tree, filePath, /ngOnDestroy\(.*{\s*\n(\s*)/, 'ngOnDestroy(): void {\n$1this.unsubscribe.next();\n$1this.unsubscribe.complete();\n$1');
 		} else {
 			replaceInFile(
 				tree,
 				filePath,
 				/\n([\t ]*)constructor\(/,
-				'\n$1ngOnDestroy() {\n$1$1this.unsubscribe.next();\n$1$1this.unsubscribe.complete();\n$1}\n\n$1constructor('
+				'\n$1ngOnDestroy(): void {\n$1$1this.unsubscribe.next();\n$1$1this.unsubscribe.complete();\n$1}\n\n$1constructor('
 			);
 		}
 	}
@@ -301,7 +301,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 	private adaptHtmlToCss(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, "Prefix Oblique's classes in HTML");
-			const apply = (filePath: string) => {
+			const apply = (filePath: string): void => {
 				addClassesPrefix(tree, filePath, 'alert', ['info', 'success', 'warning', 'error', 'link']);
 				addClassesPrefix(tree, filePath, 'sticky', ['sm', 'lg']);
 				addClassesPrefix(tree, filePath, 'nav-stepper', ['sm', 'lg']);
@@ -323,7 +323,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 	private adaptCssClassNaming(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, "Prefix Oblique's classes in SCSS");
-			const apply = (filePath: string) => {
+			const apply = (filePath: string): void => {
 				addPrefixMatchExactOrSuffix(tree, filePath, 'toggle', ['after', 'before', 'justified', 'down', 'up', 'right', 'left']);
 				addPrefixMatchExactOrSuffix(tree, filePath, 'notification', ['container', 'title']);
 				addPrefixMatchExactOrSuffix(tree, filePath, 'alert', ['info', 'success', 'warning', 'error', 'link']);

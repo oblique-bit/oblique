@@ -53,7 +53,7 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 		this.useFontAwesomeIcon = !useObliqueIcon;
 	}
 
-	ngAfterViewInit() {
+	ngAfterViewInit(): void {
 		this.toggles.changes.pipe(mergeMap(() => this.scroll.scrolled)).subscribe(() => this.center());
 		this.toggleLeftIcon$ = this.getToggleDirection(this.columnLeft, 'left', 'right');
 		this.toggleRightIcon$ = this.getToggleDirection(this.columnRight, 'right', 'left');

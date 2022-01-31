@@ -11,7 +11,7 @@ export class ApiComponent implements OnInit {
 	@Input() directory: string;
 	api: ObIAPI[];
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.api = require(`../../../projects/oblique/src/lib/${this.directory || this.component}/${this.component}.api.json`).api;
 	}
 }

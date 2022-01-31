@@ -36,5 +36,5 @@ export class ObMockDatepickerComponent implements ControlValueAccessor, Validato
 		return null;
 	}
 
-	onKeydown($event) {}
+	onKeydown($event): void {}
 }

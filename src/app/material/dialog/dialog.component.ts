@@ -20,7 +20,7 @@ export class DialogComponent {
 		this.dialogState = this.DIALOG_STATE_NEVER_OPENED;
 	}
 
-	openDialog() {
+	openDialog(): void {
 		this.dialogState = this.DIALOG_STATE_CURRENTLY_OPEN;
 		const dialogRef = this.dialog.open(ExampleDialogComponent, {
 			width: this.DIALOG_WIDTH,

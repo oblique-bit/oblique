@@ -2,7 +2,7 @@ class Icons {
 	private static readonly fs = require('fs');
 	private static readonly path = require('path');
 
-	static perform() {
+	static perform(): void {
 		const SVGs = Icons.getSVGs(Icons.path.join('projects', 'oblique', 'icons'));
 		Icons.writeIconSet(Icons.path.join('projects', 'oblique', 'src', 'assets', 'obliqueIcons.svg'), SVGs);
 		Icons.writeIconSetTS(Icons.path.join('projects', 'oblique', 'src', 'assets', 'oblique-icons.ts'), SVGs);
@@ -45,7 +45,7 @@ class Icons {
 		const iconCSS = [
 			`.ob-icon::before {\n\tdisplay: inline-block;\n\twidth: 1em;\n\theight: 1em;\n}`,
 			...SVGs.map(
-				svg => `.ob-${/(?<=id=")[a-z-]*(?=")/.exec(svg)}::before {\n\tcontent: url('data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}');\n}`
+				svg => `.ob-${/(?<=id=")[a-z-]*(?=")/.exec(svg)[0]}::before {\n\tcontent: url('data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}');\n}`
 			)
 		];
 		Icons.fs.writeFileSync(filePath, iconCSS.join('\n\n'));

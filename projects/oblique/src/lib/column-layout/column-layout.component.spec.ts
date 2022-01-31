@@ -28,7 +28,7 @@ class TestComponent {
 	right = true;
 	configEvents;
 
-	toggleLeft() {
+	toggleLeft(): void {
 		this.left = true;
 	}
 }

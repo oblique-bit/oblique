@@ -7,7 +7,7 @@ export class ObNavTreeItemModel {
 	id: string;
 	label: string;
 
-	labelParams?: {[key: string]: string | number};
+	labelParams?: Record<string, string | number>;
 
 	items?: ObNavTreeItemModel[];
 

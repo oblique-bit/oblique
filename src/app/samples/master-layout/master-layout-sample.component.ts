@@ -16,7 +16,7 @@ export class MasterLayoutSampleComponent {
 	}
 
 	// Footer
-	get isFooterCustom() {
+	get isFooterCustom(): boolean {
 		return this.masterLayout.footer.isCustom;
 	}
 
@@ -24,7 +24,7 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.footer.isCustom = value;
 	}
 
-	get hasLogoOnScroll() {
+	get hasLogoOnScroll(): boolean {
 		return this.masterLayout.footer.hasLogoOnScroll;
 	}
 
@@ -32,7 +32,7 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.footer.hasLogoOnScroll = value;
 	}
 
-	get isFooterSticky() {
+	get isFooterSticky(): boolean {
 		return this.masterLayout.footer.isSticky;
 	}
 
@@ -41,7 +41,7 @@ export class MasterLayoutSampleComponent {
 	}
 
 	// Header
-	get isHeaderCustom() {
+	get isHeaderCustom(): boolean {
 		return this.masterLayout.header.isCustom;
 	}
 
@@ -49,7 +49,7 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.header.isCustom = value;
 	}
 
-	get isHeaderSticky() {
+	get isHeaderSticky(): boolean {
 		return this.masterLayout.header.isSticky;
 	}
 
@@ -57,7 +57,7 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.header.isSticky = value;
 	}
 
-	get reduceOnScroll() {
+	get reduceOnScroll(): boolean {
 		return this.masterLayout.header.reduceOnScroll;
 	}
 
@@ -65,7 +65,7 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.header.reduceOnScroll = value;
 	}
 
-	get isHeaderSmall() {
+	get isHeaderSmall(): boolean {
 		return this.masterLayout.header.isSmall;
 	}
 
@@ -82,7 +82,7 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.layout.hasCover = value;
 	}
 
-	get hasLayout() {
+	get hasLayout(): boolean {
 		return this.masterLayout.layout.hasLayout;
 	}
 
@@ -90,7 +90,7 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.layout.hasLayout = value;
 	}
 
-	get hasMaxWidth() {
+	get hasMaxWidth(): boolean {
 		return this.masterLayout.layout.hasMaxWidth;
 	}
 
@@ -98,7 +98,7 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.layout.hasMaxWidth = value;
 	}
 
-	get hasMainNavigation() {
+	get hasMainNavigation(): boolean {
 		return this.masterLayout.layout.hasMainNavigation;
 	}
 
@@ -106,7 +106,7 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.layout.hasMainNavigation = value;
 	}
 
-	get hasOffCanvas() {
+	get hasOffCanvas(): boolean {
 		return this.masterLayout.layout.hasOffCanvas;
 	}
 
@@ -114,7 +114,7 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.layout.hasOffCanvas = value;
 	}
 
-	get homePageRoute() {
+	get homePageRoute(): string {
 		return this.masterLayout.homePageRoute;
 	}
 
@@ -122,7 +122,7 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.homePageRoute = value;
 	}
 
-	get isNavigationFullWidth() {
+	get isNavigationFullWidth(): boolean {
 		return this.masterLayout.navigation.isFullWidth;
 	}
 
@@ -130,7 +130,7 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.navigation.isFullWidth = value;
 	}
 
-	get navigationScrollMode() {
+	get navigationScrollMode(): ObEScrollMode {
 		return this.masterLayout.navigation.scrollMode;
 	}
 
@@ -138,14 +138,14 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.navigation.scrollMode = value;
 	}
 
-	addItem() {
+	addItem(): void {
 		this.dynamicNavigationService.addLink({
 			label: 'test',
 			url: 'urlTest'
 		});
 	}
 
-	removeItem() {
+	removeItem(): void {
 		this.dynamicNavigationService.removeLastLink();
 	}
 }

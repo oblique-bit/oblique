@@ -72,14 +72,14 @@ function removeFavicon(): Rule {
 	});
 }
 
-function removeI18nFromAngularJson() {
+function removeI18nFromAngularJson(): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, "Toolchain: Removing Angular's i18n");
 		return removeAngularProjectsConfig(tree, ['architect', 'extract-i18n']);
 	});
 }
 
-function removeUnusedScripts() {
+function removeUnusedScripts(): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Toolchain: Removing unused script');
 		return removeScript(tree, 'ng');

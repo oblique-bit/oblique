@@ -22,7 +22,7 @@ export class ObDateDMYParserFormatter extends NgbDateParserFormatter {
 	}
 }
 
-function padNumber(value: number) {
+function padNumber(value: number): string {
 	if (isNumber(value)) {
 		return `0${value}`.slice(-2);
 	}
@@ -34,5 +34,7 @@ function isNumber(value: any): value is number {
 }
 
 export function toInteger(value: any): number {
+	// fixing this would be a breaking change
+	// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 	return parseInt(`${value}`, 10);
 }

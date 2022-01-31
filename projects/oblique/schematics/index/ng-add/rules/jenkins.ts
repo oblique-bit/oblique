@@ -12,7 +12,7 @@ export function jenkins(config: string, staticBuild: boolean, jest: boolean): Ru
 
 function addDevEnv(dev: boolean): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return (tree: Tree, _context: SchematicContext) =>
+	return (tree: Tree, _context: SchematicContext): Tree =>
 		!dev
 			? tree
 			: setAngularProjectsConfig(tree, ['architect', 'build', 'configurations'], (config: any) => {
@@ -29,7 +29,7 @@ function addDevEnv(dev: boolean): Rule {
 }
 
 function addJenkins(useJenkins: boolean, jest: boolean): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return (tree: Tree, _context: SchematicContext): Tree => {
 		if (useJenkins) {
 			infoMigration(_context, 'Toolchain: Adding Jenkins configuration');
 			let jenkinsFile = getTemplate(tree, 'default-Jenkinsfile.config');
@@ -43,7 +43,7 @@ function addJenkins(useJenkins: boolean, jest: boolean): Rule {
 }
 
 function addCF(config: string, staticBuild: boolean): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return (tree: Tree, _context: SchematicContext): Tree => {
 		if (config.includes(';')) {
 			infoMigration(_context, 'Toolchain: Adding Cloud Foundry configuration');
 			const [orgName, appName] = config.split(';');
@@ -60,7 +60,7 @@ function addCF(config: string, staticBuild: boolean): Rule {
 }
 
 function addStaticBuildPack(staticBuildPack: boolean): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return (tree: Tree, _context: SchematicContext): Tree => {
 		if (!staticBuildPack) {
 			return tree;
 		}

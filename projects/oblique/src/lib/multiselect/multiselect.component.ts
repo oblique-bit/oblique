@@ -101,7 +101,7 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 		theme.deprecated('multiselect', 'select/overview#multiple-selection');
 	}
 
-	onClick(target: HTMLElement) {
+	onClick(target: HTMLElement): void {
 		if (this.isVisible) {
 			let parentFound = false;
 			while (target != null && !parentFound) {
@@ -118,7 +118,7 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 	}
 
 	@HostListener('keyup', ['$event'])
-	onKeyup($event: KeyboardEvent) {
+	onKeyup($event: KeyboardEvent): void {
 		if ($event.code === 'ArrowUp' && this.isVisible) {
 			this.toggleDropdown();
 		}
@@ -132,13 +132,13 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 		//
 	};
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.texts = {...this.multiselectTexts, ...this.texts};
 		this.title = this.texts.defaultTitle || '';
 		this.multiselectConfig.isIdUnique(this.idPrefix);
 	}
 
-	ngAfterViewInit() {
+	ngAfterViewInit(): void {
 		this.globalEventsService.click$
 			.pipe(
 				obOutsideFilter(this.element.nativeElement),
@@ -148,7 +148,7 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 			.subscribe(event => this.onClick(event.target as HTMLElement));
 	}
 
-	ngOnDestroy() {
+	ngOnDestroy(): void {
 		this.multiselectConfig.clearId(this.idPrefix);
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
@@ -172,14 +172,14 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 		this.disabled = isDisabled;
 	}
 
-	ngDoCheck() {
+	ngDoCheck(): void {
 		const changes = this.differ.diff(this.model);
 		if (changes) {
 			this.updateTitle();
 		}
 	}
 
-	toggleDropdown() {
+	toggleDropdown(): void {
 		this.isVisible = !this.isVisible;
 		if (!this.isVisible) {
 			this.dropdownClosed.emit();
@@ -190,7 +190,7 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 		return this.model.includes(option);
 	}
 
-	toggleSelection(option) {
+	toggleSelection(option): void {
 		const index = this.model.indexOf(option);
 
 		if (index > -1) {
@@ -206,7 +206,7 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 		}
 	}
 
-	updateTitle() {
+	updateTitle(): void {
 		if (this.model.length === 0) {
 			this.title = this.texts.defaultTitle || '';
 		} else if (this.dynamicTitleMaxItems && this.dynamicTitleMaxItems >= this.model.length) {
@@ -219,7 +219,7 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 		}
 	}
 
-	checkAll() {
+	checkAll(): void {
 		this.model = this.options.map(option => {
 			if (!this.model.includes(option)) {
 				this.onAdded.emit(option);
@@ -229,13 +229,13 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 		this.emitModelChange();
 	}
 
-	uncheckAll() {
+	uncheckAll(): void {
 		this.model.forEach(option => this.onRemoved.emit(option));
 		this.model = [];
 		this.emitModelChange();
 	}
 
-	preventCheckboxCheck(event: Event) {
+	preventCheckboxCheck(event: Event): void {
 		event.stopPropagation();
 		event.preventDefault();
 	}
@@ -263,7 +263,7 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 		return options.filter(option => this.formatOptionForLabel(option).toLowerCase().includes(searchString.toLowerCase()));
 	}
 
-	private emitModelChange() {
+	private emitModelChange(): void {
 		this.onModelChange(this.model);
 		this.onModelTouched();
 	}

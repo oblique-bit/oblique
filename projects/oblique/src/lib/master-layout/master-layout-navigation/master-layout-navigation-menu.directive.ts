@@ -17,7 +17,7 @@ export class ObMasterLayoutNavigationMenuDirective implements AfterViewInit, OnD
 
 	constructor(private readonly element: ElementRef) {}
 
-	ngAfterViewInit() {
+	ngAfterViewInit(): void {
 		this.$menus.forEach($menu => {
 			if ($menu !== this) {
 				$menu.onShow.pipe(takeUntil(this.unsubscribe)).subscribe(show => {
@@ -41,11 +41,11 @@ export class ObMasterLayoutNavigationMenuDirective implements AfterViewInit, OnD
 		this.unsubscribe.complete();
 	}
 
-	show() {
+	show(): void {
 		this.onShow.next(true);
 	}
 
-	hide() {
+	hide(): void {
 		this.onShow.next(false);
 	}
 }

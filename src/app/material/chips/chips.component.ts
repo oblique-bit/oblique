@@ -76,7 +76,7 @@ export class ChipsComponent implements OnInit {
 		return this.allTags.filter(tag => tag.toLowerCase().startsWith(filterValue));
 	}
 
-	private _remainingTags() {
+	private _remainingTags(): string[] {
 		return this.allTags.filter(tag => !this.tags.includes(tag));
 	}
 }

@@ -30,7 +30,7 @@ export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnD
 		private readonly globalEventsService: ObGlobalEventsService
 	) {}
 
-	ngAfterViewInit() {
+	ngAfterViewInit(): void {
 		merge(
 			this.globalEventsService.click$.pipe(obOutsideFilter(this.element.nativeElement)),
 			this.globalEventsService.keyUp$.pipe(filter(event => event.key === 'Escape'))
@@ -40,25 +40,8 @@ export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnD
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe(event => this.onClick(event.target));
-		this.$toggles.forEach($toggle => {
-			$toggle.onToggle
-				.pipe(
-					takeUntil(this.unsubscribe),
-					filter(($event: any) => !$event.prevented)
-				)
-				.subscribe(($event: any) => {
-					if (this.$menu) {
-						// eslint-disable-next-line no-unused-expressions
-						this.show ? this.close() : this.open();
-					} else {
-						// Final toggle, let's close all parent menus:
-						this.onClose.emit();
-						this.masterLayout.isMenuOpened = false;
-					}
-					$event.prevented = true;
-				});
-		});
 
+		this.manageToggles();
 		this.masterLayout.configEvents$.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.IS_MENU_OPENED && evt.value)).subscribe(() => this.close());
 
 		this.$items.forEach($item => {
@@ -71,7 +54,7 @@ export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnD
 		this.unsubscribe.complete();
 	}
 
-	open() {
+	open(): void {
 		this.show = true;
 		this.toggled.emit(true);
 
@@ -80,7 +63,7 @@ export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnD
 		}
 	}
 
-	close() {
+	close(): void {
 		this.show = false;
 		this.toggled.emit(false);
 
@@ -89,9 +72,33 @@ export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnD
 		}
 	}
 
-	onClick(targetElement?: EventTarget) {
+	onClick(targetElement?: EventTarget): void {
 		if (this.show && !this.element.nativeElement.contains(targetElement)) {
 			this.close();
 		}
+	}
+
+	private manageToggles(): void {
+		this.$toggles.forEach($toggle => {
+			$toggle.onToggle
+				.pipe(
+					takeUntil(this.unsubscribe),
+					filter(($event: any) => !$event.prevented)
+				)
+				.subscribe(($event: any) => {
+					if (this.$menu) {
+						if (this.show) {
+							this.close();
+						} else {
+							this.open();
+						}
+					} else {
+						// Final toggle, let's close all parent menus:
+						this.onClose.emit();
+						this.masterLayout.isMenuOpened = false;
+					}
+					$event.prevented = true;
+				});
+		});
 	}
 }

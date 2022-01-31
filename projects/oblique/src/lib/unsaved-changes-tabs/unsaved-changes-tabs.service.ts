@@ -8,7 +8,7 @@ import {ObUnsavedChangesService} from '../unsaved-changes/unsaved-changes.servic
 // TODO: Handle modals
 @Injectable({providedIn: 'root'})
 export class ObUnsavedChangesTabsService {
-	private readonly listener: {[key: string]: Subscription} = {};
+	private readonly listener: Record<string, Subscription> = {};
 
 	constructor(private readonly translateService: TranslateService, private readonly unsavedChanges: ObUnsavedChangesService) {}
 

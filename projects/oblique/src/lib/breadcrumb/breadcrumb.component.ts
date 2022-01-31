@@ -63,7 +63,8 @@ export class ObBreadcrumbComponent implements OnInit {
 			return this.getCrumbs(route.firstChild, crumbs, currentUrl);
 		}
 
-		const next = ({label, url}: ObIBreadcrumb) => this.getCrumbs(route.firstChild, label ? [...crumbs, {label, url}] : crumbs, url);
+		const next = ({label, url}: ObIBreadcrumb): Observable<ObIBreadcrumb[]> =>
+			this.getCrumbs(route.firstChild, label ? [...crumbs, {label, url}] : crumbs, url);
 		const url = `${currentUrl}/${path}`;
 
 		return this.createNextBreadcrumb(route, next, url, label, path.split('/'));
@@ -75,7 +76,7 @@ export class ObBreadcrumbComponent implements OnInit {
 		url: string,
 		label: string,
 		pathSplitter: string[]
-	) {
+	): Observable<ObIBreadcrumb[]> {
 		if (!pathSplitter.some(s => s.startsWith(':'))) {
 			const labelFromUrl = pathSplitter.map(s => this.beautify(s)).join(this.separator);
 			return next({label: label ?? labelFromUrl, url});

@@ -110,7 +110,7 @@ function addFontStyle(font: string): Rule {
 		if (font !== 'none') {
 			infoMigration(_context, 'Oblique: Adding font');
 			const styleSheet = `node_modules/@oblique/oblique/styles/css/${font}.css`;
-			setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) => {
+			setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: string[]) => {
 				if (!config.includes(styleSheet)) {
 					config.splice(config.indexOf(obliqueCssPath) + 1, 0, styleSheet);
 				}
@@ -159,7 +159,7 @@ function addThemeDependencies(tree: Tree): void {
 
 function addThemeCSS(tree: Tree): Tree {
 	const styleSheet = `node_modules/@oblique/oblique/styles/css/oblique-material.css`;
-	return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) => {
+	return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: string[]) => {
 		const index = config.indexOf(styleSheet.replace(`oblique-material.css`, `oblique-material.scss`));
 		if (index > -1) {
 			config[index] = config[index].replace(`oblique-material.scss`, `oblique-material.css`);

@@ -14,7 +14,7 @@ export class ObSchemaValidationDirective implements OnInit {
 
 	constructor(private readonly schemaValidationService: ObSchemaValidationService) {}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.validator = this.schemaValidationService.compileSchema(this.schema);
 	}
 

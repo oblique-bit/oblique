@@ -17,11 +17,11 @@ export class ObNotificationComponent implements OnInit {
 	public static REMOVE_DELAY = 350;
 	@Input() channel: string;
 	@HostBinding('class.ob-custom') customChannel = false;
-	@HostBinding('class') get getPlacement() {
+	@HostBinding('class') get getPlacement(): ObENotificationPlacement {
 		return this.notificationService.placement;
 	}
 	public notifications: ObINotificationPrivate[] = [];
-	public variant: {[type: string]: string} = {};
+	public variant: Record<string, string> = {};
 
 	constructor(private readonly notificationService: ObNotificationService, @Inject(WINDOW) private readonly window: Window) {}
 

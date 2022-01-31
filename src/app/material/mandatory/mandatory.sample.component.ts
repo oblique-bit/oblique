@@ -13,7 +13,7 @@ export class MandatorySampleComponent implements OnInit {
 
 	constructor(private readonly formBuilder: FormBuilder) {}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.testForm = this.formBuilder.group({
 			inputRequired: ['', Validators.required],
 			inputDynamicRequired: '',
@@ -57,7 +57,7 @@ export class MandatorySampleComponent implements OnInit {
 		this.updateValidity();
 	}
 
-	private updateValidity() {
+	private updateValidity(): void {
 		this.testForm.get('inputDynamicRequired').updateValueAndValidity();
 		this.testForm.get('inputDateDynamicRequired').updateValueAndValidity();
 		this.testForm.get('selectDynamicRequired').updateValueAndValidity();

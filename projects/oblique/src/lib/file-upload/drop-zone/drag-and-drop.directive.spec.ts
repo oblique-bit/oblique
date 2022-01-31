@@ -8,7 +8,7 @@ import {ObDragDropDirective} from './drag-and-drop.directive';
 })
 class TestDropDirectiveComponent {
 	files;
-	saveFiles(files) {
+	saveFiles(files): void {
 		this.files = files;
 	}
 }
