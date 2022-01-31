@@ -1,7 +1,10 @@
+'use strict';
+
 const fs = require('fs');
 const message = fs.readFileSync('.git/COMMIT_EDITMSG').toString().split('\n');
+const maxLineLength = 100;
 try {
-	checkLineLength(message, 100);
+	checkLineLength(message, maxLineLength);
 	checkEmptyLine(message);
 	checkHeader(message[0]);
 	checkBreakingChanges(message);
@@ -12,7 +15,7 @@ try {
 
 function checkLineLength(lines, length) {
 	const error = lines
-		.map((line, i) => (line.length > length ? numeral(i) : ''))
+		.map((line, index) => (line.length > length ? numeral(index) : ''))
 		.filter(line => !!line)
 		.join(', ')
 		.replace(/,(?=[^,]*$)/, ' and');
@@ -96,16 +99,16 @@ function checkBreakingChanges(lines) {
 	}
 }
 
-function numeral(i) {
-	switch (i + 1) {
+function numeral(digit) {
+	switch (digit + 1) {
 		case 1:
 			return '1st';
-		case 2:
+		case 2: // eslint-disable-line no-magic-numbers
 			return '2nd';
-		case 3:
+		case 3: // eslint-disable-line no-magic-numbers
 			return '3rd';
 		default:
-			return `${i + 1}th`;
+			return `${digit + 1}th`;
 	}
 }
 

@@ -7,51 +7,42 @@ overrides:
       node: true # so that "module" is defined
       browser: true # so that "window" is defined
     extends:
-      - eslint:recommended
+      - eslint:all
       - prettier # this turns off all rules from eslint, @typescript-eslint and @angular-eslint that conflicts with prettier
     rules:
-      dot-notation: error
-      eqeqeq:
+      # deactivate unwanted rules
+      capitalized-comments: off
+      no-implicit-coercion: off
+      no-undefined: off
+      no-use-before-define: off
+      no-ternary: off
+      one-var: off
+      func-names: off
+      func-style: off
+      require-unicode-regexp: off
+      sort-keys: off
+
+      # override default values
+      max-statements:
         - error
-        - smart
-      guard-for-in: error
-      max-lines:
-        - error
-        - max: 300
-      max-lines-per-function:
-        - error
-        - max: 35
-      no-bitwise: error
-      no-caller: error
+        - 15
       no-console:
         - error
         - allow:
             - info
             - warn
             - error
-      no-else-return: error
-      no-eval: error
-      no-new-wrappers: error
-      no-sequences: error
-      no-throw-literal: error
-      no-undef-init: error
-      no-unused-expressions: error
-      no-useless-concat: error
-      no-useless-escape: error
-      object-shorthand: error
-      prefer-exponentiation-operator: error
-      prefer-object-spread: error
-      prefer-regex-literals: error
-      prefer-template: error
-      radix: error
+      no-magic-numbers:
+        - error
+        - ignore:
+            - -1
+            - 0
+            - 1
+          ignoreArrayIndexes: true
       sort-imports:
         - error
         - ignoreDeclarationSort: true
-      spaced-comment: error
-      id-length: off
-      no-param-reassign: off
-      prefer-rest-params: off
-      no-underscore-dangle: off
+
   - files:
       - "*.ts"
     parser: "@typescript-eslint/parser"
