@@ -173,7 +173,6 @@ overrides:
       "@typescript-eslint/naming-convention": off
       max-params: off
       no-warning-comments: off
-      prefer-arrow-callback: off
 
   - files:
       - mock-*.ts
