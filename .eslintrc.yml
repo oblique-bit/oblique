@@ -174,8 +174,6 @@ overrides:
       no-underscore-dangle: off
       no-nested-ternary: off
       no-warning-comments: off
-      eqeqeq: off
-      no-eq-null: off
       no-negated-condition: off
       no-param-reassign: off
       prefer-arrow-callback: off

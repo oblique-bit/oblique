@@ -104,7 +104,7 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 	onClick(target: HTMLElement): void {
 		if (this.isVisible) {
 			let parentFound = false;
-			while (target != null && !parentFound) {
+			while (target && !parentFound) {
 				if (target === this.element.nativeElement) {
 					parentFound = true;
 				}

@@ -87,7 +87,7 @@ export class ObNotificationService {
 			title: config.title || this.config[type].title,
 			titleParams: config.titleParams,
 			channel: config.channel || this.config[type].channel || this.config.channel,
-			sticky: config.sticky != null ? config.sticky : this.config[type].sticky != null ? this.config[type].sticky : this.config.sticky,
+			sticky: config.sticky ?? this.config[type].sticky ?? this.config.sticky,
 			timeout: config.timeout || this.config[type].timeout || this.config.timeout,
 			groupSimilar: config.groupSimilar || this.config[type].groupSimilar || this.config.groupSimilar
 		};
