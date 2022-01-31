@@ -215,4 +215,16 @@ overrides:
   - files:
       - "*.html"
     extends:
-      - plugin:@angular-eslint/template/recommended
+      - plugin:@angular-eslint/template/all
+    rules:
+      # deactivate unwanted rules
+      "@angular-eslint/template/accessibility-elements-content": off # should be enabled once bootstrap is removed
+      "@angular-eslint/template/accessibility-label-for": off # deprecated rule
+      "@angular-eslint/template/i18n": off
+      "@angular-eslint/template/use-track-by-function": off
+
+      # rules that need some refactoring to be enabled
+      "@angular-eslint/template/accessibility-label-has-associated-control": off
+      "@angular-eslint/template/click-events-have-key-events": off
+      "@angular-eslint/template/cyclomatic-complexity": off
+      "@angular-eslint/template/no-call-expression": off
