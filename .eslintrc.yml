@@ -174,7 +174,6 @@ overrides:
       max-params: off
       no-warning-comments: off
       prefer-arrow-callback: off
-      no-lonely-if: off
 
   - files:
       - mock-*.ts

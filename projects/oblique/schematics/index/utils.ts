@@ -232,12 +232,10 @@ function setOption(json: any, path: string[], value?: any): void {
 				json[option] = {};
 			}
 			setOption(json[option], path, value);
+		} else if (value) {
+			json[option] = value;
 		} else {
-			if (value) {
-				json[option] = value;
-			} else {
-				delete json[option];
-			}
+			delete json[option];
 		}
 	}
 }
