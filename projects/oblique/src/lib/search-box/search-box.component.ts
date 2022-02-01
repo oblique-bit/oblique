@@ -45,14 +45,14 @@ export class ObSearchBoxComponent {
 	@ViewChildren('link') private readonly links: QueryList<ElementRef>;
 	@ViewChild(ObDropdownComponent) private readonly dropdown: ObDropdownComponent;
 
-	private _pattern: string;
+	private patternInternal: string;
 
 	get pattern(): string {
-		return this._pattern;
+		return this.patternInternal;
 	}
 
 	@Input() set pattern(pattern: string) {
-		this._pattern = pattern;
+		this.patternInternal = pattern;
 		this.filteredItems = this.items.filter(this.filterItems.bind(this)).slice(0, this.maxResults);
 		this.toggle(this.pattern.length >= this.minPatternLength);
 	}
@@ -70,14 +70,14 @@ export class ObSearchBoxComponent {
 	}
 
 	@HostListener('keydown.arrowdown', ['$event']) navigateDown($event: KeyboardEvent): void {
-		this.focusLink(this.active != null ? (this.active + 1) % this.filteredItems.length : 0);
+		this.focusLink(this.active === undefined ? 0 : (this.active + 1) % this.filteredItems.length);
 		if ($event) {
 			$event.preventDefault();
 		}
 	}
 
 	@HostListener('keydown.arrowup', ['$event']) navigateUp($event: KeyboardEvent): void {
-		this.focusLink(this.active != null ? (this.active - 1 + this.filteredItems.length) % this.filteredItems.length : this.filteredItems.length - 1);
+		this.focusLink(this.active === undefined ? this.filteredItems.length - 1 : (this.active - 1 + this.filteredItems.length) % this.filteredItems.length);
 		if ($event) {
 			$event.preventDefault();
 		}
@@ -90,8 +90,8 @@ export class ObSearchBoxComponent {
 	}
 
 	formatter(label: string, filterPattern?: string): string {
-		filterPattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
-		return !filterPattern ? label : label.replace(new RegExp(filterPattern, 'ig'), text => `<span class="ob-highlight">${text}</span>`);
+		const pattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
+		return pattern ? label.replace(new RegExp(pattern, 'ig'), text => `<span class="ob-highlight">${text}</span>`) : label;
 	}
 
 	focus(): void {

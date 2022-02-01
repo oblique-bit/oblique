@@ -142,14 +142,12 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 		if (this.isHeaderSticky !== this.isFooterSticky) {
 			return this.wrapper.nativeElement;
 		}
-		if (!this.isHeaderSticky && !this.isFooterSticky) {
-			return this.window;
-		}
+		return this.window;
 	}
 
 	private updateJumpLinks(hasNavigation: boolean): void {
 		const staticJumpLinks = hasNavigation && this.navigation.length ? 3 : 2;
-		this.jumpLinks = this.jumpLinks.map((jumpLink, i) => ({...jumpLink, accessKey: i + staticJumpLinks}));
+		this.jumpLinks = this.jumpLinks.map((jumpLink, index) => ({...jumpLink, accessKey: index + staticJumpLinks}));
 	}
 
 	private layoutHasMainNavigationChange(): void {

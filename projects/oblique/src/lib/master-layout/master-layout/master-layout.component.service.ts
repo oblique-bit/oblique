@@ -9,85 +9,85 @@ import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout
 })
 export class ObMasterLayoutComponentService {
 	readonly configEvents$: Observable<ObIMasterLayoutEvent>;
-	private readonly _events = new Subject<ObIMasterLayoutEvent>();
-	private _isMenuOpened = false;
-	private _hasCover = this.config.layout.hasCover;
-	private _hasOffCanvas = this.config.layout.hasOffCanvas;
-	private _hasMainNavigation = this.config.layout.hasMainNavigation;
-	private _hasLayout = this.config.layout.hasLayout;
-	private _hasMaxWidth = this.config.layout.hasMaxWidth;
+	private readonly events = new Subject<ObIMasterLayoutEvent>();
+	private isMenuOpenedInternal = false;
+	private hasCoverInternal = this.config.layout.hasCover;
+	private hasOffCanvasInternal = this.config.layout.hasOffCanvas;
+	private hasMainNavigationInternal = this.config.layout.hasMainNavigation;
+	private hasLayoutInternal = this.config.layout.hasLayout;
+	private hasMaxWidthInternal = this.config.layout.hasMaxWidth;
 
 	constructor(private readonly config: ObMasterLayoutConfig) {
-		this.configEvents$ = this._events.asObservable();
+		this.configEvents$ = this.events.asObservable();
 	}
 
 	get isMenuOpened(): boolean {
-		return this._isMenuOpened;
+		return this.isMenuOpenedInternal;
 	}
 
 	set isMenuOpened(value: boolean) {
-		this._isMenuOpened = value;
-		this._events.next({
+		this.isMenuOpenedInternal = value;
+		this.events.next({
 			name: ObEMasterLayoutEventValues.IS_MENU_OPENED,
 			value
 		});
 	}
 
 	get hasCover(): boolean {
-		return this._hasCover;
+		return this.hasCoverInternal;
 	}
 
 	set hasCover(value: boolean) {
-		this._hasCover = value;
-		this._events.next({
+		this.hasCoverInternal = value;
+		this.events.next({
 			name: ObEMasterLayoutEventValues.LAYOUT_HAS_COVER,
 			value
 		});
 	}
 
 	get hasOffCanvas(): boolean {
-		return this._hasOffCanvas;
+		return this.hasOffCanvasInternal;
 	}
 
 	set hasOffCanvas(value: boolean) {
-		this._hasOffCanvas = value;
-		this._events.next({
+		this.hasOffCanvasInternal = value;
+		this.events.next({
 			name: ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS,
 			value
 		});
 	}
 
 	get hasMainNavigation(): boolean {
-		return this._hasMainNavigation;
+		return this.hasMainNavigationInternal;
 	}
 
 	set hasMainNavigation(value: boolean) {
-		this._hasMainNavigation = value;
-		this._events.next({
+		this.hasMainNavigationInternal = value;
+		this.events.next({
 			name: ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION,
 			value
 		});
 	}
 
 	get hasLayout(): boolean {
-		return this._hasLayout;
+		return this.hasLayoutInternal;
 	}
 
 	set hasLayout(value: boolean) {
-		this._hasLayout = value;
-		this._events.next({
+		this.hasLayoutInternal = value;
+		this.events.next({
 			name: ObEMasterLayoutEventValues.LAYOUT_HAS_DEFAULT_LAYOUT,
 			value
 		});
 	}
 
 	get hasMaxWidth(): boolean {
-		return this._hasMaxWidth;
+		return this.hasMaxWidthInternal;
 	}
 
 	set hasMaxWidth(value: boolean) {
-		this._hasMaxWidth = value;
-		this._events.next({
+		this.hasMaxWidthInternal = value;
+		this.events.next({
 			name: ObEMasterLayoutEventValues.LAYOUT_HAS_MAX_WIDTH,
 			value
 		});

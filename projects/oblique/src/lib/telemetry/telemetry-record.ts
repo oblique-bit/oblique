@@ -46,9 +46,9 @@ export class ObTelemetryRecord {
 	private static readPackageJson(): any {
 		try {
 			return require('package.json');
-		} catch (e) {
-			if (e.code !== 'MODULE_NOT_FOUND') {
-				throw e;
+		} catch (error) {
+			if (error.code !== 'MODULE_NOT_FOUND') {
+				throw error;
 			}
 			return {dependencies: {}};
 		}
@@ -57,7 +57,7 @@ export class ObTelemetryRecord {
 	private static readObliqueVersion(): any {
 		try {
 			return require('package-lock.json').dependencies['@oblique/oblique'].version;
-		} catch (e) {
+		} catch (error) {
 			return undefined;
 		}
 	}
@@ -65,7 +65,7 @@ export class ObTelemetryRecord {
 	private static getModuleList(): ObIModuleList {
 		try {
 			return JSON.parse(localStorage.getItem(ObTelemetryRecord.TELEMETRY_TOKEN)) || ({} as ObIModuleList);
-		} catch (e) {
+		} catch (error) {
 			return {} as ObIModuleList;
 		}
 	}

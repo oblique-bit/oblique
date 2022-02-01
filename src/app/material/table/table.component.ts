@@ -63,14 +63,14 @@ export class TableComponent implements OnInit {
 	}
 
 	updateFooterRow(): void {
-		this.totalWeight = this.dataSource.data.map(x => x.weight).reduce((a, b) => a + b, 0);
+		this.totalWeight = this.dataSource.data.map(item => item.weight).reduce((total, current) => total + current, 0);
 	}
 
 	updateFooterRowByPage(page: PageEvent): void {
 		const elementsCount = (page.pageIndex + 1) * page.pageSize;
 		const firstIndex = page.pageIndex * page.pageSize;
 		const visibleElements = this.dataSource.data.slice(firstIndex, firstIndex + elementsCount);
-		this.totalWeight = visibleElements.map(x => x.weight).reduce((a, b) => a + b, 0);
+		this.totalWeight = visibleElements.map(item => item.weight).reduce((total, current) => total + current, 0);
 	}
 
 	applyFilter(event): void {

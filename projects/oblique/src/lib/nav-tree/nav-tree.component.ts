@@ -48,11 +48,11 @@ export class ObNavTreeComponent implements OnDestroy {
 
 	@Input()
 	patternMatcher(item: ObNavTreeItemModel, pattern = ''): boolean {
-		pattern = pattern.replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
+		const text = pattern.replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
 		const label = this.translate.instant(item.label, item.labelParams);
-		const match = new RegExp(pattern, 'gi').test(label);
+		const match = new RegExp(text, 'gi').test(label);
 		const childMatch = (item.items || []).some(subItem => {
-			const subMatch = this.patternMatcher(subItem, pattern.replace(/\\/g, ''));
+			const subMatch = this.patternMatcher(subItem, text.replace(/\\/g, ''));
 			if (subMatch) {
 				// Ensure parent item is not collapsed:
 				item.collapsed = false;
@@ -100,11 +100,9 @@ export class ObNavTreeComponent implements OnDestroy {
 export function defaultLabelFormatterFactory(translate: TranslateService): (item: ObNavTreeItemModel, filterPattern: string) => string {
 	// noinspection UnnecessaryLocalVariableJS because this will result in a build error
 	const formatter = (item: ObNavTreeItemModel, filterPattern: string): string => {
-		filterPattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
+		const pattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
 		const label: string = translate.instant(item.label, item.labelParams);
-		return !filterPattern
-			? label
-			: label.replace(new RegExp(filterPattern, 'ig'), text => `<span class="${ObNavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`);
+		return pattern ? label.replace(new RegExp(pattern, 'ig'), text => `<span class="${ObNavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`) : label;
 	};
 
 	return formatter;

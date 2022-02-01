@@ -74,22 +74,18 @@ export class ObNotificationService {
 	}
 
 	private broadcast(config: ObINotification | string, type: ObENotificationType): ObINotification {
-		if (typeof config === 'string') {
-			config = {
-				message: config
-			};
-		}
+		const conf = typeof config === 'string' ? {message: config} : config;
 		const notification = {
-			idPrefix: config.idPrefix || `notification-${type}-${this.formatMessage(config.message, config.messageParams)}-`,
+			idPrefix: conf.idPrefix || `notification-${type}-${this.formatMessage(conf.message, conf.messageParams)}-`,
 			type,
-			message: config.message,
-			messageParams: config.messageParams,
-			title: config.title || this.config[type].title,
-			titleParams: config.titleParams,
-			channel: config.channel || this.config[type].channel || this.config.channel,
-			sticky: config.sticky != null ? config.sticky : this.config[type].sticky != null ? this.config[type].sticky : this.config.sticky,
-			timeout: config.timeout || this.config[type].timeout || this.config.timeout,
-			groupSimilar: config.groupSimilar || this.config[type].groupSimilar || this.config.groupSimilar
+			message: conf.message,
+			messageParams: conf.messageParams,
+			title: conf.title || this.config[type].title,
+			titleParams: conf.titleParams,
+			channel: conf.channel || this.config[type].channel || this.config.channel,
+			sticky: conf.sticky ?? this.config[type].sticky ?? this.config.sticky,
+			timeout: conf.timeout || this.config[type].timeout || this.config.timeout,
+			groupSimilar: conf.groupSimilar || this.config[type].groupSimilar || this.config.groupSimilar
 		};
 		this.eventSubject.next(notification);
 

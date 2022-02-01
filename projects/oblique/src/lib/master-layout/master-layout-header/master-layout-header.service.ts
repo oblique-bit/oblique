@@ -6,59 +6,59 @@ import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout
 @Injectable({providedIn: 'root'})
 export class ObMasterLayoutHeaderService {
 	readonly configEvents$: Observable<ObIMasterLayoutEvent>;
-	private readonly _events = new Subject<ObIMasterLayoutEvent>();
-	private _isCustom = this.config.header.isCustom;
-	private _isSmall = this.config.header.isSmall;
-	private _isSticky = this.config.header.isSticky;
-	private _reduceOnScroll = this.config.header.reduceOnScroll;
+	private readonly events = new Subject<ObIMasterLayoutEvent>();
+	private isCustomInternal = this.config.header.isCustom;
+	private isSmallInternal = this.config.header.isSmall;
+	private isStickyInternal = this.config.header.isSticky;
+	private reduceOnScrollInternal = this.config.header.reduceOnScroll;
 
 	constructor(private readonly config: ObMasterLayoutConfig) {
-		this.configEvents$ = this._events.asObservable();
+		this.configEvents$ = this.events.asObservable();
 	}
 
 	get isCustom(): boolean {
-		return this._isCustom;
+		return this.isCustomInternal;
 	}
 
 	set isCustom(value: boolean) {
-		this._isCustom = value;
-		this._events.next({
+		this.isCustomInternal = value;
+		this.events.next({
 			name: ObEMasterLayoutEventValues.HEADER_IS_CUSTOM,
 			value
 		});
 	}
 
 	get isSmall(): boolean {
-		return this._isSmall;
+		return this.isSmallInternal;
 	}
 
 	set isSmall(value: boolean) {
-		this._isSmall = value;
-		this._events.next({
+		this.isSmallInternal = value;
+		this.events.next({
 			name: ObEMasterLayoutEventValues.HEADER_IS_SMALL,
 			value
 		});
 	}
 
 	get isSticky(): boolean {
-		return this._isSticky;
+		return this.isStickyInternal;
 	}
 
 	set isSticky(value: boolean) {
-		this._isSticky = value;
-		this._events.next({
+		this.isStickyInternal = value;
+		this.events.next({
 			name: ObEMasterLayoutEventValues.HEADER_IS_STICKY,
 			value
 		});
 	}
 
 	get reduceOnScroll(): boolean {
-		return this._reduceOnScroll;
+		return this.reduceOnScrollInternal;
 	}
 
 	set reduceOnScroll(value: boolean) {
-		this._reduceOnScroll = value;
-		this._events.next({
+		this.reduceOnScrollInternal = value;
+		this.events.next({
 			name: ObEMasterLayoutEventValues.HEADER_REDUCE_ON_SCROLL,
 			value
 		});

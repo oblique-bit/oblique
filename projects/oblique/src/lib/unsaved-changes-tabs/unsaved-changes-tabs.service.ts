@@ -21,7 +21,7 @@ export class ObUnsavedChangesTabsService {
 	}
 
 	listenTo(ngbNav: NgbNav): void {
-		const id = ngbNav.items.first.id;
+		const {id} = ngbNav.items.first;
 		if (!this.listener[id]) {
 			this.listener[id] = ngbNav.navChange.subscribe((event: NgbNavChangeEvent): void => {
 				if (!this.ignoreChanges([event.activeId])) {

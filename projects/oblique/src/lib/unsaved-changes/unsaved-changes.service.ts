@@ -11,8 +11,8 @@ export class ObUnsavedChangesService {
 	private readonly controlContainer: Record<string, ControlContainer> = {};
 
 	constructor(private readonly translateService: TranslateService, private readonly popUpService: ObPopUpService, @Inject(WINDOW) window: Window) {
-		window.addEventListener('beforeunload', e => this.onUnload(e));
-		window.addEventListener('unload', e => this.onUnload(e));
+		window.addEventListener('beforeunload', event => this.onUnload(event));
+		window.addEventListener('unload', event => this.onUnload(event));
 	}
 
 	watch(formId: string, form: ControlContainer): void {

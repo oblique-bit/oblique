@@ -41,15 +41,15 @@ export class ObBreadcrumbComponent implements OnInit {
 
 	ngOnInit(): void {
 		const navigationEndEvents = this.router.events.pipe(
-			filter(e => e instanceof NavigationEnd),
+			filter(event => event instanceof NavigationEnd),
 			distinctUntilChanged()
 		);
 
 		this.breadcrumbs$ = merge(of({}), navigationEndEvents, this.translateService.onLangChange).pipe(switchMap(() => this.getCrumbs(this.route.root)));
 	}
 
-	showTooltip(e: HTMLElement): boolean {
-		return e.offsetWidth < e.scrollWidth;
+	showTooltip(element: HTMLElement): boolean {
+		return element.offsetWidth < element.scrollWidth;
 	}
 
 	getCrumbs(route: ActivatedRoute, crumbs: ObIBreadcrumb[] = [], currentUrl = ''): Observable<ObIBreadcrumb[]> {
@@ -77,20 +77,20 @@ export class ObBreadcrumbComponent implements OnInit {
 		label: string,
 		pathSplitter: string[]
 	): Observable<ObIBreadcrumb[]> {
-		if (!pathSplitter.some(s => s.startsWith(':'))) {
-			const labelFromUrl = pathSplitter.map(s => this.beautify(s)).join(this.separator);
+		if (!pathSplitter.some(text => text.startsWith(':'))) {
+			const labelFromUrl = pathSplitter.map(text => this.beautify(text)).join(this.separator);
 			return next({label: label ?? labelFromUrl, url});
 		}
 
-		const params = pathSplitter.filter(s => s.startsWith(':')).map(s => ({key: s, val: route.snapshot.params[s.substring(1)]}));
+		const params = pathSplitter.filter(text => text.startsWith(':')).map(text => ({key: text, val: route.snapshot.params[text.substring(1)]}));
 		const urlWithParamValues = this.applyParams(url, params);
 
 		if (label) {
 			if (label.startsWith('i18n')) {
 				const beautifiedParams = params.map(({key, val}) => ({key, val: this.beautify(val)}));
 				return this.translateService.get(label).pipe(
-					map(l => this.applyParams(l, beautifiedParams)),
-					switchMap(l => next({label: l, url: urlWithParamValues}))
+					map(label => this.applyParams(label, beautifiedParams)),
+					switchMap(label => next({label, url: urlWithParamValues}))
 				);
 			}
 
@@ -98,19 +98,19 @@ export class ObBreadcrumbComponent implements OnInit {
 			return next({label: labelWithParamValues, url: urlWithParamValues});
 		}
 
-		const labelFromUrlWithParamValues = pathSplitter.map(s => this.beautify(this.applyParams(s, params))).join(this.separator);
+		const labelFromUrlWithParamValues = pathSplitter.map(text => this.beautify(this.applyParams(text, params))).join(this.separator);
 		return next({label: labelFromUrlWithParamValues, url: urlWithParamValues});
 	}
 
 	private applyParams(source: string, params: {key: string; val: string}[]): string {
-		return params.reduce((s, {key, val}) => s.replace(key, val), source);
+		return params.reduce((text, {key, val}) => text.replace(key, val), source);
 	}
 
 	private beautify(path: string): string {
 		return this.beautifyUrls
 			? path
 					.split('-')
-					.map(s => s.substring(0, 1).toUpperCase() + s.substring(1))
+					.map(text => text.substring(0, 1).toUpperCase() + text.substring(1))
 					.join(' ')
 			: path;
 	}

@@ -14,13 +14,13 @@ import {ObMasterLayoutComponentService} from '../master-layout/master-layout.com
 })
 export class ObMasterLayoutNavigationService {
 	readonly configEvents$: Observable<ObIMasterLayoutEvent>;
-	private readonly _events = new Subject<ObIMasterLayoutEvent>();
-	private readonly _scrolled: Subject<number> = new Subject<number>();
-	private readonly scrolled$ = this._scrolled.asObservable();
-	private readonly _refreshed: Subject<void> = new Subject<void>();
-	private readonly refreshed$ = this._refreshed.asObservable();
-	private _isFullWidth = this.config.navigation.isFullWidth;
-	private _scrollMode = this.config.navigation.scrollMode;
+	private readonly events = new Subject<ObIMasterLayoutEvent>();
+	private readonly scrolledInternal: Subject<number> = new Subject<number>();
+	private readonly scrolled$ = this.scrolledInternal.asObservable();
+	private readonly refreshedInternal: Subject<void> = new Subject<void>();
+	private readonly refreshed$ = this.refreshedInternal.asObservable();
+	private isFullWidthInternal = this.config.navigation.isFullWidth;
+	private scrollModeInternal = this.config.navigation.scrollMode;
 
 	constructor(
 		private readonly config: ObMasterLayoutConfig,
@@ -37,28 +37,28 @@ export class ObMasterLayoutNavigationService {
 		)
 			.pipe(filter(() => layoutService.hasMainNavigation && this.scrollMode !== ObEScrollMode.DISABLED))
 			.subscribe(() => this.refresh());
-		this.configEvents$ = this._events.asObservable();
+		this.configEvents$ = this.events.asObservable();
 	}
 
 	get isFullWidth(): boolean {
-		return this._isFullWidth;
+		return this.isFullWidthInternal;
 	}
 
 	set isFullWidth(value: boolean) {
-		this._isFullWidth = value;
-		this._events.next({
+		this.isFullWidthInternal = value;
+		this.events.next({
 			name: ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH,
 			value
 		});
 	}
 
 	get scrollMode(): ObEScrollMode {
-		return this._scrollMode;
+		return this.scrollModeInternal;
 	}
 
 	set scrollMode(value: ObEScrollMode) {
-		this._scrollMode = value;
-		this._events.next({
+		this.scrollModeInternal = value;
+		this.events.next({
 			name: ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE,
 			mode: value
 		});
@@ -74,16 +74,16 @@ export class ObMasterLayoutNavigationService {
 
 	refresh(): void {
 		// postpone the event emission so that Angular has time to apply changes to the DOM
-		this.window.setTimeout(() => this._refreshed.next());
+		this.window.setTimeout(() => this.refreshedInternal.next());
 	}
 
 	scrollLeft(offset?: number): void {
 		// postpone the event emission so that Angular has time to apply changes to the DOM
-		this.window.setTimeout(() => this._scrolled.next(-(offset || this.config.navigation.scrollDelta)));
+		this.window.setTimeout(() => this.scrolledInternal.next(-(offset || this.config.navigation.scrollDelta)));
 	}
 
 	scrollRight(offset?: number): void {
 		// postpone the event emission so that Angular has time to apply changes to the DOM
-		this.window.setTimeout(() => this._scrolled.next(offset || this.config.navigation.scrollDelta));
+		this.window.setTimeout(() => this.scrolledInternal.next(offset || this.config.navigation.scrollDelta));
 	}
 }

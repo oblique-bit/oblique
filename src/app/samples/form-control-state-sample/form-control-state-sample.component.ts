@@ -19,7 +19,7 @@ export class FormControlStateSampleComponent {
 				street: ['', [Validators.required, Validators.minLength(5)]],
 				number: ['', Validators.required]
 			}),
-			email: ['', Validators.pattern(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/)]
+			email: ['', Validators.pattern(/^\w+(?:[.-]?\w+)*@\w+(?:[.-]?\w+)*(?:\.\w{2,3})+$/)]
 		});
 	}
 

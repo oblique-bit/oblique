@@ -50,6 +50,9 @@ export class ObDropdownComponent implements OnInit, OnDestroy {
 	}
 
 	private isSelf(el: Element): boolean {
-		return el ? (el === this.element.nativeElement ? true : this.isSelf(el.parentElement)) : false;
+		if (el) {
+			return el === this.element.nativeElement ? true : this.isSelf(el.parentElement);
+		}
+		return false;
 	}
 }

@@ -139,7 +139,7 @@ export function addAngularConfigInList(tree: Tree, path: string[], value: any): 
 	getAngularConfigs(tree, path).forEach(project =>
 		setAngularConfig(tree, path, {
 			project: project.project,
-			config: [...(project.config || []).filter((v: any) => v !== value), value]
+			config: [...(project.config || []).filter((current: any) => current !== value), value]
 		})
 	);
 	return tree;
@@ -172,7 +172,10 @@ export function addInterface(tree: Tree, fileName: string, name: string): void {
 		tree.overwrite(
 			fileName,
 			content
-				.replace(/(export class\s*\w*(?:\s*extends \w*)?)(?:\s*implements\s*)?(\w*(?:,\s*\w*)*)\s*{/, `$1 implements $2, ${name} {`)
+				.replace(
+					/(?<classDef>export class\s*\w*(?:\s*extends \w*)?)(?:\s*implements\s*)?(?<implements>\w*(?:,\s*\w*)*)\s*{/,
+					`$<classDef> implements $<implements>, ${name} {`
+				)
 				.replace('implements ,', 'implements')
 		);
 	}
@@ -184,7 +187,7 @@ export function addImport(tree: Tree, fileName: string, name: string, pkg: strin
 		tree.overwrite(
 			fileName,
 			new RegExp(`import\\s*{.*}\\s*from\\s*['"]${pkg}['"]`, 'm').test(content)
-				? content.replace(new RegExp(`import\\s*{(.*)}\\s*from\\s*['"]${pkg}['"]`), `import {$1, ${name}} from '${pkg}'`)
+				? content.replace(new RegExp(`import\\s*{(?<package>.*)}\\s*from\\s*['"]${pkg}['"]`), `import {$<package>, ${name}} from '${pkg}'`)
 				: `import {${name}} from '${pkg}';\n${content}`
 		);
 	}
@@ -229,12 +232,10 @@ function setOption(json: any, path: string[], value?: any): void {
 				json[option] = {};
 			}
 			setOption(json[option], path, value);
+		} else if (value) {
+			json[option] = value;
 		} else {
-			if (value) {
-				json[option] = value;
-			} else {
-				delete json[option];
-			}
+			delete json[option];
 		}
 	}
 }

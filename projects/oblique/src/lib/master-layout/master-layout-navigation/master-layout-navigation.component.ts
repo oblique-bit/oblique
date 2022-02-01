@@ -129,13 +129,13 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 
 	private refresh(): void {
 		if (this.nav) {
-			const scrollMode = this.masterLayout.navigation.scrollMode;
-			if (scrollMode !== ObEScrollMode.DISABLED) {
+			const {scrollMode} = this.masterLayout.navigation;
+			if (scrollMode === ObEScrollMode.DISABLED) {
+				this.isScrollable = false;
+			} else {
 				const childWidth = Array.from(this.nav.children).reduce((total, el: HTMLElement) => total + el.clientWidth, 0);
 				this.maxScroll = Math.max(0, -(this.nav.clientWidth - childWidth - 2 * ObMasterLayoutNavigationComponent.buttonWidth));
 				this.isScrollable = scrollMode === ObEScrollMode.ENABLED ? true : childWidth > this.nav.clientWidth;
-			} else {
-				this.isScrollable = false;
 			}
 			this.updateScroll(this.isScrollable ? 0 : -this.currentScroll);
 		}

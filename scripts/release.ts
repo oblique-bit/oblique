@@ -21,7 +21,7 @@ class Release {
 	}
 
 	private static splitVersion(version): Version {
-		const groups = version.match(/(?<version>\d+\.\d+\.\d+)(?:-(?<type>[^.]+)\.(?<typeNbr>\d+))?/).groups;
+		const {groups} = version.match(/(?<version>\d+\.\d+\.\d+)(?:-(?<type>[^.]+)\.(?<typeNbr>\d+))?/);
 		return {
 			version: groups?.version,
 			preVersionType: groups?.type,
@@ -46,9 +46,10 @@ class Release {
 	private static getVersionFromGit(versionNbr: string): string {
 		const current = /(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)/.exec(versionNbr).groups;
 		const commits = Release.execSync(`git log ${versionNbr}..HEAD --abbrev-commit`).toString();
-		return commits.indexOf('BREAKING CHANGE') > -1
-			? `${+current?.major + 1}.0.0`
-			: commits.indexOf('feat:') > -1 || commits.indexOf('feat(') > -1
+		if (commits.indexOf('BREAKING CHANGE') > -1) {
+			return `${+current?.major + 1}.0.0`;
+		}
+		return commits.indexOf('feat:') > -1 || commits.indexOf('feat(') > -1
 			? `${current?.major}.${+current?.minor + 1}.0`
 			: `${current?.major}.${current?.minor}.${+current?.patch + 1}`;
 	}
@@ -73,7 +74,7 @@ class Release {
 			const newLog: string = Release.fs
 				.readFileSync('CHANGELOG.md')
 				.toString()
-				.replace(/##(.*)\n/g, '#$1')
+				.replace(/##(?<title>.*)\n/g, '#$<title>')
 				.replace(/\n\n\n/g, '\n\n');
 			Release.fs.writeFileSync('CHANGELOG.md', newLog + changelog);
 		});

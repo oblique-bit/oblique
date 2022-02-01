@@ -48,10 +48,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 
 	@Input('obNavTreeFakeFocus')
 	public set focusInputElement(element: any) {
-		if (element && !(element instanceof ElementRef)) {
-			element = new ElementRef(element);
-		}
-		this.inputElement = element;
+		this.inputElement = element && !(element instanceof ElementRef) ? new ElementRef(element) : element;
 		this.initInputElement();
 	}
 
@@ -191,11 +188,11 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 	}
 
 	private findLink(element: ElementRef = null): ElementRef {
-		element = element || this.focusedElement;
-		if (!element || !element.nativeElement) {
+		const el = element || this.focusedElement;
+		if (!el || !el.nativeElement) {
 			return null;
 		}
-		const link = element.nativeElement.querySelector(ObNavTreeFakeFocusDirective.CSS_SELECTORS.ITEM_LINK);
+		const link = el.nativeElement.querySelector(ObNavTreeFakeFocusDirective.CSS_SELECTORS.ITEM_LINK);
 		return link ? new ElementRef(link) : null;
 	}
 

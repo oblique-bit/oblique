@@ -178,7 +178,7 @@ export class ObSelectableGroupDirective implements AfterContentInit {
 			const endFocused = this.selectables.findIndex(item => item === directive);
 			const start = Math.min(this.startFocused, endFocused);
 			const end = Math.max(this.startFocused, endFocused);
-			this.selectables.forEach((item, i) => (item.selected = !(i < start || i > end)));
+			this.selectables.forEach((item, index) => (item.selected = !(index < start || index > end)));
 		} else {
 			this.startFocused = undefined;
 			this.selectables.forEach(item => (item.selected = false));

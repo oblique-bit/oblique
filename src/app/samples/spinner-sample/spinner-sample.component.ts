@@ -16,13 +16,10 @@ export class SpinnerSampleComponent {
 	}
 
 	toggleSpinner(): void {
-		switch (this.spinnerVisible) {
-			case false:
-				this.spinnerService.activate(this.channel);
-				break;
-			case true:
-				this.spinnerService.deactivate(this.channel);
-				break;
+		if (this.spinnerVisible) {
+			this.spinnerService.activate(this.channel);
+		} else {
+			this.spinnerService.deactivate(this.channel);
 		}
 		if (this.channel === 'default') {
 			this.window.setTimeout(() => this.spinnerService.deactivate(this.channel), 5000);
