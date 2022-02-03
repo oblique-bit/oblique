@@ -8,6 +8,12 @@ const mock = (): Partial<Storage> => {
 	};
 };
 
+/* eslint-disable @typescript-eslint/no-empty-function */
+console.error = jest.fn().mockImplementation(() => {});
+console.warn = jest.fn().mockImplementation(() => {});
+console.info = jest.fn().mockImplementation(() => {});
+/* eslint-enable @typescript-eslint/no-empty-function */
+
 Object.defineProperty(window, 'localStorage', {value: mock()});
 Object.defineProperty(window, 'sessionStorage', {value: mock()});
 Object.defineProperty(window, 'scrollIntoView', {value: mock()});
