@@ -72,7 +72,8 @@ export {
 	ObEScrollMode,
 	ObIMasterLayoutEvent,
 	ObEMasterLayoutEventValues,
-	ObINavigationLink
+	ObINavigationLink,
+	ObIJumpLink
 } from './lib/master-layout/master-layout.module';
 export {
 	ObMultiselectComponent,
