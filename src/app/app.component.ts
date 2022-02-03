@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
-import {ObINavigationLink, ObISearchWidgetItem} from '@oblique/oblique';
+import {ObIJumpLink, ObINavigationLink, ObISearchWidgetItem} from '@oblique/oblique';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {ObIJumpLink} from 'projects/oblique/src/lib/master-layout/master-layout.model';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
 import {FONTS, THEMES, ThemeService} from './common/theme.service';
 
