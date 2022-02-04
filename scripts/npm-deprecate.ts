@@ -37,7 +37,9 @@ class NpmDeprecate {
 	}
 
 	private static removeNextTag(): void {
-		execSync(`npm dist-tag rm @oblique/oblique next`);
+		if (execSync(`npm dist-tag`).toString().includes('next')) {
+			execSync(`npm dist-tag rm @oblique/oblique next`);
+		}
 	}
 }
 
