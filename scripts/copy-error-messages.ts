@@ -1,14 +1,11 @@
-class CopyErrorMessages {
-	private static readonly fs = require('fs');
-	private static readonly path = require('path');
+import {readFileSync, readdirSync, writeFileSync} from 'fs';
+import path from 'path';
 
+class CopyErrorMessages {
 	static perform(): void {
-		const basePath = CopyErrorMessages.path.join('projects', 'oblique', 'src', 'assets', 'i18n');
-		const messagePath = CopyErrorMessages.path.join('projects', 'oblique', 'src', 'lib', 'error-messages', 'error-messages.description.html');
-		CopyErrorMessages.fs.writeFileSync(
-			messagePath,
-			CopyErrorMessages.adaptMessages(CopyErrorMessages.getTranslations(basePath), CopyErrorMessages.fs.readFileSync(messagePath).toString())
-		);
+		const basePath = path.join('projects', 'oblique', 'src', 'assets', 'i18n');
+		const messagePath = path.join('projects', 'oblique', 'src', 'lib', 'error-messages', 'error-messages.description.html');
+		writeFileSync(messagePath, CopyErrorMessages.adaptMessages(CopyErrorMessages.getTranslations(basePath), readFileSync(messagePath).toString()));
 	}
 
 	private static adaptMessages(translations: Record<string, string>, messages: string): string {
@@ -24,10 +21,9 @@ class CopyErrorMessages {
 
 	private static getTranslations(basePath: string): Record<string, string> {
 		const translations = {};
-		CopyErrorMessages.fs.readdirSync(basePath).forEach(file => {
+		readdirSync(basePath).forEach(file => {
 			const lang = /oblique-(?<lang>[a-z]{2})\.json/.exec(file)?.groups?.lang?.toUpperCase();
-			translations[lang] = CopyErrorMessages.fs
-				.readFileSync(CopyErrorMessages.path.join(basePath, file))
+			translations[lang] = readFileSync(path.join(basePath, file))
 				.toString()
 				.split('\n')
 				.filter(line => line.indexOf('"i18n.validation') > 0)

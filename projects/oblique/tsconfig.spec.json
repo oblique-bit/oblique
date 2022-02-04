@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "esModuleInterop": true,
+    "module": "esnext",
     "types": ["jest", "node"]
   },
   "files": ["src/test.ts"],
