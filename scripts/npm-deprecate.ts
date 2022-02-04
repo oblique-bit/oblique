@@ -23,7 +23,7 @@ class NpmDeprecate {
 	}
 
 	private static login(): void {
-		if (execSync(`npm whoami`).toString() !== 'oblique') {
+		if (execSync(`npm whoami`).toString().trim() !== 'oblique') {
 			execSync('npm login');
 		}
 	}
