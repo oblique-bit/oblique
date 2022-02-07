@@ -38,23 +38,6 @@
 			</ul>
 		</div>
 		<div class="ob-master-layout-header-controls">
-			<h2 class="ob-screen-reader-only" id="ob-language-change">{{ "i18n.oblique.header.languages.title" | translate }}</h2>
-			<ng-content select="[obLocales]" *ngIf="!languages.length"></ng-content>
-			<ul aria-labelledby="ob-language-change" class="ob-header-controls ob-header-locale" *ngIf="languages.length > 1">
-				<li class="ob-control-item" *ngFor="let language of languages">
-					<button
-						type="button"
-						class="ob-control-locale"
-						obMasterLayoutHeaderToggle
-						(click)="changeLang(language.code)"
-						[class.active]="isLangActive(language.code)"
-						[attr.id]="language.id"
-						[attr.aria-current]="isLangActive(language.code) ? true : undefined"
-					>
-						{{ language.code.toUpperCase() }}
-					</button>
-				</li>
-			</ul>
 			<ng-content select="[obHeaderCustomControl]"></ng-content>
 			<ng-container *ngIf="templates.length">
 				<h2 class="ob-screen-reader-only">{{ "i18n.oblique.header.controls.title" | translate }}</h2>
@@ -64,6 +47,23 @@
 					</li>
 				</ul>
 			</ng-container>
+			<h2 class="ob-screen-reader-only" id="ob-language-change">{{ "i18n.oblique.header.languages.title" | translate }}</h2>
+			<ng-content *ngIf="!languages.length" select="[obLocales]"></ng-content>
+			<ul *ngIf="languages.length > 1" aria-labelledby="ob-language-change" class="ob-header-controls ob-header-locale">
+				<li *ngFor="let language of languages" class="ob-control-item">
+					<button
+						(click)="changeLang(language.code)"
+						[attr.aria-current]="isLangActive(language.code) ? true : undefined"
+						[attr.id]="language.id"
+						[class.active]="isLangActive(language.code)"
+						class="ob-control-locale"
+						obMasterLayoutHeaderToggle
+						type="button"
+					>
+						{{ language.code.toUpperCase() }}
+					</button>
+				</li>
+			</ul>
 		</div>
 	</ng-container>
 </div>
