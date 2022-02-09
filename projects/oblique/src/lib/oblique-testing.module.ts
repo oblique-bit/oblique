@@ -4,6 +4,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslateService} from './_mocks/mock-translate.service';
 import {ObMockTranslatePipe} from './_mocks/mock-translate.pipe';
 
+import {ObMockAuthenticationModule} from './authentication/_mocks/mock-authentication-module';
 import {ObMockCollapseModule} from './collapse/_mocks/mock-collapse.module';
 import {ObMockColumnLayoutModule} from './column-layout/_mocks/mock-column-layout.module';
 import {ObMockSearchBoxModule} from './search-box/_mocks/mock-search-box.module';
@@ -39,6 +40,7 @@ import {ObMockButtonModule} from './button/_mocks/mock-button.module';
 import {ObMockAlertModule} from './alert/_mocks/mock-alert.module';
 import {ObMockBreadcrumbModule} from './breadcrumb/_mocks/mock-breadcrumb.module';
 
+export {ObMockAuthenticationModule, ObMockAuthenticationConfigService, ObMockAuthenticationService} from './authentication/_mocks/mock-authentication-module';
 export {ObMockBreadcrumbModule, ObMockBreadcrumbComponent} from './breadcrumb/_mocks/mock-breadcrumb.module';
 export {ObMockButtonModule, ObMockButtonDirective} from './button/_mocks/mock-button.module';
 export {ObMockCollapseModule, ObMockCollapseComponent} from './collapse/_mocks/mock-collapse.module';
@@ -149,6 +151,7 @@ export {ObMockAlertModule, ObMockAlertComponent} from './alert/_mocks/mock-alert
 
 const MOCK_OBLIQUE_MODULES = [
 	ObMockAlertModule,
+	ObMockAuthenticationModule,
 	ObMockBreadcrumbModule,
 	ObMockButtonModule,
 	ObMockCollapseModule,

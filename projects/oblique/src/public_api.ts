@@ -2,6 +2,12 @@
  * Public API Surface of oblique
  */
 
+export {
+	ObAuthenticationModule,
+	ObAuthenticationService,
+	ObAuthenticationConfigService,
+	ObIResourceAccessRoles
+} from './lib/authentication/authentication.module';
 export {ObBreadcrumbModule, ObBreadcrumbComponent, ObTBreadcrumbConfig, ObBreadcrumbConfig} from './lib/breadcrumb/breadcrumb.module';
 export {ObButtonDirective, ObButtonModule} from './lib/button/button.module';
 export {
