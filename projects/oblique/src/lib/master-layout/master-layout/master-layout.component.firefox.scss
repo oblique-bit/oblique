@@ -1,0 +1,14 @@
+@use "../../../styles/scss/core/variables";
+
+// Firefox version from 12 to 88 falsely ignores the padding-bottom on element with an overflow. AS Firefox 89 has been released less than a year ago, a workaround
+// has been embedded in Oblique. The workaround will be removed with Oblique 10.
+// @see https://bugzilla.mozilla.org/show_bug.cgi?id=748518
+.ob-master-layout.ob-has-layout .ob-main-layout {
+	padding-bottom: 0;
+
+	&::after {
+		content: "";
+		display: block;
+		height: variables.$ob-spacing-default;
+	}
+}
