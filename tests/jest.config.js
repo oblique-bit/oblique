@@ -13,8 +13,7 @@ module.exports = {
 			}
 		}
 	},
-	coveragePathIgnorePatterns: ['jestGlobalMocks.ts'],
-
+	coveragePathIgnorePatterns: ['jestGlobalMocks.ts', '_mocks', 'assets'],
 	coverageDirectory: '<rootDir>/coverage/sonarQube',
 	testResultsProcessor: 'jest-sonar-reporter',
 	collectCoverage: true,
