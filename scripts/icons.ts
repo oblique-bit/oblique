@@ -1,18 +1,17 @@
-class Icons {
-	private static readonly fs = require('fs');
-	private static readonly path = require('path');
+import {readFileSync, readdirSync, writeFileSync} from 'fs';
+import path from 'path';
 
+class Icons {
 	static perform(): void {
-		const SVGs = Icons.getSVGs(Icons.path.join('projects', 'oblique', 'icons'));
-		Icons.writeIconSet(Icons.path.join('projects', 'oblique', 'src', 'assets', 'obliqueIcons.svg'), SVGs);
-		Icons.writeIconSetTS(Icons.path.join('projects', 'oblique', 'src', 'assets', 'oblique-icons.ts'), SVGs);
-		Icons.writeIconCSS(Icons.path.join('projects', 'oblique', 'src', 'styles', 'scss', 'oblique-icons.scss'), SVGs);
-		Icons.writeIconEnum(Icons.path.join('projects', 'oblique', 'src', 'lib', 'icon', 'icon.model.ts'), SVGs);
+		const SVGs = Icons.getSVGs(path.join('projects', 'oblique', 'icons'));
+		Icons.writeIconSet(path.join('projects', 'oblique', 'src', 'assets', 'obliqueIcons.svg'), SVGs);
+		Icons.writeIconSetTS(path.join('projects', 'oblique', 'src', 'assets', 'oblique-icons.ts'), SVGs);
+		Icons.writeIconCSS(path.join('projects', 'oblique', 'src', 'styles', 'scss', 'oblique-icons.scss'), SVGs);
+		Icons.writeIconEnum(path.join('projects', 'oblique', 'src', 'lib', 'icon', 'icon.model.ts'), SVGs);
 	}
 
 	private static getSVGs(iconsPath: string): string[] {
-		return Icons.fs
-			.readdirSync(iconsPath)
+		return readdirSync(iconsPath)
 			.sort((first, second) => first.toLowerCase().localeCompare(second.toLowerCase()))
 			.map(fileName => Icons.readIconFile(fileName, iconsPath));
 	}
@@ -22,8 +21,7 @@ class Icons {
 			.replace(/(?<first>[a-z])(?<second>[A-Z])/g, '$<first>-$<second>')
 			.toLowerCase()
 			.replace('.svg', '');
-		return Icons.fs
-			.readFileSync(Icons.path.join(iconsPath, fileName))
+		return readFileSync(path.join(iconsPath, fileName))
 			.toString()
 			.replace(/\n*/g, '')
 			.replace(/#171717/g, 'currentColor')
@@ -33,12 +31,12 @@ class Icons {
 
 	private static writeIconSet(filePath: string, SVGs: string[]): void {
 		const iconSet = ['<svg>', '\t<defs>', ...SVGs.map(svg => `\t\t${svg}`), '\t</defs>', '</svg>'];
-		Icons.fs.writeFileSync(filePath, iconSet.join('\n'));
+		writeFileSync(filePath, iconSet.join('\n'));
 	}
 
 	private static writeIconSetTS(filePath: string, SVGs: string[]): void {
 		const iconSet = ['<svg>', '<defs>', ...SVGs, '</defs>', '</svg>'];
-		Icons.fs.writeFileSync(filePath, `export const iconSet =\n\t'${iconSet.join('')}';\n`);
+		writeFileSync(filePath, `export const iconSet =\n\t'${iconSet.join('')}';\n`);
 	}
 
 	private static writeIconCSS(filePath: string, SVGs: string[]): void {
@@ -48,15 +46,14 @@ class Icons {
 				svg => `.ob-${/(?<=id=")[a-z-]*(?=")/.exec(svg)[0]}::before {\n\tcontent: url('data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}');\n}`
 			)
 		];
-		Icons.fs.writeFileSync(filePath, iconCSS.join('\n\n'));
+		writeFileSync(filePath, iconCSS.join('\n\n'));
 	}
 
 	private static writeIconEnum(filePath: string, SVGs: string[]): void {
 		const iconNames = SVGs.map(svg => /(?<=id=")[a-z-]*(?=")/.exec(svg).toString()).map(name => `${name.toUpperCase().replace(/-/g, '_')} = '${name}'`);
-		Icons.fs.writeFileSync(
+		writeFileSync(
 			filePath,
-			Icons.fs
-				.readFileSync(filePath)
+			readFileSync(filePath)
 				.toString()
 				.replace(/(?<=export enum ObEIcon {\r?\n).*(?=})/s, `${iconNames.map(name => `\t${name}`).join(',\n')}\n`)
 		);

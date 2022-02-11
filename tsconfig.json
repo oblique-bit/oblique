@@ -3,9 +3,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "importHelpers": true,
-    "module": "esnext",
+    "module": "commonjs",
     "sourceMap": true,
     "declaration": false,
+    "esModuleInterop": true,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -15,6 +16,7 @@
     "paths": {
       "@oblique/oblique": ["projects/oblique/src/public_api"],
       "oblique/*": ["dist/oblique/*"]
-    }
+    },
+    "resolveJsonModule": true
   }
 }
