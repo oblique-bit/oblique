@@ -1,3 +1,13 @@
+# [8.0.1](https://github.com/oblique-bit/oblique/compare/8.0.0...8.0.1) (2022-02-11)
+
+## Bug Fixes
+
+- **master-layout:** ensure `padding-bottom` on `main` is correctly applied on firefox ([052a279](https://github.com/oblique-bit/oblique/commit/052a279fd240aa438b1ca3b2a897ab5d751d5869))
+- **master-layout:** export `ObIJumpLink` interface ([8c04324](https://github.com/oblique-bit/oblique/commit/8c043249a207bb4d6aaedaff1bfe9544a62d6ec8))
+- **master-layout:** for accessibility reasons language is moved to right side of header-controls ([33d0683](https://github.com/oblique-bit/oblique/commit/33d0683f7bc9d4e95529110bc54de042be077e0b))
+- **material:** support browser font-resize ([d4aeac1](https://github.com/oblique-bit/oblique/commit/d4aeac18acf2e0bebbefc7fd934618c4575bb58a))
+- **schematics:** remove unnecessary js-files ([feae54e](https://github.com/oblique-bit/oblique/commit/feae54ef9caa9b0a6784e9df4f75f56e01d05751))
+
 # [8.0.0](https://github.com/oblique-bit/oblique/compare/7.1.2...8.0.0) (2022-01-25)
 
 ## Bug Fixes
