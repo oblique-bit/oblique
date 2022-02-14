@@ -31,8 +31,8 @@ describe('IconComponent', () => {
 		});
 
 		describe('fontAwesome aliases', () => {
-			it('should have 11 aliases ', () => {
-				expect(Object.keys(component.fontAwesomeAliases).length).toBe(11);
+			it('should have 12 aliases ', () => {
+				expect(Object.keys(component.fontAwesomeAliases).length).toBe(12);
 			});
 
 			it('should map cancel ', () => {
@@ -53,6 +53,10 @@ describe('IconComponent', () => {
 
 			it('should map chevron-right ', () => {
 				expect(component.fontAwesomeAliases['chevron-right']).toBe('fa-angle-right');
+			});
+
+			it('chevron-small-right', () => {
+				expect(component.fontAwesomeAliases['chevron-small-right']).toBe('fa-angle-right');
 			});
 
 			it('should map chevron-up ', () => {

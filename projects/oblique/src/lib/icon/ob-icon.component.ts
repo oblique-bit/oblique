@@ -14,6 +14,7 @@ export class ObIconComponent {
 		'chevron-down': 'fa-angle-down',
 		'chevron-left': 'fa-angle-left',
 		'chevron-right': 'fa-angle-right',
+		'chevron-small-right': 'fa-angle-right',
 		'chevron-up': 'fa-angle-up',
 		info: 'fa-info',
 		refresh: 'fa-spinner',
