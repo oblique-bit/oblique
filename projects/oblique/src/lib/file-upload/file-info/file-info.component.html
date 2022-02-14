@@ -27,13 +27,13 @@
 				matTooltip="{{ 'i18n.oblique.file-upload.selected.remove' | translate }}"
 				(click)="delete(selection.selected)"
 			>
-				<mat-icon svgIcon="trash"></mat-icon>
+				<ob-icon icon="trash"></ob-icon>
 				<span class="ob-screen-reader-only">{{ "i18n.oblique.file-upload.selected.remove" | translate }}</span>
 			</button>
 		</th>
 		<td mat-cell *matCellDef="let file">
 			<button mat-icon-button obButton="secondary" matTooltip="{{ 'i18n.oblique.file-upload.remove' | translate }}" (click)="delete([file])">
-				<mat-icon svgIcon="trash"></mat-icon>
+				<ob-icon icon="trash"></ob-icon>
 				<span class="ob-screen-reader-only">{{ "i18n.oblique.file-upload.remove" | translate }}</span>
 			</button>
 		</td>

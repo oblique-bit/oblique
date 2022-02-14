@@ -16,9 +16,12 @@ export class ObIconComponent {
 		'chevron-right': 'fa-angle-right',
 		'chevron-small-right': 'fa-angle-right',
 		'chevron-up': 'fa-angle-up',
+		'cloud-upload': 'fa-cloud-upload-alt',
 		info: 'fa-info',
 		refresh: 'fa-spinner',
+		repeat: 'fa-redo',
 		search: 'fa-search',
+		trash: 'fa-trash-alt',
 		'universal-access': 'fa-universal-access',
 		warning: 'fa-exclamation'
 	};
