@@ -18,8 +18,8 @@ export class ObIconComponent {
 		info: 'fa-info',
 		refresh: 'fa-spinner',
 		search: 'fa-search',
-		warning: 'fa-exclamation',
-		wheelchair: 'fa-universal-access'
+		'universal-access': 'fa-universal-access',
+		warning: 'fa-exclamation'
 	};
 
 	constructor(@Optional() @Inject(ObUseObliqueIcons) public readonly useObliqueIcons: boolean) {}

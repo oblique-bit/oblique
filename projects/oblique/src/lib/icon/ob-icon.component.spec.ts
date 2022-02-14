@@ -67,12 +67,12 @@ describe('IconComponent', () => {
 				expect(component.fontAwesomeAliases.search).toBe('fa-search');
 			});
 
-			it('should map warning ', () => {
-				expect(component.fontAwesomeAliases.warning).toBe('fa-exclamation');
+			it('should map universal-access', () => {
+				expect(component.fontAwesomeAliases['universal-access']).toBe('fa-universal-access');
 			});
 
-			it('should map wheelchair ', () => {
-				expect(component.fontAwesomeAliases.wheelchair).toBe('fa-universal-access');
+			it('should map warning ', () => {
+				expect(component.fontAwesomeAliases.warning).toBe('fa-exclamation');
 			});
 		});
 	});
