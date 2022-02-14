@@ -114,6 +114,7 @@
 		display: block;
 		flex: 1;
 		font-size: variables.$ob-font-size-xl;
+		line-height: variables.$ob-logo-height-collapsed;
 		font-weight: 300;
 		padding-left: variables.$ob-spacing-default;
 		border-left: 1px solid variables.$ob-gray-lighter;
