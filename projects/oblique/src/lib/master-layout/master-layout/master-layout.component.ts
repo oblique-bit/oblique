@@ -25,9 +25,9 @@ import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {appVersion} from '../../version';
 import {WINDOW} from '../../utilities';
-import {ObEMasterLayoutEventValues, ObIDynamicJumpLink, ObINavigationLink} from '../master-layout.model';
+import {ObEMasterLayoutEventValues, ObIDynamicJumpLink, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
-import {Subject, merge} from 'rxjs';
+import {Subject} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {ObUseObliqueIcons} from '../../icon/icon.model';
 
@@ -39,7 +39,8 @@ import {ObUseObliqueIcons} from '../../icon/icon.model';
 		'./master-layout.component.scss',
 		'./master-layout.component-cover.scss',
 		'./master-layout.component-offcanvas.scss',
-		'./master-layout.component-accessibility.scss'
+		'./master-layout.component-accessibility.scss',
+		'./master-layout.component.firefox.scss'
 	],
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-master-layout', 'ob-version': appVersion}
@@ -80,14 +81,21 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 		@Inject(DOCUMENT) private readonly document: any,
 		@Inject(WINDOW) private readonly window: Window
 	) {
-		this.propertyChanges();
+		this.layoutHasCoverChange();
+		this.layoutHasDefaultLayoutChange();
+		this.layoutHasMainNavigationChange();
+		this.layoutHasMaxWidthChange();
+		this.layoutHasOffCanvasChange();
+		this.layoutIsMenuOpenedChange();
+		this.footerIsStickyChange();
+		this.headerIsStickyChange();
 		this.focusFragment();
 		this.focusOffCanvasClose();
 	}
 
 	@HostListener('mousedown')
 	@HostListener('keydown')
-	removeOutline() {
+	removeOutline(): void {
 		this.outline = false;
 	}
 
@@ -97,7 +105,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 	@HostListener('keydown.arrowDown')
 	@HostListener('keydown.arrowRight')
 	@HostListener('keydown.arrowLeft')
-	addOutline() {
+	addOutline(): void {
 		this.outline = true;
 	}
 
@@ -118,7 +126,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 		this.updateJumpLinks(!this.noNavigation);
 	}
 
-	ngAfterViewInit() {
+	ngAfterViewInit(): void {
 		// to avoid a ExpressionHasBeenChangedAfterItHasBeenCheckedError
 		setTimeout(() => (this.scrollTarget = this.getScrollTarget()));
 	}
@@ -135,52 +143,89 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 		if (this.isHeaderSticky !== this.isFooterSticky) {
 			return this.wrapper.nativeElement;
 		}
-		if (!this.isHeaderSticky && !this.isFooterSticky) {
-			return this.window;
-		}
+		return this.window;
 	}
 
 	private updateJumpLinks(hasNavigation: boolean): void {
 		const staticJumpLinks = hasNavigation && this.navigation.length ? 3 : 2;
-		this.jumpLinks = this.jumpLinks.map((jumpLink, i) => ({...jumpLink, accessKey: i + staticJumpLinks}));
+		this.jumpLinks = this.jumpLinks.map((jumpLink, index) => ({...jumpLink, accessKey: index + staticJumpLinks}));
 	}
 
-	private propertyChanges() {
-		merge(this.masterLayout.layout.configEvents$, this.masterLayout.header.configEvents$, this.masterLayout.footer.configEvents$)
-			.pipe(takeUntil(this.unsubscribe))
-			.subscribe(event => {
-				switch (event.name) {
-					case ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION:
-						this.noNavigation = !event.value;
-						break;
-					case ObEMasterLayoutEventValues.LAYOUT_HAS_COVER:
-						this.hasCover = event.value;
-						break;
-					case ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS:
-						this.hasOffCanvas = event.value;
-						break;
-					case ObEMasterLayoutEventValues.IS_MENU_OPENED:
-						this.isMenuOpened = event.value;
-						break;
-					case ObEMasterLayoutEventValues.LAYOUT_HAS_DEFAULT_LAYOUT:
-						this.hasLayout = event.value;
-						break;
-					case ObEMasterLayoutEventValues.LAYOUT_HAS_MAX_WIDTH:
-						this.hasMaxWidth = event.value;
-						break;
-					case ObEMasterLayoutEventValues.HEADER_IS_STICKY:
-						this.isHeaderSticky = event.value;
-						this.scrollTarget = this.getScrollTarget();
-						break;
-					case ObEMasterLayoutEventValues.FOOTER_IS_STICKY:
-						this.isFooterSticky = event.value;
-						this.scrollTarget = this.getScrollTarget();
-						break;
-				}
-			});
+	private layoutHasMainNavigationChange(): void {
+		this.masterLayout.layout.configEvents$
+			.pipe(
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(event => (this.noNavigation = !event.value));
 	}
 
-	private focusFragment() {
+	private layoutHasCoverChange(): void {
+		this.masterLayout.layout.configEvents$
+			.pipe(
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_COVER),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(event => (this.hasCover = event.value));
+	}
+
+	private layoutHasOffCanvasChange(): void {
+		this.masterLayout.layout.configEvents$
+			.pipe(
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(event => (this.hasOffCanvas = event.value));
+	}
+
+	private layoutIsMenuOpenedChange(): void {
+		this.masterLayout.layout.configEvents$
+			.pipe(
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.IS_MENU_OPENED),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(event => (this.isMenuOpened = event.value));
+	}
+
+	private layoutHasDefaultLayoutChange(): void {
+		this.masterLayout.layout.configEvents$
+			.pipe(
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_DEFAULT_LAYOUT),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(event => (this.hasLayout = event.value));
+	}
+
+	private layoutHasMaxWidthChange(): void {
+		this.masterLayout.layout.configEvents$
+			.pipe(
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_MAX_WIDTH),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(event => (this.hasMaxWidth = event.value));
+	}
+
+	private headerIsStickyChange(): void {
+		this.masterLayout.header.configEvents$
+			.pipe(
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_IS_STICKY),
+				tap(() => (this.scrollTarget = this.getScrollTarget())),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(event => (this.isHeaderSticky = event.value));
+	}
+
+	private footerIsStickyChange(): void {
+		this.masterLayout.footer.configEvents$
+			.pipe(
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.FOOTER_IS_STICKY),
+				tap(() => (this.scrollTarget = this.getScrollTarget())),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(event => (this.isFooterSticky = event.value));
+	}
+
+	private focusFragment(): void {
 		this.router.events
 			.pipe(
 				filter(evt => evt instanceof NavigationEnd),
@@ -205,7 +250,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 			.reduce((params, parameter) => ({...params, [parameter[0]]: parameter[1]}), {});
 	}
 
-	private focusOffCanvasClose() {
+	private focusOffCanvasClose(): void {
 		this.offCanvasService.opened
 			.pipe(
 				takeUntil(this.unsubscribe),

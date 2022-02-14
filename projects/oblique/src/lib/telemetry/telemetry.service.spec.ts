@@ -33,14 +33,14 @@ describe('ObTelemetryService', () => {
 		});
 
 		it('should not have a telemetryRecord property', () => {
-			// @ts-ignore
+			// @ts-expect-error
 			expect(service.telemetryRecord).toBeUndefined();
 		});
 
 		describe('record', () => {
 			it('should be ignored', () => {
 				service.record('test');
-				// @ts-ignore
+				// @ts-expect-error
 				expect(service.telemetryRecord).toBeUndefined();
 			});
 		});
@@ -70,28 +70,28 @@ describe('ObTelemetryService', () => {
 
 		describe('telemetryRecord', () => {
 			it('should be defined', () => {
-				// @ts-ignore
+				// @ts-expect-error
 				expect(service.telemetryRecord).toBeDefined();
 			});
 			it('should have Material theme', () => {
-				// @ts-ignore
+				// @ts-expect-error
 				expect(service.telemetryRecord.record.obliqueTheme).toBe('Material');
 			});
 		});
 
 		describe('record', () => {
 			it('should add module', () => {
-				// @ts-ignore
+				// @ts-expect-error
 				jest.spyOn(service.telemetryRecord, 'addModule');
 				service.record('test');
-				// @ts-ignore
+				// @ts-expect-error
 				expect(service.telemetryRecord.addModule).toHaveBeenCalledWith('test');
 			});
 
 			it('should add a module only once', () => {
 				service.record('test');
 				service.record('test');
-				// @ts-ignore
+				// @ts-expect-error
 				expect(service.telemetryRecord.record.obliqueModuleNames.length).toBe(1);
 			});
 		});
@@ -99,35 +99,35 @@ describe('ObTelemetryService', () => {
 		describe('sendRecord', () => {
 			describe('with obsolete records', () => {
 				beforeEach(() => {
-					// @ts-ignore
+					// @ts-expect-error
 					jest.spyOn(service.telemetryRecord, 'isRecordToBeSent').mockReturnValue(true);
 				});
 
 				it('should send data to the backend', () => {
 					jest.spyOn(http, 'post').mockReturnValue(EMPTY);
-					// @ts-ignore
+					// @ts-expect-error
 					service.sendRecord();
 					expect(http.post).toHaveBeenCalled();
 				});
 
 				it('should store the record', () => {
-					// @ts-ignore
+					// @ts-expect-error
 					jest.spyOn(service.telemetryRecord, 'storeRecord');
-					// @ts-ignore
+					// @ts-expect-error
 					service.sendRecord();
-					// @ts-ignore
+					// @ts-expect-error
 					expect(service.telemetryRecord.storeRecord).toHaveBeenCalled();
 				});
 
 				it('should send recorded modules along with project data', () => {
-					// @ts-ignore
+					// @ts-expect-error
 					jest.spyOn(service, 'sendData');
 					service.record('test1');
 					service.record('test1');
 					service.record('test2');
-					// @ts-ignore
+					// @ts-expect-error
 					service.sendRecord();
-					// @ts-ignore
+					// @ts-expect-error
 					expect(service.sendData).toHaveBeenCalledWith({
 						applicationHomepage: undefined,
 						applicationName: 'Unknown project name',
@@ -143,23 +143,23 @@ describe('ObTelemetryService', () => {
 
 		describe('with unchanged data', () => {
 			beforeEach(() => {
-				// @ts-ignore
+				// @ts-expect-error
 				jest.spyOn(service.telemetryRecord, 'isRecordToBeSent').mockReturnValue(false);
 			});
 
 			it('should not send data to the backend', () => {
 				jest.spyOn(http, 'post').mockReturnValue(EMPTY);
-				// @ts-ignore
+				// @ts-expect-error
 				service.sendRecord();
 				expect(http.post).not.toHaveBeenCalled();
 			});
 
 			it('should not store the record', () => {
-				// @ts-ignore
+				// @ts-expect-error
 				jest.spyOn(service.telemetryRecord, 'storeRecord');
-				// @ts-ignore
+				// @ts-expect-error
 				service.sendRecord();
-				// @ts-ignore
+				// @ts-expect-error
 				expect(service.telemetryRecord.storeRecord).not.toHaveBeenCalled();
 			});
 		});
@@ -180,11 +180,11 @@ describe('ObTelemetryService', () => {
 
 		describe('telemetryRecord', () => {
 			it('should be defined', () => {
-				// @ts-ignore
+				// @ts-expect-error
 				expect(service.telemetryRecord).toBeDefined();
 			});
 			it('should have Material theme', () => {
-				// @ts-ignore
+				// @ts-expect-error
 				expect(service.telemetryRecord.record.obliqueTheme).toBe('Bootstrap');
 			});
 		});
@@ -205,11 +205,11 @@ describe('ObTelemetryService', () => {
 
 		describe('telemetryRecord', () => {
 			it('should be defined', () => {
-				// @ts-ignore
+				// @ts-expect-error
 				expect(service.telemetryRecord).toBeDefined();
 			});
 			it('should have an unknown theme', () => {
-				// @ts-ignore
+				// @ts-expect-error
 				expect(service.telemetryRecord.record.obliqueTheme).toBe('Unknown');
 			});
 		});

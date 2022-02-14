@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, forwardRef} from '@angular/core';
+import {AfterViewInit, Component, Input} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
 import {ObParentFormDirective} from './parent-form.directive';
 
@@ -7,16 +7,8 @@ import {ObParentFormDirective} from './parent-form.directive';
 	exportAs: 'obNestedForm',
 	templateUrl: './nested-form.component.html',
 	providers: [
-		{
-			provide: NG_VALUE_ACCESSOR,
-			multi: true,
-			useExisting: forwardRef(() => ObNestedFormComponent)
-		},
-		{
-			provide: NG_VALIDATORS,
-			multi: true,
-			useExisting: forwardRef(() => ObNestedFormComponent)
-		}
+		{provide: NG_VALUE_ACCESSOR, multi: true, useExisting: ObNestedFormComponent},
+		{provide: NG_VALIDATORS, multi: true, useExisting: ObNestedFormComponent}
 	],
 	host: {class: 'ob-nested-form'}
 })
@@ -25,7 +17,7 @@ export class ObNestedFormComponent implements ControlValueAccessor, Validator, A
 
 	constructor(private readonly parent: ObParentFormDirective) {}
 
-	ngAfterViewInit() {
+	ngAfterViewInit(): void {
 		this.parent.submit$.subscribe(() => this.nestedForm.markAllAsTouched());
 		this.parent.reset$.subscribe(() => this.nestedForm.reset());
 	}
@@ -39,12 +31,19 @@ export class ObNestedFormComponent implements ControlValueAccessor, Validator, A
 
 	setDisabledState(isDisabled: boolean): void {
 		// eslint-disable-next-line no-unused-expressions
-		isDisabled ? this.nestedForm.disable() : this.nestedForm.enable();
+		if (isDisabled) {
+			this.nestedForm.disable();
+		} else {
+			this.nestedForm.enable();
+		}
 	}
 
 	writeValue(obj: {field1?: string; field2?: string}): void {
-		// eslint-disable-next-line no-unused-expressions
-		obj ? this.nestedForm.patchValue(obj) : this.nestedForm.reset();
+		if (obj) {
+			this.nestedForm.patchValue(obj);
+		} else {
+			this.nestedForm.reset();
+		}
 	}
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars

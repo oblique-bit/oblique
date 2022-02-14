@@ -35,7 +35,7 @@ export class ObCollapseComponent {
 	@Input() iconPosition: 'left' | 'right' | 'justified' | 'none' = 'left';
 	@Output() readonly activeChange = new EventEmitter<boolean>();
 
-	get active() {
+	get active(): boolean {
 		return this.isActive;
 	}
 

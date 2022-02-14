@@ -5,7 +5,7 @@
 @use "mixins/button";
 
 .dropdown-menu {
-	box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 12px rgba(0, 0, 0, 10%);
 
 	.dropdown-header {
 		font-weight: bold;
@@ -35,6 +35,14 @@
 	}
 
 	@at-root .show > #{selector.append(".btn-secondary", &)} {
-		@include button.ob-btn-variant(core-variables.$ob-default, core-variables.$ob-gray-extra-light, core-variables.$ob-gray, core-variables.$ob-default, core-variables.$ob-gray-lighter, core-variables.$ob-gray-darker, core-variables.$ob-default);
+		@include button.ob-btn-variant(
+			core-variables.$ob-default,
+			core-variables.$ob-gray-extra-light,
+			core-variables.$ob-gray,
+			core-variables.$ob-default,
+			core-variables.$ob-gray-lighter,
+			core-variables.$ob-gray-darker,
+			core-variables.$ob-default
+		);
 	}
 }

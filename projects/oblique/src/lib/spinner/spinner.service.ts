@@ -15,14 +15,14 @@ export class ObSpinnerService {
 
 	public readonly events$: Observable<ObISpinnerEvent>;
 
-	private calls: {[key: string]: number} = {};
+	private calls: Record<string, number> = {};
 	private readonly events: Subject<ObISpinnerEvent> = new Subject<ObISpinnerEvent>();
 
 	constructor() {
 		this.events$ = this.events.asObservable();
 	}
 
-	public activate(channel = ObSpinnerService.CHANNEL) {
+	public activate(channel = ObSpinnerService.CHANNEL): void {
 		if (this.increase(channel) === 1) {
 			this.broadcast({
 				active: true,
@@ -31,7 +31,7 @@ export class ObSpinnerService {
 		}
 	}
 
-	public deactivate(channel = ObSpinnerService.CHANNEL) {
+	public deactivate(channel = ObSpinnerService.CHANNEL): void {
 		if (this.decrease(channel) === 0) {
 			this.broadcast({
 				active: false,

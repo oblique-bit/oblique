@@ -11,7 +11,7 @@ export class GlobalEventsSampleComponent implements AfterViewInit {
 
 	constructor(public readonly globalEvents: ObGlobalEventsService) {}
 
-	ngAfterViewInit() {
+	ngAfterViewInit(): void {
 		this.globalEvents.click$.pipe(obOutsideFilter(this.button.nativeElement)).subscribe(event => this.events.push(event.target));
 	}
 }

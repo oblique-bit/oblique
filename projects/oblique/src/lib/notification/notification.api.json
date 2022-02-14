@@ -22,27 +22,21 @@
           "name": "open",
           "text": "Adds & opens the specified notification.",
           "returns": "void",
-          "arguments": [
-            "notification: ObINotification"
-          ],
+          "arguments": ["notification: ObINotification"],
           "since": "2.0.0"
         },
         {
           "name": "close",
           "text": "Closes & removes the specified notification.",
           "returns": "void",
-          "arguments": [
-            "notification: ObINotification"
-          ],
+          "arguments": ["notification: ObINotification"],
           "since": "2.0.0"
         },
         {
           "name": "remove",
           "text": "Removes the specified notification without triggering a close animation.",
           "returns": "void",
-          "arguments": [
-            "notification: ObINotification"
-          ],
+          "arguments": ["notification: ObINotification"],
           "since": "2.0.0"
         },
         {
@@ -179,36 +173,28 @@
           "name": "info",
           "text": "Triggers an <b>info</b> notification. It takes either the notification's text or a full notification config object.",
           "returns": "ObINotification",
-          "arguments": [
-            "config: ObINotification | string"
-          ],
+          "arguments": ["config: ObINotification | string"],
           "since": "4.0.0"
         },
         {
           "name": "success",
           "text": "Triggers an <b>success</b> notification. It takes either the notification's text or a full notification config object.",
           "returns": "ObINotification",
-          "arguments": [
-            "config: ObINotification | string"
-          ],
+          "arguments": ["config: ObINotification | string"],
           "since": "4.0.0"
         },
         {
           "name": "warning",
           "text": "Triggers an <b>warning</b> notification. It takes either the notification's text or a full notification config object.",
           "returns": "ObINotification",
-          "arguments": [
-            "config: ObINotification | string"
-          ],
+          "arguments": ["config: ObINotification | string"],
           "since": "4.0.0"
         },
         {
           "name": "error",
           "text": "Triggers an <b>error</b> notification. It takes either the notification's text or a full notification config object.",
           "returns": "ObINotification",
-          "arguments": [
-            "config: ObINotification | string"
-          ],
+          "arguments": ["config: ObINotification | string"],
           "since": "4.0.0"
         },
         {
@@ -225,9 +211,7 @@
           "name": "clear",
           "text": "Clears all notifications displayed in the specified <code>channel</code>.",
           "returns": "void",
-          "arguments": [
-            "channel: string"
-          ],
+          "arguments": ["channel: string"],
           "since": "2.0.0"
         },
         {
@@ -316,11 +300,7 @@
         {
           "name": "$state",
           "text": "The internal state of the notification. Should not set manually",
-          "values": [
-            "in",
-            "in-first",
-            "out"
-          ],
+          "values": ["in", "in-first", "out"],
           "type": "string",
           "isOptional": true,
           "since": "2.0.0"

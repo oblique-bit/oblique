@@ -25,7 +25,7 @@ describe('NumberFormatDirective', () => {
 	let fixture: ComponentFixture<TestDefaultComponent>;
 	let element: DebugElement;
 
-	function createFixture(component) {
+	function createFixture(component): void {
 		fixture = TestBed.createComponent(component);
 		testComponent = fixture.componentInstance;
 		fixture.detectChanges();

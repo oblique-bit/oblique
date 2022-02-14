@@ -9,13 +9,11 @@ module.exports = {
 	globals: {
 		'ts-jest': {
 			diagnostics: {
-				pathRegex: /\.(spec|test)\.ts$/
+				pathRegex: /\.(?:spec|test)\.ts$/
 			}
 		}
 	},
-	coveragePathIgnorePatterns: [
-		"jestGlobalMocks.ts"
-	],
+	coveragePathIgnorePatterns: ['jestGlobalMocks.ts'],
 
 	coverageDirectory: '<rootDir>/coverage/sonarQube',
 	testResultsProcessor: 'jest-sonar-reporter',
@@ -35,5 +33,5 @@ module.exports = {
 				includeConsoleLog: true
 			}
 		]
-	],
+	]
 };

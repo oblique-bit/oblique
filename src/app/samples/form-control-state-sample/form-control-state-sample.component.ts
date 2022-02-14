@@ -5,17 +5,7 @@ import {ObNotificationService} from '@oblique/oblique';
 @Component({
 	selector: 'sc-form-control-state-sample',
 	templateUrl: './form-control-state-sample.component.html',
-	styles: [
-		`
-			.form-horizontal label {
-				text-align: right;
-			}
-
-			.card + .card {
-				margin-top: 2rem;
-			}
-		`
-	]
+	styleUrls: ['./form-control-state-sample.component.scss']
 })
 export class FormControlStateSampleComponent {
 	formData: FormGroup;
@@ -29,7 +19,7 @@ export class FormControlStateSampleComponent {
 				street: ['', [Validators.required, Validators.minLength(5)]],
 				number: ['', Validators.required]
 			}),
-			email: ['', Validators.pattern(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/)]
+			email: ['', Validators.pattern(/^\w+(?:[.-]?\w+)*@\w+(?:[.-]?\w+)*(?:\.\w{2,3})+$/)]
 		});
 	}
 

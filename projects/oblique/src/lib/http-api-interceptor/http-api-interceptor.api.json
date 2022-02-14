@@ -31,12 +31,7 @@
         {
           "name": "api.notification.severity",
           "text": "Defines the notification's severity.",
-          "values": [
-            "error",
-            "warning",
-            "info",
-            "success"
-          ],
+          "values": ["error", "warning", "info", "success"],
           "type": "ObENotificationType",
           "default": "<code>error</code> (inferred from <code>ObENotificationType.ERROR</code>)",
           "since": "3.0.0"
@@ -86,25 +81,19 @@
         {
           "name": "deactivateSpinnerOnNextAPICalls",
           "text": "No spinner will be activated on the next <code>number</code> API calls.",
-          "arguments": [
-            "number = 1"
-          ],
+          "arguments": ["number = 1"],
           "since": "4.1.0"
         },
         {
           "name": "deactivateNotificationOnNextAPICalls",
           "text": "No notification will be activated on the next <code>number</code> API calls.",
-          "arguments": [
-            "number = 1"
-          ],
+          "arguments": ["number = 1"],
           "since": "4.1.0"
         },
         {
           "name": "deactivateOnNextAPICalls",
           "text": "No spinner nor notification will be activated on the next <code>number</code> API calls.",
-          "arguments": [
-            "number = 1"
-          ],
+          "arguments": ["number = 1"],
           "since": "4.1.0"
         }
       ]
@@ -125,7 +114,12 @@
           "name": "notification.severity",
           "text": "The severity of notification",
           "type": "ObENotificationType",
-          "values": ["ObENotificationType.INFO", "ObENotificationType.SUCCESS", "ObENotificationType.WARNING", "ObENotificationType.ERROR"],
+          "values": [
+            "ObENotificationType.INFO",
+            "ObENotificationType.SUCCESS",
+            "ObENotificationType.WARNING",
+            "ObENotificationType.ERROR"
+          ],
           "since": "3.0.0"
         },
         {

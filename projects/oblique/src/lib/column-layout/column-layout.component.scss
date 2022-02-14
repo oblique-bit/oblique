@@ -20,8 +20,7 @@
 	}
 
 	@include layout.ob-media-breakpoint-up(sm) {
-		flex-direction: row;
-		flex-wrap: wrap;
+		flex-flow: row wrap;
 
 		.ob-column-main,
 		.ob-column-left,
@@ -83,7 +82,6 @@
 			padding: 0;
 			border: 1px solid variables.$ob-gray-light;
 			background-color: variables.$ob-white;
-
 			transition: all variables.$ob-duration-default;
 			color: variables.$ob-gray-dark;
 
@@ -104,7 +102,8 @@
 			transform-origin: 100% 50%;
 			right: 0;
 			margin-left: -(variables.$ob-column-layout-toggle-width);
-			border-radius: variables.$ob-column-layout-toggle-radius 0 0 variables.$ob-column-layout-toggle-radius;
+			border-radius: variables.$ob-column-layout-toggle-radius 0 0
+				variables.$ob-column-layout-toggle-radius;
 			border-right-width: 0;
 			@include shadow.ob-dropShadow(down-left);
 
@@ -119,7 +118,8 @@
 			transform-origin: 0 50%;
 			left: 0;
 			margin-right: -(variables.$ob-column-layout-toggle-width);
-			border-radius: 0 variables.$ob-column-layout-toggle-radius variables.$ob-column-layout-toggle-radius 0;
+			border-radius: 0 variables.$ob-column-layout-toggle-radius
+				variables.$ob-column-layout-toggle-radius 0;
 			border-left-width: 0;
 			@include shadow.ob-dropShadow();
 
@@ -154,22 +154,23 @@
 				margin-left: -(variables.$ob-column-width);
 
 				@at-root #{selector.append(".ob-wider-columns", &)} {
-					margin-left: - 2 * variables.$ob-column-width;
+					margin-left: -2 * variables.$ob-column-width;
 				}
 
 				.ob-column-toggle-left {
 					transform-origin: 0 50%;
 					margin-left: 0;
 					margin-right: -(variables.$ob-column-layout-toggle-width);
-					border-radius: 0 variables.$ob-column-layout-toggle-radius variables.$ob-column-layout-toggle-radius 0;
+					border-radius: 0 variables.$ob-column-layout-toggle-radius
+						variables.$ob-column-layout-toggle-radius 0;
 					border-right-width: 1px;
 					border-left-width: 0;
 					@include shadow.ob-dropShadow();
 				}
 			}
 
-			&:after {
-				@include column-layout.ob-column-separator {
+			&::after {
+				@include column-layout.ob-column-separator() {
 					right: 0;
 				}
 			}
@@ -182,22 +183,23 @@
 				margin-right: -(variables.$ob-column-width);
 
 				@at-root #{selector.append(".ob-wider-columns", &)} {
-					margin-right: - 2 *variables.$ob-column-width;
+					margin-right: -2 * variables.$ob-column-width;
 				}
 
 				.ob-column-toggle-right {
 					transform-origin: 100% 50%;
 					margin-right: 0;
 					margin-left: -(variables.$ob-column-layout-toggle-width);
-					border-radius: variables.$ob-column-layout-toggle-radius 0 0 variables.$ob-column-layout-toggle-radius;
+					border-radius: variables.$ob-column-layout-toggle-radius 0 0
+						variables.$ob-column-layout-toggle-radius;
 					border-right-width: 0;
 					border-left-width: 1px;
 					@include shadow.ob-dropShadow(down-left);
 				}
 			}
 
-			&:before {
-				@include column-layout.ob-column-separator {
+			&::before {
+				@include column-layout.ob-column-separator() {
 					left: 0;
 				}
 			}

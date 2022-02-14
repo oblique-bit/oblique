@@ -17,36 +17,28 @@
         {
           "name": "registerIconSetsAsync",
           "text": "Called on run time, it requests and registers the given icon sets.",
-          "arguments": [
-            "...urls: string[]"
-          ],
+          "arguments": ["...urls: string[]"],
           "returns": "void",
           "since": "6.1.0"
         },
         {
           "name": "registerIconsAsync",
           "text": "Called on run time, it requests and registers the given icons.",
-          "arguments": [
-            "...icons: {name: string, url: string}[]"
-          ],
+          "arguments": ["...icons: {name: string, url: string}[]"],
           "returns": "void",
           "since": "6.1.0"
         },
         {
           "name": "registerIconSets",
           "text": "Called on run time, it registers the given serialized icon sets.",
-          "arguments": [
-            "...iconSets: string[]"
-          ],
+          "arguments": ["...iconSets: string[]"],
           "returns": "void",
           "since": "6.1.0"
         },
         {
           "name": "registerIcons",
           "text": "Called on run time, it registers the given serialized icons.",
-          "arguments": [
-            "...icons: {name: string, svg: string}[]"
-          ],
+          "arguments": ["...icons: {name: string, svg: string}[]"],
           "returns": "void",
           "since": "6.1.0"
         }

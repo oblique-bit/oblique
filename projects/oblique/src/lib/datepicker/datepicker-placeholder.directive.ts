@@ -24,7 +24,7 @@ export class ObDatepickerPlaceholderDirective implements OnInit, OnDestroy {
 
 	constructor(private readonly translateService: TranslateService) {}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		if (!this.placeholder) {
 			this.setPlaceholder(this.translateService.currentLang);
 
@@ -39,7 +39,7 @@ export class ObDatepickerPlaceholderDirective implements OnInit, OnDestroy {
 		this.unsubscribe.complete();
 	}
 
-	private setPlaceholder(lang: string) {
+	private setPlaceholder(lang: string): void {
 		this.placeholder = I18N_PLACEHOLDERS[lang];
 	}
 }

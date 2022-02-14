@@ -1,15 +1,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "types": [
-      "jest"
-    ]
+    "module": "esnext",
+    "types": ["jest"]
   },
-  "files": [
-    "polyfills.ts"
-  ],
-  "include": [
-    "**/*.spec.ts",
-    "**/*.d.ts"
-  ]
+  "files": ["polyfills.ts"],
+  "include": ["**/*.spec.ts", "**/*.d.ts"]
 }

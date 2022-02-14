@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
-  "compilerOptions": {},
-  "files": [
-    "./main.ts"
-  ]
+  "compilerOptions": {
+    "module": "esnext"
+  },
+  "files": ["./main.ts"]
 }

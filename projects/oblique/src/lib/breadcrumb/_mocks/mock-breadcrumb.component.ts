@@ -19,11 +19,11 @@ export class ObMockBreadcrumbComponent {
 	@Input('beautifyUrls') beautifyUrlsInput?: boolean;
 	/* eslint-enable @angular-eslint/no-input-rename	*/
 
-	get maxWidth() {
+	get maxWidth(): string {
 		return this.maxWidthInput ?? ObMockBreadcrumbComponent.DEFAULTS.maxWidth;
 	}
 
-	showTooltip(e: HTMLElement) {
+	showTooltip(event: HTMLElement): boolean {
 		return true;
 	}
 

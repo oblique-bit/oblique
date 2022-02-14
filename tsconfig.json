@@ -3,27 +3,20 @@
   "compilerOptions": {
     "baseUrl": ".",
     "importHelpers": true,
-    "module": "esnext",
+    "module": "commonjs",
     "sourceMap": true,
     "declaration": false,
+    "esModuleInterop": true,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2016",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2016", "dom"],
     "paths": {
-      "@oblique/oblique": [
-        "projects/oblique/src/public_api"
-      ],
-      "oblique/*": [
-        "dist/oblique/*"
-      ]
-    }
+      "@oblique/oblique": ["projects/oblique/src/public_api"],
+      "oblique/*": ["dist/oblique/*"]
+    },
+    "resolveJsonModule": true
   }
 }

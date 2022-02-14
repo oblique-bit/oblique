@@ -4,7 +4,8 @@ import {Pipe, PipeTransform} from '@angular/core';
 	name: 'obAcceptAll'
 })
 export class ObAcceptAllPipe implements PipeTransform {
-	transform(allowedTypes: string[]): boolean {
+	// "this: void" is not a parameter but rather a typescript feature that indicates that the function don't use "this"
+	transform(this: void, allowedTypes: string[]): boolean {
 		return !allowedTypes || !allowedTypes.length || allowedTypes.includes('*');
 	}
 }

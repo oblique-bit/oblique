@@ -15,16 +15,16 @@ export class DynamicNavigationService {
 		this.navigationLinks$ = this.navigationLinks.asObservable();
 	}
 
-	setNavigation(links: ObINavigationLink[]) {
+	setNavigation(links: ObINavigationLink[]): void {
 		this.links = links;
 	}
 
-	addLink(link: ObINavigationLink) {
+	addLink(link: ObINavigationLink): void {
 		this.links.push(link);
 		this.navigationLinks.next(this.links);
 	}
 
-	removeLastLink() {
+	removeLastLink(): void {
 		this.links.pop();
 		this.navigationLinks.next(this.links);
 	}

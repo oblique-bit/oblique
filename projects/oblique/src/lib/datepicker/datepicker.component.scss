@@ -1,12 +1,13 @@
 @use "../../styles/scss/core/variables";
 
-.ngb-dp-body.dropdown-menu{
+.ngb-dp-body.dropdown-menu {
 	margin-top: 0;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 	border-top: 0;
 	border-color: variables.$ob-gray;
 }
+
 .ngb-dp-header {
 	padding-top: 0 !important;
 
@@ -36,7 +37,8 @@
 	width: 2.5rem !important;
 }
 
-.ngb-dp-day, .ngb-dp-week-number {
+.ngb-dp-day,
+.ngb-dp-week-number {
 	width: 2.5rem !important;
 	height: 2.5rem !important;
 
@@ -85,7 +87,7 @@
 		border: 1px solid variables.$ob-error;
 
 		&:focus-within {
-			box-shadow: 0 0 6px 1px rgba(220, 0, 24, 0.4);
+			box-shadow: 0 0 6px 1px rgba(220, 0, 24, 40%);
 		}
 
 		.calendar-toggle {

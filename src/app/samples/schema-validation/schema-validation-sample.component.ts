@@ -8,13 +8,7 @@ import {ThemeService} from '../../common/theme.service';
 @Component({
 	selector: 'sc-schema-validation',
 	templateUrl: './schema-validation-sample.component.html',
-	styles: [
-		`
-			.form-horizontal label {
-				text-align: right;
-			}
-		`
-	]
+	styleUrls: ['./schema-validation-sample.component.scss']
 })
 export class SchemaValidationSampleComponent implements OnInit {
 	material: Observable<boolean>;
@@ -151,8 +145,7 @@ export class SchemaValidationSampleComponent implements OnInit {
 	}
 
 	private dateBeforeNowValidator(): ValidatorFn {
-		return (control: AbstractControl): ValidationErrors => {
-			return new Date(control.value).getTime() < Date.now() ? {invalidDateMin: {value: new Date().toDateString()}} : null;
-		};
+		return (control: AbstractControl): ValidationErrors =>
+			new Date(control.value).getTime() < Date.now() ? {invalidDateMin: {value: new Date().toDateString()}} : null;
 	}
 }

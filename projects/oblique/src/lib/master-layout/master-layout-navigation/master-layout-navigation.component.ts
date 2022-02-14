@@ -38,15 +38,16 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 		private readonly globalEventsService: ObGlobalEventsService
 	) {
 		this.masterLayout.navigation.refreshed.pipe(takeUntil(this.unsubscribe)).subscribe(this.refresh.bind(this));
-		this.propertyChanges();
+		this.scrollModeChange();
+		this.fullWidthChange();
 	}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.closeOnEscape();
 		this.markActiveLink();
 	}
 
-	ngDoCheck() {
+	ngDoCheck(): void {
 		if (this.links?.length && this.links.length !== this.linksLength) {
 			this.checkForExternalLinks(this.links);
 			this.linksLength = this.links.length;
@@ -54,12 +55,12 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 		}
 	}
 
-	ngAfterViewInit() {
+	ngAfterViewInit(): void {
 		this.nav = this.el.nativeElement.querySelector('.ob-main-nav:not(.ob-sub-nav)');
 		this.masterLayout.navigation.scrolled.pipe(takeUntil(this.unsubscribe)).subscribe(offset => this.updateScroll(offset));
 	}
 
-	ngOnDestroy() {
+	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
 	}
@@ -85,23 +86,22 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 		}
 	}
 
-	private propertyChanges() {
-		const events = [ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE, ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH];
+	private scrollModeChange(): void {
 		this.masterLayout.navigation.configEvents$
 			.pipe(
-				filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => {
-				switch (event.name) {
-					case ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE:
-						this.masterLayout.navigation.refresh();
-						break;
-					case ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH:
-						this.isFullWidth = event.value;
-						break;
-				}
-			});
+			.subscribe(() => this.masterLayout.navigation.refresh());
+	}
+
+	private fullWidthChange(): void {
+		this.masterLayout.navigation.configEvents$
+			.pipe(
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(event => (this.isFullWidth = event.value));
 	}
 
 	private closeOnEscape(): void {
@@ -129,13 +129,13 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 
 	private refresh(): void {
 		if (this.nav) {
-			const scrollMode = this.masterLayout.navigation.scrollMode;
-			if (scrollMode !== ObEScrollMode.DISABLED) {
+			const {scrollMode} = this.masterLayout.navigation;
+			if (scrollMode === ObEScrollMode.DISABLED) {
+				this.isScrollable = false;
+			} else {
 				const childWidth = Array.from(this.nav.children).reduce((total, el: HTMLElement) => total + el.clientWidth, 0);
 				this.maxScroll = Math.max(0, -(this.nav.clientWidth - childWidth - 2 * ObMasterLayoutNavigationComponent.buttonWidth));
 				this.isScrollable = scrollMode === ObEScrollMode.ENABLED ? true : childWidth > this.nav.clientWidth;
-			} else {
-				this.isScrollable = false;
 			}
 			this.updateScroll(this.isScrollable ? 0 : -this.currentScroll);
 		}

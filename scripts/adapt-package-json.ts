@@ -1,22 +1,19 @@
-interface Json {
-	[key: string]: any;
-}
+import {readFileSync, writeFileSync} from 'fs';
+import path from 'path';
 
+type Json = Record<string, any>;
 class AdaptPackageJson {
-	private static readonly fs = require('fs');
-	private static readonly path = require('path');
-
 	static perform(): void {
-		const filePath = AdaptPackageJson.path.join('dist', 'oblique', 'package.json');
-		let distPackage = AdaptPackageJson.getDistPackage(filePath);
+		const filePath = path.join('dist', 'oblique', 'package.json');
+		const distPackage = AdaptPackageJson.getDistPackage(filePath);
 		let adaptedDistPackage = AdaptPackageJson.removeExports(distPackage);
 		adaptedDistPackage = AdaptPackageJson.addProperties(adaptedDistPackage);
 
-		AdaptPackageJson.fs.writeFileSync(filePath, JSON.stringify(adaptedDistPackage, null, 2));
+		writeFileSync(filePath, JSON.stringify(adaptedDistPackage, null, 2));
 	}
 
 	private static getDistPackage(filePath: string): Json {
-		return JSON.parse(AdaptPackageJson.fs.readFileSync(filePath));
+		return JSON.parse(readFileSync(filePath).toString());
 	}
 
 	private static removeExports(distPackage: Json): Json {
@@ -25,7 +22,7 @@ class AdaptPackageJson {
 	}
 
 	private static addProperties(distPackage: Json): Json {
-		const rootPackage = JSON.parse(AdaptPackageJson.fs.readFileSync('package.json'));
+		const rootPackage = JSON.parse(readFileSync('package.json').toString());
 		['version', 'description', 'keywords', 'author', 'contributors', 'homepage', 'repository', 'license', 'bugs', 'publishConfig'].forEach(
 			field => (distPackage[field] = rootPackage[field])
 		);

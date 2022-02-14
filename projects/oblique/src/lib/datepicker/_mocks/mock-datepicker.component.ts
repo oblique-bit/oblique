@@ -1,4 +1,4 @@
-import {Component, Input, forwardRef} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 import {AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
 import {ObIDatepickerOptions} from '../datepicker.model';
@@ -8,16 +8,8 @@ import {ObIDatepickerOptions} from '../datepicker.model';
 	exportAs: 'obDatePicker',
 	template: '',
 	providers: [
-		{
-			provide: NG_VALUE_ACCESSOR,
-			multi: true,
-			useExisting: forwardRef(() => ObMockDatepickerComponent)
-		},
-		{
-			provide: NG_VALIDATORS,
-			multi: true,
-			useExisting: forwardRef(() => ObMockDatepickerComponent)
-		}
+		{provide: NG_VALUE_ACCESSOR, multi: true, useExisting: ObMockDatepickerComponent},
+		{provide: NG_VALIDATORS, multi: true, useExisting: ObMockDatepickerComponent}
 	]
 })
 export class ObMockDatepickerComponent implements ControlValueAccessor, Validator {
@@ -44,5 +36,5 @@ export class ObMockDatepickerComponent implements ControlValueAccessor, Validato
 		return null;
 	}
 
-	onKeydown($event) {}
+	onKeydown($event): void {}
 }

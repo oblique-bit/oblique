@@ -48,10 +48,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 
 	@Input('obNavTreeFakeFocus')
 	public set focusInputElement(element: any) {
-		if (element && !(element instanceof ElementRef)) {
-			element = new ElementRef(element);
-		}
-		this.inputElement = element;
+		this.inputElement = element && !(element instanceof ElementRef) ? new ElementRef(element) : element;
 		this.initInputElement();
 	}
 
@@ -62,8 +59,9 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 	private eventSubscriptions: (() => void)[] = [];
 
 	public constructor(private readonly element: ElementRef, private readonly renderer: Renderer2) {
-		if (this.element.nativeElement.localName !== 'ob-nav-tree') {
-			throw new Error(`Directive nav-tree-selector can only be used on ob-nav-tree elements. Current element is: '${this.element.nativeElement.localName}'`);
+		const name: string = this.element.nativeElement.localName;
+		if (name !== 'ob-nav-tree') {
+			throw new Error(`Directive nav-tree-selector can only be used on ob-nav-tree elements. Current element is: '${name}'`);
 		}
 		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.DOWN] = () => this.focusNext();
 		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.UP] = event => this.focusPrevious(event);
@@ -72,14 +70,16 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 		this.keyHandlers[ObNavTreeFakeFocusDirective.KEY_CODES.RIGHT] = () => this.toggleCollapsed();
 	}
 
-	public ngOnDestroy() {
+	public ngOnDestroy(): void {
 		this.unsubscribeInputListeners();
 	}
 
 	public fakeFocus(element: ElementRef): void {
 		const link = this.findLink(element);
 		if (!link || !this.element.nativeElement.contains(link.nativeElement)) {
-			throw new Error(`Unable to fake focus element '${element}'. No valid DOM element or no valid child.`);
+			// fixing this requires a breaking change
+			// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+			throw new Error(`Unable to fake focus element '${element.nativeElement}'. No valid DOM element or no valid child.`);
 		}
 		this.onBlur();
 
@@ -93,7 +93,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 		this.ensureInView();
 	}
 
-	private initInputElement() {
+	private initInputElement(): void {
 		this.unsubscribeInputListeners();
 		if (!this.inputElement) {
 			return;
@@ -106,7 +106,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 		this.initEventListeners();
 	}
 
-	private initEventListeners() {
+	private initEventListeners(): void {
 		const debouncer: Subject<any> = new Subject<any>();
 		debouncer.pipe(throttleTime(ObNavTreeFakeFocusDirective.KEY_DOWN_DEBOUNCE_MILLIS)).subscribe(event => this.onKeyDown(event));
 		this.eventSubscriptions.push(
@@ -115,13 +115,13 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 		this.eventSubscriptions.push(this.renderer.listen(this.inputElement.nativeElement, ObNavTreeFakeFocusDirective.INPUT_EVENTS.BLUR, () => this.onBlur(true)));
 	}
 
-	private onKeyDown(event: KeyboardEvent) {
+	private onKeyDown(event: KeyboardEvent): void {
 		if (Object.prototype.hasOwnProperty.call(this.keyHandlers, event.code)) {
 			this.keyHandlers[event.code](event);
 		}
 	}
 
-	private onBlur(reset = false) {
+	private onBlur(reset = false): void {
 		if (this.focusedElement) {
 			const link = this.findLink(this.focusedElement);
 
@@ -137,12 +137,12 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 		}
 	}
 
-	private unsubscribeInputListeners() {
+	private unsubscribeInputListeners(): void {
 		this.eventSubscriptions.forEach((unsubscribe: () => void) => unsubscribe());
 		this.eventSubscriptions = [];
 	}
 
-	private accept() {
+	private accept(): void {
 		const link = this.findLink();
 		if (link?.nativeElement) {
 			this.renderer.removeClass(link.nativeElement, ObNavTreeFakeFocusDirective.CSS_CLASSES.FAKE_FOCUS);
@@ -166,7 +166,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 		this.focusedElement.nativeElement.dispatchEvent(event);
 	}
 
-	private focusNext() {
+	private focusNext(): void {
 		const elements = this.extractAllListElements();
 		let nextIndex = 0;
 		if (this.focusedElement) {
@@ -175,7 +175,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 		this.fakeFocus(new ElementRef(elements[nextIndex < elements.length ? nextIndex : 0]));
 	}
 
-	private focusPrevious(event: Event) {
+	private focusPrevious(event: Event): void {
 		// Ensure cursor does not move back in the text field:
 		event.preventDefault();
 
@@ -188,11 +188,11 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 	}
 
 	private findLink(element: ElementRef = null): ElementRef {
-		element = element || this.focusedElement;
-		if (!element || !element.nativeElement) {
+		const el = element || this.focusedElement;
+		if (!el || !el.nativeElement) {
 			return null;
 		}
-		const link = element.nativeElement.querySelector(ObNavTreeFakeFocusDirective.CSS_SELECTORS.ITEM_LINK);
+		const link = el.nativeElement.querySelector(ObNavTreeFakeFocusDirective.CSS_SELECTORS.ITEM_LINK);
 		return link ? new ElementRef(link) : null;
 	}
 

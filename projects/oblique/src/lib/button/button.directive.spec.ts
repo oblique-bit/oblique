@@ -47,7 +47,6 @@ class TestLinkComponent {}
 class TestErrorComponent {}
 
 describe('ButtonDirective', () => {
-	let name: string;
 	let directive: ObButtonDirective;
 	let component:
 		| TestPrimaryComponent
@@ -93,11 +92,11 @@ describe('ButtonDirective', () => {
 			component = fixture.componentInstance;
 			fixture.detectChanges();
 			const element = fixture.debugElement.query(By.directive(ObButtonDirective));
-			name = fixture.debugElement.query(By.all()).name;
 			directive = element.injector.get(ObButtonDirective);
 		});
 
 		it('should be button', () => {
+			const {name} = fixture.debugElement.query(By.all());
 			expect(name).toBe('button');
 		});
 
@@ -132,11 +131,11 @@ describe('ButtonDirective', () => {
 			component = fixture.componentInstance;
 			fixture.detectChanges();
 			const element = fixture.debugElement.query(By.directive(ObButtonDirective));
-			name = fixture.debugElement.query(By.all()).name;
 			directive = element.injector.get(ObButtonDirective);
 		});
 
 		it('should be button', () => {
+			const {name} = fixture.debugElement.query(By.all());
 			expect(name).toBe('button');
 		});
 
@@ -171,11 +170,11 @@ describe('ButtonDirective', () => {
 			component = fixture.componentInstance;
 			fixture.detectChanges();
 			const element = fixture.debugElement.query(By.directive(ObButtonDirective));
-			name = fixture.debugElement.query(By.all()).name;
 			directive = element.injector.get(ObButtonDirective);
 		});
 
 		it('should be button', () => {
+			const {name} = fixture.debugElement.query(By.all());
 			expect(name).toBe('button');
 		});
 
@@ -210,11 +209,11 @@ describe('ButtonDirective', () => {
 			component = fixture.componentInstance;
 			fixture.detectChanges();
 			const element = fixture.debugElement.query(By.directive(ObButtonDirective));
-			name = fixture.debugElement.query(By.all()).name;
 			directive = element.injector.get(ObButtonDirective);
 		});
 
 		it('should be button', () => {
+			const {name} = fixture.debugElement.query(By.all());
 			expect(name).toBe('button');
 		});
 
@@ -249,11 +248,11 @@ describe('ButtonDirective', () => {
 			component = fixture.componentInstance;
 			fixture.detectChanges();
 			const element = fixture.debugElement.query(By.directive(ObButtonDirective));
-			name = fixture.debugElement.query(By.all()).name;
 			directive = element.injector.get(ObButtonDirective);
 		});
 
 		it('should be button', () => {
+			const {name} = fixture.debugElement.query(By.all());
 			expect(name).toBe('button');
 		});
 
@@ -289,7 +288,6 @@ describe('ButtonDirective', () => {
 			component = fixture.componentInstance;
 			fixture.detectChanges();
 			const element = fixture.debugElement.query(By.directive(ObButtonDirective));
-			name = fixture.debugElement.query(By.all()).name;
 			directive = element.injector.get(ObButtonDirective);
 		});
 
@@ -298,6 +296,7 @@ describe('ButtonDirective', () => {
 		});
 
 		it('should be button', () => {
+			const {name} = fixture.debugElement.query(By.all());
 			expect(name).toBe('button');
 		});
 
@@ -478,11 +477,11 @@ describe('ButtonDirective', () => {
 				component.obButton = parameter.obButtonBeforeChange as 'primary' | 'secondary' | 'tertiary';
 				fixture.detectChanges();
 				const element = fixture.debugElement.query(By.directive(ObButtonDirective));
-				name = fixture.debugElement.query(By.all()).name;
 				directive = element.injector.get(ObButtonDirective);
 			});
 
 			it('should be button', () => {
+				const {name} = fixture.debugElement.query(By.all());
 				expect(name).toBe('button');
 			});
 

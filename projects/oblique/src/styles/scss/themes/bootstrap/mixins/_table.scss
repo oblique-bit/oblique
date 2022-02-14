@@ -21,7 +21,8 @@
 	.table-hover.#{$name} tbody tr:hover, // table
 	.table-hover tbody.#{$name} tr:hover, // tbody
 	.table-hover tbody tr.#{$name}:hover, // tr
-	.table-hover tbody tr:hover .#{$name} { // td, th
+	.table-hover tbody tr:hover .#{$name} {
+		// td, th
 		background-color: color.adjust($bg-color, $lightness: -11%);
 		color: $ob-font-color;
 	}

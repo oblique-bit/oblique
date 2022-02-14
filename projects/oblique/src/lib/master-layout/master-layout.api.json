@@ -509,18 +509,14 @@
           "name": "scrollLeft",
           "text": "When scrolled navigation is enabled, will scroll the navigation to the left by the given amout or default amount if none is given.",
           "returns": "void",
-          "arguments": [
-            "offset?: number"
-          ],
+          "arguments": ["offset?: number"],
           "since": "4.0.0"
         },
         {
           "name": "scrollRight",
           "text": "When scrolled navigation is enabled, will scroll the navigation to the right by the given amount or default amount if none is given.",
           "returns": "void",
-          "arguments": [
-            "offset?: number"
-          ],
+          "arguments": ["offset?: number"],
           "since": "4.0.0"
         }
       ]
@@ -628,7 +624,7 @@
           "name": "name",
           "text": "The name of the event",
           "type": "ObEMasterLayoutEventValues",
-          "values":[
+          "values": [
             "ObEMasterLayoutEventValues.FOOTER_HAS_LOGO_ON_SCROLL",
             "ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM",
             "ObEMasterLayoutEventValues.FOOTER_IS_STICKY",

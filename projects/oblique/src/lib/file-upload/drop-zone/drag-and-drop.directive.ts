@@ -26,7 +26,7 @@ export class ObDragDropDirective {
 	public ondrop(event: DragEvent): void {
 		event.preventDefault();
 		event.stopPropagation();
-		const files = event.dataTransfer.files;
+		const {files} = event.dataTransfer;
 		if (files.length) {
 			this.onFileDropped.emit(files);
 			this.isDragging = false;

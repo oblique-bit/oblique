@@ -42,7 +42,7 @@ export class HttpInterceptorSampleComponent {
 		this.createSampleRequest(code).subscribe();
 	}
 
-	parallelRequest() {
+	parallelRequest(): void {
 		this.configInterceptor();
 		const arrayOfObservables: Observable<any>[] = [];
 		for (let index = 0; index < this.parallelRequests; index++) {
@@ -54,7 +54,7 @@ export class HttpInterceptorSampleComponent {
 		mergedObservable.subscribe();
 	}
 
-	log(message: string) {
+	log(message: string): void {
 		this.logs.unshift(message);
 	}
 
@@ -84,17 +84,17 @@ export class HttpInterceptorSampleComponent {
 
 	private createRequest(url: string, currentId: number): Observable<any> {
 		const started = Date.now();
-		const d = Math.ceil(Math.random() * 1000);
+		const requestDelay = Math.ceil(Math.random() * 1000);
 		return this.http.get(url).pipe(
-			delay(d),
+			delay(requestDelay),
 			tap(
 				() => {
 					const elapsed = Date.now() - started;
-					this.log(`${currentId} - Received 200 OK in ${elapsed} ms with ${d} ms delay.`);
+					this.log(`${currentId} - Received 200 OK in ${elapsed} ms with ${requestDelay} ms delay.`);
 				},
 				(error: HttpErrorResponse) => {
 					const elapsed = Date.now() - started;
-					this.log(`${currentId} - Received ${error.status} ${error.statusText} in ${elapsed} ms with ${d} ms delay.`);
+					this.log(`${currentId} - Received ${error.status} ${error.statusText} in ${elapsed} ms with ${requestDelay} ms delay.`);
 					if (!this.notification.active) {
 						this.notificationService.info('Oblique error handling is disabled. The component itself is responsible for error handling.');
 					}

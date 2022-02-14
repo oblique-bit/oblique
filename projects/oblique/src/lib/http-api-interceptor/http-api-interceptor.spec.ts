@@ -2,7 +2,7 @@ import {TestBed, waitForAsync} from '@angular/core/testing';
 import {HttpClientTestingModule, HttpTestingController, TestRequest} from '@angular/common/http/testing';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {of} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {finalize} from 'rxjs/operators';
 import {WINDOW} from '../utilities';
 import {ObHttpApiInterceptorEvents} from './http-api-interceptor.events';
@@ -18,35 +18,35 @@ class DataService {
 
 	constructor(private readonly http: HttpClient) {}
 
-	getUsers() {
+	getUsers(): Observable<unknown> {
 		return this.http.get(`${DataService.ROOT_URL}/users`);
 	}
 
-	getError(code: number) {
+	getError(code: number): Observable<unknown> {
 		return this.http.get(`${DataService.ROOT_URL}/${code}`);
 	}
 }
 
 class MockSpinnerService {
-	activate() {
+	activate(): void {
 		//
 	}
 
-	deactivate() {
+	deactivate(): void {
 		//
 	}
 }
 
 class MockNotificationService {
-	send() {
+	send(): void {
 		//
 	}
 
-	error() {
+	error(): void {
 		//
 	}
 
-	warning() {
+	warning(): void {
 		//
 	}
 }

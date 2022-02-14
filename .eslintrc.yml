@@ -1,0 +1,230 @@
+root: true
+overrides:
+  - files:
+      - "*.js"
+    env:
+      es2020: true # first version to support lookbehind with regexp
+      node: true # so that "module" is defined
+      browser: true # so that "window" is defined
+    extends:
+      - eslint:all
+      - prettier # this turns off all rules from eslint, @typescript-eslint and @angular-eslint that conflicts with prettier
+    rules:
+      # deactivate unwanted rules
+      capitalized-comments: off
+      no-implicit-coercion: off
+      no-undefined: off
+      no-use-before-define: off
+      no-ternary: off
+      one-var: off
+      func-names: off
+      func-style: off
+      require-unicode-regexp: off
+      sort-keys: off
+
+      # override default values
+      max-statements:
+        - error
+        - 15
+      no-console:
+        - error
+        - allow:
+            - info
+            - warn
+            - error
+      no-magic-numbers:
+        - error
+        - ignore:
+            - -1
+            - 0
+            - 1
+          ignoreArrayIndexes: true
+      sort-imports:
+        - error
+        - ignoreDeclarationSort: true
+
+  - files:
+      - "*.ts"
+    parser: "@typescript-eslint/parser"
+    parserOptions:
+      project:
+        - tsconfig.json
+      createDefaultProgram: true
+    extends:
+      - eslint:all
+      - plugin:@typescript-eslint/eslint-plugin/all
+      - plugin:@angular-eslint/all
+      - plugin:@angular-eslint/template/process-inline-templates
+      - prettier # this turns off all rules from eslint, @typescript-eslint and @angular-eslint that conflicts with prettier
+    rules:
+      # deactivate unwanted rules
+      "@angular-eslint/prefer-on-push-component-change-detection": off
+      "@angular-eslint/sort-ngmodule-metadata-arrays": off # preferred order is 'imports', 'declarations', 'providers'
+      "@angular-eslint/use-component-view-encapsulation": off # oblique uses ViewEncapsulation.NONE
+      "@angular-eslint/use-injectable-provided-in": off # some specialized services are directly provided in a component
+      "@typescript-eslint/consistent-type-exports": off
+      "@typescript-eslint/consistent-type-imports": off
+      "@typescript-eslint/explicit-member-accessibility": off # public methods and property only accessed from the template should not be marked as public
+      "@typescript-eslint/init-declarations": off
+      "@typescript-eslint/lines-between-class-members": off
+      "@typescript-eslint/no-confusing-void-expression": off
+      "@typescript-eslint/no-dynamic-delete": off # this is needed
+      "@typescript-eslint/no-invalid-this": off # triggers an error when enabled
+      "@typescript-eslint/no-parameter-properties": off
+      "@typescript-eslint/no-require-imports": off # used by node scripts and to load some static assets
+      "@typescript-eslint/no-type-alias": off
+      "@typescript-eslint/no-unsafe-return": off # reports many false positive
+      "@typescript-eslint/prefer-enum-initializers": off
+      "@typescript-eslint/prefer-readonly-parameter-types": off # forces "readonly" on functions where it is not allowed
+      "@typescript-eslint/promise-function-async": off # no compatible with Angular's lazy loading
+      "@typescript-eslint/sort-type-union-intersection-members": off
+      accessor-pairs: off
+      capitalized-comments: off
+      class-methods-use-this: off #ideally, this rule should be limited to private methods
+      func-names: off
+      func-style: off
+      line-comment-position: off
+      multiline-comment-style: off
+      new-cap: off
+      no-implicit-coercion: off
+      no-inline-comments: off
+      no-plusplus: off
+      no-ternary: off
+      no-undefined: off
+      no-void: off
+      prefer-object-has-own: off # could be activated with ES2022
+      one-var: off
+      require-unicode-regexp: off # forces to escape all special characters
+      sort-keys: off
+
+      # override default values
+      "@angular-eslint/component-max-inline-declarations":
+        - error
+        - template: 0
+          styles: 0
+      "@angular-eslint/no-host-metadata-property":
+        - error
+        - allowStatic: true
+      "@typescript-eslint/explicit-function-return-type":
+        - error
+        - allowExpressions: true
+      "@typescript-eslint/member-ordering":
+        - error
+        - default:
+            - public-static-field
+            - public-instance-field
+            - protected-static-field
+            - protected-field
+            - public-constructor
+            - protected-constructor
+            - private-constructor
+            - public-method
+            - protected-method
+            - private-method
+      "@typescript-eslint/no-extraneous-class":
+        - error
+        - allowWithDecorator: true
+          allowStaticOnly: true
+      "@typescript-eslint/no-invalid-void-type":
+        - error
+        - allowAsThisParameter: true
+      "@typescript-eslint/no-use-before-define":
+        - error
+        - functions: false
+      "@typescript-eslint/restrict-template-expressions":
+        - error
+        - allowBoolean: true
+      "@typescript-eslint/unbound-method":
+        - error
+        - ignoreStatic: true
+      max-lines-per-function:
+        - error
+        - max: 35
+      max-statements:
+        - error
+        - 15
+      no-console:
+        - error
+        - allow:
+            - info
+            - warn
+            - error
+      prefer-destructuring:
+        - error
+        - object: true
+        - enforceForRenamedProperties: false
+      sort-imports:
+        - error
+        - ignoreDeclarationSort: true
+
+      # rules that need some refactoring to be enabled
+      "@typescript-eslint/no-explicit-any": off
+      "@typescript-eslint/explicit-module-boundary-types": off
+      "@typescript-eslint/ban-types": off
+      "@typescript-eslint/no-var-requires": off
+      "@typescript-eslint/no-unsafe-member-access": off
+      "@typescript-eslint/no-unsafe-assignment": off
+      "@typescript-eslint/no-shadow": off
+      "@typescript-eslint/strict-boolean-expressions": off
+      "@typescript-eslint/no-unnecessary-condition": off
+      "@typescript-eslint/no-unsafe-argument": off
+      "@typescript-eslint/no-magic-numbers": off
+      "@typescript-eslint/no-unsafe-call": off
+      "@typescript-eslint/naming-convention": off
+      max-params: off
+      no-warning-comments: off
+
+  - files:
+      - mock-*.ts
+    rules:
+      "@angular-eslint/component-max-inline-declarations": off
+      "@typescript-eslint/no-unused-vars": off
+      "@typescript-eslint/no-empty-function": off
+
+  - files:
+      - "*.spec.ts"
+    rules:
+      "@angular-eslint/component-max-inline-declarations": off
+      "@angular-eslint/use-component-selector": off
+      "@typescript-eslint/ban-ts-comment": off
+      "@typescript-eslint/no-floating-promises": off
+      "@typescript-eslint/unbound-method": off # because "expect" uses unbound methods
+      max-classes-per-file: off
+      max-lines: off
+      max-lines-per-function: off
+      max-statements: off
+
+  - files:
+      - "schematics/**/*.ts"
+    rules:
+      max-lines: off
+      max-lines-per-function: off
+      max-statements: off
+      no-param-reassign: off
+
+  - files:
+      - "*.decorator.ts"
+    rules:
+      max-lines-per-function: off
+
+  - files:
+      - polyfills.ts
+    rules:
+      spaced-comment: off
+
+  - files:
+      - "*.html"
+    extends:
+      - plugin:@angular-eslint/template/all
+    rules:
+      # deactivate unwanted rules
+      "@angular-eslint/template/accessibility-elements-content": off # should be enabled once bootstrap is removed
+      "@angular-eslint/template/accessibility-label-for": off # deprecated rule
+      "@angular-eslint/template/i18n": off
+      "@angular-eslint/template/use-track-by-function": off
+
+      # rules that need some refactoring to be enabled
+      "@angular-eslint/template/accessibility-label-has-associated-control": off
+      "@angular-eslint/template/click-events-have-key-events": off
+      "@angular-eslint/template/cyclomatic-complexity": off
+      "@angular-eslint/template/no-call-expression": off

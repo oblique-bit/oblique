@@ -25,7 +25,7 @@ describe('SearchBoxComponent', () => {
 		fixture = TestBed.createComponent(ObSearchBoxComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
-		// @ts-ignore
+		// @ts-expect-error
 		component.dropdown = {};
 		component.items = [
 			{id: 'a', label: 'a', routes: []},
@@ -90,9 +90,9 @@ describe('SearchBoxComponent', () => {
 
 	describe('navigationDown', () => {
 		beforeEach(() => {
-			// @ts-ignore
+			// @ts-expect-error
 			component.links = new QueryList();
-			// @ts-ignore
+			// @ts-expect-error
 			component.links.reset([{nativeElement: {focus: jest.fn()}}, {nativeElement: {focus: jest.fn()}}, {nativeElement: {focus: jest.fn()}}]);
 			component.pattern = 't';
 		});
@@ -103,33 +103,33 @@ describe('SearchBoxComponent', () => {
 			expect(mock.preventDefault).toHaveBeenCalled();
 		});
 		it('should activate the first item when no item was active', () => {
-			// @ts-ignore
+			// @ts-expect-error
 			component.active = undefined;
 			component.navigateDown(undefined);
-			// @ts-ignore
+			// @ts-expect-error
 			expect(component.active).toBe(0);
 		});
 		it('should activate the next item', () => {
-			// @ts-ignore
+			// @ts-expect-error
 			component.active = 0;
 			component.navigateDown(undefined);
-			// @ts-ignore
+			// @ts-expect-error
 			expect(component.active).toBe(1);
 		});
 		it('should activate the first item when the last item was active', () => {
-			// @ts-ignore
+			// @ts-expect-error
 			component.active = 2;
 			component.navigateDown(undefined);
-			// @ts-ignore
+			// @ts-expect-error
 			expect(component.active).toBe(0);
 		});
 	});
 
 	describe('navigationUp', () => {
 		beforeEach(() => {
-			// @ts-ignore
+			// @ts-expect-error
 			component.links = new QueryList();
-			// @ts-ignore
+			// @ts-expect-error
 			component.links.reset([{nativeElement: {focus: jest.fn()}}, {nativeElement: {focus: jest.fn()}}, {nativeElement: {focus: jest.fn()}}]);
 			component.pattern = 't';
 		});
@@ -140,24 +140,24 @@ describe('SearchBoxComponent', () => {
 			expect(mock.preventDefault).toHaveBeenCalled();
 		});
 		it('should activate the last item when no item was active', () => {
-			// @ts-ignore
+			// @ts-expect-error
 			component.active = undefined;
 			component.navigateUp(undefined);
-			// @ts-ignore
+			// @ts-expect-error
 			expect(component.active).toBe(2);
 		});
 		it('should activate the next item', () => {
-			// @ts-ignore
+			// @ts-expect-error
 			component.active = 2;
 			component.navigateUp(undefined);
-			// @ts-ignore
+			// @ts-expect-error
 			expect(component.active).toBe(1);
 		});
 		it('should activate the last item when the first item was active', () => {
-			// @ts-ignore
+			// @ts-expect-error
 			component.active = 0;
 			component.navigateUp(undefined);
-			// @ts-ignore
+			// @ts-expect-error
 			expect(component.active).toBe(2);
 		});
 	});
@@ -173,7 +173,7 @@ describe('SearchBoxComponent', () => {
 		});
 		it('should reset active property', () => {
 			component.exit();
-			// @ts-ignore
+			// @ts-expect-error
 			expect(component.active).toBeUndefined();
 		});
 	});

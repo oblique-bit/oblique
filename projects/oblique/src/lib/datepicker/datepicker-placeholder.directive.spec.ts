@@ -20,7 +20,7 @@ describe('DatepickerPlaceholderDirective', () => {
 		it: 'gg.mm.aaaa'
 	};
 
-	function createFixture() {
+	function createFixture(): void {
 		fixture = TestBed.createComponent(TestComponent);
 		fixture.detectChanges();
 		element = fixture.debugElement.query(By.directive(ObDatepickerPlaceholderDirective));

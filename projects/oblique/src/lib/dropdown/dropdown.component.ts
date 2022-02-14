@@ -44,12 +44,15 @@ export class ObDropdownComponent implements OnInit, OnDestroy {
 		this.unsubscribe.complete();
 	}
 
-	toggle($event?: MouseEvent) {
+	toggle($event?: MouseEvent): void {
 		this.isOpen = !$event || this.isSelf($event.target as Element) ? !this.isOpen : false;
 		this.expandedOrUndefined = this.isOpen ? true : undefined;
 	}
 
 	private isSelf(el: Element): boolean {
-		return el ? (el === this.element.nativeElement ? true : this.isSelf(el.parentElement)) : false;
+		if (el) {
+			return el === this.element.nativeElement ? true : this.isSelf(el.parentElement);
+		}
+		return false;
 	}
 }

@@ -28,23 +28,23 @@ export class DatepickerSampleComponent {
 		this.maxDate = DatepickerSampleComponent.dateToNgbDateStruct(new Date(new Date().setDate(today.getDate() + 7)));
 	}
 
-	setToday() {
+	setToday(): void {
 		this.model.date = DatepickerSampleComponent.dateToNgbDateStruct(new Date());
 	}
 
-	min() {
+	min(): void {
 		const underMinDate = DatepickerSampleComponent.ngbDateStructToDate(this.minDate);
 		underMinDate.setDate(underMinDate.getDate() - 1);
 		this.model.minMax = DatepickerSampleComponent.dateToNgbDateStruct(underMinDate);
 	}
 
-	max() {
+	max(): void {
 		const overMaxDate = DatepickerSampleComponent.ngbDateStructToDate(this.maxDate);
 		overMaxDate.setDate(overMaxDate.getDate() + 1);
 		this.model.minMax = DatepickerSampleComponent.dateToNgbDateStruct(overMaxDate);
 	}
 
-	private static dateToNgbDateStruct(date: Date) {
+	private static dateToNgbDateStruct(date: Date): NgbDateStruct {
 		return {
 			year: date.getFullYear(),
 			month: date.getMonth() + 1,
@@ -52,7 +52,7 @@ export class DatepickerSampleComponent {
 		};
 	}
 
-	private static ngbDateStructToDate(dateStruct: NgbDateStruct) {
+	private static ngbDateStructToDate(dateStruct: NgbDateStruct): Date {
 		return new Date(dateStruct.year, dateStruct.month - 1, dateStruct.day);
 	}
 }

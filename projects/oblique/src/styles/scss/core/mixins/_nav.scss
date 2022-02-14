@@ -10,8 +10,8 @@
 		background-color: variables.$ob-gray-extra-light;
 		z-index: 1;
 
-		&:after {
-			content: '';
+		&::after {
+			content: "";
 			position: absolute;
 			top: #{$offset}px;
 			bottom: #{$offset}px;
@@ -26,7 +26,7 @@
 	}
 }
 
-@mixin ob-nav-indent($base: 0px) {
+@mixin ob-nav-indent($base: 0) {
 	$base: $base + variables.$ob-spacing-default;
 
 	.ob-nav-tree > li > .ob-nav-link {

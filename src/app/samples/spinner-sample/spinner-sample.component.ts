@@ -15,14 +15,11 @@ export class SpinnerSampleComponent {
 		this.window = window; // because AoT don't accept interfaces as DI
 	}
 
-	toggleSpinner() {
-		switch (this.spinnerVisible) {
-			case false:
-				this.spinnerService.activate(this.channel);
-				break;
-			case true:
-				this.spinnerService.deactivate(this.channel);
-				break;
+	toggleSpinner(): void {
+		if (this.spinnerVisible) {
+			this.spinnerService.activate(this.channel);
+		} else {
+			this.spinnerService.deactivate(this.channel);
 		}
 		if (this.channel === 'default') {
 			this.window.setTimeout(() => this.spinnerService.deactivate(this.channel), 5000);

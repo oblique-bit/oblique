@@ -8,11 +8,7 @@ import {ObISpinnerEvent} from './spinner.model';
 @Component({
 	selector: 'ob-spinner',
 	exportAs: 'obSpinner',
-	template: `<div class="ob-overlay" [class.ob-overlay-fixed]="fixed" [@inOut]="$state">
-		<div class="ob-spinner-viewport" #spinnerContainer>
-			<ob-icon icon="refresh"></ob-icon>
-		</div>
-	</div>`,
+	templateUrl: './spinner.component.html',
 	styleUrls: ['./spinner.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	animations: [
@@ -46,7 +42,7 @@ export class ObSpinnerComponent implements OnInit, OnDestroy {
 			});
 	}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.element.nativeElement.parentElement.classList.add('ob-has-overlay');
 	}
 

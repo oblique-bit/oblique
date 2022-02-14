@@ -1,12 +1,12 @@
-/* eslint-disable */
-(function() {
-	'use strict';
+'use strict';
 
-	var style = document.createElement('div').style;
+(function () {
+	const {style} = document.createElement('div');
 	if (
+		// prettier-ignore
 		!window.localStorage
-		|| style.flex == undefined
-		|| style.grid == undefined
+		|| style.flex === undefined
+		|| style.grid === undefined
 		|| !''.startsWith
 		|| ![].includes
 		|| !Object.values

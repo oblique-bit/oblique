@@ -3,12 +3,6 @@ import {Component} from '@angular/core';
 @Component({
 	selector: 'sc-tabs',
 	templateUrl: './tabs.component.html',
-	styles: [
-		`
-			[role='tabpanel'] {
-				padding: 16px;
-			}
-		`
-	]
+	styleUrls: ['./tabs.component.scss']
 })
 export class TabsComponent {}

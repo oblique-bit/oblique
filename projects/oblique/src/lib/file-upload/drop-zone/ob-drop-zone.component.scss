@@ -39,7 +39,9 @@
 
 	.ob-drop-zone-hints {
 		text-align: center;
-		margin-left: calc(#{variables.$ob-spacing-default} + 42.666px * 1.5); // icon margin + icon font-size * icon size
+		margin-left: calc(
+			#{variables.$ob-spacing-default} + 42.666px * 1.5
+		); // icon margin + icon font-size * icon size
 		margin-bottom: 0;
 	}
 }

@@ -8,7 +8,7 @@ import {ObUnsavedChangesService} from '../unsaved-changes/unsaved-changes.servic
 // TODO: Handle modals
 @Injectable({providedIn: 'root'})
 export class ObUnsavedChangesTabsService {
-	private readonly listener: {[key: string]: Subscription} = {};
+	private readonly listener: Record<string, Subscription> = {};
 
 	constructor(private readonly translateService: TranslateService, private readonly unsavedChanges: ObUnsavedChangesService) {}
 
@@ -21,7 +21,7 @@ export class ObUnsavedChangesTabsService {
 	}
 
 	listenTo(ngbNav: NgbNav): void {
-		const id = ngbNav.items.first.id;
+		const {id} = ngbNav.items.first;
 		if (!this.listener[id]) {
 			this.listener[id] = ngbNav.navChange.subscribe((event: NgbNavChangeEvent): void => {
 				if (!this.ignoreChanges([event.activeId])) {

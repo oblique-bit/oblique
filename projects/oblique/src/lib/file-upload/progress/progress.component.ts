@@ -99,10 +99,10 @@ export class ObProgressComponent implements OnDestroy {
 	}
 
 	private updateFileProgress(event: HttpEvent<HttpEventType.UploadProgress | HttpEventType.Response | HttpEventType.User>, index: number): void {
-		if (event.type !== HttpEventType.User) {
-			this.uploadedFiles.files[index].progress = event.type === HttpEventType.UploadProgress ? Math.round((event.loaded / event.total) * 100) : 100;
-		} else {
+		if (event.type === HttpEventType.User) {
 			this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: (event as {type: HttpEventType; files: File[]}).files});
+		} else {
+			this.uploadedFiles.files[index].progress = event.type === HttpEventType.UploadProgress ? Math.round((event.loaded / event.total) * 100) : 100;
 		}
 		this.uploadedFiles.files[index].completed = event.type === HttpEventType.Response;
 		this.uploadedFiles.files[index].hasError = event.type === HttpEventType.User;

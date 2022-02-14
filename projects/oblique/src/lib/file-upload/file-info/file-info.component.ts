@@ -53,8 +53,11 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	}
 
 	selectOrUnselectAllItems(): void {
-		// eslint-disable-next-line no-unused-expressions
-		this.areAllItemsSelected() ? this.selection.clear() : this.dataSource.data.forEach(row => this.selection.select(row));
+		if (this.areAllItemsSelected()) {
+			this.selection.clear();
+		} else {
+			this.dataSource.data.forEach(row => this.selection.select(row));
+		}
 		this.uploadEvent.emit({type: ObEUploadEventType.SELECTED, files: this.selection.selected.map(file => file.name)});
 	}
 
@@ -94,7 +97,7 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 			);
 	}
 
-	private setTableHeaders(headers: string[]) {
+	private setTableHeaders(headers: string[]): void {
 		this.fields = headers;
 		this.displayedColumns = this.deleteUrl ? [this.COLUMN_SELECT, ...this.fields, this.COLUMN_ACTION] : [this.COLUMN_SELECT, ...this.fields];
 	}

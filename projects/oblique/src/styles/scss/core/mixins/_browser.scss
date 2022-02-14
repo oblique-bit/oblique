@@ -1,5 +1,5 @@
 @mixin ob-firefox() {
-	@supports (-moz-appearance:none) {
+	@supports (-moz-appearance: none) {
 		@content;
 	}
 }

@@ -7,10 +7,11 @@
 	@include shadow.ob-dropShadow($color: core-variables.$ob-gray-dark);
 
 	.mat-dialog-title {
-		@include typography.ob-h6;
+		@include typography.ob-h6();
 		position: relative;
 		margin-bottom: core-variables.$ob-spacing-default + core-variables.$ob-spacing-sm;
 	}
+
 	.mat-button.close {
 		position: absolute;
 		right: -0.5em;
@@ -22,25 +23,29 @@
 
 		&::before,
 		&::after {
-			content: '';
+			content: "";
 			display: block;
 			position: absolute;
 			top: 5px;
 			left: 11px;
 			height: 14px;
 			width: 2px;
-			background-color:  core-variables.$ob-black;
+			background-color: core-variables.$ob-black;
 		}
+
 		&::before {
 			transform: rotate(45deg);
 		}
+
 		&::after {
 			transform: rotate(-45deg);
 		}
 	}
+
 	.mat-dialog-content {
-		@include typography.ob-body1;
+		@include typography.ob-body1();
 	}
+
 	.mat-dialog-actions {
 		margin-top: core-variables.$ob-spacing-default + core-variables.$ob-spacing-sm;
 		justify-content: flex-end;

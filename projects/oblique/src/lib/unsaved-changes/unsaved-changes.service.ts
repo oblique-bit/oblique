@@ -8,11 +8,11 @@ import {Window} from '@popperjs/core';
 @Injectable({providedIn: 'root'})
 export class ObUnsavedChangesService {
 	public isActive = true;
-	private readonly controlContainer: {[key: string]: ControlContainer} = {};
+	private readonly controlContainer: Record<string, ControlContainer> = {};
 
 	constructor(private readonly translateService: TranslateService, private readonly popUpService: ObPopUpService, @Inject(WINDOW) window: Window) {
-		window.addEventListener('beforeunload', e => this.onUnload(e));
-		window.addEventListener('unload', e => this.onUnload(e));
+		window.addEventListener('beforeunload', event => this.onUnload(event));
+		window.addEventListener('unload', event => this.onUnload(event));
 	}
 
 	watch(formId: string, form: ControlContainer): void {
@@ -34,7 +34,7 @@ export class ObUnsavedChangesService {
 		return this.hasPendingChanges(formIds) ? this.popUpService.confirm(this.message()) : true;
 	}
 
-	private onUnload(event: BeforeUnloadEvent) {
+	private onUnload(event: BeforeUnloadEvent): string | null {
 		if (this.hasPendingChanges()) {
 			const confirmationMessage = this.message();
 			event.returnValue = confirmationMessage;

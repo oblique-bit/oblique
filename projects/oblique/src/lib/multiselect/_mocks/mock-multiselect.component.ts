@@ -1,17 +1,11 @@
-import {Component, Input, forwardRef} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {ObMockMultiselectTexts} from './mock-multiselect.texts';
 
 @Component({
 	selector: 'ob-multiselect',
 	exportAs: 'obMultiselect',
-	providers: [
-		{
-			provide: NG_VALUE_ACCESSOR,
-			useExisting: forwardRef(() => ObMockMultiselectComponent),
-			multi: true
-		}
-	],
+	providers: [{provide: NG_VALUE_ACCESSOR, useExisting: ObMockMultiselectComponent, multi: true}],
 	template: ''
 })
 export class ObMockMultiselectComponent implements ControlValueAccessor {
@@ -41,11 +35,11 @@ export class ObMockMultiselectComponent implements ControlValueAccessor {
 	searchFilterText = '';
 	disabled = false;
 
-	onClick(target: HTMLElement) {}
+	onClick(target: HTMLElement): void {}
 
 	onKeyup($event: KeyboardEvent): void {}
 
-	onModelChange: (_: any) => void = (_: any) => {};
+	onModelChange: (value: any) => void = (value: any) => {};
 
 	onModelTouched: () => void = () => {};
 

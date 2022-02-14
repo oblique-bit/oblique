@@ -61,13 +61,14 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		@Inject(OB_BANNER) @Optional() bannerToken
 	) {
 		this.languages = this.formatLanguages();
-		this.propertyChanges();
+		this.customChange();
+		this.smallChange();
 		this.reduceOnScroll();
 		this.banner = {color: '#000', bgColor: '#0f0', ...bannerToken};
 		this.home$ = this.masterLayout.homePageRouteChange$;
 	}
 
-	ngAfterViewInit() {
+	ngAfterViewInit(): void {
 		this.globalEventsService.resize$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.onResize());
 		this.setFocusable(this.masterLayout.layout.isMenuOpened);
 		this.masterLayout.layout.configEvents$
@@ -84,7 +85,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		this.unsubscribe.complete();
 	}
 
-	onResize() {
+	onResize(): void {
 		this.setFocusable(this.masterLayout.layout.isMenuOpened);
 	}
 
@@ -96,7 +97,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		this.translate.use(lang);
 	}
 
-	private addActionClass(elt: ElementRef) {
+	private addActionClass(elt: ElementRef): void {
 		const actionable = ['a', 'button'];
 		if (actionable.includes(elt.nativeElement.nodeName.toLowerCase())) {
 			this.renderer.addClass(elt.nativeElement, 'ob-control-link');
@@ -111,29 +112,28 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		});
 	}
 
-	private reduceOnScroll() {
+	private reduceOnScroll(): void {
 		this.scrollEvents.isScrolled.pipe(takeUntil(this.unsubscribe), scrollEnabled(this.masterLayout.header)).subscribe(isScrolling => {
 			this.isSmall = isScrolling;
 		});
 	}
 
-	private propertyChanges() {
-		const events = [ObEMasterLayoutEventValues.HEADER_IS_CUSTOM, ObEMasterLayoutEventValues.HEADER_IS_SMALL];
+	private customChange(): void {
 		this.masterLayout.header.configEvents$
 			.pipe(
-				filter((evt: ObIMasterLayoutEvent) => events.includes(evt.name)),
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_IS_CUSTOM),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => {
-				switch (event.name) {
-					case ObEMasterLayoutEventValues.HEADER_IS_CUSTOM:
-						this.isCustom = event.value;
-						break;
-					case ObEMasterLayoutEventValues.HEADER_IS_SMALL:
-						this.isSmall = event.value;
-						break;
-				}
-			});
+			.subscribe(event => (this.isCustom = event.value));
+	}
+
+	private smallChange(): void {
+		this.masterLayout.header.configEvents$
+			.pipe(
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_IS_SMALL),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(event => (this.isSmall = event.value));
 	}
 
 	private formatLanguages(): {code: string; id?: string}[] {

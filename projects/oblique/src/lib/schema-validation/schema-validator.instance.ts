@@ -20,7 +20,7 @@ export class ObSchemaValidatorInstance {
 
 		if (this.ajv.getSchema(propertyPath)) {
 			this.ajv.validate(propertyPath, value);
-			if (this.ajv.errors && value != null && value !== '') {
+			if (this.ajv.errors && ![null, undefined, ''].includes(value)) {
 				// when a value is empty, do not check its type
 				const key = this.ajv.errors[0].keyword === 'format' && this.ajv.errors[0].params.format === 'date-time' ? '.date' : '';
 				return {[`ajv.${this.ajv.errors[0].keyword}${key}`]: this.ajv.errors[0].params};
@@ -49,7 +49,7 @@ export class ObSchemaValidatorInstance {
 		return !value && this.isRequired(propertyName, path);
 	}
 
-	private addSchema(schema: any, parentPropertyName?): void {
+	private addSchema(schema: any, parentPropertyName?: string): void {
 		Object.keys(schema.properties || {}).forEach(propertyName => {
 			const propertyPath = parentPropertyName ? `${parentPropertyName}.${propertyName}` : propertyName;
 			if (schema.properties[propertyName].properties) {

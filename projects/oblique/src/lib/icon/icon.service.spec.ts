@@ -28,7 +28,7 @@ describe('IconService', () => {
 	const iconSet1 = `<svg><defs>${icons.test1.literal}</defs></svg>`;
 	const iconSet2 = `<svg><defs>${icons.test2.literal.replace('test_2', 'test_1')}</defs></svg>`;
 
-	const s = new XMLSerializer();
+	const serializer = new XMLSerializer();
 	describe('without config', () => {
 		beforeEach(
 			waitForAsync(() => {
@@ -52,14 +52,14 @@ describe('IconService', () => {
 			it('should register icons', done => {
 				iconService.registerIcons({name: 'test_1', svg: icons.test1.literal});
 				registry.getNamedSvgIcon('test_1').subscribe(svg => {
-					expect(s.serializeToString(svg)).toContain(icons.test1.core);
+					expect(serializer.serializeToString(svg)).toContain(icons.test1.core);
 					done();
 				});
 			});
 			it('should overwrite icons with same name', done => {
 				iconService.registerIcons({name: 'test_1', svg: icons.test1.literal}, {name: 'test_1', svg: icons.test2.literal});
 				registry.getNamedSvgIcon('test_1').subscribe(svg => {
-					expect(s.serializeToString(svg)).toContain(icons.test2.core);
+					expect(serializer.serializeToString(svg)).toContain(icons.test2.core);
 					done();
 				});
 			});
@@ -69,14 +69,14 @@ describe('IconService', () => {
 			it('should register icon sets', done => {
 				iconService.registerIconSets(iconSet1);
 				registry.getNamedSvgIcon('test_1').subscribe(svg => {
-					expect(s.serializeToString(svg)).toContain(icons.test1.core);
+					expect(serializer.serializeToString(svg)).toContain(icons.test1.core);
 					done();
 				});
 			});
 			it('should overwrite icons with same name', done => {
 				iconService.registerIconSets(iconSet1, iconSet2);
 				registry.getNamedSvgIcon('test_1').subscribe(svg => {
-					expect(s.serializeToString(svg)).toContain(icons.test2.core);
+					expect(serializer.serializeToString(svg)).toContain(icons.test2.core);
 					done();
 				});
 			});
@@ -173,7 +173,7 @@ describe('IconService', () => {
 
 		it('should register additional icons', done => {
 			registry.getNamedSvgIcon('test_1').subscribe(svg => {
-				expect(s.serializeToString(svg)).toContain(icons.test1.core);
+				expect(serializer.serializeToString(svg)).toContain(icons.test1.core);
 				done();
 			});
 		});

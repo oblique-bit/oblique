@@ -1,4 +1,5 @@
 @use "sass:selector";
+@use "sass:map";
 @use "../../../styles/scss/core/variables";
 @use "../../../styles/scss/core/mixins/layout";
 
@@ -37,7 +38,7 @@
 	}
 
 	.ob-main-layout {
-		position: relative;	// to prevent a double scrollbar with an ob-screen-reader-only out of the visible area
+		position: relative; // to prevent a double scrollbar with an ob-screen-reader-only out of the visible area
 		flex: 1 1 auto;
 
 		@at-root #{selector.append(".ob-has-layout", &)} {
@@ -67,7 +68,7 @@
 		justify-content: center;
 
 		> * {
-			max-width: map-get(variables.$ob-grid-breakpoints, xl);
+			max-width: map.get(variables.$ob-grid-breakpoints, xl);
 		}
 	}
 }

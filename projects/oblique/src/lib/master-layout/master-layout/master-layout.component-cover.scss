@@ -5,7 +5,7 @@
 .ob-master-layout.ob-has-cover {
 	.ob-cover-layout {
 		flex: 1 1 auto;
-		background-image: url('../../../assets/images/cover-background.jpg');
+		background-image: url("../../../assets/images/cover-background.jpg");
 		background-position: 50% 50%;
 		background-size: cover;
 		background-repeat: no-repeat;
@@ -18,7 +18,12 @@
 	.ob-cover-viewport {
 		overflow-y: auto;
 		overflow-x: hidden;
-		background-color: rgba(color.red(variables.$ob-white), color.green(variables.$ob-white), color.blue(variables.$ob-white), 0.9);
+		background-color: rgba(
+			color.red(variables.$ob-white),
+			color.green(variables.$ob-white),
+			color.blue(variables.$ob-white),
+			90%
+		);
 
 		@include layout.ob-media-breakpoint-up(md) {
 			margin-left: 35%;

@@ -39,7 +39,12 @@
 		transition-duration: variables.$ob-duration-default;
 		transition-timing-function: ease;
 
-		h1, h2, h3, h4, h5, h6 {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
 			color: variables.$ob-default;
 		}
 
@@ -70,7 +75,7 @@
 		}
 
 		.ob-close {
-			@include button.ob-link-btn;
+			@include button.ob-link-btn();
 			font-size: variables.$ob-font-size-biggest;
 			padding: 0;
 			color: variables.$ob-gray-dark;

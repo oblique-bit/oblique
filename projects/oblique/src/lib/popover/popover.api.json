@@ -1,36 +1,36 @@
 {
-    "$schema": "../../../schema.json",
-    "api": [
-      {
-        "name": "ObPopoverDirective",
-        "selector": "[obPopover]",
-        "exported": "obPopover",
-        "usage": "This directive renders a template in a container that is inserted at the end of the body.",
-        "type": "directive",
-        "since": "6.1.0",
-        "updated": "6.1.4",
-        "inputs": [
-          {
-            "name": "obPopover",
-            "text": "The template to be rendered inside the popover.",
-            "type": "TemplateRef",
-            "since": "6.1.0"
-          },
-          {
-            "name": "placement",
-            "text": "Defines the position of the popover relative to its toggle.",
-            "type": "'auto' | 'auto-start' | 'auto-end' | 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'right' | 'right-start' | 'right-end' | 'left' | 'left-start' | 'left-end'",
-            "default": "auto",
-            "since": "6.1.0"
-          },
-          {
-            "name": "popperOptions",
-            "text": "The native options of Popper.js.",
-            "type": "Options",
-            "see": "https://popper.js.org/docs/v2/constructors/",
-            "since": "6.1.0"
-          }
-        ]
-      }
-    ]
-  }
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObPopoverDirective",
+      "selector": "[obPopover]",
+      "exported": "obPopover",
+      "usage": "This directive renders a template in a container that is inserted at the end of the body.",
+      "type": "directive",
+      "since": "6.1.0",
+      "updated": "6.1.4",
+      "inputs": [
+        {
+          "name": "obPopover",
+          "text": "The template to be rendered inside the popover.",
+          "type": "TemplateRef",
+          "since": "6.1.0"
+        },
+        {
+          "name": "placement",
+          "text": "Defines the position of the popover relative to its toggle.",
+          "type": "'auto' | 'auto-start' | 'auto-end' | 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'right' | 'right-start' | 'right-end' | 'left' | 'left-start' | 'left-end'",
+          "default": "auto",
+          "since": "6.1.0"
+        },
+        {
+          "name": "popperOptions",
+          "text": "The native options of Popper.js.",
+          "type": "Options",
+          "see": "https://popper.js.org/docs/v2/constructors/",
+          "since": "6.1.0"
+        }
+      ]
+    }
+  ]
+}

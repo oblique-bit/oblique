@@ -22,11 +22,11 @@ export class ObParentFormDirective implements OnDestroy {
 		this.resetSubject.complete();
 	}
 
-	@HostListener('submit') submit() {
+	@HostListener('submit') submit(): void {
 		this.submitSubject.next();
 	}
 
-	@HostListener('reset') reset() {
+	@HostListener('reset') reset(): void {
 		this.resetSubject.next();
 	}
 }

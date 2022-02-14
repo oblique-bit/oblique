@@ -27,10 +27,20 @@ export class ObStickyComponent implements OnChanges, AfterViewInit {
 	}
 
 	ngAfterViewInit(): void {
-		this.window.setTimeout(() => this.ngOnChanges()); // so that initial values are taken into account
+		this.window.setTimeout(() => this.manageSizes()); // so that initial values are taken into account
 	}
 
 	ngOnChanges(): void {
+		this.manageSizes();
+	}
+
+	private static validateSize(size: string): void {
+		if (size && !ObStickyComponent.SIZES.includes(size)) {
+			throw new Error(`"${size}" is not a valid size.Only "lg", "md" and "sm" are acceptable alternatives.`);
+		}
+	}
+
+	private manageSizes(): void {
 		ObStickyComponent.validateSize(this.headerSize);
 		ObStickyComponent.validateSize(this.footerSize);
 
@@ -41,12 +51,6 @@ export class ObStickyComponent implements OnChanges, AfterViewInit {
 			}
 		} else if (this.stickyFooterTemplate) {
 			this.setMainStickySize(this.footerSize);
-		}
-	}
-
-	private static validateSize(size: string): void {
-		if (size && !ObStickyComponent.SIZES.includes(size)) {
-			throw new Error(`"${size}" is not a valid size.Only "lg", "md" and "sm" are acceptable alternatives.`);
 		}
 	}
 

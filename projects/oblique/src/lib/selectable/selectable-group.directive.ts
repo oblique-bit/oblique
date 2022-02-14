@@ -37,7 +37,7 @@ export class ObSelectableGroupDirective implements AfterContentInit {
 		this.updateSelection();
 	}
 
-	ngAfterContentInit() {
+	ngAfterContentInit(): void {
 		// because we don't want every consumer to pipe defer to avoid an ExpressionChangedAfterItHasBeenCheckedError
 		this.window.setTimeout(() => this.updateSelection());
 	}
@@ -148,12 +148,10 @@ export class ObSelectableGroupDirective implements AfterContentInit {
 	private next(direction: number, $event: KeyboardEvent): void {
 		if (this.mode !== 'checkbox') {
 			$event.preventDefault();
-			/* eslint-disable prettier/prettier */
 			const index =
 				this.mode === 'radio'
 					? (this.focused + this.selectables.length + direction) % this.selectables.length
 					: Math.max(0, Math.min(this.selectables.length - 1, this.focused + direction));
-			/* eslint-enable prettier/prettier */
 			this.toggle(this.selectables[index]);
 			this.selectables[index].focus();
 			this.updateSelection();
@@ -180,7 +178,7 @@ export class ObSelectableGroupDirective implements AfterContentInit {
 			const endFocused = this.selectables.findIndex(item => item === directive);
 			const start = Math.min(this.startFocused, endFocused);
 			const end = Math.max(this.startFocused, endFocused);
-			this.selectables.forEach((item, i) => (item.selected = !(i < start || i > end)));
+			this.selectables.forEach((item, index) => (item.selected = !(index < start || index > end)));
 		} else {
 			this.startFocused = undefined;
 			this.selectables.forEach(item => (item.selected = false));

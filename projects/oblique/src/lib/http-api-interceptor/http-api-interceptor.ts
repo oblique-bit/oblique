@@ -54,7 +54,7 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 		return this.handleError(error, obliqueRequest.notification.active, () => this.notify(obliqueRequest.notification, error.error));
 	}
 
-	private handleError(error: ObIObliqueHttpErrorResponse, hasError: boolean, action: Function) {
+	private handleError(error: ObIObliqueHttpErrorResponse, hasError: boolean, action: Function): Observable<never> {
 		if (!error.handled && hasError) {
 			action();
 			error.handled = true;
@@ -68,9 +68,9 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 
 	private setTimer(): number {
 		// prettier-ignore
-		return !this.config.timeout
-			? undefined
-			: this.window.setTimeout(() => this.notificationService.warning('i18n.oblique.http.error.timeout'), this.config.timeout);
+		return this.config.timeout
+			? this.window.setTimeout(() => this.notificationService.warning('i18n.oblique.http.error.timeout'), this.config.timeout)
+			: undefined;
 	}
 
 	private broadcast(): ObIHttpApiRequest {
@@ -109,8 +109,8 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 			.get([textKey, titleKey])
 			.pipe(
 				map(texts => ({
-					text: texts[textKey] !== textKey ? textKey : 'i18n.oblique.http.error.general',
-					title: texts[titleKey] !== titleKey ? titleKey : error.statusText
+					text: texts[textKey] === textKey ? 'i18n.oblique.http.error.general' : textKey,
+					title: texts[titleKey] === titleKey ? error.statusText : titleKey
 				}))
 			)
 			.subscribe(keys =>

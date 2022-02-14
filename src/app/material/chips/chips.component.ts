@@ -32,7 +32,7 @@ export class ChipsComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.color = this.colors[0];
-		this.filteredTags = this.tagsCtrl.valueChanges.pipe(map((tag: string | null) => (tag ? this._filter(tag) : this._remainingTags())));
+		this.filteredTags = this.tagsCtrl.valueChanges.pipe(map((tag: string | null) => (tag ? this.filter(tag) : this.remainingTags())));
 	}
 
 	toggleStacked(): void {
@@ -45,8 +45,7 @@ export class ChipsComponent implements OnInit {
 
 	add(event: MatChipInputEvent): void {
 		if (!this.matAutocomplete.isOpen) {
-			const value = event.value;
-			const input = event.input;
+			const {input, value} = event;
 
 			if ((value || '').trim()) {
 				this.tags.push(value.trim());
@@ -70,13 +69,13 @@ export class ChipsComponent implements OnInit {
 		this.tagsCtrl.setValue(null);
 	}
 
-	private _filter(value: string): string[] {
+	private filter(value: string): string[] {
 		const filterValue = value.toLowerCase();
 
 		return this.allTags.filter(tag => tag.toLowerCase().startsWith(filterValue));
 	}
 
-	private _remainingTags() {
+	private remainingTags(): string[] {
 		return this.allTags.filter(tag => !this.tags.includes(tag));
 	}
 }

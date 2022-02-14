@@ -1,0 +1,20 @@
+@use "@angular/material" as mat;
+@use "../../core/variables" as core-variables;
+// Changes every px measure native to angular material to its rem equivalent,
+// provided that the base font-size is 16px which is browser's default.
+// example: for 24px ---> 24/16 = 1.5 so 1.5rem
+$custom-typography: mat.define-typography-config(
+	$font-family: core-variables.$ob-font,
+	$display-4: mat.define-typography-level(7rem, 7rem, 300, $letter-spacing: -0.05rem),
+	$display-3: mat.define-typography-level(3.5rem, 3.5rem, 400, $letter-spacing: -0.02rem),
+	$display-2: mat.define-typography-level(2.8125rem, 3rem, 400, $letter-spacing: -0.005rem),
+	$display-1: mat.define-typography-level(2.125rem, 2.5rem, 400),
+	$headline: mat.define-typography-level(1.5rem, 2rem, 400),
+	$title: mat.define-typography-level(1.25rem, 2rem, 500),
+	$subheading-2: mat.define-typography-level(1rem, 1.75rem, 400),
+	$subheading-1: mat.define-typography-level(0.9375rem, 1.5rem, 400),
+	$body-2: mat.define-typography-level(0.875rem, 1.5rem, 500),
+	$body-1: mat.define-typography-level(0.875rem, 1.25rem, 400),
+	$caption: mat.define-typography-level(0.75rem, 1.25rem, 400),
+	$button: mat.define-typography-level(0.875rem, 0.875rem, 500),
+);

@@ -12,13 +12,13 @@
 			justify-self: end;
 		}
 
-		dd, dt {
+		dd,
+		dt {
 			margin: 0;
 		}
 
 		dd + dd {
-			grid-column-start: 2;
-			grid-column-end: 3;
+			grid-column: 2 / 3;
 		}
 	}
 }

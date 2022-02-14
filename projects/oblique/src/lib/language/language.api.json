@@ -34,7 +34,11 @@
           "name": "transform",
           "text": "Formats a date according to current locale and given format and timezone.",
           "returns": "string",
-          "arguments": ["value: string | number | Date", "format = 'datetime'", "timezone?: string"],
+          "arguments": [
+            "value: string | number | Date",
+            "format = 'datetime'",
+            "timezone?: string"
+          ],
           "since": "6.0.0"
         }
       ]

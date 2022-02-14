@@ -103,10 +103,10 @@ describe('ObBreadcrumbComponent', () => {
 			[0, '/path-with-no-label'],
 			[1, '/path-with-no-label/simplepath'],
 			[2, '/path-with-no-label/simplepath/path-with-label']
-		])('should build the url from the routes', (i, expected) => {
+		])('should build the url from the routes', (index, expected) => {
 			component.ngOnInit();
 
-			const el = fixture.debugElement.queryAll(By.css('a'))[i];
+			const el = fixture.debugElement.queryAll(By.css('a'))[index];
 			// NOTE: for un unknown reason, the "https://github.com" part is prepended to the actual URL. This is somewhat related to  https://github.com/angular/angular/blob/master/CHANGELOG.md#router-2
 			expect(el.properties.href).toBe(`https://github.com${expected}`);
 		});
@@ -125,7 +125,7 @@ describe('ObBreadcrumbComponent', () => {
 			const result = component.getCrumbs(null, crumbs);
 			expect(isObservable(result)).toBe(true);
 
-			result.subscribe(r => expect(r).toBe(crumbs));
+			result.subscribe(crumbList => expect(crumbList).toBe(crumbs));
 		});
 	});
 
@@ -215,10 +215,10 @@ describe('ObBreadcrumbComponent', () => {
 		it.each([
 			[0, '/path-with-no-label/param-value-1'],
 			[1, '/path-with-no-label/param-value-1/param-value-2']
-		])('should build the url from the routes', (i, expected) => {
+		])('should build the url from the routes', (index, expected) => {
 			component.ngOnInit();
 
-			const el = fixture.debugElement.queryAll(By.css('a'))[i];
+			const el = fixture.debugElement.queryAll(By.css('a'))[index];
 			// NOTE: for un unknown reason, the "https://github.com" part is prepended to the actual URL. This is somewhat related to  https://github.com/angular/angular/blob/master/CHANGELOG.md#router-2
 			expect(el.properties.href).toBe(`https://github.com${expected}`);
 		});
@@ -349,7 +349,11 @@ describe('ObBreadcrumbComponent', () => {
 	});
 });
 
-function createRoute({path, label, params, firstChild}: {path: string; label?: string; firstChild?: any; params?: {[key: string]: string}}) {
+function createRoute({path, label, params, firstChild}: {path: string; label?: string; firstChild?: any; params?: Record<string, string>}): {
+	routeConfig: {path: string; data: {breadcrumb: string}};
+	snapshot: {params: Record<string, string>};
+	firstChild: any;
+} {
 	return {
 		routeConfig: {
 			path,

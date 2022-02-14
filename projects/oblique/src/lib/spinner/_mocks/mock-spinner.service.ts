@@ -10,9 +10,9 @@ export class ObMockSpinnerService {
 		return of({} as ObISpinnerEvent);
 	}
 
-	activate(channel?: string) {}
+	activate(channel?: string): void {}
 
-	deactivate(channel?: string) {}
+	deactivate(channel?: string): void {}
 
-	forceDeactivate(channel?: string) {}
+	forceDeactivate(channel?: string): void {}
 }

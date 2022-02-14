@@ -56,6 +56,7 @@
 		+ .ob-third:not(.ob-third-flexible) {
 			@include grid.ob-gridWidth(2, 3, 4);
 		}
+
 		+ .ob-third.ob-third-flexible {
 			@include grid.ob-gridWidth(1, 3, 4);
 		}
@@ -64,8 +65,7 @@
 
 .ob-flex {
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	flex-flow: row wrap;
 	gap: variables.$ob-spacing-default;
 
 	+ .ob-flex {

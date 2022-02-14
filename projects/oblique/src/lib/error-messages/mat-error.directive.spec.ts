@@ -3,7 +3,7 @@ import {EMPTY} from 'rxjs';
 
 describe('MatErrorDirective', () => {
 	it('should create an instance', () => {
-		// @ts-ignore
+		// @ts-expect-error
 		const directive = new ObMatErrorDirective(null, null, {onLangChange: EMPTY});
 		expect(directive).toBeTruthy();
 	});

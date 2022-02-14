@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter, map, mergeMap} from 'rxjs/operators';
 import {BehaviorSubject, Observable} from 'rxjs';
+import {getRootRoute} from '../utilities';
 import {ObMasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
 import {ObMasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
 import {ObMasterLayoutNavigationService} from './master-layout-navigation/master-layout-navigation.service';
@@ -12,7 +13,7 @@ import {ObMasterLayoutConfig} from './master-layout.config';
 @Injectable({providedIn: 'root'})
 export class ObMasterLayoutService {
 	public readonly homePageRouteChange$: Observable<string>;
-	private _homePageRoute = this.config.homePageRoute;
+	private homePageRouteInternal = this.config.homePageRoute;
 	private readonly homePageRouteChange = new BehaviorSubject<string>(this.config.homePageRoute);
 
 	constructor(
@@ -31,12 +32,12 @@ export class ObMasterLayoutService {
 	}
 
 	public set homePageRoute(homePageRoute: string) {
-		this._homePageRoute = homePageRoute;
+		this.homePageRouteInternal = homePageRoute;
 		this.homePageRouteChange.next(homePageRoute);
 	}
 
 	public get homePageRoute(): string {
-		return this._homePageRoute;
+		return this.homePageRouteInternal;
 	}
 
 	private routeChange(): void {
@@ -44,12 +45,7 @@ export class ObMasterLayoutService {
 			.pipe(
 				filter(event => event instanceof NavigationEnd),
 				map(() => this.activatedRoute),
-				map(route => {
-					while (route.firstChild) {
-						route = route.firstChild;
-					}
-					return route;
-				}),
+				map(route => getRootRoute(route)),
 				filter(route => route.outlet === 'primary'),
 				mergeMap(route => route.data)
 			)

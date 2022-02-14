@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TestBed, waitForAsync} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {AbstractControl, FormBuilder, FormGroup, FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
 import {WINDOW} from '../utilities';
@@ -61,7 +61,7 @@ describe('SchemaValidation', () => {
 			this.validator = schemaValidationService.compileSchema(schema);
 		}
 
-		ngOnInit() {
+		ngOnInit(): void {
 			this.sampleForm = this.formBuilder.group({
 				string: ['', this.validator.getValidator('string')],
 				object: this.formBuilder.group({
@@ -79,101 +79,85 @@ describe('SchemaValidation', () => {
 			formType: 'template',
 			testComponent: TemplateFormTestComponent,
 			formModule: FormsModule,
-			getControls: (fixture): {[key: string]: AbstractControl} => fixture.debugElement.query(By.directive(NgForm)).injector.get(NgForm).controls
+			getControls: (fixture): Record<string, AbstractControl> => fixture.debugElement.query(By.directive(NgForm)).injector.get(NgForm).controls
 		},
 		{
 			formType: 'model',
 			testComponent: ModelFormTestComponent,
 			formModule: ReactiveFormsModule,
-			getControls: (fixture): {[key: string]: AbstractControl} => fixture.componentInstance.sampleForm.controls
+			getControls: (fixture): Record<string, AbstractControl> => fixture.componentInstance.sampleForm.controls
 		}
 	].forEach(CONFIG => {
 		// TODO: add test for more complex types and required option
 		describe(`in a ${CONFIG.formType} driven form`, () => {
 			let fixture: any;
-			let controls: {[name: string]: AbstractControl};
-			let subproperties: {[name: string]: AbstractControl};
+			let controls: Record<string, AbstractControl>;
+			let subproperties: Record<string, AbstractControl>;
 
-			beforeEach(
-				waitForAsync(() => {
-					TestBed.configureTestingModule({
-						declarations: [CONFIG.testComponent, ObSchemaValidationDirective, ObSchemaValidateDirective],
-						imports: [CONFIG.formModule],
-						providers: [{provide: WINDOW, useValue: window}]
-					}).compileComponents();
-				})
-			);
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					declarations: [CONFIG.testComponent, ObSchemaValidationDirective, ObSchemaValidateDirective],
+					imports: [CONFIG.formModule],
+					providers: [{provide: WINDOW, useValue: window}]
+				}).compileComponents();
+			});
 
-			beforeEach(
-				waitForAsync(() => {
-					fixture = TestBed.createComponent<any>(CONFIG.testComponent);
+			beforeEach(() => {
+				fixture = TestBed.createComponent<any>(CONFIG.testComponent);
+				fixture.detectChanges();
+
+				fixture.whenStable().then(() => {
+					controls = CONFIG.getControls(fixture);
+					subproperties = (controls.object as FormGroup).controls;
+				});
+			});
+
+			it('should add no errors if input is valid', () => {
+				fixture.whenStable().then(() => {
+					controls.string.setValue('validVal');
 					fixture.detectChanges();
 
-					fixture.whenStable().then(() => {
-						controls = CONFIG.getControls(fixture);
-						subproperties = (controls.object as FormGroup).controls;
+					expect(controls.string.errors).toBeNull();
+				});
+			});
+
+			it('should add error object if input is invalid', () => {
+				fixture.whenStable().then(() => {
+					controls.string.setValue('wayTooLongStringForTheMaxLength10');
+					// ngControls['string'].valueAccessor.writeValue('wayTooLongStringForTheMaxLength10');
+					fixture.detectChanges();
+
+					expect(controls.string.errors).not.toBeNull();
+					expect(controls.string.errors).toEqual({
+						'ajv.maxLength': {
+							limit: 10
+						}
 					});
-				})
-			);
+				});
+			});
 
-			it(
-				'should add no errors if input is valid',
-				waitForAsync(() => {
-					fixture.whenStable().then(() => {
-						controls.string.setValue('validVal');
-						fixture.detectChanges();
+			it('should add no errors if subproperty is valid', () => {
+				fixture.whenStable().then(() => {
+					subproperties.subproperty.setValue(42);
+					fixture.detectChanges();
 
-						expect(controls.string.errors).toBeNull();
+					expect(subproperties.subproperty.errors).toBeNull();
+				});
+			});
+
+			it('should add error object if subproperty is invalid', () => {
+				fixture.whenStable().then(() => {
+					subproperties.subproperty.setValue('aStringForANumberField');
+					fixture.detectChanges();
+
+					expect(subproperties.subproperty.errors).not.toBeNull();
+					expect(subproperties.subproperty.errors).toEqual({
+						'ajv.type': {
+							type: 'number'
+						}
 					});
-				})
-			);
-
-			it(
-				'should add error object if input is invalid',
-				waitForAsync(() => {
-					fixture.whenStable().then(() => {
-						controls.string.setValue('wayTooLongStringForTheMaxLength10');
-						// ngControls['string'].valueAccessor.writeValue('wayTooLongStringForTheMaxLength10');
-						fixture.detectChanges();
-
-						expect(controls.string.errors).not.toBeNull();
-						expect(controls.string.errors).toEqual({
-							'ajv.maxLength': {
-								limit: 10
-							}
-						});
-					});
-				})
-			);
-
-			it(
-				'should add no errors if subproperty is valid',
-				waitForAsync(() => {
-					fixture.whenStable().then(() => {
-						subproperties.subproperty.setValue(42);
-						fixture.detectChanges();
-
-						expect(subproperties.subproperty.errors).toBeNull();
-					});
-				})
-			);
-
-			it(
-				'should add error object if subproperty is invalid',
-				waitForAsync(() => {
-					fixture.whenStable().then(() => {
-						subproperties.subproperty.setValue('aStringForANumberField');
-						fixture.detectChanges();
-
-						expect(subproperties.subproperty.errors).not.toBeNull();
-						expect(subproperties.subproperty.errors).toEqual({
-							'ajv.type': {
-								type: 'number'
-							}
-						});
-					});
-				})
-			);
+				});
+			});
 		});
 	});
 });

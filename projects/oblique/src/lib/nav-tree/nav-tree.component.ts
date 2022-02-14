@@ -48,11 +48,11 @@ export class ObNavTreeComponent implements OnDestroy {
 
 	@Input()
 	patternMatcher(item: ObNavTreeItemModel, pattern = ''): boolean {
-		pattern = pattern.replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
+		const text = pattern.replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
 		const label = this.translate.instant(item.label, item.labelParams);
-		const match = new RegExp(pattern, 'gi').test(label);
+		const match = new RegExp(text, 'gi').test(label);
 		const childMatch = (item.items || []).some(subItem => {
-			const subMatch = this.patternMatcher(subItem, pattern.replace(/\\/g, ''));
+			const subMatch = this.patternMatcher(subItem, text.replace(/\\/g, ''));
 			if (subMatch) {
 				// Ensure parent item is not collapsed:
 				item.collapsed = false;
@@ -62,16 +62,16 @@ export class ObNavTreeComponent implements OnDestroy {
 		return match || childMatch;
 	}
 
-	visible(item: ObNavTreeItemModel) {
+	visible(item: ObNavTreeItemModel): boolean {
 		return !this.filterPattern || this.patternMatcher(item, this.filterPattern);
 	}
 
-	itemKey(item: ObNavTreeItemModel) {
+	itemKey(item: ObNavTreeItemModel): string {
 		return `${this.prefix}-${item.id}`;
 	}
 
 	// TODO: remove when https://github.com/angular/angular/issues/13205
-	isLinkActive(rla: RouterLinkActive, item: ObNavTreeItemModel) {
+	isLinkActive(rla: RouterLinkActive, item: ObNavTreeItemModel): boolean {
 		const isLinkActive = rla.isActive;
 		return item.fragment ? isLinkActive && this.activeFragment === item.fragment : isLinkActive;
 	}
@@ -88,23 +88,21 @@ export class ObNavTreeComponent implements OnDestroy {
 	}
 
 	// Public API:
-	public collapseAll() {
+	public collapseAll(): void {
 		this.changeCollapsed(this.items, true, true);
 	}
 
-	public expandAll() {
+	public expandAll(): void {
 		this.changeCollapsed(this.items, false, true);
 	}
 }
 
-export function defaultLabelFormatterFactory(translate: TranslateService) {
+export function defaultLabelFormatterFactory(translate: TranslateService): (item: ObNavTreeItemModel, filterPattern: string) => string {
 	// noinspection UnnecessaryLocalVariableJS because this will result in a build error
-	const formatter = (item: ObNavTreeItemModel, filterPattern: string) => {
-		filterPattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
-		const label = translate.instant(item.label, item.labelParams);
-		return !filterPattern
-			? label
-			: label.replace(new RegExp(filterPattern, 'ig'), text => `<span class="${ObNavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`);
+	const formatter = (item: ObNavTreeItemModel, filterPattern: string): string => {
+		const pattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
+		const label: string = translate.instant(item.label, item.labelParams);
+		return pattern ? label.replace(new RegExp(pattern, 'ig'), text => `<span class="${ObNavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`) : label;
 	};
 
 	return formatter;

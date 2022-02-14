@@ -53,7 +53,7 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 		this.useFontAwesomeIcon = !useObliqueIcon;
 	}
 
-	ngAfterViewInit() {
+	ngAfterViewInit(): void {
 		this.toggles.changes.pipe(mergeMap(() => this.scroll.scrolled)).subscribe(() => this.center());
 		this.toggleLeftIcon$ = this.getToggleDirection(this.columnLeft, 'left', 'right');
 		this.toggleRightIcon$ = this.getToggleDirection(this.columnRight, 'right', 'left');
@@ -85,13 +85,11 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 		expandedDirection: ObIToggleDirection,
 		collapsedDirection: ObIToggleDirection
 	): Observable<ObIToggleDirection> {
-		if (column?.toggled) {
-			return column.toggled.pipe(
-				startWith(false),
-				delay(0),
-				map(collapsed => (collapsed ? collapsedDirection : expandedDirection))
-			);
-		}
+		return column?.toggled?.pipe(
+			startWith(false),
+			delay(0),
+			map(collapsed => (collapsed ? collapsedDirection : expandedDirection))
+		);
 	}
 
 	private center(): void {

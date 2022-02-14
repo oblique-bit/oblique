@@ -2,12 +2,12 @@
 @use "../../../styles/scss/core/mixins/layout";
 @use "../../../styles/scss/core/mixins/shadow";
 
-.ob-master-layout-navigation  {
+.ob-master-layout-navigation {
 	> ul {
-		transition: padding variables.$ob-duration-default;	// because navigation-scrollable-* classes are dynamic
+		transition: padding variables.$ob-duration-default; // because navigation-scrollable-* classes are dynamic
 	}
 
-	&.navigation-scrollable  {
+	&.navigation-scrollable {
 		position: relative;
 
 		.ob-navigation-scrollable-control {
@@ -36,6 +36,7 @@
 				&.ob-navigation-scrollable-control-left {
 					@include shadow.ob-innerBottomShadow();
 				}
+
 				&.ob-navigation-scrollable-control-right {
 					@include shadow.ob-innerBottomShadow();
 				}

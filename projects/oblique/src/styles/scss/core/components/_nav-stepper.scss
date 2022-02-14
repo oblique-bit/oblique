@@ -3,8 +3,7 @@
 
 .ob-nav-stepper {
 	display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
+	flex-flow: column nowrap;
 	list-style-type: none;
 	margin-bottom: 0;
 	padding-left: 0;
@@ -15,7 +14,7 @@
 		flex-grow: 1;
 		position: relative;
 
-		&:before {
+		&::before {
 			content: counter(li-counter);
 			counter-increment: li-counter;
 			text-align: center;
@@ -27,8 +26,8 @@
 			z-index: 1;
 		}
 
-		&:after {
-			content: '';
+		&::after {
+			content: "";
 			position: absolute;
 			top: 0;
 			right: 0;
@@ -46,15 +45,29 @@
 		}
 
 		&.active {
-			@include stepper.ob-stepper-state(variables.$ob-white, variables.$ob-primary, variables.$ob-primary);
+			@include stepper.ob-stepper-state(
+				variables.$ob-white,
+				variables.$ob-primary,
+				variables.$ob-primary
+			);
 		}
 
 		&.success {
-			@include stepper.ob-stepper-state(variables.$ob-success, variables.$ob-white, variables.$ob-success, variables.$ob-success-light, true);
+			@include stepper.ob-stepper-state(
+				variables.$ob-success,
+				variables.$ob-white,
+				variables.$ob-success,
+				variables.$ob-success-light,
+				true
+			);
 		}
 
 		&.disabled {
-			@include stepper.ob-stepper-state(variables.$ob-gray-dark, variables.$ob-white, variables.$ob-gray-dark);
+			@include stepper.ob-stepper-state(
+				variables.$ob-gray-dark,
+				variables.$ob-white,
+				variables.$ob-gray-dark
+			);
 
 			.ob-step-link {
 				color: variables.$ob-gray-dark;
@@ -77,15 +90,24 @@
 	}
 
 	&:not(.ob-nav-stepper-sm):not(.ob-nav-stepper-lg) {
-		@include stepper.ob-stepper-variant(variables.$ob-stepper-font-size, variables.$ob-stepper-size);
+		@include stepper.ob-stepper-variant(
+			variables.$ob-stepper-font-size,
+			variables.$ob-stepper-size
+		);
 	}
 
 	&.ob-nav-stepper-sm {
-		@include stepper.ob-stepper-variant(variables.$ob-stepper-sm-font-size, variables.$ob-stepper-size-sm);
+		@include stepper.ob-stepper-variant(
+			variables.$ob-stepper-sm-font-size,
+			variables.$ob-stepper-size-sm
+		);
 	}
 
 	&.ob-nav-stepper-lg {
-		@include stepper.ob-stepper-variant(variables.$ob-stepper-lg-font-size, variables.$ob-stepper-size-lg);
+		@include stepper.ob-stepper-variant(
+			variables.$ob-stepper-lg-font-size,
+			variables.$ob-stepper-size-lg
+		);
 	}
 
 	&:not(.ob-nav-horizontal) .ob-nav-step {

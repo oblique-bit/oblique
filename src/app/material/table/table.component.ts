@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatSort} from '@angular/material/sort';
-import {MatPaginator} from '@angular/material/paginator';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {ObIPeriodicElement} from './table.model';
 
@@ -52,7 +52,7 @@ export class TableComponent implements OnInit {
 	private readonly SORT_DIRECTION_ASCENDING = 'asc';
 	private readonly SORT_DIRECTION_DESCENDING = 'desc';
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.displayedColumns = [this.COLUMN_NAME_POSITION, this.COLUMN_NAME_NAME, this.COLUMN_NAME_WEIGHT, this.COLUMN_NAME_SYMBOL];
 		this.dataSource.sort = this.sort;
 		this.dataSource.paginator = this.paginator;
@@ -62,18 +62,18 @@ export class TableComponent implements OnInit {
 		});
 	}
 
-	updateFooterRow() {
-		this.totalWeight = this.dataSource.data.map(x => x.weight).reduce((a, b) => a + b, 0);
+	updateFooterRow(): void {
+		this.totalWeight = this.dataSource.data.map(item => item.weight).reduce((total, current) => total + current, 0);
 	}
 
-	updateFooterRowByPage(page: any) {
+	updateFooterRowByPage(page: PageEvent): void {
 		const elementsCount = (page.pageIndex + 1) * page.pageSize;
 		const firstIndex = page.pageIndex * page.pageSize;
 		const visibleElements = this.dataSource.data.slice(firstIndex, firstIndex + elementsCount);
-		this.totalWeight = visibleElements.map(x => x.weight).reduce((a, b) => a + b, 0);
+		this.totalWeight = visibleElements.map(item => item.weight).reduce((total, current) => total + current, 0);
 	}
 
-	applyFilter(event) {
+	applyFilter(event): void {
 		const filter = event.target.value;
 		if (filter === undefined) {
 			this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
@@ -83,18 +83,21 @@ export class TableComponent implements OnInit {
 		this.updateFooterRow();
 	}
 
-	isAllSelected() {
+	isAllSelected(): boolean {
 		const numSelected = this.selection.selected.length;
 		const numRows = this.dataSource.data.length;
 		return numSelected === numRows;
 	}
 
-	masterToggle() {
-		// eslint-disable-next-line no-unused-expressions
-		this.isAllSelected() ? this.selection.clear() : this.dataSource.data.forEach(row => this.selection.select(row));
+	masterToggle(): void {
+		if (this.isAllSelected()) {
+			this.selection.clear();
+		} else {
+			this.dataSource.data.forEach(row => this.selection.select(row));
+		}
 	}
 
-	toggleSelectionVisibility() {
+	toggleSelectionVisibility(): void {
 		if (this.displayedColumns.indexOf(this.COLUMN_NAME_SELECT) === 0) {
 			this.displayedColumns.shift();
 		} else {
@@ -102,11 +105,11 @@ export class TableComponent implements OnInit {
 		}
 	}
 
-	toggleFlexTableVisibility() {
+	toggleFlexTableVisibility(): void {
 		this.flexTable = !this.flexTable;
 	}
 
-	toggleTableClass(stylingClass: string) {
+	toggleTableClass(stylingClass: string): void {
 		if (this.tableClasses.includes(stylingClass)) {
 			if (stylingClass === this.OBLIQUE_CLASS_TABLE) {
 				this.obliqueStylingActive = false;
@@ -122,7 +125,7 @@ export class TableComponent implements OnInit {
 		}
 	}
 
-	toggleTableParentClass(stylingClass: string) {
+	toggleTableParentClass(stylingClass: string): void {
 		if (this.tableParentClasses.includes(stylingClass)) {
 			this.tableParentClasses.splice(this.tableParentClasses.indexOf(stylingClass), 1);
 		} else {
@@ -130,7 +133,7 @@ export class TableComponent implements OnInit {
 		}
 	}
 
-	sortData(event: any) {
+	sortData(event: any): void {
 		const sortColumn = event.active;
 		const sortDirection = event.direction;
 		this.dataSource = new MatTableDataSource(

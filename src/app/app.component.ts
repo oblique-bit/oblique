@@ -1,28 +1,21 @@
 import {Component} from '@angular/core';
-import {ObINavigationLink, ObISearchWidgetItem} from '@oblique/oblique';
+import {ObIJumpLink, ObINavigationLink, ObISearchWidgetItem} from '@oblique/oblique';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {ObIJumpLink} from 'projects/oblique/src/lib/master-layout/master-layout.model';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
 import {FONTS, THEMES, ThemeService} from './common/theme.service';
 
 @Component({
 	selector: 'sc-root',
 	templateUrl: './app.component.html',
-	styles: [
-		`
-			.fa-sign-in-alt {
-				transition: transform 600ms;
-			}
-		`
-	]
+	styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
 	offCanvasOpen = false;
 	theme$: Observable<string>;
 	font$: Observable<string>;
 	navigation: ObINavigationLink[] = [
-		{url: 'home', label: 'i18n.routes.home.title', fragment: 'test', queryParams: {a: 'a', b: 'b'}},
+		{url: 'home', label: 'i18n.routes.home.title', fragment: 'test', queryParams: {param1: 'a', param2: 'b'}},
 		{url: 'http://www.google.ch', label: 'Google'},
 		{url: 'http://www.google.ch', label: 'Google 2', sameTarget: true},
 		{
@@ -89,7 +82,7 @@ export class AppComponent {
 				{url: 'list-group', label: 'List group'},
 				{url: 'http://www.google.ch', label: 'Google'},
 				{url: 'http://www.google.ch', label: 'Google 2', sameTarget: true},
-				{url: 'tabs', label: 'Tabs', fragment: 'test', queryParams: {a: 'a', b: 'b'}}
+				{url: 'tabs', label: 'Tabs', fragment: 'test', queryParams: {param1: 'a', param2: 'b'}}
 			]
 		},
 		{
@@ -134,7 +127,7 @@ export class AppComponent {
 		});
 	}
 
-	toggleTheme() {
+	toggleTheme(): void {
 		this.theme.setTheme(this.theme.isMaterial() ? THEMES.BOOTSTRAP : THEMES.MATERIAL);
 	}
 
@@ -144,7 +137,7 @@ export class AppComponent {
 
 	populateSearchItems(items: ObINavigationLink[], base = ''): void {
 		items.forEach((item: ObINavigationLink) => {
-			const url = item.url;
+			const {url} = item;
 			if (item.children) {
 				this.populateSearchItems(item.children, url);
 			} else {

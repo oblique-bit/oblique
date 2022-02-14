@@ -95,8 +95,6 @@ describe('ObMasterLayoutComponent', () => {
 		testLayoutProperty('hasLayout', 'LAYOUT_HAS_DEFAULT_LAYOUT');
 		testLayoutProperty('isMenuOpened', 'IS_MENU_OPENED');
 		testLayoutProperty('hasOffCanvas', 'LAYOUT_HAS_OFF_CANVAS');
-		testComponentProperty('isHeaderSticky', 'HEADER_IS_STICKY');
-		testComponentProperty('isFooterSticky', 'FOOTER_IS_STICKY');
 
 		function testLayoutProperty(property: string, enumName: string): void {
 			describe(property, () => {
@@ -110,6 +108,26 @@ describe('ObMasterLayoutComponent', () => {
 			});
 		}
 
+		describe('isHeaderSticky', () => {
+			it('should be defined', () => {
+				expect(component.isHeaderSticky).toBe(mockMasterLayoutService.header.isSticky);
+			});
+			it('should be updated with the service', () => {
+				mockMasterLayoutService.header.configEvents$.next({name: ObEMasterLayoutEventValues.HEADER_IS_STICKY, value: true});
+				expect(component.isHeaderSticky).toBe(true);
+			});
+		});
+
+		describe('isFooterSticky', () => {
+			it('should be defined', () => {
+				expect(component.isFooterSticky).toBe(mockMasterLayoutService.footer.isSticky);
+			});
+			it('should be updated with the service', () => {
+				mockMasterLayoutService.footer.configEvents$.next({name: ObEMasterLayoutEventValues.FOOTER_IS_STICKY, value: true});
+				expect(component.isFooterSticky).toBe(true);
+			});
+		});
+
 		describe('noNavigation', () => {
 			it('should be defined', () => {
 				expect(component.noNavigation).toBe(true);
@@ -119,18 +137,6 @@ describe('ObMasterLayoutComponent', () => {
 				expect(component.noNavigation).toBe(false);
 			});
 		});
-
-		function testComponentProperty(property: string, enumName: string): void {
-			describe(property, () => {
-				it('should be defined', () => {
-					expect(component[property]).toBe(false);
-				});
-				it('should be updated with the service', () => {
-					mockMasterLayoutService.layout.configEvents$.next({name: ObEMasterLayoutEventValues[enumName], value: true});
-					expect(component[property]).toBe(true);
-				});
-			});
-		}
 
 		it('should have a isScrolling property', () => {
 			expect(component.isScrolling).toBe(false);

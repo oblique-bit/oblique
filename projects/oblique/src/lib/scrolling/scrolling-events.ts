@@ -3,10 +3,10 @@ import {BehaviorSubject, Observable, Subject} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class ObScrollingEvents {
-	private readonly _scrolling = new Subject<boolean>();
-	private readonly scrolling$ = this._scrolling.asObservable();
-	private readonly _scrolled = new BehaviorSubject<number>(0);
-	private readonly scrolled$ = this._scrolled.asObservable();
+	private readonly scrollingInternal = new Subject<boolean>();
+	private readonly scrolling$ = this.scrollingInternal.asObservable();
+	private readonly scrolledInternal = new BehaviorSubject<number>(0);
+	private readonly scrolled$ = this.scrolledInternal.asObservable();
 
 	get isScrolled(): Observable<boolean> {
 		return this.scrolling$;
@@ -17,10 +17,10 @@ export class ObScrollingEvents {
 	}
 
 	scrolling(isScrolling: boolean): void {
-		this._scrolling.next(isScrolling);
+		this.scrollingInternal.next(isScrolling);
 	}
 
-	hasScrolled(offset: number) {
-		this._scrolled.next(offset);
+	hasScrolled(offset: number): void {
+		this.scrolledInternal.next(offset);
 	}
 }

@@ -1,4 +1,4 @@
-@use '../../core/variables';
+@use "../../core/variables";
 
 .mat-expansion-panel-header {
 	height: 48px;
@@ -9,8 +9,8 @@
 	}
 
 	&:hover:not([aria-disabled="true"]) {
-		 .mat-expansion-panel:not(.mat-expanded) & {
-			 background: variables.$ob-gray-lighter;
-		 }
+		.mat-expansion-panel:not(.mat-expanded) & {
+			background: variables.$ob-gray-lighter;
+		}
 	}
 }

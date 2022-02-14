@@ -1,8 +1,7 @@
 {
   "extends": "../tsconfig.json",
-  "compilerOptions": {},
-  "files": [
-    "main.ts",
-    "polyfills.ts"
-  ]
+  "compilerOptions": {
+    "module": "esnext"
+  },
+  "files": ["main.ts", "polyfills.ts"]
 }

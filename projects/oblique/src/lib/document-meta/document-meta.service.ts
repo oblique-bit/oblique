@@ -5,6 +5,7 @@ import {DOCUMENT} from '@angular/common';
 import {TranslateService} from '@ngx-translate/core';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
+import {getRootRoute} from '../utilities';
 
 /**
  * DocumentMetaService - Service for updating document metadata
@@ -41,12 +42,7 @@ export class ObDocumentMetaService implements OnDestroy {
 			.pipe(
 				filter(event => event instanceof NavigationEnd),
 				map(() => this.activatedRoute),
-				map(route => {
-					while (route.firstChild) {
-						route = route.firstChild;
-					}
-					return route;
-				}),
+				map(route => getRootRoute(route)),
 				filter(route => route.outlet === 'primary'),
 				mergeMap(route => route.data),
 				takeUntil(this.unsubscribe)
@@ -63,13 +59,13 @@ export class ObDocumentMetaService implements OnDestroy {
 		this.unsubscribe.complete();
 	}
 
-	public setTitle(title: string, separator: string = this.titleSeparator, suffix: string = this.titleSuffix) {
+	public setTitle(title: string, separator: string = this.titleSeparator, suffix: string = this.titleSuffix): void {
 		if (title) {
 			this.translate
 				.get([title, suffix])
 				.pipe(
 					takeUntil(this.unsubscribe),
-					map(translation => (translation[suffix] ? `${translation[title]}${separator}${translation[suffix]}` : translation[title]))
+					map((translation: Record<string, string>) => (translation[suffix] ? `${translation[title]}${separator}${translation[suffix]}` : translation[title]))
 				)
 				.subscribe(text => this.titleService.setTitle(text));
 		} else if (suffix) {
@@ -81,7 +77,7 @@ export class ObDocumentMetaService implements OnDestroy {
 		return this.metaDescription.getAttribute('content');
 	}
 
-	public setDescription(description: string) {
+	public setDescription(description: string): void {
 		if (description && description !== '') {
 			this.translate
 				.get(description)
@@ -104,7 +100,7 @@ export class ObDocumentMetaService implements OnDestroy {
 		return meta;
 	}
 
-	private updateMetaInformation() {
+	private updateMetaInformation(): void {
 		this.setTitle(this.currentMetaInformation.title);
 		this.setDescription(this.currentMetaInformation.description);
 	}

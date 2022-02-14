@@ -139,7 +139,7 @@ describe('NavTreeComponent', () => {
 	});
 
 	it('should add URL query params to `href` attribute', () => {
-		const urlQueryParams = `foo=${testComponent.items[0].queryParams.foo}`;
+		const urlQueryParams = `foo=${testComponent.items[0].queryParams.foo as string}`;
 
 		// [routerLink] directive adds `[href]` attribute to nav item links:
 		const firstNavItem = fixture.debugElement.query(By.css('a.ob-nav-link'));

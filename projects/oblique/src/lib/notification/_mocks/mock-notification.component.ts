@@ -11,7 +11,7 @@ export class ObMockNotificationComponent {
 	@Input() channel: string;
 	customChannel = false;
 	notifications: ObINotification[] = [];
-	variant: {[type: string]: string} = {};
+	variant: Record<string, string> = {};
 
 	open(notification: ObINotification): void {}
 

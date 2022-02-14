@@ -15,7 +15,7 @@ export class ObOffCanvasBackdropDirective implements OnInit, OnDestroy {
 	constructor(private readonly offCanvas: ObOffCanvasService, private readonly globalEventsService: ObGlobalEventsService) {}
 
 	@HostListener('click')
-	close() {
+	close(): void {
 		this.offCanvas.open = false;
 	}
 

@@ -54,7 +54,7 @@ export class ObLanguageService {
 		this.translate.use(this.getCurrentLang(languages, defaultLanguage));
 	}
 
-	private languageChange(locales: string[], renderer: Renderer2, html: HTMLElement) {
+	private languageChange(locales: string[], renderer: Renderer2, html: HTMLElement): void {
 		this.translate.onLangChange.pipe(map(lang => lang.lang)).subscribe(lang => {
 			localStorage.setItem(ObLanguageService.token, lang);
 			renderer.setAttribute(html, 'lang', lang);

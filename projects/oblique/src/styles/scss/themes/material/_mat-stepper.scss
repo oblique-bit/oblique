@@ -78,7 +78,7 @@
 	border-color: variables.$ob-primary;
 }
 
-[ng-reflect-state=done] {
+[ng-reflect-state="done"] {
 	&.mat-horizontal-stepper-header::before,
 	&.mat-horizontal-stepper-header::after,
 	& ~ .mat-stepper-horizontal-line,
@@ -87,7 +87,7 @@
 	}
 }
 
-[ng-reflect-active=false] {
+[ng-reflect-active="false"] {
 	&.mat-horizontal-stepper-header::before,
 	&.mat-horizontal-stepper-header::after,
 	& ~ .mat-stepper-horizontal-line,
@@ -110,9 +110,10 @@ $padding-lg: 32px;
 $offset-sm: 28px;
 $offset-md: 36px;
 $offset-lg: 51px;
+
 .mat-stepper-horizontal {
 	@at-root #{selector.append(".mat-stepper-label-position-bottom", &)},
-	& {
+		& {
 		.mat-horizontal-stepper-header {
 			padding: $padding-md;
 
@@ -192,4 +193,3 @@ $offset-lg: 51px;
 		padding: 0 $padding-sm $padding-sm $padding-sm;
 	}
 }
-

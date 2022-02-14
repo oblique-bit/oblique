@@ -7,20 +7,7 @@ import {ObUnsavedChangesService} from '@oblique/oblique';
 @Component({
 	selector: 'sc-unsaved-changes',
 	templateUrl: './unsaved-changes-sample.component.html',
-	styles: [
-		`
-			.unsaved-changes .form-horizontal label {
-				text-align: right;
-			}
-
-			/*noinspection CssUnusedSymbol*/
-			.unsaved-changes .tab-content {
-				padding: 15px;
-				border: 1px solid #ddd;
-				border-top-width: 0;
-			}
-		`
-	],
+	styleUrls: ['./unsaved-changes-sample.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -47,7 +34,7 @@ export class UnsavedChangesSampleComponent implements OnInit {
 		private readonly unsavedChangesService: ObUnsavedChangesService
 	) {}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.standAloneReactive = this.formBuilder.group({text: '', number: '', integer: '', date: ['f', Validators.required]});
 		this.nestedReactive = this.formBuilder.group({
 			form4: this.formBuilder.group({text: '', number: '', integer: '', date: ''}),
@@ -58,7 +45,7 @@ export class UnsavedChangesSampleComponent implements OnInit {
 		this.tabForm9Reactive = this.formBuilder.group({text: '', number: '', integer: '', date: ''});
 	}
 
-	modal() {
+	modal(): void {
 		this.modalService.open(UnsavedChangesSampleModalComponent, {
 			beforeDismiss: () => this.unsavedChangesService.ignoreChanges(['template'])
 		});

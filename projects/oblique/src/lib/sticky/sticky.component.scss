@@ -32,11 +32,9 @@
 	.ob-sticky-title {
 		margin: 0;
 		padding: 0;
-
 		color: variables.$ob-gray-darker;
 		font-size: 22px;
 		line-height: 38px;
-
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		overflow: hidden;
@@ -102,7 +100,12 @@
 			height: variables.$ob-sticky-element-height-lg;
 		}
 
-		h1, h2, h3, h4, h5, h6 {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
 			font-size: 28px;
 			line-height: 50px;
 		}

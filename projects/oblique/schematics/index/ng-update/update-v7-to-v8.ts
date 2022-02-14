@@ -1,3 +1,4 @@
+/* eslint-disable prefer-named-capture-group */
 import {Rule, SchematicContext, Tree, chain, externalSchematic} from '@angular-devkit/schematics';
 import {addDevDependency, addScript, getTemplate, removeDevDependencies, removeScript} from '../ng-add/ng-add-utils';
 import {
@@ -48,7 +49,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private prefixScssVariableNames(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Prefix scss variable names');
-			const apply = (filePath: string) => {
+			const apply = (filePath: string): void => {
 				[
 					// Palette CI-CD colors
 					'venetian-red',
@@ -194,7 +195,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private prefixMixinNames(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Prefix mixin names');
-			const apply = (filePath: string) => {
+			const apply = (filePath: string): void => {
 				[
 					'callout-styles',
 					'firefox',
@@ -255,7 +256,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private removeLayoutCollapse(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Replacing layout-collapse mixins');
-			const apply = (filePath: string) => {
+			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /(?:ob-)?layout-collapse-(up|down)(?:\(\))?/g, `ob-media-breakpoint-$1(md)`);
 			};
 			return applyInTree(tree, apply, '*.scss');
@@ -265,7 +266,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private removeObMandatory(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Remove ObMandatoryModule, ObMandatoryDirective and their Testing-Mocks');
-			const apply = (filePath: string) => {
+			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, new RegExp(/\s?(Ob(?:Mock)?Mandatory(?:Module|Directive),?)/g), '');
 			};
 			return applyInTree(tree, apply, '*.ts');
@@ -275,7 +276,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private removeDlHorizontalVariants(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Remove .ob-horizontal-* classes');
-			const apply = (filePath: string) => {
+			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, new RegExp(/\s?ob-horizontal-(?:large|small)/g), '');
 			};
 			return applyInTree(tree, apply, '*.html');
@@ -294,7 +295,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private removeThemeService(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Remove ObThemeService');
-			const apply = (filePath: string) => {
+			const apply = (filePath: string): void => {
 				const fileContent = readFile(tree, filePath);
 				if (fileContent.includes('ObThemeService')) {
 					const service = /(?<service>\w*)\s*:\s*ObThemeService,?/.exec(fileContent)?.groups?.service;
@@ -342,7 +343,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private migrateMasterLayoutProperties(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Replacing master Layout properties: header.isAnimated, footer.isSmall, layout.isFixed, hasScrollTransition, isMedium');
-			const toApply = (filePath: string) => {
+			const toApply = (filePath: string): void => {
 				const fileContent = readFile(tree, filePath);
 				let replacement = fileContent;
 				replacement = this.migrateMasterLayoutConfig(replacement);
@@ -364,7 +365,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private migrateObEMasterLayoutEventValues(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Replacing ObEMasterLayoutEventValues values');
-			const toApply = (filePath: string) => {
+			const toApply = (filePath: string): void => {
 				const fileContent = readFile(tree, filePath);
 				const replacement = fileContent
 					.replace(/ObEMasterLayoutEventValues\.STICKY\b/g, 'ObEMasterLayoutEventValues.HEADER_IS_STICKY')
@@ -387,7 +388,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private migrateConfigEvents(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Replacing configEvents');
-			const toApply = (filePath: string) => {
+			const toApply = (filePath: string): void => {
 				const fileContent = readFile(tree, filePath);
 				const replacement = fileContent.replace(/\.configEvents(?!\$)/g, '.configEvents$');
 				if (fileContent !== replacement) {
@@ -400,15 +401,15 @@ export class UpdateV7toV8 implements ObIMigrations {
 
 	private migrateMasterLayoutConfig(fileContent: string): string {
 		const service = /(?<service>\w+)\s*:\s*ObMasterLayoutConfig/.exec(fileContent)?.groups?.service;
-		return !service
+		return service
 			? fileContent
-			: fileContent
 					.replace(new RegExp(`^\\s*${service}\\.header\\.isAnimated\\s*=\\s*\\w*\\s*;$`, 'm'), '')
 					.replace(new RegExp(`^\\s*${service}\\.footer\\.isSmall\\s*=\\s*\\w*\\s*;$`, 'm'), '')
 					.replace(new RegExp(`^(\\s*${service})\\.layout\\.isFixed\\s*=\\s*(\\w*)\\s*;$`, 'm'), `$1.header.isSticky = $2;\n$1.footer.isSticky = $2;`)
 					.replace(new RegExp(`^(\\s*${service}\\.footer)\\.hasScrollTransitions\\s*=\\s*(\\w*)\\s*;$`, 'm'), '$1.hasLogoOnScroll = $2;')
 					.replace(new RegExp(`^(\\s*${service}\\.header)\\.hasScrollTransitions\\s*=\\s*(\\w*)\\s*;$`, 'm'), '$1.reduceOnScroll = $2;')
-					.replace(new RegExp(`^(\\s*${service}\\.header)\\.isMedium\\s*=\\s*(\\w*)\\s*;$`, 'm'), '$1.isSmall = $2;');
+					.replace(new RegExp(`^(\\s*${service}\\.header)\\.isMedium\\s*=\\s*(\\w*)\\s*;$`, 'm'), '$1.isSmall = $2;')
+			: fileContent;
 	}
 
 	private migrateMasterLayoutIsFixed(fileContent: string): string {
@@ -533,7 +534,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 			// and prior to Angular 13, an e2e projects was always created.
 			infoMigration(_context, 'Toolchain: add "@angular-eslint" configuration');
 			getAngularConfigs(tree, []).forEach(project => {
-				const rootPath = project.config.root || project.config.sourceRoot;
+				const rootPath: string = project.config.root || project.config.sourceRoot;
 				setAngularConfig(tree, ['architect', 'lint'], {
 					project: project.project,
 					config: {

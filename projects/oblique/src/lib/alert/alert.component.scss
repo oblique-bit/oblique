@@ -38,7 +38,8 @@
 			text-decoration: underline;
 		}
 
-		p, ul {
+		p,
+		ul {
 			&:last-child {
 				margin-bottom: 0;
 			}

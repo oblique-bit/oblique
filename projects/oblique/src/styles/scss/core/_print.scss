@@ -1,7 +1,7 @@
 @media print {
 	*,
-	*:before,
-	*:after,
+	*::before,
+	*::after,
 	*:focus {
 		box-shadow: none !important;
 		text-shadow: none !important;
@@ -16,6 +16,7 @@
 	.column-right {
 		display: none;
 	}
+
 	.column-main {
 		width: 100% !important;
 	}

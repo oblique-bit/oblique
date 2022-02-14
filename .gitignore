@@ -40,6 +40,8 @@ __ngcc_entry_points__.json
 npm-debug.log
 testem.log
 /jest-report/*
+.eslintcache
+.stylelintcache
 
 # e2e
 /e2e/*.js

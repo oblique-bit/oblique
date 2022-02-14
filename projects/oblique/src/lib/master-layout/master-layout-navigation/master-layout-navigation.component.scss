@@ -27,8 +27,7 @@
 	.ob-main-nav {
 		position: relative;
 		display: flex;
-		flex-direction: column;
-		flex-wrap: nowrap;
+		flex-flow: column nowrap;
 		height: 100%;
 		margin: 0;
 		padding: 0;
@@ -48,10 +47,11 @@
 		}
 
 		button {
-			@include button.ob-link-btn;
+			@include button.ob-link-btn();
 		}
 
-		a, button {
+		a,
+		button {
 			display: flex;
 			justify-content: space-between;
 			width: 100%;
@@ -128,6 +128,7 @@
 				&:not([aria-expanded]) .ob-toggle-expanded {
 					display: none;
 				}
+
 				&[aria-expanded] .ob-toggle-expanded,
 				&:not([aria-expanded]) .ob-toggle-collapsed {
 					display: inline;
@@ -150,7 +151,8 @@
 			overflow-x: hidden;
 			z-index: variables.$ob-z-index-controls;
 			transform: translateX(105%);
-			transition: visibility variables.$ob-duration-default, transform variables.$ob-duration-default;
+			transition: visibility variables.$ob-duration-default,
+				transform variables.$ob-duration-default;
 
 			@include layout.ob-media-breakpoint-up(md) {
 				position: absolute;
@@ -158,7 +160,7 @@
 				bottom: auto;
 				left: auto;
 				right: auto;
-				min-width: 30ch;	// empiric number
+				min-width: 30ch; // empiric number
 				max-height: 60vh;
 				overflow-x: hidden;
 				overflow-y: auto;
@@ -220,7 +222,7 @@
 			}
 
 			.ob-label {
-				flex: 1
+				flex: 1;
 			}
 		}
 	}

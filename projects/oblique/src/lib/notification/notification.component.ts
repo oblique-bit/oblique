@@ -1,86 +1,27 @@
 import {Component, HostBinding, Inject, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
-
 import {WINDOW} from '../utilities';
 import {ObENotificationPlacement, ObINotificationPrivate} from './notification.model';
 import {ObNotificationService} from './notification.service';
+import {animations} from './notification.component.animations';
 
 @Component({
 	selector: 'ob-notification',
 	exportAs: 'obNotification',
 	templateUrl: './notification.component.html',
 	styleUrls: ['./notification.component.scss'],
+	animations: [animations],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-notification-container'},
-	animations: [
-		trigger('inOut', [
-			state('in', style({opacity: 1})),
-			transition(
-				'* => in',
-				[
-					animate(
-						'650ms ease-in-out',
-						keyframes([
-							style({offset: 0, opacity: 0, maxHeight: 0, transform: 'translateX({{translateX}})', overflow: 'hidden'}),
-							style({offset: 0.6, opacity: 0, maxHeight: '500px', transform: 'translateX({{translateX}})', overflow: 'hidden'}),
-							style({offset: 1, opacity: 1, maxHeight: 'none', transform: 'translateX(0)', overflow: 'hidden'})
-						])
-					)
-				],
-				{params: {translateX: '15%'}}
-			),
-			state('in-left', style({opacity: 1})),
-			transition(
-				'* => in-left',
-				[
-					animate(
-						'650ms ease-in-out',
-						keyframes([
-							style({offset: 0, opacity: 0, maxHeight: 0, transform: 'translateX({{translateX}})', overflow: 'hidden'}),
-							style({offset: 0.6, opacity: 0, maxHeight: '500px', transform: 'translateX({{translateX}})', overflow: 'hidden'}),
-							style({offset: 1, opacity: 1, maxHeight: 'none', transform: 'translateX(0)', overflow: 'hidden'})
-						])
-					)
-				],
-				{params: {translateX: '-15%'}}
-			),
-			state('in-first', style({opacity: 1})),
-			transition('* => in-first', [
-				animate(
-					'350ms ease-in-out',
-					keyframes([style({offset: 0, opacity: 0, transform: 'translateX(15%)'}), style({offset: 1, opacity: 1, transform: 'translateX(0)'})])
-				)
-			]),
-			state('in-first-left', style({opacity: 1})),
-			transition('* => in-first-left', [
-				animate(
-					'350ms ease-in-out',
-					keyframes([style({offset: 0, opacity: 0, transform: 'translateX(-15%)'}), style({offset: 1, opacity: 1, transform: 'translateX(0)'})])
-				)
-			]),
-			state('out', style({opacity: 0, maxHeight: 0, overflow: 'hidden', display: 'none'})),
-			transition('* => out', [
-				animate(
-					'350ms ease-in-out',
-					keyframes([
-						style({offset: 0, opacity: 1, maxHeight: '500px', overflow: 'hidden'}),
-						style({offset: 0.2, opacity: 0, maxHeight: '500px', overflow: 'hidden'}),
-						style({offset: 1, opacity: 0, maxHeight: 0, overflow: 'hidden'})
-					])
-				)
-			])
-		])
-	]
+	host: {class: 'ob-notification-container'}
 })
 export class ObNotificationComponent implements OnInit {
 	public static REMOVE_DELAY = 350;
 	@Input() channel: string;
 	@HostBinding('class.ob-custom') customChannel = false;
-	@HostBinding('class') get getPlacement() {
+	@HostBinding('class') get getPlacement(): ObENotificationPlacement {
 		return this.notificationService.placement;
 	}
 	public notifications: ObINotificationPrivate[] = [];
-	public variant: {[type: string]: string} = {};
+	public variant: Record<string, string> = {};
 
 	constructor(private readonly notificationService: ObNotificationService, @Inject(WINDOW) private readonly window: Window) {}
 

@@ -9,46 +9,46 @@ import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout
 })
 export class ObMasterLayoutFooterService {
 	readonly configEvents$: Observable<ObIMasterLayoutEvent>;
-	private readonly _events = new Subject<ObIMasterLayoutEvent>();
-	private _isCustom = this.config.footer.isCustom;
-	private _isSticky = this.config.footer.isSticky;
-	private _hasLogoOnScroll = this.config.footer.hasLogoOnScroll;
+	private readonly events = new Subject<ObIMasterLayoutEvent>();
+	private isCustomInternal = this.config.footer.isCustom;
+	private isStickyInternal = this.config.footer.isSticky;
+	private hasLogoOnScrollInternal = this.config.footer.hasLogoOnScroll;
 
 	constructor(private readonly config: ObMasterLayoutConfig) {
-		this.configEvents$ = this._events.asObservable();
+		this.configEvents$ = this.events.asObservable();
 	}
 
-	get isCustom() {
-		return this._isCustom;
+	get isCustom(): boolean {
+		return this.isCustomInternal;
 	}
 
 	set isCustom(value: boolean) {
-		this._isCustom = value;
-		this._events.next({
+		this.isCustomInternal = value;
+		this.events.next({
 			name: ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM,
 			value
 		});
 	}
 
 	get isSticky(): boolean {
-		return this._isSticky;
+		return this.isStickyInternal;
 	}
 
 	set isSticky(value: boolean) {
-		this._isSticky = value;
-		this._events.next({
+		this.isStickyInternal = value;
+		this.events.next({
 			name: ObEMasterLayoutEventValues.FOOTER_IS_STICKY,
 			value
 		});
 	}
 
 	get hasLogoOnScroll(): boolean {
-		return this._hasLogoOnScroll;
+		return this.hasLogoOnScrollInternal;
 	}
 
 	set hasLogoOnScroll(value: boolean) {
-		this._hasLogoOnScroll = value;
-		this._events.next({
+		this.hasLogoOnScrollInternal = value;
+		this.events.next({
 			name: ObEMasterLayoutEventValues.FOOTER_HAS_LOGO_ON_SCROLL,
 			value
 		});

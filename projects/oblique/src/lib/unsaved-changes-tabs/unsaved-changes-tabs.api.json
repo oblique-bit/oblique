@@ -27,19 +27,14 @@
           "name": "watch",
           "text": "Starts watching the given form for changes.",
           "returns": "void",
-          "arguments": [
-            "formId: string",
-            "form: ControlContainer"
-          ],
+          "arguments": ["formId: string", "form: ControlContainer"],
           "since": "2.0.0"
         },
         {
           "name": "unWatch",
           "text": "Stops watching the given form for changes",
           "returns": "void",
-          "arguments": [
-            "formId: string"
-          ],
+          "arguments": ["formId: string"],
           "since": "2.0.0"
         },
         {
@@ -52,27 +47,21 @@
           "name": "ignoreChanges",
           "text": "Same as <code>canDeactivate</code> but limited to the given form",
           "returns": "boolean",
-          "arguments": [
-            "formsIds: string[]"
-          ],
+          "arguments": ["formsIds: string[]"],
           "since": "2.0.0"
         },
         {
           "name": "listenTo",
           "text": "Starts listening on the given <code>NgbNav</code>.",
           "returns": "void",
-          "arguments": [
-            "ngbNav: NgbNav"
-          ],
+          "arguments": ["ngbNav: NgbNav"],
           "since": "2.0.0"
         },
         {
           "name": "unListenTo",
           "text": "Stops listening on the given <code>NgbNav</code>.",
           "returns": "void",
-          "arguments": [
-            "ngbNav: NgbNav"
-          ],
+          "arguments": ["ngbNav: NgbNav"],
           "since": "2.0.0"
         }
       ]

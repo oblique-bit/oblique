@@ -1,12 +1,11 @@
-class Sanitize {
-	private static readonly fs = require('fs');
+import {existsSync, readFileSync, writeFileSync} from 'fs';
 
+class Sanitize {
 	static perform(): void {
-		if (Sanitize.fs.existsSync('package-lock.json')) {
-			Sanitize.fs.writeFileSync(
+		if (existsSync('package-lock.json')) {
+			writeFileSync(
 				'package-lock.json',
-				Sanitize.fs
-					.readFileSync('package-lock.json')
+				readFileSync('package-lock.json')
 					.toString()
 					.replace(/repo\.bit\.admin\.ch\/repository\/npm-group/g, 'registry.npmjs.org')
 			);

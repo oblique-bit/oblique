@@ -1,7 +1,8 @@
 @use "../variables";
 
 @mixin ob-form-field-size($padding-top, $padding-bottom, $icon-size) {
-	$label-padding: variables.$ob-form-field-label-height+$padding-top;
+	$label-padding: variables.$ob-form-field-label-height + $padding-top;
+
 	.mat-form-field-infix {
 		padding: $padding-top 0 $padding-bottom 0;
 		border-top-width: variables.$ob-form-field-label-height;
@@ -20,7 +21,7 @@
 		&.mat-form-field-should-float,
 		.mat-input-server:focus + .mat-form-field-label-wrapper {
 			.mat-form-field-label {
-				transform: translateY(-$label-padding) scale(.75);
+				transform: translateY(-$label-padding) scale(0.75);
 			}
 		}
 	}
