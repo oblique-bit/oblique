@@ -31,8 +31,8 @@ describe('IconComponent', () => {
 		});
 
 		describe('fontAwesome aliases', () => {
-			it('should have 11 aliases ', () => {
-				expect(Object.keys(component.fontAwesomeAliases).length).toBe(11);
+			it('should have 15 aliases ', () => {
+				expect(Object.keys(component.fontAwesomeAliases).length).toBe(15);
 			});
 
 			it('should map cancel ', () => {
@@ -55,24 +55,40 @@ describe('IconComponent', () => {
 				expect(component.fontAwesomeAliases['chevron-right']).toBe('fa-angle-right');
 			});
 
+			it('chevron-small-right', () => {
+				expect(component.fontAwesomeAliases['chevron-small-right']).toBe('fa-angle-right');
+			});
+
 			it('should map chevron-up ', () => {
 				expect(component.fontAwesomeAliases['chevron-up']).toBe('fa-angle-up');
+			});
+
+			it('should map cloud-upload', () => {
+				expect(component.fontAwesomeAliases['cloud-upload']).toBe('fa-cloud-upload-alt');
 			});
 
 			it('should map refresh ', () => {
 				expect(component.fontAwesomeAliases.refresh).toBe('fa-spinner');
 			});
 
+			it('should map repeat', () => {
+				expect(component.fontAwesomeAliases.repeat).toBe('fa-redo');
+			});
+
 			it('should map search ', () => {
 				expect(component.fontAwesomeAliases.search).toBe('fa-search');
 			});
 
-			it('should map warning ', () => {
-				expect(component.fontAwesomeAliases.warning).toBe('fa-exclamation');
+			it('should map trash ', () => {
+				expect(component.fontAwesomeAliases.trash).toBe('fa-trash-alt');
 			});
 
-			it('should map wheelchair ', () => {
-				expect(component.fontAwesomeAliases.wheelchair).toBe('fa-universal-access');
+			it('should map universal-access', () => {
+				expect(component.fontAwesomeAliases['universal-access']).toBe('fa-universal-access');
+			});
+
+			it('should map warning ', () => {
+				expect(component.fontAwesomeAliases.warning).toBe('fa-exclamation');
 			});
 		});
 	});

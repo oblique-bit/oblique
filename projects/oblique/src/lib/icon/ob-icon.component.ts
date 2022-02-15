@@ -14,12 +14,16 @@ export class ObIconComponent {
 		'chevron-down': 'fa-angle-down',
 		'chevron-left': 'fa-angle-left',
 		'chevron-right': 'fa-angle-right',
+		'chevron-small-right': 'fa-angle-right',
 		'chevron-up': 'fa-angle-up',
+		'cloud-upload': 'fa-cloud-upload-alt',
 		info: 'fa-info',
 		refresh: 'fa-spinner',
+		repeat: 'fa-redo',
 		search: 'fa-search',
-		warning: 'fa-exclamation',
-		wheelchair: 'fa-universal-access'
+		trash: 'fa-trash-alt',
+		'universal-access': 'fa-universal-access',
+		warning: 'fa-exclamation'
 	};
 
 	constructor(@Optional() @Inject(ObUseObliqueIcons) public readonly useObliqueIcons: boolean) {}
