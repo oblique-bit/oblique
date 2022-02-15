@@ -65,7 +65,7 @@
     "postinstall": "ts-node scripts/sanitize-package-lock.ts",
     "gulp": "./node_modules/.bin/gulp",
     "hook-pre-commit": "npx lint-staged",
-    "hook-commit-msg": "node scripts/hook.commit-rules",
+    "hook-commit-msg": "ts-node scripts/hook.commit-rules.ts",
     "hook-post-checkout": "ts-node scripts/dependency-update.ts",
     "prepare": "husky install"
   },
