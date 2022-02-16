@@ -79,7 +79,7 @@ export class ObMultiselectComponent implements OnInit, AfterViewInit, OnDestroy,
 	isVisible = false;
 	searchFilterText = '';
 	disabled = false;
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
 		private readonly element: ElementRef,

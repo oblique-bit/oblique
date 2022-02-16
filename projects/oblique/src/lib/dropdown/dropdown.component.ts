@@ -26,7 +26,7 @@ export class ObDropdownComponent implements OnInit, OnDestroy {
 	@Input() @HostBinding('id') id: string;
 
 	private static idCount = 0;
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(private readonly element: ElementRef, private readonly globalEventsService: ObGlobalEventsService) {}
 

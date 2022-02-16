@@ -15,7 +15,7 @@ export class ObErrorMessagesDirective implements AfterViewInit, OnDestroy {
 	readonly errors$: Observable<ValidationErrors>;
 	private readonly errors = new Subject<ValidationErrors>();
 	private readonly form: NgForm | FormGroupDirective;
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(@Optional() ngForm: NgForm, @Optional() formGroupDirective: FormGroupDirective) {
 		this.errors$ = this.errors.asObservable();

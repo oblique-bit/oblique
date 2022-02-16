@@ -10,7 +10,7 @@ import {Subject} from 'rxjs';
 })
 export class ObOffCanvasContainerDirective implements OnDestroy {
 	@HostBinding('class.ob-off-canvas-in') open = false;
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(offCanvas: ObOffCanvasService) {
 		offCanvas.opened.pipe(takeUntil(this.unsubscribe)).subscribe(value => {

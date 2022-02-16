@@ -17,7 +17,7 @@ import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {ObUseObliqueIcons} from '../../icon/icon.model';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
-import {ObEMasterLayoutEventValues} from '../master-layout.model';
+import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
 import {appVersion} from '../../version';
 
 describe('ObMasterLayoutComponent', () => {
@@ -25,15 +25,15 @@ describe('ObMasterLayoutComponent', () => {
 	let fixture: ComponentFixture<ObMasterLayoutComponent>;
 	const mockMasterLayoutService = {
 		layout: {
-			configEvents$: new Subject(),
+			configEvents$: new Subject<ObIMasterLayoutEvent>(),
 			hasCover: false,
 			hasLayout: false,
 			isMenuOpened: false,
 			hasMainNavigation: false,
 			hasOffCanvas: false
 		},
-		header: {configEvents$: new Subject(), isSticky: false},
-		footer: {configEvents$: new Subject(), isSticky: false}
+		header: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isSticky: false},
+		footer: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isSticky: false}
 	};
 
 	beforeEach(

@@ -31,7 +31,7 @@ export class ObNavTreeComponent implements OnDestroy {
 	@Input() treeAriaLabelledBy: string;
 	@Input() treeAriaLabel: string;
 	@HostBinding('class.ob-font-awesome') useFontAwesomeIcon: boolean;
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	// TODO: remove when https://github.com/angular/angular/issues/13205
 	constructor(private readonly route: ActivatedRoute, private readonly translate: TranslateService, @Optional() @Inject(ObUseObliqueIcons) useObliqueIcon) {

@@ -47,7 +47,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	@ContentChildren('obHeaderMobileControl') readonly mobileTemplates: QueryList<TemplateRef<any>>;
 	@ViewChildren('headerControl') readonly headerControl: QueryList<ElementRef>;
 	@ViewChildren('headerMobileControl') readonly headerMobileControl: QueryList<ElementRef>;
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,
