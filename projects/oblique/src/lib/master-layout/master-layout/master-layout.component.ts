@@ -131,6 +131,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	ngDoCheck(): void {
 		if (this.navigation?.length !== this.navigationLength) {
 			this.navigationLength = this.navigation.length;
+			this.masterLayout.navigation.refresh();
 			this.updateJumpLinks(!this.noNavigation);
 		}
 	}

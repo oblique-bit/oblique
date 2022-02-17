@@ -33,7 +33,8 @@ describe('ObMasterLayoutComponent', () => {
 			hasOffCanvas: false
 		},
 		header: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isSticky: false},
-		footer: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isSticky: false}
+		footer: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isSticky: false},
+		navigation: {refresh: jest.fn()}
 	};
 
 	beforeEach(
@@ -117,10 +118,19 @@ describe('ObMasterLayoutComponent', () => {
 						component.ngOnInit();
 						expect(component.jumpLinks).toEqual([{label: 'test', url: '', accessKey: 3}]);
 					});
-					it('should add accessKey 3 when the navigation is set', () => {
-						component.navigation = [{label: 'test', url: ''}];
-						fixture.detectChanges();
-						expect(component.jumpLinks).toEqual([{label: 'test', url: '', accessKey: 3}]);
+
+					describe('when the navigation is set', () => {
+						beforeEach(() => {
+							component.navigation = [{label: 'test', url: ''}];
+							fixture.detectChanges();
+						});
+						it('should add accessKey 3', () => {
+							expect(component.jumpLinks).toEqual([{label: 'test', url: '', accessKey: 3}]);
+						});
+
+						it('should refresh the navigation service', () => {
+							expect(mockMasterLayoutService.navigation.refresh).toHaveBeenCalled();
+						});
 					});
 				});
 			});
