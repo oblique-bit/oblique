@@ -117,6 +117,11 @@ describe('ObMasterLayoutComponent', () => {
 						component.ngOnInit();
 						expect(component.jumpLinks).toEqual([{label: 'test', url: '', accessKey: 3}]);
 					});
+					it('should add accessKey 3 when the navigation is set', () => {
+						component.navigation = [{label: 'test', url: ''}];
+						fixture.detectChanges();
+						expect(component.jumpLinks).toEqual([{label: 'test', url: '', accessKey: 3}]);
+					});
 				});
 			});
 		});

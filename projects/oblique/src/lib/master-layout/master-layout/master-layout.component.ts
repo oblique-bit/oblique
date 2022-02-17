@@ -3,6 +3,7 @@ import {
 	Component,
 	ContentChild,
 	ContentChildren,
+	DoCheck,
 	ElementRef,
 	HostBinding,
 	HostListener,
@@ -45,7 +46,7 @@ import {ObUseObliqueIcons} from '../../icon/icon.model';
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-master-layout', 'ob-version': appVersion}
 })
-export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, OnDestroy {
 	home = this.config.homePageRoute;
 	route = {path: '', params: undefined};
 	@Input() navigation: ObINavigationLink[] = [];
@@ -69,6 +70,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 	@ViewChild('main') readonly main: ElementRef<HTMLElement>;
 	@ViewChild('wrapper') readonly wrapper: ElementRef<HTMLElement>;
 	private readonly unsubscribe = new Subject<void>();
+	private navigationLength: number;
 
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,
@@ -124,6 +126,13 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION))
 			.subscribe(evt => this.updateJumpLinks(evt.value));
 		this.updateJumpLinks(!this.noNavigation);
+	}
+
+	ngDoCheck(): void {
+		if (this.navigation?.length !== this.navigationLength) {
+			this.navigationLength = this.navigation.length;
+			this.updateJumpLinks(!this.noNavigation);
+		}
 	}
 
 	ngAfterViewInit(): void {
