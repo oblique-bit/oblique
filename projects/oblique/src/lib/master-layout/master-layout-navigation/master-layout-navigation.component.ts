@@ -27,7 +27,7 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 	private static readonly buttonWidth = 30;
 	private nav: HTMLElement;
 	private linksLength: number;
-	private readonly unsubscribe: Subject<any> = new Subject();
+	private readonly unsubscribe: Subject<void> = new Subject<void>();
 
 	constructor(
 		private readonly router: Router,

@@ -22,7 +22,7 @@ export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnD
 	@ContentChildren(ObMasterLayoutNavigationToggleDirective, {descendants: true}) $toggles: QueryList<ObMasterLayoutNavigationToggleDirective>;
 	@ContentChild(ObMasterLayoutNavigationMenuDirective) $menu: ObMasterLayoutNavigationMenuDirective;
 	@ContentChildren(ObMasterLayoutNavigationItemDirective, {descendants: true}) $items: QueryList<ObMasterLayoutNavigationItemDirective>;
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
 		private readonly masterLayout: ObMasterLayoutComponentService,

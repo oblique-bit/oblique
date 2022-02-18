@@ -24,7 +24,7 @@ export class ObDocumentMetaService implements OnDestroy {
 		title: '',
 		description: ''
 	};
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
 		private readonly router: Router,

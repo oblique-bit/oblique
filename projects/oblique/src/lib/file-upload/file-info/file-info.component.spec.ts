@@ -18,7 +18,7 @@ describe('ObFileInfoComponent', () => {
 	let fixture: ComponentFixture<ObFileInfoComponent>;
 	let uploadService: ObFileUploadService;
 	let popupService: ObPopUpService;
-	const uploadComplete = new Subject();
+	const uploadComplete = new Subject<void>();
 	const files = [{name: 'file.txt'}, {name: 'file.jpg'}, {name: 'file.pdf'}];
 
 	beforeEach(async () => {

@@ -17,7 +17,7 @@ export class ObMasterLayoutFooterComponent implements OnDestroy {
 	isCustom = this.config.footer.isCustom;
 	@ContentChildren('obFooterLink') readonly templates: QueryList<TemplateRef<any>>;
 	@HostBinding('class.ob-logo-on-scroll') hasLogoOnScroll = this.config.footer.hasLogoOnScroll;
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(private readonly masterLayout: ObMasterLayoutService, private readonly config: ObMasterLayoutConfig) {
 		this.customChange();

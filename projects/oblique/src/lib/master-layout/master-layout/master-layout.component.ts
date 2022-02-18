@@ -68,7 +68,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 	@ViewChild('offCanvasClose', {read: ElementRef}) readonly offCanvasClose: ElementRef<HTMLElement>;
 	@ViewChild('main') readonly main: ElementRef<HTMLElement>;
 	@ViewChild('wrapper') readonly wrapper: ElementRef<HTMLElement>;
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,

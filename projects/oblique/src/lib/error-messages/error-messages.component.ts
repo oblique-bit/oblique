@@ -27,7 +27,7 @@ export class ObErrorMessagesComponent implements AfterViewInit, OnDestroy {
 	errors: {key: string; params: Record<string, any>}[] = [];
 
 	private readonly form: NgForm | FormGroupDirective;
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
 		private readonly errorMessagesService: ObErrorMessagesService,

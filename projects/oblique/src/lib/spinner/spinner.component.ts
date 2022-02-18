@@ -29,7 +29,7 @@ export class ObSpinnerComponent implements OnInit, OnDestroy {
 	@Input() fixed = false;
 	@ViewChild('spinnerContainer') spinnerContainer: ElementRef;
 	$state = 'out';
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(private readonly spinnerService: ObSpinnerService, private readonly element: ElementRef) {
 		spinnerService.events$

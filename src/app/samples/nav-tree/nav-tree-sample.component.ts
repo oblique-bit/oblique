@@ -20,7 +20,7 @@ export class NavTreeSampleComponent implements OnInit, OnDestroy {
 			this.filter.pattern = null;
 		}
 	};
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(private readonly route: ActivatedRoute) {}
 

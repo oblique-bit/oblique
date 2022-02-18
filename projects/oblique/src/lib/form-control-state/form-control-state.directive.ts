@@ -28,7 +28,7 @@ export class ObFormControlStateDirective implements AfterViewInit, OnDestroy {
 	private readonly group: NgModelGroup | FormGroupName;
 	private inputContainer;
 	private inputElement;
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
 		@Optional() ngForm: NgForm,
