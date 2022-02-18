@@ -1,19 +1,19 @@
-import {ObIModuleList, ObITelemetryRecord} from './telemetry.model';
+import {ObIModuleList, ObIPackage, ObITelemetryRecord} from './telemetry.model';
+import {appVersion} from '../version';
+
 export class ObTelemetryRecord {
 	readonly record: ObITelemetryRecord;
 	private static readonly TELEMETRY_TOKEN = 'OBLIQUE_TELEMETRY';
 	private static readonly ONE_DAY = 1000 * 60 * 60 * 24;
 
-	constructor(theme: string) {
-		const pkg = ObTelemetryRecord.readPackageJson();
-		const realObliqueVersion = ObTelemetryRecord.readObliqueVersion();
+	constructor(theme: string, pkg: ObIPackage) {
 		this.record = {
-			applicationName: pkg?.name || 'Unknown project name',
-			applicationTitle: pkg?.title,
-			applicationVersion: pkg?.version || 'Unknown project version',
-			applicationHomepage: pkg?.homepage,
+			applicationName: pkg.name || 'Unknown project name',
+			applicationTitle: pkg.title,
+			applicationVersion: pkg.version || 'Unknown project version',
+			applicationHomepage: pkg.homePage,
 			obliqueTheme: theme,
-			obliqueVersion: realObliqueVersion || (pkg.dependencies['@oblique/oblique'] || '').replace(/[^~]/, ''),
+			obliqueVersion: appVersion,
 			obliqueModuleNames: []
 		};
 	}
@@ -41,25 +41,6 @@ export class ObTelemetryRecord {
 				timestamp: +new Date()
 			})
 		);
-	}
-
-	private static readPackageJson(): any {
-		try {
-			return require('package.json');
-		} catch (error) {
-			if (error.code !== 'MODULE_NOT_FOUND') {
-				throw error;
-			}
-			return {dependencies: {}};
-		}
-	}
-
-	private static readObliqueVersion(): any {
-		try {
-			return require('package-lock.json').dependencies['@oblique/oblique'].version;
-		} catch (error) {
-			return undefined;
-		}
 	}
 
 	private static getModuleList(): ObIModuleList {

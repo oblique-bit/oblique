@@ -2,9 +2,10 @@ import {TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {HttpClient} from '@angular/common/http';
 import {EMPTY, Subject} from 'rxjs';
-import {ObTelemetryService, TELEMETRY_DISABLE} from './telemetry.service';
+import {OB_PROJECT_INFO, ObTelemetryService, TELEMETRY_DISABLE} from './telemetry.service';
 import {ObThemeService} from '../theme.service';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
+import {appVersion} from '../version';
 
 describe('ObTelemetryService', () => {
 	let service: ObTelemetryService;
@@ -53,7 +54,10 @@ describe('ObTelemetryService', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
 				imports: [HttpClientTestingModule],
-				providers: [{provide: TELEMETRY_DISABLE, useValue: false}]
+				providers: [
+					{provide: TELEMETRY_DISABLE, useValue: false},
+					{provide: OB_PROJECT_INFO, useValue: {name: 'test'}}
+				]
 			});
 			service = TestBed.inject(ObTelemetryService);
 			globalEventsService = TestBed.inject(ObGlobalEventsService);
@@ -76,7 +80,10 @@ describe('ObTelemetryService', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
 				imports: [HttpClientTestingModule],
-				providers: [{provide: ObThemeService, useValue: {theme: 'Material'}}]
+				providers: [
+					{provide: ObThemeService, useValue: {theme: 'Material'}},
+					{provide: OB_PROJECT_INFO, useValue: {name: 'test'}}
+				]
 			});
 
 			service = TestBed.inject(ObTelemetryService);
@@ -153,12 +160,12 @@ describe('ObTelemetryService', () => {
 					// @ts-expect-error
 					expect(service.sendData).toHaveBeenCalledWith({
 						applicationHomepage: undefined,
-						applicationName: 'Unknown project name',
+						applicationName: 'test',
 						applicationTitle: undefined,
 						applicationVersion: 'Unknown project version',
 						obliqueModuleNames: ['test1', 'test2'],
 						obliqueTheme: 'Material',
-						obliqueVersion: ''
+						obliqueVersion: appVersion
 					});
 				});
 			});
@@ -192,7 +199,10 @@ describe('ObTelemetryService', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
 				imports: [HttpClientTestingModule],
-				providers: [{provide: ObThemeService, useValue: {theme: 'Bootstrap'}}]
+				providers: [
+					{provide: ObThemeService, useValue: {theme: 'Bootstrap'}},
+					{provide: OB_PROJECT_INFO, useValue: {name: 'test'}}
+				]
 			});
 
 			service = TestBed.inject(ObTelemetryService);
@@ -214,7 +224,10 @@ describe('ObTelemetryService', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
 				imports: [HttpClientTestingModule],
-				providers: [{provide: ObThemeService, useValue: {theme: 'Unknown'}}]
+				providers: [
+					{provide: ObThemeService, useValue: {theme: 'Unknown'}},
+					{provide: OB_PROJECT_INFO, useValue: {name: 'test'}}
+				]
 			});
 
 			service = TestBed.inject(ObTelemetryService);
