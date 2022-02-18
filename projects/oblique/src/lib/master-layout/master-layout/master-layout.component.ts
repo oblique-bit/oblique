@@ -25,7 +25,7 @@ import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {appVersion} from '../../version';
 import {WINDOW} from '../../utilities';
-import {ObEMasterLayoutEventValues, ObIDynamicJumpLink, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
+import {ObEMasterLayoutEventValues, ObIDynamicJumpLink, ObIJumpLink, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 import {Subject} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
@@ -49,7 +49,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 	home = this.config.homePageRoute;
 	route = {path: '', params: undefined};
 	@Input() navigation: ObINavigationLink[] = [];
-	@Input() jumpLinks: ObIDynamicJumpLink[] = [];
+	@Input() jumpLinks: ObIJumpLink[] | ObIDynamicJumpLink[] = [];
 	@HostBinding('class.ob-has-cover') hasCover = this.masterLayout.layout.hasCover;
 	@HostBinding('class.ob-has-layout') hasLayout = this.masterLayout.layout.hasLayout;
 	@HostBinding('class.ob-has-max-width') hasMaxWidth = this.masterLayout.layout.hasMaxWidth;
@@ -148,7 +148,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 
 	private updateJumpLinks(hasNavigation: boolean): void {
 		const staticJumpLinks = hasNavigation && this.navigation.length ? 3 : 2;
-		this.jumpLinks = this.jumpLinks.map((jumpLink, index) => ({...jumpLink, accessKey: index + staticJumpLinks}));
+		this.jumpLinks = this.jumpLinks.map((jumpLink, index: number) => ({...jumpLink, accessKey: index + staticJumpLinks}));
 	}
 
 	private layoutHasMainNavigationChange(): void {
