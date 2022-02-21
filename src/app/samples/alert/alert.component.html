@@ -2,7 +2,7 @@
 <sc-description component="alert"></sc-description>
 <ob-column-layout [left]="false" [right]="true">
 	<ng-container column-main-content>
-		<ob-alert [type]="type">
+		<ob-alert [hasRoleAlert]="hasAlertRole" [type]="type">
 			<strong>Alert's title</strong>
 			<p>This is an example with an external link: <a href="www.google.com">www.google.com</a>.</p>
 			<p>Another paragraph with an internal link: <a routerLink="home">home</a></p>
@@ -10,12 +10,23 @@
 		</ob-alert>
 	</ng-container>
 	<ng-container column-right-content>
-		<mat-radio-group [(ngModel)]="type">
-			<mat-radio-button value="info" checked>info</mat-radio-button>
-			<mat-radio-button value="success">success</mat-radio-button>
-			<mat-radio-button value="warning">warning</mat-radio-button>
-			<mat-radio-button value="error">error</mat-radio-button>
-		</mat-radio-group>
+		<fieldset>
+			<legend>Type</legend>
+			<mat-radio-group [(ngModel)]="type">
+				<mat-radio-button checked value="info">info</mat-radio-button>
+				<mat-radio-button value="success">success</mat-radio-button>
+				<mat-radio-button value="warning">warning</mat-radio-button>
+				<mat-radio-button value="error">error</mat-radio-button>
+			</mat-radio-group>
+		</fieldset>
+		<fieldset>
+			<legend>Role alert</legend>
+			<mat-radio-group [(ngModel)]="hasAlertRole">
+				<mat-radio-button [value]="undefined">undefined</mat-radio-button>
+				<mat-radio-button [value]="true">true</mat-radio-button>
+				<mat-radio-button [value]="false">false</mat-radio-button>
+			</mat-radio-group>
+		</fieldset>
 	</ng-container>
 </ob-column-layout>
 <sc-api component="alert"></sc-api>
