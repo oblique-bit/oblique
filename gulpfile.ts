@@ -2,7 +2,6 @@
 delete require.cache[require.resolve('./package.json')];
 const fs = require('fs'),
 	gulp = require('gulp'),
-	git = require('gulp-git'),
 	header = require('gulp-header'),
 	replace = require('gulp-replace'),
 	path = require('path'),
@@ -70,12 +69,6 @@ const distScss = () =>
 
 const distDocs = () => gulp.src([`${paths.src}/lib/**/*.description.html`, `${paths.src}/lib/**/*.api.json`]).pipe(gulp.dest(`${paths.dist}/lib`));
 
-const commit = () =>
-	gulp
-		.src('.')
-		.pipe(git.add())
-		.pipe(git.commit(`chore(toolchain): release version ${pkg.version}`));
-
 const telemetryPre = () =>
 	gulp
 		.src(`${paths.src}/lib/telemetry/telemetry-record.ts`)
@@ -111,8 +104,6 @@ gulp.task(
 );
 
 gulp.task('pre-dist', telemetryPre);
-
-gulp.task('publish', gulp.series(commit));
 
 function getEndOfLifeDate(version) {
 	const versionReleaseDate = getTagDate(version);
