@@ -7,6 +7,7 @@ import {WINDOW} from '../utilities';
 	providedIn: 'root'
 })
 export class ObGlobalEventsService {
+	public readonly beforeUnload$: Observable<BeforeUnloadEvent>;
 	public readonly click$: Observable<MouseEvent>;
 	public readonly mouseDown$: Observable<MouseEvent>;
 	public readonly mouseMove$: Observable<MouseEvent>;
@@ -16,6 +17,7 @@ export class ObGlobalEventsService {
 	public readonly resize$: Observable<UIEvent>;
 
 	constructor(@Inject(DOCUMENT) document: Document, @Inject(WINDOW) window: Window) {
+		this.beforeUnload$ = fromEvent<BeforeUnloadEvent>(window, 'beforeunload');
 		this.click$ = fromEvent<MouseEvent>(document, 'click');
 		this.mouseDown$ = fromEvent<MouseEvent>(document, 'mousedown');
 		this.mouseMove$ = fromEvent<MouseEvent>(document, 'mousemove');

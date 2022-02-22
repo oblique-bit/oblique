@@ -1,26 +1,29 @@
 import {TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {HttpClient} from '@angular/common/http';
-import {EMPTY} from 'rxjs';
-import {WINDOW} from '../utilities';
+import {EMPTY, Subject} from 'rxjs';
 import {ObTelemetryService, TELEMETRY_DISABLE} from './telemetry.service';
 import {ObThemeService} from '../theme.service';
+import {ObGlobalEventsService} from '../global-events/global-events.service';
 
 describe('ObTelemetryService', () => {
 	let service: ObTelemetryService;
 	let http: HttpClient;
+	let globalEventsService: ObGlobalEventsService;
 	jest.spyOn(console, 'info');
+	const unload = new Subject();
+	beforeEach(() => {
+		TestBed.configureTestingModule({
+			providers: [{provide: ObGlobalEventsService, useValue: {beforeUnload$: unload.asObservable()}}]
+		});
+	});
 
 	describe('when disabled', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
 				imports: [HttpClientTestingModule],
-				providers: [
-					{provide: WINDOW, useValue: window},
-					{provide: TELEMETRY_DISABLE, useValue: true}
-				]
+				providers: [{provide: TELEMETRY_DISABLE, useValue: true}]
 			});
-
 			service = TestBed.inject(ObTelemetryService);
 		});
 
@@ -46,14 +49,34 @@ describe('ObTelemetryService', () => {
 		});
 	});
 
+	describe('when enabled', () => {
+		beforeEach(() => {
+			TestBed.configureTestingModule({
+				imports: [HttpClientTestingModule],
+				providers: [{provide: TELEMETRY_DISABLE, useValue: false}]
+			});
+			service = TestBed.inject(ObTelemetryService);
+			globalEventsService = TestBed.inject(ObGlobalEventsService);
+			http = TestBed.inject(HttpClient);
+		});
+
+		it('should have called a http request', done => {
+			globalEventsService.beforeUnload$.subscribe(() => {
+				expect(http.post).toHaveBeenCalled();
+				done();
+			});
+			// @ts-expect-error
+			jest.spyOn(service.telemetryRecord, 'isRecordToBeSent').mockReturnValue(true);
+			jest.spyOn(http, 'post').mockReturnValue(EMPTY);
+			unload.next({});
+		});
+	});
+
 	describe('when enabled with Material theme', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
 				imports: [HttpClientTestingModule],
-				providers: [
-					{provide: WINDOW, useValue: window},
-					{provide: ObThemeService, useValue: {theme: 'Material'}}
-				]
+				providers: [{provide: ObThemeService, useValue: {theme: 'Material'}}]
 			});
 
 			service = TestBed.inject(ObTelemetryService);
@@ -169,10 +192,7 @@ describe('ObTelemetryService', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
 				imports: [HttpClientTestingModule],
-				providers: [
-					{provide: WINDOW, useValue: window},
-					{provide: ObThemeService, useValue: {theme: 'Bootstrap'}}
-				]
+				providers: [{provide: ObThemeService, useValue: {theme: 'Bootstrap'}}]
 			});
 
 			service = TestBed.inject(ObTelemetryService);
@@ -194,10 +214,7 @@ describe('ObTelemetryService', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
 				imports: [HttpClientTestingModule],
-				providers: [
-					{provide: WINDOW, useValue: window},
-					{provide: ObThemeService, useValue: {theme: 'Unknown'}}
-				]
+				providers: [{provide: ObThemeService, useValue: {theme: 'Unknown'}}]
 			});
 
 			service = TestBed.inject(ObTelemetryService);

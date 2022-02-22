@@ -3,19 +3,27 @@ import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {ObPopUpService} from '../pop-up/pop-up.service';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
-import {ObMockPopUpModule} from '../pop-up/_mocks/mock-pop-up.module';
-import {WINDOW} from '../utilities';
+import {ObMockPopUpService} from '../pop-up/_mocks/mock-pop-up.module';
 import {ObUnsavedChangesService} from './unsaved-changes.service';
+import {ObGlobalEventsService} from '../global-events/global-events.service';
+import {Subject} from 'rxjs';
 
 describe('UnsavedChangesService', () => {
 	let unsavedChangesService: ObUnsavedChangesService;
+	let globalEventsService: ObGlobalEventsService;
 	let popUpService: ObPopUpService;
+	const unload = new Subject();
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [ObMockPopUpModule],
-			providers: [ObUnsavedChangesService, {provide: TranslateService, useClass: ObMockTranslateService}, {provide: WINDOW, useValue: window}]
+			providers: [
+				ObUnsavedChangesService,
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: ObGlobalEventsService, useValue: {beforeUnload$: unload.asObservable()}},
+				{provide: ObPopUpService, useClass: ObMockPopUpService}
+			]
 		});
 		popUpService = TestBed.inject(ObPopUpService);
+		globalEventsService = TestBed.inject(ObGlobalEventsService);
 	});
 
 	beforeEach(() => {
@@ -27,8 +35,42 @@ describe('UnsavedChangesService', () => {
 		unsavedChangesService = service;
 	}));
 
-	it('should attach beforeUnload eventListener', () => {
-		expect(window.addEventListener).toHaveBeenCalled();
+	describe('onUnload', () => {
+		describe('with no watched form', () => {
+			it("shouldn't alter the beforeUnloadEvent", done => {
+				globalEventsService.beforeUnload$.subscribe(event => {
+					expect(event).toEqual({});
+					done();
+				});
+				unload.next({});
+			});
+		});
+		describe('with no dirty form', () => {
+			beforeEach(() => {
+				const form: ControlContainer = {dirty: false} as ControlContainer;
+				unsavedChangesService.watch('tab_1', form);
+			});
+			it("shouldn't alter the beforeUnloadEvent", done => {
+				globalEventsService.beforeUnload$.subscribe(event => {
+					expect(event).toEqual({});
+					done();
+				});
+				unload.next({});
+			});
+		});
+		describe('with dirty form (watch)', () => {
+			beforeEach(() => {
+				const form: ControlContainer = {dirty: true} as ControlContainer;
+				unsavedChangesService.watch('tab_1', form);
+			});
+			it('should alter the beforeUnloadEvent', done => {
+				globalEventsService.beforeUnload$.subscribe(event => {
+					expect(event).toEqual({returnValue: 'i18n.validation.unsavedChanges'});
+					done();
+				});
+				unload.next({});
+			});
+		});
 	});
 
 	describe('canDeactivate()', () => {
