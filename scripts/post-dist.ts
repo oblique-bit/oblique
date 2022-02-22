@@ -1,4 +1,4 @@
-const {execSync} = require('child_process');
+import {execSync} from 'child_process';
 
 execSync('ts-node ./scripts/find-and-replace.ts');
 execSync('ts-node ./scripts/adapt-package-json.ts');
