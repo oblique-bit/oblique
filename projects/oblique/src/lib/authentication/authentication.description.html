@@ -1,0 +1,84 @@
+<p>
+	Provides helper services that wrapps the functionality of the <code>angular-oauth2-oidc</code> library. For more information about
+	<code>angular-oauth2-oidc</code> see <a href="https://github.com/manfredsteyer/angular-oauth2-oidc">https://github.com/manfredsteyer/angular-oauth2-oidc</a>.
+</p>
+
+<h3>Usage</h3>
+<ul>
+	<li>Import the <code>ObAuthenticationModule</code> with the <code>forRoot</code> method in the application's root module.</li>
+	<li>
+		Use the <code>ObAuthenticationConfigService</code> to configure the <code>angular-oauth2-oidc</code> library. It's recommended to perform the configuration
+		in the application's root module.
+	</li>
+	<li>Use the <code>ObAuthenticationService</code> to perform login, logout or get identity informations.</li>
+</ul>
+
+<h3>Configuration</h3>
+<p>
+	You can pass a <code>OAuthModuleConfig</code> and a <code>ValidationHandler</code> as parameters of the <code>forRoot</code> method of the
+	<code>ObAuthenticationModule</code>.
+</p>
+
+<details>
+	<summary>Code example</summary>
+	<pre>
+@NgModule({
+	...
+	imports: [
+		...
+		ObAuthenticationModule.forRoot({
+			resourceServer: {
+				allowedUrls: ['https://oblique.bit.admin.ch/training'],
+				sendAccessToken: true
+			},
+	CustomValidationHandlerClass // Placeholder for the effective class
+		})
+	],
+	...
+})
+	</pre
+	>
+</details>
+
+<p>For more information about the <code>OAuthModuleConfig</code> or the <code>ValidationHandler</code> see:</p>
+<ul>
+	<li><a href="https://manfredsteyer.github.io/angular-oauth2-oidc/docs/classes/OAuthModuleConfig.html#info">OAuthModuleConfig</a></li>
+	<li><a href="https://manfredsteyer.github.io/angular-oauth2-oidc/docs/classes/ValidationHandler.html">ValidationHandler</a></li>
+</ul>
+
+<p>
+	You can configure the OpenID Connect flow, the use of a discovery document or the automatic silent refresh of the token with the
+	<code>ObAuthenticationConfigService</code>. It's recommended to perform the configuration in the application's root module.
+</p>
+<details>
+	<summary>Code example</summary>
+	<pre>
+export class AppModule {
+	constructor(readonly authConfigService: ObAuthenticationConfigService) {
+		authConfigService.useDiscoveryDocument = true;
+
+		authConfigService.setupAutomaticSilentRefresh = true;
+
+		authConfigService.configureFlow({
+			issuer: 'https://idsvr4.azurewebsites.net', // Url of the Identity Provider
+			redirectUri: window.location.origin + '/index.html', // URL of the SPA to redirect the user to after login
+			clientId: 'spa', // The SPA's id. The SPA is registerd with this id at the auth-server
+			responseType: 'code',
+			scope: 'openid profile email offline_access', // set the scope for the permissions the client should request
+		});
+	}
+}
+</pre
+	>
+</details>
+<p>
+	The <code>ObAuthenticationConfigService</code> uses the <code>AuthConfig</code> of the <code>angular-oauth2-oidc</code> library in order to configure the
+	library. For more information about the properties of the <code>AuthConfig</code> see it's
+	<a href="https://manfredsteyer.github.io/angular-oauth2-oidc/docs/classes/AuthConfig.html#info">documentation</a>.
+</p>
+
+<h3>Extended usage</h3>
+<p>
+	You can directly access the <code>OAuthService</code> of the <code>angular-oauth2-oidc</code> library through the <code>ObAuthenticationService</code>. This
+	allows you to use functionalities of the <code>OAuthService</code> that are not wrapped by the <code>ObAuthenticationService</code>.
+</p>

@@ -75,6 +75,7 @@ The type is mandatory and must be one of the following:
 The scope is optional and should be the name of the Oblique feature affected:
 
 - **alert**
+- **authentication**
 - **button**
 - **breadcrumb**
 - **collapse**
