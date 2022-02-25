@@ -33,7 +33,8 @@ describe('ObMasterLayoutComponent', () => {
 			hasOffCanvas: false
 		},
 		header: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isSticky: false},
-		footer: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isSticky: false}
+		footer: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isSticky: false},
+		navigation: {refresh: jest.fn()}
 	};
 
 	beforeEach(
@@ -87,8 +88,52 @@ describe('ObMasterLayoutComponent', () => {
 			expect(component.navigation).toEqual([]);
 		});
 
-		it('should have a jumpLinks property', () => {
-			expect(component.jumpLinks).toEqual([]);
+		describe('jumplinks', () => {
+			it('should defaults to empty array', () => {
+				expect(component.jumpLinks).toEqual([]);
+			});
+
+			describe('with a custom jump link', () => {
+				beforeEach(() => {
+					component.jumpLinks = [{label: 'test', url: ''}];
+					component.navigation = [];
+				});
+
+				it('should add accessKey 2 if there is no navigation', () => {
+					component.noNavigation = true;
+					component.ngOnInit();
+					expect(component.jumpLinks).toEqual([{label: 'test', url: '', accessKey: 2}]);
+				});
+
+				describe('with navigation', () => {
+					beforeEach(() => {
+						component.noNavigation = false;
+					});
+					it('should add accessKey 2 with an empty navigation', () => {
+						component.ngOnInit();
+						expect(component.jumpLinks).toEqual([{label: 'test', url: '', accessKey: 2}]);
+					});
+					it('should add accessKey 3 with non-empty navigation', () => {
+						component.navigation = [{label: 'test', url: ''}];
+						component.ngOnInit();
+						expect(component.jumpLinks).toEqual([{label: 'test', url: '', accessKey: 3}]);
+					});
+
+					describe('when the navigation is set', () => {
+						beforeEach(() => {
+							component.navigation = [{label: 'test', url: ''}];
+							fixture.detectChanges();
+						});
+						it('should add accessKey 3', () => {
+							expect(component.jumpLinks).toEqual([{label: 'test', url: '', accessKey: 3}]);
+						});
+
+						it('should refresh the navigation service', () => {
+							expect(mockMasterLayoutService.navigation.refresh).toHaveBeenCalled();
+						});
+					});
+				});
+			});
 		});
 
 		testLayoutProperty('hasCover', 'LAYOUT_HAS_COVER');

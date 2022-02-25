@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, DoCheck, ElementRef, HostBinding, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostBinding, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation} from '@angular/core';
 import {IsActiveMatchOptions, NavigationEnd, Router} from '@angular/router';
 import {filter, takeUntil} from 'rxjs/operators';
 
@@ -15,7 +15,7 @@ import {ObGlobalEventsService} from '../../global-events/global-events.service';
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-master-layout-navigation'}
 })
-export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, AfterViewInit, OnDestroy {
+export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit, OnDestroy {
 	isFullWidth = this.masterLayout.navigation.isFullWidth;
 	activeClass = this.config.navigation.activeClass;
 	currentScroll = 0;
@@ -26,7 +26,6 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 	routerLinkActiveOptions: IsActiveMatchOptions = {paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'};
 	private static readonly buttonWidth = 30;
 	private nav: HTMLElement;
-	private linksLength: number;
 	private readonly unsubscribe: Subject<void> = new Subject<void>();
 
 	constructor(
@@ -45,14 +44,7 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 	ngOnInit(): void {
 		this.closeOnEscape();
 		this.markActiveLink();
-	}
-
-	ngDoCheck(): void {
-		if (this.links?.length && this.links.length !== this.linksLength) {
-			this.checkForExternalLinks(this.links);
-			this.linksLength = this.links.length;
-			this.refresh();
-		}
+		this.checkForExternalLinks(this.links);
 	}
 
 	ngAfterViewInit(): void {
@@ -138,6 +130,7 @@ export class ObMasterLayoutNavigationComponent implements OnInit, DoCheck, After
 				this.isScrollable = scrollMode === ObEScrollMode.ENABLED ? true : childWidth > this.nav.clientWidth;
 			}
 			this.updateScroll(this.isScrollable ? 0 : -this.currentScroll);
+			this.checkForExternalLinks(this.links);
 		}
 	}
 
