@@ -12,3 +12,10 @@ export interface ObIModuleList {
 	timestamp: number;
 	modules: string[];
 }
+
+export interface ObIPackage {
+	name?: string;
+	title?: string;
+	version?: string;
+	homePage?: string;
+}
