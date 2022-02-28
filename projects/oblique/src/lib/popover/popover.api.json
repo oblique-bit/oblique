@@ -44,6 +44,13 @@
           "default": "undefined",
           "values": ["ObEToggleType.CLICK", "ObEToggleType.HOVER"],
           "since": "8.1.0"
+        },
+        {
+          "name": "appendToBody",
+          "text": "Controls where the popover is inserted in the DOM. `true` means it will be inserted at the end of the body. `false` means it will be inserted right after its toggle.",
+          "type": "boolean",
+          "default": "true",
+          "since": "10.0.0"
         }
       ],
       "tokens": [

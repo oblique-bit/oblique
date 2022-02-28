@@ -40,6 +40,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	@Input() id: string;
 	@Input() toggleHandle: ObEToggleType;
 	@Input() closeOnlyOnToggle: boolean;
+	@Input() appendToBody = true;
 	@HostBinding('attr.aria-describedby') idContent: string;
 
 	private static idCount = 0;
@@ -125,7 +126,9 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 
 		// without the setTimeout, the options aren't applied
 		setTimeout(() => {
-			this.renderer.appendChild(this.body, this.popover);
+			const parent = this.appendToBody ? this.body : this.host.parentNode;
+			const referenceNode = this.appendToBody ? null : this.host.nextSibling;
+			this.renderer.insertBefore(parent, this.popover, referenceNode);
 			this.instance = createPopper(this.host, this.popover, defaultConfig);
 			this.setPopperOptionsAndUpdate();
 		});
