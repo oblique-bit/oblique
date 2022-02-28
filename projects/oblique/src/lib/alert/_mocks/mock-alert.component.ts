@@ -11,4 +11,6 @@ export class ObMockAlertComponent {
 	success = false;
 	warning = false;
 	error = false;
+
+	@Input() hasAlertRole: boolean;
 }

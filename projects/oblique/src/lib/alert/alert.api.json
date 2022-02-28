@@ -8,6 +8,7 @@
       "type": "component",
       "usage": "This component renders an alert",
       "since": "7.0.3",
+      "updated": "8.1.0",
       "inputs": [
         {
           "name": "type",
@@ -16,6 +17,22 @@
           "default": "info",
           "values": ["success", "info", "warning", "error"],
           "since": "6.1.0"
+        },
+        {
+          "name": "hasRoleAlert",
+          "text": "Indicates whether a <code>role=alert</code> is added to this <code>ob-alert</code> element at runtime.<br>This value overwrites the global configuration for this element.<br>It should only be used if immediate action is required by the user.",
+          "type": "boolean",
+          "default": "undefined",
+          "since": "8.1.0"
+        }
+      ],
+      "tokens": [
+        {
+          "name": "OBLIQUE_HAS_ROLE_ALERT",
+          "text": "The default value for the <code>hasRoleAlert</code> property that will be applied to all <code>ObAlertComponent</code> components throughout the module-tree.<br>It should only be used when immediate action is required by the user.",
+          "type": "boolean",
+          "default": "undefined",
+          "since": "8.1.0"
         }
       ]
     }
