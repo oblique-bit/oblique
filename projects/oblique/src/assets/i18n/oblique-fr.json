@@ -50,6 +50,7 @@
   "i18n.oblique.http.error.status.504.title": "Délai d'attente de la passerelle",
   "i18n.oblique.http.error.status.504": "Pour traiter votre renquête, le serveur a agi comme une passerelle ou un proxy et n'a pas reçu lui-même une réponse en temps voulu.",
   "i18n.oblique.http.error.timeout": "Le serveur met trop de temps à répondre. Prière de réessayer plus tard ou de contacter le support.",
+  "i18n.oblique.master-layout.accesskey.title": "Accesskeys",
   "i18n.oblique.master-layout.accesskey.main-content": "Sauter au contenu principal [0]",
   "i18n.oblique.master-layout.accesskey.navigation": "Sauter à la navigation [1]",
   "i18n.oblique.header.title": "En-tête",
