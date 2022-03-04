@@ -33,11 +33,9 @@ import {ObLanguageModule} from './language/language.module';
 import {ObExternalLinkModule} from './external-link/external-link.module';
 import {ObAlertModule} from './alert/alert.module';
 import {ObBreadcrumbModule} from './breadcrumb/breadcrumb.module';
-import {ObAuthenticationModule} from './authentication/authentication.module';
 
 const OBLIQUE_MODULES = [
 	ObAlertModule,
-	ObAuthenticationModule,
 	ObButtonModule,
 	ObBreadcrumbModule,
 	ObCollapseModule,
