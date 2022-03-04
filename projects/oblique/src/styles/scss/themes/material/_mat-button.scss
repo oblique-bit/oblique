@@ -56,7 +56,7 @@
 		&.mat-icon-button {
 			height: unset;
 			width: unset;
-			padding: 0.4643em;
+			padding: 0.4643em; // (mat-button-height - mat-button-font-size * ob-icon-font-size) / 2 = (34px - 14px * 1.5)  / 2 = (2.4285em - 1.5em) / 2
 			line-height: 1;
 		}
 
@@ -70,7 +70,7 @@
 	&.mat-flat-button,
 	&.mat-raised-button,
 	&.mat-icon-button {
-		border-radius: 2px;
+		border-radius: core-variables.$ob-border-radius-button;
 	}
 
 	:not(.mat-icon-button) .mat-icon {
@@ -88,14 +88,14 @@
 		&.fab .fab {
 			&::before {
 				position: relative;
-				top: 5px;
+				top: 5px; // empiric value
 			}
 		}
 	}
 
 	// the only targets svg icons, i.e. Oblique ones, no default material ones
 	.mat-icon[data-mat-icon-type="svg"] {
-		font-size: 1.5em;
+		font-size: 1.5em; // empiric value
 		line-height: 1;
 	}
 }
