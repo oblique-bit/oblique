@@ -1,3 +1,4 @@
+@use "sass:selector";
 @use "../../core/variables" as core-variables;
 @use "../../core/mixins/tab-outline";
 
@@ -56,7 +57,7 @@
 		&.mat-icon-button {
 			height: unset;
 			width: unset;
-			padding: 0.4643em; // (mat-button-height - mat-button-font-size * ob-icon-font-size) / 2 = (34px - 14px * 1.5)  / 2 = (2.4285em - 1.5em) / 2
+			padding: 0.3896em; // (mat-button-height - mat-button-font-size * ob-icon-font-size) / 2 = (34px - 14px * 1.65) / 2 = (2.4286em - 1.65em) / 2
 			line-height: 1;
 		}
 
@@ -95,7 +96,11 @@
 
 	// the only targets svg icons, i.e. Oblique ones, no default material ones
 	.mat-icon[data-mat-icon-type="svg"] {
-		font-size: 1.5em; // empiric value
+		font-size: core-variables.$ob-font-size-biggest;
 		line-height: 1;
+
+		@at-root #{selector.append(":not(.mat-icon-button)", &)} {
+			margin-top: -0.1537em; // (mat-text-height - ob-icon-font-size) / 2 = (16px - 1em) / 2 = (0.6926em - 1em) / 2
+		}
 	}
 }
