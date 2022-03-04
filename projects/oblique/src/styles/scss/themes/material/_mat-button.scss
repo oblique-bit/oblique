@@ -59,6 +59,10 @@
 			padding: 0.4643em;
 			line-height: 1;
 		}
+
+		&.mat-button-disabled {
+			cursor: not-allowed;
+		}
 	}
 
 	&.mat-button,
@@ -89,12 +93,9 @@
 		}
 	}
 
+	// the only targets svg icons, i.e. Oblique ones, no default material ones
 	.mat-icon[data-mat-icon-type="svg"] {
 		font-size: 1.5em;
 		line-height: 1;
-	}
-
-	&.ob-button.mat-button-disabled {
-		cursor: not-allowed;
 	}
 }
