@@ -180,7 +180,7 @@ module.exports = {
 		},
 		'projects/oblique/src/lib/notification/*.ts': {
 			statements: 90,
-			branches: 80,
+			branches: 78,
 			functions: 60,
 			lines: 93
 		},
