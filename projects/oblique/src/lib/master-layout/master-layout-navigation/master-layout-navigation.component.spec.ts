@@ -28,7 +28,13 @@ describe('MasterLayoutNavigationComponent', () => {
 	beforeEach(
 		waitForAsync(() => {
 			TestBed.configureTestingModule({
-				declarations: [ObMasterLayoutNavigationComponent, ObMockTranslatePipe, DummyFullPathComponent, DummyPrefixPathComponent, DummyDefaultPathComponent],
+				declarations: [
+					ObMasterLayoutNavigationComponent,
+					ObMockTranslatePipe,
+					DummyFullPathComponent,
+					DummyPrefixPathComponent,
+					DummyDefaultPathComponent
+				],
 				imports: [
 					RouterTestingModule.withRoutes([
 						{path: 'defaultPathMatch', component: DummyDefaultPathComponent},

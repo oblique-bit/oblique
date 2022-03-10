@@ -1,14 +1,15 @@
 <p>
 	Provides helper services that wrapps the functionality of the <code>angular-oauth2-oidc</code> library. For more information about
-	<code>angular-oauth2-oidc</code> see <a href="https://github.com/manfredsteyer/angular-oauth2-oidc">https://github.com/manfredsteyer/angular-oauth2-oidc</a>.
+	<code>angular-oauth2-oidc</code> see
+	<a href="https://github.com/manfredsteyer/angular-oauth2-oidc">https://github.com/manfredsteyer/angular-oauth2-oidc</a>.
 </p>
 
 <h3>Usage</h3>
 <ul>
 	<li>Import the <code>ObAuthenticationModule</code> with the <code>forRoot</code> method in the application's root module.</li>
 	<li>
-		Use the <code>ObAuthenticationConfigService</code> to configure the <code>angular-oauth2-oidc</code> library. It's recommended to perform the configuration
-		in the application's root module.
+		Use the <code>ObAuthenticationConfigService</code> to configure the <code>angular-oauth2-oidc</code> library. It's recommended to
+		perform the configuration in the application's root module.
 	</li>
 	<li>Use the <code>ObAuthenticationService</code> to perform login, logout or get identity informations.</li>
 </ul>
@@ -72,13 +73,14 @@ export class AppModule {
 	>
 </details>
 <p>
-	The <code>ObAuthenticationConfigService</code> uses the <code>AuthConfig</code> of the <code>angular-oauth2-oidc</code> library in order to configure the
-	library. For more information about the properties of the <code>AuthConfig</code> see it's
+	The <code>ObAuthenticationConfigService</code> uses the <code>AuthConfig</code> of the <code>angular-oauth2-oidc</code> library in order
+	to configure the library. For more information about the properties of the <code>AuthConfig</code> see it's
 	<a href="https://manfredsteyer.github.io/angular-oauth2-oidc/docs/classes/AuthConfig.html#info">documentation</a>.
 </p>
 
 <h3>Extended usage</h3>
 <p>
-	You can directly access the <code>OAuthService</code> of the <code>angular-oauth2-oidc</code> library through the <code>ObAuthenticationService</code>. This
-	allows you to use functionalities of the <code>OAuthService</code> that are not wrapped by the <code>ObAuthenticationService</code>.
+	You can directly access the <code>OAuthService</code> of the <code>angular-oauth2-oidc</code> library through the
+	<code>ObAuthenticationService</code>. This allows you to use functionalities of the <code>OAuthService</code> that are not wrapped by the
+	<code>ObAuthenticationService</code>.
 </p>

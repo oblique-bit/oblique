@@ -5,7 +5,12 @@
 	<section column-main-content>
 		<h3>Drop Zone</h3>
 		<p>The below example only provides a drop zone, it doesn't perform the actual upload</p>
-		<ob-drop-zone [accept]="acceptFiles" [maxFileSize]="maxFileSize" [multiple]="multipleFile" (uploadEvent)="uploadEvent($event)"></ob-drop-zone>
+		<ob-drop-zone
+			[accept]="acceptFiles"
+			[maxFileSize]="maxFileSize"
+			[multiple]="multipleFile"
+			(uploadEvent)="uploadEvent($event)"
+		></ob-drop-zone>
 
 		<h3>File upload</h3>
 		<p>The below example actually performs the upload</p>
@@ -20,7 +25,12 @@
 		</ob-file-upload>
 
 		<h3>Uploaded files</h3>
-		<ob-file-info [getUploadedFilesUrl]="getUrl" [deleteUrl]="deleteUrl" [mapFunction]="mapData" (uploadEvent)="uploadEvent($event)"></ob-file-info>
+		<ob-file-info
+			[getUploadedFilesUrl]="getUrl"
+			[deleteUrl]="deleteUrl"
+			[mapFunction]="mapData"
+			(uploadEvent)="uploadEvent($event)"
+		></ob-file-info>
 		<div>
 			<ob-alert type="info">
 				The link of the style guide:

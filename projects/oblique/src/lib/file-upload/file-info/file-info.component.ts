@@ -32,7 +32,11 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	readonly COLUMN_ACTION = 'action';
 	private subscription: Subscription;
 
-	constructor(private readonly fileUploadService: ObFileUploadService, private readonly popup: ObPopUpService, private readonly translate: TranslateService) {}
+	constructor(
+		private readonly fileUploadService: ObFileUploadService,
+		private readonly popup: ObPopUpService,
+		private readonly translate: TranslateService
+	) {}
 
 	@Input() mapFunction = (files: ObIFileDescription[]): ObIFileDescription[] => files;
 
@@ -99,6 +103,8 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 
 	private setTableHeaders(headers: string[]): void {
 		this.fields = headers;
-		this.displayedColumns = this.deleteUrl ? [this.COLUMN_SELECT, ...this.fields, this.COLUMN_ACTION] : [this.COLUMN_SELECT, ...this.fields];
+		this.displayedColumns = this.deleteUrl
+			? [this.COLUMN_SELECT, ...this.fields, this.COLUMN_ACTION]
+			: [this.COLUMN_SELECT, ...this.fields];
 	}
 }

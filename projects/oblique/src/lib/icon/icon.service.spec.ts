@@ -156,7 +156,11 @@ describe('IconService', () => {
 			waitForAsync(() => {
 				jest.resetModules();
 				TestBed.configureTestingModule({
-					imports: [ObIconModule.forRoot({registerObliqueIcons: false, additionalIcons: [iconSet1]}), HttpClientTestingModule, MatIconTestingModule],
+					imports: [
+						ObIconModule.forRoot({registerObliqueIcons: false, additionalIcons: [iconSet1]}),
+						HttpClientTestingModule,
+						MatIconTestingModule
+					],
 					providers: [
 						{provide: ObIconService, useClass: ObIconService},
 						{provide: MatIconRegistry, useClass: MatIconRegistry}

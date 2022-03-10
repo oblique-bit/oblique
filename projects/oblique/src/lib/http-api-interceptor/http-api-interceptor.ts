@@ -43,7 +43,9 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 	}
 
 	private handleUnknownError(error: ObIObliqueHttpErrorResponse): Observable<never> {
-		return this.handleError(error, !(error.error instanceof HttpErrorResponse), () => this.notificationService.error('i18n.oblique.http.error.general'));
+		return this.handleError(error, !(error.error instanceof HttpErrorResponse), () =>
+			this.notificationService.error('i18n.oblique.http.error.general')
+		);
 	}
 
 	private handleSessionExpiredError(error: ObIObliqueHttpErrorResponse): Observable<never> {

@@ -110,9 +110,13 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 		const debouncer: Subject<any> = new Subject<any>();
 		debouncer.pipe(throttleTime(ObNavTreeFakeFocusDirective.KEY_DOWN_DEBOUNCE_MILLIS)).subscribe(event => this.onKeyDown(event));
 		this.eventSubscriptions.push(
-			this.renderer.listen(this.inputElement.nativeElement, ObNavTreeFakeFocusDirective.INPUT_EVENTS.KEY_DOWN, event => debouncer.next(event))
+			this.renderer.listen(this.inputElement.nativeElement, ObNavTreeFakeFocusDirective.INPUT_EVENTS.KEY_DOWN, event =>
+				debouncer.next(event)
+			)
 		);
-		this.eventSubscriptions.push(this.renderer.listen(this.inputElement.nativeElement, ObNavTreeFakeFocusDirective.INPUT_EVENTS.BLUR, () => this.onBlur(true)));
+		this.eventSubscriptions.push(
+			this.renderer.listen(this.inputElement.nativeElement, ObNavTreeFakeFocusDirective.INPUT_EVENTS.BLUR, () => this.onBlur(true))
+		);
 	}
 
 	private onKeyDown(event: KeyboardEvent): void {

@@ -93,7 +93,11 @@ describe('SearchBoxComponent', () => {
 			// @ts-expect-error
 			component.links = new QueryList();
 			// @ts-expect-error
-			component.links.reset([{nativeElement: {focus: jest.fn()}}, {nativeElement: {focus: jest.fn()}}, {nativeElement: {focus: jest.fn()}}]);
+			component.links.reset([
+				{nativeElement: {focus: jest.fn()}},
+				{nativeElement: {focus: jest.fn()}},
+				{nativeElement: {focus: jest.fn()}}
+			]);
 			component.pattern = 't';
 		});
 
@@ -130,7 +134,11 @@ describe('SearchBoxComponent', () => {
 			// @ts-expect-error
 			component.links = new QueryList();
 			// @ts-expect-error
-			component.links.reset([{nativeElement: {focus: jest.fn()}}, {nativeElement: {focus: jest.fn()}}, {nativeElement: {focus: jest.fn()}}]);
+			component.links.reset([
+				{nativeElement: {focus: jest.fn()}},
+				{nativeElement: {focus: jest.fn()}},
+				{nativeElement: {focus: jest.fn()}}
+			]);
 			component.pattern = 't';
 		});
 

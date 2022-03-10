@@ -15,7 +15,11 @@ export class ObMatErrorDirective implements OnInit, OnDestroy {
 	private errors: ValidationErrors = {};
 	private readonly unsubscribe = new Subject<void>();
 
-	constructor(@Optional() private readonly control: ObErrorMessagesDirective, private readonly el: ElementRef, translate: TranslateService) {
+	constructor(
+		@Optional() private readonly control: ObErrorMessagesDirective,
+		private readonly el: ElementRef,
+		translate: TranslateService
+	) {
 		if (this.control) {
 			this.pipe = new ObTranslateParamsPipe(translate);
 			translate.onLangChange.subscribe(() => this.showErrors(this.errors || {}));

@@ -342,7 +342,10 @@ export class UpdateV7toV8 implements ObIMigrations {
 
 	private migrateMasterLayoutProperties(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Replacing master Layout properties: header.isAnimated, footer.isSmall, layout.isFixed, hasScrollTransition, isMedium');
+			infoMigration(
+				_context,
+				'Replacing master Layout properties: header.isAnimated, footer.isSmall, layout.isFixed, hasScrollTransition, isMedium'
+			);
 			const toApply = (filePath: string): void => {
 				const fileContent = readFile(tree, filePath);
 				let replacement = fileContent;
@@ -405,7 +408,10 @@ export class UpdateV7toV8 implements ObIMigrations {
 			? fileContent
 					.replace(new RegExp(`^\\s*${service}\\.header\\.isAnimated\\s*=\\s*\\w*\\s*;$`, 'm'), '')
 					.replace(new RegExp(`^\\s*${service}\\.footer\\.isSmall\\s*=\\s*\\w*\\s*;$`, 'm'), '')
-					.replace(new RegExp(`^(\\s*${service})\\.layout\\.isFixed\\s*=\\s*(\\w*)\\s*;$`, 'm'), `$1.header.isSticky = $2;\n$1.footer.isSticky = $2;`)
+					.replace(
+						new RegExp(`^(\\s*${service})\\.layout\\.isFixed\\s*=\\s*(\\w*)\\s*;$`, 'm'),
+						`$1.header.isSticky = $2;\n$1.footer.isSticky = $2;`
+					)
 					.replace(new RegExp(`^(\\s*${service}\\.footer)\\.hasScrollTransitions\\s*=\\s*(\\w*)\\s*;$`, 'm'), '$1.hasLogoOnScroll = $2;')
 					.replace(new RegExp(`^(\\s*${service}\\.header)\\.hasScrollTransitions\\s*=\\s*(\\w*)\\s*;$`, 'm'), '$1.reduceOnScroll = $2;')
 					.replace(new RegExp(`^(\\s*${service}\\.header)\\.isMedium\\s*=\\s*(\\w*)\\s*;$`, 'm'), '$1.isSmall = $2;')
@@ -414,7 +420,9 @@ export class UpdateV7toV8 implements ObIMigrations {
 
 	private migrateMasterLayoutIsFixed(fileContent: string): string {
 		const service = /(?<service>\w+)\s*:\s*ObMasterLayoutService/.exec(fileContent)?.groups?.service;
-		return service ? this.migrateObMasterLayoutServiceIsFixed(fileContent, service) : this.migrateObMasterLayoutComponentServiceIsFixed(fileContent);
+		return service
+			? this.migrateObMasterLayoutServiceIsFixed(fileContent, service)
+			: this.migrateObMasterLayoutComponentServiceIsFixed(fileContent);
 	}
 
 	private migrateObMasterLayoutServiceIsFixed(fileContent: string, service: string): string {
@@ -496,9 +504,16 @@ export class UpdateV7toV8 implements ObIMigrations {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Toolchain: update or integrate linting to Oblique standards');
 			const prefix =
-				/\s*"@angular-eslint\/(?:component|directive)-selector"\s*:\s*\[.*?"prefix"\s*:\s*"(?<prefix>.*?)"/s.exec(readFile(tree, '.eslintrc.json'))?.groups
-					?.prefix || '';
-			return chain([this.removeCurrentLinter(), this.addEslint(), this.addEslintConfiguration(), this.addPrettier(), this.overwriteEslintRC(prefix)]);
+				/\s*"@angular-eslint\/(?:component|directive)-selector"\s*:\s*\[.*?"prefix"\s*:\s*"(?<prefix>.*?)"/s.exec(
+					readFile(tree, '.eslintrc.json')
+				)?.groups?.prefix || '';
+			return chain([
+				this.removeCurrentLinter(),
+				this.addEslint(),
+				this.addEslintConfiguration(),
+				this.addPrettier(),
+				this.overwriteEslintRC(prefix)
+			]);
 		});
 	}
 
@@ -570,6 +585,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 
 	private formatEsLintRC(tree: Tree, prefix: string): string {
 		const eslintFile = getTemplate(tree, 'default-eslintrc.json.config');
-		return prefix ? eslintFile.replace(/APP_PREFIX/g, prefix) : eslintFile.replace(/\s*"@angular-eslint\/(?:component|directive)-selector": \[.*?],/gs, '');
+		return prefix
+			? eslintFile.replace(/APP_PREFIX/g, prefix)
+			: eslintFile.replace(/\s*"@angular-eslint\/(?:component|directive)-selector": \[.*?],/gs, '');
 	}
 }

@@ -5,7 +5,10 @@ class CopyErrorMessages {
 	static perform(): void {
 		const basePath = path.join('projects', 'oblique', 'src', 'assets', 'i18n');
 		const messagePath = path.join('projects', 'oblique', 'src', 'lib', 'error-messages', 'error-messages.description.html');
-		writeFileSync(messagePath, CopyErrorMessages.adaptMessages(CopyErrorMessages.getTranslations(basePath), readFileSync(messagePath).toString()));
+		writeFileSync(
+			messagePath,
+			CopyErrorMessages.adaptMessages(CopyErrorMessages.getTranslations(basePath), readFileSync(messagePath).toString())
+		);
 	}
 
 	private static adaptMessages(translations: Record<string, string>, messages: string): string {

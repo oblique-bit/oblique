@@ -200,7 +200,9 @@ export function removeImport(tree: Tree, fileName: string, name: string, pkg: st
 			fileName,
 			new RegExp(`import\\s*{\\s*${name}\\s*}\\s*from\\s*['"]${pkg}['"]`, 'm').test(content)
 				? content.replace(new RegExp(`import\\s*{\\s*${name}\\s*}\\s*from\\s*['"]${pkg}['"]\\s*;\\s*`), '')
-				: content.replace(new RegExp(`(import\\s*{\\s*.*)${name}(?:,\\s*)?(.*\\s*}\\s*from\\s*['"]${pkg}['"]\\s*;\\s*)`), '$1$2').replace(/,\s*}/, '}')
+				: content
+						.replace(new RegExp(`(import\\s*{\\s*.*)${name}(?:,\\s*)?(.*\\s*}\\s*from\\s*['"]${pkg}['"]\\s*;\\s*)`), '$1$2')
+						.replace(/,\s*}/, '}')
 		);
 	}
 }

@@ -77,7 +77,9 @@ export class ObSearchBoxComponent {
 	}
 
 	@HostListener('keydown.arrowup', ['$event']) navigateUp($event: KeyboardEvent): void {
-		this.focusLink(this.active === undefined ? this.filteredItems.length - 1 : (this.active - 1 + this.filteredItems.length) % this.filteredItems.length);
+		this.focusLink(
+			this.active === undefined ? this.filteredItems.length - 1 : (this.active - 1 + this.filteredItems.length) % this.filteredItems.length
+		);
 		if ($event) {
 			$event.preventDefault();
 		}

@@ -25,7 +25,9 @@ export class ObNavTreeComponent implements OnDestroy {
 	@Input() items: ObNavTreeItemModel[] = [];
 	@Input() prefix = 'nav-tree';
 	@Input() filterPattern: string;
-	@Input() labelFormatter: (item: ObNavTreeItemModel, filterPattern?: string) => string = ObNavTreeComponent.DEFAULTS.LABEL_FORMATTER(this.translate);
+	@Input() labelFormatter: (item: ObNavTreeItemModel, filterPattern?: string) => string = ObNavTreeComponent.DEFAULTS.LABEL_FORMATTER(
+		this.translate
+	);
 	@Input() variant = ObNavTreeComponent.DEFAULTS.VARIANT;
 	@Input() activateAncestors = true;
 	@Input() treeAriaLabelledBy: string;
@@ -34,7 +36,11 @@ export class ObNavTreeComponent implements OnDestroy {
 	private readonly unsubscribe = new Subject<void>();
 
 	// TODO: remove when https://github.com/angular/angular/issues/13205
-	constructor(private readonly route: ActivatedRoute, private readonly translate: TranslateService, @Optional() @Inject(ObUseObliqueIcons) useObliqueIcon) {
+	constructor(
+		private readonly route: ActivatedRoute,
+		private readonly translate: TranslateService,
+		@Optional() @Inject(ObUseObliqueIcons) useObliqueIcon
+	) {
 		this.useFontAwesomeIcon = !useObliqueIcon;
 		this.route.fragment.pipe(takeUntil(this.unsubscribe)).subscribe(fragment => {
 			this.activeFragment = fragment;
@@ -102,7 +108,9 @@ export function defaultLabelFormatterFactory(translate: TranslateService): (item
 	const formatter = (item: ObNavTreeItemModel, filterPattern: string): string => {
 		const pattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
 		const label: string = translate.instant(item.label, item.labelParams);
-		return pattern ? label.replace(new RegExp(pattern, 'ig'), text => `<span class="${ObNavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`) : label;
+		return pattern
+			? label.replace(new RegExp(pattern, 'ig'), text => `<span class="${ObNavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`)
+			: label;
 	};
 
 	return formatter;

@@ -51,7 +51,10 @@ export class ObAuthenticationModule {
 	 * @param config the OAuthModuleConfig given by the user. Default is null.
 	 * @param validationHandlerClass the ValidationHandler given by the user. Default is NullValidationHandler wich does nothing.
 	 */
-	static forRoot(config: OAuthModuleConfig = null, validationHandlerClass = NullValidationHandler): ModuleWithProviders<ObAuthenticationModule> {
+	static forRoot(
+		config: OAuthModuleConfig = null,
+		validationHandlerClass = NullValidationHandler
+	): ModuleWithProviders<ObAuthenticationModule> {
 		return {
 			ngModule: ObAuthenticationModule,
 			providers: [

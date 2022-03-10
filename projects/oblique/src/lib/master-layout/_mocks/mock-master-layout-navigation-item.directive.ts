@@ -1,5 +1,9 @@
 import {Directive, EventEmitter, Output, QueryList} from '@angular/core';
-import {ObMasterLayoutNavigationItemDirective, ObMasterLayoutNavigationMenuDirective, ObMasterLayoutNavigationToggleDirective} from '../master-layout.module';
+import {
+	ObMasterLayoutNavigationItemDirective,
+	ObMasterLayoutNavigationMenuDirective,
+	ObMasterLayoutNavigationToggleDirective
+} from '../master-layout.module';
 
 @Directive({
 	selector: '[obMasterLayoutNavigationItem]',

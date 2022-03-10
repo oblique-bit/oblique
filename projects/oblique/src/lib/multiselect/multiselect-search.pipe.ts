@@ -8,6 +8,8 @@ export class ObMultiselectSearchPipe implements PipeTransform {
 	constructor(private readonly multiselectDropdown: ObMultiselectComponent) {}
 
 	transform(options: any[], searchString = ''): any[] {
-		return options.filter(option => this.multiselectDropdown.formatOptionForLabel(option).toLowerCase().includes(searchString.toLowerCase()));
+		return options.filter(option =>
+			this.multiselectDropdown.formatOptionForLabel(option).toLowerCase().includes(searchString.toLowerCase())
+		);
 	}
 }

@@ -112,7 +112,8 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	}
 
 	scrollTop(element?: HTMLElement): void {
-		const scrollTop = element?.scrollTop ?? (this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0);
+		const scrollTop =
+			element?.scrollTop ?? (this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0);
 		this.scrollEvents.hasScrolled(scrollTop);
 		if (this.isScrolling !== scrollTop > 0) {
 			this.isScrolling = scrollTop > 0;

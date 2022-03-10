@@ -73,9 +73,11 @@ export class ObProgressComponent implements OnDestroy {
 	}
 
 	private uploadSingleFile(file: ObIFile): void {
-		this.uploadedFiles.files[file.index].subscription = this.fileUploadService.upload(this.uploadUrl, file.binary as File).subscribe(event => {
-			this.updateFileProgress(event, file.index);
-		});
+		this.uploadedFiles.files[file.index].subscription = this.fileUploadService
+			.upload(this.uploadUrl, file.binary as File)
+			.subscribe(event => {
+				this.updateFileProgress(event, file.index);
+			});
 	}
 
 	private isUploadComplete(): void {
@@ -98,11 +100,15 @@ export class ObProgressComponent implements OnDestroy {
 		});
 	}
 
-	private updateFileProgress(event: HttpEvent<HttpEventType.UploadProgress | HttpEventType.Response | HttpEventType.User>, index: number): void {
+	private updateFileProgress(
+		event: HttpEvent<HttpEventType.UploadProgress | HttpEventType.Response | HttpEventType.User>,
+		index: number
+	): void {
 		if (event.type === HttpEventType.User) {
 			this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: (event as {type: HttpEventType; files: File[]}).files});
 		} else {
-			this.uploadedFiles.files[index].progress = event.type === HttpEventType.UploadProgress ? Math.round((event.loaded / event.total) * 100) : 100;
+			this.uploadedFiles.files[index].progress =
+				event.type === HttpEventType.UploadProgress ? Math.round((event.loaded / event.total) * 100) : 100;
 		}
 		this.uploadedFiles.files[index].completed = event.type === HttpEventType.Response;
 		this.uploadedFiles.files[index].hasError = event.type === HttpEventType.User;

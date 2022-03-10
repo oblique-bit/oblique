@@ -44,8 +44,14 @@
 			</li>
 		</ol>
 	</li>
-	<li><a [routerLink]="['/samples', 'breadcrumb', 'missing-label']" routerLinkActive="router-link-active">Route with missing breadcrumb label</a></li>
-	<li><a [routerLink]="['/samples', 'breadcrumb', 'i18n-label']" routerLinkActive="router-link-active">Route with a translated label</a></li>
+	<li>
+		<a [routerLink]="['/samples', 'breadcrumb', 'missing-label']" routerLinkActive="router-link-active"
+			>Route with missing breadcrumb label</a
+		>
+	</li>
+	<li>
+		<a [routerLink]="['/samples', 'breadcrumb', 'i18n-label']" routerLinkActive="router-link-active">Route with a translated label</a>
+	</li>
 </ol>
 
 <h3>Dynamic routes</h3>
@@ -54,7 +60,9 @@ The content of this input is used for the param value:
 <input type="text" #i value="param-value-123" />
 
 <p>
-	<a [routerLink]="['/samples', 'breadcrumb', 'with-params', i.value]" routerLinkActive="router-link-active">Route with path/param, no label</a>
+	<a [routerLink]="['/samples', 'breadcrumb', 'with-params', i.value]" routerLinkActive="router-link-active"
+		>Route with path/param, no label</a
+	>
 	<br />
 	<a [routerLink]="['/samples', 'breadcrumb', 'with-params-and-label', i.value]" routerLinkActive="router-link-active"
 		>Route with path/param and transalted label</a

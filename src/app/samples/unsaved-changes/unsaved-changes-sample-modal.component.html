@@ -1,8 +1,18 @@
 <div class="modal-header">
 	<h4 class="modal-title">Form within modal</h4>
 	<div>
-		<span class="fa fa-check text-success" ngbTooltip="Form does not contain unsaved changes" placement="bottom" *ngIf="!formModal.form.dirty"></span>
-		<span class="fa fa-exclamation-triangle text-warning" ngbTooltip="Form contains unsaved changes" placement="bottom" *ngIf="formModal.form.dirty"></span>
+		<span
+			class="fa fa-check text-success"
+			ngbTooltip="Form does not contain unsaved changes"
+			placement="bottom"
+			*ngIf="!formModal.form.dirty"
+		></span>
+		<span
+			class="fa fa-exclamation-triangle text-warning"
+			ngbTooltip="Form contains unsaved changes"
+			placement="bottom"
+			*ngIf="formModal.form.dirty"
+		></span>
 	</div>
 	<div class="clearfix"></div>
 	<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">

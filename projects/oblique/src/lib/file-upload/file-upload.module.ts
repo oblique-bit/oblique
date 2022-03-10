@@ -44,7 +44,14 @@ export {ObIFileDescription, ObIUploadEvent, ObEUploadEventType} from './file-upl
 		ObIconModule,
 		ObNotificationModule
 	],
-	declarations: [ObFileUploadComponent, ObFileInfoComponent, ObDragDropDirective, ObAcceptAllPipe, ObDropZoneComponent, ObProgressComponent],
+	declarations: [
+		ObFileUploadComponent,
+		ObFileInfoComponent,
+		ObDragDropDirective,
+		ObAcceptAllPipe,
+		ObDropZoneComponent,
+		ObProgressComponent
+	],
 	exports: [ObFileUploadComponent, ObDropZoneComponent, ObFileInfoComponent],
 	providers: obliqueProviders()
 })

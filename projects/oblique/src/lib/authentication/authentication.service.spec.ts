@@ -70,7 +70,9 @@ describe('ObAuthenticationService', () => {
 		});
 
 		it('should return the correct IResourceAccessRoles', () => {
-			expect(service.getAllResourceAccessRoles()).toEqual([{name: 'account', roles: ['manage-account', 'manage-account-links', 'view-profile']}]);
+			expect(service.getAllResourceAccessRoles()).toEqual([
+				{name: 'account', roles: ['manage-account', 'manage-account-links', 'view-profile']}
+			]);
 		});
 	});
 });
