@@ -79,7 +79,8 @@ describe('SchemaValidation', () => {
 			formType: 'template',
 			testComponent: TemplateFormTestComponent,
 			formModule: FormsModule,
-			getControls: (fixture): Record<string, AbstractControl> => fixture.debugElement.query(By.directive(NgForm)).injector.get(NgForm).controls
+			getControls: (fixture): Record<string, AbstractControl> =>
+				fixture.debugElement.query(By.directive(NgForm)).injector.get(NgForm).controls
 		},
 		{
 			formType: 'model',

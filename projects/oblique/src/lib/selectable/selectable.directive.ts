@@ -16,7 +16,9 @@ export class ObSelectableDirective implements OnInit {
 
 	constructor(private readonly element: ElementRef, @Optional() private readonly group: ObSelectableGroupDirective) {
 		if (!group) {
-			throw new Error('The ObSelectableDirectives need to be wrapped in an ObSelectableGroupDirective. Please consult the documentation for more info');
+			throw new Error(
+				'The ObSelectableDirectives need to be wrapped in an ObSelectableGroupDirective. Please consult the documentation for more info'
+			);
 		}
 	}
 

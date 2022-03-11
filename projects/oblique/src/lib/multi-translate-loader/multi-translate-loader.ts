@@ -19,7 +19,9 @@ export class ObMultiTranslateLoader implements TranslateLoader {
 					catchError(() => ObMultiTranslateLoader.handleError(url))
 				)
 			);
-		return forkJoin(requests).pipe(map(response => response.reduce<Record<string, string>>((total, current) => ({...total, ...current}), {})));
+		return forkJoin(requests).pipe(
+			map(response => response.reduce<Record<string, string>>((total, current) => ({...total, ...current}), {}))
+		);
 	}
 
 	// if some files are flat while others are expanded, the flatten properties will be ignored. Therefore, all files are flatten to avoid conflicts

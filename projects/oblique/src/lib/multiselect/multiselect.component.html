@@ -18,7 +18,11 @@
 		<div class="dropdown-item" *ngIf="enableSearch">
 			<div class="input-group input-group-sm">
 				<div class="input-group-prepend">
-					<span class="input-group-text fa fa-search" [id]="idPrefix + '-search'" [attr.aria-label]="texts.searchPlaceholder | translate"></span>
+					<span
+						class="input-group-text fa fa-search"
+						[id]="idPrefix + '-search'"
+						[attr.aria-label]="texts.searchPlaceholder | translate"
+					></span>
 				</div>
 				<input
 					class="form-control form-control-sm"

@@ -9,7 +9,10 @@ import {execSync} from 'child_process';
 
 export function addOblique(_options: ObIOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
-		chain([preconditions(), oblique(_options), obliqueFeatures(_options), toolchain(_options), installDependencies(), finalize(_options)])(tree, _context);
+		chain([preconditions(), oblique(_options), obliqueFeatures(_options), toolchain(_options), installDependencies(), finalize(_options)])(
+			tree,
+			_context
+		);
 }
 
 function preconditions(): Rule {

@@ -15,7 +15,8 @@ class SchematicsCopy {
 		return readdirSync(directory)
 			.map(fileName => path.join(directory, fileName))
 			.reduce(
-				(filePaths, filePath) => (statSync(filePath).isDirectory() ? [...filePaths, ...SchematicsCopy.listFiles(filePath)] : [...filePaths, filePath]),
+				(filePaths, filePath) =>
+					statSync(filePath).isDirectory() ? [...filePaths, ...SchematicsCopy.listFiles(filePath)] : [...filePaths, filePath],
 				[]
 			);
 	}

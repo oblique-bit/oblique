@@ -45,7 +45,9 @@ export class ObBreadcrumbComponent implements OnInit {
 			distinctUntilChanged()
 		);
 
-		this.breadcrumbs$ = merge(of({}), navigationEndEvents, this.translateService.onLangChange).pipe(switchMap(() => this.getCrumbs(this.route.root)));
+		this.breadcrumbs$ = merge(of({}), navigationEndEvents, this.translateService.onLangChange).pipe(
+			switchMap(() => this.getCrumbs(this.route.root))
+		);
 	}
 
 	showTooltip(element: HTMLElement): boolean {
@@ -82,7 +84,9 @@ export class ObBreadcrumbComponent implements OnInit {
 			return next({label: label ?? labelFromUrl, url});
 		}
 
-		const params = pathSplitter.filter(text => text.startsWith(':')).map(text => ({key: text, val: route.snapshot.params[text.substring(1)]}));
+		const params = pathSplitter
+			.filter(text => text.startsWith(':'))
+			.map(text => ({key: text, val: route.snapshot.params[text.substring(1)]}));
 		const urlWithParamValues = this.applyParams(url, params);
 
 		if (label) {

@@ -17,7 +17,15 @@ describe('ObNavTreeSampleComponent', () => {
 		waitForAsync(() => {
 			TestBed.configureTestingModule({
 				declarations: [NavTreeSampleComponent, ObNavTreeComponent],
-				imports: [CommonModule, FormsModule, RouterTestingModule, NgbCollapseModule, NgbButtonsModule, NgbTooltipModule, ObliqueTestingModule],
+				imports: [
+					CommonModule,
+					FormsModule,
+					RouterTestingModule,
+					NgbCollapseModule,
+					NgbButtonsModule,
+					NgbTooltipModule,
+					ObliqueTestingModule
+				],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA]
 			}).compileComponents();
 		})

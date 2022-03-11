@@ -78,7 +78,9 @@ export class TableComponent implements OnInit {
 		if (filter === undefined) {
 			this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 		} else {
-			this.dataSource = new MatTableDataSource(this.ELEMENT_DATA.filter(element => element.name.toLowerCase().includes(filter.trim().toLowerCase())));
+			this.dataSource = new MatTableDataSource(
+				this.ELEMENT_DATA.filter(element => element.name.toLowerCase().includes(filter.trim().toLowerCase()))
+			);
 		}
 		this.updateFooterRow();
 	}

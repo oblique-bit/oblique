@@ -1,7 +1,13 @@
 <h2 class="page-header">Stepper Vertical</h2>
 <ob-column-layout [left]="false">
 	<ng-container column-main-content>
-		<mat-vertical-stepper [linear]="true" [disableRipple]="isRippleDisabled" #stepper [class.mat-stepper-lg]="isLarge" [class.mat-stepper-sm]="isSmall">
+		<mat-vertical-stepper
+			[linear]="true"
+			[disableRipple]="isRippleDisabled"
+			#stepper
+			[class.mat-stepper-lg]="isLarge"
+			[class.mat-stepper-sm]="isSmall"
+		>
 			<ng-template matStepperIcon="edit">
 				<mat-icon svgIcon="pen"></mat-icon>
 			</ng-template>

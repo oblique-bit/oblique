@@ -54,17 +54,20 @@ describe('SpinnerService', () => {
 		})
 	));
 
-	it('should emit deactivate event when activate and deactivate are called equally', inject([ObSpinnerService], (service: ObSpinnerService) => {
-		service.activate();
-		service.activate();
+	it('should emit deactivate event when activate and deactivate are called equally', inject(
+		[ObSpinnerService],
+		(service: ObSpinnerService) => {
+			service.activate();
+			service.activate();
 
-		service.events$.pipe().subscribe((event: ObISpinnerEvent) => {
-			expect(event).toBe({active: false, channel: ObSpinnerService.CHANNEL});
-		});
+			service.events$.pipe().subscribe((event: ObISpinnerEvent) => {
+				expect(event).toBe({active: false, channel: ObSpinnerService.CHANNEL});
+			});
 
-		service.deactivate();
-		service.deactivate(); // Only now, deactivate event is emitted.
-	}));
+			service.deactivate();
+			service.deactivate(); // Only now, deactivate event is emitted.
+		}
+	));
 
 	it('should deactivate immediately, when forceDeactivate is called.', inject([ObSpinnerService], (service: ObSpinnerService) => {
 		service.activate();

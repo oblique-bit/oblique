@@ -37,7 +37,8 @@
 					[class.disabled]="item.disabled === true || null"
 					role="group"
 				>
-					<ng-container *ngTemplateOutlet="itemList; context: { $implicit: item.items, parentExpanded: parentExpanded && !item.collapsed }"> </ng-container>
+					<ng-container *ngTemplateOutlet="itemList; context: { $implicit: item.items, parentExpanded: parentExpanded && !item.collapsed }">
+					</ng-container>
 				</ul>
 			</div>
 		</li>

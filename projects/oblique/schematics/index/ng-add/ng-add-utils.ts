@@ -1,6 +1,11 @@
 import {Tree} from '@angular-devkit/schematics';
 import {addModuleImportToModule, hasNgModuleImport} from '@angular/cdk/schematics';
-import {NodeDependency, NodeDependencyType, addPackageJsonDependency, removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
+import {
+	NodeDependency,
+	NodeDependencyType,
+	addPackageJsonDependency,
+	removePackageJsonDependency
+} from '@schematics/angular/utility/dependencies';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {error, getJson, packageJsonConfigPath, readFile} from '../utils';
 import * as ts from 'typescript';
@@ -79,7 +84,10 @@ export function getTemplate(tree: Tree, file: string): string {
 }
 
 export function getAngularVersion(tree: Tree): number {
-	return parseInt(/@angular\/core":\s*"[~,^]?(?<version>\d+)\.\d+\.\d+"/.exec(readFile(tree, packageJsonConfigPath))?.groups?.version || '0', 10);
+	return parseInt(
+		/@angular\/core":\s*"[~,^]?(?<version>\d+)\.\d+\.\d+"/.exec(readFile(tree, packageJsonConfigPath))?.groups?.version || '0',
+		10
+	);
 }
 
 export function getDepVersion(tree: Tree, dep: string): string | undefined {

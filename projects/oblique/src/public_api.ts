@@ -17,7 +17,12 @@ export {
 	OBLIQUE_COLLAPSE_ICON_POSITION,
 	OBLIQUE_COLLAPSE_DURATION
 } from './lib/collapse/collapse.module';
-export {ObColumnLayoutModule, ObColumnLayoutComponent, ObColumnToggleDirective, ObColumnPanelDirective} from './lib/column-layout/column-layout.module';
+export {
+	ObColumnLayoutModule,
+	ObColumnLayoutComponent,
+	ObColumnToggleDirective,
+	ObColumnPanelDirective
+} from './lib/column-layout/column-layout.module';
 export {
 	ObDateDMYParserFormatter,
 	ObDateFormatterPipe,
@@ -38,7 +43,13 @@ export {
 	ObErrorMessagesModule,
 	ObErrorMessagesService
 } from './lib/error-messages/error-messages.module';
-export {ObExternalLinkModule, ObExternalLinkDirective, EXTERNAL_LINK, ObIExternalLink, ObEExternalLinkIcon} from './lib/external-link/external-link.module';
+export {
+	ObExternalLinkModule,
+	ObExternalLinkDirective,
+	EXTERNAL_LINK,
+	ObIExternalLink,
+	ObEExternalLinkIcon
+} from './lib/external-link/external-link.module';
 export {
 	ObDropZoneComponent,
 	ObEUploadEventType,
@@ -57,7 +68,15 @@ export {
 	ObHttpApiInterceptorModule,
 	ObIHttpApiRequest
 } from './lib/http-api-interceptor/http-api-interceptor.module';
-export {ObTIconConfig, ObIconModule, ObIconService, ObIconConfig, ObUseObliqueIcons, ObEIcon, ObIconComponent} from './lib/icon/icon.module';
+export {
+	ObTIconConfig,
+	ObIconModule,
+	ObIconService,
+	ObIconConfig,
+	ObUseObliqueIcons,
+	ObEIcon,
+	ObIconComponent
+} from './lib/icon/icon.module';
 export {ObLanguageModule, ObLanguageService, ObDatePipe} from './lib/language/language.module';
 export {
 	ObMasterLayoutComponent,
@@ -129,8 +148,17 @@ export {ObStickyComponent, ObStickyModule} from './lib/sticky/sticky.module';
 export {ObInputClearDirective, ObInputClearModule} from './lib/input-clear/input-clear.module';
 export {ObTranslateParamsModule, ObTranslateParamsPipe} from './lib/translate-params/translate-params.module';
 export {ObUnknownRouteModule, ObUnknownRouteComponent} from './lib/unknown-route/unknown-route.module';
-export {ObUnsavedChangesDirective, ObUnsavedChangesGuard, ObUnsavedChangesModule, ObUnsavedChangesService} from './lib/unsaved-changes/unsaved-changes.module';
-export {ObUnsavedChangesTabsDirective, ObUnsavedChangesTabsModule, ObUnsavedChangesTabsService} from './lib/unsaved-changes-tabs/unsaved-changes-tabs.module';
+export {
+	ObUnsavedChangesDirective,
+	ObUnsavedChangesGuard,
+	ObUnsavedChangesModule,
+	ObUnsavedChangesService
+} from './lib/unsaved-changes/unsaved-changes.module';
+export {
+	ObUnsavedChangesTabsDirective,
+	ObUnsavedChangesTabsModule,
+	ObUnsavedChangesTabsService
+} from './lib/unsaved-changes-tabs/unsaved-changes-tabs.module';
 export {ObTelemetryService, TELEMETRY_DISABLE} from './lib/telemetry/telemetry.service';
 export {OB_BANNER, OB_MATERIAL_CONFIG, getTranslateLoader, multiTranslateLoader, WINDOW} from './lib/utilities';
 export {ObIBanner, ObIMaterialConfig} from './lib/utilities.model';

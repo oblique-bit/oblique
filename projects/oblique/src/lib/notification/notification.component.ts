@@ -88,9 +88,7 @@ export class ObNotificationComponent implements OnInit {
 	}
 
 	private isPlacementOnLeft(): boolean {
-		return (
-			this.notificationService.placement === ObENotificationPlacement.BOTTOM_LEFT || this.notificationService.placement === ObENotificationPlacement.TOP_LEFT
-		);
+		return [ObENotificationPlacement.BOTTOM_LEFT, ObENotificationPlacement.TOP_LEFT].includes(this.notificationService.placement);
 	}
 
 	private selfClose(notification: ObINotificationPrivate): void {

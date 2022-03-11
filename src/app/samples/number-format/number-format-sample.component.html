@@ -18,7 +18,15 @@
 	</div>
 	<div class="form-group row">
 		<div class="col-sm-8">
-			<input class="form-control" type="number" obNumberFormat [persistent]="false" name="number2" [(ngModel)]="number2" aria-labelledby="number2Label" />
+			<input
+				class="form-control"
+				type="number"
+				obNumberFormat
+				[persistent]="false"
+				name="number2"
+				[(ngModel)]="number2"
+				aria-labelledby="number2Label"
+			/>
 			<span id="number2Label" class="form-text text-muted">2 decimals format without persistent change.</span>
 		</div>
 		<div class="col-sm-2 form-control-plaintext">{{ number2 }}</div>
@@ -46,7 +54,15 @@
 	</div>
 	<div class="form-group row">
 		<div class="col-sm-8">
-			<input class="form-control" type="number" obNumberFormat [decimals]="4" [persistent]="false" formControlName="number6" aria-labelledby="number6Label" />
+			<input
+				class="form-control"
+				type="number"
+				obNumberFormat
+				[decimals]="4"
+				[persistent]="false"
+				formControlName="number6"
+				aria-labelledby="number6Label"
+			/>
 			<span id="number6Label" class="form-text text-muted">4 decimals format without persistent change.</span>
 		</div>
 		<div class="col-sm-2 form-control-plaintext">{{ formData.value.number6 }}</div>

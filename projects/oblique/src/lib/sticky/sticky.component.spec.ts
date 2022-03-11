@@ -73,6 +73,8 @@ describe('StickyComponent', () => {
 	it('should throw an error with illegal size', () => {
 		const comp = fixture.debugElement.query(By.css('ob-sticky')).componentInstance;
 		comp.headerSize = 'testSize';
-		expect(comp.ngOnChanges.bind(comp)).toThrowError('"testSize" is not a valid size.Only "lg", "md" and "sm" are acceptable alternatives.');
+		expect(comp.ngOnChanges.bind(comp)).toThrowError(
+			'"testSize" is not a valid size.Only "lg", "md" and "sm" are acceptable alternatives.'
+		);
 	});
 });

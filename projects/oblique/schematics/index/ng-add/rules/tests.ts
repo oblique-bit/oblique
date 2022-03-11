@@ -10,7 +10,10 @@ export function addJest(jest: boolean): Rule {
 		}
 
 		infoMigration(_context, 'Toolchain: Replacing karma/jasmine with jest');
-		return chain([removeJasmine(), addJestDependencies(), createJestConfigFiles(), referToJest(), adaptTsConfig(), adaptTsConfigSpec()])(tree, _context);
+		return chain([removeJasmine(), addJestDependencies(), createJestConfigFiles(), referToJest(), adaptTsConfig(), adaptTsConfigSpec()])(
+			tree,
+			_context
+		);
 	};
 }
 
@@ -55,7 +58,11 @@ function createJestConfigFiles() {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, _context: SchematicContext): Tree => {
 		addFile(tree, 'tests/jest.config.js', getTemplate(tree, 'default-jest.config'));
-		addFile(tree, 'tests/setupJest.ts', "import 'jest-preset-angular';\nimport './jestGlobalMocks'; // browser mocks globally available for every test");
+		addFile(
+			tree,
+			'tests/setupJest.ts',
+			"import 'jest-preset-angular';\nimport './jestGlobalMocks'; // browser mocks globally available for every test"
+		);
 		addFile(tree, 'tests/jestGlobalMocks.ts', getTemplate(tree, 'default-jestGlobalMocks.config'));
 
 		return tree;
@@ -117,7 +124,10 @@ function adaptTsConfig() {
 		if (tsConfig.includes('emitDecoratorMetadata')) {
 			tsConfig = tsConfig.replace(/"emitDecoratorMetadata"\s*:\s*false/, '"emitDecoratorMetadata": true');
 		} else {
-			tsConfig = tsConfig.replace(/"experimentalDecorators"\s*:\s*true,/, '"experimentalDecorators": true,\n    "emitDecoratorMetadata": true,');
+			tsConfig = tsConfig.replace(
+				/"experimentalDecorators"\s*:\s*true,/,
+				'"experimentalDecorators": true,\n    "emitDecoratorMetadata": true,'
+			);
 		}
 		tree.overwrite(tsConfigName, tsConfig);
 	};

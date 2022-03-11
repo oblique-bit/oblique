@@ -1,25 +1,28 @@
 <p>
 	This service is used to get, set and add page meta information such as the <code>content</code> attribute of the
-	<code>&lt;meta name="description"&gt;</code> and <code>&lt;title&gt;</code> tags. To activate it, simply import it in the <code>AppModule</code>.
+	<code>&lt;meta name="description"&gt;</code> and <code>&lt;title&gt;</code> tags. To activate it, simply import it in the
+	<code>AppModule</code>.
 </p>
 <h3>Description</h3>
 <p>
-	The description can be defined either globally on the <code>ObDocumentMetaService</code> or per route within the data object on routes definition:
-	<code>&#123;path: 'home', component: HomeComponent, data: &#123;description: 'Description'}}</code>. The given string will be translated in both cases.
+	The description can be defined either globally on the <code>ObDocumentMetaService</code> or per route within the data object on routes
+	definition: <code>&#123;path: 'home', component: HomeComponent, data: &#123;description: 'Description'}}</code>. The given string will be
+	translated in both cases.
 </p>
 <p>Each time a page is loaded, the description will be updated with the page specific one if provided or the global one otherwise.</p>
 <h3>Title</h3>
 <p>
-	The title is composed of three parts: the <code>page</code>, a <code>separator</code> and a <code>suffix</code>. If either the page or the suffix is missing,
-	then the separator will be omitted as well. If both the page and the suffix are missing, then the title won't be changed.
+	The title is composed of three parts: the <code>page</code>, a <code>separator</code> and a <code>suffix</code>. If either the page or the
+	suffix is missing, then the separator will be omitted as well. If both the page and the suffix are missing, then the title won't be
+	changed.
 </p>
 
 <p>
 	The page is defined per route within the data object on routes definition:
-	<code>&#123;path: 'home', component: HomeComponent, data: &#123;title: 'Title'}}</code> and will be translated. If a route has no page defined, then the
-	suffix will be show instead.
+	<code>&#123;path: 'home', component: HomeComponent, data: &#123;title: 'Title'}}</code> and will be translated. If a route has no page
+	defined, then the suffix will be show instead.
 </p>
 <p>
-	Both the separator and the suffix can be set on the <code>ObDocumentMetaService</code> and will be used on all pages. The suffix will also be translated and
-	typically reflects the application's name.
+	Both the separator and the suffix can be set on the <code>ObDocumentMetaService</code> and will be used on all pages. The suffix will also
+	be translated and typically reflects the application's name.
 </p>

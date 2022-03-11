@@ -45,13 +45,17 @@
 			<fieldset>
 				<legend>Toggle features</legend>
 				<mat-list-item>
-					<mat-slide-toggle (click)="toggleAccordionMultiAttribute()" matTooltip="Toggle accordion multi-attribute"> Multiple can be opened </mat-slide-toggle>
+					<mat-slide-toggle (click)="toggleAccordionMultiAttribute()" matTooltip="Toggle accordion multi-attribute">
+						Multiple can be opened
+					</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
 					<mat-slide-toggle (click)="toggleActionRowVisibility()" matTooltip="Toggle action row-visibility">Action row</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle [checked]="true" (click)="toggleToggleVisibility()" matTooltip="Toggle toggle-visibility">Show toggle</mat-slide-toggle>
+					<mat-slide-toggle [checked]="true" (click)="toggleToggleVisibility()" matTooltip="Toggle toggle-visibility"
+						>Show toggle</mat-slide-toggle
+					>
 				</mat-list-item>
 			</fieldset>
 			<fieldset>

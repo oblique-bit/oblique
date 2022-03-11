@@ -115,6 +115,8 @@ overrides:
             - public-instance-field
             - protected-static-field
             - protected-field
+            - private-static-field
+            - private-field
             - public-constructor
             - protected-constructor
             - private-constructor

@@ -58,7 +58,8 @@ const distFonts = () =>
 		.src(['./node_modules/@fortawesome/fontawesome-free/webfonts/*', './node_modules/font-awesome/fonts/*', `${paths.src}/styles/fonts/*`])
 		.pipe(gulp.dest(`${paths.dist}/styles/fonts`));
 
-const distFontAwesome = () => gulp.src('./node_modules/@fortawesome/fontawesome-free/scss/*').pipe(gulp.dest(`${paths.dist}/styles/scss/fontawesome`));
+const distFontAwesome = () =>
+	gulp.src('./node_modules/@fortawesome/fontawesome-free/scss/*').pipe(gulp.dest(`${paths.dist}/styles/scss/fontawesome`));
 
 const distScss = () =>
 	gulp
@@ -67,11 +68,19 @@ const distScss = () =>
 		.pipe(replace(`${paths.fa}/scss`, `${paths.oblique}/scss/fontawesome`))
 		.pipe(gulp.dest(`${paths.dist}/styles/scss`));
 
-const distDocs = () => gulp.src([`${paths.src}/lib/**/*.description.html`, `${paths.src}/lib/**/*.api.json`]).pipe(gulp.dest(`${paths.dist}/lib`));
+const distDocs = () =>
+	gulp.src([`${paths.src}/lib/**/*.description.html`, `${paths.src}/lib/**/*.api.json`]).pipe(gulp.dest(`${paths.dist}/lib`));
 
 gulp.task(
 	'dist',
-	gulp.parallel(distMeta, distFonts, distDocs, distFontAwesome, distAssets, gulp.series(distStyles, distScss, distCss, distBgImage, addBanner))
+	gulp.parallel(
+		distMeta,
+		distFonts,
+		distDocs,
+		distFontAwesome,
+		distAssets,
+		gulp.series(distStyles, distScss, distCss, distBgImage, addBanner)
+	)
 );
 
 function getEndOfLifeDate(version) {

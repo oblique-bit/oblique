@@ -1,5 +1,13 @@
 import {AfterViewInit, Component, Input} from '@angular/core';
-import {AbstractControl, ControlValueAccessor, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
+import {
+	AbstractControl,
+	ControlValueAccessor,
+	FormGroup,
+	NG_VALIDATORS,
+	NG_VALUE_ACCESSOR,
+	ValidationErrors,
+	Validator
+} from '@angular/forms';
 import {ObParentFormDirective} from './parent-form.directive';
 
 @Component({

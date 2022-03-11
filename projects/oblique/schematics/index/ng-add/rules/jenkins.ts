@@ -4,10 +4,12 @@ import {addAngularConfigInList, addFile, infoMigration, setAngularProjectsConfig
 
 export function jenkins(config: string, staticBuild: boolean, jest: boolean): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
-		chain([addDevEnv(config.includes(';')), addJenkins(config.includes(';'), jest), addCF(config, staticBuild), addStaticBuildPack(staticBuild)])(
-			tree,
-			_context
-		);
+		chain([
+			addDevEnv(config.includes(';')),
+			addJenkins(config.includes(';'), jest),
+			addCF(config, staticBuild),
+			addStaticBuildPack(staticBuild)
+		])(tree, _context);
 }
 
 function addDevEnv(dev: boolean): Rule {

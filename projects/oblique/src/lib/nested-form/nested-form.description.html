@@ -1,4 +1,7 @@
-<p>A component and related directive to simplify nesting of forms. Forms can also be nested within nested forms. They can be integrated in 2 simple steps:</p>
+<p>
+	A component and related directive to simplify nesting of forms. Forms can also be nested within nested forms. They can be integrated in 2
+	simple steps:
+</p>
 <ol>
 	<li>
 		Create the sub-form
@@ -14,11 +17,13 @@
 			<li>
 				With Reactive form
 				<ul>
-					<li>add the <code>orParentForm</code> directive on the parent form, i.e. the element with the <code>formGroup</code> directive</li>
+					<li>
+						add the <code>orParentForm</code> directive on the parent form, i.e. the element with the <code>formGroup</code> directive
+					</li>
 					<li>wrap you sub-form with the <code>or-nested-form</code> component</li>
 					<li>
-						pass the sub-form's <code>formGroup</code> to the <code>or-nested-form</code> component's <code>nestedForm</code> input using the
-						<code>exportAs</code> property.
+						pass the sub-form's <code>formGroup</code> to the <code>or-nested-form</code> component's <code>nestedForm</code> input using
+						the <code>exportAs</code> property.
 					</li>
 				</ul>
 			</li>
@@ -28,8 +33,8 @@
 					<li>add the <code>orParentForm</code> directive on the <code>form</code> element</li>
 					<li>wrap you sub-form with the <code>or-nested-form</code> component</li>
 					<li>
-						pass the sub-form's <code>NgForm.control</code> to the <code>or-nested-form</code> component's <code>nestedForm</code> input using the
-						<code>exportAs</code> property.
+						pass the sub-form's <code>NgForm.control</code> to the <code>or-nested-form</code> component's <code>nestedForm</code> input
+						using the <code>exportAs</code> property.
 					</li>
 				</ul>
 			</li>

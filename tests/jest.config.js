@@ -158,7 +158,7 @@ module.exports = {
 			statements: 22,
 			branches: 0,
 			functions: 0,
-			lines: 26
+			lines: 25
 		},
 		'projects/oblique/src/lib/multiselect/*.ts': {
 			statements: 77,
@@ -180,7 +180,7 @@ module.exports = {
 		},
 		'projects/oblique/src/lib/notification/*.ts': {
 			statements: 90,
-			branches: 80,
+			branches: 78,
 			functions: 60,
 			lines: 93
 		},

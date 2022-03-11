@@ -40,7 +40,11 @@ import {ObMockButtonModule} from './button/_mocks/mock-button.module';
 import {ObMockAlertModule} from './alert/_mocks/mock-alert.module';
 import {ObMockBreadcrumbModule} from './breadcrumb/_mocks/mock-breadcrumb.module';
 
-export {ObMockAuthenticationModule, ObMockAuthenticationConfigService, ObMockAuthenticationService} from './authentication/_mocks/mock-authentication-module';
+export {
+	ObMockAuthenticationModule,
+	ObMockAuthenticationConfigService,
+	ObMockAuthenticationService
+} from './authentication/_mocks/mock-authentication-module';
 export {ObMockBreadcrumbModule, ObMockBreadcrumbComponent} from './breadcrumb/_mocks/mock-breadcrumb.module';
 export {ObMockButtonModule, ObMockButtonDirective} from './button/_mocks/mock-button.module';
 export {ObMockCollapseModule, ObMockCollapseComponent} from './collapse/_mocks/mock-collapse.module';
@@ -131,7 +135,11 @@ export {
 	ObMockSchemaValidationDirective,
 	ObMockSchemaValidationService
 } from './schema-validation/_mocks/mock-schema-validation.module';
-export {ObMockSelectableDirective, ObMockSelectableGroupDirective, ObMockObSelectableModule} from './selectable/_mocks/mock-selectable.module';
+export {
+	ObMockSelectableDirective,
+	ObMockSelectableGroupDirective,
+	ObMockObSelectableModule
+} from './selectable/_mocks/mock-selectable.module';
 export {ObMockScrollingModule, ObMockScrollingEvents, ObMockTopControlComponent} from './scrolling/_mocks/mock-scrolling.module';
 export {ObMockSpinnerModule, ObMockSpinnerComponent, ObMockSpinnerService} from './spinner/_mocks/mock-spinner.module';
 export {ObMockStickyModule, ObMockStickyComponent} from './sticky/_mocks/mock-sticky.module';

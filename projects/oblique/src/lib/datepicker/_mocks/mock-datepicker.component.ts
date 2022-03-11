@@ -1,6 +1,14 @@
 import {Component, Input} from '@angular/core';
 import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
-import {AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
+import {
+	AbstractControl,
+	ControlValueAccessor,
+	FormControl,
+	NG_VALIDATORS,
+	NG_VALUE_ACCESSOR,
+	ValidationErrors,
+	Validator
+} from '@angular/forms';
 import {ObIDatepickerOptions} from '../datepicker.model';
 
 @Component({

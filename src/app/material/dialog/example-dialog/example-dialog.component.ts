@@ -8,7 +8,11 @@ import {ObIDialogData} from '../dialog.model';
 	templateUrl: './example-dialog.component.html'
 })
 export class ExampleDialogComponent {
-	constructor(public dialogRef: MatDialogRef<ExampleDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: ObIDialogData, spinner: ObSpinnerService) {
+	constructor(
+		public dialogRef: MatDialogRef<ExampleDialogComponent>,
+		@Inject(MAT_DIALOG_DATA) public data: ObIDialogData,
+		spinner: ObSpinnerService
+	) {
 		spinner.activate();
 		setTimeout(() => spinner.deactivate(), 2000);
 	}
