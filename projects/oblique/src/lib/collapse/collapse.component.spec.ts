@@ -64,7 +64,6 @@ describe('CollapseComponent', () => {
 				declarations: [ObCollapseComponent],
 				imports: [NoopAnimationsModule],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
-				providers: [{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: false}]
 			}).compileComponents();
 		});
 
