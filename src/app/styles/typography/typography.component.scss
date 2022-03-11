@@ -1,5 +1,5 @@
-@import "../../../../projects/oblique/src/styles/scss/core/mixins/typography";
-@import "../../../../projects/oblique/src/styles/scss/core/variables";
+@import "typography";
+@import "variables";
 
 .subtitle1 {
 	@include ob-subtitle1();
