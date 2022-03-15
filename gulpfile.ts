@@ -14,9 +14,6 @@ const fs = require('fs'),
 	},
 	pkg = require('./package.json');
 
-const distStyles = () => gulp.src([`${paths.src}/styles/**/*`]).pipe(gulp.dest(`${paths.dist}/styles`));
-const distAssets = () => gulp.src([`${paths.src}/assets/**/*`]).pipe(gulp.dest(`${paths.dist}/assets`));
-
 const addBanner = () => {
 	const releaseDate = getTodayDate();
 	const endOfLifeDate = getEndOfLifeDate(`${pkg.version.split('.')[0]}.0.0`);
@@ -39,8 +36,6 @@ const addBanner = () => {
 		.pipe(gulp.dest(paths.dist));
 };
 
-const distMeta = () => gulp.src(['README.md', 'CHANGELOG.md', 'LICENSE']).pipe(gulp.dest(paths.dist));
-
 const distCss = () =>
 	gulp
 		.src(`${paths.dist}/styles/css/oblique-core.css`)
@@ -53,14 +48,6 @@ const distBgImage = () =>
 		.pipe(replace('cover-background.jpg', '~@oblique/oblique/assets/images/cover-background.jpg'))
 		.pipe(gulp.dest(`${paths.dist}/styles/css`));
 
-const distFonts = () =>
-	gulp
-		.src(['./node_modules/@fortawesome/fontawesome-free/webfonts/*', './node_modules/font-awesome/fonts/*', `${paths.src}/styles/fonts/*`])
-		.pipe(gulp.dest(`${paths.dist}/styles/fonts`));
-
-const distFontAwesome = () =>
-	gulp.src('./node_modules/@fortawesome/fontawesome-free/scss/*').pipe(gulp.dest(`${paths.dist}/styles/scss/fontawesome`));
-
 const distScss = () =>
 	gulp
 		.src(`${paths.dist}/styles/scss/**/*.scss`)
@@ -68,20 +55,7 @@ const distScss = () =>
 		.pipe(replace(`${paths.fa}/scss`, `${paths.oblique}/scss/fontawesome`))
 		.pipe(gulp.dest(`${paths.dist}/styles/scss`));
 
-const distDocs = () =>
-	gulp.src([`${paths.src}/lib/**/*.description.html`, `${paths.src}/lib/**/*.api.json`]).pipe(gulp.dest(`${paths.dist}/lib`));
-
-gulp.task(
-	'dist',
-	gulp.parallel(
-		distMeta,
-		distFonts,
-		distDocs,
-		distFontAwesome,
-		distAssets,
-		gulp.series(distStyles, distScss, distCss, distBgImage, addBanner)
-	)
-);
+gulp.task('dist', gulp.series(distScss, distCss, distBgImage, addBanner));
 
 function getEndOfLifeDate(version) {
 	const versionReleaseDate = getTagDate(version);
