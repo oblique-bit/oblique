@@ -17,9 +17,9 @@
 			}
 
 			.mat-button-wrapper {
-				// so that it appears before the ripple effect
+				// so that it appears before the ripple effect (mat-button-icon have z-index: 2)
 				position: relative;
-				z-index: 1;
+				z-index: 2;
 			}
 
 			.mat-ripple-element {
