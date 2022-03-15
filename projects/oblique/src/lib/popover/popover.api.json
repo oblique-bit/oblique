@@ -8,7 +8,7 @@
       "usage": "This directive renders a template in a container that is inserted at the end of the body.",
       "type": "directive",
       "since": "6.1.0",
-      "updated": "6.1.4",
+      "updated": "8.1.0",
       "inputs": [
         {
           "name": "obPopover",
@@ -29,6 +29,24 @@
           "type": "Options",
           "see": "https://popper.js.org/docs/v2/constructors/",
           "since": "6.1.0"
+        },
+        {
+          "name": "toggleHandle",
+          "text": "Indicate which toggle this <code>ObPopoverDirective</code> should handle. If not set, it will act as if it were configured with click.",
+          "type": "ObEToggleType",
+          "default": "undefined",
+          "values": ["ObEToggleType.CLICK", "ObEToggleType.HOVER"],
+          "since": "8.1.0"
+        }
+      ],
+      "tokens": [
+        {
+          "name": "OBLIQUE_POPOVER_TOGGLE_HANDLE",
+          "text": "The default value for <code>toggleHandle</code> property that will be applied to all <code>ObPopoverDirective</code> throughout the application.",
+          "type": "ObEToggleType",
+          "default": "undefined",
+          "values": ["ObEToggleType.CLICK", "ObEToggleType.HOVER"],
+          "since": "8.1.0"
         }
       ]
     }
