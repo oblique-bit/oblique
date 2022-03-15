@@ -61,6 +61,12 @@
               "projects/oblique/src/styles/scss/oblique-alert.scss",
               "src/scss/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/oblique/src/styles/scss/core",
+                "projects/oblique/src/styles/scss/core/mixins"
+              ]
+            },
             "scripts": ["projects/oblique/src/ob-features.js"],
             "vendorChunk": true,
             "extractLicenses": false,
