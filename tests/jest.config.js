@@ -42,7 +42,7 @@ module.exports = {
 		global: {
 			statements: 84,
 			branches: 69,
-			functions: 74,
+			functions: 75,
 			lines: 83
 		},
 		// The following rules do apply to all target files individually
