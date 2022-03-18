@@ -6,7 +6,7 @@
       "selector": "ob-alert",
       "exported": "obAlert",
       "type": "component",
-      "usage": "This component renders an alert",
+      "usage": "The <code>ObAlertComponent</code> provides accessible contextual messages.",
       "since": "7.0.3",
       "updated": "8.1.0",
       "inputs": [
