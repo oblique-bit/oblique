@@ -120,7 +120,7 @@
 
 	.mat-error,
 	.mat-hint {
-		height: 1.125em;
+		line-height: 1.6; // 1.2em * 1.3333, i.e. the size of the padding-bottom with canceled 75% font-size
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
