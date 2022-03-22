@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import {EventEmitter, Injectable} from '@angular/core';
 import {DefaultLangChangeEvent, LangChangeEvent, TranslationChangeEvent} from '@ngx-translate/core';
 import {EMPTY, Observable, of} from 'rxjs';
