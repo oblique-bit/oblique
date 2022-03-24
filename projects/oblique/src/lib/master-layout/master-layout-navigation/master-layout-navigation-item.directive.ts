@@ -51,7 +51,7 @@ export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnD
 				filter(() => this.show),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => this.onClick(event.target));
+			.subscribe(event => this.onClick(event instanceof MouseEvent ? event.target : undefined));
 
 		this.manageToggles();
 		this.masterLayout.configEvents$
