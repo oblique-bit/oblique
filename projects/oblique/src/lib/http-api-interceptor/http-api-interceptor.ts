@@ -56,7 +56,7 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 		return this.handleError(error, obliqueRequest.notification.active, () => this.notify(obliqueRequest.notification, error.error));
 	}
 
-	private handleError(error: ObIObliqueHttpErrorResponse, hasError: boolean, action: Function): Observable<never> {
+	private handleError(error: ObIObliqueHttpErrorResponse, hasError: boolean, action: () => void): Observable<never> {
 		if (!error.handled && hasError) {
 			action();
 			error.handled = true;

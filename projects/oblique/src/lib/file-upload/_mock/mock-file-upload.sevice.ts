@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 export class ObMockFileUploadService {
 	uploadComplete$ = new Observable<void>();
 
-	delete(deleteUrl: string, files: string[]): Observable<any> {
+	delete(deleteUrl: string, files: string[]): Observable<unknown> {
 		return undefined;
 	}
 

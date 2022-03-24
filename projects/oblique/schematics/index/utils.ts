@@ -158,7 +158,7 @@ export function installDependencies(): Rule {
 	});
 }
 
-export function applyInTree(tree: Tree, toApply: Function, pattern = '*'): Tree {
+export function applyInTree(tree: Tree, toApply: (file: string) => void, pattern = '*'): Tree {
 	getAngularConfigs(tree, ['sourceRoot'])
 		.map(project => project.config)
 		.reduce<string[]>((files, root: string) => [...files, ...glob.sync(`${root}/**/${pattern}`, {})], [])

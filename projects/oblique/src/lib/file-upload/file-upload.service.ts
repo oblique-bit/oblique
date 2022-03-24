@@ -35,7 +35,7 @@ export class ObFileUploadService {
 		return this.httpClient.get<ObIFileDescription[]>(getUploadedFilesUrl);
 	}
 
-	public delete(deleteUrl: string, files: string[]): Observable<Object> {
+	public delete(deleteUrl: string, files: string[]): Observable<unknown> {
 		return this.httpClient.delete(`${deleteUrl}/${btoa(JSON.stringify(files))}`);
 	}
 
