@@ -70,7 +70,12 @@ export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnD
 
 	open(): void {
 		this.show = true;
-		this.toggled.emit(true);
+		// when a menu item with sub navigation is toggled while another menu item with sub navigation is already opened,
+		// the first menu has to be closed before the second one is opened so that the `ob-has-opened-menu` class is correctly set
+		// on the navigation's root. This class ensures that menu items on the far right of the screen don't trigger an horizontal
+		// scrollbar. As the `close` method is called asynchronously and the `open` one synchronously, `open` will always be
+		// called before `close`. Adding `setTimeout` with no delay ensures that `open` is called after `close`.
+		setTimeout(() => this.toggled.emit(true));
 
 		if (this.$menu) {
 			this.$menu.show();
