@@ -2,14 +2,21 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
+import {MatDialog} from '@angular/material/dialog';
 import {SelectionModel} from '@angular/cdk/collections';
 import {ObPopUpService} from '@oblique/oblique';
 import {Connectable, ReplaySubject, connectable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {filter, map, startWith} from 'rxjs/operators';
+import {TableEditComponent} from './table-edit.component';
 
 interface Data {
 	isSelected?: boolean;
 	editMode?: EditMode;
+}
+
+export enum Mode {
+	DIALOG,
+	FORM
 }
 
 export enum EditMode {
@@ -27,8 +34,9 @@ export class TableManager<T> {
 	private readonly selection = new SelectionModel<T & Data>(true, []);
 	private originalData: (T & Data)[];
 	private readonly EDIT_MODE_NAME = 'editMode';
+	private mode = Mode.DIALOG;
 
-	constructor(data: (T & Data)[], private readonly popup: ObPopUpService) {
+	constructor(data: (T & Data)[], private readonly popup: ObPopUpService, private readonly dialog: MatDialog) {
 		this.originalData = data.map(data => ({...data, isSelected: false, editMode: EditMode.NONE}));
 		this.dataSource.data = [...this.originalData];
 
@@ -52,6 +60,10 @@ export class TableManager<T> {
 		this.isEditMode$.connect();
 	}
 
+	setMode(mode: Mode): void {
+		this.mode = mode;
+	}
+
 	masterToggle(): void {
 		if (this.areAllRowsSelected()) {
 			this.selection.clear();
@@ -67,14 +79,33 @@ export class TableManager<T> {
 	}
 
 	editRow(row: T & Data): void {
-		row.editMode = EditMode.EDIT;
-		this.editForm.patchValue(row);
+		if (this.mode === Mode.DIALOG) {
+			this.dialog
+				.open(TableEditComponent, {data: row})
+				.afterClosed()
+				.pipe(filter(data => data))
+				.subscribe(
+					data =>
+						(this.dataSource.data = this.dataSource.data.map(item => (Object.is(item, row) ? {...data, editMode: EditMode.NONE} : item)))
+				);
+		} else {
+			row.editMode = EditMode.EDIT;
+			this.editForm.patchValue(row);
+		}
 	}
 
 	addRow(): void {
-		this.dataSource.data.unshift({editMode: EditMode.ADD} as T & Data);
-		this.dataSource.data = [...this.dataSource.data];
-		this.editForm.patchValue({editMode: EditMode.ADD});
+		if (this.mode === Mode.DIALOG) {
+			this.dialog
+				.open(TableEditComponent)
+				.afterClosed()
+				.pipe(filter(data => data))
+				.subscribe(data => (this.dataSource.data = [...this.dataSource.data, {...data, editMode: EditMode.NONE}]));
+		} else {
+			this.dataSource.data.unshift({editMode: EditMode.ADD} as T & Data);
+			this.dataSource.data = [...this.dataSource.data];
+			this.editForm.patchValue({editMode: EditMode.ADD});
+		}
 	}
 
 	saveRow(row: T & Data): void {

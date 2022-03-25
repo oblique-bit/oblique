@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>{{ isNewRow ? "Add new row" : "Edit row" }}</h2>
+<form [formGroup]="editForm">
+	<mat-dialog-content>
+		<mat-form-field obErrorMessages>
+			<mat-label>Position</mat-label>
+			<input type="number" matInput formControlName="position" />
+			<mat-error></mat-error>
+		</mat-form-field>
+
+		<mat-form-field obErrorMessages>
+			<mat-label>Name</mat-label>
+			<input type="text" matInput formControlName="name" />
+			<mat-error></mat-error>
+		</mat-form-field>
+
+		<mat-form-field obErrorMessages>
+			<mat-label>Weight</mat-label>
+			<input type="number" matInput formControlName="weight" />
+			<mat-error></mat-error>
+		</mat-form-field>
+
+		<mat-form-field obErrorMessages>
+			<mat-label>Symbol</mat-label>
+			<input type="text" matInput formControlName="symbol" />
+			<mat-error></mat-error>
+		</mat-form-field>
+	</mat-dialog-content>
+	<mat-dialog-actions>
+		<button type="button" mat-button obButton="tertiary" (click)="close()">
+			<mat-icon svgIcon="cancel"></mat-icon>
+			Close
+		</button>
+		<button type="reset" mat-button obButton="secondary" (click)="reset()">
+			<mat-icon svgIcon="cancel"></mat-icon>
+			Reset
+		</button>
+		<button type="submit" mat-button obButton="primary" (click)="save(editForm)">
+			<mat-icon svgIcon="checkmark"></mat-icon>
+			Save
+		</button>
+	</mat-dialog-actions>
+</form>

@@ -54,6 +54,7 @@ import {IconSampleComponent} from './icon/icon.sample.component';
 import {MandatorySampleComponent} from './mandatory/mandatory.sample.component';
 import {SharedModule} from '../common/shared.module';
 import {FormComponent} from './form/form.component';
+import {TableEditComponent} from './table/table-edit.component';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: BadgeComponent},
@@ -92,6 +93,7 @@ const appRoutes: Routes = [
 		StepperVerticalComponent,
 		TabsComponent,
 		TableComponent,
+		TableEditComponent,
 		TooltipComponent,
 		FormComponent
 	],

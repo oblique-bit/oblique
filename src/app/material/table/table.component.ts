@@ -3,11 +3,12 @@ import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatInput} from '@angular/material/input';
+import {MatDialog} from '@angular/material/dialog';
 import {ObPopUpService} from '@oblique/oblique';
 import {Observable, Subject, combineLatest} from 'rxjs';
 import {delay, filter, map, shareReplay, startWith, takeUntil, tap} from 'rxjs/operators';
 import {ObIPeriodicElement} from './table.model';
-import {EditMode, TableManager} from './table-manager';
+import {EditMode, Mode, TableManager} from './table-manager';
 
 @Component({
 	selector: 'sc-table',
@@ -25,6 +26,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 	isScrollable$: Observable<boolean>;
 	isOptionDisabled = false;
 	editMode = EditMode;
+	mode = Mode;
 	readonly displayedColumns = ['position', 'name', 'weight', 'symbol'];
 	readonly columns = [
 		{key: 'position', name: 'Position', type: 'number'},
@@ -50,8 +52,8 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'}
 	];
 
-	constructor(private readonly formBuilder: FormBuilder, popup: ObPopUpService) {
-		this.tableManager = new TableManager<ObIPeriodicElement>(this.ELEMENT_DATA, popup);
+	constructor(private readonly formBuilder: FormBuilder, popup: ObPopUpService, dialog: MatDialog) {
+		this.tableManager = new TableManager<ObIPeriodicElement>(this.ELEMENT_DATA, popup, dialog);
 	}
 
 	ngOnInit(): void {
@@ -94,6 +96,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 			selection: true,
 			actions: true,
 			caption: true,
+			mode: Mode.DIALOG,
 			style: formBuilder.group({
 				'ob-table': true,
 				'ob-table-cicd': false,

@@ -208,6 +208,13 @@
 				</div>
 			</fieldset>
 			<fieldset>
+				<legend class="mat-control">Edition mode</legend>
+				<mat-radio-group formControlName="mode" class="form-elements">
+					<mat-radio-button [value]="mode.DIALOG" matTooltip="Edit row in a nice dialog">Dialog</mat-radio-button>
+					<mat-radio-button [value]="mode.FORM" matTooltip="Edit row directly in the table">Editable</mat-radio-button>
+				</mat-radio-group>
+			</fieldset>
+			<fieldset>
 				<legend class="mat-control">Oblique styling classes</legend>
 				<div formGroupName="style" class="form-elements">
 					<mat-slide-toggle formControlName="ob-table" matTooltip="Toggle Oblique styling for tables"> ob-table </mat-slide-toggle>
