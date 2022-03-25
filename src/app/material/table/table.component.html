@@ -129,15 +129,27 @@
 			</ng-template>
 
 			<ng-template #actionsHeader let-tableManager="tableManager">
-				<button
-					mat-icon-button
-					obButton="secondary"
-					matTooltip="Remove all selected rows"
-					[disabled]="(tableManager.isEditMode$ | async) || (tableManager.isMasterRemoveDisabled$ | async)"
-					(click)="tableManager.removeRows()"
-				>
-					<mat-icon svgIcon="trash"></mat-icon>
-				</button>
+				<div class="actions">
+					<button
+						type="button"
+						mat-icon-button
+						obButton="secondary"
+						matTooltip="Add a new row"
+						[disabled]="tableManager.isEditMode$ | async"
+						(click)="tableManager.addRow()"
+					>
+						<mat-icon svgIcon="plus"></mat-icon>
+					</button>
+					<button
+						mat-icon-button
+						obButton="secondary"
+						matTooltip="Remove all selected rows"
+						[disabled]="(tableManager.isEditMode$ | async) || (tableManager.isMasterRemoveDisabled$ | async)"
+						(click)="tableManager.removeRows()"
+					>
+						<mat-icon svgIcon="trash"></mat-icon>
+					</button>
+				</div>
 			</ng-template>
 
 			<ng-template #actionsContent let-tableManager="tableManager" let-element="element">
@@ -158,8 +170,8 @@
 							mat-icon-button
 							obButton="secondary"
 							matTooltip="Remove this row"
-							(click)="tableManager.removeRows(element)"
 							[disabled]="tableManager.isEditMode$ | async"
+							(click)="tableManager.removeRows(element)"
 						>
 							<mat-icon svgIcon="trash"></mat-icon>
 						</button>

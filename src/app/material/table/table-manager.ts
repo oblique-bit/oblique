@@ -14,7 +14,8 @@ interface Data {
 
 export enum EditMode {
 	NONE,
-	EDIT
+	EDIT,
+	ADD
 }
 
 export class TableManager<T> {
@@ -70,6 +71,12 @@ export class TableManager<T> {
 		this.editForm.patchValue(row);
 	}
 
+	addRow(): void {
+		this.dataSource.data.unshift({editMode: EditMode.ADD} as T & Data);
+		this.dataSource.data = [...this.dataSource.data];
+		this.editForm.patchValue({editMode: EditMode.ADD});
+	}
+
 	saveRow(row: T & Data): void {
 		if (this.editForm.valid) {
 			const value = {...this.editForm.value, editMode: EditMode.NONE};
@@ -79,6 +86,7 @@ export class TableManager<T> {
 	}
 
 	cancel(row: T & Data): void {
+		this.dataSource.data = this.dataSource.data.filter(item => item.editMode !== EditMode.ADD);
 		row.editMode = EditMode.NONE;
 		this.editForm.reset({editMode: EditMode.NONE});
 	}
