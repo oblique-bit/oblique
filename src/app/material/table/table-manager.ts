@@ -4,7 +4,7 @@ import {MatSort} from '@angular/material/sort';
 import {SelectionModel} from '@angular/cdk/collections';
 import {ObPopUpService} from '@oblique/oblique';
 import {Connectable, ReplaySubject, connectable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, startWith} from 'rxjs/operators';
 
 interface Data {
 	isSelected?: boolean;
@@ -12,18 +12,20 @@ interface Data {
 
 export class TableManager<T> {
 	readonly masterToggleState$: Connectable<string>;
+	readonly isMasterRemoveDisabled$: Connectable<boolean>;
 	readonly dataSource = new MatTableDataSource<T & Data>();
 	private readonly selection = new SelectionModel<T & Data>(true, []);
-	private readonly originalData: (T & Data)[];
+	private originalData: (T & Data)[];
 
 	constructor(data: (T & Data)[], private readonly popup: ObPopUpService) {
 		this.originalData = [...data];
 		this.dataSource.data = data.map(data => ({...data, isSelected: false}));
 
-		this.masterToggleState$ = connectable(this.selection.changed.pipe(map(() => this.masterToggleState())), {
-			connector: () => new ReplaySubject()
-		});
+		this.masterToggleState$ = this.buildMasterToggleObservable();
 		this.masterToggleState$.connect();
+
+		this.isMasterRemoveDisabled$ = this.buildMasterRemoveObservable();
+		this.isMasterRemoveDisabled$.connect();
 	}
 
 	setExtras(options: {sort: MatSort; paginator: MatPaginator}): void {
@@ -50,10 +52,12 @@ export class TableManager<T> {
 		this.dataSource.data = this.originalData.filter(filterFunction);
 	}
 
-	removeRow(row: T & Data): void {
+	removeRows(row?: T & Data): void {
+		const items = row ? [row] : this.selection.selected;
 		if (this.popup.confirm('Delete Row?\nThis action will delete the selected row(s).\nDo you want to proceed?')) {
-			this.dataSource.data = this.dataSource.data.filter(data => !Object.is(data, row));
-			this.selection.deselect(row);
+			this.dataSource.data = this.dataSource.data.filter(data => !items.find(row => Object.is(data, row)));
+			this.originalData = [...this.dataSource.data];
+			this.selection.deselect(...items);
 		}
 	}
 
@@ -66,5 +70,19 @@ export class TableManager<T> {
 			return this.areAllRowsSelected() ? 'checked' : 'indeterminate';
 		}
 		return undefined;
+	}
+
+	private buildMasterToggleObservable(): Connectable<string> {
+		return connectable<string>(this.selection.changed.pipe(map(() => this.masterToggleState())), {connector: () => new ReplaySubject()});
+	}
+
+	private buildMasterRemoveObservable(): Connectable<boolean> {
+		return connectable<boolean>(
+			this.selection.changed.pipe(
+				map(() => !this.selection.hasValue()),
+				startWith(true)
+			),
+			{connector: () => new ReplaySubject()}
+		);
 	}
 }

@@ -27,7 +27,7 @@
 
 			<ng-container [matColumnDef]="COLUMN_NAME_ACTIONS">
 				<th mat-header-cell *matHeaderCellDef>
-					<ng-container [ngTemplateOutlet]="actionsHeader"></ng-container>
+					<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{tableManager}"></ng-container>
 				</th>
 				<td mat-cell *matCellDef="let element">
 					<ng-container [ngTemplateOutlet]="actionsContent" [ngTemplateOutletContext]="{tableManager, element}"></ng-container>
@@ -66,7 +66,7 @@
 
 			<ng-container [matColumnDef]="COLUMN_NAME_ACTIONS">
 				<mat-header-cell *matHeaderCellDef>
-					<ng-container [ngTemplateOutlet]="actionsHeader"></ng-container>
+					<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{tableManager}"></ng-container>
 				</mat-header-cell>
 				<mat-cell *matCellDef="let element">
 					<ng-container [ngTemplateOutlet]="actionsContent" [ngTemplateOutletContext]="{tableManager, element}"></ng-container>
@@ -151,11 +151,7 @@
 </ng-template>
 
 <ng-template #selectContent let-row="row" let-tableManager="tableManager">
-	<mat-checkbox
-		[checked]="row.isSelected"
-		(click)="$event.stopPropagation()"
-		(change)="$event ? tableManager.toggleRow(row) : null"
-	>
+	<mat-checkbox [checked]="row.isSelected" (click)="$event.stopPropagation()" (change)="$event ? tableManager.toggleRow(row) : null">
 	</mat-checkbox>
 </ng-template>
 
@@ -167,10 +163,20 @@
 	{{ element[column.key] }}
 </ng-template>
 
-<ng-template #actionsHeader> </ng-template>
+<ng-template #actionsHeader let-tableManager="tableManager">
+	<button
+		mat-icon-button
+		obButton="secondary"
+		matTooltip="Remove all selected rows"
+		(click)="tableManager.removeRows()"
+		[disabled]="tableManager.isMasterRemoveDisabled$ | async"
+	>
+		<mat-icon svgIcon="trash"></mat-icon>
+	</button>
+</ng-template>
 
 <ng-template #actionsContent let-tableManager="tableManager" let-element="element">
-	<button type="button" mat-icon-button obButton="secondary" matTooltip="Remove this row" (click)="tableManager.removeRow(element)">
+	<button type="button" mat-icon-button obButton="secondary" matTooltip="Remove this row" (click)="tableManager.removeRows(element)">
 		<mat-icon svgIcon="trash"></mat-icon>
 	</button>
 </ng-template>
