@@ -25,6 +25,15 @@
 				</ng-container>
 			</ng-container>
 
+			<ng-container [matColumnDef]="COLUMN_NAME_ACTIONS">
+				<th mat-header-cell *matHeaderCellDef>
+					<ng-container [ngTemplateOutlet]="actionsHeader"></ng-container>
+				</th>
+				<td mat-cell *matCellDef="let element">
+					<ng-container [ngTemplateOutlet]="actionsContent" [ngTemplateOutletContext]="{tableManager, element}"></ng-container>
+				</td>
+			</ng-container>
+
 			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 			<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 		</table>
@@ -55,6 +64,15 @@
 				</ng-container>
 			</ng-container>
 
+			<ng-container [matColumnDef]="COLUMN_NAME_ACTIONS">
+				<mat-header-cell *matHeaderCellDef>
+					<ng-container [ngTemplateOutlet]="actionsHeader"></ng-container>
+				</mat-header-cell>
+				<mat-cell *matCellDef="let element">
+					<ng-container [ngTemplateOutlet]="actionsContent" [ngTemplateOutletContext]="{tableManager, element}"></ng-container>
+				</mat-cell>
+			</ng-container>
+
 			<mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
 			<mat-row *cdkRowDef="let row; columns: displayedColumns"></mat-row>
 		</mat-table>
@@ -75,6 +93,7 @@
 				<div class="form-elements">
 					<mat-slide-toggle formControlName="default" matTooltip="Toggle between default and flex table"> Default table </mat-slide-toggle>
 					<mat-slide-toggle formControlName="selection" matTooltip="Toggle selection column">Selection column </mat-slide-toggle>
+					<mat-slide-toggle formControlName="actions" matTooltip="Toggle actions column">Actions column </mat-slide-toggle>
 					<mat-slide-toggle formControlName="caption" matTooltip="Toggle caption"> Table caption </mat-slide-toggle>
 				</div>
 			</fieldset>
@@ -146,4 +165,12 @@
 
 <ng-template #columnContent let-column="column" let-element="element">
 	{{ element[column.key] }}
+</ng-template>
+
+<ng-template #actionsHeader> </ng-template>
+
+<ng-template #actionsContent let-tableManager="tableManager" let-element="element">
+	<button type="button" mat-icon-button obButton="secondary" matTooltip="Remove this row" (click)="tableManager.removeRow(element)">
+		<mat-icon svgIcon="trash"></mat-icon>
+	</button>
 </ng-template>

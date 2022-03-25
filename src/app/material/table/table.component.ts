@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/c
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {AbstractControl, FormBuilder, FormGroup} from '@angular/forms';
+import {ObPopUpService} from '@oblique/oblique';
 import {Observable, Subject, combineLatest} from 'rxjs';
 import {map, shareReplay, startWith, takeUntil, tap} from 'rxjs/operators';
 import {ObIPeriodicElement} from './table.model';
@@ -30,6 +31,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 	];
 	readonly tableManager: TableManager<ObIPeriodicElement>;
 	readonly COLUMN_NAME_SELECT = 'select';
+	readonly COLUMN_NAME_ACTIONS = 'actions';
 
 	private readonly unsubscribe = new Subject<void>();
 	private readonly ELEMENT_DATA: ObIPeriodicElement[] = [
@@ -45,8 +47,8 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'}
 	];
 
-	constructor(private readonly formBuilder: FormBuilder) {
-		this.tableManager = new TableManager<ObIPeriodicElement>(this.ELEMENT_DATA);
+	constructor(private readonly formBuilder: FormBuilder, popup: ObPopUpService) {
+		this.tableManager = new TableManager<ObIPeriodicElement>(this.ELEMENT_DATA, popup);
 	}
 
 	ngOnInit(): void {
@@ -68,6 +70,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 			filter: '',
 			default: true,
 			selection: true,
+			actions: true,
 			caption: true,
 			style: formBuilder.group({
 				'ob-table': true,
@@ -84,6 +87,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 	private controlChange(): void {
 		this.valueChanges<string>('filter').subscribe(filterText => this.filter(filterText));
 		this.valueChanges<boolean>('selection').subscribe(isEnabled => this.toggleSelectionVisibility(isEnabled));
+		this.valueChanges<boolean>('actions').subscribe(isEnabled => this.toggleActionsVisibility(isEnabled));
 		this.valueChanges<boolean>('style.ob-table').subscribe(isEnabled => this.handleDisableState(isEnabled));
 		this.isStructureDefault$ = this.valueChanges<boolean>('default').pipe(tap(isDefault => this.structureChange(isDefault)));
 		this.hasCaption$ = this.valueChanges<boolean>('caption');
@@ -105,6 +109,14 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 			this.displayedColumns.unshift(this.COLUMN_NAME_SELECT);
 		} else {
 			this.displayedColumns.shift();
+		}
+	}
+
+	private toggleActionsVisibility(isEnabled: boolean): void {
+		if (isEnabled) {
+			this.displayedColumns.push(this.COLUMN_NAME_ACTIONS);
+		} else {
+			this.displayedColumns.pop();
 		}
 	}
 

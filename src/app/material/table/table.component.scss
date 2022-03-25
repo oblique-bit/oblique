@@ -1,5 +1,23 @@
 @use "variables";
 
+// styles for the table
+td,
+th {
+	&.mat-column-actions {
+		width: 1px; // "fit-content" for a table cell
+	}
+}
+
+mat-cell,
+mat-header-cell {
+	&.mat-column-actions {
+		// "fit-content" for a flex table cell
+		flex-basis: auto;
+		flex-grow: 0;
+	}
+}
+
+// styles for the controls
 .form-elements {
 	display: flex;
 	flex-direction: column;

@@ -2,6 +2,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {SelectionModel} from '@angular/cdk/collections';
+import {ObPopUpService} from '@oblique/oblique';
 import {Connectable, ReplaySubject, connectable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -15,7 +16,7 @@ export class TableManager<T> {
 	private readonly selection = new SelectionModel<T & Data>(true, []);
 	private readonly originalData: (T & Data)[];
 
-	constructor(data: (T & Data)[]) {
+	constructor(data: (T & Data)[], private readonly popup: ObPopUpService) {
 		this.originalData = [...data];
 		this.dataSource.data = data.map(data => ({...data, isSelected: false}));
 
@@ -47,6 +48,13 @@ export class TableManager<T> {
 
 	filter(filterFunction: (row: T & Data) => boolean): void {
 		this.dataSource.data = this.originalData.filter(filterFunction);
+	}
+
+	removeRow(row: T & Data): void {
+		if (this.popup.confirm('Delete Row?\nThis action will delete the selected row(s).\nDo you want to proceed?')) {
+			this.dataSource.data = this.dataSource.data.filter(data => !Object.is(data, row));
+			this.selection.deselect(row);
+		}
 	}
 
 	private areAllRowsSelected(): boolean {
