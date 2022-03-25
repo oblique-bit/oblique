@@ -1,12 +1,13 @@
 import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
-import {AbstractControl, FormBuilder, FormGroup} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MatInput} from '@angular/material/input';
 import {ObPopUpService} from '@oblique/oblique';
 import {Observable, Subject, combineLatest} from 'rxjs';
-import {map, shareReplay, startWith, takeUntil, tap} from 'rxjs/operators';
+import {delay, filter, map, shareReplay, startWith, takeUntil, tap} from 'rxjs/operators';
 import {ObIPeriodicElement} from './table.model';
-import {TableManager} from './table-manager';
+import {EditMode, TableManager} from './table-manager';
 
 @Component({
 	selector: 'sc-table',
@@ -16,18 +17,20 @@ import {TableManager} from './table-manager';
 export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 	@ViewChild(MatSort) sort: MatSort;
 	@ViewChild(MatPaginator) paginator: MatPaginator;
+	@ViewChild(MatInput) firstInput: MatInput;
 	controls: FormGroup;
 	obliqueStyles$: Observable<Record<string, boolean>>;
 	isStructureDefault$: Observable<boolean>;
 	hasCaption$: Observable<boolean>;
 	isScrollable$: Observable<boolean>;
 	isOptionDisabled = false;
+	editMode = EditMode;
 	readonly displayedColumns = ['position', 'name', 'weight', 'symbol'];
 	readonly columns = [
-		{key: 'position', name: 'Position'},
-		{key: 'name', name: 'Name'},
-		{key: 'weight', name: 'Weight'},
-		{key: 'symbol', name: 'Symbol'}
+		{key: 'position', name: 'Position', type: 'number'},
+		{key: 'name', name: 'Name', type: 'text'},
+		{key: 'weight', name: 'Weight', type: 'number'},
+		{key: 'symbol', name: 'Symbol', type: 'text'}
 	];
 	readonly tableManager: TableManager<ObIPeriodicElement>;
 	readonly COLUMN_NAME_SELECT = 'select';
@@ -54,15 +57,34 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 	ngOnInit(): void {
 		this.controls = TableComponent.buildControlsFormGroup(this.formBuilder);
 		this.controlChange();
+		this.tableManager.setForm(TableComponent.buildEditFormGroup(this.formBuilder));
 	}
 
 	ngAfterViewInit(): void {
 		this.tableManager.setExtras({sort: this.sort, paginator: this.paginator});
+		this.tableManager.isEditMode$
+			.pipe(
+				filter(isEditMode => isEditMode),
+				delay(0), // wait for Angular to render the inputs
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(() => {
+				this.firstInput.focus();
+			});
 	}
 
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
+	}
+
+	private static buildEditFormGroup(formBuilder: FormBuilder): FormGroup {
+		return formBuilder.group({
+			position: [null, Validators.required],
+			name: [null, Validators.required],
+			weight: [null, Validators.required],
+			symbol: [null, Validators.required]
+		});
 	}
 
 	private static buildControlsFormGroup(formBuilder: FormBuilder): FormGroup {

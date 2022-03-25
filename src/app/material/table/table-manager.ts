@@ -1,3 +1,4 @@
+import {FormControl, FormGroup} from '@angular/forms';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
@@ -8,18 +9,27 @@ import {map, startWith} from 'rxjs/operators';
 
 interface Data {
 	isSelected?: boolean;
+	editMode?: EditMode;
+}
+
+export enum EditMode {
+	NONE,
+	EDIT
 }
 
 export class TableManager<T> {
 	readonly masterToggleState$: Connectable<string>;
 	readonly isMasterRemoveDisabled$: Connectable<boolean>;
+	isEditMode$: Connectable<boolean>;
 	readonly dataSource = new MatTableDataSource<T & Data>();
+	editForm: FormGroup;
 	private readonly selection = new SelectionModel<T & Data>(true, []);
 	private originalData: (T & Data)[];
+	private readonly EDIT_MODE_NAME = 'editMode';
 
 	constructor(data: (T & Data)[], private readonly popup: ObPopUpService) {
-		this.originalData = [...data];
-		this.dataSource.data = data.map(data => ({...data, isSelected: false}));
+		this.originalData = data.map(data => ({...data, isSelected: false, editMode: EditMode.NONE}));
+		this.dataSource.data = [...this.originalData];
 
 		this.masterToggleState$ = this.buildMasterToggleObservable();
 		this.masterToggleState$.connect();
@@ -34,6 +44,13 @@ export class TableManager<T> {
 		});
 	}
 
+	setForm(formGroup: FormGroup): void {
+		this.editForm = formGroup;
+		this.editForm.addControl(this.EDIT_MODE_NAME, new FormControl(EditMode.NONE));
+		this.isEditMode$ = this.buildEditModeObservable();
+		this.isEditMode$.connect();
+	}
+
 	masterToggle(): void {
 		if (this.areAllRowsSelected()) {
 			this.selection.clear();
@@ -46,6 +63,24 @@ export class TableManager<T> {
 	toggleRow(row: T & Data): void {
 		row.isSelected = !row.isSelected;
 		this.selection.toggle(row);
+	}
+
+	editRow(row: T & Data): void {
+		row.editMode = EditMode.EDIT;
+		this.editForm.patchValue(row);
+	}
+
+	saveRow(row: T & Data): void {
+		if (this.editForm.valid) {
+			const value = {...this.editForm.value, editMode: EditMode.NONE};
+			this.dataSource.data = this.dataSource.data.map(item => (Object.is(item, row) ? value : item));
+			this.cancel(row);
+		}
+	}
+
+	cancel(row: T & Data): void {
+		row.editMode = EditMode.NONE;
+		this.editForm.reset({editMode: EditMode.NONE});
 	}
 
 	filter(filterFunction: (row: T & Data) => boolean): void {
@@ -81,6 +116,16 @@ export class TableManager<T> {
 			this.selection.changed.pipe(
 				map(() => !this.selection.hasValue()),
 				startWith(true)
+			),
+			{connector: () => new ReplaySubject()}
+		);
+	}
+
+	private buildEditModeObservable(): Connectable<boolean> {
+		return connectable<boolean>(
+			this.editForm.get(this.EDIT_MODE_NAME).valueChanges.pipe(
+				map(mode => mode !== EditMode.NONE),
+				startWith(false)
 			),
 			{connector: () => new ReplaySubject()}
 		);

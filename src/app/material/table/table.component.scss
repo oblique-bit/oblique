@@ -17,6 +17,32 @@ mat-header-cell {
 	}
 }
 
+.actions {
+	display: flex;
+	gap: variables.$ob-spacing-sm;
+}
+
+.edit-mode {
+	.mat-cell {
+		vertical-align: top;
+
+		&.mat-column-select {
+			padding-top: variables.$ob-spacing-default;
+		}
+	}
+
+	mat-cell {
+		.mat-column-select,
+		.mat-column-actions {
+			align-self: flex-start;
+		}
+	}
+}
+
+:host::ng-deep .mat-form-field-infix {
+	width: unset;
+}
+
 // styles for the controls
 .form-elements {
 	display: flex;
