@@ -1,8 +1,11 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatSort} from '@angular/material/sort';
-import {MatPaginator, PageEvent} from '@angular/material/paginator';
+import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import {AbstractControl, FormBuilder, FormGroup} from '@angular/forms';
+import {Observable, Subject, combineLatest} from 'rxjs';
+import {map, shareReplay, startWith, takeUntil, tap} from 'rxjs/operators';
 import {ObIPeriodicElement} from './table.model';
 
 @Component({
@@ -10,11 +13,28 @@ import {ObIPeriodicElement} from './table.model';
 	templateUrl: './table.component.html',
 	styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit {
-	@ViewChild(MatSort, {static: true}) sort: MatSort;
-	@ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
+	@ViewChild(MatSort) sort: MatSort;
+	@ViewChild(MatPaginator) paginator: MatPaginator;
+	controls: FormGroup;
+	obliqueStyles$: Observable<Record<string, boolean>>;
+	isStructureDefault$: Observable<boolean>;
+	hasCaption$: Observable<boolean>;
+	isScrollable$: Observable<boolean>;
+	isOptionDisabled = false;
+	readonly displayedColumns = ['position', 'name', 'weight', 'symbol'];
+	readonly columns = [
+		{key: 'position', name: 'Position'},
+		{key: 'name', name: 'Name'},
+		{key: 'weight', name: 'Weight'},
+		{key: 'symbol', name: 'Symbol'}
+	];
+	readonly dataSource: MatTableDataSource<ObIPeriodicElement>;
+	readonly selection = new SelectionModel<ObIPeriodicElement>(true, []);
+	readonly COLUMN_NAME_SELECT = 'select';
 
-	ELEMENT_DATA: ObIPeriodicElement[] = [
+	private readonly unsubscribe = new Subject<void>();
+	private readonly ELEMENT_DATA: ObIPeriodicElement[] = [
 		{position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
 		{position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
 		{position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
@@ -26,63 +46,24 @@ export class TableComponent implements OnInit {
 		{position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
 		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'}
 	];
-	dataSource = new MatTableDataSource<ObIPeriodicElement>(this.ELEMENT_DATA);
-	pageSizeOptions = [10, 5, 2];
-	displayedColumns: string[];
-	tableClasses: string[] = [];
-	tableParentClasses: string[] = [];
-	obliqueStylingActive = false;
-	flexTable = false;
 
-	readonly COLUMN_NAME_POSITION = 'position';
-	readonly COLUMN_NAME_NAME = 'name';
-	readonly COLUMN_NAME_WEIGHT = 'weight';
-	readonly COLUMN_NAME_SYMBOL = 'symbol';
-	readonly COLUMN_NAME_SELECT = 'select';
-
-	readonly OBLIQUE_CLASS_TABLE = 'ob-table';
-	readonly OBLIQUE_CLASS_TABLE_CICD = 'ob-table-cicd';
-	readonly OBLIQUE_CLASS_TABLE_SM = 'ob-table-sm';
-	readonly OBLIQUE_CLASS_TABLE_LG = 'ob-table-lg';
-	readonly OBLIQUE_CLASS_TABLE_PLAIN = 'ob-table-plain';
-	readonly OBLIQUE_CLASS_TABLE_COLLAPSE = 'ob-table-collapse';
-
-	private readonly selection = new SelectionModel<ObIPeriodicElement>(true, []);
-	private totalWeight: number;
-	private readonly SORT_DIRECTION_ASCENDING = 'asc';
-	private readonly SORT_DIRECTION_DESCENDING = 'desc';
+	constructor(private readonly formBuilder: FormBuilder) {
+		this.dataSource = new MatTableDataSource<ObIPeriodicElement>(this.ELEMENT_DATA);
+	}
 
 	ngOnInit(): void {
-		this.displayedColumns = [this.COLUMN_NAME_POSITION, this.COLUMN_NAME_NAME, this.COLUMN_NAME_WEIGHT, this.COLUMN_NAME_SYMBOL];
+		this.controls = TableComponent.buildControlsFormGroup(this.formBuilder);
+		this.controlChange();
+	}
+
+	ngAfterViewInit(): void {
 		this.dataSource.sort = this.sort;
 		this.dataSource.paginator = this.paginator;
-		this.updateFooterRow();
-		this.paginator.page.subscribe(page => {
-			this.updateFooterRowByPage(page);
-		});
 	}
 
-	updateFooterRow(): void {
-		this.totalWeight = this.dataSource.data.map(item => item.weight).reduce((total, current) => total + current, 0);
-	}
-
-	updateFooterRowByPage(page: PageEvent): void {
-		const elementsCount = (page.pageIndex + 1) * page.pageSize;
-		const firstIndex = page.pageIndex * page.pageSize;
-		const visibleElements = this.dataSource.data.slice(firstIndex, firstIndex + elementsCount);
-		this.totalWeight = visibleElements.map(item => item.weight).reduce((total, current) => total + current, 0);
-	}
-
-	applyFilter(event): void {
-		const filter = event.target.value;
-		if (filter === undefined) {
-			this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
-		} else {
-			this.dataSource = new MatTableDataSource(
-				this.ELEMENT_DATA.filter(element => element.name.toLowerCase().includes(filter.trim().toLowerCase()))
-			);
-		}
-		this.updateFooterRow();
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 
 	isAllSelected(): boolean {
@@ -99,74 +80,84 @@ export class TableComponent implements OnInit {
 		}
 	}
 
-	toggleSelectionVisibility(): void {
-		if (this.displayedColumns.indexOf(this.COLUMN_NAME_SELECT) === 0) {
-			this.displayedColumns.shift();
-		} else {
+	private static buildControlsFormGroup(formBuilder: FormBuilder): FormGroup {
+		return formBuilder.group({
+			filter: '',
+			default: true,
+			selection: true,
+			caption: true,
+			style: formBuilder.group({
+				'ob-table': true,
+				'ob-table-cicd': false,
+				'ob-table-plain': false,
+				'ob-table-hover': false,
+				'ob-table-sm': false,
+				'ob-table-lg': false
+			}),
+			collapsed: 'none'
+		});
+	}
+
+	private controlChange(): void {
+		this.valueChanges<string>('filter').subscribe(filter => this.filter(filter));
+		this.valueChanges<boolean>('selection').subscribe(isEnabled => this.toggleSelectionVisibility(isEnabled));
+		this.valueChanges<boolean>('style.ob-table').subscribe(isEnabled => this.handleDisableState(isEnabled));
+		this.isStructureDefault$ = this.valueChanges<boolean>('default').pipe(tap(isDefault => this.structureChange(isDefault)));
+		this.hasCaption$ = this.valueChanges<boolean>('caption');
+		this.isScrollable$ = this.valueChanges<string>('collapsed').pipe(map(value => value === 'ob-table-scrollable'));
+		this.obliqueStyles$ = this.getCollapsedStylesObservable();
+	}
+
+	private valueChanges<T>(field: string): Observable<T> {
+		const control = this.controls.get(field);
+		return control.valueChanges.pipe(startWith(control.value), shareReplay(1), takeUntil(this.unsubscribe));
+	}
+
+	private filter(filter: string): void {
+		this.dataSource.data = this.ELEMENT_DATA;
+		if (filter) {
+			this.dataSource.data = this.ELEMENT_DATA.filter(row => row.name.toLowerCase().includes(filter.trim().toLowerCase()));
+		}
+	}
+
+	private toggleSelectionVisibility(isEnabled: boolean): void {
+		if (isEnabled) {
 			this.displayedColumns.unshift(this.COLUMN_NAME_SELECT);
-		}
-	}
-
-	toggleFlexTableVisibility(): void {
-		this.flexTable = !this.flexTable;
-	}
-
-	toggleTableClass(stylingClass: string): void {
-		if (this.tableClasses.includes(stylingClass)) {
-			if (stylingClass === this.OBLIQUE_CLASS_TABLE) {
-				this.obliqueStylingActive = false;
-			}
-			this.tableClasses.splice(this.tableClasses.indexOf(stylingClass), 1);
 		} else {
-			if (stylingClass === this.OBLIQUE_CLASS_TABLE) {
-				this.obliqueStylingActive = true;
-			}
-			if (this.obliqueStylingActive) {
-				this.tableClasses.push(stylingClass);
-			}
+			this.displayedColumns.shift();
 		}
 	}
 
-	toggleTableParentClass(stylingClass: string): void {
-		if (this.tableParentClasses.includes(stylingClass)) {
-			this.tableParentClasses.splice(this.tableParentClasses.indexOf(stylingClass), 1);
+	private structureChange(isDefault: boolean): void {
+		['caption', 'collapsed'].map(key => this.controls.get(key)).forEach(control => TableComponent.setDisabledState(control, isDefault));
+	}
+
+	private static setDisabledState(control: AbstractControl, isEnabled: boolean): void {
+		if (isEnabled) {
+			control.enable();
 		} else {
-			this.tableParentClasses.push(stylingClass);
+			control.disable();
 		}
 	}
 
-	sortData(event: any): void {
-		const sortColumn = event.active;
-		const sortDirection = event.direction;
-		this.dataSource = new MatTableDataSource(
-			this.ELEMENT_DATA.sort((left, right) => {
-				switch (sortDirection) {
-					case this.SORT_DIRECTION_ASCENDING:
-						return this.sortAscending(left, right, sortColumn);
-					case this.SORT_DIRECTION_DESCENDING:
-						return this.sortDescending(left, right, sortColumn);
-					default:
-						return this.sortAscending(left, right, sortColumn);
-				}
-			})
-		);
+	private getCollapsedStylesObservable(): Observable<Record<string, boolean>> {
+		const collapse = ['ob-table-collapse', 'ob-table-collapse-sm', 'ob-table-collapse-md'];
+		return combineLatest([
+			this.valueChanges<Record<string, boolean>>('style'),
+			this.valueChanges<string>('collapsed').pipe(
+				map(value => collapse.reduce<Record<string, boolean>>((total, current) => ({...total, [current]: current === value}), {}))
+			)
+		]).pipe(map(classes => ({...classes[0], ...classes[1]})));
 	}
 
-	private sortAscending(left: ObIPeriodicElement, right: ObIPeriodicElement, sortColumn: string): number {
-		if (left[sortColumn] > right[sortColumn]) {
-			return 1;
-		} else if (left[sortColumn] === right[sortColumn]) {
-			return 0;
-		}
-		return -1;
+	private handleDisableState(isEnabled: boolean): void {
+		this.isOptionDisabled = !isEnabled;
+		this.getStyleControls(this.controls).forEach(control => TableComponent.setDisabledState(control, isEnabled));
 	}
 
-	private sortDescending(left: ObIPeriodicElement, right: ObIPeriodicElement, sortColumn: string): number {
-		if (right[sortColumn] > left[sortColumn]) {
-			return 1;
-		} else if (left[sortColumn] === right[sortColumn]) {
-			return 0;
-		}
-		return -1;
+	private getStyleControls(formGroup: FormGroup): AbstractControl[] {
+		return Object.keys((formGroup.get('style') as FormGroup).controls)
+			.filter(key => key !== 'ob-table')
+			.map(key => formGroup.get(`style.${key}`));
 	}
 }

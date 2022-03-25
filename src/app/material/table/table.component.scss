@@ -1,11 +1,19 @@
-.table-example {
-	width: 100%;
+@use "variables";
+
+.form-elements {
+	display: flex;
+	flex-direction: column;
+	gap: variables.$ob-spacing-sm;
+
+	> * {
+		width: fit-content;
+	}
 }
 
-:host::ng-deep {
-	@media (max-width: 1450px) {
-		.mat-paginator-range-label {
-			display: none;
-		}
-	}
+fieldset + fieldset {
+	margin-top: variables.$ob-spacing-default;
+}
+
+.form-elements + .form-elements {
+	margin-top: variables.$ob-spacing-sm;
 }
