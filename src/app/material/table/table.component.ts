@@ -1,12 +1,11 @@
 import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {SelectionModel} from '@angular/cdk/collections';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
 import {AbstractControl, FormBuilder, FormGroup} from '@angular/forms';
 import {Observable, Subject, combineLatest} from 'rxjs';
 import {map, shareReplay, startWith, takeUntil, tap} from 'rxjs/operators';
 import {ObIPeriodicElement} from './table.model';
+import {TableManager} from './table-manager';
 
 @Component({
 	selector: 'sc-table',
@@ -29,8 +28,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 		{key: 'weight', name: 'Weight'},
 		{key: 'symbol', name: 'Symbol'}
 	];
-	readonly dataSource: MatTableDataSource<ObIPeriodicElement>;
-	readonly selection = new SelectionModel<ObIPeriodicElement>(true, []);
+	readonly tableManager: TableManager<ObIPeriodicElement>;
 	readonly COLUMN_NAME_SELECT = 'select';
 
 	private readonly unsubscribe = new Subject<void>();
@@ -48,7 +46,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 	];
 
 	constructor(private readonly formBuilder: FormBuilder) {
-		this.dataSource = new MatTableDataSource<ObIPeriodicElement>(this.ELEMENT_DATA);
+		this.tableManager = new TableManager<ObIPeriodicElement>(this.ELEMENT_DATA);
 	}
 
 	ngOnInit(): void {
@@ -57,27 +55,12 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 	}
 
 	ngAfterViewInit(): void {
-		this.dataSource.sort = this.sort;
-		this.dataSource.paginator = this.paginator;
+		this.tableManager.setExtras({sort: this.sort, paginator: this.paginator});
 	}
 
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
-	}
-
-	isAllSelected(): boolean {
-		const numSelected = this.selection.selected.length;
-		const numRows = this.dataSource.data.length;
-		return numSelected === numRows;
-	}
-
-	masterToggle(): void {
-		if (this.isAllSelected()) {
-			this.selection.clear();
-		} else {
-			this.dataSource.data.forEach(row => this.selection.select(row));
-		}
 	}
 
 	private static buildControlsFormGroup(formBuilder: FormBuilder): FormGroup {
@@ -99,7 +82,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 	}
 
 	private controlChange(): void {
-		this.valueChanges<string>('filter').subscribe(filter => this.filter(filter));
+		this.valueChanges<string>('filter').subscribe(filterText => this.filter(filterText));
 		this.valueChanges<boolean>('selection').subscribe(isEnabled => this.toggleSelectionVisibility(isEnabled));
 		this.valueChanges<boolean>('style.ob-table').subscribe(isEnabled => this.handleDisableState(isEnabled));
 		this.isStructureDefault$ = this.valueChanges<boolean>('default').pipe(tap(isDefault => this.structureChange(isDefault)));
@@ -113,11 +96,8 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 		return control.valueChanges.pipe(startWith(control.value), shareReplay(1), takeUntil(this.unsubscribe));
 	}
 
-	private filter(filter: string): void {
-		this.dataSource.data = this.ELEMENT_DATA;
-		if (filter) {
-			this.dataSource.data = this.ELEMENT_DATA.filter(row => row.name.toLowerCase().includes(filter.trim().toLowerCase()));
-		}
+	private filter(filterText: string): void {
+		this.tableManager.filter(row => row.name.toLowerCase().includes(filterText.trim().toLowerCase()));
 	}
 
 	private toggleSelectionVisibility(isEnabled: boolean): void {

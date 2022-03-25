@@ -1,16 +1,16 @@
 <h2 class="page-header">Table</h2>
 <ob-column-layout [left]="false">
 	<div column-main-content [class.ob-table-scrollable]="isScrollable$ | async">
-		<table *ngIf="isStructureDefault$ | async" mat-table matSort [dataSource]="dataSource" [ngClass]="obliqueStyles$ | async">
+		<table *ngIf="isStructureDefault$ | async" mat-table matSort [dataSource]="tableManager.dataSource" [ngClass]="obliqueStyles$ | async">
 			<caption *ngIf="hasCaption$ | async">
 				This is a table caption
 			</caption>
 			<ng-container [matColumnDef]="COLUMN_NAME_SELECT">
 				<th mat-header-cell *matHeaderCellDef>
-					<ng-container [ngTemplateOutlet]="selectHeader"></ng-container>
+					<ng-container [ngTemplateOutlet]="selectHeader" [ngTemplateOutletContext]="{tableManager}"></ng-container>
 				</th>
 				<td mat-cell *matCellDef="let row">
-					<ng-container [ngTemplateOutlet]="selectContent" [ngTemplateOutletContext]="{row}"></ng-container>
+					<ng-container [ngTemplateOutlet]="selectContent" [ngTemplateOutletContext]="{row, tableManager}"></ng-container>
 				</td>
 			</ng-container>
 
@@ -29,13 +29,18 @@
 			<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 		</table>
 
-		<mat-table *ngIf="(isStructureDefault$ | async) === false" matSort [dataSource]="dataSource" [ngClass]="obliqueStyles$ | async">
+		<mat-table
+			*ngIf="(isStructureDefault$ | async) === false"
+			matSort
+			[dataSource]="tableManager.dataSource"
+			[ngClass]="obliqueStyles$ | async"
+		>
 			<ng-container [cdkColumnDef]="COLUMN_NAME_SELECT">
 				<mat-header-cell *cdkHeaderCellDef>
-					<ng-container [ngTemplateOutlet]="selectHeader"></ng-container>
+					<ng-container [ngTemplateOutlet]="selectHeader" [ngTemplateOutletContext]="{tableManager}"></ng-container>
 				</mat-header-cell>
 				<mat-cell *cdkCellDef="let row">
-					<ng-container [ngTemplateOutlet]="selectContent" [ngTemplateOutletContext]="{row}"></ng-container>
+					<ng-container [ngTemplateOutlet]="selectContent" [ngTemplateOutletContext]="{row, tableManager}"></ng-container>
 				</mat-cell>
 			</ng-container>
 
@@ -117,17 +122,21 @@
 	</ng-container>
 </ob-column-layout>
 
-<ng-template #selectHeader>
+<ng-template #selectHeader let-tableManager="tableManager">
 	<mat-checkbox
-		[checked]="selection.hasValue() && isAllSelected()"
-		[indeterminate]="selection.hasValue() && !isAllSelected()"
-		(change)="$event ? masterToggle() : null"
+		[checked]="(tableManager.masterToggleState$ | async) === 'checked'"
+		[indeterminate]="(tableManager.masterToggleState$ | async) === 'indeterminate'"
+		(change)="$event ? tableManager.masterToggle() : null"
 	>
 	</mat-checkbox>
 </ng-template>
 
-<ng-template #selectContent let-row="row">
-	<mat-checkbox [checked]="selection.isSelected(row)" (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null">
+<ng-template #selectContent let-row="row" let-tableManager="tableManager">
+	<mat-checkbox
+		[checked]="row.isSelected"
+		(click)="$event.stopPropagation()"
+		(change)="$event ? tableManager.toggleRow(row) : null"
+	>
 	</mat-checkbox>
 </ng-template>
 
