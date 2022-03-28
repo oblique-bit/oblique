@@ -9,4 +9,5 @@ export class ObMockAriaMenuButtonDirective {
 	popup: boolean;
 
 	onClick(): void {}
+	onEscape(): void {}
 }
