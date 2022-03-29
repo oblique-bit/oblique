@@ -15,7 +15,7 @@
     "lib": ["es2016", "dom"],
     "paths": {
       "@oblique/oblique": ["projects/oblique/src/public_api"],
-      "oblique/*": ["dist/oblique/*"]
+      "@oblique/*": ["projects/oblique/src/lib/*"]
     },
     "resolveJsonModule": true
   }
