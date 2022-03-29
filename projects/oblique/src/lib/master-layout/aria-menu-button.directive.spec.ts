@@ -59,6 +59,12 @@ describe('ObAriaMenuButtonDirective', () => {
 			fixture.detectChanges();
 			expect(element.getAttribute('aria-expanded')).toBe('true');
 		});
+
+		it('should close on escape', () => {
+			element.dispatchEvent(new KeyboardEvent('Escape'));
+			fixture.detectChanges();
+			expect(element.getAttribute('aria-expanded')).toBe(null);
+		});
 	});
 
 	describe('directive', () => {

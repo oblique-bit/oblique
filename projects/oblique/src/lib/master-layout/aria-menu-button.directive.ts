@@ -25,4 +25,9 @@ export class ObAriaMenuButtonDirective implements OnInit {
 			this.active = this.active ? undefined : true;
 		}
 	}
+
+	@HostListener('keyup.escape')
+	onEscape(): void {
+		this.active = undefined;
+	}
 }
