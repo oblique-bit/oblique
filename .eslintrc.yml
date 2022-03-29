@@ -162,7 +162,6 @@ overrides:
       # rules that need some refactoring to be enabled
       "@typescript-eslint/no-explicit-any": off
       "@typescript-eslint/explicit-module-boundary-types": off
-      "@typescript-eslint/no-var-requires": off
       "@typescript-eslint/no-unsafe-member-access": off
       "@typescript-eslint/no-unsafe-assignment": off
       "@typescript-eslint/no-shadow": off

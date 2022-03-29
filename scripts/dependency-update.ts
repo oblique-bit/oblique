@@ -1,12 +1,12 @@
-class DependencyUpdate {
-	private static readonly execSync = require('child_process').execSync;
+import {execSync} from 'child_process';
 
+class DependencyUpdate {
 	static perform(): void {
 		// Disabled on windows because npm ci is too slow
 		if (process.platform !== 'win32') {
-			const diff = DependencyUpdate.execSync('git diff --name-only HEAD@{1} HEAD').toString();
+			const diff = execSync('git diff --name-only HEAD@{1} HEAD').toString();
 			if (/^package-lock\.json$/m.test(diff)) {
-				DependencyUpdate.execSync('npm ci', {stdio: 'inherit'});
+				execSync('npm ci', {stdio: 'inherit'});
 			}
 		}
 	}
