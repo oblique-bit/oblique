@@ -6,7 +6,7 @@ class SchematicsCopy {
 		const excludedFiles = ['package-lock.json', 'tsconfig.schematics.json'];
 		SchematicsCopy.copyFiles(
 			SchematicsCopy.listFiles(path.join('projects', 'oblique', 'schematics'))
-				.filter(filePath => /\.(?:js|json|html|config)$/.test(filePath))
+				.filter(filePath => /\.(?:json|html|config)$/.test(filePath))
 				.filter(filePath => !excludedFiles.includes(path.basename(filePath)))
 		);
 	}
