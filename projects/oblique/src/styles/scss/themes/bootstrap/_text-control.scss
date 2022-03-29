@@ -11,6 +11,10 @@
 		}
 	}
 
+	button.ob-input-clear.ob-text-control-clear {
+		align-self: center;
+	}
+
 	.form-control-sm {
 		padding-right: calc(#{core-variables.$ob-spacing-default} + #{$input-padding-x-sm});
 	}
