@@ -1,4 +1,5 @@
 @use "variables";
+@use "layout";
 
 // styles for the table
 td,
@@ -41,6 +42,35 @@ mat-header-cell {
 
 :host::ng-deep .mat-form-field-infix {
 	width: unset;
+}
+
+table {
+	&:not(.ob-table),
+	&:not(.ob-table-collapse),
+	&:not(.ob-table-collapse-sm),
+	&:not(.ob-table-collapse-md) {
+		.collapsed-table {
+			display: none;
+		}
+	}
+
+	@include layout.ob-media-breakpoint-down(md) {
+		&.ob-table.ob-table-collapse .collapsed-table {
+			display: table;
+		}
+	}
+
+	@include layout.ob-media-breakpoint-down(md) {
+		&.ob-table.ob-table-collapse-md .collapsed-table {
+			display: table;
+		}
+	}
+
+	@include layout.ob-media-breakpoint-down(sm) {
+		&.ob-table.ob-table-collapse-sm .collapsed-table {
+			display: table;
+		}
+	}
 }
 
 // styles for the controls

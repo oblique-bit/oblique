@@ -11,6 +11,9 @@
 			>
 				<caption *ngIf="hasCaption$ | async">
 					This is a table caption
+					<div class="collapsed-table">
+						<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{tableManager}"></ng-container>
+					</div>
 				</caption>
 				<ng-container [matColumnDef]="COLUMN_NAME_SELECT">
 					<th mat-header-cell *matHeaderCellDef>
