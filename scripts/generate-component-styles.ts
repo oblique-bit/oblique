@@ -13,7 +13,7 @@ class GenerateComponentStyles {
 	private static generateComponentFile(directoryPath: string): string {
 		return GenerateComponentStyles.listFiles(directoryPath)
 			.map(filePath => ({
-				filePath: filePath.substring(0, filePath.lastIndexOf(path.sep)),
+				filePath: GenerateComponentStyles.getDirectoryPath(filePath),
 				content: readFileSync(filePath, 'utf8')
 			}))
 			.map(file => ({filePath: file.filePath, styleUrls: /styleUrls:\s*\[(?<styleUrls>[^\]]*)]/m.exec(file.content)?.groups?.styleUrls}))
@@ -21,9 +21,10 @@ class GenerateComponentStyles {
 			.map(file => ({filePath: file.filePath, styleUrls: file.styleUrls.replace(/'|\t|\n|\.\/|\s/g, '')}))
 			.map(file => ({filePath: file.filePath, styleUrls: file.styleUrls.split(',')}))
 			.map(file => ({filePath: file.filePath, styleUrls: file.styleUrls.filter(url => !url.startsWith('.'))}))
-			.map(file => file.styleUrls.map(fileName => path.join(file.filePath, fileName)))
+			.map(file => file.styleUrls.map(fileName => `${file.filePath}/${fileName}`))
 			.reduce<string[]>((flatArray, current) => [...flatArray, ...current], [])
 			.map(styleUrl => `@import "${styleUrl}";`)
+			.concat('')
 			.join('\n');
 	}
 
@@ -37,6 +38,12 @@ class GenerateComponentStyles {
 				[]
 			)
 			.filter(filePath => filePath.endsWith('.component.ts'));
+	}
+
+	private static getDirectoryPath(filePath: string): string {
+		const pathChunks = filePath.split(path.sep);
+		pathChunks.pop();
+		return pathChunks.join('/');
 	}
 }
 
