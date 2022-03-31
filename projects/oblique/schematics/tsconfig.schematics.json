@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "../../../dist/oblique/schematics/index",
     "baseUrl": "tsconfig",
     "lib": ["es2018", "dom"],
     "declaration": false,
