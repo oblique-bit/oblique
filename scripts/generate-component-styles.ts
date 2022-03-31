@@ -24,6 +24,7 @@ class GenerateComponentStyles {
 			.map(file => file.styleUrls.map(fileName => `${file.filePath}/${fileName}`))
 			.reduce<string[]>((flatArray, current) => [...flatArray, ...current], [])
 			.map(styleUrl => `@import "${styleUrl}";`)
+			.concat('')
 			.join('\n');
 	}
 
