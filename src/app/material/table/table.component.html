@@ -1,208 +1,262 @@
 <h2 class="page-header">Table</h2>
 <ob-column-layout [left]="false">
-	<ng-container column-main-content class="main-div" [ngClass]="tableParentClasses">
-		<table
-			*ngIf="!flexTable"
-			mat-table
-			matSort
-			(matSortChange)="sortData($event)"
-			[dataSource]="dataSource"
-			class="table-example"
-			[ngClass]="tableClasses"
-		>
-			<ng-container [matColumnDef]="COLUMN_NAME_SELECT">
-				<th mat-header-cell *matHeaderCellDef>
-					<mat-checkbox
-						(change)="$event ? masterToggle() : null"
-						[checked]="selection.hasValue() && isAllSelected()"
-						[indeterminate]="selection.hasValue() && !isAllSelected()"
-					>
-					</mat-checkbox>
-				</th>
-				<td mat-cell *matCellDef="let row">
-					<mat-checkbox
-						(click)="$event.stopPropagation()"
-						(change)="$event ? selection.toggle(row) : null"
-						[checked]="selection.isSelected(row)"
-					>
-					</mat-checkbox>
-				</td>
-				<td mat-footer-cell *matFooterCellDef></td>
-			</ng-container>
+	<div column-main-content [class.ob-table-scrollable]="isScrollable$ | async">
+		<form [formGroup]="tableManager.editForm">
+			<table
+				*ngIf="isStructureDefault$ | async"
+				mat-table
+				matSort
+				[dataSource]="tableManager.dataSource"
+				[ngClass]="obliqueStyles$ | async"
+			>
+				<caption *ngIf="hasCaption$ | async">
+					This is a table caption
+					<div class="collapsed-table">
+						<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{tableManager}"></ng-container>
+					</div>
+				</caption>
+				<ng-container [matColumnDef]="COLUMN_NAME_SELECT">
+					<th mat-header-cell *matHeaderCellDef>
+						<ng-container [ngTemplateOutlet]="selectHeader" [ngTemplateOutletContext]="{tableManager}"></ng-container>
+					</th>
+					<td mat-cell *matCellDef="let row">
+						<ng-container [ngTemplateOutlet]="selectContent" [ngTemplateOutletContext]="{row, tableManager}"></ng-container>
+					</td>
+				</ng-container>
 
-			<ng-container [matColumnDef]="COLUMN_NAME_POSITION">
-				<th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
-				<td mat-cell *matCellDef="let element" title="No.">{{ element.position }}</td>
-				<td mat-footer-cell *matFooterCellDef></td>
-			</ng-container>
+				<ng-container *ngFor="let column of columns">
+					<ng-container [matColumnDef]="column.key">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header>
+							<ng-container [ngTemplateOutlet]="columnHeader" [ngTemplateOutletContext]="{column}"></ng-container>
+						</th>
+						<td mat-cell *matCellDef="let element" [attr.data-title]="column.name">
+							<ng-container
+								[ngTemplateOutlet]="columnContent"
+								[ngTemplateOutletContext]="{column, element, tableManager, editMode}"
+							></ng-container>
+						</td>
+					</ng-container>
+				</ng-container>
 
-			<ng-container [matColumnDef]="COLUMN_NAME_NAME">
-				<th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-				<td mat-cell *matCellDef="let element" title="Name">{{ element.name }}</td>
-				<td mat-footer-cell *matFooterCellDef><b> TOTAL </b></td>
-			</ng-container>
+				<ng-container [matColumnDef]="COLUMN_NAME_ACTIONS">
+					<th mat-header-cell *matHeaderCellDef>
+						<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{tableManager}"></ng-container>
+					</th>
+					<td mat-cell *matCellDef="let element">
+						<ng-container [ngTemplateOutlet]="actionsContent" [ngTemplateOutletContext]="{tableManager, element, editMode}"></ng-container>
+					</td>
+				</ng-container>
 
-			<ng-container [matColumnDef]="COLUMN_NAME_WEIGHT">
-				<th mat-header-cell *matHeaderCellDef mat-sort-header>Weight</th>
-				<td mat-cell *matCellDef="let element" title="Weight">{{ element.weight }}</td>
-				<td mat-footer-cell *matFooterCellDef>
-					<b> {{ totalWeight }}</b>
-				</td>
-			</ng-container>
+				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+				<tr mat-row *matRowDef="let row; columns: displayedColumns" [class.edit-mode]="row.editMode !== editMode.NONE"></tr>
+			</table>
 
-			<ng-container [matColumnDef]="COLUMN_NAME_SYMBOL">
-				<th mat-header-cell *matHeaderCellDef mat-sort-header>Symbol</th>
-				<td mat-cell *matCellDef="let element" title="Symbol">{{ element.symbol }}</td>
-				<td mat-footer-cell *matFooterCellDef></td>
-			</ng-container>
+			<mat-table
+				*ngIf="(isStructureDefault$ | async) === false"
+				matSort
+				[dataSource]="tableManager.dataSource"
+				[ngClass]="obliqueStyles$ | async"
+			>
+				<ng-container [cdkColumnDef]="COLUMN_NAME_SELECT">
+					<mat-header-cell *cdkHeaderCellDef>
+						<ng-container [ngTemplateOutlet]="selectHeader" [ngTemplateOutletContext]="{tableManager}"></ng-container>
+					</mat-header-cell>
+					<mat-cell *cdkCellDef="let row">
+						<ng-container [ngTemplateOutlet]="selectContent" [ngTemplateOutletContext]="{row, tableManager}"></ng-container>
+					</mat-cell>
+				</ng-container>
 
-			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-			<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-			<tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
-		</table>
+				<ng-container *ngFor="let column of columns">
+					<ng-container [matColumnDef]="column.key">
+						<mat-header-cell *matHeaderCellDef mat-sort-header>
+							<ng-container [ngTemplateOutlet]="columnHeader" [ngTemplateOutletContext]="{column}"></ng-container>
+						</mat-header-cell>
+						<mat-cell *matCellDef="let element">
+							<ng-container
+								[ngTemplateOutlet]="columnContent"
+								[ngTemplateOutletContext]="{column, element, tableManager, editMode}"
+							></ng-container>
+						</mat-cell>
+					</ng-container>
+				</ng-container>
 
-		<mat-table
-			*ngIf="flexTable"
-			matSort
-			(matSortChange)="sortData($event)"
-			[dataSource]="dataSource"
-			class="table-example"
-			[ngClass]="tableClasses"
-		>
-			<ng-container [cdkColumnDef]="COLUMN_NAME_SELECT">
-				<mat-header-cell *cdkHeaderCellDef>
-					<mat-checkbox
-						(change)="$event ? masterToggle() : null"
-						[checked]="selection.hasValue() && isAllSelected()"
-						[indeterminate]="selection.hasValue() && !isAllSelected()"
-					>
-					</mat-checkbox>
-				</mat-header-cell>
-				<mat-cell *cdkCellDef="let row">
-					<mat-checkbox
-						(click)="$event.stopPropagation()"
-						(change)="$event ? selection.toggle(row) : null"
-						[checked]="selection.isSelected(row)"
-					>
-					</mat-checkbox>
-				</mat-cell>
-				<mat-footer-cell *cdkFooterCellDef></mat-footer-cell>
-			</ng-container>
+				<ng-container [matColumnDef]="COLUMN_NAME_ACTIONS">
+					<mat-header-cell *matHeaderCellDef>
+						<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{tableManager}"></ng-container>
+					</mat-header-cell>
+					<mat-cell *matCellDef="let element">
+						<ng-container [ngTemplateOutlet]="actionsContent" [ngTemplateOutletContext]="{tableManager, element, editMode}"></ng-container>
+					</mat-cell>
+				</ng-container>
 
-			<ng-container [cdkColumnDef]="COLUMN_NAME_POSITION">
-				<mat-header-cell *cdkHeaderCellDef mat-sort-header> No.</mat-header-cell>
-				<mat-cell *cdkCellDef="let row" title="No."> {{ row.position }} </mat-cell>
-				<mat-footer-cell *cdkFooterCellDef></mat-footer-cell>
-			</ng-container>
+				<mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+				<mat-row *cdkRowDef="let row; columns: displayedColumns" [class.edit-mode]="row.editMode !== editMode.NONE"></mat-row>
+			</mat-table>
+			<mat-paginator [pageSizeOptions]="[10, 5, 2]"></mat-paginator>
 
-			<ng-container [cdkColumnDef]="COLUMN_NAME_NAME">
-				<mat-header-cell *cdkHeaderCellDef mat-sort-header> Name</mat-header-cell>
-				<mat-cell *cdkCellDef="let row" title="Name"> {{ row.name }} </mat-cell>
-				<mat-footer-cell *cdkFooterCellDef><b>TOTAL</b></mat-footer-cell>
-			</ng-container>
-
-			<ng-container [cdkColumnDef]="COLUMN_NAME_WEIGHT">
-				<mat-header-cell *cdkHeaderCellDef mat-sort-header> Weight</mat-header-cell>
-				<mat-cell *cdkCellDef="let row" title="Weight"> {{ row.weight }} </mat-cell>
-				<mat-footer-cell *cdkFooterCellDef
-					><b>{{ totalWeight }}</b></mat-footer-cell
+			<ng-template #selectHeader let-tableManager="tableManager">
+				<mat-checkbox
+					[checked]="(tableManager.masterToggleState$ | async) === 'checked'"
+					[indeterminate]="(tableManager.masterToggleState$ | async) === 'indeterminate'"
+					[disabled]="tableManager.isEditMode$ | async"
+					(change)="$event ? tableManager.masterToggle() : null"
 				>
-			</ng-container>
+				</mat-checkbox>
+			</ng-template>
 
-			<ng-container [cdkColumnDef]="COLUMN_NAME_SYMBOL">
-				<mat-header-cell *cdkHeaderCellDef mat-sort-header> Symbol</mat-header-cell>
-				<mat-cell *cdkCellDef="let row" title="Symbol"> {{ row.symbol }} </mat-cell>
-				<mat-footer-cell *cdkFooterCellDef></mat-footer-cell>
-			</ng-container>
+			<ng-template #selectContent let-row="row" let-tableManager="tableManager">
+				<mat-checkbox
+					[checked]="row.isSelected"
+					[disabled]="tableManager.isEditMode$ | async"
+					(click)="$event.stopPropagation()"
+					(change)="$event ? tableManager.toggleRow(row) : null"
+				>
+				</mat-checkbox>
+			</ng-template>
 
-			<mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
-			<mat-row *cdkRowDef="let row; columns: displayedColumns"></mat-row>
-			<mat-footer-row *cdkFooterRowDef="displayedColumns"></mat-footer-row>
-		</mat-table>
-	</ng-container>
+			<ng-template #columnHeader let-column="column">
+				{{ column.name }}
+			</ng-template>
+
+			<ng-template #columnContent let-column="column" let-element="element" let-editMode="editMode" let-tableManager="tableManager">
+				<ng-container *ngIf="element.editMode === editMode.NONE; else cellEditMode">
+					{{ element[column.key] }}
+				</ng-container>
+				<ng-template #cellEditMode>
+					<mat-form-field obErrorMessages>
+						<mat-label>{{ column.name }}</mat-label>
+						<input [type]="column.type" matInput [formControlName]="column.key" (keyup.enter)="tableManager.saveRow(element)" />
+						<mat-error></mat-error>
+					</mat-form-field>
+				</ng-template>
+			</ng-template>
+
+			<ng-template #actionsHeader let-tableManager="tableManager">
+				<div class="actions">
+					<button
+						type="button"
+						mat-icon-button
+						obButton="secondary"
+						matTooltip="Add a new row"
+						[disabled]="tableManager.isEditMode$ | async"
+						(click)="tableManager.addRow()"
+					>
+						<mat-icon svgIcon="plus"></mat-icon>
+					</button>
+					<button
+						mat-icon-button
+						obButton="secondary"
+						matTooltip="Remove all selected rows"
+						[disabled]="(tableManager.isEditMode$ | async) || (tableManager.isMasterRemoveDisabled$ | async)"
+						(click)="tableManager.removeRows()"
+					>
+						<mat-icon svgIcon="trash"></mat-icon>
+					</button>
+				</div>
+			</ng-template>
+
+			<ng-template #actionsContent let-tableManager="tableManager" let-element="element">
+				<div class="actions">
+					<ng-container *ngIf="element.editMode === editMode.NONE; else actionsEditMode">
+						<button
+							type="button"
+							mat-icon-button
+							obButton="secondary"
+							matTooltip="Edit this row"
+							[disabled]="tableManager.isEditMode$ | async"
+							(click)="tableManager.editRow(element)"
+						>
+							<mat-icon svgIcon="pen"></mat-icon>
+						</button>
+						<button
+							type="button"
+							mat-icon-button
+							obButton="secondary"
+							matTooltip="Remove this row"
+							[disabled]="tableManager.isEditMode$ | async"
+							(click)="tableManager.removeRows(element)"
+						>
+							<mat-icon svgIcon="trash"></mat-icon>
+						</button>
+					</ng-container>
+					<ng-template #actionsEditMode>
+						<button type="submit" mat-icon-button obButton="secondary" matTooltip="Save" (click)="tableManager.saveRow(element)">
+							<mat-icon svgIcon="checkmark"></mat-icon>
+						</button>
+						<button type="reset" mat-icon-button obButton="secondary" matTooltip="Reset" (click)="tableManager.cancel(element)">
+							<mat-icon svgIcon="cancel"></mat-icon>
+						</button>
+					</ng-template>
+				</div>
+			</ng-template>
+		</form>
+	</div>
 	<ng-container column-right-content>
-		<h3>Controls</h3>
-		<mat-list>
+		<ng-container [formGroup]="controls">
+			<h3>Controls</h3>
 			<fieldset>
 				<legend>Filter</legend>
-				<mat-list-item>
-					<mat-form-field>
-						<mat-label>Name</mat-label>
-						<input matInput #filterControl (keyup)="applyFilter($event)" />
-						<button type="button" role="button" [obInputClear]="filterControl" (onClear)="applyFilter($event)">
-							<span class="fa fa-times-circle"></span>
-						</button>
-					</mat-form-field>
-				</mat-list-item>
+				<mat-form-field>
+					<mat-label>Name</mat-label>
+					<input matInput formControlName="filter" />
+				</mat-form-field>
 			</fieldset>
 			<fieldset>
 				<legend>Structure</legend>
-				<mat-list-item>
-					<mat-slide-toggle (click)="toggleSelectionVisibility()" matTooltip="Toggle selection">Selection column</mat-slide-toggle>
-				</mat-list-item>
-				<mat-list-item>
-					<mat-slide-toggle (click)="toggleFlexTableVisibility()" matTooltip="Toggle flex table">Flex table</mat-slide-toggle>
-				</mat-list-item>
+				<div class="form-elements">
+					<mat-slide-toggle formControlName="default" matTooltip="Toggle between default and flex table"> Default table </mat-slide-toggle>
+					<mat-slide-toggle formControlName="selection" matTooltip="Toggle selection column">Selection column </mat-slide-toggle>
+					<mat-slide-toggle formControlName="actions" matTooltip="Toggle actions column">Actions column </mat-slide-toggle>
+					<mat-slide-toggle formControlName="caption" matTooltip="Toggle caption"> Table caption </mat-slide-toggle>
+				</div>
 			</fieldset>
 			<fieldset>
-				<legend>Oblique styling classes</legend>
-				<mat-list-item>
-					<mat-slide-toggle (click)="toggleTableClass(OBLIQUE_CLASS_TABLE)" matTooltip="Toggle Oblique class 'table'">
-						{{ OBLIQUE_CLASS_TABLE }}
-					</mat-slide-toggle>
-				</mat-list-item>
-				<mat-list-item>
-					<mat-slide-toggle
-						(click)="toggleTableClass(OBLIQUE_CLASS_TABLE_CICD)"
-						matTooltip="Toggle Oblique class 'table-cicd'"
-						[disabled]="!obliqueStylingActive"
-					>
-						{{ OBLIQUE_CLASS_TABLE_CICD }}
-					</mat-slide-toggle>
-				</mat-list-item>
-				<mat-list-item>
-					<mat-slide-toggle
-						(click)="toggleTableClass(OBLIQUE_CLASS_TABLE_SM)"
-						matTooltip="Toggle Oblique class 'table-sm'"
-						[disabled]="!obliqueStylingActive"
-					>
-						{{ OBLIQUE_CLASS_TABLE_SM }}
-					</mat-slide-toggle>
-				</mat-list-item>
-				<mat-list-item>
-					<mat-slide-toggle
-						(click)="toggleTableClass(OBLIQUE_CLASS_TABLE_LG)"
-						matTooltip="Toggle Oblique class 'table-lg'"
-						[disabled]="!obliqueStylingActive"
-					>
-						{{ OBLIQUE_CLASS_TABLE_LG }}
-					</mat-slide-toggle>
-				</mat-list-item>
-				<mat-list-item>
-					<mat-slide-toggle
-						(click)="toggleTableClass(OBLIQUE_CLASS_TABLE_PLAIN)"
-						matTooltip="Toggle Oblique class 'table-plain'"
-						[disabled]="!obliqueStylingActive"
-					>
-						{{ OBLIQUE_CLASS_TABLE_PLAIN }}
-					</mat-slide-toggle>
-				</mat-list-item>
-				<mat-list-item>
-					<mat-slide-toggle
-						(click)="toggleTableClass(OBLIQUE_CLASS_TABLE_COLLAPSE)"
-						matTooltip="Toggle Oblique class 'table-collapse'"
-						[disabled]="!obliqueStylingActive"
-					>
-						{{ OBLIQUE_CLASS_TABLE_COLLAPSE }}
-					</mat-slide-toggle>
-				</mat-list-item>
+				<legend class="mat-control">Edition mode</legend>
+				<mat-radio-group formControlName="mode" class="form-elements">
+					<mat-radio-button [value]="mode.DIALOG" matTooltip="Edit row in a nice dialog">Dialog</mat-radio-button>
+					<mat-radio-button [value]="mode.FORM" matTooltip="Edit row directly in the table">Editable</mat-radio-button>
+				</mat-radio-group>
 			</fieldset>
 			<fieldset>
-				<legend style="margin-bottom: 30px">Pagination</legend>
-				<mat-list-item>
-					<mat-paginator [pageSizeOptions]="pageSizeOptions"></mat-paginator>
-				</mat-list-item>
+				<legend class="mat-control">Oblique styling classes</legend>
+				<div formGroupName="style" class="form-elements">
+					<mat-slide-toggle formControlName="ob-table" matTooltip="Toggle Oblique styling for tables"> ob-table </mat-slide-toggle>
+					<mat-slide-toggle formControlName="ob-table-cicd" matTooltip="Toggle CI/CD styling for tables"> ob-table-cicd </mat-slide-toggle>
+					<mat-slide-toggle formControlName="ob-table-plain" matTooltip="Toggle odd lines highlighting"> ob-table-plain </mat-slide-toggle>
+					<mat-slide-toggle formControlName="ob-table-hover" matTooltip="Toggle hover effect on table's rows"
+						>ob-table-hover
+					</mat-slide-toggle>
+					<mat-slide-toggle formControlName="ob-table-sm" matTooltip="Toggle small table variant"> ob-table-sm </mat-slide-toggle>
+					<mat-slide-toggle formControlName="ob-table-lg" matTooltip="Toggle large table variant"> ob-table-lg </mat-slide-toggle>
+				</div>
 			</fieldset>
-		</mat-list>
+			<fieldset>
+				<legend class="mat-control">Oblique collapsing classes</legend>
+				<mat-radio-group formControlName="collapsed" class="form-elements">
+					<mat-radio-button value="none">None</mat-radio-button>
+					<mat-radio-button
+						value="ob-table-collapse"
+						matTooltip="Toggle table collapsing behavior (reduce the viewport to see it in action)"
+						[disabled]="isOptionDisabled"
+						>ob-table-collapse</mat-radio-button
+					>
+					<mat-radio-button
+						value="ob-table-collapse-md"
+						matTooltip="Toggle table collapsing behavior on a smaller breaking point (reduce the viewport to see it in action)"
+						[disabled]="isOptionDisabled"
+						>ob-table-collapse-md</mat-radio-button
+					>
+					<mat-radio-button
+						value="ob-table-collapse-sm"
+						matTooltip="Toggle table collapsing behavior on an even smaller breaking point (reduce the viewport to see it in action)"
+						[disabled]="isOptionDisabled"
+						>ob-table-collapse-sm</mat-radio-button
+					>
+					<mat-radio-button value="ob-table-scrollable" matTooltip="Toggle Oblique class 'table-scrollable'"
+						>ob-table-scrollable</mat-radio-button
+					>
+				</mat-radio-group>
+			</fieldset>
+		</ng-container>
 	</ng-container>
 </ob-column-layout>
