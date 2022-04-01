@@ -7,14 +7,12 @@ describe('ObNumberFormatSampleComponent', () => {
 	let component: NumberFormatSampleComponent;
 	let fixture: ComponentFixture<NumberFormatSampleComponent>;
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				imports: [FormsModule, ReactiveFormsModule, ObliqueTestingModule],
-				declarations: [NumberFormatSampleComponent]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			imports: [FormsModule, ReactiveFormsModule, ObliqueTestingModule],
+			declarations: [NumberFormatSampleComponent]
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(NumberFormatSampleComponent);

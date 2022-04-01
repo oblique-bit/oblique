@@ -21,7 +21,20 @@ const I18N_VALUES = {
 	it: {
 		weekdays: ['Lu', 'Ma', 'Me', 'Gi', 'Ve', 'Sa', 'Do'],
 		monthsShort: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'],
-		monthFull: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre']
+		monthFull: [
+			'Gennaio',
+			'Febbraio',
+			'Marzo',
+			'Aprile',
+			'Maggio',
+			'Giugno',
+			'Luglio',
+			'Agosto',
+			'Settembre',
+			'Ottobre',
+			'Novembre',
+			'Dicembre'
+		]
 	}
 };
 

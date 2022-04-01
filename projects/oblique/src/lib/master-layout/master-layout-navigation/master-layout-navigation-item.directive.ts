@@ -1,4 +1,15 @@
-import {AfterViewInit, ContentChild, ContentChildren, Directive, ElementRef, EventEmitter, HostBinding, OnDestroy, Output, QueryList} from '@angular/core';
+import {
+	AfterViewInit,
+	ContentChild,
+	ContentChildren,
+	Directive,
+	ElementRef,
+	EventEmitter,
+	HostBinding,
+	OnDestroy,
+	Output,
+	QueryList
+} from '@angular/core';
 import {filter, takeUntil} from 'rxjs/operators';
 
 import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation-toggle.directive';
@@ -19,10 +30,11 @@ export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnD
 	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
 	@Output() readonly onClose = new EventEmitter<void>();
 	@Output() readonly toggled = new EventEmitter<boolean>();
-	@ContentChildren(ObMasterLayoutNavigationToggleDirective, {descendants: true}) $toggles: QueryList<ObMasterLayoutNavigationToggleDirective>;
+	@ContentChildren(ObMasterLayoutNavigationToggleDirective, {descendants: true})
+	$toggles: QueryList<ObMasterLayoutNavigationToggleDirective>;
 	@ContentChild(ObMasterLayoutNavigationMenuDirective) $menu: ObMasterLayoutNavigationMenuDirective;
 	@ContentChildren(ObMasterLayoutNavigationItemDirective, {descendants: true}) $items: QueryList<ObMasterLayoutNavigationItemDirective>;
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
 		private readonly masterLayout: ObMasterLayoutComponentService,
@@ -39,10 +51,12 @@ export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnD
 				filter(() => this.show),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => this.onClick(event.target));
+			.subscribe(event => this.onClick(event instanceof MouseEvent ? event.target : undefined));
 
 		this.manageToggles();
-		this.masterLayout.configEvents$.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.IS_MENU_OPENED && evt.value)).subscribe(() => this.close());
+		this.masterLayout.configEvents$
+			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.IS_MENU_OPENED && evt.value))
+			.subscribe(() => this.close());
 
 		this.$items.forEach($item => {
 			$item.onClose.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.close());
@@ -56,7 +70,12 @@ export class ObMasterLayoutNavigationItemDirective implements AfterViewInit, OnD
 
 	open(): void {
 		this.show = true;
-		this.toggled.emit(true);
+		// when a menu item with sub navigation is toggled while another menu item with sub navigation is already opened,
+		// the first menu has to be closed before the second one is opened so that the `ob-has-opened-menu` class is correctly set
+		// on the navigation's root. This class ensures that menu items on the far right of the screen don't trigger an horizontal
+		// scrollbar. As the `close` method is called asynchronously and the `open` one synchronously, `open` will always be
+		// called before `close`. Adding `setTimeout` with no delay ensures that `open` is called after `close`.
+		setTimeout(() => this.toggled.emit(true));
 
 		if (this.$menu) {
 			this.$menu.show();

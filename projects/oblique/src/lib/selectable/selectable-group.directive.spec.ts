@@ -21,13 +21,11 @@ describe('SelectableGroupDirective', () => {
 	let element: DebugElement;
 	const items = [];
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [TestComponent, ObMockSelectableDirective, ObSelectableGroupDirective]
-			});
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [TestComponent, ObMockSelectableDirective, ObSelectableGroupDirective]
+		});
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(TestComponent);

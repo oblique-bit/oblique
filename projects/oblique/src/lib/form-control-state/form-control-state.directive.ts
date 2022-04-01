@@ -1,4 +1,15 @@
-import {AfterViewInit, ContentChild, Directive, ElementRef, HostBinding, Inject, Input, OnDestroy, Optional, Renderer2} from '@angular/core';
+import {
+	AfterViewInit,
+	ContentChild,
+	Directive,
+	ElementRef,
+	HostBinding,
+	Inject,
+	Input,
+	OnDestroy,
+	Optional,
+	Renderer2
+} from '@angular/core';
 import {FormGroupDirective, FormGroupName, NgControl, NgForm, NgModelGroup} from '@angular/forms';
 import {Subject, merge} from 'rxjs';
 import {delay, takeUntil} from 'rxjs/operators';
@@ -28,7 +39,7 @@ export class ObFormControlStateDirective implements AfterViewInit, OnDestroy {
 	private readonly group: NgModelGroup | FormGroupName;
 	private inputContainer;
 	private inputElement;
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
 		@Optional() ngForm: NgForm,
@@ -94,7 +105,8 @@ export class ObFormControlStateDirective implements AfterViewInit, OnDestroy {
 	}
 
 	private generateState(submitted = false): void {
-		this.hasErrorClass = submitted || this.form.submitted || !this.ngControl.pristine || this.pristineValidation ? this.ngControl.invalid : false;
+		this.hasErrorClass =
+			submitted || this.form.submitted || !this.ngControl.pristine || this.pristineValidation ? this.ngControl.invalid : false;
 
 		const mandatory = 'control-mandatory';
 		if (this.isMandatory() && !this.ngControl.value) {

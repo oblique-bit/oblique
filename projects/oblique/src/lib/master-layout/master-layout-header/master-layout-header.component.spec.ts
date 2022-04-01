@@ -14,7 +14,7 @@ import {ObMockMasterLayoutConfig} from '../_mocks/mock-master-layout.config';
 import {ObMockScrollingEvents} from '../../scrolling/_mocks/mock-scrolling-events.service';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {ObMasterLayoutService} from '../master-layout.service';
-import {ObEMasterLayoutEventValues} from '../master-layout.model';
+import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
 
 describe('ObMasterLayoutHeaderComponent', () => {
 	let component: ObMasterLayoutHeaderComponent;
@@ -22,30 +22,28 @@ describe('ObMasterLayoutHeaderComponent', () => {
 	const mockMasterLayoutService = {
 		homePageRouteChange$: EMPTY,
 		header: {
-			configEvents$: new Subject(),
+			configEvents$: new Subject<ObIMasterLayoutEvent>(),
 			isCustom: false,
 			isSmall: false
 		},
-		layout: {configEvents$: new Subject(), isMenuOpened: false}
+		layout: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isMenuOpened: false}
 	};
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				imports: [RouterTestingModule],
-				declarations: [ObMasterLayoutHeaderComponent, ObMockTranslatePipe],
-				providers: [
-					{provide: TranslateService, useClass: ObMockTranslateService},
-					{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
-					{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
-					{provide: ObScrollingEvents, useClass: ObMockScrollingEvents},
-					{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService},
-					{provide: WINDOW, useValue: window}
-				],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			imports: [RouterTestingModule],
+			declarations: [ObMasterLayoutHeaderComponent, ObMockTranslatePipe],
+			providers: [
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
+				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
+				{provide: ObScrollingEvents, useClass: ObMockScrollingEvents},
+				{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService},
+				{provide: WINDOW, useValue: window}
+			],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObMasterLayoutHeaderComponent);

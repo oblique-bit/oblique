@@ -6,7 +6,12 @@ import {ObCollapseComponent} from './collapse.component';
 import {obliqueProviders} from '../utilities';
 import {ObIconModule} from '../icon/icon.module';
 
-export {ObCollapseComponent, OBLIQUE_COLLAPSE_ACTIVE, OBLIQUE_COLLAPSE_ICON_POSITION, OBLIQUE_COLLAPSE_DURATION} from './collapse.component';
+export {
+	ObCollapseComponent,
+	OBLIQUE_COLLAPSE_ACTIVE,
+	OBLIQUE_COLLAPSE_ICON_POSITION,
+	OBLIQUE_COLLAPSE_DURATION
+} from './collapse.component';
 
 @NgModule({
 	imports: [CommonModule, ObIconModule],

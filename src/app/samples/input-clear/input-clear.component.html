@@ -1,91 +1,111 @@
 <h2>Template-driven form</h2>
 
-<mat-form-field>
-	<mat-label>Mandatory</mat-label>
-	<input type="text" matInput placeholder="Mandatory" required ngModel />
-</mat-form-field>
-
-<mat-form-field>
-	<mat-label>Mandatory</mat-label>
-	<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel1" #control="ngModel" />
-	<button type="button" role="button" [obInputClear]="control">
-		<mat-icon svgIcon="cancel-circle"></mat-icon>
-		<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
-	</button>
-</mat-form-field>
-
-<div class="ob-form-lg">
+<ng-container *ngIf="isMaterialTheme$ | async; else bootstrap">
 	<mat-form-field>
-		<mat-label>Mandatory LG</mat-label>
+		<mat-label>Mandatory</mat-label>
 		<input type="text" matInput placeholder="Mandatory" required ngModel />
 	</mat-form-field>
 
 	<mat-form-field>
-		<mat-label>Mandatory LG</mat-label>
-		<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel2" #controlLG="ngModel" />
-		<button type="button" role="button" [obInputClear]="controlLG">
+		<mat-label>Mandatory</mat-label>
+		<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel1" #control="ngModel" />
+		<button type="button" role="button" [obInputClear]="control">
 			<mat-icon svgIcon="cancel-circle"></mat-icon>
 			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 		</button>
 	</mat-form-field>
-</div>
 
-<div class="ob-form-sm">
-	<mat-form-field>
-		<mat-label>Mandatory SM</mat-label>
-		<input type="text" matInput placeholder="Mandatory" required ngModel />
-	</mat-form-field>
+	<div class="ob-form-lg">
+		<mat-form-field>
+			<mat-label>Mandatory LG</mat-label>
+			<input type="text" matInput placeholder="Mandatory" required ngModel />
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Mandatory LG</mat-label>
+			<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel2" #controlLG="ngModel" />
+			<button type="button" role="button" [obInputClear]="controlLG">
+				<mat-icon svgIcon="cancel-circle"></mat-icon>
+				<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
+			</button>
+		</mat-form-field>
+	</div>
+
+	<div class="ob-form-sm">
+		<mat-form-field>
+			<mat-label>Mandatory SM</mat-label>
+			<input type="text" matInput placeholder="Mandatory" required ngModel />
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Mandatory SM</mat-label>
+			<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel3" #controlSM="ngModel" />
+			<button type="button" role="button" [obInputClear]="controlSM">
+				<mat-icon svgIcon="cancel-circle"></mat-icon>
+				<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
+			</button>
+		</mat-form-field>
+	</div>
 
 	<mat-form-field>
-		<mat-label>Mandatory SM</mat-label>
-		<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel3" #controlSM="ngModel" />
-		<button type="button" role="button" [obInputClear]="controlSM">
+		<mat-label>Datepicker</mat-label>
+		<input matInput [matDatepicker]="picker" #controlD="ngModel" [(ngModel)]="testModel4" />
+		<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+		<mat-datepicker #picker></mat-datepicker>
+		<button type="button" role="button" [obInputClear]="controlD" [datePickerRef]="picker">
 			<mat-icon svgIcon="cancel-circle"></mat-icon>
 			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 		</button>
 	</mat-form-field>
-</div>
 
-<mat-form-field>
-	<mat-label>Datepicker</mat-label>
-	<input matInput [matDatepicker]="picker" #controlD="ngModel" [(ngModel)]="testModel4" />
-	<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-	<mat-datepicker #picker></mat-datepicker>
-	<button type="button" role="button" [obInputClear]="controlD" [datePickerRef]="picker">
-		<mat-icon svgIcon="cancel-circle"></mat-icon>
-		<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
-	</button>
-</mat-form-field>
-
-<mat-form-field>
-	<mat-label>Datepicker</mat-label>
-	<input matInput [matDatepicker]="picker2" />
-	<mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-	<mat-datepicker #picker2></mat-datepicker>
-</mat-form-field>
-
-<h2>Reactive form</h2>
-<div [formGroup]="testForm">
 	<mat-form-field>
-		<mat-label>Test input</mat-label>
-		<input type="text" matInput formControlName="field1" />
-		<button type="button" role="button" [obInputClear]="testForm.get('field1')">
-			<mat-icon svgIcon="cancel-circle"></mat-icon>
-			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
-		</button>
+		<mat-label>Datepicker</mat-label>
+		<input matInput [matDatepicker]="picker2" />
+		<mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+		<mat-datepicker #picker2></mat-datepicker>
 	</mat-form-field>
-</div>
 
-<h2>HTML input only</h2>
-<div>
-	<mat-form-field>
-		<mat-label>Test input</mat-label>
-		<input type="text" matInput #htmlControl />
-		<button type="button" role="button" [obInputClear]="htmlControl">
-			<mat-icon svgIcon="cancel-circle"></mat-icon>
-			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
-		</button>
-	</mat-form-field>
-</div>
+	<h2>Reactive form</h2>
+	<div [formGroup]="testForm">
+		<mat-form-field>
+			<mat-label>Test input</mat-label>
+			<input type="text" matInput formControlName="field1" />
+			<button type="button" role="button" [obInputClear]="testForm.get('field1')">
+				<mat-icon svgIcon="cancel-circle"></mat-icon>
+				<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
+			</button>
+		</mat-form-field>
+	</div>
+
+	<h2>HTML input only</h2>
+	<div>
+		<mat-form-field>
+			<mat-label>Test input</mat-label>
+			<input type="text" matInput #htmlControl />
+			<button type="button" role="button" [obInputClear]="htmlControl">
+				<mat-icon svgIcon="cancel-circle"></mat-icon>
+				<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
+			</button>
+		</mat-form-field>
+	</div>
+</ng-container>
+
+<ng-template #bootstrap>
+	<div class="form-group">
+		<div class="input-group">
+			<input type="text" class="form-control" placeholder="Mandatory" #inputORControl />
+			<button type="button" role="button" [obInputClear]="inputORControl" (onClear)="onTextClear()">
+				<span class="fa fa-times-circle"></span>
+				<span class="sr-only">Clear text content.</span>
+			</button>
+			<div class="input-group-append">
+				<button class="btn btn-secondary" type="button" role="button">
+					<span class="fa fa-search"></span>
+					<span class="sr-only">Search</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</ng-template>
 
 <sc-api component="input-clear"></sc-api>

@@ -33,7 +33,7 @@ describe('LanguageService', () => {
 				addLangs: jest.fn(),
 				setDefaultLang: jest.fn(),
 				use: jest.fn(),
-				onLangChange: new Subject(),
+				onLangChange: new Subject<void>(),
 				getBrowserLang: jest.fn(),
 				getDefaultLang: jest.fn(),
 				currentLang: 'de'

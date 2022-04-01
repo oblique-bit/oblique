@@ -42,7 +42,8 @@ function moveStyles(): Rule {
 		if (!tree.exists('src/styles/styles.scss')) {
 			infoMigration(_context, 'Toolchain: Moving style sheets into "styles" directory');
 			const stylesContent = readFile(tree, 'src/styles.scss') || '';
-			const comment = '// this file should contain only imports. Rules should be grouped by features and placed into the corresponding file';
+			const comment =
+				'// this file should contain only imports. Rules should be grouped by features and placed into the corresponding file';
 			addFile(tree, 'src/styles/styles.scss', `${comment}\n${stylesContent}`);
 			deleteFile(tree, 'src/styles.scss');
 			const content = readFile(tree, 'angular.json') || '';
@@ -179,7 +180,9 @@ function overwriteEslintRC(eslint: boolean, prefix: string): Rule {
 
 function formatEsLintRC(tree: Tree, prefix: string): string {
 	const eslintFile = getTemplate(tree, 'default-eslintrc.json.config');
-	return prefix ? eslintFile.replace(/APP_PREFIX/g, prefix) : eslintFile.replace(/\s*"@angular-eslint\/(?:component|directive)-selector": \[.*?],/gs, '');
+	return prefix
+		? eslintFile.replace(/APP_PREFIX/g, prefix)
+		: eslintFile.replace(/\s*"@angular-eslint\/(?:component|directive)-selector": \[.*?],/gs, '');
 }
 
 function addHusky(husky: boolean): Rule {

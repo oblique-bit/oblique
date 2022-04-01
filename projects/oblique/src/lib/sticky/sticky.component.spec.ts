@@ -24,22 +24,18 @@ describe('StickyComponent', () => {
 	let fixture: ComponentFixture<TestFirstCaseComponent>;
 	let testComponent: TestFirstCaseComponent;
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [TestFirstCaseComponent, ObStickyComponent],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [TestFirstCaseComponent, ObStickyComponent],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
+		}).compileComponents();
+	}));
 
-	beforeEach(
-		waitForAsync(() => {
-			fixture = TestBed.createComponent(TestFirstCaseComponent);
-			testComponent = fixture.componentInstance;
-			fixture.detectChanges();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		fixture = TestBed.createComponent(TestFirstCaseComponent);
+		testComponent = fixture.componentInstance;
+		fixture.detectChanges();
+	}));
 
 	it('should create', () => {
 		expect(testComponent).toBeTruthy();
@@ -73,6 +69,8 @@ describe('StickyComponent', () => {
 	it('should throw an error with illegal size', () => {
 		const comp = fixture.debugElement.query(By.css('ob-sticky')).componentInstance;
 		comp.headerSize = 'testSize';
-		expect(comp.ngOnChanges.bind(comp)).toThrowError('"testSize" is not a valid size.Only "lg", "md" and "sm" are acceptable alternatives.');
+		expect(comp.ngOnChanges.bind(comp)).toThrowError(
+			'"testSize" is not a valid size.Only "lg", "md" and "sm" are acceptable alternatives.'
+		);
 	});
 });

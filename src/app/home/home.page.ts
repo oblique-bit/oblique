@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {appVersion} from '@oblique/version';
 
 @Component({
 	selector: 'sc-home',
@@ -6,9 +7,5 @@ import {Component} from '@angular/core';
 	styleUrls: ['./home.page.scss']
 })
 export class HomePageComponent {
-	version: string;
-
-	constructor() {
-		this.version = require('package.json').version;
-	}
+	version = appVersion;
 }

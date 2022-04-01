@@ -3,6 +3,7 @@ import {
 	Component,
 	ContentChild,
 	ContentChildren,
+	DoCheck,
 	ElementRef,
 	HostBinding,
 	HostListener,
@@ -25,7 +26,7 @@ import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {appVersion} from '../../version';
 import {WINDOW} from '../../utilities';
-import {ObEMasterLayoutEventValues, ObIDynamicJumpLink, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
+import {ObEMasterLayoutEventValues, ObIDynamicJumpLink, ObIJumpLink, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 import {Subject} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
@@ -45,11 +46,11 @@ import {ObUseObliqueIcons} from '../../icon/icon.model';
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-master-layout', 'ob-version': appVersion}
 })
-export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, OnDestroy {
 	home = this.config.homePageRoute;
 	route = {path: '', params: undefined};
 	@Input() navigation: ObINavigationLink[] = [];
-	@Input() jumpLinks: ObIDynamicJumpLink[] = [];
+	@Input() jumpLinks: ObIJumpLink[] | ObIDynamicJumpLink[] = [];
 	@HostBinding('class.ob-has-cover') hasCover = this.masterLayout.layout.hasCover;
 	@HostBinding('class.ob-has-layout') hasLayout = this.masterLayout.layout.hasLayout;
 	@HostBinding('class.ob-has-max-width') hasMaxWidth = this.masterLayout.layout.hasMaxWidth;
@@ -68,7 +69,8 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 	@ViewChild('offCanvasClose', {read: ElementRef}) readonly offCanvasClose: ElementRef<HTMLElement>;
 	@ViewChild('main') readonly main: ElementRef<HTMLElement>;
 	@ViewChild('wrapper') readonly wrapper: ElementRef<HTMLElement>;
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
+	private navigationLength: number;
 
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,
@@ -110,7 +112,8 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 	}
 
 	scrollTop(element?: HTMLElement): void {
-		const scrollTop = element?.scrollTop ?? (this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0);
+		const scrollTop =
+			element?.scrollTop ?? (this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0);
 		this.scrollEvents.hasScrolled(scrollTop);
 		if (this.isScrolling !== scrollTop > 0) {
 			this.isScrolling = scrollTop > 0;
@@ -124,6 +127,14 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION))
 			.subscribe(evt => this.updateJumpLinks(evt.value));
 		this.updateJumpLinks(!this.noNavigation);
+	}
+
+	ngDoCheck(): void {
+		if (this.navigation?.length !== this.navigationLength) {
+			this.navigationLength = this.navigation.length;
+			this.masterLayout.navigation.refresh();
+			this.updateJumpLinks(!this.noNavigation);
+		}
 	}
 
 	ngAfterViewInit(): void {
@@ -148,7 +159,7 @@ export class ObMasterLayoutComponent implements OnInit, AfterViewInit, OnDestroy
 
 	private updateJumpLinks(hasNavigation: boolean): void {
 		const staticJumpLinks = hasNavigation && this.navigation.length ? 3 : 2;
-		this.jumpLinks = this.jumpLinks.map((jumpLink, index) => ({...jumpLink, accessKey: index + staticJumpLinks}));
+		this.jumpLinks = this.jumpLinks.map((jumpLink, index: number) => ({...jumpLink, accessKey: index + staticJumpLinks}));
 	}
 
 	private layoutHasMainNavigationChange(): void {

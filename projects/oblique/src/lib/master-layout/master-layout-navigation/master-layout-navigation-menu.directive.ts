@@ -13,7 +13,7 @@ export class ObMasterLayoutNavigationMenuDirective implements AfterViewInit, OnD
 
 	@ContentChildren(ObMasterLayoutNavigationMenuDirective, {descendants: true})
 	$menus: QueryList<ObMasterLayoutNavigationMenuDirective>;
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(private readonly element: ElementRef) {}
 

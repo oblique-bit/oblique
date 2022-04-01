@@ -20,7 +20,7 @@ export class ObDatepickerPlaceholderDirective implements OnInit, OnDestroy {
 	@Input()
 	@HostBinding()
 	placeholder;
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(private readonly translateService: TranslateService) {}
 

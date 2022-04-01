@@ -67,16 +67,13 @@ describe('ObBreadcrumbComponent', () => {
 			fixture.detectChanges();
 		});
 
-		it(
-			'should render the expected amount of breadcrumbs',
-			waitForAsync(() => {
-				component.ngOnInit();
-				fixture.whenStable().then(() => {
-					const navEl = fixture.debugElement.query(By.css('.ob-breadcrumbs'));
-					expect(navEl.children.length).toBe(4);
-				});
-			})
-		);
+		it('should render the expected amount of breadcrumbs', waitForAsync(() => {
+			component.ngOnInit();
+			fixture.whenStable().then(() => {
+				const navEl = fixture.debugElement.query(By.css('.ob-breadcrumbs'));
+				expect(navEl.children.length).toBe(4);
+			});
+		}));
 
 		it('should beautify the url of a path with no label', () => {
 			component.ngOnInit();
@@ -173,16 +170,13 @@ describe('ObBreadcrumbComponent', () => {
 			fixture.detectChanges();
 		});
 
-		it(
-			'should render the expected amount of breadcrumbs',
-			waitForAsync(() => {
-				component.ngOnInit();
-				fixture.whenStable().then(() => {
-					const navEl = fixture.debugElement.query(By.css('.ob-breadcrumbs'));
-					expect(navEl.children.length).toBe(5);
-				});
-			})
-		);
+		it('should render the expected amount of breadcrumbs', waitForAsync(() => {
+			component.ngOnInit();
+			fixture.whenStable().then(() => {
+				const navEl = fixture.debugElement.query(By.css('.ob-breadcrumbs'));
+				expect(navEl.children.length).toBe(5);
+			});
+		}));
 
 		it('should beautify the url of a path with no label and a param', () => {
 			component.ngOnInit();
@@ -260,16 +254,13 @@ describe('ObBreadcrumbComponent', () => {
 			fixture.detectChanges();
 		});
 
-		it(
-			'should render the expected amount of breadcrumbs',
-			waitForAsync(() => {
-				component.ngOnInit();
-				fixture.whenStable().then(() => {
-					const navEl = fixture.debugElement.query(By.css('.ob-breadcrumbs'));
-					expect(navEl.children.length).toBe(3);
-				});
-			})
-		);
+		it('should render the expected amount of breadcrumbs', waitForAsync(() => {
+			component.ngOnInit();
+			fixture.whenStable().then(() => {
+				const navEl = fixture.debugElement.query(By.css('.ob-breadcrumbs'));
+				expect(navEl.children.length).toBe(3);
+			});
+		}));
 
 		it('should translate a label and replace params', () => {
 			component.ngOnInit();
@@ -349,7 +340,17 @@ describe('ObBreadcrumbComponent', () => {
 	});
 });
 
-function createRoute({path, label, params, firstChild}: {path: string; label?: string; firstChild?: any; params?: Record<string, string>}): {
+function createRoute({
+	path,
+	label,
+	params,
+	firstChild
+}: {
+	path: string;
+	label?: string;
+	firstChild?: any;
+	params?: Record<string, string>;
+}): {
 	routeConfig: {path: string; data: {breadcrumb: string}};
 	snapshot: {params: Record<string, string>};
 	firstChild: any;

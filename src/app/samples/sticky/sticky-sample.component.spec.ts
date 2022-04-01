@@ -7,15 +7,13 @@ describe('StickySampleComponent', () => {
 	let component: StickySampleComponent;
 	let fixture: ComponentFixture<StickySampleComponent>;
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				imports: [ObliqueTestingModule],
-				declarations: [StickySampleComponent],
-				schemas: [NO_ERRORS_SCHEMA]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			imports: [ObliqueTestingModule],
+			declarations: [StickySampleComponent],
+			schemas: [NO_ERRORS_SCHEMA]
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(StickySampleComponent);

@@ -8,29 +8,27 @@ import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {WINDOW} from '../../utilities';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {ObEMasterLayoutEventValues} from '../master-layout.model';
+import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
 
 describe('ObMasterLayoutFooterComponent', () => {
 	let component: ObMasterLayoutFooterComponent;
 	let fixture: ComponentFixture<ObMasterLayoutFooterComponent>;
 	const mockMasterLayoutService = {
-		footer: {configEvents$: new Subject()}
+		footer: {configEvents$: new Subject<ObIMasterLayoutEvent>()}
 	};
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				imports: [RouterTestingModule],
-				declarations: [ObMasterLayoutFooterComponent, ObMockTranslatePipe],
-				providers: [
-					{provide: TranslateService, useClass: ObMockTranslateService},
-					{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
-					{provide: ObMasterLayoutConfig, useValue: {homePageRoute: 'home', footer: {hasLogoOnScroll: false, isCustom: false}}},
-					{provide: WINDOW, useValue: window}
-				]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			imports: [RouterTestingModule],
+			declarations: [ObMasterLayoutFooterComponent, ObMockTranslatePipe],
+			providers: [
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
+				{provide: ObMasterLayoutConfig, useValue: {homePageRoute: 'home', footer: {hasLogoOnScroll: false, isCustom: false}}},
+				{provide: WINDOW, useValue: window}
+			]
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObMasterLayoutFooterComponent);

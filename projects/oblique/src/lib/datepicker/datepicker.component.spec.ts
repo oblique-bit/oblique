@@ -17,15 +17,13 @@ describe('DatepickerComponent', () => {
 	let datepicker: ObDatepickerComponent;
 	let button: DebugElement;
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [TestComponent, ObDatepickerComponent],
-				imports: [ReactiveFormsModule, NgbDatepickerModule],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [TestComponent, ObDatepickerComponent],
+			imports: [ReactiveFormsModule, NgbDatepickerModule],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(TestComponent);

@@ -1,6 +1,12 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
-import {addDeclarationToModule, addImportToModule, addProviderToModule, addRouteDeclarationToModule, insertImport} from '@schematics/angular/utility/ast-utils';
+import {
+	addDeclarationToModule,
+	addImportToModule,
+	addProviderToModule,
+	addRouteDeclarationToModule,
+	insertImport
+} from '@schematics/angular/utility/ast-utils';
 import {
 	adaptInsertChange,
 	addDevDependency,
@@ -127,7 +133,11 @@ function addDefaultHomeComponent(prefix: string): Rule {
 function addDefaultComponent(tree: Tree, prefix: string): void {
 	addFile(tree, 'src/app/home/home.component.html', getTemplate(tree, `home.component.html`));
 	addFile(tree, 'src/app/home/home.component.scss', getTemplate(tree, `home.component.scss.config`));
-	addFile(tree, 'src/app/home/home.component.ts', getTemplate(tree, 'home.component.ts.config').replace('_APP_PREFIX_PLACEHOLDER_', prefix));
+	addFile(
+		tree,
+		'src/app/home/home.component.ts',
+		getTemplate(tree, 'home.component.ts.config').replace('_APP_PREFIX_PLACEHOLDER_', prefix)
+	);
 }
 
 function addDefaultComponentToAppModule(tree: Tree): void {

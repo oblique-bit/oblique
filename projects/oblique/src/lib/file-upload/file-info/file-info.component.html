@@ -14,7 +14,8 @@
 			</mat-checkbox>
 		</th>
 		<td mat-cell *matCellDef="let row">
-			<mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? toggle(row) : null" [checked]="selection.isSelected(row)"> </mat-checkbox>
+			<mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? toggle(row) : null" [checked]="selection.isSelected(row)">
+			</mat-checkbox>
 		</td>
 	</ng-container>
 
@@ -27,13 +28,18 @@
 				matTooltip="{{ 'i18n.oblique.file-upload.selected.remove' | translate }}"
 				(click)="delete(selection.selected)"
 			>
-				<mat-icon svgIcon="trash"></mat-icon>
+				<ob-icon icon="trash"></ob-icon>
 				<span class="ob-screen-reader-only">{{ "i18n.oblique.file-upload.selected.remove" | translate }}</span>
 			</button>
 		</th>
 		<td mat-cell *matCellDef="let file">
-			<button mat-icon-button obButton="secondary" matTooltip="{{ 'i18n.oblique.file-upload.remove' | translate }}" (click)="delete([file])">
-				<mat-icon svgIcon="trash"></mat-icon>
+			<button
+				mat-icon-button
+				obButton="secondary"
+				matTooltip="{{ 'i18n.oblique.file-upload.remove' | translate }}"
+				(click)="delete([file])"
+			>
+				<ob-icon icon="trash"></ob-icon>
 				<span class="ob-screen-reader-only">{{ "i18n.oblique.file-upload.remove" | translate }}</span>
 			</button>
 		</td>

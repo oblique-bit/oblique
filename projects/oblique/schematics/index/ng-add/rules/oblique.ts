@@ -1,7 +1,15 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {addDependency, appModulePath, getTemplate, importModuleInRoot, obliqueCssPath} from '../ng-add-utils';
 import {ObIOptionsSchema} from '../ng-add.model';
-import {ObliquePackage, addAngularConfigInList, createSafeRule, getDefaultAngularConfig, infoMigration, readFile, setAngularProjectsConfig} from '../../utils';
+import {
+	ObliquePackage,
+	addAngularConfigInList,
+	createSafeRule,
+	getDefaultAngularConfig,
+	infoMigration,
+	readFile,
+	setAngularProjectsConfig
+} from '../../utils';
 import {addLocales} from './locales';
 
 export function oblique(options: ObIOptionsSchema): Rule {
@@ -180,5 +188,8 @@ function addMasterLayout(tree: Tree, title: string): void {
 
 function addComment(tree: Tree): void {
 	const appModuleContent = readFile(tree, appModulePath);
-	tree.overwrite(appModulePath, appModuleContent.replace(/ObMasterLayoutModule,\n/g, 'ObMasterLayoutModule, // add other Oblique modules as needed\n'));
+	tree.overwrite(
+		appModulePath,
+		appModuleContent.replace(/ObMasterLayoutModule,\n/g, 'ObMasterLayoutModule, // add other Oblique modules as needed\n')
+	);
 }

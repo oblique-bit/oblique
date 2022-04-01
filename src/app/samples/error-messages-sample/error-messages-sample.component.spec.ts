@@ -6,13 +6,11 @@ describe('ObErrorMessagesSampleComponent', () => {
 	let component: ErrorMessagesSampleComponent;
 	let fixture: ComponentFixture<ErrorMessagesSampleComponent>;
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [ErrorMessagesSampleComponent]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [ErrorMessagesSampleComponent]
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ErrorMessagesSampleComponent);

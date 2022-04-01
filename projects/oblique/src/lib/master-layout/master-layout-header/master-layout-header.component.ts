@@ -47,7 +47,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	@ContentChildren('obHeaderMobileControl') readonly mobileTemplates: QueryList<TemplateRef<any>>;
 	@ViewChildren('headerControl') readonly headerControl: QueryList<ElementRef>;
 	@ViewChildren('headerMobileControl') readonly headerMobileControl: QueryList<ElementRef>;
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,
@@ -107,9 +107,11 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 				this.renderer.addClass(el, 'ob-control-link');
 			}
 		}
-		elt.nativeElement.querySelectorAll('.ob-control-link .fa, .ob-control-link .fas, .ob-control-link .fab').forEach((item: HTMLElement) => {
-			this.renderer.addClass(item, 'ob-control-icon');
-		});
+		elt.nativeElement
+			.querySelectorAll('.ob-control-link .fa, .ob-control-link .fas, .ob-control-link .fab')
+			.forEach((item: HTMLElement) => {
+				this.renderer.addClass(item, 'ob-control-icon');
+			});
 	}
 
 	private reduceOnScroll(): void {

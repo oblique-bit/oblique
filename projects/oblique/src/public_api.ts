@@ -2,6 +2,12 @@
  * Public API Surface of oblique
  */
 
+export {
+	ObAuthenticationModule,
+	ObAuthenticationService,
+	ObAuthenticationConfigService,
+	ObIResourceAccessRoles
+} from './lib/authentication/authentication.module';
 export {ObBreadcrumbModule, ObBreadcrumbComponent, ObTBreadcrumbConfig, ObBreadcrumbConfig} from './lib/breadcrumb/breadcrumb.module';
 export {ObButtonDirective, ObButtonModule} from './lib/button/button.module';
 export {
@@ -11,7 +17,12 @@ export {
 	OBLIQUE_COLLAPSE_ICON_POSITION,
 	OBLIQUE_COLLAPSE_DURATION
 } from './lib/collapse/collapse.module';
-export {ObColumnLayoutModule, ObColumnLayoutComponent, ObColumnToggleDirective, ObColumnPanelDirective} from './lib/column-layout/column-layout.module';
+export {
+	ObColumnLayoutModule,
+	ObColumnLayoutComponent,
+	ObColumnToggleDirective,
+	ObColumnPanelDirective
+} from './lib/column-layout/column-layout.module';
 export {
 	ObDateDMYParserFormatter,
 	ObDateFormatterPipe,
@@ -32,7 +43,13 @@ export {
 	ObErrorMessagesModule,
 	ObErrorMessagesService
 } from './lib/error-messages/error-messages.module';
-export {ObExternalLinkModule, ObExternalLinkDirective, EXTERNAL_LINK, ObIExternalLink, ObEExternalLinkIcon} from './lib/external-link/external-link.module';
+export {
+	ObExternalLinkModule,
+	ObExternalLinkDirective,
+	EXTERNAL_LINK,
+	ObIExternalLink,
+	ObEExternalLinkIcon
+} from './lib/external-link/external-link.module';
 export {
 	ObDropZoneComponent,
 	ObEUploadEventType,
@@ -51,7 +68,15 @@ export {
 	ObHttpApiInterceptorModule,
 	ObIHttpApiRequest
 } from './lib/http-api-interceptor/http-api-interceptor.module';
-export {ObTIconConfig, ObIconModule, ObIconService, ObIconConfig, ObUseObliqueIcons, ObEIcon, ObIconComponent} from './lib/icon/icon.module';
+export {
+	ObTIconConfig,
+	ObIconModule,
+	ObIconService,
+	ObIconConfig,
+	ObUseObliqueIcons,
+	ObEIcon,
+	ObIconComponent
+} from './lib/icon/icon.module';
 export {ObLanguageModule, ObLanguageService, ObDatePipe} from './lib/language/language.module';
 export {
 	ObMasterLayoutComponent,
@@ -96,7 +121,7 @@ export {
 	ObINotificationConfig,
 	ObINotification
 } from './lib/notification/notification.module';
-export {ObAlertComponent, ObIAlertType, ObAlertModule} from './lib/alert/alert.module';
+export {ObAlertComponent, ObIAlertType, ObAlertModule, OBLIQUE_HAS_ROLE_ALERT} from './lib/alert/alert.module';
 export {ObNumberFormatDirective, ObNumberFormatModule} from './lib/number-format/number-format.module';
 export {
 	ObOffCanvasBackdropDirective,
@@ -105,7 +130,13 @@ export {
 	ObOffCanvasService,
 	ObOffCanvasToggleDirective
 } from './lib/off-canvas/off-canvas.module';
-export {ObPopoverModule, ObPopoverDirective} from './lib/popover/popover.module';
+export {
+	ObPopoverModule,
+	ObPopoverDirective,
+	OBLIQUE_POPOVER_TOGGLE_HANDLE,
+	OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE,
+	ObEToggleType
+} from './lib/popover/popover.module';
 export {
 	draft07Convert,
 	ObSchemaRequiredDirective,
@@ -123,8 +154,17 @@ export {ObStickyComponent, ObStickyModule} from './lib/sticky/sticky.module';
 export {ObInputClearDirective, ObInputClearModule} from './lib/input-clear/input-clear.module';
 export {ObTranslateParamsModule, ObTranslateParamsPipe} from './lib/translate-params/translate-params.module';
 export {ObUnknownRouteModule, ObUnknownRouteComponent} from './lib/unknown-route/unknown-route.module';
-export {ObUnsavedChangesDirective, ObUnsavedChangesGuard, ObUnsavedChangesModule, ObUnsavedChangesService} from './lib/unsaved-changes/unsaved-changes.module';
-export {ObUnsavedChangesTabsDirective, ObUnsavedChangesTabsModule, ObUnsavedChangesTabsService} from './lib/unsaved-changes-tabs/unsaved-changes-tabs.module';
+export {
+	ObUnsavedChangesDirective,
+	ObUnsavedChangesGuard,
+	ObUnsavedChangesModule,
+	ObUnsavedChangesService
+} from './lib/unsaved-changes/unsaved-changes.module';
+export {
+	ObUnsavedChangesTabsDirective,
+	ObUnsavedChangesTabsModule,
+	ObUnsavedChangesTabsService
+} from './lib/unsaved-changes-tabs/unsaved-changes-tabs.module';
 export {ObTelemetryService, TELEMETRY_DISABLE} from './lib/telemetry/telemetry.service';
 export {OB_BANNER, OB_MATERIAL_CONFIG, getTranslateLoader, multiTranslateLoader, WINDOW} from './lib/utilities';
 export {ObIBanner, ObIMaterialConfig} from './lib/utilities.model';

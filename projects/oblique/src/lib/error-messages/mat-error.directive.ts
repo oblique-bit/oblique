@@ -13,9 +13,13 @@ import {Subject} from 'rxjs';
 export class ObMatErrorDirective implements OnInit, OnDestroy {
 	private readonly pipe: ObTranslateParamsPipe;
 	private errors: ValidationErrors = {};
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
-	constructor(@Optional() private readonly control: ObErrorMessagesDirective, private readonly el: ElementRef, translate: TranslateService) {
+	constructor(
+		@Optional() private readonly control: ObErrorMessagesDirective,
+		private readonly el: ElementRef,
+		translate: TranslateService
+	) {
 		if (this.control) {
 			this.pipe = new ObTranslateParamsPipe(translate);
 			translate.onLangChange.subscribe(() => this.showErrors(this.errors || {}));

@@ -27,23 +27,21 @@ describe('UnsavedChangesDirective', () => {
 		directive = fixture.debugElement.query(By.directive(ObUnsavedChangesDirective)).injector.get(ObUnsavedChangesDirective);
 	};
 
-	beforeEach(
-		waitForAsync(() => {
-			unsavedChangesServiceMock = {
-				isActive: true,
-				watch: jest.fn(),
-				unWatch: jest.fn(),
-				canDeactivate: jest.fn(),
-				ignoreChanges: jest.fn()
-			};
+	beforeEach(waitForAsync(() => {
+		unsavedChangesServiceMock = {
+			isActive: true,
+			watch: jest.fn(),
+			unWatch: jest.fn(),
+			canDeactivate: jest.fn(),
+			ignoreChanges: jest.fn()
+		};
 
-			TestBed.configureTestingModule({
-				declarations: [FaultyTestComponent, TestComponent, ObUnsavedChangesDirective],
-				providers: [ControlContainer, {provide: ObUnsavedChangesService, useValue: unsavedChangesServiceMock}],
-				imports: [CommonModule]
-			}).compileComponents();
-		})
-	);
+		TestBed.configureTestingModule({
+			declarations: [FaultyTestComponent, TestComponent, ObUnsavedChangesDirective],
+			providers: [ControlContainer, {provide: ObUnsavedChangesService, useValue: unsavedChangesServiceMock}],
+			imports: [CommonModule]
+		}).compileComponents();
+	}));
 
 	it('with neither id nor ngbTab should throw an error', () => {
 		expect(() => initFixture(FaultyTestComponent)).toThrow();

@@ -123,4 +123,9 @@ a.form-control-plaintext {
 	> label {
 		margin-top: 8px;
 	}
+
+	.form-control {
+		display: inline;
+		width: unset;
+	}
 }

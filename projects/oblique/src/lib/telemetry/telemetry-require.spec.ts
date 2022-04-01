@@ -3,7 +3,9 @@ import {ObTelemetryService} from './telemetry.service';
 
 describe('TelemetryRequire', () => {
 	it('should throw on undefined telemetry service', () => {
-		expect(() => requireAndRecordTelemetry(undefined, undefined)).toThrowError('It is not allowed to use Oblique modules without telemetry!');
+		expect(() => requireAndRecordTelemetry(undefined, undefined)).toThrowError(
+			'It is not allowed to use Oblique modules without telemetry!'
+		);
 	});
 	it("should record the module's name", () => {
 		const mock = {record: jest.fn()} as unknown as ObTelemetryService;

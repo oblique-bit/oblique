@@ -4,10 +4,12 @@ import {
 	HostBinding,
 	HostListener,
 	Inject,
+	InjectionToken,
 	Input,
 	OnChanges,
 	OnDestroy,
 	OnInit,
+	Optional,
 	Renderer2,
 	TemplateRef,
 	ViewContainerRef
@@ -16,9 +18,15 @@ import {DOCUMENT} from '@angular/common';
 import {Instance, Options, Placement, createPopper} from '@popperjs/core';
 import {race} from 'rxjs';
 import {filter, first} from 'rxjs/operators';
-import {defaultConfig} from './popover.model';
+import {ObEToggleType, defaultConfig} from './popover.model';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {obOutsideFilter} from '../global-events/outsideFilter';
+import {isNotKeyboardEventOnButton} from '../utilities';
+
+export const OBLIQUE_POPOVER_TOGGLE_HANDLE = new InjectionToken<ObEToggleType>('Define the toggle handle for all Oblique popover');
+export const OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE = new InjectionToken<boolean>(
+	'All Oblique popover are only closed when clicking on the toggle element'
+);
 
 @Directive({
 	selector: '[obPopover]',
@@ -30,6 +38,8 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	@Input() placement: Placement = 'auto';
 	@Input() popperOptions: Options = {} as Options;
 	@Input() id: string;
+	@Input() toggleHandle: ObEToggleType;
+	@Input() closeOnlyOnToggle: boolean;
 	@HostBinding('attr.aria-describedby') idContent: string;
 
 	private static idCount = 0;
@@ -37,11 +47,15 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	private readonly host: HTMLElement;
 	private instance: Instance;
 	private popover: HTMLDivElement;
+	private isMouseHoverConfigured: boolean;
+	private isCloseOnlyOnToggleConfigured: boolean;
 
 	constructor(
 		el: ElementRef,
 		private readonly renderer: Renderer2,
 		@Inject(DOCUMENT) document: Document,
+		@Optional() @Inject(OBLIQUE_POPOVER_TOGGLE_HANDLE) private readonly globalToggleHandle: ObEToggleType,
+		@Optional() @Inject(OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE) private readonly globalCloseOnlyOnToggle: boolean,
 		private readonly globalEventsService: ObGlobalEventsService,
 		private readonly viewContainerRef: ViewContainerRef
 	) {
@@ -52,20 +66,44 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	ngOnInit(): void {
 		this.id = this.id || `popover-${ObPopoverDirective.idCount++}`;
 		this.idContent = `${this.id}-content`;
+		this.updateToggleMethod();
+		this.updateCloseOnlyOnToggle();
 	}
 
 	ngOnChanges(): void {
 		this.setPopperOptionsAndUpdate();
+		this.updateToggleMethod();
+		this.updateCloseOnlyOnToggle();
 	}
 
 	ngOnDestroy(): void {
 		this.close();
 	}
 
-	@HostListener('click') toggle(): void {
-		if (this.popover) {
+	@HostListener('click', ['$event'])
+	@HostListener('keyup.enter', ['$event'])
+	toggle(event?: KeyboardEvent | MouseEvent): void {
+		if (isNotKeyboardEventOnButton(event)) {
+			if (event instanceof MouseEvent && this.isMouseHoverConfigured) {
+				return;
+			}
+
+			if (this.popover) {
+				this.close();
+			} else {
+				this.open();
+			}
+		}
+	}
+
+	@HostListener('mouseleave') handleMouseLeave(): void {
+		if (this.isMouseHoverConfigured) {
 			this.close();
-		} else {
+		}
+	}
+
+	@HostListener('mouseenter') handleMouseEnter(): void {
+		if (this.isMouseHoverConfigured) {
 			this.open();
 		}
 	}
@@ -79,13 +117,29 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 
 	open(): void {
 		this.popover = this.buildPopover();
-		this.listenForCloseEvent();
+
+		if (!this.isCloseOnlyOnToggleConfigured) {
+			this.listenForCloseEvent();
+		}
+
 		// without the setTimeout, the options aren't applied
 		setTimeout(() => {
 			this.renderer.appendChild(this.body, this.popover);
 			this.instance = createPopper(this.host, this.popover, defaultConfig);
 			this.setPopperOptionsAndUpdate();
 		});
+	}
+
+	private updateToggleMethod(): void {
+		this.isMouseHoverConfigured = this.getToggleMethod() === ObEToggleType.HOVER;
+	}
+
+	private getToggleMethod(): ObEToggleType {
+		return this.toggleHandle ?? this.globalToggleHandle ?? ObEToggleType.CLICK;
+	}
+
+	private updateCloseOnlyOnToggle(): void {
+		this.isCloseOnlyOnToggleConfigured = this.closeOnlyOnToggle ?? this.globalCloseOnlyOnToggle ?? false;
 	}
 
 	private setPopperOptionsAndUpdate(): void {

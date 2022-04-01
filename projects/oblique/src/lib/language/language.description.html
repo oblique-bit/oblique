@@ -1,16 +1,18 @@
 <p>
-	This module takes care of the languages and their corresponding locales. The <code>ObLanguageService</code>, which is instantiated by the master layout,
-	provides an observable for the current locale that is used to set the <code>lang</code> attribute on the <code>&lt;html&gt;</code> element as well as
-	informing all locale dependent features on the locale change. It also ensures that at least one locale is provided and that all locales are registered.
-	Finally, it configures the <code>TranslateService</code> by registering the allowed languages and setting both the default and current language.
+	This module takes care of the languages and their corresponding locales. The <code>ObLanguageService</code>, which is instantiated by the
+	master layout, provides an observable for the current locale that is used to set the <code>lang</code> attribute on the
+	<code>&lt;html&gt;</code> element as well as informing all locale dependent features on the locale change. It also ensures that at least
+	one locale is provided and that all locales are registered. Finally, it configures the <code>TranslateService</code> by registering the
+	allowed languages and setting both the default and current language.
 </p>
 <p>
-	The locales must be provided as two letters codes conforming to the ISO 639-1 standard. Language codes can be complemented with a two letters country code
-	conforming to the ISO 3166-1 alpha-2 standard, both codes are joint by a hyphen.
+	The locales must be provided as two letters codes conforming to the ISO 639-1 standard. Language codes can be complemented with a two
+	letters country code conforming to the ISO 3166-1 alpha-2 standard, both codes are joint by a hyphen.
 </p>
 <p>
-	The <code>obDate</code> pipe simply wraps angular's <code>date</code> pipe and automatically reformats the date according to current locale. It also provides
-	an additional <code>datetime</code> format which is its default value. Please note that the <code>obDate</code> is impure, meaning that its use may result in
-	performance issues when used intensively, typically within a loop. In that case, it is advised to use angular's <code>date</code> pipe and provide it with the
-	current locale through the <code>locale$</code> observable of the <code>ObLanguageService</code>.
+	The <code>obDate</code> pipe simply wraps angular's <code>date</code> pipe and automatically reformats the date according to current
+	locale. It also provides an additional <code>datetime</code> format which is its default value. Please note that the
+	<code>obDate</code> is impure, meaning that its use may result in performance issues when used intensively, typically within a loop. In
+	that case, it is advised to use angular's <code>date</code> pipe and provide it with the current locale through the
+	<code>locale$</code> observable of the <code>ObLanguageService</code>.
 </p>

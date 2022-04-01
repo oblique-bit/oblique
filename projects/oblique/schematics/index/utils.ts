@@ -4,7 +4,7 @@ import * as colors from 'ansi-colors';
 
 export const packageJsonConfigPath = './package.json';
 export const ObliquePackage = '@oblique/oblique';
-const glob = require('glob');
+const glob = require('glob'); /* eslint-disable-line @typescript-eslint/no-var-requires */
 
 const angularJsonConfigPath = './angular.json/';
 export let isSuccessful = true;
@@ -158,7 +158,7 @@ export function installDependencies(): Rule {
 	});
 }
 
-export function applyInTree(tree: Tree, toApply: Function, pattern = '*'): Tree {
+export function applyInTree(tree: Tree, toApply: (file: string) => void, pattern = '*'): Tree {
 	getAngularConfigs(tree, ['sourceRoot'])
 		.map(project => project.config)
 		.reduce<string[]>((files, root: string) => [...files, ...glob.sync(`${root}/**/${pattern}`, {})], [])
@@ -200,7 +200,9 @@ export function removeImport(tree: Tree, fileName: string, name: string, pkg: st
 			fileName,
 			new RegExp(`import\\s*{\\s*${name}\\s*}\\s*from\\s*['"]${pkg}['"]`, 'm').test(content)
 				? content.replace(new RegExp(`import\\s*{\\s*${name}\\s*}\\s*from\\s*['"]${pkg}['"]\\s*;\\s*`), '')
-				: content.replace(new RegExp(`(import\\s*{\\s*.*)${name}(?:,\\s*)?(.*\\s*}\\s*from\\s*['"]${pkg}['"]\\s*;\\s*)`), '$1$2').replace(/,\s*}/, '}')
+				: content
+						.replace(new RegExp(`(import\\s*{\\s*.*)${name}(?:,\\s*)?(.*\\s*}\\s*from\\s*['"]${pkg}['"]\\s*;\\s*)`), '$1$2')
+						.replace(/,\s*}/, '}')
 		);
 	}
 }

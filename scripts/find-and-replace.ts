@@ -16,13 +16,16 @@ class FindAndReplace {
 		return readdirSync(directory)
 			.map(fileName => path.join(directory, fileName))
 			.reduce(
-				(filePaths, filePath) => (statSync(filePath).isDirectory() ? [...filePaths, ...FindAndReplace.listFiles(filePath)] : [...filePaths, filePath]),
+				(filePaths, filePath) =>
+					statSync(filePath).isDirectory() ? [...filePaths, ...FindAndReplace.listFiles(filePath)] : [...filePaths, filePath],
 				[]
 			);
 	}
 
 	private static renameFiles(fileList: string[], searchValue: string, replaceValue: string): void {
-		fileList.filter(filePath => filePath.includes(searchValue)).forEach(filePath => renameSync(filePath, filePath.replace(searchValue, replaceValue)));
+		fileList
+			.filter(filePath => filePath.includes(searchValue))
+			.forEach(filePath => renameSync(filePath, filePath.replace(searchValue, replaceValue)));
 	}
 
 	private static renameInFiles(fileList: string[], searchValue: string, replaceValue: string): void {

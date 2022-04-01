@@ -13,9 +13,12 @@ export class ObTranslateParamsPipe implements PipeTransform {
 		return this.translate.instant(value, typeof params === 'object' ? this.translateParams(params) : undefined);
 	}
 
-	private translateParams(params: Object): Object {
+	private translateParams(params: Record<string, string | number | boolean>): Record<string, string | number | boolean> {
 		return Object.keys(params).reduce(
-			(parameters, key) => ({...parameters, [key]: typeof params[key] === 'string' ? this.translate.instant(params[key]) : params[key]}),
+			(parameters, key) => ({
+				...parameters,
+				[key]: typeof params[key] === 'string' ? this.translate.instant(params[key] as string) : params[key]
+			}),
 			{}
 		);
 	}

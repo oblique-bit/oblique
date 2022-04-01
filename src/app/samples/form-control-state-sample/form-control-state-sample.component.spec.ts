@@ -7,14 +7,12 @@ describe('ObFormControlStateSampleComponent', () => {
 	let component: FormControlStateSampleComponent;
 	let fixture: ComponentFixture<FormControlStateSampleComponent>;
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [FormControlStateSampleComponent],
-				imports: [FormsModule, ReactiveFormsModule, ObliqueTestingModule]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [FormControlStateSampleComponent],
+			imports: [FormsModule, ReactiveFormsModule, ObliqueTestingModule]
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(FormControlStateSampleComponent);

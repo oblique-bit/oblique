@@ -63,30 +63,29 @@ class TestComponent {
 }
 
 describe('ObFormControlStateDirective', () => {
-	let fixture: ComponentFixture<TestComponent> | ComponentFixture<TestWithPristineValidationComponent> | ComponentFixture<ReactiveTestComponent>;
+	let fixture:
+		| ComponentFixture<TestComponent>
+		| ComponentFixture<TestWithPristineValidationComponent>
+		| ComponentFixture<ReactiveTestComponent>;
 	let component: TestComponent | TestWithPristineValidationComponent | ReactiveTestComponent;
 	let submitButton;
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [ObFormControlStateDirective, TestWithPristineValidationComponent, TestComponent, ReactiveTestComponent],
-				imports: [FormsModule, ReactiveFormsModule],
-				providers: [{provide: WINDOW, useValue: window}]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [ObFormControlStateDirective, TestWithPristineValidationComponent, TestComponent, ReactiveTestComponent],
+			imports: [FormsModule, ReactiveFormsModule],
+			providers: [{provide: WINDOW, useValue: window}]
+		}).compileComponents();
+	}));
 
 	describe('with pristineValidation = false', () => {
-		beforeEach(
-			waitForAsync(() => {
-				fixture = TestBed.createComponent(TestComponent);
-				component = fixture.componentInstance;
-				fixture.detectChanges();
+		beforeEach(waitForAsync(() => {
+			fixture = TestBed.createComponent(TestComponent);
+			component = fixture.componentInstance;
+			fixture.detectChanges();
 
-				submitButton = fixture.debugElement.query(By.css('#submit')).nativeElement;
-			})
-		);
+			submitButton = fixture.debugElement.query(By.css('#submit')).nativeElement;
+		}));
 
 		it('should add has-error class on form submit', fakeAsync(() => {
 			submitButton.click();
@@ -115,15 +114,13 @@ describe('ObFormControlStateDirective', () => {
 	});
 
 	describe('with pristineValidation = true', () => {
-		beforeEach(
-			waitForAsync(() => {
-				fixture = TestBed.createComponent(TestWithPristineValidationComponent);
-				component = fixture.componentInstance;
-				fixture.detectChanges();
+		beforeEach(waitForAsync(() => {
+			fixture = TestBed.createComponent(TestWithPristineValidationComponent);
+			component = fixture.componentInstance;
+			fixture.detectChanges();
 
-				submitButton = fixture.debugElement.query(By.css('#submit')).nativeElement;
-			})
-		);
+			submitButton = fixture.debugElement.query(By.css('#submit')).nativeElement;
+		}));
 
 		it('should add has-error class on load', () => {
 			fixture.detectChanges();
@@ -145,15 +142,13 @@ describe('ObFormControlStateDirective', () => {
 	});
 
 	describe('with reactive form', () => {
-		beforeEach(
-			waitForAsync(() => {
-				fixture = TestBed.createComponent(ReactiveTestComponent);
-				component = fixture.componentInstance;
-				fixture.detectChanges();
+		beforeEach(waitForAsync(() => {
+			fixture = TestBed.createComponent(ReactiveTestComponent);
+			component = fixture.componentInstance;
+			fixture.detectChanges();
 
-				submitButton = fixture.debugElement.query(By.css('#submit')).nativeElement;
-			})
-		);
+			submitButton = fixture.debugElement.query(By.css('#submit')).nativeElement;
+		}));
 
 		it('should add has-error class on form submit', fakeAsync(() => {
 			submitButton.click();

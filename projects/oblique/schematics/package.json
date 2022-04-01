@@ -1,13 +1,11 @@
 {
   "name": "@oblique/schematics",
-  "version": "8.0.1",
+  "version": "8.1.0",
   "description": "Oblique schematics",
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
     "build:watch": "tsc -p tsconfig.schematics.json --watch",
-    "test": "npm run build && jasmine index/**/*_spec.js",
-    "dist": "tsc -p tsconfig.schematics.json && cpx index/**/*{.js,json} ../../../dist/oblique/schematics/index && cpx {package.json,collection.json,migration.json} ../../../dist/oblique/schematics && cpx index/ng-add/templates/*{.html,config} ../../../dist/oblique/schematics/index/ng-add/templates/",
-    "distiOS": "tsc -p tsconfig.schematics.json && cpx 'index/**/*{.js,json}' '../../../dist/oblique/schematics/index' && cpx '{package.json,collection.json,migration.json}' '../../../dist/oblique/schematics' && cpx 'index/ng-add/templates/*{.html,config}' '../../../dist/oblique/schematics/index/ng-add/templates/'"
+    "test": "npm run build && jasmine index/**/*_spec.js"
   },
   "keywords": [
     "oblique-schematics"

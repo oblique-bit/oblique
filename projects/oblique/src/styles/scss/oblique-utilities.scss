@@ -3,12 +3,8 @@
  */
 @use "core/mixins/layout";
 @use "core/mixins/nav";
-@forward "core";
-@forward "core/mixins/layout";
-@forward "core/mixins/nav";
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
-@import "core/variables";
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/utilities";
 @import "~bootstrap/scss/grid";

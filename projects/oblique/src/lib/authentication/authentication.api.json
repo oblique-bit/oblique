@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObAuthenticationService",
+      "methods": [
+        {
+          "name": "getAllResourceAccessRoles",
+          "returns": "IResourceAccessRoles[]",
+          "since": "8.1.0",
+          "text": "Returns the user's roles as defined in its jwt by the key \"resource_access\""
+        },
+        {
+          "name": "getIdentityClaims",
+          "returns": "object",
+          "since": "8.1.0",
+          "text": "Returns the received claims about the user."
+        },
+        {
+          "arguments": ["additionalState?: string", "params?: any"],
+          "name": "performLogin",
+          "returns": "void",
+          "since": "8.1.0",
+          "text": "Start the implicit flow or the code flow, depending on your configuration."
+        },
+        {
+          "name": "performLogout",
+          "returns": "void",
+          "since": "8.1.0",
+          "text": "Removes all tokens and logs the user out. If a logout url is configured, the user is redirected to it with an optional state parameter."
+        }
+      ],
+      "since": "8.1.0",
+      "type": "service",
+      "usage": "Wrapper service to interact with the <code>OAuthService</code> of the <code>angular-oauth2-oidc</code> library.",
+      "variables": [
+        {
+          "name": "oAuthService",
+          "since": "8.1.0",
+          "text": "Direct access to the <code>OAuthService</code> of the <code>angular-oauth2-oidc</code> library. Usefull if a method is not wrapped by Oblique.",
+          "type": "OAuthService"
+        }
+      ]
+    },
+    {
+      "name": "ObAuthenticationConfigService",
+      "methods": [
+        {
+          "arguments": [
+            "authFlowConfig: AuthConfig",
+            "tokenValidationHandler?: ValidationHandler"
+          ],
+          "name": "configureFlow",
+          "returns": "Observable<boolean>",
+          "since": "8.1.0",
+          "text": "Helper method to configure the <code>OAuthService</code> of the <code>angular-oauth2-oidc</code> library."
+        }
+      ],
+      "since": "8.1.0",
+      "type": "service",
+      "usage": "Wrapper service to configure the <code>angular-oauth2-oidc</code> library.",
+      "variables": [
+        {
+          "default": false,
+          "name": "setupAutomaticSilentRefresh",
+          "since": "8.1.0",
+          "text": "A flag that indicates if the silent token refresh should be activated.",
+          "type": "boolean"
+        },
+        {
+          "default": true,
+          "name": "useDiscoveryDocument",
+          "since": "8.1.0",
+          "text": "A flag that indicates if a discovery document should be used.",
+          "type": "boolean"
+        }
+      ]
+    }
+  ]
+}

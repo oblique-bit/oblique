@@ -42,15 +42,17 @@ class Icons {
 	private static writeIconCSS(filePath: string, SVGs: string[]): void {
 		const iconCSS = [
 			`.ob-icon::before {\n\tdisplay: inline-block;\n\twidth: 1em;\n\theight: 1em;\n}`,
-			...SVGs.map(
-				svg => `.ob-${/(?<=id=")[a-z-]*(?=")/.exec(svg)[0]}::before {\n\tcontent: url('data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}');\n}`
+			...SVGs.map(svg => ({name: /(?<=id=")[a-z-]*(?=")/.exec(svg)[0], content: Buffer.from(svg).toString('base64')})).map(
+				svg => `.ob-${svg.name}::before {\n\tcontent: url('data:image/svg+xml;base64,${svg.content}');\n}`
 			)
 		];
 		writeFileSync(filePath, iconCSS.join('\n\n'));
 	}
 
 	private static writeIconEnum(filePath: string, SVGs: string[]): void {
-		const iconNames = SVGs.map(svg => /(?<=id=")[a-z-]*(?=")/.exec(svg).toString()).map(name => `${name.toUpperCase().replace(/-/g, '_')} = '${name}'`);
+		const iconNames = SVGs.map(svg => /(?<=id=")[a-z-]*(?=")/.exec(svg).toString()).map(
+			name => `${name.toUpperCase().replace(/-/g, '_')} = '${name}'`
+		);
 		writeFileSync(
 			filePath,
 			readFileSync(filePath)

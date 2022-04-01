@@ -10,16 +10,14 @@ describe('SearchBoxComponent', () => {
 	let component: ObSearchBoxComponent;
 	let fixture: ComponentFixture<ObSearchBoxComponent>;
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [ObSearchBoxComponent, ObMockTranslatePipe],
-				imports: [RouterTestingModule],
-				schemas: [NO_ERRORS_SCHEMA],
-				providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [ObSearchBoxComponent, ObMockTranslatePipe],
+			imports: [RouterTestingModule],
+			schemas: [NO_ERRORS_SCHEMA],
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObSearchBoxComponent);
@@ -93,7 +91,11 @@ describe('SearchBoxComponent', () => {
 			// @ts-expect-error
 			component.links = new QueryList();
 			// @ts-expect-error
-			component.links.reset([{nativeElement: {focus: jest.fn()}}, {nativeElement: {focus: jest.fn()}}, {nativeElement: {focus: jest.fn()}}]);
+			component.links.reset([
+				{nativeElement: {focus: jest.fn()}},
+				{nativeElement: {focus: jest.fn()}},
+				{nativeElement: {focus: jest.fn()}}
+			]);
 			component.pattern = 't';
 		});
 
@@ -130,7 +132,11 @@ describe('SearchBoxComponent', () => {
 			// @ts-expect-error
 			component.links = new QueryList();
 			// @ts-expect-error
-			component.links.reset([{nativeElement: {focus: jest.fn()}}, {nativeElement: {focus: jest.fn()}}, {nativeElement: {focus: jest.fn()}}]);
+			component.links.reset([
+				{nativeElement: {focus: jest.fn()}},
+				{nativeElement: {focus: jest.fn()}},
+				{nativeElement: {focus: jest.fn()}}
+			]);
 			component.pattern = 't';
 		});
 

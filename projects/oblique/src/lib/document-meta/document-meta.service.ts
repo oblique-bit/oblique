@@ -24,7 +24,7 @@ export class ObDocumentMetaService implements OnDestroy {
 		title: '',
 		description: ''
 	};
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
 		private readonly router: Router,
@@ -65,7 +65,9 @@ export class ObDocumentMetaService implements OnDestroy {
 				.get([title, suffix])
 				.pipe(
 					takeUntil(this.unsubscribe),
-					map((translation: Record<string, string>) => (translation[suffix] ? `${translation[title]}${separator}${translation[suffix]}` : translation[title]))
+					map((translation: Record<string, string>) =>
+						translation[suffix] ? `${translation[title]}${separator}${translation[suffix]}` : translation[title]
+					)
 				)
 				.subscribe(text => this.titleService.setTitle(text));
 		} else if (suffix) {

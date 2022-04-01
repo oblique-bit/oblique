@@ -63,27 +63,25 @@ describe('HttpApiInterceptor', () => {
 	let spinner: ObSpinnerService;
 	let notification: ObNotificationService;
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				imports: [HttpClientTestingModule],
-				providers: [
-					DataService,
-					{provide: ObHttpApiInterceptorEvents, useClass: MockHttpApiInterceptorEvents},
-					{provide: ObSpinnerService, useClass: MockSpinnerService},
-					{provide: ObNotificationService, useClass: MockNotificationService},
-					{provide: WINDOW, useValue: window}
-				]
-			});
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			imports: [HttpClientTestingModule],
+			providers: [
+				DataService,
+				{provide: ObHttpApiInterceptorEvents, useClass: MockHttpApiInterceptorEvents},
+				{provide: ObSpinnerService, useClass: MockSpinnerService},
+				{provide: ObNotificationService, useClass: MockNotificationService},
+				{provide: WINDOW, useValue: window}
+			]
+		});
 
-			service = TestBed.inject(DataService);
-			httpMock = TestBed.inject(HttpTestingController);
-			config = TestBed.inject(ObHttpApiInterceptorConfig);
-			events = TestBed.inject(ObHttpApiInterceptorEvents);
-			spinner = TestBed.inject(ObSpinnerService);
-			notification = TestBed.inject(ObNotificationService);
-		})
-	);
+		service = TestBed.inject(DataService);
+		httpMock = TestBed.inject(HttpTestingController);
+		config = TestBed.inject(ObHttpApiInterceptorConfig);
+		events = TestBed.inject(ObHttpApiInterceptorEvents);
+		spinner = TestBed.inject(ObSpinnerService);
+		notification = TestBed.inject(ObNotificationService);
+	}));
 
 	it('should add an X-Requested-With header', () => {
 		service = TestBed.inject(DataService);
@@ -163,13 +161,13 @@ describe('HttpApiInterceptor', () => {
 		});
 	});
 
-	function getUsers(success?: Function): TestRequest {
+	function getUsers(success?: () => void): TestRequest {
 		const req = buildRequest(success);
 		req.flush([{name: 'bob'}]);
 		return req;
 	}
 
-	function getAsyncUsers(success?: Function): TestRequest {
+	function getAsyncUsers(success?: () => void): TestRequest {
 		const req = buildRequest(success);
 		setTimeout(() => {
 			req.flush([{name: 'bob'}]);
@@ -178,7 +176,7 @@ describe('HttpApiInterceptor', () => {
 		return req;
 	}
 
-	function buildRequest(success?: Function): TestRequest {
+	function buildRequest(success?: () => void): TestRequest {
 		// call success in `finalize` because `subscribe` is called before `complete` callback
 		service
 			.getUsers()
@@ -193,7 +191,7 @@ describe('HttpApiInterceptor', () => {
 		return req;
 	}
 
-	function getError(code: number, error?: Function): TestRequest {
+	function getError(code: number, error?: () => void): TestRequest {
 		service.getError(code).subscribe(undefined, response => {
 			expect(response).toBeTruthy();
 			if (error) {

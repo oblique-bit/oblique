@@ -29,16 +29,14 @@ describe('MultiselectComponent', () => {
 
 	const stringOptions = [stringOption1, stringOption2, stringOption3];
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [ObMultiselectComponent, MockSearchPipe, ObMockTranslatePipe],
-				imports: [FormsModule],
-				providers: [ObMultiselectConfig, ObMultiselectTexts, {provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService}],
-				schemas: [NO_ERRORS_SCHEMA]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [ObMultiselectComponent, MockSearchPipe, ObMockTranslatePipe],
+			imports: [FormsModule],
+			providers: [ObMultiselectConfig, ObMultiselectTexts, {provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService}],
+			schemas: [NO_ERRORS_SCHEMA]
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObMultiselectComponent);

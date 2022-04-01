@@ -1,3 +1,4 @@
+@use "sass:selector";
 @use "../../core/variables" as core-variables;
 @use "../../core/mixins/tab-outline";
 
@@ -16,9 +17,9 @@
 			}
 
 			.mat-button-wrapper {
-				// so that it appears before the ripple effect
+				// so that it appears before the ripple effect (mat-button-icon have z-index: 2)
 				position: relative;
-				z-index: 1;
+				z-index: 2;
 			}
 
 			.mat-ripple-element {
@@ -52,6 +53,17 @@
 				}
 			}
 		}
+
+		&.mat-icon-button {
+			height: unset;
+			width: unset;
+			padding: 0.3896em; // (mat-button-height - mat-button-font-size * ob-icon-font-size) / 2 = (34px - 14px * 1.65) / 2 = (2.4286em - 1.65em) / 2
+			line-height: 1;
+		}
+
+		&.mat-button-disabled {
+			cursor: not-allowed;
+		}
 	}
 
 	&.mat-button,
@@ -59,14 +71,7 @@
 	&.mat-flat-button,
 	&.mat-raised-button,
 	&.mat-icon-button {
-		border-radius: 2px;
-	}
-
-	&.mat-icon-button {
-		height: unset;
-		width: unset;
-		padding: 0.4643em;
-		line-height: 1;
+		border-radius: core-variables.$ob-border-radius-button;
 	}
 
 	:not(.mat-icon-button) .mat-icon {
@@ -84,17 +89,18 @@
 		&.fab .fab {
 			&::before {
 				position: relative;
-				top: 5px;
+				top: 5px; // empiric value
 			}
 		}
 	}
 
+	// the only targets svg icons, i.e. Oblique ones, no default material ones
 	.mat-icon[data-mat-icon-type="svg"] {
-		font-size: 1.5em;
+		font-size: core-variables.$ob-font-size-biggest;
 		line-height: 1;
-	}
 
-	&.ob-button.mat-button-disabled {
-		cursor: not-allowed;
+		@at-root #{selector.append(":not(.mat-icon-button)", &)} {
+			margin-top: -0.1537em; // (mat-text-height - ob-icon-font-size) / 2 = (16px - 1em) / 2 = (0.6926em - 1em) / 2
+		}
 	}
 }

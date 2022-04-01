@@ -68,7 +68,9 @@ export class UpdateV5toV6 implements ObIMigrations {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Migrating font');
 			const module = readFile(tree, appModulePath);
-			const match = /(?<full>\s*{\s*provide\s*:\s*OBLIQUE_FONT\s*,\s*useValue\s*:\s*(?:FONTS\.)?['"]?(?<font>[^"'\s}]*)['"]?\s*},?)/.exec(module);
+			const match = /(?<full>\s*{\s*provide\s*:\s*OBLIQUE_FONT\s*,\s*useValue\s*:\s*(?:FONTS\.)?['"]?(?<font>[^"'\s}]*)['"]?\s*},?)/.exec(
+				module
+			);
 			const full = match?.groups?.full;
 			const font = match?.groups?.font;
 			if (full && font) {
@@ -288,7 +290,12 @@ export class UpdateV5toV6 implements ObIMigrations {
 
 	private addNgOnDestroy(tree: Tree, filePath: string, extend: boolean): void {
 		if (extend) {
-			replaceInFile(tree, filePath, /ngOnDestroy\(.*{\s*\n(\s*)/, 'ngOnDestroy(): void {\n$1this.unsubscribe.next();\n$1this.unsubscribe.complete();\n$1');
+			replaceInFile(
+				tree,
+				filePath,
+				/ngOnDestroy\(.*{\s*\n(\s*)/,
+				'ngOnDestroy(): void {\n$1this.unsubscribe.next();\n$1this.unsubscribe.complete();\n$1'
+			);
 		} else {
 			replaceInFile(
 				tree,
@@ -330,7 +337,17 @@ export class UpdateV5toV6 implements ObIMigrations {
 				addPrefixMatchExactOrSuffix(tree, filePath, 'alert', ['info', 'success', 'warning', 'error', 'link']);
 				addPrefixMatchExactOrSuffix(tree, filePath, 'search-box', ['input']);
 				addPrefixMatchExactOrSuffix(tree, filePath, 'text-control', ['clear']);
-				addPrefixMatchExactOrSuffix(tree, filePath, 'sticky', ['content', 'main', 'header', 'footer', 'title', 'actions', 'sm', 'lg', 'layout']);
+				addPrefixMatchExactOrSuffix(tree, filePath, 'sticky', [
+					'content',
+					'main',
+					'header',
+					'footer',
+					'title',
+					'actions',
+					'sm',
+					'lg',
+					'layout'
+				]);
 				addPrefixMatchExactOrSuffix(tree, filePath, 'nav-stepper', ['sm', 'lg']);
 				addPrefixMatchExactOrSuffix(tree, filePath, 'table', ['cicd', 'plain', 'collapse', 'hover', 'scrollable']);
 				addPrefixMatchExactOrSuffix(tree, filePath, 'dropdown', ['content']);
@@ -358,7 +375,13 @@ export class UpdateV5toV6 implements ObIMigrations {
 					'highlight',
 					'slide-control'
 				]);
-				renameExactOrSuffix(tree, filePath, 'application', ['navigation', 'header', 'fixed', 'brand', 'footer', 'scrolling', 'content'], 'ob-master-layout');
+				renameExactOrSuffix(
+					tree,
+					filePath,
+					'application',
+					['navigation', 'header', 'fixed', 'brand', 'footer', 'scrolling', 'content'],
+					'ob-master-layout'
+				);
 				renameExactOrSuffix(tree, filePath, 'offcanvas', ['sidebar', 'main', 'in', 'header', 'content', 'backdrop'], 'ob-off-canvas');
 			};
 			return applyInTree(tree, apply, '*.scss');

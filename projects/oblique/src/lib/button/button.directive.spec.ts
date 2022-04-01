@@ -67,24 +67,22 @@ describe('ButtonDirective', () => {
 		| ComponentFixture<TestLinkComponent>
 		| ComponentFixture<TestErrorComponent>;
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [
-					TestPrimaryComponent,
-					TestSecondaryComponent,
-					TestTertiaryComponent,
-					TestDefaultComponent,
-					TestIllegalComponent,
-					TestDynamicComponent,
-					TestLinkComponent,
-					TestErrorComponent,
-					ObButtonDirective
-				],
-				imports: [MatButtonModule]
-			});
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [
+				TestPrimaryComponent,
+				TestSecondaryComponent,
+				TestTertiaryComponent,
+				TestDefaultComponent,
+				TestIllegalComponent,
+				TestDynamicComponent,
+				TestLinkComponent,
+				TestErrorComponent,
+				ObButtonDirective
+			],
+			imports: [MatButtonModule]
+		});
+	}));
 
 	describe('primary button', () => {
 		beforeEach(() => {

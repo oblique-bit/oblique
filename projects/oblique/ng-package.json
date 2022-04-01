@@ -4,7 +4,14 @@
   "lib": {
     "entryFile": "src/public_api.ts"
   },
-  "assets": ["styles/css/*.css"],
+  "assets": [
+    "styles/css/*.css",
+    "schematics/collection.json",
+    "schematics/migration.json",
+    "schematics/package.json",
+    "schematics/index/**/*.json",
+    "schematics/index/ng-add/templates/*"
+  ],
   "allowedNonPeerDependencies": [
     "@angular-eslint/schematics",
     "@schematics/angular",

@@ -26,6 +26,12 @@
 
 		.ob-breadcrumb-separator {
 			margin: auto variables.$ob-spacing-xs;
+
+			// this emulate the ob-icon-text class that cannot be used in this feature
+			&::ng-deep .mat-icon {
+				position: relative;
+				top: 0.15em; // empiric value
+			}
 		}
 	}
 }

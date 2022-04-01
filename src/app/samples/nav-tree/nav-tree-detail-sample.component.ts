@@ -9,7 +9,7 @@ import {merge, takeUntil} from 'rxjs/operators';
 })
 export class NavTreeDetailSampleComponent implements OnInit, OnDestroy {
 	routing: string;
-	private readonly unsubscribe = new Subject();
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(private readonly route: ActivatedRoute, private readonly router: Router) {}
 

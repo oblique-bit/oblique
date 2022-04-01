@@ -25,29 +25,33 @@ describe('MasterLayoutNavigationComponent', () => {
 	let component: ObMasterLayoutNavigationComponent;
 	let fixture: ComponentFixture<ObMasterLayoutNavigationComponent>;
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [ObMasterLayoutNavigationComponent, ObMockTranslatePipe, DummyFullPathComponent, DummyPrefixPathComponent, DummyDefaultPathComponent],
-				imports: [
-					RouterTestingModule.withRoutes([
-						{path: 'defaultPathMatch', component: DummyDefaultPathComponent},
-						{path: 'prefix/1/users', component: DummyPrefixPathComponent},
-						{path: 'prefix/:id/users', component: DummyPrefixPathComponent},
-						{path: 'full/2/users', component: DummyFullPathComponent},
-						{path: 'full/:id', component: DummyFullPathComponent},
-						{path: '**', redirectTo: 'defaultPathMatch'}
-					])
-				],
-				schemas: [NO_ERRORS_SCHEMA],
-				providers: [
-					{provide: TranslateService, useClass: ObMockTranslateService},
-					{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService},
-					{provide: WINDOW, useValue: window}
-				]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [
+				ObMasterLayoutNavigationComponent,
+				ObMockTranslatePipe,
+				DummyFullPathComponent,
+				DummyPrefixPathComponent,
+				DummyDefaultPathComponent
+			],
+			imports: [
+				RouterTestingModule.withRoutes([
+					{path: 'defaultPathMatch', component: DummyDefaultPathComponent},
+					{path: 'prefix/1/users', component: DummyPrefixPathComponent},
+					{path: 'prefix/:id/users', component: DummyPrefixPathComponent},
+					{path: 'full/2/users', component: DummyFullPathComponent},
+					{path: 'full/:id', component: DummyFullPathComponent},
+					{path: '**', redirectTo: 'defaultPathMatch'}
+				])
+			],
+			schemas: [NO_ERRORS_SCHEMA],
+			providers: [
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService},
+				{provide: WINDOW, useValue: window}
+			]
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObMasterLayoutNavigationComponent);

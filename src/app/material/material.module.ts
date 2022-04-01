@@ -28,7 +28,14 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {ObButtonModule, ObColumnLayoutModule, ObIconModule, ObInputClearModule, ObSelectableModule} from '@oblique/oblique';
+import {
+	ObButtonModule,
+	ObColumnLayoutModule,
+	ObErrorMessagesModule,
+	ObIconModule,
+	ObInputClearModule,
+	ObSelectableModule
+} from '@oblique/oblique';
 import {ButtonComponent} from './button/button.component';
 import {CardComponent} from './card/card.component';
 import {ChipsComponent} from './chips/chips.component';
@@ -47,6 +54,7 @@ import {IconSampleComponent} from './icon/icon.sample.component';
 import {MandatorySampleComponent} from './mandatory/mandatory.sample.component';
 import {SharedModule} from '../common/shared.module';
 import {FormComponent} from './form/form.component';
+import {TableEditComponent} from './table/table-edit.component';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: BadgeComponent},
@@ -85,6 +93,7 @@ const appRoutes: Routes = [
 		StepperVerticalComponent,
 		TabsComponent,
 		TableComponent,
+		TableEditComponent,
 		TooltipComponent,
 		FormComponent
 	],
@@ -94,6 +103,7 @@ const appRoutes: Routes = [
 		ObColumnLayoutModule,
 		ObInputClearModule,
 		ObIconModule,
+		ObErrorMessagesModule,
 		ReactiveFormsModule,
 		ObSelectableModule,
 		FormsModule,
