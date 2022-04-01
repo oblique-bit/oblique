@@ -6,12 +6,10 @@ describe('ObOffCanvasToggleDirective', () => {
 	let directive: ObOffCanvasToggleDirective;
 	let service: ObOffCanvasService;
 
-	beforeEach(
-		waitForAsync(() => {
-			service = {open: false} as ObOffCanvasService;
-			directive = new ObOffCanvasToggleDirective(service, window);
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		service = {open: false} as ObOffCanvasService;
+		directive = new ObOffCanvasToggleDirective(service, window);
+	}));
 
 	it('should create an instance', () => {
 		expect(directive).toBeTruthy();

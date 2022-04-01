@@ -5,16 +5,14 @@ import {ObliqueTestingModule} from '@oblique/oblique';
 import {AppComponent} from './app.component';
 
 describe('AppComponent', () => {
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [AppComponent],
-				imports: [RouterTestingModule, ObliqueTestingModule],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA]
-			});
-			TestBed.compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [AppComponent],
+			imports: [RouterTestingModule, ObliqueTestingModule],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
+		});
+		TestBed.compileComponents();
+	}));
 
 	it('should create the app', () => {
 		const fixture = TestBed.createComponent(AppComponent);

@@ -32,28 +32,23 @@ describe('NumberFormatDirective', () => {
 		element = fixture.debugElement.query(By.directive(ObNumberFormatDirective));
 	}
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				imports: [FormsModule],
-				declarations: [TestDefaultComponent, TestNonPersistentComponent, ObNumberFormatDirective]
-			});
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			imports: [FormsModule],
+			declarations: [TestDefaultComponent, TestNonPersistentComponent, ObNumberFormatDirective]
+		});
+	}));
 
 	describe('with default settings', () => {
 		beforeEach(() => {
 			createFixture(TestDefaultComponent);
 		});
-		it(
-			'should have both model and display value rounded to 2 digits',
-			waitForAsync(() => {
-				fixture.whenStable().then(() => {
-					expect(testComponent.number).toEqual(5.24);
-					expect(element.nativeElement.value).toEqual('5.24');
-				});
-			})
-		);
+		it('should have both model and display value rounded to 2 digits', waitForAsync(() => {
+			fixture.whenStable().then(() => {
+				expect(testComponent.number).toEqual(5.24);
+				expect(element.nativeElement.value).toEqual('5.24');
+			});
+		}));
 	});
 
 	describe('with non persistent flag', () => {
@@ -61,25 +56,19 @@ describe('NumberFormatDirective', () => {
 			createFixture(TestNonPersistentComponent);
 		});
 
-		it(
-			'should have rounded model value and full display value',
-			waitForAsync(() => {
-				fixture.whenStable().then(() => {
-					expect(testComponent.number).toEqual(5.235689);
-					expect(element.nativeElement.value).toEqual('5.236');
-				});
-			})
-		);
+		it('should have rounded model value and full display value', waitForAsync(() => {
+			fixture.whenStable().then(() => {
+				expect(testComponent.number).toEqual(5.235689);
+				expect(element.nativeElement.value).toEqual('5.236');
+			});
+		}));
 
-		it(
-			'should display full value on focus',
-			waitForAsync(() => {
-				fixture.whenStable().then(() => {
-					element.nativeElement.focus();
-					expect(testComponent.number).toEqual(5.235689);
-					expect(element.nativeElement.value).toEqual('5.235689');
-				});
-			})
-		);
+		it('should display full value on focus', waitForAsync(() => {
+			fixture.whenStable().then(() => {
+				element.nativeElement.focus();
+				expect(testComponent.number).toEqual(5.235689);
+				expect(element.nativeElement.value).toEqual('5.235689');
+			});
+		}));
 	});
 });

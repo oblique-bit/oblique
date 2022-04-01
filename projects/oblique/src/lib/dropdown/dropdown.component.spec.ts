@@ -8,14 +8,12 @@ describe('DropdownComponent', () => {
 	let component: ObDropdownComponent;
 	let fixture: ComponentFixture<ObDropdownComponent>;
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [ObDropdownComponent],
-				providers: [{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService}]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [ObDropdownComponent],
+			providers: [{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService}]
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObDropdownComponent);

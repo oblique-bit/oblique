@@ -29,23 +29,21 @@ describe('ObMasterLayoutHeaderComponent', () => {
 		layout: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isMenuOpened: false}
 	};
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				imports: [RouterTestingModule],
-				declarations: [ObMasterLayoutHeaderComponent, ObMockTranslatePipe],
-				providers: [
-					{provide: TranslateService, useClass: ObMockTranslateService},
-					{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
-					{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
-					{provide: ObScrollingEvents, useClass: ObMockScrollingEvents},
-					{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService},
-					{provide: WINDOW, useValue: window}
-				],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			imports: [RouterTestingModule],
+			declarations: [ObMasterLayoutHeaderComponent, ObMockTranslatePipe],
+			providers: [
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
+				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
+				{provide: ObScrollingEvents, useClass: ObMockScrollingEvents},
+				{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService},
+				{provide: WINDOW, useValue: window}
+			],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObMasterLayoutHeaderComponent);

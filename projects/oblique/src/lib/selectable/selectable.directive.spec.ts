@@ -36,13 +36,11 @@ describe('SelectableDirective', () => {
 	let element: DebugElement;
 
 	describe('without obSelectableGroup', () => {
-		beforeEach(
-			waitForAsync(() => {
-				TestBed.configureTestingModule({
-					declarations: [FaultyTestComponent, ObSelectableDirective]
-				});
-			})
-		);
+		beforeEach(waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [FaultyTestComponent, ObSelectableDirective]
+			});
+		}));
 
 		it('should throw an error', () => {
 			expect(() => TestBed.createComponent(FaultyTestComponent)).toThrowError();
@@ -50,14 +48,12 @@ describe('SelectableDirective', () => {
 	});
 
 	describe('with obSelectableGroup', () => {
-		beforeEach(
-			waitForAsync(() => {
-				TestBed.configureTestingModule({
-					declarations: [TestComponent, ObSelectableDirective, ObMockSelectableGroupDirective],
-					providers: [{provide: ObSelectableGroupDirective, useClass: ObMockSelectableGroupDirective}]
-				});
-			})
-		);
+		beforeEach(waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [TestComponent, ObSelectableDirective, ObMockSelectableGroupDirective],
+				providers: [{provide: ObSelectableGroupDirective, useClass: ObMockSelectableGroupDirective}]
+			});
+		}));
 
 		beforeEach(() => {
 			fixture = TestBed.createComponent(TestComponent);

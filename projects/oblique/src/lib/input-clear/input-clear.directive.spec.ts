@@ -84,15 +84,13 @@ describe('InputClear', () => {
 		let input: HTMLInputElement;
 		let directive: ObInputClearDirective;
 
-		beforeEach(
-			waitForAsync(() => {
-				TestBed.configureTestingModule({
-					declarations: [ReactiveFormTestComponent, ObMockTranslatePipe, ObInputClearDirective],
-					imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, NoopAnimationsModule],
-					providers: [{provide: WINDOW, useValue: window}]
-				}).compileComponents();
-			})
-		);
+		beforeEach(waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [ReactiveFormTestComponent, ObMockTranslatePipe, ObInputClearDirective],
+				imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, NoopAnimationsModule],
+				providers: [{provide: WINDOW, useValue: window}]
+			}).compileComponents();
+		}));
 
 		beforeEach(() => {
 			fixture = TestBed.createComponent(ReactiveFormTestComponent);

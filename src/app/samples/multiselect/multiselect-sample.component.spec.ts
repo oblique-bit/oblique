@@ -8,14 +8,12 @@ describe('ObMultiselectSampleComponent', () => {
 	let component: MultiselectSampleComponent;
 	let fixture: ComponentFixture<MultiselectSampleComponent>;
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [MultiselectSampleComponent],
-				imports: [FormsModule, TranslateModule.forRoot(), ObMultiselectModule]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [MultiselectSampleComponent],
+			imports: [FormsModule, TranslateModule.forRoot(), ObMultiselectModule]
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(MultiselectSampleComponent);

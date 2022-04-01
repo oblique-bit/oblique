@@ -17,20 +17,18 @@ describe('ObMasterLayoutFooterComponent', () => {
 		footer: {configEvents$: new Subject<ObIMasterLayoutEvent>()}
 	};
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				imports: [RouterTestingModule],
-				declarations: [ObMasterLayoutFooterComponent, ObMockTranslatePipe],
-				providers: [
-					{provide: TranslateService, useClass: ObMockTranslateService},
-					{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
-					{provide: ObMasterLayoutConfig, useValue: {homePageRoute: 'home', footer: {hasLogoOnScroll: false, isCustom: false}}},
-					{provide: WINDOW, useValue: window}
-				]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			imports: [RouterTestingModule],
+			declarations: [ObMasterLayoutFooterComponent, ObMockTranslatePipe],
+			providers: [
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
+				{provide: ObMasterLayoutConfig, useValue: {homePageRoute: 'home', footer: {hasLogoOnScroll: false, isCustom: false}}},
+				{provide: WINDOW, useValue: window}
+			]
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObMasterLayoutFooterComponent);

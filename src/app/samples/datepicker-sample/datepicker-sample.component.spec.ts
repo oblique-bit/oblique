@@ -10,23 +10,21 @@ describe('ObDatepickerSampleComponent', () => {
 	let component: DatepickerSampleComponent;
 	let fixture: ComponentFixture<DatepickerSampleComponent>;
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [DatepickerSampleComponent],
-				imports: [ObDatepickerModule, NgbDatepickerModule, NgbTooltipModule, FormsModule, ObliqueTestingModule],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA]
-			})
-				.overrideModule(ObDatepickerModule, {
-					// We don't need this directive in this test
-					remove: {
-						declarations: [ObDatepickerPlaceholderDirective],
-						exports: [ObDatepickerPlaceholderDirective]
-					}
-				})
-				.compileComponents();
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [DatepickerSampleComponent],
+			imports: [ObDatepickerModule, NgbDatepickerModule, NgbTooltipModule, FormsModule, ObliqueTestingModule],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		})
-	);
+			.overrideModule(ObDatepickerModule, {
+				// We don't need this directive in this test
+				remove: {
+					declarations: [ObDatepickerPlaceholderDirective],
+					exports: [ObDatepickerPlaceholderDirective]
+				}
+			})
+			.compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(DatepickerSampleComponent);

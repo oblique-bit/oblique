@@ -26,23 +26,21 @@ describe('DatepickerPlaceholderDirective', () => {
 		element = fixture.debugElement.query(By.directive(ObDatepickerPlaceholderDirective));
 	}
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [TestComponent, ObDatepickerPlaceholderDirective],
-				imports: [],
-				providers: [
-					{
-						provide: TranslateService,
-						useValue: {
-							currentLang: 'en',
-							onLangChange: new EventEmitter<LangChangeEvent>()
-						}
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [TestComponent, ObDatepickerPlaceholderDirective],
+			imports: [],
+			providers: [
+				{
+					provide: TranslateService,
+					useValue: {
+						currentLang: 'en',
+						onLangChange: new EventEmitter<LangChangeEvent>()
 					}
-				]
-			});
-		})
-	);
+				}
+			]
+		});
+	}));
 
 	describe('without a custom placeholder', () => {
 		beforeEach(() => {
@@ -67,12 +65,10 @@ describe('DatepickerPlaceholderDirective', () => {
 	});
 
 	describe('with a custom placeholder', () => {
-		beforeEach(
-			waitForAsync(() => {
-				TestBed.overrideTemplate(TestComponent, '<input ngbDatepicker placeholder="custom"/>');
-				createFixture();
-			})
-		);
+		beforeEach(waitForAsync(() => {
+			TestBed.overrideTemplate(TestComponent, '<input ngbDatepicker placeholder="custom"/>');
+			createFixture();
+		}));
 
 		it("shouldn't change the placeholder", () => {
 			expect(element.properties.placeholder).toBe('custom');

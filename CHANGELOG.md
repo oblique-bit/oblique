@@ -1,3 +1,42 @@
+# [8.1.0](https://github.com/oblique-bit/oblique/compare/8.0.1...8.1.0) (2022-04-01)
+
+## Bug Fixes
+
+- **bootstrap:** ensure horizontal form are indeed horizontal with bootstrap theme ([61277ed](https://github.com/oblique-bit/oblique/commit/61277ed937f2bcceca3f2561386c409e9f9cbe33))
+- **breadcrumb:** the separator shows an icon even without Oblique icons ([d4873a8](https://github.com/oblique-bit/oblique/commit/d4873a80bdbb5660ab07768af676a42208b61eee))
+- **column-layout:** center the icons within toggles ([d7ff67e](https://github.com/oblique-bit/oblique/commit/d7ff67e412f53af52dce25c2657a50df3f221c1f))
+- **column-layout:** ensure the column layout uses the full height in a fixed layout context ([0c862a9](https://github.com/oblique-bit/oblique/commit/0c862a994a7e9ea382335143986d814cd5ec2a82))
+- **file-upload:** show icons even without Oblique icons ([0cb269e](https://github.com/oblique-bit/oblique/commit/0cb269ea76b0199f7215276d0ef141eb9fec4ebc))
+- **input-clear:** icon is vertically centered for bootstrap theme ([e798da8](https://github.com/oblique-bit/oblique/commit/e798da8aa4e1497171d80e3b338cf41ccceedfbf))
+- **master-layout:** allow closing of main navigation item with the escape key ([49a7ec5](https://github.com/oblique-bit/oblique/commit/49a7ec5c2bfc059288cb17b9a398afc5c294e012))
+- **master-layout:** allow expanding of main navigation item when another one is already opened ([174963b](https://github.com/oblique-bit/oblique/commit/174963b45467cb5c0f84734b1ad5033f924764b2))
+- **master-layout:** ensure the jump links numbering is refreshed on navigation change ([bc14b76](https://github.com/oblique-bit/oblique/commit/bc14b76969f3086898f48a55f4da8c157beeaa02))
+- **master-layout:** ensure the title's height matches the one of the coat of arms in collapse mode ([d7ff7ad](https://github.com/oblique-bit/oblique/commit/d7ff7ad5c124b0b30234ec048cf96c92fb67febc))
+- **master-layout:** show an icon on the jumplinks without Oblique icons ([809f3f0](https://github.com/oblique-bit/oblique/commit/809f3f0e2f852c9316a56e77944f449cb91f9ce1))
+- **master-layout:** the `jumpLink` input accepts `ObIJumpLink` ([f79704b](https://github.com/oblique-bit/oblique/commit/f79704b9283077daaa3a1e64ea7a7cb67724c145))
+- **master-layout:** toggle `aria-expanded` when a widget is closed with the escape key ([a2c753d](https://github.com/oblique-bit/oblique/commit/a2c753d652f4a0b02eddb71bbca07b29b93f6bdc))
+- **material:** ensure correct positioning of form's hint and error messages ([99b9508](https://github.com/oblique-bit/oblique/commit/99b9508cf8bdefa358563869ea49d6287be27e46))
+- **material:** ensure the ripple effect don't hide the icon with `mat-icon-button` ([ccc2a79](https://github.com/oblique-bit/oblique/commit/ccc2a79b29287c69f0bda822e3f824c07b070887))
+- **material:** ensures Oblique style for `mat-icon-button` only applies to Oblique buttons ([8222cdf](https://github.com/oblique-bit/oblique/commit/8222cdfb168a4afec70fd749c8d1bcc0fab81106))
+- **material:** remove the hover effect on disabled buttons ([11a84c9](https://github.com/oblique-bit/oblique/commit/11a84c99e215ea76de58629e44ab214e25329607))
+- **material:** use `$ob-font-size-biggest` for icon size within buttons ([bd6491d](https://github.com/oblique-bit/oblique/commit/bd6491d3bbce8780e591a933a905a7abcc44b83b))
+- **styles:** remove unwanted styles from `oblique-utilities.scss` ([a95ad81](https://github.com/oblique-bit/oblique/commit/a95ad81467c1f50239c6e35b90777024c8e81db5))
+- **telemetry:** ensure the telemetry marker is kept in production mode ([e5566c7](https://github.com/oblique-bit/oblique/commit/e5566c7bec0d7ae0adf428446fcee380b7cb4335))
+- **toolchain:** ensure `oblique-component.scss` is correctly generated on Windows ([0cf8889](https://github.com/oblique-bit/oblique/commit/0cf8889f1564b7a7590a08a272c8e8056d8e0679))
+- **toolchain:** ensure supported browsers are correctly specified ([de36f2f](https://github.com/oblique-bit/oblique/commit/de36f2f0c61d7cd716ab4e5fd4c60f58a421c45a))
+- **toolchain:** ensure the presence of a trailing empty line in `oblique-component.scss` ([9a1ac2e](https://github.com/oblique-bit/oblique/commit/9a1ac2e63d3a974fa89ac430389ffad35acafce8))
+- **toolchain:** fix bad formating on DEPENDENCIES.md ([04bcd37](https://github.com/oblique-bit/oblique/commit/04bcd37160115a1339cd15edbecbb6839a531a03))
+
+## Features
+
+- **alert:** add an `Input` and an `InjectionToken` to configure the `role` attribute ([82df4a0](https://github.com/oblique-bit/oblique/commit/82df4a0a87d01a03a907d89e95ff8c19946b4b2c))
+- **authentication:** add feature ([9917836](https://github.com/oblique-bit/oblique/commit/9917836505cd57bbb2998d854794e7174fbf26d3))
+- **global-events:** add beforeUnload ([f19422d](https://github.com/oblique-bit/oblique/commit/f19422d8c338d988310a7e96665f4313165f55a2))
+- **multi-translate-loader:** provide a useful error message in case of missing translations ([b314012](https://github.com/oblique-bit/oblique/commit/b31401253f5953281b968924bdcdb0f18d641e6f))
+- **popover:** add an option to close only when clicking on the toggle element ([175cbe7](https://github.com/oblique-bit/oblique/commit/175cbe77c6b00483a3bfe70c87344ab5a3fa81c0))
+- **popover:** add an option to open on mouseover and close on mouseleave ([08e86ea](https://github.com/oblique-bit/oblique/commit/08e86eae9054aba873c1b36e4b3dc9c9d5d0cae5))
+- **telemetry:** read project's data from an injection token instead of from `package.json` ([a33653b](https://github.com/oblique-bit/oblique/commit/a33653b1c3bb13a5d2025208ed51e77dc9081d41))
+
 # [8.0.1](https://github.com/oblique-bit/oblique/compare/8.0.0...8.0.1) (2022-02-11)
 
 ## Bug Fixes

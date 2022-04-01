@@ -35,32 +35,28 @@ describe('ErrorMessagesComponent', () => {
 		};
 	});
 
-	beforeEach(
-		waitForAsync(() => {
-			errorMessagesServiceMock = {
-				createMessages: jest.fn().mockImplementation(() => [{key: 'i18n.validation.bar', params: undefined}])
-			};
+	beforeEach(waitForAsync(() => {
+		errorMessagesServiceMock = {
+			createMessages: jest.fn().mockImplementation(() => [{key: 'i18n.validation.bar', params: undefined}])
+		};
 
-			TestBed.configureTestingModule({
-				declarations: [ObErrorMessagesComponent, TestComponent],
-				imports: [FormsModule, ObMockTranslateParamsModule],
-				providers: [
-					{provide: ObErrorMessagesService, useValue: errorMessagesServiceMock},
-					{provide: ObFormControlStateDirective, useValue: formControlStateDirectiveMock},
-					{provide: WINDOW, useValue: window}
-				]
-			}).compileComponents();
-		})
-	);
+		TestBed.configureTestingModule({
+			declarations: [ObErrorMessagesComponent, TestComponent],
+			imports: [FormsModule, ObMockTranslateParamsModule],
+			providers: [
+				{provide: ObErrorMessagesService, useValue: errorMessagesServiceMock},
+				{provide: ObFormControlStateDirective, useValue: formControlStateDirectiveMock},
+				{provide: WINDOW, useValue: window}
+			]
+		}).compileComponents();
+	}));
 
-	beforeEach(
-		waitForAsync(() => {
-			fixture = TestBed.createComponent(TestComponent);
-			component = fixture.componentInstance;
-			fixture.detectChanges();
-			submitButton = fixture.debugElement.query(By.css('#submit')).nativeElement;
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		fixture = TestBed.createComponent(TestComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+		submitButton = fixture.debugElement.query(By.css('#submit')).nativeElement;
+	}));
 
 	it('should create', () => {
 		expect(component).toBeDefined();
