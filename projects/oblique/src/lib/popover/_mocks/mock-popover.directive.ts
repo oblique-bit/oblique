@@ -1,5 +1,6 @@
 import {Directive, Input, TemplateRef} from '@angular/core';
 import {Options, Placement} from '@popperjs/core';
+import {ObEToggleType} from '../popover.model';
 
 @Directive({
 	selector: '[obPopover]',
@@ -11,7 +12,7 @@ export class ObMockPopoverDirective {
 	@Input() placement: Placement = 'auto';
 	@Input() popperOptions: Options = {} as Options;
 	@Input() id: string;
-	@Input() toggleHandle: 'click' | 'hover';
+	@Input() toggleHandle: ObEToggleType;
 	idContent: string;
 
 	toggle(): void {}
