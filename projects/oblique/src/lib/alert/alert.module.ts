@@ -5,7 +5,7 @@ import {obliqueProviders} from '../utilities';
 import {ObAlertComponent} from './alert.component';
 import {ObIconModule} from '../icon/icon.module';
 
-export {ObAlertComponent} from './alert.component';
+export {ObAlertComponent, OBLIQUE_HAS_ROLE_ALERT} from './alert.component';
 export {ObIAlertType} from './alert.model';
 
 @NgModule({
