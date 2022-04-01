@@ -4,7 +4,7 @@ import * as colors from 'ansi-colors';
 
 export const packageJsonConfigPath = './package.json';
 export const ObliquePackage = '@oblique/oblique';
-const glob = require('glob');
+const glob = require('glob'); /* eslint-disable-line @typescript-eslint/no-var-requires */
 
 const angularJsonConfigPath = './angular.json/';
 export let isSuccessful = true;

@@ -12,6 +12,7 @@ export class ApiComponent implements OnInit {
 	api: ObIAPI[];
 
 	ngOnInit(): void {
+		// eslint-disable-next-line @typescript-eslint/no-var-requires
 		this.api = require(`../../../projects/oblique/src/lib/${this.directory || this.component}/${this.component}.api.json`).api;
 	}
 }

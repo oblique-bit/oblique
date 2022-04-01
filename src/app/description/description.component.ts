@@ -14,6 +14,7 @@ export class DescriptionComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.description = this.sanitizer.bypassSecurityTrustHtml(
+			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			require(`!!raw-loader!../../../projects/oblique/src/lib/${this.directory || this.component}/${this.component}.description.html`)
 				.default
 		);
