@@ -2,7 +2,7 @@ import {Component, NO_ERRORS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {WINDOW} from '../utilities';
-import {OBLIQUE_POPOVER_TOGGLE_HANDLE, ObPopoverDirective} from './popover.directive';
+import {OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE, OBLIQUE_POPOVER_TOGGLE_HANDLE, ObPopoverDirective} from './popover.directive';
 import {ObEToggleType} from './popover.model';
 
 @Component({
@@ -29,7 +29,7 @@ describe('Popover', () => {
 		});
 	});
 
-	describe('without OBLIQUE_POPOVER_TOGGLE_HANDLE token', () => {
+	describe('without injection tokens', () => {
 		beforeEach(() => {
 			globalSetup();
 		});
@@ -285,36 +285,104 @@ describe('Popover', () => {
 		});
 
 		describe('events', () => {
-			beforeEach(() => {
-				jest.spyOn(directive, 'close');
-				jest.useFakeTimers();
-				directive.open();
-				jest.runOnlyPendingTimers();
-				popover = document.querySelector('.ob-popover-content');
-			});
-
 			afterEach(() => {
 				jest.useRealTimers();
 			});
 
-			it('should not close the popover upon click on the popover', () => {
-				popover.click();
-				expect(directive.close).not.toHaveBeenCalled();
+			describe('with closeOnlyOnToggle input not set', () => {
+				beforeEach(() => {
+					jest.spyOn(directive, 'close');
+					jest.useFakeTimers();
+					directive.open();
+					jest.runOnlyPendingTimers();
+					popover = document.querySelector('.ob-popover-content');
+				});
+
+				it('should not close the popover upon click on the popover', () => {
+					popover.click();
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+
+				it('should close the popover upon click on body', () => {
+					document.querySelector('body').click();
+					expect(directive.close).toHaveBeenCalled();
+				});
+
+				it('should close the popover on Escape hit', () => {
+					document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
+					expect(directive.close).toHaveBeenCalled();
+				});
+
+				it('should not close the popover on Enter hit', () => {
+					document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter'}));
+					expect(directive.close).not.toHaveBeenCalled();
+				});
 			});
 
-			it('should close the popover upon click on body', () => {
-				document.querySelector('body').click();
-				expect(directive.close).toHaveBeenCalled();
+			describe('with closeOnlyOnToggle input set to false', () => {
+				beforeEach(() => {
+					directive.closeOnlyOnToggle = false;
+					directive.ngOnChanges();
+
+					jest.spyOn(directive, 'close');
+					jest.useFakeTimers();
+					directive.open();
+					jest.runOnlyPendingTimers();
+					popover = document.querySelector('.ob-popover-content');
+				});
+
+				it('should not close the popover upon click on the popover', () => {
+					popover.click();
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+
+				it('should close the popover upon click on body', () => {
+					document.querySelector('body').click();
+					expect(directive.close).toHaveBeenCalled();
+				});
+
+				it('should close the popover on Escape hit', () => {
+					document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
+					expect(directive.close).toHaveBeenCalled();
+				});
+
+				it('should not close the popover on Enter hit', () => {
+					document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter'}));
+					expect(directive.close).not.toHaveBeenCalled();
+				});
 			});
 
-			it('should close the popover on Escape hit', () => {
-				document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
-				expect(directive.close).toHaveBeenCalled();
-			});
+			describe('with closeOnlyOnToggle input set to true', () => {
+				beforeEach(() => {
+					directive.closeOnlyOnToggle = true;
+					directive.ngOnChanges();
 
-			it('should not close the popover on Enter hit', () => {
-				document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter'}));
-				expect(directive.close).not.toHaveBeenCalled();
+					jest.spyOn(directive, 'close');
+					jest.useFakeTimers();
+					directive.open();
+					jest.runOnlyPendingTimers();
+					popover = document.querySelector('.ob-popover-content');
+				});
+
+				it('should not close the popover upon click on the popover', () => {
+					popover.click();
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+
+				it('should not close the popover upon click on body', () => {
+					document.querySelector('body').click();
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+
+				it('should not close the popover on Escape hit', () => {
+					document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+
+				it('should not close the popover on Enter hit', () => {
+					document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter'}));
+					expect(directive.close).not.toHaveBeenCalled();
+				});
 			});
 		});
 
@@ -716,6 +784,258 @@ describe('Popover', () => {
 
 					popover = document.querySelector('.ob-popover-content');
 					expect(popover).toBeNull();
+				});
+			});
+		});
+	});
+
+	describe('with OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE set to false', () => {
+		beforeEach(() => {
+			TestBed.overrideProvider(OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE, {useValue: false});
+
+			globalSetup();
+		});
+
+		describe('with closeOnlyOnToggle input not set', () => {
+			describe('events', () => {
+				beforeEach(() => {
+					jest.spyOn(directive, 'close');
+					jest.useFakeTimers();
+					directive.open();
+					jest.runOnlyPendingTimers();
+					popover = document.querySelector('.ob-popover-content');
+				});
+
+				afterEach(() => {
+					jest.useRealTimers();
+				});
+
+				it('should not close the popover upon click on the popover', () => {
+					popover.click();
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+
+				it('should close the popover upon click on body', () => {
+					document.querySelector('body').click();
+					expect(directive.close).toHaveBeenCalled();
+				});
+
+				it('should close the popover on Escape hit', () => {
+					document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
+					expect(directive.close).toHaveBeenCalled();
+				});
+
+				it('should not close the popover on Enter hit', () => {
+					document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter'}));
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+			});
+		});
+
+		describe('with closeOnlyOnToggle input set to false', () => {
+			beforeEach(() => {
+				directive.closeOnlyOnToggle = false;
+				directive.ngOnChanges();
+			});
+
+			describe('events', () => {
+				beforeEach(() => {
+					jest.spyOn(directive, 'close');
+					jest.useFakeTimers();
+					directive.open();
+					jest.runOnlyPendingTimers();
+					popover = document.querySelector('.ob-popover-content');
+				});
+
+				afterEach(() => {
+					jest.useRealTimers();
+				});
+
+				it('should not close the popover upon click on the popover', () => {
+					popover.click();
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+
+				it('should close the popover upon click on body', () => {
+					document.querySelector('body').click();
+					expect(directive.close).toHaveBeenCalled();
+				});
+
+				it('should close the popover on Escape hit', () => {
+					document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
+					expect(directive.close).toHaveBeenCalled();
+				});
+
+				it('should not close the popover on Enter hit', () => {
+					document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter'}));
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+			});
+		});
+
+		describe('with closeOnlyOnToggle input set to true', () => {
+			beforeEach(() => {
+				directive.closeOnlyOnToggle = true;
+				directive.ngOnChanges();
+			});
+
+			describe('events', () => {
+				beforeEach(() => {
+					jest.spyOn(directive, 'close');
+					jest.useFakeTimers();
+					directive.open();
+					jest.runOnlyPendingTimers();
+					popover = document.querySelector('.ob-popover-content');
+				});
+
+				afterEach(() => {
+					jest.useRealTimers();
+				});
+
+				it('should not close the popover upon click on the popover', () => {
+					popover.click();
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+
+				it('should not close the popover upon click on body', () => {
+					document.querySelector('body').click();
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+
+				it('should not close the popover on Escape hit', () => {
+					document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+
+				it('should not close the popover on Enter hit', () => {
+					document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter'}));
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+			});
+		});
+	});
+
+	describe('with OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE set to true', () => {
+		beforeEach(() => {
+			TestBed.overrideProvider(OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE, {useValue: true});
+
+			globalSetup();
+		});
+
+		describe('with closeOnlyOnToggle input not set', () => {
+			describe('events', () => {
+				beforeEach(() => {
+					jest.spyOn(directive, 'close');
+					jest.useFakeTimers();
+					directive.open();
+					jest.runOnlyPendingTimers();
+					popover = document.querySelector('.ob-popover-content');
+				});
+
+				afterEach(() => {
+					jest.useRealTimers();
+				});
+
+				it('should not close the popover upon click on the popover', () => {
+					popover.click();
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+
+				it('should not close the popover upon click on body', () => {
+					document.querySelector('body').click();
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+
+				it('should not close the popover on Escape hit', () => {
+					document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+
+				it('should not close the popover on Enter hit', () => {
+					document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter'}));
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+			});
+		});
+
+		describe('with closeOnlyOnToggle input set to false', () => {
+			beforeEach(() => {
+				directive.closeOnlyOnToggle = false;
+				directive.ngOnChanges();
+			});
+
+			describe('events', () => {
+				beforeEach(() => {
+					jest.spyOn(directive, 'close');
+					jest.useFakeTimers();
+					directive.open();
+					jest.runOnlyPendingTimers();
+					popover = document.querySelector('.ob-popover-content');
+				});
+
+				afterEach(() => {
+					jest.useRealTimers();
+				});
+
+				it('should not close the popover upon click on the popover', () => {
+					popover.click();
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+
+				it('should close the popover upon click on body', () => {
+					document.querySelector('body').click();
+					expect(directive.close).toHaveBeenCalled();
+				});
+
+				it('should close the popover on Escape hit', () => {
+					document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
+					expect(directive.close).toHaveBeenCalled();
+				});
+
+				it('should not close the popover on Enter hit', () => {
+					document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter'}));
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+			});
+		});
+
+		describe('with closeOnlyOnToggle input set to true', () => {
+			beforeEach(() => {
+				directive.closeOnlyOnToggle = true;
+				directive.ngOnChanges();
+			});
+
+			describe('events', () => {
+				beforeEach(() => {
+					jest.spyOn(directive, 'close');
+					jest.useFakeTimers();
+					directive.open();
+					jest.runOnlyPendingTimers();
+					popover = document.querySelector('.ob-popover-content');
+				});
+
+				afterEach(() => {
+					jest.useRealTimers();
+				});
+
+				it('should not close the popover upon click on the popover', () => {
+					popover.click();
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+
+				it('should not close the popover upon click on body', () => {
+					document.querySelector('body').click();
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+
+				it('should not close the popover on Escape hit', () => {
+					document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}));
+					expect(directive.close).not.toHaveBeenCalled();
+				});
+
+				it('should not close the popover on Enter hit', () => {
+					document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter'}));
+					expect(directive.close).not.toHaveBeenCalled();
 				});
 			});
 		});

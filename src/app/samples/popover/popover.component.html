@@ -9,6 +9,7 @@
 				[obPopover]="popover"
 				[placement]="placement"
 				[toggleHandle]="toggleHandle"
+				[closeOnlyOnToggle]="closeOnlyOnToggle"
 				id="poptest"
 				*ngIf="toggleHandle === toggleTypeClick || toggleHandle === undefined"
 			>
@@ -63,6 +64,14 @@
 				<mat-radio-button [value]="undefined">Not set</mat-radio-button>
 				<mat-radio-button [value]="toggleTypeHover">Hover</mat-radio-button>
 				<mat-radio-button [value]="toggleTypeClick">Click</mat-radio-button>
+			</mat-radio-group>
+		</fieldset>
+		<fieldset *ngIf="toggleHandle === toggleTypeClick || toggleHandle === undefined">
+			<legend>Close only on toggle</legend>
+			<mat-radio-group [(ngModel)]="this.closeOnlyOnToggle">
+				<mat-radio-button [value]="undefined">Not set</mat-radio-button>
+				<mat-radio-button [value]="true">true</mat-radio-button>
+				<mat-radio-button [value]="false">false</mat-radio-button>
 			</mat-radio-group>
 		</fieldset>
 	</ng-container>
