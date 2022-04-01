@@ -13,6 +13,7 @@ export class ObMockPopoverDirective {
 	@Input() popperOptions: Options = {} as Options;
 	@Input() id: string;
 	@Input() toggleHandle: ObEToggleType;
+	@Input() closeOnlyOnToggle: boolean;
 	idContent: string;
 
 	toggle(): void {}

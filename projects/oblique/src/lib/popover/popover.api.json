@@ -11,6 +11,13 @@
       "updated": "8.1.0",
       "inputs": [
         {
+          "name": "closeOnlyOnToggle",
+          "text": "Indicate if this <code>ObPopoverDirective</code> should be closed only when clicking on the toggle element. If not set, it will act as if it were configured with <code>false</code>.",
+          "type": "boolean",
+          "default": "undefined",
+          "since": "8.1.0"
+        },
+        {
           "name": "obPopover",
           "text": "The template to be rendered inside the popover.",
           "type": "TemplateRef",
@@ -40,6 +47,13 @@
         }
       ],
       "tokens": [
+        {
+          "name": "OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE",
+          "text": "The default value for <code>closeOnlyOnToggle</code> property that will be applied to all <code>ObPopoverDirective</code> throughout the application.",
+          "type": "boolean",
+          "default": "undefined",
+          "since": "8.1.0"
+        },
         {
           "name": "OBLIQUE_POPOVER_TOGGLE_HANDLE",
           "text": "The default value for <code>toggleHandle</code> property that will be applied to all <code>ObPopoverDirective</code> throughout the application.",
