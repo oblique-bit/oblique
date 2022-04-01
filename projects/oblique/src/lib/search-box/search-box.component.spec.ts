@@ -10,16 +10,14 @@ describe('SearchBoxComponent', () => {
 	let component: ObSearchBoxComponent;
 	let fixture: ComponentFixture<ObSearchBoxComponent>;
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [ObSearchBoxComponent, ObMockTranslatePipe],
-				imports: [RouterTestingModule],
-				schemas: [NO_ERRORS_SCHEMA],
-				providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [ObSearchBoxComponent, ObMockTranslatePipe],
+			imports: [RouterTestingModule],
+			schemas: [NO_ERRORS_SCHEMA],
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObSearchBoxComponent);

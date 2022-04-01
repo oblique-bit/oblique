@@ -24,19 +24,17 @@ describe('NotificationComponent', () => {
 	const message = 'myMessage';
 	const title = 'myTitle';
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [ObNotificationComponent, ObMockTranslatePipe, ObMockAlertComponent],
-				imports: [CommonModule, NoopAnimationsModule, RouterTestingModule],
-				providers: [
-					{provide: ObNotificationConfig, useClass: ObMockNotificationConfig},
-					{provide: ObNotificationService, useClass: ObMockNotificationService},
-					{provide: WINDOW, useValue: window}
-				]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [ObNotificationComponent, ObMockTranslatePipe, ObMockAlertComponent],
+			imports: [CommonModule, NoopAnimationsModule, RouterTestingModule],
+			providers: [
+				{provide: ObNotificationConfig, useClass: ObMockNotificationConfig},
+				{provide: ObNotificationService, useClass: ObMockNotificationService},
+				{provide: WINDOW, useValue: window}
+			]
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObNotificationComponent);

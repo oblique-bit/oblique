@@ -25,20 +25,18 @@ describe('ObExternalLink', () => {
 	const lang = new Subject<void>();
 
 	describe('With default config', () => {
-		beforeEach(
-			waitForAsync(() => {
-				TestBed.configureTestingModule({
-					declarations: [TestComponent, ObExternalLinkDirective],
-					providers: [
-						{provide: WINDOW, useValue: window},
-						{
-							provide: TranslateService,
-							useValue: {onLangChange: lang, instant: jest.fn().mockReturnValue('Opens in new tab')}
-						}
-					]
-				});
-			})
-		);
+		beforeEach(waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [TestComponent, ObExternalLinkDirective],
+				providers: [
+					{provide: WINDOW, useValue: window},
+					{
+						provide: TranslateService,
+						useValue: {onLangChange: lang, instant: jest.fn().mockReturnValue('Opens in new tab')}
+					}
+				]
+			});
+		}));
 
 		beforeEach(() => {
 			fixture = TestBed.createComponent(TestComponent);
@@ -202,21 +200,19 @@ describe('ObExternalLink', () => {
 	});
 
 	describe('with custom config', () => {
-		beforeEach(
-			waitForAsync(() => {
-				TestBed.configureTestingModule({
-					declarations: [TestComponent, ObExternalLinkDirective],
-					providers: [
-						{provide: WINDOW, useValue: window},
-						{
-							provide: TranslateService,
-							useValue: {onLangChange: lang, instant: jest.fn().mockReturnValue('Opens in new tab')}
-						},
-						{provide: EXTERNAL_LINK, useValue: {rel: 'custom rel', target: 'custom target', icon: 'left'}}
-					]
-				});
-			})
-		);
+		beforeEach(waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [TestComponent, ObExternalLinkDirective],
+				providers: [
+					{provide: WINDOW, useValue: window},
+					{
+						provide: TranslateService,
+						useValue: {onLangChange: lang, instant: jest.fn().mockReturnValue('Opens in new tab')}
+					},
+					{provide: EXTERNAL_LINK, useValue: {rel: 'custom rel', target: 'custom target', icon: 'left'}}
+				]
+			});
+		}));
 
 		beforeEach(() => {
 			fixture = TestBed.createComponent(TestComponent);
@@ -238,20 +234,18 @@ describe('ObExternalLink', () => {
 	});
 
 	describe('with internal link', () => {
-		beforeEach(
-			waitForAsync(() => {
-				TestBed.configureTestingModule({
-					declarations: [TestInternalComponent, ObExternalLinkDirective],
-					providers: [
-						{provide: WINDOW, useValue: window},
-						{
-							provide: TranslateService,
-							useValue: {onLangChange: lang, instant: jest.fn().mockReturnValue('Opens in new tab')}
-						}
-					]
-				});
-			})
-		);
+		beforeEach(waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [TestInternalComponent, ObExternalLinkDirective],
+				providers: [
+					{provide: WINDOW, useValue: window},
+					{
+						provide: TranslateService,
+						useValue: {onLangChange: lang, instant: jest.fn().mockReturnValue('Opens in new tab')}
+					}
+				]
+			});
+		}));
 
 		beforeEach(() => {
 			fixture = TestBed.createComponent(TestInternalComponent);

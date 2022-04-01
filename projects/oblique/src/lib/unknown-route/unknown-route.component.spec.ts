@@ -8,14 +8,12 @@ describe('UnknownRouteComponent', () => {
 	let component: ObUnknownRouteComponent;
 	let fixture: ComponentFixture<ObUnknownRouteComponent>;
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [ObUnknownRouteComponent, ObMockTranslatePipe],
-				imports: [RouterTestingModule]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [ObUnknownRouteComponent, ObMockTranslatePipe],
+			imports: [RouterTestingModule]
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObUnknownRouteComponent);

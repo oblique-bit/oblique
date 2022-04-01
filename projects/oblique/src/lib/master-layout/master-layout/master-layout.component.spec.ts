@@ -37,25 +37,23 @@ describe('ObMasterLayoutComponent', () => {
 		navigation: {refresh: jest.fn()}
 	};
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				imports: [RouterTestingModule],
-				declarations: [ObMasterLayoutComponent, ObMockTranslatePipe],
-				providers: [
-					{provide: TranslateService, useClass: ObMockTranslateService},
-					{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
-					{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
-					{provide: ObOffCanvasService, useClass: ObMockOffCanvasService},
-					{provide: ObScrollingEvents, useClass: ObMockScrollingEvents},
-					{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService},
-					{provide: ObUseObliqueIcons, useValue: true},
-					{provide: WINDOW, useValue: window}
-				],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			imports: [RouterTestingModule],
+			declarations: [ObMasterLayoutComponent, ObMockTranslatePipe],
+			providers: [
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
+				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
+				{provide: ObOffCanvasService, useClass: ObMockOffCanvasService},
+				{provide: ObScrollingEvents, useClass: ObMockScrollingEvents},
+				{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService},
+				{provide: ObUseObliqueIcons, useValue: true},
+				{provide: WINDOW, useValue: window}
+			],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObMasterLayoutComponent);

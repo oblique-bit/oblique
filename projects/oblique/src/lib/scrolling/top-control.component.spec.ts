@@ -12,18 +12,16 @@ describe('ObTopControlComponent', () => {
 	let topControlComponent: ObTopControlComponent;
 
 	describe('without a scrollTarget', () => {
-		beforeEach(
-			waitForAsync(() => {
-				TestBed.configureTestingModule({
-					declarations: [ObTopControlComponent, ObMockTranslatePipe],
-					schemas: [CUSTOM_ELEMENTS_SCHEMA],
-					providers: [
-						{provide: TranslateService, useClass: ObMockTranslateService},
-						{provide: WINDOW, useValue: window}
-					]
-				}).compileComponents();
-			})
-		);
+		beforeEach(waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [ObTopControlComponent, ObMockTranslatePipe],
+				schemas: [CUSTOM_ELEMENTS_SCHEMA],
+				providers: [
+					{provide: TranslateService, useClass: ObMockTranslateService},
+					{provide: WINDOW, useValue: window}
+				]
+			}).compileComponents();
+		}));
 
 		beforeEach(() => {
 			fixture = TestBed.createComponent(ObTopControlComponent);
@@ -52,18 +50,16 @@ describe('ObTopControlComponent', () => {
 	});
 
 	describe('with a scrollTarget', () => {
-		beforeEach(
-			waitForAsync(() => {
-				TestBed.configureTestingModule({
-					declarations: [ObTopControlComponent, ObMockTranslatePipe],
-					schemas: [CUSTOM_ELEMENTS_SCHEMA],
-					providers: [
-						{provide: TranslateService, useClass: ObMockTranslateService},
-						{provide: WINDOW, useValue: window}
-					]
-				}).compileComponents();
-			})
-		);
+		beforeEach(waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [ObTopControlComponent, ObMockTranslatePipe],
+				schemas: [CUSTOM_ELEMENTS_SCHEMA],
+				providers: [
+					{provide: TranslateService, useClass: ObMockTranslateService},
+					{provide: WINDOW, useValue: window}
+				]
+			}).compileComponents();
+		}));
 
 		beforeEach(() => {
 			fixture = TestBed.createComponent(ObTopControlComponent);
@@ -85,19 +81,17 @@ describe('ObTopControlComponent', () => {
 	});
 
 	describe('with ObUseObliqueIcons', () => {
-		beforeEach(
-			waitForAsync(() => {
-				TestBed.configureTestingModule({
-					declarations: [ObTopControlComponent, ObMockTranslatePipe],
-					schemas: [CUSTOM_ELEMENTS_SCHEMA],
-					providers: [
-						{provide: TranslateService, useClass: ObMockTranslateService},
-						{provide: WINDOW, useValue: window},
-						{provide: ObUseObliqueIcons, useValue: true}
-					]
-				}).compileComponents();
-			})
-		);
+		beforeEach(waitForAsync(() => {
+			TestBed.configureTestingModule({
+				declarations: [ObTopControlComponent, ObMockTranslatePipe],
+				schemas: [CUSTOM_ELEMENTS_SCHEMA],
+				providers: [
+					{provide: TranslateService, useClass: ObMockTranslateService},
+					{provide: WINDOW, useValue: window},
+					{provide: ObUseObliqueIcons, useValue: true}
+				]
+			}).compileComponents();
+		}));
 
 		beforeEach(() => {
 			fixture = TestBed.createComponent(ObTopControlComponent);

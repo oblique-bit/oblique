@@ -6,13 +6,11 @@ describe('ObCollapseSampleComponent', () => {
 	let component: CollapseSampleComponent;
 	let fixture: ComponentFixture<CollapseSampleComponent>;
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [CollapseSampleComponent]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [CollapseSampleComponent]
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(CollapseSampleComponent);

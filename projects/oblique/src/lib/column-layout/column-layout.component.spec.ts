@@ -37,27 +37,23 @@ describe('ColumnLayoutComponent', () => {
 	let fixture: ComponentFixture<TestComponent>;
 	let testComponent: TestComponent;
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [TestComponent, ObColumnLayoutComponent, ObMockColumnPanelDirective, ObMockTranslatePipe],
-				imports: [RouterTestingModule],
-				providers: [
-					{provide: TranslateService, useClass: ObMockTranslateService},
-					{provide: WINDOW, useValue: window}
-				],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [TestComponent, ObColumnLayoutComponent, ObMockColumnPanelDirective, ObMockTranslatePipe],
+			imports: [RouterTestingModule],
+			providers: [
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: WINDOW, useValue: window}
+			],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
+		}).compileComponents();
+	}));
 
-	beforeEach(
-		waitForAsync(() => {
-			fixture = TestBed.createComponent(TestComponent);
-			testComponent = fixture.componentInstance;
-			fixture.detectChanges();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		fixture = TestBed.createComponent(TestComponent);
+		testComponent = fixture.componentInstance;
+		fixture.detectChanges();
+	}));
 
 	it('should create', () => {
 		expect(testComponent).toBeTruthy();

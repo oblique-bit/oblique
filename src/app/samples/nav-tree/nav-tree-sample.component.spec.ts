@@ -13,23 +13,21 @@ describe('ObNavTreeSampleComponent', () => {
 	let component: NavTreeSampleComponent;
 	let fixture: ComponentFixture<NavTreeSampleComponent>;
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [NavTreeSampleComponent, ObNavTreeComponent],
-				imports: [
-					CommonModule,
-					FormsModule,
-					RouterTestingModule,
-					NgbCollapseModule,
-					NgbButtonsModule,
-					NgbTooltipModule,
-					ObliqueTestingModule
-				],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [NavTreeSampleComponent, ObNavTreeComponent],
+			imports: [
+				CommonModule,
+				FormsModule,
+				RouterTestingModule,
+				NgbCollapseModule,
+				NgbButtonsModule,
+				NgbTooltipModule,
+				ObliqueTestingModule
+			],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
+		}).compileComponents();
+	}));
 
 	beforeEach(inject([ActivatedRoute], (activatedRoute: ActivatedRoute) => {
 		activatedRoute.data = of({sample: {navTree: {items: []}}});

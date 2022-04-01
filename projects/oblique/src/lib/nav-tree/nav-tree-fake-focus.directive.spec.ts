@@ -65,16 +65,14 @@ describe('NavTreeFakeFocusDirective', () => {
 		});
 	};
 
-	beforeEach(
-		waitForAsync(() => {
-			TestBed.configureTestingModule({
-				imports: [RouterTestingModule],
-				declarations: [TestComponent, ObNavTreeComponent, ObNavTreeFakeFocusDirective, ObMockTranslatePipe],
-				providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
-				schemas: [NO_ERRORS_SCHEMA]
-			}).compileComponents();
-		})
-	);
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			imports: [RouterTestingModule],
+			declarations: [TestComponent, ObNavTreeComponent, ObNavTreeFakeFocusDirective, ObMockTranslatePipe],
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
+			schemas: [NO_ERRORS_SCHEMA]
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(TestComponent);
