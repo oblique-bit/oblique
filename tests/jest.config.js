@@ -42,7 +42,7 @@ module.exports = {
 		global: {
 			statements: 84,
 			branches: 69,
-			functions: 74,
+			functions: 75,
 			lines: 83
 		},
 		// The following rules do apply to all target files individually
@@ -203,10 +203,10 @@ module.exports = {
 			lines: 93
 		},
 		'projects/oblique/src/lib/popover/*.ts': {
-			statements: 96,
+			statements: 100,
 			branches: 100,
-			functions: 70,
-			lines: 95
+			functions: 100,
+			lines: 100
 		},
 		'projects/oblique/src/lib/schema-validation/*.ts': {
 			statements: 79,

@@ -11,9 +11,14 @@ export class ObMockPopoverDirective {
 	@Input() placement: Placement = 'auto';
 	@Input() popperOptions: Options = {} as Options;
 	@Input() id: string;
+	@Input() toggleHandle: 'click' | 'hover';
 	idContent: string;
 
 	toggle(): void {}
+
+	handleMouseLeave(): void {}
+
+	handleMouseEnter(): void {}
 
 	close(): void {}
 

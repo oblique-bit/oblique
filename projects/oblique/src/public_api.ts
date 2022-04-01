@@ -130,7 +130,7 @@ export {
 	ObOffCanvasService,
 	ObOffCanvasToggleDirective
 } from './lib/off-canvas/off-canvas.module';
-export {ObPopoverModule, ObPopoverDirective} from './lib/popover/popover.module';
+export {ObPopoverModule, ObPopoverDirective, OBLIQUE_POPOVER_TOGGLE_HANDLE, ObEToggleType} from './lib/popover/popover.module';
 export {
 	draft07Convert,
 	ObSchemaRequiredDirective,

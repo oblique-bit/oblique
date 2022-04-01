@@ -30,3 +30,8 @@ export const defaultConfig: Options = {
 		}
 	]
 };
+
+export enum ObEToggleType {
+	CLICK,
+	HOVER
+}
