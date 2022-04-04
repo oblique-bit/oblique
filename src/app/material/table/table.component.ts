@@ -114,6 +114,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 		this.valueChanges<boolean>('selection').subscribe(isEnabled => this.toggleSelectionVisibility(isEnabled));
 		this.valueChanges<boolean>('actions').subscribe(isEnabled => this.toggleActionsVisibility(isEnabled));
 		this.valueChanges<boolean>('style.ob-table').subscribe(isEnabled => this.handleDisableState(isEnabled));
+		this.valueChanges<Mode>('mode').subscribe(mode => this.tableManager.setMode(mode));
 		this.isStructureDefault$ = this.valueChanges<boolean>('default').pipe(tap(isDefault => this.structureChange(isDefault)));
 		this.hasCaption$ = this.valueChanges<boolean>('caption');
 		this.isScrollable$ = this.valueChanges<string>('collapsed').pipe(map(value => value === 'ob-table-scrollable'));
