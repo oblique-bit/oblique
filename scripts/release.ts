@@ -1,7 +1,7 @@
 import {execSync} from 'child_process';
 import {createWriteStream, readFileSync, writeFileSync} from 'fs';
 import path from 'path';
-import {version as currentVersion} from '../package.json';
+import {version as packageVersion} from '../package.json';
 
 interface Version {
 	version: string;
@@ -14,7 +14,7 @@ class Release {
 	private static readonly conventionalChangelog = require('conventional-changelog');
 
 	static perform(preVersion?: string): void {
-		const nextVersion = Release.computeVersion(Release.splitVersion(currentVersion), preVersion);
+		const nextVersion = Release.computeVersion(Release.splitVersion(packageVersion), preVersion);
 		execSync(`npm version ${nextVersion}`);
 		Release.bumpVersion(nextVersion);
 		Release.bumpPackageVersion(nextVersion, 'package.json');
@@ -31,18 +31,18 @@ class Release {
 		};
 	}
 
-	private static computeVersion(currentVersion: Version, preVersion: string): string {
-		if (!currentVersion.preVersionType) {
-			const newVersion = Release.getVersionFromGit(currentVersion.version);
+	private static computeVersion(version: Version, preVersion: string): string {
+		if (!version.preVersionType) {
+			const newVersion = Release.getVersionFromGit(version.version);
 			return preVersion ? `${newVersion}-${preVersion}.1` : newVersion;
 		}
 		if (!preVersion) {
-			return currentVersion.version;
+			return version.version;
 		}
-		if (currentVersion.preVersionType !== preVersion) {
-			return `${currentVersion.version}-${preVersion}.1`;
+		if (version.preVersionType !== preVersion) {
+			return `${version.version}-${preVersion}.1`;
 		}
-		return `${currentVersion.version}-${currentVersion.preVersionType}.${currentVersion.preVersionNumber + 1}`;
+		return `${version.version}-${version.preVersionType}.${version.preVersionNumber + 1}`;
 	}
 
 	private static getVersionFromGit(versionNbr: string): string {

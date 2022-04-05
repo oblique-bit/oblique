@@ -59,7 +59,7 @@ export class ObBreadcrumbComponent implements OnInit {
 			return of(crumbs);
 		}
 
-		const {path, label} = this.getBreadcrumbData(route);
+		const {path, breadCrumbLabel} = this.getBreadcrumbData(route);
 
 		if (!path) {
 			return this.getCrumbs(route.firstChild, crumbs, currentUrl);
@@ -69,7 +69,7 @@ export class ObBreadcrumbComponent implements OnInit {
 			this.getCrumbs(route.firstChild, label ? [...crumbs, {label, url}] : crumbs, url);
 		const url = `${currentUrl}/${path}`;
 
-		return this.createNextBreadcrumb(route, next, url, label, path.split('/'));
+		return this.createNextBreadcrumb(route, next, url, breadCrumbLabel, path.split('/'));
 	}
 
 	private createNextBreadcrumb(
@@ -93,8 +93,8 @@ export class ObBreadcrumbComponent implements OnInit {
 			if (label.startsWith('i18n')) {
 				const beautifiedParams = params.map(({key, val}) => ({key, val: this.beautify(val)}));
 				return this.translateService.get(label).pipe(
-					map(label => this.applyParams(label, beautifiedParams)),
-					switchMap(label => next({label, url: urlWithParamValues}))
+					map(translatedLabel => this.applyParams(translatedLabel, beautifiedParams)),
+					switchMap(translatedLabel => next({label: translatedLabel, url: urlWithParamValues}))
 				);
 			}
 
@@ -119,11 +119,11 @@ export class ObBreadcrumbComponent implements OnInit {
 			: path;
 	}
 
-	private getBreadcrumbData(route: ActivatedRoute): {path: string; label: string} {
+	private getBreadcrumbData(route: ActivatedRoute): {path: string; breadCrumbLabel: string} {
 		const routeConfig = route?.routeConfig;
 		return {
 			path: routeConfig?.path,
-			label: routeConfig?.data?.breadcrumb
+			breadCrumbLabel: routeConfig?.data?.breadcrumb
 		};
 	}
 }

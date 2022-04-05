@@ -11,7 +11,7 @@ describe('ObFilesUploadService', () => {
 	let httpMock: HttpClient;
 	let notification: ObNotificationService;
 	const baseServerUrl = 'http://localhost:8080';
-	const file = new File(['sample'], 'sample.txt', {type: 'text/plain'});
+	const sampleFile = new File(['sample'], 'sample.txt', {type: 'text/plain'});
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
@@ -32,18 +32,16 @@ describe('ObFilesUploadService', () => {
 	});
 
 	describe('multiUpload', () => {
-		const file = new File(['sample'], 'sample.txt', {type: 'text/plain'});
-
 		it('should post data', () => {
 			jest.spyOn(httpMock, 'request');
-			service.multiUpload(baseServerUrl, [file]);
+			service.multiUpload(baseServerUrl, [sampleFile]);
 			expect(httpMock.request).toHaveBeenCalled();
 		});
 
 		it('should ignore Sent event type', fakeAsync(() => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.Sent}));
 			let emitted = false;
-			service.multiUpload(baseServerUrl, [file]).subscribe(() => {
+			service.multiUpload(baseServerUrl, [sampleFile]).subscribe(() => {
 				emitted = true;
 			});
 			tick(0);
@@ -53,7 +51,7 @@ describe('ObFilesUploadService', () => {
 		it('should ignore ResponseHeader event type', fakeAsync(() => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.ResponseHeader}));
 			let emitted = false;
-			service.multiUpload(baseServerUrl, [file]).subscribe(() => {
+			service.multiUpload(baseServerUrl, [sampleFile]).subscribe(() => {
 				emitted = true;
 			});
 			tick(0);
@@ -63,7 +61,7 @@ describe('ObFilesUploadService', () => {
 		it('should ignore User event type', fakeAsync(() => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.User}));
 			let emitted = false;
-			service.multiUpload(baseServerUrl, [file]).subscribe(() => {
+			service.multiUpload(baseServerUrl, [sampleFile]).subscribe(() => {
 				emitted = true;
 			});
 			tick(0);
@@ -73,7 +71,7 @@ describe('ObFilesUploadService', () => {
 		it('should ignore DownloadProgress event type', fakeAsync(() => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.DownloadProgress}));
 			let emitted = false;
-			service.multiUpload(baseServerUrl, [file]).subscribe(() => {
+			service.multiUpload(baseServerUrl, [sampleFile]).subscribe(() => {
 				emitted = true;
 			});
 			tick(0);
@@ -83,7 +81,7 @@ describe('ObFilesUploadService', () => {
 		it('should forward UploadProgress event type', done => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.UploadProgress}));
 
-			service.multiUpload(baseServerUrl, [file]).subscribe(evt => {
+			service.multiUpload(baseServerUrl, [sampleFile]).subscribe(evt => {
 				expect(evt).toBeDefined();
 				done();
 			});
@@ -92,7 +90,7 @@ describe('ObFilesUploadService', () => {
 		it('should forward Response event type', done => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.Response}));
 
-			service.multiUpload(baseServerUrl, [file]).subscribe(evt => {
+			service.multiUpload(baseServerUrl, [sampleFile]).subscribe(evt => {
 				expect(evt).toBeDefined();
 				done();
 			});
@@ -103,7 +101,7 @@ describe('ObFilesUploadService', () => {
 			beforeEach(done => {
 				jest.spyOn(httpMock, 'request').mockReturnValue(throwError(new Error('test')));
 				jest.spyOn(notification, 'error');
-				service.multiUpload(baseServerUrl, [file]).subscribe(evt => {
+				service.multiUpload(baseServerUrl, [sampleFile]).subscribe(evt => {
 					event = evt;
 					done();
 				});
@@ -118,7 +116,7 @@ describe('ObFilesUploadService', () => {
 			});
 
 			it('should emit an event with errored files', () => {
-				expect((event as any).files).toEqual([file]);
+				expect((event as any).files).toEqual([sampleFile]);
 			});
 
 			it('should notify an error', () => {
@@ -130,14 +128,14 @@ describe('ObFilesUploadService', () => {
 	describe('upload', () => {
 		it('should post data', () => {
 			jest.spyOn(httpMock, 'request');
-			service.upload(baseServerUrl, file);
+			service.upload(baseServerUrl, sampleFile);
 			expect(httpMock.request).toHaveBeenCalled();
 		});
 
 		it('should ignore Sent event type', fakeAsync(() => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.Sent}));
 			let emitted = false;
-			service.upload(baseServerUrl, file).subscribe(() => {
+			service.upload(baseServerUrl, sampleFile).subscribe(() => {
 				emitted = true;
 			});
 			tick(0);
@@ -147,7 +145,7 @@ describe('ObFilesUploadService', () => {
 		it('should ignore ResponseHeader event type', fakeAsync(() => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.ResponseHeader}));
 			let emitted = false;
-			service.upload(baseServerUrl, file).subscribe(() => {
+			service.upload(baseServerUrl, sampleFile).subscribe(() => {
 				emitted = true;
 			});
 			tick(0);
@@ -157,7 +155,7 @@ describe('ObFilesUploadService', () => {
 		it('should ignore User event type', fakeAsync(() => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.User}));
 			let emitted = false;
-			service.upload(baseServerUrl, file).subscribe(() => {
+			service.upload(baseServerUrl, sampleFile).subscribe(() => {
 				emitted = true;
 			});
 			tick(0);
@@ -167,7 +165,7 @@ describe('ObFilesUploadService', () => {
 		it('should ignore DownloadProgress event type', fakeAsync(() => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.DownloadProgress}));
 			let emitted = false;
-			service.upload(baseServerUrl, file).subscribe(() => {
+			service.upload(baseServerUrl, sampleFile).subscribe(() => {
 				emitted = true;
 			});
 			tick(0);
@@ -177,7 +175,7 @@ describe('ObFilesUploadService', () => {
 		it('should forward UploadProgress event type', done => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.UploadProgress}));
 
-			service.upload(baseServerUrl, file).subscribe(evt => {
+			service.upload(baseServerUrl, sampleFile).subscribe(evt => {
 				expect(evt).toBeDefined();
 				done();
 			});
@@ -186,7 +184,7 @@ describe('ObFilesUploadService', () => {
 		it('should forward Response event type', done => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.Response}));
 
-			service.upload(baseServerUrl, file).subscribe(evt => {
+			service.upload(baseServerUrl, sampleFile).subscribe(evt => {
 				expect(evt).toBeDefined();
 				done();
 			});
@@ -197,7 +195,7 @@ describe('ObFilesUploadService', () => {
 			beforeEach(done => {
 				jest.spyOn(httpMock, 'request').mockReturnValue(throwError(new Error('test')));
 				jest.spyOn(notification, 'error');
-				service.multiUpload(baseServerUrl, [file]).subscribe(evt => {
+				service.multiUpload(baseServerUrl, [sampleFile]).subscribe(evt => {
 					event = evt;
 					done();
 				});
@@ -212,11 +210,11 @@ describe('ObFilesUploadService', () => {
 			});
 
 			it('should emit an event with errored files', () => {
-				expect((event as any).files).toEqual([file]);
+				expect((event as any).files).toEqual([sampleFile]);
 			});
 
 			it('should notify an error', () => {
-				service.upload(baseServerUrl, file).subscribe();
+				service.upload(baseServerUrl, sampleFile).subscribe();
 			});
 		});
 	});

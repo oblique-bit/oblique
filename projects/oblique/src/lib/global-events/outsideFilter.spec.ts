@@ -6,7 +6,7 @@ describe('obOutsideFilter', () => {
 	let div1: HTMLDivElement;
 	let div2: HTMLDivElement;
 	let span: HTMLSpanElement;
-	const event = fromEvent(document, 'click');
+	const clickEvent = fromEvent(document, 'click');
 
 	beforeEach(() => {
 		div1 = document.createElement('div');
@@ -18,7 +18,7 @@ describe('obOutsideFilter', () => {
 	});
 
 	it('should emit a MouseEvent on document click', done => {
-		event.pipe(obOutsideFilter(div1, div2)).subscribe(event => {
+		clickEvent.pipe(obOutsideFilter(div1, div2)).subscribe(event => {
 			expect(event instanceof MouseEvent).toBe(true);
 			done();
 		});
@@ -27,7 +27,7 @@ describe('obOutsideFilter', () => {
 
 	it('should not emit on excluded element click', fakeAsync(() => {
 		let emitted = false;
-		event.pipe(obOutsideFilter(div1, div2)).subscribe(() => {
+		clickEvent.pipe(obOutsideFilter(div1, div2)).subscribe(() => {
 			emitted = true;
 		});
 		div1.click();
@@ -37,7 +37,7 @@ describe('obOutsideFilter', () => {
 
 	it("should not emit on excluded element's child click", fakeAsync(() => {
 		let emitted = false;
-		event.pipe(obOutsideFilter(div1, div2)).subscribe(() => {
+		clickEvent.pipe(obOutsideFilter(div1, div2)).subscribe(() => {
 			emitted = true;
 		});
 		span.click();
