@@ -23,7 +23,7 @@ export class ObAlertComponent implements OnInit {
 	icon = 'info';
 
 	private currentType: ObIAlertType = 'info';
-	private hasAlertRole?: boolean;
+	private hasAlertRole?: boolean | undefined;
 
 	constructor(
 		@Optional() @Inject(ObUseObliqueIcons) private readonly useObliqueIcons: boolean,
@@ -34,12 +34,12 @@ export class ObAlertComponent implements OnInit {
 		this.useFontAwesomeIcons = !useObliqueIcons;
 	}
 
-	get hasRoleAlert(): boolean {
+	get hasRoleAlert(): boolean | undefined {
 		return this.hasAlertRole;
 	}
 
 	@Input()
-	set hasRoleAlert(hasRoleAlert: boolean) {
+	set hasRoleAlert(hasRoleAlert: boolean | undefined) {
 		this.hasAlertRole = hasRoleAlert;
 		this.role = this.getAlertRole();
 	}
@@ -77,6 +77,6 @@ export class ObAlertComponent implements OnInit {
 	}
 
 	private getAlertRole(): string {
-		return this.hasRoleAlert ?? this.hasGlobalAlertRole ?? this.role === 'alert' ? 'alert' : undefined;
+		return this.hasRoleAlert ?? this.hasGlobalAlertRole ?? (this.initialRole !== null && this.role === 'alert') ? 'alert' : undefined;
 	}
 }
