@@ -9,9 +9,9 @@ export {ObParentFormDirective} from './parent-form.directive';
 export {ObNestedFormComponent} from './nested-form.component';
 
 @NgModule({
-	declarations: [ObParentFormDirective, ObNestedFormComponent],
+	declarations: [ObNestedFormComponent, ObParentFormDirective],
 	providers: obliqueProviders(),
-	exports: [ObParentFormDirective, ObNestedFormComponent]
+	exports: [ObNestedFormComponent, ObParentFormDirective]
 })
 export class ObNestedFormModule {
 	constructor(telemetry: ObTelemetryService) {

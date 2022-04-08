@@ -27,14 +27,14 @@ export {ObIDatepickerOptions} from './datepicker.model';
  * Deprecated with bootstrap theme since version 8.0.0. Will be removed with version 10.0.0.
  */
 @NgModule({
-	imports: [CommonModule, NgbModule, TranslateModule, ReactiveFormsModule],
-	declarations: [ObDatepickerComponent, ObDatepickerPlaceholderDirective, ObDateFormatterPipe],
+	imports: [CommonModule, NgbModule, ReactiveFormsModule, TranslateModule],
+	declarations: [ObDateFormatterPipe, ObDatepickerComponent, ObDatepickerPlaceholderDirective],
 	providers: [
 		...obliqueProviders(),
 		{provide: NgbDatepickerI18n, useClass: ObDatepickerI18nService},
 		{provide: NgbDateParserFormatter, useClass: ObDateDMYParserFormatter}
 	],
-	exports: [ObDatepickerComponent, ObDatepickerPlaceholderDirective, ObDateFormatterPipe]
+	exports: [ObDateFormatterPipe, ObDatepickerComponent, ObDatepickerPlaceholderDirective]
 })
 export class ObDatepickerModule {
 	constructor(telemetry: ObTelemetryService, theme: ObThemeService) {

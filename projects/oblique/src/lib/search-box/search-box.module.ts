@@ -15,7 +15,7 @@ export {ObSearchBoxComponent} from './search-box.component';
 export {ObISearchWidgetItem} from './search-box.model';
 
 @NgModule({
-	imports: [CommonModule, FormsModule, ObNavTreeModule, TranslateModule, RouterModule, ObDropdownModule, ObIconModule],
+	imports: [CommonModule, FormsModule, ObDropdownModule, ObIconModule, ObNavTreeModule, RouterModule, TranslateModule],
 	declarations: [ObSearchBoxComponent],
 	providers: obliqueProviders(),
 	exports: [ObSearchBoxComponent]

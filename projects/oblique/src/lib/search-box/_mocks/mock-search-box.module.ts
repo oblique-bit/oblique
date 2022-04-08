@@ -6,7 +6,7 @@ export {ObMockSearchBoxDirective} from './mock-search-box.directive';
 export {ObMockSearchBoxComponent} from './mock-search-box.component';
 
 @NgModule({
-	declarations: [ObMockSearchBoxDirective, ObMockSearchBoxComponent],
-	exports: [ObMockSearchBoxDirective, ObMockSearchBoxComponent]
+	declarations: [ObMockSearchBoxComponent, ObMockSearchBoxDirective],
+	exports: [ObMockSearchBoxComponent, ObMockSearchBoxDirective]
 })
 export class ObMockSearchBoxModule {}

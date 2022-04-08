@@ -14,7 +14,7 @@ export {ObNotificationConfig, CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE, GROUP_SIMILAR
 export {ObINotification, ObINotificationConfig, ObENotificationType, ObENotificationPlacement} from './notification.model';
 
 @NgModule({
-	imports: [CommonModule, TranslateModule, ObAlertModule],
+	imports: [CommonModule, ObAlertModule, TranslateModule],
 	declarations: [ObNotificationComponent],
 	providers: obliqueProviders(),
 	exports: [ObNotificationComponent]

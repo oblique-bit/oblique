@@ -42,37 +42,37 @@ export {ObINavigationLink, ObEScrollMode, ObIMasterLayoutEvent, ObEMasterLayoutE
 @NgModule({
 	imports: [
 		CommonModule,
-		TranslateModule,
-		RouterModule,
-		ObNotificationModule,
-		ObSpinnerModule,
-		ObScrollingModule,
-		ObOffCanvasModule,
-		ObIconModule,
+		MatButtonModule,
 		ObButtonModule,
-		MatButtonModule
+		ObIconModule,
+		ObNotificationModule,
+		ObOffCanvasModule,
+		ObScrollingModule,
+		ObSpinnerModule,
+		RouterModule,
+		TranslateModule
 	],
 	declarations: [
+		ObAriaMenuButtonDirective,
 		ObMasterLayoutComponent,
+		ObMasterLayoutFooterComponent,
 		ObMasterLayoutHeaderComponent,
 		ObMasterLayoutHeaderToggleDirective,
 		ObMasterLayoutNavigationComponent,
-		ObMasterLayoutFooterComponent,
 		ObMasterLayoutNavigationItemDirective,
-		ObMasterLayoutNavigationToggleDirective,
 		ObMasterLayoutNavigationMenuDirective,
-		ObAriaMenuButtonDirective
+		ObMasterLayoutNavigationToggleDirective
 	],
 	providers: obliqueProviders(),
 	exports: [
 		ObMasterLayoutComponent,
+		ObMasterLayoutFooterComponent,
 		ObMasterLayoutHeaderComponent,
 		ObMasterLayoutHeaderToggleDirective,
 		ObMasterLayoutNavigationComponent,
-		ObMasterLayoutFooterComponent,
 		ObMasterLayoutNavigationItemDirective,
-		ObMasterLayoutNavigationToggleDirective,
-		ObMasterLayoutNavigationMenuDirective
+		ObMasterLayoutNavigationMenuDirective,
+		ObMasterLayoutNavigationToggleDirective
 	]
 })
 export class ObMasterLayoutModule {

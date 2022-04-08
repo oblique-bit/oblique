@@ -11,7 +11,7 @@ import {obliqueProviders} from '../utilities';
 export {ObInputClearDirective} from './input-clear.directive';
 
 @NgModule({
-	imports: [CommonModule, TranslateModule, FormsModule],
+	imports: [CommonModule, FormsModule, TranslateModule],
 	declarations: [ObInputClearDirective],
 	providers: obliqueProviders(),
 	exports: [ObInputClearDirective]

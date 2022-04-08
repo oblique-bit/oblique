@@ -10,7 +10,7 @@ export {ObIAlertType} from './alert.model';
 
 @NgModule({
 	declarations: [ObAlertComponent],
-	imports: [CommonModule, TranslateModule, ObIconModule],
+	imports: [CommonModule, ObIconModule, TranslateModule],
 	providers: obliqueProviders(),
 	exports: [ObAlertComponent]
 })

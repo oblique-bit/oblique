@@ -12,7 +12,7 @@ export {ObTopControlComponent} from './top-control.component';
 export {ObScrollingEvents} from './scrolling-events';
 
 @NgModule({
-	imports: [CommonModule, TranslateModule, ObIconModule],
+	imports: [CommonModule, ObIconModule, TranslateModule],
 	declarations: [ObTopControlComponent],
 	providers: obliqueProviders(),
 	exports: [ObTopControlComponent]

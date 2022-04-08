@@ -18,10 +18,10 @@ export {ObMatErrorDirective} from './mat-error.directive';
 export {ObErrorMessagesDirective} from './error-messages.directive';
 
 @NgModule({
-	imports: [CommonModule, FormsModule, TranslateModule, ObFormControlStateModule, ObTranslateParamsModule],
-	declarations: [ObErrorMessagesComponent, ObMatErrorDirective, ObErrorMessagesDirective],
+	imports: [CommonModule, FormsModule, ObFormControlStateModule, ObTranslateParamsModule, TranslateModule],
+	declarations: [ObErrorMessagesComponent, ObErrorMessagesDirective, ObMatErrorDirective],
 	providers: obliqueProviders(),
-	exports: [ObErrorMessagesComponent, ObMatErrorDirective, ObErrorMessagesDirective]
+	exports: [ObErrorMessagesComponent, ObErrorMessagesDirective, ObMatErrorDirective]
 })
 export class ObErrorMessagesModule {
 	constructor(telemetry: ObTelemetryService) {
