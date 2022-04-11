@@ -5,8 +5,8 @@ import {ApiComponent} from '../api/api.component';
 import {ApiElementComponent} from '../api/api-element.component';
 
 @NgModule({
-	declarations: [DescriptionComponent, ApiComponent, ApiElementComponent],
+	declarations: [ApiComponent, ApiElementComponent, DescriptionComponent],
 	imports: [CommonModule],
-	exports: [DescriptionComponent, ApiComponent, ApiElementComponent]
+	exports: [ApiComponent, ApiElementComponent, DescriptionComponent]
 })
 export class SharedModule {}

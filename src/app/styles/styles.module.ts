@@ -36,25 +36,25 @@ import {SharedModule} from '../common/shared.module';
 			{path: 'screen-reader-only', component: ScreenReaderOnlyComponent},
 			{path: '', redirectTo: 'typography', pathMatch: 'full'}
 		]),
-		ObColumnLayoutModule,
 		FormsModule,
-		SharedModule,
 		MatRadioModule,
-		ReactiveFormsModule
+		ObColumnLayoutModule,
+		ReactiveFormsModule,
+		SharedModule
 	],
 	declarations: [
-		TypographyComponent,
+		AlertComponent,
 		BlockElementsComponent,
+		GridComponent,
 		IconSampleComponent,
 		InlineElementComponent,
 		ListsComponent,
-		TableComponent,
 		PaletteComponent,
+		ScreenReaderOnlyComponent,
 		StepperComponent,
+		TableComponent,
 		TabsComponent,
-		AlertComponent,
-		GridComponent,
-		ScreenReaderOnlyComponent
+		TypographyComponent
 	]
 })
 export class StylesModule {}

@@ -9,7 +9,7 @@ export {ObMockFileInfoComponent} from './mock-file-info.component';
 export {ObMockDropZoneComponent} from './mock-drop-zone.component';
 
 @NgModule({
-	declarations: [ObMockFileUploadComponent, ObMockFileInfoComponent, ObMockDropZoneComponent],
-	exports: [ObMockFileUploadComponent, ObMockFileInfoComponent]
+	declarations: [ObMockDropZoneComponent, ObMockFileInfoComponent, ObMockFileUploadComponent],
+	exports: [ObMockFileInfoComponent, ObMockFileUploadComponent]
 })
 export class ObMockFileUploadModule {}

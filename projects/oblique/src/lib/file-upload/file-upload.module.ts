@@ -35,24 +35,24 @@ export {ObIFileDescription, ObIUploadEvent, ObEUploadEventType} from './file-upl
 		MatCheckboxModule,
 		MatIconModule,
 		MatProgressBarModule,
-		MatTableModule,
 		MatSortModule,
+		MatTableModule,
 		MatTooltipModule,
-		TranslateModule,
 		ObAlertModule,
 		ObButtonModule,
 		ObIconModule,
-		ObNotificationModule
+		ObNotificationModule,
+		TranslateModule
 	],
 	declarations: [
-		ObFileUploadComponent,
-		ObFileInfoComponent,
-		ObDragDropDirective,
 		ObAcceptAllPipe,
+		ObDragDropDirective,
 		ObDropZoneComponent,
+		ObFileInfoComponent,
+		ObFileUploadComponent,
 		ObProgressComponent
 	],
-	exports: [ObFileUploadComponent, ObDropZoneComponent, ObFileInfoComponent],
+	exports: [ObDropZoneComponent, ObFileInfoComponent, ObFileUploadComponent],
 	providers: obliqueProviders()
 })
 export class ObFileUploadModule {

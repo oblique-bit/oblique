@@ -16,7 +16,7 @@ export {ObNavTreeFakeFocusDirective} from './nav-tree-fake-focus.directive';
 export {ObNavTreeItemModel} from './nav-tree-item.model';
 
 @NgModule({
-	imports: [CommonModule, NgbModule, RouterModule, TranslateModule, ObIconModule],
+	imports: [CommonModule, NgbModule, ObIconModule, RouterModule, TranslateModule],
 	declarations: [ObNavTreeComponent, ObNavTreeFakeFocusDirective],
 	providers: obliqueProviders(),
 	exports: [ObNavTreeComponent, ObNavTreeFakeFocusDirective]

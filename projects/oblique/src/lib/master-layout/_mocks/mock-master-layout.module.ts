@@ -38,26 +38,26 @@ export {ObMockAriaMenuButtonDirective} from './mock-aria-menu-button.directive';
 
 @NgModule({
 	declarations: [
+		ObMockAriaMenuButtonDirective,
 		ObMockMasterLayoutComponent,
+		ObMockMasterLayoutFooterComponent,
 		ObMockMasterLayoutHeaderComponent,
 		ObMockMasterLayoutHeaderToggleDirective,
 		ObMockMasterLayoutNavigationComponent,
-		ObMockMasterLayoutFooterComponent,
 		ObMockMasterLayoutNavigationItemDirective,
-		ObMockMasterLayoutNavigationToggleDirective,
 		ObMockMasterLayoutNavigationMenuDirective,
-		ObMockAriaMenuButtonDirective
+		ObMockMasterLayoutNavigationToggleDirective
 	],
 	exports: [
+		ObMockAriaMenuButtonDirective,
 		ObMockMasterLayoutComponent,
+		ObMockMasterLayoutFooterComponent,
 		ObMockMasterLayoutHeaderComponent,
 		ObMockMasterLayoutHeaderToggleDirective,
 		ObMockMasterLayoutNavigationComponent,
-		ObMockMasterLayoutFooterComponent,
 		ObMockMasterLayoutNavigationItemDirective,
-		ObMockMasterLayoutNavigationToggleDirective,
 		ObMockMasterLayoutNavigationMenuDirective,
-		ObMockAriaMenuButtonDirective
+		ObMockMasterLayoutNavigationToggleDirective
 	],
 	providers: [
 		{provide: ObMasterLayoutFooterService, useClass: ObMockMasterLayoutFooterService},

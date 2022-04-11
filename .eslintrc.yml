@@ -59,7 +59,6 @@ overrides:
     rules:
       # deactivate unwanted rules
       "@angular-eslint/prefer-on-push-component-change-detection": off
-      "@angular-eslint/sort-ngmodule-metadata-arrays": off # preferred order is 'imports', 'declarations', 'providers'
       "@angular-eslint/use-component-view-encapsulation": off # oblique uses ViewEncapsulation.NONE
       "@angular-eslint/use-injectable-provided-in": off # some specialized services are directly provided in a component
       "@typescript-eslint/consistent-type-exports": off
