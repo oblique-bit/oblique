@@ -203,13 +203,15 @@
 		}
 	}
 
-	.ob-fixed-layout & {
-		height: 100%;
+	@include layout.ob-media-breakpoint-up(md) {
+		.ob-fixed-layout &.ob-full-height {
+			height: 100%;
 
-		.ob-column-main,
-		.ob-column-content {
-			overflow-y: auto;
-			overflow-x: hidden;
+			.ob-column-main,
+			.ob-column-content {
+				overflow-y: auto;
+				overflow-x: hidden;
+			}
 		}
 	}
 }
