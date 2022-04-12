@@ -27,6 +27,7 @@ export class AppComponent {
 				{url: 'breadcrumb', label: 'Breadcrumb'},
 				{url: 'collapse', label: 'Collapse'},
 				{url: 'column-layout', label: 'i18n.routes.samples.column-layout.title'},
+				{url: 'column-layout-full-height', label: 'Column layout full height'},
 				{url: 'datepicker', label: 'i18n.routes.samples.datepicker.title'},
 				{url: 'dropdown', label: 'Dropdown'},
 				{url: 'error-messages', label: 'Error messages'},

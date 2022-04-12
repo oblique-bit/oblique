@@ -27,6 +27,7 @@ import {SamplesRoutingModule} from './samples-routing.module';
 
 import {CollapseSampleComponent} from './collapse/collapse-sample.component';
 import {ColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
+import {ColumnLayoutFullHeightSampleComponent} from './column-layout-full-height/column-layout-full-height-sample.component';
 import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {ErrorMessagesSampleComponent} from './error-messages-sample/error-messages-sample.component';
 import {ExternalLinkComponent} from './external-link/external-link.component';
@@ -156,6 +157,7 @@ import {DropdownSampleComponent} from './dropdown/dropdown.component';
 		BreadcrumbSampleComponent,
 		ButtonSampleComponent,
 		CollapseSampleComponent,
+		ColumnLayoutFullHeightSampleComponent,
 		ColumnLayoutSampleComponent,
 		DatepickerSampleComponent,
 		DropdownSampleComponent,
