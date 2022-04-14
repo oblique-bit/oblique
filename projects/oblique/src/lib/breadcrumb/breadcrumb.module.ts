@@ -16,7 +16,7 @@ export {ObBreadcrumbComponent} from './breadcrumb.component';
 
 @NgModule({
 	declarations: [ObBreadcrumbComponent],
-	imports: [CommonModule, RouterModule, TranslateModule, ObIconModule, MatIconModule, MatTooltipModule],
+	imports: [CommonModule, MatIconModule, MatTooltipModule, ObIconModule, RouterModule, TranslateModule],
 	providers: obliqueProviders(),
 	exports: [ObBreadcrumbComponent]
 })

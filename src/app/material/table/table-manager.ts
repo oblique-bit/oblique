@@ -37,7 +37,7 @@ export class TableManager<T> {
 	private mode = Mode.DIALOG;
 
 	constructor(data: (T & Data)[], private readonly popup: ObPopUpService, private readonly dialog: MatDialog) {
-		this.originalData = data.map(data => ({...data, isSelected: false, editMode: EditMode.NONE}));
+		this.originalData = data.map(item => ({...item, isSelected: false, editMode: EditMode.NONE}));
 		this.dataSource.data = [...this.originalData];
 
 		this.masterToggleState$ = this.buildMasterToggleObservable();
@@ -129,7 +129,7 @@ export class TableManager<T> {
 	removeRows(row?: T & Data): void {
 		const items = row ? [row] : this.selection.selected;
 		if (this.popup.confirm('Delete Row?\nThis action will delete the selected row(s).\nDo you want to proceed?')) {
-			this.dataSource.data = this.dataSource.data.filter(data => !items.find(row => Object.is(data, row)));
+			this.dataSource.data = this.dataSource.data.filter(data => !items.find(item => Object.is(data, item)));
 			this.originalData = [...this.dataSource.data];
 			this.selection.deselect(...items);
 		}

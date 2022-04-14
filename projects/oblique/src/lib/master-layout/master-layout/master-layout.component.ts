@@ -257,7 +257,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	private formatQueryParameters(parameters: string): Params {
 		return parameters
 			?.split('&')
-			.map(parameters => parameters.split('='))
+			.map(mapParameters => mapParameters.split('='))
 			.reduce((params, parameter) => ({...params, [parameter[0]]: parameter[1]}), {});
 	}
 

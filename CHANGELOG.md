@@ -1,3 +1,10 @@
+# [8.1.1](https://github.com/oblique-bit/oblique/compare/8.1.0...8.1.1) (2022-04-14)
+
+## Bug Fixes
+
+- **alert:** correct the name of `hasRoleAlert` in the mocks ([2b513b3](https://github.com/oblique-bit/oblique/commit/2b513b34b681cfce9987cad3dcd6882e956bc051))
+- **column-layout:** correctly display the column layout in fixed mode ([cd43c38](https://github.com/oblique-bit/oblique/commit/cd43c382552d86694f677cd1791d97757d78d6fa))
+
 # [8.1.0](https://github.com/oblique-bit/oblique/compare/8.0.1...8.1.0) (2022-04-01)
 
 ## Bug Fixes

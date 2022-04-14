@@ -13,7 +13,7 @@ export {ObIconConfig, ObTIconConfig, ObUseObliqueIcons, ObEIcon} from './icon.mo
 export {ObIconComponent} from './ob-icon.component';
 
 @NgModule({
-	imports: [MatIconModule, CommonModule],
+	imports: [CommonModule, MatIconModule],
 	providers: [...obliqueProviders()],
 	declarations: [ObIconComponent],
 	exports: [ObIconComponent]

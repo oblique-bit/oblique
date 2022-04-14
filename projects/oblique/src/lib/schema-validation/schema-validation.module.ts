@@ -17,9 +17,9 @@ export {draft07Convert} from './draft07-converter.decorator';
 
 @NgModule({
 	imports: [CommonModule],
-	declarations: [ObSchemaValidateDirective, ObSchemaValidationDirective, ObSchemaRequiredDirective],
+	declarations: [ObSchemaRequiredDirective, ObSchemaValidateDirective, ObSchemaValidationDirective],
 	providers: obliqueProviders(),
-	exports: [ObSchemaValidateDirective, ObSchemaValidationDirective, ObSchemaRequiredDirective]
+	exports: [ObSchemaRequiredDirective, ObSchemaValidateDirective, ObSchemaValidationDirective]
 })
 export class ObSchemaValidationModule {
 	constructor(telemetry: ObTelemetryService) {

@@ -16,7 +16,7 @@ export {ObColumnPanelDirective} from './column-panel.directive';
 export {ObColumnToggleDirective} from './column-toggle.directive';
 
 @NgModule({
-	imports: [CommonModule, TranslateModule, ObIconModule],
+	imports: [CommonModule, ObIconModule, TranslateModule],
 	declarations: [ObColumnLayoutComponent, ObColumnPanelDirective, ObColumnToggleDirective],
 	providers: obliqueProviders(),
 	exports: [ObColumnLayoutComponent, ObColumnPanelDirective, ObColumnToggleDirective]

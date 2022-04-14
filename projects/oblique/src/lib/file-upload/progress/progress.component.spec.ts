@@ -111,7 +111,7 @@ describe('ObProgressComponent', () => {
 						});
 
 						it('should remove the file from the file list', () => {
-							expect(component.uploadedFiles.files.find(file => file.index === 0)).toBeUndefined();
+							expect(component.uploadedFiles.files.find(uploadedFile => uploadedFile.index === 0)).toBeUndefined();
 						});
 
 						it('should reduce the file count', () => {
@@ -150,7 +150,7 @@ describe('ObProgressComponent', () => {
 						});
 
 						it('should not remove the file from the file list', () => {
-							expect(component.uploadedFiles.files.find(file => file.index === 0)).toBeDefined();
+							expect(component.uploadedFiles.files.find(localFile => localFile.index === 0)).toBeDefined();
 						});
 
 						it('should not reduce the file count', () => {
@@ -182,7 +182,7 @@ describe('ObProgressComponent', () => {
 					});
 
 					it('should not remove the file from the file list', () => {
-						expect(component.uploadedFiles.files.find(file => file.index === 0)).toBeDefined();
+						expect(component.uploadedFiles.files.find(localFile => localFile.index === 0)).toBeDefined();
 					});
 
 					it('should not reduce the file count', () => {
@@ -348,7 +348,7 @@ describe('ObProgressComponent', () => {
 					});
 
 					it('should remove the file from the file list', () => {
-						expect(component.uploadedFiles.files.find(file => file.index === 0)).toBeUndefined();
+						expect(component.uploadedFiles.files.find(localFile => localFile.index === 0)).toBeUndefined();
 					});
 
 					it('should reduce the file count', () => {
@@ -387,7 +387,7 @@ describe('ObProgressComponent', () => {
 					});
 
 					it('should not remove the file from the file list', () => {
-						expect(component.uploadedFiles.files.find(file => file.index === 0)).toBeDefined();
+						expect(component.uploadedFiles.files.find(localFile => localFile.index === 0)).toBeDefined();
 					});
 
 					it('should not reduce the file count', () => {

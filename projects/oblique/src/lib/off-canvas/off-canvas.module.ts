@@ -15,9 +15,9 @@ export {ObOffCanvasBackdropDirective} from './off-canvas-backdrop.directive';
 
 @NgModule({
 	imports: [CommonModule],
-	declarations: [ObOffCanvasToggleDirective, ObOffCanvasContainerDirective, ObOffCanvasBackdropDirective],
+	declarations: [ObOffCanvasBackdropDirective, ObOffCanvasContainerDirective, ObOffCanvasToggleDirective],
 	providers: obliqueProviders(),
-	exports: [ObOffCanvasToggleDirective, ObOffCanvasContainerDirective, ObOffCanvasBackdropDirective]
+	exports: [ObOffCanvasBackdropDirective, ObOffCanvasContainerDirective, ObOffCanvasToggleDirective]
 })
 export class ObOffCanvasModule {
 	constructor(telemetry: ObTelemetryService) {

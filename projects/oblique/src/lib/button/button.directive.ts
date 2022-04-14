@@ -32,7 +32,7 @@ export class ObButtonDirective implements OnInit, OnChanges {
 	}
 
 	private validateButtonVariant(): void {
-		const attribute = ObButtonDirective.forbidden.find(attribute => this.element.nativeElement.hasAttribute(attribute));
+		const attribute = ObButtonDirective.forbidden.find(variant => this.element.nativeElement.hasAttribute(variant));
 		if (attribute) {
 			console.error(
 				`The obButton directive is meant to be used with mat-button or mat-icon-button exclusively. An instance of ${attribute}, which can lead to unexpected effects, has been detected, please change it to one of the supported variant.`
