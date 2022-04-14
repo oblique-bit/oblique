@@ -26,8 +26,8 @@ describe('ObValidationService', () => {
 		});
 
 		it('should accept uppercase types', () => {
-			const files = [new File(['text'], 'sample.TXT', {type: 'text/plain'})];
-			const filteredFiles = service.filterInvalidFiles(files, ['.txt'], 50, true);
+			const testFiles = [new File(['text'], 'sample.TXT', {type: 'text/plain'})];
+			const filteredFiles = service.filterInvalidFiles(testFiles, ['.txt'], 50, true);
 			expect(filteredFiles[0]?.name).toBe('sample.TXT');
 		});
 

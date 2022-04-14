@@ -33,10 +33,11 @@ export function createSafeRule(callback: (tree: Tree, context: SchematicContext)
 	return (tree: Tree, context: SchematicContext) => {
 		try {
 			return callback(tree, context);
-		} catch (error) {
+		} catch (thrownError) {
 			isSuccessful = false;
-			const groups = /@oblique[/\\]oblique[/\\]schematics[/\\].*[/\\](?<file>\w*\.js):(?<line>\d*)/.exec(error.stack || '')?.groups || {};
-			const errorMessage: string = error.message || error;
+			const groups =
+				/@oblique[/\\]oblique[/\\]schematics[/\\].*[/\\](?<file>\w*\.js):(?<line>\d*)/.exec(thrownError.stack || '')?.groups || {};
+			const errorMessage: string = thrownError.message || thrownError;
 			warn(
 				context,
 				`The previous task failed and the change needs to be done manually.\nPlease inform the Oblique team (oblique@bit.admin.ch) of the following error:\n\t${errorMessage}, in "${groups.file}" on line ${groups.line}`

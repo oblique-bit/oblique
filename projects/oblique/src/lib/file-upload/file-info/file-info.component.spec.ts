@@ -44,7 +44,7 @@ describe('ObFileInfoComponent', () => {
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObFileInfoComponent);
 		component = fixture.componentInstance;
-		component.mapFunction = (files: ObIFileDescription[]) => files.map(file => ({...file, extension: file.name.split('.')[1]}));
+		component.mapFunction = (filesToMap: ObIFileDescription[]) => filesToMap.map(file => ({...file, extension: file.name.split('.')[1]}));
 		fixture.detectChanges();
 	});
 

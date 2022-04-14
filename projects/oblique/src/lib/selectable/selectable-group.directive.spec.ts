@@ -139,7 +139,7 @@ describe('SelectableGroupDirective', () => {
 
 		describe('sort', () => {
 			it('should sort directives', () => {
-				directive.sort((first, second) => second.value - first.value);
+				directive.sort((firstElement, secondElement) => secondElement.value - firstElement.value);
 				// @ts-expect-error
 				expect(directive.selectables[0].value).toBe(4);
 			});
