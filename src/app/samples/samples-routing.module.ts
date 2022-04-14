@@ -7,6 +7,7 @@ import {BreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
 import {ButtonSampleComponent} from './button/button.component';
 import {CollapseSampleComponent} from './collapse/collapse-sample.component';
 import {ColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
+import {ColumnLayoutFullHeightSampleComponent} from './column-layout-full-height/column-layout-full-height-sample.component';
 import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {ErrorMessagesSampleComponent} from './error-messages-sample/error-messages-sample.component';
 import {ExternalLinkComponent} from './external-link/external-link.component';
@@ -100,6 +101,7 @@ const samplesRoutes: Routes = [
 	},
 	{path: 'collapse', component: CollapseSampleComponent},
 	{path: 'column-layout', component: ColumnLayoutSampleComponent},
+	{path: 'column-layout-full-height', component: ColumnLayoutFullHeightSampleComponent},
 	{path: 'datepicker', component: DatepickerSampleComponent},
 	{path: 'dropdown', component: DropdownSampleComponent},
 	{path: 'error-messages', component: ErrorMessagesSampleComponent},
