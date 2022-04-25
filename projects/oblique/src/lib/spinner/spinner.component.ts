@@ -14,12 +14,12 @@ import {ObISpinnerEvent} from './spinner.model';
 	animations: [
 		trigger('inOut', [
 			state('in', style({opacity: 1, display: 'block'})),
-			transition('* => in', [
+			transition('out => in', [
 				style({display: 'block'}), // As we can not animate the `display` property, we modify it before starting the next animation.
 				animate('250ms ease-in-out', keyframes([style({offset: 0, opacity: 0}), style({offset: 1, opacity: 1})]))
 			]),
 			state('out', style({opacity: 0, display: 'none'})),
-			transition('* => out', [animate('250ms ease-in-out', keyframes([style({offset: 0, opacity: 1}), style({offset: 1, opacity: 0})]))])
+			transition('in => out', [animate('250ms ease-in-out', keyframes([style({offset: 0, opacity: 1}), style({offset: 1, opacity: 0})]))])
 		])
 	],
 	host: {class: 'ob-spinner'}
