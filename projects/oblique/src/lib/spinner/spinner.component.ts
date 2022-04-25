@@ -1,6 +1,6 @@
 import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
-import {filter, takeUntil} from 'rxjs/operators';
+import {delay, filter, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {ObSpinnerService} from './spinner.service';
 import {ObISpinnerEvent} from './spinner.model';
@@ -35,7 +35,8 @@ export class ObSpinnerComponent implements OnInit, OnDestroy {
 		spinnerService.events$
 			.pipe(
 				takeUntil(this.unsubscribe),
-				filter(event => event.channel === this.channel)
+				filter(event => event.channel === this.channel),
+				delay(0) // avoid ExpressionChangedAfterItHasBeenCheckedError when the spinner is activated during a component's initialisation process
 			)
 			.subscribe((event: ObISpinnerEvent) => {
 				this.$state = event.active ? 'in' : 'out';
