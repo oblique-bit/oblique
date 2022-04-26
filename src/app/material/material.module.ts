@@ -34,7 +34,8 @@ import {
 	ObErrorMessagesModule,
 	ObIconModule,
 	ObInputClearModule,
-	ObSelectableModule
+	ObSelectableModule,
+	ObSpinnerModule
 } from '@oblique/oblique';
 import {ButtonComponent} from './button/button.component';
 import {CardComponent} from './card/card.component';
@@ -133,6 +134,7 @@ const appRoutes: Routes = [
 		ObIconModule,
 		ObInputClearModule,
 		ObSelectableModule,
+		ObSpinnerModule,
 		ReactiveFormsModule,
 		RouterModule.forChild(appRoutes),
 		SharedModule

@@ -7,6 +7,7 @@ import {ExampleDialogComponent} from './example-dialog/example-dialog.component'
 	templateUrl: './dialog.component.html'
 })
 export class DialogComponent {
+	spinner = 'none';
 	name: string;
 	animal: string;
 	dialogState: string;
@@ -24,7 +25,7 @@ export class DialogComponent {
 		this.dialogState = this.DIALOG_STATE_CURRENTLY_OPEN;
 		const dialogRef = this.dialog.open(ExampleDialogComponent, {
 			width: this.DIALOG_WIDTH,
-			data: {name: this.name, animal: this.animal}
+			data: {name: this.name, animal: this.animal, spinner: this.spinner}
 		});
 
 		dialogRef.afterClosed().subscribe(result => {
