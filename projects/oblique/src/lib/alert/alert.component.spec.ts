@@ -298,6 +298,24 @@ describe('ObAlertComponent', () => {
 				expect(debugElement.nativeElement.getAttribute('role')).toBe('log');
 			});
 
+			it('should not remove role-attribute if hasRoleAlert is undefined but already has a role that has no type alert', () => {
+				debugElement.nativeElement.setAttribute('role', 'log');
+				obAlertComponent.hasRoleAlert = undefined;
+
+				fixture.detectChanges();
+
+				expect(debugElement.nativeElement.getAttribute('role')).toBe('log');
+			});
+
+			it('should change role-attribute if hasRoleAlert is true and initial doesn\'t have role="alert"', () => {
+				debugElement.nativeElement.setAttribute('role', 'log');
+				obAlertComponent.hasRoleAlert = true;
+
+				fixture.detectChanges();
+
+				expect(debugElement.nativeElement.getAttribute('role')).toBe('alert');
+			});
+
 			it('should have the  value alert in HostBinding if hasRoleAlert true', () => {
 				obAlertComponent.hasRoleAlert = true;
 				fixture.detectChanges();
@@ -340,6 +358,15 @@ describe('ObAlertComponent', () => {
 				fixture.detectChanges();
 
 				expect(obAlertComponent.hasRoleAlert).toBe(undefined);
+			});
+
+			it('should not have a role-attribute if config Input() changed to undefined', () => {
+				obAlertComponent.hasRoleAlert = true;
+				fixture.detectChanges();
+				obAlertComponent.hasRoleAlert = undefined;
+				fixture.detectChanges();
+
+				expect(debugElement.nativeElement.hasAttribute('role')).toBe(false);
 			});
 		});
 
