@@ -1,5 +1,20 @@
-import {Component, EventEmitter, Inject, InjectionToken, Input, Optional, Output, ViewEncapsulation} from '@angular/core';
+import {
+	AfterViewInit,
+	Component,
+	ElementRef,
+	EventEmitter,
+	Inject,
+	InjectionToken,
+	Input,
+	OnDestroy,
+	Optional,
+	Output,
+	ViewChild,
+	ViewEncapsulation
+} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {Subject, filter, fromEvent, merge, tap} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 export const OBLIQUE_COLLAPSE_ACTIVE = new InjectionToken<boolean>('OBLIQUE_COLLAPSE_STATUS');
 export const OBLIQUE_COLLAPSE_ICON_POSITION = new InjectionToken<'left' | 'right' | 'justified' | 'none'>('The default icon position');
@@ -30,10 +45,14 @@ export const OBLIQUE_COLLAPSE_DURATION = new InjectionToken<'slow' | 'fast' | nu
 	],
 	host: {class: 'ob-collapse'}
 })
-export class ObCollapseComponent {
+export class ObCollapseComponent implements AfterViewInit, OnDestroy {
+	static index = 0;
+	@ViewChild('collapseForToggle') collapseToggle: ElementRef<HTMLDivElement>;
+	@Input() id = `collapse-${ObCollapseComponent.index}`;
 	time: number;
 	@Input() iconPosition: 'left' | 'right' | 'justified' | 'none' = 'left';
 	@Output() readonly activeChange = new EventEmitter<boolean>();
+	private readonly unsubscribe = new Subject<void>();
 
 	get active(): boolean {
 		return this.isActive;
@@ -56,6 +75,27 @@ export class ObCollapseComponent {
 		this.isActive = !!this.isActive;
 		this.iconPosition = iconPos ?? this.iconPosition;
 		this.time = ObCollapseComponent.getDuration(animationSpeed || 'slow');
+		ObCollapseComponent.index++;
+	}
+
+	ngAfterViewInit(): void {
+		merge(
+			fromEvent<KeyboardEvent>(this.collapseToggle.nativeElement, 'keyup').pipe(filter(event => event.key === 'Enter')),
+			fromEvent<KeyboardEvent>(this.collapseToggle.nativeElement, 'keydown').pipe(
+				filter(event => event.code === 'Space'),
+				tap(event => event.preventDefault()),
+				filter(event => !event.repeat)
+			)
+		)
+			.pipe(takeUntil(this.unsubscribe))
+			.subscribe(() => {
+				this.active = !this.active;
+			});
+	}
+
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 
 	private static getDuration(duration: 'slow' | 'fast' | number): number {

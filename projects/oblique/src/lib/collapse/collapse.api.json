@@ -7,7 +7,7 @@
       "exported": "obCollapse",
       "type": "component",
       "since": "5.0.0",
-      "updated": "7.0.0",
+      "updated": "8.2.0",
       "inputs": [
         {
           "name": "active",
@@ -24,6 +24,13 @@
           "values": ["left", "right", "justified", "none"],
           "since": "5.0.0",
           "updated": "7.0.0"
+        },
+        {
+          "name": "id",
+          "text": "Unique id of the collapse element, with '-toggle' and '-content' added to the id for the toggle and collapse elements. A manually set id will still increase the count of the index.",
+          "type": "string",
+          "default": "collapse-<index>",
+          "since": "8.2.0"
         },
         {
           "name": "duration",

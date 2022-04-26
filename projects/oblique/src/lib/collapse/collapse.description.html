@@ -1,4 +1,16 @@
 <p>
-	The collapse component is a simple component that shows or hides content. Per default, the content will be hidden and shown on click. This
-	component comes without any styling, it simply animate the height of the content.
+	The collapse component is a simple component that shows or hides content. Per default, the content (id:
+	<code>collapse-index-content</code>) will be hidden and shown on click.
 </p>
+<p>
+	The title (id:<code>collapse-index-toggle</code>) is always shown and can be focused to close and open the content. Every collapse
+	component id must be unique. If no id is set manually then the default id uses the index of the collapse component. A manually set id will
+	still increase the index.
+</p>
+<p>Example:</p>
+<ul>
+	<li>First component with <strong>default</strong> id (index=0): <code>collapse-0-toggle</code> and <code>collapse-0-content</code></li>
+	<li>Second component with <strong>id="myid"</strong> (index=1): <code>myid-toggle</code> and <code>myid-content</code></li>
+	<li>Third component with <strong>default</strong> id (index=2): <code>collapse-2-toggle</code> and <code>collapse-2-content</code></li>
+</ul>
+<p>This component comes without any styling, it simply animates the height of the content.</p>
