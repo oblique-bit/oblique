@@ -31,20 +31,17 @@ export class ObSpinnerComponent implements OnInit, OnDestroy {
 	$state = 'out';
 	private readonly unsubscribe = new Subject<void>();
 
-	constructor(private readonly spinnerService: ObSpinnerService, private readonly element: ElementRef) {
-		spinnerService.events$
+	constructor(private readonly spinnerService: ObSpinnerService, private readonly element: ElementRef) {}
+
+	ngOnInit(): void {
+		this.element.nativeElement.parentElement.classList.add('ob-has-overlay');
+		this.spinnerService.events$
 			.pipe(
 				takeUntil(this.unsubscribe),
 				filter(event => event.channel === this.channel),
 				delay(0) // avoid ExpressionChangedAfterItHasBeenCheckedError when the spinner is activated during a component's initialisation process
 			)
-			.subscribe((event: ObISpinnerEvent) => {
-				this.$state = event.active ? 'in' : 'out';
-			});
-	}
-
-	ngOnInit(): void {
-		this.element.nativeElement.parentElement.classList.add('ob-has-overlay');
+			.subscribe((event: ObISpinnerEvent) => (this.$state = event.active ? 'in' : 'out'));
 	}
 
 	ngOnDestroy(): void {
