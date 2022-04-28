@@ -1,16 +1,10 @@
 /* eslint-disable */
 delete require.cache[require.resolve('./package.json')];
-const fs = require('fs'),
-	gulp = require('gulp'),
+const gulp = require('gulp'),
 	header = require('gulp-header'),
-	replace = require('gulp-replace'),
-	path = require('path'),
 	childProcess = require('child_process'),
 	paths = {
-		dist: './dist/oblique',
-		src: './projects/oblique/src',
-		fa: '~@fortawesome/fontawesome-free',
-		oblique: '~@oblique/oblique/styles'
+		dist: './dist/oblique'
 	},
 	pkg = require('./package.json');
 
@@ -36,26 +30,7 @@ const addBanner = () => {
 		.pipe(gulp.dest(paths.dist));
 };
 
-const distCss = () =>
-	gulp
-		.src(`${paths.dist}/styles/css/oblique-core.css`)
-		.pipe(replace(/(?<=url\()fa-/g, `~@oblique/oblique/styles/fonts/fa-`))
-		.pipe(gulp.dest(`${paths.dist}/styles/css`));
-
-const distBgImage = () =>
-	gulp
-		.src(`${paths.dist}/styles/css/oblique-components.css`)
-		.pipe(replace('cover-background.jpg', '~@oblique/oblique/assets/images/cover-background.jpg'))
-		.pipe(gulp.dest(`${paths.dist}/styles/css`));
-
-const distScss = () =>
-	gulp
-		.src(`${paths.dist}/styles/scss/**/*.scss`)
-		.pipe(replace(`${paths.fa}/webfonts`, `${paths.oblique}/fonts`))
-		.pipe(replace(`${paths.fa}/scss`, `${paths.oblique}/scss/fontawesome`))
-		.pipe(gulp.dest(`${paths.dist}/styles/scss`));
-
-gulp.task('dist', gulp.series(distScss, distCss, distBgImage, addBanner));
+gulp.task('dist', addBanner);
 
 function getEndOfLifeDate(version) {
 	const versionReleaseDate = getTagDate(version);
