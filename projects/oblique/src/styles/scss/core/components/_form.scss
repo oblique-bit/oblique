@@ -5,6 +5,10 @@ fieldset {
 	padding: 0;
 	margin: 0;
 	border: 0;
+
+	+ fieldset {
+		margin-top: variables.$ob-spacing-lg;
+	}
 }
 
 legend {
