@@ -168,12 +168,12 @@ export {
 export {ObTelemetryService, TELEMETRY_DISABLE} from './lib/telemetry/telemetry.service';
 export {OB_BANNER, OB_MATERIAL_CONFIG, getTranslateLoader, multiTranslateLoader, WINDOW} from './lib/utilities';
 export {ObIBanner, ObIMaterialConfig} from './lib/utilities.model';
+export {ObEColor} from './lib/style/colors.model';
 export {ObMultiTranslateLoader, TRANSLATION_FILES} from './lib/multi-translate-loader/multi-translate-loader';
 export {ObITranslationFile} from './lib/multi-translate-loader/multi-translate-loader.model';
 export {ObPopUpService} from './lib/pop-up/pop-up.service';
 export {ObGlobalEventsService} from './lib/global-events/global-events.service';
 export {obOutsideFilter} from './lib/global-events/outsideFilter';
 export {ObliqueModule} from './lib/oblique.module';
-
 export * from './lib/oblique-testing.module';
 export {ObMockMatElement, ObMockModule} from './lib/_mocks/mock-module';
