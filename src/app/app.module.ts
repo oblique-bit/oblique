@@ -73,7 +73,6 @@ registerLocaleData(localeFR);
 		ObHttpApiInterceptorModule,
 		ObInputClearModule,
 		ObMasterLayoutModule,
-		ObMasterLayoutModule,
 		ObMultiselectModule,
 		ObNotificationModule,
 		ObOffCanvasModule,
