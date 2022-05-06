@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 'use strict';
 
 module.exports = {
@@ -40,10 +41,10 @@ module.exports = {
 		 * It is unclear which files are targeted by the global scope, as all covered files have a special rule, the remaining should be 100%
 		 */
 		global: {
-			statements: 84,
-			branches: 69,
-			functions: 75,
-			lines: 83
+			statements: 93.65,
+			branches: 100,
+			functions: 73.33,
+			lines: 92.72
 		},
 		// The following rules do apply to all target files individually
 		'projects/oblique/src/lib/alert/*.ts': {
@@ -112,6 +113,24 @@ module.exports = {
 			functions: 75,
 			lines: 75
 		},
+		'projects/oblique/src/lib/file-upload/drop-zone/*.ts': {
+			statements: 100,
+			branches: 100,
+			functions: 100,
+			lines: 100
+		},
+		'projects/oblique/src/lib/file-upload/file-info/*.ts': {
+			statements: 94.73,
+			branches: 92.3,
+			functions: 86.36,
+			lines: 95.65
+		},
+		'projects/oblique/src/lib/file-upload/progress/*.ts': {
+			statements: 95.65,
+			branches: 95.65,
+			functions: 100,
+			lines: 100
+		},
 		'projects/oblique/src/lib/form-control-state/*.ts': {
 			statements: 88,
 			branches: 81,
@@ -153,6 +172,30 @@ module.exports = {
 			branches: 50,
 			functions: 50,
 			lines: 79
+		},
+		'projects/oblique/src/lib/master-layout/master-layout/*.ts': {
+			statements: 87.7,
+			branches: 57.14,
+			functions: 75.43,
+			lines: 87.17
+		},
+		'projects/oblique/src/lib/master-layout/master-layout-footer/*.ts': {
+			statements: 100,
+			branches: 100,
+			functions: 100,
+			lines: 100
+		},
+		'projects/oblique/src/lib/master-layout/master-layout-header/*.ts': {
+			statements: 80.59,
+			branches: 38.46,
+			functions: 73.07,
+			lines: 79.68
+		},
+		'projects/oblique/src/lib/master-layout/master-layout-navigation/*.ts': {
+			statements: 28.57,
+			branches: 0,
+			functions: 0,
+			lines: 21.05
 		},
 		'projects/oblique/src/lib/multi-translate-loader/*.ts': {
 			statements: 22,
@@ -274,7 +317,7 @@ module.exports = {
 			functions: 66,
 			lines: 89
 		},
-		'projects/oblique/src/lib/utilities.ts': {
+		'projects/oblique/src/lib/*.ts': {
 			statements: 80,
 			branches: 15,
 			functions: 36,
