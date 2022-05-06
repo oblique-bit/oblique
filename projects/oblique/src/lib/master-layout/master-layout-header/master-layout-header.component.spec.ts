@@ -65,7 +65,11 @@ describe('ObMasterLayoutHeaderComponent', () => {
 		});
 
 		it('should have a languages property', () => {
-			expect(component.languages).toEqual([]);
+			expect(component.languages).toEqual([
+				{code: 'de', id: undefined},
+				{code: 'fr', id: undefined},
+				{code: 'it', id: undefined}
+			]);
 		});
 
 		describe('isCustom', () => {

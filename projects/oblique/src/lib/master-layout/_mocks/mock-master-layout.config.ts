@@ -1,39 +1,40 @@
 import {Injectable} from '@angular/core';
-import {ObEScrollMode} from '../master-layout.model';
+import {ObEScrollMode, ObILocale, ObIMasterLayoutFooter, ObIMasterLayoutHeader, ObIMasterLayoutNavigation} from '../master-layout.model';
 
 @Injectable({providedIn: 'root'})
 export class ObMockMasterLayoutConfig {
 	homePageRoute = '/home';
 	focusableFragments = ['content', 'navigation'];
 	scrollToTopDuration = 200;
-	locale = {
-		locales: ['de', 'fr', 'it'],
-		default: 'de',
-		disabled: false
+	locale: ObILocale = {
+		locales: ['de-CH', 'fr-CH', 'it-CH'],
+		defaultLanguage: 'de',
+		disabled: false,
+		display: true
 	};
 	layout = {
-		isFixed: false,
 		hasCover: false,
 		hasMainNavigation: true,
-		hasOffCanvas: true,
-		hasLayout: true
+		hasOffCanvas: false,
+		hasLayout: true,
+		hasMaxWidth: false
 	};
-	header = {
+	header: ObIMasterLayoutHeader = {
 		isSticky: true,
-		isMedium: false,
+		isSmall: false,
 		isCustom: false,
-		hasScrollTransitions: true
+		reduceOnScroll: true
 	};
-	navigation = {
+	navigation: ObIMasterLayoutNavigation = {
 		isFullWidth: false,
 		scrollMode: ObEScrollMode.AUTO,
 		scrollDelta: 95,
 		activeClass: 'active',
 		links: []
 	};
-	footer = {
+	footer: ObIMasterLayoutFooter = {
 		isSticky: false,
 		isCustom: false,
-		hasScrollTransitions: true
+		hasLogoOnScroll: true
 	};
 }
