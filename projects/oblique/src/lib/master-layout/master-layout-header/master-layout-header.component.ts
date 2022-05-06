@@ -141,10 +141,16 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	private formatLanguages(): ObILanguage[] {
 		return this.config.locale.disabled || !this.config.locale.display
 			? []
-			: this.config.locale.locales.map(locale => ({
-					code: ((locale as ObILocaleObject).locale || (locale as string)).split('-')[0],
-					id: (locale as ObILocaleObject).id
-			  }));
+			: this.config.locale.locales
+					.map(locale => this.getLocaleObject(locale))
+					.map(locale => ({
+						code: locale.locale.split('-')[0],
+						id: locale.id
+					}));
+	}
+
+	private getLocaleObject(locale: string | ObILocaleObject): ObILocaleObject {
+		return (locale as ObILocaleObject).locale ? (locale as ObILocaleObject) : {locale: locale as string};
 	}
 
 	private setFocusable(isMenuOpened: boolean): void {
