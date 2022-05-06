@@ -1,4 +1,4 @@
-<h2 class="ob-screen-reader-only" *ngIf="links.length">{{ "i18n.oblique.header.navigation.title" | translate }}</h2>
+<h2 id="ob-navigationlabel" class="ob-screen-reader-only" *ngIf="links.length">{{ "i18n.oblique.header.navigation.title" | translate }}</h2>
 <button
 	class="ob-navigation-scrollable-control ob-navigation-scrollable-control-left"
 	type="button"
@@ -12,6 +12,7 @@
 <ng-content *ngIf="!links.length"></ng-content>
 <nav>
 	<ul
+		aria-labelledby="ob-navigationlabel"
 		id="navigation"
 		*ngIf="links.length"
 		class="ob-main-nav"
