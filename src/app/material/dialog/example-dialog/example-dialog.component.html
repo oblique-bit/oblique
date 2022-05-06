@@ -4,6 +4,7 @@
 </h1>
 
 <div mat-dialog-content>
+	<ob-spinner [channel]="sampleChannel"></ob-spinner>
 	<p>What's your favorite animal?</p>
 	<mat-form-field>
 		<input matInput [(ngModel)]="data.animal" />
