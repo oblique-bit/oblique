@@ -24,7 +24,7 @@ import {ObMasterLayoutConfig} from '../master-layout.config';
 import {scrollEnabled} from '../master-layout.utility';
 import {OB_BANNER, WINDOW} from '../../utilities';
 import {ObIBanner} from '../../utilities.model';
-import {ObEMasterLayoutEventValues, ObILocaleObject, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
+import {ObEMasterLayoutEventValues, ObILanguage, ObILocaleObject, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 
@@ -37,7 +37,7 @@ import {ObGlobalEventsService} from '../../global-events/global-events.service';
 })
 export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	home$: Observable<string>;
-	languages: {code: string; id?: string}[];
+	languages: ObILanguage[];
 	isCustom = this.masterLayout.header.isCustom;
 	banner: ObIBanner;
 	@Input() navigation: ObINavigationLink[];
@@ -138,7 +138,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 			.subscribe(event => (this.isSmall = event.value));
 	}
 
-	private formatLanguages(): {code: string; id?: string}[] {
+	private formatLanguages(): ObILanguage[] {
 		return this.config.locale.disabled || !this.config.locale.display
 			? []
 			: this.config.locale.locales.map(locale => ({

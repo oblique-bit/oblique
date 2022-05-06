@@ -38,6 +38,11 @@ export interface ObILocaleObject {
 	id?: string;
 }
 
+export interface ObILanguage {
+	code: string;
+	id?: string;
+}
+
 export interface ObINavigationLink {
 	label: string;
 	url: string;
