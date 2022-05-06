@@ -186,10 +186,10 @@ module.exports = {
 			lines: 100
 		},
 		'projects/oblique/src/lib/master-layout/master-layout-header/*.ts': {
-			statements: 80.59,
+			statements: 80.88,
 			branches: 38.46,
-			functions: 73.07,
-			lines: 79.68
+			functions: 74.07,
+			lines: 80
 		},
 		'projects/oblique/src/lib/master-layout/master-layout-navigation/*.ts': {
 			statements: 28.57,

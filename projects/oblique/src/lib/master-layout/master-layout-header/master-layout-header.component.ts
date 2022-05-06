@@ -60,7 +60,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		@Inject(WINDOW) private readonly window: Window,
 		@Inject(OB_BANNER) @Optional() bannerToken
 	) {
-		this.languages = this.formatLanguages();
+		this.languages = this.formatLanguages(this.config.locale.languages);
 		this.customChange();
 		this.smallChange();
 		this.reduceOnScroll();
@@ -138,7 +138,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 			.subscribe(event => (this.isSmall = event.value));
 	}
 
-	private formatLanguages(): ObILanguage[] {
+	private formatLanguages(languages: Record<string, string>): ObILanguage[] {
 		return this.config.locale.disabled || !this.config.locale.display
 			? []
 			: this.config.locale.locales
@@ -146,7 +146,8 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 					.map(locale => ({
 						code: locale.locale.split('-')[0],
 						id: locale.id
-					}));
+					}))
+					.map(locale => ({...locale, label: languages[locale.code]}));
 	}
 
 	private getLocaleObject(locale: string | ObILocaleObject): ObILocaleObject {

@@ -31,11 +31,13 @@ export interface ObILocale {
 	defaultLanguage: string;
 	disabled: boolean;
 	display: boolean;
+	languages: Record<string, string>;
 }
 
 export interface ObILocaleObject {
 	locale: string;
 	id?: string;
+	label?: string;
 }
 
 export interface ObILanguage {
