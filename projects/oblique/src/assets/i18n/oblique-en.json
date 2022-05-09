@@ -66,6 +66,7 @@
   "i18n.oblique.not-found.title": "Something went wrong!",
   "i18n.oblique.not-found.subtitle": "This route does not seem to exist",
   "i18n.oblique.back-to-home": "Back to home",
+  "i18n.oblique.notification.close": "Close the notification",
   "i18n.oblique.notification.type.info": "Info",
   "i18n.oblique.notification.type.success": "Success",
   "i18n.oblique.notification.type.warning": "Warning",

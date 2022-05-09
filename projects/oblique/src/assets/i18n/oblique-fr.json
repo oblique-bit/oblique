@@ -66,6 +66,7 @@
   "i18n.oblique.not-found.title": "Quelque chose s'est mal passé !",
   "i18n.oblique.not-found.subtitle": "Cette route ne semble pas exister",
   "i18n.oblique.back-to-home": "Retourner à la page d'accueil",
+  "i18n.oblique.notification.close": "Fermer la notification",
   "i18n.oblique.notification.type.info": "Info",
   "i18n.oblique.notification.type.success": "Succès",
   "i18n.oblique.notification.type.warning": "Avertissement",
