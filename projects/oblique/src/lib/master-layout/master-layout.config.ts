@@ -31,7 +31,13 @@ export class ObMasterLayoutConfig {
 		locales: ['de-CH', 'fr-CH', 'it-CH'],
 		defaultLanguage: 'de',
 		disabled: false,
-		display: true
+		display: true,
+		languages: {
+			de: 'Deutsch',
+			fr: 'Français',
+			it: 'Italiano',
+			en: 'English'
+		}
 	};
 
 	/**

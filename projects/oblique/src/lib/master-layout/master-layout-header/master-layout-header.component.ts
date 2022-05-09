@@ -24,7 +24,7 @@ import {ObMasterLayoutConfig} from '../master-layout.config';
 import {scrollEnabled} from '../master-layout.utility';
 import {OB_BANNER, WINDOW} from '../../utilities';
 import {ObIBanner} from '../../utilities.model';
-import {ObEMasterLayoutEventValues, ObILocaleObject, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
+import {ObEMasterLayoutEventValues, ObILanguage, ObILocaleObject, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 
@@ -37,7 +37,7 @@ import {ObGlobalEventsService} from '../../global-events/global-events.service';
 })
 export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	home$: Observable<string>;
-	languages: {code: string; id?: string}[];
+	languages: ObILanguage[];
 	isCustom = this.masterLayout.header.isCustom;
 	banner: ObIBanner;
 	@Input() navigation: ObINavigationLink[];
@@ -60,7 +60,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		@Inject(WINDOW) private readonly window: Window,
 		@Inject(OB_BANNER) @Optional() bannerToken
 	) {
-		this.languages = this.formatLanguages();
+		this.languages = this.formatLanguages(this.config.locale.languages);
 		this.customChange();
 		this.smallChange();
 		this.reduceOnScroll();
@@ -138,13 +138,20 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 			.subscribe(event => (this.isSmall = event.value));
 	}
 
-	private formatLanguages(): {code: string; id?: string}[] {
+	private formatLanguages(languages: Record<string, string>): ObILanguage[] {
 		return this.config.locale.disabled || !this.config.locale.display
 			? []
-			: this.config.locale.locales.map(locale => ({
-					code: ((locale as ObILocaleObject).locale || (locale as string)).split('-')[0],
-					id: (locale as ObILocaleObject).id
-			  }));
+			: this.config.locale.locales
+					.map(locale => this.getLocaleObject(locale))
+					.map(locale => ({
+						code: locale.locale.split('-')[0],
+						id: locale.id
+					}))
+					.map(locale => ({...locale, label: languages[locale.code]}));
+	}
+
+	private getLocaleObject(locale: string | ObILocaleObject): ObILocaleObject {
+		return (locale as ObILocaleObject).locale ? (locale as ObILocaleObject) : {locale: locale as string};
 	}
 
 	private setFocusable(isMenuOpened: boolean): void {

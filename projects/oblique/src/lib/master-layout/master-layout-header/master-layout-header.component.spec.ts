@@ -1,6 +1,6 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {EMPTY, Observable, Subject} from 'rxjs';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
@@ -15,6 +15,7 @@ import {ObMockScrollingEvents} from '../../scrolling/_mocks/mock-scrolling-event
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
+import {By} from '@angular/platform-browser';
 
 describe('ObMasterLayoutHeaderComponent', () => {
 	let component: ObMasterLayoutHeaderComponent;
@@ -64,10 +65,6 @@ describe('ObMasterLayoutHeaderComponent', () => {
 			expect(component.home$ instanceof Observable).toBe(true);
 		});
 
-		it('should have a languages property', () => {
-			expect(component.languages).toEqual([]);
-		});
-
 		describe('isCustom', () => {
 			it('should be defined', () => {
 				expect(component.isCustom).toBe(mockMasterLayoutService.header.isCustom);
@@ -111,6 +108,93 @@ describe('ObMasterLayoutHeaderComponent', () => {
 			jest.spyOn(translate, 'use');
 			component.changeLang('de');
 			expect(translate.use).toHaveBeenCalledWith('de');
+		});
+	});
+
+	describe('languages', () => {
+		describe('property', () => {
+			it('should be defined', () => {
+				expect(component.languages).toBeDefined();
+			});
+
+			it('should have a default values', () => {
+				expect(component.languages).toEqual([
+					{code: 'de', id: undefined, label: 'Deutsch'},
+					{code: 'fr', id: undefined, label: 'Français'},
+					{code: 'it', id: undefined, label: 'Italiano'}
+				]);
+			});
+		});
+
+		describe('title', () => {
+			let titleElement: DebugElement;
+			beforeEach(() => {
+				titleElement = fixture.debugElement.query(By.css('#ob-language-change'));
+			});
+
+			it('should be present', () => {
+				expect(titleElement).toBeDefined();
+			});
+
+			it('should be only visible to screen reader', () => {
+				expect(titleElement.classes['ob-screen-reader-only']).toBe(true);
+			});
+
+			it('should have a text', () => {
+				expect(titleElement.nativeElement.textContent).toBe('i18n.oblique.header.languages.title');
+			});
+		});
+
+		describe('language list', () => {
+			let listElement: DebugElement;
+			beforeEach(() => {
+				listElement = fixture.debugElement.query(By.css('.ob-header-locale'));
+			});
+
+			it('should be present', () => {
+				expect(listElement).toBeDefined();
+			});
+
+			it('should be linked to the title', () => {
+				expect(listElement.attributes['aria-labelledby']).toBe('ob-language-change');
+			});
+		});
+
+		describe('language buttons', () => {
+			let buttonElements: DebugElement[];
+			const languages = [
+				{code: 'DE', name: 'Deutsch'},
+				{code: 'FR', name: 'Français'},
+				{code: 'IT', name: 'Italiano'}
+			];
+			beforeEach(() => {
+				buttonElements = fixture.debugElement.queryAll(By.css('.ob-control-locale'));
+			});
+
+			it('should be present', () => {
+				expect(buttonElements).toBeDefined();
+			});
+
+			it('should be 3 buttons', () => {
+				expect(buttonElements.length).toBe(3);
+			});
+
+			describe.each(languages)('button', locale => {
+				let buttonElement: DebugElement;
+				beforeEach(() => {
+					buttonElement = buttonElements[languages.findIndex(language => language.code === locale.code)];
+				});
+
+				describe(locale.code, () => {
+					it('should have a text', () => {
+						expect(buttonElement.nativeElement.textContent.trim()).toBe(locale.code);
+					});
+
+					it('should have an accessible label', () => {
+						expect(buttonElement.attributes['aria-label']).toBe(locale.name);
+					});
+				});
+			});
 		});
 	});
 });
