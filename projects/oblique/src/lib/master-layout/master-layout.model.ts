@@ -91,3 +91,11 @@ export enum ObEMasterLayoutEventValues {
 	NAVIGATION_IS_FULL_WIDTH,
 	NAVIGATION_SCROLL_MODE
 }
+
+export enum ObEEnvironment {
+	LOCAL = 'LOCAL',
+	DEV = 'DEV',
+	REF = 'REF',
+	TEST = 'TEST',
+	ABN = 'ABN'
+}
