@@ -24,6 +24,7 @@
 		<li class="ob-main-nav-item" obMasterLayoutNavigationItem *ngFor="let link of links" (toggled)="hasOpenedMenu = $event">
 			<ng-container *ngIf="!link.isExternal">
 				<a
+					class="ob-master-layout-navigation-link"
 					[attr.id]="link.id"
 					[routerLink]="link.url"
 					[routerLinkActive]="activeClass"
@@ -39,6 +40,7 @@
 			</ng-container>
 			<ng-container *ngIf="link.isExternal">
 				<a
+					class="ob-master-layout-navigation-link"
 					[attr.id]="link.id"
 					[href]="link.url"
 					[attr.target]="!link.sameTarget ? '_blank' : undefined"
@@ -51,6 +53,7 @@
 			<ng-container *ngIf="link.children">
 				<button
 					type="button"
+					class="ob-master-layout-navigation-link"
 					[attr.id]="link.id"
 					[class.active]="link.active"
 					[attr.aria-current]="link.active ? 'page' : undefined"
@@ -58,9 +61,9 @@
 					obAriaMenuButton="menu-{{ link.id || link.url }}"
 				>
 					<span>{{ link.label | translate }}</span>
-					<ob-icon icon="chevron-down" class="ob-toggle-collapsed"></ob-icon>
-					<ob-icon icon="chevron-up" class="ob-toggle-expanded"></ob-icon>
-					<ob-icon icon="chevron-right" class="ob-toggle-layout-collapsed"></ob-icon>
+					<ob-icon icon="chevron-down" class="ob-nav-toggle ob-toggle-collapsed"></ob-icon>
+					<ob-icon icon="chevron-up" class="ob-nav-toggle ob-toggle-expanded"></ob-icon>
+					<ob-icon icon="chevron-right" class="ob-nav-toggle ob-toggle-layout-collapsed"></ob-icon>
 				</button>
 				<div class="ob-sub-menu" id="menu-{{ link.id || link.url }}" obMasterLayoutNavigationMenu>
 					<ul class="ob-main-nav ob-sub-nav">
@@ -73,6 +76,7 @@
 						<li obMasterLayoutNavigationItem *ngFor="let child of link.children">
 							<a
 								*ngIf="!child.isExternal"
+								class="ob-master-layout-navigation-link"
 								[attr.id]="child.id"
 								[routerLink]="link.url + '/' + child.url"
 								[routerLinkActive]="activeClass"
@@ -86,6 +90,7 @@
 							</a>
 							<a
 								*ngIf="child.isExternal"
+								class="ob-master-layout-navigation-link"
 								[attr.id]="child.id"
 								[href]="child.url"
 								[attr.target]="!child.sameTarget ? '_blank' : undefined"
