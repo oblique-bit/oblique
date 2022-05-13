@@ -1,4 +1,16 @@
-import {AfterViewInit, Component, ElementRef, HostBinding, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation} from '@angular/core';
+import {
+	AfterViewInit,
+	Component,
+	ElementRef,
+	HostBinding,
+	Inject,
+	Input,
+	OnDestroy,
+	OnInit,
+	Optional,
+	Renderer2,
+	ViewEncapsulation
+} from '@angular/core';
 import {IsActiveMatchOptions, NavigationEnd, Router} from '@angular/router';
 import {filter, takeUntil} from 'rxjs/operators';
 
@@ -7,6 +19,7 @@ import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObEMasterLayoutEventValues, ObEScrollMode, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {Subject} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
+import {ObUseObliqueIcons} from '../../icon/icon.model';
 
 @Component({
 	selector: 'ob-master-layout-navigation',
@@ -34,7 +47,8 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 		private readonly config: ObMasterLayoutConfig,
 		private readonly renderer: Renderer2,
 		private readonly el: ElementRef,
-		private readonly globalEventsService: ObGlobalEventsService
+		private readonly globalEventsService: ObGlobalEventsService,
+		@Optional() @Inject(ObUseObliqueIcons) public readonly useObliqueIcons: boolean
 	) {
 		this.masterLayout.navigation.refreshed.pipe(takeUntil(this.unsubscribe)).subscribe(this.refresh.bind(this));
 		this.scrollModeChange();

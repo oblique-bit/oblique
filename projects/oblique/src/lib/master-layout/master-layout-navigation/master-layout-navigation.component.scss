@@ -54,6 +54,7 @@
 		button {
 			display: flex;
 			width: 100%;
+			line-height: 1.5; // default oblique value
 			margin: 0;
 			padding: variables.$ob-spacing-sm variables.$ob-spacing-default;
 			border-bottom: 1px solid variables.$ob-gray-light;
@@ -227,5 +228,10 @@
 	.ob-master-layout-navigation-link {
 		gap: variables.$ob-spacing-sm;
 		align-items: center;
+	}
+
+	.ob-icon-wrapper:not(.ob-font-awesome) {
+		font-size: variables.$ob-font-size-bigger;
+		line-height: 1;
 	}
 }
