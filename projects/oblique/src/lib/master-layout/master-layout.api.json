@@ -524,15 +524,16 @@
     {
       "name": "ObINavigationLink",
       "type": "interface",
-      "usage": "The structure of a link in navigation area",
+      "usage": "The structure of a link in navigation area. A label or an icon or both have to be defined",
       "since": "4.0.0",
       "updated": "8.2.0",
       "variables": [
         {
           "name": "label",
-          "text": "Label to show in the link",
+          "text": "Label to show in the link. If no label should be displayed, it will serve as tooltip and accessible text.",
           "type": "string",
-          "since": "4.0.0"
+          "since": "4.0.0",
+          "updated": "8.2.0"
         },
         {
           "name": "url",
@@ -586,8 +587,16 @@
         },
         {
           "name": "icon",
-          "text": "An icon to be displayed before the link's label.",
+          "text": "An icon to be displayed before the link's label. If no label is wished, the <code>iconOnly</code> option has to be activated",
           "type": "ObEIcon | string",
+          "isOptional": true,
+          "since": "8.2.0"
+        },
+        {
+          "name": "iconOnly",
+          "text": "When false, the label will be displayed normally. When true, the label will hidden while still accessible from a screen reader and placed in a tooltip.",
+          "type": "boolean",
+          "default": false,
           "isOptional": true,
           "since": "8.2.0"
         }

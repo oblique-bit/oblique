@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import {TranslateModule} from '@ngx-translate/core';
 import {ObNotificationModule} from '../notification/notification.module';
@@ -43,6 +44,7 @@ export {ObINavigationLink, ObEScrollMode, ObIMasterLayoutEvent, ObEMasterLayoutE
 	imports: [
 		CommonModule,
 		MatButtonModule,
+		MatTooltipModule,
 		ObButtonModule,
 		ObIconModule,
 		ObNotificationModule,

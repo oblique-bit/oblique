@@ -58,6 +58,7 @@ export interface ObINavigationLink {
 	active?: boolean;
 	routerLinkActiveOptions?: IsActiveMatchOptions;
 	icon?: ObEIcon | string;
+	iconOnly?: boolean;
 }
 
 export interface ObIJumpLink {
