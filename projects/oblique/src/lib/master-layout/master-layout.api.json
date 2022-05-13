@@ -526,7 +526,7 @@
       "type": "interface",
       "usage": "The structure of a link in navigation area",
       "since": "4.0.0",
-      "updated": "7.0.0",
+      "updated": "8.2.0",
       "variables": [
         {
           "name": "label",
@@ -583,6 +583,13 @@
           "default": "{paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'}",
           "isOptional": true,
           "since": "7.0.0"
+        },
+        {
+          "name": "icon",
+          "text": "An icon to be displayed before the link's label.",
+          "type": "ObEIcon | string",
+          "isOptional": true,
+          "since": "8.2.0"
         }
       ]
     },

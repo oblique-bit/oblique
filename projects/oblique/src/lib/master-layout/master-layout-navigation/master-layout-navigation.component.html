@@ -35,6 +35,7 @@
 					obMasterLayoutNavigationToggle
 					*ngIf="!link.children"
 				>
+					<ob-icon *ngIf="link.icon" [icon]="link.icon"></ob-icon>
 					{{ link.label | translate }}
 				</a>
 			</ng-container>
@@ -47,6 +48,7 @@
 					[attr.rel]="!link.sameTarget ? 'noopener noreferrer' : undefined"
 					*ngIf="!link.children"
 				>
+					<ob-icon *ngIf="link.icon" [icon]="link.icon"></ob-icon>
 					{{ link.label | translate }}
 				</a>
 			</ng-container>
@@ -60,6 +62,7 @@
 					obMasterLayoutNavigationToggle
 					obAriaMenuButton="menu-{{ link.id || link.url }}"
 				>
+					<ob-icon *ngIf="link.icon" [icon]="link.icon"></ob-icon>
 					<span>{{ link.label | translate }}</span>
 					<ob-icon icon="chevron-down" class="ob-nav-toggle ob-toggle-collapsed" [class.ob-font-awesome]="!useObliqueIcons"></ob-icon>
 					<ob-icon icon="chevron-up" class="ob-nav-toggle ob-toggle-expanded" [class.ob-font-awesome]="!useObliqueIcons"></ob-icon>
@@ -90,6 +93,7 @@
 								[attr.aria-current]="link.active ? 'page' : undefined"
 								obMasterLayoutNavigationToggle
 							>
+								<ob-icon *ngIf="child.icon" [icon]="child.icon"></ob-icon>
 								{{ child.label | translate }}
 							</a>
 							<a
@@ -100,6 +104,7 @@
 								[attr.target]="!child.sameTarget ? '_blank' : undefined"
 								[attr.rel]="!child.sameTarget ? 'noopener noreferrer' : undefined"
 							>
+								<ob-icon *ngIf="child.icon" [icon]="child.icon"></ob-icon>
 								{{ child.label | translate }}
 							</a>
 						</li>
