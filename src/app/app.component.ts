@@ -14,6 +14,7 @@ export class AppComponent {
 	offCanvasOpen = false;
 	theme$: Observable<string>;
 	font$: Observable<string>;
+	readonly year = new Date().getFullYear();
 	navigation: ObINavigationLink[] = [
 		{url: 'home', label: 'i18n.routes.home.title', fragment: 'test', queryParams: {param1: 'a', param2: 'b'}},
 		{url: 'http://www.google.ch', label: 'Google'},
