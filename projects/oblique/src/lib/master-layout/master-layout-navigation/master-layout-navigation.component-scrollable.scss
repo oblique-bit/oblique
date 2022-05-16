@@ -3,7 +3,7 @@
 @use "../../../styles/scss/core/mixins/shadow";
 
 .ob-master-layout-navigation {
-	> ul {
+	> nav > ul {
 		transition: padding variables.$ob-duration-default; // because navigation-scrollable-* classes are dynamic
 	}
 
@@ -25,8 +25,8 @@
 			.ob-navigation-scrollable-control {
 				position: absolute;
 				top: 0;
-				width: variables.$ob-navigation-scrollable-padding;
 				height: 100%;
+				padding: 0 variables.$ob-spacing-sm;
 				border: none;
 				display: inline-block;
 				background-color: variables.$ob-gray-extra-light;
