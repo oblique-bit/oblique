@@ -43,6 +43,8 @@
 				}
 
 				.ob-icon-wrapper {
+					display: flex;
+
 					> * {
 						transition: transform variables.$ob-duration-fast ease-in-out;
 					}
