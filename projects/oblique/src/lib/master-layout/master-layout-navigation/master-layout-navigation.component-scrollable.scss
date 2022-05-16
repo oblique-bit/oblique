@@ -42,8 +42,10 @@
 					right: 0;
 				}
 
-				> span {
-					transition: transform variables.$ob-duration-fast ease-in-out;
+				.ob-icon-wrapper {
+					> * {
+						transition: transform variables.$ob-duration-fast ease-in-out;
+					}
 				}
 
 				&:hover,
@@ -53,7 +55,7 @@
 					background-color: variables.$ob-gray-light;
 					box-shadow: none;
 
-					> span {
+					.ob-icon-wrapper > * {
 						transform: scale(1.3);
 					}
 				}
