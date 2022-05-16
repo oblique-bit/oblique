@@ -24,9 +24,17 @@ import {ObMasterLayoutConfig} from '../master-layout.config';
 import {scrollEnabled} from '../master-layout.utility';
 import {OB_BANNER, WINDOW} from '../../utilities';
 import {ObIBanner} from '../../utilities.model';
-import {ObEMasterLayoutEventValues, ObILanguage, ObILocaleObject, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
+import {
+	ObEEnvironment,
+	ObEMasterLayoutEventValues,
+	ObILanguage,
+	ObILocaleObject,
+	ObIMasterLayoutEvent,
+	ObINavigationLink
+} from '../master-layout.model';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
+import {ObEColor} from '../../style/colors.model';
 
 @Component({
 	selector: 'ob-master-layout-header',
@@ -58,13 +66,13 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		private readonly renderer: Renderer2,
 		private readonly globalEventsService: ObGlobalEventsService,
 		@Inject(WINDOW) private readonly window: Window,
-		@Inject(OB_BANNER) @Optional() bannerToken
+		@Inject(OB_BANNER) @Optional() bannerToken: ObIBanner
 	) {
 		this.languages = this.formatLanguages(this.config.locale.languages);
 		this.customChange();
 		this.smallChange();
 		this.reduceOnScroll();
-		this.banner = {color: '#000', bgColor: '#0f0', ...bannerToken};
+		this.banner = this.initializeBanner(bannerToken);
 		this.home$ = this.masterLayout.homePageRouteChange$;
 	}
 
@@ -161,5 +169,21 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		this.el.nativeElement.querySelectorAll('.ob-master-layout-header-controls a.ob-control-link').forEach(el => {
 			this.renderer.setAttribute(el, 'tabindex', isFocusable ? '0' : '-1');
 		});
+	}
+	private initializeBanner(bannerToken): ObIBanner {
+		switch (bannerToken?.text) {
+			case ObEEnvironment.LOCAL:
+				return {color: '#fff', bgColor: ObEColor.SUCCESS, ...bannerToken};
+			case ObEEnvironment.DEV:
+				return {color: ObEColor.DEFAULT, bgColor: '#ffd700', ...bannerToken};
+			case ObEEnvironment.REF:
+				return {color: ObEColor.DEFAULT, bgColor: ObEColor.WARNING, ...bannerToken};
+			case ObEEnvironment.TEST:
+				return {color: '#fff', bgColor: ObEColor.PRIMARY, ...bannerToken};
+			case ObEEnvironment.ABN:
+				return {color: '#fff', bgColor: ObEColor.ERROR, ...bannerToken};
+			default:
+				return {color: '#fff', bgColor: ObEColor.SUCCESS, ...bannerToken};
+		}
 	}
 }
