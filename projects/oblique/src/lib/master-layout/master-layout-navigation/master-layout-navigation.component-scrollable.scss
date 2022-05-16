@@ -30,7 +30,6 @@
 				border: none;
 				display: inline-block;
 				background-color: variables.$ob-gray-extra-light;
-				text-align: center;
 				z-index: variables.$ob-z-index-controls;
 
 				&.ob-navigation-scrollable-control-left {
@@ -67,20 +66,8 @@
 			}
 
 			.ob-navigation-scrollable-content {
-				display: block;
-				vertical-align: bottom;
-				white-space: nowrap;
-				margin-left: 0;
-				margin-right: 0;
 				padding-right: variables.$ob-navigation-scrollable-padding;
 				padding-left: variables.$ob-navigation-scrollable-padding;
-
-				> li {
-					display: inline-block;
-					white-space: normal;
-					// Animating list item with a negative margin ensures parent menu keeps the original width:
-					transition: margin variables.$ob-duration-default;
-				}
 			}
 		}
 	}
