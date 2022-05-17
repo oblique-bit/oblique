@@ -16,7 +16,7 @@ body {
 }
 
 html {
-	line-height: 1.5;
+	line-height: variables.$ob-line-height;
 	-webkit-text-size-adjust: 100%;
 }
 

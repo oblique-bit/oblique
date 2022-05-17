@@ -54,7 +54,7 @@
 		button {
 			display: flex;
 			width: 100%;
-			line-height: 1.5; // default oblique value
+			line-height: variables.$ob-line-height;
 			margin: 0;
 			padding: variables.$ob-spacing-sm variables.$ob-spacing-default;
 			border-bottom: 1px solid variables.$ob-gray-light;
