@@ -3,7 +3,7 @@
 @use "../../../styles/scss/core/mixins/shadow";
 
 .ob-master-layout-navigation {
-	> ul {
+	> nav > ul {
 		transition: padding variables.$ob-duration-default; // because navigation-scrollable-* classes are dynamic
 	}
 
@@ -25,24 +25,29 @@
 			.ob-navigation-scrollable-control {
 				position: absolute;
 				top: 0;
-				width: variables.$ob-navigation-scrollable-padding;
 				height: 100%;
+				padding: 0 variables.$ob-spacing-sm;
 				border: none;
 				display: inline-block;
 				background-color: variables.$ob-gray-extra-light;
-				text-align: center;
 				z-index: variables.$ob-z-index-controls;
 
 				&.ob-navigation-scrollable-control-left {
 					@include shadow.ob-innerBottomShadow();
+					left: 0;
 				}
 
 				&.ob-navigation-scrollable-control-right {
 					@include shadow.ob-innerBottomShadow();
+					right: 0;
 				}
 
-				> span {
-					transition: transform variables.$ob-duration-fast ease-in-out;
+				.ob-icon-wrapper {
+					display: flex;
+
+					> * {
+						transition: transform variables.$ob-duration-fast ease-in-out;
+					}
 				}
 
 				&:hover,
@@ -52,35 +57,15 @@
 					background-color: variables.$ob-gray-light;
 					box-shadow: none;
 
-					> span {
+					.ob-icon-wrapper > * {
 						transform: scale(1.3);
 					}
 				}
 			}
 
-			.ob-navigation-scrollable-control-left {
-				left: 0;
-			}
-
-			.ob-navigation-scrollable-control-right {
-				right: 0;
-			}
-
 			.ob-navigation-scrollable-content {
-				display: block;
-				vertical-align: bottom;
-				white-space: nowrap;
-				margin-left: 0;
-				margin-right: 0;
 				padding-right: variables.$ob-navigation-scrollable-padding;
 				padding-left: variables.$ob-navigation-scrollable-padding;
-
-				> li {
-					display: inline-block;
-					white-space: normal;
-					// Animating list item with a negative margin ensures parent menu keeps the original width:
-					transition: margin variables.$ob-duration-default;
-				}
 			}
 		}
 	}
