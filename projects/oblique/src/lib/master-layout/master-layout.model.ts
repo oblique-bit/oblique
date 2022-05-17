@@ -1,4 +1,5 @@
 import {IsActiveMatchOptions} from '@angular/router';
+import {ObEIcon} from '@oblique/icon/icon.model';
 
 export enum ObEScrollMode {
 	AUTO,
@@ -56,6 +57,8 @@ export interface ObINavigationLink {
 	id?: string;
 	active?: boolean;
 	routerLinkActiveOptions?: IsActiveMatchOptions;
+	icon?: ObEIcon | string;
+	iconOnly?: boolean;
 }
 
 export interface ObIJumpLink {

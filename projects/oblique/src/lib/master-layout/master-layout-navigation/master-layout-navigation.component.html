@@ -32,10 +32,12 @@
 					[fragment]="link.fragment"
 					[queryParams]="link.queryParams"
 					[attr.aria-current]="link.active ? 'page' : undefined"
+					[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
 					obMasterLayoutNavigationToggle
 					*ngIf="!link.children"
 				>
-					{{ link.label | translate }}
+					<ob-icon *ngIf="link.icon" [icon]="link.icon"></ob-icon>
+					<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
 				</a>
 			</ng-container>
 			<ng-container *ngIf="link.isExternal">
@@ -45,9 +47,11 @@
 					[href]="link.url"
 					[attr.target]="!link.sameTarget ? '_blank' : undefined"
 					[attr.rel]="!link.sameTarget ? 'noopener noreferrer' : undefined"
+					[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
 					*ngIf="!link.children"
 				>
-					{{ link.label | translate }}
+					<ob-icon *ngIf="link.icon" [icon]="link.icon"></ob-icon>
+					<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
 				</a>
 			</ng-container>
 			<ng-container *ngIf="link.children">
@@ -57,10 +61,12 @@
 					[attr.id]="link.id"
 					[class.active]="link.active"
 					[attr.aria-current]="link.active ? 'page' : undefined"
+					[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
 					obMasterLayoutNavigationToggle
 					obAriaMenuButton="menu-{{ link.id || link.url }}"
 				>
-					<span>{{ link.label | translate }}</span>
+					<ob-icon *ngIf="link.icon" [icon]="link.icon"></ob-icon>
+					<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
 					<ob-icon icon="chevron-down" class="ob-nav-toggle ob-toggle-collapsed" [class.ob-font-awesome]="!useObliqueIcons"></ob-icon>
 					<ob-icon icon="chevron-up" class="ob-nav-toggle ob-toggle-expanded" [class.ob-font-awesome]="!useObliqueIcons"></ob-icon>
 					<ob-icon
@@ -88,9 +94,11 @@
 								[routerLinkActiveOptions]="link.routerLinkActiveOptions || this.routerLinkActiveOptions"
 								[queryParams]="child.queryParams"
 								[attr.aria-current]="link.active ? 'page' : undefined"
+								[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
 								obMasterLayoutNavigationToggle
 							>
-								{{ child.label | translate }}
+								<ob-icon *ngIf="child.icon" [icon]="child.icon"></ob-icon>
+								<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
 							</a>
 							<a
 								*ngIf="child.isExternal"
@@ -99,8 +107,10 @@
 								[href]="child.url"
 								[attr.target]="!child.sameTarget ? '_blank' : undefined"
 								[attr.rel]="!child.sameTarget ? 'noopener noreferrer' : undefined"
+								[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
 							>
-								{{ child.label | translate }}
+								<ob-icon *ngIf="child.icon" [icon]="child.icon"></ob-icon>
+								<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
 							</a>
 						</li>
 					</ul>

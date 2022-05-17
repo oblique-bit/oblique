@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ObIJumpLink, ObINavigationLink, ObISearchWidgetItem} from '@oblique/oblique';
+import {ObEIcon, ObIJumpLink, ObINavigationLink, ObISearchWidgetItem} from '@oblique/oblique';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
@@ -16,12 +16,20 @@ export class AppComponent {
 	font$: Observable<string>;
 	readonly year = new Date().getFullYear();
 	navigation: ObINavigationLink[] = [
-		{url: 'home', label: 'i18n.routes.home.title', fragment: 'test', queryParams: {param1: 'a', param2: 'b'}},
-		{url: 'http://www.google.ch', label: 'Google'},
+		{
+			url: 'home',
+			label: 'i18n.routes.home.title',
+			icon: ObEIcon.HOME,
+			iconOnly: true,
+			fragment: 'test',
+			queryParams: {param1: 'a', param2: 'b'}
+		},
+		{url: 'http://www.google.ch', label: 'Google', icon: ObEIcon.SEARCH},
 		{url: 'http://www.google.ch', label: 'Google 2', sameTarget: true},
 		{
 			url: 'samples',
 			label: 'i18n.routes.samples.title',
+			icon: ObEIcon.BOOKMARK,
 			children: [
 				{url: 'alert', label: 'Alert'},
 				{url: 'button', label: 'Buttons'},
@@ -108,6 +116,17 @@ export class AppComponent {
 				{url: 'tabs', label: 'Tabs'},
 				{url: 'tooltip', label: 'Tooltip'},
 				{url: 'file-upload', label: 'File Upload'}
+			]
+		},
+		{
+			url: 'icon sample',
+			label: 'Icon samples',
+			icon: ObEIcon.APPS,
+			iconOnly: true,
+			children: [
+				{url: 'home', icon: ObEIcon.ALD, label: 'Icon with label'},
+				{url: 'home', label: 'Label only'},
+				{url: 'home', label: 'icon only', icon: ObEIcon.ANCHOR, iconOnly: true}
 			]
 		}
 	];
