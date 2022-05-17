@@ -1,0 +1,7 @@
+@use "../../core/variables";
+
+.ob-external-link {
+	display: inline-flex;
+	align-items: center;
+	gap: variables.$ob-spacing-xs;
+}

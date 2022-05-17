@@ -73,9 +73,6 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 
 	private addIcon(): void {
 		if (this.icon !== 'none' && this.iconElement) {
-			const marginPosition = this.icon === 'left' ? 'right' : 'left';
-			this.renderer.setProperty(this.iconElement, 'style', `margin-${marginPosition}: 4px`); // $spacing-xs
-
 			if (this.icon === 'left') {
 				this.renderer.insertBefore(this.host, this.iconElement, this.host.firstChild);
 			} else {
