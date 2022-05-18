@@ -98,7 +98,8 @@ export {
 	ObIMasterLayoutEvent,
 	ObEMasterLayoutEventValues,
 	ObINavigationLink,
-	ObIJumpLink
+	ObIJumpLink,
+	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION
 } from './lib/master-layout/master-layout.module';
 export {
 	ObMultiselectComponent,

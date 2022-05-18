@@ -5,6 +5,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 
 import {TranslateModule} from '@ngx-translate/core';
+import {ObExternalLinkModule} from '../external-link/external-link.module';
 import {ObNotificationModule} from '../notification/notification.module';
 import {ObSpinnerModule} from '../spinner/spinner.module';
 import {ObScrollingModule} from '../scrolling/scrolling.module';
@@ -38,7 +39,14 @@ export {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation/
 export {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
 export {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
 export {ObMasterLayoutConfig} from './master-layout.config';
-export {ObINavigationLink, ObEScrollMode, ObIMasterLayoutEvent, ObEMasterLayoutEventValues, ObIJumpLink} from './master-layout.model';
+export {
+	ObINavigationLink,
+	ObEScrollMode,
+	ObIMasterLayoutEvent,
+	ObEMasterLayoutEventValues,
+	ObIJumpLink,
+	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION
+} from './master-layout.model';
 
 @NgModule({
 	imports: [
@@ -46,6 +54,7 @@ export {ObINavigationLink, ObEScrollMode, ObIMasterLayoutEvent, ObEMasterLayoutE
 		MatButtonModule,
 		MatTooltipModule,
 		ObButtonModule,
+		ObExternalLinkModule,
 		ObIconModule,
 		ObNotificationModule,
 		ObOffCanvasModule,
