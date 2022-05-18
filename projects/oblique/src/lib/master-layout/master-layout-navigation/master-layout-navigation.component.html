@@ -43,6 +43,7 @@
 			<ng-container *ngIf="link.isExternal">
 				<a
 					class="ob-master-layout-navigation-link"
+					[icon]="hideExternalLinks ? 'none' : 'right'"
 					[attr.id]="link.id"
 					[href]="link.url"
 					[attr.target]="!link.sameTarget ? '_blank' : undefined"
@@ -103,6 +104,7 @@
 							<a
 								*ngIf="child.isExternal"
 								class="ob-master-layout-navigation-link"
+								[icon]="hideExternalLinks ? 'none' : 'right'"
 								[attr.id]="child.id"
 								[href]="child.url"
 								[attr.target]="!child.sameTarget ? '_blank' : undefined"

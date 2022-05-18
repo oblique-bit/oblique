@@ -12,6 +12,7 @@ import {TranslateModule} from '@ngx-translate/core';
 
 import {
 	OB_BANNER,
+	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION,
 	ObAlertModule,
 	ObDocumentMetaModule,
 	ObDocumentMetaService,
@@ -88,6 +89,7 @@ registerLocaleData(localeFR);
 		{provide: OB_BANNER, useValue: environment.banner},
 		{provide: HTTP_INTERCEPTORS, useClass: ObHttpApiInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
+		{provide: OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, useValue: false},
 		{provide: ObUseObliqueIcons, useValue: true}
 	],
 	bootstrap: [AppComponent]

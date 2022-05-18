@@ -8,7 +8,7 @@
       "type": "component",
       "usage": "This component takes care of the structure of the application and should be used in <code>app.component.html</code>",
       "since": "2.0.0",
-      "updated": "8.0.0",
+      "updated": "8.2.0",
       "inputs": [
         {
           "name": "jumplinks",
@@ -95,6 +95,15 @@
           "name": "[obOffCanvasContent]",
           "text": "Content that will be projected as the content of the main off-canvas if off canvas is enabled (see <code>ObMasterLayoutConfig</code>).",
           "since": "3.0.0"
+        }
+      ],
+      "tokens": [
+        {
+          "name": "OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION",
+          "text": "Indicates if the a11y icon should be hidden in the main navigation.",
+          "type": "boolean",
+          "default": true,
+          "since": "8.2.0"
         }
       ]
     },

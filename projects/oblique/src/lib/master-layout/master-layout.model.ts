@@ -1,4 +1,5 @@
 import {IsActiveMatchOptions} from '@angular/router';
+import {InjectionToken} from '@angular/core';
 import {ObEIcon} from '@oblique/icon/icon.model';
 
 export enum ObEScrollMode {
@@ -102,3 +103,7 @@ export enum ObEEnvironment {
 	TEST = 'TEST',
 	ABN = 'ABN'
 }
+
+export const OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION = new InjectionToken<boolean>(
+	'Are external links icons hidden in the main navigation'
+);
