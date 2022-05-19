@@ -1,6 +1,6 @@
 import {IsActiveMatchOptions} from '@angular/router';
 import {InjectionToken} from '@angular/core';
-import {ObEIcon} from '@oblique/icon/icon.model';
+import {ObEIcon} from '../icon/icon.model';
 
 export enum ObEScrollMode {
 	AUTO,

@@ -1,3 +1,32 @@
+# [8.2.0](https://github.com/oblique-bit/oblique/compare/8.1.1...8.2.0) (2022-05-18)
+
+## Bug Fixes
+
+- **alert:** add check if `role=alert` changes from `true` to `undefined` and if no role set in html ([70cde62](https://github.com/oblique-bit/oblique/commit/70cde628605b03ff1584c7b29cd40142e1c68934))
+- **icon:** ensure FontAwesome icons are displayed when provided directly ([891c81d](https://github.com/oblique-bit/oblique/commit/891c81df1b0e64b7abcd005b8bda55312b302fee))
+- **master-layout:** adapt `ObMockMasterLayoutConfig` to actually represent `ObMasterLayoutConfig` ([747b245](https://github.com/oblique-bit/oblique/commit/747b245b895f0096d43369aa5aaca0d18ed55684))
+- **master-layout:** animate the main navigation transition between scrolled and normal modes ([6792f7b](https://github.com/oblique-bit/oblique/commit/6792f7bbda2b432b74f750cae1ddf1ed1c77460f))
+- **master-layout:** animate the main navigation's scroll button on hover ([95e39fb](https://github.com/oblique-bit/oblique/commit/95e39fb4aaf36e45b78c4ac49536af987d4e7bdd))
+- **master-layout:** vertically center the main navigation's scroll buttons ([f9c6bab](https://github.com/oblique-bit/oblique/commit/f9c6bab8503818ee945e96708fde1d2384c49e5e))
+- **spinner:** avoid expression changes during component initialization ([900f297](https://github.com/oblique-bit/oblique/commit/900f297e702b08fd21d8c433e3c2a5180ed86a74))
+- **spinner:** trigger transitions only on state change ([f2194b9](https://github.com/oblique-bit/oblique/commit/f2194b9f48ddd6d8330382bb56b9ef2c65a37acb))
+- **toolchain:** adapt jest thresholds to the sub-folders ([c4534e8](https://github.com/oblique-bit/oblique/commit/c4534e8f82b06a0d2a9044b1d9cf2ee562c5e962))
+
+## Features
+
+- **collapse:** make collapse keyboard accessible ([4fc9f28](https://github.com/oblique-bit/oblique/commit/4fc9f28839be924373b2a0cc08a91c7a64529cc9))
+- **master-layout:** add a possibility to show an icon after external links in the main navigation ([4933556](https://github.com/oblique-bit/oblique/commit/4933556701c0d7d59d5c757cd06e5d7598371c2a))
+- **master-layout:** add accessible language name for language selection buttons ([ddc125a](https://github.com/oblique-bit/oblique/commit/ddc125ad4753e169e85b3da210187725f6cbbbdd))
+- **master-layout:** add an option to hide the label for main navigation links ([33d6cea](https://github.com/oblique-bit/oblique/commit/33d6cea21abaf6c2cf291f1bdfbba8060a310ce3))
+- **master-layout:** add the possibility to add icons to the main navigation links ([2fdaf64](https://github.com/oblique-bit/oblique/commit/2fdaf64c06f5cff0a12549b4cc0ab2e9b6bf4ea6))
+- **master-layout:** change banner background-color based on the environment ([c461f8a](https://github.com/oblique-bit/oblique/commit/c461f8aeff8c938b5021df12d3bb4aa9a5681af7))
+- **master-layout:** improve main navigation for screenreader ([94b30ff](https://github.com/oblique-bit/oblique/commit/94b30ff4246b032e40f8519af6a14c6c35fa04cb))
+- **master-layout:** increase main navigation icon size ([9eb2846](https://github.com/oblique-bit/oblique/commit/9eb2846f8d5d006c33f9e46c0d90bd1b35a6b917))
+- **notification:** add accessibility text on the close button ([4e201b5](https://github.com/oblique-bit/oblique/commit/4e201b5725ecd7321a3843d30b09dac38b40f828))
+- **styles:** add vertical spacing between adjacent `fieldset`s ([47dffa4](https://github.com/oblique-bit/oblique/commit/47dffa489a13ae42cb10a7e1a80f48b892bceaac))
+- **styles:** expose Oblique colors in new colors enum ([c277eba](https://github.com/oblique-bit/oblique/commit/c277ebac9ca6c0b7cf4e5994d9b4b566583d17b1))
+- **translation:** update warnings texts in `index.html` for new projects ([4c32999](https://github.com/oblique-bit/oblique/commit/4c32999a55833054aa46fc96ec4b59408bf6c104))
+
 # [8.1.1](https://github.com/oblique-bit/oblique/compare/8.1.0...8.1.1) (2022-04-14)
 
 ## Bug Fixes
