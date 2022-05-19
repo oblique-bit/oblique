@@ -44,7 +44,6 @@
     "schematics": "tsc -p projects/oblique/schematics/tsconfig.schematics.json",
     "predist": "npm run build oblique-styles -- --configuration=production",
     "dist": "npm run build -- oblique && npm run schematics",
-    "distiOS": "npm run dist",
     "postdist": "ts-node scripts/copy-dist-files.ts && npm run minify && ts-node scripts/post-dist.ts && ts-node scripts/update-paths.ts && ts-node scripts/add-banner.ts",
     "minify": "uglifyjs --compress --mangle --output dist/oblique/ob-features.js -- projects/oblique/src/ob-features.js",
     "test": "node --expose-gc ./node_modules/@angular/cli/bin/ng test oblique --configuration production",
