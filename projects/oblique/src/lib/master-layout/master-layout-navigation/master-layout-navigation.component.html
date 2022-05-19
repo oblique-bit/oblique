@@ -1,4 +1,4 @@
-<h2 class="ob-screen-reader-only" *ngIf="links.length">{{ "i18n.oblique.header.navigation.title" | translate }}</h2>
+<h2 id="ob-navigationlabel" class="ob-screen-reader-only" *ngIf="links.length">{{ "i18n.oblique.header.navigation.title" | translate }}</h2>
 <button
 	class="ob-navigation-scrollable-control ob-navigation-scrollable-control-left"
 	type="button"
@@ -12,6 +12,7 @@
 <ng-content *ngIf="!links.length"></ng-content>
 <nav>
 	<ul
+		aria-labelledby="ob-navigationlabel"
 		id="navigation"
 		*ngIf="links.length"
 		class="ob-main-nav"
@@ -23,6 +24,7 @@
 		<li class="ob-main-nav-item" obMasterLayoutNavigationItem *ngFor="let link of links" (toggled)="hasOpenedMenu = $event">
 			<ng-container *ngIf="!link.isExternal">
 				<a
+					class="ob-master-layout-navigation-link"
 					[attr.id]="link.id"
 					[routerLink]="link.url"
 					[routerLinkActive]="activeClass"
@@ -30,36 +32,49 @@
 					[fragment]="link.fragment"
 					[queryParams]="link.queryParams"
 					[attr.aria-current]="link.active ? 'page' : undefined"
+					[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
 					obMasterLayoutNavigationToggle
 					*ngIf="!link.children"
 				>
-					{{ link.label | translate }}
+					<ob-icon *ngIf="link.icon" [icon]="link.icon"></ob-icon>
+					<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
 				</a>
 			</ng-container>
 			<ng-container *ngIf="link.isExternal">
 				<a
+					class="ob-master-layout-navigation-link"
+					[icon]="hideExternalLinks ? 'none' : 'right'"
 					[attr.id]="link.id"
 					[href]="link.url"
 					[attr.target]="!link.sameTarget ? '_blank' : undefined"
 					[attr.rel]="!link.sameTarget ? 'noopener noreferrer' : undefined"
+					[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
 					*ngIf="!link.children"
 				>
-					{{ link.label | translate }}
+					<ob-icon *ngIf="link.icon" [icon]="link.icon"></ob-icon>
+					<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
 				</a>
 			</ng-container>
 			<ng-container *ngIf="link.children">
 				<button
 					type="button"
+					class="ob-master-layout-navigation-link"
 					[attr.id]="link.id"
 					[class.active]="link.active"
 					[attr.aria-current]="link.active ? 'page' : undefined"
+					[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
 					obMasterLayoutNavigationToggle
 					obAriaMenuButton="menu-{{ link.id || link.url }}"
 				>
-					<span>{{ link.label | translate }}</span>
-					<ob-icon icon="chevron-down" class="ob-toggle-collapsed"></ob-icon>
-					<ob-icon icon="chevron-up" class="ob-toggle-expanded"></ob-icon>
-					<ob-icon icon="chevron-right" class="ob-toggle-layout-collapsed"></ob-icon>
+					<ob-icon *ngIf="link.icon" [icon]="link.icon"></ob-icon>
+					<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
+					<ob-icon icon="chevron-down" class="ob-nav-toggle ob-toggle-collapsed" [class.ob-font-awesome]="!useObliqueIcons"></ob-icon>
+					<ob-icon icon="chevron-up" class="ob-nav-toggle ob-toggle-expanded" [class.ob-font-awesome]="!useObliqueIcons"></ob-icon>
+					<ob-icon
+						icon="chevron-right"
+						class="ob-nav-toggle ob-toggle-layout-collapsed"
+						[class.ob-font-awesome]="!useObliqueIcons"
+					></ob-icon>
 				</button>
 				<div class="ob-sub-menu" id="menu-{{ link.id || link.url }}" obMasterLayoutNavigationMenu>
 					<ul class="ob-main-nav ob-sub-nav">
@@ -72,6 +87,7 @@
 						<li obMasterLayoutNavigationItem *ngFor="let child of link.children">
 							<a
 								*ngIf="!child.isExternal"
+								class="ob-master-layout-navigation-link"
 								[attr.id]="child.id"
 								[routerLink]="link.url + '/' + child.url"
 								[routerLinkActive]="activeClass"
@@ -79,18 +95,24 @@
 								[routerLinkActiveOptions]="link.routerLinkActiveOptions || this.routerLinkActiveOptions"
 								[queryParams]="child.queryParams"
 								[attr.aria-current]="link.active ? 'page' : undefined"
+								[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
 								obMasterLayoutNavigationToggle
 							>
-								{{ child.label | translate }}
+								<ob-icon *ngIf="child.icon" [icon]="child.icon"></ob-icon>
+								<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
 							</a>
 							<a
 								*ngIf="child.isExternal"
+								class="ob-master-layout-navigation-link"
+								[icon]="hideExternalLinks ? 'none' : 'right'"
 								[attr.id]="child.id"
 								[href]="child.url"
 								[attr.target]="!child.sameTarget ? '_blank' : undefined"
 								[attr.rel]="!child.sameTarget ? 'noopener noreferrer' : undefined"
+								[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
 							>
-								{{ child.label | translate }}
+								<ob-icon *ngIf="child.icon" [icon]="child.icon"></ob-icon>
+								<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
 							</a>
 						</li>
 					</ul>

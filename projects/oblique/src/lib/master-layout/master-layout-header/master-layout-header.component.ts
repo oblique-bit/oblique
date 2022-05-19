@@ -24,9 +24,17 @@ import {ObMasterLayoutConfig} from '../master-layout.config';
 import {scrollEnabled} from '../master-layout.utility';
 import {OB_BANNER, WINDOW} from '../../utilities';
 import {ObIBanner} from '../../utilities.model';
-import {ObEMasterLayoutEventValues, ObILocaleObject, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
+import {
+	ObEEnvironment,
+	ObEMasterLayoutEventValues,
+	ObILanguage,
+	ObILocaleObject,
+	ObIMasterLayoutEvent,
+	ObINavigationLink
+} from '../master-layout.model';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
+import {ObEColor} from '../../style/colors.model';
 
 @Component({
 	selector: 'ob-master-layout-header',
@@ -37,7 +45,7 @@ import {ObGlobalEventsService} from '../../global-events/global-events.service';
 })
 export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	home$: Observable<string>;
-	languages: {code: string; id?: string}[];
+	languages: ObILanguage[];
 	isCustom = this.masterLayout.header.isCustom;
 	banner: ObIBanner;
 	@Input() navigation: ObINavigationLink[];
@@ -58,13 +66,13 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		private readonly renderer: Renderer2,
 		private readonly globalEventsService: ObGlobalEventsService,
 		@Inject(WINDOW) private readonly window: Window,
-		@Inject(OB_BANNER) @Optional() bannerToken
+		@Inject(OB_BANNER) @Optional() bannerToken: ObIBanner
 	) {
-		this.languages = this.formatLanguages();
+		this.languages = this.formatLanguages(this.config.locale.languages);
 		this.customChange();
 		this.smallChange();
 		this.reduceOnScroll();
-		this.banner = {color: '#000', bgColor: '#0f0', ...bannerToken};
+		this.banner = this.initializeBanner(bannerToken);
 		this.home$ = this.masterLayout.homePageRouteChange$;
 	}
 
@@ -138,13 +146,20 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 			.subscribe(event => (this.isSmall = event.value));
 	}
 
-	private formatLanguages(): {code: string; id?: string}[] {
+	private formatLanguages(languages: Record<string, string>): ObILanguage[] {
 		return this.config.locale.disabled || !this.config.locale.display
 			? []
-			: this.config.locale.locales.map(locale => ({
-					code: ((locale as ObILocaleObject).locale || (locale as string)).split('-')[0],
-					id: (locale as ObILocaleObject).id
-			  }));
+			: this.config.locale.locales
+					.map(locale => this.getLocaleObject(locale))
+					.map(locale => ({
+						code: locale.locale.split('-')[0],
+						id: locale.id
+					}))
+					.map(locale => ({...locale, label: languages[locale.code]}));
+	}
+
+	private getLocaleObject(locale: string | ObILocaleObject): ObILocaleObject {
+		return (locale as ObILocaleObject).locale ? (locale as ObILocaleObject) : {locale: locale as string};
 	}
 
 	private setFocusable(isMenuOpened: boolean): void {
@@ -154,5 +169,21 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		this.el.nativeElement.querySelectorAll('.ob-master-layout-header-controls a.ob-control-link').forEach(el => {
 			this.renderer.setAttribute(el, 'tabindex', isFocusable ? '0' : '-1');
 		});
+	}
+	private initializeBanner(bannerToken): ObIBanner {
+		switch (bannerToken?.text) {
+			case ObEEnvironment.LOCAL:
+				return {color: '#fff', bgColor: ObEColor.SUCCESS, ...bannerToken};
+			case ObEEnvironment.DEV:
+				return {color: ObEColor.DEFAULT, bgColor: '#ffd700', ...bannerToken};
+			case ObEEnvironment.REF:
+				return {color: ObEColor.DEFAULT, bgColor: ObEColor.WARNING, ...bannerToken};
+			case ObEEnvironment.TEST:
+				return {color: '#fff', bgColor: ObEColor.PRIMARY, ...bannerToken};
+			case ObEEnvironment.ABN:
+				return {color: '#fff', bgColor: ObEColor.ERROR, ...bannerToken};
+			default:
+				return {color: '#fff', bgColor: ObEColor.SUCCESS, ...bannerToken};
+		}
 	}
 }

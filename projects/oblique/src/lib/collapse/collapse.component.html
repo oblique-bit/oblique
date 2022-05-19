@@ -1,9 +1,20 @@
-<div class="ob-collapse-toggle" role="button" [class.ob-toggle-justified]="iconPosition === 'justified'" (click)="active = !active">
+<div
+	#collapseForToggle
+	class="ob-collapse-toggle"
+	role="button"
+	tabindex="0"
+	[class.ob-toggle-justified]="iconPosition === 'justified'"
+	(click)="active = !active"
+	[attr.aria-expanded]="active"
+	[attr.aria-controls]="id + '-content'"
+	[id]="id + '-toggle'"
+>
 	<ob-icon icon="chevron-{{ active ? 'up' : 'down' }}" *ngIf="iconPosition === 'left'"></ob-icon>
 	<ng-content select="[obCollapseHeader]"></ng-content>
 	<ob-icon icon="chevron-{{ active ? 'up' : 'down' }}" *ngIf="iconPosition === 'right' || iconPosition === 'justified'"></ob-icon>
 </div>
 <div
+	[id]="id + '-content'"
 	class="ob-collapse-content"
 	[@expandCollapse]="{
 		value: active ? 'open' : 'close',

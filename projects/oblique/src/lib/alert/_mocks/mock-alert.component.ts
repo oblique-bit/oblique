@@ -12,5 +12,5 @@ export class ObMockAlertComponent {
 	warning = false;
 	error = false;
 
-	@Input() hasRoleAlert: boolean;
+	@Input() hasRoleAlert: boolean | undefined;
 }

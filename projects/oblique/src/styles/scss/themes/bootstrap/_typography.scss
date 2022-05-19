@@ -215,19 +215,7 @@ summary {
 	cursor: pointer;
 }
 
-fieldset {
-	min-width: 0;
-	padding: 0;
-	margin: 0;
-	border: 0;
-}
-
 legend {
-	width: 100%;
-	padding: 0;
 	margin-bottom: core-variables.$ob-spacing-sm;
-	border-bottom: 1px dotted core-variables.$ob-gray;
 	font-size: core-variables.$ob-font-size-bigger;
-	font-weight: 600;
-	line-height: inherit;
 }

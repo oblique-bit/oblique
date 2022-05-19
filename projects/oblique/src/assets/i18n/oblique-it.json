@@ -66,6 +66,7 @@
   "i18n.oblique.not-found.title": "Qualcosa è andato storto!",
   "i18n.oblique.not-found.subtitle": "Questo percorso non sembra esistere",
   "i18n.oblique.back-to-home": "Tornare a casa",
+  "i18n.oblique.notification.close": "Chiudere la notifica",
   "i18n.oblique.notification.type.info": "Informazione",
   "i18n.oblique.notification.type.success": "Operazione riuscita",
   "i18n.oblique.notification.type.warning": "Avvertenza",

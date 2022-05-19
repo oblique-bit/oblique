@@ -2,5 +2,5 @@
 	<mat-icon [svgIcon]="icon"></mat-icon>
 </ng-container>
 <ng-template #fontAwesomeTpl>
-	<span class="fa {{ fontAwesomeAliases[icon] }}"></span>
+	<span class="fa {{ fontAwesomeAliases[icon] ?? icon }}"></span>
 </ng-template>

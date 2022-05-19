@@ -1,4 +1,6 @@
 import {IsActiveMatchOptions} from '@angular/router';
+import {InjectionToken} from '@angular/core';
+import {ObEIcon} from '../icon/icon.model';
 
 export enum ObEScrollMode {
 	AUTO,
@@ -31,10 +33,17 @@ export interface ObILocale {
 	defaultLanguage: string;
 	disabled: boolean;
 	display: boolean;
+	languages: Record<string, string>;
 }
 
 export interface ObILocaleObject {
 	locale: string;
+	id?: string;
+	label?: string;
+}
+
+export interface ObILanguage {
+	code: string;
 	id?: string;
 }
 
@@ -49,6 +58,8 @@ export interface ObINavigationLink {
 	id?: string;
 	active?: boolean;
 	routerLinkActiveOptions?: IsActiveMatchOptions;
+	icon?: ObEIcon | string;
+	iconOnly?: boolean;
 }
 
 export interface ObIJumpLink {
@@ -84,3 +95,15 @@ export enum ObEMasterLayoutEventValues {
 	NAVIGATION_IS_FULL_WIDTH,
 	NAVIGATION_SCROLL_MODE
 }
+
+export enum ObEEnvironment {
+	LOCAL = 'LOCAL',
+	DEV = 'DEV',
+	REF = 'REF',
+	TEST = 'TEST',
+	ABN = 'ABN'
+}
+
+export const OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION = new InjectionToken<boolean>(
+	'Are external links icons hidden in the main navigation'
+);

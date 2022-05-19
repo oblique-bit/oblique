@@ -81,19 +81,32 @@ describe('NotificationComponent', () => {
 		});
 	});
 
-	it('should close a notification when clicking on `.close` button', fakeAsync(() => {
-		component.open({message, title, sticky: true});
-		fixture.detectChanges();
+	describe('close button', () => {
+		let closeButton: DebugElement;
+		beforeEach(() => {
+			component.open({message, title, sticky: true});
+			fixture.detectChanges();
+			closeButton = fixture.debugElement.query(By.css('button.ob-close'));
+		});
 
-		const button = fixture.debugElement.query(By.css('button.ob-close'));
-		button.triggerEventHandler('click', null);
+		it('should be present', () => {
+			expect(closeButton).toBeTruthy();
+		});
 
-		// Wait for animation completion:
-		tick(ObNotificationComponent.REMOVE_DELAY);
+		it('should have an accessible text', () => {
+			expect(closeButton.query(By.css('.ob-screen-reader-only')).nativeElement.textContent).toBe('i18n.oblique.notification.close');
+		});
 
-		expect(component.close).toHaveBeenCalled();
-		expect(component.notifications.length).toBe(0);
-	}));
+		it('should close a notification when clicked', fakeAsync(() => {
+			closeButton.triggerEventHandler('click', null);
+
+			// Wait for animation completion:
+			tick(ObNotificationComponent.REMOVE_DELAY);
+
+			expect(component.close).toHaveBeenCalled();
+			expect(component.notifications.length).toBe(0);
+		}));
+	});
 
 	it('should clear all notification', fakeAsync(() => {
 		// Send multiple notifications:

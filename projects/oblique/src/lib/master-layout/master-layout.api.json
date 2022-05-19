@@ -8,7 +8,7 @@
       "type": "component",
       "usage": "This component takes care of the structure of the application and should be used in <code>app.component.html</code>",
       "since": "2.0.0",
-      "updated": "8.0.0",
+      "updated": "8.2.0",
       "inputs": [
         {
           "name": "jumplinks",
@@ -95,6 +95,15 @@
           "name": "[obOffCanvasContent]",
           "text": "Content that will be projected as the content of the main off-canvas if off canvas is enabled (see <code>ObMasterLayoutConfig</code>).",
           "since": "3.0.0"
+        }
+      ],
+      "tokens": [
+        {
+          "name": "OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION",
+          "text": "Indicates if the a11y icon should be hidden in the main navigation.",
+          "type": "boolean",
+          "default": true,
+          "since": "8.2.0"
         }
       ]
     },
@@ -524,15 +533,16 @@
     {
       "name": "ObINavigationLink",
       "type": "interface",
-      "usage": "The structure of a link in navigation area",
+      "usage": "The structure of a link in navigation area. A label or an icon or both have to be defined",
       "since": "4.0.0",
-      "updated": "7.0.0",
+      "updated": "8.2.0",
       "variables": [
         {
           "name": "label",
-          "text": "Label to show in the link",
+          "text": "Label to show in the link. If no label should be displayed, it will serve as tooltip and accessible text.",
           "type": "string",
-          "since": "4.0.0"
+          "since": "4.0.0",
+          "updated": "8.2.0"
         },
         {
           "name": "url",
@@ -583,6 +593,21 @@
           "default": "{paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'}",
           "isOptional": true,
           "since": "7.0.0"
+        },
+        {
+          "name": "icon",
+          "text": "An icon to be displayed before the link's label. If no label is wished, the <code>iconOnly</code> option has to be activated",
+          "type": "ObEIcon | string",
+          "isOptional": true,
+          "since": "8.2.0"
+        },
+        {
+          "name": "iconOnly",
+          "text": "When false, the label will be displayed normally. When true, the label will hidden while still accessible from a screen reader and placed in a tooltip.",
+          "type": "boolean",
+          "default": false,
+          "isOptional": true,
+          "since": "8.2.0"
         }
       ]
     },

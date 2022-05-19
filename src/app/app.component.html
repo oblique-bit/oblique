@@ -98,21 +98,7 @@
 	</ng-template>
 
 	<ng-container obFooterInfo>
-		<p>&copy; 2018 {{ "i18n.application.organization.name" | translate }}</p>
-		<p>
-			<span>Built with </span>
-			<span class="fa fa-heart-o" title="Love"><span class="ob-screen-reader-only">love</span></span>
-			<span>, </span>
-			<a href="https://eui.bit.admin.ch/oblique-ui/" title="The front-end framework for your Swiss branded UI.">ObliqueUI</a>
-			<span class="version">(2.0.0)</span>
-			<span>, </span>
-			<a href="https://eui.bit.admin.ch/oblique/" title="Reactive front-end framework for your business web application.">Oblique</a>
-			<span class="version">(2.0.0)</span>
-			<span> and </span>
-			<a href="https://angular.io/" title="One framework. Mobile & desktop.">Angular</a>
-			<span class="version">(6.0.9)</span>
-			<span>.</span>
-		</p>
+		<p>&copy; {{ year }} {{ "i18n.application.organization.name" | translate }}</p>
 	</ng-container>
 	<ng-container obOffCanvasTitle>Hello world title</ng-container>
 	<ng-container obOffCanvasContent>Hello world content</ng-container>

@@ -66,6 +66,7 @@
   "i18n.oblique.not-found.title": "Etwas ist schiefgelaufen!",
   "i18n.oblique.not-found.subtitle": "Diese Route scheint nicht zu existieren",
   "i18n.oblique.back-to-home": "Zurück zur Startseite",
+  "i18n.oblique.notification.close": "Meldung schliessen",
   "i18n.oblique.notification.type.info": "Info",
   "i18n.oblique.notification.type.success": "Erfolgreich",
   "i18n.oblique.notification.type.warning": "Warnung",

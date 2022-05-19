@@ -150,10 +150,6 @@ describe('ObExternalLink', () => {
 				it('should have a fa-external-link as class', () => {
 					expect(span.classList.contains('fa-external-link-alt')).toBe(true);
 				});
-
-				it('should have a margin-right', () => {
-					expect(span.style[0]).toBe('margin-right');
-				});
 			});
 
 			describe('right', () => {
@@ -179,10 +175,6 @@ describe('ObExternalLink', () => {
 
 				it('should have a fa-external-link as class', () => {
 					expect(span.classList.contains('fa-external-link-alt')).toBe(true);
-				});
-
-				it('should have a margin-left', () => {
-					expect(span.style[0]).toBe('margin-left');
 				});
 			});
 
