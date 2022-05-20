@@ -158,7 +158,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	}
 
 	private updateJumpLinks(hasNavigation: boolean): void {
-		const staticJumpLinks = hasNavigation && this.navigation.length ? 3 : 2;
+		const staticJumpLinks = hasNavigation && this.navigation.length ? 2 : 1;
 		this.jumpLinks = this.jumpLinks.map((jumpLink, index: number) => ({...jumpLink, accessKey: index + staticJumpLinks}));
 	}
 
