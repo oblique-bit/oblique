@@ -1,3 +1,9 @@
+# [8.2.1](https://github.com/oblique-bit/oblique/compare/8.2.0...8.2.1) (2022-05-20)
+
+## Bug Fixes
+
+- **master-layout:** right align external link icons in the main navigation ([b959b16](https://github.com/oblique-bit/oblique/commit/b959b16726e849caa0fcaacaf40e6f38f3feab54))
+
 # [8.2.0](https://github.com/oblique-bit/oblique/compare/8.1.1...8.2.0) (2022-05-18)
 
 ## Bug Fixes
