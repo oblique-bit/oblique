@@ -135,9 +135,9 @@ export class AppComponent {
 	];
 	jumpLinks: ObIJumpLink[] = [
 		{url: 'current', fragment: 'fragment', label: 'i18n.application.jumplinks.custom'},
-		{url: 'current', label: 'current without fragment'},
-		{url: '../samples', fragment: 'fragment', label: 'samples with fragment'},
-		{url: '../samples', label: 'samples without fragment'}
+		{url: 'current', label: 'Skip to current without fragment'},
+		{url: '../samples', fragment: 'fragment', label: 'Skip to samples with fragment'},
+		{url: '../samples', label: 'Skip to samples without fragment'}
 	];
 	searchItems: ObISearchWidgetItem[] = [];
 
