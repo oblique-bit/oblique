@@ -56,7 +56,7 @@
   "i18n.oblique.footer.title": "Fusszeile",
   "i18n.oblique.footer.info.title": "Information",
   "i18n.oblique.footer.links.title": "Links",
-  "i18n.oblique.multiselect.checkAll": "Alles selectieren",
+  "i18n.oblique.multiselect.checkAll": "Alles selektieren",
   "i18n.oblique.multiselect.uncheckAll": "Alles wiederufen",
   "i18n.oblique.multiselect.checked": "{{amount}} selectiert",
   "i18n.oblique.multiselect.searchPlaceholder": "Suchen...",
