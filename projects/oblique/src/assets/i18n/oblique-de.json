@@ -46,7 +46,7 @@
   "i18n.oblique.http.error.status.504": "Der Server konnte seine Funktion als Gateway oder Proxy nicht erfüllen, weil er innerhalb einer festgelegten Zeitspanne keine Antwort von seinerseits benutzten Servern oder Diensten erhalten hat.",
   "i18n.oblique.http.error.timeout": "Server hat nicht zu lange reagiert. Versuchen Sie es später noch einmal oder kontaktieren Sie den Support.",
   "i18n.oblique.master-layout.accesskey.mainContent": "Springe zum Hauptteil [0]",
-  "i18n.oblique.master-layout.accesskey.navigation": "Navigation [1]",
+  "i18n.oblique.master-layout.accesskey.navigation": "Springe zur Navigation [1]",
   "i18n.oblique.header.title": "Kopfzeile",
   "i18n.oblique.header.logo": "Logo Schweizerische Eidgenossenschaft, zur Startseite der Applikation",
   "i18n.oblique.header.toggle": "Anwendungskopf umschalten",
