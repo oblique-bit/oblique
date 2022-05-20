@@ -1,6 +1,6 @@
 import {readFileSync, readdirSync, renameSync, statSync, writeFileSync} from 'fs';
 import path from 'path';
-class FindAndReplace {
+export class FindAndReplace {
 	private static readonly searchValue = 'oblique-oblique';
 	private static readonly replaceValue = 'oblique';
 	private static readonly directory = 'dist';
@@ -36,5 +36,3 @@ class FindAndReplace {
 			.forEach(fileObject => writeFileSync(fileObject.filePath, fileObject.file.replace(new RegExp(searchValue, `g`), replaceValue)));
 	}
 }
-
-FindAndReplace.perform();
