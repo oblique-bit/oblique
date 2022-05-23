@@ -103,7 +103,7 @@ module.exports = {
 		},
 		'projects/oblique/src/lib/external-link/*.ts': {
 			statements: 90,
-			branches: 94,
+			branches: 92,
 			functions: 83,
 			lines: 89
 		},
@@ -265,7 +265,7 @@ module.exports = {
 		},
 		'projects/oblique/src/lib/search-box/*.ts': {
 			statements: 91,
-			branches: 94,
+			branches: 85,
 			functions: 66,
 			lines: 89
 		},

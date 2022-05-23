@@ -49,6 +49,7 @@ import {ObUseObliqueIcons} from '../../icon/icon.model';
 export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, OnDestroy {
 	home = this.config.homePageRoute;
 	route = {path: '', params: undefined};
+	useFontAwesomeIcons = false;
 	@Input() navigation: ObINavigationLink[] = [];
 	@Input() jumpLinks: ObIJumpLink[] | ObIDynamicJumpLink[] = [];
 	@HostBinding('class.ob-has-cover') hasCover = this.masterLayout.layout.hasCover;
@@ -79,10 +80,11 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 		private readonly router: Router,
 		private readonly scrollEvents: ObScrollingEvents,
 		private readonly globalEventsService: ObGlobalEventsService,
-		@Optional() @Inject(ObUseObliqueIcons) public readonly useObliqueIcons: boolean,
+		@Optional() @Inject(ObUseObliqueIcons) useObliqueIcons: boolean,
 		@Inject(DOCUMENT) private readonly document: any,
 		@Inject(WINDOW) private readonly window: Window
 	) {
+		this.useFontAwesomeIcons = !(useObliqueIcons ?? true);
 		this.layoutHasCoverChange();
 		this.layoutHasDefaultLayoutChange();
 		this.layoutHasMainNavigationChange();

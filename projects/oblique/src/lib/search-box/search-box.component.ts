@@ -58,7 +58,7 @@ export class ObSearchBoxComponent {
 	}
 
 	constructor(private readonly translate: TranslateService, @Optional() @Inject(ObUseObliqueIcons) useObliqueIcon) {
-		this.useFontAwesomeIcon = !useObliqueIcon;
+		this.useFontAwesomeIcon = !(useObliqueIcon ?? true);
 	}
 
 	open(): void {

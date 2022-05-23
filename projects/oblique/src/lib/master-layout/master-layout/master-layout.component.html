@@ -3,7 +3,7 @@
 		<li>
 			<a
 				class="ob-accessible"
-				[class.ob-font-awesome]="!useObliqueIcons"
+				[class.ob-font-awesome]="useFontAwesomeIcons"
 				accesskey="0"
 				[routerLink]="route.path"
 				[queryParams]="route.params"
@@ -16,7 +16,7 @@
 		<li *ngIf="!noNavigation && navigation.length">
 			<a
 				class="ob-accessible"
-				[class.ob-font-awesome]="!useObliqueIcons"
+				[class.ob-font-awesome]="useFontAwesomeIcons"
 				accesskey="1"
 				[routerLink]="route.path"
 				[queryParams]="route.params"
@@ -29,7 +29,7 @@
 		<li *ngFor="let jumpLink of jumpLinks; let i = index">
 			<a
 				class="ob-accessible"
-				[class.ob-font-awesome]="!useObliqueIcons"
+				[class.ob-font-awesome]="useFontAwesomeIcons"
 				[attr.accesskey]="jumpLink.accessKey"
 				[routerLink]="jumpLink.url === 'current' ? route.path : jumpLink.url"
 				[queryParams]="route.params"

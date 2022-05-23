@@ -41,7 +41,7 @@ export class ObNavTreeComponent implements OnDestroy {
 		private readonly translate: TranslateService,
 		@Optional() @Inject(ObUseObliqueIcons) useObliqueIcon
 	) {
-		this.useFontAwesomeIcon = !useObliqueIcon;
+		this.useFontAwesomeIcon = !(useObliqueIcon ?? true);
 		this.route.fragment.pipe(takeUntil(this.unsubscribe)).subscribe(fragment => {
 			this.activeFragment = fragment;
 		});

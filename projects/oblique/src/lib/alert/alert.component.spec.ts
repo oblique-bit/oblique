@@ -72,8 +72,8 @@ describe('ObAlertComponent', () => {
 			expect(debugElement.nativeElement.classList.contains('ob-angular')).toBe(true);
 		});
 
-		it('should have ob-font-awesome class', () => {
-			expect(debugElement.nativeElement.classList.contains('ob-font-awesome')).toBe(true);
+		it('should not have ob-font-awesome class', () => {
+			expect(debugElement.nativeElement.classList.contains('ob-font-awesome')).toBe(false);
 		});
 
 		describe('type', () => {
@@ -190,13 +190,13 @@ describe('ObAlertComponent', () => {
 		});
 	});
 
-	describe('with Oblique icons', () => {
+	describe('with FontAwesome icons', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				declarations: [DefaultTestComponent, ObMockTranslatePipe, ObAlertComponent],
 				providers: [
 					{provide: TranslateService, useClass: ObMockTranslateService},
-					{provide: ObUseObliqueIcons, useValue: true}
+					{provide: ObUseObliqueIcons, useValue: false}
 				],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA]
 			}).compileComponents();
@@ -213,8 +213,8 @@ describe('ObAlertComponent', () => {
 			expect(testComponent).toBeTruthy();
 		});
 
-		it('should not have ob-font-awesome class', () => {
-			expect(debugElement.nativeElement.classList.contains('ob-font-awesome')).toBe(false);
+		it('should have ob-font-awesome class', () => {
+			expect(debugElement.nativeElement.classList.contains('ob-font-awesome')).toBe(true);
 		});
 	});
 

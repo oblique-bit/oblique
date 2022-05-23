@@ -12,7 +12,7 @@ export class UpdateV8toV9 implements ObIMigrations {
 	applyMigrations(_options: IUpdateV8Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Analyzing project');
-			return chain([this.renameTranslationKeys()])(tree, _context);
+			return chain([this.renameTranslationKeys(), this.removeObUseObliqueIconsToken()])(tree, _context);
 		};
 	}
 
@@ -44,5 +44,16 @@ export class UpdateV8toV9 implements ObIMigrations {
 				?.map(match => match.toLowerCase())
 				?.join('-') ?? ''
 		);
+	}
+
+	private removeObUseObliqueIconsToken(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove ObUseObliqueIcons is set to true');
+			const apply = (filePath: string): void => {
+				replaceInFile(tree, filePath, /{\s*provide\s*:\s*ObUseObliqueIcons\s*,\s*useValue\s*:\s*true\s*}\s*,?/, '');
+				replaceInFile(tree, filePath, /ObUseObliqueIcons\s*,?/, '');
+			};
+			return applyInTree(tree, apply, 'app.module.ts');
+		});
 	}
 }

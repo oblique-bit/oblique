@@ -21,22 +21,27 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	private iconElement: HTMLSpanElement;
 	private readonly host: HTMLAnchorElement;
 	private hasIcon = false;
+	private readonly useFontAwesomeIcons: boolean;
 
 	constructor(
 		@Optional() @Inject(EXTERNAL_LINK) private readonly config,
-		@Optional() @Inject(ObUseObliqueIcons) private readonly useObliqueIcons: boolean,
+		@Optional() @Inject(ObUseObliqueIcons) useObliqueIcons: boolean,
 		private readonly renderer: Renderer2,
 		elRef: ElementRef,
 		private readonly translate: TranslateService,
 		private readonly iconRegistry: MatIconRegistry
 	) {
+		this.useFontAwesomeIcons = !(useObliqueIcons ?? true);
 		this.host = elRef.nativeElement;
 		this.icon = this.icon || this.config?.icon || 'left';
 		translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.addAriaLabel());
 	}
 
 	ngOnInit(): void {
-		if (this.useObliqueIcons) {
+		if (this.useFontAwesomeIcons) {
+			this.iconElement = this.createIconElement();
+			this.addIcon();
+		} else {
 			this.iconRegistry
 				.getNamedSvgIcon('external')
 				.pipe(
@@ -44,9 +49,6 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 					tap(svg => (this.iconElement = this.createIconElement(svg)))
 				)
 				.subscribe(() => this.addIcon());
-		} else {
-			this.iconElement = this.createIconElement();
-			this.addIcon();
 		}
 	}
 
@@ -91,12 +93,12 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 
 	private createIconElement(svg?: SVGElement): HTMLSpanElement {
 		const span = this.renderer.createElement('span');
-		if (this.useObliqueIcons) {
-			this.renderer.addClass(span, 'mat-icon');
-			this.renderer.appendChild(span, svg);
-		} else {
+		if (this.useFontAwesomeIcons) {
 			this.renderer.addClass(span, 'fa');
 			this.renderer.addClass(span, 'fa-external-link-alt');
+		} else {
+			this.renderer.addClass(span, 'mat-icon');
+			this.renderer.appendChild(span, svg);
 		}
 		return span;
 	}

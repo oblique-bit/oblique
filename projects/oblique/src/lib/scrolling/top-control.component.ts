@@ -14,7 +14,7 @@ export class ObTopControlComponent {
 	@Input() scrollTarget: HTMLElement | Window;
 
 	constructor(@Inject(WINDOW) private readonly window: Window, @Optional() @Inject(ObUseObliqueIcons) useObliqueIcon) {
-		this.useFontAwesomeIcon = !useObliqueIcon;
+		this.useFontAwesomeIcon = !(useObliqueIcon ?? true);
 	}
 
 	public scrollTop(): void {

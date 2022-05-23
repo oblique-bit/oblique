@@ -4,6 +4,7 @@ import {By} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject} from 'rxjs';
 import {WINDOW} from '../utilities';
+import {ObUseObliqueIcons} from '../icon/icon.model';
 import {ObExternalLinkDirective} from './external-link.directive';
 import {EXTERNAL_LINK} from './external-link.model';
 
@@ -33,7 +34,8 @@ describe('ObExternalLink', () => {
 					{
 						provide: TranslateService,
 						useValue: {onLangChange: lang, instant: jest.fn().mockReturnValue('Opens in new tab')}
-					}
+					},
+					{provide: ObUseObliqueIcons, useValue: false}
 				]
 			});
 		}));

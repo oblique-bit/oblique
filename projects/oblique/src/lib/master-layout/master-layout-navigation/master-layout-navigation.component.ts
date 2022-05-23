@@ -44,6 +44,7 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 	@Input() links: ObINavigationLink[] = [];
 	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') isScrollable: boolean;
 	routerLinkActiveOptions: IsActiveMatchOptions = {paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'};
+	useFontAwesomeIcons = false;
 	private static readonly buttonWidth = 30;
 	private nav: HTMLElement;
 	private readonly unsubscribe: Subject<void> = new Subject<void>();
@@ -56,8 +57,9 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 		private readonly el: ElementRef,
 		private readonly globalEventsService: ObGlobalEventsService,
 		@Optional() @Inject(OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION) hideExternalLinks: boolean,
-		@Optional() @Inject(ObUseObliqueIcons) public readonly useObliqueIcons: boolean
+		@Optional() @Inject(ObUseObliqueIcons) useObliqueIcons: boolean
 	) {
+		this.useFontAwesomeIcons = !(useObliqueIcons ?? true);
 		this.hideExternalLinks = hideExternalLinks ?? true;
 		this.masterLayout.navigation.refreshed.pipe(takeUntil(this.unsubscribe)).subscribe(this.refresh.bind(this));
 		this.scrollModeChange();

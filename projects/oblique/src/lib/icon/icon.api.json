@@ -6,7 +6,7 @@
       "usage": "This service automatically registers icon sets to be used with the <code>mat-icon</code> component. It is called by the <code>forRoot</code> of the <code>ObIconModule</code> module.",
       "type": "service",
       "since": "6.1.0",
-      "updated": "7.0.0",
+      "updated": "9.0.0",
       "methods": [
         {
           "name": "registerOnAppInit",
@@ -48,8 +48,9 @@
           "name": "ObUseObliqueIcons",
           "text": "Indicates if Oblique should be rendered with its own icons or with FontAwesome ones.",
           "type": "boolean",
-          "default": "false",
-          "since": "7.0.0"
+          "default": "true",
+          "since": "7.0.0",
+          "updated": "9.0.0"
         }
       ]
     },
