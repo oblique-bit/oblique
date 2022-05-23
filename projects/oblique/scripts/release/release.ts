@@ -1,7 +1,7 @@
 import {execSync} from 'child_process';
 import {createWriteStream, readFileSync, writeFileSync} from 'fs';
 import path from 'path';
-import {version as packageVersion} from '../../package.json';
+import {version as packageVersion} from '../../../../package.json';
 
 interface Version {
 	version: string;

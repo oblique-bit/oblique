@@ -1,6 +1,6 @@
 import {readFileSync, readdirSync, statSync, writeFileSync} from 'fs';
 import {execSync} from 'child_process';
-import {version as currentVersion} from './../../../package.json';
+import {version as currentVersion} from './../../../../../package.json';
 import path from 'path';
 
 export class AddBanner {
