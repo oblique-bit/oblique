@@ -38,7 +38,6 @@
     "url": "https://github.com/oblique-bit/oblique.git"
   },
   "scripts": {
-    "lib": "npm run build -- oblique --watch",
     "start": "ng serve",
     "build": "ng build",
     "schematics": "tsc -p projects/oblique/schematics/tsconfig.schematics.json",
