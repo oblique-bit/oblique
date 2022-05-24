@@ -1,6 +1,5 @@
-<ng-content select="[obFooter]" *ngIf="isCustom"></ng-content>
 <h1 class="ob-screen-reader-only">{{ "i18n.oblique.footer.title" | translate }}</h1>
-<ng-content select="[orFooter]" *ngIf="isCustom"></ng-content>
+<ng-content select="[obFooter]" *ngIf="isCustom"></ng-content>
 <ng-container *ngIf="!isCustom">
 	<div class="ob-footer-item ob-footer-item-logo">
 		<a [routerLink]="home" class="ob-master-layout-logo">
