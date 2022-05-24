@@ -33,7 +33,8 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 			addEslint(options.eslint),
 			addPrettier(options.eslint),
 			overwriteEslintRC(options.eslint, options.prefix),
-			addHusky(options.husky)
+			addHusky(options.husky),
+			addTitle(options.title)
 		])(tree, _context);
 }
 
@@ -196,6 +197,14 @@ function addHusky(husky: boolean): Rule {
 				}
 			});
 		}
+		return tree;
+	});
+}
+
+function addTitle(title: string): Rule {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+		infoMigration(_context, `Toolchain: add title "${title}" in package.json`);
+		addRootProperty(tree, 'title', title);
 		return tree;
 	});
 }
