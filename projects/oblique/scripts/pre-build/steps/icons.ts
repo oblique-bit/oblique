@@ -1,7 +1,7 @@
 import {readFileSync, readdirSync, writeFileSync} from 'fs';
 import path from 'path';
 
-class Icons {
+export class Icons {
 	static perform(): void {
 		const SVGs = Icons.getSVGs(path.join('projects', 'oblique', 'icons'));
 		Icons.writeIconSet(path.join('projects', 'oblique', 'src', 'assets', 'obliqueIcons.svg'), SVGs);
@@ -61,5 +61,3 @@ class Icons {
 		);
 	}
 }
-
-Icons.perform();
