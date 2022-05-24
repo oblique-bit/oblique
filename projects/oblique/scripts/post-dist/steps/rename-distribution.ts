@@ -1,15 +1,15 @@
 import {readFileSync, readdirSync, renameSync, statSync, writeFileSync} from 'fs';
 import path from 'path';
-export class FindAndReplace {
+export class RenameDistribution {
 	private static readonly searchValue = 'oblique-oblique';
 	private static readonly replaceValue = 'oblique';
 	private static readonly directory = 'dist';
 
 	static perform(): void {
 		// Please note that order is important!
-		const fileList = FindAndReplace.listFiles(FindAndReplace.directory);
-		FindAndReplace.renameInFiles(fileList, FindAndReplace.searchValue, FindAndReplace.replaceValue);
-		FindAndReplace.renameFiles(fileList, FindAndReplace.searchValue, FindAndReplace.replaceValue);
+		const fileList = RenameDistribution.listFiles(RenameDistribution.directory);
+		RenameDistribution.renameInFiles(fileList, RenameDistribution.searchValue, RenameDistribution.replaceValue);
+		RenameDistribution.renameFiles(fileList, RenameDistribution.searchValue, RenameDistribution.replaceValue);
 	}
 
 	private static listFiles(directory: string): string[] {
@@ -17,7 +17,7 @@ export class FindAndReplace {
 			.map(fileName => path.join(directory, fileName))
 			.reduce(
 				(filePaths, filePath) =>
-					statSync(filePath).isDirectory() ? [...filePaths, ...FindAndReplace.listFiles(filePath)] : [...filePaths, filePath],
+					statSync(filePath).isDirectory() ? [...filePaths, ...RenameDistribution.listFiles(filePath)] : [...filePaths, filePath],
 				[]
 			);
 	}
