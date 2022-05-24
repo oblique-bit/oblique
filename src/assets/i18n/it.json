@@ -13,7 +13,7 @@
   "i18n.application.footer.legal.label": "Legal",
   "i18n.application.footer.legal.title": "Terms and conditions",
   "i18n.routes.home.title": "[it] Home",
-  "i18n.routes.home.description": "[it] Description for the Home state page.",
+  "i18n.routes.home.description": "[it] Description for the Home page.",
   "i18n.routes.auth.title": "[it] Sign in",
   "i18n.routes.auth.login.title": "[it] Login",
   "i18n.routes.auth.login.rememberme": "[it] Remember me?",
