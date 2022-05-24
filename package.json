@@ -39,6 +39,7 @@
   },
   "scripts": {
     "start": "ng serve",
+    "prebuild": "ts-node projects/oblique/scripts/pre-build/run-pre-build-steps.ts",
     "build": "ng build",
     "schematics": "tsc -p projects/oblique/schematics/tsconfig.schematics.json",
     "predist": "npm run build oblique-styles -- --configuration=production",
@@ -52,7 +53,6 @@
     "stylelint": "stylelint \"{src,projects}/**/*.{css,scss}\" --cache",
     "prettier": "prettier \"{src,projects,scripts,tests}/**/*.{ts,js,html,json,yml,md,css,scss}\" \"*.{ts,js,html,json,yml,md,css,scss}\" --loglevel warn",
     "icons": "ts-node projects/oblique/scripts/icons.ts",
-    "copy-error-messages": "ts-node projects/oblique/scripts/copy-error-messages.ts",
     "release": "ts-node projects/oblique/scripts/release/release.ts",
     "alpha": "npm run release -- alpha",
     "beta": "npm run release -- beta",

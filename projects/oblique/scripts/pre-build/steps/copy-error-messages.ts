@@ -1,7 +1,7 @@
 import {readFileSync, readdirSync, writeFileSync} from 'fs';
 import path from 'path';
 
-class CopyErrorMessages {
+export class CopyErrorMessages {
 	static perform(): void {
 		const basePath = path.join('projects', 'oblique', 'src', 'assets', 'i18n');
 		const messagePath = path.join('projects', 'oblique', 'src', 'lib', 'error-messages', 'error-messages.description.html');
@@ -46,5 +46,3 @@ class CopyErrorMessages {
 			.reduce((translations, line) => ({...translations, [line.key]: line.value}), {});
 	}
 }
-
-CopyErrorMessages.perform();
