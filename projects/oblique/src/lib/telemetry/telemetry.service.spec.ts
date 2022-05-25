@@ -159,7 +159,6 @@ describe('ObTelemetryService', () => {
 					service.sendRecord();
 					// @ts-expect-error
 					expect(service.sendData).toHaveBeenCalledWith({
-						applicationHomepage: undefined,
 						applicationName: 'test',
 						applicationTitle: undefined,
 						applicationVersion: 'Unknown project version',

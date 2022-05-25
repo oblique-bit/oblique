@@ -10,7 +10,6 @@ describe('TelemetryRecord', () => {
 				applicationName: 'Unknown project name',
 				applicationTitle: undefined,
 				applicationVersion: 'Unknown project version',
-				applicationHomepage: undefined,
 				obliqueTheme: 'Material',
 				obliqueVersion: appVersion,
 				obliqueModuleNames: []
@@ -64,14 +63,13 @@ describe('TelemetryRecord', () => {
 	});
 
 	describe('Width actual package values', () => {
-		const record = new ObTelemetryRecord('Material', {name: 'name', title: 'title', version: 'version', homePage: 'homePage'});
+		const record = new ObTelemetryRecord('Material', {name: 'name', title: 'title', version: 'version'});
 
 		it('should has a record property', () => {
 			expect(record.record).toEqual({
 				applicationName: 'name',
 				applicationTitle: 'title',
 				applicationVersion: 'version',
-				applicationHomepage: 'homePage',
 				obliqueTheme: 'Material',
 				obliqueVersion: appVersion,
 				obliqueModuleNames: []

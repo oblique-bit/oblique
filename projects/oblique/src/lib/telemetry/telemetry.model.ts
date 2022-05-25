@@ -2,7 +2,6 @@ export interface ObITelemetryRecord {
 	applicationName: string;
 	applicationTitle: string;
 	applicationVersion: string;
-	applicationHomepage: string;
 	obliqueTheme: string;
 	obliqueVersion: string;
 	obliqueModuleNames: string[];
@@ -17,5 +16,4 @@ export interface ObIPackage {
 	name?: string;
 	title?: string;
 	version?: string;
-	homePage?: string;
 }
