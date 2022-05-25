@@ -18,7 +18,8 @@ export class UpdateV8toV9 implements ObIMigrations {
 				this.updateBrowserCompatibilityMessages(),
 				this.renameJumpLinks(),
 				this.useKebabCaseForMixins(),
-				this.renameOpened()
+				this.renameOpened(),
+				this.removeTelemetryDisableToken()
 			])(tree, _context);
 		};
 	}
@@ -108,6 +109,16 @@ export class UpdateV8toV9 implements ObIMigrations {
 				if (offCanvas) {
 					replaceInFile(tree, filePath, new RegExp(`${offCanvas}.opened`), `${offCanvas}.opened$`);
 				}
+			};
+			return applyInTree(tree, apply, '*.ts');
+		});
+	}
+
+	private removeTelemetryDisableToken(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove TELEMETRY_DISABLE injection token');
+			const apply = (filePath: string): void => {
+				replaceInFile(tree, filePath, /{\s*provide\s*:\s*TELEMETRY_DISABLE\s*,\s*useValue\s*:\s*(?:true|false)}\s*,?/, '');
 			};
 			return applyInTree(tree, apply, '*.ts');
 		});

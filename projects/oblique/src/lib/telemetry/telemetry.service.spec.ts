@@ -2,7 +2,7 @@ import {TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {HttpClient} from '@angular/common/http';
 import {EMPTY, Subject} from 'rxjs';
-import {OB_PROJECT_INFO, ObTelemetryService, TELEMETRY_DISABLE} from './telemetry.service';
+import {OB_PROJECT_INFO, ObTelemetryService} from './telemetry.service';
 import {ObThemeService} from '../theme.service';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {appVersion} from '../version';
@@ -22,8 +22,7 @@ describe('ObTelemetryService', () => {
 	describe('when disabled', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				imports: [HttpClientTestingModule],
-				providers: [{provide: TELEMETRY_DISABLE, useValue: true}]
+				imports: [HttpClientTestingModule]
 			});
 			service = TestBed.inject(ObTelemetryService);
 		});
@@ -33,7 +32,7 @@ describe('ObTelemetryService', () => {
 		});
 
 		it('should show info in the console', () => {
-			expect(console.info).toHaveBeenCalledWith('Oblique Telemetry is disabled by injection token.');
+			expect(console.info).toHaveBeenCalledWith('Oblique Telemetry is disabled.');
 		});
 
 		it('should not have a telemetryRecord property', () => {
@@ -54,10 +53,7 @@ describe('ObTelemetryService', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
 				imports: [HttpClientTestingModule],
-				providers: [
-					{provide: TELEMETRY_DISABLE, useValue: false},
-					{provide: OB_PROJECT_INFO, useValue: {name: 'test'}}
-				]
+				providers: [{provide: OB_PROJECT_INFO, useValue: {name: 'test'}}]
 			});
 			service = TestBed.inject(ObTelemetryService);
 			globalEventsService = TestBed.inject(ObGlobalEventsService);

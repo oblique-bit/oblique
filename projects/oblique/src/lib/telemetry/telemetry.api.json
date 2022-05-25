@@ -14,16 +14,7 @@
         }
       ],
       "since": "4.1.0",
-      "updated": "8.1.0",
-      "tokens": [
-        {
-          "name": "TELEMETRY_DISABLE",
-          "text": "Deactivates telemetry record.",
-          "type": "boolean",
-          "default": false,
-          "since": "4.1.0"
-        }
-      ]
+      "updated": "9.0.0"
     }
   ]
 }
