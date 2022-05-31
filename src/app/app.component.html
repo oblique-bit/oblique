@@ -1,4 +1,4 @@
-<ob-master-layout [jumpLinks]="jumpLinks" [navigation]="navigation" [ngClass]="theme" *ngIf="theme$ | async as theme">
+<ob-master-layout [skipLinks]="skipLinks" [navigation]="navigation" [ngClass]="theme" *ngIf="theme$ | async as theme">
 	<ng-container obHeaderTitle>Oblique</ng-container>
 	<ng-template #obHeaderControl>
 		<ob-search-box [items]="searchItems"></ob-search-box>
