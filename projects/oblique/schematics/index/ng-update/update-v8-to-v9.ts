@@ -13,10 +13,12 @@ export class UpdateV8toV9 implements ObIMigrations {
 	applyMigrations(_options: IUpdateV8Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Analyzing project');
-			return chain([this.renameTranslationKeys(), this.removeObUseObliqueIconsToken(), this.updateBrowserCompatibilityMessages()])(
-				tree,
-				_context
-			);
+			return chain([
+				this.renameTranslationKeys(),
+				this.removeObUseObliqueIconsToken(),
+				this.updateBrowserCompatibilityMessages(),
+				this.renameJumpLinks()
+			])(tree, _context);
 		};
 	}
 
@@ -77,5 +79,16 @@ export class UpdateV8toV9 implements ObIMigrations {
 				readFile(tree, indexPath).replace(new RegExp(/<noscript>(?:.|\r?\n)*<\/div>/gm), getTemplate(tree, 'default-index.html'))
 			);
 		}
+	}
+
+	private renameJumpLinks(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Rename jumpLinks into skipLinks');
+			const apply = (filePath: string): void => {
+				replaceInFile(tree, filePath, /ObIJumpLink/g, 'ObISkipLink');
+				replaceInFile(tree, filePath, /jumpLinks/g, 'skipLinks');
+			};
+			return applyInTree(tree, apply, '*.{ts,html}');
+		});
 	}
 }

@@ -44,7 +44,7 @@ export {
 	ObEScrollMode,
 	ObIMasterLayoutEvent,
 	ObEMasterLayoutEventValues,
-	ObIJumpLink,
+	ObISkipLink,
 	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION
 } from './master-layout.model';
 

@@ -26,7 +26,7 @@ import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {appVersion} from '../../version';
 import {WINDOW} from '../../utilities';
-import {ObEMasterLayoutEventValues, ObIDynamicJumpLink, ObIJumpLink, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
+import {ObEMasterLayoutEventValues, ObIDynamicSkipLink, ObIMasterLayoutEvent, ObINavigationLink, ObISkipLink} from '../master-layout.model';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 import {Subject} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
@@ -51,7 +51,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	route = {path: '', params: undefined};
 	useFontAwesomeIcons = false;
 	@Input() navigation: ObINavigationLink[] = [];
-	@Input() jumpLinks: ObIJumpLink[] | ObIDynamicJumpLink[] = [];
+	@Input() skipLinks: ObISkipLink[] | ObIDynamicSkipLink[] = [];
 	@HostBinding('class.ob-has-cover') hasCover = this.masterLayout.layout.hasCover;
 	@HostBinding('class.ob-has-layout') hasLayout = this.masterLayout.layout.hasLayout;
 	@HostBinding('class.ob-has-max-width') hasMaxWidth = this.masterLayout.layout.hasMaxWidth;
@@ -127,15 +127,15 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 		this.globalEventsService.scroll$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.scrollTop());
 		this.masterLayout.layout.configEvents$
 			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION))
-			.subscribe(evt => this.updateJumpLinks(evt.value));
-		this.updateJumpLinks(!this.noNavigation);
+			.subscribe(evt => this.updateSkipLinks(evt.value));
+		this.updateSkipLinks(!this.noNavigation);
 	}
 
 	ngDoCheck(): void {
 		if (this.navigation?.length !== this.navigationLength) {
 			this.navigationLength = this.navigation.length;
 			this.masterLayout.navigation.refresh();
-			this.updateJumpLinks(!this.noNavigation);
+			this.updateSkipLinks(!this.noNavigation);
 		}
 	}
 
@@ -159,9 +159,9 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 		return this.window;
 	}
 
-	private updateJumpLinks(hasNavigation: boolean): void {
-		const staticJumpLinks = hasNavigation && this.navigation.length ? 2 : 1;
-		this.jumpLinks = this.jumpLinks.map((jumpLink, index: number) => ({...jumpLink, accessKey: index + staticJumpLinks}));
+	private updateSkipLinks(hasNavigation: boolean): void {
+		const staticSkipLinks = hasNavigation && this.navigation.length ? 2 : 1;
+		this.skipLinks = this.skipLinks.map((skipLink, index: number) => ({...skipLink, accessKey: index + staticSkipLinks}));
 	}
 
 	private layoutHasMainNavigationChange(): void {

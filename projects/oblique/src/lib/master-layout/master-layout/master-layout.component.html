@@ -26,17 +26,17 @@
 				{{ "i18n.oblique.master-layout.accesskey.navigation" | translate }}
 			</a>
 		</li>
-		<li *ngFor="let jumpLink of jumpLinks; let i = index">
+		<li *ngFor="let skipLink of skipLinks; let i = index">
 			<a
 				class="ob-accessible"
 				[class.ob-font-awesome]="useFontAwesomeIcons"
-				[attr.accesskey]="jumpLink.accessKey"
-				[routerLink]="jumpLink.url === 'current' ? route.path : jumpLink.url"
+				[attr.accesskey]="skipLink.accessKey"
+				[routerLink]="skipLink.url === 'current' ? route.path : skipLink.url"
 				[queryParams]="route.params"
-				[fragment]="jumpLink.fragment"
+				[fragment]="skipLink.fragment"
 			>
 				<ob-icon icon="universal-access"></ob-icon>
-				{{ jumpLink.label | translate }} [{{ jumpLink.accessKey }}]
+				{{ skipLink.label | translate }} [{{ skipLink.accessKey }}]
 			</a>
 		</li>
 	</ul>
