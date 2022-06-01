@@ -89,7 +89,7 @@
 					display: inline-flex;
 					padding: variables.$ob-spacing-default;
 					white-space: nowrap;
-					font-size: variables.$ob-font-size-sm;
+					font-size: variables.$ob-font-size-normal;
 					background-color: transparent;
 
 					&.active {
@@ -138,6 +138,7 @@
 			height: auto;
 			padding: 0;
 			margin: 0;
+			font-size: variables.$ob-font-size-smaller;
 			overflow-y: auto;
 			overflow-x: hidden;
 			z-index: variables.$ob-z-index-controls;
