@@ -213,7 +213,7 @@
         },
         {
           "name": "uncheckAll",
-          "text": "The label for uncheck all option.",
+          "text": "The label for the uncheck all option.",
           "type": "string",
           "default": "i18n.oblique.multiselect.uncheck-all",
           "since": "2.0.0",
@@ -224,6 +224,30 @@
           "text": "The placeholder",
           "type": "string",
           "default": "i18n.oblique.multiselect.search-placeholder",
+          "since": "2.0.0",
+          "updated": "9.0.0"
+        },
+        {
+          "name": "checked",
+          "text": "The label for the checked option.",
+          "type": "string",
+          "default": "i18n.oblique.multiselect.checked",
+          "since": "2.0.0",
+          "updated": "9.0.0"
+        },
+        {
+          "name": "defaultTitle",
+          "text": "The default title.",
+          "type": "string",
+          "default": "i18n.oblique.multiselect.default-title",
+          "since": "2.0.0",
+          "updated": "9.0.0"
+        },
+        {
+          "name": "allSelected",
+          "text": "The label that shows when all elements have been selected.",
+          "type": "string",
+          "default": "i18n.oblique.multiselect.all-selected",
           "since": "2.0.0",
           "updated": "9.0.0"
         }
