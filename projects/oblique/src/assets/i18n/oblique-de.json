@@ -12,7 +12,7 @@
   "i18n.oblique.external": "Öffnet in einem neuen Tab.",
   "i18n.oblique.file-upload.caption": "Zum Hochladen Dateien hierher ziehen oder klicken",
   "i18n.oblique.file-upload.empty": "Nichts zu zeigen",
-  "i18n.oblique.file-upload.error.failed": "Die folgenden Dateien konnten nicht hochgeladen werden: {{ ignoredFiles }}",
+  "i18n.oblique.file-upload.error.failed": "Die folgenden Dateien konnten nicht hochgeladen werden: {{ failedFiles }}",
   "i18n.oblique.file-upload.error.single": "Mehrere Datei-Uploads sind nicht erlaubt. Die folgenden Dateien werden ignoriert: {{ ignoredFiles }}.",
   "i18n.oblique.file-upload.error.size": "Die maximale Datei Größe beträgt {{ maxSize }} MB. Die folgenden Dateien werden ignoriert: {{ ignoredFiles }}.",
   "i18n.oblique.file-upload.error.title": "Hochladefehler",

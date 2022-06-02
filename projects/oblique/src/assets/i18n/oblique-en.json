@@ -12,7 +12,7 @@
   "i18n.oblique.external": "Opens in a new tab.",
   "i18n.oblique.file-upload.caption": "Drag files or click here to upload",
   "i18n.oblique.file-upload.empty": "Nothing to show",
-  "i18n.oblique.file-upload.error.failed": "The following files could not be uploaded: {{ ignoredFiles }}",
+  "i18n.oblique.file-upload.error.failed": "The following files could not be uploaded: {{ failedFiles }}",
   "i18n.oblique.file-upload.error.single": "Multiple file uploads are not allowed. The following files are ignored: {{ ignoredFiles }}.",
   "i18n.oblique.file-upload.error.size": "The maximum file size is {{ maxSize }} MB. The following files are ignored: {{ ignoredFiles }}.",
   "i18n.oblique.file-upload.error.title": "Upload error",

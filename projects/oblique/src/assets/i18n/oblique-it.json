@@ -12,7 +12,7 @@
   "i18n.oblique.external": "Si apre in una nuova scheda.",
   "i18n.oblique.file-upload.caption": "Trascina i file o clicca qui per caricare",
   "i18n.oblique.file-upload.empty": "Niente da mostrare",
-  "i18n.oblique.file-upload.error.failed": "The following files could not be uploaded: {{ ignoredFiles }}",
+  "i18n.oblique.file-upload.error.failed": "The following files could not be uploaded: {{ failedFiles }}",
   "i18n.oblique.file-upload.error.single": "Il caricamento di più file non è consentito. I seguenti file sono ignorati: {{ ignoredFiles }}.",
   "i18n.oblique.file-upload.error.size": "La dimensione massima di file è {{ maxSize }} MB. I seguenti file sono ignorati: {{ ignoredFiles }}.",
   "i18n.oblique.file-upload.error.title": "Errore di caricamento",

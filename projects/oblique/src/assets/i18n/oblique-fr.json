@@ -12,7 +12,7 @@
   "i18n.oblique.external": "S'ouvre dans un nouvel onglet.",
   "i18n.oblique.file-upload.caption": "Faites glisser les fichiers ou cliquez ici pour télécharger",
   "i18n.oblique.file-upload.empty": "Rien à afficher",
-  "i18n.oblique.file-upload.error.failed": "Les fichiers suivants n'ont pas pu être téléchargés : {{ ignoredFiles }}",
+  "i18n.oblique.file-upload.error.failed": "Les fichiers suivants n'ont pas pu être téléchargés : {{ failedFiles }}",
   "i18n.oblique.file-upload.error.single": "Le téléchargement de plusieurs fichiers n'est pas autorisé. Les fichiers suivants sont ignorés : {{ ignoredFiles }}.",
   "i18n.oblique.file-upload.error.size": "La taille maximale de fichier est de {{ maxSize }} MB. Les fichiers suivants sont ignorés : {{ ignoredFiles }}.",
   "i18n.oblique.file-upload.error.title": "Erreur d'upload",
