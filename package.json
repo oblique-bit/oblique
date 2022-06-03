@@ -15,20 +15,24 @@
     "Nina Egger <nina.egger@bit.admin.ch>",
     "Nicole Widmer <nicole.widmer@bit.admin.ch>",
     "Ciril Saner <ciril.saner@bit.admin.ch>",
-    "Louis Bernath <louis.bernath@bit.admin.ch>",
+    "Yann Flückiger <yanncedric.flueckiger@bit.admin.ch>",
     "Michael Jehle <michael.jehle@bit.admin.ch>",
     "Quinavuidi Camilo <quinavuidi.camilo@bit.admin.ch>",
     "Philippe Krüttli <philippe.kruttli@bit.admin.ch>",
     "Yanis Noa Weibel <yanisnoa.weibel@bit.admin.ch>",
     "Michèle Habegger <michele.habegger@bit.admin.ch>",
     "Nicolas Müller <nicolas.mueller@bit.admin.ch>",
+    "Miro Albrecht <miro.albrecht@bit.admin.ch>",
+    "Yann Meuwly <yann.meuwly@bit.admin.ch>",
     "Arkadiusz Bojarowicz <arkadiusz.bojarowicz@bit.admin.ch>",
     "Maya Hartmeier <maya.hartmeier@bit.admin.ch>",
+    "Justin Cerionio <justin.cerionio@bit.admin.ch>",
     "Pedro De Almeida",
     "Christian Ulmann",
     "Stefan Tanner",
     "Debora Mittner",
-    "Cédric Tristan Schweizer"
+    "Cédric Tristan Schweizer",
+    "Louis Bernath"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
