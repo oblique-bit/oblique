@@ -267,6 +267,13 @@
           "since": "4.0.0"
         },
         {
+          "name": "footer.isSmall",
+          "text": "Forces the small variant of the footer.",
+          "type": "boolean",
+          "default": false,
+          "since": "8.0.0"
+        },
+        {
           "name": "footer.isCustom",
           "text": "Use Oblique's default footer (false) or a custom one (true). The custom footer has to be provided through <code>[obFooter]</code>.",
           "type": "boolean",
