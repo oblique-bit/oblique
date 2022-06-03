@@ -42,7 +42,6 @@
 		&:not(.ob-sub-nav) {
 			@include layout.ob-media-breakpoint-up(md) {
 				flex-direction: row;
-				padding-left: variables.$ob-spacing-default;
 			}
 		}
 
