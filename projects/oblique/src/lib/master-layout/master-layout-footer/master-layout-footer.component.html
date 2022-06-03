@@ -10,10 +10,12 @@
 	<div class="ob-footer-item ob-footer-item-info">
 		<ng-content select="[obFooterInfo]"></ng-content>
 	</div>
-	<h2 class="ob-screen-reader-only">{{ "i18n.oblique.footer.links.title" | translate }}</h2>
-	<ul class="ob-footer-item ob-footer-item-links" *ngIf="templates.length">
-		<li *ngFor="let template of templates">
-			<ng-container [ngTemplateOutlet]="template"></ng-container>
-		</li>
-	</ul>
+	<ng-container *ngIf="templates.length">
+		<h2 class="ob-screen-reader-only">{{ "i18n.oblique.footer.links.title" | translate }}</h2>
+		<ul class="ob-footer-item ob-footer-item-links">
+			<li *ngFor="let template of templates">
+				<ng-container [ngTemplateOutlet]="template"></ng-container>
+			</li>
+		</ul>
+	</ng-container>
 </ng-container>
