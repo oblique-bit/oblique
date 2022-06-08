@@ -1,6 +1,7 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {ObIMigrations} from './ng-update.model';
-import {applyInTree, createSafeRule, infoMigration, replaceInFile} from '../utils';
+import {applyInTree, createSafeRule, getDefaultAngularConfig, infoMigration, readFile, replaceInFile} from '../utils';
+import {getTemplate} from '../ng-add/ng-add-utils';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IUpdateV8Schema {}
@@ -12,7 +13,10 @@ export class UpdateV8toV9 implements ObIMigrations {
 	applyMigrations(_options: IUpdateV8Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Analyzing project');
-			return chain([this.renameTranslationKeys(), this.removeObUseObliqueIconsToken()])(tree, _context);
+			return chain([this.renameTranslationKeys(), this.removeObUseObliqueIconsToken(), this.updateBrowserCompatibilityMessages()])(
+				tree,
+				_context
+			);
 		};
 	}
 
@@ -55,5 +59,23 @@ export class UpdateV8toV9 implements ObIMigrations {
 			};
 			return applyInTree(tree, apply, 'app.module.ts');
 		});
+	}
+
+	private updateBrowserCompatibilityMessages(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Oblique: Updating browser compatibility check message');
+			const indexPath = getDefaultAngularConfig(tree, ['architect', 'build', 'options', 'index']);
+			this.overwriteIndexFile(indexPath, tree);
+			return tree;
+		});
+	}
+
+	private overwriteIndexFile(indexPath: string, tree: Tree): void {
+		if (indexPath && tree.exists(indexPath)) {
+			tree.overwrite(
+				indexPath,
+				readFile(tree, indexPath).replace(new RegExp(/<noscript>(?:.|\r?\n)*<\/div>/gm), getTemplate(tree, 'default-index.html'))
+			);
+		}
 	}
 }
