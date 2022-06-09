@@ -3,9 +3,9 @@ import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 import {
 	AbstractControl,
 	ControlValueAccessor,
-	FormControl,
 	NG_VALIDATORS,
 	NG_VALUE_ACCESSOR,
+	UntypedFormControl,
 	ValidationErrors,
 	Validator
 } from '@angular/forms';
@@ -21,7 +21,7 @@ import {ObIDatepickerOptions} from '../datepicker.model';
 	]
 })
 export class ObMockDatepickerComponent implements ControlValueAccessor, Validator {
-	datePicker = new FormControl();
+	datePicker = new UntypedFormControl();
 	opts = {} as ObIDatepickerOptions;
 
 	@Input() maxDate;

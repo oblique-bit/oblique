@@ -1,4 +1,4 @@
-@Library('jeap-pipelinelibrary@feature/oblique2') _
+@Library('jeap-pipelinelibrary@feature/oblique3') _
 nodejsPipelineTemplate {
 	testEngine = 'jest'
 	versionNumberType = 'none'

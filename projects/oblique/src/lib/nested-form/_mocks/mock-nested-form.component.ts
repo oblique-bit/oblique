@@ -2,9 +2,9 @@ import {Component, Input} from '@angular/core';
 import {
 	AbstractControl,
 	ControlValueAccessor,
-	FormGroup,
 	NG_VALIDATORS,
 	NG_VALUE_ACCESSOR,
+	UntypedFormGroup,
 	ValidationErrors,
 	Validator
 } from '@angular/forms';
@@ -20,7 +20,7 @@ import {
 	host: {class: 'ob-nested-form'}
 })
 export class ObMockNestedFormComponent implements ControlValueAccessor, Validator {
-	@Input() nestedForm: FormGroup;
+	@Input() nestedForm: UntypedFormGroup;
 
 	registerOnChange(fn: any): void {}
 

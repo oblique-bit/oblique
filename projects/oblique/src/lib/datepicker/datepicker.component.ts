@@ -2,9 +2,9 @@ import {Component, ElementRef, HostListener, Input, OnInit, ViewChild, ViewEncap
 import {
 	AbstractControl,
 	ControlValueAccessor,
-	FormControl,
 	NG_VALIDATORS,
 	NG_VALUE_ACCESSOR,
+	UntypedFormControl,
 	ValidationErrors,
 	Validator
 } from '@angular/forms';
@@ -30,7 +30,7 @@ import {ObIDatepickerOptions} from './datepicker.model';
 	host: {class: 'ob-date-picker datepicker input-group'}
 })
 export class ObDatepickerComponent implements OnInit, ControlValueAccessor, Validator {
-	datePicker = new FormControl();
+	datePicker = new UntypedFormControl();
 	opts = {} as ObIDatepickerOptions;
 
 	@Input() size: 'sm' | 'lg' | null;

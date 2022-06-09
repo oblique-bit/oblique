@@ -1,5 +1,5 @@
 import {AfterViewInit, Directive, Inject, Injector} from '@angular/core';
-import {FormControl, NG_VALIDATORS, NgControl, ValidationErrors, Validator} from '@angular/forms';
+import {NG_VALIDATORS, NgControl, UntypedFormControl, ValidationErrors, Validator} from '@angular/forms';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 import {WINDOW} from '../utilities';
 
@@ -24,7 +24,7 @@ export class ObSchemaValidateDirective implements AfterViewInit, Validator {
 		this.window.setTimeout(() => ngControl.control.updateValueAndValidity());
 	}
 
-	validate(formControl: FormControl): ValidationErrors {
+	validate(formControl: UntypedFormControl): ValidationErrors {
 		return this.schemaDirective.validate(this.propertyName, formControl.value);
 	}
 }
