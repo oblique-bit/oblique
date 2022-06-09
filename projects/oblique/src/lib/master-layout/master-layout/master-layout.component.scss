@@ -60,6 +60,10 @@
 			.ob-master-layout-footer {
 				display: none;
 			}
+
+			.ob-viewport.ob-fixed-layout .ob-master-layout-wrapper {
+				overflow: visible;
+			}
 		}
 	}
 
