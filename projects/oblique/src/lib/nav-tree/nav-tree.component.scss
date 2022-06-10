@@ -41,22 +41,22 @@
 	&.ob-nav-toggle {
 		$fa-fw-width-px: 20px;
 		$icon-width: 24px;
-		$indentMaterial: $icon-width + variables.$ob-spacing-default;
+		$indent-material: $icon-width + variables.$ob-spacing-default;
 
 		&.ob-nav-indent {
 			.ob-nav-link {
-				padding-left: $indentMaterial;
+				padding-left: $indent-material;
 			}
-			@include nav.ob-nav-indent($indentMaterial);
+			@include nav.ob-nav-indent($indent-material);
 
 			.ob-font-awesome & {
-				$indentBootstrap: $fa-fw-width-px + variables.$ob-spacing-sm;
+				$indent-bootstrap: $fa-fw-width-px + variables.$ob-spacing-sm;
 
 				.ob-nav-link {
-					padding-left: $indentBootstrap;
+					padding-left: $indent-bootstrap;
 				}
 
-				@include nav.ob-nav-indent($indentBootstrap);
+				@include nav.ob-nav-indent($indent-bootstrap);
 			}
 		}
 
@@ -72,7 +72,7 @@
 		}
 
 		.mat-icon {
-			margin-left: -$indentMaterial + 5px + variables.$ob-spacing-sm;
+			margin-left: -$indent-material + 5px + variables.$ob-spacing-sm;
 		}
 
 		.ob-nav-link.has-child {

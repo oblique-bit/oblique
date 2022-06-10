@@ -2,9 +2,9 @@
 @use "layout";
 
 @mixin ob-gridTemplate($columns, $gap) {
-	$gapsSpace: ($columns - 1) * $gap;
-	$columnsSpace: math.div(100%, $columns);
-	grid-template-columns: repeat($columns, minmax(calc(#{$columnsSpace} - #{$gapsSpace}), 1fr));
+	$gaps-space: ($columns - 1) * $gap;
+	$columns-space: math.div(100%, $columns);
+	grid-template-columns: repeat($columns, minmax(calc(#{$columns-space} - #{$gaps-space}), 1fr));
 }
 
 @mixin ob-gridSpan($span) {
@@ -42,8 +42,8 @@
 }
 
 @mixin ob-flexBase($columns, $gap) {
-	$gapsSpace: ($gap * ($columns - 1));
-	flex-basis: calc((100% - #{$gapsSpace}) / #{$columns});
+	$gaps-space: ($gap * ($columns - 1));
+	flex-basis: calc((100% - #{$gaps-space}) / #{$columns});
 }
 
 @mixin ob-flexGrow($span) {
