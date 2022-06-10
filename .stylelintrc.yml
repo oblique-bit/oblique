@@ -40,6 +40,5 @@ rules:
   keyframes-name-pattern: null
   selector-class-pattern: null
   selector-id-pattern: null
-  scss/at-mixin-pattern: null
   # rules that need some refactoring to be enabled
   no-descending-specificity: null

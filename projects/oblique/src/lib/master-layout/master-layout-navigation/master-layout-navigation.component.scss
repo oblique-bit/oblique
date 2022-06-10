@@ -41,7 +41,7 @@
 			}
 		}
 
-		@include shadow.ob-innerBottomShadow();
+		@include shadow.ob-inner-bottom-shadow();
 
 		&:not(.ob-sub-nav) {
 			@include layout.ob-media-breakpoint-up(md) {
@@ -159,7 +159,7 @@
 				transform: none;
 				transition: none;
 				display: block;
-				@include shadow.ob-dropShadow();
+				@include shadow.ob-drop-shadow();
 			}
 
 			@include layout.ob-media-breakpoint-down(md) {

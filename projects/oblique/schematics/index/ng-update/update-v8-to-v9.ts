@@ -17,7 +17,8 @@ export class UpdateV8toV9 implements ObIMigrations {
 				this.renameTranslationKeys(),
 				this.removeObUseObliqueIconsToken(),
 				this.updateBrowserCompatibilityMessages(),
-				this.renameJumpLinks()
+				this.renameJumpLinks(),
+				this.useKebabCaseForMixins()
 			])(tree, _context);
 		};
 	}
@@ -89,6 +90,20 @@ export class UpdateV8toV9 implements ObIMigrations {
 				replaceInFile(tree, filePath, /jumpLinks/g, 'skipLinks');
 			};
 			return applyInTree(tree, apply, '*.{ts,html}');
+		});
+	}
+
+	private useKebabCaseForMixins(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Rename some mixins to use kebab-case');
+			const apply = (filePath: string): void => {
+				['ob-gridTemplate', 'ob-gridSpan', 'ob-gridWidth', 'ob-flexBase', 'ob-flexGrow', 'ob-dropShadow', 'ob-innerBottomShadow'].forEach(
+					mixin => {
+						replaceInFile(tree, filePath, new RegExp(mixin, 'g'), this.toKebabCase(mixin));
+					}
+				);
+			};
+			return applyInTree(tree, apply, '*.scss');
 		});
 	}
 }

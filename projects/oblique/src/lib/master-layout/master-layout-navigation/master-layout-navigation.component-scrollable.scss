@@ -33,12 +33,12 @@
 				z-index: variables.$ob-z-index-controls;
 
 				&.ob-navigation-scrollable-control-left {
-					@include shadow.ob-innerBottomShadow();
+					@include shadow.ob-inner-bottom-shadow();
 					left: 0;
 				}
 
 				&.ob-navigation-scrollable-control-right {
-					@include shadow.ob-innerBottomShadow();
+					@include shadow.ob-inner-bottom-shadow();
 					right: 0;
 				}
 

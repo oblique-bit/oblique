@@ -54,7 +54,7 @@
 		text-decoration: none;
 		color: variables.$ob-default;
 		background-color: variables.$ob-gray-light;
-		@include shadow.ob-dropShadow();
+		@include shadow.ob-drop-shadow();
 	}
 
 	.ob-master-layout-scrolling & {

@@ -4,7 +4,7 @@
 
 .mat-dialog-container {
 	box-shadow: none;
-	@include shadow.ob-dropShadow($color: core-variables.$ob-gray-dark);
+	@include shadow.ob-drop-shadow($color: core-variables.$ob-gray-dark);
 
 	.mat-dialog-title {
 		@include typography.ob-h6();
