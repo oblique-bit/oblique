@@ -72,8 +72,8 @@ module.exports = {
 			lines: 100
 		},
 		'projects/oblique/src/lib/column-layout/*.ts': {
-			statements: 20,
-			branches: 36,
+			statements: 50,
+			branches: 47,
 			functions: 0,
 			lines: 33
 		},
