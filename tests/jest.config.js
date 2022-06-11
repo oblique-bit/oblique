@@ -104,7 +104,7 @@ module.exports = {
 		'projects/oblique/src/lib/external-link/*.ts': {
 			statements: 90,
 			branches: 94,
-			functions: 62,
+			functions: 83,
 			lines: 89
 		},
 		'projects/oblique/src/lib/file-upload/*.ts': {
