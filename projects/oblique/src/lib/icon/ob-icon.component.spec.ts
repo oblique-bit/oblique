@@ -12,7 +12,8 @@ describe('IconComponent', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				imports: [MatIconModule],
-				declarations: [ObIconComponent]
+				declarations: [ObIconComponent],
+				providers: [{provide: ObUseObliqueIcons, useValue: false}]
 			}).compileComponents();
 		});
 
@@ -97,8 +98,7 @@ describe('IconComponent', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				imports: [MatIconModule],
-				declarations: [ObIconComponent],
-				providers: [{provide: ObUseObliqueIcons, useValue: true}]
+				declarations: [ObIconComponent]
 			}).compileComponents();
 		});
 
