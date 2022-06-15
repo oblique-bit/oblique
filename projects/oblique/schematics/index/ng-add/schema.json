@@ -59,6 +59,12 @@
       "description": "External link",
       "x-prompt": "[8 / 19] Add the ObExternalLinkModule? It will transparently and automatically enhance external links."
     },
+    "telemetry": {
+      "type": "boolean",
+      "default": true,
+      "description": "Telemetry",
+      "x-prompt": "[9 / 19] Activate the telemetry feature that collects usage information? More information about the data collected and usage: https://oblique.bit.admin.ch/components/telemetry"
+    },
     "prefix": {
       "type": "string",
       "default": "app",
