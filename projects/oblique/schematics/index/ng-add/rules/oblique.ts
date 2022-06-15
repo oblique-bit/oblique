@@ -17,6 +17,7 @@ export function oblique(options: ObIOptionsSchema): Rule {
 		chain([
 			addFavIcon(),
 			embedMasterLayout(options.title),
+			addAdditionalModules(),
 			addFeatureDetection(),
 			addMainCSS(),
 			addTheme(),
@@ -55,6 +56,17 @@ function embedMasterLayout(title: string): Rule {
 		importModuleInRoot(tree, 'ObMasterLayoutModule', ObliquePackage);
 		importModuleInRoot(tree, 'BrowserAnimationsModule', '@angular/platform-browser/animations');
 		addMasterLayout(tree, title);
+
+		return tree;
+	});
+}
+
+function addAdditionalModules(): Rule {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+		infoMigration(_context, 'Oblique: Add ObIconModule & ObButtonModule');
+		importModuleInRoot(tree, 'ObButtonModule', ObliquePackage);
+		importModuleInRoot(tree, 'ObIconModule', ObliquePackage);
+		addForRootToIconModule(tree);
 		addComment(tree);
 
 		return tree;
@@ -186,10 +198,12 @@ function addMasterLayout(tree: Tree, title: string): void {
 	}
 }
 
+function addForRootToIconModule(tree: Tree): void {
+	const appModuleContent = readFile(tree, appModulePath);
+	tree.overwrite(appModulePath, appModuleContent.replace(/(?<prefix>.*)ObIconModule/s, '$<prefix>ObIconModule.forRoot()'));
+}
+
 function addComment(tree: Tree): void {
 	const appModuleContent = readFile(tree, appModulePath);
-	tree.overwrite(
-		appModulePath,
-		appModuleContent.replace(/ObMasterLayoutModule,\n/g, 'ObMasterLayoutModule, // add other Oblique modules as needed\n')
-	);
+	tree.overwrite(appModulePath, appModuleContent.replace(/ObButtonModule,\n/, 'ObButtonModule, // add other Oblique modules as needed\n'));
 }

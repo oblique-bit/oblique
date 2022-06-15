@@ -147,6 +147,7 @@ function addDefaultComponentToAppModule(tree: Tree): void {
 
 		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatButtonModule', '@angular/material/button'));
 		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatCardModule', '@angular/material/card'));
+		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatIconModule', '@angular/material/icon'));
 
 		applyChanges(tree, appModulePath, changes);
 	}
