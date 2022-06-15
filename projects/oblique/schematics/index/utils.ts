@@ -228,6 +228,19 @@ function getDefaultAngularConfig(tree: Tree, path: string[]): string | boolean |
 	return defaultProjectName ? getJsonProperty(json, ['projects', defaultProjectName, ...path].join(';')) : null;
 }
 
+export function addTsCompilerOption(content: string, option: string): string {
+	if (new RegExp(`"${option}"\\s*:\\s*true`).test(content)) {
+		return content;
+	}
+	if (new RegExp(`"${option}"\\s*:\\s*false`).test(content)) {
+		return content.replace(new RegExp(`(?<="${option}"\\s*:\\s*)false`), 'true');
+	}
+	if (content.includes('compilerOptions')) {
+		return content.replace(/(?<=compilerOptions.*)\n/, `\n    "${option}": true,\n`);
+	}
+	return content.replace('{', `{\n  "compilerOptions": {\n    "${option}": true\n  },`);
+}
+
 function hasImport(content: string, name: string, pkg: string): boolean {
 	return new RegExp(`import\\s*{\\s*.*${name}.*from\\s*['"]${pkg}['"]`, 'm').test(content);
 }
