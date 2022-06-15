@@ -144,10 +144,9 @@ function addDefaultComponentToAppModule(tree: Tree): void {
 	if (tree.exists(appModulePath)) {
 		const sourceFile = createSrcFile(tree, appModulePath);
 		const changes: Change[] = addDeclarationToModule(sourceFile, appModulePath, 'HomeComponent', './home/home.component');
-		const routingModule = tree.exists(routingModulePath) ? routingModulePath : appModulePath;
 
-		changes.push(...addImportToModule(sourceFile, routingModule, 'MatButtonModule', '@angular/material/button'));
-		changes.push(...addImportToModule(sourceFile, routingModule, 'MatCardModule', '@angular/material/card'));
+		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatButtonModule', '@angular/material/button'));
+		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatCardModule', '@angular/material/card'));
 
 		applyChanges(tree, appModulePath, changes);
 	}
