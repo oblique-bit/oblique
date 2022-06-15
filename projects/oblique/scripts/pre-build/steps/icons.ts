@@ -43,10 +43,10 @@ export class Icons {
 		const iconCSS = [
 			`.ob-icon::before {\n\tdisplay: inline-block;\n\twidth: 1em;\n\theight: 1em;\n}`,
 			...SVGs.map(svg => ({name: /(?<=id=")[a-z-]*(?=")/.exec(svg)[0], content: Buffer.from(svg).toString('base64')})).map(
-				svg => `.ob-${svg.name}::before {\n\tcontent: url('data:image/svg+xml;base64,${svg.content}');\n}`
+				svg => `.ob-${svg.name}::before {\n\tcontent: url("data:image/svg+xml;base64,${svg.content}");\n}`
 			)
 		];
-		writeFileSync(filePath, iconCSS.join('\n\n'));
+		writeFileSync(filePath, `${iconCSS.join('\n\n')}\n`);
 	}
 
 	private static writeIconEnum(filePath: string, SVGs: string[]): void {
