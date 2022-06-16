@@ -8,6 +8,13 @@
 	background-color: variables.$ob-white;
 	z-index: variables.$ob-z-index-layout;
 
+	@include layout.ob-media-breakpoint-down(md) {
+		.ob-header-expanded & {
+			height: 100vh;
+			padding-bottom: variables.$ob-spacing-lg; // to avoid the last link being covered by the link preview
+		}
+	}
+
 	.ob-header {
 		position: relative;
 		width: 100%;
