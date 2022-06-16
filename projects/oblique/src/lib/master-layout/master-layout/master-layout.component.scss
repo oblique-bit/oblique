@@ -17,17 +17,12 @@
 			}
 		}
 
-		&.ob-continuous,
-		&.ob-fixed-layout {
-			.ob-master-layout-wrapper {
-				overflow: hidden; // shows scrollbars as necessary in fixed layout
-			}
+		&.ob-fixed-layout .ob-master-layout-wrapper {
+			overflow: hidden; // shows scrollbars as necessary in fixed layout
 		}
 
-		&:not(.ob-continuous):not(.ob-fixed-layout) {
-			.ob-master-layout-wrapper {
-				overflow: auto; // shows scrollbars as necessary in non fixed layout
-			}
+		&:not(.ob-continuous-layout):not(.ob-fixed-layout) .ob-master-layout-wrapper {
+			overflow: auto; // shows scrollbars as necessary in non fixed layout
 		}
 	}
 
