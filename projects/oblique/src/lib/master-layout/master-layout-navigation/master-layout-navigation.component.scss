@@ -202,9 +202,6 @@
 
 		.ob-sub-menu-back {
 			font-weight: 600;
-			overflow: hidden; // works together with text-overflow
-			text-overflow: ellipsis;
-			white-space: nowrap;
 
 			@include layout.ob-media-breakpoint-up(md) {
 				display: none;
@@ -217,6 +214,9 @@
 
 			.ob-label {
 				flex: 1;
+				overflow: hidden; // works together with text-overflow
+				text-overflow: ellipsis;
+				white-space: nowrap;
 			}
 		}
 	}
