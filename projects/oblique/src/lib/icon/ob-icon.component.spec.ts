@@ -15,7 +15,7 @@ describe('IconComponent', () => {
 		}).compileComponents();
 	});
 
-	describe('with Oblique icons', () => {
+	describe('Without injection token', () => {
 		beforeEach(() => {
 			fixture = TestBed.createComponent(ObIconComponent);
 			component = fixture.componentInstance;
@@ -24,27 +24,18 @@ describe('IconComponent', () => {
 
 		it('should create', () => {
 			expect(component).toBeTruthy();
+		});
+
+		it('should have ob-icon-wrapper class', () => {
+			expect(fixture.debugElement.nativeElement.classList.contains('ob-icon-wrapper')).toBe(true);
 		});
 
 		it('should show an Angular icon', () => {
 			expect(fixture.debugElement.query(By.css('mat-icon'))).toBeTruthy();
 		});
-	});
 
-	describe('with FontAwesome', () => {
-		beforeEach(() => {
-			TestBed.overrideProvider(ObUseObliqueIcons, {useValue: false});
-			fixture = TestBed.createComponent(ObIconComponent);
-			component = fixture.componentInstance;
-			fixture.detectChanges();
-		});
-
-		it('should create', () => {
-			expect(component).toBeTruthy();
-		});
-
-		it('should show a FontAwesome icon', () => {
-			expect(fixture.debugElement.query(By.css('.fa'))).toBeTruthy();
+		it('should not show a FontAwesome icon', () => {
+			expect(fixture.debugElement.query(By.css('.fa'))).toBeFalsy();
 		});
 
 		describe('fontAwesome aliases', () => {
@@ -107,6 +98,23 @@ describe('IconComponent', () => {
 			it('should map warning ', () => {
 				expect(component.fontAwesomeAliases.warning).toBe('fa-exclamation');
 			});
+		});
+	});
+
+	describe.each([true, false])('With ObUseObliqueIcons token set to %s', value => {
+		beforeEach(() => {
+			TestBed.overrideProvider(ObUseObliqueIcons, {useValue: value});
+			fixture = TestBed.createComponent(ObIconComponent);
+			component = fixture.componentInstance;
+			fixture.detectChanges();
+		});
+
+		it('should show the correct icon', () => {
+			expect(fixture.debugElement.query(By.css(value ? 'mat-icon' : '.fa'))).toBeTruthy();
+		});
+
+		it('should hide the unwanted icon', () => {
+			expect(fixture.debugElement.query(By.css(value ? '.fa' : 'mat-icon'))).toBeFalsy();
 		});
 	});
 });
