@@ -27,7 +27,7 @@ describe('IconComponent', () => {
 		});
 
 		it('should show a FontAwesome icon', () => {
-			expect(fixture.debugElement.query(By.css('.fa'))).toBeDefined();
+			expect(fixture.debugElement.query(By.css('.fa'))).toBeTruthy();
 		});
 
 		describe('fontAwesome aliases', () => {
@@ -113,7 +113,7 @@ describe('IconComponent', () => {
 		});
 
 		it('should show an Angular icon', () => {
-			expect(fixture.debugElement.query(By.css('mat-icon'))).toBeDefined();
+			expect(fixture.debugElement.query(By.css('mat-icon'))).toBeTruthy();
 		});
 	});
 });
