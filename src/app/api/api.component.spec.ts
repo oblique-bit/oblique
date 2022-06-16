@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
-
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ApiComponent} from './api.component';
 
 describe('ApiComponent', () => {
@@ -8,7 +8,8 @@ describe('ApiComponent', () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			declarations: [ApiComponent]
+			declarations: [ApiComponent],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
 	}));
 

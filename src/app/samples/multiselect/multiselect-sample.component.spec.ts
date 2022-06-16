@@ -1,8 +1,10 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {TranslateModule} from '@ngx-translate/core';
+import {ObMultiselectModule} from '@oblique/oblique';
 import {MultiselectSampleComponent} from './multiselect-sample.component';
-import {ObMultiselectModule} from 'projects/oblique/src/lib/multiselect/multiselect.module';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 describe('ObMultiselectSampleComponent', () => {
 	let component: MultiselectSampleComponent;
@@ -11,7 +13,8 @@ describe('ObMultiselectSampleComponent', () => {
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
 			declarations: [MultiselectSampleComponent],
-			imports: [FormsModule, TranslateModule.forRoot(), ObMultiselectModule]
+			imports: [FormsModule, TranslateModule.forRoot(), ObMultiselectModule, HttpClientTestingModule],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
 	}));
 
