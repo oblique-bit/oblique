@@ -13,20 +13,20 @@
 			height: 100vh;
 
 			&:not(.ob-fixed-layout) {
-				overflow-x: hidden;
+				overflow-x: hidden; // prevents horizontal scrollbar when a sub-meu would open outside of the viewable area
 			}
 		}
 
 		&.ob-continuous,
 		&.ob-fixed-layout {
 			.ob-master-layout-wrapper {
-				overflow: hidden;
+				overflow: hidden; // shows scrollbars as necessary in fixed layout
 			}
 		}
 
 		&:not(.ob-continuous):not(.ob-fixed-layout) {
 			.ob-master-layout-wrapper {
-				overflow: auto;
+				overflow: auto; // shows scrollbars as necessary in non fixed layout
 			}
 		}
 	}
@@ -51,7 +51,7 @@
 	}
 
 	.ob-viewport.ob-fixed-layout .ob-main-layout {
-		overflow-y: auto;
+		overflow-y: auto; // shows scrollbars as necessary in fixed layout
 	}
 
 	@include layout.ob-media-breakpoint-down(md) {

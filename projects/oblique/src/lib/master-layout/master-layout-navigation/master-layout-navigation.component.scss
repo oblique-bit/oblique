@@ -16,7 +16,7 @@
 
 		> nav {
 			height: 100%;
-			overflow: hidden;
+			overflow: hidden; // hides horizontal scrollbar in fixed mode
 		}
 	}
 
@@ -37,7 +37,7 @@
 		@include layout.ob-media-breakpoint-up(md) {
 			.ob-master-layout:not(.ob-fixed-layout):not(.ob-continuous-layout)
 				&:not(.ob-has-opened-menu) {
-				overflow: hidden;
+				overflow: hidden; // prevents horizontal scrollbar with sticky footer and non sticky header
 			}
 		}
 
@@ -142,7 +142,7 @@
 			padding: 0;
 			margin: 0;
 			font-size: variables.$ob-font-size-smaller;
-			overflow-y: auto;
+			overflow-y: auto; // limits the height
 			z-index: variables.$ob-z-index-controls;
 			transform: translateX(105%);
 			transition: visibility variables.$ob-duration-default,
@@ -202,7 +202,7 @@
 
 		.ob-sub-menu-back {
 			font-weight: 600;
-			overflow: hidden;
+			overflow: hidden; // works together with text-overflow
 			text-overflow: ellipsis;
 			white-space: nowrap;
 
