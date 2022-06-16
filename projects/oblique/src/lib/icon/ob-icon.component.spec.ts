@@ -8,16 +8,32 @@ describe('IconComponent', () => {
 	let component: ObIconComponent;
 	let fixture: ComponentFixture<ObIconComponent>;
 
-	describe('with FontAwesome', () => {
-		beforeEach(async () => {
-			await TestBed.configureTestingModule({
-				imports: [MatIconModule],
-				declarations: [ObIconComponent],
-				providers: [{provide: ObUseObliqueIcons, useValue: false}]
-			}).compileComponents();
+	beforeEach(() => {
+		TestBed.configureTestingModule({
+			imports: [MatIconModule],
+			declarations: [ObIconComponent]
+		}).compileComponents();
+	});
+
+	describe('with Oblique icons', () => {
+		beforeEach(() => {
+			fixture = TestBed.createComponent(ObIconComponent);
+			component = fixture.componentInstance;
+			fixture.detectChanges();
 		});
 
+		it('should create', () => {
+			expect(component).toBeTruthy();
+		});
+
+		it('should show an Angular icon', () => {
+			expect(fixture.debugElement.query(By.css('mat-icon'))).toBeTruthy();
+		});
+	});
+
+	describe('with FontAwesome', () => {
 		beforeEach(() => {
+			TestBed.overrideProvider(ObUseObliqueIcons, {useValue: false});
 			fixture = TestBed.createComponent(ObIconComponent);
 			component = fixture.componentInstance;
 			fixture.detectChanges();
@@ -91,29 +107,6 @@ describe('IconComponent', () => {
 			it('should map warning ', () => {
 				expect(component.fontAwesomeAliases.warning).toBe('fa-exclamation');
 			});
-		});
-	});
-
-	describe('with Oblique icons', () => {
-		beforeEach(async () => {
-			await TestBed.configureTestingModule({
-				imports: [MatIconModule],
-				declarations: [ObIconComponent]
-			}).compileComponents();
-		});
-
-		beforeEach(() => {
-			fixture = TestBed.createComponent(ObIconComponent);
-			component = fixture.componentInstance;
-			fixture.detectChanges();
-		});
-
-		it('should create', () => {
-			expect(component).toBeTruthy();
-		});
-
-		it('should show an Angular icon', () => {
-			expect(fixture.debugElement.query(By.css('mat-icon'))).toBeTruthy();
 		});
 	});
 });
