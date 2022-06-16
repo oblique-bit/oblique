@@ -143,22 +143,18 @@
 			margin: 0;
 			font-size: variables.$ob-font-size-smaller;
 			overflow-y: auto;
-			overflow-x: hidden;
 			z-index: variables.$ob-z-index-controls;
 			transform: translateX(105%);
 			transition: visibility variables.$ob-duration-default,
 				transform variables.$ob-duration-default;
 
 			@include layout.ob-media-breakpoint-up(md) {
-				position: absolute;
 				top: 100%;
 				bottom: auto;
 				left: auto;
 				right: auto;
 				min-width: 30ch; // empiric number
 				max-height: 60vh;
-				overflow-x: hidden;
-				overflow-y: auto;
 				background-color: variables.$ob-white;
 				transform: none;
 				transition: none;
@@ -205,13 +201,10 @@
 		}
 
 		.ob-sub-menu-back {
-			display: flex;
-			text-align: center;
 			font-weight: 600;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
-			background-color: variables.$ob-white;
 
 			@include layout.ob-media-breakpoint-up(md) {
 				display: none;
