@@ -24,6 +24,7 @@ describe('ObExternalLink', () => {
 	let element: HTMLElement;
 	let translate: TranslateService;
 	const lang = new Subject<void>();
+	const subject = new Subject<string>();
 
 	describe('Config', () => {
 		beforeEach(waitForAsync(() => {
@@ -33,7 +34,11 @@ describe('ObExternalLink', () => {
 					{provide: WINDOW, useValue: window},
 					{
 						provide: TranslateService,
-						useValue: {onLangChange: lang, instant: jest.fn().mockReturnValue('Opens in new tab')}
+						useValue: {
+							onLangChange: lang,
+							instant: jest.fn().mockReturnValue('Opens in new tab'),
+							stream: () => subject.asObservable()
+						}
 					},
 					{provide: ObUseObliqueIcons, useValue: false}
 				]
@@ -48,6 +53,7 @@ describe('ObExternalLink', () => {
 				directive = debugElement.injector.get(ObExternalLinkDirective);
 				element = debugElement.nativeElement;
 				translate = TestBed.inject(TranslateService);
+				subject.next('Opens in new tab');
 			});
 
 			it('should have ob-external-link class', () => {
@@ -58,13 +64,29 @@ describe('ObExternalLink', () => {
 				expect(directive).toBeTruthy();
 			});
 
-			it('should have an aria-label', () => {
-				expect(element.getAttribute('aria-label')).toBe('External Link - Opens in new tab');
-			});
+			describe('additional screen reader element', () => {
+				let screenReaderOnlyElement: HTMLSpanElement;
+				beforeEach(() => {
+					screenReaderOnlyElement = fixture.debugElement.query(By.css('.ob-screen-reader-only')).nativeElement;
+				});
 
-			it('should translate the aria-label on lang change', () => {
-				lang.next();
-				expect(translate.instant).toHaveBeenCalled();
+				it('should be there', () => {
+					expect(screenReaderOnlyElement).toBeTruthy();
+				});
+
+				it('should have some content', () => {
+					expect(screenReaderOnlyElement.textContent).toBe(' - Opens in new tab');
+				});
+
+				it('should follow the actual content immediately', () => {
+					expect(element.textContent).toBe('External Link - Opens in new tab');
+				});
+
+				it('should translate the screen reader only text on lang change', () => {
+					subject.next('Ouvrir dans un nouvel onglet');
+					fixture.detectChanges();
+					expect(element.textContent).toBe('External Link - Ouvrir dans un nouvel onglet');
+				});
 			});
 
 			describe('rel attribute', () => {
@@ -126,7 +148,7 @@ describe('ObExternalLink', () => {
 					directive.icon = 'none';
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.children.length).toBe(0);
+					expect(fixture.debugElement.query(By.css('.fa-external-link-alt'))).toBeFalsy();
 				});
 
 				describe('left', () => {
@@ -135,15 +157,15 @@ describe('ObExternalLink', () => {
 						directive.icon = 'left';
 						directive.ngOnChanges();
 						fixture.detectChanges();
-						span = element.firstChild as HTMLSpanElement;
+						span = fixture.debugElement.query(By.css('.fa-external-link-alt')).nativeElement;
 					});
 
-					it('should have children', () => {
-						expect(element.children.length).toBe(1);
-					});
-
-					it('should have a span as first child', () => {
+					it('should be span', () => {
 						expect(span instanceof HTMLSpanElement).toBe(true);
+					});
+
+					it('should be the first element', () => {
+						expect(span).toBe(element.firstChild);
 					});
 
 					it('should have fa class', () => {
@@ -161,15 +183,15 @@ describe('ObExternalLink', () => {
 						directive.icon = 'right';
 						directive.ngOnChanges();
 						fixture.detectChanges();
-						span = element.lastChild as HTMLSpanElement;
+						span = fixture.debugElement.query(By.css('.fa-external-link-alt')).nativeElement;
 					});
 
-					it('should have children', () => {
-						expect(element.children.length).toBe(1);
-					});
-
-					it('should have a span as first child', () => {
+					it('should be a span', () => {
 						expect(span instanceof HTMLSpanElement).toBe(true);
+					});
+
+					it('should be the last child', () => {
+						expect(span).toBe(element.lastChild);
 					});
 
 					it('should have fa class', () => {
@@ -182,13 +204,13 @@ describe('ObExternalLink', () => {
 				});
 
 				describe('remove', () => {
-					it('should not have children', () => {
+					it('should not br present in the dom', () => {
 						directive.icon = 'right';
 						directive.ngOnChanges();
 						directive.icon = 'none';
 						directive.ngOnChanges();
 						fixture.detectChanges();
-						expect(element.children.length).toBe(0);
+						expect(fixture.debugElement.query(By.css('.fa-external-link-alt'))).toBeFalsy();
 					});
 				});
 			});
@@ -255,8 +277,8 @@ describe('ObExternalLink', () => {
 			expect(translate.instant).not.toHaveBeenCalled();
 		});
 
-		it('should not have an aria-label attribute', () => {
-			expect(element.getAttribute('aria-label')).toBe(null);
+		it('should not have a screen reader only element', () => {
+			expect(fixture.debugElement.query(By.css('.fa-external-link-alt'))).toBeFalsy();
 		});
 
 		it('should not have a target attribute', () => {

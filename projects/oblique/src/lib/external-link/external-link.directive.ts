@@ -22,6 +22,7 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	private readonly host: HTMLAnchorElement;
 	private hasIcon = false;
 	private readonly useFontAwesomeIcons: boolean;
+	private readonly screenReaderOnlyTextElement: HTMLSpanElement = this.createScreenReaderOnlyTextElement();
 
 	constructor(
 		@Optional() @Inject(EXTERNAL_LINK) private readonly config,
@@ -34,10 +35,11 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 		this.useFontAwesomeIcons = !(useObliqueIcons ?? true);
 		this.host = elRef.nativeElement;
 		this.icon = this.icon || this.config?.icon || 'left';
-		translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.addAriaLabel());
 	}
 
 	ngOnInit(): void {
+		this.addScreenReaderOnlyTextElement();
+		this.translateScreenReaderOnlyText();
 		if (this.useFontAwesomeIcons) {
 			this.iconElement = this.createIconElement();
 			this.addIcon();
@@ -54,7 +56,6 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 
 	ngOnChanges(): void {
 		this.removeIcon();
-		this.addAriaLabel();
 		this.rel = ObExternalLinkDirective.initializeAttribute(this.rel, this.config?.rel || 'noopener noreferrer');
 		this.target = ObExternalLinkDirective.initializeAttribute(this.target, this.config?.target || '_blank');
 		this.addIcon();
@@ -69,8 +70,15 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 		return currentValue === '' ? undefined : currentValue ?? defaultValue;
 	}
 
-	private addAriaLabel(): void {
-		this.renderer.setAttribute(this.host, 'aria-label', `${this.host.text} - ${this.translate.instant('i18n.oblique.external') as string}`);
+	private addScreenReaderOnlyTextElement(): void {
+		this.renderer.appendChild(this.host, this.screenReaderOnlyTextElement);
+	}
+
+	private translateScreenReaderOnlyText(): void {
+		this.translate
+			.stream('i18n.oblique.external')
+			.pipe(takeUntil(this.unsubscribe))
+			.subscribe((text: string) => this.renderer.setProperty(this.screenReaderOnlyTextElement, 'textContent', ` - ${text}`));
 	}
 
 	private addIcon(): void {
@@ -101,5 +109,11 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 			this.renderer.appendChild(span, svg);
 		}
 		return span;
+	}
+
+	private createScreenReaderOnlyTextElement(): HTMLSpanElement {
+		const screenReaderOnlyTextElement = this.renderer.createElement('span');
+		this.renderer.addClass(screenReaderOnlyTextElement, 'ob-screen-reader-only');
+		return screenReaderOnlyTextElement;
 	}
 }
