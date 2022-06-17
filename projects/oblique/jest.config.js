@@ -7,7 +7,6 @@ module.exports.displayName = {
 	name: 'Oblique',
 	color: 'cyan'
 };
-module.exports.testResultsProcessor = 'jest-sonar-reporter';
 module.exports.coveragePathIgnorePatterns = ['jestGlobalMocks.ts', '_mocks', 'assets'];
 module.exports.coverageThreshold = {
 	/*

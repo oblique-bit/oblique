@@ -201,7 +201,9 @@
             "no-cache": true
           },
           "configurations": {
-            "production": {}
+            "production": {
+              "configPath": "./jest.config.prod.js"
+            }
           }
         }
       }
