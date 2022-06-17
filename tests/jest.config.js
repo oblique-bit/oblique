@@ -7,13 +7,6 @@ module.exports = {
 	moduleNameMapper: {
 		'@oblique/oblique': '<rootDir>projects/oblique/src/public_api.ts'
 	},
-	globals: {
-		'ts-jest': {
-			diagnostics: {
-				pathRegex: /\.(?:spec|test)\.ts$/
-			}
-		}
-	},
 	coveragePathIgnorePatterns: ['jestGlobalMocks.ts', '_mocks', 'assets'],
 	coverageDirectory: '<rootDir>/coverage/sonarQube',
 	testResultsProcessor: 'jest-sonar-reporter',
