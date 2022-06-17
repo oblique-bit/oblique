@@ -9,14 +9,7 @@ module.exports = {
 		[
 			'jest-html-reporters',
 			{
-				publicPath: './jest-report',
-				outputPath: './jest-report',
-				filename: 'jest-reporter.html',
-				pageTitle: 'Oblique',
-				expand: false,
-				openReport: true,
-				failureMessageOnly: false,
-				includeConsoleLog: true
+				publicPath: './jest-report'
 			}
 		]
 	]
