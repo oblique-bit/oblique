@@ -115,16 +115,9 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "configPath": "../tests/jest.config.js",
-            "watch": true,
-            "verbose": true
-          },
-          "configurations": {
-            "production": {
-              "configPath": "../tests/jest.config.js",
-              "watch": false,
-              "verbose": false
-            }
+            "configPath": "./src/jest.config.js",
+            "tsConfig": "./src/tsconfig.spec.json",
+            "no-cache": true
           }
         }
       }

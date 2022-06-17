@@ -4,9 +4,6 @@
 module.exports = {
 	preset: 'jest-preset-angular',
 	setupFilesAfterEnv: ['<rootDir>/tests/setupJest.ts'],
-	moduleNameMapper: {
-		'@oblique/oblique': '<rootDir>projects/oblique/src/public_api.ts'
-	},
 	coveragePathIgnorePatterns: ['jestGlobalMocks.ts', '_mocks', 'assets'],
 	coverageDirectory: '<rootDir>/coverage/sonarQube',
 	testResultsProcessor: 'jest-sonar-reporter',

@@ -51,6 +51,7 @@
     "postdist": "ts-node projects/oblique/scripts/post-dist/run-post-dist-steps.ts",
     "test": "node --expose-gc ./node_modules/@angular/cli/bin/ng test oblique --configuration production",
     "test-debugging": "npm run test -- --run-in-band --log-heap-usage",
+    "test-showcase": "ng test oblique-showcase",
     "lint": "ts-node scripts/lint/run-lint-steps.ts",
     "format": "ts-node scripts/lint/run-format-steps.ts",
     "release": "ts-node projects/oblique/scripts/release/release.ts",
