@@ -1,9 +1,8 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "./tsconfig.lib.json",
   "compilerOptions": {
-    "module": "esnext",
     "types": ["jest", "node"]
   },
-  "files": ["src/test.ts"],
-  "include": ["**/*.spec.ts", "**/*.d.ts"]
+  "include": ["**/*.spec.ts"],
+  "exclude": []
 }
