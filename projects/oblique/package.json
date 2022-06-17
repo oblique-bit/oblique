@@ -12,13 +12,13 @@
     "@angular/platform-browser-dynamic": "13.0.x || > 13.1.0 < 14.0.0",
     "@angular/router": "13.0.x || > 13.1.0 < 14.0.0",
     "@ngx-translate/core": "^14.0.0",
-    "@popperjs/core": "^2.0.0",
-    "rxjs": "^6.0.0 || ^7.0.0"
+    "@popperjs/core": "^2.0.0"
   },
   "dependencies": {
     "@schematics/angular": "13.0.x || > 13.1.0 < 14.0.0",
     "@angular-eslint/schematics": "^13.0.0",
-    "ansi-colors": "^4.0.0"
+    "ansi-colors": "^4.0.0",
+    "rxjs": "^7.0.0"
   },
   "optionalDependencies": {
     "@angular/cdk": "13.0.x || > 13.1.0 < 14.0.0",
