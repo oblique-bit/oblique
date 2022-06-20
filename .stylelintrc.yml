@@ -38,6 +38,5 @@ rules:
   scss/double-slash-comment-empty-line-before: null
   # rules that implies breaking changes
   keyframes-name-pattern: null
-  selector-class-pattern: null
   # rules that need some refactoring to be enabled
   no-descending-specificity: null

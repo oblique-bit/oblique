@@ -38,26 +38,26 @@
 			width: 380px;
 		}
 
-		&.fadeLeft {
+		&.fade-left {
 			animation: notification-fadeLeft variables.$ob-duration-default;
 		}
 
-		&.fadeLeft-delayed {
+		&.fade-left-delayed {
 			animation: notification-fadeLeft variables.$ob-duration-default;
 			animation-delay: variables.$ob-duration-default;
 			animation-fill-mode: backwards;
 		}
 
-		&.fadeOut {
+		&.fade-out {
 			animation: notification-fadeOut variables.$ob-duration-default;
 		}
 
-		&.slideTop {
+		&.slide-top {
 			animation: notification-slideTop variables.$ob-duration-default;
 			animation-delay: variables.$ob-duration-default;
 		}
 
-		&.slideBottom {
+		&.slide-bottom {
 			animation: notification-slideBottom variables.$ob-duration-default;
 		}
 
