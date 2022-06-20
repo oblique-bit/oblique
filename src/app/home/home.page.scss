@@ -20,10 +20,10 @@
 }
 
 .square {
-	animation: square_animation 2000ms linear 1 normal forwards;
+	animation: square-animation 2000ms linear 1 normal forwards;
 }
 
-@keyframes square_animation {
+@keyframes square-animation {
 	0% {
 		opacity: 0;
 	}
@@ -38,10 +38,10 @@
 }
 
 .big-line-position {
-	animation: big_line_position_animate 2000ms linear 1 normal forwards;
+	animation: big-line-position-animate 2000ms linear 1 normal forwards;
 }
 
-@keyframes big_line_position_animate {
+@keyframes big-line-position-animate {
 	0% {
 		transform: translate(-65.80266px, 700.287892px);
 	}
@@ -60,10 +60,10 @@
 }
 
 #big-line {
-	animation: big_line_animate 2000ms linear 1 normal forwards;
+	animation: big-line-animate 2000ms linear 1 normal forwards;
 }
 
-@keyframes big_line_animate {
+@keyframes big-line-animate {
 	0% {
 		opacity: 0;
 	}
@@ -82,10 +82,10 @@
 }
 
 .medium-line-position {
-	animation: medium_line_animate 2000ms linear 1 normal forwards;
+	animation: medium-line-animate 2000ms linear 1 normal forwards;
 }
 
-@keyframes medium_line_animate {
+@keyframes medium-line-animate {
 	0% {
 		transform: translate(-72.326608px, 663.786657px);
 	}
@@ -104,10 +104,10 @@
 }
 
 .medium-line {
-	animation: medium_line_opacity 2000ms linear 1 normal forwards;
+	animation: medium-line-opacity 2000ms linear 1 normal forwards;
 }
 
-@keyframes medium_line_opacity {
+@keyframes medium-line-opacity {
 	0% {
 		opacity: 0;
 	}
@@ -126,10 +126,10 @@
 }
 
 .small-line-to {
-	animation: small_line_animate 2000ms linear 1 normal forwards;
+	animation: small-line-animate 2000ms linear 1 normal forwards;
 }
 
-@keyframes small_line_animate {
+@keyframes small-line-animate {
 	0% {
 		transform: translate(-72.10431px, 626.369708px);
 	}
@@ -148,10 +148,10 @@
 }
 
 .small-line {
-	animation: small_line_opacity 2000ms linear 1 normal forwards;
+	animation: small-line-opacity 2000ms linear 1 normal forwards;
 }
 
-@keyframes small_line_opacity {
+@keyframes small-line-opacity {
 	0% {
 		opacity: 0;
 	}
@@ -170,10 +170,10 @@
 }
 
 .semicircle-animation {
-	animation: semicircle_animate 2000ms linear 1 normal forwards;
+	animation: semicircle-animate 2000ms linear 1 normal forwards;
 }
 
-@keyframes semicircle_animate {
+@keyframes semicircle-animate {
 	0% {
 		transform: translate(585.345px, 516.954988px) rotate(0deg);
 	}
@@ -188,10 +188,10 @@
 }
 
 .oblique-char-group-animation {
-	animation: oblique_char_group_animate 2000ms linear 1 normal forwards;
+	animation: oblique-char-group-animate 2000ms linear 1 normal forwards;
 }
 
-@keyframes oblique_char_group_animate {
+@keyframes oblique-char-group-animate {
 	0% {
 		transform: translate(-761.905462px, 0);
 	}
@@ -210,10 +210,10 @@
 }
 
 #oblique-char-group {
-	animation: oblique_char_opacity 2000ms linear 1 normal forwards;
+	animation: oblique-char-opacity 2000ms linear 1 normal forwards;
 }
 
-@keyframes oblique_char_opacity {
+@keyframes oblique-char-opacity {
 	0% {
 		opacity: 0;
 	}
