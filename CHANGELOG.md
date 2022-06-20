@@ -1,3 +1,9 @@
+# [8.2.2](https://github.com/oblique-bit/oblique/compare/8.2.1...8.2.2) (2022-06-17)
+
+## Bug Fixes
+
+- **toolchain:** move `rxjs` from `peerDependencies` to `dependencies` ([054f696](https://github.com/oblique-bit/oblique/commit/054f696c926c031c83c5feb944ba7bee87895d48))
+
 # [8.2.1](https://github.com/oblique-bit/oblique/compare/8.2.0...8.2.1) (2022-05-20)
 
 ## Bug Fixes
