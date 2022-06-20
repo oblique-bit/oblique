@@ -39,26 +39,26 @@
 		}
 
 		&.fade-left {
-			animation: notification-fadeLeft variables.$ob-duration-default;
+			animation: notification-fade-left variables.$ob-duration-default;
 		}
 
 		&.fade-left-delayed {
-			animation: notification-fadeLeft variables.$ob-duration-default;
+			animation: notification-fade-left variables.$ob-duration-default;
 			animation-delay: variables.$ob-duration-default;
 			animation-fill-mode: backwards;
 		}
 
 		&.fade-out {
-			animation: notification-fadeOut variables.$ob-duration-default;
+			animation: notification-fade-out variables.$ob-duration-default;
 		}
 
 		&.slide-top {
-			animation: notification-slideTop variables.$ob-duration-default;
+			animation: notification-slide-top variables.$ob-duration-default;
 			animation-delay: variables.$ob-duration-default;
 		}
 
 		&.slide-bottom {
-			animation: notification-slideBottom variables.$ob-duration-default;
+			animation: notification-slide-bottom variables.$ob-duration-default;
 		}
 
 		.ob-close {
@@ -114,7 +114,7 @@
 		background-color: variables.$ob-error-dark;
 	}
 
-	@keyframes notification-fadeOut {
+	@keyframes notification-fade-out {
 		0% {
 			opacity: 1;
 		}
@@ -124,7 +124,7 @@
 		}
 	}
 
-	@keyframes notification-fadeLeft {
+	@keyframes notification-fade-left {
 		0% {
 			opacity: 0;
 			transform: translateX(100px);
@@ -136,7 +136,7 @@
 		}
 	}
 
-	@keyframes notification-slideTop {
+	@keyframes notification-slide-top {
 		0% {
 			transform: translateY(100%);
 		}
@@ -146,7 +146,7 @@
 		}
 	}
 
-	@keyframes notification-slideBottom {
+	@keyframes notification-slide-bottom {
 		0% {
 			transform: translateY(-100%);
 		}
