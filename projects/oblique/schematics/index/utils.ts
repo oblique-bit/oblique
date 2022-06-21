@@ -3,7 +3,7 @@ import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 import * as colors from 'ansi-colors';
 import {getTemplate} from './ng-add/ng-add-utils';
 
-export const packageJsonConfigPath = './package.json';
+export const packageJsonConfigPath = '/package.json';
 export const ObliquePackage = '@oblique/oblique';
 const glob = require('glob'); /* eslint-disable-line @typescript-eslint/no-var-requires */
 
