@@ -5,8 +5,9 @@ import {
 	ObliquePackage,
 	addAngularConfigInList,
 	createSafeRule,
-	getDefaultAngularConfig,
+	getIndexPaths,
 	infoMigration,
+	overwriteIndexFile,
 	readFile,
 	setAngularProjectsConfig
 } from '../../utils';
@@ -33,19 +34,14 @@ export function oblique(options: ObIOptionsSchema): Rule {
 function addFavIcon(): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Embedding favicon');
-		let index = getDefaultAngularConfig(tree, ['architect', 'build', 'options', 'index']);
-		if (!tree.exists(index)) {
-			index = './index.html';
-		}
-		if (tree.exists(index)) {
-			tree.overwrite(
-				index,
-				readFile(tree, index).replace(
-					'<link rel="icon" type="image/x-icon" href="favicon.ico">',
-					'<link href="assets/images/favicon.png" rel="shortcut icon"/>'
-				)
-			);
-		}
+		getIndexPaths(tree).forEach((indexPath: string) =>
+			overwriteIndexFile(
+				indexPath,
+				tree,
+				'<link rel="icon" type="image/x-icon" href="favicon.ico">',
+				'<link href="assets/images/favicon.png" rel="shortcut icon"/>'
+			)
+		);
 		return tree;
 	});
 }
@@ -76,13 +72,9 @@ function addAdditionalModules(): Rule {
 function addFeatureDetection(): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Adding browser compatibility check');
-		let index = getDefaultAngularConfig(tree, ['architect', 'build', 'options', 'index']);
-		if (!tree.exists(index)) {
-			index = './index.html';
-		}
-		if (tree.exists(index)) {
-			tree.overwrite(index, readFile(tree, index).replace('<body>\n', `<body>\n${getTemplate(tree, 'default-index.html')}`));
-		}
+		getIndexPaths(tree).forEach((indexPath: string) =>
+			overwriteIndexFile(indexPath, tree, '<body>\n', `<body>\n${getTemplate(tree, 'default-index.html')}`)
+		);
 		return addAngularConfigInList(tree, ['architect', 'build', 'options', 'scripts'], 'node_modules/@oblique/oblique/ob-features.js');
 	});
 }

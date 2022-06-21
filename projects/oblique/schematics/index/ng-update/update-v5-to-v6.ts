@@ -17,9 +17,10 @@ import {
 	applyInTree,
 	checkIfAngularConfigExists,
 	getAngularConfigs,
-	getDefaultAngularConfig,
+	getIndexPaths,
 	getJson,
 	infoMigration,
+	overwriteIndexFile,
 	packageJsonConfigPath,
 	readFile,
 	removeImport,
@@ -118,19 +119,14 @@ export class UpdateV5toV6 implements ObIMigrations {
 	}
 
 	private adaptFavIcon(tree: Tree): void {
-		let index = getDefaultAngularConfig(tree, ['architect', 'build', 'options', 'index']);
-		if (!tree.exists(index)) {
-			index = './index.html';
-		}
-		if (tree.exists(index)) {
-			tree.overwrite(
-				index,
-				readFile(tree, index).replace(
-					/<link .*?href="(?:\.\/)?assets\/styles\/images\/favicon\.(?:ico|png)".*?>/,
-					'<link href="assets/images/favicon.png" rel="shortcut icon"/>'
-				)
-			);
-		}
+		getIndexPaths(tree).forEach((indexPath: string) =>
+			overwriteIndexFile(
+				indexPath,
+				tree,
+				/<link .*?href="(?:\.\/)?assets\/styles\/images\/favicon\.(?:ico|png)".*?>/,
+				'<link href="assets/images/favicon.png" rel="shortcut icon"/>'
+			)
+		);
 	}
 
 	private adaptAssets(tree: Tree): Tree {
@@ -145,21 +141,18 @@ export class UpdateV5toV6 implements ObIMigrations {
 	private addFeatureDetection(): Rule {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Oblique: Adding browser compatibility check');
-			let index = getDefaultAngularConfig(tree, ['architect', 'build', 'options', 'index']);
-			if (!tree.exists(index)) {
-				index = './index.html';
-			}
-			if (tree.exists(index)) {
-				tree.overwrite(
-					index,
-					readFile(tree, index)
-						.replace(/<noscript.*<\/noscript>\s/s, '')
-						.replace(/<div class="ob-compatibility" .*?<\/div>\s/s, '')
-						.replace(/<!--\[if lt.*?endif]-->\s/s, '')
-						.replace(/<!--\[if gte.*(<html.*?>).*endif]-->\s/s, '$1')
-						.replace(/<body([^>]*)>\n/, `<body$1>\n${getTemplate(tree, 'default-index.html')}`)
-				);
-			}
+			const indexFileReplacements = [
+				{searchValue: /<noscript.*<\/noscript>\s/s, replaceValue: ''},
+				{searchValue: /<div class="ob-compatibility" .*?<\/div>\s/s, replaceValue: ''},
+				{searchValue: /<!--\[if lt.*?endif]-->\s/s, replaceValue: ''},
+				{searchValue: /<!--\[if gte.*(<html.*?>).*endif]-->\s/s, replaceValue: '$1'},
+				{searchValue: /<body([^>]*)>\n/, replaceValue: `<body$1>\n${getTemplate(tree, 'default-index.html')}`}
+			];
+			getIndexPaths(tree).forEach((element: string) =>
+				indexFileReplacements.forEach(value => {
+					overwriteIndexFile(element, tree, value.searchValue, value.replaceValue);
+				})
+			);
 			return addAngularConfigInList(tree, ['architect', 'build', 'options', 'scripts'], 'node_modules/@oblique/oblique/ob-features.js');
 		};
 	}

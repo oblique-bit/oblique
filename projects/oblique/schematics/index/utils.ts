@@ -1,6 +1,7 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 import * as colors from 'ansi-colors';
+import {getTemplate} from './ng-add/ng-add-utils';
 
 export const packageJsonConfigPath = './package.json';
 export const ObliquePackage = '@oblique/oblique';
@@ -109,10 +110,18 @@ export function checkIfAngularConfigExists(tree: Tree, path: string[], config: s
 	return getAngularConfigs(tree, path).reduce((exists, conf) => exists || conf.config === config, false);
 }
 
-export function getDefaultAngularConfig(tree: Tree, path: string[]): any {
-	const json = getJson(tree, angularJsonConfigPath);
-	const defaultProjectName = getJsonProperty(json, 'defaultProject');
-	return getJsonProperty(json, ['projects', defaultProjectName, ...path].join(';'));
+export function overwriteIndexFile(
+	indexPath: string,
+	tree: Tree,
+	searchValue: RegExp | string,
+	replaceValue: string = getTemplate(tree, 'default-index.html')
+): void {
+	if (!indexPath || !tree.exists(indexPath)) {
+		indexPath = './index.html';
+	}
+	if (tree.exists(indexPath)) {
+		tree.overwrite(indexPath, readFile(tree, indexPath).replace(searchValue, replaceValue));
+	}
 }
 
 export function setRootAngularConfig(tree: Tree, path: string[], value: any): Tree {
@@ -206,6 +215,17 @@ export function removeImport(tree: Tree, fileName: string, name: string, pkg: st
 						.replace(/,\s*}/, '}')
 		);
 	}
+}
+
+export function getIndexPaths(tree: Tree): string[] {
+	const index = getDefaultAngularConfig(tree, ['architect', 'build', 'options', 'index']) as string | null;
+	return index ? ([index] as string[]) : getAngularConfigs(tree, ['architect', 'build', 'options', 'index']).map(project => project.config);
+}
+
+function getDefaultAngularConfig(tree: Tree, path: string[]): string | boolean | number | null | unknown {
+	const json = getJson(tree, angularJsonConfigPath);
+	const defaultProjectName = getJsonProperty(json, 'defaultProject');
+	return defaultProjectName ? getJsonProperty(json, ['projects', defaultProjectName, ...path].join(';')) : null;
 }
 
 function hasImport(content: string, name: string, pkg: string): boolean {
