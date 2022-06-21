@@ -4,7 +4,7 @@ import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 /**
- * @deprecated since version 7.1.0. Will be removed with the version 9.0.0. Use the Oblique popover instead.
+ * @deprecated since version 7.1.0. Will be removed with the version 10.0.0. Use the Oblique popover instead.
  */
 @Component({
 	selector: 'ob-dropdown',
