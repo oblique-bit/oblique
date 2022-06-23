@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObPaginatorService",
+      "type": "service",
+      "since": "9.1.0",
+      "usage": "The easiest way is to import <code>ObPaginatorModule</code>.<code>ObPaginatorModule</code> also imports <code>MatPaginatorModule</code>.\nBut if direct implementation is needed you could provide <code>providers: [ObPaginatorService, {provide: MatPaginatorIntl, useClass: ObPaginatorService}]</code> into your module. \nIt's a child class and extends from <code>MatPaginatorIntl</code>.",
+      "methods": [
+        {
+          "name": "getRangeLabel",
+          "text": "Creates the label for the range of items within the current page and the length of the whole list.",
+          "returns": "string",
+          "since": "9.1.0"
+        }
+      ],
+      "variables": [
+        {
+          "name": "changes",
+          "type": "Subject<void>",
+          "text": "Stream to emit from when labels are changed. Use this to notify components when the labels have changed after initialization.",
+          "since": "9.1.0"
+        },
+        {
+          "name": "itemsPerPageLabel",
+          "type": "string",
+          "text": "A label for the page size selector.\nIt is related to the <code>i18n.pagination.items-per-page</code> translation key.",
+          "since": "9.1.0"
+        },
+        {
+          "name": "nextPageLabel",
+          "type": "string",
+          "text": "A label for the button that increments the current page.\nIt is related to the <code>i18n.pagination.next-page</code> translation key.",
+          "since": "9.1.0"
+        },
+        {
+          "name": "previousPageLabel",
+          "type": "string",
+          "text": "A label for the button that decrements the current page.\nIt is related to the <code>i18n.pagination.previous-page</code> translation key.",
+          "since": "9.1.0"
+        },
+        {
+          "name": "firstPageLabel",
+          "type": "string",
+          "text": "A label for the button that moves to the first page.\nIt is related to the <code>i18n.pagination.first-page</code> translation key.",
+          "since": "9.1.0"
+        },
+        {
+          "name": "lastPageLabel",
+          "type": "string",
+          "text": "A label for the range of items within the current page and the length of the whole list.\nIt is related to the <code>i18n.pagination.last-page</code> translation key.",
+          "since": "9.1.0"
+        }
+      ]
+    }
+  ]
+}

@@ -96,5 +96,11 @@
   "i18n.validation.pattern": "Bitte geben Sie Zeichen ein, die dem Muster entsprechen",
   "i18n.validation.required": "Dieses Feld wird benötigt",
   "i18n.validation.unsavedChanges": "Es sind nicht gespeicherte Änderungen vorhanden, wollen Sie wirklich fortfahren?",
-  "i18n.validation.url": "Ungültiges Format, bitte geben Sie eine gültige URL Adresse an"
+  "i18n.validation.url": "Ungültiges Format, bitte geben Sie eine gültige URL Adresse an",
+  "i18n.pagination.items-per-page": "Elemente pro Seite",
+  "i18n.pagination.next-page": "Auf die nächste Seite gehen",
+  "i18n.pagination.previous-page": "Auf die vorige Seite gehen",
+  "i18n.pagination.of-label": "von",
+  "i18n.pagination.first-page": "Auf die erste Seite springen",
+  "i18n.pagination.last-page": "Auf die letzte Seite springen"
 }

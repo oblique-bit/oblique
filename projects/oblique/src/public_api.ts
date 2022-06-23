@@ -174,3 +174,4 @@ export {obOutsideFilter} from './lib/global-events/outsideFilter';
 export {ObliqueModule} from './lib/oblique.module';
 export * from './lib/oblique-testing.module';
 export {ObMockMatElement, ObMockModule} from './lib/_mocks/mock-module';
+export {ObPaginatorModule, ObPaginatorService} from './lib/paginator/ob-paginator.module';

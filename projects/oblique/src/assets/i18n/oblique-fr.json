@@ -96,5 +96,11 @@
   "i18n.validation.pattern": "Veuillez entrer des caractères respectant le modèle donné",
   "i18n.validation.required": "Ce champ est requis",
   "i18n.validation.unsavedChanges": "Des changements non sauvegardés ont été détectés, êtes-vous sûr de vouloir continuer?",
-  "i18n.validation.url": "Erreur de format : merci de saisir une URL valide"
+  "i18n.validation.url": "Erreur de format : merci de saisir une URL valide",
+  "i18n.pagination.items-per-page": "Éléments par page",
+  "i18n.pagination.next-page": "Aller à la page suivante",
+  "i18n.pagination.previous-page": "Aller à la page précédente",
+  "i18n.pagination.of-label": "sur",
+  "i18n.pagination.first-page": "Sauter à la première page",
+  "i18n.pagination.last-page": "Sauter à la dernière page"
 }
