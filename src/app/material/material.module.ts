@@ -19,7 +19,6 @@ import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatDialogModule} from '@angular/material/dialog';
-import {MatPaginatorModule} from '@angular/material/paginator';
 import {CdkTableModule} from '@angular/cdk/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
@@ -56,6 +55,7 @@ import {MandatorySampleComponent} from './mandatory/mandatory.sample.component';
 import {SharedModule} from '../common/shared.module';
 import {FormComponent} from './form/form.component';
 import {TableEditComponent} from './table/table-edit.component';
+import {ObPaginatorModule} from '@oblique/paginator/ob-paginator.module';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: BadgeComponent},
@@ -117,7 +117,6 @@ const appRoutes: Routes = [
 		MatListModule,
 		MatNativeDateModule,
 		MatOptionModule,
-		MatPaginatorModule,
 		MatProgressBarModule,
 		MatRadioModule,
 		MatSelectModule,
@@ -133,6 +132,7 @@ const appRoutes: Routes = [
 		ObErrorMessagesModule,
 		ObIconModule,
 		ObInputClearModule,
+		ObPaginatorModule,
 		ObSelectableModule,
 		ObSpinnerModule,
 		ReactiveFormsModule,
