@@ -142,8 +142,6 @@ export class UpdateV5toV6 implements ObIMigrations {
 		return (tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Oblique: Adding browser compatibility check');
 			const indexFileReplacements = [
-				{searchValue: /<noscript.*<\/noscript>\s/s, replaceValue: ''},
-				{searchValue: /<div class="ob-compatibility" .*?<\/div>\s/s, replaceValue: ''},
 				{searchValue: /<!--\[if lt.*?endif]-->\s/s, replaceValue: ''},
 				{searchValue: /<!--\[if gte.*(<html.*?>).*endif]-->\s/s, replaceValue: '$1'},
 				{searchValue: /<body([^>]*)>\n/, replaceValue: `<body$1>\n${getTemplate(tree, 'default-index.html')}`}
