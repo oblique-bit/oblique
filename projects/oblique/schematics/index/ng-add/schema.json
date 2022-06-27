@@ -13,7 +13,8 @@
       "type": "string",
       "default": "Title",
       "description": "Application's title",
-      "x-prompt": "[1 / 19] What is the title of the application?"
+      "x-prompt": "[1 / 19] What is the title of the application? This is a mandatory information",
+      "minLength": 1
     },
     "font": {
       "type": "string",
