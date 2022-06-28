@@ -9,251 +9,232 @@ import {ObExternalLinkDirective} from './external-link.directive';
 import {EXTERNAL_LINK} from './external-link.model';
 
 @Component({
-	template: `<a>External Link</a>`
-})
-class TestInternalComponent {}
-
-@Component({
 	template: `<a href="http://www.google.ch">External Link</a>`
 })
 class TestComponent {}
 
 describe('ObExternalLink', () => {
 	let directive: ObExternalLinkDirective;
-	let fixture: ComponentFixture<TestComponent | TestInternalComponent>;
+	let fixture: ComponentFixture<TestComponent>;
 	let element: HTMLElement;
 	let translate: TranslateService;
 	const lang = new Subject<void>();
 	const subject = new Subject<string>();
 
-	describe('Config', () => {
-		beforeEach(waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [TestComponent, ObExternalLinkDirective],
-				providers: [
-					{provide: WINDOW, useValue: window},
-					{
-						provide: TranslateService,
-						useValue: {
-							onLangChange: lang,
-							instant: jest.fn().mockReturnValue('Opens in new tab'),
-							stream: () => subject.asObservable()
-						}
-					},
-					{provide: ObUseObliqueIcons, useValue: false}
-				]
-			});
-		}));
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [TestComponent, ObExternalLinkDirective],
+			providers: [
+				{provide: WINDOW, useValue: window},
+				{
+					provide: TranslateService,
+					useValue: {
+						onLangChange: lang,
+						instant: jest.fn().mockReturnValue('Opens in new tab'),
+						stream: () => subject.asObservable()
+					}
+				},
+				{provide: ObUseObliqueIcons, useValue: false}
+			]
+		});
+	}));
 
-		describe('Default', () => {
+	describe('With default configuration', () => {
+		beforeEach(() => {
+			fixture = TestBed.createComponent(TestComponent);
+			fixture.detectChanges();
+			const debugElement = fixture.debugElement.query(By.directive(ObExternalLinkDirective));
+			directive = debugElement.injector.get(ObExternalLinkDirective);
+			element = debugElement.nativeElement;
+			translate = TestBed.inject(TranslateService);
+			subject.next('Opens in new tab');
+		});
+
+		it('should have ob-external-link class', () => {
+			expect(element.classList.contains('ob-external-link')).toBe(true);
+		});
+
+		it('should create an instance', () => {
+			expect(directive).toBeTruthy();
+		});
+
+		describe('additional screen reader element', () => {
+			let screenReaderOnlyElement: HTMLSpanElement;
 			beforeEach(() => {
-				fixture = TestBed.createComponent(TestComponent);
+				screenReaderOnlyElement = fixture.debugElement.query(By.css('.ob-screen-reader-only')).nativeElement;
+			});
+
+			it('should be there', () => {
+				expect(screenReaderOnlyElement).toBeTruthy();
+			});
+
+			it('should have some content', () => {
+				expect(screenReaderOnlyElement.textContent).toBe(' - Opens in new tab');
+			});
+
+			it('should follow the actual content immediately', () => {
+				expect(element.textContent).toBe('External Link - Opens in new tab');
+			});
+
+			it('should translate the screen reader only text on lang change', () => {
+				subject.next('Ouvrir dans un nouvel onglet');
 				fixture.detectChanges();
-				const debugElement = fixture.debugElement.query(By.directive(ObExternalLinkDirective));
-				directive = debugElement.injector.get(ObExternalLinkDirective);
-				element = debugElement.nativeElement;
-				translate = TestBed.inject(TranslateService);
-				subject.next('Opens in new tab');
+				expect(element.textContent).toBe('External Link - Ouvrir dans un nouvel onglet');
+			});
+		});
+
+		describe('rel attribute', () => {
+			it('should be noopener noreferrer when undefined', () => {
+				directive.rel = undefined;
+				directive.ngOnChanges();
+				fixture.detectChanges();
+				expect(element.getAttribute('rel')).toBe('noopener noreferrer');
+			});
+			it('should be noopener noreferrer when null', () => {
+				directive.rel = null;
+				directive.ngOnChanges();
+				fixture.detectChanges();
+				expect(element.getAttribute('rel')).toBe('noopener noreferrer');
+			});
+			it('should not be present if empty', () => {
+				directive.rel = '';
+				directive.ngOnChanges();
+				fixture.detectChanges();
+				expect(element.getAttribute('rel')).toBe(null);
+			});
+			it('should be the given value', () => {
+				directive.rel = 'test';
+				directive.ngOnChanges();
+				fixture.detectChanges();
+				expect(element.getAttribute('rel')).toBe('test');
+			});
+		});
+
+		describe('target attribute', () => {
+			it('should be _blank when undefined', () => {
+				directive.target = undefined;
+				directive.ngOnChanges();
+				fixture.detectChanges();
+				expect(element.getAttribute('target')).toBe('_blank');
+			});
+			it('should be _blank when null', () => {
+				directive.target = null;
+				directive.ngOnChanges();
+				fixture.detectChanges();
+				expect(element.getAttribute('target')).toBe('_blank');
+			});
+			it('should not be present if empty', () => {
+				directive.target = '';
+				directive.ngOnChanges();
+				fixture.detectChanges();
+				expect(element.getAttribute('target')).toBe(null);
+			});
+			it('should be the given value', () => {
+				directive.target = 'test';
+				directive.ngOnChanges();
+				fixture.detectChanges();
+				expect(element.getAttribute('target')).toBe('test');
+			});
+		});
+
+		describe('icon', () => {
+			it('should not be added if none', () => {
+				directive.icon = 'none';
+				directive.ngOnChanges();
+				fixture.detectChanges();
+				expect(fixture.debugElement.query(By.css('.fa-external-link-alt'))).toBeFalsy();
 			});
 
-			it('should have ob-external-link class', () => {
-				expect(element.classList.contains('ob-external-link')).toBe(true);
-			});
-
-			it('should create an instance', () => {
-				expect(directive).toBeTruthy();
-			});
-
-			describe('additional screen reader element', () => {
-				let screenReaderOnlyElement: HTMLSpanElement;
+			describe('left', () => {
+				let span: HTMLSpanElement;
 				beforeEach(() => {
-					screenReaderOnlyElement = fixture.debugElement.query(By.css('.ob-screen-reader-only')).nativeElement;
-				});
-
-				it('should be there', () => {
-					expect(screenReaderOnlyElement).toBeTruthy();
-				});
-
-				it('should have some content', () => {
-					expect(screenReaderOnlyElement.textContent).toBe(' - Opens in new tab');
-				});
-
-				it('should follow the actual content immediately', () => {
-					expect(element.textContent).toBe('External Link - Opens in new tab');
-				});
-
-				it('should translate the screen reader only text on lang change', () => {
-					subject.next('Ouvrir dans un nouvel onglet');
+					directive.icon = 'left';
+					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.textContent).toBe('External Link - Ouvrir dans un nouvel onglet');
+					span = fixture.debugElement.query(By.css('.fa-external-link-alt')).nativeElement;
+				});
+
+				it('should be span', () => {
+					expect(span instanceof HTMLSpanElement).toBe(true);
+				});
+
+				it('should be the first element', () => {
+					expect(span).toBe(element.firstChild);
+				});
+
+				it('should have fa class', () => {
+					expect(span.classList.contains('fa')).toBe(true);
+				});
+
+				it('should have a fa-external-link as class', () => {
+					expect(span.classList.contains('fa-external-link-alt')).toBe(true);
 				});
 			});
 
-			describe('rel attribute', () => {
-				it('should be noopener noreferrer when undefined', () => {
-					directive.rel = undefined;
+			describe('right', () => {
+				let span: HTMLSpanElement;
+				beforeEach(() => {
+					directive.icon = 'right';
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(element.getAttribute('rel')).toBe('noopener noreferrer');
+					span = fixture.debugElement.query(By.css('.fa-external-link-alt')).nativeElement;
 				});
-				it('should be noopener noreferrer when null', () => {
-					directive.rel = null;
-					directive.ngOnChanges();
-					fixture.detectChanges();
-					expect(element.getAttribute('rel')).toBe('noopener noreferrer');
+
+				it('should be a span', () => {
+					expect(span instanceof HTMLSpanElement).toBe(true);
 				});
-				it('should not be present if empty', () => {
-					directive.rel = '';
-					directive.ngOnChanges();
-					fixture.detectChanges();
-					expect(element.getAttribute('rel')).toBe(null);
+
+				it('should be the last child', () => {
+					expect(span).toBe(element.lastChild);
 				});
-				it('should be the given value', () => {
-					directive.rel = 'test';
-					directive.ngOnChanges();
-					fixture.detectChanges();
-					expect(element.getAttribute('rel')).toBe('test');
+
+				it('should have fa class', () => {
+					expect(span.classList.contains('fa')).toBe(true);
+				});
+
+				it('should have a fa-external-link as class', () => {
+					expect(span.classList.contains('fa-external-link-alt')).toBe(true);
 				});
 			});
 
-			describe('target attribute', () => {
-				it('should be _blank when undefined', () => {
-					directive.target = undefined;
+			describe('remove', () => {
+				it('should not br present in the dom', () => {
+					directive.icon = 'right';
 					directive.ngOnChanges();
-					fixture.detectChanges();
-					expect(element.getAttribute('target')).toBe('_blank');
-				});
-				it('should be _blank when null', () => {
-					directive.target = null;
-					directive.ngOnChanges();
-					fixture.detectChanges();
-					expect(element.getAttribute('target')).toBe('_blank');
-				});
-				it('should not be present if empty', () => {
-					directive.target = '';
-					directive.ngOnChanges();
-					fixture.detectChanges();
-					expect(element.getAttribute('target')).toBe(null);
-				});
-				it('should be the given value', () => {
-					directive.target = 'test';
-					directive.ngOnChanges();
-					fixture.detectChanges();
-					expect(element.getAttribute('target')).toBe('test');
-				});
-			});
-
-			describe('icon', () => {
-				it('should not be added if none', () => {
 					directive.icon = 'none';
 					directive.ngOnChanges();
 					fixture.detectChanges();
 					expect(fixture.debugElement.query(By.css('.fa-external-link-alt'))).toBeFalsy();
 				});
-
-				describe('left', () => {
-					let span: HTMLSpanElement;
-					beforeEach(() => {
-						directive.icon = 'left';
-						directive.ngOnChanges();
-						fixture.detectChanges();
-						span = fixture.debugElement.query(By.css('.fa-external-link-alt')).nativeElement;
-					});
-
-					it('should be span', () => {
-						expect(span instanceof HTMLSpanElement).toBe(true);
-					});
-
-					it('should be the first element', () => {
-						expect(span).toBe(element.firstChild);
-					});
-
-					it('should have fa class', () => {
-						expect(span.classList.contains('fa')).toBe(true);
-					});
-
-					it('should have a fa-external-link as class', () => {
-						expect(span.classList.contains('fa-external-link-alt')).toBe(true);
-					});
-				});
-
-				describe('right', () => {
-					let span: HTMLSpanElement;
-					beforeEach(() => {
-						directive.icon = 'right';
-						directive.ngOnChanges();
-						fixture.detectChanges();
-						span = fixture.debugElement.query(By.css('.fa-external-link-alt')).nativeElement;
-					});
-
-					it('should be a span', () => {
-						expect(span instanceof HTMLSpanElement).toBe(true);
-					});
-
-					it('should be the last child', () => {
-						expect(span).toBe(element.lastChild);
-					});
-
-					it('should have fa class', () => {
-						expect(span.classList.contains('fa')).toBe(true);
-					});
-
-					it('should have a fa-external-link as class', () => {
-						expect(span.classList.contains('fa-external-link-alt')).toBe(true);
-					});
-				});
-
-				describe('remove', () => {
-					it('should not br present in the dom', () => {
-						directive.icon = 'right';
-						directive.ngOnChanges();
-						directive.icon = 'none';
-						directive.ngOnChanges();
-						fixture.detectChanges();
-						expect(fixture.debugElement.query(By.css('.fa-external-link-alt'))).toBeFalsy();
-					});
-				});
-			});
-		});
-
-		describe('Custom', () => {
-			beforeEach(() => {
-				TestBed.overrideProvider(EXTERNAL_LINK, {useValue: {rel: 'custom rel', target: 'custom target', icon: 'left'}});
-				fixture = TestBed.createComponent(TestComponent);
-				fixture.detectChanges();
-				element = fixture.debugElement.query(By.directive(ObExternalLinkDirective)).nativeElement;
-			});
-
-			it('should have a rel attribute', () => {
-				expect(element.getAttribute('rel')).toBe('custom rel');
-			});
-
-			it('should have a target attribute', () => {
-				expect(element.getAttribute('target')).toBe('custom target');
-			});
-
-			it('should have the icon on the left', () => {
-				expect(element.firstChild instanceof HTMLSpanElement).toBe(true);
 			});
 		});
 	});
 
-	describe('with internal link', () => {
-		beforeEach(waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [TestInternalComponent, ObExternalLinkDirective],
-				providers: [
-					{provide: WINDOW, useValue: window},
-					{
-						provide: TranslateService,
-						useValue: {onLangChange: lang, instant: jest.fn().mockReturnValue('Opens in new tab')}
-					}
-				]
-			});
-		}));
-
+	describe('With custom configuration', () => {
 		beforeEach(() => {
-			fixture = TestBed.createComponent(TestInternalComponent);
+			TestBed.overrideProvider(EXTERNAL_LINK, {useValue: {rel: 'custom rel', target: 'custom target', icon: 'left'}});
+			fixture = TestBed.createComponent(TestComponent);
+			fixture.detectChanges();
+			element = fixture.debugElement.query(By.directive(ObExternalLinkDirective)).nativeElement;
+		});
+
+		it('should have a rel attribute', () => {
+			expect(element.getAttribute('rel')).toBe('custom rel');
+		});
+
+		it('should have a target attribute', () => {
+			expect(element.getAttribute('target')).toBe('custom target');
+		});
+
+		it('should have the icon on the left', () => {
+			expect(element.firstChild instanceof HTMLSpanElement).toBe(true);
+		});
+	});
+
+	describe('with internal link', () => {
+		beforeEach(() => {
+			TestBed.overrideComponent(TestComponent, {set: {template: `<a>External Link</a>`}});
+			fixture = TestBed.createComponent(TestComponent);
 			fixture.detectChanges();
 			const debugElement = fixture.debugElement.query(By.css('a'));
 			directive = debugElement.injector.get(ObExternalLinkDirective, null);
