@@ -203,6 +203,74 @@ describe('ObExternalLink', () => {
 				});
 			});
 		});
+
+		describe('markup with no icon', () => {
+			beforeEach(() => {
+				directive.icon = 'none';
+				directive.ngOnChanges();
+				fixture.detectChanges();
+			});
+
+			it('should contain 2 nodes', () => {
+				expect(element.childNodes.length).toBe(2);
+			});
+
+			it('should have the original text in first position', () => {
+				expect(element.firstChild instanceof Text).toBe(true);
+			});
+
+			it('should have the screen reader only element in second position', () => {
+				expect((element.lastChild as HTMLSpanElement).classList.contains('ob-screen-reader-only')).toBe(true);
+			});
+		});
+
+		describe('markup with left icon', () => {
+			beforeEach(() => {
+				directive.icon = 'left';
+				directive.ngOnChanges();
+				fixture.detectChanges();
+			});
+
+			it('should contain 3 nodes', () => {
+				expect(element.childNodes.length).toBe(3);
+			});
+
+			it('should have icon element in first position', () => {
+				expect((element.firstChild as HTMLSpanElement).classList.contains('fa-external-link-alt')).toBe(true);
+			});
+
+			it('should have the original text in second position ', () => {
+				expect(element.childNodes[1] instanceof Text).toBe(true);
+			});
+
+			it('should have the screen reader only element in last position', () => {
+				expect((element.lastChild as HTMLSpanElement).classList.contains('ob-screen-reader-only')).toBe(true);
+			});
+		});
+
+		describe('markup with right icon', () => {
+			beforeEach(() => {
+				directive.icon = 'right';
+				directive.ngOnChanges();
+				fixture.detectChanges();
+			});
+
+			it('should contain 3 nodes', () => {
+				expect(element.childNodes.length).toBe(3);
+			});
+
+			it('should have the original text in first position', () => {
+				expect(element.firstChild instanceof Text).toBe(true);
+			});
+
+			it('should have the screen reader only element in first position', () => {
+				expect((element.childNodes[1] as HTMLSpanElement).classList.contains('ob-screen-reader-only')).toBe(true);
+			});
+
+			it('should have the icon element in last position', () => {
+				expect((element.lastChild as HTMLSpanElement).classList.contains('fa-external-link-alt')).toBe(true);
+			});
+		});
 	});
 
 	describe('With custom configuration', () => {
