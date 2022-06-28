@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
@@ -21,7 +21,7 @@ describe('ObExternalLink', () => {
 	const lang = new Subject<void>();
 	const subject = new Subject<string>();
 
-	beforeEach(waitForAsync(() => {
+	beforeEach(() => {
 		TestBed.configureTestingModule({
 			declarations: [TestComponent, ObExternalLinkDirective],
 			providers: [
@@ -37,25 +37,22 @@ describe('ObExternalLink', () => {
 				{provide: ObUseObliqueIcons, useValue: false}
 			]
 		});
-	}));
+	});
 
 	describe('With default configuration', () => {
 		beforeEach(() => {
 			fixture = TestBed.createComponent(TestComponent);
-			fixture.detectChanges();
-			const debugElement = fixture.debugElement.query(By.directive(ObExternalLinkDirective));
-			directive = debugElement.injector.get(ObExternalLinkDirective);
-			element = debugElement.nativeElement;
-			translate = TestBed.inject(TranslateService);
+			globalSetup();
 			subject.next('Opens in new tab');
-		});
-
-		it('should have ob-external-link class', () => {
-			expect(element.classList.contains('ob-external-link')).toBe(true);
+			translate = TestBed.inject(TranslateService);
 		});
 
 		it('should create an instance', () => {
 			expect(directive).toBeTruthy();
+		});
+
+		it('should have ob-external-link class', () => {
+			expect(element.classList.contains('ob-external-link')).toBe(true);
 		});
 
 		describe('additional screen reader element', () => {
@@ -199,8 +196,6 @@ describe('ObExternalLink', () => {
 
 			describe('remove', () => {
 				it('should not br present in the dom', () => {
-					directive.icon = 'right';
-					directive.ngOnChanges();
 					directive.icon = 'none';
 					directive.ngOnChanges();
 					fixture.detectChanges();
@@ -213,9 +208,7 @@ describe('ObExternalLink', () => {
 	describe('With custom configuration', () => {
 		beforeEach(() => {
 			TestBed.overrideProvider(EXTERNAL_LINK, {useValue: {rel: 'custom rel', target: 'custom target', icon: 'left'}});
-			fixture = TestBed.createComponent(TestComponent);
-			fixture.detectChanges();
-			element = fixture.debugElement.query(By.directive(ObExternalLinkDirective)).nativeElement;
+			globalSetup();
 		});
 
 		it('should have a rel attribute', () => {
@@ -234,12 +227,7 @@ describe('ObExternalLink', () => {
 	describe('with internal link', () => {
 		beforeEach(() => {
 			TestBed.overrideComponent(TestComponent, {set: {template: `<a>External Link</a>`}});
-			fixture = TestBed.createComponent(TestComponent);
-			fixture.detectChanges();
-			const debugElement = fixture.debugElement.query(By.css('a'));
-			directive = debugElement.injector.get(ObExternalLinkDirective, null);
-			element = debugElement.nativeElement;
-			translate = TestBed.inject(TranslateService);
+			globalSetup();
 		});
 
 		it('should not have ob-external-link class', () => {
@@ -274,4 +262,12 @@ describe('ObExternalLink', () => {
 			expect(element.children.length).toBe(0);
 		});
 	});
+
+	function globalSetup(): void {
+		fixture = TestBed.createComponent(TestComponent);
+		fixture.detectChanges();
+		const debugElement = fixture.debugElement.query(By.css('a'));
+		element = debugElement.nativeElement;
+		directive = debugElement.injector.get(ObExternalLinkDirective, null);
+	}
 });
