@@ -15,7 +15,6 @@ module.exports.collectCoverageFrom = [
 	'!**/date-formatter.pipe.ts',
 	'!**/datepicker-i18n.service.ts',
 	'!**/http-api-interceptor.ts',
-	'!**/master-layout-header-toggle.directive.ts',
 	'!**/nested-form.component.ts',
 	'!**/off-canvas-backdrop.directive.ts',
 	'!**/off-canvas-container.directive.ts',
