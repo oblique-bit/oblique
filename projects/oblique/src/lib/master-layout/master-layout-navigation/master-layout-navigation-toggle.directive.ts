@@ -1,5 +1,6 @@
-import {Directive, ElementRef, EventEmitter, HostListener, Output} from '@angular/core';
+import {Directive, HostListener} from '@angular/core';
 import {isNotKeyboardEventOnButton} from '../../utilities';
+import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
 
 @Directive({
 	selector: '[obMasterLayoutNavigationToggle]',
@@ -7,14 +8,7 @@ import {isNotKeyboardEventOnButton} from '../../utilities';
 	host: {class: 'ob-master-layout-navigation-toggle'}
 })
 export class ObMasterLayoutNavigationToggleDirective {
-	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
-	@Output() readonly onToggle = new EventEmitter<MouseEvent | KeyboardEvent>();
-
-	public back = false;
-
-	constructor(private readonly elementRef: ElementRef) {
-		this.back = elementRef.nativeElement.classList.contains('navbar-primary-back');
-	}
+	constructor(private readonly item: ObMasterLayoutNavigationItemDirective) {}
 
 	@HostListener('click', ['$event'])
 	@HostListener('keyup.enter', ['$event'])
@@ -23,7 +17,7 @@ export class ObMasterLayoutNavigationToggleDirective {
 			// As ENTER keypress delegates to click events, let's ensure
 			// browser does not try to follow any empty link (ie `href=""`):
 			event.preventDefault();
-			this.onToggle.next(event);
+			this.item.toggleSubMenu();
 		}
 	}
 }

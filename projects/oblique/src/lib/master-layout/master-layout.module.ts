@@ -23,6 +23,7 @@ import {obliqueProviders} from '../utilities';
 import {ObAriaMenuButtonDirective} from './aria-menu-button.directive';
 import {ObIconModule} from '../icon/icon.module';
 import {ObButtonModule} from '../button/button.module';
+import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
 
 export {ObMasterLayoutComponent} from './master-layout/master-layout.component';
 export {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
@@ -70,16 +71,7 @@ export {
 		ObMasterLayoutNavigationToggleDirective
 	],
 	providers: obliqueProviders(),
-	exports: [
-		ObMasterLayoutComponent,
-		ObMasterLayoutFooterComponent,
-		ObMasterLayoutHeaderComponent,
-		ObMasterLayoutHeaderToggleDirective,
-		ObMasterLayoutNavigationComponent,
-		ObMasterLayoutNavigationItemDirective,
-		ObMasterLayoutNavigationMenuDirective,
-		ObMasterLayoutNavigationToggleDirective
-	]
+	exports: [ObMasterLayoutComponent, ObMasterLayoutFooterComponent, ObMasterLayoutHeaderComponent, ObMasterLayoutNavigationComponent]
 })
 export class ObMasterLayoutModule {
 	constructor(telemetry: ObTelemetryService) {

@@ -18,10 +18,15 @@
 		class="ob-main-nav"
 		[class.ob-navigation-scrollable-content]="isScrollable"
 		[class.ob-main-nav-fw]="isFullWidth"
-		[class.ob-has-opened-menu]="hasOpenedMenu"
 		tabindex="-1"
+		obMasterLayoutNavigationMenu
 	>
-		<li class="ob-main-nav-item" obMasterLayoutNavigationItem *ngFor="let link of links" (toggled)="hasOpenedMenu = $event">
+		<li
+			class="ob-main-nav-item"
+			obMasterLayoutNavigationItem
+			#obMasterLayoutNavigationItem="obMasterLayoutNavigationItem"
+			*ngFor="let link of links"
+		>
 			<ng-container *ngIf="!link.isExternal">
 				<a
 					class="ob-master-layout-navigation-link"
@@ -33,7 +38,6 @@
 					[queryParams]="link.queryParams"
 					[attr.aria-current]="link.active ? 'page' : undefined"
 					[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
-					obMasterLayoutNavigationToggle
 					*ngIf="!link.children"
 				>
 					<ob-icon *ngIf="link.icon" [icon]="link.icon"></ob-icon>
@@ -58,12 +62,12 @@
 			<ng-container *ngIf="link.children">
 				<button
 					type="button"
-					class="ob-master-layout-navigation-link"
+					class="ob-master-layout-navigation-link ob-master-layout-navigation-toggle"
 					[attr.id]="link.id"
 					[class.active]="link.active"
 					[attr.aria-current]="link.active ? 'page' : undefined"
 					[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
-					obMasterLayoutNavigationToggle
+					(click)="obMasterLayoutNavigationItem.toggleSubMenu()"
 					obAriaMenuButton="menu-{{ link.id || link.url }}"
 				>
 					<ob-icon *ngIf="link.icon" [icon]="link.icon"></ob-icon>
@@ -76,15 +80,15 @@
 						[class.ob-font-awesome]="useFontAwesomeIcons"
 					></ob-icon>
 				</button>
-				<div class="ob-sub-menu" id="menu-{{ link.id || link.url }}" obMasterLayoutNavigationMenu>
+				<div class="ob-sub-menu" id="menu-{{ link.id || link.url }}">
 					<ul class="ob-main-nav ob-sub-nav">
 						<li>
-							<button class="ob-sub-menu-back" type="button" obMasterLayoutNavigationToggle>
+							<button class="ob-sub-menu-back" type="button" (click)="obMasterLayoutNavigationItem.closeSubMenu(false)">
 								<ob-icon icon="chevron-left"></ob-icon>
 								<span class="ob-label">{{ link.label | translate }}</span>
 							</button>
 						</li>
-						<li obMasterLayoutNavigationItem *ngFor="let child of link.children">
+						<li *ngFor="let child of link.children">
 							<a
 								*ngIf="!child.isExternal"
 								class="ob-master-layout-navigation-link"
@@ -96,7 +100,7 @@
 								[queryParams]="child.queryParams"
 								[attr.aria-current]="link.active ? 'page' : undefined"
 								[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
-								obMasterLayoutNavigationToggle
+								(click)="obMasterLayoutNavigationItem.closeSubMenu()"
 							>
 								<ob-icon *ngIf="child.icon" [icon]="child.icon"></ob-icon>
 								<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
@@ -110,6 +114,7 @@
 								[attr.target]="!child.sameTarget ? '_blank' : undefined"
 								[attr.rel]="!child.sameTarget ? 'noopener noreferrer' : undefined"
 								[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
+								(click)="obMasterLayoutNavigationItem.closeSubMenu()"
 							>
 								<ob-icon *ngIf="child.icon" [icon]="child.icon"></ob-icon>
 								<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
