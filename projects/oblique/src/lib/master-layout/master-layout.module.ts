@@ -19,7 +19,6 @@ import {ObMasterLayoutFooterComponent} from './master-layout-footer/master-layou
 import {ObMasterLayoutNavigationComponent} from './master-layout-navigation/master-layout-navigation.component';
 import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation/master-layout-navigation-item.directive';
 import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
-import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
 import {obliqueProviders} from '../utilities';
 import {ObAriaMenuButtonDirective} from './aria-menu-button.directive';
 import {ObIconModule} from '../icon/icon.module';
@@ -32,12 +31,8 @@ export {ObMasterLayoutFooterComponent} from './master-layout-footer/master-layou
 export {ObMasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
 export {ObMasterLayoutHeaderComponent} from './master-layout-header/master-layout-header.component';
 export {ObMasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
-export {ObMasterLayoutHeaderToggleDirective} from './master-layout-header/master-layout-header-toggle.directive';
 export {ObMasterLayoutNavigationComponent} from './master-layout-navigation/master-layout-navigation.component';
 export {ObMasterLayoutNavigationService} from './master-layout-navigation/master-layout-navigation.service';
-export {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation/master-layout-navigation-item.directive';
-export {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
-export {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
 export {ObMasterLayoutConfig} from './master-layout.config';
 export {
 	ObINavigationLink,
