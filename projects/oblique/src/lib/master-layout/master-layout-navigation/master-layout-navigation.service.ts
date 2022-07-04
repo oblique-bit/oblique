@@ -32,7 +32,7 @@ export class ObMasterLayoutNavigationService {
 	) {
 		merge(
 			translate.onLangChange,
-			offCanvas.opened.pipe(delay(600)), // delay for the animation duration
+			offCanvas.opened$.pipe(delay(600)), // delay for the animation duration
 			globalEventsService.resize$
 		)
 			.pipe(filter(() => layoutService.hasMainNavigation && this.scrollMode !== ObEScrollMode.DISABLED))

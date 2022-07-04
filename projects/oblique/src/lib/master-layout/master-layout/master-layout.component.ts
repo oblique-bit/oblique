@@ -264,7 +264,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	}
 
 	private focusOffCanvasClose(): void {
-		this.offCanvasService.opened
+		this.offCanvasService.opened$
 			.pipe(
 				takeUntil(this.unsubscribe),
 				filter(() => this.hasOffCanvas),

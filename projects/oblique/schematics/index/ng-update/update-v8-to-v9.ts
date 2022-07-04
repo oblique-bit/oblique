@@ -1,6 +1,6 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {ObIMigrations} from './ng-update.model';
-import {applyInTree, createSafeRule, getIndexPaths, infoMigration, overwriteIndexFile, replaceInFile} from '../utils';
+import {applyInTree, createSafeRule, getIndexPaths, infoMigration, overwriteIndexFile, readFile, replaceInFile} from '../utils';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IUpdateV8Schema {}
@@ -17,7 +17,8 @@ export class UpdateV8toV9 implements ObIMigrations {
 				this.removeObUseObliqueIconsToken(),
 				this.updateBrowserCompatibilityMessages(),
 				this.renameJumpLinks(),
-				this.useKebabCaseForMixins()
+				this.useKebabCaseForMixins(),
+				this.renameOpened()
 			])(tree, _context);
 		};
 	}
@@ -95,6 +96,20 @@ export class UpdateV8toV9 implements ObIMigrations {
 				);
 			};
 			return applyInTree(tree, apply, '*.scss');
+		});
+	}
+
+	private renameOpened(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Rename getOpened to opened$');
+			const apply = (filePath: string): void => {
+				const fileContent = readFile(tree, filePath);
+				const offCanvas = /(?<offCanvas>\w*)\s*:\s*ObOffCanvasService/.exec(fileContent)?.groups?.offCanvas;
+				if (offCanvas) {
+					replaceInFile(tree, filePath, new RegExp(`${offCanvas}.opened`), `${offCanvas}.opened$`);
+				}
+			};
+			return applyInTree(tree, apply, '*.ts');
 		});
 	}
 }

@@ -191,10 +191,10 @@ module.exports.coverageThreshold = {
 		lines: 80
 	},
 	'projects/oblique/src/lib/off-canvas/*.ts': {
-		statements: 75,
+		statements: 72,
 		branches: 100,
 		functions: 33,
-		lines: 70
+		lines: 66
 	},
 	'projects/oblique/src/lib/schema-validation/*.ts': {
 		statements: 79,
