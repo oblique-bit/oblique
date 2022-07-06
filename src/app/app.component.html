@@ -14,12 +14,19 @@
 		</a>
 	</ng-template>
 	<ng-template #obHeaderControl>
-		<button obOffCanvasToggle ngbTooltip="Toggle Off-Canvas" placement="left" (click)="offCanvasOpen = !offCanvasOpen" tabindex="0">
+		<button
+			type="button"
+			obOffCanvasToggle
+			ngbTooltip="Toggle Off-Canvas"
+			placement="left"
+			(click)="offCanvasOpen = !offCanvasOpen"
+			tabindex="0"
+		>
 			<span class="fa fa-sign-in-alt" [class.fa-rotate-180]="!offCanvasOpen"></span>
 		</button>
 	</ng-template>
 	<ng-template #obHeaderControl>
-		<button obOffCanvasToggle matTooltip="Toggle Off-Canvas">
+		<button type="button" obOffCanvasToggle matTooltip="Toggle Off-Canvas">
 			<mat-icon class="ob-control-icon" svgIcon="logout"></mat-icon>
 		</button>
 	</ng-template>
@@ -66,19 +73,19 @@
 	<!--	</ng-template>-->
 	<ng-template #obHeaderControl>
 		<div class="wrapper">
-			<button (click)="toggleTheme()">
+			<button type="button" (click)="toggleTheme()">
 				{{ theme }}
 			</button>
 		</div>
 	</ng-template>
 	<ng-template #obHeaderControl>
-		<button (click)="toggleFont(font)" *ngIf="font$ | async as font">
+		<button type="button" (click)="toggleFont(font)" *ngIf="font$ | async as font">
 			{{ font }}
 		</button>
 	</ng-template>
 
 	<ng-template #obHeaderMobileControl>
-		<button (click)="toggleTheme()">
+		<button type="button" (click)="toggleTheme()">
 			{{ theme }}
 		</button>
 	</ng-template>

@@ -30,16 +30,16 @@
 					<a mat-button [obButton]="obButton">{{ obButton }}</a>
 				</td>
 				<td>
-					<button mat-button [obButton]="obButton">{{ obButton }}</button>
+					<button type="button" mat-button [obButton]="obButton">{{ obButton }}</button>
 				</td>
 				<td>
-					<button mat-button obButton="primary">Primary</button>
+					<button type="button" mat-button obButton="primary">Primary</button>
 				</td>
 				<td>
-					<button mat-button obButton="secondary">Secondary</button>
+					<button type="button" mat-button obButton="secondary">Secondary</button>
 				</td>
 				<td>
-					<button mat-button obButton="tertiary">Tertiary</button>
+					<button type="button" mat-button obButton="tertiary">Tertiary</button>
 				</td>
 			</tr>
 			<tr>
@@ -50,16 +50,16 @@
 					<a mat-button [obButton]="obButton"><span class="fas fa-sign-in-alt"></span> {{ obButton }}</a>
 				</td>
 				<td>
-					<button mat-button [obButton]="obButton"><span class="fas fa-sign-in-alt"></span> {{ obButton }}</button>
+					<button type="button" mat-button [obButton]="obButton"><span class="fas fa-sign-in-alt"></span> {{ obButton }}</button>
 				</td>
 				<td>
-					<button mat-button obButton="primary"><span class="fas fa-sign-in-alt"></span> Primary</button>
+					<button type="button" mat-button obButton="primary"><span class="fas fa-sign-in-alt"></span> Primary</button>
 				</td>
 				<td>
-					<button mat-button obButton="secondary"><span class="fas fa-sign-in-alt"></span> Secondary</button>
+					<button type="button" mat-button obButton="secondary"><span class="fas fa-sign-in-alt"></span> Secondary</button>
 				</td>
 				<td>
-					<button mat-button obButton="tertiary"><span class="fas fa-sign-in-alt"></span> Tertiary</button>
+					<button type="button" mat-button obButton="tertiary"><span class="fas fa-sign-in-alt"></span> Tertiary</button>
 				</td>
 			</tr>
 			<tr>
@@ -70,16 +70,22 @@
 					<a mat-button [obButton]="obButton"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> {{ obButton }}</a>
 				</td>
 				<td>
-					<button mat-button [obButton]="obButton"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> {{ obButton }}</button>
+					<button type="button" mat-button [obButton]="obButton">
+						<mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> {{ obButton }}
+					</button>
 				</td>
 				<td>
-					<button mat-button obButton="primary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Primary</button>
+					<button type="button" mat-button obButton="primary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Primary</button>
 				</td>
 				<td>
-					<button mat-button obButton="secondary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Secondary</button>
+					<button type="button" mat-button obButton="secondary">
+						<mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Secondary
+					</button>
 				</td>
 				<td>
-					<button mat-button obButton="tertiary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Tertiary</button>
+					<button type="button" mat-button obButton="tertiary">
+						<mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Tertiary
+					</button>
 				</td>
 			</tr>
 			<tr>
@@ -90,16 +96,16 @@
 					<a mat-button [obButton]="obButton"><mat-icon svgIcon="logout"></mat-icon> {{ obButton }}</a>
 				</td>
 				<td>
-					<button mat-button [obButton]="obButton"><mat-icon svgIcon="logout"></mat-icon> {{ obButton }}</button>
+					<button type="button" mat-button [obButton]="obButton"><mat-icon svgIcon="logout"></mat-icon> {{ obButton }}</button>
 				</td>
 				<td>
-					<button mat-button obButton="primary"><mat-icon svgIcon="logout"></mat-icon> Primary</button>
+					<button type="button" mat-button obButton="primary"><mat-icon svgIcon="logout"></mat-icon> Primary</button>
 				</td>
 				<td>
-					<button mat-button obButton="secondary"><mat-icon svgIcon="logout"></mat-icon> Secondary</button>
+					<button type="button" mat-button obButton="secondary"><mat-icon svgIcon="logout"></mat-icon> Secondary</button>
 				</td>
 				<td>
-					<button mat-button obButton="tertiary"><mat-icon svgIcon="logout"></mat-icon>Tertiary</button>
+					<button type="button" mat-button obButton="tertiary"><mat-icon svgIcon="logout"></mat-icon>Tertiary</button>
 				</td>
 			</tr>
 			<tr>
@@ -110,16 +116,16 @@
 					<a mat-icon-button [obButton]="obButton"><mat-icon svgIcon="logout" ob-icon-text></mat-icon></a>
 				</td>
 				<td>
-					<button mat-icon-button [obButton]="obButton"><mat-icon svgIcon="logout" ob-icon-text></mat-icon></button>
+					<button type="button" mat-icon-button [obButton]="obButton"><mat-icon svgIcon="logout" ob-icon-text></mat-icon></button>
 				</td>
 				<td>
-					<button mat-icon-button obButton="primary"><mat-icon svgIcon="logout" ob-icon-text></mat-icon></button>
+					<button type="button" mat-icon-button obButton="primary"><mat-icon svgIcon="logout" ob-icon-text></mat-icon></button>
 				</td>
 				<td>
-					<button mat-icon-button obButton="secondary"><mat-icon svgIcon="logout" ob-icon-text></mat-icon></button>
+					<button type="button" mat-icon-button obButton="secondary"><mat-icon svgIcon="logout" ob-icon-text></mat-icon></button>
 				</td>
 				<td>
-					<button mat-icon-button obButton="tertiary"><mat-icon svgIcon="logout" ob-icon-text></mat-icon></button>
+					<button type="button" mat-icon-button obButton="tertiary"><mat-icon svgIcon="logout" ob-icon-text></mat-icon></button>
 				</td>
 			</tr>
 			<tr>
@@ -130,16 +136,16 @@
 					<a mat-button [obButton]="obButton" disabled>{{ obButton }}</a>
 				</td>
 				<td>
-					<button mat-button [obButton]="obButton" disabled>{{ obButton }}</button>
+					<button type="button" mat-button [obButton]="obButton" disabled>{{ obButton }}</button>
 				</td>
 				<td>
-					<button mat-button obButton="primary" disabled>Primary</button>
+					<button type="button" mat-button obButton="primary" disabled>Primary</button>
 				</td>
 				<td>
-					<button mat-button obButton="secondary" disabled>Secondary</button>
+					<button type="button" mat-button obButton="secondary" disabled>Secondary</button>
 				</td>
 				<td>
-					<button mat-button obButton="tertiary" disabled>Tertiary</button>
+					<button type="button" mat-button obButton="tertiary" disabled>Tertiary</button>
 				</td>
 			</tr>
 		</tbody>

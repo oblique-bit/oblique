@@ -18,7 +18,7 @@
 					<input matInput />
 				</mat-form-field>
 				<mat-action-row *ngIf="actionRowVisible">
-					<button mat-button color="primary" (click)="selfAwarePanel.open()">Next</button>
+					<button type="button" mat-button color="primary" (click)="selfAwarePanel.open()">Next</button>
 				</mat-action-row>
 			</mat-expansion-panel>
 			<mat-expansion-panel
@@ -34,7 +34,7 @@
 				</mat-expansion-panel-header>
 				<p>I'm visible because I am open</p>
 				<mat-action-row *ngIf="actionRowVisible">
-					<button mat-button color="primary" (click)="selfAwarePanel.close()">Close</button>
+					<button type="button" mat-button color="primary" (click)="selfAwarePanel.close()">Close</button>
 				</mat-action-row>
 			</mat-expansion-panel>
 		</mat-accordion>

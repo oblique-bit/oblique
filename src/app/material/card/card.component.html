@@ -18,11 +18,11 @@
 					<p>The default card is only a presentational artifact, without any form of interaction except for eventual buttons inside.</p>
 				</mat-card-content>
 				<mat-card-actions *ngIf="actionsVisible">
-					<button mat-stroked-button>Like</button>
-					<button mat-stroked-button>Share</button>
+					<button type="button" mat-stroked-button>Like</button>
+					<button type="button" mat-stroked-button>Share</button>
 				</mat-card-actions>
 			</mat-card>
-			<button mat-button obButton="primary" class="ob-button-card">
+			<button type="button" mat-button obButton="primary" class="ob-button-card">
 				<mat-card>
 					<img
 						*ngIf="pictureVisible"

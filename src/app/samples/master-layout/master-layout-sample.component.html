@@ -46,11 +46,11 @@
 					<mat-button-toggle [value]="scrollMode.DISABLED">Disabled</mat-button-toggle>
 				</mat-button-toggle-group>
 			</div>
-			<button mat-button obButton (click)="addItem()">
+			<button type="button" mat-button obButton (click)="addItem()">
 				<mat-icon obIcon svgIcon="plus"></mat-icon>
 				Add a main navigation item
 			</button>
-			<button mat-button obButton (click)="removeItem()">
+			<button type="button" mat-button obButton (click)="removeItem()">
 				<mat-icon obIcon svgIcon="minus"></mat-icon> Remove the last navigation item
 			</button>
 			<mat-form-field>
