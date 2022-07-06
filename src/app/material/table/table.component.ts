@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {MatInput} from '@angular/material/input';
 import {MatDialog} from '@angular/material/dialog';
 import {ObPopUpService} from '@oblique/oblique';
@@ -19,7 +19,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 	@ViewChild(MatSort) sort: MatSort;
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatInput) firstInput: MatInput;
-	controls: FormGroup;
+	controls: UntypedFormGroup;
 	obliqueStyles$: Observable<Record<string, boolean>>;
 	isStructureDefault$: Observable<boolean>;
 	hasCaption$: Observable<boolean>;
@@ -52,7 +52,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'}
 	];
 
-	constructor(private readonly formBuilder: FormBuilder, popup: ObPopUpService, dialog: MatDialog) {
+	constructor(private readonly formBuilder: UntypedFormBuilder, popup: ObPopUpService, dialog: MatDialog) {
 		this.tableManager = new TableManager<ObIPeriodicElement>(this.ELEMENT_DATA, popup, dialog);
 	}
 
@@ -80,7 +80,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 		this.unsubscribe.complete();
 	}
 
-	private static buildEditFormGroup(formBuilder: FormBuilder): FormGroup {
+	private static buildEditFormGroup(formBuilder: UntypedFormBuilder): UntypedFormGroup {
 		return formBuilder.group({
 			position: [null, Validators.required],
 			name: [null, Validators.required],
@@ -89,7 +89,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 		});
 	}
 
-	private static buildControlsFormGroup(formBuilder: FormBuilder): FormGroup {
+	private static buildControlsFormGroup(formBuilder: UntypedFormBuilder): UntypedFormGroup {
 		return formBuilder.group({
 			filter: '',
 			default: true,
@@ -173,8 +173,8 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 		this.getStyleControls(this.controls).forEach(control => TableComponent.setDisabledState(control, isEnabled));
 	}
 
-	private getStyleControls(formGroup: FormGroup): AbstractControl[] {
-		return Object.keys((formGroup.get('style') as FormGroup).controls)
+	private getStyleControls(formGroup: UntypedFormGroup): AbstractControl[] {
+		return Object.keys((formGroup.get('style') as UntypedFormGroup).controls)
 			.filter(key => key !== 'ob-table')
 			.map(key => formGroup.get(`style.${key}`));
 	}

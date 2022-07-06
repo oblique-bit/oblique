@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 interface Data {
@@ -14,11 +14,11 @@ interface Data {
 	templateUrl: './table-edit.component.html'
 })
 export class TableEditComponent implements OnInit {
-	editForm: FormGroup;
+	editForm: UntypedFormGroup;
 	isNewRow = false;
 
 	constructor(
-		private readonly formBuilder: FormBuilder,
+		private readonly formBuilder: UntypedFormBuilder,
 		private readonly dialogRef: MatDialogRef<TableEditComponent>,
 		@Inject(MAT_DIALOG_DATA) private readonly data: Data
 	) {}
@@ -37,13 +37,13 @@ export class TableEditComponent implements OnInit {
 		setTimeout(() => this.editForm.reset(this.data));
 	}
 
-	save(form: FormGroup): void {
+	save(form: UntypedFormGroup): void {
 		if (form.valid) {
 			this.dialogRef.close(form.value);
 		}
 	}
 
-	private static buildEditFormGroup(formBuilder: FormBuilder, data: Data): FormGroup {
+	private static buildEditFormGroup(formBuilder: UntypedFormBuilder, data: Data): UntypedFormGroup {
 		return formBuilder.group({
 			position: [data.position, Validators.required],
 			name: [data.name, Validators.required],

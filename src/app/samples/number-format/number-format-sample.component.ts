@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
 
 @Component({
 	selector: 'sc-number-format',
@@ -9,9 +9,9 @@ export class NumberFormatSampleComponent {
 	number1 = 5.236548;
 	number2 = 5.236548;
 
-	formData: FormGroup;
+	formData: UntypedFormGroup;
 
-	constructor(fb: FormBuilder) {
+	constructor(fb: UntypedFormBuilder) {
 		this.formData = fb.group({
 			number5: 5.236548,
 			number6: 5.236548

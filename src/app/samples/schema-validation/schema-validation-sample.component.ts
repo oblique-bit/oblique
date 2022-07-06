@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, NgForm, ValidationErrors, ValidatorFn} from '@angular/forms';
+import {AbstractControl, NgForm, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, ValidatorFn} from '@angular/forms';
 import {ObNotificationService, ObSchemaValidationService} from '@oblique/oblique';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -12,7 +12,7 @@ import {ThemeService} from '../../common/theme.service';
 })
 export class SchemaValidationSampleComponent implements OnInit {
 	material: Observable<boolean>;
-	materialTestForm: FormGroup;
+	materialTestForm: UntypedFormGroup;
 
 	selectOptions = [
 		{label: 'Aaa', value: 'aaa'},
@@ -25,7 +25,7 @@ export class SchemaValidationSampleComponent implements OnInit {
 		{label: 'Invalid-3', value: 'invalid-3'}
 	];
 
-	formData: FormGroup;
+	formData: UntypedFormGroup;
 	schema$ = of({
 		title: 'SampleSchemaSampleValidation',
 		type: 'object',
@@ -91,7 +91,7 @@ export class SchemaValidationSampleComponent implements OnInit {
 	constructor(
 		private readonly schemaValidation: ObSchemaValidationService,
 		private readonly notification: ObNotificationService,
-		private readonly formBuilder: FormBuilder,
+		private readonly formBuilder: UntypedFormBuilder,
 		private readonly theme: ThemeService
 	) {}
 

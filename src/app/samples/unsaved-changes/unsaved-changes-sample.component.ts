@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
-import {FormBuilder, FormGroup, NgModelGroup, Validators} from '@angular/forms';
+import {NgModelGroup, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {UnsavedChangesSampleModalComponent} from './unsaved-changes-sample-modal.component';
 import {ObUnsavedChangesService} from '@oblique/oblique';
@@ -12,10 +12,10 @@ import {ObUnsavedChangesService} from '@oblique/oblique';
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UnsavedChangesSampleComponent implements OnInit {
-	standAloneReactive: FormGroup;
-	nestedReactive: FormGroup;
-	tabForm8Reactive: FormGroup;
-	tabForm9Reactive: FormGroup;
+	standAloneReactive: UntypedFormGroup;
+	nestedReactive: UntypedFormGroup;
+	tabForm8Reactive: UntypedFormGroup;
+	tabForm9Reactive: UntypedFormGroup;
 	tabModels = {
 		standAloneTemplate: {number: null, text: null, integer: null, date: null},
 		nestedForm1: {number: null, text: null, integer: null, date: null},
@@ -30,7 +30,7 @@ export class UnsavedChangesSampleComponent implements OnInit {
 
 	constructor(
 		private readonly modalService: NgbModal,
-		private readonly formBuilder: FormBuilder,
+		private readonly formBuilder: UntypedFormBuilder,
 		private readonly unsavedChangesService: ObUnsavedChangesService
 	) {}
 

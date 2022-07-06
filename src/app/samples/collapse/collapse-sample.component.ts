@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Duration, IconPosition} from './collapse-sample.model';
@@ -12,8 +12,8 @@ import {ThemeService} from '../../common/theme.service';
 export class CollapseSampleComponent {
 	collapseTitle = 'Collapse title here ';
 	material: Observable<boolean>;
-	duration = new FormControl('fast');
-	iconPosition = new FormControl('left');
+	duration = new UntypedFormControl('fast');
+	iconPosition = new UntypedFormControl('left');
 	active = false;
 
 	durations: Duration[] = [

@@ -1,4 +1,4 @@
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
@@ -30,7 +30,7 @@ export class TableManager<T> {
 	readonly isMasterRemoveDisabled$: Connectable<boolean>;
 	isEditMode$: Connectable<boolean>;
 	readonly dataSource = new MatTableDataSource<T & Data>();
-	editForm: FormGroup;
+	editForm: UntypedFormGroup;
 	private readonly selection = new SelectionModel<T & Data>(true, []);
 	private originalData: (T & Data)[];
 	private readonly EDIT_MODE_NAME = 'editMode';
@@ -53,9 +53,9 @@ export class TableManager<T> {
 		});
 	}
 
-	setForm(formGroup: FormGroup): void {
+	setForm(formGroup: UntypedFormGroup): void {
 		this.editForm = formGroup;
-		this.editForm.addControl(this.EDIT_MODE_NAME, new FormControl(EditMode.NONE));
+		this.editForm.addControl(this.EDIT_MODE_NAME, new UntypedFormControl(EditMode.NONE));
 		this.isEditMode$ = this.buildEditModeObservable();
 		this.isEditMode$.connect();
 	}

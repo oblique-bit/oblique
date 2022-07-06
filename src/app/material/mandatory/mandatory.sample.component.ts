@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 
 @Component({
 	selector: 'sc-mandatory.sample',
@@ -9,9 +9,9 @@ export class MandatorySampleComponent implements OnInit {
 	/**
 	 * The Mandatory Directive was removed with Oblique Version 8. This component remains in the showcase to ensure that the Asterisk functionality still works.
 	 */
-	testForm: FormGroup;
+	testForm: UntypedFormGroup;
 
-	constructor(private readonly formBuilder: FormBuilder) {}
+	constructor(private readonly formBuilder: UntypedFormBuilder) {}
 
 	ngOnInit(): void {
 		this.testForm = this.formBuilder.group({
