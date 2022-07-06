@@ -9,6 +9,7 @@
 		></mat-progress-bar>
 		<button
 			*ngIf="!file.completed && file.hasError"
+			type="button"
 			mat-icon-button
 			obButton="secondary"
 			matTooltip="{{ 'i18n.oblique.file-upload.retry' | translate }}"
@@ -19,6 +20,7 @@
 		</button>
 		<button
 			*ngIf="!file.completed"
+			type="button"
 			mat-icon-button
 			matTooltip="{{ 'i18n.common.cancel' | translate }}"
 			obButton="secondary"

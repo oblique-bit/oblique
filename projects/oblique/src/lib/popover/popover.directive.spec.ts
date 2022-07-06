@@ -7,7 +7,7 @@ import {ObEToggleType} from './popover.model';
 
 @Component({
 	template: `
-		<button [obPopover]="myPopover">Open Popover</button>
+		<button type="button" [obPopover]="myPopover">Open Popover</button>
 		<ng-template #myPopover>
 			<p>Hello World</p>
 		</ng-template>
