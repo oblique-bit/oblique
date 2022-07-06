@@ -143,8 +143,8 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	}
 
 	private setPopperOptionsAndUpdate(): void {
-		this.instance?.setOptions({...this.popperOptions, placement: this.placement});
-		this.instance?.update();
+		void this.instance?.setOptions({...this.popperOptions, placement: this.placement});
+		void this.instance?.update();
 	}
 
 	private buildPopover(): HTMLDivElement {

@@ -70,9 +70,11 @@ overrides:
       "@typescript-eslint/no-dynamic-delete": off # this is needed
       "@typescript-eslint/no-invalid-this": off # triggers an error when enabled
       "@typescript-eslint/no-parameter-properties": off
+      "@typescript-eslint/no-redundant-type-constituents": off # disallows union with any or unknown
       "@typescript-eslint/no-require-imports": off # used by node scripts and to load some static assets
       "@typescript-eslint/no-type-alias": off
       "@typescript-eslint/no-unsafe-return": off # reports many false positive
+      "@typescript-eslint/parameter-properties": off # disallows declaring variables in constructor
       "@typescript-eslint/prefer-enum-initializers": off
       "@typescript-eslint/prefer-readonly-parameter-types": off # forces "readonly" on functions where it is not allowed
       "@typescript-eslint/promise-function-async": off # no compatible with Angular's lazy loading
