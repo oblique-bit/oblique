@@ -1,4 +1,5 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
+import {addModuleImportToModule} from '@angular/cdk/schematics';
 import {ObIMigrations} from './ng-update.model';
 import {
 	PathPerProject,
@@ -33,7 +34,8 @@ export class UpdateV8toV9 implements ObIMigrations {
 				this.renameJumpLinks(),
 				this.useKebabCaseForMixins(),
 				this.renameOpened(),
-				this.addTelemetryInfo()
+				this.addTelemetryInfo(),
+				this.addIconModule()
 			])(tree, _context);
 		};
 	}
@@ -121,7 +123,7 @@ export class UpdateV8toV9 implements ObIMigrations {
 				const fileContent = readFile(tree, filePath);
 				const offCanvas = /(?<offCanvas>\w*)\s*:\s*ObOffCanvasService/.exec(fileContent)?.groups?.offCanvas;
 				if (offCanvas) {
-					replaceInFile(tree, filePath, new RegExp(`${offCanvas}.opened`), `${offCanvas}.opened$`);
+					replaceInFile(tree, filePath, new RegExp(`${offCanvas}.opened(?!\\$)`), `${offCanvas}.opened$`);
 				}
 			};
 			return applyInTree(tree, apply, '*.ts');
@@ -219,5 +221,24 @@ export class UpdateV8toV9 implements ObIMigrations {
 				content.replace(/^(?<tabs>\s*)"name"\s*:\s*"(?<name>.*)"/m, '$<tabs>"title": "$<name>",\n$<tabs>"name": "$<name>"')
 			);
 		}
+	}
+
+	private addIconModule(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Import Oblique icons in the root module');
+			const mainTsPathPerProject = getFilePathPerProject(tree, ['architect', 'build', 'options', 'main']);
+			getRootModulePathPerProject(tree, mainTsPathPerProject)
+				.map(item => item.path)
+				.forEach(rootModulePath => {
+					addModuleImportToModule(tree, rootModulePath, 'ObIconModule', '@oblique/oblique');
+					const content = readFile(tree, rootModulePath);
+					tree.overwrite(
+						rootModulePath,
+						content.replace(/(?<=imports)(?<prefix>.*)ObIconModule(?!\.forRoot\()/s, '$<prefix>ObIconModule.forRoot()')
+					);
+				});
+
+			return tree;
+		});
 	}
 }
