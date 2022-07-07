@@ -1,3 +1,88 @@
+# [9.0.0-RC.1](https://github.com/oblique-bit/oblique/compare/8.2.1...9.0.0-RC.1) (2022-07-07)
+
+## Bug Fixes
+
+- **breadcrumb:** adapt link styling to make sure `max-width` works ([7e008fb](https://github.com/oblique-bit/oblique/commit/7e008fb9877abbaf5bd0265c73cbf90c0a58ef07))
+- **external-link:** moved `aria-label` text into span that is only visible to screen readers at the end of the link ([7fccb5d](https://github.com/oblique-bit/oblique/commit/7fccb5dd133a4e088586e9b891f4abc5bfa7575f))
+- **file-upload:** change named parameter in error message to match parameter in code ([03f76c5](https://github.com/oblique-bit/oblique/commit/03f76c5aefe3b5aad216ba2cb51577635d625af1))
+- **file-upload:** disable checkbox when there is no data ([44962d6](https://github.com/oblique-bit/oblique/commit/44962d6b904cc068a13e7f9c5992b76de1e557c1))
+- **icon:** correctly vertically align `svg`s in `mat-icon`s ([fed3a3c](https://github.com/oblique-bit/oblique/commit/fed3a3c7d015bb39feb0314c9fec692b96b8af81))
+- **master-layout:** add separators between nav items ([f2b8941](https://github.com/oblique-bit/oblique/commit/f2b8941e1138ebb46f9e1c2c368a32f120a6e34a))
+- **master-layout:** apply text ellipsis on the sub menu back button ([3e78c68](https://github.com/oblique-bit/oblique/commit/3e78c686f4a51f0b87137e720c359a815bde2260))
+- **master-layout:** change navigation font-size, 1st level larger, 2nd level smaller ([0d74f29](https://github.com/oblique-bit/oblique/commit/0d74f2972978308c52c7b460eb812449e87792a5))
+- **master-layout:** do not display the accessibility title for the main navigation if there is none ([51b46a3](https://github.com/oblique-bit/oblique/commit/51b46a34973eaa5ec951b562eb1c4a1ce91a7da0))
+- **master-layout:** don't set `overflow: hidden` on the main navigation in collapsed mode ([e802117](https://github.com/oblique-bit/oblique/commit/e80211713e76a9fdf503ce615845bcc51a3c3c75))
+- **master-layout:** fix navigation not scrollable when layout is fixed ([0927e19](https://github.com/oblique-bit/oblique/commit/0927e1978c28431499c01b44cf250a6f7015f5e2))
+- **master-layout:** let the menu in collapsed mode use the whole available height ([24ffee6](https://github.com/oblique-bit/oblique/commit/24ffee6416f825d67262d213c2fd82c6f396a290))
+- **master-layout:** remove focus color on navigation items ([326aacf](https://github.com/oblique-bit/oblique/commit/326aacf4d0802964c5e9c61ff6fb0f738863f16e))
+- **master-layout:** remove left padding for navigation 1st level ([c9d99e2](https://github.com/oblique-bit/oblique/commit/c9d99e2cf16910f1548325a149eb4761f5287f1e))
+- **master-layout:** remove or fix erroneous usage of `ob-continuous` class ([9893085](https://github.com/oblique-bit/oblique/commit/989308526a276fb3de4f3797a8b00902ced044f1))
+- **master-layout:** remove `orFooter` remainder ([c3ed7bf](https://github.com/oblique-bit/oblique/commit/c3ed7bf4b7f9ac4bb62125f5e7b5278d6119e088))
+- **material:** center icon in input group ([a9b25ce](https://github.com/oblique-bit/oblique/commit/a9b25ce974582a1c9db0675ead59294262f268e3))
+- **multiselect:** fix typo ([3b5dda2](https://github.com/oblique-bit/oblique/commit/3b5dda2f1b226423a26e401784b3439d69015706))
+- **number-format:** directive respects `undefined` or `null` as initial value ([aad859d](https://github.com/oblique-bit/oblique/commit/aad859d1e1d4403e01a3f569fbb5be7a86e84ece))
+- **schematics:** add `HomeComponent`'s dependencies to `AppModule` instead of `AppRoutingModule` ([0ce0c6d](https://github.com/oblique-bit/oblique/commit/0ce0c6d815fe585cb55bb0ecc366c423ee0a1eb7))
+- **schematics:** remove unnecessary replacement ([febcac1](https://github.com/oblique-bit/oblique/commit/febcac174c2a20ec25e9f2e6ef9ff4b1840bf32b))
+- **schematics:** use `createSafeRule` for locale management ([c1ea0d7](https://github.com/oblique-bit/oblique/commit/c1ea0d7f443908aff635dd7f165235fffbf0e5f6))
+- **telemetry:** export the `OB_PROJECT_INFO` injection token ([5ba16b3](https://github.com/oblique-bit/oblique/commit/5ba16b3f22b627f186983d772785ef49b1f0a7cc))
+
+## Code Refactoring
+
+- **toolchain:** integrate `copy-error-messages` script into `run-pre-build-steps.ts` container ([7244fb2](https://github.com/oblique-bit/oblique/commit/7244fb2df42f4d9d65adc5e1b2e38388bc3e5816))
+- **toolchain:** integrate `icons` script into `run-pre-build-steps.ts` container ([2bf34f9](https://github.com/oblique-bit/oblique/commit/2bf34f906ca681acab0c7e7f45fcd1d0c46ada80))
+- **toolchain:** integrate npm `minify`script into the `run-post-dist-steps.ts` container ([4baa914](https://github.com/oblique-bit/oblique/commit/4baa91487e74d9cfa7b85df46c773c334a4bb9cc))
+- **toolchain:** remove npm `lib` script ([5879c2e](https://github.com/oblique-bit/oblique/commit/5879c2e3400451645e8a0f9d51f09e8f496cbf19))
+- **toolchain:** use external script files for `lint` and `format` npm scripts ([e23f494](https://github.com/oblique-bit/oblique/commit/e23f4943da48d0404f993b4f54ad632a4689ef9c))
+- **translation:** unify oblique translation keys to use kebab-case and refactor accordingly ([ad9ea7f](https://github.com/oblique-bit/oblique/commit/ad9ea7f75d77e8230becd3beeb380745c26c6e7b))
+
+## Features
+
+- activate stylelint's `scss/at-mixin-pattern` rule and refactor accordingly ([8fad498](https://github.com/oblique-bit/oblique/commit/8fad498a1a66c0de3deac6ced2922c3e309d7c67))
+- oblique uses its own icons by default ([e9cf502](https://github.com/oblique-bit/oblique/commit/e9cf50247d1798b321628b383190d72e42535535))
+- **http-interceptor:** revise http status messages ([95edb70](https://github.com/oblique-bit/oblique/commit/95edb704ee41eede3f97e0a8a99ce6da984603db))
+- **master-layout:** don't export internal directives ([792494b](https://github.com/oblique-bit/oblique/commit/792494b22aaea3f99469e56230b523d77b66c95e))
+- **master-layout:** remove `home` jumplink ([46d0eca](https://github.com/oblique-bit/oblique/commit/46d0eca2c1f9c788853c0844ca6edffe38a55c00))
+- **master-layout:** rename `jumplink` to `skiplink` ([0702c54](https://github.com/oblique-bit/oblique/commit/0702c548a6789493df59e3ae7084c954b6619576))
+- **multiselect:** remove unused `checkedPlural` text ([7739b0f](https://github.com/oblique-bit/oblique/commit/7739b0f2692d2b63102001204aa1fda081d9a8a8))
+- **off-canvas:** remove unnecessary getter and refactor accordingly ([4550fb1](https://github.com/oblique-bit/oblique/commit/4550fb181d75d4b6522f7f20a7cf4772aa5f9779))
+- **schematics:** add `ob-no-script` class to `default-index-template` ([39e87df](https://github.com/oblique-bit/oblique/commit/39e87dff2977bb2082899bf5845e86a2cee9603b))
+- **schematics:** add a rule to update the browser compatibility messages ([7d4b188](https://github.com/oblique-bit/oblique/commit/7d4b188c52239144adcaaaf14d3cb9c65362761d))
+- **schematics:** add the title in the `package.json` of the projects ([ae92e02](https://github.com/oblique-bit/oblique/commit/ae92e02aa5b7c24752a110f8dea7b08d8d85b711))
+- **schematics:** let the `title` option by mandatory for `ng-add` ([89c7c39](https://github.com/oblique-bit/oblique/commit/89c7c3995d2468809532ef55b035aed650bcbbf8))
+- **schematics:** loop on all projects instead of relying on `defaultProject` ([8ea8aa5](https://github.com/oblique-bit/oblique/commit/8ea8aa503f39160aac1ac259c4097d1e1cc52416))
+- **schematics:** use Oblique's button, icon and external link modules for `HomeComponent` ([f057f29](https://github.com/oblique-bit/oblique/commit/f057f29d2999f8b32058fea8ea831739eccd4e64))
+- **telemetry:** extend `ng-add` to include telemetry information in the project ([520d014](https://github.com/oblique-bit/oblique/commit/520d014cd99a6bd2b22c3e86e94bace9d28e511a))
+- **telemetry:** extend `ng-update` to include telemetry information in the project ([d272bc7](https://github.com/oblique-bit/oblique/commit/d272bc760883957806df9d6b7d38885ba791c456))
+- **telemetry:** remove recording of the home page and refactor accordingly ([1b1b745](https://github.com/oblique-bit/oblique/commit/1b1b745485800ffc3fa05bb936b512b0106d7db8))
+- **telemetry:** remove usage of the `TELEMETRY_DISABLE` injection token ([3234fac](https://github.com/oblique-bit/oblique/commit/3234fac3c516d323dab45e37d5a9aca762592879))
+- **toolchain:** update `[@angular-eslint](https://github.com/angular-eslint)` and refactor accordingly ([5f4683e](https://github.com/oblique-bit/oblique/commit/5f4683e20e9acb049bf07c8b5c95cc6be2d00640))
+- **toolchain:** update `[@typescript-eslint](https://github.com/typescript-eslint)` and refactor accordingly ([baa42ea](https://github.com/oblique-bit/oblique/commit/baa42ea9f10ccf575fc9ab773d995694bf4b27d6))
+
+## BREAKING CHANGES
+
+- all Oblique mixins have been renamed with kebab-case (Solved with Schematics)
+- **icon** `ObUseObliqueIcons` defaults to `true`, if you don't want to use Oblique's icons, you have to manually provide `ObUseObliqueIcons` with `false`
+- **master-layout:** `ObMasterLayoutHeaderToggleDirective` have been removed without replacement
+- **master-layout:** `ObMasterLayoutNavigationItemDirective` have been removed without replacement
+- **master-layout:** `ObMasterLayoutNavigationMenuDirective` have been removed without replacement
+- **master-layout:** `ObMasterLayoutNavigationToggleDirective` have been removed without replacement
+- **master-layout:** `jumplink` has been renamed to `skiplink` (Solved with Schematics)
+- **master-layout:** jumplink `accesskey.homepage` has been removed without replacement
+- **multiselect:** `checkedPlural` text has been removed
+- **number-format:** falsy values are not converted anymore
+- **telemetry:** Injection token `TELEMETRY_DISABLE` has been removed without replacement. Disabling the telemetry is handled over the `OB_PROJECT_INFO` injection token
+- **telemetry:** property `homePage` from `ObIPackage` is removed without replacement
+- **telemetry:** property `applicationHomepage` from `ObITelemetryRecord` is removed without replacement
+- **toolchain:** npm script `eslint` is removed without replacement
+- **toolchain:** npm script `stylelint` is removed without replacement
+- **toolchain:** npm script `prettier` is removed without replacement
+- **toolchain:** npm script `icons` is removed without replacement
+- **toolchain:** npm script `copy-error-messages` is removed without replacement
+- **toolchain:** npm script `lib` is removed without replacement
+- **toolchain:** npm script `minify` is removed without replacement
+- **toolchain:** the `distiOS`script have been removed in favor of `dist`
+- **translation:** some oblique translation keys have been renamed (solved with Schematics)
+
 # [8.2.2](https://github.com/oblique-bit/oblique/compare/8.2.1...8.2.2) (2022-06-17)
 
 ## Bug Fixes
