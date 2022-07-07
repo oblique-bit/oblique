@@ -121,7 +121,7 @@ export class UpdateV8toV9 implements ObIMigrations {
 				const fileContent = readFile(tree, filePath);
 				const offCanvas = /(?<offCanvas>\w*)\s*:\s*ObOffCanvasService/.exec(fileContent)?.groups?.offCanvas;
 				if (offCanvas) {
-					replaceInFile(tree, filePath, new RegExp(`${offCanvas}.opened`), `${offCanvas}.opened$`);
+					replaceInFile(tree, filePath, new RegExp(`${offCanvas}.opened(?!\\$)`), `${offCanvas}.opened$`);
 				}
 			};
 			return applyInTree(tree, apply, '*.ts');
