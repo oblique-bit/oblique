@@ -1,5 +1,6 @@
 import {Directive, ElementRef, HostListener, Input, OnInit} from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {distinctUntilChanged} from 'rxjs/operators';
 
 @Directive({
 	selector: '[obNumberFormat]',
@@ -35,7 +36,7 @@ export class ObNumberFormatDirective implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.ngControl.valueChanges.subscribe((value: number): void => {
+		this.ngControl.valueChanges.pipe(distinctUntilChanged()).subscribe((value: number): void => {
 			if (this.changed || this.focused || isNaN(value)) {
 				this.changed = false;
 				return;
@@ -46,6 +47,9 @@ export class ObNumberFormatDirective implements OnInit {
 	}
 
 	private static toFixedNumber(number: number, decimals: number): number {
+		if (!number) {
+			return number; // undefined, null or 0 should not be converted
+		}
 		const pow = 10 ** decimals;
 		return +(Math.round(number * pow) / pow);
 	}
