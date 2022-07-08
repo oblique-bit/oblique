@@ -1,9 +1,10 @@
 <p>
-	Starting from version 6.1, Oblique provides its own SVG icons. They are meant to be used with Angular Material's
-	<code>mat-icon</code> component, meaning that Bootstrap's users need to stick to FontAwesome's icons. As registering custom icons for the
-	<code>mat-icon</code> component is not really straightforward, Oblique provides the <code>ObIconService</code> to greatly simplify this
-	process. Of course, Angular's <code>MatIconRegistry</code> can still be used directly, see
-	<a href="https://material.angular.io/components/icon/api">MatIconModule</a> for more information.
+	Starting from version 9 Oblique is displayed with its own icons that have been introduced with version 6.1. The fallback mode on
+	FontAwesome is still possible by providing the <code>ObUseObliqueIcons</code> injection token with <code>false</code>. Oblique icons are
+	meant to be used with Angular Material's <code>mat-icon</code> component, meaning that Bootstrap's users need to stick to FontAwesome's
+	icons. As registering custom icons for the <code>mat-icon</code> component is not really straightforward, Oblique provides the
+	<code>ObIconService</code> to greatly simplify this process. Of course, Angular's <code>MatIconRegistry</code> can still be used directly,
+	see <a href="https://material.angular.io/components/icon/api">MatIconModule</a> for more information.
 </p>
 <p>
 	For performance reasons, Oblique packs all icons in a single file called an icon set. It then extracts the SVGs and inlines them directly
