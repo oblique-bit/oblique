@@ -8,7 +8,7 @@ import {obliqueProviders} from '../utilities';
 export {ObDropdownComponent} from './dropdown.component';
 
 /**
- * @deprecated since version 7.1.0. Will be removed with the version 9.0.0. Use the Oblique popover instead.
+ * @deprecated since version 7.1.0. Will be removed with the version 10.0.0. Use the Oblique popover instead.
  */
 @NgModule({
 	imports: [CommonModule],

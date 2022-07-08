@@ -8,7 +8,6 @@ import {ObThemeService} from '../theme.service';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 
 // @deprecated since version 8.1.0. It will be removed with version 9.0.0 where the telemetry could be disabled by not providing an OB_PROJECT_INFO
-export const TELEMETRY_DISABLE = new InjectionToken<boolean>('TELEMETRY_DISABLE');
 export const OB_PROJECT_INFO = new InjectionToken<ObIPackage>('PROJECT_INFO');
 
 @Injectable({
@@ -24,14 +23,12 @@ export class ObTelemetryService {
 		private readonly http: HttpClient,
 		theme: ObThemeService,
 		obGlobalEventsService: ObGlobalEventsService,
-		@Optional() @Inject(TELEMETRY_DISABLE) isDisabled: boolean,
 		@Optional() @Inject(OB_PROJECT_INFO) projectInfo: ObIPackage
 	) {
-		if (isDisabled) {
-			console.info('Oblique Telemetry is disabled by injection token.');
-		}
-		this.isDisabled = !isDevMode() || isDisabled || !projectInfo;
-		if (!this.isDisabled) {
+		this.isDisabled = !isDevMode() || !projectInfo;
+		if (this.isDisabled) {
+			console.info('Oblique Telemetry is disabled.');
+		} else {
 			this.telemetryRecord = new ObTelemetryRecord(theme.theme, projectInfo);
 			obGlobalEventsService.beforeUnload$.subscribe(() => this.sendRecord());
 		}

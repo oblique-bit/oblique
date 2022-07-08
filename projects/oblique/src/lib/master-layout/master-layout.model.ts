@@ -62,13 +62,13 @@ export interface ObINavigationLink {
 	iconOnly?: boolean;
 }
 
-export interface ObIJumpLink {
+export interface ObISkipLink {
 	label: string;
 	url: string | 'current';
 	fragment?: string;
 }
 
-export interface ObIDynamicJumpLink extends ObIJumpLink {
+export interface ObIDynamicSkipLink extends ObISkipLink {
 	accessKey: number;
 }
 

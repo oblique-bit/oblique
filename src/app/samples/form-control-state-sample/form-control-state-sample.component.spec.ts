@@ -1,7 +1,8 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {FormControlStateSampleComponent} from './form-control-state-sample.component';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ObliqueTestingModule} from '@oblique/oblique';
+import {FormControlStateSampleComponent} from './form-control-state-sample.component';
 
 describe('ObFormControlStateSampleComponent', () => {
 	let component: FormControlStateSampleComponent;
@@ -10,7 +11,8 @@ describe('ObFormControlStateSampleComponent', () => {
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
 			declarations: [FormControlStateSampleComponent],
-			imports: [FormsModule, ReactiveFormsModule, ObliqueTestingModule]
+			imports: [FormsModule, ReactiveFormsModule, ObliqueTestingModule],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
 	}));
 

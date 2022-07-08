@@ -1,4 +1,4 @@
-<p class="ob-progress-heading">{{ "i18n.oblique.file-upload.progressBar.title" | translate: { fileCount: uploadedFiles.fileCount } }}</p>
+<p class="ob-progress-heading">{{ "i18n.oblique.file-upload.progress-bar.title" | translate: { fileCount: uploadedFiles.fileCount } }}</p>
 <div class="ob-file-progress" *ngFor="let file of uploadedFiles.files">
 	<span class="ob-file-progress-title" *ngIf="file.name">{{ file.name }}</span>
 	<div class="ob-file-progress-bar">
@@ -9,6 +9,7 @@
 		></mat-progress-bar>
 		<button
 			*ngIf="!file.completed && file.hasError"
+			type="button"
 			mat-icon-button
 			obButton="secondary"
 			matTooltip="{{ 'i18n.oblique.file-upload.retry' | translate }}"
@@ -19,6 +20,7 @@
 		</button>
 		<button
 			*ngIf="!file.completed"
+			type="button"
 			mat-icon-button
 			matTooltip="{{ 'i18n.common.cancel' | translate }}"
 			obButton="secondary"

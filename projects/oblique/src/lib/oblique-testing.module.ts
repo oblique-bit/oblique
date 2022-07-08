@@ -12,7 +12,7 @@ import {ObMockDocumentMetaModule} from './document-meta/_mocks/mock-document-met
 import {ObMockDropdownModule} from './dropdown/_mocks/mock-dropdown.module';
 import {ObMockErrorMessagesModule} from './error-messages/_mocks/mock-error-messages.module';
 import {ObMockExternalLinkModule} from './external-link/_mocks/mock-external-link.module';
-import {ObMockFileUploadModule} from './file-upload/_mock/mock-file-upload.module';
+import {ObMockFileUploadModule} from './file-upload/_mocks/mock-file-upload.module';
 import {ObMockFormControlStateModule} from './form-control-state/_mocks/mock-form-control-state.module';
 import {ObMockIconModule} from './icon/_mocks/mock-icon.module';
 import {ObMockMasterLayoutModule} from './master-layout/_mocks/mock-master-layout.module';
@@ -73,7 +73,7 @@ export {
 	ObMockFileUploadService,
 	ObMockFileUploadComponent,
 	ObMockDropZoneComponent
-} from './file-upload/_mock/mock-file-upload.module';
+} from './file-upload/_mocks/mock-file-upload.module';
 export {ObMockFormControlStateModule, ObMockFormControlStateDirective} from './form-control-state/_mocks/mock-form-control-state.module';
 export {ObMockDatePipe, ObMockLanguageModule} from './language/_mocks/mock-language.module';
 export {ObMockIconModule, ObMockIconService, ObMockIconComponent} from './icon/_mocks/mock-icon.module';

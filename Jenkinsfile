@@ -1,4 +1,4 @@
-@Library('jeap-pipelinelibrary@feature/oblique2') _
+@Library('jeap-pipelinelibrary@feature/oblique3') _
 nodejsPipelineTemplate {
 	testEngine = 'jest'
 	versionNumberType = 'none'
@@ -21,6 +21,6 @@ nodejsPipelineTemplate {
 		'npmCredentialId': 'npmDeploymentTokenOblique'
 	]
 	deployCloudFoundry = [
-		'develop': ['space': 'dev', 'configuration': 'production']
+		'OUI-1730-release-oblique-9.0.0': ['space': 'dev', 'configuration': 'production']
 	]
 }

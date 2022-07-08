@@ -8,14 +8,14 @@ describe('IconComponent', () => {
 	let component: ObIconComponent;
 	let fixture: ComponentFixture<ObIconComponent>;
 
-	describe('with FontAwesome', () => {
-		beforeEach(async () => {
-			await TestBed.configureTestingModule({
-				imports: [MatIconModule],
-				declarations: [ObIconComponent]
-			}).compileComponents();
-		});
+	beforeEach(() => {
+		TestBed.configureTestingModule({
+			imports: [MatIconModule],
+			declarations: [ObIconComponent]
+		}).compileComponents();
+	});
 
+	describe('Without injection token', () => {
 		beforeEach(() => {
 			fixture = TestBed.createComponent(ObIconComponent);
 			component = fixture.componentInstance;
@@ -26,8 +26,16 @@ describe('IconComponent', () => {
 			expect(component).toBeTruthy();
 		});
 
-		it('should show a FontAwesome icon', () => {
-			expect(fixture.debugElement.query(By.css('.fa'))).toBeDefined();
+		it('should have ob-icon-wrapper class', () => {
+			expect(fixture.debugElement.nativeElement.classList.contains('ob-icon-wrapper')).toBe(true);
+		});
+
+		it('should show an Angular icon', () => {
+			expect(fixture.debugElement.query(By.css('mat-icon'))).toBeTruthy();
+		});
+
+		it('should not show a FontAwesome icon', () => {
+			expect(fixture.debugElement.query(By.css('.fa'))).toBeFalsy();
 		});
 
 		describe('fontAwesome aliases', () => {
@@ -93,27 +101,20 @@ describe('IconComponent', () => {
 		});
 	});
 
-	describe('with Oblique icons', () => {
-		beforeEach(async () => {
-			await TestBed.configureTestingModule({
-				imports: [MatIconModule],
-				declarations: [ObIconComponent],
-				providers: [{provide: ObUseObliqueIcons, useValue: true}]
-			}).compileComponents();
-		});
-
+	describe.each([true, false])('With ObUseObliqueIcons token set to %s', value => {
 		beforeEach(() => {
+			TestBed.overrideProvider(ObUseObliqueIcons, {useValue: value});
 			fixture = TestBed.createComponent(ObIconComponent);
 			component = fixture.componentInstance;
 			fixture.detectChanges();
 		});
 
-		it('should create', () => {
-			expect(component).toBeTruthy();
+		it('should show the correct icon', () => {
+			expect(fixture.debugElement.query(By.css(value ? 'mat-icon' : '.fa'))).toBeTruthy();
 		});
 
-		it('should show an Angular icon', () => {
-			expect(fixture.debugElement.query(By.css('mat-icon'))).toBeDefined();
+		it('should hide the unwanted icon', () => {
+			expect(fixture.debugElement.query(By.css(value ? '.fa' : 'mat-icon'))).toBeFalsy();
 		});
 	});
 });

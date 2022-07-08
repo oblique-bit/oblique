@@ -37,8 +37,8 @@ describe('ObTopControlComponent', () => {
 			expect(fixture.debugElement.nativeElement.classList.contains('ob-top-control')).toBe(true);
 		});
 
-		it('should have ob-font-awesome class', () => {
-			expect(fixture.debugElement.nativeElement.classList.contains('ob-font-awesome')).toBe(true);
+		it('should not have ob-font-awesome class', () => {
+			expect(fixture.debugElement.nativeElement.classList.contains('ob-font-awesome')).toBe(false);
 		});
 
 		describe('scrollTop', () => {
@@ -80,7 +80,7 @@ describe('ObTopControlComponent', () => {
 		});
 	});
 
-	describe('with ObUseObliqueIcons', () => {
+	describe('without ObUseObliqueIcons', () => {
 		beforeEach(waitForAsync(() => {
 			TestBed.configureTestingModule({
 				declarations: [ObTopControlComponent, ObMockTranslatePipe],
@@ -88,7 +88,7 @@ describe('ObTopControlComponent', () => {
 				providers: [
 					{provide: TranslateService, useClass: ObMockTranslateService},
 					{provide: WINDOW, useValue: window},
-					{provide: ObUseObliqueIcons, useValue: true}
+					{provide: ObUseObliqueIcons, useValue: false}
 				]
 			}).compileComponents();
 		}));
@@ -103,8 +103,8 @@ describe('ObTopControlComponent', () => {
 			expect(topControlComponent).toBeDefined();
 		});
 
-		it('should not have ob-font-awesome class', () => {
-			expect(fixture.debugElement.nativeElement.classList.contains('ob-font-awesome')).toBe(false);
+		it('should have ob-font-awesome class', () => {
+			expect(fixture.debugElement.nativeElement.classList.contains('ob-font-awesome')).toBe(true);
 		});
 	});
 });

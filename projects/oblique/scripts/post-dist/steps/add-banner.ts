@@ -1,9 +1,9 @@
 import {readFileSync, readdirSync, statSync, writeFileSync} from 'fs';
 import {execSync} from 'child_process';
-import {version as currentVersion} from './../package.json';
+import {version as currentVersion} from './../../../../../package.json';
 import path from 'path';
 
-class AddBanner {
+export class AddBanner {
 	private static readonly directory = 'dist';
 
 	static perform(): void {
@@ -56,5 +56,3 @@ class AddBanner {
 		return new Date().toISOString().split('T')[0];
 	}
 }
-
-AddBanner.perform();

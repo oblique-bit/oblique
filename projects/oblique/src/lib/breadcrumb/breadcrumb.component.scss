@@ -18,6 +18,7 @@
 
 		a {
 			text-decoration: none;
+			display: inline-block;
 
 			&:hover {
 				text-decoration: underline;
@@ -30,7 +31,7 @@
 			// this emulate the ob-icon-text class that cannot be used in this feature
 			&::ng-deep .mat-icon {
 				position: relative;
-				top: 0.15em; // empiric value
+				top: -0.25em; // empiric value
 			}
 		}
 	}

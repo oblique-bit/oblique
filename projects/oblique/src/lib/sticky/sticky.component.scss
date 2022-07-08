@@ -53,11 +53,11 @@
 
 @include layout.ob-media-breakpoint-up(md) {
 	.ob-sticky-header {
-		@include shadow.ob-dropShadow(down);
+		@include shadow.ob-drop-shadow(down);
 	}
 
 	.ob-sticky-footer {
-		@include shadow.ob-dropShadow(up);
+		@include shadow.ob-drop-shadow(up);
 	}
 }
 

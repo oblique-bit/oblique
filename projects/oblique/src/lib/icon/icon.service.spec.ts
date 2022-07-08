@@ -118,7 +118,7 @@ describe('IconService', () => {
 		});
 
 		it('should have the default font class', () => {
-			expect(registry.getDefaultFontSetClass()).toBe('material-icons');
+			expect(registry.getDefaultFontSetClass().includes('material-icons')).toBe(true);
 		});
 	});
 
@@ -141,7 +141,7 @@ describe('IconService', () => {
 		});
 
 		it('should have a custom font class', () => {
-			expect(registry.getDefaultFontSetClass()).toBe('fa');
+			expect(registry.getDefaultFontSetClass().includes('fa')).toBe(true);
 		});
 	});
 

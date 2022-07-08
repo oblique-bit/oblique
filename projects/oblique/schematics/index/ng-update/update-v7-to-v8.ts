@@ -7,8 +7,9 @@ import {
 	createSafeRule,
 	deleteFile,
 	getAngularConfigs,
-	getDefaultAngularConfig,
+	getIndexPaths,
 	infoMigration,
+	overwriteIndexFile,
 	readFile,
 	removeAngularProjectsConfig,
 	replaceInFile,
@@ -475,19 +476,13 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private updateBrowserCompatibilityMessage(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Oblique: Updating browser compatibility check message');
-			let index = getDefaultAngularConfig(tree, ['architect', 'build', 'options', 'index']);
-			if (!tree.exists(index)) {
-				index = './index.html';
-			}
-			if (tree.exists(index)) {
-				tree.overwrite(
-					index,
-					readFile(tree, index).replace(
-						new RegExp(/(<noscript style="display: table; height: 98vh; width: 98vw">)((.|\r?\n)*)(<\/div>)/gm),
-						getTemplate(tree, 'default-index.html')
-					)
-				);
-			}
+			getIndexPaths(tree).forEach((indexPath: string) =>
+				overwriteIndexFile(
+					indexPath,
+					tree,
+					new RegExp(/(<noscript style="display: table; height: 98vh; width: 98vw">)((.|\r?\n)*)(<\/div>)/gm)
+				)
+			);
 			return tree;
 		});
 	}

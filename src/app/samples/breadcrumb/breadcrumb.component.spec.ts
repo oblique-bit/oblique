@@ -1,19 +1,23 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {RouterTestingModule} from '@angular/router/testing';
+import {BreadcrumbSampleComponent} from './breadcrumb.component';
 
-import {BreadcrumbComponent} from './breadcrumb.component';
-
-describe('BreadcrumbComponent', () => {
-	let component: BreadcrumbComponent;
-	let fixture: ComponentFixture<BreadcrumbComponent>;
+describe('BreadcrumbSampleComponent', () => {
+	let component: BreadcrumbSampleComponent;
+	let fixture: ComponentFixture<BreadcrumbSampleComponent>;
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [BreadcrumbComponent]
+			imports: [HttpClientTestingModule, RouterTestingModule],
+			declarations: [BreadcrumbSampleComponent],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
 	});
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(BreadcrumbComponent);
+		fixture = TestBed.createComponent(BreadcrumbSampleComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

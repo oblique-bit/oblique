@@ -26,12 +26,12 @@ export class ObAlertComponent implements OnInit {
 	private hasAlertRole?: boolean | undefined;
 
 	constructor(
-		@Optional() @Inject(ObUseObliqueIcons) private readonly useObliqueIcons: boolean,
+		@Optional() @Inject(ObUseObliqueIcons) useObliqueIcons: boolean,
 		@Optional() @Inject(OBLIQUE_HAS_ROLE_ALERT) private readonly hasGlobalAlertRole: boolean,
 		// eslint-disable-next-line @angular-eslint/no-attribute-decorator
 		@Attribute('role') private readonly initialRole: string
 	) {
-		this.useFontAwesomeIcons = !useObliqueIcons;
+		this.useFontAwesomeIcons = !(useObliqueIcons ?? true);
 	}
 
 	get hasRoleAlert(): boolean | undefined {

@@ -2,9 +2,9 @@ import {AfterViewInit, Component, Input} from '@angular/core';
 import {
 	AbstractControl,
 	ControlValueAccessor,
-	FormGroup,
 	NG_VALIDATORS,
 	NG_VALUE_ACCESSOR,
+	UntypedFormGroup,
 	ValidationErrors,
 	Validator
 } from '@angular/forms';
@@ -21,7 +21,7 @@ import {ObParentFormDirective} from './parent-form.directive';
 	host: {class: 'ob-nested-form'}
 })
 export class ObNestedFormComponent implements ControlValueAccessor, Validator, AfterViewInit {
-	@Input() nestedForm: FormGroup;
+	@Input() nestedForm: UntypedFormGroup;
 
 	constructor(private readonly parent: ObParentFormDirective) {}
 
@@ -59,7 +59,7 @@ export class ObNestedFormComponent implements ControlValueAccessor, Validator, A
 		return this.nestedForm.valid ? null : this.formatErrors(this.nestedForm);
 	}
 
-	private formatErrors(form: FormGroup): ValidationErrors {
+	private formatErrors(form: UntypedFormGroup): ValidationErrors {
 		return Object.keys(form.controls)
 			.filter(field => form.get(field).errors)
 			.reduce((errors, field) => ({...errors, [field]: form.get(field).errors}), {});

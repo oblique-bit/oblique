@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObTelemetryService",
+      "methods": [
+        {
+          "arguments": ["module: string"],
+          "name": "record",
+          "returns": "void",
+          "since": "4.1.0",
+          "text": "If telemetry is activated, add the given module to the telemetry record. Otherwise it does nothing.",
+          "updated": "6.0.0"
+        }
+      ],
+      "since": "4.1.0",
+      "updated": "9.0.0"
+    }
+  ]
+}

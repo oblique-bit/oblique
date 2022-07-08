@@ -67,20 +67,14 @@
                 "projects/oblique/src/styles/scss/core/mixins"
               ]
             },
-            "scripts": ["projects/oblique/src/ob-features.js"],
-            "vendorChunk": true,
-            "extractLicenses": false,
-            "buildOptimizer": false,
-            "sourceMap": true,
-            "optimization": false,
-            "namedChunks": true
+            "scripts": ["projects/oblique/src/ob-features.js"]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
+                  "maximumWarning": "6.5kb"
                 }
               ],
               "fileReplacements": [
@@ -88,43 +82,41 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
                 }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "progress": false,
-              "baseHref": "."
+              ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "oblique-showcase:build",
             "port": 3001
           },
           "configurations": {
+            "development": {
+              "browserTarget": "oblique-showcase:build:development"
+            },
             "production": {
               "browserTarget": "oblique-showcase:build:prod"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "configPath": "../tests/jest.config.js",
-            "watch": true,
-            "verbose": true
-          },
-          "configurations": {
-            "production": {
-              "configPath": "../tests/jest.config.js",
-              "watch": false,
-              "verbose": false
-            }
+            "configPath": "src/jest.config.js",
+            "tsConfig": "src/tsconfig.spec.json",
+            "no-cache": true,
+            "run-in-band": ["true"]
           }
         }
       }
@@ -170,19 +162,7 @@
                 "input": "projects/oblique/src/styles/scss/themes/oblique-bootstrap.scss",
                 "inject": false
               }
-            ],
-            "extractLicenses": false,
-            "buildOptimizer": false,
-            "sourceMap": true,
-            "optimization": false
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "outputHashing": "none",
-              "sourceMap": false,
-              "progress": false
-            }
+            ]
           }
         }
       }
@@ -203,22 +183,15 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "configPath": "jest.config.js",
+            "configPath": "jest.config.prod.js",
+            "tsConfig": "tsconfig.spec.json",
             "no-cache": true,
-            "watch": true,
-            "verbose": true
-          },
-          "configurations": {
-            "production": {
-              "watch": false,
-              "verbose": false
-            }
+            "run-in-band": ["true"]
           }
         }
       }
     }
   },
-  "defaultProject": "oblique-showcase",
   "schematics": {
     "@schematics/angular:component": {
       "skipTests": false,

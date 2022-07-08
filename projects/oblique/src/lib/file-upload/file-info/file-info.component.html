@@ -10,6 +10,7 @@
 				(change)="$event ? selectOrUnselectAllItems() : null"
 				[checked]="selection.hasValue() && areAllItemsSelected()"
 				[indeterminate]="selection.hasValue() && !areAllItemsSelected()"
+				[disabled]="!selection.hasValue()"
 			>
 			</mat-checkbox>
 		</th>
@@ -22,6 +23,7 @@
 	<ng-container [matColumnDef]="COLUMN_ACTION">
 		<th class="ob-actions" scope="col" mat-header-cell *matHeaderCellDef>
 			<button
+				type="button"
 				[disabled]="!selection.hasValue()"
 				mat-icon-button
 				obButton="secondary"
@@ -34,6 +36,7 @@
 		</th>
 		<td mat-cell *matCellDef="let file">
 			<button
+				type="button"
 				mat-icon-button
 				obButton="secondary"
 				matTooltip="{{ 'i18n.oblique.file-upload.remove' | translate }}"

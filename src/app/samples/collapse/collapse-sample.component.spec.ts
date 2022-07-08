@@ -1,6 +1,9 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {CollapseSampleComponent} from './collapse-sample.component';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
 
 describe('ObCollapseSampleComponent', () => {
 	let component: CollapseSampleComponent;
@@ -8,7 +11,9 @@ describe('ObCollapseSampleComponent', () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			declarations: [CollapseSampleComponent]
+			imports: [ReactiveFormsModule, MatSelectModule],
+			declarations: [CollapseSampleComponent],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
 	}));
 

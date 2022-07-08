@@ -6,7 +6,7 @@
 	max-width: 40%; // empiric value
 	background: variables.$ob-white;
 	z-index: variables.$ob-z-index-widget;
-	@include shadow.ob-dropShadow();
+	@include shadow.ob-drop-shadow();
 
 	.ob-popover-arrow {
 		border-width: variables.$ob-spacing-sm;

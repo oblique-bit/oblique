@@ -1,0 +1,59 @@
+<p>
+	The Oblique front-end framework includes a telemetry feature that collects usage information. It's important that the Oblique team
+	understands which modules are used so it can be decided on where to invest it's limited resources.
+</p>
+<p>
+	The collected data are linked to the project name, version and homepage configured in the <code>package.json</code> file. Only the Oblique
+	team and it's superiors have access to the collected data.
+</p>
+
+<section>
+	<h3>When is data collected?</h3>
+	<p>
+		Data is collected in <strong>development</strong> mode only. That is if you build in angular production mode, telemetry is turned off.
+	</p>
+	<p>Ensure that you deploy only production builds of your Oblique project outside of your local development environment.</p>
+	<pre>ng build --prod=true</pre>
+</section>
+<section>
+	<h3>What is collected?</h3>
+	<p>
+		The telemetry records the usage on module basis. While loading one of the oblique modules, its usage is recorded. Additionally to this,
+		your application name, version and homepage are also recorded.
+	</p>
+	<ul>
+		<li>Oblique module names, the Oblique version and the theme used.</li>
+		<li>Application name, version and homepage (from your <code>package.json</code>).</li>
+	</ul>
+
+	<h4>Selective module usage</h4>
+	<p>
+		Don't load ObliqueModule, as it loads all oblique modules. Instead carefully choose the modules that you need and only import those. As
+		an added bonus you will have a smaller bundle because angular build will tree shake the unused modules for you ;-).
+	</p>
+
+	<h5>Do selectively load the needed modules</h5>
+	<pre>
+@NgModule({
+	imports: [
+		...
+		ObSpinnerModule,
+		ObMasterLayoutModule,
+		ObNotificationModule,
+		...
+	]
+})
+	</pre
+	>
+	<h5>Don't load the ObliqueModule</h5>
+	<pre>
+@NgModule({
+	imports: [
+		...
+		ObliqueModule
+		...
+	]
+})
+	</pre
+	>
+</section>

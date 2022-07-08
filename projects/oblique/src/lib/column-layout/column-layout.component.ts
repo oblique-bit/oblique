@@ -50,7 +50,7 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 		@Optional() @Inject(ObUseObliqueIcons) useObliqueIcon
 	) {
 		this.window = window; // because AoT don't accept interfaces as DI
-		this.useFontAwesomeIcon = !useObliqueIcon;
+		this.useFontAwesomeIcon = !(useObliqueIcon ?? true);
 	}
 
 	ngAfterViewInit(): void {

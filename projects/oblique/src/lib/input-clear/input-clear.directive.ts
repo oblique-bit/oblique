@@ -1,6 +1,6 @@
 import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Inject, Input, OnInit, Output} from '@angular/core';
 import {MatDatepicker} from '@angular/material/datepicker';
-import {FormControl, NgModel} from '@angular/forms';
+import {NgModel, UntypedFormControl} from '@angular/forms';
 import {WINDOW} from '../utilities';
 
 @Directive({
@@ -9,7 +9,7 @@ import {WINDOW} from '../utilities';
 	host: {class: 'ob-input-clear'}
 })
 export class ObInputClearDirective implements OnInit {
-	@Input('obInputClear') control: HTMLInputElement | FormControl | NgModel;
+	@Input('obInputClear') control: HTMLInputElement | UntypedFormControl | NgModel;
 	@Input() focusOnClear = true;
 	@Input() datePickerRef: MatDatepicker<any>;
 	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
@@ -27,7 +27,11 @@ export class ObInputClearDirective implements OnInit {
 	}
 
 	ngOnInit(): void {
-		if (!(this.control instanceof HTMLInputElement) && !(this.control instanceof FormControl) && !(this.control instanceof NgModel)) {
+		if (
+			!(this.control instanceof HTMLInputElement) &&
+			!(this.control instanceof UntypedFormControl) &&
+			!(this.control instanceof NgModel)
+		) {
 			console.warn(
 				'ObInputClearDirective: illegal value for obInputClear Input, please use one of the following: HTMLInputElement, FormControl or NgModel.'
 			);
@@ -55,7 +59,7 @@ export class ObInputClearDirective implements OnInit {
 	}
 
 	private clearReactiveForm(): void {
-		if (this.control instanceof FormControl) {
+		if (this.control instanceof UntypedFormControl) {
 			this.control.patchValue(null);
 		}
 	}

@@ -1,6 +1,6 @@
-<ng-container *ngIf="useObliqueIcons; else fontAwesomeTpl">
-	<mat-icon [svgIcon]="icon"></mat-icon>
-</ng-container>
-<ng-template #fontAwesomeTpl>
+<ng-container *ngIf="useFontAwesomeIcons; else obliqueTpl">
 	<span class="fa {{ fontAwesomeAliases[icon] ?? icon }}"></span>
+</ng-container>
+<ng-template #obliqueTpl>
+	<mat-icon [svgIcon]="icon"></mat-icon>
 </ng-template>

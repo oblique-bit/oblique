@@ -11,11 +11,12 @@
       "updated": "8.2.0",
       "inputs": [
         {
-          "name": "jumplinks",
-          "text": "A List of Links to be used as jumplinks in order to improve accessibility.",
-          "type": "ObIJumpLink[]",
+          "name": "skiplinks",
+          "text": "A List of Links to be used as skiplinks in order to improve accessibility.",
+          "type": "ObISkipLink[]",
           "default": "[]",
-          "since": "5.2.0"
+          "since": "5.2.0",
+          "updated": "9.0.0"
         },
         {
           "name": "navigation",
@@ -265,6 +266,13 @@
           "type": "ObINavigationLink[]",
           "default": "[]",
           "since": "4.0.0"
+        },
+        {
+          "name": "footer.isSmall",
+          "text": "Forces the small variant of the footer.",
+          "type": "boolean",
+          "default": false,
+          "since": "8.0.0"
         },
         {
           "name": "footer.isCustom",
@@ -612,14 +620,14 @@
       ]
     },
     {
-      "name": "ObIJumpLink",
+      "name": "ObISkipLink",
       "type": "interface",
-      "usage": "The structure of a custom jumplink",
+      "usage": "The structure of a custom skiplink",
       "since": "5.2.0",
       "variables": [
         {
           "name": "label",
-          "text": "An i18n key that will be translated and used as Label for this jumplink",
+          "text": "An i18n key that will be translated and used as Label for this skiplink",
           "type": "string",
           "since": "5.2.0"
         },

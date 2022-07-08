@@ -153,15 +153,15 @@
 			</div>
 		</fieldset>
 		<div class="form-group form-actions">
-			<button (click)="clear()" class="btn btn-link" ngbTooltip="Clears notifications from current selected channel.">
+			<button type="button" (click)="clear()" class="btn btn-link" ngbTooltip="Clears notifications from current selected channel.">
 				<span class="fa fa-trash mr-2"></span>
 				<span>Clear</span>
 			</button>
-			<button (click)="clearAllChannels()" class="btn btn-link" ngbTooltip="Clears notifications from all channels.">
+			<button type="button" (click)="clearAllChannels()" class="btn btn-link" ngbTooltip="Clears notifications from all channels.">
 				<span class="fa fa-trash mr-2"></span>
 				<span>Clear all</span>
 			</button>
-			<button (click)="send()" class="btn btn-secondary">
+			<button type="button" (click)="send()" class="btn btn-secondary">
 				<span class="fa fa-paper-plane mr-2"></span>
 				<span>Send notification</span>
 			</button>

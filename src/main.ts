@@ -13,6 +13,6 @@ if (environment.production) {
 void platformBrowserDynamic([
 	{
 		provide: OB_PROJECT_INFO,
-		useValue: {name: packageInfo.name, version: packageInfo.version, title: packageInfo.title, homePage: packageInfo.homepage}
+		useValue: {name: packageInfo.name, version: packageInfo.version, title: packageInfo.title}
 	}
 ]).bootstrapModule(AppModule);

@@ -10,6 +10,7 @@ import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObMockGlobalEventsService} from '../../global-events/_mocks/mock-global-events.service';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {WINDOW} from '../../utilities';
+import {ObMockMasterLayoutNavigationItemDirective} from '../_mocks/mock-master-layout-navigation-item.directive';
 
 @Component({template: ''})
 class DummyFullPathComponent {}
@@ -29,6 +30,7 @@ describe('MasterLayoutNavigationComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [
 				ObMasterLayoutNavigationComponent,
+				ObMockMasterLayoutNavigationItemDirective,
 				ObMockTranslatePipe,
 				DummyFullPathComponent,
 				DummyPrefixPathComponent,

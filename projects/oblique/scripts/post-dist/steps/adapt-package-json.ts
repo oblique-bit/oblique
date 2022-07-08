@@ -2,7 +2,7 @@ import {readFileSync, writeFileSync} from 'fs';
 import path from 'path';
 
 type Json = Record<string, any>;
-class AdaptPackageJson {
+export class AdaptPackageJson {
 	static perform(): void {
 		const filePath = path.join('dist', 'oblique', 'package.json');
 		const distPackage = AdaptPackageJson.getDistPackage(filePath);
@@ -30,5 +30,3 @@ class AdaptPackageJson {
 		return distPackage;
 	}
 }
-
-AdaptPackageJson.perform();

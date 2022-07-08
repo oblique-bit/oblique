@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {ThemeService} from '../../common/theme.service';
@@ -11,10 +11,10 @@ import {ThemeService} from '../../common/theme.service';
 	styleUrls: ['./mandatory.scss']
 })
 export class NestedFormGrandChildSampleComponent {
-	grandChildForm: FormGroup;
+	grandChildForm: UntypedFormGroup;
 	material: Observable<boolean>;
 
-	constructor(private readonly fb: FormBuilder, theme: ThemeService) {
+	constructor(private readonly fb: UntypedFormBuilder, theme: ThemeService) {
 		this.grandChildForm = this.fb.group({
 			field1: ['', [Validators.required]],
 			field2: ['', Validators.minLength(5)]

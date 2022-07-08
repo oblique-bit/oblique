@@ -8,6 +8,7 @@ import {ObUseObliqueIcons} from './icon.model';
 })
 export class ObIconComponent {
 	@Input() icon: string;
+	useFontAwesomeIcons = false;
 	fontAwesomeAliases = {
 		cancel: 'fa-times',
 		checkmark: 'fa-check',
@@ -26,5 +27,7 @@ export class ObIconComponent {
 		warning: 'fa-exclamation'
 	};
 
-	constructor(@Optional() @Inject(ObUseObliqueIcons) public readonly useObliqueIcons: boolean) {}
+	constructor(@Optional() @Inject(ObUseObliqueIcons) useObliqueIcons: boolean) {
+		this.useFontAwesomeIcons = !(useObliqueIcons ?? true);
+	}
 }

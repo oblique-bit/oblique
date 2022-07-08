@@ -11,7 +11,6 @@ export class ObTelemetryRecord {
 			applicationName: pkg.name || 'Unknown project name',
 			applicationTitle: pkg.title,
 			applicationVersion: pkg.version || 'Unknown project version',
-			applicationHomepage: pkg.homePage,
 			obliqueTheme: theme,
 			obliqueVersion: appVersion,
 			obliqueModuleNames: []

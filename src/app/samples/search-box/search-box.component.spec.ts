@@ -1,19 +1,22 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {FormsModule} from '@angular/forms';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {SearchBoxSampleComponent} from './search-box.component';
 
-import {SearchBoxComponent} from './search-box.component';
-
-describe('SearchBoxComponent', () => {
-	let component: SearchBoxComponent;
-	let fixture: ComponentFixture<SearchBoxComponent>;
+describe('SearchBoxSampleComponent', () => {
+	let component: SearchBoxSampleComponent;
+	let fixture: ComponentFixture<SearchBoxSampleComponent>;
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [SearchBoxComponent]
+			imports: [FormsModule],
+			declarations: [SearchBoxSampleComponent],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
 	});
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(SearchBoxComponent);
+		fixture = TestBed.createComponent(SearchBoxSampleComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

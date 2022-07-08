@@ -1,7 +1,7 @@
 import {copyFileSync, mkdirSync, readdirSync, statSync} from 'fs';
 import path from 'path';
 
-class CopyDistFiles {
+export class CopyDistFiles {
 	private static readonly SOURCE = path.join('projects', 'oblique', 'src');
 	private static readonly DESTINATION = path.join('dist', 'oblique');
 	private static readonly FONT_AWESOME = path.join('node_modules', '@fortawesome', 'fontawesome-free');
@@ -55,5 +55,3 @@ class CopyDistFiles {
 			});
 	}
 }
-
-CopyDistFiles.perform();

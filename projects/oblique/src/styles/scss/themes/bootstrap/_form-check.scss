@@ -7,7 +7,7 @@
 
 $size: 1.1875em; // 19px with a 16px basis
 $small: 0.6875em; // 11px with a 16px basis
-$smallSize: 1.7273em; // 19px with a 11px basis
+$small-size: 1.7273em; // 19px with a 11px basis
 .form-check {
 	line-height: $size;
 	padding-left: $size;
@@ -55,13 +55,13 @@ $smallSize: 1.7273em; // 19px with a 11px basis
 		}
 
 		&::after {
-			width: $smallSize;
-			height: $smallSize;
-			margin-left: -$smallSize;
+			width: $small-size;
+			height: $small-size;
+			margin-left: -$small-size;
 			color: ob-bootstrap-variables.$ob-input-color;
 			font-size: $small;
 			text-align: center;
-			line-height: $smallSize;
+			line-height: $small-size;
 			vertical-align: middle;
 			transform: scale(0, 0);
 			transition: transform 0.15s cubic-bezier(0.8, -0.33, 0.2, 1.33);

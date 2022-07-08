@@ -75,15 +75,8 @@ function referToJest() {
 		setAngularProjectsConfig(tree, ['architect', 'test'], {
 			builder: '@angular-builders/jest:run',
 			options: {
-				configPath: './tests/jest.config.js',
-				watch: true,
-				verbose: true
-			},
-			configurations: {
-				production: {
-					watch: false,
-					verbose: false
-				}
+				configPath: 'tests/jest.config.js',
+				tsConfig: 'tsconfig.spec.json'
 			}
 		});
 }

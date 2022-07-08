@@ -36,11 +36,5 @@ rules:
   # deactivate unwanted rules
   font-family-no-missing-generic-family-keyword: null # could be reactivated once bootstrap in removed
   scss/double-slash-comment-empty-line-before: null
-  # rules that implies breaking changes
-  keyframes-name-pattern: null
-  selector-class-pattern: null
-  selector-id-pattern: null
-  scss/at-mixin-pattern: null
-  scss/dollar-variable-pattern: null
   # rules that need some refactoring to be enabled
   no-descending-specificity: null

@@ -4,6 +4,7 @@
 	<ng-container column-main-content>
 		<div class="large-popover">
 			<button
+				type="button"
 				mat-raised-button
 				[ngClass]="openPopoverPosition"
 				[obPopover]="popover"
@@ -27,7 +28,7 @@
 			</p>
 			<ng-template #popover>
 				<p>Popover example. Here goes your content! {{ param }}</p>
-				<button mat-button>Click me!</button>
+				<button type="button" mat-button>Click me!</button>
 			</ng-template>
 		</div>
 	</ng-container>

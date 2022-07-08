@@ -8,6 +8,13 @@
 	background-color: variables.$ob-white;
 	z-index: variables.$ob-z-index-layout;
 
+	@include layout.ob-media-breakpoint-down(md) {
+		.ob-header-expanded & {
+			height: 100vh;
+			padding-bottom: variables.$ob-spacing-lg; // to avoid the last link being covered by the link preview
+		}
+	}
+
 	.ob-header {
 		position: relative;
 		width: 100%;
@@ -69,7 +76,7 @@
 		flex-flow: row nowrap;
 		margin-right: auto; // Ensure controls get pushed to the right
 		min-width: 0; // Important, for text ellipsis of app title (cf. https://css-tricks.com/flexbox-truncated-text/)!
-		overflow: hidden;
+		overflow: hidden; // hide the banner in collapsed mode
 	}
 
 	.ob-master-layout-brand {
@@ -89,7 +96,7 @@
 	}
 
 	.ob-master-layout-logo {
-		overflow: hidden;
+		overflow: hidden; // hides part of the logo in collapsed mode
 		width: variables.$ob-logo-width-collapsed;
 		height: variables.$ob-logo-height-collapsed;
 		margin-right: variables.$ob-spacing-default;
@@ -117,7 +124,7 @@
 		font-weight: 300;
 		padding-left: variables.$ob-spacing-default;
 		border-left: 1px solid variables.$ob-gray-lighter;
-		overflow: hidden;
+		overflow: hidden; // works together with text-overflow
 		text-overflow: ellipsis;
 		white-space: nowrap;
 	}

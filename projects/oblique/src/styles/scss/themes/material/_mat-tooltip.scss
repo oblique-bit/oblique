@@ -6,5 +6,5 @@
 	@include typography.ob-caption();
 	background-color: variables.$ob-gray-darker;
 	padding: 6px 7px 4px;
-	@include shadow.ob-dropShadow();
+	@include shadow.ob-drop-shadow();
 }

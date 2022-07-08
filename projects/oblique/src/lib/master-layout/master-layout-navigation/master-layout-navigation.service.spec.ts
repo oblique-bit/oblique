@@ -26,7 +26,7 @@ describe('MasterLayoutNavigationService', () => {
 				{provide: TranslateService, useValue: translateMock},
 				{provide: ObMasterLayoutConfig, useValue: mockMasterLayout},
 				{provide: ObMasterLayoutComponentService, useValue: ObMockMasterLayoutComponentService},
-				{provide: ObOffCanvasService, useValue: {opened: of(true)}},
+				{provide: ObOffCanvasService, useValue: {opened$: of(true)}},
 				{provide: ObGlobalEventsService, useValue: ObMockGlobalEventsService},
 				{provide: WINDOW, useValue: window}
 			]

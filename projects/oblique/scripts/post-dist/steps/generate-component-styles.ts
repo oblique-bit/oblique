@@ -1,7 +1,7 @@
 import {readFileSync, readdirSync, statSync, writeFileSync} from 'fs';
 import path from 'path';
 
-class GenerateComponentStyles {
+export class GenerateComponentStyles {
 	static perform(): void {
 		const componentPath = path.join('projects', 'stylesBuilder', 'oblique-components.scss');
 		const directoryPath = path.join('projects', 'oblique', 'src', 'lib');
@@ -46,5 +46,3 @@ class GenerateComponentStyles {
 		return pathChunks.join('/');
 	}
 }
-
-GenerateComponentStyles.perform();

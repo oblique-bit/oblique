@@ -30,7 +30,7 @@ $arrow-lg-size: 14px;
 		transition-property: max-height, padding;
 		transition-duration: variables.$ob-duration-default;
 		z-index: variables.$ob-z-index-widget;
-		@include shadow.ob-dropShadow();
+		@include shadow.ob-drop-shadow();
 
 		&.middle {
 			transform: translateX(calc(-50% + 13px)); // empiric value

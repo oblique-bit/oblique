@@ -16,7 +16,7 @@
 
 		> nav {
 			height: 100%;
-			overflow: hidden;
+			overflow: hidden; // hides horizontal scrollbar in fixed mode
 		}
 	}
 
@@ -34,15 +34,18 @@
 		list-style: none;
 		background-color: variables.$ob-gray-extra-light;
 
-		.ob-master-layout:not(.ob-fixed-layout):not(.ob-continuous-layout) &:not(.ob-has-opened-menu) {
-			overflow: hidden;
+		@include layout.ob-media-breakpoint-up(md) {
+			.ob-master-layout:not(.ob-fixed-layout):not(.ob-continuous-layout)
+				&:not(.ob-has-opened-menu) {
+				overflow: hidden; // prevents horizontal scrollbar with sticky footer and non sticky header
+			}
 		}
-		@include shadow.ob-innerBottomShadow();
+
+		@include shadow.ob-inner-bottom-shadow();
 
 		&:not(.ob-sub-nav) {
 			@include layout.ob-media-breakpoint-up(md) {
 				flex-direction: row;
-				padding-left: variables.$ob-spacing-default;
 			}
 		}
 
@@ -65,7 +68,6 @@
 			@include nav.ob-nav-hover(-1);
 
 			@include layout.ob-media-breakpoint-up(md) {
-				border: 0 none;
 				padding: variables.$ob-spacing-sm variables.$ob-spacing-default;
 
 				&.active,
@@ -85,10 +87,12 @@
 			@include layout.ob-media-breakpoint-up(md) {
 				> a,
 				> button {
+					border-right: 1px solid variables.$ob-gray-light;
+					border-bottom: 0 none;
 					display: inline-flex;
 					padding: variables.$ob-spacing-default;
 					white-space: nowrap;
-					font-size: variables.$ob-font-size-sm;
+					font-size: variables.$ob-font-size-normal;
 					background-color: transparent;
 
 					&.active {
@@ -96,8 +100,7 @@
 					}
 
 					&:active,
-					&:hover,
-					&:focus {
+					&:hover {
 						background-color: variables.$ob-gray-light;
 					}
 
@@ -138,29 +141,25 @@
 			height: auto;
 			padding: 0;
 			margin: 0;
-			border: none;
-			overflow-y: auto;
-			overflow-x: hidden;
+			font-size: variables.$ob-font-size-smaller;
+			overflow-y: auto; // limits the height
 			z-index: variables.$ob-z-index-controls;
 			transform: translateX(105%);
 			transition: visibility variables.$ob-duration-default,
 				transform variables.$ob-duration-default;
 
 			@include layout.ob-media-breakpoint-up(md) {
-				position: absolute;
 				top: 100%;
 				bottom: auto;
 				left: auto;
 				right: auto;
 				min-width: 30ch; // empiric number
 				max-height: 60vh;
-				overflow-x: hidden;
-				overflow-y: auto;
 				background-color: variables.$ob-white;
 				transform: none;
 				transition: none;
 				display: block;
-				@include shadow.ob-dropShadow();
+				@include shadow.ob-drop-shadow();
 			}
 
 			@include layout.ob-media-breakpoint-down(md) {
@@ -202,13 +201,7 @@
 		}
 
 		.ob-sub-menu-back {
-			display: flex;
-			text-align: center;
 			font-weight: 600;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-			background-color: variables.$ob-white;
 
 			@include layout.ob-media-breakpoint-up(md) {
 				display: none;
@@ -221,6 +214,9 @@
 
 			.ob-label {
 				flex: 1;
+				overflow: hidden; // works together with text-overflow
+				text-overflow: ellipsis;
+				white-space: nowrap;
 			}
 		}
 	}
@@ -234,9 +230,5 @@
 	.ob-icon-wrapper:not(.ob-font-awesome) {
 		font-size: variables.$ob-font-size-bigger;
 		line-height: 1;
-	}
-
-	.ob-external-link span.mat-icon {
-		margin-left: auto;
 	}
 }

@@ -8,7 +8,7 @@
   "i18n.application.locales.fr": "Français",
   "i18n.application.locales.it": "Italiano",
   "i18n.application.locales.en": "English",
-  "i18n.application.jumplinks.custom": "Custom jumplink",
+  "i18n.application.skiplinks.custom": "Skip to custom skiplink",
   "i18n.application.loading": "Loading...",
   "i18n.application.footer.legal.label": "Legal",
   "i18n.application.footer.legal.title": "Terms and conditions",

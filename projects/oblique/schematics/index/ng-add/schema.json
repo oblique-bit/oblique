@@ -13,7 +13,8 @@
       "type": "string",
       "default": "Title",
       "description": "Application's title",
-      "x-prompt": "[1 / 19] What is the title of the application?"
+      "x-prompt": "[1 / 19] What is the title of the application? This is a mandatory information",
+      "minLength": 1
     },
     "font": {
       "type": "string",
@@ -57,6 +58,12 @@
       "default": true,
       "description": "External link",
       "x-prompt": "[8 / 19] Add the ObExternalLinkModule? It will transparently and automatically enhance external links."
+    },
+    "telemetry": {
+      "type": "boolean",
+      "default": true,
+      "description": "Telemetry",
+      "x-prompt": "[9 / 19] Activate the telemetry feature that collects usage information? More information about the data collected and usage: https://oblique.bit.admin.ch/components/telemetry"
     },
     "prefix": {
       "type": "string",

@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {COMMA, ENTER, SEMICOLON} from '@angular/cdk/keycodes';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {ThemePalette} from '@angular/material/core';
 import {MatAutocomplete, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
@@ -22,7 +22,7 @@ export class ChipsComponent implements OnInit {
 	readonly separatorKeysCodes = [ENTER, COMMA, SEMICOLON];
 
 	private stacked = false;
-	private readonly tagsCtrl = new FormControl();
+	private readonly tagsCtrl = new UntypedFormControl();
 	private filteredTags: Observable<string[]>;
 	private readonly allTags = ['IT', 'Sales', 'Marketing', 'Management', 'HR', 'Cleaning'];
 	private readonly tags = this.allTags.splice(0, 3);

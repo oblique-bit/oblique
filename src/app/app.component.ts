@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ObEIcon, ObIJumpLink, ObINavigationLink, ObISearchWidgetItem} from '@oblique/oblique';
+import {ObEIcon, ObINavigationLink, ObISearchWidgetItem, ObISkipLink} from '@oblique/oblique';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
@@ -133,11 +133,11 @@ export class AppComponent {
 			]
 		}
 	];
-	jumpLinks: ObIJumpLink[] = [
-		{url: 'current', fragment: 'fragment', label: 'i18n.application.jumplinks.custom'},
-		{url: 'current', label: 'current without fragment'},
-		{url: '../samples', fragment: 'fragment', label: 'samples with fragment'},
-		{url: '../samples', label: 'samples without fragment'}
+	skipLinks: ObISkipLink[] = [
+		{url: 'current', fragment: 'fragment', label: 'i18n.application.skiplinks.custom'},
+		{url: 'current', label: 'Skip to current without fragment'},
+		{url: '../samples', fragment: 'fragment', label: 'Skip to samples with fragment'},
+		{url: '../samples', label: 'Skip to samples without fragment'}
 	];
 	searchItems: ObISearchWidgetItem[] = [];
 

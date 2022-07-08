@@ -1,7 +1,7 @@
 import {readFileSync, readdirSync, statSync, writeFileSync} from 'fs';
 import path from 'path';
 
-class UpdatePaths {
+export class UpdatePaths {
 	private static readonly stylesDirectoryPath: string = path.join('dist', 'oblique', 'styles');
 	private static readonly fontAwesomePath = '~@fortawesome/fontawesome-free';
 	private static readonly obliquePath = '~@oblique/oblique/styles';
@@ -51,5 +51,3 @@ class UpdatePaths {
 			.forEach(fileObject => writeFileSync(fileObject.filePath, fileObject.file.replace(new RegExp(searchValue, 'g'), replaceValue)));
 	}
 }
-
-UpdatePaths.perform();

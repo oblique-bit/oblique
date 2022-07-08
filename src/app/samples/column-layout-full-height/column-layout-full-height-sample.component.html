@@ -50,21 +50,21 @@
 				<input type="checkbox" id="or-column-layout-left" class="form-check-input" [(ngModel)]="left" />
 				<label class="form-check-label" for="or-column-layout-left">Left column?</label>
 			</div>
-			<button (click)="obColumnLayout.toggleLeft()" *ngIf="left">Toggle</button>
+			<button type="button" (click)="obColumnLayout.toggleLeft()" *ngIf="left">Toggle</button>
 		</div>
 		<div>
 			<div class="form-check form-check-inline">
 				<input type="checkbox" id="or-column-layout-right" class="form-check-input" [(ngModel)]="right" />
 				<label class="form-check-label" for="or-column-layout-right">Right column?</label>
 			</div>
-			<button (click)="obColumnLayout.toggleRight()" *ngIf="right">Toggle</button>
+			<button type="button" (click)="obColumnLayout.toggleRight()" *ngIf="right">Toggle</button>
 		</div>
 		<div>
 			<div class="form-check form-check-inline">
 				<input type="checkbox" id="or-column-layout-no" class="form-check-input" [(ngModel)]="noLayout" />
 				<label class="form-check-label" for="or-column-layout-no">Remove layout</label>
 			</div>
-			<button (click)="noLayout = !noLayout" *ngIf="right">Toggle</button>
+			<button type="button" (click)="noLayout = !noLayout" *ngIf="right">Toggle</button>
 		</div>
 		<div>
 			<div class="form-check form-check-inline">

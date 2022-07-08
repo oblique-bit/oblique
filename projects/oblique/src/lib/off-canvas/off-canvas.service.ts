@@ -9,8 +9,13 @@ export class ObOffCanvasService {
 	/**
 	 * Fire an `opened` event
 	 */
-	get opened(): Observable<boolean> {
-		return this.opened$;
+	public readonly opened$: Observable<boolean>;
+
+	private readonly openedSubject: Subject<boolean> = new Subject<boolean>();
+	private isOpen = false;
+
+	constructor() {
+		this.opened$ = this.openedSubject.asObservable();
 	}
 
 	get open(): boolean {
@@ -21,8 +26,4 @@ export class ObOffCanvasService {
 		this.isOpen = value;
 		this.openedSubject.next(this.isOpen);
 	}
-
-	private readonly openedSubject: Subject<boolean> = new Subject<boolean>();
-	private readonly opened$ = this.openedSubject.asObservable();
-	private isOpen = false;
 }

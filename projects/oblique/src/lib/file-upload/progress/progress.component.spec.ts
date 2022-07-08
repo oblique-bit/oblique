@@ -6,7 +6,7 @@ import {of} from 'rxjs';
 import {first} from 'rxjs/operators';
 import {WINDOW} from '../../utilities';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
-import {ObMockFileUploadService} from '../_mock/mock-file-upload.sevice';
+import {ObMockFileUploadService} from '../_mocks/mock-file-upload.sevice';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObPopUpService} from '../../pop-up/pop-up.service';
 import {ObMockPopUpService} from '../../pop-up/_mocks/mock-pop-up.service';

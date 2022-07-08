@@ -86,19 +86,15 @@ export {
 	ObMasterLayoutFooterService,
 	ObMasterLayoutHeaderComponent,
 	ObMasterLayoutHeaderService,
-	ObMasterLayoutHeaderToggleDirective,
 	ObMasterLayoutModule,
 	ObMasterLayoutNavigationService,
 	ObMasterLayoutNavigationComponent,
-	ObMasterLayoutNavigationItemDirective,
-	ObMasterLayoutNavigationMenuDirective,
-	ObMasterLayoutNavigationToggleDirective,
 	ObMasterLayoutService,
 	ObEScrollMode,
 	ObIMasterLayoutEvent,
 	ObEMasterLayoutEventValues,
 	ObINavigationLink,
-	ObIJumpLink,
+	ObISkipLink,
 	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION
 } from './lib/master-layout/master-layout.module';
 export {
@@ -166,7 +162,7 @@ export {
 	ObUnsavedChangesTabsModule,
 	ObUnsavedChangesTabsService
 } from './lib/unsaved-changes-tabs/unsaved-changes-tabs.module';
-export {ObTelemetryService, TELEMETRY_DISABLE} from './lib/telemetry/telemetry.service';
+export {ObTelemetryService, OB_PROJECT_INFO} from './lib/telemetry/telemetry.service';
 export {OB_BANNER, OB_MATERIAL_CONFIG, getTranslateLoader, multiTranslateLoader, WINDOW} from './lib/utilities';
 export {ObIBanner, ObIMaterialConfig} from './lib/utilities.model';
 export {ObEColor} from './lib/style/colors.model';

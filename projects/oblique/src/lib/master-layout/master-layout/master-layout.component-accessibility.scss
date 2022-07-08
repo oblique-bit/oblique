@@ -8,7 +8,6 @@
 	height: 0;
 	display: flex;
 	justify-content: center;
-	overflow: visible;
 	z-index: variables.$ob-z-index-overlay-top;
 
 	ul {
@@ -23,7 +22,6 @@
 	display: block;
 	height: 1px;
 	clip: rect(0, 0, 0, 0);
-	overflow: hidden;
 	white-space: nowrap;
 	border: 0;
 	padding: variables.$ob-spacing-default variables.$ob-spacing-default variables.$ob-spacing-default
@@ -33,7 +31,7 @@
 	transform: translateY(-100%);
 	transition: transform variables.$ob-duration-default cubic-bezier(0.7, 0, 0.3, 1),
 		opacity variables.$ob-duration-default ease-in-out;
-	@include shadow.ob-dropShadow();
+	@include shadow.ob-drop-shadow();
 
 	.ob-icon-wrapper {
 		position: absolute;
@@ -60,7 +58,6 @@
 		height: auto;
 		transform: translateY(0);
 		opacity: 1;
-		overflow: visible;
 		clip: auto;
 		white-space: normal;
 	}

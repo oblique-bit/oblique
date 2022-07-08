@@ -18,7 +18,20 @@ import {
 	routingModulePath
 } from '../ng-add-utils';
 import {ObIOptionsSchema} from '../ng-add.model';
-import {ObliquePackage, addAngularConfigInList, addFile, createSafeRule, infoMigration, readFile} from '../../utils';
+import {
+	ObliquePackage,
+	PathPerProject,
+	addAngularConfigInList,
+	addFile,
+	addTsCompilerOption,
+	createSafeRule,
+	getFilePathPerProject,
+	getPackageJsonPath,
+	getProjectList,
+	infoMigration,
+	packageJsonConfigPath,
+	readFile
+} from '../../utils';
 
 export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
@@ -28,7 +41,8 @@ export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 			addInterceptors(options.httpInterceptors),
 			addBanner(options.banner),
 			addDefaultHomeComponent(options.prefix),
-			addExternalLink(options.externalLink)
+			addExternalLink(options.externalLink),
+			addTelemetry(options.telemetry)
 		])(tree, _context);
 }
 
@@ -144,10 +158,10 @@ function addDefaultComponentToAppModule(tree: Tree): void {
 	if (tree.exists(appModulePath)) {
 		const sourceFile = createSrcFile(tree, appModulePath);
 		const changes: Change[] = addDeclarationToModule(sourceFile, appModulePath, 'HomeComponent', './home/home.component');
-		const routingModule = tree.exists(routingModulePath) ? routingModulePath : appModulePath;
 
-		changes.push(...addImportToModule(sourceFile, routingModule, 'MatButtonModule', '@angular/material/button'));
-		changes.push(...addImportToModule(sourceFile, routingModule, 'MatCardModule', '@angular/material/card'));
+		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatButtonModule', '@angular/material/button'));
+		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatCardModule', '@angular/material/card'));
+		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatIconModule', '@angular/material/icon'));
 
 		applyChanges(tree, appModulePath, changes);
 	}
@@ -178,4 +192,67 @@ function addExternalLink(externalLink: boolean): Rule {
 		}
 		return tree;
 	});
+}
+
+function addTelemetry(telemetry: boolean): Rule {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+		if (telemetry) {
+			infoMigration(_context, 'Oblique feature:  Activate the telemetry feature that collects usage information');
+			const mainTsPathPerProject = getFilePathPerProject(tree, ['architect', 'build', 'options', 'main']);
+			const tsConfigPathsPerProject = getFilePathPerProject(tree, ['architect', 'build', 'options', 'tsConfig']);
+			getProjectList(tree)
+				.map(project => ({
+					project,
+					mainTsPath: getFilePathForProject(mainTsPathPerProject, project),
+					tsConfigPath: getFilePathForProject(tsConfigPathsPerProject, project)
+				}))
+				.filter(paths => !!paths.mainTsPath && !!paths.tsConfigPath)
+				.forEach(config => {
+					updateMainTs(tree, config.mainTsPath, config.project);
+					updateTsConfig(tree, config.tsConfigPath);
+					updatePackageJson(tree);
+				});
+		}
+		return tree;
+	});
+}
+
+function getFilePathForProject(target: PathPerProject[], project: string): string {
+	return target.find(config => config.project === project)?.path ?? '';
+}
+
+function updateMainTs(tree: Tree, mainTsPath: string, project: string): void {
+	const content = readFile(tree, mainTsPath);
+	if (!/{\s*provide\s*:\s*OB_PROJECT_INFO\s*,\s*useValue/.test(content)) {
+		tree.overwrite(
+			mainTsPath,
+			[
+				"import {OB_PROJECT_INFO} from '@oblique/oblique';",
+				`import packageInfo from '${getPackageJsonPath(tree, project)}';`,
+				content
+					.replace(
+						/(?<=platformBrowserDynamic\(\s*)\[?\s*(?<providers>{\s*provide.*})?\s*]?\s*(?=\))/s,
+						'[$<providers>,\n{provide: OB_PROJECT_INFO, useValue: {name: packageInfo.name, version: packageInfo.version, title: packageInfo.title}}\n]'
+					)
+					.replace(/\[,/, '[')
+			].join('\n')
+		);
+	}
+}
+
+function updateTsConfig(tree: Tree, tsConfigPath: string): void {
+	const content = readFile(tree, tsConfigPath);
+	let replacement = addTsCompilerOption(content, 'resolveJsonModule');
+	replacement = addTsCompilerOption(replacement, 'allowSyntheticDefaultImports');
+	tree.overwrite(tsConfigPath, replacement);
+}
+
+function updatePackageJson(tree: Tree): void {
+	const content = readFile(tree, packageJsonConfigPath);
+	if (!/^\s*"title"/m.test(content)) {
+		tree.overwrite(
+			packageJsonConfigPath,
+			content.replace(/^(?<tabs>\s*)"name"\s*:\s*"(?<name>.*)"/m, '$<tabs>"title": "$<name>",\n$<tabs>"name": "$<name>"')
+		);
+	}
 }

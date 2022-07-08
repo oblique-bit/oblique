@@ -1,9 +1,7 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "./tsconfig.app.json",
   "compilerOptions": {
-    "module": "commonjs",
     "types": ["jest", "node"]
   },
-  "files": ["polyfills.ts"],
-  "include": ["**/*.spec.ts", "../src/**/*.spec.ts"]
+  "include": ["**/*.spec.ts"]
 }

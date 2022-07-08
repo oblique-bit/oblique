@@ -46,7 +46,7 @@ export class ObFileUploadService {
 			catchError(() => {
 				this.notification.error({
 					message: 'i18n.oblique.file-upload.error.failed',
-					messageParams: {errors: files.map(file => file.name).join(', ')},
+					messageParams: {failedFiles: files.map(file => file.name).join(', ')},
 					title: 'i18n.oblique.file-upload.error.title'
 				});
 				return of({type: HttpEventType.User, files} as HttpUserEvent<{type: HttpEventType; files: File[]}>);

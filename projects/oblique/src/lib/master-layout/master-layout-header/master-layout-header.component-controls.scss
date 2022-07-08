@@ -75,7 +75,7 @@
 
 			@at-root .ob-master-layout:not(.ob-header-expanded) & {
 				height: 0;
-				overflow: hidden;
+				overflow: hidden; // hides controls in collapsed mode
 				padding-bottom: 0;
 			}
 		}
@@ -140,9 +140,5 @@
 		margin: 0;
 		vertical-align: middle;
 		font-size: variables.$ob-font-size-xl;
-
-		&.mat-icon[data-mat-icon-type="svg"] {
-			margin-top: -7px; // empiric value
-		}
 	}
 }

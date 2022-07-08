@@ -86,35 +86,35 @@ describe('ObMasterLayoutComponent', () => {
 			expect(component.navigation).toEqual([]);
 		});
 
-		describe('jumplinks', () => {
+		describe('skiplinks', () => {
 			it('should defaults to empty array', () => {
-				expect(component.jumpLinks).toEqual([]);
+				expect(component.skipLinks).toEqual([]);
 			});
 
-			describe('with a custom jump link', () => {
+			describe('with a custom skip link', () => {
 				beforeEach(() => {
-					component.jumpLinks = [{label: 'test', url: ''}];
+					component.skipLinks = [{label: 'test', url: ''}];
 					component.navigation = [];
 				});
 
-				it('should add accessKey 2 if there is no navigation', () => {
+				it('should add accessKey 1 if there is no navigation', () => {
 					component.noNavigation = true;
 					component.ngOnInit();
-					expect(component.jumpLinks).toEqual([{label: 'test', url: '', accessKey: 2}]);
+					expect(component.skipLinks).toEqual([{label: 'test', url: '', accessKey: 1}]);
 				});
 
 				describe('with navigation', () => {
 					beforeEach(() => {
 						component.noNavigation = false;
 					});
-					it('should add accessKey 2 with an empty navigation', () => {
+					it('should add accessKey 1 with an empty navigation', () => {
 						component.ngOnInit();
-						expect(component.jumpLinks).toEqual([{label: 'test', url: '', accessKey: 2}]);
+						expect(component.skipLinks).toEqual([{label: 'test', url: '', accessKey: 1}]);
 					});
-					it('should add accessKey 3 with non-empty navigation', () => {
+					it('should add accessKey 2 with non-empty navigation', () => {
 						component.navigation = [{label: 'test', url: ''}];
 						component.ngOnInit();
-						expect(component.jumpLinks).toEqual([{label: 'test', url: '', accessKey: 3}]);
+						expect(component.skipLinks).toEqual([{label: 'test', url: '', accessKey: 2}]);
 					});
 
 					describe('when the navigation is set', () => {
@@ -122,8 +122,8 @@ describe('ObMasterLayoutComponent', () => {
 							component.navigation = [{label: 'test', url: ''}];
 							fixture.detectChanges();
 						});
-						it('should add accessKey 3', () => {
-							expect(component.jumpLinks).toEqual([{label: 'test', url: '', accessKey: 3}]);
+						it('should add accessKey 2', () => {
+							expect(component.skipLinks).toEqual([{label: 'test', url: '', accessKey: 2}]);
 						});
 
 						it('should refresh the navigation service', () => {

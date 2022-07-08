@@ -1,13 +1,19 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 import * as colors from 'ansi-colors';
+import {getTemplate} from './ng-add/ng-add-utils';
 
-export const packageJsonConfigPath = './package.json';
+export const packageJsonConfigPath = '/package.json';
 export const ObliquePackage = '@oblique/oblique';
 const glob = require('glob'); /* eslint-disable-line @typescript-eslint/no-var-requires */
 
 const angularJsonConfigPath = './angular.json/';
 export let isSuccessful = true;
+
+export interface PathPerProject {
+	project: string;
+	path: string;
+}
 
 export function error(msg: string): void {
 	throw new Error(`${colors.symbols.cross} Migration failed: ${msg}\n`);
@@ -109,10 +115,18 @@ export function checkIfAngularConfigExists(tree: Tree, path: string[], config: s
 	return getAngularConfigs(tree, path).reduce((exists, conf) => exists || conf.config === config, false);
 }
 
-export function getDefaultAngularConfig(tree: Tree, path: string[]): any {
-	const json = getJson(tree, angularJsonConfigPath);
-	const defaultProjectName = getJsonProperty(json, 'defaultProject');
-	return getJsonProperty(json, ['projects', defaultProjectName, ...path].join(';'));
+export function overwriteIndexFile(
+	indexPath: string,
+	tree: Tree,
+	searchValue: RegExp | string,
+	replaceValue: string = getTemplate(tree, 'default-index.html')
+): void {
+	if (!indexPath || !tree.exists(indexPath)) {
+		indexPath = './index.html';
+	}
+	if (tree.exists(indexPath)) {
+		tree.overwrite(indexPath, readFile(tree, indexPath).replace(searchValue, replaceValue));
+	}
 }
 
 export function setRootAngularConfig(tree: Tree, path: string[], value: any): Tree {
@@ -206,6 +220,83 @@ export function removeImport(tree: Tree, fileName: string, name: string, pkg: st
 						.replace(/,\s*}/, '}')
 		);
 	}
+}
+
+export function getIndexPaths(tree: Tree): string[] {
+	const index = getDefaultAngularConfig(tree, ['architect', 'build', 'options', 'index']) as string | null;
+	return index ? ([index] as string[]) : getAngularConfigs(tree, ['architect', 'build', 'options', 'index']).map(project => project.config);
+}
+
+function getDefaultAngularConfig(tree: Tree, path: string[]): string | boolean | number | null | unknown {
+	const json = getJson(tree, angularJsonConfigPath);
+	const defaultProjectName = getJsonProperty(json, 'defaultProject');
+	return defaultProjectName ? getJsonProperty(json, ['projects', defaultProjectName, ...path].join(';')) : null;
+}
+
+export function addTsCompilerOption(content: string, option: string): string {
+	if (new RegExp(`"${option}"\\s*:\\s*true`).test(content)) {
+		return content;
+	}
+	if (new RegExp(`"${option}"\\s*:\\s*false`).test(content)) {
+		return content.replace(new RegExp(`(?<="${option}"\\s*:\\s*)false`), 'true');
+	}
+	if (content.includes('compilerOptions')) {
+		return content.replace(/(?<=compilerOptions.*)\n/, `\n    "${option}": true,\n`);
+	}
+	return content.replace('{', `{\n  "compilerOptions": {\n    "${option}": true\n  },`);
+}
+
+export function getPackageJsonPath(tree: Tree, project: string): string {
+	const sourceRoot: string = getAngularConfigs(tree, ['sourceRoot']).find(config => config.project === project)?.config;
+	const depth: string[] = sourceRoot?.match(/\//g) || [];
+	return depth.reduce<string>(path => `../${path}`, '../package.json');
+}
+
+export function getFilePathPerProject(tree: Tree, property: string[]): PathPerProject[] {
+	return getAngularConfigs(tree, property)
+		.map(config => ({project: config.project, path: config.config}))
+		.filter(config => !!config.path && tree.exists(config.path));
+}
+
+export function getRootModulePathPerProject(tree: Tree, mainTsPaths: PathPerProject[]): PathPerProject[] {
+	return mainTsPaths
+		.map(file => ({...file, directory: extractDirectoryFromPath(file.path)}))
+		.map(file => ({...file, content: readFile(tree, file.path)}))
+		.map(file => ({...file, rootModule: extractBootstrappedModule(file.content)}))
+		.filter(file => !!file.rootModule)
+		.map(file => ({...file, rootModulePath: extractRootModulePath(file.rootModule, file.content)}))
+		.filter(file => !!file.rootModulePath)
+		.map(file => ({...file, rootModulePath: addFileExtension(file.rootModulePath)}))
+		.map(file => ({...file, rootModulePath: addRelativePath(file.rootModulePath, file.directory)}))
+		.filter(file => tree.exists(file.rootModulePath))
+		.map(file => ({project: file.project, path: file.rootModulePath}));
+}
+
+export function getProjectList(tree: Tree): string[] {
+	const json = getJson(tree, angularJsonConfigPath);
+	return Object.keys(getJsonProperty(json, 'projects'));
+}
+
+function extractDirectoryFromPath(filePath: string): string {
+	return /(?<directory>.*\/)/.exec(filePath)?.groups?.directory ?? '';
+}
+
+function extractBootstrappedModule(fileContent: string): string {
+	return /bootstrapModule\(\s*(?<rootModule>\w*)\s*\)/.exec(fileContent)?.groups?.rootModule ?? '';
+}
+
+function extractRootModulePath(moduleName: string, fileContent: string): string {
+	return (
+		RegExp(`import\\s*{\\s*${moduleName}\\s*}\\s*from\\s*["'](?<rootModulePath>.*)["']`).exec(fileContent)?.groups?.rootModulePath ?? ''
+	);
+}
+
+function addFileExtension(filePath: string): string {
+	return /.ts$/m.test(filePath) ? filePath : `${filePath}.ts`;
+}
+
+function addRelativePath(filePath: string, directory: string): string {
+	return /^\./m.test(filePath) ? filePath.replace('.', directory) : filePath;
 }
 
 function hasImport(content: string, name: string, pkg: string): boolean {

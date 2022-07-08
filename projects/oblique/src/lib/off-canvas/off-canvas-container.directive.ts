@@ -13,7 +13,7 @@ export class ObOffCanvasContainerDirective implements OnDestroy {
 	private readonly unsubscribe = new Subject<void>();
 
 	constructor(offCanvas: ObOffCanvasService) {
-		offCanvas.opened.pipe(takeUntil(this.unsubscribe)).subscribe(value => {
+		offCanvas.opened$.pipe(takeUntil(this.unsubscribe)).subscribe(value => {
 			this.open = value;
 		});
 	}
