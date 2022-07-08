@@ -6,7 +6,7 @@ export class AdaptPackageJson {
 	static perform(): void {
 		const filePath = path.join('dist', 'oblique', 'package.json');
 		const distPackage = AdaptPackageJson.getDistPackage(filePath);
-		let adaptedDistPackage = AdaptPackageJson.removeExports(distPackage);
+		let adaptedDistPackage = AdaptPackageJson.addGlobalExports(distPackage);
 		adaptedDistPackage = AdaptPackageJson.addProperties(adaptedDistPackage);
 
 		writeFileSync(filePath, JSON.stringify(adaptedDistPackage, null, 2));
@@ -16,8 +16,10 @@ export class AdaptPackageJson {
 		return JSON.parse(readFileSync(filePath).toString());
 	}
 
-	private static removeExports(distPackage: Json): Json {
-		delete distPackage.exports;
+	private static addGlobalExports(distPackage: Json): Json {
+		distPackage.exports['./*'] = {
+			default: './*'
+		};
 		return distPackage;
 	}
 
