@@ -44,6 +44,7 @@ describe('ObFileInfoComponent', () => {
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObFileInfoComponent);
 		component = fixture.componentInstance;
+		component.getUploadedFilesUrl = 'test-url';
 		component.mapFunction = (filesToMap: ObIFileDescription[]) => filesToMap.map(file => ({...file, extension: file.name.split('.')[1]}));
 		fixture.detectChanges();
 	});
@@ -91,6 +92,13 @@ describe('ObFileInfoComponent', () => {
 			jest.spyOn(uploadService, 'getUploadedFiles');
 			uploadComplete.next();
 			expect(uploadService.getUploadedFiles).toHaveBeenCalled();
+		});
+
+		it.each([null, undefined, ''])("should not reload files on uploadComplete when there's no getUploadedFilesUrl (½s)", value => {
+			component.getUploadedFilesUrl = value;
+			jest.spyOn(uploadService, 'getUploadedFiles');
+			uploadComplete.next();
+			expect(uploadService.getUploadedFiles).not.toHaveBeenCalled();
 		});
 
 		describe('should populate displayedColumns array', () => {

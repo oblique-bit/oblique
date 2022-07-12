@@ -87,18 +87,20 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	}
 
 	private loadData(): void {
-		this.fileUploadService
-			.getUploadedFiles(this.getUploadedFilesUrl)
-			.pipe(map(this.mapFunction))
-			.subscribe(
-				files => {
-					this.dataSource.data = files;
-					this.setTableHeaders(files.length ? Object.keys(files[0]) : this.fields);
-				},
-				error => {
-					this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: [], error});
-				}
-			);
+		if (this.getUploadedFilesUrl) {
+			this.fileUploadService
+				.getUploadedFiles(this.getUploadedFilesUrl)
+				.pipe(map(this.mapFunction))
+				.subscribe(
+					files => {
+						this.dataSource.data = files;
+						this.setTableHeaders(files.length ? Object.keys(files[0]) : this.fields);
+					},
+					error => {
+						this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: [], error});
+					}
+				);
+		}
 	}
 
 	private setTableHeaders(headers: string[]): void {
