@@ -48,7 +48,7 @@
       ]
     },
     {
-      "name": "NotificationConfig",
+      "name": "ObNotificationConfig",
       "usage": "Should by injected, typically in the AppModule, to customize the values of its properties in order to provide alternate default values for the <code>NotificationComponent</code>.",
       "type": "injectable(config)",
       "since": "2.0.0",
@@ -105,28 +105,28 @@
         {
           "name": "info",
           "text": "Custom configuration for <b>info</b> notifications.",
-          "type": "ObINotification",
+          "type": "ObINotificationConfig",
           "default": "{title: 'i18n.oblique.notification.type.info'}",
           "since": "4.0.0"
         },
         {
           "name": "success",
           "text": "Custom configuration for <b>success</b> notifications.",
-          "type": "ObINotification",
+          "type": "ObINotificationConfig",
           "default": "{title: 'i18n.oblique.notification.type.success'}",
           "since": "4.0.0"
         },
         {
           "name": "warning",
           "text": "Custom configuration for <b>warning</b> notifications.",
-          "type": "ObINotification",
+          "type": "ObINotificationConfig",
           "default": "{title: 'i18n.oblique.notification.type.warning'}",
           "since": "4.0.0"
         },
         {
           "name": "error",
           "text": "Custom configuration for <b>error</b> notifications.",
-          "type": "ObINotification",
+          "type": "ObINotificationConfig",
           "default": "{title: 'i18n.oblique.notification.type.error', sticky: true}",
           "since": "4.0.0"
         }
@@ -149,10 +149,11 @@
       ]
     },
     {
-      "name": "NotificationService",
+      "name": "ObNotificationService",
       "usage": "Should be injected in component's constructor to send notifications to the <code>NotificationComponent</code>",
       "type": "service",
       "since": "2.0.0",
+      "updated": "7.0.0",
       "variables": [
         {
           "name": "events",
@@ -166,6 +167,19 @@
           "type": "boolean",
           "default": "<code>false</code> (inferred from <code>CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE</code> injection token)",
           "since": "4.1.0"
+        },
+        {
+          "name": "placement",
+          "text": "Defines the position of the notifications in its containing block.",
+          "type": "ObENotificationPlacement",
+          "values": [
+            "ObENotificationPlacement.BOTTOM_LEFT",
+            "ObENotificationPlacement.BOTTOM_RIGHT",
+            "ObENotificationPlacement.TOP_LEFT",
+            "ObENotificationPlacement.TOP_RIGHT"
+          ],
+          "default": "<code>ObENotificationPlacement.TOP_RIGHT</code> (inferred form <code>ObNotificationConfig</code>)",
+          "since": "7.0.0"
         }
       ],
       "methods": [
@@ -298,26 +312,47 @@
           "since": "2.0.0"
         },
         {
-          "name": "$state",
-          "text": "The internal state of the notification. Should not set manually",
-          "values": ["in", "in-first", "out"],
-          "type": "string",
-          "isOptional": true,
-          "since": "2.0.0"
-        },
-        {
-          "name": "occurrences",
-          "text": "The internal occurrences of the notification. Should not set manually",
-          "type": "number",
-          "isOptional": true,
-          "since": "2.0.0"
-        },
-        {
-          "name": "$groupSimilar",
+          "name": "groupSimilar",
           "text": "If set to true, will only show 1 notification if same message is send multiple times.",
           "type": "boolean",
           "isOptional": true,
           "since": "2.0.0"
+        }
+      ]
+    },
+    {
+      "name": "ObINotificationConfig",
+      "usage": "The structure of a custom notification per type",
+      "type": "interface",
+      "since": "4.0.0",
+      "variables": [
+        {
+          "name": "channel",
+          "text": "The default channel for all notifications of the selected type.",
+          "type": "{ [key: string]: any }",
+          "isOptional": true,
+          "since": "4.0.0"
+        },
+        {
+          "name": "sticky",
+          "text": "The default sticky value for all notifications of the selected type.",
+          "type": "boolean",
+          "isOptional": true,
+          "since": "7.0.0"
+        },
+        {
+          "name": "timeout",
+          "text": "The default timeout for all notifications of the selected type.",
+          "type": "number",
+          "isOptional": true,
+          "since": "4.0.0"
+        },
+        {
+          "name": "title",
+          "text": "The default channel for all notifications of the selected type.",
+          "type": "string",
+          "isOptional": true,
+          "since": "4.0.0"
         }
       ]
     }
