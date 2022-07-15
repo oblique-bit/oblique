@@ -1,3 +1,13 @@
+# [9.0.0](https://github.com/oblique-bit/oblique/compare/9.0.0-RC.1...9.0.0) (2022-07-15)
+
+## Bug Fixes
+
+- **toolchain:** keep `exports` in `package.json` ([8b2a24a](https://github.com/oblique-bit/oblique/commit/8b2a24af8695ea729b21b536f7511effbad3f80f))
+
+## Features
+
+- deprecate `ObliqueTestingModule` ([b76f426](https://github.com/oblique-bit/oblique/commit/b76f426ee4313fe7983648373849b63f80aa752b))
+
 # [9.0.0-RC.1](https://github.com/oblique-bit/oblique/compare/8.2.1...9.0.0-RC.1) (2022-07-07)
 
 ## Bug Fixes
