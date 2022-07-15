@@ -194,6 +194,9 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockUnsavedChangesModule
 ];
 
+/**
+ * @deprecated since version 9.0.0. It will be removed with Oblique 10. Real implementation of Oblique Modules should be used instead.
+ */
 @NgModule({
 	imports: MOCK_OBLIQUE_MODULES,
 	exports: [...MOCK_OBLIQUE_MODULES, ObMockTranslatePipe],

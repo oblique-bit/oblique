@@ -1,11 +1,11 @@
 organization: bit-oblique
 caasp_version: 4
 applications:
-  - name: oblique-docs
+  - name: showcase
     path: ./target
     buildpack: staticfile_buildpack
     disk_quota: 768M
     instances: 1
     memory: 128M
     routes:
-      - route: oblique-docs-dev.app.cfap02.atlantica.admin.ch
+      - route: oblique-showcase-dev.app.cfap02.atlantica.admin.ch
