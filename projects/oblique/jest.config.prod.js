@@ -92,10 +92,10 @@ module.exports.coverageThreshold = {
 		lines: 90
 	},
 	'projects/oblique/src/lib/file-upload/file-info/*.ts': {
-		statements: 94,
-		branches: 92,
-		functions: 88,
-		lines: 95
+		statements: 98,
+		branches: 100,
+		functions: 96,
+		lines: 100
 	},
 	'projects/oblique/src/lib/file-upload/progress/*.ts': {
 		statements: 100,
