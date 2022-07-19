@@ -30,7 +30,8 @@ class NpmDeprecate {
 	}
 
 	private static isDateValid(date: string): boolean {
-		return /^20\d{2}-(?:0[1-9]|1[012])-(?:0[1-9]|1\d|3[01])$/.test(date);
+		// the second condition is necessary because Date.parse('2022-06-31') will evaluate to 2022-07-01
+		return !isNaN(Date.parse(date)) && new Date(date).toISOString().split('T')[0] === date;
 	}
 
 	private static areVersionsValid(versions: string[]): boolean {
