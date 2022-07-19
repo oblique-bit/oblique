@@ -2,6 +2,10 @@
 
 .ob-external-link {
 	display: inline-flex;
-	align-items: center;
+	align-items: baseline;
 	gap: variables.$ob-spacing-xs;
+
+	.mat-icon {
+		align-self: center;
+	}
 }
