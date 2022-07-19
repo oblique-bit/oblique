@@ -3,8 +3,8 @@ import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild, Vi
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {TranslateService} from '@ngx-translate/core';
-import {Subscription} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {Subject} from 'rxjs';
+import {map, takeUntil, tap} from 'rxjs/operators';
 import {ObFileUploadService} from '../file-upload.service';
 import {ObPopUpService} from '../../pop-up/pop-up.service';
 import {ObEUploadEventType, ObIFileDescription, ObIUploadEvent} from '../file-upload.model';
@@ -30,7 +30,7 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	readonly selection = new SelectionModel<ObIFileDescription>(true, []);
 	readonly COLUMN_SELECT = 'select';
 	readonly COLUMN_ACTION = 'action';
-	private subscription: Subscription;
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
 		private readonly fileUploadService: ObFileUploadService,
@@ -43,11 +43,12 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	ngOnInit(): void {
 		this.setTableHeaders(this.fields);
 		this.loadData();
-		this.subscription = this.fileUploadService.uploadComplete$.subscribe(() => this.loadData());
+		this.fileUploadService.uploadComplete$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.loadData());
 	}
 
 	ngOnDestroy(): void {
-		this.subscription?.unsubscribe();
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 
 	areAllItemsSelected(): boolean {
@@ -73,16 +74,16 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	delete(files: ObIFileDescription[]): void {
 		const fileNames = files.map(file => file.name);
 		if (this.deleteUrl && this.popup.confirm(this.translate.instant('i18n.oblique.file-upload.selected.remove'))) {
-			this.fileUploadService.delete(this.deleteUrl, fileNames).subscribe({
-				next: () => {
-					this.dataSource.data = this.dataSource.data.filter(file => !fileNames.includes(file.name));
-					files.forEach(file => this.selection.deselect(file));
-					this.uploadEvent.emit({type: ObEUploadEventType.DELETED, files: fileNames});
-				},
-				error: error => {
-					this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: fileNames, error});
-				}
-			});
+			this.fileUploadService
+				.delete(this.deleteUrl, fileNames)
+				.pipe(
+					tap(() => (this.dataSource.data = this.dataSource.data.filter(file => !fileNames.includes(file.name)))),
+					tap(() => files.forEach(file => this.selection.deselect(file)))
+				)
+				.subscribe({
+					next: () => this.uploadEvent.emit({type: ObEUploadEventType.DELETED, files: fileNames}),
+					error: error => this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: fileNames, error})
+				});
 		}
 	}
 
@@ -90,15 +91,13 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 		if (this.getUploadedFilesUrl) {
 			this.fileUploadService
 				.getUploadedFiles(this.getUploadedFilesUrl)
-				.pipe(map(this.mapFunction))
+				.pipe(
+					map(this.mapFunction),
+					tap(files => (this.dataSource.data = files))
+				)
 				.subscribe({
-					next: files => {
-						this.dataSource.data = files;
-						this.setTableHeaders(files.length ? Object.keys(files[0]) : this.fields);
-					},
-					error: error => {
-						this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: [], error});
-					}
+					next: files => this.setTableHeaders(files.length ? Object.keys(files[0]) : this.fields),
+					error: error => this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: [], error})
 				});
 		}
 	}
