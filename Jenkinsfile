@@ -21,6 +21,6 @@ nodejsPipelineTemplate {
 		'npmCredentialId': 'npmDeploymentTokenOblique'
 	]
 	deployCloudFoundry = [
-		'release/release-9.0.0': ['space': 'dev', 'configuration': 'production']
+		'release/patch_*': ['space': 'patch', 'configuration': 'production']
 	]
 }
