@@ -73,16 +73,16 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	delete(files: ObIFileDescription[]): void {
 		const fileNames = files.map(file => file.name);
 		if (this.deleteUrl && this.popup.confirm(this.translate.instant('i18n.oblique.file-upload.selected.remove'))) {
-			this.fileUploadService.delete(this.deleteUrl, fileNames).subscribe(
-				() => {
+			this.fileUploadService.delete(this.deleteUrl, fileNames).subscribe({
+				next: () => {
 					this.dataSource.data = this.dataSource.data.filter(file => !fileNames.includes(file.name));
 					files.forEach(file => this.selection.deselect(file));
 					this.uploadEvent.emit({type: ObEUploadEventType.DELETED, files: fileNames});
 				},
-				error => {
+				error: error => {
 					this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: fileNames, error});
 				}
-			);
+			});
 		}
 	}
 
@@ -91,15 +91,15 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 			this.fileUploadService
 				.getUploadedFiles(this.getUploadedFilesUrl)
 				.pipe(map(this.mapFunction))
-				.subscribe(
-					files => {
+				.subscribe({
+					next: files => {
 						this.dataSource.data = files;
 						this.setTableHeaders(files.length ? Object.keys(files[0]) : this.fields);
 					},
-					error => {
+					error: error => {
 						this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: [], error});
 					}
-				);
+				});
 		}
 	}
 
