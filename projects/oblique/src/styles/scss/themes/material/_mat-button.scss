@@ -104,3 +104,17 @@
 		}
 	}
 }
+
+a.ob-button {
+	&:not([href]):not([tabindex]),
+	&[tabindex="-1"] {
+		&.mat-flat-button {
+			color: core-variables.$ob-white;
+		}
+
+		&.mat-stroked-button,
+		&:not(.mat-flat-button):not(.mat-stroked-button) {
+			color: core-variables.$ob-primary;
+		}
+	}
+}
