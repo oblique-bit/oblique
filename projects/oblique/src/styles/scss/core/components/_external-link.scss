@@ -8,4 +8,8 @@
 	span.mat-icon {
 		align-self: center;
 	}
+
+	&.mat-icon-button span.mat-icon {
+		display: none;
+	}
 }
