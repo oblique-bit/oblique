@@ -9,6 +9,10 @@
 		flex-direction: column;
 		width: 100%;
 
+		&.ob-continuous-layout {
+			min-height: 100vh;
+		}
+
 		&:not(.ob-continuous-layout) {
 			height: 100vh;
 
