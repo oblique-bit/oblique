@@ -2,16 +2,6 @@
 
 ## Bug Fixes
 
-- **toolchain:** keep `exports` in `package.json` ([8b2a24a](https://github.com/oblique-bit/oblique/commit/8b2a24af8695ea729b21b536f7511effbad3f80f))
-
-## Features
-
-- deprecate `ObliqueTestingModule` ([b76f426](https://github.com/oblique-bit/oblique/commit/b76f426ee4313fe7983648373849b63f80aa752b))
-
-# [9.0.0-RC.1](https://github.com/oblique-bit/oblique/compare/8.2.1...9.0.0-RC.1) (2022-07-07)
-
-## Bug Fixes
-
 - **breadcrumb:** adapt link styling to make sure `max-width` works ([7e008fb](https://github.com/oblique-bit/oblique/commit/7e008fb9877abbaf5bd0265c73cbf90c0a58ef07))
 - **external-link:** moved `aria-label` text into span that is only visible to screen readers at the end of the link ([7fccb5d](https://github.com/oblique-bit/oblique/commit/7fccb5dd133a4e088586e9b891f4abc5bfa7575f))
 - **file-upload:** change named parameter in error message to match parameter in code ([03f76c5](https://github.com/oblique-bit/oblique/commit/03f76c5aefe3b5aad216ba2cb51577635d625af1))
@@ -35,6 +25,7 @@
 - **schematics:** remove unnecessary replacement ([febcac1](https://github.com/oblique-bit/oblique/commit/febcac174c2a20ec25e9f2e6ef9ff4b1840bf32b))
 - **schematics:** use `createSafeRule` for locale management ([c1ea0d7](https://github.com/oblique-bit/oblique/commit/c1ea0d7f443908aff635dd7f165235fffbf0e5f6))
 - **telemetry:** export the `OB_PROJECT_INFO` injection token ([5ba16b3](https://github.com/oblique-bit/oblique/commit/5ba16b3f22b627f186983d772785ef49b1f0a7cc))
+- **toolchain:** keep `exports` in `package.json` ([8b2a24a](https://github.com/oblique-bit/oblique/commit/8b2a24af8695ea729b21b536f7511effbad3f80f))
 
 ## Code Refactoring
 
@@ -48,6 +39,7 @@
 ## Features
 
 - activate stylelint's `scss/at-mixin-pattern` rule and refactor accordingly ([8fad498](https://github.com/oblique-bit/oblique/commit/8fad498a1a66c0de3deac6ced2922c3e309d7c67))
+- deprecate `ObliqueTestingModule` ([b76f426](https://github.com/oblique-bit/oblique/commit/b76f426ee4313fe7983648373849b63f80aa752b))
 - oblique uses its own icons by default ([e9cf502](https://github.com/oblique-bit/oblique/commit/e9cf50247d1798b321628b383190d72e42535535))
 - **http-interceptor:** revise http status messages ([95edb70](https://github.com/oblique-bit/oblique/commit/95edb704ee41eede3f97e0a8a99ce6da984603db))
 - **master-layout:** don't export internal directives ([792494b](https://github.com/oblique-bit/oblique/commit/792494b22aaea3f99469e56230b523d77b66c95e))
