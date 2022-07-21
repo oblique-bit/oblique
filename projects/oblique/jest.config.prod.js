@@ -30,13 +30,7 @@ module.exports.coverageThreshold = {
 		functions: 100,
 		lines: 100
 	},
-	// The following rules do apply to all target files individually,
-	'projects/oblique/src/lib/utilities.ts': {
-		statements: 80,
-		branches: 15,
-		functions: 36,
-		lines: 80
-	},
+	// The following rules do apply to all target files individually
 	'projects/oblique/src/lib/breadcrumb/*.ts': {
 		statements: 98,
 		branches: 80,
