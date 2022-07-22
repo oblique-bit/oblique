@@ -11,6 +11,10 @@
 			display: none;
 		}
 
+		&.ob-external-link {
+			display: inline-flex;
+		}
+
 		&.mat-primary:not(.ob-button-card) {
 			&:hover {
 				color: core-variables.$ob-dark;
@@ -74,7 +78,7 @@
 		border-radius: core-variables.$ob-border-radius-button;
 	}
 
-	:not(.mat-icon-button) .mat-icon {
+	&:not(.ob-external-link):not(.mat-icon-button) .mat-icon {
 		&.fa,
 		&.fas,
 		&.far,
@@ -101,6 +105,20 @@
 
 		@at-root #{selector.append(":not(.mat-icon-button)", &)} {
 			margin-top: -0.1537em; // (mat-text-height - ob-icon-font-size) / 2 = (16px - 1em) / 2 = (0.6926em - 1em) / 2
+		}
+	}
+}
+
+a.ob-button {
+	&:not([href]):not([tabindex]),
+	&[tabindex="-1"] {
+		&.mat-flat-button {
+			color: core-variables.$ob-white;
+		}
+
+		&.mat-stroked-button,
+		&:not(.mat-flat-button):not(.mat-stroked-button) {
+			color: core-variables.$ob-primary;
 		}
 	}
 }

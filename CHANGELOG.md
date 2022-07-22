@@ -1,14 +1,19 @@
-# [9.0.0](https://github.com/oblique-bit/oblique/compare/9.0.0-RC.1...9.0.0) (2022-07-15)
+# [9.0.1](https://github.com/oblique-bit/oblique/compare/9.0.0...9.0.1) (2022-07-22)
 
 ## Bug Fixes
 
-- **toolchain:** keep `exports` in `package.json` ([8b2a24a](https://github.com/oblique-bit/oblique/commit/8b2a24af8695ea729b21b536f7511effbad3f80f))
+- **button:** ensure links without `href` are displayed correctly ([fbf8cd0](https://github.com/oblique-bit/oblique/commit/fbf8cd0b4e2b22bfa472404258e29221167c2234))
+- **button:** ensure vertical alignment of icons ([dd16aed](https://github.com/oblique-bit/oblique/commit/dd16aed281a5c156985480a0a983615ca06a43cd))
+- **external-link:** don't add the icon for icon only buttons ([bde5172](https://github.com/oblique-bit/oblique/commit/bde5172152dcba5e02f02bbe41f45e2efe8533d7))
+- **external-link:** ensure a correct vertical alignment with the surrounding text ([c13881e](https://github.com/oblique-bit/oblique/commit/c13881e88bbb84d303f709dde6a8c953feff38a3))
+- **file-upload:** `getUploadedFilesUrl` now returns null if it's empty ([84af22e](https://github.com/oblique-bit/oblique/commit/84af22e8c776458112275a841dfa853e8ac88f6a))
+- **master-layout:** ensure the footer is displayed consistently ([a9afb9c](https://github.com/oblique-bit/oblique/commit/a9afb9c20b7ddcd54d1ecf1faf46663c75fcfb37))
+- **master-layout:** remove unwanted animation on `main` when printing a page ([deb9a7d](https://github.com/oblique-bit/oblique/commit/deb9a7de249dcad6405af85a6f01b27178aea511))
+- **styles:** ensure the whole page is displayed when printed ([a0f3c24](https://github.com/oblique-bit/oblique/commit/a0f3c24b979121dc9b2c0002fa173866f0e8528b))
+- **styles:** update the print stylesheet to represent the actual state of the markup ([45b97a7](https://github.com/oblique-bit/oblique/commit/45b97a74048674f1237040148f1949c2882e2c57))
+- **toolchain:** merge version `9.0.0-RC.1` into `9.0.0` in the changelog ([e9d8b7c](https://github.com/oblique-bit/oblique/commit/e9d8b7c7d94d9bf1b38aadd177111d2a70900e74))
 
-## Features
-
-- deprecate `ObliqueTestingModule` ([b76f426](https://github.com/oblique-bit/oblique/commit/b76f426ee4313fe7983648373849b63f80aa752b))
-
-# [9.0.0-RC.1](https://github.com/oblique-bit/oblique/compare/8.2.1...9.0.0-RC.1) (2022-07-07)
+# [9.0.0](https://github.com/oblique-bit/oblique/compare/8.2.2...9.0.0) (2022-07-15)
 
 ## Bug Fixes
 
@@ -35,6 +40,7 @@
 - **schematics:** remove unnecessary replacement ([febcac1](https://github.com/oblique-bit/oblique/commit/febcac174c2a20ec25e9f2e6ef9ff4b1840bf32b))
 - **schematics:** use `createSafeRule` for locale management ([c1ea0d7](https://github.com/oblique-bit/oblique/commit/c1ea0d7f443908aff635dd7f165235fffbf0e5f6))
 - **telemetry:** export the `OB_PROJECT_INFO` injection token ([5ba16b3](https://github.com/oblique-bit/oblique/commit/5ba16b3f22b627f186983d772785ef49b1f0a7cc))
+- **toolchain:** keep `exports` in `package.json` ([8b2a24a](https://github.com/oblique-bit/oblique/commit/8b2a24af8695ea729b21b536f7511effbad3f80f))
 
 ## Code Refactoring
 
@@ -48,6 +54,7 @@
 ## Features
 
 - activate stylelint's `scss/at-mixin-pattern` rule and refactor accordingly ([8fad498](https://github.com/oblique-bit/oblique/commit/8fad498a1a66c0de3deac6ced2922c3e309d7c67))
+- deprecate `ObliqueTestingModule` ([b76f426](https://github.com/oblique-bit/oblique/commit/b76f426ee4313fe7983648373849b63f80aa752b))
 - oblique uses its own icons by default ([e9cf502](https://github.com/oblique-bit/oblique/commit/e9cf50247d1798b321628b383190d72e42535535))
 - **http-interceptor:** revise http status messages ([95edb70](https://github.com/oblique-bit/oblique/commit/95edb704ee41eede3f97e0a8a99ce6da984603db))
 - **master-layout:** don't export internal directives ([792494b](https://github.com/oblique-bit/oblique/commit/792494b22aaea3f99469e56230b523d77b66c95e))

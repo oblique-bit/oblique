@@ -11,7 +11,7 @@
 .ob-off-canvas {
 	.ob-off-canvas-main {
 		width: 100%;
-		transition-property: transform, width, height;
+		transition-property: transform, width;
 		transition-duration: variables.$ob-duration-default;
 		transition-timing-function: ease;
 

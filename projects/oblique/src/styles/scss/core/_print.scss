@@ -8,31 +8,17 @@
 		transition: none !important;
 	}
 
+	.ob-viewport {
+		height: auto !important;
+	}
+
 	.ob-master-layout-header {
 		display: none;
 	}
 
-	.column-left,
-	.column-right {
+	.ob-column-left,
+	.ob-column-right {
 		display: none;
-	}
-
-	.column-main {
-		width: 100% !important;
-	}
-
-	body.modal-open {
-		.ob-master-layout,
-		.modal-backdrop {
-			display: none;
-		}
-
-		.modal,
-		.modal-dialog {
-			position: static !important;
-			width: 100% !important;
-			margin: 0 !important;
-		}
 	}
 }
 

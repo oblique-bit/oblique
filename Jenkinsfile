@@ -11,7 +11,7 @@ nodejsPipelineTemplate {
 	gitPush = [
 		'credentialId': 'githubObliqueCredentials',
 		'repository': 'https://github.com/oblique-bit/oblique.git',
-		'branches': ['master', 'develop'],
+		'branches': ['master'],
 		'tags': ['master']
 	]
 	npmRepository = [
@@ -21,6 +21,8 @@ nodejsPipelineTemplate {
 		'npmCredentialId': 'npmDeploymentTokenOblique'
 	]
 	deployCloudFoundry = [
-		'release/release-9.0.0': ['space': 'dev', 'configuration': 'production']
+		'release/patch_*': ['space': 'patch', 'configuration': 'production'],
+        'release/minor_*': ['space': 'dev', 'configuration': 'production'],
+        'release/major_*': ['space': 'dev', 'configuration': 'production']
 	]
 }

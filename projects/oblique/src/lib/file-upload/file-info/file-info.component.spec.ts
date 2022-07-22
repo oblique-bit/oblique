@@ -4,14 +4,14 @@ import {By} from '@angular/platform-browser';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
 import {TranslateService} from '@ngx-translate/core';
-import {Subject, of} from 'rxjs';
+import {Subject, of, throwError} from 'rxjs';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObPopUpService} from '../../pop-up/pop-up.service';
 import {ObMockPopUpService} from '../../pop-up/_mocks/mock-pop-up.service';
 import {ObFileInfoComponent} from './file-info.component';
 import {ObFileUploadService} from '../file-upload.service';
-import {ObIFileDescription} from '../file-upload.model';
+import {ObEUploadEventType, ObIFileDescription, ObIUploadEvent} from '../file-upload.model';
 
 describe('ObFileInfoComponent', () => {
 	let component: ObFileInfoComponent;
@@ -44,6 +44,7 @@ describe('ObFileInfoComponent', () => {
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObFileInfoComponent);
 		component = fixture.componentInstance;
+		component.getUploadedFilesUrl = 'test-url';
 		component.mapFunction = (filesToMap: ObIFileDescription[]) => filesToMap.map(file => ({...file, extension: file.name.split('.')[1]}));
 		fixture.detectChanges();
 	});
@@ -91,6 +92,39 @@ describe('ObFileInfoComponent', () => {
 			jest.spyOn(uploadService, 'getUploadedFiles');
 			uploadComplete.next();
 			expect(uploadService.getUploadedFiles).toHaveBeenCalled();
+		});
+
+		it.each([null, undefined, ''])("should not reload files on uploadComplete when there's no getUploadedFilesUrl (½s)", value => {
+			component.getUploadedFilesUrl = value;
+			jest.spyOn(uploadService, 'getUploadedFiles');
+			uploadComplete.next();
+			expect(uploadService.getUploadedFiles).not.toHaveBeenCalled();
+		});
+
+		describe('with erroneous back-end call', () => {
+			let event: ObIUploadEvent;
+			const errorMessage = new Error('Back-end error');
+
+			beforeEach(done => {
+				jest.spyOn(uploadService, 'getUploadedFiles').mockReturnValue(throwError(() => errorMessage));
+				component.uploadEvent.subscribe(evt => {
+					event = evt;
+					done();
+				});
+				uploadComplete.next();
+			});
+
+			it('should emit an ERRORED event', () => {
+				expect(event.type).toBe(ObEUploadEventType.ERRORED);
+			});
+
+			it('should emit an empty array', () => {
+				expect(event.files).toEqual([]);
+			});
+
+			it('should emit the thrown error', () => {
+				expect(event.error).toBe(errorMessage);
+			});
 		});
 
 		describe('should populate displayedColumns array', () => {
@@ -256,6 +290,35 @@ describe('ObFileInfoComponent', () => {
 
 			it('should not unselect the other file', () => {
 				expect(component.selection.isSelected(files[1])).toBe(true);
+			});
+		});
+
+		describe('with erroneous back-end call', () => {
+			let event: ObIUploadEvent;
+			const errorMessage = new Error('Back-end error');
+			const deletedFile = files[0];
+
+			beforeEach(done => {
+				component.deleteUrl = 'url';
+				jest.spyOn(popupService, 'confirm').mockReturnValue(true);
+				jest.spyOn(uploadService, 'delete').mockReturnValue(throwError(() => errorMessage));
+				component.uploadEvent.subscribe(evt => {
+					event = evt;
+					done();
+				});
+				component.delete([deletedFile]);
+			});
+
+			it('should emit an ERRORED event', () => {
+				expect(event.type).toBe(ObEUploadEventType.ERRORED);
+			});
+
+			it('should emit an empty array', () => {
+				expect(event.files).toEqual([deletedFile.name]);
+			});
+
+			it('should emit the thrown error', () => {
+				expect(event.error).toBe(errorMessage);
 			});
 		});
 	});
