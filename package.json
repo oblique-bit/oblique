@@ -52,7 +52,7 @@
     "test": "ng test oblique",
     "test-dev": "ng run oblique:test:development",
     "test-showcase": "ng test oblique-showcase",
-    "test-debugging": "node --expose-gc ./node_modules/@angular/cli/bin/ng run oblique:test:development --run-in-band --log-heap-usage",
+    "test-debugging": "node --expose-gc ./node_modules/@angular/cli/bin/ng run oblique:test:development --log-heap-usage",
     "lint": "ts-node scripts/lint/run-lint-steps.ts",
     "format": "ts-node scripts/lint/run-format-steps.ts",
     "release": "ts-node projects/oblique/scripts/release/release.ts",
