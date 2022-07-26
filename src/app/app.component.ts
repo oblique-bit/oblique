@@ -25,7 +25,7 @@ export class AppComponent {
 			queryParams: {param1: 'a', param2: 'b'}
 		},
 		{url: 'http://www.google.ch', label: 'Google', icon: ObEIcon.SEARCH},
-		{url: 'http://www.google.ch', label: 'Google 2', sameTarget: true},
+		{url: 'http://www.google.ch', label: 'Google sameTarget', sameTarget: true},
 		{
 			url: 'samples',
 			label: 'i18n.routes.samples.title',
