@@ -50,6 +50,7 @@
     "dist": "ng build oblique && npm run schematics",
     "postdist": "ts-node projects/oblique/scripts/post-dist/run-post-dist-steps.ts",
     "test": "ng test oblique",
+    "test-dev": "ng run oblique:test:development",
     "test-showcase": "ng test oblique-showcase",
     "test-debugging": "node --expose-gc ./node_modules/@angular/cli/bin/ng test oblique --run-in-band --log-heap-usage",
     "lint": "ts-node scripts/lint/run-lint-steps.ts",
