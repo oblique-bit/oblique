@@ -183,11 +183,19 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "configPath": "jest.config.prod.js",
             "tsConfig": "tsconfig.spec.json",
             "no-cache": true,
             "run-in-band": ["true"]
-          }
+          },
+          "configurations": {
+            "development": {
+              "configPath": "jest.config.js"
+            },
+            "production": {
+              "configPath": "jest.config.prod.js"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
