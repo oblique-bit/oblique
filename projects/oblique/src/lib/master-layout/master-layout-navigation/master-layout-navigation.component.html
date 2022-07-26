@@ -50,8 +50,8 @@
 					[icon]="hideExternalLinks ? 'none' : 'right'"
 					[attr.id]="link.id"
 					[href]="link.url"
-					[attr.target]="!link.sameTarget ? '_blank' : undefined"
-					[attr.rel]="!link.sameTarget ? 'noopener noreferrer' : undefined"
+					[target]="link.sameTarget ? '' : undefined"
+					[rel]="link.sameTarget ? '' : undefined"
 					[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
 					*ngIf="!link.children"
 				>
@@ -111,8 +111,8 @@
 								[icon]="hideExternalLinks ? 'none' : 'right'"
 								[attr.id]="child.id"
 								[href]="child.url"
-								[attr.target]="!child.sameTarget ? '_blank' : undefined"
-								[attr.rel]="!child.sameTarget ? 'noopener noreferrer' : undefined"
+								[target]="child.sameTarget ? '' : undefined"
+								[rel]="child.sameTarget ? '' : undefined"
 								[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
 								(click)="obMasterLayoutNavigationItem.closeSubMenu()"
 							>
