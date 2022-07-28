@@ -15,8 +15,7 @@ export interface ObIconConfig {
 }
 
 export const defaultIconConfig: ObIconConfig = {
-	registerObliqueIcons: true,
-	fontClass: 'fa'
+	registerObliqueIcons: true
 };
 
 export enum ObEIcon {
