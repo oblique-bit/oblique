@@ -48,6 +48,16 @@
 		.mat-form-field-prefix,
 		.mat-form-field-suffix {
 			top: 0;
+
+			> .mat-datepicker-toggle {
+				position: relative;
+				top: 0.33em;
+			}
+
+			.mat-icon {
+				position: relative;
+				top: 0.15em;
+			}
 		}
 
 		.mat-form-field-subscript-wrapper {
