@@ -8,6 +8,7 @@ nodejsPipelineTemplate {
 	singleCFConfig = true
 	fetchTags = true
 	safeModeWhitelist = ['esbuild']
+	masterBranchName = 'release/patch_8.2.3'
 	gitPush = [
 		'credentialId': 'githubObliqueCredentials',
 		'repository': 'https://github.com/oblique-bit/oblique.git',
