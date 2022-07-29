@@ -17,7 +17,7 @@
 		}
 	}
 
-	&:not([disabled]):not(.select-disabled) {
+	&:not([disabled], .select-disabled) {
 		&::after {
 			content: variables.fa-content(variables.$fa-var-chevron-down);
 			-webkit-font-smoothing: antialiased;

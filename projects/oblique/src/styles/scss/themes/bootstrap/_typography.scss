@@ -45,7 +45,7 @@ a {
 		color: core-variables.$ob-dark;
 	}
 
-	&:not([href]):not([tabindex]),
+	&:not([href], [tabindex]),
 	&[tabindex="-1"] {
 		color: inherit;
 

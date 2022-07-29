@@ -41,7 +41,7 @@
 			}
 
 			&.mat-stroked-button,
-			&:not(.mat-flat-button):not(.mat-stroked-button) {
+			&:not(.mat-flat-button, .mat-stroked-button) {
 				@include tab-outline.ob-tab-outline();
 
 				&.mat-button-disabled {
@@ -78,7 +78,7 @@
 		border-radius: core-variables.$ob-border-radius-button;
 	}
 
-	&:not(.ob-external-link):not(.mat-icon-button) .mat-icon {
+	&:not(.ob-external-link, .mat-icon-button) .mat-icon {
 		&.fa,
 		&.fas,
 		&.far,
@@ -110,14 +110,14 @@
 }
 
 a.ob-button {
-	&:not([href]):not([tabindex]),
+	&:not([href], [tabindex]),
 	&[tabindex="-1"] {
 		&.mat-flat-button {
 			color: core-variables.$ob-white;
 		}
 
 		&.mat-stroked-button,
-		&:not(.mat-flat-button):not(.mat-stroked-button) {
+		&:not(.mat-flat-button, .mat-stroked-button) {
 			color: core-variables.$ob-primary;
 		}
 	}
