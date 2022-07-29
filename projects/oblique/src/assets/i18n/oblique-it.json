@@ -96,5 +96,11 @@
   "i18n.validation.pattern": "Si prega di inserire i caratteri corrispondenti allo schema",
   "i18n.validation.required": "Campo obbligatorio",
   "i18n.validation.unsavedChanges": "Alcuni cambiamenti non sono stati salvati, continuare?",
-  "i18n.validation.url": "Formato non valido, inserire un indirizzo URL valido"
+  "i18n.validation.url": "Formato non valido, inserire un indirizzo URL valido",
+  "i18n.pagination.items-per-page": "Articoli per pagina",
+  "i18n.pagination.next-page": "Andare alla pagina successiva",
+  "i18n.pagination.previous-page": "Andare alla pagina precedente",
+  "i18n.pagination.of-label": "di",
+  "i18n.pagination.first-page": "Salta alla prima pagina",
+  "i18n.pagination.last-page": "Salta all'ultima pagina"
 }

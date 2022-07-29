@@ -1,3 +1,14 @@
+# [9.1.0](https://github.com/oblique-bit/oblique/compare/9.0.2...9.1.0) (2022-07-29)
+
+## Bug Fixes
+
+- **material:** do not override button color in table header ([3350633](https://github.com/oblique-bit/oblique/commit/3350633e45ce718f5a208977691b5c14a7c9d0d7))
+- **material:** use `$ob-default` as color for table header content ([8c256f4](https://github.com/oblique-bit/oblique/commit/8c256f4993ecfeec4ff88a73c1ea19536672d342))
+
+## Features
+
+- **paginator:** add `ObPaginatorService` to provide translation by language change ([d2e14a1](https://github.com/oblique-bit/oblique/commit/d2e14a17a3a0df8b807e933662c232fd1145e2b8))
+
 # [9.0.2](https://github.com/oblique-bit/oblique/compare/9.0.1...9.0.2) (2022-07-29)
 
 ## Bug Fixes

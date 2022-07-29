@@ -89,7 +89,7 @@
 		text-decoration: none;
 	}
 
-	&:not(.ob-nav-stepper-sm):not(.ob-nav-stepper-lg) {
+	&:not(.ob-nav-stepper-sm, .ob-nav-stepper-lg) {
 		@include stepper.ob-stepper-variant(
 			variables.$ob-stepper-font-size,
 			variables.$ob-stepper-size

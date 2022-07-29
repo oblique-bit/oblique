@@ -96,5 +96,11 @@
   "i18n.validation.pattern": "Please enter characters matching the pattern",
   "i18n.validation.required": "This field is required",
   "i18n.validation.unsavedChanges": "Pending changes have been detected, do you really want to continue?",
-  "i18n.validation.url": "Bad format: please enter a valid URL"
+  "i18n.validation.url": "Bad format: please enter a valid URL",
+  "i18n.pagination.items-per-page": "Items per page",
+  "i18n.pagination.next-page": "Go to the next page",
+  "i18n.pagination.previous-page": "Go to the previous page",
+  "i18n.pagination.of-label": "of",
+  "i18n.pagination.first-page": "Jump to first page",
+  "i18n.pagination.last-page": "Jump to last page"
 }
