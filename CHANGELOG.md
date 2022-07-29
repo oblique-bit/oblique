@@ -100,6 +100,13 @@
 - **toolchain:** the `distiOS`script have been removed in favor of `dist`
 - **translation:** some oblique translation keys have been renamed (solved with Schematics)
 
+# [8.2.3](https://github.com/oblique-bit/oblique/compare/8.2.2...8.2.3) (2022-07-28)
+
+## Bug Fixes
+
+- **master-layout:** improve integration of `ObExternalLinkDirective` ([b59ba74](https://github.com/oblique-bit/oblique/commit/b59ba74c79a29c6a05920d5a37d5b1dc79e2dee8))
+- **toolchain:** keep `exports` in `package.json` ([35aa941](https://github.com/oblique-bit/oblique/commit/35aa9415d7e0c778b23afb205796f95c8d9b1374))
+
 # [8.2.2](https://github.com/oblique-bit/oblique/compare/8.2.1...8.2.2) (2022-06-17)
 
 ## Bug Fixes
