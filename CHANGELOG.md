@@ -1,3 +1,11 @@
+# [9.0.2](https://github.com/oblique-bit/oblique/compare/9.0.1...9.0.2) (2022-07-29)
+
+## Bug Fixes
+
+- **icon:** update `ObIconConfig` to use Oblique's icons by default ([9636953](https://github.com/oblique-bit/oblique/commit/96369531107c60e3544c979467fc45f515a95c29))
+- **master-layout:** improve integration of `ObExternalLinkDirective` ([4e5a67f](https://github.com/oblique-bit/oblique/commit/4e5a67f877f6ac90be2ed3746c491952bb05fde4))
+- **material:** improve icon alignement within `.mat-form-field-prefix` & `.mat-form-field-suffix` ([b64e9f4](https://github.com/oblique-bit/oblique/commit/b64e9f4108605265de8c913aac5c6bda0b0e946e))
+
 # [9.0.1](https://github.com/oblique-bit/oblique/compare/9.0.0...9.0.1) (2022-07-22)
 
 ## Bug Fixes
@@ -99,6 +107,13 @@
 - **toolchain:** npm script `minify` is removed without replacement
 - **toolchain:** the `distiOS`script have been removed in favor of `dist`
 - **translation:** some oblique translation keys have been renamed (solved with Schematics)
+
+# [8.2.3](https://github.com/oblique-bit/oblique/compare/8.2.2...8.2.3) (2022-07-28)
+
+## Bug Fixes
+
+- **master-layout:** improve integration of `ObExternalLinkDirective` ([b59ba74](https://github.com/oblique-bit/oblique/commit/b59ba74c79a29c6a05920d5a37d5b1dc79e2dee8))
+- **toolchain:** keep `exports` in `package.json` ([35aa941](https://github.com/oblique-bit/oblique/commit/35aa9415d7e0c778b23afb205796f95c8d9b1374))
 
 # [8.2.2](https://github.com/oblique-bit/oblique/compare/8.2.1...8.2.2) (2022-06-17)
 
