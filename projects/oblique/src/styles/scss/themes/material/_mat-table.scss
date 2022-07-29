@@ -31,8 +31,9 @@
 	}
 
 	.mat-header-row {
+		.mat-header-cell,
 		.mat-sort-header-arrow {
-			color: variables.$ob-black;
+			color: variables.$ob-default;
 			font-size: 14px;
 		}
 	}
