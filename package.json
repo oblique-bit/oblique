@@ -21,18 +21,18 @@
     "Philippe Krüttli <philippe.kruttli@bit.admin.ch>",
     "Yanis Noa Weibel <yanisnoa.weibel@bit.admin.ch>",
     "Michèle Habegger <michele.habegger@bit.admin.ch>",
-    "Nicolas Müller <nicolas.mueller@bit.admin.ch>",
     "Miro Albrecht <miro.albrecht@bit.admin.ch>",
     "Yann Meuwly <yann.meuwly@bit.admin.ch>",
     "Arkadiusz Bojarowicz <arkadiusz.bojarowicz@bit.admin.ch>",
-    "Maya Hartmeier <maya.hartmeier@bit.admin.ch>",
     "Justin Cerionio <justin.cerionio@bit.admin.ch>",
     "Pedro De Almeida",
     "Christian Ulmann",
     "Stefan Tanner",
     "Debora Mittner",
     "Cédric Tristan Schweizer",
-    "Louis Bernath"
+    "Louis Bernath",
+    "Nicolas Müller",
+    "Maya Hartmeier"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
