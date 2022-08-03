@@ -34,6 +34,7 @@ import {StickySampleComponent} from './sticky/sticky-sample.component';
 import {UnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component';
+import {ServiceNavigationSampleComponent} from './service-navigation/service-navigation-sample.component';
 
 const samplesRoutes: Routes = [
 	{path: 'alert', component: AlertSampleComponent},
@@ -130,6 +131,7 @@ const samplesRoutes: Routes = [
 	{path: 'schema-validation', component: SchemaValidationSampleComponent},
 	{path: 'search-box', component: SearchBoxSampleComponent},
 	{path: 'selectable', component: SelectableSampleComponent},
+	{path: 'service-navigation', component: ServiceNavigationSampleComponent},
 	{path: 'sticky', component: StickySampleComponent},
 	{path: 'spinner', component: SpinnerSampleComponent},
 	{path: 'unknown-route-sample', component: UnknownRouteSampleComponent},

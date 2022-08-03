@@ -60,6 +60,7 @@ export class AppComponent implements OnDestroy {
 				{url: 'schema-validation', label: 'i18n.routes.samples.schema-validation.title'},
 				{url: 'search-box', label: 'Search Box'},
 				{url: 'selectable', label: 'Selectable'},
+				{url: 'service-navigation', label: 'Service navigation'},
 				{url: 'spinner', label: 'Spinner'},
 				{url: 'sticky', label: 'Sticky'},
 				{url: 'unknown-route-sample', label: 'Unknown route'},
