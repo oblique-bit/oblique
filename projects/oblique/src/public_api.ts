@@ -47,6 +47,7 @@ export {
 	ObIUploadEvent,
 	ObIFileDescription
 } from './lib/file-upload/file-upload.module';
+export {ObServiceNavigationComponent, ObServiceNavigationModule} from './lib/service-navigation';
 export {
 	ObHttpApiInterceptor,
 	ObHttpApiInterceptorConfig,

@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../schema.json",
+  "api": [
+    {
+      "name": "ObServiceNavigationComponent",
+      "type": "component",
+      "since": "10.1.0",
+      "selector": "ob-service-navigation",
+      "usage": "The <code>ObServiceNavigationComponent</code> provides an area to display widgets and is declared by the <code>ObHeadersControlsModule</code>."
+    }
+  ]
+}
