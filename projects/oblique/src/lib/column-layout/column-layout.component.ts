@@ -66,7 +66,7 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 		}
 	}
 
-	private static visibleHeight(dimension: ClientRect, window: Window): number {
+	private static visibleHeight(dimension: DOMRect, window: Window): number {
 		if (dimension.top < 0 && dimension.top + dimension.height > window.innerHeight) {
 			return window.innerHeight;
 		} else if (dimension.top < 0) {
@@ -88,7 +88,7 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 	}
 
 	private center(): void {
-		const dimension = this.el.nativeElement.getBoundingClientRect();
+		const dimension: DOMRect = this.el.nativeElement.getBoundingClientRect();
 		const middle = ObColumnLayoutComponent.visibleHeight(dimension, this.window) / 2;
 		const top = this.window.innerHeight > dimension.height ? '50%' : `${middle}px`;
 		this.toggles.forEach(toggle => this.renderer.setStyle(toggle.nativeElement, 'top', top));
