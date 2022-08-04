@@ -8,13 +8,12 @@ import {ObIAPI} from './api.model';
 })
 export class ApiComponent implements OnInit {
 	@Input() component: string;
-	@Input() directory: string;
 	api: ObIAPI[];
 
 	ngOnInit(): void {
-		if (this.component && this.directory) {
+		if (this.component) {
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
-			this.api = require(`../../../projects/oblique/src/lib/${this.directory || this.component}/${this.component}.api.json`).api;
+			this.api = require(`../../../projects/oblique/src/lib/${this.component}/${this.component}.api.json`).api;
 		}
 	}
 }
