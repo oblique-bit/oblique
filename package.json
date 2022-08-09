@@ -16,12 +16,12 @@
     "Nicole Widmer <nicole.widmer@bit.admin.ch>",
     "Ciril Saner <ciril.saner@bit.admin.ch>",
     "Yann Flückiger <yanncedric.flueckiger@bit.admin.ch>",
+    "Severin Goddon <severin.goddon@bit.admin.ch>",
     "Michael Jehle <michael.jehle@bit.admin.ch>",
     "Quinavuidi Camilo <quinavuidi.camilo@bit.admin.ch>",
     "Philippe Krüttli <philippe.kruttli@bit.admin.ch>",
     "Yanis Noa Weibel <yanisnoa.weibel@bit.admin.ch>",
     "Michèle Habegger <michele.habegger@bit.admin.ch>",
-    "Miro Albrecht <miro.albrecht@bit.admin.ch>",
     "Yann Meuwly <yann.meuwly@bit.admin.ch>",
     "Arkadiusz Bojarowicz <arkadiusz.bojarowicz@bit.admin.ch>",
     "Justin Cerionio <justin.cerionio@bit.admin.ch>",
@@ -32,7 +32,8 @@
     "Cédric Tristan Schweizer",
     "Louis Bernath",
     "Nicolas Müller",
-    "Maya Hartmeier"
+    "Maya Hartmeier",
+    "Miro Albrecht"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
