@@ -25,7 +25,6 @@ The development team is available by [email](mailto:Oblique@bit.admin.ch).
 
 - Clone the repo: `git clone https://github.com/oblique-bit/oblique.git`.
 - Install project dependencies: `npm ci`
-- Generate the theme files: `npm run themes`
 - start the showcase: `npm start`
 - start the tests: `npm test`
 
