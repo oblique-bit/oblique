@@ -1,0 +1,23 @@
+@use "../../styles/scss/core/variables";
+
+.ob-service-navigation {
+	.ob-service-navigation-list {
+		display: flex;
+		align-items: center;
+		gap: variables.$ob-spacing-default;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		// ".ob-button.mat-button-base.mat-primary" is only there to beat the specificity of Oblique buttons
+		.ob-widget.ob-button.mat-button-base.mat-primary {
+			color: variables.$ob-default;
+			border-color: variables.$ob-default;
+
+			&:hover,
+			&.active {
+				background-color: variables.$ob-gray-lighter;
+			}
+		}
+	}
+}

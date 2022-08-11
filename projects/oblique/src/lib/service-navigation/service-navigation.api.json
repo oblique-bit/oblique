@@ -6,7 +6,31 @@
       "type": "component",
       "since": "10.1.0",
       "selector": "ob-service-navigation",
-      "usage": "The <code>ObServiceNavigationComponent</code> provides an area to display widgets and is declared by the <code>ObHeadersControlsModule</code>."
+      "usage": "The <code>ObServiceNavigationComponent</code> provides an area to display widgets and is declared by the <code>ObHeadersControlsModule</code>.",
+      "inputs": [
+        {
+          "name": "environment",
+          "type": "ObEPamsEnvironment",
+          "default": "undefined",
+          "since": "10.1.0",
+          "text": "Will be used to compute the environment from which the PAMS data will be loaded. If no environment is provided, the <code>ObServiceNavigationComponent</code> won't make any backend call.",
+          "values": [
+            "ObEPamsEnvironment.DEV",
+            "ObEPamsEnvironment.REF",
+            "ObEPamsEnvironment.TEST",
+            "ObEPamsEnvironment.ABN",
+            "ObEPamsEnvironment.PROD"
+          ]
+        },
+        {
+          "name": "rootUrl",
+          "type": "string",
+          "default": "undefined",
+          "since": "10.1.0",
+          "isOptional": true,
+          "text": "The root URL for backend calls. If provided, it takes precedence over the one computed from the environment."
+        }
+      ]
     }
   ]
 }

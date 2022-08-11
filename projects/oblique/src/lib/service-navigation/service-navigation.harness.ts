@@ -8,6 +8,6 @@ export class ObServiceNavigationHarness extends ContentContainerComponentHarness
 	}
 
 	getListItemElements(): Promise<TestElement[]> {
-		return this.locatorForAll('ul > li')();
+		return this.locatorForAll('ul > li > *')();
 	}
 }
