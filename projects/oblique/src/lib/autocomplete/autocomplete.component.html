@@ -1,0 +1,47 @@
+<mat-form-field>
+	<mat-label *ngIf="inputLabelKey?.length > 0">{{ inputLabelKey | translate }}</mat-label>
+	<input (blur)="onModelTouched()" [formControl]="autocompleteInputControl" [matAutocomplete]="autocomplete" matInput type="text" />
+	<ng-content select="[matPrefix]"></ng-content>
+	<button [obInputClear]="autocompleteInputControl" type="button">
+		<mat-icon class="ob-icon" svgIcon="cancel-circle"></mat-icon>
+		<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
+	</button>
+	<ng-content select="[matSuffix]"></ng-content>
+</mat-form-field>
+
+<mat-autocomplete #autocomplete="matAutocomplete">
+	<ng-container *ngTemplateOutlet="hasGroupOptions ? optionGroups : onlyOptions; context: { $implicit: (filteredOptions$ | async) }">
+	</ng-container>
+
+	<ng-template #optionGroups let-options>
+		<mat-optgroup *ngFor="let group of options; let i = index" [disabled]="group['disabled']" [label]="group['groupLabel']">
+			<ng-container
+				*ngTemplateOutlet="
+					group['groupOptions']?.length > 0 && hasGroupOptions ? onlyOptions : optionGroups;
+					context: { $implicit: group['groupOptions'] }
+				"
+			>
+			</ng-container>
+		</mat-optgroup>
+	</ng-template>
+
+	<ng-template #onlyOptions let-options>
+		<mat-option
+			(onSelectionChange)="selectedOptionChange.emit(option)"
+			*ngFor="let option of options"
+			[value]="option.label"
+			disabled="{{ option.disabled }}"
+		>
+			<span obOptionLabelIcon [iconName]="option['iconName'] || ''" [iconPosition]="optionIconPosition">
+				<span
+					[innerHTML]="
+						option.label | obHighlightTextPipe: autocompleteInputControl.value:highlightCssClass:filterRegexPattern:filterRegexFlag
+					"
+				></span>
+			</span>
+		</mat-option>
+	</ng-template>
+	<ng-container *ngIf="noResultKey?.length > 0">
+		<mat-option *ngIf="(filteredOptions$ | async)?.length === 0">{{ noResultKey | translate }}</mat-option>
+	</ng-container>
+</mat-autocomplete>

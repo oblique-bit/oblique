@@ -1,0 +1,7 @@
+@use "../variables";
+
+.ob-highlight-text {
+	font-weight: bold;
+	text-decoration: underline;
+	color: variables.$ob-default;
+}
