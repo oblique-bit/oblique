@@ -32,6 +32,7 @@ export class AppComponent {
 			icon: ObEIcon.BOOKMARK,
 			children: [
 				{url: 'alert', label: 'Alert'},
+				{url: 'autocomplete', label: 'Autocomplete'},
 				{url: 'button', label: 'Buttons'},
 				{url: 'breadcrumb', label: 'Breadcrumb'},
 				{url: 'collapse', label: 'Collapse'},
