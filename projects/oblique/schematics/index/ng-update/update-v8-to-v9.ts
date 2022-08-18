@@ -74,7 +74,8 @@ export class UpdateV8toV9 implements ObIMigrations {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Remove ObUseObliqueIcons is set to true');
 			const apply = (filePath: string): void => {
-				replaceInFile(tree, filePath, /{\s*provide\s*:\s*ObUseObliqueIcons\s*,\s*useValue\s*:\s*true\s*}\s*,?/, '');
+				replaceInFile(tree, filePath, /\s*{\s*provide\s*:\s*ObUseObliqueIcons\s*,\s*useValue\s*:\s*true\s*}\s*,+/g, '');
+				replaceInFile(tree, filePath, /,+\s*{\s*provide\s*:\s*ObUseObliqueIcons\s*,\s*useValue\s*:\s*true\s*}\s*/, '');
 				replaceInFile(tree, filePath, /ObUseObliqueIcons\s*,?/, '');
 			};
 			return applyInTree(tree, apply, 'app.module.ts');
