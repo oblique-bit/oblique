@@ -1,3 +1,9 @@
+# [9.1.3](https://github.com/oblique-bit/oblique/compare/9.1.2...9.1.3) (2022-08-19)
+
+## Bug Fixes
+
+- **schematics:** delete comma when removing `ObUseObliqueIcons` ([b482aed](https://github.com/oblique-bit/oblique/commit/b482aed53aa1530811684f421d7e5d9c5b341a5e))
+
 # [9.1.2](https://github.com/oblique-bit/oblique/compare/9.1.1...9.1.2) (2022-08-12)
 
 - Minor updates in the documentation
