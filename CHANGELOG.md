@@ -1,3 +1,7 @@
+# [9.1.4](https://github.com/oblique-bit/oblique/compare/9.1.3...9.1.4) (2022-08-26)
+
+- Update dependencies
+
 # [9.1.3](https://github.com/oblique-bit/oblique/compare/9.1.2...9.1.3) (2022-08-19)
 
 ## Bug Fixes
