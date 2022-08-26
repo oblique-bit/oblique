@@ -98,7 +98,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 		if (!this.inputElement) {
 			return;
 		}
-		if (!this.inputElement.nativeElement || !this.inputElement.nativeElement.tagName) {
+		if (!this.inputElement.nativeElement?.tagName) {
 			throw new Error('The given value for [obNavTreeFakeFocus] is invalid. It must be a valid native DOM element or ElementRef.');
 		}
 		this.unsubscribeInputListeners();
@@ -156,7 +156,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 	}
 
 	private toggleCollapsed(): void {
-		if (!this.focusedElement || !this.focusedElement.nativeElement) {
+		if (!this.focusedElement?.nativeElement) {
 			return;
 		}
 		let event;
@@ -193,7 +193,7 @@ export class ObNavTreeFakeFocusDirective implements OnDestroy {
 
 	private findLink(element: ElementRef = null): ElementRef {
 		const el = element || this.focusedElement;
-		if (!el || !el.nativeElement) {
+		if (!el?.nativeElement) {
 			return null;
 		}
 		const link = el.nativeElement.querySelector(ObNavTreeFakeFocusDirective.CSS_SELECTORS.ITEM_LINK);

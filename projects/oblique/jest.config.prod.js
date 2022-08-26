@@ -159,7 +159,7 @@ module.exports.coverageThreshold = {
 	},
 	'projects/oblique/src/lib/nav-tree/*.ts': {
 		statements: 91,
-		branches: 77,
+		branches: 74,
 		functions: 96,
 		lines: 91
 	},
