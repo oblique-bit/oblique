@@ -7,7 +7,7 @@
 	height: 100%;
 	overflow: hidden;
 
-	&:not(.no-layout) .ob-sticky-content {
+	&:not(.ob-no-layout) .ob-sticky-content {
 		padding: variables.$ob-spacing-default 0;
 	}
 }
