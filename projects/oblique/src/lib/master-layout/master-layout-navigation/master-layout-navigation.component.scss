@@ -223,6 +223,13 @@
 	.ob-master-layout-navigation-link {
 		gap: variables.$ob-spacing-sm;
 		align-items: center;
+
+		&.ob-external-link {
+			.mat-icon,
+			.fa {
+				margin-left: auto;
+			}
+		}
 	}
 
 	.ob-external-link span.mat-icon,
