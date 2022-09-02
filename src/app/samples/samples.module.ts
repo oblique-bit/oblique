@@ -53,6 +53,7 @@ import {FormSampleComponent} from './form/form.component';
 import {ButtonSampleComponent} from './button/button.component';
 import {
 	ObAlertModule,
+	ObAutocompleteModule,
 	ObBreadcrumbModule,
 	ObButtonModule,
 	ObCollapseModule,
@@ -96,6 +97,7 @@ import {BreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
 import {FileUploadSampleComponent} from './file-upload-sample/file-upload-sample.component';
 import {SharedModule} from '../common/shared.module';
 import {DropdownSampleComponent} from './dropdown/dropdown.component';
+import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component';
 
 @NgModule({
 	imports: [
@@ -121,6 +123,7 @@ import {DropdownSampleComponent} from './dropdown/dropdown.component';
 		NgbModule,
 		ObAlertModule,
 		ObBreadcrumbModule.forRoot({}),
+		ObAutocompleteModule,
 		ObButtonModule,
 		ObCollapseModule,
 		ObColumnLayoutModule,
@@ -154,6 +157,7 @@ import {DropdownSampleComponent} from './dropdown/dropdown.component';
 	],
 	declarations: [
 		AlertSampleComponent,
+		AutocompleteSampleComponent,
 		BreadcrumbSampleComponent,
 		ButtonSampleComponent,
 		CollapseSampleComponent,

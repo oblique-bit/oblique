@@ -1,0 +1,126 @@
+<h2>Autocomplete</h2>
+<sc-description component="autocomplete"></sc-description>
+<ob-column-layout [left]="false" [right]="true">
+	<section column-main-content>
+		<ng-container *ngIf="isFromControl; else ngModelBinding">
+			<ob-autocomplete
+				(selectedOptionChange)="showSelection($event)"
+				[autocompleteOptions]="visibleOptionList"
+				[filterRegexFlag]="'gi'"
+				[filterRegexPattern]="pattern"
+				[formControl]="formControl"
+				[optionIconPosition]="optionIconPosition"
+			>
+			</ob-autocomplete>
+			<label>ReactiveForms</label>
+			<code>
+				<pre>
+				{{ reactiveFormSnippet }}
+			</pre
+				>
+			</code>
+		</ng-container>
+
+		<ng-template #ngModelBinding>
+			<ob-autocomplete
+				(selectedOptionChange)="showSelection($event)"
+				[(ngModel)]="searchText"
+				[autocompleteOptions]="visibleOptionList"
+				[filterRegexFlag]="'gi'"
+				[filterRegexPattern]="pattern"
+				[optionIconPosition]="optionIconPosition"
+			>
+			</ob-autocomplete>
+			<label>ngModel snippet:</label>
+			<code>
+				<pre>
+				{{ ngModelSnippet }}
+			</pre
+				>
+			</code>
+		</ng-template>
+
+		<label>Selected Option:</label>
+		<p>({{ selectedOption | json }})</p>
+		<label>Resulting regex string for highliting:</label>
+		<p>{{ replacedPattern }}</p>
+	</section>
+	<ng-container column-right-content>
+		<h3>Controls</h3>
+		<fieldset>
+			<legend>Example data options</legend>
+			<mat-radio-group
+				(change)="updateVisibleOptionList()"
+				[(ngModel)]="listType"
+				aria-label="Select example data is grouped or simple options"
+			>
+				<mat-radio-button
+					*ngFor="
+						let radio of [
+							{ text: 'Simple Options', value: 'onlyOptions' },
+							{ text: 'Options in groups', value: 'group' },
+							{ text: 'Empty list', value: 'empty' }
+						]
+					"
+					[value]="radio.value"
+					>{{ radio.text }}</mat-radio-button
+				>
+			</mat-radio-group>
+		</fieldset>
+		<fieldset>
+			<legend>Icon position in options</legend>
+			<mat-radio-group [(ngModel)]="optionIconPosition" aria-label="Select icon position">
+				<mat-radio-button
+					*ngFor="
+						let radio of [
+							{ text: 'Position end', value: 'end' },
+							{ text: 'Position start', value: 'start' },
+							{ text: 'No icons', value: 'none' }
+						]
+					"
+					[value]="radio.value"
+					>{{ radio.text }}</mat-radio-button
+				>
+			</mat-radio-group>
+		</fieldset>
+		<fieldset>
+			<legend>Disable options in list</legend>
+			<mat-radio-group (change)="disableOptions($event.value)" [(ngModel)]="areDisabled" aria-label="Select icon position">
+				<mat-radio-button
+					*ngFor="
+						let radio of [
+							{ text: 'Enabled', value: false },
+							{ text: 'Disabled', value: true }
+						]
+					"
+					[value]="radio.value"
+					>{{ radio.text }}</mat-radio-button
+				>
+			</mat-radio-group>
+		</fieldset>
+		<fieldset>
+			<legend>Forms or ReactiveForms</legend>
+			<mat-radio-group [(ngModel)]="isFromControl" aria-label="Select if Forms or ReactiveForms used in example">
+				<mat-radio-button
+					*ngFor="
+						let radio of [
+							{ text: 'ReactiveForms', value: true },
+							{ text: 'Forms', value: false }
+						]
+					"
+					[value]="radio.value"
+					>{{ radio.text }}</mat-radio-button
+				>
+			</mat-radio-group>
+		</fieldset>
+		<fieldset>
+			<legend>Pattern to highlight options</legend>
+			<mat-form-field>
+				<mat-label>Pattern string</mat-label>
+				<input [formControl]="patternControl" [pattern]="'.*textToFind.*'" matInput type="text" />
+				<mat-error *ngIf="patternControl?.errors && patternControl.hasError('pattern')">Should have textToFind in pattern </mat-error>
+			</mat-form-field>
+		</fieldset>
+	</ng-container>
+</ob-column-layout>
+<sc-api component="autocomplete"></sc-api>

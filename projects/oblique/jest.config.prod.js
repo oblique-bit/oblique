@@ -7,7 +7,8 @@ module.exports.collectCoverageFrom = [
 	'<rootDir>/projects/oblique/src/lib/**/*.ts',
 	'!**/_mocks/**',
 	'!**/*.module.ts',
-	// those files have no spec files and therefore have a 0 coverage
+	'!**/**.harness.ts',
+	// the following files have no spec files and therefore have a 0 coverage. Tests will be written later
 	'!**/column-toggle.directive.ts',
 	'!**/date-formatter.pipe.ts',
 	'!**/datepicker-i18n.service.ts',

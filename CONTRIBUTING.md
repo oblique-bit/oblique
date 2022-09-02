@@ -75,6 +75,7 @@ The scope is optional and should be the name of the Oblique feature affected:
 
 - **alert**
 - **authentication**
+- **autocomplete**
 - **button**
 - **breadcrumb**
 - **collapse**

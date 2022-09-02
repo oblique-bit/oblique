@@ -1,3 +1,13 @@
+# [9.2.0](https://github.com/oblique-bit/oblique/compare/9.1.5...9.2.0) (2022-09-02)
+
+## Bug Fixes
+
+- **master-layout:** right align external link icon in sub menu item ([58dee2c](https://github.com/oblique-bit/oblique/commit/58dee2c2e1d2b903eb2ffd9abae1ed7311661487))
+
+## Features
+
+- **autocomplete:** create feature ([15eb1ba](https://github.com/oblique-bit/oblique/commit/15eb1ba91ee44ba4df7852e9dcde7ceec2ac8384))
+
 # [9.1.5](https://github.com/oblique-bit/oblique/compare/9.1.4...9.1.5) (2022-09-02)
 
 ## Bug Fixes

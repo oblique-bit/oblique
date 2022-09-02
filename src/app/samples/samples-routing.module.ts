@@ -37,9 +37,11 @@ import {StickySampleComponent} from './sticky/sticky-sample.component';
 import {UnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {DropdownSampleComponent} from './dropdown/dropdown.component';
+import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component';
 
 const samplesRoutes: Routes = [
 	{path: 'alert', component: AlertSampleComponent},
+	{path: 'autocomplete', component: AutocompleteSampleComponent},
 	{
 		path: 'breadcrumb',
 		component: BreadcrumbSampleComponent,
