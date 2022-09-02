@@ -1,3 +1,11 @@
+# [9.1.5](https://github.com/oblique-bit/oblique/compare/9.1.4...9.1.5) (2022-09-02)
+
+## Bug Fixes
+
+- **alert:** add telemetry ([fcdc26e](https://github.com/oblique-bit/oblique/commit/fcdc26edd75d0b0f6ac93619225c450d29a01ac0))
+- **paginator:** add telemetry ([9546804](https://github.com/oblique-bit/oblique/commit/95468041b16961cc1386bbb07a3bd0808d6d3183))
+- **sticky:** use the correct html class to remove the default layout ([0ca84b9](https://github.com/oblique-bit/oblique/commit/0ca84b9d13cf6ef476f8d37a256cf739f889bbea))
+
 # [9.1.4](https://github.com/oblique-bit/oblique/compare/9.1.3...9.1.4) (2022-08-26)
 
 - Update dependencies
