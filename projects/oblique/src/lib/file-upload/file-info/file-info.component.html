@@ -8,8 +8,8 @@
 		<th scope="col" mat-header-cell *matHeaderCellDef>
 			<mat-checkbox
 				(change)="$event ? selectOrUnselectAllItems() : null"
-				[checked]="selection.hasValue() && areAllItemsSelected()"
-				[indeterminate]="selection.hasValue() && !areAllItemsSelected()"
+				[checked]="selectionStatus === 'all'"
+				[indeterminate]="selectionStatus === 'some'"
 				[disabled]="!dataSource.data.length"
 			>
 			</mat-checkbox>
@@ -24,7 +24,7 @@
 		<th class="ob-actions" scope="col" mat-header-cell *matHeaderCellDef>
 			<button
 				type="button"
-				[disabled]="!selection.hasValue()"
+				[disabled]="selectionStatus === 'none'"
 				mat-icon-button
 				obButton="secondary"
 				matTooltip="{{ 'i18n.oblique.file-upload.selected.remove' | translate }}"

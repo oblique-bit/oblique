@@ -3,11 +3,11 @@ import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild, Vi
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {TranslateService} from '@ngx-translate/core';
-import {Subject} from 'rxjs';
+import {Subject, merge} from 'rxjs';
 import {map, takeUntil, tap} from 'rxjs/operators';
 import {ObFileUploadService} from '../file-upload.service';
 import {ObPopUpService} from '../../pop-up/pop-up.service';
-import {ObEUploadEventType, ObIFileDescription, ObIUploadEvent} from '../file-upload.model';
+import {ObEUploadEventType, ObIFileDescription, ObIUploadEvent, ObTSelectionStatus} from '../file-upload.model';
 
 @Component({
 	selector: 'ob-file-info',
@@ -27,10 +27,12 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	dataSource = new MatTableDataSource<ObIFileDescription>([]);
 	displayedColumns: string[];
 	fields = ['name'];
+	selectionStatus: ObTSelectionStatus = 'none';
 	readonly selection = new SelectionModel<ObIFileDescription>(true, []);
 	readonly COLUMN_SELECT = 'select';
 	readonly COLUMN_ACTION = 'action';
 	private readonly unsubscribe = new Subject<void>();
+	private readonly dataChange = new Subject<void>();
 
 	constructor(
 		private readonly fileUploadService: ObFileUploadService,
@@ -44,6 +46,12 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 		this.setTableHeaders(this.fields);
 		this.loadData();
 		this.fileUploadService.uploadComplete$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.loadData());
+		merge(this.selection.changed, this.dataChange)
+			.pipe(
+				takeUntil(this.unsubscribe),
+				map(() => this.computeSelectionStatus())
+			)
+			.subscribe(status => (this.selectionStatus = status));
 	}
 
 	ngOnDestroy(): void {
@@ -51,6 +59,9 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 		this.unsubscribe.complete();
 	}
 
+	/**
+	 * @deprecated since version 9.2.1, will be removed with version 10.0.0.
+	 */
 	areAllItemsSelected(): boolean {
 		const numSelected = this.selection.selected.length;
 		const numRows = this.dataSource.data.length;
@@ -58,7 +69,7 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	}
 
 	selectOrUnselectAllItems(): void {
-		if (this.areAllItemsSelected()) {
+		if (this.selectionStatus === 'all') {
 			this.selection.clear();
 		} else {
 			this.dataSource.data.forEach(row => this.selection.select(row));
@@ -78,6 +89,7 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 				.delete(this.deleteUrl, fileNames)
 				.pipe(
 					tap(() => (this.dataSource.data = this.dataSource.data.filter(file => !fileNames.includes(file.name)))),
+					tap(() => this.dataChange.next()),
 					tap(() => files.forEach(file => this.selection.deselect(file)))
 				)
 				.subscribe({
@@ -94,6 +106,7 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 				.pipe(
 					map(this.mapFunction),
 					tap(files => (this.dataSource.data = files)),
+					tap(() => this.dataChange.next()),
 					tap(files => this.reselectFiles(files))
 				)
 				.subscribe({
@@ -114,5 +127,12 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 		this.displayedColumns = this.deleteUrl
 			? [this.COLUMN_SELECT, ...this.fields, this.COLUMN_ACTION]
 			: [this.COLUMN_SELECT, ...this.fields];
+	}
+
+	private computeSelectionStatus(): ObTSelectionStatus {
+		if (!this.selection.hasValue()) {
+			return 'none';
+		}
+		return this.selection.selected.length === this.dataSource.data.length ? 'all' : 'some';
 	}
 }
