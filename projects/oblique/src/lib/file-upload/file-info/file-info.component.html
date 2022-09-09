@@ -10,7 +10,7 @@
 				(change)="$event ? selectOrUnselectAllItems() : null"
 				[checked]="selection.hasValue() && areAllItemsSelected()"
 				[indeterminate]="selection.hasValue() && !areAllItemsSelected()"
-				[disabled]="!selection.hasValue()"
+				[disabled]="!dataSource.data.length"
 			>
 			</mat-checkbox>
 		</th>
