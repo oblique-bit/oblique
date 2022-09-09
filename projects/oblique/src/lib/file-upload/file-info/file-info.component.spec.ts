@@ -101,6 +101,27 @@ describe('ObFileInfoComponent', () => {
 			expect(uploadService.getUploadedFiles).not.toHaveBeenCalled();
 		});
 
+		describe('add new row while rows are selected', () => {
+			beforeEach(() => {
+				component.selection.select(component.dataSource.data[0]);
+				jest.spyOn(component.selection, 'clear');
+				jest.spyOn(component.selection, 'select');
+				uploadComplete.next();
+			});
+
+			it('should clear the selection', () => {
+				expect(component.selection.clear).toHaveBeenCalled();
+			});
+
+			it('should select the previously selected item', () => {
+				expect(component.selection.select).toHaveBeenCalledWith(component.dataSource.data[0]);
+			});
+
+			it('should not change selection', () => {
+				expect(component.selection.selected).toEqual([component.dataSource.data[0]]);
+			});
+		});
+
 		describe('with erroneous back-end call', () => {
 			let event: ObIUploadEvent;
 			const errorMessage = new Error('Back-end error');

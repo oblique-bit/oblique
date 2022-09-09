@@ -93,13 +93,20 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 				.getUploadedFiles(this.getUploadedFilesUrl)
 				.pipe(
 					map(this.mapFunction),
-					tap(files => (this.dataSource.data = files))
+					tap(files => (this.dataSource.data = files)),
+					tap(files => this.reselectFiles(files))
 				)
 				.subscribe({
 					next: files => this.setTableHeaders(files.length ? Object.keys(files[0]) : this.fields),
 					error: error => this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: [], error})
 				});
 		}
+	}
+
+	private reselectFiles(files: ObIFileDescription[]): void {
+		const selectedRows = files.filter(file => this.selection.selected.some(row => file.name === row.name));
+		this.selection.clear();
+		this.selection.select(...selectedRows);
 	}
 
 	private setTableHeaders(headers: string[]): void {
