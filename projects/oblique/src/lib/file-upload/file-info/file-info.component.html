@@ -8,14 +8,25 @@
 		<th scope="col" mat-header-cell *matHeaderCellDef>
 			<mat-checkbox
 				(change)="$event ? selectOrUnselectAllItems() : null"
-				[checked]="selection.hasValue() && areAllItemsSelected()"
-				[indeterminate]="selection.hasValue() && !areAllItemsSelected()"
+				[checked]="selectionStatus === 'all'"
+				[indeterminate]="selectionStatus === 'some'"
 				[disabled]="!dataSource.data.length"
+				[aria-label]="
+					(selectionStatus === 'all' ? 'i18n.oblique.file-upload.all.deselect' : 'i18n.oblique.file-upload.all.select') | translate
+				"
 			>
 			</mat-checkbox>
 		</th>
-		<td mat-cell *matCellDef="let row">
-			<mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? toggle(row) : null" [checked]="selection.isSelected(row)">
+		<td mat-cell *matCellDef="let row; let i = index">
+			<mat-checkbox
+				(click)="$event.stopPropagation()"
+				(change)="$event ? toggle(row) : null"
+				[checked]="selection.isSelected(row)"
+				[aria-label]="
+					(selection.isSelected(row) ? 'i18n.oblique.file-upload.row.deselect' : 'i18n.oblique.file-upload.row.select')
+						| translate: { index: i + 1 }
+				"
+			>
 			</mat-checkbox>
 		</td>
 	</ng-container>
@@ -24,7 +35,7 @@
 		<th class="ob-actions" scope="col" mat-header-cell *matHeaderCellDef>
 			<button
 				type="button"
-				[disabled]="!selection.hasValue()"
+				[disabled]="selectionStatus === 'none'"
 				mat-icon-button
 				obButton="secondary"
 				matTooltip="{{ 'i18n.oblique.file-upload.selected.remove' | translate }}"
