@@ -1,3 +1,11 @@
+# [9.2.1](https://github.com/oblique-bit/oblique/compare/9.2.0...9.2.1) (2022-09-16)
+
+## Bug Fixes
+
+- **file-upload:** add accessible labels to `file-info` checkboxes ([1392430](https://github.com/oblique-bit/oblique/commit/139243078e7878bff034c8785090bc778dc05fe9))
+- **file-upload:** disable "select all" checkbox when there is no row in `file-info` ([c4cc802](https://github.com/oblique-bit/oblique/commit/c4cc802de49c11c9db9beb07fc10f17d6462585b))
+- **file-upload:** ensure selected files in `file-info` do match existing ones ([0bc585e](https://github.com/oblique-bit/oblique/commit/0bc585ea1962d2061f384632e94933f8a49fd7f8))
+
 # [9.2.0](https://github.com/oblique-bit/oblique/compare/9.1.5...9.2.0) (2022-09-02)
 
 ## Bug Fixes

@@ -46,6 +46,8 @@ export interface ObIFileValidation {
 
 export type ObTEventType = HttpEventType.UploadProgress | HttpEventType.Response | HttpEventType.User;
 
+export type ObTSelectionStatus = 'none' | 'some' | 'all';
+
 export enum ObEWildCardMimeTypes {
 	'application/*' = 'bin|exe|oda|pdf|ai|ps|eps|rtf|mif|fm|gtar|shar|tar|hqx',
 	'audio/*' = 'au|snd|aif|aiff|aifc|wav|',
