@@ -48,7 +48,7 @@
   "i18n.oblique.http.error.status.503": "Es tut uns leid, der Server antwortet im Moment nicht. Bitte versuchen Sie es später noch einmal.",
   "i18n.oblique.http.error.status.504.title": "Gateway-Zeitüberschreitung",
   "i18n.oblique.http.error.status.504": "Um Ihre Anfrage zu bearbeiten, hat der Server als Gateway oder Proxy gehandelt und selbst keine rechtzeitige Antwort erhalten.",
-  "i18n.oblique.http.error.timeout": "Server hat nicht zu lange reagiert. Versuchen Sie es später noch einmal oder kontaktieren Sie den Support.",
+  "i18n.oblique.http.error.timeout": "Server hat zu lange nicht reagiert. Versuchen Sie es später noch einmal oder kontaktieren Sie den Support.",
   "i18n.oblique.master-layout.accesskey.main-content": "Springe zum Hauptteil [0]",
   "i18n.oblique.master-layout.accesskey.navigation": "Springe zur Navigation [1]",
   "i18n.oblique.header.title": "Kopfzeile",
