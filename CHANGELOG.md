@@ -1,3 +1,9 @@
+# [9.2.2](https://github.com/oblique-bit/oblique/compare/9.2.1...9.2.2) (2022-09-23)
+
+## Bug Fixes
+
+- **http-interceptor:** reformulation of timeout error message in German ([9a2ae11](https://github.com/oblique-bit/oblique/commit/9a2ae11d04933f020189a94268243a852ae1d51c))
+
 # [9.2.1](https://github.com/oblique-bit/oblique/compare/9.2.0...9.2.1) (2022-09-16)
 
 ## Bug Fixes
