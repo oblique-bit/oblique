@@ -63,8 +63,9 @@ export class ObDatepickerComponent implements OnInit, ControlValueAccessor, Vali
 		this.datePicker.valueChanges.subscribe(fn);
 	}
 
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-	registerOnTouched(fn: any): void {}
+	registerOnTouched(fn: () => void): void {
+		this.onTouched = fn;
+	}
 
 	setDisabledState(isDisabled: boolean): void {
 		if (isDisabled) {
@@ -91,4 +92,12 @@ export class ObDatepickerComponent implements OnInit, ControlValueAccessor, Vali
 			}
 		}
 	}
+
+	/**
+	 * @remarks
+	 * This method must be overwritten by ControlValueAccessor, this is why an error is thrown by default.
+	 */
+	onTouched = (): void => {
+		throw Error('Method onTouched has not been overwritten by the ControlValueAccessor.');
+	};
 }
