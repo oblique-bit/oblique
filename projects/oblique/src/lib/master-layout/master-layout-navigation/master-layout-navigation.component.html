@@ -39,6 +39,7 @@
 					[attr.aria-current]="link.active ? 'page' : undefined"
 					[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
 					*ngIf="!link.children"
+					(click)="close()"
 				>
 					<ob-icon *ngIf="link.icon" [icon]="link.icon"></ob-icon>
 					<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
