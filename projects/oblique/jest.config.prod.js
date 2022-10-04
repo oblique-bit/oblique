@@ -135,10 +135,10 @@ module.exports.coverageThreshold = {
 		lines: 82
 	},
 	'projects/oblique/src/lib/master-layout/master-layout-navigation/*.ts': {
-		statements: 28,
-		branches: 0,
-		functions: 0,
-		lines: 21
+		statements: 69,
+		branches: 53,
+		functions: 53,
+		lines: 70
 	},
 	'projects/oblique/src/lib/multi-translate-loader/*.ts': {
 		statements: 22,
