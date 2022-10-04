@@ -21,7 +21,7 @@ export class ObNumberFormatDirective implements OnInit {
 		const value = ObNumberFormatDirective.toFixedNumber(this.ngControl.value, this.decimals);
 		if (this.persistent) {
 			this.changed = true;
-			this.ngControl.reset(value);
+			this.ngControl.control.setValue(value);
 		} else {
 			this.el.nativeElement.value = value;
 		}

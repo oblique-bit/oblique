@@ -171,10 +171,10 @@ module.exports.coverageThreshold = {
 		lines: 96
 	},
 	'projects/oblique/src/lib/number-format/*.ts': {
-		statements: 81,
-		branches: 77,
+		statements: 83,
+		branches: 80,
 		functions: 85,
-		lines: 80
+		lines: 81
 	},
 	'projects/oblique/src/lib/off-canvas/*.ts': {
 		statements: 72,
