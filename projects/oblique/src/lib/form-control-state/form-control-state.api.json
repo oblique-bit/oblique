@@ -11,7 +11,7 @@
       "inputs": [
         {
           "name": "pristineValidation",
-          "text": "Indicates if the field should be validated while the from is still pristine.",
+          "text": "Indicates if the field should be validated while the form is still pristine.",
           "type": "boolean",
           "default": false,
           "since": "2.0.0"
