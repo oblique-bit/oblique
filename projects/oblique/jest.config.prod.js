@@ -135,10 +135,10 @@ module.exports.coverageThreshold = {
 		lines: 82
 	},
 	'projects/oblique/src/lib/master-layout/master-layout-navigation/*.ts': {
-		statements: 28,
-		branches: 0,
-		functions: 0,
-		lines: 21
+		statements: 69,
+		branches: 53,
+		functions: 53,
+		lines: 70
 	},
 	'projects/oblique/src/lib/multi-translate-loader/*.ts': {
 		statements: 22,
@@ -171,10 +171,10 @@ module.exports.coverageThreshold = {
 		lines: 96
 	},
 	'projects/oblique/src/lib/number-format/*.ts': {
-		statements: 81,
-		branches: 77,
+		statements: 83,
+		branches: 80,
 		functions: 85,
-		lines: 80
+		lines: 81
 	},
 	'projects/oblique/src/lib/off-canvas/*.ts': {
 		statements: 72,

@@ -33,6 +33,22 @@
 		<div class="col-sm-2">
 			<button type="button" class="btn btn-secondary" (click)="number2 = 6.2356487">Set value</button>
 		</div>
+
+		<mat-form-field obErrorMessages>
+			<mat-label>Number format on required field with ObErrorMessage</mat-label>
+			<input
+				id="numberRequiredTemplate"
+				name="numberRequiredTemplate"
+				matInput
+				type="number"
+				placeholder="numberRequired"
+				[(ngModel)]="numberRequired"
+				obNumberFormat
+				required
+			/>
+			<mat-error></mat-error>
+		</mat-form-field>
+		<div class="col-sm-2 form-control-plaintext">{{ numberRequired }}</div>
 	</div>
 </form>
 
@@ -70,5 +86,19 @@
 			<button type="button" class="btn btn-secondary" (click)="setNumber6()">Set value</button>
 		</div>
 	</div>
+
+	<mat-form-field obErrorMessages>
+		<mat-label>Number format on required field with ObErrorMessage</mat-label>
+		<input
+			id="numberRequiredReactive"
+			matInput
+			type="number"
+			placeholder="numberRequired"
+			formControlName="numberRequired"
+			obNumberFormat
+		/>
+		<mat-error></mat-error>
+	</mat-form-field>
+	<div class="col-sm-2 form-control-plaintext">{{ formData.value.numberRequired }}</div>
 </form>
 <sc-api component="number-format"></sc-api>

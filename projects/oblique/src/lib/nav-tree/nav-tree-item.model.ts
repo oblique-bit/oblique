@@ -31,6 +31,7 @@ export class ObNavTreeItemModel {
 		}
 
 		// Ensure item has a path and a full route:
+		/* eslint-disable logical-assignment-operators */
 		this.path = this.path || this.id;
 		this.routes.push(this.path);
 
