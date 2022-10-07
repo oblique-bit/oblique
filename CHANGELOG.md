@@ -1,3 +1,10 @@
+# [9.2.3](https://github.com/oblique-bit/oblique/compare/9.2.2...9.2.3) (2022-10-07)
+
+## Bug Fixes
+
+- **master-layout:** close the hamburger menu when selecting an item ([f3a07cf](https://github.com/oblique-bit/oblique/commit/f3a07cf8ba91b1ae224df788e326bed9b10fee54))
+- **number-format:** better handling of the NgControl update on blur ([18ddeba](https://github.com/oblique-bit/oblique/commit/18ddeba05867634f5998501dc64324294f101f1a))
+
 # [9.2.2](https://github.com/oblique-bit/oblique/compare/9.2.1...9.2.2) (2022-09-23)
 
 ## Bug Fixes

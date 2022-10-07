@@ -11,6 +11,7 @@ export function draft07Convert(target, propertyKey: string, descriptor: Property
 
 	function convert(schema): void {
 		convertId(schema);
+		/* eslint-disable logical-assignment-operators */
 		schema.required = schema.required || [];
 
 		if (schema.properties) {

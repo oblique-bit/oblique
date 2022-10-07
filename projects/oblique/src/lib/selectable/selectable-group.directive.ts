@@ -174,6 +174,7 @@ export class ObSelectableGroupDirective implements AfterContentInit {
 				directive.selected = !directive.selected;
 			}
 		} else if (shift) {
+			/* eslint-disable logical-assignment-operators */
 			this.startFocused = this.startFocused ?? this.prevFocused;
 			const endFocused = this.selectables.findIndex(item => item === directive);
 			const start = Math.min(this.startFocused, endFocused);
