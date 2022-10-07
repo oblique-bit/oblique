@@ -97,6 +97,7 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 	private checkForExternalLinks(links: ObINavigationLink[]): void {
 		if (links?.length) {
 			links.forEach(link => {
+				/* eslint-disable logical-assignment-operators */
 				link.isExternal = link.isExternal ?? /^https?:\/\//.test(link.url);
 				this.checkForExternalLinks(link.children);
 			});

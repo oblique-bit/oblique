@@ -26,6 +26,7 @@ export class ObButtonDirective implements OnInit, OnChanges {
 	}
 
 	private setButtonClass(): void {
+		/* eslint-disable logical-assignment-operators */
 		this.obButton = this.obButton || 'primary';
 		this.primaryClass = this.obButton === 'primary';
 		this.secondaryClass = this.obButton === 'secondary';

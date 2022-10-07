@@ -26,6 +26,7 @@ export class ObNotificationComponent implements OnInit {
 	constructor(private readonly notificationService: ObNotificationService, @Inject(WINDOW) private readonly window: Window) {}
 
 	ngOnInit(): void {
+		/* eslint-disable logical-assignment-operators */
 		this.channel = this.channel || this.notificationService.config.channel;
 		this.customChannel = this.channel !== 'oblique';
 
