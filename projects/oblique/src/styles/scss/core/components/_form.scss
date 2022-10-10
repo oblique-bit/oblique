@@ -131,9 +131,6 @@ textarea {
 .ob-inline-form {
 	display: flex;
 	flex-wrap: wrap;
+	column-gap: variables.$ob-spacing-default;
 	word-break: normal;
-
-	> * + * {
-		margin-left: variables.$ob-spacing-default;
-	}
 }
