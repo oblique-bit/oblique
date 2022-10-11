@@ -13,10 +13,6 @@ class TestComponent {
 }
 
 describe('DatepickerComponent', () => {
-	let fixture: ComponentFixture<TestComponent>;
-	let datepicker: ObDatepickerComponent;
-	let button: DebugElement;
-
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
 			declarations: [TestComponent, ObDatepickerComponent],
@@ -25,34 +21,52 @@ describe('DatepickerComponent', () => {
 		}).compileComponents();
 	}));
 
-	beforeEach(() => {
-		fixture = TestBed.createComponent(TestComponent);
-		fixture.detectChanges();
-		button = fixture.debugElement.query(By.css('button'));
-		datepicker = fixture.debugElement.query(By.directive(ObDatepickerComponent)).injector.get(ObDatepickerComponent);
+	describe('Only ObDatepickerComponent', () => {
+		let component: ObDatepickerComponent;
+		beforeEach(() => {
+			const fixture = TestBed.createComponent(ObDatepickerComponent);
+			component = fixture.componentInstance;
+		});
+
+		it('should throw an error as default', () => {
+			expect(component.onTouched).toThrowError('Method onTouched has not been overwritten by the ControlValueAccessor.');
+		});
 	});
 
-	it('should toggle the NgbDatepicker on button click', () => {
-		jest.spyOn(datepicker.ngbDatePicker, 'toggle');
+	describe('Used in template', () => {
+		let fixture: ComponentFixture<TestComponent>;
+		let datepicker: ObDatepickerComponent;
+		let button: DebugElement;
 
-		button.nativeElement.click();
+		beforeEach(() => {
+			fixture = TestBed.createComponent(TestComponent);
+			fixture.detectChanges();
+			button = fixture.debugElement.query(By.css('button'));
+			datepicker = fixture.debugElement.query(By.directive(ObDatepickerComponent)).injector.get(ObDatepickerComponent);
+		});
 
-		expect(datepicker.ngbDatePicker.toggle).toHaveBeenCalled();
-	});
+		it('should toggle the NgbDatepicker on button click', () => {
+			jest.spyOn(datepicker.ngbDatePicker, 'toggle');
 
-	it('should disable the button, if disable gets set to true', () => {
-		datepicker.setDisabledState(true);
+			button.nativeElement.click();
 
-		fixture.detectChanges();
+			expect(datepicker.ngbDatePicker.toggle).toHaveBeenCalled();
+		});
 
-		expect(button.properties.disabled).toBeTruthy();
-	});
+		it('should disable the button, if disable gets set to true', () => {
+			datepicker.setDisabledState(true);
 
-	it('should disable the input, if disable gets set to true', () => {
-		datepicker.setDisabledState(true);
+			fixture.detectChanges();
 
-		fixture.detectChanges();
+			expect(button.properties.disabled).toBeTruthy();
+		});
 
-		expect(fixture.debugElement.query(By.css('input')).properties.disabled).toBeTruthy();
+		it('should disable the input, if disable gets set to true', () => {
+			datepicker.setDisabledState(true);
+
+			fixture.detectChanges();
+
+			expect(fixture.debugElement.query(By.css('input')).properties.disabled).toBeTruthy();
+		});
 	});
 });

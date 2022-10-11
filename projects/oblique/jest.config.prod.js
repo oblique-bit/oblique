@@ -57,10 +57,10 @@ module.exports.coverageThreshold = {
 		lines: 33
 	},
 	'projects/oblique/src/lib/datepicker/*.ts': {
-		statements: 71,
+		statements: 74,
 		branches: 27,
-		functions: 34,
-		lines: 68
+		functions: 80,
+		lines: 71
 	},
 	'projects/oblique/src/lib/document-meta/*.ts': {
 		statements: 61,
