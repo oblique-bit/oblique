@@ -178,6 +178,12 @@
 - **toolchain:** the `distiOS`script have been removed in favor of `dist`
 - **translation:** some oblique translation keys have been renamed (solved with Schematics)
 
+# [8.2.4](https://github.com/oblique-bit/oblique/compare/8.2.3...8.2.4) (2022-10-10)
+
+## Bug Fixes
+
+- **notification:** unsubscribe from events subscription ([8070219](https://github.com/oblique-bit/oblique/commit/8070219d7070125dcd1d4009a13644bf7327b856))
+
 # [8.2.3](https://github.com/oblique-bit/oblique/compare/8.2.2...8.2.3) (2022-07-28)
 
 ## Bug Fixes
