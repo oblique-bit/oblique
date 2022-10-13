@@ -9,4 +9,5 @@ export class ColumnLayoutSampleComponent {
 	right = true;
 	noLayout = false;
 	wider = false;
+	overflow = false;
 }
