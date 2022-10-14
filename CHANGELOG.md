@@ -1,3 +1,12 @@
+# [9.2.4](https://github.com/oblique-bit/oblique/compare/9.2.3...9.2.4) (2022-10-14)
+
+## Bug Fixes
+
+- **datepicker:** implement `registerOnTouched` function ([be9057f](https://github.com/oblique-bit/oblique/commit/be9057ff5e5a76ebb6c750e7f8b3dbe7d131dbfd))
+- **multiselect:** implement `registerOnTouched` function ([7813bc4](https://github.com/oblique-bit/oblique/commit/7813bc45e2bc5355ef1eaabdb232e9e324821b11))
+- **notification:** unsubscribe from events subscription ([4b48f89](https://github.com/oblique-bit/oblique/commit/4b48f89cfc1b0ee3980590536b8f02c6de8f232a))
+- **styles:** replace adjacent sibling combinator with `column-gap` property ([593ed7f](https://github.com/oblique-bit/oblique/commit/593ed7f07dc102d37eab5b16d457284317414909))
+
 # [9.2.3](https://github.com/oblique-bit/oblique/compare/9.2.2...9.2.3) (2022-10-07)
 
 ## Bug Fixes
