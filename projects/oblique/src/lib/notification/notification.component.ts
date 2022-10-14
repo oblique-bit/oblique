@@ -1,8 +1,9 @@
-import {Component, HostBinding, Inject, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, HostBinding, Inject, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {WINDOW} from '../utilities';
 import {ObENotificationPlacement, ObINotificationPrivate} from './notification.model';
 import {ObNotificationService} from './notification.service';
 import {animations} from './notification.component.animations';
+import {Subject, takeUntil} from 'rxjs';
 
 @Component({
 	selector: 'ob-notification',
@@ -13,7 +14,7 @@ import {animations} from './notification.component.animations';
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-notification-container'}
 })
-export class ObNotificationComponent implements OnInit {
+export class ObNotificationComponent implements OnInit, OnDestroy {
 	public static REMOVE_DELAY = 350;
 	@Input() channel: string;
 	@HostBinding('class.ob-custom') customChannel = false;
@@ -23,6 +24,8 @@ export class ObNotificationComponent implements OnInit {
 	public notifications: ObINotificationPrivate[] = [];
 	public variant: Record<string, string> = {};
 
+	private readonly unsubscribe = new Subject<void>();
+
 	constructor(private readonly notificationService: ObNotificationService, @Inject(WINDOW) private readonly window: Window) {}
 
 	ngOnInit(): void {
@@ -30,13 +33,18 @@ export class ObNotificationComponent implements OnInit {
 		this.channel = this.channel || this.notificationService.config.channel;
 		this.customChannel = this.channel !== 'oblique';
 
-		this.notificationService.events.subscribe(notification => {
+		this.notificationService.events.pipe(takeUntil(this.unsubscribe)).subscribe(notification => {
 			if (!notification || (!notification.message && notification.channel === this.channel)) {
 				this.clear();
 			} else if (notification.channel === this.channel) {
 				this.open(notification);
 			}
 		});
+	}
+
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 
 	/**

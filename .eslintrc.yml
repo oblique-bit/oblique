@@ -169,6 +169,7 @@ overrides:
       "@typescript-eslint/no-unnecessary-condition": off
       "@typescript-eslint/no-unsafe-argument": off
       "@typescript-eslint/no-magic-numbers": off
+      "@typescript-eslint/no-misused-promises": off # this rule had an error with the update to eslint 8.25.0
       "@typescript-eslint/no-unsafe-call": off
       "@typescript-eslint/naming-convention": off
       max-params: off
