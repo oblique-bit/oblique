@@ -19,6 +19,7 @@ import {ObMasterLayoutFooterComponent} from './master-layout-footer/master-layou
 import {ObMasterLayoutNavigationComponent} from './master-layout-navigation/master-layout-navigation.component';
 import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation/master-layout-navigation-item.directive';
 import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
+import {ObOutlineDirective} from './outline.directive';
 import {obliqueProviders} from '../utilities';
 import {ObAriaMenuButtonDirective} from './aria-menu-button.directive';
 import {ObIconModule} from '../icon/icon.module';
@@ -43,6 +44,7 @@ export {
 	ObISkipLink,
 	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION
 } from './master-layout.model';
+export {ObOutlineDirective} from './outline.directive';
 
 @NgModule({
 	imports: [
@@ -68,10 +70,17 @@ export {
 		ObMasterLayoutNavigationComponent,
 		ObMasterLayoutNavigationItemDirective,
 		ObMasterLayoutNavigationMenuDirective,
-		ObMasterLayoutNavigationToggleDirective
+		ObMasterLayoutNavigationToggleDirective,
+		ObOutlineDirective
 	],
 	providers: obliqueProviders(),
-	exports: [ObMasterLayoutComponent, ObMasterLayoutFooterComponent, ObMasterLayoutHeaderComponent, ObMasterLayoutNavigationComponent]
+	exports: [
+		ObMasterLayoutComponent,
+		ObMasterLayoutFooterComponent,
+		ObMasterLayoutHeaderComponent,
+		ObMasterLayoutNavigationComponent,
+		ObOutlineDirective
+	]
 })
 export class ObMasterLayoutModule {
 	constructor(telemetry: ObTelemetryService) {
