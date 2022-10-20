@@ -1,25 +1,26 @@
-import {Directive, HostBinding, HostListener} from '@angular/core';
+import {Directive, HostListener, Inject} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
 
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'ob-master-layout'
 })
 export class ObOutlineDirective {
-	@HostBinding('class.ob-outline') outline = false;
+	constructor(@Inject(DOCUMENT) private readonly document: Document) {}
 
-	@HostListener('mousedown')
-	@HostListener('keydown')
+	@HostListener('window:mousedown')
+	@HostListener('window:keydown')
 	removeOutline(): void {
-		this.outline = false;
+		this.document.body.classList.remove('ob-outline');
 	}
 
-	@HostListener('keydown.tab')
-	@HostListener('keydown.shift.tab')
-	@HostListener('keydown.arrowUp')
-	@HostListener('keydown.arrowDown')
-	@HostListener('keydown.arrowRight')
-	@HostListener('keydown.arrowLeft')
+	@HostListener('window:keydown.tab')
+	@HostListener('window:keydown.shift.tab')
+	@HostListener('window:keydown.arrowUp')
+	@HostListener('window:keydown.arrowDown')
+	@HostListener('window:keydown.arrowRight')
+	@HostListener('window:keydown.arrowLeft')
 	addOutline(): void {
-		this.outline = true;
+		this.document.body.classList.add('ob-outline');
 	}
 }
