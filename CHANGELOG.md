@@ -1,3 +1,9 @@
+# [9.3.0](https://github.com/oblique-bit/oblique/compare/9.2.5...9.3.0) (2022-10-28)
+
+## Features
+
+- **icon:** add new icons ([2abe301](https://github.com/oblique-bit/oblique/commit/2abe301a5251e9a120fe912e7ee0e1d1e3b7939a))
+
 # [9.2.5](https://github.com/oblique-bit/oblique/compare/9.2.4...9.2.5) (2022-10-28)
 
 ## Bug Fixes
