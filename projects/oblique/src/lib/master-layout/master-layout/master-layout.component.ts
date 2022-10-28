@@ -6,7 +6,6 @@ import {
 	DoCheck,
 	ElementRef,
 	HostBinding,
-	HostListener,
 	Inject,
 	Input,
 	OnDestroy,
@@ -59,7 +58,6 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	@HostBinding('class.ob-no-navigation') noNavigation = !this.masterLayout.layout.hasMainNavigation;
 	@HostBinding('class.ob-off-canvas') hasOffCanvas = this.masterLayout.layout.hasOffCanvas;
 	@HostBinding('class.ob-master-layout-scrolling') isScrolling = false;
-	@HostBinding('class.ob-outline') outline = false;
 	isHeaderSticky = this.masterLayout.header.isSticky;
 	isFooterSticky = this.masterLayout.footer.isSticky;
 	scrollTarget: HTMLElement | Window;
@@ -95,22 +93,6 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 		this.headerIsStickyChange();
 		this.focusFragment();
 		this.focusOffCanvasClose();
-	}
-
-	@HostListener('mousedown')
-	@HostListener('keydown')
-	removeOutline(): void {
-		this.outline = false;
-	}
-
-	@HostListener('keydown.tab')
-	@HostListener('keydown.shift.tab')
-	@HostListener('keydown.arrowUp')
-	@HostListener('keydown.arrowDown')
-	@HostListener('keydown.arrowRight')
-	@HostListener('keydown.arrowLeft')
-	addOutline(): void {
-		this.outline = true;
 	}
 
 	scrollTop(element?: HTMLElement): void {

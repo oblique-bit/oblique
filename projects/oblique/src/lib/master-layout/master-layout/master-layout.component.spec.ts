@@ -184,24 +184,6 @@ describe('ObMasterLayoutComponent', () => {
 		it('should have a isScrolling property', () => {
 			expect(component.isScrolling).toBe(false);
 		});
-
-		it('should have a outline property', () => {
-			expect(component.outline).toBe(false);
-		});
-	});
-
-	describe('removeOutline', () => {
-		it('should set outline to false', () => {
-			component.removeOutline();
-			expect(component.outline).toBe(false);
-		});
-	});
-
-	describe('addOutline', () => {
-		it('should set outline to true', () => {
-			component.addOutline();
-			expect(component.outline).toBe(true);
-		});
 	});
 
 	describe('scrollTop', () => {
