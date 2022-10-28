@@ -1,3 +1,9 @@
+# [9.2.5](https://github.com/oblique-bit/oblique/compare/9.2.4...9.2.5) (2022-10-28)
+
+## Bug Fixes
+
+- **master-layout:** `outline` class is applied on the body ([767ea4e](https://github.com/oblique-bit/oblique/commit/767ea4e12847c9d9fb61819245ea84d749857f2b))
+
 # [9.2.4](https://github.com/oblique-bit/oblique/compare/9.2.3...9.2.4) (2022-10-14)
 
 ## Bug Fixes
